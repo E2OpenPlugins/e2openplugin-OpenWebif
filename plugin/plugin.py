@@ -11,7 +11,7 @@
 #
 #
 #
-# Authors: meo meo <lupomeo@hotmail.com>, ....
+# Authors: meo <lupomeo@hotmail.com>, ....
 # Graphics: .....
 
 from Screens.Screen import Screen
@@ -58,7 +58,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		
 		self.list.append(getConfigListEntry(_("OpenWebInterface Enabled"), config.OpenWebif.enabled))
 		self.list.append(getConfigListEntry(_("Http port"), config.OpenWebif.port))
-		self.list.append(getConfigListEntry(_("Enable Http Authemtication"), config.OpenWebif.auth))
+		self.list.append(getConfigListEntry(_("Enable Http Authentication"), config.OpenWebif.auth))
 	
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
