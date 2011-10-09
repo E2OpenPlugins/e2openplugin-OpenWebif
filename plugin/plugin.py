@@ -26,8 +26,8 @@ from http_server import HttpdStart, HttpdStop
 
 config.OpenWebif = ConfigSubsection()
 config.OpenWebif.enabled = ConfigYesNo(default=True)
-# Use temporary port 8080 to avoid conflict with Webinterface
-config.OpenWebif.port = ConfigInteger(default = 8080, limits=(1, 65535) )
+# Use temporary port 8088 to avoid conflict with Webinterface
+config.OpenWebif.port = ConfigInteger(default = 8088, limits=(1, 65535) )
 config.OpenWebif.auth = ConfigYesNo(default=False)
 
 class OpenWebifConfig(Screen, ConfigListScreen):
@@ -46,7 +46,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		self.list = []
 		ConfigListScreen.__init__(self, self.list)
 		self["key_red"] = Label(_("Close"))
-		self["lab1"] = Label("Config not yet implemented. Openwebif is currently active on port 8080 to avoid conflicts with Webif.\nTo test this plugin point your browser to http://yourip:8080")
+		self["lab1"] = Label("Config not yet implemented. Openwebif is currently active on port 8088 to avoid conflicts with Webif.\nTo test this plugin point your browser to http://yourip:8088")
 		
 		self["actions"] = ActionMap(["WizardActions", "ColorActions"],
 		{

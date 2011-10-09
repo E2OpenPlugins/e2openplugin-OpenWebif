@@ -35,7 +35,7 @@ def buildRootTree(session):
 
 def HttpdStart(session):
 	global http_running
-	port = 8080
+	port = 8088
 #	out = OutputPage(session)
 	root = buildRootTree(session)
 	site = server.Site(root)
