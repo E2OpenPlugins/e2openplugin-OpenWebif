@@ -69,8 +69,8 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 	def keySave(self):
 		for x in self["config"].list:
 			x[1].save()
-#		HttpdStop(global_session)
-#		HttpdStart(global_session)
+		HttpdStop(global_session)
+		HttpdStart(global_session)
 		self.close()
 
 	def keyCancel(self):

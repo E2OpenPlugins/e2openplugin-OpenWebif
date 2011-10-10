@@ -13,6 +13,7 @@ from Components.config import config
 from twisted.internet import reactor
 from twisted.web import server, http, static, resource
 
+global http_running
 http_running = ""
 #class OutputPage(resource.Resource):
 #	def __init__(self, session):
@@ -34,6 +35,7 @@ def buildRootTree(session):
 
 def HttpdStart(session):
 	if config.OpenWebif.enabled.value == True:
+		global http_running
 		port = config.OpenWebif.port.value
 #		out = OutputPage(session)
 		root = buildRootTree(session)
@@ -43,7 +45,6 @@ def HttpdStart(session):
 		print "[OpenWebif] started on %i"% (port)
 
 def HttpdStop(session):
-# Not working...
 	if http_running:
 		http_running.stopListening()
 
