@@ -32,11 +32,13 @@ config.OpenWebif.auth = ConfigYesNo(default=False)
 
 class OpenWebifConfig(Screen, ConfigListScreen):
 	skin = """
-	<screen position="center,center" size="800,340" title="OpenWebif Configuration">
-		<widget name="lab1" position="10,10" halign="center" size="780,90" zPosition="1" font="Regular;24" valign="top" transparent="1" />
-		<widget name="config" position="10,100" size="780,210" scrollbarMode="showOnDemand" />
-		<ePixmap pixmap="skin_default/buttons/red.png" position="330,270" size="140,40" alphatest="on" />
-		<widget name="key_red" position="330,270" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" />
+	<screen position="center,center" size="900,340" title="OpenWebif Configuration">
+		<widget name="lab1" position="20,30" halign="center" size="860,60" zPosition="1" font="Regular;24" valign="top" transparent="1" />
+		<widget name="config" position="20,100" size="860,160" scrollbarMode="showOnDemand" />
+		<ePixmap pixmap="skin_default/buttons/red.png" position="200,270" size="140,40" alphatest="on" />
+		<widget name="key_red" position="200,270" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="red" transparent="1" />
+		<ePixmap position="550,270" size="140,40" pixmap="skin_default/buttons/green.png" alphatest="on" zPosition="1" />
+		<widget name="key_green" position="550,270" zPosition="2" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="green" transparent="1" />
 	</screen>"""
 	
 	def __init__(self, session):
@@ -45,14 +47,15 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		
 		self.list = []
 		ConfigListScreen.__init__(self, self.list)
-		self["key_red"] = Label(_("Close"))
-		self["lab1"] = Label("Config not yet implemented. Openwebif is currently active on port 8088 to avoid conflicts with Webif.\nTo test this plugin point your browser to http://yourip:8088")
+		self["key_red"] = Label(_("Save"))
+		self["key_green"] = Label(_("Cancel"))
+		self["lab1"] = Label("To access to OpenWebif point your browser to http://yourip:port")
 		
 		self["actions"] = ActionMap(["WizardActions", "ColorActions"],
 		{
-			"red": self.close,
-			"back": self.close,
-			"ok": self.close
+			"red": self.keySave,
+			"back": self.keyCancel,
+			"green": self.keyCancel,
 
 		}, -2)
 		
@@ -62,6 +65,18 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 	
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
+
+	def keySave(self):
+		for x in self["config"].list:
+			x[1].save()
+#		HttpdStop(global_session)
+#		HttpdStart(global_session)
+		self.close()
+
+	def keyCancel(self):
+		for x in self["config"].list:
+			x[1].cancel()
+		self.close()
 
 def confplug(session, **kwargs):
 		session.open(OpenWebifConfig)
