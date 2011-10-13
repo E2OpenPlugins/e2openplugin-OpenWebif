@@ -22,7 +22,7 @@ from Components.Label import Label
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo
 
-from http_server import HttpdStart, HttpdStop
+from http_server import HttpdStart, HttpdRestart
 
 config.OpenWebif = ConfigSubsection()
 config.OpenWebif.enabled = ConfigYesNo(default=True)
@@ -69,9 +69,8 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 	def keySave(self):
 		for x in self["config"].list:
 			x[1].save()
-#TODO: add defer before to restart server-
-#		HttpdStop(global_session)
-#		HttpdStart(global_session)
+
+		HttpdRestart(global_session)
 		self.close()
 
 	def keyCancel(self):

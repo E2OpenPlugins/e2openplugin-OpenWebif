@@ -39,9 +39,12 @@ def HttpdStart(session):
 		print "[OpenWebif] started on %i"% (port)
 		
 
-def HttpdStop(session):
+def HttpdRestart(session):
 	if http_running:
-		http_running.stopListening()
+		http_running.stopListening().addCallback(HttpdDoRestart, session)
+
+def HttpdDoRestart(ign, session):
+	HttpdStart(session)
 
 class AuthResource(resource.Resource):
 	def __init__(self, session, root):
