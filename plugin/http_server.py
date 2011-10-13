@@ -11,42 +11,79 @@
 
 from Components.config import config
 from twisted.internet import reactor
-from twisted.web import server, http, static, resource
+from twisted.web import server, http, static, resource, error
+
 
 global http_running
 http_running = ""
-#class OutputPage(resource.Resource):
-#	def __init__(self, session):
-#		resource.Resource.__init__(self)
-#		isLeaf = True
-		
-#    	def getChild(self, name, request):
-#        	if name == '':
-#            		return self
-#        	return Resource.getChild(self, name, request)
-
-#	def render_GET(self, request):
-#        	return "Hello, world! I am located at %r." % (request.prepath,)
 
 def buildRootTree(session):
 	basepath = get_BasePath()
 	root = static.File(basepath + "/www/html")
+	root.putChild("media", static.File("/media"))
 	return root
 
 def HttpdStart(session):
 	if config.OpenWebif.enabled.value == True:
 		global http_running
 		port = config.OpenWebif.port.value
-#		out = OutputPage(session)
+
+
 		root = buildRootTree(session)
+		if config.OpenWebif.auth.value == True:	
+			root = AuthResource(session, root)
 		site = server.Site(root)
+		
 		http_running = reactor.listenTCP(port, site)
 
 		print "[OpenWebif] started on %i"% (port)
+		
 
 def HttpdStop(session):
 	if http_running:
 		http_running.stopListening()
+
+class AuthResource(resource.Resource):
+	def __init__(self, session, root):
+		resource.Resource.__init__(self)
+		self.resource = root
+		
+
+	def render(self, request):
+		if self.login(request.getUser(), request.getPassword()) == False:
+			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
+			errpage = error.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
+			return errpage.render(request)
+		else:
+			return self.resource.render(request)
+
+
+	def getChildWithDefault(self, path, request):
+		if self.login(request.getUser(), request.getPassword()) == False:
+			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
+			errpage = error.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
+			return errpage
+		else:
+			return self.resource.getChildWithDefault(path, request)
+		
+		
+	def login(self, user, passwd):
+		from crypt import crypt
+		from pwd import getpwnam
+		from spwd import getspnam
+		cpass = None
+		try:
+			cpass = getpwnam(user)[1]
+		except:
+			return False
+		if cpass:
+			if cpass == 'x' or cpass == '*':
+				try:
+					cpass = getspnam(user)[1]
+				except:
+					return False			
+			return crypt(passwd, cpass) == cpass
+		return False
 
 def get_BasePath():
 	return "/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif"
