@@ -22,7 +22,7 @@ from Components.Label import Label
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo
 
-from http_server import HttpdStart, HttpdRestart
+from http_server import HttpdStart, HttpdStop, HttpdRestart
 
 config.OpenWebif = ConfigSubsection()
 config.OpenWebif.enabled = ConfigYesNo(default=True)

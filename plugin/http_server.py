@@ -38,7 +38,13 @@ def HttpdStart(session):
 
 		print "[OpenWebif] started on %i"% (port)
 		
+def HttpdStop(session):
+	if http_running:
+		http_running.stopListening().addCallback(HttpdDoStop, session)
 
+def HttpdDoStop(session):
+	print "[OpenWebif] stopped"
+	
 def HttpdRestart(session):
 	if http_running:
 		http_running.stopListening().addCallback(HttpdDoRestart, session)
