@@ -10,7 +10,7 @@ body {
 	font-size: 13px;
 	color: #061C37;
 	background: #EEEFE4;
-	background-image:url(images/background.png);
+	background-image:url(background.png);
 	background-repeat:repeat-x;
 }
 *
@@ -57,7 +57,7 @@ width:400px;
 
 #mainpic
 {
-background-image:url(images/main.jpg);
+background-image:url(main.jpg);
 background-repeat:no-repeat;
 width:900px;
 height:354px;	
@@ -93,13 +93,13 @@ float:left;
 {
 width:204px;
 height:14px;
-background-image:url(images/leftmenu_top.png);
+background-image:url(leftmenu_top.png);
 }
 #leftmenu_bottom
 {
 width:204px;
 height:14px;
-background-image:url(images/leftmenu_bottom.png);
+background-image:url(leftmenu_bottom.png);
 }
 #leftmenu_main
 {
@@ -144,7 +144,7 @@ padding-left:12px;
 padding-top:4px;
 height:30px;
 text-align:left;
-background-image:url(images/leftmenu_link.png);
+background-image:url(leftmenu_link.png);
 background-repeat:repeat-x;
 margin-top:5px;
 color:#FFFFFF;
@@ -178,7 +178,7 @@ padding-bottom:5px;
 
 #content_top
 {
-	background-image:url(images/main_top.png);
+	background-image:url(main_top.png);
 	background-repeat:no-repeat;
 	width:689px;
 	height:25px;
@@ -186,7 +186,7 @@ padding-bottom:5px;
 
 #content_main
 {
-background-image:url(images/main_back.png);
+background-image:url(main_back.png);
 background-repeat:repeat-y;
 width:659px;
 padding-left:15px;
@@ -195,7 +195,7 @@ padding-right:15px;
 
 #content_bottom
 {
-background-image:url(images/main_bottom.png);
+background-image:url(main_bottom.png);
 background-repeat:no-repeat;
 width:689px;
 height:25px;
@@ -255,7 +255,7 @@ color:#7198E1;
 
 #menu a:hover{
 	color:#86AEF9;
-	background-image:url(images/linkbackground.jpg);
+	background-image:url(linkbackground.jpg);
 	background-repeat:repeat-x;
 }
 

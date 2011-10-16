@@ -10,8 +10,10 @@
 ##############################################################################
 
 from Components.config import config
+from Tools.Directories import fileExists
 from twisted.internet import reactor
 from twisted.web import server, http, static, resource, error
+from string import Template
 
 
 global http_running
@@ -19,7 +21,9 @@ http_running = ""
 
 def buildRootTree(session):
 	basepath = get_BasePath()
-	root = static.File(basepath + "/www/html")
+#	root = static.File(basepath + "/www/html")
+	root = BuildPage(session, basepath + "/www/html")
+	root.putChild("images", static.File(basepath + "/www/html/images"))
 	root.putChild("media", static.File("/media"))
 	return root
 
@@ -94,6 +98,42 @@ class AuthResource(resource.Resource):
 			return crypt(passwd, cpass) == cpass
 		return False
 
+class BuildPage(resource.Resource):
+	def __init__(self, session, path):
+		resource.Resource.__init__(self)
+
+		self.session = session
+		self.path = path
+
+	def render(self, request):
+		request.setResponseCode(http.OK)
+		htmlout = Template(self.loadHtmlSource(self.path))
+        	OpenWebIfMainBody = self.get_Main_body(self.path)
+		request.write(htmlout.substitute(locals()))
+		request.finish()
+
+		return server.NOT_DONE_YET
+		
+	def getChild(self, path, request):
+		path = self.path + "/" + path
+		if path[-1] == "/":
+			path += "index.html"
+		return BuildPage(self.session, path)
+
+	def loadHtmlSource(self, file):
+		out = ""
+		if fileExists(file):
+			f = open(file,'r')
+ 			out = f.read()
+ 			f.close()
+		return out
+		
+	def get_Main_body(self, path):
+		if path.find('index.html') != -1:
+			return "Hi Sjaaky.<br> Here you can insert the bouquet/channels list :) "
+		else:
+			return "Sorry: Page not yet implemented"
+		
 def get_BasePath():
 	return "/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif"
 
