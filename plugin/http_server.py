@@ -25,6 +25,7 @@ def buildRootTree(session):
 	root = BuildPage(session, basepath + "/www/html")
 	root.putChild("images", static.File(basepath + "/www/html/images"))
 	root.putChild("media", static.File("/media"))
+	root.putChild("test", static.File(basepath + "/www/html/test"))
 	return root
 
 def HttpdStart(session):
@@ -106,8 +107,9 @@ class BuildPage(resource.Resource):
 		self.path = path
 
 	def render(self, request):
+		basepath = get_BasePath()
 		request.setResponseCode(http.OK)
-		htmlout = Template(self.loadHtmlSource(self.path))
+		htmlout = Template(self.loadHtmlSource(basepath + "/www/html/index.html"))
         	OpenWebIfMainBody = self.get_Main_body(self.path)
 		request.write(htmlout.substitute(locals()))
 		request.finish()
@@ -132,7 +134,7 @@ class BuildPage(resource.Resource):
 		if path.find('index.html') != -1:
 			return "Hi Sjaaky.<br> Here you can insert the bouquet/channels list :) "
 		else:
-			return "Sorry: Page not yet implemented"
+			return self.loadHtmlSource(self.path)
 		
 def get_BasePath():
 	return "/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif"
