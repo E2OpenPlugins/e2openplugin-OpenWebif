@@ -23,9 +23,9 @@ def buildRootTree(session):
 	basepath = get_BasePath()
 #	root = static.File(basepath + "/www/html")
 	root = BuildPage(session, basepath + "/www/html")
+	root.putChild("js", static.File(basepath + "/www/html/js"))
 	root.putChild("images", static.File(basepath + "/www/html/images"))
 	root.putChild("media", static.File("/media"))
-	root.putChild("test", static.File(basepath + "/www/html/test"))
 	return root
 
 def HttpdStart(session):
