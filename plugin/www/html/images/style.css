@@ -275,13 +275,46 @@ height:25px;
 	font-size: 16px;
 }
 
-#content h2
+#content h3
 {
 	font-size: 16px;
 	font-weight:bold;
 }
 
+#content a
+{
+	text-decoration:none;
+	color: #176093;
+}
 
+#info {
+	font-size: 12px;
+	text-align: center;
+}
+
+#info h1{
+
+	font-size: 14px;
+	text-align: center;
+}
+
+#info h2
+{
+	font-size: 16px;
+	text-align: center;
+}
+
+#info h3
+{
+	font-size: 16px;
+	font-weight:bold;
+	text-align: center;
+}
+
+.info {
+	font-size: 12px;
+	text-align: center;
+}
 
 
 
