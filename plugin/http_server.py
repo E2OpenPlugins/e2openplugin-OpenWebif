@@ -13,7 +13,7 @@ from Components.config import config
 from Tools.Directories import fileExists
 from twisted.internet import reactor
 from twisted.web import server, http, static, resource, error
-from string import Template
+from ow_contents import get_Info_content
 
 
 global http_running
@@ -109,9 +109,11 @@ class BuildPage(resource.Resource):
 	def render(self, request):
 		basepath = get_BasePath()
 		request.setResponseCode(http.OK)
-		htmlout = Template(self.loadHtmlSource(basepath + "/www/html/index.html"))
+		#htmlout = Template(self.loadHtmlSource(basepath + "/www/html/index.html"))
+		htmlout = self.loadHtmlSource(basepath + "/www/html/index.html")
         	OpenWebIfMainBody = self.get_Main_body(self.path)
-		request.write(htmlout.substitute(locals()))
+		#request.write(htmlout.substitute(locals()))
+		request.write(htmlout.format(**locals()))
 		request.finish()
 
 		return server.NOT_DONE_YET
@@ -133,6 +135,22 @@ class BuildPage(resource.Resource):
 	def get_Main_body(self, path):
 		if path.find('index.html') != -1:
 			return "Hi Sjaaky.<br> Here you can insert the bouquet/channels list :) "
+		elif path.find('box_info.html') != -1:
+			htmlout = self.loadHtmlSource(self.path)
+			owinfo = get_Info_content()
+			owif_info_brand = owinfo['brand']
+			owif_info_model = owinfo['model']
+			owif_info_chipset = owinfo['chipset']
+			owif_info_fpver = owinfo['fp_version']
+			owif_info_memtot = owinfo['mem1']
+			owif_info_memfree = owinfo['mem2']
+			owif_info_uptime = owinfo['uptime']
+			owif_info_kernel = owinfo['kernelver']
+			owif_info_image = owinfo['imagever']
+			owif_info_e2 = owinfo['enigmaver']
+			owif_info_tuners = owinfo['tuners']
+			owif_info_hdd = owinfo['hdd']
+			return htmlout.format(**locals())
 		else:
 			return self.loadHtmlSource(self.path)
 		

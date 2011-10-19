@@ -17,7 +17,7 @@ body {
 #container
 {
   	display: block; 
-/*  height:auto; */
+  height:auto;
  	position: relative; 
   	width: 960px;
 }
@@ -262,6 +262,7 @@ color:#87BCF8;
 	
 }
 
+
 #info {
 	font-size: 12px;
 	text-align: center;
@@ -290,6 +291,36 @@ color:#87BCF8;
 	font-size: 12px;
 	text-align: center;
 }
+
+.infoleft
+{
+/*	font-weight:bold; */
+	width: 50%;
+	text-align: left;
+	padding-left: 10px;
+	
+}
+.inforight
+{
+	width: 50%;	
+}
+
+.infomain 
+{
+	border: 1px solid #CCC;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;		
+}
+
+
+.infoHeader {
+	width:100%;
+	color:#FFF;
+	font-weight:bold;
+	background-color:#1C478E;
+	}
+
 
 
 #footer
