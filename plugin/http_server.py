@@ -21,7 +21,6 @@ http_running = ""
 
 def buildRootTree(session):
 	basepath = get_BasePath()
-#	root = static.File(basepath + "/www/html")
 	root = BuildPage(session, basepath + "/www/html")
 	root.putChild("js", static.File(basepath + "/www/html/js"))
 	root.putChild("images", static.File(basepath + "/www/html/images"))
@@ -109,10 +108,8 @@ class BuildPage(resource.Resource):
 	def render(self, request):
 		basepath = get_BasePath()
 		request.setResponseCode(http.OK)
-		#htmlout = Template(self.loadHtmlSource(basepath + "/www/html/index.html"))
 		htmlout = self.loadHtmlSource(basepath + "/www/html/index.html")
         	OpenWebIfMainBody = self.get_Main_body(self.path)
-		#request.write(htmlout.substitute(locals()))
 		request.write(htmlout.format(**locals()))
 		request.finish()
 
