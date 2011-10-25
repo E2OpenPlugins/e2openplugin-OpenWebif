@@ -23,7 +23,7 @@ def buildRootTree(session):
 	basepath = get_BasePath()
 	root = BuildPage(session, basepath + "/www/html")
 	root.putChild("js", static.File(basepath + "/www/html/js"))
-	root.putChild("images", static.File(basepath + "/www/html/images"))
+	root.putChild("css", static.File(basepath + "/www/html/css"))
 	root.putChild("media", static.File("/media"))
 	return root
 
@@ -131,7 +131,7 @@ class BuildPage(resource.Resource):
 		
 	def get_Main_body(self, path):
 		if path.find('index.html') != -1:
-			return "Hi Sjaaky.<br> Here you can insert the bouquet/channels list :) "
+			return "generic content here"
 		elif path.find('box_info.html') != -1:
 			htmlout = self.loadHtmlSource(self.path)
 			owinfo = get_Info_content()
