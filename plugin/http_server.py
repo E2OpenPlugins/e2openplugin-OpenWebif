@@ -13,7 +13,7 @@ from Components.config import config
 from Tools.Directories import fileExists
 from twisted.internet import reactor
 from twisted.web import server, http, static, resource, error
-from ow_contents import get_Info_content
+from ow_contents import get_Info_content, get_Ajax_Tabs
 
 
 global http_running
@@ -24,6 +24,7 @@ def buildRootTree(session):
 	root = BuildPage(session, basepath + "/www/html")
 	root.putChild("js", static.File(basepath + "/www/html/js"))
 	root.putChild("css", static.File(basepath + "/www/html/css"))
+	root.putChild("ajax", static.File(basepath + "/www/html/ajax"))
 	root.putChild("media", static.File("/media"))
 	return root
 
@@ -131,7 +132,7 @@ class BuildPage(resource.Resource):
 		
 	def get_Main_body(self, path):
 		if path.find('index.html') != -1:
-			return "generic content here"
+			return get_Ajax_Tabs()
 		elif path.find('box_info.html') != -1:
 			htmlout = self.loadHtmlSource(self.path)
 			owinfo = get_Info_content()

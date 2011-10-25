@@ -7,7 +7,31 @@
  *
  *--------------------------------------------------------------------------*/
 
-function MsgBox (textstring) 
-{
-	alert (textstring) 
-}
+$.fx.speeds._default = 1000;
+$(function() {
+	$( "#tabs" ).tabs({
+		ajaxOptions: {
+			error: function( xhr, status, index, anchor ) {
+				$( anchor.hash ).html(
+					"Couldn't load this tab. We'll try to fix this as soon as possible." );
+			}
+		}
+	});
+	$( "#dialog" ).dialog({
+		autoOpen: false,
+		show: "fade",
+		hide: "explode",
+		buttons: {
+			"Ok": function() { 
+				$(this).dialog("close"); 
+			} 
+		}
+	});
+	// Dialog Link
+	$('#dialog_link').click(function(){
+		$('#dialog').dialog('open');
+		return false;
+	});
+
+
+});

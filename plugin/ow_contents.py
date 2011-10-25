@@ -16,12 +16,24 @@ from Tools.DreamboxHardware import getFPVersion
 from Tools.Directories import fileExists
 from os import popen
 
+def get_Ajax_Tabs():
+	return """
+<div id="tabs">
+	<ul>
+		<li><a href="ajax/current.html">Current</a></li>
+		<li><a href="ajax/bouquets.html">Bouquets</a></li>
+		<li><a href="ajax/providers.html">Providers</a></li>
+		<li><a href="ajax/satellites.html">Satellites</a></li>
+		<li><a href="ajax/all.html">All</a></li>
+	</ul>
+</div>
+"""
 
 def get_Info_content():
 # Todo: implement Etxxx brand and model (i have not)
 # Todo: add network infos
 
-	owinfo = {} 
+	owinfo = {}
 
 	brand = "Dream Multimedia"
 	model = "unknown"
