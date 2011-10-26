@@ -18,6 +18,7 @@ from os import popen
 
 def get_Ajax_Tabs():
 	return """
+<div id="content_main">
 <div id="tabs">
 	<ul>
 		<li><a href="ajax/current.html">Current</a></li>
@@ -26,6 +27,7 @@ def get_Ajax_Tabs():
 		<li><a href="ajax/satellites.html">Satellites</a></li>
 		<li><a href="ajax/all.html">All</a></li>
 	</ul>
+</div>
 </div>
 """
 
