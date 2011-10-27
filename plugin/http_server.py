@@ -13,7 +13,7 @@ from Components.config import config
 from Tools.Directories import fileExists
 from twisted.internet import reactor
 from twisted.web import server, http, static, resource, error
-from ow_contents import get_Info_content, get_Ajax_Tabs
+from ow_contents import get_Info_content, get_Ajax_Tabs, get_Ajax_current, get_Ajax_bouquets, get_Ajax_providers, get_Ajax_satellites, get_Ajax_all
 
 
 global http_running
@@ -22,9 +22,10 @@ http_running = ""
 def buildRootTree(session):
 	basepath = get_BasePath()
 	root = BuildPage(session, basepath + "/www/html")
+	root.putChild("ajax", BuildAjaxPage(session, basepath + "/www/html/ajax"))
 	root.putChild("js", static.File(basepath + "/www/html/js"))
 	root.putChild("css", static.File(basepath + "/www/html/css"))
-	root.putChild("ajax", static.File(basepath + "/www/html/ajax"))
+#	root.putChild("ajax", static.File(basepath + "/www/html/ajax"))
 	root.putChild("media", static.File("/media"))
 	return root
 
@@ -108,12 +109,17 @@ class BuildPage(resource.Resource):
 
 	def render(self, request):
 		basepath = get_BasePath()
-		request.setResponseCode(http.OK)
-		htmlout = self.loadHtmlSource(basepath + "/www/html/index.html")
-        	OpenWebIfMainBody = self.get_Main_body(self.path)
-		request.write(htmlout.format(**locals()))
-		request.finish()
-
+		if fileExists(self.path):
+			htmlout = self.loadHtmlSource(basepath + "/www/html/index.html")
+			request.setResponseCode(http.OK)
+        		OpenWebIfMainBody = self.get_Main_body(self.path)
+			request.write(htmlout.format(**locals()))
+			request.finish()
+		else:
+			request.setResponseCode(http.NOT_FOUND)
+			request.write("<html><head><title>Open Webif</title></head><body><h1>Error 404: Page not found</h1><br />The requested URL was not found on this server.</body></html>")
+			request.finish()
+			
 		return server.NOT_DONE_YET
 		
 	def getChild(self, path, request):
@@ -123,7 +129,7 @@ class BuildPage(resource.Resource):
 		return BuildPage(self.session, path)
 
 	def loadHtmlSource(self, file):
-		out = ""
+		out = "not found"
 		if fileExists(file):
 			f = open(file,'r')
  			out = f.read()
@@ -136,21 +142,44 @@ class BuildPage(resource.Resource):
 		elif path.find('box_info.html') != -1:
 			htmlout = self.loadHtmlSource(self.path)
 			owinfo = get_Info_content()
-			owif_info_brand = owinfo['brand']
-			owif_info_model = owinfo['model']
-			owif_info_chipset = owinfo['chipset']
-			owif_info_fpver = owinfo['fp_version']
-			owif_info_memtot = owinfo['mem1']
-			owif_info_memfree = owinfo['mem2']
-			owif_info_uptime = owinfo['uptime']
-			owif_info_kernel = owinfo['kernelver']
-			owif_info_image = owinfo['imagever']
-			owif_info_e2 = owinfo['enigmaver']
-			owif_info_tuners = owinfo['tuners']
-			owif_info_hdd = owinfo['hdd']
-			return htmlout.format(**locals())
+			return htmlout.format(**owinfo)
 		else:
 			return self.loadHtmlSource(self.path)
+		
+		
+class BuildAjaxPage(resource.Resource):
+	def __init__(self, session, path):
+		resource.Resource.__init__(self)
+
+		self.session = session
+		self.path = path
+
+	def render(self, request):
+		basepath = get_BasePath()
+		request.setResponseCode(http.OK)
+		htmlout = self.get_body(self.path)
+		request.write(htmlout)
+		request.finish()
+
+		return server.NOT_DONE_YET
+		
+	def getChild(self, path, request):
+		path = self.path + "/" + path
+		return BuildAjaxPage(self.session, path)
+		
+	def get_body(self, path):
+		if path.find('current.html') != -1:
+			return get_Ajax_current()
+		elif path.find('bouquets.html') != -1:
+			return get_Ajax_bouquets()
+		elif path.find('providers.html') != -1:
+			return get_Ajax_providers()
+		elif path.find('satellites.html') != -1:
+			return get_Ajax_satellites()
+		elif path.find('all.html') != -1:
+			return get_Ajax_all()
+		else:
+			return "Error. Page not found."
 		
 def get_BasePath():
 	return "/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif"

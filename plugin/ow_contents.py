@@ -31,6 +31,57 @@ def get_Ajax_Tabs():
 </div>
 """
 
+def get_Ajax_current():
+	return """
+Here we have to load all the informations about:<br />
+the current playing service.<br />
+(like we have in Osd)
+<br /><br /><br />
+"""
+
+def get_Ajax_bouquets():
+	return """
+Here we have to load:<br />
+the Bouquets list.<br />
+<br /><br /><br />
+"""
+
+def get_Ajax_providers():
+	return """
+Here we have to load:<br />
+the Providers list.<br />
+<br /><br /><br />
+"""
+
+def get_Ajax_satellites():
+	return """
+Here we have to load:<br />
+the Satellites list.<br />
+<br /><br /><br />
+"""
+
+def get_Ajax_all():
+	return """
+Here we have to load:<br />
+the list of all available channels.<br />
+<br /><br /><br />
+"""
+
+def get_Ajax_Tabs():
+	return """
+<div id="content_main">
+<div id="tabs">
+	<ul>
+		<li><a href="ajax/current.html">Current</a></li>
+		<li><a href="ajax/bouquets.html">Bouquets</a></li>
+		<li><a href="ajax/providers.html">Providers</a></li>
+		<li><a href="ajax/satellites.html">Satellites</a></li>
+		<li><a href="ajax/all.html">All</a></li>
+	</ul>
+</div>
+</div>
+"""
+
 def get_Info_content():
 # Todo: implement Etxxx brand and model (i have not)
 # Todo: add network infos
