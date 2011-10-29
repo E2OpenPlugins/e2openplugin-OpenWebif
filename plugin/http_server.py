@@ -154,7 +154,7 @@ class BuildAjaxPage(resource.Resource):
 		self.session = session
 		self.path = path
 
-	def render(self, request):
+	def render_GET(self, request):
 		basepath = get_BasePath()
 		request.setResponseCode(http.OK)
 		htmlout = self.get_body(self.path)
@@ -163,13 +163,18 @@ class BuildAjaxPage(resource.Resource):
 
 		return server.NOT_DONE_YET
 		
+
+#		return '<html><body>You submitted: %s</body></html>' % (request.args["s"][0])
+
+
+		
 	def getChild(self, path, request):
 		path = self.path + "/" + path
 		return BuildAjaxPage(self.session, path)
 		
 	def get_body(self, path):
 		if path.find('current.html') != -1:
-			return get_Ajax_current()
+			return get_Ajax_current(self.session)
 		elif path.find('bouquets.html') != -1:
 			return get_Ajax_bouquets()
 		elif path.find('providers.html') != -1:

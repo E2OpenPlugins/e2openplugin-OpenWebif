@@ -14,9 +14,19 @@ $(function() {
 			cache: false,
 			error: function( xhr, status, index, anchor ) {
 				$( anchor.hash ).html(
-					"Couldn't load this tab. We'll try to fix this as soon as possible." );
+					"[Ow_debug].... this tab is loading slowly" );
 			}
-		}
+		},
+		load: function(event, ui) {
+        		$('a', ui.panel).click(function() {
+				var splittedURL = this.href.split(/\/+/g); var path = splittedURL[splittedURL.length-1];
+				if (path == 'box_info.html') {
+	            			$(ui.panel).load(this.href);
+        	    			return false;
+				}
+        		});
+    		}
+		
 	});
 	$( "#dialog" ).dialog({
 		autoOpen: false,
