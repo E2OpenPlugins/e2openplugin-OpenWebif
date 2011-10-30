@@ -13,8 +13,9 @@ from Components.config import config
 from Tools.Directories import fileExists
 from twisted.internet import reactor
 from twisted.web import server, http, static, resource, error
-from ow_contents import get_Info_content, get_Ajax_Tabs, get_Ajax_current, get_Ajax_bouquets, get_Ajax_providers, get_Ajax_satellites, get_Ajax_all
-
+from ow_contents import get_Info_content
+from ow_ajax import get_Ajax_current, get_Ajax_bouquets, get_Ajax_providers, get_Ajax_satellites, get_Ajax_all, get_Ajax_bouquets_chan, get_Ajax_providers_chan
+from ow_tpl import tv_Tabs_Tpl
 
 global http_running
 http_running = ""
@@ -25,7 +26,6 @@ def buildRootTree(session):
 	root.putChild("ajax", BuildAjaxPage(session, basepath + "/www/html/ajax"))
 	root.putChild("js", static.File(basepath + "/www/html/js"))
 	root.putChild("css", static.File(basepath + "/www/html/css"))
-#	root.putChild("ajax", static.File(basepath + "/www/html/ajax"))
 	root.putChild("media", static.File("/media"))
 	return root
 
@@ -138,7 +138,7 @@ class BuildPage(resource.Resource):
 		
 	def get_Main_body(self, path):
 		if path.find('index.html') != -1:
-			return get_Ajax_Tabs()
+			return tv_Tabs_Tpl()
 		elif path.find('box_info.html') != -1:
 			htmlout = self.loadHtmlSource(self.path)
 			owinfo = get_Info_content()
@@ -155,6 +155,7 @@ class BuildAjaxPage(resource.Resource):
 		self.path = path
 
 	def render_GET(self, request):
+		self.args = request.args
 		basepath = get_BasePath()
 		request.setResponseCode(http.OK)
 		htmlout = self.get_body(self.path)
@@ -163,10 +164,6 @@ class BuildAjaxPage(resource.Resource):
 
 		return server.NOT_DONE_YET
 		
-
-#		return '<html><body>You submitted: %s</body></html>' % (request.args["s"][0])
-
-
 		
 	def getChild(self, path, request):
 		path = self.path + "/" + path
@@ -177,8 +174,12 @@ class BuildAjaxPage(resource.Resource):
 			return get_Ajax_current(self.session)
 		elif path.find('bouquets.html') != -1:
 			return get_Ajax_bouquets()
+		elif path.find('bouquets_chan.html') != -1:
+			return get_Ajax_bouquets_chan(self.args["id"][0])
 		elif path.find('providers.html') != -1:
 			return get_Ajax_providers()
+		elif path.find('providers_chan.html') != -1:
+			return get_Ajax_providers_chan(self.args["id"][0])
 		elif path.find('satellites.html') != -1:
 			return get_Ajax_satellites()
 		elif path.find('all.html') != -1:

@@ -19,8 +19,8 @@ $(function() {
 		},
 		load: function(event, ui) {
         		$('a', ui.panel).click(function() {
-				var splittedURL = this.href.split(/\/+/g); var path = splittedURL[splittedURL.length-1];
-				if (path == 'box_info.html') {
+				if ((/bouquets_chan/.test(this.href) == true) || (/providers_chan/.test(this.href) == true))
+				 {
 	            			$(ui.panel).load(this.href);
         	    			return false;
 				}
@@ -43,6 +43,6 @@ $(function() {
 		$('#dialog').dialog('open');
 		return false;
 	});
-
+	
 
 });
