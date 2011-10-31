@@ -70,10 +70,6 @@ def bouquet_chan_Tpl():
 	<p><a href="#" id="cur-tab-link"><img border='0' src='css/images/go-up.png' alt='' />  ... Back to Bouquets</a></p><hr />
 """
 
-def bouq_chan_link_Tpl(channel):
-	return """
-<a href='#' onClick=\"alert('Sorry, Zap function not yet implemented.');return false\">%s</a><br />
-""" % (channel)
 
 def provider_link_Tpl(idx, provider):
 	return """
@@ -93,9 +89,25 @@ def provider_chan_Tpl():
 	<p><a href="#" id="prov-tab-link"><img border='0' src='css/images/go-up.png' alt='' />  ... Back to Providers</a></p><hr />
 """
 
-def prov_chan_link_Tpl(channel):
+def satellite_chan_Tpl():
+	return """
+		<script type="text/javascript">
+		var $tabs = $('#tabs').tabs();
+		$('#sat-tab-link').click(function() {
+    		$tabs.tabs('select', 0); // Fixme: dirty hack to refresh tab. If someone find a better way please fix.
+		$tabs.tabs('select', 3); // Fixme
+    		return false;
+		});
+		</script>
+	<p><a href="#" id="sat-tab-link"><img border='0' src='css/images/go-up.png' alt='' />  ... Back to Satellites</a></p><hr />
+"""
+
+def satellite_link_Tpl(idx, satellite):
+	return """
+<a href='ajax/satellites_chan.html?id=%s'><img border='0' src='css/images/folder.png' alt='' />&nbsp;&nbsp;%s</a><br />
+""" % (idx, satellite)
+
+def channels_link_Tpl(channel):
 	return """
 <a href='#' onClick=\"alert('Sorry, Zap function not yet implemented.');return false\">%s</a><br />
 """ % (channel)
-
-

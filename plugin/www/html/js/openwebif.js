@@ -19,7 +19,7 @@ $(function() {
 		},
 		load: function(event, ui) {
         		$('a', ui.panel).click(function() {
-				if ((/bouquets_chan/.test(this.href) == true) || (/providers_chan/.test(this.href) == true))
+				if ((/bouquets_chan/.test(this.href) == true) || (/providers_chan/.test(this.href) == true) || (/satellites_chan/.test(this.href) == true))
 				 {
 	            			$(ui.panel).load(this.href);
         	    			return false;

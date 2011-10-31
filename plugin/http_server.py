@@ -14,7 +14,7 @@ from Tools.Directories import fileExists
 from twisted.internet import reactor
 from twisted.web import server, http, static, resource, error
 from ow_contents import get_Info_content
-from ow_ajax import get_Ajax_current, get_Ajax_bouquets, get_Ajax_providers, get_Ajax_satellites, get_Ajax_all, get_Ajax_bouquets_chan, get_Ajax_providers_chan
+from ow_ajax import get_Ajax_current, get_Ajax_bouquets, get_Ajax_providers, get_Ajax_satellites, get_Ajax_channel_list
 from ow_tpl import tv_Tabs_Tpl
 
 global http_running
@@ -175,15 +175,17 @@ class BuildAjaxPage(resource.Resource):
 		elif path.find('bouquets.html') != -1:
 			return get_Ajax_bouquets()
 		elif path.find('bouquets_chan.html') != -1:
-			return get_Ajax_bouquets_chan(self.args["id"][0])
+			return get_Ajax_channel_list("bouquet", self.args["id"][0])
 		elif path.find('providers.html') != -1:
 			return get_Ajax_providers()
 		elif path.find('providers_chan.html') != -1:
-			return get_Ajax_providers_chan(self.args["id"][0])
+			return get_Ajax_channel_list("provider", self.args["id"][0])
 		elif path.find('satellites.html') != -1:
 			return get_Ajax_satellites()
+		elif path.find('satellites_chan.html') != -1:
+			return get_Ajax_channel_list("satellite", self.args["id"][0])
 		elif path.find('all.html') != -1:
-			return get_Ajax_all()
+			return get_Ajax_channel_list("all", "all")
 		else:
 			return "Error. Page not found."
 		
