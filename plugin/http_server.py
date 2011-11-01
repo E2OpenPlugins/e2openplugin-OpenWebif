@@ -13,7 +13,8 @@ from Components.config import config
 from Tools.Directories import fileExists
 from twisted.internet import reactor
 from twisted.web import server, http, static, resource, error
-from ow_contents import get_Html_Info_content
+from Cheetah.Template import Template
+from ow_contents import get_Info_content
 from ow_ajax import get_Ajax_current, get_Ajax_bouquets, get_Ajax_providers, get_Ajax_satellites, get_Ajax_channel_list
 from ow_tpl import tv_Tabs_Tpl
 
@@ -144,8 +145,8 @@ class BuildPage(resource.Resource):
 			return tv_Tabs_Tpl()
 		elif path.find('box_info.html') != -1:
 			htmlout = self.loadHtmlSource(self.path)
-			owinfo = get_Html_Info_content()
-			return htmlout.format(**owinfo)
+			owinfo = get_Info_content()
+			return Template(htmlout, searchList=[owinfo])
 		else:
 			return self.loadHtmlSource(self.path)
 		

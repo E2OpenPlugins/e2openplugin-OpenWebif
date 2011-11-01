@@ -16,7 +16,6 @@ from Components.Network import iNetwork
 from Tools.DreamboxHardware import getFPVersion
 from Tools.Directories import fileExists
 from os import popen
-from ow_tpl import hddinfo_Tpl, tunersinfo_Tpl, ifacesinfo_Tpl
 
 def format_ip(ip):
 	if len(ip) != 4:
@@ -115,24 +114,4 @@ def get_Info_content():
 			"capacity": hdd.capacity(),
 			"free": free
 		})
-	return owinfo
-
-def get_Html_Info_content():
-	owinfo = get_Info_content()
-	
-	tuners = ""
-	for tuner in owinfo["tuners"]:
-		tuners += tunersinfo_Tpl(tuner["name"], tuner["type"])
-	owinfo["tuners"] = tuners
-	
-	ifaces = ""
-	for iface in owinfo["ifaces"]:
-		ifaces += ifacesinfo_Tpl(iface["name"], iface["ip"], iface["mask"], iface["gw"], iface["mac"], iface["dhcp"])
-	owinfo["ifaces"] = ifaces
-
-	hdd = ""
-	for hd in owinfo["hdd"]:
-		hdd += hddinfo_Tpl(hd["model"], hd["capacity"], hd["free"])
-	owinfo["hdd"] = hdd
-	
 	return owinfo

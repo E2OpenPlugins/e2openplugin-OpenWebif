@@ -26,32 +26,6 @@ def tv_Tabs_Tpl():
 </div>
 </div>
 """
-def hddinfo_Tpl(model, capacity, free):
-# For some strange reason string substitution doesn't work here
-	out = "<tr><td width='100%'><table cellspacing='0' class='infomain' ><tr><th colspan='2' class='infoHeader'>Hard disk model: " 
-	out += str(model) +"</th></tr><tr><td class='infoleft'>Capacity:</td><td class='inforight'>"
-	out += str(capacity) + "</td></tr><tr><td class='infoleft'>Free:</td><td class='inforight'>" 
-	out += str(free) + "</td></tr></table></td></tr>"
-	return out
-
-def tunersinfo_Tpl(typ, model):
-	return """
-<tr>
-	<td class='infoleft'>%s:</td>
-	<td class='inforight'>%s</td>
-</tr>
-""" % (typ, model)
-
-def ifacesinfo_Tpl(name, ip, mask, gw, mac, dhcp):
-	out = "<tr><td width='100%'><table cellspacing='0' class='infomain' >"
-	out += "<tr><th colspan='2' class='infoHeader'>Network interface: " + str(name) + "</th></tr>"
-	out += "<tr><td class='infoleft'>DHCP:</td><td class='inforight'>" + str(dhcp) + "</td></tr>"
-	out += "<tr><td class='infoleft'>Ip address:</td><td class='inforight'>" + str(ip) + "</td></tr>"
-	out += "<tr><td class='infoleft'>Subnet mask:</td><td class='inforight'>" + str(mask) + "</td></tr>"
-	out += "<tr><td class='infoleft'>Gateway:</td><td class='inforight'>" + str(gw) + "</td></tr>"
-	out += "<tr><td class='infoleft'>Mac address:</td><td class='inforight'>" + str(mac) + "</td></tr>"
-	out += "</table></td></tr>"
-	return out
 
 def current_tab_Tpl(name, provider, width, height):
 	return """
