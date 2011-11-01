@@ -146,6 +146,10 @@ class BuildPage(resource.Resource):
 		elif path.find('box_info.html') != -1:
 			htmlout = self.loadHtmlSource(self.path)
 			owinfo = get_Info_content()
+			if fileExists(get_BasePath() + "/www/html/css/images/boxes/" + owinfo["model"] + ".jpg"):
+				owinfo["boximage"] = owinfo["model"] + ".jpg"
+			else:
+				owinfo["boximage"] = "unknown.jpg"
 			return Template(htmlout, searchList=[owinfo])
 		else:
 			return self.loadHtmlSource(self.path)

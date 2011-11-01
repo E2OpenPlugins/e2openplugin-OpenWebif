@@ -329,6 +329,11 @@ color:#87BCF8;
 	text-align: center;
 }
 
+#info #box_image {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
 #info h1{
 
 	font-size: 14px;
