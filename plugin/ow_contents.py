@@ -12,15 +12,18 @@
 from Components.About import about
 from Components.NimManager import nimmanager
 from Components.Harddisk import harddiskmanager
+from Components.Network import iNetwork
 from Tools.DreamboxHardware import getFPVersion
 from Tools.Directories import fileExists
 from os import popen
-from ow_tpl import hddinfo_Tpl, tunersinfo_Tpl
+from ow_tpl import hddinfo_Tpl, tunersinfo_Tpl, ifacesinfo_Tpl
 
-
+def format_ip(ip):
+	if len(ip) != 4:
+		return None
+	return "%d.%d.%d.%d" % (ip[0], ip[1], ip[2], ip[3])
+	
 def get_Info_content():
-# Todo: add network infos
-
 	owinfo = {}
 
 	brand = "Dream Multimedia"
@@ -81,21 +84,55 @@ def get_Info_content():
 
 	owinfo['fp_version'] = str(fp_version)
 	
-	owinfo['tuners'] = ""
-	for nim in nimmanager.nimList():
-		parts = nim.split(':')
-		owinfo['tuners'] += tunersinfo_Tpl(parts[0], parts[1])
-	
-	owinfo['hdd'] = ""
+	owinfo['tuners'] = []
+	for i in range(0, nimmanager.getSlotCount()):
+		owinfo['tuners'].append({
+			"name": nimmanager.getNim(i).getSlotName(),
+			"type": nimmanager.getNimName(i) + " (" + nimmanager.getNim(i).getFriendlyType() + ")"
+		})
+
+	owinfo['ifaces'] = []
+	ifaces = iNetwork.getConfiguredAdapters()
+	for iface in ifaces:
+		owinfo['ifaces'].append({
+			"name": iNetwork.getAdapterName(iface),
+			"mac": iNetwork.getAdapterAttribute(iface, "mac"),
+			"dhcp": iNetwork.getAdapterAttribute(iface, "dhcp"),
+			"ip": format_ip(iNetwork.getAdapterAttribute(iface, "ip")),
+			"mask": format_ip(iNetwork.getAdapterAttribute(iface, "netmask")),
+			"gw": format_ip(iNetwork.getAdapterAttribute(iface, "gateway"))
+		})
+			
+	owinfo['hdd'] = []
 	for hdd in harddiskmanager.hdd:
-		model = "%s" % (hdd.model())
-		capacity = "%s" % (hdd.capacity())
 		if hdd.free() <= 1024:
 			free = "%i MB" % (hdd.free())
 		else:
 			free = float(hdd.free()) / float(1024)
 			free = "%.3f GB" % free
-		owinfo['hdd'] +=  hddinfo_Tpl(model, capacity, free)
-		
+		owinfo['hdd'].append({
+			"model": hdd.model(),
+			"capacity": hdd.capacity(),
+			"free": free
+		})
+	return owinfo
+
+def get_Html_Info_content():
+	owinfo = get_Info_content()
+	
+	tuners = ""
+	for tuner in owinfo["tuners"]:
+		tuners += tunersinfo_Tpl(tuner["name"], tuner["type"])
+	owinfo["tuners"] = tuners
+	
+	ifaces = ""
+	for iface in owinfo["ifaces"]:
+		ifaces += ifacesinfo_Tpl(iface["name"], iface["ip"], iface["mask"], iface["gw"], iface["mac"], iface["dhcp"])
+	owinfo["ifaces"] = ifaces
+
+	hdd = ""
+	for hd in owinfo["hdd"]:
+		hdd += hddinfo_Tpl(hd["model"], hd["capacity"], hd["free"])
+	owinfo["hdd"] = hdd
 	
 	return owinfo
