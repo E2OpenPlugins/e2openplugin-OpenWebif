@@ -19,7 +19,6 @@ from ow_tpl import hddinfo_Tpl, tunersinfo_Tpl
 
 
 def get_Info_content():
-# Todo: implement Etxxx brand and model (i have not)
 # Todo: add network infos
 
 	owinfo = {}
@@ -32,6 +31,11 @@ def get_Info_content():
 		brand = "Vuplus"
 		f = open("/proc/stb/info/vumodel",'r')
  		model = "Vu+ " + f.readline().strip()
+ 		f.close()
+	if fileExists("/proc/stb/info/boxtype"):
+		brand = "Clarke-Xtrend"
+		f = open("/proc/stb/info/boxtype",'r')
+ 		model = f.readline().strip()
  		f.close()
 	else:
 		f = open("/proc/stb/info/model",'r')
