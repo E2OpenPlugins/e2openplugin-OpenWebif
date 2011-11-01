@@ -39,7 +39,7 @@ def tunersinfo_Tpl(typ, model):
 <tr>
 	<td class='infoleft'>%s:</td>
 	<td class='inforight'>%s</td>
-</tr>"
+</tr>
 """ % (typ, model)
 
 def current_tab_Tpl(name, provider, width, height):
