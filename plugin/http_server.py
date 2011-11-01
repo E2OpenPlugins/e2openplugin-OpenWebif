@@ -17,6 +17,9 @@ from ow_contents import get_Info_content
 from ow_ajax import get_Ajax_current, get_Ajax_bouquets, get_Ajax_providers, get_Ajax_satellites, get_Ajax_channel_list
 from ow_tpl import tv_Tabs_Tpl
 
+import os
+import sys
+
 global http_running
 http_running = ""
 
@@ -190,7 +193,7 @@ class BuildAjaxPage(resource.Resource):
 			return "Error. Page not found."
 		
 def get_BasePath():
-	return "/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif"
+	return os.path.dirname(sys.modules[__name__].__file__)
 
 
 
