@@ -35,7 +35,7 @@ def get_Info_content():
 		f = open("/proc/stb/info/vumodel",'r')
  		model = "Vu+ " + f.readline().strip()
  		f.close()
-	if fileExists("/proc/stb/info/boxtype"):
+	elif fileExists("/proc/stb/info/boxtype"):
 		brand = "Clarke-Xtrend"
 		f = open("/proc/stb/info/boxtype",'r')
  		model = f.readline().strip()
