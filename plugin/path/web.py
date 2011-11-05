@@ -26,10 +26,10 @@ class WebPath(DynamicPath):
 
 	def getPage(self, path, request):
 		request.setHeader("content-type", "text/xml")
-		if path == "about.xml":
+		if path == "about":
 			info = getInfo()
 			service = getCurrentService(self.session)
-			return self.loadTemplate(self.getPath(path), {"info": info, "service": service})
+			return self.loadTemplate(self.getPath(path + ".xml"), {"info": info, "service": service})
 			
 		return None
 
