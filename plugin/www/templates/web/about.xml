@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<e2abouts>
+	<e2about>
+		<e2enigmaversion>$info.enigmaver</e2enigmaversion>
+		<e2imageversion>$info.imagever</e2imageversion>
+		<e2webifversion>$info.webifver</e2webifversion>
+		<e2fpversion>$info.fp_version</e2fpversion>
+		<e2model>$info.model</e2model>
+		#if $len($info.ifaces) > 0
+		<e2lanmac>$info.ifaces[0].mac</e2lanmac>
+		<e2landhcp>$info.ifaces[0].dhcp</e2landhcp>
+		<e2lanip>$info.ifaces[0].ip</e2lanip>
+		<e2lanmask>$info.ifaces[0].mask</e2lanmask>
+		<e2langw>$info.ifaces[0].gw</e2langw>
+		#end if
+		#if $len($info.hdd) > 0
+		<e2hddinfo>
+			<model>$info.hdd[0].model</model>
+			<capacity>$info.hdd[0].capacity</capacity>
+			<free>$info.hdd[0].free</free>
+		</e2hddinfo>
+		#end if
+		#if $len($info.tuners) > 0
+		<e2tunerinfo>
+			#for $tuner in $info.tuners
+			<e2nim>
+				<name>$tuner.name</name>
+				<type>$tuner.type</type>
+			</e2nim>
+			#end for
+		</e2tunerinfo>		
+		#end if
+		<e2servicename>$service.name</e2servicename>
+		<e2servicenamespace>$service.namespace</e2servicenamespace>
+		<e2serviceaspect>$service.aspect</e2serviceaspect>
+		<e2serviceprovider>$service.provider</e2serviceprovider>
+		<e2videowidth>$service.width</e2videowidth>
+		<e2videoheight>$service.height</e2videoheight>
+		<e2servicevideosize>${service.width}x${service.height}</e2servicevideosize>
+		<e2apid>$service.apid</e2apid>
+		<e2vpid>$service.vpid</e2vpid>
+		<e2pcrpid>$service.pcrpid</e2pcrpid>
+		<e2pmtpid>$service.pmtpid</e2pmtpid>
+		<e2txtpid>$service.txtpid</e2txtpid>
+		<e2tsid>$service.tsid</e2tsid>
+		<e2onid>$service.onid</e2onid>
+		<e2sid>$service.sid</e2sid>
+	</e2about>
+</e2abouts>

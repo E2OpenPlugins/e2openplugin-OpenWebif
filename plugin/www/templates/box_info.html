@@ -1,0 +1,136 @@
+<!-- box_info -->
+<div id="content_main">
+	<div id="info">
+		<h3>Box Info</h3>
+		<hr />
+		<img src="images/boxes/${boximage}" id="box_image" alt="box_info">
+		<hr />
+		<br/>
+		<table width="100%">
+			<tr>
+				<td width="100%">
+					<table cellspacing="0" class="infomain" >
+						<tr>
+							<th colspan="2" class="infoHeader">Box</th>
+						</tr>
+						<tr>
+							<td class="infoleft">Brand:</td>
+							<td class="inforight">$brand</td>
+						</tr>
+						<tr>
+							<td class="infoleft">Model:</td>
+							<td class="inforight">$model</td>
+						</tr>
+						<tr>
+							<td class="infoleft">Chipset:</td>
+							<td class="inforight">$chipset</td>
+						</tr>
+						<tr>
+							<td class="infoleft">Frontprocessor Version:</td>
+							<td class="inforight">$fp_version</td>
+						</tr>
+						<tr>
+							<td class="infoleft">Total Memory:</td>
+							<td class="inforight">$mem1</td>
+						</tr>
+						<tr>
+							<td class="infoleft">Free Memory:</td>
+							<td class="inforight">$mem2</td>
+						</tr>
+						<tr>
+							<td class="infoleft">Box Uptime:</td>
+							<td class="inforight">$uptime</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%">
+					<table cellspacing="0" class="infomain" >
+						<tr>
+							<th colspan="2" class="infoHeader">Software</th>
+						</tr>
+						<tr>
+							<td class="infoleft">Kernel version:</td>
+							<td class="inforight">$kernelver</td>
+						</tr>
+						<tr>
+							<td class="infoleft">Firmware version:</td>
+							<td class="inforight">$imagever</td>
+						</tr>
+						<tr>
+							<td class="infoleft">Gui version:</td>
+							<td class="inforight">$enigmaver</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td width="100%">
+					<table cellspacing="0" class="infomain" >
+						<tr>
+							<th colspan="2" class="infoHeader">Tuners</th>
+						</tr>
+						#for $tuner in $tuners
+						<tr>
+							<td class="infoleft">$tuner.name:</td>
+							<td class="inforight">$tuner.type</td>
+						</tr>
+						#end for
+					</table>
+				</td>
+			</tr>
+			#for $hd in $hdd
+			<tr>
+				<td width="100%">
+					<table cellspacing="0" class="infomain" >
+						<tr>
+							<th colspan="2" class="infoHeader">Hard disk model: $hd.model</th>
+						</tr>
+						<tr>
+							<td class="infoleft">Capacity:</td>
+							<td class="inforight">$hd.capacity</td>
+						</tr>
+						<tr>
+							<td class="infoleft">Free:</td>
+							<td class="inforight">$hd.free</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			#end for
+			#for $iface in $ifaces
+			<tr>
+				<td width="100%">
+					<table cellspacing="0" class="infomain" >
+						<tr>
+							<th colspan="2" class="infoHeader">Network interface: $iface.name</th>
+						</tr>
+						<tr>
+							<td class="infoleft">DHCP:</td>
+							<td class="inforight">$iface.dhcp</td>
+						</tr>
+						<tr>
+							<td class="infoleft">Ip address:</td>
+							<td class="inforight">$iface.ip</td>
+						</tr>
+						<tr>
+							<td class="infoleft">Subnet mask:</td>
+							<td class="inforight">$iface.mask</td>
+						</tr>
+						<tr>
+							<td class="infoleft">Gateway:</td>
+							<td class="inforight">$iface.gw</td>
+						</tr>
+						<tr>
+							<td class="infoleft">Mac address:</td>
+							<td class="inforight">$iface.mac</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			#end for
+		</table>
+	</div>
+</div>	
+<!-- /box_info -->

@@ -18,16 +18,16 @@ $(function() {
 			}
 		},
 		load: function(event, ui) {
-        		$('a', ui.panel).click(function() {
+			$('a', ui.panel).click(function() {
 				if ((/bouquets_chan/.test(this.href) == true) || (/providers_chan/.test(this.href) == true) || (/satellites_chan/.test(this.href) == true))
-				 {
-	            			$(ui.panel).load(this.href);
-        	    			return false;
+				{
+					$(ui.panel).load(this.href);
+					return false;
 				}
-        		});
-    		}
-		
+			});
+		}
 	});
+	
 	$( "#dialog" ).dialog({
 		autoOpen: false,
 		show: "fade",
@@ -38,6 +38,7 @@ $(function() {
 			} 
 		}
 	});
+	
 	// Dialog Link
 	$('#dialog_link').click(function(){
 		$('#dialog').dialog('open');

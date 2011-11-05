@@ -1,7 +1,7 @@
 ##############################################################################
-#                         <<< ow_contents >>>                           
+#                         <<< core.info >>>                                  
 #                                                                            
-#                        2011 E2OpenPlugins          
+#                        2011 E2OpenPlugins                                  
 #                                                                            
 #  This file is open source software; you can redistribute it and/or modify  
 #     it under the terms of the GNU General Public License version 2 as      
@@ -15,15 +15,30 @@ from Components.Harddisk import harddiskmanager
 from Components.Network import iNetwork
 from Tools.DreamboxHardware import getFPVersion
 from Tools.Directories import fileExists
-from os import popen
 
-def format_ip(ip):
+import os
+import sys
+
+def formatIp(ip):
 	if len(ip) != 4:
 		return None
 	return "%d.%d.%d.%d" % (ip[0], ip[1], ip[2], ip[3])
+
+def getBasePath():
+	path = os.path.dirname(sys.modules[__name__].__file__)
+	chunks = path.split("/")
+	chunks.pop()
+	return "/".join(chunks)
 	
-def get_Info_content():
-	owinfo = {}
+def getWebPublicPath(file = ""):
+	return getBasePath() + "/www/public/" + file
+	
+def getWebTemplatesPath(file = ""):
+	return getBasePath() + "/www/templates/" + file
+	
+def getInfo():
+	# TODO: get webif versione somewhere!
+	info = {}
 
 	brand = "Dream Multimedia"
 	model = "unknown"
@@ -44,26 +59,26 @@ def get_Info_content():
  		model = f.readline().strip()
  		f.close()
 
-	owinfo['brand'] = brand
-	owinfo['model'] = model
+	info['brand'] = brand
+	info['model'] = model
 
 	if fileExists("/proc/stb/info/chipset"):
 		f = open("/proc/stb/info/chipset",'r')
  		chipset = f.readline().strip()
  		f.close()
 		
-	owinfo['chipset'] = chipset
+	info['chipset'] = chipset
 	
 	f = open("/proc/meminfo",'r')
  	parts = f.readline().split(':')
-	owinfo['mem1'] = parts[1].strip()
+	info['mem1'] = parts[1].strip()
 	parts = f.readline().split(':')
-	owinfo['mem2'] = parts[1].strip()
+	info['mem2'] = parts[1].strip()
 	f.close()
 		
-	f = popen("uptime")
+	f = os.popen("uptime")
 	parts = f.readline().split(',')
-	owinfo['uptime'] = parts[0].strip()
+	info['uptime'] = parts[0].strip()
 	f.close()
 		
 	if fileExists("/etc/bhversion"):
@@ -73,45 +88,46 @@ def get_Info_content():
 	else:
 		imagever = about.getImageVersionString()
 		
-	owinfo['imagever'] = imagever
-	owinfo['enigmaver'] = about.getEnigmaVersionString()
-	owinfo['kernelver'] = about.getKernelVersionString()
+	info["webifver"] = "0.0.0"
+	info['imagever'] = imagever
+	info['enigmaver'] = about.getEnigmaVersionString()
+	info['kernelver'] = about.getKernelVersionString()
 	
 	fp_version = getFPVersion()
 	if fp_version is None:
 		fp_version = 0
 
-	owinfo['fp_version'] = str(fp_version)
+	info['fp_version'] = str(fp_version)
 	
-	owinfo['tuners'] = []
+	info['tuners'] = []
 	for i in range(0, nimmanager.getSlotCount()):
-		owinfo['tuners'].append({
+		info['tuners'].append({
 			"name": nimmanager.getNim(i).getSlotName(),
 			"type": nimmanager.getNimName(i) + " (" + nimmanager.getNim(i).getFriendlyType() + ")"
 		})
 
-	owinfo['ifaces'] = []
+	info['ifaces'] = []
 	ifaces = iNetwork.getConfiguredAdapters()
 	for iface in ifaces:
-		owinfo['ifaces'].append({
+		info['ifaces'].append({
 			"name": iNetwork.getAdapterName(iface),
 			"mac": iNetwork.getAdapterAttribute(iface, "mac"),
 			"dhcp": iNetwork.getAdapterAttribute(iface, "dhcp"),
-			"ip": format_ip(iNetwork.getAdapterAttribute(iface, "ip")),
-			"mask": format_ip(iNetwork.getAdapterAttribute(iface, "netmask")),
-			"gw": format_ip(iNetwork.getAdapterAttribute(iface, "gateway"))
+			"ip": formatIp(iNetwork.getAdapterAttribute(iface, "ip")),
+			"mask": formatIp(iNetwork.getAdapterAttribute(iface, "netmask")),
+			"gw": formatIp(iNetwork.getAdapterAttribute(iface, "gateway"))
 		})
 			
-	owinfo['hdd'] = []
+	info['hdd'] = []
 	for hdd in harddiskmanager.hdd:
 		if hdd.free() <= 1024:
 			free = "%i MB" % (hdd.free())
 		else:
 			free = float(hdd.free()) / float(1024)
 			free = "%.3f GB" % free
-		owinfo['hdd'].append({
+		info['hdd'].append({
 			"model": hdd.model(),
 			"capacity": hdd.capacity(),
 			"free": free
 		})
-	return owinfo
+	return info

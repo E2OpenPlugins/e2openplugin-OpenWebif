@@ -1,7 +1,7 @@
 ##############################################################################
-#                         <<< OpenWebif >>>                           
+#                         <<< OpenWebif >>>                                  
 #                                                                            
-#                        2011 E2OpenPlugins          
+#                        2011 E2OpenPlugins                                  
 #                                                                            
 #  This file is open source software; you can redistribute it and/or modify  
 #     it under the terms of the GNU General Public License version 2 as      
@@ -11,7 +11,7 @@
 #
 #
 #
-# Authors: meo <lupomeo@hotmail.com>, ....
+# Authors: meo <lupomeo@hotmail.com>, skaman <sandro@skanetwork.com>
 # Graphics: .....
 
 from Screens.Screen import Screen
