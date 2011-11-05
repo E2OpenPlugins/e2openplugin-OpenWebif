@@ -29,8 +29,6 @@ class WebPath(DynamicPath):
 		if path == "about.xml":
 			info = getInfo()
 			service = getCurrentService(self.session)
-			print info
-			print service
 			return self.loadTemplate(self.getPath(path), {"info": info, "service": service})
 			
 		return None
