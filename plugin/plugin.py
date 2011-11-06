@@ -1,12 +1,12 @@
 ##############################################################################
-#                         <<< OpenWebif >>>                                  
-#                                                                            
-#                        2011 E2OpenPlugins                                  
-#                                                                            
-#  This file is open source software; you can redistribute it and/or modify  
-#     it under the terms of the GNU General Public License version 2 as      
-#               published by the Free Software Foundation.                   
-#                                                                            
+#                         <<< OpenWebif >>>                                  #
+#                                                                            #
+#                        2011 E2OpenPlugins                                  #
+#                                                                            #
+#  This file is open source software; you can redistribute it and/or modify  #
+#     it under the terms of the GNU General Public License version 2 as      #
+#               published by the Free Software Foundation.                   #
+#                                                                            #
 ##############################################################################
 #
 #
@@ -22,7 +22,7 @@ from Components.Label import Label
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo
 
-from http_server import HttpdStart, HttpdStop, HttpdRestart
+from httpserver import HttpdStart, HttpdStop, HttpdRestart
 
 config.OpenWebif = ConfigSubsection()
 config.OpenWebif.enabled = ConfigYesNo(default=True)

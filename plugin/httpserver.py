@@ -1,35 +1,33 @@
 ##############################################################################
-#                         <<< http_server >>>                                
-#                                                                            
-#                        2011 E2OpenPlugins                                  
-#                                                                            
-#  This file is open source software; you can redistribute it and/or modify  
-#     it under the terms of the GNU General Public License version 2 as      
-#               published by the Free Software Foundation.                   
-#                                                                            
+#                        2011 E2OpenPlugins                                  #
+#                                                                            #
+#  This file is open source software; you can redistribute it and/or modify  #
+#     it under the terms of the GNU General Public License version 2 as      #
+#               published by the Free Software Foundation.                   #
+#                                                                            #
 ##############################################################################
 
 from Components.config import config
 from twisted.internet import reactor
 from twisted.web import server, http, static, resource, error
 
-from core.info import getBasePath, getWebPublicPath
+#from core.info import getBasePath, getWebPublicPath
 
-from path.root import RootPath
-from path.ajax import AjaxPath
-from path.web import WebPath
+from controllers.root import RootController
+#from path.ajax import AjaxPath
+#from path.web import WebPath
 
 global http_running
 http_running = ""
 
 def buildRootTree(session):
-	basepath = getBasePath()
-	root = RootPath(session)
-	root.putChild("ajax", AjaxPath(session))
-	root.putChild("web", WebPath(session))
-	root.putChild("js", static.File(getWebPublicPath() + "/js"))
-	root.putChild("css", static.File(getWebPublicPath() + "/css"))
-	root.putChild("images", static.File(getWebPublicPath() + "/images"))
+	#basepath = getBasePath()
+	root = RootController(session)
+	#root.putChild("ajax", AjaxPath(session))
+	#root.putChild("web", WebPath(session))
+	#root.putChild("js", static.File(getWebPublicPath() + "/js"))
+	#root.putChild("css", static.File(getWebPublicPath() + "/css"))
+	#root.putChild("images", static.File(getWebPublicPath() + "/images"))
 	return root
 
 def HttpdStart(session):

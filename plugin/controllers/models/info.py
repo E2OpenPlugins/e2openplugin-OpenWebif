@@ -1,12 +1,10 @@
 ##############################################################################
-#                         <<< core.info >>>                                  
-#                                                                            
-#                        2011 E2OpenPlugins                                  
-#                                                                            
-#  This file is open source software; you can redistribute it and/or modify  
-#     it under the terms of the GNU General Public License version 2 as      
-#               published by the Free Software Foundation.                   
-#                                                                            
+#                        2011 E2OpenPlugins                                  #
+#                                                                            #
+#  This file is open source software; you can redistribute it and/or modify  #
+#     it under the terms of the GNU General Public License version 2 as      #
+#               published by the Free Software Foundation.                   #
+#                                                                            #
 ##############################################################################
 
 from Components.About import about
@@ -28,13 +26,14 @@ def getBasePath():
 	path = os.path.dirname(sys.modules[__name__].__file__)
 	chunks = path.split("/")
 	chunks.pop()
+	chunks.pop()
 	return "/".join(chunks)
 	
-def getWebPublicPath(file = ""):
-	return getBasePath() + "/www/public/" + file
+def getPublicPath(file = ""):
+	return getBasePath() + "/public/" + file
 	
-def getWebTemplatesPath(file = ""):
-	return getBasePath() + "/www/templates/" + file
+def getViewsPath(file = ""):
+	return getBasePath() + "/controllers/views/" + file
 	
 def getInfo():
 	# TODO: get webif versione somewhere!
