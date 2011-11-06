@@ -7,7 +7,7 @@
 #                                                                            #
 ##############################################################################
 
-from models.services import getCurrentService, getBouquets, getChannels, getSatellites
+from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders
 from base import BaseController
 
 class AjaxController(BaseController):
@@ -19,38 +19,27 @@ class AjaxController(BaseController):
 		return getCurrentService(self.session)
 		
 	def P_bouquets(self, request):
-		return getBouquets();
-		
-	def P_bouquetschan(self, request):
-		return getBouquets();
+		if "id" in request.args.keys():
+			bouquets = getBouquets(request.args["id"][0])
+		else:
+			bouquets = getBouquets()
+		return bouquets
 		
 	def P_providers(self, request):
 		if "id" in request.args.keys():
-			channels = getChannels(request.args["id"][0])
+			providers = getProviders(request.args["id"][0])
 		else:
-			channels = getChannels()
-		return channels
-		
-	def P_providerschan(self, request):
-		if "id" in request.args.keys():
-			channels = getChannels(request.args["id"][0])
-		else:
-			channels = getChannels()
-		return channels
-
-	def P_satelliteschan(self, request):
-		if "id" in request.args.keys():
-			channels = getChannels(request.args["id"][0])
-		else:
-			channels = getChannels()
-		return channels
-		
-	def P_all(self, request):
-		if "id" in request.args.keys():
-			channels = getChannels(request.args["id"][0])
-		else:
-			channels = getChannels()
-		return channels
+			providers = getProviders()
+		return providers
 		
 	def P_satellites(self, request):
 		return getSatellites()
+	
+		
+	def P_channels(self, request):
+		if "id" in request.args.keys():
+			channels = getChannels(request.args["id"][0])
+		else:
+			channels = getChannels()
+		return channels
+		

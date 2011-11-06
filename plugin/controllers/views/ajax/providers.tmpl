@@ -1,7 +1,7 @@
-#import urllib
-#for $channel in $channels
-	<a href='ajax/providerschan?id=$urllib.quote_plus($channel[0])'>
-		<img border='0' src='images/folder.png' alt='' />&nbsp;&nbsp;$channel[1]
+#from urllib import quote
+#for $provider in $providers
+	<a href="#" onclick="load_tvcontent('ajax/channels?id=$quote($provider[0])'); return false">
+		<img border='0' src='images/folder.png' alt='' />&nbsp;&nbsp;$provider[1]
 	</a>
 	<br />
 #end for

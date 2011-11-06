@@ -1,6 +1,6 @@
-#import urllib
+#from urllib import quote
 #for $bouquet in $bouquets
-	<a href='ajax/bouquetschan'>
+	<a href="#" onclick="load_tvcontent('ajax/channels?id=$quote($bouquet[0])'); return false">
 		<img border='0' src='images/folder.png' alt='' />&nbsp;&nbsp;$bouquet[1]
 	</a>
 	<br />

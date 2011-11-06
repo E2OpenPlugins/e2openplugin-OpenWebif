@@ -43,6 +43,13 @@ def getBouquets():
 	bouquets = services and services.getContent("SN", True)
 	return { "bouquets": bouquets }
 	
+def getProviders():
+	s_type = service_types_tv
+	serviceHandler = eServiceCenter.getInstance()
+	services = serviceHandler.list(eServiceReference('%s FROM PROVIDERS ORDER BY name'%(s_type)))
+	providers = services and services.getContent("SN", True)	
+	return { "providers": providers }
+	
 def getChannels(idb=""):
 	s_type = service_types_tv
 	if idb == "":

@@ -8,26 +8,13 @@
  *--------------------------------------------------------------------------*/
 
 $.fx.speeds._default = 1000;
+var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>"
 $(function() {
-	$( "#tabs" ).tabs({
-		ajaxOptions: {
-			cache: false,
-			error: function( xhr, status, index, anchor ) {
-				$( anchor.hash ).html(
-					"[Ow_debug].... this tab is loading slowly" );
-			}
-		},
-		load: function(event, ui) {
-			$('a', ui.panel).click(function() {
-				if ((/bouquets_chan/.test(this.href) == true) || (/providers_chan/.test(this.href) == true) || (/satellites_chan/.test(this.href) == true))
-				{
-					$(ui.panel).load(this.href);
-					return false;
-				}
-			});
-		}
-	});
 	
+
+	$( "#tvbutton" ).buttonset();
+	
+
 	$( "#dialog" ).dialog({
 		autoOpen: false,
 		show: "fade",
@@ -38,12 +25,37 @@ $(function() {
 			} 
 		}
 	});
-	
+
 	// Dialog Link
 	$('#dialog_link').click(function(){
 		$('#dialog').dialog('open');
 		return false;
 	});
 	
+	$('#tvbutton0').click(function(){
+		 $("#tvcontent").load("ajax/current");
+	});
+	$('#tvbutton1').click(function(){
+		 $("#tvcontent").html(loadspinner).load("ajax/bouquets");
+	});
+	$('#tvbutton2').click(function(){
+		 $("#tvcontent").html(loadspinner).load("ajax/providers");
+	});
+	$('#tvbutton3').click(function(){
+		 $("#tvcontent").load("ajax/satellites");
+	});
+	$('#tvbutton4').click(function(){
+		 $("#tvcontent").html(loadspinner).load("ajax/channels");
+	});
 
 });
+
+function load_tvcontent(url) {
+	$("#tvcontent").load(url);
+	return false;
+}
+
+function load_tvcontent_spin(url) {
+	$("#tvcontent").html(loadspinner).load(url);
+	return false;
+}
