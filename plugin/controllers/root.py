@@ -7,9 +7,8 @@
 #                                                                            #
 ##############################################################################
 
-from Tools.Directories import fileExists
 
-from models.info import getInfo, getBasePath, getPublicPath, getViewsPath
+from models.info import getBasePath, getPublicPath, getViewsPath
 from base import BaseController
 from web import WebController
 from ajax import AjaxController
@@ -36,17 +35,6 @@ class RootController(BaseController):
 	# example http://boxip/index => P_index
 	def P_index(self, request):
 		return {}
-		
-	def P_about(self, request):
-		return {}
-		
-	def P_boxinfo(self, request):
-		info = getInfo()
-		if fileExists(getPublicPath("/images/boxes/" + info["model"] + ".jpg")):
-			info["boximage"] = info["model"] + ".jpg"
-		else:
-			info["boximage"] = "unknown.jpg"
-		return info
 		
 	def P_workinprogress(self, request):
 		return {}

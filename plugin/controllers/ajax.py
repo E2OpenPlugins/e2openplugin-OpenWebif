@@ -7,7 +7,10 @@
 #                                                                            #
 ##############################################################################
 
+from Tools.Directories import fileExists
+
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders
+from models.info import getInfo, getPublicPath
 from base import BaseController
 
 class AjaxController(BaseController):
@@ -35,5 +38,14 @@ class AjaxController(BaseController):
 			channels = getChannels()
 		return channels
 		
+	def P_about(self, request):
+		return {}
 	
+	def P_boxinfo(self, request):
+		info = getInfo()
+		if fileExists(getPublicPath("/images/boxes/" + info["model"] + ".jpg")):
+			info["boximage"] = info["model"] + ".jpg"
+		else:
+			info["boximage"] = "unknown.jpg"
+		return info
 

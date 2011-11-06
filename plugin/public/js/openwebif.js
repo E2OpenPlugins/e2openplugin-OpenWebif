@@ -59,3 +59,8 @@ function load_tvcontent_spin(url) {
 	$("#tvcontent").html(loadspinner).load(url);
 	return false;
 }
+
+function load_maincontent(url) {
+	$("#content").load(url);
+	return false;
+}
