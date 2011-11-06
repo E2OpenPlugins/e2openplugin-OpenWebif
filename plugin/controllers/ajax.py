@@ -19,18 +19,10 @@ class AjaxController(BaseController):
 		return getCurrentService(self.session)
 		
 	def P_bouquets(self, request):
-		if "id" in request.args.keys():
-			bouquets = getBouquets(request.args["id"][0])
-		else:
-			bouquets = getBouquets()
-		return bouquets
+		return getBouquets()
 		
 	def P_providers(self, request):
-		if "id" in request.args.keys():
-			providers = getProviders(request.args["id"][0])
-		else:
-			providers = getProviders()
-		return providers
+		return getProviders()
 		
 	def P_satellites(self, request):
 		return getSatellites()
@@ -43,3 +35,5 @@ class AjaxController(BaseController):
 			channels = getChannels()
 		return channels
 		
+	
+
