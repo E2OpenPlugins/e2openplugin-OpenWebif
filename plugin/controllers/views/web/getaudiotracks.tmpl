@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<e2audiotracklist>
+	#for $track in $tracklist
+		<e2audiotrack>
+			<e2audiotrackdescription>$track.description</e2audiotrackdescription>
+			<e2audiotrackid>$track.index</e2audiotrackid>
+			<e2audiotrackpid>$track.pid</e2audiotrackpid>
+			<e2audiotrackactive>$track.active</e2audiotrackactive>
+		</e2audiotrack>
+	#end for
+</e2audiotracklist>

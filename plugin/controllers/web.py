@@ -10,6 +10,7 @@
 from models.info import getInfo
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
+from models.audiotrack import getAudioTracks, setAudioTrack
 from base import BaseController
 
 class WebController(BaseController):
@@ -58,3 +59,14 @@ class WebController(BaseController):
 			volume["result"] = False
 			volume["message"] = "Unknown Volume command %s" % request.args["set"][0]
 		return volume
+		
+	def P_getaudiotracks(self, request):
+		return getAudioTracks(self.session)
+	
+	def P_selectaudiotrack(self, request):
+		try:
+			id = int(request.args["id"][0])
+		except Exception, e:
+			id = -1
+			
+		return setAudioTrack(self.session, id)
