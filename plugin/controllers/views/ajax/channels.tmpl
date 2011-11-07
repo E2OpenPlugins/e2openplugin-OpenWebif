@@ -1,10 +1,12 @@
+#from urllib import quote
 #for $channel in $channels
 	#if $channel.has_key('now_title')
-		<a href='#' onClick="alert('Sorry, Zap function not yet implemented.');return false">$channel.name</a><br />
+		
+		<a href="#" onclick="load_tvcontent('web/zap?sRef=$quote($channel.ref)'); return false">$channel.name</a><br />
 		<div class="channel_left">$channel.now_begin - $channel.now_end &nbsp;&nbsp;&nbsp;$channel.now_title</div><div class="channel_right">+$channel.now_left min</div>
 		<div class="meter-wrap"><div class="meter-value" style="background-color: #F68014; width: ${channel.progress}px;"></div></div>
 		<div  class="channel_desc">$channel.next_begin - $channel.next_end &nbsp;&nbsp;&nbsp;$channel.next_title                +$channel.next_duration min</div>
 	#else
-		<a href='#' onClick="alert('Sorry, Zap function not yet implemented.');return false">$channel.name</a><br />
+		<a href="#" onclick="load_tvcontent('web/zap?sRef=$quote($channel.ref)'); return false">$channel.name</a><br />
 	#end if
 #end for

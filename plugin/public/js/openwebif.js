@@ -64,3 +64,4 @@ function load_maincontent(url) {
 	$("#content").load(url);
 	return false;
 }
+
