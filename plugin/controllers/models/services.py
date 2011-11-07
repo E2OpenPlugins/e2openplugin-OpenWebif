@@ -147,7 +147,6 @@ def getChannels(idb=""):
 				chan['next_begin'] =  strftime("%H:%M", (localtime(nextevent[0][1])))
 				chan['next_end'] = strftime("%H:%M",(localtime(nextevent[0][1] + nextevent[0][2])))
 				chan['next_duration'] = strftime("%M", (localtime(nextevent[0][2])))
-#				out += channels_box_Tpl(title, begin, end, tleft, progress, title2, begin2, end2, duration2)
 			
 			ret.append(chan)
 			
