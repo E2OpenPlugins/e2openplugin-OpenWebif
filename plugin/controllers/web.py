@@ -12,6 +12,7 @@ from models.services import getCurrentService, getBouquets, getChannels, getSate
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl
+from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
 from base import BaseController
 
 class WebController(BaseController):
@@ -74,17 +75,14 @@ class WebController(BaseController):
 		
 	def P_zap(self, request):
 		if "sRef" not in request.args.keys():
-			zap = {
+			return {
 				"result": False,
 				"message": "Missing mandatory parameter 'sRef'"
 			}
-		else:
-			if "title" in request.args.keys():
-				zap = zapService(self.session, request.args["sRef"][0], request.args["title"][0])
-			else:
-				zap = zapService(self.session, request.args["sRef"][0])
-				
-		return zap
+		if "title" in request.args.keys():
+			return zapService(self.session, request.args["sRef"][0], request.args["title"][0])
+		
+		return zapService(self.session, request.args["sRef"][0])
 		
 	def P_remotecontrol(self, request):
 		if "command" not in request.args.keys():
@@ -92,22 +90,64 @@ class WebController(BaseController):
 				"result": False,
 				"message": "Missing mandatory parameter 'command'"
 			}
-		else:
-			id = -1
-			try:
-				id = int(request.args["command"][0])
-			except Exception, e:
-				return {
-					"result": False,
-					"message": "The parameter 'command' must be a number"
-				}
-				
-			type = ""
-			rcu = ""
-			if "type" in request.args.keys():
-				type = request.args["type"][0]
-				
-			if "rcu" in request.args.keys():
-				rcu = request.args["rcu"][0]
-				
-			return remoteControl(id, type, rcu)
+
+		id = -1
+		try:
+			id = int(request.args["command"][0])
+		except Exception, e:
+			return {
+				"result": False,
+				"message": "The parameter 'command' must be a number"
+			}
+			
+		type = ""
+		rcu = ""
+		if "type" in request.args.keys():
+			type = request.args["type"][0]
+			
+		if "rcu" in request.args.keys():
+			rcu = request.args["rcu"][0]
+			
+		return remoteControl(id, type, rcu)
+			
+	def P_getlocations(self, request):
+		return getLocations()
+		
+	def P_getcurrlocation(self, request):
+		return getCurrentLocation()
+		
+	def P_addlocation(self, request):
+		if "dirname" not in request.args.keys():
+			return {
+				"result": False,
+				"message": "Missing mandatory parameter 'dirname'"
+			}
+			
+		dirname = request.args["dirname"][0]
+		if len(dirname) == 0:
+			return {
+				"result": False,
+				"message": "The parameter 'dirname' can't be empty"
+			}
+			
+		create = False
+		if "createFolder" in request.args.keys():
+			create = request.args["createFolder"][0] == "1"
+			
+		return addLocation(dirname, create)
+			
+	def P_removelocation(self, request):
+		if "dirname" not in request.args.keys():
+			return {
+				"result": False,
+				"message": "Missing mandatory parameter 'dirname'"
+			}
+			
+		dirname = request.args["dirname"][0]
+		if len(dirname) == 0:
+			return {
+				"result": False,
+				"message": "The parameter 'dirname' can't be empty"
+			}
+			
+		return removeLocation(dirname)
