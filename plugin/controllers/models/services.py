@@ -7,7 +7,8 @@
 #                                                                            #
 ##############################################################################
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
-from enigma import eServiceCenter, eServiceReference, iServiceInformation
+from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache
+from time import localtime, strftime
 
 def getServiceInfoString(info, what):
 	v = info.getInfo(what)
@@ -70,19 +71,6 @@ def getProviders():
 	providers = services and services.getContent("SN", True)	
 	return { "providers": providers }
 	
-def getChannels(idb=""):
-	s_type = service_types_tv
-	if idb == "":
-		idb = '%s ORDER BY name'%(s_type)
-
-	serviceHandler = eServiceCenter.getInstance()
-	services = serviceHandler.list(eServiceReference(idb))
-	channels = services and services.getContent("SN", True)	
-	ret = []
-	for channel in channels:
-		if not channel[0].startswith("1:64:"):
-			ret.append(channel)
-	return { "channels": ret }
 
 def getSatellites():
 	ret = []
@@ -130,3 +118,40 @@ def getSatellites():
 
 	return { "satellites": ret }
 	
+	
+def getChannels(idb=""):
+	ret = []
+	s_type = service_types_tv
+	epgcache = eEPGCache.getInstance()
+	if idb == "":
+		idb = '%s ORDER BY name'%(s_type)
+
+	serviceHandler = eServiceCenter.getInstance()
+	services = serviceHandler.list(eServiceReference(idb))
+	channels = services and services.getContent("SN", True)	
+	for channel in channels:
+		if not channel[0].startswith("1:64:"):
+			chan = {}
+			chan['ref'] = channel[0]
+			chan['name'] = channel[1]
+			nowevent = epgcache.lookupEvent(['TBDCSX', (channel[0], 0, -1)])
+			if nowevent[0][0] is not None:
+				chan['now_title'] = nowevent[0][0]
+				chan['now_begin'] =  strftime("%H:%M", (localtime(nowevent[0][1])))
+				chan['now_end'] = strftime("%H:%M",(localtime(nowevent[0][1] + nowevent[0][2])))
+				chan['now_left'] = strftime("%M",(localtime((nowevent[0][1] + nowevent[0][2]) - nowevent[0][3])))
+				chan['progress'] = int(((nowevent[0][3] - nowevent[0][1]) * 100 / nowevent[0][2]) )
+				chan['description'] = nowevent[0][4]
+				nextevent = epgcache.lookupEvent(['TBDX', (channel[0], +1, -1)])
+				chan['next_title'] = nextevent[0][0]
+				chan['next_begin'] =  strftime("%H:%M", (localtime(nextevent[0][1])))
+				chan['next_end'] = strftime("%H:%M",(localtime(nextevent[0][1] + nextevent[0][2])))
+				chan['next_duration'] = strftime("%M", (localtime(nextevent[0][2])))
+#				out += channels_box_Tpl(title, begin, end, tleft, progress, title2, begin2, end2, duration2)
+			
+			ret.append(chan)
+			
+	return { "channels": ret }
+		
+
+
