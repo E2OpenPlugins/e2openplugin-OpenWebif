@@ -18,23 +18,43 @@ def getServiceInfoString(info, what):
 	return v
 
 def getCurrentService(session):
-	info = session.nav.getCurrentService().info()
-	return {
-		"name": info.getName(),
-		"namespace": getServiceInfoString(info, iServiceInformation.sNamespace),
-		"aspect": getServiceInfoString(info, iServiceInformation.sAspect),
-		"provider": getServiceInfoString(info, iServiceInformation.sProvider),
-		"width": getServiceInfoString(info, iServiceInformation.sVideoWidth),
-		"height": getServiceInfoString(info, iServiceInformation.sVideoHeight),
-		"apid": getServiceInfoString(info, iServiceInformation.sAudioPID),
-		"vpid": getServiceInfoString(info, iServiceInformation.sVideoPID),
-		"pcrpid": getServiceInfoString(info, iServiceInformation.sPCRPID),
-		"pmtpid": getServiceInfoString(info, iServiceInformation.sPMTPID),
-		"txtpid": getServiceInfoString(info, iServiceInformation.sTXTPID),
-		"tsid": getServiceInfoString(info, iServiceInformation.sTSID),
-		"onid": getServiceInfoString(info, iServiceInformation.sONID),
-		"sid": getServiceInfoString(info, iServiceInformation.sSID)
-	}
+	try:
+		info = session.nav.getCurrentService().info()
+		return {
+			"result": True,
+			"name": info.getName(),
+			"namespace": getServiceInfoString(info, iServiceInformation.sNamespace),
+			"aspect": getServiceInfoString(info, iServiceInformation.sAspect),
+			"provider": getServiceInfoString(info, iServiceInformation.sProvider),
+			"width": getServiceInfoString(info, iServiceInformation.sVideoWidth),
+			"height": getServiceInfoString(info, iServiceInformation.sVideoHeight),
+			"apid": getServiceInfoString(info, iServiceInformation.sAudioPID),
+			"vpid": getServiceInfoString(info, iServiceInformation.sVideoPID),
+			"pcrpid": getServiceInfoString(info, iServiceInformation.sPCRPID),
+			"pmtpid": getServiceInfoString(info, iServiceInformation.sPMTPID),
+			"txtpid": getServiceInfoString(info, iServiceInformation.sTXTPID),
+			"tsid": getServiceInfoString(info, iServiceInformation.sTSID),
+			"onid": getServiceInfoString(info, iServiceInformation.sONID),
+			"sid": getServiceInfoString(info, iServiceInformation.sSID)
+		}
+	except Exception, e:
+		return {
+			"result": False,
+			"name": "",
+			"namespace": "",
+			"aspect": 0,
+			"provider": "",
+			"width": 0,
+			"height": 0,
+			"apid": 0,
+			"vpid": 0,
+			"pcrpid": 0,
+			"pmtpid": 0,
+			"txtpid": 0,
+			"tsid": 0,
+			"onid": 0,
+			"sid": 0
+		}
 
 def getBouquets():
 	s_type = service_types_tv
