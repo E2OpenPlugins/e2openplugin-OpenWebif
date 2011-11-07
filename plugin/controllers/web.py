@@ -11,6 +11,7 @@ from models.info import getInfo
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
+from models.control import zapService, remoteControl
 from base import BaseController
 
 class WebController(BaseController):
@@ -70,3 +71,43 @@ class WebController(BaseController):
 			id = -1
 			
 		return setAudioTrack(self.session, id)
+		
+	def P_zap(self, request):
+		if "sRef" not in request.args.keys():
+			zap = {
+				"result": False,
+				"message": "Missing mandatory parameter 'sRef'"
+			}
+		else:
+			if "title" in request.args.keys():
+				zap = zapService(self.session, request.args["sRef"][0], request.args["title"][0])
+			else:
+				zap = zapService(self.session, request.args["sRef"][0])
+				
+		return zap
+		
+	def P_remotecontrol(self, request):
+		if "command" not in request.args.keys():
+			return {
+				"result": False,
+				"message": "Missing mandatory parameter 'command'"
+			}
+		else:
+			id = -1
+			try:
+				id = int(request.args["command"][0])
+			except Exception, e:
+				return {
+					"result": False,
+					"message": "The parameter 'command' must be a number"
+				}
+				
+			type = ""
+			rcu = ""
+			if "type" in request.args.keys():
+				type = request.args["type"][0]
+				
+			if "rcu" in request.args.keys():
+				rcu = request.args["rcu"][0]
+				
+			return remoteControl(id, type, rcu)
