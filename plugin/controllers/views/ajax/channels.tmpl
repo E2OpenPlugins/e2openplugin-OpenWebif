@@ -1,12 +1,48 @@
 #from urllib import quote
 #for $channel in $channels
-	#if $channel.has_key('now_title')
-		
-		<a href="#" onclick="webapi_execute('web/zap?sRef=$quote($channel.ref)'); return false">$channel.name</a><br />
-		<div class="channel_left">$channel.now_begin - $channel.now_end &nbsp;&nbsp;&nbsp;$channel.now_title</div><div class="channel_right">+$channel.now_left min</div>
-		<div class="meter-wrap"><div class="meter-value" style="background-color: #F68014; width: ${channel.progress}px;"></div></div>
-		<div  class="channel_desc">$channel.next_begin - $channel.next_end &nbsp;&nbsp;&nbsp;$channel.next_title                +$channel.next_duration min</div>
-	#else
-		<a href="#" onclick="webapi_execute('web/zap?sRef=$quote($channel.ref)'); return false">$channel.name</a><br />
-	#end if
+			<table width="100%">
+				<tbody>
+					<tr class="channel_tr">	
+						<div class="channel_left">
+							<a href="#" onclick="webapi_execute('web/zap?sRef=$quote($channel.ref)'); return false">$channel.name</a><br />	
+						</div>
+						<div class="channel_right">
+							<a href='#' onClick="alert('Sorry, epg function not yet implemented.');return false">
+							<img src="../images/ico_epg.png" title="Show EPG for $channel.name" border="0">
+							</a>
+							<a href='#' onClick="alert('Sorry, stream function not yet implemented.');return false">
+							<img align="top" src="../images/ico_stream.png" title="Stream $channel.name" border="0">
+							</a>
+						</div>
+					
+#if $channel.has_key('now_title')
+					
+						<div class="channel_left">
+							$channel.now_begin - $channel.now_end &nbsp;&nbsp;&nbsp;$channel.now_title
+						</div>
+						<div class="channel_right">
+							+$channel.now_left min
+							<a href='#' onClick="alert('Sorry, description not yet implemented.');return false">
+							<img src="../images/ico_desc.png" title="$channel.now_title description" border="0">
+							</a>
+						</div>
+						<div class="channel_content">
+							<div class="meter-wrap">
+							<div class="meter-value" style="background-color: #F68014; width: ${channel.progress}px;"></div></div>
+						</div>
+						<div class="channel_left">
+							$channel.next_begin - $channel.next_end &nbsp;&nbsp;&nbsp;$channel.next_title
+						</div>
+						<div class="channel_right">
+							+$channel.next_duration min
+							<a href='#' onClick="alert('Sorry, description not yet implemented.');return false">
+								<img src="../images/ico_desc.png" title="$channel.now_title description" border="0">
+							</a>
+						</div>
+						
+#end if		
+					</tr>
+				</tbody>
+			</table>
 #end for
+
