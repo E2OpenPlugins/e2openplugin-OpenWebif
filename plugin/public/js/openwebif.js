@@ -65,3 +65,9 @@ function load_maincontent(url) {
 	return false;
 }
 
+function webapi_execute(url) {
+	var jqxhr = $.ajax( url )
+//    .done(function() { alert("success"); })
+	return false;
+}
+
