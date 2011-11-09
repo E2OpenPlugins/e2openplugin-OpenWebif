@@ -25,12 +25,6 @@ $(function() {
 			} 
 		}
 	});
-
-	// Dialog Link
-	$('#dialog_link').click(function(){
-		$('#dialog').dialog('open');
-		return false;
-	});
 	
 	$('#tvbutton0').click(function(){
 		 $("#tvcontent").load("ajax/current");
@@ -49,6 +43,11 @@ $(function() {
 	});
 
 });
+
+function dialog_notyet(){
+	$('#dialog').dialog('open');
+	return false;
+}
 
 function load_tvcontent(url) {
 	$("#tvcontent").load(url);
@@ -70,3 +69,11 @@ function webapi_execute(url) {
 //    	.done(function() { alert(jqxhr.responseXml); })
 	return false;
 }
+
+function toggle_chan_des(obj) {
+	var iddiv = "#" + obj;
+	$(iddiv).toggle('blind', '', '500');
+	
+}
+
+

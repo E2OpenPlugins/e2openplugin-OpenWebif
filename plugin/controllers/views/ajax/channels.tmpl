@@ -7,10 +7,10 @@
 							<a href="#" onclick="webapi_execute('web/zap?sRef=$quote($channel.ref)'); return false">$channel.name</a><br />	
 						</div>
 						<div class="channel_right">
-							<a href='#' onClick="alert('Sorry, epg function not yet implemented.');return false">
+							<a href='#' onClick="dialog_notyet();return false">
 							<img src="../images/ico_epg.png" title="Show EPG for $channel.name" border="0">
 							</a>
-							<a href='#' onClick="alert('Sorry, stream function not yet implemented.');return false">
+							<a href='#' onClick="dialog_notyet();return false">
 							<img align="top" src="../images/ico_stream.png" title="Stream $channel.name" border="0">
 							</a>
 						</div>
@@ -22,10 +22,11 @@
 						</div>
 						<div class="channel_right">
 							+$channel.now_left min
-							<a href='#' onClick="alert('Sorry, description not yet implemented.');return false">
+							<a href='#' onClick="toggle_chan_des('$channel.now_ev_id'); return false">
 							<img src="../images/ico_desc.png" title="$channel.now_title description" border="0">
 							</a>
 						</div>
+						<div class="channel_desc" id="$channel.now_ev_id">no description available</div>
 						<div class="channel_content">
 							<div class="meter-wrap">
 							<div class="meter-value" style="background-color: #F68014; width: ${channel.progress}px;"></div></div>
@@ -35,11 +36,11 @@
 						</div>
 						<div class="channel_right">
 							$channel.next_duration min
-							<a href='#' onClick="alert('Sorry, description not yet implemented.');return false">
-								<img src="../images/ico_desc.png" title="$channel.now_title description" border="0">
+							<a href='#' onClick="toggle_chan_des('$channel.next_ev_id'); return false">
+								<img src="../images/ico_desc.png" title="$channel.next_title description" border="0">
 							</a>
 						</div>
-						
+						<div class="channel_desc" id="$channel.next_ev_id">no description available</div>
 #end if		
 					</tr>
 				</tbody>

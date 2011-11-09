@@ -309,6 +309,7 @@ color:#87BCF8;
 
 .channel_desc
 {
+	display: none;
 	width:100%;
 	float:left;
 	background-color: #F0F7FC;

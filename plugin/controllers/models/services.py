@@ -134,21 +134,20 @@ def getChannels(idb=""):
 			chan = {}
 			chan['ref'] = channel[0]
 			chan['name'] = channel[1]
-			nowevent = epgcache.lookupEvent(['TBDCSX', (channel[0], 0, -1)])
+			nowevent = epgcache.lookupEvent(['TBDCIX', (channel[0], 0, -1)])
 			if nowevent[0][0] is not None:
 				chan['now_title'] = nowevent[0][0]
 				chan['now_begin'] =  strftime("%H:%M", (localtime(nowevent[0][1])))
 				chan['now_end'] = strftime("%H:%M",(localtime(nowevent[0][1] + nowevent[0][2])))
 				chan['now_left'] = int (((nowevent[0][1] + nowevent[0][2]) - nowevent[0][3]) / 60)
 				chan['progress'] = int(((nowevent[0][3] - nowevent[0][1]) * 100 / nowevent[0][2]) )
-				chan['description'] = nowevent[0][4]
-				nextevent = epgcache.lookupEvent(['TBDX', (channel[0], +1, -1)])
+				chan['now_ev_id'] = nowevent[0][4]
+				nextevent = epgcache.lookupEvent(['TBDIX', (channel[0], +1, -1)])
 				chan['next_title'] = nextevent[0][0]
 				chan['next_begin'] =  strftime("%H:%M", (localtime(nextevent[0][1])))
 				chan['next_end'] = strftime("%H:%M",(localtime(nextevent[0][1] + nextevent[0][2])))
-#				chan['next_duration'] = strftime("%M", (localtime(nextevent[0][2])))
 				chan['next_duration'] = int(nextevent[0][2] / 60)
-			
+				chan['next_ev_id'] = nextevent[0][3]
 			ret.append(chan)
 			
 	return { "channels": ret }
