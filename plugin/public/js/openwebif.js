@@ -70,8 +70,9 @@ function webapi_execute(url) {
 	return false;
 }
 
-function toggle_chan_des(obj) {
+function toggle_chan_des(obj, url) {
 	var iddiv = "#" + obj;
+	$(iddiv).load(url);
 	$(iddiv).toggle('blind', '', '500');
 	
 }

@@ -9,7 +9,7 @@
 
 from Tools.Directories import fileExists
 
-from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders
+from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc
 from models.info import getInfo, getPublicPath
 from base import BaseController
 
@@ -37,6 +37,10 @@ class AjaxController(BaseController):
 		else:
 			channels = getChannels()
 		return channels
+		
+	def P_eventdescription(self, request):
+		return getEventDesc(request.args["sref"][0], request.args["idev"][0])
+		
 		
 	def P_about(self, request):
 		return {}

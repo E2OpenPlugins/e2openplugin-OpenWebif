@@ -153,4 +153,18 @@ def getChannels(idb=""):
 	return { "channels": ret }
 		
 
+def getEventDesc(ref, idev):
+	epgcache = eEPGCache.getInstance()
+	event = epgcache.lookupEvent(['ESX', (ref, 2, int(idev))])
+	if len(event[0][0]) > 1:
+		description = event[0][0]
+	elif len(event[0][1]) > 1:
+		description = event[0][1]
+	else:
+		description = "No description available"
+		
+	return { "description": description }
+
+
+
 
