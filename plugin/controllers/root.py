@@ -8,7 +8,7 @@
 ##############################################################################
 
 
-from models.info import getBasePath, getPublicPath, getViewsPath
+from models.info import getBasePath, getPublicPath, getViewsPath, getPiconPath
 from base import BaseController
 from web import WebController
 from ajax import AjaxController
@@ -19,12 +19,16 @@ class RootController(BaseController):
 	def __init__(self, session, path = ""):
 		BaseController.__init__(self, path)
 		self.session = session
+		piconpath = getPiconPath()
 		
 		self.putChild("web", WebController(session))
 		self.putChild("ajax", AjaxController(session))
 		self.putChild("js", static.File(getPublicPath() + "/js"))
 		self.putChild("css", static.File(getPublicPath() + "/css"))
 		self.putChild("images", static.File(getPublicPath() + "/images"))
+		if piconpath:
+			self.putChild("picon", static.File(piconpath))
+		
 		
 	# this function will be called before a page is loaded
 	def prePageLoad(self, request):

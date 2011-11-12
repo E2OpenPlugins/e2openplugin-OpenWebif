@@ -6,9 +6,11 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
+from Tools.Directories import fileExists
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache
-from time import localtime, strftime
+from time import time, localtime, strftime
+from info import getPiconPath
 
 def getServiceInfoString(info, what):
 	v = info.getInfo(what)
@@ -166,5 +168,34 @@ def getEventDesc(ref, idev):
 	return { "description": description }
 
 
+def getChannelEpg(ref):
+	ret = []
+	ev = {}
+	picon = getPicon(ref)
+	epgcache = eEPGCache.getInstance()
+	events = epgcache.lookupEvent(['IBDTSEN', (ref, 0, -1, -1)])
+	for event in events:
+		ev = {}
+		ev['picon'] = picon
+		ev['date'] = strftime("%a %d.%b.%Y", (localtime(event[1])))
+		ev['begin'] = strftime("%H:%M", (localtime(event[1])))
+		ev['duration'] = int(event[2] / 60)
+		ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
+		ev['title'] = event[3]
+		ev['shortdesc'] = event[4]
+		ev['longdesc'] = event[5]
+		ev['sname'] = event[6]
+		ret.append(ev)
+	
+	return { "events": ret }
 
-
+def getPicon(sname):
+	pos = sname.rfind(':')
+	if pos != -1:
+		sname = sname[:pos].rstrip(':').replace(':','_') + ".png"
+	filename = getPiconPath() + sname
+	if fileExists(filename):
+		return "/picon/" + sname
+	print "[OpenWebIf debug: ]" + sname
+	return "/images/default_picon.png"
+	

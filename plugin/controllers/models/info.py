@@ -12,7 +12,7 @@ from Components.NimManager import nimmanager
 from Components.Harddisk import harddiskmanager
 from Components.Network import iNetwork
 from Tools.DreamboxHardware import getFPVersion
-from Tools.Directories import fileExists
+from Tools.Directories import fileExists, pathExists
 
 import os
 import sys
@@ -34,6 +34,16 @@ def getPublicPath(file = ""):
 	
 def getViewsPath(file = ""):
 	return getBasePath() + "/controllers/views/" + file
+	
+def getPiconPath():
+	if pathExists("/media/usb/picon/"):
+		return "/media/usb/picon/"
+	elif pathExists("/media/cf/picon/"):
+		return "/media/cf/picon/"
+	elif pathExists("/usr/share/enigma2/picon/"):
+		return "/usr/share/enigma2/picon/"
+	else:
+		return ""
 	
 def getInfo():
 	# TODO: get webif versione somewhere!

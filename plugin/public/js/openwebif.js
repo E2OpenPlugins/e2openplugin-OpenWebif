@@ -44,6 +44,61 @@ $(function() {
 
 });
 
+(function($) {
+    var defaults = {
+        height: 500,
+        width: 500,
+        toolbar: false,
+        scrollbars: false,
+        status: false,
+        resizable: false,
+        left: 0,
+        top: 0,
+        center: true,
+        createNew: true,
+        location: false,
+        menubar: false,
+        onUnload: null
+    };
+
+    $.popupWindow = function(url, opts) {
+        var options = $.extend({}, defaults, opts);
+        if (options.center) {
+            options.top = ((screen.height - options.height) / 2) - 50;
+            options.left = (screen.width - options.width) / 2;
+        }
+
+        var params = [];
+        params.push('location=' + (options.location ? 'yes' : 'no'));
+        params.push('menubar=' + (options.menubar ? 'yes' : 'no'));
+        params.push('toolbar=' + (options.toolbar ? 'yes' : 'no'));
+        params.push('scrollbars=' + (options.scrollbars ? 'yes' : 'no'));
+        params.push('status=' + (options.status ? 'yes' : 'no'));
+        params.push('resizable=' + (options.resizable ? 'yes' : 'no'));
+        params.push('height=' + options.height);
+        params.push('width=' + options.width);
+        params.push('left=' + options.left);
+        params.push('top=' + options.top);
+
+        var random = new Date().getTime();
+        var name = options.createNew ? 'popup_window_' + random : 'popup_window';
+        var win = window.open(url, name, params.join(','));
+
+        if (options.onUnload && typeof options.onUnload === 'function') {
+            var unloadInterval = setInterval(function() {
+                if (!win || win.closed) {
+                    clearInterval(unloadInterval);
+                    options.onUnload();
+                }
+            }, 250);
+        }
+
+        if (win && win.focus) win.focus();
+
+        return win;
+    };
+})(jQuery);
+
 function dialog_notyet(){
 	$('#dialog').dialog('open');
 	return false;
@@ -75,6 +130,15 @@ function toggle_chan_des(obj, url) {
 	$(iddiv).load(url);
 	$(iddiv).toggle('blind', '', '500');
 	
+}
+
+function open_epg_pop(url) {
+	$.popupWindow(url, {
+	height: 500,
+	width: 900,
+	toolbar: false,
+	scrollbars: true,
+});	
 }
 
 

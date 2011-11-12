@@ -1,0 +1,54 @@
+#from urllib import quote
+#if len($events) == 0
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+<title>No items found.</title>
+</head>
+<body style="background: #FFFFFF; scrollbar: auto;">
+<img src="/images/not_found.jpg" title="No items found" border="0">
+</body>
+</html>
+#else
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Open Webif Epg</title>
+</head>
+	<body style="background: #1C478E; scrollbar: auto;">
+		
+#for $event in $events
+		<table style="font-size:12px;" width="100%" border="0" cellspacing="1" cellpadding="5">
+			<tr style="background-color:  #f0f7fc;">
+				<td style="padding:0px" width="102px"><img src="$event.picon" title="" border="0"></td>
+				<td style="font-size:13px;color: #061C37;font-weight: bold;" width="30%">$event.sname<br />$event.date</td>
+				<td>$event.title</td>
+			</tr>
+			<tr style="background-color: #F0F7FC">
+				<td>$event.begin</td>
+				<td>$event.duration min.</td>
+				<td>$event.shortdesc</td>
+			</tr>
+			<tr style="background-color: #F0F7FC">
+				<td valign="top">$event.end</td>
+				<td colspan="2" rowspan="2">$event.longdesc</td>
+			</tr>
+			<tr style="background-color: #F0F7FC">
+				<td style="padding:0px">
+					<a href="#" onclick="alert('sorry, function not yet implemented');return false;"><img src="/images/timer.png" title="Add Timer" border="0"></a>																
+					<a target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)"><img src="/images/imdb.png" title="Search IMDb" border="0"></a>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3"></td>
+			</tr>
+		</table>
+#end for
+				
+	</body>
+</html>
+#end if

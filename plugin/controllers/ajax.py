@@ -9,7 +9,7 @@
 
 from Tools.Directories import fileExists
 
-from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc
+from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg
 from models.info import getInfo, getPublicPath
 from base import BaseController
 
@@ -52,4 +52,9 @@ class AjaxController(BaseController):
 		else:
 			info["boximage"] = "unknown.jpg"
 		return info
+
+	def P_epgpop(self, request):
+		return getChannelEpg(request.args["sref"][0])
+	
+
 
