@@ -188,6 +188,26 @@ def getChannelEpg(ref):
 		ret.append(ev)
 	
 	return { "events": ret }
+	
+def getSearchEpg(sstr):
+	ret = []
+	ev = {}
+	epgcache = eEPGCache.getInstance()
+	events = epgcache.search(('IBDTSENR', 128, eEPGCache.PARTIAL_TITLE_SEARCH, sstr, 1));
+	for event in events:
+		ev = {}
+		ev['date'] = strftime("%a %d.%b.%Y", (localtime(event[1])))
+		ev['begin'] = strftime("%H:%M", (localtime(event[1])))
+		ev['duration'] = int(event[2] / 60)
+		ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
+		ev['title'] = event[3]
+		ev['shortdesc'] = event[4]
+		ev['longdesc'] = event[5]
+		ev['sname'] = event[6]
+		ev['picon'] = getPicon(event[7])
+		ret.append(ev)
+	
+	return { "events": ret }
 
 def getPicon(sname):
 	pos = sname.rfind(':')
@@ -196,6 +216,5 @@ def getPicon(sname):
 	filename = getPiconPath() + sname
 	if fileExists(filename):
 		return "/picon/" + sname
-	print "[OpenWebIf debug: ]" + sname
 	return "/images/default_picon.png"
 	

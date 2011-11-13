@@ -99,6 +99,20 @@ $(function() {
     };
 })(jQuery);
 
+
+$(function() {
+	$( ".epgsearch button:first" ).button({
+            icons: {
+                primary: "ui-icon-search"
+            }
+        })
+});
+
+
+
+
+
+
 function dialog_notyet(){
 	$('#dialog').dialog('open');
 	return false;
@@ -134,11 +148,22 @@ function toggle_chan_des(obj, url) {
 
 function open_epg_pop(url) {
 	$.popupWindow(url, {
-	height: 500,
-	width: 900,
-	toolbar: false,
-	scrollbars: true,
-});	
+		height: 500,
+		width: 900,
+		toolbar: false,
+		scrollbars: true,
+	});	
 }
 
+function open_epg_search_pop() {
+	var spar = $("#epgSearch").val();
+	var url = "ajax/epgpop?sstr=" + escape(spar);
+	$.popupWindow(url, {
+		height: 500,
+		width: 900,
+		toolbar: false,
+		scrollbars: true,
+	});
+	$("#epgSearch").val("");
+}
 

@@ -9,7 +9,7 @@
 
 from Tools.Directories import fileExists
 
-from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg
+from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg
 from models.info import getInfo, getPublicPath
 from base import BaseController
 
@@ -54,7 +54,11 @@ class AjaxController(BaseController):
 		return info
 
 	def P_epgpop(self, request):
-		return getChannelEpg(request.args["sref"][0])
-	
-
+		if "sref" in request.args.keys():
+			return getChannelEpg(request.args["sref"][0])
+		elif  "sstr" in request.args.keys():
+			return getSearchEpg(request.args["sstr"][0])
+		else: 
+			return []
+			
 
