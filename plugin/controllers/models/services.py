@@ -174,18 +174,19 @@ def getChannelEpg(ref):
 	picon = getPicon(ref)
 	epgcache = eEPGCache.getInstance()
 	events = epgcache.lookupEvent(['IBDTSEN', (ref, 0, -1, -1)])
-	for event in events:
-		ev = {}
-		ev['picon'] = picon
-		ev['date'] = strftime("%a %d.%b.%Y", (localtime(event[1])))
-		ev['begin'] = strftime("%H:%M", (localtime(event[1])))
-		ev['duration'] = int(event[2] / 60)
-		ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
-		ev['title'] = event[3]
-		ev['shortdesc'] = event[4]
-		ev['longdesc'] = event[5]
-		ev['sname'] = event[6]
-		ret.append(ev)
+	if events is not None:
+		for event in events:
+			ev = {}
+			ev['picon'] = picon
+			ev['date'] = strftime("%a %d.%b.%Y", (localtime(event[1])))
+			ev['begin'] = strftime("%H:%M", (localtime(event[1])))
+			ev['duration'] = int(event[2] / 60)
+			ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
+			ev['title'] = event[3]
+			ev['shortdesc'] = event[4]
+			ev['longdesc'] = event[5]
+			ev['sname'] = event[6]
+			ret.append(ev)
 	
 	return { "events": ret }
 	
@@ -194,18 +195,19 @@ def getSearchEpg(sstr):
 	ev = {}
 	epgcache = eEPGCache.getInstance()
 	events = epgcache.search(('IBDTSENR', 128, eEPGCache.PARTIAL_TITLE_SEARCH, sstr, 1));
-	for event in events:
-		ev = {}
-		ev['date'] = strftime("%a %d.%b.%Y", (localtime(event[1])))
-		ev['begin'] = strftime("%H:%M", (localtime(event[1])))
-		ev['duration'] = int(event[2] / 60)
-		ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
-		ev['title'] = event[3]
-		ev['shortdesc'] = event[4]
-		ev['longdesc'] = event[5]
-		ev['sname'] = event[6]
-		ev['picon'] = getPicon(event[7])
-		ret.append(ev)
+	if events is not None:
+		for event in events:
+			ev = {}
+			ev['date'] = strftime("%a %d.%b.%Y", (localtime(event[1])))
+			ev['begin'] = strftime("%H:%M", (localtime(event[1])))
+			ev['duration'] = int(event[2] / 60)
+			ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
+			ev['title'] = event[3]
+			ev['shortdesc'] = event[4]
+			ev['longdesc'] = event[5]
+			ev['sname'] = event[6]
+			ev['picon'] = getPicon(event[7])
+			ret.append(ev)
 	
 	return { "events": ret }
 
