@@ -44,6 +44,31 @@ $(function() {
 
 });
 
+$(function() {
+	$( "#slider" ).slider({
+		
+		range: "min",
+		min: 0,
+		max: 100,
+		value: 40,
+		slide: function( event, ui ) {
+			$( "#amount" ).val( ui.value );
+		},
+		stop: function( event, ui ) {	
+			if ( ui.value == 0) {
+				$("#volimage").attr("src","/images/volume_mute.png");
+			} else  {
+				$("#volimage").attr("src","/images/volume.png");
+			} 
+			var url = "web/vol?set=set" + ui.value;
+			var jqxhr = $.ajax( url )
+			return false;
+		}
+	});
+	$( "#amount" ).val( $( "#slider" ).slider( "value" ) );
+});
+
+
 (function($) {
     var defaults = {
         height: 500,

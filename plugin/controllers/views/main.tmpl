@@ -47,10 +47,21 @@
 					<li><a href='#' onClick="dialog_notyet();return false">Radio</a></li>
 				</ul>
 			</div>
+			<div id="leftmenu_main">
+				<div id="leftmenu_top">Volume Control</div>
+				<div class="volslider">
+						<p style="text-align:center; padding-bottom:8px;"> 
+							<label for="amount">Volume:</label>
+							<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold; width:40px;" />
+						</p>
+					<div id="slider" style="width:130px;"></div>
+				</div>
+				<div style="width:100%; text-align:center; padding-top:5px; padding-bottom:10px;"><img id="volimage" src="images/volume.png" title="" border="0"></div>
+			</div>
+
 			<div id="leftmenu_main">    
 				<div id="leftmenu_top">Box Control</div>
 				<ul>
-					<li><a href="/workinprogress">Volume</a></li>
 					<li><a href="/workinprogress">Remote Control</a></li>
 					<li><a href="/workinprogress">Power</a></li>
 					<li><a href="/workinprogress">Screen shot (All)</a></li>
@@ -77,10 +88,8 @@
 			</div>
 			<div id="leftmenu_main">
 				<div id="leftmenu_top">Epg Search</div>
-					<div style="width:100%; text-align:center; padding-top:5px;"><input type="text" id="epgSearch" size="14" /></div>
-					<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button onclick="open_epg_search_pop();">Search</button></div>
-
-				
+				<div style="width:100%; text-align:center; padding-top:5px;"><input type="text" id="epgSearch" size="14" /></div>
+				<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button onclick="open_epg_search_pop();">Search</button></div>
 			</div>
 		</div>
 		

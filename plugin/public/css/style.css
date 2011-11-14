@@ -490,6 +490,11 @@ color:#87BCF8;
 	}
 
 
+#volslider > div.volslider { 
+	padding: 10px !important; 
+};
+
+
 #footer
 {
 width:inherit;
