@@ -10,6 +10,7 @@
 from Components.config import config
 from twisted.internet import reactor
 from twisted.web import server, http, static, resource, error
+from twisted.internet.error import CannotListenError
 
 from controllers.root import RootController
 
@@ -47,7 +48,7 @@ def HttpdDoStop(session):
 	print "[OpenWebif] stopped"
 	
 def HttpdRestart(session):
-	if http_running:
+	if http_running is not None:
 		http_running.stopListening().addCallback(HttpdDoRestart, session)
 
 def HttpdDoRestart(ign, session):
