@@ -1,7 +1,118 @@
-<!-- tv -->
-This tab is work in progress:<br />
+<!-- OSD -->
+<div style="width:100%;height:137px;background-image:url(/images/osd/osd_back.png);"></div>
+<div style="position:absolute;top:225px;left:215px;color:#FFF;font-size:13px;font-weight:bold;">$info.date</div>
+<div style="position:absolute;top:250px;left:208px"><img border='0' src='$getVar("info.picon", "/images/default_picon.png")' alt='' /></div>
+<div style="position:absolute;top:220px;left:330px;color:#FFF;width:500px;text-align:center;font-size:18px;">$info.name</div>
+<div style="position:absolute;top:245px;left:340px;color:#FFF;font-size:14px;">$getVar("now.begin", " ")</div>
+<div style="position:absolute;top:245px;left:390px;color:#FFF;font-size:14px;">$getVar("now.title", " ")</div>
+<div style="position:absolute;top:245px;left:790px;color:#FFF;font-size:14px;">+$getVar("now.tleft", " ") min</div>
+<div style="position:absolute;top:265px;left:390px;"><img border='0' height='14px' src='/images/osd/chan_bar_back.png' alt='' /></div>
+<div style="position:absolute;top:265px;left:390px;"><img border='0' height='14px' width='${getVar("now.progress", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
+<div style="position:absolute;top:280px;left:340px;color:#FFF;font-size:14px;">$getVar("next.begin", " ")</div>
+<div style="position:absolute;top:280px;left:390px;color:#FFF;font-size:14px;">$getVar("next.title", " ")</div>
+<div style="position:absolute;top:280px;left:790px;color:#FFF;font-size:14px;">&nbsp; $getVar("next.duration", " ") min</div>
+<div style="position:absolute;top:300px;left:340px;color:#FFF;font-size:14px;">$getVar("info.tunertype", " ")</div>
+<div style="position:absolute;top:300px;left:500px;color:#FFF">Snr: $getVar("info.snr", "0") % <img border='0' height='14px' src='/images/osd/snr_bar_back.png' alt='' /> Ber: $getVar("info.ber", "N/A") </div>
+<div style="position:absolute;top:300px;left:572px;"><img border='0' height='14px' width='${getVar("info.snr", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
+<div style="position:absolute;top:320px;left:190px;color:#FFF;width:135px;text-align:center;font-size:13px;font-weight:bold;">$info.provider</div>
+<div style="position:absolute;top:325px;left:340px;color:#FFF;font-size:14px;"> $info.width x $info.height </div>
+#if $info.tunernumber == 0
+<div style="position:absolute;top:320px;left:428px"><img border='0' src='/images/osd/icon_a.png' alt='' /></div>
+#else if $info.tunernumber == 1
+<div style="position:absolute;top:320px;left:450px"><img border='0' src='/images/osd/icon_b.png' alt='' /></div>
+#else if $info.tunernumber == 2
+<div style="position:absolute;top:320px;left:472px"><img border='0' src='/images/osd/icon_c.png' alt='' /></div>
+#else if $info.tunernumber == 3
+<div style="position:absolute;top:320px;left:494px"><img border='0' src='/images/osd/icon_d.png' alt='' /></div>
+#end if
+#if $info.crypt == 1
+<div style="position:absolute;top:320px;left:518px"><img border='0' src='/images/osd/icon_crypt.png' alt='' /></div>
+#end if
+#if $info.dolby == True
+<div style="position:absolute;top:321px;left:560px"><img border='0' src='/images/osd/icon_dolby.png' alt='' /></div>
+#end if
+#if $info.wide == True
+<div style="position:absolute;top:321px;left:630px"><img border='0' src='/images/osd/icon_format.png' alt='' /></div>
+#end if
+#if $info.width > 1900
+<div style="position:absolute;top:321px;left:673px"><img border='0' src='/images/osd/icon_hd.png' alt='' /></div>
+#end if
+#if $info.txtpid != "N/A"
+<div style="position:absolute;top:320px;left:718px"><img border='0' src='/images/osd/icon_txt.png' alt='' /></div>
+#end if
+#if $info.subs == True
+<div style="position:absolute;top:320px;left:760px"><img border='0' src='/images/osd/icon_sub.png' alt='' /></div>
+#end if
+#if $info.rec_state == True
+<div style="position:absolute;top:320px;left:806px"><img border='0' src='/images/osd/icon_rec.png' alt='' /></div>
+#end if
+<!-- /END OSD -->
+ 
+
 <br />
-Current service: $name <br />
-Provider: $provider <br />
-Resolution: $width x $height
-<!-- /tv -->
+<table style="background: #1C478E;font-size:12px;" width="100%" border="0" cellspacing="1" cellpadding="5">
+	
+			<tr>
+				<th colspan="3" class="infoHeader">Service</th>
+			</tr>
+			<tr style="background-color:  #f0f7fc;">
+				<td>Name: $info.name</td>
+				<td>Provider: $info.provider</td>
+				<td>Namespace: $info.namespace</td>
+			</tr>
+			<tr style="background-color:  #f0f7fc;">
+				<td>Video Width: $info.width</td>
+				<td>Video Height: $info.height</td>
+				<td>Video Wide: $info.wide</td>
+			</tr>
+			<tr style="background-color:  #f0f7fc;">
+				<td>Encrypted: $info.crypt</td>
+				<td>Dolby: $info.dolby</td>
+				<td>Subservices: $info.subs</td>
+			</tr>			
+			<tr style="background-color:  #f0f7fc;">
+				<td>Teletext: $info.txtpid</td>
+				<td>Recording Status: $info.rec_state</td>
+				<td>Pmtpid: $info.pmtpid</td>
+			</tr>
+			<tr style="background-color:  #f0f7fc;">
+				<td>Apid: $info.apid</td>
+				<td>Vpid: $info.vpid</td>
+				<td>Pcrpid: $info.pcrpid</td>
+			</tr>
+			<tr style="background-color:  #f0f7fc;">
+				<td>Tsid: $info.tsid</td>
+				<td>Onid: $info.onid</td>
+				<td>Sid: $info.sid</td>
+			</tr>
+				
+			<tr>
+				<th colspan="3" class="infoHeader">Tuner Signal</th>
+			</tr>
+			<tr style="background-color:  #f0f7fc;">
+				<td>Tuner Type: $getVar("info.tunertype", "N/A")</td>
+				<td>Tuner Number(0-3):  $getVar("info.tunernumber", "N/A")</td>
+				<td>Tuner Signal Quality SNR:  $getVar("info.snr", "N/A")</td>
+			</tr>
+			<tr style="background-color:  #f0f7fc;">
+				<td>Tuner Signal Quality SNR_DB:  $getVar("info.snr_db")</td>
+				<td>Tuner Signal Power AGC:  $getVar("info.agc", "N/A")</td>
+				<td>Tuner Bit Error Rate BER:  $getVar("info.ber", "N/A")</td>
+			</tr>
+			<tr>
+				<th colspan="3" class="infoHeader">Current Event</th>
+			</tr>
+			<tr style="background-color:  #f0f7fc;">
+				<td colspan="3">Title: $getVar("now.title", " ")</td>
+			</tr>
+			<tr style="background-color:  #f0f7fc;">
+				<td>Begin: $getVar("now.begin", " ")</td>
+				<td>End: $getVar("now.end", " ")</td>
+				<td>Duration: $getVar("now.duration", " ")</td>
+			</tr>
+			<tr style="background-color:  #f0f7fc;">
+				<td colspan="3">Description:  $getVar("now.shortdesc")</td>
+			</tr>
+			
+</table>
+

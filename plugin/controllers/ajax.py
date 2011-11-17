@@ -9,7 +9,7 @@
 
 from Tools.Directories import fileExists
 
-from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg
+from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo
 from models.info import getInfo, getPublicPath
 from base import BaseController
 
@@ -19,7 +19,7 @@ class AjaxController(BaseController):
 		self.session = session
 		
 	def P_current(self, request):
-		return getCurrentService(self.session)
+		return getCurrentFullInfo(self.session)
 		
 	def P_bouquets(self, request):
 		return getBouquets()
