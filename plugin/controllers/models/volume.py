@@ -13,21 +13,29 @@ from GlobalActions import globalActionMap
 def getVolumeStatus():
 	vcontrol = eDVBVolumecontrol.getInstance()
 	return {
+		"result": True,
+		"message": "Status",
 		"current": vcontrol.getVolume(),
 		"ismute": vcontrol.isMuted()
 	}
 
 def setVolumeUp():
 	globalActionMap.actions["volumeUp"]()
-	return getVolumeStatus()
+	ret = getVolumeStatus()
+	ret["message"] = "Volume changed"
+	return ret
 	
 def setVolumeDown():
 	globalActionMap.actions["volumeDown"]()
-	return getVolumeStatus()
+	ret = getVolumeStatus()
+	ret["message"] = "Volume changed"
+	return ret
 
 def setVolumeMute():
 	globalActionMap.actions["volumeMute"]()
-	return getVolumeStatus()
+	ret = getVolumeStatus()
+	ret["message"] = "Mute toggled"
+	return ret
 
 def setVolume(value):
 	vcontrol = eDVBVolumecontrol.getInstance()
@@ -36,4 +44,6 @@ def setVolume(value):
 	if value > 100:
 		value = 100
 	vcontrol.setVolume(value, value)
-	return getVolumeStatus()
+	ret = getVolumeStatus()
+	ret["message"] = "Volume set to %i" % value
+	return ret

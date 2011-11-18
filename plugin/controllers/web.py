@@ -49,36 +49,30 @@ class WebController(BaseController):
 	
 	def P_vol(self, request):
 		if "set" not in request.args.keys() or request.args["set"][0] == "state":
-			volume = getVolumeStatus()
-			volume["result"] = True
-			volume["message"] = "Status"
+			return getVolumeStatus()
+			
 		elif request.args["set"][0] == "up":
-			volume = setVolumeUp()
-			volume["result"] = True
-			volume["message"] = "Volume changed"
+			return setVolumeUp()
+			
 		elif request.args["set"][0] == "down":
-			volume = setVolumeDown()
-			volume["result"] = True
-			volume["message"] = "Volume changed"
+			return setVolumeDown()
+			
 		elif request.args["set"][0] == "mute":
-			volume = setVolumeMute()
-			volume["result"] = True
-			volume["message"] = "Mute toggled"
+			return setVolumeMute()
+			
 		elif request.args["set"][0][:3] == "set":
 			try:
-				value = int(request.args["set"][0][3:])
-				volume = setVolume(value)
-				volume["result"] = True
-				volume["message"] = "Volume set to %i" % int(request.args["set"][0][3:])
+				return setVolume(int(request.args["set"][0][3:]))
 			except Exception, e:
-				volume = getVolumeStatus()
-				volume["result"] = False
-				volume["message"] = "Wrong parameter format 'set=%s'. Use set=set15 " % request.args["set"][0]
-		else:
-			volume = getVolumeStatus()
-			volume["result"] = False
-			volume["message"] = "Unknown Volume command %s" % request.args["set"][0]
-		return volume
+				res = getVolumeStatus()
+				res["result"] = False
+				res["message"] = "Wrong parameter format 'set=%s'. Use set=set15 " % request.args["set"][0]
+				return rets
+				
+		res = getVolumeStatus()
+		res["result"] = False
+		res["message"] = "Unknown Volume command %s" % request.args["set"][0]
+		return res
 		
 	def P_getaudiotracks(self, request):
 		return getAudioTracks(self.session)
