@@ -16,6 +16,7 @@ from models.info import getInfo, getBasePath, getPublicPath, getViewsPath
 
 import imp
 import sys
+import json
 	
 class BaseController(resource.Resource):
 	isLeaf = False
@@ -28,6 +29,7 @@ class BaseController(resource.Resource):
 		
 		self.path = path
 		self.withMainTemplate = False
+		self.isJson = False
 	
 	def error404(self, request):
 		request.setHeader("content-type", "text/html")
@@ -58,6 +60,7 @@ class BaseController(resource.Resource):
 		# cache data
 		withMainTemplate = self.withMainTemplate
 		path = self.path
+		isJson = self.isJson
 		
 		func = getattr(self, "P_" + self.path, None)
 		if callable(func):
@@ -73,6 +76,11 @@ class BaseController(resource.Resource):
 				request.setHeader("content-type", "text/plain")
 				request.setResponseCode(http.OK)
 				request.write(data)
+				request.finish()
+			elif self.isJson:
+				request.setHeader("content-type", "text/plain")
+				request.setResponseCode(http.OK)
+				request.write(json.dumps(data))
 				request.finish()
 			else:
 				module = request.path
@@ -99,6 +107,7 @@ class BaseController(resource.Resource):
 		# restore cached data
 		self.withMainTemplate = withMainTemplate
 		self.path = path
+		self.isJson = isJson
 		
 		return server.NOT_DONE_YET
 

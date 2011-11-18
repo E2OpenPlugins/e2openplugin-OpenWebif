@@ -12,6 +12,7 @@ from models.info import getBasePath, getPublicPath, getViewsPath, getPiconPath
 from base import BaseController
 from web import WebController
 from ajax import AjaxController
+from api import ApiController
 
 from twisted.web import static
 
@@ -22,6 +23,7 @@ class RootController(BaseController):
 		piconpath = getPiconPath()
 		
 		self.putChild("web", WebController(session))
+		self.putChild("api", ApiController(session))
 		self.putChild("ajax", AjaxController(session))
 		self.putChild("js", static.File(getPublicPath() + "/js"))
 		self.putChild("css", static.File(getPublicPath() + "/css"))
