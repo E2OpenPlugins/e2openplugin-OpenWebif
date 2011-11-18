@@ -92,23 +92,20 @@ class WebController(BaseController):
 		return setAudioTrack(self.session, id)
 		
 	def P_zap(self, request):
-		if "sRef" not in request.args.keys():
-			return {
-				"result": False,
-				"message": "Missing mandatory parameter 'sRef'"
-			}
+		res = self.testMandatoryArguments(request, ["sRef"])
+		if res:
+			return res
+			
 		if "title" in request.args.keys():
 			return zapService(self.session, request.args["sRef"][0], request.args["title"][0])
 		
 		return zapService(self.session, request.args["sRef"][0])
 		
 	def P_remotecontrol(self, request):
-		if "command" not in request.args.keys():
-			return {
-				"result": False,
-				"message": "Missing mandatory parameter 'command'"
-			}
-
+		res = self.testMandatoryArguments(request, ["command"])
+		if res:
+			return res
+			
 		id = -1
 		try:
 			id = int(request.args["command"][0])
@@ -135,40 +132,22 @@ class WebController(BaseController):
 		return getCurrentLocation()
 		
 	def P_addlocation(self, request):
-		if "dirname" not in request.args.keys():
-			return {
-				"result": False,
-				"message": "Missing mandatory parameter 'dirname'"
-			}
-			
-		dirname = request.args["dirname"][0]
-		if len(dirname) == 0:
-			return {
-				"result": False,
-				"message": "The parameter 'dirname' can't be empty"
-			}
+		res = self.testMandatoryArguments(request, ["dirname"])
+		if res:
+			return res
 			
 		create = False
 		if "createFolder" in request.args.keys():
 			create = request.args["createFolder"][0] == "1"
 			
-		return addLocation(dirname, create)
+		return addLocation(request.args["dirname"][0], create)
 			
 	def P_removelocation(self, request):
-		if "dirname" not in request.args.keys():
-			return {
-				"result": False,
-				"message": "Missing mandatory parameter 'dirname'"
-			}
-			
-		dirname = request.args["dirname"][0]
-		if len(dirname) == 0:
-			return {
-				"result": False,
-				"message": "The parameter 'dirname' can't be empty"
-			}
-			
-		return removeLocation(dirname)
+		res = self.testMandatoryArguments(request, ["dirname"])
+		if res:
+			return res
+		
+		return removeLocation(request.args["dirname"][0])
 		
 	def P_timerlist(self, request):
 		return getTimers(self.session)
