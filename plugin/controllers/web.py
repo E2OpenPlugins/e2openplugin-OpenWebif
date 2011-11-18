@@ -13,6 +13,8 @@ from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
+from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, cleanupTimer, writeTimerList, recordNow
+
 from base import BaseController
 
 class WebController(BaseController):
@@ -22,7 +24,23 @@ class WebController(BaseController):
 		
 	def prePageLoad(self, request):
 		request.setHeader("content-type", "text/xml")
-				
+		
+	def testMandatoryArguments(self, request, keys):
+		for key in keys:
+			if key not in request.args.keys():
+				return {
+					"result": False,
+					"message": "Missing mandatory parameter '%s'" % key
+				}
+		
+			if len(request.args[key][0]) == 0:
+				return {
+					"result": False,
+					"message": "The parameter '%s' can't be empty" % key
+				}
+		
+		return None
+		
 	def P_about(self, request):
 		return {
 			"info": getInfo(),
@@ -151,3 +169,182 @@ class WebController(BaseController):
 			}
 			
 		return removeLocation(dirname)
+		
+	def P_timerlist(self, request):
+		return getTimers(self.session)
+		
+	def P_timeradd(self, request):
+		res = self.testMandatoryArguments(request, ["sRef", "begin", "end", "name", "description"])
+		if res:
+			return res
+		
+		disabled = False
+		if "disabled" in request.args.keys():
+			disabled = request.args["disabled"][0] == "1"
+			
+		justplay = False
+		if "justplay" in request.args.keys():
+			justplay = request.args["justplay"][0] == "1"
+			
+		afterevent = 3
+		if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["1", "2", "3"]:
+			afterevent = int(request.args["afterevent"][0])
+			
+		dirname = None
+		if "dirname" in request.args.keys() and len(request.args["dirname"][0]) > 0:
+			dirname = request.args["dirname"][0]
+			
+		tags = []
+		if "tags" in request.args.keys():
+			tags = request.args["tags"][0].split(' ')
+			
+		repeated = False
+		if "repeated" in request.args.keys() and request.args["afterevent"][0] in ["1", "2", "3"]:
+			repeated = request.args["repeated"][0] == "1"
+			
+		return addTimer(
+			self.session,
+			request.args["sRef"][0],
+			request.args["begin"][0],
+			request.args["end"][0],
+			request.args["name"][0],
+			request.args["description"][0],
+			disabled,
+			justplay,
+			afterevent,
+			dirname,
+			tags,
+			repeated
+		)
+		
+	def P_timeraddbyeventid(self, request):
+		res = self.testMandatoryArguments(request, ["sRef", "eventid"])
+		if res:
+			return res
+		
+		justplay = False
+		if "justplay" in request.args.keys():
+			justplay = request.args["justplay"][0] == "1"
+			
+		dirname = None
+		if "dirname" in request.args.keys() and len(request.args["dirname"][0]) > 0:
+			dirname = request.args["dirname"][0]
+			
+		tags = []
+		if "tags" in request.args.keys():
+			tags = request.args["tags"][0].split(' ')
+			
+		try:
+			eventid = int(request.args["eventid"][0])
+		except Exception, e:
+			return {
+				"result": False,
+				"message": "The parameter 'eventid' must be a number"
+			}
+			
+		return addTimerByEventId(
+			self.session,
+			eventid,
+			request.args["sRef"][0],
+			justplay,
+			dirname,
+			tags,
+		)
+
+	def P_timerchange(self, request):
+		res = self.testMandatoryArguments(request, ["sRef", "begin", "end", "name", "description", "channelOld", "beginOld", "endOld"])
+		if res:
+			return res
+			
+		disabled = False
+		if "disabled" in request.args.keys():
+			disabled = request.args["disabled"][0] == "1"
+			
+		justplay = False
+		if "justplay" in request.args.keys():
+			justplay = request.args["justplay"][0] == "1"
+			
+		afterevent = 3
+		if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["1", "2", "3"]:
+			afterevent = int(request.args["afterevent"][0])
+			
+		dirname = None
+		if "dirname" in request.args.keys() and len(request.args["dirname"][0]) > 0:
+			dirname = request.args["dirname"][0]
+			
+		tags = []
+		if "tags" in request.args.keys():
+			tags = request.args["tags"][0].split(' ')
+			
+		repeated = False
+		if "repeated" in request.args.keys() and request.args["afterevent"][0] in ["1", "2", "3"]:
+			repeated = request.args["repeated"][0] == "1"
+			
+		try:
+			beginOld = int(request.args["beginOld"][0])
+		except Exception, e:
+			return {
+				"result": False,
+				"message": "The parameter 'beginOld' must be a number"
+			}
+			
+		try:
+			endOld = int(request.args["endOld"][0])
+		except Exception, e:
+			return {
+				"result": False,
+				"message": "The parameter 'endOld' must be a number"
+			}
+			
+		return editTimer(
+			self.session,
+			request.args["sRef"][0],
+			request.args["begin"][0],
+			request.args["end"][0],
+			request.args["name"][0],
+			request.args["description"][0],
+			disabled,
+			justplay,
+			afterevent,
+			dirname,
+			tags,
+			repeated,
+			request.args["channelOld"][0],
+			beginOld,
+			endOld
+		)
+		
+	def P_timerdelete(self, request):
+		res = self.testMandatoryArguments(request, ["sRef", "begin", "end"])
+		if res:
+			return res
+		
+		try:
+			begin = int(request.args["begin"][0])
+		except Exception, e:
+			return {
+				"result": False,
+				"message": "The parameter 'begin' must be a number"
+			}
+			
+		try:
+			end = int(request.args["end"][0])
+		except Exception, e:
+			return {
+				"result": False,
+				"message": "The parameter 'end' must be a number"
+			}
+		
+		return removeTimer(self.session, request.args["sRef"][0], begin, end)
+		
+	def P_timercleanup(self, request):
+		return cleanupTimer(self.session)
+		
+	def P_timerlistwrite(self, request):
+		return writeTimerList(self.session)
+		
+	def P_recordnow(self, request):
+		infinite = False
+		if "undefinitely" in request.args.keys() or "infinite" in request.args.keys():
+			infinite = True
+		return recordNow(self.session, infinite)
