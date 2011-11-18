@@ -27,19 +27,19 @@ $(function() {
 	});
 	
 	$('#tvbutton0').click(function(){
-		 $("#tvcontent").load("ajax/current");
+		$("#tvcontent").html(loadspinner).load("ajax/current");
 	});
 	$('#tvbutton1').click(function(){
-		 $("#tvcontent").html(loadspinner).load("ajax/bouquets");
+		$("#tvcontent").html(loadspinner).load("ajax/bouquets");
 	});
 	$('#tvbutton2').click(function(){
-		 $("#tvcontent").html(loadspinner).load("ajax/providers");
+		$("#tvcontent").html(loadspinner).load("ajax/providers");
 	});
 	$('#tvbutton3').click(function(){
-		 $("#tvcontent").load("ajax/satellites");
+		$("#tvcontent").load("ajax/satellites");
 	});
 	$('#tvbutton4').click(function(){
-		 $("#tvcontent").html(loadspinner).load("ajax/channels");
+		$("#tvcontent").html(loadspinner).load("ajax/channels");
 	});
 
 });
