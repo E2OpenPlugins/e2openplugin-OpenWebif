@@ -1,0 +1,39 @@
+#filter WebSafe
+<?xml version="1.0" encoding="UTF-8"?>
+<e2deviceinfo>
+	<e2enigmaversion>$enigmaver</e2enigmaversion>
+	<e2imageversion>$imagever</e2imageversion>
+	<e2webifversion>$webifver</e2webifversion>
+	<e2fpversion>$fp_version</e2fpversion>
+	<e2devicename>$model</e2devicename>
+	<e2frontends>
+		#for $tuner in $tuners
+		<e2frontend>
+			<e2name>$tuner.name</e2name>
+			<e2model>$tuner.type</e2model>
+		</e2frontend>
+		#end for
+	</e2frontends>
+	<e2network>
+		#for $iface in $ifaces
+		<e2interface>
+			<e2name>$iface.name</e2name>
+			<e2mac>$iface.mac</e2mac>
+			<e2dhcp>$iface.dhcp</e2dhcp>
+			<e2ip>$iface.ip</e2ip>
+			<e2gateway>$iface.gw</e2gateway>
+			<e2netmask>$iface.mask</e2netmask>
+		</e2interface>
+		#end for
+	</e2network>
+	<e2hdds>
+		#for $hd in $hdd
+		<e2hdd>
+			<e2model>$hd.model</e2model>
+			<e2capacity>$hd.capacity</e2capacity>
+			<e2free>$hd.free</e2free>
+		</e2hdd>
+		#end for
+	</e2hdds>
+</e2deviceinfo>
+#end filter

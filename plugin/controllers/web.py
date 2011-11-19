@@ -324,3 +324,7 @@ class WebController(BaseController):
 		
 	def P_currenttime(self, request):
 		return getCurrentTime()
+		
+	def P_deviceinfo(self, request):
+		return getInfo()
+		
