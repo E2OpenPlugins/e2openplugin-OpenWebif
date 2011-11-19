@@ -7,7 +7,7 @@
 #                                                                            #
 ##############################################################################
 
-from models.info import getInfo
+from models.info import getInfo, getCurrentTime
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
@@ -321,3 +321,6 @@ class WebController(BaseController):
 		if "undefinitely" in request.args.keys() or "infinite" in request.args.keys():
 			infinite = True
 		return recordNow(self.session, infinite)
+		
+	def P_currenttime(self, request):
+		return getCurrentTime()

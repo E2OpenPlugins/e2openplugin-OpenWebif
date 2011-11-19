@@ -16,6 +16,7 @@ from Tools.Directories import fileExists, pathExists
 
 import os
 import sys
+import time
 
 def formatIp(ip):
 	if len(ip) != 4:
@@ -140,3 +141,10 @@ def getInfo():
 			"free": free
 		})
 	return info
+
+def getCurrentTime():
+	t = time.localtime()
+	return {
+		"status": True,
+		"time": "%2d:%02d:%02d" % (t.tm_hour, t.tm_min, t.tm_sec)
+	}
