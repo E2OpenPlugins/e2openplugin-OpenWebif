@@ -32,13 +32,13 @@ config.OpenWebif.auth = ConfigYesNo(default=False)
 
 class OpenWebifConfig(Screen, ConfigListScreen):
 	skin = """
-	<screen position="center,center" size="900,340" title="OpenWebif Configuration">
-		<widget name="lab1" position="20,30" halign="center" size="860,60" zPosition="1" font="Regular;24" valign="top" transparent="1" />
-		<widget name="config" position="20,100" size="860,160" scrollbarMode="showOnDemand" />
-		<ePixmap pixmap="skin_default/buttons/red.png" position="200,270" size="140,40" alphatest="on" />
-		<widget name="key_red" position="200,270" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="red" transparent="1" />
-		<ePixmap position="550,270" size="140,40" pixmap="skin_default/buttons/green.png" alphatest="on" zPosition="1" />
-		<widget name="key_green" position="550,270" zPosition="2" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="green" transparent="1" />
+	<screen position="center,center" size="700,340" title="OpenWebif Configuration">
+		<widget name="lab1" position="10,30" halign="center" size="680,60" zPosition="1" font="Regular;24" valign="top" transparent="1" />
+		<widget name="config" position="10,100" size="680,160" scrollbarMode="showOnDemand" />
+		<ePixmap pixmap="skin_default/buttons/red.png" position="140,270" size="140,40" alphatest="on" />
+		<widget name="key_red" position="140,270" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="red" transparent="1" />
+		<ePixmap position="420,270" size="140,40" pixmap="skin_default/buttons/green.png" alphatest="on" zPosition="1" />
+		<widget name="key_green" position="420,270" zPosition="2" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="green" transparent="1" />
 	</screen>"""
 	
 	def __init__(self, session):
@@ -47,15 +47,15 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		
 		self.list = []
 		ConfigListScreen.__init__(self, self.list)
-		self["key_red"] = Label(_("Save"))
-		self["key_green"] = Label(_("Cancel"))
-		self["lab1"] = Label("To access to OpenWebif point your browser to http://yourip:port")
+		self["key_red"] = Label(_("Cancel"))
+		self["key_green"] = Label(_("Save"))
+		self["lab1"] = Label("OpenWebif url: http://yourip:port")
 		
 		self["actions"] = ActionMap(["WizardActions", "ColorActions"],
 		{
-			"red": self.keySave,
+			"red": self.keyCancel,
 			"back": self.keyCancel,
-			"green": self.keyCancel,
+			"green": self.keySave,
 
 		}, -2)
 		
