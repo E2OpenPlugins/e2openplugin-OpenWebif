@@ -103,11 +103,7 @@ def getInfo():
 	info['enigmaver'] = about.getEnigmaVersionString()
 	info['kernelver'] = about.getKernelVersionString()
 	
-	fp_version = getFPVersion()
-	if fp_version is None:
-		fp_version = 0
-
-	info['fp_version'] = str(fp_version)
+	info['fp_version'] = getFPVersion()
 	
 	info['tuners'] = []
 	for i in range(0, nimmanager.getSlotCount()):
