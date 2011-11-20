@@ -10,6 +10,7 @@
 
 from models.info import getBasePath, getPublicPath, getViewsPath, getPiconPath
 from models.grab import grabScreenshot
+from models.movies import getMovieList
 from base import BaseController
 from web import WebController
 from ajax import AjaxController
@@ -57,3 +58,10 @@ class RootController(BaseController):
 
 	def P_message(self, request):
 		return {}
+
+	def P_movies(self, request):
+		if "dirname" in request.args.keys():
+			movies = getMovieList(request.args["dirname"][0])
+		else:
+			movies = getMovieList()
+		return movies

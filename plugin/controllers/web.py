@@ -15,6 +15,7 @@ from models.control import zapService, remoteControl, setPowerState
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, cleanupTimer, writeTimerList, recordNow
 from models.message import sendMessage
+from models.movies import getMovieList
 
 from base import BaseController
 
@@ -159,6 +160,13 @@ class WebController(BaseController):
 
 	def P_message(self, request):
 		return sendMessage(self, request)
+
+	def P_movies(self, request):
+		if "dirname" in request.args.keys():
+			movies = getMovieList(request.args["dirname"][0])
+		else:
+			movies = getMovieList()
+		return movies
 
 	def P_timerlist(self, request):
 		return getTimers(self.session)

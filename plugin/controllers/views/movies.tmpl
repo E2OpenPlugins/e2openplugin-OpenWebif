@@ -5,7 +5,7 @@
 		<hr />
 		
 		<div style="width: 100%; text-align: left; margin-bottom: 20px;">
-		<select name="directory" onChange="jQuery('#tvcontentmain').html(loadspinner); load_maincontent('ajax/movies?dir='+escape(options[selectedIndex].value)); return false;">
+		<select name="directory" onChange="jQuery('#tvcontentmain').html(loadspinner); load_maincontent('ajax/movies?dirname='+escape(options[selectedIndex].value)); return false;">
 		#for $bookmark in $bookmarks
 		#if $bookmark == $directory
 		<option value="$bookmark" selected="selected">$bookmark</option>
