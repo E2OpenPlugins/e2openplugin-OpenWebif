@@ -9,6 +9,8 @@
 
 $.fx.speeds._default = 1000;
 var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>"
+var mutestatus = 0;
+
 $(function() {
 	
 
@@ -42,6 +44,18 @@ $(function() {
 		$("#tvcontent").html(loadspinner).load("ajax/channels");
 	});
 
+	$('#volimage').click(function(){
+		if (mutestatus == 0) {
+			mutestatus = 1;
+			$.ajax("web/vol?set=set0")
+			$("#volimage").attr("src","/images/volume_mute.png");
+		} else  {
+			mutestatus = 0;
+			$.ajax("web/vol?set=set" + $("#amount").val())
+			$("#volimage").attr("src","/images/volume.png");
+		} 
+	});
+	
 	getStatusInfo();
 	setInterval("getStatusInfo()", 15000);
 });
