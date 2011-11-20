@@ -1,16 +1,25 @@
 <div id="content_main" style="min-height: 500px;">
 	<div id="info">
 		<h3>Screenshot</h3>
-		<hr />
-			<div class="screenshotOptions">
-				<a href="#" onclick="grabScreenshot('all'); return false">Screenshot (All)</a> || 
-				<a href="#" onclick="grabScreenshot('video'); return false">Screenshot (Video)</a> || 
-				<a href="#" onclick="grabScreenshot('osd'); return false">Screenshot (OSD)</a>
-			</div>
-			
-			<div class="screenshotContainer">
-				<img id="screenshotspinner" src="/images/spinner.gif" border="0" alt="Loading ..." style="display: none;">
-				<img id="screenshotimage" src="/grab?r=700" alt="">
-			</div>
+
+		<div id="toolbar-header">
+			<span id="toolbar">
+				<span id="screenshotbutton">
+					<input type="radio" id="screenshotbutton0" name="screenshotbutton" onclick="grabScreenshot('all'); return false" checked="checked" /><label for="screenshotbutton0">Screenshot (All)</label>
+					<input type="radio" id="screenshotbutton1" name="screenshotbutton" onclick="grabScreenshot('video'); return false" /><label for="screenshotbutton1">Screenshot (Video)</label>
+					<input type="radio" id="screenshotbutton2" name="screenshotbutton" onclick="grabScreenshot('osd'); return false" /><label for="screenshotbutton2">Screenshot (OSD)</label>
+				</span>
+			</span>
+		</div>
+	
+		<div class="screenshotContainer">
+			<img id="screenshotspinner" src="/images/spinner.gif" border="0" alt="Loading ..." style="display: none;">
+			<img id="screenshotimage" src="/images/spinner.gif" alt="">
+		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	jQuery("#screenshotbutton").buttonset();
+	grabScreenshot('all');
+</script>
