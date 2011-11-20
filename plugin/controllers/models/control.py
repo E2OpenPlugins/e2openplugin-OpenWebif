@@ -8,7 +8,6 @@
 ##############################################################################
 from Components.config import config
 from enigma import eServiceReference, eActionMap
-from Screens.Standby import Standby, TryQuitMainloop, inStandby
 
 def zapService(session, id, title = ""):
 	service = eServiceReference(id)
@@ -60,6 +59,7 @@ def remoteControl(key, type = "", rcu = ""):
 	}
 	
 def setPowerState(session, state):
+	from Screens.Standby import Standby, TryQuitMainloop, inStandby
 	state = int(state)
 	
 	if state == 0: # Toggle StandBy

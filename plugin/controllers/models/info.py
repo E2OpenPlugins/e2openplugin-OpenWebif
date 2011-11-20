@@ -155,13 +155,17 @@ def getStatusInfo(self):
 	statusinfo['muted'] = vcontrol.isMuted()
 
 	# Get currently running Service
+	event = None
 	serviceref = self.session.nav.getCurrentlyPlayingServiceReference()
-	serviceHandler = eServiceCenter.getInstance()
-	serviceHandlerInfo = serviceHandler.info(serviceref)
-
-	service = self.session.nav.getCurrentService()
-	serviceinfo = service and service.info()
-	event = serviceinfo and serviceinfo.getEvent(0)
+	if serviceref is not None:
+		serviceHandler = eServiceCenter.getInstance()
+		serviceHandlerInfo = serviceHandler.info(serviceref)
+	
+		service = self.session.nav.getCurrentService()
+		serviceinfo = service and service.info()
+		event = serviceinfo and serviceinfo.getEvent(0)
+	else:
+		event = None
 
 	if event is not None:
 		curEvent = parseEvent(event)
