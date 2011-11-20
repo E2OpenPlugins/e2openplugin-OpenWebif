@@ -11,7 +11,7 @@ from models.info import getInfo
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
-from models.control import zapService, remoteControl
+from models.control import zapService, remoteControl, setPowerState
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, cleanupTimer, writeTimerList, recordNow
 
@@ -118,7 +118,17 @@ class WebController(BaseController):
 			rcu = request.args["rcu"][0]
 			
 		return remoteControl(id, type, rcu)
-			
+
+	def P_setpowerstate(self, request):
+		res = self.testMandatoryArguments(request, ["state"])
+		if res:
+			return {
+				"result": False,
+				"message": "Missing parameter 'state'"
+			}
+
+		return setPowerState(self.session, request.args["state"][0])
+
 	def P_getlocations(self, request):
 		return getLocations()
 		

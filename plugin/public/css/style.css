@@ -276,6 +276,43 @@ color:#87BCF8;
 	
 }
 
+.powerStateButtons
+{
+	width: 250px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.powerStateButtons ul {
+	list-style: none;
+	padding: 0px;
+	margin-top: 25px;
+}
+
+.powerStateButtons li {
+	margin-top: 25px;
+    background: url("../images/ui-bg_highlight-soft_55_1c478e_1x100.png") repeat-x scroll 50% 50% #1C478E;
+    width: 220px;
+    height: 40px;
+    line-height: 40px;
+    color: #FFFFFF !important;
+    text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: pointer;
+	border: 1px solid #4297d7; 
+	-moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; -khtml-border-top-left-radius: 5px; border-top-left-radius: 5px;
+	-moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; -khtml-border-top-right-radius: 5px; border-top-right-radius: 5px;
+	-moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; -khtml-border-bottom-left-radius: 5px; border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; -khtml-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px;
+}
+
+.powerStateButtons li:hover {
+	border: 1px solid #000000; 
+}
+
 .channel_tr
 {
 	width:100%; 
