@@ -14,6 +14,7 @@ from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, cleanupTimer, writeTimerList, recordNow
+from models.message import sendMessage
 
 from base import BaseController
 
@@ -155,7 +156,10 @@ class WebController(BaseController):
 			return res
 		
 		return removeLocation(request.args["dirname"][0])
-		
+
+	def P_message(self, request):
+		return sendMessage(self, request)
+
 	def P_timerlist(self, request):
 		return getTimers(self.session)
 		

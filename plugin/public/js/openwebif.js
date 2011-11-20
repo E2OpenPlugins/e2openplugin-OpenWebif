@@ -239,3 +239,13 @@ function grabScreenshot(mode) {
 	timestamp = new Date().getTime()
 	$("#screenshotimage").attr("src",'/grab?r=700&mode=' + mode + '&timestamp=' + timestamp);
 }
+
+function sendMessage() {
+	var text = $('#messageText').val();
+	var type = $('#messageType').val();
+	var timeout = $('#messageTimeout').val();
+	
+	$.getJSON('api/message?text=' + text + '&type=' + type + '&timeout=' + timeout, function(result) {
+		$("#messageSentResponse").html(result['message']);
+	});
+}
