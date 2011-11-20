@@ -1,0 +1,68 @@
+#from urllib import quote
+<div id="content_main" style="min-height: 500px;">
+	<div id="info">
+		<h3>Movielist</h3>
+		<hr />
+		
+		<div style="width: 100%; text-align: left; margin-bottom: 20px;">
+		<select name="directory" onChange="jQuery('#tvcontentmain').html(loadspinner); load_maincontent('ajax/movies?dir='+escape(options[selectedIndex].value)); return false;">
+		#for $bookmark in $bookmarks
+		#if $bookmark == $directory
+		<option value="$bookmark" selected="selected">$bookmark</option>
+		#else
+		<option value="$bookmark">$bookmark</option>
+		#end if
+		#end for
+		</select>
+		</div>
+
+		#for $movie in $movies
+				#if $movie.eventname != ""
+				<div class="moviecontainer_main">
+					<div class="moviecontainer_left" style="height: 40px;">
+						<div style="padding: 3px;">
+							<span style="color: #176093; font-weight: bold;">$movie.eventname</span><br />$movie.begintime
+						</div>
+					</div>
+					<div class="moviecontainer_right" style="height: 40px;">
+						<div style="padding: 3px; text-align: right;">
+							<a target="_blank" href='/file?action=stream&file=$quote($movie.fullname)'>
+							<img align="top" src="../images/ico_stream.png" title="Stream $movie.eventname" border="0">
+							</a>
+							<a href='/file?action=download&file=$quote($movie.fullname)'>
+							<img align="top" src="../images/ico_download.png" title="Download $movie.eventname" border="0">
+							</a>
+							<a target="_blank" href='/file?action=delete&file=$quote($movie.fullname)'>
+							<img src="../images/ico_epg.png" title="Delete $movie.eventname" border="0">
+							</a>
+						</div>
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+				#else
+				<div class="moviecontainer_main">
+					<div class="moviecontainer_left" style="height: 33px;">
+						<div style="padding: 3px;">
+							<span style="color: #176093; font-weight: bold;">$movie.filename</span>
+						</div>
+					</div>
+					<div class="moviecontainer_right" style="height: 33px;">
+						<div style="padding: 3px; text-align: right;">
+							<a target="_blank" href='/file?action=stream&file=$quote($movie.fullname)'>
+							<img align="top" src="../images/ico_stream.png" title="Stream $movie.filename" border="0">
+							</a>
+							<a href='/file?action=download&file=$quote($movie.fullname)'>
+							<img align="top" src="../images/ico_download.png" title="Download $movie.filename" border="0">
+							</a>
+							<a target="_blank" href='/file?action=delete&file=$quote($movie.fullname)'>
+							<img src="../images/ico_epg.png" title="Delete $movie.filename" border="0">
+							</a>
+						</div>
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+				#end if
+		#end for
+		</div>
+	</div>
+</div>

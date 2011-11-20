@@ -11,6 +11,7 @@ from Tools.Directories import fileExists
 
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo
 from models.info import getInfo, getPublicPath
+from models.movies import getMovieList
 from base import BaseController
 
 class AjaxController(BaseController):
@@ -36,7 +37,14 @@ class AjaxController(BaseController):
 		else:
 			channels = getChannels()
 		return channels
-		
+
+	def P_movies(self, request):
+		if "dir" in request.args.keys():
+			movies = getMovieList(request.args["dir"][0])
+		else:
+			movies = getMovieList()
+		return movies
+
 	def P_eventdescription(self, request):
 		return getEventDesc(request.args["sref"][0], request.args["idev"][0])
 		
