@@ -11,11 +11,15 @@ from Components.About import about
 from Components.NimManager import nimmanager
 from Components.Harddisk import harddiskmanager
 from Components.Network import iNetwork
+from RecordTimer import parseEvent
+from Screens.Standby import inStandby
 from Tools.DreamboxHardware import getFPVersion
 from Tools.Directories import fileExists, pathExists
+from enigma import eDVBVolumecontrol, eServiceCenter
 
 import os
 import sys
+import json
 
 def formatIp(ip):
 	if len(ip) != 4:
@@ -140,3 +144,46 @@ def getInfo():
 			"free": free
 		})
 	return info
+
+def getStatusInfo(self):
+	statusinfo = {}
+
+	# Get Current Volume and Mute Status
+	vcontrol = eDVBVolumecontrol.getInstance()
+	
+	statusinfo['volume'] = vcontrol.getVolume()
+	statusinfo['muted'] = vcontrol.isMuted()
+
+	# Get currently running Service
+	serviceref = self.session.nav.getCurrentlyPlayingServiceReference()
+	serviceHandler = eServiceCenter.getInstance()
+	serviceHandlerInfo = serviceHandler.info(serviceref)
+
+	service = self.session.nav.getCurrentService()
+	serviceinfo = service and service.info()
+	event = serviceinfo and serviceinfo.getEvent(0)
+
+	if event is not None:
+		curEvent = parseEvent(event)
+		statusinfo['currservice_name'] = curEvent[2]
+		statusinfo['currservice_serviceref'] = serviceref.toString()
+		statusinfo['currservice_begin'] = int(curEvent[0])
+		statusinfo['currservice_end'] = int(curEvent[1])
+		statusinfo['currservice_description'] = curEvent[3]
+		statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref)
+	else:
+		statusinfo['currservice_name'] = "N/A"
+		statusinfo['currservice_serviceref'] = ""
+		statusinfo['currservice_begin'] = 0
+		statusinfo['currservice_end'] = 0
+		statusinfo['currservice_name'] = ""
+		statusinfo['currservice_description'] = ""
+		statusinfo['currservice_station'] = ""
+		
+	# Get Standby State
+	if inStandby == None:
+		statusinfo['inStandby'] = "false"
+	else:
+		statusinfo['inStandby'] = "true"
+
+	return json.dumps(statusinfo)

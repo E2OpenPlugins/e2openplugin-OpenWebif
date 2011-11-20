@@ -42,6 +42,8 @@ $(function() {
 		$("#tvcontent").html(loadspinner).load("ajax/channels");
 	});
 
+	getStatusInfo();
+	setInterval("getStatusInfo()", 15000);
 });
 
 $(function() {
@@ -192,3 +194,21 @@ function open_epg_search_pop() {
 	$("#epgSearch").val("");
 }
 
+function getStatusInfo() {
+	$.getJSON('api/statusinfo', function(statusinfo) {
+		// Set Volume
+		$("#slider").slider("value", statusinfo['volume']);
+		$("#amount").val(statusinfo['volume']);
+		
+		// Set Mute Status
+		if (statusinfo['muted'] == true) {
+			mutestatus = 1;
+			$("#volimage").attr("src","/images/volume_mute.png");
+		} else {
+			mutestatus = 0;
+			$("#volimage").attr("src","/images/volume.png");
+		}
+				
+		$("#osd").html(statusinfo['currservice_station'] + ": " + statusinfo['currservice_name']);
+	});
+}

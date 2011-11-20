@@ -7,7 +7,7 @@
 #                                                                            #
 ##############################################################################
 
-from models.info import getInfo
+from models.info import getInfo, getStatusInfo
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
@@ -46,7 +46,10 @@ class WebController(BaseController):
 			"info": getInfo(),
 			"service": getCurrentService(self.session)
 		}
-	
+
+	def P_statusinfo(self, request):
+		return getStatusInfo(self)
+
 	def P_vol(self, request):
 		if "set" not in request.args.keys() or request.args["set"][0] == "state":
 			return getVolumeStatus()
