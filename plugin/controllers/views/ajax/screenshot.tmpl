@@ -1,0 +1,16 @@
+<div id="content_main" style="min-height: 500px;">
+	<div id="info">
+		<h3>Screenshot</h3>
+		<hr />
+			<div class="screenshotOptions">
+				<a href="#" onclick="grabScreenshot('all'); return false">Screenshot (All)</a> || 
+				<a href="#" onclick="grabScreenshot('video'); return false">Screenshot (Video)</a> || 
+				<a href="#" onclick="grabScreenshot('osd'); return false">Screenshot (OSD)</a>
+			</div>
+			
+			<div class="screenshotContainer">
+				<img id="screenshotspinner" src="/images/spinner.gif" border="0" alt="Loading ..." style="display: none;">
+				<img id="screenshotimage" src="/grab?r=700" alt="">
+			</div>
+	</div>
+</div>

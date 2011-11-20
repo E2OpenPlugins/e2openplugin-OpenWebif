@@ -9,6 +9,7 @@
 
 
 from models.info import getBasePath, getPublicPath, getViewsPath, getPiconPath
+from models.grab import grabScreenshot
 from base import BaseController
 from web import WebController
 from ajax import AjaxController
@@ -27,6 +28,7 @@ class RootController(BaseController):
 		self.putChild("api", ApiController(session))
 		self.putChild("ajax", AjaxController(session))
 		self.putChild("file", FileController(session))
+		self.putChild("grab", grabScreenshot(session))
 		self.putChild("js", static.File(getPublicPath() + "/js"))
 		self.putChild("css", static.File(getPublicPath() + "/css"))
 		self.putChild("images", static.File(getPublicPath() + "/images"))

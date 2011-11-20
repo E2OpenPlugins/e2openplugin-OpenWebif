@@ -212,3 +212,16 @@ function getStatusInfo() {
 		$("#osd").html(statusinfo['currservice_station'] + ": " + statusinfo['currservice_name']);
 	});
 }
+
+function grabScreenshot(mode) {
+	$('#screenshotspinner').show();
+	$('#screenshotimage').hide();
+	
+	$('#screenshotimage').load(function(){
+	  $('#screenshotspinner').hide();
+	  $('#screenshotimage').show();
+	});
+
+	timestamp = new Date().getTime()
+	$("#screenshotimage").attr("src",'/grab?r=700&mode=' + mode + '&timestamp=' + timestamp);
+}

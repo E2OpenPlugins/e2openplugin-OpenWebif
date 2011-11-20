@@ -338,6 +338,21 @@ color:#87BCF8;
 	width: 30%;
 }
 
+.screenshotOptions {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	width: 400px;
+	height: 40px;
+	text-align:center;
+	font-weight: bold;
+}
+
+.screenshotContainer {
+	width: 100%;
+	text-align:center;
+}
+
 .channel_tr
 {
 	width:100%; 
