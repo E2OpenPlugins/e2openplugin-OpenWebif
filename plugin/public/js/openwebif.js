@@ -47,13 +47,12 @@ $(function() {
 	$('#volimage').click(function(){
 		if (mutestatus == 0) {
 			mutestatus = 1;
-			$.ajax("web/vol?set=set0")
 			$("#volimage").attr("src","/images/volume_mute.png");
 		} else  {
 			mutestatus = 0;
-			$.ajax("web/vol?set=set" + $("#amount").val())
 			$("#volimage").attr("src","/images/volume.png");
-		} 
+		}
+		$.ajax("web/vol?set=mute")
 	});
 	
 	getStatusInfo();

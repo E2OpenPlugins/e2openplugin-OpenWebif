@@ -41,7 +41,7 @@ class FileController(resource.Resource):
 					request.finish()
 
 				if action == "stream":
-					#request.setHeader("content-disposition", "attachment;filename=\"stream.m3u\"")
+					request.setHeader("content-disposition", "inline;filename=\"stream.m3u\"")
 					request.setHeader("content-type", "audio/mpegurl")
 					request.write("#EXTM3U\n")
 					request.write("http://%s:%s/file?action=download&file=%s" % (self.getLocalIPAddress(), config.OpenWebif.port.value, quote(file)))
