@@ -45,17 +45,8 @@ class AjaxController(BaseController):
 			movies = getMovieList()
 		return movies
 
-	def P_screenshot(self, request):
-		return {}
-
 	def P_eventdescription(self, request):
 		return getEventDesc(request.args["sref"][0], request.args["idev"][0])
-		
-	def P_powerstate(self, request):
-		return {}
-
-	def P_message(self, request):
-		return {}
 
 	def P_about(self, request):
 		return {}

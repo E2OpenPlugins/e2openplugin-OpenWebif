@@ -48,3 +48,12 @@ class RootController(BaseController):
 		
 	def P_workinprogress(self, request):
 		return {}
+
+	def P_screenshot(self, request):
+		return {}
+		
+	def P_powerstate(self, request):
+		return {}
+
+	def P_message(self, request):
+		return {}
