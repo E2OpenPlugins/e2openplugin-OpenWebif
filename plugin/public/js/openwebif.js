@@ -236,6 +236,18 @@ function grabScreenshot(mode) {
 	  $('#screenshotimage').show();
 	});
 
+	if (mode != "auto" && typeof screenshotMode != "undefined") {
+		screenshotMode = mode;
+	}
+	
+	if (mode == "auto") {
+		if (typeof screenshotMode != "undefined") {
+			mode = screenshotMode;
+		} else {
+			mode = 'all';
+		}
+	}
+	
 	timestamp = new Date().getTime()
 	$("#screenshotimage").attr("src",'/grab?r=700&mode=' + mode + '&timestamp=' + timestamp);
 }
@@ -245,7 +257,7 @@ function sendMessage() {
 	var type = $('#messageType').val();
 	var timeout = $('#messageTimeout').val();
 	
-	$.getJSON('api/message?text=' + text + '&type=' + type + '&timeout=' + timeout, function(result) {
+	$.getJSON('api/message?text=' + text + '&type=' + type + '&timeout=' + timeout, function(result){
 		$("#messageSentResponse").html(result['message']);
 	});
 }

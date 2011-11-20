@@ -31,13 +31,13 @@
 	jQuery('#screenshotRefreshInterval').change(function() {
 		if (jQuery('#screenshotRefreshStatus').is(':checked')) {
 			clearInterval(screenshotInterval); 
-			screenshotInterval = setInterval("grabScreenshot('" + screenshotMode + "')", (parseInt(jQuery('#screenshotRefreshInterval').val())+1)*1000);
+			screenshotInterval = setInterval("grabScreenshot('auto')", (parseInt(jQuery('#screenshotRefreshInterval').val())+1)*1000);
 		}
 	});
 	
 	jQuery('#screenshotRefreshStatus').change(function() {
 		if (jQuery('#screenshotRefreshStatus').is(':checked')) {
-			screenshotInterval = setInterval("grabScreenshot('" + screenshotMode + "')", (parseInt(jQuery('#screenshotRefreshInterval').val())+1)*1000);
+			screenshotInterval = setInterval("grabScreenshot('auto')", (parseInt(jQuery('#screenshotRefreshInterval').val())+1)*1000);
 		} else {
 			clearInterval(screenshotInterval); 
 		}
