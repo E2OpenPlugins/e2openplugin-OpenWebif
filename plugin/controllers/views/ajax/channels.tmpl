@@ -4,7 +4,7 @@
 				<tbody>
 					<tr class="channel_tr">	
 						<div class="channel_left">
-							<a href="#" onclick="webapi_execute('web/zap?sRef=$quote($channel.ref)'); return false">$channel.name</a><br />	
+							<a href="#" onclick="zapChannel('$channel.ref', '$channel.name'); return false">$channel.name</a><br />	
 						</div>
 						<div class="channel_right">
 							<a href="#" onclick="open_epg_pop('ajax/epgpop?sref=$quote($channel.ref)')">

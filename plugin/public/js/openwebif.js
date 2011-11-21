@@ -207,6 +207,13 @@ function open_epg_search_pop() {
 	$("#epgSearch").val("");
 }
 
+function zapChannel(sRef, sname) {
+	var url = 'api/zap?sRef=' + escape(sRef);
+	$.getJSON(url, function(result){
+		$("#osd").html('zap to: ' + sname);
+	});
+}
+
 function getStatusInfo() {
 	$.getJSON('api/statusinfo', function(statusinfo) {
 		// Set Volume
