@@ -179,14 +179,16 @@ function webapi_execute(url) {
 	return false;
 }
 
-function toggle_chan_des(obj, url) {
-	var iddiv = "#" + obj;
+function toggle_chan_des(evId, sRef) {
+	var url = 'ajax/eventdescription?sref=' + escape(sRef) + '&idev=' + evId;
+	var iddiv = "#" + evId;
 	$(iddiv).load(url);
 	$(iddiv).toggle('blind', '', '500');
 	
 }
 
-function open_epg_pop(url) {
+function open_epg_pop(sRef) {
+	var url = 'ajax/epgpop?sref=' + escape(sRef);
 	$.popupWindow(url, {
 		height: 500,
 		width: 900,

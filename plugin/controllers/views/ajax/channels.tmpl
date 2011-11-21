@@ -1,4 +1,3 @@
-#from urllib import quote
 #for $channel in $channels
 			<table width="100%">
 				<tbody>
@@ -7,7 +6,7 @@
 							<a href="#" onclick="zapChannel('$channel.ref', '$channel.name'); return false">$channel.name</a><br />	
 						</div>
 						<div class="channel_right">
-							<a href="#" onclick="open_epg_pop('ajax/epgpop?sref=$quote($channel.ref)')">
+							<a href="#" onclick="open_epg_pop('$channel.ref')">
 							<img src="../images/ico_epg.png" title="Show EPG for $channel.name" border="0">
 							</a>
 							<a href='#' onClick="dialog_notyet();return false">
@@ -22,7 +21,7 @@
 						</div>
 						<div class="channel_right">
 							+$channel.now_left min
-							<a href='#' onClick="toggle_chan_des('$channel.now_ev_id', 'ajax/eventdescription?sref=$quote($channel.ref)&idev=$channel.now_ev_id'); return false">
+							<a href='#' onClick="toggle_chan_des('$channel.now_ev_id', '$channel.ref'); return false">
 							<img src="../images/ico_desc.png" title="$channel.now_title description" border="0">
 							</a>
 						</div>
@@ -36,7 +35,7 @@
 						</div>
 						<div class="channel_right">
 							$channel.next_duration min
-							<a href='#' onClick="toggle_chan_des('$channel.next_ev_id', 'ajax/eventdescription?sref=$quote($channel.ref)&idev=$channel.next_ev_id'); return false">
+							<a href='#' onClick="toggle_chan_des('$channel.next_ev_id', '$channel.ref'); return false">
 								<img src="../images/ico_desc.png" title="$channel.next_title description" border="0">
 							</a>
 						</div>
