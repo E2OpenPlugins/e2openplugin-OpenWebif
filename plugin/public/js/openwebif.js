@@ -149,10 +149,6 @@ $(function() {
 });
 
 
-
-
-
-
 function dialog_notyet(){
 	$('#dialog').dialog('open');
 	return false;
@@ -230,8 +226,10 @@ function getStatusInfo() {
 			mutestatus = 0;
 			$("#volimage").attr("src","/images/volume.png");
 		}
-				
-		$("#osd").html(statusinfo['currservice_station'] + ": " + statusinfo['currservice_name']);
+
+		if (statusinfo['currservice_station']) {
+			$("#osd").html(statusinfo['currservice_station'] + ": " + statusinfo['currservice_name']);
+		}
 	});
 }
 
