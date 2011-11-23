@@ -22,20 +22,36 @@ class AjaxController(BaseController):
 		return getCurrentFullInfo(self.session)
 		
 	def P_bouquets(self, request):
-		return getBouquets()
-		
+		stype = "tv"
+		if "stype" in request.args.keys():
+			stype = request.args["stype"][0]
+		bouq = getBouquets(stype)
+		return { "bouquets": bouq['bouquets'], "stype": stype }
+			
 	def P_providers(self, request):
-		return getProviders()
+		stype = "tv"
+		if "stype" in request.args.keys():
+			stype = request.args["stype"][0]
+		prov = getProviders(stype)
+		return { "providers": prov['providers'], "stype": stype }
 		
 	def P_satellites(self, request):
-		return getSatellites()
+		stype = "tv"
+		if "stype" in request.args.keys():
+			stype = request.args["stype"][0]
+		sat = getSatellites(stype)
+		return { "satellites": sat['satellites'], "stype": stype }
+
 	
 	def P_channels(self, request):
+		stype = "tv"
+		idbouquet = "ALL"
+		if "stype" in request.args.keys():
+			stype = request.args["stype"][0]
 		if "id" in request.args.keys():
-			channels = getChannels(request.args["id"][0])
-		else:
-			channels = getChannels()
-		return channels
+			idbouquet = request.args["id"][0]
+		return getChannels(idbouquet, stype)
+		
 
 	def P_eventdescription(self, request):
 		return getEventDesc(request.args["sref"][0], request.args["idev"][0])

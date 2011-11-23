@@ -120,24 +120,32 @@ def getCurrentFullInfo(session):
 	return { "info": inf, "now": now, "next": next }
 
 
-def getBouquets():
+def getBouquets(stype):
 	s_type = service_types_tv
+	s_type2 = "bouquets.tv"
+	if stype == "radio":
+		s_type = service_types_radio
+		s_type2 = "bouquets.radio"
 	serviceHandler = eServiceCenter.getInstance()
-	services = serviceHandler.list(eServiceReference('%s FROM BOUQUET "bouquets.tv" ORDER BY bouquet'%(s_type)))
+	services = serviceHandler.list(eServiceReference('%s FROM BOUQUET "%s" ORDER BY bouquet'%(s_type, s_type2)))
 	bouquets = services and services.getContent("SN", True)
 	return { "bouquets": bouquets }
 	
-def getProviders():
+def getProviders(stype):
 	s_type = service_types_tv
+	if stype == "radio":
+		s_type = service_types_radio
 	serviceHandler = eServiceCenter.getInstance()
 	services = serviceHandler.list(eServiceReference('%s FROM PROVIDERS ORDER BY name'%(s_type)))
 	providers = services and services.getContent("SN", True)	
 	return { "providers": providers }
 	
 
-def getSatellites():
+def getSatellites(stype):
 	ret = []
 	s_type = service_types_tv
+	if stype == "radio":
+		s_type = service_types_radio
 	refstr = '%s FROM SATELLITES ORDER BY satellitePosition'%(s_type)
 	ref = eServiceReference(refstr)
 	serviceHandler = eServiceCenter.getInstance()
@@ -182,15 +190,17 @@ def getSatellites():
 	return { "satellites": ret }
 	
 	
-def getChannels(idb=""):
+def getChannels(idbouquet, stype):
 	ret = []
 	s_type = service_types_tv
-	epgcache = eEPGCache.getInstance()
-	if idb == "":
-		idb = '%s ORDER BY name'%(s_type)
+	if stype == "radio":
+		s_type = service_types_radio
+	if idbouquet == "ALL":
+		idbouquet = '%s ORDER BY name'%(s_type)
 
+	epgcache = eEPGCache.getInstance()
 	serviceHandler = eServiceCenter.getInstance()
-	services = serviceHandler.list(eServiceReference(idb))
+	services = serviceHandler.list(eServiceReference(idbouquet))
 	channels = services and services.getContent("SN", True)	
 	for channel in channels:
 		if not channel[0].startswith("1:64:"):

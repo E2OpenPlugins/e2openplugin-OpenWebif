@@ -44,6 +44,20 @@ $(function() {
 		$("#tvcontent").html(loadspinner).load("ajax/channels");
 	});
 
+	$('#radiobutton0').click(function(){
+		$("#tvcontent").html(loadspinner).load("ajax/bouquets?stype=radio");
+	});
+	$('#radiobutton1').click(function(){
+		$("#tvcontent").html(loadspinner).load("ajax/providers?stype=radio");
+	});
+	$('#radiobutton2').click(function(){
+		$("#tvcontent").load("ajax/satellites?stype=radio");
+	});
+	$('#radiobutton3').click(function(){
+		$("#tvcontent").html(loadspinner).load("ajax/channels?stype=radio");
+	});	
+
+
 	$('#volimage').click(function(){
 		if (mutestatus == 0) {
 			mutestatus = 1;

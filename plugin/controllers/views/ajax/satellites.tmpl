@@ -1,6 +1,6 @@
 #from urllib import quote
 #for $satellite in $satellites
-	<a href="#" onclick="load_tvcontent('ajax/channels?id=$quote($satellite.service)'); return false">
+	<a href="#" onclick="load_tvcontent('ajax/channels?id=$quote($satellite.service)&stype=$stype'); return false">
 		<img border='0' src='images/folder.png' alt='' />&nbsp;&nbsp;$satellite.name
 	</a>
 	<br />

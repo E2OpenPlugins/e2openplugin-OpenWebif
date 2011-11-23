@@ -65,3 +65,6 @@ class RootController(BaseController):
 		else:
 			movies = getMovieList()
 		return movies
+	
+	def P_radio(self, request):
+		return {}
