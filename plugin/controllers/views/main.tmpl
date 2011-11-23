@@ -86,8 +86,10 @@
 			</div>
 			<div id="leftmenu_main">
 				<div id="leftmenu_top">Epg Search</div>
-				<div style="width:100%; text-align:center; padding-top:5px;"><input type="text" id="epgSearch" size="14" /></div>
-				<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button onclick="open_epg_search_pop();">Search</button></div>
+				<form action="" onSubmit="open_epg_search_pop(); return false;">
+					<div style="width:100%; text-align:center; padding-top:5px;"><input type="text" id="epgSearch" size="14" /></div>
+					<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button>Search</button></div>
+				</form>
 			</div>
 		</div>
 		
