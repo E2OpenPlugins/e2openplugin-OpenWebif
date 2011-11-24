@@ -15,6 +15,7 @@ from RecordTimer import parseEvent
 from Screens.Standby import inStandby
 from Tools.DreamboxHardware import getFPVersion
 from Tools.Directories import fileExists, pathExists
+from time import time, localtime, strftime
 from enigma import eDVBVolumecontrol, eServiceCenter
 
 import os
@@ -171,8 +172,8 @@ def getStatusInfo(self):
 		curEvent = parseEvent(event)
 		statusinfo['currservice_name'] = curEvent[2]
 		statusinfo['currservice_serviceref'] = serviceref.toString()
-		statusinfo['currservice_begin'] = int(curEvent[0])
-		statusinfo['currservice_end'] = int(curEvent[1])
+		statusinfo['currservice_begin'] = strftime("%H:%M", (localtime(curEvent[0])))
+		statusinfo['currservice_end'] = strftime("%H:%M", (localtime(curEvent[1])))
 		statusinfo['currservice_description'] = curEvent[3]
 		statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref)
 	else:

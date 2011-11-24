@@ -223,6 +223,7 @@ function zapChannel(sRef, sname) {
 	var url = 'api/zap?sRef=' + escape(sRef);
 	$.getJSON(url, function(result){
 		$("#osd").html('zap to: ' + sname);
+		$("#osd_bottom").html(" ");
 	});
 }
 
@@ -242,7 +243,8 @@ function getStatusInfo() {
 		}
 
 		if (statusinfo['currservice_station']) {
-			$("#osd").html(statusinfo['currservice_station'] + ": " + statusinfo['currservice_name']);
+			$("#osd").html("<span style='color:#EA7409;font-weight:bold;'>" + statusinfo['currservice_station'] + "</span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + statusinfo['currservice_name']);
+			$("#osd_bottom").html(statusinfo['currservice_description']);
 		}
 	});
 }
