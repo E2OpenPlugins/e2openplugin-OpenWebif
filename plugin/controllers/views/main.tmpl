@@ -21,18 +21,11 @@
 			<h2>Open Source Web Interface for Linux set-top box</h2>
 		</div>
 		
-		<div id="menu">
-			<ul>
-				<!-- 
-				<li class="menuitem"><a href="work_in_progress.html">Movies</a></li>
-				<li class="menuitem"><a href="work_in_progress.html">Timers</a></li>
-				<li class="menuitem"><a href="work_in_progress.html">Web Tv</a></li>
-				-->
-			</ul>
-		</div>
-		
 		<div id="osd">
-			n/a
+			Nothing playing.
+		</div>
+		<div id="osd_bottom">
+			
 		</div>
 		
 		<div id="dialog" title="Work in progress">
@@ -43,8 +36,8 @@
 			<div id="leftmenu_main">
 				<div id="leftmenu_top">Main</div>
 				<ul>
-					<li><a href="/index">Television</a></li>
-					<li><a href='#' onClick="dialog_notyet();return false">Radio</a></li>
+					<li><a href='/index'>Television</a></li>
+					<li><a href='/radio'>Radio</a></li>
 				</ul>
 			</div>
 			<div id="leftmenu_main">
@@ -62,12 +55,10 @@
 			<div id="leftmenu_main">    
 				<div id="leftmenu_top">Box Control</div>
 				<ul>
+					<li><a href='/powerstate'>Power Control</a></li>
 					<li><a href="/workinprogress">Remote Control</a></li>
-					<li><a href="/workinprogress">Power</a></li>
-					<li><a href="/workinprogress">Screen shot (All)</a></li>
-					<li><a href="/workinprogress">Screen shot (Video)</a></li>
-					<li><a href="/workinprogress">Screen shot (Osd)</a></li>
-					<li><a href="/workinprogress">Send a Message</a></li>
+					<li><a href='/screenshot'>Grab Screenshot</a></li>
+					<li><a href='/message'>Send a Message</a></li>
 					<li><a href="/workinprogress">Timers</a></li>
 				</ul>
 			</div>
@@ -82,14 +73,16 @@
 			<div id="leftmenu_main">
 				<div id="leftmenu_top">Stream</div>
 				<ul>
-					<li><a href="/workinprogress">Movies</a></li>
+					<li><a href="/movies">Movies</a></li>
 					<li><a href="/workinprogress">Web Tv</a></li>
 				</ul>
 			</div>
 			<div id="leftmenu_main">
 				<div id="leftmenu_top">Epg Search</div>
-				<div style="width:100%; text-align:center; padding-top:5px;"><input type="text" id="epgSearch" size="14" /></div>
-				<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button onclick="open_epg_search_pop();">Search</button></div>
+				<form action="" onSubmit="open_epg_search_pop(); return false;">
+					<div style="width:100%; text-align:center; padding-top:5px;"><input type="text" id="epgSearch" size="14" /></div>
+					<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button>Search</button></div>
+				</form>
 			</div>
 		</div>
 		

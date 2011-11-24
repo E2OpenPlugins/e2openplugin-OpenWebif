@@ -9,10 +9,13 @@
 
 
 from models.info import getBasePath, getPublicPath, getViewsPath, getPiconPath
+from models.grab import grabScreenshot
+from models.movies import getMovieList
 from base import BaseController
 from web import WebController
 from ajax import AjaxController
 from api import ApiController
+from file import FileController
 
 from twisted.web import static
 
@@ -25,6 +28,8 @@ class RootController(BaseController):
 		self.putChild("web", WebController(session))
 		self.putChild("api", ApiController(session))
 		self.putChild("ajax", AjaxController(session))
+		self.putChild("file", FileController(session))
+		self.putChild("grab", grabScreenshot(session))
 		self.putChild("js", static.File(getPublicPath() + "/js"))
 		self.putChild("css", static.File(getPublicPath() + "/css"))
 		self.putChild("images", static.File(getPublicPath() + "/images"))
@@ -43,4 +48,23 @@ class RootController(BaseController):
 		return {}
 		
 	def P_workinprogress(self, request):
+		return {}
+
+	def P_screenshot(self, request):
+		return {}
+		
+	def P_powerstate(self, request):
+		return {}
+
+	def P_message(self, request):
+		return {}
+
+	def P_movies(self, request):
+		if "dirname" in request.args.keys():
+			movies = getMovieList(request.args["dirname"][0])
+		else:
+			movies = getMovieList()
+		return movies
+	
+	def P_radio(self, request):
 		return {}

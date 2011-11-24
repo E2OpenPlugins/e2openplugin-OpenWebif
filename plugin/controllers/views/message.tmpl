@@ -1,0 +1,36 @@
+<div id="content_main" style="min-height: 500px;">
+	<div id="info">
+		<h3>Send Message</h3>
+		<hr />
+			<div class="sendMessageContainer">
+				<table style="width: 50%;" align="center">
+					<tbody>
+					<tr>
+						<td>Text</td>
+						<td><textarea rows="3" cols="30" id="messageText"></textarea></td>
+					</tr>
+					<tr>
+						<td>Timeout</td>
+						<td><input type="text" value="30" id="messageTimeout"></td>
+					</tr>
+					<tr>
+						<td>Type</td>
+						<td>
+							<select id="messageType">
+								<option value="2">Info</option>
+								<option value="1">Warning</option>
+								<option value="3">Error</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" style="text-align: center;">
+							<button onclick="sendMessage();">Send Message</button>
+							<div id="messageSentResponse"></div>
+						</td>
+					</tr>
+				</tbody>
+				</table>
+			</div>
+	</div>
+</div>

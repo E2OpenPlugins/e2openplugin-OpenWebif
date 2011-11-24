@@ -7,13 +7,15 @@
 #                                                                            #
 ##############################################################################
 
-from models.info import getInfo, getCurrentTime
+from models.info import getInfo, getCurrentTime , getStatusInfo
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
-from models.control import zapService, remoteControl
+from models.control import zapService, remoteControl, setPowerState
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, cleanupTimer, writeTimerList, recordNow
+from models.message import sendMessage
+from models.movies import getMovieList
 
 from base import BaseController
 
@@ -46,7 +48,10 @@ class WebController(BaseController):
 			"info": getInfo(),
 			"service": getCurrentService(self.session)
 		}
-	
+
+	def P_statusinfo(self, request):
+		return getStatusInfo(self)
+
 	def P_vol(self, request):
 		if "set" not in request.args.keys() or request.args["set"][0] == "state":
 			return getVolumeStatus()
@@ -118,7 +123,17 @@ class WebController(BaseController):
 			rcu = request.args["rcu"][0]
 			
 		return remoteControl(id, type, rcu)
-			
+
+	def P_powerstate(self, request):
+		res = self.testMandatoryArguments(request, ["newstate"])
+		if res:
+			return {
+				"result": False,
+				"message": "Missing parameter 'newstate'"
+			}
+
+		return setPowerState(self.session, request.args["newstate"][0])
+
 	def P_getlocations(self, request):
 		return getLocations()
 		
@@ -142,7 +157,17 @@ class WebController(BaseController):
 			return res
 		
 		return removeLocation(request.args["dirname"][0])
-		
+
+	def P_message(self, request):
+		return sendMessage(self, request)
+
+	def P_movies(self, request):
+		if "dirname" in request.args.keys():
+			movies = getMovieList(request.args["dirname"][0])
+		else:
+			movies = getMovieList()
+		return movies
+
 	def P_timerlist(self, request):
 		return getTimers(self.session)
 		

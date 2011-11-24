@@ -57,3 +57,29 @@ def remoteControl(key, type = "", rcu = ""):
 		"result": True,
 		"message": "RC command '%s' has been issued" % str(key)
 	}
+	
+def setPowerState(session, state):
+	from Screens.Standby import Standby, TryQuitMainloop, inStandby
+	state = int(state)
+	
+	if state == 0: # Toggle StandBy
+		if inStandby == None:					
+			session.open(Standby)
+		else:
+			inStandby.Power()
+	elif state == 1: # DeepStandBy
+		session.open(TryQuitMainloop, state)
+	elif state == 2: # Reboot
+		session.open(TryQuitMainloop, state)
+	elif state == 3: # Restart Enigma
+		session.open(TryQuitMainloop, state)
+	else:
+		return {
+			"result": False,
+			"message": "Unknown PowerState '%s' set" % str(state)
+		}
+				
+	return {
+		"result": True,
+		"message": "PowerState '%s' set" % str(state)
+	}
