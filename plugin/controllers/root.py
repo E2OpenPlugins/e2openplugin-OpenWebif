@@ -16,6 +16,7 @@ from web import WebController
 from ajax import AjaxController
 from api import ApiController
 from file import FileController
+from mobile import MobileController
 
 from twisted.web import static
 
@@ -30,6 +31,7 @@ class RootController(BaseController):
 		self.putChild("ajax", AjaxController(session))
 		self.putChild("file", FileController(session))
 		self.putChild("grab", grabScreenshot(session))
+		self.putChild("mobile", MobileController(session))
 		self.putChild("js", static.File(getPublicPath() + "/js"))
 		self.putChild("css", static.File(getPublicPath() + "/css"))
 		self.putChild("images", static.File(getPublicPath() + "/images"))
