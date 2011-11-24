@@ -175,7 +175,7 @@ def getStatusInfo(self):
 		statusinfo['currservice_begin'] = strftime("%H:%M", (localtime(curEvent[0])))
 		statusinfo['currservice_end'] = strftime("%H:%M", (localtime(curEvent[1])))
 		statusinfo['currservice_description'] = curEvent[3]
-		statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref)
+		statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
 	else:
 		statusinfo['currservice_name'] = "N/A"
 		statusinfo['currservice_serviceref'] = ""
