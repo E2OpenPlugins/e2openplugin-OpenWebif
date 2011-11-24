@@ -9,19 +9,21 @@
 	<script src="/js/jquery.mobile-1.0.min.js"></script>
  </head>
  <body>
-    <div>
- <body>
 	<div data-role="page">
 		<div id="header">
 			<div class="button" onClick="history.back()">Back</div>
-			<div class="button-bold">+</div>
 			<h1>OpenWebif</h1>
-			<h2>Screenshot</h2>
 		</div>
 		
 		<div>
+			<fieldset data-type="horizontal" data-role="controlgroup" style="width: 260px; margin: auto; margin-top: 15px;">
+			   <div onClick="jQuery('#screenshot').attr('src','/grab?r=700&mode=all&timestamp=' + new Date().getTime()); return false;"><input type="radio" id="radio-view-a" name="radio-view"><label for="radio-view-a" data-theme="c">All</label></div>
+			   <div onClick="jQuery('#screenshot').attr('src','/grab?r=700&mode=video&timestamp=' + new Date().getTime()); return false;"><input type="radio" id="radio-view-b" name="radio-view"><label for="radio-view-b" data-theme="c">Video</label></div>
+			   <div onClick="jQuery('#screenshot').attr('src','/grab?r=700&mode=osd&timestamp=' + new Date().getTime()); return false;"><input type="radio" id="radio-view-c" name="radio-view"><label for="radio-view-c" data-theme="c">OSD</label></div>
+			</fieldset>
+			
 			<div id="mainContent">
-				<img src="/grab?r=275&mode=all" width="275" height="154" alt="Screenshot">
+				<img id="screenshot" src="/grab?r=275&mode=all" width="275" height="154" alt="Screenshot">
 			</div>
 			
 			<a href="#" onClick="location.reload(true)" data-role="button">Refresh</a>
