@@ -176,7 +176,7 @@ def getStatusInfo(self):
 
 	if event is not None:
 		curEvent = parseEvent(event)
-		statusinfo['currservice_name'] = curEvent[2]
+		statusinfo['currservice_name'] = curEvent[2].replace('\xc2\x86', '').replace('\xc2\x87', '')
 		statusinfo['currservice_serviceref'] = serviceref.toString()
 		statusinfo['currservice_begin'] = strftime("%H:%M", (localtime(curEvent[0])))
 		statusinfo['currservice_end'] = strftime("%H:%M", (localtime(curEvent[1])))

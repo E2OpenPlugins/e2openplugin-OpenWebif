@@ -220,7 +220,7 @@ def getChannels(idbouquet, stype):
 			chan['name'] = filterName(channel[1])
 			nowevent = epgcache.lookupEvent(['TBDCIX', (channel[0], 0, -1)])
 			if nowevent[0][0] is not None:
-				chan['now_title'] = nowevent[0][0]
+				chan['now_title'] = filterName(nowevent[0][0])
 				chan['now_begin'] =  strftime("%H:%M", (localtime(nowevent[0][1])))
 				chan['now_end'] = strftime("%H:%M",(localtime(nowevent[0][1] + nowevent[0][2])))
 				chan['now_left'] = int (((nowevent[0][1] + nowevent[0][2]) - nowevent[0][3]) / 60)
@@ -228,7 +228,7 @@ def getChannels(idbouquet, stype):
 				chan['now_ev_id'] = nowevent[0][4]
 				chan['now_idp'] = "nowd" + str(idp)
 				nextevent = epgcache.lookupEvent(['TBDIX', (channel[0], +1, -1)])
-				chan['next_title'] = nextevent[0][0]
+				chan['next_title'] = filterName(nextevent[0][0])
 				chan['next_begin'] =  strftime("%H:%M", (localtime(nextevent[0][1])))
 				chan['next_end'] = strftime("%H:%M",(localtime(nextevent[0][1] + nextevent[0][2])))
 				chan['next_duration'] = int(nextevent[0][2] / 60)
@@ -285,7 +285,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1):
 			ev['duration'] = int(event[2] / 60)
 			ev['duration_sec'] = event[2]
 			ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
-			ev['title'] = event[3]
+			ev['title'] = filterName(event[3])
 			ev['shortdesc'] = event[4]
 			ev['longdesc'] = event[5]
 			ev['sref'] = ref
@@ -391,7 +391,7 @@ def getSearchEpg(sstr):
 			ev['duration_sec'] = event[2]
 			ev['duration'] = int(event[2] / 60)
 			ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
-			ev['title'] = event[3]
+			ev['title'] = filterName(event[3])
 			ev['shortdesc'] = event[4]
 			ev['longdesc'] = event[5]
 			ev['sref'] = event[7]
