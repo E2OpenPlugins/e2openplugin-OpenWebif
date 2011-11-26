@@ -7,6 +7,7 @@
 #                                                                            #
 ##############################################################################
 from Tools.Directories import fileExists
+from Components.Sources.ServiceList import ServiceList
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache
 from time import time, localtime, strftime
@@ -234,6 +235,21 @@ def getChannels(idbouquet, stype):
 			
 	return { "channels": ret }
 		
+def getServices(sRef):
+	services = []
+	
+	if sRef == "":
+		sRef = '%s FROM BOUQUET "bouquets.tv" ORDER BY bouquet' % (service_types_tv)
+		
+	servicelist = ServiceList(eServiceReference(sRef))
+	slist = servicelist.getServicesAsList()
+	for sitem in slist:
+		service = {}
+		service['servicereference'] = sitem[0]
+		service['servicename'] = sitem[1]
+		services.append(service)
+			
+	return { "services": services }
 
 def getEventDesc(ref, idev):
 	epgcache = eEPGCache.getInstance()

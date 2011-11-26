@@ -8,7 +8,7 @@
 ##############################################################################
 
 from models.info import getInfo, getCurrentTime , getStatusInfo
-from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg
+from models.services import getCurrentService, getBouquets, getServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState
@@ -139,7 +139,15 @@ class WebController(BaseController):
 		
 	def P_getcurrlocation(self, request):
 		return getCurrentLocation()
+
+	def P_getservices(self, request):
+		if "sRef" in request.args.keys():
+			sRef = request.args["sRef"][0]
+		else:
+			sRef = ""
 		
+		return getServices(sRef)
+
 	def P_addlocation(self, request):
 		res = self.testMandatoryArguments(request, ["dirname"])
 		if res:
@@ -161,7 +169,7 @@ class WebController(BaseController):
 	def P_message(self, request):
 		return sendMessage(self, request)
 
-	def P_movies(self, request):
+	def P_movielist(self, request):
 		if "dirname" in request.args.keys():
 			movies = getMovieList(request.args["dirname"][0])
 		else:
