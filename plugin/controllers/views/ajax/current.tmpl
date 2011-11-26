@@ -1,50 +1,52 @@
 <!-- OSD -->
 <div style="width:100%;height:137px;background-image:url(/images/osd/osd_back.png);"></div>
-<div style="position:absolute;top:225px;left:215px;color:#FFF;font-size:13px;font-weight:bold;">$info.date</div>
-<div style="position:absolute;top:250px;left:208px"><img border='0' src='$getVar("info.picon", "/images/default_picon.png")' alt='' /></div>
-<div style="position:absolute;top:220px;left:330px;color:#FFF;width:500px;text-align:center;font-size:18px;">$info.name</div>
-<div style="position:absolute;top:245px;left:340px;color:#FFF;font-size:14px;">$getVar("now.begin", " ")</div>
-<div style="position:absolute;top:245px;left:390px;color:#FFF;font-size:14px;">$getVar("now.title", " ")</div>
-<div style="position:absolute;top:245px;left:790px;color:#FFF;font-size:14px;">+$getVar("now.tleft", " ") min</div>
-<div style="position:absolute;top:265px;left:390px;"><img border='0' height='14px' src='/images/osd/chan_bar_back.png' alt='' /></div>
-<div style="position:absolute;top:265px;left:390px;"><img border='0' height='14px' width='${getVar("now.progress", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
-<div style="position:absolute;top:280px;left:340px;color:#FFF;font-size:14px;">$getVar("next.begin", " ")</div>
-<div style="position:absolute;top:280px;left:390px;color:#FFF;font-size:14px;">$getVar("next.title", " ")</div>
-<div style="position:absolute;top:280px;left:790px;color:#FFF;font-size:14px;">&nbsp; $getVar("next.duration", " ") min</div>
-<div style="position:absolute;top:300px;left:340px;color:#FFF;font-size:14px;">$getVar("info.tunertype", " ")</div>
-<div style="position:absolute;top:300px;left:500px;color:#FFF">Snr: $getVar("info.snr", "0") % <img border='0' height='14px' src='/images/osd/snr_bar_back.png' alt='' /> Ber: $getVar("info.ber", "N/A") </div>
-<div style="position:absolute;top:300px;left:572px;"><img border='0' height='14px' width='${getVar("info.snr", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
-<div style="position:absolute;top:320px;left:190px;color:#FFF;width:135px;text-align:center;font-size:13px;font-weight:bold;">$info.provider</div>
-<div style="position:absolute;top:325px;left:340px;color:#FFF;font-size:14px;"> $info.width x $info.height </div>
+<div style="position:absolute;top:225px;left:220px;color:#FFF;font-size:13px;font-weight:bold;">$info.date</div>
+<div style="position:absolute;top:254px;left:212px"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "/images/default_picon.png")' alt='' /></div>
+<div style="position:absolute;top:220px;left:300px;color:#FFF;width:500px;text-align:center;font-size:18px;">$info.name</div>
+<div style="position:absolute;top:248px;left:330px;color:#FFF;font-size:14px;">$getVar("now.begin", " ")</div>
+<div style="position:absolute;top:248px;left:380px;color:#FFF;font-size:14px;">$getVar("now.title", " ")</div>
+<div style="position:absolute;top:248px;left:780px;color:#FFF;font-size:14px;">+$getVar("now.tleft", " ") min</div>
+<div style="position:absolute;top:265px;left:380px;"><img border='0' height='14px' src='/images/osd/chan_bar_back.png' alt='' /></div>
+<div style="position:absolute;top:265px;left:380px;"><img border='0' height='14px' width='${getVar("now.progress", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
+<div style="position:absolute;top:276px;left:330px;color:#FFF;font-size:14px;">$getVar("next.begin", " ")</div>
+<div style="position:absolute;top:276px;left:380px;color:#FFF;font-size:14px;">$getVar("next.title", " ")</div>
+<div style="position:absolute;top:276px;left:780px;color:#FFF;font-size:14px;">&nbsp; $getVar("next.duration", " ") min</div>
+<div style="position:absolute;top:299px;left:330px;color:#FFF;font-size:14px;">$getVar("info.tunertype", " ")</div>
+<div style="position:absolute;top:298px;left:500px;color:#FFF">Snr: $getVar("info.snr", "0") % <img border='0' height='14px' src='/images/osd/snr_bar_back.png' alt='' /> Ber: $getVar("info.ber", "N/A") </div>
+<div style="position:absolute;top:298px;left:572px;"><img border='0' height='14px' width='${getVar("info.snr", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
+<div style="position:absolute;top:320px;left:190px;color:#FFF;width:140px;text-align:center;font-size:13px;font-weight:bold;">$info.provider</div>
+<div style="position:absolute;top:320px;left:330px;color:#FFF;font-size:14px;"> $info.width x $info.height </div>
 #if $info.tunernumber == 0
-<div style="position:absolute;top:320px;left:428px"><img border='0' src='/images/osd/icon_a.png' alt='' /></div>
+<div style="position:absolute;top:319px;left:431px"><img border='0' src='/images/osd/icon_a.png' alt='' /></div>
 #else if $info.tunernumber == 1
-<div style="position:absolute;top:320px;left:450px"><img border='0' src='/images/osd/icon_b.png' alt='' /></div>
+<div style="position:absolute;top:319px;left:451px"><img border='0' src='/images/osd/icon_b.png' alt='' /></div>
 #else if $info.tunernumber == 2
-<div style="position:absolute;top:320px;left:472px"><img border='0' src='/images/osd/icon_c.png' alt='' /></div>
+<div style="position:absolute;top:319px;left:472px"><img border='0' src='/images/osd/icon_c.png' alt='' /></div>
 #else if $info.tunernumber == 3
-<div style="position:absolute;top:320px;left:494px"><img border='0' src='/images/osd/icon_d.png' alt='' /></div>
+<div style="position:absolute;top:319px;left:493px"><img border='0' src='/images/osd/icon_d.png' alt='' /></div>
 #end if
 #if $info.crypt == 1
-<div style="position:absolute;top:320px;left:518px"><img border='0' src='/images/osd/icon_crypt.png' alt='' /></div>
+<div style="position:absolute;top:317px;left:515px"><img border='0' src='/images/osd/icon_crypt.png' alt='' /></div>
 #end if
 #if $info.dolby == True
-<div style="position:absolute;top:321px;left:560px"><img border='0' src='/images/osd/icon_dolby.png' alt='' /></div>
+<div style="position:absolute;top:317px;left:561px"><img border='0' src='/images/osd/icon_dolby.png' alt='' /></div>
 #end if
 #if $info.wide == True
-<div style="position:absolute;top:321px;left:630px"><img border='0' src='/images/osd/icon_format.png' alt='' /></div>
+<div style="position:absolute;top:317px;left:627px"><img border='0' src='/images/osd/icon_format.png' alt='' /></div>
 #end if
 #if $info.width > 1900
-<div style="position:absolute;top:321px;left:673px"><img border='0' src='/images/osd/icon_hd.png' alt='' /></div>
+<div style="position:absolute;top:317px;left:673px"><img border='0' src='/images/osd/icon_hd.png' alt='' /></div>
+#else
+<div style="position:absolute;top:317px;left:673px"><img border='0' src='/images/osd/icon_sd.png' alt='' /></div>
 #end if
 #if $info.txtpid != "N/A"
-<div style="position:absolute;top:320px;left:718px"><img border='0' src='/images/osd/icon_txt.png' alt='' /></div>
+<div style="position:absolute;top:317px;left:719px"><img border='0' src='/images/osd/icon_txt.png' alt='' /></div>
 #end if
 #if $info.subs == True
-<div style="position:absolute;top:320px;left:760px"><img border='0' src='/images/osd/icon_sub.png' alt='' /></div>
+<div style="position:absolute;top:317px;left:765px"><img border='0' src='/images/osd/icon_sub.png' alt='' /></div>
 #end if
 #if $info.rec_state == True
-<div style="position:absolute;top:320px;left:806px"><img border='0' src='/images/osd/icon_rec.png' alt='' /></div>
+<div style="position:absolute;top:317px;left:811px"><img border='0' src='/images/osd/icon_rec.png' alt='' /></div>
 #end if
 <!-- /END OSD -->
  
