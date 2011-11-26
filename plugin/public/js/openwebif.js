@@ -219,6 +219,14 @@ function open_epg_search_pop() {
 	$("#epgSearch").val("");
 }
 
+function deleteTimer(sRef, begin, end) {
+	answer = confirm("Really delete this timer?");
+	if (answer == true) {
+		webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end);
+		$('#'+begin+'-'+end).remove();
+	}
+}
+
 function zapChannel(sRef, sname) {
 	var url = 'api/zap?sRef=' + escape(sRef);
 	$.getJSON(url, function(result){
@@ -249,7 +257,7 @@ function getStatusInfo() {
 	});
 }
 
-function grabScreenshot(mode) {
+function grabScreenshot(mode, width) {
 	$('#screenshotspinner').show();
 	$('#screenshotimage').hide();
 	
@@ -269,9 +277,13 @@ function grabScreenshot(mode) {
 			mode = 'all';
 		}
 	}
+
+	if (typeof width == 'undefined') {
+		width = 700;
+	}
 	
 	timestamp = new Date().getTime()
-	$('#screenshotimage').attr("src",'/grab?r=700&mode=' + mode + '&timestamp=' + timestamp);
+	$('#screenshotimage').attr("src",'/grab?r=' + width + '&mode=' + mode + '&timestamp=' + timestamp);
 }
 
 function sendMessage() {
