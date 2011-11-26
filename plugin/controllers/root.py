@@ -11,6 +11,7 @@
 from models.info import getBasePath, getPublicPath, getViewsPath, getPiconPath
 from models.grab import grabScreenshot
 from models.movies import getMovieList
+from models.timers import getTimers
 from base import BaseController
 from web import WebController
 from ajax import AjaxController
