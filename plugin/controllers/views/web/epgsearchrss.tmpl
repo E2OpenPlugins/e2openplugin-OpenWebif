@@ -1,0 +1,33 @@
+#filter WebSafe
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+	<channel>
+		<title>$title</title>
+		<link>
+			http://
+		</link>
+		<description>$description</description>
+		<generator>$generator</generator>
+		#for $event in $events
+		<item>
+			<title>$event.title ($event.date $event.begin)</title>
+			<description>
+				Service: $event.sname
+				<br/>
+				Start Time: $event.date $event.begin
+				<br/>
+				Duration: $event.duration minutes
+				<br/>
+				#if $event.shortdesc
+				$event.shortdesc
+				<br/>
+				#end if
+				<br/>
+				$event.longdesc
+			</description>
+			<author>$event.sname</author>
+		</item>
+		#end for
+   </channel>
+</rss>
+#end filter

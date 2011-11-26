@@ -62,6 +62,7 @@ class BaseController(resource.Resource):
 		path = self.path
 		isJson = self.isJson
 		
+		self.path = self.path.replace(".", "")
 		func = getattr(self, "P_" + self.path, None)
 		if callable(func):
 			# call prePageLoad function if exist
@@ -87,6 +88,7 @@ class BaseController(resource.Resource):
 				if module[-1] == "/":
 					module = module + "index"
 				module = module.strip("/")
+				module = module.replace(".", "")
 				out = self.loadTemplate(module, self.path, data)
 				if out is None:
 					self.error404(request)

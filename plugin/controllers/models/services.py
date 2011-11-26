@@ -239,29 +239,113 @@ def getEventDesc(ref, idev):
 	return { "description": description }
 
 
-def getChannelEpg(ref):
+def getChannelEpg(ref, begintime=-1, endtime=-1):
 	ret = []
 	ev = {}
 	picon = getPicon(ref)
 	epgcache = eEPGCache.getInstance()
-	events = epgcache.lookupEvent(['IBDTSENC', (ref, 0, -1, -1)])
+	events = epgcache.lookupEvent(['IBDTSENC', (ref, 0, begintime, endtime)])
 	if events is not None:
 		for event in events:
 			ev = {}
 			ev['picon'] = picon
+			ev['id'] = event[0]
 			ev['date'] = strftime("%a %d.%b.%Y", (localtime(event[1])))
 			ev['begin'] = strftime("%H:%M", (localtime(event[1])))
+			ev['begin_timestamp'] = event[1]
 			ev['duration'] = int(event[2] / 60)
+			ev['duration_sec'] = event[2]
 			ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
 			ev['title'] = event[3]
 			ev['shortdesc'] = event[4]
 			ev['longdesc'] = event[5]
+			ev['sref'] = ref
 			ev['sname'] = event[6]
 			ev['tleft'] = int (((event[1] + event[2]) - event[7]) / 60)
 			ev['progress'] = int(((event[7] - event[1]) * 100 / event[2]) *4)
+			ev['now_timestamp'] = event[7]
 			ret.append(ev)
 	
-	return { "events": ret }
+	return { "events": ret, "result": True }
+	
+def getBouquetEpg(ref, begintime=-1, endtime=None):
+	ret = []
+	services = eServiceCenter.getInstance().list(eServiceReference(ref))
+	if not services:
+		return { "events": ret, "result": False }
+		
+	search = ['IBDCTSERN']
+	for service in services.getContent('S'):
+		if endtime:
+			search.append((service, 0, begintime, endtime))
+		else:
+			search.append((service, 0, begintime))
+		
+	epgcache = eEPGCache.getInstance()
+	events = epgcache.lookupEvent(search)
+	if events is not None:
+		for event in events:
+			ev = {}
+			ev['id'] = event[0]
+			ev['begin_timestamp'] = event[1]
+			ev['duration_sec'] = event[2]
+			ev['title'] = event[4]
+			ev['shortdesc'] = event[5]
+			ev['longdesc'] = event[6]
+			ev['sref'] = event[7]
+			ev['sname'] = event[8]
+			ev['now_timestamp'] = event[3]
+			ret.append(ev)
+	
+	return { "events": ret, "result": True }
+	
+def getBouquetNowNextEpg(ref, servicetype):
+	ret = []
+	services = eServiceCenter.getInstance().list(eServiceReference(ref))
+	if not services:
+		return { "events": ret, "result": False }
+		
+	search = ['IBDCTSERNX']
+	for service in services.getContent('S'):
+		search.append((service, servicetype, -1))
+		
+	epgcache = eEPGCache.getInstance()
+	events = epgcache.lookupEvent(search)
+	if events is not None:
+		for event in events:
+			ev = {}
+			ev['id'] = event[0]
+			ev['begin_timestamp'] = event[1]
+			ev['duration_sec'] = event[2]
+			ev['title'] = event[4]
+			ev['shortdesc'] = event[5]
+			ev['longdesc'] = event[6]
+			ev['sref'] = event[7]
+			ev['sname'] = event[8]
+			ev['now_timestamp'] = event[3]
+			ret.append(ev)
+	
+	return { "events": ret, "result": True }
+	
+def getNowNextEpg(ref, servicetype):
+	ret = []
+	epgcache = eEPGCache.getInstance()
+	events = epgcache.lookupEvent(['IBDCTSERNX', (ref, servicetype, -1)])
+	if events is not None:
+		for event in events:
+			ev = {}
+			ev['id'] = event[0]
+			ev['begin_timestamp'] = event[1]
+			ev['duration_sec'] = event[2]
+			ev['title'] = event[4]
+			ev['shortdesc'] = event[5]
+			ev['longdesc'] = event[6]
+			ev['sref'] = event[7]
+			ev['sname'] = event[8]
+			ev['now_timestamp'] = event[3]
+			ret.append(ev)
+	
+	return { "events": ret, "result": True }
 	
 def getSearchEpg(sstr):
 	ret = []
@@ -271,19 +355,50 @@ def getSearchEpg(sstr):
 	if events is not None:
 		for event in events:
 			ev = {}
+			ev['id'] = event[0]
 			ev['date'] = strftime("%a %d.%b.%Y", (localtime(event[1])))
+			ev['begin_timestamp'] = event[1]
 			ev['begin'] = strftime("%H:%M", (localtime(event[1])))
+			ev['duration_sec'] = event[2]
 			ev['duration'] = int(event[2] / 60)
 			ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
 			ev['title'] = event[3]
 			ev['shortdesc'] = event[4]
 			ev['longdesc'] = event[5]
+			ev['sref'] = event[7]
 			ev['sname'] = event[6]
 			ev['picon'] = getPicon(event[7])
+			ev['now_timestamp'] = None
 			ret.append(ev)
 	
-	return { "events": ret }
+	return { "events": ret, "result": True }
 
+def getSearchSimilarEpg(ref, eventid):
+	ret = []
+	ev = {}
+	epgcache = eEPGCache.getInstance()
+	events = epgcache.search(('IBDTSENR', 128, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, ref, eventid));
+	if events is not None:
+		for event in events:
+			ev = {}
+			ev['id'] = event[0]
+			ev['date'] = strftime("%a %d.%b.%Y", (localtime(event[1])))
+			ev['begin_timestamp'] = event[1]
+			ev['begin'] = strftime("%H:%M", (localtime(event[1])))
+			ev['duration_sec'] = event[2]
+			ev['duration'] = int(event[2] / 60)
+			ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
+			ev['title'] = event[3]
+			ev['shortdesc'] = event[4]
+			ev['longdesc'] = event[5]
+			ev['sref'] = event[7]
+			ev['sname'] = event[6]
+			ev['picon'] = getPicon(event[7])
+			ev['now_timestamp'] = None
+			ret.append(ev)
+	
+	return { "events": ret, "result": True }
+	
 def getPicon(sname):
 	pos = sname.rfind(':')
 	if pos != -1:

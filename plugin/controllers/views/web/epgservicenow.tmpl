@@ -1,0 +1,18 @@
+#filter WebSafe
+<?xml version="1.0" encoding="UTF-8"?>
+<e2eventlist>
+	#for $event in $events
+	<e2event>
+		<e2eventid>$str($event.id)</e2eventid>
+		<e2eventstart>$str($event.begin_timestamp)</e2eventstart>
+		<e2eventduration>$str($event.duration_sec)</e2eventduration>
+		<e2eventcurrenttime>$str($event.now_timestamp)</e2eventcurrenttime>
+		<e2eventtitle>$str($event.title)</e2eventtitle>
+		<e2eventdescription>$str($event.shortdesc)</e2eventdescription>
+		<e2eventdescriptionextended>$str($event.longdesc)</e2eventdescriptionextended>
+		<e2eventservicereference>$event.sref</e2eventservicereference>
+		<e2eventservicename>$event.sname</e2eventservicename>
+	</e2event>
+	#end for
+</e2eventlist>
+#end filter

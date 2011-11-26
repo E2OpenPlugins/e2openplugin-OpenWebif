@@ -8,7 +8,7 @@
 ##############################################################################
 
 from models.info import getInfo, getCurrentTime , getStatusInfo
-from models.services import getCurrentService, getBouquets, getChannels, getSatellites
+from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState
@@ -353,3 +353,120 @@ class WebController(BaseController):
 	def P_deviceinfo(self, request):
 		return getInfo()
 		
+	def P_epgbouquet(self, request):
+		res = self.testMandatoryArguments(request, ["bRef"])
+		if res:
+			return res
+			
+		begintime = -1
+		if "time" in request.args.keys():
+			try:
+				begintime = int(request.args["time"][0])
+			except Exception, e:
+				pass
+		
+		return getBouquetEpg(request.args["bRef"][0], begintime)
+		
+	def P_epgmulti(self, request):
+		res = self.testMandatoryArguments(request, ["bRef"])
+		if res:
+			return res
+			
+		begintime = -1
+		if "time" in request.args.keys():
+			try:
+				begintime = int(request.args["time"][0])
+			except Exception, e:
+				pass
+		
+		endtime = -1
+		if "endTime" in request.args.keys():
+			try:
+				endtime = int(request.args["endTime"][0])
+			except Exception, e:
+				pass
+				
+		return getBouquetEpg(request.args["bRef"][0], begintime, endtime)
+		
+	def P_epgnow(self, request):
+		res = self.testMandatoryArguments(request, ["bRef"])
+		if res:
+			return res
+			
+		return getBouquetNowNextEpg(request.args["bRef"][0], 0)
+		
+	def P_epgnext(self, request):
+		res = self.testMandatoryArguments(request, ["bRef"])
+		if res:
+			return res
+			
+		return getBouquetNowNextEpg(request.args["bRef"][0], 1)
+		
+	def P_epgsearch(self, request):
+		res = self.testMandatoryArguments(request, ["search"])
+		if res:
+			return res
+			
+		return getSearchEpg(request.args["search"][0])
+		
+	def P_epgsearchrss(self, request):
+		res = self.testMandatoryArguments(request, ["search"])
+		if res:
+			return res
+			
+		ret = getSearchEpg(request.args["search"][0])
+		ret["title"] = "EPG Search '%s'" % request.args["search"][0]
+		ret["generator"] = "OpenWebif"
+		ret["description"] = "%d result for '%s'" % (len(ret["events"]), request.args["search"][0])
+		return ret
+		
+	def P_epgservice(self, request):
+		res = self.testMandatoryArguments(request, ["sRef"])
+		if res:
+			return res
+			
+		begintime = -1
+		if "time" in request.args.keys():
+			try:
+				begintime = int(request.args["time"][0])
+			except Exception, e:
+				pass
+		
+		endtime = -1
+		if "endTime" in request.args.keys():
+			try:
+				endtime = int(request.args["endTime"][0])
+			except Exception, e:
+				pass
+				
+		return getChannelEpg(request.args["sRef"][0], begintime, endtime)
+		
+	def P_epgservicenow(self, request):
+		res = self.testMandatoryArguments(request, ["sRef"])
+		if res:
+			return res
+			
+		return getNowNextEpg(request.args["sRef"][0], 0)
+		
+	def P_epgservicenext(self, request):
+		res = self.testMandatoryArguments(request, ["sRef"])
+		if res:
+			return res
+			
+		return getNowNextEpg(request.args["sRef"][0], 1)
+		
+	def P_epgsimilar(self, request):
+		res = self.testMandatoryArguments(request, ["sRef", "eventid"])
+		if res:
+			return res
+			
+		try:
+			eventid = int(request.args["eventid"][0])
+		except Exception, e:
+			return {
+				"result": False,
+				"message": "The parameter 'eventid' must be a number"
+			}
+			
+		return getSearchSimilarEpg(request.args["sRef"][0], eventid)
+	
