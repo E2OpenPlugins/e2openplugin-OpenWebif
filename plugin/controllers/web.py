@@ -469,4 +469,52 @@ class WebController(BaseController):
 			}
 			
 		return getSearchSimilarEpg(request.args["sRef"][0], eventid)
+		
+	def P_getcurrent(self, request):
+		info = getCurrentService(self.session)
+		now = getNowNextEpg(info["ref"], 0)
+		if len(now["events"]) > 0:
+			now = now["events"][0]
+			now["provider"] = info["provider"]
+		else:
+			now = {
+				"id": 0,
+				"begin_timestamp": 0,
+				"duration_sec": 0,
+				"title": "",
+				"shortdesc": "",
+				"longdesc": "",
+				"sref": "",
+				"sname": "",
+				"now_timestamp": 0,
+				"remaining": 0,
+				"provider": ""
+			}
+		next = getNowNextEpg(info["ref"], 1)
+		if len(next["events"]) > 0:
+			next = next["events"][0]
+			next["provider"] = info["provider"]
+		else:
+			next = {
+				"id": 0,
+				"begin_timestamp": 0,
+				"duration_sec": 0,
+				"title": "",
+				"shortdesc": "",
+				"longdesc": "",
+				"sref": "",
+				"sname": "",
+				"now_timestamp": 0,
+				"remaining": 0,
+				"provider": ""
+			}
+		print info
+		print now
+		print next
+		return {
+			"info": info,
+			"now": now,
+			"next": next
+		}
+		
 	

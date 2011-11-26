@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<e2currentserviceinformation>
+	<e2service>
+		<e2servicereference>$info.ref</e2servicereference>
+		<e2servicename>$info.name</e2servicename>
+		<e2providername>$info.provider</e2providername>
+		<e2videowidth>$info.width</e2videowidth>
+		<e2videoheight>$info.height</e2videoheight>
+		<e2servicevideosize>${info.width}x${info.height}</e2servicevideosize>
+		<e2iswidescreen>
+			#if $info.iswidescreen then "1" else "0"
+		</e2iswidescreen>
+		<e2apid>$info.apid</e2apid>
+		<e2vpid>$info.vpid</e2vpid>
+		<e2pcrpid>$info.pcrpid</e2pcrpid>
+		<e2pmtpid>$info.pmtpid</e2pmtpid>
+		<e2txtpid>$info.txtpid</e2txtpid>
+		<e2tsid>$info.tsid</e2tsid>
+		<e2onid>$info.onid</e2onid>
+		<e2sid>$info.sid</e2sid>
+	</e2service>
+	<e2eventlist>
+		<e2event>
+			<e2eventservicereference>$now.sref</e2eventservicereference>
+			<e2eventservicename>$now.sname</e2eventservicename>
+			<e2eventprovidername>$now.provider</e2eventprovidername>
+			<e2eventid>$now.id</e2eventid>
+			<e2eventname>$now.title</e2eventname>
+			<e2eventtitle>$now.title</e2eventtitle>
+			<e2eventdescription>$now.shortdesc</e2eventdescription>
+			<e2eventstart>$now.begin_timestamp</e2eventstart>
+			<e2eventduration>$now.duration_sec</e2eventduration>
+			<e2eventremaining>$now.remaining</e2eventremaining>
+			<e2eventcurrenttime>$now.now_timestamp</e2eventcurrenttime>
+			<e2eventdescriptionextended>$now.longdesc</e2eventdescriptionextended>
+		</e2event>
+		<e2event>
+			<e2eventservicereference>$next.sref</e2eventservicereference>
+			<e2eventservicename>$next.sname</e2eventservicename>
+			<e2eventprovidername>$next.provider</e2eventprovidername>
+			<e2eventid>$next.id</e2eventid>
+			<e2eventname>$next.title</e2eventname>
+			<e2eventtitle>$next.title</e2eventtitle>
+			<e2eventdescription>$next.shortdesc</e2eventdescription>
+			<e2eventstart>$next.begin_timestamp</e2eventstart>
+			<e2eventduration>$next.duration_sec</e2eventduration>
+			<e2eventremaining>$next.remaining</e2eventremaining>
+			<e2eventcurrenttime>$next.now_timestamp</e2eventcurrenttime>
+			<e2eventdescriptionextended>$next.longdesc</e2eventdescriptionextended>
+		</e2event>
+	</e2eventlist>
+</e2currentserviceinformation>

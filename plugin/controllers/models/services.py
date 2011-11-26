@@ -44,7 +44,9 @@ def getCurrentService(session):
 			"txtpid": getServiceInfoString(info, iServiceInformation.sTXTPID),
 			"tsid": getServiceInfoString(info, iServiceInformation.sTSID),
 			"onid": getServiceInfoString(info, iServiceInformation.sONID),
-			"sid": getServiceInfoString(info, iServiceInformation.sSID)
+			"sid": getServiceInfoString(info, iServiceInformation.sSID),
+			"ref": getServiceInfoString(info, iServiceInformation.sServiceref),
+			"iswidescreen": info.getInfo(iServiceInformation.sAspect) in (3, 4, 7, 8, 0xB, 0xC, 0xF, 0x10)
 		}
 	except Exception, e:
 		return {
@@ -62,7 +64,8 @@ def getCurrentService(session):
 			"txtpid": 0,
 			"tsid": 0,
 			"onid": 0,
-			"sid": 0
+			"sid": 0,
+			"ref": ""
 		}
 
 def getCurrentFullInfo(session):
@@ -352,6 +355,7 @@ def getNowNextEpg(ref, servicetype):
 			ev['sref'] = event[7]
 			ev['sname'] = filterName(event[8])
 			ev['now_timestamp'] = event[3]
+			ev['remaining'] = (event[1] + event[2]) - event[3]
 			ret.append(ev)
 	
 	return { "events": ret, "result": True }
