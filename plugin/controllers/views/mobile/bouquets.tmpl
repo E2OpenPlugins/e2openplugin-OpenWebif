@@ -1,0 +1,35 @@
+<html>
+ <head>
+	<title>OpenWebif</title>
+	<meta name="viewport" content="user-scalable=no, width=device-width"/>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="stylesheet" type="text/css" href="/css/jquery.mobile-1.0.min.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="/css/iphone.css" media="screen"/>
+	<script src="/js/jquery-1.6.2.min.js"></script>
+	<script src="/js/jquery.mobile-1.0.min.js"></script>
+ </head>
+ <body> 
+	<div data-role="page">
+
+		<div id="header">
+			<div class="button" onClick="history.back()">Back</div>
+			<h1>OpenWebif</h1>
+		</div>
+
+		<div id="contentContainer">
+			<ul data-role="listview" data-inset="true" data-theme="d">
+				<li data-role="list-divider" role="heading" data-theme="b">Bouquets</li>
+				#from urllib import quote
+				#for $bouquet in $bouquets
+				<li><a href="/mobile/channels?id=$quote($bouquet[0])">$bouquet[1]</a></li>
+				#end for
+			</ul>
+		</div>
+
+		<div id="footer">
+			<p>OpenWebif Mobile</p>
+		</div>
+		
+	</div>
+ </body>
+</html>

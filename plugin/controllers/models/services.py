@@ -12,6 +12,12 @@ from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGC
 from time import time, localtime, strftime
 from info import getPiconPath
 
+
+def filterName(name):
+	if name is not None:
+		name = name.replace('\xc2\x86', '').replace('\xc2\x87', '')
+	return name
+
 def getServiceInfoString(info, what):
 	v = info.getInfo(what)
 	if v == -1:
@@ -25,7 +31,7 @@ def getCurrentService(session):
 		info = session.nav.getCurrentService().info()
 		return {
 			"result": True,
-			"name": info.getName(),
+			"name": filterName(info.getName()),
 			"namespace": getServiceInfoString(info, iServiceInformation.sNamespace),
 			"aspect": getServiceInfoString(info, iServiceInformation.sAspect),
 			"provider": getServiceInfoString(info, iServiceInformation.sProvider),
@@ -94,7 +100,10 @@ def getCurrentFullInfo(session):
 		percent = frontendStatus.get("tuner_signal_quality")
 		if percent is not None:
 			inf['snr'] = int(percent * 100 / 65536)
-			inf['snr_db'] = inf['snr'] #Fixme
+			inf['snr_db'] = inf['snr']
+		percent = frontendStatus.get("tuner_signal_quality_db")
+		if percent is not None:
+			inf['snr_db'] = "%3.02f dB" % (self.source.snr_db / 100.0)
 		percent = frontendStatus.get("tuner_signal_power")
 		if percent is not None:
 			inf['agc'] = int(percent * 100 / 65536)
@@ -206,7 +215,7 @@ def getChannels(idbouquet, stype):
 		if not channel[0].startswith("1:64:"):
 			chan = {}
 			chan['ref'] = channel[0]
-			chan['name'] = channel[1]
+			chan['name'] = filterName(channel[1])
 			nowevent = epgcache.lookupEvent(['TBDCIX', (channel[0], 0, -1)])
 			if nowevent[0][0] is not None:
 				chan['now_title'] = nowevent[0][0]
@@ -260,7 +269,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1):
 			ev['shortdesc'] = event[4]
 			ev['longdesc'] = event[5]
 			ev['sref'] = ref
-			ev['sname'] = event[6]
+			ev['sname'] = filterName(event[6])
 			ev['tleft'] = int (((event[1] + event[2]) - event[7]) / 60)
 			ev['progress'] = int(((event[7] - event[1]) * 100 / event[2]) *4)
 			ev['now_timestamp'] = event[7]
@@ -293,7 +302,7 @@ def getBouquetEpg(ref, begintime=-1, endtime=None):
 			ev['shortdesc'] = event[5]
 			ev['longdesc'] = event[6]
 			ev['sref'] = event[7]
-			ev['sname'] = event[8]
+			ev['sname'] = filterName(event[8])
 			ev['now_timestamp'] = event[3]
 			ret.append(ev)
 	
@@ -321,7 +330,7 @@ def getBouquetNowNextEpg(ref, servicetype):
 			ev['shortdesc'] = event[5]
 			ev['longdesc'] = event[6]
 			ev['sref'] = event[7]
-			ev['sname'] = event[8]
+			ev['sname'] = filterName(event[8])
 			ev['now_timestamp'] = event[3]
 			ret.append(ev)
 	
@@ -341,7 +350,7 @@ def getNowNextEpg(ref, servicetype):
 			ev['shortdesc'] = event[5]
 			ev['longdesc'] = event[6]
 			ev['sref'] = event[7]
-			ev['sname'] = event[8]
+			ev['sname'] = filterName(event[8])
 			ev['now_timestamp'] = event[3]
 			ret.append(ev)
 	
@@ -366,7 +375,7 @@ def getSearchEpg(sstr):
 			ev['shortdesc'] = event[4]
 			ev['longdesc'] = event[5]
 			ev['sref'] = event[7]
-			ev['sname'] = event[6]
+			ev['sname'] = filterName(event[6])
 			ev['picon'] = getPicon(event[7])
 			ev['now_timestamp'] = None
 			ret.append(ev)
@@ -392,7 +401,7 @@ def getSearchSimilarEpg(ref, eventid):
 			ev['shortdesc'] = event[4]
 			ev['longdesc'] = event[5]
 			ev['sref'] = event[7]
-			ev['sname'] = event[6]
+			ev['sname'] = filterName(event[6])
 			ev['picon'] = getPicon(event[7])
 			ev['now_timestamp'] = None
 			ret.append(ev)
