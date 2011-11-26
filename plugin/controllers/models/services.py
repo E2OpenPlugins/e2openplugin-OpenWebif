@@ -100,7 +100,10 @@ def getCurrentFullInfo(session):
 		percent = frontendStatus.get("tuner_signal_quality")
 		if percent is not None:
 			inf['snr'] = int(percent * 100 / 65536)
-			inf['snr_db'] = inf['snr'] #Fixme
+			inf['snr_db'] = inf['snr']
+		percent = frontendStatus.get("tuner_signal_quality_db")
+		if percent is not None:
+			inf['snr_db'] = "%3.02f dB" % (self.source.snr_db / 100.0)
 		percent = frontendStatus.get("tuner_signal_power")
 		if percent is not None:
 			inf['agc'] = int(percent * 100 / 65536)
