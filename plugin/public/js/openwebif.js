@@ -189,9 +189,9 @@ function webapi_execute(url) {
 	return false;
 }
 
-function toggle_chan_des(evId, sRef) {
+function toggle_chan_des(evId, sRef, idp) {
 	var url = 'ajax/eventdescription?sref=' + escape(sRef) + '&idev=' + evId;
-	var iddiv = "#" + evId;
+	var iddiv = "#" + idp;
 	$(iddiv).load(url);
 	$(iddiv).toggle('blind', '', '500');
 	

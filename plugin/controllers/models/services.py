@@ -202,6 +202,7 @@ def getSatellites(stype):
 	
 def getChannels(idbouquet, stype):
 	ret = []
+	idp = 0
 	s_type = service_types_tv
 	if stype == "radio":
 		s_type = service_types_radio
@@ -225,12 +226,15 @@ def getChannels(idbouquet, stype):
 				chan['now_left'] = int (((nowevent[0][1] + nowevent[0][2]) - nowevent[0][3]) / 60)
 				chan['progress'] = int(((nowevent[0][3] - nowevent[0][1]) * 100 / nowevent[0][2]) )
 				chan['now_ev_id'] = nowevent[0][4]
+				chan['now_idp'] = "nowd" + str(idp)
 				nextevent = epgcache.lookupEvent(['TBDIX', (channel[0], +1, -1)])
 				chan['next_title'] = nextevent[0][0]
 				chan['next_begin'] =  strftime("%H:%M", (localtime(nextevent[0][1])))
 				chan['next_end'] = strftime("%H:%M",(localtime(nextevent[0][1] + nextevent[0][2])))
 				chan['next_duration'] = int(nextevent[0][2] / 60)
 				chan['next_ev_id'] = nextevent[0][3]
+				chan['next_idp'] = "nextd" + str(idp)
+				idp += 1
 			ret.append(chan)
 			
 	return { "channels": ret }
