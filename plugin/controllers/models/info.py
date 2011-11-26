@@ -48,6 +48,8 @@ def getPiconPath():
 		return "/media/cf/picon/"
 	elif pathExists("/usr/share/enigma2/picon/"):
 		return "/usr/share/enigma2/picon/"
+	elif pathExists("/picon/"):
+		return "/picon/"
 	else:
 		return ""
 	
