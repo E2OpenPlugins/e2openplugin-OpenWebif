@@ -8,7 +8,7 @@
 ##############################################################################
 
 from models.info import getInfo, getCurrentTime , getStatusInfo
-from models.services import getCurrentService, getBouquets, getServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg
+from models.services import getCurrentService, getBouquets, getServices, getCurrentEvent, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState
@@ -147,6 +147,12 @@ class WebController(BaseController):
 			sRef = ""
 		
 		return getServices(sRef)
+
+	def P_getcurrent(self, request):
+		return {
+				"service": getCurrentService(self.session),
+				"currentevent": getCurrentEvent(self.session)
+		}
 
 	def P_addlocation(self, request):
 		res = self.testMandatoryArguments(request, ["dirname"])
