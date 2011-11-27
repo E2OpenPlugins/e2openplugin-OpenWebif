@@ -53,6 +53,12 @@ body {
 	width:500px;
 }
 
+#header a
+{
+	color:#FFFFFF;
+	text-decoration:none;
+}
+
 #mainpic
 {
 	background-image:url(../images/main.jpg);
