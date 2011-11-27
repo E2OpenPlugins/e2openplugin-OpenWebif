@@ -7,7 +7,7 @@
 #                                                                            #
 ##############################################################################
 
-from models.info import getInfo, getCurrentTime , getStatusInfo
+from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStatus
 from models.services import getCurrentService, getBouquets, getServices, getCurrentEvent, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
@@ -51,6 +51,9 @@ class WebController(BaseController):
 
 	def P_statusinfo(self, request):
 		return getStatusInfo(self)
+
+	def P_signal(self, request):
+		return getFrontendStatus(self.session)
 
 	def P_vol(self, request):
 		if "set" not in request.args.keys() or request.args["set"][0] == "state":

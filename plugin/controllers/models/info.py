@@ -146,6 +146,40 @@ def getInfo():
 		})
 	return info
 
+def getFrontendStatus(session):
+	inf = {}
+	inf['tunertype'] = ""
+	inf['tunernumber'] = ""
+	inf['snr'] = ""
+	inf['snr_db'] = ""
+	inf['agc'] = ""
+	inf['ber'] = ""
+	
+	feinfo = session.nav.getCurrentService().frontendInfo()
+	frontendData = feinfo and feinfo.getAll(True)
+	
+	if frontendData is not None:
+		inf['tunertype'] = frontendData.get("tuner_type", "UNKNOWN")
+		inf['tunernumber'] = frontendData.get("tuner_number")
+		
+	frontendStatus = feinfo and feinfo.getFrontendStatus()
+	if frontendStatus is not None:
+		percent = frontendStatus.get("tuner_signal_quality")
+		if percent is not None:
+			inf['snr'] = int(percent * 100 / 65536)
+			inf['snr_db'] = inf['snr']
+		percent = frontendStatus.get("tuner_signal_quality_db")
+		if percent is not None:
+			inf['snr_db'] = "%3.02f" % (percent / 100.0)
+		percent = frontendStatus.get("tuner_signal_power")
+		if percent is not None:
+			inf['agc'] = int(percent * 100 / 65536)
+		percent =  frontendStatus.get("tuner_bit_error_rate")
+		if percent is not None:
+			inf['ber'] = int(percent * 100 / 65536)
+
+	return inf
+
 def getCurrentTime():
 	t = time.localtime()
 	return {
