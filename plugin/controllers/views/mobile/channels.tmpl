@@ -21,11 +21,12 @@
 				<li data-role="list-divider" role="heading" data-theme="b">Channels</li>
 				#for $channel in $channels
 				<li>
-				$channel.name
+				<a href="/mobile/channelinfo?sref=$channel.ref" style="padding: 3px;">
+				<span class="ui-li-heading" style="margin-top: 0px; margin-bottom: 3px;">$channel.name</span>
 				#if $channel.has_key('now_title')
-				<br />
-				$channel.now_title
+				<span class="ui-li-desc" style="margin-bottom: 0px;">$channel.now_title</span>
 				#end if	
+				</a>
 				</li>
 				#end for
 			</ul>

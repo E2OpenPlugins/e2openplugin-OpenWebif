@@ -9,7 +9,7 @@
 from base import BaseController
 from models.movies import getMovieList
 from models.timers import getTimers
-from models.services import getBouquets, getChannels
+from models.services import getBouquets, getChannels, getChannelEpg
 
 class MobileController(BaseController):
 	def __init__(self, session, path = ""):
@@ -19,7 +19,7 @@ class MobileController(BaseController):
 	def P_index(self, request):
 		return {}
 
-	def P_powerstate(self, request):
+	def P_control(self, request):
 		return {}
 		
 	def P_screenshot(self, request):
@@ -39,7 +39,15 @@ class MobileController(BaseController):
 		if "id" in request.args.keys():
 			idbouquet = request.args["id"][0]
 		return getChannels(idbouquet, stype)
-		
+
+	def P_channelinfo(self, request):
+		channelinfo = {}
+		channelepg = {}
+		if "sref" in request.args.keys():
+			channelepg = getChannelEpg(request.args["sref"][0])
+			
+		return { "channelinfo": channelepg["events"][0], "channelepg": channelepg["events"] }
+
 	def P_timerlist(self, request):
 		return getTimers(self.session)
 		
