@@ -508,9 +508,6 @@ class WebController(BaseController):
 				"remaining": 0,
 				"provider": ""
 			}
-		print info
-		print now
-		print next
 		return {
 			"info": info,
 			"now": now,
