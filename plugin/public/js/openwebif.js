@@ -236,7 +236,8 @@ function zapChannel(sRef, sname) {
 }
 
 function getStatusInfo() {
-	$.getJSON('api/statusinfo', function(statusinfo) {
+	$.getJSON('api/statusinfo')
+	.success(function(statusinfo) {
 		// Set Volume
 		$("#slider").slider("value", statusinfo['volume']);
 		$("#amount").val(statusinfo['volume']);
@@ -254,6 +255,9 @@ function getStatusInfo() {
 			$("#osd").html("<span style='color:#EA7409;font-weight:bold;'>" + statusinfo['currservice_station'] + "</span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + statusinfo['currservice_name']);
 			$("#osd_bottom").html(statusinfo['currservice_description']);
 		}
+	})
+	.error(function() {
+		$("#osd, #osd_bottom").html("");
 	});
 }
 
