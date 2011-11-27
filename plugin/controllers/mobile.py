@@ -48,6 +48,9 @@ class MobileController(BaseController):
 			
 		return { "channelinfo": channelepg["events"][0], "channelepg": channelepg["events"] }
 
+	def P_satfinder(self, request):
+		return {}
+
 	def P_timerlist(self, request):
 		return getTimers(self.session)
 		
