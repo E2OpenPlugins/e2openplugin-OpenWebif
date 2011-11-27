@@ -81,7 +81,7 @@ body {
 	color: #ffffff;
 	height:14px;
 	float:left;
-	width:880px;
+	width:100%;
 	padding-left: 5px;
 	padding-top: 1px;
 	
@@ -93,9 +93,10 @@ body {
 	display:block;
 	height:40px;
 	float:left;
-	width:880px;
+	width:900px;
 	padding-left: 5px;
 	padding-top: 3px;
+	
 	
 }
 
