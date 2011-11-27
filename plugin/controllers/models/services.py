@@ -129,6 +129,65 @@ def getCurrentFullInfo(session):
 	
 	return { "info": inf, "now": now, "next": next }
 
+def getCurrentEvent(session):
+	now = next = {}
+	ref = session.nav.getCurrentlyPlayingServiceReference().toString()
+	
+	if ref is not None:
+		ev = getChannelEpg(ref)
+	else:
+		ev = None
+	
+	if ev is not None:
+			now = ev['events'][0]
+			next = ev['events'][1]
+			return {
+				"result": True,
+				"now_id": now['id'],
+				"now_name": now['title'],
+				"now_serviceref": now['sref'],
+				"now_begin": now['begin_timestamp'],
+				"now_remaining": now['tleft']*60,
+				"now_description": now['shortdesc'],
+				"now_duration": now['duration_sec'],
+				"now_currenttime": now['now_timestamp'],
+				"now_station": now['sname'],
+				"now_ldescription": now['longdesc'],
+				"next_id": next['id'],
+				"next_name": next['title'],
+				"next_serviceref": next['sref'],
+				"next_begin": next['begin_timestamp'],
+				"next_remaining": next['tleft']*60,
+				"next_description": next['shortdesc'],
+				"next_duration": next['duration_sec'],
+				"next_currenttime": next['now_timestamp'],
+				"next_station": next['sname'],
+				"next_ldescription": next['longdesc']
+			}
+	else:
+		return {
+			"result": False,
+			"now_id": "",
+			"now_name": "",
+			"now_serviceref": "",
+			"now_begin": "",
+			"now_remaining": "",
+			"now_description": "",
+			"now_duration": 0,
+			"now_currenttime": "",
+			"now_station": "",
+			"now_ldescription": "",
+			"next_id": "",
+			"next_name": "",
+			"next_serviceref": "",
+			"next_begin": "",
+			"next_remaining": "",
+			"next_description": "",
+			"next_duration": 0,
+			"next_currenttime": "",
+			"next_station": "",
+			"next_ldescription": ""
+		}
 
 def getBouquets(stype):
 	s_type = service_types_tv

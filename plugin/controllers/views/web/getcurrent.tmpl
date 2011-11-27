@@ -1,0 +1,52 @@
+#filter WebSafe
+<?xml version="1.0" encoding="UTF-8"?>
+<e2currentserviceinformation>
+<e2service>
+		<e2servicereference>$currentevent.now_serviceref</e2servicereference>
+		<e2servicename>$service.name</e2servicename>
+		<e2providername>$service.provider</e2providername>
+		<e2videowidth>$service.width</e2videowidth>
+		<e2videoheight>$service.height</e2videoheight>
+		<e2servicevideosize>${service.width}x${service.height}</e2servicevideosize>
+		<e2iswidescreen>$service.aspect</e2iswidescreen>
+		<e2apid>$service.apid</e2apid>
+		<e2vpid>$service.vpid</e2vpid>
+		<e2pcrpid>$service.pcrpid</e2pcrpid>
+		<e2pmtpid>$service.pmtpid</e2pmtpid>
+		<e2txtpid>$service.txtpid</e2txtpid>
+		<e2tsid>$service.tsid</e2tsid>
+		<e2onid>$service.onid</e2onid>
+		<e2sid>$service.sid</e2sid>
+</e2service>
+<e2eventlist>
+	<e2event>
+		<e2eventservicereference>$currentevent.now_serviceref</e2eventservicereference>
+		<e2eventservicename>$service.name</e2eventservicename>
+		<e2eventprovidername>$service.provider</e2eventprovidername>
+		<e2eventid>$currentevent.now_id</e2eventid>
+		<e2eventname>$currentevent.now_name</e2eventname>
+		<e2eventtitle>$currentevent.now_name</e2eventtitle>
+		<e2eventdescription>$currentevent.now_description</e2eventdescription>
+		<e2eventstart>$currentevent.now_begin</e2eventstart>
+		<e2eventduration>$currentevent.now_duration</e2eventduration>
+		<e2eventremaining>$currentevent.now_remaining</e2eventremaining>
+		<e2eventcurrenttime>$currentevent.now_currenttime</e2eventcurrenttime>
+		<e2eventdescriptionextended>$currentevent.now_ldescription</e2eventdescriptionextended>
+	</e2event>
+	<e2event>
+		<e2eventservicereference>$currentevent.next_serviceref</e2eventservicereference>
+		<e2eventservicename>$service.name</e2eventservicename>
+		<e2eventprovidername>$service.provider</e2eventprovidername>
+		<e2eventid>$currentevent.next_id</e2eventid>
+		<e2eventname>$currentevent.next_name</e2eventname>
+		<e2eventtitle>$currentevent.next_name</e2eventtitle>
+		<e2eventdescription>$currentevent.next_description</e2eventdescription>
+		<e2eventstart>$currentevent.next_begin</e2eventstart>
+		<e2eventduration>$currentevent.next_duration</e2eventduration>
+		<e2eventremaining>$currentevent.next_remaining</e2eventremaining>
+		<e2eventcurrenttime>$currentevent.next_currenttime</e2eventcurrenttime>
+		<e2eventdescriptionextended>$currentevent.next_ldescription</e2eventdescriptionextended>
+	</e2event>
+</e2eventlist>
+</e2currentserviceinformation>
+#end filter
