@@ -517,4 +517,12 @@ class WebController(BaseController):
 			"next": next
 		}
 		
-	
+	def P_getpid(self, request):
+		request.setHeader("content-type", "text/html")
+		info = getCurrentService(self.session)
+		return {
+			"ppid": "%x" % info["pmtpid"],
+			"vpid": "%x" % info["vpid"],
+			"apid": "%x" % info["apid"],
+			"host": request.getRequestHostname()
+		}
