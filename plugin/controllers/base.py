@@ -72,18 +72,22 @@ class BaseController(resource.Resource):
 				
 			data = func(request)
 			if data is None:
+				print "[OpenWebif] page '%s' without content" % request.uri
 				self.error404(request)
 			elif type(data) is str:
+				print "[OpenWebif] page '%s' ok (simple string)" % request.uri
 				request.setHeader("content-type", "text/plain")
 				request.setResponseCode(http.OK)
 				request.write(data)
 				request.finish()
 			elif self.isJson:
+				print "[OpenWebif] page '%s' ok (json)" % request.uri
 				request.setHeader("content-type", "text/plain")
 				request.setResponseCode(http.OK)
 				request.write(json.dumps(data))
 				request.finish()
 			else:
+				print "[OpenWebif] page '%s' ok (cheetah template)" % request.uri
 				module = request.path
 				if module[-1] == "/":
 					module = module + "index"
@@ -91,6 +95,7 @@ class BaseController(resource.Resource):
 				module = module.replace(".", "")
 				out = self.loadTemplate(module, self.path, data)
 				if out is None:
+					print "[OpenWebif] ERROR! Template not found for page '%s'" % request.uri
 					self.error404(request)
 				else:
 					if self.withMainTemplate:
@@ -104,6 +109,7 @@ class BaseController(resource.Resource):
 					request.finish()
 				
 		else:
+			print "[OpenWebif] page '%s' not found" % request.uri
 			self.error404(request)
 		
 		# restore cached data
