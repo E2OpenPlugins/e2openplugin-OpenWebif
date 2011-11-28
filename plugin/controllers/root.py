@@ -7,7 +7,7 @@
 #                                                                            #
 ##############################################################################
 
-
+from Tools.Directories import fileExists
 from models.info import getBasePath, getPublicPath, getViewsPath, getPiconPath
 from models.grab import grabScreenshot
 from models.movies import getMovieList
@@ -54,7 +54,11 @@ class RootController(BaseController):
 		return {}
 
 	def P_screenshot(self, request):
-		return {}
+		box = {}
+		box['brand'] = "dmm"
+		if fileExists("/proc/stb/info/vumodel"):
+			box['brand'] = "vuplus"
+		return { "box": box }
 		
 	def P_powerstate(self, request):
 		return {}

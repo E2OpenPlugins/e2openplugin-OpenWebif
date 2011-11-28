@@ -13,6 +13,56 @@
 		</div>
 	
 		<div id="remoteControl" title="Remote Control" style="display: none;">
+#if $box.brand == "vuplus"
+			<img border='0' src='/images/remotes/vu_normal.png' usemap='#map' >
+			<map name="map">
+				<area shape="circle" coords="33,28,15" id="113" alt="mute">
+				<area shape="circle" coords="105,28,15" id ="116" alt="Power">
+				<area shape="circle" coords="33,53,15" id ="388" alt="text">
+				<area shape="circle" coords="58,53,15" id ="370" alt="subtitle">
+				<area shape="circle" coords="82,53,15" id ="102" alt="home">
+				<area shape="circle" coords="105,53,15" id ="107" alt="end">
+				<area shape="circle" coords="38,79,15" id ="2" alt="1">
+				<area shape="circle" coords="70,79,15" id ="3" alt="2">
+				<area shape="circle" coords="102,79,15" id ="4" alt="3">
+				<area shape="circle" coords="38,106,15" id ="5" alt="4">
+				<area shape="circle" coords="70,106,15" id ="6" alt="5">
+				<area shape="circle" coords="102,106,15" id ="7" alt="6">
+				<area shape="circle" coords="38,133,15" id ="8" alt="7">
+				<area shape="circle" coords="70,133,15" id ="9" alt="8">
+				<area shape="circle" coords="102,133,15" id ="10" alt="9">
+				<area shape="circle" coords="38,161,15" id ="412" alt="previous">
+				<area shape="circle" coords="70,161,15" id ="11" alt="0">
+				<area shape="circle" coords="102,161,15" id ="407" alt="next">
+				<area shape="circle" coords="33,186,15" id ="398" alt="red">
+				<area shape="circle" coords="58,186,15" id ="399" alt="green">
+				<area shape="circle" coords="82,186,15" id ="400" alt="yellow">
+				<area shape="circle" coords="105,186,15" id ="401" alt="blue">
+				<area shape="circle" coords="70,213,15" id ="103" alt="up">
+				<area shape="circle" coords="70,283,15" id ="108" alt="down">
+				<area shape="circle" coords="35,248,15" id ="105" alt="left">
+				<area shape="circle" coords="105,248,15" id ="106" alt="right">
+				<area shape="circle" coords="70,248,20" id ="352" alt="OK">
+				<area shape="circle" coords="40,307,15" id ="115" alt="volume up">
+				<area shape="circle" coords="40,338,13" id ="114" alt="volume down">
+				<area shape="circle" coords="70,310,15" id ="174" alt="exit">
+				<area shape="circle" coords="70,334,15" id ="358" alt="epg">
+				<area shape="circle" coords="99,307,15" id ="402" alt="channelup">
+				<area shape="circle" coords="99,338,15" id ="403" alt="channeldown">
+				<area shape="circle" coords="36,362,15" id ="139" alt="menu">
+				<area shape="circle" coords="59,362,15" id ="393" alt="videoaltlast">
+				<area shape="circle" coords="81,362,15" id ="392" alt="audio">
+				<area shape="circle" coords="104,362,15" id ="138" alt="help">
+				<area shape="circle" coords="36,383,15" id ="168" alt="rewind">
+				<area shape="circle" coords="59,383,15" id ="207" alt="play">
+				<area shape="circle" coords="81,383,15" id ="119" alt="pause">
+				<area shape="circle" coords="104,383,15" id ="208" alt="forward">
+				<area shape="circle" coords="36,405,15" id ="377" alt="tv">
+				<area shape="circle" coords="59,405,15" id ="167" alt="record">
+				<area shape="circle" coords="81,405,15" id ="128" alt="stop">
+				<area shape="circle" coords="104,405,15" id ="385" alt="radio">
+			</map>
+#else
 			<img border='0' src='/images/remotes/dm_normal.png' usemap='#map' >
 			<map name='map'>
 				<area alt="1" id="2" shape='rect' coords='26,75,60,96' />
@@ -52,6 +102,7 @@
 				<area alt="Text" id="388" shape='circle' coords='97,382,13' />
 				<area alt="Help" id="138" shape='circle' coords='123,382,11' />
 			</map>
+#end if
 		</div>
 	
 		<div class="screenshotContainer">
