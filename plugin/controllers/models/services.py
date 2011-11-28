@@ -94,6 +94,8 @@ def getCurrentFullInfo(session):
 	frontendData = feinfo and feinfo.getAll(True)
 	if frontendData is not None:
 		inf['tunertype'] = frontendData.get("tuner_type", "UNKNOWN")
+		if frontendData.get("system", "UNKNOWN") == "1":
+			inf['tunertype'] = "DVB-S2"
 		inf['tunernumber'] = frontendData.get("tuner_number")
 		
 	frontendStatus = feinfo and feinfo.getFrontendStatus()
