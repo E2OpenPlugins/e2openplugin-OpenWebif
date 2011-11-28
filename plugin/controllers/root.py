@@ -19,7 +19,7 @@ from api import ApiController
 from file import FileController
 from mobile import MobileController
 
-from twisted.web import static
+from twisted.web import static, http
 
 class RootController(BaseController):
 	def __init__(self, session, path = ""):
@@ -48,6 +48,10 @@ class RootController(BaseController):
 	# the "pages functions" must be called P_pagename
 	# example http://boxip/index => P_index
 	def P_index(self, request):
+		if request.getHeader("User-Agent").find("iPhone") != -1 or request.getHeader("User-Agent").find("iPod") != -1:
+			request.setHeader("Location", "/mobile/")
+			request.setResponseCode(http.FOUND)
+			return ""
 		return {}
 		
 	def P_workinprogress(self, request):

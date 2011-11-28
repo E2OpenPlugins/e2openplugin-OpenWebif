@@ -62,6 +62,8 @@ class BaseController(resource.Resource):
 		self.path = self.path.replace(".", "")
 		func = getattr(self, "P_" + self.path, None)
 		if callable(func):
+			request.setResponseCode(http.OK)
+			
 			# call prePageLoad function if exist
 			plfunc = getattr(self, "prePageLoad", None)
 			if callable(plfunc):
@@ -74,13 +76,11 @@ class BaseController(resource.Resource):
 			elif type(data) is str:
 				print "[OpenWebif] page '%s' ok (simple string)" % request.uri
 				request.setHeader("content-type", "text/plain")
-				request.setResponseCode(http.OK)
 				request.write(data)
 				request.finish()
 			elif self.isJson:
 				print "[OpenWebif] page '%s' ok (json)" % request.uri
 				request.setHeader("content-type", "text/plain")
-				request.setResponseCode(http.OK)
 				request.write(json.dumps(data))
 				request.finish()
 			else:
@@ -103,7 +103,6 @@ class BaseController(resource.Resource):
 						nout = self.loadTemplate("main", "main", args)
 						if nout:
 							out = nout
-					request.setResponseCode(http.OK)
 					request.write(out)
 					request.finish()
 				
