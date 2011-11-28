@@ -23,9 +23,6 @@ class BaseController(resource.Resource):
 	
 	def __init__(self, path = ""):
 		resource.Resource.__init__(self)
-
-		if path != "":
-			self.isLeaf = True
 		
 		self.path = path
 		self.withMainTemplate = False
@@ -51,9 +48,6 @@ class BaseController(resource.Resource):
 		return None
 		
 	def getChild(self, path, request):
-		if path == "":
-			path = "index"
-			
 		return self.__class__(self.session, path)
 		
 	def render(self, request):
@@ -61,6 +55,9 @@ class BaseController(resource.Resource):
 		withMainTemplate = self.withMainTemplate
 		path = self.path
 		isJson = self.isJson
+		
+		if self.path == "":
+			self.path = "index"
 		
 		self.path = self.path.replace(".", "")
 		func = getattr(self, "P_" + self.path, None)
@@ -90,7 +87,9 @@ class BaseController(resource.Resource):
 				print "[OpenWebif] page '%s' ok (cheetah template)" % request.uri
 				module = request.path
 				if module[-1] == "/":
-					module = module + "index"
+					module += "index"
+				elif module[-5:] != "index" and self.path == "index":
+					module += "/index"
 				module = module.strip("/")
 				module = module.replace(".", "")
 				out = self.loadTemplate(module, self.path, data)
