@@ -21,11 +21,11 @@
 						</div>
 						<div class="channel_right">
 							+$channel.now_left min
-							<a href='#' onClick="toggle_chan_des('$channel.now_ev_id', '$channel.ref'); return false">
+							<a href='#' onClick="toggle_chan_des('$channel.now_ev_id', '$channel.ref', '$channel.now_idp'); return false">
 							<img src="../images/ico_desc.png" title="$channel.now_title description" border="0">
 							</a>
 						</div>
-						<div class="channel_desc" id="$channel.now_ev_id">no description available</div>
+						<div class="channel_desc" id="$channel.now_idp">no description available</div>
 						<div class="channel_content">
 							<div class="meter-wrap">
 							<div class="meter-value" style="background-color: #F68014; width: ${channel.progress}px;"></div></div>
@@ -35,11 +35,11 @@
 						</div>
 						<div class="channel_right">
 							$channel.next_duration min
-							<a href='#' onClick="toggle_chan_des('$channel.next_ev_id', '$channel.ref'); return false">
+							<a href='#' onClick="toggle_chan_des('$channel.next_ev_id', '$channel.ref', '$channel.next_idp'); return false">
 								<img src="../images/ico_desc.png" title="$channel.next_title description" border="0">
 							</a>
 						</div>
-						<div class="channel_desc" id="$channel.next_ev_id">no description available</div>
+						<div class="channel_desc" id="$channel.next_idp">no description available</div>
 #end if		
 					</tr>
 				</tbody>

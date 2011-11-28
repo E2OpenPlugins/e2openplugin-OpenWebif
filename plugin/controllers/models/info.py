@@ -8,6 +8,7 @@
 ##############################################################################
 
 from Components.About import about
+from Components.config import config
 from Components.NimManager import nimmanager
 from Components.Harddisk import harddiskmanager
 from Components.Network import iNetwork
@@ -48,6 +49,8 @@ def getPiconPath():
 		return "/media/cf/picon/"
 	elif pathExists("/usr/share/enigma2/picon/"):
 		return "/usr/share/enigma2/picon/"
+	elif pathExists("/picon/"):
+		return "/picon/"
 	else:
 		return ""
 	
@@ -143,6 +146,40 @@ def getInfo():
 		})
 	return info
 
+def getFrontendStatus(session):
+	inf = {}
+	inf['tunertype'] = ""
+	inf['tunernumber'] = ""
+	inf['snr'] = ""
+	inf['snr_db'] = ""
+	inf['agc'] = ""
+	inf['ber'] = ""
+	
+	feinfo = session.nav.getCurrentService().frontendInfo()
+	frontendData = feinfo and feinfo.getAll(True)
+	
+	if frontendData is not None:
+		inf['tunertype'] = frontendData.get("tuner_type", "UNKNOWN")
+		inf['tunernumber'] = frontendData.get("tuner_number")
+		
+	frontendStatus = feinfo and feinfo.getFrontendStatus()
+	if frontendStatus is not None:
+		percent = frontendStatus.get("tuner_signal_quality")
+		if percent is not None:
+			inf['snr'] = int(percent * 100 / 65536)
+			inf['snr_db'] = inf['snr']
+		percent = frontendStatus.get("tuner_signal_quality_db")
+		if percent is not None:
+			inf['snr_db'] = "%3.02f" % (percent / 100.0)
+		percent = frontendStatus.get("tuner_signal_power")
+		if percent is not None:
+			inf['agc'] = int(percent * 100 / 65536)
+		percent =  frontendStatus.get("tuner_bit_error_rate")
+		if percent is not None:
+			inf['ber'] = int(percent * 100 / 65536)
+
+	return inf
+
 def getCurrentTime():
 	t = time.localtime()
 	return {
@@ -174,11 +211,13 @@ def getStatusInfo(self):
 
 	if event is not None:
 		curEvent = parseEvent(event)
-		statusinfo['currservice_name'] = curEvent[2]
+		statusinfo['currservice_name'] = curEvent[2].replace('\xc2\x86', '').replace('\xc2\x87', '')
 		statusinfo['currservice_serviceref'] = serviceref.toString()
-		statusinfo['currservice_begin'] = strftime("%H:%M", (localtime(curEvent[0])))
-		statusinfo['currservice_end'] = strftime("%H:%M", (localtime(curEvent[1])))
+		statusinfo['currservice_begin'] = strftime("%H:%M", (localtime(int(curEvent[0])+(config.recording.margin_before.value*60))))
+		statusinfo['currservice_end'] = strftime("%H:%M", (localtime(int(curEvent[1])-(config.recording.margin_after.value*60))))
 		statusinfo['currservice_description'] = curEvent[3]
+		if len(curEvent[3]) > 220:
+			statusinfo['currservice_description'] = curEvent[3][0:220] + "..."
 		statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
 	else:
 		statusinfo['currservice_name'] = "N/A"

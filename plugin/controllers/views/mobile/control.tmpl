@@ -1,0 +1,108 @@
+<html>
+ <head>
+	<title>OpenWebif</title>
+	<meta name="viewport" content="user-scalable=no, width=device-width"/>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="stylesheet" type="text/css" href="/css/jquery.mobile-1.0.min.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="/css/iphone.css" media="screen"/>
+	<script src="/js/jquery-1.6.2.min.js"></script>
+	<script src="/js/jquery.mobile-1.0.min.js"></script>
+ </head>
+ <body>
+	<div data-role="page" id="mainPage">
+		<div id="header">
+			<div class="button" onClick="history.back()">Back</div>
+			<h1>OpenWebif</h1>
+		</div>
+		
+		<div id="contentContainer">
+			<ul data-role="listview" data-inset="true" data-theme="d">
+				<li data-role="list-divider" role="heading" data-theme="b">Volume Control</li>
+				<li>
+					<table width="100%">
+						<tr>
+							<td><input type="range" name="slider" id="slider" value="0" min="0" max="100" data-theme="a" data-track-theme="b" /></td>
+							<td width="50"><img id="volimage" src="/images/volume.png" border="0" alt="" /></td>
+						</tr>
+					</table>
+				</li>
+			</ul>
+			
+			<br><br>
+
+			<ul data-role="listview" data-inset="true" data-theme="d">
+				<li data-role="list-divider" role="heading" data-theme="b">Instant Record</li>
+				<li><a href="#" onClick="startInstantRecord()">Start Instant Record</a></li>
+			</ul>
+			
+			<br><br>
+			
+			<ul data-role="listview" data-inset="true" data-theme="d">
+				<li data-role="list-divider" role="heading" data-theme="b">Power Control</li>
+				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=0'); return false">StandBy Toggle</a></li>
+				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=1'); return false">Deep-StandBy</a></li>
+				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=2'); return false">Reboot Box</a></li>
+				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=3'); return false">Restart Enigma2</a></li>
+			</ul>
+		</div>
+		
+		<div id="footer">
+			<p>OpenWebif Mobile</p>
+		</div>
+		
+	<script>
+	function getStatusInfo() {
+		jQuery.getJSON('/api/statusinfo')
+		.success(function(statusinfo) {
+			// Set Volume
+			jQuery("#slider").val(statusinfo['volume']).slider('refresh');
+
+			// Set Mute Status
+			if (statusinfo['muted'] == true) {
+				mutestatus = 1;
+				jQuery("#volimage").attr("src","/images/volume_mute.png");
+			} else {
+				mutestatus = 0;
+				jQuery("#volimage").attr("src","/images/volume.png");
+			}
+		});
+	}
+
+	function setVolume(vol) {
+		var jqxhr = jQuery.ajax("/web/vol?set=set" + vol);
+		return false;
+	}
+	
+	function startInstantRecord(vol) {
+		check = confirm("Really start instant record now?");
+		if (check == true) {
+			jQuery.ajax('/api/recordnow');
+		}
+		return false;
+	}
+	
+	jQuery('#mainPage').live('pageinit', function(event) {
+		var volupdate;
+		jQuery("#slider").change(function() {
+			clearTimeout(volupdate);
+			volupdate = setTimeout("jQuery.ajax('/web/vol?set=set" + jQuery('#slider').val() + "')",1000);
+		});
+		
+		var mutestatus = 0;
+		jQuery('#volimage').click(function(){
+			if (mutestatus == 0) {
+				mutestatus = 1;
+				jQuery("#volimage").attr("src","/images/volume_mute.png");
+			} else  {
+				mutestatus = 0;
+				jQuery("#volimage").attr("src","/images/volume.png");
+			}
+			jQuery.ajax("/web/vol?set=mute")
+		});
+		
+		getStatusInfo();
+	});
+	</script>
+	</div>
+ </body>
+</html>

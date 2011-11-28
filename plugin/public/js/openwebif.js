@@ -189,9 +189,9 @@ function webapi_execute(url) {
 	return false;
 }
 
-function toggle_chan_des(evId, sRef) {
+function toggle_chan_des(evId, sRef, idp) {
 	var url = 'ajax/eventdescription?sref=' + escape(sRef) + '&idev=' + evId;
-	var iddiv = "#" + evId;
+	var iddiv = "#" + idp;
 	$(iddiv).load(url);
 	$(iddiv).toggle('blind', '', '500');
 	
@@ -219,6 +219,14 @@ function open_epg_search_pop() {
 	$("#epgSearch").val("");
 }
 
+function deleteTimer(sRef, begin, end) {
+	answer = confirm("Really delete this timer?");
+	if (answer == true) {
+		webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end);
+		$('#'+begin+'-'+end).remove();
+	}
+}
+
 function zapChannel(sRef, sname) {
 	var url = 'api/zap?sRef=' + escape(sRef);
 	$.getJSON(url, function(result){
@@ -228,7 +236,8 @@ function zapChannel(sRef, sname) {
 }
 
 function getStatusInfo() {
-	$.getJSON('api/statusinfo', function(statusinfo) {
+	$.getJSON('api/statusinfo')
+	.success(function(statusinfo) {
 		// Set Volume
 		$("#slider").slider("value", statusinfo['volume']);
 		$("#amount").val(statusinfo['volume']);
@@ -246,10 +255,13 @@ function getStatusInfo() {
 			$("#osd").html("<span style='color:#EA7409;font-weight:bold;'>" + statusinfo['currservice_station'] + "</span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + statusinfo['currservice_name']);
 			$("#osd_bottom").html(statusinfo['currservice_description']);
 		}
+	})
+	.error(function() {
+		$("#osd, #osd_bottom").html("");
 	});
 }
 
-function grabScreenshot(mode) {
+function grabScreenshot(mode, width) {
 	$('#screenshotspinner').show();
 	$('#screenshotimage').hide();
 	
@@ -269,9 +281,13 @@ function grabScreenshot(mode) {
 			mode = 'all';
 		}
 	}
+
+	if (typeof width == 'undefined') {
+		width = 700;
+	}
 	
 	timestamp = new Date().getTime()
-	$('#screenshotimage').attr("src",'/grab?r=700&mode=' + mode + '&timestamp=' + timestamp);
+	$('#screenshotimage').attr("src",'/grab?r=' + width + '&mode=' + mode + '&timestamp=' + timestamp);
 }
 
 function sendMessage() {

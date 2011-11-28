@@ -7,10 +7,11 @@
 #                                                                            #
 ##############################################################################
 
-
+from Tools.Directories import fileExists
 from models.info import getBasePath, getPublicPath, getViewsPath, getPiconPath
 from models.grab import grabScreenshot
 from models.movies import getMovieList
+from models.timers import getTimers
 from base import BaseController
 from web import WebController
 from ajax import AjaxController
@@ -53,7 +54,11 @@ class RootController(BaseController):
 		return {}
 
 	def P_screenshot(self, request):
-		return {}
+		box = {}
+		box['brand'] = "dmm"
+		if fileExists("/proc/stb/info/vumodel"):
+			box['brand'] = "vuplus"
+		return { "box": box }
 		
 	def P_powerstate(self, request):
 		return {}
@@ -70,3 +75,6 @@ class RootController(BaseController):
 	
 	def P_radio(self, request):
 		return {}
+
+	def P_timers(self, request):
+		return getTimers(self.session)

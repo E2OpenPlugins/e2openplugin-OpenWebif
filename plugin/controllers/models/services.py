@@ -7,6 +7,7 @@
 #                                                                            #
 ##############################################################################
 from Tools.Directories import fileExists
+from Components.Sources.ServiceList import ServiceList
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache
 from time import time, localtime, strftime
@@ -131,7 +132,6 @@ def getCurrentFullInfo(session):
 	
 	return { "info": inf, "now": now, "next": next }
 
-
 def getBouquets(stype):
 	s_type = service_types_tv
 	s_type2 = "bouquets.tv"
@@ -204,6 +204,7 @@ def getSatellites(stype):
 	
 def getChannels(idbouquet, stype):
 	ret = []
+	idp = 0
 	s_type = service_types_tv
 	if stype == "radio":
 		s_type = service_types_radio
@@ -221,22 +222,40 @@ def getChannels(idbouquet, stype):
 			chan['name'] = filterName(channel[1])
 			nowevent = epgcache.lookupEvent(['TBDCIX', (channel[0], 0, -1)])
 			if nowevent[0][0] is not None:
-				chan['now_title'] = nowevent[0][0]
+				chan['now_title'] = filterName(nowevent[0][0])
 				chan['now_begin'] =  strftime("%H:%M", (localtime(nowevent[0][1])))
 				chan['now_end'] = strftime("%H:%M",(localtime(nowevent[0][1] + nowevent[0][2])))
 				chan['now_left'] = int (((nowevent[0][1] + nowevent[0][2]) - nowevent[0][3]) / 60)
 				chan['progress'] = int(((nowevent[0][3] - nowevent[0][1]) * 100 / nowevent[0][2]) )
 				chan['now_ev_id'] = nowevent[0][4]
+				chan['now_idp'] = "nowd" + str(idp)
 				nextevent = epgcache.lookupEvent(['TBDIX', (channel[0], +1, -1)])
-				chan['next_title'] = nextevent[0][0]
+				chan['next_title'] = filterName(nextevent[0][0])
 				chan['next_begin'] =  strftime("%H:%M", (localtime(nextevent[0][1])))
 				chan['next_end'] = strftime("%H:%M",(localtime(nextevent[0][1] + nextevent[0][2])))
 				chan['next_duration'] = int(nextevent[0][2] / 60)
 				chan['next_ev_id'] = nextevent[0][3]
+				chan['next_idp'] = "nextd" + str(idp)
+				idp += 1
 			ret.append(chan)
 			
 	return { "channels": ret }
 		
+def getServices(sRef):
+	services = []
+	
+	if sRef == "":
+		sRef = '%s FROM BOUQUET "bouquets.tv" ORDER BY bouquet' % (service_types_tv)
+		
+	servicelist = ServiceList(eServiceReference(sRef))
+	slist = servicelist.getServicesAsList()
+	for sitem in slist:
+		service = {}
+		service['servicereference'] = sitem[0]
+		service['servicename'] = sitem[1]
+		services.append(service)
+			
+	return { "services": services }
 
 def getEventDesc(ref, idev):
 	epgcache = eEPGCache.getInstance()
@@ -268,7 +287,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1):
 			ev['duration'] = int(event[2] / 60)
 			ev['duration_sec'] = event[2]
 			ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
-			ev['title'] = event[3]
+			ev['title'] = filterName(event[3])
 			ev['shortdesc'] = event[4]
 			ev['longdesc'] = event[5]
 			ev['sref'] = ref
@@ -375,7 +394,7 @@ def getSearchEpg(sstr):
 			ev['duration_sec'] = event[2]
 			ev['duration'] = int(event[2] / 60)
 			ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
-			ev['title'] = event[3]
+			ev['title'] = filterName(event[3])
 			ev['shortdesc'] = event[4]
 			ev['longdesc'] = event[5]
 			ev['sref'] = event[7]

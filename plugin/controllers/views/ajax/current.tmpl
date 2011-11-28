@@ -18,21 +18,39 @@
 <div style="position:absolute;top:320px;left:330px;color:#FFF;font-size:14px;"> $info.width x $info.height </div>
 #if $info.tunernumber == 0
 <div style="position:absolute;top:319px;left:431px"><img border='0' src='/images/osd/icon_a.png' alt='' /></div>
+<div style="position:absolute;top:319px;left:451px"><img border='0' src='/images/osd/icon_b_off.png' alt='' /></div>
+<div style="position:absolute;top:319px;left:472px"><img border='0' src='/images/osd/icon_c_off.png' alt='' /></div>
+<div style="position:absolute;top:319px;left:493px"><img border='0' src='/images/osd/icon_d_off.png' alt='' /></div>
 #else if $info.tunernumber == 1
+<div style="position:absolute;top:319px;left:431px"><img border='0' src='/images/osd/icon_a_off.png' alt='' /></div>
 <div style="position:absolute;top:319px;left:451px"><img border='0' src='/images/osd/icon_b.png' alt='' /></div>
+<div style="position:absolute;top:319px;left:472px"><img border='0' src='/images/osd/icon_c_off.png' alt='' /></div>
+<div style="position:absolute;top:319px;left:493px"><img border='0' src='/images/osd/icon_d_off.png' alt='' /></div>
 #else if $info.tunernumber == 2
+<div style="position:absolute;top:319px;left:431px"><img border='0' src='/images/osd/icon_a_off.png' alt='' /></div>
+<div style="position:absolute;top:319px;left:451px"><img border='0' src='/images/osd/icon_b_off.png' alt='' /></div>
 <div style="position:absolute;top:319px;left:472px"><img border='0' src='/images/osd/icon_c.png' alt='' /></div>
+<div style="position:absolute;top:319px;left:493px"><img border='0' src='/images/osd/icon_d_off.png' alt='' /></div>
 #else if $info.tunernumber == 3
+<div style="position:absolute;top:319px;left:431px"><img border='0' src='/images/osd/icon_a_off.png' alt='' /></div>
+<div style="position:absolute;top:319px;left:451px"><img border='0' src='/images/osd/icon_b_off.png' alt='' /></div>
+<div style="position:absolute;top:319px;left:472px"><img border='0' src='/images/osd/icon_c_off.png' alt='' /></div>
 <div style="position:absolute;top:319px;left:493px"><img border='0' src='/images/osd/icon_d.png' alt='' /></div>
 #end if
 #if $info.crypt == 1
 <div style="position:absolute;top:317px;left:515px"><img border='0' src='/images/osd/icon_crypt.png' alt='' /></div>
+#else 
+<div style="position:absolute;top:317px;left:515px"><img border='0' src='/images/osd/icon_crypt_off.png' alt='' /></div>
 #end if
 #if $info.dolby == True
 <div style="position:absolute;top:317px;left:561px"><img border='0' src='/images/osd/icon_dolby.png' alt='' /></div>
+#else
+<div style="position:absolute;top:317px;left:561px"><img border='0' src='/images/osd/icon_dolby_off.png' alt='' /></div>
 #end if
 #if $info.wide == True
 <div style="position:absolute;top:317px;left:627px"><img border='0' src='/images/osd/icon_format.png' alt='' /></div>
+#else
+<div style="position:absolute;top:317px;left:627px"><img border='0' src='/images/osd/icon_format_off.png' alt='' /></div>
 #end if
 #if $info.width > 1900
 <div style="position:absolute;top:317px;left:673px"><img border='0' src='/images/osd/icon_hd.png' alt='' /></div>
@@ -41,12 +59,18 @@
 #end if
 #if $info.txtpid != "N/A"
 <div style="position:absolute;top:317px;left:719px"><img border='0' src='/images/osd/icon_txt.png' alt='' /></div>
+#else
+<div style="position:absolute;top:317px;left:719px"><img border='0' src='/images/osd/icon_txt_off.png' alt='' /></div>
 #end if
 #if $info.subs == True
 <div style="position:absolute;top:317px;left:765px"><img border='0' src='/images/osd/icon_sub.png' alt='' /></div>
+#else
+<div style="position:absolute;top:317px;left:765px"><img border='0' src='/images/osd/icon_sub_off.png' alt='' /></div>
 #end if
 #if $info.rec_state == True
 <div style="position:absolute;top:317px;left:811px"><img border='0' src='/images/osd/icon_rec.png' alt='' /></div>
+#else
+<div style="position:absolute;top:317px;left:811px"><img border='0' src='/images/osd/icon_rec_off.png' alt='' /></div>
 #end if
 <!-- /END OSD -->
  

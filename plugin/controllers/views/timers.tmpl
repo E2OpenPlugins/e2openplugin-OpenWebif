@@ -1,0 +1,143 @@
+#from urllib import quote
+<div id="content_main" style="min-height: 500px;">
+	<div id="info">
+		<h3>Timerlist</h3>
+		<hr />
+		
+		#for $timer in $timers
+			<div class="moviecontainer_main" id="$timer.begin-$timer.end">
+				<div class="moviecontainer_left" style="height: 40px;">
+					<div style="padding: 3px;">
+						<span style="color: #176093; font-weight: bold;">$timer.name</span><br />$timer.description
+					</div>
+				</div>
+				<div class="moviecontainer_right" style="height: 40px;">
+					<div style="padding: 3px; text-align: right;">
+						<a href='#' onClick="editTimer('$timer.serviceref', '$timer.begin', '$timer.end', '$timer.name', '$timer.description');"><img src="../images/ico_edit.png" title="Edit Timer" border="0"></a>
+						<a href='#' onClick="deleteTimer('$timer.serviceref', '$timer.begin', '$timer.end');"><img src="../images/ico_delete.png" title="Delete Timer" border="0"></a>
+						<a href='#' onClick="toggleTimerStatus($timer.disabled);">
+						#if $timer.disabled
+						<img src="../images/ico_disbled.png" title="Enable Timer" border="0">
+						#else
+						<img src="../images/ico_enabled.png" title="Disable Timer" border="0">
+						#end if
+						</a>
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		#end for
+	</div>
+</div>
+
+<div id="editTimerForm" title="Edit Timer" style="display: none;">
+	<h2>This is not working yet !!!</h2>
+	<form>
+	<fieldset>
+		<div style="width: 100px; float: left;">Name:</div>
+		<div><input type="text" name="timername" id="timername" size="35" class="text ui-widget-content ui-corner-all" /></div>
+		
+		<div style="width: 100px; float: left;">Description:</div>
+		<div><input type="text" name="description" id="description" size="35" class="text ui-widget-content ui-corner-all" /></div>
+		
+		<br>
+
+		<div style="width: 100px; float: left;">Channel:</div>
+		<div>
+		<select id="bouquet_select" name="bouquet_select">
+			<option value="0">Nothing</option>
+		</select>
+		</div>
+		
+		<div style="width: 100px; float: left;">Start:</div>
+		<div><input type="text" name="timerbegin" id="timerbegin" value="" class="text ui-widget-content ui-corner-all" /></div>
+		<div style="width: 100px; float: left;">End:</div>
+		<div><input type="text" name="timerend" id="timerend" value="" class="text ui-widget-content ui-corner-all" /></div>
+		
+		<br>
+		
+		<div style="width: 100px; float: left;">Enabled:</div>
+		<div style="margin: 5px;"><input type="checkbox" name="enabled" id="enabled" value="0" class="text ui-widget-content ui-corner-all" /></div>
+		<div style="width: 100px; float: left;">Just play:</div>
+		<div style="margin: 5px;"><input type="checkbox" name="justplay" id="justplay" value="0" class="text ui-widget-content ui-corner-all" /></div>
+		<div style="width: 100px; float: left;">Repeated:</div>
+		<div style="margin: 5px;"><input type="checkbox" name="repeated" id="repeated" value="0" class="text ui-widget-content ui-corner-all" /></div>
+		
+		<br>
+		<div style="width: 100px; float: left;">Location:</div>
+		<div><select id="dirname" name="dirname">
+			<option value="0">Nothing</option>
+		</select>
+		</div>
+		<div style="width: 100px; float: left;">Tags:</div>
+		<div>
+		<select id="tags" name="tags">
+			<option value="0">Nothing</option>
+		</select>
+		</div>
+		<div style="width: 100px; float: left;">After Event:</div>
+		<div>
+		<select id="afterevent" name="afterevent">
+			<option value="0">Nothing</option>
+			<option value="1">Standby</option>
+			<option value="2">Shutdown</option>
+			<option value="3" selected="">Auto</option>
+		</select>
+		</div>
+		
+	</fieldset>
+	</form>
+</div>
+
+<script src="/js/jquery.timerpicker.js"></script>
+
+<script type="text/javascript">
+jQuery("#editTimerForm").dialog({
+	autoOpen: false,
+	height: 450,
+	width: 450,
+	modal: true,
+	buttons: {
+		"Edit Timer": function() {
+			// TODO: Verify Input here!!!
+			var bValid = true;
+			
+			if (bValid) {
+				jQuery( "#info" ).append( "<tr>" +
+					"<td>" + name.val() + "</td>" + 
+					"<td>" + email.val() + "</td>" + 
+					"<td>" + password.val() + "</td>" +
+				"</tr>" ); 
+				jQuery(this).dialog("close");
+			}
+		},
+		Cancel: function() {
+			jQuery(this).dialog("close");
+		}
+	},
+	close: function() {
+		return;
+	}
+});
+
+function toggleTimerStatus(sRef, begin, end) {
+	alert('Not yet implemented :(');
+}
+
+function editTimer(sRef, begin, end, name, description) {
+	jQuery("#timername").val(name);
+	jQuery("#description").val(description);
+	
+	var begindate = new Date(parseInt(begin)*1000)
+	var enddate = new Date(parseInt(end)*1000)
+
+	jQuery("#timerbegin").val(jQuery.datepicker.formatDate('dd.mm.yy', begindate) + " " + begindate.getHours() + ":" + begindate.getMinutes());
+	jQuery("#timerend").val(jQuery.datepicker.formatDate('dd.mm.yy', enddate) + " " + enddate.getHours() + ":" + enddate.getMinutes());
+	
+	jQuery('#timerbegin').datetimepicker({dateFormat: 'dd.mm.yy', defaultDate: begindate, timeFormat: 'hh:mm', hour: begindate.getHours(), minute: begindate.getMinutes()});
+	jQuery('#timerend').datetimepicker({dateFormat: 'dd.mm.yy', defaultDate: enddate, timeFormat: 'hh:mm', hour: enddate.getHours(), minute: enddate.getMinutes()});
+	
+	jQuery("#editTimerForm").dialog("open");
+}
+
+</script>

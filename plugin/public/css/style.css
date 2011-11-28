@@ -53,6 +53,12 @@ body {
 	width:500px;
 }
 
+#header a
+{
+	color:#FFFFFF;
+	text-decoration:none;
+}
+
 #mainpic
 {
 	background-image:url(../images/main.jpg);
@@ -75,7 +81,7 @@ body {
 	color: #ffffff;
 	height:14px;
 	float:left;
-	width:880px;
+	width:100%;
 	padding-left: 5px;
 	padding-top: 1px;
 	
@@ -87,9 +93,10 @@ body {
 	display:block;
 	height:40px;
 	float:left;
-	width:880px;
+	width:900px;
 	padding-left: 5px;
 	padding-top: 3px;
+	
 	
 }
 
@@ -558,3 +565,10 @@ html, body {
 text-align: center;
 }
 p {text-align: left;}
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header{ margin-bottom: 8px; }
+.ui-timepicker-div dl{ text-align: left; }
+.ui-timepicker-div dl dt{ height: 25px; }
+.ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
