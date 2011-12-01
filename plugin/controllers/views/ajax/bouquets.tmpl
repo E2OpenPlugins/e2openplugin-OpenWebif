@@ -1,7 +1,26 @@
 #from urllib import quote
+<script>
+	
+
+	 \$("#accordion").accordion({
+                active:false,
+                change:function(event, ui) {
+                        ui.newContent.load(ui.newHeader.find('a').attr('id'));
+                },
+                autoHeight: false,
+		 collapsible: true
+            });
+
+
+</script>
+
+<div id="accordion">
+
 #for $bouquet in $bouquets
-	<a href="#" onclick="load_tvcontent_spin('ajax/channels?id=$quote($bouquet[0])&stype=$stype'); return false">
-		<img border='0' src='/images/folder.png' alt='' />&nbsp;&nbsp;$bouquet[1]
-	</a>
-	<br />
+	<h1><a href="#" id="ajax/channels?id=$quote($bouquet[0])&stype=$stype">$bouquet[1]</a></h1>
+	<div>
+loading...
+	</div>
 #end for
+
+</div>
