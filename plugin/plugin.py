@@ -31,7 +31,7 @@ config.OpenWebif.port = ConfigInteger(default = 8088, limits=(1, 65535) )
 config.OpenWebif.auth = ConfigYesNo(default=False)
 config.OpenWebif.webcache = ConfigSubsection()
 # FIXME: anything better than a ConfigText?
-config.OpenWebif.webcache.collapsedmenus = ConfigText(default = "", fixed_size = False)
+config.OpenWebif.webcache.collapsedmenus = ConfigText(default = "remote", fixed_size = False)
 
 
 class OpenWebifConfig(Screen, ConfigListScreen):
