@@ -299,3 +299,16 @@ function sendMessage() {
 		$('#messageSentResponse').html(result['message']);
 	});
 }
+
+function toggleMenu(name) {
+	expander_id = "#leftmenu_expander_" + name
+	container_id = "#leftmenu_container_" + name
+	if ($(expander_id).hasClass("leftmenu_icon_collapse")) {
+		$(expander_id).removeClass("leftmenu_icon_collapse");
+		$(container_id).show('fast')
+	}
+	else {
+		$(expander_id).addClass("leftmenu_icon_collapse");
+		$(container_id).hide('fast')
+	}
+}
