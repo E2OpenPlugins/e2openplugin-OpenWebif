@@ -31,87 +31,81 @@
 		</div>
 		
 		<div id="leftmenu">
+			#def menu($title, $name, $content)
 			<div id="leftmenu_main">
 				<div id="leftmenu_top">
-					Main
-					<div id="leftmenu_expander_main" class="leftmenu_icon" onclick="toggleMenu('main');"></div>
+					$title
+					#if $name in $collapsed
+					<div id="leftmenu_expander_$name" class="leftmenu_icon leftmenu_icon_collapse" onclick="toggleMenu('$name');"></div>
+					#else
+					<div id="leftmenu_expander_$name" class="leftmenu_icon" onclick="toggleMenu('$name');"></div>
+					#end if
 				</div>
-				<div id="leftmenu_container_main">
-					<ul>
-						<li><a href='/index'>Television</a></li>
-						<li><a href='/radio'>Radio</a></li>
-					</ul>
-				</div>
-			</div>
-			<div id="leftmenu_main">
-				<div id="leftmenu_top">
-					Volume Control
-					<div id="leftmenu_expander_volume" class="leftmenu_icon" onclick="toggleMenu('volume');"></div>
-				</div>
-				<div id="leftmenu_container_volume">
-					<div class="volslider">
-							<p style="text-align:center; padding-bottom:8px;"> 
-								<label for="amount">Volume:</label>
-								<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold; width:40px;" />
-							</p>
-						<div id="slider" style="width:130px;"></div>
-					</div>
-					<div style="width:100%; text-align:center; padding-top:5px; padding-bottom:10px;"><img id="volimage" src="images/volume.png" title="" border="0"></div>
+				#if $name in $collapsed
+				<div id="leftmenu_container_$name" style="display: none;">
+				#else
+				<div id="leftmenu_container_$name">
+				#end if
+				$content
 				</div>
 			</div>
+			#end def
+		
+			#def mainMenu
+			<ul>
+				<li><a href='/index'>Television</a></li>
+				<li><a href='/radio'>Radio</a></li>
+			</ul>
+			#end def
+		
+			#def volumeMenu
+			<div class="volslider">
+					<p style="text-align:center; padding-bottom:8px;"> 
+						<label for="amount">Volume:</label>
+						<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold; width:40px;" />
+					</p>
+				<div id="slider" style="width:130px;"></div>
+			</div>
+			<div style="width:100%; text-align:center; padding-top:5px; padding-bottom:10px;"><img id="volimage" src="images/volume.png" title="" border="0"></div>
+			#end def
 
-			<div id="leftmenu_main">    
-				<div id="leftmenu_top">
-					Box Control
-					<div id="leftmenu_expander_control" class="leftmenu_icon" onclick="toggleMenu('control');"></div>
-				</div>
-				<div id="leftmenu_container_control">
-					<ul>
-						<li><a href='/powerstate'>Power Control</a></li>
-						<li><a href="/screenshot?showrc=1">Remote Control</a></li>
-						<li><a href='/screenshot'>Grab Screenshot</a></li>
-						<li><a href='/message'>Send a Message</a></li>
-						<li><a href="/timers">Timers</a></li>
-					</ul>
-				</div>
-			</div>
-			
-			<div id="leftmenu_main">
-				<div id="leftmenu_top">
-					Info
-					<div id="leftmenu_expander_info" class="leftmenu_icon" onclick="toggleMenu('info');"></div>
-				</div>
-				<div id="leftmenu_container_info">
-					<ul>
-						<li><a href="#" onclick="load_maincontent('ajax/boxinfo'); return false">Box Info</a></li>
-						<li><a href="#" onclick="load_maincontent('ajax/about'); return false">About</a></li>
-					</ul>
-				</div>
-			</div>
-			<div id="leftmenu_main">
-				<div id="leftmenu_top">
-					Stream
-					<div id="leftmenu_expander_stream" class="leftmenu_icon" onclick="toggleMenu('stream');"></div>
-				</div>
-				<div id="leftmenu_container_stream">
-					<ul>
-						<li><a href="/movies">Movies</a></li>
-						<li><a href="/workinprogress">Web Tv</a></li>
-					</ul>
-				</div>
-			</div>
-			<div id="leftmenu_main">
-				<div id="leftmenu_top">
-					Epg Search
-					<div id="leftmenu_expander_search" class="leftmenu_icon" onclick="toggleMenu('search');"></div>
-				</div>
-				<div id="leftmenu_container_search">
-					<form action="" onSubmit="open_epg_search_pop(); return false;">
-						<div style="width:100%; text-align:center; padding-top:5px;"><input type="text" id="epgSearch" size="14" /></div>
-						<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button>Search</button></div>
-					</form>
-				</div>
-			</div>
+			#def controlMenu
+			<ul>
+				<li><a href='/powerstate'>Power Control</a></li>
+				<li><a href="/screenshot?showrc=1">Remote Control</a></li>
+				<li><a href='/screenshot'>Grab Screenshot</a></li>
+				<li><a href='/message'>Send a Message</a></li>
+				<li><a href="/timers">Timers</a></li>
+			</ul>
+			#end def
+		
+			#def infoMenu
+			<ul>
+				<li><a href="#" onclick="load_maincontent('ajax/boxinfo'); return false">Box Info</a></li>
+				<li><a href="#" onclick="load_maincontent('ajax/about'); return false">About</a></li>
+			</ul>
+			#end def
+		
+			#def streamMenu
+			<ul>
+				<li><a href="/movies">Movies</a></li>
+				<li><a href="/workinprogress">Web Tv</a></li>
+			</ul>
+			#end def
+		
+			#def searchMenu
+			<form action="" onSubmit="open_epg_search_pop(); return false;">
+				<div style="width:100%; text-align:center; padding-top:5px;"><input type="text" id="epgSearch" size="14" /></div>
+				<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button>Search</button></div>
+			</form>
+			#end def
+		
+			$menu("Main", "main", $mainMenu)
+			$menu("Volume Control", "volume", $volumeMenu)
+			$menu("Box Control", "control", $controlMenu)
+			$menu("Info", "info", $infoMenu)
+			$menu("Stream", "stream", $streamMenu)
+			$menu("Epg Search", "search", $searchMenu)
 		</div>
 		
 		<div id="content">

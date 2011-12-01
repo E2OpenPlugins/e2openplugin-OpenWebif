@@ -16,6 +16,7 @@ from models.locations import getLocations, getCurrentLocation, addLocation, remo
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, cleanupTimer, writeTimerList, recordNow
 from models.message import sendMessage
 from models.movies import getMovieList
+from models.config import addCollapsedMenu, removeCollapsedMenu
 
 from base import BaseController
 
@@ -534,3 +535,17 @@ class WebController(BaseController):
 			"apid": "%x" % info["apid"],
 			"host": request.getRequestHostname()
 		}
+		
+	def P_collapsemenu(self, request):
+		res = self.testMandatoryArguments(request, ["name"])
+		if res:
+			return res
+			
+		return addCollapsedMenu(request.args["name"][0])
+
+	def P_expandmenu(self, request):
+		res = self.testMandatoryArguments(request, ["name"])
+		if res:
+			return res
+			
+		return removeCollapsedMenu(request.args["name"][0])

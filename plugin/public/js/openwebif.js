@@ -306,9 +306,11 @@ function toggleMenu(name) {
 	if ($(expander_id).hasClass("leftmenu_icon_collapse")) {
 		$(expander_id).removeClass("leftmenu_icon_collapse");
 		$(container_id).show('fast')
+		webapi_execute("api/expandmenu?name=" + name)
 	}
 	else {
 		$(expander_id).addClass("leftmenu_icon_collapse");
 		$(container_id).hide('fast')
+		webapi_execute("api/collapsemenu?name=" + name)
 	}
 }
