@@ -51,6 +51,8 @@ class WebController(BaseController):
 		}
 
 	def P_statusinfo(self, request):
+		# we don't need to fill logs with this api (it's called too many times)
+		self.suppresslog = True
 		return getStatusInfo(self)
 
 	def P_signal(self, request):

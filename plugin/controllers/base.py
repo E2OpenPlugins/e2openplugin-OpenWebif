@@ -60,6 +60,7 @@ class BaseController(resource.Resource):
 		if self.path == "":
 			self.path = "index"
 		
+		self.suppresslog = False
 		self.path = self.path.replace(".", "")
 		func = getattr(self, "P_" + self.path, None)
 		if callable(func):
@@ -72,15 +73,18 @@ class BaseController(resource.Resource):
 				
 			data = func(request)
 			if data is None:
-				print "[OpenWebif] page '%s' without content" % request.uri
+				if not self.suppresslog:
+					print "[OpenWebif] page '%s' without content" % request.uri
 				self.error404(request)
 			elif type(data) is str:
-				print "[OpenWebif] page '%s' ok (simple string)" % request.uri
+				if not self.suppresslog:
+					print "[OpenWebif] page '%s' ok (simple string)" % request.uri
 				request.setHeader("content-type", "text/plain")
 				request.write(data)
 				request.finish()
 			elif self.isJson:
-				print "[OpenWebif] page '%s' ok (json)" % request.uri
+				if not self.suppresslog:
+					print "[OpenWebif] page '%s' ok (json)" % request.uri
 				request.setHeader("content-type", "text/plain")
 				request.write(json.dumps(data))
 				request.finish()
