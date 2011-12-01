@@ -28,33 +28,33 @@ class FileController(resource.Resource):
 		return "127.0.0.1"
 		
 	def render(self, request):
-	
+		action = "download"
 		if "action" in request.args.keys():
 			action = request.args["action"][0]
 			
-			if "file" in request.args.keys():
-				file = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
-				
-				if not os_path.exists(file):
-					request.setResponseCode(http.OK)
-					request.write("File '%s' not found" % (file))
-					request.finish()
-
-				if action == "stream":
-					request.setHeader("content-disposition", "inline;filename=\"stream.m3u\"")
-					request.setHeader("content-type", "audio/mpegurl")
-					request.write("#EXTM3U\n")
-					request.write("http://%s:%s/file?action=download&file=%s" % (self.getLocalIPAddress(), config.OpenWebif.port.value, quote(file)))
-					request.finish()
-				elif action == "delete":
-					request.setResponseCode(http.OK)
-					request.write("TODO: DELETE FILE: %s" % (file))
-					request.finish()
-				elif action == "download":
-					request.setHeader("content-disposition", "attachment;filename=\"%s\"" % (file.split('/')[-1]))
-					rfile = static.File(file, defaultType = "application/octet-stream")
-					return rfile.render(request)
-			else:
+		if "file" in request.args.keys():
+			file = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
+			
+			if not os_path.exists(file):
 				request.setResponseCode(http.OK)
-				request.write("Missing file parameter")
+				request.write("File '%s' not found" % (file))
 				request.finish()
+
+			if action == "stream":
+				request.setHeader("content-disposition", "inline;filename=\"stream.m3u\"")
+				request.setHeader("content-type", "audio/mpegurl")
+				request.write("#EXTM3U\n")
+				request.write("http://%s:%s/file?action=download&file=%s" % (self.getLocalIPAddress(), config.OpenWebif.port.value, quote(file)))
+				request.finish()
+			elif action == "delete":
+				request.setResponseCode(http.OK)
+				request.write("TODO: DELETE FILE: %s" % (file))
+				request.finish()
+			elif action == "download":
+				request.setHeader("content-disposition", "attachment;filename=\"%s\"" % (file.split('/')[-1]))
+				rfile = static.File(file, defaultType = "application/octet-stream")
+				return rfile.render(request)
+		else:
+			request.setResponseCode(http.OK)
+			request.write("Missing file parameter")
+			request.finish()
