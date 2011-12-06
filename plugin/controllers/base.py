@@ -18,7 +18,7 @@ from models.config import getCollapsedMenus
 import imp
 import sys
 import json
-	
+
 class BaseController(resource.Resource):
 	isLeaf = False
 	
@@ -124,4 +124,9 @@ class BaseController(resource.Resource):
 
 	def prepareMainTemplate(self):
 		# here will be generated the dictionary for the main template
-		return getCollapsedMenus()
+		ret = getCollapsedMenus()
+		ret['brand'] = "dmm"
+		if fileExists("/proc/stb/info/vumodel"):
+			ret['brand'] = "vuplus"
+		return ret
+		

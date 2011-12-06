@@ -10,6 +10,7 @@
 $.fx.speeds._default = 1000;
 var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>"
 var mutestatus = 0;
+var lastcontenturl = null;
 
 $(function() {
 	
@@ -179,7 +180,10 @@ function load_tvcontent_spin(url) {
 }
 
 function load_maincontent(url) {
-	$("#content").load(url);
+	if (lastcontenturl != url) {
+		$("#content").load(url);
+		lastcontenturl = url
+	}
 	return false;
 }
 
@@ -261,6 +265,8 @@ function getStatusInfo() {
 	});
 }
 
+var screenshotMode = 'all';
+
 function grabScreenshot(mode, width) {
 	$('#screenshotspinner').show();
 	$('#screenshotimage').hide();
@@ -313,4 +319,17 @@ function toggleMenu(name) {
 		$(container_id).hide('fast')
 		webapi_execute("api/collapsemenu?name=" + name)
 	}
+}
+
+function pressMenuRemote(code) {
+	webapi_execute("/api/remotecontrol?command=" + code);
+	if (lastcontenturl == 'ajax/screenshot')
+		grabScreenshot(screenshotMode);
+	else
+		load_maincontent('ajax/screenshot');
+}
+
+function toggleFullRemote() {
+	$("#menucontainer").toggle();
+	$("#remotecontainer").toggle();
 }

@@ -75,4 +75,9 @@ class AjaxController(BaseController):
 		else: 
 			return []
 			
-
+	def P_screenshot(self, request):
+		box = {}
+		box['brand'] = "dmm"
+		if fileExists("/proc/stb/info/vumodel"):
+			box['brand'] = "vuplus"
+		return { "box": box }

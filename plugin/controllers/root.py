@@ -56,13 +56,6 @@ class RootController(BaseController):
 		
 	def P_workinprogress(self, request):
 		return {}
-
-	def P_screenshot(self, request):
-		box = {}
-		box['brand'] = "dmm"
-		if fileExists("/proc/stb/info/vumodel"):
-			box['brand'] = "vuplus"
-		return { "box": box }
 		
 	def P_powerstate(self, request):
 		return {}

@@ -72,8 +72,7 @@
 			#def controlMenu
 			<ul>
 				<li><a href='/powerstate'>Power Control</a></li>
-				<li><a href="/screenshot?showrc=1">Remote Control</a></li>
-				<li><a href='/screenshot'>Grab Screenshot</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/screenshot'); return false;">Grab Screenshot</a></li>
 				<li><a href='/message'>Send a Message</a></li>
 				<li><a href="/timers">Timers</a></li>
 			</ul>
@@ -101,16 +100,146 @@
 			#end def
 			
 			#def remoteMenu
-			<div style="width:100%; text-align:center;"><img src="images/remotes/ow_remote.png" title="" border="0"></div>
+			<div style="width:100%; text-align:center;">
+				<img src="images/remotes/ow_remote.png" width="135" height="183" usemap="#menuremote" border="0">
+				<map name="menuremote" >
+					<area shape="circle" coords="67,148,13" alt="ok" onclick="pressMenuRemote('352');">
+					<area shape="circle" coords="68,173,9" alt="down" onclick="pressMenuRemote('108');">
+					<area shape="circle" coords="44,148,9" alt="left" onclick="pressMenuRemote('105');">
+					<area shape="circle" coords="92,147,9" alt="right" onclick="pressMenuRemote('106');">
+					<area shape="circle" coords="68,126,8" alt="up" onclick="pressMenuRemote('103');">
+					<area shape="circle" coords="117,163,10" alt="blue" onclick="pressMenuRemote('401');">
+					<area shape="circle" coords="118,132,11" alt="yellow" onclick="pressMenuRemote('400');">
+					<area shape="circle" coords="18,163,11" alt="green" onclick="pressMenuRemote('399');">
+					<area shape="circle" coords="19,133,10" alt="red" onclick="pressMenuRemote('398');">
+					<area shape="rect" coords="5,89,44,117" alt="menu" onclick="pressMenuRemote('139');">
+					<area shape="rect" coords="90,89,128,117" alt="exit" onclick="pressMenuRemote('174');">
+					<area shape="rect" coords="47,89,87,117" alt="0" onclick="pressMenuRemote('11');">
+					<area shape="rect" coords="90,60,128,86" alt="9" onclick="pressMenuRemote('10');">
+					<area shape="rect" coords="47,60,87,86" alt="8" onclick="pressMenuRemote('9');">
+					<area shape="rect" coords="4,60,44,86" alt="7" onclick="pressMenuRemote('8');">
+					<area shape="rect" coords="4,30,44,57" alt="6" onclick="pressMenuRemote('7');">
+					<area shape="rect" coords="47,30,87,57" alt="5" onclick="pressMenuRemote('6');">
+					<area shape="rect" coords="90,30,129,57" alt="4" onclick="pressMenuRemote('5');">
+					<area shape="rect" coords="90,0,129,27" alt="3" onclick="pressMenuRemote('4');">
+					<area shape="rect" coords="46,0,88,28" alt="2" onclick="pressMenuRemote('3');">
+					<area shape="rect" coords="5,0,45,28" alt="1" onclick="pressMenuRemote('2');">
+				</map>
+				<ul>
+					<li><a href="#" onclick="toggleFullRemote(); return false;">Show full remote</a></li>
+				</ul>
+			</div>
 			#end def
 		
-			$menu("Main", "main", $mainMenu)
-			$menu("Volume Control", "volume", $volumeMenu)
-			$menu("Box Control", "control", $controlMenu)
-			$menu("Remote", "remote", $remoteMenu)
-			$menu("Info", "info", $infoMenu)
-			$menu("Stream", "stream", $streamMenu)
-			$menu("Epg Search", "search", $searchMenu)
+			<div id="menucontainer">
+				$menu("Main", "main", $mainMenu)
+				$menu("Volume Control", "volume", $volumeMenu)
+				$menu("Box Control", "control", $controlMenu)
+				$menu("Remote", "remote", $remoteMenu)
+				$menu("Info", "info", $infoMenu)
+				$menu("Stream", "stream", $streamMenu)
+				$menu("Epg Search", "search", $searchMenu)
+			</div>
+			<div id="remotecontainer" style="display: none;">
+				<div id="leftmenu_main">
+					<div id="leftmenu_top">Remote Control</div>
+					<div>
+						#if $brand == "vuplus"
+						<img border='0' src='/images/remotes/vu_normal.png' usemap='#map' >
+						<map name="map">
+							<area shape="circle" coords="33,28,15" id="113" alt="mute" onclick="pressMenuRemote('113');">
+							<area shape="circle" coords="105,28,15" id ="116" alt="Power" onclick="pressMenuRemote('116');">
+							<area shape="circle" coords="33,53,15" id ="388" alt="text" onclick="pressMenuRemote('388');">
+							<area shape="circle" coords="58,53,15" id ="370" alt="subtitle" onclick="pressMenuRemote('370');">
+							<area shape="circle" coords="82,53,15" id ="102" alt="home" onclick="pressMenuRemote('102');">
+							<area shape="circle" coords="105,53,15" id ="107" alt="end" onclick="pressMenuRemote('107');">
+							<area shape="circle" coords="38,79,15" id ="2" alt="1" onclick="pressMenuRemote('2');">
+							<area shape="circle" coords="70,79,15" id ="3" alt="2" onclick="pressMenuRemote('3');">
+							<area shape="circle" coords="102,79,15" id ="4" alt="3" onclick="pressMenuRemote('4');">
+							<area shape="circle" coords="38,106,15" id ="5" alt="4" onclick="pressMenuRemote('5');">
+							<area shape="circle" coords="70,106,15" id ="6" alt="5" onclick="pressMenuRemote('6');">
+							<area shape="circle" coords="102,106,15" id ="7" alt="6" onclick="pressMenuRemote('7');">
+							<area shape="circle" coords="38,133,15" id ="8" alt="7" onclick="pressMenuRemote('8');">
+							<area shape="circle" coords="70,133,15" id ="9" alt="8" onclick="pressMenuRemote('9');">
+							<area shape="circle" coords="102,133,15" id ="10" alt="9" onclick="pressMenuRemote('10');">
+							<area shape="circle" coords="38,161,15" id ="412" alt="previous" onclick="pressMenuRemote('412');">
+							<area shape="circle" coords="70,161,15" id ="11" alt="0" onclick="pressMenuRemote('11');">
+							<area shape="circle" coords="102,161,15" id ="407" alt="next" onclick="pressMenuRemote('407');">
+							<area shape="circle" coords="33,186,15" id ="398" alt="red" onclick="pressMenuRemote('398');">
+							<area shape="circle" coords="58,186,15" id ="399" alt="green" onclick="pressMenuRemote('399');">
+							<area shape="circle" coords="82,186,15" id ="400" alt="yellow" onclick="pressMenuRemote('400');">
+							<area shape="circle" coords="105,186,15" id ="401" alt="blue" onclick="pressMenuRemote('401');">
+							<area shape="circle" coords="70,213,15" id ="103" alt="up" onclick="pressMenuRemote('103');">
+							<area shape="circle" coords="70,283,15" id ="108" alt="down" onclick="pressMenuRemote('108');">
+							<area shape="circle" coords="35,248,15" id ="105" alt="left" onclick="pressMenuRemote('105');">
+							<area shape="circle" coords="105,248,15" id ="106" alt="right" onclick="pressMenuRemote('106');">
+							<area shape="circle" coords="70,248,20" id ="352" alt="OK" onclick="pressMenuRemote('352');">
+							<area shape="circle" coords="40,307,15" id ="115" alt="volume up" onclick="pressMenuRemote('115');">
+							<area shape="circle" coords="40,338,13" id ="114" alt="volume down" onclick="pressMenuRemote('114');">
+							<area shape="circle" coords="70,310,15" id ="174" alt="exit" onclick="pressMenuRemote('174');">
+							<area shape="circle" coords="70,334,15" id ="358" alt="epg" onclick="pressMenuRemote('358');">
+							<area shape="circle" coords="99,307,15" id ="402" alt="channelup" onclick="pressMenuRemote('402');">
+							<area shape="circle" coords="99,338,15" id ="403" alt="channeldown" onclick="pressMenuRemote('403');">
+							<area shape="circle" coords="36,362,15" id ="139" alt="menu" onclick="pressMenuRemote('139');">
+							<area shape="circle" coords="59,362,15" id ="393" alt="videoaltlast" onclick="pressMenuRemote('393');">
+							<area shape="circle" coords="81,362,15" id ="392" alt="audio" onclick="pressMenuRemote('392');">
+							<area shape="circle" coords="104,362,15" id ="138" alt="help" onclick="pressMenuRemote('138');">
+							<area shape="circle" coords="36,383,15" id ="168" alt="rewind" onclick="pressMenuRemote('168');">
+							<area shape="circle" coords="59,383,15" id ="207" alt="play" onclick="pressMenuRemote('207');">
+							<area shape="circle" coords="81,383,15" id ="119" alt="pause" onclick="pressMenuRemote('119');">
+							<area shape="circle" coords="104,383,15" id ="208" alt="forward" onclick="pressMenuRemote('208');">
+							<area shape="circle" coords="36,405,15" id ="377" alt="tv" onclick="pressMenuRemote('377');">
+							<area shape="circle" coords="59,405,15" id ="167" alt="record" onclick="pressMenuRemote('167');">
+							<area shape="circle" coords="81,405,15" id ="128" alt="stop" onclick="pressMenuRemote('128');">
+							<area shape="circle" coords="104,405,15" id ="385" alt="radio" onclick="pressMenuRemote('385');">
+						</map>
+						#else
+						<img border='0' src='/images/remotes/dm_normal.png' usemap='#map' >
+						<map name='map'>
+							<area alt="1" shape='rect' coords='26,75,60,96' onclick="pressMenuRemote('2');">
+							<area alt="2" shape='rect' coords='65,75,99,96' onclick="pressMenuRemote('3');">
+							<area alt="3" shape='rect' coords='104,75,138,96' onclick="pressMenuRemote('4');">
+							<area alt="4" shape='rect' coords='27,98,60,117' onclick="pressMenuRemote('5');">
+							<area alt="5" shape='rect' coords='65,98,99,117' onclick="pressMenuRemote('6');">
+							<area alt="6" shape='rect' coords='104,98,138,117' onclick="pressMenuRemote('7');">
+							<area alt="7" shape='rect' coords='27,119,60,139' onclick="pressMenuRemote('8');">
+							<area alt="8" shape='rect' coords='65,119,99,139' onclick="pressMenuRemote('9');">
+							<area alt="9" shape='rect' coords='104,119,138,139' onclick="pressMenuRemote('10');">
+							<area alt="0" shape='rect' coords='65,142,99,160' onclick="pressMenuRemote('11');">
+							<area alt="Previous" shape='rect' coords='27,142,60,160' onclick="pressMenuRemote('412');">
+							<area alt="Next" shape='rect' coords='104,141,138,160' onclick="pressMenuRemote('407');">
+							<area alt="OK" shape='rect' coords='62,261,105,292' onclick="pressMenuRemote('352');">
+							<area alt="Exit" shape='circle' coords='81,208,14' onclick="pressMenuRemote('174');">
+							<area alt="Volume up" shape='circle' coords='37,190,13' onclick="pressMenuRemote('115');">
+							<area alt="Volume down" shape='circle' coords='47,218,14' onclick="pressMenuRemote('114');">
+							<area alt="Bouquet up" shape='circle' coords='129,189,14' onclick="pressMenuRemote('402');">
+							<area alt="Bouquet down" shape='circle' coords='119,219,14' onclick="pressMenuRemote('403');">
+							<area alt="Up" shape='rect' coords='48,234,118,259' onclick="pressMenuRemote('103');">
+							<area alt="Down" shape='rect' coords='54,294,109,319' onclick="pressMenuRemote('108');">
+							<area alt="Left" shape='rect' coords='34,261,64,294' onclick="pressMenuRemote('105');">
+							<area alt="Right" shape='rect' coords='103,261,129,294' onclick="pressMenuRemote('106');">
+							<area alt="Power" shape='circle' coords='101,25,16' onclick="pressMenuRemote('116');">
+							<area alt="Menu" shape='circle' coords='134,245,13' onclick="pressMenuRemote('139');">
+							<area alt="Info" shape='circle' coords='32,245,14' onclick="pressMenuRemote('358');">
+							<area alt="Video" shape='circle' coords='130,312,12' onclick="pressMenuRemote('393');">
+							<area alt="Audio" shape='circle' coords='35,312,12' onclick="pressMenuRemote('392');">
+							<area alt="Mute" shape='circle' coords='82,180,14' onclick="pressMenuRemote('113');">
+							<area alt="Red" shape='circle' coords='39,347,12' onclick="pressMenuRemote('398');">
+							<area alt="Green" shape='circle' coords='67,347,11' onclick="pressMenuRemote('399');">
+							<area alt="Yellow" shape='circle' coords='97,349,12' onclick="pressMenuRemote('400');">
+							<area alt="Blue" shape='circle' coords='126,346,12' onclick="pressMenuRemote('401');">
+							<area alt="TV" shape='circle' coords='43,381,12' onclick="pressMenuRemote('377');">
+							<area alt="Radio" shape='circle' coords='69,382,12' onclick="pressMenuRemote('385');">
+							<area alt="Text" shape='circle' coords='97,382,13' onclick="pressMenuRemote('388');">
+							<area alt="Help" shape='circle' coords='123,382,11' onclick="pressMenuRemote('138');">
+						</map>
+						#end if
+						<ul>
+							<li><a href="#" onclick="toggleFullRemote(); return false;" class="leftmenu_remotelink">Hide full remote</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 		
 		<div id="content">
