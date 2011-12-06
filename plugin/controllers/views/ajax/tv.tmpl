@@ -1,0 +1,41 @@
+<div id="content_main">
+	<div id="tvcontentmain">
+	<div id="toolbar-header">
+		<span id="toolbar">
+			<span id="tvbutton">
+				<input type="radio" id="tvbutton0" name="tvbutton" checked="checked" /><label for="tvbutton0">Current</label>
+				<input type="radio" id="tvbutton1" name="tvbutton" /><label for="tvbutton1">Bouquets</label>
+				<input type="radio" id="tvbutton2" name="tvbutton" /><label for="tvbutton2">Providers</label>
+				<input type="radio" id="tvbutton3" name="tvbutton" /><label for="tvbutton3">Satellites</label>
+				<input type="radio" id="tvbutton4" name="tvbutton" /><label for="tvbutton4">All Channels</label>
+			</span>
+		</span>
+	</div>
+	
+	<div id="tvcontent"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	\$('#tvbutton0').click(function(){
+		\$("#tvcontent").html(loadspinner).load("ajax/current");
+	});
+	\$('#tvbutton1').click(function(){
+		\$("#tvcontent").html(loadspinner).load("ajax/bouquets");
+	});
+	\$('#tvbutton2').click(function(){
+		\$("#tvcontent").html(loadspinner).load("ajax/providers");
+	});
+	\$('#tvbutton3').click(function(){
+		\$("#tvcontent").load("ajax/satellites");
+	});
+	\$('#tvbutton4').click(function(){
+		\$("#tvcontent").html(loadspinner).load("ajax/channels");
+	});
+	
+	\$( "#tvbutton" ).buttonset();
+	
+	\$(document).ready(function() {
+		\$("#tvcontent").load("ajax/current");
+	});
+</script>

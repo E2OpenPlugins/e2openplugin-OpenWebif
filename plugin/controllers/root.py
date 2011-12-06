@@ -10,8 +10,6 @@
 from Tools.Directories import fileExists
 from models.info import getBasePath, getPublicPath, getViewsPath, getPiconPath
 from models.grab import grabScreenshot
-from models.movies import getMovieList
-from models.timers import getTimers
 from base import BaseController
 from web import WebController
 from ajax import AjaxController
@@ -54,24 +52,3 @@ class RootController(BaseController):
 			return ""
 		return {}
 		
-	def P_workinprogress(self, request):
-		return {}
-		
-	def P_powerstate(self, request):
-		return {}
-
-	def P_message(self, request):
-		return {}
-
-	def P_movies(self, request):
-		if "dirname" in request.args.keys():
-			movies = getMovieList(request.args["dirname"][0])
-		else:
-			movies = getMovieList()
-		return movies
-	
-	def P_radio(self, request):
-		return {}
-
-	def P_timers(self, request):
-		return getTimers(self.session)

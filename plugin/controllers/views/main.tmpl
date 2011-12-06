@@ -53,8 +53,8 @@
 		
 			#def mainMenu
 			<ul>
-				<li><a href='/index'>Television</a></li>
-				<li><a href='/radio'>Radio</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/tv'); return false;">Television</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/radio'); return false;">Radio</a></li>
 			</ul>
 			#end def
 		
@@ -71,10 +71,10 @@
 
 			#def controlMenu
 			<ul>
-				<li><a href='/powerstate'>Power Control</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/powerstate'); return false;">Power Control</a></li>
 				<li><a href='#' onclick="load_maincontent('ajax/screenshot'); return false;">Grab Screenshot</a></li>
-				<li><a href='/message'>Send a Message</a></li>
-				<li><a href="/timers">Timers</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/message'); return false;">Send a Message</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">Timers</a></li>
 			</ul>
 			#end def
 		
@@ -87,8 +87,8 @@
 		
 			#def streamMenu
 			<ul>
-				<li><a href="/movies">Movies</a></li>
-				<li><a href="/workinprogress">Web Tv</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/movies'); return false;">Movies</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/workinprogress'); return false;">Web Tv</a></li>
 			</ul>
 			#end def
 		

@@ -16,6 +16,21 @@
 </div>
 
 <script type="text/javascript">
+	\$('#radiobutton0').click(function(){
+		\$("#tvcontent").html(loadspinner).load("ajax/bouquets?stype=radio");
+	});
+	\$('#radiobutton1').click(function(){
+		\$("#tvcontent").html(loadspinner).load("ajax/providers?stype=radio");
+	});
+	\$('#radiobutton2').click(function(){
+		\$("#tvcontent").load("ajax/satellites?stype=radio");
+	});
+	\$('#radiobutton3').click(function(){
+		\$("#tvcontent").html(loadspinner).load("ajax/channels?stype=radio");
+	});
+	
+	\$( "#tvbutton" ).buttonset();
+	
 	\$(document).ready(function() {
 		\$("#tvcontent").load("ajax/bouquets?stype=radio");
 	});

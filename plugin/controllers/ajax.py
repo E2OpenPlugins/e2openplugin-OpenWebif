@@ -11,6 +11,8 @@ from Tools.Directories import fileExists
 
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo
 from models.info import getInfo, getPublicPath
+from models.movies import getMovieList
+from models.timers import getTimers
 from base import BaseController
 
 class AjaxController(BaseController):
@@ -81,3 +83,29 @@ class AjaxController(BaseController):
 		if fileExists("/proc/stb/info/vumodel"):
 			box['brand'] = "vuplus"
 		return { "box": box }
+		
+	def P_powerstate(self, request):
+		return {}
+		
+	def P_message(self, request):
+		return {}
+		
+	def P_movies(self, request):
+		if "dirname" in request.args.keys():
+			movies = getMovieList(request.args["dirname"][0])
+		else:
+			movies = getMovieList()
+		return movies
+		
+	def P_workinprogress(self, request):
+		return {}
+	
+	def P_radio(self, request):
+		return {}
+
+	def P_timers(self, request):
+		return getTimers(self.session)
+		
+	def P_tv(self, request):
+		return {}
+		

@@ -14,10 +14,6 @@ var lastcontenturl = null;
 
 $(function() {
 	
-
-	$( "#tvbutton" ).buttonset();
-	
-
 	$( "#dialog" ).dialog({
 		autoOpen: false,
 		show: "fade",
@@ -28,36 +24,6 @@ $(function() {
 			} 
 		}
 	});
-	
-	$('#tvbutton0').click(function(){
-		$("#tvcontent").html(loadspinner).load("ajax/current");
-	});
-	$('#tvbutton1').click(function(){
-		$("#tvcontent").html(loadspinner).load("ajax/bouquets");
-	});
-	$('#tvbutton2').click(function(){
-		$("#tvcontent").html(loadspinner).load("ajax/providers");
-	});
-	$('#tvbutton3').click(function(){
-		$("#tvcontent").load("ajax/satellites");
-	});
-	$('#tvbutton4').click(function(){
-		$("#tvcontent").html(loadspinner).load("ajax/channels");
-	});
-
-	$('#radiobutton0').click(function(){
-		$("#tvcontent").html(loadspinner).load("ajax/bouquets?stype=radio");
-	});
-	$('#radiobutton1').click(function(){
-		$("#tvcontent").html(loadspinner).load("ajax/providers?stype=radio");
-	});
-	$('#radiobutton2').click(function(){
-		$("#tvcontent").load("ajax/satellites?stype=radio");
-	});
-	$('#radiobutton3').click(function(){
-		$("#tvcontent").html(loadspinner).load("ajax/channels?stype=radio");
-	});	
-
 
 	$('#volimage').click(function(){
 		if (mutestatus == 0) {
