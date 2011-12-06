@@ -41,7 +41,7 @@ def HttpdStart(session):
 
 		
 def HttpdStop(session):
-	if http_running:
+	if http_running is not None:
 		http_running.stopListening().addCallback(HttpdDoStop, session)
 
 def HttpdDoStop(session):
