@@ -125,8 +125,10 @@ class BaseController(resource.Resource):
 	def prepareMainTemplate(self):
 		# here will be generated the dictionary for the main template
 		ret = getCollapsedMenus()
-		ret['brand'] = "dmm"
+		ret['box'] = "dmm"
 		if fileExists("/proc/stb/info/vumodel"):
-			ret['brand'] = "vuplus"
+			ret['box'] = "vuplus"
+		elif fileExists("/proc/stb/info/boxtype"):
+			ret['box'] = open("/proc/stb/info/boxtype").read().strip()
 		return ret
 		
