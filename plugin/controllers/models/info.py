@@ -94,10 +94,19 @@ def getInfo():
 	info['mem2'] = parts[1].strip()
 	f.close()
 		
-	f = os.popen("uptime")
-	parts = f.readline().split(',')
-	info['uptime'] = parts[0].strip()
-	f.close()
+	try:
+		f = open("/proc/uptime", "rb")
+		uptime = int(float(f.readline().split(' ', 2)[0].strip()))
+		f.close()
+		uptimetext = ''
+		if uptime > 86400:
+			d = uptime/86400
+			uptime = uptime % 86400
+			uptimetext += '%dd ' % d
+		uptimetext += "%d:%.2d" % (uptime/3600, (uptime%3600)/60)
+	except:
+		uptimetext = "?"
+	info['uptime'] = uptimetext
 		
 	if fileExists("/etc/bhversion"):
 		f = open("/etc/bhversion",'r')
