@@ -112,6 +112,10 @@ def getInfo():
 		f = open("/etc/bhversion",'r')
 		imagever = f.readline().strip()
 		f.close()
+	elif fileExists("/etc/vtiversion.info"):
+		f = open("/etc/vtiversion.info",'r')
+		imagever = f.readline().strip()
+		f.close()
 	else:
 		imagever = about.getImageVersionString()
 		
