@@ -17,6 +17,7 @@ from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, rem
 from models.message import sendMessage
 from models.movies import getMovieList
 from models.config import addCollapsedMenu, removeCollapsedMenu
+from models.stream import getStream
 
 from base import BaseController
 
@@ -551,3 +552,15 @@ class WebController(BaseController):
 			return res
 			
 		return removeCollapsedMenu(request.args["name"][0])
+
+	def P_streamm3u(self,request):
+		return getStream(self.session,request,"stream.m3u")
+
+	def P_tsm3u(self,request):
+		return getStream(self.session,request,"ts.m3u")
+
+	def P_videom3u(self,request):
+		return getStream(self.session,request,"video.m3u")
+		
+	def P_streamcurrentm3u(self,request):
+		return getStream(self.session,request,"stream.m3u")
