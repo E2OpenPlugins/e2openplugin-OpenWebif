@@ -18,7 +18,7 @@ from models.message import sendMessage
 from models.movies import getMovieList
 from models.config import addCollapsedMenu, removeCollapsedMenu
 from models.stream import getStream
-
+from models.servicelist import reloadServicesLists
 from base import BaseController
 
 class WebController(BaseController):
@@ -564,3 +564,7 @@ class WebController(BaseController):
 		
 	def P_streamcurrentm3u(self,request):
 		return getStream(self.session,request,"stream.m3u")
+
+	def P_servicelistreload(self, request):
+		return reloadServicesLists(self.session,request)
+
