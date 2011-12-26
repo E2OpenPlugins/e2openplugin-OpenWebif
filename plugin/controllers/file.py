@@ -24,28 +24,23 @@ class FileController(resource.Resource):
 		if "file" in request.args:
 			filename = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
 
-			if action != "streamts":
-				if not os.path.exists(filename):
-					return "File '%s' not found" % (filename)
+
+			if not os.path.exists(filename):
+				return "File '%s' not found" % (filename)
 
 			name = "stream"
 			if "name" in request.args:
 				name = request.args["name"][0]
 			if action == "stream":
 				response = "#EXTM3U\nhttp://%s:%s/file?action=download&file=%s" % (request.getRequestHostname(), config.OpenWebif.port.value, quote(filename))
-				request.setHeader("content-disposition", 'inline;filename="%s.m3u"' % name)
-				request.setHeader("content-type", "audio/mpegurl")
-				return response
-			elif action == "streamts":
-				response = "#EXTM3U\nhttp://%s:8001/%s\n" % (request.getRequestHostname(), filename)
-				request.setHeader("content-disposition", 'inline;filename="%s.m3u"' % name)
-				request.setHeader("content-type", "audio/mpegurl")
+				request.setHeader("Content-Disposition:", 'attachment;filename="%s.m3u"' % name)
+				request.setHeader("Content-Type:", "audio/mpegurl")
 				return response
 			elif action == "delete":
 				request.setResponseCode(http.OK)
 				return "TODO: DELETE FILE: %s" % (filename)
 			elif action == "download":
-				request.setHeader("content-disposition", "attachment;filename=\"%s\"" % (filename.split('/')[-1]))
+				request.setHeader("Content-Disposition:", "attachment;filename=\"%s\"" % (filename.split('/')[-1]))
 				rfile = static.File(filename, defaultType = "application/octet-stream")
 				return rfile.render(request)
 		else:
