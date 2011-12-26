@@ -36,16 +36,19 @@ class FileController(resource.Resource):
 					request.write("File '%s' not found" % (filename))
 					request.finish()
 
+			name = "stream"
+			if "name" in request.args:
+				name = request.args["name"][0]
 			if action == "stream":
 				response = "#EXTM3U\nhttp://%s:%s/file?action=download&file=%s" % (request.getRequestHostname(), config.OpenWebif.port.value, quote(filename))
-				request.setHeader("content-disposition", "inline;filename=\"stream.m3u\"")
+				request.setHeader("content-disposition", 'inline;filename="%s.m3u"' % name)
 				request.setHeader("content-type", "audio/mpegurl")
 				request.setHeader("content-length", len(response))
 				request.write(response)
 				request.finish()
 			elif action == "streamts":
 				response = "#EXTM3U\nhttp://%s:8001/%s\n" % (request.getRequestHostname(), filename)
-				request.setHeader("content-disposition", "inline;filename=\"stream.m3u\"")
+				request.setHeader("content-disposition", 'inline;filename="%s.m3u"' % name)
 				request.setHeader("content-type", "audio/mpegurl")
 				request.setHeader("content-length", len(response))
 				request.write(response)
