@@ -34,17 +34,24 @@ class FileController(resource.Resource):
 			
 		if "file" in request.args.keys():
 			file = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
-			
-			if not os_path.exists(file):
-				request.setResponseCode(http.OK)
-				request.write("File '%s' not found" % (file))
-				request.finish()
 
+			if action != "streamts":
+				if not os_path.exists(file):
+					request.setResponseCode(http.OK)
+					request.write("File '%s' not found" % (file))
+					request.finish()
+	
 			if action == "stream":
 				request.setHeader("content-disposition", "inline;filename=\"stream.m3u\"")
 				request.setHeader("content-type", "audio/mpegurl")
 				request.write("#EXTM3U\n")
 				request.write("http://%s:%s/file?action=download&file=%s" % (self.getLocalIPAddress(), config.OpenWebif.port.value, quote(file)))
+				request.finish()
+			elif action == "streamts":
+				request.setHeader("content-disposition", "inline;filename=\"stream.m3u\"")
+				request.setHeader("content-type", "audio/mpegurl")
+				request.write("#EXTM3U\n")
+				request.write("http://%s:%s/%s" % (self.getLocalIPAddress(), '8001', file))
 				request.finish()
 			elif action == "delete":
 				request.setResponseCode(http.OK)
