@@ -213,6 +213,14 @@ text-align:left;
 color:#87BCF8;	
 }
 
+#leftmenu_main #help
+{
+	font-size: 9px;
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
 .ui-tabs
 {
 	width:690px;

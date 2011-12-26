@@ -287,8 +287,23 @@ function toggleMenu(name) {
 	}
 }
 
+var shiftbutton = false;
+$(window).keydown(function(evt) {
+	if (evt.which == 16) { 
+		shiftbutton = true;
+	}
+}).keyup(function(evt) {
+	if (evt.which == 16) { 
+		shiftbutton = false;
+	}
+});
+
 function pressMenuRemote(code) {
-	webapi_execute("/api/remotecontrol?command=" + code);
+	if (shiftbutton)
+		webapi_execute("/api/remotecontrol?type=long&command=" + code);
+	else
+		webapi_execute("/api/remotecontrol?command=" + code);
+	
 	if (lastcontenturl == 'ajax/screenshot')
 		grabScreenshot(screenshotMode);
 	else
