@@ -6,7 +6,7 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-from os import path as os_path
+import os
 from twisted.web import static, resource, http
 from urllib import unquote, quote
 from Components.config import config
@@ -25,7 +25,7 @@ class FileController(resource.Resource):
 			filename = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
 
 			if action != "streamts":
-				if not os_path.exists(filename):
+				if not os.path.exists(filename):
 					return "File '%s' not found" % (filename)
 
 			name = "stream"

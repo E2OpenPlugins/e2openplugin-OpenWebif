@@ -7,19 +7,15 @@
 #                                                                            #
 ##############################################################################
 from time import localtime, strftime
-from os import path as os_path, listdir as os_listdir
+import os
 from Components.config import config
 
 def getMovieList(directory="/hdd/movie"):
-
-	# Get Movielist
 	movielist = []
-	
-	if os_path.exists(directory):
-		filelist = os_listdir(directory)
-		for filename in filelist:
+	if os.path.exists(directory):
+		for filename in os.listdir(directory):
 			filename = filename.decode("utf-8", "ignore").encode("utf-8")
-			if os_path.isfile(directory + "/" + filename) and filename.endswith(('ts', 'vob', 'mpg', 'mpeg', 'avi', 'mkv', 'dat', 'iso', 'mp4', 'divx', 'mov', 'm2ts', 'm4v', 'f4v', 'flv')) and not filename.endswith(('cuts')):
+			if os.path.isfile(directory + "/" + filename) and filename.endswith(('ts', 'vob', 'mpg', 'mpeg', 'avi', 'mkv', 'dat', 'iso', 'mp4', 'divx', 'mov', 'm2ts', 'm4v', 'f4v', 'flv')) and not filename.endswith(('cuts')):
 				movie = {}
 				movie['filename'] = filename
 				movie['directory'] = directory
@@ -30,7 +26,7 @@ def getMovieList(directory="/hdd/movie"):
 				movie['serviceref'] = ""
 				
 				# Get Event Info from meta file
-				if os_path.exists(directory + "/" + filename + ".meta"):
+				if os.path.exists(directory + "/" + filename + ".meta"):
 					readmetafile = open(directory + "/" + filename + ".meta", "r")
 					movie['serviceref'] = readmetafile.readline()[0:-1]
 					movie['eventname'] = readmetafile.readline()[0:-1]

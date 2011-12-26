@@ -8,8 +8,7 @@
 ##############################################################################
 from enigma import eConsoleAppContainer
 from twisted.web import static, resource, http
-from os.path import getsize as os_getsize
-from os import system as os_system
+import os
 
 GRAB_PATH = '/usr/bin/grab'
 
@@ -17,7 +16,6 @@ class grabScreenshot(resource.Resource):
 
 	def __init__(self, path = ""):
 		resource.Resource.__init__(self)
-
 		self.container = eConsoleAppContainer()
 		self.container.appClosed.append(self.grabFinished)
 		
@@ -51,14 +49,14 @@ class grabScreenshot(resource.Resource):
 		
 		#self.container.execute(grabcommand)
 		
-		os_system(grabcommand)
+		os.system(grabcommand)
 		self.grabFinished()
 
 	def grabFinished(self, data=""):
 		try:
 			self.request.setHeader('Content-Disposition', 'inline; filename=screenshot.%s;' % self.fileformat)
 			self.request.setHeader('Content-Type','image/%s' % self.fileformat)
-			self.request.setHeader('Content-Length', '%i' % os_getsize(self.filepath))
+			self.request.setHeader('Content-Length', '%i' % os.path.getsize(self.filepath))
 			
 			file = open(self.filepath)
 			self.request.write(file.read())
