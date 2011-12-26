@@ -37,16 +37,18 @@ class FileController(resource.Resource):
 					request.finish()
 
 			if action == "stream":
+				response = "#EXTM3U\nhttp://%s:%s/file?action=download&file=%s" % (request.getRequestHostname(), config.OpenWebif.port.value, quote(filename))
 				request.setHeader("content-disposition", "inline;filename=\"stream.m3u\"")
 				request.setHeader("content-type", "audio/mpegurl")
-				request.write("#EXTM3U\n")
-				request.write("http://%s:%s/file?action=download&file=%s" % (request.getRequestHostname(), config.OpenWebif.port.value, quote(filename)))
+				request.setHeader("content-length", len(response))
+				request.write(response)
 				request.finish()
 			elif action == "streamts":
+				response = "#EXTM3U\nhttp://%s:8001/%s\n" % (request.getRequestHostname(), filename)
 				request.setHeader("content-disposition", "inline;filename=\"stream.m3u\"")
 				request.setHeader("content-type", "audio/mpegurl")
-				request.write("#EXTM3U\n")
-				request.write("http://%s:8001/%s\n" % (request.getRequestHostname(), filename))
+				request.setHeader("content-length", len(response))
+				request.write(response)
 				request.finish()
 			elif action == "delete":
 				request.setResponseCode(http.OK)
