@@ -251,12 +251,39 @@ def getServices(sRef):
 		
 	servicelist = ServiceList(eServiceReference(sRef))
 	slist = servicelist.getServicesAsList()
+
 	for sitem in slist:
 		service = {}
 		service['servicereference'] = sitem[0]
 		service['servicename'] = sitem[1]
 		services.append(service)
 			
+	return { "services": services }
+
+def getSubServices(session):
+	services = []
+	currentServiceRef = session.nav.getCurrentlyPlayingServiceReference()
+	if currentServiceRef is not None:
+		currentService = session.nav.getCurrentService()
+		subservices = currentService.subServices()
+		
+		if subservices and subservices.getNumberOfSubservices() != 0:
+			n = subservices and subservices.getNumberOfSubservices()
+			z = 0
+			while z < n:
+				sub = subservices.getSubservice(z)
+				services.append({
+					"servicereference": sub.toString(), 
+					"servicename": sub.getName()
+				})
+				z += 1
+		
+	else:
+		services.append =({
+			"servicereference": "N/A",
+			"servicename": "N/A"
+		})
+		
 	return { "services": services }
 
 def getEventDesc(ref, idev):

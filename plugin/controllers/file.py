@@ -6,55 +6,42 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-from os import path as os_path
+import os
 from twisted.web import static, resource, http
 from urllib import unquote, quote
 from Components.config import config
-from Components.Network import iNetwork
 
 class FileController(resource.Resource):
 
 	def __init__(self, path = ""):
 		resource.Resource.__init__(self)
 
-	def formatIp(self, ip):
-		if len(ip) != 4:
-			return None
-		return "%d.%d.%d.%d" % (ip[0], ip[1], ip[2], ip[3])
-	
-	def getLocalIPAddress(self):
-		for iface in iNetwork.getConfiguredAdapters():
-			return self.formatIp(iNetwork.getAdapterAttribute(iface, "ip"))
-		return "127.0.0.1"
-		
 	def render(self, request):
 		action = "download"
-		if "action" in request.args.keys():
+		if "action" in request.args:
 			action = request.args["action"][0]
 			
-		if "file" in request.args.keys():
-			file = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
-			
-			if not os_path.exists(file):
-				request.setResponseCode(http.OK)
-				request.write("File '%s' not found" % (file))
-				request.finish()
+		if "file" in request.args:
+			filename = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
 
+
+			if not os.path.exists(filename):
+				return "File '%s' not found" % (filename)
+
+			name = "stream"
+			if "name" in request.args:
+				name = request.args["name"][0]
 			if action == "stream":
-				request.setHeader("content-disposition", "inline;filename=\"stream.m3u\"")
-				request.setHeader("content-type", "audio/mpegurl")
-				request.write("#EXTM3U\n")
-				request.write("http://%s:%s/file?action=download&file=%s" % (self.getLocalIPAddress(), config.OpenWebif.port.value, quote(file)))
-				request.finish()
+				response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true\n#EXTINF:-1,%s\nhttp://%s:%s/file?action=download&file=%s" % (name, request.getRequestHostname(), config.OpenWebif.port.value, quote(filename))
+				request.setHeader("Content-Disposition:", 'attachment;filename="%s.m3u"' % name)
+				request.setHeader("Content-Type:", "audio/mpegurl")
+				return response
 			elif action == "delete":
 				request.setResponseCode(http.OK)
-				request.write("TODO: DELETE FILE: %s" % (file))
-				request.finish()
+				return "TODO: DELETE FILE: %s" % (filename)
 			elif action == "download":
-				request.setHeader("content-disposition", "attachment;filename=\"%s\"" % (file.split('/')[-1]))
-				rfile = static.File(file, defaultType = "application/octet-stream")
+				request.setHeader("Content-Disposition:", "attachment;filename=\"%s\"" % (filename.split('/')[-1]))
+				rfile = static.File(filename, defaultType = "application/octet-stream")
 				return rfile.render(request)
 		else:
-			request.setResponseCode(http.OK)
-			request.write("Missing file parameter")
-			request.finish()
+			return "Missing file parameter"

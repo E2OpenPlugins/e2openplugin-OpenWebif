@@ -8,15 +8,17 @@
 ##############################################################################
 
 from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStatus
-from models.services import getCurrentService, getBouquets, getServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg
+from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
-from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, cleanupTimer, writeTimerList, recordNow
+from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, cleanupTimer, writeTimerList, recordNow, tvbrowser
 from models.message import sendMessage
 from models.movies import getMovieList
 from models.config import addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot
+from models.stream import getStream
+from models.servicelist import reloadServicesLists
 
 from base import BaseController
 
@@ -154,6 +156,10 @@ class WebController(BaseController):
 		
 		return getServices(sRef)
 
+	def P_subservices(self, request):
+		return getSubServices(self.session)
+
+
 	def P_addlocation(self, request):
 		res = self.testMandatoryArguments(request, ["dirname"])
 		if res:
@@ -186,7 +192,7 @@ class WebController(BaseController):
 		return getTimers(self.session)
 		
 	def P_timeradd(self, request):
-		res = self.testMandatoryArguments(request, ["sRef", "begin", "end", "name", "description"])
+		res = self.testMandatoryArguments(request, ["sRef", "begin", "end", "name"])
 		if res:
 			return res
 		
@@ -558,3 +564,22 @@ class WebController(BaseController):
 			return res
 			
 		return setRemoteGrabScreenshot(request.args["checked"][0] == "true")
+
+	def P_streamm3u(self,request):
+		return getStream(self.session,request,"stream.m3u")
+
+	def P_tsm3u(self,request):
+		return getStream(self.session,request,"ts.m3u")
+
+	def P_videom3u(self,request):
+		return getStream(self.session,request,"video.m3u")
+		
+	def P_streamcurrentm3u(self,request):
+		return getStream(self.session,request,"stream.m3u")
+
+	def P_servicelistreload(self, request):
+		return reloadServicesLists(self.session,request)
+
+	def P_tvbrowser(self, request):
+		return tvbrowser(self.session, request)
+

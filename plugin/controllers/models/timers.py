@@ -11,8 +11,9 @@ from enigma import eEPGCache, eServiceReference
 from Components.UsageConfig import preferredTimerPath, preferredInstantRecordPath
 from RecordTimer import RecordTimerEntry, RecordTimer, parseEvent, AFTEREVENT
 from ServiceReference import ServiceReference
-from Components.config import config
-from time import time
+from time import time, strftime, localtime, mktime
+from urllib import unquote
+
 
 def getTimers(session):
 	rt = session.nav.RecordTimer
@@ -70,10 +71,14 @@ def getTimers(session):
 
 def addTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname, tags, repeated, logentries=None, eit=0):
 	rt = session.nav.RecordTimer
-	
+
+	print "mao1", dirname
+
 	if not dirname:
 		dirname = preferredTimerPath()
-	
+
+	print "mao2", dirname
+
 	try:
 		timer = RecordTimerEntry(
 			ServiceReference(serviceref),
@@ -113,8 +118,6 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 			"message": "Could not add timer '%s'!" % name
 		}
 		
-	if config.plugins.Webinterface.autowritetimer.value:
-		session.nav.RecordTimer.saveTimer()
 	return {
 		"result": True,
 		"message": "Timer '%s' added" % name
@@ -169,8 +172,6 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 			if not res["result"]:
 				rt.record(timer)
 				
-			if config.plugins.Webinterface.autowritetimer.value:
-				session.nav.RecordTimer.saveTimer()
 				
 			return res
 			
@@ -184,8 +185,6 @@ def removeTimer(session, serviceref, begin, end):
 	for timer in rt.timer_list + rt.processed_timers:
 		if str(timer.service_ref) == serviceref and int(timer.begin) == begin and int(timer.end) == end:
 			rt.removeEntry(timer)
-			if config.plugins.Webinterface.autowritetimer.value:
-				session.nav.RecordTimer.saveTimer()
 			return {
 				"result": True,
 				"message": "The timer '%s' has been deleted successfully" % timer.name
@@ -198,8 +197,7 @@ def removeTimer(session, serviceref, begin, end):
 	
 def cleanupTimer(session):
 	session.nav.RecordTimer.cleanup()
-	if config.plugins.Webinterface.autowritetimer.value:
-		session.nav.RecordTimer.saveTimer()
+
 	return {
 		"result": True,
 		"message": "List of Timers has been cleaned"
@@ -265,4 +263,86 @@ def recordNow(session, infinite):
 		"result": True,
 		"message": msg
 	}
-	
+
+
+def tvbrowser(session, request):
+
+	if "name" in request.args:
+		name = request.args['name'][0]
+	else:
+		name = "Unknown"
+
+	if "description" in request.args:
+		description = "".join(request.args['description'][0])
+		description = description.replace("\n", " ")
+
+	else:
+		description = ""
+
+	if "disabled" in request.args:
+		disabled = request.args['disabled'][0]
+	else:
+		disabled = 0
+
+	justplay = False 
+	if 'justplay' in request.args:
+		if (request.args['justplay'][0] == "1"):
+			justplay = True
+
+	afterevent = 3
+	if 'afterevent' in request.args:
+		
+		if (request.args['afterevent'][0] == "0") or (request.args['afterevent'][0] == "1") or (request.args['afterevent'][0] == "2"):
+			afterevent = int(request.args['afterevent'][0])
+
+
+	location = preferredTimerPath()
+	if "dirname" in request.args:
+		location = request.args['dirname'][0]
+	if location is None:
+			location = "/hdd/movie"
+
+	begin = int(mktime((int(request.args['syear'][0]), int(request.args['smonth'][0]), int(request.args['sday'][0]), int(request.args['shour'][0]), int(request.args['smin'][0]), 0, 0, 0, -1)))
+	end = int(mktime((int(request.args['syear'][0]), int(request.args['smonth'][0]), int(request.args['sday'][0]), int(request.args['ehour'][0]), int(request.args['emin'][0]), 0, 0, 0, -1)))	
+
+	if end < begin:
+		end += 86400
+
+	repeated = int(request.args['repeated'][0])
+	if repeated == 0:
+		for element in ("mo", "tu", "we", "th", "fr", "sa", "su", "ms", "mf"):
+			if element in request.args:
+				number = request.args[element][0] or 0
+				del request.args[element][0]
+				repeated = repeated + int(number)
+		if repeated > 127:
+			repeated = 127
+	repeated = repeated
+
+	if request.args['sRef'][0] is None:
+		return {
+		 "result": False, 
+		 "message": "Missing requesteter: sRef" 
+		}
+	else:
+		takeApart = unquote(request.args['sRef'][0]).decode('utf-8', 'ignore').encode('utf-8').split('|')
+		sRef = takeApart[1]
+
+	tags = []
+	if 'tags' in request.args and request.args['tags'][0]:
+		tags = unescape(request.args['tags'][0]).split(' ')
+
+	if request.args['command'][0] == "add":
+		del request.args['command'][0]
+		return addTimer(session, sRef, begin, end, name, description, disabled, justplay, afterevent, location , tags , repeated)
+	elif request.args['command'][0] == "del":
+		del request.args['command'][0]
+		return removeTimer(session, sRef, begin, end)
+	elif request.args['command'][0] == "change":
+		del request.args['command'][0]
+		return editTimer(session, sRef, begin, end, name, description, disabled, justplay, afterevent, location, tags, repeated, begin, end, serviceref)
+	else:
+		return {
+		 "result": False,
+		 "message": "Unknown command: '%s'" % request.args['command'][0]
+		}
