@@ -287,6 +287,14 @@ function toggleMenu(name) {
 	}
 }
 
+// keep checkboxes syncronized
+$(function() {
+	$("input[name=remotegrabscreen]").click(function(evt) {
+		$('input[name=remotegrabscreen]').attr('checked', evt.currentTarget.checked);
+		webapi_execute("api/remotegrabscreenshot?checked=" + evt.currentTarget.checked);
+	});
+});
+
 var shiftbutton = false;
 $(window).keydown(function(evt) {
 	if (evt.which == 16) { 
@@ -304,10 +312,13 @@ function pressMenuRemote(code) {
 	else
 		webapi_execute("/api/remotecontrol?command=" + code);
 	
-	if (lastcontenturl == 'ajax/screenshot')
-		grabScreenshot(screenshotMode);
-	else
-		load_maincontent('ajax/screenshot');
+	if ($('input[name=remotegrabscreen]').is(':checked'))
+	{
+		if (lastcontenturl == 'ajax/screenshot')
+			grabScreenshot(screenshotMode);
+		else
+			load_maincontent('ajax/screenshot');
+	}
 }
 
 function toggleFullRemote() {

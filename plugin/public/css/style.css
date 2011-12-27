@@ -165,7 +165,6 @@ body {
 #leftmenu_main a
 {
 	color: #176093;
-
 }
 
 #leftmenu_main h3
@@ -191,6 +190,7 @@ padding-left: 5px;
 list-style: none;
 padding: 0px;
 text-align:left;
+color: #176093;
 }
 
 
@@ -219,6 +219,11 @@ color:#87BCF8;
 	text-align: center;
 	margin-top: 5px;
 	margin-bottom: 5px;
+}
+
+#leftmenu_main input
+{
+	margin-right: 5px;
 }
 
 .ui-tabs

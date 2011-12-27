@@ -129,6 +129,11 @@
 					(shift + click for long pressure)
 				</div>
 				<ul>
+					#if $remotegrabscreenshot
+					<li><input type="checkbox" name="remotegrabscreen" checked="checked" />Grab screenshot</li>
+					#else
+					<li><input type="checkbox" name="remotegrabscreen" />Grab screenshot</li>
+					#end if
 					<li><a href="#" onclick="toggleFullRemote(); return false;">Show full remote</a></li>
 				</ul>
 			</div>
@@ -353,6 +358,11 @@
 							(shift + click for long pressure)
 						</div>
 						<ul>
+							#if $remotegrabscreenshot
+							<li><input type="checkbox" name="remotegrabscreen" checked="checked" />Grab screenshot</li>
+							#else
+							<li><input type="checkbox" name="remotegrabscreen" />Grab screenshot</li>
+							#end if
 							<li><a href="#" onclick="toggleFullRemote(); return false;" class="leftmenu_remotelink">Hide full remote</a></li>
 						</ul>
 					</div>

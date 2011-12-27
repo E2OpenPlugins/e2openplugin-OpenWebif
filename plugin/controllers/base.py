@@ -13,7 +13,7 @@ from twisted.web import server, http, static, resource, error
 from Cheetah.Template import Template
 
 from models.info import getInfo, getBasePath, getPublicPath, getViewsPath
-from models.config import getCollapsedMenus
+from models.config import getCollapsedMenus, getRemoteGrabScreenshot
 
 import imp
 import sys
@@ -125,6 +125,7 @@ class BaseController(resource.Resource):
 	def prepareMainTemplate(self):
 		# here will be generated the dictionary for the main template
 		ret = getCollapsedMenus()
+		ret['remotegrabscreenshot'] = getRemoteGrabScreenshot()['remotegrabscreenshot']
 		ret['box'] = "dmm"
 		if fileExists("/proc/stb/info/vumodel"):
 			ret['box'] = "vuplus"

@@ -33,3 +33,17 @@ def getCollapsedMenus():
 		"result": True,
 		"collapsed": config.OpenWebif.webcache.collapsedmenus.value.split("|")
 	}
+	
+def setRemoteGrabScreenshot(value):
+	config.OpenWebif.webcache.remotegrabscreenshot.value = value
+	config.OpenWebif.webcache.remotegrabscreenshot.save()
+	return {
+		"result": True
+	}
+	
+def getRemoteGrabScreenshot():
+	return {
+		"result": True,
+		"remotegrabscreenshot": config.OpenWebif.webcache.remotegrabscreenshot.value
+	}
+	

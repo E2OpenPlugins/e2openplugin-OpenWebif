@@ -16,7 +16,7 @@ from models.locations import getLocations, getCurrentLocation, addLocation, remo
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, cleanupTimer, writeTimerList, recordNow
 from models.message import sendMessage
 from models.movies import getMovieList
-from models.config import addCollapsedMenu, removeCollapsedMenu
+from models.config import addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot
 
 from base import BaseController
 
@@ -551,3 +551,10 @@ class WebController(BaseController):
 			return res
 			
 		return removeCollapsedMenu(request.args["name"][0])
+		
+	def P_remotegrabscreenshot(self, request):
+		res = self.testMandatoryArguments(request, ["checked"])
+		if res:
+			return res
+			
+		return setRemoteGrabScreenshot(request.args["checked"][0] == "true")
