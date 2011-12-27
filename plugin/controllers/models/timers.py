@@ -13,6 +13,7 @@ from RecordTimer import RecordTimerEntry, RecordTimer, parseEvent, AFTEREVENT
 from ServiceReference import ServiceReference
 from Components.config import config
 from time import time, strftime, localtime, mktime
+from urllib import unquote
 
 def getTimers(session):
 	rt = session.nav.RecordTimer
@@ -70,10 +71,11 @@ def getTimers(session):
 
 def addTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname, tags, repeated, logentries=None, eit=0):
 	rt = session.nav.RecordTimer
-	
+
 	if not dirname:
 		dirname = preferredTimerPath()
-	
+
+
 	try:
 		timer = RecordTimerEntry(
 			ServiceReference(serviceref),
@@ -261,6 +263,7 @@ def recordNow(session, infinite):
 
 
 def tvbrowser(session, request):
+	
 	begin = int(mktime((int(request.args['syear'][0]), int(request.args['smonth'][0]), int(request.args['sday'][0]), int(request.args['shour'][0]), int(request.args['smin'][0]), 0, 0, 0, -1)))
 	end = int(mktime((int(request.args['syear'][0]), int(request.args['smonth'][0]), int(request.args['sday'][0]), int(request.args['ehour'][0]), int(request.args['emin'][0]), 0, 0, 0, -1)))
 
@@ -290,22 +293,12 @@ def tvbrowser(session, request):
 		afterevent = 3
 
 	if "dirname" in request.args:
-		dirname= request.args['afterevent'][0]
+		dirname= request.args['dirname'][0]
 	else:
 		dirname=preferredInstantRecordPath()
 	
 	if end < begin:
 		end += 86400
-
-	if request.args['sRef'][0] is None:
-		return {
-		 "result": False, 
-		 "message": "Missing requesteter: sRef" 
-		}
-	else:
-		takeApart = request.args['sRef'][0].split('|')
-		if len(takeApart) > 1:
-			serviceref = takeApart[1]
 
 	repeated = int(request.args['repeated'][0])
 	if repeated == 0:
@@ -316,17 +309,26 @@ def tvbrowser(session, request):
 				repeated = repeated + int(number)
 		if repeated > 127:
 			repeated = 127
-	rrepeated = repeated
+	repeated = repeated
+
+	if request.args['sRef'][0] is None:
+		return {
+		 "result": False, 
+		 "message": "Missing requesteter: sRef" 
+		}
+	else:
+		takeApart = unquote(request.args['sRef'][0]).decode('utf-8', 'ignore').encode('utf-8').split('|')
+		sRef = takeApart[1]
 
 	if request.args['command'][0] == "add":
 		del request.args['command'][0]
-		return addTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname , "" , repeated)
+		return addTimer(session, sRef, begin, end, name, description, disabled, justplay, afterevent, dirname , "" , repeated)
 	elif request.args['command'][0] == "del":
 		del request.args['command'][0]
-		return removeTimer(session, serviceref, begin, end)
+		return removeTimer(session, sRef, begin, end)
 	elif request.args['command'][0] == "change":
 		del request.args['command'][0]
-		return editTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname, "", repeated, begin, end, serviceref)
+		return editTimer(session, sRef, begin, end, name, description, disabled, justplay, afterevent, dirname, "", repeated, begin, end, serviceref)
 	else:
 		return {
 		 "result": False,
