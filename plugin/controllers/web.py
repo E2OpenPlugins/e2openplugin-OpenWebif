@@ -13,7 +13,7 @@ from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
-from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, cleanupTimer, writeTimerList, recordNow
+from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, cleanupTimer, writeTimerList, recordNow, tvbrowser
 from models.message import sendMessage
 from models.movies import getMovieList
 from models.config import addCollapsedMenu, removeCollapsedMenu
@@ -191,7 +191,7 @@ class WebController(BaseController):
 		return getTimers(self.session)
 		
 	def P_timeradd(self, request):
-		res = self.testMandatoryArguments(request, ["sRef", "begin", "end", "name", "description"])
+		res = self.testMandatoryArguments(request, ["sRef", "begin", "end", "name"])
 		if res:
 			return res
 		
@@ -571,4 +571,7 @@ class WebController(BaseController):
 
 	def P_servicelistreload(self, request):
 		return reloadServicesLists(self.session,request)
+
+	def P_tvbrowser(self, request):
+		return tvbrowser(self.session, request)
 
