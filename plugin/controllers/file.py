@@ -32,7 +32,7 @@ class FileController(resource.Resource):
 			if "name" in request.args:
 				name = request.args["name"][0]
 			if action == "stream":
-				response = "#EXTM3U\nhttp://%s:%s/file?action=download&file=%s" % (request.getRequestHostname(), config.OpenWebif.port.value, quote(filename))
+				response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true\n#EXTINF:-1,%s\nhttp://%s:%s/file?action=download&file=%s" % (name, request.getRequestHostname(), config.OpenWebif.port.value, quote(filename))
 				request.setHeader("Content-Disposition:", 'attachment;filename="%s.m3u"' % name)
 				request.setHeader("Content-Type:", "audio/mpegurl")
 				return response
