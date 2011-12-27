@@ -125,7 +125,7 @@ class BaseController(resource.Resource):
 	def prepareMainTemplate(self):
 		# here will be generated the dictionary for the main template
 		ret = getCollapsedMenus()
-		ret['remotegrabscreenshot'] = getRemoteGrabScreenshot()['remotegrabscreenshot']
+		ret['remotegrabscreenshot'] = ['remotegrabscreenshot']
 		ret['box'] = "dmm"
 		if fileExists("/proc/stb/info/vumodel"):
 			ret['box'] = "vuplus"
