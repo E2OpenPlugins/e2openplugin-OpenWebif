@@ -272,25 +272,22 @@ def tvbrowser(session, request):
 	else:
 		name = "Unknown"
 
-	if "description" in request.args:
-		description = request.args['description'][0]
-	else:
-		description = ""
-		
+#	if "description" in request.args:
+#		description = unquote(request.args['description'][0].decode('utf-8', 'ignore').encode('utf-8'))
+#	else:
+#		description = ""
+	description = ""
 	if "disabled" in request.args:
 		disabled = request.args['disabled'][0]
 	else:
 		disabled = 0
-	
+
 	if "justplay" in request.args:
 		justplay = request.args['justplay'][0]
 	else:
 		justplay = 0
 
-	if "afterevent" in request.args:
-		afterevent = request.args['afterevent'][0]
-	else:
-		afterevent = 3
+	afterevent = 3
 
 	if "dirname" in request.args:
 		dirname= request.args['dirname'][0]
@@ -322,13 +319,13 @@ def tvbrowser(session, request):
 
 	if request.args['command'][0] == "add":
 		del request.args['command'][0]
-		return addTimer(session, sRef, begin, end, name, description, disabled, justplay, afterevent, dirname , "" , repeated)
+		return addTimer(session, sRef, begin, end, name, description, disabled, justplay, afterevent, dirname , None , repeated, None, 0)
 	elif request.args['command'][0] == "del":
 		del request.args['command'][0]
 		return removeTimer(session, sRef, begin, end)
 	elif request.args['command'][0] == "change":
 		del request.args['command'][0]
-		return editTimer(session, sRef, begin, end, name, description, disabled, justplay, afterevent, dirname, "", repeated, begin, end, serviceref)
+		return editTimer(session, sRef, begin, end, name, description, disabled, justplay, afterevent, dirname, None, repeated, begin, end, serviceref)
 	else:
 		return {
 		 "result": False,
