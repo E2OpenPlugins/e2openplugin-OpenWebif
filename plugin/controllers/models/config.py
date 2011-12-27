@@ -8,8 +8,6 @@ def addCollapsedMenu(name):
 	config.OpenWebif.webcache.collapsedmenus.value = "|".join(tags).strip("|")
 	config.OpenWebif.webcache.collapsedmenus.save()
 	
-	print "add", config.OpenWebif.webcache.collapsedmenus.value
-	
 	return {
 		"result": True
 	}
@@ -21,8 +19,6 @@ def removeCollapsedMenu(name):
 
 	config.OpenWebif.webcache.collapsedmenus.value = "|".join(tags).strip("|")
 	config.OpenWebif.webcache.collapsedmenus.save()
-
-	print "remove", config.OpenWebif.webcache.collapsedmenus.value
 
 	return {
 		"result": True
