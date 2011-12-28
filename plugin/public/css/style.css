@@ -323,13 +323,11 @@ color:#87BCF8;
 }
 
 .moviecontainer_left { 
-	height: 40px;
 	float: left;
 	width: 70%;
 }
 
 .moviecontainer_right { 
-	height: 40px;
 	float: right;
 	width: 30%;
 }

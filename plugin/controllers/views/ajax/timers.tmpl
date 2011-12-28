@@ -6,18 +6,18 @@
 		
 		#for $timer in $timers
 			<div class="moviecontainer_main" id="$timer.begin-$timer.end">
-				<div class="moviecontainer_left" style="height: 40px;">
+				<div class="moviecontainer_left">
 					<div style="padding: 3px;">
 						<span style="color: #176093; font-weight: bold;">$timer.name</span><br />$timer.description
 					</div>
 				</div>
-				<div class="moviecontainer_right" style="height: 40px;">
+				<div class="moviecontainer_right">
 					<div style="padding: 3px; text-align: right;">
 						<a href='#' onClick="editTimer('$timer.serviceref', '$timer.begin', '$timer.end', '$timer.name', '$timer.description');"><img src="../images/ico_edit.png" title="Edit Timer" border="0"></a>
 						<a href='#' onClick="deleteTimer('$timer.serviceref', '$timer.begin', '$timer.end');"><img src="../images/ico_delete.png" title="Delete Timer" border="0"></a>
 						<a href='#' onClick="toggleTimerStatus($timer.disabled);">
 						#if $timer.disabled
-						<img src="../images/ico_disbled.png" title="Enable Timer" border="0">
+						<img src="../images/ico_disabled.png" title="Enable Timer" border="0">
 						#else
 						<img src="../images/ico_enabled.png" title="Disable Timer" border="0">
 						#end if
