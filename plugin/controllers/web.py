@@ -568,7 +568,7 @@ class WebController(BaseController):
 	def P_streamm3u(self,request):
 		return getStream(self.session,request,"stream.m3u")
 
-	def P_tsm3u(self,request)
+	def P_tsm3u(self,request):
 		return getTS(self.session,request)
 
 	def P_videom3u(self,request):
