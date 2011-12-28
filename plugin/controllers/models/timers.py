@@ -171,8 +171,6 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 			)
 			if not res["result"]:
 				rt.record(timer)
-				
-				
 			return res
 			
 	return {
@@ -275,14 +273,13 @@ def tvbrowser(session, request):
 	if "description" in request.args:
 		description = "".join(request.args['description'][0])
 		description = description.replace("\n", " ")
-
 	else:
 		description = ""
 
+	disabled = False
 	if "disabled" in request.args:
-		disabled = request.args['disabled'][0]
-	else:
-		disabled = 0
+		if (request.args['disabled'][0] == "1"):
+			disabled = True
 
 	justplay = False 
 	if 'justplay' in request.args:
@@ -291,7 +288,6 @@ def tvbrowser(session, request):
 
 	afterevent = 3
 	if 'afterevent' in request.args:
-		
 		if (request.args['afterevent'][0] == "0") or (request.args['afterevent'][0] == "1") or (request.args['afterevent'][0] == "2"):
 			afterevent = int(request.args['afterevent'][0])
 
@@ -299,8 +295,9 @@ def tvbrowser(session, request):
 	location = preferredTimerPath()
 	if "dirname" in request.args:
 		location = request.args['dirname'][0]
-	if location is None:
-			location = "/hdd/movie"
+
+	if not location:
+		location = "/hdd/movie/"
 
 	begin = int(mktime((int(request.args['syear'][0]), int(request.args['smonth'][0]), int(request.args['sday'][0]), int(request.args['shour'][0]), int(request.args['smin'][0]), 0, 0, 0, -1)))
 	end = int(mktime((int(request.args['syear'][0]), int(request.args['smonth'][0]), int(request.args['sday'][0]), int(request.args['ehour'][0]), int(request.args['emin'][0]), 0, 0, 0, -1)))	
