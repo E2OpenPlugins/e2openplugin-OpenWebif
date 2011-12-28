@@ -17,8 +17,8 @@ def getStream(session, request, m3ufile):
 	name = "stream"
 	if "name" in request.args:
 		name = request.args["name"][0]
-	
-	response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true\n#EXTINF:-1,%s\nhttp://%s:8001/%s\n" % (name, request.getRequestHostname(), sRef)
+	# #EXTINF:-1,%s\n  remove not compatiple with old api
+	response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true\nhttp://%s:8001/%s\n" % (request.getRequestHostname(), sRef)
 	request.setHeader("Content-Disposition:", 'attachment;filename="%s"' % m3ufile)
 	request.setHeader("Content-Type:", "audio/mpegurl")
 	return response
