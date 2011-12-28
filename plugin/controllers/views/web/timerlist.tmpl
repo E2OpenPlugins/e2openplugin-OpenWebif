@@ -9,20 +9,14 @@
 		<e2name>$timer.name</e2name>
 		<e2description>$timer.description</e2description>
 		<e2descriptionextended>$timer.descriptionextended</e2descriptionextended>
-		<e2disabled>
-			#if $timer.disabled then "1" else "0"
-		</e2disabled>
+		<e2disabled>$timer.disabled</e2disabled>
 		<e2timebegin>$timer.begin</e2timebegin>
 		<e2timeend>$timer.end</e2timeend>
 		<e2duration>$timer.duration</e2duration>
 		<e2startprepare>$timer.startprepare</e2startprepare>
-		<e2justplay>
-			#if $timer.justplay then "1" else "0"
-		</e2justplay>
+		<e2justplay>$timer.justplay</e2justplay>
 		<e2afterevent>$timer.afterevent</e2afterevent>
-		<e2location>
-			#if $timer.dirname then $timer.dirname else "None"
-		</e2location>
+		<e2location>$timer.dirname</e2location>
 		<e2tags>$timer.tags</e2tags>
 		<e2logentries>$timer.logentries</e2logentries>
 		<e2filename>$timer.filename</e2filename>
@@ -31,16 +25,10 @@
 		<e2firsttryprepare>$timer.firsttryprepare</e2firsttryprepare>
 		<e2state>$timer.state</e2state>
 		<e2repeated>$timer.repeated</e2repeated>
-		<e2dontsave>
-			#if $timer.dontsave then "1" else "0"
-		</e2dontsave>
+		<e2dontsave>$timer.dontsave</e2dontsave>
 		<e2cancled>$timer.cancelled</e2cancled>
-		<e2toggledisabled>
-			#if $timer.disabled then "0" else "1"
-		</e2toggledisabled>
-		<e2toggledisabledimg>
-			#if $timer.disabled then "on" else "off"
-		</e2toggledisabledimg>
+		<e2toggledisabled>$timer.toggledisabled</e2toggledisabled>
+		<e2toggledisabledimg>$timer.toggledisabledimg</e2toggledisabledimg>
 	</e2timer>
 	#end for
 </e2timerlist>

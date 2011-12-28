@@ -36,7 +36,32 @@ def getTimers(session):
 			nextactivation = timer.next_activation
 		except Exception, e:
 			pass
-			
+
+		disabled = 0
+		if timer.disabled:
+			disabled  = 1
+
+		justplay = 0
+		if timer.justplay:
+			justplay  = 1
+
+		if timer.dirname:
+			dirname = timer.dirname
+		else:
+			dirname = "None"
+
+		dontSave = 0
+		if timer.dontSave:
+			dontSave  = 1
+
+		toggledisabled = 1
+		if timer.disabled:
+				toggledisabled = 0
+
+		toggledisabledimg = "off"
+		if timer.disabled:
+				toggledisabledimg = "on"
+
 		timers.append({
 			"serviceref": timer.service_ref,
 			"servicename": timer.service_ref.getServiceName(),
@@ -44,22 +69,24 @@ def getTimers(session):
 			"name": timer.name,
 			"description": timer.description,
 			"descriptionextended": descriptionextended,
-			"disabled": timer.disabled,
+			"disabled": disabled,
 			"begin": timer.begin,
 			"end": timer.end,
 			"duration": timer.end - timer.begin,
 			"startprepare": timer.start_prepare,
-			"justplay": timer.justplay,
+			"justplay": justplay,
 			"afterevent": timer.afterEvent,
-			"dirname": timer.dirname,
+			"dirname": dirname,
 			"tags": " ".join(timer.tags),
 			"logentries": timer.log_entries,
 			"backoff": timer.backoff,
 			"firsttryprepare": timer.first_try_prepare,
 			"state": timer.state,
 			"repeated": timer.repeated,
-			"dontsave": timer.dontSave,
+			"dontsave": dontSave,
 			"cancelled": timer.cancelled,
+			"toggledisabled": toggledisabled,
+			"toggledisabledimg" : toggledisabledimg,
 			"filename": filename,
 			"nextactivation": nextactivation
 		})
