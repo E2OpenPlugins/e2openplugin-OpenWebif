@@ -39,19 +39,30 @@ def HttpdStart(session):
 		except CannotListenError:
 			print "[OpenWebif] failed to listen on Port %i" % (port)
 
-		
 def HttpdStop(session):
-	if http_running is not None:
-		http_running.stopListening().addCallback(HttpdDoStop, session)
+	if (http_running is not None) and (http_running != ""):
+		godown = http_running.stopListening()
+		try:
+			godown.addCallback(HttpdDoStop)
+		except AttributeError:
+			pass
 
 def HttpdDoStop(session):
+	http_running = ""
 	print "[OpenWebif] stopped"
-	
+
 def HttpdRestart(session):
-	if http_running is not None:
-		http_running.stopListening().addCallback(HttpdDoRestart, session)
+	if (http_running is not None) and (http_running != ""):
+		godown = http_running.stopListening()
+		try:
+			godown.addCallback(HttpdDoRestart, session)
+		except AttributeError:
+			HttpdStart(session)
+	else:
+		HttpdStart(session)
 
 def HttpdDoRestart(ign, session):
+	http_running = ""
 	HttpdStart(session)
 
 class AuthResource(resource.Resource):
