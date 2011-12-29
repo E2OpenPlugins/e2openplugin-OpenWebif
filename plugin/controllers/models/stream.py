@@ -10,17 +10,20 @@ from urllib import unquote
 
 def getStream(session, request, m3ufile):
 	if "ref" in request.args:
-		sRef=unquote(request.args["ref"][0]).decode('utf-8', 'ignore').encode('utf-8')
+		sRef=unquote(request.args["ref"][0]).decode('utf-8', 'ignore').encode('utf-8')    
 	else:
-		sRef = session.nav.getCurrentlyPlayingServiceReference().toString()
-	
+		sRef = ""
+		
+	if m3ufile == "streamcurrent.m3u":
+		sRef = session.nav.getCurrentlyPlayingServiceReference().toString() 
+
 	name = "stream"
 	if "name" in request.args:
 		name = request.args["name"][0]
 	# #EXTINF:-1,%s\n  remove not compatiple with old api
-	response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true\nhttp://%s:8001/%s\n" % (request.getRequestHostname(), sRef)
+	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \nhttp://%s:8001/%s\n" % (request.getRequestHostname(), sRef)
 	request.setHeader("Content-Disposition:", 'attachment;filename="%s"' % m3ufile)
-	request.setHeader("Content-Type:", "audio/mpegurl")
+	request.setHeader('Content-Type', 'audio/mpegurl')
 	return response
 
 def getTS(self,request):

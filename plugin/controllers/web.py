@@ -575,7 +575,7 @@ class WebController(BaseController):
 		return getStream(self.session,request,"video.m3u")
 		
 	def P_streamcurrentm3u(self,request):
-		return getStream(self.session,request,"stream.m3u")
+		return getStream(self.session,request,"streamcurrent.m3u")
 
 	def P_servicelistreload(self, request):
 		return reloadServicesLists(self.session,request)
