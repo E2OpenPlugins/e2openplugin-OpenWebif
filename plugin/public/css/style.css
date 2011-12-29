@@ -589,6 +589,22 @@ color:#7198E1;
 	z-index:1;
 }
 
+#configuration
+{
+	margin-top: 15px;
+	width: 100%;
+}
+
+#configuration select
+{
+	width: 200px;
+}
+
+#configuration td
+{
+	width: 50%;
+}
+
 html, body {
 text-align: center;
 }

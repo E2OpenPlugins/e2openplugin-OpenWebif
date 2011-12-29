@@ -16,6 +16,7 @@ from models.locations import getLocations, getCurrentLocation, addLocation, remo
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, cleanupTimer, writeTimerList, recordNow, tvbrowser
 from models.message import sendMessage
 from models.movies import getMovieList
+from models.config import addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot, saveConfig
 from models.config import addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot
 from models.stream import getStream
 from models.servicelist import reloadServicesLists
@@ -583,3 +584,10 @@ class WebController(BaseController):
 	def P_tvbrowser(self, request):
 		return tvbrowser(self.session, request)
 
+	def P_saveconfig(self, request):
+		res = self.testMandatoryArguments(request, ["key", "value"])
+		if res:
+			return res
+			
+		return saveConfig(request.args["key"][0], request.args["value"][0])
+		

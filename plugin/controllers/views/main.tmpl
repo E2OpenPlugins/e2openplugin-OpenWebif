@@ -138,6 +138,26 @@
 				</ul>
 			</div>
 			#end def
+			
+			#def configMenu
+			<ul>
+				<li><a href='#' onclick="load_maincontent('ajax/config?section=usage'); return false;">Customize</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/config?section=recording'); return false;">Record</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/config?section=subtitlesetup'); return false;">Subtitle settings</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/config?section=autolanguagesetup'); return false;">Auto language selection</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/config?section=avsetup'); return false;">A/V Settings</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/config?section=harddisk'); return false;">Harddisk setup</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/config?section=keyboard'); return false;">Keyboard Setup</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/config?section=timezone'); return false;">Timezone</a></li>
+				<!--
+				<li><a href='#' onclick="load_maincontent('ajax/config?section=network'); return false;">Network setup</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/config?section=lcd'); return false;">Display Setup</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/config?section=RFmod'); return false;">RF output</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/config?section=osd'); return false;">OSD Settings</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/config?section=satconfig'); return false;">Sat / Dish Setup</a></li>
+				-->
+			</ul>
+			#end def
 		
 			<div id="menucontainer">
 				$menu("Main", "main", $mainMenu)
@@ -146,6 +166,7 @@
 				$menu("Remote", "remote", $remoteMenu)
 				$menu("Info", "info", $infoMenu)
 				$menu("Stream", "stream", $streamMenu)
+				$menu("Settings", "config", $configMenu)
 				$menu("Epg Search", "search", $searchMenu)
 			</div>
 			<div id="remotecontainer" style="display: none;">

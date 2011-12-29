@@ -8,11 +8,13 @@
 ##############################################################################
 
 from Tools.Directories import fileExists
+from Components.config import config
 
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo
 from models.info import getInfo, getPublicPath
 from models.movies import getMovieList
 from models.timers import getTimers
+from models.config import getConfigs
 from base import BaseController
 
 class AjaxController(BaseController):
@@ -109,3 +111,9 @@ class AjaxController(BaseController):
 	def P_tv(self, request):
 		return {}
 		
+	def P_config(self, request):
+		section = "usage"
+		if "section" in request.args.keys():
+			section = request.args["section"][0]
+			
+		return getConfigs(section)

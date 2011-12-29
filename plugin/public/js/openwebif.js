@@ -325,3 +325,15 @@ function toggleFullRemote() {
 	$("#menucontainer").toggle();
 	$("#remotecontainer").toggle();
 }
+
+function saveConfig(key, value) {
+	webapi_execute("/api/saveconfig?key=" + escape(key) + "&value=" + escape(value));
+}
+
+function numberTextboxKeydownFilter(event) {
+	if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9)
+		return;
+		
+	if ((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105))
+		event.preventDefault();
+}
