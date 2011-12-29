@@ -18,7 +18,7 @@ from models.message import sendMessage
 from models.movies import getMovieList
 from models.config import addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot, saveConfig
 from models.config import addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot
-from models.stream import getStream
+from models.stream import getStream, getTS
 from models.servicelist import reloadServicesLists
 
 from base import BaseController
@@ -558,7 +558,7 @@ class WebController(BaseController):
 			return res
 			
 		return removeCollapsedMenu(request.args["name"][0])
-		
+
 	def P_remotegrabscreenshot(self, request):
 		res = self.testMandatoryArguments(request, ["checked"])
 		if res:
@@ -570,13 +570,13 @@ class WebController(BaseController):
 		return getStream(self.session,request,"stream.m3u")
 
 	def P_tsm3u(self,request):
-		return getStream(self.session,request,"ts.m3u")
+		return getTS(self.session,request)
 
 	def P_videom3u(self,request):
 		return getStream(self.session,request,"video.m3u")
 		
 	def P_streamcurrentm3u(self,request):
-		return getStream(self.session,request,"stream.m3u")
+		return getStream(self.session,request,"streamcurrent.m3u")
 
 	def P_servicelistreload(self, request):
 		return reloadServicesLists(self.session,request)

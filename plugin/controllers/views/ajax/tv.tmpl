@@ -3,8 +3,8 @@
 	<div id="toolbar-header">
 		<span id="toolbar">
 			<span id="tvbutton">
-				<input type="radio" id="tvbutton0" name="tvbutton" checked="checked" /><label for="tvbutton0">Current</label>
-				<input type="radio" id="tvbutton1" name="tvbutton" /><label for="tvbutton1">Bouquets</label>
+				<input type="radio" id="tvbutton0" name="tvbutton" /><label for="tvbutton0">Current</label>
+				<input type="radio" id="tvbutton1" name="tvbutton" checked="checked" /><label for="tvbutton1">Bouquets</label>
 				<input type="radio" id="tvbutton2" name="tvbutton" /><label for="tvbutton2">Providers</label>
 				<input type="radio" id="tvbutton3" name="tvbutton" /><label for="tvbutton3">Satellites</label>
 				<input type="radio" id="tvbutton4" name="tvbutton" /><label for="tvbutton4">All Channels</label>
@@ -36,6 +36,6 @@
 	\$( "#tvbutton" ).buttonset();
 	
 	\$(document).ready(function() {
-		\$("#tvcontent").load("ajax/current");
+		\$("#tvcontent").load("ajax/bouquets");
 	});
 </script>

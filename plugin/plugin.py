@@ -74,7 +74,10 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		for x in self["config"].list:
 			x[1].save()
 
-		HttpdRestart(global_session)
+		if config.OpenWebif.enabled.value == True:
+			HttpdRestart(global_session)
+		else:
+			HttpdStop(global_session)
 		self.close()
 
 	def keyCancel(self):
