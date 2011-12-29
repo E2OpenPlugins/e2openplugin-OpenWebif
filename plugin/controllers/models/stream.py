@@ -6,24 +6,26 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-from urllib import unquote
+from urllib import unquote, quote
+import os
+from Components.config import config
 
-def getStream(session, request, m3ufile):
+def getStream(self, request, m3ufile):
+
 	if "ref" in request.args:
-		sRef=unquote(request.args["ref"][0]).decode('utf-8', 'ignore').encode('utf-8')    
+		sRef=unquote(request.args["ref"][0]).decode('utf-8', 'ignore').encode('utf-8')
 	else:
 		sRef = ""
-		
+	
 	if m3ufile == "streamcurrent.m3u":
-		sRef = session.nav.getCurrentlyPlayingServiceReference().toString() 
+		sRef = self.session.nav.getCurrentlyPlayingServiceReference().toString() 
 
 	name = "stream"
 	if "name" in request.args:
 		name = request.args["name"][0]
 	# #EXTINF:-1,%s\n  remove not compatiple with old api
 	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \nhttp://%s:8001/%s\n" % (request.getRequestHostname(), sRef)
-	request.setHeader("Content-Disposition:", 'attachment;filename="%s"' % m3ufile)
-	request.setHeader('Content-Type', 'audio/mpegurl')
+	request.setHeader('Content-Type', 'application/text')
 	return response
 
 def getTS(self,request):
@@ -31,11 +33,8 @@ def getTS(self,request):
 		filename = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
 		if not os.path.exists(filename):
 			return "File '%s' not found" % (filename)
-
-		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true\n#EXTINF:-1,%s\nhttp://%s:%s/file?action=download&file=%s" % (name, request.getRequestHostname(), config.OpenWebif.port.value, quote(filename))
-		request.setHeader("Content-Disposition:", 'attachment;filename="ts.m3u"')
-		request.setHeader("Content-Type:", "audio/mpegurl")
-
+		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \nhttp://%s:%s/file?file=%s\n" % (request.getRequestHostname(), config.OpenWebif.port.value, quote(filename))
+		request.setHeader('Content-Type', 'application/text')
 		return response
 	else:
 		return "Missing file parameter"

@@ -567,15 +567,19 @@ class WebController(BaseController):
 		return setRemoteGrabScreenshot(request.args["checked"][0] == "true")
 
 	def P_streamm3u(self,request):
+		self.isCustom = True
 		return getStream(self.session,request,"stream.m3u")
 
 	def P_tsm3u(self,request):
+		self.isCustom = True
 		return getTS(self.session,request)
 
 	def P_videom3u(self,request):
+		self.isCustom = True
 		return getStream(self.session,request,"video.m3u")
 		
 	def P_streamcurrentm3u(self,request):
+		self.isCustom = True
 		return getStream(self.session,request,"streamcurrent.m3u")
 
 	def P_servicelistreload(self, request):
