@@ -28,6 +28,7 @@ class BaseController(resource.Resource):
 		self.path = path
 		self.withMainTemplate = False
 		self.isJson = False
+		self.isCustom = False
 	
 	def error404(self, request):
 		request.setHeader("content-type", "text/html")
@@ -56,6 +57,7 @@ class BaseController(resource.Resource):
 		withMainTemplate = self.withMainTemplate
 		path = self.path
 		isJson = self.isJson
+		isCustom = self.isCustom
 		
 		if self.path == "":
 			self.path = "index"
@@ -76,10 +78,9 @@ class BaseController(resource.Resource):
 				if not self.suppresslog:
 					print "[OpenWebif] page '%s' without content" % request.uri
 				self.error404(request)
-			elif type(data) is str:
+			elif self.isCustom:
 				if not self.suppresslog:
-					print "[OpenWebif] page '%s' ok (simple string)" % request.uri
-				request.setHeader("content-type", "text/plain")
+					print "[OpenWebif] page '%s' ok (custom)" % request.uri
 				request.write(data)
 				request.finish()
 			elif self.isJson:
@@ -87,6 +88,12 @@ class BaseController(resource.Resource):
 					print "[OpenWebif] page '%s' ok (json)" % request.uri
 				request.setHeader("content-type", "text/plain")
 				request.write(json.dumps(data))
+				request.finish()
+			elif type(data) is str:
+				if not self.suppresslog:
+					print "[OpenWebif] page '%s' ok (simple string)" % request.uri
+				request.setHeader("content-type", "text/plain")
+				request.write(data)
 				request.finish()
 			else:
 				print "[OpenWebif] page '%s' ok (cheetah template)" % request.uri
@@ -119,6 +126,7 @@ class BaseController(resource.Resource):
 		self.withMainTemplate = withMainTemplate
 		self.path = path
 		self.isJson = isJson
+		self.isCustom = isCustom
 		
 		return server.NOT_DONE_YET
 

@@ -22,7 +22,6 @@ from enigma import eDVBVolumecontrol, eServiceCenter
 import os
 import sys
 import time
-import json
 
 def formatIp(ip):
 	if len(ip) != 4:
@@ -247,4 +246,4 @@ def getStatusInfo(self):
 	else:
 		statusinfo['inStandby'] = "true"
 
-	return json.dumps(statusinfo)
+	return statusinfo
