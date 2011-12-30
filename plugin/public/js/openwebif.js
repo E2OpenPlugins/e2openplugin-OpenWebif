@@ -147,7 +147,7 @@ function load_tvcontent_spin(url) {
 
 function load_maincontent(url) {
 	if (lastcontenturl != url) {
-		$("#content").load(url);
+		$("#content_container").load(url);
 		lastcontenturl = url
 	}
 	return false;
