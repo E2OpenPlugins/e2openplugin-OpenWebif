@@ -137,6 +137,9 @@ def getConfigs(key):
 				if requires and not SystemInfo.get(requires, False):
 					continue;
 				
+				if int(entry.get("level", 0)) > config.usage.setup_level.index:
+					continue
+				
 				try:
 					configs.append({
 						"description": entry.get("text", ""),
@@ -153,5 +156,42 @@ def getConfigs(key):
 		"result": True,
 		"configs": configs,
 		"title": title
+	}
+	
+def getConfigsSections():
+	allowedsections = ["usage", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone"]
+	sections = []
+	
+	setupfile = file(eEnv.resolve('${datadir}/enigma2/setup.xml'), 'r')
+	setupdom = xml.etree.cElementTree.parse(setupfile)
+	setupfile.close()
+	xmldata = setupdom.getroot()
+	for section in xmldata.findall("setup"):
+		key = section.get("key")
+		if key not in allowedsections:
+			continue
+		
+		count = 0
+		for entry in section:
+			if entry.tag == "item":
+				requires = entry.get("requires")
+				if requires and not SystemInfo.get(requires, False):
+					continue;
+					
+				if int(entry.get("level", 0)) > config.usage.setup_level.index:
+					continue
+					
+				count += 1
+				
+		if count > 0:
+			sections.append({
+				"key": key,
+				"description": section.get("title")
+			})
+			
+	sections = sorted(sections, key=lambda k: k['description']) 
+	return {
+		"result": True,
+		"sections": sections
 	}
 	

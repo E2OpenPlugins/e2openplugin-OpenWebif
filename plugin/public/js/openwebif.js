@@ -328,6 +328,10 @@ function toggleFullRemote() {
 
 function saveConfig(key, value) {
 	webapi_execute("/api/saveconfig?key=" + escape(key) + "&value=" + escape(value));
+	if (key == "config.usage.setup_level") {
+		// TODO: refresh the menu box with new sections list
+		$("#content_container").load(lastcontenturl);
+	}
 }
 
 function numberTextboxKeydownFilter(event) {
