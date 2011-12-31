@@ -46,6 +46,19 @@ def getRemoteGrabScreenshot():
 		"remotegrabscreenshot": config.OpenWebif.webcache.remotegrabscreenshot.value
 	}
 	
+def setZapStream(value):
+	config.OpenWebif.webcache.zapstream.value = value
+	config.OpenWebif.webcache.zapstream.save()
+	return {
+		"result": True
+	}
+	
+def getZapStream():
+	return {
+		"result": True,
+		"zapstream": config.OpenWebif.webcache.zapstream.value
+	}
+	
 def getJsonFromConfig(cnf):
 	if cnf.__class__.__name__ == "ConfigSelection" or cnf.__class__.__name__ == "ConfigSelectionNumber":
 		if type(cnf.choices.choices) == dict:

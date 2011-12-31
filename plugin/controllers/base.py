@@ -13,7 +13,7 @@ from twisted.web import server, http, static, resource, error
 from Cheetah.Template import Template
 
 from models.info import getInfo, getBasePath, getPublicPath, getViewsPath
-from models.config import getCollapsedMenus, getRemoteGrabScreenshot
+from models.config import getCollapsedMenus, getRemoteGrabScreenshot, getZapStream
 
 import imp
 import sys
@@ -134,6 +134,7 @@ class BaseController(resource.Resource):
 		# here will be generated the dictionary for the main template
 		ret = getCollapsedMenus()
 		ret['remotegrabscreenshot'] = getRemoteGrabScreenshot()['remotegrabscreenshot']
+		ret['zapstream'] = getZapStream()['zapstream']
 		ret['box'] = "dmm"
 		if fileExists("/proc/stb/info/vumodel"):
 			ret['box'] = open("/proc/stb/info/vumodel").read().strip()

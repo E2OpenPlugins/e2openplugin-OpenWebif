@@ -89,6 +89,11 @@
 			<ul>
 				<li><a href='#' onclick="load_maincontent('ajax/movies'); return false;">Movies</a></li>
 				<li><a href='#' onclick="load_maincontent('ajax/workinprogress'); return false;">Web Tv</a></li>
+				#if $zapstream
+				<li><input type="checkbox" name="zapstream" checked="checked" />zap before Stream</li>
+				#else
+				<li><input type="checkbox" name="zapstream" />zap before Stream</li>
+				#end if
 			</ul>
 			#end def
 		
