@@ -218,7 +218,7 @@ def getChannels(idbouquet, stype):
 	services = serviceHandler.list(eServiceReference(idbouquet))
 	channels = services and services.getContent("SN", True)	
 	for channel in channels:
-		if not channel[0].startswith("1:64:"):
+		if not int(channel[0].split(":")[1]) & 64:
 			chan = {}
 			chan['ref'] = channel[0]
 			chan['name'] = filterName(channel[1])
