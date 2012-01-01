@@ -86,6 +86,9 @@ class AuthResource(resource.Resource):
 		
 
 	def render(self, request):
+		if request.getClientIP() == "127.0.0.1":
+			return self.resource.render(request)
+			
 		if self.login(request.getUser(), request.getPassword()) == False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
 			errpage = error.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
@@ -95,6 +98,9 @@ class AuthResource(resource.Resource):
 
 
 	def getChildWithDefault(self, path, request):
+		if request.getClientIP() == "127.0.0.1":
+			return self.resource.getChildWithDefault(path, request)
+			
 		if self.login(request.getUser(), request.getPassword()) == False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
 			errpage = error.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
