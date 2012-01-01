@@ -39,6 +39,18 @@ def HttpdStart(session):
 		except CannotListenError:
 			print "[OpenWebif] failed to listen on Port %i" % (port)
 
+#Streaming requires listening on 127.0.0.1:80		
+		if port != 80:
+			root = buildRootTree(session)
+			site = server.Site(root)
+			try:
+				d = reactor.listenTCP(80, site, interface='127.0.0.1')
+				print "[OpenWebif] started stream listening on port 80"
+			except CannotListenError:
+				print "[OpenWebif] port 80 busy"
+
+
+
 def HttpdStop(session):
 	if (http_running is not None) and (http_running != ""):
 		godown = http_running.stopListening()

@@ -13,7 +13,7 @@ from twisted.web import server, http, static, resource, error
 from Cheetah.Template import Template
 
 from models.info import getInfo, getBasePath, getPublicPath, getViewsPath
-from models.config import getCollapsedMenus, getRemoteGrabScreenshot, getConfigsSections
+from models.config import getCollapsedMenus, getRemoteGrabScreenshot, getZapStream, getConfigsSections
 
 import imp
 import sys
@@ -135,6 +135,7 @@ class BaseController(resource.Resource):
 		ret = getCollapsedMenus()
 		ret['remotegrabscreenshot'] = getRemoteGrabScreenshot()['remotegrabscreenshot']
 		ret['configsections'] = getConfigsSections()['sections']
+		ret['zapstream'] = getZapStream()['zapstream']
 		ret['box'] = "dmm"
 		if fileExists("/proc/stb/info/vumodel"):
 			ret['box'] = open("/proc/stb/info/vumodel").read().strip()

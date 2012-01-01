@@ -16,8 +16,7 @@ from models.locations import getLocations, getCurrentLocation, addLocation, remo
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, cleanupTimer, writeTimerList, recordNow, tvbrowser
 from models.message import sendMessage
 from models.movies import getMovieList
-from models.config import addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot, saveConfig
-from models.config import addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot
+from models.config import addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot, setZapStream, saveConfig, getZapStream
 from models.stream import getStream, getTS
 from models.servicelist import reloadServicesLists
 
@@ -568,16 +567,32 @@ class WebController(BaseController):
 			
 		return setRemoteGrabScreenshot(request.args["checked"][0] == "true")
 
+	def P_zapstream(self, request):
+		res = self.testMandatoryArguments(request, ["checked"])
+		if res:
+			return res
+			
+		return setZapStream(request.args["checked"][0] == "true")
+
 	def P_streamm3u(self,request):
+		self.isCustom = True
+
+		if getZapStream()['zapstream']:
+			if "ref" in request.args:
+				zapService(self.session, request.args["ref"][0], request.args["name"][0])
+
 		return getStream(self.session,request,"stream.m3u")
 
 	def P_tsm3u(self,request):
+		self.isCustom = True
 		return getTS(self.session,request)
 
 	def P_videom3u(self,request):
+		self.isCustom = True
 		return getStream(self.session,request,"video.m3u")
 		
 	def P_streamcurrentm3u(self,request):
+		self.isCustom = True
 		return getStream(self.session,request,"streamcurrent.m3u")
 
 	def P_servicelistreload(self, request):

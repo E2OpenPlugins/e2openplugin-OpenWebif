@@ -33,6 +33,7 @@ config.OpenWebif.webcache = ConfigSubsection()
 # FIXME: anything better than a ConfigText?
 config.OpenWebif.webcache.collapsedmenus = ConfigText(default = "remote", fixed_size = False)
 config.OpenWebif.webcache.remotegrabscreenshot = ConfigYesNo(default = True)
+config.OpenWebif.webcache.zapstream = ConfigYesNo(default = False)
 
 class OpenWebifConfig(Screen, ConfigListScreen):
 	skin = """

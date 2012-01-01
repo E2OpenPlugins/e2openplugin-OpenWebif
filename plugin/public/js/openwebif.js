@@ -295,6 +295,13 @@ $(function() {
 	});
 });
 
+$(function() {
+	$("input[name=zapstream]").click(function(evt) {
+		$('input[name=zapstream]').attr('checked', evt.currentTarget.checked);
+		webapi_execute("api/zapstream?checked=" + evt.currentTarget.checked);
+	});
+});
+
 var shiftbutton = false;
 $(window).keydown(function(evt) {
 	if (evt.which == 16) { 
