@@ -22,11 +22,13 @@ from models.stream import getStream, getTS
 from models.servicelist import reloadServicesLists
 
 from base import BaseController
+from stream import StreamController
 
 class WebController(BaseController):
 	def __init__(self, session, path = ""):
 		BaseController.__init__(self, path)
 		self.session = session
+		self.putChild("stream", StreamController(session))
 		
 	def prePageLoad(self, request):
 		request.setHeader("content-type", "text/xml")

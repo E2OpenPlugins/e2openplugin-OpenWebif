@@ -6,6 +6,7 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
+from enigma import eServiceReference
 from urllib import unquote
 
 def getStream(session, request, m3ufile):
@@ -39,3 +40,49 @@ def getTS(self,request):
 		return response
 	else:
 		return "Missing file parameter"
+
+streamstack = []
+
+class StreamProxyHelper(object):
+	def __init__(self, session, request):
+		self.session = session
+		self.request = request
+		
+		streamstack.append(self)
+		self.request.notifyFinish().addCallback(self.close, None)
+		self.request.notifyFinish().addErrback(self.close, None)
+		
+		if "StreamService" not in request.args:
+			self.request.write("=NO STREAM\n")
+			return
+		
+		self.service = session.nav.recordService(eServiceReference(request.args["StreamService"][0]))
+		session.nav.record_event.append(self.recordEvent)
+		if self.service is not None:
+			self.service.prepareStreaming()
+			self.service.start()
+		
+	def close(self, nothandled1=None, nothandled2=None):
+		if self in streamstack:
+			streamstack.remove(self)
+		
+	def recordEvent(self, service, event):
+		if service is self.service:
+			return
+			
+		streaming = service.stream()
+		s = streaming and streaming.getStreamingData()
+
+		if s is None:
+			err = service.getError()
+			if err:
+				self.request.write("-SERVICE ERROR:%d\n" % err)
+				return
+			else:
+				self.request.write("=NO STREAM\n")
+				return
+
+		demux = s["demux"]
+		pids = ','.join(["%x:%s" % (x[0], x[1]) for x in s["pids"]])
+
+		self.request.write("+%d:%s\n" % (demux, pids))
