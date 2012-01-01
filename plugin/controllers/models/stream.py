@@ -46,6 +46,7 @@ class StreamProxyHelper(object):
 	def __init__(self, session, request):
 		self.session = session
 		self.request = request
+		self.service = None
 		
 		streamstack.append(self)
 		self.request.notifyFinish().addCallback(self.close, None)
@@ -62,9 +63,13 @@ class StreamProxyHelper(object):
 			self.service.start()
 		
 	def close(self, nothandled1=None, nothandled2=None):
+		self.session.nav.record_event.remove(self.recordEvent)
+		if self.service:
+			self.session.nav.stopRecordService(self.service)
+			
 		if self in streamstack:
 			streamstack.remove(self)
-		
+			
 	def recordEvent(self, service, event):
 		if service is self.service:
 			return
