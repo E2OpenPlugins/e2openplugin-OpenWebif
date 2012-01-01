@@ -47,9 +47,10 @@ class RootController(BaseController):
 	# example http://boxip/index => P_index
 	def P_index(self, request):
 		uagent = request.getHeader('User-Agent')
-		if uagent.find("iPhone") != -1 or uagent.find("iPod") != -1:
-			request.setHeader("Location", "/mobile/")
-			request.setResponseCode(http.FOUND)
-			return ""
+		if uagent:
+			if uagent.find("iPhone") != -1 or uagent.find("iPod") != -1:
+				request.setHeader("Location", "/mobile/")
+				request.setResponseCode(http.FOUND)
+				return ""
 		return {}
 		
