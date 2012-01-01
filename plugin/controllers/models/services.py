@@ -253,10 +253,11 @@ def getServices(sRef):
 	slist = servicelist.getServicesAsList()
 
 	for sitem in slist:
-		service = {}
-		service['servicereference'] = sitem[0]
-		service['servicename'] = sitem[1]
-		services.append(service)
+		if not int(sitem[0].split(":")[1]) & 512:	# 512 is hidden service on sifteam image. Doesn't affect other images
+			service = {}
+			service['servicereference'] = sitem[0]
+			service['servicename'] = sitem[1]
+			services.append(service)
 			
 	return { "services": services }
 
