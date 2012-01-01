@@ -576,7 +576,7 @@ class WebController(BaseController):
 		self.isCustom = True
 
 		if getZapStream()['zapstream']:
-			if request.args["ref"][0]:
+			if "ref" in request.args:
 				zapService(self.session, request.args["ref"][0], request.args["name"][0])
 
 		return getStream(self.session,request,"stream.m3u")
