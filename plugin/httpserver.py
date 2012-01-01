@@ -8,6 +8,7 @@
 ##############################################################################
 
 from Components.config import config
+from Tools.Directories import fileExists
 from twisted.internet import reactor
 from twisted.web import server, http, static, resource, error
 from twisted.internet.error import CannotListenError
@@ -39,15 +40,16 @@ def HttpdStart(session):
 		except CannotListenError:
 			print "[OpenWebif] failed to listen on Port %i" % (port)
 
-#Streaming requires listening on 127.0.0.1:80		
+#Streaming requires listening on 127.0.0.1:80	
 		if port != 80:
-			root = buildRootTree(session)
-			site = server.Site(root)
-			try:
-				d = reactor.listenTCP(80, site, interface='127.0.0.1')
-				print "[OpenWebif] started stream listening on port 80"
-			except CannotListenError:
-				print "[OpenWebif] port 80 busy"
+			if fileExists("/usr/lib/enigma2/python/Plugins/Extensions/WebInterface/plugin.py") == False:
+				root = buildRootTree(session)
+				site = server.Site(root)
+				try:
+					d = reactor.listenTCP(80, site, interface='127.0.0.1')
+					print "[OpenWebif] started stream listening on port 80"
+				except CannotListenError:
+					print "[OpenWebif] port 80 busy"
 
 
 
@@ -84,9 +86,6 @@ class AuthResource(resource.Resource):
 		
 
 	def render(self, request):
-		if request.getClientIP() == "127.0.0.1":
-			return self.resource.render(request)
-			
 		if self.login(request.getUser(), request.getPassword()) == False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
 			errpage = error.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
@@ -96,9 +95,6 @@ class AuthResource(resource.Resource):
 
 
 	def getChildWithDefault(self, path, request):
-		if request.getClientIP() == "127.0.0.1":
-			return self.resource.getChildWithDefault(path, request)
-			
 		if self.login(request.getUser(), request.getPassword()) == False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
 			errpage = error.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
