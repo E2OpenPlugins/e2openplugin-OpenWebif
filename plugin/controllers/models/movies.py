@@ -15,7 +15,8 @@ from Tools.Directories import resolveFilename, SCOPE_HDD
 from Tools.FuzzyDate import FuzzyTime
 from os import stat as os_stat
 from Components.MovieList import MovieList
-import re
+
+
 def getMovieList(self,directory=resolveFilename(SCOPE_HDD)):
 
 	movieliste = []
@@ -71,7 +72,11 @@ def getMovieList(self,directory=resolveFilename(SCOPE_HDD)):
 		movie['serviceref'] = serviceref.toString()
 		movie['length'] = Len
 		movie['tags'] = info.getInfoString(serviceref, iServiceInformation.sTags)
-		movie['filesize'] = os_stat(re.escape(filename)[6])
+		filename = filename.replace("'","\'").replace("%","\%")
+		try:
+			movie['filesize'] = os_stat(filename)[6]
+		except:
+			movie['filesize'] = 0
 		movie['fullname'] = serviceref.toString()
 		movie['DescriptionExtended'] = ext
 		movie['servicename'] = sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
