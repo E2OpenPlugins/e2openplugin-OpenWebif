@@ -272,7 +272,7 @@ class WebController(BaseController):
 		)
 
 	def P_timerchange(self, request):
-		res = self.testMandatoryArguments(request, ["sRef", "begin", "end", "name", "description", "channelOld", "beginOld", "endOld"])
+		res = self.testMandatoryArguments(request, ["sRef", "begin", "end", "name", "channelOld", "beginOld", "endOld"])
 		if res:
 			return res
 			
