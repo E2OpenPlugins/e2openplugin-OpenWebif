@@ -94,9 +94,9 @@ class AjaxController(BaseController):
 		
 	def P_movies(self, request):
 		if "dirname" in request.args.keys():
-			movies = getMovieList(request.args["dirname"][0])
+			movies = getMovieList(self,request.args["dirname"][0])
 		else:
-			movies = getMovieList()
+			movies = getMovieList(self)
 		return movies
 		
 	def P_workinprogress(self, request):

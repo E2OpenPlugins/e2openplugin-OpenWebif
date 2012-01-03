@@ -26,13 +26,13 @@
 					</div>
 					<div class="moviecontainer_right" style="height: 40px;">
 						<div style="padding: 3px; text-align: right;">
-							<a target="_blank" href='/web/ts.m3u?file=$quote($movie.fullname)'>
+							<a target="_blank" href='/web/ts.m3u?file=$quote($movie.filename)'>
 							<img align="top" src="../images/ico_stream.png" title="Stream $movie.eventname" border="0">
 							</a>
-							<a href='/file?action=download&file=$quote($movie.fullname)'>
+							<a href='/file?action=download&file=$quote($movie.filename)'>
 							<img align="top" src="../images/ico_download.png" title="Download $movie.eventname" border="0">
 							</a>
-							<a target="_blank" href='/file?action=delete&file=$quote($movie.fullname)'>
+							<a target="_blank" href='/file?action=delete&file=$quote($movie.filename)'>
 							<img src="../images/ico_epg.png" title="Delete $movie.eventname" border="0">
 							</a>
 						</div>
@@ -48,13 +48,13 @@
 					</div>
 					<div class="moviecontainer_right" style="height: 33px;">
 						<div style="padding: 3px; text-align: right;">
-							<a target="_blank" href='/file?action=stream&file=$quote($movie.fullname)'>
+							<a target="_blank" href='/file?action=stream&file=$quote($movie.filename)'>
 							<img align="top" src="../images/ico_stream.png" title="Stream $movie.filename" border="0">
 							</a>
 							<a href='/file?action=download&file=$quote($movie.fullname)'>
 							<img align="top" src="../images/ico_download.png" title="Download $movie.filename" border="0">
 							</a>
-							<a target="_blank" href='/file?action=delete&file=$quote($movie.fullname)'>
+							<a target="_blank" href='/file?action=delete&file=$quote($movie.filename)'>
 							<img src="../images/ico_epg.png" title="Delete $movie.filename" border="0">
 							</a>
 						</div>

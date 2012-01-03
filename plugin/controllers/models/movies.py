@@ -6,39 +6,79 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-from time import localtime, strftime
-import os
-from Components.config import config
 
-def getMovieList(directory="/hdd/movie"):
-	movielist = []
-	if os.path.exists(directory):
-		for filename in os.listdir(directory):
-			filename = filename.decode("utf-8", "ignore").encode("utf-8")
-			if os.path.isfile(directory + "/" + filename) and filename.endswith(('ts', 'vob', 'mpg', 'mpeg', 'avi', 'mkv', 'dat', 'iso', 'mp4', 'divx', 'mov', 'm2ts', 'm4v', 'f4v', 'flv')) and not filename.endswith(('cuts')):
-				movie = {}
-				movie['filename'] = filename
-				movie['directory'] = directory
-				movie['fullname'] = directory + "/" + filename
-				movie['eventname'] = ""
-				movie['description'] = ""
-				movie['begintime'] = ""
-				movie['serviceref'] = ""
-				
-				# Get Event Info from meta file
-				if os.path.exists(directory + "/" + filename + ".meta"):
-					readmetafile = open(directory + "/" + filename + ".meta", "r")
-					movie['serviceref'] = readmetafile.readline()[0:-1]
-					movie['eventname'] = readmetafile.readline()[0:-1]
-					movie['description'] = readmetafile.readline()[0:-1]
-					movie['begintime'] = strftime("%A, %d.%m.%Y %H:%M", (localtime(float(readmetafile.readline()[0:-1]))))
-					readmetafile.close()
-						
-				movielist.append(movie)
-	
-	# Get Bookmarks
+from enigma import eServiceReference, iServiceInformation, eServiceCenter
+from Components.Sources.Source import Source
+from Components.config import config
+from ServiceReference import ServiceReference
+from Tools.Directories import resolveFilename, SCOPE_HDD
+from Tools.FuzzyDate import FuzzyTime
+from os import stat as os_stat
+from Components.MovieList import MovieList
+
+def getMovieList(self,directory=resolveFilename(SCOPE_HDD)):
+
+	movieliste = []
 	bookmarklist = []
+	
+	self.root = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory)
+
 	for bookmark in config.movielist.videodirs.value:
 		bookmarklist.append(bookmark)
-			
-	return { "movies": movielist, "bookmarks": bookmarklist, "directory": directory }
+
+	self.tagfilter = []
+	
+	self.movielist = MovieList(self.root)
+#	self.movielist.reload(root=self.root, filter_tags=self.tagfilter)
+	loadLength = True
+
+	for (serviceref, info, begin, unknown) in self.movielist.list:
+		if serviceref.flags & eServiceReference.mustDescent:
+				continue
+
+		rtime = info.getInfo(serviceref, iServiceInformation.sTimeCreate)
+
+		if rtime > 0:
+			t = FuzzyTime(rtime)
+			begin_string = t[0] + ", " + t[1]
+		else:
+			begin_string = "undefined"
+
+		try:
+			Len = info.getLength(serviceref)
+		except:
+			Len = None
+
+		if Len > 0:
+			Len = "%d:%02d" % (Len / 60, Len % 60)
+		else:
+			Len = "?:??"
+		
+		sourceERef = info.getInfoString(serviceref, iServiceInformation.sServiceref)
+		sourceRef = ServiceReference(sourceERef)
+
+		event = info.getEvent(serviceref)
+		ext = event and event.getExtendedDescription() or ""
+
+		filename = '/'.join(serviceref.toString().split("/")[1:])
+		servicename = ServiceReference(serviceref).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
+		movie = {}
+		filename = '/'+filename
+		movie['filename'] = filename
+		movie['eventname'] = servicename
+		movie['description'] = info.getInfoString(serviceref, iServiceInformation.sDescription)
+		movie['begintime'] = begin_string
+		movie['serviceref'] = serviceref.toString()
+		movie['length'] = Len
+		movie['tags'] = info.getInfoString(serviceref, iServiceInformation.sTags)
+		movie['filesize'] = os_stat(filename)[6]
+		movie['fullname'] = serviceref.toString()
+		movie['DescriptionExtended'] = ext
+		movie['servicename'] = sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
+		movie['recordingtime'] = rtime
+		
+		movieliste.append(movie)
+		
+	
+	return { "movies": movieliste, "bookmarks": bookmarklist, "directory": directory }
+
