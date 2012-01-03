@@ -16,6 +16,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" href="/css/jquery-ui-1.8.16.custom.css" rel="stylesheet" />	
+<script type="text/javascript" src="/js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="/js/openwebif.js"></script>
 
 <title>Open Webif Epg</title>
 </head>
@@ -39,7 +43,7 @@
 			</tr>
 			<tr style="background-color: #F0F7FC">
 				<td style="padding:0px">
-					<a href="#" onclick="alert('sorry, function not yet implemented');return false;"><img src="/images/timer.png" title="Add Timer" border="0"></a>																
+					<a href="#" onclick="addTimerEvent('$event.sref',$event.id);return false;"><img src="/images/timer.png" title="Add Timer" border="0"></a>																
 					<a target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)"><img src="/images/imdb.png" title="Search IMDb" border="0"></a>
 				</td>
 			</tr>

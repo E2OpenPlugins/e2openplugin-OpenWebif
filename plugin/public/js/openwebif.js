@@ -189,6 +189,10 @@ function open_epg_search_pop() {
 	$("#epgSearch").val("");
 }
 
+function addTimerEvent(sRef, eventId) {
+	webapi_execute("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId);
+}
+
 function deleteTimer(sRef, begin, end) {
 	answer = confirm("Really delete this timer?");
 	if (answer == true) {
