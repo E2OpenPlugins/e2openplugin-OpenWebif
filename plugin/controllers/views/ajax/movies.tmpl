@@ -19,12 +19,16 @@
 		#for $movie in $movies
 				#if $movie.eventname != ""
 				<div class="moviecontainer_main">
-					<div class="moviecontainer_left" style="height: 40px;">
+					<div class="moviecontainer_left";">
 						<div style="padding: 3px;">
-							<span style="color: #176093; font-weight: bold;">$movie.eventname</span><br />$movie.begintime
+							<span style="color: #176093; font-weight: bold;">$movie.eventname</span><br /> $movie.servicename  $movie.begintime
+
+						</div>
+						<div style="padding: 3px;">
+							<span style="color: #7F8181; font-weight: bold;">$movie.description</span>
 						</div>
 					</div>
-					<div class="moviecontainer_right" style="height: 40px;">
+					<div class="moviecontainer_right";">
 						<div style="padding: 3px; text-align: right;">
 							<a target="_blank" href='/web/ts.m3u?file=$quote($movie.filename)'>
 							<img align="top" src="../images/ico_stream.png" title="Stream $movie.eventname" border="0">
@@ -41,12 +45,12 @@
 				</div>
 				#else
 				<div class="moviecontainer_main">
-					<div class="moviecontainer_left" style="height: 33px;">
+					<div class="moviecontainer_left";">
 						<div style="padding: 3px;">
 							<span style="color: #176093; font-weight: bold;">$movie.filename</span>
 						</div>
 					</div>
-					<div class="moviecontainer_right" style="height: 33px;">
+					<div class="moviecontainer_right";">
 						<div style="padding: 3px; text-align: right;">
 							<a target="_blank" href='/file?action=stream&file=$quote($movie.filename)'>
 							<img align="top" src="../images/ico_stream.png" title="Stream $movie.filename" border="0">
