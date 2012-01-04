@@ -202,7 +202,7 @@ function deleteTimer(sRef, begin, end) {
 }
 
 function zapChannel(sRef, sname) {
-	var url = 'api/zap?sRef=' + escape(sRef);
+	var url = '/api/zap?sRef=' + escape(sRef);
 	$.getJSON(url, function(result){
 		$("#osd").html('zap to: ' + sname);
 		$("#osd_bottom").html(" ");
@@ -210,7 +210,7 @@ function zapChannel(sRef, sname) {
 }
 
 function getStatusInfo() {
-	$.getJSON('api/statusinfo')
+	$.getJSON('/api/statusinfo')
 	.success(function(statusinfo) {
 		// Set Volume
 		$("#slider").slider("value", statusinfo['volume']);
@@ -271,7 +271,7 @@ function sendMessage() {
 	var type = $('#messageType').val();
 	var timeout = $('#messageTimeout').val();
 
-	$.getJSON('api/message?text=' + text + '&type=' + type + '&timeout=' + timeout, function(result){
+	$.getJSON('/api/message?text=' + text + '&type=' + type + '&timeout=' + timeout, function(result){
 		$('#messageSentResponse').html(result['message']);
 	});
 }
@@ -282,12 +282,12 @@ function toggleMenu(name) {
 	if ($(expander_id).hasClass("leftmenu_icon_collapse")) {
 		$(expander_id).removeClass("leftmenu_icon_collapse");
 		$(container_id).show('fast')
-		webapi_execute("api/expandmenu?name=" + name)
+		webapi_execute("/api/expandmenu?name=" + name)
 	}
 	else {
 		$(expander_id).addClass("leftmenu_icon_collapse");
 		$(container_id).hide('fast')
-		webapi_execute("api/collapsemenu?name=" + name)
+		webapi_execute("/api/collapsemenu?name=" + name)
 	}
 }
 
@@ -295,14 +295,14 @@ function toggleMenu(name) {
 $(function() {
 	$("input[name=remotegrabscreen]").click(function(evt) {
 		$('input[name=remotegrabscreen]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("api/remotegrabscreenshot?checked=" + evt.currentTarget.checked);
+		webapi_execute("/api/remotegrabscreenshot?checked=" + evt.currentTarget.checked);
 	});
 });
 
 $(function() {
 	$("input[name=zapstream]").click(function(evt) {
 		$('input[name=zapstream]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("api/zapstream?checked=" + evt.currentTarget.checked);
+		webapi_execute("/api/zapstream?checked=" + evt.currentTarget.checked);
 	});
 });
 
