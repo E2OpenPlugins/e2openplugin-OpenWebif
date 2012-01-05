@@ -87,3 +87,30 @@ def getMovieList(self,directory=resolveFilename(SCOPE_HDD)):
 	
 	return { "movies": movieliste, "bookmarks": bookmarklist, "directory": directory }
 
+def removeMovie(session, sRef):
+
+	sRef = "1:0:0:0:0:0:0:0:0:0:"+sRef
+	service = ServiceReference(sRef)
+	result = False
+
+	if service is not None:
+		serviceHandler = eServiceCenter.getInstance()
+		offline = serviceHandler.offlineOperations(service.ref)
+		info = serviceHandler.info(service.ref)
+		name = info and info.getName(service.ref) or "this recording"
+
+	if offline is not None:
+		if not offline.deleteFromDisk(0):
+			result = True
+
+	if result == False:
+		return {
+			"result": False,
+			"message": "Could not delete Movie '%s'" % name
+			}
+	else:
+		return {
+			"result": True,
+			"message": "The movie '%s' has been deleted successfully" % name
+			}
+

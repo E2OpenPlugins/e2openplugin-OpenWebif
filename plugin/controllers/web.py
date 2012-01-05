@@ -15,7 +15,7 @@ from models.control import zapService, remoteControl, setPowerState
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, cleanupTimer, writeTimerList, recordNow, tvbrowser
 from models.message import sendMessage
-from models.movies import getMovieList
+from models.movies import getMovieList, removeMovie
 from models.config import addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot, setZapStream, saveConfig, getZapStream
 from models.stream import getStream, getTS
 from models.servicelist import reloadServicesLists
@@ -190,6 +190,13 @@ class WebController(BaseController):
 			movies = getMovieList(self)
 		return movies
 
+	def P_moviedelete(self, request):
+		res = self.testMandatoryArguments(request, ["sRef"])
+		if res:
+			return res
+		
+		return removeMovie(self.session, request.args["sRef"][0])
+	
 	def P_timerlist(self, request):
 		return getTimers(self.session)
 		

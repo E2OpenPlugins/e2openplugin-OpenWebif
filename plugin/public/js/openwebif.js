@@ -201,6 +201,14 @@ function deleteTimer(sRef, begin, end) {
 	}
 }
 
+function deleteMovie(sRef) {
+	answer = confirm("Really delete this movie?");
+	if (answer == true) {
+		webapi_execute("/api/moviedelete?sRef=" + sRef);
+		$('#'+sRef).remove();
+	}
+}
+
 function zapChannel(sRef, sname) {
 	var url = '/api/zap?sRef=' + escape(sRef);
 	$.getJSON(url, function(result){

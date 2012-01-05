@@ -36,8 +36,8 @@
 							<a href='/file?action=download&file=$quote($movie.filename)'>
 							<img align="top" src="../images/ico_download.png" title="Download $movie.eventname" border="0">
 							</a>
-							<a target="_blank" href='/file?action=delete&file=$quote($movie.filename)'>
-							<img src="../images/ico_epg.png" title="Delete $movie.eventname" border="0">
+							<a href='#' onClick="deleteMovie('$quote($movie.filename)');">
+							<img src="../images/ico_delete.png" title="Delete Movie" border="0"></a>
 							</a>
 						</div>
 					</div>
@@ -58,8 +58,8 @@
 							<a href='/file?action=download&file=$quote($movie.fullname)'>
 							<img align="top" src="../images/ico_download.png" title="Download $movie.filename" border="0">
 							</a>
-							<a target="_blank" href='/file?action=delete&file=$quote($movie.filename)'>
-							<img src="../images/ico_epg.png" title="Delete $movie.filename" border="0">
+							<a href='#' onClick="deleteMovie('$quote($movie.filename)');">
+							<img src="../images/ico_delete.png" title="Delete Movie" border="0"></a>
 							</a>
 						</div>
 					</div>
