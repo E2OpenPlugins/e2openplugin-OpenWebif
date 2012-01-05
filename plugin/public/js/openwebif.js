@@ -153,6 +153,11 @@ function load_maincontent(url) {
 	return false;
 }
 
+function load_maincontent_spin(url) {
+	$("#content_container").html(loadspinner).load(url);
+	return false;
+}
+
 function webapi_execute(url) {
 	var jqxhr = $.ajax( url )
 //    	.done(function() { alert(jqxhr.responseXml); })
