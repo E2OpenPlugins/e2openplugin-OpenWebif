@@ -1,3 +1,4 @@
+#filter WebSafe
 #from urllib import quote
 <div id="content_main" style="min-height: 500px;">
 	<div id="info">
@@ -8,7 +9,21 @@
 			<div class="moviecontainer_main" id="$timer.begin-$timer.end">
 				<div class="moviecontainer_left">
 					<div style="padding: 3px;">
-						<span style="color: #176093; font-weight: bold;">$timer.name</span><br />$timer.description
+						<span style="color: #176093; font-weight: bold;">$timer.name </span><br />$timer.realbegin - $timer.realend<br /> <span style="font-weight: bold;">$timer.servicename</span>
+					</div>
+					<div style="padding: 3px;">
+						$timer.description
+					</div>
+					<div style="padding: 3px;">
+						<span style="color: #7F8181; font-weight: bold;">
+							#if $timer.state == 0
+								waiting
+							#elif $timer.state == 2
+								running
+							#elif $timer.state == 3
+								finished
+							#end if
+						</span>
 					</div>
 				</div>
 				<div class="moviecontainer_right">
@@ -141,3 +156,4 @@ function editTimer(sRef, begin, end, name, description) {
 }
 
 </script>
+#end filter

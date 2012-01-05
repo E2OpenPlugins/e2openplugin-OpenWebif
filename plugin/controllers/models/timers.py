@@ -64,7 +64,7 @@ def getTimers(session):
 
 		timers.append({
 			"serviceref": timer.service_ref,
-			"servicename": timer.service_ref.getServiceName(),
+			"servicename": timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
 			"eit": timer.eit,
 			"name": timer.name,
 			"description": timer.description,
@@ -88,7 +88,9 @@ def getTimers(session):
 			"toggledisabled": toggledisabled,
 			"toggledisabledimg" : toggledisabledimg,
 			"filename": filename,
-			"nextactivation": nextactivation
+			"nextactivation": nextactivation,
+			"realbegin":strftime("%d.%m.%Y %H:%M", (localtime(float(timer.begin)))),
+			"realend":strftime("%d.%m.%Y %H:%M", (localtime(float(timer.end))))
 		})
 		
 	return {
