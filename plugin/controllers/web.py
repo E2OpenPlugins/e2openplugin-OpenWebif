@@ -13,7 +13,7 @@ from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
-from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, cleanupTimer, writeTimerList, recordNow, tvbrowser
+from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser
 from models.message import sendMessage
 from models.movies import getMovieList, removeMovie
 from models.config import addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot, setZapStream, saveConfig, getZapStream
@@ -341,6 +341,29 @@ class WebController(BaseController):
 			endOld
 		)
 		
+	def P_timertogglestatus(self, request):
+		res = self.testMandatoryArguments(request, ["sRef", "begin", "end"])
+		if res:
+			return res
+		try:
+			begin = int(request.args["begin"][0])
+		except Exception, e:
+			return {
+				"result": False,
+				"message": "The parameter 'begin' must be a number"
+			}
+			
+		try:
+			end = int(request.args["end"][0])
+		except Exception, e:
+			return {
+				"result": False,
+				"message": "The parameter 'end' must be a number"
+			}
+		
+		return toggleTimerStatus(self.session, request.args["sRef"][0], begin, end)
+		
+	
 	def P_timerdelete(self, request):
 		res = self.testMandatoryArguments(request, ["sRef", "begin", "end"])
 		if res:

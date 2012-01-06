@@ -222,6 +222,27 @@ def removeTimer(session, serviceref, begin, end):
 		"message": "No matching Timer found"
 	}
 	
+def toggleTimerStatus(session, serviceref, begin, end):
+	rt = session.nav.RecordTimer
+	for timer in rt.timer_list + rt.processed_timers:
+		if str(timer.service_ref) == serviceref and int(timer.begin) == begin and int(timer.end) == end:
+			if timer.disabled:
+				timer.enable()
+				effect = "enabled"
+			else:
+				timer.disable()
+				effect = "disabled"
+			return {
+				"result": True,
+				"message": "The timer '%s' has been %s successfully" % (timer.name, effect),
+				"disabled": timer.disabled
+			}
+			
+	return {
+		"result": False,
+		"message": "No matching Timer found"
+	}
+	
 def cleanupTimer(session):
 	session.nav.RecordTimer.cleanup()
 

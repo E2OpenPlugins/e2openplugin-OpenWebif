@@ -154,7 +154,10 @@ function load_maincontent(url) {
 }
 
 function load_maincontent_spin(url) {
-	$("#content_container").html(loadspinner).load(url);
+	if (lastcontenturl != url) {
+		$("#content_container").html(loadspinner).load(url);
+		lastcontenturl = url
+	}
 	return false;
 }
 
@@ -196,6 +199,13 @@ function open_epg_search_pop() {
 
 function addTimerEvent(sRef, eventId) {
 	webapi_execute("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId);
+}
+
+function toggleTimerStatus(sRef, begin, end) {
+	var url="/api/timertogglestatus?sRef="+ sRef + "&begin=" + begin + "&end=" + end;
+	$.getJSON(url, function(result){
+		$('#img-'+begin+'-'+end).attr("src", result['disabled'] ? "/images/ico_disabled.png" : "/images/ico_enabled.png");
+	});
 }
 
 function deleteTimer(sRef, begin, end) {
