@@ -62,7 +62,7 @@ def getCurrentService(session):
 			"vpid": 0,
 			"pcrpid": 0,
 			"pmtpid": 0,
-			"txtpid": 0,
+			"txtpid": "N/A",
 			"tsid": 0,
 			"onid": 0,
 			"sid": 0,
@@ -71,19 +71,45 @@ def getCurrentService(session):
 
 def getCurrentFullInfo(session):
 	now = next = {}
-	inf = getCurrentService(session)
-	info = session.nav.getCurrentService().info()
-	subservices = session.nav.getCurrentService().subServices()
-	audio = session.nav.getCurrentService().audioTracks()
-	ref = session.nav.getCurrentlyPlayingServiceReference().toString()
 	
-	inf['picon'] = getPicon(ref)
+	inf = getCurrentService(session)
+	
+	try:
+		info = session.nav.getCurrentService().info()
+	except:
+		info = None
+
+	try:
+		subservices = session.nav.getCurrentService().subServices()
+	except:
+		subservices = None
+
+	try:
+		audio = session.nav.getCurrentService().audioTracks()
+	except:
+		audio = None
+
+	try:
+		ref = session.nav.getCurrentlyPlayingServiceReference().toString()
+	except:
+		ref = None
+
+	if ref is not None:
+		inf['picon'] = getPicon(ref)
+		inf['wide'] = inf['aspect'] in (3, 4, 7, 8, 0xB, 0xC, 0xF, 0x10)
+		inf['ttext'] = getServiceInfoString(info, iServiceInformation.sTXTPID)
+		inf['crypt'] = getServiceInfoString(info, iServiceInformation.sIsCrypted)
+		inf['subs'] = str(subservices and subservices.getNumberOfSubservices() > 0 )
+	else:
+		inf['picon'] = None
+		inf['wide'] = None
+		inf['ttext'] = None
+		inf['crypt'] = None
+		inf['subs'] = None
+		
 	inf['date'] = strftime("%d.%m.%Y", (localtime()))
-	inf['wide'] = inf['aspect'] in (3, 4, 7, 8, 0xB, 0xC, 0xF, 0x10)
-	inf['ttext'] = getServiceInfoString(info, iServiceInformation.sTXTPID)
-	inf['crypt'] = getServiceInfoString(info, iServiceInformation.sIsCrypted)
-	inf['subs'] = str(subservices and subservices.getNumberOfSubservices() > 0 )
 	inf['dolby'] = False
+
 	if audio:
 		n = audio.getNumberOfTracks()
 		idx = 0
@@ -93,15 +119,27 @@ def getCurrentFullInfo(session):
 			if "AC3" in description or "DTS" in description or "Dolby Digital" in description:
 				inf['dolby'] = True
 			idx += 1	
-	feinfo = session.nav.getCurrentService().frontendInfo()
+	try:
+		feinfo = session.nav.getCurrentService().frontendInfo()
+	except:
+		feinfo = None
+	
 	frontendData = feinfo and feinfo.getAll(True)
+	
 	if frontendData is not None:
 		inf['tunertype'] = frontendData.get("tuner_type", "UNKNOWN")
 		if frontendData.get("system", -1) == 1:
 			inf['tunertype'] = "DVB-S2"
 		inf['tunernumber'] = frontendData.get("tuner_number")
-		
-	frontendStatus = feinfo and feinfo.getFrontendStatus()
+	else:
+		inf['tunernumber'] = "N/A"
+		inf['tunertype'] = "N/A"
+	
+	try:
+		frontendStatus = feinfo and feinfo.getFrontendStatus()
+	except:
+		frontendStatus = None
+	
 	if frontendStatus is not None:
 		percent = frontendStatus.get("tuner_signal_quality")
 		if percent is not None:
@@ -116,21 +154,33 @@ def getCurrentFullInfo(session):
 		percent =  frontendStatus.get("tuner_bit_error_rate")
 		if percent is not None:
 			inf['ber'] = int(percent * 100 / 65536)
-			
+	else:
+		inf['snr'] = 0
+		inf['snr_db'] = inf['snr']
+		inf['agc'] = 0
+		inf['ber'] = 0
 	
-	recordings = session.nav.getRecordings()
+	try:
+		recordings = session.nav.getRecordings()
+	except:
+		recordings = None
+	
 	inf['rec_state'] = False
 	if recordings:
 		inf['rec_state'] = True	
-	
-	ev = getChannelEpg(ref)
-	if len(ev['events']) > 1:
-		now = ev['events'][0]
-		next = ev['events'][1]
-		if len(now['title']) > 50:
-			now['title'] = now['title'][0:48] + "..."
-		if len(next['title']) > 50:
-			next['title'] = next['title'][0:48] + "..."
+
+	try:
+		ev = getChannelEpg(ref)
+		if len(ev['events']) > 1:
+			now = ev['events'][0]
+			next = ev['events'][1]
+			if len(now['title']) > 50:
+				now['title'] = now['title'][0:48] + "..."
+			if len(next['title']) > 50:
+				next['title'] = next['title'][0:48] + "..."
+	except:
+		now = ""
+		next = ""
 	
 	return { "info": inf, "now": now, "next": next }
 
@@ -291,9 +341,9 @@ def getEventDesc(ref, idev):
 	epgcache = eEPGCache.getInstance()
 	event = epgcache.lookupEvent(['ESX', (ref, 2, int(idev))])
 	if len(event[0][0]) > 1:
-		description = event[0][0]
+		description = event[0][0].replace('\xc2\x86', '').replace('\xc2\x87', '').replace('\xc2\x8a', '')
 	elif len(event[0][1]) > 1:
-		description = event[0][1]
+		description = event[0][1].replace('\xc2\x86', '').replace('\xc2\x87', '').replace('\xc2\x8a', '')
 	else:
 		description = "No description available"
 		
