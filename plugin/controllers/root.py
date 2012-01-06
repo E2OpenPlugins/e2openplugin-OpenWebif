@@ -34,7 +34,7 @@ class RootController(BaseController):
 		self.putChild("js", static.File(getPublicPath() + "/js"))
 		self.putChild("css", static.File(getPublicPath() + "/css"))
 		self.putChild("images", static.File(getPublicPath() + "/images"))
-		self.putChild("ipkg", IpkgController(session))
+		self.putChild("ipkg", IpkgController())
 		if piconpath:
 			self.putChild("picon", static.File(piconpath))
 		
