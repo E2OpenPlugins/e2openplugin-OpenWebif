@@ -8,7 +8,7 @@
 ##############################################################################
 
 from enigma import eConsoleAppContainer
-from twisted.web import static, resource, http, server
+from twisted.web import static, resource, http
 
 class IpkgController(resource.Resource):
 
