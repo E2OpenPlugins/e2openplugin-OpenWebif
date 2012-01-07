@@ -169,7 +169,6 @@ def getCurrentFullInfo(session):
 	if recordings:
 		inf['rec_state'] = True	
 
-	try:
 		ev = getChannelEpg(ref)
 		if len(ev['events']) > 1:
 			now = ev['events'][0]
@@ -178,9 +177,6 @@ def getCurrentFullInfo(session):
 				now['title'] = now['title'][0:48] + "..."
 			if len(next['title']) > 50:
 				next['title'] = next['title'][0:48] + "..."
-	except:
-		now = ""
-		next = ""
 	
 	return { "info": inf, "now": now, "next": next }
 
@@ -361,20 +357,36 @@ def getChannelEpg(ref, begintime=-1, endtime=-1):
 			ev = {}
 			ev['picon'] = picon
 			ev['id'] = event[0]
-			ev['date'] = strftime("%a %d.%b.%Y", (localtime(event[1])))
-			ev['begin'] = strftime("%H:%M", (localtime(event[1])))
-			ev['begin_timestamp'] = event[1]
-			ev['duration'] = int(event[2] / 60)
-			ev['duration_sec'] = event[2]
-			ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
-			ev['title'] = filterName(event[3])
-			ev['shortdesc'] = event[4]
-			ev['longdesc'] = event[5]
-			ev['sref'] = ref
-			ev['sname'] = filterName(event[6])
-			ev['tleft'] = int (((event[1] + event[2]) - event[7]) / 60)
-			ev['progress'] = int(((event[7] - event[1]) * 100 / event[2]) *4)
-			ev['now_timestamp'] = event[7]
+			if event[1]:
+				ev['date'] = strftime("%a %d.%b.%Y", (localtime(event[1])))
+				ev['begin'] = strftime("%H:%M", (localtime(event[1])))
+				ev['begin_timestamp'] = event[1]
+				ev['duration'] = int(event[2] / 60)
+				ev['duration_sec'] = event[2]
+				ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
+				ev['title'] = filterName(event[3])
+				ev['shortdesc'] = event[4]
+				ev['longdesc'] = event[5]
+				ev['sref'] = ref
+				ev['sname'] = filterName(event[6])
+				ev['tleft'] = int (((event[1] + event[2]) - event[7]) / 60)
+				ev['progress'] = int(((event[7] - event[1]) * 100 / event[2]) *4)
+				ev['now_timestamp'] = event[7]
+			else:
+				ev['date'] = 0
+				ev['begin'] = 0
+				ev['begin_timestamp'] = 0
+				ev['duration'] = 0
+				ev['duration_sec'] = 0
+				ev['end'] = 0
+				ev['title'] = "N/A"
+				ev['shortdesc'] = ""
+				ev['longdesc'] = ""
+				ev['sref'] = ref
+				ev['sname'] = filterName(event[6])
+				ev['tleft'] = 0
+				ev['progress'] = 0
+				ev['now_timestamp'] = 0
 			ret.append(ev)
 	
 	return { "events": ret, "result": True }
@@ -446,15 +458,28 @@ def getNowNextEpg(ref, servicetype):
 		for event in events:
 			ev = {}
 			ev['id'] = event[0]
-			ev['begin_timestamp'] = event[1]
-			ev['duration_sec'] = event[2]
-			ev['title'] = event[4]
-			ev['shortdesc'] = event[5]
-			ev['longdesc'] = event[6]
-			ev['sref'] = event[7]
-			ev['sname'] = filterName(event[8])
-			ev['now_timestamp'] = event[3]
-			ev['remaining'] = (event[1] + event[2]) - event[3]
+			if event[1]:
+				ev['begin_timestamp'] = event[1]
+				ev['duration_sec'] = event[2]
+				ev['title'] = event[4]
+				ev['shortdesc'] = event[5]
+				ev['longdesc'] = event[6]
+				ev['sref'] = event[7]
+				ev['sname'] = filterName(event[8])
+				ev['now_timestamp'] = event[3]
+				ev['remaining'] = (event[1] + event[2]) - event[3]
+			else:
+				ev['begin_timestamp'] = 0
+				ev['duration_sec'] = 0
+				ev['title'] = "N/A"
+				ev['shortdesc'] = ""
+				ev['longdesc'] = ""
+				ev['sref'] = event[7]
+				ev['sname'] = filterName(event[8])
+				ev['now_timestamp'] = 0
+				ev['remaining'] = 0
+
+				
 			ret.append(ev)
 	
 	return { "events": ret, "result": True }

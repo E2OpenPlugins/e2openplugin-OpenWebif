@@ -233,12 +233,12 @@ def getStatusInfo(self):
 		statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
 	else:
 		statusinfo['currservice_name'] = "N/A"
-		statusinfo['currservice_serviceref'] = ""
-		statusinfo['currservice_begin'] = 0
-		statusinfo['currservice_end'] = 0
-		statusinfo['currservice_name'] = ""
+		statusinfo['currservice_begin'] = ""
+		statusinfo['currservice_end'] = ""
 		statusinfo['currservice_description'] = ""
-		statusinfo['currservice_station'] = ""
+		if serviceref:
+			statusinfo['currservice_serviceref'] = serviceref.toString()
+			statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
 		
 	# Get Standby State
 	if inStandby == None:
