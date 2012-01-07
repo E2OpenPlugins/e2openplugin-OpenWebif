@@ -11,7 +11,7 @@ from urllib import unquote, quote
 import os
 from Components.config import config
 
-def getStream(self, request, m3ufile):
+def getStream(session, request, m3ufile):
 
 	if "ref" in request.args:
 		sRef=unquote(request.args["ref"][0]).decode('utf-8', 'ignore').encode('utf-8')
@@ -19,7 +19,7 @@ def getStream(self, request, m3ufile):
 		sRef = ""
 	
 	if m3ufile == "streamcurrent.m3u":
-		sRef = self.session.nav.getCurrentlyPlayingServiceReference().toString() 
+		sRef = session.nav.getCurrentlyPlayingServiceReference().toString() 
 
 	name = "stream"
 	if "name" in request.args:
