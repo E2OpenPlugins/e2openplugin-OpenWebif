@@ -17,7 +17,7 @@ from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, rem
 from models.message import sendMessage
 from models.movies import getMovieList, removeMovie
 from models.config import addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot, setZapStream, saveConfig, getZapStream
-from models.stream import getStream, getTS
+from models.stream import getStream, getTS, getStreamSubservices
 from models.servicelist import reloadServicesLists
 
 from base import BaseController
@@ -624,6 +624,9 @@ class WebController(BaseController):
 	def P_streamcurrentm3u(self,request):
 		self.isCustom = True
 		return getStream(self.session,request,"streamcurrent.m3u")
+
+	def P_streamsubservices(self, request):
+		return getStreamSubservices(self.session,request)
 
 	def P_servicelistreload(self, request):
 		return reloadServicesLists(self.session,request)

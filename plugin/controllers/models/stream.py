@@ -40,6 +40,34 @@ def getTS(self,request):
 	else:
 		return "Missing file parameter"
 
+def getStreamSubservices(session, request):
+	services = []
+
+	currentServiceRef = session.nav.getCurrentlyPlayingServiceReference()
+
+	if currentServiceRef is not None:
+		currentService = session.nav.getCurrentService()
+		subservices = currentService.subServices()
+
+		if subservices and subservices.getNumberOfSubservices() != 0:
+			n = subservices and subservices.getNumberOfSubservices()  
+			z = 0
+			while z < n:
+				sub = subservices.getSubservice(z)
+				services.append({
+					"servicereference": sub.toString(),
+					"servicename": sub.getName()
+				}) 
+				z += 1
+	else:
+		services.append =({
+			"servicereference": "N/A",
+			"servicename": "N/A"
+		})
+		
+
+	return { "services": services }
+
 streamstack = []
 
 class StreamProxyHelper(object):
