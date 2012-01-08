@@ -1,0 +1,26 @@
+#filter WebSafe
+<?xml version="1.0" encoding="UTF-8"?>
+<e2servicelistrecursive>
+	#for $service in $services
+		#if $len($service.subservices) > 0
+		<e2bouquet>
+			<e2servicereference>$service.servicereference</e2servicereference>
+			<e2servicename>$service.servicename</e2servicename>
+			<e2servicelist>
+			#for $service2 in $service.subservices
+			<e2service>
+				<e2servicereference>$service2.servicereference</e2servicereference>
+				<e2servicename>$service2.servicename</e2servicename>
+			</e2service>
+			#end for
+			</e2servicelist>
+		</e2bouquet>
+		#else
+		<e2service>
+			<e2servicereference>$service.servicereference</e2servicereference>
+			<e2servicename>$service.servicename</e2servicename>
+		</e2service>
+		#end if
+	#end for
+</e2servicelistrecursive>
+#end filter

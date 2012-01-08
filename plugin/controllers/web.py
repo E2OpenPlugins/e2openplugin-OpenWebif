@@ -10,7 +10,7 @@
 from Components.config import config
 
 from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStatus
-from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg
+from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState
@@ -152,6 +152,9 @@ class WebController(BaseController):
 	def P_getcurrlocation(self, request):
 		return getCurrentLocation()
 
+	def P_getallservices(self, request):
+		return getAllServices()
+		
 	def P_getservices(self, request):
 		if "sRef" in request.args.keys():
 			sRef = request.args["sRef"][0]

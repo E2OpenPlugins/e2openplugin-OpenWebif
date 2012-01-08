@@ -307,6 +307,21 @@ def getServices(sRef):
 			
 	return { "services": services }
 
+def getAllServices():
+	services = []
+	bouquets = getBouquets("tv")["bouquets"]
+	for bouquet in bouquets:
+		services.append({
+			"servicereference": bouquet[0],
+			"servicename": bouquet[1],
+			"subservices": getServices(bouquet[0])["services"]
+		})
+		
+	return {
+		"result": True,
+		"services": services
+	}
+
 def getSubServices(session):
 	services = []
 	currentServiceRef = session.nav.getCurrentlyPlayingServiceReference()
