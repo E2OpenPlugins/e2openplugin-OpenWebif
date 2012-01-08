@@ -9,7 +9,7 @@
 from Tools.Directories import fileExists
 from Components.Sources.ServiceList import ServiceList
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
-from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache
+from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache, getBestPlayableServiceReference
 from time import time, localtime, strftime
 from info import getPiconPath
 
@@ -317,6 +317,27 @@ def getAllServices():
 			"subservices": getServices(bouquet[0])["services"]
 		})
 		
+	return {
+		"result": True,
+		"services": services
+	}
+	
+def getPlayableServices(sRef, sRefPlaying):
+	if sRef == "":
+		sRef = '%s FROM BOUQUET "bouquets.tv" ORDER BY bouquet' % (service_types_tv)
+	
+	services = []
+	servicecenter = eServiceCenter.getInstance()
+	servicelist = servicecenter.list(eServiceReference(sRef))
+	servicelist2 = servicelist and servicelist.getContent('S') or []
+	
+	for service in servicelist2:
+		if not int(service.split(":")[1]) & 512:	# 512 is hidden service on sifteam image. Doesn't affect other images
+			service2 = {}
+			service2['servicereference'] = service
+			service2['isplayable'] = getBestPlayableServiceReference(eServiceReference(service), eServiceReference(sRefPlaying)) != None
+			services.append(service2)
+			
 	return {
 		"result": True,
 		"services": services
