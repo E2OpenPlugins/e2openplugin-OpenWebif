@@ -7,6 +7,8 @@
 #                                                                            #
 ##############################################################################
 
+from Components.config import config
+
 from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStatus
 from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
@@ -15,7 +17,7 @@ from models.control import zapService, remoteControl, setPowerState
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser
 from models.message import sendMessage
-from models.movies import getMovieList, removeMovie
+from models.movies import getMovieList, removeMovie, getMovieTags
 from models.config import addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot, setZapStream, saveConfig, getZapStream
 from models.stream import getStream, getTS, getStreamSubservices
 from models.servicelist import reloadServicesLists
@@ -184,11 +186,54 @@ class WebController(BaseController):
 		return sendMessage(self, request)
 
 	def P_movielist(self, request):
+		tag = None
+		if "tag" in request.args.keys():
+			tag = request.args["tag"][0]
+			
+		dirname = None
 		if "dirname" in request.args.keys():
-			movies = getMovieList(self,request.args["dirname"][0])
-		else:
-			movies = getMovieList(self)
-		return movies
+			dirname = request.args["dirname"][0]
+			
+		return getMovieList(self, dirname, tag)
+
+	def P_movielisthtml(self, request):
+		tag = None
+		if "tag" in request.args.keys():
+			tag = request.args["tag"][0]
+		
+		dirname = None
+		if "dirname" in request.args.keys():
+			dirname = request.args["dirname"][0]
+		
+		request.setHeader("content-type", "text/html")
+		return getMovieList(self, dirname, tag)
+
+	def P_movielistm3u(self, request):
+		tag = None
+		if "tag" in request.args.keys():
+			tag = request.args["tag"][0]
+		
+		dirname = None
+		if "dirname" in request.args.keys():
+			dirname = request.args["dirname"][0]
+		
+		request.setHeader('Content-Type', 'application/text')
+		movielist = getMovieList(self, dirname, tag)
+		movielist["host"] = "%s:%s" % (request.getRequestHostname(), config.OpenWebif.port.value)
+		return movielist
+
+	def P_movielistrss(self, request):
+		tag = None
+		if "tag" in request.args.keys():
+			tag = request.args["tag"][0]
+		
+		dirname = None
+		if "dirname" in request.args.keys():
+			dirname = request.args["dirname"][0]
+		
+		movielist = getMovieList(self, dirname, tag)
+		movielist["host"] = "%s:%s" % (request.getRequestHostname(), config.OpenWebif.port.value)
+		return movielist
 
 	def P_moviedelete(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
@@ -196,6 +241,9 @@ class WebController(BaseController):
 			return res
 		
 		return removeMovie(self.session, request.args["sRef"][0])
+	
+	def P_movietags(self, request):
+		return getMovieTags()
 	
 	def P_timerlist(self, request):
 		return getTimers(self.session)

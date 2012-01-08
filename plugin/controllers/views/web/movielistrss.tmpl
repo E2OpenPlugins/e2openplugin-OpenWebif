@@ -1,0 +1,30 @@
+#filter WebSafe
+#from urllib import quote
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+	<channel>
+		<title>Enigma2 Movielist</title>
+		<link>http://</link>
+		<description>A list of all recordings</description>
+		<generator>OpenWebif</generator>
+		#for $movie in $movies
+		<item>
+			<title>$movie.eventname</title>
+			<description>
+				Service: $movie.servicename<br />
+				$movie.description<br />
+				$movie.descriptionExtended<br />
+				$movie.filename<br />
+				$movie.tags<br />
+				$movie.fullname
+			</description>
+			<link>http://$host/file?file=$quote($movie.filename)</link>
+			<enclosure type="video/mpeg" url="http://$host/file?file=$quote($movie.filename)"/>
+			<pubDate>$movie.begintime</pubDate>
+			<category>$movie.servicename</category>
+			<author>Dreambox Enigma2</author>
+		</item>
+		#end for
+	</channel>
+</rss>
+#end filter

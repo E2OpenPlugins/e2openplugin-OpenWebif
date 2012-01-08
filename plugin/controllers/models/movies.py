@@ -15,12 +15,15 @@ from Tools.Directories import resolveFilename, SCOPE_HDD
 from Tools.FuzzyDate import FuzzyTime
 from os import stat as os_stat
 from Components.MovieList import MovieList
+from Tools.Directories import fileExists
+from time import strftime, localtime
 
-
-def getMovieList(self,directory=resolveFilename(SCOPE_HDD)):
-
+def getMovieList(self,directory=None, tag=None):
 	movieliste = []
 	bookmarklist = []
+	
+	if directory == None:
+		directory = resolveFilename(SCOPE_HDD)
 	
 	self.root = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory)
 
@@ -30,7 +33,8 @@ def getMovieList(self,directory=resolveFilename(SCOPE_HDD)):
 	self.tagfilter = []
 	
 	self.movielist = MovieList(self.root)
-#	self.movielist.reload(root=self.root, filter_tags=self.tagfilter)
+	if tag != None:
+		self.movielist.reload(root=self.root, filter_tags=[tag])
 	loadLength = True
 
 	for (serviceref, info, begin, unknown) in self.movielist.list:
@@ -66,6 +70,7 @@ def getMovieList(self,directory=resolveFilename(SCOPE_HDD)):
 		movie = {}
 		filename = '/'+filename
 		movie['filename'] = filename
+		movie['filename_stripped'] = filename.split("/")[-1]
 		movie['eventname'] = servicename
 		movie['description'] = info.getInfoString(serviceref, iServiceInformation.sDescription)
 		movie['begintime'] = begin_string
@@ -78,7 +83,7 @@ def getMovieList(self,directory=resolveFilename(SCOPE_HDD)):
 		except:
 			movie['filesize'] = 0
 		movie['fullname'] = serviceref.toString()
-		movie['DescriptionExtended'] = ext
+		movie['descriptionExtended'] = ext
 		movie['servicename'] = sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
 		movie['recordingtime'] = rtime
 		
@@ -114,3 +119,14 @@ def removeMovie(session, sRef):
 			"message": "The movie '%s' has been deleted successfully" % name
 			}
 
+def getMovieTags():
+	tags = []
+	if fileExists("/etc/enigma2/movietags"):
+		for tag in open("/etc/enigma2/movietags").read().split("\n"):
+			if len(tag.strip()) > 0:
+				tags.append(tag.strip())
+		
+	return {
+		"result": True,
+		"tags": tags
+	}

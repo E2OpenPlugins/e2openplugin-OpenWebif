@@ -1,0 +1,44 @@
+#filter WebSafe
+<?xml version="1.0" encoding="UTF-8"?>
+<html>
+<head>
+	<title>
+		Enigma2 Movielist
+	</title>
+	<link/>
+</head>
+<body>
+	<table>
+		#for $movie in $movies
+		<tr>
+			<td class="pageHeader">
+				$movie.eventname
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<b>Description:</b>
+				$movie.description
+				<br/>
+				<b>Extended:</b>
+				$movie.descriptionExtended
+				<br/>
+				<b>Recording Time:</b>
+				$movie.begintime
+				<br/>
+				<b>Tags:</b>
+				$movie.tags
+				<br/>
+				<b>Channel:</b>
+				$movie.servicename
+			</td>
+		</tr>
+		<tr height="20">
+			<td>
+			</td>
+		</tr>
+		#end for
+	</table>
+</body>
+</html>
+#end filter
