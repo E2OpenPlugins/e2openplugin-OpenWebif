@@ -343,6 +343,15 @@ def getPlayableServices(sRef, sRefPlaying):
 		"services": services
 	}
 
+def getPlayableService(sRef, sRefPlaying):
+	return {
+		"result": True,
+		"service": {
+			"servicereference": sRef,
+			"isplayable": getBestPlayableServiceReference(eServiceReference(sRef), eServiceReference(sRefPlaying)) != None
+		}
+	}
+	
 def getSubServices(session):
 	services = []
 	currentServiceRef = session.nav.getCurrentlyPlayingServiceReference()

@@ -10,7 +10,7 @@
 from Components.config import config
 
 from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStatus
-from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices
+from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState
@@ -176,6 +176,17 @@ class WebController(BaseController):
 			sRefPlaying = request.args["sRefPlaying"][0]
 			
 		return getPlayableServices(sRef, sRefPlaying)
+		
+	def P_serviceplayable(self, request):
+		sRef = ""
+		if "sRef" in request.args.keys():
+			sRef = request.args["sRef"][0]
+			
+		sRefPlaying = ""
+		if "sRefPlaying" in request.args.keys():
+			sRefPlaying = request.args["sRefPlaying"][0]
+			
+		return getPlayableService(sRef, sRefPlaying)
 		
 	def P_addlocation(self, request):
 		res = self.testMandatoryArguments(request, ["dirname"])
