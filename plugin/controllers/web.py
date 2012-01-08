@@ -163,6 +163,17 @@ class WebController(BaseController):
 		
 		return getServices(sRef)
 
+	def P_servicesm3u(self, request):
+		if "bRef" in request.args.keys():
+			bRef = request.args["bRef"][0]
+		else:
+			bRef = ""
+			
+		request.setHeader('Content-Type', 'application/text')
+		services = getServices(bRef)
+		services["host"] = "%s:8001" % request.getRequestHostname()
+		return services
+		
 	def P_subservices(self, request):
 		return getSubServices(self.session)
 

@@ -1,0 +1,6 @@
+#EXTM3U 
+#EXTVLCOPT--http-reconnect=true
+#for $service in $services
+#EXTINF:-1,$service.servicename
+http://$host/$service.servicereference
+#end for
