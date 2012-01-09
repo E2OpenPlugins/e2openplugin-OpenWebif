@@ -21,6 +21,7 @@ from models.movies import getMovieList, removeMovie, getMovieTags
 from models.config import addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot, setZapStream, saveConfig, getZapStream
 from models.stream import getStream, getTS, getStreamSubservices
 from models.servicelist import reloadServicesLists
+from models.mediaplayer import mediaPlayerAdd, mediaPlayerRemove, mediaPlayerPlay, mediaPlayerCommand, mediaPlayerCurrent, mediaPlayerList, mediaPlayerLoad, mediaPlayerSave
 
 from base import BaseController
 from stream import StreamController
@@ -723,4 +724,64 @@ class WebController(BaseController):
 			return res
 			
 		return saveConfig(request.args["key"][0], request.args["value"][0])
+		
+	def P_mediaplayeradd(self, request):
+		res = self.testMandatoryArguments(request, ["file"])
+		if res:
+			return res
+			
+		return mediaPlayerAdd(self.session, request.args["file"][0])
+
+	def P_mediaplayerplay(self, request):
+		res = self.testMandatoryArguments(request, ["file"])
+		if res:
+			return res
+			
+		root = ""
+		if "root" in request.args.keys():
+			root = request.args["root"][0]
+		
+		return mediaPlayerPlay(self.session, request.args["file"][0], root)
+		
+	def P_mediaplayercmd(self, request):
+		res = self.testMandatoryArguments(request, ["command"])
+		if res:
+			return res
+		
+		return mediaPlayerCommand(self.session, request.args["command"][0])
+	
+	def P_mediaplayercurrent(self, request):
+		return mediaPlayerCurrent(self.session)
+		
+	def P_mediaplayerlist(self, request):
+		path = ""
+		if "path" in request.args.keys():
+			path = request.args["path"][0]
+			
+		types = ""
+		if "types" in request.args.keys():
+			types = request.args["types"][0]
+			
+		return mediaPlayerList(self.session, path, types)
+		
+	def P_mediaplayerremove(self, request):
+		res = self.testMandatoryArguments(request, ["file"])
+		if res:
+			return res
+			
+		return mediaPlayerRemove(self.session, request.args["file"][0])
+		
+	def P_mediaplayerload(self, request):
+		res = self.testMandatoryArguments(request, ["filename"])
+		if res:
+			return res
+			
+		return mediaPlayerLoad(self.session, request.args["filename"][0])
+		
+	def P_mediaplayerwrite(self, request):
+		res = self.testMandatoryArguments(request, ["filename"])
+		if res:
+			return res
+			
+		return mediaPlayerSave(self.session, request.args["filename"][0])
 		

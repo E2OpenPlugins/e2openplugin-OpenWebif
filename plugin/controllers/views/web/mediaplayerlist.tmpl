@@ -1,0 +1,12 @@
+#filter WebSafe
+<?xml version="1.0" encoding="UTF-8"?>
+<e2filelist>
+	#for $file in $files
+	<e2file>
+		<e2servicereference>$str($file.servicereference)</e2servicereference>
+		<e2isdirectory>$file.isdirectory</e2isdirectory>
+		<e2root>$str($file.root)</e2root>
+	</e2file>
+	#end for
+</e2filelist>
+#end filter
