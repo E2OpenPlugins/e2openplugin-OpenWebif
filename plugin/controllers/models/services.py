@@ -169,14 +169,14 @@ def getCurrentFullInfo(session):
 	if recordings:
 		inf['rec_state'] = True	
 
-		ev = getChannelEpg(ref)
-		if len(ev['events']) > 1:
-			now = ev['events'][0]
-			next = ev['events'][1]
-			if len(now['title']) > 50:
-				now['title'] = now['title'][0:48] + "..."
-			if len(next['title']) > 50:
-				next['title'] = next['title'][0:48] + "..."
+	ev = getChannelEpg(ref)
+	if len(ev['events']) > 1:
+		now = ev['events'][0]
+		next = ev['events'][1]
+		if len(now['title']) > 50:
+			now['title'] = now['title'][0:48] + "..."
+		if len(next['title']) > 50:
+			next['title'] = next['title'][0:48] + "..."
 	
 	return { "info": inf, "now": now, "next": next }
 
