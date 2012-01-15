@@ -8,21 +8,38 @@
 ##############################################################################
 from Screens.MessageBox import MessageBox
 
-def sendMessage(self, request):
-	self.msgtext = ""
-	self.msgtype = 2
-	self.msgtimeout = -1
-	
-	if "text" in request.args.keys():
-		self.msgtext = request.args["text"][0]
-	if "type" in request.args.keys():
-		self.msgtype = int(request.args["type"][0])
-	if "timeout" in request.args.keys():
-		self.msgtimeout = int(request.args["timeout"][0])
-		
-	self.session.open(MessageBox, self.msgtext, type=self.msgtype, timeout=self.msgtimeout)
+lastreply = None
 
+def messageReply(reply):
+	global lastreply
+	lastreply = reply
+	
+def sendMessage(session, message, ttype, timeout):
+	if ttype not in [MessageBox.TYPE_YESNO, MessageBox.TYPE_INFO, MessageBox.TYPE_WARNING, MessageBox.TYPE_ERROR]:
+		ttype = MessageBox.TYPE_INFO
+		
+	if ttype == MessageBox.TYPE_YESNO:
+		session.openWithCallback(messageReply, MessageBox, message, type=ttype, timeout=timeout)
+	else:
+		session.open(MessageBox, message, type=ttype, timeout=timeout)
+		
 	return {
 		"result": True,
-		"message": "Message successfully sent!"
+		"message": "Message sent successfully!"
+	}
+	
+def getMessageAnswer():
+	global lastreply
+	reply = lastreply
+	lastreply = None
+	
+	if reply is None:
+		return {
+			"result": False,
+			"message": "No answer in time"
+		}
+		
+	return {
+		"result": True,
+		"message": "Answer is YES!" if reply else "Answer is NO!"
 	}

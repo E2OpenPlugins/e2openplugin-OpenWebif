@@ -8,6 +8,9 @@
 ##############################################################################
 from Tools.Directories import fileExists
 from Components.Sources.ServiceList import ServiceList
+from Components.ParentalControl import parentalControl, LIST_BLACKLIST, LIST_WHITELIST
+from Components.config import config
+from ServiceReference import ServiceReference
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache, getBestPlayableServiceReference
 from time import time, localtime, strftime
@@ -590,3 +593,27 @@ def getPicon(sname):
 		return "/picon/" + sname
 	return "/images/default_picon.png"
 	
+def getParentalControlList():
+	if not config.ParentalControl.configured.value:
+		return {
+			"result": True,
+			"services": []
+		}
+		
+	if config.ParentalControl.type.value == "whitelist":
+		tservices = parentalControl.openListFromFile(LIST_WHITELIST)
+	else:
+		tservices = parentalControl.openListFromFile(LIST_BLACKLIST)
+		
+	services = []
+	for service in tservices:
+		tservice = ServiceReference(service)
+		services.append({
+			"servicereference": service, 
+			"servicename": tservice.getServiceName()
+		})
+		
+	return {
+		"result": True,
+		"services": services
+	}

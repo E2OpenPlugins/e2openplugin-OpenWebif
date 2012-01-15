@@ -10,18 +10,19 @@
 from Components.config import config
 
 from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStatus
-from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService
+from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
-from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser
-from models.message import sendMessage
+from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer
+from models.message import sendMessage, getMessageAnswer
 from models.movies import getMovieList, removeMovie, getMovieTags
 from models.config import addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot, setZapStream, saveConfig, getZapStream
 from models.stream import getStream, getTS, getStreamSubservices
 from models.servicelist import reloadServicesLists
 from models.mediaplayer import mediaPlayerAdd, mediaPlayerRemove, mediaPlayerPlay, mediaPlayerCommand, mediaPlayerCurrent, mediaPlayerList, mediaPlayerLoad, mediaPlayerSave
+from models.plugins import reloadPlugins
 
 from base import BaseController
 from stream import StreamController
@@ -177,7 +178,10 @@ class WebController(BaseController):
 		
 	def P_subservices(self, request):
 		return getSubServices(self.session)
-
+		
+	def P_parentcontrollist(self, request):
+		return getParentalControlList()
+		
 	def P_servicelistplayable(self, request):
 		sRef = ""
 		if "sRef" in request.args.keys():
@@ -219,7 +223,29 @@ class WebController(BaseController):
 		return removeLocation(request.args["dirname"][0])
 
 	def P_message(self, request):
-		return sendMessage(self, request)
+		res = self.testMandatoryArguments(request, ["message", "type"])
+		if res:
+			return res
+			
+		try:
+			ttype = int(request.args["type"][0])
+		except Exception, e:
+			return {
+				"result": False,
+				"message": "type %s is not a number" % request.args["type"][0]
+			}
+			
+		timeout = -1
+		if "timeout" in request.args.keys():
+			try:
+				timeout = int(request.args["timeout"][0])
+			except Exception, e:
+				pass
+				
+		return sendMessage(self.session, request.args["message"][0], ttype, timeout)
+		
+	def P_messageanswer(self, request):
+		return getMessageAnswer()
 
 	def P_movielist(self, request):
 		tag = None
@@ -279,6 +305,10 @@ class WebController(BaseController):
 		return removeMovie(self.session, request.args["sRef"][0])
 	
 	def P_movietags(self, request):
+		return getMovieTags()
+
+	# a duplicate api ??
+	def P_gettags(self, request):
 		return getMovieTags()
 	
 	def P_timerlist(self, request):
@@ -785,3 +815,57 @@ class WebController(BaseController):
 			
 		return mediaPlayerSave(self.session, request.args["filename"][0])
 		
+	def P_pluginlistread(self, request):
+		return reloadPlugins()
+		
+	def P_restarttwisted(self, request):
+		from ..httpserver import HttpdRestart
+		HttpdRestart(self.session)
+		return ""
+		
+	def P_sleeptimer(self, request):
+		cmd = "get"
+		if "cmd" in request.args.keys():
+			cmd = request.args["cmd"][0]
+			
+		if cmd == "get":
+			return getSleepTimer(self.session)
+			
+		time = None
+		if "time" in request.args.keys():
+			ttime = request.args["time"][0]
+			try:
+				time = int(ttime)
+				if time > 999:
+					time = 999
+				elif time < 0:
+					time = 0
+			except Exception, e:
+				pass
+				
+		action = "standby"
+		if "action" in request.args.keys():
+			action = request.args["action"][0]
+		
+		enabled = None
+		if "enabled" in request.args.keys():
+			if request.args["enabled"][0] == "True":
+				enabled = True
+			elif request.args["enabled"][0] == "False":
+				enabled = False
+		
+		ret = getSleepTimer(self.session)
+		
+		if cmd != "set":
+			ret["message"] = "ERROR: Obligatory parameter 'cmd' [get,set] has unspecified value '%s'" % cmd
+			return ret
+			
+		if time == None and enabled == True:	# it's used only if the timer is enabled
+			ret["message"] = "ERROR: Obligatory parameter 'time' [0-999] is missing"
+			return ret
+		
+		if enabled == None:
+			ret["message"] = "Obligatory parameter 'enabled' [True,False] is missing"
+			return ret
+			
+		return setSleepTimer(self.session, time, action, enabled)

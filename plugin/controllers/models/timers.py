@@ -9,6 +9,7 @@
 
 from enigma import eEPGCache, eServiceReference
 from Components.UsageConfig import preferredTimerPath, preferredInstantRecordPath
+from Components.config import config
 from RecordTimer import RecordTimerEntry, RecordTimer, parseEvent, AFTEREVENT
 from ServiceReference import ServiceReference
 from time import time, strftime, localtime, mktime
@@ -393,3 +394,36 @@ def tvbrowser(session, request):
 		 "result": False,
 		 "message": "Unknown command: '%s'" % request.args['command'][0]
 		}
+
+def getSleepTimer(session):
+	return {
+		"enabled": session.nav.SleepTimer.isActive(),
+		"minutes": session.nav.SleepTimer.getCurrentSleepTime(),
+		"action": config.SleepTimer.action.value,
+		"message": "Sleeptimer is enabled" if session.nav.SleepTimer.isActive() else "Sleeptimer is disabled"
+	}
+	
+def setSleepTimer(session, time, action, enabled):
+	ret = getSleepTimer(session)
+	from Screens.Standby import inStandby
+	if inStandby is not None:
+		ret["message"] = "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+		return ret
+		
+	if enabled == False:
+		session.nav.SleepTimer.clear()
+		ret = getSleepTimer(session)
+		ret["message"] = "Sleeptimer has been disabled"
+		return ret
+		
+	if action not in ["shutdown", "standby"]:
+		action = "standby"
+		
+	config.SleepTimer.action.value = action
+	config.SleepTimer.action.save()
+	session.nav.SleepTimer.setSleepTime(time)
+	
+	ret = getSleepTimer(session)
+	ret["message"] = "Sleeptimer set to %d minutes" % time
+	return ret
+	
