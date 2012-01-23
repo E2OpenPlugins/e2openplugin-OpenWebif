@@ -202,8 +202,9 @@ function addTimerEvent(sRef, eventId) {
 }
 
 function toggleTimerStatus(sRef, begin, end) {
-	var url="/api/timertogglestatus?sRef="+ sRef + "&begin=" + begin + "&end=" + end;
-	$.getJSON(url, function(result){
+	var url="/api/timertogglestatus?";
+	var data = { sRef: sRef, begin: begin, end: end };
+	$.getJSON(url, data, function(result){
 		$('#img-'+begin+'-'+end).attr("src", result['disabled'] ? "/images/ico_disabled.png" : "/images/ico_enabled.png");
 	});
 }
@@ -294,7 +295,7 @@ function sendMessage() {
 	var type = $('#messageType').val();
 	var timeout = $('#messageTimeout').val();
 
-	$.getJSON('/api/message?text=' + text + '&type=' + type + '&timeout=' + timeout, function(result){
+	$.getJSON('/api/message?message=' + text + '&type=' + type + '&timeout=' + timeout, function(result){
 		$('#messageSentResponse').html(result['message']);
 	});
 }
