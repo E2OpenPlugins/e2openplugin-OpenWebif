@@ -98,7 +98,12 @@ class AuthResource(resource.Resource):
 
 
 	def getChildWithDefault(self, path, request):
+		session = request.getSession().sessionNamespaces
+		
 		if request.getClientIP() == "127.0.0.1":
+			return self.resource.getChildWithDefault(path, request)
+			
+		if "logged" in session.keys() and session["logged"]:
 			return self.resource.getChildWithDefault(path, request)
 			
 		if self.login(request.getUser(), request.getPassword()) == False:
@@ -106,6 +111,7 @@ class AuthResource(resource.Resource):
 			errpage = error.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
 			return errpage
 		else:
+			session["logged"] = True
 			return self.resource.getChildWithDefault(path, request)
 		
 		
