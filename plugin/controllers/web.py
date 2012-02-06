@@ -155,7 +155,17 @@ class WebController(BaseController):
 		return getCurrentLocation()
 
 	def P_getallservices(self, request):
-		return getAllServices()
+		if not config.OpenWebif.xbmcservices.value:
+			return getAllServices()
+			
+		# rename services for xbmc
+		bouquets = getAllServices()
+		count = 0
+		for bouquet in bouquets["services"]:
+			for service in bouquet["subservices"]:
+				service["servicename"] = "%d - %s" % (count + 1, service["servicename"])
+				count += 1
+		return bouquets
 		
 	def P_getservices(self, request):
 		if "sRef" in request.args.keys():

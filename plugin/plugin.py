@@ -29,6 +29,7 @@ config.OpenWebif.enabled = ConfigYesNo(default=True)
 # Use temporary port 8088 to avoid conflict with Webinterface
 config.OpenWebif.port = ConfigInteger(default = 8088, limits=(1, 65535) )
 config.OpenWebif.auth = ConfigYesNo(default=False)
+config.OpenWebif.xbmcservices = ConfigYesNo(default=False)
 config.OpenWebif.webcache = ConfigSubsection()
 # FIXME: anything better than a ConfigText?
 config.OpenWebif.webcache.collapsedmenus = ConfigText(default = "remote", fixed_size = False)
@@ -67,6 +68,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		self.list.append(getConfigListEntry(_("OpenWebInterface Enabled"), config.OpenWebif.enabled))
 		self.list.append(getConfigListEntry(_("Http port"), config.OpenWebif.port))
 		self.list.append(getConfigListEntry(_("Enable Http Authentication"), config.OpenWebif.auth))
+		self.list.append(getConfigListEntry(_("Smart services renaming for XBMC"), config.OpenWebif.xbmcservices))
 	
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
