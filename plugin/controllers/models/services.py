@@ -357,22 +357,21 @@ def getPlayableService(sRef, sRefPlaying):
 	
 def getSubServices(session):
 	services = []
-	currentServiceRef = session.nav.getCurrentlyPlayingServiceReference()
-	if currentServiceRef is not None:
-		currentService = session.nav.getCurrentService()
-		subservices = currentService.subServices()
-		
-		if subservices and subservices.getNumberOfSubservices() != 0:
-			n = subservices and subservices.getNumberOfSubservices()
-			z = 0
-			while z < n:
-				sub = subservices.getSubservice(z)
+	service = session.nav.getCurrentService()
+	if service is not None:
+		services.append({
+			"servicereference": service.info().getInfoString(iServiceInformation.sServiceref), 
+			"servicename": service.info().getName()
+		})
+		subservices = service.subServices()
+		print subservices.getNumberOfSubservices()
+		if subservices and subservices.getNumberOfSubservices() > 0:
+			for i in range(subservices.getNumberOfSubservices()):
+				sub = subservices.getSubservice(i)
 				services.append({
 					"servicereference": sub.toString(), 
 					"servicename": sub.getName()
 				})
-				z += 1
-		
 	else:
 		services.append =({
 			"servicereference": "N/A",
