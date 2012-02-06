@@ -93,8 +93,6 @@ def getMovieList(self,directory=None, tag=None):
 	return { "movies": movieliste, "bookmarks": bookmarklist, "directory": directory }
 
 def removeMovie(session, sRef):
-
-	sRef = "1:0:0:0:0:0:0:0:0:0:"+sRef
 	service = ServiceReference(sRef)
 	result = False
 

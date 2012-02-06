@@ -217,11 +217,12 @@ function deleteTimer(sRef, begin, end) {
 	}
 }
 
-function deleteMovie(sRef) {
+function deleteMovie(sRef, divid) {
 	answer = confirm("Really delete this movie?");
 	if (answer == true) {
 		webapi_execute("/api/moviedelete?sRef=" + sRef);
-		$('#'+sRef).remove();
+		// TODO: check the api result first
+		$('#' + divid).remove();
 	}
 }
 
