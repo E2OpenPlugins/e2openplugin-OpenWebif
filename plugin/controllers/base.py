@@ -137,6 +137,8 @@ class BaseController(resource.Resource):
 		ret['configsections'] = getConfigsSections()['sections']
 		ret['zapstream'] = getZapStream()['zapstream']
 		ret['box'] = "dmm"
+		if open("/proc/stb/info/model",'r').read().strip() == "Gigablue":
+			ret['box'] = "gigablue"
 		if fileExists("/proc/stb/info/vumodel"):
 			ret['box'] = open("/proc/stb/info/vumodel").read().strip()
 		elif fileExists("/proc/stb/info/boxtype"):
