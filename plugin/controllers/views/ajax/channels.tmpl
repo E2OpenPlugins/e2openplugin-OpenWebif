@@ -2,8 +2,10 @@
 			<table width="100%">
 				<tbody>
 					<tr class="channel_tr">	
+						<div style="padding-top: 3px">								
+						<div style="border-top: 1px solid #4297d7;">					
 						<div class="channel_left">
-							<a href="#" onclick="zapChannel('$channel.ref', '$channel.name'); return false">$channel.name</a><br />	
+							<a href="#" onclick="zapChannel('$channel.ref', '$channel.name'); return false" title="Zap to $channel.name">$channel.name</a><br />
 						</div>
 						<div class="channel_right">
 							<a href="#" onclick="open_epg_pop('$channel.ref')">
@@ -15,31 +17,30 @@
 						</div>
 					
 #if $channel.has_key('now_title')
-					
+												
 						<div class="channel_left">
-							$channel.now_begin - $channel.now_end &nbsp;&nbsp;&nbsp;$channel.now_title
+						<div style="margin-bottom: 2px">						
+							$channel.now_begin - $channel.now_end &nbsp;&nbsp;&nbsp;
+						<a href='#' onClick="toggle_chan_des('$channel.now_ev_id', '$channel.ref', '$channel.now_idp'); return false" title="$channel.now_title description">$channel.now_title</a>
+						</div>
 						</div>
 						<div class="channel_right">
 							+$channel.now_left min
-							<a href='#' onClick="toggle_chan_des('$channel.now_ev_id', '$channel.ref', '$channel.now_idp'); return false">
-							<img src="../images/ico_desc.png" title="$channel.now_title description" border="0">
-							</a>
 						</div>
 						<div class="channel_desc" id="$channel.now_idp">no description available</div>
 						<div class="channel_content">
 							<div class="meter-wrap">
 							<div class="meter-value" style="background-color: #F68014; width: ${channel.progress}px;"></div></div>
-						</div>
+						</div>				
 						<div class="channel_left">
-							$channel.next_begin - $channel.next_end &nbsp;&nbsp;&nbsp;$channel.next_title
-						</div>
+							$channel.next_begin - $channel.next_end &nbsp;&nbsp;&nbsp;
+						<a href='#' onClick="toggle_chan_des('$channel.next_ev_id', '$channel.ref', '$channel.next_idp'); return false" title="$channel.next_title description">$channel.next_title</a>
+						</div>	
 						<div class="channel_right">
 							$channel.next_duration min
-							<a href='#' onClick="toggle_chan_des('$channel.next_ev_id', '$channel.ref', '$channel.next_idp'); return false">
-								<img src="../images/ico_desc.png" title="$channel.next_title description" border="0">
-							</a>
-						</div>
+						</div>							
 						<div class="channel_desc" id="$channel.next_idp">no description available</div>
+						</div>
 #end if		
 					</tr>
 				</tbody>
