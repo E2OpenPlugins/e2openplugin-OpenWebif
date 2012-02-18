@@ -621,16 +621,3 @@ html, body {
 text-align: center;
 }
 p {text-align: left;}
-
-/* css for timepicker */
-/*
-.ui-timepicker-div { width: 220px; }
-.ui-datepicker-prev { position: absolute; left: 5px; top: 7px; }
-.ui-datepicker-next { position: absolute; left: 199px; top: 7px; }
-.ui-datepicker-title { margin: 5px; text-align: center; }
-.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
-.ui-timepicker-div dl { text-align: left; }
-.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
-.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
-.ui-timepicker-div td { font-size: 90%; }
-*/
