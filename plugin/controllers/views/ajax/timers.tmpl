@@ -5,6 +5,9 @@
 		<h3>Timerlist</h3>
 		
 		<div style="height: 640px; overflow: auto;">
+		<div style="text-align: right; margin: 5px;">
+			<a href="#" onclick="addTimer(); return false;">Add timer</a>
+		</div>
 		#for $timer in $timers
 			<div class="moviecontainer_main" id="$timer.begin-$timer.end">
 				<div class="moviecontainer_left">
@@ -172,10 +175,7 @@ jQuery("#editTimerForm").dialog({
 				\$("#timerendminutes").val(),
 				0);
 				
-			var urldata = "channelOld=" + escape(current_serviceref);
-			urldata += "&beginOld=" + Math.round(current_begin);
-			urldata += "&endOld=" + Math.round(current_end);
-			urldata += "&sRef=" + escape(\$("#bouquet_select").val());
+			var urldata = "sRef=" + escape(\$("#bouquet_select").val());
 			urldata += "&begin=" + Math.round(begindate.getTime() / 1000);
 			urldata += "&end=" + Math.round(enddate.getTime() / 1000);
 			urldata += "&name=" + escape(\$("#timername").val());
@@ -188,20 +188,41 @@ jQuery("#editTimerForm").dialog({
 			urldata += "&repeated=" + (\$('#repeated').is(':checked')?"1":"0");
 			
 			var canclose = false;
-			\$.ajax({
-				async: false,
-				url: "/api/timerchange",
-				data: urldata,
-				success: function(data) {
-					result = \$.parseJSON(data);
-					if (result.result) {
-						canclose = true;
+			if (current_serviceref == "") {
+				\$.ajax({
+					async: false,
+					url: "/api/timeradd",
+					data: urldata,
+					success: function(data) {
+						result = \$.parseJSON(data);
+						if (result.result) {
+							canclose = true;
+						}
+						else {
+							\$("#error").text(result.message);
+						}
 					}
-					else {
-						\$("#error").text(result.message);
+				});
+			}
+			else {
+				urldata += "&channelOld=" + escape(current_serviceref);
+				urldata += "&beginOld=" + Math.round(current_begin);
+				urldata += "&endOld=" + Math.round(current_end);
+				\$.ajax({
+					async: false,
+					url: "/api/timerchange",
+					data: urldata,
+					success: function(data) {
+						result = \$.parseJSON(data);
+						if (result.result) {
+							canclose = true;
+						}
+						else {
+							\$("#error").text(result.message);
+						}
 					}
-				}
-			});
+				});
+			}
 			
 			if (canclose) {
 				\$("#content_container").load("/ajax/timers");
@@ -407,6 +428,7 @@ function editTimer(serviceref, begin, end) {
 							\$('#justplay').prop("checked", timer.justplay);
 							\$('#repeated').prop("checked", timer.repeated);
 							\$('#afterevent').val(timer.afterevent);
+							\$("#error").text("");
 							
 							var begindate = new Date(Math.round(timer.begin) * 1000);
 							\$('#timerbeginday').val(begindate.getDate());
@@ -431,5 +453,39 @@ function editTimer(serviceref, begin, end) {
 	});
 }
 
+function addTimer() {
+	current_serviceref = "";
+	current_begin = -1;
+	current_end = -1;
+	
+	if (!timeredit_initialized)
+		initTimerEdit();
+		
+	\$("#timername").val("");
+	\$("#description").val("");
+	\$('#dirname').val("None");
+	\$('#tags').val("");
+	\$('#enabled').prop("checked", true);
+	\$('#justplay').prop("checked", false);
+	\$('#repeated').prop("checked", false);
+	\$('#afterevent').val(3);
+	\$("#error").text("");
+	
+	var begindate = new Date();
+	\$('#timerbeginday').val(begindate.getDate());
+	\$('#timerbeginmonth').val(begindate.getMonth());
+	\$('#timerbeginyear').val(begindate.getFullYear());
+	\$('#timerbeginhours').val(begindate.getHours());
+	\$('#timerbeginminutes').val(begindate.getMinutes());
+	
+	var enddate = new Date(begindate.getTime() + (60*60*1000));
+	\$('#timerendday').val(enddate.getDate());
+	\$('#timerendmonth').val(enddate.getMonth());
+	\$('#timerendyear').val(enddate.getFullYear());
+	\$('#timerendhours').val(enddate.getHours());
+	\$('#timerendminutes').val(enddate.getMinutes());
+	
+	\$("#editTimerForm").dialog("open");
+}
 </script>
 #end filter
