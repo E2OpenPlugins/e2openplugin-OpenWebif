@@ -25,6 +25,9 @@ def getMovieList(directory=None, tag=None):
 	if directory == None:
 		directory = resolveFilename(SCOPE_HDD)
 	
+	if directory[-1] != "/":
+		directory += "/"
+		
 	root = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory)
 
 	for bookmark in config.movielist.videodirs.value:
