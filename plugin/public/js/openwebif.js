@@ -289,7 +289,8 @@ function grabScreenshot(mode, width) {
 	}
 	
 	timestamp = new Date().getTime()
-	$('#screenshotimage').attr("src",'/grab?r=' + width + '&mode=' + mode + '&timestamp=' + timestamp);
+	$('#screenshotimage').attr("src",'/grab?format=png&mode=' + mode + '&timestamp=' + timestamp);
+	$('#screenshotimage').attr("width",700);
 }
 
 function sendMessage() {
