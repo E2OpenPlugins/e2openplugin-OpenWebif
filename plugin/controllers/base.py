@@ -143,5 +143,19 @@ class BaseController(resource.Resource):
 			ret['box'] = open("/proc/stb/info/vumodel").read().strip()
 		elif fileExists("/proc/stb/info/boxtype"):
 			ret['box'] = open("/proc/stb/info/boxtype").read().strip()
+			
+		if ret["box"] == "duo" or ret["box"] == "solo" or ret["box"] == "uno":
+			ret["remote"] = "vu_normal"
+		elif ret["box"] == "ultimo":
+			ret["remote"] = "vu_ultimo"
+		elif ret["box"] == "et9x00" or ret["box"] == "et9000" or ret["box"] == "et9200":
+			ret["remote"] = "et9x00"
+		elif ret["box"] == "et5x00" or ret["box"] == "et5000" or ret["box"] == "et6000":
+			ret["remote"] = "et5x00"
+		elif ret["box"] == "gigablue":
+			ret["remote"] = "gigablue"
+		else:
+			ret["remote"] = "dmm"
+		
 		return ret
 		
