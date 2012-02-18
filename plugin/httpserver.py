@@ -58,6 +58,7 @@ def buildRootTree(session):
 				if fileExists(origwebifpath + cleanupfile):
 					os.remove(origwebifpath + cleanupfile)
 				
+			os.makedirs(origwebifpath + "/WebChilds/External")
 			open(origwebifpath + "/__init__.py", "w")
 			open(origwebifpath + "/WebChilds/__init__.py", "w")
 			open(origwebifpath + "/WebChilds/External/__init__.py", "w")
