@@ -887,3 +887,14 @@ class WebController(BaseController):
 			return ret
 			
 		return setSleepTimer(self.session, time, action, enabled)
+		
+	def P_external(self, request):
+		try:
+			from Plugins.Extensions.WebInterface.WebChilds.Toplevel import loaded_plugins
+			return {
+				"plugins": loaded_plugins
+			}
+		except Exception, e:
+			return {
+				"plugins": []
+			}

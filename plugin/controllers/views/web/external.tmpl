@@ -1,0 +1,12 @@
+#filter WebSafe
+<?xml version="1.0" encoding="UTF-8"?>
+<e2webifexternals>
+	#for $plugin in $plugins
+	<e2webifexternal>
+		<e2path>$plugin[0]</e2path>
+		<e2name>$plugin[2]</e2name>
+		<e2externalversion>$plugin[3]</e2externalversion>
+	</e2webifexternal>
+	#end for
+</e2webifexternals>
+#end filter
