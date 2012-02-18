@@ -118,7 +118,7 @@ def getInfo():
 	else:
 		imagever = about.getImageVersionString()
 		
-	info["webifver"] = "0.0.0"
+	info["webifver"] = "OWIF 0.1.0"
 	info['imagever'] = imagever
 	info['enigmaver'] = about.getEnigmaVersionString()
 	info['kernelver'] = about.getKernelVersionString()
