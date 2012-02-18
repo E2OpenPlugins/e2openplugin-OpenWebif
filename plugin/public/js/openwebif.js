@@ -213,6 +213,7 @@ function deleteTimer(sRef, begin, end) {
 	answer = confirm("Really delete this timer?");
 	if (answer == true) {
 		webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end);
+		// TODO: check the api result first
 		$('#'+begin+'-'+end).remove();
 	}
 }

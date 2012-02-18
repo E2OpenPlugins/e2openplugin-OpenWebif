@@ -64,7 +64,7 @@ def getTimers(session):
 				toggledisabledimg = "on"
 
 		timers.append({
-			"serviceref": timer.service_ref,
+			"serviceref": str(timer.service_ref),
 			"servicename": timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
 			"eit": timer.eit,
 			"name": timer.name,
