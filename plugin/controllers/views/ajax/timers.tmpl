@@ -452,6 +452,7 @@ function editTimer(serviceref, begin, end) {
 							\$('#timerendminutes').val(enddate.getMinutes());
 							
 							\$("#editTimerForm").dialog("open");
+							\$("#editTimerForm").dialog("option", "title", "Edit Timer - " + timer.name)
 							break;
 						}
 				}
@@ -493,6 +494,7 @@ function addTimer() {
 	\$('#timerendminutes').val(enddate.getMinutes());
 	
 	\$("#editTimerForm").dialog("open");
+	\$("#editTimerForm").dialog("option", "title", "Add Timer")
 }
 </script>
 #end filter
