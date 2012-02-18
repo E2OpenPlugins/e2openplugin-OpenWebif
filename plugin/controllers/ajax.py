@@ -65,8 +65,13 @@ class AjaxController(BaseController):
 	
 	def P_boxinfo(self, request):
 		info = getInfo()
-		if fileExists(getPublicPath("/images/boxes/" + info["model"] + ".jpg")):
-			info["boximage"] = info["model"] + ".jpg"
+		model = info["model"]
+		if model == "et9000" or model == "et9200":
+			model = "et9x00"
+		elif model == "et5000" or model == "et6000":
+			model = "et5x00"
+		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
+			info["boximage"] = model + ".jpg"
 		else:
 			info["boximage"] = "unknown.jpg"
 		return info
