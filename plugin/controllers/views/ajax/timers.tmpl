@@ -54,12 +54,12 @@
 	<div>
 		<div class="timerlist_row">
 			<div style="width: 100px; float: left;">Name:</div>
-			<div><input type="text" name="timername" id="timername" style="width: 460px;" class="text ui-widget-content ui-corner-all" /></div>
+			<div><input type="text" name="timername" id="timername" style="width: 450px;" class="text ui-widget-content ui-corner-all" /></div>
 		</div>
 		
 		<div class="timerlist_row">
 			<div style="width: 100px; float: left;">Description:</div>
-			<div><textarea name="description" id="description" style="width: 460px; height: 50px;" class="text ui-widget-content ui-corner-all" /></div>
+			<div><textarea name="description" id="description" style="width: 450px; height: 50px;" class="text ui-widget-content ui-corner-all" /></div>
 		</div>
 		
 		<div class="timerlist_row">
@@ -99,21 +99,28 @@
 			</select>
 			<select id="timerendminutes" name="timerendminutes">
 			</select>
-			</div>		</div>
+			</div>
+		</div>
 		
 		<div class="timerlist_row">
-			<div style="width: 100px; float: left;">Enabled:</div>
-			<div style="margin: 5px;"><input type="checkbox" name="enabled" id="enabled" value="0" class="text ui-widget-content ui-corner-all" /></div>
+			<div style="width: 100px; float: left; block: inline;">Enabled:</div>
+			<div style="margin: 5px;">
+				<input type="checkbox" name="enabled" id="enabled" value="0" class="text ui-widget-content ui-corner-all" />
+			</div>
 		</div>
 		
 		<div class="timerlist_row">
 			<div style="width: 100px; float: left;">Just play:</div>
-			<div style="margin: 5px;"><input type="checkbox" name="justplay" id="justplay" value="0" class="text ui-widget-content ui-corner-all" /></div>
+			<div style="margin: 5px;">
+				<input type="checkbox" name="justplay" id="justplay" value="0" class="text ui-widget-content ui-corner-all" />
+			</div>
 		</div>
 		
 		<div class="timerlist_row">
 			<div style="width: 100px; float: left;">Repeated:</div>
-			<div style="margin: 5px;"><input type="checkbox" name="repeated" id="repeated" value="0" class="text ui-widget-content ui-corner-all" /></div>
+			<div style="margin: 5px;">
+				<input type="checkbox" name="repeated" id="repeated" value="0" class="text ui-widget-content ui-corner-all" />
+			</div>
 		</div>
 		
 		<div class="timerlist_row">
@@ -154,7 +161,7 @@
 <script type="text/javascript">
 jQuery("#editTimerForm").dialog({
 	autoOpen: false,
-	height: 410,
+	height: 430,
 	width: 600,
 	modal: true,
 	buttons: {
