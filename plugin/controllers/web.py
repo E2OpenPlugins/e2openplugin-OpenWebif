@@ -266,7 +266,7 @@ class WebController(BaseController):
 		if "dirname" in request.args.keys():
 			dirname = request.args["dirname"][0]
 			
-		return getMovieList(self, dirname, tag)
+		return getMovieList(dirname, tag)
 
 	def P_movielisthtml(self, request):
 		tag = None
@@ -278,7 +278,7 @@ class WebController(BaseController):
 			dirname = request.args["dirname"][0]
 		
 		request.setHeader("content-type", "text/html")
-		return getMovieList(self, dirname, tag)
+		return getMovieList(dirname, tag)
 
 	def P_movielistm3u(self, request):
 		tag = None
@@ -290,7 +290,7 @@ class WebController(BaseController):
 			dirname = request.args["dirname"][0]
 		
 		request.setHeader('Content-Type', 'application/text')
-		movielist = getMovieList(self, dirname, tag)
+		movielist = getMovieList(dirname, tag)
 		movielist["host"] = "%s:%s" % (request.getRequestHostname(), config.OpenWebif.port.value)
 		return movielist
 
@@ -303,7 +303,7 @@ class WebController(BaseController):
 		if "dirname" in request.args.keys():
 			dirname = request.args["dirname"][0]
 		
-		movielist = getMovieList(self, dirname, tag)
+		movielist = getMovieList(dirname, tag)
 		movielist["host"] = "%s:%s" % (request.getRequestHostname(), config.OpenWebif.port.value)
 		return movielist
 

@@ -18,26 +18,26 @@ from Components.MovieList import MovieList
 from Tools.Directories import fileExists
 from time import strftime, localtime
 
-def getMovieList(self,directory=None, tag=None):
+def getMovieList(directory=None, tag=None):
 	movieliste = []
 	bookmarklist = []
 	
 	if directory == None:
 		directory = resolveFilename(SCOPE_HDD)
 	
-	self.root = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory)
+	root = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory)
 
 	for bookmark in config.movielist.videodirs.value:
 		bookmarklist.append(bookmark)
 
-	self.tagfilter = []
+	tagfilter = []
 	
-	self.movielist = MovieList(self.root)
+	movielist = MovieList(root)
 	if tag != None:
-		self.movielist.reload(root=self.root, filter_tags=[tag])
+		movielist.reload(root=root, filter_tags=[tag])
 	loadLength = True
 
-	for (serviceref, info, begin, unknown) in self.movielist.list:
+	for (serviceref, info, begin, unknown) in movielist.list:
 		if serviceref.flags & eServiceReference.mustDescent:
 				continue
 
