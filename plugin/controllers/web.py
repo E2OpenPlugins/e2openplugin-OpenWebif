@@ -352,6 +352,10 @@ class WebController(BaseController):
 		repeated = False
 		if "repeated" in request.args.keys() and request.args["afterevent"][0] in ["1", "2", "3"]:
 			repeated = request.args["repeated"][0] == "1"
+
+		description = ""
+		if "description" in request.args.keys():
+			description = request.args["description"][0]
 			
 		return addTimer(
 			self.session,
@@ -359,7 +363,7 @@ class WebController(BaseController):
 			request.args["begin"][0],
 			request.args["end"][0],
 			request.args["name"][0],
-			request.args["description"][0],
+			description,
 			disabled,
 			justplay,
 			afterevent,
@@ -403,7 +407,7 @@ class WebController(BaseController):
 		)
 
 	def P_timerchange(self, request):
-		res = self.testMandatoryArguments(request, ["sRef", "begin", "end", "name", "description", "channelOld", "beginOld", "endOld"])
+		res = self.testMandatoryArguments(request, ["sRef", "begin", "end", "name", "channelOld", "beginOld", "endOld"])
 		if res:
 			return res
 			
@@ -431,6 +435,10 @@ class WebController(BaseController):
 		if "repeated" in request.args.keys() and request.args["afterevent"][0] in ["1", "2", "3"]:
 			repeated = request.args["repeated"][0] == "1"
 			
+		description = ""
+		if "description" in request.args.keys():
+			description = request.args["description"][0]
+			
 		try:
 			beginOld = int(request.args["beginOld"][0])
 		except Exception, e:
@@ -453,7 +461,7 @@ class WebController(BaseController):
 			request.args["begin"][0],
 			request.args["end"][0],
 			request.args["name"][0],
-			request.args["description"][0],
+			description,
 			disabled,
 			justplay,
 			afterevent,
