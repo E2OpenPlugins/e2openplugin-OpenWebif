@@ -12,7 +12,27 @@
 			<div class="moviecontainer_main" id="$timer.begin-$timer.end">
 				<div class="moviecontainer_left">
 					<div style="padding: 3px;">
-						<span style="color: #176093; font-weight: bold;">$timer.name </span><br />$timer.realbegin - $timer.realend<br /> <span style="font-weight: bold;">$timer.servicename</span>
+						<div style="color: #176093; font-weight: bold;">
+							$timer.name
+						</div>
+						$timer.realbegin - $timer.realend
+						#if $timer.repeated != 0
+							<div>
+								Every
+							#set $flags=$timer.repeated
+							#set $timerDays=[]
+							#for $day in ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+								#if $flags&1
+									$timerDays.append($day)
+								#end if
+								#set $flags = $flags >> 1
+							#end for
+							#echo ', '.join($timerDays)
+							</div>
+						#end if
+						<div style="font-weight: bold;">
+							$timer.servicename
+						</div>
 					</div>
 					<div style="padding: 3px;">
 						$timer.description
@@ -118,8 +138,13 @@
 		
 		<div class="timerlist_row">
 			<div style="width: 100px; float: left;">Repeated:</div>
-			<div style="margin: 5px;">
-				<input type="checkbox" name="repeated" id="repeated" value="0" class="text ui-widget-content ui-corner-all" />
+			<div id="repeatdays" style="margin: 5px;">
+			#set $i=0
+			#for $day in ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+				#set $value = 2 ** $i
+				<input type="checkbox" name="repeated" id="day$i" value="$value" /><label for="day$i">$day</label>
+				#set $i=$i+1
+			#end for
 			</div>
 		</div>
 		
@@ -159,6 +184,9 @@
 </div>
 
 <script type="text/javascript">
+
+#raw
+
 jQuery("#editTimerForm").dialog({
 	autoOpen: false,
 	height: 430,
@@ -167,77 +195,80 @@ jQuery("#editTimerForm").dialog({
 	buttons: {
 		"Save": function() {
 			begindate = new Date(
-				\$("#timerbeginyear").val(),
-				\$("#timerbeginmonth").val(),
-				\$("#timerbeginday").val(),
-				\$("#timerbeginhours").val(),
-				\$("#timerbeginminutes").val(),
+				$("#timerbeginyear").val(),
+				$("#timerbeginmonth").val(),
+				$("#timerbeginday").val(),
+				$("#timerbeginhours").val(),
+				$("#timerbeginminutes").val(),
 				0);
 				
 			enddate = new Date(
-				\$("#timerendyear").val(),
-				\$("#timerendmonth").val(),
-				\$("#timerendday").val(),
-				\$("#timerendhours").val(),
-				\$("#timerendminutes").val(),
+				$("#timerendyear").val(),
+				$("#timerendmonth").val(),
+				$("#timerendday").val(),
+				$("#timerendhours").val(),
+				$("#timerendminutes").val(),
 				0);
-				
-			var urldata = "sRef=" + escape(\$("#bouquet_select").val());
-			urldata += "&begin=" + Math.round(begindate.getTime() / 1000);
-			urldata += "&end=" + Math.round(enddate.getTime() / 1000);
-			urldata += "&name=" + escape(\$("#timername").val());
-			urldata += "&description=" + escape(\$("#description").val());
-			urldata += "&disabled=" + (\$('#enabled').is(':checked')?"0":"1");
-			urldata += "&justplay=" + (\$('#justplay').is(':checked')?"1":"0");
-			urldata += "&afterevent=" + escape(\$("#afterevent").val());
-			urldata += "&dirname=" + escape(\$("#dirname").val());
-			urldata += "&tags=" + escape(\$("#tags").val());
-			urldata += "&repeated=" + (\$('#repeated').is(':checked')?"1":"0");
+			var repeated = 0;
+			$('[name="repeated"]:checked').each(function() {
+				repeated += parseInt($(this).val());
+			});
+			var urldata = { sRef: $("#bouquet_select").val(),
+				begin: Math.round(begindate.getTime() / 1000),
+				end: Math.round(enddate.getTime() / 1000),
+				name: $("#timername").val(),
+				description: $("#description").val(),
+				disabled: ($('#enabled').is(':checked')?"0":"1"),
+				justplay: ($('#justplay').is(':checked')?"1":"0"),
+				afterevent: $("#afterevent").val(),
+				dirname: $("#dirname").val(),
+				tags: $("#tags").val(),
+				repeated: repeated };
 			
 			var canclose = false;
 			if (current_serviceref == "") {
-				\$.ajax({
+				$.ajax({
 					async: false,
-					url: "/api/timeradd",
+					url: "/api/timeradd?",
 					data: urldata,
 					success: function(data) {
-						result = \$.parseJSON(data);
+						result = $.parseJSON(data);
 						if (result.result) {
 							canclose = true;
 						}
 						else {
-							\$("#error").text(result.message);
+							$("#error").text(result.message);
 						}
 					}
 				});
 			}
 			else {
-				urldata += "&channelOld=" + escape(current_serviceref);
-				urldata += "&beginOld=" + Math.round(current_begin);
-				urldata += "&endOld=" + Math.round(current_end);
-				\$.ajax({
+				urldata['channelOld'] = current_serviceref;
+				urldata['beginOld'] = Math.round(current_begin);
+				urldata['endOld'] = Math.round(current_end);
+				$.ajax({
 					async: false,
-					url: "/api/timerchange",
+					url: "/api/timerchange?",
 					data: urldata,
 					success: function(data) {
-						result = \$.parseJSON(data);
+						result = $.parseJSON(data);
 						if (result.result) {
 							canclose = true;
 						}
 						else {
-							\$("#error").text(result.message);
+							$("#error").text(result.message);
 						}
 					}
 				});
 			}
 			
 			if (canclose) {
-				\$("#content_container").load("/ajax/timers");
-				\$(this).dialog("close");
+				$("#content_container").load("/ajax/timers");
+				$(this).dialog("close");
 			}
 		},
 		Cancel: function() {
-			\$(this).dialog("close");
+			$(this).dialog("close");
 		}
 	},
 	close: function() {
@@ -251,13 +282,13 @@ var current_end;
 var timeredit_initialized = false;
 
 function initTimerEdit() {
-	\$.ajax({
+	$.ajax({
 		async: false,
 		url: "/api/getallservices",
 		success: function(data) {
-			services = \$.parseJSON(data);
+			services = $.parseJSON(data);
 			if (services.result) {
-				\$("#bouquet_select")
+				$("#bouquet_select")
 					.find('option')
 					.remove()
 					.end()
@@ -266,8 +297,8 @@ function initTimerEdit() {
 					service = services.services[id];
 					for (var id2 in service.subservices) {
 						subservice = service.subservices[id2];
-						\$("#bouquet_select")
-							.append(\$("<option></option>")
+						$("#bouquet_select")
+							.append($("<option></option>")
 								.attr("value", subservice.servicereference)
 								.text(subservice.servicename));
 					}
@@ -276,26 +307,26 @@ function initTimerEdit() {
 		}
 	});
 	
-	\$.ajax({
+	$.ajax({
 		async: false,
 		url: "/api/getlocations",
 		success: function(data) {
-			locs = \$.parseJSON(data);
+			locs = $.parseJSON(data);
 			if (locs.result) {
-				\$("#dirname")
+				$("#dirname")
 					.find('option')
 					.remove()
 					.end()
 					
-				\$("#dirname")
-					.append(\$("<option></option>")
+				$("#dirname")
+					.append($("<option></option>")
 						.attr("value", "None")
 						.text("Default"));
 						
 				for (var id in locs.locations) {
 					loc = locs.locations[id];
-					\$("#dirname")
-						.append(\$("<option></option>")
+					$("#dirname")
+						.append($("<option></option>")
 							.attr("value", loc)
 							.text(loc));
 				}
@@ -303,26 +334,26 @@ function initTimerEdit() {
 		}
 	});
 	
-	\$.ajax({
+	$.ajax({
 		async: false,
 		url: "/api/gettags",
 		success: function(data) {
-			tags = \$.parseJSON(data);
+			tags = $.parseJSON(data);
 			if (tags.result) {
-				\$("#tags")
+				$("#tags")
 					.find('option')
 					.remove()
 					.end()
 					
-				\$("#tags")
-					.append(\$("<option></option>")
+				$("#tags")
+					.append($("<option></option>")
 						.attr("value", "")
 						.text("Nothing"));
 						
 				for (var id in tags.tags) {
 					tag = tags.tags[id];
-					\$("#tags")
-						.append(\$("<option></option>")
+					$("#tags")
+						.append($("<option></option>")
 							.attr("value", tag)
 							.text(tag));
 				}
@@ -330,39 +361,39 @@ function initTimerEdit() {
 		}
 	});
 	
-	\$("#timerbeginday").find('option').remove().end()
-	\$("#timerbeginmonth").find('option').remove().end()
-	\$("#timerbeginyear").find('option').remove().end()
-	\$("#timerbeginhours").find('option').remove().end()
-	\$("#timerbeginminutes").find('option').remove().end()
+	$("#timerbeginday").find('option').remove().end()
+	$("#timerbeginmonth").find('option').remove().end()
+	$("#timerbeginyear").find('option').remove().end()
+	$("#timerbeginhours").find('option').remove().end()
+	$("#timerbeginminutes").find('option').remove().end()
 	
-	\$("#timerendday").find('option').remove().end()
-	\$("#timerendmonth").find('option').remove().end()
-	\$("#timerendyear").find('option').remove().end()
-	\$("#timerendhours").find('option').remove().end()
-	\$("#timerendminutes").find('option').remove().end()
+	$("#timerendday").find('option').remove().end()
+	$("#timerendmonth").find('option').remove().end()
+	$("#timerendyear").find('option').remove().end()
+	$("#timerendhours").find('option').remove().end()
+	$("#timerendminutes").find('option').remove().end()
 	
 	for (var i=1; i<=31; i++) {
-		\$("#timerbeginday")
-			.append(\$("<option></option>")
+		$("#timerbeginday")
+			.append($("<option></option>")
 				.attr("value", i)
 				.text(i));
 				
-		\$("#timerendday")
-			.append(\$("<option></option>")
+		$("#timerendday")
+			.append($("<option></option>")
 				.attr("value", i)
 				.text(i));
 	}
 	
 	months = new Array( "January","February","March","April","May","June","July","August", "September","October","November","December");
 	for (var i=0; i<months.length; i++) {
-		\$("#timerbeginmonth")
-			.append(\$("<option></option>")
+		$("#timerbeginmonth")
+			.append($("<option></option>")
 				.attr("value", i)
 				.text(months[i]));
 				
-		\$("#timerendmonth")
-			.append(\$("<option></option>")
+		$("#timerendmonth")
+			.append($("<option></option>")
 				.attr("value", i)
 				.text(months[i]));
 		
@@ -370,36 +401,36 @@ function initTimerEdit() {
 	
 	for (var i=0; i<2; i++) {
 		year = (new Date()).getFullYear() + i;
-		\$("#timerbeginyear")
-			.append(\$("<option></option>")
+		$("#timerbeginyear")
+			.append($("<option></option>")
 				.attr("value", year)
 				.text(year));
 				
-		\$("#timerendyear")
-			.append(\$("<option></option>")
+		$("#timerendyear")
+			.append($("<option></option>")
 				.attr("value", year)
 				.text(year));
 	}
 	
 	for (var i=0; i<24; i++) {
-		\$("#timerbeginhours")
-			.append(\$("<option></option>")
+		$("#timerbeginhours")
+			.append($("<option></option>")
 				.attr("value", i)
 				.text(i));
-		\$("#timerendhours")
-			.append(\$("<option></option>")
+		$("#timerendhours")
+			.append($("<option></option>")
 				.attr("value", i)
 				.text(i));
 	}
 	
 	for (var i=0; i<60; i++) {
-		\$("#timerbeginminutes")
-			.append(\$("<option></option>")
+		$("#timerbeginminutes")
+			.append($("<option></option>")
 				.attr("value", i)
 				.text(i));
 				
-		\$("#timerendminutes")
-			.append(\$("<option></option>")
+		$("#timerendminutes")
+			.append($("<option></option>")
 				.attr("value", i)
 				.text(i));
 	}
@@ -415,43 +446,49 @@ function editTimer(serviceref, begin, end) {
 	if (!timeredit_initialized)
 		initTimerEdit();
 		
-	\$.ajax({
+	$.ajax({
 		async: false,
 		url: "/api/timerlist",
 		success: function(data) {
-			timers = \$.parseJSON(data);
+			timers = $.parseJSON(data);
 			if (timers.result) {
 				for (var id in timers.timers) {
 					timer = timers.timers[id];
 					if (timer.serviceref == serviceref &&
 						Math.round(timer.begin) == Math.round(begin) &&
 						Math.round(timer.end) == Math.round(end)) {
-							\$("#timername").val(timer.name);
-							\$("#description").val(timer.description);
-							\$('#bouquet_select').val(timer.serviceref);
-							\$('#dirname').val(timer.dirname);
-							\$('#tags').val(timer.tags);
-							\$('#enabled').prop("checked", timer.disabled == 0);
-							\$('#justplay').prop("checked", timer.justplay);
-							\$('#repeated').prop("checked", timer.repeated);
-							\$('#afterevent').val(timer.afterevent);
-							\$("#error").text("");
+							$("#timername").val(timer.name);
+							$("#description").val(timer.description);
+							$('#bouquet_select').val(timer.serviceref);
+							$('#dirname').val(timer.dirname);
+							$('#tags').val(timer.tags);
+							$('#enabled').prop("checked", timer.disabled == 0);
+							$('#justplay').prop("checked", timer.justplay);
+							$('#afterevent').val(timer.afterevent);
+							$("#error").text("");
+
+							var flags=timer.repeated;
+							for (var i=0; i<7; i++) {
+								$('#day'+i).attr('checked', ((flags & 1)==1));
+								flags >>= 1;
+							}
+							$('#repeatdays').buttonset('refresh');
 							
 							var begindate = new Date(Math.round(timer.begin) * 1000);
-							\$('#timerbeginday').val(begindate.getDate());
-							\$('#timerbeginmonth').val(begindate.getMonth());
-							\$('#timerbeginyear').val(begindate.getFullYear());
-							\$('#timerbeginhours').val(begindate.getHours());
-							\$('#timerbeginminutes').val(begindate.getMinutes());
+							$('#timerbeginday').val(begindate.getDate());
+							$('#timerbeginmonth').val(begindate.getMonth());
+							$('#timerbeginyear').val(begindate.getFullYear());
+							$('#timerbeginhours').val(begindate.getHours());
+							$('#timerbeginminutes').val(begindate.getMinutes());
 							
 							var enddate = new Date(Math.round(timer.end) * 1000);
-							\$('#timerendday').val(enddate.getDate());
-							\$('#timerendmonth').val(enddate.getMonth());
-							\$('#timerendyear').val(enddate.getFullYear());
-							\$('#timerendhours').val(enddate.getHours());
-							\$('#timerendminutes').val(enddate.getMinutes());
+							$('#timerendday').val(enddate.getDate());
+							$('#timerendmonth').val(enddate.getMonth());
+							$('#timerendyear').val(enddate.getFullYear());
+							$('#timerendhours').val(enddate.getHours());
+							$('#timerendminutes').val(enddate.getMinutes());
 							
-							\$("#editTimerForm").dialog("open");
+							$("#editTimerForm").dialog("open");
 							break;
 						}
 				}
@@ -468,31 +505,36 @@ function addTimer() {
 	if (!timeredit_initialized)
 		initTimerEdit();
 		
-	\$("#timername").val("");
-	\$("#description").val("");
-	\$('#dirname').val("None");
-	\$('#tags').val("");
-	\$('#enabled').prop("checked", true);
-	\$('#justplay').prop("checked", false);
-	\$('#repeated').prop("checked", false);
-	\$('#afterevent').val(3);
-	\$("#error").text("");
+	$("#timername").val("");
+	$("#description").val("");
+	$('#dirname').val("None");
+	$('#tags').val("");
+	$('#enabled').prop("checked", true);
+	$('#justplay').prop("checked", false);
+	$('#afterevent').val(3);
+	$("#error").text("");
+
+	for (var i=0; i<7; i++) $('#day'+i).attr('checked', false);
+	$('#repeatdays').buttonset('refresh');
 	
 	var begindate = new Date();
-	\$('#timerbeginday').val(begindate.getDate());
-	\$('#timerbeginmonth').val(begindate.getMonth());
-	\$('#timerbeginyear').val(begindate.getFullYear());
-	\$('#timerbeginhours').val(begindate.getHours());
-	\$('#timerbeginminutes').val(begindate.getMinutes());
+	$('#timerbeginday').val(begindate.getDate());
+	$('#timerbeginmonth').val(begindate.getMonth());
+	$('#timerbeginyear').val(begindate.getFullYear());
+	$('#timerbeginhours').val(begindate.getHours());
+	$('#timerbeginminutes').val(begindate.getMinutes());
 	
 	var enddate = new Date(begindate.getTime() + (60*60*1000));
-	\$('#timerendday').val(enddate.getDate());
-	\$('#timerendmonth').val(enddate.getMonth());
-	\$('#timerendyear').val(enddate.getFullYear());
-	\$('#timerendhours').val(enddate.getHours());
-	\$('#timerendminutes').val(enddate.getMinutes());
+	$('#timerendday').val(enddate.getDate());
+	$('#timerendmonth').val(enddate.getMonth());
+	$('#timerendyear').val(enddate.getFullYear());
+	$('#timerendhours').val(enddate.getHours());
+	$('#timerendminutes').val(enddate.getMinutes());
 	
-	\$("#editTimerForm").dialog("open");
+	$("#editTimerForm").dialog("open");
 }
+
+#end raw
+
 </script>
 #end filter

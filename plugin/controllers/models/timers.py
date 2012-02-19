@@ -123,10 +123,7 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 			dirname=dirname,
 			tags=tags)
 
-		if repeated:
-			timer.repeated = 1
-		else:
-			timer.repeated = 0
+		timer.repeated = repeated
 
 		if logentries:
 			timer.log_entries = logentries

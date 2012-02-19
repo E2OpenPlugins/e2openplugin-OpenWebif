@@ -349,9 +349,9 @@ class WebController(BaseController):
 		if "tags" in request.args.keys():
 			tags = request.args["tags"][0].split(' ')
 			
-		repeated = False
-		if "repeated" in request.args.keys() and request.args["afterevent"][0] in ["1", "2", "3"]:
-			repeated = request.args["repeated"][0] == "1"
+		repeated = 0
+		if "repeated" in request.args.keys():
+			repeated = int(request.args["repeated"][0])
 
 		description = ""
 		if "description" in request.args.keys():
@@ -431,9 +431,9 @@ class WebController(BaseController):
 		if "tags" in request.args.keys():
 			tags = request.args["tags"][0].split(' ')
 			
-		repeated = False
-		if "repeated" in request.args.keys() and request.args["afterevent"][0] in ["1", "2", "3"]:
-			repeated = request.args["repeated"][0] == "1"
+		repeated = 0
+		if "repeated" in request.args.keys():
+			repeated = int(request.args["repeated"][0])
 			
 		description = ""
 		if "description" in request.args.keys():
