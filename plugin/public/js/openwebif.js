@@ -187,7 +187,7 @@ function open_epg_pop(sRef) {
 
 function open_epg_search_pop() {
 	var spar = $("#epgSearch").val();
-	var url = "ajax/epgpop?sstr=" + escape(spar);
+	var url = "ajax/epgpop?sstr=" + encodeURIComponent(spar);
 	$.popupWindow(url, {
 		height: 500,
 		width: 900,
