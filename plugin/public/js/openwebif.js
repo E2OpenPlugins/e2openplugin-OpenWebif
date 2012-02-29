@@ -263,7 +263,7 @@ function getStatusInfo() {
 
 var screenshotMode = 'all';
 
-function grabScreenshot(mode, width) {
+function grabScreenshot(mode) {
 	$('#screenshotspinner').show();
 	$('#screenshotimage').hide();
 	
@@ -272,24 +272,18 @@ function grabScreenshot(mode, width) {
 	  $('#screenshotimage').show();
 	});
 
-	if (mode != "auto" && typeof screenshotMode != "undefined") {
+	if (mode != "auto")
 		screenshotMode = mode;
-	}
+	else
+		mode = screenshotMode;
 	
-	if (mode == 'auto') {
-		if (typeof screenshotMode != 'undefined') {
-			mode = screenshotMode;
-		} else {
-			mode = 'all';
-		}
-	}
-
-	if (typeof width == 'undefined') {
-		width = 700;
-	}
-	
-	timestamp = new Date().getTime()
-	$('#screenshotimage').attr("src",'/grab?format=png&mode=' + mode + '&timestamp=' + timestamp);
+	timestamp = new Date().getTime();
+	if (($('#screenshotRefreshHD').is(':checked')))
+		$('#screenshotimage')
+			.attr("src",'/grab?format=jpg&mode=' + mode + '&timestamp=' + timestamp);
+	else
+		$('#screenshotimage')
+			.attr("src",'/grab?format=jpg&r=700&mode=' + mode + '&timestamp=' + timestamp);
 	$('#screenshotimage').attr("width",700);
 }
 
