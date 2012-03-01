@@ -339,6 +339,8 @@ $(window).keydown(function(evt) {
 });
 
 function pressMenuRemote(code) {
+	var timeout = 1000;
+	
 	if (shiftbutton)
 		webapi_execute("/api/remotecontrol?type=long&command=" + code);
 	else
@@ -347,9 +349,9 @@ function pressMenuRemote(code) {
 	if ($('input[name=remotegrabscreen]').is(':checked'))
 	{
 		if (lastcontenturl == 'ajax/screenshot')
-			grabScreenshot(screenshotMode);
+			setTimeout("grabScreenshot(screenshotMode)", timeout);
 		else
-			load_maincontent('ajax/screenshot');
+			setTimeout("load_maincontent('ajax/screenshot')", timeout);
 	}
 }
 
