@@ -62,24 +62,20 @@ def setPowerState(session, state):
 	from Screens.Standby import Standby, TryQuitMainloop, inStandby
 	state = int(state)
 	
-	if state == 0: # Toggle StandBy
+	if state == -1: # Get state only
+		if inStandby == None:
+			return {"result": "false"}
+		else:
+			return {"result": "true"}
+	elif state == 0: # Toggle StandBy
 		if inStandby == None:					
 			session.open(Standby)
+			return {"result": "true"}
 		else:
 			inStandby.Power()
-	elif state == 1: # DeepStandBy
+			return {"result": "false"}
+	elif state in range (1,4): # DeepStandBy, Reboot, Restart Enigma
 		session.open(TryQuitMainloop, state)
-	elif state == 2: # Reboot
-		session.open(TryQuitMainloop, state)
-	elif state == 3: # Restart Enigma
-		session.open(TryQuitMainloop, state)
+		return {"result": "true"}
 	else:
-		return {
-			"result": False,
-			"message": "Unknown PowerState '%s' set" % str(state)
-		}
-				
-	return {
-		"result": True,
-		"message": "PowerState '%s' set" % str(state)
-	}
+		return {"result": "Unknown PowerState '%s'" % str(state)}

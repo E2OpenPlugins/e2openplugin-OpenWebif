@@ -139,14 +139,10 @@ class WebController(BaseController):
 		return remoteControl(id, type, rcu)
 
 	def P_powerstate(self, request):
-		res = self.testMandatoryArguments(request, ["newstate"])
-		if res:
-			return {
-				"result": False,
-				"message": "Missing parameter 'newstate'"
-			}
-
-		return setPowerState(self.session, request.args["newstate"][0])
+		if request.args.has_key('newstate'):
+			return setPowerState(self.session, request.args["newstate"][0])
+		else:
+			return setPowerState(self.session, -1)
 
 	def P_getlocations(self, request):
 		return getLocations()
