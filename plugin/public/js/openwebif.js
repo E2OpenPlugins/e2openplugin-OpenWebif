@@ -292,7 +292,7 @@ function sendMessage() {
 	var type = $('#messageType').val();
 	var timeout = $('#messageTimeout').val();
 
-	$.getJSON('/api/message?message=' + text + '&type=' + type + '&timeout=' + timeout, function(result){
+	$.getJSON('/api/message?text=' + text + '&type=' + type + '&timeout=' + timeout, function(result){
 		$('#messageSentResponse').html(result['message']);
 	});
 }

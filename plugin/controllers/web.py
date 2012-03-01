@@ -233,7 +233,7 @@ class WebController(BaseController):
 		return removeLocation(request.args["dirname"][0])
 
 	def P_message(self, request):
-		res = self.testMandatoryArguments(request, ["message", "type"])
+		res = self.testMandatoryArguments(request, ["text", "type"])
 		if res:
 			return res
 			
@@ -252,7 +252,7 @@ class WebController(BaseController):
 			except Exception, e:
 				pass
 				
-		return sendMessage(self.session, request.args["message"][0], ttype, timeout)
+		return sendMessage(self.session, request.args["text"][0], ttype, timeout)
 		
 	def P_messageanswer(self, request):
 		return getMessageAnswer()
