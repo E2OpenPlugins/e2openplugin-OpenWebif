@@ -53,9 +53,12 @@ class grabScreenshot(resource.Resource):
 		self.grabFinished()
 
 	def grabFinished(self, data=""):
+		fileformat = self.fileformat
+		if fileformat == "jpg":
+			fileformat = "jpeg"
 		try:
 			self.request.setHeader('Content-Disposition', 'inline; filename=screenshot.%s;' % self.fileformat)
-			self.request.setHeader('Content-Type','image/%s' % self.fileformat)
+			self.request.setHeader('Content-Type','image/%s' % fileformat)
 			self.request.setHeader('Content-Length', '%i' % os.path.getsize(self.filepath))
 			
 			file = open(self.filepath)
