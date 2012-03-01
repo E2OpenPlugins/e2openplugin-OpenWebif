@@ -1,7 +1,7 @@
 <!-- OSD -->
 <div style="width:100%;height:137px;background-image:url(/images/osd/osd_back.png);"></div>
 <div style="position:absolute;top:225px;left:220px;color:#FFF;font-size:13px;font-weight:bold;">$info.date</div>
-<div style="position:absolute;top:254px;left:212px"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "/images/default_picon.png")' alt='' /></div>
+<div style="position:absolute;top:254px;left:212px"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "/images/default_picon.png")' onclick="open_epg_pop('$info.ref');" href="#" title="Show EPG for $info.name" border="0" alt='' /></div>
 <div style="position:absolute;top:220px;left:300px;color:#FFF;width:500px;text-align:center;font-size:18px;"><a style="color:#FFF" target="_blank" href='/web/stream.m3u?ref=$info.ref&name=$info.name'>$info.name</a></div>
 <div style="position:absolute;top:248px;left:330px;color:#FFF;font-size:14px;">$getVar("now.begin", " ")</div>
 <div style="position:absolute;top:248px;left:380px;color:#FFF;font-size:14px;">$getVar("now.title", " ")</div>
