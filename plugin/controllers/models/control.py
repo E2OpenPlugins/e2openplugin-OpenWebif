@@ -73,13 +73,16 @@ def setPowerState(session, state):
 		session.open(TryQuitMainloop, state)
 	elif state == 3: # Restart Enigma
 		session.open(TryQuitMainloop, state)
-	else:
-		return {
-			"result": False,
-			"message": "Unknown PowerState '%s' set" % str(state)
-		}
-				
+		
 	return {
 		"result": True,
-		"message": "PowerState '%s' set" % str(state)
+		"instandby": inStandby != None
 	}
+	
+def getStandbyState(session):
+	from Screens.Standby import inStandby
+	return {
+		"result": True,
+		"instandby": inStandby != None
+	}
+	

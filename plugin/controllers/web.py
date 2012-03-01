@@ -13,7 +13,7 @@ from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStat
 from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
-from models.control import zapService, remoteControl, setPowerState
+from models.control import zapService, remoteControl, setPowerState, getStandbyState
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer
 from models.message import sendMessage, getMessageAnswer
@@ -139,14 +139,9 @@ class WebController(BaseController):
 		return remoteControl(id, type, rcu)
 
 	def P_powerstate(self, request):
-		res = self.testMandatoryArguments(request, ["newstate"])
-		if res:
-			return {
-				"result": False,
-				"message": "Missing parameter 'newstate'"
-			}
-
-		return setPowerState(self.session, request.args["newstate"][0])
+		if "newstate" in request.args.keys():
+			return setPowerState(self.session, request.args["newstate"][0])
+		return getStandbyState(self.session)
 
 	def P_getlocations(self, request):
 		return getLocations()
