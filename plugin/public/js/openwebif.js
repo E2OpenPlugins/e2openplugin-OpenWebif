@@ -218,6 +218,10 @@ function deleteTimer(sRef, begin, end) {
 	}
 }
 
+function cleanupTimer() {
+	webapi_execute("/api/timercleanup");
+}
+
 function deleteMovie(sRef, divid) {
 	answer = confirm("Really delete this movie?");
 	if (answer == true) {

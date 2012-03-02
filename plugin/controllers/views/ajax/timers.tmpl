@@ -3,8 +3,14 @@
 <div id="content_main" style="min-height: 500px;">
 	<div id="info">
 		<h3>Timerlist</h3>
-		<div style="text-align: right; margin: 5px;">
-			<a href="#" onclick="addTimer(); return false;">Add timer</a>
+
+		<div id="toolbar-header">
+			<span id="toolbar">
+				<span id="timerbuttons">
+					<button id="timerbutton0" onclick="addTimer(); return false">Add Timer</button>
+					<button id="timerbutton1" onclick="cleanupTimer(); return false">Cleanup Timers</button>
+				</span>
+			</span>
 		</div>
 
 		<div style="height: 640px; overflow: auto;">
@@ -186,6 +192,8 @@
 <script type="text/javascript">
 
 #raw
+
+$('#timerbuttons').buttonset();
 
 jQuery("#editTimerForm").dialog({
 	autoOpen: false,
