@@ -182,8 +182,11 @@
 			</select>
 			</div>
 		</div>
-		<div class="timerlist_row" style="color: red;">
-			<div id="error" name="error" />
+		<div id="errorbox" class="timerlist_row" style="color: red;">
+			<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+				<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+				<span id="error"></span>
+			</div>
 		</div>
 	</div>
 	</form>
@@ -197,7 +200,7 @@ $('#timerbuttons').buttonset();
 
 jQuery("#editTimerForm").dialog({
 	autoOpen: false,
-	height: 430,
+	height: 445,
 	width: 600,
 	modal: true,
 	buttons: {
@@ -246,6 +249,7 @@ jQuery("#editTimerForm").dialog({
 						}
 						else {
 							$("#error").text(result.message);
+							$("#errorbox").show()
 						}
 					}
 				});
@@ -265,6 +269,7 @@ jQuery("#editTimerForm").dialog({
 						}
 						else {
 							$("#error").text(result.message);
+							$("#errorbox").show()
 						}
 					}
 				});
@@ -473,7 +478,7 @@ function editTimer(serviceref, begin, end) {
 							$('#enabled').prop("checked", timer.disabled == 0);
 							$('#justplay').prop("checked", timer.justplay);
 							$('#afterevent').val(timer.afterevent);
-							$("#error").text("");
+							$('#errorbox').hide();
 
 							var flags=timer.repeated;
 							for (var i=0; i<7; i++) {
@@ -521,7 +526,7 @@ function addTimer() {
 	$('#enabled').prop("checked", true);
 	$('#justplay').prop("checked", false);
 	$('#afterevent').val(3);
-	$("#error").text("");
+	$('#errorbox').hide();
 
 	for (var i=0; i<7; i++) $('#day'+i).attr('checked', false);
 	$('#repeatdays').buttonset('refresh');
