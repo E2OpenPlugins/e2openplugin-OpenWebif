@@ -75,7 +75,7 @@
 	</div>
 </div>
 
-<div id="editTimerForm" title="Edit Timer" style="display: none;">
+<div id="editTimerForm" title="Edit Timer">
 	<form>
 	<div>
 		<div class="timerlist_row">
@@ -100,31 +100,14 @@
 		<div class="timerlist_row">
 			<div style="width: 100px; float: left;">Start:</div>
 			<div>
-			<select id="timerbeginday" name="timerbeginday">
-			</select>
-			<select id="timerbeginmonth" name="timerbeginmonth">
-			</select>
-			<select id="timerbeginyear" name="timerbeginyear">
-			</select>
-			<select id="timerbeginhours" name="timerbeginhours">
-			</select>
-			<select id="timerbeginminutes" name="timerbeginminutes">
-			</select>
+			<input type="text" name="timerbegin" id="timerbegin" value="" class="text ui-widget-content ui-corner-all" />
 			</div>
 		</div>
-		
+
 		<div class="timerlist_row">
 			<div style="width: 100px; float: left;">End:</div>
-			<select id="timerendday" name="timerendday">
-			</select>
-			<select id="timerendmonth" name="timerendmonth">
-			</select>
-			<select id="timerendyear" name="timerendyear">
-			</select>
-			<select id="timerendhours" name="timerendhours">
-			</select>
-			<select id="timerendminutes" name="timerendminutes">
-			</select>
+			<div>
+			<input type="text" name="timerend" id="timerend" value="" class="text ui-widget-content ui-corner-all" />
 			</div>
 		</div>
 		
@@ -192,48 +175,66 @@
 	</form>
 </div>
 
+<script src="/js/jquery.timerpicker.js"></script>
+
 <script type="text/javascript">
 
 #raw
 
 $('#timerbuttons').buttonset();
+$('#timerbegin').datetimepicker({
+	dateFormat: 'dd.mm.yy',
+	timeFormat: 'hh:mm',
+	onClose: function(dateText, inst) {
+		if ($('#timerend').val() != '' &&
+			$(this).datetimepicker('getDate') > $('#timerend').datetimepicker('getDate')) {
+				$('#error').text("Start time is after end time");
+				$('#errorbox').show();
+		}
+		else
+			$('#errorbox').hide();
+	}
+});
+$('#timerend').datetimepicker({
+	dateFormat: 'dd.mm.yy',
+	timeFormat: 'hh:mm',
+	onClose: function(dateText, inst) {
+		if ($('#timerbegin').val() != '' &&	
+			$('#timerbegin').datetimepicker('getDate') > $(this).datetimepicker('getDate')) {
+				$('#error').text("Start time is after end time");
+				$('#errorbox').show();
+		}
+		else
+			$('#errorbox').hide();
+	}
+});
 
-jQuery("#editTimerForm").dialog({
+$('#repeatdays').buttonset();
+
+$("#editTimerForm").dialog({
 	autoOpen: false,
-	height: 445,
+	height: 455,
 	width: 600,
 	modal: true,
 	buttons: {
 		"Save": function() {
-			begindate = new Date(
-				$("#timerbeginyear").val(),
-				$("#timerbeginmonth").val(),
-				$("#timerbeginday").val(),
-				$("#timerbeginhours").val(),
-				$("#timerbeginminutes").val(),
-				0);
-				
-			enddate = new Date(
-				$("#timerendyear").val(),
-				$("#timerendmonth").val(),
-				$("#timerendday").val(),
-				$("#timerendhours").val(),
-				$("#timerendminutes").val(),
-				0);
+			var begindate = new Date($('#timerbegin').datetimepicker('getDate'));				
+			var enddate = new Date($('#timerend').datetimepicker('getDate'));
+
 			var repeated = 0;
 			$('[name="repeated"]:checked').each(function() {
 				repeated += parseInt($(this).val());
 			});
-			var urldata = { sRef: $("#bouquet_select").val(),
+			var urldata = { sRef: $('#bouquet_select').val(),
 				begin: Math.round(begindate.getTime() / 1000),
 				end: Math.round(enddate.getTime() / 1000),
-				name: $("#timername").val(),
-				description: $("#description").val(),
+				name: $('#timername').val(),
+				description: $('#description').val(),
 				disabled: ($('#enabled').is(':checked')?"0":"1"),
 				justplay: ($('#justplay').is(':checked')?"1":"0"),
-				afterevent: $("#afterevent").val(),
-				dirname: $("#dirname").val(),
-				tags: $("#tags").val(),
+				afterevent: $('#afterevent').val(),
+				dirname: $('#dirname').val(),
+				tags: $('#tags').val(),
 				repeated: repeated };
 			
 			var canclose = false;
@@ -249,7 +250,7 @@ jQuery("#editTimerForm").dialog({
 						}
 						else {
 							$("#error").text(result.message);
-							$("#errorbox").show()
+							$("#errorbox").show();
 						}
 					}
 				});
@@ -269,7 +270,7 @@ jQuery("#editTimerForm").dialog({
 						}
 						else {
 							$("#error").text(result.message);
-							$("#errorbox").show()
+							$("#errorbox").show();
 						}
 					}
 				});
@@ -301,10 +302,10 @@ function initTimerEdit() {
 		success: function(data) {
 			services = $.parseJSON(data);
 			if (services.result) {
-				$("#bouquet_select")
+				$('#bouquet_select')
 					.find('option')
 					.remove()
-					.end()
+					.end();
 					
 				for (var id in services.services) {
 					service = services.services[id];
@@ -329,7 +330,7 @@ function initTimerEdit() {
 				$("#dirname")
 					.find('option')
 					.remove()
-					.end()
+					.end();
 					
 				$("#dirname")
 					.append($("<option></option>")
@@ -374,80 +375,6 @@ function initTimerEdit() {
 		}
 	});
 	
-	$("#timerbeginday").find('option').remove().end()
-	$("#timerbeginmonth").find('option').remove().end()
-	$("#timerbeginyear").find('option').remove().end()
-	$("#timerbeginhours").find('option').remove().end()
-	$("#timerbeginminutes").find('option').remove().end()
-	
-	$("#timerendday").find('option').remove().end()
-	$("#timerendmonth").find('option').remove().end()
-	$("#timerendyear").find('option').remove().end()
-	$("#timerendhours").find('option').remove().end()
-	$("#timerendminutes").find('option').remove().end()
-	
-	for (var i=1; i<=31; i++) {
-		$("#timerbeginday")
-			.append($("<option></option>")
-				.attr("value", i)
-				.text(i));
-				
-		$("#timerendday")
-			.append($("<option></option>")
-				.attr("value", i)
-				.text(i));
-	}
-	
-	months = new Array( "January","February","March","April","May","June","July","August", "September","October","November","December");
-	for (var i=0; i<months.length; i++) {
-		$("#timerbeginmonth")
-			.append($("<option></option>")
-				.attr("value", i)
-				.text(months[i]));
-				
-		$("#timerendmonth")
-			.append($("<option></option>")
-				.attr("value", i)
-				.text(months[i]));
-		
-	}
-	
-	for (var i=0; i<2; i++) {
-		year = (new Date()).getFullYear() + i;
-		$("#timerbeginyear")
-			.append($("<option></option>")
-				.attr("value", year)
-				.text(year));
-				
-		$("#timerendyear")
-			.append($("<option></option>")
-				.attr("value", year)
-				.text(year));
-	}
-	
-	for (var i=0; i<24; i++) {
-		$("#timerbeginhours")
-			.append($("<option></option>")
-				.attr("value", i)
-				.text(i));
-		$("#timerendhours")
-			.append($("<option></option>")
-				.attr("value", i)
-				.text(i));
-	}
-	
-	for (var i=0; i<60; i++) {
-		$("#timerbeginminutes")
-			.append($("<option></option>")
-				.attr("value", i)
-				.text(i));
-				
-		$("#timerendminutes")
-			.append($("<option></option>")
-				.attr("value", i)
-				.text(i));
-	}
-	
 	timeredit_initialized = true;
 }
 
@@ -458,7 +385,7 @@ function editTimer(serviceref, begin, end) {
 	
 	if (!timeredit_initialized)
 		initTimerEdit();
-		
+	
 	$.ajax({
 		async: false,
 		url: "/api/timerlist",
@@ -470,8 +397,8 @@ function editTimer(serviceref, begin, end) {
 					if (timer.serviceref == serviceref &&
 						Math.round(timer.begin) == Math.round(begin) &&
 						Math.round(timer.end) == Math.round(end)) {
-							$("#timername").val(timer.name);
-							$("#description").val(timer.description);
+							$('#timername').val(timer.name);
+							$('#description').val(timer.description);
 							$('#bouquet_select').val(timer.serviceref);
 							$('#dirname').val(timer.dirname);
 							$('#tags').val(timer.tags);
@@ -487,22 +414,11 @@ function editTimer(serviceref, begin, end) {
 							}
 							$('#repeatdays').buttonset('refresh');
 							
-							var begindate = new Date(Math.round(timer.begin) * 1000);
-							$('#timerbeginday').val(begindate.getDate());
-							$('#timerbeginmonth').val(begindate.getMonth());
-							$('#timerbeginyear').val(begindate.getFullYear());
-							$('#timerbeginhours').val(begindate.getHours());
-							$('#timerbeginminutes').val(begindate.getMinutes());
+							$('#timerbegin').datetimepicker('setDate', (new Date(Math.round(timer.begin) * 1000)));
+							$('#timerend').datetimepicker('setDate', (new Date(Math.round(timer.end) * 1000)));
 							
-							var enddate = new Date(Math.round(timer.end) * 1000);
-							$('#timerendday').val(enddate.getDate());
-							$('#timerendmonth').val(enddate.getMonth());
-							$('#timerendyear').val(enddate.getFullYear());
-							$('#timerendhours').val(enddate.getHours());
-							$('#timerendminutes').val(enddate.getMinutes());
-							
-							$("#editTimerForm").dialog("open");
-							$("#editTimerForm").dialog("option", "title", "Edit Timer - " + timer.name)
+							$('#editTimerForm').dialog("open");
+							$('#editTimerForm').dialog("option", "title", "Edit Timer - " + timer.name);
 							break;
 						}
 				}
@@ -530,23 +446,14 @@ function addTimer() {
 
 	for (var i=0; i<7; i++) $('#day'+i).attr('checked', false);
 	$('#repeatdays').buttonset('refresh');
-	
+
 	var begindate = new Date();
-	$('#timerbeginday').val(begindate.getDate());
-	$('#timerbeginmonth').val(begindate.getMonth());
-	$('#timerbeginyear').val(begindate.getFullYear());
-	$('#timerbeginhours').val(begindate.getHours());
-	$('#timerbeginminutes').val(begindate.getMinutes());
-	
+	$("#timerbegin").datetimepicker('setDate', begindate);
 	var enddate = new Date(begindate.getTime() + (60*60*1000));
-	$('#timerendday').val(enddate.getDate());
-	$('#timerendmonth').val(enddate.getMonth());
-	$('#timerendyear').val(enddate.getFullYear());
-	$('#timerendhours').val(enddate.getHours());
-	$('#timerendminutes').val(enddate.getMinutes());
+	$("#timerend").datetimepicker('setDate', enddate);
 	
 	$("#editTimerForm").dialog("open");
-	$("#editTimerForm").dialog("option", "title", "Add Timer")
+	$("#editTimerForm").dialog("option", "title", "Add Timer");
 }
 
 #end raw
