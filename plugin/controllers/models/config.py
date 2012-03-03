@@ -147,6 +147,12 @@ def getConfigs(key):
 		for entry in section:
 			if entry.tag == "item":
 				requires = entry.get("requires")
+				if requires and requires.startswith('config.'):
+					item = eval(requires or "");
+					if item.value and not item.value == "0":
+						SystemInfo[requires] = True
+					else:
+						SystemInfo[requires] = False
 				if requires and not SystemInfo.get(requires, False):
 					continue;
 				
@@ -172,7 +178,7 @@ def getConfigs(key):
 	}
 	
 def getConfigsSections():
-	allowedsections = ["usage", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone"]
+	allowedsections = ["usage", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone", "time", "osdsetup", "epgsetup", "lcd", "remotesetup", "softcamsetup", "logs", "timeshift"]
 	sections = []
 	
 	setupfile = file(eEnv.resolve('${datadir}/enigma2/setup.xml'), 'r')
@@ -188,6 +194,12 @@ def getConfigsSections():
 		for entry in section:
 			if entry.tag == "item":
 				requires = entry.get("requires")
+				if requires and requires.startswith('config.'):
+					item = eval(requires or "");
+					if item.value and not item.value == "0":
+						SystemInfo[requires] = True
+					else:
+						SystemInfo[requires] = False
 				if requires and not SystemInfo.get(requires, False):
 					continue;
 					
