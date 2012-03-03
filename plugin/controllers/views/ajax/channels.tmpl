@@ -5,7 +5,8 @@
 						<div style="padding-top: 3px">								
 						<div style="border-top: 1px dotted #4297d7;">					
 						<div class="channel_left">
-							<a href="#" onclick="zapChannel('$channel.ref', '$channel.name'); return false" title="Zap to $channel.name">$channel.name</a><br />
+							#set $name =  $channel.name.replace("'", r"\'")
+							<a href="#" onclick="zapChannel('$channel.ref', '$name'); return false" title="Zap to $channel.name">$channel.name</a><br />
 						</div>
 						<div class="channel_right">
 							<a href="#" onclick="open_epg_pop('$channel.ref')">
