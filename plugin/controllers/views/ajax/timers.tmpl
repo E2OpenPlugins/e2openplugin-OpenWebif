@@ -79,91 +79,91 @@
 	<form>
 	<div>
 		<div class="timerlist_row">
-			<div style="width: 100px; float: left;">Name:</div>
-			<div><input type="text" name="timername" id="timername" style="width: 450px;" class="text ui-widget-content ui-corner-all" /></div>
+			<span style="width: 100px; float: left;">Name:</span>
+			<span><input type="text" name="timername" id="timername" style="width: 450px;" class="text ui-widget-content ui-corner-all" /></span>
 		</div>
 		
 		<div class="timerlist_row">
-			<div style="width: 100px; float: left;">Description:</div>
-			<div><textarea name="description" id="description" style="width: 450px; height: 50px;" class="text ui-widget-content ui-corner-all" /></div>
+			<span style="width: 100px; float: left;">Description:</span>
+			<span><textarea name="description" id="description" style="width: 450px; height: 50px;" class="text ui-widget-content ui-corner-all" /></span>
 		</div>
 		
 		<div class="timerlist_row">
-		<div style="width: 100px; float: left;">Channel:</div>
-			<div>
+		<span style="width: 100px; float: left;">Channel:</span>
+			<span>
 			<select id="bouquet_select" name="bouquet_select">
 				<option value="0">Nothing</option>
 			</select>
-			</div>
+			</span>
 		</div>
 		
 		<div class="timerlist_row">
-			<div style="width: 100px; float: left;">Start:</div>
-			<div>
+			<span style="width: 100px; float: left;">Start:</span>
+			<span>
 			<input type="text" name="timerbegin" id="timerbegin" value="" class="text ui-widget-content ui-corner-all" />
-			</div>
+			</span>
 		</div>
 
 		<div class="timerlist_row">
-			<div style="width: 100px; float: left;">End:</div>
-			<div>
+			<span style="width: 100px; float: left;">End:</span>
+			<span>
 			<input type="text" name="timerend" id="timerend" value="" class="text ui-widget-content ui-corner-all" />
-			</div>
+			</span>
 		</div>
 		
 		<div class="timerlist_row">
-			<div style="width: 100px; float: left; block: inline;">Enabled:</div>
-			<div style="margin: 5px;">
-				<input type="checkbox" name="enabled" id="enabled" value="0" class="text ui-widget-content ui-corner-all" />
-			</div>
+			<span style="width: 100px; float: left; block: inline;">Enabled:</span>
+			<span style="margin: 5px;">
+				<input type="checkbox" name="enabled" id="enabled" value="0" />
+			</span>
 		</div>
 		
 		<div class="timerlist_row">
-			<div style="width: 100px; float: left;">Just play:</div>
-			<div style="margin: 5px;">
-				<input type="checkbox" name="justplay" id="justplay" value="0" class="text ui-widget-content ui-corner-all" />
-			</div>
+			<span style="width: 100px; float: left;">Just play:</span>
+			<span style="margin: 5px;">
+				<input type="checkbox" name="justplay" id="justplay" value="0" />
+			</span>
 		</div>
 		
 		<div class="timerlist_row">
-			<div style="width: 100px; float: left;">Repeated:</div>
-			<div id="repeatdays" style="margin: 5px;">
+			<span style="width: 100px; float: left;">Repeated:</span>
+			<span id="repeatdays" style="margin: 5px;">
 			#set $i=0
 			#for $day in ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
 				#set $value = 2 ** $i
 				<input type="checkbox" name="repeated" id="day$i" value="$value" /><label for="day$i">$day</label>
 				#set $i=$i+1
 			#end for
-			</div>
+			</span>
 		</div>
 		
 		<div class="timerlist_row">
-			<div style="width: 100px; float: left;">Location:</div>
-			<div>
+			<span style="width: 100px; float: left;">Location:</span>
+			<span>
 			<select id="dirname" name="dirname">
 				<option value="None">Default</option>
 			</select>
-			</div>
+			</span>
 		</div>
 		
 		<div class="timerlist_row">
-			<div style="width: 100px; float: left;">Tags:</div>
-			<div>
+			<span style="width: 100px; float: left;">Tags:</span>
+			<span>
 			<select id="tags" name="tags">
 				<option value="">Nothing</option>
 			</select>
-			</div>
+			</span>
 		</div>
 		
 		<div class="timerlist_row">
-			<div style="width: 100px; float: left;">After Event:</div>
-			<div>
+			<span style="width: 100px; float: left;">After Event:</span>
+			<span>
 			<select id="afterevent" name="afterevent">
 				<option value="1">Standby</option>
 				<option value="2">Shutdown</option>
 				<option value="3" selected="">Auto</option>
 			</select>
-			</div>
+			</span>
 		</div>
 		<div id="errorbox" class="timerlist_row" style="color: red;">
 			<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
