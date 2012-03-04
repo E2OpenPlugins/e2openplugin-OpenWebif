@@ -500,7 +500,21 @@ def getBouquetNowNextEpg(ref, servicetype):
 def getNowNextEpg(ref, servicetype):
 	ret = []
 	epgcache = eEPGCache.getInstance()
-	events = epgcache.lookupEvent(['IBDCTSERNX', (ref, servicetype, -1)])
+ 	serviceHandler = eServiceCenter.getInstance()
+        list = serviceHandler.list(eServiceReference(ref))
+        services = list and list.getContent('S')
+        search = ['IBDCTSERNX']
+        if services: # It's a Bouquet
+        	if type == -1: #Now AND Next at once!
+        		append = search.append
+        		for service in services:
+        			append((service, 0, -1))
+        			append((service, 1, -1))
+        	else:
+        		search.extend([(service, type, -1) for service in services])
+        	events = self.epgcache.lookupEvent(search)	
+	
+	#events = epgcache.lookupEvent(['IBDCTSERNX', (ref, servicetype, -1)])
 	if events is not None:
 		for event in events:
 			ev = {}
