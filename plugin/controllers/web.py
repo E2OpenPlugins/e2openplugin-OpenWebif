@@ -893,3 +893,10 @@ class WebController(BaseController):
 			return {
 				"plugins": []
 			}
+
+	def P_epgnownext(self, request):
+		res = self.testMandatoryArguments(request, ["bRef"])
+		if res:
+			return res
+
+		return getBouquetNowNextEpg(request.args["bRef"][0], -1)
