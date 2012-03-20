@@ -11,7 +11,6 @@ from enigma import eServiceReference, iServiceInformation, eServiceCenter
 from Components.Sources.Source import Source
 from Components.config import config
 from ServiceReference import ServiceReference
-from Tools.Directories import resolveFilename, SCOPE_HDD
 from Tools.FuzzyDate import FuzzyTime
 from os import stat as os_stat
 from Components.MovieList import MovieList
@@ -23,7 +22,7 @@ def getMovieList(directory=None, tag=None):
 	bookmarklist = []
 	
 	if directory == None:
-		directory = resolveFilename(SCOPE_HDD)
+		directory = config.usage.default_path.value
 	
 	if directory[-1] != "/":
 		directory += "/"
