@@ -6,8 +6,9 @@
 		
 		<div style="width: 100%; text-align: left; margin-bottom: 20px;">
 		<select name="directory" onChange="load_maincontent_spin('/ajax/movies?dirname='+escape(options[selectedIndex].value)); return false;">
+		#set $cleandir = $directory[0:-1]
 		#for $bookmark in $bookmarks
-		#if $bookmark == $directory
+		#if $bookmark == $cleandir
 		<option value="$bookmark" selected="selected">$bookmark</option>
 		#else
 		<option value="$bookmark">$bookmark</option>
