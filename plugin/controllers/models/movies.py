@@ -12,7 +12,7 @@ from Components.Sources.Source import Source
 from ServiceReference import ServiceReference
 from Tools.FuzzyDate import FuzzyTime
 from os import stat as os_stat, walk
-from os.path import dirname, basename
+from os.path import islink
 from Components.config import config
 from Components.MovieList import MovieList
 from Tools.Directories import fileExists
@@ -20,7 +20,6 @@ from time import strftime, localtime
 
 def getMovieList(directory=None, tag=None):
 	movieliste = []
-	bookmarklist = []
 	
 	if directory == None:
 		directory = config.usage.default_path.value
@@ -30,16 +29,8 @@ def getMovieList(directory=None, tag=None):
 		
 	root = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory)
 
-	parent=dirname(directory[0:-1])
-	while parent != '/':
-		bookmarklist.insert(0,parent)
-		parent=dirname(parent)
-	
-	for (path, dirs, files) in walk(directory[0:-1]):
-		bookmarklist.append(path)
-		for d in dirs:
-			if d[0]=='.':
-				dirs.remove(d)
+	bookmarklist=[x for x in walk(directory).next()[1] if (x[0] != '.' and not islink(directory+'/'+x))]
+	bookmarklist.sort()
 	
 	tagfilter = []
 	
