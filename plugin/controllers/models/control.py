@@ -73,6 +73,12 @@ def setPowerState(session, state):
 		session.open(TryQuitMainloop, state)
 	elif state == 3: # Restart Enigma
 		session.open(TryQuitMainloop, state)
+	elif state == 4: # Wakeup
+		if inStandby != None:
+			inStandby.Power()
+	elif state == 5: # Standby
+		if inStandby == None:
+			session.open(Standby)
 		
 	return {
 		"result": True,

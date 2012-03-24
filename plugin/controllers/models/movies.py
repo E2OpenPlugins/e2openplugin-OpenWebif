@@ -9,30 +9,29 @@
 
 from enigma import eServiceReference, iServiceInformation, eServiceCenter
 from Components.Sources.Source import Source
-from Components.config import config
 from ServiceReference import ServiceReference
-from Tools.Directories import resolveFilename, SCOPE_HDD
 from Tools.FuzzyDate import FuzzyTime
-from os import stat as os_stat
+from os import stat as os_stat, walk
+from os.path import islink
+from Components.config import config
 from Components.MovieList import MovieList
 from Tools.Directories import fileExists
 from time import strftime, localtime
 
 def getMovieList(directory=None, tag=None):
 	movieliste = []
-	bookmarklist = []
 	
 	if directory == None:
-		directory = resolveFilename(SCOPE_HDD)
+		directory = config.usage.default_path.value
 	
 	if directory[-1] != "/":
 		directory += "/"
 		
 	root = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory)
 
-	for bookmark in config.movielist.videodirs.value:
-		bookmarklist.append(bookmark)
-
+	bookmarklist=[x for x in walk(directory).next()[1] if (x[0] != '.' and not islink(directory+'/'+x))]
+	bookmarklist.sort()
+	
 	tagfilter = []
 	
 	movielist = MovieList(root)
@@ -82,7 +81,7 @@ def getMovieList(directory=None, tag=None):
 		movie['tags'] = info.getInfoString(serviceref, iServiceInformation.sTags)
 		filename = filename.replace("'","\'").replace("%","\%")
 		try:
-			movie['filesize'] = os_stat(filename)[6]
+			movie['filesize'] = os_stat(filename).st_size
 		except:
 			movie['filesize'] = 0
 		movie['fullname'] = serviceref.toString()

@@ -5,15 +5,30 @@
 		<hr />
 		
 		<div style="width: 100%; text-align: left; margin-bottom: 20px;">
-		<select name="directory" onChange="load_maincontent_spin('/ajax/movies?dirname='+escape(options[selectedIndex].value)); return false;">
-		#for $bookmark in $bookmarks
-		#if $bookmark == $directory
-		<option value="$bookmark" selected="selected">$bookmark</option>
-		#else
-		<option value="$bookmark">$bookmark</option>
+
+		#set $path=''
+		
+		<span id="moviebuttons">
+			<button onclick="load_maincontent_spin('/ajax/movies?dirname=/'); return false">Root</button>
+			#for $dir in $directory[0:-1].split("/")[1:-1]
+				#set $path += '/' + $dir
+				<button onclick="load_maincontent_spin('/ajax/movies?dirname='+escape('$path'));">$dir</button>
+			#end for
+			#if $directory != '/'
+				<button><span style="color: red; font-weight: bold;">
+					#echo $directory[0:-1].split("/")[-1]
+				</span></button>
+			#end if
+		</span>
+
+		#if $len($bookmarks)
+			<select name="directory" onChange="load_maincontent_spin('/ajax/movies?dirname='+escape(options[selectedIndex].value)); return false;">
+			<option>Subdirs:</option>
+			#for $bookmark in $bookmarks
+				<option value="$directory$bookmark">$bookmark</option>
+			#end for
+			</select>
 		#end if
-		#end for
-		</select>
 		</div>
 
 		<div style="height: 640px; overflow: auto;">
@@ -54,3 +69,7 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+\$('#moviebuttons').buttonset();
+</script>

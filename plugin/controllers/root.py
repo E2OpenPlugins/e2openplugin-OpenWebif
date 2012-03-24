@@ -50,7 +50,7 @@ class RootController(BaseController):
 	def P_index(self, request):
 		uagent = request.getHeader('User-Agent')
 		if uagent:
-			if uagent.find("iPhone") != -1 or uagent.find("iPod") != -1:
+			if uagent.find("iPhone") != -1 or uagent.find("iPod") != -1 or (uagent.lower().find("android") != -1 and uagent.lower().find("mobile") != -1):
 				request.setHeader("Location", "/mobile/")
 				request.setResponseCode(http.FOUND)
 				return ""
