@@ -25,7 +25,11 @@ def getStream(session, request, m3ufile):
 	if "name" in request.args:
 		name = request.args["name"][0]
 	# #EXTINF:-1,%s\n  remove not compatiple with old api
-	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \nhttp://%s:8001/%s\n" % (request.getRequestHostname(), sRef)
+	if sRef != '':
+		progopt="#EXTVLCOPT:program=%d\n" % (int(sRef.split(':')[3],16))
+	else:
+		progopt=""
+	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:8001/%s\n" % (progopt,request.getRequestHostname(), sRef)
 	request.setHeader('Content-Type', 'application/text')
 	return response
 
