@@ -86,12 +86,15 @@ def getInfo():
 		
 	info['chipset'] = chipset
 	
-	f = open("/proc/meminfo",'r')
- 	parts = f.readline().split(':')
-	info['mem1'] = parts[1].strip()
-	parts = f.readline().split(':')
-	info['mem2'] = parts[1].strip()
-	f.close()
+	memFree = 0
+	for line in open("/proc/meminfo",'r'):
+	 	parts = line.split(':')
+		key = parts[0].strip()
+		if key == "MemTotal":
+			info['mem1'] = parts[1].strip()
+		elif key in ("MemFree", "Buffers", "Cached"):
+			memFree += int(parts[1].strip().split(' ',1)[0])
+	info['mem2'] = "%s kB" % memFree
 		
 	try:
 		f = open("/proc/uptime", "rb")
