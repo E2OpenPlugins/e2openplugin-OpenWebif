@@ -23,6 +23,11 @@ import os
 import sys
 import time
 
+OPENWEBIFVER = "OWIF 0.1.2"
+
+def getOpenWebifVer():
+	return OPENWEBIFVER
+
 def formatIp(ip):
 	if len(ip) != 4:
 		return None
@@ -121,7 +126,7 @@ def getInfo():
 	else:
 		imagever = about.getImageVersionString()
 		
-	info["webifver"] = "OWIF 0.1.1"
+	info["webifver"] = getOpenWebifVer()
 	info['imagever'] = imagever
 	info['enigmaver'] = about.getEnigmaVersionString()
 	info['kernelver'] = about.getKernelVersionString()
