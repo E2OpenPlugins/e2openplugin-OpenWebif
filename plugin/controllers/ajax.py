@@ -11,7 +11,7 @@ from Tools.Directories import fileExists
 from Components.config import config
 
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo
-from models.info import getInfo, getPublicPath
+from models.info import getInfo, getPublicPath, getOpenWebifVer
 from models.movies import getMovieList
 from models.timers import getTimers
 from models.config import getConfigs
@@ -61,7 +61,9 @@ class AjaxController(BaseController):
 		return getEventDesc(request.args["sref"][0], request.args["idev"][0])
 
 	def P_about(self, request):
-		return {}
+		info = {}
+		info["owiver"] = getOpenWebifVer()
+		return { "info": info }
 	
 	def P_boxinfo(self, request):
 		info = getInfo()
