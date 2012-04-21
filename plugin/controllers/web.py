@@ -581,6 +581,13 @@ class WebController(BaseController):
 			
 		return getBouquetNowNextEpg(request.args["bRef"][0], 1)
 		
+	def P_epgnownext(self, request):
+		res = self.testMandatoryArguments(request, ["bRef"])
+		if res:
+			return res
+			
+		return getBouquetNowNextEpg(request.args["bRef"][0], -1)
+		
 	def P_epgsearch(self, request):
 		res = self.testMandatoryArguments(request, ["search"])
 		if res:
