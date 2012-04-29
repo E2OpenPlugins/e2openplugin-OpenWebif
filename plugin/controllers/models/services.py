@@ -476,9 +476,14 @@ def getBouquetNowNextEpg(ref, servicetype):
 		return { "events": ret, "result": False }
 		
 	search = ['IBDCTSERNX']
-	for service in services.getContent('S'):
-		search.append((service, servicetype, -1))
-		
+	if servicetype == -1:
+		for service in services.getContent('S'):
+			search.append((service, 0, -1))
+			search.append((service, 1, -1))
+	else:
+		for service in services.getContent('S'):
+			search.append((service, servicetype, -1))
+					
 	epgcache = eEPGCache.getInstance()
 	events = epgcache.lookupEvent(search)
 	if events is not None:
