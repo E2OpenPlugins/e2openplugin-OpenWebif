@@ -139,12 +139,16 @@ class BaseController(resource.Resource):
 		ret['box'] = "dmm"
 		if open("/proc/stb/info/model",'r').read().strip() == "Gigablue":
 			ret['box'] = "gigablue"
-		if fileExists("/proc/stb/info/vumodel"):
+		if fileExists("/proc/stb/info/hwmodel"):
+			ret['box'] = open("/proc/stb/info/hwmodel").read().strip()
+		elif fileExists("/proc/stb/info/vumodel"):
 			ret['box'] = open("/proc/stb/info/vumodel").read().strip()
 		elif fileExists("/proc/stb/info/boxtype"):
 			ret['box'] = open("/proc/stb/info/boxtype").read().strip()
-			
-		if ret["box"] == "duo" or ret["box"] == "solo" or ret["box"] == "uno":
+
+		if ret["box"] == "TM-TWIN-OE":
+			ret["remote"] = "tm_twin"
+		elif ret["box"] == "duo" or ret["box"] == "solo" or ret["box"] == "uno":
 			ret["remote"] = "vu_normal"
 		elif ret["box"] == "ultimo":
 			ret["remote"] = "vu_ultimo"

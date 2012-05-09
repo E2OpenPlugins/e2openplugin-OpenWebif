@@ -66,16 +66,23 @@ def getInfo():
 	model = "unknown"
 	chipset = "unknown"
 	
-	if fileExists("/proc/stb/info/vumodel"):
+	if fileExists("/proc/stb/info/hwmodel"):
+		brand = "Technomate"
+		f = open("/proc/stb/info/hwmodel",'r')
+		model = f.readline().strip()
+		if model == "TM-TWIN-OE":
+			model = "twin"
+		f.close()
+	elif fileExists("/proc/stb/info/vumodel"):
 		brand = "Vuplus"
 		f = open("/proc/stb/info/vumodel",'r')
- 		model = f.readline().strip()
- 		f.close()
+		model = f.readline().strip()
+		f.close()
 	elif fileExists("/proc/stb/info/boxtype"):
 		brand = "Clarke-Xtrend"
 		f = open("/proc/stb/info/boxtype",'r')
- 		model = f.readline().strip()
- 		f.close()
+		model = f.readline().strip()
+		f.close()
 	else:
 		f = open("/proc/stb/info/model",'r')
  		model = f.readline().strip()
