@@ -21,21 +21,21 @@ import json
 
 class BaseController(resource.Resource):
 	isLeaf = False
-	
+
 	def __init__(self, path = ""):
 		resource.Resource.__init__(self)
-		
+
 		self.path = path
 		self.withMainTemplate = False
 		self.isJson = False
 		self.isCustom = False
-	
+
 	def error404(self, request):
 		request.setHeader("content-type", "text/html")
 		request.setResponseCode(http.NOT_FOUND)
 		request.write("<html><head><title>Open Webif</title></head><body><h1>Error 404: Page not found</h1><br />The requested URL was not found on this server.</body></html>")
 		request.finish()
-		
+
 	def loadTemplate(self, path, module, args):
 		if fileExists(getViewsPath(path + ".py")) or fileExists(getViewsPath(path + ".pyo")):
 			if fileExists(getViewsPath(path + ".pyo")):
@@ -48,31 +48,31 @@ class BaseController(resource.Resource):
 		elif fileExists(getViewsPath(path + ".tmpl")):
 			return str(Template(file=getViewsPath(path + ".tmpl"), searchList=[args]))
 		return None
-		
+
 	def getChild(self, path, request):
 		return self.__class__(self.session, path)
-		
+
 	def render(self, request):
 		# cache data
 		withMainTemplate = self.withMainTemplate
 		path = self.path
 		isJson = self.isJson
 		isCustom = self.isCustom
-		
+
 		if self.path == "":
 			self.path = "index"
-		
+
 		self.suppresslog = False
 		self.path = self.path.replace(".", "")
 		func = getattr(self, "P_" + self.path, None)
 		if callable(func):
 			request.setResponseCode(http.OK)
-			
+
 			# call prePageLoad function if exist
 			plfunc = getattr(self, "prePageLoad", None)
 			if callable(plfunc):
 				plfunc(request)
-				
+
 			data = func(request)
 			if data is None:
 				if not self.suppresslog:
@@ -117,17 +117,17 @@ class BaseController(resource.Resource):
 							out = nout
 					request.write(out)
 					request.finish()
-				
+
 		else:
 			print "[OpenWebif] page '%s' not found" % request.uri
 			self.error404(request)
-		
+
 		# restore cached data
 		self.withMainTemplate = withMainTemplate
 		self.path = path
 		self.isJson = isJson
 		self.isCustom = isCustom
-		
+
 		return server.NOT_DONE_YET
 
 	def prepareMainTemplate(self):
@@ -135,6 +135,7 @@ class BaseController(resource.Resource):
 		ret = getCollapsedMenus()
 		ret['remotegrabscreenshot'] = getRemoteGrabScreenshot()['remotegrabscreenshot']
 		ret['configsections'] = getConfigsSections()['sections']
+		ret['vixconfigsections'] = getConfigsSections('/usr/lib/enigma2/python/Plugins/SystemPlugins/ViX/data/setup.xml')['sections']
 		ret['zapstream'] = getZapStream()['zapstream']
 		ret['box'] = "dmm"
 		if open("/proc/stb/info/model",'r').read().strip() == "Gigablue":
@@ -160,6 +161,5 @@ class BaseController(resource.Resource):
 			ret["remote"] = "gigablue"
 		else:
 			ret["remote"] = "dmm"
-		
+
 		return ret
-		

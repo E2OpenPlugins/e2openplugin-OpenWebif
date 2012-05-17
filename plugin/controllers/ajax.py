@@ -21,24 +21,24 @@ class AjaxController(BaseController):
 	def __init__(self, session, path = ""):
 		BaseController.__init__(self, path)
 		self.session = session
-		
+
 	def P_current(self, request):
 		return getCurrentFullInfo(self.session)
-		
+
 	def P_bouquets(self, request):
 		stype = "tv"
 		if "stype" in request.args.keys():
 			stype = request.args["stype"][0]
 		bouq = getBouquets(stype)
 		return { "bouquets": bouq['bouquets'], "stype": stype }
-			
+
 	def P_providers(self, request):
 		stype = "tv"
 		if "stype" in request.args.keys():
 			stype = request.args["stype"][0]
 		prov = getProviders(stype)
 		return { "providers": prov['providers'], "stype": stype }
-		
+
 	def P_satellites(self, request):
 		stype = "tv"
 		if "stype" in request.args.keys():
@@ -46,7 +46,7 @@ class AjaxController(BaseController):
 		sat = getSatellites(stype)
 		return { "satellites": sat['satellites'], "stype": stype }
 
-	
+
 	def P_channels(self, request):
 		stype = "tv"
 		idbouquet = "ALL"
@@ -55,7 +55,7 @@ class AjaxController(BaseController):
 		if "id" in request.args.keys():
 			idbouquet = request.args["id"][0]
 		return getChannels(idbouquet, stype)
-		
+
 
 	def P_eventdescription(self, request):
 		return getEventDesc(request.args["sref"][0], request.args["idev"][0])
@@ -64,7 +64,7 @@ class AjaxController(BaseController):
 		info = {}
 		info["owiver"] = getOpenWebifVer()
 		return { "info": info }
-	
+
 	def P_boxinfo(self, request):
 		info = getInfo()
 		model = info["model"]
@@ -83,44 +83,48 @@ class AjaxController(BaseController):
 			return getChannelEpg(request.args["sref"][0])
 		elif  "sstr" in request.args.keys():
 			return getSearchEpg(request.args["sstr"][0])
-		else: 
+		else:
 			return []
-			
+
 	def P_screenshot(self, request):
 		box = {}
 		box['brand'] = "dmm"
 		if fileExists("/proc/stb/info/vumodel"):
 			box['brand'] = "vuplus"
 		return { "box": box }
-		
+
 	def P_powerstate(self, request):
 		return {}
-		
+
 	def P_message(self, request):
 		return {}
-		
+
 	def P_movies(self, request):
 		if "dirname" in request.args.keys():
 			movies = getMovieList(request.args["dirname"][0])
 		else:
 			movies = getMovieList()
 		return movies
-		
+
 	def P_workinprogress(self, request):
 		return {}
-	
+
 	def P_radio(self, request):
 		return {}
 
 	def P_timers(self, request):
 		return getTimers(self.session)
-		
+
 	def P_tv(self, request):
 		return {}
-		
+
 	def P_config(self, request):
 		section = "usage"
+		plugin = None
+		print 'request.args.keys()',request.args
+		if 'softcammanager' in request.args["section"][0]:
+			plugin = '/usr/lib/enigma2/python/Plugins/SystemPlugins/ViX/data/setup.xml'
 		if "section" in request.args.keys():
 			section = request.args["section"][0]
-			
-		return getConfigs(section)
+
+		return getConfigs(section,plugin)

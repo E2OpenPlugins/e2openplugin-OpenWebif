@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="/images/favicon.png">
 <link rel="stylesheet" type="text/css" href="/css/style.css" />
-<link type="text/css" href="/css/jquery-ui-1.8.18.custom.css" rel="stylesheet" />	
+<link type="text/css" href="/css/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
 <script type="text/javascript" src="/js/jquery-1.6.2.min.js"></script>
 <script type="text/javascript" src="/js/jquery-ui-1.8.18.custom.min.js"></script>
 <script type="text/javascript" src="/js/openwebif.js"></script>
@@ -18,18 +18,18 @@
 			<h1><a href="/">Open<span class="off">Webif</span></a></h1>
 			<h2>Open Source Web Interface for Linux set-top box</h2>
 		</div>
-		
+
 		<div id="osd">
 			Nothing playing.
 		</div>
 		<div id="osd_bottom">
-			
+
 		</div>
-		
+
 		<div id="dialog" title="Work in progress">
 			<p>Sorry, this function is not yet implemented.</p>
 		</div>
-		
+
 		<div id="leftmenu">
 			#def menu($title, $name, $content)
 			<div id="leftmenu_main">
@@ -50,17 +50,17 @@
 				</div>
 			</div>
 			#end def
-		
+
 			#def mainMenu
 			<ul>
 				<li><a href='#' onclick="load_maincontent('ajax/tv'); return false;">Television</a></li>
 				<li><a href='#' onclick="load_maincontent('ajax/radio'); return false;">Radio</a></li>
 			</ul>
 			#end def
-		
+
 			#def volumeMenu
 			<div class="volslider">
-					<p style="text-align:center; padding-bottom:8px;"> 
+					<p style="text-align:center; padding-bottom:8px;">
 						<label for="amount">Volume:</label>
 						<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold; width:40px;" />
 					</p>
@@ -77,14 +77,14 @@
 				<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">Timers</a></li>
 			</ul>
 			#end def
-		
+
 			#def infoMenu
 			<ul>
 				<li><a href="#" onclick="load_maincontent('ajax/boxinfo'); return false">Box Info</a></li>
 				<li><a href="#" onclick="load_maincontent('ajax/about'); return false">About</a></li>
 			</ul>
 			#end def
-		
+
 			#def streamMenu
 			<ul>
 				<li><a href='#' onclick="load_maincontent_spin('ajax/movies'); return false;">Movies</a></li>
@@ -96,14 +96,14 @@
 				#end if
 			</ul>
 			#end def
-		
+
 			#def searchMenu
 			<form action="" onSubmit="open_epg_search_pop(); return false;">
 				<div style="width:100%; text-align:center; padding-top:5px;"><input type="text" id="epgSearch" size="14" /></div>
 				<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button>Search</button></div>
 			</form>
 			#end def
-			
+
 			#def remoteMenu
 			<div style="width:100%; text-align:center;">
 				<img src="images/remotes/ow_remote.png" width="135" height="183" usemap="#menuremote" border="0">
@@ -143,7 +143,7 @@
 				</ul>
 			</div>
 			#end def
-			
+
 			#def configMenu
 			<ul>
 				#for $section in $configsections
@@ -151,7 +151,15 @@
 				#end for
 			</ul>
 			#end def
-		
+
+			#def vixconfigMenu
+			<ul>
+				#for $section in $configsections
+					<li><a href='#' onclick="load_maincontent('ajax/config?section=$section["key"]'); return false;">$section["description"]</a></li>
+				#end for
+			</ul>
+			#end def
+
 			<div id="menucontainer">
 				$menu("Main", "main", $mainMenu)
 				$menu("Volume Control", "volume", $volumeMenu)
@@ -160,6 +168,7 @@
 				$menu("Info", "info", $infoMenu)
 				$menu("Stream", "stream", $streamMenu)
 				$menu("Settings", "config", $configMenu)
+				$menu("ViX", "vixconfig", $vixconfigMenu)
 				$menu("Epg Search", "search", $searchMenu)
 			</div>
 			<div id="remotecontainer" style="display: none;">
@@ -187,7 +196,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div id="content">
 			<div id="content_container">
 			$content
