@@ -154,7 +154,7 @@
 
 			#def vixconfigMenu
 			<ul>
-				#for $section in $configsections
+				#for $section in $vixconfigsections
 					<li><a href='#' onclick="load_maincontent('ajax/config?section=$section["key"]'); return false;">$section["description"]</a></li>
 				#end for
 			</ul>
