@@ -141,6 +141,8 @@ class BaseController(resource.Resource):
 			ret['box'] = "gigablue"
 		if fileExists("/proc/stb/info/vumodel"):
 			ret['box'] = open("/proc/stb/info/vumodel").read().strip()
+		elif fileExists("/proc/stb/info/azmodel"):
+			ret['box'] = open("/proc/stb/info/model").read().strip()
 		elif fileExists("/proc/stb/info/boxtype"):
 			ret['box'] = open("/proc/stb/info/boxtype").read().strip()
 			
@@ -154,6 +156,12 @@ class BaseController(resource.Resource):
 			ret["remote"] = "et5x00"
 		elif ret["box"] == "gigablue":
 			ret["remote"] = "gigablue"
+		elif ret["box"] == "me" or ret["box"] == "minime":
+			ret["remote"] = "me"
+		elif ret["box"] == "premium" or ret["box"] == "premium+":
+			ret["remote"] = "premium"
+		elif ret["box"] == "elite" or ret["box"] == "ultra":
+			ret["remote"] = "elite"
 		else:
 			ret["remote"] = "dmm"
 		
