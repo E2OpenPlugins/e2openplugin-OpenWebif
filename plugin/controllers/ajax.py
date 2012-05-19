@@ -122,7 +122,7 @@ class AjaxController(BaseController):
 		section = "usage"
 		plugin = None
 		print 'request.args.keys()',request.args
-		if 'softcammanager' in request.args["section"][0]:
+		if 'vix' in request.args["section"][0]:
 			plugin = '/usr/lib/enigma2/python/Plugins/SystemPlugins/ViX/data/setup.xml'
 		if "section" in request.args.keys():
 			section = request.args["section"][0]
