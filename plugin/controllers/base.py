@@ -141,13 +141,13 @@ class BaseController(resource.Resource):
 		if open("/proc/stb/info/model",'r').read().strip() == "Gigablue":
 			ret['box'] = "gigablue"
 		if fileExists("/proc/stb/info/hwmodel"):
-			ret['box'] = open("/proc/stb/info/hwmodel").read().strip()
+			ret['box'] = open("/proc/stb/info/hwmodel").read().strip().lower()
 		elif fileExists("/proc/stb/info/vumodel"):
 			ret['box'] = open("/proc/stb/info/vumodel").read().strip()
 		elif fileExists("/proc/stb/info/boxtype"):
 			ret['box'] = open("/proc/stb/info/boxtype").read().strip()
 
-		if ret["box"] == "TM-TWIN-OE":
+		if ret["box"] == "twin":
 			ret["remote"] = "tm_twin"
 		elif ret["box"] == "duo" or ret["box"] == "solo" or ret["box"] == "uno":
 			ret["remote"] = "vu_normal"

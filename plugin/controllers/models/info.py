@@ -39,13 +39,13 @@ def getBasePath():
 	chunks.pop()
 	chunks.pop()
 	return "/".join(chunks)
-	
+
 def getPublicPath(file = ""):
 	return getBasePath() + "/public/" + file
-	
+
 def getViewsPath(file = ""):
 	return getBasePath() + "/controllers/views/" + file
-	
+
 def getPiconPath():
 	if pathExists("/media/usb/picon/"):
 		return "/media/usb/picon/"
@@ -57,7 +57,7 @@ def getPiconPath():
 		return "/picon/"
 	else:
 		return ""
-	
+
 def getInfo():
 	# TODO: get webif versione somewhere!
 	info = {}
@@ -65,13 +65,11 @@ def getInfo():
 	brand = "Dream Multimedia"
 	model = "unknown"
 	chipset = "unknown"
-	
+
 	if fileExists("/proc/stb/info/hwmodel"):
 		brand = "Technomate"
 		f = open("/proc/stb/info/hwmodel",'r')
-		model = f.readline().strip()
-		if model == "TM-TWIN-OE":
-			model = "twin"
+		model = f.readline().strip().lower()
 		f.close()
 	elif fileExists("/proc/stb/info/vumodel"):
 		brand = "Vuplus"
@@ -95,9 +93,9 @@ def getInfo():
 		f = open("/proc/stb/info/chipset",'r')
  		chipset = f.readline().strip()
  		f.close()
-		
+
 	info['chipset'] = chipset
-	
+
 	memFree = 0
 	for line in open("/proc/meminfo",'r'):
 	 	parts = line.split(':')
@@ -107,7 +105,7 @@ def getInfo():
 		elif key in ("MemFree", "Buffers", "Cached"):
 			memFree += int(parts[1].strip().split(' ',1)[0])
 	info['mem2'] = "%s kB" % memFree
-		
+
 	try:
 		f = open("/proc/uptime", "rb")
 		uptime = int(float(f.readline().split(' ', 2)[0].strip()))
@@ -121,7 +119,7 @@ def getInfo():
 	except:
 		uptimetext = "?"
 	info['uptime'] = uptimetext
-		
+
 	if fileExists("/etc/bhversion"):
 		f = open("/etc/bhversion",'r')
 		imagever = f.readline().strip()
@@ -132,14 +130,14 @@ def getInfo():
 		f.close()
 	else:
 		imagever = about.getImageVersionString()
-		
+
 	info["webifver"] = getOpenWebifVer()
 	info['imagever'] = imagever
 	info['enigmaver'] = about.getEnigmaVersionString()
 	info['kernelver'] = about.getKernelVersionString()
-	
+
 	info['fp_version'] = getFPVersion()
-	
+
 	info['tuners'] = []
 	for i in range(0, nimmanager.getSlotCount()):
 		info['tuners'].append({
@@ -158,7 +156,7 @@ def getInfo():
 			"mask": formatIp(iNetwork.getAdapterAttribute(iface, "netmask")),
 			"gw": formatIp(iNetwork.getAdapterAttribute(iface, "gateway"))
 		})
-			
+
 	info['hdd'] = []
 	for hdd in harddiskmanager.hdd:
 		if hdd.free() <= 1024:
@@ -181,14 +179,14 @@ def getFrontendStatus(session):
 	inf['snr_db'] = ""
 	inf['agc'] = ""
 	inf['ber'] = ""
-	
+
 	feinfo = session.nav.getCurrentService().frontendInfo()
 	frontendData = feinfo and feinfo.getAll(True)
-	
+
 	if frontendData is not None:
 		inf['tunertype'] = frontendData.get("tuner_type", "UNKNOWN")
 		inf['tunernumber'] = frontendData.get("tuner_number")
-		
+
 	frontendStatus = feinfo and feinfo.getFrontendStatus()
 	if frontendStatus is not None:
 		percent = frontendStatus.get("tuner_signal_quality")
@@ -219,7 +217,7 @@ def getStatusInfo(self):
 
 	# Get Current Volume and Mute Status
 	vcontrol = eDVBVolumecontrol.getInstance()
-	
+
 	statusinfo['volume'] = vcontrol.getVolume()
 	statusinfo['muted'] = vcontrol.isMuted()
 
@@ -229,7 +227,7 @@ def getStatusInfo(self):
 	if serviceref is not None:
 		serviceHandler = eServiceCenter.getInstance()
 		serviceHandlerInfo = serviceHandler.info(serviceref)
-	
+
 		service = self.session.nav.getCurrentService()
 		serviceinfo = service and service.info()
 		event = serviceinfo and serviceinfo.getEvent(0)
@@ -254,7 +252,7 @@ def getStatusInfo(self):
 		if serviceref:
 			statusinfo['currservice_serviceref'] = serviceref.toString()
 			statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
-		
+
 	# Get Standby State
 	if inStandby == None:
 		statusinfo['inStandby'] = "false"
