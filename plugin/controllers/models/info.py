@@ -81,6 +81,17 @@ def getInfo():
 		f = open("/proc/stb/info/boxtype",'r')
 		model = f.readline().strip()
 		f.close()
+	elif fileExists("/proc/stb/info/azmodel"):
+		brand = "AZBOX"
+		f = open("/proc/stb/info/model",'r')
+		model = f.readline().strip()
+		f.close()
+		if model == "me":
+			chipset = "SIGMA 8655"
+		elif model == "minime":
+			chipset = "SIGMA 8653"
+		else:
+			chipset = "SIGMA 8634"
 	else:
 		f = open("/proc/stb/info/model",'r')
  		model = f.readline().strip()

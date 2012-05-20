@@ -93,7 +93,7 @@ def getJsonFromConfig(cnf):
 			"current": cnf.value
 		}
 
-	elif cnf.__class__.__name__ == "ConfigNumber":
+	elif cnf.__class__.__name__ == "ConfigNumber" or cnf.__class__.__name__ == "ConfigInteger":
 		return {
 			"result": True,
 			"type": "number",
@@ -125,7 +125,7 @@ def saveConfig(path, value):
 			else:
 				values.append(int(value))
 			cnf.value = values
-		elif cnf.__class__.__name__ == "ConfigNumber":
+		elif cnf.__class__.__name__ == "ConfigNumber" or cnf.__class__.__name__ == "ConfigInteger":
 			cnf.value = int(value)
 		else:
 			cnf.value = value

@@ -91,6 +91,8 @@ class AjaxController(BaseController):
 		box['brand'] = "dmm"
 		if fileExists("/proc/stb/info/vumodel"):
 			box['brand'] = "vuplus"
+		elif fileExists("/proc/stb/info/azmodel"):
+			box['brand'] = "azbox"
 		return { "box": box }
 
 	def P_powerstate(self, request):
@@ -121,7 +123,6 @@ class AjaxController(BaseController):
 	def P_config(self, request):
 		section = "usage"
 		plugin = None
-		print 'request.args.keys()',request.args
 		if 'vix' in request.args["section"][0]:
 			plugin = '/usr/lib/enigma2/python/Plugins/SystemPlugins/ViX/data/setup.xml'
 		if "section" in request.args.keys():

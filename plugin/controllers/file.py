@@ -10,6 +10,10 @@ import os
 from twisted.web import static, resource, http
 from urllib import unquote, quote
 from Components.config import config
+from os import path as os_path, listdir
+from Tools.Directories import fileExists
+
+import json
 
 class FileController(resource.Resource):
 
@@ -23,7 +27,6 @@ class FileController(resource.Resource):
 			
 		if "file" in request.args:
 			filename = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
-
 
 			if not os.path.exists(filename):
 				return "File '%s' not found" % (filename)
@@ -43,5 +46,38 @@ class FileController(resource.Resource):
 				request.setHeader("Content-Disposition:", "attachment;filename=\"%s\"" % (filename.split('/')[-1]))
 				rfile = static.File(filename, defaultType = "application/octet-stream")
 				return rfile.render(request)
-		else:
-			return "Missing file parameter"
+			else: 
+				return "wrong action parameter"
+		
+		if "dir" in request.args:
+			path = request.args["dir"][0]
+
+			if "pattern" in request.args:
+				pattern = request.args["pattern"][0]
+			else:
+				pattern = None
+				
+			directories = []
+			files = []	
+			if fileExists(path):
+				try:
+					files = listdir(path)
+				except:
+					files = []
+
+				files.sort()
+				tmpfiles = files[:]
+				for x in tmpfiles:
+					if os_path.isdir(path + x):
+						directories.append(path + x + "/")
+						files.remove(x)
+
+				data = []
+				data.append({"result": True,"dirs": directories,"files": files})
+
+				request.setHeader("content-type", "text/plain")
+				request.write(json.dumps(data))
+				request.finish()
+				return server.NOT_DONE_YET
+			else:
+				return "path %s not exits" % (path)
