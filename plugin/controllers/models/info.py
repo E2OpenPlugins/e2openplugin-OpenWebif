@@ -66,14 +66,16 @@ def getInfo():
 	model = "unknown"
 	chipset = "unknown"
 	
-	if fileExists("/proc/stb/info/vumodel"):
-		brand = "Vuplus"
-		f = open("/proc/stb/info/vumodel",'r')
- 		model = f.readline().strip()
- 		f.close()
-	elif fileExists("/proc/stb/info/boxtype"):
+	if fileExists("/proc/stb/info/boxtype"):
 		brand = "Clarke-Xtrend"
 		f = open("/proc/stb/info/boxtype",'r')
+ 		model = f.readline().strip()
+ 		if model == "ini-3000" or model == "ini-5000" or model == "ini-7000":
+		    brand = "INI-Series"
+ 		f.close()
+	elif fileExists("/proc/stb/info/vumodel"):
+		brand = "Vuplus"
+		f = open("/proc/stb/info/vumodel",'r')
  		model = f.readline().strip()
  		f.close()
 	elif fileExists("/proc/stb/info/azmodel"):

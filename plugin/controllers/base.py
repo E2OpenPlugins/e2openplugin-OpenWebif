@@ -139,12 +139,13 @@ class BaseController(resource.Resource):
 		ret['box'] = "dmm"
 		if open("/proc/stb/info/model",'r').read().strip() == "Gigablue":
 			ret['box'] = "gigablue"
-		if fileExists("/proc/stb/info/vumodel"):
+		if fileExists("/proc/stb/info/boxtype"):
+			ret['box'] = open("/proc/stb/info/boxtype").read().strip()
+		elif fileExists("/proc/stb/info/vumodel"):
 			ret['box'] = open("/proc/stb/info/vumodel").read().strip()
 		elif fileExists("/proc/stb/info/azmodel"):
 			ret['box'] = open("/proc/stb/info/model").read().strip()
-		elif fileExists("/proc/stb/info/boxtype"):
-			ret['box'] = open("/proc/stb/info/boxtype").read().strip()
+
 			
 		if ret["box"] == "duo" or ret["box"] == "solo" or ret["box"] == "uno":
 			ret["remote"] = "vu_normal"
@@ -162,6 +163,10 @@ class BaseController(resource.Resource):
 			ret["remote"] = "premium"
 		elif ret["box"] == "elite" or ret["box"] == "ultra":
 			ret["remote"] = "elite"
+		elif ret["box"] == "ini-3000":
+			ret["remote"] = "ini-3000"
+		elif ret["box"] == "ini-7000" or ret["box"] == "ini-5000":
+			ret["remote"] = "ini-7000"
 		else:
 			ret["remote"] = "dmm"
 		
