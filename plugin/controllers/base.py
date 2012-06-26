@@ -167,6 +167,10 @@ class BaseController(resource.Resource):
 			ret["remote"] = "premium"
 		elif ret["box"] == "elite" or ret["box"] == "ultra":
 			ret["remote"] = "elite"
+		elif ret["box"] == "ini-3000":
+			ret["remote"] = "ini-3000"
+		elif ret["box"] == "ini-7000" or ret["box"] == "ini-5000":
+			ret["remote"] = "ini-7000"
 		else:
 			ret["remote"] = "dmm"
 
