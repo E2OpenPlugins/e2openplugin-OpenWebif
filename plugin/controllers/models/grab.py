@@ -7,7 +7,7 @@
 #                                                                            #
 ##############################################################################
 from enigma import eConsoleAppContainer
-from twisted.web import static, resource, http
+from twisted.web import static, resource, http, server
 import os
 
 GRAB_PATH = '/usr/bin/grab'
@@ -51,6 +51,7 @@ class grabScreenshot(resource.Resource):
 		
 		os.system(grabcommand)
 		self.grabFinished()
+		return server.NOT_DONE_YET
 
 	def grabFinished(self, data=""):
 		fileformat = self.fileformat
