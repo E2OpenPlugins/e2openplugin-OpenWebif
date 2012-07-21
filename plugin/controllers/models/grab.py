@@ -7,7 +7,7 @@
 #                                                                            #
 ##############################################################################
 from enigma import eConsoleAppContainer
-from twisted.web import static, resource, http
+from twisted.web import static, resource, http, server
 import os
 
 GRAB_PATH = '/usr/bin/grab'
@@ -18,21 +18,21 @@ class grabScreenshot(resource.Resource):
 		resource.Resource.__init__(self)
 		self.container = eConsoleAppContainer()
 		self.container.appClosed.append(self.grabFinished)
-		
+
 	def render(self, request):
 		self.request = request
 		graboptions = ""
-		
+
 		if "format" in request.args.keys():
 			self.fileformat = request.args["format"][0]
 		else:
 			self.fileformat = "jpg"
-			
+
 		if self.fileformat == "jpg":
 			graboptions += " -j 100"
 		elif self.fileformat == "png":
 			graboptions += " -p"
-				
+
 		if "r" in request.args.keys():
 			size = request.args["r"][0]
 			graboptions += " -r %s" % size
@@ -43,14 +43,15 @@ class grabScreenshot(resource.Resource):
 				graboptions += " -o"
 			elif mode == "video":
 				graboptions += " -v"
-				
+
 		self.filepath = "/tmp/screenshot." + self.fileformat
 		grabcommand = GRAB_PATH + graboptions + " " + self.filepath
-		
+
 		#self.container.execute(grabcommand)
-		
+
 		os.system(grabcommand)
 		self.grabFinished()
+		return server.NOT_DONE_YET
 
 	def grabFinished(self, data=""):
 		fileformat = self.fileformat
@@ -60,7 +61,7 @@ class grabScreenshot(resource.Resource):
 			self.request.setHeader('Content-Disposition', 'inline; filename=screenshot.%s;' % self.fileformat)
 			self.request.setHeader('Content-Type','image/%s' % fileformat)
 			self.request.setHeader('Content-Length', '%i' % os.path.getsize(self.filepath))
-			
+
 			file = open(self.filepath)
 			self.request.write(file.read())
 			file.close()
@@ -68,5 +69,5 @@ class grabScreenshot(resource.Resource):
 		except Exception, error:
 			self.request.setResponseCode(http.OK)
 			self.request.write("Error creating screenshot:\n %s" % error)
-			self.request.finish()				
-				
+			self.request.finish()
+
