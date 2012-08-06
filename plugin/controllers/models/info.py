@@ -80,6 +80,8 @@ def getInfo():
 		brand = "Clarke-Xtrend"
 		f = open("/proc/stb/info/boxtype",'r')
 		model = f.readline().strip()
+		if model == "et9500":
+			model = "et9x00"
 		if model == "ini-3000" or model == "ini-5000" or model == "ini-7000":
 			brand = "INI-Series"
 		f.close()
