@@ -137,8 +137,8 @@ class BaseController(resource.Resource):
 		ret['configsections'] = getConfigsSections()['sections']
 		ret['zapstream'] = getZapStream()['zapstream']
 		ret['box'] = "dmm"
-		if open("/proc/stb/info/boxtype",'r').read().strip() == "gigablue":
-			ret['box'] = "gigablue"
+		if fileExists('/proc/stb/info/boxtype') and open("/proc/stb/info/boxtype",'r').read().strip() == "gigablue":
+			ret['box'] = open("/proc/stb/info/boxtype").read().strip()
 		elif fileExists("/proc/stb/info/hwmodel"):
 			ret['box'] = open("/proc/stb/info/hwmodel").read().strip().lower()
 		elif fileExists("/proc/stb/info/vumodel"):
