@@ -42,8 +42,7 @@ class FileController(resource.Resource):
 			elif action == "delete":
 				request.setResponseCode(http.OK)
 				return "TODO: DELETE FILE: %s" % (filename)
-			#elif action == "download":
-			elif action == "downloadx": ## stupid fix for security hole DDamir
+			elif action == "download":
 				request.setHeader("Content-Disposition:", "attachment;filename=\"%s\"" % (filename.split('/')[-1]))
 				rfile = static.File(filename, defaultType = "application/octet-stream")
 				return rfile.render(request)
