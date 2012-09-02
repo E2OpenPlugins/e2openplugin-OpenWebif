@@ -71,11 +71,6 @@ def getInfo():
 		f = open("/proc/stb/info/hwmodel",'r')
 		model = f.readline().strip().lower()
 		f.close()
-	elif fileExists("/proc/stb/info/vumodel"):
-		brand = "Vuplus"
-		f = open("/proc/stb/info/vumodel",'r')
-		model = f.readline().strip()
-		f.close()
 	elif fileExists("/proc/stb/info/boxtype"):
 		brand = "Clarke-Xtrend"
 		f = open("/proc/stb/info/boxtype",'r')
@@ -96,6 +91,11 @@ def getInfo():
 			chipset = "SIGMA 8653"
 		else:
 			chipset = "SIGMA 8634"
+	elif fileExists("/proc/stb/info/vumodel"):
+		brand = "Vuplus"
+		f = open("/proc/stb/info/vumodel",'r')
+		model = f.readline().strip()
+		f.close()
 	else:
 		f = open("/proc/stb/info/model",'r')
  		model = f.readline().strip()
