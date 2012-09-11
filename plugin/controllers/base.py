@@ -138,15 +138,15 @@ class BaseController(resource.Resource):
 		ret['zapstream'] = getZapStream()['zapstream']
 		ret['box'] = "dmm"
 		if fileExists('/proc/stb/info/boxtype') and open("/proc/stb/info/boxtype",'r').read().strip() == "gigablue":
-			ret['box'] = open("/proc/stb/info/boxtype").read().strip()
+			ret['box'] = open("/proc/stb/info/model").read().strip()
 		elif fileExists("/proc/stb/info/hwmodel"):
 			ret['box'] = open("/proc/stb/info/hwmodel").read().strip().lower()
-		elif fileExists("/proc/stb/info/boxtype"):
-			ret['box'] = open("/proc/stb/info/boxtype").read().strip()
 		elif fileExists("/proc/stb/info/azmodel"):
 			ret['box'] = open("/proc/stb/info/model").read().strip()
 		elif fileExists("/proc/stb/info/vumodel"):
 			ret['box'] = open("/proc/stb/info/vumodel").read().strip()
+		elif fileExists("/proc/stb/info/boxtype"):
+			ret['box'] = open("/proc/stb/info/boxtype").read().strip()
 
 		if ret["box"] == "twin":
 			ret["remote"] = "tm_twin"
@@ -158,7 +158,7 @@ class BaseController(resource.Resource):
 			ret["remote"] = "et9x00"
 		elif ret["box"] == "et5x00" or ret["box"] == "et5000" or ret["box"] == "et6000":
 			ret["remote"] = "et5x00"
-		elif ret["box"] == "gigablue":
+		elif ret["box"] == "gb800solo" or ret["box"] == "gb800se" or ret["box"] == "gb800ue" or ret["box"] == "qbquad":
 			ret["remote"] = "gigablue"
 		elif ret["box"] == "me" or ret["box"] == "minime":
 			ret["remote"] = "me"

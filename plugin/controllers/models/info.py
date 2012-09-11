@@ -66,25 +66,23 @@ def getInfo():
 	model = "unknown"
 	chipset = "unknown"
 
-	if fileExists("/proc/stb/info/hwmodel"):
+	if fileExists('/proc/stb/info/boxtype') and open("/proc/stb/info/boxtype",'r').read().strip() == "gigablue":
+		brand = "GigaBlue"
+		model = open("/proc/stb/info/model").read().strip()
+	elif fileExists("/proc/stb/info/hwmodel"):
 		brand = "Technomate"
-		f = open("/proc/stb/info/hwmodel",'r')
-		model = f.readline().strip().lower()
-		f.close()
-	elif fileExists("/proc/stb/info/boxtype"):
+		model = open("/proc/stb/info/hwmodel").read().strip()
+	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("et"):
 		brand = "Clarke-Xtrend"
-		f = open("/proc/stb/info/boxtype",'r')
-		model = f.readline().strip()
+		model = open("/proc/stb/info/boxtype").read().strip()
 		if model == "et9500":
 			model = "et9x00"
-		if model == "ini-3000" or model == "ini-5000" or model == "ini-7000":
-			brand = "INI-Series"
-		f.close()
+	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("ini-"):
+		brand = "INI-Series"
+		model = open("/proc/stb/info/boxtype").read().strip()
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBOX"
-		f = open("/proc/stb/info/model",'r')
-		model = f.readline().strip()
-		f.close()
+		model = open("/proc/stb/info/model").read().strip()
 		if model == "me":
 			chipset = "SIGMA 8655"
 		elif model == "minime":
@@ -93,13 +91,9 @@ def getInfo():
 			chipset = "SIGMA 8634"
 	elif fileExists("/proc/stb/info/vumodel"):
 		brand = "Vuplus"
-		f = open("/proc/stb/info/vumodel",'r')
-		model = f.readline().strip()
-		f.close()
+		model = open("/proc/stb/info/vumodel").read().strip()
 	else:
-		f = open("/proc/stb/info/model",'r')
- 		model = f.readline().strip()
- 		f.close()
+		model = open("/proc/stb/info/model").read().strip()
 
 	info['brand'] = brand
 	info['model'] = model
