@@ -143,9 +143,9 @@ def getInfo():
 	info['enigmaver'] = about.getEnigmaVersionString()
 	info['kernelver'] = about.getKernelVersionString()
 
-	if fileExists("/usr/lib/enigma2/python/Tools/StbHardware.pyo"):
+	try:
 		from Tools.StbHardware import getFPVersion
-	else:
+	except ImportError:
 		from Tools.DreamboxHardware import getFPVersion
 
 	info['fp_version'] = getFPVersion()
