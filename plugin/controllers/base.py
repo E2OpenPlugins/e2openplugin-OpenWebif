@@ -158,6 +158,10 @@ class BaseController(resource.Resource):
 			ret["remote"] = "et9x00"
 		elif ret["box"] == "et5x00" or ret["box"] == "et5000" or ret["box"] == "et6000":
 			ret["remote"] = "et5x00"
+		elif ret["box"] == "et4000":
+			ret["remote"] = "et4000"
+		elif ret["box"] == "et6500":
+			ret["remote"] = "et6500"	
 		elif ret["box"] == "gb800solo" or ret["box"] == "gb800se" or ret["box"] == "gb800ue" or ret["box"] == "qbquad":
 			ret["remote"] = "gigablue"
 		elif ret["box"] == "me" or ret["box"] == "minime":
