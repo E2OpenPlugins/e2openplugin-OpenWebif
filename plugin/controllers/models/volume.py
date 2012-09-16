@@ -7,43 +7,50 @@
 #                                                                            #
 ##############################################################################
 
-from enigma import eDVBVolumecontrol
+from Components.VolumeControl import VolumeControl
 from GlobalActions import globalActionMap
 
 def getVolumeStatus():
-	vcontrol = eDVBVolumecontrol.getInstance()
+	owebif_vctrl = VolumeControl.instance
 	return {
 		"result": True,
 		"message": "Status",
-		"current": vcontrol.getVolume(),
-		"ismute": vcontrol.isMuted()
+		"current": owebif_vctrl.volctrl.getVolume(),
+		"ismute": owebif_vctrl.volctrl.isMuted()
 	}
 
 def setVolumeUp():
-	globalActionMap.actions["volumeUp"]()
+	owebif_vctrl = VolumeControl.instance
+	owebif_vctrl.volUp()
 	ret = getVolumeStatus()
 	ret["message"] = "Volume changed"
 	return ret
 	
 def setVolumeDown():
-	globalActionMap.actions["volumeDown"]()
+	owebif_vctrl = VolumeControl.instance
+	owebif_vctrl.volDown()
 	ret = getVolumeStatus()
 	ret["message"] = "Volume changed"
 	return ret
 
 def setVolumeMute():
-	globalActionMap.actions["volumeMute"]()
+	owebif_vctrl = VolumeControl.instance
+	owebif_vctrl.volMute()
 	ret = getVolumeStatus()
 	ret["message"] = "Mute toggled"
 	return ret
 
 def setVolume(value):
-	vcontrol = eDVBVolumecontrol.getInstance()
+	owebif_vctrl = VolumeControl.instance
+	owebif_vctrl.volumeDialog.show()
 	if value < 0:
 		value = 0
 	if value > 100:
 		value = 100
-	vcontrol.setVolume(value, value)
+	owebif_vctrl.volctrl.setVolume(value, value)
+	owebif_vctrl.volSave()
+	owebif_vctrl.volumeDialog.setValue(value)
+	owebif_vctrl.hideVolTimer.start(3000, True)
 	ret = getVolumeStatus()
 	ret["message"] = "Volume set to %i" % value
 	return ret
