@@ -77,6 +77,11 @@ def getInfo():
 		f = open("/proc/stb/info/vumodel",'r')
  		model = f.readline().strip()
  		f.close()
+	elif fileExists("/proc/stb/info/hwmodel"):
+		brand = "Technomate"
+		f = open("/proc/stb/info/hwmodel",'r')
+ 		model = f.readline().strip()
+ 		f.close()
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBOX"
 		f = open("/proc/stb/info/model",'r')
