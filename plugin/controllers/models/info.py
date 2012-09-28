@@ -71,7 +71,7 @@ def getInfo():
 
 	if fileExists('/proc/stb/info/boxtype') and open("/proc/stb/info/boxtype",'r').read().strip() == "gigablue":
 		brand = "GigaBlue"
-		model = open("/proc/stb/info/model").read().strip()
+		model = open("/proc/stb/info/gbmodel").read().strip()
 	elif fileExists("/proc/stb/info/hwmodel"):
 		brand = "Technomate"
 		model = open("/proc/stb/info/hwmodel").read().strip()
