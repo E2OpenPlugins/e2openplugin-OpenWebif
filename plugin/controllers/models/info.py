@@ -14,10 +14,6 @@ from Components.Harddisk import harddiskmanager
 from Components.Network import iNetwork
 from RecordTimer import parseEvent
 from Screens.Standby import inStandby
-try:
-	from Tools.StbHardware import getFPVersion
-except:
-	from Tools.DreamboxHardware import getFPVersion
 from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
 from enigma import eDVBVolumecontrol, eServiceCenter
@@ -151,6 +147,11 @@ def getInfo():
 	info['imagever'] = imagever
 	info['enigmaver'] = about.getEnigmaVersionString()
 	info['kernelver'] = about.getKernelVersionString()
+
+	try:
+		from Tools.StbHardware import getFPVersion
+	except ImportError:
+		from Tools.DreamboxHardware import getFPVersion
 
 	info['fp_version'] = getFPVersion()
 

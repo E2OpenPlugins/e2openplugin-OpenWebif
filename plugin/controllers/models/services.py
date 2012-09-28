@@ -417,7 +417,10 @@ def getChannelEpg(ref, begintime=-1, endtime=-1):
 				ev['sref'] = ref
 				ev['sname'] = filterName(event[6])
 				ev['tleft'] = int (((event[1] + event[2]) - event[7]) / 60)
-				ev['progress'] = int(((event[7] - event[1]) * 100 / event[2]) *4)
+				if ev['duration_sec'] == 0:
+					ev['progress'] = 0
+				else:
+					ev['progress'] = int(((event[7] - event[1]) * 100 / event[2]) *4)
 				ev['now_timestamp'] = event[7]
 			else:
 				ev['date'] = 0
