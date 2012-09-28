@@ -136,7 +136,7 @@ def getInfo():
 		f = open("/etc/bhversion",'r')
 		imagever = f.readline().strip()
 		f.close()
-	if fileExists("/etc/version"):
+	elif fileExists("/etc/version"):
 		f = open("/etc/version",'r')
 		imagever = f.readline().strip()
 		f.close()
