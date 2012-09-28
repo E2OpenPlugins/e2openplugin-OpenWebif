@@ -138,7 +138,7 @@ class BaseController(resource.Resource):
 		ret['zapstream'] = getZapStream()['zapstream']
 		ret['box'] = "dmm"
 		if fileExists('/proc/stb/info/boxtype') and open("/proc/stb/info/boxtype",'r').read().strip() == "gigablue":
-			ret['box'] = open("/proc/stb/info/model").read().strip()
+			ret['box'] = open("/proc/stb/info/gbmodel").read().strip()
 		elif fileExists("/proc/stb/info/hwmodel"):
 			ret['box'] = open("/proc/stb/info/hwmodel").read().strip().lower()
 		elif fileExists("/proc/stb/info/azmodel"):
@@ -162,7 +162,7 @@ class BaseController(resource.Resource):
 			ret["remote"] = "et4000"
 		elif ret["box"] == "et6500":
 			ret["remote"] = "et6500"	
-		elif ret["box"] == "gb800solo" or ret["box"] == "gb800se" or ret["box"] == "gb800ue" or ret["box"] == "qbquad":
+		elif ret["box"] == "gb800solo" or ret["box"] == "gb800se" or ret["box"] == "gb800ue" or ret["box"] == "quad":
 			ret["remote"] = "gigablue"
 		elif ret["box"] == "me" or ret["box"] == "minime":
 			ret["remote"] = "me"
