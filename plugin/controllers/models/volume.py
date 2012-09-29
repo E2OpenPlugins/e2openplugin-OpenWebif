@@ -8,7 +8,6 @@
 ##############################################################################
 
 from Components.VolumeControl import VolumeControl
-from GlobalActions import globalActionMap
 
 def getVolumeStatus():
 	owebif_vctrl = VolumeControl.instance
