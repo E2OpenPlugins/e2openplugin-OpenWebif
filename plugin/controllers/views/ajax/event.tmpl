@@ -1,0 +1,12 @@
+<div id="leftmenu_main">
+<div id="leftmenu_top" class="handle" style="cursor:move">$event[0][5]
+<div id="leftmenu_expander_main" class="leftmenu_icon leftmenu_icon_collapse" onclick="\$('#eventdescription').hide(200)"></div>
+</div>
+<div id="leftmenu_container_main" style="padding:6px">
+<div style="font-size: 13px; font-weight: bold">$event[0][2]</div>
+#if $event[0][2] != $event[0][3]
+<div style="font-size: 12px; font-weight: bold">$event[0][3]</div>
+#end if
+<p>$(event[0][4].replace("\n","<br/>"))</p>
+</div>
+</div>
