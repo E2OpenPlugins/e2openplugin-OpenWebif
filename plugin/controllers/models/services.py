@@ -15,7 +15,11 @@ from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache, getBestPlayableServiceReference
 from time import time, localtime, strftime, mktime
 from info import getPiconPath
-from collections import OrderedDict
+
+try:
+	from collections import OrderedDict
+except ImportError:
+	from Plugins.Extensions.OpenWebif.backport.OrderedDict import OrderedDict
 
 def filterName(name):
 	if name is not None:
@@ -639,7 +643,11 @@ def getBouquetNoExtEpg(ref, begintime=-1, endtime=None):
 	return { "events": ret, "result": True, "picons": picons }
 
 def getPicon(sname):
-	pos = sname.rfind(':')
+	if sname is not None:
+		pos = sname.rfind(':')
+	else:
+		return "/images/default_picon.png"
+		
 	if pos != -1:
 		sname = sname[:pos].rstrip(':').replace(':','_') + ".png"
 	filename = getPiconPath() + sname
