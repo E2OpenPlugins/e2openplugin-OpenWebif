@@ -226,4 +226,22 @@ def getConfigsSections():
 		"result": True,
 		"sections": sections
 	}
-	
+
+def privSettingValues(prefix, top, result):
+	for (key, val) in top.items():
+		name = prefix + "." + key
+		if isinstance(val, dict):
+			privSettingValues(name, val, result)
+		elif isinstance(val, tuple):
+			result.append((name, val[0]))
+		else:
+			result.append((name, val))	
+
+def getSettings():
+	configkeyval = []
+	privSettingValues("config", config.saved_value, configkeyval)
+	return {
+		"result": True,
+		"settings": configkeyval
+	}
+

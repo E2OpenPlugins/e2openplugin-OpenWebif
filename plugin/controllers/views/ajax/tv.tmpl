@@ -8,6 +8,7 @@
 				<input type="radio" id="tvbutton2" name="tvbutton" /><label for="tvbutton2">Providers</label>
 				<input type="radio" id="tvbutton3" name="tvbutton" /><label for="tvbutton3">Satellites</label>
 				<input type="radio" id="tvbutton4" name="tvbutton" /><label for="tvbutton4">All Channels</label>
+				<input type="radio" id="tvbutton5" name="tvbutton" /><label for="tvbutton5">EPG</label>
 			</span>
 		</span>
 	</div>
@@ -31,6 +32,9 @@
 	});
 	\$('#tvbutton4').click(function(){
 		\$("#tvcontent").html(loadspinner).load("ajax/channels");
+	});
+	\$('#tvbutton5').click(function(){
+		\$("#tvcontent").html(loadspinner).load('ajax/epgbouquet');
 	});
 	
 	\$( "#tvbutton" ).buttonset();
