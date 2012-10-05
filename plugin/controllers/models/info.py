@@ -255,8 +255,8 @@ def getStatusInfo(self):
 		curEvent = parseEvent(event)
 		statusinfo['currservice_name'] = curEvent[2].replace('\xc2\x86', '').replace('\xc2\x87', '')
 		statusinfo['currservice_serviceref'] = serviceref.toString()
-		statusinfo['currservice_begin'] = strftime("%H:%M", (localtime(int(curEvent[0])+(config.recording.margin_before.value*60))))
-		statusinfo['currservice_end'] = strftime("%H:%M", (localtime(int(curEvent[1])-(config.recording.margin_after.value*60))))
+		statusinfo['currservice_begin'] = strftime("%H:%M", (localtime(int(curEvent[0])+(config.recording.margin_before.getValue()*60))))
+		statusinfo['currservice_end'] = strftime("%H:%M", (localtime(int(curEvent[1])-(config.recording.margin_after.getValue()*60))))
 		statusinfo['currservice_description'] = curEvent[3]
 		if len(curEvent[3]) > 220:
 			statusinfo['currservice_description'] = curEvent[3][0:220] + "..."
