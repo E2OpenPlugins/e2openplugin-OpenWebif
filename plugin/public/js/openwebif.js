@@ -161,9 +161,14 @@ function load_maincontent_spin(url) {
 	return false;
 }
 
-function webapi_execute(url) {
+function webapi_execute(url, callback) {
 	var jqxhr = $.ajax( url )
-//    	.done(function() { alert(jqxhr.responseXml); })
+    	.done(function() { 
+    		if (typeof callback !== 'undefined') {
+    			callback();
+    		}
+    		// alert(jqxhr.responseXml); 
+    	});
 	return false;
 }
 
@@ -210,16 +215,16 @@ function toggleTimerStatus(sRef, begin, end) {
 }
 
 function deleteTimer(sRef, begin, end) {
-	answer = confirm("Really delete this timer?");
+	var answer = confirm("Really delete this timer?");
 	if (answer == true) {
-		webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end);
-		// TODO: check the api result first
-		$('#'+begin+'-'+end).remove();
+		webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end, 
+			function() { $('#'+begin+'-'+end).remove(); } 
+		);
 	}
 }
 
 function cleanupTimer() {
-	webapi_execute("/api/timercleanup");
+	webapi_execute("/api/timercleanup", function() { load_maincontent('/ajax/timers'); });
 }
 
 function deleteMovie(sRef, divid) {
@@ -302,8 +307,8 @@ function sendMessage() {
 }
 
 function toggleMenu(name) {
-	expander_id = "#leftmenu_expander_" + name
-	container_id = "#leftmenu_container_" + name
+	var expander_id = "#leftmenu_expander_" + name
+	var container_id = "#leftmenu_container_" + name
 	if ($(expander_id).hasClass("leftmenu_icon_collapse")) {
 		$(expander_id).removeClass("leftmenu_icon_collapse");
 		$(container_id).show('fast')
