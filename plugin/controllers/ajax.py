@@ -62,7 +62,10 @@ class AjaxController(BaseController):
 		return getEventDesc(request.args["sref"][0], request.args["idev"][0])
 
 	def P_event(self, request):
-		return getEvent(request.args["sref"][0], request.args["idev"][0])
+		event = getEvent(request.args["sref"][0], request.args["idev"][0])
+		event['event']['recording_margin_before'] = config.recording.margin_before.value
+		event['event']['recording_margin_after'] = config.recording.margin_after.value
+		return event
 
 	def P_about(self, request):
 		info = {}
@@ -120,6 +123,9 @@ class AjaxController(BaseController):
 
 	def P_timers(self, request):
 		return getTimers(self.session)
+		
+	def P_edittimer(self, request):
+		return {}
 		
 	def P_tv(self, request):
 		return {}

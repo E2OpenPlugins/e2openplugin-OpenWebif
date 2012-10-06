@@ -524,16 +524,34 @@ function editTimer(serviceref, begin, end) {
 	});
 }
 
-function addTimer() {
-	current_serviceref = "";
+function addTimer(evt) {
+	current_serviceref = '';
 	current_begin = -1;
 	current_end = -1;
+
+	var begin = -1;
+	var end = -1;
+	var serviceref = '';
+	var title = '';
+	var desc = '';
+	var margin_before = 0;
+	var margin_after = 0;
+	
+	if (typeof evt !== 'undefined') {
+		begin = evt.begin;
+		end = evt.begin+evt.duration;
+		serviceref = evt.sref;
+		title = evt.title;
+		desc = evt.shortdesc;
+		margin_before = evt.recording_margin_before;
+		margin_after = evt.recording_margin_after;
+	}
 	
 	if (!timeredit_initialized)
 		initTimerEdit();
 		
-	$('#timername').val("");
-	$('#description').val("");
+	$('#timername').val(title);
+	$('#description').val(desc);
 	$('#dirname').val("None");
 	$('#tags').val("");
 	$('#enabled').prop("checked", true);
@@ -544,10 +562,12 @@ function addTimer() {
 	for (var i=0; i<7; i++) $('#day'+i).attr('checked', false);
 	$('#repeatdays').buttonset('refresh');
 
-	var begindate = new Date();
+	var begindate = begin !== -1 ? new Date( (Math.round(begin) - margin_before*60) * 1000) : new Date();
 	$('#timerbegin').datetimepicker('setDate', begindate);
-	var enddate = new Date(begindate.getTime() + (60*60*1000));
+	var enddate = end !== -1 ? new Date( (Math.round(end) + margin_after*60) * 1000) : new Date(begindate.getTime() + (60*60*1000));
 	$('#timerend').datetimepicker('setDate', enddate);
+
+	$('#bouquet_select').val(serviceref);
 	
 	$('#editTimerForm').dialog("open");
 	$('#editTimerForm').dialog("option", "title", "Add Timer");

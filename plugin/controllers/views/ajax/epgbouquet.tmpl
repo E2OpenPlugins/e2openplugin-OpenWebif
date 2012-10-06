@@ -1,5 +1,6 @@
 #from urllib import quote
-#filter WebSafe
+#from json import dumps
+#from Plugins.Extensions.OpenWebif.controllers.views.ajax.renderevtblock import renderEvtBlock
 <style>
 	table { font-family: Verdana; font-size: 11px; }
 	tr { vertical-align: top }
@@ -14,14 +15,14 @@
 	.bq.selected { color: #A9D1FA; }
 	.plus { background-color: #dfeffc; font-size: 13px; font-weight: bold; color: #1c478e; padding: 2px 4px; line-height: 21px; cursor: pointer; white-space: nowrap; }
 	.plus.selected { color: #ea7409; }
-	#eventdescription { width: 350px; height: auto; position: fixed; top: 220px; left: 350px; z-index: 1000; display: none; overflow: auto; }
+	#eventdescription { width: 375px; height: auto; position: fixed; top: 220px; left: 350px; z-index: 1000; display: none; overflow: auto; }
 }
 </style>
 
 <table style="margin:0">
 <tr>
 #for $slot in range(0,7)
-    <td class="plus #if $slot==$day then 'selected' else '' #" js:day="$(slot)">$(time.strftime("%a", time.localtime(time.time()+86400*slot)))</td>
+    <td class="plus #if $slot==$day then 'selected' else '' #" js:day="$(slot)">${time.strftime("%a", time.localtime(time.time()+86400*slot))}</td>
 #end for
 </tr>
 </table>
@@ -34,10 +35,11 @@
 </tr>
 </table>
 
+#set $renderEventBlock = $renderEvtBlock()
 <table cellpadding="0" cellspacing="0">
 <tr>
 	#for $sname, $eventlist in $events.iteritems()
-	<td class="border"><div class="service"><img src="$(picons[$sname])" /> $str($sname)</div></td>
+	<td class="border"><div class="service"><img src="$(picons[$sname])" /> $sname</div></td>
 	#end for
 </tr>
 	#for $slot in range(0,12)
@@ -45,16 +47,7 @@
 	#for $sname, $eventlist in $events.iteritems()
 <td class="border">
 	#for $event in $eventlist[$slot]
-        <div class="event" js:ref="$str($event.ref)" js:id="$str($event.id)">
-	    <div style="width:40px; float:left; padding: 0 3px">$time.strftime("%H:%M", time.localtime($event.begin_timestamp))</div>
-	    <div style="width:144px; float:left">
-                <div class="title">$str($event.title)</div>
-                #if $event.title != $event.shortdesc
-                <div class="desc">$str($event.shortdesc)</div>
-                #end if
-            </div>
-            <div style="clear:left"></div>
-        </div>
+		$renderEventBlock.render($event)
 	#end for
 </td>
 	#end for
@@ -63,8 +56,11 @@
 </table>
 
 <div id="eventdescription"></div>
+<div id="editTimerForm" title="Edit Timer"></div>
 
 <script>
+var picons = $dumps($picons);
+var reloadTimers = false;
 \$(".bq").click(function() {
     var id = \$(this).attr("js:ref");
     \$("#tvcontent").html(loadspinner).load('ajax/epgbouquet?bref='+id);
@@ -72,13 +68,13 @@
 \$(".event").click(function() {
     var id = \$(this).attr("js:id");
     var ref = \$(this).attr("js:ref");
-    \$("#eventdescription").load('ajax/event?idev='+id+'&sref='+ref, function() { 
-	\$("#eventdescription").show(200).draggable( { handle: ".handle" } );
+    \$("#eventdescription").load('ajax/event?idev='+id+'&sref='+escape(ref), function() { 
+		\$("#eventdescription").show(200).draggable( { handle: ".handle" } );
     });
 });
 \$(".plus").click(function() {
 	var day = \$(this).attr("js:day");
-	\$("#tvcontent").html(loadspinner).load('ajax/epgbouquet?bref=$(quote($bref))&day='+day);
+	\$("#tvcontent").html(loadspinner).load('ajax/epgbouquet?bref=${quote($bref)}&day='+day);
 });
+\$('#editTimerForm').load('/ajax/edittimer');
 </script>
-#end filter
