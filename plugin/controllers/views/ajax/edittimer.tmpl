@@ -1,0 +1,215 @@
+<form>
+<div>
+	<div class="timerlist_row">
+		<span style="width: 100px; float: left;">Name:</span>
+		<span><input type="text" name="timername" id="timername" style="width: 450px;" class="text ui-widget-content ui-corner-all" /></span>
+	</div>
+	
+	<div class="timerlist_row">
+		<span style="width: 100px; float: left;">Description:</span>
+		<span><textarea name="description" id="description" style="width: 450px; height: 50px;" class="text ui-widget-content ui-corner-all" /></span>
+	</div>
+	
+	<div class="timerlist_row">
+	<span style="width: 100px; float: left;">Channel:</span>
+		<span>
+		<select id="bouquet_select" name="bouquet_select">
+			<option value="0">Nothing</option>
+		</select>
+		</span>
+	</div>
+	
+	<div class="timerlist_row">
+		<span style="width: 100px; float: left;">Start:</span>
+		<span>
+		<input type="text" name="timerbegin" id="timerbegin" value="" class="text ui-widget-content ui-corner-all" />
+		</span>
+	</div>
+
+	<div class="timerlist_row">
+		<span style="width: 100px; float: left;">End:</span>
+		<span>
+		<input type="text" name="timerend" id="timerend" value="" class="text ui-widget-content ui-corner-all" />
+		</span>
+	</div>
+	
+	<div class="timerlist_row">
+		<span style="width: 100px; float: left; block: inline;">Enabled:</span>
+		<span style="margin: 5px;">
+			<input type="checkbox" name="enabled" id="enabled" value="0" />
+		</span>
+	</div>
+	
+	<div class="timerlist_row">
+		<span style="width: 100px; float: left;">Just play:</span>
+		<span style="margin: 5px;">
+			<input type="checkbox" name="justplay" id="justplay" value="0" />
+		</span>
+	</div>
+	
+	<div class="timerlist_row">
+		<span style="width: 100px; float: left;">Repeated:</span>
+		<span id="repeatdays" style="margin: 5px;">
+		#set $i=0
+		#for $day in ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+			#set $value = 2 ** $i
+			<input type="checkbox" name="repeated" id="day$i" value="$value" /><label for="day$i">$day</label>
+			#set $i=$i+1
+		#end for
+		</span>
+	</div>
+	
+	<div class="timerlist_row">
+		<span style="width: 100px; float: left;">Location:</span>
+		<span>
+		<select id="dirname" name="dirname">
+			<option value="None">Default</option>
+		</select>
+		</span>
+	</div>
+	
+	<div class="timerlist_row">
+		<span style="width: 100px; float: left;">Tags:</span>
+		<span>
+		<select id="tags" name="tags">
+			<option value="">Nothing</option>
+		</select>
+		</span>
+	</div>
+	
+	<div class="timerlist_row">
+		<span style="width: 100px; float: left;">After Event:</span>
+		<span>
+		<select id="afterevent" name="afterevent">
+			<option value="1">Standby</option>
+			<option value="2">Shutdown</option>
+			<option value="3" selected="">Auto</option>
+		</select>
+		</span>
+	</div>
+	<div id="errorbox" class="timerlist_row" style="color: red;">
+		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+			<span id="error"></span>
+		</div>
+	</div>
+</div>
+</form>
+
+<script src="/js/jquery.timerpicker.js"></script>
+
+<script type="text/javascript">
+
+#raw
+
+$('#timerbegin').datetimepicker({
+	dateFormat: 'dd.mm.yy',
+	timeFormat: 'hh:mm',
+	onClose: function(dateText, inst) {
+		if ($('#timerend').val() != '' &&
+			$(this).datetimepicker('getDate') > $('#timerend').datetimepicker('getDate')) {
+				$('#error').text("Start time is after end time");
+				$('#errorbox').show();
+		}
+		else
+			$('#errorbox').hide();
+	}
+});
+$('#timerend').datetimepicker({
+	dateFormat: 'dd.mm.yy',
+	timeFormat: 'hh:mm',
+	onClose: function(dateText, inst) {
+		if ($('#timerbegin').val() != '' &&	
+			$('#timerbegin').datetimepicker('getDate') > $(this).datetimepicker('getDate')) {
+				$('#error').text("Start time is after end time");
+				$('#errorbox').show();
+		}
+		else
+			$('#errorbox').hide();
+	}
+});
+
+$('#repeatdays').buttonset();
+
+$('#editTimerForm').dialog({
+	autoOpen: false,
+	height: 455,
+	width: 600,
+	modal: true,
+	buttons: {
+		"Save": function() {
+			var begindate = new Date($('#timerbegin').datetimepicker('getDate'));				
+			var enddate = new Date($('#timerend').datetimepicker('getDate'));
+
+			var repeated = 0;
+			$('[name="repeated"]:checked').each(function() {
+				repeated += parseInt($(this).val());
+			});
+			var urldata = { sRef: $('#bouquet_select').val(),
+				begin: Math.round(begindate.getTime() / 1000),
+				end: Math.round(enddate.getTime() / 1000),
+				name: $('#timername').val(),
+				description: $('#description').val(),
+				disabled: ($('#enabled').is(':checked')?"0":"1"),
+				justplay: ($('#justplay').is(':checked')?"1":"0"),
+				afterevent: $('#afterevent').val(),
+				dirname: $('#dirname').val(),
+				tags: $('#tags').val(),
+				repeated: repeated };
+			
+			var canclose = false;
+			if (current_serviceref == "") {
+				$.ajax({
+					async: false,
+					url: "/api/timeradd?",
+					data: urldata,
+					success: function(data) {
+						result = $.parseJSON(data);
+						if (result.result) {
+							canclose = true;
+						}
+						else {
+							$("#error").text(result.message);
+							$("#errorbox").show();
+						}
+					}
+				});
+			}
+			else {
+				urldata['channelOld'] = current_serviceref;
+				urldata['beginOld'] = Math.round(current_begin);
+				urldata['endOld'] = Math.round(current_end);
+				$.ajax({
+					async: false,
+					url: "/api/timerchange?",
+					data: urldata,
+					success: function(data) {
+						result = $.parseJSON(data);
+						if (result.result) {
+							canclose = true;
+						}
+						else {
+							$("#error").text(result.message);
+							$("#errorbox").show();
+						}
+					}
+				});
+			}
+			
+			if (canclose) {
+				if (reloadTimers) $("#content_container").load("/ajax/timers");
+				$(this).dialog("close");
+			}
+		},
+		Cancel: function() {
+			$(this).dialog("close");
+		}
+	},
+	close: function() {
+		return;
+	}
+});
+
+#end raw
+
+</script>

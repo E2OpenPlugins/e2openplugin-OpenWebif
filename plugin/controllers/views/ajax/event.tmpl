@@ -1,12 +1,45 @@
+#from urllib import quote
+#from json import dumps
+#set $etime = time.localtime($event['begin'])
+#set $channel = $event['channel'].replace("'", r"\'")
+
+<!-- Icons from: http://findicons.com/pack/1987/eico -->
 <div id="leftmenu_main">
-<div id="leftmenu_top" class="handle" style="cursor:move">$event[0][5]
-<div id="leftmenu_expander_main" class="leftmenu_icon leftmenu_icon_collapse" onclick="\$('#eventdescription').hide(200)"></div>
-</div>
-<div id="leftmenu_container_main" style="padding:6px">
-<div style="font-size: 13px; font-weight: bold">$event[0][2]</div>
-#if $event[0][2] != $event[0][3]
-<div style="font-size: 12px; font-weight: bold">$event[0][3]</div>
+	<div id="leftmenu_top" class="handle" style="cursor:move">$event['channel']
+		<div id="leftmenu_expander_main" class="leftmenu_icon leftmenu_icon_collapse" onclick="\$('#eventdescription').hide(200)"></div>
+	</div>
+	<div id="leftmenu_container_main" style="padding:6px">
+		<div style="float:left; width:80px;">
+			<div id="station" style="background-color: #1c478e; padding:2px; width:75px; text-align:center; overflow:hidden">$event['channel']</div>
+			<div style="background-color: #1c478e; color:#fff; width:79px; font-size:23px; margin-top: 5px; text-align:center">
+				$time.strftime("%H:%M", $etime)<br/>
+				<span style="font-size:12px; color:#A9D1FA">$int($event['duration']/60) min</span>
+			</div>
+
+			<div style="background-color: #1c478e; color:#fff; width:79px;margin:5px 0">
+				<div style="font-size:23px; text-align:center">$time.strftime("%a", $etime)</div>
+				<div style="color:#A9D1FA; text-align:center">$time.strftime("%d %B", $etime)</div>
+			</div>
+
+			<div>
+			    <img src="/images/ico_timer.png" alt="Add Timer" title="Add Timer" style="cursor:pointer" onclick="addTimer(theevent)" />
+			    <img src="/images/ico_zap.png" alt="Zap" title="Zap" style="cursor:pointer" onclick="zapChannel('$str($event['sref'])', '$channel')" />
+				<a href="/web/stream.m3u?ref=$quote($event['sref'])&name=$quote($event['channel'])" target="_blank"><img 
+					src="/images/ico_stream2.png" alt="Stream $channel" title="Stream $channel" style="cursor:pointer" /></a>
+			</div>
+		</div>
+		<div style="float:left; width:250px; margin-left: 5px">
+			<div style="font-size: 13px; font-weight: bold">$event['title']</div>
+#if $event['title'] != $event['shortdesc']
+			<div style="font-size: 12px; font-weight: bold">$event['shortdesc']</div>
 #end if
-<p>$(event[0][4].replace("\n","<br/>"))</p>
+			<p>$(event['longdesc'].replace("\n","<br/>"))</p>
+		</div>
+		<div style="clear:left"></div>
+	</div>
 </div>
-</div>
+<script>
+var theevent = $dumps($event);
+if (picons[theevent['channel']])
+	\$('#station').html('<img src="'+picons[theevent['channel']]+'" width="75" />');
+</script>
