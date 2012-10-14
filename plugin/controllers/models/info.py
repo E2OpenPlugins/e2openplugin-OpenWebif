@@ -79,6 +79,9 @@ def getInfo():
 	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("ini-"):
 		brand = "INI-Series"
 		model = open("/proc/stb/info/boxtype").read().strip()
+	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("xp"):
+		brand = "XP-Series"
+		model = open("/proc/stb/info/boxtype").read().strip()		
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBOX"
 		model = open("/proc/stb/info/model").read().strip()
