@@ -161,9 +161,14 @@ function load_maincontent_spin(url) {
 	return false;
 }
 
-function webapi_execute(url) {
+function webapi_execute(url, callback) {
 	var jqxhr = $.ajax( url )
-//    	.done(function() { alert(jqxhr.responseXml); })
+    	.done(function() { 
+    		if (typeof callback !== 'undefined') {
+    			callback();
+    		}
+    		// alert(jqxhr.responseXml); 
+    	});
 	return false;
 }
 
@@ -210,16 +215,16 @@ function toggleTimerStatus(sRef, begin, end) {
 }
 
 function deleteTimer(sRef, begin, end) {
-	answer = confirm("Really delete this timer?");
+	var answer = confirm("Really delete this timer?");
 	if (answer == true) {
-		webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end);
-		// TODO: check the api result first
-		$('#'+begin+'-'+end).remove();
+		webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end, 
+			function() { $('#'+begin+'-'+end).remove(); } 
+		);
 	}
 }
 
 function cleanupTimer() {
-	webapi_execute("/api/timercleanup");
+	webapi_execute("/api/timercleanup", function() { load_maincontent('/ajax/timers'); });
 }
 
 function deleteMovie(sRef, divid) {
@@ -302,8 +307,8 @@ function sendMessage() {
 }
 
 function toggleMenu(name) {
-	expander_id = "#leftmenu_expander_" + name
-	container_id = "#leftmenu_container_" + name
+	var expander_id = "#leftmenu_expander_" + name
+	var container_id = "#leftmenu_container_" + name
 	if ($(expander_id).hasClass("leftmenu_icon_collapse")) {
 		$(expander_id).removeClass("leftmenu_icon_collapse");
 		$(container_id).show('fast')
@@ -519,16 +524,34 @@ function editTimer(serviceref, begin, end) {
 	});
 }
 
-function addTimer() {
-	current_serviceref = "";
+function addTimer(evt) {
+	current_serviceref = '';
 	current_begin = -1;
 	current_end = -1;
+
+	var begin = -1;
+	var end = -1;
+	var serviceref = '';
+	var title = '';
+	var desc = '';
+	var margin_before = 0;
+	var margin_after = 0;
+	
+	if (typeof evt !== 'undefined') {
+		begin = evt.begin;
+		end = evt.begin+evt.duration;
+		serviceref = evt.sref;
+		title = evt.title;
+		desc = evt.shortdesc;
+		margin_before = evt.recording_margin_before;
+		margin_after = evt.recording_margin_after;
+	}
 	
 	if (!timeredit_initialized)
 		initTimerEdit();
 		
-	$('#timername').val("");
-	$('#description').val("");
+	$('#timername').val(title);
+	$('#description').val(desc);
 	$('#dirname').val("None");
 	$('#tags').val("");
 	$('#enabled').prop("checked", true);
@@ -539,10 +562,12 @@ function addTimer() {
 	for (var i=0; i<7; i++) $('#day'+i).attr('checked', false);
 	$('#repeatdays').buttonset('refresh');
 
-	var begindate = new Date();
+	var begindate = begin !== -1 ? new Date( (Math.round(begin) - margin_before*60) * 1000) : new Date();
 	$('#timerbegin').datetimepicker('setDate', begindate);
-	var enddate = new Date(begindate.getTime() + (60*60*1000));
+	var enddate = end !== -1 ? new Date( (Math.round(end) + margin_after*60) * 1000) : new Date(begindate.getTime() + (60*60*1000));
 	$('#timerend').datetimepicker('setDate', enddate);
+
+	$('#bouquet_select').val(serviceref);
 	
 	$('#editTimerForm').dialog("open");
 	$('#editTimerForm').dialog("option", "title", "Add Timer");

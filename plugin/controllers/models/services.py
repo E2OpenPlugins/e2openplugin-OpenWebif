@@ -13,9 +13,13 @@ from Components.config import config
 from ServiceReference import ServiceReference
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache, getBestPlayableServiceReference
-from time import time, localtime, strftime
+from time import time, localtime, strftime, mktime
 from info import getPiconPath
 
+try:
+	from collections import OrderedDict
+except ImportError:
+	from Plugins.Extensions.OpenWebif.backport.OrderedDict import OrderedDict
 
 def filterName(name):
 	if name is not None:
@@ -393,6 +397,22 @@ def getEventDesc(ref, idev):
 	return { "description": description }
 
 
+def getEvent(ref, idev):
+	epgcache = eEPGCache.getInstance()
+	events = epgcache.lookupEvent(['BDTSENRX', (ref, 2, int(idev))])
+	info = {}
+	for event in events:
+		info['begin'] = event[0]
+		info['duration'] = event[1]
+		info['title'] = event[2]
+		info['shortdesc'] = event[3]
+		info['longdesc'] = event[4]
+		info['channel'] = event[5]
+		info['sref'] = event[6]
+		break;
+	return { 'event': info }
+
+
 def getChannelEpg(ref, begintime=-1, endtime=-1):
 	ret = []
 	ev = {}
@@ -417,7 +437,10 @@ def getChannelEpg(ref, begintime=-1, endtime=-1):
 				ev['sref'] = ref
 				ev['sname'] = filterName(event[6])
 				ev['tleft'] = int (((event[1] + event[2]) - event[7]) / 60)
-				ev['progress'] = int(((event[7] - event[1]) * 100 / event[2]) *4)
+				if ev['duration_sec'] == 0:
+					ev['progress'] = 0
+				else:
+					ev['progress'] = int(((event[7] - event[1]) * 100 / event[2]) *4)
 				ev['now_timestamp'] = event[7]
 			else:
 				ev['date'] = 0
@@ -588,8 +611,53 @@ def getSearchSimilarEpg(ref, eventid):
 
 	return { "events": ret, "result": True }
 
+def getBouquetNoExtEpg(ref, begintime=-1, endtime=None):
+	ret = OrderedDict()
+	services = eServiceCenter.getInstance().list(eServiceReference(ref))
+	if not services:
+		return { "events": ret, "result": False, "slot": None }
+
+	search = ['IBTSRN']
+	for service in services.getContent('S'):
+		if endtime:
+			search.append((service, 0, begintime, endtime))
+		else:
+			search.append((service, 0, begintime))
+
+	epgcache = eEPGCache.getInstance()
+	events = epgcache.lookupEvent(search)
+	offset = None
+	picons = {}
+	if events is not None:
+		for event in events:
+			ev = {}
+			ev['id'] = event[0]
+			ev['begin_timestamp'] = event[1]
+			ev['title'] = event[2]
+			ev['shortdesc'] = event[3]
+			ev['ref'] = event[4]
+			channel = filterName(event[5])
+			if not ret.has_key(channel):
+				ret[channel] = [ [], [], [], [], [], [], [], [], [], [], [], [] ]
+				picons[channel] = getPicon(event[4])
+
+			if offset is None:
+				et = localtime(event[1])
+				offset = mktime( (et.tm_year, et.tm_mon, et.tm_mday, 6, 0, 0, -1, -1, -1) )
+				lastevent = mktime( (et.tm_year, et.tm_mon, et.tm_mday+1, 5, 59, 0, -1, -1, -1) )
+
+			slot = int((event[1]-offset) / 7200)
+			if slot > -1 and slot < 12 and event[1] < lastevent:
+				ret[channel][slot].append(ev)
+
+	return { "events": ret, "result": True, "picons": picons }
+
 def getPicon(sname):
-	pos = sname.rfind(':')
+	if sname is not None:
+		pos = sname.rfind(':')
+	else:
+		return "/images/default_picon.png"
+		
 	if pos != -1:
 		sname = sname[:pos].rstrip(':').replace(':','_') + ".png"
 	filename = getPiconPath() + sname

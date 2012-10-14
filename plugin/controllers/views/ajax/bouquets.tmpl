@@ -5,6 +5,7 @@
 	 \$("#accordion").accordion({
                 active:false,
                 change:function(event, ui) {
+                        ui.oldContent.empty();
                         ui.newContent.load(ui.newHeader.find('a').attr('id'));
                 },
                 autoHeight: false,

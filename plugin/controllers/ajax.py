@@ -10,12 +10,13 @@
 from Tools.Directories import fileExists
 from Components.config import config
 
-from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo
+from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getBouquetNoExtEpg, getEvent
 from models.info import getInfo, getPublicPath, getOpenWebifVer
 from models.movies import getMovieList
 from models.timers import getTimers
 from models.config import getConfigs
 from base import BaseController
+from time import mktime, localtime
 
 class AjaxController(BaseController):
 	def __init__(self, session, path = ""):
@@ -59,6 +60,12 @@ class AjaxController(BaseController):
 
 	def P_eventdescription(self, request):
 		return getEventDesc(request.args["sref"][0], request.args["idev"][0])
+
+	def P_event(self, request):
+		event = getEvent(request.args["sref"][0], request.args["idev"][0])
+		event['event']['recording_margin_before'] = config.recording.margin_before.value
+		event['event']['recording_margin_after'] = config.recording.margin_after.value
+		return event
 
 	def P_about(self, request):
 		info = {}
@@ -117,6 +124,9 @@ class AjaxController(BaseController):
 	def P_timers(self, request):
 		return getTimers(self.session)
 		
+	def P_edittimer(self, request):
+		return {}
+		
 	def P_tv(self, request):
 		return {}
 		
@@ -126,3 +136,29 @@ class AjaxController(BaseController):
 			section = request.args["section"][0]
 			
 		return getConfigs(section)
+
+	def P_epgbouquet(self, request):
+		bouq = getBouquets("tv")
+		if "bref" not in request.args.keys():
+			bref = bouq['bouquets'][0][0]
+		else:
+			bref = request.args["bref"][0]
+
+		endtime = 1440
+				
+		begintime = -1
+		day = 0
+		if "day" in request.args.keys():
+			try:
+				day = int(request.args["day"][0])
+				now = localtime()
+				begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day, 6, 0, 0, -1, -1, -1) )
+			except Exception, e:
+				pass
+		
+		epg = getBouquetNoExtEpg(bref, begintime, endtime)
+		epg['bouquets'] = bouq['bouquets']
+		epg['bref'] = bref
+		epg['day'] = day
+		
+		return epg
