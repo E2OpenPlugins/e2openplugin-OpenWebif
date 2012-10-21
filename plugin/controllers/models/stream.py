@@ -38,7 +38,22 @@ def getTS(self,request):
 		filename = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
 		if not os.path.exists(filename):
 			return "File '%s' not found" % (filename)
-		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \nhttp://%s:%s/file?file=%s\n" % (request.getRequestHostname(), config.OpenWebif.port.value, quote(filename))
+
+#	ServiceReference is not part of filename so look in the '.ts.meta' file
+		sRef = ""
+		if os.path.exists(filename + '.meta'):
+			metafile = open(filename + '.meta', "r")
+			line = metafile.readline()
+			if line:
+				sRef = eServiceReference(line.strip()).toString()
+			metafile.close()
+
+		if sRef != '':
+			progopt="#EXTVLCOPT:program=%d\n" % (int(sRef.split(':')[3],16))
+		else:
+			progopt=""
+
+		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), config.OpenWebif.port.value, quote(filename))
 		request.setHeader('Content-Type', 'application/text')
 		return response
 	else:
