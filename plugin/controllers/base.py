@@ -145,6 +145,8 @@ class BaseController(resource.Resource):
 			ret['box'] = open("/proc/stb/info/vumodel").read().strip()
 		elif fileExists("/proc/stb/info/azmodel"):
 			ret['box'] = open("/proc/stb/info/model").read().strip()
+		elif fileExists("/proc/stb/info/hwmodel"):
+			ret['box'] = open("/proc/stb/info/hwmodel").read().strip()
 
 			
 		if ret["box"] == "duo" or ret["box"] == "solo" or ret["box"] == "uno":
@@ -167,6 +169,10 @@ class BaseController(resource.Resource):
 			ret["remote"] = "ini-3000"
 		elif ret["box"] == "ini-7000" or ret["box"] == "ini-5000":
 			ret["remote"] = "ini-7000"
+		elif ret["box"] == "TM-TWIN-OE":
+			ret["remote"] = "tm_twin"
+		elif ret["box"] == "TWIN":
+			ret["remote"] = "twin"
 		else:
 			ret["remote"] = "dmm"
 		
