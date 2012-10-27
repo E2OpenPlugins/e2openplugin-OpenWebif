@@ -34,7 +34,9 @@ def getMovieList(directory=None, tag=None):
 	
 	tagfilter = []
 	
-	movielist = MovieList(root)
+	movielist = MovieList(None)
+	movielist.load(root, None)
+	
 	if tag != None:
 		movielist.reload(root=root, filter_tags=[tag])
 	loadLength = True
