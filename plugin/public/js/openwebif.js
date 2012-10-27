@@ -8,7 +8,7 @@
  *--------------------------------------------------------------------------*/
 
 $.fx.speeds._default = 1000;
-var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>"
+var loadspinner = "<div id='spinner'><img src='../images/spinner.gif' alt='loading...'/></div>";
 var mutestatus = 0;
 var lastcontenturl = null;
 
@@ -57,7 +57,7 @@ $(function() {
 				$("#volimage").attr("src","/images/volume.png");
 			} 
 			var url = "web/vol?set=set" + ui.value;
-			var jqxhr = $.ajax( url )
+			var jqxhr = $.ajax( url );
 			return false;
 		}
 	});
@@ -145,10 +145,28 @@ function load_tvcontent_spin(url) {
 	return false;
 }
 
+function getParams() {
+	var idx = document.URL.indexOf('?');
+	var tempParams = new Object();
+	if (idx != -1) {
+		var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+		for (var i=0; i<pairs.length; i++) {
+			nameVal = pairs[i].split('=');
+			tempParams[nameVal[0]] = nameVal[1];
+		}
+	}
+	return tempParams;
+}
+
+function load_maincontent_newwindow(url) {
+	window.open("/?open="+escape(url));
+	return false;
+}
+
 function load_maincontent(url) {
 	if (lastcontenturl != url) {
 		$("#content_container").load(url);
-		lastcontenturl = url
+		lastcontenturl = url;
 	}
 	return false;
 }
@@ -156,7 +174,7 @@ function load_maincontent(url) {
 function load_maincontent_spin(url) {
 	if (lastcontenturl != url) {
 		$("#content_container").html(loadspinner).load(url);
-		lastcontenturl = url
+		lastcontenturl = url;
 	}
 	return false;
 }
@@ -183,8 +201,8 @@ function toggle_chan_des(evId, sRef, idp) {
 function open_epg_pop(sRef) {
 	var url = 'ajax/epgpop?sref=' + escape(sRef);
 	$.popupWindow(url, {
-		height: 500,
-		width: 900,
+		height:500,
+		width:900,
 		toolbar: false,
 		scrollbars: true,
 	});	
@@ -195,8 +213,8 @@ function open_epg_search_pop() {
 	var url = "ajax/epgpop?sstr=" + encodeURIComponent(spar);
 	url=url.replace(/%C3%BC/g,'%FC').replace(/%C3%9C/g,'%FC').replace(/%C3%A4/g,'%E4').replace(/%C3%84/g,'%E4').replace(/%C3%B6/g,'%F6').replace(/%C3%96/g,'%F6').replace(/%C3%9F/g,'%DF');
 	$.popupWindow(url, {
-		height: 500,
-		width: 900,
+		height:500,
+		width:900,
 		toolbar: false,
 		scrollbars: true,
 	});
@@ -308,17 +326,17 @@ function sendMessage() {
 }
 
 function toggleMenu(name) {
-	var expander_id = "#leftmenu_expander_" + name
-	var container_id = "#leftmenu_container_" + name
+	var expander_id = "#leftmenu_expander_" + name;
+	var container_id = "#leftmenu_container_" + name;
 	if ($(expander_id).hasClass("leftmenu_icon_collapse")) {
 		$(expander_id).removeClass("leftmenu_icon_collapse");
-		$(container_id).show('fast')
-		webapi_execute("/api/expandmenu?name=" + name)
+		$(container_id).show('fast');
+		webapi_execute("/api/expandmenu?name=" + name);
 	}
 	else {
 		$(expander_id).addClass("leftmenu_icon_collapse");
-		$(container_id).hide('fast')
-		webapi_execute("/api/collapsemenu?name=" + name)
+		$(container_id).hide('fast');
+		webapi_execute("/api/collapsemenu?name=" + name);
 	}
 }
 
@@ -455,7 +473,7 @@ function initTimerEdit() {
 				$('#tags')
 					.find('option')
 					.remove()
-					.end()
+					.end();
 					
 				$('#tags')
 					.append($("<option></option>")
