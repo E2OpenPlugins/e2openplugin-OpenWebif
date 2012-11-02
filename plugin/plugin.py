@@ -28,6 +28,7 @@ config.OpenWebif = ConfigSubsection()
 config.OpenWebif.enabled = ConfigYesNo(default=True)
 # Use temporary port 8088 to avoid conflict with Webinterface
 config.OpenWebif.port = ConfigInteger(default = 80, limits=(1, 65535) )
+config.OpenWebif.streamport = ConfigInteger(default = 8001, limits=(1, 65535) )
 config.OpenWebif.auth = ConfigYesNo(default=False)
 config.OpenWebif.xbmcservices = ConfigYesNo(default=False)
 config.OpenWebif.webcache = ConfigSubsection()
@@ -68,6 +69,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		self.list.append(getConfigListEntry(_("OpenWebInterface Enabled"), config.OpenWebif.enabled))
 		self.list.append(getConfigListEntry(_("Http port"), config.OpenWebif.port))
 		self.list.append(getConfigListEntry(_("Enable Http Authentication"), config.OpenWebif.auth))
+		self.list.append(getConfigListEntry(_("Streaming port"), config.OpenWebif.streamport))
 		self.list.append(getConfigListEntry(_("Smart services renaming for XBMC"), config.OpenWebif.xbmcservices))
 	
 		self["config"].list = self.list

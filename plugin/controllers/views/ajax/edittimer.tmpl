@@ -70,10 +70,7 @@
 	
 	<div class="timerlist_row">
 		<span style="width: 100px; float: left;">Tags:</span>
-		<span>
-		<select id="tags" name="tags">
-			<option value="">Nothing</option>
-		</select>
+		<span id="tagsnew">
 		</span>
 	</div>
 	
@@ -81,6 +78,7 @@
 		<span style="width: 100px; float: left;">After Event:</span>
 		<span>
 		<select id="afterevent" name="afterevent">
+			<option value="0">Nothing</option>
 			<option value="1">Standby</option>
 			<option value="2">Shutdown</option>
 			<option value="3" selected="">Auto</option>
@@ -145,6 +143,13 @@ $('#editTimerForm').dialog({
 			$('[name="repeated"]:checked').each(function() {
 				repeated += parseInt($(this).val());
 			});
+			var tags = "";
+			$('[name="tagsnew"]:checked').each(function() {
+				if(tags!="")
+					tags+=" ";
+				tags += $(this).val();
+				
+			});
 			var urldata = { sRef: $('#bouquet_select').val(),
 				begin: Math.round(begindate.getTime() / 1000),
 				end: Math.round(enddate.getTime() / 1000),
@@ -154,7 +159,7 @@ $('#editTimerForm').dialog({
 				justplay: ($('#justplay').is(':checked')?"1":"0"),
 				afterevent: $('#afterevent').val(),
 				dirname: $('#dirname').val(),
-				tags: $('#tags').val(),
+				tags: tags,
 				repeated: repeated };
 			
 			var canclose = false;

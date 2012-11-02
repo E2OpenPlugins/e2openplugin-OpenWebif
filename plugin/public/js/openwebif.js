@@ -193,6 +193,7 @@ function open_epg_pop(sRef) {
 function open_epg_search_pop() {
 	var spar = $("#epgSearch").val();
 	var url = "ajax/epgpop?sstr=" + encodeURIComponent(spar);
+	url=url.replace(/%C3%BC/g,'%FC').replace(/%C3%9C/g,'%FC').replace(/%C3%A4/g,'%E4').replace(/%C3%84/g,'%E4').replace(/%C3%B6/g,'%F6').replace(/%C3%96/g,'%F6').replace(/%C3%9F/g,'%DF');
 	$.popupWindow(url, {
 		height: 500,
 		width: 900,
@@ -451,23 +452,14 @@ function initTimerEdit() {
 		success: function(data) {
 			tags = $.parseJSON(data);
 			if (tags.result) {
-				$('#tags')
-					.find('option')
-					.remove()
-					.end()
-					
-				$('#tags')
-					.append($("<option></option>")
-						.attr("value", "")
-						.text("Nothing"));
-						
 				for (var id in tags.tags) {
 					tag = tags.tags[id];
-					$('#tags')
-						.append($("<option></option>")
-							.attr("value", tag)
-							.text(tag));
+					$('#tagsnew')
+						.append("<input type='checkbox' name='tagsnew' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
 				}
+				
+				$('#tagsnew').buttonset();
+
 			}
 		}
 	});
@@ -498,7 +490,6 @@ function editTimer(serviceref, begin, end) {
 							$('#description').val(timer.description);
 							$('#bouquet_select').val(timer.serviceref);
 							$('#dirname').val(timer.dirname);
-							$('#tags').val(timer.tags);
 							$('#enabled').prop("checked", timer.disabled == 0);
 							$('#justplay').prop("checked", timer.justplay);
 							$('#afterevent').val(timer.afterevent);
@@ -510,6 +501,13 @@ function editTimer(serviceref, begin, end) {
 								flags >>= 1;
 							}
 							$('#repeatdays').buttonset('refresh');
+							
+							$('#tagsnew').find('input').attr('checked',false);
+							var tags = timer.tags.split(' ');
+							for (var i=0; i<tags.length; i++) {
+								$('#tag_'+tags[i]).attr('checked', true);
+							}
+							$('#tagsnew').buttonset('refresh');
 							
 							$('#timerbegin').datetimepicker('setDate', (new Date(Math.round(timer.begin) * 1000)));
 							$('#timerend').datetimepicker('setDate', (new Date(Math.round(timer.end) * 1000)));
@@ -553,7 +551,6 @@ function addTimer(evt) {
 	$('#timername').val(title);
 	$('#description').val(desc);
 	$('#dirname').val("None");
-	$('#tags').val("");
 	$('#enabled').prop("checked", true);
 	$('#justplay').prop("checked", false);
 	$('#afterevent').val(3);
@@ -561,6 +558,9 @@ function addTimer(evt) {
 
 	for (var i=0; i<7; i++) $('#day'+i).attr('checked', false);
 	$('#repeatdays').buttonset('refresh');
+	
+	$('#tagsnew').find('input').attr('checked',false);
+	$('#tagsnew').buttonset('refresh');
 
 	var begindate = begin !== -1 ? new Date( (Math.round(begin) - margin_before*60) * 1000) : new Date();
 	$('#timerbegin').datetimepicker('setDate', begindate);
