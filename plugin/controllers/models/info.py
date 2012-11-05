@@ -71,6 +71,12 @@ def getInfo():
 	elif fileExists("/proc/stb/info/hwmodel"):
 		brand = "Technomate"
 		model = open("/proc/stb/info/hwmodel").read().strip()
+		if model == "tmtwinoe":
+			model = "TM-TWIN-OE"
+		elif model == "tm2toe":
+			model = "TM-2T-OE"
+		elif model == "tmsingle":
+			model = "TM-SINGLE"
 	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("et"):
 		brand = "Clarke-Xtrend"
 		model = open("/proc/stb/info/boxtype").read().strip()
@@ -81,7 +87,7 @@ def getInfo():
 		model = open("/proc/stb/info/boxtype").read().strip()
 	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("xp"):
 		brand = "XP-Series"
-		model = open("/proc/stb/info/boxtype").read().strip()		
+		model = open("/proc/stb/info/boxtype").read().strip()
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBOX"
 		model = open("/proc/stb/info/model").read().strip()

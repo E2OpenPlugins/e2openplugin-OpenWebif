@@ -148,9 +148,11 @@ class BaseController(resource.Resource):
 		elif fileExists("/proc/stb/info/boxtype"):
 			ret['box'] = open("/proc/stb/info/boxtype").read().strip()
 
-		if ret["box"] == "twin":
+		if ret["box"] == "tmtwinoe":
 			ret["remote"] = "tm_twin"
-		elif ret["box"] == "2t":
+		elif ret["box"] == "tm2toe":
+			ret["remote"] = "tm_2t"
+		elif ret["box"] == "tmsingle":
 			ret["remote"] = "tm_2t"
 		elif ret["box"] == "duo" or ret["box"] == "solo" or ret["box"] == "uno":
 			ret["remote"] = "vu_normal"
@@ -177,7 +179,7 @@ class BaseController(resource.Resource):
 		elif ret["box"] == "ini-7000" or ret["box"] == "ini-5000":
 			ret["remote"] = "ini-7000"
 		elif ret["box"] == "xp1000":
-			ret["remote"] = "xp1000"	
+			ret["remote"] = "xp1000"
 		else:
 			ret["remote"] = "dmm"
 
