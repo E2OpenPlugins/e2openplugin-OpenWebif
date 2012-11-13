@@ -37,21 +37,29 @@
 
 #set $renderEventBlock = $renderEvtBlock()
 <table cellpadding="0" cellspacing="0">
+#block channelsInBouquet
 <tr>
 	#for $sname, $eventlist in $events.iteritems()
 	<td class="border"><div class="service"><img src="$(picons[$sname])" /> $sname</div></td>
 	#end for
 </tr>
+#end block
+	#set hasEvents = False
 	#for $slot in range(0,12)
 <tr class="$(slot%2 and 'odd' or 'even')">
 	#for $sname, $eventlist in $events.iteritems()
 <td class="border">
 	#for $event in $eventlist[$slot]
 		$renderEventBlock.render($event)
+		#set hasEvents = True
 	#end for
 </td>
 	#end for
 </tr>
+	#if $slot % 3 == 2 and hasEvents
+		$channelsInBouquet
+		#set hasEvents = False
+	#end if
 	#end for
 </table>
 
