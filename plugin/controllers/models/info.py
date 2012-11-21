@@ -88,8 +88,8 @@ def getInfo():
 	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("xp"):
 		brand = "XP-Series"
 		model = open("/proc/stb/info/boxtype").read().strip()
-	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("MarA"):
-		brand = "MarA-Series"
+	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("Odin"):
+		brand = "Odin-Series"
 		model = open("/proc/stb/info/boxtype").read().strip()	
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBOX"
