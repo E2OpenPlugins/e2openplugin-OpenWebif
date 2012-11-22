@@ -88,7 +88,7 @@ def getInfo():
 	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("xp"):
 		brand = "XP-Series"
 		model = open("/proc/stb/info/boxtype").read().strip()
-	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("Odin"):
+	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("odin"):
 		brand = "Odin-Series"
 		model = open("/proc/stb/info/boxtype").read().strip()	
 	elif fileExists("/proc/stb/info/azmodel"):
@@ -111,14 +111,14 @@ def getInfo():
 
 	if fileExists("/proc/stb/info/chipset"):
 		f = open("/proc/stb/info/chipset",'r')
- 		chipset = f.readline().strip()
- 		f.close()
+		chipset = f.readline().strip()
+		f.close()
 
 	info['chipset'] = chipset
 
 	memFree = 0
 	for line in open("/proc/meminfo",'r'):
-	 	parts = line.split(':')
+		parts = line.split(':')
 		key = parts[0].strip()
 		if key == "MemTotal":
 			info['mem1'] = parts[1].strip()

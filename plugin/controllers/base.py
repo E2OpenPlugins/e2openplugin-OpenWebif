@@ -180,7 +180,7 @@ class BaseController(resource.Resource):
 			ret["remote"] = "ini-7000"
 		elif ret["box"] == "xp1000":
 			ret["remote"] = "xp1000"
-		elif ret["box"] == "Odin M9":
+		elif ret["box"] == "odinm9":
 			ret["remote"] = "odinm9"	
 		else:
 			ret["remote"] = "dmm"

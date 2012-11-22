@@ -81,7 +81,7 @@ class AjaxController(BaseController):
 			model = "et5x00"
 		elif model == "xp1000":
 			model = "xp1000"
-		elif model == "Odin M9":
+		elif model == "odinm9":
 			model = "odinm9"
 		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
 			info["boximage"] = model + ".jpg"
