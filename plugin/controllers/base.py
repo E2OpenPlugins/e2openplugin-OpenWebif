@@ -184,6 +184,8 @@ class BaseController(resource.Resource):
 			ret["remote"] = "odinm9"
 		elif ret["box"] == "PlaySmartBox":
 			ret["remote"] = "iclassm7"
+		elif ret["box"] == "ebox5000":
+			ret["remote"] = "ebox5000"	
 		else:
 			ret["remote"] = "dmm"
 
