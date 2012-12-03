@@ -63,8 +63,8 @@ class AjaxController(BaseController):
 
 	def P_event(self, request):
 		event = getEvent(request.args["sref"][0], request.args["idev"][0])
-		event['event']['recording_margin_before'] = config.recording.margin_before.value
-		event['event']['recording_margin_after'] = config.recording.margin_after.value
+		event['event']['recording_margin_before'] = config.recording.margin_before.getValue()
+		event['event']['recording_margin_after'] = config.recording.margin_after.getValue()
 		return event
 
 	def P_about(self, request):
