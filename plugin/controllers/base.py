@@ -154,7 +154,7 @@ class BaseController(resource.Resource):
 			ret["remote"] = "tm_2t"
 		elif ret["box"] == "tmsingle":
 			ret["remote"] = "tm_2t"
-		elif ret["box"] == "duo" or ret["box"] == "solo" or ret["box"] == "uno":
+		elif ret["box"] == "duo" or ret["box"] == "solo" or ret["box"] == "uno" or ret["box"] == "solo2" or ret["box"] == "duo2":
 			ret["remote"] = "vu_normal"
 		elif ret["box"] == "ultimo":
 			ret["remote"] = "vu_ultimo"
