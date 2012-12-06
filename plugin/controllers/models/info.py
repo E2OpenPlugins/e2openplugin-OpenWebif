@@ -91,9 +91,6 @@ def getInfo():
 	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("odin"):
 		brand = "Odin-Series"
 		model = open("/proc/stb/info/boxtype").read().strip()
-	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("PlaySmartBox"):
-		brand = "iclass-Series"
-		model = open("/proc/stb/info/boxtype").read().strip()
 	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("ebox"):
 		brand = "MixOs-Series"
 		model = "MixOs F5"		
