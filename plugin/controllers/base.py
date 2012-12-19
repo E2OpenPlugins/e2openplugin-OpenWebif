@@ -154,19 +154,19 @@ class BaseController(resource.Resource):
 			ret["remote"] = "tm_2t"
 		elif ret["box"] == "tmsingle":
 			ret["remote"] = "tm_2t"
-		elif ret["box"] == "duo" or ret["box"] == "solo" or ret["box"] == "uno" or ret["box"] == "solo2" or ret["box"] == "duo2":
+		elif ret["box"] in ("solo", "duo", "uno", "solo2", "duo2"):
 			ret["remote"] = "vu_normal"
 		elif ret["box"] == "ultimo":
 			ret["remote"] = "vu_ultimo"
-		elif ret["box"] == "et9x00" or ret["box"] == "et9000" or ret["box"] == "et9200" or ret["box"] == "et9500":
+		elif ret["box"] in ("et9x00", "et9000", "et9200", "et9500"):
 			ret["remote"] = "et9x00"
-		elif ret["box"] == "et5x00" or ret["box"] == "et5000" or ret["box"] == "et6000":
+		elif ret["box"] in ("et5x00", "et5000", "et6000"):
 			ret["remote"] = "et5x00"
 		elif ret["box"] == "et4000":
 			ret["remote"] = "et4000"
 		elif ret["box"] == "et6500":
 			ret["remote"] = "et6500"
-		elif ret["box"] == "gb800solo" or ret["box"] == "gb800se" or ret["box"] == "gb800ue" or ret["box"] == "quad":
+		elif ret["box"] in ("solo", "se", "ue", "quad"):
 			ret["remote"] = "gigablue"
 		elif ret["box"] == "me" or ret["box"] == "minime":
 			ret["remote"] = "me"
