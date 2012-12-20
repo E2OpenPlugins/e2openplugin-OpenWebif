@@ -19,7 +19,7 @@ body {
   	display: block; 
   	height:auto;
  	position: relative; 
-  	width: 960px;
+  	width: 85%;
 }
 
 
@@ -76,33 +76,29 @@ body {
 
 #osd
 {
-	font-size:13px;
-	display:block;
+	font-size: 13px;
+	display: block;
 	color: #ffffff;
-	height:14px;
-	float:left;
-	width:100%;
+	height: 18px;
+	width: 100%;
 	padding-left: 5px;
 	padding-top: 1px;
 	
 }
+
 #osd_bottom
 {
-	color:#A9D1FA;
-	font-size:12px;
-	display:block;
-	height:40px;
-	float:left;
-	width:900px;
-	padding-left: 5px;
-	padding-top: 3px;
-	
-	
+	color: #A9D1FA;
+	font-size: 12px;
+	display: block;
+	height: 32px;
+	width: 100%;
+	padding: 3px 0px 0px 5px;
 }
 
 #leftmenu
 {
-	margin-top:5px;
+	margin-top:13px;
 	width:160px;
 	float:left;
 	border: 2px solid #176093;
@@ -254,7 +250,7 @@ color:#87BCF8;
 {
 	border: 1px solid #4297d7;
 	width: 100%;
-	height:700px;
+	height:800px;
 	margin: 0px;
 	padding: 0px;
 	-moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; -khtml-border-top-left-radius: 5px; border-top-left-radius: 5px;
@@ -265,8 +261,8 @@ color:#87BCF8;
 
 #tvcontent
 {
-	width:680px;
-	height:640px;
+	width:95%;
+	height:730px;
 	padding:10px;
 	overflow:auto;
 	
@@ -408,15 +404,12 @@ color:#87BCF8;
 #content
 {
 	display:block;
-	float:left;
-	width:700px;
 	height:auto;
-	margin-left:5px;
-	margin-top:5px;
+	margin-left:169px;
+	margin-top:13px;
 	margin-right:0px;
 	margin-bottom:5px;
 }
-
 
 #content_top
 {
@@ -428,10 +421,9 @@ color:#87BCF8;
 
 #content_main
 {
-/*	background-image:url(../images/main_back.png);
-	background-repeat:repeat-y; */
 	background-color:#FFF;
-	width:700px;
+	width:100%;
+	min-width:700px;
 	padding-left:10px;
 	padding-top:10px;
 	padding-right:10px;
@@ -612,15 +604,19 @@ color:#7198E1;
 	width: 200px;
 }
 
-#configuration td
+#configuration td:first-child
 {
-	width: 50%;
+	width: 350px;
 }
 
-html, body {
-text-align: center;
+html, body
+{
+	text-align: center;
 }
-p {text-align: left;}
+
+p {
+	text-align: left;
+}
 
 /* css for timepicker */
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
@@ -629,5 +625,3 @@ p {text-align: left;}
 .ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
 .ui-timepicker-div td { font-size: 90%; }
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
-#repeatdays label span { padding: .3em 1em;}
-#tagsnew label span { padding: .2em .8em;}
