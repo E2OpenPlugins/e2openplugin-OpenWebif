@@ -9,18 +9,24 @@
 
 from enigma import eEnv
 from Components.config import config
-from Tools.Directories import fileExists
-from twisted.internet import reactor
+from Tools.Directories import fileExists, resolveFilename, SCOPE_CONFIG
+from twisted.internet import reactor, ssl
 from twisted.web import server, http, static, resource, error
 from twisted.internet.error import CannotListenError
+from OpenSSL import crypto
 
 from controllers.root import RootController
+from socket import gethostname
 
 import os
 import imp
+import random
 
-global http_running
-http_running = ""
+global listener, server_to_stop
+listener = []
+
+KEY_FILE = resolveFilename(SCOPE_CONFIG, "key.pem")
+CERT_FILE = resolveFilename(SCOPE_CONFIG, "cert.pem")
 
 def isOriginalWebifInstalled():
 	pluginpath = eEnv.resolve('${libdir}/enigma2/python/Plugins/Extensions/WebInterface/plugin.py')
@@ -103,7 +109,7 @@ def buildRootTree(session):
 
 def HttpdStart(session):
 	if config.OpenWebif.enabled.value == True:
-		global http_running
+		global listener
 		port = config.OpenWebif.port.value
 
 
@@ -112,11 +118,23 @@ def HttpdStart(session):
 			root = AuthResource(session, root)
 		site = server.Site(root)
 		
+		# start http webserver on configured port
 		try:
-			http_running = reactor.listenTCP(port, site)
+			listener.append( reactor.listenTCP(port, site) )
 			print "[OpenWebif] started on %i"% (port)
 		except CannotListenError:
 			print "[OpenWebif] failed to listen on Port %i" % (port)
+
+		if config.OpenWebif.https_enabled.value == True:
+			httpsPort = config.OpenWebif.https_port.value
+			installCertificates(session)
+			# start https webserver on port configured port
+			try:
+				context = ssl.DefaultOpenSSLContextFactory(KEY_FILE, CERT_FILE)
+				listener.append( reactor.listenSSL(httpsPort, site, context) )
+				print "[OpenWebif] started on", httpsPort
+			except CannotListenError:
+				print "[OpenWebif] failed to listen on Port", httpsPort
 
 #Streaming requires listening on 127.0.0.1:80	
 		if port != 80:
@@ -124,38 +142,17 @@ def HttpdStart(session):
 				root = buildRootTree(session)
 				site = server.Site(root)
 				try:
-					d = reactor.listenTCP(80, site, interface='127.0.0.1')
+					listener.append( reactor.listenTCP(80, site, interface='127.0.0.1') )
 					print "[OpenWebif] started stream listening on port 80"
 				except CannotListenError:
 					print "[OpenWebif] port 80 busy"
 
 
-
 def HttpdStop(session):
-	if (http_running is not None) and (http_running != ""):
-		godown = http_running.stopListening()
-		try:
-			godown.addCallback(HttpdDoStop)
-		except AttributeError:
-			pass
-
-def HttpdDoStop(session):
-	http_running = ""
-	print "[OpenWebif] stopped"
+	StopServer(session).doStop()
 
 def HttpdRestart(session):
-	if (http_running is not None) and (http_running != ""):
-		godown = http_running.stopListening()
-		try:
-			godown.addCallback(HttpdDoRestart, session)
-		except AttributeError:
-			HttpdStart(session)
-	else:
-		HttpdStart(session)
-
-def HttpdDoRestart(ign, session):
-	http_running = ""
-	HttpdStart(session)
+	StopServer(session, HttpdStart).doStop()
 
 class AuthResource(resource.Resource):
 	def __init__(self, session, root):
@@ -210,3 +207,77 @@ class AuthResource(resource.Resource):
 					return False			
 			return crypt(passwd, cpass) == cpass
 		return False
+
+#
+# Helper class to stop running web servers; we use a class here to reduce use
+# of global variables. Resembles code prior found in HttpdStop et. al.
+# 
+class StopServer:
+	server_to_stop = 0
+	
+	def __init__(self, session, callback=None):
+		self.session = session
+		self.callback = callback
+	
+	def doStop(self):
+		global listener
+		self.server_to_stop = 0
+		for interface in listener:
+			print "[OpenWebif] Stopping server on port", interface.port
+			deferred = interface.stopListening()
+			try:
+				self.server_to_stop += 1
+				deferred.addCallback(self.callbackStopped)
+			except AttributeError:
+				pass
+		listener = []
+		if self.server_to_stop < 1:
+			self.doCallback()
+	
+	def callbackStopped(self, reason):
+		self.server_to_stop -= 1
+		if self.server_to_stop < 1:
+			self.doCallback()
+	
+	def doCallback(self):
+		if self.callback is not None:
+			self.callback(self.session)
+		
+#
+# Code mostly taken from Reichis web interface; also found at
+# http://skippylovesmalorie.wordpress.com/2010/02/12/how-to-generate-a-self-signed-certificate-using-pyopenssl/
+#
+def installCertificates(session):
+	if not os.path.exists(CERT_FILE) or not os.path.exists(KEY_FILE):
+		print "[OpenWebif] Generate SSL key pair and CACert"
+		# create a key pair
+		key = crypto.PKey()
+		key.generate_key(crypto.TYPE_RSA, 1024)
+
+		# create a self-signed cert
+		cert = crypto.X509()
+		cert.get_subject().C = "DE"
+		cert.get_subject().ST = "Home"
+		cert.get_subject().L = "Home"
+		cert.get_subject().O = "OpenWebif"
+		cert.get_subject().OU = "HTTPS-Server"
+		cert.get_subject().CN = gethostname()
+		cert.set_serial_number(random.randint(1000000,1000000000))
+		cert.set_notBefore("20120101000000Z");
+		cert.set_notAfter("20301231235900Z")
+		cert.set_issuer(cert.get_subject())
+		cert.set_pubkey(key)
+		cert.sign(key, 'sha1')
+
+		try:
+			print "[OpenWebif] Install newly generated certificate and key pair"
+			open(CERT_FILE, "wt").write(
+				crypto.dump_certificate(crypto.FILETYPE_PEM, cert))
+			open(KEY_FILE, "wt").write(
+				crypto.dump_privatekey(crypto.FILETYPE_PEM, key))
+		except IOError, e:
+			#Disable https
+			config.OpenWebif.https_enabled.value = False
+			config.OpenWebif.https_enabled.save()
+			#Inform the user
+			session.open(MessageBox, "Cannot install generated SSL-Certifactes for https access\nHttps access is disabled!", MessageBox.TYPE_ERROR)

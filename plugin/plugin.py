@@ -36,16 +36,19 @@ config.OpenWebif.webcache = ConfigSubsection()
 config.OpenWebif.webcache.collapsedmenus = ConfigText(default = "remote", fixed_size = False)
 config.OpenWebif.webcache.remotegrabscreenshot = ConfigYesNo(default = True)
 config.OpenWebif.webcache.zapstream = ConfigYesNo(default = False)
+# HTTPS
+config.OpenWebif.https_enabled = ConfigYesNo(default=True)
+config.OpenWebif.https_port = ConfigInteger(default = 443, limits=(1, 65535) )
 
 class OpenWebifConfig(Screen, ConfigListScreen):
 	skin = """
 	<screen position="center,center" size="700,340" title="OpenWebif Configuration">
 		<widget name="lab1" position="10,30" halign="center" size="680,60" zPosition="1" font="Regular;24" valign="top" transparent="1" />
-		<widget name="config" position="10,100" size="680,160" scrollbarMode="showOnDemand" />
-		<ePixmap pixmap="skin_default/buttons/red.png" position="140,270" size="140,40" alphatest="on" />
-		<widget name="key_red" position="140,270" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="red" transparent="1" />
-		<ePixmap position="420,270" size="140,40" pixmap="skin_default/buttons/green.png" alphatest="on" zPosition="1" />
-		<widget name="key_green" position="420,270" zPosition="2" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="green" transparent="1" />
+		<widget name="config" position="10,100" size="680,180" scrollbarMode="showOnDemand" />
+		<ePixmap position="140,290" size="140,40" pixmap="skin_default/buttons/red.png" alphatest="on" />
+		<widget name="key_red" position="140,290" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="red" transparent="1" />
+		<ePixmap position="420,290" size="140,40" pixmap="skin_default/buttons/green.png" alphatest="on" zPosition="1" />
+		<widget name="key_green" position="420,290" zPosition="2" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="green" transparent="1" />
 	</screen>"""
 	
 	def __init__(self, session):
@@ -70,6 +73,8 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		self.list.append(getConfigListEntry(_("Http port"), config.OpenWebif.port))
 		self.list.append(getConfigListEntry(_("Enable Http Authentication"), config.OpenWebif.auth))
 		self.list.append(getConfigListEntry(_("Streaming port"), config.OpenWebif.streamport))
+		self.list.append(getConfigListEntry(_("Enable Https"), config.OpenWebif.https_enabled))
+		self.list.append(getConfigListEntry(_("Https port"), config.OpenWebif.https_port))
 		self.list.append(getConfigListEntry(_("Smart services renaming for XBMC"), config.OpenWebif.xbmcservices))
 	
 		self["config"].list = self.list
