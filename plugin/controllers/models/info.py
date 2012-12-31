@@ -143,23 +143,8 @@ def getInfo():
 		uptimetext = "?"
 	info['uptime'] = uptimetext
 
-	if fileExists("/etc/bhversion"):
-		f = open("/etc/bhversion",'r')
-		imagever = f.readline().strip()
-		f.close()
-	elif fileExists("/etc/version"):
-		f = open("/etc/version",'r')
-		imagever = f.readline().strip()
-		f.close()
-	elif fileExists("/etc/vtiversion.info"):
-		f = open("/etc/vtiversion.info",'r')
-		imagever = f.readline().strip()
-		f.close()
-	else:
-		imagever = about.getImageVersionString()
-
 	info["webifver"] = getOpenWebifVer()
-	info['imagever'] = imagever
+	info['imagever'] = about.getImageVersionString()
 	info['enigmaver'] = about.getEnigmaVersionString()
 	info['kernelver'] = about.getKernelVersionString()
 
