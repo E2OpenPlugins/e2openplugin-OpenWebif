@@ -97,7 +97,11 @@ def getInfo():
 			brand = "Odin-Series"
 		elif model.startswith("ebox"):
 			brand = "MixOs-Series"
-			model = "MixOs F5"		
+			model = "MixOs F5"
+		elif model.startswith("Ixuss"):
+			brand = "Ixuss-Series"
+			model = "Ixuss One"
+			chipset = "BCM7405"
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBOX"
 		file = open("/proc/stb/info/azmodel")
