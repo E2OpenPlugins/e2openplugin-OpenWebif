@@ -65,38 +65,44 @@ def getInfo():
 	model = "unknown"
 	chipset = "unknown"
 
-	if fileExists('/proc/stb/info/boxtype') and open("/proc/stb/info/boxtype",'r').read().strip() == "gigablue":
-		brand = "GigaBlue"
-		model = open("/proc/stb/info/gbmodel").read().strip()
-	elif fileExists("/proc/stb/info/hwmodel"):
+	if fileExists("/proc/stb/info/hwmodel"):
 		brand = "Technomate"
-		model = open("/proc/stb/info/hwmodel").read().strip()
+		file = open("/proc/stb/info/hwmodel")
+		model = file.read().strip()
+		file.close()
 		if model == "tmtwinoe":
 			model = "TM-TWIN-OE"
 		elif model == "tm2toe":
 			model = "TM-2T-OE"
 		elif model == "tmsingle":
 			model = "TM-SINGLE"
-	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("et"):
-		brand = "Clarke-Xtrend"
-		model = open("/proc/stb/info/boxtype").read().strip()
-		if model == "et9500":
-			model = "et9x00"
-	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("ini-"):
-		brand = "INI-Series"
-		model = open("/proc/stb/info/boxtype").read().strip()
-	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("xp"):
-		brand = "XP-Series"
-		model = open("/proc/stb/info/boxtype").read().strip()
-	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("odin"):
-		brand = "Odin-Series"
-		model = open("/proc/stb/info/boxtype").read().strip()
-	elif fileExists("/proc/stb/info/boxtype") and open("/proc/stb/info/boxtype",'r').read().strip().startswith("ebox"):
-		brand = "MixOs-Series"
-		model = "MixOs F5"		
+	elif fileExists("/proc/stb/info/boxtype"):
+		file = open("/proc/stb/info/boxtype")
+		model = file.read().strip()
+		file.close()
+		if model == "gigablue":
+			brand = "GigaBlue"
+			file = open("/proc/stb/info/gbmodel")
+			model = file.read().strip()
+			file.close()
+		if model.startswith("et"):
+			brand = "Clarke-Xtrend"
+			if model == "et9500":
+				model = "et9x00"
+		elif model.startswith("ini-"):
+			brand = "INI-Series"
+		elif model.startswith("xp"):
+			brand = "XP-Series"
+		elif model.startswith("odin"):
+			brand = "Odin-Series"
+		elif model.startswith("ebox"):
+			brand = "MixOs-Series"
+			model = "MixOs F5"		
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBOX"
-		model = open("/proc/stb/info/model").read().strip()
+		file = open("/proc/stb/info/azmodel")
+		model = file.read().strip()
+		file.close()
 		if model == "me":
 			chipset = "SIGMA 8655"
 		elif model == "minime":
@@ -104,10 +110,14 @@ def getInfo():
 		else:
 			chipset = "SIGMA 8634"
 	elif fileExists("/proc/stb/info/vumodel"):
-		brand = "Vuplus"
-		model = open("/proc/stb/info/vumodel").read().strip()
+		brand = "Vu Plus"
+		file = open("/proc/stb/info/vumodel")
+		model = file.read().strip()
+		file.close()
 	else:
-		model = open("/proc/stb/info/model").read().strip()
+		file = open("/proc/stb/info/model")
+		model = file.read().strip()
+		file.close()
 
 	info['brand'] = brand
 	info['model'] = model
@@ -120,7 +130,8 @@ def getInfo():
 	info['chipset'] = chipset
 
 	memFree = 0
-	for line in open("/proc/meminfo",'r'):
+	file = open("/proc/meminfo",'r')
+	for line in file:
 		parts = line.split(':')
 		key = parts[0].strip()
 		if key == "MemTotal":
@@ -128,6 +139,7 @@ def getInfo():
 		elif key in ("MemFree", "Buffers", "Cached"):
 			memFree += int(parts[1].strip().split(' ',1)[0])
 	info['mem2'] = "%s kB" % memFree
+	file.close()
 
 	try:
 		f = open("/proc/uptime", "rb")
