@@ -85,7 +85,7 @@ def getInfo():
 			file = open("/proc/stb/info/gbmodel")
 			model = file.read().strip()
 			file.close()
-		if model.startswith("et"):
+		elif model.startswith("et"):
 			brand = "Clarke-Xtrend"
 			if model == "et9500":
 				model = "et9x00"

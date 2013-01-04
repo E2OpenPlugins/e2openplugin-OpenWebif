@@ -137,27 +137,33 @@ class BaseController(resource.Resource):
 		ret['configsections'] = getConfigsSections()['sections']
 		ret['zapstream'] = getZapStream()['zapstream']
 		ret['box'] = "dmm"
-		model = None
-		if fileExists('/proc/stb/info/gbmodel'):
-			file = open("/proc/stb/info/gbmodel")
-			model = file.read().strip()
-			file.close()
-		if  model == "gigablue":
-			ret['box'] = model
-		elif fileExists("/proc/stb/info/hwmodel"):
+
+		if fileExists("/proc/stb/info/hwmodel"):
 			file = open("/proc/stb/info/hwmodel")
-			ret['box'] = file.read().strip().lower()
+			model = file.read().strip().lower()
 			file.close()
+		elif fileExists("/proc/stb/info/boxtype"):
+			file = open("/proc/stb/info/boxtype")
+			model = file.read().strip().lower()
+			file.close()
+			if model == "gigablue":
+				file = open("/proc/stb/info/gbmodel")
+				model = file.read().strip().lower()
+				file.close()
 		elif fileExists("/proc/stb/info/azmodel"):
 			file = open("/proc/stb/info/azmodel")
-			ret['box'] = file.read().strip()
+			model = file.read().strip().lower()
 			file.close()
 		elif fileExists("/proc/stb/info/vumodel"):
 			file = open("/proc/stb/info/vumodel")
-			ret['box'] = file.read().strip()
+			model = file.read().strip().lower()
 			file.close()
 		else:
-			ret['box'] = model
+			file = open("/proc/stb/info/model")
+			model = file.read().strip().lower()
+			file.close()
+
+		ret['box'] = model
 
 		if ret["box"] == "tmtwinoe":
 			ret["remote"] = "tm_twin"
@@ -198,7 +204,7 @@ class BaseController(resource.Resource):
 		elif ret["box"] == "ebox5000":
 			ret["remote"] = "ebox5000"
 		elif ret["box"] == "Ixuss One":
-			ret["remote"] = "ixussone"			
+			ret["remote"] = "ixussone"
 		else:
 			ret["remote"] = "dmm"
 
