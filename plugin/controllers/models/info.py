@@ -82,9 +82,12 @@ def getInfo():
 		file.close()
 		if model == "gigablue":
 			brand = "GigaBlue"
-			file = open("/proc/stb/info/gbmodel")
-			model = file.read().strip()
-			file.close()
+			if fileExists("/proc/stb/info/gbmodel"):
+				file = open("/proc/stb/info/gbmodel")
+				model = file.read().strip()
+				file.close()
+			else:
+				model = 'gb800solo'
 		elif model.startswith("et"):
 			brand = "Clarke-Xtrend"
 			if model == "et9500":

@@ -147,9 +147,12 @@ class BaseController(resource.Resource):
 			model = file.read().strip().lower()
 			file.close()
 			if model == "gigablue":
-				file = open("/proc/stb/info/gbmodel")
-				model = file.read().strip().lower()
-				file.close()
+				if fileExists("/proc/stb/info/gbmodel"):
+					file = open("/proc/stb/info/gbmodel")
+					model = file.read().strip().lower()
+					file.close()
+				else:
+					model = 'gb800solo'
 		elif fileExists("/proc/stb/info/azmodel"):
 			file = open("/proc/stb/info/azmodel")
 			model = file.read().strip().lower()
@@ -183,7 +186,7 @@ class BaseController(resource.Resource):
 			ret["remote"] = "et4000"
 		elif ret["box"] == "et6500":
 			ret["remote"] = "et6500"
-		elif ret["box"] in ("solo", "se", "ue", "quad"):
+		elif ret["box"] in ("gb800solo", "gb800se", "gb800ue", "gbquad"):
 			ret["remote"] = "gigablue"
 		elif ret["box"] == "me" or ret["box"] == "minime":
 			ret["remote"] = "me"
