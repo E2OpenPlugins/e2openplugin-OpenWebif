@@ -138,7 +138,7 @@ class BaseController(resource.Resource):
 		ret['zapstream'] = getZapStream()['zapstream']
 		ret['box'] = "dmm"
 		model = None
-		if fileExists('/proc/stb/info/boxtype'):
+		if fileExists('/proc/stb/info/gbmodel'):
 			file = open("/proc/stb/info/gbmodel")
 			model = file.read().strip()
 			file.close()
