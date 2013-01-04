@@ -110,7 +110,7 @@ def getInfo():
 		elif model.startswith("ixuss"):
 			brand = "Medi@link"
 			model = "ixussone"
-			chipset = "BCM7405"
+			chipset = "7405"
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBox"
 		file = open("/proc/stb/info/azmodel")
@@ -165,20 +165,8 @@ def getInfo():
 	except:
 		uptimetext = "?"
 	info['uptime'] = uptimetext
-		
-	if fileExists("/etc/bhversion"):
-		f = open("/etc/bhversion",'r')
-		imagever = f.readline().strip()
-		f.close()
-	elif fileExists("/etc/vtiversion.info"):
-		f = open("/etc/vtiversion.info",'r')
-		imagever = f.readline().strip()
-		f.close()
-	else:
-		imagever = about.getImageVersionString()
-		
 	info["webifver"] = getOpenWebifVer()
-	info['imagever'] = imagever
+	info['imagever'] = about.getImageVersionString()
 	info['enigmaver'] = about.getEnigmaVersionString()
 	info['kernelver'] = about.getKernelVersionString()
 	info['fp_version'] = getFPVersion()
