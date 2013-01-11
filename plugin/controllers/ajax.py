@@ -89,11 +89,11 @@ class AjaxController(BaseController):
 			model = "ebox5000"
 		elif model == "Ixuss One":
 			model = "ixussone"
-		elif model = "TM-TWIN-OE":
+		elif model == "TM-TWIN-OE":
 			model = "tmtwin"
-		elif model = "TM-2T-OE":
+		elif model == "TM-2T-OE":
 			model = "tm2t"
-		elif model = "TM-SINGLE":
+		elif model == "TM-SINGLE":
 			model = "tmsingle"
 		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
 			info["boximage"] = model + ".jpg"
