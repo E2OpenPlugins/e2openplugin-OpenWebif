@@ -206,7 +206,7 @@ class BaseController(resource.Resource):
 			ret["remote"] = "odinm7"
 		elif ret["box"] == "ebox5000":
 			ret["remote"] = "ebox5000"
-		elif ret["box"] == "Ixuss One":
+		elif ret["box"] == "ixuss one":
 			ret["remote"] = "ixussone"
 		else:
 			ret["remote"] = "dmm"
