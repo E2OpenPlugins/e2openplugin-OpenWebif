@@ -1,77 +1,135 @@
 <!-- OSD -->
-<div style="width:100%;height:137px;background-image:url(/images/osd/osd_back.png);"></div>
-<div style="position:absolute;top:225px;left:220px;color:#FFF;font-size:13px;font-weight:bold;">$info.date</div>
-<div style="position:absolute;top:254px;left:212px"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "/images/default_picon.png")' onclick="open_epg_pop('$info.ref');" href="#" title="Show EPG for $info.name" border="0" alt='' /></div>
-<div style="position:absolute;top:220px;left:300px;color:#FFF;width:500px;text-align:center;font-size:18px;"><a style="color:#FFF" target="_blank" title="Stream $getVar('now.title', '') from $info.name" href='/web/stream.m3u?ref=$info.ref&name=$info.name'>$info.name</a></div>
-<div style="position:absolute;top:248px;left:330px;color:#FFF;font-size:14px;">$getVar("now.begin", " ")</div>
-<div style="position:absolute;top:248px;left:380px;color:#FFF;font-size:14px;">$getVar("now.title", " ")</div>
-<div style="position:absolute;top:248px;left:780px;color:#FFF;font-size:14px;">+$getVar("now.tleft", " ") min</div>
-<div style="position:absolute;top:265px;left:380px;"><img border='0' height='14px' src='/images/osd/chan_bar_back.png' alt='' /></div>
-<div style="position:absolute;top:265px;left:380px;"><img border='0' height='14px' width='${getVar("now.progress", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
-<div style="position:absolute;top:276px;left:330px;color:#FFF;font-size:14px;">$getVar("next.begin", " ")</div>
-<div style="position:absolute;top:276px;left:380px;color:#FFF;font-size:14px;">$getVar("next.title", " ")</div>
-<div style="position:absolute;top:276px;left:780px;color:#FFF;font-size:14px;">&nbsp; $getVar("next.duration", " ") min</div>
-<div style="position:absolute;top:299px;left:330px;color:#FFF;font-size:14px;">$getVar("info.tunertype", " ")</div>
-<div style="position:absolute;top:298px;left:500px;color:#FFF">Snr: $getVar("info.snr", "0") % <img border='0' height='14px' src='/images/osd/snr_bar_back.png' alt='' /> Ber: $getVar("info.ber", "N/A") </div>
-<div style="position:absolute;top:298px;left:572px;"><img border='0' height='14px' width='${getVar("info.snr", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
-<div style="position:absolute;top:320px;left:190px;color:#FFF;width:140px;text-align:center;font-size:13px;font-weight:bold;">$info.provider</div>
-<div style="position:absolute;top:320px;left:330px;color:#FFF;font-size:14px;"> $info.width x $info.height </div>
+<div style="width:680px;height:137px;background-image:url(/images/osd/osd_back.png);">
+  <div style="float:left;width:120px;height:137px;">
+    <div style="float:left;display:block;width:120px;height:37px;">
+      <div style="position:relative;top:10px;left:18px;color:#FFF;font-size:13px;font-weight:bold;">$info.date</div>
+    </div>
+    <div style="float:left;display:block;width:120px;height:60px;">
+      <div style="position:relative;top:0px;left:15px;"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "/images/default_picon.png")' onclick="open_epg_pop('$info.ref');" href="#" title="Show EPG for $info.name" border="0" alt='' /></div>
+    </div>
+    <div style="float:left;display:block;width:120px;height:40px;">
+      <div style="position:relative;top:8px;left:0px;color:#FFF;text-align:center;font-size:13px;font-weight:bold;">$info.provider</div>
+    </div>
+  </div>
+  <div style="float:left;width:560px;height:137px;">
+    <div style="float:left;width:560px;height:25px;">
+      <div style="float:left;position:relative;top:5px;left:0px;width:480px;color:#FFF;text-align:center;font-size:18px;"><a style="color:#FFF" target="_blank" title="Stream $getVar('now.title', '') from $info.name" href='/web/stream.m3u?ref=$info.ref&name=$info.name'>$info.name</a></div>
+    </div>
+    <div style="float:left;width:560px;height:24px;">
+      <div style="float:left;width:70px;height:24px;">
+        <div style="position:relative;top:10px;left:15px;color:#FFF;font-size:14px;">$getVar("now.begin", " ")</div>
+      </div>
+      <div style="float:left;width:360px;height:24px;">
+        <div style="position:relative;top:10px;left:0px;color:#FFF;font-size:14px;">$getVar("now.title", " ")</div>
+      </div>
+      <div style="float:left;width:130px;height:24px;">
+        <div style="position:relative;top:10px;left:0px;color:#FFF;font-size:14px;">+$getVar("now.tleft", " ") min</div>
+      </div>
+    </div>
+    <div style="float:left;width:560px;height:16px;">
+      <div style="float:left;position:relative;top:2px;left:15px;width:400px;height:14px;background-image:url(/images/osd/chan_bar_back.png);">
+        <div style="float:left;width:400px;height:14px;"><img border='0' height='14px' width='${getVar("now.progress", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
+      </div>
+    </div>
+    <div style="float:left;width:560px;height:14px;">
+      <div style="float:left;width:70px;height:14px;">
+        <div style="position:relative;top:0px;left:15px;height:14px;color:#FFF;font-size:14px;">$getVar("next.begin", " ")</div>
+      </div>
+      <div style="float:left;width:360px;height:14px;">
+        <div style="position:relative;top:0px;left:0px;height:14px;color:#FFF;font-size:14px;">$getVar("next.title", " ")</div>
+      </div>
+      <div style="float:left;width:130px;height:14px;">
+        <div style="position:relative;top:0px;left:0px;height:14px;color:#FFF;font-size:14px;">&nbsp; $getVar("next.duration", " ") min</div>
+      </div>
+    </div>
+    <div style="float:left;width:560px;height:20px;">
+      <div style="float:left;width:100px;height:20px;">
+        <div style="position:relative;top:6px;left:15px;height:14px;color:#FFF;font-size:14px;">$getVar("info.tunertype", " ")</div>
+      </div>
+      <div style="float:left;width:80px;height:20px;">
+        <div style="float:left;position:relative;top:6px;left:0px;height:14px;color:#FFF;font-size:14px;">Snr: $getVar("info.snr", "0") % </div>
+      </div>
+      <div style="float:left;width:100px;height:20px;">
+        <div style="float:left;position:relative;top:8px;left:0px;width:100px;height:14px;background-image:url(/images/osd/snr_bar_back.png);">
+          <div style="float:left;width:100px;height:14px;"><img border='0' height='14px' width='${getVar("info.snr", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
+        </div>
+      </div>
+      <div style="float:left;width:100px;height:20px;">
+        <div style="float:left;position:relative;top:6px;left:7px;height:14px;color:#FFF;font-size:14px;"> Ber: $getVar("info.ber", "N/A") </div>
+      </div>
+      <div style="float:left;width:125px;height:20px;">
+        <div style="position:relative;top:6px;left:0px;height:14px;color:#FFF;font-size:14px;">$info.width x $info.height</div>
+      </div>
+    </div>
+    <div style="float:left;width:560px;height:60px;">
+      <div style="float:left;width:110px;height:26px;">
+        <div style="float:left;position:relative;top:6px;left:15px;height:26px;color:#FFF;font-size:14px;">
 #if $info.tunernumber == 0
-<div style="position:absolute;top:319px;left:431px"><img border='0' src='/images/osd/icon_a.png' alt='' /></div>
-<div style="position:absolute;top:319px;left:451px"><img border='0' src='/images/osd/icon_b_off.png' alt='' /></div>
-<div style="position:absolute;top:319px;left:472px"><img border='0' src='/images/osd/icon_c_off.png' alt='' /></div>
-<div style="position:absolute;top:319px;left:493px"><img border='0' src='/images/osd/icon_d_off.png' alt='' /></div>
+          <img border='0' src='/images/osd/icon_a.png' alt='' />
+          <img border='0' src='/images/osd/icon_b_off.png' alt='' />
+          <img border='0' src='/images/osd/icon_c_off.png' alt='' />
+          <img border='0' src='/images/osd/icon_d_off.png' alt='' />
 #else if $info.tunernumber == 1
-<div style="position:absolute;top:319px;left:431px"><img border='0' src='/images/osd/icon_a_off.png' alt='' /></div>
-<div style="position:absolute;top:319px;left:451px"><img border='0' src='/images/osd/icon_b.png' alt='' /></div>
-<div style="position:absolute;top:319px;left:472px"><img border='0' src='/images/osd/icon_c_off.png' alt='' /></div>
-<div style="position:absolute;top:319px;left:493px"><img border='0' src='/images/osd/icon_d_off.png' alt='' /></div>
+          <img border='0' src='/images/osd/icon_a_off.png' alt='' />
+          <img border='0' src='/images/osd/icon_b.png' alt='' />
+          <img border='0' src='/images/osd/icon_c_off.png' alt='' />
+          <img border='0' src='/images/osd/icon_d_off.png' alt='' />
 #else if $info.tunernumber == 2
-<div style="position:absolute;top:319px;left:431px"><img border='0' src='/images/osd/icon_a_off.png' alt='' /></div>
-<div style="position:absolute;top:319px;left:451px"><img border='0' src='/images/osd/icon_b_off.png' alt='' /></div>
-<div style="position:absolute;top:319px;left:472px"><img border='0' src='/images/osd/icon_c.png' alt='' /></div>
-<div style="position:absolute;top:319px;left:493px"><img border='0' src='/images/osd/icon_d_off.png' alt='' /></div>
+          <img border='0' src='/images/osd/icon_a_off.png' alt='' />
+          <img border='0' src='/images/osd/icon_b_off.png' alt='' />
+          <img border='0' src='/images/osd/icon_c.png' alt='' />
+          <img border='0' src='/images/osd/icon_d_off.png' alt='' />
 #else if $info.tunernumber == 3
-<div style="position:absolute;top:319px;left:431px"><img border='0' src='/images/osd/icon_a_off.png' alt='' /></div>
-<div style="position:absolute;top:319px;left:451px"><img border='0' src='/images/osd/icon_b_off.png' alt='' /></div>
-<div style="position:absolute;top:319px;left:472px"><img border='0' src='/images/osd/icon_c_off.png' alt='' /></div>
-<div style="position:absolute;top:319px;left:493px"><img border='0' src='/images/osd/icon_d.png' alt='' /></div>
-#end if
+          <img border='0' src='/images/osd/icon_a_off.png' alt='' />
+          <img border='0' src='/images/osd/icon_b_off.png' alt='' />
+          <img border='0' src='/images/osd/icon_c_off.png' alt='' />
+          <img border='0' src='/images/osd/icon_d.png' alt='' />
+#end if 
+        </div>
+      </div>
+      <div style="float:left;width:400px;height:32px;">
+        <div style="float:left;position:relative;top:6px;left:10px;height:26px;color:#FFF;font-size:14px;">
 #if $info.crypt == 1
-<div style="position:absolute;top:317px;left:515px"><img border='0' src='/images/osd/icon_crypt.png' alt='' /></div>
-#else 
-<div style="position:absolute;top:317px;left:515px"><img border='0' src='/images/osd/icon_crypt_off.png' alt='' /></div>
+          <img border='0' src='/images/osd/icon_crypt.png' alt='' />
+#else
+          <img border='0' src='/images/osd/icon_crypt_off.png' alt='' />
 #end if
 #if $info.dolby == True
-<div style="position:absolute;top:317px;left:561px"><img border='0' src='/images/osd/icon_dolby.png' alt='' /></div>
+          <img border='0' src='/images/osd/icon_dolby.png' alt='' />
 #else
-<div style="position:absolute;top:317px;left:561px"><img border='0' src='/images/osd/icon_dolby_off.png' alt='' /></div>
+          <img border='0' src='/images/osd/icon_dolby_off.png' alt='' />
 #end if
 #if $info.wide == True
-<div style="position:absolute;top:317px;left:627px"><img border='0' src='/images/osd/icon_format.png' alt='' /></div>
+          <img border='0' src='/images/osd/icon_format.png' alt='' />
 #else
-<div style="position:absolute;top:317px;left:627px"><img border='0' src='/images/osd/icon_format_off.png' alt='' /></div>
+          <img border='0' src='/images/osd/icon_format_off.png' alt='' />
 #end if
 #if $info.width > 1900
-<div style="position:absolute;top:317px;left:673px"><img border='0' src='/images/osd/icon_hd.png' alt='' /></div>
+          <img border='0' src='/images/osd/icon_hd.png' alt='' />
 #else
-<div style="position:absolute;top:317px;left:673px"><img border='0' src='/images/osd/icon_sd.png' alt='' /></div>
+          <img border='0' src='/images/osd/icon_sd.png' alt='' />
 #end if
 #if $info.txtpid != "N/A"
-<div style="position:absolute;top:317px;left:719px"><img border='0' src='/images/osd/icon_txt.png' alt='' /></div>
+          <img border='0' src='/images/osd/icon_txt.png' alt='' />
 #else
-<div style="position:absolute;top:317px;left:719px"><img border='0' src='/images/osd/icon_txt_off.png' alt='' /></div>
+          <img border='0' src='/images/osd/icon_txt_off.png' alt='' />
 #end if
 #if $info.subs == True
-<div style="position:absolute;top:317px;left:765px"><img border='0' src='/images/osd/icon_sub.png' alt='' /></div>
+          <img border='0' src='/images/osd/icon_sub.png' alt='' />
 #else
-<div style="position:absolute;top:317px;left:765px"><img border='0' src='/images/osd/icon_sub_off.png' alt='' /></div>
+          <img border='0' src='/images/osd/icon_sub_off.png' alt='' />
 #end if
 #if $info.rec_state == True
-<div style="position:absolute;top:317px;left:811px"><img border='0' src='/images/osd/icon_rec.png' alt='' /></div>
+          <img border='0' src='/images/osd/icon_rec.png' alt='' />
 #else
-<div style="position:absolute;top:317px;left:811px"><img border='0' src='/images/osd/icon_rec_off.png' alt='' /></div>
+          <img border='0' src='/images/osd/icon_rec_off.png' alt='' />
 #end if
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- /END OSD -->
  
 
