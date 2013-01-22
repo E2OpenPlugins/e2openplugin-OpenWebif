@@ -10,7 +10,7 @@
 from Tools.Directories import fileExists
 from Components.config import config
 
-from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getBouquetNoExtEpg, getEvent
+from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
 from models.info import getInfo, getPublicPath, getOpenWebifVer
 from models.movies import getMovieList
 from models.timers import getTimers
@@ -141,7 +141,7 @@ class AjaxController(BaseController):
 			
 		return getConfigs(section)
 
-	def P_epgbouquet(self, request):
+	def P_multiepg(self, request):
 		bouq = getBouquets("tv")
 		if "bref" not in request.args.keys():
 			bref = bouq['bouquets'][0][0]
@@ -160,7 +160,7 @@ class AjaxController(BaseController):
 			except Exception, e:
 				pass
 		
-		epg = getBouquetNoExtEpg(bref, begintime, endtime)
+		epg = getMultiEpg(self, bref, begintime, endtime)
 		epg['bouquets'] = bouq['bouquets']
 		epg['bref'] = bref
 		epg['day'] = day
