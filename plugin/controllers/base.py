@@ -188,15 +188,15 @@ class BaseController(resource.Resource):
 			ret["remote"] = "et6500"
 		elif ret["box"] in ("gb800solo", "gb800se", "gb800ue", "quad"):
 			ret["remote"] = "gigablue"
-		elif ret["box"] == "me" or ret["box"] == "minime":
+		elif ret["box"] in ("me", "minime"):
 			ret["remote"] = "me"
-		elif ret["box"] == "premium" or ret["box"] == "premium+":
+		elif ret["box"] in ("premium", "premium+"):
 			ret["remote"] = "premium"
-		elif ret["box"] == "elite" or ret["box"] == "ultra":
+		elif ret["box"] in ("elite", "ultra"):
 			ret["remote"] = "elite"
 		elif ret["box"] == "ini-3000":
 			ret["remote"] = "ini-3000"
-		elif ret["box"] == "ini-7000" or ret["box"] == "ini-5000" or ret["box"] == "ini-5000R" or ret["box"] == "ini-7012":
+		elif ret["box"] in ("ini-7000", "ini-5000", "ini-5000R", "ini-7012"):
 			ret["remote"] = "ini-7000"
 		elif ret["box"] == "xp1000":
 			ret["remote"] = "xp1000"
