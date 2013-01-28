@@ -50,6 +50,8 @@ def getPiconPath():
 		return "/media/usb/picon/"
 	elif pathExists("/media/cf/picon/"):
 		return "/media/cf/picon/"
+	elif pathExists("/media/hdd/picon/"):
+		return "/media/hdd/picon/"		
 	elif pathExists("/usr/share/enigma2/picon/"):
 		return "/usr/share/enigma2/picon/"
 	elif pathExists("/picon/"):
@@ -68,7 +70,7 @@ def getInfo():
 	if fileExists("/proc/stb/info/hwmodel"):
 		brand = "Technomate"
 		file = open("/proc/stb/info/hwmodel")
-		model = file.read().strip()
+		model = file.read().strip().lower()
 		file.close()
 		if model == "tmtwinoe":
 			model = "TM-TWIN-OE"
@@ -78,13 +80,13 @@ def getInfo():
 			model = "TM-SINGLE"
 	elif fileExists("/proc/stb/info/boxtype"):
 		file = open("/proc/stb/info/boxtype")
-		model = file.read().strip()
+		model = file.read().strip().lower()
 		file.close()
 		if model == "gigablue":
 			brand = "GigaBlue"
 			if fileExists("/proc/stb/info/gbmodel"):
 				file = open("/proc/stb/info/gbmodel")
-				model = file.read().strip()
+				model = file.read().strip().lower()
 				file.close()
 			else:
 				model = 'gb800solo'
@@ -92,7 +94,7 @@ def getInfo():
 			brand = "Clarke-Xtrend"
 			if model == "et9500":
 				model = "et9x00"
-		elif model.startswith("ini-"):
+		elif model.startswith("ini"):
 			brand = "INI-Series"
 		elif model.startswith("xp"):
 			brand = "XP-Series"
@@ -101,14 +103,14 @@ def getInfo():
 		elif model.startswith("ebox"):
 			brand = "MixOs-Series"
 			model = "MixOs F5"
-		elif model.startswith("Ixuss"):
+		elif model.startswith("ixuss"):
 			brand = "Ixuss-Series"
 			model = "Ixuss One"
 			chipset = "BCM7405"
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBOX"
 		file = open("/proc/stb/info/azmodel")
-		model = file.read().strip()
+		model = file.read().strip().lower()
 		file.close()
 		if model == "me":
 			chipset = "SIGMA 8655"
@@ -119,11 +121,11 @@ def getInfo():
 	elif fileExists("/proc/stb/info/vumodel"):
 		brand = "Vu Plus"
 		file = open("/proc/stb/info/vumodel")
-		model = file.read().strip()
+		model = file.read().strip().lower()
 		file.close()
 	else:
 		file = open("/proc/stb/info/model")
-		model = file.read().strip()
+		model = file.read().strip().lower()
 		file.close()
 
 	info['brand'] = brand
