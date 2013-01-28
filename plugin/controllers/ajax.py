@@ -116,6 +116,10 @@ class AjaxController(BaseController):
 			box['brand'] = "vuplus"
 		elif fileExists("/proc/stb/info/azmodel"):
 			box['brand'] = "azbox"
+		elif fileExists("/proc/stb/info/gbmodel"):
+			box['brand'] = "gigablue"
+		elif fileExists("/proc/stb/info/hwmodel"):
+			box['brand'] = "technomate"			
 		return { "box": box }
 		
 	def P_powerstate(self, request):
