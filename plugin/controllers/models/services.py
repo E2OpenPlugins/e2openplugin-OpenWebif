@@ -368,8 +368,8 @@ def getSubServices(session):
 			"servicename": service.info().getName()
 		})
 		subservices = service.subServices()
-		print subservices.getNumberOfSubservices()
 		if subservices and subservices.getNumberOfSubservices() > 0:
+			print subservices.getNumberOfSubservices()
 			for i in range(subservices.getNumberOfSubservices()):
 				sub = subservices.getSubservice(i)
 				services.append({
@@ -377,7 +377,7 @@ def getSubServices(session):
 					"servicename": sub.getName()
 				})
 	else:
-		services.append =({
+		services.append({
 			"servicereference": "N/A",
 			"servicename": "N/A"
 		})
