@@ -111,6 +111,6 @@ def startSession(reason, session):
 def Plugins(**kwargs):
 	return [PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startSession),
 		PluginDescriptor(where=[PluginDescriptor.WHERE_NETWORKCONFIG_READ], fnc=IfUpIfDown),
-		PluginDescriptor(name="OpenWebif", description="OpenWebif Configuration", icon="openwebif.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=confplug)]
+		PluginDescriptor(name="OpenWebif", description=_("OpenWebif Configuration"), icon="openwebif.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=confplug)]
 
 
