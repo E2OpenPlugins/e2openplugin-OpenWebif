@@ -571,6 +571,7 @@ function addTimer(evt) {
 	
 	$('#editTimerForm').dialog("open");
 	$('#editTimerForm').dialog("option", "title", "Add Timer");
+	$('#editTimerForm').dialog("option", "height", "auto");
 }
 
 /* Timer management end */
