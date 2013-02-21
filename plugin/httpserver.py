@@ -9,24 +9,20 @@
 
 from enigma import eEnv
 from Components.config import config
-from Tools.Directories import fileExists, resolveFilename, SCOPE_CONFIG
+from Tools.Directories import fileExists
 from twisted.internet import reactor, ssl
 from twisted.web import server, http, static, resource, error
 from twisted.internet.error import CannotListenError
-from OpenSSL import crypto
 
 from controllers.root import RootController
+from sslcertificate import SSLCertificateGenerator, KEY_FILE, CERT_FILE
 from socket import gethostname
 
 import os
 import imp
-import random
 
 global listener, server_to_stop
 listener = []
-
-KEY_FILE = resolveFilename(SCOPE_CONFIG, "key.pem")
-CERT_FILE = resolveFilename(SCOPE_CONFIG, "cert.pem")
 
 def isOriginalWebifInstalled():
 	pluginpath = eEnv.resolve('${libdir}/enigma2/python/Plugins/Extensions/WebInterface/plugin.py')
@@ -244,40 +240,15 @@ class StopServer:
 			self.callback(self.session)
 		
 #
-# Code mostly taken from Reichis web interface; also found at
-# http://skippylovesmalorie.wordpress.com/2010/02/12/how-to-generate-a-self-signed-certificate-using-pyopenssl/
+# create a self signed SSL certificate if necessary
 #
 def installCertificates(session):
-	if not os.path.exists(CERT_FILE) or not os.path.exists(KEY_FILE):
-		print "[OpenWebif] Generate SSL key pair and CACert"
-		# create a key pair
-		key = crypto.PKey()
-		key.generate_key(crypto.TYPE_RSA, 1024)
-
-		# create a self-signed cert
-		cert = crypto.X509()
-		cert.get_subject().C = "DE"
-		cert.get_subject().ST = "Home"
-		cert.get_subject().L = "Home"
-		cert.get_subject().O = "OpenWebif"
-		cert.get_subject().OU = "HTTPS-Server"
-		cert.get_subject().CN = gethostname()
-		cert.set_serial_number(random.randint(1000000,1000000000))
-		cert.set_notBefore("20120101000000Z");
-		cert.set_notAfter("20301231235900Z")
-		cert.set_issuer(cert.get_subject())
-		cert.set_pubkey(key)
-		cert.sign(key, 'sha1')
-
-		try:
-			print "[OpenWebif] Install newly generated certificate and key pair"
-			open(CERT_FILE, "wt").write(
-				crypto.dump_certificate(crypto.FILETYPE_PEM, cert))
-			open(KEY_FILE, "wt").write(
-				crypto.dump_privatekey(crypto.FILETYPE_PEM, key))
-		except IOError, e:
-			#Disable https
-			config.OpenWebif.https_enabled.value = False
-			config.OpenWebif.https_enabled.save()
-			#Inform the user
-			session.open(MessageBox, "Cannot install generated SSL-Certifactes for https access\nHttps access is disabled!", MessageBox.TYPE_ERROR)
+	certGenerator = SSLCertificateGenerator()
+	try:
+		certGenerator.installCertificates()
+	except IOError, e:
+		# Disable https
+		config.OpenWebif.https_enabled.value = False
+		config.OpenWebif.https_enabled.save()
+		# Inform the user
+		session.open(MessageBox, "Cannot install generated SSL-Certifactes for https access\nHttps access is disabled!", MessageBox.TYPE_ERROR)
