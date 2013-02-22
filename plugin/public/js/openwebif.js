@@ -297,6 +297,24 @@ function grabScreenshot(mode) {
 	$('#screenshotimage').attr("width",700);
 }
 
+function getMessageAnswer() {
+	$.getJSON('/api/messageanswer', function(result){
+		$('#messageSentResponse').html(result['message']);
+	});
+}
+
+var MessageAnswerCounter=0;
+
+function countdowngetMessage() {
+	MessageAnswerCounter--;
+	if(MessageAnswerCounter<0) { 
+		getMessageAnswer();
+		return;
+	}
+	$('#messageSentResponse').html('Waiting for Answer...'+MessageAnswerCounter);
+	setTimeout(countdowngetMessage, 1000);
+}
+
 function sendMessage() {
 	var text = $('#messageText').val();
 	var type = $('#messageType').val();
@@ -304,7 +322,13 @@ function sendMessage() {
 
 	$.getJSON('/api/message?text=' + text + '&type=' + type + '&timeout=' + timeout, function(result){
 		$('#messageSentResponse').html(result['message']);
+		if(type==0)
+		{
+			MessageAnswerCounter=timeout;
+			setTimeout(countdowngetMessage, 1000);
+		}
 	});
+	
 }
 
 function toggleMenu(name) {
