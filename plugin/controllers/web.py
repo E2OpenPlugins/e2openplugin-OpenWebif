@@ -317,7 +317,9 @@ class WebController(BaseController):
 		return getMovieTags()
 	
 	def P_timerlist(self, request):
-		return getTimers(self.session)
+		ret = getTimers(self.session)
+		ret["locations"] = config.movielist.videodirs.value
+		return ret
 		
 	def P_timeradd(self, request):
 		res = self.testMandatoryArguments(request, ["sRef", "begin", "end", "name"])
