@@ -317,7 +317,9 @@ class WebController(BaseController):
 		return getMovieTags()
 	
 	def P_timerlist(self, request):
-		return getTimers(self.session)
+		ret = getTimers(self.session)
+		ret["locations"] = config.movielist.videodirs.value
+		return ret
 		
 	def P_timeradd(self, request):
 		res = self.testMandatoryArguments(request, ["sRef", "begin", "end", "name"])
@@ -585,8 +587,16 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
-			
-		return getBouquetNowNextEpg(request.args["bRef"][0], -1)
+		info = getCurrentService(self.session)
+		ret = getBouquetNowNextEpg(request.args["bRef"][0], -1)
+		#now = getNowNextEpg(info["ref"], 0)
+		#if len(now["events"]) > 0:
+		#	ret["now"] = now["events"][0]
+		#next = getNowNextEpg(info["ref"], 1)
+		#if len(next["events"]) > 0:
+		#	ret["next"] = next["events"][0]
+		ret["info"]=info
+		return ret
 		
 	def P_epgsearch(self, request):
 		res = self.testMandatoryArguments(request, ["search"])

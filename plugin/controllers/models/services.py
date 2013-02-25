@@ -368,8 +368,8 @@ def getSubServices(session):
 			"servicename": service.info().getName()
 		})
 		subservices = service.subServices()
-		print subservices.getNumberOfSubservices()
 		if subservices and subservices.getNumberOfSubservices() > 0:
+			print subservices.getNumberOfSubservices()
 			for i in range(subservices.getNumberOfSubservices()):
 				sub = subservices.getSubservice(i)
 				services.append({
@@ -377,7 +377,7 @@ def getSubServices(session):
 					"servicename": sub.getName()
 				})
 	else:
-		services.append =({
+		services.append({
 			"servicereference": "N/A",
 			"servicename": "N/A"
 		})
@@ -611,13 +611,32 @@ def getSearchSimilarEpg(ref, eventid):
 
 	return { "events": ret, "result": True }
 
-def getBouquetNoExtEpg(ref, begintime=-1, endtime=None):
+
+def getMultiEpg(self, ref, begintime=-1, endtime=None):
+
+	# Check if an event has an associated timer. Unfortunately
+	# we cannot simply check against timer.eit, because a timer
+	# does not necessarily have one belonging to an epg event id.
+	def getTimerEventStatus(event):
+		startTime = event[1]
+		endTime = event[1] + event[6] - 120
+		serviceref = event[4]
+		if not timerlist.has_key(serviceref):
+			return ''
+		for timer in timerlist[serviceref]:
+			if timer.begin <= startTime and timer.end >= endTime:
+				if timer.disabled:
+					return 'timer disabled'
+				else:
+					return 'timer'
+		return ''
+
 	ret = OrderedDict()
 	services = eServiceCenter.getInstance().list(eServiceReference(ref))
 	if not services:
 		return { "events": ret, "result": False, "slot": None }
 
-	search = ['IBTSRN']
+	search = ['IBTSRND']
 	for service in services.getContent('S'):
 		if endtime:
 			search.append((service, 0, begintime, endtime))
@@ -628,7 +647,19 @@ def getBouquetNoExtEpg(ref, begintime=-1, endtime=None):
 	events = epgcache.lookupEvent(search)
 	offset = None
 	picons = {}
+	
 	if events is not None:
+		# We want to display if an event is covered by a timer.
+		# To keep the costs low for a nested loop against the timer list, we
+		# partition the timers by service reference. For an event we then only
+		# have to check the part of the timers that belong to that specific
+		# service reference. Partition is generated here.
+		timerlist = {}
+		for timer in self.session.nav.RecordTimer.timer_list + self.session.nav.RecordTimer.processed_timers:
+			if not timerlist.has_key(str(timer.service_ref)):
+				timerlist[str(timer.service_ref)] = []
+			timerlist[str(timer.service_ref)].append(timer)
+		
 		for event in events:
 			ev = {}
 			ev['id'] = event[0]
@@ -636,6 +667,8 @@ def getBouquetNoExtEpg(ref, begintime=-1, endtime=None):
 			ev['title'] = event[2]
 			ev['shortdesc'] = event[3]
 			ev['ref'] = event[4]
+			ev['timerStatus'] = getTimerEventStatus(event)
+
 			channel = filterName(event[5])
 			if not ret.has_key(channel):
 				ret[channel] = [ [], [], [], [], [], [], [], [], [], [], [], [] ]
@@ -651,6 +684,7 @@ def getBouquetNoExtEpg(ref, begintime=-1, endtime=None):
 				ret[channel][slot].append(ev)
 
 	return { "events": ret, "result": True, "picons": picons }
+
 
 def getPicon(sname):
 	if sname is not None:

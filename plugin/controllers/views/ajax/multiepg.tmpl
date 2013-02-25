@@ -15,6 +15,8 @@
 	.bq.selected { color: #A9D1FA; }
 	.plus { background-color: #dfeffc; font-size: 13px; font-weight: bold; color: #1c478e; padding: 2px 4px; line-height: 21px; cursor: pointer; white-space: nowrap; }
 	.plus.selected { color: #ea7409; }
+	.timer { color: #f00; font-weight: bold; font-size: 10px; }
+	.timer.disabled { color: #f80; }
 	#eventdescription { width: 375px; height: auto; position: fixed; top: 205px; left: 350px; z-index: 1000; display: none; overflow: auto; }
 }
 </style>
@@ -71,7 +73,7 @@ var picons = $dumps($picons);
 var reloadTimers = false;
 \$(".bq").click(function() {
     var id = \$(this).attr("js:ref");
-    \$("#tvcontent").html(loadspinner).load('ajax/epgbouquet?bref='+id);
+    \$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref='+id);
 });
 \$(".event").click(function() {
     var id = \$(this).attr("js:id");
@@ -82,7 +84,7 @@ var reloadTimers = false;
 });
 \$(".plus").click(function() {
 	var day = \$(this).attr("js:day");
-	\$("#tvcontent").html(loadspinner).load('ajax/epgbouquet?bref=${quote($bref)}&day='+day);
+	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day='+day);
 });
 \$('#editTimerForm').load('/ajax/edittimer');
 </script>

@@ -28,6 +28,8 @@ def getOpenWebifVer():
 	return OPENWEBIFVER
 
 def formatIp(ip):
+	if ip is None:
+		return None
 	if len(ip) != 4:
 		return None
 	return "%d.%d.%d.%d" % (ip[0], ip[1], ip[2], ip[3])
