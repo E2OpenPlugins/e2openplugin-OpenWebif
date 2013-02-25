@@ -105,7 +105,6 @@ def getInfo():
 			model = "MixOs F5"
 		elif model.startswith("ixuss"):
 			brand = "Ixuss-Series"
-			model = "Ixuss One"
 			chipset = "BCM7405"
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBOX"

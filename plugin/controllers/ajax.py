@@ -89,6 +89,10 @@ class AjaxController(BaseController):
 			model = "ebox5000"
 		elif model == "Ixuss One":
 			model = "ixussone"
+		elif model == "Ixuss Duo":
+			model = "ixussduo"
+		elif model == "Ixuss Zero":
+			model = "ixusszero"			
 		elif model == "TM-TWIN-OE":
 			model = "tmtwin"
 		elif model == "TM-2T-OE":
