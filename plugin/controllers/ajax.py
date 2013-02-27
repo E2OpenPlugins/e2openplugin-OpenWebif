@@ -9,6 +9,7 @@
 
 from Tools.Directories import fileExists
 from Components.config import config
+from enigma import getBoxType
 
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
 from models.info import getInfo, getPublicPath, getOpenWebifVer
@@ -87,18 +88,18 @@ class AjaxController(BaseController):
 			model = "odinm7"
 		elif model == "MixOs F5":
 			model = "ebox5000"
-		elif model == "Ixuss One":
-			model = "ixussone"
-		elif model == "Ixuss Duo":
-			model = "ixussduo"
-		elif model == "Ixuss Zero":
-			model = "ixusszero"			
 		elif model == "TM-TWIN-OE":
 			model = "tmtwin"
 		elif model == "TM-2T-OE":
 			model = "tm2t"
 		elif model == "TM-SINGLE":
 			model = "tmsingle"
+		elif getBoxType() == 'ixusssone':
+			model = "ixussone"
+		elif getBoxType() == 'ixussduo':
+			model = "ixussduo"
+		elif getBoxType() == 'ixusszero':
+			model = "ixusszero"					
 		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
 			info["boximage"] = model + ".jpg"
 		else:
