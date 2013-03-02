@@ -17,6 +17,7 @@ from Screens.Standby import inStandby
 from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
 from enigma import eDVBVolumecontrol, eServiceCenter
+from Tools.StbHardware import getFPVersion
 
 import os
 import sys
@@ -63,41 +64,75 @@ def getInfo():
 	# TODO: get webif versione somewhere!
 	info = {}
 
-	brand = "Dream Multimedia"
+	brand = "DreamBox"
 	model = "unknown"
 	chipset = "unknown"
-	
-	if fileExists("/proc/stb/info/boxtype"):
-		brand = "Xtrend"
-		f = open("/proc/stb/info/boxtype",'r')
-		model = f.readline().strip()
- 		if model.startswith("et"):
-		    brand = "Xtrend"
+
+	if fileExists("/proc/stb/info/hwmodel"):
+		brand = "Technomate"
+		file = open("/proc/stb/info/hwmodel")
+		model = file.read().strip().lower()
+		file.close()
+		if model == "tmtwinoe":
+			model = "TM Twin OE"
+		elif model == "tm2toe":
+			model = "TM 2T OE"
+		elif model == "tmsingle":
+			model = "TM Single"
+		elif model == "twin":
+			model = "TM Twin"
+		elif model == "ios100hd":
+			model = "IOS100"
+		elif model == "ios200hd":
+			model = "IOS200"
+		elif model == "ios300hd":
+			model = "IOS300"
+	elif fileExists("/proc/stb/info/boxtype"):
+		file = open("/proc/stb/info/boxtype")
+		model = file.read().strip().lower()
+		file.close()
+		if model == "gigablue":
+			brand = "GigaBlue"
+			file = open("/proc/stb/info/gbmodel")
+			model = file.read().strip().lower()
+			file.close()
+		if model.startswith("et"):
+			brand = "Xtrend"
+			if model == "et9500":
+				model = "et9x00"
 		elif model.startswith("ini"):
-		    brand = "INI-Series"
+			brand = "Venton"
 		elif model.startswith("xp"):
-		    brand = "XP-Series"
- 		f.close()
-	elif fileExists("/proc/stb/info/vumodel"):
-		brand = "Vuplus"
-		f = open("/proc/stb/info/vumodel",'r')
- 		model = f.readline().strip()
- 		f.close()
+			brand = "MaxDigital"
+		elif model.startswith("odin"):
+			brand = "Odin"
+		elif model.startswith("ebox"):
+			brand = "EBox"
+			model = "ebox5000"
+		elif model.startswith("ixuss"):
+			brand = "Medi@link"
+			model = "ixussone"
+			chipset = "7405"
 	elif fileExists("/proc/stb/info/azmodel"):
-		brand = "AZBOX"
-		f = open("/proc/stb/info/model",'r')
- 		model = f.readline().strip()
- 		f.close()
- 		if model == "me":
+		brand = "AZBox"
+		file = open("/proc/stb/info/azmodel")
+		model = file.read().strip().lower()
+		file.close()
+		if model == "me":
 			chipset = "SIGMA 8655"
- 		elif model == "minime":
+		elif model == "minime":
 			chipset = "SIGMA 8653"
- 		else:
+		else:
 			chipset = "SIGMA 8634"
+	elif fileExists("/proc/stb/info/vumodel"):
+		brand = "VuPlus"
+		file = open("/proc/stb/info/vumodel")
+		model = file.read().strip().lower()
+		file.close()
 	else:
-		f = open("/proc/stb/info/model",'r')
- 		model = f.readline().strip()
- 		f.close()
+		file = open("/proc/stb/info/model")
+		model = file.read().strip().lower()
+		file.close()
 
 	info['brand'] = brand
 	info['model'] = model
@@ -132,30 +167,11 @@ def getInfo():
 	except:
 		uptimetext = "?"
 	info['uptime'] = uptimetext
-		
-	if fileExists("/etc/bhversion"):
-		f = open("/etc/bhversion",'r')
-		imagever = f.readline().strip()
-		f.close()
-	elif fileExists("/etc/vtiversion.info"):
-		f = open("/etc/vtiversion.info",'r')
-		imagever = f.readline().strip()
-		f.close()
-	else:
-		imagever = about.getImageVersionString()
-		
 	info["webifver"] = getOpenWebifVer()
-	info['imagever'] = imagever
+	info['imagever'] = about.getImageVersionString()
 	info['enigmaver'] = about.getEnigmaVersionString()
 	info['kernelver'] = about.getKernelVersionString()
-
-	try:
-		from Tools.StbHardware import getFPVersion
-	except ImportError:
-		from Tools.DreamboxHardware import getFPVersion
-
 	info['fp_version'] = getFPVersion()
-	
 	info['tuners'] = []
 	for i in range(0, nimmanager.getSlotCount()):
 		info['tuners'].append({

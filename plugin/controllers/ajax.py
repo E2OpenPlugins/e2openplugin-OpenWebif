@@ -99,11 +99,15 @@ class AjaxController(BaseController):
 			
 	def P_screenshot(self, request):
 		box = {}
-		box['brand'] = "dmm"
+		box['brand'] = "DreamBox"
 		if fileExists("/proc/stb/info/vumodel"):
-			box['brand'] = "vuplus"
+			box['brand'] = "VuPlus"
 		elif fileExists("/proc/stb/info/azmodel"):
-			box['brand'] = "azbox"
+			box['brand'] = "AZBox"
+		elif fileExists("/proc/stb/info/gbmodel"):
+			box['brand'] = "GigaBlue"
+		elif fileExists("/proc/stb/info/hwmodel"):
+			box['brand'] = "Technomate"
 		return { "box": box }
 		
 	def P_powerstate(self, request):
