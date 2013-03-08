@@ -910,6 +910,7 @@ class WebController(BaseController):
 			return {
 				"plugins": []
 			}
+		
 	def P_settings(self, request):
 		return getSettings()
 	

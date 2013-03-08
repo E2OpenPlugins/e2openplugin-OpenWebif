@@ -307,7 +307,9 @@ var MessageAnswerCounter=0;
 
 function countdowngetMessage() {
 	MessageAnswerCounter--;
-	if(MessageAnswerCounter<0) { 
+// TODO: the default answer is yes and for this case we stop the timeout two seconds before
+// Bad Workaround but it works
+	if(MessageAnswerCounter<3) { 
 		getMessageAnswer();
 		return;
 	}

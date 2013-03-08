@@ -15,10 +15,12 @@ def messageReply(reply):
 	lastreply = reply
 	
 def sendMessage(session, message, ttype, timeout):
+	global lastreply
 	if ttype not in [MessageBox.TYPE_YESNO, MessageBox.TYPE_INFO, MessageBox.TYPE_WARNING, MessageBox.TYPE_ERROR]:
 		ttype = MessageBox.TYPE_INFO
 		
 	if ttype == MessageBox.TYPE_YESNO:
+		lastreply = None
 		session.openWithCallback(messageReply, MessageBox, message, type=ttype, timeout=timeout)
 	else:
 		session.open(MessageBox, message, type=ttype, timeout=timeout)
@@ -31,7 +33,6 @@ def sendMessage(session, message, ttype, timeout):
 def getMessageAnswer():
 	global lastreply
 	reply = lastreply
-	lastreply = None
 	
 	if reply is None:
 		return {
