@@ -7,6 +7,7 @@
 #                                                                            #
 ##############################################################################
 import os
+import re
 from twisted.web import static, resource, http
 from urllib import unquote, quote
 from Components.config import config
@@ -29,6 +30,13 @@ class FileController(resource.Resource):
 			filename = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
 
 			if not os.path.exists(filename):
+				return "File '%s' not found" % (filename)
+
+			filename = re.sub("^/+", "/", os.path.realpath(filename))
+			for prefix in [ "/hdd/", "/media/", "/mnt/" ]:
+				if filename.startswith(prefix):
+					break
+			else:
 				return "File '%s' not found" % (filename)
 
 			name = "stream"
