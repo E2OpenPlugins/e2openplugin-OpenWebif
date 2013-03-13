@@ -166,7 +166,11 @@ def getInfo():
 	info['uptime'] = uptimetext
 
 	info["webifver"] = getOpenWebifVer()
-	info['imagever'] = about.getImageVersionString()
+	try:
+		from enigma import getImageVersionString, getBuildVersionString
+		info['imagever'] = getImageVersionString() + '.' + getBuildVersionString()
+	except:
+		info['imagever'] = about.getImageVersionString()
 	info['enigmaver'] = about.getEnigmaVersionString()
 	info['kernelver'] = about.getKernelVersionString()
 
