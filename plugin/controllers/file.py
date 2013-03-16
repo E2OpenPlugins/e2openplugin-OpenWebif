@@ -32,12 +32,16 @@ class FileController(resource.Resource):
 			if not os.path.exists(filename):
 				return "File '%s' not found" % (filename)
 
+			# limit unauthenticated requests to directories /hdd, /media and /mnt.
+			# Other directories with sensible information require authentication.
 			filename = re.sub("^/+", "/", os.path.realpath(filename))
 			for prefix in [ "/hdd/", "/media/", "/mnt/" ]:
 				if filename.startswith(prefix):
 					break
 			else:
-				return "File '%s' not found" % (filename)
+				# require authentication for request to eg. /etc
+				if not self.isAuthenticated(request):
+					return "File '%s' not found" % (filename)
 
 			name = "stream"
 			if "name" in request.args:
@@ -89,3 +93,36 @@ class FileController(resource.Resource):
 				return server.NOT_DONE_YET
 			else:
 				return "path %s not exits" % (path)
+	
+	#
+	# check if a request is authenticated; needed here for
+	# requests to /etc and others, compatibility with iDreamX.
+	def isAuthenticated(self, request):
+		session = request.getSession().sessionNamespaces
+			
+		if "logged" in session.keys() and session["logged"]:
+			return True
+			
+		if self.authenticate(request.getUser(), request.getPassword()):
+			session["logged"] = True
+			return True
+		return False
+
+	def authenticate(self, user, passwd):
+		from crypt import crypt
+		from pwd import getpwnam
+		from spwd import getspnam
+		cpass = None
+		try:
+			cpass = getpwnam(user)[1]
+		except:
+			return False
+		if cpass:
+			if cpass == 'x' or cpass == '*':
+				try:
+					cpass = getspnam(user)[1]
+				except:
+					return False			
+			return crypt(passwd, cpass) == cpass
+		return False
+
