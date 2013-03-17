@@ -167,11 +167,12 @@ def getInfo():
 
 	info["webifver"] = getOpenWebifVer()
 	try:
-		from enigma import getImageVersionString, getBuildVersionString
+		from enigma import getImageVersionString, getBuildVersionString, getEnigmaVersionString
 		info['imagever'] = getImageVersionString() + '.' + getBuildVersionString()
+		info['enigmaver'] = getEnigmaVersionString()
 	except:
 		info['imagever'] = about.getImageVersionString()
-	info['enigmaver'] = about.getEnigmaVersionString()
+		info['enigmaver'] = about.getEnigmaVersionString()
 	info['kernelver'] = about.getKernelVersionString()
 
 	try:
