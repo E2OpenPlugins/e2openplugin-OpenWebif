@@ -70,16 +70,27 @@ def getInfo():
 	chipset = "unknown"
 
 	if fileExists("/proc/stb/info/hwmodel"):
-		brand = "Technomate"
 		file = open("/proc/stb/info/hwmodel")
 		model = file.read().strip().lower()
 		file.close()
 		if model == "tmtwinoe":
 			model = "TM-TWIN-OE"
+			brand = "Technomate"
 		elif model == "tm2toe":
 			model = "TM-2T-OE"
+			brand = "Technomate"
 		elif model == "tmsingle":
 			model = "TM-SINGLE"
+			brand = "Technomate"
+		elif model == "ios100hd":
+			model = "IOS-100HD"
+			brand = "Iqon"
+		elif model == "ios200hd":
+			model = "IOS-200HD"
+			brand = "Iqon"
+		elif model == "ios300hd":
+			model = "IOS-300HD"
+			brand = "Iqon"
 	elif fileExists("/proc/stb/info/boxtype"):
 		file = open("/proc/stb/info/boxtype")
 		model = file.read().strip().lower()

@@ -88,6 +88,12 @@ class AjaxController(BaseController):
 			model = "odinm7"
 		elif model == "MixOs F5":
 			model = "ebox5000"
+		elif model == "IOS-100HD":
+			model = "ios100hd"
+		elif model == "IOS-200HD":
+			model = "ios200hd"
+		elif model == "IOS-300HD":
+			model = "ios300hd"
 		elif model == "TM-TWIN-OE":
 			model = "tmtwin"
 		elif model == "TM-2T-OE":
