@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 D=$(pushd $(dirname $0) &> /dev/null; pwd; popd &> /dev/null)
 P=${D}/ipkg.tmp.$$
