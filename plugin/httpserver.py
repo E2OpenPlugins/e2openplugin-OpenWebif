@@ -131,6 +131,24 @@ def HttpdStart(session):
 				print "[OpenWebif] started on", httpsPort
 			except CannotListenError:
 				print "[OpenWebif] failed to listen on Port", httpsPort
+			except: # THIS EXCEPTION IS ONLY CATCHED WHEN CERT FILES ARE BAD ( look below for error )
+				print "[OpenWebif] failed to get valid cert files. ( It could occure bad file save or format, removing... )"
+				# removing bad files
+				os.system("rm /etc/enigma2/cert.pem && rm /etc/enigma2/key.pem")
+				# regenerate new ones
+				installCertificates(session)
+				# restart
+				try:
+					context = ssl.DefaultOpenSSLContextFactory(KEY_FILE, CERT_FILE)
+					listener.append( reactor.listenSSL(httpsPort, site, context) )
+					print "[OpenWebif] started on", httpsPort
+				except CannotListenError:
+					print "[OpenWebif] failed to listen on Port", httpsPort
+#
+# This is ERROR which I fixed by added one more Exception
+# File "/usr/lib/python2.7/site-packages/twisted/internet/ssl.py", line 68, in __init__
+# File "/usr/lib/python2.7/site-packages/twisted/internet/ssl.py", line 77, in cacheContext
+# OpenSSL.SSL.Error: [('PEM routines', 'PEM_read_bio', 'no start line'), ('SSL routines', 'SSL_CTX_use_certificate_file', 'PEM lib')]
 
 #Streaming requires listening on 127.0.0.1:80	
 		if port != 80:
