@@ -134,7 +134,8 @@ def HttpdStart(session):
 			except: # THIS EXCEPTION IS ONLY CATCHED WHEN CERT FILES ARE BAD ( look below for error )
 				print "[OpenWebif] failed to get valid cert files. ( It could occure bad file save or format, removing... )"
 				# removing bad files
-				os.system("rm /etc/enigma2/cert.pem && rm /etc/enigma2/key.pem")
+				os.remove("/etc/enigma2/cert.pem")
+				os.remove("/etc/enigma2/key.pem")
 				# regenerate new ones
 				installCertificates(session)
 				# restart
