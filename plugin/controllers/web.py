@@ -914,3 +914,9 @@ class WebController(BaseController):
 	def P_settings(self, request):
 		return getSettings()
 	
+	def P_bouquets(self, request):
+		stype = "tv"
+		if "stype" in request.args.keys():
+			stype = request.args["stype"][0]
+		return getBouquets(stype)
+
