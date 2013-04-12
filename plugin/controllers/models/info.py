@@ -16,7 +16,7 @@ from RecordTimer import parseEvent
 from Screens.Standby import inStandby
 from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
-from enigma import eDVBVolumecontrol, eServiceCenter
+from enigma import eDVBVolumecontrol, eServiceCenter, getDistro
 
 import os
 import sys
@@ -112,7 +112,11 @@ def getInfo():
 		elif model.startswith("xp"):
 			brand = "XP-Series"
 		elif model.startswith("odin"):
-			brand = "Odin-Series"
+			if getDistro() == 'axassupport':
+				brand = "AXAS"
+				model = "Class M"
+			else:
+				brand = "Odin-Series"
 		elif model.startswith("ebox"):
 			brand = "MixOs-Series"
 			model = "MixOs F5"
