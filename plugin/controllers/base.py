@@ -137,36 +137,36 @@ class BaseController(resource.Resource):
 		ret['configsections'] = getConfigsSections()['sections']
 		ret['zapstream'] = getZapStream()['zapstream']
 		ret['box'] = "dmm"
-		if open("/proc/stb/info/model",'r').read().strip() == "Gigablue":
+		if open("/proc/stb/info/model",'r').read().strip().lower() == "gigablue":
 			ret['box'] = "gigablue"
 		if fileExists("/proc/stb/info/boxtype"):
-			ret['box'] = open("/proc/stb/info/boxtype").read().strip()
+			ret['box'] = open("/proc/stb/info/boxtype").read().strip().lower()
 		elif fileExists("/proc/stb/info/vumodel"):
-			ret['box'] = open("/proc/stb/info/vumodel").read().strip()
+			ret['box'] = open("/proc/stb/info/vumodel").read().strip().lower()
 		elif fileExists("/proc/stb/info/azmodel"):
-			ret['box'] = open("/proc/stb/info/model").read().strip()
+			ret['box'] = open("/proc/stb/info/model").read().strip().lower()
 			
 		if ret["box"] in ("solo", "duo", "uno", "solo2", "duo2"):
 			ret["remote"] = "vu_normal"
 		elif ret["box"] == "ultimo":
 			ret["remote"] = "vu_ultimo"
-		elif ret["box"] == "et9x00" or ret["box"] == "et9000" or ret["box"] == "et9200":
+		elif ret["box"] in ("et9x00", "et9000", "et9200", "et9500"):
 			ret["remote"] = "et9x00"
-		elif ret["box"] == "et5x00" or ret["box"] == "et5000" or ret["box"] == "et6000":
+		elif ret["box"] in ("et5x00", "et5000", "et6000"):
 			ret["remote"] = "et5x00"
-		elif ret["box"] == "et4x00" or ret["box"] == "et4000":
+		elif ret["box"] in ("et4x00", "et4000"):
 			ret["remote"] = "et4x00"
 		elif ret["box"] == "gigablue":
 			ret["remote"] = "gigablue"
-		elif ret["box"] == "me" or ret["box"] == "minime":
+		elif ret["box"] in ("me", "minime"):
 			ret["remote"] = "me"
-		elif ret["box"] == "premium" or ret["box"] == "premium+":
+		elif ret["box"] in ("premium", "premium+"):
 			ret["remote"] = "premium"
-		elif ret["box"] == "elite" or ret["box"] == "ultra":
+		elif ret["box"] in ("elite", "ultra"):
 			ret["remote"] = "elite"
 		elif ret["box"] == "ini-3000":
 			ret["remote"] = "ini-3000"
-		elif ret["box"] == "ini-7000" or ret["box"] == "ini-5000":
+		elif ret["box"] in ("ini-7000", "ini-5000", "ini-5000r", "ini-5000sv", "ini-7012"):
 			ret["remote"] = "ini-7000"
 		elif ret["box"] == "xp1000":
 			ret["remote"] = "xp1000"

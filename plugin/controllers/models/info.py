@@ -52,6 +52,8 @@ def getPiconPath():
 		return "/media/usb/picon/"
 	elif pathExists("/media/cf/picon/"):
 		return "/media/cf/picon/"
+	elif pathExists("/media/hdd/picon/"):
+		return "/media/hdd/picon/"
 	elif pathExists("/usr/share/enigma2/picon/"):
 		return "/usr/share/enigma2/picon/"
 	elif pathExists("/picon/"):
@@ -70,23 +72,23 @@ def getInfo():
 	if fileExists("/proc/stb/info/boxtype"):
 		brand = "Xtrend"
 		f = open("/proc/stb/info/boxtype",'r')
-		model = f.readline().strip()
+		model = f.readline().strip().lower()
  		if model.startswith("et"):
 		    brand = "Xtrend"
-		elif model.startswith("ini"):
-		    brand = "INI-Series"
+		elif model.startswith("ini") or model.startswith("venton") or model.startswith("sezam"):
+		    brand = "Venton"
 		elif model.startswith("xp"):
-		    brand = "XP-Series"
+		    brand = "MaxDigital"
  		f.close()
 	elif fileExists("/proc/stb/info/vumodel"):
-		brand = "Vuplus"
+		brand = "VuPlus"
 		f = open("/proc/stb/info/vumodel",'r')
- 		model = f.readline().strip()
+ 		model = f.readline().strip().lower()
  		f.close()
 	elif fileExists("/proc/stb/info/azmodel"):
-		brand = "AZBOX"
+		brand = "AZBox"
 		f = open("/proc/stb/info/model",'r')
- 		model = f.readline().strip()
+ 		model = f.readline().strip().lower()
  		f.close()
  		if model == "me":
 			chipset = "SIGMA 8655"
@@ -96,7 +98,7 @@ def getInfo():
 			chipset = "SIGMA 8634"
 	else:
 		f = open("/proc/stb/info/model",'r')
- 		model = f.readline().strip()
+ 		model = f.readline().strip().lower()
  		f.close()
 
 	info['brand'] = brand
