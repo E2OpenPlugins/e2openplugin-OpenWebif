@@ -30,8 +30,6 @@ def getOpenWebifVer():
 def formatIp(ip):
 	if ip is None or len(ip) != 4:
 		return "0.0.0.0"
-	if len(ip) != 4:
-		return None
 	return "%d.%d.%d.%d" % (ip[0], ip[1], ip[2], ip[3])
 
 def getBasePath():
