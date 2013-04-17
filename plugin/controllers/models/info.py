@@ -22,14 +22,14 @@ import os
 import sys
 import time
 
-OPENWEBIFVER = "OWIF 0.1.3"
+OPENWEBIFVER = "OWIF 0.1.4"
 
 def getOpenWebifVer():
 	return OPENWEBIFVER
 
 def formatIp(ip):
-	if ip is None:
-		return None
+	if ip is None or len(ip) != 4:
+		return "0.0.0.0"
 	if len(ip) != 4:
 		return None
 	return "%d.%d.%d.%d" % (ip[0], ip[1], ip[2], ip[3])
