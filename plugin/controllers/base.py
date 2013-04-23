@@ -197,9 +197,11 @@ class BaseController(resource.Resource):
 			ret["remote"] = "premium"
 		elif ret["box"] in ("elite", "ultra"):
 			ret["remote"] = "elite"
+		elif ret["box"] in ("ini-1000", "ini-1000ru", "ini-1000sv"):
+			ret["remote"] = "ini-1000"
 		elif ret["box"] == "ini-3000":
 			ret["remote"] = "ini-3000"
-		elif ret["box"] in ("ini-7000", "ini-5000", "ini-5000r", "ini-5000sv", "ini-7012"):
+		elif ret["box"] in ("ini-7000", "ini-5000", "ini-5000ru", "ini-5000sv", "ini-7012"):
 			ret["remote"] = "ini-7000"
 		elif ret["box"] == "xp1000":
 			ret["remote"] = "xp1000"
@@ -214,7 +216,7 @@ class BaseController(resource.Resource):
 		elif getBoxType() == 'ixussduo':
 			ret["remote"] = "ixussone"
 		elif getBoxType() == 'ixusszero':
-			ret["remote"] = "ixusszero"			
+			ret["remote"] = "ixusszero"
 		else:
 			ret["remote"] = "dmm"
 
