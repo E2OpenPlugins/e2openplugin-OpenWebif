@@ -65,10 +65,9 @@ def mediaPlayerRemove(session, filename):
 			"message": "Mediaplayer not installed"
 			}
 		
-	if fileExists(filename):
+	service = eServiceReference(filename)
+	if not service.valid():
 		service = eServiceReference(4097, 0, filename)
-	else:
-		service = eServiceReference(filename)
 		
 	if not service.valid():
 		return {
