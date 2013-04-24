@@ -105,7 +105,11 @@ class AjaxController(BaseController):
 		elif getBoxType() == 'ixussduo':
 			model = "ixussduo"
 		elif getBoxType() == 'ixusszero':
-			model = "ixusszero"					
+			model = "ixusszero"
+		elif model == 'Premium Twin':
+			model = "ini-5000sv"
+		elif model == 'Premium Mini':
+			model = "ini-1000sv"
 		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
 			info["boximage"] = model + ".jpg"
 		else:

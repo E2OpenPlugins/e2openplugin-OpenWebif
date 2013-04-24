@@ -22,7 +22,7 @@ import os
 import sys
 import time
 
-OPENWEBIFVER = "OWIF 0.1.4"
+OPENWEBIFVER = "OWIF 0.1.5"
 
 def getOpenWebifVer():
 	return OPENWEBIFVER
@@ -106,7 +106,18 @@ def getInfo():
 			if model == "et9500":
 				model = "et9x00"
 		elif model.startswith("ini"):
-			brand = "INI-Series"
+			if model.endswith("sv"):
+				brand = "Miraclebox"
+				if model == "ini-5000sv":
+					model = "Premium Twin"
+				elif model == "ini-1000sv":
+					model = "Premium Mini"
+				else:
+					model
+			elif model.endswith("ru"):
+				brand = "Sezam"
+			else:
+				brand = "Venton"
 		elif model.startswith("xp"):
 			brand = "XP-Series"
 		elif model.startswith("odin"):
