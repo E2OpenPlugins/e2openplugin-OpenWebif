@@ -8,7 +8,7 @@
 ##############################################################################
 from Tools.Directories import fileExists
 from Components.Sources.ServiceList import ServiceList
-from Components.ParentalControl import parentalControl, LIST_BLACKLIST, LIST_WHITELIST
+from Components.ParentalControl import parentalControl
 from Components.config import config
 from ServiceReference import ServiceReference
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
@@ -705,21 +705,21 @@ def getParentalControlList():
 			"result": True,
 			"services": []
 		}
-
+	parentalControl.open()
 	if config.ParentalControl.type.value == "whitelist":
-		tservices = parentalControl.openListFromFile(LIST_WHITELIST)
+		tservices = parentalControl.whitelist
 	else:
-		tservices = parentalControl.openListFromFile(LIST_BLACKLIST)
-
+		tservices = parentalControl.blacklist
 	services = []
-	for service in tservices:
-		tservice = ServiceReference(service)
-		services.append({
-			"servicereference": service,
-			"servicename": tservice.getServiceName()
-		})
-
+	if tservices is not None:
+		for service in tservices:
+			tservice = ServiceReference(service)
+			services.append({
+				"servicereference": service,
+				"servicename": tservice.getServiceName()
+			})
 	return {
 		"result": True,
+		"type": config.ParentalControl.type.value,
 		"services": services
 	}
