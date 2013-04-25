@@ -22,7 +22,7 @@ import os
 import sys
 import time
 
-OPENWEBIFVER = "OWIF 0.1.4"
+OPENWEBIFVER = "OWIF 0.1.5"
 
 def getOpenWebifVer():
 	return OPENWEBIFVER
