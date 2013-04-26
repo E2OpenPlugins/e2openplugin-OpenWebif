@@ -2,7 +2,8 @@ from Tools.Directories import fileExists, resolveFilename, SCOPE_PLAYLIST
 from Components.FileList import FileList
 from enigma import eServiceReference
 
-import os
+import os 
+import fnmatch
 
 def getMpInstance(session):
 	try:
@@ -287,4 +288,18 @@ def mediaPlayerSave(session, filename):
 		"result": True,
 		"message": "Playlist saved to '%s'" % path
 		}
+
+def mediaPlayerFindFile(session, path, pattern):
+	rfiles = []
+	for root, dirs, files in os.walk(path):
+		for filename in fnmatch.filter(files, pattern):
+			rfiles.append({
+				"name": filename,
+				"path": root
+			})
 	
+	return {
+		"result": True,
+		"files": rfiles
+	}
+

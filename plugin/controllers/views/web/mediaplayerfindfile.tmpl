@@ -1,0 +1,11 @@
+#filter WebSafe
+<?xml version="1.0" encoding="UTF-8"?>
+<e2findfile>
+	#for $file in $files
+	<e2file>
+		<e2name>$str($file.name)</e2name>
+		<e2path>$str($file.path)</e2path>
+	</e2file>
+	#end for
+</e2findfile>
+#end filter
