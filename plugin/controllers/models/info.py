@@ -120,12 +120,20 @@ def getInfo():
 				brand = "Venton"
 		elif model.startswith("xp"):
 			brand = "XP-Series"
-		elif model.startswith("odin"):
+		elif model == "odinm9":
+			brand = "Odin-Series"
+		elif model == "odinm7":
 			if getDistro() == 'axassupport':
 				brand = "AXAS"
 				model = "Class M"
 			else:
 				brand = "Odin-Series"
+		elif model == "e3hd":
+			if getDistro() == 'axassupport':
+				brand = "AXAS"
+				model = "Class E"
+			else:
+				brand = "E3-Series"
 		elif model.startswith("ebox"):
 			brand = "MixOs-Series"
 			model = "MixOs F5"
