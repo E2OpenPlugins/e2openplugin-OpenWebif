@@ -73,8 +73,19 @@ def getInfo():
 		model = f.readline().strip().lower()
  		if model.startswith("et"):
 		    brand = "Xtrend"
-		elif model.startswith("ini") or model.startswith("venton") or model.startswith("sezam"):
-		    brand = "Venton"
+		elif model.startswith("ini"):
+			if model.endswith("sv"):
+				brand = "MiracleBox"
+				if model == "ini-5000sv":
+					model = "Premium Twin"
+				elif model == "ini-1000sv":
+					model = "Premium Mini"
+				else:
+					model
+			elif model.endswith("ru"):
+				brand = "Sezam"
+			else:
+				brand = "Venton"
 		elif model.startswith("xp"):
 		    brand = "MaxDigital"
  		f.close()
