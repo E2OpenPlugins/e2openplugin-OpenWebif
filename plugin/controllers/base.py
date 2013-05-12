@@ -8,13 +8,11 @@
 ##############################################################################
 
 from Tools.Directories import fileExists
-
+from enigma import getBoxType
 from twisted.web import server, http, static, resource, error
 from Cheetah.Template import Template
-
 from models.info import getInfo, getBasePath, getPublicPath, getViewsPath
 from models.config import getCollapsedMenus, getRemoteGrabScreenshot, getZapStream, getConfigsSections
-
 import imp
 import sys
 import json
@@ -137,14 +135,36 @@ class BaseController(resource.Resource):
 		ret['configsections'] = getConfigsSections()['sections']
 		ret['zapstream'] = getZapStream()['zapstream']
 		ret['box'] = "dmm"
-		if open("/proc/stb/info/model",'r').read().strip().lower() == "gigablue":
-			ret['box'] = "gigablue"
-		if fileExists("/proc/stb/info/boxtype"):
-			ret['box'] = open("/proc/stb/info/boxtype").read().strip().lower()
-		elif fileExists("/proc/stb/info/vumodel"):
-			ret['box'] = open("/proc/stb/info/vumodel").read().strip().lower()
+
+		if fileExists("/proc/stb/info/hwmodel"):
+			file = open("/proc/stb/info/hwmodel")
+			model = file.read().strip().lower()
+			file.close()
+		elif fileExists("/proc/stb/info/boxtype"):
+			file = open("/proc/stb/info/boxtype")
+			model = file.read().strip().lower()
+			file.close()
+			if model == "gigablue" or model.startswith("gb"):
+				if fileExists("/proc/stb/info/gbmodel"):
+					file = open("/proc/stb/info/gbmodel")
+					model = file.read().strip().lower()
+					file.close()
+				else:
+					model = 'gb800solo'
 		elif fileExists("/proc/stb/info/azmodel"):
-			ret['box'] = open("/proc/stb/info/model").read().strip().lower()
+			file = open("/proc/stb/info/azmodel")
+			model = file.read().strip().lower()
+			file.close()
+		elif fileExists("/proc/stb/info/vumodel"):
+			file = open("/proc/stb/info/vumodel")
+			model = file.read().strip().lower()
+			file.close()
+		else:
+			file = open("/proc/stb/info/model")
+			model = file.read().strip().lower()
+			file.close()
+
+		ret['box'] = model
 			
 		if ret["box"] in ("solo", "duo", "uno", "solo2", "duo2"):
 			ret["remote"] = "vu_normal"
