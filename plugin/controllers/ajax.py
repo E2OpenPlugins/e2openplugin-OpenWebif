@@ -9,7 +9,7 @@
 
 from Tools.Directories import fileExists
 from Components.config import config
-
+from enigma import getBoxType
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
 from models.info import getInfo, getPublicPath, getOpenWebifVer
 from models.movies import getMovieList
@@ -79,14 +79,26 @@ class AjaxController(BaseController):
 			model = "et9x00"
 		elif model == "et5000" or model == "et6000":
 			model = "et5x00"
-		elif model == "et4000" :
-			model = "et4x00"
-		elif model == "xp1000" :
-			model = "xp1000"
-		elif model == 'Premium Twin':
-			model = "ini-5000sv"
-		elif model == 'Premium Mini':
-			model = "ini-1000sv"			
+		elif model == "quad":
+			model = "gbquad"
+		elif model == "single" or model == "tmsingle" or model == "twin" or model == "twinoe" or model == "singlemini" or model == "tmsinglemini" or model == "tmtwin" or model == "tmtwinoe" or model == "tm2tsuper" or model == "2tsuper" or model == "nanosuper" or model == "tmnanosuper" or model == "nano" or model == "tmnano" or model == "tmnanooe" or model == "nanooe":
+			model = "technomate"
+		elif model == "2toe" or model == "2t" or model == "tm2toe" or model == "tm2t":
+			model = "tm2toe"
+		elif getBoxType() == 'ixusssone':
+			model = "ixussone"
+		elif getBoxType() == 'ixussduo':
+			model = "ixussduo"
+		elif getBoxType() == 'ixusszero':
+			model = "ixusszero"
+		elif getBoxType() == 'ixusstriple':
+			model = "ixusstriple"
+		elif model == "IOS100":
+			model = "ios100hd"
+		elif model == "IOS200":
+			model = "ios200hd"
+		elif model == "IOS300":
+			model = "ios300hd"
 		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
 			info["boximage"] = model + ".jpg"
 		else:
@@ -103,13 +115,15 @@ class AjaxController(BaseController):
 			
 	def P_screenshot(self, request):
 		box = {}
-		box['brand'] = "dmm"
+		box['brand'] = "DreamBox"
 		if fileExists("/proc/stb/info/vumodel"):
-			box['brand'] = "vuplus"
+			box['brand'] = "VuPlus"
 		elif fileExists("/proc/stb/info/azmodel"):
-			box['brand'] = "azbox"
+			box['brand'] = "AZBox"
 		elif fileExists("/proc/stb/info/gbmodel"):
-			box['brand'] = "gigablue"
+			box['brand'] = "GigaBlue"
+		elif fileExists("/proc/stb/info/hwmodel"):
+			box['brand'] = "Technomate"
 		return { "box": box }
 		
 	def P_powerstate(self, request):

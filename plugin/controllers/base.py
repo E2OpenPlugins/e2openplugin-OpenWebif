@@ -8,13 +8,11 @@
 ##############################################################################
 
 from Tools.Directories import fileExists
-
+from enigma import getBoxType
 from twisted.web import server, http, static, resource, error
 from Cheetah.Template import Template
-
 from models.info import getInfo, getBasePath, getPublicPath, getViewsPath
 from models.config import getCollapsedMenus, getRemoteGrabScreenshot, getZapStream, getConfigsSections
-
 import imp
 import sys
 import json
@@ -137,16 +135,44 @@ class BaseController(resource.Resource):
 		ret['configsections'] = getConfigsSections()['sections']
 		ret['zapstream'] = getZapStream()['zapstream']
 		ret['box'] = "dmm"
-		if open("/proc/stb/info/model",'r').read().strip().lower() == "gigablue":
-			ret['box'] = "gigablue"
-		if fileExists("/proc/stb/info/boxtype"):
-			ret['box'] = open("/proc/stb/info/boxtype").read().strip().lower()
-		elif fileExists("/proc/stb/info/vumodel"):
-			ret['box'] = open("/proc/stb/info/vumodel").read().strip().lower()
+
+		if fileExists("/proc/stb/info/hwmodel"):
+			file = open("/proc/stb/info/hwmodel")
+			model = file.read().strip().lower()
+			file.close()
+		elif fileExists("/proc/stb/info/boxtype"):
+			file = open("/proc/stb/info/boxtype")
+			model = file.read().strip().lower()
+			file.close()
+			if model == "gigablue" or model.startswith("gb"):
+				if fileExists("/proc/stb/info/gbmodel"):
+					file = open("/proc/stb/info/gbmodel")
+					model = file.read().strip().lower()
+					file.close()
+				else:
+					model = 'gb800solo'
 		elif fileExists("/proc/stb/info/azmodel"):
-			ret['box'] = open("/proc/stb/info/model").read().strip().lower()
-			
-		if ret["box"] in ("solo", "duo", "uno", "solo2", "duo2"):
+			file = open("/proc/stb/info/azmodel")
+			model = file.read().strip().lower()
+			file.close()
+		elif fileExists("/proc/stb/info/vumodel"):
+			file = open("/proc/stb/info/vumodel")
+			model = file.read().strip().lower()
+			file.close()
+		else:
+			file = open("/proc/stb/info/model")
+			model = file.read().strip().lower()
+			file.close()
+
+		ret['box'] = model
+
+		if ret["box"] in ("single", "2toe", "2t", "twin", "twinoe", "singlemini", "nanooe", "tmtwinoe", "tm2toe", "tmsingle", "tmsinglemini", "tm2tsuper", "tmnanosuper", "tmnanooe", "tmtwin", "tm2t", "technomate", "nano", "tmnano", "2tsuper", "nanosuper"):
+			ret["remote"] = "technomate"
+		elif ret["box"] in ("ios100hd", "ios200hd", "ios300hd", "iosf3d"):
+			ret["remote"] = "iqon"
+		elif ret["box"] == "mediabox":
+			ret["remote"] = "mediabox"
+		elif ret["box"] in ("solo", "duo", "uno", "solo2", "duo2"):
 			ret["remote"] = "vu_normal"
 		elif ret["box"] == "ultimo":
 			ret["remote"] = "vu_ultimo"
@@ -156,7 +182,9 @@ class BaseController(resource.Resource):
 			ret["remote"] = "et5x00"
 		elif ret["box"] in ("et4x00", "et4000"):
 			ret["remote"] = "et4x00"
-		elif ret["box"] == "gigablue":
+		elif ret["box"] == "et6500":
+			ret["remote"] = "et6500"
+		elif ret["box"] in ("gb800solo", "gb800se", "gb800ue", "gbquad", "quad"):
 			ret["remote"] = "gigablue"
 		elif ret["box"] in ("me", "minime"):
 			ret["remote"] = "me"
@@ -174,6 +202,22 @@ class BaseController(resource.Resource):
 			ret["remote"] = "ini-7000"
 		elif ret["box"] == "xp1000":
 			ret["remote"] = "xp1000"
+		elif ret["box"] == "odinm9":
+			ret["remote"] = "odinm9"
+		elif ret["box"] == "odinm7":
+			ret["remote"] = "odinm7"
+		elif ret["box"] == "e3hd":
+			ret["remote"] = "e3hd"
+		elif ret["box"] in ("ebox5000", "ebox7358"):
+			ret["remote"] = "ebox5000"
+		elif getBoxType() == 'ixusssone':
+			ret["remote"] = "ixussone"
+		elif getBoxType() == 'ixussduo':
+			ret["remote"] = "ixussone"
+		elif getBoxType() == 'ixusszero':
+			ret["remote"] = "ixusszero"
+		elif getBoxType() == 'ixusstriple':
+			ret["remote"] = "ixusstriple"
 		else:
 			ret["remote"] = "dmm"
 		
