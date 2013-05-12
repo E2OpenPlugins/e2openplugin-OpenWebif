@@ -63,16 +63,36 @@ def getInfo():
 	# TODO: get webif versione somewhere!
 	info = {}
 
-	brand = "Dream Multimedia"
+	brand = "DreamBox"
 	model = "unknown"
 	chipset = "unknown"
-	
-	if fileExists("/proc/stb/info/boxtype"):
-		brand = "Xtrend"
-		f = open("/proc/stb/info/boxtype",'r')
-		model = f.readline().strip().lower()
- 		if model.startswith("et"):
-		    brand = "Xtrend"
+
+	if fileExists("/proc/stb/info/hwmodel"):
+		file = open("/proc/stb/info/hwmodel")
+		model = file.read().strip().lower()
+		file.close()
+		if model == "mediabox":
+			brand = "Jepsson"
+		elif model.startswith('tm'):
+			brand = "Technomate"
+		elif model.startswith("iq") or model.startswith("ios"):
+			brand = "iqON"
+	elif fileExists("/proc/stb/info/boxtype"):
+		file = open("/proc/stb/info/boxtype")
+		model = file.read().strip().lower()
+		file.close()
+		if model == "gigablue" or model.startswith("gb"):
+			brand = "GigaBlue"
+			if fileExists("/proc/stb/info/gbmodel"):
+				file = open("/proc/stb/info/gbmodel")
+				model = file.read().strip().lower()
+				file.close()
+			else:
+				model = 'gb800solo'
+		elif model.startswith("et"):
+			brand = "Xtrend"
+			if model == "et9500":
+				model = "et9x00"
 		elif model.startswith("ini"):
 			if model.endswith("sv"):
 				brand = "MiracleBox"
@@ -81,28 +101,37 @@ def getInfo():
 			else:
 				brand = "Venton"
 		elif model.startswith("xp"):
-		    brand = "MaxDigital"
- 		f.close()
-	elif fileExists("/proc/stb/info/vumodel"):
-		brand = "VuPlus"
-		f = open("/proc/stb/info/vumodel",'r')
- 		model = f.readline().strip().lower()
- 		f.close()
+			brand = "MaxDigital"
+		elif model.startswith('tm'):
+			brand = "Technomate"
+		elif model.startswith("iq") or model.startswith("ios"):
+			brand = "iqON"
+		elif model.startswith("odin") or model.startswith("mara") or model.startswith("e3"):
+			brand = "Odin"
+		elif model.startswith("ebox"):
+			brand = "EBox"
+		elif model.startswith("ixuss"):
+			brand = "Medi@link"
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBox"
-		f = open("/proc/stb/info/model",'r')
- 		model = f.readline().strip().lower()
- 		f.close()
- 		if model == "me":
+		file = open("/proc/stb/info/azmodel")
+		model = file.read().strip().lower()
+		file.close()
+		if model == "me":
 			chipset = "SIGMA 8655"
- 		elif model == "minime":
+		elif model == "minime":
 			chipset = "SIGMA 8653"
- 		else:
+		else:
 			chipset = "SIGMA 8634"
+	elif fileExists("/proc/stb/info/vumodel"):
+		brand = "VuPlus"
+		file = open("/proc/stb/info/vumodel")
+		model = file.read().strip().lower()
+		file.close()
 	else:
-		f = open("/proc/stb/info/model",'r')
- 		model = f.readline().strip().lower()
- 		f.close()
+		file = open("/proc/stb/info/model")
+		model = file.read().strip().lower()
+		file.close()
 
 	info['brand'] = brand
 	info['model'] = model
