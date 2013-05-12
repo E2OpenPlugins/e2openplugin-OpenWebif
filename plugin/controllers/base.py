@@ -165,8 +165,14 @@ class BaseController(resource.Resource):
 			file.close()
 
 		ret['box'] = model
-			
-		if ret["box"] in ("solo", "duo", "uno", "solo2", "duo2"):
+
+		if ret["box"] in ("single", "2toe", "2t", "twin", "twinoe", "singlemini", "nanooe", "tmtwinoe", "tm2toe", "tmsingle", "tmsinglemini", "tm2tsuper", "tmnanosuper", "tmnanooe", "tmtwin", "tm2t", "technomate", "nano", "tmnano", "2tsuper", "nanosuper"):
+			ret["remote"] = "technomate"
+		elif ret["box"] in ("ios100hd", "ios200hd", "ios300hd", "iosf3d"):
+			ret["remote"] = "iqon"
+		elif ret["box"] == "mediabox":
+			ret["remote"] = "mediabox"
+		elif ret["box"] in ("solo", "duo", "uno", "solo2", "duo2"):
 			ret["remote"] = "vu_normal"
 		elif ret["box"] == "ultimo":
 			ret["remote"] = "vu_ultimo"

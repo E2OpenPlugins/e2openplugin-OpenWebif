@@ -81,6 +81,10 @@ class AjaxController(BaseController):
 			model = "et5x00"
 		elif model == "quad":
 			model = "gbquad"
+		elif model == "single" or model == "tmsingle" or model == "twin" or model == "twinoe" or model == "singlemini" or model == "tmsinglemini" or model == "tmtwin" or model == "tmtwinoe" or model == "tm2tsuper" or model == "2tsuper" or model == "nanosuper" or model == "tmnanosuper" or model == "nano" or model == "tmnano" or model == "tmnanooe" or model == "nanooe":
+			model = "technomate"
+		elif model == "2toe" or model == "2t" or model == "tm2toe" or model == "tm2t":
+			model = "tm2toe"
 		elif getBoxType() == 'ixusssone':
 			model = "ixussone"
 		elif getBoxType() == 'ixussduo':
@@ -89,6 +93,12 @@ class AjaxController(BaseController):
 			model = "ixusszero"
 		elif getBoxType() == 'ixusstriple':
 			model = "ixusstriple"
+		elif model == "IOS100":
+			model = "ios100hd"
+		elif model == "IOS200":
+			model = "ios200hd"
+		elif model == "IOS300":
+			model = "ios300hd"
 		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
 			info["boximage"] = model + ".jpg"
 		else:
