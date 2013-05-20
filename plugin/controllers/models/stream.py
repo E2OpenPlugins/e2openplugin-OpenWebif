@@ -124,7 +124,7 @@ class StreamProxyHelper(object):
 		streaming = service.stream()
 		s = streaming and streaming.getStreamingData()
 
-		if s is None:
+		if s is None or len(s) == 0:
 			err = service.getError()
 			if err:
 				self.request.write("-SERVICE ERROR:%d\n" % err)
