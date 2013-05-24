@@ -290,10 +290,10 @@ function grabScreenshot(mode) {
 	timestamp = new Date().getTime();
 	if (($('#screenshotRefreshHD').is(':checked')))
 		$('#screenshotimage')
-			.attr("src",'/grab?format=jpg&mode=' + mode + '&timestamp=' + timestamp);
+			.attr("src",'/grab?format=png&mode=' + mode + '&timestamp=' + timestamp);
 	else
 		$('#screenshotimage')
-			.attr("src",'/grab?format=jpg&r=700&mode=' + mode + '&timestamp=' + timestamp);
+			.attr("src",'/grab?format=png&r=700&mode=' + mode + '&timestamp=' + timestamp);
 	$('#screenshotimage').attr("width",700);
 }
 
