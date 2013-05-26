@@ -175,6 +175,8 @@ class BaseController(resource.Resource):
 			ret["remote"] = "tm_2t"
 		elif ret["box"] == "tmsingle":
 			ret["remote"] = "tm_2t"
+		elif ret["box"] == "tmnanooe":
+			ret["remote"] = "tm_nano"
 		elif ret["box"] in ("ios100hd", "ios200hd", "ios300hd"):
 			ret["remote"] = "iqon"
 		elif ret["box"] in ("solo", "duo", "uno", "solo2", "duo2"):

@@ -80,6 +80,9 @@ def getInfo():
 		elif model == "tmsingle":
 			model = "TM-SINGLE"
 			brand = "Technomate"
+		elif model == "tmnanooe":
+			model = "TM-NANO-OE"
+			brand = "Technomate"
 		elif model == "ios100hd":
 			model = "IOS-100HD"
 			brand = "Iqon"
