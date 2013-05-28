@@ -76,12 +76,6 @@ def getInfo():
 		elif model.startswith("ini"):
 			if model.endswith("sv"):
 				brand = "MiracleBox"
-				if model == "ini-5000sv":
-					model = "Premium Twin"
-				elif model == "ini-1000sv":
-					model = "Premium Mini"
-				else:
-					model
 			elif model.endswith("ru"):
 				brand = "Sezam"
 			else:
