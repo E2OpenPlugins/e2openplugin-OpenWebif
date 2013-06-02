@@ -342,7 +342,8 @@ def getPlayableServices(sRef, sRefPlaying):
 		if not int(service.split(":")[1]) & 512:	# 512 is hidden service on sifteam image. Doesn't affect other images
 			service2 = {}
 			service2['servicereference'] = service
-			service2['isplayable'] = getBestPlayableServiceReference(eServiceReference(service), eServiceReference(sRefPlaying)) != None
+			info = servicecenter.info(eServiceReference(service))
+			service2['isplayable'] = info.isPlayable(eServiceReference(service),eServiceReference(sRefPlaying))>0
 			services.append(service2)
 
 	return {
@@ -351,11 +352,13 @@ def getPlayableServices(sRef, sRefPlaying):
 	}
 
 def getPlayableService(sRef, sRefPlaying):
+	servicecenter = eServiceCenter.getInstance()
+	info = servicecenter.info(eServiceReference(sRef))
 	return {
 		"result": True,
 		"service": {
 			"servicereference": sRef,
-			"isplayable": getBestPlayableServiceReference(eServiceReference(sRef), eServiceReference(sRefPlaying)) != None
+			"isplayable": info.isPlayable(eServiceReference(sRef),eServiceReference(sRefPlaying))>0
 		}
 	}
 
