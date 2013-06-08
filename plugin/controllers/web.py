@@ -17,7 +17,7 @@ from models.control import zapService, remoteControl, setPowerState, getStandbyS
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer
 from models.message import sendMessage, getMessageAnswer
-from models.movies import getMovieList, removeMovie, getMovieTags
+from models.movies import getMovieList, removeMovie, getMovieTags, moveMovie, renameMovie
 from models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot, setZapStream, saveConfig, getZapStream
 from models.stream import getStream, getTS, getStreamSubservices
 from models.servicelist import reloadServicesLists
@@ -308,6 +308,26 @@ class WebController(BaseController):
 			return res
 		
 		return removeMovie(self.session, request.args["sRef"][0])
+	
+	def P_moviemove(self, request):
+		res = self.testMandatoryArguments(request, ["sRef"])
+		if res:
+			return res
+		res = self.testMandatoryArguments(request, ["dirname"])
+		if res:
+			return res
+		
+		return moveMovie(self.session, request.args["sRef"][0],request.args["dirname"][0])
+	
+	def P_movierename(self, request):
+		res = self.testMandatoryArguments(request, ["sRef"])
+		if res:
+			return res
+		res = self.testMandatoryArguments(request, ["newname"])
+		if res:
+			return res
+		
+		return renameMovie(self.session, request.args["sRef"][0],request.args["newname"][0])
 	
 	def P_movietags(self, request):
 		return getMovieTags()
