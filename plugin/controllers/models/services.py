@@ -73,7 +73,8 @@ def getCurrentService(session):
 			"tsid": 0,
 			"onid": 0,
 			"sid": 0,
-			"ref": ""
+			"ref": "",
+			"iswidescreen" : False
 		}
 
 def getCurrentFullInfo(session):
