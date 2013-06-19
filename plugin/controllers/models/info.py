@@ -121,8 +121,11 @@ def getInfo():
 				brand = "Sezam"
 			else:
 				brand = "Venton"
-		elif model.startswith("xp"):
+		elif model == "xp1000":
 			brand = "XP-Series"
+		elif model == "xp1000s":
+			brand = "Octagon"
+			model = "SF8 HD"		
 		elif model == "odinm9":
 			brand = "Odin-Series"
 		elif model == "odinm7":
