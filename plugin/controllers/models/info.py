@@ -148,7 +148,7 @@ def getInfo():
 			chipset = "BCM7405"
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBOX"
-		file = open("/proc/stb/info/azmodel")
+		file = open("/proc/stb/info/model")
 		model = file.read().strip().lower()
 		file.close()
 		if model == "me":
