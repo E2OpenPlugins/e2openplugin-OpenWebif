@@ -95,7 +95,7 @@ class AjaxController(BaseController):
 		elif model == "MixOs F5mini":
 			model = "ebox5100"
 		elif model == "MixOs F7":
-			model = "ebox7358"			
+			model = "ebox7358"
 		elif model == "IOS-100HD":
 			model = "ios100hd"
 		elif model == "IOS-200HD":

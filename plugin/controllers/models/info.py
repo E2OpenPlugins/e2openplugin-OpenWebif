@@ -140,15 +140,15 @@ def getInfo():
 				model = "Class E"
 			else:
 				brand = "E3-Series"
-		elif == "ebox5000":
+		elif model == "ebox5000":
 			brand = "MixOs-Series"
 			model = "MixOs F5"
-		elif == "ebox5100":
+		elif model == "ebox5100":
 			brand = "MixOs-Series"
 			model = "MixOs F5mini"
-		elif == "ebox7358":
+		elif model == "ebox7358":
 			brand = "MixOs-Series"
-			model = "MixOs F7"			
+			model = "MixOs F7"
 		elif model.startswith("ixuss"):
 			brand = "Ixuss-Series"
 			chipset = "BCM7405"
