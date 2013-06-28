@@ -18,10 +18,15 @@
 <div id="accordion">
 
 #for $bouquet in $bouquets
-	<h1><a href="#" id="ajax/channels?id=$quote($bouquet[0])&stype=$stype">$bouquet[1]</a></h1>
-	<div>
+<h1>
+<a target="_black" href="/web/services.m3u?bRef=$quote($bouquet[0])">
+<img style="display:none;" src="/public/images/ico_stream.png" title="Download Playlist for $bouquet[1]" border="0" alt="Playlist">
+</a>
+<a href="#" id="ajax/channels?id=$quote($bouquet[0])&stype=$stype">$bouquet[1]</a>
+</h1>
+<div>
 loading...
-	</div>
+</div>
 #end for
 
 </div>
