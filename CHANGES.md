@@ -1,3 +1,21 @@
+## Version 0.1.7
+
+**FEATURES**
+
+* add movie rename
+* add movie move
+
+**FIXES**
+
+* playable services
+
+
+## Version 0.1.6
+
+**CHANGES**
+
+* some images to lower size
+
 ## Version 0.1.5
 
 **FIXES**
