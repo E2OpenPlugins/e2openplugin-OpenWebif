@@ -1,5 +1,5 @@
 #filter WebSafe
-#from urllib import quote
+#from urllib import quote,unquote
 <div id="content_main" style="min-height: 500px;">
 	<div id="info">
 		<h3>Timerlist</h3>
@@ -57,9 +57,10 @@
 				</div>
 				<div class="moviecontainer_right">
 					<div style="padding: 3px; text-align: right;">
-						<a href='#' onClick="editTimer('$timer.serviceref', '$timer.begin', '$timer.end');"><img src="../images/ico_edit.png" title="Edit Timer" border="0"></a>
-						<a href='#' onClick="deleteTimer('$timer.serviceref', '$timer.begin', '$timer.end');"><img src="../images/ico_delete.png" title="Delete Timer" border="0"></a>
-						<a href='#' onClick="toggleTimerStatus('$timer.serviceref', '$timer.begin', '$timer.end');">
+						#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
+						<a href='#' onClick="editTimer('$sref', '$timer.begin', '$timer.end');"><img src="../images/ico_edit.png" title="Edit Timer" border="0"></a>
+						<a href='#' onClick="deleteTimer('$sref', '$timer.begin', '$timer.end');"><img src="../images/ico_delete.png" title="Delete Timer" border="0"></a>
+						<a href='#' onClick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end');">
 						#if $timer.disabled
 						<img id="img-$timer.begin-$timer.end" src="../images/ico_disabled.png" title="Enable Timer" border="0">
 						#else

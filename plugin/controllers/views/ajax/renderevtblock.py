@@ -1,4 +1,5 @@
 from time import localtime, strftime
+from urllib import quote
 
 class renderEvtBlock:
 
@@ -25,7 +26,7 @@ class renderEvtBlock:
             timerEventSymbol = ''
         
         return self.template % (
-            event['ref'],
+            quote(event['ref'], safe=' ~@#$&()*!+=:;,.?/\''),
             event['id'],
             strftime("%H:%M", localtime(event['begin_timestamp'])),
             timerEventSymbol,

@@ -8,8 +8,10 @@
 ##############################################################################
 from Components.config import config
 from enigma import eServiceReference, eActionMap
+from urllib import unquote
 
 def zapService(session, id, title = ""):
+	id = unquote(id)
 	service = eServiceReference(id)
 	
 	if len(title) > 0:

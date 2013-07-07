@@ -47,7 +47,8 @@ tr {background-color: #F0F7FC;}
 			</tr>
 			<tr>
 				<td style="padding:0px">
-					<a href="#" onclick="addTimerEvent('$event.sref',$event.id);return false;"><img src="/images/timer.png" title="Add Timer" border="0"></a>																
+					#set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
+					<a href="#" onclick="addTimerEvent('$sref',$event.id);return false;"><img src="/images/timer.png" title="Add Timer" border="0"></a>																
 					<a target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)"><img src="/images/imdb.png" title="Search IMDb" border="0"></a>
 				</td>
 			</tr>

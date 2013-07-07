@@ -13,7 +13,7 @@ from Components.config import config
 from RecordTimer import RecordTimerEntry, RecordTimer, parseEvent, AFTEREVENT
 from ServiceReference import ServiceReference
 from time import time, strftime, localtime, mktime
-from urllib import unquote
+from urllib import unquote, quote
 
 
 def getTimers(session):
@@ -100,6 +100,7 @@ def getTimers(session):
 	}
 
 def addTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname, tags, repeated, logentries=None, eit=0):
+	serviceref = unquote(serviceref)
 	rt = session.nav.RecordTimer
 
 	print "mao1", dirname
@@ -151,6 +152,7 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 	}
 
 def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags):
+	serviceref = unquote(serviceref)
 	event = eEPGCache.getInstance().lookupEventId(eServiceReference(serviceref), eventid)
 	if event is None:
 		return {
@@ -206,6 +208,7 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 	}
 
 def removeTimer(session, serviceref, begin, end):
+	serviceref = unquote(serviceref)
 	rt = session.nav.RecordTimer
 	for timer in rt.timer_list + rt.processed_timers:
 		if str(timer.service_ref) == serviceref and int(timer.begin) == begin and int(timer.end) == end:
@@ -221,6 +224,7 @@ def removeTimer(session, serviceref, begin, end):
 	}
 	
 def toggleTimerStatus(session, serviceref, begin, end):
+	serviceref = unquote(serviceref)
 	rt = session.nav.RecordTimer
 	for timer in rt.timer_list + rt.processed_timers:
 		if str(timer.service_ref) == serviceref and int(timer.begin) == begin and int(timer.end) == end:
