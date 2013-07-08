@@ -6,7 +6,7 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-from enigma import eServiceReference
+from enigma import eServiceReference, getBestPlayableServiceReference
 from urllib import unquote, quote
 import os
 from Components.config import config
@@ -14,12 +14,25 @@ from Components.config import config
 def getStream(session, request, m3ufile):
 
 	if "ref" in request.args:
-		sRef=unquote(request.args["ref"][0]).decode('utf-8', 'ignore').encode('utf-8')
+		sRef=unquote(unquote(request.args["ref"][0]).decode('utf-8', 'ignore')).encode('utf-8')
 	else:
 		sRef = ""
 	
+	currentServiceRef = None
 	if m3ufile == "streamcurrent.m3u":
-		sRef = session.nav.getCurrentlyPlayingServiceReference().toString() 
+		currentServiceRef = session.nav.getCurrentlyPlayingServiceReference()
+		sRef = currentServiceRef.toString() 
+	
+	if sRef.startswith("1:134:"):
+		if currentServiceRef is None:
+			currentServiceRef = session.nav.getCurrentlyPlayingServiceReference()
+		if currentServiceRef is None:
+			currentServiceRef = eServiceReference()
+		ref = getBestPlayableServiceReference(eServiceReference(sRef), currentServiceRef)
+		if ref is None:
+			sRef = ""
+		else:
+			sRef = ref.toString()
 
 	name = "stream"
 	if "name" in request.args:

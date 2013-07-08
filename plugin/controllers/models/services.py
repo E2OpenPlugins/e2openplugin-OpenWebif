@@ -15,6 +15,8 @@ from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache, getBestPlayableServiceReference
 from time import time, localtime, strftime, mktime
 from info import getPiconPath
+from Tools.Alternatives import GetWithAlternative
+from urllib import quote, unquote
 
 try:
 	from collections import OrderedDict
@@ -53,7 +55,7 @@ def getCurrentService(session):
 			"tsid": getServiceInfoString(info, iServiceInformation.sTSID),
 			"onid": getServiceInfoString(info, iServiceInformation.sONID),
 			"sid": getServiceInfoString(info, iServiceInformation.sSID),
-			"ref": getServiceInfoString(info, iServiceInformation.sServiceref),
+			"ref": quote(getServiceInfoString(info, iServiceInformation.sServiceref)),
 			"iswidescreen": info.getInfo(iServiceInformation.sAspect) in (3, 4, 7, 8, 0xB, 0xC, 0xF, 0x10)
 		}
 	except Exception, e:
@@ -274,7 +276,7 @@ def getChannels(idbouquet, stype):
 	for channel in channels:
 		if not int(channel[0].split(":")[1]) & 64:
 			chan = {}
-			chan['ref'] = channel[0]
+			chan['ref'] = quote(channel[0])
 			chan['name'] = filterName(channel[1])
 			nowevent = epgcache.lookupEvent(['TBDCIX', (channel[0], 0, -1)])
 			if len(nowevent) > 0 and nowevent[0][0] is not None:
@@ -389,6 +391,7 @@ def getSubServices(session):
 	return { "services": services }
 
 def getEventDesc(ref, idev):
+	ref = unquote(ref)
 	epgcache = eEPGCache.getInstance()
 	event = epgcache.lookupEvent(['ESX', (ref, 2, int(idev))])
 	if len(event[0][0]) > 1:
@@ -418,6 +421,7 @@ def getEvent(ref, idev):
 
 
 def getChannelEpg(ref, begintime=-1, endtime=-1):
+	ref = unquote(ref)
 	ret = []
 	ev = {}
 	picon = getPicon(ref)
@@ -466,6 +470,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1):
 	return { "events": ret, "result": True }
 
 def getBouquetEpg(ref, begintime=-1, endtime=None):
+	ref = unquote(ref)
 	ret = []
 	services = eServiceCenter.getInstance().list(eServiceReference(ref))
 	if not services:
@@ -497,6 +502,7 @@ def getBouquetEpg(ref, begintime=-1, endtime=None):
 	return { "events": ret, "result": True }
 
 def getBouquetNowNextEpg(ref, servicetype):
+	ref = unquote(ref)
 	ret = []
 	services = eServiceCenter.getInstance().list(eServiceReference(ref))
 	if not services:
@@ -530,6 +536,7 @@ def getBouquetNowNextEpg(ref, servicetype):
 	return { "events": ret, "result": True }
 
 def getNowNextEpg(ref, servicetype):
+	ref = unquote(ref)
 	ret = []
 	epgcache = eEPGCache.getInstance()
 	events = epgcache.lookupEvent(['IBDCTSERNX', (ref, servicetype, -1)])
@@ -590,6 +597,7 @@ def getSearchEpg(sstr):
 	return { "events": ret, "result": True }
 
 def getSearchSimilarEpg(ref, eventid):
+	ref = unquote(ref)
 	ret = []
 	ev = {}
 	epgcache = eEPGCache.getInstance()
@@ -691,6 +699,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None):
 
 
 def getPicon(sname):
+	sname = GetWithAlternative(sname)
 	if sname is not None:
 		pos = sname.rfind(':')
 	else:

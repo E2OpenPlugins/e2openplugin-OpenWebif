@@ -494,6 +494,7 @@ function initTimerEdit() {
 }
 
 function editTimer(serviceref, begin, end) {
+	serviceref=decodeURI(serviceref);
 	current_serviceref = serviceref;
 	current_begin = begin;
 	current_end = end;
