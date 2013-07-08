@@ -13,7 +13,7 @@ from Components.config import config
 from RecordTimer import RecordTimerEntry, RecordTimer, parseEvent, AFTEREVENT
 from ServiceReference import ServiceReference
 from time import time, strftime, localtime, mktime
-from urllib import unquote, quote
+from urllib import unquote
 
 
 def getTimers(session):
