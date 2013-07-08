@@ -55,7 +55,7 @@ def getCurrentService(session):
 			"tsid": getServiceInfoString(info, iServiceInformation.sTSID),
 			"onid": getServiceInfoString(info, iServiceInformation.sONID),
 			"sid": getServiceInfoString(info, iServiceInformation.sSID),
-			"ref": quote(getServiceInfoString(info, iServiceInformation.sServiceref)),
+			"ref": quote(getServiceInfoString(info, iServiceInformation.sServiceref), safe=' ~@#$&()*!+=:;,.?/\''),
 			"iswidescreen": info.getInfo(iServiceInformation.sAspect) in (3, 4, 7, 8, 0xB, 0xC, 0xF, 0x10)
 		}
 	except Exception, e:
@@ -276,7 +276,7 @@ def getChannels(idbouquet, stype):
 	for channel in channels:
 		if not int(channel[0].split(":")[1]) & 64:
 			chan = {}
-			chan['ref'] = quote(channel[0])
+			chan['ref'] = quote(channel[0], safe=' ~@#$&()*!+=:;,.?/\'')
 			chan['name'] = filterName(channel[1])
 			nowevent = epgcache.lookupEvent(['TBDCIX', (channel[0], 0, -1)])
 			if len(nowevent) > 0 and nowevent[0][0] is not None:
