@@ -122,6 +122,8 @@ class AjaxController(BaseController):
 			model = "ini-5000sv"
 		elif model == 'Premium Mini':
 			model = "ini-1000sv"
+		elif model == 'Xpeed LX':
+			model = "ini-1000de"
 		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
 			info["boximage"] = model + ".jpg"
 		else:
