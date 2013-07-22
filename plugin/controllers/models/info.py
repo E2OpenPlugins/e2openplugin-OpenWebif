@@ -119,7 +119,7 @@ def getInfo():
 					model
 			elif model.endswith("de"):
 				brand = "Golden Interstar"
-				elif model == "ini-1000de":
+				if model == "ini-1000de":
 					model = "Xpeed LX"
 				else:
 					model
