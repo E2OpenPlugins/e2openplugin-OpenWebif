@@ -92,6 +92,8 @@ class AjaxController(BaseController):
 			model = "odinm7"
 		elif model == "e3hd":
 			model = "e3hd"
+		elif getBoxType() == 'odinm6':
+			model = "starsatlx"
 		elif model == "MixOs F5":
 			model = "ebox5000"
 		elif model == "MixOs F5mini":

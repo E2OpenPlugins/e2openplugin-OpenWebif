@@ -16,7 +16,7 @@ from RecordTimer import parseEvent
 from Screens.Standby import inStandby
 from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
-from enigma import eDVBVolumecontrol, eServiceCenter, getDistro
+from enigma import eDVBVolumecontrol, eServiceCenter, getDistro, getBoxType
 
 import os
 import sys
@@ -138,6 +138,9 @@ def getInfo():
 			if getDistro() == 'axassupport':
 				brand = "AXAS"
 				model = "Class M"
+			elif getBoxType() == 'odinm6':
+				brand = "TELESTAR"
+				model = "STARSAT LX"
 			else:
 				brand = "Odin-Series"
 		elif model == "e3hd":
