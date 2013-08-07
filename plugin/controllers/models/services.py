@@ -276,7 +276,7 @@ def getChannels(idbouquet, stype):
 	for channel in channels:
 		if not int(channel[0].split(":")[1]) & 64:
 			chan = {}
-			chan['ref'] = quote(channel[0], safe=' ~@#$&()*!+=:;,.?/\'')
+			chan['ref'] = quote(channel[0], safe=' ~@%#$&()*!+=:;,.?/\'')
 			chan['name'] = filterName(channel[1])
 			nowevent = epgcache.lookupEvent(['TBDCIX', (channel[0], 0, -1)])
 			if len(nowevent) > 0 and nowevent[0][0] is not None:
