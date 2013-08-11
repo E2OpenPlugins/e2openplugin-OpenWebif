@@ -1,3 +1,14 @@
+## Version 0.1.8
+
+**FEATURES**
+
+* add alternative channels to epgnownext
+
+**FIXES**
+
+* Fix channel list in "Add Timer" not filling - Refs #73
+* Fix all known problems with Alternatives (Issue #18 and more)
+
 ## Version 0.1.7
 
 **FEATURES**

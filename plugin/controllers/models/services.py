@@ -15,8 +15,18 @@ from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache, getBestPlayableServiceReference
 from time import time, localtime, strftime, mktime
 from info import getPiconPath
-from Tools.Alternatives import GetWithAlternative
 from urllib import quote, unquote
+
+def getAlternativeChannels(service):
+	alternativeServices = eServiceCenter.getInstance().list(eServiceReference(service))
+	return alternativeServices and alternativeServices.getContent("S", True)
+
+def GetWithAlternative(service):
+	if service.startswith('1:134:'):
+		channels = getAlternativeChannels(service)
+		if channels:
+			return channels[0]
+	return service
 
 try:
 	from collections import OrderedDict
@@ -528,6 +538,11 @@ def getBouquetNowNextEpg(ref, servicetype):
 			ev['title'] = event[4]
 			ev['shortdesc'] = event[5]
 			ev['longdesc'] = event[6]
+			if event[7] is not None:
+				if event[7].startswith('1:134:'):
+					achannels = getAlternativeChannels(service)
+					if achannels:
+						ev['asrefs'] = achannels
 			ev['sref'] = event[7]
 			ev['sname'] = filterName(event[8])
 			ev['now_timestamp'] = event[3]
