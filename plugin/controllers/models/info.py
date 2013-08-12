@@ -16,7 +16,7 @@ from RecordTimer import parseEvent
 from Screens.Standby import inStandby
 from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
-from enigma import eDVBVolumecontrol, eServiceCenter
+from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
 
 import os
 import sys
@@ -283,3 +283,21 @@ def getStatusInfo(self):
 		statusinfo['inStandby'] = "true"
 
 	return statusinfo
+
+def getAlternativeChannels(service):
+	alternativeServices = eServiceCenter.getInstance().list(eServiceReference(service))
+	return alternativeServices and alternativeServices.getContent("S", True)
+
+def GetWithAlternative(service,onlyFirst = True):
+	if service.startswith('1:134:'):
+		channels = getAlternativeChannels(service)
+		if channels:
+			if onlyFirst:
+				return channels[0]
+			else:
+				return channels
+	if onlyFirst:
+		return service
+	else:
+		return None
+

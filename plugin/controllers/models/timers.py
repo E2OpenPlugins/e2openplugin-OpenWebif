@@ -14,7 +14,7 @@ from RecordTimer import RecordTimerEntry, RecordTimer, parseEvent, AFTEREVENT
 from ServiceReference import ServiceReference
 from time import time, strftime, localtime, mktime
 from urllib import unquote
-
+from info import GetWithAlternative
 
 def getTimers(session):
 	rt = session.nav.RecordTimer
@@ -63,6 +63,11 @@ def getTimers(session):
 		if timer.disabled:
 				toggledisabledimg = "on"
 
+		asrefs = ""
+		achannels = GetWithAlternative(str(timer.service_ref), False)
+		if achannels:
+			asrefs = achannels
+
 		timers.append({
 			"serviceref": str(timer.service_ref),
 			"servicename": timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
@@ -91,7 +96,8 @@ def getTimers(session):
 			"filename": filename,
 			"nextactivation": nextactivation,
 			"realbegin":strftime("%d.%m.%Y %H:%M", (localtime(float(timer.begin)))),
-			"realend":strftime("%d.%m.%Y %H:%M", (localtime(float(timer.end))))
+			"realend":strftime("%d.%m.%Y %H:%M", (localtime(float(timer.end)))),
+			"asrefs": asrefs
 		})
 		
 	return {
