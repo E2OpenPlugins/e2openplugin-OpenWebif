@@ -14,7 +14,7 @@ from ServiceReference import ServiceReference
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache, getBestPlayableServiceReference
 from time import time, localtime, strftime, mktime
-from info import getPiconPath,GetWithAlternative
+from info import getPiconPath, GetWithAlternative
 from urllib import quote, unquote
 
 try:
