@@ -345,6 +345,16 @@ color:#87BCF8;
 	background-color: #F0F7FC;
 }
 
+.channel_tr div
+{
+	padding-top: 3px;
+}
+
+.channel_tr div div
+{
+	border-top: 1px dotted #4297d7;
+}
+
 .channel_content
 {
 	float:left;
@@ -361,6 +371,21 @@ color:#87BCF8;
 	width: 70%;
 	text-align: left;
 }
+
+.channel_leftE
+{
+	font-size:13px;
+	display:block;
+	float:left;
+	width: 70%;
+	text-align: left;
+}
+
+.channel_left div
+{
+	margin-bottom: 2px;
+}
+
 .channel_right
 {
 	background-color: #F0F7FC;
@@ -369,6 +394,15 @@ color:#87BCF8;
 	width: 30%;
 	text-align: right;
 }
+
+.channel_rightE
+{
+	font-size:13px;
+	float:right;
+	width: 30%;
+	text-align: right;
+}
+
 
 .channel_desc
 {
@@ -395,6 +429,9 @@ color:#87BCF8;
 	text-align: left;
 	border: 1px solid #4297d7;
 	
+}
+.meter-value {
+	background-color: #F68014;
 }
 
 .timerlist_row {
