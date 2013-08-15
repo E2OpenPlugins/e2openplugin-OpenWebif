@@ -125,7 +125,14 @@ class AjaxController(BaseController):
 		elif model == 'Premium Mini':
 			model = "ini-1000sv"
 		elif model == 'Xpeed LX':
-			model = "ini-1000de"
+			if fileExists("/proc/stb/fp/version"):
+				file = open("/proc/stb/fp/version")
+				version = file.read().strip().lower()
+				file.close()
+			if version.startswith('2'):
+				model = "xpeedlx2"
+			else:
+				model = "xpeedlx1"
 		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
 			info["boximage"] = model + ".jpg"
 		else:
