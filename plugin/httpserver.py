@@ -144,7 +144,8 @@ def HttpdStart(session):
 				try:
 					listener.append( reactor.listenTCP(80, site, interface='127.0.0.1') )
 #					if socket.has_ipv6 and fileExists('/proc/net/if_inet6'):
-#						listener.append( reactor.listenTCP(80, site, interface='::1') )					print "[OpenWebif] started stream listening on port 80"
+#						listener.append( reactor.listenTCP(80, site, interface='::1') )
+					print "[OpenWebif] started stream listening on port 80"
 				except CannotListenError:
 					print "[OpenWebif] port 80 busy"
 
