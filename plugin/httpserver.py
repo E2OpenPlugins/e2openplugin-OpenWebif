@@ -117,6 +117,8 @@ def HttpdStart(session):
 		# start http webserver on configured port
 		try:
 			listener.append( reactor.listenTCP(port, site) )
+#			if socket.has_ipv6 and fileExists('/proc/net/if_inet6'):
+#				listener.append( reactor.listenTCP(port, site, interface='::') )			
 			print "[OpenWebif] started on %i"% (port)
 		except CannotListenError:
 			print "[OpenWebif] failed to listen on Port %i" % (port)
@@ -128,6 +130,8 @@ def HttpdStart(session):
 			try:
 				context = ssl.DefaultOpenSSLContextFactory(KEY_FILE, CERT_FILE)
 				listener.append( reactor.listenSSL(httpsPort, site, context) )
+#				if socket.has_ipv6 and fileExists('/proc/net/if_inet6'):
+#					listener.append( reactor.listenSSL(httpsPort, site, context, interface='::') )
 				print "[OpenWebif] started on", httpsPort
 			except CannotListenError:
 				print "[OpenWebif] failed to listen on Port", httpsPort
@@ -139,7 +143,8 @@ def HttpdStart(session):
 				site = server.Site(root)
 				try:
 					listener.append( reactor.listenTCP(80, site, interface='127.0.0.1') )
-					print "[OpenWebif] started stream listening on port 80"
+#					if socket.has_ipv6 and fileExists('/proc/net/if_inet6'):
+#						listener.append( reactor.listenTCP(80, site, interface='::1') )					print "[OpenWebif] started stream listening on port 80"
 				except CannotListenError:
 					print "[OpenWebif] port 80 busy"
 
