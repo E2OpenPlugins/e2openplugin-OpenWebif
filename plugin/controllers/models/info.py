@@ -92,6 +92,12 @@ def getInfo():
 		elif model == "ios300hd":
 			model = "IOS-300HD"
 			brand = "Iqon"
+		elif model == "optimussos1":
+			model = "Optimuss-OS1"
+			brand = "Edision"
+		elif model == "optimussos2":
+			model = "Optimuss-OS2"
+			brand = "Edision"
 	elif fileExists("/proc/stb/info/boxtype"):
 		file = open("/proc/stb/info/boxtype")
 		model = file.read().strip().lower()
