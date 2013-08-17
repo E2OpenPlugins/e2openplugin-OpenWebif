@@ -18,6 +18,7 @@ from file import FileController
 from mobile import MobileController
 from ipkg import IpkgController
 from AT import ATController
+from ER import ERController
 from twisted.web import static, http
 
 class RootController(BaseController):
@@ -38,6 +39,7 @@ class RootController(BaseController):
 		self.putChild("images", static.File(getPublicPath() + "/images"))
 		self.putChild("ipkg", IpkgController(session))
 		self.putChild("autotimer", ATController(session))
+		self.putChild("epgrefresh", ERController(session))
 		if piconpath:
 			self.putChild("picon", static.File(piconpath))
 		
