@@ -1,3 +1,10 @@
+## Version 0.2.0
+**FEATURES**
+
+* add autotimer plugin api support
+* add IPV6 support
+
+
 ## Version 0.1.8
 
 **FEATURES**

@@ -17,6 +17,7 @@ from api import ApiController
 from file import FileController
 from mobile import MobileController
 from ipkg import IpkgController
+from AT import ATController
 from twisted.web import static, http
 
 class RootController(BaseController):
@@ -36,6 +37,7 @@ class RootController(BaseController):
 		self.putChild("static", static.File(getPublicPath() + "/static"))
 		self.putChild("images", static.File(getPublicPath() + "/images"))
 		self.putChild("ipkg", IpkgController(session))
+		self.putChild("autotimer", ATController(session))
 		if piconpath:
 			self.putChild("picon", static.File(piconpath))
 		
