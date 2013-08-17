@@ -7,7 +7,6 @@
 #                                                                            #
 ##############################################################################
 from twisted.web import static, resource, http, server
-import json
 
 class ATController(resource.Resource):
 	def __init__(self, session, path = ""):
@@ -15,9 +14,9 @@ class ATController(resource.Resource):
 		self.session = session
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerDoParseResource, \
-			AutoTimerListAutoTimerResource, AutoTimerAddOrEditAutoTimerResource, \
-			AutoTimerRemoveAutoTimerResource, AutoTimerChangeSettingsResource, \
-			AutoTimerSettingsResource, AutoTimerSimulateResource, API_VERSION
+			AutoTimerAddOrEditAutoTimerResource, AutoTimerChangeSettingsResource, \
+			AutoTimerRemoveAutoTimerResource, AutoTimerSettingsResource, \
+			AutoTimerSimulateResource
 		except ImportError:
 			print "AT plugin not found"
 			return
@@ -29,13 +28,16 @@ class ATController(resource.Resource):
 		self.putChild('simulate', AutoTimerSimulateResource())
 		
 	def render(self, request):
-		data = []
+		request.setResponseCode(http.OK)
+		request.setHeader('Content-type', 'application/xhtml+xml')
+		request.setHeader('charset', 'UTF-8')
 		try:
-			from Plugins.Extensions.AutoTimer.AutoTimerResource import API_VERSION
-			data.append({"result": True,"AutoTimer-Plugin": API_VERSION})
+			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
+			autotimer = AutoTimer()
+			try:
+				autotimer.readXml()
+			except Exception:
+				return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>AutoTimer Config not found</e2statetext></e2simplexmlresult>'
+			return ''.join(autotimer.getXml())
 		except ImportError:
-			data.append({"result": False,"AutoTimer-Plugin": "Not Found"})
-		request.setHeader("content-type", "text/plain")
-		request.write(json.dumps(data))
-		request.finish()
-		return server.NOT_DONE_YET
+			return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>AutoTimer Plugin not found</e2statetext></e2simplexmlresult>'
