@@ -2,7 +2,7 @@
 **FEATURES**
 
 * add autotimer plugin api support
-* add IPV6 support
+* add preparations for IPV6 support (Needs IPv6 in Python and probably newer Twisted)
 
 
 ## Version 0.1.8
