@@ -54,8 +54,11 @@ class RootController(BaseController):
 	# the "pages functions" must be called P_pagename
 	# example http://boxip/index => P_index
 	def P_index(self, request):
+		mode = ''
+		if "mode" in request.args.keys():
+			mode = request.args["mode"][0]
 		uagent = request.getHeader('User-Agent')
-		if uagent:
+		if uagent and mode != 'fullpage':
 			if uagent.find("iPhone") != -1 or uagent.find("iPod") != -1 or (uagent.lower().find("android") != -1 and uagent.lower().find("mobile") != -1):
 				request.setHeader("Location", "/mobile/")
 				request.setResponseCode(http.FOUND)
