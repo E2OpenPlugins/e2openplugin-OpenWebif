@@ -9,6 +9,7 @@
 from Components.config import config
 from enigma import eServiceReference, eActionMap
 from urllib import unquote
+from services import getProtection
 
 def zapService(session, id, title = ""):
 	id = unquote(id)
@@ -19,10 +20,14 @@ def zapService(session, id, title = ""):
 	else:
 		title = id
 	
-	if config.ParentalControl.configured.value:
-		config.ParentalControl.configured.value = False
-		session.nav.playService(service)
-		config.ParentalControl.configured.value = True
+	if config.ParentalControl.configured.value and config.OpenWebif.parentalenabled.value:
+		if getProtection(service.toString()) == "0":
+			session.nav.playService(service)
+		else:
+			return {
+				"result": False,
+				"message": "Service '%s' is blocked by parental Control" % title
+			}
 	else:
 		session.nav.playService(service)
 	

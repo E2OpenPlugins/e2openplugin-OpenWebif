@@ -4,18 +4,28 @@
 <div>
 <div class="channel_left">
 #set $name =  $channel.name.replace("'", r"\'")
+#if $channel.protection == "0"
 <a href="#" onclick="zapChannel('$channel.ref', '$name'); return false" title="Zap to $channel.name">$channel.name</a><br />
+#else
+<a href="#" onclick="return false" title="Locked">$channel.name</a><br />
+#end if
 </div>
 <div class="channel_right">
+#if $channel.protection == "0"
 <a href="#" onclick="open_epg_pop('$channel.ref')">
 <img src="../images/ico_epg.png" title="Show EPG for $channel.name" border="0">
 </a>
 <a target="_blank" href='/web/stream.m3u?ref=$channel.ref&name=$channel.name'>
 <img align="top" src="../images/ico_stream.png" title="Stream $channel.name" border="0">
 </a>
+#else
+<a target="_blank" href='#'>
+<img align="top" src="../images/ico_lock.png" title="Locked" border="0">
+</a>
+#end if
 </div>
 
-#if $channel.has_key('now_title')
+#if $channel.has_key('now_title') and $channel.protection == "0"
 <div class="channel_leftE">
 <div>
 $channel.now_begin - $channel.now_end &nbsp;&nbsp;&nbsp;
