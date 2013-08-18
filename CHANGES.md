@@ -1,7 +1,9 @@
 ## Version 0.2.0
 **FEATURES**
 
+* add bouqueteditior plugin api support (BETA)
 * add autotimer plugin api support
+* add epgrefresh plugin api support
 * add preparations for IPV6 support (Needs IPv6 in Python and probably newer Twisted)
 
 

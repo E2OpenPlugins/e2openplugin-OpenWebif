@@ -19,6 +19,7 @@ from mobile import MobileController
 from ipkg import IpkgController
 from AT import ATController
 from ER import ERController
+from BQE import BQEController
 from twisted.web import static, http
 
 class RootController(BaseController):
@@ -40,6 +41,7 @@ class RootController(BaseController):
 		self.putChild("ipkg", IpkgController(session))
 		self.putChild("autotimer", ATController(session))
 		self.putChild("epgrefresh", ERController(session))
+		self.putChild("bouqueteditor", BQEController(session))
 		if piconpath:
 			self.putChild("picon", static.File(piconpath))
 		
