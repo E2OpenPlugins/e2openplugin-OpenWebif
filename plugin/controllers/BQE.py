@@ -10,6 +10,7 @@ from twisted.web import static, resource, http, server
 from enigma import eServiceCenter, eServiceReference, iServiceInformation
 from base import BaseController
 from Screens.ChannelSelection import service_types_tv
+from Components.config import config
 
 class BQEWebController(BaseController):
 	def __init__(self, session, path = ""):
@@ -46,8 +47,8 @@ class BQEWebController(BaseController):
 		request.setHeader("content-type", "text/xml")
 
 	def P_addbouquet(self, request):
+		self.withMainTemplate = False
 		try:
-			self.withMainTemplate = False
 			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_BOUQUET)
 			bqe.handleCommand(self.buildCommand('name,mode',request.args))
@@ -56,8 +57,8 @@ class BQEWebController(BaseController):
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
 
 	def P_removebouquet(self, request):
+		self.withMainTemplate = False
 		try:
-			self.withMainTemplate = False
 			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.REMOVE_BOUQUET)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,mode',request.args))
@@ -65,6 +66,126 @@ class BQEWebController(BaseController):
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
 
+	def P_movebouquet(self, request):
+		self.withMainTemplate = False
+		try:
+			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			bqe = BouquetEditor(self.session, func=BouquetEditor.MOVE_BOUQUET)
+			bqe.handleCommand(self.buildCommand('sBouquetRef,mode,position',request.args))
+			return self.returnResult(request, bqe.result)
+		except ImportError:
+			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
+
+	def P_addmarkertobouquet(self, request):
+		self.withMainTemplate = False
+		try:
+			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_MARKER_TO_BOUQUET)
+			bqe.handleCommand(self.buildCommand('sBouquetRef,Name,sRefBefore',request.args))
+			return self.returnResult(request, bqe.result)
+		except ImportError:
+			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
+
+	def P_addservicetobouquet(self, request):
+		self.withMainTemplate = False
+		try:
+			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_SERVICE_TO_BOUQUET)
+			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef,sRefBefore',request.args))
+			return self.returnResult(request, bqe.result)
+		except ImportError:
+			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
+
+	def P_addprovidertobouquetlist(self, request):
+		self.withMainTemplate = False
+		try:
+			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_PROVIDER_TO_BOUQUETLIST)
+			bqe.handleCommand(self.buildCommand('sProviderRef,mode',request.args))
+			return self.returnResult(request, bqe.result)
+		except ImportError:
+			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
+
+	def P_addservicetoalternative(self, request):
+		self.withMainTemplate = False
+		try:
+			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_SERVICE_TO_ALTERNATIVE)
+			bqe.handleCommand(self.buildCommand('sBouquetRef,sCurrentRef,sRef,mode',request.args))
+			return self.returnResult(request, bqe.result)
+		except ImportError:
+			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
+
+	def P_moveservice(self, request):
+		self.withMainTemplate = False
+		try:
+			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			bqe = BouquetEditor(self.session, func=BouquetEditor.MOVE_SERVICE)
+			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef,mode,position',request.args))
+			return self.returnResult(request, bqe.result)
+		except ImportError:
+			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
+
+	def P_removeservice(self, request):
+		self.withMainTemplate = False
+		try:
+			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			bqe = BouquetEditor(self.session, func=BouquetEditor.REMOVE_SERVICE)
+			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef',request.args))
+			return self.returnResult(request, bqe.result)
+		except ImportError:
+			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
+
+	def P_renameservice(self, request):
+		self.withMainTemplate = False
+		try:
+			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			bqe = BouquetEditor(self.session, func=BouquetEditor.RENAME_SERVICE)
+			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef,sRefBefore,newName,mode',request.args))
+			return self.returnResult(request, bqe.result)
+		except ImportError:
+			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
+
+	def P_Removealternativeservices(self, request):
+		self.withMainTemplate = False
+		try:
+			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			bqe = BouquetEditor(self.session, func=BouquetEditor.REMOVE_ALTERNATIVE_SERVICES)
+			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef',request.args))
+			return self.returnResult(request, bqe.result)
+		except ImportError:
+			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
+
+	def P_togglelock(self, request):
+		self.withMainTemplate = False
+		try:
+			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			bqe = BouquetEditor(self.session, func=BouquetEditor.TOGGLE_LOCK)
+			bqe.handleCommand(self.buildCommand('sRef,password',request.args))
+			return self.returnResult(request, bqe.result)
+		except ImportError:
+			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
+
+	def P_backup(self, request):
+		self.withMainTemplate = False
+		try:
+			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			bqe = BouquetEditor(self.session, func=BouquetEditor.BACKUP)
+			bqe.handleCommand(self.buildCommand('Filename',request.args))
+			return self.returnResult(request, bqe.result)
+		except ImportError:
+			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
+
+	def P_restore(self, request):
+		self.withMainTemplate = False
+		try:
+			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			bqe = BouquetEditor(self.session, func=BouquetEditor.RESTORE)
+			bqe.handleCommand(self.buildCommand('Filename',request.args))
+			return self.returnResult(request, bqe.result)
+		except ImportError:
+			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
+	
 	def P_getservices(self, request):
 		if "sRef" in request.args.keys():
 			sRef = request.args["sRef"][0]
@@ -93,6 +214,26 @@ class BQEWebController(BaseController):
 
 		return { "services": services }
 
+	def P_getprotectionsettings(self, request):
+		configured = config.ParentalControl.configured.value
+		if configured:
+			if config.ParentalControl.type.value == LIST_BLACKLIST:
+				type = "0"
+			else:
+				type = "1"
+			setuppin = config.ParentalControl.setuppin.value
+			setuppinactive = config.ParentalControl.setuppinactive.value
+		else:
+			type = ""
+			setuppin = ""
+			setuppinactive = ""
+			
+		ps = {}
+		ps['Configured'] = configured
+		ps['Type'] = type
+		ps['SetupPinActive'] = setuppinactive
+		ps['SetupPin'] = setuppin
+		return { "ps": ps }
 
 class BQEApiController(BQEWebController):
 	def __init__(self, session, path = ""):
@@ -107,40 +248,4 @@ class BQEController(BaseController):
 		self.session = session
 		self.putChild("web", BQEWebController(session))
 		self.putChild("api", BQEApiController(session))
-
-#class BQEController(resource.Resource):
-#	def __init__(self, session, path = ""):
-#		resource.Resource.__init__(self)
-#		self.session = session
-#		try:
-#			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
-#		except ImportError:
-#			print "BQE plugin not found"
-#			return
-
-#	def render(self, request):
-#		request.setResponseCode(http.OK)
-#		request.setHeader('Content-type', 'application/xhtml+xml')
-#		request.setHeader('charset', 'UTF-8')
-#		return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>BouquetEditor Plugin not found</e2statetext></e2simplexmlresult>'
-
-
-#class BouquetEditorWebScreen(WebScreen):
-#	def __init__(self, session, request):
-#		WebScreen.__init__(self, session, request)
-#		from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
-#		self["AddBouquet"] = BouquetEditor(session, func=BouquetEditor.ADD_BOUQUET)
-#		self["RemoveBouquet"] = BouquetEditor(session, func=BouquetEditor.REMOVE_BOUQUET)
-#		self["MoveBouquet"] = BouquetEditor(session, func=BouquetEditor.MOVE_BOUQUET)
-#		self["MoveService"] = BouquetEditor(session, func=BouquetEditor.MOVE_SERVICE)
-#		self["RemoveService"] = BouquetEditor(session, func=BouquetEditor.REMOVE_SERVICE)
-#		self["AddServiceToBouquet"] = BouquetEditor(session, func=BouquetEditor.ADD_SERVICE_TO_BOUQUET)
-#		self["AddProviderToBouquetlist"] = BouquetEditor(session, func=BouquetEditor.ADD_PROVIDER_TO_BOUQUETLIST)
-#		self["AddServiceToAlternative"] = BouquetEditor(session, func=BouquetEditor.ADD_SERVICE_TO_ALTERNATIVE)
-#		self["RemoveAlternativeServices"] = BouquetEditor(session, func=BouquetEditor.REMOVE_ALTERNATIVE_SERVICES)
-#		self["ToggleLock"] = BouquetEditor(session, func=BouquetEditor.TOGGLE_LOCK)
-#		self["Backup"] = BouquetEditor(session, func=BouquetEditor.BACKUP)
-#		self["Restore"] = BouquetEditor(session, func=BouquetEditor.RESTORE)
-#		self["RenameService"] = BouquetEditor(session, func=BouquetEditor.RENAME_SERVICE)
-#		self["AddMarkerToBouquet"] = BouquetEditor(session, func=BouquetEditor.ADD_MARKER_TO_BOUQUET)
 

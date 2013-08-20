@@ -1,7 +1,16 @@
+## Version 0.2.1
+**FEATURES**
+
+* add bouqueteditior plugin api support
+* add full interface option for mobile devices
+* add radio bouquet on mobile interface
+* add parental control for zap and stream in channel list
+
+
 ## Version 0.2.0
 **FEATURES**
 
-* add bouqueteditior plugin api support (BETA)
+* add preparations bouqueteditior plugin api support
 * add autotimer plugin api support
 * add epgrefresh plugin api support
 * add preparations for IPV6 support (Needs IPv6 in Python and probably newer Twisted)
