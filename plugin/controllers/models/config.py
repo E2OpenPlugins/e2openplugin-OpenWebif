@@ -1,6 +1,7 @@
 from enigma import eEnv
 from Components.SystemInfo import SystemInfo
 from Components.config import config
+from Tools.Directories import resolveFilename, SCOPE_CURRENT_PLUGIN, fileExists
 import xml.etree.cElementTree
 
 def addCollapsedMenu(name):
@@ -142,41 +143,49 @@ def saveConfig(path, value):
 def getConfigs(key):
 	configs = []
 	title = ""
-	
+	setup_data = []
+	if fileExists('/usr/lib/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/setup.xml'):
+		setupfile = file('/usr/lib/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/setup.xml', 'r')
+		setupdom = xml.etree.cElementTree.parse(setupfile)
+		setupfile.close()
+		setup_data.append(setupdom.getroot())
 	setupfile = file(eEnv.resolve('${datadir}/enigma2/setup.xml'), 'r')
 	setupdom = xml.etree.cElementTree.parse(setupfile)
 	setupfile.close()
-	xmldata = setupdom.getroot()
-	for section in xmldata.findall("setup"):
-		if section.get("key") != key:
-			continue
+	setup_xmldata = setupdom.getroot()
+	setup_data.append(setupdom.getroot())
+
+	for xmldata in setup_data:
+		for section in xmldata.findall("setup"):
+			if section.get("key") != key:
+				continue
 			
-		for entry in section:
-			if entry.tag == "item":
-				requires = entry.get("requires")
-				if requires and requires.startswith('config.'):
-					item = eval(requires or "");
-					if item.value and not item.value == "0":
-						SystemInfo[requires] = True
-					else:
-						SystemInfo[requires] = False
-				if requires and not SystemInfo.get(requires, False):
-					continue;
+			for entry in section:
+				if entry.tag == "item":
+					requires = entry.get("requires")
+					if requires and requires.startswith('config.'):
+						item = eval(requires or "");
+						if item.value and not item.value == "0":
+							SystemInfo[requires] = True
+						else:
+							SystemInfo[requires] = False
+					if requires and not SystemInfo.get(requires, False):
+						continue;
 				
-				if int(entry.get("level", 0)) > config.usage.setup_level.index:
-					continue
+					if int(entry.get("level", 0)) > config.usage.setup_level.index:
+						continue
 				
-				try:
-					configs.append({
-						"description": entry.get("text", ""),
-						"path": entry.text or "",
-						"data": getJsonFromConfig(eval(entry.text or ""))
-					})		
-				except Exception, e:
-					pass
+					try:
+						configs.append({
+							"description": entry.get("text", ""),
+							"path": entry.text or "",
+							"data": getJsonFromConfig(eval(entry.text or ""))
+						})		
+					except Exception, e:
+						pass
 				
-		title = section.get("title", "")
-		break
+			title = section.get("title", "")
+			break
 		
 	return {
 		"result": True,
@@ -185,42 +194,50 @@ def getConfigs(key):
 	}
 	
 def getConfigsSections():
-	allowedsections = ["usage", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone", "time", "osdsetup", "epgsetup", "lcd", "remotesetup", "softcamsetup", "logs", "timeshift"]
+	allowedsections = ["usage", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone", "time", "osdsetup", "epgsetup", "lcd", "remotesetup", "softcamsetup", "logs", "timeshift", "transcodesetup"]
 	sections = []
-	
+	setup_data = []
+	if fileExists('/usr/lib/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/setup.xml'):
+		setupfile = file('/usr/lib/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/setup.xml', 'r')
+		setupdom = xml.etree.cElementTree.parse(setupfile)
+		setupfile.close()
+		setup_data.append(setupdom.getroot())
 	setupfile = file(eEnv.resolve('${datadir}/enigma2/setup.xml'), 'r')
 	setupdom = xml.etree.cElementTree.parse(setupfile)
 	setupfile.close()
-	xmldata = setupdom.getroot()
-	for section in xmldata.findall("setup"):
-		key = section.get("key")
-		if key not in allowedsections:
-			continue
+	setup_xmldata = setupdom.getroot()
+	setup_data.append(setupdom.getroot())
+
+	for xmldata in setup_data:
+		for section in xmldata.findall("setup"):
+			key = section.get("key")
+			if key not in allowedsections:
+				continue
 		
-		count = 0
-		for entry in section:
-			if entry.tag == "item":
-				requires = entry.get("requires")
-				if requires and requires.startswith('config.'):
-					item = eval(requires or "");
-					if item.value and not item.value == "0":
-						SystemInfo[requires] = True
-					else:
-						SystemInfo[requires] = False
-				if requires and not SystemInfo.get(requires, False):
-					continue;
+			count = 0
+			for entry in section:
+				if entry.tag == "item":
+					requires = entry.get("requires")
+					if requires and requires.startswith('config.'):
+						item = eval(requires or "");
+						if item.value and not item.value == "0":
+							SystemInfo[requires] = True
+						else:
+							SystemInfo[requires] = False
+					if requires and not SystemInfo.get(requires, False):
+						continue;
 					
-				if int(entry.get("level", 0)) > config.usage.setup_level.index:
-					continue
+					if int(entry.get("level", 0)) > config.usage.setup_level.index:
+						continue
 					
-				count += 1
+					count += 1
 				
-		if count > 0:
-			sections.append({
-				"key": key,
-				"description": section.get("title")
-			})
-			
+			if count > 0:
+				sections.append({
+					"key": key,
+					"description": section.get("title")
+				})
+
 	sections = sorted(sections, key=lambda k: k['description']) 
 	return {
 		"result": True,

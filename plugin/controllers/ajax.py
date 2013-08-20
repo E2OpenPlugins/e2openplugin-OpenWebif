@@ -199,9 +199,9 @@ class AjaxController(BaseController):
 		
 	def P_config(self, request):
 		section = "usage"
+		plugin = None
 		if "section" in request.args.keys():
 			section = request.args["section"][0]
-			
 		return getConfigs(section)
 
 	def P_multiepg(self, request):
