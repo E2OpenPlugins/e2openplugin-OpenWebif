@@ -11,6 +11,7 @@ from enigma import eServiceCenter, eServiceReference, iServiceInformation
 from base import BaseController
 from Screens.ChannelSelection import service_types_tv
 from Components.config import config
+from Components.ParentalControl import LIST_BLACKLIST
 
 class BQEWebController(BaseController):
 	def __init__(self, session, path = ""):
