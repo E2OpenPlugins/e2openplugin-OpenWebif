@@ -144,8 +144,8 @@ def getConfigs(key):
 	configs = []
 	title = ""
 	setup_data = []
-	if fileExists('/usr/lib/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/setup.xml'):
-		setupfile = file('/usr/lib/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/setup.xml', 'r')
+	if fileExists(resolveFilename(SCOPE_CURRENT_PLUGIN, "SystemPlugins/TransCodingSetup/setup.xml")):
+		setupfile = file(resolveFilename(SCOPE_CURRENT_PLUGIN, "SystemPlugins/TransCodingSetup/setup.xml"), 'r')
 		setupdom = xml.etree.cElementTree.parse(setupfile)
 		setupfile.close()
 		setup_data.append(setupdom.getroot())
@@ -197,8 +197,8 @@ def getConfigsSections():
 	allowedsections = ["usage", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone", "time", "osdsetup", "epgsetup", "lcd", "remotesetup", "softcamsetup", "logs", "timeshift", "transcodesetup"]
 	sections = []
 	setup_data = []
-	if fileExists('/usr/lib/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/setup.xml'):
-		setupfile = file('/usr/lib/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/setup.xml', 'r')
+	if fileExists(resolveFilename(SCOPE_CURRENT_PLUGIN, "SystemPlugins/TransCodingSetup/setup.xml")):
+		setupfile = file(resolveFilename(SCOPE_CURRENT_PLUGIN, "SystemPlugins/TransCodingSetup/setup.xml"), 'r')
 		setupdom = xml.etree.cElementTree.parse(setupfile)
 		setupfile.close()
 		setup_data.append(setupdom.getroot())
