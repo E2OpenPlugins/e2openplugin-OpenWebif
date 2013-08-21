@@ -55,7 +55,13 @@ class AjaxController(BaseController):
 			stype = request.args["stype"][0]
 		if "id" in request.args.keys():
 			idbouquet = request.args["id"][0]
-		return getChannels(idbouquet, stype)
+		channels = getChannels(idbouquet, stype)
+		info = getInfo()
+		model = info["model"]
+		channels['transcoding'] = False
+		if model in ("solo2", "duo2"): 
+			channels['transcoding'] = True
+		return channels
 		
 
 	def P_eventdescription(self, request):

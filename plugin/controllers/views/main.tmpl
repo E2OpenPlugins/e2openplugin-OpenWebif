@@ -8,6 +8,7 @@
 <script type="text/javascript" src="/js/jquery-1.6.2.min.js"></script>
 <script type="text/javascript" src="/js/jquery-ui-1.8.18.custom.min.js"></script>
 <script type="text/javascript" src="/js/openwebif.js"></script>
+<script type="text/javascript" src="/js/transcoding.js"></script>
 
 <title>Open Webif</title>
 </head>
@@ -196,5 +197,10 @@
 			<div id="footer"><h3>&nbsp;&nbsp;<a href="https://github.com/E2OpenPlugins">E2OpenPlugins</a> | <a href="http://www.vuplus-community.net">Black Hole</a> | <a href="http://openpli.org">OpenPli</a> | <a href="http://forum.sifteam.eu">Sif</a> | <a href="http://www.vuplus-support.org">Vti</a></h3></div>
 		</div>
 	</div>
+	<form name="portForm" action="/web/stream.m3u" method="GET" target="_blank">
+		<input type="hidden" name="ref">
+		<input type="hidden" name="name">
+		<input type="hidden" name="device">
+	</form>
 </body>
 </html>

@@ -7,6 +7,7 @@
 #                                                                            #
 ##############################################################################
 from enigma import eServiceReference, getBestPlayableServiceReference
+from info import getInfo
 from urllib import unquote, quote
 import os
 from Components.config import config
@@ -42,7 +43,14 @@ def getStream(session, request, m3ufile):
 		progopt="#EXTVLCOPT:program=%d\n" % (int(sRef.split(':')[3],16))
 	else:
 		progopt=""
-	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:8001/%s\n" % (progopt,request.getRequestHostname(), sRef)
+	portNumber = config.OpenWebif.streamport.value
+	info = getInfo()
+	model = info["model"]
+	if model in ("solo2","duo2"):
+		if "device" in request.args :
+			if request.args["device"][0] == "phone" :
+				portNumber = 8002;
+	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef)
 	request.setHeader('Content-Type', 'application/text')
 	return response
 

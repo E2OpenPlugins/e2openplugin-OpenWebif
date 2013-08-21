@@ -15,9 +15,18 @@
 <a href="#" onclick="open_epg_pop('$channel.ref')">
 <img src="../images/ico_epg.png" title="Show EPG for $channel.name" border="0">
 </a>
+#if $transcoding
+<a href="#" onclick="jumper8001('$channel.ref', '$channel.name');">
+<img align="top" src="../images/ico_stream.png" title="Stream $channel.name" border="0">
+</a>
+<a href="#" onclick="jumper8002('$channel.ref', '$channel.name');">
+<img align="top" src="../images/ico_stream.png" title="Stream Port 8002 $channel.name" border="0">
+</a>
+#else
 <a target="_blank" href='/web/stream.m3u?ref=$channel.ref&name=$channel.name'>
 <img align="top" src="../images/ico_stream.png" title="Stream $channel.name" border="0">
 </a>
+#end if
 #else
 <a target="_blank" href='#'>
 <img align="top" src="../images/ico_lock.png" title="Locked" border="0">

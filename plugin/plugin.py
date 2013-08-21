@@ -28,6 +28,7 @@ config.OpenWebif = ConfigSubsection()
 config.OpenWebif.enabled = ConfigYesNo(default=True)
 # Use temporary port 8088 to avoid conflict with Webinterface
 config.OpenWebif.port = ConfigInteger(default = 80, limits=(1, 65535) )
+config.OpenWebif.streamport = ConfigInteger(default = 8001, limits=(1, 65535) )
 config.OpenWebif.auth = ConfigYesNo(default=False)
 config.OpenWebif.xbmcservices = ConfigYesNo(default=False)
 config.OpenWebif.webcache = ConfigSubsection()
