@@ -1,18 +1,23 @@
 from enigma import eEnv
 from Components.SystemInfo import SystemInfo
 from Components.config import config
-from os import path
+from os import path, listdir
 import xml.etree.cElementTree
 
 class ConfigFiles:
 	def __init__(self):
 		self.setupfiles = []
-		self.allowedsections = ["usage", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone", "transcoding"]
+		self.allowedsections = ["usage", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone"]
 		self.getConfigFiles()
 
 	def getConfigFiles(self):
 		setupfiles = [eEnv.resolve('${datadir}/enigma2/setup.xml')]
-		setupfiles.append(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/setup.xml'))
+		locations = ('SystemPlugins', 'Extensions')
+		libdir = eEnv.resolve('${libdir}')
+		for location in locations:
+			plugins = listdir(('%s/enigma2/python/Plugins/%s' % (libdir,location)))
+			for plugin in plugins:
+				setupfiles.append(('%s/enigma2/python/Plugins/%s/%s/setup.xml' % (libdir, location, plugin)))
 		for setupfile in setupfiles:
 			if path.exists(setupfile):
 				print "[OpenWebif] loading configuration file :", setupfile
@@ -200,6 +205,9 @@ def getConfigsSections():
 		xmldata = setupdom.getroot()
 		for section in xmldata.findall("setup"):
 			key = section.get("key")
+			showOpenWebIF = section.get("showOpenWebIF")
+			if showOpenWebIF == "1":
+				allowedsections.append(key)
 			if key not in allowedsections:
 				continue
 			
