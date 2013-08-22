@@ -114,11 +114,18 @@ def getJsonFromConfig(cnf):
 			"current": cnf.value
 		}
 		
-	elif cnf.__class__.__name__ == "ConfigNumber" or cnf.__class__.__name__ == "ConfigInteger":
+	elif cnf.__class__.__name__ == "ConfigNumber":
 		return {
 			"result": True,
 			"type": "number",
 			"current": cnf.value
+		}
+	elif cnf.__class__.__name__ == "ConfigInteger":
+		return {
+			"result": True,
+			"type": "number",
+			"current": cnf.value,
+			"limits": (cnf.limits[0][0], cnf.limits[0][1])
 		}
 		
 	print "[OpenWebif] Unknown class ", cnf.__class__.__name__
@@ -139,8 +146,17 @@ def saveConfig(path, value):
 			else:
 				values.append(int(value))
 			cnf.value = values
-		elif cnf.__class__.__name__ == "ConfigNumber" or cnf.__class__.__name__ == "ConfigInteger":
+		elif cnf.__class__.__name__ == "ConfigNumber":
 			cnf.value = int(value)
+		elif  cnf.__class__.__name__ == "ConfigInteger":
+			cnf_min = int(cnf.limits[0][0])
+			cnf_max = int(cnf.limits[0][1])
+			cnf_value = int(value)
+			if cnf_value < cnf_min:
+				cnf_value = cnf_min
+			elif cnf_value > cnf_max:
+				cnf_value = cnf_max
+			cnf.value = cnf_value
 		else:
 			cnf.value = value
 		cnf.save()
@@ -177,10 +193,14 @@ def getConfigs(key):
 						continue
 					
 					try:
+						data = getJsonFromConfig(eval(entry.text or ""))
+						text = entry.get("text", "")
+						if "limits" in data:
+							text = "%s (%d - %d)" % (text, data["limits"][0], data["limits"][1])
 						configs.append({
-							"description": entry.get("text", ""),
+							"description": text,
 							"path": entry.text or "",
-							"data": getJsonFromConfig(eval(entry.text or ""))
+							"data": data
 						})		
 					except Exception, e:
 						pass
