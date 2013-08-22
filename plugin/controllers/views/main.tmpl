@@ -157,7 +157,7 @@
 			#def extrasMenu
 			<ul>
 				#for $extra in $extras
-					<li><a href='#' onclick="load_maincontent($extra["key"]); return false;">$extra["description"]</a></li>
+					<li><a href='#' onclick="load_maincontent('$extra["key"]'); return false;">$extra["description"]</a></li>
 				#end for
 			</ul>
 			#end def
