@@ -153,6 +153,14 @@
 				#end for
 			</ul>
 			#end def
+
+			#def extrasMenu
+			<ul>
+				#for $extra in $extras
+					<li><a href='#' onclick="load_maincontent($extra["key"]); return false;">$extra["description"]</a></li>
+				#end for
+			</ul>
+			#end def
 		
 			<div id="menucontainer">
 				$menu("Main", "main", $mainMenu)
@@ -162,6 +170,7 @@
 				$menu("Info", "info", $infoMenu)
 				$menu("Stream", "stream", $streamMenu)
 				$menu("Settings", "config", $configMenu)
+				$menu("Extras", "extras", $extrasMenu)
 				$menu("Epg Search", "search", $searchMenu)
 			</div>
 			<div id="remotecontainer" style="display: none;">
