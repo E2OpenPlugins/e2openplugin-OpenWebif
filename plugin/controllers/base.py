@@ -197,4 +197,4 @@ class BaseController(resource.Resource):
 #		except ImportError:
 
 		ret['extras'] = extras
-		
+		return ret
