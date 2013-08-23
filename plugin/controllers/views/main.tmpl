@@ -146,14 +146,6 @@
 			</div>
 			#end def
 			
-			#def configMenu
-			<ul>
-				#for $section in $configsections
-					<li><a href='#' onclick="load_maincontent('ajax/config?section=$section["key"]'); return false;">$section["description"]</a></li>
-				#end for
-			</ul>
-			#end def
-
 			#def extrasMenu
 			<ul>
 				#for $extra in $extras
@@ -169,7 +161,6 @@
 				$menu("Remote", "remote", $remoteMenu)
 				$menu("Info", "info", $infoMenu)
 				$menu("Stream", "stream", $streamMenu)
-				$menu("Settings", "config", $configMenu)
 				$menu("Extras", "extras", $extrasMenu)
 				$menu("Epg Search", "search", $searchMenu)
 			</div>

@@ -5,39 +5,18 @@ from Tools.Directories import resolveFilename, SCOPE_CURRENT_PLUGIN, fileExists
 from os import path, listdir
 import xml.etree.cElementTree
 
-class ConfigFiles:
-	def __init__(self):
-		self.setupfiles = []
-		self.allowedsections = ["usage", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone"]
-		self.getConfigFiles()
-
-	def getConfigFiles(self):
-		setupfiles = [eEnv.resolve('${datadir}/enigma2/setup.xml')]
-		locations = ('SystemPlugins', 'Extensions')
-		libdir = eEnv.resolve('${libdir}')
-		for location in locations:
-			plugins = listdir(('%s/enigma2/python/Plugins/%s' % (libdir,location)))
-			for plugin in plugins:
-				setupfiles.append(('%s/enigma2/python/Plugins/%s/%s/setup.xml' % (libdir, location, plugin)))
-		for setupfile in setupfiles:
-			if path.exists(setupfile):
-				print "[OpenWebif] loading configuration file :", setupfile
-				self.setupfiles.append(setupfile)
-
-configfiles = ConfigFiles()
-
 def addCollapsedMenu(name):
 	tags = config.OpenWebif.webcache.collapsedmenus.value.split("|")
 	if name not in tags:
 		tags.append(name)
-		
+
 	config.OpenWebif.webcache.collapsedmenus.value = "|".join(tags).strip("|")
 	config.OpenWebif.webcache.collapsedmenus.save()
 	
 	return {
 		"result": True
 	}
-	
+
 def removeCollapsedMenu(name):
 	tags = config.OpenWebif.webcache.collapsedmenus.value.split("|")
 	if name in tags:
@@ -180,113 +159,38 @@ def saveConfig(path, value):
 
 def getConfigs(key):
 	configs = []
-	title = ""
-	setup_data = []
-	if fileExists(resolveFilename(SCOPE_CURRENT_PLUGIN, "SystemPlugins/TransCodingSetup/setup.xml")):
-		setupfile = file(resolveFilename(SCOPE_CURRENT_PLUGIN, "SystemPlugins/TransCodingSetup/setup.xml"), 'r')
-		setupdom = xml.etree.cElementTree.parse(setupfile)
-		setupfile.close()
-		setup_data.append(setupdom.getroot())
-	setupfile = file(eEnv.resolve('${datadir}/enigma2/setup.xml'), 'r')
-	setupdom = xml.etree.cElementTree.parse(setupfile)
-	setupfile.close()
-	setup_xmldata = setupdom.getroot()
-	setup_data.append(setupdom.getroot())
-
-	for xmldata in setup_data:
-		for section in xmldata.findall("setup"):
-			if section.get("key") != key:
-				continue
-			
-			for entry in section:
-				if entry.tag == "item":
-					requires = entry.get("requires")
-					if requires and requires.startswith('config.'):
-						item = eval(requires or "");
-						if item.value and not item.value == "0":
-							SystemInfo[requires] = True
-						else:
-							SystemInfo[requires] = False
-					if requires and not SystemInfo.get(requires, False):
-						continue;
-				
-					if int(entry.get("level", 0)) > config.usage.setup_level.index:
-						continue
-				
-					try:
-						data = getJsonFromConfig(eval(entry.text or ""))
-						text = entry.get("text", "")
-						if "limits" in data:
-							text = "%s (%d - %d)" % (text, data["limits"][0], data["limits"][1])
-						configs.append({
-							"description": text,
-							"path": entry.text or "",
-							"data": data
-						})		
-					except Exception, e:
-						pass
-					
-			title = section.get("title", "")
-			break
-		
+	title = None
+	if not len(configfiles.sections):
+		configfiles.getConfigs()
+	if key in configfiles.section_config:
+		config_entries = configfiles.section_config[key][1]
+		title = configfiles.section_config[key][0]
+	if config_entries:
+		for entry in config_entries:
+			try:
+				data = getJsonFromConfig(eval(entry.text or ""))
+				text = entry.get("text", "")
+				if "limits" in data:
+					text = "%s (%d - %d)" % (text, data["limits"][0], data["limits"][1])
+				configs.append({
+						"description": text,
+						"path": entry.text or "",
+						"data": data
+					})
+			except Exception, e:
+				pass
 	return {
 		"result": True,
 		"configs": configs,
 		"title": title
 	}
-	
+
 def getConfigsSections():
-	allowedsections = configfiles.allowedsections
-	sections = []
-	setup_data = []
-	if fileExists(resolveFilename(SCOPE_CURRENT_PLUGIN, "SystemPlugins/TransCodingSetup/setup.xml")):
-		setupfile = file(resolveFilename(SCOPE_CURRENT_PLUGIN, "SystemPlugins/TransCodingSetup/setup.xml"), 'r')
-		setupdom = xml.etree.cElementTree.parse(setupfile)
-		setupfile.close()
-		setup_data.append(setupdom.getroot())
-	setupfile = file(eEnv.resolve('${datadir}/enigma2/setup.xml'), 'r')
-	setupdom = xml.etree.cElementTree.parse(setupfile)
-	setupfile.close()
-	setup_xmldata = setupdom.getroot()
-	setup_data.append(setupdom.getroot())
-
-	for xmldata in setup_data:
-		for section in xmldata.findall("setup"):
-			key = section.get("key")
-			showOpenWebIF = section.get("showOpenWebIF")
-			if showOpenWebIF == "1":
-				allowedsections.append(key)
-			if key not in allowedsections:
-				continue
-		
-			count = 0
-			for entry in section:
-				if entry.tag == "item":
-					requires = entry.get("requires")
-					if requires and requires.startswith('config.'):
-						item = eval(requires or "");
-						if item.value and not item.value == "0":
-							SystemInfo[requires] = True
-						else:
-							SystemInfo[requires] = False
-					if requires and not SystemInfo.get(requires, False):
-						continue;
-					
-					if int(entry.get("level", 0)) > config.usage.setup_level.index:
-						continue
-					
-					count += 1
-				
-			if count > 0:
-				sections.append({
-					"key": key,
-					"description": section.get("title")
-				})
-
-	sections = sorted(sections, key=lambda k: k['description']) 
+	if not len(configfiles.sections):
+		configfiles.parseConfigFiles()
 	return {
 		"result": True,
-		"sections": sections
+		"sections": configfiles.sections
 	}
 
 def privSettingValues(prefix, top, result):
@@ -307,3 +211,61 @@ def getSettings():
 		"settings": configkeyval
 	}
 
+class ConfigFiles:
+	def __init__(self):
+		self.setupfiles = []
+		self.sections = []
+		self.section_config = {}
+		self.allowedsections = ["usage", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone", "time", "osdsetup", "epgsetup", "lcd", "remotesetup", "softcamsetup", "logs", "timeshift"]
+		self.getConfigFiles()
+
+	def getConfigFiles(self):
+		setupfiles = [eEnv.resolve('${datadir}/enigma2/setup.xml')]
+		locations = ('SystemPlugins', 'Extensions')
+		libdir = eEnv.resolve('${libdir}')
+		for location in locations:
+			plugins = listdir(('%s/enigma2/python/Plugins/%s' % (libdir,location)))
+			for plugin in plugins:
+				setupfiles.append(('%s/enigma2/python/Plugins/%s/%s/setup.xml' % (libdir, location, plugin)))
+		for setupfile in setupfiles:
+			if path.exists(setupfile):
+				self.setupfiles.append(setupfile)
+
+	def parseConfigFiles(self):
+		sections = []
+		for setupfile in self.setupfiles:
+			print "[OpenWebif] loading configuration file :", setupfile
+			setupfile = file(setupfile, 'r')
+			setupdom = xml.etree.cElementTree.parse(setupfile)
+			setupfile.close()
+			xmldata = setupdom.getroot()
+			for section in xmldata.findall("setup"):
+				configs = []
+				key = section.get("key")
+				if key not in self.allowedsections:
+					showOpenWebIF = section.get("showOpenWebIF")
+					if showOpenWebIF == "1":
+						self.allowedsections.append(key)
+					else:
+						continue
+				print "[OpenWebif] loading configuration section :", key
+				for entry in section:
+					if entry.tag == "item":
+						requires = entry.get("requires")
+						if requires and not SystemInfo.get(requires, False):
+							continue;
+							
+						if int(entry.get("level", 0)) > config.usage.setup_level.index:
+							continue
+						configs.append(entry)
+				if len(configs):
+					sections.append({
+						"key": key,
+						"description": section.get("title")
+					})
+					title = section.get("title", "")
+					self.section_config[key] = (title, configs)
+		sections = sorted(sections, key=lambda k: k['description'])
+		self.sections = sections
+
+configfiles = ConfigFiles()
