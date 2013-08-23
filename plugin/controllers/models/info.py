@@ -16,13 +16,16 @@ from RecordTimer import parseEvent
 from Screens.Standby import inStandby
 from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
-from enigma import eDVBVolumecontrol, eServiceCenter, getDistro, getBoxType
+from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
+try: 
+	getDistro, getBoxType
+except: pass
 
 import os
 import sys
 import time
 
-OPENWEBIFVER = "OWIF 0.1.7"
+OPENWEBIFVER = "OWIF 0.2.1"
 
 def getOpenWebifVer():
 	return OPENWEBIFVER
@@ -363,3 +366,21 @@ def getStatusInfo(self):
 		statusinfo['inStandby'] = "true"
 
 	return statusinfo
+
+def getAlternativeChannels(service):
+	alternativeServices = eServiceCenter.getInstance().list(eServiceReference(service))
+	return alternativeServices and alternativeServices.getContent("S", True)
+
+def GetWithAlternative(service,onlyFirst = True):
+	if service.startswith('1:134:'):
+		channels = getAlternativeChannels(service)
+		if channels:
+			if onlyFirst:
+				return channels[0]
+			else:
+				return channels
+	if onlyFirst:
+		return service
+	else:
+		return None
+

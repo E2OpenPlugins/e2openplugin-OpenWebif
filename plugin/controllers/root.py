@@ -17,6 +17,9 @@ from api import ApiController
 from file import FileController
 from mobile import MobileController
 from ipkg import IpkgController
+from AT import ATController
+from ER import ERController
+from BQE import BQEController
 from twisted.web import static, http
 
 class RootController(BaseController):
@@ -36,6 +39,9 @@ class RootController(BaseController):
 		self.putChild("static", static.File(getPublicPath() + "/static"))
 		self.putChild("images", static.File(getPublicPath() + "/images"))
 		self.putChild("ipkg", IpkgController(session))
+		self.putChild("autotimer", ATController(session))
+		self.putChild("epgrefresh", ERController(session))
+		self.putChild("bouqueteditor", BQEController(session))
 		if piconpath:
 			self.putChild("picon", static.File(piconpath))
 		
@@ -48,9 +54,12 @@ class RootController(BaseController):
 	# the "pages functions" must be called P_pagename
 	# example http://boxip/index => P_index
 	def P_index(self, request):
+		mode = ''
+		if "mode" in request.args.keys():
+			mode = request.args["mode"][0]
 		uagent = request.getHeader('User-Agent')
-		if uagent:
-			if uagent.lower().find("iphone") != -1 or uagent.lower().find("ipod") != -1 or uagent.lower().find("blackberry") != -1 or uagent.lower().find("android") != -1:
+		if uagent and mode != 'fullpage':
+			if uagent.lower().find("iphone") != -1 or uagent.lower().find("ipod") != -1 or (uagent.lower().find("android") != -1 and uagent.lower().find("mobile") != -1):
 				request.setHeader("Location", "/mobile/")
 				request.setResponseCode(http.FOUND)
 				return ""

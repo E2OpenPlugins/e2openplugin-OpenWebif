@@ -1,0 +1,14 @@
+#filter WebSafe
+<?xml version="1.0" encoding="UTF-8"?>
+<e2servicelist>
+	#for $service in $services
+	<e2service>
+		<e2servicereference>$service.servicereference</e2servicereference>
+		<e2servicename>$service.servicename</e2servicename>
+		<e2serviceisgroup>$service.isgroup</e2serviceisgroup>
+		<e2serviceismarker>$service.ismarker</e2serviceismarker>
+		<e2serviceisprotected>$service.isprotected</e2serviceisprotected>
+	</e2service>
+	#end for
+</e2servicelist>
+#end filter

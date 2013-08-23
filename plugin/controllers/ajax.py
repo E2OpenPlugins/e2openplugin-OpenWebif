@@ -15,7 +15,7 @@ from models.services import getCurrentService, getBouquets, getChannels, getSate
 from models.info import getInfo, getPublicPath, getOpenWebifVer
 from models.movies import getMovieList
 from models.timers import getTimers
-from models.config import getConfigs
+from models.config import getConfigs, getConfigsSections
 from base import BaseController
 from time import mktime, localtime
 
@@ -23,24 +23,24 @@ class AjaxController(BaseController):
 	def __init__(self, session, path = ""):
 		BaseController.__init__(self, path)
 		self.session = session
-		
+
 	def P_current(self, request):
 		return getCurrentFullInfo(self.session)
-		
+
 	def P_bouquets(self, request):
 		stype = "tv"
 		if "stype" in request.args.keys():
 			stype = request.args["stype"][0]
 		bouq = getBouquets(stype)
 		return { "bouquets": bouq['bouquets'], "stype": stype }
-			
+
 	def P_providers(self, request):
 		stype = "tv"
 		if "stype" in request.args.keys():
 			stype = request.args["stype"][0]
 		prov = getProviders(stype)
 		return { "providers": prov['providers'], "stype": stype }
-		
+
 	def P_satellites(self, request):
 		stype = "tv"
 		if "stype" in request.args.keys():
@@ -48,7 +48,6 @@ class AjaxController(BaseController):
 		sat = getSatellites(stype)
 		return { "satellites": sat['satellites'], "stype": stype }
 
-	
 	def P_channels(self, request):
 		stype = "tv"
 		idbouquet = "ALL"
@@ -56,8 +55,13 @@ class AjaxController(BaseController):
 			stype = request.args["stype"][0]
 		if "id" in request.args.keys():
 			idbouquet = request.args["id"][0]
-		return getChannels(idbouquet, stype)
-		
+		channels = getChannels(idbouquet, stype)
+		info = getInfo()
+		model = info["model"]
+		channels['transcoding'] = False
+		if model in ("solo2", "duo2"): 
+			channels['transcoding'] = True
+		return channels
 
 	def P_eventdescription(self, request):
 		return getEventDesc(request.args["sref"][0], request.args["idev"][0])
@@ -150,7 +154,7 @@ class AjaxController(BaseController):
 			return getSearchEpg(request.args["sstr"][0])
 		else: 
 			return []
-			
+
 	def P_screenshot(self, request):
 		box = {}
 		box['brand'] = "dmm"
@@ -168,40 +172,47 @@ class AjaxController(BaseController):
 			else:
 				box['brand'] = "technomate"
 		return { "box": box }
-		
+
 	def P_powerstate(self, request):
 		return {}
-		
+
 	def P_message(self, request):
 		return {}
-		
+
 	def P_movies(self, request):
 		if "dirname" in request.args.keys():
 			movies = getMovieList(request.args["dirname"][0])
 		else:
 			movies = getMovieList()
 		return movies
-		
+
 	def P_workinprogress(self, request):
 		return {}
-	
+
 	def P_radio(self, request):
 		return {}
 
 	def P_timers(self, request):
 		return getTimers(self.session)
-		
+
 	def P_edittimer(self, request):
 		return {}
-		
+
 	def P_tv(self, request):
 		return {}
-		
+
 	def P_config(self, request):
 		section = "usage"
 		if "section" in request.args.keys():
 			section = request.args["section"][0]
 		return getConfigs(section)
+
+	def P_settings(self, request):
+		ret = {
+			"result": True
+		}
+		ret['configsections'] = getConfigsSections()['sections']
+		return ret
 
 	def P_multiepg(self, request):
 		bouq = getBouquets("tv")

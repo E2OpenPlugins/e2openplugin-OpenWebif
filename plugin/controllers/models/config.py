@@ -2,7 +2,29 @@ from enigma import eEnv
 from Components.SystemInfo import SystemInfo
 from Components.config import config
 from Tools.Directories import resolveFilename, SCOPE_CURRENT_PLUGIN, fileExists
+from os import path, listdir
 import xml.etree.cElementTree
+
+class ConfigFiles:
+	def __init__(self):
+		self.setupfiles = []
+		self.allowedsections = ["usage", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone"]
+		self.getConfigFiles()
+
+	def getConfigFiles(self):
+		setupfiles = [eEnv.resolve('${datadir}/enigma2/setup.xml')]
+		locations = ('SystemPlugins', 'Extensions')
+		libdir = eEnv.resolve('${libdir}')
+		for location in locations:
+			plugins = listdir(('%s/enigma2/python/Plugins/%s' % (libdir,location)))
+			for plugin in plugins:
+				setupfiles.append(('%s/enigma2/python/Plugins/%s/%s/setup.xml' % (libdir, location, plugin)))
+		for setupfile in setupfiles:
+			if path.exists(setupfile):
+				print "[OpenWebif] loading configuration file :", setupfile
+				self.setupfiles.append(setupfile)
+
+configfiles = ConfigFiles()
 
 def addCollapsedMenu(name):
 	tags = config.OpenWebif.webcache.collapsedmenus.value.split("|")
@@ -33,33 +55,33 @@ def getCollapsedMenus():
 		"result": True,
 		"collapsed": config.OpenWebif.webcache.collapsedmenus.value.split("|")
 	}
-	
+
 def setRemoteGrabScreenshot(value):
 	config.OpenWebif.webcache.remotegrabscreenshot.value = value
 	config.OpenWebif.webcache.remotegrabscreenshot.save()
 	return {
 		"result": True
 	}
-	
+
 def getRemoteGrabScreenshot():
 	return {
 		"result": True,
 		"remotegrabscreenshot": config.OpenWebif.webcache.remotegrabscreenshot.value
 	}
-	
+
 def setZapStream(value):
 	config.OpenWebif.webcache.zapstream.value = value
 	config.OpenWebif.webcache.zapstream.save()
 	return {
 		"result": True
 	}
-	
+
 def getZapStream():
 	return {
 		"result": True,
 		"zapstream": config.OpenWebif.webcache.zapstream.value
 	}
-	
+
 def getJsonFromConfig(cnf):
 	if cnf.__class__.__name__ == "ConfigSelection" or cnf.__class__.__name__ == "ConfigSelectionNumber":
 		if type(cnf.choices.choices) == dict:
@@ -93,11 +115,18 @@ def getJsonFromConfig(cnf):
 			"current": cnf.value
 		}
 
-	elif cnf.__class__.__name__ == "ConfigNumber" or cnf.__class__.__name__ == "ConfigInteger":
+	elif cnf.__class__.__name__ == "ConfigNumber":
 		return {
 			"result": True,
 			"type": "number",
 			"current": cnf.value
+		}
+	elif cnf.__class__.__name__ == "ConfigInteger":
+		return {
+			"result": True,
+			"type": "number",
+			"current": cnf.value,
+			"limits": (cnf.limits[0][0], cnf.limits[0][1])
 		}
 
 	elif cnf.__class__.__name__ == "ConfigText":
@@ -112,7 +141,7 @@ def getJsonFromConfig(cnf):
 		"result": False,
 		"type": "unknown"
 	}
-		
+
 def saveConfig(path, value):
 	try:
 		cnf = eval(path)
@@ -125,8 +154,17 @@ def saveConfig(path, value):
 			else:
 				values.append(int(value))
 			cnf.value = values
-		elif cnf.__class__.__name__ == "ConfigNumber" or cnf.__class__.__name__ == "ConfigInteger":
+		elif cnf.__class__.__name__ == "ConfigNumber":
 			cnf.value = int(value)
+		elif  cnf.__class__.__name__ == "ConfigInteger":
+			cnf_min = int(cnf.limits[0][0])
+			cnf_max = int(cnf.limits[0][1])
+			cnf_value = int(value)
+			if cnf_value < cnf_min:
+				cnf_value = cnf_min
+			elif cnf_value > cnf_max:
+				cnf_value = cnf_max
+			cnf.value = cnf_value
 		else:
 			cnf.value = value
 		cnf.save()
@@ -139,7 +177,7 @@ def saveConfig(path, value):
 	return {
 		"result": True
 	}
-		
+
 def getConfigs(key):
 	configs = []
 	title = ""
@@ -176,14 +214,18 @@ def getConfigs(key):
 						continue
 				
 					try:
+						data = getJsonFromConfig(eval(entry.text or ""))
+						text = entry.get("text", "")
+						if "limits" in data:
+							text = "%s (%d - %d)" % (text, data["limits"][0], data["limits"][1])
 						configs.append({
-							"description": entry.get("text", ""),
+							"description": text,
 							"path": entry.text or "",
-							"data": getJsonFromConfig(eval(entry.text or ""))
+							"data": data
 						})		
 					except Exception, e:
 						pass
-				
+					
 			title = section.get("title", "")
 			break
 		
@@ -194,7 +236,7 @@ def getConfigs(key):
 	}
 	
 def getConfigsSections():
-	allowedsections = ["usage", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone", "time", "osdsetup", "epgsetup", "lcd", "remotesetup", "softcamsetup", "logs", "timeshift", "transcodesetup"]
+	allowedsections = configfiles.allowedsections
 	sections = []
 	setup_data = []
 	if fileExists(resolveFilename(SCOPE_CURRENT_PLUGIN, "SystemPlugins/TransCodingSetup/setup.xml")):
@@ -211,6 +253,9 @@ def getConfigsSections():
 	for xmldata in setup_data:
 		for section in xmldata.findall("setup"):
 			key = section.get("key")
+			showOpenWebIF = section.get("showOpenWebIF")
+			if showOpenWebIF == "1":
+				allowedsections.append(key)
 			if key not in allowedsections:
 				continue
 		

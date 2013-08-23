@@ -231,6 +231,25 @@ class BaseController(resource.Resource):
 			ret["remote"] = "ixusszero"
 		else:
 			ret["remote"] = "dmm"
+		extras = []
+		extras.append({ 'key': 'ajax/settings','description': 'Settings'})
 
+# TODO AutoTimer,Epgrefresh,BouquetEditor as Webinterface
+		
+#		try:
+#			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
+#			extras.append({ 'key': 'ajax/xxx','description': 'AutoTimer'})
+#		except ImportError:
+		
+#		try:
+#			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+#			extras.append({ 'key': 'ajax/xxx','description': 'BouquetEditor'})
+#		except ImportError:
+		
+#		try:
+#			from Plugins.Extensions.EPGRefresh.EPGRefresh import epgrefresh
+#			extras.append({ 'key': 'ajax/xxx','description': 'EPGRefresh'})
+#		except ImportError:
+
+		ret['extras'] = extras
 		return ret
-

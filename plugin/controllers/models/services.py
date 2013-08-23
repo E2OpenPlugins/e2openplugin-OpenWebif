@@ -8,15 +8,15 @@
 ##############################################################################
 from Tools.Directories import fileExists
 from Components.Sources.ServiceList import ServiceList
-from Components.ParentalControl import parentalControl
+from Components.ParentalControl import parentalControl, IMG_WHITESERVICE, IMG_WHITEBOUQUET, IMG_BLACKSERVICE, IMG_BLACKBOUQUET
 from Components.config import config
 from ServiceReference import ServiceReference
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache, getBestPlayableServiceReference
 from time import time, localtime, strftime, mktime
-from info import getPiconPath
-from Tools.Alternatives import GetWithAlternative
+from info import getPiconPath, GetWithAlternative
 from urllib import quote, unquote
+
 
 try:
 	from collections import OrderedDict
@@ -260,6 +260,29 @@ def getSatellites(stype):
 	return { "satellites": ret }
 
 
+def getProtection(sref):
+	isProtected = "0"
+	if config.ParentalControl.configured.value:
+		protection = parentalControl.getProtectionType(sref)
+		if protection[0]:
+			if protection[1] == IMG_BLACKSERVICE:
+				#(locked -S-)
+				isProtected = "1"
+			elif protection[1] == IMG_BLACKBOUQUET:
+				#(locked -B-)
+				isProtected = "2"
+			elif protection[1] == "":
+				# (locked)
+				isProtected = "3"
+		else:
+			if protection[1] == IMG_WHITESERVICE:
+				#(unlocked -S-)
+				isProtected = "4"
+			elif protection[1] == IMG_WHITEBOUQUET:
+				#(unlocked -B-)
+				isProtected = "5"
+	return isProtected
+
 def getChannels(idbouquet, stype):
 	ret = []
 	idp = 0
@@ -276,8 +299,12 @@ def getChannels(idbouquet, stype):
 	for channel in channels:
 		if not int(channel[0].split(":")[1]) & 64:
 			chan = {}
-			chan['ref'] = quote(channel[0], safe=' ~@#$&()*!+=:;,.?/\'')
+			chan['ref'] = quote(channel[0], safe=' ~@%#$&()*!+=:;,.?/\'')
 			chan['name'] = filterName(channel[1])
+			if config.ParentalControl.configured.value and config.OpenWebif.parentalenabled.value:
+				chan['protection'] = getProtection(channel[0])
+			else:
+				chan['protection'] = "0"
 			nowevent = epgcache.lookupEvent(['TBDCIX', (channel[0], 0, -1)])
 			if len(nowevent) > 0 and nowevent[0][0] is not None:
 				chan['now_title'] = filterName(nowevent[0][0])
@@ -528,6 +555,10 @@ def getBouquetNowNextEpg(ref, servicetype):
 			ev['title'] = event[4]
 			ev['shortdesc'] = event[5]
 			ev['longdesc'] = event[6]
+			if event[7] is not None:
+				achannels = GetWithAlternative(event[7], False)
+				if achannels:
+					ev['asrefs'] = achannels
 			ev['sref'] = event[7]
 			ev['sname'] = filterName(event[8])
 			ev['now_timestamp'] = event[3]
