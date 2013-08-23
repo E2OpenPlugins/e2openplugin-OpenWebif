@@ -49,7 +49,7 @@ def getStream(session, request, m3ufile):
 	if model in ("solo2","duo2"):
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
-				portNumber = 8002;
+				portNumber = config.plugins.transcodingsetup.port.value
 	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef)
 	request.setHeader('Content-Type', 'application/text')
 	return response
