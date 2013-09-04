@@ -203,7 +203,10 @@ def getFrontendStatus(session):
 	inf['agc'] = ""
 	inf['ber'] = ""
 	
-	feinfo = session.nav.getCurrentService().frontendInfo()
+	service = session.nav.getCurrentService()
+	if service is None:
+		return inf
+	feinfo = service.frontendInfo()
 	frontendData = feinfo and feinfo.getAll(True)
 	
 	if frontendData is not None:
