@@ -193,7 +193,7 @@ class BaseController(resource.Resource):
 			ret["remote"] = "et4x00"
 		elif ret["box"] == "et6500":
 			ret["remote"] = "et6500"
-		elif ret["box"] in ("gb800solo", "gb800se", "gb800ue", "gbquad"):
+		elif ret["box"] in ("gb800solo", "gb800se", "gb800ue", "gbquad", "gb800seplus", "gb800ueplus"):
 			ret["remote"] = "gigablue"
 		elif ret["box"] in ("me", "minime"):
 			ret["remote"] = "me"
