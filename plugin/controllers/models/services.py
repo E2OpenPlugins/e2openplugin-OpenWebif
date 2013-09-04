@@ -444,7 +444,10 @@ def getEvent(ref, idev):
 		info['begin'] = event[0]
 		info['duration'] = event[1]
 		info['title'] = event[2]
-		info['shortdesc'] = event[3]
+		if event[3]:
+			info['shortdesc'] = event[3]
+		else:
+			info['shortdesc'] = event[4]
 		info['longdesc'] = event[4]
 		info['channel'] = event[5]
 		info['sref'] = event[6]
