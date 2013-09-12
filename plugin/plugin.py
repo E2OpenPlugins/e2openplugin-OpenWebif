@@ -41,6 +41,8 @@ config.OpenWebif.https_enabled = ConfigYesNo(default=True)
 config.OpenWebif.https_port = ConfigInteger(default = 443, limits=(1, 65535) )
 # Parental Control currently disabled for testing
 config.OpenWebif.parentalenabled = ConfigYesNo(default=False)
+# Use service name for stream
+config.OpenWebif.service_name_for_stream = ConfigYesNo(default=False)
 
 class OpenWebifConfig(Screen, ConfigListScreen):
 	skin = """
@@ -78,6 +80,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		self.list.append(getConfigListEntry(_("Https port"), config.OpenWebif.https_port))
 		self.list.append(getConfigListEntry(_("Smart services renaming for XBMC"), config.OpenWebif.xbmcservices))
 		self.list.append(getConfigListEntry(_("Enable Parental Control"), config.OpenWebif.parentalenabled))
+		self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
 	
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)

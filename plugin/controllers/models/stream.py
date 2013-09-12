@@ -39,10 +39,9 @@ def getStream(session, request, m3ufile):
 	if "name" in request.args:
 		name = request.args["name"][0]
 	# #EXTINF:-1,%s\n  remove not compatiple with old api
-	if sRef != '':
+	progopt = ''
+	if config.OpenWebif.service_name_for_stream.value and sRef != '':
 		progopt="#EXTVLCOPT:program=%d\n" % (int(sRef.split(':')[3],16))
-	else:
-		progopt=""
 	portNumber = config.OpenWebif.streamport.value
 	info = getInfo()
 	model = info["model"]
