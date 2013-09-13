@@ -141,6 +141,8 @@ class AjaxController(BaseController):
 				model = "xpeedlx2"
 			else:
 				model = "xpeedlx1"
+		elif model == 'Xpeed LX3':
+			model = "xpeedlx3"
 		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
 			info["boximage"] = model + ".jpg"
 		else:
