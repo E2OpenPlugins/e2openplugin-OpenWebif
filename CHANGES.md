@@ -1,3 +1,9 @@
+## Version 0.2.2
+**FEATURES**
+
+* add API for transcoding plugin
+
+
 ## Version 0.2.1
 **FEATURES**
 
