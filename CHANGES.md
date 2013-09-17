@@ -1,3 +1,9 @@
+## Version 0.2.3
+**FEATURES**
+
+* add API to use STB as WOL "client" to send MagicPackets
+* add API for WOLSetup plugin
+
 ## Version 0.2.2
 **FEATURES**
 
