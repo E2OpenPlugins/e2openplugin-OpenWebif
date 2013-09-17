@@ -51,7 +51,7 @@ class TranscodingController(resource.Resource):
 					new_framerate = request.args[arg][0]
 					if not new_framerate in framerate.choices:
 						new_framerate = framerate.value
-					if new_framerate != config.plugins.transcodingsetup.framerate:
+					if new_framerate != config.plugins.transcodingsetup.framerate.value:
 						config.plugins.transcodingsetup.framerate.value = new_framerate
 						config_changed = True
 				elif arg == "port":
@@ -61,8 +61,8 @@ class TranscodingController(resource.Resource):
 					if new_port != config.plugins.transcodingsetup.port.value:
 						config.plugins.transcodingsetup.port.value = new_port
 						config_changed = True
-				if config_changed:
-					config.plugins.transcodingsetup.save()
+			if config_changed:
+				config.plugins.transcodingsetup.save()
 		ports = ""
 		for port_available in port.choices:
 			ports += port_available + ", "
