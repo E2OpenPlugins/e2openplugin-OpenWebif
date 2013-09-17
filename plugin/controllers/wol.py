@@ -79,7 +79,7 @@ class WOLClientController(resource.Resource):
 		resource.Resource.__init__(self)
 
 	def render(self, request):
-		import sys, struct, socket
+		import struct, socket
 		request.setHeader('Content-type', 'application/xhtml+xml')
 		request.setHeader('charset', 'UTF-8')
 		if len(request.args):
