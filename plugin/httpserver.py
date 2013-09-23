@@ -187,7 +187,7 @@ class AuthResource(resource.Resource):
 			
 		if self.login(request.getUser(), request.getPassword()) == False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
-			errpage = error.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
+			errpage = resource.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
 			return errpage.render(request)
 		else:
 			return self.resource.render(request)
@@ -204,7 +204,7 @@ class AuthResource(resource.Resource):
 			
 		if self.login(request.getUser(), request.getPassword()) == False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
-			errpage = error.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
+			errpage = resource.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
 			return errpage
 		else:
 			session["logged"] = True

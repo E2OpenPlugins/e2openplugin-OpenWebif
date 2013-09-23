@@ -20,6 +20,8 @@ from ipkg import IpkgController
 from AT import ATController
 from ER import ERController
 from BQE import BQEController
+from transcoding import TranscodingController
+from wol import WOLSetupController, WOLClientController
 from twisted.web import static, http
 
 class RootController(BaseController):
@@ -42,6 +44,9 @@ class RootController(BaseController):
 		self.putChild("autotimer", ATController(session))
 		self.putChild("epgrefresh", ERController(session))
 		self.putChild("bouqueteditor", BQEController(session))
+		self.putChild("transcoding", TranscodingController(session))
+		self.putChild("wol", WOLClientController(session))
+		self.putChild("wolsetup", WOLSetupController(session))
 		if piconpath:
 			self.putChild("picon", static.File(piconpath))
 		
