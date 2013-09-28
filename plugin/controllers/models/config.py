@@ -216,7 +216,7 @@ class ConfigFiles:
 		self.setupfiles = []
 		self.sections = []
 		self.section_config = {}
-		self.allowedsections = ["usage", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone", "time", "osdsetup", "epgsetup", "lcd", "remotesetup", "softcamsetup", "logs", "timeshift"]
+		self.allowedsections = ["usage", "userinterface", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone", "time", "osdsetup", "epgsetup", "display", "remotesetup", "softcamsetup", "logs", "timeshift", "channelselection", "epgsettings", "softwareupdate", "pluginbrowsersetup"]
 		self.getConfigFiles()
 
 	def getConfigFiles(self):
