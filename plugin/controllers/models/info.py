@@ -17,9 +17,10 @@ from Screens.Standby import inStandby
 from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
 from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
-try: 
-	getDistro, getBoxType
-except: pass
+try:
+	from enigma import getDistro, getBoxType
+except:
+	pass
 
 import os
 import sys
