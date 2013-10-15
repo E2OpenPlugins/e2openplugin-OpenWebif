@@ -8,7 +8,10 @@
 ##############################################################################
 
 from Tools.Directories import fileExists
-from enigma import getBoxType
+try:
+	from enigma import getBoxType, getMachineName
+except:
+	pass
 
 from twisted.web import server, http, static, resource, error
 from Cheetah.Template import Template
@@ -215,7 +218,7 @@ class BaseController(resource.Resource):
 			ret["remote"] = "xp1000"
 		elif ret["box"] == "odinm9":
 			ret["remote"] = "odinm9"
-		elif getBoxType() == 'odinm6':
+		elif getBoxType() == 'odinm6' or getMachineName() == 'AX-Odin':
 			ret["remote"] = "starsatlx"
 		elif ret["box"] == "odinm7":
 			ret["remote"] = "odinm7"

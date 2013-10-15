@@ -9,8 +9,11 @@
 
 from Tools.Directories import fileExists
 from Components.config import config
-from enigma import getBoxType
-
+try:
+	from enigma import getBoxType, getMachineName
+except:
+	pass
+	
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
 from models.info import getInfo, getPublicPath, getOpenWebifVer
 from models.movies import getMovieList
@@ -98,6 +101,8 @@ class AjaxController(BaseController):
 			model = "e3hd"
 		elif getBoxType() == 'odinm6':
 			model = "starsatlx"
+		elif getMachineName() == 'AX-Odin':
+			model = "axodin"			
 		elif model == "MixOs F5":
 			model = "ebox5000"
 		elif model == "MixOs F5mini":

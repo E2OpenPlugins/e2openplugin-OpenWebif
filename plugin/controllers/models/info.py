@@ -18,7 +18,7 @@ from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
 from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
 try:
-	from enigma import getDistro, getBoxType
+	from enigma import getDistro, getBoxType, getMachineName
 except:
 	pass
 
@@ -153,6 +153,9 @@ def getInfo():
 			elif getBoxType() == 'odinm6':
 				brand = "TELESTAR"
 				model = "STARSAT LX"
+			elif getMachineName() == 'AX-Odin':
+				brand = "Opticum"
+				model = "AX-Odin"	
 			else:
 				brand = "Odin-Series"
 		elif model == "e3hd":
