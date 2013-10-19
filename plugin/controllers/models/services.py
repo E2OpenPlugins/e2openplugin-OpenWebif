@@ -105,12 +105,14 @@ def getCurrentFullInfo(session):
 		ref = None
 
 	if ref is not None:
+		inf['sref'] = '_'.join(ref.split(':', 10)[:10])
 		inf['picon'] = getPicon(ref)
 		inf['wide'] = inf['aspect'] in (3, 4, 7, 8, 0xB, 0xC, 0xF, 0x10)
 		inf['ttext'] = getServiceInfoString(info, iServiceInformation.sTXTPID)
 		inf['crypt'] = getServiceInfoString(info, iServiceInformation.sIsCrypted)
 		inf['subs'] = str(subservices and subservices.getNumberOfSubservices() > 0 )
 	else:
+		inf['sref'] = None
 		inf['picon'] = None
 		inf['wide'] = None
 		inf['ttext'] = None
@@ -728,7 +730,6 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None):
 
 	return { "events": ret, "result": True, "picons": picons }
 
-
 def getPicon(sname):
 	sname = GetWithAlternative(sname)
 	if sname is not None:
@@ -741,6 +742,14 @@ def getPicon(sname):
 	filename = getPiconPath() + sname
 	if fileExists(filename):
 		return "/picon/" + sname
+	fields = sname.split('_', 3)
+	if len(fields) > 2 and fields[2] != '2':
+		#fallback to 1 for tv services with nonstandard servicetypes
+		fields[2] = '1'
+		sname='_'.join(fields)
+		filename = getPiconPath() + sname
+		if fileExists(filename):
+			return "/picon/" + sname
 	return "/images/default_picon.png"
 
 def getParentalControlList():
