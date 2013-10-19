@@ -10,7 +10,6 @@
 	<script>
 	function zapChannel(sRef) {
 		var url = '/api/zap?sRef=' + escape(sRef);
-		alert(url);
 		$.getJSON(url, function(result){
 		});
 	}
