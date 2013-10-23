@@ -73,7 +73,14 @@ def getTS(self,request):
 		else:
 			progopt=""
 
-		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), config.OpenWebif.port.value, quote(filename))
+		portNumber = config.OpenWebif.port.value
+		info = getInfo()
+		model = info["model"]
+		if model in ("solo2","duo2"):
+			if "device" in request.args :
+				if request.args["device"][0] == "phone" :
+					portNumber = 8003;
+		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), portNumber, quote(filename))
 		request.setHeader('Content-Type', 'application/text')
 		return response
 	else:
