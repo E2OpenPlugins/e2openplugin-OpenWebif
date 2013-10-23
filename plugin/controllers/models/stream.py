@@ -68,18 +68,16 @@ def getTS(self,request):
 				sRef = eServiceReference(line.strip()).toString()
 			metafile.close()
 
-		if sRef != '':
+		progopt=''
+		if config.OpenWebif.service_name_for_stream.value and sRef != '':
 			progopt="#EXTVLCOPT:program=%d\n" % (int(sRef.split(':')[3],16))
-		else:
-			progopt=""
-
 		portNumber = config.OpenWebif.port.value
 		info = getInfo()
 		model = info["model"]
 		if model in ("solo2","duo2"):
 			if "device" in request.args :
 				if request.args["device"][0] == "phone" :
-					portNumber = 8003;
+					portNumber = config.plugins.transcodingsetup.tsport.value
 		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), portNumber, quote(filename))
 		request.setHeader('Content-Type', 'application/text')
 		return response
