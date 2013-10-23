@@ -51,9 +51,18 @@
 				</div>
 				<div class="moviecontainer_right">
 					<div style="padding: 3px; text-align: right;">
-						<a target="_blank" href='/web/ts.m3u?file=$quote($movie.filename)'>
-						<img align="top" src="../images/ico_stream.png" title="Stream $movie.eventname" border="0">
-						</a>
+						#if $transcoding
+							<a href="#" onclick="jumper80('$quote($movie.filename)');">
+							<img align="top" src="../images/ico_stream.png" title="Stream $movie.eventname" border="0">
+							</a>
+							<a href="#" onclick="jumper8003('$quote($movie.filename)');">
+							<img align="top" src="../images/ico_stream.png" title="Stream(8003) $movie.eventname" border="0">
+							</a>
+						#else
+							<a target="_blank" href='/web/ts.m3u?file=$quote($movie.filename)'>
+							<img align="top" src="../images/ico_stream.png" title="Stream $movie.eventname" border="0">
+							</a>
+						#end if
 						<a href='/file?action=download&file=$quote($movie.filename)'>
 						<img align="top" src="../images/ico_download.png" title="Download $movie.eventname" border="0">
 						</a>
