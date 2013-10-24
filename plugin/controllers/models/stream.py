@@ -69,7 +69,7 @@ def getTS(self,request):
 			metafile.close()
 
 		progopt=''
-		if config.OpenWebif.service_name_for_stream.value and sRef != '':
+		if config.OpenWebif.service_name_for_ts_stream.value and sRef != '':
 			progopt="#EXTVLCOPT:program=%d\n" % (int(sRef.split(':')[3],16))
 		portNumber = config.OpenWebif.port.value
 		info = getInfo()
