@@ -62,7 +62,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		channels['transcoding'] = False
-		if model in ("solo2", "duo2"): 
+		if model in ("solo2", "duo2", "inihdp"): 
 			channels['transcoding'] = True
 		return channels
 
@@ -102,7 +102,7 @@ class AjaxController(BaseController):
 		elif getBoxType() == 'odinm6':
 			model = "starsatlx"
 		elif getMachineName() == 'AX-Odin':
-			model = "axodin"			
+			model = "axodin"
 		elif model == "MixOs F5":
 			model = "ebox5000"
 		elif model == "MixOs F5mini":
