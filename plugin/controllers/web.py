@@ -336,6 +336,25 @@ class WebController(BaseController):
 	def P_gettags(self, request):
 		return getMovieTags()
 	
+# VPS Plugin
+	def vpsparams(self, request):
+		vpsplugin_enabled = None
+		if "vpsplugin_enabled" in request.args:
+			vpsplugin_enabled = True if request.args["vpsplugin_enabled"][0] == '1' else False
+		vpsplugin_overwrite = None
+		if "vpsplugin_overwrite" in request.args:
+			vpsplugin_overwrite = True if request.args["vpsplugin_overwrite"][0] == '1' else False
+		vpsplugin_time = None
+		if "vpsplugin_time" in request.args:
+			vpsplugin_time = int(float(request.args["vpsplugin_time"][0]))
+			if vpsplugin_time == -1:
+				vpsplugin_time = None
+		return { 
+			"vpsplugin_time":vpsplugin_time,
+			"vpsplugin_overwrite":vpsplugin_overwrite,
+			"vpsplugin_enabled":vpsplugin_enabled
+			}
+
 	def P_timerlist(self, request):
 		ret = getTimers(self.session)
 		ret["locations"] = config.movielist.videodirs.value
@@ -386,7 +405,8 @@ class WebController(BaseController):
 			afterevent,
 			dirname,
 			tags,
-			repeated
+			repeated,
+			self.vpsparams(request)
 		)
 		
 	def P_timeraddbyeventid(self, request):
@@ -421,6 +441,7 @@ class WebController(BaseController):
 			justplay,
 			dirname,
 			tags,
+			self.vpsparams(request)
 		)
 
 	def P_timerchange(self, request):
@@ -487,7 +508,8 @@ class WebController(BaseController):
 			repeated,
 			request.args["channelOld"][0],
 			beginOld,
-			endOld
+			endOld,
+			self.vpsparams(request)
 		)
 		
 	def P_timertogglestatus(self, request):
