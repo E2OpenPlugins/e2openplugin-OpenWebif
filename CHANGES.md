@@ -1,3 +1,8 @@
+## Version 0.2.4
+**FEATURES**
+
+* support multiple DVB streams at the same time
+
 ## Version 0.2.3
 **FEATURES**
 
