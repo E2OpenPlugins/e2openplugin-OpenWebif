@@ -62,7 +62,9 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		channels['transcoding'] = False
-		if model in ("solo2", "duo2", "inihdp"): 
+		# ini-9000ru - SEZAM Marvel
+		# Xpeed LX3 - Golden Interstar LX-3
+		if model in ("solo2", "duo2", "ini-9000ru", "Xpeed LX3"): 
 			channels['transcoding'] = True
 		return channels
 
