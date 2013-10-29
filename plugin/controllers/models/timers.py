@@ -68,6 +68,18 @@ def getTimers(session):
 		if achannels:
 			asrefs = achannels
 
+		vpsplugin_enabled = False
+		vpsplugin_overwrite = False
+		vpsplugin_time = -1
+		if hasattr(timer, "vpsplugin_enabled"):
+			vpsplugin_enabled = True
+		if hasattr(timer, "vpsplugin_overwrite"):
+			vpsplugin_overwrite = True
+		if hasattr(timer, "vpsplugin_time"):
+			vpsplugin_time = timer.vpsplugin_time
+			if not vpsplugin_time:
+				vpsplugin_time = -1
+
 		timers.append({
 			"serviceref": str(timer.service_ref),
 			"servicename": timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
@@ -98,9 +110,9 @@ def getTimers(session):
 			"realbegin":strftime("%d.%m.%Y %H:%M", (localtime(float(timer.begin)))),
 			"realend":strftime("%d.%m.%Y %H:%M", (localtime(float(timer.end)))),
 			"asrefs": asrefs,
-			"vpsplugin_enabled":True if timer.vpsplugin_enabled else False,
-			"vpsplugin_overwrite":True if timer.vpsplugin_overwrite else False,
-			"vpsplugin_time":timer.vpsplugin_time or -1
+			"vpsplugin_enabled":vpsplugin_enabled,
+			"vpsplugin_overwrite":vpsplugin_overwrite,
+			"vpsplugin_time":vpsplugin_time
 		})
 		
 	return {
