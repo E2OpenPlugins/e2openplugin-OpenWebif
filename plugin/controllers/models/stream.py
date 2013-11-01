@@ -68,10 +68,9 @@ def getTS(self,request):
 				sRef = eServiceReference(line.strip()).toString()
 			metafile.close()
 
-		if sRef != '':
+		progopt = ''
+		if config.OpenWebif.service_name_for_stream.value and sRef != '':
 			progopt="#EXTVLCOPT:program=%d\n" % (int(sRef.split(':')[3],16))
-		else:
-			progopt=""
 
 		portNumber = config.OpenWebif.port.value
 		info = getInfo()

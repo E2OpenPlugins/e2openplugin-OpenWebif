@@ -25,14 +25,13 @@ class StreamAdapter:
 	def close(self, nothandled1 = None, nothandled2 = None):
 		self.mystream.execEnd()
 		self.nav.record_event.remove(self.requestWrite)
-		self.test = None
+		self.converter = None
 
 	def requestWrite(self, notused1 = None, notused2 = None):
-		# hack ??? setup the Streaming converter
 		converter_args = []
-		self.test = Streaming(converter_args)
-		self.test.source = self
-		self.request.write(self.test.getText())
+		self.converter = Streaming(converter_args)
+		self.converter.source = self
+		self.request.write(self.converter.getText())
 
 class StreamController(resource.Resource):
 	def __init__(self, session, path = ""):
