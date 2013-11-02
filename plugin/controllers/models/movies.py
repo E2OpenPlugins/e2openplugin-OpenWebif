@@ -18,7 +18,8 @@ from Components.MovieList import MovieList
 from Tools.Directories import fileExists
 from time import strftime, localtime
 
-def getMovieList(directory=None, tag=None):
+
+def getMovieList(directory=None, tag=None, rargs=None):
 	movieliste = []
 	
 	if directory == None:
@@ -32,69 +33,107 @@ def getMovieList(directory=None, tag=None):
 	bookmarklist=[x for x in walk(directory).next()[1] if (x[0] != '.' and not islink(directory+'/'+x))]
 	bookmarklist.sort()
 	
-	tagfilter = []
-	
-	movielist = MovieList(None)
-	movielist.load(root, None)
-	
-	if tag != None:
-		movielist.reload(root=root, filter_tags=[tag])
-	loadLength = True
+	folders = []
+	folders.append(root)
+	if "recursive" in rargs.keys():
+		for f in bookmarklist:
+			if f[-1] != "/":
+				f += "/"
+			ff = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory + f)
+			folders.append(ff)
 
-	for (serviceref, info, begin, unknown) in movielist.list:
-		if serviceref.flags & eServiceReference.mustDescent:
+	#??? tagfilter = []
+	
+	for root in folders:
+	
+		movielist = MovieList(None)
+		movielist.load(root, None)
+	
+		if tag != None:
+			movielist.reload(root=root, filter_tags=[tag])
+		#??? loadLength = True
+
+		for (serviceref, info, begin, unknown) in movielist.list:
+			if serviceref.flags & eServiceReference.mustDescent:
 				continue
 
-		rtime = info.getInfo(serviceref, iServiceInformation.sTimeCreate)
+			rtime = info.getInfo(serviceref, iServiceInformation.sTimeCreate)
 
-		if rtime > 0:
-			t = FuzzyTime(rtime)
-			begin_string = t[0] + ", " + t[1]
-		else:
-			begin_string = "undefined"
+			if rtime > 0:
+				t = FuzzyTime(rtime)
+				begin_string = t[0] + ", " + t[1]
+			else:
+				begin_string = "undefined"
 
-		try:
-			Len = info.getLength(serviceref)
-		except:
-			Len = None
+			try:
+				Len = info.getLength(serviceref)
+			except:
+				Len = None
 
-		if Len > 0:
-			Len = "%d:%02d" % (Len / 60, Len % 60)
-		else:
-			Len = "?:??"
+			if Len > 0:
+				Len = "%d:%02d" % (Len / 60, Len % 60)
+			else:
+				Len = "?:??"
 		
-		sourceERef = info.getInfoString(serviceref, iServiceInformation.sServiceref)
-		sourceRef = ServiceReference(sourceERef)
+			sourceERef = info.getInfoString(serviceref, iServiceInformation.sServiceref)
+			sourceRef = ServiceReference(sourceERef)
 
-		event = info.getEvent(serviceref)
-		ext = event and event.getExtendedDescription() or ""
+			event = info.getEvent(serviceref)
+			ext = event and event.getExtendedDescription() or ""
 
-		filename = '/'.join(serviceref.toString().split("/")[1:])
-		servicename = ServiceReference(serviceref).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
-		movie = {}
-		filename = '/'+filename
-		movie['filename'] = filename
-		movie['filename_stripped'] = filename.split("/")[-1]
-		movie['eventname'] = servicename
-		movie['description'] = info.getInfoString(serviceref, iServiceInformation.sDescription)
-		movie['begintime'] = begin_string
-		movie['serviceref'] = serviceref.toString()
-		movie['length'] = Len
-		movie['tags'] = info.getInfoString(serviceref, iServiceInformation.sTags)
-		filename = filename.replace("'","\'").replace("%","\%")
-		try:
-			movie['filesize'] = os_stat(filename).st_size
-		except:
-			movie['filesize'] = 0
-		movie['fullname'] = serviceref.toString()
-		movie['descriptionExtended'] = ext
-		movie['servicename'] = sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
-		movie['recordingtime'] = rtime
+			filename = '/'.join(serviceref.toString().split("/")[1:])
+			servicename = ServiceReference(serviceref).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
+			movie = {}
+			filename = '/'+filename
+			movie['filename'] = filename
+			movie['filename_stripped'] = filename.split("/")[-1]
+			movie['eventname'] = servicename
+			movie['description'] = info.getInfoString(serviceref, iServiceInformation.sDescription)
+			movie['begintime'] = begin_string
+			movie['serviceref'] = serviceref.toString()
+			movie['length'] = Len
+			movie['tags'] = info.getInfoString(serviceref, iServiceInformation.sTags)
+			filename = filename.replace("'","\'").replace("%","\%")
+			try:
+				movie['filesize'] = os_stat(filename).st_size
+			except:
+				movie['filesize'] = 0
+			movie['fullname'] = serviceref.toString()
+			movie['descriptionExtended'] = ext
+			movie['servicename'] = sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
+			movie['recordingtime'] = rtime
 		
-		movieliste.append(movie)
+			movieliste.append(movie)
 		
+	ml = { "movies": movieliste, "bookmarks": bookmarklist, "directory": directory }
 	
-	return { "movies": movieliste, "bookmarks": bookmarklist, "directory": directory }
+	if "zip" in rargs.keys():
+		filename = rargs["zip"][0]
+		#todo check path of filename
+		try:
+			import json
+			import os
+			fd = open(filename, 'wb')
+			#todo create zip using api
+			#fd = gzip.GzipFile(filename=filename, mode='wb', compresslevel=9)
+			fd.write(json.dumps(ml))
+			os.remove('%s.gz' % filename)
+			os.system('gzip %s' % filename)
+		except (IOError, os.error), why:
+			return {
+				"result": False,
+				"message": "create movielist zip error:%s" % why
+			}
+		finally:
+			if fd is not None:
+				fd.close()
+		return {
+			"result": True,
+			"message": "create movielist zip success"
+		}
+	
+	else:
+		return ml
 
 def removeMovie(session, sRef):
 	service = ServiceReference(sRef)
