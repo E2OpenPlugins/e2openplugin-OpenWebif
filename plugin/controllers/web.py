@@ -261,7 +261,7 @@ class WebController(BaseController):
 		if "dirname" in request.args.keys():
 			dirname = request.args["dirname"][0]
 			
-		return getMovieList(dirname, tag)
+		return getMovieList(dirname, tag, request.args)
 
 	def P_movielisthtml(self, request):
 		tag = None

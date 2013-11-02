@@ -1,3 +1,10 @@
+## Version 0.2.5
+**FEATURES**
+
+* support movielist subfolders
+* support movielist zip dump
+* support vps plugin api
+
 ## Version 0.2.4
 **FEATURES**
 

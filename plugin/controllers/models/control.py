@@ -12,7 +12,7 @@ from urllib import unquote
 from services import getProtection
 
 def zapService(session, id, title = ""):
-	id = unquote(id)
+	# Must NOT unquote id here, breaks zap to streams
 	service = eServiceReference(id)
 	
 	if len(title) > 0:
