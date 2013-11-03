@@ -7,6 +7,7 @@
 #                                                                            #
 ##############################################################################
 from enigma import eServiceReference, getBestPlayableServiceReference
+from ServiceReference import ServiceReference
 from info import getInfo
 from urllib import unquote, quote
 import os
@@ -94,10 +95,21 @@ def getStreamSubservices(session, request):
 
 	currentServiceRef = session.nav.getCurrentlyPlayingServiceReference()
 
+	# TODO : this will only work if sref = current channel
+	# the DMM webif can also show subservices for other channels like the current
+	# ideas are welcome
+	
+	if "sRef" in request.args:
+		currentServiceRef = eServiceReference(request.args["sRef"][0])
+
 	if currentServiceRef is not None:
 		currentService = session.nav.getCurrentService()
 		subservices = currentService.subServices()
-
+	
+		services.append({
+			"servicereference": currentServiceRef.toString(),
+			"servicename": ServiceReference(currentServiceRef).getServiceName()
+			}) 
 		if subservices and subservices.getNumberOfSubservices() != 0:
 			n = subservices and subservices.getNumberOfSubservices()  
 			z = 0
