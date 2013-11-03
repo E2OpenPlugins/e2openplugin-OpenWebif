@@ -44,9 +44,33 @@ class MobileController(BaseController):
 		channelinfo = {}
 		channelepg = {}
 		if "sref" in request.args.keys():
+			sref=request.args["sref"][0]
+			# Detect if sRef contains a stream (Never has EPG, always gets borked)
+			if (sref.split(':', 2)[0] == "4097"):
+				# Repair sRef (URL part gets unquoted somewhere in between but MUST NOT)
+				sref = ":".join(sref.split(':')[:10]) + ":" + quote(":".join(sref.split(':')[10:-1])) + ":" + sref.split(':')[-1]
+				# Get service name from last part of the sRef
+				channelinfo['sname'] = sref.split(':')[-1]
+			else:
+				# todo: Get service name
+				channelinfo['sname'] = ""
+			# Assume some sane blank defaults
+			channelinfo['sref'] = sref
+			channelinfo['title'] = ""
+			channelinfo['picon'] = ""
+			channelinfo['shortdesc'] = ""
+			channelinfo['longdesc'] = ""
+			channelinfo['begin'] = 0
+			channelinfo['end'] = 0
 			channelepg = getChannelEpg(request.args["sref"][0])
 			
-		return { "channelinfo": channelepg["events"][0], "channelepg": channelepg["events"] }
+		# Got EPG information?
+		if len(channelepg['events']) > 1:
+			# Return the EPG
+			return { "channelinfo": channelepg["events"][0], "channelepg": channelepg["events"] }
+		else:
+			# Make sure at least some basic channel info gets returned when there is no EPG
+			return { "channelinfo": channelinfo, "channelepg": None }
 
 	def P_satfinder(self, request):
 		return {}
