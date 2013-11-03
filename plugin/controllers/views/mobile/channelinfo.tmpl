@@ -1,3 +1,4 @@
+#from urllib import quote
 <html>
  <head>
 	<title>OpenWebif</title>
@@ -9,7 +10,8 @@
 	<script src="/js/jquery.mobile-1.0.min.js"></script>
 	<script>
 	function zapChannel(sRef) {
-		var url = '/api/zap?sRef=' + escape(sRef);
+		sRef=sRef.replace(/%22/,'"');
+		var url = '/api/zap?sRef=' + sRef;
 		$.getJSON(url, function(result){
 		});
 	}
@@ -21,6 +23,7 @@
 		<div id="header">
 			<div class="button" onClick="history.back()">Back</div>
 			<h1>OpenWebif</h1>
+			#set $sref=quote($channelinfo.sref, safe=' ~@#$&()*!+=:;,.?/\'')
 			<div class="button" style="right:5px;left:auto;" onClick='zapChannel("$channelinfo.sref")'>Zap</div>
 		</div>
 
@@ -33,19 +36,21 @@
 							<td width="200"><img src="$channelinfo.picon" border="0" alt=""></td>
 							<td width="100%" valign="top">
 							<strong>$channelinfo.sname</strong><br />
-							$channelinfo.title<br />
-							$channelinfo.begin-$channelinfo.end ($channelinfo.duration min)<br />
+							#if $channelinfo.title
+								$channelinfo.title<br />
+								$channelinfo.begin-$channelinfo.end ($channelinfo.duration min)<br />
+							#end if
 							</td>
 						</tr>
 						<tr>
 							<th colspan="2" class="ui-btn-up-b" style="text-align: left;">Current Event</th>
 						</tr>
-						#if $channelinfo.shortdesc
+						#if $channelinfo.has_key('shortdesc')
 						<tr style="background-color:  #f0f7fc;">
 							<td colspan="2">$channelinfo.shortdesc</td>
 						</tr>
 						#end if
-						#if $channelinfo.longdesc
+						#if $channelinfo.has_key('longdesc')
 						<tr style="background-color:  #f0f7fc;">
 							<td colspan="2">$channelinfo.longdesc</td>
 						</tr>
@@ -53,6 +58,7 @@
 			</table>
 		</div>
 		
+		#if $channelepg
 		<div id="contentContainer">
 			<ul data-role="listview" data-inset="true" data-theme="d">
 				<li data-role="list-divider" role="heading" data-theme="b">Upcoming Events</li>
@@ -64,6 +70,7 @@
 				#end for
 			</ul>
 		</div>
+		#end if
 
 		<div id="footer">
 			<p>OpenWebif Mobile</p>
