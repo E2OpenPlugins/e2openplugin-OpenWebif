@@ -35,7 +35,7 @@ def getMovieList(directory=None, tag=None, rargs=None):
 	
 	folders = []
 	folders.append(root)
-	if "recursive" in rargs.keys():
+	if rargs and "recursive" in rargs.keys():
 		for f in bookmarklist:
 			if f[-1] != "/":
 				f += "/"
@@ -107,7 +107,7 @@ def getMovieList(directory=None, tag=None, rargs=None):
 		
 	ml = { "movies": movieliste, "bookmarks": bookmarklist, "directory": directory }
 	
-	if "zip" in rargs.keys():
+	if rargs and "zip" in rargs.keys():
 		filename = rargs["zip"][0]
 		import os
 		if not os.path.exists(os.path.dirname(filename)):
