@@ -49,11 +49,13 @@ def getStream(session, request, m3ufile):
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
 				portNumber = 8002;
+	if "port" in request.args:
+		portNumber = request.args["port"][0]
 	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef)
 	request.setHeader('Content-Type', 'application/text')
 	return response
 
-def getTS(self,request):
+def getTS(self, request):
 	if "file" in request.args:
 		filename = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
 		if not os.path.exists(filename):
@@ -79,6 +81,8 @@ def getTS(self,request):
 			if "device" in request.args :
 				if request.args["device"][0] == "phone" :
 					portNumber = 8003;
+		if "port" in request.args:
+			portNumber = request.args["port"][0]
 		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), portNumber, quote(filename))
 		request.setHeader('Content-Type', 'application/text')
 		return response
