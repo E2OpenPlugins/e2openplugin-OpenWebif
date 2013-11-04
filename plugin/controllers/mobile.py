@@ -10,6 +10,7 @@ from base import BaseController
 from models.movies import getMovieList
 from models.timers import getTimers
 from models.services import getBouquets, getChannels, getChannelEpg
+from urllib import quote
 
 class MobileController(BaseController):
 	def __init__(self, session, path = ""):
