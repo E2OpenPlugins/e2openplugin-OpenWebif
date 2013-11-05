@@ -49,7 +49,7 @@ def getStream(session, request, m3ufile):
 	if model in ("solo2","duo2"):
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
-				portNumber = 8002;
+				portNumber = 8002
 	if "port" in request.args:
 		portNumber = request.args["port"][0]
 	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef)
@@ -81,7 +81,7 @@ def getTS(self, request):
 		if model in ("solo2","duo2"):
 			if "device" in request.args :
 				if request.args["device"][0] == "phone" :
-					portNumber = 8003;
+					portNumber = 8002
 		if "port" in request.args:
 			portNumber = request.args["port"][0]
 		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), portNumber, quote(filename))
