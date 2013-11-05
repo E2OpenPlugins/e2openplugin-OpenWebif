@@ -35,7 +35,7 @@ def getMovieList(directory=None, tag=None, rargs=None):
 	
 	folders = []
 	folders.append(root)
-	if "recursive" in rargs.keys():
+	if rargs and "recursive" in rargs.keys():
 		for f in bookmarklist:
 			if f[-1] != "/":
 				f += "/"
@@ -107,26 +107,31 @@ def getMovieList(directory=None, tag=None, rargs=None):
 		
 	ml = { "movies": movieliste, "bookmarks": bookmarklist, "directory": directory }
 	
-	if "zip" in rargs.keys():
+	if rargs and "zip" in rargs.keys():
 		filename = rargs["zip"][0]
-		#todo check path of filename
+		import os
+		if not os.path.exists(os.path.dirname(filename)):
+			return {
+				"result": False,
+				"message": "zip file path not exist"
+			}
 		try:
 			import json
-			import os
 			fd = open(filename, 'wb')
 			#todo create zip using api
 			#fd = gzip.GzipFile(filename=filename, mode='wb', compresslevel=9)
 			fd.write(json.dumps(ml))
-			os.remove('%s.gz' % filename)
+			fd.close()
+			try:
+				os.remove('%s.gz' % filename)
+			except OSError:
+				pass
 			os.system('gzip %s' % filename)
 		except (IOError, os.error), why:
 			return {
 				"result": False,
 				"message": "create movielist zip error:%s" % why
 			}
-		finally:
-			if fd is not None:
-				fd.close()
 		return {
 			"result": True,
 			"message": "create movielist zip success"

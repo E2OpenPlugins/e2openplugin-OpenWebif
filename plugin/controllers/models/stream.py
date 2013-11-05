@@ -7,6 +7,7 @@
 #                                                                            #
 ##############################################################################
 from enigma import eServiceReference, getBestPlayableServiceReference
+from ServiceReference import ServiceReference
 from info import getInfo
 from urllib import unquote, quote
 import os
@@ -49,11 +50,13 @@ def getStream(session, request, m3ufile):
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
 				portNumber = config.plugins.transcodingsetup.port.value
+		if "port" in request.args:
+			portNumber = request.args["port"][0]
 	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef)
 	request.setHeader('Content-Type', 'application/text')
 	return response
 
-def getTS(self,request):
+def getTS(self, request):
 	if "file" in request.args:
 		filename = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
 		if not os.path.exists(filename):
@@ -68,8 +71,8 @@ def getTS(self,request):
 				sRef = eServiceReference(line.strip()).toString()
 			metafile.close()
 
-		progopt=''
-		if config.OpenWebif.service_name_for_ts_stream.value and sRef != '':
+		progopt = ''
+		if config.OpenWebif.service_name_for_stream.value and sRef != '':
 			progopt="#EXTVLCOPT:program=%d\n" % (int(sRef.split(':')[3],16))
 		portNumber = config.OpenWebif.port.value
 		info = getInfo()
@@ -78,6 +81,8 @@ def getTS(self,request):
 			if "device" in request.args :
 				if request.args["device"][0] == "phone" :
 					portNumber = config.plugins.transcodingsetup.tsport.value
+		if "port" in request.args:
+			portNumber = request.args["port"][0]
 		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), portNumber, quote(filename))
 		request.setHeader('Content-Type', 'application/text')
 		return response
@@ -89,10 +94,21 @@ def getStreamSubservices(session, request):
 
 	currentServiceRef = session.nav.getCurrentlyPlayingServiceReference()
 
+	# TODO : this will only work if sref = current channel
+	# the DMM webif can also show subservices for other channels like the current
+	# ideas are welcome
+	
+	if "sRef" in request.args:
+		currentServiceRef = eServiceReference(request.args["sRef"][0])
+
 	if currentServiceRef is not None:
 		currentService = session.nav.getCurrentService()
 		subservices = currentService.subServices()
-
+	
+		services.append({
+			"servicereference": currentServiceRef.toString(),
+			"servicename": ServiceReference(currentServiceRef).getServiceName()
+			}) 
 		if subservices and subservices.getNumberOfSubservices() != 0:
 			n = subservices and subservices.getNumberOfSubservices()  
 			z = 0
