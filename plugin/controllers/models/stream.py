@@ -80,7 +80,7 @@ def getTS(self, request):
 		if model in ("solo2","duo2"):
 			if "device" in request.args :
 				if request.args["device"][0] == "phone" :
-					portNumber = config.plugins.transcodingsetup.tsport.value
+					portNumber = config.plugins.transcodingsetup.port.value
 		if "port" in request.args:
 			portNumber = request.args["port"][0]
 		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), portNumber, quote(filename))
