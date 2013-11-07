@@ -11,7 +11,7 @@ from enigma import eEnv
 from Components.config import config
 from Tools.Directories import fileExists
 from twisted.internet import reactor, ssl
-from twisted.web import server, http, static, resource, error
+from twisted.web import server, http, static, resource, error, version
 from twisted.internet.error import CannotListenError
 
 from controllers.root import RootController
@@ -116,7 +116,7 @@ def HttpdStart(session):
 		
 		# start http webserver on configured port
 		try:
-			if has_ipv6 and fileExists('/proc/net/if_inet6') and twisted.version.major >= 12:
+			if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
 				# use ipv6
 				listener.append( reactor.listenTCP(port, site, interface='::') )
 			else:
@@ -132,7 +132,7 @@ def HttpdStart(session):
 			# start https webserver on port configured port
 			try:
 				context = ssl.DefaultOpenSSLContextFactory(KEY_FILE, CERT_FILE)
-				if has_ipv6 and fileExists('/proc/net/if_inet6') and twisted.version.major >= 12:
+				if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
 					# use ipv6
 					listener.append( reactor.listenSSL(httpsPort, site, context, interface='::') )
 				else:
@@ -148,7 +148,7 @@ def HttpdStart(session):
 				root = buildRootTree(session)
 				site = server.Site(root)
 				try:
-					if has_ipv6 and fileExists('/proc/net/if_inet6') and twisted.version.major >= 12:
+					if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
 						# use ipv6
 						listener.append( reactor.listenTCP(80, site, interface='::1') )
 					else:
