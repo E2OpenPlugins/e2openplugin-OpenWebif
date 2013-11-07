@@ -46,7 +46,7 @@ config.OpenWebif.service_name_for_stream = ConfigYesNo(default=False)
 
 class OpenWebifConfig(Screen, ConfigListScreen):
 	skin = """
-	<screen position="center,center" size="700,340" title="OpenWebif Configuration">
+	<screen position="center,center" size="700,340" title=_("OpenWebif Configuration")>
 		<widget name="lab1" position="10,30" halign="center" size="680,60" zPosition="1" font="Regular;24" valign="top" transparent="1" />
 		<widget name="config" position="10,100" size="680,180" scrollbarMode="showOnDemand" />
 		<ePixmap position="140,290" size="140,40" pixmap="skin_default/buttons/red.png" alphatest="on" />
@@ -63,7 +63,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		ConfigListScreen.__init__(self, self.list)
 		self["key_red"] = Label(_("Cancel"))
 		self["key_green"] = Label(_("Save"))
-		self["lab1"] = Label("OpenWebif url: http://yourip:port")
+		self["lab1"] = Label(_("OpenWebif url: http://yourip:port"))
 		
 		self["actions"] = ActionMap(["WizardActions", "ColorActions"],
 		{
