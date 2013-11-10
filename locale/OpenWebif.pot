@@ -1,0 +1,67 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenWebif\n"
+"POT-Creation-Date: 2013-11-10 11:55+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: plnick\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ../plugin\n"
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "OpenWebif url: http://yourip:port"
+msgstr ""
+
+msgid "OpenWebInterface Enabled"
+msgstr ""
+
+msgid "Http port"
+msgstr ""
+
+msgid "Enable Http Authentication"
+msgstr ""
+
+msgid "Enable Https"
+msgstr ""
+
+msgid "Https port"
+msgstr ""
+
+msgid "Smart services renaming for XBMC"
+msgstr ""
+
+msgid "Enable Parental Control"
+msgstr ""
+
+msgid "Add service name to stream information"
+msgstr ""
+
+msgid "OpenWebif Configuration"
+msgstr ""
+
+msgid "New"
+msgstr ""
+
+msgid "Services"
+msgstr ""
+
+msgid "Cable"
+msgstr ""
+
+msgid "Terrestrial"
+msgstr ""
+
+msgid "W"
+msgstr ""
+
+msgid "E"
+msgstr ""
