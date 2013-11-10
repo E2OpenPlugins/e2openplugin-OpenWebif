@@ -9,6 +9,8 @@
 #                                                                            #
 ##############################################################################
 
+from __init__ import _
+
 from Tools.Directories import fileExists
 
 from twisted.web import server, http, static, resource, error
@@ -199,4 +201,9 @@ class BaseController(resource.Resource):
 #		except ImportError:
 
 		ret['extras'] = extras
+
+#Translation
+		tstrings = []
+		tstrings.append({ 'movies': _("Movies")})
+		ret['tstrings'] = tstrings
 		return ret
