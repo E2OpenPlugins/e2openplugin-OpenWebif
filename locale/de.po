@@ -20,34 +20,34 @@ msgid "Save"
 msgstr "Speichern"
 
 msgid "OpenWebif url: http://yourip:port"
-msgstr "OpenWebif URL :  http://ip_des_receivers:port"
+msgstr "OpenWebif-URL: http://ip_des_receivers:port"
 
 msgid "OpenWebInterface Enabled"
 msgstr "OpenWebinterface einschalten"
 
 msgid "Http port"
-msgstr "Port für http"
+msgstr "Port fï¿½r http"
 
 msgid "Enable Http Authentication"
-msgstr "Authentifizierung für http  aktivieren"
+msgstr "Authentifizierung fï¿½r http  ktivieren"
 
 msgid "Enable Https"
 msgstr "Aktivierung von https"
 
 msgid "Https port"
-msgstr "Port für https"
+msgstr "Port fï¿½r https"
 
 msgid "Smart services renaming for XBMC"
-msgstr "Sendernamen für XBMC umbenennen"
+msgstr "Sendernamen fï¿½r XBMC umbenennen"
 
 msgid "Enable Parental Control"
 msgstr "Kindersicherung aktivieren"
 
 msgid "Add service name to stream information"
-msgstr "Servicenamen zu den Streaminformationen hinzufügen"
+msgstr "Servicenamen zu den Streaminformationen hinzufï¿½gen"
 
 msgid "OpenWebif Configuration"
-msgstr "OpenWebif Konfiguration"
+msgstr "OpenWebif-Konfiguration"
 
 msgid "New"
 msgstr "Neu"
