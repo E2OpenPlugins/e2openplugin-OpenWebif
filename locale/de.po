@@ -29,7 +29,7 @@ msgid "Http port"
 msgstr "Port f�r http"
 
 msgid "Enable Http Authentication"
-msgstr "Authentifizierung f�r http  ktivieren"
+msgstr "Authentifizierung f�r http aktivieren"
 
 msgid "Enable Https"
 msgstr "Aktivierung von https"
