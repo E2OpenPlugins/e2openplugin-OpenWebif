@@ -110,7 +110,6 @@ def HttpdStart(session):
 		global listener
 		port = config.OpenWebif.port.value
 
-
 		root = buildRootTree(session)
 		if config.OpenWebif.auth.value == True:	
 			root = AuthResource(session, root)
@@ -125,6 +124,7 @@ def HttpdStart(session):
 				# ipv4 only
 				listener.append( reactor.listenTCP(port, site) )
 			print "[OpenWebif] started on %i"% (port)
+			BJregisterService('http',port)
 		except CannotListenError:
 			print "[OpenWebif] failed to listen on Port %i" % (port)
 
@@ -141,6 +141,7 @@ def HttpdStart(session):
 					# ipv4 only
 					listener.append( reactor.listenSSL(httpsPort, site, context) )
 				print "[OpenWebif] started on", httpsPort
+				BJregisterService('https',httpsPort)
 			except CannotListenError:
 				print "[OpenWebif] failed to listen on Port", httpsPort
 
@@ -269,3 +270,14 @@ def installCertificates(session):
 		config.OpenWebif.https_enabled.save()
 		# Inform the user
 		session.open(MessageBox, "Cannot install generated SSL-Certifactes for https access\nHttps access is disabled!", MessageBox.TYPE_ERROR)
+# BJ
+def BJregisterService(protocol, port):
+	try:
+		from Plugins.Extensions.Bonjour.Bonjour import bonjour
+		service = bonjour.buildService(protocol, port, 'OpenWebif')
+		bonjour.registerService(service, True)
+		return True
+
+	except ImportError, e:
+		return False
+
