@@ -204,5 +204,16 @@ class BaseController(resource.Resource):
 
 #Translation
 		tstrings = { 'movies': _("Movies")}
+		tstrings = { 'powercontrol': _("Power Control")}
+		tstrings = { 'grabscreenshot': _("Grab Screenshot")}
+		tstrings = { 'grabscreenshot': _("Send a Message")}
+		tstrings = { 'zapbeforestream': _("zap before Stream")}
+		tstrings = { 'search': _("Search")}
+		tstrings = { 'showfullremote': _("Show full remote")}
+		tstrings = { 'hidefullremote': _("Hide full remote")}
+		tstrings = { 'epgsearch': _("Epg Search")}
+		tstrings = { 'boxcontrol': _("Box Control")}
+		tstrings = { 'volumecontrol': _("Volume Control")}
+		tstrings = { 'shiftforlong': _("(shift + click for long pressure)")}
 		ret['tstrings'] = tstrings
 		return ret
