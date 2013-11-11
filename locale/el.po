@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"Project-Id-Version: OpenWebIf\n"
+"Language: el\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: athoik\n"
+"Language-Team: satdreamgr\n"
+
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+msgid "Save"
+msgstr "Αποθήκευση"
+
+msgid "OpenWebif url: http://yourip:port"
+msgstr "OpenWebif url: http://yourip:port"
+
+msgid "OpenWebInterface Enabled"
+msgstr "OpenWebInterface Ενεργό"
+
+msgid "Http port"
+msgstr "Θύρα http"
+
+msgid "Enable Http Authentication"
+msgstr "Ενεργοποίηση πιστοποίησης Http"
+
+msgid "Enable Https"
+msgstr "Ενεργοποίηση Https"
+
+msgid "Https port"
+msgstr "Θύρα https"
+
+msgid "Smart services renaming for XBMC"
+msgstr "Έξυπνη μετονομασία συσκευών για το XBMC"
+
+msgid "Enable Parental Control"
+msgstr "Ενεργοποίηση γονικού ελέγχου"
+
+msgid "Add service name to stream information"
+msgstr "Προσθήκη ονόματος υπηρεσίας στις πληροφορίες ροής"
+
+msgid "OpenWebif Configuration"
+msgstr "Ρυθμίσεις OpenWebif"
+
+msgid "New"
+msgstr "Νέο"
+
+msgid "Services"
+msgstr "Υπηρεσίες"
+
+msgid "Cable"
+msgstr "Καλωδιακές"
+
+msgid "Terrestrial"
+msgstr "Επίγειες"
+
+msgid "W"
+msgstr "Δ"
+
+msgid "E"
+msgstr "Α"
