@@ -9,7 +9,7 @@
 #                                                                            #
 ##############################################################################
 
-from __init__ import _
+from Plugins.Extensions.OpenWebif.__init__ import _
 
 from Tools.Directories import fileExists
 
