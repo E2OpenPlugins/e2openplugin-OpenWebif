@@ -203,7 +203,6 @@ class BaseController(resource.Resource):
 		ret['extras'] = extras
 
 #Translation
-		tstrings = []
-		tstrings.append({ 'movies': _("Movies")})
+		tstrings = { 'movies': _("Movies")}
 		ret['tstrings'] = tstrings
 		return ret
