@@ -137,6 +137,14 @@ def getInfo():
 					model
 			elif model.endswith("ru"):
 				brand = "Sezam"
+				if model == "ini-1000ru":
+					model = "Sezam 1000-HD"
+				elif model == "ini-5000ru":
+					model = "Sezam 5000-HD"
+				elif model == "ini-9000ru":
+					model = "Sezam Marvel"
+				else:
+					model
 			else:
 				brand = "Venton"
 		elif model == "xp1000":

@@ -62,9 +62,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		channels['transcoding'] = False
-		# ini-9000ru - SEZAM Marvel
-		# Xpeed LX3 - Golden Interstar LX-3
-		if model in ("solo2", "duo2", "ini-9000ru", "Xpeed LX3"): 
+		if model in ("solo2", "duo2", "Sezam Marvel", "Xpeed LX3"): 
 			channels['transcoding'] = True
 		return channels
 
@@ -150,6 +148,12 @@ class AjaxController(BaseController):
 				model = "xpeedlx1"
 		elif model == 'Xpeed LX3':
 			model = "xpeedlx3"
+		elif model == 'Sezam 1000-HD':
+			model = "sezam-1000"
+		elif model == 'Sezam 5000-HD':
+			model = "sezam-5000"
+		elif model == 'Sezam 1000-HD':
+			model = "sezam-9000"
 		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
 			info["boximage"] = model + ".jpg"
 		else:
