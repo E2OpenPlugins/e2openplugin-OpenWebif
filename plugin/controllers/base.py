@@ -173,13 +173,13 @@ class BaseController(resource.Resource):
 		ret['box'] = model
 
 		if ret["box"] == "tmtwinoe":
-			ret["remote"] = "tm_twin"
+			ret["remote"] = "tm"
 		elif ret["box"] == "tm2toe":
-			ret["remote"] = "tm_2t"
+			ret["remote"] = "tm"
 		elif ret["box"] == "tmsingle":
-			ret["remote"] = "tm_2t"
+			ret["remote"] = "tm"
 		elif ret["box"] == "tmnanooe":
-			ret["remote"] = "tm_nano"
+			ret["remote"] = "tm"
 		elif ret["box"] in ("ios100hd", "ios200hd", "ios300hd"):
 			ret["remote"] = "iqon"
 		elif ret["box"] in ("optimussos1", "optimussos2"):
