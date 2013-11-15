@@ -1,3 +1,11 @@
+## Version 0.2.6
+**FEATURES**
+
+* add localising support
+
+**FIXES**
+* improve curren info while movie playing
+
 ## Version 0.2.5
 **FEATURES**
 
