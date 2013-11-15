@@ -112,6 +112,8 @@ def getInfo():
 				file = open("/proc/stb/info/gbmodel")
 				model = file.read().strip().lower()
 				file.close()
+				if model == "quad":
+					model = "gbquad"
 			else:
 				model = 'gb800solo'
 		elif model.startswith("et"):

@@ -156,7 +156,7 @@ class BaseController(resource.Resource):
 					model = file.read().strip().lower()
 					file.close()
 					if model == "quad":
-						model == "qbquad"
+						model = "gbquad"
 				else:
 					model = 'gb800solo'
 		elif fileExists("/proc/stb/info/azmodel"):
