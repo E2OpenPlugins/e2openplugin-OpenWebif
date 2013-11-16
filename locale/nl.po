@@ -1,0 +1,70 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenWebif\n"
+"POT-Creation-Date: 2013-11-10 11:55+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Rob van der Does <robvddoes@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+"X-Poedit-SearchPath-0: ../plugin\n"
+
+msgid "Cancel"
+msgstr "Annuleer"
+
+msgid "Save"
+msgstr "Sla op"
+
+msgid "OpenWebif url: http://yourip:port"
+msgstr "Openwebif url: http://uwIP:poort"
+
+msgid "OpenWebInterface Enabled"
+msgstr "OpenWebInterface ingeschakeld"
+
+msgid "Http port"
+msgstr "http poort"
+
+msgid "Enable Http Authentication"
+msgstr "Schakel http-authenticatie in"
+
+msgid "Enable Https"
+msgstr "Schakel https in"
+
+msgid "Https port"
+msgstr "https poort"
+
+msgid "Smart services renaming for XBMC"
+msgstr "Zenders slim anders benoemen voor XBMC"
+
+msgid "Enable Parental Control"
+msgstr "Schakel kinderslot in"
+
+msgid "Add service name to stream information"
+msgstr "Voeg zendernaam toe aan streaminformatie"
+
+msgid "OpenWebif Configuration"
+msgstr "Openwebif configuratie"
+
+msgid "New"
+msgstr "Nieuw"
+
+msgid "Services"
+msgstr "Zenders"
+
+msgid "Cable"
+msgstr "Kabel"
+
+msgid "Terrestrial"
+msgstr "Terrestrial"
+
+msgid "W"
+msgstr "W"
+
+msgid "E"
+msgstr "E"
+
