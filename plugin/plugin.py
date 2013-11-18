@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 ##############################################################################
 #                         <<< OpenWebif >>>                                  #
 #                                                                            #
@@ -23,6 +25,8 @@ from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText
 
 from httpserver import HttpdStart, HttpdStop, HttpdRestart
+
+from __init__ import _
 
 config.OpenWebif = ConfigSubsection()
 config.OpenWebif.enabled = ConfigYesNo(default=True)
@@ -63,7 +67,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		ConfigListScreen.__init__(self, self.list)
 		self["key_red"] = Label(_("Cancel"))
 		self["key_green"] = Label(_("Save"))
-		self["lab1"] = Label("OpenWebif url: http://yourip:port")
+		self["lab1"] = Label(_("OpenWebif url: http://yourip:port"))
 		
 		self["actions"] = ActionMap(["WizardActions", "ColorActions"],
 		{
@@ -84,6 +88,11 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 	
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
+
+		self.onLayoutFinish.append(self.setWindowTitle)
+
+	def setWindowTitle(self):
+		self.setTitle(_("OpenWebif Configuration"))
 
 	def keySave(self):
 		for x in self["config"].list:

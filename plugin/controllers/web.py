@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 ##############################################################################
 #                        2011 E2OpenPlugins                                  #
 #                                                                            #
@@ -707,7 +709,7 @@ class WebController(BaseController):
 			}
 			
 		return getSearchSimilarEpg(request.args["sRef"][0], eventid)
-		
+	
 	def P_getcurrent(self, request):
 		info = getCurrentService(self.session)
 		now = getNowNextEpg(info["ref"], 0)
@@ -746,9 +748,27 @@ class WebController(BaseController):
 				"remaining": 0,
 				"provider": ""
 			}
+		# replace EPG NOW with Movie info
+		mnow = now
+		if mnow["sref"].startswith('1:0:0:0:0:0:0:0:0:0:/'):
+			try:
+				service = self.session.nav.getCurrentService()
+				minfo = service and service.info()
+				movie = minfo and minfo.getEvent(0)
+				if movie and minfo:
+					mnow["title"] = movie.getEventName()
+					mnow["shortdesc"] = movie.getShortDescription()
+					mnow["longdesc"] = movie.getExtendedDescription()
+					mnow["begin_timestamp"] = movie.getBeginTime()
+					mnow["duration_sec"] = movie.getDuration()
+					mnow["remaining"] = movie.getDuration()
+					mnow["id"] = movie.getEventId()
+			except Exception, e:
+				mnow = now
+		
 		return {
 			"info": info,
-			"now": now,
+			"now": mnow,
 			"next": next
 		}
 		

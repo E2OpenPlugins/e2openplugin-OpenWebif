@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from enigma import eEnv
 from Components.SystemInfo import SystemInfo
 from Components.config import config

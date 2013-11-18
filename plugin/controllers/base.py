@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 ##############################################################################
 #                        2011 E2OpenPlugins                                  #
 #                                                                            #
@@ -6,6 +8,8 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
+
+from __init__ import _
 
 from Tools.Directories import fileExists
 try:
@@ -257,4 +261,8 @@ class BaseController(resource.Resource):
 #		except ImportError:
 
 		ret['extras'] = extras
+
+#Translation
+		tstrings = { 'movies': _("Movies")}
+		ret['tstrings'] = tstrings
 		return ret
