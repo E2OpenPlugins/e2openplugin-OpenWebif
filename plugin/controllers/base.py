@@ -9,7 +9,7 @@
 #                                                                            #
 ##############################################################################
 
-from __init__ import _
+from Plugins.Extensions.OpenWebif.__init__ import _
 
 from Tools.Directories import fileExists
 
@@ -203,6 +203,17 @@ class BaseController(resource.Resource):
 		ret['extras'] = extras
 
 #Translation
-		tstrings = { 'movies': _("Movies")}
+		tstrings = { 'movies': _("Movies"),
+		'powercontrol': _("Power Control"),
+		'grabscreenshot': _("Grab Screenshot"),
+		'sendamessage': _("Send a Message"),
+		'zapbeforestream': _("zap before Stream"),
+		'search': _("Search"),
+		'showfullremote': _("Show full remote"),
+		'hidefullremote': _("Hide full remote"),
+		'epgsearch': _("Epg Search"),
+		'boxcontrol': _("Box Control"),
+		'volumecontrol': _("Volume Control"),
+		'shiftforlong': _("(shift + click for long pressure)")}
 		ret['tstrings'] = tstrings
 		return ret
