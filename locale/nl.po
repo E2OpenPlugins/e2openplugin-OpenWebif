@@ -3,131 +3,135 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2013-11-11 20:11+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Jörg Bleyel <jbleyel@gmx.net>\n"
+"Last-Translator: Rob van der Does <robvddoes@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: the Netherlands\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
 #: ../plugin/plugin.py:68
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleer"
 
 #: ../plugin/plugin.py:69
 msgid "Save"
-msgstr ""
+msgstr "Sla op"
 
 #: ../plugin/plugin.py:70
 msgid "OpenWebif url: http://yourip:port"
-msgstr ""
+msgstr "Openwebif url: http://uwIP:poort"
 
 #: ../plugin/plugin.py:80
 msgid "OpenWebInterface Enabled"
-msgstr ""
+msgstr "Openwebinterface ingeschakeld"
 
 #: ../plugin/plugin.py:81
 msgid "Http port"
-msgstr ""
+msgstr "http poort"
 
 #: ../plugin/plugin.py:82
 msgid "Enable Http Authentication"
-msgstr ""
+msgstr "http authenticatie inschakelen"
 
 #: ../plugin/plugin.py:83
 msgid "Enable Https"
-msgstr ""
+msgstr "https inschakelen"
 
 #: ../plugin/plugin.py:84
 msgid "Https port"
-msgstr ""
+msgstr "https poort"
 
 #: ../plugin/plugin.py:85
 msgid "Smart services renaming for XBMC"
-msgstr ""
+msgstr "Zenders slim anders benoemen voor XBMC"
 
 #: ../plugin/plugin.py:86
 msgid "Enable Parental Control"
-msgstr ""
+msgstr "Schakel kinderslot in"
 
 #: ../plugin/plugin.py:87
 msgid "Add service name to stream information"
-msgstr ""
+msgstr "Voeg zendernaam toe aan streaminformatie"
 
-#: ../plugin/plugin.py:95 ../plugin/plugin.py:128
+#: ../plugin/plugin.py:95
+#: ../plugin/plugin.py:128
 msgid "OpenWebif Configuration"
-msgstr ""
+msgstr "Openwebif configuratie"
 
 #: ../plugin/controllers/base.py:206
 msgid "Movies"
-msgstr ""
+msgstr "Opnames"
 
 #: ../plugin/controllers/base.py:207
 msgid "Power Control"
-msgstr ""
+msgstr "In/uitschakelen"
 
 #: ../plugin/controllers/base.py:208
 msgid "Grab Screenshot"
-msgstr ""
+msgstr "Maak screenshot"
 
 #: ../plugin/controllers/base.py:209
 msgid "Send a Message"
-msgstr ""
+msgstr "Stuur een bericht"
 
 #: ../plugin/controllers/base.py:210
 msgid "zap before Stream"
-msgstr ""
+msgstr "Zap alvorens te streamen"
 
 #: ../plugin/controllers/base.py:211
 msgid "Search"
-msgstr ""
+msgstr "Zoek"
 
 #: ../plugin/controllers/base.py:212
 msgid "Show full remote"
-msgstr ""
+msgstr "Toon volledige AB"
 
 #: ../plugin/controllers/base.py:213
 msgid "Hide full remote"
-msgstr ""
+msgstr "Verberg volledige AB"
 
 #: ../plugin/controllers/base.py:214
 msgid "Epg Search"
-msgstr ""
+msgstr "EPG zoeken"
 
 #: ../plugin/controllers/base.py:215
 msgid "Box Control"
-msgstr ""
+msgstr "STB controle"
 
 #: ../plugin/controllers/base.py:216
 msgid "Volume Control"
-msgstr ""
+msgstr "Volume controle"
 
 #: ../plugin/controllers/base.py:217
 msgid "(shift + click for long pressure)"
-msgstr ""
+msgstr "(shift + klik voor lang-drukken)"
 
 #: ../plugin/controllers/models/services.py:240
 msgid "New"
-msgstr ""
+msgstr "Nieuw"
 
 #: ../plugin/controllers/models/services.py:242
 msgid "Services"
-msgstr ""
+msgstr "Zenders"
 
 #: ../plugin/controllers/models/services.py:247
 msgid "Cable"
-msgstr ""
+msgstr "Kabel"
 
 #: ../plugin/controllers/models/services.py:249
 msgid "Terrestrial"
-msgstr ""
+msgstr "Terrestrial"
 
 #: ../plugin/controllers/models/services.py:253
 msgid "W"
-msgstr ""
+msgstr "W"
 
 #: ../plugin/controllers/models/services.py:255
 msgid "E"
-msgstr ""
+msgstr "E"
+

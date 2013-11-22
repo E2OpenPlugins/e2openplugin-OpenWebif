@@ -73,9 +73,9 @@
 
 			#def controlMenu
 			<ul>
-				<li><a href='#' onclick="load_maincontent('ajax/powerstate'); return false;">Power Control</a></li>
-				<li><a href='#' onclick="load_maincontent('ajax/screenshot'); return false;">Grab Screenshot</a></li>
-				<li><a href='#' onclick="load_maincontent('ajax/message'); return false;">Send a Message</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/powerstate'); return false;">$tstrings["powercontrol"]</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/screenshot'); return false;">$tstrings["grabscreenshot"]</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/message'); return false;">$tstrings["sendamessage"]</a></li>
 				<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">Timers</a></li>
 			</ul>
 			#end def
@@ -92,9 +92,9 @@
 				<li><a href='#' onclick="load_maincontent_spin('ajax/movies'); return false;">$tstrings["movies"]</a></li>
  <!--				<li><a href='#' onclick="load_maincontent('ajax/workinprogress'); return false;">Web Tv</a></li> -->
 				#if $zapstream
-				<li><input type="checkbox" name="zapstream" checked="checked" />zap before Stream</li>
+				<li><input type="checkbox" name="zapstream" checked="checked" />$tstrings["zapbeforestream"]</li>
 				#else
-				<li><input type="checkbox" name="zapstream" />zap before Stream</li>
+				<li><input type="checkbox" name="zapstream" />$tstrings["zapbeforestream"]</li>
 				#end if
 			</ul>
 			#end def
@@ -102,7 +102,7 @@
 			#def searchMenu
 			<form action="" onSubmit="open_epg_search_pop(); return false;">
 				<div style="width:100%; text-align:center; padding-top:5px;"><input type="text" id="epgSearch" size="14" /></div>
-				<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button>Search</button></div>
+				<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button>$tstrings["search"]</button></div>
 			</form>
 			#end def
 			
@@ -133,15 +133,15 @@
 					<area shape="rect" coords="5,0,45,28" alt="1" onclick="pressMenuRemote('2');">
 				</map>
 				<div id="help">
-					(shift + click for long pressure)
+					$tstrings["shiftforlong"]
 				</div>
 				<ul>
 					#if $remotegrabscreenshot
-					<li><input type="checkbox" name="remotegrabscreen" checked="checked" />Grab screenshot</li>
+					<li><input type="checkbox" name="remotegrabscreen" checked="checked" />$tstrings["grabscreenshot"]</li>
 					#else
-					<li><input type="checkbox" name="remotegrabscreen" />Grab screenshot</li>
+					<li><input type="checkbox" name="remotegrabscreen" />$tstrings["grabscreenshot"]</li>
 					#end if
-					<li><a href="#" onclick="toggleFullRemote(); return false;">Show full remote</a></li>
+					<li><a href="#" onclick="toggleFullRemote(); return false;">$tstrings["showfullremote"]</a></li>
 				</ul>
 			</div>
 			#end def
@@ -156,13 +156,13 @@
 		
 			<div id="menucontainer">
 				$menu("Main", "main", $mainMenu)
-				$menu("Volume Control", "volume", $volumeMenu)
-				$menu("Box Control", "control", $controlMenu)
+				$menu($tstrings["volumecontrol"], "volume", $volumeMenu)
+				$menu($tstrings["boxcontrol"], "control", $controlMenu)
 				$menu("Remote", "remote", $remoteMenu)
 				$menu("Info", "info", $infoMenu)
 				$menu("Stream", "stream", $streamMenu)
 				$menu("Extras", "extras", $extrasMenu)
-				$menu("Epg Search", "search", $searchMenu)
+				$menu($tstrings["epgsearch"], "search", $searchMenu)
 			</div>
 			<div id="remotecontainer" style="display: none;">
 				<div id="leftmenu_main">
@@ -179,11 +179,11 @@
 						</div>
 						<ul>
 							#if $remotegrabscreenshot
-							<li><input type="checkbox" name="remotegrabscreen" checked="checked" />Grab screenshot</li>
+							<li><input type="checkbox" name="remotegrabscreen" checked="checked" />$tstrings["grabscreenshot"]</li>
 							#else
-							<li><input type="checkbox" name="remotegrabscreen" />Grab screenshot</li>
+							<li><input type="checkbox" name="remotegrabscreen" />$tstrings["grabscreenshot"]</li>
 							#end if
-							<li><a href="#" onclick="toggleFullRemote(); return false;" class="leftmenu_remotelink">Hide full remote</a></li>
+							<li><a href="#" onclick="toggleFullRemote(); return false;" class="leftmenu_remotelink">$tstrings["hidefullremote"]</a></li>
 						</ul>
 					</div>
 				</div>
