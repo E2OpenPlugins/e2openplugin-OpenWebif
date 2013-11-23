@@ -207,6 +207,8 @@ def getInfo():
 	else:
 		file = open("/proc/stb/info/model")
 		model = file.read().strip().lower()
+ 		if model.startswith('spar'):
+		    brand = "Spark"
 		file.close()
 
 	info['brand'] = brand
