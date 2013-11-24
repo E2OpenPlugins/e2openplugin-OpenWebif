@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-11-10 11:55+0100\n"
+"POT-Creation-Date: 2013-11-11 20:11+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-15\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-Basepath: .\n"
-"Language: de\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
 msgid "Cancel"
@@ -26,28 +26,64 @@ msgid "OpenWebInterface Enabled"
 msgstr "OpenWebinterface einschalten"
 
 msgid "Http port"
-msgstr "Port f�r http"
+msgstr "Port für http"
 
 msgid "Enable Http Authentication"
-msgstr "Authentifizierung f�r http aktivieren"
+msgstr "Authentifizierung für http aktivieren"
 
 msgid "Enable Https"
 msgstr "Aktivierung von https"
 
 msgid "Https port"
-msgstr "Port f�r https"
+msgstr "Port für https"
 
 msgid "Smart services renaming for XBMC"
-msgstr "Sendernamen f�r XBMC umbenennen"
+msgstr "Sendernamen für XBMC umbenennen"
 
 msgid "Enable Parental Control"
 msgstr "Kindersicherung aktivieren"
 
 msgid "Add service name to stream information"
-msgstr "Servicenamen zu den Streaminformationen hinzuf�gen"
+msgstr "Servicenamen zu den Streaminformationen hinzufügen"
 
 msgid "OpenWebif Configuration"
-msgstr "OpenWebif-Konfiguration"
+msgstr "OpenWebif Konfiguration"
+
+msgid "Movies"
+msgstr "Filme"
+
+msgid "Power Control"
+msgstr "Ausschaltmenü"
+
+msgid "Grab Screenshot"
+msgstr "Bildschirmfoto"
+
+msgid "Send a Message"
+msgstr "Nachricht senden"
+
+msgid "zap before Stream"
+msgstr "vor dem Streamen umschalten"
+
+msgid "Search"
+msgstr "Suchen"
+
+msgid "Show full remote"
+msgstr "Vollständige Fernbedienung einblenden"
+
+msgid "Hide full remote"
+msgstr "Vollständige Fernbedienung ausblenden"
+
+msgid "Epg Search"
+msgstr "EPG Suche"
+
+msgid "Box Control"
+msgstr "Systemfunktionen"
+
+msgid "Volume Control"
+msgstr "Lautstärke"
+
+msgid "(shift + click for long pressure)"
+msgstr "(SHIFT + CLICK für langen Tastendruck)"
 
 msgid "New"
 msgstr "Neu"
