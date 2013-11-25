@@ -47,7 +47,7 @@ msgid "Add service name to stream information"
 msgstr "Servicenamen zu den Streaminformationen hinzufügen"
 
 msgid "OpenWebif Configuration"
-msgstr "OpenWebif Konfiguration"
+msgstr "OpenWebif-Konfiguration"
 
 msgid "Movies"
 msgstr "Filme"
