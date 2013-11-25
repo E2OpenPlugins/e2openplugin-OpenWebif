@@ -17,11 +17,11 @@
 	<div id="container">
 		<div id="header">
 			<h1><a href="/">Open<span class="off">Webif</span></a></h1>
-			<h2>Open Source Web Interface for Linux set-top box</h2>
+			<h2>$tstrings["openwebif_header"]</h2>
 		</div>
 		
 		<div id="osd">
-			Nothing playing.
+			$tstrings["nothing_play"]
 		</div>
 		<div id="osd_bottom">
 			
@@ -54,9 +54,9 @@
 		
 			#def mainMenu
 			<ul>
-				<li><a href='#' onclick="load_maincontent('ajax/tv'); return false;">Television</a></li>
-				<li><a href='#' onclick="load_maincontent('ajax/radio'); return false;">Radio</a></li>
-				<li><a href='ajax/multiepg2' target=_blank>TV Multi EPG</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/tv'); return false;">$tstrings["television"]</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/radio'); return false;">$tstrings["radio"]</a></li>
+				<li><a href='ajax/multiepg2' target=_blank>$tstrings["tv_multi_epg"]</a></li>
 			</ul>
 			#end def
 		
@@ -76,14 +76,14 @@
 				<li><a href='#' onclick="load_maincontent('ajax/powerstate'); return false;">$tstrings["powercontrol"]</a></li>
 				<li><a href='#' onclick="load_maincontent('ajax/screenshot'); return false;">$tstrings["grabscreenshot"]</a></li>
 				<li><a href='#' onclick="load_maincontent('ajax/message'); return false;">$tstrings["sendamessage"]</a></li>
-				<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">Timers</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">$tstrings["timers"]</a></li>
 			</ul>
 			#end def
 		
 			#def infoMenu
 			<ul>
-				<li><a href="#" onclick="load_maincontent('ajax/boxinfo'); return false">Box Info</a></li>
-				<li><a href="#" onclick="load_maincontent('ajax/about'); return false">About</a></li>
+				<li><a href="#" onclick="load_maincontent('ajax/boxinfo'); return false">$tstrings["box_info"]</a></li>
+				<li><a href="#" onclick="load_maincontent('ajax/about'); return false">$tstrings["about"]</a></li>
 			</ul>
 			#end def
 		
@@ -155,13 +155,13 @@
 			#end def
 		
 			<div id="menucontainer">
-				$menu("Main", "main", $mainMenu)
+				$menu($tstrings["main"], "main", $mainMenu)
 				$menu($tstrings["volumecontrol"], "volume", $volumeMenu)
 				$menu($tstrings["boxcontrol"], "control", $controlMenu)
-				$menu("Remote", "remote", $remoteMenu)
-				$menu("Info", "info", $infoMenu)
-				$menu("Stream", "stream", $streamMenu)
-				$menu("Extras", "extras", $extrasMenu)
+				$menu($tstrings["remote"], "remote", $remoteMenu)
+				$menu($tstrings["info"], "info", $infoMenu)
+				$menu($tstrings["stream"], "stream", $streamMenu)
+				$menu($tstrings["extras"], "extras", $extrasMenu)
 				$menu($tstrings["epgsearch"], "search", $searchMenu)
 			</div>
 			<div id="remotecontainer" style="display: none;">

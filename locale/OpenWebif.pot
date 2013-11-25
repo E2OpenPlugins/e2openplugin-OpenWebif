@@ -1,133 +1,142 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-11-11 20:11+0100\n"
+"POT-Creation-Date: 2013-11-25 22:15+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Jörg Bleyel <jbleyel@gmx.net>\n"
+"Last-Translator: plnick\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
-#: ../plugin/plugin.py:68
 msgid "Cancel"
 msgstr ""
 
-#: ../plugin/plugin.py:69
 msgid "Save"
 msgstr ""
 
-#: ../plugin/plugin.py:70
 msgid "OpenWebif url: http://yourip:port"
 msgstr ""
 
-#: ../plugin/plugin.py:80
 msgid "OpenWebInterface Enabled"
 msgstr ""
 
-#: ../plugin/plugin.py:81
 msgid "Http port"
 msgstr ""
 
-#: ../plugin/plugin.py:82
 msgid "Enable Http Authentication"
 msgstr ""
 
-#: ../plugin/plugin.py:83
 msgid "Enable Https"
 msgstr ""
 
-#: ../plugin/plugin.py:84
 msgid "Https port"
 msgstr ""
 
-#: ../plugin/plugin.py:85
 msgid "Smart services renaming for XBMC"
 msgstr ""
 
-#: ../plugin/plugin.py:86
 msgid "Enable Parental Control"
 msgstr ""
 
-#: ../plugin/plugin.py:87
 msgid "Add service name to stream information"
 msgstr ""
 
-#: ../plugin/plugin.py:95 ../plugin/plugin.py:128
 msgid "OpenWebif Configuration"
 msgstr ""
 
-#: ../plugin/controllers/base.py:206
-msgid "Movies"
+msgid "About"
 msgstr ""
 
-#: ../plugin/controllers/base.py:207
-msgid "Power Control"
+msgid "Box Info"
 msgstr ""
 
-#: ../plugin/controllers/base.py:208
-msgid "Grab Screenshot"
-msgstr ""
-
-#: ../plugin/controllers/base.py:209
-msgid "Send a Message"
-msgstr ""
-
-#: ../plugin/controllers/base.py:210
-msgid "zap before Stream"
-msgstr ""
-
-#: ../plugin/controllers/base.py:211
-msgid "Search"
-msgstr ""
-
-#: ../plugin/controllers/base.py:212
-msgid "Show full remote"
-msgstr ""
-
-#: ../plugin/controllers/base.py:213
-msgid "Hide full remote"
-msgstr ""
-
-#: ../plugin/controllers/base.py:214
-msgid "Epg Search"
-msgstr ""
-
-#: ../plugin/controllers/base.py:215
 msgid "Box Control"
 msgstr ""
 
-#: ../plugin/controllers/base.py:216
-msgid "Volume Control"
+msgid "Epg Search"
 msgstr ""
 
-#: ../plugin/controllers/base.py:217
+msgid "Extras"
+msgstr ""
+
+msgid "Grab Screenshot"
+msgstr ""
+
+msgid "Hide full remote"
+msgstr ""
+
+msgid "Infos"
+msgstr ""
+
+msgid "Main"
+msgstr ""
+
+msgid "Movies"
+msgstr ""
+
+msgid "Nothing playing."
+msgstr ""
+
+msgid "Open Source Web Interface for Linux set-top box"
+msgstr ""
+
+msgid "Power Control"
+msgstr ""
+
+msgid "Radio"
+msgstr ""
+
+msgid "Remote"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Send a Message"
+msgstr ""
+
 msgid "(shift + click for long pressure)"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:240
+msgid "Show full remote"
+msgstr ""
+
+msgid "Stream"
+msgstr ""
+
+msgid "Television"
+msgstr ""
+
+msgid "Timers"
+msgstr ""
+
+msgid "TV Multi EPG"
+msgstr ""
+
+msgid "Volume Control"
+msgstr ""
+
+msgid "zap before Stream"
+msgstr ""
+
 msgid "New"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:242
 msgid "Services"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:247
 msgid "Cable"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:249
 msgid "Terrestrial"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:253
 msgid "W"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:255
 msgid "E"
 msgstr ""
