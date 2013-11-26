@@ -74,7 +74,7 @@ msgid "Hide full remote"
 msgstr "Vollständige Fernbedienung ausblenden"
 
 msgid "Epg Search"
-msgstr "EPG Suche"
+msgstr "EPG-Suche"
 
 msgid "Box Control"
 msgstr "Systemfunktionen"
