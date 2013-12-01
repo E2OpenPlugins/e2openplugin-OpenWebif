@@ -202,7 +202,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		movies['transcoding'] = False
-		if model in ("solo2", "duo2", "Sezam Marvel", "Xpeed LX3"):
+		if model in ("solo2", "duo2", "Sezam Marvel", "Xpeed LX3", "gbquad", "gbquadplus"):
 			movies['transcoding'] = True
 		return movies
 
