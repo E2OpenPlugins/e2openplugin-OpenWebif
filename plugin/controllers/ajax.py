@@ -64,7 +64,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		channels['transcoding'] = False
-		if model in ("solo2", "duo2", "Sezam Marvel", "Xpeed LX3"): 
+		if model in ("solo2", "duo2", "Sezam Marvel", "Xpeed LX3", "gbquad", "gbquadplus"): 
 			channels['transcoding'] = True
 		return channels
 
