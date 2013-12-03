@@ -1,20 +1,22 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
+
 <form>
 <div>
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">Name:</span>
+		<span style="width: 100px; float: left;">$tstrings['name']:</span>
 		<span><input type="text" name="timername" id="timername" style="width: 450px;" class="text ui-widget-content ui-corner-all" /></span>
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">Description:</span>
+		<span style="width: 100px; float: left;">$tstrings['description']:</span>
 		<span><textarea name="description" id="description" style="width: 450px; height: 50px;" class="text ui-widget-content ui-corner-all" /></span>
 	</div>
 	
 	<div class="timerlist_row">
-	<span style="width: 100px; float: left;">Channel:</span>
+	<span style="width: 100px; float: left;">$tstrings['channel']:</span>
 		<span>
 		<select id="bouquet_select" name="bouquet_select">
-			<option value="0">Nothing</option>
+			<option value="0">$tstrings['nothing']</option>
 		</select>
 		</span>
 	</div>
@@ -27,31 +29,31 @@
 	</div>
 
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">End:</span>
+		<span style="width: 100px; float: left;">$tstrings['end']:</span>
 		<span>
 		<input type="text" name="timerend" id="timerend" value="" class="text ui-widget-content ui-corner-all" />
 		</span>
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left; block: inline;">Enabled:</span>
+		<span style="width: 100px; float: left; block: inline;">$tstrings['enabled']:</span>
 		<span style="margin: 5px;">
 			<input type="checkbox" name="enabled" id="enabled" value="0" />
 		</span>
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">Just play:</span>
+		<span style="width: 100px; float: left;">$tstrings['just_play']:</span>
 		<span style="margin: 5px;">
 			<input type="checkbox" name="justplay" id="justplay" value="0" />
 		</span>
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">Repeated:</span>
+		<span style="width: 100px; float: left;">$tstrings['repeated']:</span>
 		<span id="repeatdays" style="margin: 5px;">
 		#set $i=0
-		#for $day in ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+		#for $day in [$tstrings['mo'], $tstrings['tu'], $tstrings['we'], $tstrings['th'], $tstrings['fr'], $tstrings['sa'], $tstrings['su']]
 			#set $value = 2 ** $i
 			<input type="checkbox" name="repeated" id="day$i" value="$value" /><label for="day$i">$day</label>
 			#set $i=$i+1
@@ -60,28 +62,28 @@
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">Location:</span>
+		<span style="width: 100px; float: left;">$tstrings['location']:</span>
 		<span>
 		<select id="dirname" name="dirname">
-			<option value="None">Default</option>
+			<option value="None">$tstrings['default']</option>
 		</select>
 		</span>
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">Tags:</span>
+		<span style="width: 100px; float: left;">$tstrings['tags']:</span>
 		<span id="tagsnew" style="margin:5px">
 		</span>
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">After Event:</span>
+		<span style="width: 100px; float: left;">$tstrings['after_event']:</span>
 		<span>
 		<select id="afterevent" name="afterevent">
-			<option value="0">Nothing</option>
-			<option value="1">Standby</option>
-			<option value="2">Shutdown</option>
-			<option value="3" selected="">Auto</option>
+			<option value="0">$tstrings['nothing']</option>
+			<option value="1">$tstrings['standby']</option>
+			<option value="2">$tstrings['shutdown']</option>
+			<option value="3" selected="">$tstrings['auto']</option>
 		</select>
 		</span>
 	</div>

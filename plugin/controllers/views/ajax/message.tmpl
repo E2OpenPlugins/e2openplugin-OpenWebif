@@ -1,32 +1,33 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
 <div id="content_main" style="min-height: 500px;">
 	<div id="info">
-		<h3>Send Message</h3>
+		<h3>$tstrings['send_message']</h3>
 		<hr />
 			<div class="sendMessageContainer">
 				<table style="width: 50%;" align="center">
 					<tbody>
 					<tr>
-						<td>Text</td>
+						<td>$tstrings['text']</td>
 						<td><textarea rows="3" cols="30" id="messageText"></textarea></td>
 					</tr>
 					<tr>
-						<td>Timeout</td>
+						<td>$tstrings['timeout']</td>
 						<td><input type="text" value="30" id="messageTimeout"></td>
 					</tr>
 					<tr>
-						<td>Type</td>
+						<td>$tstrings['type']</td>
 						<td>
 							<select id="messageType">
-								<option value="2">Info</option>
-								<option value="1">Warning</option>
-								<option value="3">Error</option>
-								<option value="0">Yes/No</option>
+								<option value="2">$tstrings['info']</option>
+								<option value="1">$tstrings['warning']</option>
+								<option value="3">$tstrings['error']</option>
+								<option value="0">$tstrings['yes_no']</option>
 							</select>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2" style="text-align: center;">
-							<button onclick="sendMessage();">Send Message</button>
+							<button onclick="sendMessage();">$tstrings['send_message']</button>
 							<div id="messageSentResponse"></div>
 						</td>
 					</tr>

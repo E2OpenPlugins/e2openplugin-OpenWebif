@@ -1,3 +1,4 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
 <!-- OSD -->
 <div style="width:680px;height:137px;background-image:url(/images/osd/osd_back.png);">
   <div style="float:left;width:120px;height:137px;">
@@ -5,7 +6,7 @@
       <div style="position:relative;top:10px;left:18px;color:#FFF;font-size:13px;font-weight:bold;">$info.date</div>
     </div>
     <div style="float:left;display:block;width:120px;height:60px;">
-      <div style="position:relative;top:0px;left:15px;"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "/images/default_picon.png")' onclick="open_epg_pop('$info.ref');" href="#" title="Show EPG for $info.name" border="0" alt='' /></div>
+      <div style="position:relative;top:0px;left:15px;"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "/images/default_picon.png")' onclick="open_epg_pop('$info.ref');" href="#" title="$tstrings['show_epg_for'] $info.name" border="0" alt='' /></div>
     </div>
     <div style="float:left;display:block;width:120px;height:40px;">
       <div style="position:relative;top:8px;left:0px;color:#FFF;text-align:center;font-size:13px;font-weight:bold;">$info.provider</div>
@@ -13,7 +14,7 @@
   </div>
   <div style="float:left;width:560px;height:137px;">
     <div style="float:left;width:560px;height:25px;">
-      <div style="float:left;position:relative;top:5px;left:0px;width:480px;color:#FFF;text-align:center;font-size:18px;"><a style="color:#FFF" target="_blank" title="Stream $getVar('now.title', '') from $info.name" href='/web/stream.m3u?ref=$info.ref&name=$info.name'>$info.name</a></div>
+      <div style="float:left;position:relative;top:5px;left:0px;width:480px;color:#FFF;text-align:center;font-size:18px;"><a style="color:#FFF" target="_blank" title="$tstrings['stream'] $getVar('now.title', '') from $info.name" href='/web/stream.m3u?ref=$info.ref&name=$info.name'>$info.name</a></div>
     </div>
     <div style="float:left;width:560px;height:24px;">
       <div style="float:left;width:70px;height:24px;">
@@ -137,26 +138,26 @@
 <table style="background: #1C478E;font-size:12px;" width="100%" border="0" cellspacing="1" cellpadding="5">
 	
 			<tr>
-				<th colspan="3" class="infoHeader">Service</th>
+				<th colspan="3" class="infoHeader">$tstrings['service']</th>
 			</tr>
 			<tr style="background-color:  #f0f7fc;">
-				<td>Name: $info.name</td>
-				<td>Provider: $info.provider</td>
-				<td>Namespace: $info.namespace</td>
+				<td>$tstrings['name']: $info.name</td>
+				<td>$tstrings['provider']: $info.provider</td>
+				<td>$tstrings['namespace']: $info.namespace</td>
 			</tr>
 			<tr style="background-color:  #f0f7fc;">
-				<td>Video Width: $info.width</td>
-				<td>Video Height: $info.height</td>
-				<td>Video Wide: $info.wide</td>
+				<td>$tstrings['video_width']: $info.width</td>
+				<td>$tstrings['video_height']: $info.height</td>
+				<td>$tstrings['video_wide']: $info.wide</td>
 			</tr>
 			<tr style="background-color:  #f0f7fc;">
-				<td>Encrypted: $info.crypt</td>
-				<td>Dolby: $info.dolby</td>
-				<td>Subservices: $info.subs</td>
+				<td>$tstrings['encrypted']: $info.crypt</td>
+				<td>$tstrings['dolby']: $info.dolby</td>
+				<td>$tstrings['subservices']: $info.subs</td>
 			</tr>			
 			<tr style="background-color:  #f0f7fc;">
-				<td>Teletext: $info.txtpid</td>
-				<td>Recording Status: $info.rec_state</td>
+				<td>$tstrings['teletext']: $info.txtpid</td>
+				<td>$tstrings['rec_status']: $info.rec_state</td>
 				<td>Pmtpid: $info.pmtpid</td>
 			</tr>
 			<tr style="background-color:  #f0f7fc;">
@@ -175,31 +176,31 @@
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<th colspan="3" class="infoHeader">Tuner Signal</th>
+				<th colspan="3" class="infoHeader">$tstrings['tuner_signal']</th>
 			</tr>
 			<tr style="background-color:  #f0f7fc;">
-				<td>Tuner Type: $getVar("info.tunertype", "N/A")</td>
-				<td>Tuner Number(0-3):  $getVar("info.tunernumber", "N/A")</td>
-				<td>Tuner Signal Quality SNR:  $getVar("info.snr", "N/A")</td>
+				<td>$tstrings['tuner_type']: $getVar("info.tunertype", "N/A")</td>
+				<td>$tstrings['tuner_number']:  $getVar("info.tunernumber", "N/A")</td>
+				<td>$tstrings['tuner_signal_snr']:  $getVar("info.snr", "N/A")</td>
 			</tr>
 			<tr style="background-color:  #f0f7fc;">
-				<td>Tuner Signal Quality SNR_DB:  $getVar("info.snr_db", "N/A")</td>
-				<td>Tuner Signal Power AGC:  $getVar("info.agc", "N/A")</td>
-				<td>Tuner Bit Error Rate BER:  $getVar("info.ber", "N/A")</td>
+				<td>$tstrings['tuner_signal_snr_db']:  $getVar("info.snr_db", "N/A")</td>
+				<td>$tstrings['tuner_signal_agc']:  $getVar("info.agc", "N/A")</td>
+				<td>$tstrings['tuner_ber']:  $getVar("info.ber", "N/A")</td>
 			</tr>
 			<tr>
-				<th colspan="3" class="infoHeader">Current Event</th>
+				<th colspan="3" class="infoHeader">$tstrings['current_event']</th>
 			</tr>
 			<tr style="background-color:  #f0f7fc;">
-				<td colspan="3">Title: $getVar("now.title", " ")</td>
+				<td colspan="3">$tstrings['title']: $getVar("now.title", " ")</td>
 			</tr>
 			<tr style="background-color:  #f0f7fc;">
-				<td>Begin: $getVar("now.begin", " ")</td>
-				<td>End: $getVar("now.end", " ")</td>
-				<td>Duration: $getVar("now.duration", " ")</td>
+				<td>$tstrings['begin']: $getVar("now.begin", " ")</td>
+				<td>$tstrings['end']: $getVar("now.end", " ")</td>
+				<td>$tstrings['duration']: $getVar("now.duration", " ")</td>
 			</tr>
 			<tr style="background-color:  #f0f7fc;">
-				<td colspan="3">Description:  $getVar("now.shortdesc", " ")</td>
+				<td colspan="3">$tstrings['description']:  $getVar("now.shortdesc", " ")</td>
 			</tr>
 			
 </table>

@@ -1,7 +1,8 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
 <!-- box_info -->
 <div id="content_main">
 	<div id="info">
-		<h3>Box Info</h3>
+		<h3>$tstrings['box_info']</h3>
 		<hr />
 		<img src="images/boxes/${boximage}" id="box_image" alt="box_info">
 		<hr />
@@ -11,34 +12,34 @@
 				<td width="100%">
 					<table cellspacing="0" class="infomain" >
 						<tr>
-							<th colspan="2" class="infoHeader">Box</th>
+							<th colspan="2" class="infoHeader">$tstrings['box']</th>
 						</tr>
 						<tr>
-							<td class="infoleft">Brand:</td>
+							<td class="infoleft">$tstrings['brand']:</td>
 							<td class="inforight">$brand</td>
 						</tr>
 						<tr>
-							<td class="infoleft">Model:</td>
+							<td class="infoleft">$tstrings['model']:</td>
 							<td class="inforight">$model</td>
 						</tr>
 						<tr>
-							<td class="infoleft">Chipset:</td>
+							<td class="infoleft">$tstrings['chipset']:</td>
 							<td class="inforight">$chipset</td>
 						</tr>
 						<tr>
-							<td class="infoleft">Frontprocessor Version:</td>
+							<td class="infoleft">$tstrings['fp_version']:</td>
 							<td class="inforight">$str($fp_version)</td>
 						</tr>
 						<tr>
-							<td class="infoleft">Total Memory:</td>
+							<td class="infoleft">$tstrings['total_memory']:</td>
 							<td class="inforight">$mem1</td>
 						</tr>
 						<tr>
-							<td class="infoleft">Free Memory:</td>
+							<td class="infoleft">$tstrings['free_memory']:</td>
 							<td class="inforight">$mem2</td>
 						</tr>
 						<tr>
-							<td class="infoleft">Box Uptime:</td>
+							<td class="infoleft">$tstrings['box_uptime']:</td>
 							<td class="inforight">$uptime</td>
 						</tr>
 					</table>
@@ -48,18 +49,18 @@
 				<td width="100%">
 					<table cellspacing="0" class="infomain" >
 						<tr>
-							<th colspan="2" class="infoHeader">Software</th>
+							<th colspan="2" class="infoHeader">$tstrings['software']</th>
 						</tr>
 						<tr>
-							<td class="infoleft">Kernel version:</td>
+							<td class="infoleft">$tstrings['kernel_version']:</td>
 							<td class="inforight">$kernelver</td>
 						</tr>
 						<tr>
-							<td class="infoleft">Firmware version:</td>
+							<td class="infoleft">$tstrings['firmware_version']:</td>
 							<td class="inforight">$imagever</td>
 						</tr>
 						<tr>
-							<td class="infoleft">Gui version:</td>
+							<td class="infoleft">$tstrings['gui_version']:</td>
 							<td class="inforight">$enigmaver</td>
 						</tr>
 					</table>
@@ -69,7 +70,7 @@
 				<td width="100%">
 					<table cellspacing="0" class="infomain" >
 						<tr>
-							<th colspan="2" class="infoHeader">Tuners</th>
+							<th colspan="2" class="infoHeader">$tstrings['tuners']</th>
 						</tr>
 						#for $tuner in $tuners
 						<tr>
@@ -85,14 +86,14 @@
 				<td width="100%">
 					<table cellspacing="0" class="infomain" >
 						<tr>
-							<th colspan="2" class="infoHeader">Hard disk model: $hd.model</th>
+							<th colspan="2" class="infoHeader">$tstrings['hdd_model']: $hd.model</th>
 						</tr>
 						<tr>
-							<td class="infoleft">Capacity:</td>
+							<td class="infoleft">$tstrings['capacity']:</td>
 							<td class="inforight">$hd.capacity</td>
 						</tr>
 						<tr>
-							<td class="infoleft">Free:</td>
+							<td class="infoleft">$tstrings['free']:</td>
 							<td class="inforight">$hd.free</td>
 						</tr>
 					</table>
@@ -104,26 +105,26 @@
 				<td width="100%">
 					<table cellspacing="0" class="infomain" >
 						<tr>
-							<th colspan="2" class="infoHeader">Network interface: $iface.name</th>
+							<th colspan="2" class="infoHeader">$tstrings['network_interface']: $iface.name</th>
 						</tr>
 						<tr>
-							<td class="infoleft">DHCP:</td>
+							<td class="infoleft">$tstrings['dhcp']:</td>
 							<td class="inforight">$iface.dhcp</td>
 						</tr>
 						<tr>
-							<td class="infoleft">Ip address:</td>
+							<td class="infoleft">$tstrings['ip_address']:</td>
 							<td class="inforight">$iface.ip</td>
 						</tr>
 						<tr>
-							<td class="infoleft">Subnet mask:</td>
+							<td class="infoleft">$tstrings['subnet_mask']:</td>
 							<td class="inforight">$iface.mask</td>
 						</tr>
 						<tr>
-							<td class="infoleft">Gateway:</td>
+							<td class="infoleft">$tstrings['gateway']:</td>
 							<td class="inforight">$iface.gw</td>
 						</tr>
 						<tr>
-							<td class="infoleft">Mac address:</td>
+							<td class="infoleft">$tstrings['mac_address']:</td>
 							<td class="inforight">$iface.mac</td>
 						</tr>
 					</table>

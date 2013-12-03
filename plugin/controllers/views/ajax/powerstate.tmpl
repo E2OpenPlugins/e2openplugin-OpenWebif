@@ -1,13 +1,14 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
 <div id="content_main" style="min-height: 500px;">
 	<div id="info">
-		<h3>Power Control</h3>
+		<h3>$tstrings['powercontrol']</h3>
 		<hr />
 			<div class="powerStateButtons">
 				<ul>
-				<li onclick="webapi_execute('api/powerstate?newstate=0'); return false">StandBy Toggle</li>
-				<li onclick="webapi_execute('api/powerstate?newstate=1'); return false">Deep-StandBy</li>
-				<li onclick="webapi_execute('api/powerstate?newstate=2'); return false">Reboot Box</li> 
-				<li onclick="webapi_execute('api/powerstate?newstate=3'); return false">Restart Enigma2</li>
+				<li onclick="webapi_execute('api/powerstate?newstate=0'); return false">$tstrings['standby_toggle']</li>
+				<li onclick="webapi_execute('api/powerstate?newstate=1'); return false">$tstrings['deep_standby']</li>
+				<li onclick="webapi_execute('api/powerstate?newstate=2'); return false">$tstrings['reboot_box']</li> 
+				<li onclick="webapi_execute('api/powerstate?newstate=3'); return false">$tstrings['restart_gui']</li>
 				</ul>
 			</div>
 	</div>
