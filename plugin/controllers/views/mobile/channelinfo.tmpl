@@ -26,7 +26,7 @@
 			<div class="button" onClick="history.back()">$tstrings['back']</div>
 			<h1>OpenWebif</h1>
 			#set $sref=quote($channelinfo.sref, safe=' ~@#$&()*!+=:;,.?/\'')
-			<div class="button" style="right:5px;left:auto;" onClick='zapChannel("$sref")'>$tstrings['zap']</div>
+			<div class="button" style="right:5px;left:auto;" onClick="zapChannel('$sref')">$tstrings['zap']</div>
 		</div>
 
 		<div id="mainContent" class="ui-corner-all">
