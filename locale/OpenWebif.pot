@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-12-03 21:26+0100\n"
+"POT-Creation-Date: 2013-12-04 20:24+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -99,6 +99,9 @@ msgstr ""
 msgid "After Event"
 msgstr ""
 
+msgid "AGC"
+msgstr ""
+
 msgid "All"
 msgstr ""
 
@@ -111,7 +114,13 @@ msgstr ""
 msgid "Auto"
 msgstr ""
 
+msgid "Back"
+msgstr ""
+
 msgid "Begin"
+msgstr ""
+
+msgid "BER"
 msgstr ""
 
 msgid "Bouquets"
@@ -138,6 +147,9 @@ msgstr ""
 msgid "Channel"
 msgstr ""
 
+msgid "Channels"
+msgstr ""
+
 msgid "Chipset"
 msgstr ""
 
@@ -145,6 +157,9 @@ msgid "Cleanup Timers"
 msgstr ""
 
 msgid "Contributors"
+msgstr ""
+
+msgid "Control"
 msgstr ""
 
 msgid "Current"
@@ -255,6 +270,9 @@ msgstr ""
 msgid "Infos"
 msgstr ""
 
+msgid "Instant Record"
+msgstr ""
+
 msgid "Javascript Libraries"
 msgstr ""
 
@@ -363,6 +381,9 @@ msgstr ""
 msgid "Satellites"
 msgstr ""
 
+msgid "Satfinder"
+msgstr ""
+
 msgid "Screenshot"
 msgstr ""
 
@@ -390,6 +411,9 @@ msgstr ""
 msgid "(shift + click for long pressure)"
 msgstr ""
 
+msgid "Show Full OpenWebif"
+msgstr ""
+
 msgid "Show full remote"
 msgstr ""
 
@@ -402,6 +426,9 @@ msgstr ""
 msgid "Site and sources"
 msgstr ""
 
+msgid "SNR"
+msgstr ""
+
 msgid "Software"
 msgstr ""
 
@@ -409,6 +436,9 @@ msgid "Standby"
 msgstr ""
 
 msgid "Standby Toggle"
+msgstr ""
+
+msgid "Start Instant Record"
 msgstr ""
 
 msgid "Stream"
@@ -477,10 +507,16 @@ msgstr ""
 msgid "Tuners"
 msgstr ""
 
+msgid "TV"
+msgstr ""
+
 msgid "TV Multi EPG"
 msgstr ""
 
 msgid "Type"
+msgstr ""
+
+msgid "Upcoming Events"
 msgstr ""
 
 msgid "Version"
