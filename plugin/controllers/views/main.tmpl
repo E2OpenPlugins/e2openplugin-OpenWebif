@@ -1,3 +1,5 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -17,11 +19,11 @@
 	<div id="container">
 		<div id="header">
 			<h1><a href="/">Open<span class="off">Webif</span></a></h1>
-			<h2>Open Source Web Interface for Linux set-top box</h2>
+			<h2>$tstrings['openwebif_header']</h2>
 		</div>
 		
 		<div id="osd">
-			Nothing playing.
+			$tstrings['nothing_play']
 		</div>
 		<div id="osd_bottom">
 			
@@ -54,9 +56,9 @@
 		
 			#def mainMenu
 			<ul>
-				<li><a href='#' onclick="load_maincontent('ajax/tv'); return false;">Television</a></li>
-				<li><a href='#' onclick="load_maincontent('ajax/radio'); return false;">Radio</a></li>
-				<li><a href='ajax/multiepg2' target=_blank>TV Multi EPG</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/tv'); return false;">$tstrings['television']</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/radio'); return false;">$tstrings['radio']</a></li>
+				<li><a href='ajax/multiepg2' target=_blank>$tstrings['tv_multi_epg']</a></li>
 			</ul>
 			#end def
 		
@@ -73,28 +75,28 @@
 
 			#def controlMenu
 			<ul>
-				<li><a href='#' onclick="load_maincontent('ajax/powerstate'); return false;">$tstrings["powercontrol"]</a></li>
-				<li><a href='#' onclick="load_maincontent('ajax/screenshot'); return false;">$tstrings["grabscreenshot"]</a></li>
-				<li><a href='#' onclick="load_maincontent('ajax/message'); return false;">$tstrings["sendamessage"]</a></li>
-				<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">Timers</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/powerstate'); return false;">$tstrings['powercontrol']</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/screenshot'); return false;">$tstrings['grabscreenshot']</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/message'); return false;">$tstrings['sendamessage']</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">$tstrings['timers']</a></li>
 			</ul>
 			#end def
 		
 			#def infoMenu
 			<ul>
-				<li><a href="#" onclick="load_maincontent('ajax/boxinfo'); return false">Box Info</a></li>
-				<li><a href="#" onclick="load_maincontent('ajax/about'); return false">About</a></li>
+				<li><a href="#" onclick="load_maincontent('ajax/boxinfo'); return false">$tstrings['box_info']</a></li>
+				<li><a href="#" onclick="load_maincontent('ajax/about'); return false">$tstrings['about']</a></li>
 			</ul>
 			#end def
 		
 			#def streamMenu
 			<ul>
-				<li><a href='#' onclick="load_maincontent_spin('ajax/movies'); return false;">$tstrings["movies"]</a></li>
+				<li><a href='#' onclick="load_maincontent_spin('ajax/movies'); return false;">$tstrings['movies']</a></li>
  <!--				<li><a href='#' onclick="load_maincontent('ajax/workinprogress'); return false;">Web Tv</a></li> -->
 				#if $zapstream
-				<li><input type="checkbox" name="zapstream" checked="checked" />$tstrings["zapbeforestream"]</li>
+				<li><input type="checkbox" name="zapstream" checked="checked" />$tstrings['zapbeforestream']</li>
 				#else
-				<li><input type="checkbox" name="zapstream" />$tstrings["zapbeforestream"]</li>
+				<li><input type="checkbox" name="zapstream" />$tstrings['zapbeforestream']</li>
 				#end if
 			</ul>
 			#end def
@@ -102,7 +104,7 @@
 			#def searchMenu
 			<form action="" onSubmit="open_epg_search_pop(); return false;">
 				<div style="width:100%; text-align:center; padding-top:5px;"><input type="text" id="epgSearch" size="14" /></div>
-				<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button>$tstrings["search"]</button></div>
+				<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button>$tstrings['search']</button></div>
 			</form>
 			#end def
 			
@@ -133,15 +135,15 @@
 					<area shape="rect" coords="5,0,45,28" alt="1" onclick="pressMenuRemote('2');">
 				</map>
 				<div id="help">
-					$tstrings["shiftforlong"]
+					$tstrings['shiftforlong']
 				</div>
 				<ul>
 					#if $remotegrabscreenshot
-					<li><input type="checkbox" name="remotegrabscreen" checked="checked" />$tstrings["grabscreenshot"]</li>
+					<li><input type="checkbox" name="remotegrabscreen" checked="checked" />$tstrings['grabscreenshot']</li>
 					#else
-					<li><input type="checkbox" name="remotegrabscreen" />$tstrings["grabscreenshot"]</li>
+					<li><input type="checkbox" name="remotegrabscreen" />$tstrings['grabscreenshot']</li>
 					#end if
-					<li><a href="#" onclick="toggleFullRemote(); return false;">$tstrings["showfullremote"]</a></li>
+					<li><a href="#" onclick="toggleFullRemote(); return false;">$tstrings['showfullremote']</a></li>
 				</ul>
 			</div>
 			#end def
@@ -155,14 +157,14 @@
 			#end def
 		
 			<div id="menucontainer">
-				$menu("Main", "main", $mainMenu)
-				$menu($tstrings["volumecontrol"], "volume", $volumeMenu)
-				$menu($tstrings["boxcontrol"], "control", $controlMenu)
-				$menu("Remote", "remote", $remoteMenu)
-				$menu("Info", "info", $infoMenu)
-				$menu("Stream", "stream", $streamMenu)
-				$menu("Extras", "extras", $extrasMenu)
-				$menu($tstrings["epgsearch"], "search", $searchMenu)
+				$menu($tstrings['main'], "main", $mainMenu)
+				$menu($tstrings['volumecontrol'], "volume", $volumeMenu)
+				$menu($tstrings['boxcontrol'], "control", $controlMenu)
+				$menu($tstrings['remote'], "remote", $remoteMenu)
+				$menu($tstrings['info'], "info", $infoMenu)
+				$menu($tstrings['stream'], "stream", $streamMenu)
+				$menu($tstrings['extras'], "extras", $extrasMenu)
+				$menu($tstrings['epgsearch'], "search", $searchMenu)
 			</div>
 			<div id="remotecontainer" style="display: none;">
 				<div id="leftmenu_main">
@@ -179,11 +181,11 @@
 						</div>
 						<ul>
 							#if $remotegrabscreenshot
-							<li><input type="checkbox" name="remotegrabscreen" checked="checked" />$tstrings["grabscreenshot"]</li>
+							<li><input type="checkbox" name="remotegrabscreen" checked="checked" />$tstrings['grabscreenshot']</li>
 							#else
-							<li><input type="checkbox" name="remotegrabscreen" />$tstrings["grabscreenshot"]</li>
+							<li><input type="checkbox" name="remotegrabscreen" />$tstrings['grabscreenshot']</li>
 							#end if
-							<li><a href="#" onclick="toggleFullRemote(); return false;" class="leftmenu_remotelink">$tstrings["hidefullremote"]</a></li>
+							<li><a href="#" onclick="toggleFullRemote(); return false;" class="leftmenu_remotelink">$tstrings['hidefullremote']</a></li>
 						</ul>
 					</div>
 				</div>

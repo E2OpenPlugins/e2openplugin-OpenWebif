@@ -1,14 +1,15 @@
 #filter WebSafe
 #from urllib import quote
+#from Plugins.Extensions.OpenWebif.local import tstrings
 <div id="content_main" style="min-height: 500px;">
 	<div id="info">
-		<h3>Timerlist</h3>
+		<h3>$tstrings['timer_list']</h3>
 
 		<div id="toolbar-header">
 			<span id="toolbar">
 				<span id="timerbuttons">
-					<button id="timerbutton0" onclick="addTimer(); return false">Add Timer</button>
-					<button id="timerbutton1" onclick="cleanupTimer(); return false">Cleanup Timers</button>
+					<button id="timerbutton0" onclick="addTimer(); return false">$tstrings['add_timer']</button>
+					<button id="timerbutton1" onclick="cleanupTimer(); return false">$tstrings['cleanup_timer']</button>
 				</span>
 			</span>
 		</div>
@@ -24,10 +25,10 @@
 						$timer.realbegin - $timer.realend
 						#if $timer.repeated != 0
 							<div>
-								Every
+								$tstrings['every_timer']
 							#set $flags=$timer.repeated
 							#set $timerDays=[]
-							#for $day in ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+							#for $day in [$tstrings['monday'],$tstrings['tuesday'],'Wednesday','Thursday','Friday','Saturday','Sunday']
 								#if $flags&1
 									$timerDays.append($day)
 								#end if
@@ -46,11 +47,11 @@
 					<div style="padding: 3px;">
 						<span style="color: #7F8181; font-weight: bold;">
 							#if $timer.state == 0
-								waiting
+								$tstrings['waiting']
 							#elif $timer.state == 2
-								running
+								$tstrings['running']
 							#elif $timer.state == 3
-								finished
+								$tstrings['finished']
 							#end if
 						</span>
 					</div>
@@ -58,13 +59,13 @@
 				<div class="moviecontainer_right">
 					<div style="padding: 3px; text-align: right;">
 						#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
-						<a href='#' onClick="editTimer('$sref', '$timer.begin', '$timer.end');"><img src="../images/ico_edit.png" title="Edit Timer" border="0"></a>
-						<a href='#' onClick="deleteTimer('$sref', '$timer.begin', '$timer.end');"><img src="../images/ico_delete.png" title="Delete Timer" border="0"></a>
+						<a href='#' onClick="editTimer('$sref', '$timer.begin', '$timer.end');"><img src="../images/ico_edit.png" title="$tstrings['edit_timer']" border="0"></a>
+						<a href='#' onClick="deleteTimer('$sref', '$timer.begin', '$timer.end');"><img src="../images/ico_delete.png" title="$tstrings['delete_timer']" border="0"></a>
 						<a href='#' onClick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end');">
 						#if $timer.disabled
-						<img id="img-$timer.begin-$timer.end" src="../images/ico_disabled.png" title="Enable Timer" border="0">
+						<img id="img-$timer.begin-$timer.end" src="../images/ico_disabled.png" title="$tstrings['enable_timer']" border="0">
 						#else
-						<img id="img-$timer.begin-$timer.end" src="../images/ico_enabled.png" title="Disable Timer" border="0">
+						<img id="img-$timer.begin-$timer.end" src="../images/ico_enabled.png" title="$tstrings['disable_timer']" border="0">
 						#end if
 						</a>
 					</div>
