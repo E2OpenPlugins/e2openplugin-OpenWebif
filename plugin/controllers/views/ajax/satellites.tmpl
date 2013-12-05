@@ -1,5 +1,5 @@
 #from urllib import quote
-
+#from Plugins.Extensions.OpenWebif.local import tstrings
 <script>
 	
 
@@ -20,7 +20,7 @@
 #for $satellite in $satellites
 	<h1><a href="#" id="ajax/channels?id=$quote($satellite.service)&stype=$stype">$satellite.name</a></h1>
 <div>
-loading...
+$tstrings['loading'] ...
 	</div>
 #end for
 

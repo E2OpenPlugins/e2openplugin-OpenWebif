@@ -2,6 +2,7 @@
 #from json import dumps
 #set $etime = time.localtime($event['begin'])
 #set $channel = $event['channel'].replace("'", r"\'")
+#from Plugins.Extensions.OpenWebif.local import tstrings
 
 <!-- Icons from: http://findicons.com/pack/1987/eico -->
 <div id="leftmenu_main">
@@ -22,10 +23,10 @@
 			</div>
 
 			<div>
-			    <img src="/images/ico_timer.png" alt="Add Timer" title="Add Timer" style="cursor:pointer" onclick="addTimer(theevent)" />
-			    <img src="/images/ico_zap.png" alt="Zap" title="Zap" style="cursor:pointer" onclick="zapChannel('$str($event['sref'])', '$channel')" />
+			    <img src="/images/ico_timer.png" alt="$tstrings['add_timer']" title="$tstrings['add_timer']" style="cursor:pointer" onclick="addTimer(theevent)" />
+			    <img src="/images/ico_zap.png" alt="Zap" title="$tstrings['zap']" style="cursor:pointer" onclick="zapChannel('$str($event['sref'])', '$channel')" />
 				<a href="/web/stream.m3u?ref=$quote($event['sref'])&name=$quote($event['channel'])" target="_blank"><img 
-					src="/images/ico_stream2.png" alt="Stream $channel" title="Stream $channel" style="cursor:pointer" /></a>
+					src="/images/ico_stream2.png" alt="Stream $channel" title="$tstrings['stream'] $channel" style="cursor:pointer" /></a>
 			</div>
 		</div>
 		<div style="float:left; width:250px; margin-left: 5px">

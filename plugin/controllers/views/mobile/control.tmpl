@@ -1,6 +1,8 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
 <html>
  <head>
 	<title>OpenWebif</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="user-scalable=no, width=device-width"/>
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<link rel="stylesheet" type="text/css" href="/css/jquery.mobile-1.0.min.css" media="screen"/>
@@ -11,13 +13,13 @@
  <body>
 	<div data-role="page" id="mainPage">
 		<div id="header">
-			<div class="button" onClick="history.back()">Back</div>
+			<div class="button" onClick="history.back()">$tstrings['back']</div>
 			<h1>OpenWebif</h1>
 		</div>
 		
 		<div id="contentContainer">
 			<ul data-role="listview" data-inset="true" data-theme="d">
-				<li data-role="list-divider" role="heading" data-theme="b">Volume Control</li>
+				<li data-role="list-divider" role="heading" data-theme="b">$tstrings['volumecontrol']</li>
 				<li>
 					<table width="100%">
 						<tr>
@@ -31,23 +33,24 @@
 			<br><br>
 
 			<ul data-role="listview" data-inset="true" data-theme="d">
-				<li data-role="list-divider" role="heading" data-theme="b">Instant Record</li>
-				<li><a href="#" onClick="startInstantRecord()">Start Instant Record</a></li>
+				<li data-role="list-divider" role="heading" data-theme="b">$tstrings['instant_record']</li>
+				<li><a href="#" onClick="startInstantRecord()">$tstrings['start_instant_record']</a></li>
 			</ul>
 			
 			<br><br>
 			
 			<ul data-role="listview" data-inset="true" data-theme="d">
-				<li data-role="list-divider" role="heading" data-theme="b">Power Control</li>
-				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=0'); return false">StandBy Toggle</a></li>
-				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=1'); return false">Deep-StandBy</a></li>
-				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=2'); return false">Reboot Box</a></li>
-				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=3'); return false">Restart Enigma2</a></li>
+				<li data-role="list-divider" role="heading" data-theme="b">$tstrings['powercontrol']</li>
+				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=0'); return false">$tstrings['standby_toggle']</a></li>
+				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=1'); return false">$tstrings['deep_standby']</a></li>
+				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=2'); return false">$tstrings['reboot_box']</a></li>
+				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=3'); return false">$tstrings['restart_gui']</a></li>
 			</ul>
 		</div>
 		
 		<div id="footer">
 			<p>OpenWebif Mobile</p>
+			<a onclick="document.location.href='/index?mode=fullpage';return false;" href="#">$tstrings['show_full_openwebif']</a>
 		</div>
 		
 	<script>

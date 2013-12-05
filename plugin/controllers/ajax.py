@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 ##############################################################################
 #                        2011 E2OpenPlugins                                  #
 #                                                                            #
@@ -123,6 +125,11 @@ class AjaxController(BaseController):
 			movies = getMovieList(request.args["dirname"][0])
 		else:
 			movies = getMovieList()
+		info = getInfo()
+		model = info["model"]
+		movies['transcoding'] = False
+		if model in ("solo2", "duo2"):
+			movies['transcoding'] = True
 		return movies
 
 	def P_workinprogress(self, request):

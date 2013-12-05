@@ -1,5 +1,6 @@
 from time import localtime, strftime
 from urllib import quote
+from Plugins.Extensions.OpenWebif.local import tstrings
 
 class renderEvtBlock:
 
@@ -21,7 +22,7 @@ class renderEvtBlock:
             shortdesc = ''
         
         if event['timerStatus'] != '':
-            timerEventSymbol = '<div class="%s">Timer</div>' % event['timerStatus']
+            timerEventSymbol = '<div class="%s">%s</div>' % (event['timerStatus'], tstrings['timer'])
         else:
             timerEventSymbol = ''
         

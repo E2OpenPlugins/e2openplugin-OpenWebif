@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLAYLIST
 from Components.FileList import FileList
 from enigma import eServiceReference

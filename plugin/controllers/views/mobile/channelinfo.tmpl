@@ -1,43 +1,58 @@
+#from urllib import quote
+#from Plugins.Extensions.OpenWebif.local import tstrings
 <html>
  <head>
 	<title>OpenWebif</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="user-scalable=no, width=device-width"/>
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<link rel="stylesheet" type="text/css" href="/css/jquery.mobile-1.0.min.css" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="/css/iphone.css" media="screen"/>
 	<script src="/js/jquery-1.6.2.min.js"></script>
 	<script src="/js/jquery.mobile-1.0.min.js"></script>
+	<script>
+	function zapChannel(sRef) {
+		sRef=sRef.replace(/%22/,'"');
+		var url = '/api/zap?sRef=' + sRef;
+		$.getJSON(url, function(result){
+		});
+	}
+	</script>
  </head>
  <body> 
 	<div data-role="page">
 
 		<div id="header">
-			<div class="button" onClick="history.back()">Back</div>
+			<div class="button" onClick="history.back()">$tstrings['back']</div>
 			<h1>OpenWebif</h1>
+			#set $sref=quote($channelinfo.sref, safe=' ~@#$&()*!+=:;,.?/\'')
+			<div class="button" style="right:5px;left:auto;" onClick="zapChannel('$sref')">$tstrings['zap']</div>
 		</div>
 
 		<div id="mainContent" class="ui-corner-all">
 			<table width="100%" border="0" cellspacing="1" cellpadding="5">
 						<tr>
-							<th colspan="3" class="ui-btn-up-b" style="text-align: left;">Service</th>
+							<th colspan="3" class="ui-btn-up-b" style="text-align: left;">$tstrings['service']</th>
 						</tr>
 						<tr style="background-color:  #f0f7fc;">
 							<td width="200"><img src="$channelinfo.picon" border="0" alt=""></td>
 							<td width="100%" valign="top">
 							<strong>$channelinfo.sname</strong><br />
-							$channelinfo.title<br />
-							$channelinfo.begin-$channelinfo.end ($channelinfo.duration min)<br />
+							#if $channelinfo.title
+								$channelinfo.title<br />
+								$channelinfo.begin-$channelinfo.end ($channelinfo.duration min)<br />
+							#end if
 							</td>
 						</tr>
 						<tr>
-							<th colspan="2" class="ui-btn-up-b" style="text-align: left;">Current Event</th>
+							<th colspan="2" class="ui-btn-up-b" style="text-align: left;">$tstrings['current_event']</th>
 						</tr>
-						#if $channelinfo.shortdesc
+						#if $channelinfo.has_key('shortdesc')
 						<tr style="background-color:  #f0f7fc;">
 							<td colspan="2">$channelinfo.shortdesc</td>
 						</tr>
 						#end if
-						#if $channelinfo.longdesc
+						#if $channelinfo.has_key('longdesc')
 						<tr style="background-color:  #f0f7fc;">
 							<td colspan="2">$channelinfo.longdesc</td>
 						</tr>
@@ -45,9 +60,10 @@
 			</table>
 		</div>
 		
+		#if $channelepg
 		<div id="contentContainer">
 			<ul data-role="listview" data-inset="true" data-theme="d">
-				<li data-role="list-divider" role="heading" data-theme="b">Upcoming Events</li>
+				<li data-role="list-divider" role="heading" data-theme="b">$tstrings['upcoming_events']</li>
 				#for $event in $channelepg
 				<li style="padding: 3px;">
 					<span class="ui-li-heading" style="margin-top: 0px; margin-bottom: 3px;">$event.title</span>
@@ -56,9 +72,11 @@
 				#end for
 			</ul>
 		</div>
+		#end if
 
 		<div id="footer">
 			<p>OpenWebif Mobile</p>
+			<a onclick="document.location.href='/index?mode=fullpage';return false;" href="#">$tstrings['show_full_openwebif']</a>
 		</div>
 		
 	</div>

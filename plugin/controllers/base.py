@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 ##############################################################################
 #                        2011 E2OpenPlugins                                  #
 #                                                                            #
@@ -6,6 +8,8 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
+
+from Plugins.Extensions.OpenWebif.__init__ import _
 
 from Tools.Directories import fileExists
 
@@ -181,7 +185,7 @@ class BaseController(resource.Resource):
 		else:
 			ret["remote"] = "dmm"
 		extras = []
-		extras.append({ 'key': 'ajax/settings','description': 'Settings'})
+		extras.append({ 'key': 'ajax/settings','description': _("Settings")})
 
 # TODO AutoTimer,Epgrefresh,BouquetEditor as Webinterface
 		
@@ -201,4 +205,5 @@ class BaseController(resource.Resource):
 #		except ImportError:
 
 		ret['extras'] = extras
+
 		return ret

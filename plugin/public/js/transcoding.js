@@ -41,6 +41,20 @@ function getOSType() {
 		return "unknown";
 }
 
+function jumper80( file ) {
+	var deviceType = getDeviceType();
+	document.portFormTs.file.value = file;
+	document.portFormTs.device.value = "etc";
+	document.portFormTs.submit();
+}
+
+function jumper8003( file ) {
+	var deviceType = getDeviceType();
+	document.portFormTs.file.value = file;
+	document.portFormTs.device.value = "phone";
+	document.portFormTs.submit();
+}
+
 function jumper8002( sref, sname ) {
 	var deviceType = getDeviceType();
 	document.portForm.ref.value = sref;

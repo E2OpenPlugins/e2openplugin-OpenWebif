@@ -1,3 +1,23 @@
+## Version 0.2.6
+**FEATURES**
+
+* add localising support
+
+**FIXES**
+* improve curren info while movie playing
+
+## Version 0.2.5
+**FEATURES**
+
+* support movielist subfolders
+* support movielist zip dump
+* support vps plugin api
+
+## Version 0.2.4
+**FEATURES**
+
+* support multiple DVB streams at the same time
+
 ## Version 0.2.3
 **FEATURES**
 

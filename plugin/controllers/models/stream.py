@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 ##############################################################################
 #                        2011 E2OpenPlugins                                  #
 #                                                                            #
@@ -7,6 +9,7 @@
 #                                                                            #
 ##############################################################################
 from enigma import eServiceReference, getBestPlayableServiceReference
+from ServiceReference import ServiceReference
 from info import getInfo
 from urllib import unquote, quote
 import os
@@ -48,12 +51,14 @@ def getStream(session, request, m3ufile):
 	if model in ("solo2","duo2"):
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
-				portNumber = 8002;
+				portNumber = 8002
+	if "port" in request.args:
+		portNumber = request.args["port"][0]
 	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef)
 	request.setHeader('Content-Type', 'application/text')
 	return response
 
-def getTS(self,request):
+def getTS(self, request):
 	if "file" in request.args:
 		filename = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
 		if not os.path.exists(filename):
@@ -68,12 +73,20 @@ def getTS(self,request):
 				sRef = eServiceReference(line.strip()).toString()
 			metafile.close()
 
-		if sRef != '':
+		progopt = ''
+		if config.OpenWebif.service_name_for_stream.value and sRef != '':
 			progopt="#EXTVLCOPT:program=%d\n" % (int(sRef.split(':')[3],16))
-		else:
-			progopt=""
 
-		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), config.OpenWebif.port.value, quote(filename))
+		portNumber = config.OpenWebif.port.value
+		info = getInfo()
+		model = info["model"]
+		if model in ("solo2","duo2"):
+			if "device" in request.args :
+				if request.args["device"][0] == "phone" :
+					portNumber = 8002
+		if "port" in request.args:
+			portNumber = request.args["port"][0]
+		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), portNumber, quote(filename))
 		request.setHeader('Content-Type', 'application/text')
 		return response
 	else:
@@ -84,10 +97,21 @@ def getStreamSubservices(session, request):
 
 	currentServiceRef = session.nav.getCurrentlyPlayingServiceReference()
 
+	# TODO : this will only work if sref = current channel
+	# the DMM webif can also show subservices for other channels like the current
+	# ideas are welcome
+	
+	if "sRef" in request.args:
+		currentServiceRef = eServiceReference(request.args["sRef"][0])
+
 	if currentServiceRef is not None:
 		currentService = session.nav.getCurrentService()
 		subservices = currentService.subServices()
-
+	
+		services.append({
+			"servicereference": currentServiceRef.toString(),
+			"servicename": ServiceReference(currentServiceRef).getServiceName()
+			}) 
 		if subservices and subservices.getNumberOfSubservices() != 0:
 			n = subservices and subservices.getNumberOfSubservices()  
 			z = 0
@@ -106,54 +130,3 @@ def getStreamSubservices(session, request):
 		
 
 	return { "services": services }
-
-streamstack = []
-
-class StreamProxyHelper(object):
-	def __init__(self, session, request):
-		self.session = session
-		self.request = request
-		self.service = None
-		
-		streamstack.append(self)
-		self.request.notifyFinish().addCallback(self.close, None)
-		self.request.notifyFinish().addErrback(self.close, None)
-		
-		if "StreamService" not in request.args:
-			self.request.write("=NO STREAM\n")
-			return
-		
-		self.service = session.nav.recordService(eServiceReference(request.args["StreamService"][0]))
-		session.nav.record_event.append(self.recordEvent)
-		if self.service is not None:
-			self.service.prepareStreaming()
-			self.service.start()
-		
-	def close(self, nothandled1=None, nothandled2=None):
-		self.session.nav.record_event.remove(self.recordEvent)
-		if self.service:
-			self.session.nav.stopRecordService(self.service)
-			
-		if self in streamstack:
-			streamstack.remove(self)
-			
-	def recordEvent(self, service, event):
-		if service is self.service:
-			return
-			
-		streaming = service.stream()
-		s = streaming and streaming.getStreamingData()
-
-		if s is None:
-			err = service.getError()
-			if err:
-				self.request.write("-SERVICE ERROR:%d\n" % err)
-				return
-			else:
-				self.request.write("=NO STREAM\n")
-				return
-
-		demux = s["demux"]
-		pids = ','.join(["%x:%s" % (x[0], x[1]) for x in s["pids"]])
-
-		self.request.write("+%d:%s\n" % (demux, pids))

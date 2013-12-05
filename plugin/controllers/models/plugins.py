@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from Components.PluginComponent import plugins
 

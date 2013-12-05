@@ -1,8 +1,12 @@
+# -*- coding: utf-8 -*-
+
 from enigma import eEnv
 from Components.SystemInfo import SystemInfo
 from Components.config import config
 from os import path, listdir
 import xml.etree.cElementTree
+
+from Plugins.Extensions.OpenWebif.__init__ import _
 
 def addCollapsedMenu(name):
 	tags = config.OpenWebif.webcache.collapsedmenus.value.split("|")
@@ -65,13 +69,15 @@ def getJsonFromConfig(cnf):
 		if type(cnf.choices.choices) == dict:
 			choices = []
 			for choice in cnf.choices.choices:
-				choices.append((choice, cnf.choices.choices[choice]))
+				choices.append((choice, _(cnf.choices.choices[choice])))
 		elif type(cnf.choices.choices[0]) == tuple:
-			choices = cnf.choices.choices
+			choices = []
+			for choice_tuple in cnf.choices.choices:
+				choices.append((choice_tuple[0], _(choice_tuple[1])))
 		else:
 			choices = []
 			for choice in cnf.choices.choices:
-				choices.append((choice, choice))
+				choices.append((choice, _(choice)))
 				
 		return {
 			"result": True,
@@ -161,7 +167,7 @@ def getConfigs(key):
 		for entry in config_entries:
 			try:
 				data = getJsonFromConfig(eval(entry.text or ""))
-				text = entry.get("text", "")
+				text = _(entry.get("text", ""))
 				if "limits" in data:
 					text = "%s (%d - %d)" % (text, data["limits"][0], data["limits"][1])
 				configs.append({
@@ -253,9 +259,9 @@ class ConfigFiles:
 				if len(configs):
 					sections.append({
 						"key": key,
-						"description": section.get("title")
+						"description": _(section.get("title"))
 					})
-					title = section.get("title", "")
+					title = _(section.get("title", ""))
 					self.section_config[key] = (title, configs)
 		sections = sorted(sections, key=lambda k: k['description'])
 		self.sections = sections

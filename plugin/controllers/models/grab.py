@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 ##############################################################################
 #                        2011 E2OpenPlugins                                  #
 #                                                                            #
@@ -14,8 +16,9 @@ GRAB_PATH = '/usr/bin/grab'
 
 class grabScreenshot(resource.Resource):
 
-	def __init__(self, path = ""):
+	def __init__(self,session, path = ""):
 		resource.Resource.__init__(self)
+		self.session = session
 		self.container = eConsoleAppContainer()
 		self.container.appClosed.append(self.grabFinished)
 
@@ -44,10 +47,18 @@ class grabScreenshot(resource.Resource):
 			elif mode == "video":
 				graboptions += " -v"
 
+		try:
+			ref = self.session.nav.getCurrentlyPlayingServiceReference().toString()
+		except:
+			ref = None 
+
+		if ref is not None:
+			self.sref = '_'.join(ref.split(':', 10)[:10])
+		else:
+			self.sref = 'screenshot'
+
 		self.filepath = "/tmp/screenshot." + self.fileformat
 		grabcommand = GRAB_PATH + graboptions + " " + self.filepath
-
-		#self.container.execute(grabcommand)
 
 		os.system(grabcommand)
 		self.grabFinished()
@@ -58,7 +69,7 @@ class grabScreenshot(resource.Resource):
 		if fileformat == "jpg":
 			fileformat = "jpeg"
 		try:
-			self.request.setHeader('Content-Disposition', 'inline; filename=screenshot.%s;' % self.fileformat)
+			self.request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (self.sref,self.fileformat))
 			self.request.setHeader('Content-Type','image/%s' % fileformat)
 			self.request.setHeader('Content-Length', '%i' % os.path.getsize(self.filepath))
 

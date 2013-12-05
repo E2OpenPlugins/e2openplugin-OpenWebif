@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 ##############################################################################
 #                        2011 E2OpenPlugins                                  #
 #                                                                            #
@@ -68,6 +70,18 @@ def getTimers(session):
 		if achannels:
 			asrefs = achannels
 
+		vpsplugin_enabled = False
+		vpsplugin_overwrite = False
+		vpsplugin_time = -1
+		if hasattr(timer, "vpsplugin_enabled"):
+			vpsplugin_enabled = True
+		if hasattr(timer, "vpsplugin_overwrite"):
+			vpsplugin_overwrite = True
+		if hasattr(timer, "vpsplugin_time"):
+			vpsplugin_time = timer.vpsplugin_time
+			if not vpsplugin_time:
+				vpsplugin_time = -1
+
 		timers.append({
 			"serviceref": str(timer.service_ref),
 			"servicename": timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
@@ -97,7 +111,10 @@ def getTimers(session):
 			"nextactivation": nextactivation,
 			"realbegin":strftime("%d.%m.%Y %H:%M", (localtime(float(timer.begin)))),
 			"realend":strftime("%d.%m.%Y %H:%M", (localtime(float(timer.end)))),
-			"asrefs": asrefs
+			"asrefs": asrefs,
+			"vpsplugin_enabled":vpsplugin_enabled,
+			"vpsplugin_overwrite":vpsplugin_overwrite,
+			"vpsplugin_time":vpsplugin_time
 		})
 		
 	return {
@@ -105,7 +122,7 @@ def getTimers(session):
 		"timers": timers
 	}
 
-def addTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname, tags, repeated, logentries=None, eit=0):
+def addTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname, tags, repeated, vpsinfo=None, logentries=None, eit=0):
 	serviceref = unquote(serviceref)
 	rt = session.nav.RecordTimer
 
@@ -115,7 +132,7 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 		dirname = preferredTimerPath()
 
 	print "mao2", dirname
-
+	
 	try:
 		timer = RecordTimerEntry(
 			ServiceReference(serviceref),
@@ -157,7 +174,7 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 		"message": "Timer '%s' added" % name
 	}
 
-def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags):
+def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vpsinfo):
 	serviceref = unquote(serviceref)
 	event = eEPGCache.getInstance().lookupEventId(eServiceReference(serviceref), eventid)
 	if event is None:
@@ -180,11 +197,12 @@ def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags):
 		dirname,
 		tags,
 		False,
+		vpsinfo,
 		None,
 		eit
 	)
 	
-def editTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname, tags, repeated, channelOld, beginOld, endOld):
+def editTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname, tags, repeated, channelOld, beginOld, endOld, vpsinfo):
 	rt = session.nav.RecordTimer
 	for timer in rt.timer_list + rt.processed_timers:
 		if str(timer.service_ref) == channelOld and int(timer.begin) == beginOld and int(timer.end) == endOld:
@@ -202,6 +220,7 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 				dirname,
 				tags,
 				repeated,
+				vpsinfo,
 				timer.log_entries
 			)
 			if not res["result"]:

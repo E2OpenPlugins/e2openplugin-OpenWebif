@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 ##############################################################################
 #                        2011 E2OpenPlugins                                  #
 #                                                                            #
@@ -22,7 +24,7 @@ import os
 import sys
 import time
 
-OPENWEBIFVER = "OWIF 0.2.3"
+OPENWEBIFVER = "OWIF 0.2.5"
 
 def getOpenWebifVer():
 	return OPENWEBIFVER
