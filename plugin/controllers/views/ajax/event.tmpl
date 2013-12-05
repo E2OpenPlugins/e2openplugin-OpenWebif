@@ -18,8 +18,8 @@
 			</div>
 
 			<div style="background-color: #1c478e; color:#fff; width:79px;margin:5px 0">
-				<div style="font-size:23px; text-align:center">$time.strftime("%a", $etime)</div>
-				<div style="color:#A9D1FA; text-align:center">$time.strftime("%d %B", $etime)</div>
+				<div style="font-size:23px; text-align:center">$tstrings[($time.strftime("%a", $etime)).lower()]</div>
+				<div style="color:#A9D1FA; text-align:center">$time.strftime("%d", $etime) $tstrings[($time.strftime("%B", $etime)).lower()]</div>
 			</div>
 
 			<div>
