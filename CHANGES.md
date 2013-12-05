@@ -4,7 +4,7 @@
 * add localising support
 
 **FIXES**
-* improve curren info while movie playing
+* improve current info while movie playing
 
 ## Version 0.2.5
 **FEATURES**
