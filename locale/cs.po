@@ -1,10 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-11-10 11:55+0100\n"
+"POT-Creation-Date: 2013-11-25 22:15+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -50,6 +51,81 @@ msgstr "Přidat název programu do stream informací"
 
 msgid "OpenWebif Configuration"
 msgstr "Nastavení OpenWebif"
+
+msgid "About"
+msgstr "O OpenWebif"
+
+msgid "Box Info"
+msgstr "O přijímači"
+
+msgid "Box Control"
+msgstr "Ovládání boxu"
+
+msgid "Epg Search"
+msgstr "Hledat v EPG"
+
+msgid "Extras"
+msgstr "Další"
+
+msgid "Grab Screenshot"
+msgstr "Snímek obrazovky"
+
+msgid "Hide full remote"
+msgstr "minimální ovladač"
+
+msgid "Infos"
+msgstr "Informace"
+
+msgid "Main"
+msgstr "Hlavní"
+
+msgid "Movies"
+msgstr "Filmy"
+
+msgid "Nothing playing."
+msgstr "Nic se nepřehrává."
+
+msgid "Open Source Web Interface for Linux set-top box"
+msgstr "Open Source Web Interface pro linuxový set-top box"
+
+msgid "Power Control"
+msgstr "Napájení"
+
+msgid "Radio"
+msgstr "Rádio"
+
+msgid "Remote"
+msgstr "Ovladač"
+
+msgid "Search"
+msgstr "Hledat"
+
+msgid "Send a Message"
+msgstr "Odeslat zprávu"
+
+msgid "(shift + click for long pressure)"
+msgstr "(shift+klik jako dlouhý stisk)"
+
+msgid "Show full remote"
+msgstr "úplný ovladač"
+
+msgid "Stream"
+msgstr ""
+
+msgid "Television"
+msgstr "Televize"
+
+msgid "Timers"
+msgstr "Časovače"
+
+msgid "TV Multi EPG"
+msgstr ""
+
+msgid "Volume Control"
+msgstr "Hlasitost"
+
+msgid "zap before Stream"
+msgstr "přepnout před"
 
 msgid "New"
 msgstr "Nový"
