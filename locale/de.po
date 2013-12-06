@@ -119,7 +119,7 @@ msgid "February"
 msgstr "Februar"
 
 msgid "March"
-msgstr "Mrz"
+msgstr "März"
 
 msgid "April"
 msgstr "April"
