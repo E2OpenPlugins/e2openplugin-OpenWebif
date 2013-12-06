@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2013-12-05 22:05+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: plnick\n"
+"Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi\n"
-"Language: cs_CZ\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Czech\n"
+"X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
@@ -51,237 +53,229 @@ msgid "OpenWebif Configuration"
 msgstr "Nastavení OpenWebif"
 
 msgid "Mo"
-msgstr ""
+msgstr "Po"
 
 msgid "Tu"
-msgstr ""
+msgstr "Út"
 
-#, fuzzy
 msgid "We"
-msgstr "W"
+msgstr "St"
 
 msgid "Th"
-msgstr ""
+msgstr "Čt"
 
 msgid "Fr"
-msgstr ""
+msgstr "Pá"
 
-#, fuzzy
 msgid "Sa"
-msgstr "Uložit"
+msgstr "So"
 
 msgid "Su"
-msgstr ""
+msgstr "Ne"
 
 msgid "Mon"
-msgstr ""
+msgstr "Po"
 
 msgid "Tue"
-msgstr ""
+msgstr "Út"
 
 msgid "Wed"
-msgstr ""
+msgstr "St"
 
 msgid "Thu"
-msgstr ""
+msgstr "Čt"
 
 msgid "Fri"
-msgstr ""
+msgstr "Pá"
 
 msgid "Sat"
-msgstr ""
+msgstr "So"
 
 msgid "Sun"
-msgstr ""
+msgstr "Ne"
 
 msgid "Monday"
-msgstr ""
+msgstr "Pondělí"
 
 msgid "Tuesday"
-msgstr ""
+msgstr "Úterý"
 
 msgid "Wednesday"
-msgstr ""
+msgstr "Strředa"
 
 msgid "Thursday"
-msgstr ""
+msgstr "Čtvrtek"
 
 msgid "Friday"
-msgstr ""
+msgstr "Pátek"
 
 msgid "Saturday"
-msgstr ""
+msgstr "Sobota"
 
 msgid "Sunday"
-msgstr ""
+msgstr "Neděla"
 
 msgid "January"
-msgstr ""
+msgstr "Leden"
 
 msgid "February"
-msgstr ""
+msgstr "Únor"
 
-#, fuzzy
 msgid "March"
-msgstr "Hledat"
+msgstr "Březen"
 
 msgid "April"
-msgstr ""
+msgstr "Duben"
 
 msgid "May"
-msgstr ""
+msgstr "Květen"
 
 msgid "June"
-msgstr ""
+msgstr "Červen"
 
 msgid "July"
-msgstr ""
+msgstr "Červenec"
 
 msgid "August"
-msgstr ""
+msgstr "Srpen"
 
 msgid "September"
-msgstr ""
+msgstr "Září"
 
 msgid "October"
-msgstr ""
+msgstr "Říjen"
 
 msgid "November"
-msgstr ""
+msgstr "Listopad"
 
 msgid "December"
-msgstr ""
+msgstr "Prosinec"
 
 msgid "About"
-msgstr "O OpenWebif"
+msgstr "O prohlížeči"
 
-#, fuzzy
 msgid "Add Timer"
-msgstr "Časovače"
+msgstr "Přidat časovač"
 
 msgid "After Event"
-msgstr ""
+msgstr "Po skončení"
 
 msgid "AGC"
 msgstr ""
 
 msgid "All"
-msgstr ""
+msgstr "Vše"
 
 msgid "All Channels"
-msgstr ""
+msgstr "Všechny kanály"
 
 msgid "Authors"
-msgstr ""
+msgstr "Autoři"
 
 msgid "Auto"
 msgstr ""
 
 msgid "Back"
-msgstr ""
+msgstr "Zpět"
 
 msgid "Begin"
-msgstr ""
+msgstr "Začátek"
 
 msgid "BER"
 msgstr ""
 
 msgid "Bouquets"
-msgstr ""
+msgstr "Přehledy"
 
 msgid "Box Info"
 msgstr "O přijímači"
 
 msgid "Box"
-msgstr ""
+msgstr "Přijímač"
 
 msgid "Box Control"
 msgstr "Ovládání boxu"
 
 msgid "Box Uptime"
-msgstr ""
+msgstr "Doba provozu"
 
 msgid "Brand"
-msgstr ""
+msgstr "Značka"
 
 msgid "Capacity"
-msgstr ""
+msgstr "Kapacita"
 
 msgid "Channel"
-msgstr ""
+msgstr "Kanál"
 
 msgid "Channels"
-msgstr ""
+msgstr "Kanály"
 
 msgid "Chipset"
 msgstr ""
 
-#, fuzzy
 msgid "Cleanup Timers"
-msgstr "Časovače"
+msgstr "Vyčistit časovače"
 
 msgid "Contributors"
 msgstr ""
 
-#, fuzzy
 msgid "Control"
-msgstr "Ovládání boxu"
+msgstr ""
 
 msgid "Current"
-msgstr ""
+msgstr "Aktuální"
 
 msgid "Current Event"
-msgstr ""
+msgstr "Aktuální událost"
 
 msgid "Deep-Standby"
-msgstr ""
+msgstr "Hluboký spánek"
 
 msgid "Default"
-msgstr ""
+msgstr "Standardní"
 
 msgid "Delete Movie"
-msgstr ""
+msgstr "odstranit film"
 
 msgid "Delete Timer"
-msgstr ""
+msgstr "Odstranit časovač"
 
 msgid "Description"
-msgstr ""
+msgstr "Popis"
 
 msgid "DHCP"
 msgstr ""
 
 msgid "Disable Timer"
-msgstr ""
+msgstr "Zakázat časovač"
 
 msgid "Dolby"
 msgstr ""
 
 msgid "Download"
-msgstr ""
+msgstr "stáhnout"
 
 msgid "Download Playlist for"
 msgstr ""
 
 msgid "Duration"
-msgstr ""
+msgstr "Trvání"
 
-#, fuzzy
 msgid "Edit Timer"
-msgstr "Časovače"
+msgstr "Upravit časovač"
 
 msgid "Enable Timer"
-msgstr ""
+msgstr "Povolit časovač"
 
 msgid "End"
-msgstr ""
+msgstr "Konec"
 
-#, fuzzy
 msgid "Enabled"
-msgstr "Kabelové"
+msgstr "Povolen"
 
 msgid "Encrypted"
-msgstr ""
+msgstr "Kódováno"
 
 msgid "EPG"
 msgstr ""
@@ -290,7 +284,7 @@ msgid "Epg Search"
 msgstr "Hledat v EPG"
 
 msgid "Error"
-msgstr ""
+msgstr "Chyba"
 
 msgid "Every"
 msgstr ""
@@ -299,80 +293,79 @@ msgid "Extras"
 msgstr "Další"
 
 msgid "finished"
-msgstr ""
+msgstr "dokončeno"
 
 msgid "Firmware version"
-msgstr ""
+msgstr "Firmware"
 
 msgid "Frontprocessor Version"
-msgstr ""
+msgstr " Frontprocesor"
 
 msgid "Free"
-msgstr ""
+msgstr "Volné"
 
 msgid "Free Memory"
-msgstr ""
+msgstr "Volná paměť"
 
 msgid "Gateway"
-msgstr ""
+msgstr "Brána"
 
 msgid "Grab Screenshot"
 msgstr "Snímek obrazovky"
 
 msgid "Gui version"
-msgstr ""
+msgstr "Enigma"
 
 msgid "Hide full remote"
-msgstr "minimální ovladač"
+msgstr "obecný ovladač"
 
 msgid "High Resolution"
-msgstr ""
+msgstr "Vysoké rozlišení"
 
 msgid "Hard disk model"
-msgstr ""
+msgstr "HDD model"
 
 msgid "IP address"
-msgstr ""
+msgstr "IP adresa"
 
 msgid "Infos"
 msgstr "Informace"
 
 msgid "Instant Record"
-msgstr ""
+msgstr "Okamžité nahrávání"
 
 msgid "Javascript Libraries"
-msgstr ""
+msgstr "Javascript knihovny"
 
 msgid "Just play"
-msgstr ""
+msgstr "Jen přepnout"
 
 msgid "Kernel version"
-msgstr ""
+msgstr "Verze jádra"
 
 msgid "LICENSE"
-msgstr ""
+msgstr "LICENCE"
 
 msgid "loading"
-msgstr ""
+msgstr "načítám"
 
 msgid "Location"
-msgstr ""
+msgstr "Umístění"
 
 msgid "Locked"
 msgstr ""
 
 msgid "MAC address"
-msgstr ""
+msgstr "MAC adresa"
 
 msgid "Main"
 msgstr "Hlavní"
 
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
-#, fuzzy
 msgid "Movielist"
-msgstr "Filmy"
+msgstr "Seznam filmů"
 
 msgid "Movies"
 msgstr "Filmy"
@@ -381,7 +374,7 @@ msgid "MultiEPG"
 msgstr ""
 
 msgid "Name"
-msgstr ""
+msgstr "Název"
 
 msgid "Namespace"
 msgstr ""
@@ -393,11 +386,10 @@ msgid "no description available"
 msgstr ""
 
 msgid "Sorry this page is not yet implemented"
-msgstr ""
+msgstr "Tato stránka není zatím implementována"
 
-#, fuzzy
 msgid "Nothing"
-msgstr "Nic se nepřehrává."
+msgstr "Nic"
 
 msgid "Nothing playing."
 msgstr "Nic se nepřehrává."
@@ -415,90 +407,85 @@ msgid "Power Control"
 msgstr "Napájení"
 
 msgid "Provider"
-msgstr ""
+msgstr "Poskytovatel"
 
 msgid "Providers"
-msgstr ""
+msgstr "Poskytovatelé"
 
 msgid "Radio"
 msgstr "Rádio"
 
 msgid "Reboot Box"
-msgstr ""
+msgstr "Restartovat Box"
 
 msgid "Recording Status"
-msgstr ""
+msgstr "Stav nahrávání"
 
 msgid "Refresh"
-msgstr ""
+msgstr "Aktualizovat"
 
 msgid "Refresh automatically every"
-msgstr ""
+msgstr "Aktualizovat každých"
 
 msgid "Remote"
 msgstr "Ovladač"
 
 msgid "Repeated"
-msgstr ""
+msgstr "Opakování"
 
 msgid "Restart GUI"
-msgstr ""
+msgstr "Restart Enigma"
 
 msgid "running"
-msgstr ""
+msgstr "probíhá"
 
 msgid "Satellites"
-msgstr ""
+msgstr "Satelity"
 
 msgid "Satfinder"
 msgstr ""
 
-#, fuzzy
 msgid "Screenshot"
 msgstr "Snímek obrazovky"
 
 msgid "Search"
 msgstr "Hledat"
 
-#, fuzzy
 msgid "Search IMDb"
-msgstr "Hledat"
+msgstr "Prohledat IMDb"
 
 msgid "seconds"
-msgstr ""
+msgstr "sekund"
 
-#, fuzzy
 msgid "Send Message"
 msgstr "Odeslat zprávu"
 
 msgid "Send a Message"
 msgstr "Odeslat zprávu"
 
-#, fuzzy
 msgid "Service"
-msgstr "Programy"
+msgstr "Program"
 
 msgid "Settings"
-msgstr ""
+msgstr "Nastavení"
 
 msgid "(shift + click for long pressure)"
-msgstr "(shift+klik jako dlouhý stisk)"
+msgstr "(dlouhý stisk = shift + klik)"
 
-#, fuzzy
 msgid "Show Full OpenWebif"
-msgstr "úplný ovladač"
+msgstr "zobrazit plný OpenWebif"
 
 msgid "Show full remote"
 msgstr "úplný ovladač"
 
 msgid "Show EPG for"
-msgstr ""
+msgstr "zobrazit EPG pro"
 
 msgid "Shutdown"
-msgstr ""
+msgstr "Vypnout"
 
 msgid "Site and sources"
-msgstr ""
+msgstr "Umístění a zdroje"
 
 msgid "SNR"
 msgstr ""
@@ -507,26 +494,25 @@ msgid "Software"
 msgstr ""
 
 msgid "Standby"
-msgstr ""
+msgstr "Standby"
 
 msgid "Standby Toggle"
-msgstr ""
+msgstr "Přepnout Standby"
 
 msgid "Start Instant Record"
-msgstr ""
+msgstr "Spustit okamžité nahrávání"
 
 msgid "Stream"
-msgstr ""
+msgstr "streamovat"
 
 msgid "Subnet mask"
-msgstr ""
+msgstr "Maska"
 
-#, fuzzy
 msgid "Subservices"
-msgstr "Programy"
+msgstr "Podprogramy"
 
 msgid "Tags"
-msgstr ""
+msgstr "Tagy"
 
 msgid "Teletext"
 msgstr ""
@@ -540,17 +526,14 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#, fuzzy
 msgid "Timeout"
-msgstr "Časovače"
+msgstr "Trvání"
 
-#, fuzzy
 msgid "Timerlist"
-msgstr "Časovače"
+msgstr "Přehled časovačů"
 
-#, fuzzy
 msgid "Timer"
-msgstr "Časovače"
+msgstr "Časovač"
 
 msgid "Timers"
 msgstr "Časovače"
@@ -559,31 +542,31 @@ msgid "Title"
 msgstr ""
 
 msgid "Total Memory"
-msgstr ""
+msgstr "Celková paměť"
 
 msgid "Tuner Bit Error Rate BER"
-msgstr ""
+msgstr "Bitová chyba signálu BER"
 
 msgid "Tuner Number (0-3)"
-msgstr ""
+msgstr "Čislo tuneru (-)"
 
 msgid "Tuner Signal"
-msgstr ""
+msgstr "Signál tuneru"
 
 msgid "Tuner Signal Quality SNR"
-msgstr ""
+msgstr "Kvalita signálu SNR"
 
 msgid "Tuner Signal Quality SNR_DB"
-msgstr ""
+msgstr "Kvalita signálu SNR_DB"
 
 msgid "Tuner Signal Power AGC"
-msgstr ""
+msgstr "Síla signálu AGC"
 
 msgid "Tuner Type"
-msgstr ""
+msgstr "Typ tuneru"
 
 msgid "Tuners"
-msgstr ""
+msgstr "Tunery"
 
 msgid "TV"
 msgstr ""
@@ -592,46 +575,46 @@ msgid "TV Multi EPG"
 msgstr ""
 
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 msgid "Upcoming Events"
 msgstr ""
 
 msgid "Version"
-msgstr ""
+msgstr "Verze"
 
 msgid "Video"
 msgstr ""
 
 msgid "Video Height"
-msgstr ""
+msgstr "Výška videa"
 
 msgid "Video Wide"
-msgstr ""
+msgstr "Širokoúhlé"
 
 msgid "Video Width"
-msgstr ""
+msgstr "Šířka videa"
 
 msgid "Volume Control"
 msgstr "Hlasitost"
 
 msgid "waiting"
-msgstr ""
+msgstr "čekání"
 
 msgid "Warning"
-msgstr ""
+msgstr "Varování"
 
 msgid "Yes/No"
-msgstr ""
+msgstr "Ano/Ne"
 
 msgid "Zap"
-msgstr ""
+msgstr "Přepnout"
 
 msgid "zap before Stream"
 msgstr "přepnout před"
 
 msgid "Zap to"
-msgstr ""
+msgstr "Přepínám na"
 
 msgid "New"
 msgstr "Nový"
