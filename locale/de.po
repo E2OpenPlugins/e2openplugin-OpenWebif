@@ -155,7 +155,7 @@ msgid "Add Timer"
 msgstr "Timer hinzufügen"
 
 msgid "After Event"
-msgstr "Nach dem Ereignis"
+msgstr "Danach"
 
 msgid "AGC"
 msgstr "AGC"
@@ -251,7 +251,7 @@ msgid "Dolby"
 msgstr "Dolby"
 
 msgid "Download"
-msgstr "Herunterladen"
+msgstr "Herunterladen von"
 
 msgid "Download Playlist for"
 msgstr "Herunterladen der Wiedergabeliste für"
@@ -335,7 +335,7 @@ msgid "Javascript Libraries"
 msgstr "Javascript-Bibliothek"
 
 msgid "Just play"
-msgstr "Nur umschalten"
+msgstr "Umschaltt."
 
 msgid "Kernel version"
 msgstr "Kernelversion"
@@ -428,7 +428,7 @@ msgid "Remote"
 msgstr "Fernbedienung"
 
 msgid "Repeated"
-msgstr "Wiederholt"
+msgstr "Wiederhole"
 
 msgid "Restart GUI"
 msgstr "GUI neu starten"
