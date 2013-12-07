@@ -539,7 +539,7 @@ msgid "Timers"
 msgstr "Časovače"
 
 msgid "Title"
-msgstr ""
+msgstr "Název"
 
 msgid "Total Memory"
 msgstr "Celková paměť"
