@@ -129,14 +129,48 @@ $(function() {
         })
 });
 
-function initJsTranslation(save, cancel, add_timer, edit_timer, del_timer, del_movie, start_after_end) {
-	tstr_close = cancel;
-	tstr_save = save;
-	tstr_add_timer = add_timer;
-	tstr_edit_timer = edit_timer;
-	tstr_del_timer = del_timer;
-	tstr_del_movie = del_movie;
-	tstr_start_after_end = start_after_end
+function initJsTranslation(strings) {
+	tstr_add_timer = strings.add_timer;
+	tstr_close = strings.cancel;
+	tstr_del_timer = strings.delete_timer_question;
+	tstr_del_movie = strings.delete_movie_question;
+	tstr_done = strings.done;
+	tstr_edit_timer = strings.edit_timer;
+	tstr_hour = strings.hour;
+	tstr_save = strings.save;
+	tstr_minute = strings.minute;
+	tstr_now = strings.now;
+	tstr_start_after_end = strings.start_after_end;
+	tstr_time = strings.time;
+	
+	tstr_january = strings.month_01;
+	tstr_february = strings.month_02;
+	tstr_march = strings.month_03;
+	tstr_april = strings.month_04;
+	tstr_may = strings.month_05;
+	tstr_june = strings.month_06;
+	tstr_july = strings.month_07;
+	tstr_august = strings.month_08;
+	tstr_september = strings.month_09;
+	tstr_october = strings.month_10;
+	tstr_november = strings.month_11;
+	tstr_december = strings.month_12;
+	
+	tstr_monday = strings.monday;
+	tstr_tuesday = strings.tuesday;
+	tstr_wednesday = strings.wednesday;
+	tstr_thursday = strings.thursday;
+	tstr_friday = strings.friday;
+	tstr_saturday = strings.saturday;
+	tstr_sunday = strings.sunday;
+	
+	tstr_mo = strings.mo;
+	tstr_tu = strings.tu;
+	tstr_we = strings.we;
+	tstr_th = strings.th;
+	tstr_fr = strings.fr;
+	tstr_sa = strings.sa;
+	tstr_su = strings.su;
 }
 
 function dialog_notyet(){

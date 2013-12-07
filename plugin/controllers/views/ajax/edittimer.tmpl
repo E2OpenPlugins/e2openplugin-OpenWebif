@@ -103,6 +103,16 @@
 #raw
 
 $('#timerbegin').datetimepicker({
+	
+	timeText: tstr_time,
+	hourText: tstr_hour,
+	minuteText: tstr_minute,
+	currentText: tstr_now,
+	closeText: tstr_done,
+	monthNames: [tstr_january, tstr_february, tstr_march, tstr_april, tstr_may, tstr_june, tstr_july, tstr_august, tstr_september, tstr_october, tstr_november, tstr_december],
+	dayNames: [tstr_sunday, tstr_monday, tstr_tuesday, tstr_wednesday, tstr_thursday, tstr_friday, tstr_saturday, tstr_sunday],
+	dayNamesMin: [tstr_su, tstr_mo, tstr_tu, tstr_we, tstr_th, tstr_fr, tstr_sa, tstr_su],
+	
 	dateFormat: 'dd.mm.yy',
 	timeFormat: 'hh:mm',
 	onClose: function(dateText, inst) {
@@ -116,6 +126,16 @@ $('#timerbegin').datetimepicker({
 	}
 });
 $('#timerend').datetimepicker({
+	
+	timeText: tstr_time,
+	hourText: tstr_hour,
+	minuteText: tstr_minute,
+	currentText: tstr_now,
+	closeText: tstr_done,
+	monthNames: [tstr_january, tstr_february, tstr_march, tstr_april, tstr_may, tstr_june, tstr_july, tstr_august, tstr_september, tstr_october, tstr_november, tstr_december],
+	dayNames: [tstr_sunday, tstr_monday, tstr_tuesday, tstr_wednesday, tstr_thursday, tstr_friday, tstr_saturday, tstr_sunday],
+	dayNamesMin: [tstr_su, tstr_mo, tstr_tu, tstr_we, tstr_th, tstr_fr, tstr_sa, tstr_su],
+	
 	dateFormat: 'dd.mm.yy',
 	timeFormat: 'hh:mm',
 	onClose: function(dateText, inst) {

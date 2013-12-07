@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-12-07 14:50+0100\n"
+"POT-Creation-Date: 2013-12-07 17:41+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -256,6 +256,9 @@ msgstr "Timer deaktivieren"
 msgid "Dolby"
 msgstr "Dolby"
 
+msgid "Done"
+msgstr "Fertig"
+
 msgid "Download"
 msgstr "Herunterladen von"
 
@@ -328,6 +331,9 @@ msgstr "Hohe Auflösung"
 msgid "Hard disk model"
 msgstr "Festplattenmodell"
 
+msgid "Hour"
+msgstr "Stunde"
+
 msgid "IP address"
 msgstr "IP-Adresse"
 
@@ -364,6 +370,9 @@ msgstr "MAC-Adresse"
 msgid "Main"
 msgstr "Hauptmenü"
 
+msgid "Minute"
+msgstr "Minute"
+
 msgid "Model"
 msgstr "Modell"
 
@@ -396,6 +405,9 @@ msgstr "Nichts"
 
 msgid "Nothing playing."
 msgstr "Keine Wiedergabe"
+
+msgid "Now"
+msgstr "Jetzt"
 
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Open-Source-Webinterface für Linux-Set-Top-Boxen"
@@ -531,6 +543,9 @@ msgstr "Vorlagenart"
 
 msgid "Text"
 msgstr "Text"
+
+msgid "Time"
+msgstr "Zeit"
 
 msgid "Timeout"
 msgstr "Zeitüberschreitung"

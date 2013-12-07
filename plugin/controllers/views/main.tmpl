@@ -1,4 +1,5 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
+#from json import dumps
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,9 +12,7 @@
 <script type="text/javascript" src="/js/jquery-ui-1.8.18.custom.min.js"></script>
 <script type="text/javascript" src="/js/openwebif.js"></script>
 <script type="text/javascript" src="/js/transcoding.js"></script>
-<script type="text/javascript">
-	initJsTranslation('$tstrings['save']', '$tstrings['cancel']', '$tstrings['add_timer']', '$tstrings['edit_timer']', '$tstrings['delete_timer_question']', '$tstrings['delete_movie_question']', '$tstrings['start_after_end']');
-</script>
+<script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
 <title>Open Webif</title>
 </head>
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-12-07 14:50+0100\n"
+"POT-Creation-Date: 2013-12-07 17:41+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -255,6 +255,9 @@ msgstr ""
 msgid "Dolby"
 msgstr ""
 
+msgid "Done"
+msgstr ""
+
 msgid "Download"
 msgstr ""
 
@@ -327,6 +330,9 @@ msgstr ""
 msgid "Hard disk model"
 msgstr ""
 
+msgid "Hour"
+msgstr ""
+
 msgid "IP address"
 msgstr ""
 
@@ -363,6 +369,9 @@ msgstr ""
 msgid "Main"
 msgstr ""
 
+msgid "Minute"
+msgstr ""
+
 msgid "Model"
 msgstr ""
 
@@ -394,6 +403,9 @@ msgid "Nothing"
 msgstr ""
 
 msgid "Nothing playing."
+msgstr ""
+
+msgid "Now"
 msgstr ""
 
 msgid "Open Source Web Interface for Linux set-top box"
@@ -529,6 +541,9 @@ msgid "Template Engine"
 msgstr ""
 
 msgid "Text"
+msgstr ""
+
+msgid "Time"
 msgstr ""
 
 msgid "Timeout"
