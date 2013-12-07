@@ -11,7 +11,9 @@
 <script type="text/javascript" src="/js/jquery-ui-1.8.18.custom.min.js"></script>
 <script type="text/javascript" src="/js/openwebif.js"></script>
 <script type="text/javascript" src="/js/transcoding.js"></script>
-
+<script type="text/javascript">
+	initJsTranslation('$tstrings['save']', '$tstrings['cancel']', '$tstrings['add_timer']', '$tstrings['edit_timer']', '$tstrings['delete_timer_question']', '$tstrings['delete_movie_question']', '$tstrings['start_after_end']');
+</script>
 <title>Open Webif</title>
 </head>
 
@@ -65,7 +67,7 @@
 			#def volumeMenu
 			<div class="volslider">
 					<p style="text-align:center; padding-bottom:8px;"> 
-						<label for="amount">Volume:</label>
+						<label for="amount">$tstrings['volume']:</label>
 						<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold; width:40px;" />
 					</p>
 				<div id="slider" style="width:130px;"></div>

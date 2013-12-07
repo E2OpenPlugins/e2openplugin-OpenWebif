@@ -129,6 +129,15 @@ $(function() {
         })
 });
 
+function initJsTranslation(save, cancel, add_timer, edit_timer, del_timer, del_movie, start_after_end) {
+	tstr_close = cancel;
+	tstr_save = save;
+	tstr_add_timer = add_timer;
+	tstr_edit_timer = edit_timer;
+	tstr_del_timer = del_timer;
+	tstr_del_movie = del_movie;
+	tstr_start_after_end = start_after_end
+}
 
 function dialog_notyet(){
 	$('#dialog').dialog('open');
@@ -214,8 +223,8 @@ function toggleTimerStatus(sRef, begin, end) {
 	});
 }
 
-function deleteTimer(sRef, begin, end) {
-	var answer = confirm("Really delete this timer?");
+function deleteTimer(sRef, begin, end, title) {
+	var answer = confirm(tstr_del_timer + ": " + title);
 	if (answer == true) {
 		webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end, 
 			function() { $('#'+begin+'-'+end).remove(); } 
@@ -227,8 +236,8 @@ function cleanupTimer() {
 	webapi_execute("/api/timercleanup", function() { load_maincontent('/ajax/timers'); });
 }
 
-function deleteMovie(sRef, divid) {
-	answer = confirm("Really delete this movie?");
+function deleteMovie(sRef, divid, title) {
+	var answer = confirm(tstr_del_movie + ": " + title);
 	if (answer == true) {
 		webapi_execute("/api/moviedelete?sRef=" + sRef);
 		// TODO: check the api result first
@@ -539,7 +548,7 @@ function editTimer(serviceref, begin, end) {
 							$('#timerend').datetimepicker('setDate', (new Date(Math.round(timer.end) * 1000)));
 							
 							$('#editTimerForm').dialog("open");
-							$('#editTimerForm').dialog("option", "title", "Edit Timer - " + timer.name);
+							$('#editTimerForm').dialog("option", "title", tstr_edit_timer + " - " + timer.name);
 							break;
 						}
 				}
@@ -596,7 +605,7 @@ function addTimer(evt) {
 	$('#bouquet_select').val(serviceref);
 	
 	$('#editTimerForm').dialog("open");
-	$('#editTimerForm').dialog("option", "title", "Add Timer");
+	$('#editTimerForm').dialog("option", "title", tstr_add_timer);
 	$('#editTimerForm').dialog("option", "height", "auto");
 }
 

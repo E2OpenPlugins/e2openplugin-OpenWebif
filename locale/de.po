@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-12-05 22:05+0100\n"
+"POT-Creation-Date: 2013-12-07 14:50+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -70,6 +70,9 @@ msgstr "Sa"
 msgid "Su"
 msgstr "So"
 
+msgid "Sun"
+msgstr "So"
+
 msgid "Mon"
 msgstr "Mo"
 
@@ -87,9 +90,6 @@ msgstr "Fr"
 
 msgid "Sat"
 msgstr "Sa"
-
-msgid "Sun"
-msgstr "So"
 
 msgid "Monday"
 msgstr "Montag"
@@ -235,8 +235,14 @@ msgstr "Standard"
 msgid "Delete Movie"
 msgstr "Aufnahme löschen"
 
+msgid "Really delete the movie"
+msgstr "Soll die Aufnahme gelöscht werden"
+
 msgid "Delete Timer"
 msgstr "Timer löschen"
+
+msgid "Really delete the timer"
+msgstr "Soll der Timer gelöscht werden"
 
 msgid "Description"
 msgstr "Beschreibung"
@@ -496,6 +502,9 @@ msgstr "Standby"
 msgid "Standby Toggle"
 msgstr "Standby (ein/aus)"
 
+msgid "Start time is after end time"
+msgstr "Die Startzeit liegt vor dem Endzeitpunkt"
+
 msgid "Start Instant Record"
 msgstr "Starte Sofortaufnahme"
 
@@ -592,6 +601,9 @@ msgstr "Breitbild"
 msgid "Video Width"
 msgstr "Bildbreite"
 
+msgid "Volume"
+msgstr "Lautstärke"
+
 msgid "Volume Control"
 msgstr "Lautstärke"
 
@@ -612,6 +624,29 @@ msgstr "vor dem Streamen umschalten"
 
 msgid "Zap to"
 msgstr "Umschalten zu"
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr "Der benötigte Parameter '%s' fehlt"
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr "Der Parameter '%s'  darf nicht leer sein"
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr "Falsches Parameter-Format 'set=%s'. Korrekt: set=set15 "
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr "Unbekannter Befehl %s für die Lautstärkesteuerung"
+
+msgid "The parameter 'command' must be a number"
+msgstr "Der Parameter 'command' muss eine Zahl sein"
+
+#, python-format
+msgid "type %s is not a number"
+msgstr "der Typ %s ist keine Zahl"
 
 msgid "New"
 msgstr "Neu"

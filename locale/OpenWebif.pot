@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-12-05 22:05+0100\n"
+"POT-Creation-Date: 2013-12-07 14:50+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -69,6 +69,9 @@ msgstr ""
 msgid "Su"
 msgstr ""
 
+msgid "Sun"
+msgstr ""
+
 msgid "Mon"
 msgstr ""
 
@@ -85,9 +88,6 @@ msgid "Fri"
 msgstr ""
 
 msgid "Sat"
-msgstr ""
-
-msgid "Sun"
 msgstr ""
 
 msgid "Monday"
@@ -234,7 +234,13 @@ msgstr ""
 msgid "Delete Movie"
 msgstr ""
 
+msgid "Really delete the movie"
+msgstr ""
+
 msgid "Delete Timer"
+msgstr ""
+
+msgid "Really delete the timer"
 msgstr ""
 
 msgid "Description"
@@ -495,6 +501,9 @@ msgstr ""
 msgid "Standby Toggle"
 msgstr ""
 
+msgid "Start time is after end time"
+msgstr ""
+
 msgid "Start Instant Record"
 msgstr ""
 
@@ -591,6 +600,9 @@ msgstr ""
 msgid "Video Width"
 msgstr ""
 
+msgid "Volume"
+msgstr ""
+
 msgid "Volume Control"
 msgstr ""
 
@@ -610,6 +622,29 @@ msgid "zap before Stream"
 msgstr ""
 
 msgid "Zap to"
+msgstr ""
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr ""
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr ""
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr ""
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr ""
+
+msgid "The parameter 'command' must be a number"
+msgstr ""
+
+#, python-format
+msgid "type %s is not a number"
 msgstr ""
 
 msgid "New"
