@@ -646,7 +646,7 @@ msgstr "Der benötigte Parameter '%s' fehlt"
 
 #, python-format
 msgid "The parameter '%s' can't be empty"
-msgstr "Der Parameter '%s'  darf nicht leer sein"
+msgstr "Der Parameter '%s' darf nicht leer sein"
 
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
