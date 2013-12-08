@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-12-05 22:05+0100\n"
+"POT-Creation-Date: 2013-12-07 17:41+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi\n"
@@ -73,6 +73,9 @@ msgstr "So"
 msgid "Su"
 msgstr "Ne"
 
+msgid "Sun"
+msgstr "Ne"
+
 msgid "Mon"
 msgstr "Po"
 
@@ -90,9 +93,6 @@ msgstr "Pá"
 
 msgid "Sat"
 msgstr "So"
-
-msgid "Sun"
-msgstr "Ne"
 
 msgid "Monday"
 msgstr "Pondělí"
@@ -218,7 +218,7 @@ msgid "Cleanup Timers"
 msgstr "Vyčistit časovače"
 
 msgid "Contributors"
-msgstr ""
+msgstr "Spolupracovníci"
 
 msgid "Control"
 msgstr ""
@@ -238,8 +238,14 @@ msgstr "Standardní"
 msgid "Delete Movie"
 msgstr "odstranit film"
 
+msgid "Really delete the movie"
+msgstr "Opravdu smazat film"
+
 msgid "Delete Timer"
 msgstr "Odstranit časovač"
+
+msgid "Really delete the timer"
+msgstr "Opravdu odstranit časovač"
 
 msgid "Description"
 msgstr "Popis"
@@ -253,11 +259,14 @@ msgstr "Zakázat časovač"
 msgid "Dolby"
 msgstr ""
 
+msgid "Done"
+msgstr "Dokončeno"
+
 msgid "Download"
 msgstr "stáhnout"
 
 msgid "Download Playlist for"
-msgstr ""
+msgstr "stahnout playlist pro"
 
 msgid "Duration"
 msgstr "Trvání"
@@ -325,6 +334,9 @@ msgstr "Vysoké rozlišení"
 msgid "Hard disk model"
 msgstr "HDD model"
 
+msgid "Hour"
+msgstr ""
+
 msgid "IP address"
 msgstr "IP adresa"
 
@@ -353,13 +365,16 @@ msgid "Location"
 msgstr "Umístění"
 
 msgid "Locked"
-msgstr ""
+msgstr "Zamknuto"
 
 msgid "MAC address"
 msgstr "MAC adresa"
 
 msgid "Main"
 msgstr "Hlavní"
+
+msgid "Minute"
+msgstr ""
 
 msgid "Model"
 msgstr "Model"
@@ -380,10 +395,10 @@ msgid "Namespace"
 msgstr ""
 
 msgid "Network Interface"
-msgstr ""
+msgstr "Síťový adaptér"
 
 msgid "no description available"
-msgstr ""
+msgstr "popis není k dispozici"
 
 msgid "Sorry this page is not yet implemented"
 msgstr "Tato stránka není zatím implementována"
@@ -393,6 +408,9 @@ msgstr "Nic"
 
 msgid "Nothing playing."
 msgstr "Nic se nepřehrává."
+
+msgid "Now"
+msgstr "Nyní"
 
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Open Source Web Interface pro linuxový set-top box"
@@ -499,11 +517,14 @@ msgstr "Standby"
 msgid "Standby Toggle"
 msgstr "Přepnout Standby"
 
+msgid "Start time is after end time"
+msgstr "Čas začátku je větší než čas konce "
+
 msgid "Start Instant Record"
 msgstr "Spustit okamžité nahrávání"
 
 msgid "Stream"
-msgstr "streamovat"
+msgstr "Stream"
 
 msgid "Subnet mask"
 msgstr "Maska"
@@ -525,6 +546,9 @@ msgstr ""
 
 msgid "Text"
 msgstr ""
+
+msgid "Time"
+msgstr "Čas"
 
 msgid "Timeout"
 msgstr "Trvání"
@@ -595,6 +619,9 @@ msgstr "Širokoúhlé"
 msgid "Video Width"
 msgstr "Šířka videa"
 
+msgid "Volume"
+msgstr "Hlasitost"
+
 msgid "Volume Control"
 msgstr "Hlasitost"
 
@@ -615,6 +642,29 @@ msgstr "přepnout před"
 
 msgid "Zap to"
 msgstr "Přepínám na"
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr "Chybí povinný parametr '%s'"
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr "Parametr '%s' nemůže být prázdný"
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr ""
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr ""
+
+msgid "The parameter 'command' must be a number"
+msgstr "Parametr 'command' musí být číslo"
+
+#, python-format
+msgid "type %s is not a number"
+msgstr "%s není číslo"
 
 msgid "New"
 msgstr "Nový"
