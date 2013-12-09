@@ -1,13 +1,14 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
 <div id="content_main" style="min-height: 533px;">
 	<div id="info">
-		<h3>Screenshot</h3>
+		<h3>$tstrings['screenshot']</h3>
 
 		<div id="toolbar-header">
 			<span id="toolbar">
 				<span id="screenshotbutton">
-					<input type="radio" id="screenshotbutton0" name="screenshotbutton" onclick="grabScreenshot('all'); return false" checked="checked" /><label for="screenshotbutton0">Screenshot (All)</label>
-					<input type="radio" id="screenshotbutton1" name="screenshotbutton" onclick="grabScreenshot('video'); return false" /><label for="screenshotbutton1">Screenshot (Video)</label>
-					<input type="radio" id="screenshotbutton2" name="screenshotbutton" onclick="grabScreenshot('osd'); return false" /><label for="screenshotbutton2">Screenshot (OSD)</label>
+					<input type="radio" id="screenshotbutton0" name="screenshotbutton" onclick="grabScreenshot('all'); return false" checked="checked" /><label for="screenshotbutton0">$tstrings['screenshot'] ($tstrings['all'])</label>
+					<input type="radio" id="screenshotbutton1" name="screenshotbutton" onclick="grabScreenshot('video'); return false" /><label for="screenshotbutton1">$tstrings['screenshot'] ($tstrings['video'])</label>
+					<input type="radio" id="screenshotbutton2" name="screenshotbutton" onclick="grabScreenshot('osd'); return false" /><label for="screenshotbutton2">$tstrings['screenshot'] ($tstrings['osd'])</label>
 				</span>
 			</span>
 		</div>
@@ -15,19 +16,21 @@
 
 	
 		<div class="screenshotContainer">
-			<img id="screenshotspinner" src="/images/spinner.gif" border="0" alt="Loading ..." style="display: none;">
+			<img id="screenshotspinner" src="/images/spinner.gif" border="0" alt="$tstrings['loading'] ..." style="display: none;">
 			<img id="screenshotimage" src="/images/spinner.gif" alt="">
 		</div>
 		
 		<div id="screenShotRefresh" style="margin-top: 15px; margin-left: auto; margin-right: auto; width: 700px; text-align: center;">
-			<a href="#" onclick="grabScreenshot('auto'); return false;">Refresh</a>
-			-
 			<input type="checkbox" id="screenshotRefreshHD" value="0">
-			High Resolution -
+			$tstrings['high_resolution']
 			<input type="checkbox" id="screenshotRefreshStatus" value="0">
-			Refresh automatically every
+			$tstrings['refresh_auto']
 			<input type="text" size="1" id="screenshotRefreshInterval" value="30">
-			seconds
+			$tstrings['seconds']
+			<br>
+			<span id="screenshotrefreshbutton">
+				<button onclick="grabScreenshot('auto'); return false">$tstrings['refresh']</button>
+			</span>
 		</div>
 	</div>
 </div>
@@ -35,6 +38,7 @@
 #raw
 <script type="text/javascript">
 	$('#screenshotbutton').buttonset();
+	$('#screenshotrefreshbutton').buttonset();
 	$('#screenshotRefreshStatus').attr('checked', false);
 	$('#screenshotRefreshInterval').val(30);
 	

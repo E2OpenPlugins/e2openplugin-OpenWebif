@@ -9,6 +9,8 @@
 #                                                                            #
 ##############################################################################
 
+from Plugins.Extensions.OpenWebif.__init__ import _
+
 from Components.config import config
 
 from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStatus
@@ -43,13 +45,13 @@ class WebController(BaseController):
 			if key not in request.args.keys():
 				return {
 					"result": False,
-					"message": "Missing mandatory parameter '%s'" % key
+					"message": _("Missing mandatory parameter '%s'") % key
 				}
 		
 			if len(request.args[key][0]) == 0:
 				return {
 					"result": False,
-					"message": "The parameter '%s' can't be empty" % key
+					"message": _("The parameter '%s' can't be empty") % key
 				}
 		
 		return None
@@ -87,12 +89,12 @@ class WebController(BaseController):
 			except Exception, e:
 				res = getVolumeStatus()
 				res["result"] = False
-				res["message"] = "Wrong parameter format 'set=%s'. Use set=set15 " % request.args["set"][0]
+				res["message"] = _("Wrong parameter format 'set=%s'. Use set=set15 ") % request.args["set"][0]
 				return rets
 				
 		res = getVolumeStatus()
 		res["result"] = False
-		res["message"] = "Unknown Volume command %s" % request.args["set"][0]
+		res["message"] = _("Unknown Volume command %s") % request.args["set"][0]
 		return res
 		
 	def P_getaudiotracks(self, request):
@@ -127,7 +129,7 @@ class WebController(BaseController):
 		except Exception, e:
 			return {
 				"result": False,
-				"message": "The parameter 'command' must be a number"
+				"message": _("The parameter 'command' must be a number")
 			}
 			
 		type = ""
@@ -239,7 +241,7 @@ class WebController(BaseController):
 		except Exception, e:
 			return {
 				"result": False,
-				"message": "type %s is not a number" % request.args["type"][0]
+				"message": _("type %s is not a number") % request.args["type"][0]
 			}
 			
 		timeout = -1

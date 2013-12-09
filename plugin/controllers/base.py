@@ -243,7 +243,7 @@ class BaseController(resource.Resource):
 		else:
 			ret["remote"] = "dmm"
 		extras = []
-		extras.append({ 'key': 'ajax/settings','description': 'Settings'})
+		extras.append({ 'key': 'ajax/settings','description': _("Settings")})
 
 # TODO AutoTimer,Epgrefresh,BouquetEditor as Webinterface
 		
@@ -264,18 +264,4 @@ class BaseController(resource.Resource):
 
 		ret['extras'] = extras
 
-#Translation
-		tstrings = { 'movies': _("Movies"),
-		'powercontrol': _("Power Control"),
-		'grabscreenshot': _("Grab Screenshot"),
-		'sendamessage': _("Send a Message"),
-		'zapbeforestream': _("zap before Stream"),
-		'search': _("Search"),
-		'showfullremote': _("Show full remote"),
-		'hidefullremote': _("Hide full remote"),
-		'epgsearch': _("Epg Search"),
-		'boxcontrol': _("Box Control"),
-		'volumecontrol': _("Volume Control"),
-		'shiftforlong': _("(shift + click for long pressure)")}
-		ret['tstrings'] = tstrings
 		return ret

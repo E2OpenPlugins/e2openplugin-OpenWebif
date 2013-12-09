@@ -1,7 +1,8 @@
 #from urllib import quote
+#from Plugins.Extensions.OpenWebif.local import tstrings
 <div id="content_main" style="min-height: 500px;">
 	<div id="info">
-		<h3>Movielist</h3>
+		<h3>$tstrings['movielist']</h3>
 		<hr />
 		
 		<div style="width: 100%; text-align: left; margin-bottom: 20px;">
@@ -52,22 +53,22 @@
 				<div class="moviecontainer_right">
 					<div style="padding: 3px; text-align: right;">
 						#if $transcoding
-							<a href="#" onclick="jumper80('$quote($movie.filename)');">
-							<img align="top" src="../images/ico_stream.png" title="Stream $movie.eventname" border="0">
-							</a>
-							<a href="#" onclick="jumper8003('$quote($movie.filename)');">
-							<img align="top" src="../images/ico_stream.png" title="Transcode $movie.eventname" border="0">
-							</a>
+						<a href="#" onclick="jumper80('$quote($movie.filename)');">
+							<img align="top" src="../images/ico_stream.png" title="$tstrings['stream'] $movie.eventname" border="0">
+						</a>
+						<a href="#" onclick="jumper8003('$quote($movie.filename)');">
+							<img align="top" src="../images/ico_stream.png" title="$tstrings['transcode'] $movie.eventname" border="0">
+						</a>
 						#else
-							<a target="_blank" href='/web/ts.m3u?file=$quote($movie.filename)'>
-							<img align="top" src="../images/ico_stream.png" title="Stream $movie.eventname" border="0">
-							</a>
+						<a target="_blank" href='/web/ts.m3u?file=$quote($movie.filename)'>
+							<img align="top" src="../images/ico_stream.png" title="$tstrings['stream'] $movie.eventname" border="0">
+						</a>
 						#end if
 						<a href='/file?action=download&file=$quote($movie.filename)'>
-						<img align="top" src="../images/ico_download.png" title="Download $movie.eventname" border="0">
+							<img align="top" src="../images/ico_download.png" title="$tstrings['download'] $movie.eventname" border="0">
 						</a>
-						<a href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count'); return false;">
-						<img src="../images/ico_delete.png" title="Delete Movie" border="0"></a>
+						<a href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count', '$movie.eventname'); return false;">
+							<img src="../images/ico_delete.png" title="$tstrings['delete_movie']" border="0"></a>
 						</a>
 					</div>
 				</div>

@@ -1,4 +1,6 @@
 #from urllib import quote
+#from Plugins.Extensions.OpenWebif.local import tstrings
+
 <script>
 	
 
@@ -20,9 +22,9 @@
 <h1>
 
 <div>
-<img onclick="window.open('/web/services.m3u?bRef=$quote($bouquet[0])','_blank');return false;" style="margin-left:30px;" src="/public/images/ico_stream.png" title="Download Playlist for $bouquet[1]" border="0" alt="Playlist">
+<img onclick="window.open('/web/services.m3u?bRef=$quote($bouquet[0])','_blank');return false;" style="margin-left:30px;" src="/public/images/ico_stream.png" title="$tstrings['download_playlist'] $bouquet[1]" border="0" alt="$tstrings['playlist']">
 <a style="display: inline-block;" href="#" id="ajax/channels?id=$quote($bouquet[0])&stype=$stype">$bouquet[1]</a>
-</div></h1><div>loading...</div>
+</div></h1><div>$tstrings["loading"] ...</div>
 #end for
 
 </div>

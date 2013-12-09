@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: OpenWebIf\n"
+"POT-Creation-Date: 2013-12-05 22:05+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: plnick\n"
+"Language-Team: satdreamgr\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
-"Project-Id-Version: OpenWebIf\n"
-"Language: el\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: athoik\n"
-"Language-Team: satdreamgr\n"
+"X-Generator: Poedit 1.5.4\n"
 
 msgid "Cancel"
 msgstr "Ακύρωση"
@@ -46,6 +46,575 @@ msgstr "Προσθήκη ονόματος υπηρεσίας στις πληρο
 
 msgid "OpenWebif Configuration"
 msgstr "Ρυθμίσεις OpenWebif"
+
+msgid "Mo"
+msgstr ""
+
+msgid "Tu"
+msgstr ""
+
+#, fuzzy
+msgid "We"
+msgstr "Δ"
+
+msgid "Th"
+msgstr ""
+
+msgid "Fr"
+msgstr ""
+
+#, fuzzy
+msgid "Sa"
+msgstr "Αποθήκευση"
+
+msgid "Su"
+msgstr ""
+
+msgid "Mon"
+msgstr ""
+
+msgid "Tue"
+msgstr ""
+
+msgid "Wed"
+msgstr ""
+
+msgid "Thu"
+msgstr ""
+
+msgid "Fri"
+msgstr ""
+
+msgid "Sat"
+msgstr ""
+
+msgid "Sun"
+msgstr ""
+
+msgid "Monday"
+msgstr ""
+
+msgid "Tuesday"
+msgstr ""
+
+msgid "Wednesday"
+msgstr ""
+
+msgid "Thursday"
+msgstr ""
+
+msgid "Friday"
+msgstr ""
+
+msgid "Saturday"
+msgstr ""
+
+msgid "Sunday"
+msgstr ""
+
+msgid "January"
+msgstr ""
+
+msgid "February"
+msgstr ""
+
+msgid "March"
+msgstr ""
+
+msgid "April"
+msgstr ""
+
+msgid "May"
+msgstr ""
+
+msgid "June"
+msgstr ""
+
+msgid "July"
+msgstr ""
+
+msgid "August"
+msgstr ""
+
+msgid "September"
+msgstr ""
+
+msgid "October"
+msgstr ""
+
+msgid "November"
+msgstr ""
+
+msgid "December"
+msgstr ""
+
+msgid "About"
+msgstr ""
+
+msgid "Add Timer"
+msgstr ""
+
+msgid "After Event"
+msgstr ""
+
+msgid "AGC"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "All Channels"
+msgstr ""
+
+msgid "Authors"
+msgstr ""
+
+msgid "Auto"
+msgstr ""
+
+msgid "Back"
+msgstr ""
+
+msgid "Begin"
+msgstr ""
+
+msgid "BER"
+msgstr ""
+
+msgid "Bouquets"
+msgstr ""
+
+msgid "Box Info"
+msgstr ""
+
+msgid "Box"
+msgstr ""
+
+msgid "Box Control"
+msgstr ""
+
+msgid "Box Uptime"
+msgstr ""
+
+msgid "Brand"
+msgstr ""
+
+msgid "Capacity"
+msgstr ""
+
+msgid "Channel"
+msgstr ""
+
+msgid "Channels"
+msgstr ""
+
+msgid "Chipset"
+msgstr ""
+
+msgid "Cleanup Timers"
+msgstr ""
+
+msgid "Contributors"
+msgstr ""
+
+msgid "Control"
+msgstr ""
+
+msgid "Current"
+msgstr ""
+
+msgid "Current Event"
+msgstr ""
+
+msgid "Deep-Standby"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "Delete Movie"
+msgstr ""
+
+msgid "Delete Timer"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "DHCP"
+msgstr ""
+
+msgid "Disable Timer"
+msgstr ""
+
+msgid "Dolby"
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "Download Playlist for"
+msgstr ""
+
+msgid "Duration"
+msgstr ""
+
+msgid "Edit Timer"
+msgstr ""
+
+msgid "Enable Timer"
+msgstr ""
+
+msgid "End"
+msgstr ""
+
+#, fuzzy
+msgid "Enabled"
+msgstr "Καλωδιακές"
+
+msgid "Encrypted"
+msgstr ""
+
+msgid "EPG"
+msgstr ""
+
+msgid "Epg Search"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Every"
+msgstr ""
+
+msgid "Extras"
+msgstr ""
+
+msgid "finished"
+msgstr ""
+
+msgid "Firmware version"
+msgstr ""
+
+msgid "Frontprocessor Version"
+msgstr ""
+
+msgid "Free"
+msgstr ""
+
+msgid "Free Memory"
+msgstr ""
+
+msgid "Gateway"
+msgstr ""
+
+msgid "Grab Screenshot"
+msgstr ""
+
+msgid "Gui version"
+msgstr ""
+
+msgid "Hide full remote"
+msgstr ""
+
+msgid "High Resolution"
+msgstr ""
+
+msgid "Hard disk model"
+msgstr ""
+
+msgid "IP address"
+msgstr ""
+
+msgid "Infos"
+msgstr ""
+
+msgid "Instant Record"
+msgstr ""
+
+msgid "Javascript Libraries"
+msgstr ""
+
+msgid "Just play"
+msgstr ""
+
+msgid "Kernel version"
+msgstr ""
+
+msgid "LICENSE"
+msgstr ""
+
+msgid "loading"
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "Locked"
+msgstr ""
+
+msgid "MAC address"
+msgstr ""
+
+msgid "Main"
+msgstr ""
+
+msgid "Model"
+msgstr ""
+
+msgid "Movielist"
+msgstr ""
+
+msgid "Movies"
+msgstr ""
+
+msgid "MultiEPG"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Namespace"
+msgstr ""
+
+msgid "Network Interface"
+msgstr ""
+
+msgid "no description available"
+msgstr ""
+
+msgid "Sorry this page is not yet implemented"
+msgstr ""
+
+msgid "Nothing"
+msgstr ""
+
+msgid "Nothing playing."
+msgstr ""
+
+msgid "Open Source Web Interface for Linux set-top box"
+msgstr ""
+
+msgid "OSD"
+msgstr ""
+
+msgid "Playlist"
+msgstr ""
+
+msgid "Power Control"
+msgstr ""
+
+msgid "Provider"
+msgstr ""
+
+msgid "Providers"
+msgstr ""
+
+msgid "Radio"
+msgstr ""
+
+msgid "Reboot Box"
+msgstr ""
+
+msgid "Recording Status"
+msgstr ""
+
+msgid "Refresh"
+msgstr ""
+
+msgid "Refresh automatically every"
+msgstr ""
+
+msgid "Remote"
+msgstr ""
+
+msgid "Repeated"
+msgstr ""
+
+msgid "Restart GUI"
+msgstr ""
+
+msgid "running"
+msgstr ""
+
+msgid "Satellites"
+msgstr ""
+
+msgid "Satfinder"
+msgstr ""
+
+msgid "Screenshot"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Search IMDb"
+msgstr ""
+
+msgid "seconds"
+msgstr ""
+
+msgid "Send Message"
+msgstr ""
+
+msgid "Send a Message"
+msgstr ""
+
+#, fuzzy
+msgid "Service"
+msgstr "Υπηρεσίες"
+
+msgid "Settings"
+msgstr ""
+
+msgid "(shift + click for long pressure)"
+msgstr ""
+
+msgid "Show Full OpenWebif"
+msgstr ""
+
+msgid "Show full remote"
+msgstr ""
+
+msgid "Show EPG for"
+msgstr ""
+
+msgid "Shutdown"
+msgstr ""
+
+msgid "Site and sources"
+msgstr ""
+
+msgid "SNR"
+msgstr ""
+
+msgid "Software"
+msgstr ""
+
+msgid "Standby"
+msgstr ""
+
+msgid "Standby Toggle"
+msgstr ""
+
+msgid "Start Instant Record"
+msgstr ""
+
+msgid "Stream"
+msgstr ""
+
+msgid "Subnet mask"
+msgstr ""
+
+#, fuzzy
+msgid "Subservices"
+msgstr "Υπηρεσίες"
+
+msgid "Tags"
+msgstr ""
+
+msgid "Teletext"
+msgstr ""
+
+msgid "Television"
+msgstr ""
+
+msgid "Template Engine"
+msgstr ""
+
+msgid "Text"
+msgstr ""
+
+msgid "Timeout"
+msgstr ""
+
+msgid "Timerlist"
+msgstr ""
+
+msgid "Timer"
+msgstr ""
+
+msgid "Timers"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Total Memory"
+msgstr ""
+
+msgid "Tuner Bit Error Rate BER"
+msgstr ""
+
+msgid "Tuner Number (0-3)"
+msgstr ""
+
+msgid "Tuner Signal"
+msgstr ""
+
+msgid "Tuner Signal Quality SNR"
+msgstr ""
+
+msgid "Tuner Signal Quality SNR_DB"
+msgstr ""
+
+msgid "Tuner Signal Power AGC"
+msgstr ""
+
+msgid "Tuner Type"
+msgstr ""
+
+msgid "Tuners"
+msgstr ""
+
+msgid "TV"
+msgstr ""
+
+msgid "TV Multi EPG"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Upcoming Events"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "Video"
+msgstr ""
+
+msgid "Video Height"
+msgstr ""
+
+msgid "Video Wide"
+msgstr ""
+
+msgid "Video Width"
+msgstr ""
+
+msgid "Volume Control"
+msgstr ""
+
+msgid "waiting"
+msgstr ""
+
+msgid "Warning"
+msgstr ""
+
+msgid "Yes/No"
+msgstr ""
+
+msgid "Zap"
+msgstr ""
+
+msgid "zap before Stream"
+msgstr ""
+
+msgid "Zap to"
+msgstr ""
 
 msgid "New"
 msgstr "Νέο"

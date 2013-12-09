@@ -129,6 +129,49 @@ $(function() {
         })
 });
 
+function initJsTranslation(strings) {
+	tstr_add_timer = strings.add_timer;
+	tstr_close = strings.cancel;
+	tstr_del_timer = strings.delete_timer_question;
+	tstr_del_movie = strings.delete_movie_question;
+	tstr_done = strings.done;
+	tstr_edit_timer = strings.edit_timer;
+	tstr_hour = strings.hour;
+	tstr_save = strings.save;
+	tstr_minute = strings.minute;
+	tstr_now = strings.now;
+	tstr_start_after_end = strings.start_after_end;
+	tstr_time = strings.time;
+	
+	tstr_january = strings.month_01;
+	tstr_february = strings.month_02;
+	tstr_march = strings.month_03;
+	tstr_april = strings.month_04;
+	tstr_may = strings.month_05;
+	tstr_june = strings.month_06;
+	tstr_july = strings.month_07;
+	tstr_august = strings.month_08;
+	tstr_september = strings.month_09;
+	tstr_october = strings.month_10;
+	tstr_november = strings.month_11;
+	tstr_december = strings.month_12;
+	
+	tstr_monday = strings.monday;
+	tstr_tuesday = strings.tuesday;
+	tstr_wednesday = strings.wednesday;
+	tstr_thursday = strings.thursday;
+	tstr_friday = strings.friday;
+	tstr_saturday = strings.saturday;
+	tstr_sunday = strings.sunday;
+	
+	tstr_mo = strings.mo;
+	tstr_tu = strings.tu;
+	tstr_we = strings.we;
+	tstr_th = strings.th;
+	tstr_fr = strings.fr;
+	tstr_sa = strings.sa;
+	tstr_su = strings.su;
+}
 
 function dialog_notyet(){
 	$('#dialog').dialog('open');
@@ -214,8 +257,8 @@ function toggleTimerStatus(sRef, begin, end) {
 	});
 }
 
-function deleteTimer(sRef, begin, end) {
-	var answer = confirm("Really delete this timer?");
+function deleteTimer(sRef, begin, end, title) {
+	var answer = confirm(tstr_del_timer + ": " + title);
 	if (answer == true) {
 		webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end, 
 			function() { $('#'+begin+'-'+end).remove(); } 
@@ -227,8 +270,8 @@ function cleanupTimer() {
 	webapi_execute("/api/timercleanup", function() { load_maincontent('/ajax/timers'); });
 }
 
-function deleteMovie(sRef, divid) {
-	answer = confirm("Really delete this movie?");
+function deleteMovie(sRef, divid, title) {
+	var answer = confirm(tstr_del_movie + ": " + title);
 	if (answer == true) {
 		webapi_execute("/api/moviedelete?sRef=" + sRef);
 		// TODO: check the api result first
@@ -539,7 +582,7 @@ function editTimer(serviceref, begin, end) {
 							$('#timerend').datetimepicker('setDate', (new Date(Math.round(timer.end) * 1000)));
 							
 							$('#editTimerForm').dialog("open");
-							$('#editTimerForm').dialog("option", "title", "Edit Timer - " + timer.name);
+							$('#editTimerForm').dialog("option", "title", tstr_edit_timer + " - " + timer.name);
 							break;
 						}
 				}
@@ -596,7 +639,7 @@ function addTimer(evt) {
 	$('#bouquet_select').val(serviceref);
 	
 	$('#editTimerForm').dialog("open");
-	$('#editTimerForm').dialog("option", "title", "Add Timer");
+	$('#editTimerForm').dialog("option", "title", tstr_add_timer);
 	$('#editTimerForm').dialog("option", "height", "auto");
 }
 

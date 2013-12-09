@@ -1,20 +1,22 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
+
 <form>
 <div>
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">Name:</span>
+		<span style="width: 100px; float: left;">$tstrings['name']:</span>
 		<span><input type="text" name="timername" id="timername" style="width: 450px;" class="text ui-widget-content ui-corner-all" /></span>
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">Description:</span>
+		<span style="width: 100px; float: left;">$tstrings['description']:</span>
 		<span><textarea name="description" id="description" style="width: 450px; height: 50px;" class="text ui-widget-content ui-corner-all" /></span>
 	</div>
 	
 	<div class="timerlist_row">
-	<span style="width: 100px; float: left;">Channel:</span>
+	<span style="width: 100px; float: left;">$tstrings['channel']:</span>
 		<span>
 		<select id="bouquet_select" name="bouquet_select">
-			<option value="0">Nothing</option>
+			<option value="0">$tstrings['nothing']</option>
 		</select>
 		</span>
 	</div>
@@ -27,31 +29,31 @@
 	</div>
 
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">End:</span>
+		<span style="width: 100px; float: left;">$tstrings['end']:</span>
 		<span>
 		<input type="text" name="timerend" id="timerend" value="" class="text ui-widget-content ui-corner-all" />
 		</span>
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left; block: inline;">Enabled:</span>
+		<span style="width: 100px; float: left; block: inline;">$tstrings['enabled']:</span>
 		<span style="margin: 5px;">
 			<input type="checkbox" name="enabled" id="enabled" value="0" />
 		</span>
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">Just play:</span>
+		<span style="width: 100px; float: left;">$tstrings['just_play']:</span>
 		<span style="margin: 5px;">
 			<input type="checkbox" name="justplay" id="justplay" value="0" />
 		</span>
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">Repeated:</span>
+		<span style="width: 100px; float: left;">$tstrings['repeated']:</span>
 		<span id="repeatdays" style="margin: 5px;">
 		#set $i=0
-		#for $day in ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+		#for $day in [$tstrings['mo'], $tstrings['tu'], $tstrings['we'], $tstrings['th'], $tstrings['fr'], $tstrings['sa'], $tstrings['su']]
 			#set $value = 2 ** $i
 			<input type="checkbox" name="repeated" id="day$i" value="$value" /><label for="day$i">$day</label>
 			#set $i=$i+1
@@ -60,28 +62,28 @@
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">Location:</span>
+		<span style="width: 100px; float: left;">$tstrings['location']:</span>
 		<span>
 		<select id="dirname" name="dirname">
-			<option value="None">Default</option>
+			<option value="None">$tstrings['default']</option>
 		</select>
 		</span>
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">Tags:</span>
+		<span style="width: 100px; float: left;">$tstrings['tags']:</span>
 		<span id="tagsnew" style="margin:5px">
 		</span>
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">After Event:</span>
+		<span style="width: 100px; float: left;">$tstrings['after_event']:</span>
 		<span>
 		<select id="afterevent" name="afterevent">
-			<option value="0">Nothing</option>
-			<option value="1">Standby</option>
-			<option value="2">Shutdown</option>
-			<option value="3" selected="">Auto</option>
+			<option value="0">$tstrings['nothing']</option>
+			<option value="1">$tstrings['standby']</option>
+			<option value="2">$tstrings['shutdown']</option>
+			<option value="3" selected="">$tstrings['auto']</option>
 		</select>
 		</span>
 	</div>
@@ -101,12 +103,22 @@
 #raw
 
 $('#timerbegin').datetimepicker({
+	
+	timeText: tstr_time,
+	hourText: tstr_hour,
+	minuteText: tstr_minute,
+	currentText: tstr_now,
+	closeText: tstr_done,
+	monthNames: [tstr_january, tstr_february, tstr_march, tstr_april, tstr_may, tstr_june, tstr_july, tstr_august, tstr_september, tstr_october, tstr_november, tstr_december],
+	dayNames: [tstr_sunday, tstr_monday, tstr_tuesday, tstr_wednesday, tstr_thursday, tstr_friday, tstr_saturday, tstr_sunday],
+	dayNamesMin: [tstr_su, tstr_mo, tstr_tu, tstr_we, tstr_th, tstr_fr, tstr_sa, tstr_su],
+	
 	dateFormat: 'dd.mm.yy',
 	timeFormat: 'hh:mm',
 	onClose: function(dateText, inst) {
 		if ($('#timerend').val() != '' &&
 			$(this).datetimepicker('getDate') > $('#timerend').datetimepicker('getDate')) {
-				$('#error').text("Start time is after end time");
+				$('#error').text(tstr_start_after_end);
 				$('#errorbox').show();
 		}
 		else
@@ -114,12 +126,22 @@ $('#timerbegin').datetimepicker({
 	}
 });
 $('#timerend').datetimepicker({
+	
+	timeText: tstr_time,
+	hourText: tstr_hour,
+	minuteText: tstr_minute,
+	currentText: tstr_now,
+	closeText: tstr_done,
+	monthNames: [tstr_january, tstr_february, tstr_march, tstr_april, tstr_may, tstr_june, tstr_july, tstr_august, tstr_september, tstr_october, tstr_november, tstr_december],
+	dayNames: [tstr_sunday, tstr_monday, tstr_tuesday, tstr_wednesday, tstr_thursday, tstr_friday, tstr_saturday, tstr_sunday],
+	dayNamesMin: [tstr_su, tstr_mo, tstr_tu, tstr_we, tstr_th, tstr_fr, tstr_sa, tstr_su],
+	
 	dateFormat: 'dd.mm.yy',
 	timeFormat: 'hh:mm',
 	onClose: function(dateText, inst) {
 		if ($('#timerbegin').val() != '' &&	
 			$('#timerbegin').datetimepicker('getDate') > $(this).datetimepicker('getDate')) {
-				$('#error').text("Start time is after end time");
+				$('#error').text(tstr_start_after_end);
 				$('#errorbox').show();
 		}
 		else
@@ -134,82 +156,87 @@ $('#editTimerForm').dialog({
 	height: 455,
 	width: 600,
 	modal: true,
-	buttons: {
-		"Save": function() {
-			var begindate = new Date($('#timerbegin').datetimepicker('getDate'));				
-			var enddate = new Date($('#timerend').datetimepicker('getDate'));
+	buttons: [
+			{text: tstr_save,
+			click: function() {
+				var begindate = new Date($('#timerbegin').datetimepicker('getDate'));
+				var enddate = new Date($('#timerend').datetimepicker('getDate'));
 
-			var repeated = 0;
-			$('[name="repeated"]:checked').each(function() {
-				repeated += parseInt($(this).val());
-			});
-			var tags = "";
-			$('[name="tagsnew"]:checked').each(function() {
-				if(tags!="")
-					tags+=" ";
-				tags += $(this).val();
+				var repeated = 0;
+				$('[name="repeated"]:checked').each(function() {
+					repeated += parseInt($(this).val());
+				});
+				var tags = "";
+				$('[name="tagsnew"]:checked').each(function() {
+					if(tags!="")
+						tags+=" ";
+					tags += $(this).val();
+					
+				});
+				var urldata = { sRef: $('#bouquet_select').val(),
+					begin: Math.round(begindate.getTime() / 1000),
+					end: Math.round(enddate.getTime() / 1000),
+					name: $('#timername').val(),
+					description: $('#description').val(),
+					disabled: ($('#enabled').is(':checked')?"0":"1"),
+					justplay: ($('#justplay').is(':checked')?"1":"0"),
+					afterevent: $('#afterevent').val(),
+					dirname: $('#dirname').val(),
+					tags: tags,
+					repeated: repeated };
 				
-			});
-			var urldata = { sRef: $('#bouquet_select').val(),
-				begin: Math.round(begindate.getTime() / 1000),
-				end: Math.round(enddate.getTime() / 1000),
-				name: $('#timername').val(),
-				description: $('#description').val(),
-				disabled: ($('#enabled').is(':checked')?"0":"1"),
-				justplay: ($('#justplay').is(':checked')?"1":"0"),
-				afterevent: $('#afterevent').val(),
-				dirname: $('#dirname').val(),
-				tags: tags,
-				repeated: repeated };
-			
-			var canclose = false;
-			if (current_serviceref == "") {
-				$.ajax({
-					async: false,
-					url: "/api/timeradd?",
-					data: urldata,
-					success: function(data) {
-						result = $.parseJSON(data);
-						if (result.result) {
-							canclose = true;
+				var canclose = false;
+				if (current_serviceref == "") {
+					$.ajax({
+						async: false,
+						url: "/api/timeradd?",
+						data: urldata,
+						success: function(data) {
+							result = $.parseJSON(data);
+							if (result.result) {
+								canclose = true;
+							}
+							else {
+								$("#error").text(result.message);
+								$("#errorbox").show();
+							}
 						}
-						else {
-							$("#error").text(result.message);
-							$("#errorbox").show();
+					});
+				}
+				else {
+					urldata['channelOld'] = current_serviceref;
+					urldata['beginOld'] = Math.round(current_begin);
+					urldata['endOld'] = Math.round(current_end);
+					$.ajax({
+						async: false,
+						url: "/api/timerchange?",
+						data: urldata,
+						success: function(data) {
+							result = $.parseJSON(data);
+							if (result.result) {
+								canclose = true;
+							}
+							else {
+								$("#error").text(result.message);
+								$("#errorbox").show();
+							}
 						}
-					}
-				});
-			}
-			else {
-				urldata['channelOld'] = current_serviceref;
-				urldata['beginOld'] = Math.round(current_begin);
-				urldata['endOld'] = Math.round(current_end);
-				$.ajax({
-					async: false,
-					url: "/api/timerchange?",
-					data: urldata,
-					success: function(data) {
-						result = $.parseJSON(data);
-						if (result.result) {
-							canclose = true;
-						}
-						else {
-							$("#error").text(result.message);
-							$("#errorbox").show();
-						}
-					}
-				});
-			}
-			
-			if (canclose) {
-				if (reloadTimers) $("#content_container").load("/ajax/timers");
-				$(this).dialog("close");
+					});
+				}
+				
+				if (canclose) {
+					if (reloadTimers) $("#content_container").load("/ajax/timers");
+					$(this).dialog("close");
+				}
 			}
 		},
-		Cancel: function() {
-			$(this).dialog("close");
+		{
+			text: tstr_close,
+			click: function() {
+				$(this).dialog("close");
+			}
 		}
-	},
+	],
 	close: function() {
 		return;
 	}

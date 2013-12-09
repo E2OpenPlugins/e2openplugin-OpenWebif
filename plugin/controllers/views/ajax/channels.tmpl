@@ -1,35 +1,36 @@
 #for $channel in $channels
+#from Plugins.Extensions.OpenWebif.local import tstrings
 <table width="100%"><tbody><tr class="channel_tr">
 <div>
 <div>
 <div class="channel_left">
 #set $name =  $channel.name.replace("'", r"\'")
 #if $channel.protection == "0"
-<a href="#" onclick="zapChannel('$channel.ref', '$name'); return false" title="Zap to $channel.name">$channel.name</a><br />
+<a href="#" onclick="zapChannel('$channel.ref', '$name'); return false" title="$tstrings['zap_to'] $channel.name">$channel.name</a><br />
 #else
-<a href="#" onclick="return false" title="Locked">$channel.name</a><br />
+<a href="#" onclick="return false" title="$tstrings['locked']">$channel.name</a><br />
 #end if
 </div>
 <div class="channel_right">
 #if $channel.protection == "0"
 <a href="#" onclick="open_epg_pop('$channel.ref')">
-<img src="../images/ico_epg.png" title="Show EPG for $channel.name" border="0">
+<img src="../images/ico_epg.png" title="$tstrings['show_epg_for'] $channel.name" border="0">
 </a>
 #if $transcoding
 <a href="#" onclick="jumper8001('$channel.ref', '$channel.name');">
-<img align="top" src="../images/ico_stream.png" title="Stream $channel.name" border="0">
+<img align="top" src="../images/ico_stream.png" title="$tstrings['stream'] $channel.name" border="0">
 </a>
 <a href="#" onclick="jumper8002('$channel.ref', '$channel.name');">
-<img align="top" src="../images/ico_stream.png" title="Transcode $channel.name" border="0">
+<img align="top" src="../images/ico_stream.png" title="$tstrings[transcode'] $channel.name" border="0">
 </a>
 #else
 <a target="_blank" href='/web/stream.m3u?ref=$channel.ref&name=$channel.name'>
-<img align="top" src="../images/ico_stream.png" title="Stream $channel.name" border="0">
+<img align="top" src="../images/ico_stream.png" title="$tstrings['stream'] $channel.name" border="0">
 </a>
 #end if
 #else
 <a target="_blank" href='#'>
-<img align="top" src="../images/ico_lock.png" title="Locked" border="0">
+<img align="top" src="../images/ico_lock.png" title="$tstrings['locked']" border="0">
 </a>
 #end if
 </div>
@@ -38,25 +39,25 @@
 <div class="channel_leftE">
 <div>
 $channel.now_begin - $channel.now_end &nbsp;&nbsp;&nbsp;
-<a href='#' onClick="toggle_chan_des('$channel.now_ev_id', '$channel.ref', '$channel.now_idp'); return false" title="$channel.now_title description">$channel.now_title</a>
+<a href='#' onClick="toggle_chan_des('$channel.now_ev_id', '$channel.ref', '$channel.now_idp'); return false" title="$channel.now_title">$channel.now_title</a>
 </div>
 </div>
 <div class="channel_rightE">
 +$channel.now_left min
 </div>
-<div class="channel_desc" id="$channel.now_idp">no description available</div>
+<div class="channel_desc" id="$channel.now_idp">$tstrings['no_description_available']</div>
 <div class="channel_content">
 <div class="meter-wrap">
 <div class="meter-value" style="width: ${channel.progress}px;"></div></div>
 </div>
 <div class="channel_leftE">
 $channel.next_begin - $channel.next_end &nbsp;&nbsp;&nbsp;
-<a href='#' onClick="toggle_chan_des('$channel.next_ev_id', '$channel.ref', '$channel.next_idp'); return false" title="$channel.next_title description">$channel.next_title</a>
+<a href='#' onClick="toggle_chan_des('$channel.next_ev_id', '$channel.ref', '$channel.next_idp'); return false" title="$channel.next_title">$channel.next_title</a>
 </div>
 <div class="channel_rightE">
 $channel.next_duration min
 </div>
-<div class="channel_desc" id="$channel.next_idp">no description available</div>
+<div class="channel_desc" id="$channel.next_idp">$tstrings['no_description_available']</div>
 </div>
 #end if
 </tr></tbody></table>
