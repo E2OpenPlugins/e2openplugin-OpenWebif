@@ -16,6 +16,7 @@ try:
 except:
 	pass
 	
+from enigma import eEnv
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
 from models.info import getInfo, getPublicPath, getOpenWebifVer
 from models.movies import getMovieList
@@ -23,6 +24,7 @@ from models.timers import getTimers
 from models.config import getConfigs, getConfigsSections
 from base import BaseController
 from time import mktime, localtime
+from os import path
 
 class AjaxController(BaseController):
 	def __init__(self, session, path = ""):
@@ -64,7 +66,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		channels['transcoding'] = False
-		if model in ("solo2", "duo2", "Sezam Marvel", "Xpeed LX3", "gbquad", "gbquadplus"): 
+		if model in ("solo2", "duo2", "Sezam Marvel", "Xpeed LX3", "gbquad", "gbquadplus") and path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')): 
 			channels['transcoding'] = True
 		return channels
 
@@ -202,7 +204,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		movies['transcoding'] = False
-		if model in ("solo2", "duo2", "Sezam Marvel", "Xpeed LX3", "gbquad", "gbquadplus"):
+		if model in ("solo2", "duo2", "Sezam Marvel", "Xpeed LX3", "gbquad", "gbquadplus") and path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')):
 			movies['transcoding'] = True
 		return movies
 
