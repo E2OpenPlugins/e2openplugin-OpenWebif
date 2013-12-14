@@ -24,11 +24,13 @@ try:
 except:
 	pass
 
+import NavigationInstance
+
 import os
 import sys
 import time
 
-OPENWEBIFVER = "OWIF 0.2.5"
+OPENWEBIFVER = "OWIF 0.2.6"
 
 def getOpenWebifVer():
 	return OPENWEBIFVER
@@ -383,10 +385,18 @@ def getStatusInfo(self):
 			statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
 
 	# Get Standby State
+	from Screens.Standby import inStandby
 	if inStandby == None:
 		statusinfo['inStandby'] = "false"
 	else:
 		statusinfo['inStandby'] = "true"
+
+	# Get recording state
+	recs = NavigationInstance.instance.getRecordings()
+	if recs:
+		statusinfo['isRecording'] = "true"
+	else:
+		statusinfo['isRecording'] = "false"
 
 	return statusinfo
 

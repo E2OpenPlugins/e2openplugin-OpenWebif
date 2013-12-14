@@ -1,10 +1,13 @@
 ## Version 0.2.6
 **FEATURES**
 
-* add localising support
+* add translation support
+* display standby / recording state in header
 
 **FIXES**
-* improve curren info while movie playing
+* improve current info while movie playing
+* fix standby state info
+* fix currently playing info at header
 
 ## Version 0.2.5
 **FEATURES**

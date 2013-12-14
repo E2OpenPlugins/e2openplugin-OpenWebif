@@ -74,26 +74,46 @@ body {
 	color:#67A0F5;
 }
 
+#statusheader
+{
+	overflow: hidden;
+	width: 100%;
+}
+
 #osd
 {
 	font-size: 13px;
 	display: block;
+	float:left;
 	color: #ffffff;
 	height: 18px;
-	width: 100%;
+	width: 80%;
 	padding-left: 5px;
 	padding-top: 1px;
-	
 }
 
 #osd_bottom
 {
 	color: #A9D1FA;
-	font-size: 12px;
 	display: block;
+	font-size: 12px;
+	float:left;
 	height: 32px;
-	width: 100%;
+	width: 80%;
 	padding: 3px 0px 0px 5px;
+}
+
+#osd_status
+{
+	color: #A9D1FA;
+	position : relative;
+	display: block;
+	text-align: right;
+	font-size: 12px;
+	float:right;
+	height: 30px;
+	width: 10%;
+	padding: 12px 0px 0px 0px;
 }
 
 #leftmenu

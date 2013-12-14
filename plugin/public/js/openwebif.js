@@ -139,9 +139,13 @@ function initJsTranslation(strings) {
 	tstr_hour = strings.hour;
 	tstr_save = strings.save;
 	tstr_minute = strings.minute;
+	tstr_nothing_play = strings.nothing_play;
 	tstr_now = strings.now;
+	tstr_rec_status = strings.rec_status
+	tstr_standby = strings.standby
 	tstr_start_after_end = strings.start_after_end;
 	tstr_time = strings.time;
+	tstr_zap_to = strings.zap_to
 	
 	tstr_january = strings.month_01;
 	tstr_february = strings.month_02;
@@ -282,7 +286,7 @@ function deleteMovie(sRef, divid, title) {
 function zapChannel(sRef, sname) {
 	var url = '/api/zap?sRef=' + escape(sRef);
 	$.getJSON(url, function(result){
-		$("#osd").html('zap to: ' + sname);
+		$("#osd").html(tstr_zap_to + ': ' + sname);
 		$("#osd_bottom").html(" ");
 	});
 }
@@ -306,7 +310,18 @@ function getStatusInfo() {
 		if (statusinfo['currservice_station']) {
 			$("#osd").html("<span style='color:#EA7409;font-weight:bold;'>" + statusinfo['currservice_station'] + "</span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + statusinfo['currservice_name']);
 			$("#osd_bottom").html(statusinfo['currservice_description']);
+		} else {
+			$("#osd").html(tstr_nothing_play);
+			$("#osd_bottom").html('');
 		}
+		var status = "";
+		if (statusinfo['inStandby'] == 'true') {
+			status = "<img src='../images/ico_standby.png' title='" + tstr_standby + "' alt='Standby' />";
+		}
+		if (statusinfo['isRecording'] == 'true') {
+			status = status + "<img src='../images/ico_rec.png' title='" + tstr_rec_status + "' alt='Recording' />";
+		}
+		$("#osd_status").html(status);
 	})
 	.error(function() {
 		$("#osd, #osd_bottom").html("");
