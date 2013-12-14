@@ -51,7 +51,7 @@ def getStream(session, request, m3ufile):
 	if model in ("solo2", "duo2", "Sezam Marvel", "Xpeed LX3", "gbquad", "gbquadplus"):
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
-				portNumber = config.plugins.TransCodingSetup.port.value
+				portNumber = config.plugins.transcodingsetup.port.value
 		if "port" in request.args:
 			portNumber = request.args["port"][0]
 	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef)
@@ -82,7 +82,7 @@ def getTS(self, request):
 		if model in ("solo2", "duo2", "Sezam Marvel", "Xpeed LX3", "gbquad", "gbquadplus"):
 			if "device" in request.args :
 				if request.args["device"][0] == "phone" :
-					portNumber = config.plugins.TransCodingSetup.port.value
+					portNumber = config.plugins.transcodingsetup.port.value
 		if "port" in request.args:
 			portNumber = request.args["port"][0]
 		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), portNumber, quote(filename))
