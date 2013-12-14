@@ -11,8 +11,9 @@
 from base import BaseController
 from models.movies import getMovieList
 from models.timers import getTimers
-from models.services import getBouquets, getChannels, getChannelEpg
+from models.services import getBouquets, getChannels, getChannelEpg, getEvent, getPicon
 from urllib import quote
+from time import localtime, strftime
 
 class MobileController(BaseController):
 	def __init__(self, session, path = ""):
@@ -74,6 +75,33 @@ class MobileController(BaseController):
 		else:
 			# Make sure at least some basic channel info gets returned when there is no EPG
 			return { "channelinfo": channelinfo, "channelepg": None }
+
+	def P_eventview(self, request):
+		event = {}
+		event['sref'] = ""
+		event['title'] = ""
+		event['picon'] = ""
+		event['shortdesc'] = ""
+		event['longdesc'] = ""
+		event['begin'] = 0
+		event['end'] = 0
+		event['duration'] = 0
+		event['channel'] = ""
+
+		if "eventid" in request.args.keys():
+			eventid = request.args["eventid"][0]
+		if "eventref" in request.args.keys():
+			ref = request.args["eventref"][0]
+		if ref and eventid:
+			event = getEvent(ref, eventid)['event']
+			event['id'] = eventid
+			event['picon'] = getPicon(ref)
+			event['end'] = event['begin'] + event['duration']
+			event['duration'] = int(event['duration'] / 60)
+			event['begin'] = strftime("%H:%M", (localtime(event['begin'])))
+			event['end'] = strftime("%H:%M", (localtime(event['end'])))
+
+		return { "event": event }
 
 	def P_satfinder(self, request):
 		return {}
