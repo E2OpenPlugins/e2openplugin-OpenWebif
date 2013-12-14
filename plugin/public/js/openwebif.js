@@ -139,6 +139,7 @@ function initJsTranslation(strings) {
 	tstr_hour = strings.hour;
 	tstr_save = strings.save;
 	tstr_minute = strings.minute;
+	tstr_nothing_play = strings.nothing_play;
 	tstr_now = strings.now;
 	tstr_rec_status = strings.rec_status
 	tstr_standby = strings.standby
@@ -309,6 +310,9 @@ function getStatusInfo() {
 		if (statusinfo['currservice_station']) {
 			$("#osd").html("<span style='color:#EA7409;font-weight:bold;'>" + statusinfo['currservice_station'] + "</span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + statusinfo['currservice_name']);
 			$("#osd_bottom").html(statusinfo['currservice_description']);
+		} else {
+			$("#osd").html(tstr_nothing_play);
+			$("#osd_bottom").html('');
 		}
 		var status = "";
 		if (statusinfo['inStandby'] == 'true') {
