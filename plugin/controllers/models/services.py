@@ -452,12 +452,17 @@ def getEvent(ref, idev):
 
 
 def getChannelEpg(ref, begintime=-1, endtime=-1):
-	ref = unquote(ref)
+	tmpref = unquote(ref)
 	ret = []
 	ev = {}
 	picon = getPicon(ref)
 	epgcache = eEPGCache.getInstance()
-	events = epgcache.lookupEvent(['IBDTSENC', (ref, 0, begintime, endtime)])
+
+	# Wnen quering EPG we dont need URL
+	if "://" in tmpref:
+		tmpref = ":".join(tmpref.split(":")[:10]) + "::" + tmpref.split(":")[-1]
+
+	events = epgcache.lookupEvent(['IBDTSENC', (tmpref, 0, begintime, endtime)])
 	if events is not None:
 		for event in events:
 			ev = {}
