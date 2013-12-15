@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-12-07 17:41+0100\n"
+"POT-Creation-Date: 2013-12-15 12:19+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -406,6 +406,9 @@ msgid "Nothing playing."
 msgstr ""
 
 msgid "Now"
+msgstr ""
+
+msgid "On"
 msgstr ""
 
 msgid "Open Source Web Interface for Linux set-top box"

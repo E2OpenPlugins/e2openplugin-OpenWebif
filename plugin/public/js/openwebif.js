@@ -141,6 +141,7 @@ function initJsTranslation(strings) {
 	tstr_minute = strings.minute;
 	tstr_nothing_play = strings.nothing_play;
 	tstr_now = strings.now;
+	tstr_on = strings.on
 	tstr_rec_status = strings.rec_status
 	tstr_standby = strings.standby
 	tstr_start_after_end = strings.start_after_end;
@@ -291,6 +292,11 @@ function zapChannel(sRef, sname) {
 	});
 }
 
+function toggleStandby() {
+	webapi_execute('api/powerstate?newstate=0');
+	setTimeout(getStatusInfo, 1500);
+}
+
 function getStatusInfo() {
 	$.getJSON('/api/statusinfo')
 	.success(function(statusinfo) {
@@ -315,11 +321,14 @@ function getStatusInfo() {
 			$("#osd_bottom").html('');
 		}
 		var status = "";
-		if (statusinfo['inStandby'] == 'true') {
-			status = "<img src='../images/ico_standby.png' title='" + tstr_standby + "' alt='Standby' />";
-		}
 		if (statusinfo['isRecording'] == 'true') {
-			status = status + "<img src='../images/ico_rec.png' title='" + tstr_rec_status + "' alt='Recording' />";
+			var timercall = "load_maincontent('ajax/timers'); return false;";
+			status = "<a href='#' onClick='load_maincontent(\"ajax/timers\"); return false;'><img src='../images/ico_rec.png' title='" + tstr_rec_status + "' alt='" + tstr_rec_status + "' /></a>";
+		}
+		if (statusinfo['inStandby'] == 'true') {
+			status = status + "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_standby.png' title=' " + tstr_on + "' alt='" + tstr_standby + "'/></a>";
+		} else {
+			status = status + "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_on.png' title=' " + tstr_standby + "' alt='" + tstr_on + "'/></a>";
 		}
 		$("#osd_status").html(status);
 	})
