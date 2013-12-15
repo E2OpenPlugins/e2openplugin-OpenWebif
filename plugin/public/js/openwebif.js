@@ -326,9 +326,9 @@ function getStatusInfo() {
 			status = "<a href='#' onClick='load_maincontent(\"ajax/timers\"); return false;'><img src='../images/ico_rec.png' title='" + tstr_rec_status + "' alt='" + tstr_rec_status + "' /></a>";
 		}
 		if (statusinfo['inStandby'] == 'true') {
-			status = status + "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_standby.png' title=' " + tstr_on + "' alt='" + tstr_standby + "'/></a>";
+			status = status + "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_standby.png' title='" + tstr_on + "' alt='" + tstr_standby + "'/></a>";
 		} else {
-			status = status + "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_on.png' title=' " + tstr_standby + "' alt='" + tstr_on + "'/></a>";
+			status = status + "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_on.png' title='" + tstr_standby + "' alt='" + tstr_on + "'/></a>";
 		}
 		$("#osd_status").html(status);
 	})
