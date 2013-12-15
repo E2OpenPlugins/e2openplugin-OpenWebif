@@ -116,6 +116,12 @@ body {
 	padding: 12px 0px 0px 0px;
 }
 
+#osd_status a, img 
+{
+	border : 0;
+	outline: none;
+}
+
 #leftmenu
 {
 	margin-top:13px;
