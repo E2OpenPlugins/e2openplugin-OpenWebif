@@ -48,12 +48,16 @@ class MobileController(BaseController):
 		channelepg = {}
 		if "sref" in request.args.keys():
 			sref=request.args["sref"][0]
-			# Detect if sRef contains a stream (Never has EPG, always gets borked)
-			if (sref.split(':', 2)[0] == "4097"):
+			channelepg = getChannelEpg(sref)
+			# Detect if sRef contains a stream
+			if ("://" in sref):
 				# Repair sRef (URL part gets unquoted somewhere in between but MUST NOT)
 				sref = ":".join(sref.split(':')[:10]) + ":" + quote(":".join(sref.split(':')[10:-1])) + ":" + sref.split(':')[-1]
 				# Get service name from last part of the sRef
 				channelinfo['sname'] = sref.split(':')[-1]
+				# Use quoted sref when stream has EPG
+				if len(channelepg['events']) > 1:
+					channelepg['events'][0]['sref'] = sref
 			else:
 				# todo: Get service name
 				channelinfo['sname'] = ""
@@ -65,7 +69,6 @@ class MobileController(BaseController):
 			channelinfo['longdesc'] = ""
 			channelinfo['begin'] = 0
 			channelinfo['end'] = 0
-			channelepg = getChannelEpg(request.args["sref"][0])
 			
 		# Got EPG information?
 		if len(channelepg['events']) > 1:

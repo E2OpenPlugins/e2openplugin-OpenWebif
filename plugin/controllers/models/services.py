@@ -455,6 +455,11 @@ def getChannelEpg(ref, begintime=-1, endtime=-1):
 	ref = unquote(ref)
 	ret = []
 	ev = {}
+
+	# Wnen quering EPG we dont need URL, also getPicon doesn't like URL
+	if "://" in ref:
+		ref = ":".join(ref.split(":")[:10]) + "::" + ref.split(":")[-1]
+
 	picon = getPicon(ref)
 	epgcache = eEPGCache.getInstance()
 	events = epgcache.lookupEvent(['IBDTSENC', (ref, 0, begintime, endtime)])
