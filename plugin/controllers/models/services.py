@@ -738,6 +738,13 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None):
 	return { "events": ret, "result": True, "picons": picons }
 
 def getPicon(sname):
+	# sname can be quoted
+	sname = unquote(sname)
+
+	# remove URL part
+	if "://" in sname:
+		sname = ":".join(sname.split(":")[:10]) + "::" + sname.split(":")[-1]
+
 	sname = GetWithAlternative(sname)
 	if sname is not None:
 		pos = sname.rfind(':')
