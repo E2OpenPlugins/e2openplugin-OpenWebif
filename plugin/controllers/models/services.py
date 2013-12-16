@@ -488,6 +488,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1):
 					else:
 						ev['progress'] = int(((event[7] - event[1]) * 100 / event[2]) *4)
 					ev['now_timestamp'] = event[7]
+					ret.append(ev)
 				else:
 					use_empty_ev = True
 					ev['sref'] = ref
