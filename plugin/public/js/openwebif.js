@@ -298,6 +298,7 @@ function toggleStandby() {
 }
 
 function getStatusInfo() {
+	$.ajaxSetup({ cache: false });
 	$.getJSON('/api/statusinfo')
 	.success(function(statusinfo) {
 		// Set Volume
