@@ -748,7 +748,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None):
 
 def getPicon(sname):
 	# remove URL part
-	if "://" in sname:
+	if ("://" in sname) or ("%3a//" in sname) or ("%3A//" in sname):
 		sname = unquote(sname)
 		sname = ":".join(sname.split(":")[:10]) + "::" + sname.split(":")[-1]
 
