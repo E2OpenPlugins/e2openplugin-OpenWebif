@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-12-07 17:41+0100\n"
+"POT-Creation-Date: 2013-12-15 12:19+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: kapciu75 \n"
+"Last-Translator: blzr <blzr@o2.pl>\n"
 "Language-Team: \n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.2\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
@@ -20,10 +20,10 @@ msgid "Save"
 msgstr "Zapisz"
 
 msgid "OpenWebif url: http://yourip:port"
-msgstr "Adres webinterfejsu: http://ip tunera:port"
+msgstr "Adres OpenWebif:  http://ip_tunera:port"
 
 msgid "OpenWebInterface Enabled"
-msgstr "Włącz Webinterfejs"
+msgstr "OpenWebif włączony"
 
 msgid "Http port"
 msgstr "Port HTTP"
@@ -32,22 +32,22 @@ msgid "Enable Http Authentication"
 msgstr "Włącz uwierzytelnianie HTTP"
 
 msgid "Enable Https"
-msgstr "Włącz dostęp przez HTTP"
+msgstr "Włącz dostęp przez HTTPS"
 
 msgid "Https port"
 msgstr "Port HTTPS"
 
 msgid "Smart services renaming for XBMC"
-msgstr "Zmień nazwę nazwę stacji dla XBMC"
+msgstr "Zmiana nazw kanałów dla XBMC"
 
 msgid "Enable Parental Control"
-msgstr "Uruchom kontrolę rodzicielską"
+msgstr "Włącz kontrolę rodzicielską"
 
 msgid "Add service name to stream information"
-msgstr "Dodaj nazwę kanału do informacji o strumieniu"
+msgstr "Dodaj nazwę kanału do info strumienia"
 
 msgid "OpenWebif Configuration"
-msgstr "Konfiguracja Webinterfejsu"
+msgstr "Konfiguracja OpenWebif"
 
 msgid "Mo"
 msgstr "Pon"
@@ -56,7 +56,7 @@ msgid "Tu"
 msgstr "Wt"
 
 msgid "We"
-msgstr "Śro"
+msgstr "Śr"
 
 msgid "Th"
 msgstr "Czw"
@@ -149,19 +149,19 @@ msgid "December"
 msgstr "Grudzień"
 
 msgid "About"
-msgstr "O wtyczce"
+msgstr "O pluginie"
 
 msgid "Add Timer"
-msgstr "Dodaj Timer"
+msgstr "Dodaj timer"
 
 msgid "After Event"
 msgstr "Po wydarzeniu"
 
 msgid "AGC"
-msgstr "AGC"
+msgstr ""
 
 msgid "All"
-msgstr "Wszystkie"
+msgstr "Wszystko"
 
 msgid "All Channels"
 msgstr "Wszystkie kanały"
@@ -170,31 +170,31 @@ msgid "Authors"
 msgstr "Autorzy"
 
 msgid "Auto"
-msgstr "Auto"
+msgstr ""
 
 msgid "Back"
 msgstr "Wróć"
 
 msgid "Begin"
-msgstr "Rozpocznij"
+msgstr "Początek"
 
 msgid "BER"
-msgstr "BER"
+msgstr ""
 
 msgid "Bouquets"
 msgstr "Bukiety"
 
 msgid "Box Info"
-msgstr "Informacja o tunerze"
+msgstr "O tunerze"
 
 msgid "Box"
-msgstr "Tuner"
+msgstr "Odbiornik"
 
 msgid "Box Control"
 msgstr "Sterowanie"
 
 msgid "Box Uptime"
-msgstr "Czas pracy tunera"
+msgstr "Czas pracy odbornika"
 
 msgid "Brand"
 msgstr "Marka"
@@ -209,13 +209,13 @@ msgid "Channels"
 msgstr "Kanały"
 
 msgid "Chipset"
-msgstr "Chipset"
+msgstr ""
 
 msgid "Cleanup Timers"
-msgstr "Wyczyść nagrania"
+msgstr "Wyczyść timery"
 
 msgid "Contributors"
-msgstr "Dostawcy"
+msgstr "Współpracownicy"
 
 msgid "Control"
 msgstr "Sterowanie"
@@ -233,28 +233,28 @@ msgid "Default"
 msgstr "Domyślny"
 
 msgid "Delete Movie"
-msgstr "Usuń nagranie"
+msgstr "Usuń"
 
 msgid "Really delete the movie"
-msgstr "Czy na pewno usunąć ten film?"
+msgstr "Czy na pewno usunąć"
 
 msgid "Delete Timer"
-msgstr "Usuń nagranie"
+msgstr "Usuń timer"
 
 msgid "Really delete the timer"
-msgstr "Czy na pewno usunąć to nagranie? "
+msgstr "Czy na pewno usunąć timer"
 
 msgid "Description"
 msgstr "Opis"
 
 msgid "DHCP"
-msgstr "DHCP"
+msgstr ""
 
 msgid "Disable Timer"
-msgstr "Wyłącz nagrywanie"
+msgstr "Wyłącz timer"
 
 msgid "Dolby"
-msgstr "Dolby"
+msgstr ""
 
 msgid "Done"
 msgstr "Zrobione"
@@ -269,25 +269,25 @@ msgid "Duration"
 msgstr "Czas trwania"
 
 msgid "Edit Timer"
-msgstr "Edycja nagrywania"
+msgstr "Edycja timera"
 
 msgid "Enable Timer"
-msgstr "Włącz nagrywanie"
+msgstr "Włącz timer"
 
 msgid "End"
 msgstr "Koniec"
 
 msgid "Enabled"
-msgstr "Włącz"
+msgstr "Włączony"
 
 msgid "Encrypted"
 msgstr "Zakodowany"
 
 msgid "EPG"
-msgstr "EPG"
+msgstr ""
 
 msgid "Epg Search"
-msgstr "Szukaj EPG"
+msgstr "Wyszukaj w EPG"
 
 msgid "Error"
 msgstr "Błąd"
@@ -305,31 +305,31 @@ msgid "Firmware version"
 msgstr "Wersja oprogramowania"
 
 msgid "Frontprocessor Version"
-msgstr "Wersja Frontprocesora"
+msgstr "Wersja frontprocesora"
 
 msgid "Free"
-msgstr "Wolna"
+msgstr "Wolne"
 
 msgid "Free Memory"
-msgstr "Wolna pamięc"
+msgstr "Dostępna pamięć"
 
 msgid "Gateway"
 msgstr "Brama"
 
 msgid "Grab Screenshot"
-msgstr "Pobierz zrzut ekranu"
+msgstr "Wykonaj zrzut ekranu"
 
 msgid "Gui version"
 msgstr "Wersja GUI"
 
 msgid "Hide full remote"
-msgstr "Ukryj pełne zdalne sterowanie"
+msgstr "Ukryj 'pełnego' pilota"
 
 msgid "High Resolution"
 msgstr "Wysoka rozdzielczość"
 
 msgid "Hard disk model"
-msgstr "Model twaredego dysku"
+msgstr "Model dysku"
 
 msgid "Hour"
 msgstr "Godzina"
@@ -338,31 +338,31 @@ msgid "IP address"
 msgstr "Adres IP"
 
 msgid "Infos"
-msgstr "Info"
+msgstr "Informacje"
 
 msgid "Instant Record"
 msgstr "Natychmiastowe nagrywanie"
 
 msgid "Javascript Libraries"
-msgstr "Biblioteka skryptu Java"
+msgstr ""
 
 msgid "Just play"
-msgstr "Odtwórz"
+msgstr "Tylko przełącz"
 
 msgid "Kernel version"
-msgstr "Wersja jądra systemu"
+msgstr "Wersja kernela"
 
 msgid "LICENSE"
-msgstr "Licencja"
+msgstr "LICENCJA"
 
 msgid "loading"
-msgstr "ładuję"
+msgstr "ładowanie"
 
 msgid "Location"
-msgstr "Miejsce docelowe"
+msgstr "Lokalizacja"
 
 msgid "Locked"
-msgstr "Zamknięty"
+msgstr "Zablokowany"
 
 msgid "MAC address"
 msgstr "Adres MAC"
@@ -374,7 +374,7 @@ msgid "Minute"
 msgstr "Minuta"
 
 msgid "Model"
-msgstr "Model"
+msgstr ""
 
 msgid "Movielist"
 msgstr "Lista nagrań"
@@ -383,13 +383,13 @@ msgid "Movies"
 msgstr "Nagrania"
 
 msgid "MultiEPG"
-msgstr "Multi-EPG"
+msgstr ""
 
 msgid "Name"
 msgstr "Nazwa"
 
 msgid "Namespace"
-msgstr "Przestrzeń nazw"
+msgstr ""
 
 msgid "Network Interface"
 msgstr "Interfejs sieciowy"
@@ -398,22 +398,25 @@ msgid "no description available"
 msgstr "brak opisu"
 
 msgid "Sorry this page is not yet implemented"
-msgstr "Przykro nam, że strona nie istnieje"
+msgstr "Przepraszamy, strona jeszcze nie jest gotowa"
 
 msgid "Nothing"
 msgstr "Nic"
 
 msgid "Nothing playing."
-msgstr "Niczego nie uruchomiono..."
+msgstr "Nic nie uruchomiono"
 
 msgid "Now"
 msgstr "Teraz"
 
+msgid "On"
+msgstr "Włącz"
+
 msgid "Open Source Web Interface for Linux set-top box"
-msgstr "Interfejs dla tunerów opartych na Linuxie"
+msgstr "OpenSource Web Interface dla tunerów linuksowych"
 
 msgid "OSD"
-msgstr "OSD"
+msgstr ""
 
 msgid "Playlist"
 msgstr "Lista odtwarzania"
@@ -428,10 +431,10 @@ msgid "Providers"
 msgstr "Nadawcy"
 
 msgid "Radio"
-msgstr "Radio"
+msgstr ""
 
 msgid "Reboot Box"
-msgstr "Zrestartuj tuner"
+msgstr "Restart obiornika"
 
 msgid "Recording Status"
 msgstr "Status nagrywania"
@@ -443,10 +446,10 @@ msgid "Refresh automatically every"
 msgstr "Automatyczne odświeżanie co"
 
 msgid "Remote"
-msgstr "Zdalne sterowanie"
+msgstr "Pilot"
 
 msgid "Repeated"
-msgstr "Powtarzalne"
+msgstr "Powtarzalny"
 
 msgid "Restart GUI"
 msgstr "Restart GUI"
@@ -458,7 +461,7 @@ msgid "Satellites"
 msgstr "Satelity"
 
 msgid "Satfinder"
-msgstr "Przeszukaj satelitę"
+msgstr "Miernik sygnału SAT"
 
 msgid "Screenshot"
 msgstr "Zrzut ekranu"
@@ -485,25 +488,25 @@ msgid "Settings"
 msgstr "Ustawienia"
 
 msgid "(shift + click for long pressure)"
-msgstr "(SHIFT + kliknięcie dla długiego naciśnięcia klawisza)"
+msgstr "(SHIFT + przycisk = długie naciśnięcie)"
 
 msgid "Show Full OpenWebif"
-msgstr "Pokaż pełną wersję webinterfejsu"
+msgstr "Pokaż pełny interfejs"
 
 msgid "Show full remote"
-msgstr "Pokaż pełnego pilota"
+msgstr "Użyj 'pełnego' pilota"
 
 msgid "Show EPG for"
-msgstr "Zobacz informacje o programie dla"
+msgstr "Pokaż EPG dla"
 
 msgid "Shutdown"
 msgstr "Wyłącz"
 
 msgid "Site and sources"
-msgstr "Strona WWW i kod źródłowy"
+msgstr "Strona www i kod źródłowy"
 
 msgid "SNR"
-msgstr "SNR"
+msgstr ""
 
 msgid "Software"
 msgstr "Oprogramowanie"
@@ -512,34 +515,34 @@ msgid "Standby"
 msgstr "Tryb czuwania"
 
 msgid "Standby Toggle"
-msgstr "Czuwanie"
+msgstr "Czuwanie / Wybudzanie"
 
 msgid "Start time is after end time"
-msgstr "Czas rozpoczęcia przekracza czas zakończenia"
+msgstr "Czas rozpoczęcia po czasie zakończenia"
 
 msgid "Start Instant Record"
 msgstr "Rozpocznij natychmiastowe nagrywanie"
 
 msgid "Stream"
-msgstr "Strumień"
+msgstr "Streaming"
 
 msgid "Subnet mask"
 msgstr "Maska podsieci"
 
 msgid "Subservices"
-msgstr "Podkanał"
+msgstr "Subserwisy"
 
 msgid "Tags"
 msgstr "Tagi"
 
 msgid "Teletext"
-msgstr "Teletext"
+msgstr ""
 
 msgid "Television"
 msgstr "Telewizja"
 
 msgid "Template Engine"
-msgstr "Oryginalny"
+msgstr ""
 
 msgid "Text"
 msgstr "Tekst"
@@ -548,16 +551,16 @@ msgid "Time"
 msgstr "Czas"
 
 msgid "Timeout"
-msgstr "Koniec czasu"
+msgstr "Limit czasu"
 
 msgid "Timerlist"
-msgstr "Lista nagrań"
+msgstr "Lista timerów"
 
 msgid "Timer"
-msgstr "Nagranie"
+msgstr ""
 
 msgid "Timers"
-msgstr "Nagrania"
+msgstr "Timery"
 
 msgid "Title"
 msgstr "Tytuł"
@@ -566,7 +569,7 @@ msgid "Total Memory"
 msgstr "Całkowita pamięć"
 
 msgid "Tuner Bit Error Rate BER"
-msgstr "Poziom błędu BER"
+msgstr "BER"
 
 msgid "Tuner Number (0-3)"
 msgstr "Numer tunera (0-3)"
@@ -593,7 +596,7 @@ msgid "TV"
 msgstr "TV"
 
 msgid "TV Multi EPG"
-msgstr "TV Multi EPG"
+msgstr ""
 
 msgid "Type"
 msgstr "Typ"
@@ -605,16 +608,16 @@ msgid "Version"
 msgstr "Wersja"
 
 msgid "Video"
-msgstr "Video"
+msgstr ""
 
 msgid "Video Height"
-msgstr "Bildhöhe"
+msgstr ""
 
 msgid "Video Wide"
 msgstr "Panoramiczny"
 
 msgid "Video Width"
-msgstr "Szerokość obrazu"
+msgstr ""
 
 msgid "Volume"
 msgstr "Głośność"
@@ -623,7 +626,7 @@ msgid "Volume Control"
 msgstr "Głośność"
 
 msgid "waiting"
-msgstr "czekam"
+msgstr "oczekiwanie"
 
 msgid "Warning"
 msgstr "Ostrzeżenie"
@@ -635,33 +638,33 @@ msgid "Zap"
 msgstr "Przełącz"
 
 msgid "zap before Stream"
-msgstr "przełącz przed uruchomieniem strumienia"
+msgstr "Przed uruchomieniem streamingu przełączaj na dany kanał"
 
 msgid "Zap to"
 msgstr "Przełącz na"
 
 #, python-format
 msgid "Missing mandatory parameter '%s'"
-msgstr "Brak wymaganego parametru '% s'"
+msgstr "Brak wymaganego parametru '%s'"
 
 #, python-format
 msgid "The parameter '%s' can't be empty"
-msgstr "Parametr '% s' nie może być pusty"
+msgstr "Parametr '%s' nie może być pusty"
 
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr "Zły format parametru 'set =% s'. Ustaw = set15"
+msgstr "Zły format parametru 'set =% s'. Użyj set= set15"
 
 #, python-format
 msgid "Unknown Volume command %s"
 msgstr "Nieznana komenda głośności %s"
 
 msgid "The parameter 'command' must be a number"
-msgstr "Parametr 'Polecenie' musi być liczbą"
+msgstr "Parametr 'command' musi być liczbą"
 
 #, python-format
 msgid "type %s is not a number"
-msgstr "Wprowadzenie %s nie jest liczbą"
+msgstr "%s nie jest liczbą"
 
 msgid "New"
 msgstr "Nowy"
@@ -670,10 +673,10 @@ msgid "Services"
 msgstr "Kanały"
 
 msgid "Cable"
-msgstr "Kabel"
+msgstr "Kablowy"
 
 msgid "Terrestrial"
-msgstr "Naziemny"
+msgstr "DVB-T"
 
 msgid "W"
 msgstr "W"
