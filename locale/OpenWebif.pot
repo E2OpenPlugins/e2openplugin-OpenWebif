@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-12-15 12:19+0100\n"
+"POT-Creation-Date: 2013-12-23 11:58+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -640,6 +640,9 @@ msgid "zap before Stream"
 msgstr ""
 
 msgid "Zap to"
+msgstr ""
+
+msgid "LCD4Linux Setup"
 msgstr ""
 
 #, python-format

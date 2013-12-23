@@ -11,7 +11,7 @@
 
 from Plugins.Extensions.OpenWebif.__init__ import _
 
-from Tools.Directories import fileExists
+from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
 
 from twisted.web import server, http, static, resource, error
 from Cheetah.Template import Template
@@ -182,6 +182,8 @@ class BaseController(resource.Resource):
 			ret["remote"] = "dmm"
 		extras = []
 		extras.append({ 'key': 'ajax/settings','description': _("Settings")})
+		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/LCD4linux/WebSite.pyo")):
+			extras.append({ 'key': 'lcd4linux/config','description': _("LCD4Linux Setup")})
 
 # TODO AutoTimer,Epgrefresh,BouquetEditor as Webinterface
 		

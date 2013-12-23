@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-12-15 12:19+0100\n"
+"POT-Creation-Date: 2013-12-23 11:59+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -642,6 +642,9 @@ msgstr "vor dem Streamen umschalten"
 
 msgid "Zap to"
 msgstr "Umschalten zu"
+
+msgid "LCD4Linux Setup"
+msgstr "LCD4Linux Einstellungen"
 
 #, python-format
 msgid "Missing mandatory parameter '%s'"
