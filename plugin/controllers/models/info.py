@@ -372,8 +372,8 @@ def getStatusInfo(self):
 		statusinfo['currservice_begin'] = strftime("%H:%M", (localtime(int(curEvent[0])+(config.recording.margin_before.getValue()*60))))
 		statusinfo['currservice_end'] = strftime("%H:%M", (localtime(int(curEvent[1])-(config.recording.margin_after.getValue()*60))))
 		statusinfo['currservice_description'] = curEvent[3]
-		if len(curEvent[3]) > 220:
-			statusinfo['currservice_description'] = curEvent[3][0:220] + "..."
+		if len(curEvent[3].decode('utf-8')) > 220:
+			statusinfo['currservice_description'] = curEvent[3].decode('utf-8')[0:220].encode('utf-8') + "..."
 		statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
 	else:
 		statusinfo['currservice_name'] = "N/A"

@@ -29,6 +29,7 @@ EOF
 
 mkdir -p ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
 cp -rp ${D}/plugin/* ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
+cp -rp ${D}/locale ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
 
 tar -C ${P} -czf ${B}/data.tar.gz . --exclude=CONTROL
 tar -C ${P}/CONTROL -czf ${B}/control.tar.gz .

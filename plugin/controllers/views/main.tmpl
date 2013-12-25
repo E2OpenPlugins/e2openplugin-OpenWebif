@@ -151,7 +151,11 @@
 			#def extrasMenu
 			<ul>
 				#for $extra in $extras
-					<li><a href='#' onclick="load_maincontent('$extra["key"]'); return false;">$extra["description"]</a></li>
+					#if $extra["key"]=='lcd4linux/config'
+						<li><a href='$extra["key"]' target='_blank'>$extra["description"]</a></li>
+					#else
+						<li><a href='#' onclick="load_maincontent('$extra["key"]'); return false;">$extra["description"]</a></li>
+					#end if
 				#end for
 			</ul>
 			#end def

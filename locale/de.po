@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-12-07 17:41+0100\n"
+"POT-Creation-Date: 2013-12-23 11:59+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -409,6 +409,9 @@ msgstr "Keine Wiedergabe"
 msgid "Now"
 msgstr "Jetzt"
 
+msgid "On"
+msgstr "Ein"
+
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Open-Source-Webinterface für Linux-Set-Top-Boxen"
 
@@ -639,6 +642,9 @@ msgstr "vor dem Streamen umschalten"
 
 msgid "Zap to"
 msgstr "Umschalten zu"
+
+msgid "LCD4Linux Setup"
+msgstr "LCD4Linux Einstellungen"
 
 #, python-format
 msgid "Missing mandatory parameter '%s'"
