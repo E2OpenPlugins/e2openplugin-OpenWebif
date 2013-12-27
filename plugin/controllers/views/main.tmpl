@@ -151,7 +151,7 @@
 			#def extrasMenu
 			<ul>
 				#for $extra in $extras
-					#if $extra["key"]=='lcd4linux/config'
+					#if $extra["key"].endswith('lcd4linux/config')
 						<li><a href='$extra["key"]' target='_blank'>$extra["description"]</a></li>
 					#else
 						<li><a href='#' onclick="load_maincontent('$extra["key"]'); return false;">$extra["description"]</a></li>
