@@ -66,7 +66,7 @@ def getZapStream():
 	}
 
 def getJsonFromConfig(cnf):
-	if cnf.__class__.__name__ == "ConfigSelection" or cnf.__class__.__name__ == "ConfigSelectionNumber" or cnf.__class__.__name__ == "TconfigSelection":
+	if cnf.__class__.__name__ == "ConfigSelection" or cnf.__class__.__name__ == "ConfigSelectionNumber":
 		if type(cnf.choices.choices) == dict:
 			choices = []
 			for choice in cnf.choices.choices:
@@ -106,7 +106,7 @@ def getJsonFromConfig(cnf):
 			"type": "number",
 			"current": cnf.value
 		}
-	elif cnf.__class__.__name__ == "ConfigInteger" or cnf.__class__.__name__ == "TconfigInteger":
+	elif cnf.__class__.__name__ == "ConfigInteger":
 		return {
 			"result": True,
 			"type": "number",
@@ -141,7 +141,7 @@ def saveConfig(path, value):
 			cnf.value = values
 		elif cnf.__class__.__name__ == "ConfigNumber":
 			cnf.value = int(value)
-		elif  cnf.__class__.__name__ == "ConfigInteger" or cnf.__class__.__name__ == "TconfigInteger":
+		elif  cnf.__class__.__name__ == "ConfigInteger":
 			cnf_min = int(cnf.limits[0][0])
 			cnf_max = int(cnf.limits[0][1])
 			cnf_value = int(value)
