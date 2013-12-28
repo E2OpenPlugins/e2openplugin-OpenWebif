@@ -186,8 +186,11 @@ class BaseController(resource.Resource):
 			lcd4linux_key = "lcd4linux/config"
 			if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/WebInterface/plugin.pyo")):
 				from Components.config import config
-				import socket
-				ip = socket.gethostbyname(socket.gethostname())
+				from Components.Network import iNetwork
+				ifaces = iNetwork.getConfiguredAdapters()
+				if len(ifaces):
+					ip_list = iNetwork.getAdapterAttribute(ifaces[0], "ip") # use only the first configured interface
+					ip = "%d.%d.%d.%d" % (ip_list[0], ip_list[1], ip_list[2], ip_list[3])
 				try:
 					lcd4linux_port = "http://" + ip + ":" + str(config.plugins.Webinterface.http.port.value) + "/"
 					lcd4linux_key = lcd4linux_port + 'lcd4linux/config'
