@@ -220,6 +220,8 @@ class BaseController(resource.Resource):
 			ret["remote"] = "ini-3000"
 		elif ret["box"] in ("ini-7012", "ini-7000", "ini-5000", "ini-5000ru"):
 			ret["remote"] = "ini-7000"
+		elif ret["box"] == "sogno-8800hd":
+			ret["remote"] = "sogno"
 		elif ret["box"] in ("xp1000", "xp1000s"):
 			ret["remote"] = "xp1000"
 		elif ret["box"] == "odinm9":

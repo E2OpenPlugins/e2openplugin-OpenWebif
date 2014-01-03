@@ -153,6 +153,9 @@ def getInfo():
 					model
 			else:
 				brand = "Venton"
+		elif model == "sogno-8800hd":
+			brand = "Sogno"
+			model = "Sogno 8800HD"
 		elif model == "xp1000":
 			brand = "XP-Series"
 		elif model == "xp1000s":
