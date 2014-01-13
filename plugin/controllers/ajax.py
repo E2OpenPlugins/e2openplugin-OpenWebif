@@ -160,6 +160,8 @@ class AjaxController(BaseController):
 			model = "sezam-9000"
 		elif model == 'Sogno 8800HD':
 			model = "sogno8800hd"
+		elif model == 'ENfinity':
+			model = "enfinity"
 		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
 			info["boximage"] = model + ".jpg"
 		else:
