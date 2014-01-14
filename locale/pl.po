@@ -155,7 +155,7 @@ msgid "Add Timer"
 msgstr "Dodaj zadanie planowe"
 
 msgid "After Event"
-msgstr "Po wydarzeniu"
+msgstr "Po nagraniu"
 
 msgid "AGC"
 msgstr "AGC"
@@ -317,7 +317,7 @@ msgid "Gateway"
 msgstr "Brama"
 
 msgid "Grab Screenshot"
-msgstr "Wykonaj zrzut ekranu"
+msgstr "Zrób zrzut ekranu"
 
 msgid "Gui version"
 msgstr "Wersja GUI"
@@ -515,7 +515,7 @@ msgid "Standby"
 msgstr "Tryb czuwania"
 
 msgid "Standby Toggle"
-msgstr "Czuwanie / Wybudzanie"
+msgstr "Czuwanie wł./wył."
 
 msgid "Start time is after end time"
 msgstr "Czas rozpoczęcia jest po czasie zakończenia"
