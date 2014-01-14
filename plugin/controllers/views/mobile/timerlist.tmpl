@@ -1,3 +1,5 @@
+#from urllib import quote
+#from json import dumps
 #from Plugins.Extensions.OpenWebif.local import tstrings
 <html>
  <head>
@@ -9,6 +11,8 @@
 	<link rel="stylesheet" type="text/css" href="/css/iphone.css" media="screen"/>
 	<script src="/js/jquery-1.6.2.min.js"></script>
 	<script src="/js/jquery.mobile-1.0.min.js"></script>
+	<script type="text/javascript" src="/js/openwebif.js"></script>
+	<script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
  </head>
  <body> 
 	#import datetime
@@ -16,7 +20,7 @@
 
 		<div id="header">
 			<div class="button" onClick="history.back()">$tstrings['back']</div>
-			<div class="button-bold">+</div>
+			<!-- <div class="button-bold">+</div> -->
 			<h1>OpenWebif</h1>
 		</div>
 
@@ -28,11 +32,15 @@
 				#set $starttime = datetime.datetime.fromtimestamp($timer.begin).strftime("%d.%m.%Y")
 				#set $endtime = datetime.datetime.fromtimestamp($timer.end).strftime("%d.%m.%Y")
 				<li>
-				$timer.name ($timer.servicename)<br />
-				$starttime - $endtime ($duration min)
+					#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
+					<a href="javascript:history.go(0)" onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$timer.name');">
+						<span class="ui-li-heading" style="margin-top: 3px; margin-bottom: 3px;">$timer.name ($timer.servicename)</span>
+						<span class="ui-li-desc" style="margin-top: 3px; margin-bottom: 3px;">$starttime - $endtime ($duration min)</span>
+					</a>
 				</li>
 				#end for
 			</ul>
+			<button onClick="document.location.reload(true)">$tstrings['refresh']</button>
 		</div>
 
 		<div id="footer">

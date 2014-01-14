@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-12-04 20:24+0100\n"
+"POT-Creation-Date: 2013-12-23 11:59+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -53,7 +53,7 @@ msgid "Mo"
 msgstr "Mo"
 
 msgid "Tu"
-msgstr "Die"
+msgstr "Di"
 
 msgid "We"
 msgstr "Mi"
@@ -69,6 +69,27 @@ msgstr "Sa"
 
 msgid "Su"
 msgstr "So"
+
+msgid "Sun"
+msgstr "So"
+
+msgid "Mon"
+msgstr "Mo"
+
+msgid "Tue"
+msgstr "Di"
+
+msgid "Wed"
+msgstr "Mi"
+
+msgid "Thu"
+msgstr "Do"
+
+msgid "Fri"
+msgstr "Fr"
+
+msgid "Sat"
+msgstr "Sa"
 
 msgid "Monday"
 msgstr "Montag"
@@ -91,14 +112,50 @@ msgstr "Samstag"
 msgid "Sunday"
 msgstr "Sonntag"
 
+msgid "January"
+msgstr "Januar"
+
+msgid "February"
+msgstr "Februar"
+
+msgid "March"
+msgstr "März"
+
+msgid "April"
+msgstr "April"
+
+msgid "May"
+msgstr "Mai"
+
+msgid "June"
+msgstr "Juni"
+
+msgid "July"
+msgstr "Juli"
+
+msgid "August"
+msgstr "August"
+
+msgid "September"
+msgstr "September"
+
+msgid "October"
+msgstr "Oktober"
+
+msgid "November"
+msgstr "November"
+
+msgid "December"
+msgstr "Dezember"
+
 msgid "About"
 msgstr "Über"
 
 msgid "Add Timer"
-msgstr "Aufnahme hinzufügen"
+msgstr "Timer hinzufügen"
 
 msgid "After Event"
-msgstr "Nach dem Ereignis"
+msgstr "Danach"
 
 msgid "AGC"
 msgstr "AGC"
@@ -128,7 +185,7 @@ msgid "Bouquets"
 msgstr "Favoriten"
 
 msgid "Box Info"
-msgstr "Receiver Informationen"
+msgstr "Receiver-Informationen"
 
 msgid "Box"
 msgstr "Receiver"
@@ -137,7 +194,7 @@ msgid "Box Control"
 msgstr "Systemfunktionen"
 
 msgid "Box Uptime"
-msgstr "Receiver Laufzeit"
+msgstr "Receiver-Laufzeit"
 
 msgid "Brand"
 msgstr "Marke"
@@ -146,16 +203,16 @@ msgid "Capacity"
 msgstr "Kapazität"
 
 msgid "Channel"
-msgstr "Sender"
+msgstr "Kanal"
 
 msgid "Channels"
-msgstr "Sender"
+msgstr "Kanäle"
 
 msgid "Chipset"
 msgstr "Chipsatz"
 
 msgid "Cleanup Timers"
-msgstr "Aufnahmen aufräumen"
+msgstr "Timer aufräumen"
 
 msgid "Contributors"
 msgstr "Mitwirkende"
@@ -176,10 +233,16 @@ msgid "Default"
 msgstr "Standard"
 
 msgid "Delete Movie"
-msgstr "Film löschen"
+msgstr "Aufnahme löschen"
+
+msgid "Really delete the movie"
+msgstr "Soll die Aufnahme gelöscht werden"
 
 msgid "Delete Timer"
-msgstr "Aufnahme löschen"
+msgstr "Timer löschen"
+
+msgid "Really delete the timer"
+msgstr "Soll der Timer gelöscht werden"
 
 msgid "Description"
 msgstr "Beschreibung"
@@ -188,25 +251,28 @@ msgid "DHCP"
 msgstr "DHCP"
 
 msgid "Disable Timer"
-msgstr "Aufnahme deaktivieren"
+msgstr "Timer deaktivieren"
 
 msgid "Dolby"
 msgstr "Dolby"
 
+msgid "Done"
+msgstr "Fertig"
+
 msgid "Download"
-msgstr "Herunterladen"
+msgstr "Herunterladen von"
 
 msgid "Download Playlist for"
-msgstr "Herunterladen der Wiedergabeliste von"
+msgstr "Herunterladen der Wiedergabeliste für"
 
 msgid "Duration"
 msgstr "Dauer"
 
 msgid "Edit Timer"
-msgstr "Aufnahme bearbeiten"
+msgstr "Timer bearbeiten"
 
 msgid "Enable Timer"
-msgstr "Aufnahme aktivieren"
+msgstr "Timer aktivieren"
 
 msgid "End"
 msgstr "Ende"
@@ -221,13 +287,13 @@ msgid "EPG"
 msgstr "EPG"
 
 msgid "Epg Search"
-msgstr "EPG Suche"
+msgstr "EPG-Suche"
 
 msgid "Error"
 msgstr "Fehler"
 
 msgid "Every"
-msgstr "Jeder"
+msgstr "Jeden"
 
 msgid "Extras"
 msgstr "Extras"
@@ -239,7 +305,7 @@ msgid "Firmware version"
 msgstr "Firmware-Version"
 
 msgid "Frontprocessor Version"
-msgstr "Frontprozessor Version"
+msgstr "Frontprozessor-Version"
 
 msgid "Free"
 msgstr "Frei"
@@ -263,7 +329,10 @@ msgid "High Resolution"
 msgstr "Hohe Auflösung"
 
 msgid "Hard disk model"
-msgstr "Festplattenmodel"
+msgstr "Festplattenmodell"
+
+msgid "Hour"
+msgstr "Stunde"
 
 msgid "IP address"
 msgstr "IP-Adresse"
@@ -275,10 +344,10 @@ msgid "Instant Record"
 msgstr "Sofortaufnahme"
 
 msgid "Javascript Libraries"
-msgstr "Javascript Bibliothek"
+msgstr "Javascript-Bibliothek"
 
 msgid "Just play"
-msgstr "Nur umschalten"
+msgstr "Umschaltt."
 
 msgid "Kernel version"
 msgstr "Kernelversion"
@@ -301,14 +370,17 @@ msgstr "MAC-Adresse"
 msgid "Main"
 msgstr "Hauptmenü"
 
+msgid "Minute"
+msgstr "Minute"
+
 msgid "Model"
-msgstr "Model"
+msgstr "Modell"
 
 msgid "Movielist"
-msgstr "Filmliste"
+msgstr "Aufnahmeliste"
 
 msgid "Movies"
-msgstr "Filme"
+msgstr "Aufnahmen"
 
 msgid "MultiEPG"
 msgstr "Mehrfach-EPG"
@@ -334,8 +406,14 @@ msgstr "Nichts"
 msgid "Nothing playing."
 msgstr "Keine Wiedergabe"
 
+msgid "Now"
+msgstr "Jetzt"
+
+msgid "On"
+msgstr "Ein"
+
 msgid "Open Source Web Interface for Linux set-top box"
-msgstr "Open Source Webinterface für Linux Set-Top-Boxen"
+msgstr "Open-Source-Webinterface für Linux-Set-Top-Boxen"
 
 msgid "OSD"
 msgstr "OSD"
@@ -365,13 +443,13 @@ msgid "Refresh"
 msgstr "Aktualisieren"
 
 msgid "Refresh automatically every"
-msgstr "Aktualisiere automatisch alle "
+msgstr "Aktualisiere automatisch alle"
 
 msgid "Remote"
 msgstr "Fernbedienung"
 
 msgid "Repeated"
-msgstr "Wiederholend"
+msgstr "Wiederhole"
 
 msgid "Restart GUI"
 msgstr "GUI neu starten"
@@ -404,13 +482,13 @@ msgid "Send a Message"
 msgstr "Nachricht senden"
 
 msgid "Service"
-msgstr "Sender"
+msgstr "Kanal"
 
 msgid "Settings"
 msgstr "Einstellungen"
 
 msgid "(shift + click for long pressure)"
-msgstr "(SHIFT + CLICK für langen Tastendruck)"
+msgstr "(Umschalttaste+Klick für langen Tastendruck)"
 
 msgid "Show Full OpenWebif"
 msgstr "Desktop-Version OpenWebif"
@@ -419,7 +497,7 @@ msgid "Show full remote"
 msgstr "Vollständige Fernbedienung einblenden"
 
 msgid "Show EPG for"
-msgstr "Zeige Programminformationen für"
+msgstr "Zeige EPG für"
 
 msgid "Shutdown"
 msgstr "Ausschalten"
@@ -439,6 +517,9 @@ msgstr "Standby"
 msgid "Standby Toggle"
 msgstr "Standby (ein/aus)"
 
+msgid "Start time is after end time"
+msgstr "Die Startzeit liegt vor dem Endzeitpunkt"
+
 msgid "Start Instant Record"
 msgstr "Starte Sofortaufnahme"
 
@@ -452,7 +533,7 @@ msgid "Subservices"
 msgstr "Unterkanal"
 
 msgid "Tags"
-msgstr "Tags"
+msgstr "Stichworte"
 
 msgid "Teletext"
 msgstr "Videotext"
@@ -466,17 +547,20 @@ msgstr "Vorlagenart"
 msgid "Text"
 msgstr "Text"
 
+msgid "Time"
+msgstr "Zeit"
+
 msgid "Timeout"
 msgstr "Zeitüberschreitung"
 
 msgid "Timerlist"
-msgstr "Geplante Aufnahmen"
+msgstr "Timerliste"
 
 msgid "Timer"
-msgstr "Aufnahmen"
+msgstr "Timer"
 
 msgid "Timers"
-msgstr "Aufnahmen"
+msgstr "Timer"
 
 msgid "Title"
 msgstr "Titel"
@@ -485,22 +569,22 @@ msgid "Total Memory"
 msgstr "Gesamtspeicher"
 
 msgid "Tuner Bit Error Rate BER"
-msgstr "Tuner Bitfehlerhäufigkeit BER"
+msgstr "Tuner-Bitfehlerhäufigkeit BER"
 
 msgid "Tuner Number (0-3)"
-msgstr "Tuner Nummer (0-3)"
+msgstr "Tuner-Nummer (0-3)"
 
 msgid "Tuner Signal"
 msgstr "Tunersignal"
 
 msgid "Tuner Signal Quality SNR"
-msgstr "Tuner Signalqualität SNR"
+msgstr "Tuner-Signalqualität SNR"
 
 msgid "Tuner Signal Quality SNR_DB"
-msgstr "Tuner Signalqualtiät SNR_DB"
+msgstr "Tuner-Signalqualtiät SNR_DB"
 
 msgid "Tuner Signal Power AGC"
-msgstr "Tuner Signalstärke AGC"
+msgstr "Tuner-Signalstärke AGC"
 
 msgid "Tuner Type"
 msgstr "Tunerart"
@@ -512,7 +596,7 @@ msgid "TV"
 msgstr "TV"
 
 msgid "TV Multi EPG"
-msgstr "TV Multi EPG"
+msgstr "TV-Multi-EPG"
 
 msgid "Type"
 msgstr "Typ"
@@ -535,6 +619,9 @@ msgstr "Breitbild"
 msgid "Video Width"
 msgstr "Bildbreite"
 
+msgid "Volume"
+msgstr "Lautstärke"
+
 msgid "Volume Control"
 msgstr "Lautstärke"
 
@@ -555,6 +642,32 @@ msgstr "vor dem Streamen umschalten"
 
 msgid "Zap to"
 msgstr "Umschalten zu"
+
+msgid "LCD4Linux Setup"
+msgstr "LCD4Linux Einstellungen"
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr "Der benötigte Parameter '%s' fehlt"
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr "Der Parameter '%s' darf nicht leer sein"
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr "Falsches Parameter-Format 'set=%s'. Korrekt: set=set15 "
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr "Unbekannter Befehl %s für die Lautstärkesteuerung"
+
+msgid "The parameter 'command' must be a number"
+msgstr "Der Parameter 'command' muss eine Zahl sein"
+
+#, python-format
+msgid "type %s is not a number"
+msgstr "der Typ %s ist keine Zahl"
 
 msgid "New"
 msgstr "Neu"

@@ -186,6 +186,9 @@ class AjaxController(BaseController):
 		
 		return epg
 	def P_multiepg2(self, request):
+		reloadtimer = 0
+		if "reloadtimer" not in request.args.keys():
+			reloadtimer = 1
 		bouq = getBouquets("tv")
 		if "bref" not in request.args.keys():
 			bref = bouq['bouquets'][0][0]
@@ -208,5 +211,6 @@ class AjaxController(BaseController):
 		epg['bouquets'] = bouq['bouquets']
 		epg['bref'] = bref
 		epg['day'] = day
+		epg['reloadtimer'] = reloadtimer
 		
 		return epg

@@ -66,8 +66,10 @@
 				<li data-role="list-divider" role="heading" data-theme="b">$tstrings['upcoming_events']</li>
 				#for $event in $channelepg
 				<li style="padding: 3px;">
-					<span class="ui-li-heading" style="margin-top: 0px; margin-bottom: 3px;">$event.title</span>
-					<span class="ui-li-desc" style="margin-bottom: 0px;">$event.begin - $event.end</span>
+					<a href="/mobile/eventview?eventid=$event.id&eventref=$event.sref" style="padding: 3px;">
+						<span class="ui-li-heading" style="margin-top: 0px; margin-bottom: 3px;">$event.title</span>
+						<span class="ui-li-desc" style="margin-bottom: 0px;">$event.begin - $event.end</span>
+					</a>	
 				</li>
 				#end for
 			</ul>

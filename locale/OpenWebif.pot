@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-12-04 20:24+0100\n"
+"POT-Creation-Date: 2013-12-23 11:58+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -69,6 +69,27 @@ msgstr ""
 msgid "Su"
 msgstr ""
 
+msgid "Sun"
+msgstr ""
+
+msgid "Mon"
+msgstr ""
+
+msgid "Tue"
+msgstr ""
+
+msgid "Wed"
+msgstr ""
+
+msgid "Thu"
+msgstr ""
+
+msgid "Fri"
+msgstr ""
+
+msgid "Sat"
+msgstr ""
+
 msgid "Monday"
 msgstr ""
 
@@ -88,6 +109,42 @@ msgid "Saturday"
 msgstr ""
 
 msgid "Sunday"
+msgstr ""
+
+msgid "January"
+msgstr ""
+
+msgid "February"
+msgstr ""
+
+msgid "March"
+msgstr ""
+
+msgid "April"
+msgstr ""
+
+msgid "May"
+msgstr ""
+
+msgid "June"
+msgstr ""
+
+msgid "July"
+msgstr ""
+
+msgid "August"
+msgstr ""
+
+msgid "September"
+msgstr ""
+
+msgid "October"
+msgstr ""
+
+msgid "November"
+msgstr ""
+
+msgid "December"
 msgstr ""
 
 msgid "About"
@@ -177,7 +234,13 @@ msgstr ""
 msgid "Delete Movie"
 msgstr ""
 
+msgid "Really delete the movie"
+msgstr ""
+
 msgid "Delete Timer"
+msgstr ""
+
+msgid "Really delete the timer"
 msgstr ""
 
 msgid "Description"
@@ -190,6 +253,9 @@ msgid "Disable Timer"
 msgstr ""
 
 msgid "Dolby"
+msgstr ""
+
+msgid "Done"
 msgstr ""
 
 msgid "Download"
@@ -264,6 +330,9 @@ msgstr ""
 msgid "Hard disk model"
 msgstr ""
 
+msgid "Hour"
+msgstr ""
+
 msgid "IP address"
 msgstr ""
 
@@ -300,6 +369,9 @@ msgstr ""
 msgid "Main"
 msgstr ""
 
+msgid "Minute"
+msgstr ""
+
 msgid "Model"
 msgstr ""
 
@@ -331,6 +403,12 @@ msgid "Nothing"
 msgstr ""
 
 msgid "Nothing playing."
+msgstr ""
+
+msgid "Now"
+msgstr ""
+
+msgid "On"
 msgstr ""
 
 msgid "Open Source Web Interface for Linux set-top box"
@@ -438,6 +516,9 @@ msgstr ""
 msgid "Standby Toggle"
 msgstr ""
 
+msgid "Start time is after end time"
+msgstr ""
+
 msgid "Start Instant Record"
 msgstr ""
 
@@ -463,6 +544,9 @@ msgid "Template Engine"
 msgstr ""
 
 msgid "Text"
+msgstr ""
+
+msgid "Time"
 msgstr ""
 
 msgid "Timeout"
@@ -534,6 +618,9 @@ msgstr ""
 msgid "Video Width"
 msgstr ""
 
+msgid "Volume"
+msgstr ""
+
 msgid "Volume Control"
 msgstr ""
 
@@ -553,6 +640,32 @@ msgid "zap before Stream"
 msgstr ""
 
 msgid "Zap to"
+msgstr ""
+
+msgid "LCD4Linux Setup"
+msgstr ""
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr ""
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr ""
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr ""
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr ""
+
+msgid "The parameter 'command' must be a number"
+msgstr ""
+
+#, python-format
+msgid "type %s is not a number"
 msgstr ""
 
 msgid "New"

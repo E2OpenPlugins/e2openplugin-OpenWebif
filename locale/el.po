@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: OpenWebIf\n"
+"POT-Creation-Date: 2013-12-05 22:05+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: MCelliot_g\n"
+"Language-Team: satdreamgr\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
-"Project-Id-Version: OpenWebIf\n"
-"Language: el\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: athoik\n"
-"Language-Team: satdreamgr\n"
+"X-Generator: Poedit 1.5.4\n"
 
 msgid "Cancel"
 msgstr "Ακύρωση"
@@ -47,6 +47,575 @@ msgstr "Προσθήκη ονόματος υπηρεσίας στις πληρο
 msgid "OpenWebif Configuration"
 msgstr "Ρυθμίσεις OpenWebif"
 
+msgid "Mo"
+msgstr "Δε"
+
+msgid "Tu"
+msgstr "Τρ"
+
+#, fuzzy
+msgid "We"
+msgstr "Τε"
+
+msgid "Th"
+msgstr "Πέ"
+
+msgid "Fr"
+msgstr "Πα"
+
+#, fuzzy
+msgid "Sa"
+msgstr "Σά"
+
+msgid "Su"
+msgstr "Κυ"
+
+msgid "Mon"
+msgstr "Δευ"
+
+msgid "Tue"
+msgstr "Τρί"
+
+msgid "Wed"
+msgstr "Τετ"
+
+msgid "Thu"
+msgstr "Πέμ"
+
+msgid "Fri"
+msgstr "Παρ"
+
+msgid "Sat"
+msgstr "Σάβ"
+
+msgid "Sun"
+msgstr "Κυρ"
+
+msgid "Monday"
+msgstr "Δευτέρα"
+
+msgid "Tuesday"
+msgstr "Τρίτη"
+
+msgid "Wednesday"
+msgstr "Τετάρτη"
+
+msgid "Thursday"
+msgstr "Πέμπτη"
+
+msgid "Friday"
+msgstr "Παρασκευή"
+
+msgid "Saturday"
+msgstr "Σάββατο"
+
+msgid "Sunday"
+msgstr "Κυριακή"
+
+msgid "January"
+msgstr "Ιανουαρίου"
+
+msgid "February"
+msgstr "Φεβρουαρίου"
+
+msgid "March"
+msgstr "Μαρτίου"
+
+msgid "April"
+msgstr "Απριλίου"
+
+msgid "May"
+msgstr "Μαΐου"
+
+msgid "June"
+msgstr "Ιουνίου"
+
+msgid "July"
+msgstr "Ιουλίου"
+
+msgid "August"
+msgstr "Αυγούστου"
+
+msgid "September"
+msgstr "Σεπτεμβρίου"
+
+msgid "October"
+msgstr "Οκτωβρίου"
+
+msgid "November"
+msgstr "Νοεμβρίου"
+
+msgid "December"
+msgstr "Δεκεμβρίου"
+
+msgid "About"
+msgstr "Περί"
+
+msgid "Add Timer"
+msgstr "Προσθήκη Χρονοδιακόπτη"
+
+msgid "After Event"
+msgstr "Μετά το πρόγραμμα"
+
+msgid "AGC"
+msgstr "AGC"
+
+msgid "All"
+msgstr "Όλα"
+
+msgid "All Channels"
+msgstr "Όλα τα κανάλια"
+
+msgid "Authors"
+msgstr "Συγγραφείς"
+
+msgid "Auto"
+msgstr "Αυτόματα"
+
+msgid "Back"
+msgstr "Πίσω"
+
+msgid "Begin"
+msgstr "Αρχή"
+
+msgid "BER"
+msgstr "BER"
+
+msgid "Bouquets"
+msgstr "Μπουκέτα"
+
+msgid "Box Info"
+msgstr "Πληροφορίες Δέκτη"
+
+msgid "Box"
+msgstr "Δέκτης"
+
+msgid "Box Control"
+msgstr "Έλεγχος Δέκτη"
+
+msgid "Box Uptime"
+msgstr "Χρόνος Λειτουργίας Δέκτη"
+
+msgid "Brand"
+msgstr "Μάρκα"
+
+msgid "Capacity"
+msgstr "Χωρητικότητα"
+
+msgid "Channel"
+msgstr "Κανάλι"
+
+msgid "Channels"
+msgstr "Κανάλια"
+
+msgid "Chipset"
+msgstr "Chipset"
+
+msgid "Cleanup Timers"
+msgstr "Εκκαθάριση Χρονοδιακοπτών"
+
+msgid "Contributors"
+msgstr "Συντελεστές"
+
+msgid "Control"
+msgstr "Έλεγχος"
+
+msgid "Current"
+msgstr "Τρέχον"
+
+msgid "Current Event"
+msgstr "Τρέχον Πρόγραμμα"
+
+msgid "Deep-Standby"
+msgstr "Βαθιά Αναμονή"
+
+msgid "Default"
+msgstr "Προεπιλογή"
+
+msgid "Delete Movie"
+msgstr "Διαγραφή Ταινίας"
+
+msgid "Delete Timer"
+msgstr "Διαγραφή Χρονοδιακόπτη"
+
+msgid "Description"
+msgstr "Περιγραφή"
+
+msgid "DHCP"
+msgstr "DHCP"
+
+msgid "Disable Timer"
+msgstr "Απενεργοποίηση Χρονοδιακόπτη"
+
+msgid "Dolby"
+msgstr "Dolby"
+
+msgid "Download"
+msgstr "Λήψη"
+
+msgid "Download Playlist for"
+msgstr "Λήψη Λίστας Αναπαραγωγής για"
+
+msgid "Duration"
+msgstr "Διάρκεια"
+
+msgid "Edit Timer"
+msgstr "Επεξεργασία Χρονοδιακόπτη"
+
+msgid "Enable Timer"
+msgstr "Ενεργοποίηση Χρονοδιακόπτη"
+
+msgid "End"
+msgstr "Τέλος"
+
+#, fuzzy
+msgid "Enabled"
+msgstr "Καλωδιακές"
+
+msgid "Encrypted"
+msgstr "Κωδικοποιημένο"
+
+msgid "EPG"
+msgstr "EPG"
+
+msgid "Epg Search"
+msgstr "Αναζήτηση Epg"
+
+msgid "Error"
+msgstr "Σφάλμα"
+
+msgid "Every"
+msgstr "Κάθε"
+
+msgid "Extras"
+msgstr "Πρόσθετα"
+
+msgid "finished"
+msgstr "ολοκληρώθηκε"
+
+msgid "Firmware version"
+msgstr "Έκδοση Υλικού"
+
+msgid "Frontprocessor Version"
+msgstr "Έκδοση Frontprocessor"
+
+msgid "Free"
+msgstr "Ελεύθερα"
+
+msgid "Free Memory"
+msgstr "Ελεύθερη Μνήμη"
+
+msgid "Gateway"
+msgstr "Πύλη"
+
+msgid "Grab Screenshot"
+msgstr "Λήψη Στιγμιότυπου"
+
+msgid "Gui version"
+msgstr "Έκδοση Gui"
+
+msgid "Hide full remote"
+msgstr "Απόκρυφη πλήρους τηλεχειριστηρίου"
+
+msgid "High Resolution"
+msgstr "Υψηλή Ανάλυση"
+
+msgid "Hard disk model"
+msgstr "Μοντέλο Σκληρού Δίσκου"
+
+msgid "IP address"
+msgstr "Διεύθυνση IP"
+
+msgid "Infos"
+msgstr "Πληροφορίες"
+
+msgid "Instant Record"
+msgstr "Άμεση Εγγραφή"
+
+msgid "Javascript Libraries"
+msgstr "Βιβλιοθήκες Javascript"
+
+msgid "Just play"
+msgstr "Αναπαραγωγή"
+
+msgid "Kernel version"
+msgstr "Έκδοση Kernel"
+
+msgid "LICENSE"
+msgstr "ΑΔΕΙΑ"
+
+msgid "loading"
+msgstr "φόρτωση"
+
+msgid "Location"
+msgstr "Τοποθεσία"
+
+msgid "Locked"
+msgstr "Κλειδωμένο"
+
+msgid "MAC address"
+msgstr "Διεύθυνση MAC"
+
+msgid "Main"
+msgstr "Κύριο"
+
+msgid "Model"
+msgstr "Μοντέλο"
+
+msgid "Movielist"
+msgstr "Λίστα Ταινιών"
+
+msgid "Movies"
+msgstr "Ταινίες"
+
+msgid "MultiEPG"
+msgstr "Πολλαπλός EPG"
+
+msgid "Name"
+msgstr "Όνομα"
+
+msgid "Namespace"
+msgstr "Χώρος ονόματος"
+
+msgid "Network Interface"
+msgstr "Διεπαφή Δικτύου"
+
+msgid "no description available"
+msgstr "μη διαθέσιμη περιγραφή"
+
+msgid "Sorry this page is not yet implemented"
+msgstr "Λυπούμαστε, αυτή η σελίδα δεν είναι ακόμα διαθέσιμη"
+
+msgid "Nothing"
+msgstr "Τίποτα"
+
+msgid "Nothing playing."
+msgstr "Καμία αναπαραγωγή."
+
+msgid "Open Source Web Interface for Linux set-top box"
+msgstr "Διεπαφή Δικτύου Ανοικτού Λογισμικού για δέκτες με Linux"
+
+msgid "OSD"
+msgstr "OSD"
+
+msgid "Playlist"
+msgstr "Λίστα αναπαραγωγής"
+
+msgid "Power Control"
+msgstr "Έλεγχος Τροφοδοσίας"
+
+msgid "Provider"
+msgstr "Πάροχος"
+
+msgid "Providers"
+msgstr "Πάροχοι"
+
+msgid "Radio"
+msgstr "Ραδιόφωνο"
+
+msgid "Reboot Box"
+msgstr "Επανεκκίνηση Δέκτη"
+
+msgid "Recording Status"
+msgstr "Κατάσταση Εγγραφής"
+
+msgid "Refresh"
+msgstr "Ανανέωση"
+
+msgid "Refresh automatically every"
+msgstr "Αυτόματη ανανέωση κάθε"
+
+msgid "Remote"
+msgstr "Τηλεχειριστήριο"
+
+msgid "Repeated"
+msgstr "Επαναλαμβανόμενο"
+
+msgid "Restart GUI"
+msgstr "Επανεκκίνηση GUI"
+
+msgid "running"
+msgstr "σε εκτέλεση"
+
+msgid "Satellites"
+msgstr "Δορυφόροι"
+
+msgid "Satfinder"
+msgstr "Έλεγχος σήματος"
+
+msgid "Screenshot"
+msgstr "Στιγμιότυπο"
+
+msgid "Search"
+msgstr "Αναζήτηση"
+
+msgid "Search IMDb"
+msgstr "Αναζήτηση IMDb"
+
+msgid "seconds"
+msgstr "δευτερόλεπτα"
+
+msgid "Send Message"
+msgstr "Αποστολή Μηνύματος"
+
+msgid "Send a Message"
+msgstr "Αποστολή ενός Μηνύματος"
+
+#, fuzzy
+msgid "Service"
+msgstr "Υπηρεσία"
+
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+msgid "(shift + click for long pressure)"
+msgstr "(shift + κλικ για παρατεταμένο πάτημα)"
+
+msgid "Show Full OpenWebif"
+msgstr "Εμφάνιση Πλήρους OpenWebif"
+
+msgid "Show full remote"
+msgstr "Εμφάνιση πλήρους τηλεχειριστηρίου"
+
+msgid "Show EPG for"
+msgstr "Εμφάνιση EPG για"
+
+msgid "Shutdown"
+msgstr "Τερματισμός"
+
+msgid "Site and sources"
+msgstr "Ιστοσελίδα και πηγές"
+
+msgid "SNR"
+msgstr "SNR"
+
+msgid "Software"
+msgstr "Λογισμικό"
+
+msgid "Standby"
+msgstr "Αναμονή"
+
+msgid "Standby Toggle"
+msgstr "Εναλλαγή Αναμονής"
+
+msgid "Start Instant Record"
+msgstr "Εκκίνηση Άμεσης Εγγραφής"
+
+msgid "Stream"
+msgstr "Ροή"
+
+msgid "Subnet mask"
+msgstr "Μάσκα Υποδικτύου"
+
+#, fuzzy
+msgid "Subservices"
+msgstr "Υπο-υπηρεσίες"
+
+msgid "Tags"
+msgstr "Ετικέτες"
+
+msgid "Teletext"
+msgstr "Τηλεκείμενο"
+
+msgid "Television"
+msgstr "Τηλεόραση"
+
+msgid "Template Engine"
+msgstr "Μηχανή Προτύπου"
+
+msgid "Text"
+msgstr "Κείμενο"
+
+msgid "Timeout"
+msgstr "Χρόνος Λήξης"
+
+msgid "Timerlist"
+msgstr "Λίστα χρονοδιακοπτών"
+
+msgid "Timer"
+msgstr "Χρονοδιακόπτης"
+
+msgid "Timers"
+msgstr "Χρονοδιακόπτες"
+
+msgid "Title"
+msgstr "Τίτλος"
+
+msgid "Total Memory"
+msgstr "Συνολική Μνήμη"
+
+msgid "Tuner Bit Error Rate BER"
+msgstr "Ρυθμός Σφαλμάτων Tuner BER"
+
+msgid "Tuner Number (0-3)"
+msgstr "Αριθμός Tuner (0-3)"
+
+msgid "Tuner Signal"
+msgstr "Σήμα Tuner"
+
+msgid "Tuner Signal Quality SNR"
+msgstr "Ποιότητα Σήματος Tuner SNR"
+
+msgid "Tuner Signal Quality SNR_DB"
+msgstr "Ποιότητα Σήματος Tuner SNR_DB"
+
+msgid "Tuner Signal Power AGC"
+msgstr "Ισχύς Σήματος Tuner AGC"
+
+msgid "Tuner Type"
+msgstr "Τύπος Tuner"
+
+msgid "Tuners"
+msgstr "Tuners"
+
+msgid "TV"
+msgstr "TV"
+
+msgid "TV Multi EPG"
+msgstr "Πολλαπλός EPG TV"
+
+msgid "Type"
+msgstr "Τύπος"
+
+msgid "Upcoming Events"
+msgstr "Επερχόμενες Εκπομπές"
+
+msgid "Version"
+msgstr "Έκδοση"
+
+msgid "Video"
+msgstr "Βίντεο"
+
+msgid "Video Height"
+msgstr "Ύψος Βίντεο"
+
+msgid "Video Wide"
+msgstr "Ευρεία Εικόνα"
+
+msgid "Video Width"
+msgstr "Πλάτος Βίντεο"
+
+msgid "Volume Control"
+msgstr "Έλεγχος Έντασης"
+
+msgid "waiting"
+msgstr "αναμονή"
+
+msgid "Warning"
+msgstr "Προειδοποίηση"
+
+msgid "Yes/No"
+msgstr "Ναι/Όχι"
+
+msgid "Zap"
+msgstr "Μετάβαση"
+
+msgid "zap before Stream"
+msgstr "μετάβαση πριν τη Ροή"
+
+msgid "Zap to"
+msgstr "Μετάβαση σε"
+
 msgid "New"
 msgstr "Νέο"
 
@@ -54,10 +623,10 @@ msgid "Services"
 msgstr "Υπηρεσίες"
 
 msgid "Cable"
-msgstr "Καλωδιακές"
+msgstr "Καλωδιακό"
 
 msgid "Terrestrial"
-msgstr "Επίγειες"
+msgstr "Επίγειο"
 
 msgid "W"
 msgstr "Δ"

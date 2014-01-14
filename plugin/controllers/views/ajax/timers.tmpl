@@ -60,7 +60,7 @@
 					<div style="padding: 3px; text-align: right;">
 						#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
 						<a href='#' onClick="editTimer('$sref', '$timer.begin', '$timer.end');"><img src="../images/ico_edit.png" title="$tstrings['edit_timer']" border="0"></a>
-						<a href='#' onClick="deleteTimer('$sref', '$timer.begin', '$timer.end');"><img src="../images/ico_delete.png" title="$tstrings['delete_timer']" border="0"></a>
+						<a href='#' onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$timer.name');"><img src="../images/ico_delete.png" title="$tstrings['delete_timer']" border="0"></a>
 						<a href='#' onClick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end');">
 						#if $timer.disabled
 						<img id="img-$timer.begin-$timer.end" src="../images/ico_disabled.png" title="$tstrings['enable_timer']" border="0">

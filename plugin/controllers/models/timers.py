@@ -333,10 +333,20 @@ def recordNow(session, infinite):
 			"result": False,
 			"message": "Timer conflict detected! Not recording!"
 		}
-		
+	nt = {
+		"serviceref": str(timer.service_ref),
+		"servicename": timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
+		"eit": timer.eit,
+		"name": timer.name,
+		"begin": timer.begin,
+		"end": timer.end,
+		"duration": timer.end - timer.begin
+	}
+
 	return {
 		"result": True,
-		"message": msg
+		"message": msg,
+		"newtimer": nt
 	}
 
 

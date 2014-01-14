@@ -1,4 +1,5 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
+#from json import dumps
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,7 +12,7 @@
 <script type="text/javascript" src="/js/jquery-ui-1.8.18.custom.min.js"></script>
 <script type="text/javascript" src="/js/openwebif.js"></script>
 <script type="text/javascript" src="/js/transcoding.js"></script>
-
+<script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
 <title>Open Webif</title>
 </head>
 
@@ -22,11 +23,10 @@
 			<h2>$tstrings['openwebif_header']</h2>
 		</div>
 		
-		<div id="osd">
-			$tstrings['nothing_play']
-		</div>
-		<div id="osd_bottom">
-			
+		<div id="statusheader">
+			<div id="osd">$tstrings['nothing_play']</div>
+			<div id="osd_status"></div>
+			<div id="osd_bottom"></div>
 		</div>
 		
 		<div id="dialog" title="Work in progress">
@@ -65,7 +65,7 @@
 			#def volumeMenu
 			<div class="volslider">
 					<p style="text-align:center; padding-bottom:8px;"> 
-						<label for="amount">Volume:</label>
+						<label for="amount">$tstrings['volume']:</label>
 						<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold; width:40px;" />
 					</p>
 				<div id="slider" style="width:130px;"></div>
@@ -151,7 +151,11 @@
 			#def extrasMenu
 			<ul>
 				#for $extra in $extras
-					<li><a href='#' onclick="load_maincontent('$extra["key"]'); return false;">$extra["description"]</a></li>
+					#if $extra["key"].endswith('lcd4linux/config')
+						<li><a href='$extra["key"]' target='_blank'>$extra["description"]</a></li>
+					#else
+						<li><a href='#' onclick="load_maincontent('$extra["key"]'); return false;">$extra["description"]</a></li>
+					#end if
 				#end for
 			</ul>
 			#end def

@@ -67,7 +67,7 @@
 						<a href='/file?action=download&file=$quote($movie.filename)'>
 							<img align="top" src="../images/ico_download.png" title="$tstrings['download'] $movie.eventname" border="0">
 						</a>
-						<a href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count'); return false;">
+						<a href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count', '$movie.eventname'); return false;">
 							<img src="../images/ico_delete.png" title="$tstrings['delete_movie']" border="0"></a>
 						</a>
 					</div>

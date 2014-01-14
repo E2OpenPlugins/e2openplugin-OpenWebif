@@ -20,6 +20,8 @@ from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
 from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
 
+import NavigationInstance
+
 import os
 import sys
 import time
@@ -289,8 +291,8 @@ def getStatusInfo(self):
 		statusinfo['currservice_begin'] = strftime("%H:%M", (localtime(int(curEvent[0])+(config.recording.margin_before.value*60))))
 		statusinfo['currservice_end'] = strftime("%H:%M", (localtime(int(curEvent[1])-(config.recording.margin_after.value*60))))
 		statusinfo['currservice_description'] = curEvent[3]
-		if len(curEvent[3]) > 220:
-			statusinfo['currservice_description'] = curEvent[3][0:220] + "..."
+		if len(curEvent[3].decode('utf-8')) > 220:
+			statusinfo['currservice_description'] = curEvent[3].decode('utf-8')[0:220].encode('utf-8') + "..."
 		statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
 	else:
 		statusinfo['currservice_name'] = "N/A"
@@ -302,10 +304,18 @@ def getStatusInfo(self):
 			statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
 		
 	# Get Standby State
+	from Screens.Standby import inStandby
 	if inStandby == None:
 		statusinfo['inStandby'] = "false"
 	else:
 		statusinfo['inStandby'] = "true"
+
+	# Get recording state
+	recs = NavigationInstance.instance.getRecordings()
+	if recs:
+		statusinfo['isRecording'] = "true"
+	else:
+		statusinfo['isRecording'] = "false"
 
 	return statusinfo
 
