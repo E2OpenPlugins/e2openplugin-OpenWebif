@@ -6,8 +6,11 @@
 
 **FIXES**
 * improve current info while movie playing
+<<<<<<< HEAD
 * fix standby state info
 * fix currently playing info at header
+=======
+>>>>>>> 4018e83a3db33adf468b64a86df95d63263244f7
 
 ## Version 0.2.5
 **FEATURES**
