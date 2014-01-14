@@ -33,35 +33,35 @@ class TranscodingController(resource.Resource):
 				if arg == "transcoding":
 					transcoding_state = str(request.args[arg][0]).lower()
 					if transcoding_state in ('true', '1', 'enabled', 'enable', 'active'):
-						config.plugins.transcodingsetup.transcoding.value = "enable"
+						config.plugins.transcodingsetup.transcoding.setValue("enable")
 					elif transcoding_state in ('false', '0', 'disabled', 'disable', 'inactive'):
-						config.plugins.transcodingsetup.transcoding.value = "disable"
+						config.plugins.transcodingsetup.transcoding.setValue("disable")
 					config_changed = True
 				elif arg == "bitrate":
 					try:
-						new_bitrate = int(request.args[arg][0])
+						new_bitrate = request.args[arg][0]
 					except ValueError:
 						return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for bitrate</e2statetext></e2simplexmlresult>'
 					if not new_bitrate in bitrate.choices:
-						new_bitrate = bitrate.value
-					if new_bitrate != config.plugins.transcodingsetup.encoder[0].bitrate.value:
-						config.plugins.transcodingsetup.encoder[0].bitrate.value = new_bitrate
+						new_bitrate = bitrate.getValue()
+					if new_bitrate != config.plugins.transcodingsetup.encoder[0].bitrate.getValue():
+						config.plugins.transcodingsetup.encoder[0].bitrate.setValue(new_bitrate)
 						config_changed = True
 				elif arg == "framerate":
 					new_framerate = request.args[arg][0]
 					if not new_framerate in framerate.choices:
-						new_framerate = framerate.value
-					if new_framerate != config.plugins.transcodingsetup.encoder[0].framerate.value:
-						config.plugins.transcodingsetup.encoder[0].framerate.value = new_framerate
+						new_framerate = framerate.getValue()
+					if new_framerate != config.plugins.transcodingsetup.encoder[0].framerate.getValue():
+						config.plugins.transcodingsetup.encoder[0].framerate.setValue(new_framerate)
 						config_changed = True
 				elif arg == "port":
-					new_port = request.args[arg][0]
+					new_port = int(request.args[arg][0])
 					if new_port < int(port.limits[0][0]):
 						new_port = int(port.limits[0][0])
 					elif new_port > int(port.limits[0][1]):
 						new_port = int(port.limits[0][1])
-					if new_port != config.plugins.transcodingsetup.port.value:
-						config.plugins.transcodingsetup.port.value = new_port
+					if new_port != config.plugins.transcodingsetup.port.getValue():
+						config.plugins.transcodingsetup.port.setValue(new_port)
 						config_changed = True
 			if config_changed:
 				config.plugins.transcodingsetup.save()
@@ -97,7 +97,7 @@ class TranscodingController(resource.Resource):
 						<e2configchoices>%s</e2configchoices>
 						<e2configvalue>%s</e2configvalue>
 					</e2config>
-				</e2configs>""" %      (str(config.plugins.transcodingsetup.transcoding.value),
-							port_min, port_max, str(config.plugins.transcodingsetup.port.value),
-							bitrates, str(config.plugins.transcodingsetup.encoder[0].bitrate.value),
-							framerates, str(config.plugins.transcodingsetup.encoder[0].framerate.value))
+				</e2configs>""" %      (str(config.plugins.transcodingsetup.transcoding.getValue()),
+							port_min, port_max, str(config.plugins.transcodingsetup.port.getValue()),
+							bitrates, str(config.plugins.transcodingsetup.encoder[0].bitrate.getValue()),
+							framerates, str(config.plugins.transcodingsetup.encoder[0].framerate.getValue()))
