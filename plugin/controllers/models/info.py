@@ -254,7 +254,8 @@ def getInfo():
 	info['uptime'] = uptimetext
 
 	info["webifver"] = getOpenWebifVer()
-	info['imagever'] = getImageDistro() + ' ' + getImageVersion() + '.' + getImageBuild()
+	info['imagedistro'] = getImageDistro()
+	info['imagever'] = getImageVersion() + '.' + getImageBuild()
 	info['enigmaver'] = getEnigmaVersionString()
 	info['kernelver'] = about.getKernelVersionString()
 
