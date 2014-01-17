@@ -253,13 +253,10 @@ def getInfo():
 	info['uptime'] = uptimetext
 
 	info["webifver"] = getOpenWebifVer()
-	try:
-		from enigma import getImageVersionString, getBuildVersionString, getEnigmaVersionString
-		info['imagever'] = getImageVersionString() + '.' + getBuildVersionString()
-		info['enigmaver'] = getEnigmaVersionString()
-	except:
-		info['imagever'] = about.getImageVersionString()
-		info['enigmaver'] = about.getEnigmaVersionString()
+	from enigma import getEnigmaVersionString
+	from boxbranding import getImageVersion, getImageBuild
+	info['imagever'] = getImageVersion() + '.' + getImageBuild()
+	info['enigmaver'] = getEnigmaVersionString()
 	info['kernelver'] = about.getKernelVersionString()
 
 	try:
