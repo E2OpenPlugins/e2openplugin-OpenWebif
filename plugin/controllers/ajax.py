@@ -11,10 +11,7 @@
 
 from Tools.Directories import fileExists
 from Components.config import config
-try:
-	from enigma import getBoxType, getMachineName
-except:
-	pass
+from boxbranding import getBoxType, getMachineName
 	
 from enigma import eEnv
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent

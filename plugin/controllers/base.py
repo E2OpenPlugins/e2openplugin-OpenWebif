@@ -12,10 +12,7 @@
 from Plugins.Extensions.OpenWebif.__init__ import _
 
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
-try:
-	from enigma import getBoxType, getMachineName
-except:
-	pass
+from boxbranding import getBoxType, getMachineName
 
 from twisted.web import server, http, static, resource, error
 from Cheetah.Template import Template
