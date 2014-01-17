@@ -19,7 +19,8 @@ from Screens.Standby import inStandby
 from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
 from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
-from boxbranding import getBoxType, getMachineName, getDistro
+from boxbranding import getBoxType, getMachineName, getImageDistro, getImageVersion, getImageBuild
+from enigma import getEnigmaVersionString
 
 import NavigationInstance
 
@@ -164,7 +165,7 @@ def getInfo():
 		elif model == "odinm9":
 			brand = "Odin-Series"
 		elif model == "odinm7":
-			if getDistro() == 'axassupport':
+			if getImageDistro() == 'axassupport':
 				brand = "AXAS"
 				model = "Class M"
 			elif getBoxType() == 'odinm6':
@@ -176,7 +177,7 @@ def getInfo():
 			else:
 				brand = "Odin-Series"
 		elif model == "e3hd":
-			if getDistro() == 'axassupport':
+			if getImageDistro() == 'axassupport':
 				brand = "AXAS"
 				model = "Class E"
 			else:
@@ -253,9 +254,7 @@ def getInfo():
 	info['uptime'] = uptimetext
 
 	info["webifver"] = getOpenWebifVer()
-	from enigma import getEnigmaVersionString
-	from boxbranding import getImageVersion, getImageBuild
-	info['imagever'] = getImageVersion() + '.' + getImageBuild()
+	info['imagever'] = getImageDistro() + ' ' + getImageVersion() + '.' + getImageBuild()
 	info['enigmaver'] = getEnigmaVersionString()
 	info['kernelver'] = about.getKernelVersionString()
 
