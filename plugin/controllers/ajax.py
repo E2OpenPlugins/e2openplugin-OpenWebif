@@ -85,7 +85,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = getBoxType()
 		if fileExists(getPublicPath("/images/boxes/"+model+".jpg")):
-			info["boximage"] = model+".jpg""
+			info["boximage"] = model+".jpg"
 		else:
 			info["boximage"] = "unknown.jpg"
 		return info
