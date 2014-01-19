@@ -11,7 +11,7 @@
 
 from Tools.Directories import fileExists
 from Components.config import config
-from boxbranding import getBoxType, getMachineName
+from boxbranding import getBoxType, getMachineName, getMachineBrand
 	
 from enigma import eEnv
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
@@ -63,7 +63,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		channels['transcoding'] = False
-		if model in ("solo2", "duo2", "Sezam Marvel", "Xpeed LX3", "gbquad", "gbquadplus") and path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')): 
+		if model in ("Solo²", "Duo²", "Sezam Marvel", "Xpeed LX3", "Quad", "Quad Plus") and path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')):
 			channels['transcoding'] = True
 		return channels
 
@@ -83,84 +83,9 @@ class AjaxController(BaseController):
 	
 	def P_boxinfo(self, request):
 		info = getInfo()
-		model = info["model"]
-		if model == "et9000" or model == "et9200":
-			model = "et9x00"
-		elif model == "et5000" or model == "et6000":
-			model = "et5x00"
-		elif model == "et4000":
-			model = "et4x00"
-		elif model == "xp1000":
-			model = "xp1000"
-		elif model == "xp1000s":
-			model = "sf8"
-		elif model == "odinm9":
-			model = "odinm9"
-		elif model == "odinm7":
-			model = "odinm7"
-		elif model == "e3hd":
-			model = "e3hd"
-		elif getBoxType() == 'odinm6':
-			model = "starsatlx"
-		elif getMachineName() == 'AX-Odin':
-			model = "axodin"
-		elif model == "MixOs F5":
-			model = "ebox5000"
-		elif model == "MixOs F5mini":
-			model = "ebox5100"
-		elif model == "MixOs F7":
-			model = "ebox7358"
-		elif model == "IOS-100HD":
-			model = "ios100hd"
-		elif model == "IOS-200HD":
-			model = "ios200hd"
-		elif model == "IOS-300HD":
-			model = "ios300hd"
-		elif model == "Optimuss-OS1":
-			model = "optimussos1"
-		elif model == "Optimuss-OS2":
-			model = "optimussos2"
-		elif model == "TM-TWIN-OE":
-			model = "tmtwin"
-		elif model == "TM-2T-OE":
-			model = "tm2t"
-		elif model == "TM-SINGLE":
-			model = "tmsingle"
-		elif model == "TM-NANO-OE":
-			model = "tmnano"
-		elif getBoxType() == 'ixusssone':
-			model = "ixussone"
-		elif getBoxType() == 'ixussduo':
-			model = "ixussduo"
-		elif getBoxType() == 'ixusszero':
-			model = "ixusszero"
-		elif model == 'Premium Twin':
-			model = "ini-5000sv"
-		elif model == 'Premium Mini':
-			model = "ini-1000sv"
-		elif model == 'Xpeed LX':
-			if fileExists("/proc/stb/fp/version"):
-				file = open("/proc/stb/fp/version")
-				version = file.read().strip().lower()
-				file.close()
-			if version.startswith('2'):
-				model = "xpeedlx2"
-			else:
-				model = "xpeedlx1"
-		elif model == 'Xpeed LX3':
-			model = "xpeedlx3"
-		elif model == 'Sezam 1000-HD':
-			model = "sezam-1000"
-		elif model == 'Sezam 5000-HD':
-			model = "sezam-5000"
-		elif model == 'Sezam 1000-HD':
-			model = "sezam-9000"
-		elif model == 'Sogno 8800HD':
-			model = "sogno8800hd"
-		elif model == 'ENfinity':
-			model = "enfinity"
-		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
-			info["boximage"] = model + ".jpg"
+		model = getBoxType()
+		if fileExists(getPublicPath("/images/boxes/"+model+".jpg")):
+			info["boximage"] = model+".jpg""
 		else:
 			info["boximage"] = "unknown.jpg"
 		return info
@@ -176,19 +101,18 @@ class AjaxController(BaseController):
 	def P_screenshot(self, request):
 		box = {}
 		box['brand'] = "dmm"
-		if fileExists("/proc/stb/info/vumodel"):
+		if getMachineBrand() == 'Vu+':
 			box['brand'] = "vuplus"
+		elif getMachineBrand() == 'GigaBlue':
+			box['brand'] = "gigablue"
+		elif getMachineBrand() == 'Edision':
+			box['brand'] = "edision"
+		elif getMachineBrand() == 'iQon':
+			box['brand'] = "iqon"
+		elif getMachineBrand() == 'Technomate':
+			box['brand'] = "techomate"
 		elif fileExists("/proc/stb/info/azmodel"):
 			box['brand'] = "azbox"
-		elif fileExists("/proc/stb/info/gbmodel"):
-			box['brand'] = "gigablue"
-		elif fileExists("/proc/stb/info/hwmodel"):
-			if getBoxType().startswith('opti'):
-				box['brand'] = "edision"
-			elif getBoxType().startswith('iqon'):
-				box['brand'] = "iqon"
-			else:
-				box['brand'] = "technomate"
 		return { "box": box }
 
 	def P_powerstate(self, request):
@@ -205,7 +129,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		movies['transcoding'] = False
-		if model in ("solo2", "duo2", "Sezam Marvel", "Xpeed LX3", "gbquad", "gbquadplus") and path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')):
+		if model in ("Solo²", "Duo²", "Sezam Marvel", "Xpeed LX3", "Quad", "Quad Plus") and path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')):
 			movies['transcoding'] = True
 		return movies
 

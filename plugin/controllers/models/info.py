@@ -19,7 +19,7 @@ from Screens.Standby import inStandby
 from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
 from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
-from boxbranding import getBoxType, getMachineName, getImageDistro, getImageVersion, getImageBuild
+from boxbranding import getBoxType, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild
 from enigma import getEnigmaVersionString
 
 import NavigationInstance
@@ -69,132 +69,11 @@ def getInfo():
 	# TODO: get webif versione somewhere!
 	info = {}
 
-	brand = "Dream Multimedia"
-	model = "unknown"
-	chipset = "unknown"
+	info['brand'] = getMachineBrand()
+	info['model'] = getMachineName()
 
-	if fileExists("/proc/stb/info/hwmodel"):
-		file = open("/proc/stb/info/hwmodel")
-		model = file.read().strip().lower()
-		file.close()
-		if model == "tmtwinoe":
-			model = "TM-TWIN-OE"
-			brand = "Technomate"
-		elif model == "tm2toe":
-			model = "TM-2T-OE"
-			brand = "Technomate"
-		elif model == "tmsingle":
-			model = "TM-SINGLE"
-			brand = "Technomate"
-		elif model == "tmnanooe":
-			model = "TM-NANO-OE"
-			brand = "Technomate"
-		elif model == "ios100hd":
-			model = "IOS-100HD"
-			brand = "Iqon"
-		elif model == "ios200hd":
-			model = "IOS-200HD"
-			brand = "Iqon"
-		elif model == "ios300hd":
-			model = "IOS-300HD"
-			brand = "Iqon"
-		elif model == "optimussos1":
-			model = "Optimuss-OS1"
-			brand = "Edision"
-		elif model == "optimussos2":
-			model = "Optimuss-OS2"
-			brand = "Edision"
-	elif fileExists("/proc/stb/info/boxtype"):
-		file = open("/proc/stb/info/boxtype")
-		model = file.read().strip().lower()
-		file.close()
-		if model == "gigablue":
-			brand = "GigaBlue"
-			if fileExists("/proc/stb/info/gbmodel"):
-				file = open("/proc/stb/info/gbmodel")
-				model = file.read().strip().lower()
-				file.close()
-				if model == "quad":
-					model = "gbquad"
-			else:
-				model = 'gb800solo'
-		elif model.startswith("et"):
-			brand = "Clarke-Xtrend"
-			if model == "et9500":
-				model = "et9x00"
-		elif model.startswith("ini"):
-			if model.endswith("sv"):
-				brand = "MiracleBox"
-				if model == "ini-5000sv":
-					model = "Premium Twin"
-				elif model == "ini-1000sv":
-					model = "Premium Mini"
-				else:
-					model
-			elif model.endswith("de"):
-				brand = "Golden Interstar"
-				if model == "ini-1000de":
-					model = "Xpeed LX"
-				elif model == "ini-9000de":
-					model = "Xpeed LX3"
-				else:
-					model
-			elif model.endswith("ru"):
-				brand = "Sezam"
-				if model == "ini-1000ru":
-					model = "Sezam 1000-HD"
-				elif model == "ini-5000ru":
-					model = "Sezam 5000-HD"
-				elif model == "ini-9000ru":
-					model = "Sezam Marvel"
-				else:
-					model
-			else:
-				brand = "Venton"
-		elif model == "enfinity":
-			brand = "EVO"
-			model = "ENfinity"
-		elif model == "sogno-8800hd":
-			brand = "Sogno"
-			model = "Sogno 8800HD"
-		elif model == "xp1000":
-			brand = "XP-Series"
-		elif model == "xp1000s":
-			brand = "Octagon"
-			model = "SF8 HD"
-		elif model == "odinm9":
-			brand = "Odin-Series"
-		elif model == "odinm7":
-			if getImageDistro() == 'axassupport':
-				brand = "AXAS"
-				model = "Class M"
-			elif getBoxType() == 'odinm6':
-				brand = "TELESTAR"
-				model = "STARSAT LX"
-			elif getMachineName() == 'AX-Odin':
-				brand = "Opticum"
-				model = "AX-Odin"	
-			else:
-				brand = "Odin-Series"
-		elif model == "e3hd":
-			if getImageDistro() == 'axassupport':
-				brand = "AXAS"
-				model = "Class E"
-			else:
-				brand = "E3-Series"
-		elif model == "ebox5000":
-			brand = "MixOs-Series"
-			model = "MixOs F5"
-		elif model == "ebox5100":
-			brand = "MixOs-Series"
-			model = "MixOs F5mini"
-		elif model == "ebox7358":
-			brand = "MixOs-Series"
-			model = "MixOs F7"
-		elif model.startswith("ixuss"):
-			brand = "Ixuss-Series"
-			chipset = "BCM7405"
-	elif fileExists("/proc/stb/info/azmodel"):
+	chipset = "unknown"
+	if fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBOX"
 		file = open("/proc/stb/info/model")
 		model = file.read().strip().lower()
@@ -205,20 +84,6 @@ def getInfo():
 			chipset = "SIGMA 8653"
 		else:
 			chipset = "SIGMA 8634"
-	elif fileExists("/proc/stb/info/vumodel"):
-		brand = "Vu Plus"
-		file = open("/proc/stb/info/vumodel")
-		model = file.read().strip().lower()
-		file.close()
-	else:
-		file = open("/proc/stb/info/model")
-		model = file.read().strip().lower()
- 		if model.startswith('spar'):
-		    brand = "Spark"
-		file.close()
-
-	info['brand'] = brand
-	info['model'] = model
 
 	if fileExists("/proc/stb/info/chipset"):
 		f = open("/proc/stb/info/chipset",'r')
