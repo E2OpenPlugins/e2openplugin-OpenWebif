@@ -13,8 +13,8 @@ from enigma import eServiceReference, iServiceInformation, eServiceCenter
 from Components.Sources.Source import Source
 from ServiceReference import ServiceReference
 from Tools.FuzzyDate import FuzzyTime
-from os import stat as os_stat, walk
-from os.path import islink
+from os import stat as os_stat, listdir
+from os.path import islink, isdir, join, exists
 from Components.config import config
 from Components.MovieList import MovieList
 from Tools.Directories import fileExists
@@ -32,7 +32,7 @@ def getMovieList(directory=None, tag=None, rargs=None):
 		
 	root = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory)
 
-	bookmarklist=[x for x in walk(directory).next()[1] if (x[0] != '.' and not islink(directory+'/'+x))]
+	bookmarklist=[x for x in listdir(directory) if (x[0] != '.' and (isdir(join(directory, x)) or (islink(join(directory, x)) and exists(join(directory, x)))))]
 	bookmarklist.sort()
 	
 	folders = []
