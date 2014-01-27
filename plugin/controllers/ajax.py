@@ -86,12 +86,20 @@ class AjaxController(BaseController):
 		model = getMachineBuild()
 		if model == "ventonhdx":
 			if getBoxType() == "ini-3000":
-				  model = "uniboxhd1"
+				  model = "ini-3000"
 			elif getBoxType() == "ini-5000":
-				  model = "uniboxhd2"
+				  model = "ini-5000"
 			elif getBoxType() in ('ini-7000', 'ini-7012'):
-				  model = "uniboxhd3"
-				  
+				  model = "ini-5000"
+		elif model == "xpeedlx":
+			if fileExists("/proc/stb/fp/version"):
+				file = open("/proc/stb/fp/version")
+				version = file.read().strip().lower()
+				file.close()
+				if version.startswith('2'):
+					model = "xpeedlx2"
+				else:
+					model = "xpeedlx1"
 		if fileExists(getPublicPath("/images/boxes/"+model+".jpg")):
 			info["boximage"] = model+".jpg"
 		else:
