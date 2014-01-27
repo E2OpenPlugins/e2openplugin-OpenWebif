@@ -11,7 +11,7 @@
 
 from Tools.Directories import fileExists
 from Components.config import config
-from boxbranding import getMachineBuild, getMachineName, getMachineBrand
+from boxbranding import getBoxType, getMachineName, getMachineBrand
 	
 from enigma import eEnv
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
@@ -83,7 +83,7 @@ class AjaxController(BaseController):
 	
 	def P_boxinfo(self, request):
 		info = getInfo()
-		model = getMachineBuild()
+		model = getBoxType()
 		if fileExists(getPublicPath("/images/boxes/"+model+".jpg")):
 			info["boximage"] = model+".jpg"
 		else:
