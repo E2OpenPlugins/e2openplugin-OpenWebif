@@ -19,7 +19,7 @@ from Screens.Standby import inStandby
 from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
 from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
-from boxbranding import getBoxType, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild
+from boxbranding import getBoxType, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion
 from enigma import getEnigmaVersionString
 
 import NavigationInstance
@@ -120,6 +120,7 @@ def getInfo():
 
 	info["webifver"] = getOpenWebifVer()
 	info['imagedistro'] = getImageDistro()
+	info['oever'] = getOEVersion()
 	info['imagever'] = getImageVersion() + '.' + getImageBuild()
 	info['enigmaver'] = getEnigmaVersionString()
 	info['kernelver'] = about.getKernelVersionString()
