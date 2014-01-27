@@ -11,7 +11,7 @@
 
 from Tools.Directories import fileExists
 from Components.config import config
-from boxbranding import getBoxType, getMachineName, getMachineBrand
+from boxbranding import getBoxType, getMachineBuild, getMachineName, getMachineBrand
 	
 from enigma import eEnv
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
@@ -83,7 +83,15 @@ class AjaxController(BaseController):
 	
 	def P_boxinfo(self, request):
 		info = getInfo()
-		model = getBoxType()
+		model = getMachineBuild()
+		if model == "ventonhdx":
+			if getBoxType() == "ini-3000":
+				  model = "uniboxhd1"
+			elif getBoxType() == "ini-5000":
+				  model = "uniboxhd2"
+			elif getBoxType() in ('ini-7000', 'ini-7012'):
+				  model = "uniboxhd3"
+				  
 		if fileExists(getPublicPath("/images/boxes/"+model+".jpg")):
 			info["boximage"] = model+".jpg"
 		else:
