@@ -90,7 +90,7 @@ class AjaxController(BaseController):
 			elif getBoxType() == "ini-5000":
 				  model = "ini-5000"
 			elif getBoxType() in ('ini-7000', 'ini-7012'):
-				  model = "ini-5000"
+				  model = "ini-7000"
 		elif model == "xpeedlx":
 			if fileExists("/proc/stb/fp/version"):
 				file = open("/proc/stb/fp/version")
