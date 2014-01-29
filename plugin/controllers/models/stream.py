@@ -48,7 +48,7 @@ def getStream(session, request, m3ufile):
 	portNumber = config.OpenWebif.streamport.value
 	info = getInfo()
 	model = info["model"]
-	if model in ("solo2", "duo2", "Sezam Marvel", "Xpeed LX3", "gbquad", "gbquadplus"):
+	if model in ("solo2", "duo2", "Sezam Marvel", "Xpeed LX-3", "gbquad", "gbquadplus"):
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
 				portNumber = config.plugins.transcodingsetup.port.value
