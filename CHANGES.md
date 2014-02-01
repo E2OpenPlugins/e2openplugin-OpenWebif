@@ -1,3 +1,8 @@
+## Version 0.2.7
+**FEATURES**
+
+* update transcoding API to latest transcoding features
+
 ## Version 0.2.6
 **FEATURES**
 
