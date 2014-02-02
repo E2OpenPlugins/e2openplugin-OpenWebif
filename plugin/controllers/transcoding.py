@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ##############################################################################
-#                        2013 E2OpenPlugins                                  #
+#                    2013 E2OpenPlugins, tweaked by oe-alliance              #
 #                                                                            #
 #  This file is open source software; you can redistribute it and/or modify  #
 #     it under the terms of the GNU General Public License version 2 as      #
@@ -30,18 +30,11 @@ def get_transcoding_features(encoder = 0):
 	}
 	encoder_features = {}
 	for feature in features:
-		if encoder == 0:
-			if hasattr(config.plugins.transcodingsetup, feature):
-				try:
-					encoder_features[feature] = getattr(config.plugins.transcodingsetup, feature)
-				except KeyError:
-					pass
-		else:
-			if hasattr(config.plugins.transcodingsetup, "%s_%s" % (feature, encoder)):
-				try:
-					encoder_features[feature] = getattr(config.plugins.transcodingsetup, "%s_%s" % (feature, encoder))
-				except KeyError:
-					pass
+		if hasattr(config.plugins.transcodingsetup.encoder[int(encoder)], feature):
+			try:
+				encoder_features[feature] = getattr(config.plugins.transcodingsetup.encoder[int(encoder)], feature)
+			except KeyError:
+				pass
 	return encoder_features
 
 class TranscodingController(resource.Resource):
@@ -55,28 +48,36 @@ class TranscodingController(resource.Resource):
 		try:
 			port = config.plugins.transcodingsetup.port
 		except KeyError:
-			return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>Transcoding Plugin is not installed or your STB does not support transcoding</e2statetext></e2simplexmlresult>'
+			return '<?xml version="1.0" encoding="UTF-8" ?><simplexmlresult><e2state>false</e2state><error>Transcoding Plugin is not installed or your STB does not support transcoding</error></simplexmlresult>'
 		
-		encoders = (0, 1)
+		encoders = config.plugins.transcodingsetup.encodernum.choices
 		if len(request.args):
 			config_changed = False
 			if "port" in request.args:
-				new_port = request.args[arg][0]
-				if not new_port in port.choices:
-					new_port = port.value
-				if new_port != config.plugins.transcodingsetup.port.value:
-					config.plugins.transcodingsetup.port.value = new_port
+				new_port = int(request.args['port'][0])
+				attr_min = str(port.limits[0][0])
+				attr_max = str(port.limits[0][1])
+				if new_port < int(port.limits[0][0]) or new_port > int(port.limits[0][1]):
+					return '<?xml version="1.0" encoding="UTF-8" ?><simplexmlresult><port>%s</port><configlimits>%s-%s</configlimits><error>choosen port is not available</error></simplexmlresult>' % (new_port, attr_min, attr_max)
+				if new_port != port.getValue():
+					port.setValue(new_port)
 					config_changed = True
+
 			encoder = 0
+			numencoder = config.plugins.transcodingsetup.encodernum
 			if "encoder" in request.args:
-				try:
-					encoder = int(request.args["encoder"][0])
-				except ValueError:
-					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for encoder</e2statetext></e2simplexmlresult>'
+				numencoders = ""
+				for enc in encoders:
+					numencoders += enc + ", "
+				numencoders = numencoders.rstrip(', ')
+				new_encoder = int(request.args["encoder"][0])
+				if new_encoder > len(encoders)-1:
+					return '<?xml version="1.0" encoding="UTF-8" ?><simplexmlresult><encoder>%s</encoder><configchoices>%s</configchoices><error>choosen encoder is not available</error></simplexmlresult>' % (new_encoder, numencoders)
+				if new_encoder != numencoder.getValue():
+					numencoder.setValue(new_encoder)
+					config_changed = True
+
 			encoder_features = get_transcoding_features(encoder)
-			if not len(encoder_features):
-				return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>choosen encoder is not available</e2statetext></e2simplexmlresult>'
-			
 			for arg in request.args:
 				if arg in encoder_features:
 					attr = encoder_features[arg]
@@ -84,52 +85,55 @@ class TranscodingController(resource.Resource):
 						try:
 							new_value = int(request.args[arg][0])
 						except ValueError:
-							return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for %s</e2statetext></e2simplexmlresult>' % arg
+							return '<?xml version="1.0" encoding="UTF-8" ?><simplexmlresult><%s>%s</%s><configlimits>%s-%s</configlimits><error>choosen value is not available</error></simplexmlresult>' % (arg, new_value, arg, attr_min, attr_max)
 						if new_value < int(attr.limits[0][0]):
 							new_value = int(attr.limits[0][0])
 						elif new_value > int(attr.limits[0][1]):
 							new_value = int(attr.limits[0][1])
 						if new_value != attr.value:
-							attr.value = new_value
+							attr.setValue(new_value)
 							config_changed = True
 					elif hasattr(attr, "choices"):
 						new_value = request.args[arg][0]
-						if not new_value in attr.choices:
-							return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for %s</e2statetext></e2simplexmlresult>' % arg
-						if new_value != attr.value:
-							attr.value = new_value
+						choices = ""
+						for choice in attr.choices:
+							choices += choice + ", "
+						choices = choices.rstrip(', ')
+						if not str(new_value) in attr.choices and not int(new_value) in attr.choices:
+							return '<?xml version="1.0" encoding="UTF-8" ?><simplexmlresult><%s>%s</%s><configchoices>%s</configchoices><error>choosen value is not available</error></simplexmlresult>' % (arg, new_value, arg, choices)
+						if new_value != attr.getValue():
+							attr.setValue(new_value)
 							config_changed = True
 				elif arg not in ("encoder", "port"):
-					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>choosen feature %s is not available</e2statetext></e2simplexmlresult>' % arg
+					return '<?xml version="1.0" encoding="UTF-8" ?><simplexmlresult><e2state>false</e2state><error>choosen feature %s is not available</error></simplexmlresult>' % arg
 			if config_changed:
 				config.plugins.transcodingsetup.save()
 		
-		str_result = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<e2configs>\n"
+		str_result = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<configs>\n"
 		
+		attr, arg = port, "port"
+		value = str(attr.getValue())
+		attr_min = str(attr.limits[0][0])
+		attr_max = str(attr.limits[0][1])
+		str_result += "<config>\n<configname>%s</configname>\n<configlimits>%s-%s</configlimits>\n<configvalue>%s</configvalue>\n</config>\n" % (arg, attr_min, attr_max, value)
 		for encoder in encoders:
 			encoder_features = get_transcoding_features(encoder)
 			if len(encoder_features):
 				str_result += "<encoder number=\"%s\">\n" % str(encoder)
 			for arg in encoder_features:
 				attr = encoder_features[arg]
-				value = str(attr.value)
+				value = attr.getValue()
 				if hasattr(attr, "limits"):
 					attr_min = str(attr.limits[0][0])
 					attr_max = str(attr.limits[0][1])
-					str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configlimits>%s-%s</e2configlimits>\n<e2configvalue>%s</e2configvalue>\n</e2config>\n" % (arg, attr_min, attr_max, value)
+					str_result += "<config>\n<configname>%s</configname>\n<configlimits>%s-%s</configlimits>\n<configvalue>%s</configvalue>\n</config>\n" % (arg, attr_min, attr_max, value)
 				elif hasattr(attr, "choices"):
 					choices = ""
 					for choice in attr.choices:
 						choices += choice + ", "
 					choices = choices.rstrip(', ')
-					str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configchoices>%s</e2configchoices>\n<e2configvalue>%s</e2configvalue>\n</e2config>\n" % (arg, choices, value)
+					str_result += "<config>\n<configname>%s</configname>\n<configchoices>%s</configchoices>\n<configvalue>%s</configvalue>\n</config>\n" % (arg, choices, value)
 			if len(encoder_features):
 				str_result += "</encoder>\n"
-		attr, arg = port, "port"
-		value = str(attr.value)
-		choices = ""
-		for choice in attr.choices:
-			choices += choice + ", "
-		choices = choices.rstrip(', ')
-		str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configchoices>%s</e2configchoices>\n<e2configvalue>%s</e2configvalue>\n</e2config>\n</e2configs>\n" % (arg, choices, value)
+		str_result += "</configs>\n"
 		return str_result
