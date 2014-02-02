@@ -10,7 +10,39 @@
 ##############################################################################
 from twisted.web import static, resource, http
 from Components.config import config
-from Components.SystemInfo import SystemInfo
+
+
+def get_transcoding_features(encoder = 0):
+	features = {
+		"automode": "automode",
+		"bitrate": "bitrate",
+		"framerate": "framerate",
+		"resolution": "display_format",
+		"aspectratio": "aspectratio",
+		"audiocodec" : "audio_codec",
+		"videocodec" : "video_codec",
+		"gopframeb" : "gop_frameb",
+		"gopframep" :"gop_framep",
+		"level" : "level",
+		"profile" : "profile",
+		"width" : "width", # not in use
+		"height" : "height", # not in use
+	}
+	encoder_features = {}
+	for feature in features:
+		if encoder == 0:
+			if hasattr(config.plugins.transcodingsetup, feature):
+				try:
+					encoder_features[feature] = getattr(config.plugins.transcodingsetup, feature)
+				except KeyError:
+					pass
+		else:
+			if hasattr(config.plugins.transcodingsetup, "%s_%s" % (feature, encoder)):
+				try:
+					encoder_features[feature] = getattr(config.plugins.transcodingsetup, "%s_%s" % (feature, encoder))
+				except KeyError:
+					pass
+	return encoder_features
 
 class TranscodingController(resource.Resource):
 
@@ -20,281 +52,84 @@ class TranscodingController(resource.Resource):
 	def render(self, request):
 		request.setHeader('Content-type', 'application/xhtml+xml')
 		request.setHeader('charset', 'UTF-8')
-
-		encoder = 0
-		numencoder = config.plugins.transcodingsetup.encodernum
-		if SystemInfo["MultipleEncoders"]:
-			encoders = ""
-			for resolution_available in numencoder.choices:
-				encoders += resolution_available + ", "
-			encoders = encoders.rstrip(', ')
-			if len(request.args):
-				for arg in request.args:
-					if arg == "encoder":
-						try:
-							encoder = int(request.args[arg][0])
-							break
-						except:
-							return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2encoder>%s</e2encoder><e2configchoices>%s</e2configchoices><e2encodertext>wrong argument for encoder</e2encodertext></e2simplexmlresult>' % (request.args[arg][0], encoders)
-
-		if encoder > len(numencoder.choices)-1:
-			curencoder = encoder
-			encoder = numencoder.getValue()
-			return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2encoder>%s</e2encoder><e2configchoices>%s</e2configchoices></e2simplexmlresult>' % (curencoder, encoders)
-
 		try:
-			transcoding = config.plugins.transcodingsetup.transcoding
 			port = config.plugins.transcodingsetup.port
-			bitrate = config.plugins.transcodingsetup.encoder[encoder].bitrate
-			framerate = config.plugins.transcodingsetup.encoder[encoder].framerate
-			if SystemInfo["AdvancedTranscoding"]:
-				resolution = config.plugins.transcodingsetup.encoder[encoder].resolution
-				audiocodec = config.plugins.transcodingsetup.encoder[encoder].audiocodec
-				videocodec = config.plugins.transcodingsetup.encoder[encoder].videocodec
-				gopframeb = config.plugins.transcodingsetup.encoder[encoder].gopframeb
-				gopframep = config.plugins.transcodingsetup.encoder[encoder].gopframep
-				level = config.plugins.transcodingsetup.encoder[encoder].level
-				profile = config.plugins.transcodingsetup.encoder[encoder].profile
 		except KeyError:
 			return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>Transcoding Plugin is not installed or your STB does not support transcoding</e2statetext></e2simplexmlresult>'
-
-		for arg in request.args:
+		
+		encoders = (0, 1)
+		if len(request.args):
 			config_changed = False
-			if arg == "transcoding":
-				transcoding_state = str(request.args[arg][0]).lower()
-				if transcoding_state in ('true', '1', 'enabled', 'enable', 'active'):
-					config.plugins.transcodingsetup.transcoding.setValue("enable")
-				elif transcoding_state in ('false', '0', 'disabled', 'disable', 'inactive'):
-					config.plugins.transcodingsetup.transcoding.setValue("disable")
-				config_changed = True
-			elif arg == "bitrate":
+			if "port" in request.args:
+				new_port = request.args[arg][0]
+				if not new_port in port.choices:
+					new_port = port.value
+				if new_port != config.plugins.transcodingsetup.port.value:
+					config.plugins.transcodingsetup.port.value = new_port
+					config_changed = True
+			encoder = 0
+			if "encoder" in request.args:
 				try:
-					new_bitrate = request.args[arg][0]
+					encoder = int(request.args["encoder"][0])
 				except ValueError:
-					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for bitrate</e2statetext></e2simplexmlresult>'
-				if not new_bitrate in bitrate.choices:
-					new_bitrate = bitrate.getValue()
-				if new_bitrate != config.plugins.transcodingsetup.encoder[encoder].bitrate.getValue():
-					config.plugins.transcodingsetup.encoder[encoder].bitrate.setValue(new_bitrate)
-					config_changed = True
-			elif arg == "framerate":
-				new_framerate = request.args[arg][0]
-				if not new_framerate in framerate.choices:
-					new_framerate = framerate.getValue()
-				if new_framerate != config.plugins.transcodingsetup.encoder[encoder].framerate.getValue():
-					config.plugins.transcodingsetup.encoder[encoder].framerate.setValue(new_framerate)
-					config_changed = True
-			elif arg == "port":
-				new_port = int(request.args[arg][0])
-				if new_port < int(port.limits[0][0]):
-					new_port = int(port.limits[0][0])
-				elif new_port > int(port.limits[0][1]):
-					new_port = int(port.limits[0][1])
-				if new_port != config.plugins.transcodingsetup.port.getValue():
-					config.plugins.transcodingsetup.port.setValue(new_port)
-					config_changed = True
-			if SystemInfo["AdvancedTranscoding"]:
-				if arg == "automode":
-					if (hasattr(config.plugins.transcodingsetup.encoder[int(encoder)], "bitrate") or hasattr(config.plugins.transcodingsetup.encoder[int(encoder)], "framerate")):
-						new_automode = str(request.args[arg][0]).lower()
-						if new_automode in ('true', '1', 'enabled', 'enable', 'active', 'on'):
-							config.plugins.transcodingsetup.transcoding.setValue("On")
-						elif new_automode in ('false', '0', 'disabled', 'disable', 'inactive', 'off'):
-							config.plugins.transcodingsetup.transcoding.setValue("Off")
-						config_changed = True
-				elif arg == "resolution":
-					new_resolution = request.args[arg][0]
-					if not new_resolution in resolution.choices:
-						new_resolution = resolution.getValue()
-					if new_resolution != config.plugins.transcodingsetup.encoder[encoder].resolution.getValue():
-						config.plugins.transcodingsetup.encoder[encoder].resolution.setValue(new_resolution)
-						config_changed = True
-				elif arg == "audiocodec":
-					new_audiocodec = request.args[arg][0]
-					if not new_audiocodec in audiocodec.choices:
-						new_audiocodec = audiocodec.getValue()
-					if new_audiocodec != config.plugins.transcodingsetup.encoder[encoder].audiocodec.getValue():
-						config.plugins.transcodingsetup.encoder[encoder].audiocodec.setValue(new_audiocodec)
-						config_changed = True
-				elif arg == "videocodec":
-					new_videocodec = request.args[arg][0]
-					if not new_videocodec in videocodec.choices:
-						new_videocodec = videocodec.getValue()
-					if new_videocodec != config.plugins.transcodingsetup.encoder[encoder].videocodec.getValue():
-						config.plugins.transcodingsetup.encoder[encoder].videocodec.setValue(new_videocodec)
-						config_changed = True
-				elif arg == "gopframeb":
-					new_gopframeb = int(request.args[arg][0])
-					if new_gopframeb < int(gopframeb.limits[0][0]):
-						new_gopframeb = int(gopframeb.limits[0][0])
-					elif new_gopframeb > int(gopframeb.limits[0][1]):
-						new_gopframeb = int(gopframeb.limits[0][1])
-					if new_gopframeb != config.plugins.transcodingsetup.encoder[encoder].gopframeb.getValue():
-						config.plugins.transcodingsetup.encoder[encoder].gopframeb.setValue(new_gopframeb)
-						config_changed = True
-				elif arg == "gopframep":
-					new_gopframep = int(request.args[arg][0])
-					if new_gopframep < int(gopframep.limits[0][0]):
-						new_gopframep = int(gopframep.limits[0][0])
-					elif new_gopframep > int(gopframep.limits[0][1]):
-						new_gopframep = int(gopframep.limits[0][1])
-					if new_gopframep != config.plugins.transcodingsetup.encoder[encoder].gopframep.getValue():
-						config.plugins.transcodingsetup.encoder[encoder].gopframep.setValue(new_gopframep)
-						config_changed = True
-				elif arg == "level":
-					new_level = request.args[arg][0]
-					if not new_level in level.choices:
-						new_level = level.getValue()
-					if new_level != config.plugins.transcodingsetup.encoder[encoder].level.getValue():
-						config.plugins.transcodingsetup.encoder[encoder].level.setValue(new_level)
-						config_changed = True
-				elif arg == "profile":
-					new_profile = request.args[arg][0]
-					if not new_profile in profile.choices:
-						new_profile = profile.getValue()
-					if new_profile != config.plugins.transcodingsetup.encoder[encoder].profile.getValue():
-						config.plugins.transcodingsetup.encoder[encoder].profile.setValue(new_profile)
-						config_changed = True
+					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for encoder</e2statetext></e2simplexmlresult>'
+			encoder_features = get_transcoding_features(encoder)
+			if not len(encoder_features):
+				return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>choosen encoder is not available</e2statetext></e2simplexmlresult>'
+			
+			for arg in request.args:
+				if arg in encoder_features:
+					attr = encoder_features[arg]
+					if hasattr(attr, "limits"):
+						try:
+							new_value = int(request.args[arg][0])
+						except ValueError:
+							return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for %s</e2statetext></e2simplexmlresult>' % arg
+						if new_value < int(attr.limits[0][0]):
+							new_value = int(attr.limits[0][0])
+						elif new_value > int(attr.limits[0][1]):
+							new_value = int(attr.limits[0][1])
+						if new_value != attr.value:
+							attr.value = new_value
+							config_changed = True
+					elif hasattr(attr, "choices"):
+						new_value = request.args[arg][0]
+						if not new_value in attr.choices:
+							return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for %s</e2statetext></e2simplexmlresult>' % arg
+						if new_value != attr.value:
+							attr.value = new_value
+							config_changed = True
+				elif arg not in ("encoder", "port"):
+					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>choosen feature %s is not available</e2statetext></e2simplexmlresult>' % arg
 			if config_changed:
 				config.plugins.transcodingsetup.save()
-		port_min = str(port.limits[0][0])
-		port_max = str(port.limits[0][1])
-		framerates = ""
-		for framerate_available in framerate.choices:
-			framerates += framerate_available + ", "
-		framerates = framerates.rstrip(', ')
-		bitrates = ""
-		for bitrate_available in bitrate.choices:
-			bitrates += bitrate_available + ", "
-		bitrates = bitrates.rstrip(', ')
-		if SystemInfo["AdvancedTranscoding"]:
-			resolutions = ""
-			for resolution_available in resolution.choices:
-				resolutions += resolution_available + ", "
-			resolutions = resolutions.rstrip(', ')
-			audiocodecs = ""
-			for audiocodec_available in audiocodec.choices:
-				audiocodecs += audiocodec_available + ", "
-			audiocodecs = audiocodecs.rstrip(', ')
-			videocodecs = ""
-			for videocodec_available in videocodec.choices:
-				videocodecs += videocodec_available + ", "
-			videocodecs = videocodecs.rstrip(', ')
-			gopframeb_min = str(gopframeb.limits[0][0])
-			gopframeb_max = str(gopframeb.limits[0][1])
-			gopframep_min = str(gopframep.limits[0][0])
-			gopframep_max = str(gopframep.limits[0][1])
-			levels = ""
-			for level_available in level.choices:
-				levels += level_available + ", "
-			levels = levels.rstrip(', ')
-			profiles = ""
-			for profile_available in profile.choices:
-				profiles += profile_available + ", "
-			profiles = profiles.rstrip(', ')
-
-			return """<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
-					<e2configs>
-						<e2config>
-							<e2configname>transcoding</e2configname>
-							<e2configvalue>%s</e2configvalue>
-						</e2config>
-						<e2config>
-							<e2configname>encoder</e2configname>
-							<e2configvalue>%s</e2configvalue>
-						</e2config>
-						<e2config>
-							<e2configname>port</e2configname>
-							<e2configlimits>%s-%s</e2configlimits>
-							<e2configvalue>%s</e2configvalue>
-						</e2config>
-						<e2config>
-							<e2configname>bitrate</e2configname>
-							<e2configchoices>%s</e2configchoices>
-							<e2configvalue>%s</e2configvalue>
-						</e2config>
-						<e2config>
-							<e2configname>framerate</e2configname>
-							<e2configchoices>%s</e2configchoices>
-							<e2configvalue>%s</e2configvalue>
-						</e2config>
-						<e2config>
-							<e2configname>automode</e2configname>
-							<e2configvalue>%s</e2configvalue>
-						</e2config>
-						<e2config>
-							<e2configname>resolution</e2configname>
-							<e2configchoices>%s</e2configchoices>
-							<e2configvalue>%s</e2configvalue>
-						</e2config>
-						<e2config>
-							<e2configname>audiocodec</e2configname>
-							<e2configchoices>%s</e2configchoices>
-							<e2configvalue>%s</e2configvalue>
-						</e2config>
-						<e2config>
-							<e2configname>videocodec</e2configname>
-							<e2configchoices>%s</e2configchoices>
-							<e2configvalue>%s</e2configvalue>
-						</e2config>
-						<e2config>
-							<e2configname>gopframeb</e2configname>
-							<e2configlimits>%s-%s</e2configlimits>
-							<e2configvalue>%s</e2configvalue>
-						</e2config>
-						<e2config>
-							<e2configname>gopframep</e2configname>
-							<e2configlimits>%s-%s</e2configlimits>
-							<e2configvalue>%s</e2configvalue>
-						</e2config>
-						<e2config>
-							<e2configname>level</e2configname>
-							<e2configchoices>%s</e2configchoices>
-							<e2configvalue>%s</e2configvalue>
-						</e2config>
-						<e2config>
-							<e2configname>profile</e2configname>
-							<e2configchoices>%s</e2configchoices>
-							<e2configvalue>%s</e2configvalue>
-						</e2config>
-					</e2configs>""" % (str(config.plugins.transcodingsetup.transcoding.getValue()),
-								str(encoder),
-								port_min, port_max, str(config.plugins.transcodingsetup.port.getValue()),
-								bitrates, str(config.plugins.transcodingsetup.encoder[encoder].bitrate.getValue()),
-								framerates, str(config.plugins.transcodingsetup.encoder[encoder].framerate.getValue()),
-								str(config.plugins.transcodingsetup.encoder[encoder].automode.getValue()),
-								resolutions, str(config.plugins.transcodingsetup.encoder[encoder].resolution.getValue()),
-								audiocodecs, str(config.plugins.transcodingsetup.encoder[encoder].audiocodec.getValue()),
-								videocodecs, str(config.plugins.transcodingsetup.encoder[encoder].videocodec.getValue()),
-								gopframeb_min, gopframeb_max, str(config.plugins.transcodingsetup.encoder[encoder].gopframeb.getValue()),
-								gopframep_min, gopframep_max, str(config.plugins.transcodingsetup.encoder[encoder].gopframep.getValue()),
-								levels, str(config.plugins.transcodingsetup.encoder[encoder].level.getValue()),
-								profiles, str(config.plugins.transcodingsetup.encoder[encoder].profile.getValue()))
-		else:
-			return """<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
-					<e2configs>
-						<e2config>
-							<e2configname>transcoding</e2configname>
-							<e2configvalue>%s</e2configvalue>
-						</e2config>
-						<e2config>
-							<e2configname>port</e2configname>
-							<e2configlimits>%s-%s</e2configlimits>
-							<e2configvalue>%s</e2configvalue>
-						</e2config>
-						<e2config>
-							<e2configname>bitrate</e2configname>
-							<e2configchoices>%s</e2configchoices>
-							<e2configvalue>%s</e2configvalue>
-						</e2config>
-						<e2config>
-							<e2configname>framerate</e2configname>
-							<e2configchoices>%s</e2configchoices>
-							<e2configvalue>%s</e2configvalue>
-						</e2config>
-					</e2configs>""" % (str(config.plugins.transcodingsetup.transcoding.getValue()),
-								port_min, port_max, str(config.plugins.transcodingsetup.port.getValue()),
-								bitrates, str(config.plugins.transcodingsetup.encoder[encoder].bitrate.getValue()),
-								framerates, str(config.plugins.transcodingsetup.encoder[encoder].framerate.getValue()),
-								)
-
+		
+		str_result = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<e2configs>\n"
+		
+		for encoder in encoders:
+			encoder_features = get_transcoding_features(encoder)
+			if len(encoder_features):
+				str_result += "<encoder number=\"%s\">\n" % str(encoder)
+			for arg in encoder_features:
+				attr = encoder_features[arg]
+				value = str(attr.value)
+				if hasattr(attr, "limits"):
+					attr_min = str(attr.limits[0][0])
+					attr_max = str(attr.limits[0][1])
+					str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configlimits>%s-%s</e2configlimits>\n<e2configvalue>%s</e2configvalue>\n</e2config>\n" % (arg, attr_min, attr_max, value)
+				elif hasattr(attr, "choices"):
+					choices = ""
+					for choice in attr.choices:
+						choices += choice + ", "
+					choices = choices.rstrip(', ')
+					str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configchoices>%s</e2configchoices>\n<e2configvalue>%s</e2configvalue>\n</e2config>\n" % (arg, choices, value)
+			if len(encoder_features):
+				str_result += "</encoder>\n"
+		attr, arg = port, "port"
+		value = str(attr.value)
+		choices = ""
+		for choice in attr.choices:
+			choices += choice + ", "
+		choices = choices.rstrip(', ')
+		str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configchoices>%s</e2configchoices>\n<e2configvalue>%s</e2configvalue>\n</e2config>\n</e2configs>\n" % (arg, choices, value)
+		return str_result
