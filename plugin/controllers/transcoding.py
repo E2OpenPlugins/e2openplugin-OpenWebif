@@ -115,7 +115,7 @@ class TranscodingController(resource.Resource):
 		value = str(attr.getValue())
 		attr_min = str(attr.limits[0][0])
 		attr_max = str(attr.limits[0][1])
-		str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configlimits>%s-%s</e2configlimits>\n<configvalue>%s</configvalue>\n</e2config>\n" % (arg, attr_min, attr_max, value)
+		str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configlimits>%s-%s</e2configlimits>\n<e2configvalue>%s</e2configvalue>\n</e2config>\n" % (arg, attr_min, attr_max, value)
 		for encoder in encoders:
 			encoder_features = get_transcoding_features(encoder)
 			if len(encoder_features):
@@ -126,13 +126,13 @@ class TranscodingController(resource.Resource):
 				if hasattr(attr, "limits"):
 					attr_min = str(attr.limits[0][0])
 					attr_max = str(attr.limits[0][1])
-					str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configlimits>%s-%s</e2configlimits>\n<configvalue>%s</configvalue>\n</e2config>\n" % (arg, attr_min, attr_max, value)
+					str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configlimits>%s-%s</e2configlimits>\n<e2configvalue>%s</e2configvalue>\n</e2config>\n" % (arg, attr_min, attr_max, value)
 				elif hasattr(attr, "choices"):
 					choices = ""
 					for choice in attr.choices:
 						choices += choice + ", "
 					choices = choices.rstrip(', ')
-					str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configchoices>%s</e2configchoices>\n<configvalue>%s</configvalue>\n</e2config>\n" % (arg, choices, value)
+					str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configchoices>%s</e2configchoices>\n<e2configvalue>%s</e2configvalue>\n</e2config>\n" % (arg, choices, value)
 			if len(encoder_features):
 				str_result += "</e2encoder>\n"
 		str_result += "</e2configs>\n"
