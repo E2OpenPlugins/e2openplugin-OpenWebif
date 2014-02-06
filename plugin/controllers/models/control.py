@@ -12,6 +12,7 @@ from Components.config import config
 from enigma import eServiceReference, eActionMap
 from urllib import unquote
 from services import getProtection
+from Screens.InfoBar import InfoBar, MoviePlayer
 
 def zapService(session, id, title = ""):
 	# Must NOT unquote id here, breaks zap to streams
@@ -21,17 +22,32 @@ def zapService(session, id, title = ""):
 		service.setName(title)
 	else:
 		title = id
+
+	# TODO: check standby
+
+	isRecording = service.getPath()
+	isRecording = isRecording and isRecording.startswith("/")
 	
-	if config.ParentalControl.configured.value and config.OpenWebif.parentalenabled.value:
-		if getProtection(service.toString()) == "0":
-			session.nav.playService(service)
+	if not isRecording:
+		if config.ParentalControl.configured.value and config.OpenWebif.parentalenabled.value:
+			if getProtection(service.toString()) == "0":
+				return {
+					"result": False,
+					"message": "Service '%s' is blocked by parental Control" % title
+				}
+
+	# use mediaplayer for recording
+	if isRecording:
+		if isinstance(session.current_dialog, InfoBar):
+			session.open(MoviePlayer, service)
 		else:
-			return {
-				"result": False,
-				"message": "Service '%s' is blocked by parental Control" % title
-			}
+			session.nav.playService(service)
 	else:
+		if isinstance(session.current_dialog, MoviePlayer):
+			session.current_dialog.lastservice = service
+			session.current_dialog.close()
 		session.nav.playService(service)
+
 	
 	return {
 		"result": True,
