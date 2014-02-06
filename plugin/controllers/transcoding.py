@@ -61,7 +61,7 @@ class TranscodingController(resource.Resource):
 		if len(request.args):
 			config_changed = False
 			if "port" in request.args:
-				new_port = request.args[arg][0]
+				new_port = request.args["port"][0]
 				if not new_port in port.choices:
 					new_port = port.value
 				if new_port != config.plugins.transcodingsetup.port.value:
