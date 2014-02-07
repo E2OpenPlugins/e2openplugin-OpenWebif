@@ -10,12 +10,20 @@
 ##############################################################################
 from urllib import unquote
 from enigma import eDVBDB
+from Components.NimManager import nimmanager
+import Components.ParentalControl
 
 def reloadLameDB(self):
 		self.eDVBDB.reloadServicelist()
 
 def reloadUserBouquets(self):
 		self.eDVBDB.reloadBouquets()
+
+def reloadTransponders(self):
+		nimmanager.readTransponders()
+
+def reloadParentalControl(self):
+		Components.ParentalControl.parentalControl.open()
 
 def reloadServicesLists(self, request):
 	self.eDVBDB = eDVBDB.getInstance()
@@ -40,6 +48,14 @@ def reloadServicesLists(self, request):
 		reloadUserBouquets(self)
 		res = True
 		msg = "reloaded bouquets"
+	elif mode == "3":
+		reloadTransponders(self)
+		res = True
+		msg = "reloaded transponders"
+	elif mode == "4":
+		reloadParentalControl(self)
+		res = True
+		msg = "reloaded parentalcontrol white-/blacklist"
 
 	return {
 		"result" : res,
