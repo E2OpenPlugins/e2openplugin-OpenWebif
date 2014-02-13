@@ -441,21 +441,25 @@ $(window).keydown(function(evt) {
 	}
 });
 
+function callScreenShot(){
+	if ($('input[name=remotegrabscreen]').is(':checked'))
+	{
+		if (lastcontenturl == 'ajax/screenshot')
+			grabScreenshot(screenshotMode);
+		else
+			load_maincontent('ajax/screenshot');
+	}
+}
+
+var grabTimer = 0;
 function pressMenuRemote(code) {
-	var timeout = 1000;
-	
 	if (shiftbutton)
 		webapi_execute("/api/remotecontrol?type=long&command=" + code);
 	else
 		webapi_execute("/api/remotecontrol?command=" + code);
-	
-	if ($('input[name=remotegrabscreen]').is(':checked'))
-	{
-		if (lastcontenturl == 'ajax/screenshot')
-			setTimeout("grabScreenshot(screenshotMode)", timeout);
-		else
-			setTimeout("load_maincontent('ajax/screenshot')", timeout);
-	}
+	if (grabTimer > 0)
+		clearTimeout(grabTimer);
+	grabTimer = setTimeout("callScreenShot()", 1000);
 }
 
 function toggleFullRemote() {
