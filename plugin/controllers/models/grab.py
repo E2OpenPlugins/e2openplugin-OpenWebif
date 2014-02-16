@@ -35,10 +35,12 @@ class grabScreenshot(resource.Resource):
 			graboptions += " -j 100"
 		elif self.fileformat == "png":
 			graboptions += " -p"
+		elif self.fileformat != "bmp":
+			self.fileformat = "bmp"
 
 		if "r" in request.args.keys():
 			size = request.args["r"][0]
-			graboptions += " -r %s" % size
+			graboptions += " -r %s" % int(size)
 
 		if "mode" in request.args.keys():
 			mode = request.args["mode"][0]
