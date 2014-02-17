@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-12-23 11:59+0100\n"
+"POT-Creation-Date: 2014-02-17 22:10+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -36,6 +36,9 @@ msgstr "Aktivierung von https"
 
 msgid "Https port"
 msgstr "Port für https"
+
+msgid "Enable Authentication for streaming"
+msgstr "Authentifizierung für Streaming aktivieren"
 
 msgid "Smart services renaming for XBMC"
 msgstr "Sendernamen für XBMC umbenennen"
