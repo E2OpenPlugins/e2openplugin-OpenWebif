@@ -156,12 +156,16 @@ class BaseController(resource.Resource):
 			ret["remote"] = "vu_ultimo"
 		elif ret["box"] in ("et9x00", "et9000", "et9200", "et9500"):
 			ret["remote"] = "et9x00"
-		elif ret["box"] in ("et5x00", "et5000", "et6000"):
+		elif ret["box"] in ("et5x00", "et5000", "et6x00", "et6000"):
 			ret["remote"] = "et5x00"
 		elif ret["box"] in ("et4x00", "et4000"):
 			ret["remote"] = "et4x00"
 		elif ret["box"] == "gigablue":
 			ret["remote"] = "gigablue"
+		elif ret["box"] == "et6500":
+			ret["remote"] = "et6500"
+		elif ret["box"] in ("et8x00", "et8000", "et1x000", "et10000"):
+			ret["remote"] = "et8000"
 		elif ret["box"] in ("me", "minime"):
 			ret["remote"] = "me"
 		elif ret["box"] in ("premium", "premium+"):
