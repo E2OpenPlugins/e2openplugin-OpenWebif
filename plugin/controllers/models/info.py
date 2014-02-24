@@ -107,15 +107,35 @@ def getInfo():
 		f = open("/proc/stb/info/model",'r')
  		model = f.readline().strip().lower()
  		f.close()
-
-	info['brand'] = brand
-	info['model'] = model
-
+		
 	if fileExists("/proc/stb/info/chipset"):
 		f = open("/proc/stb/info/chipset",'r')
  		chipset = f.readline().strip()
  		f.close()
 		
+	if model == "nbox":
+		brand = "Advanced Digital Broadcast"
+		#model = "ITI-5800S/5800SX"
+		chipset = "STx7100"
+	elif model == "adb2850":
+		brand = "Advanced Digital Broadcast"
+		#model = "ITI-2850ST"
+		chipset = "STx7111"
+	elif model == "adb2849":
+		brand = "Advanced Digital Broadcast"
+		#model = "ITI-2849ST"
+		chipset = "STx7111"
+	elif model == "esi88":
+		brand = "SagemCom"
+		#model = "ESI-88/UHD-88"
+		chipset = "STx7105"
+	elif model == "dsi87":
+		brand = "SagemCom"
+		#model = "DSI-87"
+		chipset = "STx7111"
+
+	info['brand'] = brand
+	info['model'] = model
 	info['chipset'] = chipset
 	
 	memFree = 0

@@ -688,3 +688,6 @@ msgstr ""
 
 msgid "E"
 msgstr ""
+
+msgid "Remote Control"
+msgstr ""
