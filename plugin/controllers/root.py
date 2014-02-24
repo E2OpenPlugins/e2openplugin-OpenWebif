@@ -66,7 +66,7 @@ class RootController(BaseController):
 			mode = request.args["mode"][0]
 		uagent = request.getHeader('User-Agent')
 		if uagent and mode != 'fullpage':
-			if uagent.find("iPhone") != -1 or uagent.find("iPod") != -1 or (uagent.lower().find("android") != -1 and uagent.lower().find("mobile") != -1):
+			if uagent.lower().find("iphone") != -1 or uagent.lower().find("ipod") != -1 or uagent.lower().find("blackberry") != -1 or uagent.lower().find("android") != -1 or uagent.lower().find("mobile") != -1:
 				request.setHeader("Location", "/mobile/")
 				request.setResponseCode(http.FOUND)
 				return ""

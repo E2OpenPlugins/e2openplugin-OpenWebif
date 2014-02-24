@@ -77,13 +77,6 @@ def getInfo():
 		model = f.readline().strip().lower()
  		if model.startswith("et"):
 		    brand = "Xtrend"
-		elif model.startswith("ini"):
-			if model.endswith("sv"):
-				brand = "MiracleBox"
-			elif model.endswith("ru"):
-				brand = "Sezam"
-			else:
-				brand = "Venton"
 		elif model.startswith("xp"):
 		    brand = "MaxDigital"
  		f.close()

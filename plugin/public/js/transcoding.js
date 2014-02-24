@@ -32,11 +32,13 @@ function getDeviceType() {
 
 function getOSType() {
 	var agentStr = navigator.userAgent;
-
-	if(agentStr.indexOf("iPod") > -1 || agentStr.indexOf("iPhone") > -1)
+	
+	if(agentStr.indexOf("iPod") > -1 || agentStr.indexOf("iPhone") > -1 || agentStr.indexOf("iPad") > -1 || agentStr.indexOf("ipod") > -1 || agentStr.indexOf("iphone") > -1 || agentStr.indexOf("ipad") > -1)
 		return "ios";
-	else if(agentStr.indexOf("Android") > -1)
+	else if(agentStr.indexOf("Android") > -1 || agentStr.indexOf("android") > -1)
 		return "android";
+	else if(agentStr.indexOf("BlackBerry") > -1 || agentStr.indexOf("blackberry") > -1)
+		return "blackberry";
 	else
 		return "unknown";
 }

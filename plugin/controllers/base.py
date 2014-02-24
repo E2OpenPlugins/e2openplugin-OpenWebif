@@ -156,26 +156,20 @@ class BaseController(resource.Resource):
 			ret["remote"] = "vu_ultimo"
 		elif ret["box"] in ("et9x00", "et9000", "et9200", "et9500"):
 			ret["remote"] = "et9x00"
-		elif ret["box"] in ("et5x00", "et5000", "et6000"):
+		elif ret["box"] in ("et5x00", "et5000", "et6x00", "et6000"):
 			ret["remote"] = "et5x00"
 		elif ret["box"] in ("et4x00", "et4000"):
 			ret["remote"] = "et4x00"
-		elif ret["box"] == "gigablue":
-			ret["remote"] = "gigablue"
+		elif ret["box"] == "et6500":
+			ret["remote"] = "et6500"
+		elif ret["box"] in ("et8x00", "et8000", "et1x000", "et10000"):
+			ret["remote"] = "et8000"
 		elif ret["box"] in ("me", "minime"):
 			ret["remote"] = "me"
 		elif ret["box"] in ("premium", "premium+"):
 			ret["remote"] = "premium"
 		elif ret["box"] in ("elite", "ultra"):
 			ret["remote"] = "elite"
-		elif ret["box"] in ("ini-1000", "ini-1000ru"):
-			ret["remote"] = "ini-1000"
-		elif ret["box"] in ("ini-1000sv", "ini-5000sv"):
-			ret["remote"] = "miraclebox"
-		elif ret["box"] == "ini-3000":
-			ret["remote"] = "ini-3000"
-		elif ret["box"] in ("ini-7012", "ini-7000", "ini-5000", "ini-5000ru"):
-			ret["remote"] = "ini-7000"
 		elif ret["box"] == "xp1000":
 			ret["remote"] = "xp1000"
 		else:
