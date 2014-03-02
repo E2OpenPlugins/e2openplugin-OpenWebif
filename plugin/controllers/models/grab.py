@@ -64,8 +64,7 @@ class grabScreenshot(resource.Resource):
 
 		self.filepath = "/tmp/screenshot." + self.fileformat
 		graboptions.append(self.filepath)
-		grabcommand = " ".join(graboptions)
-		self.container.execute(grabcommand)
+		self.container.execute(GRAB_PATH, *graboptions)
 		return server.NOT_DONE_YET
 
 	def grabData(self, data):
