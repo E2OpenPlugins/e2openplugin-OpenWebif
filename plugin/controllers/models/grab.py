@@ -21,10 +21,11 @@ class grabScreenshot(resource.Resource):
 		self.session = session
 		self.container = eConsoleAppContainer()
 		self.container.appClosed.append(self.grabFinished)
+		# self.container.dataAvail.append(self.grabData)
 
 	def render(self, request):
 		self.request = request
-		graboptions = ""
+		graboptions = [GRAB_PATH]
 
 		if "format" in request.args.keys():
 			self.fileformat = request.args["format"][0]
@@ -32,22 +33,24 @@ class grabScreenshot(resource.Resource):
 			self.fileformat = "jpg"
 
 		if self.fileformat == "jpg":
-			graboptions += " -j 95"
+			graboptions.append("-j")
+			graboptions.append("95")
 		elif self.fileformat == "png":
-			graboptions += " -p"
+			graboptions.append("-p")
 		elif self.fileformat != "bmp":
 			self.fileformat = "bmp"
 
 		if "r" in request.args.keys():
 			size = request.args["r"][0]
-			graboptions += " -r %s" % int(size)
+			graboptions.append("-r")
+			graboptions.append("%d" % int(size))
 
 		if "mode" in request.args.keys():
 			mode = request.args["mode"][0]
 			if mode == "osd":
-				graboptions += " -o"
+				graboptions.append("-o")
 			elif mode == "video":
-				graboptions += " -v"
+				graboptions.append("-v")
 
 		try:
 			ref = self.session.nav.getCurrentlyPlayingServiceReference().toString()
@@ -60,27 +63,33 @@ class grabScreenshot(resource.Resource):
 			self.sref = 'screenshot'
 
 		self.filepath = "/tmp/screenshot." + self.fileformat
-		grabcommand = GRAB_PATH + graboptions + " " + self.filepath
-
-		os.system(grabcommand)
-		self.grabFinished()
+		graboptions.append(self.filepath)
+		grabcommand = " ".join(graboptions)
+		self.container.execute(grabcommand)
 		return server.NOT_DONE_YET
 
-	def grabFinished(self, data=""):
+	def grabData(self, data):
+		print "[W] grab:", data,
+
+	def grabFinished(self, retval = None):
 		fileformat = self.fileformat
 		if fileformat == "jpg":
 			fileformat = "jpeg"
 		try:
+			fd = open(self.filepath)
+			data = fd.read()
+			fd.close()
 			self.request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (self.sref,self.fileformat))
 			self.request.setHeader('Content-Type','image/%s' % fileformat)
-			self.request.setHeader('Content-Length', '%i' % os.path.getsize(self.filepath))
-
-			file = open(self.filepath)
-			self.request.write(file.read())
-			file.close()
-			self.request.finish()
+			self.request.setHeader('Content-Length', '%i' % len(data))
+			self.request.write(data)
 		except Exception, error:
 			self.request.setResponseCode(http.OK)
 			self.request.write("Error creating screenshot:\n %s" % error)
-			self.request.finish()
-
+		try:
+			os.unlink(self.filepath)
+		except:
+			print "Failed to remove:", self.filepath
+		self.request.finish()
+		del self.request
+		del self.filepath
