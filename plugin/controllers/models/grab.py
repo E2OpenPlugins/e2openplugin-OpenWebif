@@ -32,7 +32,7 @@ class grabScreenshot(resource.Resource):
 			self.fileformat = "jpg"
 
 		if self.fileformat == "jpg":
-			graboptions += " -j 100"
+			graboptions += " -j 95"
 		elif self.fileformat == "png":
 			graboptions += " -p"
 		elif self.fileformat != "bmp":
