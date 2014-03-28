@@ -16,6 +16,16 @@ from Components.config import config
 from os import path as os_path, listdir
 from Tools.Directories import fileExists
 
+def new_getRequestHostname(self):
+	host = self.getHeader(b'host')
+	if host:
+		if host[0]=='[':
+			return host.split(']',1)[0] + "]"
+		return host.split(':', 1)[0].encode('ascii')
+	return self.getHost().host.encode('ascii')
+
+http.Request.getRequestHostname = new_getRequestHostname
+
 import json
 
 class FileController(resource.Resource):
