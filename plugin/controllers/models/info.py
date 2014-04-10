@@ -91,6 +91,15 @@ def getInfo():
 			brand = "GoldenInterstar"
 		elif model.startswith("azbox"):
 			brand = "AZBox"
+			f = open("/proc/stb/info/model",'r')
+ 			model = f.readline().strip().lower()
+ 			f.close()
+ 			if model == "me":
+				chipset = "SIGMA 8655"
+	 		elif model == "minime":
+				chipset = "SIGMA 8653"
+	 		else:
+				chipset = "SIGMA 8634"
 		elif model.startswith("spark"):
 			brand = "Fulan"
 			chipset = "SH4 @450MHz"
