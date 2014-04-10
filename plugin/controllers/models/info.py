@@ -72,7 +72,7 @@ def getInfo():
 	chipset = "unknown"
 
 	if fileExists("/etc/.box"):
-		brand = "Xtrend"
+		brand = "HDMU"
 		f = open("/etc/.box",'r')
 		model = f.readline().strip().lower()
 		if model.startswith("et"):
@@ -83,10 +83,17 @@ def getInfo():
 			brand = "GigaBlue"
 		elif model.startswith("ufs") or model.startswith("ufc"):
 			brand = "Kathrein"
+			if model == "ufs910" or model == "ufs922" or model.startswith("ufc"):
+				chipset = "SH4 @266MHz"
+			else:
+				chipset = "SH4 @450MHz"
 		elif model.startswith("xpeed"):
 			brand = "GoldenInterstar"
 		elif model.startswith("azbox"):
 			brand = "AZBox"
+		elif model.startswith("spark"):
+			brand = "Fulan"
+			chipset = "SH4 @450MHz"
  	elif fileExists("/proc/stb/info/boxtype"):
 		brand = "Xtrend"
 		f = open("/proc/stb/info/boxtype",'r')
