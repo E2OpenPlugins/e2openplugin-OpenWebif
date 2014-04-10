@@ -83,7 +83,7 @@ def getInfo():
 			brand = "GigaBlue"
 		elif model.startswith("ufs") or model.startswith("ufc"):
 			brand = "Kathrein"
-			if model == "ufs910" or model == "ufs922" or model.startswith("ufc"):
+			if model in ("ufs910", "ufs922", "ufc960"):
 				chipset = "SH4 @266MHz"
 			else:
 				chipset = "SH4 @450MHz"
