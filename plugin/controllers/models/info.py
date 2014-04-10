@@ -73,7 +73,7 @@ def getInfo():
 
 	if fileExists("/etc/.box"):
 		brand = "Xtrend"
-		f = open("/proc/stb/info/boxtype",'r')
+		f = open("/etc/.box",'r')
 		model = f.readline().strip().lower()
 		if model.startswith("et"):
 			brand = "Xtrend"
