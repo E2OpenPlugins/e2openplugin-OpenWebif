@@ -186,10 +186,8 @@ class BaseController(resource.Resource):
 			ret["remote"] = "spark"
 		elif ret["box"] == "xp1000":
 			ret["remote"] = "xp1000"
-		elif ret["box"] == "xpeedlx":
+		elif ret["box"].startswith("xpeedlx"):
 			ret["remote"] = "xpeedlx"
-		elif ret["box"] == "xpeedlx3":
-			ret["remote"] = "xpeedlx3"
 		else:
 			ret["remote"] = "dmm"
 		extras = []
