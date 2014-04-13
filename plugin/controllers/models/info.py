@@ -19,6 +19,8 @@ from Screens.Standby import inStandby
 from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
 from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
+from twisted.web import version
+from socket import has_ipv6, AF_INET6, inet_ntop, inet_pton
 
 import NavigationInstance
 
