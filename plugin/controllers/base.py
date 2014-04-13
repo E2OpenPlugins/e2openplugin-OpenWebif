@@ -152,9 +152,9 @@ class BaseController(resource.Resource):
 		elif fileExists("/proc/stb/info/azmodel"):
 			ret['box'] = open("/proc/stb/info/model").read().strip().lower()
 			
-		if ret["box"] in ("vusolo", "vuduo", "vuuno", "vusolo2", "vuduo2"):
+		if ret["box"] in ("vusolo", "vuduo", "vuuno", "vusolo2", "vuduo2", "solo", "duo", "uno", "solo2", "duo2"):
 			ret["remote"] = "vu_normal"
-		elif ret["box"] == "vuultimo":
+		elif ret["box"] in ("vuultimo", "ultimo"):
 			ret["remote"] = "vu_ultimo"
 		elif ret["box"] in ("et9x00", "et9000", "et9200", "et9500"):
 			ret["remote"] = "et9x00"
