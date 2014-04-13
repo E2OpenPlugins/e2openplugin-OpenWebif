@@ -156,6 +156,10 @@ def getInfo():
 		f = open("/proc/stb/info/model",'r')
  		model = f.readline().strip().lower()
  		f.close()
+ 		
+ 	if model == "tf7700hdpvr":
+ 		brand = "Topfield"
+ 		chipset = "SH4 @266MHz"
 
 	info['brand'] = brand
 	info['model'] = model
