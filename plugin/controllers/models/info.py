@@ -230,7 +230,8 @@ def getInfo():
 			"dhcp": iNetwork.getAdapterAttribute(iface, "dhcp"),
 			"ip": formatIp(iNetwork.getAdapterAttribute(iface, "ip")),
 			"mask": formatIp(iNetwork.getAdapterAttribute(iface, "netmask")),
-			"gw": formatIp(iNetwork.getAdapterAttribute(iface, "gateway"))
+			"gw": formatIp(iNetwork.getAdapterAttribute(iface, "gateway")),
+			"ipv6": getAdapterIPv6(iface)
 		})
 			
 	info['hdd'] = []
