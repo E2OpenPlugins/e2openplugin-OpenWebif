@@ -156,6 +156,8 @@ class BaseController(resource.Resource):
 			ret["remote"] = "vu_normal"
 		elif ret["box"] in ("vuultimo", "ultimo"):
 			ret["remote"] = "vu_ultimo"
+		elif ret["box"] == "e3hd":
+			ret["remote"] = "e3hd"
 		elif ret["box"] in ("et9x00", "et9000", "et9200", "et9500"):
 			ret["remote"] = "et9x00"
 		elif ret["box"] in ("et5x00", "et5000", "et6x00", "et6000"):
