@@ -340,6 +340,9 @@ msgstr "Stunde"
 msgid "IP address"
 msgstr "IP-Adresse"
 
+msgid "IPv6 address(es)"
+msgstr "IPv6-Adresse(n)"
+
 msgid "Infos"
 msgstr "Informationen"
 

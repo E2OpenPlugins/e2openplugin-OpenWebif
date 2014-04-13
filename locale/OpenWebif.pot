@@ -339,6 +339,9 @@ msgstr ""
 msgid "IP address"
 msgstr ""
 
+msgid "IPv6 address(es)"
+msgstr ""
+
 msgid "Infos"
 msgstr ""
 
