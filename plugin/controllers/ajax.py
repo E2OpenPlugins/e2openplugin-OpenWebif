@@ -85,10 +85,22 @@ class AjaxController(BaseController):
 			model = "et9x00"
 		elif model in ("et5000", "et6000", "et6x00"):
 			model = "et5x00"
-		elif model == "et4000" :
+		elif model == "et4000":
 			model = "et4x00"
-		elif model == "xp1000" :
-			model = "xp1000"		
+		elif model == "xp1000":
+			model = "xp1000"
+		elif model == "vuduo2":
+			model = "duo2"
+		elif model == "vusolo2":
+			model = "solo2"
+		elif model == "vuduo":
+			model = "duo"
+		elif model == "vusolo":
+			model = "solo"
+		elif model == "vuuno":
+			model = "uno"
+		elif model == "vuultimo":
+			model = "ultimo"
 		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
 			info["boximage"] = model + ".jpg"
 		else:
