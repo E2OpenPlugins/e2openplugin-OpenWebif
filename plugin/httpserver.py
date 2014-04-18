@@ -111,7 +111,7 @@ def HttpdStart(session):
 		port = config.OpenWebif.port.value
 
 		root = buildRootTree(session)
-		if config.OpenWebif.auth.value == True:	
+		if config.OpenWebif.auth.value == True:
 			root = AuthResource(session, root)
 		site = server.Site(root)
 		
@@ -168,6 +168,8 @@ def HttpdStart(session):
 		if port != 80:
 			if not isOriginalWebifInstalled():
 				root = buildRootTree(session)
+				if config.OpenWebif.auth.value == True:
+					root = AuthResource(session, root)
 				site = server.Site(root)
 				try:
 					if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
@@ -194,7 +196,9 @@ class AuthResource(resource.Resource):
 		
 
 	def render(self, request):
-		if request.getClientIP() == "127.0.0.1":
+		host = request.getHost().host
+
+		if (host == "localhost" or host == "127.0.0.1" or host == "::ffff:127.0.0.1") and not config.OpenWebif.auth_for_streaming.value:
 			return self.resource.render(request)
 			
 		if self.login(request.getUser(), request.getPassword()) == False:
@@ -207,8 +211,9 @@ class AuthResource(resource.Resource):
 
 	def getChildWithDefault(self, path, request):
 		session = request.getSession().sessionNamespaces
-		
-		if request.getClientIP() == "127.0.0.1":
+		host = request.getHost().host
+
+		if (host == "localhost" or host == "127.0.0.1" or host == "::ffff:127.0.0.1") and not config.OpenWebif.auth_for_streaming.value:
 			return self.resource.getChildWithDefault(path, request)
 			
 		if "logged" in session.keys() and session["logged"]:
