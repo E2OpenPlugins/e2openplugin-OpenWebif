@@ -17,8 +17,11 @@ from twisted.web import server, http, static, resource, error, version
 from twisted.internet.error import CannotListenError
 
 from controllers.root import RootController
-from sslcertificate import SSLCertificateGenerator, KEY_FILE, CERT_FILE
+from sslcertificate import SSLCertificateGenerator, KEY_FILE, CERT_FILE, CA_FILE
 from socket import gethostname, has_ipv6
+
+from OpenSSL import SSL
+from twisted.internet.protocol import Factory, Protocol
 
 import os
 import imp
@@ -26,6 +29,14 @@ import imp
 global listener, server_to_stop
 listener = []
 
+def verifyCallback(connection, x509, errnum, errdepth, ok):
+	if not ok:
+		print '[OpenWebif] Invalid cert from subject: ', x509.get_subject()
+		return False
+	else:
+		print '[OpenWebif] Successful cert authed as: ', x509.get_subject()
+	return True
+	
 def isOriginalWebifInstalled():
 	pluginpath = eEnv.resolve('${libdir}/enigma2/python/Plugins/Extensions/WebInterface/plugin.py')
 	if fileExists(pluginpath) or fileExists(pluginpath + "o") or fileExists(pluginpath + "c"):
@@ -128,12 +139,28 @@ def HttpdStart(session):
 		except CannotListenError:
 			print "[OpenWebif] failed to listen on Port %i" % (port)
 
+		if config.OpenWebif.https_clientcert.value == True and not os.path.exists(CA_FILE):
+			# Disable https
+			config.OpenWebif.https_enabled.value = False
+			config.OpenWebif.https_enabled.save()
+			# Inform the user
+			session.open(MessageBox, "Cannot read CA certs for HTTPS access\nHTTPS access is disabled!", MessageBox.TYPE_ERROR)
+
 		if config.OpenWebif.https_enabled.value == True:
 			httpsPort = config.OpenWebif.https_port.value
 			installCertificates(session)
 			# start https webserver on port configured port
 			try:
 				context = ssl.DefaultOpenSSLContextFactory(KEY_FILE, CERT_FILE)
+
+				if config.OpenWebif.https_clientcert.value == True:
+					ctx = context.getContext()
+					ctx.set_verify(
+						SSL.VERIFY_PEER | SSL.VERIFY_FAIL_IF_NO_PEER_CERT,
+						verifyCallback
+						)
+					ctx.load_verify_locations(CA_FILE)
+
 				if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
 					# use ipv6
 					listener.append( reactor.listenSSL(httpsPort, site, context, interface='::') )
