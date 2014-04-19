@@ -138,6 +138,9 @@ def getInfo():
 				chipset = "SH4 @450MHz"
 		elif model.startswith("xpeed"):
 			brand = "GoldenInterstar"
+		elif model.startswith("topf"):
+			brand = "Topfield"
+			chipset = "SH4 @266MHz"
 		elif model.startswith("azbox"):
 			brand = "AZBox"
 			f = open("/proc/stb/info/model",'r')
@@ -188,10 +191,10 @@ def getInfo():
 		f = open("/proc/stb/info/model",'r')
  		model = f.readline().strip().lower()
  		f.close()
- 		
- 	if model == "tf7700hdpvr":
- 		brand = "Topfield"
- 		chipset = "SH4 @266MHz"
+	 	if model == "tf7700hdpvr":
+ 			brand = "Topfield"
+			model = "TF 7700 HDPVR"
+ 			chipset = "SH4 @266MHz"
 
 	info['brand'] = brand
 	info['model'] = model
