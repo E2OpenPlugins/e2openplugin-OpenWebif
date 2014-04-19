@@ -43,6 +43,7 @@ config.OpenWebif.webcache.zapstream = ConfigYesNo(default = False)
 # HTTPS
 config.OpenWebif.https_enabled = ConfigYesNo(default=True)
 config.OpenWebif.https_port = ConfigInteger(default = 443, limits=(1, 65535) )
+config.OpenWebif.https_clientcert = ConfigYesNo(default=False)
 # Parental Control currently disabled for testing
 config.OpenWebif.parentalenabled = ConfigYesNo(default=False)
 # Use service name for stream
@@ -85,6 +86,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		self.list.append(getConfigListEntry(_("Enable Http Authentication"), config.OpenWebif.auth))
 		self.list.append(getConfigListEntry(_("Enable Https"), config.OpenWebif.https_enabled))
 		self.list.append(getConfigListEntry(_("Https port"), config.OpenWebif.https_port))
+		self.list.append(getConfigListEntry(_("Require client cert for HTTPS"), config.OpenWebif.https_clientcert))
 		self.list.append(getConfigListEntry(_("Enable Authentication for streaming"), config.OpenWebif.auth_for_streaming))
 		self.list.append(getConfigListEntry(_("Smart services renaming for XBMC"), config.OpenWebif.xbmcservices))
 		self.list.append(getConfigListEntry(_("Enable Parental Control"), config.OpenWebif.parentalenabled))
