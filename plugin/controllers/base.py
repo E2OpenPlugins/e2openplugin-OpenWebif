@@ -79,28 +79,28 @@ class BaseController(resource.Resource):
 				
 			data = func(request)
 			if data is None:
-				if not self.suppresslog:
-					print "[OpenWebif] page '%s' without content" % request.uri
+#				if not self.suppresslog:
+#					print "[OpenWebif] page '%s' without content" % request.uri
 				self.error404(request)
 			elif self.isCustom:
-				if not self.suppresslog:
-					print "[OpenWebif] page '%s' ok (custom)" % request.uri
+#				if not self.suppresslog:
+#					print "[OpenWebif] page '%s' ok (custom)" % request.uri
 				request.write(data)
 				request.finish()
 			elif self.isJson:
-				if not self.suppresslog:
-					print "[OpenWebif] page '%s' ok (json)" % request.uri
+#				if not self.suppresslog:
+#					print "[OpenWebif] page '%s' ok (json)" % request.uri
 				request.setHeader("content-type", "text/plain")
 				request.write(json.dumps(data))
 				request.finish()
 			elif type(data) is str:
-				if not self.suppresslog:
-					print "[OpenWebif] page '%s' ok (simple string)" % request.uri
+#				if not self.suppresslog:
+#					print "[OpenWebif] page '%s' ok (simple string)" % request.uri
 				request.setHeader("content-type", "text/plain")
 				request.write(data)
 				request.finish()
 			else:
-				print "[OpenWebif] page '%s' ok (cheetah template)" % request.uri
+#				print "[OpenWebif] page '%s' ok (cheetah template)" % request.uri
 				module = request.path
 				if module[-1] == "/":
 					module += "index"
@@ -141,26 +141,30 @@ class BaseController(resource.Resource):
 		ret['configsections'] = getConfigsSections()['sections']
 		ret['zapstream'] = getZapStream()['zapstream']
 		ret['box'] = "dmm"
-		if open("/proc/stb/info/model",'r').read().strip().lower() == "gigablue":
-			ret['box'] = "gigablue"
-		if fileExists("/proc/stb/info/boxtype"):
+#		if open("/proc/stb/info/model",'r').read().strip().lower() == "gigablue":
+#			ret['box'] = "gigablue"
+		if fileExists("/etc/.box"):
+			ret['box'] = open("/etc/.box").read().strip().lower()
+		elif fileExists("/proc/stb/info/boxtype"):
 			ret['box'] = open("/proc/stb/info/boxtype").read().strip().lower()
 		elif fileExists("/proc/stb/info/vumodel"):
 			ret['box'] = open("/proc/stb/info/vumodel").read().strip().lower()
 		elif fileExists("/proc/stb/info/azmodel"):
 			ret['box'] = open("/proc/stb/info/model").read().strip().lower()
 			
-		if ret["box"] in ("solo", "duo", "uno", "solo2", "duo2"):
+		if ret["box"] in ("vusolo", "vuduo", "vuuno", "vusolo2", "vuduo2", "solo", "duo", "uno", "solo2", "duo2"):
 			ret["remote"] = "vu_normal"
-		elif ret["box"] == "ultimo":
+		elif ret["box"] in ("vuultimo", "ultimo"):
 			ret["remote"] = "vu_ultimo"
+		elif ret["box"] == "e3hd":
+			ret["remote"] = "e3hd"
 		elif ret["box"] in ("et9x00", "et9000", "et9200", "et9500"):
 			ret["remote"] = "et9x00"
 		elif ret["box"] in ("et5x00", "et5000", "et6x00", "et6000"):
 			ret["remote"] = "et5x00"
 		elif ret["box"] in ("et4x00", "et4000"):
 			ret["remote"] = "et4x00"
-		elif ret["box"] == "gigablue":
+		elif ret["box"].startswith("gb"):
 			ret["remote"] = "gigablue"
 		elif ret["box"] == "et6500":
 			ret["remote"] = "et6500"
@@ -180,8 +184,12 @@ class BaseController(resource.Resource):
 			ret["remote"] = "ini-3000"
 		elif ret["box"] in ("ini-7012", "ini-7000", "ini-5000", "ini-5000ru"):
 			ret["remote"] = "ini-7000"
+		elif ret["box"].startswith("spark"):
+			ret["remote"] = "spark"
 		elif ret["box"] == "xp1000":
 			ret["remote"] = "xp1000"
+		elif ret["box"].startswith("xpeedlx"):
+			ret["remote"] = "xpeedlx"
 		else:
 			ret["remote"] = "dmm"
 		extras = []

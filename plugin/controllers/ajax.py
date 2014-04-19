@@ -60,7 +60,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		channels['transcoding'] = False
-		if model in ("solo2", "duo2"): 
+		if model in ("solo2", "duo2", "vusolo2", "vuduo2", "xpeedlx3"):
 			channels['transcoding'] = True
 		return channels
 
@@ -85,10 +85,14 @@ class AjaxController(BaseController):
 			model = "et9x00"
 		elif model in ("et5000", "et6000", "et6x00"):
 			model = "et5x00"
-		elif model == "et4000" :
+		elif model == "et4000":
 			model = "et4x00"
-		elif model == "xp1000" :
-			model = "xp1000"		
+		elif model == "xp1000":
+			model = "xp1000"
+		elif model.startswith("vu"):
+			model = model.replace("vu", "")
+		elif model == "tf7700hdpvr":
+			model = "topf"
 		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
 			info["boximage"] = model + ".jpg"
 		else:
@@ -128,7 +132,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		movies['transcoding'] = False
-		if model in ("solo2", "duo2"):
+		if model in ("solo2", "duo2", "vusolo2", "vuduo2", "xpeedlx3"):
 			movies['transcoding'] = True
 		return movies
 
