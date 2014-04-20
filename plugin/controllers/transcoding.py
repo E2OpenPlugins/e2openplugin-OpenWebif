@@ -121,7 +121,7 @@ class TranscodingController(resource.Resource):
 					choices = ""
 					for choice in attr.choices:
 						choices += choice + ", "
-					choices = choices.strip(', ')
+					choices = choices.rstrip(', ')
 					str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configchoices>%s</e2configchoices>\n<e2configvalue>%s</e2configvalue>\n</e2config>\n" % (arg, choices, value)
 			if len(encoder_features):
 				str_result += "</encoder>\n"
@@ -130,6 +130,6 @@ class TranscodingController(resource.Resource):
 		choices = ""
 		for choice in attr.choices:
 			choices += choice + ", "
-		choices = choices.strip(', ')
+		choices = choices.rstrip(', ')
 		str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configchoices>%s</e2configchoices>\n<e2configvalue>%s</e2configvalue>\n</e2config>\n</e2configs>\n" % (arg, choices, value)
 		return str_result
