@@ -193,7 +193,6 @@ def getInfo():
  		f.close()
 	 	if model == "tf7700hdpvr":
  			brand = "Topfield"
-			model = "TF 7700 HDPVR"
  			chipset = "SH4 @266MHz"
 
 	info['brand'] = brand
