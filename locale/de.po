@@ -37,6 +37,9 @@ msgstr "Aktivierung von https"
 msgid "Https port"
 msgstr "Port für https"
 
+msgid "Require client cert for HTTPS"
+msgstr "Erzwinge zertifikatbasierte Anmeldung"
+
 msgid "Enable Authentication for streaming"
 msgstr "Authentifizierung für Streaming aktivieren"
 

@@ -59,7 +59,7 @@ class TranscodingController(resource.Resource):
 				attr_max = str(port.limits[0][1])
 				if new_port < int(port.limits[0][0]) or new_port > int(port.limits[0][1]):
 					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><port>%s</port><e2configlimits>%s-%s</e2configlimits><e2error>choosen port is not available</error></e2simplexmlresult>' % (new_port, attr_min, attr_max)
-				if new_port != port.getValue():
+				if new_port != port.value:
 					port.setValue(new_port)
 					config_changed = True
 
@@ -73,7 +73,7 @@ class TranscodingController(resource.Resource):
 				new_encoder = int(request.args["encoder"][0])
 				if new_encoder > len(encoders)-1:
 					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2encoder>%s</e2encoder><e2configchoices>%s</e2configchoices><e2error>choosen encoder is not available</error></e2simplexmlresult>' % (new_encoder, numencoders)
-				if new_encoder != numencoder.getValue():
+				if new_encoder != numencoder.value:
 					numencoder.setValue(new_encoder)
 					config_changed = True
 
@@ -101,7 +101,7 @@ class TranscodingController(resource.Resource):
 						choices = choices.rstrip(', ')
 						if not str(new_value) in attr.choices and not int(new_value) in attr.choices:
 							return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><%s>%s</%s><e2configchoices>%s</e2configchoices><e2error>choosen value is not available</error></e2simplexmlresult>' % (arg, new_value, arg, choices)
-						if new_value != attr.getValue():
+						if new_value != attr.value:
 							attr.setValue(new_value)
 							config_changed = True
 				elif arg not in ("encoder", "port"):
@@ -112,7 +112,7 @@ class TranscodingController(resource.Resource):
 		str_result = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<e2configs>\n"
 		
 		attr, arg = port, "port"
-		value = str(attr.getValue())
+		value = str(attr.value)
 		attr_min = str(attr.limits[0][0])
 		attr_max = str(attr.limits[0][1])
 		str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configlimits>%s-%s</e2configlimits>\n<e2configvalue>%s</e2configvalue>\n</e2config>\n" % (arg, attr_min, attr_max, value)
@@ -122,7 +122,7 @@ class TranscodingController(resource.Resource):
 				str_result += "<e2encoder number=\"%s\">\n" % str(encoder)
 			for arg in encoder_features:
 				attr = encoder_features[arg]
-				value = attr.getValue()
+				value = attr.value
 				if hasattr(attr, "limits"):
 					attr_min = str(attr.limits[0][0])
 					attr_max = str(attr.limits[0][1])
@@ -137,3 +137,4 @@ class TranscodingController(resource.Resource):
 				str_result += "</e2encoder>\n"
 		str_result += "</e2configs>\n"
 		return str_result
+		

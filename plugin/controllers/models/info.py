@@ -334,4 +334,3 @@ def GetWithAlternative(service,onlyFirst = True):
 		return service
 	else:
 		return None
-

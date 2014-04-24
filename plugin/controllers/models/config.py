@@ -240,7 +240,7 @@ class ConfigFiles:
 	def parseConfigFiles(self):
 		sections = []
 		for setupfile in self.setupfiles:
-			print "[OpenWebif] loading configuration file :", setupfile
+#			print "[OpenWebif] loading configuration file :", setupfile
 			setupfile = file(setupfile, 'r')
 			setupdom = xml.etree.cElementTree.parse(setupfile)
 			setupfile.close()
@@ -257,7 +257,7 @@ class ConfigFiles:
 						self.allowedsections.append(key)
 					else:
 						continue
-				print "[OpenWebif] loading configuration section :", key
+#				print "[OpenWebif] loading configuration section :", key
 				for entry in section:
 					if entry.tag == "item":
 						requires = entry.get("requires")

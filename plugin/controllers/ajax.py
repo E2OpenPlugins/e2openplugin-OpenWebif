@@ -84,7 +84,7 @@ class AjaxController(BaseController):
 	def P_boxinfo(self, request):
 		info = getInfo()
 		model = getBoxType()
-		
+
 		if fileExists(getPublicPath("/images/boxes/"+model+".jpg")):
 			info["boximage"] = model+".jpg"
 		else:

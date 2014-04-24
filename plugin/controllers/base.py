@@ -81,28 +81,28 @@ class BaseController(resource.Resource):
 
 			data = func(request)
 			if data is None:
-				if not self.suppresslog:
-					print "[OpenWebif] page '%s' without content" % request.uri
+#				if not self.suppresslog:
+#					print "[OpenWebif] page '%s' without content" % request.uri
 				self.error404(request)
 			elif self.isCustom:
-				if not self.suppresslog:
-					print "[OpenWebif] page '%s' ok (custom)" % request.uri
+#				if not self.suppresslog:
+#					print "[OpenWebif] page '%s' ok (custom)" % request.uri
 				request.write(data)
 				request.finish()
 			elif self.isJson:
-				if not self.suppresslog:
-					print "[OpenWebif] page '%s' ok (json)" % request.uri
+#				if not self.suppresslog:
+#					print "[OpenWebif] page '%s' ok (json)" % request.uri
 				request.setHeader("content-type", "text/plain")
 				request.write(json.dumps(data))
 				request.finish()
 			elif type(data) is str:
-				if not self.suppresslog:
-					print "[OpenWebif] page '%s' ok (simple string)" % request.uri
+#				if not self.suppresslog:
+#					print "[OpenWebif] page '%s' ok (simple string)" % request.uri
 				request.setHeader("content-type", "text/plain")
 				request.write(data)
 				request.finish()
 			else:
-				print "[OpenWebif] page '%s' ok (cheetah template)" % request.uri
+#				print "[OpenWebif] page '%s' ok (cheetah template)" % request.uri
 				module = request.path
 				if module[-1] == "/":
 					module += "index"

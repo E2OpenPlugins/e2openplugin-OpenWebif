@@ -36,6 +36,9 @@ msgstr ""
 msgid "Https port"
 msgstr ""
 
+msgid "Require client cert for HTTPS"
+msgstr ""
+
 msgid "Enable Authentication for streaming"
 msgstr ""
 
