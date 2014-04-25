@@ -11,6 +11,7 @@
 
 from enigma import eEnv
 from Components.config import config
+from Screens.MessageBox import MessageBox
 from Tools.Directories import fileExists
 from twisted.internet import reactor, ssl
 from twisted.web import server, http, static, resource, error, version
