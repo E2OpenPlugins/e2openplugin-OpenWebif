@@ -16,7 +16,7 @@ class ERController(resource.Resource):
 		self.session = session
 		try:
 			from Plugins.Extensions.EPGRefresh.EPGRefreshResource import EPGRefreshSettingsResource, \
-			EPGRefreshChangeSettingsResource, EPGRefreshPreviewServicesResource, \
+			EPGRefreshChangeSettingsResource, \
 			EPGRefreshListServicesResource, EPGRefreshAddRemoveServiceResource, \
 			EPGRefreshStartRefreshResource, API_VERSION
 		except ImportError:
