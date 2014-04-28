@@ -175,14 +175,12 @@ def HttpdStart(session):
 #Streaming requires listening on 127.0.0.1:80	
 		if port != 80:
 			if not isOriginalWebifInstalled():
-				root = buildRootTree(session)
-				if config.OpenWebif.auth.value == True:
-					root = AuthResource(session, root)
-				site = server.Site(root)
 				try:
 					if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
 						# use ipv6
+						# Dear Twisted devs: Learning English, lesson 1 - interface != address
 						listener.append( reactor.listenTCP(80, site, interface='::1') )
+						listener.append( reactor.listenTCP(80, site, interface='::ffff:127.0.0.1') )
 					else:
 						# ipv4 only
 						listener.append( reactor.listenTCP(80, site, interface='127.0.0.1') )
