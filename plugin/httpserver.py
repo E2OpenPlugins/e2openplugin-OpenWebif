@@ -75,10 +75,10 @@ def buildRootTree(session):
 				
 			if not os.path.exists(origwebifpath + "/WebChilds/External"):
 				os.makedirs(origwebifpath + "/WebChilds/External")
-			open(origwebifpath + "/__init__.py", "w")
-			open(origwebifpath + "/WebChilds/__init__.py", "w")
-			open(origwebifpath + "/WebChilds/External/__init__.py", "w")
-			
+			open(origwebifpath + "/__init__.py", "w").close()
+ 			open(origwebifpath + "/WebChilds/__init__.py", "w").close()
+ 			open(origwebifpath + "/WebChilds/External/__init__.py", "w").close()
+
 			os.symlink(hookpath, origwebifpath + "/WebChilds/Toplevel.py")
 			
 		# import modules
