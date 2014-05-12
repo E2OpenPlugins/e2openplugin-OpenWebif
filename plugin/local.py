@@ -9,7 +9,7 @@ tstrings = {'mo': _("Mo"),
 	'fr': _("Fr"),
 	'sa': _("Sa"),
 	'su': _("Su"),
-	
+
 	'day_0': _("Sun"),
 	'day_1': _("Mon"),
 	'day_2': _("Tue"),
@@ -17,7 +17,7 @@ tstrings = {'mo': _("Mo"),
 	'day_4': _("Thu"),
 	'day_5': _("Fri"),
 	'day_6': _("Sat"),
-	
+
 	'monday': _("Monday"),
 	'tuesday': _("Tuesday"),
 	'wednesday': _("Wednesday"),
@@ -25,7 +25,7 @@ tstrings = {'mo': _("Mo"),
 	'friday': _("Friday"),
 	'saturday': _("Saturday"),
 	'sunday': _("Sunday"),
-	
+
 	'month_01': _("January"),
 	'month_02': _("February"),
 	'month_03': _("March"),
@@ -38,7 +38,7 @@ tstrings = {'mo': _("Mo"),
 	'month_10': _("October"),
 	'month_11': _("November"),
 	'month_12': _("December"),
-	
+
 	'about': _("About"),
 	'add_timer': _("Add Timer"),
 	'after_event': _("After Event"),

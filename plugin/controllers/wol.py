@@ -25,7 +25,7 @@ class WOLSetupController(resource.Resource):
 			wol_location = config.plugins.wolconfig.location.value
 		except KeyError:
 			return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>WOLSetup plugin is not installed or your STB does not support WOL</e2statetext></e2simplexmlresult>'
-		
+
 		if len(request.args):
 			config_changed = False
 			if "wol" in request.args:
@@ -55,12 +55,12 @@ class WOLSetupController(resource.Resource):
 					self.session.open(TryQuitMainloop, _tryQuitTable["deepstandby"])
 			if config_changed:
 				config.plugins.wolconfig.save()
-				
+
 		locations = ""
 		for location_available in config.plugins.wolconfig.location.choices:
 			locations += location_available + ", "
 		locations = locations.rstrip(', ')
-		
+
 		return """<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
 				<e2configs>
 					<e2config>

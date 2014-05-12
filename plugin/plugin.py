@@ -62,17 +62,17 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		<ePixmap position="420,290" size="140,40" pixmap="skin_default/buttons/green.png" alphatest="on" zPosition="1" />
 		<widget name="key_green" position="420,290" zPosition="2" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="green" transparent="1" />
 	</screen>"""
-	
+
 	def __init__(self, session):
 		self.skin = OpenWebifConfig.skin
 		Screen.__init__(self, session)
-		
+
 		self.list = []
 		ConfigListScreen.__init__(self, self.list)
 		self["key_red"] = Label(_("Cancel"))
 		self["key_green"] = Label(_("Save"))
 		self["lab1"] = Label(_("OpenWebif url: http://yourip:port"))
-		
+
 		self["actions"] = ActionMap(["WizardActions", "ColorActions"],
 		{
 			"red": self.keyCancel,
@@ -80,7 +80,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			"green": self.keySave,
 
 		}, -2)
-		
+
 		self.list.append(getConfigListEntry(_("OpenWebInterface Enabled"), config.OpenWebif.enabled))
 		self.list.append(getConfigListEntry(_("Http port"), config.OpenWebif.port))
 		self.list.append(getConfigListEntry(_("Enable Http Authentication"), config.OpenWebif.auth))
@@ -91,7 +91,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		self.list.append(getConfigListEntry(_("Smart services renaming for XBMC"), config.OpenWebif.xbmcservices))
 		self.list.append(getConfigListEntry(_("Enable Parental Control"), config.OpenWebif.parentalenabled))
 		self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
-	
+
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
 
@@ -132,5 +132,3 @@ def Plugins(**kwargs):
 	return [PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startSession),
 		PluginDescriptor(where=[PluginDescriptor.WHERE_NETWORKCONFIG_READ], fnc=IfUpIfDown),
 		PluginDescriptor(name="OpenWebif", description=_("OpenWebif Configuration"), icon="openwebif.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=confplug)]
-
-

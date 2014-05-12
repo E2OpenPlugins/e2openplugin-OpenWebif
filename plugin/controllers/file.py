@@ -37,7 +37,7 @@ class FileController(resource.Resource):
 		action = "download"
 		if "action" in request.args:
 			action = request.args["action"][0]
-			
+
 		if "file" in request.args:
 			filename = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
 
@@ -72,7 +72,7 @@ class FileController(resource.Resource):
 				return rfile.render(request)
 			else: 
 				return "wrong action parameter"
-		
+
 		if "dir" in request.args:
 			path = request.args["dir"][0]
 
@@ -80,9 +80,9 @@ class FileController(resource.Resource):
 				pattern = request.args["pattern"][0]
 			else:
 				pattern = None
-				
+
 			directories = []
-			files = []	
+			files = []
 			if fileExists(path):
 				try:
 					files = listdir(path)
@@ -105,16 +105,16 @@ class FileController(resource.Resource):
 				return server.NOT_DONE_YET
 			else:
 				return "path %s not exits" % (path)
-	
+
 	#
 	# check if a request is authenticated; needed here for
 	# requests to /etc and others, compatibility with iDreamX.
 	def isAuthenticated(self, request):
 		session = request.getSession().sessionNamespaces
-			
+
 		if "logged" in session.keys() and session["logged"]:
 			return True
-			
+
 		if self.authenticate(request.getUser(), request.getPassword()):
 			session["logged"] = True
 			return True
@@ -134,7 +134,6 @@ class FileController(resource.Resource):
 				try:
 					cpass = getspnam(user)[1]
 				except:
-					return False			
+					return False
 			return crypt(passwd, cpass) == cpass
 		return False
-

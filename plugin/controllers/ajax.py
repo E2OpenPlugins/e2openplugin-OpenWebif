@@ -182,12 +182,12 @@ class AjaxController(BaseController):
 				begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day, 6, 0, 0, -1, -1, -1) )
 			except Exception, e:
 				pass
-		
+
 		epg = getMultiEpg(self, bref, begintime, endtime)
 		epg['bouquets'] = bouq['bouquets']
 		epg['bref'] = bref
 		epg['day'] = day
-		
+
 		return epg
 	def P_multiepg2(self, request):
 		reloadtimer = 0
@@ -200,7 +200,7 @@ class AjaxController(BaseController):
 			bref = request.args["bref"][0]
 
 		endtime = 1440
-				
+
 		begintime = -1
 		day = 0
 		if "day" in request.args.keys():
@@ -210,11 +210,11 @@ class AjaxController(BaseController):
 				begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day, 6, 0, 0, -1, -1, -1) )
 			except Exception, e:
 				pass
-		
+
 		epg = getMultiEpg(self, bref, begintime, endtime)
 		epg['bouquets'] = bouq['bouquets']
 		epg['bref'] = bref
 		epg['day'] = day
 		epg['reloadtimer'] = reloadtimer
-		
+
 		return epg

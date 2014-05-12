@@ -36,24 +36,24 @@ def verifyCallback(connection, x509, errnum, errdepth, ok):
 	else:
 		print '[OpenWebif] Successful cert authed as: ', x509.get_subject()
 	return True
-	
+
 def isOriginalWebifInstalled():
 	pluginpath = eEnv.resolve('${libdir}/enigma2/python/Plugins/Extensions/WebInterface/plugin.py')
 	if fileExists(pluginpath) or fileExists(pluginpath + "o") or fileExists(pluginpath + "c"):
 		return True
-		
+
 	return False
 
 def buildRootTree(session):
 	root = RootController(session)
-	
+
 	if not isOriginalWebifInstalled():
 		# this is an hack! any better idea?
 		origwebifpath = eEnv.resolve('${libdir}/enigma2/python/Plugins/Extensions/WebInterface')
 		hookpath = eEnv.resolve('${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/pluginshook.src')
 		if not os.path.islink(origwebifpath + "/WebChilds/Toplevel.py"):
 			print "[OpenWebif] hooking original webif plugins"
-			
+
 			cleanuplist = [
 				"/__init__.py",
 				"/__init__.pyo",
@@ -68,19 +68,19 @@ def buildRootTree(session):
 				"/WebChilds/Toplevel.pyo"
 				"/WebChilds/Toplevel.pyc"
 			]
-			
+
 			for cleanupfile in cleanuplist:
 				if fileExists(origwebifpath + cleanupfile):
 					os.remove(origwebifpath + cleanupfile)
-				
+
 			if not os.path.exists(origwebifpath + "/WebChilds/External"):
 				os.makedirs(origwebifpath + "/WebChilds/External")
 			open(origwebifpath + "/__init__.py", "w")
 			open(origwebifpath + "/WebChilds/__init__.py", "w")
 			open(origwebifpath + "/WebChilds/External/__init__.py", "w")
-			
+
 			os.symlink(hookpath, origwebifpath + "/WebChilds/Toplevel.py")
-			
+
 		# import modules
 #		print "[OpenWebif] loading external plugins..."
 		from Plugins.Extensions.WebInterface.WebChilds.Toplevel import loaded_plugins
@@ -94,20 +94,20 @@ def buildRootTree(session):
 					modulename = external[:-4]
 				else:
 					continue
-					
+
 				if modulename == "__init__":
 					continue
-					
+
 				if modulename in loaded:
 					continue
-					
+
 				loaded.append(modulename)
 				try:
 					imp.load_source(modulename, origwebifpath + "/WebChilds/External/" + modulename + ".py")
 				except Exception, e:
 					# maybe there's only the compiled version
 					imp.load_compiled(modulename, origwebifpath + "/WebChilds/External/" + external)
-					
+
 		if len(loaded_plugins) > 0:
 			for plugin in loaded_plugins:
 				root.putChild(plugin[0], plugin[1])
@@ -125,7 +125,7 @@ def HttpdStart(session):
 		if config.OpenWebif.auth.value == True:
 			root = AuthResource(session, root)
 		site = server.Site(root)
-		
+
 		# start http webserver on configured port
 		try:
 			if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
@@ -172,7 +172,7 @@ def HttpdStart(session):
 			except CannotListenError:
 				print "[OpenWebif] failed to listen on Port", httpsPort
 
-#Streaming requires listening on 127.0.0.1:80	
+#Streaming requires listening on 127.0.0.1:80
 		if port != 80:
 			if not isOriginalWebifInstalled():
 				root = buildRootTree(session)
@@ -201,14 +201,14 @@ class AuthResource(resource.Resource):
 	def __init__(self, session, root):
 		resource.Resource.__init__(self)
 		self.resource = root
-		
+
 
 	def render(self, request):
 		host = request.getHost().host
 
 		if (host == "localhost" or host == "127.0.0.1" or host == "::ffff:127.0.0.1") and not config.OpenWebif.auth_for_streaming.value:
 			return self.resource.render(request)
-			
+
 		if self.login(request.getUser(), request.getPassword()) == False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
 			errpage = resource.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
@@ -216,17 +216,16 @@ class AuthResource(resource.Resource):
 		else:
 			return self.resource.render(request)
 
-
 	def getChildWithDefault(self, path, request):
 		session = request.getSession().sessionNamespaces
 		host = request.getHost().host
 
 		if (host == "localhost" or host == "127.0.0.1" or host == "::ffff:127.0.0.1") and not config.OpenWebif.auth_for_streaming.value:
 			return self.resource.getChildWithDefault(path, request)
-			
+
 		if "logged" in session.keys() and session["logged"]:
 			return self.resource.getChildWithDefault(path, request)
-			
+
 		if self.login(request.getUser(), request.getPassword()) == False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
 			errpage = resource.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
@@ -234,8 +233,7 @@ class AuthResource(resource.Resource):
 		else:
 			session["logged"] = True
 			return self.resource.getChildWithDefault(path, request)
-		
-		
+
 	def login(self, user, passwd):
 		from crypt import crypt
 		from pwd import getpwnam
@@ -250,7 +248,7 @@ class AuthResource(resource.Resource):
 				try:
 					cpass = getspnam(user)[1]
 				except:
-					return False			
+					return False
 			return crypt(passwd, cpass) == cpass
 		return False
 
@@ -260,11 +258,11 @@ class AuthResource(resource.Resource):
 # 
 class StopServer:
 	server_to_stop = 0
-	
+
 	def __init__(self, session, callback=None):
 		self.session = session
 		self.callback = callback
-	
+
 	def doStop(self):
 		global listener
 		self.server_to_stop = 0
@@ -279,16 +277,16 @@ class StopServer:
 		listener = []
 		if self.server_to_stop < 1:
 			self.doCallback()
-	
+
 	def callbackStopped(self, reason):
 		self.server_to_stop -= 1
 		if self.server_to_stop < 1:
 			self.doCallback()
-	
+
 	def doCallback(self):
 		if self.callback is not None:
 			self.callback(self.session)
-		
+
 #
 # create a self signed SSL certificate if necessary
 #
@@ -312,4 +310,3 @@ def BJregisterService(protocol, port):
 
 	except ImportError, e:
 		return False
-

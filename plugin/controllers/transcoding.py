@@ -11,7 +11,6 @@
 from twisted.web import static, resource, http
 from Components.config import config
 
-
 def get_transcoding_features(encoder = 0):
 	features = {
 		"automode": "automode",
@@ -56,7 +55,7 @@ class TranscodingController(resource.Resource):
 			port = config.plugins.transcodingsetup.port
 		except KeyError:
 			return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>Transcoding Plugin is not installed or your STB does not support transcoding</e2statetext></e2simplexmlresult>'
-		
+
 		encoders = (0, 1)
 		if len(request.args):
 			config_changed = False
@@ -76,7 +75,7 @@ class TranscodingController(resource.Resource):
 			encoder_features = get_transcoding_features(encoder)
 			if not len(encoder_features):
 				return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>choosen encoder is not available</e2statetext></e2simplexmlresult>'
-			
+
 			for arg in request.args:
 				if arg in encoder_features:
 					attr = encoder_features[arg]
@@ -103,9 +102,9 @@ class TranscodingController(resource.Resource):
 					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>choosen feature %s is not available</e2statetext></e2simplexmlresult>' % arg
 			if config_changed:
 				config.plugins.transcodingsetup.save()
-		
+
 		str_result = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<e2configs>\n"
-		
+
 		for encoder in encoders:
 			encoder_features = get_transcoding_features(encoder)
 			if len(encoder_features):

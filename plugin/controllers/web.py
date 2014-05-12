@@ -36,10 +36,10 @@ class WebController(BaseController):
 		BaseController.__init__(self, path)
 		self.session = session
 		self.putChild("stream", StreamController(session))
-		
+
 	def prePageLoad(self, request):
 		request.setHeader("content-type", "text/xml")
-		
+
 	def testMandatoryArguments(self, request, keys):
 		for key in keys:
 			if key not in request.args.keys():
@@ -47,15 +47,15 @@ class WebController(BaseController):
 					"result": False,
 					"message": _("Missing mandatory parameter '%s'") % key
 				}
-		
+
 			if len(request.args[key][0]) == 0:
 				return {
 					"result": False,
 					"message": _("The parameter '%s' can't be empty") % key
 				}
-		
+
 		return None
-		
+
 	def P_about(self, request):
 		return {
 			"info": getInfo(),
@@ -73,16 +73,12 @@ class WebController(BaseController):
 	def P_vol(self, request):
 		if "set" not in request.args.keys() or request.args["set"][0] == "state":
 			return getVolumeStatus()
-			
 		elif request.args["set"][0] == "up":
 			return setVolumeUp()
-			
 		elif request.args["set"][0] == "down":
 			return setVolumeDown()
-			
 		elif request.args["set"][0] == "mute":
 			return setVolumeMute()
-			
 		elif request.args["set"][0][:3] == "set":
 			try:
 				return setVolume(int(request.args["set"][0][3:]))
@@ -91,38 +87,38 @@ class WebController(BaseController):
 				res["result"] = False
 				res["message"] = _("Wrong parameter format 'set=%s'. Use set=set15 ") % request.args["set"][0]
 				return rets
-				
+
 		res = getVolumeStatus()
 		res["result"] = False
 		res["message"] = _("Unknown Volume command %s") % request.args["set"][0]
 		return res
-		
+
 	def P_getaudiotracks(self, request):
 		return getAudioTracks(self.session)
-	
+
 	def P_selectaudiotrack(self, request):
 		try:
 			id = int(request.args["id"][0])
 		except Exception, e:
 			id = -1
-			
+
 		return setAudioTrack(self.session, id)
-		
+
 	def P_zap(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-			
+
 		if "title" in request.args.keys():
 			return zapService(self.session, request.args["sRef"][0], request.args["title"][0])
-		
+
 		return zapService(self.session, request.args["sRef"][0])
-		
+
 	def P_remotecontrol(self, request):
 		res = self.testMandatoryArguments(request, ["command"])
 		if res:
 			return res
-			
+
 		id = -1
 		try:
 			id = int(request.args["command"][0])
@@ -131,15 +127,15 @@ class WebController(BaseController):
 				"result": False,
 				"message": _("The parameter 'command' must be a number")
 			}
-			
+
 		type = ""
 		rcu = ""
 		if "type" in request.args.keys():
 			type = request.args["type"][0]
-			
+
 		if "rcu" in request.args.keys():
 			rcu = request.args["rcu"][0]
-			
+
 		return remoteControl(id, type, rcu)
 
 	def P_powerstate(self, request):
@@ -149,14 +145,14 @@ class WebController(BaseController):
 
 	def P_getlocations(self, request):
 		return getLocations()
-		
+
 	def P_getcurrlocation(self, request):
 		return getCurrentLocation()
 
 	def P_getallservices(self, request):
 		if not config.OpenWebif.xbmcservices.value:
 			return getAllServices()
-			
+
 		# rename services for xbmc
 		bouquets = getAllServices()
 		count = 0
@@ -165,13 +161,13 @@ class WebController(BaseController):
 				service["servicename"] = "%d - %s" % (count + 1, service["servicename"])
 				count += 1
 		return bouquets
-		
+
 	def P_getservices(self, request):
 		if "sRef" in request.args.keys():
 			sRef = request.args["sRef"][0]
 		else:
 			sRef = ""
-		
+
 		return getServices(sRef)
 
 	def P_servicesm3u(self, request):
@@ -179,63 +175,63 @@ class WebController(BaseController):
 			bRef = request.args["bRef"][0]
 		else:
 			bRef = ""
-			
+
 		request.setHeader('Content-Type', 'application/text')
 		services = getServices(bRef)
 		services["host"] = "%s:8001" % request.getRequestHostname()
 		return services
-		
+
 	def P_subservices(self, request):
 		return getSubServices(self.session)
-		
+
 	def P_parentcontrollist(self, request):
 		return getParentalControlList()
-		
+
 	def P_servicelistplayable(self, request):
 		sRef = ""
 		if "sRef" in request.args.keys():
 			sRef = request.args["sRef"][0]
-			
+
 		sRefPlaying = ""
 		if "sRefPlaying" in request.args.keys():
 			sRefPlaying = request.args["sRefPlaying"][0]
-			
+
 		return getPlayableServices(sRef, sRefPlaying)
-		
+
 	def P_serviceplayable(self, request):
 		sRef = ""
 		if "sRef" in request.args.keys():
 			sRef = request.args["sRef"][0]
-			
+
 		sRefPlaying = ""
 		if "sRefPlaying" in request.args.keys():
 			sRefPlaying = request.args["sRefPlaying"][0]
-			
+
 		return getPlayableService(sRef, sRefPlaying)
-		
+
 	def P_addlocation(self, request):
 		res = self.testMandatoryArguments(request, ["dirname"])
 		if res:
 			return res
-			
+
 		create = False
 		if "createFolder" in request.args.keys():
 			create = request.args["createFolder"][0] == "1"
-			
+
 		return addLocation(request.args["dirname"][0], create)
-			
+
 	def P_removelocation(self, request):
 		res = self.testMandatoryArguments(request, ["dirname"])
 		if res:
 			return res
-		
+
 		return removeLocation(request.args["dirname"][0])
 
 	def P_message(self, request):
 		res = self.testMandatoryArguments(request, ["text", "type"])
 		if res:
 			return res
-			
+
 		try:
 			ttype = int(request.args["type"][0])
 		except Exception, e:
@@ -243,16 +239,16 @@ class WebController(BaseController):
 				"result": False,
 				"message": _("type %s is not a number") % request.args["type"][0]
 			}
-			
+
 		timeout = -1
 		if "timeout" in request.args.keys():
 			try:
 				timeout = int(request.args["timeout"][0])
 			except Exception, e:
 				pass
-				
+
 		return sendMessage(self.session, request.args["text"][0], ttype, timeout)
-		
+
 	def P_messageanswer(self, request):
 		return getMessageAnswer()
 
@@ -260,11 +256,11 @@ class WebController(BaseController):
 		tag = None
 		if "tag" in request.args.keys():
 			tag = request.args["tag"][0]
-			
+
 		dirname = None
 		if "dirname" in request.args.keys():
 			dirname = request.args["dirname"][0]
-			
+
 		return getMovieList(dirname, tag, request.args)
 
 	def P_movielisthtml(self, request):
@@ -283,11 +279,11 @@ class WebController(BaseController):
 		tag = None
 		if "tag" in request.args.keys():
 			tag = request.args["tag"][0]
-		
+
 		dirname = None
 		if "dirname" in request.args.keys():
 			dirname = request.args["dirname"][0]
-		
+
 		request.setHeader('Content-Type', 'application/text')
 		movielist = getMovieList(dirname, tag)
 		movielist["host"] = "%s:%s" % (request.getRequestHostname(), config.OpenWebif.port.value)
@@ -297,11 +293,11 @@ class WebController(BaseController):
 		tag = None
 		if "tag" in request.args.keys():
 			tag = request.args["tag"][0]
-		
+
 		dirname = None
 		if "dirname" in request.args.keys():
 			dirname = request.args["dirname"][0]
-		
+
 		movielist = getMovieList(dirname, tag)
 		movielist["host"] = "%s:%s" % (request.getRequestHostname(), config.OpenWebif.port.value)
 		return movielist
@@ -310,9 +306,9 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-		
+
 		return removeMovie(self.session, request.args["sRef"][0])
-	
+
 	def P_moviemove(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
@@ -320,9 +316,9 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["dirname"])
 		if res:
 			return res
-		
+
 		return moveMovie(self.session, request.args["sRef"][0],request.args["dirname"][0])
-	
+
 	def P_movierename(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
@@ -330,16 +326,16 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["newname"])
 		if res:
 			return res
-		
+
 		return renameMovie(self.session, request.args["sRef"][0],request.args["newname"][0])
-	
+
 	def P_movietags(self, request):
 		return getMovieTags()
 
 	# a duplicate api ??
 	def P_gettags(self, request):
 		return getMovieTags()
-	
+
 # VPS Plugin
 	def vpsparams(self, request):
 		vpsplugin_enabled = None
@@ -363,32 +359,32 @@ class WebController(BaseController):
 		ret = getTimers(self.session)
 		ret["locations"] = config.movielist.videodirs.value
 		return ret
-		
+
 	def P_timeradd(self, request):
 		res = self.testMandatoryArguments(request, ["sRef", "begin", "end", "name"])
 		if res:
 			return res
-		
+
 		disabled = False
 		if "disabled" in request.args.keys():
 			disabled = request.args["disabled"][0] == "1"
-			
+
 		justplay = False
 		if "justplay" in request.args.keys():
 			justplay = request.args["justplay"][0] == "1"
-			
+
 		afterevent = 3
 		if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["1", "2", "3"]:
 			afterevent = int(request.args["afterevent"][0])
-			
+
 		dirname = None
 		if "dirname" in request.args.keys() and len(request.args["dirname"][0]) > 0:
 			dirname = request.args["dirname"][0]
-			
+
 		tags = []
 		if "tags" in request.args.keys():
 			tags = request.args["tags"][0].split(' ')
-			
+
 		repeated = 0
 		if "repeated" in request.args.keys():
 			repeated = int(request.args["repeated"][0])
@@ -396,7 +392,7 @@ class WebController(BaseController):
 		description = ""
 		if "description" in request.args.keys():
 			description = request.args["description"][0]
-			
+
 		return addTimer(
 			self.session,
 			request.args["sRef"][0],
@@ -412,24 +408,24 @@ class WebController(BaseController):
 			repeated,
 			self.vpsparams(request)
 		)
-		
+
 	def P_timeraddbyeventid(self, request):
 		res = self.testMandatoryArguments(request, ["sRef", "eventid"])
 		if res:
 			return res
-		
+
 		justplay = False
 		if "justplay" in request.args.keys():
 			justplay = request.args["justplay"][0] == "1"
-			
+
 		dirname = None
 		if "dirname" in request.args.keys() and len(request.args["dirname"][0]) > 0:
 			dirname = request.args["dirname"][0]
-			
+
 		tags = []
 		if "tags" in request.args.keys():
 			tags = request.args["tags"][0].split(' ')
-			
+
 		try:
 			eventid = int(request.args["eventid"][0])
 		except Exception, e:
@@ -437,7 +433,7 @@ class WebController(BaseController):
 				"result": False,
 				"message": "The parameter 'eventid' must be a number"
 			}
-			
+
 		return addTimerByEventId(
 			self.session,
 			eventid,
@@ -452,35 +448,35 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["sRef", "begin", "end", "name", "channelOld", "beginOld", "endOld"])
 		if res:
 			return res
-			
+
 		disabled = False
 		if "disabled" in request.args.keys():
 			disabled = request.args["disabled"][0] == "1"
-			
+
 		justplay = False
 		if "justplay" in request.args.keys():
 			justplay = request.args["justplay"][0] == "1"
-			
+
 		afterevent = 3
 		if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["1", "2", "3"]:
 			afterevent = int(request.args["afterevent"][0])
-			
+
 		dirname = None
 		if "dirname" in request.args.keys() and len(request.args["dirname"][0]) > 0:
 			dirname = request.args["dirname"][0]
-			
+
 		tags = []
 		if "tags" in request.args.keys():
 			tags = request.args["tags"][0].split(' ')
-			
+
 		repeated = 0
 		if "repeated" in request.args.keys():
 			repeated = int(request.args["repeated"][0])
-			
+
 		description = ""
 		if "description" in request.args.keys():
 			description = request.args["description"][0]
-			
+
 		try:
 			beginOld = int(request.args["beginOld"][0])
 		except Exception, e:
@@ -488,7 +484,7 @@ class WebController(BaseController):
 				"result": False,
 				"message": "The parameter 'beginOld' must be a number"
 			}
-			
+
 		try:
 			endOld = int(request.args["endOld"][0])
 		except Exception, e:
@@ -496,7 +492,7 @@ class WebController(BaseController):
 				"result": False,
 				"message": "The parameter 'endOld' must be a number"
 			}
-			
+
 		return editTimer(
 			self.session,
 			request.args["sRef"][0],
@@ -515,7 +511,7 @@ class WebController(BaseController):
 			endOld,
 			self.vpsparams(request)
 		)
-		
+
 	def P_timertogglestatus(self, request):
 		res = self.testMandatoryArguments(request, ["sRef", "begin", "end"])
 		if res:
@@ -527,7 +523,7 @@ class WebController(BaseController):
 				"result": False,
 				"message": "The parameter 'begin' must be a number"
 			}
-			
+
 		try:
 			end = int(request.args["end"][0])
 		except Exception, e:
@@ -535,15 +531,14 @@ class WebController(BaseController):
 				"result": False,
 				"message": "The parameter 'end' must be a number"
 			}
-		
+
 		return toggleTimerStatus(self.session, request.args["sRef"][0], begin, end)
-		
-	
+
 	def P_timerdelete(self, request):
 		res = self.testMandatoryArguments(request, ["sRef", "begin", "end"])
 		if res:
 			return res
-		
+
 		try:
 			begin = int(request.args["begin"][0])
 		except Exception, e:
@@ -551,7 +546,7 @@ class WebController(BaseController):
 				"result": False,
 				"message": "The parameter 'begin' must be a number"
 			}
-			
+
 		try:
 			end = int(request.args["end"][0])
 		except Exception, e:
@@ -559,76 +554,76 @@ class WebController(BaseController):
 				"result": False,
 				"message": "The parameter 'end' must be a number"
 			}
-		
+
 		return removeTimer(self.session, request.args["sRef"][0], begin, end)
-		
+
 	def P_timercleanup(self, request):
 		return cleanupTimer(self.session)
-		
+
 	def P_timerlistwrite(self, request):
 		return writeTimerList(self.session)
-		
+
 	def P_recordnow(self, request):
 		infinite = False
 		if "undefinitely" in request.args.keys() or "infinite" in request.args.keys():
 			infinite = True
 		return recordNow(self.session, infinite)
-		
+
 	def P_currenttime(self, request):
 		return getCurrentTime()
-		
+
 	def P_deviceinfo(self, request):
 		return getInfo()
-		
+
 	def P_epgbouquet(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
-			
+
 		begintime = -1
 		if "time" in request.args.keys():
 			try:
 				begintime = int(request.args["time"][0])
 			except Exception, e:
 				pass
-		
+
 		return getBouquetEpg(request.args["bRef"][0], begintime)
-		
+
 	def P_epgmulti(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
-			
+
 		begintime = -1
 		if "time" in request.args.keys():
 			try:
 				begintime = int(request.args["time"][0])
 			except Exception, e:
 				pass
-		
+
 		endtime = -1
 		if "endTime" in request.args.keys():
 			try:
 				endtime = int(request.args["endTime"][0])
 			except Exception, e:
 				pass
-				
+
 		return getBouquetEpg(request.args["bRef"][0], begintime, endtime)
-		
+
 	def P_epgnow(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
-			
+
 		return getBouquetNowNextEpg(request.args["bRef"][0], 0)
-		
+
 	def P_epgnext(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
-			
+
 		return getBouquetNowNextEpg(request.args["bRef"][0], 1)
-		
+
 	def P_epgnownext(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
@@ -643,65 +638,65 @@ class WebController(BaseController):
 		#	ret["next"] = next["events"][0]
 		ret["info"]=info
 		return ret
-		
+
 	def P_epgsearch(self, request):
 		res = self.testMandatoryArguments(request, ["search"])
 		if res:
 			return res
-			
+
 		return getSearchEpg(request.args["search"][0])
-		
+
 	def P_epgsearchrss(self, request):
 		res = self.testMandatoryArguments(request, ["search"])
 		if res:
 			return res
-			
+
 		ret = getSearchEpg(request.args["search"][0])
 		ret["title"] = "EPG Search '%s'" % request.args["search"][0]
 		ret["generator"] = "OpenWebif"
 		ret["description"] = "%d result for '%s'" % (len(ret["events"]), request.args["search"][0])
 		return ret
-		
+
 	def P_epgservice(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-			
+
 		begintime = -1
 		if "time" in request.args.keys():
 			try:
 				begintime = int(request.args["time"][0])
 			except Exception, e:
 				pass
-		
+
 		endtime = -1
 		if "endTime" in request.args.keys():
 			try:
 				endtime = int(request.args["endTime"][0])
 			except Exception, e:
 				pass
-				
+
 		return getChannelEpg(request.args["sRef"][0], begintime, endtime)
-		
+
 	def P_epgservicenow(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-			
+
 		return getNowNextEpg(request.args["sRef"][0], 0)
-		
+
 	def P_epgservicenext(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-			
+
 		return getNowNextEpg(request.args["sRef"][0], 1)
-		
+
 	def P_epgsimilar(self, request):
 		res = self.testMandatoryArguments(request, ["sRef", "eventid"])
 		if res:
 			return res
-			
+
 		try:
 			eventid = int(request.args["eventid"][0])
 		except Exception, e:
@@ -709,9 +704,9 @@ class WebController(BaseController):
 				"result": False,
 				"message": "The parameter 'eventid' must be a number"
 			}
-			
+
 		return getSearchSimilarEpg(request.args["sRef"][0], eventid)
-	
+
 	def P_getcurrent(self, request):
 		info = getCurrentService(self.session)
 		now = getNowNextEpg(info["ref"], 0)
@@ -767,13 +762,13 @@ class WebController(BaseController):
 					mnow["id"] = movie.getEventId()
 			except Exception, e:
 				mnow = now
-		
+
 		return {
 			"info": info,
 			"now": mnow,
 			"next": next
 		}
-		
+
 	def P_getpid(self, request):
 		request.setHeader("content-type", "text/html")
 		info = getCurrentService(self.session)
@@ -783,33 +778,33 @@ class WebController(BaseController):
 			"apid": "%x" % info["apid"],
 			"host": request.getRequestHostname()
 		}
-		
+
 	def P_collapsemenu(self, request):
 		res = self.testMandatoryArguments(request, ["name"])
 		if res:
 			return res
-			
+
 		return addCollapsedMenu(request.args["name"][0])
 
 	def P_expandmenu(self, request):
 		res = self.testMandatoryArguments(request, ["name"])
 		if res:
 			return res
-			
+
 		return removeCollapsedMenu(request.args["name"][0])
 
 	def P_remotegrabscreenshot(self, request):
 		res = self.testMandatoryArguments(request, ["checked"])
 		if res:
 			return res
-			
+
 		return setRemoteGrabScreenshot(request.args["checked"][0] == "true")
 
 	def P_zapstream(self, request):
 		res = self.testMandatoryArguments(request, ["checked"])
 		if res:
 			return res
-			
+
 		return setZapStream(request.args["checked"][0] == "true")
 
 	def P_streamm3u(self,request):
@@ -828,7 +823,7 @@ class WebController(BaseController):
 	def P_videom3u(self,request):
 		self.isCustom = True
 		return getStream(self.session,request,"video.m3u")
-		
+
 	def P_streamcurrentm3u(self,request):
 		self.isCustom = True
 		return getStream(self.session,request,"streamcurrent.m3u")
@@ -846,37 +841,37 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["key", "value"])
 		if res:
 			return res
-			
+
 		return saveConfig(request.args["key"][0], request.args["value"][0])
-		
+
 	def P_mediaplayeradd(self, request):
 		res = self.testMandatoryArguments(request, ["file"])
 		if res:
 			return res
-			
+
 		return mediaPlayerAdd(self.session, request.args["file"][0])
 
 	def P_mediaplayerplay(self, request):
 		res = self.testMandatoryArguments(request, ["file"])
 		if res:
 			return res
-			
+
 		root = ""
 		if "root" in request.args.keys():
 			root = request.args["root"][0]
-		
+
 		return mediaPlayerPlay(self.session, request.args["file"][0], root)
-		
+
 	def P_mediaplayercmd(self, request):
 		res = self.testMandatoryArguments(request, ["command"])
 		if res:
 			return res
-		
+
 		return mediaPlayerCommand(self.session, request.args["command"][0])
-	
+
 	def P_mediaplayercurrent(self, request):
 		return mediaPlayerCurrent(self.session)
-		
+
 	def P_mediaplayerfindfile(self, request):
 		path = "/media/"
 		if "path" in request.args.keys():
@@ -890,50 +885,50 @@ class WebController(BaseController):
 		path = ""
 		if "path" in request.args.keys():
 			path = request.args["path"][0]
-			
+
 		types = ""
 		if "types" in request.args.keys():
 			types = request.args["types"][0]
-			
+
 		return mediaPlayerList(self.session, path, types)
-		
+
 	def P_mediaplayerremove(self, request):
 		res = self.testMandatoryArguments(request, ["file"])
 		if res:
 			return res
-			
+
 		return mediaPlayerRemove(self.session, request.args["file"][0])
-		
+
 	def P_mediaplayerload(self, request):
 		res = self.testMandatoryArguments(request, ["filename"])
 		if res:
 			return res
-			
+
 		return mediaPlayerLoad(self.session, request.args["filename"][0])
-		
+
 	def P_mediaplayerwrite(self, request):
 		res = self.testMandatoryArguments(request, ["filename"])
 		if res:
 			return res
-			
+
 		return mediaPlayerSave(self.session, request.args["filename"][0])
-		
+
 	def P_pluginlistread(self, request):
 		return reloadPlugins()
-		
+
 	def P_restarttwisted(self, request):
 		from ..httpserver import HttpdRestart
 		HttpdRestart(self.session)
 		return ""
-		
+
 	def P_sleeptimer(self, request):
 		cmd = "get"
 		if "cmd" in request.args.keys():
 			cmd = request.args["cmd"][0]
-			
+
 		if cmd == "get":
 			return getSleepTimer(self.session)
-			
+
 		time = None
 		if "time" in request.args.keys():
 			ttime = request.args["time"][0]
@@ -945,34 +940,34 @@ class WebController(BaseController):
 					time = 0
 			except Exception, e:
 				pass
-				
+
 		action = "standby"
 		if "action" in request.args.keys():
 			action = request.args["action"][0]
-		
+
 		enabled = None
 		if "enabled" in request.args.keys():
 			if request.args["enabled"][0] == "True":
 				enabled = True
 			elif request.args["enabled"][0] == "False":
 				enabled = False
-		
+
 		ret = getSleepTimer(self.session)
-		
+
 		if cmd != "set":
 			ret["message"] = "ERROR: Obligatory parameter 'cmd' [get,set] has unspecified value '%s'" % cmd
 			return ret
-			
+
 		if time == None and enabled == True:	# it's used only if the timer is enabled
 			ret["message"] = "ERROR: Obligatory parameter 'time' [0-999] is missing"
 			return ret
-		
+
 		if enabled == None:
 			ret["message"] = "Obligatory parameter 'enabled' [True,False] is missing"
 			return ret
-			
+
 		return setSleepTimer(self.session, time, action, enabled)
-		
+
 	def P_external(self, request):
 		try:
 			from Plugins.Extensions.WebInterface.WebChilds.Toplevel import loaded_plugins
@@ -983,13 +978,12 @@ class WebController(BaseController):
 			return {
 				"plugins": []
 			}
-		
+
 	def P_settings(self, request):
 		return getSettings()
-	
+
 	def P_bouquets(self, request):
 		stype = "tv"
 		if "stype" in request.args.keys():
 			stype = request.args["stype"][0]
 		return getBouquets(stype)
-

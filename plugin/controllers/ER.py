@@ -25,7 +25,7 @@ class ERController(resource.Resource):
 		self.putChild('get', EPGRefreshSettingsResource())
 		self.putChild('set', EPGRefreshChangeSettingsResource())
 		self.putChild('refresh', EPGRefreshStartRefreshResource())
-		
+
 	def render(self, request):
 		request.setResponseCode(http.OK)
 		request.setHeader('Content-type', 'application/xhtml+xml')
@@ -37,4 +37,3 @@ class ERController(resource.Resource):
 			return ''.join(epgrefresh.buildConfiguration(webif = True))
 		except ImportError:
 			return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>EPG Refresh Plugin not found</e2statetext></e2simplexmlresult>'
-	
