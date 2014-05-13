@@ -174,7 +174,7 @@ class BQEWebController(BaseController):
 		try:
 			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.BACKUP)
-			bqe.handleCommand(self.buildCommand('Filename',request.args))
+			bqe.handleCommand(request.args['Filename'][0])
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -184,7 +184,7 @@ class BQEWebController(BaseController):
 		try:
 			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.RESTORE)
-			bqe.handleCommand(self.buildCommand('Filename',request.args))
+			bqe.handleCommand(request.args['Filename'][0])
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])

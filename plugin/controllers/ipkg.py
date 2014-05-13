@@ -11,6 +11,7 @@
 
 from enigma import eConsoleAppContainer
 from twisted.web import static, server, resource, http
+from os import path, popen, remove
 
 import json
 
@@ -36,12 +37,23 @@ class IpkgController(resource.Resource):
 				return self.CallOPKG(request,action)
 			elif action in ( "info", "status", "install", "remove" ):
 				return self.CallOPKGP(request,action,package)
+			elif action in ( "listgz" ):
+				return self.CallOPKListGZ(request)
 			else:
 				return ShowError(request,"Unknown command: "+ self.command)
 		else:
 			return self.ShowHint(request)
 
 		return ShowError(request,"Error")
+
+	def CallOPKListGZ(self, request):
+		tmpFilename = "/tmp/opkg-list.gz"
+		if path.exists(tmpFilename):
+			remove(tmpFilename)
+		lines = popen('/usr/bin/opkg list | gzip > %s' % tmpFilename).readlines()
+		request.setHeader("Content-Disposition:", "attachment;filename=\"%s\"" % (tmpFilename.split('/')[-1]))
+		rfile = static.File(tmpFilename, defaultType = "application/octet-stream")
+		return rfile.render(request)
 
 	def CallOPKG(self, request, action, parms=[]):
 		cmd = ["/usr/bin/opkg", "ipkg", action] + parms
@@ -105,7 +117,7 @@ class IpkgController(resource.Resource):
 	def ShowHint(self, request):
 		html = "<html><body><h1>OpenWebif Interface for OPKG</h1>"
 		html += "Usage : ?command=<cmd>&package=packagename<&format=json><br>"
-		html += "Valid Commands:<br>list,list_installed,list_installed,list_upgradable<br>"
+		html += "Valid Commands:<br>list,listgz,list_installed,list_installed,list_upgradable<br>"
 		html += "Valid Package Commands:<br>info,status,install,remove<br>"
 		html += "Valid Formats:<br>json,html(default)<br>"
 		html += "</body></html>"

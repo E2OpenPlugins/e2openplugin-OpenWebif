@@ -1,3 +1,9 @@
+## Version 0.2.8
+**FEATURES**
+
+* fix bouqueteditior backup/restore
+* add gzip high speed opkg list command
+
 ## Version 0.2.7
 **FEATURES**
 

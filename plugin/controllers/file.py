@@ -15,6 +15,7 @@ from urllib import unquote, quote
 from Components.config import config
 from os import path as os_path, listdir
 from Tools.Directories import fileExists
+import glob
 
 def new_getRequestHostname(self):
 	host = self.getHeader(b'host')
@@ -75,36 +76,31 @@ class FileController(resource.Resource):
 
 		if "dir" in request.args:
 			path = request.args["dir"][0]
-
+			pattern = '*'
+			data = []
 			if "pattern" in request.args:
 				pattern = request.args["pattern"][0]
-			else:
-				pattern = None
-
 			directories = []
 			files = []
 			if fileExists(path):
-				try:
-					files = listdir(path)
-				except:
-					files = []
-
-				files.sort()
-				tmpfiles = files[:]
-				for x in tmpfiles:
-					if os_path.isdir(path + x):
-						directories.append(path + x + "/")
-						files.remove(x)
-
-				data = []
-				data.append({"result": True,"dirs": directories,"files": files})
-
-				request.setHeader("content-type", "text/plain")
-				request.write(json.dumps(data))
-				request.finish()
-				return server.NOT_DONE_YET
+				if not self.isAuthenticated(request):
+					data.append({"result": False,"message": "path %s not exits" % (path)})
+				else:
+					try:
+						files = glob.glob(path+'/'+pattern)
+					except:
+						files = []
+					files.sort()
+					tmpfiles = files[:]
+					for x in tmpfiles:
+						if os_path.isdir(x):
+							directories.append(x + '/')
+							files.remove(x)
+					data.append({"result": True,"dirs": directories,"files": files})
 			else:
-				return "path %s not exits" % (path)
+				data.append({"result": False,"message": "path %s not exits" % (path)})
+			request.setHeader("content-type", "text/plain")
+			return json.dumps(data)
 
 	#
 	# check if a request is authenticated; needed here for
