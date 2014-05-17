@@ -993,3 +993,11 @@ class WebController(BaseController):
 			stype = request.args["stype"][0]
 		return getBouquets(stype)
 
+	def P_epgnownextgz(self, request):
+		self.isGZ=True
+		return self.P_epgnownext(request)
+
+	def P_epgmultigz(self, request):
+		self.isGZ=True
+		return self.P_epgmulti(request)
+

@@ -22,6 +22,7 @@ from models.config import getCollapsedMenus, getRemoteGrabScreenshot, getZapStre
 import imp
 import sys
 import json
+import zlib
 
 class BaseController(resource.Resource):
 	isLeaf = False
@@ -33,6 +34,7 @@ class BaseController(resource.Resource):
 		self.withMainTemplate = False
 		self.isJson = False
 		self.isCustom = False
+		self.isGZ = False
 	
 	def error404(self, request):
 		request.setHeader("content-type", "text/html")
@@ -90,8 +92,13 @@ class BaseController(resource.Resource):
 			elif self.isJson:
 #				if not self.suppresslog:
 #					print "[OpenWebif] page '%s' ok (json)" % request.uri
-				request.setHeader("content-type", "text/plain")
-				request.write(json.dumps(data))
+				if self.isGZ:
+					request.setHeader("content-type", "application/octet-stream")
+					compstr = zlib.compress(json.dumps(data))
+					request.write(compstr)
+				else:
+					request.setHeader("content-type", "text/plain")
+					request.write(json.dumps(data))
 				request.finish()
 			elif type(data) is str:
 #				if not self.suppresslog:
