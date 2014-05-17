@@ -4,6 +4,7 @@
 
 **FIXES**
 * fix settings
+* show full recording description
 
 ## Version 0.2.8
 **FEATURES**
