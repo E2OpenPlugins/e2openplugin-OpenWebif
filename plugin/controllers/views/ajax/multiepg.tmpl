@@ -19,6 +19,13 @@
 	.timer { color: #f00; font-weight: bold; font-size: 10px; }
 	.timer.disabled { color: #f80; }
 	#eventdescription { width: 375px; height: auto; position: fixed; top: 205px; left: 350px; z-index: 1000; display: none; overflow: auto; }
+.fht-table,.fht-table thead,.fht-table tfoot,.fht-table tbody,.fht-table tr,.fht-table th,.fht-table td{font-size:100%;font:inherit;vertical-align:top;margin:0;padding:0}
+.fht-table{border-collapse:collapse;border-spacing:0}
+.fht-table-wrapper,.fht-table-wrapper .fht-thead,.fht-table-wrapper .fht-tfoot,.fht-table-wrapper .fht-fixed-column .fht-tbody,.fht-table-wrapper .fht-fixed-body .fht-tbody,.fht-table-wrapper .fht-tbody{overflow:hidden;position:relative}
+.fht-table-wrapper .fht-fixed-body .fht-tbody,.fht-table-wrapper .fht-tbody{overflow:auto}
+.fht-table-wrapper .fht-table .fht-cell{overflow:hidden;height:1px}
+.fht-table-wrapper .fht-fixed-column,.fht-table-wrapper .fht-fixed-body{top:0;left:0;position:absolute}
+.fht-table-wrapper .fht-fixed-column{z-index:1}
 }
 </style>
 
@@ -39,14 +46,17 @@
 </table>
 
 #set $renderEventBlock = $renderEvtBlock()
-<table cellpadding="0" cellspacing="0">
+<table cellpadding="0" cellspacing="0" id="TBL1">
 #block channelsInBouquet
+<thead>
 <tr>
 	#for $sname, $eventlist in $events.iteritems()
 	<td class="border"><div class="service"><img src="$(picons[$sname])" /> $sname</div></td>
 	#end for
 </tr>
+</thead>
 #end block
+<tbody>
 	#set hasEvents = False
 	#for $slot in range(0,12)
 <tr class="$(slot%2 and 'odd' or 'even')">
@@ -59,13 +69,9 @@
 </td>
 	#end for
 </tr>
-	#if $slot % 3 == 2 and hasEvents
-		$channelsInBouquet
-		#set hasEvents = False
-	#end if
 	#end for
+</tbody>
 </table>
-
 <div id="eventdescription"></div>
 <div id="editTimerForm" title="$tstrings['edit_timer']"></div>
 
@@ -89,3 +95,16 @@ var reloadTimers = false;
 });
 \$('#editTimerForm').load('/ajax/edittimer');
 </script>
+<script type="text/javascript" src="/js/jquery.fixedheadertable.min.js"></script>
+
+<script>
+\$(function() { 
+\$('#TBL1').fixedHeaderTable({ 
+	footer: true,
+	cloneHeadToFoot: true,
+	altClass: 'odd',
+	autoShow: true
+});
+});
+</script>
+
