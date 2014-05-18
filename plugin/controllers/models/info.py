@@ -144,18 +144,18 @@ def getInfo():
 		elif model.startswith("azbox"):
 			brand = "AZBox"
 			f = open("/proc/stb/info/model",'r')
- 			model = f.readline().strip().lower()
- 			f.close()
- 			if model == "me":
+			model = f.readline().strip().lower()
+			f.close()
+			if model == "me":
 				chipset = "SIGMA 8655"
-	 		elif model == "minime":
+			elif model == "minime":
 				chipset = "SIGMA 8653"
-	 		else:
+			else:
 				chipset = "SIGMA 8634"
 		elif model.startswith("spark"):
 			brand = "Fulan"
 			chipset = "SH4 @450MHz"
- 	elif fileExists("/proc/stb/info/boxtype"):
+	elif fileExists("/proc/stb/info/boxtype"):
 		brand = "Xtrend"
 		f = open("/proc/stb/info/boxtype",'r')
 		model = f.readline().strip().lower()
@@ -169,45 +169,45 @@ def getInfo():
 			else:
 				brand = "Venton"
 		elif model.startswith("xp"):
-		    brand = "MaxDigital"
- 		f.close()
+			brand = "MaxDigital"
+		f.close()
 	elif fileExists("/proc/stb/info/vumodel"):
 		brand = "VuPlus"
 		f = open("/proc/stb/info/vumodel",'r')
- 		model = f.readline().strip().lower()
- 		f.close()
+		model = f.readline().strip().lower()
+		f.close()
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBox"
 		f = open("/proc/stb/info/model",'r')
- 		model = f.readline().strip().lower()
- 		f.close()
- 		if model == "me":
+		model = f.readline().strip().lower()
+		f.close()
+		if model == "me":
 			chipset = "SIGMA 8655"
- 		elif model == "minime":
+		elif model == "minime":
 			chipset = "SIGMA 8653"
- 		else:
+		else:
 			chipset = "SIGMA 8634"
 	else:
 		f = open("/proc/stb/info/model",'r')
- 		model = f.readline().strip().lower()
- 		f.close()
-	 	if model == "tf7700hdpvr":
- 			brand = "Topfield"
- 			chipset = "SH4 @266MHz"
+		model = f.readline().strip().lower()
+		f.close()
+		if model == "tf7700hdpvr":
+			brand = "Topfield"
+			chipset = "SH4 @266MHz"
 
 	info['brand'] = brand
 	info['model'] = model
 
 	if fileExists("/proc/stb/info/chipset"):
 		f = open("/proc/stb/info/chipset",'r')
- 		chipset = f.readline().strip()
- 		f.close()
+		chipset = f.readline().strip()
+		f.close()
 		
 	info['chipset'] = chipset
 
 	memFree = 0
 	for line in open("/proc/meminfo",'r'):
-	 	parts = line.split(':')
+		parts = line.split(':')
 		key = parts[0].strip()
 		if key == "MemTotal":
 			info['mem1'] = parts[1].strip()
@@ -370,7 +370,7 @@ def getStatusInfo(self):
 		if serviceref:
 			statusinfo['currservice_serviceref'] = serviceref.toString()
 			statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
-	
+
 	# Get Standby State
 	from Screens.Standby import inStandby
 	if inStandby == None:

@@ -20,21 +20,20 @@ from Components.MovieList import MovieList
 from Tools.Directories import fileExists
 from time import strftime, localtime
 
-
 def getMovieList(directory=None, tag=None, rargs=None):
 	movieliste = []
-	
+
 	if directory == None:
 		directory = config.usage.default_path.value
-	
+
 	if directory[-1] != "/":
 		directory += "/"
-		
+
 	root = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory)
 
 	bookmarklist=[x for x in listdir(directory) if (x[0] != '.' and (isdir(join(directory, x)) or (islink(join(directory, x)) and exists(join(directory, x)))))]
 	bookmarklist.sort()
-	
+
 	folders = []
 	folders.append(root)
 	if rargs and "recursive" in rargs.keys():
@@ -45,12 +44,11 @@ def getMovieList(directory=None, tag=None, rargs=None):
 			folders.append(ff)
 
 	#??? tagfilter = []
-	
+
 	for root in folders:
-	
 		movielist = MovieList(None)
 		movielist.load(root, None)
-	
+
 		if tag != None:
 			movielist.reload(root=root, filter_tags=[tag])
 		#??? loadLength = True
@@ -76,7 +74,7 @@ def getMovieList(directory=None, tag=None, rargs=None):
 				Len = "%d:%02d" % (Len / 60, Len % 60)
 			else:
 				Len = "?:??"
-		
+
 			sourceERef = info.getInfoString(serviceref, iServiceInformation.sServiceref)
 			sourceRef = ServiceReference(sourceERef)
 
@@ -104,11 +102,11 @@ def getMovieList(directory=None, tag=None, rargs=None):
 			movie['descriptionExtended'] = ext
 			movie['servicename'] = sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
 			movie['recordingtime'] = rtime
-		
+
 			movieliste.append(movie)
-		
+
 	ml = { "movies": movieliste, "bookmarks": bookmarklist, "directory": directory }
-	
+
 	if rargs and "zip" in rargs.keys():
 		filename = rargs["zip"][0]
 		import os
@@ -138,7 +136,6 @@ def getMovieList(directory=None, tag=None, rargs=None):
 			"result": True,
 			"message": "create movielist zip success"
 		}
-	
 	else:
 		return ml
 
@@ -172,7 +169,7 @@ def moveMovie(session, sRef, destpath):
 	service = ServiceReference(sRef)
 	result = True
 	errText = 'unknown Error'
-	
+
 	if not destpath[-1] == '/':
 		destpath = destpath + '/'
 
@@ -193,7 +190,7 @@ def moveMovie(session, sRef, destpath):
 				suffixes = ".ts.meta", ".ts.cuts", ".ts.ap", ".ts.sc", ".eit", ".ts", ".jpg"
 			else:
 				suffixes = "%s.ts.meta" % fileExt, "%s.cuts" % fileExt, fileExt, '.jpg', '.eit'
-			
+
 			for suffix in suffixes:
 				src = srcpath + fileName + suffix
 				if exists(src):
@@ -258,7 +255,7 @@ def renameMovie(session, sRef, newname):
 				suffixes = ".ts.meta", ".ts.cuts", ".ts.ap", ".ts.sc", ".eit", ".ts", ".jpg"
 			else:
 				suffixes = "%s.ts.meta" % fileExt, "%s.cuts" % fileExt, fileExt, '.jpg', '.eit'
-			
+
 			for suffix in suffixes:
 				src = srcpath + fileName + suffix
 				if exists(src):
@@ -295,14 +292,12 @@ def renameMovie(session, sRef, newname):
 			"message": "The movie '%s' has been renamed successfully" % name
 			}
 
-
 def getMovieTags():
 	tags = []
 	if fileExists("/etc/enigma2/movietags"):
 		for tag in open("/etc/enigma2/movietags").read().split("\n"):
 			if len(tag.strip()) > 0:
 				tags.append(tag.strip())
-		
 	return {
 		"result": True,
 		"tags": tags

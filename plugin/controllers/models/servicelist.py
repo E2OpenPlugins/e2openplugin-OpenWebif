@@ -14,16 +14,16 @@ from Components.NimManager import nimmanager
 import Components.ParentalControl
 
 def reloadLameDB(self):
-		self.eDVBDB.reloadServicelist()
+	self.eDVBDB.reloadServicelist()
 
 def reloadUserBouquets(self):
-		self.eDVBDB.reloadBouquets()
+	self.eDVBDB.reloadBouquets()
 
 def reloadTransponders(self):
-		nimmanager.readTransponders()
+	nimmanager.readTransponders()
 
 def reloadParentalControl(self):
-		Components.ParentalControl.parentalControl.open()
+	Components.ParentalControl.parentalControl.open()
 
 def reloadServicesLists(self, request):
 	self.eDVBDB = eDVBDB.getInstance()
@@ -61,4 +61,3 @@ def reloadServicesLists(self, request):
 		"result" : res,
 		"message" : msg
 	}
-

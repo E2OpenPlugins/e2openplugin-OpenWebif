@@ -12,7 +12,7 @@ def addCollapsedMenu(name):
 	tags = config.OpenWebif.webcache.collapsedmenus.value.split("|")
 	if name not in tags:
 		tags.append(name)
-		
+
 	config.OpenWebif.webcache.collapsedmenus.value = "|".join(tags).strip("|")
 	config.OpenWebif.webcache.collapsedmenus.save()
 	
@@ -98,7 +98,7 @@ def getJsonFromConfig(cnf):
 			"choices": cnf.choices.choices,
 			"current": cnf.value
 		}
-		
+
 	elif cnf.__class__.__name__ == "ConfigNumber":
 		return {
 			"result": True,
@@ -112,7 +112,7 @@ def getJsonFromConfig(cnf):
 			"current": cnf.value,
 			"limits": (cnf.limits[0][0], cnf.limits[0][1])
 		}
-		
+
 	print "[OpenWebif] Unknown class ", cnf.__class__.__name__
 	return {
 		"result": False,
@@ -150,7 +150,7 @@ def saveConfig(path, value):
 		return {
 			"result": False
 		}
-		
+
 	return {
 		"result": True
 	}
@@ -199,7 +199,7 @@ def privSettingValues(prefix, top, result):
 		elif isinstance(val, tuple):
 			result.append((name, val[0]))
 		else:
-			result.append((name, val))	
+			result.append((name, val))
 
 def getSettings():
 	configkeyval = []
@@ -252,7 +252,7 @@ class ConfigFiles:
 						requires = entry.get("requires")
 						if requires and not SystemInfo.get(requires, False):
 							continue;
-							
+
 						if int(entry.get("level", 0)) > config.usage.setup_level.index:
 							continue
 						configs.append(entry)

@@ -434,7 +434,6 @@ def getEventDesc(ref, idev):
 
 	return { "description": description }
 
-
 def getEvent(ref, idev):
 	epgcache = eEPGCache.getInstance()
 	events = epgcache.lookupEvent(['BDTSENRX', (ref, 2, int(idev))])
@@ -449,7 +448,6 @@ def getEvent(ref, idev):
 		info['sref'] = event[6]
 		break;
 	return { 'event': info }
-
 
 def getChannelEpg(ref, begintime=-1, endtime=-1):
 	ret = []
@@ -495,7 +493,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1):
 	else:
 		use_empty_ev = True
 		ev['sref'] = ""
-		
+
 	if use_empty_ev:
 		ev['date'] = 0
 		ev['begin'] = 0
@@ -614,7 +612,6 @@ def getNowNextEpg(ref, servicetype):
 				ev['now_timestamp'] = 0
 				ev['remaining'] = 0
 
-
 			ret.append(ev)
 
 	return { "events": ret, "result": True }
@@ -674,7 +671,6 @@ def getSearchSimilarEpg(ref, eventid):
 
 
 def getMultiEpg(self, ref, begintime=-1, endtime=None):
-
 	# Check if an event has an associated timer. Unfortunately
 	# we cannot simply check against timer.eit, because a timer
 	# does not necessarily have one belonging to an epg event id.
@@ -708,7 +704,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None):
 	events = epgcache.lookupEvent(search)
 	offset = None
 	picons = {}
-	
+
 	if events is not None:
 		# We want to display if an event is covered by a timer.
 		# To keep the costs low for a nested loop against the timer list, we
@@ -720,7 +716,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None):
 			if not timerlist.has_key(str(timer.service_ref)):
 				timerlist[str(timer.service_ref)] = []
 			timerlist[str(timer.service_ref)].append(timer)
-		
+
 		for event in events:
 			ev = {}
 			ev['id'] = event[0]
@@ -757,7 +753,7 @@ def getPicon(sname):
 		pos = sname.rfind(':')
 	else:
 		return "/images/default_picon.png"
-		
+
 	if pos != -1:
 		sname = sname[:pos].rstrip(':').replace(':','_') + ".png"
 	filename = getPiconPath() + sname
