@@ -34,12 +34,13 @@ class ATController(resource.Resource):
 		request.setHeader('Content-type', 'application/xhtml+xml')
 		request.setHeader('charset', 'UTF-8')
 		try:
-			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
-			autotimer = AutoTimer()
+			from Plugins.Extensions.AutoTimer.plugin import autotimer
 			try:
-				autotimer.readXml()
+				if autotimer is not None:
+					autotimer.readXml()
+					return ''.join(autotimer.getXml())
 			except Exception:
-				return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>AutoTimer Config not found</e2statetext></e2simplexmlresult>'
-			return ''.join(autotimer.getXml())
+				pass
+			return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>AutoTimer Config not found</e2statetext></e2simplexmlresult>'
 		except ImportError:
 			return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>AutoTimer Plugin not found</e2statetext></e2simplexmlresult>'
