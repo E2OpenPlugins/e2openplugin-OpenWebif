@@ -24,16 +24,16 @@ msgstr ""
 msgid "OpenWebInterface Enabled"
 msgstr ""
 
-msgid "Http port"
+msgid "HTTP port"
 msgstr ""
 
-msgid "Enable Http Authentication"
+msgid "Enable HTTP Authentication"
 msgstr ""
 
-msgid "Enable Https"
+msgid "Enable HTTPS"
 msgstr ""
 
-msgid "Https port"
+msgid "HTTPS port"
 msgstr ""
 
 msgid "Require client cert for HTTPS"

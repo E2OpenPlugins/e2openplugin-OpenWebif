@@ -25,16 +25,16 @@ msgstr "Adres OpenWebif:  http://ip_tunera:port"
 msgid "OpenWebInterface Enabled"
 msgstr "OpenWebif włączony"
 
-msgid "Http port"
+msgid "HTTP port"
 msgstr "Port HTTP"
 
-msgid "Enable Http Authentication"
+msgid "Enable HTTP Authentication"
 msgstr "Włącz uwierzytelnianie HTTP"
 
-msgid "Enable Https"
+msgid "Enable HTTPS"
 msgstr "Włącz dostęp przez HTTPS"
 
-msgid "Https port"
+msgid "HTTPS port"
 msgstr "Port HTTPS"
 
 msgid "Smart services renaming for XBMC"

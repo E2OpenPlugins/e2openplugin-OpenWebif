@@ -25,17 +25,17 @@ msgstr "Openwebif url: http://uwIP:poort"
 msgid "OpenWebInterface Enabled"
 msgstr "Openwebinterface ingeschakeld"
 
-msgid "Http port"
-msgstr "http poort"
+msgid "HTTP port"
+msgstr "HTTP poort"
 
-msgid "Enable Http Authentication"
-msgstr "http authenticatie inschakelen"
+msgid "Enable HTTP Authentication"
+msgstr "HTTP authenticatie inschakelen"
 
-msgid "Enable Https"
-msgstr "https inschakelen"
+msgid "Enable HTTPS"
+msgstr "HTTPS inschakelen"
 
-msgid "Https port"
-msgstr "https poort"
+msgid "HTTPS port"
+msgstr "HTTPS poort"
 
 msgid "Smart services renaming for XBMC"
 msgstr "Zenders slim anders benoemen voor XBMC"

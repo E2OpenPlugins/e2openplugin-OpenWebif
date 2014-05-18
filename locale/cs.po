@@ -28,17 +28,17 @@ msgstr "OpenWebif url: http://yourip:port"
 msgid "OpenWebInterface Enabled"
 msgstr "Povolit OpenWebInterface"
 
-msgid "Http port"
-msgstr "Http port"
+msgid "HTTP port"
+msgstr "HTTP port"
 
-msgid "Enable Http Authentication"
-msgstr "Povolit Http ověřování"
+msgid "Enable HTTP Authentication"
+msgstr "Povolit HTTP ověřování"
 
-msgid "Enable Https"
-msgstr "Povolit Https"
+msgid "Enable HTTPS"
+msgstr "Povolit HTTPS"
 
-msgid "Https port"
-msgstr "Https port"
+msgid "HTTPS port"
+msgstr "HTTPS port"
 
 msgid "Smart services renaming for XBMC"
 msgstr "Chytré přejmenování programů pro XBMC"

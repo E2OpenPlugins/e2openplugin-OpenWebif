@@ -22,6 +22,8 @@ from models.config import getCollapsedMenus, getRemoteGrabScreenshot, getZapStre
 import imp
 import sys
 import json
+import gzip
+import cStringIO
 
 class BaseController(resource.Resource):
 	isLeaf = False
@@ -33,6 +35,7 @@ class BaseController(resource.Resource):
 		self.withMainTemplate = False
 		self.isJson = False
 		self.isCustom = False
+		self.isGZ = False
 	
 	def error404(self, request):
 		request.setHeader("content-type", "text/html")
@@ -55,6 +58,13 @@ class BaseController(resource.Resource):
 		
 	def getChild(self, path, request):
 		return self.__class__(self.session, path)
+		
+	def compressBuf(self, buf):
+		zbuf = cStringIO.StringIO()
+		zfile = gzip.GzipFile(mode = 'wb',  fileobj = zbuf, compresslevel = 6)
+		zfile.write(buf)
+		zfile.close()
+		return zbuf.getvalue()
 		
 	def render(self, request):
 		# cache data
@@ -90,8 +100,15 @@ class BaseController(resource.Resource):
 			elif self.isJson:
 #				if not self.suppresslog:
 #					print "[OpenWebif] page '%s' ok (json)" % request.uri
-				request.setHeader("content-type", "text/plain")
-				request.write(json.dumps(data))
+#	TODO: Discuss to use GZIP for all requests if the browser accepts gzip encoding
+				if self.isGZ:
+					compstr = self.compressBuf(json.dumps(data))
+					request.setHeader('Content-Encoding', 'gzip')
+					request.setHeader('Content-Length', '%d' % len(compstr))
+					request.write(compstr)
+				else:
+					request.setHeader("content-type", "text/plain")
+					request.write(json.dumps(data))
 				request.finish()
 			elif type(data) is str:
 #				if not self.suppresslog:

@@ -150,11 +150,11 @@ msgstr "Редагувати таймер"
 msgid "Enable Authentication for streaming"
 msgstr "Включити ідентифікацію для стріму"
 
-msgid "Enable Http Authentication"
-msgstr "Включити http ідентифікацію"
+msgid "Enable HTTP Authentication"
+msgstr "Включити HTTP ідентифікацію"
 
-msgid "Enable Https"
-msgstr "Включити https"
+msgid "Enable HTTPS"
+msgstr "Включити HTTPS"
 
 msgid "Enable Parental Control"
 msgstr "Включити батьківський контроль"
@@ -219,11 +219,11 @@ msgstr "Скрити пульт"
 msgid "High Resolution"
 msgstr "Висока роздільна здатність"
 
-msgid "Http port"
-msgstr "Порт для http"
+msgid "HTTP port"
+msgstr "Порт для HTTP"
 
-msgid "Https port"
-msgstr "Порт для https"
+msgid "HTTPS port"
+msgstr "Порт для HTTPS"
 
 msgid "IP address"
 msgstr "IP-адреса"

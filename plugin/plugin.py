@@ -80,29 +80,50 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			"green": self.keySave,
 
 		}, -2)
+		self.runSetup()
+		self.onLayoutFinish.append(self.setWindowTitle)
 
+	def runSetup(self):
+		self.list = []
 		self.list.append(getConfigListEntry(_("OpenWebInterface Enabled"), config.OpenWebif.enabled))
-		self.list.append(getConfigListEntry(_("Http port"), config.OpenWebif.port))
-		self.list.append(getConfigListEntry(_("Enable Http Authentication"), config.OpenWebif.auth))
-		self.list.append(getConfigListEntry(_("Enable Https"), config.OpenWebif.https_enabled))
-		self.list.append(getConfigListEntry(_("Https port"), config.OpenWebif.https_port))
-		self.list.append(getConfigListEntry(_("Require client cert for HTTPS"), config.OpenWebif.https_clientcert))
-		self.list.append(getConfigListEntry(_("Enable Authentication for streaming"), config.OpenWebif.auth_for_streaming))
-		self.list.append(getConfigListEntry(_("Smart services renaming for XBMC"), config.OpenWebif.xbmcservices))
-		self.list.append(getConfigListEntry(_("Enable Parental Control"), config.OpenWebif.parentalenabled))
-		self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
+		if config.OpenWebif.enabled.value:
+			self.list.append(getConfigListEntry(_("HTTP port"), config.OpenWebif.port))
+			self.list.append(getConfigListEntry(_("Enable HTTP Authentication"), config.OpenWebif.auth))
+			self.list.append(getConfigListEntry(_("Enable HTTPS"), config.OpenWebif.https_enabled))
+			if config.OpenWebif.https_enabled.value:
+				self.list.append(getConfigListEntry(_("HTTPS port"), config.OpenWebif.https_port))
+				self.list.append(getConfigListEntry(_("Require client cert for HTTPS"), config.OpenWebif.https_clientcert))
+			if config.OpenWebif.auth.value:
+				self.list.append(getConfigListEntry(_("Enable Authentication for streaming"), config.OpenWebif.auth_for_streaming))
+			self.list.append(getConfigListEntry(_("Smart services renaming for XBMC"), config.OpenWebif.xbmcservices))
+			self.list.append(getConfigListEntry(_("Enable Parental Control"), config.OpenWebif.parentalenabled))
+			self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
 
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
 
-		self.onLayoutFinish.append(self.setWindowTitle)
-
 	def setWindowTitle(self):
 		self.setTitle(_("OpenWebif Configuration"))
+
+	def keyLeft(self):
+		ConfigListScreen.keyLeft(self)
+		self.runSetup()
+
+	def keyRight(self):
+		ConfigListScreen.keyRight(self)
+		self.runSetup()
 
 	def keySave(self):
 		for x in self["config"].list:
 			x[1].save()
+
+		if not config.OpenWebif.auth.value == True:
+			config.OpenWebif.auth_for_streaming.value = False
+			config.OpenWebif.auth_for_streaming.save()
+
+		if not config.OpenWebif.https_enabled == True:
+			config.OpenWebif.https_clientcert.value = False
+			config.OpenWebif.https_clientcert.save()
 
 		if config.OpenWebif.enabled.value == True:
 			HttpdRestart(global_session)
