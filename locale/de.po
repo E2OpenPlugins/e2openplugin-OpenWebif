@@ -25,17 +25,17 @@ msgstr "OpenWebif-URL: http://ip_des_receivers:port"
 msgid "OpenWebInterface Enabled"
 msgstr "OpenWebinterface einschalten"
 
-msgid "Http port"
-msgstr "Port für http"
+msgid "HTTP port"
+msgstr "Port für HTTP"
 
-msgid "Enable Http Authentication"
-msgstr "Authentifizierung für http aktivieren"
+msgid "Enable HTTP Authentication"
+msgstr "Authentifizierung für HTTP aktivieren"
 
-msgid "Enable Https"
-msgstr "Aktivierung von https"
+msgid "Enable HTTPS"
+msgstr "Aktivierung von HTTPS"
 
-msgid "Https port"
-msgstr "Port für https"
+msgid "HTTPS port"
+msgstr "Port für HTTPS"
 
 msgid "Require client cert for HTTPS"
 msgstr "Erzwinge zertifikatbasierte Anmeldung"

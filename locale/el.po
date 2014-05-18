@@ -23,17 +23,17 @@ msgstr "OpenWebif url: http://yourip:port"
 msgid "OpenWebInterface Enabled"
 msgstr "OpenWebInterface Ενεργό"
 
-msgid "Http port"
-msgstr "Θύρα http"
+msgid "HTTP port"
+msgstr "Θύρα HTTP"
 
-msgid "Enable Http Authentication"
-msgstr "Ενεργοποίηση πιστοποίησης Http"
+msgid "Enable HTTP Authentication"
+msgstr "Ενεργοποίηση πιστοποίησης HTTP"
 
-msgid "Enable Https"
-msgstr "Ενεργοποίηση Https"
+msgid "Enable HTTPS"
+msgstr "Ενεργοποίηση HTTPS"
 
-msgid "Https port"
-msgstr "Θύρα https"
+msgid "HTTPS port"
+msgstr "Θύρα HTTPS"
 
 msgid "Smart services renaming for XBMC"
 msgstr "Έξυπνη μετονομασία συσκευών για το XBMC"
