@@ -59,18 +59,7 @@ class BaseController(resource.Resource):
 
 	def getChild(self, path, request):
 		return self.__class__(self.session, path)
-<<<<<<< HEAD
 
-	def compressBuf(self, buf):
-		zbuf = cStringIO.StringIO()
-		zfile = gzip.GzipFile(mode = 'wb',  fileobj = zbuf, compresslevel = 6)
-		zfile.write(buf)
-		zfile.close()
-		return zbuf.getvalue()
-
-=======
-		
->>>>>>> parent of 401d352... update gzip requests
 	def render(self, request):
 		# cache data
 		withMainTemplate = self.withMainTemplate
