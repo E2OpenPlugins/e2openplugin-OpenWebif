@@ -24,8 +24,7 @@ from models.config import getCollapsedMenus, getRemoteGrabScreenshot, getZapStre
 import imp
 import sys
 import json
-import gzip
-import cStringIO
+import zlib
 
 class BaseController(resource.Resource):
 	isLeaf = False
@@ -60,6 +59,7 @@ class BaseController(resource.Resource):
 
 	def getChild(self, path, request):
 		return self.__class__(self.session, path)
+<<<<<<< HEAD
 
 	def compressBuf(self, buf):
 		zbuf = cStringIO.StringIO()
@@ -68,6 +68,9 @@ class BaseController(resource.Resource):
 		zfile.close()
 		return zbuf.getvalue()
 
+=======
+		
+>>>>>>> parent of 401d352... update gzip requests
 	def render(self, request):
 		# cache data
 		withMainTemplate = self.withMainTemplate
@@ -102,11 +105,9 @@ class BaseController(resource.Resource):
 			elif self.isJson:
 #				if not self.suppresslog:
 #					print "[OpenWebif] page '%s' ok (json)" % request.uri
-#	TODO: Discuss to use GZIP for all requests if the browser accepts gzip encoding
 				if self.isGZ:
-					compstr = self.compressBuf(json.dumps(data))
-					request.setHeader('Content-Encoding', 'gzip')
-					request.setHeader('Content-Length', '%d' % len(compstr))
+					request.setHeader("content-type", "application/octet-stream")
+					compstr = zlib.compress(json.dumps(data))
 					request.write(compstr)
 				else:
 					request.setHeader("content-type", "text/plain")
