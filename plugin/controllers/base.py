@@ -209,6 +209,8 @@ class BaseController(resource.Resource):
 			ret["remote"] = "xp1000"
 		elif ret["box"].startswith("xpeedlx"):
 			ret["remote"] = "xpeedlx"
+		elif ret["box"].startswith("ixuss"):
+			ret["remote"] = ret["box"].replace(" ", "")
 		else:
 			ret["remote"] = "dmm"
 		extras = []
