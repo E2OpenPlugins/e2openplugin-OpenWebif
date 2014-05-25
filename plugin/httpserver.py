@@ -151,7 +151,19 @@ def HttpdStart(session):
 			installCertificates(session)
 			# start https webserver on port configured port
 			try:
-				context = ssl.DefaultOpenSSLContextFactory(KEY_FILE, CERT_FILE)
+				try:
+					context = ssl.DefaultOpenSSLContextFactory(KEY_FILE, CERT_FILE)
+				except:
+					# THIS EXCEPTION IS ONLY CATCHED WHEN CERT FILES ARE BAD (look below for error)
+					print "[OpenWebif] failed to get valid cert files. (It could occure bad file save or format, removing...)"
+					# removing bad files
+					if os.path.exists(KEY_FILE):
+						os.remove(KEY_FILE)
+					if os.path.exists(CERT_FILE):
+						os.remove(CERT_FILE)
+					# regenerate new ones
+					installCertificates(session)
+					context = ssl.DefaultOpenSSLContextFactory(KEY_FILE, CERT_FILE)
 
 				if config.OpenWebif.https_clientcert.value == True:
 					ctx = context.getContext()
@@ -171,37 +183,13 @@ def HttpdStart(session):
 				BJregisterService('https',httpsPort)
 			except CannotListenError:
 				print "[OpenWebif] failed to listen on Port", httpsPort
-			except: # THIS EXCEPTION IS ONLY CATCHED WHEN CERT FILES ARE BAD ( look below for error )
-				print "[OpenWebif] failed to get valid cert files. ( It could occure bad file save or format, removing... )"
-				# removing bad files
-				os.remove("/etc/enigma2/cert.pem")
-				os.remove("/etc/enigma2/key.pem")
-				# regenerate new ones
-				installCertificates(session)
-				# restart
-				try:
-					context = ssl.DefaultOpenSSLContextFactory(KEY_FILE, CERT_FILE)
+			except:
+				print "[OpenWebif] failed to start https, disabling..."
+				# Disable https
+				config.OpenWebif.https_enabled.value = False
+				config.OpenWebif.https_enabled.save()
 
-					if config.OpenWebif.https_clientcert.value == True:
-						ctx = context.getContext()
-						ctx.set_verify(
-							SSL.VERIFY_PEER | SSL.VERIFY_FAIL_IF_NO_PEER_CERT,
-							verifyCallback
-							)
-						ctx.load_verify_locations(CA_FILE)
-
-					if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
-						# use ipv6
-						listener.append( reactor.listenSSL(httpsPort, site, context, interface='::') )
-					else:
-						# ipv4 only
-						listener.append( reactor.listenSSL(httpsPort, site, context) )
-					print "[OpenWebif] started on", httpsPort
-					BJregisterService('https',httpsPort)
-				except CannotListenError:
-					print "[OpenWebif] failed to listen on Port", httpsPort
-
-#Streaming requires listening on 127.0.0.1:80	
+		#Streaming requires listening on 127.0.0.1:80	
 		if port != 80:
 			if not isOriginalWebifInstalled():
 				try:
