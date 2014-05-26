@@ -252,6 +252,8 @@ class AuthResource(resource.Resource):
 		
 		
 	def login(self, user, passwd):
+		if user=="root" and config.OpenWebif.no_root_access.value:
+			return False
 		from crypt import crypt
 		from pwd import getpwnam
 		from spwd import getspnam
