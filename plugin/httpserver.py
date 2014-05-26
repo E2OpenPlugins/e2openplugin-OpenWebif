@@ -25,6 +25,7 @@ from twisted.internet.protocol import Factory, Protocol
 
 import os
 import imp
+import re
 
 global listener, server_to_stop
 listener = []
@@ -224,7 +225,7 @@ class AuthResource(resource.Resource):
 		if (host == "localhost" or host == "127.0.0.1" or host == "::ffff:127.0.0.1") and not config.OpenWebif.auth_for_streaming.value:
 			return self.resource.render(request)
 			
-		if self.login(request.getUser(), request.getPassword()) == False:
+		if self.login(request.getUser(), request.getPassword(), request.transport.socket.getpeername()[0]) == False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
 			errpage = resource.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
 			return errpage.render(request)
@@ -242,7 +243,7 @@ class AuthResource(resource.Resource):
 		if "logged" in session.keys() and session["logged"]:
 			return self.resource.getChildWithDefault(path, request)
 			
-		if self.login(request.getUser(), request.getPassword()) == False:
+		if self.login(request.getUser(), request.getPassword(), request.transport.socket.getpeername()[0]) == False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
 			errpage = resource.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
 			return errpage
@@ -251,9 +252,12 @@ class AuthResource(resource.Resource):
 			return self.resource.getChildWithDefault(path, request)
 		
 		
-	def login(self, user, passwd):
+	def login(self, user, passwd, peer):
 		if user=="root" and config.OpenWebif.no_root_access.value:
-			return False
+			# Override "no root" for logins from local network
+			match=re.match("(::ffff:|)(192\.168|10\.\d{1,3})\.\d{1,3}\.\d{1,3}", peer)
+			if match is None:
+				return False
 		from crypt import crypt
 		from pwd import getpwnam
 		from spwd import getspnam
