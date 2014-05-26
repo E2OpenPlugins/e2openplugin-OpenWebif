@@ -43,6 +43,9 @@ msgstr "Wymagaj certyfikatu klienta dla HTTPS"
 msgid "Enable Authentication for streaming"
 msgstr "Włącz uwierzytelnianie dla strumieniowania"
 
+msgid "Disable access for user root"
+msgstr "Zablokuj dostęp dla użytkownika root"
+
 msgid "Smart services renaming for XBMC"
 msgstr "Zmiana nazw kanałów dla XBMC"
 
