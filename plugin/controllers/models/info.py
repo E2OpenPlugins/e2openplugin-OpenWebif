@@ -169,7 +169,10 @@ def getInfo():
 			else:
 				brand = "Venton"
 		elif model.startswith("xp"):
-		    brand = "MaxDigital"
+			brand = "MaxDigital"
+		elif model.startswith("ixuss"):
+			brand = "Medialink"
+			model = model.replace(" ", "")
  		f.close()
 	elif fileExists("/proc/stb/info/vumodel"):
 		brand = "VuPlus"

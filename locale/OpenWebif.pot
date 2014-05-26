@@ -42,6 +42,9 @@ msgstr ""
 msgid "Enable Authentication for streaming"
 msgstr ""
 
+msgid "Disable access for user root"
+msgstr ""
+
 msgid "Smart services renaming for XBMC"
 msgstr ""
 
