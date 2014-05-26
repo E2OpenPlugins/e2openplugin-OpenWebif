@@ -211,6 +211,8 @@ class BaseController(resource.Resource):
 			ret["remote"] = "xpeedlx"
 		elif ret["box"] in ("nbox", "esi88", "adb2850", "adb2849", "dsi87"):
 			ret["remote"] = "nbox"
+		elif ret["box"].startswith("ixuss"):
+			ret["remote"] = ret["box"].replace(" ", "")
 		else:
 			ret["remote"] = "dmm"
 		extras = []

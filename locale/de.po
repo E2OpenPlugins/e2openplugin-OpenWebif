@@ -43,6 +43,9 @@ msgstr "Erzwinge zertifikatbasierte Anmeldung"
 msgid "Enable Authentication for streaming"
 msgstr "Authentifizierung für Streaming aktivieren"
 
+msgid "Disable access for user root"
+msgstr "Anmeldung als Benutzer root verbieten"
+
 msgid "Smart services renaming for XBMC"
 msgstr "Sendernamen für XBMC umbenennen"
 
