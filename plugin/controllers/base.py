@@ -167,7 +167,7 @@ class BaseController(resource.Resource):
 		elif fileExists("/proc/stb/info/vumodel"):
 			ret['box'] = open("/proc/stb/info/vumodel").read().strip().lower()
 		elif fileExists("/proc/stb/info/azmodel"):
-			ret['box'] = open("/proc/stb/info/model").read().strip().lower()
+			ret['box'] = open("/proc/stb/info/azmodel").read().strip().lower()
 		elif fileExists("/proc/stb/info/model"):
 			ret['box'] = open("/proc/stb/info/model").read().strip().lower()
 			
