@@ -191,6 +191,8 @@ class BaseController(resource.Resource):
 			ret["remote"] = "formuler1"
 		elif ret["box"] in ("me", "minime"):
 			ret["remote"] = "me"
+		elif ret["box"] in ("optimussos1", "optimussos2"):
+			ret["remote"] = "optimuss"
 		elif ret["box"] in ("premium", "premium+"):
 			ret["remote"] = "premium"
 		elif ret["box"] in ("elite", "ultra"):
