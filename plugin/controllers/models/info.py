@@ -198,6 +198,15 @@ def getInfo():
  			brand = "Topfield"
 			model = "TF 7700 HDPVR"
  			chipset = "SH4 @266MHz"
+	 	elif model == "nbox":
+			brand = "Advanced Digital Broadcast"
+ 			chipset = "SH4 @266MHz"
+	 	elif model in ("adb2850", "adb2849"):
+			brand = "Advanced Digital Broadcast"
+ 			chipset = "SH4 @450MHz"
+	 	elif model in ("esi88", "uhd88", "dsi87"):
+			brand = "SagemCom"
+ 			chipset = "SH4 @450MHz"
 
 	info['brand'] = brand
 	info['model'] = model
