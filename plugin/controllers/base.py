@@ -168,6 +168,8 @@ class BaseController(resource.Resource):
 			ret['box'] = open("/proc/stb/info/vumodel").read().strip().lower()
 		elif fileExists("/proc/stb/info/azmodel"):
 			ret['box'] = open("/proc/stb/info/model").read().strip().lower()
+		elif fileExists("/proc/stb/info/model"):
+			ret['box'] = open("/proc/stb/info/model").read().strip().lower()
 			
 		if ret["box"] in ("vusolo", "vuduo", "vuuno", "vusolo2", "vuduo2", "solo", "duo", "uno", "solo2", "duo2"):
 			ret["remote"] = "vu_normal"
@@ -207,6 +209,8 @@ class BaseController(resource.Resource):
 			ret["remote"] = "xp1000"
 		elif ret["box"].startswith("xpeedlx"):
 			ret["remote"] = "xpeedlx"
+		elif ret["box"] in ("nbox", "esi88", "adb2850", "adb2849", "dsi87"):
+			ret["remote"] = "nbox"
 		elif ret["box"].startswith("ixuss"):
 			ret["remote"] = ret["box"].replace(" ", "")
 		else:
