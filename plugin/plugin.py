@@ -50,6 +50,7 @@ config.OpenWebif.parentalenabled = ConfigYesNo(default=False)
 config.OpenWebif.service_name_for_stream = ConfigYesNo(default=False)
 # authentication for streaming
 config.OpenWebif.auth_for_streaming = ConfigYesNo(default=False)
+config.OpenWebif.no_root_access = ConfigYesNo(default=False)
 
 
 class OpenWebifConfig(Screen, ConfigListScreen):
@@ -95,6 +96,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 				self.list.append(getConfigListEntry(_("Require client cert for HTTPS"), config.OpenWebif.https_clientcert))
 			if config.OpenWebif.auth.value:
 				self.list.append(getConfigListEntry(_("Enable Authentication for streaming"), config.OpenWebif.auth_for_streaming))
+				self.list.append(getConfigListEntry(_("Disable access for user root"), config.OpenWebif.no_root_access))
 			self.list.append(getConfigListEntry(_("Smart services renaming for XBMC"), config.OpenWebif.xbmcservices))
 			self.list.append(getConfigListEntry(_("Enable Parental Control"), config.OpenWebif.parentalenabled))
 			self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
