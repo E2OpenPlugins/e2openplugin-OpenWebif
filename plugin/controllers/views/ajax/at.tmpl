@@ -144,6 +144,14 @@ fieldset > label
 
 #raw
 
+// TODO: finish form fields above
+// TODO: finish at list selector and fill form fields
+// TODO: fix / add checks
+// TODO: add save / delete
+// TODO: add parse / preview
+// TODO: add backup / restore
+
+// all JS code will me moved to at.js (see above) if finished
 
 function initValues () {
 
@@ -220,6 +228,7 @@ $('.time').each(function(index,element){
 	});
 });
 
+// TODO : other time/date picker fields
 
 }
 
@@ -263,6 +272,7 @@ checkValues();
 //	<li class="ui-widget-content" data-atid=$at["id"] data-atjs="$at">$at["name"]</li>
 
 
+// Fill List
 $.ajax({
     type: "GET", url: "/autotimer",
     dataType: "xml",
@@ -280,7 +290,7 @@ $.ajax({
 $( "#atlist" ).selectable({
 	selected: function( event, ui ) {
 		var ids = $('#atlist .ui-selected').map(function() {
-			BuildAT($(this).data('id'));
+			FillAT($(this).data('id'));
 		});
 	}
 });
@@ -289,38 +299,20 @@ $( "#atlist" ).selectable({
 
 var atxml;
 
+// parse and create AT List
 function Parse() {
 	
 	$(atxml).find("timer").each(function () {
-
-	$( "#atlist" ).append($('<li></li>').html($(this).attr("name")).addClass('ui-widget-content').data('id',$(this).attr("id")));
- 
-  //$(".main").append('<div class="book"><div class="title">' + $(this).find("Title").text() + '</div><div class="description">' + $(this).find("Description").text() + '</div><div class="date">Published ' + $(this).find("Date").text() + '</div></div>');
- 
-   });
- 
+		$( "#atlist" ).append($('<li></li>').html($(this).attr("name")).addClass('ui-widget-content').data('id',$(this).attr("id")));
+	});
 }
 
 
-function BuildAT(at)
+// NOT finished
+function FillAT(autotimerid)
 {
-	//var url = 'ajax/atedit';
-	
-	
-	//at = at.replace(/'/g, '"');
-	
-	console.log(at);
-	
-	var result = $.parseJSON(at);
-	
-	console.log(result["name"]);
-	
-	//if(at['enabled'])
-	$("#atenabled").prop('checked', true);
-	if(at['name'])
-		$("#atname").val(at['name']);
-	//if(at['match'])
-	//	$("#atmatch").value(at['match']);
+	// TODO: fill values from atxml
+	// TODO: fill default values if not set in xml
 
 }
 
