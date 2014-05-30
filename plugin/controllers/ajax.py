@@ -219,3 +219,26 @@ class AjaxController(BaseController):
 		epg['reloadtimer'] = reloadtimer
 		
 		return epg
+
+	def P_at(self, request):
+		ret = {
+			"result": False,
+		}
+		try:
+			from Plugins.Extensions.AutoTimer.plugin import autotimer
+			try:
+				if autotimer is not None:
+					autotimer.readXml()
+					atxml = ''.join(autotimer.getXml())
+					ret = {
+						"result": True,
+						"autotimers" : atxml
+					}
+			except Exception,e:
+				ret['error'] = str(e)
+				pass
+		except ImportError,e:
+			ret['error'] = str(e)
+			pass
+		return ret
+
