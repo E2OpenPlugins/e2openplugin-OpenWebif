@@ -1,0 +1,331 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
+
+<style>
+  #atlist .ui-selecting { background: #FECA40; }
+  #atlist .ui-selected { background: #F39814; color: white; }
+  #atlist { list-style-type: none; margin: 0; padding: 0; }
+  #atlist li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+
+fieldset > label
+{
+	-webkit-margin-top-collapse: separate;
+	margin-top: 1.5em;
+	display: inline-block;
+}
+</style>
+
+
+<div id="content_main" style="min-height: 500px;">
+	<div id="info">
+		<h3>AutoTimer</h3>
+
+		<div id="toolbar-header">
+			<span id="toolbar">
+				<span id="atbuttons">
+					<button id="atbutton0" onclick="addAT(); return false">ADD</button>
+					<button id="atbutton1" onclick="parseAT(); return false">PARSE</button>
+				</span>
+			</span>
+		</div>
+
+		<div style="height: 640px; overflow: auto; background-color: #00000">
+		
+		<div style="display: inline-block; width: 100%; zoom: 1;">
+			<div style="float:left;width:200px;">
+				<h3>AutoTimer List</h3>
+				<ol id="atlist">
+				</ol>
+				
+			</div>
+			<div style="margin-left:200px;">
+				<div style="display: inline-block; width: 100%; zoom: 1;">
+					<h3>AutoTimer Edit <span id='at_name'></span>></h3>
+					<div id="ateditcontent">
+						<form>
+							<fieldset>
+								<br><label for="enabled">Enabled:</label>
+								<input type="checkbox" name="enabled" id="enabled" value="" class="checkbox ui-widget-content ui-corner-all">
+								<br><label for="name">$tstrings['name']:</label>
+								<input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
+								<br><label for="match">Match:</label>
+								<input type="text" name="match" id="match" class="text ui-widget-content ui-corner-all">
+								<br><label for="encoding">Encoding:</label>
+								<select name="encoding" id="encoding">
+								<option value="ISO8859-15" selected="selected">ISO8859-15</option>
+								<option value="UTF-8">UTF-8</option>
+								</select>
+								<br><label for="searchType">Search type:</label>
+								<select name="searchType" id="searchType">
+								<option value="partical" selected="selected">partical match</option>
+								<option value="exact">exact match</option>
+								<option value="title">title match</option>
+								</select>
+								<br><label for="searchCase">Search case:</label>
+								<select name="searchCase" id="searchCase">
+								<option value="sensitive" selected="selected">Case sensitive</option>
+								<option value="insensitive">Case insensitive</option>
+								</select>
+								<br><label for="justplay">Timer type:</label>
+								<select name="justplay" id="justplay">
+								<option value="0" selected="selected">Record</option>
+								<option value="1">Zap</option>
+								</select>
+								<br><label for="overrideAlternatives">Override alternatives:</label>
+								<input type="checkbox" name="overrideAlternatives" id="overrideAlternatives" value="" class="checkbox ui-widget-content ui-corner-all">
+								<br><label for="timeSpan">TimeSpan:</label>
+								<input type="checkbox" name="timeSpan" id="timeSpan" value="" class="checkbox ui-widget-content ui-corner-all">
+									<span id="timeSpanE">
+									<label for="from">Begin:</label>
+									<input type="text" name="from" id="from" value="" class="text ui-widget-content ui-corner-all">
+									<label for="to">End:</label>
+									<input type="text" name="to" id="to" value="" class="text ui-widget-content ui-corner-all">
+									</span>
+								<br><label for="timeFrame">TimeFrame:</label>
+								<input type="checkbox" name="timeFrame" id="timeFrame" value="" class="checkbox ui-widget-content ui-corner-all">
+									<span id="timeFrameE">
+									<label for="after">After:</label>
+									<input type="text" name="after" id="after" value="" class="text date ui-widget-content ui-corner-all">
+									<label for="before">Before:</label>
+									<input type="text" name="before" id="before" value="" class="text date ui-widget-content ui-corner-all">
+									</span>
+								<br><label for="timerOffset">Timer offset:</label>
+								<input type="checkbox" name="timerOffset" id="timerOffset" value="" class="checkbox ui-widget-content ui-corner-all">
+									<span id="timerOffsetE">
+									<label for="obefore">Before:</label>
+									<select name="obefore" id="obefore">
+									</select>
+									<label for="oafter">After:</label>
+									<select name="oafter" id="oafter">
+									</select>
+									</span>
+								
+								<br><label for="maxDuration">Max duration:</label>
+								<input type="checkbox" name="maxDuration" id="maxDuration" value="" class="checkbox ui-widget-content ui-corner-all">
+									<label for="maxduration">Before:</label>
+									<select name="maxduration" id="maxduration">
+									</select>
+								
+								<br><label for="afterevent">After event:</label>
+								<select name="afterevent" id="afterevent">
+								<option value="" selected="selected">Default</option>
+								<option value="none">Nothing</option>
+								<option value="standby">Standby</option>
+								<option value="shutdown">Deep Standby</option>
+								<option value="auto">Auto</option>
+								</select>
+								
+								Counter:
+								
+								
+							</fieldset>
+						</form>
+							<div id="errorbox" class="timerlist_row" style="color: red;">
+		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+			<span id="error"></span>
+		</div>
+	</div>
+						
+					<span style="display: block;clear: both;"/>
+			</div>
+			</div>
+		</div>
+		
+		</div>
+	</div>
+</div>
+
+
+<script src="/js/jquery.timerpicker.js"></script>
+
+<script type="text/javascript" src="/js/_at.js"></script>
+
+<script type="text/javascript">
+
+#raw
+
+
+function initValues () {
+
+var _sel1 = $('#oafter');
+var _sel2 = $('#obefore');
+var _sel3 = $('#maxduration');
+
+for (x=0;x<100;x++)
+{
+	var sx=x.toString();
+	if(x<10)
+		sx='0'+sx;
+	_sel1.append($('<option></option>').val(x).html(sx));
+	_sel2.append($('<option></option>').val(x).html(sx));
+	_sel3.append($('<option></option>').val(x).html(sx));
+}
+
+
+$('#after').val('1.1.2014');
+$('#before').val('2.2.2014');
+
+$('#after').datepicker({
+	
+	closeText: tstr_done,
+	monthNames: [tstr_january, tstr_february, tstr_march, tstr_april, tstr_may, tstr_june, tstr_july, tstr_august, tstr_september, tstr_october, tstr_november, tstr_december],
+	dayNames: [tstr_sunday, tstr_monday, tstr_tuesday, tstr_wednesday, tstr_thursday, tstr_friday, tstr_saturday, tstr_sunday],
+	dayNamesMin: [tstr_su, tstr_mo, tstr_tu, tstr_we, tstr_th, tstr_fr, tstr_sa, tstr_su],
+	
+	dateFormat: 'dd.mm.yy',
+	onClose: function(dateText, inst) {
+		if ($('#after').val() != '' &&
+			$(this).datepicker('getDate') < $('#before').datepicker('getDate')) {
+				$('#error').text(tstr_start_after_end);
+				$('#errorbox').show();
+		}
+		else
+			$('#errorbox').hide();
+	}
+});
+
+$('#before').datepicker({
+	
+	closeText: tstr_done,
+	monthNames: [tstr_january, tstr_february, tstr_march, tstr_april, tstr_may, tstr_june, tstr_july, tstr_august, tstr_september, tstr_october, tstr_november, tstr_december],
+	dayNames: [tstr_sunday, tstr_monday, tstr_tuesday, tstr_wednesday, tstr_thursday, tstr_friday, tstr_saturday, tstr_sunday],
+	dayNamesMin: [tstr_su, tstr_mo, tstr_tu, tstr_we, tstr_th, tstr_fr, tstr_sa, tstr_su],
+	
+	dateFormat: 'dd.mm.yy',
+	onClose: function(dateText, inst) {
+		if ($('#before').val() != '' &&
+			$(this).datepicker('getDate') > $('#after').datepicker('getDate')) {
+				$('#error').text(tstr_start_after_end);
+				$('#errorbox').show();
+		}
+		else
+			$('#errorbox').hide();
+	}
+});
+
+
+$('.date').each(function(index,element){
+	$('<span style="display: inline-block">').addClass('ui-icon ui-icon-calendar').insertAfter(element).position({
+	of: element
+	,my: 'right top'
+	,at: 'right top+2'
+	});
+});
+
+$('.time').each(function(index,element){
+	$('<span style="display: inline-block">').addClass('ui-icon ui-icon-clock').insertAfter(element).position({
+	of: element
+	,my: 'right top'
+	,at: 'right top+2'
+	});
+});
+
+
+}
+
+function checkValues () {
+
+	if ($('#timeSpan').is(':checked') == true)
+		$('#timeSpanE').show();
+	else
+		$('#timeSpanE').hide();
+
+	if ($('#timeFrame').is(':checked') == true)
+		$('#timeFrameE').show();
+	else
+		$('#timeFrameE').hide();
+
+	if ($('#timerOffset').is(':checked') == true)
+		$('#timerOffsetE').show();
+	else
+		$('#timerOffsetE').hide();
+
+
+}
+
+$(document).ready(function() {
+
+$('#timeSpan').click(function() { 
+	checkValues();
+});
+$('#timeFrame').click(function() { 
+	checkValues();
+});
+$('#timerOffset').click(function() { 
+	checkValues();
+});
+
+initValues ();
+
+checkValues();
+
+
+//	<li class="ui-widget-content" data-atid=$at["id"] data-atjs="$at">$at["name"]</li>
+
+
+$.ajax({
+    type: "GET", url: "/autotimer",
+    dataType: "xml",
+    success: function (xml)
+    {
+    	atxml=xml;
+    	Parse();
+    },
+    error: function (request, status, error) {
+        alert(request.responseText);
+    }
+})
+
+
+$( "#atlist" ).selectable({
+	selected: function( event, ui ) {
+		var ids = $('#atlist .ui-selected').map(function() {
+			BuildAT($(this).data('id'));
+		});
+	}
+});
+
+});
+
+var atxml;
+
+function Parse() {
+	
+	$(atxml).find("timer").each(function () {
+
+	$( "#atlist" ).append($('<li></li>').html($(this).attr("name")).addClass('ui-widget-content').data('id',$(this).attr("id")));
+ 
+  //$(".main").append('<div class="book"><div class="title">' + $(this).find("Title").text() + '</div><div class="description">' + $(this).find("Description").text() + '</div><div class="date">Published ' + $(this).find("Date").text() + '</div></div>');
+ 
+   });
+ 
+}
+
+
+function BuildAT(at)
+{
+	//var url = 'ajax/atedit';
+	
+	
+	//at = at.replace(/'/g, '"');
+	
+	console.log(at);
+	
+	var result = $.parseJSON(at);
+	
+	console.log(result["name"]);
+	
+	//if(at['enabled'])
+	$("#atenabled").prop('checked', true);
+	if(at['name'])
+		$("#atname").val(at['name']);
+	//if(at['match'])
+	//	$("#atmatch").value(at['match']);
+
+}
+
+#end raw
+
+</script>
+
+
