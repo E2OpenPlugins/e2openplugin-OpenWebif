@@ -240,7 +240,7 @@ class BaseController(resource.Resource):
 			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
 			extras.append({ 'key': 'ajax/at','description': 'AutoTimer'})
 		except ImportError:
-            pass
+			pass
 #		try:
 #			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
 #			extras.append({ 'key': 'ajax/xxx','description': 'BouquetEditor'})
