@@ -45,22 +45,22 @@ fieldset > label
 							<fieldset>
 								<br><label for="enabled">Enabled:</label>
 								<input type="checkbox" name="enabled" id="enabled" value="" class="checkbox ui-widget-content ui-corner-all">
-								<br><label for="name">$tstrings['name']:</label>
+								<label for="name">$tstrings['name']:</label>
 								<input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
-								<br><label for="match">Match:</label>
+								<label for="match">Match:</label>
 								<input type="text" name="match" id="match" class="text ui-widget-content ui-corner-all">
 								<br><label for="encoding">Encoding:</label>
 								<select name="encoding" id="encoding">
 								<option value="ISO8859-15" selected="selected">ISO8859-15</option>
 								<option value="UTF-8">UTF-8</option>
 								</select>
-								<br><label for="searchType">Search type:</label>
+								<label for="searchType">Search type:</label>
 								<select name="searchType" id="searchType">
 								<option value="partical" selected="selected">partical match</option>
 								<option value="exact">exact match</option>
 								<option value="title">title match</option>
 								</select>
-								<br><label for="searchCase">Search case:</label>
+								<label for="searchCase">Search case:</label>
 								<select name="searchCase" id="searchCase">
 								<option value="sensitive" selected="selected">Case sensitive</option>
 								<option value="insensitive">Case insensitive</option>
@@ -101,9 +101,11 @@ fieldset > label
 								
 								<br><label for="maxDuration">Max duration:</label>
 								<input type="checkbox" name="maxDuration" id="maxDuration" value="" class="checkbox ui-widget-content ui-corner-all">
-									<label for="maxduration">Before:</label>
+									<span id="maxDurationE">
+									<label for="maxduration"></label>
 									<select name="maxduration" id="maxduration">
 									</select>
+									</span>
 								
 								<br><label for="afterevent">After event:</label>
 								<select name="afterevent" id="afterevent">
@@ -114,9 +116,49 @@ fieldset > label
 								<option value="auto">Auto</option>
 								</select>
 								
-								Counter:
+								<label for="timeSpanAE">TimeSpan:</label>
+								<input type="checkbox" name="timeSpanAE" id="timeSpanAE" value="" class="checkbox ui-widget-content ui-corner-all">
+									<span id="timeSpanAEE">
+									<label for="from">Begin:</label>
+									<input type="text" name="aefrom" id="aefrom" value="" class="text ui-widget-content ui-corner-all">
+									<label for="to">End:</label>
+									<input type="text" name="aeto" id="aeto" value="" class="text ui-widget-content ui-corner-all">
+									</span>
 								
 								
+								<br><label for="counter">Max Counter:</label>
+								<select name="counter" id="counter">
+								</select>
+								
+								
+								<br><label for="avoidDuplicateDescription">Avoid duplicate description:</label>
+								<select name="avoidDuplicateDescription" id="avoidDuplicateDescription">
+								<option value="0" selected="selected">No</option>
+								<option value="1">On same service</option>
+								<option value="2">On any service</option>
+								<option value="3">any service/recording</option>
+								</select>
+								
+								<br><label for="Location">Location:</label>
+								<input type="checkbox" name="Location" id="Location" value="" class="checkbox ui-widget-content ui-corner-all">
+									<span id="LocationE">
+									<label for="location"></label>
+									<select name="location" id="location">
+										#for $location in $locations
+											<option value="$location">$location</option>
+										#end for
+									</select>
+									</span>
+								<br><label for="Bouquets">Bouquets:</label>
+								<input type="checkbox" name="Bouquets" id="Bouquets" value="" class="checkbox ui-widget-content ui-corner-all">
+									<span id="BouquetsE">
+									<label for="bouquets">BQ:</label>
+									<select name="bouquets" id="bouquets">
+										#for $bouquet in $bouquets
+											<option value="$bouquet[0]">$bouquet[1]</option>
+										#end for
+									</select>
+									</span>
 							</fieldset>
 						</form>
 							<div id="errorbox" class="timerlist_row" style="color: red;">
@@ -158,6 +200,7 @@ function initValues () {
 var _sel1 = $('#oafter');
 var _sel2 = $('#obefore');
 var _sel3 = $('#maxduration');
+var _sel4 = $('#counter');
 
 for (x=0;x<100;x++)
 {
@@ -166,12 +209,34 @@ for (x=0;x<100;x++)
 		sx='0'+sx;
 	_sel1.append($('<option></option>').val(x).html(sx));
 	_sel2.append($('<option></option>').val(x).html(sx));
-	_sel3.append($('<option></option>').val(x).html(sx));
+	_sel4.append($('<option></option>').val(x).html(sx));
 }
 
+for (x=0;x<1000;x++)
+{
+	var sx=x.toString();
+	if(x<10)
+		sx='0'+sx;
+	_sel3.append($('<option></option>').val(x).html(sx));
+}
+$('#oafter').val('5');
+$('#obefore').val('5');
+$('#maxduration').val('70');
 
-$('#after').val('1.1.2014');
-$('#before').val('2.2.2014');
+var _dateb = new Date();
+var _db = $.datepicker.formatDate('dd.mm.yy', _dateb);
+$('#before').val(_db);
+
+var _datea = new Date();
+_datea.setDate(_dateb.getDate()+7);
+var _da = $.datepicker.formatDate('dd.mm.yy', _datea);
+$('#after').val(_da);
+
+$('#from').val('20:15');
+$('#to').val('23:15');
+
+$('#aefrom').val('20:15');
+$('#aeto').val('23:15');
 
 $('#after').datepicker({
 	
@@ -239,6 +304,11 @@ function checkValues () {
 	else
 		$('#timeSpanE').hide();
 
+	if ($('#timeSpanAE').is(':checked') == true)
+		$('#timeSpanAEE').show();
+	else
+		$('#timeSpanAEE').hide();
+
 	if ($('#timeFrame').is(':checked') == true)
 		$('#timeFrameE').show();
 	else
@@ -249,6 +319,15 @@ function checkValues () {
 	else
 		$('#timerOffsetE').hide();
 
+	if ($('#maxDuration').is(':checked') == true)
+		$('#maxDurationE').show();
+	else
+		$('#maxDurationE').hide();
+
+	if ($('#Location').is(':checked') == true)
+		$('#LocationE').show();
+	else
+		$('#LocationE').hide();
 
 }
 
@@ -257,17 +336,25 @@ $(document).ready(function() {
 $('#timeSpan').click(function() { 
 	checkValues();
 });
+$('#timeSpanAE').click(function() { 
+	checkValues();
+});
 $('#timeFrame').click(function() { 
 	checkValues();
 });
 $('#timerOffset').click(function() { 
 	checkValues();
 });
+$('#maxDuration').click(function() { 
+	checkValues();
+});
+$('#Location').click(function() { 
+	checkValues();
+});
 
 initValues ();
 
 checkValues();
-
 
 //	<li class="ui-widget-content" data-atid=$at["id"] data-atjs="$at">$at["name"]</li>
 
@@ -311,6 +398,124 @@ function Parse() {
 // NOT finished
 function FillAT(autotimerid)
 {
+
+	$(atxml).find("timer").each(function () {
+		if($(this).attr("id")==autotimerid) {
+
+			$('#enabled').prop('checked', ($(this).attr("enabled") == "yes")); 
+
+	if($(this).attr("name"))
+		$('#name').val($(this).attr("name"));
+	else
+		$('#name').val('')
+
+	if($(this).attr("match"))
+		$('#match').val($(this).attr("match"));
+	else
+		$('#match').val('')
+
+	val="partical"
+	if($(this).attr("searchType"))
+		val=$(this).attr("searchType")
+	$('#searchType').val(val)
+
+	val="insensitive"
+	if($(this).attr("searchCase"))
+		val=$(this).attr("searchCase")
+	$('#searchCase').val(val)
+
+	val="0"
+	if($(this).attr("justplay"))
+		val=$(this).attr("justplay")
+	$('#justplay').val(val)
+
+	$('#overrideAlternatives').prop('checked', ($(this).attr("overrideAlternatives") == "1")); 
+
+	if($(this).attr("from") && $(this).attr("to"))
+	{
+		$('#from').val($(this).attr("from"));
+		$('#to').val($(this).attr("to"));
+		$('#timeSpan').prop('checked',true);
+	}
+	else
+		$('#timeSpan').prop('checked',false);
+
+
+	if($(this).attr("after") && $(this).attr("before"))
+	{
+		
+		var _i=parseInt($(this).attr("after"));
+		var _date = new Date(_i*1000);
+		var _dt = $.datepicker.formatDate('dd.mm.yy', _date);
+		$('#after').val(_dt);
+
+		_i=parseInt($(this).attr("before"));
+		_date = new Date(_i*1000);
+		_dt = $.datepicker.formatDate('dd.mm.yy', _date);
+		$('#before').val(_dt);
+		$('#timeFrame').prop('checked',true);
+	}
+	else
+		$('#timeFrame').prop('checked',false);
+
+
+	if($(this).attr("offset"))
+	{
+		var fields = $(this).attr("offset").split(',');
+		var _b = fields[0];
+		var _a = fields[1];
+		if (_a) {
+			$('#oafter').val(_a);
+		} else
+			$('#oafter').val(_b);
+		$('#obefore').val(_b);
+		$('#timerOffset').prop('checked',true);
+	}
+	else
+		$('#timerOffset').prop('checked',false);
+	
+	if($(this).attr("maxduration")) {
+		$('#maxduration').val($(this).attr("maxduration"));
+		$('#maxDuration').prop('checked',true);
+	}
+	else
+		$('#maxDuration').prop('checked',false);
+
+	var _ae = $(this).find('afterevent');
+	
+	$('#timeSpanAE').prop('checked',false);
+	$('#afterevent').val("");
+	if(_ae.text())
+	{
+		$('#afterevent').val(_ae.text());
+		if(_ae.attr("from") && _ae.attr("to"))
+		{
+			$('#aefrom').val(_ae.attr("from"));
+			$('#aeto').val(_ae.attr("to"));
+			$('#timeSpanAE').prop('checked',true);
+		}
+	}
+
+	if($(this).attr("location")) {
+		$('#location').val($(this).attr("location"));
+		$('#Location').prop('checked',true);
+	}
+	else
+		$('#Location').prop('checked',false);
+
+	val="0";
+	if($(this).attr("avoidDuplicateDescription"))
+		val=$(this).attr("avoidDuplicateDescription")
+
+	$("#avoidDuplicateDescription").val(val);
+
+			
+		}
+	});
+
+
+	checkValues ();
+
 	// TODO: fill values from atxml
 	// TODO: fill default values if not set in xml
 
