@@ -28,7 +28,7 @@ fieldset > label
 			</span>
 		</div>
 
-		<div style="height: 640px; overflow: auto; background-color: #00000">
+		<div style="height: 700px; background-color: #00000">
 		
 		<div style="display: inline-block; width: 100%; zoom: 1;">
 			<div style="float:left;width:200px;">
@@ -70,7 +70,7 @@ fieldset > label
 								<option value="0" selected="selected">Record</option>
 								<option value="1">Zap</option>
 								</select>
-								<br><label for="overrideAlternatives">Override alternatives:</label>
+								<label for="overrideAlternatives">Override alternatives:</label>
 								<input type="checkbox" name="overrideAlternatives" id="overrideAlternatives" value="" class="checkbox ui-widget-content ui-corner-all">
 								<br><label for="timeSpan">TimeSpan:</label>
 								<input type="checkbox" name="timeSpan" id="timeSpan" value="" class="checkbox ui-widget-content ui-corner-all">
@@ -139,23 +139,33 @@ fieldset > label
 								<option value="3">any service/recording</option>
 								</select>
 								
-								<br><label for="Location">Location:</label>
+								<br><label for="Bouquets">Bouquets:</label>
+								<input type="checkbox" name="Bouquets" id="Bouquets" value="" class="checkbox ui-widget-content ui-corner-all">
+									<span id="BouquetsE">
+									<select data-placeholder="select bouquet" name="bouquets" id="bouquets" class="bq_select_box" multiple tabindex="16">
+									<option value=""></option>
+										#for $bouquet in $bouquets
+											<option value="$bouquet[0]">$bouquet[1]</option>
+										#end for
+									</select>
+									</span>
+								<br><label for="Channels">Channels:</label>
+								<input type="checkbox" name="Channels" id="Channels" value="" class="checkbox ui-widget-content ui-corner-all">
+									<span id="ChannelsE">
+									<select data-placeholder="select channel" name="channels" id="channels" class="ch_select_box" multiple tabindex="16">
+									<option value=""></option>
+										#for $bouquet in $bouquets
+											<option value="$bouquet[0]">$bouquet[1]</option>
+										#end for
+									</select>
+									</span>
+									<br><label for="Location">Location:</label>
 								<input type="checkbox" name="Location" id="Location" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="LocationE">
 									<label for="location"></label>
 									<select name="location" id="location">
 										#for $location in $locations
 											<option value="$location">$location</option>
-										#end for
-									</select>
-									</span>
-								<br><label for="Bouquets">Bouquets:</label>
-								<input type="checkbox" name="Bouquets" id="Bouquets" value="" class="checkbox ui-widget-content ui-corner-all">
-									<span id="BouquetsE">
-									<label for="bouquets">BQ:</label>
-									<select name="bouquets" id="bouquets">
-										#for $bouquet in $bouquets
-											<option value="$bouquet[0]">$bouquet[1]</option>
 										#end for
 									</select>
 									</span>
@@ -178,8 +188,8 @@ fieldset > label
 </div>
 
 
-<script src="/js/jquery.timerpicker.js"></script>
-
+<script type="text/javascript" src="/js/jquery.timerpicker.js"></script>
+<script type="text/javascript" src="/js/chosen.jquery.min.js"></script>
 <script type="text/javascript" src="/js/_at.js"></script>
 
 <script type="text/javascript">
@@ -293,6 +303,12 @@ $('.time').each(function(index,element){
 	});
 });
 
+$(".bq_select_box").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
+$(".bq_select_box").chosen().change( function() {$("#bouquets").val($(this).val());});
+$(".ch_select_box").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
+$(".ch_select_box").chosen().change( function() {$("#channels").val($(this).val());});
+
+
 // TODO : other time/date picker fields
 
 }
@@ -329,6 +345,16 @@ function checkValues () {
 	else
 		$('#LocationE').hide();
 
+	if ($('#Bouquets').is(':checked') == true)
+		$('#BouquetsE').show();
+	else
+		$('#BouquetsE').hide();
+
+	if ($('#Channels').is(':checked') == true)
+		$('#ChannelsE').show();
+	else
+		$('#ChannelsE').hide();
+
 }
 
 $(document).ready(function() {
@@ -349,6 +375,12 @@ $('#maxDuration').click(function() {
 	checkValues();
 });
 $('#Location').click(function() { 
+	checkValues();
+});
+$('#Bouquets').click(function() { 
+	checkValues();
+});
+$('#Channels').click(function() { 
 	checkValues();
 });
 
@@ -513,7 +545,6 @@ function FillAT(autotimerid)
 		}
 	});
 
-
 	checkValues ();
 
 	// TODO: fill values from atxml
@@ -524,5 +555,6 @@ function FillAT(autotimerid)
 #end raw
 
 </script>
+<link rel="stylesheet" type="text/css" href="/css/chosen.min.css" />
 
 
