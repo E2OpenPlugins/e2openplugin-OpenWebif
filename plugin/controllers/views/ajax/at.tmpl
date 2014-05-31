@@ -1,3 +1,5 @@
+#filter WebSafe
+#from urllib import quote
 #from Plugins.Extensions.OpenWebif.local import tstrings
 
 <style>
@@ -143,19 +145,27 @@ fieldset > label
 								<input type="checkbox" name="Bouquets" id="Bouquets" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="BouquetsE">
 									<select data-placeholder="select bouquet" name="bouquets" id="bouquets" class="bq_select_box" multiple tabindex="16">
-									<option value=""></option>
 										#for $bouquet in $bouquets
-											<option value="$bouquet[0]">$bouquet[1]</option>
+											#set $sref=quote($bouquet[0], safe='~@#$&()*!+=;,.?/\'')
+											<option value="$sref">$bouquet[1]</option>
 										#end for
 									</select>
 									</span>
 								<br><label for="Channels">Channels:</label>
 								<input type="checkbox" name="Channels" id="Channels" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="ChannelsE">
-									<select data-placeholder="select channel" name="channels" id="channels" class="ch_select_box" multiple tabindex="16">
-									<option value=""></option>
+									<label for="cbouquets">Select Bouquet:</label>
+									<select name="cbouquets" id="cbouquets">
 										#for $bouquet in $bouquets
-											<option value="$bouquet[0]">$bouquet[1]</option>
+											#set $sref=quote($bouquet[0], safe='~@#$&()*!+=;,.?/\'')
+											<option value="$sref">$bouquet[1]</option>
+										#end for
+									</select>
+									<label for="cbouquets">Select Channel:</label>
+									<select name="cchannels" id="cchannels">
+										#for $bouquet in $bouquets
+											#set $sref=quote($bouquet[0], safe=' ~@#$&()*!+=:;,.?/\'')
+											<option value="$sref">$bouquet[1]</option>
 										#end for
 									</select>
 									</span>
@@ -305,9 +315,6 @@ $('.time').each(function(index,element){
 
 $(".bq_select_box").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
 $(".bq_select_box").chosen().change( function() {$("#bouquets").val($(this).val());});
-$(".ch_select_box").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
-$(".ch_select_box").chosen().change( function() {$("#channels").val($(this).val());});
-
 
 // TODO : other time/date picker fields
 
@@ -388,9 +395,6 @@ initValues ();
 
 checkValues();
 
-//	<li class="ui-widget-content" data-atid=$at["id"] data-atjs="$at">$at["name"]</li>
-
-
 // Fill List
 $.ajax({
     type: "GET", url: "/autotimer",
@@ -417,6 +421,11 @@ $( "#atlist" ).selectable({
 });
 
 var atxml;
+
+function isBQ(sref)
+{
+	return (sref.indexOf("FROM BOUQUET") > -1);
+}
 
 // parse and create AT List
 function Parse() {
@@ -541,7 +550,24 @@ function FillAT(autotimerid)
 
 	$("#avoidDuplicateDescription").val(val);
 
-			
+	var b=0;
+	$(this).find("e2service").each(function () {
+		var ref = $(this).find("e2servicereference").text();
+		var name = $(this).find("e2servicename").text();
+		if (isBQ(ref))
+		{
+			b++;
+			$('#bouquets option[value="' + escape(ref) + '"]').prop("selected", true);
+		}
+	});
+
+	$('#Bouquets').prop('checked',(b>0));
+	
+	if(b==0)
+		$('#bouquets').val(null);
+
+	$('#bouquets').trigger("chosen:updated");
+	
 		}
 	});
 
@@ -556,5 +582,4 @@ function FillAT(autotimerid)
 
 </script>
 <link rel="stylesheet" type="text/css" href="/css/chosen.min.css" />
-
-
+#end filter
