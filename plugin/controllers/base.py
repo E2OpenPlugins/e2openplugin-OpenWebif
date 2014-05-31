@@ -240,11 +240,11 @@ class BaseController(resource.Resource):
 
 # TODO AutoTimer,Epgrefresh,BouquetEditor as Webinterface
 		
-#		try:
-#			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
-#			extras.append({ 'key': 'ajax/xxx','description': 'AutoTimer'})
-#		except ImportError:
-		
+		try:
+			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
+			extras.append({ 'key': 'ajax/at','description': 'AutoTimer'})
+		except ImportError:
+			pass
 #		try:
 #			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
 #			extras.append({ 'key': 'ajax/xxx','description': 'BouquetEditor'})
