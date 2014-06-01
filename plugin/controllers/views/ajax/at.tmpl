@@ -154,19 +154,20 @@ fieldset > label
 								<br><label for="Channels">Channels:</label>
 								<input type="checkbox" name="Channels" id="Channels" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="ChannelsE">
-									<label for="cbouquets">Select Bouquet:</label>
-									<select name="cbouquets" id="cbouquets">
+									<select data-placeholder="select channels" name="channels" id="channels" class="ch_select_box" multiple tabindex="16">
+									#for $b in $all
+										#set $bref = $b['servicereference']
 										#for $bouquet in $bouquets
-											#set $sref=quote($bouquet[0], safe='~@#$&()*!+=;,.?/\'')
-											<option value="$sref">$bouquet[1]</option>
+											#if $bref == $bouquet[0]
+												<optgroup name="$bouquet[1]">
+											#end if
 										#end for
-									</select>
-									<label for="cbouquets">Select Channel:</label>
-									<select name="cchannels" id="cchannels">
-										#for $bouquet in $bouquets
-											#set $sref=quote($bouquet[0], safe=' ~@#$&()*!+=:;,.?/\'')
-											<option value="$sref">$bouquet[1]</option>
+										#for $s in $b['subservices']
+											#set $sref=quote($s['servicereference'], safe='~@#$&()*!+=;,.?/\'')
+											<option value="$sref">$s['servicename']</option>
 										#end for
+										</optgroup>
+									#end for
 									</select>
 									</span>
 									<br><label for="Location">Location:</label>
@@ -196,6 +197,7 @@ fieldset > label
 		</div>
 	</div>
 </div>
+
 
 
 <script type="text/javascript" src="/js/jquery.timerpicker.js"></script>
@@ -315,6 +317,8 @@ $('.time').each(function(index,element){
 
 $(".bq_select_box").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
 $(".bq_select_box").chosen().change( function() {$("#bouquets").val($(this).val());});
+$(".ch_select_box").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
+$(".ch_select_box").chosen().change( function() {$("#channels").val($(this).val());});
 
 // TODO : other time/date picker fields
 
