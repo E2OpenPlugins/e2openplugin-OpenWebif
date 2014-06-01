@@ -152,7 +152,49 @@ fieldset > label
 									<select data-placeholder="select channels" name="channels" id="channels" class="ch_select_box" multiple tabindex="16">
 									</select>
 									</span>
-									<br><label for="Location">Location:</label>
+								<br>
+								<br>
+								<div>
+								<label for="Filter">Filter:</label>
+								<input type="checkbox" name="Filter" id="Filter" value="" class="checkbox ui-widget-content ui-corner-all">
+									<span id="FilterE" style="display:inline-table">
+									<input type="button" id="AddFilter" value="add"/>
+									<table id="filterlist">
+									<tr id="dummyfilter" style="display:none">
+									<td class="nopadding">
+									<select size="1" class="FT">
+									<option value="include" selected="">Include</option>
+									<option value="exclude">Exclude</option>
+									</select>
+									</td>
+									<td class="nopadding">
+									<select size="1" class="FM">
+									<option value="title" selected="">Title</option>
+									<option value="shortdescription">Short description</option>
+									<option value="description">Description</option>
+									<option value="dayofweek">Day of week</option>
+									</select>
+									</td>
+									<td class="nopadding">
+									<input type="text" class="FI" size="20" value="" style="display: block;">
+									<select size="1" class="FS" style="display: none;">
+									<option value="0" selected="">Monday</option>
+									<option value="1">Tuesday</option>
+									<option value="2">Wednesday</option>
+									<option value="3">Thursday</option>
+									<option value="4">Friday</option>
+									<option value="5">Saturday</option>
+									<option value="6">Sunday</option>
+									<option value="weekend">Weekend</option>
+									<option value="weekday">Weekday</option>
+									</select>
+									</td>
+									</tr>
+									</table>
+									</span>
+								</div>
+								<br><label for="Location">Location:</label>
+								
 								<input type="checkbox" name="Location" id="Location" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="LocationE">
 									<label for="location"></label>
@@ -162,6 +204,7 @@ fieldset > label
 										#end for
 									</select>
 									</span>
+									
 							</fieldset>
 						</form>
 							<div id="errorbox" class="timerlist_row" style="color: red;">
@@ -306,6 +349,33 @@ $("#channels").chosen().change( function() {$("#channels").val($(this).val());})
 
 }
 
+function AddFilter(a,b,c)
+{
+	var rc = $('#filterlist tr').length;
+	var nf = $("#dummyfilter").clone(true);
+	nf.show();
+	nf.attr({
+	'id': 'f' + rc.toString(),
+	'name': 'f' + rc.toString()
+	});
+	
+	if(a!="")
+		nf.find(".FT").val(a);
+	if(b!="") {
+		if(b=="dayofweek") {
+			nf.find(".FM").val(b);
+			nf.find(".FI").hide();
+			nf.find(".FS").show().val(c);
+		}
+		else {
+			nf.find(".FM").val(b);
+			nf.find(".FS").hide();
+			nf.find(".FI").show().val(c);
+		}
+	}
+	nf.appendTo("#filterlist");
+}
+
 function checkValues () {
 
 	if ($('#timeSpan').is(':checked') == true)
@@ -348,6 +418,11 @@ function checkValues () {
 	else
 		$('#ChannelsE').hide();
 
+	if ($('#Filter').is(':checked') == true)
+		$('#FilterE').show();
+	else
+		$('#FilterE').hide();
+
 }
 
 $(document).ready(function() {
@@ -376,6 +451,17 @@ $('#Bouquets').click(function() {
 $('#Channels').click(function() { 
 	checkValues();
 });
+$('#Filter').click(function() { 
+	checkValues();
+});
+$('#Filter').click(function() { 
+	checkValues();
+});
+
+$("#AddFilter").click(function(){
+	AddFilter("","","");
+});
+
 
 initValues ();
 
@@ -414,6 +500,8 @@ function isBQ(sref)
 {
 	return (sref.indexOf("FROM BOUQUET") > -1);
 }
+
+
 
 // parse and create AT List
 function Parse() {
@@ -626,6 +714,31 @@ function FillAT(autotimerid)
 
 	$('#bouquets').trigger("chosen:updated");
 	$('#channels').trigger("chosen:updated");
+	
+
+	var rc = $('#filterlist tr').length;
+	if(rc>1)
+	{
+		for(var x=1;x<rc;x++)
+			$('#f' + x.toString()).remove();
+	}
+	// Filters
+	c=0;
+	$(this).find("include").each(function () {
+		c++;
+		var w = $(this).attr("where");
+		var v = $(this).text();
+		AddFilter("include",w,v);
+	});
+
+	$(this).find("exclude").each(function () {
+		c++;
+		var w = $(this).attr("where");
+		var v = $(this).text();
+		AddFilter("exclude",w,v);
+	});
+
+	$('#Filter').prop('checked',(c>0));
 	
 		}
 	});
