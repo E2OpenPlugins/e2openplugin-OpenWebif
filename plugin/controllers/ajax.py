@@ -12,7 +12,7 @@
 from Tools.Directories import fileExists
 from Components.config import config
 
-from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
+from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent, getAllServices
 from models.info import getInfo, getPublicPath, getOpenWebifVer
 from models.movies import getMovieList
 from models.timers import getTimers
@@ -224,8 +224,10 @@ class AjaxController(BaseController):
 	def P_at(self, request):
 		ret = {}
 		loc = getLocations()
+		alls = getAllServices()
 		bouq = getBouquets('tv')
 		ret['locations'] = loc['locations']
 		ret['bouquets'] = bouq['bouquets']
+		ret['all'] = alls['services']
 		return ret
 
