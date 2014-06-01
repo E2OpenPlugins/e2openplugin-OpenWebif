@@ -12,13 +12,14 @@
 from Tools.Directories import fileExists
 from Components.config import config
 
-from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
+from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent, getAllServices
 from models.info import getInfo, getPublicPath, getOpenWebifVer
 from models.movies import getMovieList
 from models.timers import getTimers
 from models.config import getConfigs, getConfigsSections
 from base import BaseController
 from time import mktime, localtime
+from models.locations import getLocations
 
 class AjaxController(BaseController):
 	def __init__(self, session, path = ""):
@@ -220,24 +221,12 @@ class AjaxController(BaseController):
 		return epg
 
 	def P_at(self, request):
-		ret = {
-			"result": False,
-		}
-		try:
-			from Plugins.Extensions.AutoTimer.plugin import autotimer
-			try:
-				if autotimer is not None:
-					autotimer.readXml()
-					atxml = ''.join(autotimer.getXml())
-					ret = {
-						"result": True,
-						"autotimers" : atxml
-					}
-			except Exception,e:
-				ret['error'] = str(e)
-				pass
-		except ImportError,e:
-			ret['error'] = str(e)
-			pass
+		ret = {}
+		loc = getLocations()
+		alls = getAllServices()
+		bouq = getBouquets('tv')
+		ret['locations'] = loc['locations']
+		ret['bouquets'] = bouq['bouquets']
+		ret['all'] = alls['services']
 		return ret
 
