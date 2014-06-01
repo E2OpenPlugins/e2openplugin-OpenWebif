@@ -19,6 +19,7 @@ from models.timers import getTimers
 from models.config import getConfigs, getConfigsSections
 from base import BaseController
 from time import mktime, localtime
+from models.locations import getLocations
 
 class AjaxController(BaseController):
 	def __init__(self, session, path = ""):
@@ -221,24 +222,8 @@ class AjaxController(BaseController):
 		return epg
 
 	def P_at(self, request):
-		ret = {
-			"result": False,
-		}
-		try:
-			from Plugins.Extensions.AutoTimer.plugin import autotimer
-			try:
-				if autotimer is not None:
-					autotimer.readXml()
-					atxml = ''.join(autotimer.getXml())
-					ret = {
-						"result": True,
-						"autotimers" : atxml
-					}
-			except Exception,e:
-				ret['error'] = str(e)
-				pass
-		except ImportError,e:
-			ret['error'] = str(e)
-			pass
+		ret = {}
+		loc = getLocations()
+		ret['locations'] = loc['locations']
 		return ret
 

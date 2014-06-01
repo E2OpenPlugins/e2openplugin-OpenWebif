@@ -13,7 +13,7 @@ from enigma import eServiceCenter, eServiceReference, iServiceInformation
 from base import BaseController
 from Screens.ChannelSelection import service_types_tv
 from Components.config import config
-from Components.ParentalControl import LIST_BLACKLIST
+from Components.ParentalControl import parentalControl, IMG_WHITESERVICE, IMG_WHITEBOUQUET, IMG_BLACKSERVICE, IMG_BLACKBOUQUET
 
 class BQEWebController(BaseController):
 	def __init__(self, session, path = ""):
@@ -199,22 +199,38 @@ class BQEWebController(BaseController):
 		if sRef == "":
 			sRef = '%s FROM BOUQUET "bouquets.tv" ORDER BY bouquet' % (service_types_tv)
 
-		from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.ServiceList import ServiceList
-		from enigma import eServiceReference
+		serviceHandler = eServiceCenter.getInstance()
+		serviceslist = serviceHandler.list(eServiceReference(sRef))
+		fulllist = serviceslist and serviceslist.getContent("RN", True)
 
-		servicelist = ServiceList(eServiceReference(sRef))
-		slist = servicelist.getServicesAsList()
-
-		for sitem in slist:
-			if not int(sitem[0].split(":")[1]) & 512:	# 512 is hidden service on sifteam image. Doesn't affect other images
+		for item in fulllist:
+			sref = item[0].toString()
+			if not int(sref.split(":")[1]) & 512:	# 512 is hidden service on sifteam image. Doesn't affect other images
 				service = {}
-				service['servicereference'] = sitem[0]
-				service['servicename'] = sitem[1]
-				service['isgroup'] = sitem[2]
-				service['ismarker'] = sitem[3]
-				service['isprotected'] = sitem[4]
+				service['servicereference'] = sref
+				service['servicename'] = item[1]
+				service['isgroup'] = '0'
+				if item[0].flags & eServiceReference.isGroup:
+					service['isgroup'] = '1'
+				service['ismarker'] = '0'
+				if item[0].flags & eServiceReference.isMarker:
+					service['ismarker'] = '1'
+				service['isprotected'] = '0'
+				if config.ParentalControl.configured.value:
+					protection = parentalControl.getProtectionType(item[0].toCompareString())
+					if protection[0]:
+						if protection[1] == IMG_BLACKSERVICE:
+							service['isprotected'] = '1'
+						elif protection[1] == IMG_BLACKBOUQUET:
+							service['isprotected'] = '2'
+						elif protection[1] == "":
+							service['isprotected'] = '3'
+					else:
+						if protection[1] == IMG_WHITESERVICE:
+							service['isprotected'] = '4'
+						elif protection[1] == IMG_WHITEBOUQUET:
+							service['isprotected'] = '5'
 				services.append(service)
-
 		return { "services": services }
 
 	def P_getprotectionsettings(self, request):
