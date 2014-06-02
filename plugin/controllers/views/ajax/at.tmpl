@@ -116,7 +116,7 @@ fieldset > label
 								<option value="shutdown">Deep Standby</option>
 								<option value="auto">Auto</option>
 								</select>
-								
+								<span id="AftereventE">
 								<label for="timeSpanAE">TimeSpan:</label>
 								<input type="checkbox" name="timeSpanAE" id="timeSpanAE" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="timeSpanAEE">
@@ -125,12 +125,22 @@ fieldset > label
 									<label for="to">End:</label>
 									<input type="text" name="aeto" id="aeto" value="" class="text ui-widget-content ui-corner-all">
 									</span>
-								
+								</span>
 								
 								<br><label for="counter">Max Counter:</label>
 								<select name="counter" id="counter">
 								</select>
-								
+								<span id="CounterE">
+								<label for="left">Left:</label>
+								<select name="left" id="left">
+								</select>
+								<select id="counterFormat" name="counterFormat" size="1">
+								<option value="" selected>Never</option>
+								<option value="%m">Monthly</option>
+								<option value="%U">Weekly (Sunday)</option>
+								<option value="%W">Weekly (Monday)</option>
+								</select>
+								</span>
 								
 								<br><label for="avoidDuplicateDescription">Avoid duplicate description:</label>
 								<select name="avoidDuplicateDescription" id="avoidDuplicateDescription">
@@ -248,6 +258,7 @@ var _sel1 = $('#oafter');
 var _sel2 = $('#obefore');
 var _sel3 = $('#maxduration');
 var _sel4 = $('#counter');
+var _sel5 = $('#left');
 
 for (x=0;x<100;x++)
 {
@@ -257,6 +268,7 @@ for (x=0;x<100;x++)
 	_sel1.append($('<option></option>').val(x).html(sx));
 	_sel2.append($('<option></option>').val(x).html(sx));
 	_sel4.append($('<option></option>').val(x).html(sx));
+	_sel5.append($('<option></option>').val(x).html(sx));
 }
 
 for (x=0;x<1000;x++)
@@ -423,6 +435,16 @@ function checkValues () {
 	else
 		$('#FilterE').hide();
 
+	if ($('#afterevent').val() != "")
+		$('#AftereventE').show();
+	else
+		$('#AftereventE').hide();
+
+	if ($('#counter').val() != "0")
+		$('#CounterE').show();
+	else
+		$('#CounterE').hide();
+
 }
 
 $(document).ready(function() {
@@ -457,11 +479,15 @@ $('#Filter').click(function() {
 $('#Filter').click(function() { 
 	checkValues();
 });
-
 $("#AddFilter").click(function(){
 	AddFilter("","","");
 });
-
+$('#afterevent').change(function () {
+	checkValues();
+});
+$('#counter').change(function () {
+	checkValues();
+});
 
 initValues ();
 
@@ -572,173 +598,19 @@ $.getJSON( "/api/getallservices", function( data ) {
 
 }
 
+var CurrentAT=null;
 
 // NOT finished
 function FillAT(autotimerid)
 {
 
 	$(atxml).find("timer").each(function () {
+		
 		if($(this).attr("id")==autotimerid) {
 
-			$('#enabled').prop('checked', ($(this).attr("enabled") == "yes")); 
+			CurrentAT = new AutoTimerObj($(this));
+			CurrentAT.UpdateUI();
 
-	if($(this).attr("name"))
-		$('#name').val($(this).attr("name"));
-	else
-		$('#name').val('')
-
-	if($(this).attr("match"))
-		$('#match').val($(this).attr("match"));
-	else
-		$('#match').val('')
-
-	val="partical"
-	if($(this).attr("searchType"))
-		val=$(this).attr("searchType")
-	$('#searchType').val(val)
-
-	val="insensitive"
-	if($(this).attr("searchCase"))
-		val=$(this).attr("searchCase")
-	$('#searchCase').val(val)
-
-	val="0"
-	if($(this).attr("justplay"))
-		val=$(this).attr("justplay")
-	$('#justplay').val(val)
-
-	$('#overrideAlternatives').prop('checked', ($(this).attr("overrideAlternatives") == "1")); 
-
-	if($(this).attr("from") && $(this).attr("to"))
-	{
-		$('#from').val($(this).attr("from"));
-		$('#to').val($(this).attr("to"));
-		$('#timeSpan').prop('checked',true);
-	}
-	else
-		$('#timeSpan').prop('checked',false);
-
-
-	if($(this).attr("after") && $(this).attr("before"))
-	{
-		
-		var _i=parseInt($(this).attr("after"));
-		var _date = new Date(_i*1000);
-		var _dt = $.datepicker.formatDate('dd.mm.yy', _date);
-		$('#after').val(_dt);
-
-		_i=parseInt($(this).attr("before"));
-		_date = new Date(_i*1000);
-		_dt = $.datepicker.formatDate('dd.mm.yy', _date);
-		$('#before').val(_dt);
-		$('#timeFrame').prop('checked',true);
-	}
-	else
-		$('#timeFrame').prop('checked',false);
-
-
-	if($(this).attr("offset"))
-	{
-		var fields = $(this).attr("offset").split(',');
-		var _b = fields[0];
-		var _a = fields[1];
-		if (_a) {
-			$('#oafter').val(_a);
-		} else
-			$('#oafter').val(_b);
-		$('#obefore').val(_b);
-		$('#timerOffset').prop('checked',true);
-	}
-	else
-		$('#timerOffset').prop('checked',false);
-	
-	if($(this).attr("maxduration")) {
-		$('#maxduration').val($(this).attr("maxduration"));
-		$('#maxDuration').prop('checked',true);
-	}
-	else
-		$('#maxDuration').prop('checked',false);
-
-	var _ae = $(this).find('afterevent');
-	
-	$('#timeSpanAE').prop('checked',false);
-	$('#afterevent').val("");
-	if(_ae.text())
-	{
-		$('#afterevent').val(_ae.text());
-		if(_ae.attr("from") && _ae.attr("to"))
-		{
-			$('#aefrom').val(_ae.attr("from"));
-			$('#aeto').val(_ae.attr("to"));
-			$('#timeSpanAE').prop('checked',true);
-		}
-	}
-
-	if($(this).attr("location")) {
-		$('#location').val($(this).attr("location"));
-		$('#Location').prop('checked',true);
-	}
-	else
-		$('#Location').prop('checked',false);
-
-	val="0";
-	if($(this).attr("avoidDuplicateDescription"))
-		val=$(this).attr("avoidDuplicateDescription")
-
-	$("#avoidDuplicateDescription").val(val);
-
-	var b=0;
-	var c=0;
-	$(this).find("e2service").each(function () {
-		var ref = $(this).find("e2servicereference").text();
-		var name = $(this).find("e2servicename").text();
-		if (isBQ(ref))
-		{
-			b++;
-			$('#bouquets option[value="' + escape(ref) + '"]').prop("selected", true);
-		}
-		else
-		{
-			c++;
-			$('#channels option[value="' + ref + '"]').prop("selected", true);
-		}
-	});
-
-	$('#Bouquets').prop('checked',(b>0));
-	$('#Channels').prop('checked',(c>0));
-	
-	if(b==0)
-		$('#bouquets').val(null);
-	if(c==0)
-		$('#channels').val(null);
-
-	$('#bouquets').trigger("chosen:updated");
-	$('#channels').trigger("chosen:updated");
-	
-
-	var rc = $('#filterlist tr').length;
-	if(rc>1)
-	{
-		for(var x=1;x<rc;x++)
-			$('#f' + x.toString()).remove();
-	}
-	// Filters
-	c=0;
-	$(this).find("include").each(function () {
-		c++;
-		var w = $(this).attr("where");
-		var v = $(this).text();
-		AddFilter("include",w,v);
-	});
-
-	$(this).find("exclude").each(function () {
-		c++;
-		var w = $(this).attr("where");
-		var v = $(this).text();
-		AddFilter("exclude",w,v);
-	});
-
-	$('#Filter').prop('checked',(c>0));
 	
 		}
 	});
@@ -749,6 +621,261 @@ function FillAT(autotimerid)
 	// TODO: fill default values if not set in xml
 
 }
+
+var CurrentAT;
+
+function AutoTimerObj (xml) {
+	this.enabled = (xml.attr("enabled") == "yes");
+
+	this.name = xml.attr("name");
+	if(!this.name)
+		this.name='';
+
+	this.match = xml.attr("match");
+	if(!this.match)
+		this.match='';
+
+	this.searchType = "partical";
+	if(xml.attr("searchType"))
+		this.searchType=xml.attr("searchType");
+
+	this.searchCase = "insensitive";
+	if(xml.attr("searchCase"))
+		this.searchCase=xml.attr("searchCase");
+
+	this.justplay = "0";
+	if(xml.attr("justplay"))
+		this.justplay=xml.attr("justplay");
+
+	this.overrideAlternatives = (xml.attr("overrideAlternatives") == "1");
+
+	
+	this.timeSpan = false;
+	if(xml.attr("from") && xml.attr("to"))
+	{
+		this.from = xml.attr("from");
+		this.to = xml.attr("to");
+		this.timeSpan = true;
+	}
+
+	this.maxduration=null;
+	if(xml.attr("maxduration")) 
+		this.maxduration=xml.attr("maxduration");
+	
+	if(xml.attr("after") && xml.attr("before"))
+	{
+		var _i=parseInt(xml.attr("after"));
+		var _date = new Date(_i*1000);
+		var _dt = $.datepicker.formatDate('dd.mm.yy', _date);
+		this.after = _dt;
+
+		_i=parseInt(xml.attr("before"));
+		_date = new Date(_i*1000);
+		_dt = $.datepicker.formatDate('dd.mm.yy', _date);
+		this.before = _dt;
+		this.timeFrame=true;
+	}
+	else
+	{
+		this.before=null;
+		this.after=null;
+		this.timeFrame=false;
+	}
+
+	this.avoidDuplicateDescription="0";
+	if(xml.attr("avoidDuplicateDescription"))
+		this.avoidDuplicateDescription=xml.attr("avoidDuplicateDescription")
+
+	this.location=null;
+	if(xml.attr("location")) 
+		this.location = xml.attr("location");
+
+	this.timerOffset=false;
+	if(xml.attr("offset"))
+	{
+		var fields = xml.attr("offset").split(',');
+		var _b = fields[0];
+		var _a = fields[1];
+		if (_a) {
+			this.timerOffsetAfter=_a;
+		} else
+			this.timerOffsetAfter=_b;
+		this.timerOffsetBefore=_a;
+		this.timerOffset=true;
+	}
+	
+	var _ae = xml.find('afterevent');
+	this.afterevent=null;
+	if(_ae.text())
+	{
+		this.afterevent=_ae.text();
+		if(_ae.attr("from") && _ae.attr("to"))
+		{
+			this.aftereventfrom = _ae.attr("from");
+			this.aftereventto = _ae.attr("to");
+		}
+		else
+		{
+			this.aftereventfrom=null;
+			this.aftereventto=null;
+		}
+	}
+
+	var _c = [];
+	var _b = [];
+	xml.find("e2service").each(function () {
+		var ref = $(this).find("e2servicereference").text();
+		if (isBQ(ref))
+			_b.push(escape(ref));
+		else
+			_c.push(ref);
+	});
+	
+	this.Channels = _c.slice();
+	this.Bouquets = _b.slice();
+
+	
+	// Filters
+	var _f = [];
+	
+	xml.find("include").each(function () {
+		_f.push (
+			{ 	"t" : "include",
+				"w": $(this).attr("where"),
+				"v": $(this).text()
+			}
+		); 
+		//var w = $(this).attr("where");
+		//var v = $(this).text();
+		//AddFilter("include",w,v);
+	});
+
+	xml.find("exclude").each(function () {
+		_f.push (
+			{ 	"t" : "exclude",
+				"w": $(this).attr("where"),
+				"v": $(this).text()
+			}
+		); 
+		//var w = $(this).attr("where");
+		//var v = $(this).text();
+		//AddFilter("exclude",w,v);
+	});
+
+	this.Filters = _f.slice();
+
+	this.counter = xml.attr("counter");
+	if(!this.counter)
+		this.counter='0';
+
+	this.left = xml.attr("left");
+	if(!this.left)
+		this.left='0';
+
+	this.counterFormat = xml.attr("counterFormat");
+	if(!this.counterFormat)
+		this.counterFormat='';
+
+}
+
+AutoTimerObj.prototype.UpdateUI = function(){
+	$('#enabled').prop('checked', this.enabled); 
+	$('#name').val(this.name);
+	$('#match').val(this.match);
+	$('#searchType').val(this.searchType);
+	$('#searchCase').val(this.searchCase);
+	$('#justplay').val(this.justplay);
+	$('#overrideAlternatives').prop('checked', this.overrideAlternatives); 
+	$('#timeSpan').prop('checked',this.timeSpan);
+
+	if(this.timeSpan)
+	{
+		$('#from').val(this.from);
+		$('#to').val(this.to);
+	}
+	
+	if(this.maxduration)
+	{
+		$('#maxDuration').prop('checked',true);
+		$('#maxduration').val(this.maxduration);
+	}
+	else
+		$('#maxDuration').prop('checked',false);
+
+	$('#timeFrame').prop('checked',this.timeFrame);
+	if(this.timeFrame)
+	{
+		$('#after').val(this.after);
+		$('#before').val(this.before);
+	}
+
+	$("#avoidDuplicateDescription").val(this.avoidDuplicateDescription);
+	
+	if(this.location) {
+		$('#location').val(this.location);
+		$('#Location').prop('checked',true);
+	}
+	else
+		$('#Location').prop('checked',false);
+
+	$('#timerOffset').prop('checked',this.timerOffset);
+	if(this.timerOffset)
+	{
+		$('#oafter').val(this.timerOffsetAfter);
+		$('#obefore').val(this.timerOffsetBefore);
+	}
+
+	$('#timeSpanAE').prop('checked',false);
+	$('#afterevent').val("");
+	if(this.afterevent) {
+		$('#afterevent').val(this.afterevent);
+		if(this.aftereventfrom && this.aftereventto) {
+			$('#aefrom').val(this.aftereventfrom);
+			$('#aeto').val(this.aftereventto);
+			$('#timeSpanAE').prop('checked',true);
+		}
+	}
+	
+	$.each(this.Bouquets, function(index, value) {
+		$('#bouquets option[value="' + value + '"]').prop("selected", true);
+	});
+	
+	$.each(this.Channels, function(index, value) {
+		$('#channels option[value="' + value + '"]').prop("selected", true);
+	});
+
+	$('#Bouquets').prop('checked',(this.Bouquets.length>0));
+	$('#Channels').prop('checked',(this.Channels.length>0));
+	
+	if(this.Bouquets.length==0)
+		$('#bouquets').val(null);
+	if(this.Channels.length==0)
+		$('#channels').val(null);
+
+	$('#bouquets').trigger("chosen:updated");
+	$('#channels').trigger("chosen:updated");
+	
+	var rc = $('#filterlist tr').length;
+	if(rc>1)
+	{
+		for(var x=1;x<rc;x++)
+			$('#f' + x.toString()).remove();
+	}
+	var c=0;
+	$.each(this.Filters, function(index, value) {
+		c++;
+		AddFilter(value.t,value.w,value.v);
+	});
+	$('#Filter').prop('checked',(c>0));
+	
+	$('#counter').val(this.counter);
+
+	$('#left').val(this.left);
+	
+	$('#counterFormat').val(this.counterFormat);
+	
+	checkValues();
+};
 
 #end raw
 
