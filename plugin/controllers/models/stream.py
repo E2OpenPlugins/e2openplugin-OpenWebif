@@ -47,7 +47,7 @@ def getStream(session, request, m3ufile):
 	portNumber = config.OpenWebif.streamport.value
 	info = getInfo()
 	model = info["model"]
-	if model in ("solo2", "duo2", "vusolo2", "vuduo2", "xpeedlx3", "gbquad", "gbquadplus):
+	if model in ("solo2", "duo2", "vusolo2", "vuduo2", "xpeedlx3", "gbquad", "gbquadplus"):
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
 				portNumber = 8002
