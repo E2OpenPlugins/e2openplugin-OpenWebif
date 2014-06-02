@@ -183,8 +183,10 @@ class BaseController(resource.Resource):
 			ret["remote"] = "et5x00"
 		elif ret["box"] in ("et4x00", "et4000"):
 			ret["remote"] = "et4x00"
-		elif ret["box"].startswith("gb"):
+		elif ret["box"] == "gbquad":
 			ret["remote"] = "gigablue"
+		elif ret["box"] == "gbquadplus":
+			ret["remote"] = "gbquadplus"
 		elif ret["box"] == "et6500":
 			ret["remote"] = "et6500"
 		elif ret["box"] in ("et8x00", "et8000", "et1x000", "et10000"):
