@@ -61,7 +61,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		channels['transcoding'] = False
-		if model in ("solo2", "duo2", "vusolo2", "vuduo2", "xpeedlx3"):
+		if model in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "xpeedlx3"):
 			channels['transcoding'] = True
 		return channels
 
@@ -134,7 +134,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		movies['transcoding'] = False
-		if model in ("solo2", "duo2", "vusolo2", "vuduo2", "xpeedlx3"):
+		if model in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "xpeedlx3"):
 			movies['transcoding'] = True
 		return movies
 

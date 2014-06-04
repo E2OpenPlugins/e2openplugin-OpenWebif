@@ -171,7 +171,7 @@ class BaseController(resource.Resource):
 		elif fileExists("/proc/stb/info/model"):
 			ret['box'] = open("/proc/stb/info/model").read().strip().lower()
 			
-		if ret["box"] in ("vusolo", "vuduo", "vuuno", "vusolo2", "vuduo2", "solo", "duo", "uno", "solo2", "duo2"):
+		if ret["box"] in ("vusolo", "vuduo", "vuuno", "vusolo2", "vuduo2", "vusolose", "solo", "duo", "uno", "solo2", "duo2", "solose"):
 			ret["remote"] = "vu_normal"
 		elif ret["box"] in ("vuultimo", "ultimo"):
 			ret["remote"] = "vu_ultimo"
