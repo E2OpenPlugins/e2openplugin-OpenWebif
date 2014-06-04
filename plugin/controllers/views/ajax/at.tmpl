@@ -20,16 +20,7 @@ fieldset > label
 	<div id="info">
 		<h3>AutoTimer</h3>
 
-		<div id="toolbar-header">
-			<span id="toolbar">
-				<span id="atbuttons">
-					<button id="atbutton0" onclick="addAT(); return false">ADD</button>
-					<button id="atbutton1" onclick="parseAT(); return false">PARSE</button>
-				</span>
-			</span>
-		</div>
-
-		<div style="height: 700px; background-color: #00000">
+		<div style="background-color: #00000">
 		
 		<div style="display: inline-block; width: 100%; zoom: 1;">
 			<div style="float:left;width:200px;">
@@ -40,7 +31,7 @@ fieldset > label
 			</div>
 			<div style="margin-left:200px;">
 				<div style="display: inline-block; width: 100%; zoom: 1;">
-					<h3>AutoTimer Edit <span id='at_name'></span>></h3>
+					<h3>AutoTimer Edit <span id='at_name'></span></h3>
 					<div id="ateditcontent">
 						<form>
 							<fieldset>
@@ -217,6 +208,15 @@ fieldset > label
 									
 							</fieldset>
 						</form>
+						
+						<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+						<div id="actions">
+						<button id="atbutton0">ADD</button>
+						<button id="atbutton1">DEL</button>
+						<button id="atbutton2">Reload</button>
+						<button id="atbutton3">Save</button>
+						<button id="atbutton4">PARSE</button>
+						</div></div>
 							<div id="errorbox" class="timerlist_row" style="color: red;">
 		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
 			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
@@ -476,9 +476,6 @@ $('#Channels').click(function() {
 $('#Filter').click(function() { 
 	checkValues();
 });
-$('#Filter').click(function() { 
-	checkValues();
-});
 $("#AddFilter").click(function(){
 	AddFilter("","","");
 });
@@ -493,20 +490,7 @@ initValues ();
 
 checkValues();
 
-// Fill List
-$.ajax({
-    type: "GET", url: "/autotimer",
-    dataType: "xml",
-    success: function (xml)
-    {
-    	atxml=xml;
-    	Parse();
-    },
-    error: function (request, status, error) {
-        alert(request.responseText);
-    }
-})
-
+readAT();
 
 $( "#atlist" ).selectable({
 	selected: function( event, ui ) {
@@ -518,6 +502,23 @@ $( "#atlist" ).selectable({
 
 getData();
 
+$( "#actions" ).buttonset();
+$("#atbutton0").click(function () { addAT(); });
+$( "#atbutton0" ).button({icons: { primary: "ui-icon-plus"}});
+$("#atbutton1").click(function () { delAT(); });
+$( "#atbutton1" ).button({icons: { primary: "ui-icon-minus"}});
+$("#atbutton2").click(function () { reloadAT(); });
+$("#atbutton2").button({icons: { primary: "ui-icon-arrowrefresh-1-w"}});
+
+   //   $( "#atadd" ).button({text: false, icons: {primary:'ui-icon-sr-detail'}}),
+    //  $( "#atreload" ).button({text: false, icons: {primary:'ui-icon-sr-list'}}),
+    //  $( "#atdelete" ).button({text: false, icons: {primary:'ui-icon-sr-grid'}})     
+  // );
+
+
+$('#errorbox').hide();
+
+
 });
 
 var atxml;
@@ -527,14 +528,20 @@ function isBQ(sref)
 	return (sref.indexOf("FROM BOUQUET") > -1);
 }
 
-
-
 // parse and create AT List
 function Parse() {
+	
+	$( "#atlist" ).empty();
 	
 	$(atxml).find("timer").each(function () {
 		$( "#atlist" ).append($('<li></li>').html($(this).attr("name")).addClass('ui-widget-content').data('id',$(this).attr("id")));
 	});
+	
+	var item = $('#atlist').find('li').first();
+	if(item) {
+		FillAT(item.data('id'));
+		item.addClass('ui-selected');
+	}
 }
 
 var BQs;
@@ -600,31 +607,26 @@ $.getJSON( "/api/getallservices", function( data ) {
 
 var CurrentAT=null;
 
-// NOT finished
 function FillAT(autotimerid)
 {
-
 	$(atxml).find("timer").each(function () {
-		
 		if($(this).attr("id")==autotimerid) {
-
 			CurrentAT = new AutoTimerObj($(this));
 			CurrentAT.UpdateUI();
-
-	
 		}
 	});
-
 	checkValues ();
-
-	// TODO: fill values from atxml
-	// TODO: fill default values if not set in xml
-
 }
 
 var CurrentAT;
 
 function AutoTimerObj (xml) {
+
+	this.isNew = false;
+	this.MustSave = false;
+
+	this.id = xml.attr("id");
+
 	this.enabled = (xml.attr("enabled") == "yes");
 
 	this.name = xml.attr("name");
@@ -734,7 +736,6 @@ function AutoTimerObj (xml) {
 	this.Channels = _c.slice();
 	this.Bouquets = _b.slice();
 
-	
 	// Filters
 	var _f = [];
 	
@@ -745,9 +746,6 @@ function AutoTimerObj (xml) {
 				"v": $(this).text()
 			}
 		); 
-		//var w = $(this).attr("where");
-		//var v = $(this).text();
-		//AddFilter("include",w,v);
 	});
 
 	xml.find("exclude").each(function () {
@@ -757,9 +755,6 @@ function AutoTimerObj (xml) {
 				"v": $(this).text()
 			}
 		); 
-		//var w = $(this).attr("where");
-		//var v = $(this).text();
-		//AddFilter("exclude",w,v);
 	});
 
 	this.Filters = _f.slice();
@@ -787,6 +782,8 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	$('#justplay').val(this.justplay);
 	$('#overrideAlternatives').prop('checked', this.overrideAlternatives); 
 	$('#timeSpan').prop('checked',this.timeSpan);
+
+	$('#at_name').html("(" + this.name +")");
 
 	if(this.timeSpan)
 	{
@@ -876,6 +873,99 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	
 	checkValues();
 };
+
+function addAT()
+{
+
+	if(CurrentAT && CurrentAT.isNew)
+	{
+		showError("please save the current autotimer first");
+		return;
+	}
+	var _id=1;
+	
+	$(atxml).find("timer").each(function () {
+		var li = parseInt($(this).attr("id"));
+		if(li>=_id)
+			_id=li+1;
+	});
+
+	var name = "New Name";
+	var match = "New Name";
+	var id = _id.toString();
+
+	var xml = '<timers><timer name="'+name+'" match="'+match+'" enabled="yes" id="'+id+'" encoding="ISO8859-15"></timer></timers>',
+	xmlDoc = $.parseXML( xml )
+	
+	$(xmlDoc).find("timer").each(function () {
+		$( "#atlist" ).append($('<li></li>').html($(this).attr("name")).addClass('ui-widget-content').data('id',$(this).attr("id")));
+		CurrentAT = new AutoTimerObj($(this));
+		CurrentAT.isNew = true;
+		CurrentAT.MustSave = true;
+		CurrentAT.UpdateUI();
+	});
+	
+	$('#atlist').find('li').each(function () {
+		if($(this).data('id') == id)
+			$(this).addClass('ui-selected');
+		else
+			$(this).removeClass('ui-selected');
+	});
+	
+
+}
+
+function delAT()
+{
+	if(CurrentAT && !CurrentAT.isNew)
+	{
+
+		$.ajax({
+			type: "GET", url: "/autotimer/remove?id=" + CurrentAT.id,
+			dataType: "xml",
+			success: function (xml)
+			{
+			
+				var state=$(xml).find("e2state").first();
+				var txt=$(xml).find("e2statetext").first();
+				
+				showError(txt.text());
+				
+				console.debug(xml);
+				readAT();
+			},
+			error: function (request, status, error) {
+				showError(request.responseText);
+			}
+		});
+		
+	}
+}
+
+function readAT()
+{
+	CurrentAT = null;
+	
+	$.ajax({
+		type: "GET", url: "/autotimer",
+		dataType: "xml",
+		success: function (xml)
+		{
+			atxml=xml;
+			Parse();
+		},
+		error: function (request, status, error) {
+			alert(request.responseText);
+		}
+	});
+	
+}
+
+function showError(txt)
+{
+	$('#error').text(txt);
+	$('#errorbox').show();
+}
 
 #end raw
 
