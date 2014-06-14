@@ -79,6 +79,9 @@ class MobileController(BaseController):
 			# Make sure at least some basic channel info gets returned when there is no EPG
 			return { "channelinfo": channelinfo, "channelepg": None }
 
+	def P_channelzap(self, request):
+		return self.P_channelinfo(request)
+
 	def P_eventview(self, request):
 		event = {}
 		event['sref'] = ""
@@ -105,6 +108,9 @@ class MobileController(BaseController):
 			event['end'] = strftime("%H:%M", (localtime(event['end'])))
 
 		return { "event": event }
+
+	def P_timeradded(self, request):
+		return self.P_eventview(request)
 
 	def P_satfinder(self, request):
 		return {}

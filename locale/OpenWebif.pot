@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-02-17 22:10+0100\n"
+"POT-Creation-Date: 2014-06-14 19:04+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -564,6 +564,9 @@ msgstr ""
 msgid "Timeout"
 msgstr ""
 
+msgid "Timer added"
+msgstr ""
+
 msgid "Timerlist"
 msgstr ""
 
@@ -652,6 +655,9 @@ msgid "zap before Stream"
 msgstr ""
 
 msgid "Zap to"
+msgstr ""
+
+msgid "Zapped to"
 msgstr ""
 
 msgid "LCD4Linux Setup"

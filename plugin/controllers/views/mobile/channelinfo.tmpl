@@ -10,14 +10,6 @@
 	<link rel="stylesheet" type="text/css" href="/css/iphone.css" media="screen"/>
 	<script src="/js/jquery-1.6.2.min.js"></script>
 	<script src="/js/jquery.mobile-1.0.min.js"></script>
-	<script>
-	function zapChannel(sRef) {
-		sRef=sRef.replace(/%22/,'"');
-		var url = '/api/zap?sRef=' + sRef;
-		$.getJSON(url, function(result){
-		});
-	}
-	</script>
  </head>
  <body> 
 	<div data-role="page">
@@ -25,10 +17,9 @@
 		<div id="header">
 			<div class="button" onClick="history.back()">$tstrings['back']</div>
 			<h1>OpenWebif</h1>
-			#set $sref=quote($channelinfo.sref, safe=' ~@#$&()*!+=:;,.?/\'')
-			<div class="button" style="right:5px;left:auto;" onClick="zapChannel('$sref')">$tstrings['zap']</div>
+			#set $link=quote('/mobile/channelzap?sref=' + $channelinfo.sref, safe=' ~@#$&()*!+=:;,.?/\'')
+			<div class="button" style="right:5px;left:auto;" onClick="window.open('$link');return false;">$tstrings['zap']</div>
 		</div>
-
 		<div id="mainContent" class="ui-corner-all">
 			<table width="100%" border="0" cellspacing="1" cellpadding="5">
 						<tr>
