@@ -33,7 +33,8 @@
 				#set $endtime = datetime.datetime.fromtimestamp($timer.end).strftime("%d.%m.%Y")
 				<li>
 					#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
-					<a href="javascript:history.go(0)" onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$timer.name');">
+					#set $name=quote($timer.name, safe=' ~@#$&()*!+=:;,.?/\'').replace("'","\\'")
+					<a href="javascript:history.go(0)" onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$name');">
 						<span class="ui-li-heading" style="margin-top: 3px; margin-bottom: 3px;">$timer.name ($timer.servicename)</span>
 						<span class="ui-li-desc" style="margin-top: 3px; margin-bottom: 3px;">$starttime - $endtime ($duration min)</span>
 					</a>
