@@ -17,8 +17,8 @@
 			<div id="header">
 				<div class="button" onClick="history.back()">$tstrings['back']</div>
 				<h1>OpenWebif</h1>
-				#set $sref=quote($event['sref'], safe=' ~@#$&()*!+=:;,.?/\'')
-				<div class="button" style="right:5px;left:auto;" onClick="addTimerEvent('$event['sref']',$event['id']);return false;">$tstrings['add_timer']</div>
+				#set $link=quote('/mobile/timeradded?eventid=' + $event.id + '&eventref=' + $event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
+				<div class="button" style="right:5px;left:auto;" onClick="window.open('$link');return false;">$tstrings['add_timer']</div>
 			</div>
 			<div id="mainContent" class="ui-corner-all">
 				<table width="100%" border="0" cellspacing="1" cellpadding="5">
