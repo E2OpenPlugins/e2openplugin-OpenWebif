@@ -104,6 +104,9 @@ def setPowerState(session, state):
 		if inStandby == None:
 			session.open(Standby)
 
+	elif state == 6:
+		print "HAHA"
+
 	return {
 		"result": True,
 		"instandby": inStandby != None
