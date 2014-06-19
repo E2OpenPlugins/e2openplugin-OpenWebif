@@ -1,0 +1,62 @@
+#from urllib import quote
+#from Plugins.Extensions.OpenWebif.local import tstrings
+<html>
+	<head>
+		<title>OpenWebif</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="user-scalable=no, width=device-width"/>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link rel="stylesheet" type="text/css" href="/css/jquery.mobile-1.0.min.css" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="/css/iphone.css" media="screen"/>
+		<script src="/js/jquery-1.6.2.min.js"></script>
+		<script src="/js/jquery.mobile-1.0.min.js"></script>
+		<script>
+			function mobileChannelZap(sRef) {
+				sRef=sRef.replace(/%22/,'"');
+				var url = '/api/zap?sRef=' + sRef;
+				$.getJSON(url, function(result){
+				});
+			}
+		</script>
+	</head>
+	#set $sref=quote($channelinfo.sref, safe=' ~@#$&()*!+=:;,.?/\'')
+	<body onload="javascript: mobileChannelZap('$sref')"> 
+		<div data-role="page">
+			<div id="header">
+				<div class="button" onClick="window.close()">$tstrings['back']</div>
+				<h1><a style="color:#FFF;text-decoration:none;" href='/mobile'>OpenWebif</a></h1>
+			</div>
+			<div id="mainContent" class="ui-corner-all">
+				<table width="100%" border="0" cellspacing="1" cellpadding="5">
+					<tr>
+						<th colspan="3" class="ui-btn-up-b" style="text-align: left;">$tstrings['zapped_to']: $channelinfo.sname</th>
+					</tr>
+					<tr style="background-color:  #f0f7fc;">
+						<td width="200"><img src="$channelinfo.picon" border="0" alt=""></td>
+						<td width="100%" valign="top">
+							<strong>$channelinfo.sname</strong><br />
+							#if $channelinfo.title
+								$channelinfo.title<br />
+								$channelinfo.begin-$channelinfo.end ($channelinfo.duration min)<br />
+							#end if
+						</td>
+						</tr>
+						<tr>
+							<th colspan="2" class="ui-btn-up-b" style="text-align: left;">$tstrings['current_event']</th>
+						</tr>
+						#if $channelinfo.has_key('shortdesc')
+						<tr style="background-color:  #f0f7fc;">
+							<td colspan="2">$channelinfo.shortdesc</td>
+						</tr>
+						#end if
+						#if $channelinfo.has_key('longdesc')
+						<tr style="background-color:  #f0f7fc;">
+							<td colspan="2">$channelinfo.longdesc</td>
+						</tr>
+						#end if
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

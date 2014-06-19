@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-02-17 22:10+0100\n"
+"POT-Creation-Date: 2014-06-14 19:04+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -42,6 +42,9 @@ msgstr "Erzwinge zertifikatbasierte Anmeldung"
 
 msgid "Enable Authentication for streaming"
 msgstr "Authentifizierung für Streaming aktivieren"
+
+msgid "Disable access for user root"
+msgstr "Anmeldung als Benutzer root verbieten"
 
 msgid "Smart services renaming for XBMC"
 msgstr "Sendernamen für XBMC umbenennen"
@@ -562,6 +565,9 @@ msgstr "Zeit"
 msgid "Timeout"
 msgstr "Zeitüberschreitung"
 
+msgid "Timer added"
+msgstr "Timer hinzugefügt"
+
 msgid "Timerlist"
 msgstr "Timerliste"
 
@@ -651,6 +657,9 @@ msgstr "vor dem Streamen umschalten"
 
 msgid "Zap to"
 msgstr "Umschalten zu"
+
+msgid "Zapped to"
+msgstr "Umgeschaltet zu"
 
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux Einstellungen"

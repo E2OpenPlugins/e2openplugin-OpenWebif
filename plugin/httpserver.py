@@ -26,6 +26,7 @@ from twisted.internet.protocol import Factory, Protocol
 
 import os
 import imp
+import re
 
 global listener, server_to_stop
 listener = []
@@ -152,7 +153,19 @@ def HttpdStart(session):
 			installCertificates(session)
 			# start https webserver on port configured port
 			try:
-				context = ssl.DefaultOpenSSLContextFactory(KEY_FILE, CERT_FILE)
+				try:
+					context = ssl.DefaultOpenSSLContextFactory(KEY_FILE, CERT_FILE)
+				except:
+					# THIS EXCEPTION IS ONLY CATCHED WHEN CERT FILES ARE BAD (look below for error)
+					print "[OpenWebif] failed to get valid cert files. (It could occure bad file save or format, removing...)"
+					# removing bad files
+					if os.path.exists(KEY_FILE):
+						os.remove(KEY_FILE)
+					if os.path.exists(CERT_FILE):
+						os.remove(CERT_FILE)
+					# regenerate new ones
+					installCertificates(session)
+					context = ssl.DefaultOpenSSLContextFactory(KEY_FILE, CERT_FILE)
 
 				if config.OpenWebif.https_clientcert.value == True:
 					ctx = context.getContext()
@@ -172,27 +185,13 @@ def HttpdStart(session):
 				BJregisterService('https',httpsPort)
 			except CannotListenError:
 				print "[OpenWebif] failed to listen on Port", httpsPort
-			except: # THIS EXCEPTION IS ONLY CATCHED WHEN CERT FILES ARE BAD ( look below for error )
-				print "[OpenWebif] failed to get valid cert files. ( It could occure bad file save or format, removing... )"
-				# removing bad files
-				os.remove("/etc/enigma2/cert.pem")
-				os.remove("/etc/enigma2/key.pem")
-				# regenerate new ones
-				installCertificates(session)
-				# restart
-				try:
-					context = ssl.DefaultOpenSSLContextFactory(KEY_FILE, CERT_FILE)
-					listener.append( reactor.listenSSL(httpsPort, site, context) )
-					print "[OpenWebif] started on", httpsPort
-				except CannotListenError:
-					print "[OpenWebif] failed to listen on Port", httpsPort
-#
-# This is ERROR which I fixed by added one more Exception
-# File "/usr/lib/python2.7/site-packages/twisted/internet/ssl.py", line 68, in __init__
-# File "/usr/lib/python2.7/site-packages/twisted/internet/ssl.py", line 77, in cacheContext
-# OpenSSL.SSL.Error: [('PEM routines', 'PEM_read_bio', 'no start line'), ('SSL routines', 'SSL_CTX_use_certificate_file', 'PEM lib')]
+			except:
+				print "[OpenWebif] failed to start https, disabling..."
+				# Disable https
+				config.OpenWebif.https_enabled.value = False
+				config.OpenWebif.https_enabled.save()
 
-#Streaming requires listening on 127.0.0.1:80	
+		#Streaming requires listening on 127.0.0.1:80	
 		if port != 80:
 			if not isOriginalWebifInstalled():
 				try:
@@ -227,7 +226,7 @@ class AuthResource(resource.Resource):
 		if (host == "localhost" or host == "127.0.0.1" or host == "::ffff:127.0.0.1") and not config.OpenWebif.auth_for_streaming.value:
 			return self.resource.render(request)
 			
-		if self.login(request.getUser(), request.getPassword()) == False:
+		if self.login(request.getUser(), request.getPassword(), request.transport.socket.getpeername()[0]) == False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
 			errpage = resource.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
 			return errpage.render(request)
@@ -245,7 +244,7 @@ class AuthResource(resource.Resource):
 		if "logged" in session.keys() and session["logged"]:
 			return self.resource.getChildWithDefault(path, request)
 			
-		if self.login(request.getUser(), request.getPassword()) == False:
+		if self.login(request.getUser(), request.getPassword(), request.transport.socket.getpeername()[0]) == False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
 			errpage = resource.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
 			return errpage
@@ -254,7 +253,12 @@ class AuthResource(resource.Resource):
 			return self.resource.getChildWithDefault(path, request)
 		
 		
-	def login(self, user, passwd):
+	def login(self, user, passwd, peer):
+		if user=="root" and config.OpenWebif.no_root_access.value:
+			# Override "no root" for logins from local network
+			match=re.match("(::ffff:|)(192\.168|10\.\d{1,3})\.\d{1,3}\.\d{1,3}", peer)
+			if match is None:
+				return False
 		from crypt import crypt
 		from pwd import getpwnam
 		from spwd import getspnam

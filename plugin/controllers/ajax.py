@@ -21,6 +21,7 @@ from models.timers import getTimers
 from models.config import getConfigs, getConfigsSections
 from base import BaseController
 from time import mktime, localtime
+from models.locations import getLocations
 from os import path
 
 class AjaxController(BaseController):
@@ -216,3 +217,10 @@ class AjaxController(BaseController):
 		epg['reloadtimer'] = reloadtimer
 		
 		return epg
+
+	def P_at(self, request):
+		ret = {}
+		loc = getLocations()
+		ret['locations'] = loc['locations']
+		return ret
+
