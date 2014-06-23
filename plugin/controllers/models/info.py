@@ -144,18 +144,18 @@ def getInfo():
 		elif model.startswith("azbox"):
 			brand = "AZBox"
 			f = open("/proc/stb/info/model",'r')
- 			model = f.readline().strip().lower()
- 			f.close()
- 			if model == "me":
+			model = f.readline().strip().lower()
+			f.close()
+			if model == "me":
 				chipset = "SIGMA 8655"
-	 		elif model == "minime":
+			elif model == "minime":
 				chipset = "SIGMA 8653"
-	 		else:
+			else:
 				chipset = "SIGMA 8634"
 		elif model.startswith("spark"):
 			brand = "Fulan"
 			chipset = "SH4 @450MHz"
- 	elif fileExists("/proc/stb/info/boxtype"):
+	elif fileExists("/proc/stb/info/boxtype"):
 		brand = "Xtrend"
 		f = open("/proc/stb/info/boxtype",'r')
 		model = f.readline().strip().lower()
@@ -177,50 +177,50 @@ def getInfo():
 	elif fileExists("/proc/stb/info/vumodel"):
 		brand = "VuPlus"
 		f = open("/proc/stb/info/vumodel",'r')
- 		model = f.readline().strip().lower()
- 		f.close()
+		model = f.readline().strip().lower()
+		f.close()
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBox"
 		f = open("/proc/stb/info/model",'r')
- 		model = f.readline().strip().lower()
- 		f.close()
- 		if model == "me":
+		model = f.readline().strip().lower()
+		f.close()
+		if model == "me":
 			chipset = "SIGMA 8655"
- 		elif model == "minime":
+		elif model == "minime":
 			chipset = "SIGMA 8653"
- 		else:
+		else:
 			chipset = "SIGMA 8634"
 	else:
 		f = open("/proc/stb/info/model",'r')
- 		model = f.readline().strip().lower()
- 		f.close()
-	 	if model == "tf7700hdpvr":
- 			brand = "Topfield"
+		model = f.readline().strip().lower()
+		f.close()
+		if model == "tf7700hdpvr":
+			brand = "Topfield"
 			model = "TF 7700 HDPVR"
- 			chipset = "SH4 @266MHz"
-	 	elif model == "nbox":
+			chipset = "SH4 @266MHz"
+		elif model == "nbox":
 			brand = "Advanced Digital Broadcast"
- 			chipset = "SH4 @266MHz"
-	 	elif model in ("adb2850", "adb2849"):
+			chipset = "SH4 @266MHz"
+		elif model in ("adb2850", "adb2849"):
 			brand = "Advanced Digital Broadcast"
- 			chipset = "SH4 @450MHz"
-	 	elif model in ("esi88", "uhd88", "dsi87"):
+			chipset = "SH4 @450MHz"
+		elif model in ("esi88", "uhd88", "dsi87"):
 			brand = "SagemCom"
- 			chipset = "SH4 @450MHz"
+			chipset = "SH4 @450MHz"
 
 	info['brand'] = brand
 	info['model'] = model
 
 	if fileExists("/proc/stb/info/chipset"):
 		f = open("/proc/stb/info/chipset",'r')
- 		chipset = f.readline().strip()
- 		f.close()
+		chipset = f.readline().strip()
+		f.close()
 		
 	info['chipset'] = chipset
 
 	memFree = 0
 	for line in open("/proc/meminfo",'r'):
-	 	parts = line.split(':')
+		parts = line.split(':')
 		key = parts[0].strip()
 		if key == "MemTotal":
 			info['mem1'] = parts[1].strip()
@@ -383,7 +383,7 @@ def getStatusInfo(self):
 		if serviceref:
 			statusinfo['currservice_serviceref'] = serviceref.toString()
 			statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
-	
+
 	# Get Standby State
 	from Screens.Standby import inStandby
 	if inStandby == None:

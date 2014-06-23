@@ -15,18 +15,18 @@ def getAudioTracks(session):
 			for lang in languages:
 				if len(language) > 0:
 					language += " / "
-					
+
 				if LanguageCodes.has_key(lang):
 					language += LanguageCodes[lang][0]
 				else:
 					language += lang
-					
+
 			description = track.getDescription()
 			if description:
 				description += " (" + language + ")"
 			else:
 				description = language
-				
+
 			ret["result"] = True
 			ret["tracklist"].append({
 				"description": description,
@@ -34,9 +34,9 @@ def getAudioTracks(session):
 				"pid": track.getPID(),
 				"active": i == current
 			})
-			
+
 	return ret
-	
+
 def setAudioTrack(session, id):
 	service = session.nav.getCurrentService()
 	audio = service and service.audioTracks()
@@ -44,6 +44,5 @@ def setAudioTrack(session, id):
 		if audio.getNumberOfTracks() > id and id >= 0:
 			audio.selectTrack(id)
 			return { "result": True }
-			
-	return { "result": False }
 
+	return { "result": False }

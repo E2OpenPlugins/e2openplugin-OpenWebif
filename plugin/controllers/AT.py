@@ -28,7 +28,7 @@ class ATController(resource.Resource):
 		self.putChild('get', AutoTimerSettingsResource())
 		self.putChild('set', AutoTimerChangeSettingsResource())
 		self.putChild('simulate', AutoTimerSimulateResource())
-		
+
 	def render(self, request):
 		request.setResponseCode(http.OK)
 		request.setHeader('Content-type', 'application/xhtml+xml')

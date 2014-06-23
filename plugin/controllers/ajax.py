@@ -61,7 +61,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		channels['transcoding'] = False
-		if model in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "xpeedlx3"):
+		if model in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "xpeedlx3", "gbquad", "gbquadplus"):
 			channels['transcoding'] = True
 		return channels
 
@@ -90,15 +90,14 @@ class AjaxController(BaseController):
 			model = "et4x00"
 		elif model == "xp1000":
 			model = "xp1000"
+		elif model == "tf7700hdpvr":
+			model = "topf"
 		elif model.startswith("vu"):
 			model = model.replace("vu", "")
 		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
 			info["boximage"] = model + ".jpg"
 		else:
 			info["boximage"] = "unknown.jpg"
-		if model in ("tf7700hdpvr", "TF 7700 HDPVR"):
-			if fileExists(getPublicPath("/images/boxes/topf.jpg")):
-				info["boximage"] = "topf.jpg"
 		return info
 
 	def P_epgpop(self, request):
@@ -134,7 +133,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		movies['transcoding'] = False
-		if model in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "xpeedlx3"):
+		if model in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "xpeedlx3", "gbquad", "gbquadplus"):
 			movies['transcoding'] = True
 		return movies
 
@@ -184,12 +183,12 @@ class AjaxController(BaseController):
 				begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day, 6, 0, 0, -1, -1, -1) )
 			except Exception, e:
 				pass
-		
+
 		epg = getMultiEpg(self, bref, begintime, endtime)
 		epg['bouquets'] = bouq['bouquets']
 		epg['bref'] = bref
 		epg['day'] = day
-		
+
 		return epg
 	def P_multiepg2(self, request):
 		reloadtimer = 0
@@ -202,7 +201,7 @@ class AjaxController(BaseController):
 			bref = request.args["bref"][0]
 
 		endtime = 1440
-				
+
 		begintime = -1
 		day = 0
 		if "day" in request.args.keys():
@@ -212,13 +211,13 @@ class AjaxController(BaseController):
 				begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day, 6, 0, 0, -1, -1, -1) )
 			except Exception, e:
 				pass
-		
+
 		epg = getMultiEpg(self, bref, begintime, endtime)
 		epg['bouquets'] = bouq['bouquets']
 		epg['bref'] = bref
 		epg['day'] = day
 		epg['reloadtimer'] = reloadtimer
-		
+
 		return epg
 
 	def P_at(self, request):

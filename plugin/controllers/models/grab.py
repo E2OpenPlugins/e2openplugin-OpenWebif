@@ -15,7 +15,6 @@ import os
 GRAB_PATH = '/usr/bin/grab'
 
 class grabScreenshot(resource.Resource):
-
 	def __init__(self,session, path = ""):
 		resource.Resource.__init__(self)
 		self.session = session

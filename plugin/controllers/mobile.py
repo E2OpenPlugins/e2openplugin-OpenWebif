@@ -25,7 +25,7 @@ class MobileController(BaseController):
 
 	def P_control(self, request):
 		return {}
-		
+
 	def P_screenshot(self, request):
 		return {}
 
@@ -70,7 +70,7 @@ class MobileController(BaseController):
 			channelinfo['longdesc'] = ""
 			channelinfo['begin'] = 0
 			channelinfo['end'] = 0
-			
+
 		# Got EPG information?
 		if len(channelepg['events']) > 1:
 			# Return the EPG
@@ -117,7 +117,7 @@ class MobileController(BaseController):
 
 	def P_timerlist(self, request):
 		return getTimers(self.session)
-		
+
 	def P_movies(self, request):
 		if "dirname" in request.args.keys():
 			movies = getMovieList(request.args["dirname"][0])
