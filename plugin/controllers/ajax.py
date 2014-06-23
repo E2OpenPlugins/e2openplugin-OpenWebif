@@ -98,6 +98,9 @@ class AjaxController(BaseController):
 			info["boximage"] = model + ".jpg"
 		else:
 			info["boximage"] = "unknown.jpg"
+		if model in ("tf7700hdpvr", "topf", "TF 7700 HDPVR"):
+			if fileExists(getPublicPath("/images/boxes/topf.jpg")):
+				info["boximage"] = "topf.jpg"
 		return info
 
 	def P_epgpop(self, request):
