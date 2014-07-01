@@ -64,7 +64,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		channels['transcoding'] = False
-		if model in ("Solo²", "Duo²", "Solo SE", "Marvel", "LX-3", "Quad", "Quad Plus") and path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')):
+		if model in ("Solo²", "Duo²", "Solo SE", "Marvel", "LX-3", "T4", "Quad", "Quad Plus") and path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')):
 			channels['transcoding'] = True
 		return channels
 
