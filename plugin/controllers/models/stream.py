@@ -8,6 +8,7 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
+from boxbranding import getMachineBuild
 from enigma import eServiceReference, getBestPlayableServiceReference
 from ServiceReference import ServiceReference
 from info import getInfo
@@ -48,7 +49,7 @@ def getStream(session, request, m3ufile):
 	portNumber = config.OpenWebif.streamport.value
 	info = getInfo()
 	model = info["model"]
-	if model in ("Solo²", "Duo²", "Solo SE", "Marvel", "LX-3", "T4", "Quad", "Quad Plus"):
+	if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or getMachineBuild() in ('inihdp'):
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
 				portNumber = config.plugins.transcodingsetup.port.value
@@ -79,7 +80,7 @@ def getTS(self, request):
 		portNumber = config.OpenWebif.port.value
 		info = getInfo()
 		model = info["model"]
-		if model in ("Solo²", "Duo²", "Solo SE", "Sezam Marvel", "LX-3", "Quad", "Quad Plus"):
+		if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or getMachineBuild() in ('inihdp')::
 			if "device" in request.args :
 				if request.args["device"][0] == "phone" :
 					portNumber = config.plugins.transcodingsetup.port.value

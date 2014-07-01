@@ -8,10 +8,9 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-
 from Tools.Directories import fileExists
 from Components.config import config
-from boxbranding import getBoxType, getMachineName, getMachineBrand
+from boxbranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
 	
 from enigma import eEnv
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
@@ -64,7 +63,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		channels['transcoding'] = False
-		if model in ("Solo²", "Duo²", "Solo SE", "Marvel", "LX-3", "T4", "Quad", "Quad Plus") and path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')):
+		if (model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or getMachineBuild() in ('inihdp')) and path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')):
 			channels['transcoding'] = True
 		return channels
 
@@ -131,7 +130,7 @@ class AjaxController(BaseController):
 		info = getInfo()
 		model = info["model"]
 		movies['transcoding'] = False
-		if model in ("Solo²", "Duo²", "Solo SE", "Marvel", "LX-3", "Quad", "Quad Plus") and path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')):
+		if (model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or getMachineBuild() in ('inihdp')) and path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')):
 			movies['transcoding'] = True
 		return movies
 
