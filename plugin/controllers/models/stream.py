@@ -80,7 +80,7 @@ def getTS(self, request):
 		portNumber = config.OpenWebif.port.value
 		info = getInfo()
 		model = info["model"]
-		if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or getMachineBuild() in ('inihdp')::
+		if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or getMachineBuild() in ('inihdp'):
 			if "device" in request.args :
 				if request.args["device"][0] == "phone" :
 					portNumber = config.plugins.transcodingsetup.port.value
