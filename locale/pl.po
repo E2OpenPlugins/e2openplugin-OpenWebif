@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-12-15 12:19+0100\n"
+"POT-Creation-Date: 2014-07-16 12:30+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: mickey <mickeyreg@gmail.com>\n"
 "Language-Team: \n"
@@ -565,6 +565,9 @@ msgstr "Czas"
 msgid "Timeout"
 msgstr "Limit czasu"
 
+msgid "Timer added"
+msgstr "Dodano zadanie planowe"
+
 msgid "Timerlist"
 msgstr "Lista zadań planowych"
 
@@ -654,6 +657,9 @@ msgstr "Wcześniej przełącz"
 
 msgid "Zap to"
 msgstr "Przełącz na"
+
+msgid "Zapped to"
+msgstr "Przełączono na"
 
 msgid "LCD4Linux Setup"
 msgstr "Ustawienia LCD4Linux"
