@@ -170,7 +170,7 @@ class BaseController(resource.Resource):
 			ret['box'] = open("/proc/stb/info/azmodel").read().strip().lower()
 		elif fileExists("/proc/stb/info/model"):
 			ret['box'] = open("/proc/stb/info/model").read().strip().lower()
-			
+
 		if ret["box"] in ("vusolo", "vuduo", "vuuno", "vusolo2", "vuduo2", "vusolose", "solo", "duo", "uno", "solo2", "duo2", "solose"):
 			ret["remote"] = "vu_normal"
 		elif ret["box"] in ("vuultimo", "ultimo"):
@@ -191,11 +191,11 @@ class BaseController(resource.Resource):
 			ret["remote"] = "et6500"
 		elif ret["box"] in ("et8x00", "et8000", "et1x000", "et10000"):
 			ret["remote"] = "et8000"
-		elif ret["box"] == "formuler1":
+		elif ret["box"] in ("formuler1", "formuler3"):
 			ret["remote"] = "formuler1"
 		elif ret["box"] in ("me", "minime"):
 			ret["remote"] = "me"
-		elif ret["box"] in ("optimussos1", "optimussos2"):
+		elif ret["box"] in ("optimussos1", "optimussos1plus", "optimussos2", "optimussos2plus"):
 			ret["remote"] = "optimuss"
 		elif ret["box"] in ("premium", "premium+"):
 			ret["remote"] = "premium"
