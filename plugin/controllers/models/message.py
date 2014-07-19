@@ -8,6 +8,7 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
+from Plugins.Extensions.OpenWebif.__init__ import _
 from Screens.MessageBox import MessageBox
 
 lastreply = None
@@ -29,7 +30,7 @@ def sendMessage(session, message, ttype, timeout):
 
 	return {
 		"result": True,
-		"message": "Message sent successfully!"
+		"message": _('Message sent successfully!')
 	}
 
 def getMessageAnswer():
@@ -39,10 +40,10 @@ def getMessageAnswer():
 	if reply is None:
 		return {
 			"result": False,
-			"message": "No answer in time"
+			"message": _('No answer in time')
 		}
 
 	return {
 		"result": True,
-		"message": "Answer is YES!" if reply else "Answer is NO!"
+		"message": _('Answer is YES!') if reply else _('Answer is NO!')
 	}
