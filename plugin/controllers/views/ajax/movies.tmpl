@@ -10,7 +10,7 @@
 		#set $path=''
 		
 		<span id="moviebuttons">
-			<button onclick="load_maincontent_spin('/ajax/movies?dirname=/'); return false">Root</button>
+			<button onclick="load_maincontent_spin('/ajax/movies?dirname=/'); return false">$tstrings['Root']</button>
 			#for $dir in $directory[0:-1].split("/")[1:-1]
 				#set $path += '/' + $dir
 				<button onclick="load_maincontent_spin('/ajax/movies?dirname='+escape('$path'));">$dir</button>
