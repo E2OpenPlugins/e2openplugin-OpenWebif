@@ -1,0 +1,747 @@
+# Administrador <hsa2000@gmail.com>, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenWebif\n"
+"POT-Creation-Date: 2014-06-14 19:04+0100\n"
+"PO-Revision-Date: 2014-07-15 01:27+0200\n"
+"Last-Translator: Administrador <hsa2000@gmail.com>\n"
+"Language-Team: HSA2000 for OpenSpa\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ../plugin\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-SourceCharset: iso-8859-1\n"
+"X-Poedit-Country: SPAIN\n"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Save"
+msgstr "Guardar"
+
+msgid "OpenWebif url: http://yourip:port"
+msgstr "Enlace OpenWebif: http://tuip:puerto"
+
+msgid "OpenWebInterface Enabled"
+msgstr "Enlace OpenWebInterface"
+
+msgid "HTTP port"
+msgstr "Puerto HTTP"
+
+msgid "Enable HTTP Authentication"
+msgstr "Autenticación Enlace HTTP"
+
+msgid "Enable HTTPS"
+msgstr "Habilitar HTTPS"
+
+msgid "HTTPS port"
+msgstr "Puerto HTTPS"
+
+msgid "Require client cert for HTTPS"
+msgstr "Requiere certificado cliente para HTTPS"
+
+msgid "Enable Authentication for streaming"
+msgstr "Habilitar Autenticación para streaming"
+
+msgid "Disable access for user root"
+msgstr "Deshabilitar acceso para usuario root"
+
+msgid "Smart services renaming for XBMC"
+msgstr "Servicios inteligentes para cambiar el nombre de XBMC"
+
+msgid "Enable Parental Control"
+msgstr "Habilitar Control Parental"
+
+msgid "Add service name to stream information"
+msgstr "Añadir nombre de servicio a la información de stream"
+
+msgid "OpenWebif Configuration"
+msgstr "Configuración OpenWebif"
+
+msgid "Mo"
+msgstr "Lu"
+
+msgid "Tu"
+msgstr "Ma"
+
+msgid "We"
+msgstr "Mi"
+
+msgid "Th"
+msgstr "Ju"
+
+msgid "Fr"
+msgstr "Vi"
+
+msgid "Sa"
+msgstr "Sa"
+
+msgid "Su"
+msgstr "Do"
+
+msgid "Sun"
+msgstr "Dom"
+
+msgid "Mon"
+msgstr "Lun"
+
+msgid "Tue"
+msgstr "Mar"
+
+msgid "Wed"
+msgstr "Mie"
+
+msgid "Thu"
+msgstr "Jue"
+
+msgid "Fri"
+msgstr "Vie"
+
+msgid "Sat"
+msgstr "Sab"
+
+msgid "Monday"
+msgstr "Lunes"
+
+msgid "Tuesday"
+msgstr "Martes"
+
+msgid "Wednesday"
+msgstr "Miércoles"
+
+msgid "Thursday"
+msgstr "Jueves"
+
+msgid "Friday"
+msgstr "Viernes"
+
+msgid "Saturday"
+msgstr "Sábado"
+
+msgid "Sunday"
+msgstr "Domingo"
+
+msgid "January"
+msgstr "Enero"
+
+msgid "February"
+msgstr "Febrero"
+
+msgid "March"
+msgstr "Marzo"
+
+msgid "April"
+msgstr "Abril"
+
+msgid "May"
+msgstr "Mayo"
+
+msgid "June"
+msgstr "Junio"
+
+msgid "July"
+msgstr "Julio"
+
+msgid "August"
+msgstr "Agosto"
+
+msgid "September"
+msgstr "Septiembre"
+
+msgid "October"
+msgstr "Octubre"
+
+msgid "November"
+msgstr "Noviembre"
+
+msgid "December"
+msgstr "Diciembre"
+
+msgid "About"
+msgstr "Acerca de"
+
+msgid "Add Timer"
+msgstr "Añadir Grabación"
+
+msgid "After Event"
+msgstr "Después del Evento"
+
+msgid "AGC"
+msgstr "AGC"
+
+msgid "All"
+msgstr "Todo"
+
+msgid "All Channels"
+msgstr "Todos los Canales"
+
+msgid "Authors"
+msgstr "Autor"
+
+msgid "Auto"
+msgstr "Automático"
+
+msgid "Back"
+msgstr "Atras"
+
+msgid "Begin"
+msgstr "Iniciar"
+
+msgid "BER"
+msgstr "BER"
+
+msgid "Bouquets"
+msgstr "Favoritos"
+
+msgid "Box Info"
+msgstr "Información Deco"
+
+msgid "Box"
+msgstr "Decodificador"
+
+msgid "Box Control"
+msgstr "Control Deco"
+
+msgid "Box Uptime"
+msgstr "Funcionamiento Decodificador"
+
+msgid "Brand"
+msgstr "Marca"
+
+msgid "Capacity"
+msgstr "Capacidad"
+
+msgid "Channel"
+msgstr "Canal"
+
+msgid "Channels"
+msgstr "Canales"
+
+msgid "Chipset"
+msgstr "Chipset"
+
+msgid "Cleanup Timers"
+msgstr "Limpiar Grabaciones"
+
+msgid "Contributors"
+msgstr "Colaboradores"
+
+msgid "Translation to Spanish"
+msgstr "Traducción al Español"
+
+msgid "Control"
+msgstr "Control"
+
+msgid "Current"
+msgstr "Actual"
+
+msgid "Current Event"
+msgstr "Envento Actual"
+
+msgid "Deep-Standby"
+msgstr "Reposo Profundo"
+
+msgid "Default"
+msgstr "Por Defecto"
+
+msgid "Delete Movie"
+msgstr "Borrar Película"
+
+msgid "Really delete the movie"
+msgstr "¿Deseas borrar la película?"
+
+msgid "Delete Timer"
+msgstr "Borrar Grabación"
+
+msgid "Really delete the timer"
+msgstr "¿Deseas borrar la grabación?"
+
+msgid "Description"
+msgstr "Descripción"
+
+msgid "DHCP"
+msgstr "DHCP"
+
+msgid "Disable Timer"
+msgstr "Deshabilitar Grabación"
+
+msgid "Dolby"
+msgstr "Dolby"
+
+msgid "Done"
+msgstr "Realizado"
+
+msgid "Download"
+msgstr "Descargar"
+
+msgid "Download Playlist for"
+msgstr "Descargar Lista de reproducción para"
+
+msgid "Duration"
+msgstr "Duración"
+
+msgid "Edit Timer"
+msgstr "Editar Grabación"
+
+msgid "Enable Timer"
+msgstr "Habilitar Grabación"
+
+msgid "End"
+msgstr "Fin"
+
+msgid "Enabled"
+msgstr "Habilitar"
+
+msgid "Encrypted"
+msgstr "Encriptado"
+
+msgid "EPG"
+msgstr "EPG"
+
+msgid "Epg Search"
+msgstr "Buscar EPG"
+
+msgid "Error"
+msgstr "Error"
+
+msgid "Every"
+msgstr "Cada"
+
+msgid "Extras"
+msgstr "Extras"
+
+msgid "finished"
+msgstr "terminado"
+
+msgid "Firmware version"
+msgstr "Versión firmware"
+
+msgid "Frontprocessor Version"
+msgstr "Versión Frontprocessor"
+
+msgid "Free"
+msgstr "Libre"
+
+msgid "Free Memory"
+msgstr "Memoria Libre"
+
+msgid "Gateway"
+msgstr "Puerta de Enlace"
+
+msgid "Grab Screenshot"
+msgstr "Captura de Pantalla"
+
+msgid "Gui version"
+msgstr "Versión Interfaz de Usuario"
+
+msgid "Hide full remote"
+msgstr "Ocultar Control Remoto Completo"
+
+msgid "High Resolution"
+msgstr "Alta Resolución"
+
+msgid "Hard disk model"
+msgstr "Modelo Disco Duro"
+
+msgid "Hour"
+msgstr ""
+
+msgid "IP address"
+msgstr ""
+
+msgid "IPv6 address(es)"
+msgstr ""
+
+msgid "Infos"
+msgstr "Información"
+
+msgid "Instant Record"
+msgstr ""
+
+msgid "Javascript Libraries"
+msgstr ""
+
+msgid "Just play"
+msgstr ""
+
+msgid "Kernel version"
+msgstr ""
+
+msgid "LICENSE"
+msgstr "LICENCIA"
+
+msgid "All Files of this Software are open source software;"
+msgstr "Todos los archivos de este software son software de código abierto;"
+
+msgid "you can redistribute it and/or modify it under the"
+msgstr "usted puede redistribuirlo y/o modificarlo bajo los términos de la"
+
+msgid "terms of the GNU General Public License version 2 as"
+msgstr "Licencia Pública General GNU versión 2,"
+
+msgid "published by the Free Software Foundation."
+msgstr "publicada por la Free Software Foundation."
+
+msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
+msgstr "Todos los archivos de este software son software de código abierto; usted puede redistribuirlo y / o modificarlo bajo los términos de la Licencia Pública General GNU versión 2, publicada por la Free Software Foundation."
+
+msgid "loading"
+msgstr "cargando"
+
+msgid "Location"
+msgstr "Localización"
+
+msgid "Locked"
+msgstr "Bloqueado"
+
+msgid "MAC address"
+msgstr "Dirección MAC"
+
+msgid "Main"
+msgstr "Principal"
+
+msgid "Minute"
+msgstr "Minuto"
+
+msgid "Model"
+msgstr "Modelo"
+
+msgid "Movielist"
+msgstr "Lista de Películas"
+
+msgid "Movies"
+msgstr "Películas"
+
+msgid "MultiEPG"
+msgstr "MultiEPG"
+
+msgid "Name"
+msgstr "Nombre"
+
+msgid "Namespace"
+msgstr "Nombre de Espacio"
+
+msgid "Network Interface"
+msgstr "Interface de Red"
+
+msgid "no description available"
+msgstr "no hay descripción disponible"
+
+msgid "Sorry this page is not yet implemented"
+msgstr "Lo siento esta página no ha sido implementada"
+
+msgid "Nothing"
+msgstr "Nada"
+
+msgid "Nothing playing."
+msgstr "Nada que reproducir."
+
+msgid "Now"
+msgstr "Ahora"
+
+msgid "On"
+msgstr "Encendido"
+
+msgid "Open Source Web Interface for Linux set-top box"
+msgstr "Interfaz Web de Código Abierto para Decodificadores Linux"
+
+msgid "OSD"
+msgstr "OSD"
+
+msgid "Playlist"
+msgstr "Lista de Reproducción"
+
+msgid "Power Control"
+msgstr "Control de Encendido"
+
+msgid "Provider"
+msgstr "Proveedor"
+
+msgid "Providers"
+msgstr "Proveedores"
+
+msgid "Radio"
+msgstr "Radio"
+
+msgid "Reboot Box"
+msgstr "Reiniciar Deco"
+
+msgid "Recording Status"
+msgstr "Estado de Grabación"
+
+msgid "Refresh"
+msgstr "Refrescar"
+
+msgid "Refresh automatically every"
+msgstr "Actualizar automáticamente cada"
+
+msgid "Remote"
+msgstr "Control Remoto"
+
+msgid "Repeated"
+msgstr "Repetir"
+
+msgid "Restart GUI"
+msgstr "Reiniciar Interfaz"
+
+msgid "running"
+msgstr "corriendo"
+
+msgid "Satellites"
+msgstr "Satelites"
+
+msgid "Satfinder"
+msgstr "Buscador de Satelite"
+
+msgid "Screenshot"
+msgstr "Captura de Pantalla"
+
+msgid "Search"
+msgstr "Buscar"
+
+msgid "Search IMDb"
+msgstr "Buscar en IMDb"
+
+msgid "seconds"
+msgstr "segundos"
+
+msgid "Send Message"
+msgstr "Enviar Mensage"
+
+msgid "Send a Message"
+msgstr "Enviar un Mensage"
+
+msgid "Service"
+msgstr "Servicio"
+
+msgid "Settings"
+msgstr "Configuración"
+
+msgid "(shift + click for long pressure)"
+msgstr "(shift + click para una larga presión)"
+
+msgid "Show Full OpenWebif"
+msgstr "Ver OpenWebif Completo"
+
+msgid "Show full remote"
+msgstr "Ver control remoto completo"
+
+msgid "Show EPG for"
+msgstr "Ver EPG para"
+
+msgid "Shutdown"
+msgstr "Apagar"
+
+msgid "Site and sources"
+msgstr "Sitio y fuentes"
+
+msgid "SNR"
+msgstr "SNR"
+
+msgid "Software"
+msgstr "Software"
+
+msgid "Standby"
+msgstr "Modo de Espera"
+
+msgid "Standby Toggle"
+msgstr "Activar Reposo"
+
+msgid "Start time is after end time"
+msgstr "La hora de inicio es después de la hora de finalización"
+
+msgid "Start Instant Record"
+msgstr "Iniciar Grabación Instantánea"
+
+msgid "Stream"
+msgstr "Stream"
+
+msgid "Subnet mask"
+msgstr "Mascara de Red"
+
+msgid "Subservices"
+msgstr "Subservicios"
+
+msgid "Tags"
+msgstr "Etiquetas"
+
+msgid "Teletext"
+msgstr "Teletexto"
+
+msgid "Television"
+msgstr "Televisión"
+
+msgid "Template Engine"
+msgstr "Motor de la Plantilla"
+
+msgid "Text"
+msgstr "Texto"
+
+msgid "Time"
+msgstr "Tiempo"
+
+msgid "Timeout"
+msgstr "Tiempo de Espera"
+
+msgid "Timer added"
+msgstr "Añadir grabación"
+
+msgid "Timerlist"
+msgstr "Lista de Grabaciones"
+
+msgid "Timer"
+msgstr "Grabación"
+
+msgid "Timers"
+msgstr "Grabaciones"
+
+msgid "Title"
+msgstr "Titulo"
+
+msgid "Total Memory"
+msgstr "Memoria Total"
+
+msgid "Tuner Bit Error Rate BER"
+msgstr "Bit de Tasa de Error del sintonizador BER"
+
+msgid "Tuner Number (0-3)"
+msgstr "Numero de Sintonizador (0-3)"
+
+msgid "Tuner Signal"
+msgstr "Señal del Sintonizador"
+
+msgid "Tuner Signal Quality SNR"
+msgstr "Calidad de Señal del Sintonizador SNR"
+
+msgid "Tuner Signal Quality SNR_DB"
+msgstr "Calidad de Señal del Sintonizador SNR DB"
+
+msgid "Tuner Signal Power AGC"
+msgstr "Potencia de Señal del Sintonizador AGC"
+
+msgid "Tuner Type"
+msgstr "Tipo de Sintonizador"
+
+msgid "Tuners"
+msgstr "Sintonizadores"
+
+msgid "TV"
+msgstr "TV"
+
+msgid "TV Multi EPG"
+msgstr "TV Multi EPG"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Upcoming Events"
+msgstr "Próximos Eventos"
+
+msgid "Version"
+msgstr "Versión"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Video Height"
+msgstr "Alto de Video"
+
+msgid "Video Wide"
+msgstr "Video Camara"
+
+msgid "Video Width"
+msgstr "Ancho de Video"
+
+msgid "Volume"
+msgstr "Volumen"
+
+msgid "Volume Control"
+msgstr "Control Volumen"
+
+msgid "waiting"
+msgstr "esperando"
+
+msgid "Warning"
+msgstr "Advertencia"
+
+msgid "Yes/No"
+msgstr "Si/No"
+
+msgid "Zap"
+msgstr "Saltar"
+
+msgid "zap before Stream"
+msgstr "Saltar antes del Stream"
+
+msgid "Zap to"
+msgstr "Saltar a"
+
+msgid "Zapped to"
+msgstr "Saltado a"
+
+msgid "LCD4Linux Setup"
+msgstr "Configurar LCD4Linux"
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr "Falta parámetro obligatorio '%s'"
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr "El parámetro '%s' no puede estar vacio"
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr "Formato de parámetros incorrecto 'set=%s'. Usa set=set15"
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr "Comando del Volumen Desconocido %s"
+
+msgid "The parameter 'command' must be a number"
+msgstr "El parámetro 'comando' deber ser un número"
+
+#, python-format
+msgid "type %s is not a number"
+msgstr "El tipo %s no es un número"
+
+msgid "New"
+msgstr "Nuevo"
+
+msgid "Services"
+msgstr "Servicios"
+
+msgid "Cable"
+msgstr "Cable"
+
+msgid "Terrestrial"
+msgstr "Terrestre"
+
+msgid "W"
+msgstr "W"
+
+msgid "E"
+msgstr "E"
+
+msgid "Message sent successfully!"
+msgstr "¡Mensage enviado correctamente!"
+
+msgid "No answer in time"
+msgstr "Sin respuesta en el tiempo de espera..."
+
+msgid "Answer is YES!"
+msgstr "¡La respuesta es SI!"
+
+msgid "Answer is NO!"
+msgstr "¡La respuesta es NO!"
+
+msgid "messageSentResponse"
+msgstr "messageSentResponse_hsa"
+
+msgid "Root"
+msgstr "Carpeta Raíz"
