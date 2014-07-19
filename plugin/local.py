@@ -209,4 +209,11 @@ tstrings = {'mo': _("Mo"),
 	'zapbeforestream': _("zap before Stream"),
 	'zap_to': _("Zap to"),
 	'zapped_to': _("Zapped to"),
-	}
+ 	'translation_spanish': _('Translation to Spanish'),
+ 	'license_text_01':	_('All Files of this Software are open source software;'),
+ 	'license_text_02': _('you can redistribute it and/or modify it under the'),
+	 'license_text_03': _('terms of the GNU General Public License version 2 as'),
+ 	'license_text_04': _('published by the Free Software Foundation.'),
+ 	'license_text_m': _('All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation.'),
+ 	'messageSentResponse': _('messageSentResponse'),
+ 	'Root': _('Root'),}
