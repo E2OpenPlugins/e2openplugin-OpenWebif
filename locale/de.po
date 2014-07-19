@@ -704,3 +704,21 @@ msgstr "W"
 
 msgid "E"
 msgstr "O"
+
+msgid "Message sent successfully!"
+msgstr "Nachricht erfolgreich verschickt!"
+
+msgid "No answer in time"
+msgstr "Keine rechtzeitige Antwort"
+
+msgid "Answer is YES!"
+msgstr "Antwort lautet JA!"
+
+msgid "Answer is NO!"
+msgstr "Antwort lautet NEIN!"
+
+msgid "messageSentResponse"
+msgstr "messageSentResponse_hsa"
+
+msgid "Root"
+msgstr "Root"
