@@ -162,6 +162,12 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 				"result": False,
 				"message": "Conflicting Timer(s) detected! %s" % " / ".join(errors)
 			}
+		#VPS
+		if vpsinfo is not None:
+			timer.vpsplugin_enabled = vpsinfo["vpsplugin_enabled"]
+			timer.vpsplugin_overwrite = vpsinfo["vpsplugin_overwrite"]
+			timer.vpsplugin_time = vpsinfo["vpsplugin_time"]
+
 	except Exception, e:
 		print e
 		return {
