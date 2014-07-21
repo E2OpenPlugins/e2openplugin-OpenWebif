@@ -74,9 +74,9 @@ def getTimers(session):
 		vpsplugin_overwrite = False
 		vpsplugin_time = -1
 		if hasattr(timer, "vpsplugin_enabled"):
-			vpsplugin_enabled = True
+			vpsplugin_enabled = True if timer.vpsplugin_enabled else False
 		if hasattr(timer, "vpsplugin_overwrite"):
-			vpsplugin_overwrite = True
+			vpsplugin_overwrite = True if timer.vpsplugin_overwrite else False
 		if hasattr(timer, "vpsplugin_time"):
 			vpsplugin_time = timer.vpsplugin_time
 			if not vpsplugin_time:
