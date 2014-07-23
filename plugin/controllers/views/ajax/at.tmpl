@@ -966,23 +966,44 @@ function saveAT()
 
 	var reqs = "/autotimer/edit?";
 
-	reqs = "match=" + encodeURIComponent(CurrentAT.match);
-	reqs = "&name=" + encodeURIComponent(CurrentAT.name);
-	reqs = "&enabled=" + (CurrentAT.enabled) ? 1 : 0;
-	reqs = "&justplay=" + (CurrentAT.justplay) ? 1 : 0;
-	reqs = "&setEndtime=" + (CurrentAT.setEndtime) ? 1 : 0;
-	reqs = "&searchCase=" + CurrentAT.searchCase;
-	reqs = "&overrideAlternatives=" + (CurrentAT.overrideAlternatives) ? 1 : 0;
-	reqs = "&avoidDuplicateDescription=" + CurrentAT.avoidDuplicateDescription;
-	reqs = "&searchForDuplicateDescription=" + CurrentAT.searchForDuplicateDescription;
-	reqs = "&location=" + encodeURIComponent(CurrentAT.location);
-	reqs = "&searchType=" + CurrentAT.searchType;
+	reqs += "match=" + encodeURIComponent(CurrentAT.match);
+	reqs += "&name=" + encodeURIComponent(CurrentAT.name);
+	reqs += "&enabled=" + (CurrentAT.enabled) ? 1 : 0;
+	reqs += "&justplay=" + (CurrentAT.justplay) ? 1 : 0;
+	reqs += "&setEndtime=" + (CurrentAT.setEndtime) ? 1 : 0;
+	reqs += "&searchCase=" + CurrentAT.searchCase;
+	reqs += "&overrideAlternatives=" + (CurrentAT.overrideAlternatives) ? 1 : 0;
+	reqs += "&avoidDuplicateDescription=" + CurrentAT.avoidDuplicateDescription;
+	reqs += "&searchForDuplicateDescription=" + CurrentAT.searchForDuplicateDescription;
+	reqs += "&location=" + encodeURIComponent(CurrentAT.location);
+	reqs += "&searchType=" + CurrentAT.searchType;
 
-// TODO: check and add the rest
+	reqs += "&maxduration=" + (CurrentAT.maxduration > -1) ? CurrentAT.maxduration : "";
+
+	// TODO : encoding
+	//reqs += "&encoding=" + (CurrentAT.encoding) ? encodeURIComponent(CurrentAT.name) : encodeURIComponent("UTF-8");
+
+	if(CurrentAT.offsetAfter > -1 && CurrentAT.offsetBefore > -1)
+		reqs += "&offset=" + CurrentAT.offsetBefore + "," CurrentAT.offsetAfter;
+	else
+		reqs += "&offset=";
+
+// TODO: timeSpan format hh:mm
+	if(CurrentAT.timeSpan)
+		reqs += "&timespanFrom=" + CurrentAT.from + "&timespanTo=" + CurrentAT.to;
+	else
+		reqs += "&timespanFrom=&timespanTo=";
+
+	if(this.timeFrame)
+		reqs += "&before=" + CurrentAT.before + "&after=" + CurrentAT.after;
+	else
+		reqs += "&before=&after=";
+
+// TODO: filter , tags , bq , channels
 
 	// if change
 	if(CurrentAT.id!=-1)
-		regs = "&id=" + CurrentAT.id;
+		regs += "&id=" + CurrentAT.id;
 
 		$.ajax({
 			type: "GET", url: reqs,
