@@ -52,7 +52,7 @@ class BQEWebController(BaseController):
 	def P_addbouquet(self, request):
 		self.withMainTemplate = False
 		try:
-			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_BOUQUET)
 			bqe.handleCommand(self.buildCommand('name,mode',request.args))
 			return self.returnResult(request, bqe.result)
@@ -62,7 +62,7 @@ class BQEWebController(BaseController):
 	def P_removebouquet(self, request):
 		self.withMainTemplate = False
 		try:
-			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.REMOVE_BOUQUET)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,mode',request.args))
 			return self.returnResult(request, bqe.result)
@@ -72,7 +72,7 @@ class BQEWebController(BaseController):
 	def P_movebouquet(self, request):
 		self.withMainTemplate = False
 		try:
-			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.MOVE_BOUQUET)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,mode,position',request.args))
 			return self.returnResult(request, bqe.result)
@@ -82,7 +82,7 @@ class BQEWebController(BaseController):
 	def P_addmarkertobouquet(self, request):
 		self.withMainTemplate = False
 		try:
-			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_MARKER_TO_BOUQUET)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,Name,sRefBefore',request.args))
 			return self.returnResult(request, bqe.result)
@@ -92,7 +92,7 @@ class BQEWebController(BaseController):
 	def P_addservicetobouquet(self, request):
 		self.withMainTemplate = False
 		try:
-			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_SERVICE_TO_BOUQUET)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef,sRefBefore',request.args))
 			return self.returnResult(request, bqe.result)
@@ -102,7 +102,7 @@ class BQEWebController(BaseController):
 	def P_addprovidertobouquetlist(self, request):
 		self.withMainTemplate = False
 		try:
-			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_PROVIDER_TO_BOUQUETLIST)
 			bqe.handleCommand(self.buildCommand('sProviderRef,mode',request.args))
 			return self.returnResult(request, bqe.result)
@@ -112,7 +112,7 @@ class BQEWebController(BaseController):
 	def P_addservicetoalternative(self, request):
 		self.withMainTemplate = False
 		try:
-			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_SERVICE_TO_ALTERNATIVE)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,sCurrentRef,sRef,mode',request.args))
 			return self.returnResult(request, bqe.result)
@@ -122,7 +122,7 @@ class BQEWebController(BaseController):
 	def P_moveservice(self, request):
 		self.withMainTemplate = False
 		try:
-			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.MOVE_SERVICE)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef,mode,position',request.args))
 			return self.returnResult(request, bqe.result)
@@ -132,7 +132,7 @@ class BQEWebController(BaseController):
 	def P_removeservice(self, request):
 		self.withMainTemplate = False
 		try:
-			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.REMOVE_SERVICE)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef',request.args))
 			return self.returnResult(request, bqe.result)
@@ -142,7 +142,7 @@ class BQEWebController(BaseController):
 	def P_renameservice(self, request):
 		self.withMainTemplate = False
 		try:
-			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.RENAME_SERVICE)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef,sRefBefore,newName,mode',request.args))
 			return self.returnResult(request, bqe.result)
@@ -152,7 +152,7 @@ class BQEWebController(BaseController):
 	def P_Removealternativeservices(self, request):
 		self.withMainTemplate = False
 		try:
-			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.REMOVE_ALTERNATIVE_SERVICES)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef',request.args))
 			return self.returnResult(request, bqe.result)
@@ -162,7 +162,7 @@ class BQEWebController(BaseController):
 	def P_togglelock(self, request):
 		self.withMainTemplate = False
 		try:
-			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.TOGGLE_LOCK)
 			bqe.handleCommand(self.buildCommand('sRef,password',request.args))
 			return self.returnResult(request, bqe.result)
@@ -172,7 +172,7 @@ class BQEWebController(BaseController):
 	def P_backup(self, request):
 		self.withMainTemplate = False
 		try:
-			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.BACKUP)
 			bqe.handleCommand(request.args['Filename'][0])
 			return self.returnResult(request, bqe.result)
@@ -182,7 +182,7 @@ class BQEWebController(BaseController):
 	def P_restore(self, request):
 		self.withMainTemplate = False
 		try:
-			from Plugins.Extensions.WebBouquetEditor.WebComponents.Sources.BouquetEditor import BouquetEditor
+			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.RESTORE)
 			bqe.handleCommand(request.args['Filename'][0])
 			return self.returnResult(request, bqe.result)

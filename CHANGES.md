@@ -1,3 +1,15 @@
+## Version 0.3.0
+**FEATURES**
+* mobile interface timer add/delete
+* spanish translation
+* prepare autotimer API
+* prepare bouqueteditor API
+
+**FIXES**
+* vps plugin API
+* epgrefresh API
+* mobile interface zap channel
+
 ## Version 0.2.9
 **FEATURES**
 * add gzip high speed epg requests
