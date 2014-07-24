@@ -8,7 +8,7 @@
  *--------------------------------------------------------------------------*/
 
 $.fx.speeds._default = 1000;
-var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>"
+var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>";
 var mutestatus = 0;
 var lastcontenturl = null;
 
@@ -26,14 +26,14 @@ $(function() {
 	});
 
 	$('#volimage').click(function(){
-		if (mutestatus == 0) {
+		if (mutestatus === 0) {
 			mutestatus = 1;
 			$("#volimage").attr("src","/images/volume_mute.png");
 		} else  {
 			mutestatus = 0;
 			$("#volimage").attr("src","/images/volume.png");
 		}
-		$.ajax("web/vol?set=mute")
+		$.ajax("web/vol?set=mute");
 	});
 	
 	getStatusInfo();
@@ -57,7 +57,7 @@ $(function() {
 				$("#volimage").attr("src","/images/volume.png");
 			} 
 			var url = "web/vol?set=set" + ui.value;
-			var jqxhr = $.ajax( url )
+			var jqxhr = $.ajax( url );
 			return false;
 		}
 	});
@@ -114,7 +114,7 @@ $(function() {
             }, 250);
         }
 
-        if (win && win.focus) win.focus();
+        if (win && win.focus) { win.focus(); }
 
         return win;
     };
@@ -126,7 +126,7 @@ $(function() {
             icons: {
                 primary: "ui-icon-search"
             }
-        })
+        });
 });
 
 function initJsTranslation(strings) {
@@ -141,12 +141,12 @@ function initJsTranslation(strings) {
 	tstr_minute = strings.minute;
 	tstr_nothing_play = strings.nothing_play;
 	tstr_now = strings.now;
-	tstr_on = strings.on
-	tstr_rec_status = strings.rec_status
-	tstr_standby = strings.standby
+	tstr_on = strings.on;
+	tstr_rec_status = strings.rec_status;
+	tstr_standby = strings.standby;
 	tstr_start_after_end = strings.start_after_end;
 	tstr_time = strings.time;
-	tstr_zap_to = strings.zap_to
+	tstr_zap_to = strings.zap_to;
 	
 	tstr_january = strings.month_01;
 	tstr_february = strings.month_02;
@@ -196,7 +196,7 @@ function load_tvcontent_spin(url) {
 function load_maincontent(url) {
 	if (lastcontenturl != url) {
 		$("#content_container").load(url);
-		lastcontenturl = url
+		lastcontenturl = url;
 	}
 	return false;
 }
@@ -204,18 +204,16 @@ function load_maincontent(url) {
 function load_maincontent_spin(url) {
 	if (lastcontenturl != url) {
 		$("#content_container").html(loadspinner).load(url);
-		lastcontenturl = url
+		lastcontenturl = url;
 	}
 	return false;
 }
 
 function webapi_execute(url, callback) {
-	var jqxhr = $.ajax( url )
-    	.done(function() { 
+	var jqxhr = $.ajax( url ).done(function() { 
     		if (typeof callback !== 'undefined') {
     			callback();
     		}
-    		// alert(jqxhr.responseXml); 
     	});
 	return false;
 }
@@ -233,7 +231,7 @@ function open_epg_pop(sRef) {
 		height: 500,
 		width: 900,
 		toolbar: false,
-		scrollbars: true,
+		scrollbars: true
 	});	
 }
 
@@ -245,7 +243,7 @@ function open_epg_search_pop() {
 		height: 500,
 		width: 900,
 		toolbar: false,
-		scrollbars: true,
+		scrollbars: true
 	});
 	$("#epgSearch").val("");
 }
@@ -263,8 +261,7 @@ function toggleTimerStatus(sRef, begin, end) {
 }
 
 function deleteTimer(sRef, begin, end, title) {
-	var answer = confirm(tstr_del_timer + ": " + title);
-	if (answer == true) {
+	if (confirm(tstr_del_timer + ": " + title) === true) {
 		webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end, 
 			function() { $('#'+begin+'-'+end).remove(); } 
 		);
@@ -276,8 +273,7 @@ function cleanupTimer() {
 }
 
 function deleteMovie(sRef, divid, title) {
-	var answer = confirm(tstr_del_movie + ": " + title);
-	if (answer == true) {
+	if (confirm(tstr_del_movie + ": " + title) === true) {
 		webapi_execute("/api/moviedelete?sRef=" + sRef);
 		// TODO: check the api result first
 		$('#' + divid).remove();
@@ -299,8 +295,7 @@ function toggleStandby() {
 
 function getStatusInfo() {
 	$.ajaxSetup({ cache: false });
-	$.getJSON('/api/statusinfo')
-	.success(function(statusinfo) {
+	$.getJSON('/api/statusinfo').success(function(statusinfo) {
 		// Set Volume
 		$("#slider").slider("value", statusinfo['volume']);
 		$("#amount").val(statusinfo['volume']);
@@ -332,8 +327,7 @@ function getStatusInfo() {
 			status = status + "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_on.png' title='" + tstr_standby + "' alt='" + tstr_on + "'/></a>";
 		}
 		$("#osd_status").html(status);
-	})
-	.error(function() {
+	}).error(function() {
 		$("#osd, #osd_bottom").html("");
 	});
 }
@@ -349,18 +343,17 @@ function grabScreenshot(mode) {
 	  $('#screenshotimage').show();
 	});
 
-	if (mode != "auto")
+	if (mode != "auto") {
 		screenshotMode = mode;
-	else
+	} else {
 		mode = screenshotMode;
-	
+	}
 	timestamp = new Date().getTime();
-	if (($('#screenshotRefreshHD').is(':checked')))
-		$('#screenshotimage')
-			.attr("src",'/grab?format=jpg&mode=' + mode + '&timestamp=' + timestamp);
-	else
-		$('#screenshotimage')
-			.attr("src",'/grab?format=jpg&r=700&mode=' + mode + '&timestamp=' + timestamp);
+	if (($('#screenshotRefreshHD').is(':checked'))){
+		$('#screenshotimage').attr("src",'/grab?format=jpg&mode=' + mode + '&timestamp=' + timestamp);
+	} else {
+		$('#screenshotimage').attr("src",'/grab?format=jpg&r=700&mode=' + mode + '&timestamp=' + timestamp);
+	}
 	$('#screenshotimage').attr("width",700);
 }
 
@@ -401,17 +394,17 @@ function sendMessage() {
 }
 
 function toggleMenu(name) {
-	var expander_id = "#leftmenu_expander_" + name
-	var container_id = "#leftmenu_container_" + name
+	var expander_id = "#leftmenu_expander_" + name;
+	var container_id = "#leftmenu_container_" + name;
 	if ($(expander_id).hasClass("leftmenu_icon_collapse")) {
 		$(expander_id).removeClass("leftmenu_icon_collapse");
-		$(container_id).show('fast')
-		webapi_execute("/api/expandmenu?name=" + name)
+		$(container_id).show('fast');
+		webapi_execute("/api/expandmenu?name=" + name);
 	}
 	else {
 		$(expander_id).addClass("leftmenu_icon_collapse");
-		$(container_id).hide('fast')
-		webapi_execute("/api/collapsemenu?name=" + name)
+		$(container_id).hide('fast');
+		webapi_execute("/api/collapsemenu?name=" + name);
 	}
 }
 
@@ -444,21 +437,24 @@ $(window).keydown(function(evt) {
 function callScreenShot(){
 	if ($('input[name=remotegrabscreen]').is(':checked'))
 	{
-		if (lastcontenturl == 'ajax/screenshot')
+		if (lastcontenturl == 'ajax/screenshot') {
 			grabScreenshot(screenshotMode);
-		else
+		} else {
 			load_maincontent('ajax/screenshot');
+		}
 	}
 }
 
 var grabTimer = 0;
 function pressMenuRemote(code) {
-	if (shiftbutton)
+	if (shiftbutton) {
 		webapi_execute("/api/remotecontrol?type=long&command=" + code);
-	else
+	} else {
 		webapi_execute("/api/remotecontrol?command=" + code);
-	if (grabTimer > 0)
+	}
+	if (grabTimer > 0) {
 		clearTimeout(grabTimer);
+	}
 	grabTimer = setTimeout("callScreenShot()", 1000);
 }
 
@@ -476,11 +472,12 @@ function saveConfig(key, value) {
 }
 
 function numberTextboxKeydownFilter(event) {
-	if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9)
+	if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9) {
 		return;
-		
-	if ((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105))
+	}
+	if ((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105)) {
 		event.preventDefault();
+	}
 }
 
 /* Timer management start */
@@ -497,19 +494,13 @@ function initTimerEdit() {
 		success: function(data) {
 			services = $.parseJSON(data);
 			if (services.result) {
-				$('#bouquet_select')
-					.find('option')
-					.remove()
-					.end();
+				$('#bouquet_select').find('option').remove().end();
 					
 				for (var id in services.services) {
 					service = services.services[id];
 					for (var id2 in service.subservices) {
 						subservice = service.subservices[id2];
-						$('#bouquet_select')
-							.append($("<option></option>")
-								.attr("value", subservice.servicereference)
-								.text(subservice.servicename));
+						$('#bouquet_select').append($("<option></option>").attr("value", subservice.servicereference).text(subservice.servicename));
 					}
 				}
 			}
@@ -522,22 +513,12 @@ function initTimerEdit() {
 		success: function(data) {
 			locs = $.parseJSON(data);
 			if (locs.result) {
-				$('#dirname')
-					.find('option')
-					.remove()
-					.end();
-					
-				$('#dirname')
-					.append($("<option></option>")
-						.attr("value", "None")
-						.text("Default"));
+				$('#dirname').find('option').remove().end();
+				$('#dirname').append($("<option></option>").attr("value", "None").text("Default"));
 						
 				for (var id in locs.locations) {
 					loc = locs.locations[id];
-					$('#dirname')
-						.append($("<option></option>")
-							.attr("value", loc)
-							.text(loc));
+					$('#dirname').append($("<option></option>").attr("value", loc).text(loc));
 				}
 			}
 		}
@@ -551,12 +532,9 @@ function initTimerEdit() {
 			if (tags.result) {
 				for (var id in tags.tags) {
 					tag = tags.tags[id];
-					$('#tagsnew')
-						.append("<input type='checkbox' name='tagsnew' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
+					$('#tagsnew').append("<input type='checkbox' name='tagsnew' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
 				}
-				
 				$('#tagsnew').buttonset();
-
 			}
 		}
 	});
@@ -570,8 +548,9 @@ function editTimer(serviceref, begin, end) {
 	current_begin = begin;
 	current_end = end;
 	
-	if (!timeredit_initialized)
+	if (!timeredit_initialized) {
 		initTimerEdit();
+	}
 	
 	$.ajax({
 		async: false,
@@ -602,8 +581,8 @@ function editTimer(serviceref, begin, end) {
 							
 							$('#tagsnew').find('input').attr('checked',false);
 							var tags = timer.tags.split(' ');
-							for (var i=0; i<tags.length; i++) {
-								$('#tag_'+tags[i]).attr('checked', true);
+							for (var j=0; j<tags.length; j++) {
+								$('#tag_'+tags[j]).attr('checked', true);
 							}
 							$('#tagsnew').buttonset('refresh');
 							
@@ -643,9 +622,9 @@ function addTimer(evt) {
 		margin_after = evt.recording_margin_after;
 	}
 	
-	if (!timeredit_initialized)
+	if (!timeredit_initialized) {
 		initTimerEdit();
-		
+	}	
 	$('#timername').val(title);
 	$('#description').val(desc);
 	$('#dirname').val("None");
@@ -654,7 +633,9 @@ function addTimer(evt) {
 	$('#afterevent').val(3);
 	$('#errorbox').hide();
 
-	for (var i=0; i<7; i++) $('#day'+i).attr('checked', false);
+	for (var i=0; i<7; i++) {
+		$('#day'+i).attr('checked', false);
+	}
 	$('#repeatdays').buttonset('refresh');
 	
 	$('#tagsnew').find('input').attr('checked',false);
