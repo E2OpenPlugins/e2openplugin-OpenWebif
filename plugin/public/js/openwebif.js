@@ -367,6 +367,7 @@ function grabScreenshot(mode) {
 function getMessageAnswer() {
 	$.getJSON('/api/messageanswer', function(result){
 		$('#messageSentResponse').html(result['message']);
+		$('#messageSentResponse_hsa').html(result['message']);
 	});
 }
 
@@ -381,6 +382,7 @@ function countdowngetMessage() {
 		return;
 	}
 	$('#messageSentResponse').html('Waiting for Answer...'+MessageAnswerCounter);
+	$('#messageSentResponse_hsa').html('Esperando Respuesta... '+MessageAnswerCounter);
 	setTimeout(countdowngetMessage, 1000);
 }
 
@@ -391,6 +393,7 @@ function sendMessage() {
 
 	$.getJSON('/api/message?text=' + text + '&type=' + type + '&timeout=' + timeout, function(result){
 		$('#messageSentResponse').html(result['message']);
+		$('#messageSentResponse_hsa').html(result['message']);
 		if(type==0)
 		{
 			MessageAnswerCounter=timeout;
