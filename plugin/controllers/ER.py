@@ -16,7 +16,7 @@ class ERController(resource.Resource):
 		self.session = session
 		try:
 			from Plugins.Extensions.EPGRefresh.EPGRefreshResource import EPGRefreshSettingsResource, \
-			EPGRefreshChangeSettingsResource, EPGRefreshPreviewServicesResource, \
+			EPGRefreshChangeSettingsResource, \
 			EPGRefreshListServicesResource, EPGRefreshAddRemoveServiceResource, \
 			EPGRefreshStartRefreshResource, API_VERSION
 		except ImportError:
@@ -25,9 +25,14 @@ class ERController(resource.Resource):
 		self.putChild('get', EPGRefreshSettingsResource())
 		self.putChild('set', EPGRefreshChangeSettingsResource())
 		self.putChild('refresh', EPGRefreshStartRefreshResource())
-		self.putChild('preview', EPGRefreshPreviewServicesResource())
 		self.putChild('add', EPGRefreshAddRemoveServiceResource(EPGRefreshAddRemoveServiceResource.TYPE_ADD))
 		self.putChild('del', EPGRefreshAddRemoveServiceResource(EPGRefreshAddRemoveServiceResource.TYPE_DEL))
+		try:
+			from Plugins.Extensions.EPGRefresh.EPGRefreshResource import EPGRefreshPreviewServicesResource
+		except ImportError:
+			pass
+		else:
+			self.putChild('preview', EPGRefreshPreviewServicesResource())
 
 	def render(self, request):
 		request.setResponseCode(http.OK)
