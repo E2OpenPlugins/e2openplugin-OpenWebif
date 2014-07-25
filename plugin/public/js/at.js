@@ -8,108 +8,99 @@
 
 function initValues () {
 
-var _sel1 = $('#oafter');
-var _sel2 = $('#obefore');
-var _sel3 = $('#maxduration');
-var _sel4 = $('#counter');
-var _sel5 = $('#left');
+	var _sel1 = $('#oafter');
+	var _sel2 = $('#obefore');
+	var _sel3 = $('#maxduration');
+	var _sel4 = $('#counter');
+	var _sel5 = $('#left');
 
-for (x=0;x<100;x++)
-{
-	var sx=x.toString();
-	if(x<10)
-		sx='0'+sx;
-	_sel1.append($('<option></option>').val(x).html(sx));
-	_sel2.append($('<option></option>').val(x).html(sx));
-	_sel4.append($('<option></option>').val(x).html(sx));
-	_sel5.append($('<option></option>').val(x).html(sx));
-}
+	for (x=0;x<100;x++)
+	{
+		var sx=x.toString();
+		if(x<10)
+			sx='0'+sx;
+		_sel1.append($('<option></option>').val(x).html(sx));
+		_sel2.append($('<option></option>').val(x).html(sx));
+		_sel4.append($('<option></option>').val(x).html(sx));
+		_sel5.append($('<option></option>').val(x).html(sx));
+	}
 
-for (x=0;x<1000;x++)
-{
-	var sx=x.toString();
-	if(x<10)
-		sx='0'+sx;
-	_sel3.append($('<option></option>').val(x).html(sx));
-}
-$('#oafter').val('5');
-$('#obefore').val('5');
-$('#maxduration').val('70');
+	for (x=0;x<1000;x++)
+	{
+		var sx=x.toString();
+		if(x<10)
+			sx='0'+sx;
+		_sel3.append($('<option></option>').val(x).html(sx));
+	}
+	$('#oafter').val('5');
+	$('#obefore').val('5');
+	$('#maxduration').val('70');
 
-var _dateb = new Date();
-var _db = $.datepicker.formatDate('dd.mm.yy', _dateb);
-$('#before').val(_db);
+	var _dateb = new Date();
+	var _db = $.datepicker.formatDate('dd.mm.yy', _dateb);
+	$('#before').val(_db);
 
-var _datea = new Date();
-_datea.setDate(_dateb.getDate()+7);
-var _da = $.datepicker.formatDate('dd.mm.yy', _datea);
-$('#after').val(_da);
+	var _datea = new Date();
+	_datea.setDate(_dateb.getDate()+7);
+	var _da = $.datepicker.formatDate('dd.mm.yy', _datea);
+	$('#after').val(_da);
+	$('#from').val('20:15');
+	$('#to').val('23:15');
+	$('#aefrom').val('20:15');
+	$('#aeto').val('23:15');
 
-$('#from').val('20:15');
-$('#to').val('23:15');
-
-$('#aefrom').val('20:15');
-$('#aeto').val('23:15');
-
-$('#after').datepicker({
+	$('#after').datepicker({
 	
-	closeText: tstr_done,
-	monthNames: [tstr_january, tstr_february, tstr_march, tstr_april, tstr_may, tstr_june, tstr_july, tstr_august, tstr_september, tstr_october, tstr_november, tstr_december],
-	dayNames: [tstr_sunday, tstr_monday, tstr_tuesday, tstr_wednesday, tstr_thursday, tstr_friday, tstr_saturday, tstr_sunday],
-	dayNamesMin: [tstr_su, tstr_mo, tstr_tu, tstr_we, tstr_th, tstr_fr, tstr_sa, tstr_su],
-	
-	dateFormat: 'dd.mm.yy',
-	onClose: function(dateText, inst) {
-		if ($('#after').val() != '' &&
-			$(this).datepicker('getDate') < $('#before').datepicker('getDate')) {
+		closeText: tstr_done,
+		monthNames: [tstr_january, tstr_february, tstr_march, tstr_april, tstr_may, tstr_june, tstr_july, tstr_august, tstr_september, tstr_october, tstr_november, tstr_december],
+		dayNames: [tstr_sunday, tstr_monday, tstr_tuesday, tstr_wednesday, tstr_thursday, tstr_friday, tstr_saturday, tstr_sunday],
+		dayNamesMin: [tstr_su, tstr_mo, tstr_tu, tstr_we, tstr_th, tstr_fr, tstr_sa, tstr_su],
+		dateFormat: 'dd.mm.yy',
+		onClose: function(dateText, inst) {
+			if ($('#after').val() != '' && $(this).datepicker('getDate') < $('#before').datepicker('getDate')) {
 				$('#error').text(tstr_start_after_end);
 				$('#errorbox').show();
+			} else
+				$('#errorbox').hide();
 		}
-		else
-			$('#errorbox').hide();
-	}
-});
+	});
 
-$('#before').datepicker({
-	
-	closeText: tstr_done,
-	monthNames: [tstr_january, tstr_february, tstr_march, tstr_april, tstr_may, tstr_june, tstr_july, tstr_august, tstr_september, tstr_october, tstr_november, tstr_december],
-	dayNames: [tstr_sunday, tstr_monday, tstr_tuesday, tstr_wednesday, tstr_thursday, tstr_friday, tstr_saturday, tstr_sunday],
-	dayNamesMin: [tstr_su, tstr_mo, tstr_tu, tstr_we, tstr_th, tstr_fr, tstr_sa, tstr_su],
-	
-	dateFormat: 'dd.mm.yy',
-	onClose: function(dateText, inst) {
-		if ($('#before').val() != '' &&
-			$(this).datepicker('getDate') > $('#after').datepicker('getDate')) {
+	$('#before').datepicker({
+		closeText: tstr_done,
+		monthNames: [tstr_january, tstr_february, tstr_march, tstr_april, tstr_may, tstr_june, tstr_july, tstr_august, tstr_september, tstr_october, tstr_november, tstr_december],
+		dayNames: [tstr_sunday, tstr_monday, tstr_tuesday, tstr_wednesday, tstr_thursday, tstr_friday, tstr_saturday, tstr_sunday],
+		dayNamesMin: [tstr_su, tstr_mo, tstr_tu, tstr_we, tstr_th, tstr_fr, tstr_sa, tstr_su],
+		dateFormat: 'dd.mm.yy',
+		onClose: function(dateText, inst) {
+			if ($('#before').val() != '' && $(this).datepicker('getDate') > $('#after').datepicker('getDate')) {
 				$('#error').text(tstr_start_after_end);
 				$('#errorbox').show();
+			}
+			else
+				$('#errorbox').hide();
 		}
-		else
-			$('#errorbox').hide();
-	}
-});
-
-
-$('.date').each(function(index,element){
-	$('<span style="display: inline-block">').addClass('ui-icon ui-icon-calendar').insertAfter(element).position({
-	of: element
-	,my: 'right top'
-	,at: 'right top+2'
 	});
-});
 
-$('.time').each(function(index,element){
-	$('<span style="display: inline-block">').addClass('ui-icon ui-icon-clock').insertAfter(element).position({
-	of: element
-	,my: 'right top'
-	,at: 'right top+2'
+	$('.date').each(function(index,element){
+		$('<span style="display: inline-block">').addClass('ui-icon ui-icon-calendar').insertAfter(element).position({
+			of: element
+			,my: 'right top'
+			,at: 'right top+2'
+		});
 	});
-});
 
-$("#bouquets").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
-$("#bouquets").chosen().change( function() {$("#bouquets").val($(this).val());});
-$("#channels").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
-$("#channels").chosen().change( function() {$("#channels").val($(this).val());});
+	$('.time').each(function(index,element){
+		$('<span style="display: inline-block">').addClass('ui-icon ui-icon-clock').insertAfter(element).position({
+			of: element
+			,my: 'right top'
+			,at: 'right top+2'
+		});
+	});
+
+	$("#bouquets").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
+	$("#bouquets").chosen().change( function() {$("#bouquets").val($(this).val());});
+	$("#channels").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
+	$("#channels").chosen().change( function() {$("#channels").val($(this).val());});
 
 // TODO : other time/date picker fields
 
@@ -201,79 +192,55 @@ function checkValues () {
 
 }
 
-$(document).ready(function() {
+function InitPage() {
 
-$('#timeSpan').click(function() { 
+	$('#timeSpan').click(function() { checkValues();});
+	$('#timeSpanAE').click(function() { checkValues();});
+	$('#timeFrame').click(function() { checkValues();});
+	$('#timerOffset').click(function() { checkValues();});
+	$('#maxDuration').click(function() { checkValues();});
+	$('#Location').click(function() { checkValues();});
+	$('#Bouquets').click(function() { checkValues();});
+	$('#Channels').click(function() { checkValues();});
+	$('#Filter').click(function() { checkValues();});
+	$("#AddFilter").click(function(){AddFilter("","","");});
+	$('#afterevent').change(function () {checkValues();});
+	$('#counter').change(function () {checkValues();});
+	
+	initValues ();
 	checkValues();
-});
-$('#timeSpanAE').click(function() { 
-	checkValues();
-});
-$('#timeFrame').click(function() { 
-	checkValues();
-});
-$('#timerOffset').click(function() { 
-	checkValues();
-});
-$('#maxDuration').click(function() { 
-	checkValues();
-});
-$('#Location').click(function() { 
-	checkValues();
-});
-$('#Bouquets').click(function() { 
-	checkValues();
-});
-$('#Channels').click(function() { 
-	checkValues();
-});
-$('#Filter').click(function() { 
-	checkValues();
-});
-$("#AddFilter").click(function(){
-	AddFilter("","","");
-});
-$('#afterevent').change(function () {
-	checkValues();
-});
-$('#counter').change(function () {
-	checkValues();
-});
+	readAT();
 
-initValues ();
+	$( "#atlist" ).selectable({
+		selected: function( event, ui ) {
+			var ids = $('#atlist .ui-selected').map(function() {
+				FillAT($(this).data('id'));
+			});
+		}
+	});
 
-checkValues();
+	getData();
 
-readAT();
+	$( "#actions" ).buttonset();
+	$("#atbutton0").click(function () { addAT(); });
+	$("#atbutton0" ).button({icons: { primary: "ui-icon-plus"}});
+	$("#atbutton1").click(function () { delAT(); });
+	$("#atbutton1" ).button({icons: { primary: "ui-icon-minus"}});
+	$("#atbutton2").click(function () { reloadAT(); });
+	$("#atbutton2").button({icons: { primary: "ui-icon-arrowrefresh-1-w"}});
+	$("#atbutton3").click(function () { saveAT(); });
+	$("#atbutton3").button({icons: { primary: "ui-icon-disk"}});
+	$("#atbutton4").click(function () { parseAT(); });
+	// TODO: parse icon
+	//$("#atbutton4").button({icons: { primary: "ui-icon-disk"}});
 
-$( "#atlist" ).selectable({
-	selected: function( event, ui ) {
-		var ids = $('#atlist .ui-selected').map(function() {
-			FillAT($(this).data('id'));
-		});
-	}
-});
-
-getData();
-
-$( "#actions" ).buttonset();
-$("#atbutton0").click(function () { addAT(); });
-$("#atbutton0" ).button({icons: { primary: "ui-icon-plus"}});
-$("#atbutton1").click(function () { delAT(); });
-$("#atbutton1" ).button({icons: { primary: "ui-icon-minus"}});
-$("#atbutton2").click(function () { reloadAT(); });
-$("#atbutton2").button({icons: { primary: "ui-icon-arrowrefresh-1-w"}});
-$("#atbutton3").click(function () { saveAT(); });
-$("#atbutton3").button({icons: { primary: "ui-icon-disk"}});
-$("#atbutton4").click(function () { parseAT(); });
-// TODO: parse icon
-//$("#atbutton4").button({icons: { primary: "ui-icon-disk"}});
-
-$('#errorbox').hide();
-
-});
+	$('#errorbox').hide();
+}
 
 var atxml;
+var BQs;
+var CurrentAT = null;
+var dencoding = null;
 
 function isBQ(sref)
 {
@@ -283,20 +250,18 @@ function isBQ(sref)
 // parse and create AT List
 function Parse() {
 	
-	$( "#atlist" ).empty();
-	
+	$("#atlist").empty();
 	$(atxml).find("timer").each(function () {
-		$( "#atlist" ).append($('<li></li>').html($(this).attr("name")).addClass('ui-widget-content').data('id',$(this).attr("id")));
+		$("#atlist").append($("<li></li>").html($(this).attr("name")).addClass('ui-widget-content').data('id',$(this).attr("id")));
 	});
 	
-	var item = $('#atlist').find('li').first();
+	var item = $("#atlist").find("li").first();
 	if(item) {
 		FillAT(item.data('id'));
 		item.addClass('ui-selected');
 	}
 }
 
-var BQs;
 
 function getData()
 {
@@ -321,7 +286,6 @@ function isInArray(array, search) { return (array.indexOf(search) >= 0) ? true :
 
 function getAllServices()
 {
-
 $.getJSON( "/api/getallservices", function( data ) {
 	var bqs = data['services'];
 	var options = "";
@@ -357,12 +321,13 @@ $.getJSON( "/api/getallservices", function( data ) {
 
 }
 
-var CurrentAT=null;
-var Defaults = null;
-
 function FillAT(autotimerid)
 {
-	Defaults = $(atxml).find("defaults");
+	var def = $(atxml).find("defaults");
+	if(def)
+		dencoding=def.attr("encoding");
+	if(!dencoding)
+		dencoding="UTF-8";
 
 	$(atxml).find("timer").each(function () {
 		if($(this).attr("id")==autotimerid) {
@@ -373,15 +338,11 @@ function FillAT(autotimerid)
 	checkValues ();
 }
 
-var CurrentAT;
-
 function AutoTimerObj (xml) {
 
 	this.isNew = false;
 	this.MustSave = false;
-
 	this.id = xml.attr("id");
-
 	this.enabled = (xml.attr("enabled") == "yes");
 
 	this.name = xml.attr("name");
@@ -528,11 +489,9 @@ function AutoTimerObj (xml) {
 
 	this.encoding = xml.attr("encoding");
 	if(!this.encoding) {
-		if (Defaults)
-			this.encoding = Defaults.attr("encoding");
-		if(!this.encoding)
-			this.encoding='UTF-8';
+		this.encoding = dencoding;
 	}
+
 }
 
 AutoTimerObj.prototype.UpdateUI = function(){
@@ -633,6 +592,8 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	
 	$('#counterFormat').val(this.counterFormat);
 	
+	// TODO: tags
+	
 	checkValues();
 };
 
@@ -674,7 +635,6 @@ function addAT()
 			$(this).removeClass('ui-selected');
 	});
 	
-
 }
 
 function delAT()
@@ -707,7 +667,6 @@ function delAT()
 function readAT()
 {
 	CurrentAT = null;
-	
 	$.ajax({
 		type: "GET", url: "/autotimer",
 		dataType: "xml",
@@ -715,17 +674,16 @@ function readAT()
 		{
 			atxml=xml;
 			Parse();
-		},
-		error: function (request, status, error) {
+		},error: function (request, status, error) {
+			// TODO : error handling
 			alert(request.responseText);
 		}
 	});
-	
 }
 
 function saveAT()
 {
-	if(CurrentAT && CurrentAT.MustSave)
+	if(CurrentAT) // && CurrentAT.MustSave)
 	{
 
 	var reqs = "/autotimer/edit?";
@@ -741,16 +699,14 @@ function saveAT()
 	reqs += "&searchForDuplicateDescription=" + CurrentAT.searchForDuplicateDescription;
 	reqs += "&location=" + encodeURIComponent(CurrentAT.location);
 	reqs += "&searchType=" + CurrentAT.searchType;
-
 	reqs += "&maxduration=" + (CurrentAT.maxduration > -1) ? CurrentAT.maxduration : "";
 	reqs += "&encoding=" + encodeURIComponent(CurrentAT.encoding);
 
-	if(CurrentAT.offsetAfter > -1 && CurrentAT.offsetBefore > -1)
-		reqs += "&offset=" + CurrentAT.offsetBefore + "," CurrentAT.offsetAfter;
+	if(CurrentAT.timerOffsetAfter > -1 && CurrentAT.timerOffsetBefore > -1)
+		reqs += "&offset=" + CurrentAT.timerOffsetBefore + "," + CurrentAT.timerOffsetAfter;
 	else
 		reqs += "&offset=";
 
-// TODO: timeSpan format hh:mm
 	if(CurrentAT.timeSpan)
 		reqs += "&timespanFrom=" + CurrentAT.from + "&timespanTo=" + CurrentAT.to;
 	else
@@ -761,8 +717,15 @@ function saveAT()
 	else
 		reqs += "&before=&after=";
 
-// TODO: filter , tags , bq , channels
 
+// TODO: filter , tags , bq , channels
+	console.log(this.tags);
+	console.log(this.filter);
+	console.log(this.Channels);
+	console.log(this.Bouquets);
+	
+	return;
+	
 	// if change
 	if(CurrentAT.id!=-1)
 		regs += "&id=" + CurrentAT.id;
