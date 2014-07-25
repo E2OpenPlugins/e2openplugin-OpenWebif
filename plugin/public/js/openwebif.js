@@ -176,6 +176,8 @@ function initJsTranslation(strings) {
 	tstr_fr = strings.fr;
 	tstr_sa = strings.sa;
 	tstr_su = strings.su;
+	
+	tstr_loading = strings.loading;
 }
 
 function dialog_notyet(){
@@ -654,3 +656,31 @@ function addTimer(evt) {
 }
 
 /* Timer management end */
+
+function InitAccordeon(obj)
+{
+	// init accordeon for jquery UI 1.8.x
+	$(obj).accordion({
+		active: false,
+		change: function(event, ui) {
+			ui.oldContent.empty();
+			ui.oldContent.html(tstr_loading + " ...")
+			ui.newContent.load(ui.newHeader.find('a').attr('id'));
+		},
+		autoHeight: false,
+		collapsible: true
+	});
+	// init accordeon for jquery UI 1.11.x
+	/*
+	$(obj).accordion({
+		active: true,
+		activate: function(event, ui) {
+			ui.oldPanel.empty();
+			ui.oldPanel.html(tstr_loading + " ...")
+			ui.newPanel.load(ui.newHeader.find('a').attr('id'));
+		},
+		heightStyle: "content",
+		collapsible: true
+	});
+	*/
+}

@@ -1,27 +1,13 @@
 #from urllib import quote
 #from Plugins.Extensions.OpenWebif.local import tstrings
 <script>
-	
-
-	 \$("#accordionS").accordion({
-                active:false,
-                change:function(event, ui) {
-                        ui.newContent.load(ui.newHeader.find('a').attr('id'));
-                },
-                autoHeight: false,
-		 collapsible: true
-            });
-
-
+\$(function() { InitAccordeon("#accordionS");});
 </script>
-
 <div id="accordionS">
-
 #for $satellite in $satellites
 	<h1><a href="#" id="ajax/channels?id=$quote($satellite.service)&stype=$stype">$satellite.name</a></h1>
 <div>
 $tstrings['loading'] ...
 	</div>
 #end for
-
 </div>
