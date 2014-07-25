@@ -684,3 +684,36 @@ function InitAccordeon(obj)
 	});
 	*/
 }
+
+function InitBouquets(tv)
+{
+	var mode="";
+	if (tv===true) {
+		$('#btn0').click(function(){
+			$("#tvcontent").html(loadspinner).load("ajax/current");
+		});
+		$('#btn5').click(function(){
+			$("#tvcontent").html(loadspinner).load('ajax/multiepg');
+		});
+
+	} 
+	else {
+		mode= "?stype=radio";
+	}
+	$('#btn1').click(function(){
+		$("#tvcontent").html(loadspinner).load("ajax/bouquets" + mode);
+	});
+	$('#btn2').click(function(){
+		$("#tvcontent").html(loadspinner).load("ajax/providers" + mode);
+	});
+	$('#btn3').click(function(){
+		$("#tvcontent").load("ajax/satellites" + mode);
+	});
+	$('#btn4').click(function(){
+		$("#tvcontent").html(loadspinner).load("ajax/channels" + mode);
+	});
+	
+	$("#tvbutton").buttonset();
+	$("#tvcontent").load("ajax/bouquets" + mode);
+	
+}
