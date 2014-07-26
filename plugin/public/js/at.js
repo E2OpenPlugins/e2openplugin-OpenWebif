@@ -101,6 +101,8 @@ function initValues () {
 	$("#bouquets").chosen().change( function() {$("#bouquets").val($(this).val());});
 	$("#channels").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
 	$("#channels").chosen().change( function() {$("#channels").val($(this).val());});
+	$("#tags").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
+	$("#tags").chosen().change( function() {$("#tags").val($(this).val());});
 
 // TODO : other time/date picker fields
 
@@ -221,7 +223,7 @@ function InitPage() {
 
 	getData();
 
-	$( "#actions" ).buttonset();
+	$("#actions").buttonset();
 	$("#atbutton0").click(function () { addAT(); });
 	$("#atbutton0" ).button({icons: { primary: "ui-icon-plus"}});
 	$("#atbutton1").click(function () { delAT(); });
@@ -262,27 +264,22 @@ function Parse() {
 	}
 }
 
-
-function getData()
-{
-
-$.getJSON( "/api/getservices", function( data ) {
-  var bqs = data['services'];
-  BQs = [];
-	var options = "";
-  $.each( bqs, function( key, val ) {
-	var ref = val['servicereference']
-	options += "<option value='" + escape(ref) + "'>" + val['servicename'] + "</option>";
-	BQs.push(val);
-  });
-	$("#bouquets").append( options);
-	$('#bouquets').trigger("chosen:updated");
-	getAllServices();
-});
-
-}
-
 function isInArray(array, search) { return (array.indexOf(search) >= 0) ? true : false; }
+
+function getTags()
+{
+	$.getJSON( "/api/gettags", function( data ) {
+		var bqs = data['tags'];
+		Ts = [];
+		var options = "";
+		$.each( bqs, function( key, val ) {
+			options += "<option value='" + escape(val) + "'>" + val + "</option>";
+			Ts.push(val);
+		});
+		$("#tags").append( options);
+		$('#tags').trigger("chosen:updated");
+	});
+}
 
 function getAllServices()
 {
@@ -316,10 +313,31 @@ $.getJSON( "/api/getallservices", function( data ) {
 	});
 	$("#channels").append( options);
 	$('#channels').trigger("chosen:updated");
+	getTags();
 
 });
 
 }
+
+function getData()
+{
+
+$.getJSON( "/api/getservices", function( data ) {
+  var bqs = data['services'];
+  BQs = [];
+	var options = "";
+  $.each( bqs, function( key, val ) {
+	var ref = val['servicereference']
+	options += "<option value='" + escape(ref) + "'>" + val['servicename'] + "</option>";
+	BQs.push(val);
+  });
+	$("#bouquets").append( options);
+	$('#bouquets').trigger("chosen:updated");
+	getAllServices();
+});
+
+}
+
 
 function FillAT(autotimerid)
 {
@@ -452,6 +470,15 @@ function AutoTimerObj (xml) {
 	this.Channels = _c.slice();
 	this.Bouquets = _b.slice();
 
+	// Tags
+	_b = [];
+	xml.find("e2tags").each(function () {
+		var tag = $(this).text();
+		_b.push(escape(tag));
+	});
+
+	this.Tags = _b.slice();
+	
 	// Filters
 	var _f = [];
 	
@@ -570,9 +597,15 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	if(this.Channels.length==0)
 		$('#channels').val(null);
 
+	$.each(this.Tags, function(index, value) {
+		$('#tags option[value="' + value + '"]').prop("selected", true);
+	});
+
 	$('#bouquets').trigger("chosen:updated");
 	$('#channels').trigger("chosen:updated");
-	
+	$('#tags').trigger("chosen:updated");
+
+
 	var rc = $('#filterlist tr').length;
 	if(rc>1)
 	{
@@ -683,6 +716,7 @@ function readAT()
 
 function saveAT()
 {
+	// TODO: set mustsave
 	if(CurrentAT) // && CurrentAT.MustSave)
 	{
 
@@ -690,16 +724,24 @@ function saveAT()
 
 	reqs += "match=" + encodeURIComponent(CurrentAT.match);
 	reqs += "&name=" + encodeURIComponent(CurrentAT.name);
-	reqs += "&enabled=" + (CurrentAT.enabled) ? 1 : 0;
-	reqs += "&justplay=" + (CurrentAT.justplay) ? 1 : 0;
-	reqs += "&setEndtime=" + (CurrentAT.setEndtime) ? 1 : 0;
+	reqs += "&enabled=";
+	reqs += (CurrentAT.enabled) ? "1" : "0";
+	reqs += "&justplay=";
+	reqs += (CurrentAT.justplay) ? "1" : "0";
+	reqs += "&setEndtime=";
+	reqs += (CurrentAT.setEndtime) ? "1" : "0";
 	reqs += "&searchCase=" + CurrentAT.searchCase;
-	reqs += "&overrideAlternatives=" + (CurrentAT.overrideAlternatives) ? 1 : 0;
+	reqs += "&overrideAlternatives=";
+	reqs += (CurrentAT.overrideAlternatives) ? "1" : "0";
 	reqs += "&avoidDuplicateDescription=" + CurrentAT.avoidDuplicateDescription;
-	reqs += "&searchForDuplicateDescription=" + CurrentAT.searchForDuplicateDescription;
-	reqs += "&location=" + encodeURIComponent(CurrentAT.location);
+	// TODO:
+	//	reqs += "&searchForDuplicateDescription=" + CurrentAT.searchForDuplicateDescription;
+	if(CurrentAT.location)
+		reqs += "&location=" + encodeURIComponent(CurrentAT.location);
 	reqs += "&searchType=" + CurrentAT.searchType;
-	reqs += "&maxduration=" + (CurrentAT.maxduration > -1) ? CurrentAT.maxduration : "";
+	reqs += "&maxduration=";
+	if(CurrentAT.maxduration && CurrentAT.maxduration > -1)
+		reqs += CurrentAT.maxduration;
 	reqs += "&encoding=" + encodeURIComponent(CurrentAT.encoding);
 
 	if(CurrentAT.timerOffsetAfter > -1 && CurrentAT.timerOffsetBefore > -1)
@@ -712,23 +754,57 @@ function saveAT()
 	else
 		reqs += "&timespanFrom=&timespanTo=";
 
-	if(this.timeFrame)
+	if(CurrentAT.timeFrame)
 		reqs += "&before=" + CurrentAT.before + "&after=" + CurrentAT.after;
 	else
 		reqs += "&before=&after=";
 
+	if(CurrentAT.Tags && CurrentAT.Tags.length > 0) {
+		$.each( CurrentAT.Tags, function( index, value ){
+			reqs += "&tag=" + value;
+		});
+	} else
+		reqs += "&tag=";
 
-// TODO: filter , tags , bq , channels
-	console.log(this.tags);
-	console.log(this.filter);
-	console.log(this.Channels);
-	console.log(this.Bouquets);
+	reqs += "&services=";
+	if(CurrentAT.Channels && CurrentAT.Channels.length > 0) {
+		var _s = [];
+		$.each( CurrentAT.Channels, function( index, value ){
+			_s.push(escape(value));
+		});
+		reqs += _s.join(',');
+	}
+
+	reqs += "&bouquets=";
+	if(CurrentAT.Bouquets && CurrentAT.Bouquets.length > 0) {
+		reqs += CurrentAT.Bouquets.join(',');
+	}
 	
+	reqs += "&bouquets=";
+	if(CurrentAT.Bouquets && CurrentAT.Bouquets.length > 0) {
+		reqs += CurrentAT.Bouquets.join(',');
+	}
+
+	
+	if(CurrentAT.Filters && CurrentAT.Filters.length > 0) {
+		$.each( CurrentAT.Filters, function( index, value ){
+			var fr = "&"
+			if(value.t === "exclude")
+				fr="!";
+			fr += value.w;
+			fr += "=";
+			fr += escape(value.v);
+			reqs += fr;
+		});
+	}
+
+	console.log(reqs);
+
 	return;
 	
 	// if change
 	if(CurrentAT.id!=-1)
-		regs += "&id=" + CurrentAT.id;
+		reqs += "&id=" + CurrentAT.id;
 
 		$.ajax({
 			type: "GET", url: reqs,
@@ -776,6 +852,11 @@ function parseAT()
 		});
 		
 	}
+}
+
+function reloadAT()
+{
+	// TODO:
 }
 
 function showError(txt)
