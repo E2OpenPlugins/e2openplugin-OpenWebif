@@ -723,3 +723,12 @@ msgstr "messageSentResponse_hsa"
 
 msgid "Root"
 msgstr ""
+
+msgid "IPv4-only kernel"
+msgstr ""
+
+msgid "none/IPv4-only network"
+msgstr ""
+
+msgid "IPv4-only Python/Twisted"
+msgstr ""
