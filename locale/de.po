@@ -722,3 +722,12 @@ msgstr "messageSentResponse_hsa"
 
 msgid "Root"
 msgstr "Root"
+
+msgid "IPv4-only kernel"
+msgstr "Kernel ohne IPv6-Unterstützung"
+
+msgid "none/IPv4-only network"
+msgstr "keine/reines IPv4-Netzwerk"
+
+msgid "IPv4-only Python/Twisted"
+msgstr "Python/Twisted ohne IPv6-Unterstützung"
