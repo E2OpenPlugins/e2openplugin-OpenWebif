@@ -90,8 +90,6 @@ class AjaxController(BaseController):
 			model = "et4x00"
 		elif model == "xp1000":
 			model = "xp1000"
-		elif model == "tf7700hdpvr":
-			model = "topf"
 		elif model.startswith("vu"):
 			model = model.replace("vu", "")
 		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
@@ -99,6 +97,7 @@ class AjaxController(BaseController):
 		else:
 			info["boximage"] = "unknown.jpg"
 		if model in ("tf7700hdpvr", "topf", "TF 7700 HDPVR"):
+			info["model"] = "TF 7700 HDPVR"
 			if fileExists(getPublicPath("/images/boxes/topf.jpg")):
 				info["boximage"] = "topf.jpg"
 		return info
