@@ -53,10 +53,10 @@ def normalize_ipv6(orig):
 	return (addr)
 
 def getAdapterIPv6(ifname):
-	addr = "IPv4-only kernel"
+	addr = _("IPv4-only kernel")
 	
 	if fileExists('/proc/net/if_inet6'):
-		addr = "IPv4-only Python/Twisted"
+		addr = _("IPv4-only Python/Twisted")
 
 		if has_ipv6 and version.major >= 12:
 			proc = '/proc/net/if_inet6'
@@ -81,7 +81,7 @@ def getAdapterIPv6(ifname):
 			elif len(tempaddrs) == 1:
 				addr = tempaddrs[0]
 			elif len(tempaddrs) == 0:
-				addr = "none/IPv4-only network"
+				addr = _("none/IPv4-only network")
 
 	return (addr)
 
