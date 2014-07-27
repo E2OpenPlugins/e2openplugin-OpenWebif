@@ -228,3 +228,7 @@ class AjaxController(BaseController):
 		ret['locations'] = loc['locations']
 		return ret
 
+	def P_bqe(self, request):
+		ret = {}
+		return ret
+

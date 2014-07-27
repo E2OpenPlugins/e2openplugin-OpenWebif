@@ -995,3 +995,9 @@ class WebController(BaseController):
 	def P_epgmultigz(self, request):
 		self.isGZ=True
 		return self.P_epgmulti(request)
+
+	def P_getsatellites(self, request):
+		stype = "tv"
+		if "stype" in request.args.keys():
+			stype = request.args["stype"][0]
+		return getSatellites(stype)
