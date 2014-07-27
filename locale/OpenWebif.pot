@@ -705,6 +705,19 @@ msgstr ""
 msgid "E"
 msgstr ""
 
+msgid "All Files of this Software are open source software"
+msgstr ""
+
+msgid "you can redistribute it and/or modify it under the"
+msgstr ""
+
+msgid "terms of the GNU General Public License version 2 as"
+msgstr ""
+
+msgid "published by the Free Software Foundation."
+msgstr ""
+
+msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
 
 msgid "Message sent successfully!"
 msgstr ""
