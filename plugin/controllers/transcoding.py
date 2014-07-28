@@ -11,7 +11,6 @@
 from twisted.web import static, resource, http
 from Components.config import config
 
-
 def get_transcoding_features(encoder = 0):
 	features = {
 		"automode": "automode",
@@ -108,7 +107,7 @@ class TranscodingController(resource.Resource):
 					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2error>choosen feature %s is not available</error></e2simplexmlresult>' % arg
 			if config_changed:
 				config.plugins.transcodingsetup.save()
-		
+
 		str_result = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<e2configs>\n"
 		
 		attr, arg = port, "port"
@@ -137,4 +136,4 @@ class TranscodingController(resource.Resource):
 				str_result += "</e2encoder>\n"
 		str_result += "</e2configs>\n"
 		return str_result
-		
+

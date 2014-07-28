@@ -17,17 +17,16 @@ import os
 from Components.config import config
 
 def getStream(session, request, m3ufile):
-
 	if "ref" in request.args:
 		sRef=unquote(unquote(request.args["ref"][0]).decode('utf-8', 'ignore')).encode('utf-8')
 	else:
 		sRef = ""
-	
+
 	currentServiceRef = None
 	if m3ufile == "streamcurrent.m3u":
 		currentServiceRef = session.nav.getCurrentlyPlayingServiceReference()
 		sRef = currentServiceRef.toString() 
-	
+
 	if sRef.startswith("1:134:"):
 		if currentServiceRef is None:
 			currentServiceRef = session.nav.getCurrentlyPlayingServiceReference()
@@ -94,20 +93,19 @@ def getTS(self, request):
 
 def getStreamSubservices(session, request):
 	services = []
-
 	currentServiceRef = session.nav.getCurrentlyPlayingServiceReference()
 
 	# TODO : this will only work if sref = current channel
 	# the DMM webif can also show subservices for other channels like the current
 	# ideas are welcome
-	
+
 	if "sRef" in request.args:
 		currentServiceRef = eServiceReference(request.args["sRef"][0])
 
 	if currentServiceRef is not None:
 		currentService = session.nav.getCurrentService()
 		subservices = currentService.subServices()
-	
+
 		services.append({
 			"servicereference": currentServiceRef.toString(),
 			"servicename": ServiceReference(currentServiceRef).getServiceName()
@@ -127,7 +125,6 @@ def getStreamSubservices(session, request):
 			"servicereference": "N/A",
 			"servicename": "N/A"
 		})
-		
 
 	return { "services": services }
 

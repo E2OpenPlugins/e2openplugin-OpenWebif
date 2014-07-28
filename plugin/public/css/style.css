@@ -12,21 +12,21 @@ body {
 *
 {
 	margin: 0 auto 0 auto;
- 	text-align:left;}
+	text-align:left;
+}
 
 #container
 {
-  	display: block; 
-  	height:auto;
- 	position: relative; 
-  	width: 85%;
+	display: block; 
+	height:auto;
+	position: relative; 
+	width: 85%;
 }
-
 
 #header
 {
 	height:85px;
-	width:960px;	
+	width:960px;
 }
 
 #header h1
@@ -36,11 +36,10 @@ body {
 	text-align:left;
 	color:#FFFFFF;
 	font-size:42px;
-	color:#FFF;	
+	color:#FFF;
 	left:14px;
 	top:18px;
 }
-
 
 #header h2
 {
@@ -64,10 +63,8 @@ body {
 	background-image:url(../images/main.jpg);
 	background-repeat:no-repeat;
 	width:900px;
-	height:354px;	
+	height:354px;
 }
-
-
 
 .off
 {
@@ -134,13 +131,11 @@ body {
 	-moz-outline-style: 0 none;
 	display: block;
 	/*line-height: 24px;*/
- 	_border-bottom: none;
+	_border-bottom: none;
 	-moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; -khtml-border-top-left-radius: 5px; border-top-left-radius: 5px;
 	-moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; -khtml-border-top-right-radius: 5px; border-top-right-radius: 5px;
 	-moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; -khtml-border-bottom-left-radius: 5px; border-bottom-left-radius: 5px;
 	-moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; -khtml-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px;
-
-	
 }
 
 .leftmenu_icon
@@ -202,19 +197,17 @@ body {
 
 #leftmenu_main ul
 {
-list-style: none;
-padding-left: 5px;
+	list-style: none;
+	padding-left: 5px;
 }
-
 
 #leftmenu_main ul li
 {
-list-style: none;
-padding: 0px;
-text-align:left;
-color: #176093;
+	list-style: none;
+	padding: 0px;
+	text-align:left;
+	color: #176093;
 }
-
 
 #leftmenu_main ul li a, #leftmenu_main ul li a:visited
 {
@@ -227,12 +220,11 @@ color: #176093;
 	text-align:left;
 	text-decoration:none;
 	font-size:13px;
-
 }
 
 #leftmenu_main ul li a:hover
 {
-color:#87BCF8;	
+color:#87BCF8;
 }
 
 #leftmenu_main #help
@@ -311,12 +303,12 @@ color:#87BCF8;
 
 .powerStateButtons li {
 	margin-top: 25px;
-    background: url("../images/ui-bg_highlight-soft_55_1c478e_1x100.png") repeat-x scroll 50% 50% #1C478E;
-    width: 220px;
-    height: 40px;
-    line-height: 40px;
-    color: #FFFFFF !important;
-    text-align: center;
+	background: url("../images/ui-bg_highlight-soft_55_1c478e_1x100.png") repeat-x scroll 50% 50% #1C478E;
+	width: 220px;
+	height: 40px;
+	line-height: 40px;
+	color: #FFFFFF !important;
+	text-align: center;
 	font-size: 18px;
 	font-weight: bold;
 	cursor: pointer;
@@ -429,7 +421,6 @@ color:#87BCF8;
 	text-align: right;
 }
 
-
 .channel_desc
 {
 	display: none;
@@ -441,7 +432,7 @@ color:#87BCF8;
 
 .meter-wrap 
 {
-    	position: relative;
+	position: relative;
 	float:left;
 	background-color: #F0F7FC;
 }
@@ -454,7 +445,6 @@ color:#87BCF8;
 	width: 100px;
 	text-align: left;
 	border: 1px solid #4297d7;
-	
 }
 .meter-value {
 	background-color: #F68014;
@@ -496,7 +486,7 @@ color:#87BCF8;
 	outline: 0 none;
 	-moz-outline-style: 0 none;
 
- 	_border-bottom: none;
+	_border-bottom: none;
 	padding-left: 10px;
 	border-top-left-radius: 5px; -webkit-border-top-left-radius:  5px; -moz-border-radius-topleft:  5px; -khtml-border-top-left-radius:  5px;
 	border-bottom-left-radius: 5px; -webkit-border-bottom-left-radius:  5px; -moz-border-radius-bottomleft:  5px; -khtml-border-bottom-left-radius:  5px;
@@ -542,18 +532,20 @@ color:#87BCF8;
 }
 
 
-#info {
+#info
+{
 	font-size: 12px;
 	text-align: center;
 }
 
-#info #box_image {
+#info #box_image
+{
 	padding-top: 50px;
 	padding-bottom: 50px;
 }
 
-#info h1{
-
+#info h1
+{
 	font-size: 14px;
 	text-align: center;
 }
@@ -592,11 +584,10 @@ color:#87BCF8;
 	width: 50%;
 	text-align: left;
 	padding-left: 10px;
-	
 }
 .inforight
 {
-	width: 50%;	
+	width: 50%;
 }
 
 .infomain 
@@ -611,9 +602,8 @@ color:#87BCF8;
 	-moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; -khtml-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px;
 }
 
-
 .infoHeader {
-	
+
 	padding:2px;
 	border: 1px solid #4297d7; 
 	background: #1c478e url(../images/ui-bg_highlight-soft_55_1c478e_1x100.png) 50% 50% repeat-x; 
@@ -623,27 +613,25 @@ color:#87BCF8;
 	-moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; -khtml-border-top-right-radius: 5px; border-top-right-radius: 5px;
 	-moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; -khtml-border-bottom-left-radius: 5px; border-bottom-left-radius: 5px;
 	-moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; -khtml-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px;
-	}
-
+}
 
 #volslider > div.volslider { 
 	padding: 10px !important; 
 };
 
-
 #footer
 {
-width:inherit;
-height:auto;
+	width:inherit;
+	height:auto;
 }
 
 #footer h3 a,#footer h3 a:visited
 {
-display:inline;
-text-align:center;
-font-size:12px;
-text-decoration:none;
-color:#7198E1;
+	display:inline;
+	text-align:center;
+	font-size:12px;
+	text-decoration:none;
+	color:#7198E1;
 }
 
 #spinner 

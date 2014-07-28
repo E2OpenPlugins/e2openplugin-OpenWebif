@@ -72,8 +72,8 @@ class AjaxController(BaseController):
 
 	def P_event(self, request):
 		event = getEvent(request.args["sref"][0], request.args["idev"][0])
-		event['event']['recording_margin_before'] = config.recording.margin_before.getValue()
-		event['event']['recording_margin_after'] = config.recording.margin_after.getValue()
+		event['event']['recording_margin_before'] = config.recording.margin_before.value
+		event['event']['recording_margin_after'] = config.recording.margin_after.value
 		return event
 
 	def P_about(self, request):
@@ -180,12 +180,12 @@ class AjaxController(BaseController):
 				begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day, 6, 0, 0, -1, -1, -1) )
 			except Exception, e:
 				pass
-		
+
 		epg = getMultiEpg(self, bref, begintime, endtime)
 		epg['bouquets'] = bouq['bouquets']
 		epg['bref'] = bref
 		epg['day'] = day
-		
+
 		return epg
 	def P_multiepg2(self, request):
 		reloadtimer = 0
@@ -198,7 +198,7 @@ class AjaxController(BaseController):
 			bref = request.args["bref"][0]
 
 		endtime = 1440
-				
+
 		begintime = -1
 		day = 0
 		if "day" in request.args.keys():
@@ -208,13 +208,13 @@ class AjaxController(BaseController):
 				begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day, 6, 0, 0, -1, -1, -1) )
 			except Exception, e:
 				pass
-		
+
 		epg = getMultiEpg(self, bref, begintime, endtime)
 		epg['bouquets'] = bouq['bouquets']
 		epg['bref'] = bref
 		epg['day'] = day
 		epg['reloadtimer'] = reloadtimer
-		
+
 		return epg
 
 	def P_at(self, request):

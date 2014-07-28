@@ -31,7 +31,7 @@ class RootController(BaseController):
 		BaseController.__init__(self, path)
 		self.session = session
 		piconpath = getPiconPath()
-		
+
 		self.putChild("web", WebController(session))
 		self.putChild("api", ApiController(session))
 		self.putChild("ajax", AjaxController(session))
@@ -51,13 +51,12 @@ class RootController(BaseController):
 		self.putChild("wolsetup", WOLSetupController(session))
 		if piconpath:
 			self.putChild("picon", static.File(piconpath))
-		
-		
+
 	# this function will be called before a page is loaded
 	def prePageLoad(self, request):
 		# we set withMainTemplate here so it's a default for every page
 		self.withMainTemplate = True
-		
+
 	# the "pages functions" must be called P_pagename
 	# example http://boxip/index => P_index
 	def P_index(self, request):
@@ -71,4 +70,3 @@ class RootController(BaseController):
 				request.setResponseCode(http.FOUND)
 				return ""
 		return {}
-		

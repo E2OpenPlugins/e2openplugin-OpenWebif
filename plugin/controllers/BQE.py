@@ -188,7 +188,7 @@ class BQEWebController(BaseController):
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
-	
+
 	def P_getservices(self, request):
 		if "sRef" in request.args.keys():
 			sRef = request.args["sRef"][0]
@@ -246,7 +246,7 @@ class BQEWebController(BaseController):
 			type = ""
 			setuppin = ""
 			setuppinactive = ""
-			
+
 		ps = {}
 		ps['Configured'] = configured
 		ps['Type'] = type
@@ -257,7 +257,7 @@ class BQEWebController(BaseController):
 class BQEApiController(BQEWebController):
 	def __init__(self, session, path = ""):
 		BQEWebController.__init__(self, session, path)
-		
+
 	def prePageLoad(self, request):
 		self.isJson = True
 

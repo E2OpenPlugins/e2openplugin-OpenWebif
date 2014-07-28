@@ -17,7 +17,7 @@ from Screens.InfoBar import InfoBar, MoviePlayer
 def zapService(session, id, title = ""):
 	# Must NOT unquote id here, breaks zap to streams
 	service = eServiceReference(id)
-	
+
 	if len(title) > 0:
 		service.setName(title)
 	else:
@@ -27,7 +27,7 @@ def zapService(session, id, title = ""):
 
 	isRecording = service.getPath()
 	isRecording = isRecording and isRecording.startswith("/")
-	
+
 	if not isRecording:
 		if config.ParentalControl.configured.value and config.OpenWebif.parentalenabled.value:
 			if getProtection(service.toString()) == "0":
@@ -48,7 +48,6 @@ def zapService(session, id, title = ""):
 			session.current_dialog.close()
 		session.nav.playService(service)
 
-	
 	return {
 		"result": True,
 		"message": "Active service is now '%s'" % title
@@ -67,7 +66,7 @@ def remoteControl(key, type = "", rcu = ""):
 			remotetype = "dreambox advanced remote control (native)"
 		else:
 			remotetype = "dreambox remote control (native)"
-			
+
 	amap = eActionMap.getInstance()
 	if type == "long":
 		amap.keyPressed(remotetype, key, 0)
@@ -76,19 +75,19 @@ def remoteControl(key, type = "", rcu = ""):
 		amap.keyPressed(remotetype, key, 4)
 	else:
 		amap.keyPressed(remotetype, key, 0)
-		
+
 	amap.keyPressed(remotetype, key, 1)
 	return {
 		"result": True,
 		"message": "RC command '%s' has been issued" % str(key)
 	}
-	
+
 def setPowerState(session, state):
 	from Screens.Standby import Standby, TryQuitMainloop, inStandby
 	state = int(state)
-	
+
 	if state == 0: # Toggle StandBy
-		if inStandby == None:					
+		if inStandby == None:
 			session.open(Standby)
 		else:
 			inStandby.Power()
@@ -104,16 +103,18 @@ def setPowerState(session, state):
 	elif state == 5: # Standby
 		if inStandby == None:
 			session.open(Standby)
-		
+
+	elif state == 6:
+		print "HAHA"
+
 	return {
 		"result": True,
 		"instandby": inStandby != None
 	}
-	
+
 def getStandbyState(session):
 	from Screens.Standby import inStandby
 	return {
 		"result": True,
 		"instandby": inStandby != None
 	}
-	

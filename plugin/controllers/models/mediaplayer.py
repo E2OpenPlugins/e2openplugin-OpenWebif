@@ -12,25 +12,24 @@ def getMpInstance(session):
 		from Plugins.Extensions.MediaPlayer.plugin import MediaPlayer, MyPlayList
 	except Exception, e:
 		return None
-		
+
 	if isinstance(session.current_dialog, MediaPlayer):
 		return session.current_dialog
-		
+
 	for dialog in session.dialog_stack:
 		if isinstance(dialog, MediaPlayer):
 			return dialog
-			
-	
+
 def getOrCreateMpInstance(session):
 	try:
 		from Plugins.Extensions.MediaPlayer.plugin import MediaPlayer, MyPlayList
 	except Exception, e:
 		return None
-		
+
 	mp = getMpInstance(session)
 	if mp:
 		return mp
-		
+
 	return session.open(MediaPlayer)
 
 def mediaPlayerAdd(session, filename):
@@ -40,21 +39,21 @@ def mediaPlayerAdd(session, filename):
 			"result": False,
 			"message": "Mediaplayer not installed"
 			}
-		
+
 	if fileExists(filename):
 		service = eServiceReference(4097, 0, filename)
 	else:
 		service = eServiceReference(filename)
-		
+
 	if not service.valid():
 		return {
 			"result": False,
 			"message": "'%s' is neither a valid reference nor a valid file" % filename
 		}
-		
+
 	mp.playlist.addFile(service)
 	mp.playlist.updateList()
-	
+
 	return {
 		"result": True,
 		"message": "'%s' has been added to playlist" % filename
@@ -67,17 +66,17 @@ def mediaPlayerRemove(session, filename):
 			"result": False,
 			"message": "Mediaplayer not installed"
 			}
-		
+
 	service = eServiceReference(filename)
 	if not service.valid():
 		service = eServiceReference(4097, 0, filename)
-		
+
 	if not service.valid():
 		return {
 			"result": False,
 			"message": "'%s' is neither a valid reference nor a valid file" % filename
 		}
-	
+
 	count = 0
 	removed = False
 	for item in mp.playlist.getServiceRefList():
@@ -86,20 +85,19 @@ def mediaPlayerRemove(session, filename):
 			removed = True
 			break
 		count += 1
-		
-		
+
 	if not removed:
 		return {
 			"result": False,
 			"message": "'%s' not found in playlist" % filename
 		}
-		
+
 	mp.playlist.updateList()
 	return {
 		"result": True,
 		"message": "'%s' removed from playlist" % filename
 	}
-	
+
 def mediaPlayerPlay(session, filename, root):
 	mp = getOrCreateMpInstance(session)
 	if mp is None:
@@ -107,24 +105,24 @@ def mediaPlayerPlay(session, filename, root):
 			"result": False,
 			"message": "Mediaplayer not installed"
 			}
-		
+
 	if fileExists(filename):
 		service = eServiceReference(4097, 0, filename)
 	else:
 		service = eServiceReference(filename)
-		
+
 	if not service.valid():
 		return {
 			"result": False,
 			"message": "'%s' is neither a valid reference nor a valid file" % filename
 		}
-		
+
 	if root != "playlist":
 		mp.playlist.addFile(service)
 		mp.playlist.updateList()
-	
+
 	mp.playServiceRefEntry(service)
-	
+
 	return {
 		"result": True,
 		"message": "'%s' has been added to playlist" % filename
@@ -137,7 +135,7 @@ def mediaPlayerCommand(session, command):
 			"result": False,
 			"message": "Mediaplayer not active"
 			}
-			
+
 	if command == "play":
 		mp.playEntry()
 	elif command == "pause":
@@ -159,12 +157,11 @@ def mediaPlayerCommand(session, command):
 			"result": False,
 			"message": "Unknown parameter %s" % command
 			}
-	
 	return {
 		"result": True,
 		"message": "Command '%s' executed" % command
 	}
-	
+
 def mediaPlayerCurrent(session):
 	mp = getMpInstance(session)
 	if mp is None:
@@ -172,7 +169,6 @@ def mediaPlayerCurrent(session):
 			"result": False,
 			"message": "Mediaplayer not active"
 			}
-	
 	return {
 		"result": True,
 		"artist": mp["artist"].getText(),
@@ -182,7 +178,7 @@ def mediaPlayerCurrent(session):
 		"genre": mp["genre"].getText(),
 		"coverArt": mp["coverArt"].coverArtFileName
 	}
-	
+
 def mediaPlayerList(session, path, types):
 	if types == "video":
 		mpattern = "(?i)^.*\.(ts|mts|m2ts|e2pls|mpg|vob|avi|divx|m4v|mkv|mp4|dat|flv|mov|dts)"
@@ -197,11 +193,11 @@ def mediaPlayerList(session, path, types):
 	else:
 		mserviceref = False
 		mpattern = types
-	
+
 	rpath = path
 	if rpath == "":
 		rpath = None
-	
+
 	if rpath == "playlist":
 		mp = getOrCreateMpInstance(session)
 		if mp is None:
@@ -216,12 +212,10 @@ def mediaPlayerList(session, path, types):
 				"isdirectory": False,
 				"root": "playlist"
 			})
-			
 		return {
 			"result": True,
 			"files": files
 		}
-			
 	elif rpath == None or os.path.isdir(rpath):
 		files = []
 		filelist = FileList(rpath, matchingPattern = mpattern, useServiceRef = mserviceref, additionalExtensions = "4098:m3u 4098:e2pls 4098:pls")
@@ -244,7 +238,7 @@ def mediaPlayerList(session, path, types):
 					"isdirectory": item[0][1],
 					"root": rpath
 				})
-			
+
 		return {
 			"result": True,
 			"files": files
@@ -254,7 +248,7 @@ def mediaPlayerList(session, path, types):
 		"result": False,
 		"files": []
 	}
-	
+
 def mediaPlayerLoad(session, filename):
 	mp = getOrCreateMpInstance(session)
 	if mp is None:
@@ -262,20 +256,20 @@ def mediaPlayerLoad(session, filename):
 			"result": False,
 			"message": "Mediaplayer not installed"
 			}
-			
+
 	path = resolveFilename(SCOPE_PLAYLIST, filename)
 	if not fileExists(path):
 		return {
 			"result": False,
 			"message": "Playlist '%s' does not exist" % path
 			}
-		
+
 	mp.PlaylistSelected((filename, path))
 	return {
 		"result": True,
 		"message": "Playlist loaded from '%s'" % path
 		}
-	
+
 def mediaPlayerSave(session, filename):
 	mp = getOrCreateMpInstance(session)
 	if mp is None:
@@ -283,7 +277,7 @@ def mediaPlayerSave(session, filename):
 			"result": False,
 			"message": "Mediaplayer not installed"
 			}
-			
+
 	path = resolveFilename(SCOPE_PLAYLIST, filename)
 	mp.playlistIOInternal.save(path)
 	return {
@@ -299,9 +293,8 @@ def mediaPlayerFindFile(session, path, pattern):
 				"name": filename,
 				"path": root
 			})
-	
+
 	return {
 		"result": True,
 		"files": rfiles
 	}
-

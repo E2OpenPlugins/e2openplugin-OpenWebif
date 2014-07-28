@@ -158,7 +158,7 @@ def saveConfig(path, value):
 		return {
 			"result": False
 		}
-		
+
 	return {
 		"result": True
 	}
@@ -207,7 +207,7 @@ def privSettingValues(prefix, top, result):
 		elif isinstance(val, tuple):
 			result.append((name, val[0]))
 		else:
-			result.append((name, val))	
+			result.append((name, val))
 
 def getSettings():
 	configkeyval = []
@@ -263,7 +263,7 @@ class ConfigFiles:
 						requires = entry.get("requires")
 						if requires and not SystemInfo.get(requires, False):
 							continue;
-							
+
 						if int(entry.get("level", 0)) > config.usage.setup_level.index:
 							continue
 						configs.append(entry)
