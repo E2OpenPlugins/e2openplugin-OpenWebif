@@ -1,10 +1,16 @@
 /* Autotimer plugin for openwebif v1.0 | (c) 2014 E2OpenPlugins | License GPL V2 , https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt */
 
-// TODO: finish at list selector and fill form fields
-// TODO: fix / add checks
-// TODO: add save / delete
-// TODO: add parse / preview
-// TODO: add backup / restore
+// TODO: save , preview , parse, backup, restore , error check
+
+function toUnixDate(date){
+	datea = date.split('.');
+	var d = new Date();
+	d.setFullYear(datea[2],datea[1]-1,datea[0]);
+	d.setHours( 0 );
+	d.setMinutes( 0 );
+	d.setSeconds( 0 );
+	return Math.floor(d.getTime() / 1000);
+}
 
 function initValues () {
 
@@ -104,8 +110,6 @@ function initValues () {
 	$("#tags").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
 	$("#tags").chosen().change( function() {$("#tags").val($(this).val());});
 
-// TODO : other time/date picker fields
-
 }
 
 function AddFilter(a,b,c)
@@ -192,6 +196,11 @@ function checkValues () {
 	else
 		$('#CounterE').hide();
 
+	if ($('#vps').is(':checked') == true)
+		$('#vpsE').show();
+	else
+		$('#vpsE').hide();
+
 }
 
 function InitPage() {
@@ -208,19 +217,10 @@ function InitPage() {
 	$("#AddFilter").click(function(){AddFilter("","","");});
 	$('#afterevent').change(function () {checkValues();});
 	$('#counter').change(function () {checkValues();});
+	$('#vps').change(function () {checkValues();});
 	
 	initValues ();
 	checkValues();
-	readAT();
-
-	$( "#atlist" ).selectable({
-		selected: function( event, ui ) {
-			var ids = $('#atlist .ui-selected').map(function() {
-				FillAT($(this).data('id'));
-			});
-		}
-	});
-
 	getData();
 
 	$("#actions").buttonset();
@@ -268,74 +268,88 @@ function isInArray(array, search) { return (array.indexOf(search) >= 0) ? true :
 
 function getTags()
 {
+	
+	// TODO: Errorhandling
 	$.getJSON( "/api/gettags", function( data ) {
 		var bqs = data['tags'];
 		Ts = [];
 		var options = "";
 		$.each( bqs, function( key, val ) {
-			options += "<option value='" + escape(val) + "'>" + val + "</option>";
+			options += "<option value='" + encodeURIComponent(val) + "'>" + val + "</option>";
 			Ts.push(val);
 		});
 		$("#tags").append( options);
 		$('#tags').trigger("chosen:updated");
+		
 	});
 }
 
 function getAllServices()
 {
-$.getJSON( "/api/getallservices", function( data ) {
-	var bqs = data['services'];
-	var options = "";
-	var refs = [];
-	$.each( bqs, function( key, val ) {
-		var ref = val['servicereference']
-		var name = '--';
-		jQuery.map(BQs, function(obj) {
-			if(obj.servicereference === ref)
-				name = obj.servicename;
-		});
-	
-		var slist = val['subservices'];
-		var items = [];
-		
-		$.each( slist, function( key, val ) {
+	// TODO: Errorhandling
+
+	$.getJSON( "/api/getallservices", function( data ) {
+		var bqs = data['services'];
+		var options = "";
+		var refs = [];
+		$.each( bqs, function( key, val ) {
 			var ref = val['servicereference']
-			if (!isInArray(refs,ref)) {
-				refs.push(ref);
-				if(ref.substring(0, 4) == "1:0:")
-					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
+			var name = '--';
+			jQuery.map(BQs, function(obj) {
+				if(obj.servicereference === ref)
+					name = obj.servicename;
+			});
+	
+			var slist = val['subservices'];
+			var items = [];
+		
+			$.each( slist, function( key, val ) {
+				var ref = val['servicereference']
+				if (!isInArray(refs,ref)) {
+					refs.push(ref);
+					if(ref.substring(0, 4) == "1:0:")
+						items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
+				}
+			});
+		
+			if (items.length>0) {
+				options += "<optgroup label='" + name + "'>" + items.join("") + "</optgroup>";
 			}
 		});
-		
-		if (items.length>0) {
-			options += "<optgroup label='" + name + "'>" + items.join("") + "</optgroup>";
-		}
+		$("#channels").append( options);
+		$('#channels').trigger("chosen:updated");
+		reloadAT();
 	});
-	$("#channels").append( options);
-	$('#channels').trigger("chosen:updated");
-	getTags();
-
-});
 
 }
 
-function getData()
+function getServices()
 {
 
-$.getJSON( "/api/getservices", function( data ) {
-  var bqs = data['services'];
-  BQs = [];
-	var options = "";
-  $.each( bqs, function( key, val ) {
-	var ref = val['servicereference']
-	options += "<option value='" + escape(ref) + "'>" + val['servicename'] + "</option>";
-	BQs.push(val);
-  });
-	$("#bouquets").append( options);
-	$('#bouquets').trigger("chosen:updated");
-	getAllServices();
-});
+	// TODO: Errorhandling
+	$.getJSON( "/api/getservices", function( data ) {
+		var bqs = data['services'];
+		BQs = [];
+		var options = "";
+		$.each( bqs, function( key, val ) {
+			var ref = val['servicereference']
+			options += "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>";
+			BQs.push(val);
+		});
+		$("#bouquets").append( options);
+		$('#bouquets').trigger("chosen:updated");
+	});
 
+}
+
+
+function getData()
+{
+	// TODO: Errorhandling
+	// Timing
+	getTags();
+	getServices();
+	getAllServices();
 }
 
 
@@ -462,7 +476,7 @@ function AutoTimerObj (xml) {
 	xml.find("e2service").each(function () {
 		var ref = $(this).find("e2servicereference").text();
 		if (isBQ(ref))
-			_b.push(escape(ref));
+			_b.push(encodeURIComponent(ref));
 		else
 			_c.push(ref);
 	});
@@ -474,7 +488,7 @@ function AutoTimerObj (xml) {
 	_b = [];
 	xml.find("e2tags").each(function () {
 		var tag = $(this).text();
-		_b.push(escape(tag));
+		_b.push(encodeURIComponent(tag));
 	});
 
 	this.Tags = _b.slice();
@@ -517,6 +531,15 @@ function AutoTimerObj (xml) {
 	this.encoding = xml.attr("encoding");
 	if(!this.encoding) {
 		this.encoding = dencoding;
+	}
+
+	this.vps = false;
+	this.vpso = false;
+	if(xml.attr("vps_enabled") === "yes") {
+		this.vps = true;
+		if(xml.attr("vps_overwrite") === "yes") {
+			this.vpso = true;
+		}
 	}
 
 }
@@ -597,6 +620,7 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	if(this.Channels.length==0)
 		$('#channels').val(null);
 
+	$('#tags').val(null);
 	$.each(this.Tags, function(index, value) {
 		$('#tags option[value="' + value + '"]').prop("selected", true);
 	});
@@ -604,7 +628,6 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	$('#bouquets').trigger("chosen:updated");
 	$('#channels').trigger("chosen:updated");
 	$('#tags').trigger("chosen:updated");
-
 
 	var rc = $('#filterlist tr').length;
 	if(rc>1)
@@ -625,7 +648,9 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	
 	$('#counterFormat').val(this.counterFormat);
 	
-	// TODO: tags
+	$('#vps').prop('checked',this.vps);
+
+	$('#vpso').prop('checked',this.vpso);
 	
 	checkValues();
 };
@@ -722,6 +747,85 @@ function saveAT()
 
 	var reqs = "/autotimer/edit?";
 
+	CurrentAT.enabled = $('#enabled').is(':checked');
+	CurrentAT.name = $('#name').val();
+	CurrentAT.match = $('#match').val();
+	CurrentAT.searchType = $('#searchType').val();
+	CurrentAT.searchCase = $('#searchCase').val();
+	CurrentAT.justplay = $('#justplay').val();
+	CurrentAT.justplay = $('#justplay').val();
+	CurrentAT.overrideAlternatives = $('#overrideAlternatives').is(':checked');
+	CurrentAT.timeSpan = $('#timeSpan').is(':checked');
+	CurrentAT.avoidDuplicateDescription = $('#avoidDuplicateDescription').val();
+	CurrentAT.location = $('#avoidDuplicateDescription').val();
+	CurrentAT.timeSpan = $('#timeSpan').is(':checked');
+	CurrentAT.from = $('#from').val();
+	CurrentAT.to = $('#to').val();
+
+	if($('#maxDuration').is(':checked')) {
+		CurrentAT.maxduration = $('#maxduration').val();
+	}
+	else
+		CurrentAT.maxduration = null;
+
+	if($('#Location').is(':checked'))
+		CurrentAT.location = $('#location').val();
+	else
+		CurrentAT.location = null;
+
+	CurrentAT.timeFrame = $('#timeFrame').is(':checked');
+	CurrentAT.timerOffsetBefore = $('#obefore').val();
+	CurrentAT.timerOffsetAfter = $('#oafter').val();
+
+	CurrentAT.afterevent = $('#afterevent').val();
+	CurrentAT.aftereventfrom = $('#aefrom').val();
+	CurrentAT.aftereventto = $('#aeto').val();
+
+	CurrentAT.Bouquets = $("#bouquets").chosen().val();
+	CurrentAT.Channels = $("#channels").chosen().val();
+
+	
+	var _f = [];
+
+	$.each($('#filterlist tr'), function(index, value) {
+		var tr = $(value);
+		if(tr.prop('id') !== "dummyfilter") {
+			var FT = tr.find(".FT");
+			var FM = tr.find(".FM");
+			var FI = tr.find(".FI");
+			var FS = tr.find(".FS");
+			
+			if (FM.val() === 'dayofweek'){
+				_f.push (
+						{ 	"t" : FT.val(),
+							"w": FM.val(),
+							"v": FS.val()
+						}
+					); 
+			}
+			else {
+				_f.push (
+						{ 	"t" : FT.val(),
+							"w": FM.val(),
+							"v": FI.val()
+						}
+					); 
+				
+			}
+		}
+	});
+
+	CurrentAT.Filters = _f.slice();
+	
+	CurrentAT.Tags = $("#tags").chosen().val();
+
+	CurrentAT.counter = $('#counter').val();
+	CurrentAT.left = $('#left').val();
+	CurrentAT.counterFormat = $('#counterFormat').val();
+	CurrentAT.vps = $('#vps').is(':checked');
+	CurrentAT.vpso = $('#vpso').is(':checked');
+
+	
 	reqs += "match=" + encodeURIComponent(CurrentAT.match);
 	reqs += "&name=" + encodeURIComponent(CurrentAT.name);
 	reqs += "&enabled=";
@@ -755,7 +859,7 @@ function saveAT()
 		reqs += "&timespanFrom=&timespanTo=";
 
 	if(CurrentAT.timeFrame)
-		reqs += "&before=" + CurrentAT.before + "&after=" + CurrentAT.after;
+		reqs += "&before=" + toUnixDate(CurrentAT.before) + "&after=" + toUnixDate(CurrentAT.after);
 	else
 		reqs += "&before=&after=";
 
@@ -770,16 +874,11 @@ function saveAT()
 	if(CurrentAT.Channels && CurrentAT.Channels.length > 0) {
 		var _s = [];
 		$.each( CurrentAT.Channels, function( index, value ){
-			_s.push(escape(value));
+			_s.push(encodeURIComponent(value));
 		});
 		reqs += _s.join(',');
 	}
 
-	reqs += "&bouquets=";
-	if(CurrentAT.Bouquets && CurrentAT.Bouquets.length > 0) {
-		reqs += CurrentAT.Bouquets.join(',');
-	}
-	
 	reqs += "&bouquets=";
 	if(CurrentAT.Bouquets && CurrentAT.Bouquets.length > 0) {
 		reqs += CurrentAT.Bouquets.join(',');
@@ -790,22 +889,30 @@ function saveAT()
 		$.each( CurrentAT.Filters, function( index, value ){
 			var fr = "&"
 			if(value.t === "exclude")
-				fr="!";
+				fr+="!";
 			fr += value.w;
 			fr += "=";
-			fr += escape(value.v);
+			if (value.w === 'dayofweek')
+				fr += value.v;
+			else
+				fr += encodeURIComponent(value.v);
 			reqs += fr;
 		});
 	}
 
-	console.log(reqs);
+	if(!CurrentAT.vps)
+		CurrentAT.vpo=false;
 
-	return;
+	reqs += "&vps_enabled=";
+	reqs += (CurrentAT.vps) ? "1" : "0";
 	
-	// if change
-	if(CurrentAT.id!=-1)
-		reqs += "&id=" + CurrentAT.id;
+	reqs += "&vps_overwrite=";
+	reqs += (CurrentAT.vpso) ? "1" : "0";
 
+	reqs += "&id=" + CurrentAT.id;
+
+	console.log(reqs);
+	
 		$.ajax({
 			type: "GET", url: reqs,
 			dataType: "xml",
@@ -856,7 +963,15 @@ function parseAT()
 
 function reloadAT()
 {
-	// TODO:
+	readAT();
+	$( "#atlist" ).selectable({
+		selected: function( event, ui ) {
+			var ids = $('#atlist .ui-selected').map(function() {
+				FillAT($(this).data('id'));
+			});
+		}
+	});
+
 }
 
 function showError(txt)
