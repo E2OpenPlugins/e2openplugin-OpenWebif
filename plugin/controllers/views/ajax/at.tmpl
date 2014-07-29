@@ -138,7 +138,18 @@ fieldset > label
 								<option value="2">On any service</option>
 								<option value="3">any service/recording</option>
 								</select>
+								<br><label for="Location">Location:</label>
 								
+								<input type="checkbox" name="Location" id="Location" value="" class="checkbox ui-widget-content ui-corner-all">
+									<span id="LocationE">
+									<label for="location"></label>
+									<select name="location" id="location">
+										#for $location in $locations
+											<option value="$location">$location</option>
+										#end for
+									</select>
+									</span>
+									
 								<br><label for="Tags">Tags:</label>
 									<span id="TagsE">
 									<select data-placeholder="select tags" name="tags" id="tags" class="tags_select_box" multiple tabindex="16">
@@ -197,16 +208,12 @@ fieldset > label
 									</table>
 									</span>
 								</div>
-								<br><label for="Location">Location:</label>
+								<br><label for="vps">VPS:</label>
 								
-								<input type="checkbox" name="Location" id="Location" value="" class="checkbox ui-widget-content ui-corner-all">
-									<span id="LocationE">
-									<label for="location"></label>
-									<select name="location" id="location">
-										#for $location in $locations
-											<option value="$location">$location</option>
-										#end for
-									</select>
+								<input type="checkbox" name="vps" id="vps" value="" class="checkbox ui-widget-content ui-corner-all">
+									<span id="vpsE">
+									<label for="vpso">VPS Overwrite:</label>
+										<input type="checkbox" name="vpso" id="vpso" value="" class="checkbox ui-widget-content ui-corner-all">
 									</span>
 									
 							</fieldset>
