@@ -446,11 +446,13 @@ function AutoTimerObj (xml) {
 		var fields = xml.attr("offset").split(',');
 		var _b = fields[0];
 		var _a = fields[1];
-		if (_a) {
-			this.timerOffsetAfter=_a;
-		} else
+		if (typeof _a === "undefined") {
 			this.timerOffsetAfter=_b;
-		this.timerOffsetBefore=_a;
+			this.timerOffsetBefore=_b;
+		} else {
+			this.timerOffsetAfter=_a;
+			this.timerOffsetBefore=_b;
+		}
 		this.timerOffset=true;
 	}
 	
