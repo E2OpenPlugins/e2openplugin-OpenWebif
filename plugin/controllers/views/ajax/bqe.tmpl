@@ -1,0 +1,108 @@
+#filter WebSafe
+#from Plugins.Extensions.OpenWebif.local import tstrings
+
+<style>
+	.select { width: 100%; }
+	.sortable { list-style-type: none; margin: 0; padding: 0; width: 200px; }
+	.sortable li { margin: 0 1px 1px 2px; padding-left: 1.5em; font-size: .8em;  height:20px;}
+	.sortable li span { margin: 0 0 0 -1.5em; display: inline-block; }
+
+	 #bql li .handle { display: inline-block;width: 2em;}
+	 #bqs li .handle { display: inline-block;width: 2em;}
+
+	.selectable .ui-selecting { background: #FECA40; }
+	.selectable .ui-selected { background: #F39814; color: white; }
+	.selectable { list-style-type: none; margin: 0; padding: 0; width: 100%; }
+	.selectable li { margin: 1px; padding: 0.1em; font-size: 1em; height: 20px; }
+</style>
+<div id="content_main" style="min-height: 500px;">
+<div id="info">
+<h3>BQE</h3>
+<div style="background-color: #EEE">
+<div style="display: inline-block; width: 100%; zoom: 1;">
+
+<div style="width:50%; height:50%; float:left">
+<div style="padding:5px;">
+
+<div id="toolbar-header">
+<span id="toolbar"><span id="tb1">
+<input type="radio" id="btn0" name="tb1" checked="checked" /><label for="btn0">TV</label>
+<input type="radio" id="btn1" name="tb1"/><label for="btn1">Radio</label>
+</span></span>
+</div>
+
+<div id="toolbar-header">
+<span id="toolbar"><span id="tb2">
+<input type="radio" id="btn2" name="tb2" /><label for="btn2">Satellites</label>
+<input type="radio" id="btn3" name="tb2" checked="checked" /><label for="btn3">Provider</label>
+<input type="radio" id="btn4" name="tb2" /><label for="btn4">All Services</label>
+</span></span>
+</div>
+	<div id="sel0" style="height: 200px;overflow-y:scroll;">
+	<ol id="provider" class="selectable" >
+	</ol>
+	</div>
+	<div style="margin:5px 0 5px 0;">
+		<button id='btnaddp' onclick="addprovider(); return false;">Add Provider as new Bouquet</button>
+	</div>
+	<div>
+	<div style="margin:5px 0 5px 0;">
+	Search :<input id="searchch" value="...">
+	</div>
+	</div>
+
+	<div id="sel1" style="height: 300px;overflow-y:scroll;">
+	<ol id="channels" class="selectable" >
+	</ol>
+	</div>
+	
+	<div style="margin:5px 0 5px 0;">
+		<button id='btnaddc' onclick="addchannel(); return false;">Add channel(s) to Bouquet</button>
+		<button id='btnadda' onclick="addalter(); return false;">Add channel(s) as alternate</button>
+	</div>
+
+</div></div>
+
+<div style="width:50%; height:50%; float:right">
+<div style="padding:5px;">
+<div id="toolbar-header">
+<span id="toolbar"><span id="tb3">
+<button id="btn5">Reload</button>
+<button id="btn6">Backup</button>
+<button id="btn7">Restore</button>
+</span></span>
+</div>
+	<div style="padding:5px;">
+	<div id="sel2" style="height: 280px;overflow-y:scroll;">
+	<ol id="bql" class="selectable" >
+	</ol>
+	</div>
+	<div style="margin:5px 0 5px 0;">
+		<button id='btnbadd' onclick="addbq(); return false;">ADD</button>
+		<button id='btnbren' onclick="renbq(); return false;">REN</button>
+		<button id='btnbdel' onclick="delbq(); return false;">DEL</button>
+	</div>
+	
+	<div id="sel3" style="height: 300px;overflow-y:scroll;">
+	<ol id="bqs" class="selectable" >
+	</ol>
+	</div>
+	<div style="margin:5px 0 5px 0;">
+		<button id='btncdel' onclick="delc(); return false;">DEL</button>
+	</div>
+	
+	
+	</div>
+</div>
+
+</div>
+
+</div></div></div></div>
+
+<script type="text/javascript" src="/js/bqe.js"></script>
+<script type="text/javascript">
+#raw
+$(function() { InitPage();});
+#end raw
+</script>
+#end filter
