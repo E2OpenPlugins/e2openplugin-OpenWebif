@@ -1,16 +1,7 @@
-/*  OpenWebif JavaScript 
- *  2011 E2OpenPlugins
- *
- *  This file is open source software; you can redistribute it and/or modify  
- *    it under the terms of the GNU General Public License version 2 as      
- *              published by the Free Software Foundation.                  
- *
- *--------------------------------------------------------------------------*/
+/* OpenWebif JavaScript v1.0 | (c) 2011 E2OpenPlugins | License GPL V2 , https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt */
 
 $.fx.speeds._default = 1000;
-var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>";
-var mutestatus = 0;
-var lastcontenturl = null;
+var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>",mutestatus = 0,lastcontenturl = null;
 
 $(function() {
 	
@@ -667,7 +658,7 @@ function InitAccordeon(obj)
 		active: false,
 		change: function(event, ui) {
 			ui.oldContent.empty();
-			ui.oldContent.html(tstr_loading + " ...")
+			ui.oldContent.html(tstr_loading + " ...");
 			ui.newContent.load(ui.newHeader.find('a').attr('id'));
 		},
 		autoHeight: false,
@@ -679,7 +670,7 @@ function InitAccordeon(obj)
 		active: true,
 		activate: function(event, ui) {
 			ui.oldPanel.empty();
-			ui.oldPanel.html(tstr_loading + " ...")
+			ui.oldPanel.html(tstr_loading + " ...");
 			ui.newPanel.load(ui.newHeader.find('a').attr('id'));
 		},
 		heightStyle: "content",
