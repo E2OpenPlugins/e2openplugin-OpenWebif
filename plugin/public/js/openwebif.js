@@ -1,4 +1,20 @@
-/* OpenWebif JavaScript v1.0 | (c) 2011 E2OpenPlugins | License GPL V2 , https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt */
+//******************************************************************************
+//* openwebif.js: openwebif base module
+//* Version 1.0
+//******************************************************************************
+//* Copyright (C) 2011-2014 E2OpenPlugins
+//*
+//* Authors: skaman <sandro # skanetwork.com>
+//* 		 meo
+//* 		 Homey-GER
+//* 		 Cimarast
+//* 		 Jšrg Bleyel <jbleyel # gmx.net>
+//* 		 Schimmelreiter
+//* 		 plnick
+//*
+//* License GPL V2
+//* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
+//*******************************************************************************
 
 $.fx.speeds._default = 1000;
 var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>",mutestatus = 0,lastcontenturl = null;

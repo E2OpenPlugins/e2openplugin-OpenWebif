@@ -1,4 +1,15 @@
-/* Autotimer plugin for openwebif v1.0 | (c) 2014 E2OpenPlugins | License GPL V2 , https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt */
+//******************************************************************************
+//* at.js: openwebif Autotimer plugin
+//* Version 1.0
+//******************************************************************************
+//* Copyright (C) 2014 Jšrg Bleyel
+//* Copyright (C) 2014 E2OpenPlugins
+//*
+//* Authors: Jšrg Bleyel <jbleyel # gmx.net>
+//* License GPL V2
+//* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
+//*******************************************************************************
+
 // TODO: backup, restore , some error handler
 
 function toUnixDate(date){
