@@ -9,7 +9,7 @@
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
 //*******************************************************************************
-// TODO: markers, alternatives, backup, restore
+// TODO: alternatives, restore
 
 var Mode=0;
 var cType=1;
@@ -22,6 +22,8 @@ var dstcl=[];
 var seldstbl=[];
 var seldstcl=[];
 var selsrccl=[];
+var markerstr = "<span style='float:right'>(M)</span>";
+var rootreqstr = "/bouqueteditor/api/";
 
 function buildRefStr(type)
 {
@@ -82,8 +84,8 @@ function BQELoadSatellites()
 	$.getJSON( "/api/getsatellites?sRef=" + ref, function( data ) {
 		var s = data['satellites'];
 		$.each( s, function( key, val ) {
-			var sref = val['service']
-			var name = val['name']
+			var sref = val['service'];
+			var name = val['name'];
 			options += "<li class='ui-widget-content' id='"+encodeURIComponent(sref)+"'>"+name+"</li>";
 		});
 		$("#provider").empty();
@@ -97,7 +99,7 @@ function BQELoadSatellites()
 }
 function BQELoadProvider()
 {
-	cType = 1
+	cType = 1;
 	$("#sel0").show();
 	$("#channels").empty();
 	srccl=[];
@@ -133,12 +135,12 @@ function BQELoadBQ()
 	seldstbl=[];
 	SetBQButtons();
 	
-	$.getJSON( "/bouqueteditor/api/getservices?sRef=" + ref, function( data ) {
+	$.getJSON( rootreqstr + "getservices?sRef=" + ref, function( data ) {
 		var s = data['services'];
 		var idx=0;
 		$.each( s, function( key, val ) {
 			dstbl.push(val); 
-			var name = val['servicename']
+			var name = val['servicename'];
 			options += "<li class='ui-widget-content' id='"+idx+"'><div class='handle'><span class='ui-icon ui-icon-carat-2-n-s'></span></div>"+name+"</li>";
 			idx++;
 		});
@@ -158,7 +160,6 @@ function BQELoadAll()
 	cType = 2
 	var ref = buildRefStr(3);
 	var options = "";
-//	console.log(ref);
 	srccl=[];
 	selsrccl=[];
 	SetCHButtons();
@@ -190,21 +191,24 @@ function changeBQ(bref)
 	dstcl=[];
 	seldstcl=[];
 
-	$.getJSON( "/bouqueteditor/api/getservices?sRef=" + encodeURIComponent(bref), function( data ) {
+	$.getJSON( rootreqstr + "getservices?sRef=" + encodeURIComponent(bref), function( data ) {
 		var s = data['services'];
 		currentCH=null;
 		var idx=0;
 		$.each( s, function( key, val ) {
 			dstcl.push(val); 
 			var name = val['servicename']
-			options += "<li class='ui-widget-content' id='"+idx+"'><div class='handle'><span class='ui-icon ui-icon-carat-2-n-s'></span></div>"+name+"</li>";
+			var m = (val['ismarker'] === '1') ? markerstr : "";
+			options += "<li class='ui-widget-content' id='"+idx+"'><div class='handle'><span class='ui-icon ui-icon-carat-2-n-s'></span></div>"+name+m+"</li>";
 			idx++;
 		});
 		$("#bqs").empty();
-		$("#bqs").append( options);
-		$("#bqs").selectable().children().first().addClass('ui-selected');
-		var id = $("#bqs").selectable().children().first().attr('id');
-		seldstcl.push(id);
+		if (idx>0) {
+			$("#bqs").append( options);
+			$("#bqs").selectable().children().first().addClass('ui-selected');
+			var id = $("#bqs").selectable().children().first().attr('id');
+			seldstcl.push(id);
+		}
 		SetDestCHButtons();
 	});
 
@@ -255,7 +259,10 @@ function searchChannel(txt)
 
 function addprovider()
 {
-	$.getJSON( "/bouqueteditor/api/addprovidertobouquetlist?sProviderRef=" + encodeURIComponent(currentProv) + '&mode=' + Mode, function( data ) {
+	$.getJSON( rootreqstr + "addprovidertobouquetlist?sProviderRef=" + currentProv + '&mode=' + Mode, function( data ) {
+		var r = data.Result;
+		if(r[0])
+			showError(r[1],r[0]);
 		BQELoadBQ();
 	});
 }
@@ -268,7 +275,7 @@ function addchannel()
 		srefs.push(srccl[idx].servicereference);
 	});
 
-	var deferreds = [];
+	var reqjobs = [];
 	var dstref = "";
 	
 	if (seldstcl.length>0) {
@@ -278,11 +285,11 @@ function addchannel()
 	}
 	
 	$.each( srefs, function( key, val ) {
-		deferreds.push($.getJSON("/bouqueteditor/api/addservicetobouquet?sBouquetRef=" + encodeURIComponent(currentBQ) + "&sRef=" + encodeURIComponent(val) + '&sRefBefore=' + encodeURIComponent(dstref), function() {}));
+		reqjobs.push($.getJSON( rootreqstr + "addservicetobouquet?sBouquetRef=" + encodeURIComponent(currentBQ) + "&sRef=" + encodeURIComponent(val) + '&sRefBefore=' + encodeURIComponent(dstref), function() {}));
 	});
 
-	if(deferreds.length !== 0) {
-		$.when.apply($, deferreds).then(function() {
+	if(reqjobs.length !== 0) {
+		$.when.apply($, reqjobs).then(function() {
 			changeBQ(currentBQ);
 		});
 	}
@@ -296,7 +303,7 @@ function addalter()
 	var sref = obj.value;
 	var options = "";
 
-	$.getJSON( "/bouqueteditor/api/addservicetoalternative?sBouquetRef=" + encodeURIComponent(currentBQ) + "&sCurrentRef=" + encodeURIComponent(currentCH) + "&sRef=" + encodeURIComponent(sref) + "&mode=" + Mode, function( data ) {
+	$.getJSON( rootreqstr + "addservicetoalternative?sBouquetRef=" + encodeURIComponent(currentBQ) + "&sCurrentRef=" + encodeURIComponent(currentCH) + "&sRef=" + encodeURIComponent(sref) + "&mode=" + Mode, function( data ) {
 		// check result
 	});
 
@@ -322,13 +329,13 @@ function movec(arr)
 		}
 	}
 
-	var deferreds = [];
+	var reqjobs = [];
 	$.each( cmd, function( key, val ) {
-		deferreds.push($.getJSON("/bouqueteditor/api/moveservice?sBouquetRef=" + encodeURIComponent(currentBQ) + "&sRef=" + val , function() {}));
+		reqjobs.push($.getJSON(rootreqstr + "moveservice?sBouquetRef=" + encodeURIComponent(currentBQ) + "&sRef=" + val , function() {}));
 	});
 
-	if(deferreds.length !== 0) {
-		$.when.apply($, deferreds).then(function() {
+	if(reqjobs.length !== 0) {
+		$.when.apply($, reqjobs).then(function() {
 			changeBQ(currentBQ);
 		});
 	}
@@ -355,13 +362,13 @@ function movebq(arr)
 		}
 	}
 
-	var deferreds = [];
+	var reqjobs = [];
 	$.each( cmd, function( key, val ) {
-		deferreds.push($.getJSON("/bouqueteditor/api/movebouquet?sBouquetRef=" + val , function() {}));
+		reqjobs.push($.getJSON(rootreqstr + "movebouquet?sBouquetRef=" + val , function() {}));
 	});
 
-	if(deferreds.length !== 0) {
-		$.when.apply($, deferreds).then(function() {
+	if(reqjobs.length !== 0) {
+		$.when.apply($, reqjobs).then(function() {
 			BQELoadBQ();
 		});
 	}
@@ -383,13 +390,13 @@ function delc()
 	if(confirm("Do you really want to delete the channel(s)\n" + snamesstr + " ?") === false)
 		return;
 
-	var deferreds = [];
+	var reqjobs = [];
 	$.each( srefs, function( key, val ) {
-		deferreds.push($.getJSON("/bouqueteditor/api/removeservice?sBouquetRef=" + encodeURIComponent(currentBQ) + "&sRef=" + encodeURIComponent(val) + "&mode=" + Mode, function() {}));
+		reqjobs.push($.getJSON(rootreqstr + "removeservice?sBouquetRef=" + encodeURIComponent(currentBQ) + "&sRef=" + encodeURIComponent(val) + "&mode=" + Mode, function() {}));
 	});
 
-	if(deferreds.length !== 0) {
-		$.when.apply($, deferreds).then(function() {
+	if(reqjobs.length !== 0) {
+		$.when.apply($, reqjobs).then(function() {
 			changeBQ(currentBQ);
 		});
 	}
@@ -408,8 +415,10 @@ function delbq()
 	if(confirm("Do you really want to delete the bouquet\n" + sname + " ?") === false)
 		return;
 
-	$.getJSON( "/bouqueteditor/api/removebouquet?sBouquetRef=" + encodeURIComponent(sref) + "&mode=" + Mode, function( data ) {
-		// check result
+	$.getJSON(rootreqstr + "removebouquet?sBouquetRef=" + encodeURIComponent(sref) + "&mode=" + Mode, function( data ) {
+		var r = data.Result;
+		if(r[0])
+			showError(r[1],r[0]);
 		BQELoadBQ();
 	});
 
@@ -419,13 +428,36 @@ function addbq()
 {
 	var newname=prompt("Name of the Bouquet:");
 	if (newname.length){
-		$.getJSON( "/bouqueteditor/api/addbouquet?name=" + encodeURIComponent(newname) + "&mode=" + Mode , function( data ) {
-		// check result
+		$.getJSON(rootreqstr + "addbouquet?name=" + encodeURIComponent(newname) + "&mode=" + Mode , function( data ) {
+			var r = data.Result;
+			if(r[0])
+				showError(r[1],r[0]);
 			BQELoadBQ();
 		});
 	}
 }
 
+function addm()
+{
+	var newname=prompt("Name of the Marker:");
+	if (newname.length){
+	
+		var dstref = "";
+		
+		if (seldstcl.length>0) {
+			var si = seldstcl[0];
+			var i = parseInt(si);
+			dstref = dstcl[i].servicereference;
+		}
+		
+		$.getJSON(rootreqstr + "addmarkertobouquet?sBouquetRef=" + encodeURIComponent(currentBQ) + '&Name=' + encodeURIComponent(newname) +'&sRefBefore=' + encodeURIComponent(dstref) , function( data ) {
+			var r = data.Result;
+			if(r[0])
+				showError(r[1],r[0]);
+			changeBQ(currentBQ);
+		});
+	}
+}
 
 
 function renbq()
@@ -434,19 +466,65 @@ function renbq()
 		return;
 	var pos=parseInt(seldstbl[0]);
 	var sname = dstbl[pos].servicename;
-	var sref = dstbl[pos].servicereference
+	var sref = dstbl[pos].servicereference;
 	var newname=prompt('Enter new name for the bouquet:', sname);
 	if (newname && newname!=sname){
-		$.getJSON( "/bouqueteditor/api/renameservice?sRef=" + encodeURIComponent(sref) + "&mode=" + Mode + "&newName=" + encodeURIComponent(newname), function( data ) {
-		// check result
+		$.getJSON(rootreqstr + "renameservice?sRef=" + encodeURIComponent(sref) + "&mode=" + Mode + "&newName=" + encodeURIComponent(newname), function( data ) {
+			var r = data.Result;
+			if(r[0])
+				showError(r[1],r[0]);
 			BQELoadBQ();
 		});
 	}
 }
 
+function renmg()
+{
+	// rename marker or group
+	if(seldstcl.length!==1)
+		return;
+
+	var pos=parseInt(seldstcl[0]);
+
+	// TODO : rename group
+	if(dstcl[pos].ismarker === "0")
+		return;
+	
+	var sname = dstcl[pos].servicename;
+	var sref = dstcl[pos].servicereference;
+	var newname=prompt('Enter new name for the marker:', sname);
+	if (newname && newname!=sname){
+
+		var dstref = "";
+		pos++;
+		if(pos < dstcl.length) {
+			dstref = dstcl[pos].servicereference;
+		}
+		
+		$.getJSON(rootreqstr + "renameservice?sBouquetRef=" + encodeURIComponent(currentBQ) + "&sRef=" + encodeURIComponent(sref) + "&newName=" + encodeURIComponent(newname) + "&sRefBefore=" + encodeURIComponent(dstref), function( data ) {
+			var r = data.Result;
+			if(r[0])
+				showError(r[1],r[0]);
+			changeBQ(currentBQ);
+		});
+	}
+
+	
+}
+
 function SetDestCHButtons() {
 	var e = (seldstcl.length > 0)
 	$('#btncdel').prop( "disabled", !e );
+	$('#btnmadd').prop( "disabled", !e );
+
+	e = (seldstcl.length === 1)
+	if(e) {
+		var idx = seldstcl[0];
+		var i = parseInt(idx);
+		e = (dstcl[i].ismarker === "1");
+	}
+	$('#btnmgren').prop( "disabled", !e );
+
 }
 
 function SetCHButtons() {
@@ -466,9 +544,32 @@ function NOTI()
 	alert("NOT implemented YET");
 }
 
+function BQEBackup()
+{
+	var fn=prompt('Please enter filename:', 'bouquets_backup');
+	if (fn) {
+		$.getJSON(rootreqstr + 'backup?Filename='+fn, function( data ) {
+			var r = data.Result;
+			if(r[0]===false)
+				showError(r[1],r[0]);
+			else {
+				var url =  "/bouqueteditor/tmp/" + r[1];
+				window.open(url,'Download');
+			}
+		});
+	}
+}
+
+function BQERestore()
+{
+	NOTI();
+}
+
 
 function InitPage() {
 
+	showError("");
+	
 	$('#btn0').click(function(){ BQELoadTVR(0);});
 	$('#btn1').click(function(){ BQELoadTVR(1);});
 
@@ -477,8 +578,8 @@ function InitPage() {
 	$('#btn4').click(function(){ BQELoadAll();});
 
 	$('#btn5').click(function(){ BQELoadBQ();});
-	$('#btn6').click(function(){ NOTI();});
-	$('#btn7').click(function(){ NOTI();});
+	$('#btn6').click(function(){ BQEBackup();});
+	$('#btn7').click(function(){ BQERestore();});
 
 	$("#tb1").buttonset();
 	$("#tb2").buttonset();
@@ -571,6 +672,25 @@ function InitPage() {
 	$('#btnaddc').prop( "disabled", true );
 	$('#btnadda').prop( "disabled", true );
 	$('#btnaddp').prop( "disabled", true );
-
+	$('#btnmadd').prop( "disabled", true );
+	$('#btnmgren').prop( "disabled", true );
+	
 	BQELoadTVR(3);
+}
+
+function showError(txt,st)
+{
+	st = typeof st !== 'undefined' ? st : "False";
+	$('#success').text("");
+	$('#error').text("");
+	if(st===true)
+		st="True";
+	if(st === "True")
+		$('#success').text(txt);
+	else
+		$('#error').text(txt);
+	if(txt!=="")
+		$('#errorbox').show();
+	else
+		$('#errorbox').hide();
 }

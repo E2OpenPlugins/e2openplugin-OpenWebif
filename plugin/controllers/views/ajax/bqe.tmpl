@@ -17,7 +17,7 @@
 </style>
 <div id="content_main" style="min-height: 500px;">
 <div id="info">
-<h3>BQE</h3>
+<h3>Bouquet Editor (BETA)</h3>
 <div style="background-color: #EEE">
 <div style="display: inline-block; width: 100%; zoom: 1;">
 
@@ -78,9 +78,9 @@
 	</ol>
 	</div>
 	<div style="margin:5px 0 5px 0;">
-		<button id='btnbadd' onclick="addbq(); return false;">ADD</button>
-		<button id='btnbren' onclick="renbq(); return false;">REN</button>
-		<button id='btnbdel' onclick="delbq(); return false;">DEL</button>
+		<button id='btnbadd' onclick="addbq(); return false;">Add BQ</button>
+		<button id='btnbren' onclick="renbq(); return false;">Ren BQ</button>
+		<button id='btnbdel' onclick="delbq(); return false;">Del BQ</button>
 	</div>
 	
 	<div id="sel3" style="height: 300px;overflow-y:scroll;">
@@ -88,16 +88,25 @@
 	</ol>
 	</div>
 	<div style="margin:5px 0 5px 0;">
-		<button id='btncdel' onclick="delc(); return false;">DEL</button>
+		<button id='btncdel' onclick="delc(); return false;">Del channel(s)</button>
+		<button id='btnmadd' onclick="addm(); return false;">Add marker</button>
+		<button id='btnmgren' onclick="renmg(); return false;">Rename</button>
 	</div>
-	
 	
 	</div>
 </div>
 
 </div>
+</div>
+<div id="errorbox" class="timerlist_row" style="color: red;">
+	<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+	<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+		<span id="error"></span>
+		<span id="success" style="color: green;"></span>
+	</div>
+</div>
 
-</div></div></div></div>
+</div></div></div>
 
 <script type="text/javascript" src="/js/bqe.js"></script>
 <script type="text/javascript">
