@@ -225,23 +225,40 @@ fieldset > label
 						<button id="atbutton1">DEL</button>
 						<button id="atbutton2">Reload</button>
 						<button id="atbutton3">Save</button>
-						<button id="atbutton4">PARSE</button>
+						<button id="atbutton4">Parse</button>
+						<button id="atbutton5">Simulate</button>
+						<button id="atbutton6">Timers</button>
 						</div></div>
 							<div id="errorbox" class="timerlist_row" style="color: red;">
 		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
 			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
 			<span id="error"></span>
+			<span id="success" style="color: green;"></span>
 		</div>
 	</div>
-						
-					<span style="display: block;clear: both;"/>
-			</div>
-			</div>
+		<span style="display: block;clear: both;"/>
 		</div>
-		
 		</div>
+	</div>
+	</div>
 	</div>
 </div>
+<div id="simdlg" style="display:none;">
+<div>
+<table id="simt" border="0" class="ui-widget" style="width:99%;">
+<thead class="ui-widget-header">
+<tr><th>AT Name</th><th>Title</th><th>Channel</th><th>Start</th><th>End</th></tr>
+</thead>
+<tbody id='simtb' class="ui-widget-content">
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="timerdlg" style="display:none;">
+<div id="timerdlgcont">
+</div>
+<div>
 
 <script type="text/javascript" src="/js/jquery-ui-timepicker-addon.min.js"></script>
 <script type="text/javascript" src="/js/chosen.jquery.min.js"></script>
