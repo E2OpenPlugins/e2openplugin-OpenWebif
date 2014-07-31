@@ -1,16 +1,23 @@
-/*  OpenWebif JavaScript 
- *  2011 E2OpenPlugins
- *
- *  This file is open source software; you can redistribute it and/or modify  
- *    it under the terms of the GNU General Public License version 2 as      
- *              published by the Free Software Foundation.                  
- *
- *--------------------------------------------------------------------------*/
+//******************************************************************************
+//* openwebif.js: openwebif base module
+//* Version 1.0
+//******************************************************************************
+//* Copyright (C) 2011-2014 E2OpenPlugins
+//*
+//* Authors: skaman <sandro # skanetwork.com>
+//* 		 meo
+//* 		 Homey-GER
+//* 		 Cimarast
+//* 		 Jšrg Bleyel <jbleyel # gmx.net>
+//* 		 Schimmelreiter
+//* 		 plnick
+//*
+//* License GPL V2
+//* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
+//*******************************************************************************
 
 $.fx.speeds._default = 1000;
-var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>";
-var mutestatus = 0;
-var lastcontenturl = null;
+var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>",mutestatus = 0,lastcontenturl = null;
 
 $(function() {
 	
@@ -667,7 +674,7 @@ function InitAccordeon(obj)
 		active: false,
 		change: function(event, ui) {
 			ui.oldContent.empty();
-			ui.oldContent.html(tstr_loading + " ...")
+			ui.oldContent.html(tstr_loading + " ...");
 			ui.newContent.load(ui.newHeader.find('a').attr('id'));
 		},
 		autoHeight: false,
@@ -679,7 +686,7 @@ function InitAccordeon(obj)
 		active: true,
 		activate: function(event, ui) {
 			ui.oldPanel.empty();
-			ui.oldPanel.html(tstr_loading + " ...")
+			ui.oldPanel.html(tstr_loading + " ...");
 			ui.newPanel.load(ui.newHeader.find('a').attr('id'));
 		},
 		heightStyle: "content",
@@ -720,3 +727,69 @@ function InitBouquets(tv)
 	$("#tvcontent").load("ajax/bouquets" + mode);
 	
 }
+
+/* Vu+ Transcoding begin*/
+
+function getWinSize(win) {
+	if(!win) win = window;
+	var s = {};
+	if(typeof win.innerWidth != "undefined") {
+		s.screenWidth = win.screen.width;
+		s.screenHeight = win.screen.height;
+	} else {
+		s.screenWidth = 0;
+		s.screenHeight = 0;
+	}
+	return s;
+}
+
+function getDeviceType() {
+	var ss = getWinSize();
+	var screenLen = ( ss.screenHeight > ss.screenWdith ) ? ss.screenHeight : ss.screenWidth;
+	return ( screenLen < 500 ) ? "phone":"tab";
+}
+
+function getOSType() {
+	var agentStr = navigator.userAgent;
+
+	if(agentStr.indexOf("iPod") > -1 || agentStr.indexOf("iPhone") > -1 || agentStr.indexOf("iPad") > -1 || agentStr.indexOf("ipod") > -1 || agentStr.indexOf("iphone") > -1 || agentStr.indexOf("ipad") > -1)
+		return "ios";
+	else if(agentStr.indexOf("Android") > -1 || agentStr.indexOf("android") > -1)
+		return "android";
+	else if(agentStr.indexOf("BlackBerry") > -1 || agentStr.indexOf("blackberry") > -1)
+		return "blackberry";
+	else
+		return "unknown";
+}
+
+function jumper80( file ) {
+	var deviceType = getDeviceType();
+	document.portFormTs.file.value = file;
+	document.portFormTs.device.value = "etc";
+	document.portFormTs.submit();
+}
+
+function jumper8003( file ) {
+	var deviceType = getDeviceType();
+	document.portFormTs.file.value = file;
+	document.portFormTs.device.value = "phone";
+	document.portFormTs.submit();
+}
+
+function jumper8002( sref, sname ) {
+	var deviceType = getDeviceType();
+	document.portForm.ref.value = sref;
+	document.portForm.name.value = sname;
+	document.portForm.device.value = "phone";
+	document.portForm.submit();
+}
+
+function jumper8001( sref, sname ) {
+	var deviceType = getDeviceType();
+	document.portForm.ref.value = sref;
+	document.portForm.name.value = sname;
+	document.portForm.device.value = "etc";
+	document.portForm.submit();
+}
+
+/* Vu+ Transcoding end*/

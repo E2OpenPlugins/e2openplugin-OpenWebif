@@ -267,4 +267,5 @@ class BQEController(BaseController):
 		self.session = session
 		self.putChild("web", BQEWebController(session))
 		self.putChild("api", BQEApiController(session))
+		self.putChild('tmp', File('/tmp'))
 
