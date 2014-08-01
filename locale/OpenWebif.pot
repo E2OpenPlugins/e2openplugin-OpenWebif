@@ -745,3 +745,6 @@ msgstr ""
 
 msgid "IPv4-only Python/Twisted"
 msgstr ""
+
+msgid "Refresh Timer"
+msgstr ""

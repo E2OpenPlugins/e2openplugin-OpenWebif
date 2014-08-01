@@ -10,6 +10,7 @@
 				<span id="timerbuttons">
 					<button id="timerbutton0" onclick="addTimer(); return false">$tstrings['add_timer']</button>
 					<button id="timerbutton1" onclick="cleanupTimer(); return false">$tstrings['cleanup_timer']</button>
+					<button id="timerbutton2" onclick="lastcontenturl='';load_maincontent('ajax/timers'); return false;">$tstrings['refresh_timer']</button>
 				</span>
 			</span>
 		</div>
@@ -78,11 +79,13 @@
 </div>
 
 <div id="editTimerForm"></div>
-
-<script>
-	\$('#timerbuttons').buttonset();
-    var reloadTimers = true;
-
-    \$('#editTimerForm').load('/ajax/edittimer');
+<script type="text/javascript">
+#raw
+var reloadTimers = true;
+$(function() {
+	$('#timerbuttons').buttonset();
+	$('#editTimerForm').load('/ajax/edittimer');
+});
+#end raw
 </script>
 #end filter

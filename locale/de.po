@@ -731,3 +731,6 @@ msgstr "keine/reines IPv4-Netzwerk"
 
 msgid "IPv4-only Python/Twisted"
 msgstr "Python/Twisted ohne IPv6-Unterstützung"
+
+msgid "Refresh Timer"
+msgstr "Timer neu Laden"
