@@ -8,7 +8,7 @@
 //* 		 meo
 //* 		 Homey-GER
 //* 		 Cimarast
-//* 		 Jšrg Bleyel <jbleyel # gmx.net>
+//* 		 Joerg Bleyel <jbleyel # gmx.net>
 //* 		 Schimmelreiter
 //* 		 plnick
 //*
@@ -17,7 +17,7 @@
 //*******************************************************************************
 
 $.fx.speeds._default = 1000;
-var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>",mutestatus = 0,lastcontenturl = null;
+var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0;
 
 $(function() {
 	
@@ -45,9 +45,7 @@ $(function() {
 	
 	getStatusInfo();
 	setInterval("getStatusInfo()", 15000);
-});
 
-$(function() {
 	$( "#slider" ).slider({
 		
 		range: "min",
@@ -63,12 +61,17 @@ $(function() {
 			} else  {
 				$("#volimage").attr("src","/images/volume.png");
 			} 
-			var url = "web/vol?set=set" + ui.value;
-			var jqxhr = $.ajax( url );
+			var jqxhr = $.ajax( "web/vol?set=set" + ui.value );
 			return false;
 		}
 	});
 	$( "#amount" ).val( $( "#slider" ).slider( "value" ) );
+	
+	$( ".epgsearch button:first" ).button({
+            icons: {
+                primary: "ui-icon-search"
+            }
+        });
 });
 
 
@@ -126,15 +129,6 @@ $(function() {
         return win;
     };
 })(jQuery);
-
-
-$(function() {
-	$( ".epgsearch button:first" ).button({
-            icons: {
-                primary: "ui-icon-search"
-            }
-        });
-});
 
 function initJsTranslation(strings) {
 	tstr_add_timer = strings.add_timer;
@@ -341,8 +335,6 @@ function getStatusInfo() {
 	});
 }
 
-var screenshotMode = 'all';
-
 function grabScreenshot(mode) {
 	$('#screenshotspinner').show();
 	$('#screenshotimage').hide();
@@ -372,8 +364,6 @@ function getMessageAnswer() {
 		$('#messageSentResponse_hsa').html(result['message']);
 	});
 }
-
-var MessageAnswerCounter=0;
 
 function countdowngetMessage() {
 	MessageAnswerCounter--;
@@ -435,7 +425,6 @@ $(function() {
 	});
 });
 
-var shiftbutton = false;
 $(window).keydown(function(evt) {
 	if (evt.which == 16) { 
 		shiftbutton = true;
@@ -457,7 +446,6 @@ function callScreenShot(){
 	}
 }
 
-var grabTimer = 0;
 function pressMenuRemote(code) {
 	if (shiftbutton) {
 		webapi_execute("/api/remotecontrol?type=long&command=" + code);
