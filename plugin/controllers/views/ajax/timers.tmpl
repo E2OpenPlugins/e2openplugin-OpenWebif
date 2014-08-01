@@ -2,9 +2,7 @@
 #from urllib import quote
 #from Plugins.Extensions.OpenWebif.local import tstrings
 <div id="content_main" style="min-height: 500px;">
-	<div id="info">
-		<h3>$tstrings['timer_list']</h3>
-
+	<div id="tvcontentmain">
 		<div id="toolbar-header">
 			<span id="toolbar">
 				<span id="timerbuttons">
@@ -15,11 +13,25 @@
 			</span>
 		</div>
 
-		<div id="timers" style="height: 640px; overflow: auto;">
+		<div id="timers" style="overflow: auto;">
 		#for $timer in $timers
-			<div class="moviecontainer_main" id="$timer.begin-$timer.end">
-				<div class="moviecontainer_left">
-					<div style="padding: 3px;">
+			<div class="timerlist_main" id="$timer.begin-$timer.end">
+				<div class="timerlist_buttons">
+					<div>
+						#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
+						<a href='#' onClick="editTimer('$sref', '$timer.begin', '$timer.end');"><img src="../images/ico_edit.png" title="$tstrings['edit_timer']" border="0"></a>
+						<a href='#' onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$timer.name');"><img src="../images/ico_delete.png" title="$tstrings['delete_timer']" border="0"></a>
+						<a href='#' onClick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end');">
+						#if $timer.disabled
+						<img id="img-$timer.begin-$timer.end" src="../images/ico_disabled.png" title="$tstrings['enable_timer']" border="0">
+						#else
+						<img id="img-$timer.begin-$timer.end" src="../images/ico_enabled.png" title="$tstrings['disable_timer']" border="0">
+						#end if
+						</a>
+					</div>
+				</div>
+				<div class="timerlist_text">
+					<div>
 						<div style="color: #176093; font-weight: bold;">
 							$timer.name
 						</div>
@@ -42,10 +54,10 @@
 							$timer.servicename
 						</div>
 					</div>
-					<div style="padding: 3px;">
+					<div>
 						$timer.description
 					</div>
-					<div style="padding: 3px;">
+					<div>
 						<span style="color: #7F8181; font-weight: bold;">
 							#if $timer.state == 0
 								$tstrings['waiting']
@@ -55,20 +67,6 @@
 								$tstrings['finished']
 							#end if
 						</span>
-					</div>
-				</div>
-				<div class="moviecontainer_right">
-					<div style="padding: 3px; text-align: right;">
-						#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
-						<a href='#' onClick="editTimer('$sref', '$timer.begin', '$timer.end');"><img src="../images/ico_edit.png" title="$tstrings['edit_timer']" border="0"></a>
-						<a href='#' onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$timer.name');"><img src="../images/ico_delete.png" title="$tstrings['delete_timer']" border="0"></a>
-						<a href='#' onClick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end');">
-						#if $timer.disabled
-						<img id="img-$timer.begin-$timer.end" src="../images/ico_disabled.png" title="$tstrings['enable_timer']" border="0">
-						#else
-						<img id="img-$timer.begin-$timer.end" src="../images/ico_enabled.png" title="$tstrings['disable_timer']" border="0">
-						#end if
-						</a>
 					</div>
 				</div>
 				<div style="clear: both;"></div>

@@ -324,7 +324,7 @@ color:#87BCF8;
 	border: 1px solid #000000; 
 }
 
-.moviecontainer_main { 
+.moviecontainer_main ,.timerlist_main { 
 	background-color: #F0F7FC;
 	width: 99%;
 	margin-top: 2px;
@@ -333,7 +333,7 @@ color:#87BCF8;
 	border: 1px solid #F0F7FC;
 }
 
-.moviecontainer_main:hover {
+.moviecontainer_main:hover ,.timerlist_main:hover {
 	border: 1px dotted #4297D7;
 }
 
@@ -677,3 +677,8 @@ p {
 .ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
 .ui-timepicker-div td { font-size: 90%; }
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+/* timerlist */
+.timerlist_buttons , .timerlist_text {float: left; margin-left:5px;}
+.timerlist_buttons div , .timerlist_text div {padding: 3px;}
+.timerlist_buttons { width: 75px; }
