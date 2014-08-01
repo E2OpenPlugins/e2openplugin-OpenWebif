@@ -177,7 +177,7 @@ class WebController(BaseController):
 			bRef = ""
 
 		request.setHeader('Content-Type', 'application/text')
-		services = getServices(bRef)
+		services = getServices(bRef,False)
 		services["host"] = "%s:8001" % request.getRequestHostname()
 		return services
 

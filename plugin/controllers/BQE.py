@@ -14,6 +14,7 @@ from base import BaseController
 from Screens.ChannelSelection import service_types_tv
 from Components.config import config
 from Components.ParentalControl import parentalControl, IMG_WHITESERVICE, IMG_WHITEBOUQUET, IMG_BLACKSERVICE, IMG_BLACKBOUQUET
+import os
 
 class BQEWebController(BaseController):
 	def __init__(self, session, path = ""):
@@ -254,6 +255,33 @@ class BQEWebController(BaseController):
 		ps['SetupPin'] = setuppin
 		return { "ps": ps }
 
+class BQEUploadFile(resource.Resource):
+	FN = "/tmp/bouques_backup.tar"
+	def __init__(self, session):
+		self.session = session
+		resource.Resource.__init__(self)
+
+	def render_POST(self, request):
+		request.setResponseCode(http.OK)
+		request.setHeader('Content-type', 'application/xhtml+xml;' )
+		request.setHeader('charset', 'UTF-8')	
+		content = request.args['file'][0]
+		if not content:
+			return { "Result" : [ False, 'Error upload File'] }
+		fileh = os.open( self.FN, os.O_WRONLY|os.O_CREAT )
+		bytes = 0
+		if fileh:
+			bytes = os.write(fileh, content)
+			os.close(fileh)
+		if bytes <= 0:
+			try:
+				os.remove(FN)
+			except OSError, oe:
+				pass
+			return { "Result" : [ False, 'Error writing File'] }
+		else:
+			return { "Result": [ True, self.FN ] }
+
 class BQEApiController(BQEWebController):
 	def __init__(self, session, path = ""):
 		BQEWebController.__init__(self, session, path)
@@ -267,5 +295,5 @@ class BQEController(BaseController):
 		self.session = session
 		self.putChild("web", BQEWebController(session))
 		self.putChild("api", BQEApiController(session))
-		self.putChild('tmp', File('/tmp'))
+		self.putChild('tmp', static.File('/tmp'))
 

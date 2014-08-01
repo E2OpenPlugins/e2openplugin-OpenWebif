@@ -2,14 +2,14 @@
 //* bqe.js: openwebif Bouqueteditor plugin
 //* Version 1.0
 //******************************************************************************
-//* Copyright (C) 2014 Jšrg Bleyel
+//* Copyright (C) 2014 Joerg Bleyel
 //* Copyright (C) 2014 E2OpenPlugins
 //*
-//* Authors: Jšrg Bleyel <jbleyel # gmx.net>
+//* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
 //*******************************************************************************
-// TODO: alternatives, restore
+// TODO: alternatives
 
 var Mode=0;
 var cType=1;
@@ -562,9 +562,44 @@ function BQEBackup()
 
 function BQERestore()
 {
-	NOTI();
+	$("#rfile").trigger('click');
 }
 
+function prepareRestore(obj){
+	var fn = obj.val()
+	fn = fn.replace('C:\\fakepath\\','');
+	if(confirm("Do you really want to restore from file ( " + fn + ") ?") === false)
+		return;
+	
+	$('form#uploadrestore').unbind('submit');
+	$('form#uploadrestore').submit(function(e)
+	{
+		var formData = new FormData(this);
+		$.ajax({
+			url: '/bouqueteditor/uploadrestore',
+			type: 'POST',
+			data:  formData,
+			mimeType:"multipart/form-data",
+			contentType: false,
+			cache: false,
+			processData:false,
+			success: function(data, textStatus, jqXHR)
+			{
+				console.log(data);
+				showError("Upload File: " + textStatus,true);
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				showError("Upload File Error: " + errorThrown);
+			}
+		});
+		e.preventDefault();
+		try {
+			e.unbind();
+		} catch(e){}
+	});
+	$('form#uploadrestore').submit();
+}
 
 function InitPage() {
 
@@ -676,6 +711,11 @@ function InitPage() {
 	$('#btnmgren').prop( "disabled", true );
 	
 	BQELoadTVR(3);
+	
+	$("#rfile").change(function() {
+		prepareRestore($(this));
+	});
+	
 }
 
 function showError(txt,st)
