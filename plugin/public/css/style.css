@@ -56,14 +56,6 @@ body {
 	text-decoration:none;
 }
 
-#mainpic
-{
-	background-image:url(../images/main.jpg);
-	background-repeat:no-repeat;
-	width:900px;
-	height:354px;
-}
-
 .off
 {
 	color:#67A0F5;
@@ -445,14 +437,6 @@ color:#87BCF8;
 	margin-bottom:5px;
 }
 
-#content_top
-{
-	background-image:url(../images/main_top.png);
-	background-repeat:no-repeat;
-	width:700px;
-	height:25px;
-}
-
 #content_main
 {
 	background-color:#FFF;
@@ -468,14 +452,6 @@ color:#87BCF8;
 	border-bottom-style: none;
 	padding-left: 10px;
 	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
-}
-
-#content_bottom
-{
-	background-image:url(../images/main_bottom.png);
-	background-repeat:no-repeat;
-	width:700px;
-	height:25px;
 }
 
 #content h1
@@ -500,12 +476,6 @@ color:#87BCF8;
 	text-decoration:none;
 	color: #176093;
 }
-
-#content p
-{
-	
-}
-
 
 #info
 {
@@ -630,11 +600,6 @@ html, body
 	text-align: center;
 }
 
-/* ??
-p {
-	text-align: left;
-}
-*/
 /* css for timepicker */
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
 .ui-timepicker-div dl { text-align: left; }
