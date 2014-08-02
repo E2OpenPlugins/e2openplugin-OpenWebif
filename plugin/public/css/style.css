@@ -278,7 +278,7 @@ color:#87BCF8;
 	-moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; -khtml-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px;
 }
 
-#tvcontent
+#tvcontent,#timers
 {
 	width:95%;
 	height:730px;
@@ -679,6 +679,6 @@ p {
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
 
 /* timerlist */
-.timerlist_buttons , .timerlist_text {float: left; margin-left:5px;}
+.timerlist_buttons , .timerlist_text {float: left; margin-left:85px;}
 .timerlist_buttons div , .timerlist_text div {padding: 3px;}
-.timerlist_buttons { width: 75px; }
+.timerlist_buttons { width: 75px; margin-left:-85px;}
