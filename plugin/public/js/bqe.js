@@ -560,6 +560,18 @@ function BQEBackup()
 	}
 }
 
+function BQEDoRestore(fn)
+{
+	if (fn) {
+		$.getJSON(rootreqstr + 'restore?Filename='+fn, function( data ) {
+			console.log(data);
+			var r = data.Result;
+			showError(r[1],r[0]);
+		});
+	}
+}
+
+
 function BQERestore()
 {
 	$("#rfile").trigger('click');
@@ -583,10 +595,14 @@ function prepareRestore(obj){
 			contentType: false,
 			cache: false,
 			processData:false,
+			dataType: "json",
 			success: function(data, textStatus, jqXHR)
 			{
-				console.log(data);
-				showError("Upload File: " + textStatus,true);
+				var r = data.Result;
+				if(r[0])
+					BQEDoRestore(r[1]);
+				else
+					showError("Upload File: " + textStatus);
 			},
 			error: function(jqXHR, textStatus, errorThrown) 
 			{

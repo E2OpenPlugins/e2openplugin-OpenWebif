@@ -13,11 +13,12 @@
 			</span>
 		</div>
 
-		<div id="timers" style="overflow: auto;">
+		<div id="timers">
 		#for $timer in $timers
 			<div class="timerlist_main" id="$timer.begin-$timer.end">
-				<div class="timerlist_buttons">
-					<div>
+				<div class="timerlist_text">
+					<div class="timerlist_buttons">
+						<div>
 						#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
 						<a href='#' onClick="editTimer('$sref', '$timer.begin', '$timer.end');"><img src="../images/ico_edit.png" title="$tstrings['edit_timer']" border="0"></a>
 						<a href='#' onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$timer.name');"><img src="../images/ico_delete.png" title="$tstrings['delete_timer']" border="0"></a>
@@ -28,9 +29,8 @@
 						<img id="img-$timer.begin-$timer.end" src="../images/ico_enabled.png" title="$tstrings['disable_timer']" border="0">
 						#end if
 						</a>
+						</div>
 					</div>
-				</div>
-				<div class="timerlist_text">
 					<div>
 						<div style="color: #176093; font-weight: bold;">
 							$timer.name
