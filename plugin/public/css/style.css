@@ -1,7 +1,5 @@
 body {
-	margin: 0;
 	padding: 0;
-	text-align: left;
 	font-family: Verdana,Arial,sans-serif;
 	font-size: 13px;
 	color: #061C37;
@@ -9,6 +7,7 @@ body {
 	background-image:url(../images/background.png);
 	background-repeat:repeat-x;
 }
+
 *
 {
 	margin: 0 auto 0 auto;
@@ -34,7 +33,6 @@ body {
 	font-family: Arial, Verdana,sans-serif;
 	position:absolute;
 	text-align:left;
-	color:#FFFFFF;
 	font-size:42px;
 	color:#FFF;
 	left:14px;
@@ -98,7 +96,7 @@ body {
 	float:left;
 	height: 32px;
 	width: 80%;
-	padding: 3px 0px 0px 5px;
+	padding: 3px 0 0 5px;
 }
 
 #osd_status
@@ -111,7 +109,7 @@ body {
 	float:right;
 	height: 30px;
 	width: 100px;
-	padding: 12px 0px 0px 0px;
+	padding: 12px 0 0 0;
 }
 
 #osd_status a, img 
@@ -131,12 +129,8 @@ body {
 	outline: 0 none;
 	-moz-outline-style: 0 none;
 	display: block;
-	/*line-height: 24px;*/
-	_border-bottom: none;
-	-moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; -khtml-border-top-left-radius: 5px; border-top-left-radius: 5px;
-	-moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; -khtml-border-top-right-radius: 5px; border-top-right-radius: 5px;
-	-moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; -khtml-border-bottom-left-radius: 5px; border-bottom-left-radius: 5px;
-	-moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; -khtml-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px;
+	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
+	border-bottom-style: none;
 }
 
 .leftmenu_icon
@@ -163,10 +157,7 @@ body {
 	background: #1c478e url(../images/ui-bg_highlight-soft_55_1c478e_1x100.png) 50% 50% repeat-x; 
 	color: #ffffff; 
 	font-weight: bold;
-	-moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; -khtml-border-top-left-radius: 5px; border-top-left-radius: 5px;
-	-moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; -khtml-border-top-right-radius: 5px; border-top-right-radius: 5px;
-	-moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; -khtml-border-bottom-left-radius: 5px; border-bottom-left-radius: 5px;
-	-moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; -khtml-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px;
+	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
 
 #leftmenu_main
@@ -174,10 +165,7 @@ body {
 	margin:4px; 
 	border: 1px solid #a6c9e2; 
 	background: #fcfdfd url(../images/ui-bg_inset-hard_100_fcfdfd_1x100.png) 50% bottom repeat-x; color: #061C37;
-	-moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; -khtml-border-top-left-radius: 5px; border-top-left-radius: 5px;
-	-moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; -khtml-border-top-right-radius: 5px; border-top-right-radius: 5px;
-	-moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; -khtml-border-bottom-left-radius: 5px; border-bottom-left-radius: 5px;
-	-moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; -khtml-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px; 
+	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
 
 #leftmenu_main a
@@ -255,10 +243,7 @@ color:#87BCF8;
 	background: #1c478e url(../images/ui-bg_highlight-soft_55_1c478e_1x100.png) 50% 50% repeat-x; 
 	color: #ffffff; 
 	font-weight: bold;
-	-moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; -khtml-border-top-left-radius: 5px; border-top-left-radius: 5px;
-	-moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; -khtml-border-top-right-radius: 5px; border-top-right-radius: 5px;
-	-moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; -khtml-border-bottom-left-radius: 5px; border-bottom-left-radius: 5px;
-	-moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; -khtml-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px;
+	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
 
 #toolbar {
@@ -270,12 +255,9 @@ color:#87BCF8;
 	border: 1px solid #4297d7;
 	width: 100%;
 	height:800px;
-	margin: 0px;
-	padding: 0px;
-	-moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; -khtml-border-top-left-radius: 5px; border-top-left-radius: 5px;
-	-moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; -khtml-border-top-right-radius: 5px; border-top-right-radius: 5px;
-	-moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; -khtml-border-bottom-left-radius: 5px; border-bottom-left-radius: 5px;
-	-moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; -khtml-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px;
+	margin: 0;
+	padding: 0;
+	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
 
 #tvcontent,#timers
@@ -298,7 +280,7 @@ color:#87BCF8;
 
 .powerStateButtons ul {
 	list-style: none;
-	padding: 0px;
+	padding: 0;
 	margin-top: 25px;
 }
 
@@ -314,10 +296,8 @@ color:#87BCF8;
 	font-weight: bold;
 	cursor: pointer;
 	border: 1px solid #4297d7; 
-	-moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; -khtml-border-top-left-radius: 5px; border-top-left-radius: 5px;
-	-moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; -khtml-border-top-right-radius: 5px; border-top-right-radius: 5px;
-	-moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; -khtml-border-bottom-left-radius: 5px; border-bottom-left-radius: 5px;
-	-moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; -khtml-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px;
+	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
+	box-shadow: #666 3px 3px 3px;
 }
 
 .powerStateButtons li:hover {
@@ -461,7 +441,7 @@ color:#87BCF8;
 	height:auto;
 	margin-left:185px;
 	margin-top:13px;
-	margin-right:0px;
+	margin-right:0;
 	margin-bottom:5px;
 }
 
@@ -482,18 +462,12 @@ color:#87BCF8;
 	padding-top:10px;
 	padding-right:10px;
 	padding-bottom:10px;
-
 	border: 2px solid #176093;
 	outline: 0 none;
 	-moz-outline-style: 0 none;
-
-	_border-bottom: none;
+	border-bottom-style: none;
 	padding-left: 10px;
-	border-top-left-radius: 5px; -webkit-border-top-left-radius:  5px; -moz-border-radius-topleft:  5px; -khtml-border-top-left-radius:  5px;
-	border-bottom-left-radius: 5px; -webkit-border-bottom-left-radius:  5px; -moz-border-radius-bottomleft:  5px; -khtml-border-bottom-left-radius:  5px;
-	border-top-right-radius: 5px; -webkit-border-top-right-radius:  5px; -moz-border-radius-topright:  5px; -khtml-border-top-right-radius:  5px;
-	border-bottom-right-radius: 5px; -webkit-border-bottom-right-radius:  5px; -moz-border-radius-bottomright:  5px; -khtml-border-bottom-right-radius:  5px;
-
+	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
 
 #content_bottom
@@ -565,10 +539,7 @@ color:#87BCF8;
 	border: 1px solid #4297d7; 
 	background: #1c478e url(../images/ui-bg_highlight-soft_55_1c478e_1x100.png) 50% 50% repeat-x; 
 	color: #ffffff; 
-	-moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; -khtml-border-top-left-radius: 5px; border-top-left-radius: 5px;
-	-moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; -khtml-border-top-right-radius: 5px; border-top-right-radius: 5px;
-	-moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; -khtml-border-bottom-left-radius: 5px; border-bottom-left-radius: 5px;
-	-moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; -khtml-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px;
+	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 	font-size: 16px;
 	font-weight:bold;
 	text-align: center;
@@ -581,7 +552,6 @@ color:#87BCF8;
 
 .infoleft
 {
-/*	font-weight:bold; */
 	width: 50%;
 	text-align: left;
 	padding-left: 10px;
@@ -595,12 +565,9 @@ color:#87BCF8;
 {
 	border: 1px solid #4297d7;
 	width: 100%;
-	margin: 0px;
-	padding: 0px;
-	-moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; -khtml-border-top-left-radius: 5px; border-top-left-radius: 5px;
-	-moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; -khtml-border-top-right-radius: 5px; border-top-right-radius: 5px;
-	-moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; -khtml-border-bottom-left-radius: 5px; border-bottom-left-radius: 5px;
-	-moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; -khtml-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px;
+	margin: 0;
+	padding: 0;
+	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
 
 .infoHeader {
@@ -610,15 +577,12 @@ color:#87BCF8;
 	background: #1c478e url(../images/ui-bg_highlight-soft_55_1c478e_1x100.png) 50% 50% repeat-x; 
 	color: #ffffff; 
 	font-weight: bold;
-	-moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px; -khtml-border-top-left-radius: 5px; border-top-left-radius: 5px;
-	-moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; -khtml-border-top-right-radius: 5px; border-top-right-radius: 5px;
-	-moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; -khtml-border-bottom-left-radius: 5px; border-bottom-left-radius: 5px;
-	-moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; -khtml-border-bottom-right-radius: 5px; border-bottom-right-radius: 5px;
+	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
 
 #volslider > div.volslider { 
 	padding: 10px !important; 
-};
+}
 
 #footer
 {
@@ -640,7 +604,7 @@ color:#87BCF8;
 	position:relative;
 	width:120px;
 	height:120px;
-	left:0px;
+	left:0;
 	top:200px;
 	z-index:1;
 }
@@ -666,10 +630,11 @@ html, body
 	text-align: center;
 }
 
+/* ??
 p {
 	text-align: left;
 }
-
+*/
 /* css for timepicker */
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
 .ui-timepicker-div dl { text-align: left; }
