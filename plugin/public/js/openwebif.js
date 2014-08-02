@@ -20,7 +20,8 @@ $.fx.speeds._default = 1000;
 var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0;
 
 $(function() {
-	
+	/*
+	could be removed
 	$( "#dialog" ).dialog({
 		autoOpen: false,
 		show: "fade",
@@ -31,7 +32,7 @@ $(function() {
 			} 
 		}
 	});
-
+	*/
 	$('#volimage').click(function(){
 		if (mutestatus === 0) {
 			mutestatus = 1;
@@ -130,6 +131,28 @@ $(function() {
     };
 })(jQuery);
 
+function load_dm(url,title){
+	$.ajax({
+		url: url,
+		success: function(data) {
+			$("#modaldialog").html(data).dialog({
+				modal:true,
+				title:title,
+				autoOpen:true,
+				width:'auto',
+				buttons: {
+					"Ok": function() { 
+						$(this).dialog("close");
+					}
+				},
+				close: function(event, ui) { 
+					$(this).dialog('destroy');
+				}
+			});
+		}
+	});
+}
+
 function initJsTranslation(strings) {
 	tstr_add_timer = strings.add_timer;
 	tstr_close = strings.cancel;
@@ -180,11 +203,13 @@ function initJsTranslation(strings) {
 	
 	tstr_loading = strings.loading;
 }
-
+/*
+could be removed
 function dialog_notyet(){
 	$('#dialog').dialog('open');
 	return false;
 }
+*/
 
 function load_tvcontent(url) {
 	$("#tvcontent").load(url);
