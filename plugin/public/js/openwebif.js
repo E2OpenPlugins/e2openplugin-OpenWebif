@@ -131,27 +131,6 @@ $(function() {
     };
 })(jQuery);
 
-function load_dm(url,title){
-	$.ajax({
-		url: url,
-		success: function(data) {
-			$("#modaldialog").html(data).dialog({
-				modal:true,
-				title:title,
-				autoOpen:true,
-				width:'auto',
-				buttons: {
-					"Ok": function() { 
-						$(this).dialog("close");
-					}
-				},
-				close: function(event, ui) { 
-					$(this).dialog('destroy');
-				}
-			});
-		}
-	});
-}
 
 function initJsTranslation(strings) {
 	tstr_add_timer = strings.add_timer;
@@ -202,7 +181,52 @@ function initJsTranslation(strings) {
 	tstr_su = strings.su;
 	
 	tstr_loading = strings.loading;
+	
+	tstr_send_message = strings.send_message;
 }
+
+function load_dm(url,title){
+	var buttons = {}
+	buttons[tstr_close] = function() { $(this).dialog("close");};
+	$.ajax({
+		url: url,
+		success: function(data) {
+			$("#modaldialog").html(data).dialog({
+				modal:true,
+				title:title,
+				autoOpen:true,
+				width:'auto',
+				buttons:buttons,
+				close: function(event, ui) { 
+					$(this).dialog('destroy');
+				}
+			});
+		}
+	});
+}
+
+function load_message_dm(url,title){
+	var buttons = {}
+	buttons[tstr_send_message] = function() { sendMessage();};
+	buttons[tstr_close] = function() { $(this).dialog("close");};
+
+	$.ajax({
+		url: url,
+		success: function(data) {
+			$("#modaldialog").html(data).dialog({
+				modal:true,
+				title:title,
+				autoOpen:true,
+				width:'auto',
+				buttons: buttons,
+				close: function(event, ui) { 
+					$(this).dialog('destroy');
+				}
+			});
+		}
+	});
+}
+
 /*
 could be removed
 function dialog_notyet(){
