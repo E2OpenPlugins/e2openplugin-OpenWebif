@@ -654,11 +654,12 @@ function editTimer(serviceref, begin, end) {
 	});
 }
 
-function addTimer(evt) {
+function addTimer(evt,chsref,chname) {
 	current_serviceref = '';
 	current_begin = -1;
 	current_end = -1;
 
+	
 	var begin = -1;
 	var end = -1;
 	var serviceref = '';
@@ -667,7 +668,7 @@ function addTimer(evt) {
 	var margin_before = 0;
 	var margin_after = 0;
 	
-	if (typeof evt !== 'undefined') {
+	if (typeof evt !== 'undefined' && evt != '') {
 		begin = evt.begin;
 		end = evt.begin+evt.duration;
 		serviceref = evt.sref;
@@ -676,10 +677,17 @@ function addTimer(evt) {
 		margin_before = evt.recording_margin_before;
 		margin_after = evt.recording_margin_after;
 	}
-	
 	if (!timeredit_initialized) {
 		initTimerEdit();
-	}	
+	}
+
+	if (typeof chsref !== 'undefined' && typeof chname !== 'undefined') {
+		// NOT NICE BUT IT WORKS
+		serviceref = chsref;
+		title = chname;
+		$('#bouquet_select').append($("<option></option>").attr("value", serviceref).text(chname));
+	}
+	
 	$('#timername').val(title);
 	$('#description').val(desc);
 	$('#dirname').val("None");
