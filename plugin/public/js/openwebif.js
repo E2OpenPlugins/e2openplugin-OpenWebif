@@ -328,6 +328,18 @@ function deleteMovie(sRef, divid, title) {
 	}
 }
 
+
+function playRecording(sRef) {
+	var sr = sRef.replace(/-/g,'%2D').replace(/_/g,'%5F').replace(/\//g,'%2F');
+	// for debugging 
+	console.debug(sr);
+	var url = '/api/zap?sRef=' + sr;
+	$.getJSON(url, function(result){
+		$("#osd").html(" ");
+		$("#osd_bottom").html(" ");
+	});
+}
+
 function zapChannel(sRef, sname) {
 	var url = '/api/zap?sRef=' + escape(sRef);
 	$.getJSON(url, function(result){
