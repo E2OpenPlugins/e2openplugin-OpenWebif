@@ -458,7 +458,7 @@ class WebController(BaseController):
 			justplay = request.args["justplay"][0] == "1"
 
 		afterevent = 3
-		if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["1", "2", "3"]:
+		if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["0", "1", "2", "3"]:
 			afterevent = int(request.args["afterevent"][0])
 
 		dirname = None

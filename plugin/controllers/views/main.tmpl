@@ -29,10 +29,6 @@
 			<div id="osd_bottom"></div>
 		</div>
 		
-		<div id="dialog" title="Work in progress">
-			<p>Sorry, this function is not yet implemented.</p>
-		</div>
-		
 		<div id="leftmenu">
 			#def menu($title, $name, $content)
 			<div id="leftmenu_main">
@@ -77,7 +73,7 @@
 			<ul>
 				<li><a href='#' onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]'); return false;">$tstrings['powercontrol']</a></li>
 				<li><a href='#' onclick="load_maincontent('ajax/screenshot'); return false;">$tstrings['grabscreenshot']</a></li>
-				<li><a href='#' onclick="load_maincontent('ajax/message'); return false;">$tstrings['sendamessage']</a></li>
+				<li><a href='#' onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]'); return false;">$tstrings['sendamessage']</a></li>
 				<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">$tstrings['timers']</a></li>
 			</ul>
 			#end def
@@ -213,6 +209,10 @@
 		<input type="hidden" name="device">
 	</form>
 	<div id="modaldialog"></div>
+	<div id="dialog" title="Work in progress" style="display:none">
+		<p>Sorry, this function is not yet implemented.</p>
+	</div>
+	
 </body>
 
 </html>

@@ -25,43 +25,34 @@ body {
 
 #header
 {
-	height:80px;
+	height:70px;
+	overflow:hidden;
 }
 
 #header h1
 {
 	font-family: Arial, Verdana,sans-serif;
-	position:absolute;
+	float:left;
 	text-align:left;
 	font-size:42px;
 	color:#FFF;
-	left:14px;
-	top:18px;
+	margin: 20px
 }
 
 #header h2
 {
 	font-family: Arial, Verdana,sans-serif;
-	position:absolute;
 	text-align:right;
 	color:#A9D1FA;
-	left:390px;
-	top:38px;
+	margin-top:30px;
 	width:500px;
+	float: right;
 }
 
 #header a
 {
 	color:#FFFFFF;
 	text-decoration:none;
-}
-
-#mainpic
-{
-	background-image:url(../images/main.jpg);
-	background-repeat:no-repeat;
-	width:900px;
-	height:354px;
 }
 
 .off
@@ -74,6 +65,7 @@ body {
 	overflow: hidden;
 	width: 100%;
 	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 #osd
@@ -84,8 +76,9 @@ body {
 	color: #ffffff;
 	height: 18px;
 	width: 80%;
-	padding-left: 5px;
-	padding-top: 1px;
+	margin-left: 5px;
+	margin-top: 15px;
+	overflow:hidden;
 }
 
 #osd_bottom
@@ -96,31 +89,18 @@ body {
 	float:left;
 	height: 32px;
 	width: 80%;
-	padding: 3px 0 0 5px;
+	margin-left: 5px;
+	margin-top: 3px;
+	overflow:hidden;
 }
-
 #osd_status
 {
-	color: #A9D1FA;
-	position : relative;
-	display: block;
-	text-align: right;
-	font-size: 12px;
 	float:right;
-	height: 30px;
-	width: 100px;
-	padding: 12px 0 0 0;
-}
-
-#osd_status a, img 
-{
-	border : 0;
-	outline: none;
+	margin-top: 12px;
 }
 
 #leftmenu
 {
-	margin-top:13px;
 	width:180px;
 	float:left;
 	border: 2px solid #176093;
@@ -260,13 +240,11 @@ color:#87BCF8;
 	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
 
-#tvcontent,#timers
+#tvcontent,#timers,#movies
 {
-	width:95%;
 	height:730px;
 	padding:10px;
 	overflow:auto;
-	
 }
 
 .powerStateButtons
@@ -304,18 +282,6 @@ color:#87BCF8;
 	border: 1px solid #000000; 
 }
 
-.moviecontainer_main ,.timerlist_main { 
-	background-color: #F0F7FC;
-	width: 99%;
-	margin-top: 2px;
-	margin-bottom: 2px;
-	font-size: 13px;
-	border: 1px solid #F0F7FC;
-}
-
-.moviecontainer_main:hover ,.timerlist_main:hover {
-	border: 1px dotted #4297D7;
-}
 
 .moviecontainer_left { 
 	float: left;
@@ -333,9 +299,11 @@ color:#87BCF8;
 	margin-top: 25px;
 }
 
-#screenshotspinner {
-	margin-top: 125px;
-	margin-bottom: 168px;
+#screenshotspinnerl {
+	margin-top: -60px;
+	float:right;
+	width:64px;
+	height:64px;
 }
 
 .channel_tr
@@ -440,17 +408,8 @@ color:#87BCF8;
 	display:block;
 	height:auto;
 	margin-left:185px;
-	margin-top:13px;
 	margin-right:0;
 	margin-bottom:5px;
-}
-
-#content_top
-{
-	background-image:url(../images/main_top.png);
-	background-repeat:no-repeat;
-	width:700px;
-	height:25px;
 }
 
 #content_main
@@ -468,14 +427,6 @@ color:#87BCF8;
 	border-bottom-style: none;
 	padding-left: 10px;
 	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
-}
-
-#content_bottom
-{
-	background-image:url(../images/main_bottom.png);
-	background-repeat:no-repeat;
-	width:700px;
-	height:25px;
 }
 
 #content h1
@@ -500,12 +451,6 @@ color:#87BCF8;
 	text-decoration:none;
 	color: #176093;
 }
-
-#content p
-{
-	
-}
-
 
 #info
 {
@@ -630,11 +575,6 @@ html, body
 	text-align: center;
 }
 
-/* ??
-p {
-	text-align: left;
-}
-*/
 /* css for timepicker */
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
 .ui-timepicker-div dl { text-align: left; }
@@ -643,7 +583,10 @@ p {
 .ui-timepicker-div td { font-size: 90%; }
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
 
-/* timerlist */
-.timerlist_buttons , .timerlist_text {float: left; margin-left:85px;}
-.timerlist_buttons div , .timerlist_text div {padding: 3px;}
-.timerlist_buttons { width: 75px; margin-left:-85px;}
+/* timerlist movielist */
+.tm_row { background-color: #F0F7FC;margin-top: 2px;margin-bottom: 5px;font-size: 13px;border: 1px solid #F0F7FC;}
+.tm_row:hover { border: 1px dotted #4297D7;}
+.tm_buttons , .tm_text {float: left; margin-left:85px;}
+.tm_buttons div , .tm_text div {padding: 3px;}
+.tm_buttons div a img {margin-left: 3px;}
+.tm_buttons { width: 75px; margin-left:-85px;}

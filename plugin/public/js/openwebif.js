@@ -20,8 +20,7 @@ $.fx.speeds._default = 1000;
 var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0;
 
 $(function() {
-	/*
-	could be removed
+	
 	$( "#dialog" ).dialog({
 		autoOpen: false,
 		show: "fade",
@@ -32,7 +31,7 @@ $(function() {
 			} 
 		}
 	});
-	*/
+	
 	$('#volimage').click(function(){
 		if (mutestatus === 0) {
 			mutestatus = 1;
@@ -131,27 +130,6 @@ $(function() {
     };
 })(jQuery);
 
-function load_dm(url,title){
-	$.ajax({
-		url: url,
-		success: function(data) {
-			$("#modaldialog").html(data).dialog({
-				modal:true,
-				title:title,
-				autoOpen:true,
-				width:'auto',
-				buttons: {
-					"Ok": function() { 
-						$(this).dialog("close");
-					}
-				},
-				close: function(event, ui) { 
-					$(this).dialog('destroy');
-				}
-			});
-		}
-	});
-}
 
 function initJsTranslation(strings) {
 	tstr_add_timer = strings.add_timer;
@@ -202,14 +180,56 @@ function initJsTranslation(strings) {
 	tstr_su = strings.su;
 	
 	tstr_loading = strings.loading;
+	
+	tstr_send_message = strings.send_message;
 }
-/*
-could be removed
+
+function load_dm(url,title){
+	var buttons = {}
+	buttons[tstr_close] = function() { $(this).dialog("close");};
+	$.ajax({
+		url: url,
+		success: function(data) {
+			$("#modaldialog").html(data).dialog({
+				modal:true,
+				title:title,
+				autoOpen:true,
+				width:'auto',
+				buttons:buttons,
+				close: function(event, ui) { 
+					$(this).dialog('destroy');
+				}
+			});
+		}
+	});
+}
+
+function load_message_dm(url,title){
+	var buttons = {}
+	buttons[tstr_send_message] = function() { sendMessage();};
+	buttons[tstr_close] = function() { $(this).dialog("close");};
+
+	$.ajax({
+		url: url,
+		success: function(data) {
+			$("#modaldialog").html(data).dialog({
+				modal:true,
+				title:title,
+				autoOpen:true,
+				width:'auto',
+				buttons: buttons,
+				close: function(event, ui) { 
+					$(this).dialog('destroy');
+				}
+			});
+		}
+	});
+}
+
 function dialog_notyet(){
 	$('#dialog').dialog('open');
 	return false;
 }
-*/
 
 function load_tvcontent(url) {
 	$("#tvcontent").load(url);
@@ -308,6 +328,18 @@ function deleteMovie(sRef, divid, title) {
 	}
 }
 
+
+function playRecording(sRef) {
+	var sr = sRef.replace(/-/g,'%2D').replace(/_/g,'%5F').replace(/\//g,'%2F');
+	// for debugging 
+	console.debug(sr);
+	var url = '/api/zap?sRef=' + sr;
+	$.getJSON(url, function(result){
+		$("#osd").html(" ");
+		$("#osd_bottom").html(" ");
+	});
+}
+
 function zapChannel(sRef, sname) {
 	var url = '/api/zap?sRef=' + escape(sRef);
 	$.getJSON(url, function(result){
@@ -362,11 +394,9 @@ function getStatusInfo() {
 
 function grabScreenshot(mode) {
 	$('#screenshotspinner').show();
-	$('#screenshotimage').hide();
 	
 	$('#screenshotimage').load(function(){
 	  $('#screenshotspinner').hide();
-	  $('#screenshotimage').show();
 	});
 
 	if (mode != "auto") {
@@ -624,11 +654,12 @@ function editTimer(serviceref, begin, end) {
 	});
 }
 
-function addTimer(evt) {
+function addTimer(evt,chsref,chname) {
 	current_serviceref = '';
 	current_begin = -1;
 	current_end = -1;
 
+	
 	var begin = -1;
 	var end = -1;
 	var serviceref = '';
@@ -637,7 +668,7 @@ function addTimer(evt) {
 	var margin_before = 0;
 	var margin_after = 0;
 	
-	if (typeof evt !== 'undefined') {
+	if (typeof evt !== 'undefined' && evt != '') {
 		begin = evt.begin;
 		end = evt.begin+evt.duration;
 		serviceref = evt.sref;
@@ -646,10 +677,17 @@ function addTimer(evt) {
 		margin_before = evt.recording_margin_before;
 		margin_after = evt.recording_margin_after;
 	}
-	
 	if (!timeredit_initialized) {
 		initTimerEdit();
-	}	
+	}
+
+	if (typeof chsref !== 'undefined' && typeof chname !== 'undefined') {
+		// NOT NICE BUT IT WORKS
+		serviceref = chsref;
+		title = chname;
+		$('#bouquet_select').append($("<option></option>").attr("value", serviceref).text(chname));
+	}
+	
 	$('#timername').val(title);
 	$('#description').val(desc);
 	$('#dirname').val("None");

@@ -13,6 +13,11 @@
 </div>
 <div class="channel_right">
 #if $channel.protection == "0"
+#if $type == "radio"
+<a href="#" onclick="addTimer('','$channel.ref','$channel.name')">
+<img src="../images/ico_timer.png" title="Add Timer for $channel.name" border="0" width=16 height=16>
+</a>
+#end if
 <a href="#" onclick="open_epg_pop('$channel.ref')">
 <img src="../images/ico_epg.png" title="$tstrings['show_epg_for'] $channel.name" border="0">
 </a>

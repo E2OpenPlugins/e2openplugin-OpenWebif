@@ -12,6 +12,7 @@
 from enigma import eEPGCache, eServiceReference
 from Components.UsageConfig import preferredTimerPath, preferredInstantRecordPath
 from Components.config import config
+from Components.TimerSanityCheck import TimerSanityCheck
 from RecordTimer import RecordTimerEntry, RecordTimer, parseEvent, AFTEREVENT
 from ServiceReference import ServiceReference
 from time import time, strftime, localtime, mktime
@@ -208,30 +209,56 @@ def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vps
 		eit
 	)
 
-def editTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname, tags, repeated, channelOld, beginOld, endOld, vpsinfo):
+# NEW editTimer function to prevent delete + add on change
+# !!! This new function must be tested !!!! 
+def editTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterEvent, dirname, tags, repeated, channelOld, beginOld, endOld, vpsinfo):
+	# TODO: exception handling
+	serviceref = unquote(serviceref)
 	rt = session.nav.RecordTimer
 	for timer in rt.timer_list + rt.processed_timers:
 		if str(timer.service_ref) == channelOld and int(timer.begin) == beginOld and int(timer.end) == endOld:
-			rt.removeEntry(timer)
-			res = addTimer(
-				session,
-				serviceref,
-				begin,
-				end,
-				name,
-				description,
-				disabled,
-				justplay,
-				afterevent,
-				dirname,
-				tags,
-				repeated,
-				vpsinfo,
-				timer.log_entries
-			)
-			if not res["result"]:
-				rt.record(timer)
-			return res
+			timer.service_ref = ServiceReference(serviceref)
+			# TODO: start end time check
+			timer.begin = int(float(begin))
+			timer.end = int(float(end))
+			timer.name = name
+			timer.description = description
+			# TODO : EIT
+			#timer.eit = eit
+			timer.disabled = disabled
+			timer.justplay = justplay
+			timer.afterEvent = afterEvent
+			timer.dirname = dirname
+			timer.tags = tags
+			timer.repeated = repeated
+			timer.processRepeated()
+			if vpsinfo is not None:
+				timer.vpsplugin_enabled = vpsinfo["vpsplugin_enabled"]
+				timer.vpsplugin_overwrite = vpsinfo["vpsplugin_overwrite"]
+				timer.vpsplugin_time = vpsinfo["vpsplugin_time"]
+
+			# TODO: multi tuner test
+			sanity = TimerSanityCheck(rt.timer_list, timer)
+			conflicts = None
+			if not sanity.check():
+				conflicts = sanity.getSimulTimerList()
+				if conflicts is not None:
+					for conflict in conflicts:
+						if conflict.setAutoincreaseEnd(entry):
+							rt.timeChanged(conflict)
+							if not sanity.check():
+								conflicts = sanity.getSimulTimerList()
+			if conflicts is None:
+				rt.timeChanged(timer)
+				return {
+					"result": True,
+					"message": "Timer '%s' changed" % name
+				}
+			else:
+				return {
+					"result": False,
+					"message": "Timer '%s' not saved while Conflict" % name
+				}
 
 	return {
 		"result": False,
