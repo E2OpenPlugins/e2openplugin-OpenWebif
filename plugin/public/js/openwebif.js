@@ -20,8 +20,7 @@ $.fx.speeds._default = 1000;
 var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0;
 
 $(function() {
-	/*
-	could be removed
+	
 	$( "#dialog" ).dialog({
 		autoOpen: false,
 		show: "fade",
@@ -32,7 +31,7 @@ $(function() {
 			} 
 		}
 	});
-	*/
+	
 	$('#volimage').click(function(){
 		if (mutestatus === 0) {
 			mutestatus = 1;
@@ -227,13 +226,10 @@ function load_message_dm(url,title){
 	});
 }
 
-/*
-could be removed
 function dialog_notyet(){
 	$('#dialog').dialog('open');
 	return false;
 }
-*/
 
 function load_tvcontent(url) {
 	$("#tvcontent").load(url);
