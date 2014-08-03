@@ -26,6 +26,7 @@ body {
 #header
 {
 	height:70px;
+	overflow:hidden;
 }
 
 #header h1
@@ -76,7 +77,8 @@ body {
 	height: 18px;
 	width: 80%;
 	margin-left: 5px;
-	margin-top: 3px;
+	margin-top: 15px;
+	overflow:hidden;
 }
 
 #osd_bottom
@@ -89,25 +91,12 @@ body {
 	width: 80%;
 	margin-left: 5px;
 	margin-top: 3px;
+	overflow:hidden;
 }
-
 #osd_status
 {
-	color: #A9D1FA;
-	position : relative;
-	display: block;
-	text-align: right;
-	font-size: 12px;
 	float:right;
-	height: 30px;
-	width: 100px;
-	padding: 12px 0 0 0;
-}
-
-#osd_status a, img 
-{
-	border : 0;
-	outline: none;
+	margin-top: 12px;
 }
 
 #leftmenu
@@ -256,7 +245,6 @@ color:#87BCF8;
 	height:730px;
 	padding:10px;
 	overflow:auto;
-	
 }
 
 .powerStateButtons
