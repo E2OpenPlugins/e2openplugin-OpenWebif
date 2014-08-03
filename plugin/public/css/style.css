@@ -240,7 +240,7 @@ color:#87BCF8;
 	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
 
-#tvcontent,#timers
+#tvcontent,#timers,#movies
 {
 	height:730px;
 	padding:10px;
@@ -282,17 +282,6 @@ color:#87BCF8;
 	border: 1px solid #000000; 
 }
 
-.moviecontainer_main ,.timerlist_main { 
-	background-color: #F0F7FC;
-	margin-top: 2px;
-	margin-bottom: 2px;
-	font-size: 13px;
-	border: 1px solid #F0F7FC;
-}
-
-.moviecontainer_main:hover ,.timerlist_main:hover {
-	border: 1px dotted #4297D7;
-}
 
 .moviecontainer_left { 
 	float: left;
@@ -406,10 +395,6 @@ color:#87BCF8;
 }
 .meter-value {
 	background-color: #F68014;
-}
-
-.timerlist_row {
-	margin-bottom: 5px;
 }
 
 #content
@@ -592,7 +577,10 @@ html, body
 .ui-timepicker-div td { font-size: 90%; }
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
 
-/* timerlist */
-.timerlist_buttons , .timerlist_text {float: left; margin-left:85px;}
-.timerlist_buttons div , .timerlist_text div {padding: 3px;}
-.timerlist_buttons { width: 75px; margin-left:-85px;}
+/* timerlist movielist */
+.tm_row { background-color: #F0F7FC;margin-top: 2px;margin-bottom: 5px;font-size: 13px;border: 1px solid #F0F7FC;}
+.tm_row:hover { border: 1px dotted #4297D7;}
+.tm_buttons , .tm_text {float: left; margin-left:85px;}
+.tm_buttons div , .tm_text div {padding: 3px;}
+.tm_buttons div a img {margin-left: 3px;}
+.tm_buttons { width: 75px; margin-left:-85px;}

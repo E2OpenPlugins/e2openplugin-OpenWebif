@@ -15,9 +15,9 @@
 
 		<div id="timers">
 		#for $timer in $timers
-			<div class="timerlist_main" id="$timer.begin-$timer.end">
-				<div class="timerlist_text">
-					<div class="timerlist_buttons">
+			<div class="tm_row" id="$timer.begin-$timer.end">
+				<div class="tm_text">
+					<div class="tm_buttons">
 						<div>
 						#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
 						<a href='#' onClick="editTimer('$sref', '$timer.begin', '$timer.end');"><img src="../images/ico_edit.png" title="$tstrings['edit_timer']" border="0"></a>
