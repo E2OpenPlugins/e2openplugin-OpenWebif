@@ -394,11 +394,9 @@ function getStatusInfo() {
 
 function grabScreenshot(mode) {
 	$('#screenshotspinner').show();
-	$('#screenshotimage').hide();
 	
 	$('#screenshotimage').load(function(){
 	  $('#screenshotspinner').hide();
-	  $('#screenshotimage').show();
 	});
 
 	if (mode != "auto") {

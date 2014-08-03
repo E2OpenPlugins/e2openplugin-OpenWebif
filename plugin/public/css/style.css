@@ -299,9 +299,11 @@ color:#87BCF8;
 	margin-top: 25px;
 }
 
-#screenshotspinner {
-	margin-top: 125px;
-	margin-bottom: 168px;
+#screenshotspinnerl {
+	margin-top: -60px;
+	float:right;
+	width:64px;
+	height:64px;
 }
 
 .channel_tr

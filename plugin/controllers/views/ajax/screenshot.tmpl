@@ -16,8 +16,7 @@
 
 	
 		<div class="screenshotContainer">
-			<img id="screenshotspinner" src="/images/spinner.gif" border="0" alt="$tstrings['loading'] ..." style="display: none;">
-			<img id="screenshotimage" src="/images/spinner.gif" alt="">
+			<img id="screenshotimage" src="" alt="$tstrings['loading'] ..." width="300px">
 		</div>
 		
 		<div id="screenShotRefresh" style="margin-top: 15px; margin-left: auto; margin-right: auto; width: 700px; text-align: center;">
@@ -31,6 +30,9 @@
 			<span id="screenshotrefreshbutton">
 				<button onclick="grabScreenshot('auto'); return false">$tstrings['refresh']</button>
 			</span>
+		</div>
+		<div id="screenshotspinnerl">
+			<img id="screenshotspinner" src="/images/spinner.gif" width="64" height="64" border="0" alt="$tstrings['loading'] ..." style="display: none;">
 		</div>
 	</div>
 </div>
