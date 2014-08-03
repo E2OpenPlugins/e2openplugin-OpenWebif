@@ -177,7 +177,7 @@ class WebController(BaseController):
 			bRef = ""
 
 		request.setHeader('Content-Type', 'application/text')
-		services = getServices(bRef)
+		services = getServices(bRef,False)
 		services["host"] = "%s:8001" % request.getRequestHostname()
 		return services
 
@@ -458,7 +458,7 @@ class WebController(BaseController):
 			justplay = request.args["justplay"][0] == "1"
 
 		afterevent = 3
-		if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["1", "2", "3"]:
+		if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["0", "1", "2", "3"]:
 			afterevent = int(request.args["afterevent"][0])
 
 		dirname = None
@@ -995,3 +995,9 @@ class WebController(BaseController):
 	def P_epgmultigz(self, request):
 		self.isGZ=True
 		return self.P_epgmulti(request)
+
+	def P_getsatellites(self, request):
+		stype = "tv"
+		if "stype" in request.args.keys():
+			stype = request.args["stype"][0]
+		return getSatellites(stype)

@@ -25,6 +25,14 @@ class ERController(resource.Resource):
 		self.putChild('get', EPGRefreshSettingsResource())
 		self.putChild('set', EPGRefreshChangeSettingsResource())
 		self.putChild('refresh', EPGRefreshStartRefreshResource())
+		self.putChild('add', EPGRefreshAddRemoveServiceResource(EPGRefreshAddRemoveServiceResource.TYPE_ADD))
+		self.putChild('del', EPGRefreshAddRemoveServiceResource(EPGRefreshAddRemoveServiceResource.TYPE_DEL))
+		try:
+			from Plugins.Extensions.EPGRefresh.EPGRefreshResource import EPGRefreshPreviewServicesResource
+		except ImportError:
+			pass
+		else:
+			self.putChild('preview', EPGRefreshPreviewServicesResource())
 
 	def render(self, request):
 		request.setResponseCode(http.OK)
