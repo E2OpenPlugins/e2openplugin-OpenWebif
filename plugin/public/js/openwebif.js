@@ -647,6 +647,14 @@ function editTimer(serviceref, begin, end) {
 							
 							$('#editTimerForm').dialog("open");
 							$('#editTimerForm').dialog("option", "title", tstr_edit_timer + " - " + timer.name);
+							
+							// don't allow edit some fields if running
+							var r = (timer.state === 2);
+							$('#timerbegin').prop('disabled', r);
+							$('#bouquet_select').prop('disabled', r);
+							$('#dirname').prop('disabled', r);
+							$('#timername').prop("disabled",r);
+							
 							break;
 						}
 				}
