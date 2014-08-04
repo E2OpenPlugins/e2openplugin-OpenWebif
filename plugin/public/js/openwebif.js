@@ -251,7 +251,8 @@ function load_maincontent(url) {
 
 function load_maincontent_spin(url) {
 	if (lastcontenturl != url) {
-		$("#content_container").html(loadspinner).load(url);
+		var sp = '<div id="content_main" style="min-height: 500px;">'+loadspinner+'</div>';
+		$("#content_container").html(sp).load(url);
 		lastcontenturl = url;
 	}
 	return false;
@@ -646,6 +647,14 @@ function editTimer(serviceref, begin, end) {
 							
 							$('#editTimerForm').dialog("open");
 							$('#editTimerForm').dialog("option", "title", tstr_edit_timer + " - " + timer.name);
+							
+							// don't allow edit some fields if running
+							var r = (timer.state === 2);
+							$('#timerbegin').prop('disabled', r);
+							$('#bouquet_select').prop('disabled', r);
+							$('#dirname').prop('disabled', r);
+							$('#timername').prop("disabled",r);
+							
 							break;
 						}
 				}
