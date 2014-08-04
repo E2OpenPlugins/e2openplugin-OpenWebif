@@ -14,7 +14,7 @@ from Plugins.Extensions.OpenWebif.__init__ import _
 from Components.config import config
 
 from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStatus
-from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList
+from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState, getStandbyState
@@ -707,6 +707,12 @@ class WebController(BaseController):
 
 		return getSearchSimilarEpg(request.args["sRef"][0], eventid)
 
+	def P_event(self, request):
+		event = getEvent(request.args["sref"][0], request.args["idev"][0])
+		event['event']['recording_margin_before'] = config.recording.margin_before.value
+		event['event']['recording_margin_after'] = config.recording.margin_after.value
+		return event
+	
 	def P_getcurrent(self, request):
 		info = getCurrentService(self.session)
 		now = getNowNextEpg(info["ref"], 0)

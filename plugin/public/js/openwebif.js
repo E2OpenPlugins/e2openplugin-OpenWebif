@@ -184,9 +184,27 @@ function initJsTranslation(strings) {
 	tstr_send_message = strings.send_message;
 }
 
-function load_dm(url,title){
+function open_epg_search_dialog() {
+	var spar = $("#epgSearch").val();
+	var url = "ajax/epgdialog?sstr=" + encodeURIComponent(spar);
+	url=url.replace(/%C3%BC/g,'%FC').replace(/%C3%9C/g,'%FC').replace(/%C3%A4/g,'%E4').replace(/%C3%84/g,'%E4').replace(/%C3%B6/g,'%F6').replace(/%C3%96/g,'%F6').replace(/%C3%9F/g,'%DF');
+	$("#epgSearch").val("");
+	
+	var w = $(window).width() -100;
+	var h = $(window).height() -100;
+	
+	load_dm(url,"EPG Search",w,h);
+}
+
+function load_dm(url,title,w,h){
 	var buttons = {}
 	buttons[tstr_close] = function() { $(this).dialog("close");};
+	var width = 'auto',height='auto';
+	if (typeof w !== 'undefined')
+		width = w;
+	if (typeof h !== 'undefined')
+		height = h;
+
 	$.ajax({
 		url: url,
 		success: function(data) {
@@ -194,10 +212,14 @@ function load_dm(url,title){
 				modal:true,
 				title:title,
 				autoOpen:true,
-				width:'auto',
+				width:width,
+				height:height,
 				buttons:buttons,
 				close: function(event, ui) { 
 					$(this).dialog('destroy');
+				},
+				open: function() {
+					$(this).siblings('.ui-dialog-buttonpane').find('button:eq(0)').focus(); 
 				}
 			});
 		}
@@ -298,7 +320,47 @@ function open_epg_search_pop() {
 }
 
 function addTimerEvent(sRef, eventId) {
-	webapi_execute("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId);
+	webapi_execute("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId,
+		function() {
+			alert("Timer Added"); 
+		} 
+	);
+}
+function addTimerEventPlay(sRef, eventId) {
+	webapi_execute("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId + "&eit=0&disabled=0&justplay=1&afterevent=3",
+		function() {
+			alert("Timer Added"); 
+		} 
+	);
+}
+
+function addEditTimerEvent(sRef, eventId) {
+	var url="/api/event?sref=" + sRef + "&idev=" + eventId;
+	$.getJSON(url, function(result){
+		if (typeof result !== 'undefined' && typeof result.event !== 'undefined') {
+			addTimer(result.event);
+		}
+		else
+			alert("Event not found");
+	});
+}
+
+function addAutoTimerEvent(sRef, eventId) {
+	alert("TO DO");
+	return;
+	var url="/api/event?sref=" + sRef + "&idev=" + eventId;
+	$.getJSON(url, function(result){
+		if (typeof result !== 'undefined' && typeof result.event !== 'undefined') {
+			addautotimer(result.event);
+		}
+		else
+			alert("Event not found");
+	});
+}
+
+
+function delTimerEvent() {
+	alert("TO DO");
 }
 
 function toggleTimerStatus(sRef, begin, end) {
@@ -667,7 +729,6 @@ function addTimer(evt,chsref,chname) {
 	current_serviceref = '';
 	current_begin = -1;
 	current_end = -1;
-
 	
 	var begin = -1;
 	var end = -1;

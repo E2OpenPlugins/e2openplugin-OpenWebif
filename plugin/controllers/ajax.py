@@ -111,6 +111,9 @@ class AjaxController(BaseController):
 		else: 
 			return []
 
+	def P_epgdialog(self, request):
+		return self.P_epgpop(request);
+
 	def P_screenshot(self, request):
 		box = {}
 		box['brand'] = "dmm"
