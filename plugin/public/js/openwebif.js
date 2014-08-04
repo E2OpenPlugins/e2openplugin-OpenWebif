@@ -251,7 +251,8 @@ function load_maincontent(url) {
 
 function load_maincontent_spin(url) {
 	if (lastcontenturl != url) {
-		$("#content_container").html(loadspinner).load(url);
+		var sp = '<div id="content_main" style="min-height: 500px;">'+loadspinner+'</div>';
+		$("#content_container").html(sp).load(url);
 		lastcontenturl = url;
 	}
 	return false;
