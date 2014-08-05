@@ -36,31 +36,18 @@
 				<div class="tm_text">
 					<div class="tm_buttons">
 						<div>
-						<a href='#' onClick="playRecording('$quote($movie.serviceref)');">
-							<img align="top" src="../images/ico_play.png" title="Play Recording" border="0">
-						</a>
+						<a href='#' onClick="playRecording('$quote($movie.serviceref)');" title="Play Recording"><div class="ow_i ow_i_play"></div></a>
 						#if $transcoding
-						<a href="#" onclick="jumper80('$quote($movie.filename)');">
-							<img align="top" src="../images/ico_stream.png" title="$tstrings['stream'] $movie.eventname" border="0">
-						</a>
-						<a href="#" onclick="jumper8003('$quote($movie.filename)');">
-							<img align="top" src="../images/ico_stream.png" title="$tstrings['stream'] Port 8002 $movie.eventname" border="0">
-						</a>
+						<a href="#" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream'] $movie.eventname"><div class="ow_i ow_i_stream1"></div></a>
+						<a href="#" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] Port 8002 $movie.eventname"><div class="ow_i ow_i_stream2"></div></a>
 						#else
-						<a target="_blank" href='/web/ts.m3u?file=$quote($movie.filename)'>
-							<img align="top" src="../images/ico_stream.png" title="$tstrings['stream'] $movie.eventname" border="0">
-						</a>
+						<a target="_blank" href='/web/ts.m3u?file=$quote($movie.filename)' title="$tstrings['stream'] $movie.eventname"><div class="ow_i ow_i_stream1"></div></a>
 						#end if
 						<br>
-						<a href='/file?action=download&file=$quote($movie.filename)'>
-							<img style="margin-top:10px" align="top" src="../images/ico_download.png" title="$tstrings['download'] $movie.eventname" border="0">
-						</a>
-						<a href='#' onClick="alert('comming soon');">
-							<img style="margin-top:10px" align="top" src="../images/ico_edit.png" title="Rename Recording" border="0">
-						</a>
-						<a href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count', '$movie.eventname'); return false;">
-							<img style="margin-top:10px" align="top" src="../images/ico_delete.png" title="$tstrings['delete_movie']" border="0"></a>
-						</a>
+						<br>
+						<a href='/file?action=download&file=$quote($movie.filename)' title="$tstrings['download'] $movie.eventname"><div class="ow_i ow_i_save"></div></a>
+						<a href='#' onClick="alert('comming soon');" title="Rename Recording"><div class="ow_i ow_i_edit"></div></a>
+						<a href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count', '$movie.eventname'); return false;" title="$tstrings['delete_movie']"><div class="ow_i ow_i_delete"></div></a>
 						
 						</div>
 						</div>

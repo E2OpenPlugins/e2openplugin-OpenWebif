@@ -182,6 +182,7 @@ function initJsTranslation(strings) {
 	tstr_loading = strings.loading;
 	
 	tstr_send_message = strings.send_message;
+	tstr_epgsearch = strings.epgsearch;
 }
 
 function open_epg_search_dialog() {
@@ -193,7 +194,7 @@ function open_epg_search_dialog() {
 	var w = $(window).width() -100;
 	var h = $(window).height() -100;
 	
-	load_dm(url,"EPG Search",w,h);
+	load_dm(url,tstr_epgsearch,w,h);
 }
 
 function load_dm(url,title,w,h){
@@ -367,7 +368,10 @@ function toggleTimerStatus(sRef, begin, end) {
 	var url="/api/timertogglestatus?";
 	var data = { sRef: sRef, begin: begin, end: end };
 	$.getJSON(url, data, function(result){
-		$('#img-'+begin+'-'+end).attr("src", result['disabled'] ? "/images/ico_disabled.png" : "/images/ico_enabled.png");
+		var obj = $('#img-'+begin+'-'+end);
+		obj.removeClass("ow_i_disabled");
+		obj.removeClass("ow_i_enabled");
+		obj.addClass(result['disabled'] ? "ow_i_disabled" : "ow_i_enabled");
 	});
 }
 
