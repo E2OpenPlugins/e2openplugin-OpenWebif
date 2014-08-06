@@ -14,7 +14,7 @@
 <div class="channel_right">
 #if $channel.protection == "0"
 #if $type == "radio"
-<a href="#" onclick="addTimer('','$channel.ref','$channel.name')" title="Add Timer for $channel.name"><div class="ow_i ow_i_timer"></div></a>
+<a href="#" onclick="addTimer('','$channel.ref','$channel.name')" title="$tstrings['add_timer']"><div class="ow_i ow_i_timer"></div></a>
 #end if
 <a href="#" onclick="open_epg_pop('$channel.ref')" title="$tstrings['show_epg_for'] $channel.name"><div class="ow_i ow_i_epg"></div></a>
 #if $transcoding

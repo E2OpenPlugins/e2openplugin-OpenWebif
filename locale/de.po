@@ -241,10 +241,10 @@ msgstr "Ausschalten"
 msgid "Default"
 msgstr "Standard"
 
-msgid "Delete Movie"
+msgid "Delete Recording"
 msgstr "Aufnahme löschen"
 
-msgid "Really delete the movie"
+msgid "Really delete the recording"
 msgstr "Soll die Aufnahme gelöscht werden"
 
 msgid "Delete Timer"
@@ -734,3 +734,17 @@ msgstr "Python/Twisted ohne IPv6-Unterstützung"
 
 msgid "Refresh Timer"
 msgstr "Timer neu Laden"
+
+msgid "Add AutoTimer"
+msgstr "AutoTimer anlegen"
+
+msgid "Add Zap Timer"
+msgstr "Umschalttimer anlegen"
+
+msgid "Rename Recording"
+msgstr "Aufnahme umbenennen"
+
+msgid "Playback"
+msgstr ""Abspielen
+
+

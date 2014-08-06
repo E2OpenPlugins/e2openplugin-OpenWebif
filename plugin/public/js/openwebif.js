@@ -135,7 +135,7 @@ function initJsTranslation(strings) {
 	tstr_add_timer = strings.add_timer;
 	tstr_close = strings.cancel;
 	tstr_del_timer = strings.delete_timer_question;
-	tstr_del_movie = strings.delete_movie_question;
+	tstr_del_recording = strings.delete_recording_question;
 	tstr_done = strings.done;
 	tstr_edit_timer = strings.edit_timer;
 	tstr_hour = strings.hour;
@@ -223,7 +223,10 @@ function load_dm(url,title,w,h){
 					$(this).siblings('.ui-dialog-buttonpane').find('button:eq(0)').focus(); 
 				}
 			});
+		},error: function(){
+			alert('error! Loading Page');
 		}
+		
 	});
 }
 
@@ -388,7 +391,7 @@ function cleanupTimer() {
 }
 
 function deleteMovie(sRef, divid, title) {
-	if (confirm(tstr_del_movie + ": " + title) === true) {
+	if (confirm(tstr_del_recording + ": " + title) === true) {
 		webapi_execute("/api/moviedelete?sRef=" + sRef);
 		// TODO: check the api result first
 		$('#' + divid).remove();

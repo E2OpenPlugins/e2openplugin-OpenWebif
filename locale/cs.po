@@ -235,10 +235,10 @@ msgstr "Hluboký spánek"
 msgid "Default"
 msgstr "Standardní"
 
-msgid "Delete Movie"
+msgid "Delete Recording"
 msgstr "odstranit film"
 
-msgid "Really delete the movie"
+msgid "Really delete the recording"
 msgstr "Opravdu smazat film"
 
 msgid "Delete Timer"

@@ -249,10 +249,10 @@ msgstr "Reposo Profundo"
 msgid "Default"
 msgstr "Por Defecto"
 
-msgid "Delete Movie"
+msgid "Delete Recording"
 msgstr "Borrar Película"
 
-msgid "Really delete the movie"
+msgid "Really delete the recording"
 msgstr "¿Deseas borrar la película?"
 
 msgid "Delete Timer"
