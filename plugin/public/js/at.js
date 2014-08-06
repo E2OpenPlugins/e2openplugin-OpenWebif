@@ -2,15 +2,15 @@
 //* at.js: openwebif Autotimer plugin
 //* Version 1.0
 //******************************************************************************
-//* Copyright (C) 2014 Jšrg Bleyel
+//* Copyright (C) 2014 Joerg Bleyel
 //* Copyright (C) 2014 E2OpenPlugins
 //*
-//* Authors: Jšrg Bleyel <jbleyel # gmx.net>
+//* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
 //*******************************************************************************
 
-// TODO: backup, restore , some error handler
+// TODO: open with new at, restore , some error handler
 
 function toUnixDate(date){
 	datea = date.split('.');

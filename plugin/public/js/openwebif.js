@@ -350,21 +350,35 @@ function addEditTimerEvent(sRef, eventId) {
 }
 
 function addAutoTimerEvent(sRef, eventId) {
-	alert("TO DO");
-	return;
 	var url="/api/event?sref=" + sRef + "&idev=" + eventId;
 	$.getJSON(url, function(result){
 		if (typeof result !== 'undefined' && typeof result.event !== 'undefined') {
-			addautotimer(result.event);
+			addATfromEvent(result.event);
 		}
 		else
 			alert("Event not found");
 	});
 }
 
+function addATfromEvent(evt)
+{
+	// TODO: 
+/*
+	name = evt.title;
+	match = evt.title;
+	from = evt.begin_timestamp - 3600;
+	to = from + 7200;
+	searchCase = 'sensitive';
+	serchType = 'exact';
+	channels ...
+	overrideAlternatives = true;
+	
+	// open the autotimer edit view with a new autotimer
+*/
+}
 
-function delTimerEvent() {
-	alert("TO DO");
+function delTimerEvent(obj) {
+	// TODO: get timerinfo from event
 }
 
 function toggleTimerStatus(sRef, begin, end) {

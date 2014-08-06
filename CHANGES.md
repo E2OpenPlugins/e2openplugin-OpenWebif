@@ -2,6 +2,12 @@
 **FEATURES**
 * bouqueteditor webif
 * autotimer webif
+* new recording list design
+* new timer list design
+* several css and html performance optimizations
+
+**FIXES**
+* edit timer
 
 ## Version 0.3.0
 **FEATURES**
