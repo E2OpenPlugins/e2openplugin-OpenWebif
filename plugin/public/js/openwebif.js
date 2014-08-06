@@ -17,7 +17,7 @@
 //*******************************************************************************
 
 $.fx.speeds._default = 1000;
-var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0;
+var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0,at2add = null;
 
 $(function() {
 	
@@ -349,32 +349,19 @@ function addEditTimerEvent(sRef, eventId) {
 	});
 }
 
-function addAutoTimerEvent(sRef, eventId) {
-	var url="/api/event?sref=" + sRef + "&idev=" + eventId;
-	$.getJSON(url, function(result){
-		if (typeof result !== 'undefined' && typeof result.event !== 'undefined') {
-			addATfromEvent(result.event);
-		}
-		else
-			alert("Event not found");
-	});
-}
-
-function addATfromEvent(evt)
-{
-	// TODO: 
-/*
-	name = evt.title;
-	match = evt.title;
-	from = evt.begin_timestamp - 3600;
-	to = from + 7200;
-	searchCase = 'sensitive';
-	serchType = 'exact';
-	channels ...
-	overrideAlternatives = true;
-	
-	// open the autotimer edit view with a new autotimer
-*/
+function addAutoTimerEvent(sRef, sname, title ,begin, end) {
+	at2add = {
+			"name" : title,
+			"from" : begin,
+			"to" : end,
+			"sref" : sRef,
+			"sname" : sname
+		};
+		// open the autotimer edit view with a new autotimer
+		load_maincontent('ajax/at');
+		
+		$("#modaldialog").dialog('destroy');
+		
 }
 
 function delTimerEvent(obj) {

@@ -1,6 +1,6 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 1.0
+//* Version 1.1
 //******************************************************************************
 //* Copyright (C) 2014 Joerg Bleyel
 //* Copyright (C) 2014 E2OpenPlugins
@@ -10,7 +10,7 @@
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
 //*******************************************************************************
 
-// TODO: open with new at, restore , some error handler
+// TODO: restore , some error handler
 
 function toUnixDate(date){
 	datea = date.split('.');
@@ -287,11 +287,20 @@ function Parse() {
 		$("#atlist").append($("<li></li>").html($(this).attr("name")).addClass('ui-widget-content').data('id',$(this).attr("id")));
 	});
 	
-	var item = $("#atlist").find("li").first();
-	if(item) {
-		FillAT(item.data('id'));
-		item.addClass('ui-selected');
+	if(at2add)
+	{
+		addAT(at2add);
+		at2add=null;
 	}
+	else
+	{
+		var item = $("#atlist").find("li").first();
+		if(item) {
+			FillAT(item.data('id'));
+			item.addClass('ui-selected');
+		}
+	}
+
 }
 
 function isInArray(array, search) { return (array.indexOf(search) >= 0) ? true : false; }
@@ -635,6 +644,9 @@ AutoTimerObj.prototype.UpdateUI = function(){
 			$('#timeSpanAE').prop('checked',true);
 		}
 	}
+
+	$('#channels').val(null);
+	$('#bouquets').val(null);
 	
 	$.each(this.Bouquets, function(index, value) {
 		$('#bouquets option[value="' + value + '"]').prop("selected", true);
@@ -647,10 +659,10 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	$('#Bouquets').prop('checked',(this.Bouquets.length>0));
 	$('#Channels').prop('checked',(this.Channels.length>0));
 	
-	if(this.Bouquets.length==0)
-		$('#bouquets').val(null);
-	if(this.Channels.length==0)
-		$('#channels').val(null);
+//	if(this.Bouquets.length==0)
+//		$('#bouquets').val(null);
+//	if(this.Channels.length==0)
+//		$('#channels').val(null);
 
 	$('#tags').val(null);
 	$.each(this.Tags, function(index, value) {
@@ -687,7 +699,7 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	checkValues();
 };
 
-function addAT()
+function addAT(evt)
 {
 
 	if(CurrentAT && CurrentAT.isNew)
@@ -704,10 +716,17 @@ function addAT()
 	});
 
 	var name = "New Name";
-	var match = "New Name";
 	var id = _id.toString();
 
-	var xml = '<timers><timer name="'+name+'" match="'+match+'" enabled="yes" id="'+id+'" encoding="ISO8859-15"></timer></timers>',
+	var xml = '<timers><timer name="'+name+'" match="'+name+'" enabled="yes" id="'+id+'" encoding="ISO8859-15" justplay="0" overrideAlternatives="1"></timer></timers>';
+	if (typeof evt !== 'undefined') 
+	{
+		xml = '<timers><timer name="'+evt.name+'" match="'+evt.name+'" enabled="yes" id="'+id+'" encoding="ISO8859-15" from="'+evt.from+'" to="'+evt.to+'"';
+		xml += ' searchType="exact" searchCase="sensitive" justplay="0" overrideAlternatives="1" '
+		xml += '><e2service><e2servicereference>'+evt.sref+'</e2servicereference><e2servicename>'+evt.sname+'</e2servicename></e2service>';
+		xml += '</timer></timers>';
+	}
+
 	xmlDoc = $.parseXML( xml )
 	
 	$(xmlDoc).find("timer").each(function () {
@@ -732,7 +751,7 @@ function delAT()
 
 	if(CurrentAT && !CurrentAT.isNew)
 	{
-		if(confirm("Do you really want to delete the AT (" + CurrentAT.title + ") ?") === false)
+		if(confirm("Do you really want to delete the AT (" + CurrentAT.name + ") ?") === false)
 			return;
 		$.ajax({
 			type: "GET", url: "/autotimer/remove?id=" + CurrentAT.id,
@@ -1032,7 +1051,7 @@ function reloadAT()
 			});
 		}
 	});
-
+	
 }
 
 function listTimers()
