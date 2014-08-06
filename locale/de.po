@@ -745,6 +745,6 @@ msgid "Rename Recording"
 msgstr "Aufnahme umbenennen"
 
 msgid "Playback"
-msgstr ""Abspielen
+msgstr "Abspielen"
 
 
