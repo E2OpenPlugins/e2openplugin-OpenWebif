@@ -726,7 +726,7 @@ function editTimer(serviceref, begin, end) {
 							} else {
 								$('#timername').removeClass('ui-state-disabled');
 								$('#timerbegin').removeClass('ui-state-disabled');
-								$("#dirname option").removeAttr(''disabled');
+								$("#dirname option").removeAttr('disabled');
 								$("#bouquet_select option").removeAttr('disabled');
 							}
 							$('#timerbegin').prop('readonly', r);
