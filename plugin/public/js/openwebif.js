@@ -453,11 +453,13 @@ function getStatusInfo() {
 			var timercall = "load_maincontent('ajax/timers'); return false;";
 			status = "<a href='#' onClick='load_maincontent(\"ajax/timers\"); return false;'><img src='../images/ico_rec.png' title='" + tstr_rec_status + "' alt='" + tstr_rec_status + "' /></a>";
 		}
+		status += "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_";
 		if (statusinfo['inStandby'] == 'true') {
-			status = status + "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_standby.png' title='" + tstr_on + "' alt='" + tstr_standby + "'/></a>";
+			status += "standby.png' title='" + tstr_on + "' alt='" + tstr_standby;
 		} else {
-			status = status + "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_on.png' title='" + tstr_standby + "' alt='" + tstr_on + "'/></a>";
+			status += "on.png' title='" + tstr_standby + "' alt='" + tstr_on;
 		}
+		status += "' width='58' height='24' /></a>";
 		$("#osd_status").html(status);
 	}).error(function() {
 		$("#osd, #osd_bottom").html("");
