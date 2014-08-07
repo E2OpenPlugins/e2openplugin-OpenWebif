@@ -135,6 +135,7 @@ function initJsTranslation(strings) {
 	tstr_add_timer = strings.add_timer;
 	tstr_close = strings.cancel;
 	tstr_del_timer = strings.delete_timer_question;
+	tstr_del_autotimer = strings.at_delete_autotimer_question;
 	tstr_del_recording = strings.delete_recording_question;
 	tstr_done = strings.done;
 	tstr_edit_timer = strings.edit_timer;

@@ -16,80 +16,77 @@ fieldset > label
 
 <div id="content_main" style="min-height: 500px;">
 	<div id="info">
-		<h3>AutoTimer</h3>
-
 		<div style="background-color: #00000">
-		
 		<div style="display: inline-block; width: 100%; zoom: 1;">
 			<div style="float:left;width:200px;">
-				<h3>AutoTimer List</h3>
+				<h3>$tstrings['at_list']</h3>
 				<ol id="atlist">
 				</ol>
 				
 			</div>
 			<div style="margin-left:200px;">
 				<div style="display: inline-block; width: 100%; zoom: 1;">
-					<h3>AutoTimer Edit <span id='at_name'></span></h3>
+					<h3>$tstrings['at_at_edit'] <span id='at_name'></span></h3>
 					<div id="ateditcontent">
 						<form>
 							<fieldset>
-								<br><label for="enabled">Enabled:</label>
+								<br><label for="enabled">$tstrings['at_enabled']:</label>
 								<input type="checkbox" name="enabled" id="enabled" value="" class="checkbox ui-widget-content ui-corner-all">
-								<label for="name">$tstrings['name']:</label>
+								<label for="name">$tstrings['at_description']:</label>
 								<input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
-								<label for="match">Match:</label>
+								<label for="match">$tstrings['at_title_match']:</label>
 								<input type="text" name="match" id="match" class="text ui-widget-content ui-corner-all">
-								<br><label for="encoding">Encoding:</label>
+								<br><label for="encoding">$tstrings['at_encoding']:</label>
 								<select name="encoding" id="encoding">
 								<option value="ISO8859-15" selected="selected">ISO8859-15</option>
 								<option value="UTF-8">UTF-8</option>
 								</select>
-								<label for="searchType">Search type:</label>
+								<label for="searchType">$tstrings['at_search_type']:</label>
 								<select name="searchType" id="searchType">
-								<option value="partial" selected="selected">partial match</option>
-								<option value="exact">exact match</option>
-								<option value="title">title match</option>
+								<option value="partial" selected="selected">$tstrings['at_partial_match']</option>
+								<option value="exact">$tstrings['at_exact_match']</option>
+								<option value="title">$tstrings['at_description_match']</option>
 								</select>
-								<label for="searchCase">Search case:</label>
+								<label for="searchCase">$tstrings['at_search_strictness']:</label>
 								<select name="searchCase" id="searchCase">
-								<option value="sensitive" selected="selected">Case sensitive</option>
-								<option value="insensitive">Case insensitive</option>
+								<option value="sensitive" selected="selected">$tstrings['at_case_sensitive']</option>
+								<option value="insensitive">$tstrings['at_case_insensitive']</option>
 								</select>
-								<br><label for="justplay">Timer type:</label>
+								<br><label for="justplay">$tstrings['at_timer_type']:</label>
 								<select name="justplay" id="justplay">
-								<option value="0" selected="selected">Record</option>
-								<option value="1">Zap</option>
+								<option value="0" selected="selected">$tstrings['at_record']</option>
+								<option value="1">$tstrings['at_zap']</option>
 								</select>
-								<label for="overrideAlternatives">Override alternatives:</label>
+								<label for="overrideAlternatives">$tstrings['at_override_alt']:</label>
 								<input type="checkbox" name="overrideAlternatives" id="overrideAlternatives" value="" class="checkbox ui-widget-content ui-corner-all">
-								<br><label for="timeSpan">TimeSpan:</label>
+								<br><label for="timeSpan">$tstrings['at_timespan']:</label>
 								<input type="checkbox" name="timeSpan" id="timeSpan" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="timeSpanE">
-									<label for="from">Begin:</label>
+									<label for="from">$tstrings['at_timespan_begin']:</label>
 									<input type="text" name="from" id="from" value="" class="text ui-widget-content ui-corner-all">
-									<label for="to">End:</label>
+									<label for="to">$tstrings['at_timespan_end']:</label>
 									<input type="text" name="to" id="to" value="" class="text ui-widget-content ui-corner-all">
 									</span>
-								<br><label for="timeFrame">TimeFrame:</label>
+								<br><label for="timeFrame">$tstrings['at_datespan']:</label>
 								<input type="checkbox" name="timeFrame" id="timeFrame" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="timeFrameE">
-									<label for="after">After:</label>
-									<input type="text" name="after" id="after" value="" class="text date ui-widget-content ui-corner-all">
-									<label for="before">Before:</label>
+									<label for="before">$tstrings['at_datespan_before']:</label>
 									<input type="text" name="before" id="before" value="" class="text date ui-widget-content ui-corner-all">
+									<label for="after">$tstrings['at_datespan_after']:</label>
+									<input type="text" name="after" id="after" value="" class="text date ui-widget-content ui-corner-all">
 									</span>
-								<br><label for="timerOffset">Timer offset:</label>
+								<br><label for="timerOffset">$tstrings['at_timer_offset']:</label>
 								<input type="checkbox" name="timerOffset" id="timerOffset" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="timerOffsetE">
-									<label for="obefore">Before:</label>
+									<label for="obefore">$tstrings['at_timer_offset_before']:</label>
 									<select name="obefore" id="obefore">
 									</select>
-									<label for="oafter">After:</label>
+									<label for="oafter">$tstrings['at_timer_offset_after']:</label>
 									<select name="oafter" id="oafter">
 									</select>
 									</span>
 								
-								<br><label for="maxDuration">Max duration:</label>
+								<br><label for="maxDuration">$tstrings['at_max_duration']:</label>
 								<input type="checkbox" name="maxDuration" id="maxDuration" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="maxDurationE">
 									<label for="maxduration"></label>
@@ -97,48 +94,49 @@ fieldset > label
 									</select>
 									</span>
 								
-								<br><label for="afterevent">After event:</label>
+								<br><label for="afterevent">$tstrings['at_after_event']:</label>
 								<select name="afterevent" id="afterevent">
-								<option value="" selected="selected">Default</option>
-								<option value="none">Nothing</option>
-								<option value="standby">Standby</option>
-								<option value="shutdown">Deep Standby</option>
-								<option value="auto">Auto</option>
+								<option value="" selected="selected">$tstrings['at_after_event_standard']</option>
+								<option value="none">$tstrings['at_after_event_nothing']</option>
+								<option value="standby">$tstrings['at_after_event_standby']</option>
+								<option value="shutdown">$tstrings['at_after_event_deepstandby']</option>
+								<option value="auto">$tstrings['at_after_event_auto']</option>
 								</select>
 								<span id="AftereventE">
-								<label for="timeSpanAE">TimeSpan:</label>
+								<label for="timeSpanAE">$tstrings['at_event_timespan']:</label>
 								<input type="checkbox" name="timeSpanAE" id="timeSpanAE" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="timeSpanAEE">
-									<label for="from">Begin:</label>
+									<label for="from">$tstrings['at_event_timespan_begin']:</label>
 									<input type="text" name="aefrom" id="aefrom" value="" class="text ui-widget-content ui-corner-all">
-									<label for="to">End:</label>
+									<label for="to">$tstrings['at_event_timespan_end']:</label>
 									<input type="text" name="aeto" id="aeto" value="" class="text ui-widget-content ui-corner-all">
 									</span>
 								</span>
 								
-								<br><label for="counter">Max Counter:</label>
+								<br><label for="counter">$tstrings['at_max_counter']:</label>
 								<select name="counter" id="counter">
 								</select>
 								<span id="CounterE">
-								<label for="left">Left:</label>
+								<label for="left">$tstrings['at_left']:</label>
 								<select name="left" id="left">
 								</select>
+								<label for="counterFormat">$tstrings['at_reset_count']:</label>
 								<select id="counterFormat" name="counterFormat" size="1">
-								<option value="" selected>Never</option>
-								<option value="%m">Monthly</option>
-								<option value="%U">Weekly (Sunday)</option>
-								<option value="%W">Weekly (Monday)</option>
+								<option value="" selected>$tstrings['at_never']</option>
+								<option value="%m">$tstrings['at_monthly']</option>
+								<option value="%U">$tstrings['at_weekly_sun']</option>
+								<option value="%W">$tstrings['at_weekly_mon']</option>
 								</select>
 								</span>
 								
-								<br><label for="avoidDuplicateDescription">Avoid duplicate description:</label>
+								<br><label for="avoidDuplicateDescription">$tstrings['at_avoid_dup']:</label>
 								<select name="avoidDuplicateDescription" id="avoidDuplicateDescription">
-								<option value="0" selected="selected">No</option>
-								<option value="1">On same service</option>
-								<option value="2">On any service</option>
-								<option value="3">any service/recording</option>
+								<option value="0" selected="selected">$tstrings['at_avoid_dup_no']</option>
+								<option value="1">$tstrings['at_avoid_dup_same_service']</option>
+								<option value="2">$tstrings['at_avoid_dup_any_service']</option>
+								<option value="3">$tstrings['at_avoid_dup_any_service_rec']</option>
 								</select>
-								<br><label for="Location">Location:</label>
+								<br><label for="Location">$tstrings['at_location']:</label>
 								
 								<input type="checkbox" name="Location" id="Location" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="LocationE">
@@ -150,65 +148,65 @@ fieldset > label
 									</select>
 									</span>
 									
-								<br><label for="Tags">Tags:</label>
+								<br><label for="Tags">$tstrings['at_tags']:</label>
 									<span id="TagsE">
-									<select data-placeholder="select tags" name="tags" id="tags" class="tags_select_box" multiple tabindex="16">
+									<select data-placeholder="$tstrings['at_select_tags']" name="tags" id="tags" class="tags_select_box" multiple tabindex="16">
 									</select>
 									</span>
-								<br><label for="Bouquets">Bouquets:</label>
+								<br><label for="Bouquets">$tstrings['at_bouquets']:</label>
 								<input type="checkbox" name="Bouquets" id="Bouquets" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="BouquetsE">
-									<select data-placeholder="select bouquet" name="bouquets" id="bouquets" class="bq_select_box" multiple tabindex="16">
+									<select data-placeholder="$tstrings['at_select_bouquets']" name="bouquets" id="bouquets" class="bq_select_box" multiple tabindex="16">
 									</select>
 									</span>
-								<br><label for="Channels">Channels:</label>
+								<br><label for="Channels">$tstrings['at_channels']:</label>
 								<input type="checkbox" name="Channels" id="Channels" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="ChannelsE">
-									<select data-placeholder="select channels" name="channels" id="channels" class="ch_select_box" multiple tabindex="16">
+									<select data-placeholder="$tstrings['at_select_channels']" name="channels" id="channels" class="ch_select_box" multiple tabindex="16">
 									</select>
 									</span>
 								<br>
 								<br>
 								<div>
-								<label for="Filter">Filter:</label>
+								<label for="Filter">$tstrings['at_filter']:</label>
 								<input type="checkbox" name="Filter" id="Filter" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="FilterE" style="display:inline-table">
-									<input type="button" id="AddFilter" value="add"/>
+									<input type="button" id="AddFilter" value="$tstrings['at_add']"/>
 									<table id="filterlist">
 									<tr id="dummyfilter" style="display:none">
 									<td class="nopadding">
 									<select size="1" class="FT">
-									<option value="include" selected="">Include</option>
-									<option value="exclude">Exclude</option>
+									<option value="include" selected="">$tstrings['at_filter_include']</option>
+									<option value="exclude">$tstrings['at_filter_exclude']</option>
 									</select>
 									</td>
 									<td class="nopadding">
 									<select size="1" class="FM">
-									<option value="title" selected="">Title</option>
-									<option value="shortdescription">Short description</option>
-									<option value="description">Description</option>
-									<option value="dayofweek">Day of week</option>
+									<option value="title" selected="">$tstrings['at_filter_title']</option>
+									<option value="shortdescription">$tstrings['at_filter_short_desc']</option>
+									<option value="description">$tstrings['at_filter_desc']</option>
+									<option value="dayofweek">$tstrings['at_filter_day']</option>
 									</select>
 									</td>
 									<td class="nopadding">
 									<input type="text" class="FI" size="20" value="" style="display: block;">
 									<select size="1" class="FS" style="display: none;">
-									<option value="0" selected="">Monday</option>
-									<option value="1">Tuesday</option>
-									<option value="2">Wednesday</option>
-									<option value="3">Thursday</option>
-									<option value="4">Friday</option>
-									<option value="5">Saturday</option>
-									<option value="6">Sunday</option>
-									<option value="weekend">Weekend</option>
-									<option value="weekday">Weekday</option>
+									<option value="0" selected="">$tstrings['monday']</option>
+									<option value="1">$tstrings['tuesday']</option>
+									<option value="2">$tstrings['wednesday']</option>
+									<option value="3">$tstrings['thursday']</option>
+									<option value="4">$tstrings['friday']</option>
+									<option value="5">$tstrings['saturday']</option>
+									<option value="6">$tstrings['sunday']</option>
+									<option value="weekend">$tstrings['at_filter_weekend']</option>
+									<option value="weekday">$tstrings['at_filter_weekday']</option>
 									</select>
 									</td>
 									</tr>
 									</table>
 									</span>
 								</div>
-								<br><label for="vps">VPS:</label>
+								<br><label for="vps">$tstrings['at_vps']:</label>
 								
 								<input type="checkbox" name="vps" id="vps" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="vpsE">
@@ -221,13 +219,13 @@ fieldset > label
 						
 						<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
 						<div id="actions">
-						<button id="atbutton0">ADD</button>
-						<button id="atbutton1">DEL</button>
-						<button id="atbutton2">Reload</button>
-						<button id="atbutton3">Save</button>
-						<button id="atbutton4">Parse</button>
-						<button id="atbutton5">Simulate</button>
-						<button id="atbutton6">Timers</button>
+						<button id="atbutton0">$tstrings['at_add']</button>
+						<button id="atbutton1">$tstrings['at_del']</button>
+						<button id="atbutton2">$tstrings['at_reload']</button>
+						<button id="atbutton3">$tstrings['at_save']</button>
+						<button id="atbutton4">$tstrings['at_parse']</button>
+						<button id="atbutton5">$tstrings['at_simulate']</button>
+						<button id="atbutton6">$tstrings['at_timers']</button>
 						</div></div>
 							<div id="errorbox" class="timerlist_row" style="color: red;">
 		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 

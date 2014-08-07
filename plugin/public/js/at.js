@@ -751,7 +751,7 @@ function delAT()
 
 	if(CurrentAT && !CurrentAT.isNew)
 	{
-		if(confirm("Do you really want to delete the AT (" + CurrentAT.name + ") ?") === false)
+		if(confirm(tstr_del_autotimer + " (" + CurrentAT.name + ") ?") === false)
 			return;
 		$.ajax({
 			type: "GET", url: "/autotimer/remove?id=" + CurrentAT.id,
