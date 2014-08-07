@@ -720,10 +720,10 @@ function editTimer(serviceref, begin, end) {
 							
 							// don't allow edit some fields if running
 							var r = (timer.state === 2);
-							$('#timerbegin').prop('disabled', r);
-							$('#bouquet_select').prop('disabled', r);
-							$('#dirname').prop('disabled', r);
-							$('#timername').prop("disabled",r);
+							$('#timerbegin').prop('readonly', r);
+							$('#bouquet_select').prop('readonly', r);
+							$('#dirname').prop('readonly', r);
+							$('#timername').prop("readonly",r);
 							
 							break;
 						}
