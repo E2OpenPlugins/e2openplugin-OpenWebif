@@ -330,7 +330,13 @@ class WebController(BaseController):
 		return renameMovie(self.session, request.args["sRef"][0],request.args["newname"][0])
 
 	def P_movietags(self, request):
-		return getMovieTags()
+		_add = None
+		_del = None
+		if "add" in request.args.keys():
+			_add = request.args["add"][0]
+		if "del" in request.args.keys():
+			_del = request.args["del"][0]
+		return getMovieTags(_add,_del)
 
 	# a duplicate api ??
 	def P_gettags(self, request):

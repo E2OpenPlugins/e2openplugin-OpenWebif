@@ -1,4 +1,4 @@
-## Version 0.3.1
+## Version 0.4.0
 ## (not finished yet)
 **FEATURES**
 * bouqueteditor webif
@@ -6,6 +6,7 @@
 * new recording list design
 * new timer list design
 * several css and html performance optimizations
+* extend movietags api
 
 **FIXES**
 * edit timer
