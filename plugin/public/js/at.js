@@ -424,7 +424,7 @@ function AutoTimerObj (xml) {
 	if(!this.match)
 		this.match='';
 
-	this.searchType = "partical";
+	this.searchType = "partial";
 	if(xml.attr("searchType"))
 		this.searchType=xml.attr("searchType");
 
