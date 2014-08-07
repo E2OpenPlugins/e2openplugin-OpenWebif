@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-08-07 22:34+0100\n"
+"POT-Creation-Date: 2014-08-07 23:30+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -912,6 +912,63 @@ msgstr "Simulieren"
 
 msgid "Do you really want to delete the AT"
 msgstr "Wollen Sie folgende AutoTimer wirklich löschen"
+
+msgid "Add Provider as new Bouquet"
+msgstr "Anbieter als neues Bouquet hinzufügen"
+
+msgid "Add channel(s) to Bouquet"
+msgstr "Sender zum Bouquet hinzufügen"
+
+msgid "Add channel(s) as alternate"
+msgstr "Sender als Alternative hinzufügen"
+
+msgid "Export"
+msgstr "Exportieren"
+
+msgid "Import"
+msgstr "Importieren"
+
+msgid "Add Bouquet"
+msgstr "Bouquet hinzufügen"
+
+msgid "Rename Bouquet"
+msgstr "Bouquet umbenennen"
+
+msgid "Delete Bouquet"
+msgstr "Bouquet löschen"
+
+msgid "Add Marker"
+msgstr "Marker hinzufügen"
+
+msgid "Rename"
+msgstr "Umbenennen"
+
+msgid "Delete Channel(s)"
+msgstr "Sender löschen"
+
+msgid "Do you really want to delete the channel(s)"
+msgstr "Wollen Sie nachfolgende Sender wirklich löschen"
+
+msgid "Do you really want to delete the bouquet"
+msgstr "Wollen Sie folgendes Bouquet wirklich löschen"
+
+msgid "Name of the Bouquet"
+msgstr "Name of the Bouquets"
+
+msgid "Name of the Marker"
+msgstr "Name des Markers"
+
+msgid "Enter new name for the bouquet"
+msgstr "Neuen Namen des Bouquets eingeben"
+
+msgid "Enter new name for the marker"
+msgstr "Neuen Namen des Markers eingeben"
+
+msgid "Please enter filename"
+msgstr "Bitte den Dateinamen angeben"
+
+msgid "Do you really want to restore from file"
+msgstr "Wollen Sie diese Datei wirklich importieren"
 
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux Einstellungen"
