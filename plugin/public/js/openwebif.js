@@ -719,16 +719,13 @@ function editTimer(serviceref, begin, end) {
 							// don't allow edit some fields if running
 							if(r) {
 								$('#timerbegin').datetimepicker('destroy');
-								$('#timerend').datetimepicker('destroy');
 								$('#timerbegin').addClass('ui-state-disabled');
-								$('#timerend').addClass('ui-state-disabled');
 								$('#timername').addClass('ui-state-disabled');
 								$("#dirname option").not(":selected").attr("disabled", "disabled");
 								$("#bouquet_select option").not(":selected").attr("disabled", "disabled");
 							} else {
 								$('#timername').removeClass('ui-state-disabled');
 								$('#timerbegin').removeClass('ui-state-disabled');
-								$('#timerend').removeClass('ui-state-disabled');
 								$("#dirname option").attr("disabled", "");
 								$("#bouquet_select option").attr("disabled", "");
 							}
