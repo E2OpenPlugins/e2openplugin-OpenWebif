@@ -1,4 +1,5 @@
-## Version 0.3.1 / not finished yet
+## Version 0.3.1
+## (not finished yet)
 **FEATURES**
 * bouqueteditor webif
 * autotimer webif
