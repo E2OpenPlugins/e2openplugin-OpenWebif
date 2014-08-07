@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-08-07 22:33+0100\n"
+"POT-Creation-Date: 2014-08-07 23:29+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -910,6 +910,63 @@ msgid "Simulate"
 msgstr ""
 
 msgid "Do you really want to delete the AT"
+msgstr ""
+
+msgid "Add Provider as new Bouquet"
+msgstr ""
+
+msgid "Add channel(s) to Bouquet"
+msgstr ""
+
+msgid "Add channel(s) as alternate"
+msgstr ""
+
+msgid "Export"
+msgstr ""
+
+msgid "Import"
+msgstr ""
+
+msgid "Add Bouquet"
+msgstr ""
+
+msgid "Rename Bouquet"
+msgstr ""
+
+msgid "Delete Bouquet"
+msgstr ""
+
+msgid "Add Marker"
+msgstr ""
+
+msgid "Rename"
+msgstr ""
+
+msgid "Delete Channel(s)"
+msgstr ""
+
+msgid "Do you really want to delete the channel(s)"
+msgstr ""
+
+msgid "Do you really want to delete the bouquet"
+msgstr ""
+
+msgid "Name of the Bouquet"
+msgstr ""
+
+msgid "Name of the Marker"
+msgstr ""
+
+msgid "Enter new name for the bouquet"
+msgstr ""
+
+msgid "Enter new name for the marker"
+msgstr ""
+
+msgid "Please enter filename"
+msgstr ""
+
+msgid "Do you really want to restore from file"
 msgstr ""
 
 msgid "LCD4Linux Setup"

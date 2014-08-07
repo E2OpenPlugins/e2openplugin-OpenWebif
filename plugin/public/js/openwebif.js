@@ -184,6 +184,15 @@ function initJsTranslation(strings) {
 	
 	tstr_send_message = strings.send_message;
 	tstr_epgsearch = strings.epgsearch;
+	
+	tstr_bqe_del_channel_question = strings.bqe_del_channel_question;
+	tstr_bqe_del_bouquet_question = strings.bqe_del_bouquet_question;
+	tstr_bqe_name_bouquet = strings.bqe_name_bouquet;
+	tstr_bqe_name_marker = strings.bqe_name_marker;
+	tstr_bqe_rename_bouquet = strings.bqe_rename_bouquet;
+	tstr_bqe_rename_marker = strings.bqe_rename_marker;
+	tstr_bqe_filename = strings.bqe_filename;
+	tstr_bqe_restore_question = strings.bqe_restore_question;
 }
 
 function open_epg_search_dialog() {
