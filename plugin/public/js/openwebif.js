@@ -715,15 +715,28 @@ function editTimer(serviceref, begin, end) {
 							$('#timerbegin').datetimepicker('setDate', (new Date(Math.round(timer.begin) * 1000)));
 							$('#timerend').datetimepicker('setDate', (new Date(Math.round(timer.end) * 1000)));
 							
+							var r = (timer.state === 2);
+							// don't allow edit some fields if running
+							if(r) {
+								$('#timerbegin').datetimepicker('destroy');
+								$('#timerend').datetimepicker('destroy');
+								$('#timerbegin').addClass('ui-state-disabled');
+								$('#timerend').addClass('ui-state-disabled');
+								$('#timername').addClass('ui-state-disabled');
+								$("#dirname option").not(":selected").attr("disabled", "disabled");
+								$("#bouquet_select option").not(":selected").attr("disabled", "disabled");
+							} else {
+								$('#timername').removeClass('ui-state-disabled');
+								$('#timerbegin').removeClass('ui-state-disabled');
+								$('#timerend').removeClass('ui-state-disabled');
+								$("#dirname option").attr("disabled", "");
+								$("#bouquet_select option").attr("disabled", "");
+							}
+							$('#timerbegin').prop('readonly', r);
+							$('#timername').prop('readonly',r);
+							
 							$('#editTimerForm').dialog("open");
 							$('#editTimerForm').dialog("option", "title", tstr_edit_timer + " - " + timer.name);
-							
-							// don't allow edit some fields if running
-							var r = (timer.state === 2);
-							$('#timerbegin').prop('readonly', r);
-							$('#bouquet_select').prop('readonly', r);
-							$('#dirname').prop('readonly', r);
-							$('#timername').prop("readonly",r);
 							
 							break;
 						}
