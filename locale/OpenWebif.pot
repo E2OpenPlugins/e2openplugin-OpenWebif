@@ -241,10 +241,10 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-msgid "Delete Movie"
+msgid "Delete Recording"
 msgstr ""
 
-msgid "Really delete the movie"
+msgid "Really delete the recording"
 msgstr ""
 
 msgid "Delete Timer"
@@ -748,3 +748,16 @@ msgstr ""
 
 msgid "Refresh Timer"
 msgstr ""
+
+msgid "Add AutoTimer"
+msgstr ""
+
+msgid "Add Zap Timer"
+msgstr ""
+
+msgid "Rename Recording"
+msgstr ""
+
+msgid "Playback"
+msgstr ""
+

@@ -111,6 +111,17 @@ class AjaxController(BaseController):
 		else: 
 			return []
 
+	def P_epgdialog(self, request):
+		events = self.P_epgpop(request)
+		timers = getTimers(self.session)
+		at = False
+		try:
+			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
+			at = True
+		except ImportError:
+			pass
+		return { "events": events['events'] , "timers" : timers['timers'] , "at" : at }
+
 	def P_screenshot(self, request):
 		box = {}
 		box['brand'] = "dmm"

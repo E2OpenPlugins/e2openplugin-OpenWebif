@@ -20,6 +20,8 @@ from Components.MovieList import MovieList
 from Tools.Directories import fileExists
 from time import strftime, localtime
 
+MOVIETAGFILE = "/etc/enigma2/movietags"
+
 def getMovieList(directory=None, tag=None, rargs=None):
 	movieliste = []
 
@@ -182,6 +184,7 @@ def moveMovie(session, sRef, destpath):
 		fullfilename = fullpath.split('/')[-1]
 		fileName, fileExt = os.path.splitext(fullfilename)
 
+		# TODO: check splitted recording
 		def domove():
 			exists = os.path.exists
 			move = os.rename
@@ -247,6 +250,7 @@ def renameMovie(session, sRef, newname):
 		fileName, fileExt = os.path.splitext(fullfilename)
 		newfullpath = srcpath + newname + fileExt
 
+		# TODO: check splitted recording
 		def domove():
 			exists = os.path.exists
 			move = os.rename
@@ -292,13 +296,26 @@ def renameMovie(session, sRef, newname):
 			"message": "The movie '%s' has been renamed successfully" % name
 			}
 
-def getMovieTags():
+def getMovieTags(addtag = None, deltag = None):
 	tags = []
-	if fileExists("/etc/enigma2/movietags"):
-		for tag in open("/etc/enigma2/movietags").read().split("\n"):
+	wr = False
+	if fileExists(MOVIETAGFILE):
+		for tag in open(MOVIETAGFILE).read().split("\n"):
 			if len(tag.strip()) > 0:
-				tags.append(tag.strip())
+				if deltag != tag:
+					tags.append(tag.strip())
+				if addtag == tag:
+					addtag = None
+		if deltag is not None:
+			wr = True
+	if addtag is not None:
+		tags.append(addtag)
+		wr = True
+	if wr:
+		with open(MOVIETAGFILE, 'w') as f:
+			f.write("\n".join(tags))
 	return {
 		"result": True,
 		"tags": tags
 	}
+

@@ -14,29 +14,17 @@
 <div class="channel_right">
 #if $channel.protection == "0"
 #if $type == "radio"
-<a href="#" onclick="addTimer('','$channel.ref','$channel.name')">
-<img src="../images/ico_timer.png" title="Add Timer for $channel.name" border="0" width=16 height=16>
-</a>
+<a href="#" onclick="addTimer('','$channel.ref','$channel.name')" title="$tstrings['add_timer']"><div class="ow_i ow_i_timer"></div></a>
 #end if
-<a href="#" onclick="open_epg_pop('$channel.ref')">
-<img src="../images/ico_epg.png" title="$tstrings['show_epg_for'] $channel.name" border="0">
-</a>
+<a href="#" onclick="open_epg_pop('$channel.ref')" title="$tstrings['show_epg_for'] $channel.name"><div class="ow_i ow_i_epg"></div></a>
 #if $transcoding
-<a href="#" onclick="jumper8001('$channel.ref', '$channel.name');">
-<img align="top" src="../images/ico_stream.png" title="$tstrings['stream'] $channel.name" border="0">
-</a>
-<a href="#" onclick="jumper8002('$channel.ref', '$channel.name');">
-<img align="top" src="../images/ico_stream.png" title="$tstrings['stream'] Port 8002 $channel.name" border="0">
-</a>
+<a href="#" onclick="jumper8001('$channel.ref', '$channel.name');" title="$tstrings['stream'] $channel.name"><div class="ow_i ow_i_stream1"></div></a>
+<a href="#" onclick="jumper8002('$channel.ref', '$channel.name');" title="$tstrings['stream'] Port 8002 $channel.name"><div class="ow_i ow_i_stream2"></div></a>
 #else
-<a target="_blank" href='/web/stream.m3u?ref=$channel.ref&name=$channel.name'>
-<img align="top" src="../images/ico_stream.png" title="$tstrings['stream'] $channel.name" border="0">
-</a>
+<a target="_blank" href='/web/stream.m3u?ref=$channel.ref&name=$channel.name' title="$tstrings['stream'] $channel.name"><div class="ow_i ow_i_stream1"></div></a>
 #end if
 #else
-<a target="_blank" href='#'>
-<img align="top" src="../images/ico_lock.png" title="$tstrings['locked']" border="0">
-</a>
+<a target="_blank" href='#' title="$tstrings['locked']"><div class="ow_i ow_i_lock"></div></a>
 #end if
 </div>
 

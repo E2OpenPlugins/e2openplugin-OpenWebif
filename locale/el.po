@@ -232,7 +232,7 @@ msgstr "Βαθιά Αναμονή"
 msgid "Default"
 msgstr "Προεπιλογή"
 
-msgid "Delete Movie"
+msgid "Delete Recording"
 msgstr "Διαγραφή Ταινίας"
 
 msgid "Delete Timer"

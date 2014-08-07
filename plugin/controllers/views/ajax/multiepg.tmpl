@@ -73,7 +73,6 @@
 </tbody>
 </table>
 <div id="eventdescription"></div>
-<div id="editTimerForm" title="$tstrings['edit_timer']"></div>
 
 <script>
 var picons = $dumps($picons);
@@ -93,7 +92,8 @@ var reloadTimers = false;
 	var day = \$(this).attr("js:day");
 	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day='+day);
 });
-\$('#editTimerForm').load('/ajax/edittimer');
+if(!timeredit_initialized)
+	\$('#editTimerForm').load('/ajax/edittimer');
 </script>
 <script type="text/javascript" src="/js/jquery.fixedheadertable.min.js"></script>
 

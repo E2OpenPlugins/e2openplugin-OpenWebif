@@ -20,15 +20,15 @@
 					<div class="tm_buttons">
 						<div>
 						#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
-						<a href='#' onClick="editTimer('$sref', '$timer.begin', '$timer.end');"><img src="../images/ico_edit.png" title="$tstrings['edit_timer']" border="0"></a>
-						<a href='#' onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$timer.name');"><img src="../images/ico_delete.png" title="$tstrings['delete_timer']" border="0"></a>
-						<a href='#' onClick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end');">
+						<a href='#' onClick="editTimer('$sref', '$timer.begin', '$timer.end');" title="$tstrings['edit_timer']"><div class="ow_i ow_i_edit"></div></a>
+						<a href='#' onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$timer.name');" title="$tstrings['delete_timer']"><div class="ow_i ow_i_delete"></div></a>
+						<a href='#' onClick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end');" 
 						#if $timer.disabled
-						<img id="img-$timer.begin-$timer.end" src="../images/ico_disabled.png" title="$tstrings['enable_timer']" border="0">
+						title="$tstrings['enable_timer']"><div id="img-$timer.begin-$timer.end" class="ow_i ow_i_disabled">
 						#else
-						<img id="img-$timer.begin-$timer.end" src="../images/ico_enabled.png" title="$tstrings['disable_timer']" border="0">
+						title="$tstrings['disable_timer']"><div id="img-$timer.begin-$timer.end" class="ow_i ow_i_enabled">
 						#end if
-						</a>
+						</div></a>
 						</div>
 					</div>
 					<div>
@@ -75,14 +75,13 @@
 		</div>
 	</div>
 </div>
-
-<div id="editTimerForm"></div>
 <script type="text/javascript">
 #raw
 var reloadTimers = true;
 $(function() {
 	$('#timerbuttons').buttonset();
-	$('#editTimerForm').load('/ajax/edittimer');
+	if(!timeredit_initialized)
+		$('#editTimerForm').load('/ajax/edittimer');
 });
 #end raw
 </script>

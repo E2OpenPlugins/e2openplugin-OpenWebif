@@ -17,7 +17,7 @@
 //*******************************************************************************
 
 $.fx.speeds._default = 1000;
-var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0;
+var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0,at2add = null;
 
 $(function() {
 	
@@ -135,7 +135,7 @@ function initJsTranslation(strings) {
 	tstr_add_timer = strings.add_timer;
 	tstr_close = strings.cancel;
 	tstr_del_timer = strings.delete_timer_question;
-	tstr_del_movie = strings.delete_movie_question;
+	tstr_del_recording = strings.delete_recording_question;
 	tstr_done = strings.done;
 	tstr_edit_timer = strings.edit_timer;
 	tstr_hour = strings.hour;
@@ -182,11 +182,30 @@ function initJsTranslation(strings) {
 	tstr_loading = strings.loading;
 	
 	tstr_send_message = strings.send_message;
+	tstr_epgsearch = strings.epgsearch;
 }
 
-function load_dm(url,title){
+function open_epg_search_dialog() {
+	var spar = $("#epgSearch").val();
+	var url = "ajax/epgdialog?sstr=" + encodeURIComponent(spar);
+	url=url.replace(/%C3%BC/g,'%FC').replace(/%C3%9C/g,'%FC').replace(/%C3%A4/g,'%E4').replace(/%C3%84/g,'%E4').replace(/%C3%B6/g,'%F6').replace(/%C3%96/g,'%F6').replace(/%C3%9F/g,'%DF');
+	$("#epgSearch").val("");
+	
+	var w = $(window).width() -100;
+	var h = $(window).height() -100;
+	
+	load_dm(url,tstr_epgsearch,w,h);
+}
+
+function load_dm(url,title,w,h){
 	var buttons = {}
 	buttons[tstr_close] = function() { $(this).dialog("close");};
+	var width = 'auto',height='auto';
+	if (typeof w !== 'undefined')
+		width = w;
+	if (typeof h !== 'undefined')
+		height = h;
+
 	$.ajax({
 		url: url,
 		success: function(data) {
@@ -194,13 +213,20 @@ function load_dm(url,title){
 				modal:true,
 				title:title,
 				autoOpen:true,
-				width:'auto',
+				width:width,
+				height:height,
 				buttons:buttons,
 				close: function(event, ui) { 
 					$(this).dialog('destroy');
+				},
+				open: function() {
+					$(this).siblings('.ui-dialog-buttonpane').find('button:eq(0)').focus(); 
 				}
 			});
+		},error: function(){
+			alert('error! Loading Page');
 		}
+		
 	});
 }
 
@@ -298,14 +324,58 @@ function open_epg_search_pop() {
 }
 
 function addTimerEvent(sRef, eventId) {
-	webapi_execute("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId);
+	webapi_execute("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId,
+		function() {
+			alert("Timer Added"); 
+		} 
+	);
+}
+function addTimerEventPlay(sRef, eventId) {
+	webapi_execute("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId + "&eit=0&disabled=0&justplay=1&afterevent=3",
+		function() {
+			alert("Timer Added"); 
+		} 
+	);
+}
+
+function addEditTimerEvent(sRef, eventId) {
+	var url="/api/event?sref=" + sRef + "&idev=" + eventId;
+	$.getJSON(url, function(result){
+		if (typeof result !== 'undefined' && typeof result.event !== 'undefined') {
+			addTimer(result.event);
+		}
+		else
+			alert("Event not found");
+	});
+}
+
+function addAutoTimerEvent(sRef, sname, title ,begin, end) {
+	at2add = {
+			"name" : title,
+			"from" : begin,
+			"to" : end,
+			"sref" : sRef,
+			"sname" : sname
+		};
+		// open the autotimer edit view with a new autotimer
+		load_maincontent('ajax/at');
+		
+		$("#modaldialog").dialog('destroy');
+		
+}
+
+function delTimerEvent(obj) {
+	// TODO: get timerinfo from event
 }
 
 function toggleTimerStatus(sRef, begin, end) {
 	var url="/api/timertogglestatus?";
 	var data = { sRef: sRef, begin: begin, end: end };
 	$.getJSON(url, data, function(result){
-		$('#img-'+begin+'-'+end).attr("src", result['disabled'] ? "/images/ico_disabled.png" : "/images/ico_enabled.png");
+		var obj = $('#img-'+begin+'-'+end);
+		obj.removeClass("ow_i_disabled");
+		obj.removeClass("ow_i_enabled");
+		obj.addClass(result['disabled'] ? "ow_i_disabled" : "ow_i_enabled");
 	});
 }
 
@@ -322,7 +392,7 @@ function cleanupTimer() {
 }
 
 function deleteMovie(sRef, divid, title) {
-	if (confirm(tstr_del_movie + ": " + title) === true) {
+	if (confirm(tstr_del_recording + ": " + title) === true) {
 		webapi_execute("/api/moviedelete?sRef=" + sRef);
 		// TODO: check the api result first
 		$('#' + divid).remove();
@@ -645,15 +715,25 @@ function editTimer(serviceref, begin, end) {
 							$('#timerbegin').datetimepicker('setDate', (new Date(Math.round(timer.begin) * 1000)));
 							$('#timerend').datetimepicker('setDate', (new Date(Math.round(timer.end) * 1000)));
 							
+							var r = (timer.state === 2);
+							// don't allow edit some fields if running
+							if(r) {
+								$('#timerbegin').datetimepicker('destroy');
+								$('#timerbegin').addClass('ui-state-disabled');
+								$('#timername').addClass('ui-state-disabled');
+								$("#dirname option").not(":selected").attr("disabled", "disabled");
+								$("#bouquet_select option").not(":selected").attr("disabled", "disabled");
+							} else {
+								$('#timername').removeClass('ui-state-disabled');
+								$('#timerbegin').removeClass('ui-state-disabled');
+								$("#dirname option").removeAttr('disabled');
+								$("#bouquet_select option").removeAttr('disabled');
+							}
+							$('#timerbegin').prop('readonly', r);
+							$('#timername').prop('readonly',r);
+							
 							$('#editTimerForm').dialog("open");
 							$('#editTimerForm').dialog("option", "title", tstr_edit_timer + " - " + timer.name);
-							
-							// don't allow edit some fields if running
-							var r = (timer.state === 2);
-							$('#timerbegin').prop('disabled', r);
-							$('#bouquet_select').prop('disabled', r);
-							$('#dirname').prop('disabled', r);
-							$('#timername').prop("disabled",r);
 							
 							break;
 						}
@@ -667,7 +747,6 @@ function addTimer(evt,chsref,chname) {
 	current_serviceref = '';
 	current_begin = -1;
 	current_end = -1;
-
 	
 	var begin = -1;
 	var end = -1;
@@ -692,6 +771,7 @@ function addTimer(evt,chsref,chname) {
 
 	if (typeof chsref !== 'undefined' && typeof chname !== 'undefined') {
 		// NOT NICE BUT IT WORKS
+		// TODO : remove the radio channel from the list after close
 		serviceref = chsref;
 		title = chname;
 		$('#bouquet_select').append($("<option></option>").attr("value", serviceref).text(chname));
