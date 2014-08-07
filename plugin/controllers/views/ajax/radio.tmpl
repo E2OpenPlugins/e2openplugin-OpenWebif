@@ -8,5 +8,11 @@
 </span></span>
 </div><div id="tvcontent"></div></div></div>
 <script type="text/javascript">
-\$(function() { InitBouquets(false); \$('#editTimerForm').load('/ajax/edittimer');});
+#raw
+$(function() {
+	InitBouquets(false);
+	if(!timeredit_initialized)
+		$('#editTimerForm').load('/ajax/edittimer');
+});
+#end raw
 </script>

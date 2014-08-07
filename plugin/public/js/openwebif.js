@@ -771,6 +771,7 @@ function addTimer(evt,chsref,chname) {
 
 	if (typeof chsref !== 'undefined' && typeof chname !== 'undefined') {
 		// NOT NICE BUT IT WORKS
+		// TODO : remove the radio channel from the list after close
 		serviceref = chsref;
 		title = chname;
 		$('#bouquet_select').append($("<option></option>").attr("value", serviceref).text(chname));

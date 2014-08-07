@@ -92,7 +92,8 @@ var reloadTimers = false;
 	var day = \$(this).attr("js:day");
 	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day='+day);
 });
-\$('#editTimerForm').load('/ajax/edittimer');
+if(!timeredit_initialized)
+	\$('#editTimerForm').load('/ajax/edittimer');
 </script>
 <script type="text/javascript" src="/js/jquery.fixedheadertable.min.js"></script>
 
