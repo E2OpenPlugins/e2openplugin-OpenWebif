@@ -1,3 +1,11 @@
+## Version 0.4.1
+## (not finished yet)
+**FEATURES**
+* epg search as modal dialog
+* channel epg as modal dialog
+
+**FIXES**
+
 ## Version 0.4.0
 ## (not finished yet)
 **FEATURES**
