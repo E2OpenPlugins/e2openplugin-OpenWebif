@@ -620,7 +620,7 @@ msgid "Tuner Signal Quality SNR"
 msgstr "Tuner-Signalqualität SNR"
 
 msgid "Tuner Signal Quality SNR_DB"
-msgstr "Tuner-Signalqualtiät SNR_DB"
+msgstr "Tuner-Signalqualität SNR_DB"
 
 msgid "Tuner Signal Power AGC"
 msgstr "Tuner-Signalstärke AGC"
@@ -680,10 +680,10 @@ msgid "zap before Stream"
 msgstr "vor dem Streamen umschalten"
 
 msgid "Zap to"
-msgstr "Umschalten zu"
+msgstr "Umschalten auf"
 
 msgid "Zapped to"
-msgstr "Umgeschaltet zu"
+msgstr "Umgeschaltet auf"
 
 msgid "Translation to Spanish"
 msgstr ""
@@ -746,10 +746,10 @@ msgid "case-insensitive search"
 msgstr "ignoriere Groß- und Kleinschreibung"
 
 msgid "Timer type"
-msgstr "Timer-Typ"
+msgstr "Timer-Art"
 
 msgid "record"
-msgstr "Aufnanehmen"
+msgstr "Aufnehmen"
 
 msgid "zap"
 msgstr "Umschalten"
@@ -794,13 +794,13 @@ msgid "standard"
 msgstr "Standard"
 
 msgid "auto"
-msgstr "automatisch"
+msgstr "Automatisch"
 
 msgid "do nothing"
 msgstr "Nichts"
 
 msgid "go to standby"
-msgstr "in Standby gehen"
+msgstr "Standby"
 
 msgid "go to deep standby"
 msgstr "Ausschalten"
@@ -911,7 +911,7 @@ msgid "Simulate"
 msgstr "Simulieren"
 
 msgid "Do you really want to delete the AT"
-msgstr "Wollen Sie folgende AutoTimer wirklich löschen"
+msgstr "Wollen Sie folgenden AutoTimer wirklich löschen"
 
 msgid "Add Provider as new Bouquet"
 msgstr "Anbieter als neues Bouquet hinzufügen"
@@ -953,7 +953,7 @@ msgid "Do you really want to delete the bouquet"
 msgstr "Wollen Sie folgendes Bouquet wirklich löschen"
 
 msgid "Name of the Bouquet"
-msgstr "Name of the Bouquets"
+msgstr "Name des Bouquets"
 
 msgid "Name of the Marker"
 msgstr "Name des Markers"
