@@ -3,13 +3,11 @@
 **FEATURES**
 * epg search as modal dialog
 * channel epg as modal dialog
-* use gzip encoding for large lists
 * show lastseen postion for recordings
 
 **FIXES**
 
 ## Version 0.4.0
-## (not finished yet)
 **FEATURES**
 * bouqueteditor webif
 * autotimer webif
@@ -17,6 +15,7 @@
 * new timer list design
 * several css and html performance optimizations
 * extend movietags api
+* use gzip encoding for large lists
 
 **FIXES**
 * edit timer
