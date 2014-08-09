@@ -72,6 +72,7 @@ class BaseController(resource.Resource):
 		path = self.path
 		isJson = self.isJson
 		isCustom = self.isCustom
+		isGZ = self.isGZ
 		
 		if self.path == "":
 			self.path = "index"
@@ -100,10 +101,18 @@ class BaseController(resource.Resource):
 			elif self.isJson:
 #				if not self.suppresslog:
 #					print "[OpenWebif] page '%s' ok (json)" % request.uri
-#	TODO: Discuss to use GZIP for all requests if the browser accepts gzip encoding
+				supported=[]
 				if self.isGZ:
+					acceptHeaders = request.requestHeaders.getRawHeaders('Accept-Encoding', [])
+					supported = ','.join(acceptHeaders).split(',')
+				if 'gzip' in supported:
+					encoding = request.responseHeaders.getRawHeaders('Content-Encoding')
+					if encoding:
+						encoding = '%s,gzip' % ','.join(encoding)
+					else:
+						encoding = 'gzip'
+					request.responseHeaders.setRawHeaders('Content-Encoding',[encoding])
 					compstr = self.compressBuf(json.dumps(data))
-					request.setHeader('Content-Encoding', 'gzip')
 					request.setHeader('Content-Length', '%d' % len(compstr))
 					request.write(compstr)
 				else:
@@ -136,6 +145,22 @@ class BaseController(resource.Resource):
 						nout = self.loadTemplate("main", "main", args)
 						if nout:
 							out = nout
+# prepare gzip for all templates
+# TODO: speed check with or without gzip on lower speed boxes
+#					supported=[]
+#					acceptHeaders = request.requestHeaders.getRawHeaders('Accept-Encoding', [])
+#					supported = ','.join(acceptHeaders).split(',')
+#					if 'gzip' in supported:
+#						encoding = request.responseHeaders.getRawHeaders('Content-Encoding')
+#						if encoding:
+#							encoding = '%s,gzip' % ','.join(encoding)
+#						else:
+#							encoding = 'gzip'
+#						request.responseHeaders.setRawHeaders('Content-Encoding',[encoding])
+#						compstr = self.compressBuf(out)
+#						request.setHeader('Content-Length', '%d' % len(compstr))
+#						request.write(compstr)
+#					else:
 					request.write(out)
 					request.finish()
 				
@@ -148,6 +173,7 @@ class BaseController(resource.Resource):
 		self.path = path
 		self.isJson = isJson
 		self.isCustom = isCustom
+		self.isGZ = isGZ
 		
 		return server.NOT_DONE_YET
 
