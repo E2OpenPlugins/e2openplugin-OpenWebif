@@ -160,6 +160,9 @@ msgstr "Dezember"
 msgid "About"
 msgstr "Über"
 
+msgid "Timer List"
+msgstr "Timer-Liste"
+
 msgid "Add Timer"
 msgstr "Timer hinzufügen"
 
@@ -706,14 +709,11 @@ msgid ""
 "as published by the Free Software Foundation."
 msgstr ""
 
-msgid "messageSentResponse"
-msgstr "messageSentResponse_hsa"
-
 msgid "Root"
 msgstr "Root"
 
 msgid "AutoTimer List"
-msgstr "AutoTimer Liste"
+msgstr "AutoTimer-Liste"
 
 msgid "AutoTimer Edit"
 msgstr "AutoTimer bearbeiten"
