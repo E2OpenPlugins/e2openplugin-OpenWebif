@@ -135,6 +135,7 @@ function initJsTranslation(strings) {
 	tstr_add_timer = strings.add_timer;
 	tstr_close = strings.cancel;
 	tstr_del_timer = strings.delete_timer_question;
+	tstr_del_autotimer = strings.at_delete_autotimer_question;
 	tstr_del_recording = strings.delete_recording_question;
 	tstr_done = strings.done;
 	tstr_edit_timer = strings.edit_timer;
@@ -183,6 +184,15 @@ function initJsTranslation(strings) {
 	
 	tstr_send_message = strings.send_message;
 	tstr_epgsearch = strings.epgsearch;
+	
+	tstr_bqe_del_channel_question = strings.bqe_del_channel_question;
+	tstr_bqe_del_bouquet_question = strings.bqe_del_bouquet_question;
+	tstr_bqe_name_bouquet = strings.bqe_name_bouquet;
+	tstr_bqe_name_marker = strings.bqe_name_marker;
+	tstr_bqe_rename_bouquet = strings.bqe_rename_bouquet;
+	tstr_bqe_rename_marker = strings.bqe_rename_marker;
+	tstr_bqe_filename = strings.bqe_filename;
+	tstr_bqe_restore_question = strings.bqe_restore_question;
 }
 
 function open_epg_search_dialog() {
@@ -452,11 +462,13 @@ function getStatusInfo() {
 			var timercall = "load_maincontent('ajax/timers'); return false;";
 			status = "<a href='#' onClick='load_maincontent(\"ajax/timers\"); return false;'><img src='../images/ico_rec.png' title='" + tstr_rec_status + "' alt='" + tstr_rec_status + "' /></a>";
 		}
+		status += "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_";
 		if (statusinfo['inStandby'] == 'true') {
-			status = status + "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_standby.png' title='" + tstr_on + "' alt='" + tstr_standby + "'/></a>";
+			status += "standby.png' title='" + tstr_on + "' alt='" + tstr_standby;
 		} else {
-			status = status + "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_on.png' title='" + tstr_standby + "' alt='" + tstr_on + "'/></a>";
+			status += "on.png' title='" + tstr_standby + "' alt='" + tstr_on;
 		}
+		status += "' width='58' height='24' /></a>";
 		$("#osd_status").html(status);
 	}).error(function() {
 		$("#osd, #osd_bottom").html("");

@@ -1,3 +1,13 @@
+## Version 0.4.1
+## (in development)
+**FEATURES**
+* epg search as modal dialog
+* channel epg as modal dialog
+* use gzip encoding for large lists
+* show lastseen postion for recordings
+
+**FIXES**
+
 ## Version 0.4.0
 ## (not finished yet)
 **FEATURES**

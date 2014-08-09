@@ -1,8 +1,7 @@
 msgid ""
-msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-06-14 19:04+0100\n"
+"POT-Creation-Date: 2014-08-07 23:29+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -161,6 +160,12 @@ msgid "About"
 msgstr ""
 
 msgid "Add Timer"
+msgstr ""
+
+msgid "Add AutoTimer"
+msgstr ""
+
+msgid "Add Zap Timer"
 msgstr ""
 
 msgid "After Event"
@@ -346,6 +351,15 @@ msgstr ""
 msgid "IP address"
 msgstr ""
 
+msgid "IPv4-only kernel"
+msgstr ""
+
+msgid "none/IPv4-only network"
+msgstr ""
+
+msgid "IPv4-only Python/Twisted"
+msgstr ""
+
 msgid "IPv6 address(es)"
 msgstr ""
 
@@ -430,6 +444,9 @@ msgstr ""
 msgid "OSD"
 msgstr ""
 
+msgid "Playback"
+msgstr ""
+
 msgid "Playlist"
 msgstr ""
 
@@ -457,7 +474,13 @@ msgstr ""
 msgid "Refresh automatically every"
 msgstr ""
 
+msgid "Refresh Timer"
+msgstr ""
+
 msgid "Remote"
+msgstr ""
+
+msgid "Rename Recording"
 msgstr ""
 
 msgid "Repeated"
@@ -661,6 +684,291 @@ msgstr ""
 msgid "Zapped to"
 msgstr ""
 
+msgid "Translation to Spanish"
+msgstr ""
+
+msgid "All Files of this Software are open source software;"
+msgstr ""
+
+msgid "you can redistribute it and/or modify it under the"
+msgstr ""
+
+msgid "terms of the GNU General Public License version 2 as"
+msgstr ""
+
+msgid "published by the Free Software Foundation."
+msgstr ""
+
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 2 "
+"as published by the Free Software Foundation."
+msgstr ""
+
+msgid "messageSentResponse"
+msgstr "messageSentResponse_hsa"
+
+msgid "Root"
+msgstr ""
+
+msgid "AutoTimer List"
+msgstr ""
+
+msgid "AutoTimer Edit"
+msgstr ""
+
+msgid "Match title"
+msgstr ""
+
+msgid "EPG encoding"
+msgstr ""
+
+msgid "Search type"
+msgstr ""
+
+msgid "partial match"
+msgstr ""
+
+msgid "exact match"
+msgstr ""
+
+msgid "description match"
+msgstr ""
+
+msgid "Search strictness"
+msgstr ""
+
+msgid "case-sensitive search"
+msgstr ""
+
+msgid "case-insensitive search"
+msgstr ""
+
+msgid "Timer type"
+msgstr ""
+
+msgid "record"
+msgstr ""
+
+msgid "zap"
+msgstr ""
+
+msgid "Override found with alternative service"
+msgstr ""
+
+msgid "Only match during timespan"
+msgstr ""
+
+msgid "Begin of timespan"
+msgstr ""
+
+msgid "End of Timespan"
+msgstr ""
+
+msgid "Restrict to events on certain dates"
+msgstr ""
+
+msgid "Not after"
+msgstr ""
+
+msgid "Not before"
+msgstr ""
+
+msgid "Custom offset"
+msgstr ""
+
+msgid "Offset before recording (in m)"
+msgstr ""
+
+msgid "Offset after recording (in m)"
+msgstr ""
+
+msgid "Set maximum duration"
+msgstr ""
+
+msgid "After event"
+msgstr ""
+
+msgid "standard"
+msgstr ""
+
+msgid "auto"
+msgstr ""
+
+msgid "do nothing"
+msgstr ""
+
+msgid "go to standby"
+msgstr ""
+
+msgid "go to deep standby"
+msgstr ""
+
+msgid "Execute \"after event\" during timespan"
+msgstr ""
+
+msgid "Begin of \"after event\" timespan"
+msgstr ""
+
+msgid "End of \"after event\" timespan"
+msgstr ""
+
+msgid "Record a maximum of x times"
+msgstr ""
+
+msgid "Amount of recordings left"
+msgstr ""
+
+msgid "Never"
+msgstr ""
+
+msgid "Monthly"
+msgstr ""
+
+msgid "Weekly (Sunday)"
+msgstr ""
+
+msgid "Weekly (Monday)"
+msgstr ""
+
+msgid "Reset count"
+msgstr ""
+
+msgid "Require description to be unique"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "On same service"
+msgstr ""
+
+msgid "On any service"
+msgstr ""
+
+msgid "Any service/recording"
+msgstr ""
+
+msgid "Use a custom location"
+msgstr ""
+
+msgid "select Tags"
+msgstr ""
+
+msgid "select Channels"
+msgstr ""
+
+msgid "select Bouquets"
+msgstr ""
+
+msgid "Enable Filtering"
+msgstr ""
+
+msgid "Include"
+msgstr ""
+
+msgid "Exclude"
+msgstr ""
+
+msgid "in Title"
+msgstr ""
+
+msgid "in Shortdescription"
+msgstr ""
+
+msgid "in Description"
+msgstr ""
+
+msgid "on Weekday"
+msgstr ""
+
+msgid "Weekend"
+msgstr ""
+
+msgid "Weekday"
+msgstr ""
+
+msgid "VPS"
+msgstr ""
+
+msgid "VPS Overwrite"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Reload"
+msgstr ""
+
+msgid "Parse"
+msgstr ""
+
+msgid "Simulate"
+msgstr ""
+
+msgid "Do you really want to delete the AT"
+msgstr ""
+
+msgid "Add Provider as new Bouquet"
+msgstr ""
+
+msgid "Add channel(s) to Bouquet"
+msgstr ""
+
+msgid "Add channel(s) as alternate"
+msgstr ""
+
+msgid "Export"
+msgstr ""
+
+msgid "Import"
+msgstr ""
+
+msgid "Add Bouquet"
+msgstr ""
+
+msgid "Rename Bouquet"
+msgstr ""
+
+msgid "Delete Bouquet"
+msgstr ""
+
+msgid "Add Marker"
+msgstr ""
+
+msgid "Rename"
+msgstr ""
+
+msgid "Delete Channel(s)"
+msgstr ""
+
+msgid "Do you really want to delete the channel(s)"
+msgstr ""
+
+msgid "Do you really want to delete the bouquet"
+msgstr ""
+
+msgid "Name of the Bouquet"
+msgstr ""
+
+msgid "Name of the Marker"
+msgstr ""
+
+msgid "Enter new name for the bouquet"
+msgstr ""
+
+msgid "Enter new name for the marker"
+msgstr ""
+
+msgid "Please enter filename"
+msgstr ""
+
+msgid "Do you really want to restore from file"
+msgstr ""
+
 msgid "LCD4Linux Setup"
 msgstr ""
 
@@ -705,20 +1013,6 @@ msgstr ""
 msgid "E"
 msgstr ""
 
-msgid "All Files of this Software are open source software"
-msgstr ""
-
-msgid "you can redistribute it and/or modify it under the"
-msgstr ""
-
-msgid "terms of the GNU General Public License version 2 as"
-msgstr ""
-
-msgid "published by the Free Software Foundation."
-msgstr ""
-
-msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
-
 msgid "Message sent successfully!"
 msgstr ""
 
@@ -730,34 +1024,3 @@ msgstr ""
 
 msgid "Answer is NO!"
 msgstr ""
-
-msgid "messageSentResponse"
-msgstr "messageSentResponse_hsa"
-
-msgid "Root"
-msgstr ""
-
-msgid "IPv4-only kernel"
-msgstr ""
-
-msgid "none/IPv4-only network"
-msgstr ""
-
-msgid "IPv4-only Python/Twisted"
-msgstr ""
-
-msgid "Refresh Timer"
-msgstr ""
-
-msgid "Add AutoTimer"
-msgstr ""
-
-msgid "Add Zap Timer"
-msgstr ""
-
-msgid "Rename Recording"
-msgstr ""
-
-msgid "Playback"
-msgstr ""
-
