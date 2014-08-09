@@ -262,7 +262,7 @@ function InitPage() {
 		modal : true, 
 		overlay: { backgroundColor: "#000", opacity: 0.5 }, 
 		autoOpen: false,
-		title: 'Timer List',
+		title: tstr_timerlist,
 		width: 600,
 		height: 400
 	});

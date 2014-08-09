@@ -194,6 +194,9 @@ function initJsTranslation(strings) {
 	tstr_bqe_rename_marker = strings.bqe_rename_marker;
 	tstr_bqe_filename = strings.bqe_filename;
 	tstr_bqe_restore_question = strings.bqe_restore_question;
+	
+	tstr_timerlist = strings.timer_list;
+	
 }
 
 function open_epg_search_dialog() {
