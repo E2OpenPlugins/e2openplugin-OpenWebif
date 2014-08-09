@@ -183,6 +183,7 @@ function initJsTranslation(strings) {
 	tstr_loading = strings.loading;
 	
 	tstr_send_message = strings.send_message;
+	tstr_sent_wait = strings.sent_wait;
 	tstr_epgsearch = strings.epgsearch;
 	
 	tstr_bqe_del_channel_question = strings.bqe_del_channel_question;
@@ -499,7 +500,6 @@ function grabScreenshot(mode) {
 function getMessageAnswer() {
 	$.getJSON('/api/messageanswer', function(result){
 		$('#messageSentResponse').html(result['message']);
-		$('#messageSentResponse_hsa').html(result['message']);
 	});
 }
 
@@ -511,8 +511,7 @@ function countdowngetMessage() {
 		getMessageAnswer();
 		return;
 	}
-	$('#messageSentResponse').html('Waiting for Answer...'+MessageAnswerCounter);
-	$('#messageSentResponse_hsa').html('Esperando Respuesta... '+MessageAnswerCounter);
+	$('#messageSentResponse').html(tstr_sent_wait + ' ' + MessageAnswerCounter);
 	setTimeout(countdowngetMessage, 1000);
 }
 
@@ -523,7 +522,6 @@ function sendMessage() {
 
 	$.getJSON('/api/message?text=' + text + '&type=' + type + '&timeout=' + timeout, function(result){
 		$('#messageSentResponse').html(result['message']);
-		$('#messageSentResponse_hsa').html(result['message']);
 		if(type==0)
 		{
 			MessageAnswerCounter=timeout;
