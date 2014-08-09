@@ -333,11 +333,7 @@ function getAllServices()
 		var refs = [];
 		$.each( bqs, function( key, val ) {
 			var ref = val['servicereference']
-			var name = '--';
-			jQuery.map(BQs, function(obj) {
-				if(obj.servicereference === ref)
-					name = obj.servicename;
-			});
+			var name = val['servicename'];
 	
 			var slist = val['subservices'];
 			var items = [];
