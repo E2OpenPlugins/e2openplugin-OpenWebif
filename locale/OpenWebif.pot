@@ -705,8 +705,8 @@ msgid ""
 "as published by the Free Software Foundation."
 msgstr ""
 
-msgid "messageSentResponse"
-msgstr "messageSentResponse_hsa"
+msgid "Waiting for answer ..."
+msgstr ""
 
 msgid "Root"
 msgstr ""
