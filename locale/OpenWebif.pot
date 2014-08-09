@@ -159,6 +159,9 @@ msgstr ""
 msgid "About"
 msgstr ""
 
+msgid "Timer List"
+msgstr ""
+
 msgid "Add Timer"
 msgstr ""
 
