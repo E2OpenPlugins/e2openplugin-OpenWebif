@@ -731,6 +731,9 @@ msgstr "E"
 msgid "Message sent successfully!"
 msgstr "¡Mensage enviado correctamente!"
 
+msgid "Waiting for answer ..."
+msgstr "Esperando Respuesta..."
+
 msgid "No answer in time"
 msgstr "Sin respuesta en el tiempo de espera..."
 
@@ -739,9 +742,6 @@ msgstr "¡La respuesta es SI!"
 
 msgid "Answer is NO!"
 msgstr "¡La respuesta es NO!"
-
-msgid "messageSentResponse"
-msgstr "messageSentResponse_hsa"
 
 msgid "Root"
 msgstr "Carpeta Raíz"

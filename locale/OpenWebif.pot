@@ -705,9 +705,6 @@ msgid ""
 "as published by the Free Software Foundation."
 msgstr ""
 
-msgid "messageSentResponse"
-msgstr "messageSentResponse_hsa"
-
 msgid "Root"
 msgstr ""
 
@@ -1014,6 +1011,9 @@ msgid "E"
 msgstr ""
 
 msgid "Message sent successfully!"
+msgstr ""
+
+msgid "Waiting for answer ..."
 msgstr ""
 
 msgid "No answer in time"
