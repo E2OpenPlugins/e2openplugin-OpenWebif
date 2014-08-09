@@ -806,7 +806,6 @@ function saveAT()
 	CurrentAT.searchType = $('#searchType').val();
 	CurrentAT.searchCase = $('#searchCase').val();
 	CurrentAT.justplay = $('#justplay').val();
-	CurrentAT.justplay = $('#justplay').val();
 	CurrentAT.overrideAlternatives = $('#overrideAlternatives').is(':checked');
 	CurrentAT.timeSpan = $('#timeSpan').is(':checked');
 	CurrentAT.avoidDuplicateDescription = $('#avoidDuplicateDescription').val();
@@ -883,8 +882,7 @@ function saveAT()
 	reqs += "&name=" + encodeURIComponent(CurrentAT.name);
 	reqs += "&enabled=";
 	reqs += (CurrentAT.enabled) ? "1" : "0";
-	reqs += "&justplay=";
-	reqs += (CurrentAT.justplay) ? "1" : "0";
+	reqs += "&justplay=" + CurrentAT.justplay;
 	reqs += "&setEndtime=";
 	reqs += (CurrentAT.setEndtime) ? "1" : "0";
 	reqs += "&searchCase=" + CurrentAT.searchCase;
