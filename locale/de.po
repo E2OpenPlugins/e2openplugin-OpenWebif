@@ -1017,6 +1017,9 @@ msgstr "O"
 msgid "Message sent successfully!"
 msgstr "Nachricht erfolgreich verschickt!"
 
+msgid "Waiting for answer ..."
+msgstr "Erwarte Antwort ..."
+
 msgid "No answer in time"
 msgstr "Keine rechtzeitige Antwort"
 
