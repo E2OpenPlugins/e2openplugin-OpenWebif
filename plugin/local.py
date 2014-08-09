@@ -223,7 +223,7 @@ tstrings = {'mo': _("Mo"),
 	'license_text_03': _('terms of the GNU General Public License version 2 as'),
 	'license_text_04': _('published by the Free Software Foundation.'),
 	'license_text_m': _('All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation.'),
-	'messageSentResponse': _('messageSentResponse'),
+	'messageSentResponse': _('Waiting for answer ...'),
 	'Root': _('Root'),
 
 	'at_list': _("AutoTimer List"),
