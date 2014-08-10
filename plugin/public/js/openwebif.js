@@ -194,6 +194,9 @@ function initJsTranslation(strings) {
 	tstr_bqe_rename_marker = strings.bqe_rename_marker;
 	tstr_bqe_filename = strings.bqe_filename;
 	tstr_bqe_restore_question = strings.bqe_restore_question;
+	
+	tstr_timerlist = strings.timer_list;
+	
 }
 
 function open_epg_search_dialog() {
@@ -206,6 +209,11 @@ function open_epg_search_dialog() {
 	var h = $(window).height() -100;
 	
 	load_dm(url,tstr_epgsearch,w,h);
+}
+
+function handle_power_state_dialog(new_power_state) {
+	webapi_execute('api/powerstate?newstate=' + new_power_state);
+	$("#modaldialog").dialog('close');
 }
 
 function load_dm(url,title,w,h){

@@ -1,16 +1,22 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 1.1
+//* Version 1.2
 //******************************************************************************
 //* Copyright (C) 2014 Joerg Bleyel
 //* Copyright (C) 2014 E2OpenPlugins
 //*
+//* V 1.0 - Initial Version
+//* V 1.1 - Support translation, small ui fixes
+//* V 1.2 - Optimize bouquets/channels selector
+//*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
+//* 		 plnick
+//*
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
 //*******************************************************************************
 
-// TODO: restore , some error handler
+// TODO: backup/restore at, some error handler
 
 function toUnixDate(date){
 	datea = date.split('.');
@@ -262,7 +268,7 @@ function InitPage() {
 		modal : true, 
 		overlay: { backgroundColor: "#000", opacity: 0.5 }, 
 		autoOpen: false,
-		title: 'Timer List',
+		title: tstr_timerlist,
 		width: 600,
 		height: 400
 	});
@@ -270,7 +276,6 @@ function InitPage() {
 }
 
 var atxml;
-var BQs;
 var CurrentAT = null;
 var dencoding = null;
 
@@ -326,22 +331,17 @@ function getTags()
 function getAllServices()
 {
 	// TODO: Errorhandling
-
 	$.getJSON( "/api/getallservices", function( data ) {
 		var bqs = data['services'];
 		var options = "";
+		var boptions = "";
 		var refs = [];
 		$.each( bqs, function( key, val ) {
 			var ref = val['servicereference']
-			var name = '--';
-			jQuery.map(BQs, function(obj) {
-				if(obj.servicereference === ref)
-					name = obj.servicename;
-			});
-	
+			var name = val['servicename'];
+			boptions += "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>";
 			var slist = val['subservices'];
 			var items = [];
-		
 			$.each( slist, function( key, val ) {
 				var ref = val['servicereference']
 				if (!isInArray(refs,ref)) {
@@ -350,44 +350,24 @@ function getAllServices()
 						items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
 				}
 			});
-		
 			if (items.length>0) {
 				options += "<optgroup label='" + name + "'>" + items.join("") + "</optgroup>";
 			}
 		});
 		$("#channels").append( options);
 		$('#channels').trigger("chosen:updated");
+		$("#bouquets").append( boptions);
+		$('#bouquets').trigger("chosen:updated");
 		reloadAT();
 	});
 
 }
-
-function getServices()
-{
-
-	// TODO: Errorhandling
-	$.getJSON( "/api/getservices", function( data ) {
-		var bqs = data['services'];
-		BQs = [];
-		var options = "";
-		$.each( bqs, function( key, val ) {
-			var ref = val['servicereference']
-			options += "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>";
-			BQs.push(val);
-		});
-		$("#bouquets").append( options);
-		$('#bouquets').trigger("chosen:updated");
-	});
-
-}
-
 
 function getData()
 {
 	// TODO: Errorhandling
 	// Timing
 	getTags();
-	getServices();
 	getAllServices();
 }
 
