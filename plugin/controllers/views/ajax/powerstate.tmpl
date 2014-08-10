@@ -2,10 +2,10 @@
 <div style="height: 300px; width:500px">
 	<div class="powerStateButtons">
 		<ul>
-			<li onclick="webapi_execute('api/powerstate?newstate=0'); return false">$tstrings['standby_toggle']</li>
-			<li onclick="webapi_execute('api/powerstate?newstate=1'); return false">$tstrings['deep_standby']</li>
-			<li onclick="webapi_execute('api/powerstate?newstate=2'); return false">$tstrings['reboot_box']</li> 
-			<li onclick="webapi_execute('api/powerstate?newstate=3'); return false">$tstrings['restart_gui']</li>
+			<li onclick="handle_power_state_dialog(new_power_state = 0); return false">$tstrings['standby_toggle']</li>
+			<li onclick="handle_power_state_dialog(new_power_state = 1); return false">$tstrings['deep_standby']</li>
+			<li onclick="handle_power_state_dialog(new_power_state = 2); return false">$tstrings['reboot_box']</li> 
+			<li onclick="handle_power_state_dialog(new_power_state = 3); return false">$tstrings['restart_gui']</li>
 		</ul>
 	</div>
 </div>
