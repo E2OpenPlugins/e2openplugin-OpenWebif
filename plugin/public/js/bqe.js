@@ -387,7 +387,7 @@ function delc()
 		srefs.push(dstcl[idx].servicereference);
 	});
 	var snamesstr = snames.join();
-	if(confirm("Do you really want to delete the channel(s)\n" + snamesstr + " ?") === false)
+	if(confirm(tstr_bqe_del_channel_question + "\n" + snamesstr + " ?") === false)
 		return;
 
 	var reqjobs = [];
@@ -412,7 +412,7 @@ function delbq()
 	var sname = dstbl[pos].servicename;
 	var sref = dstbl[pos].servicereference
 
-	if(confirm("Do you really want to delete the bouquet\n" + sname + " ?") === false)
+	if(confirm(tstr_bqe_del_bouquet_question + "\n" + sname + " ?") === false)
 		return;
 
 	$.getJSON(rootreqstr + "removebouquet?sBouquetRef=" + encodeURIComponent(sref) + "&mode=" + Mode, function( data ) {
@@ -426,7 +426,7 @@ function delbq()
 
 function addbq()
 {
-	var newname=prompt("Name of the Bouquet:");
+	var newname=prompt(tstr_bqe_name_bouquet + ":");
 	if (newname.length){
 		$.getJSON(rootreqstr + "addbouquet?name=" + encodeURIComponent(newname) + "&mode=" + Mode , function( data ) {
 			var r = data.Result;
@@ -439,7 +439,7 @@ function addbq()
 
 function addm()
 {
-	var newname=prompt("Name of the Marker:");
+	var newname=prompt(tstr_bqe_name_marker + ":");
 	if (newname.length){
 	
 		var dstref = "";
@@ -467,7 +467,7 @@ function renbq()
 	var pos=parseInt(seldstbl[0]);
 	var sname = dstbl[pos].servicename;
 	var sref = dstbl[pos].servicereference;
-	var newname=prompt('Enter new name for the bouquet:', sname);
+	var newname=prompt(tstr_bqe_rename_bouquet + ':', sname);
 	if (newname && newname!=sname){
 		$.getJSON(rootreqstr + "renameservice?sRef=" + encodeURIComponent(sref) + "&mode=" + Mode + "&newName=" + encodeURIComponent(newname), function( data ) {
 			var r = data.Result;
@@ -492,7 +492,7 @@ function renmg()
 	
 	var sname = dstcl[pos].servicename;
 	var sref = dstcl[pos].servicereference;
-	var newname=prompt('Enter new name for the marker:', sname);
+	var newname=prompt(tstr_bqe_rename_marker + ':', sname);
 	if (newname && newname!=sname){
 
 		var dstref = "";
@@ -546,7 +546,7 @@ function NOTI()
 
 function BQEBackup()
 {
-	var fn=prompt('Please enter filename:', 'bouquets_backup');
+	var fn=prompt(tstr_bqe_filename + ':', 'bouquets_backup');
 	if (fn) {
 		$.getJSON(rootreqstr + 'backup?Filename='+fn, function( data ) {
 			var r = data.Result;
@@ -580,7 +580,7 @@ function BQERestore()
 function prepareRestore(obj){
 	var fn = obj.val()
 	fn = fn.replace('C:\\fakepath\\','');
-	if(confirm("Do you really want to restore from file ( " + fn + ") ?") === false)
+	if(confirm(tstr_bqe_restore_question + " ( " + fn + ") ?") === false)
 		return;
 	
 	$('form#uploadrestore').unbind('submit');

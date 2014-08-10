@@ -241,10 +241,10 @@ msgstr "Głębokie uśpienie"
 msgid "Default"
 msgstr "Domyślny"
 
-msgid "Delete Movie"
+msgid "Delete Recording"
 msgstr "Usuń nagranie"
 
-msgid "Really delete the movie"
+msgid "Really delete the recording"
 msgstr "Czy na pewno usunąć nagranie"
 
 msgid "Delete Timer"

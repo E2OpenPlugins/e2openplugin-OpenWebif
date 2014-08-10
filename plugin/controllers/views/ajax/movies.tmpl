@@ -1,16 +1,12 @@
 #from urllib import quote
 #from Plugins.Extensions.OpenWebif.local import tstrings
 <div id="content_main" style="min-height: 500px;">
-	<div id="info">
-		<h3>$tstrings['movielist']</h3>
-		<hr />
-		
-		<div style="width: 100%; text-align: left; margin-bottom: 20px;">
-
+	<div id="tvcontentmain">
+		<div id="toolbar-header">
+			<span id="toolbar">
 		#set $path=''
-		
 		<span id="moviebuttons">
-			<button onclick="load_maincontent_spin('/ajax/movies?dirname=/'); return false">Root</button>
+			<button onclick="load_maincontent_spin('/ajax/movies?dirname=/'); return false">$tstrings['Root']</button>
 			#for $dir in $directory[0:-1].split("/")[1:-1]
 				#set $path += '/' + $dir
 				<button onclick="load_maincontent_spin('/ajax/movies?dirname='+escape('$path'));">$dir</button>
@@ -30,50 +26,46 @@
 			#end for
 			</select>
 		#end if
+		</span>
 		</div>
 
-		<div style="height: 640px; overflow: auto;">
+		<div id="movies">
 		#set $count = 0
 		#for $movie in $movies
-			<div class="moviecontainer_main" id="$count">
-				<div class="moviecontainer_left">
+			<div class="tm_row" id="$count">
+				<div class="tm_text">
+					<div class="tm_buttons">
+						<div>
+						<a href='#' onClick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><div class="ow_i ow_i_play"></div></a>
+						#if $transcoding
+						<a href="#" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream'] $movie.eventname"><div class="ow_i ow_i_stream1"></div></a>
+						<a href="#" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] Port 8002 $movie.eventname"><div class="ow_i ow_i_stream2"></div></a>
+						#else
+						<a target="_blank" href='/web/ts.m3u?file=$quote($movie.filename)' title="$tstrings['stream'] $movie.eventname"><div class="ow_i ow_i_stream1"></div></a>
+						#end if
+						<br>
+						<br>
+						<a href='/file?action=download&file=$quote($movie.filename)' title="$tstrings['download'] $movie.eventname"><div class="ow_i ow_i_save"></div></a>
+						<a href='#' onClick="alert('comming soon');" title="$tstrings['rename_recording']"><div class="ow_i ow_i_edit"></div></a>
+						<a href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count', '$movie.eventname'); return false;" title="$tstrings['delete_recording']"><div class="ow_i ow_i_delete"></div></a>
+						
+						</div>
+						</div>
 					#if $movie.eventname != ""
-						<div style="padding: 3px;">
+						<div>
 							<span style="color: #176093; font-weight: bold;">$movie.eventname</span><br /> $movie.servicename  $movie.begintime<br /> $movie.length min.
 						</div>
-						<div style="padding: 3px;">
+						<div>
 							<span style="color: #7F8181; font-weight: bold;">$movie.description</span>
 						</div>
-						<div style="padding: 3px;">
+						<div>
 							<span style="color: #7F8181;">$movie.descriptionExtended</span>
 						</div>
 					#else
-						<div style="padding: 3px;">
+						<div>
 							<span style="color: #176093; font-weight: bold;">$movie.filename</span>
 						</div>
 					#end if
-				</div>
-				<div class="moviecontainer_right">
-					<div style="padding: 3px; text-align: right;">
-						#if $transcoding
-						<a href="#" onclick="jumper80('$quote($movie.filename)');">
-							<img align="top" src="../images/ico_stream.png" title="$tstrings['stream'] $movie.eventname" border="0">
-						</a>
-						<a href="#" onclick="jumper8003('$quote($movie.filename)');">
-							<img align="top" src="../images/ico_stream.png" title="$tstrings['transcode'] $movie.eventname" border="0">
-						</a>
-						#else
-						<a target="_blank" href='/web/ts.m3u?file=$quote($movie.filename)'>
-							<img align="top" src="../images/ico_stream.png" title="$tstrings['stream'] $movie.eventname" border="0">
-						</a>
-						#end if
-						<a href='/file?action=download&file=$quote($movie.filename)'>
-							<img align="top" src="../images/ico_download.png" title="$tstrings['download'] $movie.eventname" border="0">
-						</a>
-						<a href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count', '$movie.eventname'); return false;">
-							<img src="../images/ico_delete.png" title="$tstrings['delete_movie']" border="0"></a>
-						</a>
-					</div>
 				</div>
 				<div style="clear: both;"></div>
 				#set $count += 1

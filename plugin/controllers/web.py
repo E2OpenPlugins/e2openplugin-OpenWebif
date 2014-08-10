@@ -14,7 +14,7 @@ from Plugins.Extensions.OpenWebif.__init__ import _
 from Components.config import config
 
 from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStatus
-from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList
+from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState, getStandbyState
@@ -160,6 +160,7 @@ class WebController(BaseController):
 			for service in bouquet["subservices"]:
 				service["servicename"] = "%d - %s" % (count + 1, service["servicename"])
 				count += 1
+		self.isGZ=True
 		return bouquets
 
 	def P_getservices(self, request):
@@ -167,7 +168,7 @@ class WebController(BaseController):
 			sRef = request.args["sRef"][0]
 		else:
 			sRef = ""
-
+		self.isGZ=True
 		return getServices(sRef)
 
 	def P_servicesm3u(self, request):
@@ -195,7 +196,7 @@ class WebController(BaseController):
 		sRefPlaying = ""
 		if "sRefPlaying" in request.args.keys():
 			sRefPlaying = request.args["sRefPlaying"][0]
-
+		self.isGZ=True
 		return getPlayableServices(sRef, sRefPlaying)
 
 	def P_serviceplayable(self, request):
@@ -260,7 +261,7 @@ class WebController(BaseController):
 		dirname = None
 		if "dirname" in request.args.keys():
 			dirname = request.args["dirname"][0]
-
+		self.isGZ=True
 		return getMovieList(dirname, tag, request.args)
 
 	def P_movielisthtml(self, request):
@@ -330,7 +331,13 @@ class WebController(BaseController):
 		return renameMovie(self.session, request.args["sRef"][0],request.args["newname"][0])
 
 	def P_movietags(self, request):
-		return getMovieTags()
+		_add = None
+		_del = None
+		if "add" in request.args.keys():
+			_add = request.args["add"][0]
+		if "del" in request.args.keys():
+			_del = request.args["del"][0]
+		return getMovieTags(_add,_del)
 
 	# a duplicate api ??
 	def P_gettags(self, request):
@@ -358,6 +365,7 @@ class WebController(BaseController):
 	def P_timerlist(self, request):
 		ret = getTimers(self.session)
 		ret["locations"] = config.movielist.videodirs.value
+		self.isGZ=True
 		return ret
 
 	def P_timeradd(self, request):
@@ -586,7 +594,7 @@ class WebController(BaseController):
 				begintime = int(request.args["time"][0])
 			except Exception, e:
 				pass
-
+		self.isGZ=True
 		return getBouquetEpg(request.args["bRef"][0], begintime)
 
 	def P_epgmulti(self, request):
@@ -607,35 +615,30 @@ class WebController(BaseController):
 				endtime = int(request.args["endTime"][0])
 			except Exception, e:
 				pass
-
+		self.isGZ=True
 		return getBouquetEpg(request.args["bRef"][0], begintime, endtime)
 
 	def P_epgnow(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
-
+		self.isGZ=True
 		return getBouquetNowNextEpg(request.args["bRef"][0], 0)
 
 	def P_epgnext(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
-
+		self.isGZ=True
 		return getBouquetNowNextEpg(request.args["bRef"][0], 1)
 
 	def P_epgnownext(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
+		self.isGZ=True
 		info = getCurrentService(self.session)
 		ret = getBouquetNowNextEpg(request.args["bRef"][0], -1)
-		#now = getNowNextEpg(info["ref"], 0)
-		#if len(now["events"]) > 0:
-		#	ret["now"] = now["events"][0]
-		#next = getNowNextEpg(info["ref"], 1)
-		#if len(next["events"]) > 0:
-		#	ret["next"] = next["events"][0]
 		ret["info"]=info
 		return ret
 
@@ -643,7 +646,7 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["search"])
 		if res:
 			return res
-
+		self.isGZ=True
 		return getSearchEpg(request.args["search"][0])
 
 	def P_epgsearchrss(self, request):
@@ -675,21 +678,19 @@ class WebController(BaseController):
 				endtime = int(request.args["endTime"][0])
 			except Exception, e:
 				pass
-
+		self.isGZ=True
 		return getChannelEpg(request.args["sRef"][0], begintime, endtime)
 
 	def P_epgservicenow(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-
 		return getNowNextEpg(request.args["sRef"][0], 0)
 
 	def P_epgservicenext(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-
 		return getNowNextEpg(request.args["sRef"][0], 1)
 
 	def P_epgsimilar(self, request):
@@ -707,6 +708,12 @@ class WebController(BaseController):
 
 		return getSearchSimilarEpg(request.args["sRef"][0], eventid)
 
+	def P_event(self, request):
+		event = getEvent(request.args["sref"][0], request.args["idev"][0])
+		event['event']['recording_margin_before'] = config.recording.margin_before.value
+		event['event']['recording_margin_after'] = config.recording.margin_after.value
+		return event
+	
 	def P_getcurrent(self, request):
 		info = getCurrentService(self.session)
 		now = getNowNextEpg(info["ref"], 0)
@@ -762,7 +769,6 @@ class WebController(BaseController):
 					mnow["id"] = movie.getEventId()
 			except Exception, e:
 				mnow = now
-
 		return {
 			"info": info,
 			"now": mnow,
@@ -783,37 +789,31 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["name"])
 		if res:
 			return res
-
 		return addCollapsedMenu(request.args["name"][0])
 
 	def P_expandmenu(self, request):
 		res = self.testMandatoryArguments(request, ["name"])
 		if res:
 			return res
-
 		return removeCollapsedMenu(request.args["name"][0])
 
 	def P_remotegrabscreenshot(self, request):
 		res = self.testMandatoryArguments(request, ["checked"])
 		if res:
 			return res
-
 		return setRemoteGrabScreenshot(request.args["checked"][0] == "true")
 
 	def P_zapstream(self, request):
 		res = self.testMandatoryArguments(request, ["checked"])
 		if res:
 			return res
-
 		return setZapStream(request.args["checked"][0] == "true")
 
 	def P_streamm3u(self,request):
 		self.isCustom = True
-
 		if getZapStream()['zapstream']:
 			if "ref" in request.args:
 				zapService(self.session, request.args["ref"][0], request.args["name"][0])
-
 		return getStream(self.session,request,"stream.m3u")
 
 	def P_tsm3u(self,request):
@@ -841,32 +841,27 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["key", "value"])
 		if res:
 			return res
-
 		return saveConfig(request.args["key"][0], request.args["value"][0])
 
 	def P_mediaplayeradd(self, request):
 		res = self.testMandatoryArguments(request, ["file"])
 		if res:
 			return res
-
 		return mediaPlayerAdd(self.session, request.args["file"][0])
 
 	def P_mediaplayerplay(self, request):
 		res = self.testMandatoryArguments(request, ["file"])
 		if res:
 			return res
-
 		root = ""
 		if "root" in request.args.keys():
 			root = request.args["root"][0]
-
 		return mediaPlayerPlay(self.session, request.args["file"][0], root)
 
 	def P_mediaplayercmd(self, request):
 		res = self.testMandatoryArguments(request, ["command"])
 		if res:
 			return res
-
 		return mediaPlayerCommand(self.session, request.args["command"][0])
 
 	def P_mediaplayercurrent(self, request):
@@ -896,21 +891,18 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["file"])
 		if res:
 			return res
-
 		return mediaPlayerRemove(self.session, request.args["file"][0])
 
 	def P_mediaplayerload(self, request):
 		res = self.testMandatoryArguments(request, ["filename"])
 		if res:
 			return res
-
 		return mediaPlayerLoad(self.session, request.args["filename"][0])
 
 	def P_mediaplayerwrite(self, request):
 		res = self.testMandatoryArguments(request, ["filename"])
 		if res:
 			return res
-
 		return mediaPlayerSave(self.session, request.args["filename"][0])
 
 	def P_pluginlistread(self, request):
@@ -988,12 +980,7 @@ class WebController(BaseController):
 			stype = request.args["stype"][0]
 		return getBouquets(stype)
 
-	def P_epgnownextgz(self, request):
-		self.isGZ=True
-		return self.P_epgnownext(request)
-
 	def P_epgmultigz(self, request):
-		self.isGZ=True
 		return self.P_epgmulti(request)
 
 	def P_getsatellites(self, request):

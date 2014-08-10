@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-06-14 19:04+0100\n"
+"POT-Creation-Date: 2014-08-07 23:30+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -160,8 +160,17 @@ msgstr "Dezember"
 msgid "About"
 msgstr "Über"
 
+msgid "Timer List"
+msgstr "Timer-Liste"
+
 msgid "Add Timer"
 msgstr "Timer hinzufügen"
+
+msgid "Add AutoTimer"
+msgstr "AutoTimer anlegen"
+
+msgid "Add Zap Timer"
+msgstr "Umschalttimer anlegen"
 
 msgid "After Event"
 msgstr "Danach"
@@ -241,10 +250,10 @@ msgstr "Ausschalten"
 msgid "Default"
 msgstr "Standard"
 
-msgid "Delete Movie"
+msgid "Delete Recording"
 msgstr "Aufnahme löschen"
 
-msgid "Really delete the movie"
+msgid "Really delete the recording"
 msgstr "Soll die Aufnahme gelöscht werden"
 
 msgid "Delete Timer"
@@ -346,6 +355,15 @@ msgstr "Stunde"
 msgid "IP address"
 msgstr "IP-Adresse"
 
+msgid "IPv4-only kernel"
+msgstr "Kernel ohne IPv6-Unterstützung"
+
+msgid "none/IPv4-only network"
+msgstr "keine/reines IPv4-Netzwerk"
+
+msgid "IPv4-only Python/Twisted"
+msgstr "Python/Twisted ohne IPv6-Unterstützung"
+
 msgid "IPv6 address(es)"
 msgstr "IPv6-Adresse(n)"
 
@@ -430,6 +448,9 @@ msgstr "Open-Source-Webinterface für Linux-Set-Top-Boxen"
 msgid "OSD"
 msgstr "OSD"
 
+msgid "Playback"
+msgstr "Abspielen"
+
 msgid "Playlist"
 msgstr "Wiedergabeliste"
 
@@ -457,8 +478,14 @@ msgstr "Aktualisieren"
 msgid "Refresh automatically every"
 msgstr "Aktualisiere automatisch alle"
 
+msgid "Refresh Timer"
+msgstr "Timer neu Laden"
+
 msgid "Remote"
 msgstr "Fernbedienung"
+
+msgid "Rename Recording"
+msgstr "Aufnahme umbenennen"
 
 msgid "Repeated"
 msgstr "Wiederhole"
@@ -596,7 +623,7 @@ msgid "Tuner Signal Quality SNR"
 msgstr "Tuner-Signalqualität SNR"
 
 msgid "Tuner Signal Quality SNR_DB"
-msgstr "Tuner-Signalqualtiät SNR_DB"
+msgstr "Tuner-Signalqualität SNR_DB"
 
 msgid "Tuner Signal Power AGC"
 msgstr "Tuner-Signalstärke AGC"
@@ -656,10 +683,292 @@ msgid "zap before Stream"
 msgstr "vor dem Streamen umschalten"
 
 msgid "Zap to"
-msgstr "Umschalten zu"
+msgstr "Umschalten auf"
 
 msgid "Zapped to"
-msgstr "Umgeschaltet zu"
+msgstr "Umgeschaltet auf"
+
+msgid "Translation to Spanish"
+msgstr ""
+
+msgid "All Files of this Software are open source software;"
+msgstr ""
+
+msgid "you can redistribute it and/or modify it under the"
+msgstr ""
+
+msgid "terms of the GNU General Public License version 2 as"
+msgstr ""
+
+msgid "published by the Free Software Foundation."
+msgstr ""
+
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 2 "
+"as published by the Free Software Foundation."
+msgstr ""
+
+msgid "Root"
+msgstr "Root"
+
+msgid "AutoTimer List"
+msgstr "AutoTimer-Liste"
+
+msgid "AutoTimer Edit"
+msgstr "AutoTimer bearbeiten"
+
+msgid "Match title"
+msgstr "Finde in Titel"
+
+msgid "EPG encoding"
+msgstr "Zeichensatz des EPG"
+
+msgid "Search type"
+msgstr "Suchtyp"
+
+msgid "partial match"
+msgstr "Teil des Titels"
+
+msgid "exact match"
+msgstr "gesamter Titel"
+
+msgid "description match"
+msgstr "Übereinstimmung in der Beschreibung"
+
+msgid "Search strictness"
+msgstr "Genauigkeit der Suche"
+
+msgid "case-sensitive search"
+msgstr "erzwinge Groß- und Kleinschreibung"
+
+msgid "case-insensitive search"
+msgstr "ignoriere Groß- und Kleinschreibung"
+
+msgid "Timer type"
+msgstr "Timer-Art"
+
+msgid "record"
+msgstr "Aufnehmen"
+
+msgid "zap"
+msgstr "Umschalten"
+
+msgid "Override found with alternative service"
+msgstr "Sendung durch Alternative ersetzen"
+
+msgid "Only match during timespan"
+msgstr "Suche nur innerhalb einer Zeitspanne"
+
+msgid "Begin of timespan"
+msgstr "Anfang der Zeitspanne"
+
+msgid "End of Timespan"
+msgstr "Ende der Zeitspanne"
+
+msgid "Restrict to events on certain dates"
+msgstr "Auf bestimmtes Datum beschränken"
+
+msgid "Not after"
+msgstr "Ausführung nicht nach"
+
+msgid "Not before"
+msgstr "Ausführung nicht vor"
+
+msgid "Custom offset"
+msgstr "Angepasster Vor- und Nachlauf"
+
+msgid "Offset before recording (in m)"
+msgstr "Vorlauf der Aufnahme (in Min.)"
+
+msgid "Offset after recording (in m)"
+msgstr "Nachlauf der Aufnahme (in Min.)"
+
+msgid "Set maximum duration"
+msgstr "Finde maximale Länge"
+
+msgid "After event"
+msgstr "Nach der Aufnahme"
+
+msgid "standard"
+msgstr "Standard"
+
+msgid "auto"
+msgstr "Automatisch"
+
+msgid "do nothing"
+msgstr "Nichts"
+
+msgid "go to standby"
+msgstr "Standby"
+
+msgid "go to deep standby"
+msgstr "Ausschalten"
+
+msgid "Execute \"after event\" during timespan"
+msgstr "Zeitspanne für Ereignis \"nach der Aufnahme\""
+
+msgid "Begin of \"after event\" timespan"
+msgstr "Beginn der \"nach der Aufnahme\" Zeitspanne"
+
+msgid "End of \"after event\" timespan"
+msgstr "Ende der \"nach der Aufnahme\" Zeitspanne"
+
+msgid "Record a maximum of x times"
+msgstr "Höchstens X-mal aufnehmen"
+
+msgid "Amount of recordings left"
+msgstr "Verbleibende Anzahl Aufnahmen"
+
+msgid "Never"
+msgstr "Niemals"
+
+msgid "Monthly"
+msgstr "Monatlich"
+
+msgid "Weekly (Sunday)"
+msgstr "Wöchentlich (Sonntag)"
+
+msgid "Weekly (Monday)"
+msgstr "Wöchentlich (Montag)"
+
+msgid "Reset count"
+msgstr "Setze Zähler zurück"
+
+msgid "Require description to be unique"
+msgstr "Beschreibung muss eindeutig sein"
+
+msgid "No"
+msgstr "Nein"
+
+msgid "On same service"
+msgstr "Auf dem gleichen Sender"
+
+msgid "On any service"
+msgstr "Auf jedem Sender"
+
+msgid "Any service/recording"
+msgstr "In Timerliste / Aufnahmen"
+
+msgid "Use a custom location"
+msgstr "Angepasstes Aufnahmeverzeichnis"
+
+msgid "select Tags"
+msgstr "Stichworte auswählen"
+
+msgid "select Channels"
+msgstr "Sender auswählen"
+
+msgid "select Bouquets"
+msgstr "Favoriten auswählen"
+
+msgid "Enable Filtering"
+msgstr "Filter einschalten"
+
+msgid "Include"
+msgstr "Einschließen"
+
+msgid "Exclude"
+msgstr "Ausschließen"
+
+msgid "in Title"
+msgstr "im Titel"
+
+msgid "in Shortdescription"
+msgstr "in der Kurzbeschreibung"
+
+msgid "in Description"
+msgstr "in der Beschreibung"
+
+msgid "on Weekday"
+msgstr "an einem Wochentag"
+
+msgid "Weekend"
+msgstr "Wochenende"
+
+msgid "Weekday"
+msgstr "Wochentag"
+
+msgid "VPS"
+msgstr "VPS"
+
+msgid "VPS Overwrite"
+msgstr "VPS überschreiben"
+
+msgid "Add"
+msgstr "Hinzufügen"
+
+msgid "Delete"
+msgstr "Löschen"
+
+msgid "Reload"
+msgstr "Aktualisieren"
+
+msgid "Parse"
+msgstr "Parsen"
+
+msgid "Simulate"
+msgstr "Simulieren"
+
+msgid "Do you really want to delete the AT"
+msgstr "Wollen Sie folgenden AutoTimer wirklich löschen"
+
+msgid "Add Provider as new Bouquet"
+msgstr "Anbieter als neues Bouquet hinzufügen"
+
+msgid "Add channel(s) to Bouquet"
+msgstr "Sender zum Bouquet hinzufügen"
+
+msgid "Add channel(s) as alternate"
+msgstr "Sender als Alternative hinzufügen"
+
+msgid "Export"
+msgstr "Exportieren"
+
+msgid "Import"
+msgstr "Importieren"
+
+msgid "Add Bouquet"
+msgstr "Bouquet hinzufügen"
+
+msgid "Rename Bouquet"
+msgstr "Bouquet umbenennen"
+
+msgid "Delete Bouquet"
+msgstr "Bouquet löschen"
+
+msgid "Add Marker"
+msgstr "Marker hinzufügen"
+
+msgid "Rename"
+msgstr "Umbenennen"
+
+msgid "Delete Channel(s)"
+msgstr "Sender löschen"
+
+msgid "Do you really want to delete the channel(s)"
+msgstr "Wollen Sie nachfolgende Sender wirklich löschen"
+
+msgid "Do you really want to delete the bouquet"
+msgstr "Wollen Sie folgendes Bouquet wirklich löschen"
+
+msgid "Name of the Bouquet"
+msgstr "Name des Bouquets"
+
+msgid "Name of the Marker"
+msgstr "Name des Markers"
+
+msgid "Enter new name for the bouquet"
+msgstr "Neuen Namen des Bouquets eingeben"
+
+msgid "Enter new name for the marker"
+msgstr "Neuen Namen des Markers eingeben"
+
+msgid "Please enter filename"
+msgstr "Bitte den Dateinamen angeben"
+
+msgid "Do you really want to restore from file"
+msgstr "Wollen Sie diese Datei wirklich importieren"
 
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux Einstellungen"
@@ -704,3 +1013,18 @@ msgstr "W"
 
 msgid "E"
 msgstr "O"
+
+msgid "Message sent successfully!"
+msgstr "Nachricht erfolgreich verschickt!"
+
+msgid "Waiting for answer ..."
+msgstr "Erwarte Antwort ..."
+
+msgid "No answer in time"
+msgstr "Keine rechtzeitige Antwort"
+
+msgid "Answer is YES!"
+msgstr "Antwort lautet JA!"
+
+msgid "Answer is NO!"
+msgstr "Antwort lautet NEIN!"

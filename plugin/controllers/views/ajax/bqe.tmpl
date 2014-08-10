@@ -17,7 +17,7 @@
 </style>
 <div id="content_main" style="min-height: 500px;">
 <div id="info">
-<h3>Bouquet Editor (BETA)</h3>
+<h3>Bouquet Editor</h3>
 <div style="background-color: #EEE">
 <div style="display: inline-block; width: 100%; zoom: 1;">
 
@@ -26,16 +26,16 @@
 
 <div id="toolbar-header">
 <span id="toolbar"><span id="tb1">
-<input type="radio" id="btn0" name="tb1" checked="checked" /><label for="btn0">TV</label>
-<input type="radio" id="btn1" name="tb1"/><label for="btn1">Radio</label>
+<input type="radio" id="btn0" name="tb1" checked="checked" /><label for="btn0">$tstrings['tv']</label>
+<input type="radio" id="btn1" name="tb1"/><label for="btn1">$tstrings['radio']</label>
 </span></span>
 </div>
 
 <div id="toolbar-header">
 <span id="toolbar"><span id="tb2">
-<input type="radio" id="btn2" name="tb2" /><label for="btn2">Satellites</label>
-<input type="radio" id="btn3" name="tb2" checked="checked" /><label for="btn3">Provider</label>
-<input type="radio" id="btn4" name="tb2" /><label for="btn4">All Services</label>
+<input type="radio" id="btn2" name="tb2" /><label for="btn2">$tstrings['satellites']</label>
+<input type="radio" id="btn3" name="tb2" checked="checked" /><label for="btn3">$tstrings['providers']</label>
+<input type="radio" id="btn4" name="tb2" /><label for="btn4">$tstrings['all_channels']</label>
 </span></span>
 </div>
 	<div id="sel0" style="height: 200px;overflow-y:scroll;">
@@ -43,11 +43,11 @@
 	</ol>
 	</div>
 	<div style="margin:5px 0 5px 0;">
-		<button id='btnaddp' onclick="addprovider(); return false;">Add Provider as new Bouquet</button>
+		<button id='btnaddp' onclick="addprovider(); return false;">$tstrings['bqe_add_provider_as_bouquet']</button>
 	</div>
 	<div>
 	<div style="margin:5px 0 5px 0;">
-	Search :<input id="searchch" value="...">
+	$tstrings['bqe_search'] :<input id="searchch" value="...">
 	</div>
 	</div>
 
@@ -57,8 +57,8 @@
 	</div>
 	
 	<div style="margin:5px 0 5px 0;">
-		<button id='btnaddc' onclick="addchannel(); return false;">Add channel(s) to Bouquet</button>
-		<button id='btnadda' onclick="addalter(); return false;">Add channel(s) as alternate</button>
+		<button id='btnaddc' onclick="addchannel(); return false;">$tstrings['bqe_add_channel']</button>
+		<button id='btnadda' onclick="addalter(); return false;">$tstrings['bqe_add_alternative']</button>
 	</div>
 
 </div></div>
@@ -67,9 +67,9 @@
 <div style="padding:5px;">
 <div id="toolbar-header">
 <span id="toolbar"><span id="tb3">
-<button id="btn5">Reload</button>
-<button id="btn6">Backup</button>
-<button id="btn7">Restore</button>
+<button id="btn5">$tstrings['bqe_reload']</button>
+<button id="btn6">$tstrings['bqe_export']</button>
+<button id="btn7">$tstrings['bqe_import']</button>
 </span></span>
 </div>
 	<div style="padding:5px;">
@@ -78,9 +78,9 @@
 	</ol>
 	</div>
 	<div style="margin:5px 0 5px 0;">
-		<button id='btnbadd' onclick="addbq(); return false;">Add BQ</button>
-		<button id='btnbren' onclick="renbq(); return false;">Ren BQ</button>
-		<button id='btnbdel' onclick="delbq(); return false;">Del BQ</button>
+		<button id='btnbadd' onclick="addbq(); return false;">$tstrings['bqe_add_bq']</button>
+		<button id='btnbren' onclick="renbq(); return false;">$tstrings['bqe_rename_bq']</button>
+		<button id='btnbdel' onclick="delbq(); return false;">$tstrings['bqe_delete_bq']</button>
 	</div>
 	
 	<div id="sel3" style="height: 300px;overflow-y:scroll;">
@@ -88,9 +88,9 @@
 	</ol>
 	</div>
 	<div style="margin:5px 0 5px 0;">
-		<button id='btncdel' onclick="delc(); return false;">Del channel(s)</button>
-		<button id='btnmadd' onclick="addm(); return false;">Add marker</button>
-		<button id='btnmgren' onclick="renmg(); return false;">Rename</button>
+		<button id='btncdel' onclick="delc(); return false;">$tstrings['bqe_delete_channel']</button>
+		<button id='btnmadd' onclick="addm(); return false;">$tstrings['bqe_add_marker']</button>
+		<button id='btnmgren' onclick="renmg(); return false;">$tstrings['bqe_rename']</button>
 	</div>
 	
 	</div>

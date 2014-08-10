@@ -203,11 +203,7 @@ def getBouquets(stype):
 	serviceHandler = eServiceCenter.getInstance()
 	services = serviceHandler.list(eServiceReference('%s FROM BOUQUET "%s" ORDER BY bouquet'%(s_type, s_type2)))
 	bouquets = services and services.getContent("SN", True)
-	new_bouquets = []
-	for bouquet in bouquets:
-		if int(bouquet[0].split(":")[1]) != 519:
-			new_bouquets.append(bouquet)
-	return { "bouquets": new_bouquets }
+	return { "bouquets": bouquets }
 
 def getProviders(stype):
 	s_type = service_types_tv
@@ -334,7 +330,7 @@ def getChannels(idbouquet, stype):
 
 	return { "channels": ret }
 
-def getServices(sRef):
+def getServices(sRef, showAll = True ):
 	services = []
 
 	if sRef == "":
@@ -344,11 +340,13 @@ def getServices(sRef):
 	slist = servicelist.getServicesAsList()
 
 	for sitem in slist:
-		if sitem[0] and not int(sitem[0].split(":")[1]) & 512:	# 512 is hidden service on sifteam image. Doesn't affect other images
-			service = {}
-			service['servicereference'] = sitem[0].decode('latin-1').encode("utf8")
-			service['servicename'] = sitem[1].decode('latin-1').encode("utf8")
-			services.append(service)
+		st = int(sitem[0].split(":")[1])
+		if not st & 512:	# 512 is hidden service on sifteam image. Doesn't affect other images
+			if showAll or st == 0: 
+				service = {}
+				service['servicereference'] = sitem[0].decode('latin-1').encode("utf8")
+				service['servicename'] = sitem[1].decode('latin-1').encode("utf8")
+				services.append(service)
 
 	return { "services": services }
 
@@ -356,12 +354,11 @@ def getAllServices():
 	services = []
 	bouquets = getBouquets("tv")["bouquets"]
 	for bouquet in bouquets:
-		if getServices(bouquet[0])["services"]:
-			services.append({
-				"servicereference": bouquet[0],
-				"servicename": bouquet[1],
-				"subservices": getServices(bouquet[0])["services"]
-			})
+		services.append({
+			"servicereference": bouquet[0],
+			"servicename": bouquet[1],
+			"subservices": getServices(bouquet[0])["services"]
+		})
 
 	return {
 		"result": True,
@@ -447,10 +444,7 @@ def getEvent(ref, idev):
 		info['begin'] = event[0]
 		info['duration'] = event[1]
 		info['title'] = event[2]
-		if event[3]:
-			info['shortdesc'] = event[3]
-		else:
-			info['shortdesc'] = event[4]
+		info['shortdesc'] = event[3]
 		info['longdesc'] = event[4]
 		info['channel'] = event[5]
 		info['sref'] = event[6]

@@ -114,7 +114,7 @@ msgstr "Вимкнення"
 msgid "Default"
 msgstr "За замовчуванням"
 
-msgid "Delete Movie"
+msgid "Delete Recording"
 msgstr "Видалити фільм"
 
 msgid "Delete Timer"

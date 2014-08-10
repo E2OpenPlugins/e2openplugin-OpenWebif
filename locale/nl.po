@@ -237,7 +237,7 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-msgid "Delete Movie"
+msgid "Delete Recording"
 msgstr ""
 
 msgid "Delete Timer"

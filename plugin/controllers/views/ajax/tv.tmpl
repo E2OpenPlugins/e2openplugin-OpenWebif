@@ -1,46 +1,14 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
-<div id="content_main">
-	<div id="tvcontentmain">
-	<div id="toolbar-header">
-		<span id="toolbar">
-			<span id="tvbutton">
-				<input type="radio" id="tvbutton0" name="tvbutton" /><label for="tvbutton0">$tstrings['current']</label>
-				<input type="radio" id="tvbutton1" name="tvbutton" checked="checked" /><label for="tvbutton1">$tstrings['bouquets']</label>
-				<input type="radio" id="tvbutton2" name="tvbutton" /><label for="tvbutton2">$tstrings['providers']</label>
-				<input type="radio" id="tvbutton3" name="tvbutton" /><label for="tvbutton3">$tstrings['satellites']</label>
-				<input type="radio" id="tvbutton4" name="tvbutton" /><label for="tvbutton4">$tstrings['all_channels']</label>
-				<input type="radio" id="tvbutton5" name="tvbutton" /><label for="tvbutton5">$tstrings['epg']</label>
-			</span>
-		</span>
-	</div>
-	
-	<div id="tvcontent"></div>
-	</div>
-</div>
-
+<div id="content_main"><div id="tvcontentmain"><div id="toolbar-header">
+<span id="toolbar"><span id="tvbutton">
+<input type="radio" id="btn0" name="tvbutton" /><label for="btn0">$tstrings['current']</label>
+<input type="radio" id="btn1" name="tvbutton" checked="checked" /><label for="btn1">$tstrings['bouquets']</label>
+<input type="radio" id="btn2" name="tvbutton" /><label for="btn2">$tstrings['providers']</label>
+<input type="radio" id="btn3" name="tvbutton" /><label for="btn3">$tstrings['satellites']</label>
+<input type="radio" id="btn4" name="tvbutton" /><label for="btn4">$tstrings['all_channels']</label>
+<input type="radio" id="btn5" name="tvbutton" /><label for="btn5">$tstrings['epg']</label>
+</span></span>
+</div><div id="tvcontent"></div></div></div>
 <script type="text/javascript">
-	\$('#tvbutton0').click(function(){
-		\$("#tvcontent").html(loadspinner).load("ajax/current");
-	});
-	\$('#tvbutton1').click(function(){
-		\$("#tvcontent").html(loadspinner).load("ajax/bouquets");
-	});
-	\$('#tvbutton2').click(function(){
-		\$("#tvcontent").html(loadspinner).load("ajax/providers");
-	});
-	\$('#tvbutton3').click(function(){
-		\$("#tvcontent").load("ajax/satellites");
-	});
-	\$('#tvbutton4').click(function(){
-		\$("#tvcontent").html(loadspinner).load("ajax/channels");
-	});
-	\$('#tvbutton5').click(function(){
-		\$("#tvcontent").html(loadspinner).load('ajax/multiepg');
-	});
-	
-	\$( "#tvbutton" ).buttonset();
-	
-	\$(document).ready(function() {
-		\$("#tvcontent").load("ajax/bouquets");
-	});
+\$(function() { InitBouquets(true);});
 </script>

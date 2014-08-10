@@ -1,39 +1,18 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
-<div id="content_main">
-	<div id="tvcontentmain">
-	<div id="toolbar-header">
-		<span id="toolbar">
-			<span id="tvbutton">
-				<input type="radio" id="radiobutton0" name="radiobutton" checked="checked" /><label for="radiobutton0">$tstrings['bouquets']</label>
-				<input type="radio" id="radiobutton1" name="radiobutton" /><label for="radiobutton1">$tstrings['providers']</label>
-				<input type="radio" id="radiobutton2" name="radiobutton" /><label for="radiobutton2">$tstrings['satellites']</label>
-				<input type="radio" id="radiobutton3" name="radiobutton" /><label for="radiobutton3">$tstrings['all_channels']</label>
-			</span>
-		</span>
-	</div>
-	
-	<div id="tvcontent"></div>
-	</div>
-</div>
-
+<div id="content_main"><div id="tvcontentmain"><div id="toolbar-header">
+<span id="toolbar"><span id="tvbutton">
+<input type="radio" id="btn1" name="radiobutton" checked="checked" /><label for="btn1">$tstrings['bouquets']</label>
+<input type="radio" id="btn2" name="radiobutton" /><label for="btn2">$tstrings['providers']</label>
+<input type="radio" id="btn3" name="radiobutton" /><label for="btn3">$tstrings['satellites']</label>
+<input type="radio" id="btn4" name="radiobutton" /><label for="btn4">$tstrings['all_channels']</label>
+</span></span>
+</div><div id="tvcontent"></div></div></div>
 <script type="text/javascript">
-	\$('#radiobutton0').click(function(){
-		\$("#tvcontent").html(loadspinner).load("ajax/bouquets?stype=radio");
-	});
-	\$('#radiobutton1').click(function(){
-		\$("#tvcontent").html(loadspinner).load("ajax/providers?stype=radio");
-	});
-	\$('#radiobutton2').click(function(){
-		\$("#tvcontent").load("ajax/satellites?stype=radio");
-	});
-	\$('#radiobutton3').click(function(){
-		\$("#tvcontent").html(loadspinner).load("ajax/channels?stype=radio");
-	});
-	
-	\$( "#tvbutton" ).buttonset();
-	
-	\$(document).ready(function() {
-		\$("#tvcontent").load("ajax/bouquets?stype=radio");
-	});
+#raw
+$(function() {
+	InitBouquets(false);
+	if(!timeredit_initialized)
+		$('#editTimerForm').load('/ajax/edittimer');
+});
+#end raw
 </script>
-
