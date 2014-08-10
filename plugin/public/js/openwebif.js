@@ -253,11 +253,11 @@ function handle_power_state_dialog(new_power_state) {
 	if ( new_power_state === 2 ) {
 		load_info_dialog('ajax/rebootdialog',tstr_reboot_box);
 		wait_for_openwebif();
-		timeout = 500 ;
+		timeout = 1000 ;
 	} else if ( new_power_state === 3 ) {
 		load_info_dialog('ajax/rebootdialog',tstr_restart_gui);
 		wait_for_openwebif();
-		timeout = 500 ;
+		timeout = 1000 ;
 	}
 	sleep(timeout).done(webapi_execute('api/powerstate?newstate=' + new_power_state));
 }
