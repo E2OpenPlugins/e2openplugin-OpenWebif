@@ -145,7 +145,9 @@ function initJsTranslation(strings) {
 	tstr_nothing_play = strings.nothing_play;
 	tstr_now = strings.now;
 	tstr_on = strings.on;
+	tstr_reboot_box = strings.reboot_box
 	tstr_rec_status = strings.rec_status;
+	tstr_restart_gui = strings.restart_gui
 	tstr_standby = strings.standby;
 	tstr_start_after_end = strings.start_after_end;
 	tstr_time = strings.time;
@@ -211,9 +213,80 @@ function open_epg_search_dialog() {
 	load_dm(url,tstr_epgsearch,w,h);
 }
 
+function checkUrl(url) {
+	var req = new XMLHttpRequest(); 
+	try {
+		req.open("HEAD", url, false);
+		req.send(null);
+		return req.status== 200 ? true : false;
+	}
+	catch (er) {
+		return false;
+	}
+}
+
+function wait_for_openwebif() {
+	var my_url = window.location.href
+	var restartCheck = window.setInterval(function() {
+		var res = checkUrl(my_url);
+		if ( res === true ) {
+			window.clearInterval(restartCheck);
+			$("#modaldialog").dialog('close');
+			location.reload();
+		}
+	}, 1000);
+}
+
+function sleep(timeout) {
+	var startTime = new Date().getTime();
+	var r = $.Deferred();
+	while (new Date().getTime() < startTime + timeout);
+		setTimeout(function () {
+		r.resolve();
+	}, 2000);
+	return r;
+}
+
 function handle_power_state_dialog(new_power_state) {
-	webapi_execute('api/powerstate?newstate=' + new_power_state);
+	var timeout = 0;
 	$("#modaldialog").dialog('close');
+	if ( new_power_state === 2 ) {
+		load_info_dialog('ajax/rebootdialog',tstr_reboot_box);
+		wait_for_openwebif();
+		timeout = 500 ;
+	} else if ( new_power_state === 3 ) {
+		load_info_dialog('ajax/rebootdialog',tstr_restart_gui);
+		wait_for_openwebif();
+		timeout = 500 ;
+	}
+	sleep(timeout).done(webapi_execute('api/powerstate?newstate=' + new_power_state));
+}
+
+function load_info_dialog(url,title,w,h){
+	var width = 'auto',height='auto';
+	if (typeof w !== 'undefined')
+		width = w;
+	if (typeof h !== 'undefined')
+		height = h;
+
+	$.ajax({
+		url: url,
+		success: function(data) {
+			$("#modaldialog").html(data).dialog({
+				modal:true,
+				title:title,
+				autoOpen:true,
+				width:width,
+				height:height,
+				close: function(event, ui) { 
+					$(this).dialog('destroy');
+				},
+			});
+		},error: function(){
+			alert('error! Loading Page');
+		}
+		
+	});
 }
 
 function load_dm(url,title,w,h){
