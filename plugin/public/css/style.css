@@ -676,3 +676,28 @@ p {
 .ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
 .ui-timepicker-div td { font-size: 90%; }
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+/* timerlist movielist */
+.tm_row { background-color: #F0F7FC;margin-top: 2px;margin-bottom: 5px;font-size: 13px;border: 1px solid #F0F7FC;}
+.tm_row:hover { border: 1px dotted #4297D7;}
+.tm_buttons , .tm_text {float: left; margin-left:85px;}
+.tm_text div {padding: 3px;}
+.tm_buttons { width: 75px; margin-left:-85px;}
+.tm_buttons div {padding: initial;}
+.tm_buttons div div {margin:3px 0px 3px 3px;}
+
+/* icons*/
+.ow_i { width:16px;height:16px; display:inline-block;background-image:url(/images/ico_x16.png);}
+.ow_i_folder { background-position: 0px 0px;}
+.ow_i_delete { background-position: -16px 0px;}
+.ow_i_play { background-position: -32px 0px;}
+.ow_i_info { background-position: -48px 0px;}
+.ow_i_disabled { background-position: -64px 0px;}
+.ow_i_save { background-position: -80px 0px;}
+.ow_i_edit { background-position: -96px 0px;}
+.ow_i_enabled { background-position: -112px 0px;}
+.ow_i_epg { background-position: -128px 0px;}
+.ow_i_lock { background-position: -144px 0px;}
+.ow_i_stream1 { background-position: -160px 0px;}
+.ow_i_stream2 { background-position: -176px 0px;}
+.ow_i_timer { background-position: -192px 0px;}
