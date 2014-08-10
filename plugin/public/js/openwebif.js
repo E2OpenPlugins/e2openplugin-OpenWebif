@@ -211,6 +211,11 @@ function open_epg_search_dialog() {
 	load_dm(url,tstr_epgsearch,w,h);
 }
 
+function handle_power_state_dialog(new_power_state) {
+	webapi_execute('api/powerstate?newstate=' + new_power_state);
+	$("#modaldialog").dialog('close');
+}
+
 function load_dm(url,title,w,h){
 	var buttons = {}
 	buttons[tstr_close] = function() { $(this).dialog("close");};
