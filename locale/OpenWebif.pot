@@ -1031,6 +1031,9 @@ msgstr ""
 msgid "Message sent successfully!"
 msgstr ""
 
+msgid "Waiting for answer ..."
+msgstr ""
+
 msgid "No answer in time"
 msgstr ""
 
