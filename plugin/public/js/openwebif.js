@@ -198,6 +198,8 @@ function initJsTranslation(strings) {
 	tstr_bqe_restore_question = strings.bqe_restore_question;
 	
 	tstr_timerlist = strings.timer_list;
+	tstr_timerpreview = strings.timer_preview;
+	tstr_timernewname = strings.timer_newname;
 	
 }
 
