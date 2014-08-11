@@ -136,6 +136,9 @@ class AjaxController(BaseController):
 	def P_powerstate(self, request):
 		return {}
 
+	def P_rebootdialog(self, request):
+		return {}
+
 	def P_message(self, request):
 		return {}
 

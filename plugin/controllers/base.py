@@ -270,11 +270,11 @@ class BaseController(resource.Resource):
 		
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
-			extras.append({ 'key': 'ajax/at','description': 'AutoTimer'})
+			extras.append({ 'key': 'ajax/at','description': _('AutoTimer')})
 		except ImportError:
 			pass
 		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/OpenWebif/controllers/views/ajax/bqe.tmpl")):
-			extras.append({ 'key': 'ajax/bqe','description': 'BouquetEditor'})
+			extras.append({ 'key': 'ajax/bqe','description': _('BouquetEditor')})
 		
 #		try:
 #			from Plugins.Extensions.EPGRefresh.EPGRefresh import epgrefresh
