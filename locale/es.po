@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2014-06-14 19:04+0100\n"
-"PO-Revision-Date: 2014-07-15 01:27+0200\n"
+"PO-Revision-Date: 2014-08-08 01:27+0200\n"
 "Last-Translator: Administrador <hsa2000@gmail.com>\n"
 "Language-Team: HSA2000 for OpenSpa\n"
 "Language: es\n"
@@ -165,8 +165,20 @@ msgstr "Diciembre"
 msgid "About"
 msgstr "Acerca de"
 
+msgid "Timer List"
+msgstr "Lista de Grabación"
+
+msgid "New Name"
+msgstr "Nuevo Nombre"
+
 msgid "Add Timer"
 msgstr "Añadir Grabación"
+
+msgid "Add AutoTimer"
+msgstr "Añadir AutoProgramación"
+
+msgid "Add Zap Timer"
+msgstr "Añadir Salto y Grabación"
 
 msgid "After Event"
 msgstr "Después del Evento"
@@ -291,6 +303,9 @@ msgstr "Editar Grabación"
 msgid "Enable Timer"
 msgstr "Habilitar Grabación"
 
+msgid "Start"
+msgstr "Inicio"
+
 msgid "End"
 msgstr "Fin"
 
@@ -349,28 +364,37 @@ msgid "Hard disk model"
 msgstr "Modelo Disco Duro"
 
 msgid "Hour"
-msgstr ""
+msgstr "Hora"
 
 msgid "IP address"
-msgstr ""
+msgstr "Dirección IP"
+
+msgid "IPv4-only kernel"
+msgstr "IPv4-solo kernel"
+
+msgid "none/IPv4-only network"
+msgstr "no/IPv4-solo red"
+
+msgid "IPv4-only Python/Twisted"
+msgstr "IPv4-solo Python/Twisted"
 
 msgid "IPv6 address(es)"
-msgstr ""
+msgstr "Dirección(es) IPv6"
 
 msgid "Infos"
 msgstr "Información"
 
 msgid "Instant Record"
-msgstr ""
+msgstr "Grabación Instantanea"
 
 msgid "Javascript Libraries"
-msgstr ""
+msgstr "Librería Javascript"
 
 msgid "Just play"
-msgstr ""
+msgstr "Solo repr."
 
 msgid "Kernel version"
-msgstr ""
+msgstr "Versión Kernel"
 
 msgid "LICENSE"
 msgstr "LICENCIA"
@@ -387,8 +411,14 @@ msgstr "Licencia Pública General GNU versión 2,"
 msgid "published by the Free Software Foundation."
 msgstr "publicada por la Free Software Foundation."
 
-msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
-msgstr "Todos los archivos de este software son software de código abierto; usted puede redistribuirlo y / o modificarlo bajo los términos de la Licencia Pública General GNU versión 2, publicada por la Free Software Foundation."
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 2 "
+"as published by the Free Software Foundation."
+msgstr ""
+"Todos los archivos de este software son software de código abierto; usted puede redistribuirlo "
+"y / o modificarlo bajo los términos de la Licencia Pública General GNU versión 2, "
+"publicada por la Free Software Foundation."
 
 msgid "loading"
 msgstr "cargando"
@@ -453,6 +483,9 @@ msgstr "Interfaz Web de Código Abierto para Decodificadores Linux"
 msgid "OSD"
 msgstr "OSD"
 
+msgid "Playback"
+msgstr "Reproducción"
+
 msgid "Playlist"
 msgstr "Lista de Reproducción"
 
@@ -480,8 +513,14 @@ msgstr "Refrescar"
 msgid "Refresh automatically every"
 msgstr "Actualizar automáticamente cada"
 
+msgid "Refresh Timer"
+msgstr "Actualizar Grabación"
+
 msgid "Remote"
 msgstr "Control Remoto"
+
+msgid "Rename Recording"
+msgstr "Renombrar Grabación"
 
 msgid "Repeated"
 msgstr "Repetir"
@@ -521,6 +560,15 @@ msgstr "Servicio"
 
 msgid "Settings"
 msgstr "Configuración"
+
+msgid "Bouquet Editor"
+msgstr "Editor de Favoritos"
+
+msgid "BouquetEditor"
+msgstr "Editor de Favoritos"
+
+msgid "AutoTimer"
+msgstr "AutoProgramación"
 
 msgid "(shift + click for long pressure)"
 msgstr "(shift + click para una larga presión)"
@@ -593,6 +641,9 @@ msgstr "Añadir grabación"
 
 msgid "Timerlist"
 msgstr "Lista de Grabaciones"
+
+msgid "Autotimer Preview"
+msgstr "Previsualizar AutoProgramación"
 
 msgid "Timer"
 msgstr "Grabación"
@@ -745,3 +796,261 @@ msgstr "¡La respuesta es NO!"
 
 msgid "Root"
 msgstr "Carpeta Raíz"
+
+msgid "AutoTimer List"
+msgstr "Lista AutoProg."
+
+msgid "AutoTimer Edit"
+msgstr "Editar AutoProgramación"
+
+msgid "Match title"
+msgstr "Coincidencia de Título"
+
+msgid "EPG encoding"
+msgstr "Codificación EPG"
+
+msgid "Search type"
+msgstr "Tipo de Busqueda"
+
+msgid "partial match"
+msgstr "coincidencia parcial"
+
+msgid "exact match"
+msgstr "coincidencia exacta"
+
+msgid "description match"
+msgstr "coincidencia descripción"
+
+msgid "Search strictness"
+msgstr "Busqueda estricta"
+
+msgid "case-sensitive search"
+msgstr "busqueda distingue mayúsculas/minúsculas"
+
+msgid "case-insensitive search"
+msgstr "busqueda no distingue mayúsculas/minúsculas"
+
+msgid "Timer type"
+msgstr "Tipo Grabación"
+
+msgid "record"
+msgstr "grabar"
+
+msgid "zap"
+msgstr "saltar"
+
+msgid "Override found with alternative service"
+msgstr "Anular encontrado con un servicio alternativo"
+
+msgid "Only match during timespan"
+msgstr "Sólo durante el intervalo de tiempo de ajuste"
+
+msgid "Begin of timespan"
+msgstr "Comienzo del intervalo de tiempo"
+
+msgid "End of Timespan"
+msgstr "Fin del intervalo de tiempo"
+
+msgid "Restrict to events on certain dates"
+msgstr "Restringir a los eventos en determinadas fechas"
+
+msgid "Not after"
+msgstr "No después de"
+
+msgid "Not before"
+msgstr "No antes de"
+
+msgid "Custom offset"
+msgstr "Desplazamiento personalizado"
+
+msgid "Offset before recording (in m)"
+msgstr "Desplazamiento antes de grabar (en min.)"
+
+msgid "Offset after recording (in m)"
+msgstr "Desplazamiento después de grabar (en min.)"
+
+msgid "Set maximum duration"
+msgstr "Seleccionar duración máxima"
+
+msgid "After event"
+msgstr "Después del evento"
+
+msgid "standard"
+msgstr "Estandar"
+
+msgid "auto"
+msgstr "automatico"
+
+msgid "do nothing"
+msgstr "no hacer nada"
+
+msgid "go to standby"
+msgstr "ir al modo de espera"
+
+msgid "go to deep standby"
+msgstr "ir al modo de espera profundo"
+
+msgid "Execute \"after event\" during timespan"
+msgstr "Ejecutar \"después del evento\" durante intervalo de tiempo"
+
+msgid "Begin of \"after event\" timespan"
+msgstr "Comenzar del \"después del evento\" intervalo de tiempo"
+
+msgid "End of \"after event\" timespan"
+msgstr "Fin del \"después del evento\" intervalo de tiempo"
+
+msgid "Record a maximum of x times"
+msgstr "Grabar un máximo de x veces"
+
+msgid "Amount of recordings left"
+msgstr "Cantidad de grabaciones de la izquierda"
+
+msgid "Never"
+msgstr "Nunca"
+
+msgid "Monthly"
+msgstr "Mensual"
+
+msgid "Weekly (Sunday)"
+msgstr "Semanal (Domingo)"
+
+msgid "Weekly (Monday)"
+msgstr "Semanal (Lunes)"
+
+msgid "Reset count"
+msgstr "Restablecer recuento"
+
+msgid "Require description to be unique"
+msgstr "Requerir descripción para ser único"
+
+msgid "No"
+msgstr "No"
+
+msgid "On same service"
+msgstr "En el mismo servicio"
+
+msgid "On any service"
+msgstr "En cualquier servicio"
+
+msgid "Any service/recording"
+msgstr "Cualquier servicio/grabación"
+
+msgid "Use a custom location"
+msgstr "Usar una ubicación personalizada"
+
+msgid "select Tags"
+msgstr "seleccionar Etiquetas"
+
+msgid "select Channels"
+msgstr "seleccionar Canales"
+
+msgid "select Bouquets"
+msgstr "selecionar Favoritos"
+
+msgid "Enable Filtering"
+msgstr "Habilitar el Filtrado"
+
+msgid "Include"
+msgstr "Incluir"
+
+msgid "Exclude"
+msgstr "Excluir"
+
+msgid "in Title"
+msgstr "en el Título"
+
+msgid "in Shortdescription"
+msgstr "en Descripción corta"
+
+msgid "in Description"
+msgstr "en la Descripción"
+
+msgid "on Weekday"
+msgstr "de Lunes a Viernes"
+
+msgid "Weekend"
+msgstr "Fin de Semana"
+
+msgid "Weekday"
+msgstr "Días laborables"
+
+msgid "VPS"
+msgstr "VPS"
+
+msgid "VPS Overwrite"
+msgstr "Sobrescribir VPS"
+
+msgid "Add"
+msgstr "Añadir"
+
+msgid "Delete"
+msgstr "Borrar"
+
+msgid "Reload"
+msgstr "Recargar"
+
+msgid "Parse"
+msgstr "Analizar"
+
+msgid "Simulate"
+msgstr "Simular"
+
+msgid "Do you really want to delete the AT"
+msgstr "¿Realmente quieres eliminar el AT?"
+
+msgid "Add Provider as new Bouquet"
+msgstr "Agregar proveedor como nuevo Favorito"
+
+msgid "Add channel(s) to Bouquet"
+msgstr "Añadir canal(es) a Favorito"
+
+msgid "Add channel(s) as alternate"
+msgstr "Añadir canal(es) como alternativo"
+
+msgid "Export"
+msgstr "Exportar"
+
+msgid "Import"
+msgstr "Importar"
+
+msgid "Add Bouquet"
+msgstr "Añadir Favorito"
+
+msgid "Rename Bouquet"
+msgstr "Renombrar Favorito"
+
+msgid "Delete Bouquet"
+msgstr "Borrar Favorito"
+
+msgid "Add Marker"
+msgstr "Añadir Marca"
+
+msgid "Rename"
+msgstr "Renombrar"
+
+msgid "Delete Channel(s)"
+msgstr "Borrar Canal(es)"
+
+msgid "Do you really want to delete the channel(s)"
+msgstr "¿Realmente deseas borrar el canal(es)?"
+
+msgid "Do you really want to delete the bouquet"
+msgstr "¿Realmente deseas borrar el Favorito?"
+
+msgid "Name of the Bouquet"
+msgstr "Nombre del Favorito"
+
+msgid "Name of the Marker"
+msgstr "Nombre de la Marca"
+
+msgid "Enter new name for the bouquet"
+msgstr "Intorduce el nuevo nombre para el favorito"
+
+msgid "Enter new name for the marker"
+msgstr "Introduce el nuevo nombre para la marca"
+
+msgid "Please enter filename"
+msgstr "Por favor, introduce el nombre del archivo"
+
+msgid "Do you really want to restore from file"
+msgstr "¿Realmente deseas restaurar desde el archivo?"
