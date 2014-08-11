@@ -1,3 +1,37 @@
+## Version 0.4.1
+## (in development)
+**FEATURES**
+* epg search as modal dialog
+* channel epg as modal dialog
+* show lastseen postion for recordings
+
+**FIXES**
+
+## Version 0.4.0
+**FEATURES**
+* bouqueteditor webif
+* autotimer webif
+* new recording list design
+* new timer list design
+* several css and html performance optimizations
+* extend movietags api
+* use gzip encoding for large lists
+
+**FIXES**
+* edit timer
+
+## Version 0.3.0
+**FEATURES**
+* mobile interface timer add/delete
+* spanish translation
+* prepare autotimer API
+* prepare bouqueteditor API
+
+**FIXES**
+* vps plugin API
+* epgrefresh API
+* mobile interface zap channel
+
 ## Version 0.2.9
 **FEATURES**
 * add gzip high speed epg requests
