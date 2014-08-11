@@ -259,7 +259,7 @@ function InitPage() {
 		modal : true, 
 		overlay: { backgroundColor: "#000", opacity: 0.5 }, 
 		autoOpen: false,
-		title: 'Autotimer Preview',
+		title: tstr_timerpreview,
 		width: 600,
 		height: 400
 	});
@@ -695,7 +695,7 @@ function addAT(evt)
 			_id=li+1;
 	});
 
-	var name = "New Name";
+	var name = tstr_timernewname;
 	var id = _id.toString();
 
 	var xml = '<timers><timer name="'+name+'" match="'+name+'" enabled="yes" id="'+id+'" encoding="ISO8859-15" justplay="0" overrideAlternatives="1"></timer></timers>';
