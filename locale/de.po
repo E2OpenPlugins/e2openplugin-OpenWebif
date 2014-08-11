@@ -163,6 +163,9 @@ msgstr "Über"
 msgid "Timer List"
 msgstr "Timer-Liste"
 
+msgid "New Name"
+msgstr "Neuer Name"
+
 msgid "Add Timer"
 msgstr "Timer hinzufügen"
 
@@ -291,6 +294,9 @@ msgstr "Timer bearbeiten"
 
 msgid "Enable Timer"
 msgstr "Timer aktivieren"
+
+msgid "Start"
+msgstr ""
 
 msgid "End"
 msgstr "Ende"
@@ -467,7 +473,7 @@ msgid "Radio"
 msgstr "Radio"
 
 msgid "Reboot Box"
-msgstr "Receiver neu starten"
+msgstr "Receiver neustarten"
 
 msgid "Recording Status"
 msgstr "Aufnahmestatus"
@@ -491,7 +497,7 @@ msgid "Repeated"
 msgstr "Wiederhole"
 
 msgid "Restart GUI"
-msgstr "GUI neu starten"
+msgstr "Oberfläche neustarten"
 
 msgid "running"
 msgstr "laufend"
@@ -525,6 +531,12 @@ msgstr "Kanal"
 
 msgid "Settings"
 msgstr "Einstellungen"
+
+msgid "Bouquet Editor"
+msgstr "Bouquet-Editor"
+
+msgid "BouquetEditor"
+msgstr "Bouquet-Editor"
 
 msgid "(shift + click for long pressure)"
 msgstr "(Umschalttaste+Klick für langen Tastendruck)"
@@ -597,6 +609,9 @@ msgstr "Timer hinzugefügt"
 
 msgid "Timerlist"
 msgstr "Timerliste"
+
+msgid "Autotimer Preview"
+msgstr "AutoTimer-Vorschau"
 
 msgid "Timer"
 msgstr "Timer"
@@ -710,7 +725,7 @@ msgid ""
 msgstr ""
 
 msgid "Root"
-msgstr "Root"
+msgstr "Hauptverzeichnis"
 
 msgid "AutoTimer List"
 msgstr "AutoTimer-Liste"
@@ -740,10 +755,10 @@ msgid "Search strictness"
 msgstr "Genauigkeit der Suche"
 
 msgid "case-sensitive search"
-msgstr "erzwinge Groß- und Kleinschreibung"
+msgstr "Groß- und Kleinschreibung beachten"
 
 msgid "case-insensitive search"
-msgstr "ignoriere Groß- und Kleinschreibung"
+msgstr "Groß- und Kleinschreibung ignorieren"
 
 msgid "Timer type"
 msgstr "Timer-Art"
@@ -848,7 +863,7 @@ msgid "On any service"
 msgstr "Auf jedem Sender"
 
 msgid "Any service/recording"
-msgstr "In Timerliste / Aufnahmen"
+msgstr "Service/Aufnahme beliebig"
 
 msgid "Use a custom location"
 msgstr "Angepasstes Aufnahmeverzeichnis"
@@ -920,7 +935,7 @@ msgid "Add channel(s) to Bouquet"
 msgstr "Sender zum Bouquet hinzufügen"
 
 msgid "Add channel(s) as alternate"
-msgstr "Sender als Alternative hinzufügen"
+msgstr "Sender als Alternative(n) hinzufügen"
 
 msgid "Export"
 msgstr "Exportieren"
@@ -947,7 +962,7 @@ msgid "Delete Channel(s)"
 msgstr "Sender löschen"
 
 msgid "Do you really want to delete the channel(s)"
-msgstr "Wollen Sie nachfolgende Sender wirklich löschen"
+msgstr "Wollen Sie nachfolgende(n) Sender wirklich löschen"
 
 msgid "Do you really want to delete the bouquet"
 msgstr "Wollen Sie folgendes Bouquet wirklich löschen"
@@ -971,7 +986,7 @@ msgid "Do you really want to restore from file"
 msgstr "Wollen Sie diese Datei wirklich importieren"
 
 msgid "LCD4Linux Setup"
-msgstr "LCD4Linux Einstellungen"
+msgstr "LCD4Linux-Einstellungen"
 
 #, python-format
 msgid "Missing mandatory parameter '%s'"
