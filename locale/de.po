@@ -497,7 +497,7 @@ msgid "Repeated"
 msgstr "Wiederhole"
 
 msgid "Restart GUI"
-msgstr "Oberfläche neustarten"
+msgstr "GUI neustarten"
 
 msgid "running"
 msgstr "laufend"
