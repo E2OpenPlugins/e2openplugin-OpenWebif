@@ -215,38 +215,14 @@ function open_epg_search_dialog() {
 	load_dm(url,tstr_epgsearch,w,h);
 }
 
-function checkUrl(url) {
-	var req = new XMLHttpRequest(); 
-	try {
-		req.open("HEAD", url, false);
-		req.send(null);
-		return req.status== 200 ? true : false;
-	}
-	catch (er) {
-		return false;
-	}
-}
-
 function wait_for_openwebif() {
-	var my_url = window.location.href
 	var restartCheck = window.setInterval(function() {
-		var res = checkUrl(my_url);
-		if ( res === true ) {
+		$.getJSON('/api/statusinfo').success(function() {
 			window.clearInterval(restartCheck);
 			$("#modaldialog").dialog('close');
 			location.reload();
-		}
-	}, 1000);
-}
-
-function sleep(timeout) {
-	var startTime = new Date().getTime();
-	var r = $.Deferred();
-	while (new Date().getTime() < startTime + timeout);
-		setTimeout(function () {
-		r.resolve();
+		});
 	}, 2000);
-	return r;
 }
 
 function handle_power_state_dialog(new_power_state) {
@@ -261,7 +237,9 @@ function handle_power_state_dialog(new_power_state) {
 		wait_for_openwebif();
 		timeout = 1000 ;
 	}
-	sleep(timeout).done(webapi_execute('api/powerstate?newstate=' + new_power_state));
+	setTimeout(function () {
+		webapi_execute('api/powerstate?newstate=' + new_power_state);
+	}, timeout);
 }
 
 function load_info_dialog(url,title,w,h){
