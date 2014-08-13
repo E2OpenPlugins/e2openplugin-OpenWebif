@@ -36,7 +36,7 @@ body {
 	display: block; 
 	height:auto;
 	position: relative; 
-	width:80%;
+	width:90%;
 }
 
 #header
@@ -80,8 +80,8 @@ body {
 {
 	overflow: hidden;
 	width: 100%;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 4px;
+	margin-bottom: 4px;
 }
 
 #osd
