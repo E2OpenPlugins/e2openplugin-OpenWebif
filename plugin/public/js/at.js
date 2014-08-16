@@ -963,6 +963,9 @@ function saveAT()
 
 function simulateAT()
 {
+	$("#simdlg").dialog( "open" );
+	$("#simtb").append("<tr><td COLSPAN=5>"+loadspinner+"</td></tr>");
+
 	$.ajax({
 		type: "GET", url: "/autotimer/simulate",
 		dataType: "xml",
@@ -992,8 +995,6 @@ function simulateAT()
 			});
 			if(lines.length===0)
 				$("#simtb").append("<tr><td COLSPAN=5>NO Timer found</td></tr>");
-			$("#simdlg").dialog( "open" );
-
 		},
 		error: function (request, status, error) {
 			showError(request.responseText);

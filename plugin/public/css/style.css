@@ -1,3 +1,20 @@
+/*
+ style.css: openwebif stylesheet
+ Version 1.0
+ Copyright (C) 2011-2014 E2OpenPlugins
+
+ Authors: skaman <sandro # skanetwork.com>
+ 		 meo
+ 		 Homey-GER
+ 		 Cimarast
+ 		 Joerg Bleyel <jbleyel # gmx.net>
+ 		 Schimmelreiter
+ 		 plnick
+
+ License GPL V2
+ https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
+*/
+
 body {
 	padding: 0;
 	font-family: Verdana,Arial,sans-serif;
