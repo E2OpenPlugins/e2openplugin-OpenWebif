@@ -181,9 +181,10 @@ $('#editTimerForm').dialog({
 					disabled: ($('#enabled').is(':checked')?"0":"1"),
 					justplay: ($('#justplay').is(':checked')?"1":"0"),
 					afterevent: $('#afterevent').val(),
-					dirname: $('#dirname').val(),
 					tags: tags,
 					repeated: repeated };
+				if ($('#dirname').val() != 'None')
+					urldata["dirname"] = $('#dirname').val();
 				
 				var canclose = false;
 				if (current_serviceref == "") {
