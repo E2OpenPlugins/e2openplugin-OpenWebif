@@ -239,6 +239,11 @@ class AjaxController(BaseController):
 
 	def P_at(self, request):
 		ret = {}
+		try:
+			from Plugins.Extensions.AutoTimer.AutoTimer import typeMap
+			ret['types'] = typeMap
+		except ImportError:
+			pass
 		loc = getLocations()
 		ret['locations'] = loc['locations']
 		return ret
