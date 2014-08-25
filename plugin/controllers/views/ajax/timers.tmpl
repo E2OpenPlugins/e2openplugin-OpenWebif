@@ -20,8 +20,9 @@
 					<div class="tm_buttons">
 						<div>
 						#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
+						#set $tname=quote($timer.name)
 						<a href='#' onClick="editTimer('$sref', '$timer.begin', '$timer.end');" title="$tstrings['edit_timer']"><div class="ow_i ow_i_edit"></div></a>
-						<a href='#' onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$timer.name');" title="$tstrings['delete_timer']"><div class="ow_i ow_i_delete"></div></a>
+						<a href='#' onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$tname');" title="$tstrings['delete_timer']"><div class="ow_i ow_i_delete"></div></a>
 						<a href='#' onClick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end');" 
 						#if $timer.disabled
 						title="$tstrings['enable_timer']"><div id="img-$timer.begin-$timer.end" class="ow_i ow_i_disabled">

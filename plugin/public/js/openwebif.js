@@ -452,7 +452,8 @@ function toggleTimerStatus(sRef, begin, end) {
 }
 
 function deleteTimer(sRef, begin, end, title) {
-	if (confirm(tstr_del_timer + ": " + title) === true) {
+	var t = decodeURIComponent(title);
+	if (confirm(tstr_del_timer + ": " + t) === true) {
 		webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end, 
 			function() { $('#'+begin+'-'+end).remove(); } 
 		);
