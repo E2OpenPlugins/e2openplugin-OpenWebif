@@ -43,7 +43,14 @@
 						#else
 						<a target="_blank" href='/web/ts.m3u?file=$quote($movie.filename)' title="$tstrings['stream'] $movie.eventname"><div class="ow_i ow_i_stream1"></div></a>
 						#end if
-						<br>
+						<br><br>
+						#set $w = $movie.lastseen
+						#if $w > 0
+							#set $w = $w * 70 / 100
+							#set $size = str($w) + 'px'
+							<div class="mlp"><div class="mlpp" style="width:$size">
+							</div></div>
+						#end if
 						<br>
 						<a href='/file?action=download&file=$quote($movie.filename)' title="$tstrings['download'] $movie.eventname"><div class="ow_i ow_i_save"></div></a>
 						<a href='#' onClick="alert('comming soon');" title="$tstrings['rename_recording']"><div class="ow_i ow_i_edit"></div></a>

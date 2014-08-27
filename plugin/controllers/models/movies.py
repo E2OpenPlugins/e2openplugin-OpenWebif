@@ -22,6 +22,41 @@ from time import strftime, localtime
 
 MOVIETAGFILE = "/etc/enigma2/movietags"
 
+def getPosition(cutfile, movie_len):
+	cut_list = []
+	if movie_len is not None and fileExists(cutfile):
+		try:
+			import struct
+			with open(cutfile) as f:
+				data = f.read()
+			while len(data) > 0:
+				packedCue = data[:12]
+				data = data[12:]
+				cue = struct.unpack('>QI', packedCue)
+				cut_list.append(cue)
+		except Exception, ex:
+			return 0
+	else:
+		return 0
+	last_end_point = None
+	if len(cut_list):
+		for (pts, what) in cut_list:
+			if what == 3:
+				last_end_point = pts/90000 # in seconds
+	else:
+		return 0
+	try:
+		movie_len = int(movie_len)
+	except ValueError:
+		return 0
+	if movie_len > 0 and last_end_point is not None:
+		play_progress = (last_end_point*100) / movie_len
+		if play_progress > 100:
+			play_progress = 100
+	else:
+		play_progress = 0
+	return play_progress
+	
 def getMovieList(directory=None, tag=None, rargs=None):
 	movieliste = []
 
@@ -44,8 +79,6 @@ def getMovieList(directory=None, tag=None, rargs=None):
 				f += "/"
 			ff = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory + f)
 			folders.append(ff)
-
-	#??? tagfilter = []
 
 	for root in folders:
 		movielist = MovieList(None)
@@ -72,6 +105,10 @@ def getMovieList(directory=None, tag=None, rargs=None):
 			except:
 				Len = None
 
+			filename = '/'.join(serviceref.toString().split("/")[1:])
+			filename = '/'+filename
+			pos = getPosition(filename + '.cuts', Len)
+
 			if Len > 0:
 				Len = "%d:%02d" % (Len / 60, Len % 60)
 			else:
@@ -79,14 +116,11 @@ def getMovieList(directory=None, tag=None, rargs=None):
 
 			sourceERef = info.getInfoString(serviceref, iServiceInformation.sServiceref)
 			sourceRef = ServiceReference(sourceERef)
-
 			event = info.getEvent(serviceref)
 			ext = event and event.getExtendedDescription() or ""
 
-			filename = '/'.join(serviceref.toString().split("/")[1:])
 			servicename = ServiceReference(serviceref).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
 			movie = {}
-			filename = '/'+filename
 			movie['filename'] = filename
 			movie['filename_stripped'] = filename.split("/")[-1]
 			movie['eventname'] = servicename
@@ -104,7 +138,7 @@ def getMovieList(directory=None, tag=None, rargs=None):
 			movie['descriptionExtended'] = ext
 			movie['servicename'] = sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
 			movie['recordingtime'] = rtime
-
+			movie['lastseen'] = pos
 			movieliste.append(movie)
 
 	ml = { "movies": movieliste, "bookmarks": bookmarklist, "directory": directory }
