@@ -56,30 +56,35 @@ def normalize_ipv6(orig):
 	return (addr)
 
 def getAdapterIPv6(ifname):
-	addr = ""
+	addr = _("IPv4-only kernel")
+	
+	if fileExists('/proc/net/if_inet6'):
+		addr = _("IPv4-only Python/Twisted")
 
-	if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
-		proc = '/proc/net/if_inet6'
-		tempaddrs = []
-		for line in file(proc).readlines():
-			if line.startswith('fe80'):
-				continue
+		if has_ipv6 and version.major >= 12:
+			proc = '/proc/net/if_inet6'
+			tempaddrs = []
+			for line in file(proc).readlines():
+				if line.startswith('fe80'):
+					continue
 
-			tmpaddr = ""
-			tmp = line.split()
-			if ifname == tmp[5]:
-				tmpaddr = ":".join([ tmp[0][i:i+4] for i in range(0,len(tmp[0]),4) ])
+				tmpaddr = ""
+				tmp = line.split()
+				if ifname == tmp[5]:
+					tmpaddr = ":".join([ tmp[0][i:i+4] for i in range(0,len(tmp[0]),4) ])
 
-				if tmp[2].lower() != "ff":
-					tmpaddr = "%s/%s" % (tmpaddr, int(tmp[2].lower(), 16))
+					if tmp[2].lower() != "ff":
+						tmpaddr = "%s/%s" % (tmpaddr, int(tmp[2].lower(), 16))
 
-				tempaddrs.append(normalize_ipv6(tmpaddr))
+					tempaddrs.append(normalize_ipv6(tmpaddr))
 
-		if len(tempaddrs) > 1:
+			if len(tempaddrs) > 1:
 				tempaddrs.sort()
 				addr = ', '.join(tempaddrs)
-		elif tempaddrs == 1:
+			elif len(tempaddrs) == 1:
 				addr = tempaddrs[0]
+			elif len(tempaddrs) == 0:
+				addr = _("none/IPv4-only network")
 
 	return (addr)
 

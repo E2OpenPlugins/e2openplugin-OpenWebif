@@ -608,6 +608,9 @@ html, body
 .tm_buttons div {padding: initial;}
 .tm_buttons div div {margin:3px 0px 3px 3px;}
 
+.mlp { height:10px; width:70px; background:#1c478e url(../images/ui-bg_highlight-soft_55_1c478e_1x100.png) 50% 50% repeat-x;}
+.mlpp { height:8px;position:relative;background-color: white;border: 1px solid #4297d7;margin:0 !important;}
+
 /* icons*/
 .ow_i { width:16px;height:16px; display:inline-block;background-image:url(/images/ico_x16.png);}
 .ow_i_folder { background-position: 0px 0px;}
