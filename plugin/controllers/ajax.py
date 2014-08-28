@@ -239,6 +239,8 @@ class AjaxController(BaseController):
 
 	def P_at(self, request):
 		ret = {}
+		ret['hasVPS'] = 0
+		ret['hasSeriesPlugin'] = 0
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimer import typeMap
 			ret['types'] = typeMap
@@ -246,6 +248,17 @@ class AjaxController(BaseController):
 			pass
 		loc = getLocations()
 		ret['locations'] = loc['locations']
+				
+		try:
+			from Plugins.SystemPlugins.vps import Vps
+			ret['hasVPS'] = 1
+		except ImportError as ie:
+			pass
+		try:
+			from Plugins.Extensions.SeriesPlugin.plugin import Plugins
+			ret['hasSeriesPlugin'] = 1
+		except ImportError as ie:
+			pass
 		return ret
 
 	def P_bqe(self, request):

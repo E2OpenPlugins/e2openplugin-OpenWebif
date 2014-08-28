@@ -1,6 +1,6 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 1.3
+//* Version 1.4
 //******************************************************************************
 //* Copyright (C) 2014 Joerg Bleyel
 //* Copyright (C) 2014 E2OpenPlugins
@@ -9,6 +9,7 @@
 //* V 1.1 - Support translation, small ui fixes
 //* V 1.2 - Optimize bouquets/channels selector
 //* V 1.3 - Allow alternatives as channel, small js fixes
+//* V 1.4 - fix timespan, offset, support series plugin
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -57,11 +58,11 @@ function initValues () {
 	$('#maxduration').val('70');
 	var _dateb = new Date();
 	var _db = $.datepicker.formatDate('dd.mm.yy', _dateb);
-	$('#before').val(_db);
+	$('#after').val(_db);
 	var _datea = new Date();
 	_datea.setDate(_dateb.getDate()+7);
-	var _da = $.datepicker.formatDate('dd.mm.yy', _datea);
-	$('#after').val(_da);
+	_db = $.datepicker.formatDate('dd.mm.yy', _datea);
+	$('#before').val(_db);
 	$('#from').val('20:15');
 	$('#to').val('23:15');
 	$('#aefrom').val('20:15');
@@ -144,6 +145,26 @@ function AddFilter(a,b,c)
 	nf.appendTo("#filterlist");
 }
 
+function timeFrameAfterCheck() {
+
+	if ($('#timeFrameAfter').is(':checked') === true) {
+		var _da = $('#after').datepicker('getDate');
+		var _datea = new Date(_da);
+		var _dateb = new Date();
+		_dateb.setDate(_datea.getDate()+7);
+		_da = $.datepicker.formatDate('dd.mm.yy', _dateb);
+		$('#before').val(_da);
+		$('#beforeE').show();
+	}
+	else {
+		var _datea = new Date(2038,0,1);
+		var _da = $.datepicker.formatDate('dd.mm.yy', _datea);
+		$('#before').val(_da);
+		$('#beforeE').hide();
+	}
+
+}
+
 function checkValues () {
 
 	if ($('#timeSpan').is(':checked') === true)
@@ -201,6 +222,7 @@ function InitPage() {
 	$('#timeSpan').click(function() { checkValues();});
 	$('#timeSpanAE').click(function() { checkValues();});
 	$('#timeFrame').click(function() { checkValues();});
+	$('#timeFrameAfter').click(function() { timeFrameAfterCheck();});
 	$('#timerOffset').click(function() { checkValues();});
 	$('#maxDuration').click(function() { checkValues();});
 	$('#Location').click(function() { checkValues();});
@@ -523,6 +545,11 @@ function AutoTimerObj (xml) {
 			this.vpso = true;
 		}
 	}
+	
+	this.series_labeling = false;
+	if(xml.attr("series_labeling") === "yes") {
+		this.series_labeling = true;
+	}
 }
 
 AutoTimerObj.prototype.UpdateUI = function(){
@@ -552,6 +579,14 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	{
 		$('#after').val(this.after);
 		$('#before').val(this.before);
+		var _dateb= $('#before').datepicker('getDate');
+		var _maxd=new Date(2038,0,1);
+		if (_dateb < _maxd) {
+			$('#timeFrameAfter').prop('checked',true);
+			$('#beforeE').show();
+		}
+		else
+			$('#beforeE').hide();
 	}
 	$("#avoidDuplicateDescription").val(this.avoidDuplicateDescription);
 	
@@ -611,6 +646,7 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	$('#counterFormat').val(this.counterFormat);
 	$('#vps').prop('checked',this.vps);
 	$('#vpso').prop('checked',this.vpso);
+	$('#series_labeling').prop('checked',this.series_labeling);
 	checkValues();
 };
 
@@ -715,7 +751,10 @@ function saveAT()
 	CurrentAT.timeSpan = $('#timeSpan').is(':checked');
 	CurrentAT.from = $('#from').val();
 	CurrentAT.to = $('#to').val();
-
+	CurrentAT.timerOffset = $('#timerOffset').is(':checked');
+	CurrentAT.before = $('#before').val();
+	CurrentAT.after = $('#after').val();
+	
 	if($('#maxDuration').is(':checked')) {
 		CurrentAT.maxduration = $('#maxduration').val();
 	}
@@ -770,6 +809,7 @@ function saveAT()
 	CurrentAT.counterFormat = $('#counterFormat').val();
 	CurrentAT.vps = $('#vps').is(':checked');
 	CurrentAT.vpso = $('#vpso').is(':checked');
+	CurrentAT.series_labeling = $('#series_labeling').is(':checked');
 	reqs += "match=" + encodeURIComponent(CurrentAT.match);
 	reqs += "&name=" + encodeURIComponent(CurrentAT.name);
 	reqs += "&enabled=";
@@ -791,10 +831,12 @@ function saveAT()
 		reqs += CurrentAT.maxduration;
 	reqs += "&encoding=" + encodeURIComponent(CurrentAT.encoding);
 
-	if(CurrentAT.timerOffsetAfter > -1 && CurrentAT.timerOffsetBefore > -1)
-		reqs += "&offset=" + CurrentAT.timerOffsetBefore + "," + CurrentAT.timerOffsetAfter;
-	else
-		reqs += "&offset=";
+	if(CurrentAT.timerOffset) {
+		if(CurrentAT.timerOffsetAfter > -1 && CurrentAT.timerOffsetBefore > -1)
+			reqs += "&offset=" + CurrentAT.timerOffsetBefore + "," + CurrentAT.timerOffsetAfter;
+		else
+			reqs += "&offset=";
+	}
 
 	if(CurrentAT.timeSpan)
 		reqs += "&timespanFrom=" + CurrentAT.from + "&timespanTo=" + CurrentAT.to;
@@ -849,7 +891,9 @@ function saveAT()
 	reqs += (CurrentAT.vps) ? "1" : "0";
 	reqs += "&vps_overwrite=";
 	reqs += (CurrentAT.vpso) ? "1" : "0";
-
+	reqs += "&series_labeling=";
+	reqs += (CurrentAT.series_labeling) ? "1" : "0";
+	
 	if(!CurrentAT.isNew)
 		reqs += "&id=" + CurrentAT.id;
 		

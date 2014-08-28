@@ -73,10 +73,11 @@ fieldset > label
 								<br><label for="timeFrame">$tstrings['at_datespan']:</label>
 								<input type="checkbox" name="timeFrame" id="timeFrame" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="timeFrameE">
-									<label for="before">$tstrings['at_datespan_before']:</label>
-									<input type="text" name="before" id="before" value="" class="text date ui-widget-content ui-corner-all">
-									<label for="after">$tstrings['at_datespan_after']:</label>
+									<label for="after">$tstrings['at_datespan_before']:</label>
 									<input type="text" name="after" id="after" value="" class="text date ui-widget-content ui-corner-all">
+									<input type="checkbox" name="timeFrameAfter" id="timeFrameAfter" value="" class="checkbox ui-widget-content ui-corner-all">
+									<label for="before">$tstrings['at_datespan_after']:</label>
+									<span id="beforeE"><input type="text" name="before" id="before" value="" class="text date ui-widget-content ui-corner-all"></span>
 									</span>
 								<br><label for="timerOffset">$tstrings['at_timer_offset']:</label>
 								<input type="checkbox" name="timerOffset" id="timerOffset" value="" class="checkbox ui-widget-content ui-corner-all">
@@ -209,14 +210,19 @@ fieldset > label
 									</table>
 									</span>
 								</div>
-								<br><label for="vps">$tstrings['at_vps']:</label>
 								
+								#if $hasVPS == 1
+								<br><label for="vps">$tstrings['at_vps']:</label>
 								<input type="checkbox" name="vps" id="vps" value="" class="checkbox ui-widget-content ui-corner-all">
-									<span id="vpsE">
-									<label for="vpso">$tstrings['at_vps_override']:</label>
-										<input type="checkbox" name="vpso" id="vpso" value="" class="checkbox ui-widget-content ui-corner-all">
-									</span>
-									
+								<span id="vpsE">
+								<label for="vpso">$tstrings['at_vps_override']:</label>
+									<input type="checkbox" name="vpso" id="vpso" value="" class="checkbox ui-widget-content ui-corner-all">
+								</span>
+								#end if
+								#if $hasSeriesPlugin == 1
+								<br><label for="seriesplugin">$tstrings['at_label_series']:</label>
+								<input type="checkbox" name="series_labeling" id="series_labeling" value="" class="checkbox ui-widget-content ui-corner-all">
+								#end if
 							</fieldset>
 						</form>
 						

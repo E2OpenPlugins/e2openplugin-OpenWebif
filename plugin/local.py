@@ -305,6 +305,7 @@ tstrings = {'mo': _("Mo"),
 	'at_simulate': _("Simulate"),
 	'at_timers': _("Timers"),
 	'at_delete_autotimer_question': _("Do you really want to delete the AT"),
+	'at_label_series': _("Label series"),
 
 	'bqe_add_provider_as_bouquet': _("Add Provider as new Bouquet"),
 	'bqe_add_channel': _("Add channel(s) to Bouquet"),
