@@ -102,29 +102,8 @@
 
 #raw
 
-$('#timerbegin').datetimepicker({
-	
-	timeText: tstr_time,
-	hourText: tstr_hour,
-	minuteText: tstr_minute,
-	currentText: tstr_now,
-	closeText: tstr_done,
-	monthNames: [tstr_january, tstr_february, tstr_march, tstr_april, tstr_may, tstr_june, tstr_july, tstr_august, tstr_september, tstr_october, tstr_november, tstr_december],
-	dayNames: [tstr_sunday, tstr_monday, tstr_tuesday, tstr_wednesday, tstr_thursday, tstr_friday, tstr_saturday, tstr_sunday],
-	dayNamesMin: [tstr_su, tstr_mo, tstr_tu, tstr_we, tstr_th, tstr_fr, tstr_sa, tstr_su],
-	
-	dateFormat: 'dd.mm.yy',
-	timeFormat: 'hh:mm',
-	onClose: function(dateText, inst) {
-		if ($('#timerend').val() != '' &&
-			$(this).datetimepicker('getDate') > $('#timerend').datetimepicker('getDate')) {
-				$('#error').text(tstr_start_after_end);
-				$('#errorbox').show();
-		}
-		else
-			$('#errorbox').hide();
-	}
-});
+initTimerEditBegin();
+
 $('#timerend').datetimepicker({
 	
 	timeText: tstr_time,
@@ -139,7 +118,7 @@ $('#timerend').datetimepicker({
 	dateFormat: 'dd.mm.yy',
 	timeFormat: 'hh:mm',
 	onClose: function(dateText, inst) {
-		if ($('#timerbegin').val() != '' &&	
+		if (!timeredit_begindestroy && $('#timerbegin').val() != '' &&	
 			$('#timerbegin').datetimepicker('getDate') > $(this).datetimepicker('getDate')) {
 				$('#error').text(tstr_start_after_end);
 				$('#errorbox').show();
@@ -159,9 +138,7 @@ $('#editTimerForm').dialog({
 	buttons: [
 			{text: tstr_save,
 			click: function() {
-				var begindate = new Date($('#timerbegin').datetimepicker('getDate'));
 				var enddate = new Date($('#timerend').datetimepicker('getDate'));
-
 				var repeated = 0;
 				$('[name="repeated"]:checked').each(function() {
 					repeated += parseInt($(this).val());
@@ -174,7 +151,6 @@ $('#editTimerForm').dialog({
 					
 				});
 				var urldata = { sRef: $('#bouquet_select').val(),
-					begin: Math.round(begindate.getTime() / 1000),
 					end: Math.round(enddate.getTime() / 1000),
 					name: $('#timername').val(),
 					description: $('#description').val(),
@@ -185,6 +161,12 @@ $('#editTimerForm').dialog({
 					repeated: repeated };
 				if ($('#dirname').val() != 'None')
 					urldata["dirname"] = $('#dirname').val();
+				if (!timeredit_begindestroy) {
+					var begindate = new Date($('#timerbegin').datetimepicker('getDate'));
+					urldata["begin"] = Math.round(begindate.getTime() / 1000);
+				}
+				else
+					urldata["begin"] = Math.round(current_begin);
 				
 				var canclose = false;
 				if (current_serviceref == "") {
