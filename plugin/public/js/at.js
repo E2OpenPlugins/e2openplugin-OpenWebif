@@ -601,8 +601,10 @@ AutoTimerObj.prototype.UpdateUI = function(){
 			$('#timeFrameAfter').prop('checked',true);
 			$('#beforeE').show();
 		}
-		else
+		else {
+			$('#timeFrameAfter').prop('checked',false);
 			$('#beforeE').hide();
+		}
 	}
 	$("#avoidDuplicateDescription").val(this.avoidDuplicateDescription);
 	
