@@ -1,14 +1,14 @@
 ## Version 0.4.2
-## (planed)
+## (in development)
 **FEATURES**
 * epg search as modal dialog
 * channel epg as modal dialog
 
 ## Version 0.4.1
-## (in development)
 **FEATURES**
 * show lastseen postion for recordings
 * autotimer settings editor
+* epgrefresh webif
 
 **FIXES**
 * autotimer editor

@@ -266,8 +266,6 @@ class BaseController(resource.Resource):
 			if lcd4linux_key:
 				extras.append({ 'key': lcd4linux_key, 'description': _("LCD4Linux Setup")})
 
-# TODO Epgrefresh,BouquetEditor as Webinterface
-		
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
 			extras.append({ 'key': 'ajax/at','description': _('AutoTimer')})
@@ -276,11 +274,11 @@ class BaseController(resource.Resource):
 		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/OpenWebif/controllers/views/ajax/bqe.tmpl")):
 			extras.append({ 'key': 'ajax/bqe','description': _('BouquetEditor')})
 		
-#		try:
-#			from Plugins.Extensions.EPGRefresh.EPGRefresh import epgrefresh
-#			extras.append({ 'key': 'ajax/xxx','description': 'EPGRefresh'})
-#		except ImportError:
-
+		try:
+			from Plugins.Extensions.EPGRefresh.EPGRefresh import epgrefresh
+			extras.append({ 'key': 'ajax/epgr','description': _('EPGRefresh')})
+		except ImportError:
+			pass
 		ret['extras'] = extras
 
 		return ret
