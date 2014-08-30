@@ -2,7 +2,7 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
 <style>
 optgroup {font-weight: bolder;}
-fieldset > label
+label
 {
 	-webkit-margin-top-collapse: separate;
 	margin-top: 1.5em;
@@ -12,35 +12,45 @@ fieldset > label
 <div id="content_main" style="min-height: 500px;">
 <div id="info">
 <div style="background-color: #00000">
-div style="display: inline-block; width: 100%; zoom: 1;">
+<div style="display: inline-block; width: 100%; zoom: 1;">
 <h3>EPG Refresh</h3>
 <div id="epgrefreshcontent">
 	<form>
 	<fieldset>
 		<label for="enabled">Enabled:</label>
 		<input type="checkbox" name="er_enabled" id="er_enabled" value="" class="checkbox ui-widget-content ui-corner-all">
+		<br><label for="er_enablemessage">Enable Messages:</label>
+		<input type="checkbox" name="er_enablemessage" id="er_enablemessage" value="" class="checkbox ui-widget-content ui-corner-all">
 		<br><label for="er_begin">Begin:</label>
 		<input type="text" name="er_begin" id="er_begin" value="" class="text date ui-widget-content ui-corner-all">
 		<br><label for="er_end">End:</label>
 		<input type="text" name="er_end" id="er_end" value="" class="text date ui-widget-content ui-corner-all">
 		<br><label for="er_delay_standby">Delay Standby:</label>
 		<input type="text" name="er_delay_standby" id="er_delay_standby" class="text ui-widget-content ui-corner-all">
-		<br><label for="er_inherit_autotimer">Inherit Autotimer:</label>
-		<input type="checkbox" name="er_inherit_autotimer" id="er_inherit_autotimer" value="" class="checkbox ui-widget-content ui-corner-all">
+		<br><label id="lblm" for="er_interval">Interval (min.):</label><label id="lbls" for="er_interval">Interval (sec.):</label>
+		<input type="text" name="er_interval" id="er_interval" class="text ui-widget-content ui-corner-all">
 		<br><label for="er_afterevent">Afterevent:</label>
 		<input type="checkbox" name="er_afterevent" id="er_afterevent" value="" class="checkbox ui-widget-content ui-corner-all">
 		<br><label for="er_force">Force:</label>
 		<input type="checkbox" name="er_force" id="er_force" value="" class="checkbox ui-widget-content ui-corner-all">
 		<br><label for="er_wakeup">Wakeup:</label>
 		<input type="checkbox" name="er_wakeup" id="er_wakeup" value="" class="checkbox ui-widget-content ui-corner-all">
+		<span id="er_hasAT"><br><label for="er_inherit_autotimer">Inherit Autotimer:</label>
+		<input type="checkbox" name="er_inherit_autotimer" id="er_inherit_autotimer" value="" class="checkbox ui-widget-content ui-corner-all">
 		<br><label for="er_parse_autotimer">Parse Autotimer:</label>
-		<input type="checkbox" name="er_parse_autotimer" id="er_parse_autotimer" value="" class="checkbox ui-widget-content ui-corner-all">
-		<br><label for="er_adapter">Adapter:</label>
+		<select name="er_parse_autotimer" id="er_parse_autotimer">
+		<option value="always">Yes</option>
+		<option value="never" selected="selected">No</option>
+		<option value="bg_only">Background only</option>
+		<option value="ask_yes">Ask default Yes</option>
+		<option value="ask_no">Ask default No</option>
+		</select>
+		</span><br><label for="er_adapter">Adapter:</label>
 		<select name="er_adapter" id="er_adapter">
-		<option value="" selected="selected">Default</option>
-		<option value="pip">pip</option>
-		<option value="pip_hidden">pip_hidden</option>
-		<option value="record">record</option>
+		<option value="main" selected="selected">Main Picture</option>
+		<option value="pip">Picture in Picture</option>
+		<option value="pip_hidden">Picture in Picture (hidden)</option>
+		<option value="record">Fake recording</option>
 		</select>
 		<br><label for="bouquets">$tstrings['at_bouquets']:</label>
 		<select data-placeholder="$tstrings['at_select_bouquets']" name="bouquets" id="bouquets" class="bq_select_box" multiple tabindex="16">
