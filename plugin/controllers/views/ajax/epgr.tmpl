@@ -1,0 +1,80 @@
+#filter WebSafe
+#from Plugins.Extensions.OpenWebif.local import tstrings
+<style>
+optgroup {font-weight: bolder;}
+fieldset > label
+{
+	-webkit-margin-top-collapse: separate;
+	margin-top: 1.5em;
+	display: inline-block;
+}
+</style>
+<div id="content_main" style="min-height: 500px;">
+<div id="info">
+<div style="background-color: #00000">
+<div style="display: inline-block; width: 100%; zoom: 1;">
+<h3>EPG Refresh</h3>
+<div id="epgrefreshcontent">
+	<form>
+	<fieldset>
+		<label for="enabled">Enabled:</label>
+		<input type="checkbox" name="er_enabled" id="er_enabled" value="" class="checkbox ui-widget-content ui-corner-all">
+		<br><label for="er_begin">Begin:</label>
+		<input type="text" name="er_begin" id="er_begin" value="" class="text date ui-widget-content ui-corner-all">
+		<br><label for="er_end">End:</label>
+		<input type="text" name="er_end" id="er_end" value="" class="text date ui-widget-content ui-corner-all">
+		<br><label for="er_delay_standby">Delay Standby:</label>
+		<input type="text" name="er_delay_standby" id="er_delay_standby" class="text ui-widget-content ui-corner-all">
+		<br><label for="er_inherit_autotimer">Inherit Autotimer:</label>
+		<input type="checkbox" name="er_inherit_autotimer" id="er_inherit_autotimer" value="" class="checkbox ui-widget-content ui-corner-all">
+		<br><label for="er_afterevent">Afterevent:</label>
+		<input type="checkbox" name="er_afterevent" id="er_afterevent" value="" class="checkbox ui-widget-content ui-corner-all">
+		<br><label for="er_force">Force:</label>
+		<input type="checkbox" name="er_force" id="er_force" value="" class="checkbox ui-widget-content ui-corner-all">
+		<br><label for="er_wakeup">Wakeup:</label>
+		<input type="checkbox" name="er_wakeup" id="er_wakeup" value="" class="checkbox ui-widget-content ui-corner-all">
+		<br><label for="er_parse_autotimer">Parse Autotimer:</label>
+		<input type="checkbox" name="er_parse_autotimer" id="er_parse_autotimer" value="" class="checkbox ui-widget-content ui-corner-all">
+		<br><label for="er_adapter">Adapter:</label>
+		<select name="er_adapter" id="er_adapter">
+		<option value="" selected="selected">Default</option>
+		<option value="pip">pip</option>
+		<option value="pip_hidden">pip_hidden</option>
+		<option value="record">record</option>
+		</select>
+		<br><label for="bouquets">$tstrings['at_bouquets']:</label>
+		<select data-placeholder="$tstrings['at_select_bouquets']" name="bouquets" id="bouquets" class="bq_select_box" multiple tabindex="16">
+		</select>
+		<br><label for="channels">$tstrings['at_channels']:</label>
+		<select data-placeholder="$tstrings['at_select_channels']" name="channels" id="channels" class="ch_select_box" multiple tabindex="16">
+		</select>
+	</fieldset>
+	</form>
+	<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+	<div id="actions">
+	<button id="epgrbutton0">Reload</button>
+	<button id="epgrbutton1">Save</button>
+	<button id="epgrbutton2">Do Refresh</button>
+	</div></div>
+	<div id="errorbox" class="timerlist_row" style="color: red;">
+	<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+	<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+	<span id="error"></span>
+	<span id="success" style="color: green;"></span>
+	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript" src="/js/jquery-ui-timepicker-addon.min.js"></script>
+<script type="text/javascript" src="/js/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="/js/epgr.js"></script>
+<script type="text/javascript">
+#raw
+$(function() { InitPage();});
+#end raw
+</script>
+<link rel="stylesheet" type="text/css" href="/css/chosen.min.css" />
+#end filter

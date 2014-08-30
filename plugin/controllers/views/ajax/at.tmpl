@@ -235,8 +235,9 @@ fieldset > label
 						<button id="atbutton4">$tstrings['at_parse']</button>
 						<button id="atbutton5">$tstrings['at_simulate']</button>
 						<button id="atbutton6">$tstrings['at_timers']</button>
+						<button id="atbutton7">Settings</button>
 						</div></div>
-							<div id="errorbox" class="timerlist_row" style="color: red;">
+						<div id="errorbox" class="timerlist_row" style="color: red;">
 		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
 			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
 			<span id="error"></span>
@@ -264,6 +265,53 @@ fieldset > label
 
 <div id="timerdlg" style="display:none;">
 <div id="timerdlgcont">
+</div>
+<div>
+
+<div id="atsettingdlg" style="display:none;">
+<div id="atsettingdlgcont">
+<form>
+<fieldset>
+<label for="ats_autopoll">AutoPoll:</label>
+<input type="checkbox" name="ats_autopoll" id="ats_autopoll" value="" class="checkbox ui-widget-content ui-corner-all">
+<label for="ats_interval">Interval:</label>
+<input type="text" size="5" name="ats_interval" id="ats_interval" class="text ui-widget-content ui-corner-all">
+<label for="ats_maxdaysinfuture">Max Days:</label>
+<input type="text" size="5" name="ats_maxdaysinfuture" id="ats_maxdaysinfuture" class="text ui-widget-content ui-corner-all">
+<br><label for="ats_try_guessing">Try Guessing:</label>
+<input type="checkbox" name="ats_try_guessing" id="ats_try_guessing" value="" class="checkbox ui-widget-content ui-corner-all">
+<label for="ats_fastscan">Fastscan:</label>
+<input type="checkbox" name="ats_fastscan" id="ats_fastscan" value="" class="checkbox ui-widget-content ui-corner-all">
+<label for="ats_show_in_extensionsmenu">Show in Extensionmenu:</label>
+<input type="checkbox" name="ats_show_in_extensionsmenu" id="ats_show_in_extensionsmenu" value="" class="checkbox ui-widget-content ui-corner-all">
+<br><label for="ats_disabled_on_conflict">Disabled on Conflict:</label>
+<input type="checkbox" name="ats_disabled_on_conflict" id="ats_disabled_on_conflict" value="" class="checkbox ui-widget-content ui-corner-all">
+<label for="ats_addsimilar_on_conflict">Add Similar on Conflict:</label>
+<input type="checkbox" name="ats_addsimilar_on_conflict" id="ats_addsimilar_on_conflict" value="" class="checkbox ui-widget-content ui-corner-all">
+<br><label for="ats_notifconflict">Notify if Conflict:</label>
+<input type="checkbox" name="ats_notifconflict" id="ats_notifconflict" value="" class="checkbox ui-widget-content ui-corner-all">
+<label for="ats_notifsimilar">Notify if Similar:</label>
+<input type="checkbox" name="ats_notifsimilar" id="ats_notifsimilar" value="" class="checkbox ui-widget-content ui-corner-all">
+<br><label for="ats_add_autotimer_to_tags">Add Autotimer to Tags:</label>
+<input type="checkbox" name="ats_add_autotimer_to_tags" id="ats_add_autotimer_to_tags" value="" class="checkbox ui-widget-content ui-corner-all">
+<label for="ats_add_name_to_tags">Add Name to Tags:</label>
+<input type="checkbox" name="ats_add_name_to_tags" id="ats_add_name_to_tags" value="" class="checkbox ui-widget-content ui-corner-all">
+
+<br><label for="ats_refresh">Refresh:</label>
+<select id="ats_refresh" name="ats_refresh" size="1">
+<option value="none" selected>None</option>
+<option value="auto" selected>Auto</option>
+<option value="all" selected>All</option>
+</select>
+
+<label for="ats_editor">Editor:</label>
+<select id="ats_editor" name="ats_editor" size="1">
+<option value="plain" selected>Plain</option>
+<option value="wizzard" selected>Wizzard</option>
+</select>
+
+</fieldset>
+</form>
 </div>
 <div>
 

@@ -147,6 +147,22 @@ class BaseController(resource.Resource):
 						nout = self.loadTemplate("main", "main", args)
 						if nout:
 							out = nout
+# prepare gzip for all templates
+# TODO: speed check with or without gzip on lower speed boxes
+#					supported=[]
+#					acceptHeaders = request.requestHeaders.getRawHeaders('Accept-Encoding', [])
+#					supported = ','.join(acceptHeaders).split(',')
+#					if 'gzip' in supported:
+#						encoding = request.responseHeaders.getRawHeaders('Content-Encoding')
+#						if encoding:
+#							encoding = '%s,gzip' % ','.join(encoding)
+#						else:
+#							encoding = 'gzip'
+#						request.responseHeaders.setRawHeaders('Content-Encoding',[encoding])
+#						compstr = self.compressBuf(out)
+#						request.setHeader('Content-Length', '%d' % len(compstr))
+#						request.write(compstr)
+#					else:
 					request.write(out)
 					request.finish()
 
@@ -190,8 +206,6 @@ class BaseController(resource.Resource):
 					lcd4linux_key = None
 			if lcd4linux_key:
 				extras.append({ 'key': lcd4linux_key, 'description': _("LCD4Linux Setup")})
-
-# TODO Epgrefresh as Webinterface
 		
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
@@ -201,11 +215,11 @@ class BaseController(resource.Resource):
 		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/OpenWebif/controllers/views/ajax/bqe.tmpl")):
 			extras.append({ 'key': 'ajax/bqe','description': _('BouquetEditor')})
 		
-#		try:
-#			from Plugins.Extensions.EPGRefresh.EPGRefresh import epgrefresh
-#			extras.append({ 'key': 'ajax/xxx','description': 'EPGRefresh'})
-#		except ImportError:
-
+		try:
+			from Plugins.Extensions.EPGRefresh.EPGRefresh import epgrefresh
+			extras.append({ 'key': 'ajax/epgr','description': _('EPGRefresh')})
+		except ImportError:
+			pass
 		ret['extras'] = extras
 
 		return ret

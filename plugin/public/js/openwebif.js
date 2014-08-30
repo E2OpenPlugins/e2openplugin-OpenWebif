@@ -684,6 +684,7 @@ var current_serviceref;
 var current_begin;
 var current_end;
 var timeredit_initialized = false;
+var timeredit_begindestroy = false;
 
 function initTimerEdit() {
 	$.ajax({
@@ -740,6 +741,33 @@ function initTimerEdit() {
 	timeredit_initialized = true;
 }
 
+function initTimerEditBegin()
+{
+	$('#timerbegin').datetimepicker({
+		
+		timeText: tstr_time,
+		hourText: tstr_hour,
+		minuteText: tstr_minute,
+		currentText: tstr_now,
+		closeText: tstr_done,
+		monthNames: [tstr_january, tstr_february, tstr_march, tstr_april, tstr_may, tstr_june, tstr_july, tstr_august, tstr_september, tstr_october, tstr_november, tstr_december],
+		dayNames: [tstr_sunday, tstr_monday, tstr_tuesday, tstr_wednesday, tstr_thursday, tstr_friday, tstr_saturday, tstr_sunday],
+		dayNamesMin: [tstr_su, tstr_mo, tstr_tu, tstr_we, tstr_th, tstr_fr, tstr_sa, tstr_su],
+		
+		dateFormat: 'dd.mm.yy',
+		timeFormat: 'hh:mm',
+		onClose: function(dateText, inst) {
+			if ($('#timerend').val() != '' &&
+				$(this).datetimepicker('getDate') > $('#timerend').datetimepicker('getDate')) {
+					$('#error').text(tstr_start_after_end);
+					$('#errorbox').show();
+			}
+			else
+				$('#errorbox').hide();
+		}
+	});
+}
+
 function editTimer(serviceref, begin, end) {
 	serviceref=decodeURI(serviceref);
 	current_serviceref = serviceref;
@@ -749,6 +777,12 @@ function editTimer(serviceref, begin, end) {
 	if (!timeredit_initialized) {
 		initTimerEdit();
 	}
+	
+	if (timeredit_begindestroy) {
+		initTimerEditBegin();
+		timeredit_begindestroy=false;
+	}
+
 	
 	$.ajax({
 		async: false,
@@ -769,7 +803,6 @@ function editTimer(serviceref, begin, end) {
 							$('#justplay').prop("checked", timer.justplay);
 							$('#afterevent').val(timer.afterevent);
 							$('#errorbox').hide();
-
 							var flags=timer.repeated;
 							for (var i=0; i<7; i++) {
 								$('#day'+i).attr('checked', ((flags & 1)==1));
@@ -791,6 +824,7 @@ function editTimer(serviceref, begin, end) {
 							// don't allow edit some fields if running
 							if(r) {
 								$('#timerbegin').datetimepicker('destroy');
+								timeredit_begindestroy=true;
 								$('#timerbegin').addClass('ui-state-disabled');
 								$('#timername').addClass('ui-state-disabled');
 								$("#dirname option").not(":selected").attr("disabled", "disabled");
@@ -840,7 +874,7 @@ function addTimer(evt,chsref,chname) {
 	if (!timeredit_initialized) {
 		initTimerEdit();
 	}
-
+	
 	if (typeof chsref !== 'undefined' && typeof chname !== 'undefined') {
 		// NOT NICE BUT IT WORKS
 		// TODO : remove the radio channel from the list after close

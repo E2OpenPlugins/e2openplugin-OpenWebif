@@ -10,6 +10,7 @@
 //* V 1.2 - Optimize bouquets/channels selector
 //* V 1.3 - Allow alternatives as channel, small js fixes
 //* V 1.4 - fix timespan, offset, support series plugin
+//* V 1.5 - autotimer settings
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -248,6 +249,7 @@ function InitPage() {
 	$("#atbutton4").click(function () { parseAT(); });
 	$("#atbutton5").click(function () { simulateAT(); });
 	$("#atbutton6").click(function () { listTimers(); });
+	$("#atbutton7").click(function () { getAutoTimerSettings(); });
 	// TODO: icons
 
 	$('#errorbox').hide();
@@ -266,6 +268,20 @@ function InitPage() {
 		title: tstr_timerlist,
 		width: 600,
 		height: 400
+	});
+	
+	
+	var buttons = {}
+	buttons["Save"] = function() {setAutoTimerSettings(); $(this).dialog("close");};
+	buttons["Cancel"] = function() {$(this).dialog("close");};
+	$("#atsettingdlg").dialog({
+		modal : true, 
+		overlay: { backgroundColor: "#000", opacity: 0.5 }, 
+		autoOpen: false,
+		title: "AutoTimer Settings",
+		width: 600,
+		height: 400,
+		buttons: buttons
 	});
 }
 
@@ -585,8 +601,10 @@ AutoTimerObj.prototype.UpdateUI = function(){
 			$('#timeFrameAfter').prop('checked',true);
 			$('#beforeE').show();
 		}
-		else
+		else {
+			$('#timeFrameAfter').prop('checked',false);
 			$('#beforeE').hide();
+		}
 	}
 	$("#avoidDuplicateDescription").val(this.avoidDuplicateDescription);
 	
@@ -992,6 +1010,83 @@ function listTimers()
 		$("#timerdlgcont #timers .moviecontainer_main .moviecontainer_right div a:first").hide();
 	});
 }
+
+
+function getAutoTimerSettings()
+{
+	$.ajax({
+		type: "GET", url: "/autotimer/get",
+		dataType: "xml",
+		success: function (xml)
+		{
+			var settings = [];
+			$(xml).find("e2setting").each(function () {
+				var name = $(this).find("e2settingname").text();
+				var val = $(this).find("e2settingvalue").text();
+				if(name.indexOf("config.plugins.autotimer.") === 0)
+				{
+					name = name.substring(25);
+					if(val === "True")
+						$('#ats_'+name).prop('checked',true);
+					else if(val === "False")
+						$('#ats_'+name).prop('checked',false);
+					else
+						$('#ats_'+name).val(val);
+				}
+			});
+			$("#atsettingdlg").dialog( "open" );
+		},error: function (request, status, error) {
+			showError(request.responseText);
+		}
+	});
+}
+
+
+function setAutoTimerSettings()
+{
+	var reqs = "/autotimer/set?&autopoll=";
+	reqs += $('#ats_autopoll').is(':checked') ? "true":"";
+	reqs += "&interval=" + $('#ats_interval').val();
+	reqs += "&try_guessing=";
+	reqs += $('#ats_try_guessing').is(':checked') ? "true":"";
+	reqs += "&disabled_on_conflict=";
+	reqs += $('#ats_disabled_on_conflict').is(':checked') ? "true":"";
+	reqs += "&addsimilar_on_conflict=";
+	reqs += $('#ats_addsimilar_on_conflict').is(':checked') ? "true":"";
+	reqs += "&show_in_extensionsmenu=";
+	reqs += $('#ats_show_in_extensionsmenu').is(':checked') ? "true":"";
+	reqs += "&fastscan=";
+	reqs += $('#ats_fastscan').is(':checked') ? "true":"";
+	reqs += "&notifconflict=";
+	reqs += $('#ats_notifconflict').is(':checked') ? "true":"";
+	reqs += "&notifsimilar=";
+	reqs += $('#ats_notifsimilar').is(':checked') ? "true":"";
+	reqs += "&maxdaysinfuture=" + $('#ats_maxdaysinfuture').val();
+	reqs += $('#ats_add_autotimer_to_tags').is(':checked') ? "true":"";
+	reqs += "&add_autotimer_to_tags=" + $('#ats_add_autotimer_to_tags').val();
+	reqs += $('#ats_add_name_to_tags').is(':checked') ? "true":"";
+	reqs += "&add_name_to_tags=" + $('#ats_add_name_to_tags').val();
+	
+	reqs += "&refresh=" + $('#ats_refresh').val();
+	reqs += "&editor=" + $('#ats_editor').val();
+	
+	$.ajax({
+		type: "GET", url: reqs,
+		dataType: "xml",
+		success: function (xml)
+		{
+			var state=$(xml).find("e2state").first();
+			var txt=$(xml).find("e2statetext").first();
+			showError(txt.text(),state.text());
+		},
+		error: function (request, status, error) {
+			showError(request.responseText);
+		}
+	});
+	
+}
+
+
 function showError(txt,st)
 {
 	st = typeof st !== 'undefined' ? st : "False";

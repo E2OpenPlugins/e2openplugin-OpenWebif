@@ -258,3 +258,8 @@ class AjaxController(BaseController):
 	def P_bqe(self, request):
 		ret = {}
 		return ret
+
+	def P_epgr(self, request):
+		ret = {}
+		return ret
+
