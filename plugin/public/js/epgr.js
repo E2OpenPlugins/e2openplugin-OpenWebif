@@ -15,7 +15,7 @@
 
 var epgxml;
 var binterval_in_seconds=true;
-
+var er_hasAutoTimer = false;
 function toUnixDate(date){
 	var datea = date.split('.');
 	var d = new Date();
@@ -25,38 +25,39 @@ function toUnixDate(date){
 	d.setSeconds( 0 );
 	return Math.floor(d.getTime() / 1000);
 }
-
 function isInArray(array, search) { return (array.indexOf(search) >= 0) ? true : false; }
+function addZero(i) { if (i < 10) { i = "0" + i; } return i; }
+function isBQ(sref) {return ((sref.indexOf("FROM BOUQUET") > -1) && (sref.indexOf("1:134:1") != 0));}
 
 function saveEPGR()
 {
-
 	var reqs = "/epgrefresh/set?&enabled=";
 	reqs += $('#er_enabled').is(':checked') ? "true":"";
-	
+	reqs += "&enablemessage=";
+	reqs += $('#er_enablemessage').is(':checked') ? "true":"";
 	if($('#er_ebegin').is(':checked'))
 		reqs += "&begin=" + toUnixDate($('#er_begin').val());
 	if($('#er_eend').is(':checked'))
 		reqs += "&end=" + toUnixDate($('#er_end').val());
-
 	reqs += "&delay_standby=" + $('#er_delay_standby').val();
-	reqs += "&inherit_autotimer=";
-	reqs += $('#er_inherit_autotimer').is(':checked') ? "true":"";
 	reqs += "&afterevent=";
 	reqs += $('#er_afterevent').is(':checked') ? "true":"";
 	reqs += "&force=";
 	reqs += $('#er_force').is(':checked') ? "true":"";
 	reqs += "&wakeup=";
 	reqs += $('#er_wakeup').is(':checked') ? "true":"";
-	reqs += "&parse_autotimer=";
-	reqs += $('#er_parse_autotimer').is(':checked') ? "true":"";
 	reqs += "&adapter=" + $('#er_adapter').val();
 
+	if(er_hasAutoTimer) {
+		reqs += "&inherit_autotimer=";
+		reqs += $('#er_inherit_autotimer').is(':checked') ? "true":"";
+		reqs += "&parse_autotimer=" + $('#er_parse_autotimer').val();
+	}
+	
 	if(binterval_in_seconds)
-		reqs += "&interval_in_seconds=" + $('#er_interval').val();
+		reqs += "&interval_seconds=" + $('#er_interval').val();
 	else
 		reqs += "&interval=" + $('#er_interval').val();
-	
 	
 	$.ajax({
 		type: "GET", url: reqs,
@@ -73,14 +74,11 @@ function saveEPGR()
 			showError(request.responseText);
 		}
 	});
-	
 }
 
 function SaveCHBQ()
 {
-
 	var reqs = "";
-
 	var Bouquets = $("#bouquets").chosen().val();
 	var Channels = $("#channels").chosen().val();
 
@@ -122,6 +120,7 @@ function readEPGR2(chbq)
 {
 	var begin;
 	var end;
+	er_hasAutoTimer = false;
 	$.ajax({
 		type: "GET", url: "/epgrefresh/get",
 		dataType: "xml",
@@ -142,8 +141,20 @@ function readEPGR2(chbq)
 						begin = val;
 					else if(name === "end")
 						end = val;
+					else if(name == "interval_seconds") {
+						binterval_in_seconds = true;
+						$("#er_interval").val(val);
+					}
+					else if(name == "interval") {
+						binterval_in_seconds = false;
+						$("#er_interval").val(val);
+					}
 					else
 						$('#er_'+name).val(val);
+				}
+				else {
+					if(name === "hasAutoTimer" && val === "True")
+						er_hasAutoTimer = true;
 				}
 			});
 			
@@ -154,8 +165,6 @@ function readEPGR2(chbq)
 		}
 	});
 }
-
-function addZero(i) { if (i < 10) { i = "0" + i; } return i; }
 
 function UpdateCHBQ(chbq,begin,end)
 {
@@ -195,6 +204,22 @@ function UpdateCHBQ(chbq,begin,end)
 	});
 	$('#bouquets').trigger("chosen:updated");
 	$('#channels').trigger("chosen:updated");
+
+	if(binterval_in_seconds) {
+		$('#lbls').show();
+		$('#lblm').hide();
+	}
+	else
+	{
+		$('#lblm').show();
+		$('#lbls').hide();
+	}
+	
+	if(er_hasAutoTimer) {
+		$('#er_hasAT').show();
+	} else {
+		$('#er_hasAT').hide();
+	}
 }
 
 function readEPGR()
@@ -216,11 +241,6 @@ function reloadEPGR()
 {
 	showError("");
 	readEPGR();
-}
-
-function isBQ(sref)
-{
-	return ((sref.indexOf("FROM BOUQUET") > -1) && (sref.indexOf("1:134:1") != 0));
 }
 
 function getAllServices()
@@ -258,25 +278,19 @@ function getAllServices()
 }
 
 function initValues () {
-
 	$('#er_begin').val('22:30');
 	$('#er_end').val('6:30');
-	
 	$('#er_begin').timepicker();
 	$('#er_end').timepicker();
-
 	$("#bouquets").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
 	$("#bouquets").chosen().change( function() {$("#bouquets").val($(this).val());});
 	$("#channels").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
 	$("#channels").chosen().change( function() {$("#channels").val($(this).val());});
 }
 
-
 function InitPage() {
-
 	initValues ();
 	getAllServices();
-	
 	$("#actions").buttonset();
 	$("#epgrbutton0").click(function () { reloadEPGR(); });
 	$("#epgrbutton0").button({icons: { primary: "ui-icon-arrowrefresh-1-w"}});
@@ -284,9 +298,7 @@ function InitPage() {
 	$("#epgrbutton1").button({icons: { primary: "ui-icon-disk"}});
 	$("#epgrbutton2").click(function () { DoRefresh(); });
 	// TODO: icons
-
 	$('#errorbox').hide();
-	
 }
 
 
