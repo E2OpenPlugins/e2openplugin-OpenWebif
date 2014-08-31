@@ -56,7 +56,7 @@ def getStream(session, request, m3ufile):
 			portNumber = request.args["port"][0]
 			
 	# INI use dynamic encoder allocation, and each stream can have diffrent parameters 
-	if  getMachineBuild() in ('inihdp'):
+	if  getMachineBuild() in ('inihdp', 'hd2400', 'et10000'):
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
 				bitrate = config.plugins.transcodingsetup.bitrate.value
@@ -103,7 +103,7 @@ def getTS(self, request):
 			portNumber = request.args["port"][0]
 			
 		# INI use dynamic encoder allocation, and each stream can have diffrent parameters
-		if  getMachineBuild() in ('inihdp'):
+		if  getMachineBuild() in ('inihdp', 'hd2400', 'et10000'):
 			if request.args["device"][0] == "phone" :
 				portNumber = config.OpenWebif.streamport.value
 				bitrate = config.plugins.transcodingsetup.bitrate.value
