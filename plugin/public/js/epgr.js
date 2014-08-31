@@ -48,11 +48,12 @@ function saveEPGR()
 	reqs += $('#er_wakeup').is(':checked') ? "true":"";
 	reqs += "&adapter=" + $('#er_adapter').val();
 
-	if(er_hasAutoTimer) {
-		reqs += "&inherit_autotimer=";
-		reqs += $('#er_inherit_autotimer').is(':checked') ? "true":"";
-		reqs += "&parse_autotimer=" + $('#er_parse_autotimer').val();
-	}
+	// oe-a EPGRefresh claims to have autotimer integration but fails to accept these params
+	//if(er_hasAutoTimer) {
+	//	reqs += "&inherit_autotimer=";
+	//	reqs += $('#er_inherit_autotimer').is(':checked') ? "true":"";
+	//	reqs += "&parse_autotimer=" + $('#er_parse_autotimer').val();
+	//}
 	
 	if(binterval_in_seconds)
 		reqs += "&interval_seconds=" + $('#er_interval').val();
