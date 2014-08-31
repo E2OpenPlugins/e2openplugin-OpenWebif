@@ -48,13 +48,29 @@ def getStream(session, request, m3ufile):
 	portNumber = config.OpenWebif.streamport.value
 	info = getInfo()
 	model = info["model"]
-	if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or getMachineBuild() in ('inihdp'):
+	if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus"):
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
 				portNumber = config.plugins.transcodingsetup.port.value
 		if "port" in request.args:
 			portNumber = request.args["port"][0]
-	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef)
+			
+	# INI use dynamic encoder allocation, and each stream can have diffrent parameters 
+	if  getMachineBuild() in ('inihdp'):
+		if "device" in request.args :
+			if request.args["device"][0] == "phone" :
+				bitrate = config.plugins.transcodingsetup.bitrate.value
+				resolution = config.plugins.transcodingsetup.resolution.value
+				(width, height) = tuple(resolution.split('x'))
+				framrate = config.plugins.transcodingsetup.framerate.value
+				aspectratio = config.plugins.transcodingsetup.aspectratio.value
+				interlaced = config.plugins.transcodingsetup.interlaced.value
+				args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+				response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef, args)
+			else:
+				response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef)
+	else: # All other boxes which use transtreamproxy
+		response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef)
 	request.setHeader('Content-Type', 'application/text')
 	return response
 
@@ -79,13 +95,29 @@ def getTS(self, request):
 		portNumber = config.OpenWebif.port.value
 		info = getInfo()
 		model = info["model"]
-		if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or getMachineBuild() in ('inihdp'):
+		if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus"):
 			if "device" in request.args :
 				if request.args["device"][0] == "phone" :
 					portNumber = config.plugins.transcodingsetup.port.value
 		if "port" in request.args:
 			portNumber = request.args["port"][0]
-		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), portNumber, quote(filename))
+			
+		# INI use dynamic encoder allocation, and each stream can have diffrent parameters
+		if  getMachineBuild() in ('inihdp'):
+			if request.args["device"][0] == "phone" :
+				portNumber = config.OpenWebif.streamport.value
+				bitrate = config.plugins.transcodingsetup.bitrate.value
+				resolution = config.plugins.transcodingsetup.resolution.value
+				(width, height) = tuple(resolution.split('x'))
+				framrate = config.plugins.transcodingsetup.framerate.value
+				aspectratio = config.plugins.transcodingsetup.aspectratio.value
+				interlaced = config.plugins.transcodingsetup.interlaced.value
+				args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+				response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s%s\n" % ((progopt,request.getRequestHostname(), portNumber, quote(filename), args))
+			else:
+				response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), portNumber, quote(filename))
+		else: # All other boxes which use transtreamproxy
+			response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), portNumber, quote(filename))
 		request.setHeader('Content-Type', 'application/text')
 		return response
 	else:
