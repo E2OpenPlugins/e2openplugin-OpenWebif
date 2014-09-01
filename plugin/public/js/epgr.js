@@ -16,6 +16,8 @@
 var epgxml;
 var binterval_in_seconds=true;
 var er_hasAutoTimer = false;
+var er_bqchchanged = false;
+
 function toUnixDate(date){
 	var datea = date.split('.');
 	var d = new Date();
@@ -28,6 +30,7 @@ function toUnixDate(date){
 function isInArray(array, search) { return (array.indexOf(search) >= 0) ? true : false; }
 function addZero(i) { if (i < 10) { i = "0" + i; } return i; }
 function isBQ(sref) {return ((sref.indexOf("FROM BOUQUET") > -1) && (sref.indexOf("1:134:1") != 0));}
+function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 
 function saveEPGR()
 {
@@ -78,13 +81,21 @@ function saveEPGR()
 
 function SaveCHBQ()
 {
+	if(er_bqchchanged === false)
+		return;
+	
 	var reqs = "";
 	var Bouquets = $("#bouquets").chosen().val();
 	var Channels = $("#channels").chosen().val();
 
 	if(Channels && Channels.length > 0) {
 		$.each( Channels, function( index, value ){
-			reqs += "&sref=" + encodeURIComponent(value);
+			if(isAlter(value)) {
+				reqs += "&sref=" + value;
+			}
+			else {
+				reqs += "&sref=" + encodeURIComponent(value);
+			}
 		});
 	}
 
@@ -114,6 +125,7 @@ function SaveCHBQ()
 			showError(request.responseText);
 		}
 	});
+	
 }
 
 function readEPGR2(chbq)
@@ -121,6 +133,7 @@ function readEPGR2(chbq)
 	var begin;
 	var end;
 	er_hasAutoTimer = false;
+
 	$.ajax({
 		type: "GET", url: "/epgrefresh/get",
 		dataType: "xml",
@@ -183,17 +196,23 @@ function UpdateCHBQ(chbq,begin,end)
 
 	var _c = [];
 	var _b = [];
+	
 	$(chbq).find("e2service").each(function () {
 		var ref = $(this).find("e2servicereference").text();
-		if (isBQ(ref))
+		if (isBQ(ref)) {
 			_b.push(encodeURIComponent(ref));
-		else
+		}
+		else if (isAlter(ref)) {
+			_c.push(encodeURIComponent(ref));
+		}
+		else {
 			_c.push(ref);
+		}
 	});
 	
 	var Channels = _c.slice();
 	var Bouquets = _b.slice();
-
+	
 	$('#channels').val(null);
 	$('#bouquets').val(null);
 	$.each(Bouquets, function(index, value) {
@@ -205,6 +224,8 @@ function UpdateCHBQ(chbq,begin,end)
 	$('#bouquets').trigger("chosen:updated");
 	$('#channels').trigger("chosen:updated");
 
+	er_bqchchanged = false;
+	
 	if(binterval_in_seconds) {
 		$('#lbls').show();
 		$('#lblm').hide();
@@ -261,8 +282,10 @@ function getAllServices()
 				var ref = val['servicereference']
 				if (!isInArray(refs,ref)) {
 					refs.push(ref);
-					if(ref.substring(0, 4) == "1:0:" || ref.substring(0, 7) == "1:134:1")
+					if(ref.substring(0, 4) == "1:0:")
 						items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
+					if(ref.substring(0, 7) == "1:134:1")
+						items.push( "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>" );
 				}
 			});
 			if (items.length>0) {
@@ -283,9 +306,9 @@ function initValues () {
 	$('#er_begin').timepicker();
 	$('#er_end').timepicker();
 	$("#bouquets").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
-	$("#bouquets").chosen().change( function() {$("#bouquets").val($(this).val());});
+	$("#bouquets").chosen().change( function() {$("#bouquets").val($(this).val());er_bqchchanged = true;});
 	$("#channels").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
-	$("#channels").chosen().change( function() {$("#channels").val($(this).val());});
+	$("#channels").chosen().change( function() {$("#channels").val($(this).val());er_bqchchanged = true;});
 }
 
 function InitPage() {
