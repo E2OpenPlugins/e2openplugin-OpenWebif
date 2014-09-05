@@ -17,7 +17,7 @@ from twisted.web import server, http, static, resource, error
 from Cheetah.Template import Template
 
 from models.info import getInfo, getBasePath, getPublicPath, getViewsPath
-from models.config import getCollapsedMenus, getRemoteGrabScreenshot, getZapStream, getConfigsSections
+from models.config import getCollapsedMenus, getRemoteGrabScreenshot, getZapStream, getConfigsSections, getShowName, getCustomName, getBoxName
 
 import imp
 import sys
@@ -183,6 +183,11 @@ class BaseController(resource.Resource):
 		ret['remotegrabscreenshot'] = getRemoteGrabScreenshot()['remotegrabscreenshot']
 		ret['configsections'] = getConfigsSections()['sections']
 		ret['zapstream'] = getZapStream()['zapstream']
+		ret['showname'] = getShowName()['showname']
+		ret['customname'] = getCustomName()['customname']
+		ret['boxname'] = getBoxName()['boxname']
+		if not ret['boxname'] or not ret['customname']:
+			ret['boxname'] = getInfo()['brand']+" "+getInfo()['model']
 		ret['box'] = "dmm"
 #		if open("/proc/stb/info/model",'r').read().strip().lower() == "gigablue":
 #			ret['box'] = "gigablue"
