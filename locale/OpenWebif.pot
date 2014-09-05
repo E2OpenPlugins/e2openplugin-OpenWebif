@@ -24,6 +24,15 @@ msgstr ""
 msgid "OpenWebInterface Enabled"
 msgstr ""
 
+msgid "Show box name in header"
+msgstr ""
+
+msgid "Use custom box name"
+msgstr ""
+
+msgid "Custom box name"
+msgstr ""
+
 msgid "HTTP port"
 msgstr ""
 
