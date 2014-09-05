@@ -65,6 +65,24 @@ def getZapStream():
 		"zapstream": config.OpenWebif.webcache.zapstream.value
 	}
 
+def getShowName():
+	return {
+		"result": True,
+		"showname": config.OpenWebif.identifier.value
+	}
+
+def getCustomName():
+	return {
+		"result": True,
+		"customname": config.OpenWebif.identifier.custom.value
+	}
+
+def getBoxName():
+	return {
+		"result": True,
+		"boxname": config.OpenWebif.identifier.text.value
+	}
+
 def getJsonFromConfig(cnf):
 	if cnf.__class__.__name__ == "ConfigSelection" or cnf.__class__.__name__ == "ConfigSelectionNumber":
 		if type(cnf.choices.choices) == dict:
