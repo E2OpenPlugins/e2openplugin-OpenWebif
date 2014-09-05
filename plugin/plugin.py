@@ -30,7 +30,9 @@ from __init__ import _
 
 config.OpenWebif = ConfigSubsection()
 config.OpenWebif.enabled = ConfigYesNo(default=True)
-# Use temporary port 8088 to avoid conflict with Webinterface
+config.OpenWebif.identifier = ConfigYesNo(default=True)
+config.OpenWebif.identifier.custom = ConfigYesNo(default=False)
+config.OpenWebif.identifier.text = ConfigText(default = "", fixed_size = False)
 config.OpenWebif.port = ConfigInteger(default = 80, limits=(1, 65535) )
 config.OpenWebif.streamport = ConfigInteger(default = 8001, limits=(1, 65535) )
 config.OpenWebif.auth = ConfigYesNo(default=False)
@@ -88,6 +90,11 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		self.list = []
 		self.list.append(getConfigListEntry(_("OpenWebInterface Enabled"), config.OpenWebif.enabled))
 		if config.OpenWebif.enabled.value:
+			self.list.append(getConfigListEntry(_("Show box name in header"), config.OpenWebif.identifier))
+			if config.OpenWebif.identifier.value:
+				self.list.append(getConfigListEntry(_("Use custom box name"), config.OpenWebif.identifier.custom))
+				if config.OpenWebif.identifier.custom.value:
+					self.list.append(getConfigListEntry(_("Custom box name"), config.OpenWebif.identifier.text))
 			self.list.append(getConfigListEntry(_("HTTP port"), config.OpenWebif.port))
 			self.list.append(getConfigListEntry(_("Enable HTTP Authentication"), config.OpenWebif.auth))
 			self.list.append(getConfigListEntry(_("Enable HTTPS"), config.OpenWebif.https_enabled))
