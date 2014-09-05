@@ -25,6 +25,15 @@ msgstr "OpenWebif-URL: http://ip_des_receivers:port"
 msgid "OpenWebInterface Enabled"
 msgstr "OpenWebinterface einschalten"
 
+msgid "Show box name in header"
+msgstr "Boxnamen in der Kopfzeile anzeigen"
+
+msgid "Use custom box name"
+msgstr "Eigenen Boxnamen verwenden"
+
+msgid "Custom box name"
+msgstr "Eigener Boxname"
+
 msgid "HTTP port"
 msgstr "Port für HTTP"
 
