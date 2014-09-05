@@ -19,7 +19,7 @@ from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState, getStandbyState
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
-from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer
+from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer, getPowerTimer, setPowerTimer
 from models.message import sendMessage, getMessageAnswer
 from models.movies import getMovieList, removeMovie, getMovieTags, moveMovie, renameMovie
 from models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot, setZapStream, saveConfig, getZapStream
@@ -912,6 +912,15 @@ class WebController(BaseController):
 		from ..httpserver import HttpdRestart
 		HttpdRestart(self.session)
 		return ""
+
+	def P_powertimer(self, request):
+		if len(request.args):
+			res = self.testMandatoryArguments(request, ["timertype", "repeated", "afterevent", "disabled"])
+			if res:
+				return res
+			return setPowerTimer(self.session, request)
+		else:
+			return getPowerTimer(self.session)
 
 	def P_sleeptimer(self, request):
 		cmd = "get"

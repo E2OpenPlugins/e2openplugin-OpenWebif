@@ -462,34 +462,141 @@ def tvbrowser(session, request):
 		 "message": "Unknown command: '%s'" % request.args['command'][0]
 		}
 
-def getSleepTimer(session):
+def getPowerTimer(session):
+	
+	try:
+		from PowerTimer import TIMERTYPE ,AFTEREVENT
+
+		timers = []
+		timer_list  = session.nav.PowerTimer.timer_list
+		processed_timers  = session.nav.PowerTimer.processed_timers
+
+		for timer in timer_list + processed_timers:
+			list = []
+			for time, code, msg in timer.log_entries:
+				list.append({
+					"code": str(code),
+					"time": str(time),
+					"msg": str(msg)
+					})
+
+			timers.append({
+			"timertype": str(timer.timerType),
+			"timertypename": str({
+				TIMERTYPE.WAKEUP: "wakeup",
+				TIMERTYPE.WAKEUPTOSTANDBY: "wakeuptostandby",
+				TIMERTYPE.AUTOSTANDBY: "autostandby",
+				TIMERTYPE.AUTODEEPSTANDBY: "autodeepstandby",
+				TIMERTYPE.STANDBY: "standby",
+				TIMERTYPE.DEEPSTANDBY: "deepstandby",
+				TIMERTYPE.REBOOT: "reboot",
+				TIMERTYPE.RESTART: "restart"
+				}[timer.timerType]),
+			"begin": str(int(timer.begin)),
+			"end": str(int(timer.end)),
+			"repeated": str(int(timer.repeated)),
+			"afterevent": str(timer.afterEvent),
+			"aftereventname": str({
+				AFTEREVENT.NONE: "nothing",
+				AFTEREVENT.WAKEUPTOSTANDBY: "wakeuptostandby",
+				AFTEREVENT.STANDBY: "standby",
+				AFTEREVENT.DEEPSTANDBY: "deepstandby"
+				}[timer.afterEvent]),
+			"disabled": str(int(timer.disabled)),
+			"autosleepinstandbyonly": str(timer.autosleepinstandbyonly),
+			"autosleepdelay": str(timer.autosleepdelay),
+			"autosleeprepeat": str(timer.autosleeprepeat),
+			"logentries" : list
+			})
+
+		return {
+			"result": True,
+			"timers": timers
+		}
+	except Exception, e:
+		print e
+		return {
+			"result": False,
+			"message": "PowerTimer feature not available"
+		}
+
+def setPowerTimer(session, request):
+	timertype = "0"
+	if "timertype" in request.args.keys():
+		cmd = request.args["timertype"][0]
+	begin = "0"
+	if "begin" in request.args.keys():
+		cmd = request.args["begin"][0]
+	end = "0"
+	if "end" in request.args.keys():
+		cmd = request.args["end"][0]
+	disabled = "0"
+	if "disabled" in request.args.keys():
+		cmd = request.args["disabled"][0]
+	repeated = "0"
+	if "repeated" in request.args.keys():
+		cmd = request.args["repeated"][0]
+	afterevent = "0"
+	if "afterevent" in request.args.keys():
+		cmd = request.args["afterevent"][0]
+	autosleepinstandbyonly = "0"
+	if "autosleepinstandbyonly" in request.args.keys():
+		cmd = request.args["autosleepinstandbyonly"][0]
+	autosleepdelay = "0"
+	if "autosleepdelay" in request.args.keys():
+		cmd = request.args["autosleepdelay"][0]
+	autosleeprepeat = "0"
+	if "autosleeprepeat" in request.args.keys():
+		cmd = request.args["autosleeprepeat"][0]
+
 	return {
-		"enabled": session.nav.SleepTimer.isActive(),
-		"minutes": session.nav.SleepTimer.getCurrentSleepTime(),
-		"action": config.SleepTimer.action.value,
-		"message": "Sleeptimer is enabled" if session.nav.SleepTimer.isActive() else "Sleeptimer is disabled"
+		"result": True,
+		"message": "TODO"
 	}
 
+
+def getSleepTimer(session):
+	# todo reinterprete powertimer as sleeptimer
+	try:
+		return {
+			"enabled": session.nav.SleepTimer.isActive(),
+			"minutes": session.nav.SleepTimer.getCurrentSleepTime(),
+			"action": config.SleepTimer.action.value,
+			"message": "Sleeptimer is enabled" if session.nav.SleepTimer.isActive() else "Sleeptimer is disabled"
+		}
+	except Exception, e:
+		return {
+			"result": False,
+			"message": "SleepTimer feature not available"
+		}
+
 def setSleepTimer(session, time, action, enabled):
-	ret = getSleepTimer(session)
-	from Screens.Standby import inStandby
-	if inStandby is not None:
-		ret["message"] = "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-		return ret
-
-	if enabled == False:
-		session.nav.SleepTimer.clear()
+	# todo reinterprete powertimer as sleeptimer
+	try:
 		ret = getSleepTimer(session)
-		ret["message"] = "Sleeptimer has been disabled"
+		from Screens.Standby import inStandby
+		if inStandby is not None:
+			ret["message"] = "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+			return ret
+
+		if enabled == False:
+			session.nav.SleepTimer.clear()
+			ret = getSleepTimer(session)
+			ret["message"] = "Sleeptimer has been disabled"
+			return ret
+
+		if action not in ["shutdown", "standby"]:
+			action = "standby"
+
+		config.SleepTimer.action.value = action
+		config.SleepTimer.action.save()
+		session.nav.SleepTimer.setSleepTime(time)
+
+		ret = getSleepTimer(session)
+		ret["message"] = "Sleeptimer set to %d minutes" % time
 		return ret
-
-	if action not in ["shutdown", "standby"]:
-		action = "standby"
-
-	config.SleepTimer.action.value = action
-	config.SleepTimer.action.save()
-	session.nav.SleepTimer.setSleepTime(time)
-
-	ret = getSleepTimer(session)
-	ret["message"] = "Sleeptimer set to %d minutes" % time
-	return ret
+	except Exception, e:
+		return {
+			"result": False,
+			"message": "SleepTimer feature not available"
+		}
