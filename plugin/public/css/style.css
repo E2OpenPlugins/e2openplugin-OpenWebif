@@ -36,7 +36,8 @@ body {
 	display: block; 
 	height:auto;
 	position: relative; 
-	width:90%;
+	margin-left:10px;
+	margin-right:35px;
 }
 
 #header
@@ -59,7 +60,6 @@ body {
 {
 	font-family: Arial, Verdana,sans-serif;
 	text-align:right;
-	font-size:18px;
 	color:#A9D1FA;
 	margin-top:25px;
 	width:500px;
@@ -81,8 +81,8 @@ body {
 {
 	overflow: hidden;
 	width: 100%;
-	margin-top: 4px;
-	margin-bottom: 4px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 #osd
@@ -627,4 +627,3 @@ html, body
 .ow_i_stream1 { background-position: -160px 0px;}
 .ow_i_stream2 { background-position: -176px 0px;}
 .ow_i_timer { background-position: -192px 0px;}
-
