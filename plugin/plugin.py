@@ -49,7 +49,7 @@ config.OpenWebif.https_clientcert = ConfigYesNo(default=False)
 # Parental Control currently disabled for testing
 config.OpenWebif.parentalenabled = ConfigYesNo(default=False)
 # Use service name for stream
-config.OpenWebif.service_name_for_stream = ConfigYesNo(default=False)
+config.OpenWebif.service_name_for_stream = ConfigYesNo(default=True)
 # authentication for streaming
 config.OpenWebif.auth_for_streaming = ConfigYesNo(default=False)
 config.OpenWebif.no_root_access = ConfigYesNo(default=False)
