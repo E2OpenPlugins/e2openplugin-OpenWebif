@@ -19,6 +19,7 @@ from Components.config import config
 from Components.MovieList import MovieList
 from Tools.Directories import fileExists
 from time import strftime, localtime
+from Screens import MovieSelection
 
 MOVIETAGFILE = "/etc/enigma2/movietags"
 
@@ -60,10 +61,11 @@ def getPosition(cutfile, movie_len):
 def getMovieList(directory=None, tag=None, rargs=None):
 	movieliste = []
 
-	if directory == None:
-		directory = config.usage.default_path.value
-
-	if directory[-1] != "/":
+	if directory is None:
+		directory = MovieSelection.defaultMoviePath()
+	if not directory:
+		directory = "/media/"
+	elif directory[-1] != "/":
 		directory += "/"
 
 	root = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory)
