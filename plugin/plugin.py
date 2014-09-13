@@ -23,6 +23,7 @@ from Components.ActionMap import ActionMap
 from Components.Label import Label
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText
+from boxbranding import getImageDistro
 
 from httpserver import HttpdStart, HttpdStop, HttpdRestart
 
@@ -159,6 +160,11 @@ def startSession(reason, session):
 	global_session = session
 
 def Plugins(**kwargs):
-	return [PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startSession),
-		PluginDescriptor(where=[PluginDescriptor.WHERE_NETWORKCONFIG_READ], fnc=IfUpIfDown),
-		PluginDescriptor(name="OpenWebif", description=_("OpenWebif Configuration"), icon="openwebif.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=confplug)]
+	if getImageDistro() == "openvixhd":
+		return [PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startSession),
+				PluginDescriptor(where=[PluginDescriptor.WHERE_NETWORKCONFIG_READ], fnc=IfUpIfDown),
+				PluginDescriptor(name="OpenWebif", description=_("OpenWebif Configuration"), icon="openwebifhd.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=confplug)]
+	else:
+		return [PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startSession),
+			    PluginDescriptor(where=[PluginDescriptor.WHERE_NETWORKCONFIG_READ], fnc=IfUpIfDown),
+				PluginDescriptor(name="OpenWebif", description=_("OpenWebif Configuration"), icon="openwebif.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=confplug)]
