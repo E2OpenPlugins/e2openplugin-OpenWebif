@@ -11,6 +11,7 @@
 //* V 1.3 - Allow alternatives as channel, small js fixes
 //* V 1.4 - fix timespan, offset, support series plugin
 //* V 1.5 - autotimer settings
+//* V 1.6 - sort autotimer list
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -297,9 +298,23 @@ function isBQ(sref)
 // parse and create AT List
 function Parse() {
 	$("#atlist").empty();
+	
+	var atlist = []
+	
 	$(atxml).find("timer").each(function () {
+		atlist.push($(this));
+	});
+
+	atlist.sort(function(a, b){
+		var a1= a.attr("name"), b1=b.attr("name");
+		if(a1==b1) return 0;
+		return a1> b1? 1: -1;
+	});
+	
+	$(atlist).each(function () {
 		$("#atlist").append($("<li></li>").html($(this).attr("name")).addClass('ui-widget-content').data('id',$(this).attr("id")));
 	});
+	
 	if(at2add)
 	{
 		addAT(at2add);
@@ -370,7 +385,6 @@ function getData()
 	getTags();
 	getAllServices();
 }
-
 
 function FillAT(autotimerid)
 {
@@ -1085,7 +1099,6 @@ function setAutoTimerSettings()
 	});
 	
 }
-
 
 function showError(txt,st)
 {
