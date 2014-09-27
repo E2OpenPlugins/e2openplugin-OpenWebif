@@ -344,8 +344,8 @@ def getServices(sRef, showAll = True ):
 		if not st & 512:	# 512 is hidden service on sifteam image. Doesn't affect other images
 			if showAll or st == 0: 
 				service = {}
-				service['servicereference'] = sitem[0].decode('latin-1').encode("utf8")
-				service['servicename'] = sitem[1].decode('latin-1').encode("utf8")
+				service['servicereference'] = sitem[0].encode("utf8")
+				service['servicename'] = sitem[1].encode("utf8")
 				services.append(service)
 
 	return { "services": services }
