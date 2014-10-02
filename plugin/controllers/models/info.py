@@ -178,6 +178,8 @@ def getInfo():
 		elif model.startswith("ixuss"):
 			brand = "Medialink"
 			model = model.replace(" ", "")
+		elif model.startswith("formuler"):
+			brand = "Formuler"
  		f.close()
 	elif fileExists("/proc/stb/info/vumodel"):
 		brand = "VuPlus"
