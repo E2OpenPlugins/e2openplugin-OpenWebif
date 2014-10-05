@@ -168,8 +168,12 @@ class WebController(BaseController):
 			sRef = request.args["sRef"][0]
 		else:
 			sRef = ""
+		if "hidden" in request.args.keys():
+			hidden = request.args["hidden"][0] == "1"
+		else:
+			hidden = False
 		self.isGZ=True
-		return getServices(sRef)
+		return getServices(sRef, True, hidden)
 
 	def P_servicesm3u(self, request):
 		if "bRef" in request.args.keys():
