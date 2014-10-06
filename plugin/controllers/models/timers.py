@@ -530,15 +530,15 @@ def setPowerTimer(session, request):
 	end = "0"
 	if "end" in request.args.keys():
 		cmd = request.args["end"][0]
-	disabled = "0"
+	disabled = False
 	if "disabled" in request.args.keys():
-		cmd = request.args["disabled"][0]
-	repeated = "0"
+		disabled = request.args["disabled"][0] == "1"
+	repeated = False
 	if "repeated" in request.args.keys():
-		cmd = request.args["repeated"][0]
-	afterevent = "0"
-	if "afterevent" in request.args.keys():
-		cmd = request.args["afterevent"][0]
+		repeated = request.args["repeated"][0] == "1"
+	afterevent = 3 # deepstandby
+	if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["0", "1", "2", "3"]:
+		afterevent = int(request.args["afterevent"][0])
 	autosleepinstandbyonly = "0"
 	if "autosleepinstandbyonly" in request.args.keys():
 		cmd = request.args["autosleepinstandbyonly"][0]

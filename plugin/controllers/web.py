@@ -21,7 +21,7 @@ from models.control import zapService, remoteControl, setPowerState, getStandbyS
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer, getPowerTimer, setPowerTimer
 from models.message import sendMessage, getMessageAnswer
-from models.movies import getMovieList, removeMovie, getMovieTags, moveMovie, renameMovie
+from models.movies import getMovieList, removeMovie, getMovieTags, moveMovie, renameMovie, getAllMovies
 from models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot, setZapStream, saveConfig, getZapStream
 from models.stream import getStream, getTS, getStreamSubservices
 from models.servicelist import reloadServicesLists
@@ -263,6 +263,9 @@ class WebController(BaseController):
 			dirname = request.args["dirname"][0]
 		self.isGZ=True
 		return getMovieList(dirname, tag, request.args)
+	
+	def P_fullmovielist(self, request):
+		return getAllMovies()
 
 	def P_movielisthtml(self, request):
 		tag = None
