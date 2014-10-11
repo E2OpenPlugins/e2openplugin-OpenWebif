@@ -58,7 +58,7 @@ def getPosition(cutfile, movie_len):
 		play_progress = 0
 	return play_progress
 	
-def getMovieList(directory=None, tag=None, rargs=None):
+def getMovieList(directory=None, tag=None, rargs=None, locations=None):
 	movieliste = []
 
 	if directory is None:
@@ -80,6 +80,15 @@ def getMovieList(directory=None, tag=None, rargs=None):
 			if f[-1] != "/":
 				f += "/"
 			ff = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory + f)
+			folders.append(ff)
+
+	# get all locations
+	if locations is not None:
+		folders = []
+		for f in locations:
+			if f[-1] != "/":
+				f += "/"
+			ff = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + f)
 			folders.append(ff)
 
 	for root in folders:
@@ -143,39 +152,15 @@ def getMovieList(directory=None, tag=None, rargs=None):
 			movie['lastseen'] = pos
 			movieliste.append(movie)
 
-	ml = { "movies": movieliste, "bookmarks": bookmarklist, "directory": directory }
-
-	if rargs and "zip" in rargs.keys():
-		filename = rargs["zip"][0]
-		import os
-		if not os.path.exists(os.path.dirname(filename)):
-			return {
-				"result": False,
-				"message": "zip file path not exist"
-			}
-		try:
-			import json
-			fd = open(filename, 'wb')
-			#todo create zip using api
-			#fd = gzip.GzipFile(filename=filename, mode='wb', compresslevel=9)
-			fd.write(json.dumps(ml))
-			fd.close()
-			try:
-				os.remove('%s.gz' % filename)
-			except OSError:
-				pass
-			os.system('gzip %s' % filename)
-		except (IOError, os.error), why:
-			return {
-				"result": False,
-				"message": "create movielist zip error:%s" % why
-			}
-		return {
-			"result": True,
-			"message": "create movielist zip success"
-		}
+	if locations == None:
+		ml = { "movies": movieliste, "bookmarks": bookmarklist, "directory": directory }
 	else:
-		return ml
+		ml = { "movies": movieliste, "locations": locations}
+	return ml
+
+def getAllMovies():
+	locations = config.movielist.videodirs.value[:] or []
+	return getMovieList(None, None, None, locations)
 
 def removeMovie(session, sRef):
 	service = ServiceReference(sRef)

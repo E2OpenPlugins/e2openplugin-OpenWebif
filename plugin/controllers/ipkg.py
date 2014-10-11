@@ -14,11 +14,20 @@ from twisted.web import static, server, resource, http
 from os import path, popen, remove
 
 import json
+import gzip
+import cStringIO
 
 class IpkgController(resource.Resource):
 
 	def __init__(self, path = ""):
 		resource.Resource.__init__(self)
+
+	def compressBuf(self, buf):
+		zbuf = cStringIO.StringIO()
+		zfile = gzip.GzipFile(mode = 'wb',  fileobj = zbuf, compresslevel = 6)
+		zfile.write(buf)
+		zfile.close()
+		return zbuf.getvalue()
 
 	def render(self, request):
 		action =''
@@ -39,6 +48,8 @@ class IpkgController(resource.Resource):
 				return self.CallOPKGP(request,action,package)
 			elif action in ( "listgz" ):
 				return self.CallOPKListGZ(request)
+			elif action in ( "listall" ):
+				return self.CallOPKListAll(request)
 			else:
 				return ShowError(request,"Unknown command: "+ self.command)
 		else:
@@ -55,6 +66,25 @@ class IpkgController(resource.Resource):
 		rfile = static.File(tmpFilename, defaultType = "application/octet-stream")
 		return rfile.render(request)
 
+	def CallOPKListAll(self, request):
+		data = self.getPackages()
+		acceptHeaders = request.requestHeaders.getRawHeaders('Accept-Encoding', [])
+		supported = ','.join(acceptHeaders).split(',')
+		if 'gzip' in supported:
+			encoding = request.responseHeaders.getRawHeaders('Content-Encoding')
+			if encoding:
+				encoding = '%s,gzip' % ','.join(encoding)
+			else:
+				encoding = 'gzip'
+			request.responseHeaders.setRawHeaders('Content-Encoding',[encoding])
+			compstr = self.compressBuf(json.dumps(data, encoding="ISO-8859-1"))
+			request.setHeader('Content-Length', '%d' % len(compstr))
+			request.write(compstr)
+		else:
+			request.setHeader("content-type", "text/plain")
+			request.write(json.dumps(data, encoding="ISO-8859-1"))
+			request.finish()
+
 	def CallOPKG(self, request, action, parms=[]):
 		cmd = ["/usr/bin/opkg", "ipkg", action] + parms
 		request.setResponseCode(http.OK)
@@ -68,6 +98,48 @@ class IpkgController(resource.Resource):
 		self.olddata = None
 		self.container.execute(*cmd)
 		return server.NOT_DONE_YET
+
+	def getPackages(self):
+		from os import popen as os_popen
+		map = {}
+		try:
+			out = os_popen("opkg list")
+			for line in out:
+				if line[0] == " ":
+					continue
+				package = line.split(' - ')
+				if map.has_key(package[0]):
+					if map[package[0]][0] > package[1]:
+						continue
+				map.update( { package[0] : [ (package[1][:-1] if len(package) < 3 else package[1]),
+					("" if len(package) < 3 else package[2][:-1]),
+					 "0" , 
+					 "0"] } )
+			out = os_popen("opkg list-installed")
+			for line in out:
+				package = line.split(' - ')
+				if map.has_key(package[0]):
+					map[package[0]][2] = "1"
+			out = os_popen("opkg list-upgradable")
+			for line in out:
+				package = line.split(' - ')
+				if map.has_key(package[0]):
+					map[package[0]][0] = package[1]
+					map[package[0]][3] = package[2][:-1]
+			keys=map.keys()
+			keys.sort()
+			ret = []
+			for name in keys:
+				ret.append({
+				"name": name,
+				"v": map[name][0],
+				"d": map[name][1],
+				"i": map[name][2],
+				"u": map[name][3]
+				})
+			return ret
+		except Exception, e:
+			return []
 
 	def connectionError(self, err):
 		self.IsAlive = False
@@ -117,7 +189,7 @@ class IpkgController(resource.Resource):
 	def ShowHint(self, request):
 		html = "<html><body><h1>OpenWebif Interface for OPKG</h1>"
 		html += "Usage : ?command=<cmd>&package=packagename<&format=json><br>"
-		html += "Valid Commands:<br>list,listgz,list_installed,list_installed,list_upgradable<br>"
+		html += "Valid Commands:<br>list,listgz,listall,list_installed,list_installed,list_upgradable<br>"
 		html += "Valid Package Commands:<br>info,status,install,remove<br>"
 		html += "Valid Formats:<br>json,html(default)<br>"
 		html += "</body></html>"

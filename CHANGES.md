@@ -1,11 +1,22 @@
-## Version 0.4.2
-## (in development)
+## Version 0.4.x
+## (planed)
 **FEATURES**
 * epg search as modal dialog
 * channel epg as modal dialog
+* powertimer api
+
+## Version 0.4.2
+## (in development)
+**FEATURES**
+* ipkg add full package list api
+* full add full movie list api
+
+**FIXES**
+* sleeptimer crash
 
 ## Version 0.4.1
 **FEATURES**
+* Add saveepg and loadepg api
 * show lastseen postion for recordings
 * autotimer settings editor
 * epgrefresh webif
