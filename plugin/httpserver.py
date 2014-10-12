@@ -192,19 +192,18 @@ def HttpdStart(session):
 
 		#Streaming requires listening on 127.0.0.1:80
 		if port != 80:
-			if not isOriginalWebifInstalled():
-				try:
-					if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
-						# use ipv6
-						# Dear Twisted devs: Learning English, lesson 1 - interface != address
-						listener.append( reactor.listenTCP(80, site, interface='::1') )
-						listener.append( reactor.listenTCP(80, site, interface='::ffff:127.0.0.1') )
-					else:
-						# ipv4 only
-						listener.append( reactor.listenTCP(80, site, interface='127.0.0.1') )
-					print "[OpenWebif] started stream listening on port 80"
-				except CannotListenError:
-					print "[OpenWebif] port 80 busy"
+			try:
+				if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
+					# use ipv6
+					# Dear Twisted devs: Learning English, lesson 1 - interface != address
+					listener.append( reactor.listenTCP(80, site, interface='::1') )
+					listener.append( reactor.listenTCP(80, site, interface='::ffff:127.0.0.1') )
+				else:
+					# ipv4 only
+					listener.append( reactor.listenTCP(80, site, interface='127.0.0.1') )
+				print "[OpenWebif] started stream listening on port 80"
+			except CannotListenError:
+				print "[OpenWebif] port 80 busy"
 
 
 def HttpdStop(session):
