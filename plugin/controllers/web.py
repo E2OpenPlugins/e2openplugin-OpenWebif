@@ -14,7 +14,7 @@ from Plugins.Extensions.OpenWebif.__init__ import _
 from Components.config import config
 
 from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStatus
-from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent
+from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState, getStandbyState
@@ -1000,3 +1000,9 @@ class WebController(BaseController):
 		if "stype" in request.args.keys():
 			stype = request.args["stype"][0]
 		return getSatellites(stype)
+
+	def P_saveepg(self, request):
+		return saveEpg()
+
+	def P_loadepg(self, request):
+		return loadEpg()

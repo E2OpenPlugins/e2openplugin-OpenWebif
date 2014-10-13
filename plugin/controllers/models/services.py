@@ -795,3 +795,19 @@ def getParentalControlList():
 		"type": config.ParentalControl.type.value,
 		"services": services
 	}
+
+def loadEpg():
+	epgcache = eEPGCache.getInstance()
+	epgcache.load()
+	return {
+		"result": True,
+		"message": ""
+	}
+
+def saveEpg():
+	epgcache = eEPGCache.getInstance()
+	epgcache.save()
+	return {
+		"result": True,
+		"message": ""
+	}
