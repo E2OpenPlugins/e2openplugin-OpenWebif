@@ -167,12 +167,38 @@ def getInfo():
 		if model.startswith("et"):
 			brand = "Xtrend"
 		elif model.startswith("ini"):
-			if model.endswith("sv"):
-				brand = "MiracleBox"
-			elif model.endswith("ru"):
+			if model.endswith("9000ru"):
+ 				brand = "Sezam"
+				model = "Marvel"
+			elif model.endswith("5000ru"):
 				brand = "Sezam"
+				model = "hdx"
+			elif model.endswith("1000ru"):
+				brand = "Sezam"
+				model = "hde"
+			elif model.endswith("5000sv"):
+				brand = "Miraclebox"
+				model = "mbtwin"
+			elif model.endswith("1000sv"):
+				brand = "Miraclebox"
+				model = "mbmini"
+			elif model.endswith("1000de"):
+				brand = "Golden Interstar"
+				model = "xpeedlx"
+			elif model.endswith("1000lx"):
+				brand = "Golden Interstar"
+				model = "xpeedlx"
+			elif model.endswith("9000de"):
+				brand = "Golden Interstar"
+				model = "xpeedlx3"
+			elif model.endswith("1000am"):
+				brand = "Atemio"
+				model = "5x00"
+			elif model.endswith("de"):
+				brand = "Golden Interstar"
 			else:
 				brand = "Venton"
+				model = "Venton-hdx"
 		elif model.startswith("xp"):
 			brand = "MaxDigital"
 		elif model.startswith("ixuss"):
