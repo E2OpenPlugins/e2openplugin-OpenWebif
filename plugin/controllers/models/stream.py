@@ -24,7 +24,7 @@ def getStream(session, request, m3ufile):
 	currentServiceRef = None
 	if m3ufile == "streamcurrent.m3u":
 		currentServiceRef = session.nav.getCurrentlyPlayingServiceReference()
-		sRef = currentServiceRef.toString() 
+		sRef = currentServiceRef.toString()
 
 	if sRef.startswith("1:134:"):
 		if currentServiceRef is None:
@@ -40,10 +40,12 @@ def getStream(session, request, m3ufile):
 	name = "stream"
 	if "name" in request.args:
 		name = request.args["name"][0]
-	# #EXTINF:-1,%s\n  remove not compatiple with old api
+	# #EXTINF:-1,%s\n adding back to show service name in programs like VLC
 	progopt = ''
 	if config.OpenWebif.service_name_for_stream.value and sRef != '':
-		progopt="#EXTVLCOPT:program=%d\n" % (int(sRef.split(':')[3],16))
+		# When you use more than 1 EXTVLCOPT, it does not play stream
+		progopt="program=%d\n" % (int(sRef.split(':')[3],16))
+		progopt="%s#EXTINF:-1,%s\n" % (progopt, name)
 	portNumber = config.OpenWebif.streamport.value
 	info = getInfo()
 	model = info["model"]
@@ -53,7 +55,7 @@ def getStream(session, request, m3ufile):
 				portNumber = 8002
 	if "port" in request.args:
 		portNumber = request.args["port"][0]
-	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef)
+	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true %shttp://%s:%s/%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef)
 	request.setHeader('Content-Type', 'application/text')
 	return response
 
@@ -109,16 +111,16 @@ def getStreamSubservices(session, request):
 		services.append({
 			"servicereference": currentServiceRef.toString(),
 			"servicename": ServiceReference(currentServiceRef).getServiceName()
-			}) 
+			})
 		if subservices and subservices.getNumberOfSubservices() != 0:
-			n = subservices and subservices.getNumberOfSubservices()  
+			n = subservices and subservices.getNumberOfSubservices()
 			z = 0
 			while z < n:
 				sub = subservices.getSubservice(z)
 				services.append({
 					"servicereference": sub.toString(),
 					"servicename": sub.getName()
-				}) 
+				})
 				z += 1
 	else:
 		services.append =({
