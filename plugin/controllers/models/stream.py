@@ -24,7 +24,7 @@ def getStream(session, request, m3ufile):
 	currentServiceRef = None
 	if m3ufile == "streamcurrent.m3u":
 		currentServiceRef = session.nav.getCurrentlyPlayingServiceReference()
-		sRef = currentServiceRef.toString() 
+		sRef = currentServiceRef.toString()
 
 	if sRef.startswith("1:134:"):
 		if currentServiceRef is None:
@@ -44,7 +44,7 @@ def getStream(session, request, m3ufile):
 	progopt = ''
 	if config.OpenWebif.service_name_for_stream.value and sRef != '':
 		progopt="#EXTVLCOPT:program=%d\n" % (int(sRef.split(':')[3],16))
-                progopt="%s#EXTINF:-1,%s" % (progopt, name)
+		progopt="%s#EXTINF:-1,%s\n" % (progopt, name)
 	portNumber = config.OpenWebif.streamport.value
 	info = getInfo()
 	model = info["model"]
@@ -110,16 +110,16 @@ def getStreamSubservices(session, request):
 		services.append({
 			"servicereference": currentServiceRef.toString(),
 			"servicename": ServiceReference(currentServiceRef).getServiceName()
-			}) 
+			})
 		if subservices and subservices.getNumberOfSubservices() != 0:
-			n = subservices and subservices.getNumberOfSubservices()  
+			n = subservices and subservices.getNumberOfSubservices()
 			z = 0
 			while z < n:
 				sub = subservices.getSubservice(z)
 				services.append({
 					"servicereference": sub.toString(),
 					"servicename": sub.getName()
-				}) 
+				})
 				z += 1
 	else:
 		services.append =({
