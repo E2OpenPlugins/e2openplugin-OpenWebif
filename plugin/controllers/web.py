@@ -649,8 +649,14 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["search"])
 		if res:
 			return res
+		endtime = None
+		if "endtime" in request.args.keys():
+			try:
+				endtime = int(request.args["endtime"][0])
+			except Exception, e:
+				pass
 		self.isGZ=True
-		return getSearchEpg(request.args["search"][0])
+		return getSearchEpg(request.args["search"][0], endtime)
 
 	def P_epgsearchrss(self, request):
 		res = self.testMandatoryArguments(request, ["search"])
@@ -918,7 +924,7 @@ class WebController(BaseController):
 
 	def P_powertimer(self, request):
 		if len(request.args):
-			res = self.testMandatoryArguments(request, ["timertype", "repeated", "afterevent", "disabled"])
+			res = self.testMandatoryArguments(request, ["start","end","timertype", "repeated", "afterevent", "disabled"])
 			if res:
 				return res
 			return setPowerTimer(self.session, request)

@@ -479,7 +479,6 @@ def getPowerTimer(session):
 					"time": str(time),
 					"msg": str(msg)
 					})
-
 			timers.append({
 			"timertype": str(timer.timerType),
 			"timertypename": str({
@@ -521,33 +520,64 @@ def getPowerTimer(session):
 		}
 
 def setPowerTimer(session, request):
-	timertype = "0"
-	if "timertype" in request.args.keys():
-		cmd = request.args["timertype"][0]
-	begin = "0"
+
+	timertype = 0
+	if "timertype" in request.args.keys() and request.args["afterevent"][0] in ["0", "1", "2", "3","4","5","6","7"]:
+		cmd = int(request.args["timertype"][0])
+	begin = int(time() + 60)
 	if "begin" in request.args.keys():
-		cmd = request.args["begin"][0]
-	end = "0"
+		begin = int(request.args["begin"][0])
+	end = int(time() + 120)
 	if "end" in request.args.keys():
-		cmd = request.args["end"][0]
-	disabled = False
+		end = int(request.args["end"][0])
+	disabled = 0
 	if "disabled" in request.args.keys():
-		disabled = request.args["disabled"][0] == "1"
+		disabled = long(request.args["disabled"][0])
 	repeated = False
 	if "repeated" in request.args.keys():
 		repeated = request.args["repeated"][0] == "1"
-	afterevent = 3 # deepstandby
+	afterevent = 0
 	if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["0", "1", "2", "3"]:
 		afterevent = int(request.args["afterevent"][0])
-	autosleepinstandbyonly = "0"
+	autosleepinstandbyonly = "no"
 	if "autosleepinstandbyonly" in request.args.keys():
-		cmd = request.args["autosleepinstandbyonly"][0]
+		autosleepinstandbyonly = request.args["autosleepinstandbyonly"][0]
 	autosleepdelay = "0"
 	if "autosleepdelay" in request.args.keys():
-		cmd = request.args["autosleepdelay"][0]
-	autosleeprepeat = "0"
+		autosleepdelay = request.args["autosleepdelay"][0]
+	autosleeprepeat = "once"
 	if "autosleeprepeat" in request.args.keys():
-		cmd = request.args["autosleeprepeat"][0]
+		autosleeprepeat = request.args["autosleeprepeat"][0]
+
+
+	# find
+	entry = None
+	timers = []
+	timer_list  = session.nav.PowerTimer.timer_list
+	processed_timers  = session.nav.PowerTimer.processed_timers
+	for timer in timer_list + processed_timers:
+		if timer.timerType == timertype:
+			if timer.begin == begin:
+				if timer.end == end:
+					entry = timer
+
+	# create new Timer
+	if entry == None:
+		entry = PowerTimerEntry(begin, end, disabled, afterevent, timertype)
+		entry.repeated = int(repeated)
+		entry.autosleepinstandbyonly = autosleepinstandbyonly
+		entry.autosleepdelay = int(autosleepdelay)
+		entry.autosleeprepeat = autosleeprepeat
+		print "[PowerTimer]",str(entry)
+#	timers = []
+#	timer_list  = session.nav.PowerTimer.timer_list
+#	processed_timers  = session.nav.PowerTimer.processed_timers
+
+	#change
+#	pos = 0
+#	for timer in timer_list + processed_timers:
+#		pos+=1
+#		if id == str(pos):
 
 	return {
 		"result": True,

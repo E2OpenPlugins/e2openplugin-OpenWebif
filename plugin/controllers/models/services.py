@@ -618,7 +618,7 @@ def getNowNextEpg(ref, servicetype):
 
 	return { "events": ret, "result": True }
 
-def getSearchEpg(sstr):
+def getSearchEpg(sstr, endtime=None):
 	ret = []
 	ev = {}
 	epgcache = eEPGCache.getInstance()
@@ -640,8 +640,13 @@ def getSearchEpg(sstr):
 			ev['sname'] = filterName(event[6])
 			ev['picon'] = getPicon(event[7])
 			ev['now_timestamp'] = None
-			ret.append(ev)
-
+			if endtime:
+				# don't show events if begin after endtime
+				if event[1] <= endtime:
+					ret.append(ev)
+			else:
+				ret.append(ev)
+		
 	return { "events": ret, "result": True }
 
 def getSearchSimilarEpg(ref, eventid):
