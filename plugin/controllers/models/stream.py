@@ -38,14 +38,13 @@ def getStream(session, request, m3ufile):
 			sRef = ref.toString()
 
 	name = "stream"
-	if "name" in request.args:
-		name = request.args["name"][0]
 	# #EXTINF:-1,%s\n adding back to show service name in programs like VLC
 	progopt = ''
-	if config.OpenWebif.service_name_for_stream.value and sRef != '':
-		# When you use more than 1 EXTVLCOPT, it does not play stream
-		progopt="program=%d\n" % (int(sRef.split(':')[3],16))
-		progopt="%s#EXTINF:-1,%s\n" % (progopt, name)
+	if "name" in request.args:
+		name = request.args["name"][0]
+		if config.OpenWebif.service_name_for_stream.value:
+			progopt="#EXTINF:-1,%s\n" % name
+
 	portNumber = config.OpenWebif.streamport.value
 	info = getInfo()
 	model = info["model"]
@@ -53,9 +52,14 @@ def getStream(session, request, m3ufile):
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
 				portNumber = 8002
+
+	# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
+	if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != 8002:
+		progopt="%s#EXTVLCOPT:program=%d\n" % (progopt, int(sRef.split(':')[3],16))
+
 	if "port" in request.args:
 		portNumber = request.args["port"][0]
-	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true %shttp://%s:%s/%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef)
+	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef)
 	request.setHeader('Content-Type', 'application/text')
 	return response
 
@@ -75,9 +79,6 @@ def getTS(self, request):
 			metafile.close()
 
 		progopt = ''
-		if config.OpenWebif.service_name_for_stream.value and sRef != '':
-			progopt="#EXTVLCOPT:program=%d\n" % (int(sRef.split(':')[3],16))
-
 		portNumber = config.OpenWebif.port.value
 		info = getInfo()
 		model = info["model"]
@@ -85,6 +86,11 @@ def getTS(self, request):
 			if "device" in request.args :
 				if request.args["device"][0] == "phone" :
 					portNumber = 8002
+
+		# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
+		if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != 8002:
+			progopt="#EXTVLCOPT:program=%d\n" % (int(sRef.split(':')[3],16))
+
 		if "port" in request.args:
 			portNumber = request.args["port"][0]
 		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), portNumber, quote(filename))
