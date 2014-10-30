@@ -52,7 +52,7 @@ def getStream(session, request, m3ufile):
 	if model in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "xpeedlx3", "gbquad", "gbquadplus"):
 		try:
 			transcoder_port = int(config.plugins.transcodingsetup.port.value)
-		except KeyError:
+		except StandardError:
 			#Transcoding Plugin is not installed or your STB does not support transcoding
 			transcoder_port = None
 		if "device" in request.args :
@@ -93,7 +93,7 @@ def getTS(self, request):
 		if model in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "xpeedlx3", "gbquad", "gbquadplus"):
 			try:
 				transcoder_port = int(config.plugins.transcodingsetup.port.value)
-			except KeyError:
+			except StandardError:
 				#Transcoding Plugin is not installed or your STB does not support transcoding
 				transcoder_port = None
 			if "device" in request.args :
