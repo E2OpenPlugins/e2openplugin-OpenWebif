@@ -78,14 +78,34 @@ def getTS(self, request):
 
 #	ServiceReference is not part of filename so look in the '.ts.meta' file
 		sRef = ""
+		progopt = ''
+
+
+
 		if os.path.exists(filename + '.meta'):
 			metafile = open(filename + '.meta', "r")
-			line = metafile.readline()
+			name = ''
+			seconds = -1 				# unknown duration default
+			line = metafile.readline()	# service ref
 			if line:
 				sRef = eServiceReference(line.strip()).toString()
+			line2 = metafile.readline()	# name
+			if line2:
+				name = line2.strip()
+
+			line3 = metafile.readline()	# description
+			line4 = metafile.readline() # recording time
+			line5 = metafile.readline() # tags
+			line6 = metafile.readline() # length
+
+			if line6:
+				seconds = float(line6.strip()) / 90000 # In seconds
+
+			if config.OpenWebif.service_name_for_stream.value:
+				progopt="%s#EXTINF:%d,%s\n" % (progopt, seconds, name)
+
 			metafile.close()
 
-		progopt = ''
 		portNumber = config.OpenWebif.port.value
 		info = getInfo()
 		model = info["model"]
@@ -105,7 +125,7 @@ def getTS(self, request):
 
 		# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
 		if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != transcoder_port:
-			progopt="#EXTVLCOPT:program=%d\n" % (int(sRef.split(':')[3],16))
+			progopt="%s#EXTVLCOPT:program=%d\n" % (progopt, int(sRef.split(':')[3],16))
 
 		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), portNumber, quote(filename))
 		request.setHeader('Content-Type', 'application/text')
