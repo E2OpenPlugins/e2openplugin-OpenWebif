@@ -221,7 +221,7 @@ msgid "Box"
 msgstr "Récepteur"
 
 msgid "Box Control"
-msgstr "Contrôle du récept."
+msgstr "Ctrl Récepteur"
 
 msgid "Box Uptime"
 msgstr "Durée de fonctionnement"
@@ -257,7 +257,7 @@ msgid "Current Event"
 msgstr "Évènement en cours"
 
 msgid "Deep-Standby"
-msgstr "Veille-profonde"
+msgstr "Veille profonde"
 
 msgid "Default"
 msgstr "Défaut"
@@ -482,7 +482,7 @@ msgid "Radio"
 msgstr "Radio"
 
 msgid "Reboot Box"
-msgstr "Redémarrer le récepteur"
+msgstr "Redémarrer tout"
 
 msgid "Recording Status"
 msgstr "Status des enregistrements"
@@ -689,7 +689,7 @@ msgid "Volume"
 msgstr "Volume"
 
 msgid "Volume Control"
-msgstr "Contrôle du volume"
+msgstr "Ctrl Volume"
 
 msgid "waiting"
 msgstr "en attente"
