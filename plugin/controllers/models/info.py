@@ -315,6 +315,7 @@ def getInfo():
 			"dhcp": iNetwork.getAdapterAttribute(iface, "dhcp"),
 			"ip": formatIp(iNetwork.getAdapterAttribute(iface, "ip")),
 			"mask": formatIp(iNetwork.getAdapterAttribute(iface, "netmask")),
+			"v4prefix": sum([bin(int(x)).count('1') for x in formatIp(iNetwork.getAdapterAttribute(iface, "netmask")).split('.')]),
 			"gw": formatIp(iNetwork.getAdapterAttribute(iface, "gateway")),
 			"ipv6": getAdapterIPv6(iface)
 		})
