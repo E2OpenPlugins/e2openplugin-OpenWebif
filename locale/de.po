@@ -937,17 +937,8 @@ msgstr "Simulieren"
 msgid "Do you really want to delete the AT"
 msgstr "Wollen Sie folgenden AutoTimer wirklich löschen"
 
-msgid "Enabled"
-msgstr "Eingeschaltet"
-
 msgid "Enable Messages"
 msgstr "Nachrichten anzeigen"
-
-msgid "Begin"
-msgstr "Anfang"
-
-msgid "End"
-msgstr "Ende"
 
 msgid "Delay Standby"
 msgstr "Standby-Verzögerung"
@@ -976,9 +967,6 @@ msgstr "AutoTimer auswerten"
 msgid "Always"
 msgstr "Immer"
 
-msgid "Never"
-msgstr "Nie"
-
 msgid "Background only"
 msgstr "Nur im Hintergrund"
 
@@ -1002,12 +990,6 @@ msgstr "Bild in Bild (versteckt)"
 
 msgid "Fake Recording"
 msgstr "Scheinaufnahme"
-
-msgid "Reload"
-msgstr "Neu laden"
-
-msgid "Save"
-msgstr "Speichern"
 
 msgid "Refresh now"
 msgstr "Jetzt auffrischen"
