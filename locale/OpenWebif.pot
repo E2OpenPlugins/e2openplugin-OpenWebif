@@ -936,16 +936,7 @@ msgstr ""
 msgid "Do you really want to delete the AT"
 msgstr ""
 
-msgid "Enabled"
-msgstr ""
-
 msgid "Enable Messages"
-msgstr ""
-
-msgid "Begin"
-msgstr ""
-
-msgid "End"
 msgstr ""
 
 msgid "Delay Standby"
@@ -975,9 +966,6 @@ msgstr ""
 msgid "Always"
 msgstr ""
 
-msgid "Never"
-msgstr ""
-
 msgid "Background only"
 msgstr ""
 
@@ -1000,12 +988,6 @@ msgid "Picture in Picture (hidden)"
 msgstr ""
 
 msgid "Fake Recording"
-msgstr ""
-
-msgid "Reload"
-msgstr ""
-
-msgid "Save"
 msgstr ""
 
 msgid "Refresh now"
