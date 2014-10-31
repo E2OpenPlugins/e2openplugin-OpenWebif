@@ -9,6 +9,8 @@
 #                                                                            #
 ##############################################################################
 
+from Plugins.Extensions.OpenWebif.__init__ import _
+
 from Components.About import about
 from Components.config import config
 from Components.NimManager import nimmanager
