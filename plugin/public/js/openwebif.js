@@ -385,7 +385,7 @@ function open_epg_pop(sRef) {
 function open_epg_search_pop() {
 	var spar = $("#epgSearch").val();
 	var url = "ajax/epgpop?sstr=" + encodeURIComponent(spar);
-	url=url.replace(/%C3%BC/g,'%FC').replace(/%C3%9C/g,'%FC').replace(/%C3%A4/g,'%E4').replace(/%C3%84/g,'%E4').replace(/%C3%B6/g,'%F6').replace(/%C3%96/g,'%F6').replace(/%C3%9F/g,'%DF');
+	//url=url.replace(/%C3%BC/g,'%FC').replace(/%C3%9C/g,'%FC').replace(/%C3%A4/g,'%E4').replace(/%C3%84/g,'%E4').replace(/%C3%B6/g,'%F6').replace(/%C3%96/g,'%F6').replace(/%C3%9F/g,'%DF');
 	$.popupWindow(url, {
 		height: 500,
 		width: 900,
