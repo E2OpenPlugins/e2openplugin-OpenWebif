@@ -1,14 +1,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-08-07 23:29+0100\n"
-"PO-Revision-Date: 2014-10-27 22:30+0100\n"
+"POT-Creation-Date: 2014-10-31 06:00+0100\n"
+"PO-Revision-Date: 2014-11-01 03:54+0100\n"
 "Last-Translator: Svevrstt <svevrstt@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 1.6.10\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: sv\n"
@@ -25,7 +25,7 @@ msgid "OpenWebif url: http://yourip:port"
 msgstr "OpenWebif url: http://din_ipadress:port"
 
 msgid "OpenWebInterface Enabled"
-msgstr "OpenWebInterface aktiverat"
+msgstr "OpenWebif är aktiverat"
 
 msgid "Show box name in header"
 msgstr "Visa digitalboxens namn i rubriken"
@@ -67,7 +67,7 @@ msgid "Add service name to stream information"
 msgstr "Lägg till leverantörens namn till strömningsinformationen"
 
 msgid "OpenWebif Configuration"
-msgstr "OpenWebif konfiguration"
+msgstr "Inställningar för OpenWebif"
 
 msgid "Mo"
 msgstr "Må"
@@ -376,15 +376,12 @@ msgstr "IP-adress"
 msgid "IPv4-only kernel"
 msgstr "Kernel enbart för IPv4"
 
-# This text is not translated by the software (older than 2014-10-21)
 msgid "none/IPv4-only network"
 msgstr "inga/Endast IPv4-nätverk"
 
-# This text is not translated by the software (older than 2014-10-21)
 msgid "IPv4-only Python/Twisted"
 msgstr "Endast Python/Twisted för IPv4"
 
-# This text is not translated by the software (older than 2014-10-21)
 msgid "IPv6 address(es)"
 msgstr "IPv6 adress(er)"
 
@@ -950,6 +947,63 @@ msgstr "Simulera"
 
 msgid "Do you really want to delete the AT"
 msgstr "Vill du verkligen ta bort denna AutoTimer"
+
+msgid "Enable Messages"
+msgstr "Aktivera statusmeddelanden"
+
+msgid "Delay Standby"
+msgstr "Fördröj uppdateringen om mottagaren inte är i viloläge (min)"
+
+msgid "Interval (min.)"
+msgstr "Tid för att hålla servicekanalen öppen (min)"
+
+msgid "Interval (sec.)"
+msgstr "Tid för att hålla servicekanalen öppen (sek)"
+
+msgid "Afterevent"
+msgstr "Tillämpa avslutande aktiviteter"
+
+msgid "Force"
+msgstr "Tvinga fram en uppdatering"
+
+msgid "Wakeup"
+msgstr "Vakna från djupt viloläge för EPG-uppdateringar"
+
+msgid "Inherit Autotimer"
+msgstr "Överför leverantörer från Autotimer"
+
+msgid "Parse Autotimer"
+msgstr "Starta en Autotimeranalys efter EPG uppdateringar"
+
+msgid "Always"
+msgstr "Alltid"
+
+msgid "Background only"
+msgstr "Uppdateringen sker i bakgrunden"
+
+msgid "Ask, default Yes"
+msgstr "Fråga, med standardsvar Ja"
+
+msgid "Ask, default No"
+msgstr "Fråga, med standardsvar Nej"
+
+msgid "Method"
+msgstr "Uppdatera EPG genom att använda"
+
+msgid "Visibly"
+msgstr "Synlig"
+
+msgid "Picture in Picture"
+msgstr "Bild i Bild"
+
+msgid "Picture in Picture (hidden)"
+msgstr "Bild i Bild (dold)"
+
+msgid "Fake Recording"
+msgstr "Simulerad inspelning"
+
+msgid "Refresh now"
+msgstr "Uppdatera nu"
 
 msgid "Add Provider as new Bouquet"
 msgstr "Lägg till leverantören som en ny favoritlista"

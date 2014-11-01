@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.8\n"
+"X-Generator: Poedit 1.6.10\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
@@ -936,6 +936,63 @@ msgstr "Simulieren"
 
 msgid "Do you really want to delete the AT"
 msgstr "Wollen Sie folgenden AutoTimer wirklich löschen"
+
+msgid "Enable Messages"
+msgstr "Nachrichten anzeigen"
+
+msgid "Delay Standby"
+msgstr "Standby-Verzögerung"
+
+msgid "Interval (min.)"
+msgstr "Intervall (Min.)"
+
+msgid "Interval (sec.)"
+msgstr "Intervall (Sek.)"
+
+msgid "Afterevent"
+msgstr ""
+
+msgid "Force"
+msgstr "Erzwingen"
+
+msgid "Wakeup"
+msgstr "Aufwecken"
+
+msgid "Inherit Autotimer"
+msgstr "Sender aus AutoTimern übernehmen"
+
+msgid "Parse Autotimer"
+msgstr "AutoTimer auswerten"
+
+msgid "Always"
+msgstr "Immer"
+
+msgid "Background only"
+msgstr "Nur im Hintergrund"
+
+msgid "Ask, default Yes"
+msgstr "Nachfrage mit Standard Ja"
+
+msgid "Ask, default No"
+msgstr "Nachfrage mit Standard Nein"
+
+msgid "Method"
+msgstr "Methode"
+
+msgid "Visibly"
+msgstr "Sichtbar"
+
+msgid "Picture in Picture"
+msgstr "Bild in Bild"
+
+msgid "Picture in Picture (hidden)"
+msgstr "Bild in Bild (versteckt)"
+
+msgid "Fake Recording"
+msgstr "Scheinaufnahme"
+
+msgid "Refresh now"
+msgstr "Jetzt auffrischen"
 
 msgid "Add Provider as new Bouquet"
 msgstr "Anbieter als neues Bouquet hinzufügen"

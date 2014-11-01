@@ -17,40 +17,40 @@ label
 <div id="epgrefreshcontent">
 	<form>
 	<fieldset>
-		<label for="enabled">Enabled:</label>
+		<label for="enabled">$tstrings['er_enabled']:</label>
 		<input type="checkbox" name="er_enabled" id="er_enabled" value="" class="checkbox ui-widget-content ui-corner-all">
-		<br><label for="er_enablemessage">Enable Messages:</label>
+		<br><label for="er_enablemessage">$tstrings['er_enable_messages']:</label>
 		<input type="checkbox" name="er_enablemessage" id="er_enablemessage" value="" class="checkbox ui-widget-content ui-corner-all">
-		<br><label for="er_begin">Begin:</label>
+		<br><label for="er_begin">$tstrings['er_begin']:</label>
 		<input type="text" name="er_begin" id="er_begin" value="" class="text date ui-widget-content ui-corner-all">
-		<br><label for="er_end">End:</label>
+		<br><label for="er_end">$tstrings['er_end']:</label>
 		<input type="text" name="er_end" id="er_end" value="" class="text date ui-widget-content ui-corner-all">
-		<br><label for="er_delay_standby">Delay Standby:</label>
+		<br><label for="er_delay_standby">$tstrings['er_delay_standby']:</label>
 		<input type="text" name="er_delay_standby" id="er_delay_standby" class="text ui-widget-content ui-corner-all">
-		<br><label id="lblm" for="er_interval">Interval (min.):</label><label id="lbls" for="er_interval">Interval (sec.):</label>
+		<br><label id="lblm" for="er_interval">$tstrings['er_interval_min']:</label><label id="lbls" for="er_interval">$tstrings['er_interval_sec']:</label>
 		<input type="text" name="er_interval" id="er_interval" class="text ui-widget-content ui-corner-all">
-		<br><label for="er_afterevent">Afterevent:</label>
+		<br><label for="er_afterevent">$tstrings['er_afterevent']:</label>
 		<input type="checkbox" name="er_afterevent" id="er_afterevent" value="" class="checkbox ui-widget-content ui-corner-all">
-		<br><label for="er_force">Force:</label>
+		<br><label for="er_force">$tstrings['er_force']:</label>
 		<input type="checkbox" name="er_force" id="er_force" value="" class="checkbox ui-widget-content ui-corner-all">
-		<br><label for="er_wakeup">Wakeup:</label>
+		<br><label for="er_wakeup">$tstrings['er_wakeup']:</label>
 		<input type="checkbox" name="er_wakeup" id="er_wakeup" value="" class="checkbox ui-widget-content ui-corner-all">
-		<span id="er_hasAT"><br><label for="er_inherit_autotimer">Inherit Autotimer:</label>
+		<span id="er_hasAT"><br><label for="er_inherit_autotimer">$tstrings['er_inherit_autotimer']:</label>
 		<input type="checkbox" name="er_inherit_autotimer" id="er_inherit_autotimer" value="" class="checkbox ui-widget-content ui-corner-all">
-		<br><label for="er_parse_autotimer">Parse Autotimer:</label>
+		<br><label for="er_parse_autotimer">$tstrings['er_parse_autotimer']:</label>
 		<select name="er_parse_autotimer" id="er_parse_autotimer">
-		<option value="always">Yes</option>
-		<option value="never" selected="selected">No</option>
-		<option value="bg_only">Background only</option>
-		<option value="ask_yes">Ask default Yes</option>
-		<option value="ask_no">Ask default No</option>
+		<option value="always">$tstrings['er_always']</option>
+		<option value="never" selected="selected">$tstrings['er_never']</option>
+		<option value="bg_only">$tstrings['er_bg_only']</option>
+		<option value="ask_yes">$tstrings['er_ask_yes']</option>
+		<option value="ask_no">$tstrings['er_ask_no']</option>
 		</select>
-		</span><br><label for="er_adapter">Adapter:</label>
+		</span><br><label for="er_adapter">$tstrings['er_adapter']:</label>
 		<select name="er_adapter" id="er_adapter">
-		<option value="main" selected="selected">Main Picture</option>
-		<option value="pip">Picture in Picture</option>
-		<option value="pip_hidden">Picture in Picture (hidden)</option>
-		<option value="record">Fake recording</option>
+		<option value="main" selected="selected">$tstrings['er_main']</option>
+		<option value="pip">$tstrings['er_pip']</option>
+		<option value="pip_hidden">$tstrings['er_pip_hidden']</option>
+		<option value="record">$tstrings['er_fake_recording']</option>
 		</select>
 		<br><label for="bouquets">$tstrings['at_bouquets']:</label>
 		<select data-placeholder="$tstrings['at_select_bouquets']" name="bouquets" id="bouquets" class="bq_select_box" multiple tabindex="16">
@@ -62,9 +62,9 @@ label
 	</form>
 	<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
 	<div id="actions">
-	<button id="epgrbutton0">Reload</button>
-	<button id="epgrbutton1">Save</button>
-	<button id="epgrbutton2">Do Refresh</button>
+	<button id="epgrbutton0">$tstrings['er_reload']</button>
+	<button id="epgrbutton1">$tstrings['er_save']</button>
+	<button id="epgrbutton2">$tstrings['er_refresh']</button>
 	</div></div>
 	<div id="errorbox" class="timerlist_row" style="color: red;">
 	<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
