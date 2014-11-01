@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-08-07 23:30+0100\n"
+"POT-Creation-Date: 2014-11-01 19:04+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -13,59 +13,82 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
-msgid "Cancel"
-msgstr "Abbrechen"
+msgid "Settings"
+msgstr "Einstellungen"
 
-msgid "Save"
-msgstr "Speichern"
+msgid "LCD4Linux Setup"
+msgstr "LCD4Linux-Einstellungen"
 
-msgid "OpenWebif url: http://yourip:port"
-msgstr "OpenWebif-URL: http://ip_des_receivers:port"
+msgid "AutoTimer"
+msgstr ""
 
-msgid "OpenWebInterface Enabled"
-msgstr "OpenWebinterface einschalten"
+msgid "BouquetEditor"
+msgstr "Bouquet-Editor"
 
-msgid "Show box name in header"
-msgstr "Boxnamen in der Kopfzeile anzeigen"
+msgid "EPGRefresh"
+msgstr ""
 
-msgid "Use custom box name"
-msgstr "Eigenen Boxnamen verwenden"
+msgid "IPv4-only kernel"
+msgstr "Kernel ohne IPv6-Unterstützung"
 
-msgid "Custom box name"
-msgstr "Eigener Boxname"
+msgid "IPv4-only Python/Twisted"
+msgstr "Python/Twisted ohne IPv6-Unterstützung"
 
-msgid "HTTP port"
-msgstr "Port für HTTP"
+msgid "none/IPv4-only network"
+msgstr "keine/reines IPv4-Netzwerk"
 
-msgid "Enable HTTP Authentication"
-msgstr "Authentifizierung für HTTP aktivieren"
+msgid "Message sent successfully!"
+msgstr "Nachricht erfolgreich verschickt!"
 
-msgid "Enable HTTPS"
-msgstr "Aktivierung von HTTPS"
+msgid "No answer in time"
+msgstr "Keine rechtzeitige Antwort"
 
-msgid "HTTPS port"
-msgstr "Port für HTTPS"
+msgid "Answer is YES!"
+msgstr "Antwort lautet JA!"
 
-msgid "Require client cert for HTTPS"
-msgstr "Erzwinge zertifikatbasierte Anmeldung"
+msgid "Answer is NO!"
+msgstr "Antwort lautet NEIN!"
 
-msgid "Enable Authentication for streaming"
-msgstr "Authentifizierung für Streaming aktivieren"
+msgid "New"
+msgstr "Neu"
 
-msgid "Disable access for user root"
-msgstr "Anmeldung als Benutzer root verbieten"
+msgid "Services"
+msgstr "Sender"
 
-msgid "Smart services renaming for XBMC"
-msgstr "Sendernamen für XBMC umbenennen"
+msgid "Cable"
+msgstr "Kabel"
 
-msgid "Enable Parental Control"
-msgstr "Kindersicherung aktivieren"
+msgid "Terrestrial"
+msgstr "Terrestrisch"
 
-msgid "Add service name to stream information"
-msgstr "Servicenamen zu den Streaminformationen hinzufügen"
+msgid "W"
+msgstr "W"
 
-msgid "OpenWebif Configuration"
-msgstr "OpenWebif-Konfiguration"
+msgid "E"
+msgstr "O"
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr "Der benötigte Parameter '%s' fehlt"
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr "Der Parameter '%s' darf nicht leer sein"
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr "Falsches Parameter-Format 'set=%s'. Korrekt: set=set15 "
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr "Unbekannter Befehl %s für die Lautstärkesteuerung"
+
+msgid "The parameter 'command' must be a number"
+msgstr "Der Parameter 'command' muss eine Zahl sein"
+
+#, python-format
+msgid "type %s is not a number"
+msgstr "der Typ %s ist keine Zahl"
 
 msgid "Mo"
 msgstr "Mo"
@@ -169,12 +192,6 @@ msgstr "Dezember"
 msgid "About"
 msgstr "Über"
 
-msgid "Timer List"
-msgstr "Timer-Liste"
-
-msgid "New Name"
-msgstr "Neuer Name"
-
 msgid "Add Timer"
 msgstr "Timer hinzufügen"
 
@@ -228,6 +245,9 @@ msgstr "Receiver-Laufzeit"
 
 msgid "Brand"
 msgstr "Marke"
+
+msgid "Cancel"
+msgstr "Abbrechen"
 
 msgid "Capacity"
 msgstr "Kapazität"
@@ -370,15 +390,6 @@ msgstr "Stunde"
 msgid "IP address"
 msgstr "IP-Adresse"
 
-msgid "IPv4-only kernel"
-msgstr "Kernel ohne IPv6-Unterstützung"
-
-msgid "none/IPv4-only network"
-msgstr "keine/reines IPv4-Netzwerk"
-
-msgid "IPv4-only Python/Twisted"
-msgstr "Python/Twisted ohne IPv6-Unterstützung"
-
 msgid "IPv6 address(es)"
 msgstr "IPv6-Adresse(n)"
 
@@ -460,6 +471,15 @@ msgstr "Ein"
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Open-Source-Webinterface für Linux-Set-Top-Boxen"
 
+msgid "Show box name in header"
+msgstr "Boxnamen in der Kopfzeile anzeigen"
+
+msgid "Use custom box name"
+msgstr "Eigenen Boxnamen verwenden"
+
+msgid "Custom box name"
+msgstr "Eigener Boxname"
+
 msgid "OSD"
 msgstr "OSD"
 
@@ -517,6 +537,9 @@ msgstr "Satelliten"
 msgid "Satfinder"
 msgstr "Satellitenfinder"
 
+msgid "Save"
+msgstr "Speichern"
+
 msgid "Screenshot"
 msgstr "Bildschirmfoto"
 
@@ -532,19 +555,16 @@ msgstr "Sekunden"
 msgid "Send Message"
 msgstr "Nachricht senden"
 
+msgid "Waiting for answer ..."
+msgstr "Erwarte Antwort ..."
+
 msgid "Send a Message"
 msgstr "Nachricht senden"
 
 msgid "Service"
 msgstr "Kanal"
 
-msgid "Settings"
-msgstr "Einstellungen"
-
 msgid "Bouquet Editor"
-msgstr "Bouquet-Editor"
-
-msgid "BouquetEditor"
 msgstr "Bouquet-Editor"
 
 msgid "(shift + click for long pressure)"
@@ -618,6 +638,9 @@ msgstr "Timer hinzugefügt"
 
 msgid "Timerlist"
 msgstr "Timerliste"
+
+msgid "New Name"
+msgstr "Neuer Name"
 
 msgid "Autotimer Preview"
 msgstr "AutoTimer-Vorschau"
@@ -759,6 +782,9 @@ msgstr "gesamter Titel"
 
 msgid "description match"
 msgstr "Übereinstimmung in der Beschreibung"
+
+msgid "start match"
+msgstr ""
 
 msgid "Search strictness"
 msgstr "Genauigkeit der Suche"
@@ -937,6 +963,9 @@ msgstr "Simulieren"
 msgid "Do you really want to delete the AT"
 msgstr "Wollen Sie folgenden AutoTimer wirklich löschen"
 
+msgid "Label series"
+msgstr ""
+
 msgid "Enable Messages"
 msgstr "Nachrichten anzeigen"
 
@@ -1051,61 +1080,47 @@ msgstr "Bitte den Dateinamen angeben"
 msgid "Do you really want to restore from file"
 msgstr "Wollen Sie diese Datei wirklich importieren"
 
-msgid "LCD4Linux Setup"
-msgstr "LCD4Linux-Einstellungen"
+msgid "OpenWebif url: http://yourip:port"
+msgstr "OpenWebif-URL: http://ip_des_receivers:port"
 
-#, python-format
-msgid "Missing mandatory parameter '%s'"
-msgstr "Der benötigte Parameter '%s' fehlt"
+msgid "OpenWebInterface Enabled"
+msgstr "OpenWebinterface einschalten"
 
-#, python-format
-msgid "The parameter '%s' can't be empty"
-msgstr "Der Parameter '%s' darf nicht leer sein"
+msgid "HTTP port"
+msgstr "Port für HTTP"
 
-#, python-format
-msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr "Falsches Parameter-Format 'set=%s'. Korrekt: set=set15 "
+msgid "Enable HTTP Authentication"
+msgstr "Authentifizierung für HTTP aktivieren"
 
-#, python-format
-msgid "Unknown Volume command %s"
-msgstr "Unbekannter Befehl %s für die Lautstärkesteuerung"
+msgid "Enable HTTPS"
+msgstr "Aktivierung von HTTPS"
 
-msgid "The parameter 'command' must be a number"
-msgstr "Der Parameter 'command' muss eine Zahl sein"
+msgid "HTTPS port"
+msgstr "Port für HTTPS"
 
-#, python-format
-msgid "type %s is not a number"
-msgstr "der Typ %s ist keine Zahl"
+msgid "Require client cert for HTTPS"
+msgstr "Erzwinge zertifikatbasierte Anmeldung"
 
-msgid "New"
-msgstr "Neu"
+msgid "Enable Authentication for streaming"
+msgstr "Authentifizierung für Streaming aktivieren"
 
-msgid "Services"
-msgstr "Sender"
+msgid "Disable access for user root"
+msgstr "Anmeldung als Benutzer root verbieten"
 
-msgid "Cable"
-msgstr "Kabel"
+msgid "Smart services renaming for XBMC"
+msgstr "Sendernamen für XBMC umbenennen"
 
-msgid "Terrestrial"
-msgstr "Terrestrisch"
+msgid "Enable Parental Control"
+msgstr "Kindersicherung aktivieren"
 
-msgid "W"
-msgstr "W"
+msgid "Add service name to stream information"
+msgstr "Servicenamen zu den Streaminformationen hinzufügen"
 
-msgid "E"
-msgstr "O"
+msgid "Character encoding for EPG data"
+msgstr "Zeichenkodierung der EPG Daten"
 
-msgid "Message sent successfully!"
-msgstr "Nachricht erfolgreich verschickt!"
+msgid "OpenWebif Configuration"
+msgstr "OpenWebif-Konfiguration"
 
-msgid "Waiting for answer ..."
-msgstr "Erwarte Antwort ..."
-
-msgid "No answer in time"
-msgstr "Keine rechtzeitige Antwort"
-
-msgid "Answer is YES!"
-msgstr "Antwort lautet JA!"
-
-msgid "Answer is NO!"
-msgstr "Antwort lautet NEIN!"
+#~ msgid "Timer List"
+#~ msgstr "Timer-Liste"

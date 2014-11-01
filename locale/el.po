@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebIf\n"
-"POT-Creation-Date: 2013-12-05 22:05+0100\n"
+"POT-Creation-Date: 2014-11-01 19:04+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: MCelliot_g\n"
 "Language-Team: satdreamgr\n"
@@ -11,41 +11,82 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-msgid "Cancel"
-msgstr "Ακύρωση"
+msgid "Settings"
+msgstr "Ρυθμίσεις"
 
-msgid "Save"
-msgstr "Αποθήκευση"
+msgid "LCD4Linux Setup"
+msgstr ""
 
-msgid "OpenWebif url: http://yourip:port"
-msgstr "OpenWebif url: http://yourip:port"
+msgid "AutoTimer"
+msgstr ""
 
-msgid "OpenWebInterface Enabled"
-msgstr "OpenWebInterface Ενεργό"
+msgid "BouquetEditor"
+msgstr ""
 
-msgid "HTTP port"
-msgstr "Θύρα HTTP"
+msgid "EPGRefresh"
+msgstr ""
 
-msgid "Enable HTTP Authentication"
-msgstr "Ενεργοποίηση πιστοποίησης HTTP"
+msgid "IPv4-only kernel"
+msgstr ""
 
-msgid "Enable HTTPS"
-msgstr "Ενεργοποίηση HTTPS"
+msgid "IPv4-only Python/Twisted"
+msgstr ""
 
-msgid "HTTPS port"
-msgstr "Θύρα HTTPS"
+msgid "none/IPv4-only network"
+msgstr ""
 
-msgid "Smart services renaming for XBMC"
-msgstr "Έξυπνη μετονομασία συσκευών για το XBMC"
+msgid "Message sent successfully!"
+msgstr ""
 
-msgid "Enable Parental Control"
-msgstr "Ενεργοποίηση γονικού ελέγχου"
+msgid "No answer in time"
+msgstr ""
 
-msgid "Add service name to stream information"
-msgstr "Προσθήκη ονόματος υπηρεσίας στις πληροφορίες ροής"
+msgid "Answer is YES!"
+msgstr ""
 
-msgid "OpenWebif Configuration"
-msgstr "Ρυθμίσεις OpenWebif"
+msgid "Answer is NO!"
+msgstr ""
+
+msgid "New"
+msgstr "Νέο"
+
+msgid "Services"
+msgstr "Υπηρεσίες"
+
+msgid "Cable"
+msgstr "Καλωδιακό"
+
+msgid "Terrestrial"
+msgstr "Επίγειο"
+
+msgid "W"
+msgstr "Δ"
+
+msgid "E"
+msgstr "Α"
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr ""
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr ""
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr ""
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr ""
+
+msgid "The parameter 'command' must be a number"
+msgstr ""
+
+#, python-format
+msgid "type %s is not a number"
+msgstr ""
 
 msgid "Mo"
 msgstr "Δε"
@@ -70,6 +111,9 @@ msgstr "Σά"
 msgid "Su"
 msgstr "Κυ"
 
+msgid "Sun"
+msgstr "Κυρ"
+
 msgid "Mon"
 msgstr "Δευ"
 
@@ -87,9 +131,6 @@ msgstr "Παρ"
 
 msgid "Sat"
 msgstr "Σάβ"
-
-msgid "Sun"
-msgstr "Κυρ"
 
 msgid "Monday"
 msgstr "Δευτέρα"
@@ -154,6 +195,12 @@ msgstr "Περί"
 msgid "Add Timer"
 msgstr "Προσθήκη Χρονοδιακόπτη"
 
+msgid "Add AutoTimer"
+msgstr ""
+
+msgid "Add Zap Timer"
+msgstr ""
+
 msgid "After Event"
 msgstr "Μετά το πρόγραμμα"
 
@@ -199,6 +246,9 @@ msgstr "Χρόνος Λειτουργίας Δέκτη"
 msgid "Brand"
 msgstr "Μάρκα"
 
+msgid "Cancel"
+msgstr "Ακύρωση"
+
 msgid "Capacity"
 msgstr "Χωρητικότητα"
 
@@ -235,8 +285,14 @@ msgstr "Προεπιλογή"
 msgid "Delete Recording"
 msgstr "Διαγραφή Ταινίας"
 
+msgid "Really delete the recording"
+msgstr ""
+
 msgid "Delete Timer"
 msgstr "Διαγραφή Χρονοδιακόπτη"
+
+msgid "Really delete the timer"
+msgstr ""
 
 msgid "Description"
 msgstr "Περιγραφή"
@@ -249,6 +305,9 @@ msgstr "Απενεργοποίηση Χρονοδιακόπτη"
 
 msgid "Dolby"
 msgstr "Dolby"
+
+msgid "Done"
+msgstr ""
 
 msgid "Download"
 msgstr "Λήψη"
@@ -264,6 +323,9 @@ msgstr "Επεξεργασία Χρονοδιακόπτη"
 
 msgid "Enable Timer"
 msgstr "Ενεργοποίηση Χρονοδιακόπτη"
+
+msgid "Start"
+msgstr ""
 
 msgid "End"
 msgstr "Τέλος"
@@ -323,8 +385,14 @@ msgstr "Υψηλή Ανάλυση"
 msgid "Hard disk model"
 msgstr "Μοντέλο Σκληρού Δίσκου"
 
+msgid "Hour"
+msgstr ""
+
 msgid "IP address"
 msgstr "Διεύθυνση IP"
+
+msgid "IPv6 address(es)"
+msgstr ""
 
 msgid "Infos"
 msgstr "Πληροφορίες"
@@ -359,6 +427,9 @@ msgstr "Διεύθυνση MAC"
 msgid "Main"
 msgstr "Κύριο"
 
+msgid "Minute"
+msgstr ""
+
 msgid "Model"
 msgstr "Μοντέλο"
 
@@ -392,11 +463,29 @@ msgstr "Τίποτα"
 msgid "Nothing playing."
 msgstr "Καμία αναπαραγωγή."
 
+msgid "Now"
+msgstr ""
+
+msgid "On"
+msgstr ""
+
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Διεπαφή Δικτύου Ανοικτού Λογισμικού για δέκτες με Linux"
 
+msgid "Show box name in header"
+msgstr ""
+
+msgid "Use custom box name"
+msgstr ""
+
+msgid "Custom box name"
+msgstr ""
+
 msgid "OSD"
 msgstr "OSD"
+
+msgid "Playback"
+msgstr ""
 
 msgid "Playlist"
 msgstr "Λίστα αναπαραγωγής"
@@ -425,8 +514,14 @@ msgstr "Ανανέωση"
 msgid "Refresh automatically every"
 msgstr "Αυτόματη ανανέωση κάθε"
 
+msgid "Refresh Timer"
+msgstr ""
+
 msgid "Remote"
 msgstr "Τηλεχειριστήριο"
+
+msgid "Rename Recording"
+msgstr ""
 
 msgid "Repeated"
 msgstr "Επαναλαμβανόμενο"
@@ -443,6 +538,9 @@ msgstr "Δορυφόροι"
 msgid "Satfinder"
 msgstr "Έλεγχος σήματος"
 
+msgid "Save"
+msgstr "Αποθήκευση"
+
 msgid "Screenshot"
 msgstr "Στιγμιότυπο"
 
@@ -458,6 +556,9 @@ msgstr "δευτερόλεπτα"
 msgid "Send Message"
 msgstr "Αποστολή Μηνύματος"
 
+msgid "Waiting for answer ..."
+msgstr ""
+
 msgid "Send a Message"
 msgstr "Αποστολή ενός Μηνύματος"
 
@@ -465,8 +566,8 @@ msgstr "Αποστολή ενός Μηνύματος"
 msgid "Service"
 msgstr "Υπηρεσία"
 
-msgid "Settings"
-msgstr "Ρυθμίσεις"
+msgid "Bouquet Editor"
+msgstr ""
 
 msgid "(shift + click for long pressure)"
 msgstr "(shift + κλικ για παρατεταμένο πάτημα)"
@@ -498,6 +599,9 @@ msgstr "Αναμονή"
 msgid "Standby Toggle"
 msgstr "Εναλλαγή Αναμονής"
 
+msgid "Start time is after end time"
+msgstr ""
+
 msgid "Start Instant Record"
 msgstr "Εκκίνηση Άμεσης Εγγραφής"
 
@@ -526,11 +630,23 @@ msgstr "Μηχανή Προτύπου"
 msgid "Text"
 msgstr "Κείμενο"
 
+msgid "Time"
+msgstr ""
+
 msgid "Timeout"
 msgstr "Χρόνος Λήξης"
 
+msgid "Timer added"
+msgstr ""
+
 msgid "Timerlist"
 msgstr "Λίστα χρονοδιακοπτών"
+
+msgid "New Name"
+msgstr ""
+
+msgid "Autotimer Preview"
+msgstr ""
 
 msgid "Timer"
 msgstr "Χρονοδιακόπτης"
@@ -595,6 +711,9 @@ msgstr "Ευρεία Εικόνα"
 msgid "Video Width"
 msgstr "Πλάτος Βίντεο"
 
+msgid "Volume"
+msgstr ""
+
 msgid "Volume Control"
 msgstr "Έλεγχος Έντασης"
 
@@ -616,20 +735,392 @@ msgstr "μετάβαση πριν τη Ροή"
 msgid "Zap to"
 msgstr "Μετάβαση σε"
 
-msgid "New"
-msgstr "Νέο"
+msgid "Zapped to"
+msgstr ""
 
-msgid "Services"
-msgstr "Υπηρεσίες"
+msgid "Translation to Spanish"
+msgstr ""
 
-msgid "Cable"
-msgstr "Καλωδιακό"
+msgid "All Files of this Software are open source software;"
+msgstr ""
 
-msgid "Terrestrial"
-msgstr "Επίγειο"
+msgid "you can redistribute it and/or modify it under the"
+msgstr ""
 
-msgid "W"
-msgstr "Δ"
+msgid "terms of the GNU General Public License version 2 as"
+msgstr ""
 
-msgid "E"
-msgstr "Α"
+msgid "published by the Free Software Foundation."
+msgstr ""
+
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 2 "
+"as published by the Free Software Foundation."
+msgstr ""
+
+msgid "Root"
+msgstr ""
+
+msgid "AutoTimer List"
+msgstr ""
+
+msgid "AutoTimer Edit"
+msgstr ""
+
+msgid "Match title"
+msgstr ""
+
+msgid "EPG encoding"
+msgstr ""
+
+msgid "Search type"
+msgstr ""
+
+msgid "partial match"
+msgstr ""
+
+msgid "exact match"
+msgstr ""
+
+msgid "description match"
+msgstr ""
+
+msgid "start match"
+msgstr ""
+
+msgid "Search strictness"
+msgstr ""
+
+msgid "case-sensitive search"
+msgstr ""
+
+msgid "case-insensitive search"
+msgstr ""
+
+msgid "Timer type"
+msgstr ""
+
+msgid "record"
+msgstr ""
+
+msgid "zap"
+msgstr ""
+
+msgid "Override found with alternative service"
+msgstr ""
+
+msgid "Only match during timespan"
+msgstr ""
+
+msgid "Begin of timespan"
+msgstr ""
+
+msgid "End of Timespan"
+msgstr ""
+
+msgid "Restrict to events on certain dates"
+msgstr ""
+
+msgid "Not after"
+msgstr ""
+
+msgid "Not before"
+msgstr ""
+
+msgid "Custom offset"
+msgstr ""
+
+msgid "Offset before recording (in m)"
+msgstr ""
+
+msgid "Offset after recording (in m)"
+msgstr ""
+
+msgid "Set maximum duration"
+msgstr ""
+
+msgid "After event"
+msgstr ""
+
+msgid "standard"
+msgstr ""
+
+msgid "auto"
+msgstr ""
+
+msgid "do nothing"
+msgstr ""
+
+msgid "go to standby"
+msgstr ""
+
+msgid "go to deep standby"
+msgstr ""
+
+msgid "Execute \"after event\" during timespan"
+msgstr ""
+
+msgid "Begin of \"after event\" timespan"
+msgstr ""
+
+msgid "End of \"after event\" timespan"
+msgstr ""
+
+msgid "Record a maximum of x times"
+msgstr ""
+
+msgid "Amount of recordings left"
+msgstr ""
+
+msgid "Never"
+msgstr ""
+
+msgid "Monthly"
+msgstr ""
+
+msgid "Weekly (Sunday)"
+msgstr ""
+
+msgid "Weekly (Monday)"
+msgstr ""
+
+msgid "Reset count"
+msgstr ""
+
+msgid "Require description to be unique"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "On same service"
+msgstr ""
+
+msgid "On any service"
+msgstr ""
+
+msgid "Any service/recording"
+msgstr ""
+
+msgid "Use a custom location"
+msgstr ""
+
+msgid "select Tags"
+msgstr ""
+
+msgid "select Channels"
+msgstr ""
+
+msgid "select Bouquets"
+msgstr ""
+
+msgid "Enable Filtering"
+msgstr ""
+
+msgid "Include"
+msgstr ""
+
+msgid "Exclude"
+msgstr ""
+
+msgid "in Title"
+msgstr ""
+
+msgid "in Shortdescription"
+msgstr ""
+
+msgid "in Description"
+msgstr ""
+
+msgid "on Weekday"
+msgstr ""
+
+msgid "Weekend"
+msgstr ""
+
+msgid "Weekday"
+msgstr ""
+
+msgid "VPS"
+msgstr ""
+
+msgid "VPS Overwrite"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Reload"
+msgstr ""
+
+msgid "Parse"
+msgstr ""
+
+msgid "Simulate"
+msgstr ""
+
+msgid "Do you really want to delete the AT"
+msgstr ""
+
+msgid "Label series"
+msgstr ""
+
+msgid "Enable Messages"
+msgstr ""
+
+msgid "Delay Standby"
+msgstr ""
+
+msgid "Interval (min.)"
+msgstr ""
+
+msgid "Interval (sec.)"
+msgstr ""
+
+msgid "Afterevent"
+msgstr ""
+
+msgid "Force"
+msgstr ""
+
+msgid "Wakeup"
+msgstr ""
+
+msgid "Inherit Autotimer"
+msgstr ""
+
+msgid "Parse Autotimer"
+msgstr ""
+
+msgid "Always"
+msgstr ""
+
+msgid "Background only"
+msgstr ""
+
+msgid "Ask, default Yes"
+msgstr ""
+
+msgid "Ask, default No"
+msgstr ""
+
+msgid "Method"
+msgstr ""
+
+msgid "Visibly"
+msgstr ""
+
+msgid "Picture in Picture"
+msgstr ""
+
+msgid "Picture in Picture (hidden)"
+msgstr ""
+
+msgid "Fake Recording"
+msgstr ""
+
+msgid "Refresh now"
+msgstr ""
+
+msgid "Add Provider as new Bouquet"
+msgstr ""
+
+msgid "Add channel(s) to Bouquet"
+msgstr ""
+
+msgid "Add channel(s) as alternate"
+msgstr ""
+
+msgid "Export"
+msgstr ""
+
+msgid "Import"
+msgstr ""
+
+msgid "Add Bouquet"
+msgstr ""
+
+msgid "Rename Bouquet"
+msgstr ""
+
+msgid "Delete Bouquet"
+msgstr ""
+
+msgid "Add Marker"
+msgstr ""
+
+msgid "Rename"
+msgstr ""
+
+msgid "Delete Channel(s)"
+msgstr ""
+
+msgid "Do you really want to delete the channel(s)"
+msgstr ""
+
+msgid "Do you really want to delete the bouquet"
+msgstr ""
+
+msgid "Name of the Bouquet"
+msgstr ""
+
+msgid "Name of the Marker"
+msgstr ""
+
+msgid "Enter new name for the bouquet"
+msgstr ""
+
+msgid "Enter new name for the marker"
+msgstr ""
+
+msgid "Please enter filename"
+msgstr ""
+
+msgid "Do you really want to restore from file"
+msgstr ""
+
+msgid "OpenWebif url: http://yourip:port"
+msgstr "OpenWebif url: http://yourip:port"
+
+msgid "OpenWebInterface Enabled"
+msgstr "OpenWebInterface Ενεργό"
+
+msgid "HTTP port"
+msgstr "Θύρα HTTP"
+
+msgid "Enable HTTP Authentication"
+msgstr "Ενεργοποίηση πιστοποίησης HTTP"
+
+msgid "Enable HTTPS"
+msgstr "Ενεργοποίηση HTTPS"
+
+msgid "HTTPS port"
+msgstr "Θύρα HTTPS"
+
+msgid "Require client cert for HTTPS"
+msgstr ""
+
+msgid "Enable Authentication for streaming"
+msgstr ""
+
+msgid "Disable access for user root"
+msgstr ""
+
+msgid "Smart services renaming for XBMC"
+msgstr "Έξυπνη μετονομασία συσκευών για το XBMC"
+
+msgid "Enable Parental Control"
+msgstr "Ενεργοποίηση γονικού ελέγχου"
+
+msgid "Add service name to stream information"
+msgstr "Προσθήκη ονόματος υπηρεσίας στις πληροφορίες ροής"
+
+msgid "Character encoding for EPG data"
+msgstr ""
+
+msgid "OpenWebif Configuration"
+msgstr "Ρυθμίσεις OpenWebif"

@@ -1,73 +1,96 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-10-31 06:00+0100\n"
+"POT-Creation-Date: 2014-11-01 19:04+0100\n"
 "PO-Revision-Date: 2014-11-01 03:54+0100\n"
 "Last-Translator: Svevrstt <svevrstt@gmail.com>\n"
 "Language-Team: \n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.6.10\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: sv\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
-msgid "Cancel"
-msgstr "Avbryt"
+msgid "Settings"
+msgstr "Inställningar"
 
-msgid "Save"
-msgstr "Spara"
+msgid "LCD4Linux Setup"
+msgstr "LCD4Linux inställning"
 
-msgid "OpenWebif url: http://yourip:port"
-msgstr "OpenWebif url: http://din_ipadress:port"
+msgid "AutoTimer"
+msgstr ""
 
-msgid "OpenWebInterface Enabled"
-msgstr "OpenWebif är aktiverat"
+msgid "BouquetEditor"
+msgstr "Redigera favoritlistor"
 
-msgid "Show box name in header"
-msgstr "Visa digitalboxens namn i rubriken"
+msgid "EPGRefresh"
+msgstr ""
 
-msgid "Use custom box name"
-msgstr "Använd anpassat boxnamn"
+msgid "IPv4-only kernel"
+msgstr "Kernel enbart för IPv4"
 
-msgid "Custom box name"
-msgstr "Anpassat boxnamn"
+msgid "IPv4-only Python/Twisted"
+msgstr "Endast Python/Twisted för IPv4"
 
-msgid "HTTP port"
-msgstr "HTTP port"
+msgid "none/IPv4-only network"
+msgstr "inga/Endast IPv4-nätverk"
 
-msgid "Enable HTTP Authentication"
-msgstr "Aktivera HTTP autentisering"
+msgid "Message sent successfully!"
+msgstr "Meddelandet skickades!"
 
-msgid "Enable HTTPS"
-msgstr "Aktivera HTTPS"
+msgid "No answer in time"
+msgstr "Svaret kom inte i tid"
 
-msgid "HTTPS port"
-msgstr "HTTPS port"
+msgid "Answer is YES!"
+msgstr "Svaret är JA!"
 
-msgid "Require client cert for HTTPS"
-msgstr "Kräv klientcertifikat för HTTPS"
+msgid "Answer is NO!"
+msgstr "Svaret är NEJ!"
 
-msgid "Enable Authentication for streaming"
-msgstr "Aktivera autentisering för strömning"
+msgid "New"
+msgstr "Ny"
 
-msgid "Disable access for user root"
-msgstr "Slå av åtkomst för rootanvändaren"
+msgid "Services"
+msgstr "Tjänster"
 
-msgid "Smart services renaming for XBMC"
-msgstr "Smart namnändring för XBMC-tjänster"
+msgid "Cable"
+msgstr "Kabel-TV"
 
-msgid "Enable Parental Control"
-msgstr "Aktivera föräldrakontroll"
+msgid "Terrestrial"
+msgstr "Markbunden"
 
-msgid "Add service name to stream information"
-msgstr "Lägg till leverantörens namn till strömningsinformationen"
+msgid "W"
+msgstr "V"
 
-msgid "OpenWebif Configuration"
-msgstr "Inställningar för OpenWebif"
+msgid "E"
+msgstr "Ö"
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr "Saknar den obligatoriska parametern '%s'"
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr "Parametern '%s' kan inte vara tom "
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr "Fel parameterformat 'set=%s'. Använd set=set15 "
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr "Okänd volyminstruktion %s"
+
+msgid "The parameter 'command' must be a number"
+msgstr "Parametern 'command' måste vara numerisk"
+
+#, python-format
+msgid "type %s is not a number"
+msgstr "typ %s är inte en siffra"
 
 msgid "Mo"
 msgstr "Må"
@@ -171,12 +194,6 @@ msgstr "December"
 msgid "About"
 msgstr "Om"
 
-msgid "Timer List"
-msgstr "Timerlista"
-
-msgid "New Name"
-msgstr "Nytt namn"
-
 msgid "Add Timer"
 msgstr "Lägg till timer"
 
@@ -230,6 +247,9 @@ msgstr "Boxens drifttid"
 
 msgid "Brand"
 msgstr "Märke"
+
+msgid "Cancel"
+msgstr "Avbryt"
 
 msgid "Capacity"
 msgstr "Kapacitet"
@@ -373,15 +393,6 @@ msgstr "Timme"
 msgid "IP address"
 msgstr "IP-adress"
 
-msgid "IPv4-only kernel"
-msgstr "Kernel enbart för IPv4"
-
-msgid "none/IPv4-only network"
-msgstr "inga/Endast IPv4-nätverk"
-
-msgid "IPv4-only Python/Twisted"
-msgstr "Endast Python/Twisted för IPv4"
-
 msgid "IPv6 address(es)"
 msgstr "IPv6 adress(er)"
 
@@ -464,6 +475,15 @@ msgstr "På"
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Open Source webbstöd för Linux-set-top-boxar"
 
+msgid "Show box name in header"
+msgstr "Visa digitalboxens namn i rubriken"
+
+msgid "Use custom box name"
+msgstr "Använd anpassat boxnamn"
+
+msgid "Custom box name"
+msgstr "Anpassat boxnamn"
+
 msgid "OSD"
 msgstr "OSD"
 
@@ -522,6 +542,9 @@ msgstr "Satelliter"
 msgid "Satfinder"
 msgstr "Satfinder"
 
+msgid "Save"
+msgstr "Spara"
+
 msgid "Screenshot"
 msgstr "Skärmdump"
 
@@ -537,20 +560,17 @@ msgstr "sekunder"
 msgid "Send Message"
 msgstr "Skicka meddelandet"
 
+msgid "Waiting for answer ..."
+msgstr "Väntar på svar..."
+
 msgid "Send a Message"
 msgstr "Skicka ett meddelande"
 
 msgid "Service"
 msgstr "Leverantör"
 
-msgid "Settings"
-msgstr "Inställningar"
-
 msgid "Bouquet Editor"
 msgstr "Redigerare för favoritlistor"
-
-msgid "BouquetEditor"
-msgstr "Redigera favoritlistor"
 
 msgid "(shift + click for long pressure)"
 msgstr "(shift + klick ger lång knapptryckning)"
@@ -623,6 +643,9 @@ msgstr "Timmer lades till"
 
 msgid "Timerlist"
 msgstr "Timerlista"
+
+msgid "New Name"
+msgstr "Nytt namn"
 
 msgid "Autotimer Preview"
 msgstr "AutoTimer förhandsvisning"
@@ -770,6 +793,9 @@ msgstr "exakt matchning"
 
 msgid "description match"
 msgstr "beskrivningen matchar"
+
+msgid "start match"
+msgstr ""
 
 msgid "Search strictness"
 msgstr "Söknoggrannhet"
@@ -948,6 +974,9 @@ msgstr "Simulera"
 msgid "Do you really want to delete the AT"
 msgstr "Vill du verkligen ta bort denna AutoTimer"
 
+msgid "Label series"
+msgstr ""
+
 msgid "Enable Messages"
 msgstr "Aktivera statusmeddelanden"
 
@@ -1062,61 +1091,47 @@ msgstr "Vänligen ange ett filnamn"
 msgid "Do you really want to restore from file"
 msgstr "Vill du verkligen återställa från en fil"
 
-msgid "LCD4Linux Setup"
-msgstr "LCD4Linux inställning"
+msgid "OpenWebif url: http://yourip:port"
+msgstr "OpenWebif url: http://din_ipadress:port"
 
-#, python-format
-msgid "Missing mandatory parameter '%s'"
-msgstr "Saknar den obligatoriska parametern '%s'"
+msgid "OpenWebInterface Enabled"
+msgstr "OpenWebif är aktiverat"
 
-#, python-format
-msgid "The parameter '%s' can't be empty"
-msgstr "Parametern '%s' kan inte vara tom "
+msgid "HTTP port"
+msgstr "HTTP port"
 
-#, python-format
-msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr "Fel parameterformat 'set=%s'. Använd set=set15 "
+msgid "Enable HTTP Authentication"
+msgstr "Aktivera HTTP autentisering"
 
-#, python-format
-msgid "Unknown Volume command %s"
-msgstr "Okänd volyminstruktion %s"
+msgid "Enable HTTPS"
+msgstr "Aktivera HTTPS"
 
-msgid "The parameter 'command' must be a number"
-msgstr "Parametern 'command' måste vara numerisk"
+msgid "HTTPS port"
+msgstr "HTTPS port"
 
-#, python-format
-msgid "type %s is not a number"
-msgstr "typ %s är inte en siffra"
+msgid "Require client cert for HTTPS"
+msgstr "Kräv klientcertifikat för HTTPS"
 
-msgid "New"
-msgstr "Ny"
+msgid "Enable Authentication for streaming"
+msgstr "Aktivera autentisering för strömning"
 
-msgid "Services"
-msgstr "Tjänster"
+msgid "Disable access for user root"
+msgstr "Slå av åtkomst för rootanvändaren"
 
-msgid "Cable"
-msgstr "Kabel-TV"
+msgid "Smart services renaming for XBMC"
+msgstr "Smart namnändring för XBMC-tjänster"
 
-msgid "Terrestrial"
-msgstr "Markbunden"
+msgid "Enable Parental Control"
+msgstr "Aktivera föräldrakontroll"
 
-msgid "W"
-msgstr "V"
+msgid "Add service name to stream information"
+msgstr "Lägg till leverantörens namn till strömningsinformationen"
 
-msgid "E"
-msgstr "Ö"
+msgid "Character encoding for EPG data"
+msgstr ""
 
-msgid "Message sent successfully!"
-msgstr "Meddelandet skickades!"
+msgid "OpenWebif Configuration"
+msgstr "Inställningar för OpenWebif"
 
-msgid "Waiting for answer ..."
-msgstr "Väntar på svar..."
-
-msgid "No answer in time"
-msgstr "Svaret kom inte i tid"
-
-msgid "Answer is YES!"
-msgstr "Svaret är JA!"
-
-msgid "Answer is NO!"
-msgstr "Svaret är NEJ!"
+#~ msgid "Timer List"
+#~ msgstr "Timerlista"
