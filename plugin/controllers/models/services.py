@@ -621,6 +621,11 @@ def getNowNextEpg(ref, servicetype):
 def getSearchEpg(sstr, endtime=None):
 	ret = []
 	ev = {}
+	if config.OpenWebif.epg_encoding.value != 'utf-8':
+		try:
+			sstr = sstr.encode(config.OpenWebif.epg_encoding.value)
+		except UnicodeEncodeError:
+			pass
 	epgcache = eEPGCache.getInstance()
 	events = epgcache.search(('IBDTSENR', 128, eEPGCache.PARTIAL_TITLE_SEARCH, sstr, 1));
 	if events is not None:
