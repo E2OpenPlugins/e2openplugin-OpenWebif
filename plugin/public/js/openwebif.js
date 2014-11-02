@@ -521,7 +521,7 @@ function getStatusInfo() {
 		var status = "";
 		if (statusinfo['isRecording'] == 'true') {
 			var timercall = "load_maincontent('ajax/timers'); return false;";
-			status = "<a href='#' onClick='load_maincontent(\"ajax/timers\"); return false;'><img src='../images/ico_rec.png' title='" + tstr_rec_status + "' alt='" + tstr_rec_status + "' /></a>";
+			status = "<a href='#' onClick='load_maincontent(\"ajax/timers\"); return false;'><img src='../images/ico_rec.png' title='" + tstr_rec_status + statusinfo['Recording_list'] + "' alt='" + tstr_rec_status + "' /></a>";
 		}
 		status += "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_";
 		if (statusinfo['inStandby'] == 'true') {

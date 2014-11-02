@@ -18,6 +18,7 @@ from Components.Harddisk import harddiskmanager
 from Components.Network import iNetwork
 from RecordTimer import parseEvent
 from Screens.Standby import inStandby
+from timer import TimerEntry
 from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
 from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
@@ -430,6 +431,11 @@ def getStatusInfo(self):
 	recs = NavigationInstance.instance.getRecordings()
 	if recs:
 		statusinfo['isRecording'] = "true"
+		statusinfo['Recording_list'] = "\n"
+		for timer in NavigationInstance.instance.RecordTimer.timer_list:
+			if timer.state == TimerEntry.StateRunning:
+				if not timer.justplay:
+					statusinfo['Recording_list'] += timer.service_ref.getServiceName() + ": " + timer.name + "\n"
 	else:
 		statusinfo['isRecording'] = "false"
 
