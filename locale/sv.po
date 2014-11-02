@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2014-11-01 19:04+0100\n"
-"PO-Revision-Date: 2014-11-01 03:54+0100\n"
+"PO-Revision-Date: 2014-11-02 01:22+0100\n"
 "Last-Translator: Svevrstt <svevrstt@gmail.com>\n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -22,13 +22,13 @@ msgid "LCD4Linux Setup"
 msgstr "LCD4Linux inställning"
 
 msgid "AutoTimer"
-msgstr ""
+msgstr "AutoTimer"
 
 msgid "BouquetEditor"
 msgstr "Redigera favoritlistor"
 
 msgid "EPGRefresh"
-msgstr ""
+msgstr "EPGRefresh"
 
 msgid "IPv4-only kernel"
 msgstr "Kernel enbart för IPv4"
@@ -263,7 +263,7 @@ msgstr "Kanaler"
 msgid "Chipset"
 msgstr "Chipset"
 
-# There are some variants but this is the pl-form according to Språknämnden. An older advice from SOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
+# There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 msgid "Cleanup Timers"
 msgstr "Rensa timer"
 
@@ -653,7 +653,7 @@ msgstr "AutoTimer förhandsvisning"
 msgid "Timer"
 msgstr "Timer"
 
-# There are some variants but this is the pl-form according to Språknämnden. An older advice from SOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
+# There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 msgid "Timers"
 msgstr "Timer"
 
@@ -795,7 +795,7 @@ msgid "description match"
 msgstr "beskrivningen matchar"
 
 msgid "start match"
-msgstr ""
+msgstr "påbörja matchning"
 
 msgid "Search strictness"
 msgstr "Söknoggrannhet"
@@ -975,7 +975,7 @@ msgid "Do you really want to delete the AT"
 msgstr "Vill du verkligen ta bort denna AutoTimer"
 
 msgid "Label series"
-msgstr ""
+msgstr "Lägg till avsnittsinformation för TV-serier"
 
 msgid "Enable Messages"
 msgstr "Aktivera statusmeddelanden"
@@ -1128,7 +1128,7 @@ msgid "Add service name to stream information"
 msgstr "Lägg till leverantörens namn till strömningsinformationen"
 
 msgid "Character encoding for EPG data"
-msgstr ""
+msgstr "Teckenkodning av EPG-data"
 
 msgid "OpenWebif Configuration"
 msgstr "Inställningar för OpenWebif"
