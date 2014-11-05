@@ -9,10 +9,55 @@
 #                                                                            #
 ##############################################################################
 from Components.config import config
-from enigma import eServiceReference, eActionMap
+from enigma import eServiceReference, eActionMap, eServiceCenter
 from urllib import unquote
 from services import getProtection
 from Screens.InfoBar import InfoBar, MoviePlayer
+
+def zapInServiceList(service):
+	InfoBar_Instance = InfoBar.instance
+	servicelist = InfoBar_Instance.servicelist
+	if config.usage.multibouquet.value:
+		rootstrings = ('1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "bouquets.tv" ORDER BY bouquet', '1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "bouquets.radio" ORDER BY bouquet')
+	else:
+		rootstrings = ('1:7:1:0:0:0:0:0:0:0:(type == 1) || (type == 17) || (type == 22) || (type == 25) || (type == 134) || (type == 195) FROM BOUQUET "userbouquet.favourites.tv" ORDER BY bouquet', '1:7:2:0:0:0:0:0:0:0:(type == 2) || (type == 10) FROM BOUQUET "userbouquet.favourites.radio" ORDER BY bouquet')
+	bouquet_found = False
+	for bouquet_rootstr in rootstrings:
+		servicelist.bouquet_root = eServiceReference(bouquet_rootstr)
+		if bouquet_rootstr.find('radio') != -1:
+			servicelist.setModeRadio()
+		else:
+			servicelist.setModeTv()
+		bouquets = servicelist.getBouquetList()
+		for bouquet in bouquets:
+			reflist = [ ]
+			reflist = eServiceCenter.getInstance().list(bouquet[1])
+			if reflist:
+				while True:
+					new_service = reflist.getNext()
+					if not new_service.valid(): #check if end of list
+						break
+					if new_service.flags & (eServiceReference.isDirectory | eServiceReference.isMarker):
+						continue
+					if new_service == service:
+						bouquet_found = True
+						break
+			if bouquet_found:
+				break
+		if bouquet_found:
+			break
+	if bouquet_found:
+		bouquet = bouquet[1]
+		if servicelist.getRoot() != bouquet:
+			servicelist.clearPath()
+			if servicelist.bouquet_root != bouquet:
+				servicelist.enterPath(servicelist.bouquet_root)
+			servicelist.enterPath(bouquet)
+	else:
+		servicelist.clearPath()
+		servicelist.enterPath(service)
+	servicelist.setCurrentSelection(service) #select the service in servicelist
+	servicelist.zap()
 
 def zapService(session, id, title = ""):
 	# Must NOT unquote id here, breaks zap to streams
@@ -46,7 +91,7 @@ def zapService(session, id, title = ""):
 		if isinstance(session.current_dialog, MoviePlayer):
 			session.current_dialog.lastservice = service
 			session.current_dialog.close()
-		session.nav.playService(service)
+		zapInServiceList(service)
 
 	return {
 		"result": True,
