@@ -30,6 +30,7 @@ import NavigationInstance
 import os
 import sys
 import time
+import string
 
 OPENWEBIFVER = "OWIF 0.4.2"
 
@@ -328,9 +329,25 @@ def getInfo():
 		else:
 			free = float(hdd.free()) / float(1024)
 			free = "%.3f GB" % free
+
+		ieccap = hdd.capacity()
+		all=string.maketrans('','')
+		nodigs=all.translate(all, '0123456789')
+		ieccap=ieccap.translate(all, nodigs)
+		
+		if "TB" in hdd.capacity():
+			capacity=float(ieccap) * float(1000000000) / float(1099511627776)
+			capacity = "%.3f TB" % capacity
+		elif "GB" in hdd.capacity():
+			capacity=float(ieccap) * float(1000000) / float(1073741824)
+			capacity = "%.3f GB" % capacity
+		else:
+			capacity=float(ieccap) * float(1000) / float(1048576)
+			capacity = "%.3f MB" % capacity
+		
 		info['hdd'].append({
 			"model": hdd.model(),
-			"capacity": hdd.capacity(),
+			"capacity": capacity,
 			"free": free
 		})
 	return info
