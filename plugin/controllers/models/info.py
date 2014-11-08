@@ -214,29 +214,49 @@ def getInfo():
 
 	info['hdd'] = []
 	for hdd in harddiskmanager.hdd:
-		if hdd.free() <= 1024:
-			free = "%i MB" % (hdd.free())
+		dev = hdd.findMount()
+		if dev:
+			stat = os.statvfs(dev)
+			free = int((stat.f_bfree/1024) * (stat.f_bsize/1024))
 		else:
-			free = float(hdd.free()) / float(1024)
+			free = -1
+		
+		if free <= 1024:
+			free = "%i MB" % free
+		else:
+			free = float(free) / float(1024)
 			free = "%.3f GB" % free
-		ieccap = hdd.capacity()
-		all=string.maketrans('','')
-		nodigs=all.translate(all, '0123456789')
-		ieccap=ieccap.translate(all, nodigs)
-		
-		if "TB" in hdd.capacity():
-			capacity=float(ieccap) * float(1000000000) / float(1099511627776)
-			capacity = "%.3f TB" % capacity
-		elif "GB" in hdd.capacity():
-			capacity=float(ieccap) * float(1000000) / float(1073741824)
-			capacity = "%.3f GB" % capacity
+
+		size = hdd.diskSize() * 1000000 / float(1048576)
+		if size > 1048576:
+			size = "%.2f TB" % (size / float(1048576))
+		elif size > 1024:
+			size = "%d GB" % (size / float(1024))
 		else:
-			capacity=float(ieccap) * float(1000) / float(1048576)
-			capacity = "%.3f MB" % capacity
-		
+			size = "%d MB" % size
+
+		iecsize = hdd.diskSize()
+		# Harddisks > 1000 decimal Gigabytes are labelled in TB
+		if iecsize > 1000000:
+			iecsize = (iecsize + 50000) // float(100000) / 10
+			# Omit decimal fraction if it is 0
+			if (iecsize % 1 > 0):
+				iecsize = "%.1f TB" % iecsize
+			else:
+				iecsize = "%d TB" % iecsize
+		# Round harddisk sizes beyond ~300GB to full tens: 320, 500, 640, 750GB
+		elif iecsize > 300000:
+			iecsize = "%d GB" % ((iecsize + 5000) // 10000 * 10)
+		# ... be more precise for media < ~300GB (Sticks, SSDs, CF, MMC, ...): 1, 2, 4, 8, 16 ... 256GB
+		elif iecsize > 1000:
+			iecsize = "%d GB" % ((iecsize + 500) // 1000)
+		else:
+			iecsize = "%d MB" % size
+
 		info['hdd'].append({
 			"model": hdd.model(),
-			"capacity": capacity,
+			"capacity": size,
+			"labelled_capacity": iecsize,
 			"free": free
 		})
 	return info
