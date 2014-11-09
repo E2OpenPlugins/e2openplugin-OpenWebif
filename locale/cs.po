@@ -733,7 +733,7 @@ msgid "zap before Stream"
 msgstr "přepnout před"
 
 msgid "Zap to"
-msgstr "Přepínám na"
+msgstr "Přepnout na"
 
 msgid "Zapped to"
 msgstr "Přepnuto na"
@@ -973,10 +973,10 @@ msgid "Label series"
 msgstr ""
 
 msgid "Enable Messages"
-msgstr ""
+msgstr "Povolit zprávy"
 
 msgid "Delay Standby"
-msgstr ""
+msgstr "Zpoždění"
 
 msgid "Interval (min.)"
 msgstr ""
@@ -985,31 +985,31 @@ msgid "Interval (sec.)"
 msgstr ""
 
 msgid "Afterevent"
-msgstr ""
+msgstr "Po události"
 
 msgid "Force"
-msgstr ""
+msgstr "Vynutit aktualizaci"
 
 msgid "Wakeup"
-msgstr ""
+msgstr "Probudit"
 
 msgid "Inherit Autotimer"
-msgstr ""
+msgstr "Převžít z Autotimeru"
 
 msgid "Parse Autotimer"
 msgstr ""
 
 msgid "Always"
-msgstr ""
+msgstr "Vždy"
 
 msgid "Background only"
-msgstr ""
+msgstr "Pouze na pozadí"
 
 msgid "Ask, default Yes"
-msgstr ""
+msgstr "Požádat, defaultně Ano"
 
 msgid "Ask, default No"
-msgstr ""
+msgstr "Požádat, defaultně Ne"
 
 msgid "Method"
 msgstr ""
@@ -1018,16 +1018,16 @@ msgid "Visibly"
 msgstr ""
 
 msgid "Picture in Picture"
-msgstr ""
+msgstr "Obraz v obraze (PIP)"
 
 msgid "Picture in Picture (hidden)"
-msgstr ""
+msgstr "Obraz v obraze (skryté)"
 
 msgid "Fake Recording"
-msgstr ""
+msgstr "Falešné nahrávání"
 
 msgid "Refresh now"
-msgstr ""
+msgstr "Zaktualizovat"
 
 msgid "Add Provider as new Bouquet"
 msgstr "Přidat poskytovatele jako nový přehled"
