@@ -1012,10 +1012,10 @@ msgid "Ask, default No"
 msgstr "Požádat, defaultně Ne"
 
 msgid "Method"
-msgstr ""
+msgstr "Metoda"
 
 msgid "Visibly"
-msgstr ""
+msgstr "Hlavní obraz"
 
 msgid "Picture in Picture"
 msgstr "Obraz v obraze (PIP)"
@@ -1105,7 +1105,7 @@ msgid "HTTPS port"
 msgstr "HTTPS port"
 
 msgid "Require client cert for HTTPS"
-msgstr ""
+msgstr "Požadovat klientskou certifikaci pro HTTPS"
 
 msgid "Enable Authentication for streaming"
 msgstr "Povolit ověřování pro streamování"
@@ -1123,7 +1123,7 @@ msgid "Add service name to stream information"
 msgstr "Přidat název programu do stream informací"
 
 msgid "Character encoding for EPG data"
-msgstr ""
+msgstr "Kódování znaků pro EPG data"
 
 msgid "OpenWebif Configuration"
 msgstr "Nastavení OpenWebif"
