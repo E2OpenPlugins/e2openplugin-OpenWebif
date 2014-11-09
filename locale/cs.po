@@ -994,7 +994,7 @@ msgid "Wakeup"
 msgstr "Probudit"
 
 msgid "Inherit Autotimer"
-msgstr "Převžít z Autotimeru"
+msgstr "Převzít z Autotimeru"
 
 msgid "Parse Autotimer"
 msgstr ""
