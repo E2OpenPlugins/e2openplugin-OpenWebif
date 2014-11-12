@@ -8,6 +8,7 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
+import re, unicodedata
 from Tools.Directories import fileExists
 from Components.Sources.ServiceList import ServiceList
 from Components.ParentalControl import parentalControl, IMG_WHITESERVICE, IMG_WHITEBOUQUET, IMG_BLACKSERVICE, IMG_BLACKBOUQUET
@@ -344,8 +345,8 @@ def getServices(sRef, showAll = True ):
 		if not st & 512:	# 512 is hidden service on sifteam image. Doesn't affect other images
 			if showAll or st == 0: 
 				service = {}
-				service['servicereference'] = sitem[0]
-				service['servicename'] = sitem[1]
+				service['servicereference'] = sitem[0].encode("utf8")
+				service['servicename'] = sitem[1].encode("utf8")
 				services.append(service)
 
 	return { "services": services }
@@ -765,8 +766,9 @@ def getPicon(sname):
 		pos = sname.rfind(':')
 	else:
 		return "/images/default_picon.png"
-
+	cname = None
 	if pos != -1:
+		cname = ServiceReference(sname[:pos].rstrip(':')).getServiceName()
 		sname = sname[:pos].rstrip(':').replace(':','_') + ".png"
 	filename = getPiconPath() + sname
 	if fileExists(filename):
@@ -779,6 +781,13 @@ def getPicon(sname):
 		filename = getPiconPath() + sname
 		if fileExists(filename):
 			return "/picon/" + sname
+	if cname is not None: # picon by channel name
+		cname = unicodedata.normalize('NFKD', unicode(cname, 'utf_8')).encode('ASCII', 'ignore')
+		cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').lower())
+		if len(cname) > 0:
+		filename = getPiconPath() + cname + ".png"
+		if fileExists(filename):
+		return "/picon/" + cname + ".png"		
 	return "/images/default_picon.png"
 
 def getParentalControlList():
