@@ -785,9 +785,9 @@ def getPicon(sname):
 		cname = unicodedata.normalize('NFKD', unicode(cname, 'utf_8')).encode('ASCII', 'ignore')
 		cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').lower())
 		if len(cname) > 0:
-		filename = getPiconPath() + cname + ".png"
+			filename = getPiconPath() + cname + ".png"
 		if fileExists(filename):
-		return "/picon/" + cname + ".png"		
+			return "/picon/" + cname + ".png"		
 	return "/images/default_picon.png"
 
 def getParentalControlList():
