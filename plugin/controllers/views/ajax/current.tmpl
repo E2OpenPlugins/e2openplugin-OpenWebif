@@ -151,7 +151,7 @@ tr {background-color:#f0f7fc;}
 	<tr>
 		<td>$tstrings['name']: $info.name</td>
 		<td>$tstrings['provider']: $info.provider</td>
-		<td>$tstrings['namespace']: $info.namespace</td>
+		<td id="ns" data-ns="$info.namespace">$tstrings['namespace']: $info.namespace</td>
 	</tr>
 	<tr>
 		<td>$tstrings['video_width']: $info.width</td>
@@ -166,17 +166,17 @@ tr {background-color:#f0f7fc;}
 	<tr>
 		<td>$tstrings['teletext']: $info.txtpid</td>
 		<td>$tstrings['rec_status']: $info.rec_state</td>
-		<td>Pmtpid: $info.pmtpid</td>
+		<td id="pmtpid" data-pmtpid="$info.pmtpid">Pmtpid: $info.pmtpid</td>
 	</tr>
 	<tr>
-		<td>Apid: $info.apid</td>
-		<td>Vpid: $info.vpid</td>
-		<td>Pcrpid: $info.pcrpid</td>
+		<td id="apid" data-apid="$info.apid">Apid: $info.apid</td>
+		<td id="vpid" data-vpid="$info.vpid">Vpid: $info.vpid</td>
+		<td id="pcrpid" data-pcrpid="$info.pcrpid">Pcrpid: $info.pcrpid</td>
 	</tr>
 	<tr>
-		<td>Tsid: $info.tsid</td>
-		<td>Onid: $info.onid</td>
-		<td>Sid: $info.sid</td>
+		<td id="tsid" data-tsid="$info.tsid">Tsid: $info.tsid </td>
+		<td id="onid" data-onid="$info.onid">Onid: $info.onid</td>
+		<td id="sid" data-sid="$info.sid">Sid: $info.sid</td>
 	</tr>
 	<tr>
 		<td>Sref: $info.sref</td>
@@ -213,3 +213,34 @@ tr {background-color:#f0f7fc;}
 		</td>
 	</tr>
 </table>
+<script type="text/javascript">
+#raw
+function PrintDH(i)
+{
+var result = "0000";
+if (i >= 0 && i <= 15) {result="000"+i.toString(16);}
+else if (i >= 16 && i <= 255) {result="00"+i.toString(16);}
+else if (i >= 256 && i <= 4095) {result="0"+i.toString(16);}
+else if (i >= 4096 && i <= 65535) {result=i.toString(16);}
+else {result=i.toString(16);}
+return " (" + result + ")";
+}
+var v = parseInt($("#pmtpid").data("pmtpid"));
+$("#pmtpid").html($("#pmtpid").html() + PrintDH(v));
+v = parseInt($("#apid").data("apid"));
+$("#apid").html($("#apid").html() + PrintDH(v));
+v = parseInt($("#vpid").data("vpid"));
+$("#vpid").html($("#vpid").html() + PrintDH(v));
+v = parseInt($("#pcrpid").data("pcrpid"));
+$("#pcrpid").html($("#pcrpid").html() + PrintDH(v));
+v = parseInt($("#tsid").data("tsid"));
+$("#tsid").html($("#tsid").html() + PrintDH(v));
+v = parseInt($("#onid").data("onid"));
+$("#onid").html($("#onid").html() + PrintDH(v));
+v = parseInt($("#sid").data("sid"));
+$("#sid").html($("#sid").html() + PrintDH(v));
+v = parseInt($("#ns").data("ns"));
+$("#ns").html($("#ns").html() + PrintDH(v));
+#end raw
+
+</script>
