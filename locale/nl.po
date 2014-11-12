@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2013-12-05 22:05+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: plnick\n"
+"Last-Translator: Rob van der Does <robvddoes@gmail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -50,581 +50,568 @@ msgid "OpenWebif Configuration"
 msgstr "Openwebif configuratie"
 
 msgid "Mo"
-msgstr ""
+msgstr "ma"
 
 msgid "Tu"
-msgstr ""
+msgstr "di"
 
-#, fuzzy
 msgid "We"
-msgstr "W"
+msgstr "Wij"
 
 msgid "Th"
-msgstr ""
+msgstr "do"
 
 msgid "Fr"
-msgstr ""
+msgstr "vr"
 
-#, fuzzy
 msgid "Sa"
-msgstr "Sla op"
+msgstr "za"
 
 msgid "Su"
-msgstr ""
+msgstr "zo"
 
 msgid "Mon"
-msgstr ""
+msgstr "ma"
 
 msgid "Tue"
-msgstr ""
+msgstr "di"
 
 msgid "Wed"
-msgstr ""
+msgstr "wo"
 
 msgid "Thu"
-msgstr ""
+msgstr "do"
 
 msgid "Fri"
-msgstr ""
+msgstr "vr"
 
 msgid "Sat"
-msgstr ""
+msgstr "za"
 
 msgid "Sun"
-msgstr ""
+msgstr "zo"
 
 msgid "Monday"
-msgstr ""
+msgstr "maandag"
 
 msgid "Tuesday"
-msgstr ""
+msgstr "dinsdag"
 
 msgid "Wednesday"
-msgstr ""
+msgstr "woensdag"
 
 msgid "Thursday"
-msgstr ""
+msgstr "donderdag"
 
 msgid "Friday"
-msgstr ""
+msgstr "vrijdag"
 
 msgid "Saturday"
-msgstr ""
+msgstr "zaterdag"
 
 msgid "Sunday"
-msgstr ""
+msgstr "zondag"
 
 msgid "January"
-msgstr ""
+msgstr "januari"
 
 msgid "February"
-msgstr ""
+msgstr "ferbuari"
 
-#, fuzzy
 msgid "March"
-msgstr "Zoek"
+msgstr "maart"
 
 msgid "April"
-msgstr ""
+msgstr "april"
 
 msgid "May"
-msgstr ""
+msgstr "mei"
 
 msgid "June"
-msgstr ""
+msgstr "juni"
 
 msgid "July"
-msgstr ""
+msgstr "juli"
 
 msgid "August"
-msgstr ""
+msgstr "augustus"
 
 msgid "September"
-msgstr ""
+msgstr "september"
 
 msgid "October"
-msgstr ""
+msgstr "oktober"
 
 msgid "November"
-msgstr ""
+msgstr "november"
 
 msgid "December"
-msgstr ""
+msgstr "december"
 
 msgid "About"
-msgstr ""
+msgstr "Over"
 
 msgid "Add Timer"
-msgstr ""
+msgstr "Voeg timer toe"
 
 msgid "After Event"
-msgstr ""
+msgstr "Na afloop"
 
 msgid "AGC"
-msgstr ""
+msgstr "AGC"
 
 msgid "All"
-msgstr ""
+msgstr "Alle"
 
 msgid "All Channels"
-msgstr ""
+msgstr "Alle kanalen"
 
 msgid "Authors"
-msgstr ""
+msgstr "Auteurs"
 
 msgid "Auto"
-msgstr ""
+msgstr "Auto"
 
 msgid "Back"
-msgstr ""
+msgstr "Terug"
 
 msgid "Begin"
-msgstr ""
+msgstr "Begin"
 
 msgid "BER"
-msgstr ""
+msgstr "BER"
 
 msgid "Bouquets"
-msgstr ""
+msgstr "Favorietenlijst"
 
-#, fuzzy
 msgid "Box Info"
-msgstr "STB controle"
+msgstr "Box Info"
 
 msgid "Box"
-msgstr ""
+msgstr "STB"
 
 msgid "Box Control"
 msgstr "STB controle"
 
 msgid "Box Uptime"
-msgstr ""
+msgstr "Box Uptime"
 
 msgid "Brand"
-msgstr ""
+msgstr "Merk"
 
 msgid "Capacity"
-msgstr ""
+msgstr "Capaciteit"
 
 msgid "Channel"
-msgstr ""
+msgstr "Kanaal"
 
 msgid "Channels"
-msgstr ""
+msgstr "Kanalen"
 
 msgid "Chipset"
-msgstr ""
+msgstr "Chipset"
 
 msgid "Cleanup Timers"
-msgstr ""
+msgstr "Ruim timers op"
 
 msgid "Contributors"
-msgstr ""
+msgstr "Medewerkers"
 
-#, fuzzy
 msgid "Control"
-msgstr "STB controle"
+msgstr "Bedien"
 
 msgid "Current"
-msgstr ""
+msgstr "Huidig"
 
 msgid "Current Event"
-msgstr ""
+msgstr "Huidig programma"
 
 msgid "Deep-Standby"
-msgstr ""
+msgstr "Deep-standby"
 
 msgid "Default"
-msgstr ""
+msgstr "Default"
 
 msgid "Delete Recording"
-msgstr ""
+msgstr "Verwijder opname"
 
 msgid "Delete Timer"
-msgstr ""
+msgstr "Verwijder timer"
 
 msgid "Description"
-msgstr ""
+msgstr "Beschrijving"
 
 msgid "DHCP"
-msgstr ""
+msgstr "DHCP"
 
 msgid "Disable Timer"
-msgstr ""
+msgstr "Schakel timer uit"
 
 msgid "Dolby"
-msgstr ""
+msgstr "Dolby"
 
 msgid "Download"
-msgstr ""
+msgstr "Download"
 
 msgid "Download Playlist for"
-msgstr ""
+msgstr "Download playlist voor"
 
 msgid "Duration"
-msgstr ""
+msgstr "Duur"
 
 msgid "Edit Timer"
-msgstr ""
+msgstr "Pas timer aan"
 
 msgid "Enable Timer"
-msgstr ""
+msgstr "Schakel timer in"
 
 msgid "End"
-msgstr ""
+msgstr "Einde"
 
-#, fuzzy
 msgid "Enabled"
-msgstr "Kabel"
+msgstr "Ingeschakeld"
 
 msgid "Encrypted"
-msgstr ""
+msgstr "Versleuteld"
 
 msgid "EPG"
-msgstr ""
+msgstr "EPG"
 
 msgid "Epg Search"
 msgstr "EPG zoeken"
 
 msgid "Error"
-msgstr ""
+msgstr "Fout"
 
 msgid "Every"
-msgstr ""
+msgstr "Elke"
 
 msgid "Extras"
-msgstr ""
+msgstr "Extra's"
 
 msgid "finished"
-msgstr ""
+msgstr "afgelopen"
 
 msgid "Firmware version"
-msgstr ""
+msgstr "Firmware versie"
 
 msgid "Frontprocessor Version"
-msgstr ""
+msgstr "Frontprocessor Versie"
 
 msgid "Free"
-msgstr ""
+msgstr "Vrij"
 
 msgid "Free Memory"
-msgstr ""
+msgstr "Vrij geheugen"
 
 msgid "Gateway"
-msgstr ""
+msgstr "Gateway"
 
 msgid "Grab Screenshot"
 msgstr "Maak screenshot"
 
 msgid "Gui version"
-msgstr ""
+msgstr "Gui versie"
 
 msgid "Hide full remote"
 msgstr "Verberg volledige AB"
 
 msgid "High Resolution"
-msgstr ""
+msgstr "Hoge resolutie"
 
 msgid "Hard disk model"
-msgstr ""
+msgstr "Model harde schijf"
 
 msgid "IP address"
-msgstr ""
+msgstr "IP-adres"
 
 msgid "Infos"
-msgstr ""
+msgstr "Info"
 
 msgid "Instant Record"
-msgstr ""
+msgstr "Onmiddellijk opnemen"
 
 msgid "Javascript Libraries"
-msgstr ""
+msgstr "Javascript Libraries"
 
 msgid "Just play"
-msgstr ""
+msgstr "Alleen afspelen"
 
 msgid "Kernel version"
-msgstr ""
+msgstr "Kernel versie"
 
 msgid "LICENSE"
-msgstr ""
+msgstr "Licentie"
 
 msgid "loading"
-msgstr ""
+msgstr "bezig met laden"
 
 msgid "Location"
-msgstr ""
+msgstr "lokatie"
 
 msgid "Locked"
-msgstr ""
+msgstr "Vergrendeld"
 
 msgid "MAC address"
-msgstr ""
+msgstr "MAC-adres"
 
 msgid "Main"
-msgstr ""
+msgstr "Hoofd"
 
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
-#, fuzzy
 msgid "Movielist"
-msgstr "Opnames"
+msgstr "Opnamelijst"
 
 msgid "Movies"
 msgstr "Opnames"
 
 msgid "MultiEPG"
-msgstr ""
+msgstr "Multi-EPG"
 
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgid "Namespace"
-msgstr ""
+msgstr "Namespace"
 
 msgid "Network Interface"
-msgstr ""
+msgstr "Netwerkinterface"
 
 msgid "no description available"
-msgstr ""
+msgstr "Geen beschrijving beschikbaar"
 
 msgid "Sorry this page is not yet implemented"
-msgstr ""
+msgstr "Deze pagina is niet geïmplementeerd"
 
 msgid "Nothing"
-msgstr ""
+msgstr "Niets"
 
 msgid "Nothing playing."
-msgstr ""
+msgstr "Er speelt niets."
 
 msgid "Open Source Web Interface for Linux set-top box"
-msgstr ""
+msgstr "Open Source webinterface voor Linux settopbox"
 
 msgid "OSD"
-msgstr ""
+msgstr "OSD"
 
 msgid "Playlist"
-msgstr ""
+msgstr "Playlist"
 
 msgid "Power Control"
 msgstr "In/uitschakelen"
 
 msgid "Provider"
-msgstr ""
+msgstr "Provider"
 
 msgid "Providers"
-msgstr ""
+msgstr "Providers"
 
 msgid "Radio"
-msgstr ""
+msgstr "Radio"
 
 msgid "Reboot Box"
-msgstr ""
+msgstr "STB herstarten"
 
 msgid "Recording Status"
-msgstr ""
+msgstr "Opnamestatus"
 
 msgid "Refresh"
-msgstr ""
+msgstr "Ververs"
 
 msgid "Refresh automatically every"
-msgstr ""
+msgstr "Ververs automatisch elke"
 
 msgid "Remote"
-msgstr ""
+msgstr "Afstandsbediening"
 
 msgid "Repeated"
-msgstr ""
+msgstr "Herhaald"
 
 msgid "Restart GUI"
-msgstr ""
+msgstr "Hestart GUI"
 
 msgid "running"
-msgstr ""
+msgstr "loopt"
 
 msgid "Satellites"
-msgstr ""
+msgstr "Satellieten"
 
 msgid "Satfinder"
-msgstr ""
+msgstr "Signaalzoeker"
 
-#, fuzzy
 msgid "Screenshot"
-msgstr "Maak screenshot"
+msgstr "Screenshot"
 
 msgid "Search"
 msgstr "Zoek"
 
-#, fuzzy
 msgid "Search IMDb"
-msgstr "Zoek"
+msgstr "Zoek IMDb"
 
 msgid "seconds"
-msgstr ""
+msgstr "secondes"
 
-#, fuzzy
 msgid "Send Message"
 msgstr "Stuur een bericht"
 
 msgid "Send a Message"
 msgstr "Stuur een bericht"
 
-#, fuzzy
 msgid "Service"
 msgstr "Zenders"
 
 msgid "Settings"
-msgstr ""
+msgstr "Instellingen"
 
 msgid "(shift + click for long pressure)"
 msgstr "(shift + klik voor lang-drukken)"
 
-#, fuzzy
 msgid "Show Full OpenWebif"
-msgstr "Toon volledige AB"
+msgstr "Toon volledige OpenWebif"
 
 msgid "Show full remote"
 msgstr "Toon volledige AB"
 
 msgid "Show EPG for"
-msgstr ""
+msgstr "Toon EPG voor"
 
 msgid "Shutdown"
-msgstr ""
+msgstr "Afsluiten"
 
 msgid "Site and sources"
 msgstr ""
 
 msgid "SNR"
-msgstr ""
+msgstr "SNR"
 
 msgid "Software"
-msgstr ""
+msgstr "Software"
 
 msgid "Standby"
-msgstr ""
+msgstr "Standby"
 
 msgid "Standby Toggle"
-msgstr ""
+msgstr "Wissel standby"
 
 msgid "Start Instant Record"
-msgstr ""
+msgstr "Start opname onmiddellijk"
 
 msgid "Stream"
-msgstr ""
+msgstr "Stream"
 
 msgid "Subnet mask"
-msgstr ""
+msgstr "Subnet mask"
 
-#, fuzzy
 msgid "Subservices"
-msgstr "Zenders"
+msgstr "Subservices"
 
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 msgid "Teletext"
-msgstr ""
+msgstr "Teletekst"
 
 msgid "Television"
-msgstr ""
+msgstr "Televisie"
 
 msgid "Template Engine"
 msgstr ""
 
 msgid "Text"
-msgstr ""
+msgstr "Tekst"
 
 msgid "Timeout"
-msgstr ""
+msgstr "Timeout"
 
 msgid "Timerlist"
-msgstr ""
+msgstr "Timerlijst"
 
 msgid "Timer"
-msgstr ""
+msgstr "Timer"
 
 msgid "Timers"
-msgstr ""
+msgstr "Timers"
 
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 msgid "Total Memory"
-msgstr ""
+msgstr "Totaal geheugen"
 
 msgid "Tuner Bit Error Rate BER"
-msgstr ""
+msgstr "Tuner bit error rate BER"
 
 msgid "Tuner Number (0-3)"
-msgstr ""
+msgstr "Tuner nummer (0-3)"
 
 msgid "Tuner Signal"
-msgstr ""
+msgstr "Tuner signaal"
 
 msgid "Tuner Signal Quality SNR"
-msgstr ""
+msgstr "Tuner signaalkwaliteit SNR"
 
 msgid "Tuner Signal Quality SNR_DB"
-msgstr ""
+msgstr "Tuner signaalkwaliteit SNR_DB"
 
 msgid "Tuner Signal Power AGC"
-msgstr ""
+msgstr "Tuner signaalsterkte AGC"
 
 msgid "Tuner Type"
-msgstr ""
+msgstr "Tuner type"
 
 msgid "Tuners"
-msgstr ""
+msgstr "Tuners"
 
 msgid "TV"
-msgstr ""
+msgstr "Tv"
 
 msgid "TV Multi EPG"
-msgstr ""
+msgstr "TV Multi EPG"
 
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 msgid "Upcoming Events"
-msgstr ""
+msgstr "Komende programma's"
 
 msgid "Version"
-msgstr ""
+msgstr "Versie"
 
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 msgid "Video Height"
-msgstr ""
+msgstr "Video hoogte"
 
 msgid "Video Wide"
 msgstr ""
 
 msgid "Video Width"
-msgstr ""
+msgstr "Video breedte"
 
 msgid "Volume Control"
 msgstr "Volume controle"
 
 msgid "waiting"
-msgstr ""
+msgstr "wacht"
 
 msgid "Warning"
-msgstr ""
+msgstr "Waarschuwing"
 
 msgid "Yes/No"
-msgstr ""
+msgstr "Ja/Nee"
 
 msgid "Zap"
-msgstr ""
+msgstr "Zap"
 
 msgid "zap before Stream"
 msgstr "Zap alvorens te streamen"
 
 msgid "Zap to"
-msgstr ""
+msgstr "Zap naar"
 
 msgid "New"
 msgstr "Nieuw"
@@ -643,3 +630,4 @@ msgstr "W"
 
 msgid "E"
 msgstr "E"
+
