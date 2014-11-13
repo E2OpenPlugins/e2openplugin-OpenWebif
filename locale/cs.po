@@ -733,7 +733,7 @@ msgid "zap before Stream"
 msgstr "přepnout před"
 
 msgid "Zap to"
-msgstr "Přepnout na"
+msgstr "Přepínám na"
 
 msgid "Zapped to"
 msgstr "Přepnuto na"
