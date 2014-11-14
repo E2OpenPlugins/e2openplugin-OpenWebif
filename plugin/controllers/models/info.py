@@ -251,7 +251,7 @@ def getInfo():
 		elif iecsize > 1000:
 			iecsize = "%d GB" % ((iecsize + 500) // 1000)
 		else:
-			iecsize = "%d MB" % size
+			iecsize = "%d MB" % iecsize
 
 		info['hdd'].append({
 			"model": hdd.model(),
