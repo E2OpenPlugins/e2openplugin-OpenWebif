@@ -542,13 +542,13 @@ msgid "Settings"
 msgstr "Einstellungen"
 
 msgid "Display Settings"
-msgstr "Display Einstellungen"
+msgstr "Display-Einstellungen"
 
 msgid "Userinterface Settings"
-msgstr "Benutzeroberfläche Einstellungen"
+msgstr "Benutzeroberflächen-Einstellungen"
 
 msgid "PluginBrowser filter settings"
-msgstr "PluginBrowser Filter Einstellungen"
+msgstr "PluginBrowser-Filtereinstellungen"
 
 msgid "Bouquet Editor"
 msgstr "Bouquet-Editor"
