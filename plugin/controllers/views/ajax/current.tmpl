@@ -1,208 +1,244 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
 <!-- OSD -->
+<style>
+.ia,.ib,.id{float:left;position:relative;margin:0 0 3px 3px;height:26px;}
+.ia{width:22px;background-image:url(/images/osd/icon_axd.png);}
+.id{width:64px;background-image:url(/images/osd/icon_64x26.png);}
+.ib{width:44px;background-image:url(/images/osd/icon_44x26.png);}
+.iconadl{float:left;position:relative;top:6px;left:15px;height:26px;color:#FFF;font-size:14px;}
+tr {background-color:#f0f7fc;}
+.d14 { position:relative;height:14px;color:#FFF;font-size:14px;left:0px;top:0px;}
+.d24 { position:relative;color:#FFF;font-size:14px;left:0px;top:10px;}
+.d120 { float:left;display:block;width:120px;}
+.dh24 { float:left;height:24px;}
+.dh20 { float:left;height:20px;}
+.dh14 { float:left;height:14px;}
+</style>
 <div style="width:680px;height:137px;background-image:url(/images/osd/osd_back.png);">
-  <div style="float:left;width:120px;height:137px;">
-    <div style="float:left;display:block;width:120px;height:37px;">
-      <div style="position:relative;top:10px;left:18px;color:#FFF;font-size:13px;font-weight:bold;">$info.date</div>
-    </div>
-    <div style="float:left;display:block;width:120px;height:60px;">
-      <div style="position:relative;top:0px;left:15px;"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "/images/default_picon.png")' onclick="open_epg_pop('$info.ref');" href="#" title="$tstrings['show_epg_for'] $info.name" border="0" alt='' /></div>
-    </div>
-    <div style="float:left;display:block;width:120px;height:40px;">
-      <div style="position:relative;top:8px;left:0px;color:#FFF;text-align:center;font-size:13px;font-weight:bold;">$info.provider</div>
-    </div>
-  </div>
-  <div style="float:left;width:560px;height:137px;">
-    <div style="float:left;width:560px;height:25px;">
-      <div style="float:left;position:relative;top:5px;left:0px;width:480px;color:#FFF;text-align:center;font-size:18px;"><a style="color:#FFF" target="_blank" title="$tstrings['stream'] $getVar('now.title', '') from $info.name" href='/web/stream.m3u?ref=$info.ref&name=$info.name'>$info.name</a></div>
-    </div>
-    <div style="float:left;width:560px;height:24px;">
-      <div style="float:left;width:70px;height:24px;">
-        <div style="position:relative;top:10px;left:15px;color:#FFF;font-size:14px;">$getVar("now.begin", " ")</div>
-      </div>
-      <div style="float:left;width:360px;height:24px;">
-        <div style="position:relative;top:10px;left:0px;color:#FFF;font-size:14px;">$getVar("now.title", " ")</div>
-      </div>
-      <div style="float:left;width:130px;height:24px;">
-        <div style="position:relative;top:10px;left:0px;color:#FFF;font-size:14px;">+$getVar("now.tleft", " ") min</div>
-      </div>
-    </div>
-    <div style="float:left;width:560px;height:16px;">
-      <div style="float:left;position:relative;top:2px;left:15px;width:400px;height:14px;background-image:url(/images/osd/chan_bar_back.png);">
-        <div style="float:left;width:400px;height:14px;"><img border='0' height='14px' width='${getVar("now.progress", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
-      </div>
-    </div>
-    <div style="float:left;width:560px;height:14px;">
-      <div style="float:left;width:70px;height:14px;">
-        <div style="position:relative;top:0px;left:15px;height:14px;color:#FFF;font-size:14px;">$getVar("next.begin", " ")</div>
-      </div>
-      <div style="float:left;width:360px;height:14px;">
-        <div style="position:relative;top:0px;left:0px;height:14px;color:#FFF;font-size:14px;">$getVar("next.title", " ")</div>
-      </div>
-      <div style="float:left;width:130px;height:14px;">
-        <div style="position:relative;top:0px;left:0px;height:14px;color:#FFF;font-size:14px;">&nbsp; $getVar("next.duration", " ") min</div>
-      </div>
-    </div>
-    <div style="float:left;width:560px;height:20px;">
-      <div style="float:left;width:100px;height:20px;">
-        <div style="position:relative;top:6px;left:15px;height:14px;color:#FFF;font-size:14px;">$getVar("info.tunertype", " ")</div>
-      </div>
-      <div style="float:left;width:80px;height:20px;">
-        <div style="float:left;position:relative;top:6px;left:0px;height:14px;color:#FFF;font-size:14px;">Snr: $getVar("info.snr", "0") % </div>
-      </div>
-      <div style="float:left;width:100px;height:20px;">
-        <div style="float:left;position:relative;top:8px;left:0px;width:100px;height:14px;background-image:url(/images/osd/snr_bar_back.png);">
-          <div style="float:left;width:100px;height:14px;"><img border='0' height='14px' width='${getVar("info.snr", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
-        </div>
-      </div>
-      <div style="float:left;width:100px;height:20px;">
-        <div style="float:left;position:relative;top:6px;left:7px;height:14px;color:#FFF;font-size:14px;"> Ber: $getVar("info.ber", "N/A") </div>
-      </div>
-      <div style="float:left;width:125px;height:20px;">
-        <div style="position:relative;top:6px;left:0px;height:14px;color:#FFF;font-size:14px;">$info.width x $info.height</div>
-      </div>
-    </div>
-    <div style="float:left;width:560px;height:60px;">
-      <div style="float:left;width:110px;height:26px;">
-        <div style="float:left;position:relative;top:6px;left:15px;height:26px;color:#FFF;font-size:14px;">
+	<div style="float:left;width:120px;height:137px;">
+		<div class='d120' style="height:37px;">
+			<div style="position:relative;top:10px;left:18px;color:#FFF;font-size:13px;font-weight:bold;">$info.date</div>
+		</div>
+		<div class='d120' style="height:60px;">
+			<div style="position:relative;top:0px;left:15px;"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "/images/default_picon.png")' onclick="open_epg_pop('$info.ref');" href="#" title="$tstrings['show_epg_for'] $info.name" border="0" alt='' /></div>
+ 		</div>
+		<div class='d120' style="height:40px;">
+			<div style="position:relative;top:8px;left:0px;color:#FFF;text-align:center;font-size:13px;font-weight:bold;">$info.provider</div>
+		</div>
+	</div>
+	<div style="float:left;width:560px;height:137px;">
+		<div style="float:left;width:560px;height:25px;">
+			<div style="float:left;position:relative;top:5px;left:0px;width:480px;color:#FFF;text-align:center;font-size:18px;"><a style="color:#FFF" target="_blank" title="$tstrings['stream'] $getVar('now.title', '') from $info.name" href='/web/stream.m3u?ref=$info.ref&name=$info.name'>$info.name</a></div>
+		</div>
+		<div style="float:left;width:560px;height:24px;">
+			<div class='dh24' style="width:70px;">
+				<div class='d24' style="left:15px;">$getVar("now.begin", " ")</div>
+			</div>
+			<div class='dh24' style="width:360px;">
+				<div class='d24'>$getVar("now.title", " ")</div>
+			</div>
+			<div class='dh24' style="width:130px;">
+				<div class='d24'>+$getVar("now.tleft", " ") min</div>
+			</div>
+		</div>
+		<div style="float:left;width:560px;height:16px;">
+			<div style="float:left;position:relative;top:2px;left:15px;width:400px;height:14px;background-image:url(/images/osd/chan_bar_back.png);">
+				<div class='dh14' style="width:400px;"><img border='0' height='14px' width='${getVar("now.progress", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
+			</div>
+		</div>
+		<div class='dh14' style="width:560px;">
+			<div class='dh14' style="width:70px;">
+				<div class='d14' style="left:15px;">$getVar("next.begin", " ")</div>
+			</div>
+			<div class='dh14'style="width:360px;">
+				<div class='d14'>$getVar("next.title", " ")</div>
+			</div>
+			<div class='dh14' style="width:130px;">
+				<div class='d14'>&nbsp; $getVar("next.duration", " ") min</div>
+			</div>
+		</div>
+		<div class='dh20' style="width:560px;">
+			<div class='dh20' style="width:100px;">
+				<div class='d14' style="top:6px;left:15px;">$getVar("info.tunertype", " ")</div>
+			</div>
+			<div class='dh20' style="width:80px;">
+				<div class='d14' style="float:left;top:6px;">Snr: $getVar("info.snr", "0") % </div>
+			</div>
+			<div class='dh20' style="width:100px;">
+				<div class='dh14' style="position:relative;top:8px;left:0px;width:100px;background-image:url(/images/osd/snr_bar_back.png);">
+					<div class='dh14' style="width:100px;"><img border='0' height='14px' width='${getVar("info.snr", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
+				</div>
+			</div>
+			<div class='dh20' style="width:100px;">
+				<div class='d14' style="float:left;top:6px;left:7px;"> Ber: $getVar("info.ber", "N/A") </div>
+			</div>
+			<div class='dh20' style="width:125px;">
+				<div class='d14' style="top:6px;">$info.width x $info.height</div>
+			</div>
+		</div>
+		<div style="float:left;width:560px;height:60px;">
+			<div style="float:left;width:110px;height:26px;">
+				<div class="iconadl">
+#set $ta = '26px'
+#set $tb = '26px'
+#set $tc = '26px'
+#set $td = '26px'
 #if $info.tunernumber == 0
-          <img border='0' src='/images/osd/icon_a.png' alt='' />
-          <img border='0' src='/images/osd/icon_b_off.png' alt='' />
-          <img border='0' src='/images/osd/icon_c_off.png' alt='' />
-          <img border='0' src='/images/osd/icon_d_off.png' alt='' />
+#set $ta = '0px'
 #else if $info.tunernumber == 1
-          <img border='0' src='/images/osd/icon_a_off.png' alt='' />
-          <img border='0' src='/images/osd/icon_b.png' alt='' />
-          <img border='0' src='/images/osd/icon_c_off.png' alt='' />
-          <img border='0' src='/images/osd/icon_d_off.png' alt='' />
+#set $tb = '0px'
 #else if $info.tunernumber == 2
-          <img border='0' src='/images/osd/icon_a_off.png' alt='' />
-          <img border='0' src='/images/osd/icon_b_off.png' alt='' />
-          <img border='0' src='/images/osd/icon_c.png' alt='' />
-          <img border='0' src='/images/osd/icon_d_off.png' alt='' />
+#set $tc = '0px'
 #else if $info.tunernumber == 3
-          <img border='0' src='/images/osd/icon_a_off.png' alt='' />
-          <img border='0' src='/images/osd/icon_b_off.png' alt='' />
-          <img border='0' src='/images/osd/icon_c_off.png' alt='' />
-          <img border='0' src='/images/osd/icon_d.png' alt='' />
-#end if 
-        </div>
-      </div>
-      <div style="float:left;width:400px;height:32px;">
-        <div style="float:left;position:relative;top:6px;left:10px;height:26px;color:#FFF;font-size:14px;">
+#set $td = '0px'
+#end if
+					<div class="ia" style="background-position: 0px -$ta"></div>
+					<div class="ia" style="background-position: -22px -$tb"></div>
+					<div class="ia" style="background-position: -44px -$tc"></div>
+					<div class="ia" style="background-position: -66px -$td"></div>
+				</div>
+			</div>
+			<div style="float:left;width:400px;height:32px;">
+				<div class="iconadl" style="left:10px">
+#set $ta = '44px'
 #if $info.crypt == 1
-          <img border='0' src='/images/osd/icon_crypt.png' alt='' />
-#else
-          <img border='0' src='/images/osd/icon_crypt_off.png' alt='' />
+#set $ta = '0px'
 #end if
+					<div class="ib" style="background-position: -$ta 0px"></div>
+#set $ta = '64px'
 #if $info.dolby == True
-          <img border='0' src='/images/osd/icon_dolby.png' alt='' />
-#else
-          <img border='0' src='/images/osd/icon_dolby_off.png' alt='' />
+#set $ta = '0px'
 #end if
+					<div class="id" style="background-position: -$ta 0px"></div>
+#set $ta = '132px'
 #if $info.wide == True
-          <img border='0' src='/images/osd/icon_format.png' alt='' />
-#else
-          <img border='0' src='/images/osd/icon_format_off.png' alt='' />
+#set $ta = '88px'
 #end if
+					<div class="ib" style="background-position: -$ta 0px"></div>
+#set $ta = '220px'
 #if $info.width > 1900
-          <img border='0' src='/images/osd/icon_hd.png' alt='' />
-#else
-          <img border='0' src='/images/osd/icon_sd.png' alt='' />
+#set $ta = '176px'
 #end if
+					<div class="ib" style="background-position: -$ta 0px"></div>
+#set $ta = '220px'
 #if $info.txtpid != "N/A"
-          <img border='0' src='/images/osd/icon_txt.png' alt='' />
-#else
-          <img border='0' src='/images/osd/icon_txt_off.png' alt='' />
+#set $ta = '176px'
 #end if
+					<div class="ib" style="background-position: -$ta -26px"></div>
+#set $ta = '132px'
 #if $info.subs == True
-          <img border='0' src='/images/osd/icon_sub.png' alt='' />
-#else
-          <img border='0' src='/images/osd/icon_sub_off.png' alt='' />
+#set $ta = '88px'
 #end if
+					<div class="ib" style="background-position: -$ta -26px"></div>
+#set $ta = '44px'
 #if $info.rec_state == True
-          <img border='0' src='/images/osd/icon_rec.png' alt='' />
-#else
-          <img border='0' src='/images/osd/icon_rec_off.png' alt='' />
+#set $ta = '0px'
 #end if
-        </div>
-      </div>
-    </div>
-  </div>
+					<div class="ib" style="background-position: -$ta -26px"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- /END OSD -->
- 
 
 <br />
 <table style="background: #1C478E;font-size:12px;" width="100%" border="0" cellspacing="1" cellpadding="5">
-	
-			<tr>
-				<th colspan="3" class="infoHeader">$tstrings['service']</th>
-			</tr>
-			<tr style="background-color:  #f0f7fc;">
-				<td>$tstrings['name']: $info.name</td>
-				<td>$tstrings['provider']: $info.provider</td>
-				<td>$tstrings['namespace']: $info.namespace</td>
-			</tr>
-			<tr style="background-color:  #f0f7fc;">
-				<td>$tstrings['video_width']: $info.width</td>
-				<td>$tstrings['video_height']: $info.height</td>
-				<td>$tstrings['video_wide']: $info.wide</td>
-			</tr>
-			<tr style="background-color:  #f0f7fc;">
-				<td>$tstrings['encrypted']: $info.crypt</td>
-				<td>$tstrings['dolby']: $info.dolby</td>
-				<td>$tstrings['subservices']: $info.subs</td>
-			</tr>			
-			<tr style="background-color:  #f0f7fc;">
-				<td>$tstrings['teletext']: $info.txtpid</td>
-				<td>$tstrings['rec_status']: $info.rec_state</td>
-				<td>Pmtpid: $info.pmtpid</td>
-			</tr>
-			<tr style="background-color:  #f0f7fc;">
-				<td>Apid: $info.apid</td>
-				<td>Vpid: $info.vpid</td>
-				<td>Pcrpid: $info.pcrpid</td>
-			</tr>
-			<tr style="background-color:  #f0f7fc;">
-				<td>Tsid: $info.tsid</td>
-				<td>Onid: $info.onid</td>
-				<td>Sid: $info.sid</td>
-			</tr>
-			<tr style="background-color:  #f0f7fc;">
-				<td>Sref: $info.sref</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<th colspan="3" class="infoHeader">$tstrings['tuner_signal']</th>
-			</tr>
-			<tr style="background-color:  #f0f7fc;">
-				<td>$tstrings['tuner_type']: $getVar("info.tunertype", "N/A")</td>
-				<td>$tstrings['tuner_number']:  $getVar("info.tunernumber", "N/A")</td>
-				<td>$tstrings['tuner_signal_snr']:  $getVar("info.snr", "N/A")</td>
-			</tr>
-			<tr style="background-color:  #f0f7fc;">
-				<td>$tstrings['tuner_signal_snr_db']:  $getVar("info.snr_db", "N/A")</td>
-				<td>$tstrings['tuner_signal_agc']:  $getVar("info.agc", "N/A")</td>
-				<td>$tstrings['tuner_ber']:  $getVar("info.ber", "N/A")</td>
-			</tr>
-			<tr>
-				<th colspan="3" class="infoHeader">$tstrings['current_event']</th>
-			</tr>
-			<tr style="background-color:  #f0f7fc;">
-				<td colspan="3">$tstrings['title']: $getVar("now.title", " ")</td>
-			</tr>
-			<tr style="background-color:  #f0f7fc;">
-				<td>$tstrings['begin']: $getVar("now.begin", " ")</td>
-				<td>$tstrings['end']: $getVar("now.end", " ")</td>
-				<td>$tstrings['duration']: $getVar("now.duration", " ")</td>
-			</tr>
-			<tr style="background-color:  #f0f7fc;">
-				<td colspan="3">$tstrings['description']:  $getVar("now.shortdesc", " ")
-				<br>$getVar("now.longdesc", " ")
-				</td>
-			</tr>
-			
+	<tr style="background-color:initial;" >
+		<th colspan="3" class="infoHeader">$tstrings['service']</th>
+	</tr>
+	<tr>
+		<td>$tstrings['name']: $info.name</td>
+		<td>$tstrings['provider']: $info.provider</td>
+		<td id="ns" data-ns="$info.namespace">$tstrings['namespace']: $info.namespace</td>
+	</tr>
+	<tr>
+		<td>$tstrings['video_width']: $info.width</td>
+		<td>$tstrings['video_height']: $info.height</td>
+		<td>$tstrings['video_wide']: $info.wide</td>
+	</tr>
+	<tr>
+		<td>$tstrings['encrypted']: $info.crypt</td>
+		<td>$tstrings['dolby']: $info.dolby</td>
+		<td>$tstrings['subservices']: $info.subs</td>
+	</tr>
+	<tr>
+		<td>$tstrings['teletext']: $info.txtpid</td>
+		<td>$tstrings['rec_status']: $info.rec_state</td>
+		<td id="pmtpid" data-pmtpid="$info.pmtpid">Pmtpid: $info.pmtpid</td>
+	</tr>
+	<tr>
+		<td id="apid" data-apid="$info.apid">Apid: $info.apid</td>
+		<td id="vpid" data-vpid="$info.vpid">Vpid: $info.vpid</td>
+		<td id="pcrpid" data-pcrpid="$info.pcrpid">Pcrpid: $info.pcrpid</td>
+	</tr>
+	<tr>
+		<td id="tsid" data-tsid="$info.tsid">Tsid: $info.tsid </td>
+		<td id="onid" data-onid="$info.onid">Onid: $info.onid</td>
+		<td id="sid" data-sid="$info.sid">Sid: $info.sid</td>
+	</tr>
+	<tr>
+		<td>Sref: $info.sref</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr style="background-color:initial;" >
+		<th colspan="3" class="infoHeader">$tstrings['tuner_signal']</th>
+	</tr>
+	<tr>
+		<td>$tstrings['tuner_type']: $getVar("info.tunertype", "N/A")</td>
+		<td>$tstrings['tuner_number']:  $getVar("info.tunernumber", "N/A")</td>
+		<td>$tstrings['tuner_signal_snr']:  $getVar("info.snr", "N/A")</td>
+	</tr>
+	<tr>
+		<td>$tstrings['tuner_signal_snr_db']:  $getVar("info.snr_db", "N/A")</td>
+		<td>$tstrings['tuner_signal_agc']:  $getVar("info.agc", "N/A")</td>
+		<td>$tstrings['tuner_ber']:  $getVar("info.ber", "N/A")</td>
+	</tr>
+	<tr style="background-color:initial;" >
+		<th colspan="3" class="infoHeader">$tstrings['current_event']</th>
+	</tr>
+	<tr>
+		<td colspan="3">$tstrings['title']: $getVar("now.title", " ")</td>
+	</tr>
+	<tr>
+		<td>$tstrings['begin']: $getVar("now.begin", " ")</td>
+		<td>$tstrings['end']: $getVar("now.end", " ")</td>
+		<td>$tstrings['duration']: $getVar("now.duration", " ")</td>
+	</tr>
+	<tr>
+		<td colspan="3">$tstrings['description']:  $getVar("now.shortdesc", " ")</td>
+	</tr>
 </table>
+<script type="text/javascript">
+#raw
+function PrintDH(i)
+{
+var result = "0000";
+if (i >= 0 && i <= 15) {result="000"+i.toString(16);}
+else if (i >= 16 && i <= 255) {result="00"+i.toString(16);}
+else if (i >= 256 && i <= 4095) {result="0"+i.toString(16);}
+else if (i >= 4096 && i <= 65535) {result=i.toString(16);}
+else {result=i.toString(16);}
+return " (" + result + ")";
+}
+var v = parseInt($("#pmtpid").data("pmtpid"));
+$("#pmtpid").html($("#pmtpid").html() + PrintDH(v));
+v = parseInt($("#apid").data("apid"));
+$("#apid").html($("#apid").html() + PrintDH(v));
+v = parseInt($("#vpid").data("vpid"));
+$("#vpid").html($("#vpid").html() + PrintDH(v));
+v = parseInt($("#pcrpid").data("pcrpid"));
+$("#pcrpid").html($("#pcrpid").html() + PrintDH(v));
+v = parseInt($("#tsid").data("tsid"));
+$("#tsid").html($("#tsid").html() + PrintDH(v));
+v = parseInt($("#onid").data("onid"));
+$("#onid").html($("#onid").html() + PrintDH(v));
+v = parseInt($("#sid").data("sid"));
+$("#sid").html($("#sid").html() + PrintDH(v));
+v = parseInt($("#ns").data("ns"));
+$("#ns").html($("#ns").html() + PrintDH(v));
+#end raw
+
+</script>

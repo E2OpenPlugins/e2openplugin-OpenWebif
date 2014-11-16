@@ -619,9 +619,14 @@ def getNowNextEpg(ref, servicetype):
 
 	return { "events": ret, "result": True }
 
-def getSearchEpg(sstr):
+def getSearchEpg(sstr, endtime=None):
 	ret = []
 	ev = {}
+	if config.OpenWebif.epg_encoding.value != 'utf-8':
+		try:
+			sstr = sstr.encode(config.OpenWebif.epg_encoding.value)
+		except UnicodeEncodeError:
+			pass
 	epgcache = eEPGCache.getInstance()
 	events = epgcache.search(('IBDTSENR', 128, eEPGCache.PARTIAL_TITLE_SEARCH, sstr, 1));
 	if events is not None:
@@ -641,8 +646,13 @@ def getSearchEpg(sstr):
 			ev['sname'] = filterName(event[6])
 			ev['picon'] = getPicon(event[7])
 			ev['now_timestamp'] = None
-			ret.append(ev)
-
+			if endtime:
+				# don't show events if begin after endtime
+				if event[1] <= endtime:
+					ret.append(ev)
+			else:
+				ret.append(ev)
+		
 	return { "events": ret, "result": True }
 
 def getSearchSimilarEpg(ref, eventid):
@@ -756,7 +766,6 @@ def getPicon(sname):
 		pos = sname.rfind(':')
 	else:
 		return "/images/default_picon.png"
-
 	cname = None
 	if pos != -1:
 		cname = ServiceReference(sname[:pos].rstrip(':')).getServiceName()
@@ -777,8 +786,8 @@ def getPicon(sname):
 		cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').lower())
 		if len(cname) > 0:
 			filename = getPiconPath() + cname + ".png"
-			if fileExists(filename):
-				return "/picon/" + cname + ".png"
+		if fileExists(filename):
+			return "/picon/" + cname + ".png"		
 	return "/images/default_picon.png"
 
 def getParentalControlList():
