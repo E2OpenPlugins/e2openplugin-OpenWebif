@@ -81,8 +81,8 @@ body {
 {
 	overflow: hidden;
 	width: 100%;
-	margin-top: 1px;
-	margin-bottom: 1px;
+	margin-top: 2px;
+	margin-bottom: 2px;
 }
 
 #osd
@@ -105,15 +105,15 @@ body {
 	font-size: 12px;
 	float:left;
 	height: 32px;
-	width: 80%;
+	width: 90%;
 	margin-left: 5px;
-	margin-top: 3px;
+	margin-top: 1px;
 	overflow:hidden;
 }
 #osd_status
 {
 	float:right;
-	margin-top: 12px;
+	margin-top: 15px;
 }
 
 #leftmenu
@@ -217,7 +217,7 @@ color:#87BCF8;
 {
 	font-size: 9px;
 	text-align: center;
-	margin-top: 5px;
+	margin-top: 3px;
 	margin-bottom: 5px;
 }
 
