@@ -541,6 +541,15 @@ msgstr "Kanal"
 msgid "Settings"
 msgstr "Einstellungen"
 
+msgid "Display Settings"
+msgstr "Display Einstellungen"
+
+msgid "Userinterface Settings"
+msgstr "Benutzeroberfläche Einstellungen"
+
+msgid "PluginBrowser filter settings"
+msgstr "PluginBrowser Filter Einstellungen"
+
 msgid "Bouquet Editor"
 msgstr "Bouquet-Editor"
 
