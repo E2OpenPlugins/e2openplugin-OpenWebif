@@ -1123,7 +1123,7 @@ msgid "OpenWebif Configuration"
 msgstr "OpenWebif-Konfiguration"
 
 msgid "transcoded"
-msgstr ""
+msgstr "transkodiert"
 
 #~ msgid "Timer List"
 #~ msgstr "Timer-Liste"
