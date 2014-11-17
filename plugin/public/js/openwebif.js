@@ -183,6 +183,8 @@ function initJsTranslation(strings) {
 	tstr_su = strings.su;
 	
 	tstr_loading = strings.loading;
+	tstr_stream = strings.stream;
+	tstr_transcoded = strings.transcoded;
 	
 	tstr_send_message = strings.send_message;
 	tstr_sent_wait = strings.sent_wait;
@@ -512,10 +514,29 @@ function getStatusInfo() {
 		}
 
 		if ((statusinfo['currservice_station']) && ((statusinfo['currservice_serviceref'].indexOf("1:0:1") !== -1) || (statusinfo['currservice_serviceref'].indexOf("1:134:1") !== -1))) {
-			$("#osd").html("<span style='color:#EA7409;font-weight:bold;'>" + "<a style='color:#EA7409;font-weight:bold;text-decoration:none;' href='#' onClick='load_maincontent(\"ajax/tv\");return false;'>" + statusinfo['currservice_station'] + "</a></span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + "<a style='color:#ffffff;text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + statusinfo['currservice_serviceref'] + "')\">" + statusinfo['currservice_name'] + "</a>");
+			var stream = "";
+			if (statusinfo['transcoding']) {
+				stream += "<a href='#' onclick=\"jumper8001('" + statusinfo['currservice_serviceref'] + "', '" + statusinfo['currservice_station'] + "')\"; title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream.png'></img></a>&nbsp;";
+				stream += "<a href='#' onclick=\"jumper8002('" + statusinfo['currservice_serviceref'] + "', '" + statusinfo['currservice_station'] + "')\"; title='" + tstr_stream + " (" + tstr_transcoded + "): " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream02.png'></img></a>&nbsp;";
+			} else {
+				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + statusinfo['currservice_serviceref'] + "&name=" + statusinfo['currservice_station'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream.png'></img></a>&nbsp;";
+			}
+			$("#osd").html(stream + "<span style='color:#EA7409;font-weight:bold'><a style='color:#EA7409;font-weight:bold;text-decoration:none;' href='#' onClick='load_maincontent(\"ajax/tv\");return false;'>" + statusinfo['currservice_station'] + "</a></span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + "<a style='color:#ffffff;text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + statusinfo['currservice_serviceref'] + "')\">" + statusinfo['currservice_name'] + "</a>");
 			$("#osd_bottom").html(statusinfo['currservice_description']);
 		} else if ((statusinfo['currservice_station']) && ((statusinfo['currservice_serviceref'].indexOf("1:0:2") !== -1) || (statusinfo['currservice_serviceref'].indexOf("1:134:2") !== -1))) {
-			$("#osd").html("<span style='color:#EA7409;font-weight:bold;'>" + "<a style='color:#EA7409;font-weight:bold;text-decoration:none;' href='#' onClick='load_maincontent(\"ajax/radio\");return false;'>" + statusinfo['currservice_station'] + "</a></span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + "<a style='color:#ffffff;text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + statusinfo['currservice_serviceref'] + "')\">" + statusinfo['currservice_name'] + "</a>");
+			var stream = "";
+			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + statusinfo['currservice_serviceref'] + "&name=" + statusinfo['currservice_station'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream.png'></img></a>&nbsp;";
+			$("#osd").html(stream + "<span style='color:#EA7409;font-weight:bold;'>" + "<a style='color:#EA7409;font-weight:bold;text-decoration:none;' href='#' onClick='load_maincontent(\"ajax/radio\");return false;'>" + statusinfo['currservice_station'] + "</a></span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + "<a style='color:#ffffff;text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + statusinfo['currservice_serviceref'] + "')\">" + statusinfo['currservice_name'] + "</a>");
+			$("#osd_bottom").html(statusinfo['currservice_description']);
+		} else if ((statusinfo['currservice_station']) && ((statusinfo['currservice_serviceref'].indexOf("1:0:0") !== -1))) {
+			var stream = "";
+			if (statusinfo['transcoding']) {
+				stream += "<a href='#' onclick=\"jumper80('" + statusinfo['currservice_filename'] + "')\"; title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream.png'></img></a>&nbsp;";
+				stream += "<a href='#' onclick=\"jumper8003('" + statusinfo['currservice_filename'] + "')\"; title='" + tstr_stream + " (" + tstr_transcoded + "): " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream02.png'></img></a>&nbsp;";
+			} else {
+				stream += "<a target='_blank' href='/web/ts.m3u?file=" + statusinfo['currservice_filename'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream.png'></img></a>&nbsp;";
+			}
+			$("#osd").html(stream + "<span style='color:#EA7409;font-weight:bold;'>" + statusinfo['currservice_station'] + "</span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + statusinfo['currservice_name']);
 			$("#osd_bottom").html(statusinfo['currservice_description']);
 		} else if (statusinfo['currservice_station']) {
 			$("#osd").html("<span style='color:#EA7409;font-weight:bold;'>" + statusinfo['currservice_station'] + "</span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + statusinfo['currservice_name']);

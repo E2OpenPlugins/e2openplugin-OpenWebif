@@ -13,7 +13,7 @@ from Tools.Directories import fileExists
 from Components.config import config
 
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
-from models.info import getInfo, getPublicPath, getOpenWebifVer
+from models.info import getInfo, getPublicPath, getOpenWebifVer, getTranscodingSupport
 from models.movies import getMovieList
 from models.timers import getTimers
 from models.config import getConfigs, getConfigsSections
@@ -60,10 +60,8 @@ class AjaxController(BaseController):
 		channels = getChannels(idbouquet, stype)
 		info = getInfo()
 		model = info["model"]
-		channels['transcoding'] = False
+		channels['transcoding'] = getTranscodingSupport()
 		channels['type'] = stype
-		if model in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "hd2400", "xpeedlx3", "gbquad", "gbquadplus"):
-			channels['transcoding'] = True
 		return channels
 
 	def P_eventdescription(self, request):
@@ -149,9 +147,7 @@ class AjaxController(BaseController):
 			movies = getMovieList()
 		info = getInfo()
 		model = info["model"]
-		movies['transcoding'] = False
-		if model in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "hd2400", "xpeedlx3", "gbquad", "gbquadplus"):
-			movies['transcoding'] = True
+		movies['transcoding'] = getTranscodingSupport()
 		return movies
 
 	def P_workinprogress(self, request):

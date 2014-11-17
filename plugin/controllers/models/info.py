@@ -34,6 +34,8 @@ import string
 
 OPENWEBIFVER = "OWIF 0.4.2"
 
+STATICBOXINFO = None
+
 def getOpenWebifVer():
 	return OPENWEBIFVER
 
@@ -369,6 +371,8 @@ def getInfo():
 			"labelled_capacity": iecsize,
 			"free": free
 		})
+	global STATICBOXINFO
+	STATICBOXINFO = info
 	return info
 
 def getFrontendStatus(session):
@@ -415,6 +419,14 @@ def getCurrentTime():
 		"time": "%2d:%02d:%02d" % (t.tm_hour, t.tm_min, t.tm_sec)
 	}
 
+def getTranscodingSupport():
+	global STATICBOXINFO
+	if STATICBOXINFO is None:
+		getInfo()
+	if STATICBOXINFO['model'] in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "hd2400", "xpeedlx3", "gbquad", "gbquadplus"):
+		return True
+	return False
+
 def getStatusInfo(self):
 	statusinfo = {}
 
@@ -423,6 +435,7 @@ def getStatusInfo(self):
 
 	statusinfo['volume'] = vcontrol.getVolume()
 	statusinfo['muted'] = vcontrol.isMuted()
+	statusinfo['transcoding'] = getTranscodingSupport()
 
 	# Get currently running Service
 	event = None
@@ -437,6 +450,7 @@ def getStatusInfo(self):
 	else:
 		event = None
 
+	statusinfo['currservice_filename'] = ""
 	if event is not None:
 		curEvent = parseEvent(event)
 		statusinfo['currservice_name'] = curEvent[2].replace('\xc2\x86', '').replace('\xc2\x87', '')
@@ -447,6 +461,9 @@ def getStatusInfo(self):
 		if len(curEvent[3].decode('utf-8')) > 220:
 			statusinfo['currservice_description'] = curEvent[3].decode('utf-8')[0:220].encode('utf-8') + "..."
 		statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
+		if statusinfo['currservice_serviceref'].startswith('1:0:0'):
+			statusinfo['currservice_filename'] = '/' + '/'.join(serviceref.toString().split("/")[1:])
+		
 	else:
 		statusinfo['currservice_name'] = "N/A"
 		statusinfo['currservice_begin'] = ""
