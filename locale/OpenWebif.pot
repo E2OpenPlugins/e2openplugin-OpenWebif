@@ -1120,3 +1120,6 @@ msgstr ""
 
 msgid "OpenWebif Configuration"
 msgstr ""
+
+msgid "transcoded"
+msgstr ""

@@ -1128,5 +1128,8 @@ msgstr "Kódování znaků pro EPG data"
 msgid "OpenWebif Configuration"
 msgstr "Nastavení OpenWebif"
 
+msgid "transcoded"
+msgstr ""
+
 #~ msgid "Timer List"
 #~ msgstr "Přehled časovačů"

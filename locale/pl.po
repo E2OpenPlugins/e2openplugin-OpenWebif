@@ -1122,5 +1122,8 @@ msgstr ""
 msgid "OpenWebif Configuration"
 msgstr "Konfiguracja OpenWebif"
 
+msgid "transcoded"
+msgstr ""
+
 #~ msgid "Timer List"
 #~ msgstr "Lista zadań planowych"

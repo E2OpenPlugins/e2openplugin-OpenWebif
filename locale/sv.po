@@ -1133,5 +1133,8 @@ msgstr "Teckenkodning av EPG-data"
 msgid "OpenWebif Configuration"
 msgstr "Inställningar för OpenWebif"
 
+msgid "transcoded"
+msgstr ""
+
 #~ msgid "Timer List"
 #~ msgstr "Timerlista"
