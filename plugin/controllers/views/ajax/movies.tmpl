@@ -38,8 +38,8 @@
 						<div>
 						<a href='#' onClick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><div class="ow_i ow_i_play"></div></a>
 						#if $transcoding
-						<a href="#" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream'] $movie.eventname"><div class="ow_i ow_i_stream1"></div></a>
-						<a href="#" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] Port 8002 $movie.eventname"><div class="ow_i ow_i_stream2"></div></a>
+						<a href="#" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream']: $movie.eventname"><div class="ow_i ow_i_stream1"></div></a>
+						<a href="#" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] ($tstrings['transcoded']): $movie.eventname"><div class="ow_i ow_i_stream2"></div></a>
 						#else
 						<a target="_blank" href='/web/ts.m3u?file=$quote($movie.filename)' title="$tstrings['stream'] $movie.eventname"><div class="ow_i ow_i_stream1"></div></a>
 						#end if

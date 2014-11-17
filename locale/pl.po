@@ -64,6 +64,9 @@ msgstr "Dodaj nazwę kanału do info strumienia"
 msgid "OpenWebif Configuration"
 msgstr "Konfiguracja OpenWebif"
 
+msgid "transcoded"
+msgstr "" 
+
 msgid "Mo"
 msgstr "Pn"
 

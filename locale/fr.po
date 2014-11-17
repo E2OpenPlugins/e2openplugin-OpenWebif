@@ -67,6 +67,9 @@ msgstr "Ajouter le nom du service dans les informations du stream"
 msgid "OpenWebif Configuration"
 msgstr "Configuration OpenWebif"
 
+msgid "transcoded"
+msgstr "" 
+
 msgid "Mo"
 msgstr "Lu"
 

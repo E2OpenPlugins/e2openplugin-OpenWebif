@@ -47,6 +47,9 @@ msgstr "Προσθήκη ονόματος υπηρεσίας στις πληρο
 msgid "OpenWebif Configuration"
 msgstr "Ρυθμίσεις OpenWebif"
 
+msgid "transcoded"
+msgstr ""
+
 msgid "Mo"
 msgstr "Δε"
 
