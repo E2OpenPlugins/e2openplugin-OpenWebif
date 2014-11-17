@@ -20,6 +20,7 @@ from file import FileController
 from mobile import MobileController
 from ipkg import IpkgController
 from AT import ATController
+from SR import SRController
 from ER import ERController
 from BQE import BQEController
 from transcoding import TranscodingController
@@ -44,6 +45,7 @@ class RootController(BaseController):
 		self.putChild("images", static.File(getPublicPath() + "/images"))
 		self.putChild("ipkg", IpkgController(session))
 		self.putChild("autotimer", ATController(session))
+		self.putChild("serienrecorder", SRController(session))
 		self.putChild("epgrefresh", ERController(session))
 		self.putChild("bouqueteditor", BQEController(session))
 		self.putChild("transcoding", TranscodingController(session))
