@@ -105,17 +105,23 @@ body {
 	font-size: 12px;
 	float:left;
 	height: 32px;
-	width: 80%;
+	width: 90%;
 	margin-left: 5px;
-	margin-top: 3px;
+	margin-top: 1px;
 	overflow:hidden;
 }
 #osd_status
 {
 	float:right;
-	margin-top: 12px;
+	margin-top: 15px;
 }
 
+@media screen and (max-width: 1280px) {
+   #statusheader {
+	margin-top: 2px;
+	margin-bottom: 2px;
+   }
+ }
 #leftmenu
 {
 	width:180px;
@@ -217,7 +223,7 @@ color:#87BCF8;
 {
 	font-size: 9px;
 	text-align: center;
-	margin-top: 5px;
+	margin-top: 3px;
 	margin-bottom: 5px;
 }
 
@@ -627,4 +633,3 @@ html, body
 .ow_i_stream1 { background-position: -160px 0px;}
 .ow_i_stream2 { background-position: -176px 0px;}
 .ow_i_timer { background-position: -192px 0px;}
-
