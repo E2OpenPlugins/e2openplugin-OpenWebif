@@ -116,6 +116,12 @@ body {
 	margin-top: 15px;
 }
 
+@media screen and (max-width: 1280px) {
+   #statusheader {
+	margin-top: 2px;
+	margin-bottom: 2px;
+   }
+ }
 #leftmenu
 {
 	width:180px;
