@@ -463,12 +463,17 @@ def getStatusInfo(self):
 		statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
 		if statusinfo['currservice_serviceref'].startswith('1:0:0'):
 			statusinfo['currservice_filename'] = '/' + '/'.join(serviceref.toString().split("/")[1:])
+		full_desc = statusinfo['currservice_name'] + '\n'
+		full_desc += statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end']  + '\n\n'
+		full_desc += event.getExtendedDescription().replace('\xc2\x86', '').replace('\xc2\x87', '').replace('\xc2\x8a', '\n')
+		statusinfo['currservice_fulldescription'] = full_desc
 		
 	else:
 		statusinfo['currservice_name'] = "N/A"
 		statusinfo['currservice_begin'] = ""
 		statusinfo['currservice_end'] = ""
 		statusinfo['currservice_description'] = ""
+		statusinfo['currservice_fulldescription'] = "N/A"
 		if serviceref:
 			statusinfo['currservice_serviceref'] = serviceref.toString()
 			statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
