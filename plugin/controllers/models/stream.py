@@ -39,19 +39,26 @@ def getStream(session, request, m3ufile):
 			sRef = ref.toString()
 
 	name = "stream"
+	# #EXTINF:-1,%s\n adding back to show service name in programs like VLC
+	progopt = ''
 	if "name" in request.args:
 		name = request.args["name"][0]
-	# #EXTINF:-1,%s\n  remove not compatiple with old api
-	progopt = ''
-	if config.OpenWebif.service_name_for_stream.value and sRef != '':
-		progopt="#EXTVLCOPT:program=%d\n" % (int(sRef.split(':')[3],16))
+		if config.OpenWebif.service_name_for_stream.value:
+			progopt="#EXTINF:-1,%s\n" % name
+	
 	portNumber = config.OpenWebif.streamport.value
 	info = getInfo()
 	model = info["model"]
+	transcoder_port = None
 	if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus"):
+		try:
+			transcoder_port = int(config.plugins.transcodingsetup.port.value)
+		except StandardError:
+			#Transcoding Plugin is not installed or your STB does not support transcoding
+			transcoder_port = None
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
-				portNumber = config.plugins.transcodingsetup.port.value
+				portNumber = transcoder_port
 		if "port" in request.args:
 			portNumber = request.args["port"][0]
 			
@@ -66,11 +73,16 @@ def getStream(session, request, m3ufile):
 				aspectratio = config.plugins.transcodingsetup.aspectratio.value
 				interlaced = config.plugins.transcodingsetup.interlaced.value
 				args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
-				response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef, args)
 			else:
-				response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef)
+				args = ""
 	else: # All other boxes which use transtreamproxy
-		response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef)
+		args = ""
+
+	# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
+	if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != transcoder_port:
+		progopt="%s#EXTVLCOPT:program=%d\n" % (progopt, int(sRef.split(':')[3],16))
+
+	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef, args)
 	request.setHeader('Content-Type', 'application/text')
 	return response
 
@@ -82,23 +94,44 @@ def getTS(self, request):
 
 #	ServiceReference is not part of filename so look in the '.ts.meta' file
 		sRef = ""
+		progopt = ''
+
 		if os.path.exists(filename + '.meta'):
 			metafile = open(filename + '.meta', "r")
-			line = metafile.readline()
+			name = ''
+			seconds = -1 				# unknown duration default
+			line = metafile.readline()	# service ref
 			if line:
 				sRef = eServiceReference(line.strip()).toString()
+			line2 = metafile.readline()	# name
+			if line2:
+				name = line2.strip()
+			line3 = metafile.readline()	# description
+			line4 = metafile.readline() # recording time
+			line5 = metafile.readline() # tags
+			line6 = metafile.readline() # length
+
+			if line6:
+				seconds = float(line6.strip()) / 90000 # In seconds
+
+			if config.OpenWebif.service_name_for_stream.value:
+				progopt="%s#EXTINF:%d,%s\n" % (progopt, seconds, name)
+
 			metafile.close()
 
-		progopt = ''
-		if config.OpenWebif.service_name_for_stream.value and sRef != '':
-			progopt="#EXTVLCOPT:program=%d\n" % (int(sRef.split(':')[3],16))
 		portNumber = config.OpenWebif.port.value
 		info = getInfo()
 		model = info["model"]
+		transcoder_port = None
 		if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus"):
+			try:
+				transcoder_port = int(config.plugins.transcodingsetup.port.value)
+			except StandardError:
+				#Transcoding Plugin is not installed or your STB does not support transcoding
+				transcoder_port = None
 			if "device" in request.args :
 				if request.args["device"][0] == "phone" :
-					portNumber = config.plugins.transcodingsetup.port.value
+					portNumber = transcoder_port
 		if "port" in request.args:
 			portNumber = request.args["port"][0]
 			
@@ -113,11 +146,16 @@ def getTS(self, request):
 				aspectratio = config.plugins.transcodingsetup.aspectratio.value
 				interlaced = config.plugins.transcodingsetup.interlaced.value
 				args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
-				response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s%s\n" % ((progopt,request.getRequestHostname(), portNumber, quote(filename), args))
 			else:
-				response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), portNumber, quote(filename))
+				args = ""
 		else: # All other boxes which use transtreamproxy
-			response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), portNumber, quote(filename))
+			args = ""
+		
+		# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
+		if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != transcoder_port:
+			progopt="%s#EXTVLCOPT:program=%d\n" % (progopt, int(sRef.split(':')[3],16))
+
+		response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s%s\n" % ((progopt,request.getRequestHostname(), portNumber, quote(filename), args))
 		request.setHeader('Content-Type', 'application/text')
 		return response
 	else:
