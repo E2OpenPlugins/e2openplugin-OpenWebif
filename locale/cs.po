@@ -319,7 +319,7 @@ msgid "Download Playlist for"
 msgstr "stahnout playlist pro"
 
 msgid "Duration"
-msgstr "Trvání"
+msgstr "Délka"
 
 msgid "Edit Timer"
 msgstr "Upravit časovač"
