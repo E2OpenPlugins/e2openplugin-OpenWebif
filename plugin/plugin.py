@@ -69,6 +69,7 @@ config.OpenWebif.epg_encoding = ConfigSelection(default = 'utf-8', choices = [ '
 										'iso-8859-10',
 										'iso-8859-16'])
 
+
 class OpenWebifConfig(Screen, ConfigListScreen):
 	skin = """
 	<screen position="center,center" size="700,340" title="OpenWebif Configuration">
