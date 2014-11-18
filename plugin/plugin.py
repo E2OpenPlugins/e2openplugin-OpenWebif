@@ -22,7 +22,7 @@ from Screens.MessageBox import MessageBox
 from Components.ActionMap import ActionMap
 from Components.Label import Label
 from Components.ConfigList import ConfigListScreen
-from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText
+from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection
 from boxbranding import getImageDistro
 
 from httpserver import HttpdStart, HttpdStop, HttpdRestart
@@ -54,7 +54,20 @@ config.OpenWebif.service_name_for_stream = ConfigYesNo(default=False)
 # authentication for streaming
 config.OpenWebif.auth_for_streaming = ConfigYesNo(default=False)
 config.OpenWebif.no_root_access = ConfigYesNo(default=False)
-
+# encoding of EPG data
+config.OpenWebif.epg_encoding = ConfigSelection(default = 'utf-8', choices = [ 'utf-8',
+										'iso-8859-15',
+										'iso-8859-1',
+										'iso-8859-2',
+										'iso-8859-3',
+										'iso-8859-4',
+										'iso-8859-5',
+										'iso-8859-6',
+										'iso-8859-7',
+										'iso-8859-8',
+										'iso-8859-9',
+										'iso-8859-10',
+										'iso-8859-16'])
 
 class OpenWebifConfig(Screen, ConfigListScreen):
 	skin = """
@@ -108,6 +121,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			self.list.append(getConfigListEntry(_("Smart services renaming for XBMC"), config.OpenWebif.xbmcservices))
 			self.list.append(getConfigListEntry(_("Enable Parental Control"), config.OpenWebif.parentalenabled))
 			self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
+			# self.list.append(getConfigListEntry(_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))
 
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
