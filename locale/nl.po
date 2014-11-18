@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-11-01 19:04+0100\n"
+"POT-Creation-Date: 2014-11-18 19:04+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Rob van der Does <robvddoes@gmail.com>\n"
 "Language-Team: \n"
@@ -11,22 +11,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: The Netherlands; Belgium\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
 msgid "Settings"
 msgstr "Instellingen"
 
 msgid "LCD4Linux Setup"
-msgstr ""
+msgstr "LCD4Linux instellingen"
 
 msgid "AutoTimer"
-msgstr ""
+msgstr "Autotimer"
 
 msgid "BouquetEditor"
-msgstr ""
+msgstr "BouquetEditor"
 
 msgid "EPGRefresh"
-msgstr ""
+msgstr "EPGRefresh"
 
 msgid "IPv4-only kernel"
 msgstr ""
@@ -38,16 +40,16 @@ msgid "none/IPv4-only network"
 msgstr ""
 
 msgid "Message sent successfully!"
-msgstr ""
+msgstr "Bericht succesvol verstuurd!"
 
 msgid "No answer in time"
-msgstr ""
+msgstr "Geen tijdig antwoord"
 
 msgid "Answer is YES!"
-msgstr ""
+msgstr "Antwoord is JA!"
 
 msgid "Answer is NO!"
-msgstr ""
+msgstr "Antwoord is NEE!"
 
 msgid "New"
 msgstr "Nieuw"
@@ -69,26 +71,26 @@ msgstr "E"
 
 #, python-format
 msgid "Missing mandatory parameter '%s'"
-msgstr ""
+msgstr "De verplichte parameter '%s' ontbreekt"
 
 #, python-format
 msgid "The parameter '%s' can't be empty"
-msgstr ""
+msgstr "De parameter '%s' kan niet leeg zijn"
 
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr ""
+msgstr "Verkeerd parameterformaat 'set=%s'. Gebruik set=set15 "
 
 #, python-format
 msgid "Unknown Volume command %s"
-msgstr ""
+msgstr "Onbekend volumecommando %s"
 
 msgid "The parameter 'command' must be a number"
-msgstr ""
+msgstr "De parameter 'commando' moet een getal zijn"
 
 #, python-format
 msgid "type %s is not a number"
-msgstr ""
+msgstr "type %s is geen getal"
 
 msgid "Mo"
 msgstr "ma"
@@ -196,10 +198,10 @@ msgid "Add Timer"
 msgstr "Voeg timer toe"
 
 msgid "Add AutoTimer"
-msgstr ""
+msgstr "Voeg autotimer toe"
 
 msgid "Add Zap Timer"
-msgstr ""
+msgstr "Voeag zap-timer toe"
 
 msgid "After Event"
 msgstr "Na afloop"
@@ -286,13 +288,13 @@ msgid "Delete Recording"
 msgstr "Verwijder opname"
 
 msgid "Really delete the recording"
-msgstr ""
+msgstr "De opname echt verwijderen?"
 
 msgid "Delete Timer"
 msgstr "Verwijder timer"
 
 msgid "Really delete the timer"
-msgstr ""
+msgstr "De timer echt verwijderen?"
 
 msgid "Description"
 msgstr "Beschrijving"
@@ -307,7 +309,7 @@ msgid "Dolby"
 msgstr "Dolby"
 
 msgid "Done"
-msgstr ""
+msgstr "Gedaan"
 
 msgid "Download"
 msgstr "Download"
@@ -325,7 +327,7 @@ msgid "Enable Timer"
 msgstr "Schakel timer in"
 
 msgid "Start"
-msgstr ""
+msgstr "Start"
 
 msgid "End"
 msgstr "Einde"
@@ -385,13 +387,13 @@ msgid "Hard disk model"
 msgstr "Model harde schijf"
 
 msgid "Hour"
-msgstr ""
+msgstr "Uur"
 
 msgid "IP address"
 msgstr "IP-adres"
 
 msgid "IPv6 address(es)"
-msgstr ""
+msgstr "IPv6 adres(en)"
 
 msgid "Infos"
 msgstr "Info"
@@ -427,7 +429,7 @@ msgid "Main"
 msgstr "Hoofd"
 
 msgid "Minute"
-msgstr ""
+msgstr "Minuut"
 
 msgid "Model"
 msgstr "Model"
@@ -463,28 +465,28 @@ msgid "Nothing playing."
 msgstr "Er speelt niets."
 
 msgid "Now"
-msgstr ""
+msgstr "Nu"
 
 msgid "On"
-msgstr ""
+msgstr "Aan"
 
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Open Source webinterface voor Linux settopbox"
 
 msgid "Show box name in header"
-msgstr ""
+msgstr "Toon de naam van de box in de kopOh? "
 
 msgid "Use custom box name"
-msgstr ""
+msgstr "Gebruik eigen naam voor de box"
 
 msgid "Custom box name"
-msgstr ""
+msgstr "Eigen naam voor de box"
 
 msgid "OSD"
 msgstr "OSD"
 
 msgid "Playback"
-msgstr ""
+msgstr "Afspelen"
 
 msgid "Playlist"
 msgstr "Playlist"
@@ -514,13 +516,13 @@ msgid "Refresh automatically every"
 msgstr "Ververs automatisch elke"
 
 msgid "Refresh Timer"
-msgstr ""
+msgstr "Ververs timer"
 
 msgid "Remote"
 msgstr "Afstandsbediening"
 
 msgid "Rename Recording"
-msgstr ""
+msgstr "Hernoem opname"
 
 msgid "Repeated"
 msgstr "Herhaald"
@@ -556,7 +558,7 @@ msgid "Send Message"
 msgstr "Stuur een bericht"
 
 msgid "Waiting for answer ..."
-msgstr ""
+msgstr "Wacht op antwoord..."
 
 msgid "Send a Message"
 msgstr "Stuur een bericht"
@@ -565,7 +567,7 @@ msgid "Service"
 msgstr "Zenders"
 
 msgid "Bouquet Editor"
-msgstr ""
+msgstr "Bouquet editor"
 
 msgid "(shift + click for long pressure)"
 msgstr "(shift + klik voor lang-drukken)"
@@ -598,7 +600,7 @@ msgid "Standby Toggle"
 msgstr "Wissel standby"
 
 msgid "Start time is after end time"
-msgstr ""
+msgstr "Starttijd ligt na de begintijd"
 
 msgid "Start Instant Record"
 msgstr "Start opname onmiddellijk"
@@ -628,22 +630,22 @@ msgid "Text"
 msgstr "Tekst"
 
 msgid "Time"
-msgstr ""
+msgstr "Tijd"
 
 msgid "Timeout"
 msgstr "Timeout"
 
 msgid "Timer added"
-msgstr ""
+msgstr "Timer toegevoegd"
 
 msgid "Timerlist"
 msgstr "Timerlijst"
 
 msgid "New Name"
-msgstr ""
+msgstr "Nieuwe naam"
 
 msgid "Autotimer Preview"
-msgstr ""
+msgstr "Autotimer preview"
 
 msgid "Timer"
 msgstr "Timer"
@@ -709,7 +711,7 @@ msgid "Video Width"
 msgstr "Video breedte"
 
 msgid "Volume"
-msgstr ""
+msgstr "Volume"
 
 msgid "Volume Control"
 msgstr "Volume controle"
@@ -733,352 +735,349 @@ msgid "Zap to"
 msgstr "Zap naar"
 
 msgid "Zapped to"
-msgstr ""
+msgstr "Gezapd naar"
 
 msgid "Translation to Spanish"
-msgstr ""
+msgstr "Vertaling in het Spaans"
 
 msgid "All Files of this Software are open source software;"
-msgstr ""
+msgstr "Alle bestanden van deze software zijn Open Source;"
 
 msgid "you can redistribute it and/or modify it under the"
-msgstr ""
+msgstr "u kunt herdistribueren en modificeren volgens de "
 
 msgid "terms of the GNU General Public License version 2 as"
-msgstr ""
+msgstr "regels van de GNU General Public License versie 2 zoals"
 
 msgid "published by the Free Software Foundation."
-msgstr ""
+msgstr "gepubliceerd door de 'Free Software Foundation'."
 
-msgid ""
-"All Files of this Software are open source software; you can redistribute it "
-"and/or modify it under the terms of the GNU General Public License version 2 "
-"as published by the Free Software Foundation."
-msgstr ""
+msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
+msgstr "Alle bestanden van deze software zijn Open Source; u kunt herdistribueren en modificeren volgens de regels van de GNU General Public License versie 2 zoals gepubliceerd door de 'Free Software Foundation'."
 
 msgid "Root"
-msgstr ""
+msgstr "Root"
 
 msgid "AutoTimer List"
-msgstr ""
+msgstr "Autotimer lijst"
 
 msgid "AutoTimer Edit"
-msgstr ""
+msgstr "Autotimer aanpassen"
 
 msgid "Match title"
-msgstr ""
+msgstr "Overeenkomende titel"
 
 msgid "EPG encoding"
-msgstr ""
+msgstr "EPG codering"
 
 msgid "Search type"
-msgstr ""
+msgstr "Zoek type"
 
 msgid "partial match"
-msgstr ""
+msgstr "gedeeltelijke overeenkomst"
 
 msgid "exact match"
-msgstr ""
+msgstr "exacte overeenkomst"
 
 msgid "description match"
-msgstr ""
+msgstr "overeenkomst in beschrijving"
 
 msgid "start match"
-msgstr ""
+msgstr "aanvangen met vergelijken"
 
 msgid "Search strictness"
-msgstr ""
+msgstr "Hoe strikt zoeken?"
 
 msgid "case-sensitive search"
-msgstr ""
+msgstr "hoofdletter gevoelig"
 
 msgid "case-insensitive search"
-msgstr ""
+msgstr "hoofdletter ongevoelig"
 
 msgid "Timer type"
-msgstr ""
+msgstr "Timer type"
 
 msgid "record"
-msgstr ""
+msgstr "neem op"
 
 msgid "zap"
-msgstr ""
+msgstr "zap"
 
 msgid "Override found with alternative service"
-msgstr ""
+msgstr "Overschrijf met alternatief kanaal"
 
 msgid "Only match during timespan"
-msgstr ""
+msgstr "Alleen vergelijken tijdens"
 
 msgid "Begin of timespan"
-msgstr ""
+msgstr "Begintijd"
 
 msgid "End of Timespan"
-msgstr ""
+msgstr "Eindtijd"
 
 msgid "Restrict to events on certain dates"
-msgstr ""
+msgstr "Beperk tot bepaalde data"
 
 msgid "Not after"
-msgstr ""
+msgstr "Niet na"
 
 msgid "Not before"
-msgstr ""
+msgstr "Niet voor"
 
 msgid "Custom offset"
-msgstr ""
+msgstr "Eigen tijd afwijking"
 
 msgid "Offset before recording (in m)"
-msgstr ""
+msgstr "Extra tijd aan het begin (min)"
 
 msgid "Offset after recording (in m)"
-msgstr ""
+msgstr "Extra tijd aan het einde (min)"
 
 msgid "Set maximum duration"
-msgstr ""
+msgstr "Stel de maximale duur in"
 
 msgid "After event"
-msgstr ""
+msgstr "Na afloop"
 
 msgid "standard"
-msgstr ""
+msgstr "standaard"
 
 msgid "auto"
-msgstr ""
+msgstr "auto"
 
 msgid "do nothing"
-msgstr ""
+msgstr "doe niets"
 
 msgid "go to standby"
-msgstr ""
+msgstr "ga naar standby"
 
 msgid "go to deep standby"
-msgstr ""
+msgstr "ga naar deep standby"
 
 msgid "Execute \"after event\" during timespan"
-msgstr ""
+msgstr "Voer \"na afloop\" uit tijdens tijdspanne"
 
 msgid "Begin of \"after event\" timespan"
-msgstr ""
+msgstr "Begin van \"na afloop\" tijdspanne"
 
 msgid "End of \"after event\" timespan"
-msgstr ""
+msgstr "Einde van \"na afloop\" tijdspanne"
 
 msgid "Record a maximum of x times"
-msgstr ""
+msgstr "Maximaal x keer opnemen"
 
 msgid "Amount of recordings left"
-msgstr ""
+msgstr "Aantal overgebleven opnames"
 
 msgid "Never"
-msgstr ""
+msgstr "nooit"
 
 msgid "Monthly"
-msgstr ""
+msgstr "Maandelijks"
 
 msgid "Weekly (Sunday)"
-msgstr ""
+msgstr "Wekelijks (zondag)"
 
 msgid "Weekly (Monday)"
-msgstr ""
+msgstr "Wekelijks (maandag)"
 
 msgid "Reset count"
-msgstr ""
+msgstr "Reset teller"
 
 msgid "Require description to be unique"
-msgstr ""
+msgstr "Vereist een unieke beschrijving"
 
 msgid "No"
-msgstr ""
+msgstr "Nee"
 
 msgid "On same service"
-msgstr ""
+msgstr "Op hetzelfde kanaal"
 
 msgid "On any service"
-msgstr ""
+msgstr "Op elk kanaal"
 
 msgid "Any service/recording"
-msgstr ""
+msgstr "Elk kanaal/opname"
 
 msgid "Use a custom location"
-msgstr ""
+msgstr "Gebruik een aangepaste lokatie"
 
 msgid "select Tags"
-msgstr ""
+msgstr "Kies tags"
 
 msgid "select Channels"
-msgstr ""
+msgstr "kies kanalen"
 
 msgid "select Bouquets"
-msgstr ""
+msgstr "kies favorietenlijsten"
 
 msgid "Enable Filtering"
-msgstr ""
+msgstr "Schakel filters in"
 
 msgid "Include"
-msgstr ""
+msgstr "Sluit in"
 
 msgid "Exclude"
-msgstr ""
+msgstr "Sluit uit"
 
 msgid "in Title"
-msgstr ""
+msgstr "in titel"
 
 msgid "in Shortdescription"
-msgstr ""
+msgstr "in korte beschrijving"
 
 msgid "in Description"
-msgstr ""
+msgstr "in beschrijving"
 
 msgid "on Weekday"
-msgstr ""
+msgstr "op werkdag"
 
 msgid "Weekend"
-msgstr ""
+msgstr "Weekeinde"
 
 msgid "Weekday"
-msgstr ""
+msgstr "Werkdag"
 
 msgid "VPS"
-msgstr ""
+msgstr "VPS"
 
 msgid "VPS Overwrite"
-msgstr ""
+msgstr "VPS overschrijven"
 
 msgid "Add"
-msgstr ""
+msgstr "Voeg toe"
 
 msgid "Delete"
-msgstr ""
+msgstr "Verwijder"
 
 msgid "Reload"
-msgstr ""
+msgstr "Herlaad"
 
 msgid "Parse"
-msgstr ""
+msgstr "Parse"
 
 msgid "Simulate"
-msgstr ""
+msgstr "Simuleer"
 
 msgid "Do you really want to delete the AT"
-msgstr ""
+msgstr "Wilt u de AT echt verwijderen?"
 
 msgid "Label series"
-msgstr ""
+msgstr "Label series"
 
 msgid "Enable Messages"
-msgstr ""
+msgstr "Schakel berichten in"
 
 msgid "Delay Standby"
-msgstr ""
+msgstr "Vertraag stand-by"
 
 msgid "Interval (min.)"
-msgstr ""
+msgstr "Interval (min.)"
 
 msgid "Interval (sec.)"
-msgstr ""
+msgstr "Interval (sec.)"
 
 msgid "Afterevent"
-msgstr ""
+msgstr "Na afloop"
 
 msgid "Force"
-msgstr ""
+msgstr "Forceer"
 
 msgid "Wakeup"
-msgstr ""
+msgstr "Wakker worden"
 
 msgid "Inherit Autotimer"
-msgstr ""
+msgstr "Erf autotimer"
 
 msgid "Parse Autotimer"
-msgstr ""
+msgstr "Parse Autotimer"
 
 msgid "Always"
-msgstr ""
+msgstr "Altijd"
 
 msgid "Background only"
-msgstr ""
+msgstr "Alleen in achtergrond"
 
 msgid "Ask, default Yes"
-msgstr ""
+msgstr "Vraag, default Ja"
 
 msgid "Ask, default No"
-msgstr ""
+msgstr "Vraag, default Nee"
 
 msgid "Method"
-msgstr ""
+msgstr "Methode"
 
 msgid "Visibly"
-msgstr ""
+msgstr "Zichtbaar"
 
 msgid "Picture in Picture"
-msgstr ""
+msgstr "Picture in Picture"
 
 msgid "Picture in Picture (hidden)"
-msgstr ""
+msgstr "Picture in Picture (verborgen)"
 
 msgid "Fake Recording"
-msgstr ""
+msgstr "Nepopname"
 
 msgid "Refresh now"
-msgstr ""
+msgstr "Ververs nu"
 
 msgid "Add Provider as new Bouquet"
-msgstr ""
+msgstr "Voeg provider toe als nieuwe favorietenlijst"
 
 msgid "Add channel(s) to Bouquet"
-msgstr ""
+msgstr "Voeg kanaal/kanalen aan lijst toe"
 
 msgid "Add channel(s) as alternate"
-msgstr ""
+msgstr "Voeg kanaal/kanalen als alterbatief toe"
 
 msgid "Export"
-msgstr ""
+msgstr "Exporteer"
 
 msgid "Import"
-msgstr ""
+msgstr "Importeer"
 
 msgid "Add Bouquet"
-msgstr ""
+msgstr "Voeg favorietenlijst toe"
 
 msgid "Rename Bouquet"
-msgstr ""
+msgstr "Hernoem favorietenlijst"
 
 msgid "Delete Bouquet"
-msgstr ""
+msgstr "Verwijder favorietenlijst"
 
 msgid "Add Marker"
-msgstr ""
+msgstr "Voeg marker toe"
 
 msgid "Rename"
-msgstr ""
+msgstr "Hernoem"
 
 msgid "Delete Channel(s)"
-msgstr ""
+msgstr "Verwijder kanaal"
 
 msgid "Do you really want to delete the channel(s)"
-msgstr ""
+msgstr "Wit u dit kanaal/deze kanalen echt verwijderen?"
 
 msgid "Do you really want to delete the bouquet"
-msgstr ""
+msgstr "Wilt u de lijst echt verwijderen?"
 
 msgid "Name of the Bouquet"
-msgstr ""
+msgstr "Naam van het bouquet"
 
 msgid "Name of the Marker"
-msgstr ""
+msgstr "Naam van de marker"
 
 msgid "Enter new name for the bouquet"
-msgstr ""
+msgstr "Geef de neiuwe naam van de lijst"
 
 msgid "Enter new name for the marker"
-msgstr ""
+msgstr "Geef de nieuwe naam van de marker"
 
 msgid "Please enter filename"
-msgstr ""
+msgstr "Geef bestandsnaam in"
 
 msgid "Do you really want to restore from file"
-msgstr ""
+msgstr "Wilt u echt herstellen vanaf bestand"
 
 msgid "OpenWebif url: http://yourip:port"
 msgstr "Openwebif url: http://uwIP:poort"
@@ -1099,13 +1098,13 @@ msgid "HTTPS port"
 msgstr "HTTPS poort"
 
 msgid "Require client cert for HTTPS"
-msgstr ""
+msgstr "Vereist client certificate voor HTTPS"
 
 msgid "Enable Authentication for streaming"
-msgstr ""
+msgstr "Schakel authenticatie voor streaming in"
 
 msgid "Disable access for user root"
-msgstr ""
+msgstr "Schakel toegang foor root-user uit"
 
 msgid "Smart services renaming for XBMC"
 msgstr "Zenders slim anders benoemen voor XBMC"
@@ -1117,10 +1116,10 @@ msgid "Add service name to stream information"
 msgstr "Voeg zendernaam toe aan streaminformatie"
 
 msgid "Character encoding for EPG data"
-msgstr ""
+msgstr "Karaktercodering voor EPG-data"
 
 msgid "OpenWebif Configuration"
 msgstr "Openwebif configuratie"
 
 msgid "transcoded"
-msgstr ""
+msgstr "Getranscodeerd"
