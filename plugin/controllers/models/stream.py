@@ -50,6 +50,7 @@ def getStream(session, request, m3ufile):
 	info = getInfo()
 	model = info["model"]
 	transcoder_port = None
+	args = ""
 	if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus"):
 		try:
 			transcoder_port = int(config.plugins.transcodingsetup.port.value)
@@ -73,10 +74,6 @@ def getStream(session, request, m3ufile):
 				aspectratio = config.plugins.transcodingsetup.aspectratio.value
 				interlaced = config.plugins.transcodingsetup.interlaced.value
 				args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
-			else:
-				args = ""
-	else: # All other boxes which use transtreamproxy
-		args = ""
 
 	# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
 	if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != transcoder_port:
