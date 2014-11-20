@@ -111,6 +111,11 @@ def remoteControl(key, type = "", rcu = ""):
 			remotetype = "dreambox advanced remote control (native)"
 		else:
 			remotetype = "dreambox remote control (native)"
+		try:
+			if config.plugins.remotecontroltype.rctype.value in (14, 18): # XP1000, Formuler F1/F3
+				remotetype = "dreambox advanced remote control (native)"
+		except:
+			print "[OpenWebIf] missing config.plugins.remotecontroltype.rctype"
 
 	amap = eActionMap.getInstance()
 	if type == "long":
