@@ -118,8 +118,8 @@ body {
 
 @media screen and (max-width: 1533px) {
    #statusheader {
-	margin-top: 0px;
-	margin-bottom: 0px;
+	margin-top: 2px;
+	margin-bottom: 2px;
    }
  }
 
