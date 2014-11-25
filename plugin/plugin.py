@@ -24,6 +24,7 @@ from Components.Label import Label
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection
 from boxbranding import getImageDistro
+from enigma import getDesktop
 
 from httpserver import HttpdStart, HttpdStop, HttpdRestart
 
@@ -175,7 +176,8 @@ def startSession(reason, session):
 	global_session = session
 
 def Plugins(**kwargs):
-	if getImageDistro() == "openvixhd":
+	screenwidth = getDesktop(0).size().width()
+	if screenwidth and screenwidth == 1920:
 		return [PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startSession),
 				PluginDescriptor(where=[PluginDescriptor.WHERE_NETWORKCONFIG_READ], fnc=IfUpIfDown),
 				PluginDescriptor(name="OpenWebif", description=_("OpenWebif Configuration"), icon="openwebifhd.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=confplug)]
