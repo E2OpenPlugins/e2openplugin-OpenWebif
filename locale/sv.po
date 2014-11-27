@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2014-11-01 19:04+0100\n"
-"PO-Revision-Date: 2014-11-02 01:22+0100\n"
+"PO-Revision-Date: 2014-11-22 23:43+0100\n"
 "Last-Translator: Svevrstt <svevrstt@gmail.com>\n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -210,7 +210,7 @@ msgid "AGC"
 msgstr "AGC"
 
 msgid "All"
-msgstr "allt"
+msgstr "Allt"
 
 msgid "All Channels"
 msgstr "Alla kanaler"
@@ -566,8 +566,9 @@ msgstr "Väntar på svar..."
 msgid "Send a Message"
 msgstr "Skicka ett meddelande"
 
+# Översätts ofta Leverantör
 msgid "Service"
-msgstr "Leverantör"
+msgstr "Distributör"
 
 msgid "Bouquet Editor"
 msgstr "Redigerare för favoritlistor"
@@ -795,7 +796,7 @@ msgid "description match"
 msgstr "beskrivningen matchar"
 
 msgid "start match"
-msgstr "påbörja matchning"
+msgstr "titelns inledning matchar"
 
 msgid "Search strictness"
 msgstr "Söknoggrannhet"
@@ -815,8 +816,9 @@ msgstr "spela in"
 msgid "zap"
 msgstr "zappa"
 
+# One extra space inserted in front for better readability in context.
 msgid "Override found with alternative service"
-msgstr "Ersätt påträffade med alternativ leverantör"
+msgstr " Använd vid behov samma kanal från en alternativ distributör"
 
 msgid "Only match during timespan"
 msgstr "Enbart matchning under tidsintervallet "
@@ -903,13 +905,13 @@ msgid "No"
 msgstr "Nej"
 
 msgid "On same service"
-msgstr "Hos samma leverantör"
+msgstr "Hos samma distributör"
 
 msgid "On any service"
-msgstr "Hos valfri leverantör"
+msgstr "Hos valfri distributör"
 
 msgid "Any service/recording"
-msgstr "Valfri leverantör/inspelning"
+msgstr "Valfri distributör/inspelning"
 
 msgid "Use a custom location"
 msgstr "Använd en anpassad lagringsplats"
@@ -971,6 +973,74 @@ msgstr "Analysera"
 msgid "Simulate"
 msgstr "Simulera"
 
+# New Autotimer Setting Windows name (not enabled to transfer atm)
+msgid "AutoTimer Settings"
+msgstr "Inställningar för AutoTimer"
+
+# Test new
+msgid "AutoPoll"
+msgstr "Automatiskt uppföljning"
+
+# Test new
+msgid "Interval (in h)"
+msgstr "Intervall (i tim)"
+
+# Test new
+msgid "Max Days"
+msgstr "Max dagar framåt"
+
+# Test new
+msgid "Try Guessing"
+msgstr "Försök att gissa"
+
+# Test new
+msgid "Fastscan"
+msgstr "Snabb avsökning"
+
+# Test new
+msgid "Show in Extensionsmenu"
+msgstr "Visa i utvidgningsmenyn"
+
+# Test new
+msgid "Disabled on Conflict"
+msgstr "Avaktiverad vid konflikt"
+
+# Test new
+msgid "Add Similar on Conflict"
+msgstr "Lägg till liknande vid konflikt"
+
+# Test new
+msgid "Notify if Conflict"
+msgstr "Meddela vid konflikt"
+
+# Test new
+msgid "Notify if Similar"
+msgstr "Meddela om liknande finns"
+
+# Test new
+msgid "Add Autotimer to Tags"
+msgstr "Lägg till \"Autotimer\" som etikett"
+
+# Test new
+msgid "Add Name to Tags"
+msgstr "Lägg till AutoTimers beskrivning som etikett"
+
+# Test new
+msgid "None"
+msgstr "Inga"
+
+# Test new
+msgid "Editor"
+msgstr "Redigerare"
+
+# Test new
+msgid "Plain"
+msgstr "Normalt formulär"
+
+# Test new
+msgid "Wizzard"
+msgstr "Använd guide"
+
 msgid "Do you really want to delete the AT"
 msgstr "Vill du verkligen ta bort denna AutoTimer"
 
@@ -999,7 +1069,7 @@ msgid "Wakeup"
 msgstr "Vakna från djupt viloläge för EPG-uppdateringar"
 
 msgid "Inherit Autotimer"
-msgstr "Överför leverantörer från Autotimer"
+msgstr "Överför distributörer från Autotimer"
 
 msgid "Parse Autotimer"
 msgstr "Starta en Autotimeranalys efter EPG uppdateringar"
@@ -1125,7 +1195,7 @@ msgid "Enable Parental Control"
 msgstr "Aktivera föräldrakontroll"
 
 msgid "Add service name to stream information"
-msgstr "Lägg till leverantörens namn till strömningsinformationen"
+msgstr "Lägg till distributörens namn till strömningsinformationen"
 
 msgid "Character encoding for EPG data"
 msgstr "Teckenkodning av EPG-data"
@@ -1134,7 +1204,7 @@ msgid "OpenWebif Configuration"
 msgstr "Inställningar för OpenWebif"
 
 msgid "transcoded"
-msgstr ""
+msgstr "omkodad"
 
 #~ msgid "Timer List"
 #~ msgstr "Timerlista"
