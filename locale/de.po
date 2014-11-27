@@ -960,6 +960,58 @@ msgstr "Parsen"
 msgid "Simulate"
 msgstr "Simulieren"
 
+# New Autotimer Setting Windows name (not enabled to transfer atm)
+msgid "AutoTimer Settings"
+msgstr "Autotimer-Einstellungen"
+
+msgid "AutoPoll"
+msgstr "AutoPoll"
+
+msgid "Interval (in h)"
+msgstr "Intervall (in Stunden)"
+
+msgid "Max Days"
+msgstr "Maximale Anzahl Tage"
+
+msgid "Try Guessing"
+msgstr "Versuche zu raten"
+
+msgid "Fastscan"
+msgstr "Fastscan"
+
+msgid "Show in Extensionsmenu"
+msgstr "Im Erweiterungsmenü anzeigen"
+
+msgid "Disabled on Conflict"
+msgstr "Deaktiveren bei Konflikt"
+
+msgid "Add Similar on Conflict"
+msgstr "Bei Konflikt ähnliche Sendungen zufügen"
+
+msgid "Notify if Conflict"
+msgstr "Bei Konflikt benachrichtigen"
+
+msgid "Notify if Similar"
+msgstr "Bei ähnlicher Sendung benachrichtigen"
+
+msgid "Add Autotimer to Tags"
+msgstr "\"Autotimer\" als Markierung zufügen"
+
+msgid "Add Name to Tags"
+msgstr "Name als Markierung zufügen"
+
+msgid "None"
+msgstr "Nichts"
+
+msgid "Editor"
+msgstr "Editor"
+
+msgid "Plain"
+msgstr "Einfach"
+
+msgid "Wizzard"
+msgstr "Assistent"
+
 msgid "Do you really want to delete the AT"
 msgstr "Wollen Sie folgenden AutoTimer wirklich löschen"
 
