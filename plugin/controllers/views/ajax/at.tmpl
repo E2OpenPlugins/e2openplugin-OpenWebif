@@ -235,7 +235,7 @@ fieldset > label
 						<button id="atbutton4">$tstrings['at_parse']</button>
 						<button id="atbutton5">$tstrings['at_simulate']</button>
 						<button id="atbutton6">$tstrings['at_timers']</button>
-						<button id="atbutton7">Settings</button>
+						<button id="atbutton7">$tstrings['at_settings']</button>
 						</div></div>
 						<div id="errorbox" class="timerlist_row" style="color: red;">
 		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
@@ -272,42 +272,42 @@ fieldset > label
 <div id="atsettingdlgcont">
 <form>
 <fieldset>
-<label for="ats_autopoll">AutoPoll:</label>
+<label for="ats_autopoll">$tstrings['ats_autopoll']:</label>
 <input type="checkbox" name="ats_autopoll" id="ats_autopoll" value="" class="checkbox ui-widget-content ui-corner-all">
-<label for="ats_interval">Interval:</label>
+<label for="ats_interval">$tstrings['ats_interval']:</label>
 <input type="text" size="5" name="ats_interval" id="ats_interval" class="text ui-widget-content ui-corner-all">
-<label for="ats_maxdaysinfuture">Max Days:</label>
+<label for="ats_maxdaysinfuture">$tstrings['ats_maxdaysinfuture']:</label>
 <input type="text" size="5" name="ats_maxdaysinfuture" id="ats_maxdaysinfuture" class="text ui-widget-content ui-corner-all">
-<br><label for="ats_try_guessing">Try Guessing:</label>
+<br><label for="ats_try_guessing">$tstrings['ats_try_guessing']:</label>
 <input type="checkbox" name="ats_try_guessing" id="ats_try_guessing" value="" class="checkbox ui-widget-content ui-corner-all">
-<label for="ats_fastscan">Fastscan:</label>
+<label for="ats_fastscan">$tstrings['ats_fastscan']:</label>
 <input type="checkbox" name="ats_fastscan" id="ats_fastscan" value="" class="checkbox ui-widget-content ui-corner-all">
-<label for="ats_show_in_extensionsmenu">Show in Extensionmenu:</label>
+<label for="ats_show_in_extensionsmenu">$tstrings['ats_show_in_extensionsmenu']:</label>
 <input type="checkbox" name="ats_show_in_extensionsmenu" id="ats_show_in_extensionsmenu" value="" class="checkbox ui-widget-content ui-corner-all">
-<br><label for="ats_disabled_on_conflict">Disabled on Conflict:</label>
+<br><label for="ats_disabled_on_conflict">$tstrings['ats_disabled_on_conflict']:</label>
 <input type="checkbox" name="ats_disabled_on_conflict" id="ats_disabled_on_conflict" value="" class="checkbox ui-widget-content ui-corner-all">
-<label for="ats_addsimilar_on_conflict">Add Similar on Conflict:</label>
+<label for="ats_addsimilar_on_conflict">$tstrings['ats_addsimilar_on_conflict']:</label>
 <input type="checkbox" name="ats_addsimilar_on_conflict" id="ats_addsimilar_on_conflict" value="" class="checkbox ui-widget-content ui-corner-all">
-<br><label for="ats_notifconflict">Notify if Conflict:</label>
+<br><label for="ats_notifconflict">$tstrings['ats_notifconflict']:</label>
 <input type="checkbox" name="ats_notifconflict" id="ats_notifconflict" value="" class="checkbox ui-widget-content ui-corner-all">
-<label for="ats_notifsimilar">Notify if Similar:</label>
+<label for="ats_notifsimilar">$tstrings['ats_notifsimilar']:</label>
 <input type="checkbox" name="ats_notifsimilar" id="ats_notifsimilar" value="" class="checkbox ui-widget-content ui-corner-all">
-<br><label for="ats_add_autotimer_to_tags">Add Autotimer to Tags:</label>
+<br><label for="ats_add_autotimer_to_tags">$tstrings['ats_add_autotimer_to_tags']:</label>
 <input type="checkbox" name="ats_add_autotimer_to_tags" id="ats_add_autotimer_to_tags" value="" class="checkbox ui-widget-content ui-corner-all">
-<label for="ats_add_name_to_tags">Add Name to Tags:</label>
+<label for="ats_add_name_to_tags">$tstrings['ats_add_name_to_tags']:</label>
 <input type="checkbox" name="ats_add_name_to_tags" id="ats_add_name_to_tags" value="" class="checkbox ui-widget-content ui-corner-all">
 
-<br><label for="ats_refresh">Refresh:</label>
+<br><label for="ats_refresh">$tstrings['ats_refresh']:</label>
 <select id="ats_refresh" name="ats_refresh" size="1">
-<option value="none" selected>None</option>
-<option value="auto" selected>Auto</option>
-<option value="all" selected>All</option>
+				<option value="none" selected="selected">$tstrings['ats_refresh_none']</option>
+				<option value="auto" selected="selected">$tstrings['ats_refresh_auto']</option>
+				<option value="all" selected="selected">$tstrings['ats_refresh_all']</option>
 </select>
 
-<label for="ats_editor">Editor:</label>
+<label for="ats_editor">$tstrings['ats_editor']</label>
 <select id="ats_editor" name="ats_editor" size="1">
-<option value="plain" selected>Plain</option>
-<option value="wizzard" selected>Wizzard</option>
+			<option value="plain" selected="selected">$tstrings['ats_editor_plain']</option>
+			<option value="wizzard" selected="selected">$tstrings['ats_editor_wizzard']</option>
 </select>
 
 </fieldset>
