@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2014-11-01 19:04+0100\n"
-"PO-Revision-Date: 2014-11-22 23:43+0100\n"
+"PO-Revision-Date: 2014-11-28 02:08+0100\n"
 "Last-Translator: Svevrstt <svevrstt@gmail.com>\n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -973,71 +973,55 @@ msgstr "Analysera"
 msgid "Simulate"
 msgstr "Simulera"
 
-# New Autotimer Setting Windows name (not enabled to transfer atm)
+# New Autotimer Setting Window name (not enabled to transfer atm)
 msgid "AutoTimer Settings"
 msgstr "Inställningar för AutoTimer"
 
-# Test new
 msgid "AutoPoll"
 msgstr "Automatiskt uppföljning"
 
-# Test new
 msgid "Interval (in h)"
 msgstr "Intervall (i tim)"
 
-# Test new
 msgid "Max Days"
 msgstr "Max dagar framåt"
 
-# Test new
 msgid "Try Guessing"
 msgstr "Försök att gissa"
 
-# Test new
 msgid "Fastscan"
 msgstr "Snabb avsökning"
 
-# Test new
 msgid "Show in Extensionsmenu"
 msgstr "Visa i utvidgningsmenyn"
 
-# Test new
 msgid "Disabled on Conflict"
 msgstr "Avaktiverad vid konflikt"
 
-# Test new
 msgid "Add Similar on Conflict"
 msgstr "Lägg till liknande vid konflikt"
 
-# Test new
 msgid "Notify if Conflict"
 msgstr "Meddela vid konflikt"
 
-# Test new
 msgid "Notify if Similar"
 msgstr "Meddela om liknande finns"
 
-# Test new
 msgid "Add Autotimer to Tags"
 msgstr "Lägg till \"Autotimer\" som etikett"
 
-# Test new
 msgid "Add Name to Tags"
 msgstr "Lägg till AutoTimers beskrivning som etikett"
 
-# Test new
 msgid "None"
 msgstr "Inga"
 
-# Test new
 msgid "Editor"
 msgstr "Redigerare"
 
-# Test new
 msgid "Plain"
 msgstr "Normalt formulär"
 
-# Test new
 msgid "Wizzard"
 msgstr "Använd guide"
 
