@@ -968,10 +968,10 @@ msgid "AutoPoll"
 msgstr "AutoPoll"
 
 msgid "Interval (in h)"
-msgstr "Intervall (in Stunden)"
+msgstr "Intervall (in Std.)"
 
 msgid "Max Days"
-msgstr "Maximale Anzahl Tage"
+msgstr "Max. Anzahl Tage"
 
 msgid "Try Guessing"
 msgstr "Versuche zu raten"
