@@ -91,6 +91,12 @@ class AjaxController(BaseController):
 			model = "xp1000"
 		elif model.startswith("vu"):
 			model = model.replace("vu", "")
+		elif model in ("bska", "bxzb"):
+			model = "nbox_white"
+		elif model in ("bsla", "bzzb"):
+			model = "nbox"
+		elif model == "sagemcom88":
+			model = "esi88"
 		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
 			info["boximage"] = model + ".jpg"
 		else:
