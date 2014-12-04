@@ -165,7 +165,10 @@ def getInfo():
 				chipset = "SIGMA 8634"
 		elif model.startswith("spark"):
 			brand = "Fulan"
-			chipset = "SH4 @450MHz"
+			if model == "spark7162":
+				chipset = "SH4 @540MHz"
+			else:
+				chipset = "SH4 @450MHz"
 	elif fileExists("/proc/stb/info/boxtype"):
 		brand = "Xtrend"
 		f = open("/proc/stb/info/boxtype",'r')
@@ -233,17 +236,22 @@ def getInfo():
 		f = open("/proc/stb/info/model",'r')
 		model = f.readline().strip().lower()
 		f.close()
+		if model in ("esi88", "sagemcom88", "nbox"):
+			if fileExists("/proc/boxtype"):
+				f = open("/proc/boxtype",'r')
+				model = f.readline().strip().lower()
+				f.close()
 		if model == "tf7700hdpvr":
 			brand = "Topfield"
 			chipset = "SH4 @266MHz"
-		elif model == "nbox":
+		elif model in ("nbox", "bska", "bsla", "bxzb", "bzzb"):
 			brand = "Advanced Digital Broadcast"
 			chipset = "SH4 @266MHz"
 		elif model in ("adb2850", "adb2849"):
 			brand = "Advanced Digital Broadcast"
 			chipset = "SH4 @450MHz"
-		elif model in ("esi88", "uhd88", "dsi87"):
-			brand = "SagemCom"
+		elif model in ("sagemcom88", "esi88", "uhd88", "dsi87"):
+			brand = "Sagemcom"
 			chipset = "SH4 @450MHz"
 
 	info['brand'] = brand

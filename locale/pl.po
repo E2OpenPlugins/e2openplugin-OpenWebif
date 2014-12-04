@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-11-01 19:04+0100\n"
+"POT-Creation-Date: 2014-12-02 11:00+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: mickey <mickeyreg@gmail.com>\n"
 "Language-Team: none\n"
@@ -17,22 +17,22 @@ msgid "LCD4Linux Setup"
 msgstr "Ustawienia LCD4Linux"
 
 msgid "AutoTimer"
-msgstr ""
+msgstr "AutoTimer"
 
 msgid "BouquetEditor"
 msgstr "Edytor bukietów"
 
 msgid "EPGRefresh"
-msgstr ""
+msgstr "EPGRefresh"
 
 msgid "IPv4-only kernel"
-msgstr "kernel IPv4-only"
+msgstr "kernel tylko IPv4"
 
 msgid "IPv4-only Python/Twisted"
-msgstr "Python/Twisted dla IPv4-only"
+msgstr "Python/Twisted tylko dla IPv4"
 
 msgid "none/IPv4-only network"
-msgstr "brak lub sieć IPv4-only"
+msgstr "brak lub sieć tylko IPv4"
 
 msgid "Message sent successfully!"
 msgstr "Wiadomość wysłana pomyślnie!"
@@ -784,7 +784,7 @@ msgid "description match"
 msgstr "zgodność opisu"
 
 msgid "start match"
-msgstr ""
+msgstr "zgodność początku"
 
 msgid "Search strictness"
 msgstr "Dokładność szukania"
@@ -960,68 +960,120 @@ msgstr "Przetwarzaj"
 msgid "Simulate"
 msgstr "Symuluj"
 
+# New Autotimer Setting Windows name (not enabled to transfer atm)
+msgid "AutoTimer Settings"
+msgstr "Ustawienia AutoTimer"
+
+msgid "AutoPoll"
+msgstr "AutoPoll"
+
+msgid "Interval (in h)"
+msgstr "Przerwa (w godz.)"
+
+msgid "Max Days"
+msgstr "Max dni"
+
+msgid "Try Guessing"
+msgstr "Próbuj zgadywania"
+
+msgid "Fastscan"
+msgstr "Szybkie skanowanie"
+
+msgid "Show in Extensionsmenu"
+msgstr "Pokaż w menu rozszerzeń"
+
+msgid "Disabled on Conflict"
+msgstr "Wyłącz w przypadku konfliktu"
+
+msgid "Add Similar on Conflict"
+msgstr "Dodaj podobne w przypadku konfliktu"
+
+msgid "Notify if Conflict"
+msgstr "Powiadom w przypadku konfliktu"
+
+msgid "Notify if Similar"
+msgstr "Powiadom gdy podobne"
+
+msgid "Add Autotimer to Tags"
+msgstr "Dodaj zadanie AutoTimer do tagów"
+
+msgid "Add Name to Tags"
+msgstr "Dodaj nazwę do tagów"
+
+msgid "None"
+msgstr "Żaden"
+
+msgid "Editor"
+msgstr "Edytor"
+
+msgid "Plain"
+msgstr "Prosty"
+
+msgid "Wizzard"
+msgstr "Kreator"
+
 msgid "Do you really want to delete the AT"
 msgstr "Czy na pewno chcesz usunąć zadanie"
 
 msgid "Label series"
-msgstr ""
+msgstr "Seria nazw"
 
 msgid "Enable Messages"
-msgstr ""
+msgstr "Włącz wiadmości"
 
 msgid "Delay Standby"
-msgstr ""
+msgstr "Opóźnienie czuwania"
 
 msgid "Interval (min.)"
-msgstr ""
+msgstr "Przetwa (min.)"
 
 msgid "Interval (sec.)"
-msgstr ""
+msgstr "Przerwa (sek.)"
 
 msgid "Afterevent"
-msgstr ""
+msgstr "Po zdarzeniu"
 
 msgid "Force"
-msgstr ""
+msgstr "Wymuś"
 
 msgid "Wakeup"
-msgstr ""
+msgstr "Obudź"
 
 msgid "Inherit Autotimer"
-msgstr ""
+msgstr "Dziedzić zadanie AutoTimer"
 
 msgid "Parse Autotimer"
-msgstr ""
+msgstr "Analizuje zadanie AutoTimer"
 
 msgid "Always"
-msgstr ""
+msgstr "Zawsze"
 
 msgid "Background only"
-msgstr ""
+msgstr "Tylko tło"
 
 msgid "Ask, default Yes"
-msgstr ""
+msgstr "Pytaj, domyślnie Tak"
 
 msgid "Ask, default No"
-msgstr ""
+msgstr "Pytaj, domyślnie Nie"
 
 msgid "Method"
-msgstr ""
+msgstr "Metoda"
 
 msgid "Visibly"
-msgstr ""
+msgstr "Widoczność"
 
 msgid "Picture in Picture"
-msgstr ""
+msgstr "Obraz w obrazie"
 
 msgid "Picture in Picture (hidden)"
-msgstr ""
+msgstr "Obraz w obrazie (ukryty)"
 
 msgid "Fake Recording"
-msgstr ""
+msgstr "Udawane nagranie"
 
 msgid "Refresh now"
-msgstr ""
+msgstr "Odśwież teraz"
 
 msgid "Add Provider as new Bouquet"
 msgstr "Dodaj nadawcę jako bukiet"
@@ -1117,13 +1169,10 @@ msgid "Add service name to stream information"
 msgstr "Dodaj nazwę kanału do info strumienia"
 
 msgid "Character encoding for EPG data"
-msgstr ""
+msgstr "Kodowanie znaków dla danych EPG"
 
 msgid "OpenWebif Configuration"
 msgstr "Konfiguracja OpenWebif"
 
 msgid "transcoded"
-msgstr ""
-
-#~ msgid "Timer List"
-#~ msgstr "Lista zadań planowych"
+msgstr "transkodowane"

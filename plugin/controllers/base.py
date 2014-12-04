@@ -246,7 +246,7 @@ class BaseController(resource.Resource):
 			ret["remote"] = "xp1000"
 		elif ret["box"].startswith("xpeedlx"):
 			ret["remote"] = "xpeedlx"
-		elif ret["box"] in ("nbox", "esi88", "adb2850", "adb2849", "dsi87"):
+		elif ret["box"] in ("nbox", "sagemcom88", "esi88", "adb2850", "adb2849", "dsi87"):
 			ret["remote"] = "nbox"
 		elif ret["box"] == "hd2400":
 			ret["remote"] = "hd2400"
