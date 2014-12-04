@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-09-09 12:00+0100\n"
+"POT-Creation-Date: 2014-12-02 11:00+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: mickey <mickeyreg@gmail.com>\n"
 "Language-Team: none\n"
@@ -10,62 +10,82 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Cancel"
-msgstr "Anuluj"
+msgid "Settings"
+msgstr "Ustawienia"
 
-msgid "Save"
-msgstr "Zapisz"
+msgid "LCD4Linux Setup"
+msgstr "Ustawienia LCD4Linux"
 
-msgid "OpenWebif url: http://yourip:port"
-msgstr "Adres OpenWebif:  http://ip_tunera:port"
+msgid "AutoTimer"
+msgstr "AutoTimer"
 
-msgid "OpenWebInterface Enabled"
-msgstr "Interfejs OpenWebif włączony"
+msgid "BouquetEditor"
+msgstr "Edytor bukietów"
 
-msgid "Show box name in header"
-msgstr "Pokaż nazwę odbiornika w nagłówku"
+msgid "EPGRefresh"
+msgstr "EPGRefresh"
 
-msgid "Use custom box name"
-msgstr "Użyj własnej nazwy odbiornika"
+msgid "IPv4-only kernel"
+msgstr "kernel tylko IPv4"
 
-msgid "Custom box name"
-msgstr "Własna nazwa odbiornika"
+msgid "IPv4-only Python/Twisted"
+msgstr "Python/Twisted tylko dla IPv4"
 
-msgid "HTTP port"
-msgstr "Port HTTP"
+msgid "none/IPv4-only network"
+msgstr "brak lub sieć tylko IPv4"
 
-msgid "Enable HTTP Authentication"
-msgstr "Włącz uwierzytelnianie HTTP"
+msgid "Message sent successfully!"
+msgstr "Wiadomość wysłana pomyślnie!"
 
-msgid "Enable HTTPS"
-msgstr "Włącz dostęp przez HTTPS"
+msgid "No answer in time"
+msgstr "Brak odpowiedzi w czasie"
 
-msgid "HTTPS port"
-msgstr "Port HTTPS"
+msgid "Answer is YES!"
+msgstr "Odpowiedź: TAK!"
 
-msgid "Require client cert for HTTPS"
-msgstr "Wymagaj certyfikatu klienta dla HTTPS"
+msgid "Answer is NO!"
+msgstr "Odpowiedź: NIE!"
 
-msgid "Enable Authentication for streaming"
-msgstr "Włącz uwierzytelnianie dla strumieniowania"
+msgid "New"
+msgstr "Nowy"
 
-msgid "Disable access for user root"
-msgstr "Zablokuj dostęp dla użytkownika root"
+msgid "Services"
+msgstr "Kanały"
 
-msgid "Smart services renaming for XBMC"
-msgstr "Zmiana nazw kanałów dla XBMC"
+msgid "Cable"
+msgstr "Kablowy"
 
-msgid "Enable Parental Control"
-msgstr "Włącz kontrolę rodzicielską"
+msgid "Terrestrial"
+msgstr "Naziemna"
 
-msgid "Add service name to stream information"
-msgstr "Dodaj nazwę kanału do info strumienia"
+msgid "W"
+msgstr "W"
 
-msgid "OpenWebif Configuration"
-msgstr "Konfiguracja OpenWebif"
+msgid "E"
+msgstr "E"
 
-msgid "transcoded"
-msgstr "" 
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr "Brak wymaganego parametru '%s'"
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr "Parametr '%s' nie może być pusty"
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr "Zły format parametru 'set=%s'. Użyj set=set15"
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr "Nieznana komenda głośności %s"
+
+msgid "The parameter 'command' must be a number"
+msgstr "Parametr 'command' musi być liczbą"
+
+#, python-format
+msgid "type %s is not a number"
+msgstr "%s nie jest liczbą"
 
 msgid "Mo"
 msgstr "Pn"
@@ -169,12 +189,6 @@ msgstr "Grudzień"
 msgid "About"
 msgstr "O OpenWebif"
 
-msgid "Timer List"
-msgstr "Lista zadań planowych"
-
-msgid "New Name"
-msgstr "Nowa nazwa"
-
 msgid "Add Timer"
 msgstr "Dodaj zadanie planowe"
 
@@ -228,6 +242,9 @@ msgstr "Czas pracy odbiornika"
 
 msgid "Brand"
 msgstr "Marka"
+
+msgid "Cancel"
+msgstr "Anuluj"
 
 msgid "Capacity"
 msgstr "Pojemność"
@@ -370,15 +387,6 @@ msgstr "Godzina"
 msgid "IP address"
 msgstr "Adres IP"
 
-msgid "IPv4-only kernel"
-msgstr "kernel IPv4-only"
-
-msgid "none/IPv4-only network"
-msgstr "brak lub sieć IPv4-only"
-
-msgid "IPv4-only Python/Twisted"
-msgstr "Python/Twisted dla IPv4-only"
-
 msgid "IPv6 address(es)"
 msgstr "Adres(y) IPv6"
 
@@ -460,6 +468,15 @@ msgstr "Włącz"
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Otwarty interfejs dla odbiorników z systemem Linux"
 
+msgid "Show box name in header"
+msgstr "Pokaż nazwę odbiornika w nagłówku"
+
+msgid "Use custom box name"
+msgstr "Użyj własnej nazwy odbiornika"
+
+msgid "Custom box name"
+msgstr "Własna nazwa odbiornika"
+
 msgid "OSD"
 msgstr "OSD"
 
@@ -517,6 +534,9 @@ msgstr "Satelity"
 msgid "Satfinder"
 msgstr "Miernik sygnału SAT"
 
+msgid "Save"
+msgstr "Zapisz"
+
 msgid "Screenshot"
 msgstr "Zrzut ekranu"
 
@@ -532,19 +552,16 @@ msgstr "sekund"
 msgid "Send Message"
 msgstr "Wyślij wiadomość"
 
+msgid "Waiting for answer ..."
+msgstr "Oczekiwanie na odpowiedź ..."
+
 msgid "Send a Message"
 msgstr "Wyślij wiadomość"
 
 msgid "Service"
 msgstr "Kanał"
 
-msgid "Settings"
-msgstr "Ustawienia"
-
 msgid "Bouquet Editor"
-msgstr "Edytor bukietów"
-
-msgid "BouquetEditor"
 msgstr "Edytor bukietów"
 
 msgid "(shift + click for long pressure)"
@@ -618,6 +635,9 @@ msgstr "Dodano zadanie planowe"
 
 msgid "Timerlist"
 msgstr "Lista zadań planowych"
+
+msgid "New Name"
+msgstr "Nowa nazwa"
 
 msgid "Autotimer Preview"
 msgstr "Podgląd zadania AutoTimer"
@@ -762,6 +782,9 @@ msgstr "dokładna zgodność"
 
 msgid "description match"
 msgstr "zgodność opisu"
+
+msgid "start match"
+msgstr "zgodność początku"
 
 msgid "Search strictness"
 msgstr "Dokładność szukania"
@@ -937,8 +960,120 @@ msgstr "Przetwarzaj"
 msgid "Simulate"
 msgstr "Symuluj"
 
+# New Autotimer Setting Windows name (not enabled to transfer atm)
+msgid "AutoTimer Settings"
+msgstr "Ustawienia AutoTimer"
+
+msgid "AutoPoll"
+msgstr "AutoPoll"
+
+msgid "Interval (in h)"
+msgstr "Przerwa (w godz.)"
+
+msgid "Max Days"
+msgstr "Max dni"
+
+msgid "Try Guessing"
+msgstr "Próbuj zgadywania"
+
+msgid "Fastscan"
+msgstr "Szybkie skanowanie"
+
+msgid "Show in Extensionsmenu"
+msgstr "Pokaż w menu rozszerzeń"
+
+msgid "Disabled on Conflict"
+msgstr "Wyłącz w przypadku konfliktu"
+
+msgid "Add Similar on Conflict"
+msgstr "Dodaj podobne w przypadku konfliktu"
+
+msgid "Notify if Conflict"
+msgstr "Powiadom w przypadku konfliktu"
+
+msgid "Notify if Similar"
+msgstr "Powiadom gdy podobne"
+
+msgid "Add Autotimer to Tags"
+msgstr "Dodaj zadanie AutoTimer do tagów"
+
+msgid "Add Name to Tags"
+msgstr "Dodaj nazwę do tagów"
+
+msgid "None"
+msgstr "Żaden"
+
+msgid "Editor"
+msgstr "Edytor"
+
+msgid "Plain"
+msgstr "Prosty"
+
+msgid "Wizzard"
+msgstr "Kreator"
+
 msgid "Do you really want to delete the AT"
 msgstr "Czy na pewno chcesz usunąć zadanie"
+
+msgid "Label series"
+msgstr "Seria nazw"
+
+msgid "Enable Messages"
+msgstr "Włącz wiadmości"
+
+msgid "Delay Standby"
+msgstr "Opóźnienie czuwania"
+
+msgid "Interval (min.)"
+msgstr "Przetwa (min.)"
+
+msgid "Interval (sec.)"
+msgstr "Przerwa (sek.)"
+
+msgid "Afterevent"
+msgstr "Po zdarzeniu"
+
+msgid "Force"
+msgstr "Wymuś"
+
+msgid "Wakeup"
+msgstr "Obudź"
+
+msgid "Inherit Autotimer"
+msgstr "Dziedzić zadanie AutoTimer"
+
+msgid "Parse Autotimer"
+msgstr "Analizuje zadanie AutoTimer"
+
+msgid "Always"
+msgstr "Zawsze"
+
+msgid "Background only"
+msgstr "Tylko tło"
+
+msgid "Ask, default Yes"
+msgstr "Pytaj, domyślnie Tak"
+
+msgid "Ask, default No"
+msgstr "Pytaj, domyślnie Nie"
+
+msgid "Method"
+msgstr "Metoda"
+
+msgid "Visibly"
+msgstr "Widoczność"
+
+msgid "Picture in Picture"
+msgstr "Obraz w obrazie"
+
+msgid "Picture in Picture (hidden)"
+msgstr "Obraz w obrazie (ukryty)"
+
+msgid "Fake Recording"
+msgstr "Udawane nagranie"
+
+msgid "Refresh now"
+msgstr "Odśwież teraz"
 
 msgid "Add Provider as new Bouquet"
 msgstr "Dodaj nadawcę jako bukiet"
@@ -997,61 +1132,47 @@ msgstr "Podaj nazwę pliku"
 msgid "Do you really want to restore from file"
 msgstr "Czy na pewno chcesz przywrócić z pliku"
 
-msgid "LCD4Linux Setup"
-msgstr "Ustawienia LCD4Linux"
+msgid "OpenWebif url: http://yourip:port"
+msgstr "Adres OpenWebif:  http://ip_tunera:port"
 
-#, python-format
-msgid "Missing mandatory parameter '%s'"
-msgstr "Brak wymaganego parametru '%s'"
+msgid "OpenWebInterface Enabled"
+msgstr "Interfejs OpenWebif włączony"
 
-#, python-format
-msgid "The parameter '%s' can't be empty"
-msgstr "Parametr '%s' nie może być pusty"
+msgid "HTTP port"
+msgstr "Port HTTP"
 
-#, python-format
-msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr "Zły format parametru 'set=%s'. Użyj set=set15"
+msgid "Enable HTTP Authentication"
+msgstr "Włącz uwierzytelnianie HTTP"
 
-#, python-format
-msgid "Unknown Volume command %s"
-msgstr "Nieznana komenda głośności %s"
+msgid "Enable HTTPS"
+msgstr "Włącz dostęp przez HTTPS"
 
-msgid "The parameter 'command' must be a number"
-msgstr "Parametr 'command' musi być liczbą"
+msgid "HTTPS port"
+msgstr "Port HTTPS"
 
-#, python-format
-msgid "type %s is not a number"
-msgstr "%s nie jest liczbą"
+msgid "Require client cert for HTTPS"
+msgstr "Wymagaj certyfikatu klienta dla HTTPS"
 
-msgid "New"
-msgstr "Nowy"
+msgid "Enable Authentication for streaming"
+msgstr "Włącz uwierzytelnianie dla strumieniowania"
 
-msgid "Services"
-msgstr "Kanały"
+msgid "Disable access for user root"
+msgstr "Zablokuj dostęp dla użytkownika root"
 
-msgid "Cable"
-msgstr "Kablowy"
+msgid "Smart services renaming for XBMC"
+msgstr "Zmiana nazw kanałów dla XBMC"
 
-msgid "Terrestrial"
-msgstr "Naziemna"
+msgid "Enable Parental Control"
+msgstr "Włącz kontrolę rodzicielską"
 
-msgid "W"
-msgstr "W"
+msgid "Add service name to stream information"
+msgstr "Dodaj nazwę kanału do info strumienia"
 
-msgid "E"
-msgstr "E"
+msgid "Character encoding for EPG data"
+msgstr "Kodowanie znaków dla danych EPG"
 
-msgid "Message sent successfully!"
-msgstr "Wiadomość wysłana pomyślnie!"
+msgid "OpenWebif Configuration"
+msgstr "Konfiguracja OpenWebif"
 
-msgid "Waiting for answer ..."
-msgstr "Oczekiwanie na odpowiedź ..."
-
-msgid "No answer in time"
-msgstr "Brak odpowiedzi w czasie"
-
-msgid "Answer is YES!"
-msgstr "Odpowiedź: TAK!"
-
-msgid "Answer is NO!"
-msgstr "Odpowiedź: NIE!"
+msgid "transcoded"
+msgstr "transkodowane"
