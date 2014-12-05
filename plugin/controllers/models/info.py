@@ -484,7 +484,12 @@ def getStatusInfo(self):
 		statusinfo['currservice_fulldescription'] = "N/A"
 		if serviceref:
 			statusinfo['currservice_serviceref'] = serviceref.toString()
-			statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
+			if serviceHandlerInfo:
+				statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
+			elif serviceref.toString().find("http") != -1:
+				statusinfo['currservice_station'] = serviceref.toString().replace('%3a', ':')[serviceref.toString().find("http"):]
+			else:
+				statusinfo['currservice_station'] = "N/A"
 
 	# Get Standby State
 	from Screens.Standby import inStandby
