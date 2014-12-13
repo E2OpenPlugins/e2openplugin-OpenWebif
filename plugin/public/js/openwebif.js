@@ -495,6 +495,9 @@ function zapChannel(sRef, sname) {
 }
 
 function toggleStandby() {
+	if (shiftbutton) {
+		webapi_execute('api/set_powerup_without_waking_tv');
+	}
 	webapi_execute('api/powerstate?newstate=0');
 	setTimeout(getStatusInfo, 1500);
 }

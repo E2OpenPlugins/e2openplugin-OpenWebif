@@ -28,6 +28,7 @@ from models.servicelist import reloadServicesLists
 from models.mediaplayer import mediaPlayerAdd, mediaPlayerRemove, mediaPlayerPlay, mediaPlayerCommand, mediaPlayerCurrent, mediaPlayerList, mediaPlayerLoad, mediaPlayerSave, mediaPlayerFindFile
 from models.plugins import reloadPlugins
 
+from fcntl import ioctl
 from base import BaseController
 from stream import StreamController
 
@@ -142,6 +143,32 @@ class WebController(BaseController):
 		if "newstate" in request.args.keys():
 			return setPowerState(self.session, request.args["newstate"][0])
 		return getStandbyState(self.session)
+
+	def P_supports_powerup_without_waking_tv(self, request):
+		try:
+			#returns 'True' if the image supports the function "Power on without TV":
+			f = open("/tmp/powerup_without_waking_tv.txt", "r")
+			powerupWithoutWakingTv = f.read()
+			f.close()
+			if ((powerupWithoutWakingTv == 'True') or (powerupWithoutWakingTv == 'False')):
+				return True
+			else:
+				return False
+		except:
+			return False
+
+	def P_set_powerup_without_waking_tv(self, request):
+		if self.P_supports_powerup_without_waking_tv(request):
+			try:
+				#write "True" to file so that the box will power on ONCE skipping the HDMI-CEC communication:
+				f = open("/tmp/powerup_without_waking_tv.txt", "w")
+				f.write('True')
+				f.close()
+				return True
+			except:
+				return False
+		else:
+			return False
 
 	def P_getlocations(self, request):
 		return getLocations()
