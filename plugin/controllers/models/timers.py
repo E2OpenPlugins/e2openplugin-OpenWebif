@@ -214,9 +214,11 @@ def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vps
 def editTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterEvent, dirname, tags, repeated, channelOld, beginOld, endOld, vpsinfo):
 	# TODO: exception handling
 	serviceref = unquote(serviceref)
+	channelOld_str =  ':'.join(str(channelOld).split(':')[:11])
 	rt = session.nav.RecordTimer
 	for timer in rt.timer_list + rt.processed_timers:
-		if str(timer.service_ref) == channelOld and int(timer.begin) == beginOld and int(timer.end) == endOld:
+		needed_ref = ':'.join(timer.service_ref.ref.toString().split(':')[:11]) == channelOld_str
+		if needed_ref and int(timer.begin) == beginOld and int(timer.end) == endOld:
 			timer.service_ref = ServiceReference(serviceref)
 			# TODO: start end time check
 			timer.begin = int(float(begin))
@@ -267,9 +269,11 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 
 def removeTimer(session, serviceref, begin, end):
 	serviceref = unquote(serviceref)
+	serviceref_str = ':'.join(str(serviceref).split(':')[:11])
 	rt = session.nav.RecordTimer
 	for timer in rt.timer_list + rt.processed_timers:
-		if str(timer.service_ref) == serviceref and int(timer.begin) == begin and int(timer.end) == end:
+		needed_ref = ':'.join(timer.service_ref.ref.toString().split(':')[:11]) == serviceref_str
+		if needed_ref and int(timer.begin) == begin and int(timer.end) == end:
 			rt.removeEntry(timer)
 			return {
 				"result": True,
@@ -283,9 +287,11 @@ def removeTimer(session, serviceref, begin, end):
 
 def toggleTimerStatus(session, serviceref, begin, end):
 	serviceref = unquote(serviceref)
+	serviceref_str = ':'.join(str(serviceref).split(':')[:11])
 	rt = session.nav.RecordTimer
 	for timer in rt.timer_list + rt.processed_timers:
-		if str(timer.service_ref) == serviceref and int(timer.begin) == begin and int(timer.end) == end:
+		needed_ref = ':'.join(timer.service_ref.ref.toString().split(':')[:11]) == serviceref_str
+		if needed_ref and int(timer.begin) == begin and int(timer.end) == end:
 			if timer.disabled:
 				timer.enable()
 				effect = "enabled"
