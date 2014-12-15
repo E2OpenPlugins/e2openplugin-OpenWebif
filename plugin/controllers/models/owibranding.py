@@ -16,7 +16,7 @@ from Components.About import about
 from socket import has_ipv6
 from Tools.Directories import fileExists, pathExists
 import string
-import os
+import os, hashlib
 
 try:
 	from Components.About import about
@@ -37,6 +37,9 @@ def getMachineBrand():
 	
 def getMachineName():
 	return getAllInfo()['model']
+
+def getMachineProcModel()
+	return getAllInfo()['procmodel']
 	
 def getBoxType():
 	return getAllInfo()['procmodel']
@@ -88,10 +91,10 @@ def getAllInfo():
 		model = procmodel.lower()
 	elif fileExists("/proc/stb/info/gbmodel"):
 		brand = "GigaBlue"
-		f = open("/proc/stb/info/azmodel",'r')
+		f = open("/proc/stb/info/gbmodel",'r')
 		procmodel = f.readline().strip()
 		f.close()
-		model = procmodel.upper()
+		model = procmodel.upper().replace("GBQUAD", "Quad").replace("PLUS", " Plus")
 	elif fileExists("/proc/stb/info/boxtype"):
 		# boxtype exists on nearly every E2 box, if we have nothing better for detection we need to analyse its content
 		f = open("/proc/stb/info/boxtype",'r')
@@ -145,14 +148,6 @@ def getAllInfo():
 		elif procmodel.startswith("unibox-"):
 			brand = "Venton"
 			model = "HDe"
-		# Other E2 boxes also use "dm8000", so we can only safely assume "Dream Multimedia" for all others starting with "dm":
-		elif (procmodel.startswith("dm") and not procmodel == "dm8000"):
-			brand = "Dream Multimedia"
-			model = procmodel.replace("dm", "DM", 1)
-		# A "dm8000" is only a Dreambox if it passes the tpm verification:
-		elif procmodel == "dm8000" and tpm_check:
-			brand = "Dream Multimedia"
-			model = "DM8000"
 	elif fileExists("/proc/stb/info/model"):
 		f = open("/proc/stb/info/model",'r')
 		procmodel = f.readline().strip().lower()
@@ -170,6 +165,14 @@ def getAllInfo():
 			brand = "Advanced Digital Broadcast"
 		elif model in ("sagemcom88", "esi88", "uhd88", "dsi87"):
 			brand = "Sagemcom"
+		# Other E2 boxes also use "dm8000", so we can only safely assume "Dream Multimedia" for all others starting with "dm":
+		elif (procmodel.startswith("dm") and not procmodel == "dm8000"):
+			brand = "Dream Multimedia"
+			model = procmodel.replace("dm", "DM", 1)
+		# A "dm8000" is only a Dreambox if it passes the tpm verification:
+		elif procmodel == "dm8000" and tpm_check:
+			brand = "Dream Multimedia"
+			model = "DM8000"
 		else:
 			model = procmodel
 

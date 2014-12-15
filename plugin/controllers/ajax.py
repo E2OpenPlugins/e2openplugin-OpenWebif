@@ -78,7 +78,7 @@ class AjaxController(BaseController):
 	
 	def P_boxinfo(self, request):
 		info = getInfo()
-		model = info["model"]
+		model = info["boxtype"]
 		if model in ("et9000", "et9200", "et9500"):
 			model = "et9x00"
 		elif model in ("et5000", "et6000", "et6x00"):
