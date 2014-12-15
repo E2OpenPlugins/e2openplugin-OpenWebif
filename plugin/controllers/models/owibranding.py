@@ -79,7 +79,7 @@ def getAllInfo():
 		f = open("/proc/stb/info/vumodel",'r')
 		procmodel = f.readline().strip()
 		f.close()
-		model = procmodel.title().replace("2", "²")
+		model = procmodel.title().replace("olose", "olo SE").replace("olo2se", "olo2 SE").replace("2", "²")
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBox"
 		f = open("/proc/stb/info/model",'r') # To-Do: Check if "model" is really correct ...
@@ -222,6 +222,8 @@ def getAllInfo():
 		imagebuild = imagelist.pop()
 		imagever = ".".join(imagelist)
 		if kernel>2:
+			oever = "OpenVuplus 2.1"
+		if ((imagever == "5.1") or (imagever[0] > 5)):
 			oever = "OpenVuplus 2.1"
 	# ToDo: If your distro gets detected as OpenPLi, feel free to add a detection for your distro here ...
 	else:
