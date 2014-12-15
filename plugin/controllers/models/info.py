@@ -25,7 +25,10 @@ from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
 from twisted.web import version
 from socket import has_ipv6, AF_INET6, inet_ntop, inet_pton
 
-from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
+try:
+	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
+except:
+	from owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
 from enigma import getEnigmaVersionString, eEnv
 
 import NavigationInstance
@@ -134,17 +137,59 @@ def getInfo():
 	info['model'] = getMachineName()
 
 	chipset = "unknown"
-	if fileExists("/proc/stb/info/azmodel"):
-		brand = "AZBOX"
-		file = open("/proc/stb/info/model")
-		model = file.read().strip().lower()
-		file.close()
+	if fileExists("/etc/.box"):
+		f = open("/etc/.box",'r')
+		model = f.readline().strip().lower()
+		f.close()
+		if model.startswith("ufs") or model.startswith("ufc"):
+			if model in ("ufs910", "ufs922", "ufc960"):
+				chipset = "SH4 @266MHz"
+			else:
+				chipset = "SH4 @450MHz"
+		elif model in ("topf", "tf7700hdpvr"):
+			chipset = "SH4 @266MHz"
+		elif model.startswith("azbox"):
+			f = open("/proc/stb/info/model",'r')
+			model = f.readline().strip().lower()
+			f.close()
+			if model == "me":
+				chipset = "SIGMA 8655"
+			elif model == "minime":
+				chipset = "SIGMA 8653"
+			else:
+				chipset = "SIGMA 8634"
+		elif model.startswith("spark"):
+			if model == "spark7162":
+				chipset = "SH4 @540MHz"
+			else:
+				chipset = "SH4 @450MHz"
+	elif fileExists("/proc/stb/info/azmodel"):
+		f = open("/proc/stb/info/model",'r')
+		model = f.readline().strip().lower()
+		f.close()
 		if model == "me":
 			chipset = "SIGMA 8655"
 		elif model == "minime":
 			chipset = "SIGMA 8653"
 		else:
 			chipset = "SIGMA 8634"
+	else:
+		f = open("/proc/stb/info/model",'r')
+		model = f.readline().strip().lower()
+		f.close()
+		if model in ("esi88", "sagemcom88", "nbox"):
+			if fileExists("/proc/boxtype"):
+				f = open("/proc/boxtype",'r')
+				model = f.readline().strip().lower()
+				f.close()
+		if model == "tf7700hdpvr":
+			chipset = "SH4 @266MHz"
+		elif model in ("nbox", "bska", "bsla", "bxzb", "bzzb"):
+			chipset = "SH4 @266MHz"
+		elif model in ("adb2850", "adb2849"):
+			chipset = "SH4 @450MHz"
+		elif model in ("sagemcom88", "esi88", "uhd88", "dsi87"):
+			chipset = "SH4 @450MHz"
 
 	if fileExists("/proc/stb/info/chipset"):
 		f = open("/proc/stb/info/chipset",'r')
