@@ -58,8 +58,6 @@ class AjaxController(BaseController):
 		if "id" in request.args.keys():
 			idbouquet = request.args["id"][0]
 		channels = getChannels(idbouquet, stype)
-		info = getInfo()
-		model = info["model"]
 		channels['transcoding'] = getTranscodingSupport()
 		channels['type'] = stype
 		return channels
@@ -151,8 +149,6 @@ class AjaxController(BaseController):
 			movies = getMovieList(request.args["dirname"][0])
 		else:
 			movies = getMovieList()
-		info = getInfo()
-		model = info["model"]
 		movies['transcoding'] = getTranscodingSupport()
 		return movies
 

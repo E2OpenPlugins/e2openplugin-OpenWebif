@@ -80,8 +80,6 @@ def getTS(self, request):
 		sRef = ""
 		progopt = ''
 
-
-
 		if os.path.exists(filename + '.meta'):
 			metafile = open(filename + '.meta', "r")
 			name = ''
@@ -92,7 +90,6 @@ def getTS(self, request):
 			line2 = metafile.readline()	# name
 			if line2:
 				name = line2.strip()
-
 			line3 = metafile.readline()	# description
 			line4 = metafile.readline() # recording time
 			line5 = metafile.readline() # tags

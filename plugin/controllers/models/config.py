@@ -3,6 +3,7 @@
 from enigma import eEnv
 from Components.SystemInfo import SystemInfo
 from Components.config import config
+from Tools.Directories import resolveFilename, SCOPE_CURRENT_PLUGIN, fileExists
 from os import path, listdir
 import xml.etree.cElementTree
 
@@ -131,6 +132,13 @@ def getJsonFromConfig(cnf):
 			"limits": (cnf.limits[0][0], cnf.limits[0][1])
 		}
 
+	elif cnf.__class__.__name__ == "ConfigText":
+		return {
+			"result": True,
+			"type": "text",
+			"current": cnf.value
+		}
+
 	print "[OpenWebif] Unknown class ", cnf.__class__.__name__
 	return {
 		"result": False,
@@ -232,7 +240,7 @@ class ConfigFiles:
 		self.setupfiles = []
 		self.sections = []
 		self.section_config = {}
-		self.allowedsections = ["usage", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone"]
+		self.allowedsections = ["usage", "userinterface", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone", "time", "osdsetup", "epgsetup", "display", "remotesetup", "softcamsetup", "logs", "timeshift", "channelselection", "epgsettings", "softwareupdate", "pluginbrowsersetup"]
 		self.getConfigFiles()
 
 	def getConfigFiles(self):
@@ -257,6 +265,9 @@ class ConfigFiles:
 			xmldata = setupdom.getroot()
 			for section in xmldata.findall("setup"):
 				configs = []
+				requires = section.get("requires")
+				if requires and not SystemInfo.get(requires, False):
+					continue;
 				key = section.get("key")
 				if key not in self.allowedsections:
 					showOpenWebIF = section.get("showOpenWebIF")

@@ -35,7 +35,7 @@ config.OpenWebif.identifier.custom = ConfigYesNo(default=False)
 config.OpenWebif.identifier.text = ConfigText(default = "", fixed_size = False)
 config.OpenWebif.port = ConfigInteger(default = 80, limits=(1, 65535) )
 config.OpenWebif.streamport = ConfigInteger(default = 8001, limits=(1, 65535) )
-config.OpenWebif.auth = ConfigYesNo(default=True)
+config.OpenWebif.auth = ConfigYesNo(default=False)
 config.OpenWebif.xbmcservices = ConfigYesNo(default=False)
 config.OpenWebif.webcache = ConfigSubsection()
 # FIXME: anything better than a ConfigText?

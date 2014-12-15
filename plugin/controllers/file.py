@@ -53,7 +53,7 @@ class FileController(resource.Resource):
 					break
 			else:
 				# require authentication for request to eg. /etc
-				if not self.isAuthenticated(request):
+				if not self.isAuthenticated(request) and filename != config.misc.epgcache_filename.value:
 					return "File '%s' not found" % (filename)
 
 			name = "stream"

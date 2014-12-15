@@ -331,7 +331,7 @@ def getChannels(idbouquet, stype):
 
 	return { "channels": ret }
 
-def getServices(sRef, showAll = True ):
+def getServices(sRef, showAll = True, showHidden = False):
 	services = []
 
 	if sRef == "":
@@ -342,7 +342,7 @@ def getServices(sRef, showAll = True ):
 
 	for sitem in slist:
 		st = int(sitem[0].split(":")[1])
-		if not st & 512:	# 512 is hidden service on sifteam image. Doesn't affect other images
+		if not st & 512 or showHidden:
 			if showAll or st == 0: 
 				service = {}
 				service['servicereference'] = sitem[0].encode("utf8")

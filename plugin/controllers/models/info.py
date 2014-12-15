@@ -475,7 +475,6 @@ def getStatusInfo(self):
 		full_desc += statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end']  + '\n\n'
 		full_desc += event.getExtendedDescription().replace('\xc2\x86', '').replace('\xc2\x87', '').replace('\xc2\x8a', '\n')
 		statusinfo['currservice_fulldescription'] = full_desc
-		
 	else:
 		statusinfo['currservice_name'] = "N/A"
 		statusinfo['currservice_begin'] = ""

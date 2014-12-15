@@ -10,7 +10,7 @@
 **FEATURES**
 * add epgsearch endtime option
 * add svenska language
-* update frensh language
+* update french language
 
 ## Version 0.4.2
 ## (in development)
