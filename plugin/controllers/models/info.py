@@ -21,15 +21,16 @@ from Screens.Standby import inStandby
 from timer import TimerEntry
 from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
-from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
+from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference, eEnv
 from twisted.web import version
 from socket import has_ipv6, AF_INET6, inet_ntop, inet_pton
 
 try:
 	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
+	from enigma import getEnigmaVersionString
 except:
 	from owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
-from enigma import getEnigmaVersionString, eEnv
+	from Components.About import about.getEnigmaVersionString as getEnigmaVersionString
 
 import NavigationInstance
 
