@@ -21,9 +21,16 @@ from Screens.Standby import inStandby
 from timer import TimerEntry
 from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
-from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
+from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference, eEnv
 from twisted.web import version
 from socket import has_ipv6, AF_INET6, inet_ntop, inet_pton
+
+try:
+	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
+	from enigma import getEnigmaVersionString
+except:
+	from owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
+	from Components.About import about.getEnigmaVersionString as getEnigmaVersionString
 
 import NavigationInstance
 
@@ -127,33 +134,22 @@ def getInfo():
 	# TODO: get webif versione somewhere!
 	info = {}
 
-	brand = "Dream Multimedia"
-	model = "unknown"
-	chipset = "unknown"
+	info['brand'] = getMachineBrand()
+	info['model'] = getMachineName()
 
+	chipset = "unknown"
 	if fileExists("/etc/.box"):
-		brand = "HDMU"
 		f = open("/etc/.box",'r')
 		model = f.readline().strip().lower()
-		if model.startswith("et"):
-			brand = "Xtrend"
-		elif model.startswith("vu"):
-			brand = "VuPlus"
-		elif model.startswith("gb"):
-			brand = "GigaBlue"
-		elif model.startswith("ufs") or model.startswith("ufc"):
-			brand = "Kathrein"
+		f.close()
+		if model.startswith("ufs") or model.startswith("ufc"):
 			if model in ("ufs910", "ufs922", "ufc960"):
 				chipset = "SH4 @266MHz"
 			else:
 				chipset = "SH4 @450MHz"
-		elif model.startswith("xpeed"):
-			brand = "GoldenInterstar"
-		elif model.startswith("topf"):
-			brand = "Topfield"
+		elif model in ("topf", "tf7700hdpvr"):
 			chipset = "SH4 @266MHz"
 		elif model.startswith("azbox"):
-			brand = "AZBox"
 			f = open("/proc/stb/info/model",'r')
 			model = f.readline().strip().lower()
 			f.close()
@@ -164,65 +160,11 @@ def getInfo():
 			else:
 				chipset = "SIGMA 8634"
 		elif model.startswith("spark"):
-			brand = "Fulan"
 			if model == "spark7162":
 				chipset = "SH4 @540MHz"
 			else:
 				chipset = "SH4 @450MHz"
-	elif fileExists("/proc/stb/info/boxtype"):
-		brand = "Xtrend"
-		f = open("/proc/stb/info/boxtype",'r')
-		model = f.readline().strip().lower()
-		if model.startswith("et"):
-			brand = "Xtrend"
-		elif model.startswith("ini"):
-			if model.endswith("9000ru"):
- 				brand = "Sezam"
-				model = "Marvel"
-			elif model.endswith("5000ru"):
-				brand = "Sezam"
-				model = "hdx"
-			elif model.endswith("1000ru"):
-				brand = "Sezam"
-				model = "hde"
-			elif model.endswith("5000sv"):
-				brand = "Miraclebox"
-				model = "mbtwin"
-			elif model.endswith("1000sv"):
-				brand = "Miraclebox"
-				model = "mbmini"
-			elif model.endswith("1000de"):
-				brand = "Golden Interstar"
-				model = "xpeedlx"
-			elif model.endswith("1000lx"):
-				brand = "Golden Interstar"
-				model = "xpeedlx"
-			elif model.endswith("9000de"):
-				brand = "Golden Interstar"
-				model = "xpeedlx3"
-			elif model.endswith("1000am"):
-				brand = "Atemio"
-				model = "5x00"
-			elif model.endswith("de"):
-				brand = "Golden Interstar"
-			else:
-				brand = "Venton"
-				model = "Venton-hdx"
-		elif model.startswith("xp"):
-			brand = "MaxDigital"
-		elif model.startswith("ixuss"):
-			brand = "Medialink"
-			model = model.replace(" ", "")
-		elif model.startswith("formuler"):
-			brand = "Formuler"
- 		f.close()
-	elif fileExists("/proc/stb/info/vumodel"):
-		brand = "VuPlus"
-		f = open("/proc/stb/info/vumodel",'r')
-		model = f.readline().strip().lower()
-		f.close()
 	elif fileExists("/proc/stb/info/azmodel"):
-		brand = "AZBox"
 		f = open("/proc/stb/info/model",'r')
 		model = f.readline().strip().lower()
 		f.close()
@@ -242,26 +184,19 @@ def getInfo():
 				model = f.readline().strip().lower()
 				f.close()
 		if model == "tf7700hdpvr":
-			brand = "Topfield"
 			chipset = "SH4 @266MHz"
 		elif model in ("nbox", "bska", "bsla", "bxzb", "bzzb"):
-			brand = "Advanced Digital Broadcast"
 			chipset = "SH4 @266MHz"
 		elif model in ("adb2850", "adb2849"):
-			brand = "Advanced Digital Broadcast"
 			chipset = "SH4 @450MHz"
 		elif model in ("sagemcom88", "esi88", "uhd88", "dsi87"):
-			brand = "Sagemcom"
 			chipset = "SH4 @450MHz"
-
-	info['brand'] = brand
-	info['model'] = model
 
 	if fileExists("/proc/stb/info/chipset"):
 		f = open("/proc/stb/info/chipset",'r')
 		chipset = f.readline().strip()
 		f.close()
-		
+
 	info['chipset'] = chipset
 
 	memFree = 0
@@ -288,20 +223,12 @@ def getInfo():
 		uptimetext = "?"
 	info['uptime'] = uptimetext
 
-	if fileExists("/etc/bhversion"):
-		f = open("/etc/bhversion",'r')
-		imagever = f.readline().strip()
-		f.close()
-	elif fileExists("/etc/vtiversion.info"):
-		f = open("/etc/vtiversion.info",'r')
-		imagever = f.readline().strip()
-		f.close()
-	else:
-		imagever = about.getImageVersionString()
-
 	info["webifver"] = getOpenWebifVer()
-	info['imagever'] = imagever
-	info['enigmaver'] = about.getEnigmaVersionString()
+	info['imagedistro'] = getImageDistro()
+	info['oever'] = getOEVersion()
+	info['imagever'] = getImageVersion() + '.' + getImageBuild()
+	info['enigmaver'] = getEnigmaVersionString()
+	info['driverdate'] = getDriverDate()
 	info['kernelver'] = about.getKernelVersionString()
 
 	try:
