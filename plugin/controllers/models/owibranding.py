@@ -237,7 +237,7 @@ def getAllInfo():
 			except:
 				pass
 
-		if distro == "openatv":
+		if distro == "openpli":
 			imagever = "2.1"
 			# Todo: Detect OpenPLi 3.0
 			if has_ipv6:
