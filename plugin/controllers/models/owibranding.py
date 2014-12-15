@@ -38,7 +38,7 @@ def getMachineBrand():
 def getMachineName():
 	return getAllInfo()['model']
 
-def getMachineProcModel()
+def getMachineProcModel():
 	return getAllInfo()['procmodel']
 	
 def getBoxType():
