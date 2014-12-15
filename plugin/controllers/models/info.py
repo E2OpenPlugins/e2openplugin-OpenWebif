@@ -30,7 +30,7 @@ try:
 	from enigma import getEnigmaVersionString
 except:
 	from owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
-	from Components.About import about.getEnigmaVersionString as getEnigmaVersionString
+	from Components.About import getEnigmaVersionString
 
 import NavigationInstance
 
