@@ -208,7 +208,6 @@ function initJsTranslation(strings) {
 function open_epg_search_dialog() {
 	var spar = $("#epgSearch").val();
 	var url = "ajax/epgdialog?sstr=" + encodeURIComponent(spar);
-	// url=url.replace(/%C3%BC/g,'%FC').replace(/%C3%9C/g,'%FC').replace(/%C3%A4/g,'%E4').replace(/%C3%84/g,'%E4').replace(/%C3%B6/g,'%F6').replace(/%C3%96/g,'%F6').replace(/%C3%9F/g,'%DF');
 	$("#epgSearch").val("");
 	
 	var w = $(window).width() -100;
@@ -387,7 +386,6 @@ function open_epg_pop(sRef) {
 function open_epg_search_pop() {
 	var spar = $("#epgSearch").val();
 	var url = "ajax/epgpop?sstr=" + encodeURIComponent(spar);
-	//url=url.replace(/%C3%BC/g,'%FC').replace(/%C3%9C/g,'%FC').replace(/%C3%A4/g,'%E4').replace(/%C3%84/g,'%E4').replace(/%C3%B6/g,'%F6').replace(/%C3%96/g,'%F6').replace(/%C3%9F/g,'%DF');
 	$.popupWindow(url, {
 		height: 500,
 		width: 900,
@@ -549,10 +547,11 @@ function getStatusInfo() {
 		} else {
 			$("#osd").html(tstr_nothing_play);
 			$("#osd_bottom").html('');
-		}		var status = "";
+		}
+		var status = "";
 		if (statusinfo['isRecording'] == 'true') {
 			var timercall = "load_maincontent('ajax/timers'); return false;";
-			status = "<a href='#' onClick='load_maincontent(\"ajax/timers\"); return false;'><img src='../images/ico_rec.png' title='" + tstr_rec_status + "' alt='" + tstr_rec_status + "' /></a>";
+			status = "<a href='#' onClick='load_maincontent(\"ajax/timers\"); return false;'><img src='../images/ico_rec.png' title='" + tstr_rec_status + statusinfo['Recording_list'] + "' alt='" + tstr_rec_status + "' /></a>";
 		}
 		status += "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_";
 		if (statusinfo['inStandby'] == 'true') {

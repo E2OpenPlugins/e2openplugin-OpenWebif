@@ -11,17 +11,17 @@
 from Tools.Directories import fileExists
 from Components.config import config
 from boxbranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
-	
+from os import path
+
 from enigma import eEnv
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
-from models.info import getInfo, getPublicPath, getOpenWebifVer
+from models.info import getInfo, getPublicPath, getOpenWebifVer, getTranscodingSupport
 from models.movies import getMovieList
 from models.timers import getTimers
 from models.config import getConfigs, getConfigsSections
 from base import BaseController
 from time import mktime, localtime
 from models.locations import getLocations
-from os import path
 
 class AjaxController(BaseController):
 	def __init__(self, session, path = ""):
@@ -60,11 +60,8 @@ class AjaxController(BaseController):
 		if "id" in request.args.keys():
 			idbouquet = request.args["id"][0]
 		channels = getChannels(idbouquet, stype)
-		info = getInfo()
-		model = info["model"]
-		channels['transcoding'] = False
-		if (model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or getMachineBuild() in ('inihdp', 'hd2400', 'et10000')) and (path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo'))):
-			channels['transcoding'] = True
+		channels['transcoding'] = getTranscodingSupport()
+		channels['type'] = stype
 		return channels
 
 	def P_eventdescription(self, request):
@@ -141,11 +138,7 @@ class AjaxController(BaseController):
 			movies = getMovieList(request.args["dirname"][0])
 		else:
 			movies = getMovieList()
-		info = getInfo()
-		model = info["model"]
-		movies['transcoding'] = False
-		if (model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or getMachineBuild() in ('inihdp', 'hd2400', 'et10000')) and (path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo'))):
-			movies['transcoding'] = True
+		movies['transcoding'] = getTranscodingSupport()
 		return movies
 
 	def P_workinprogress(self, request):

@@ -5,6 +5,13 @@
 * channel epg as modal dialog
 * powertimer api
 
+## Version 0.4.3
+## (in development)
+**FEATURES**
+* add epgsearch endtime option
+* add svenska language
+* update french language
+
 ## Version 0.4.2
 ## (in development)
 **FEATURES**
@@ -16,7 +23,6 @@
 
 ## Version 0.4.1
 **FEATURES**
-* Add saveepg and loadepg api
 * show lastseen postion for recordings
 * autotimer settings editor
 * epgrefresh webif

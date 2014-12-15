@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-08-07 23:29+0100\n"
+"POT-Creation-Date: 2014-11-01 19:04+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: ims <ims21@users.sourceforge.net>\n"
 "Language-Team: PLi\n"
@@ -16,62 +16,82 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
-msgid "Cancel"
-msgstr "Zrušit"
+msgid "Settings"
+msgstr "Nastavení"
 
-msgid "Save"
-msgstr "Uložit"
+msgid "LCD4Linux Setup"
+msgstr "Nastavení LCD4Linux"
 
-msgid "OpenWebif url: http://yourip:port"
-msgstr "OpenWebif url: http://vašeip:port"
-
-msgid "OpenWebInterface Enabled"
-msgstr "Povolit OpenWebInterface"
-
-msgid "Show box name in header"
-msgstr "Zobrazovat v záhlaví název přijímače"
-
-msgid "Use custom box name"
-msgstr "Použít vlastní název přijímače"
-
-msgid "Custom box name"
-msgstr "Vlastní název přijímače"
-
-msgid "HTTP port"
-msgstr "HTTP port"
-
-msgid "Enable HTTP Authentication"
-msgstr "Povolit HTTP ověřování"
-
-msgid "Enable HTTPS"
-msgstr "Povolit HTTPS"
-
-msgid "HTTPS port"
-msgstr "HTTPS port"
-
-msgid "Require client cert for HTTPS"
+msgid "AutoTimer"
 msgstr ""
 
-msgid "Enable Authentication for streaming"
-msgstr "Povolit ověřování pro streamování"
+msgid "BouquetEditor"
+msgstr "Editor přehledů"
 
-msgid "Disable access for user root"
-msgstr "Zakázat přístup pro uživatele root"
-
-msgid "Smart services renaming for XBMC"
-msgstr "Chytré přejmenování programů pro XBMC"
-
-msgid "Enable Parental Control"
-msgstr "Povolit rodičovskou kontrolu"
-
-msgid "Add service name to stream information"
-msgstr "Přidat název programu do stream informací"
-
-msgid "OpenWebif Configuration"
-msgstr "Nastavení OpenWebif"
-
-msgid "transcoded"
+msgid "EPGRefresh"
 msgstr ""
+
+msgid "IPv4-only kernel"
+msgstr ""
+
+msgid "IPv4-only Python/Twisted"
+msgstr ""
+
+msgid "none/IPv4-only network"
+msgstr "žádná/pouze IPv4 síť"
+
+msgid "Message sent successfully!"
+msgstr "Zpráva úspěšně odeslána!"
+
+msgid "No answer in time"
+msgstr "Žádná odpověď v čase"
+
+msgid "Answer is YES!"
+msgstr "Odpověď je ANO!"
+
+msgid "Answer is NO!"
+msgstr "Odpověď je NE!"
+
+msgid "New"
+msgstr "Nový"
+
+msgid "Services"
+msgstr "Programy"
+
+msgid "Cable"
+msgstr "Kabelové"
+
+msgid "Terrestrial"
+msgstr "Pozemní"
+
+msgid "W"
+msgstr "W"
+
+msgid "E"
+msgstr "E"
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr "Chybí povinný parametr '%s'"
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr "Parametr '%s' nemůže být prázdný"
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr ""
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr ""
+
+msgid "The parameter 'command' must be a number"
+msgstr "Parametr 'command' musí být číslo"
+
+#, python-format
+msgid "type %s is not a number"
+msgstr "%s není číslo"
 
 msgid "Mo"
 msgstr "Po"
@@ -175,12 +195,6 @@ msgstr "Prosinec"
 msgid "About"
 msgstr "O prohlížeči"
 
-msgid "Timer List"
-msgstr "Přehled časovačů"
-
-msgid "New Name"
-msgstr "Nový název"
-
 msgid "Add Timer"
 msgstr "Přidat časovač"
 
@@ -234,6 +248,9 @@ msgstr "Doba provozu"
 
 msgid "Brand"
 msgstr "Značka"
+
+msgid "Cancel"
+msgstr "Zrušit"
 
 msgid "Capacity"
 msgstr "Kapacita"
@@ -376,15 +393,6 @@ msgstr "Hodiny"
 msgid "IP address"
 msgstr "IP adresa"
 
-msgid "IPv4-only kernel"
-msgstr ""
-
-msgid "none/IPv4-only network"
-msgstr "žádná/pouze IPv4 síť"
-
-msgid "IPv4-only Python/Twisted"
-msgstr ""
-
 msgid "IPv6 address(es)"
 msgstr "IPv6 adresa(y)"
 
@@ -466,6 +474,15 @@ msgstr ""
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Open Source Web Interface pro linuxový set-top box"
 
+msgid "Show box name in header"
+msgstr "Zobrazovat v záhlaví název přijímače"
+
+msgid "Use custom box name"
+msgstr "Použít vlastní název přijímače"
+
+msgid "Custom box name"
+msgstr "Vlastní název přijímače"
+
 msgid "OSD"
 msgstr ""
 
@@ -523,6 +540,9 @@ msgstr "Satelity"
 msgid "Satfinder"
 msgstr ""
 
+msgid "Save"
+msgstr "Uložit"
+
 msgid "Screenshot"
 msgstr "Snímek obrazovky"
 
@@ -538,19 +558,16 @@ msgstr "sekund"
 msgid "Send Message"
 msgstr "Odeslat zprávu"
 
+msgid "Waiting for answer ..."
+msgstr "Čekání na odpověď ..."
+
 msgid "Send a Message"
 msgstr "Odeslat zprávu"
 
 msgid "Service"
 msgstr "Program"
 
-msgid "Settings"
-msgstr "Nastavení"
-
 msgid "Bouquet Editor"
-msgstr "Editor přehledů"
-
-msgid "BouquetEditor"
 msgstr "Editor přehledů"
 
 msgid "(shift + click for long pressure)"
@@ -624,6 +641,9 @@ msgstr "Časovač přidán"
 
 msgid "Timerlist"
 msgstr "Přehled časovačů"
+
+msgid "New Name"
+msgstr "Nový název"
 
 msgid "Autotimer Preview"
 msgstr "Přehled Autotimerů"
@@ -733,8 +753,14 @@ msgstr "podmínek GNU General Public License verze 2 jako"
 msgid "published by the Free Software Foundation."
 msgstr ""
 
-msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
-msgstr "Všechny soubory tohoto software jsou open source software; můžete je distribuovat a/nebo modifikovat podle podmínek GNU General Public License verze 2 jako published by the Free Software Foundation."
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 2 "
+"as published by the Free Software Foundation."
+msgstr ""
+"Všechny soubory tohoto software jsou open source software; můžete je "
+"distribuovat a/nebo modifikovat podle podmínek GNU General Public License "
+"verze 2 jako published by the Free Software Foundation."
 
 msgid "Root"
 msgstr "root"
@@ -762,6 +788,9 @@ msgstr "přesně odpovídá"
 
 msgid "description match"
 msgstr "Popis odpovídá"
+
+msgid "start match"
+msgstr ""
 
 msgid "Search strictness"
 msgstr "Přesnost hledání"
@@ -940,6 +969,66 @@ msgstr "Simulace"
 msgid "Do you really want to delete the AT"
 msgstr "Opravdu chcete odstranit AT"
 
+msgid "Label series"
+msgstr ""
+
+msgid "Enable Messages"
+msgstr "Povolit zprávy"
+
+msgid "Delay Standby"
+msgstr "Zpoždění"
+
+msgid "Interval (min.)"
+msgstr ""
+
+msgid "Interval (sec.)"
+msgstr ""
+
+msgid "Afterevent"
+msgstr "Po události"
+
+msgid "Force"
+msgstr "Vynutit aktualizaci"
+
+msgid "Wakeup"
+msgstr "Probudit"
+
+msgid "Inherit Autotimer"
+msgstr "Převzít z Autotimeru"
+
+msgid "Parse Autotimer"
+msgstr ""
+
+msgid "Always"
+msgstr "Vždy"
+
+msgid "Background only"
+msgstr "Pouze na pozadí"
+
+msgid "Ask, default Yes"
+msgstr "Požádat, defaultně Ano"
+
+msgid "Ask, default No"
+msgstr "Požádat, defaultně Ne"
+
+msgid "Method"
+msgstr "Metoda"
+
+msgid "Visibly"
+msgstr "Hlavní obraz"
+
+msgid "Picture in Picture"
+msgstr "Obraz v obraze (PIP)"
+
+msgid "Picture in Picture (hidden)"
+msgstr "Obraz v obraze (skryté)"
+
+msgid "Fake Recording"
+msgstr "Falešné nahrávání"
+
+msgid "Refresh now"
+msgstr "Zaktualizovat"
+
 msgid "Add Provider as new Bouquet"
 msgstr "Přidat poskytovatele jako nový přehled"
 
@@ -997,61 +1086,50 @@ msgstr "Zadejte název souboru"
 msgid "Do you really want to restore from file"
 msgstr "Opravdu chcete obnovit ze souboru"
 
-msgid "LCD4Linux Setup"
-msgstr "Nastavení LCD4Linux"
+msgid "OpenWebif url: http://yourip:port"
+msgstr "OpenWebif url: http://vašeip:port"
 
-#, python-format
-msgid "Missing mandatory parameter '%s'"
-msgstr "Chybí povinný parametr '%s'"
+msgid "OpenWebInterface Enabled"
+msgstr "Povolit OpenWebInterface"
 
-#, python-format
-msgid "The parameter '%s' can't be empty"
-msgstr "Parametr '%s' nemůže být prázdný"
+msgid "HTTP port"
+msgstr "HTTP port"
 
-#, python-format
-msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgid "Enable HTTP Authentication"
+msgstr "Povolit HTTP ověřování"
+
+msgid "Enable HTTPS"
+msgstr "Povolit HTTPS"
+
+msgid "HTTPS port"
+msgstr "HTTPS port"
+
+msgid "Require client cert for HTTPS"
+msgstr "Požadovat klientskou certifikaci pro HTTPS"
+
+msgid "Enable Authentication for streaming"
+msgstr "Povolit ověřování pro streamování"
+
+msgid "Disable access for user root"
+msgstr "Zakázat přístup pro uživatele root"
+
+msgid "Smart services renaming for XBMC"
+msgstr "Chytré přejmenování programů pro XBMC"
+
+msgid "Enable Parental Control"
+msgstr "Povolit rodičovskou kontrolu"
+
+msgid "Add service name to stream information"
+msgstr "Přidat název programu do stream informací"
+
+msgid "Character encoding for EPG data"
+msgstr "Kódování znaků pro EPG data"
+
+msgid "OpenWebif Configuration"
+msgstr "Nastavení OpenWebif"
+
+msgid "transcoded"
 msgstr ""
 
-#, python-format
-msgid "Unknown Volume command %s"
-msgstr ""
-
-msgid "The parameter 'command' must be a number"
-msgstr "Parametr 'command' musí být číslo"
-
-#, python-format
-msgid "type %s is not a number"
-msgstr "%s není číslo"
-
-msgid "New"
-msgstr "Nový"
-
-msgid "Services"
-msgstr "Programy"
-
-msgid "Cable"
-msgstr "Kabelové"
-
-msgid "Terrestrial"
-msgstr "Pozemní"
-
-msgid "W"
-msgstr "W"
-
-msgid "E"
-msgstr "E"
-
-msgid "Message sent successfully!"
-msgstr "Zpráva úspěšně odeslána!"
-
-msgid "Waiting for answer ..."
-msgstr "Čekání na odpověď ..."
-
-msgid "No answer in time"
-msgstr "Žádná odpověď v čase"
-
-msgid "Answer is YES!"
-msgstr "Odpověď je ANO!"
-
-msgid "Answer is NO!"
-msgstr "Odpověď je NE!"
+#~ msgid "Timer List"
+#~ msgstr "Přehled časovačů"

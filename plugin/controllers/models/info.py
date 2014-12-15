@@ -25,8 +25,8 @@ from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
 from twisted.web import version
 from socket import has_ipv6, AF_INET6, inet_ntop, inet_pton
 
-from boxbranding import getBoxType, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
-from enigma import getEnigmaVersionString
+from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
+from enigma import getEnigmaVersionString, eEnv
 
 import NavigationInstance
 
@@ -35,7 +35,9 @@ import sys
 import time
 import string
 
-OPENWEBIFVER = "OWIF 0.4.2"
+OPENWEBIFVER = "OWIF 0.4.3"
+
+STATICBOXINFO = None
 
 def getOpenWebifVer():
 	return OPENWEBIFVER
@@ -152,8 +154,7 @@ def getInfo():
 	info['chipset'] = chipset
 
 	memFree = 0
-	file = open("/proc/meminfo",'r')
-	for line in file:
+	for line in open("/proc/meminfo",'r'):
 		parts = line.split(':')
 		key = parts[0].strip()
 		if key == "MemTotal":
@@ -161,7 +162,6 @@ def getInfo():
 		elif key in ("MemFree", "Buffers", "Cached"):
 			memFree += int(parts[1].strip().split(' ',1)[0])
 	info['mem2'] = "%s kB" % memFree
-	file.close()
 
 	try:
 		f = open("/proc/uptime", "rb")
@@ -260,6 +260,8 @@ def getInfo():
 			"labelled_capacity": iecsize,
 			"free": free
 		})
+	global STATICBOXINFO
+	STATICBOXINFO = info
 	return info
 
 def getFrontendStatus(session):
@@ -306,6 +308,14 @@ def getCurrentTime():
 		"time": "%2d:%02d:%02d" % (t.tm_hour, t.tm_min, t.tm_sec)
 	}
 
+def getTranscodingSupport():
+	global STATICBOXINFO
+	if STATICBOXINFO is None:
+	    getInfo()
+	if (getMachineName() in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or getMachineBuild() in ('inihdp', 'hd2400', 'et10000')) and (os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo'))):
+	    return True
+	return False
+
 def getStatusInfo(self):
 	statusinfo = {}
 
@@ -314,6 +324,7 @@ def getStatusInfo(self):
 
 	statusinfo['volume'] = vcontrol.getVolume()
 	statusinfo['muted'] = vcontrol.isMuted()
+	statusinfo['transcoding'] = getTranscodingSupport()
 
 	# Get currently running Service
 	event = None
@@ -328,6 +339,7 @@ def getStatusInfo(self):
 	else:
 		event = None
 
+	statusinfo['currservice_filename'] = ""
 	if event is not None:
 		curEvent = parseEvent(event)
 		statusinfo['currservice_name'] = curEvent[2].replace('\xc2\x86', '').replace('\xc2\x87', '')
@@ -338,6 +350,8 @@ def getStatusInfo(self):
 		if len(curEvent[3].decode('utf-8')) > 220:
 			statusinfo['currservice_description'] = curEvent[3].decode('utf-8')[0:220].encode('utf-8') + "..."
 		statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
+		if statusinfo['currservice_serviceref'].startswith('1:0:0'):
+			statusinfo['currservice_filename'] = '/' + '/'.join(serviceref.toString().split("/")[1:])
 		full_desc = statusinfo['currservice_name'] + '\n'
 		full_desc += statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end']  + '\n\n'
 		full_desc += event.getExtendedDescription().replace('\xc2\x86', '').replace('\xc2\x87', '').replace('\xc2\x8a', '\n')
@@ -350,7 +364,12 @@ def getStatusInfo(self):
 		statusinfo['currservice_fulldescription'] = "N/A"
 		if serviceref:
 			statusinfo['currservice_serviceref'] = serviceref.toString()
-			statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
+			if serviceHandlerInfo:
+				statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
+			elif serviceref.toString().find("http") != -1:
+				statusinfo['currservice_station'] = serviceref.toString().replace('%3a', ':')[serviceref.toString().find("http"):]
+			else:
+				statusinfo['currservice_station'] = "N/A"
 
 	# Get Standby State
 	from Screens.Standby import inStandby
