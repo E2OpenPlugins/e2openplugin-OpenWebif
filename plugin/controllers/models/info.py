@@ -273,14 +273,14 @@ def getInfo():
 		if free <= 1024:
 			free = "%i MB" % free
 		else:
-			free = float(free) / float(1024)
+			free = free / 1024.
 			free = "%.3f GB" % free
 
-		size = hdd.diskSize() * 1000000 / float(1048576)
+		size = hdd.diskSize() * 1000000 / 1048576.
 		if size > 1048576:
-			size = "%.2f TB" % (size / float(1048576))
+			size = "%.2f TB" % (size / 1048576.)
 		elif size > 1024:
-			size = "%d GB" % (size / float(1024))
+			size = "%.1f GB" % (size / 1024.)
 		else:
 			size = "%d MB" % size
 
@@ -434,7 +434,7 @@ def getStatusInfo(self):
 		for timer in NavigationInstance.instance.RecordTimer.timer_list:
 			if timer.state == TimerEntry.StateRunning:
 				if not timer.justplay:
-					statusinfo['Recording_list'] += timer.service_ref.getServiceName() + ": " + timer.name + "\n"
+					statusinfo['Recording_list'] += timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '') + ": " + timer.name + "\n"
 	else:
 		statusinfo['isRecording'] = "false"
 
