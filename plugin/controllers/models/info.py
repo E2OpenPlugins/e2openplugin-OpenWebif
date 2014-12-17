@@ -434,7 +434,7 @@ def getStatusInfo(self):
 		for timer in NavigationInstance.instance.RecordTimer.timer_list:
 			if timer.state == TimerEntry.StateRunning:
 				if not timer.justplay:
-					statusinfo['Recording_list'] += timer.service_ref.getServiceName() + ": " + timer.name + "\n"
+					statusinfo['Recording_list'] += timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '') + ": " + timer.name + "\n"
 	else:
 		statusinfo['isRecording'] = "false"
 
