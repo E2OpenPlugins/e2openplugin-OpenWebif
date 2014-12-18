@@ -65,6 +65,9 @@ def getAllInfo():
 	brand = "unknown"
 	model = "unknown"
 	procmodel = "unknown"
+	orgdream = 0
+	if tpmloaded:
+		orgdream = tpm_check()
 	
 	if fileExists("/proc/stb/info/hwmodel"):
 		brand = "DAGS"
