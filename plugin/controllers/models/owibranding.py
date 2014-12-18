@@ -170,7 +170,7 @@ def getAllInfo():
 			brand = "Dream Multimedia"
 			model = procmodel.replace("dm", "DM", 1)
 		# A "dm8000" is only a Dreambox if it passes the tpm verification:
-		elif procmodel == "dm8000" and tpm_check:
+		elif procmodel == "dm8000" and orgdream:
 			brand = "Dream Multimedia"
 			model = "DM8000"
 		else:
