@@ -434,6 +434,9 @@ class WebController(BaseController):
 		description = ""
 		if "description" in request.args.keys():
 			description = request.args["description"][0]
+		eit = 0
+		if "eit" in request.args.keys():
+			eit = int(request.args["eit"][0])
 
 		return addTimer(
 			self.session,
@@ -448,6 +451,7 @@ class WebController(BaseController):
 			dirname,
 			tags,
 			repeated,
+			eit,
 			self.vpsparams(request)
 		)
 
