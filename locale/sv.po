@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2014-11-01 19:04+0100\n"
-"PO-Revision-Date: 2014-11-28 02:08+0100\n"
+"PO-Revision-Date: 2014-12-20 01:22+0100\n"
 "Last-Translator: Svevrstt <svevrstt@gmail.com>\n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -978,7 +978,7 @@ msgid "AutoTimer Settings"
 msgstr "Inställningar för AutoTimer"
 
 msgid "AutoPoll"
-msgstr "Automatiskt uppföljning"
+msgstr "Automatiskt bevakning"
 
 msgid "Interval (in h)"
 msgstr "Intervall (i tim)"
@@ -1011,7 +1011,7 @@ msgid "Add Autotimer to Tags"
 msgstr "Lägg till \"Autotimer\" som etikett"
 
 msgid "Add Name to Tags"
-msgstr "Lägg till AutoTimers beskrivning som etikett"
+msgstr "Lägg till \"Beskrivning\" som etikett"
 
 msgid "None"
 msgstr "Inga"
@@ -1189,6 +1189,15 @@ msgstr "Inställningar för OpenWebif"
 
 msgid "transcoded"
 msgstr "omkodad"
+
+msgid "System OE"
+msgstr "OE system"
+
+msgid "Distro"
+msgstr "Distribution av programvaran"
+
+msgid "Driver date"
+msgstr "Drivrutinerna daterade"
 
 #~ msgid "Timer List"
 #~ msgstr "Timerlista"
