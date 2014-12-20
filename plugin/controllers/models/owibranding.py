@@ -170,7 +170,7 @@ def getAllInfo():
 			brand = "Dream Multimedia"
 			model = procmodel.replace("dm", "DM", 1)
 		# A "dm8000" is only a Dreambox if it passes the tpm verification:
-		elif procmodel == "dm8000" and tpm_check:
+		elif procmodel == "dm8000" and orgdream:
 			brand = "Dream Multimedia"
 			model = "DM8000"
 		else:
@@ -326,40 +326,43 @@ def decrypt_block(src, mod):
 	return None
 
 def tpm_check():
-	tpm = eTPM()
-	rootkey = ['\x9f', '|', '\xe4', 'G', '\xc9', '\xb4', '\xf4', '#', '&', '\xce', '\xb3', '\xfe', '\xda', '\xc9', 'U', '`', '\xd8', '\x8c', 's', 'o', '\x90', '\x9b', '\\', 'b', '\xc0', '\x89', '\xd1', '\x8c', '\x9e', 'J', 'T', '\xc5', 'X', '\xa1', '\xb8', '\x13', '5', 'E', '\x02', '\xc9', '\xb2', '\xe6', 't', '\x89', '\xde', '\xcd', '\x9d', '\x11', '\xdd', '\xc7', '\xf4', '\xe4', '\xe4', '\xbc', '\xdb', '\x9c', '\xea', '}', '\xad', '\xda', 't', 'r', '\x9b', '\xdc', '\xbc', '\x18', '3', '\xe7', '\xaf', '|', '\xae', '\x0c', '\xe3', '\xb5', '\x84', '\x8d', '\r', '\x8d', '\x9d', '2', '\xd0', '\xce', '\xd5', 'q', '\t', '\x84', 'c', '\xa8', ')', '\x99', '\xdc', '<', '"', 'x', '\xe8', '\x87', '\x8f', '\x02', ';', 'S', 'm', '\xd5', '\xf0', '\xa3', '_', '\xb7', 'T', '\t', '\xde', '\xa7', '\xf1', '\xc9', '\xae', '\x8a', '\xd7', '\xd2', '\xcf', '\xb2', '.', '\x13', '\xfb', '\xac', 'j', '\xdf', '\xb1', '\x1d', ':', '?']
-	random = None
-	result = None
-	l2r = False
-	l2k = None
-	l3k = None
+	try:
+		tpm = eTPM()
+		rootkey = ['\x9f', '|', '\xe4', 'G', '\xc9', '\xb4', '\xf4', '#', '&', '\xce', '\xb3', '\xfe', '\xda', '\xc9', 'U', '`', '\xd8', '\x8c', 's', 'o', '\x90', '\x9b', '\\', 'b', '\xc0', '\x89', '\xd1', '\x8c', '\x9e', 'J', 'T', '\xc5', 'X', '\xa1', '\xb8', '\x13', '5', 'E', '\x02', '\xc9', '\xb2', '\xe6', 't', '\x89', '\xde', '\xcd', '\x9d', '\x11', '\xdd', '\xc7', '\xf4', '\xe4', '\xe4', '\xbc', '\xdb', '\x9c', '\xea', '}', '\xad', '\xda', 't', 'r', '\x9b', '\xdc', '\xbc', '\x18', '3', '\xe7', '\xaf', '|', '\xae', '\x0c', '\xe3', '\xb5', '\x84', '\x8d', '\r', '\x8d', '\x9d', '2', '\xd0', '\xce', '\xd5', 'q', '\t', '\x84', 'c', '\xa8', ')', '\x99', '\xdc', '<', '"', 'x', '\xe8', '\x87', '\x8f', '\x02', ';', 'S', 'm', '\xd5', '\xf0', '\xa3', '_', '\xb7', 'T', '\t', '\xde', '\xa7', '\xf1', '\xc9', '\xae', '\x8a', '\xd7', '\xd2', '\xcf', '\xb2', '.', '\x13', '\xfb', '\xac', 'j', '\xdf', '\xb1', '\x1d', ':', '?']
+		random = None
+		result = None
+		l2r = False
+		l2k = None
+		l3k = None
 
-	l2c = tpm.getData(eTPM.DT_LEVEL2_CERT)
-	if l2c is None:
+		l2c = tpm.getData(eTPM.DT_LEVEL2_CERT)
+		if l2c is None:
+			return 0
+
+		l2k = validate_certificate(l2c, rootkey)
+		if l2k is None:
+			return 0
+
+		l3c = tpm.getData(eTPM.DT_LEVEL3_CERT)
+		if l3c is None:
+			return 0
+
+		l3k = validate_certificate(l3c, l2k)
+		if l3k is None:
+			return 0
+
+		random = get_random()
+		if random is None:
+			return 0
+
+		value = tpm.computeSignature(random)
+		result = decrypt_block(value, l3k)
+		if result is None:
+			return 0
+
+		if result [80:88] != random:
+			return 0
+
+		return 1
+	except:
 		return 0
-
-	l2k = validate_certificate(l2c, rootkey)
-	if l2k is None:
-		return 0
-
-	l3c = tpm.getData(eTPM.DT_LEVEL3_CERT)
-	if l3c is None:
-		return 0
-
-	l3k = validate_certificate(l3c, l2k)
-	if l3k is None:
-		return 0
-
-	random = get_random()
-	if random is None:
-		return 0
-
-	value = tpm.computeSignature(random)
-	result = decrypt_block(value, l3k)
-	if result is None:
-		return 0
-
-	if result [80:88] != random:
-		return 0
-
-	return 1
