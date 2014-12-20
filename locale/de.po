@@ -1177,5 +1177,14 @@ msgstr "OpenWebif-Konfiguration"
 msgid "transcoded"
 msgstr "transkodiert"
 
+msgid "System OE"
+msgstr "OE-System"
+
+msgid "Distro"
+msgstr "Distribution"
+
+msgid "Driver date"
+msgstr "Treiberversion"
+
 #~ msgid "Timer List"
 #~ msgstr "Timer-Liste"
