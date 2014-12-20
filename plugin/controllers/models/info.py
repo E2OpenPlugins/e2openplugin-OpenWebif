@@ -137,6 +137,7 @@ def getInfo():
 
 	info['brand'] = getMachineBrand()
 	info['model'] = getMachineName()
+	info['boxtype'] = getBoxType()
 
 	chipset = "unknown"
 	if fileExists("/etc/.box"):
@@ -272,14 +273,14 @@ def getInfo():
 		if free <= 1024:
 			free = "%i MB" % free
 		else:
-			free = float(free) / float(1024)
+			free = free / 1024.
 			free = "%.3f GB" % free
 
-		size = hdd.diskSize() * 1000000 / float(1048576)
+		size = hdd.diskSize() * 1000000 / 1048576.
 		if size > 1048576:
-			size = "%.2f TB" % (size / float(1048576))
+			size = "%.2f TB" % (size / 1048576.)
 		elif size > 1024:
-			size = "%d GB" % (size / float(1024))
+			size = "%.1f GB" % (size / 1024.)
 		else:
 			size = "%d MB" % size
 
@@ -358,9 +359,9 @@ def getCurrentTime():
 def getTranscodingSupport():
 	global STATICBOXINFO
 	if STATICBOXINFO is None:
-	    getInfo()
+		getInfo()
 	if (getMachineName() in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or getMachineBuild() in ('inihdp', 'hd2400', 'et10000')) and (os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo'))):
-	    return True
+		return True
 	return False
 
 def getStatusInfo(self):

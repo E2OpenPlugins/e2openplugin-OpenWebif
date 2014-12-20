@@ -1175,3 +1175,12 @@ msgstr ""
 
 msgid "transcoded"
 msgstr ""
+
+msgid "System OE"
+msgstr ""
+
+msgid "Distro"
+msgstr ""
+
+msgid "Driver date"
+msgstr ""
