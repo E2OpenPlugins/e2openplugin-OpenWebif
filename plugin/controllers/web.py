@@ -451,8 +451,8 @@ class WebController(BaseController):
 			dirname,
 			tags,
 			repeated,
-			self.vpsparams(request),
-			eit
+			eit,
+			self.vpsparams(request)
 		)
 
 	def P_timeraddbyeventid(self, request):
