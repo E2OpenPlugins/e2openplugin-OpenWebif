@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 ##############################################################################
 #                        2011 E2OpenPlugins                                  #
 #                                                                            #
@@ -18,6 +17,7 @@ from ServiceReference import ServiceReference
 from time import time, strftime, localtime, mktime
 from urllib import unquote
 from info import GetWithAlternative
+from Plugins.Extensions.OpenWebif.__init__ import _
 
 def getTimers(session):
 	rt = session.nav.RecordTimer
@@ -161,7 +161,7 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 
 			return {
 				"result": False,
-				"message": "Conflicting Timer(s) detected! %s" % " / ".join(errors)
+				"message": _("Conflicting Timer(s) detected! %s") % " / ".join(errors)
 			}
 		#VPS
 		if vpsinfo is not None:
@@ -173,12 +173,12 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 		print e
 		return {
 			"result": False,
-			"message": "Could not add timer '%s'!" % name
+			"message": _("Could not add timer '%s'!") % name
 		}
 
 	return {
 		"result": True,
-		"message": "Timer '%s' added" % name
+		"message": _("Timer '%s' added") % name
 	}
 
 def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vpsinfo):
@@ -187,7 +187,7 @@ def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vps
 	if event is None:
 		return {
 			"result": False,
-			"message": "EventId not found"
+			"message": _("EventId not found")
 		}
 
 	(begin, end, name, description, eit) = parseEvent(event)
@@ -254,17 +254,17 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 				rt.timeChanged(timer)
 				return {
 					"result": True,
-					"message": "Timer '%s' changed" % name
+					"message": _("Timer '%s' changed") % name
 				}
 			else:
 				return {
 					"result": False,
-					"message": "Timer '%s' not saved while Conflict" % name
+					"message": _("Timer '%s' not saved while Conflict") % name
 				}
 
 	return {
 		"result": False,
-		"message": "Could not find timer '%s' with given start and end time!" % name
+		"message": _("Could not find timer '%s' with given start and end time!") % name
 	}
 
 def removeTimer(session, serviceref, begin, end):
@@ -277,12 +277,12 @@ def removeTimer(session, serviceref, begin, end):
 			rt.removeEntry(timer)
 			return {
 				"result": True,
-				"message": "The timer '%s' has been deleted successfully" % timer.name
+				"message": _("The timer '%s' has been deleted successfully") % timer.name
 			}
 
 	return {
 		"result": False,
-		"message": "No matching Timer found"
+		"message": _("No matching Timer found")
 	}
 
 def toggleTimerStatus(session, serviceref, begin, end):
@@ -300,27 +300,27 @@ def toggleTimerStatus(session, serviceref, begin, end):
 				effect = "disabled"
 			return {
 				"result": True,
-				"message": "The timer '%s' has been %s successfully" % (timer.name, effect),
+				"message": _("The timer '%s' has been %s successfully") % (timer.name, effect),
 				"disabled": timer.disabled
 			}
 
 	return {
 		"result": False,
-		"message": "No matching Timer found"
+		"message": _("No matching Timer found")
 	}
 
 def cleanupTimer(session):
 	session.nav.RecordTimer.cleanup()
 	return {
 		"result": True,
-		"message": "List of Timers has been cleaned"
+		"message": _("List of Timers has been cleaned")
 	}
 
 def writeTimerList(session):
 	session.nav.RecordTimer.saveTimer()
 	return {
 		"result": True,
-		"message": "TimerList has been saved"
+		"message": _("TimerList has been saved")
 	}
 
 def recordNow(session, infinite):
@@ -335,13 +335,13 @@ def recordNow(session, infinite):
 	if not event and not infinite:
 		return {
 			"result": False,
-			"message": "No event found! Not recording!"
+			"message": _("No event found! Not recording!")
 		}
 
 	if event:
 		(begin, end, name, description, eit) = parseEvent(event)
 		begin = time()
-		msg = "Instant record for current Event started"
+		msg = _("Instant record for current Event started")
 	else:
 		name = "instant record"
 		description = ""
@@ -350,7 +350,7 @@ def recordNow(session, infinite):
 	if infinite:
 		begin = time()
 		end = begin + 3600 * 10
-		msg = "Infinite Instant recording started"
+		msg = _("Infinite Instant recording started")
 
 	timer = RecordTimerEntry(
 		ServiceReference(serviceref),
@@ -369,7 +369,7 @@ def recordNow(session, infinite):
 	if rt.record(timer):
 		return {
 			"result": False,
-			"message": "Timer conflict detected! Not recording!"
+			"message": _("Timer conflict detected! Not recording!")
 		}
 	nt = {
 		"serviceref": str(timer.service_ref),
@@ -443,7 +443,7 @@ def tvbrowser(session, request):
 	if request.args['sRef'][0] is None:
 		return {
 		 "result": False, 
-		 "message": "Missing requesteter: sRef" 
+		 "message": _("Missing requesteter: sRef") 
 		}
 	else:
 		takeApart = unquote(request.args['sRef'][0]).decode('utf-8', 'ignore').encode('utf-8').split('|')
@@ -465,7 +465,7 @@ def tvbrowser(session, request):
 	else:
 		return {
 		 "result": False,
-		 "message": "Unknown command: '%s'" % request.args['command'][0]
+		 "message": _("Unknown command: '%s'") % request.args['command'][0]
 		}
 
 def getPowerTimer(session):
@@ -522,7 +522,7 @@ def getPowerTimer(session):
 		print e
 		return {
 			"result": False,
-			"message": "PowerTimer feature not available"
+			"message": _("PowerTimer feature not available")
 		}
 
 def setPowerTimer(session, request):
@@ -598,12 +598,12 @@ def getSleepTimer(session):
 			"enabled": session.nav.SleepTimer.isActive(),
 			"minutes": session.nav.SleepTimer.getCurrentSleepTime(),
 			"action": config.SleepTimer.action.value,
-			"message": "Sleeptimer is enabled" if session.nav.SleepTimer.isActive() else "Sleeptimer is disabled"
+			"message": _("Sleeptimer is enabled") if session.nav.SleepTimer.isActive() else _("Sleeptimer is disabled")
 		}
 	except Exception, e:
 		return {
 			"result": False,
-			"message": "SleepTimer feature not available"
+			"message": _("SleepTimer feature not available")
 		}
 
 def setSleepTimer(session, time, action, enabled):
@@ -612,13 +612,13 @@ def setSleepTimer(session, time, action, enabled):
 		ret = getSleepTimer(session)
 		from Screens.Standby import inStandby
 		if inStandby is not None:
-			ret["message"] = "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+			ret["message"] = _("ERROR: Cannot set SleepTimer while device is in Standby-Mode")
 			return ret
 
 		if enabled == False:
 			session.nav.SleepTimer.clear()
 			ret = getSleepTimer(session)
-			ret["message"] = "Sleeptimer has been disabled"
+			ret["message"] = _("Sleeptimer has been disabled")
 			return ret
 
 		if action not in ["shutdown", "standby"]:
@@ -629,10 +629,10 @@ def setSleepTimer(session, time, action, enabled):
 		session.nav.SleepTimer.setSleepTime(time)
 
 		ret = getSleepTimer(session)
-		ret["message"] = "Sleeptimer set to %d minutes" % time
+		ret["message"] = _("Sleeptimer set to %d minutes") % time
 		return ret
 	except Exception, e:
 		return {
 			"result": False,
-			"message": "SleepTimer feature not available"
+			"message": _("SleepTimer feature not available")
 		}
