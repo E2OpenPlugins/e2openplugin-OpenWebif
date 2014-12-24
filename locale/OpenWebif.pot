@@ -1186,40 +1186,40 @@ msgid "Driver date"
 msgstr ""
 
 msgid "Conflicting Timer(s) detected! %s"
-msgstr "Detekován(y) konfliktní časovač(e) %s"
+msgstr ""
 
 msgid "Could not add timer '%s'!"
-msgstr "Nelze přidat časovač '%s'!"
+msgstr ""
 
 msgid "Timer '%s' added"
-msgstr "Přidán časovač '%s'"
+msgstr ""
 
 msgid "EventId not found"
-msgstr "Eventid nenalezeno"
+msgstr ""
 
 msgid "Timer '%s' changed"
-msgstr "Časovač '%s' změněn"
+msgstr ""
 
 msgid "Timer '%s' not saved while Conflict"
-msgstr "Časovač '%s' nebyl kvůli konfliktu uložen"
+msgstr ""
 
 msgid "Could not find timer '%s' with given start and end time!"
-msgstr "Nebylo možné nalézt  časovač '%s' se zadaným časem začátku a konce!"
+msgstr ""
 
 msgid "The timer '%s' has been deleted successfully"
-msgstr "Časovač '%s' byl úspěšně odstraněn"
+msgstr ""
 
 msgid "No matching Timer found"
-msgstr "Nenalezen odpovídající časovač"
+msgstr ""
 
 msgid "The timer '%s' has been %s successfully"
-msgstr "Časovač '%s' byl úspěšně %s"
+msgstr ""
 
 msgid "List of Timers has been cleaned"
-msgstr "Seznam časovačů byl vyčištěn"
+msgstr ""
 
 msgid "TimerList has been saved"
-msgstr "Seznam časovaču byl uložen"
+msgstr ""
 
 msgid "No event found! Not recording!"
 msgstr ""
