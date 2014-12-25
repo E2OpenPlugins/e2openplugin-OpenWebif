@@ -1223,7 +1223,7 @@ msgid "TimerList has been saved"
 msgstr "Timerliste wurde gespeichert"
 
 msgid "No event found! Not recording!"
-msgstr "Keine Sendung gefunden"! Keine Aufnahme!"
+msgstr "Keine Sendung gefunden! Keine Aufnahme!"
 
 msgid "Instant record for current Event started"
 msgstr "Sofortaufnahme für aktuelle Sendung gestartet"
