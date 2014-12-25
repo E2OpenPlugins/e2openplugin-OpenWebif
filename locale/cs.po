@@ -753,14 +753,8 @@ msgstr "podmínek GNU General Public License verze 2 jako"
 msgid "published by the Free Software Foundation."
 msgstr ""
 
-msgid ""
-"All Files of this Software are open source software; you can redistribute it "
-"and/or modify it under the terms of the GNU General Public License version 2 "
-"as published by the Free Software Foundation."
-msgstr ""
-"Všechny soubory tohoto software jsou open source software; můžete je "
-"distribuovat a/nebo modifikovat podle podmínek GNU General Public License "
-"verze 2 jako published by the Free Software Foundation."
+msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
+msgstr "Všechny soubory tohoto software jsou open source software; můžete je distribuovat a/nebo modifikovat podle podmínek GNU General Public License verze 2 jako published by the Free Software Foundation."
 
 msgid "Root"
 msgstr "root"
@@ -1171,10 +1165,10 @@ msgid "No event found! Not recording!"
 msgstr ""
 
 msgid "Instant record for current Event started"
-msgstr ""
+msgstr "Začalo okamžité nahrávání pro aktuální událost"
 
 msgid "Infinite Instant recording started"
-msgstr ""
+msgstr "Začalo neomezené okamžité nahrávání"
 
 msgid "Timer conflict detected! Not recording!"
 msgstr ""
@@ -1189,19 +1183,19 @@ msgid "PowerTimer feature not available"
 msgstr ""
 
 msgid "Sleeptimer is enabled"
-msgstr ""
+msgstr "Časovač usínání je povolen"
 
 msgid "Sleeptimer is disabled"
-msgstr ""
+msgstr "Časovač usínání je zakázán"
 
 msgid "SleepTimer feature not available"
-msgstr ""
+msgstr "Časovač usínání není dostupný"
 
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr ""
+msgstr "CHYBA: nelze nastavit časovač usínání, jestliže je přijímač ve stanby"
 
 msgid "Sleeptimer has been disabled"
-msgstr ""
+msgstr "Časovač usínání byl zakázán"
 
 msgid "Sleeptimer set to %d minutes"
-msgstr ""
+msgstr "Časovač usínání nastaven na %d minut"
