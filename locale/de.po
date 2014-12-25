@@ -1186,5 +1186,77 @@ msgstr "Distribution"
 msgid "Driver date"
 msgstr "Treiberversion"
 
-#~ msgid "Timer List"
-#~ msgstr "Timer-Liste"
+msgid "Conflicting Timer(s) detected! %s"
+msgstr "Timerkonflikt(e) gefunden! %s"
+
+msgid "Could not add timer '%s'!"
+msgstr "Timer '%s' konnte nicht zugefügt werden!"
+
+msgid "Timer '%s' added"
+msgstr "Timer '%s' zugefügt"
+
+msgid "EventId not found"
+msgstr "EventId nicht gefunden"
+
+msgid "Timer '%s' changed"
+msgstr "Timer '%s' geändert"
+
+msgid "Timer '%s' not saved while Conflict"
+msgstr "Timer '%s' wegen Konflikt nicht gespeichert"
+
+msgid "Could not find timer '%s' with given start and end time!"
+msgstr "Timer '%s' mit angegebener Start-/Endzeit nicht gefunden!"
+
+msgid "The timer '%s' has been deleted successfully"
+msgstr "Timer '%s' erfolgreich gelöscht"
+
+msgid "No matching Timer found"
+msgstr "Kein entsprechender Timer gefunden"
+
+msgid "The timer '%s' has been %s successfully"
+msgstr "Timer '%s' wurde erfolgreich %s"
+
+msgid "List of Timers has been cleaned"
+msgstr "Timerliste wurde aufgeräumt"
+
+msgid "TimerList has been saved"
+msgstr "Timerliste wurde gespeichert"
+
+msgid "No event found! Not recording!"
+msgstr "Keine Sendung gefunden"! Keine Aufnahme!"
+
+msgid "Instant record for current Event started"
+msgstr "Sofortaufnahme für aktuelle Sendung gestartet"
+
+msgid "Infinite Instant recording started"
+msgstr "Unbegrenzte Sofortaufnahme gestartet"
+
+msgid "Timer conflict detected! Not recording!"
+msgstr "Timerkonflikt gefunden! Keine Aufnahme!"
+
+msgid "Missing requesteter: sRef"
+msgstr "Fehlende Angabe: sRef"
+
+msgid "Unknown command: '%s'"
+msgstr "Unbekanntes Kommando: '%s'"
+
+msgid "PowerTimer feature not available"
+msgstr "PowerTimer-Funktion nicht verfügbar"
+
+msgid "Sleeptimer is enabled"
+msgstr "SleepTimer aktiviert"
+
+msgid "Sleeptimer is disabled"
+msgstr "SleepTimer deaktiviert"
+
+msgid "SleepTimer feature not available"
+msgstr "SleepTimer-Funktion nicht verfügbar"
+
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr "FEHLER: SleepTimer im Standby nicht verfügbar"
+
+msgid "Sleeptimer has been disabled"
+msgstr "SleepTimer wurde deaktiviert"
+
+msgid "Sleeptimer set to %d minutes"
+msgstr "SleepTimer eingestellt auf %d Minuten"

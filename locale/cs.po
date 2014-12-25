@@ -1131,5 +1131,77 @@ msgstr "Nastavení OpenWebif"
 msgid "transcoded"
 msgstr ""
 
-#~ msgid "Timer List"
-#~ msgstr "Přehled časovačů"
+msgid "Conflicting Timer(s) detected! %s"
+msgstr "Detekován(y) konfliktní časovač(e) %s"
+
+msgid "Could not add timer '%s'!"
+msgstr "Nelze přidat časovač '%s'!"
+
+msgid "Timer '%s' added"
+msgstr "Přidán časovač '%s'"
+
+msgid "EventId not found"
+msgstr "Eventid nenalezeno"
+
+msgid "Timer '%s' changed"
+msgstr "Časovač '%s' změněn"
+
+msgid "Timer '%s' not saved while Conflict"
+msgstr "Časovač '%s' nebyl kvůli konfliktu uložen"
+
+msgid "Could not find timer '%s' with given start and end time!"
+msgstr "Nebylo možné nalézt  časovač '%s' se zadaným časem začátku a konce!"
+
+msgid "The timer '%s' has been deleted successfully"
+msgstr "Časovač '%s' byl úspěšně odstraněn"
+
+msgid "No matching Timer found"
+msgstr "Nenalezen odpovídající časovač"
+
+msgid "The timer '%s' has been %s successfully"
+msgstr "Časovač '%s' byl úspěšně %s"
+
+msgid "List of Timers has been cleaned"
+msgstr "Seznam časovačů byl vyčištěn"
+
+msgid "TimerList has been saved"
+msgstr "Seznam časovačů byl uložen"
+
+msgid "No event found! Not recording!"
+msgstr ""
+
+msgid "Instant record for current Event started"
+msgstr ""
+
+msgid "Infinite Instant recording started"
+msgstr ""
+
+msgid "Timer conflict detected! Not recording!"
+msgstr ""
+
+msgid "Missing requesteter: sRef"
+msgstr ""
+
+msgid "Unknown command: '%s'"
+msgstr ""
+
+msgid "PowerTimer feature not available"
+msgstr ""
+
+msgid "Sleeptimer is enabled"
+msgstr ""
+
+msgid "Sleeptimer is disabled"
+msgstr ""
+
+msgid "SleepTimer feature not available"
+msgstr ""
+
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr ""
+
+msgid "Sleeptimer has been disabled"
+msgstr ""
+
+msgid "Sleeptimer set to %d minutes"
+msgstr ""
