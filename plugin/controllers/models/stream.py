@@ -65,6 +65,7 @@ def getStream(session, request, m3ufile):
 			
 	# INI use dynamic encoder allocation, and each stream can have diffrent parameters 
 	if  getMachineBuild() in ('inihdp', 'hd2400', 'et10000'):
+		transcoder_port = 8001
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
 				bitrate = config.plugins.transcodingsetup.bitrate.value
