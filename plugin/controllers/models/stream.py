@@ -10,7 +10,7 @@
 ##############################################################################
 from enigma import eServiceReference, getBestPlayableServiceReference
 from ServiceReference import ServiceReference
-from info import getInfo
+import info
 from urllib import unquote, quote
 import os
 from Components.config import config
@@ -46,8 +46,7 @@ def getStream(session, request, m3ufile):
 			progopt="#EXTINF:-1,%s\n" % name
 
 	portNumber = config.OpenWebif.streamport.value
-	info = getInfo()
-	model = info["model"]
+	model = info.getMachineName()
 	transcoder_port = None
 	if model in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "hd2400", "xpeedlx3", "gbquad", "gbquadplus"):
 		try:
@@ -104,8 +103,7 @@ def getTS(self, request):
 			metafile.close()
 
 		portNumber = config.OpenWebif.port.value
-		info = getInfo()
-		model = info["model"]
+		model = info.getMachineName()
 		transcoder_port = None
 		if model in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "hd2400", "xpeedlx3", "gbquad", "gbquadplus"):
 			try:
