@@ -360,7 +360,7 @@ def getTranscodingSupport():
 	global STATICBOXINFO
 	if STATICBOXINFO is None:
 		getInfo()
-	if STATICBOXINFO['model'] in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "hd2400", "xpeedlx3", "gbquad", "gbquadplus"):
+	if STATICBOXINFO['model'] in ("Duo²", "Solo²", "Solo SE", "solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "hd2400", "xpeedlx3", "gbquad", "gbquadplus"):
 		return True
 	return False
 
