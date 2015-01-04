@@ -28,7 +28,7 @@ def reloadParentalControl(self):
 def reloadServicesLists(self, request):
 	self.eDVBDB = eDVBDB.getInstance()
 	res = "False"
-	msg = "missing or wrong parameter mode [0=both, 1=lamedb only, 2=userbouqets only"
+	msg = "missing or wrong parameter mode [0=both, 1=lamedb only, 2=userbouqets only, 3=transponders, 4=parentalcontrol white-/blacklist]"
 
 	if "mode" in request.args:
 		mode = unquote(request.args["mode"][0])
