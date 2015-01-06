@@ -256,13 +256,38 @@ def getSatellites(stype):
 						h = _("E")
 					service_name = ("%d.%d" + h) % (orbpos / 10, orbpos % 10)
 			service.setName("%s - %s" % (service_name, service_type))
-			s = service.toString()
 			ret.append({
 				"service": service.toString(),
 				"name": service.getName()
 			})
+			
+	ret = sortSatellites(ret)
 
 	return { "satellites": ret }
+	
+def sortSatellites(satList):
+	import re
+	sortDict = {}
+	i = 0
+	for k in satList:
+		result = re.search("[(]\s*satellitePosition\s*==\s*(\d+)\s*[)]", k["service"], re.IGNORECASE)
+		if result is None:
+			return satList
+		orb = int(result.group(1))
+		if orb > 3600:
+			orb *= -1
+		elif orb > 1800:
+			orb -= 3600 
+		if not orb in sortDict:
+			sortDict[orb] = []
+		sortDict[orb].append(i)
+		i += 1
+	outList = []
+	for l in sorted(sortDict.keys()):
+		for v in sortDict[l]:
+			outList.append(satList[v])
+	return outList
+			
 
 
 def getProtection(sref):
