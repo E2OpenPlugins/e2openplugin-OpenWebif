@@ -260,8 +260,10 @@ def getSatellites(stype):
 				"service": service.toString(),
 				"name": service.getName()
 			})
+		
+	ret = sortSatellites(ret)		
+			
 	return { "satellites": ret }
-
 def sortSatellites(satList):
 	import re
 	sortDict = {}
