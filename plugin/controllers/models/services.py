@@ -807,7 +807,7 @@ def getPicon(sname):
 		if fileExists(filename):
 			return "/picon/" + sname
 	if cname is not None: # picon by channel name
-		cname = unicodedata.normalize('NFKD', unicode(cname, 'utf_8')).encode('ASCII', 'ignore')
+		cname = unicodedata.normalize('NFKD', unicode(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
 		cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').lower())
 		if len(cname) > 0:
 			filename = getPiconPath() + cname + ".png"
