@@ -812,7 +812,9 @@ def getPicon(sname):
 		if len(cname) > 0:
 			filename = getPiconPath() + cname + ".png"
 		if fileExists(filename):
-			return "/picon/" + cname + ".png"		
+			return "/picon/" + cname + ".png"
+		if len(cname) > 2 and cname.endswith('hd') and fileExists(getPiconPath() + cname[:-2] + ".png"):
+			return "/picon/" + cname[:-2] + ".png"
 	return "/images/default_picon.png"
 
 def getParentalControlList():
