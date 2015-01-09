@@ -46,9 +46,8 @@ def getStream(session, request, m3ufile):
 			progopt="#EXTINF:-1,%s\n" % name
 
 	portNumber = config.OpenWebif.streamport.value
-	model = info.getMachineName()
 	transcoder_port = None
-	if model in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "hd2400", "xpeedlx3", "gbquad", "gbquadplus"):
+	if info.getTranscodingSupport():
 		try:
 			transcoder_port = int(config.plugins.transcodingsetup.port.value)
 		except StandardError:
@@ -103,9 +102,8 @@ def getTS(self, request):
 			metafile.close()
 
 		portNumber = config.OpenWebif.port.value
-		model = info.getMachineName()
 		transcoder_port = None
-		if model in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "hd2400", "xpeedlx3", "gbquad", "gbquadplus"):
+		if info.getTranscodingSupport():
 			try:
 				transcoder_port = int(config.plugins.transcodingsetup.port.value)
 			except StandardError:
