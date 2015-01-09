@@ -803,12 +803,14 @@ def getPicon(sname):
 		if fileExists(filename):
 			return "/picon/" + sname
 	if cname is not None: # picon by channel name
-		cname = unicodedata.normalize('NFKD', unicode(cname, 'utf_8')).encode('ASCII', 'ignore')
+		cname = unicodedata.normalize('NFKD', unicode(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
 		cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').lower())
 		if len(cname) > 0:
 			filename = getPiconPath() + cname + ".png"
 		if fileExists(filename):
-			return "/picon/" + cname + ".png"		
+			return "/picon/" + cname + ".png"
+		if len(cname) > 2 and cname.endswith('hd') and fileExists(getPiconPath() + cname[:-2] + ".png"):
+			return "/picon/" + cname[:-2] + ".png"
 	return "/images/default_picon.png"
 
 def getParentalControlList():

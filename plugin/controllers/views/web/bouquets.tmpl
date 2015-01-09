@@ -1,0 +1,11 @@
+#filter WebSafe
+<?xml version="1.0" encoding="UTF-8"?>
+<e2servicelist>
+	#for $bouquet in $bouquets
+	<e2service>
+		<e2servicereference>$bouquet[0]</e2servicereference>
+		<e2servicename>$bouquet[1]</e2servicename>
+	</e2service>
+	#end for
+</e2servicelist>
+#end filter
