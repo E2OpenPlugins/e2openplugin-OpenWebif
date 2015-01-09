@@ -31,36 +31,6 @@ try:
 except:
 	tpmloaded = 0
 
-def getMachineBuild():
-	return getAllInfo()['procmodel']
-
-def getMachineBrand():
-	return getAllInfo()['brand']
-	
-def getMachineName():
-	return getAllInfo()['model']
-
-def getMachineProcModel():
-	return getAllInfo()['procmodel']
-	
-def getBoxType():
-	return getAllInfo()['procmodel']
-
-def getOEVersion():
-	return getAllInfo()['oever']
-
-def getDriverDate():
-	return getAllInfo()['driverdate']
-
-def getImageVersion():
-	return getAllInfo()['imagever']
-
-def getImageBuild():
-	return getAllInfo()['imagebuild']
-
-def getImageDistro():
-	return getAllInfo()['distro']
-	
 def getAllInfo():
 	info = {}
 
@@ -285,6 +255,38 @@ def getAllInfo():
 	info['driverdate'] = driverdate
 
 	return info
+
+STATIC_INFO_DIC = getAllInfo()
+
+def getMachineBuild():
+	return STATIC_INFO_DIC['procmodel']
+
+def getMachineBrand():
+	return STATIC_INFO_DIC['brand']
+
+def getMachineName():
+	return STATIC_INFO_DIC['model']
+
+def getMachineProcModel():
+	return STATIC_INFO_DIC['procmodel']
+
+def getBoxType():
+	return STATIC_INFO_DIC['procmodel']
+
+def getOEVersion():
+	return STATIC_INFO_DIC['oever']
+
+def getDriverDate():
+	return STATIC_INFO_DIC['driverdate']
+
+def getImageVersion():
+	return STATIC_INFO_DIC['imagever']
+
+def getImageBuild():
+	return STATIC_INFO_DIC['imagebuild']
+
+def getImageDistro():
+	return STATIC_INFO_DIC['distro']
 
 def validate_certificate(cert, key):
 	buf = decrypt_block(cert[8:], key)
