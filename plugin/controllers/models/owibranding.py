@@ -26,39 +26,94 @@ except:
 tpmloaded = 1
 try:
 	from enigma import eTPM
+	if not hasattr(eTPM, 'getData'):
+		tpmloaded = 0
 except:
 	tpmloaded = 0
 
-def getMachineBuild():
-	return getAllInfo()['procmodel']
+def validate_certificate(cert, key):
+	buf = decrypt_block(cert[8:], key)
+	if buf is None:
+		return None
+	return buf[36:107] + cert[139:196]
 
-def getMachineBrand():
-	return getAllInfo()['brand']
-	
-def getMachineName():
-	return getAllInfo()['model']
+def get_random():
+	try:
+		xor = lambda a,b: ''.join(chr(ord(c)^ord(d)) for c,d in zip(a,b*100))
+		random = urandom(8)
+		x = str(time())[-8:]
+		result = xor(random, x)
 
-def getMachineProcModel():
-	return getAllInfo()['procmodel']
-	
-def getBoxType():
-	return getAllInfo()['procmodel']
+		return result
+	except:
+		return None
 
-def getOEVersion():
-	return getAllInfo()['oever']
+def bin2long(s):
+	return reduce( lambda x,y:(x<<8L)+y, map(ord, s))
 
-def getDriverDate():
-	return getAllInfo()['driverdate']
+def long2bin(l):
+	res = ""
+	for byte in range(128):
+		res += chr((l >> (1024 - (byte + 1) * 8)) & 0xff)
+	return res
 
-def getImageVersion():
-	return getAllInfo()['imagever']
+def rsa_pub1024(src, mod):
+	return long2bin(pow(bin2long(src), 65537, bin2long(mod)))
 
-def getImageBuild():
-	return getAllInfo()['imagebuild']
+def decrypt_block(src, mod):
+	if len(src) != 128 and len(src) != 202:
+		return None
+	dest = rsa_pub1024(src[:128], mod)
+	hash = hashlib.sha1(dest[1:107])
+	if len(src) == 202:
+		hash.update(src[131:192])
+	result = hash.digest()
+	if result == dest[107:127]:
+		return dest
+	return None
 
-def getImageDistro():
-	return getAllInfo()['distro']
-	
+def tpm_check():
+	try:
+		tpm = eTPM()
+		rootkey = ['\x9f', '|', '\xe4', 'G', '\xc9', '\xb4', '\xf4', '#', '&', '\xce', '\xb3', '\xfe', '\xda', '\xc9', 'U', '`', '\xd8', '\x8c', 's', 'o', '\x90', '\x9b', '\\', 'b', '\xc0', '\x89', '\xd1', '\x8c', '\x9e', 'J', 'T', '\xc5', 'X', '\xa1', '\xb8', '\x13', '5', 'E', '\x02', '\xc9', '\xb2', '\xe6', 't', '\x89', '\xde', '\xcd', '\x9d', '\x11', '\xdd', '\xc7', '\xf4', '\xe4', '\xe4', '\xbc', '\xdb', '\x9c', '\xea', '}', '\xad', '\xda', 't', 'r', '\x9b', '\xdc', '\xbc', '\x18', '3', '\xe7', '\xaf', '|', '\xae', '\x0c', '\xe3', '\xb5', '\x84', '\x8d', '\r', '\x8d', '\x9d', '2', '\xd0', '\xce', '\xd5', 'q', '\t', '\x84', 'c', '\xa8', ')', '\x99', '\xdc', '<', '"', 'x', '\xe8', '\x87', '\x8f', '\x02', ';', 'S', 'm', '\xd5', '\xf0', '\xa3', '_', '\xb7', 'T', '\t', '\xde', '\xa7', '\xf1', '\xc9', '\xae', '\x8a', '\xd7', '\xd2', '\xcf', '\xb2', '.', '\x13', '\xfb', '\xac', 'j', '\xdf', '\xb1', '\x1d', ':', '?']
+		random = None
+		result = None
+		l2r = False
+		l2k = None
+		l3k = None
+
+		l2c = tpm.getData(eTPM.DT_LEVEL2_CERT)
+		if l2c is None:
+			return 0
+
+		l2k = validate_certificate(l2c, rootkey)
+		if l2k is None:
+			return 0
+
+		l3c = tpm.getData(eTPM.DT_LEVEL3_CERT)
+		if l3c is None:
+			return 0
+
+		l3k = validate_certificate(l3c, l2k)
+		if l3k is None:
+			return 0
+
+		random = get_random()
+		if random is None:
+			return 0
+
+		value = tpm.computeSignature(random)
+		result = decrypt_block(value, l3k)
+		if result is None:
+			return 0
+
+		if result [80:88] != random:
+			return 0
+
+		return 1
+	except:
+		return 0
+
 def getAllInfo():
 	info = {}
 
@@ -284,85 +339,34 @@ def getAllInfo():
 
 	return info
 
-def validate_certificate(cert, key):
-	buf = decrypt_block(cert[8:], key)
-	if buf is None:
-		return None
-	return buf[36:107] + cert[139:196]
+STATIC_INFO_DIC = getAllInfo()
 
-def get_random():
-	try:
-		xor = lambda a,b: ''.join(chr(ord(c)^ord(d)) for c,d in zip(a,b*100))
-		random = urandom(8)
-		x = str(time())[-8:]
-		result = xor(random, x)
+def getMachineBuild():
+	return STATIC_INFO_DIC['procmodel']
 
-		return result
-	except:
-		return None
+def getMachineBrand():
+	return STATIC_INFO_DIC['brand']
 
-def bin2long(s):
-	return reduce( lambda x,y:(x<<8L)+y, map(ord, s))
+def getMachineName():
+	return STATIC_INFO_DIC['model']
 
-def long2bin(l):
-	res = ""
-	for byte in range(128):
-		res += chr((l >> (1024 - (byte + 1) * 8)) & 0xff)
-	return res
+def getMachineProcModel():
+	return STATIC_INFO_DIC['procmodel']
 
-def rsa_pub1024(src, mod):
-	return long2bin(pow(bin2long(src), 65537, bin2long(mod)))
+def getBoxType():
+	return STATIC_INFO_DIC['procmodel']
 
-def decrypt_block(src, mod):
-	if len(src) != 128 and len(src) != 202:
-		return None
-	dest = rsa_pub1024(src[:128], mod)
-	hash = hashlib.sha1(dest[1:107])
-	if len(src) == 202:
-		hash.update(src[131:192])
-	result = hash.digest()
-	if result == dest[107:127]:
-		return dest
-	return None
+def getOEVersion():
+	return STATIC_INFO_DIC['oever']
 
-def tpm_check():
-	try:
-		tpm = eTPM()
-		rootkey = ['\x9f', '|', '\xe4', 'G', '\xc9', '\xb4', '\xf4', '#', '&', '\xce', '\xb3', '\xfe', '\xda', '\xc9', 'U', '`', '\xd8', '\x8c', 's', 'o', '\x90', '\x9b', '\\', 'b', '\xc0', '\x89', '\xd1', '\x8c', '\x9e', 'J', 'T', '\xc5', 'X', '\xa1', '\xb8', '\x13', '5', 'E', '\x02', '\xc9', '\xb2', '\xe6', 't', '\x89', '\xde', '\xcd', '\x9d', '\x11', '\xdd', '\xc7', '\xf4', '\xe4', '\xe4', '\xbc', '\xdb', '\x9c', '\xea', '}', '\xad', '\xda', 't', 'r', '\x9b', '\xdc', '\xbc', '\x18', '3', '\xe7', '\xaf', '|', '\xae', '\x0c', '\xe3', '\xb5', '\x84', '\x8d', '\r', '\x8d', '\x9d', '2', '\xd0', '\xce', '\xd5', 'q', '\t', '\x84', 'c', '\xa8', ')', '\x99', '\xdc', '<', '"', 'x', '\xe8', '\x87', '\x8f', '\x02', ';', 'S', 'm', '\xd5', '\xf0', '\xa3', '_', '\xb7', 'T', '\t', '\xde', '\xa7', '\xf1', '\xc9', '\xae', '\x8a', '\xd7', '\xd2', '\xcf', '\xb2', '.', '\x13', '\xfb', '\xac', 'j', '\xdf', '\xb1', '\x1d', ':', '?']
-		random = None
-		result = None
-		l2r = False
-		l2k = None
-		l3k = None
+def getDriverDate():
+	return STATIC_INFO_DIC['driverdate']
 
-		l2c = tpm.getData(eTPM.DT_LEVEL2_CERT)
-		if l2c is None:
-			return 0
+def getImageVersion():
+	return STATIC_INFO_DIC['imagever']
 
-		l2k = validate_certificate(l2c, rootkey)
-		if l2k is None:
-			return 0
+def getImageBuild():
+	return STATIC_INFO_DIC['imagebuild']
 
-		l3c = tpm.getData(eTPM.DT_LEVEL3_CERT)
-		if l3c is None:
-			return 0
-
-		l3k = validate_certificate(l3c, l2k)
-		if l3k is None:
-			return 0
-
-		random = get_random()
-		if random is None:
-			return 0
-
-		value = tpm.computeSignature(random)
-		result = decrypt_block(value, l3k)
-		if result is None:
-			return 0
-
-		if result [80:88] != random:
-			return 0
-
-		return 1
-	except:
-		return 0
+def getImageDistro():
+	return STATIC_INFO_DIC['distro']
