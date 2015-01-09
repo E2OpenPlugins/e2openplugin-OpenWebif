@@ -26,6 +26,8 @@ except:
 tpmloaded = 1
 try:
 	from enigma import eTPM
+	if not hasattr(eTPM, 'getData'):
+		tpmloaded = 0
 except:
 	tpmloaded = 0
 
