@@ -50,6 +50,14 @@ def getTimers(session):
 		if timer.justplay:
 			justplay  = 1
 
+		always_zap = 0
+		try:
+			if timer.always_zap:
+				always_zap  = 1
+		except Exception, e:
+			always_zap = -1
+			pass
+		
 		if timer.dirname:
 			dirname = timer.dirname
 		else:
@@ -116,7 +124,8 @@ def getTimers(session):
 			"asrefs": asrefs,
 			"vpsplugin_enabled":vpsplugin_enabled,
 			"vpsplugin_overwrite":vpsplugin_overwrite,
-			"vpsplugin_time":vpsplugin_time
+			"vpsplugin_time":vpsplugin_time,
+			"always_zap":always_zap
 		})
 
 	return {
@@ -124,7 +133,7 @@ def getTimers(session):
 		"timers": timers
 	}
 
-def addTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname, tags, repeated, vpsinfo=None, logentries=None, eit=0):
+def addTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname, tags, repeated, vpsinfo=None, logentries=None, eit=0, always_zap=-1):
 	serviceref = unquote(serviceref)
 	rt = session.nav.RecordTimer
 
@@ -170,6 +179,10 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 			timer.vpsplugin_overwrite = vpsinfo["vpsplugin_overwrite"]
 			timer.vpsplugin_time = vpsinfo["vpsplugin_time"]
 
+		# TODO : check if always_zap available
+		if always_zap <> -1:
+			timer.always_zap = always_zap
+
 	except Exception, e:
 		print e
 		return {
@@ -182,7 +195,7 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 		"message": _("Timer '%s' added") % name
 	}
 
-def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vpsinfo):
+def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vpsinfo, always_zap):
 	serviceref = unquote(serviceref)
 	event = eEPGCache.getInstance().lookupEventId(eServiceReference(serviceref), eventid)
 	if event is None:
@@ -207,12 +220,13 @@ def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vps
 		False,
 		vpsinfo,
 		None,
-		eit
+		eit,
+		always_zap
 	)
 
 # NEW editTimer function to prevent delete + add on change
 # !!! This new function must be tested !!!! 
-def editTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterEvent, dirname, tags, repeated, channelOld, beginOld, endOld, vpsinfo):
+def editTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterEvent, dirname, tags, repeated, channelOld, beginOld, endOld, vpsinfo, always_zap):
 	# TODO: exception handling
 	serviceref = unquote(serviceref)
 	channelOld_str =  ':'.join(str(channelOld).split(':')[:11])
@@ -239,6 +253,10 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 				timer.vpsplugin_enabled = vpsinfo["vpsplugin_enabled"]
 				timer.vpsplugin_overwrite = vpsinfo["vpsplugin_overwrite"]
 				timer.vpsplugin_time = vpsinfo["vpsplugin_time"]
+
+			# TODO: check if always_zap is available
+			if always_zap <> -1:
+				timer.always_zap = always_zap
 
 			# TODO: multi tuner test
 			sanity = TimerSanityCheck(rt.timer_list, timer)

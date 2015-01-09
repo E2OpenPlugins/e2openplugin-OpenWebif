@@ -191,7 +191,7 @@ class BaseController(resource.Resource):
 		if not ret['boxname'] or not ret['customname']:
 			ret['boxname'] = getInfo()['brand']+" "+getInfo()['model']
 		ret['box'] = getBoxType()
-		ret["remote"] = rc_model.getRcFolder()
+		ret["remote"] = rc_model.getRcFolder()+"/remote"
 
 		extras = []
 		extras.append({ 'key': 'ajax/settings','description': _("Settings")})

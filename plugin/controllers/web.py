@@ -434,6 +434,10 @@ class WebController(BaseController):
 		description = ""
 		if "description" in request.args.keys():
 			description = request.args["description"][0]
+		
+		always_zap = -1
+		if "always_zap" in request.args.keys():
+			always_zap = int(request.args["always_zap"][0])
 
 		return addTimer(
 			self.session,
@@ -448,7 +452,10 @@ class WebController(BaseController):
 			dirname,
 			tags,
 			repeated,
-			self.vpsparams(request)
+			self.vpsparams(request),
+			None,
+			0,
+			always_zap
 		)
 
 	def P_timeraddbyeventid(self, request):
@@ -476,6 +483,10 @@ class WebController(BaseController):
 				"message": "The parameter 'eventid' must be a number"
 			}
 
+		always_zap = -1
+		if "always_zap" in request.args.keys():
+			always_zap = int(request.args["always_zap"][0])
+
 		return addTimerByEventId(
 			self.session,
 			eventid,
@@ -483,7 +494,8 @@ class WebController(BaseController):
 			justplay,
 			dirname,
 			tags,
-			self.vpsparams(request)
+			self.vpsparams(request),
+			always_zap
 		)
 
 	def P_timerchange(self, request):
@@ -535,6 +547,10 @@ class WebController(BaseController):
 				"message": "The parameter 'endOld' must be a number"
 			}
 
+		always_zap = -1
+		if "always_zap" in request.args.keys():
+			always_zap = int(request.args["always_zap"][0])
+
 		return editTimer(
 			self.session,
 			request.args["sRef"][0],
@@ -551,7 +567,8 @@ class WebController(BaseController):
 			request.args["channelOld"][0],
 			beginOld,
 			endOld,
-			self.vpsparams(request)
+			self.vpsparams(request),
+			always_zap
 		)
 
 	def P_timertogglestatus(self, request):

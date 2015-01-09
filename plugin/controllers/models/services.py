@@ -260,11 +260,10 @@ def getSatellites(stype):
 				"service": service.toString(),
 				"name": service.getName()
 			})
+		
+	ret = sortSatellites(ret)		
 			
-	ret = sortSatellites(ret)
-
 	return { "satellites": ret }
-	
 def sortSatellites(satList):
 	import re
 	sortDict = {}
@@ -286,9 +285,7 @@ def sortSatellites(satList):
 	for l in sorted(sortDict.keys()):
 		for v in sortDict[l]:
 			outList.append(satList[v])
-	return outList
-			
-
+	return outList	
 
 def getProtection(sref):
 	isProtected = "0"
@@ -353,7 +350,6 @@ def getChannels(idbouquet, stype):
 				chan['next_idp'] = "nextd" + str(idp)
 				idp += 1
 			ret.append(chan)
-
 	return { "channels": ret }
 
 def getServices(sRef, showAll = True, showHidden = False):
