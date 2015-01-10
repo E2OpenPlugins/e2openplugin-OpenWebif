@@ -436,7 +436,7 @@ class WebController(BaseController):
 			description = request.args["description"][0]
 
 		eit = 0
-		if "eit" in request.args.keys():
+		if "eit" in request.args.keys() and type(request.args["eit"][0]) is int:
 			eventid = request.args["eit"][0]
 		else:
 			from enigma import eEPGCache, eServiceReference
