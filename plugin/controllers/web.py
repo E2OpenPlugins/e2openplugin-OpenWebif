@@ -434,7 +434,18 @@ class WebController(BaseController):
 		description = ""
 		if "description" in request.args.keys():
 			description = request.args["description"][0]
-		
+
+		eit = 0
+		if "eit" in request.args.keys():
+			eventid = request.args["eit"][0]
+		else:
+			from enigma import eEPGCache, eServiceReference
+			queryTime = int(request.args["begin"][0]) + (int(request.args["end"][0]) - int(request.args["begin"][0])) / 2
+			event = eEPGCache.getInstance().lookupEventTime(eServiceReference(request.args["sRef"][0]), queryTime)
+			eventid = event and event.getEventId()
+		if eventid is not None:
+			eit = int(eventid)
+
 		always_zap = -1
 		if "always_zap" in request.args.keys():
 			always_zap = int(request.args["always_zap"][0])
@@ -454,7 +465,7 @@ class WebController(BaseController):
 			repeated,
 			self.vpsparams(request),
 			None,
-			0,
+			eit,
 			always_zap
 		)
 
