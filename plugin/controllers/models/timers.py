@@ -50,14 +50,6 @@ def getTimers(session):
 		if timer.justplay:
 			justplay  = 1
 
-		always_zap = 0
-		try:
-			if timer.always_zap:
-				always_zap  = 1
-		except Exception, e:
-			always_zap = -1
-			pass
-		
 		if timer.dirname:
 			dirname = timer.dirname
 		else:
@@ -91,6 +83,13 @@ def getTimers(session):
 			vpsplugin_time = timer.vpsplugin_time
 			if not vpsplugin_time:
 				vpsplugin_time = -1
+
+		always_zap = -1
+		if hasattr(timer,"always_zap"):
+			if timer.always_zap:
+				always_zap = 1
+			else:
+				always_zap = 0
 
 		timers.append({
 			"serviceref": str(timer.service_ref),
@@ -179,9 +178,9 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 			timer.vpsplugin_overwrite = vpsinfo["vpsplugin_overwrite"]
 			timer.vpsplugin_time = vpsinfo["vpsplugin_time"]
 
-		# TODO : check if always_zap available
 		if always_zap <> -1:
-			timer.always_zap = always_zap
+			if hasattr(timer,"always_zap"):
+				timer.always_zap = always_zap == 1
 
 	except Exception, e:
 		print e
@@ -254,9 +253,9 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 				timer.vpsplugin_overwrite = vpsinfo["vpsplugin_overwrite"]
 				timer.vpsplugin_time = vpsinfo["vpsplugin_time"]
 
-			# TODO: check if always_zap is available
 			if always_zap <> -1:
-				timer.always_zap = always_zap
+				if hasattr(timer,"always_zap"):
+					timer.always_zap = always_zap == 1
 
 			# TODO: multi tuner test
 			sanity = TimerSanityCheck(rt.timer_list, timer)

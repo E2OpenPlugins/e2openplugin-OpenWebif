@@ -11,9 +11,13 @@
 * add epgsearch endtime option
 * add svenska language
 * update french language
+* add new timer type
+* add toggle timer api
+
+**FIXES**
+* satlist orbital sort
 
 ## Version 0.4.2
-## (in development)
 **FEATURES**
 * ipkg add full package list api
 * full add full movie list api
