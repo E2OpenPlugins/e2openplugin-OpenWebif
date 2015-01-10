@@ -316,6 +316,7 @@ def toggleTimerStatus(session, serviceref, begin, end):
 			else:
 				timer.disable()
 				effect = "disabled"
+			rt.timeChanged(timer)
 			return {
 				"result": True,
 				"message": _("The timer '%s' has been %s successfully") % (timer.name, effect),

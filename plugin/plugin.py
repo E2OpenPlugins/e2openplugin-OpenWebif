@@ -23,7 +23,6 @@ from Components.ActionMap import ActionMap
 from Components.Label import Label
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection
-from boxbranding import getImageDistro
 from enigma import getDesktop
 
 from httpserver import HttpdStart, HttpdStop, HttpdRestart
