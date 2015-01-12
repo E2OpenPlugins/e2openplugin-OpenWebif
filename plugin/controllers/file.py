@@ -45,10 +45,10 @@ class FileController(resource.Resource):
 			if not os.path.exists(filename):
 				return "File '%s' not found" % (filename)
 
-			# limit unauthenticated requests to directories /hdd, /media, /mnt and the default picon path.
+			# limit unauthenticated requests to directories /hdd, /media, /mnt, /etc/enigma2 and the default picon path.
 			# Other directories with sensible information require authentication.
 			filename = re.sub("^/+", "/", os.path.realpath(filename))
-			for prefix in [ "/hdd/", "/media/", "/mnt/", "/usr/share/enigma2/picon/" ]:
+			for prefix in [ "/hdd/", "/media/", "/mnt/", "/usr/share/enigma2/picon/","/etc/enigma2/" ]:
 				if filename.startswith(prefix):
 					break
 			else:
