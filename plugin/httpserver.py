@@ -234,7 +234,7 @@ class AuthResource(resource.Resource):
 		session = request.getSession().sessionNamespaces
 		host = request.getHost().host
 
-		if (host == "localhost" or host == "127.0.0.1" or host == "::ffff:127.0.0.1") and not config.OpenWebif.auth_for_streaming.value:
+		if ((host == "localhost" or host == "127.0.0.1" or host == "::ffff:127.0.0.1") and not config.OpenWebif.auth_for_streaming.value) or request.uri == "/web/getipv6":
 			return self.resource.getChildWithDefault(path, request)
 		if "logged" in session.keys() and session["logged"]:
 			return self.resource.getChildWithDefault(path, request)
