@@ -45,16 +45,23 @@ class FileController(resource.Resource):
 			if not os.path.exists(filename):
 				return "File '%s' not found" % (filename)
 
-			# limit unauthenticated requests to directories /hdd, /media, /mnt and the default picon path.
-			# Other directories with sensible information require authentication.
-			filename = re.sub("^/+", "/", os.path.realpath(filename))
-			for prefix in [ "/hdd/", "/media/", "/mnt/", "/usr/share/enigma2/picon/" ]:
-				if filename.startswith(prefix):
-					break
-			else:
+# Disabled: Huge security hole
+# Try:
+# http://boxname/file?file=/media/../etc/passwd
+# http://box/file?file=/media/../etc/CCcam.cfg
+# or
+# http://box/file?file=/media/../etc/tuxbox/config/oscam/oscam.server
+# if you need reasons why we can NOT do this!
+#			# limit unauthenticated requests to directories /hdd, /media, /mnt, /etc/enigma2 and the default picon path.
+#			# Other directories with sensible information require authentication.
+#			filename = re.sub("^/+", "/", os.path.realpath(filename))
+#			for prefix in [ "/hdd/", "/media/", "/mnt/", "/usr/share/enigma2/picon/","/etc/enigma2/" ]:
+#				if filename.startswith(prefix):
+#					break
+#			else:
 				# require authentication for request to eg. /etc
-				if not self.isAuthenticated(request) and filename != config.misc.epgcache_filename.value:
-					return "File '%s' not found" % (filename)
+			if not self.isAuthenticated(request) and filename != config.misc.epgcache_filename.value:
+				return "File '%s' not found" % (filename)
 
 			name = "stream"
 			if "name" in request.args:
