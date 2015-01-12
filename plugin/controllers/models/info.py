@@ -68,6 +68,7 @@ def normalize_ipv6(orig):
 
 def getAdapterIPv6(ifname):
 	addr = _("IPv4-only kernel")
+	firstpublic = None
 	
 	if fileExists('/proc/net/if_inet6'):
 		addr = _("IPv4-only Python/Twisted")
@@ -84,10 +85,14 @@ def getAdapterIPv6(ifname):
 				if ifname == tmp[5]:
 					tmpaddr = ":".join([ tmp[0][i:i+4] for i in range(0,len(tmp[0]),4) ])
 
+					if firstpublic is None and (tmpaddr.startswith('2') or tmpaddr.startswith('3')):
+						firstpublic = normalize_ipv6(tmpaddr)
+
 					if tmp[2].lower() != "ff":
 						tmpaddr = "%s/%s" % (tmpaddr, int(tmp[2].lower(), 16))
 
-					tempaddrs.append(normalize_ipv6(tmpaddr))
+					tmpaddr = normalize_ipv6(tmpaddr)
+					tempaddrs.append(tmpaddr)
 
 			if len(tempaddrs) > 1:
 				tempaddrs.sort()
@@ -97,7 +102,7 @@ def getAdapterIPv6(ifname):
 			elif len(tempaddrs) == 0:
 				addr = _("none/IPv4-only network")
 
-	return (addr)
+	return {'addr':addr, 'firstpublic':firstpublic }
 
 def formatIp(ip):
 	if ip is None or len(ip) != 4:
@@ -258,7 +263,8 @@ def getInfo():
 			"mask": formatIp(iNetwork.getAdapterAttribute(iface, "netmask")),
 			"v4prefix": sum([bin(int(x)).count('1') for x in formatIp(iNetwork.getAdapterAttribute(iface, "netmask")).split('.')]),
 			"gw": formatIp(iNetwork.getAdapterAttribute(iface, "gateway")),
-			"ipv6": getAdapterIPv6(iface)
+			"ipv6": getAdapterIPv6(iface)['addr'],
+			"firstpublic": getAdapterIPv6(iface)['firstpublic']
 		})
 
 	info['hdd'] = []

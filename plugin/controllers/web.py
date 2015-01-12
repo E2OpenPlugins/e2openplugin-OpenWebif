@@ -645,6 +645,20 @@ class WebController(BaseController):
 	def P_deviceinfo(self, request):
 		return getInfo()
 
+	def P_getipv6(self, request):
+		request.setHeader("content-type", "text/html")
+		firstpublic = ''
+		info = getInfo()['ifaces']
+		for iface in info:
+			public = iface['firstpublic']
+			if public is not None:
+				firstpublic = public
+				break
+
+		return {
+			"firstpublic": firstpublic
+		}
+
 	def P_epgbouquet(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
