@@ -5,8 +5,15 @@
 * channel epg as modal dialog
 * powertimer api
 
-## Version 0.4.3
+## Version 0.4.4
 ## (in development)
+**FEATURES**
+* add vps channel api
+* improve file security
+
+**FIXES**
+
+## Version 0.4.3
 **FEATURES**
 * add epgsearch endtime option
 * add svenska language
