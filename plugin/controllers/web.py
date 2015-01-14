@@ -19,7 +19,7 @@ from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState, getStandbyState
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
-from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer, getPowerTimer, setPowerTimer
+from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer, getPowerTimer, setPowerTimer, getVPSChannels
 from models.message import sendMessage, getMessageAnswer
 from models.movies import getMovieList, removeMovie, getMovieTags, moveMovie, renameMovie, getAllMovies
 from models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot, setZapStream, saveConfig, getZapStream
@@ -632,6 +632,9 @@ class WebController(BaseController):
 
 	def P_timerlistwrite(self, request):
 		return writeTimerList(self.session)
+
+	def P_vpschannels(self, request):
+		return getVPSChannels(self.session)
 
 	def P_recordnow(self, request):
 		infinite = False

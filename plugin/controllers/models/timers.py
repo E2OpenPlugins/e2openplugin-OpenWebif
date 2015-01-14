@@ -314,8 +314,14 @@ def toggleTimerStatus(session, serviceref, begin, end):
 				timer.enable()
 				effect = "enabled"
 			else:
-				timer.disable()
-				effect = "disabled"
+				if timer.isRunning():
+					return {
+						"result": False,
+						"message": _("The timer '%s' now recorded! Not disabled!") % (timer.name)
+						}
+				else:
+					timer.disable()
+					effect = "disabled"
 			rt.timeChanged(timer)
 			return {
 				"result": True,
@@ -655,3 +661,38 @@ def setSleepTimer(session, time, action, enabled):
 			"result": False,
 			"message": _("SleepTimer feature not available")
 		}
+
+def getVPSChannels(session):
+	vpsfile="/etc/enigma2/vps.xml"
+	from Tools.Directories import fileExists
+	if fileExists(vpsfile):
+		try:
+			import xml.etree.cElementTree
+			vpsfile = file(vpsfile, 'r')
+			vpsdom = xml.etree.cElementTree.parse(vpsfile)
+			vpsfile.close()
+			xmldata = vpsdom.getroot()
+			channels = []
+			for ch in xmldata.findall("channel"):
+				channels.append({
+					"serviceref": ch.attrib["serviceref"],
+					"has_pdc": ch.attrib["has_pdc"],
+					"last_check": ch.attrib["last_check"],
+					"default_vps": ch.attrib["default_vps"]
+				})
+			return {
+				"result": True,
+				"channels": channels
+			}
+		except Exception, e:
+			return {
+				"result": False,
+				"message": _("Error parsing vps.xml")
+			}
+			
+	return {
+			"result": False,
+			"message": _("VPS plugin not found")
+	}
+	
+	
