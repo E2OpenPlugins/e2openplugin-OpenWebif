@@ -18,7 +18,7 @@
 				$movie.tags<br />
 				$movie.fullname
 			</description>
-			<link>http://$host/file?file=$quote($movie.filename)</link>
+			<link>$host/file?file=$quote($movie.filename)</link>
 			<enclosure type="video/mpeg" url="http://$host/file?file=$quote($movie.filename)"/>
 			<pubDate>$movie.begintime</pubDate>
 			<category>$movie.servicename</category>

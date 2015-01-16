@@ -14,6 +14,7 @@ from ServiceReference import ServiceReference
 from info import getInfo
 from urllib import unquote, quote
 import os
+import re
 from Components.config import config
 
 def getStream(session, request, m3ufile):
@@ -117,7 +118,8 @@ def getTS(self, request):
 
 			metafile.close()
 
-		portNumber = config.OpenWebif.port.value
+		portNumber = None
+		proto = 'http'
 		info = getInfo()
 		model = info["model"]
 		transcoder_port = None
@@ -148,12 +150,22 @@ def getTS(self, request):
 				args = ""
 		else: # All other boxes which use transtreamproxy
 			args = ""
-		
+
 		# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
 		if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != transcoder_port:
 			progopt="%s#EXTVLCOPT:program=%d\n" % (progopt, int(sRef.split(':')[3],16))
 
-		response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s%s\n" % ((progopt,request.getRequestHostname(), portNumber, quote(filename), args))
+		if portNumber is None:
+			portNumber = config.OpenWebif.port.value
+			if request.isSecure():
+				portNumber = config.OpenWebif.https_port.value
+				proto = 'https'
+			ourhost = request.getHeader('host')
+			m = re.match('.+\:(\d+)$', ourhost)
+			if m is not None:
+				portNumber = m.group(1)
+
+		response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%s%s://%s:%s/file?file=%s%s\n" % ((progopt,proto, request.getRequestHostname(), portNumber, quote(filename), args))
 		request.setHeader('Content-Type', 'application/text')
 		return response
 	else:
