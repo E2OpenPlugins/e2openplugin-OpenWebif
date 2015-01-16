@@ -1101,6 +1101,9 @@ msgstr "Ενεργοποίηση HTTPS"
 msgid "HTTPS port"
 msgstr "Θύρα HTTPS"
 
+msgid "Enable HTTPS Authentication"
+msgstr "Ενεργοποίηση πιστοποίησης HTTPS"
+
 msgid "Require client cert for HTTPS"
 msgstr ""
 

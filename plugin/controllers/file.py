@@ -8,6 +8,7 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
+
 import os
 import re
 from twisted.web import static, resource, http
@@ -41,25 +42,15 @@ class FileController(resource.Resource):
 
 		if "file" in request.args:
 			filename = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
+			filename = re.sub("^/+", "/", os.path.realpath(filename))
 
 			if not os.path.exists(filename):
 				return "File '%s' not found" % (filename)
 
-			# limit unauthenticated requests to some media paths.
-			# Other directories with sensible information require authentication.
-			filename = re.sub("^/+", "/", os.path.realpath(filename))
-			for prefix in [ "/hdd/movie", "/media/hdd/movie", "/media/usb/movie", "/mnt/hdd/movie", "/mnt/usb/movie", "/usr/share/enigma2/picon/" ]:
-				if filename.startswith(prefix):
-					break
-			else:
-				# require authentication for request to eg. /etc
-				if not self.isAuthenticated(request) and filename != config.misc.epgcache_filename.value:
-					return "File '%s' not found" % (filename)
-
-			name = "stream"
-			if "name" in request.args:
-				name = request.args["name"][0]
 			if action == "stream":
+				name = "stream"
+				if "name" in request.args:
+					name = request.args["name"][0]
 				response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true\n#EXTINF:-1,%s\nhttp://%s:%s/file?action=download&file=%s" % (name, request.getRequestHostname(), config.OpenWebif.port.value, quote(filename))
 				request.setHeader("Content-Disposition:", 'attachment;filename="%s.m3u"' % name)
 				request.setHeader("Content-Type:", "audio/mpegurl")
@@ -83,53 +74,18 @@ class FileController(resource.Resource):
 			directories = []
 			files = []
 			if fileExists(path):
-				if not self.isAuthenticated(request):
-					data.append({"result": False,"message": "path %s not exits" % (path)})
-				else:
-					try:
-						files = glob.glob(path+'/'+pattern)
-					except:
-						files = []
-					files.sort()
-					tmpfiles = files[:]
-					for x in tmpfiles:
-						if os_path.isdir(x):
-							directories.append(x + '/')
-							files.remove(x)
-					data.append({"result": True,"dirs": directories,"files": files})
+				try:
+					files = glob.glob(path+'/'+pattern)
+				except:
+					files = []
+				files.sort()
+				tmpfiles = files[:]
+				for x in tmpfiles:
+					if os_path.isdir(x):
+						directories.append(x + '/')
+						files.remove(x)
+				data.append({"result": True,"dirs": directories,"files": files})
 			else:
 				data.append({"result": False,"message": "path %s not exits" % (path)})
 			request.setHeader("content-type", "text/plain")
 			return json.dumps(data)
-
-	#
-	# check if a request is authenticated; needed here for
-	# requests to /etc and others, compatibility with iDreamX.
-	def isAuthenticated(self, request):
-		session = request.getSession().sessionNamespaces
-
-		if "logged" in session.keys() and session["logged"]:
-			return True
-
-		if self.authenticate(request.getUser(), request.getPassword()):
-			session["logged"] = True
-			return True
-		return False
-
-	def authenticate(self, user, passwd):
-		from crypt import crypt
-		from pwd import getpwnam
-		from spwd import getspnam
-		cpass = None
-		try:
-			cpass = getpwnam(user)[1]
-		except:
-			return False
-		if cpass:
-			if cpass == 'x' or cpass == '*':
-				try:
-					cpass = getspnam(user)[1]
-				except:
-					return False
-			return crypt(passwd, cpass) == cpass
-		return False

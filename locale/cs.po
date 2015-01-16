@@ -1098,6 +1098,9 @@ msgstr "Povolit HTTPS"
 msgid "HTTPS port"
 msgstr "HTTPS port"
 
+msgid "Enable HTTPS Authentication"
+msgstr "Povolit HTTPS ověřování"
+
 msgid "Require client cert for HTTPS"
 msgstr "Požadovat klientskou certifikaci pro HTTPS"
 

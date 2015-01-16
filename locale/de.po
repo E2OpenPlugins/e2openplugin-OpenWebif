@@ -1150,6 +1150,9 @@ msgstr "Aktivierung von HTTPS"
 msgid "HTTPS port"
 msgstr "Port für HTTPS"
 
+msgid "Enable HTTPS Authentication"
+msgstr "Authentifizierung für HTTPS aktivieren"
+
 msgid "Require client cert for HTTPS"
 msgstr "Erzwinge zertifikatbasierte Anmeldung"
 
