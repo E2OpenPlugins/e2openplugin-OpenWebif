@@ -46,6 +46,7 @@ config.OpenWebif.webcache.zapstream = ConfigYesNo(default = False)
 # HTTPS
 config.OpenWebif.https_enabled = ConfigYesNo(default=False)
 config.OpenWebif.https_port = ConfigInteger(default = 443, limits=(1, 65535) )
+config.OpenWebif.https_auth = ConfigYesNo(default=True)
 config.OpenWebif.https_clientcert = ConfigYesNo(default=False)
 # Parental Control currently disabled for testing
 config.OpenWebif.parentalenabled = ConfigYesNo(default=False)
@@ -115,6 +116,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			self.list.append(getConfigListEntry(_("Enable HTTPS"), config.OpenWebif.https_enabled))
 			if config.OpenWebif.https_enabled.value:
 				self.list.append(getConfigListEntry(_("HTTPS port"), config.OpenWebif.https_port))
+				self.list.append(getConfigListEntry(_("Enable HTTPS Authentication"), config.OpenWebif.https_auth))
 				self.list.append(getConfigListEntry(_("Require client cert for HTTPS"), config.OpenWebif.https_clientcert))
 			if config.OpenWebif.auth.value:
 				self.list.append(getConfigListEntry(_("Enable Authentication for streaming"), config.OpenWebif.auth_for_streaming))
@@ -122,6 +124,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			self.list.append(getConfigListEntry(_("Smart services renaming for XBMC"), config.OpenWebif.xbmcservices))
 			self.list.append(getConfigListEntry(_("Enable Parental Control"), config.OpenWebif.parentalenabled))
 			self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
+			# Only required for OE1.6 images:
 			self.list.append(getConfigListEntry(_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))
 
 		self["config"].list = self.list

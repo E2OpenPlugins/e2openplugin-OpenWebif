@@ -1163,6 +1163,9 @@ msgstr "Aktivera HTTPS"
 msgid "HTTPS port"
 msgstr "HTTPS port"
 
+msgid "Enable HTTPS Authentication"
+msgstr "Aktivera HTTPS autentisering"
+
 msgid "Require client cert for HTTPS"
 msgstr "Kräv klientcertifikat för HTTPS"
 

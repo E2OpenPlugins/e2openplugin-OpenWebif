@@ -1097,6 +1097,9 @@ msgstr "HTTPS inschakelen"
 msgid "HTTPS port"
 msgstr "HTTPS poort"
 
+msgid "Enable HTTPS Authentication"
+msgstr "HTTPS authenticatie inschakelen"
+
 msgid "Require client cert for HTTPS"
 msgstr "Vereist client certificate voor HTTPS"
 

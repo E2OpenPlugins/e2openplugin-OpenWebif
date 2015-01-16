@@ -1150,6 +1150,9 @@ msgstr "Włącz dostęp przez HTTPS"
 msgid "HTTPS port"
 msgstr "Port HTTPS"
 
+msgid "Enable HTTPS Authentication"
+msgstr "Włącz uwierzytelnianie HTTPS"
+
 msgid "Require client cert for HTTPS"
 msgstr "Wymagaj certyfikatu klienta dla HTTPS"
 

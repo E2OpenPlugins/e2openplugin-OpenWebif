@@ -315,10 +315,13 @@ msgid "Enable Filtering"
 msgstr "Застосувати фільтрацію"
 
 msgid "Enable HTTP Authentication"
-msgstr "Застосувати HTTPS аутентифікацію"
+msgstr "Застосувати HTTP аутентифікацію"
 
 msgid "Enable HTTPS"
 msgstr "Застосувати HTTPS"
+
+msgid "Enable HTTPS Authentication"
+msgstr "Застосувати HTTPS аутентифікацію"
 
 msgid "Enable Messages"
 msgstr "Включити повідомлення"

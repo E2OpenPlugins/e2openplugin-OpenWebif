@@ -122,7 +122,8 @@ def HttpdStart(session):
 		global listener
 		port = config.OpenWebif.port.value
 
-		root = buildRootTree(session)
+		temproot = buildRootTree(session)
+		root = temproot
 		if config.OpenWebif.auth.value == True:
 			root = AuthResource(session, root)
 		site = server.Site(root)
@@ -174,12 +175,17 @@ def HttpdStart(session):
 						)
 					ctx.load_verify_locations(CA_FILE)
 
+				sslroot = temproot
+				if config.OpenWebif.https_auth.value == True:
+					sslroot = AuthResource(session, sslroot)
+				sslsite = server.Site(sslroot)
+
 				if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
 					# use ipv6
-					listener.append( reactor.listenSSL(httpsPort, site, context, interface='::') )
+					listener.append( reactor.listenSSL(httpsPort, sslsite, context, interface='::') )
 				else:
 					# ipv4 only
-					listener.append( reactor.listenSSL(httpsPort, site, context) )
+					listener.append( reactor.listenSSL(httpsPort, sslsite, context) )
 				print "[OpenWebif] started on", httpsPort
 				BJregisterService('https',httpsPort)
 			except CannotListenError:

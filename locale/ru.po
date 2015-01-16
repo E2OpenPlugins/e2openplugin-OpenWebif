@@ -1095,13 +1095,16 @@ msgid "HTTP port"
 msgstr "Порт HTTP"
 
 msgid "Enable HTTP Authentication"
-msgstr "Применить HTTPS аутентификацию"
+msgstr "Применить HTTP аутентификацию"
 
 msgid "Enable HTTPS"
 msgstr "Применить HTTPS"
 
 msgid "HTTPS port"
 msgstr "Порт HTTPS"
+
+msgid "Enable HTTPS Authentication"
+msgstr "Применить HTTPS аутентификацию"
 
 msgid "Require client cert for HTTPS"
 msgstr "Требовать клиентский сертификат для HTTPS"
