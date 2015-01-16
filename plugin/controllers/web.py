@@ -31,6 +31,20 @@ from models.plugins import reloadPlugins
 from fcntl import ioctl
 from base import BaseController
 from stream import StreamController
+import re
+
+def whoami(request):
+	port = config.OpenWebif.port.value
+	proto = 'http'
+	if request.isSecure():
+		port = config.OpenWebif.https_port.value
+		proto = 'https'
+	ourhost = request.getHeader('host')
+	m = re.match('.+\:(\d+)$', ourhost)
+	if m is not None:
+		port = m.group(1)
+	return {'proto':proto, 'port':port }
+
 
 class WebController(BaseController):
 	def __init__(self, session, path = ""):
@@ -321,7 +335,7 @@ class WebController(BaseController):
 
 		request.setHeader('Content-Type', 'application/text')
 		movielist = getMovieList(dirname, tag)
-		movielist["host"] = "%s:%s" % (request.getRequestHostname(), config.OpenWebif.port.value)
+		movielist["host"] = "%s://%s:%s" % (whoami(request)['proto'], request.getRequestHostname(), whoami(request)['port'])
 		return movielist
 
 	def P_movielistrss(self, request):
@@ -334,7 +348,7 @@ class WebController(BaseController):
 			dirname = request.args["dirname"][0]
 
 		movielist = getMovieList(dirname, tag)
-		movielist["host"] = "%s:%s" % (request.getRequestHostname(), config.OpenWebif.port.value)
+		movielist["host"] = "%s://%s:%s" % (whoami(request)['proto'], request.getRequestHostname(), whoami(request)['port'])
 		return movielist
 
 	def P_moviedelete(self, request):
