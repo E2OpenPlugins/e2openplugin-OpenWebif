@@ -10,9 +10,10 @@
 ##############################################################################
 from enigma import eServiceReference, getBestPlayableServiceReference
 from ServiceReference import ServiceReference
-import info
+from info import getInfo
 from urllib import unquote, quote
 import os
+import re
 from Components.config import config
 
 def getStream(session, request, m3ufile):
@@ -24,7 +25,7 @@ def getStream(session, request, m3ufile):
 	currentServiceRef = None
 	if m3ufile == "streamcurrent.m3u":
 		currentServiceRef = session.nav.getCurrentlyPlayingServiceReference()
-		sRef = currentServiceRef.toString()
+		sRef = currentServiceRef.toString() 
 
 	if sRef.startswith("1:134:"):
 		if currentServiceRef is None:
@@ -44,10 +45,14 @@ def getStream(session, request, m3ufile):
 		name = request.args["name"][0]
 		if config.OpenWebif.service_name_for_stream.value:
 			progopt="#EXTINF:-1,%s\n" % name
-
+	
 	portNumber = config.OpenWebif.streamport.value
+	info = getInfo()
+	model = info["model"]
+	machinebuild = info["machinebuild"]
 	transcoder_port = None
-	if info.getTranscodingSupport():
+	args = ""
+	if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus"):
 		try:
 			transcoder_port = int(config.plugins.transcodingsetup.port.value)
 		except StandardError:
@@ -55,16 +60,28 @@ def getStream(session, request, m3ufile):
 			transcoder_port = None
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
-				portNumber = 8002
-
-	if "port" in request.args:
-		portNumber = request.args["port"][0]
+				portNumber = transcoder_port
+		if "port" in request.args:
+			portNumber = request.args["port"][0]
+			
+	# INI use dynamic encoder allocation, and each stream can have diffrent parameters 
+	if  machinebuild in ('inihdp', 'hd2400', 'et10000'):
+		transcoder_port = 8001
+		if "device" in request.args :
+			if request.args["device"][0] == "phone" :
+				bitrate = config.plugins.transcodingsetup.bitrate.value
+				resolution = config.plugins.transcodingsetup.resolution.value
+				(width, height) = tuple(resolution.split('x'))
+				framrate = config.plugins.transcodingsetup.framerate.value
+				aspectratio = config.plugins.transcodingsetup.aspectratio.value
+				interlaced = config.plugins.transcodingsetup.interlaced.value
+				args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
 
 	# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
 	if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != transcoder_port:
 		progopt="%s#EXTVLCOPT:program=%d\n" % (progopt, int(sRef.split(':')[3],16))
 
-	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef)
+	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef, args)
 	request.setHeader('Content-Type', 'application/text')
 	return response
 
@@ -101,9 +118,12 @@ def getTS(self, request):
 
 			metafile.close()
 
-		portNumber = config.OpenWebif.port.value
+		portNumber = None
+		proto = 'http'
+		info = getInfo()
+		model = info["model"]
 		transcoder_port = None
-		if info.getTranscodingSupport():
+		if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus"):
 			try:
 				transcoder_port = int(config.plugins.transcodingsetup.port.value)
 			except StandardError:
@@ -111,16 +131,41 @@ def getTS(self, request):
 				transcoder_port = None
 			if "device" in request.args :
 				if request.args["device"][0] == "phone" :
-					portNumber = 8002
-
+					portNumber = transcoder_port
 		if "port" in request.args:
 			portNumber = request.args["port"][0]
+			
+		# INI use dynamic encoder allocation, and each stream can have diffrent parameters
+		if  machinebuild in ('inihdp', 'hd2400', 'et10000'):
+			if request.args["device"][0] == "phone" :
+				portNumber = config.OpenWebif.streamport.value
+				bitrate = config.plugins.transcodingsetup.bitrate.value
+				resolution = config.plugins.transcodingsetup.resolution.value
+				(width, height) = tuple(resolution.split('x'))
+				framrate = config.plugins.transcodingsetup.framerate.value
+				aspectratio = config.plugins.transcodingsetup.aspectratio.value
+				interlaced = config.plugins.transcodingsetup.interlaced.value
+				args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+			else:
+				args = ""
+		else: # All other boxes which use transtreamproxy
+			args = ""
 
 		# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
 		if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != transcoder_port:
 			progopt="%s#EXTVLCOPT:program=%d\n" % (progopt, int(sRef.split(':')[3],16))
 
-		response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/file?file=%s\n" % (progopt,request.getRequestHostname(), portNumber, quote(filename))
+		if portNumber is None:
+			portNumber = config.OpenWebif.port.value
+			if request.isSecure():
+				portNumber = config.OpenWebif.https_port.value
+				proto = 'https'
+			ourhost = request.getHeader('host')
+			m = re.match('.+\:(\d+)$', ourhost)
+			if m is not None:
+				portNumber = m.group(1)
+
+		response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%s%s://%s:%s/file?file=%s%s\n" % ((progopt,proto, request.getRequestHostname(), portNumber, quote(filename), args))
 		request.setHeader('Content-Type', 'application/text')
 		return response
 	else:
@@ -144,16 +189,16 @@ def getStreamSubservices(session, request):
 		services.append({
 			"servicereference": currentServiceRef.toString(),
 			"servicename": ServiceReference(currentServiceRef).getServiceName()
-			})
+			}) 
 		if subservices and subservices.getNumberOfSubservices() != 0:
-			n = subservices and subservices.getNumberOfSubservices()
+			n = subservices and subservices.getNumberOfSubservices()  
 			z = 0
 			while z < n:
 				sub = subservices.getSubservice(z)
 				services.append({
 					"servicereference": sub.toString(),
 					"servicename": sub.getName()
-				})
+				}) 
 				z += 1
 	else:
 		services.append =({
