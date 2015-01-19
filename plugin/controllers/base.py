@@ -12,9 +12,6 @@
 from Plugins.Extensions.OpenWebif.__init__ import _
 
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
-from boxbranding import getBoxType, getMachineName
-from Components.RcModel import rc_model
-
 from twisted.web import server, http, static, resource, error
 from Cheetah.Template import Template
 
@@ -26,6 +23,15 @@ import sys
 import json
 import gzip
 import cStringIO
+
+remotesuffix=''
+try:
+	from boxbranding import getBoxType, getMachineName
+	from Components.RcModel import rc_model
+	remotesuffix = "/remote"
+except:
+	from models.owibranding import getBoxType, getMachineName, rc_model
+	rc_model = rc_model()
 
 class BaseController(resource.Resource):
 	isLeaf = False
@@ -191,7 +197,7 @@ class BaseController(resource.Resource):
 		if not ret['boxname'] or not ret['customname']:
 			ret['boxname'] = getInfo()['brand']+" "+getInfo()['model']
 		ret['box'] = getBoxType()
-		ret["remote"] = rc_model.getRcFolder()+"/remote"
+		ret["remote"] = rc_model.getRcFolder()+remotesuffix
 
 		extras = []
 		extras.append({ 'key': 'ajax/settings','description': _("Settings")})
