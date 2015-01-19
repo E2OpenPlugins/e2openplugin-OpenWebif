@@ -269,8 +269,7 @@ def getAllInfo():
 
 	remote = "dmm"
 	if procmodel in ("solo", "duo", "uno", "solo2", "duo2", "solose", "zero"):
-		#remote = "vu_normal"
-		remote = "vu"
+		remote = "vu_normal"
 	elif procmodel == "ultimo":
 		remote = "vu_ultimo"
 	elif procmodel == "e3hd":
