@@ -366,7 +366,8 @@ def getTranscodingSupport():
 	global STATICBOXINFO
 	if STATICBOXINFO is None:
 		getInfo()
-	if STATICBOXINFO['model'] in ("Duo²", "Solo²", "Solo SE", "solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "hd2400", "xpeedlx3", "gbquad", "gbquadplus"):
+	# TODO: Move machines identifiers by MachineBuild into STATICBOXINFO['model'] list
+	if (STATICBOXINFO['model'] in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or getMachineBuild() in ('inihdp', 'hd2400', 'et10000', 'xpeedlx3')) and (os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TranscodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo'))):
 		return True
 	return False
 
