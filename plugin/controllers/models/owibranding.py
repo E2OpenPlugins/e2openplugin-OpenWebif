@@ -244,9 +244,28 @@ def getAllInfo():
 			model = tempmodel.title()
 			procmodel = tempmodel
 
+	type = procmodel
+	if type in ("et9000", "et9200", "et9500"):
+		type = "et9x00"
+	elif type in ("et5000", "et6000", "et6x00"):
+		type = "et5x00"
+	elif type == "et4000":
+		type = "et4x00"
+	elif type == "xp1000":
+		type = "xp1000"
+	elif type in ("bska", "bxzb"):
+		type = "nbox_white"
+	elif type in ("bsla", "bzzb"):
+		type = "nbox"
+	elif type == "sagemcom88":
+		type = "esi88"
+	elif type in ("tf7700hdpvr", "topf"):
+		type = "topf"
+
 	info['brand'] = brand
 	info['model'] = model
 	info['procmodel'] = procmodel
+	info['type'] = type
 
 	kernel = about.getKernelVersionString()[0]
 
@@ -354,7 +373,7 @@ def getMachineProcModel():
 	return STATIC_INFO_DIC['procmodel']
 
 def getBoxType():
-	return STATIC_INFO_DIC['procmodel']
+	return STATIC_INFO_DIC['type']
 
 def getOEVersion():
 	return STATIC_INFO_DIC['oever']
