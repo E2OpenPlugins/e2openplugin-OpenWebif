@@ -267,6 +267,61 @@ def getAllInfo():
 	info['procmodel'] = procmodel
 	info['type'] = type
 
+	remote = "dmm"
+	if procmodel in ("solo", "duo", "uno", "solo2", "duo2", "solose", "zero"):
+		#remote = "vu_normal"
+		remote = "vu"
+	elif procmodel == "ultimo":
+		remote = "vu_ultimo"
+	elif procmodel == "e3hd":
+		remote = "e3hd"
+	elif procmodel in ("et9x00", "et9000", "et9200", "et9500"):
+		remote = "et9x00"
+	elif procmodel in ("et5x00", "et5000", "et6x00", "et6000"):
+		remote = "et5x00"
+	elif procmodel in ("et4x00", "et4000"):
+		remote = "et4x00"
+	elif procmodel == "gbquad":
+		remote = "gigablue"
+	elif procmodel == "gbquadplus":
+		remote = "gbquadplus"
+	elif procmodel == "et6500":
+		remote = "et6500"
+	elif procmodel in ("et8x00", "et8000", "et1x000", "et10000"):
+		remote = "et8000"
+	elif procmodel in ("formuler1", "formuler3"):
+		remote = "formuler1"
+	elif procmodel in ("azboxme", "azboxminime", "me", "minime"):
+		remote = "me"
+	elif procmodel in ("optimussos1", "optimussos1plus", "optimussos2", "optimussos2plus"):
+		remote = "optimuss"
+	elif procmodel in ("premium", "premium+"):
+		remote = "premium"
+	elif procmodel in ("elite", "ultra"):
+		remote = "elite"
+	elif procmodel in ("ini-1000", "ini-1000ru"):
+		remote = "ini-1000"
+	elif procmodel in ("ini-1000sv", "ini-5000sv", "ini-9000de"):
+		remote = "miraclebox"
+	elif procmodel == "ini-3000":
+		remote = "ini-3000"
+	elif procmodel in ("ini-7012", "ini-7000", "ini-5000", "ini-5000ru"):
+		remote = "ini-7000"
+	elif procmodel.startswith("spark"):
+		remote = "spark"
+	elif procmodel == "xp1000":
+		remote = "xp1000"
+	elif procmodel.startswith("xpeedlx"):
+		remote = "xpeedlx"
+	elif procmodel in ("nbox", "sagemcom88", "esi88", "adb2850", "adb2849", "dsi87"):
+		remote = "nbox"
+	elif procmodel == "hd2400":
+		remote = "hd2400"
+	elif procmodel.startswith("ixuss"):
+		remote = procmodel.replace(" ", "")
+
+	info['remote'] = remote
+
 	kernel = about.getKernelVersionString()[0]
 
 	distro = "unknown"
@@ -389,3 +444,7 @@ def getImageBuild():
 
 def getImageDistro():
 	return STATIC_INFO_DIC['distro']
+
+class rc_model:
+	def getRcFolder(self):
+		return STATIC_INFO_DIC['remote']
