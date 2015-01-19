@@ -8,7 +8,6 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-from boxbranding import getMachineBuild
 from enigma import eServiceReference, getBestPlayableServiceReference
 from ServiceReference import ServiceReference
 from info import getInfo
@@ -50,6 +49,7 @@ def getStream(session, request, m3ufile):
 	portNumber = config.OpenWebif.streamport.value
 	info = getInfo()
 	model = info["model"]
+	machinebuild = info["machinebuild"]
 	transcoder_port = None
 	args = ""
 	if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus"):
@@ -65,7 +65,7 @@ def getStream(session, request, m3ufile):
 			portNumber = request.args["port"][0]
 			
 	# INI use dynamic encoder allocation, and each stream can have diffrent parameters 
-	if  getMachineBuild() in ('inihdp', 'hd2400', 'et10000'):
+	if  machinebuild in ('inihdp', 'hd2400', 'et10000'):
 		transcoder_port = 8001
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
@@ -136,7 +136,7 @@ def getTS(self, request):
 			portNumber = request.args["port"][0]
 			
 		# INI use dynamic encoder allocation, and each stream can have diffrent parameters
-		if  getMachineBuild() in ('inihdp', 'hd2400', 'et10000'):
+		if  machinebuild in ('inihdp', 'hd2400', 'et10000'):
 			if request.args["device"][0] == "phone" :
 				portNumber = config.OpenWebif.streamport.value
 				bitrate = config.plugins.transcodingsetup.bitrate.value

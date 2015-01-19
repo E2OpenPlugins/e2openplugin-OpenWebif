@@ -143,6 +143,7 @@ def getInfo():
 	info['brand'] = getMachineBrand()
 	info['model'] = getMachineName()
 	info['boxtype'] = getBoxType()
+	info['machinebuild'] = getMachineBuild()
 
 	chipset = "unknown"
 	if fileExists("/etc/.box"):
