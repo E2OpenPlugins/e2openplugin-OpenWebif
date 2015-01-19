@@ -10,10 +10,7 @@
 ##############################################################################
 from Tools.Directories import fileExists
 from Components.config import config
-from boxbranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
-from os import path
 
-from enigma import eEnv
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
 from models.info import getInfo, getPublicPath, getOpenWebifVer, getTranscodingSupport
 from models.movies import getMovieList
@@ -22,6 +19,11 @@ from models.config import getConfigs, getConfigsSections
 from base import BaseController
 from time import mktime, localtime
 from models.locations import getLocations
+
+try:
+	from boxbranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
+except:
+	from models.owibranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
 
 class AjaxController(BaseController):
 	def __init__(self, session, path = ""):
@@ -80,10 +82,10 @@ class AjaxController(BaseController):
 	
 	def P_boxinfo(self, request):
 		info = getInfo()
-		model = getBoxType()
+		type = getBoxType()
 
-		if fileExists(getPublicPath("/images/boxes/"+model+".jpg")):
-			info["boximage"] = model+".jpg"
+		if fileExists(getPublicPath("/images/boxes/"+type+".jpg")):
+			info["boximage"] = type+".jpg"
 		else:
 			info["boximage"] = "unknown.jpg"
 		return info
