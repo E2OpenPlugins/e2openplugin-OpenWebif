@@ -148,7 +148,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			config.OpenWebif.auth_for_streaming.value = False
 			config.OpenWebif.auth_for_streaming.save()
 
-		if not config.OpenWebif.https_enabled == True:
+		if not config.OpenWebif.https_enabled.value == True:
 			config.OpenWebif.https_clientcert.value = False
 			config.OpenWebif.https_clientcert.save()
 
