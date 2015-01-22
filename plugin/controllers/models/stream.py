@@ -122,6 +122,7 @@ def getTS(self, request):
 		proto = 'http'
 		info = getInfo()
 		model = info["model"]
+		machinebuild = info["machinebuild"]
 		transcoder_port = None
 		if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus"):
 			try:
@@ -136,7 +137,7 @@ def getTS(self, request):
 			portNumber = request.args["port"][0]
 			
 		# INI use dynamic encoder allocation, and each stream can have diffrent parameters
-		if  machinebuild in ('inihdp', 'hd2400', 'et10000'):
+		if machinebuild in ('inihdp', 'hd2400', 'et10000'):
 			if request.args["device"][0] == "phone" :
 				portNumber = config.OpenWebif.streamport.value
 				bitrate = config.plugins.transcodingsetup.bitrate.value
