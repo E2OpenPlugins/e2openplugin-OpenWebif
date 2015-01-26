@@ -65,7 +65,7 @@ def getStream(session, request, m3ufile):
 			portNumber = request.args["port"][0]
 			
 	# INI use dynamic encoder allocation, and each stream can have diffrent parameters 
-	if  machinebuild in ('inihdp', 'hd2400', 'et10000', 'ew7356'):
+	if machinebuild in ('inihdp', 'hd2400', 'et10000', 'ew7356'):
 		transcoder_port = 8001
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
