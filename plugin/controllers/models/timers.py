@@ -617,50 +617,155 @@ def setPowerTimer(session, request):
 
 
 def getSleepTimer(session):
-	# todo reinterprete powertimer as sleeptimer
-	try:
-		return {
-			"enabled": session.nav.SleepTimer.isActive(),
-			"minutes": session.nav.SleepTimer.getCurrentSleepTime(),
-			"action": config.SleepTimer.action.value,
-			"message": _("Sleeptimer is enabled") if session.nav.SleepTimer.isActive() else _("Sleeptimer is disabled")
-		}
-	except Exception, e:
-		return {
-			"result": False,
-			"message": _("SleepTimer feature not available")
-		}
+	if hasattr(session.nav, "SleepTimer"):
+		try:
+			return {
+				"enabled": session.nav.SleepTimer.isActive(),
+				"minutes": session.nav.SleepTimer.getCurrentSleepTime(),
+				"action": config.SleepTimer.action.value,
+				"message": _("Sleeptimer is enabled") if session.nav.SleepTimer.isActive() else _("Sleeptimer is disabled")
+			}
+		except Exception, e:
+			return {
+				"result": False,
+				"message": _("SleepTimer error")
+			}
+	else:
+		# use powertimer , this works only if there is one of the standby OR deepstandby entries
+		# todo : do not use repeated entries
+		try:
+			timer_list = session.nav.PowerTimer.timer_list
+			for timer in timer_list:
+				timertype = str(timer.timerType)
+				if timertype in ["2","3"]:
+					action = "standby"
+					if timertype == "3":
+						action="shutdown"
+					minutes = str(timer.autosleepdelay)
+					enabled = True
+					if int(timer.disabled) == 1:
+						enabled = False
+					return {
+						"enabled": enabled,
+						"minutes": minutes,
+						"action": action,
+						"message": _("Sleeptimer is enabled") if enabled else _("Sleeptimer is disabled")
+					}
+					break
+		except Exception, e:
+			return {
+				"result": False,
+				"message": _("SleepTimer error")
+			}
 
 def setSleepTimer(session, time, action, enabled):
-	# todo reinterprete powertimer as sleeptimer
-	try:
-		ret = getSleepTimer(session)
-		from Screens.Standby import inStandby
-		if inStandby is not None:
-			ret["message"] = _("ERROR: Cannot set SleepTimer while device is in Standby-Mode")
-			return ret
+	if action not in ["shutdown", "standby"]:
+		action = "standby"
 
-		if enabled == False:
-			session.nav.SleepTimer.clear()
+	if hasattr(session.nav, "SleepTimer"):
+		try:
 			ret = getSleepTimer(session)
-			ret["message"] = _("Sleeptimer has been disabled")
+			from Screens.Standby import inStandby
+			if inStandby is not None:
+				ret["message"] = _("ERROR: Cannot set SleepTimer while device is in Standby-Mode")
+				return ret
+			if enabled == False:
+				session.nav.SleepTimer.clear()
+				ret = getSleepTimer(session)
+				ret["message"] = _("Sleeptimer has been disabled")
+				return ret
+			config.SleepTimer.action.value = action
+			config.SleepTimer.action.save()
+			session.nav.SleepTimer.setSleepTime(time)
+			ret = getSleepTimer(session)
+			ret["message"] = _("Sleeptimer set to %d minutes") % time
 			return ret
-
-		if action not in ["shutdown", "standby"]:
-			action = "standby"
-
-		config.SleepTimer.action.value = action
-		config.SleepTimer.action.save()
-		session.nav.SleepTimer.setSleepTime(time)
-
-		ret = getSleepTimer(session)
-		ret["message"] = _("Sleeptimer set to %d minutes") % time
-		return ret
-	except Exception, e:
-		return {
-			"result": False,
-			"message": _("SleepTimer feature not available")
-		}
+		except Exception, e:
+			return {
+				"result": False,
+				"message": _("SleepTimer Error")
+			}
+	else:
+		# use powertimer
+		# todo activate powertimer
+		try:
+			done = False
+			timer_list = session.nav.PowerTimer.timer_list
+			begin = int(time() + 60)
+			end = int(time() + 120)
+			for timer in timer_list:
+				timertype = str(timer.timerType)
+				if timertype == "2" and action == "standby":
+					if enabled == False:
+						timer.disabled = True
+					else:
+						timer.disabled = False
+						timer.autosleepdelay = int(time)
+						timer.begin = begin
+						timer.end = end
+					done = True
+					break
+				if timertype == "3" and action == "shutdown":
+					if enabled == False:
+						timer.disabled = True
+					else:
+						timer.disabled = False
+						timer.autosleepdelay = int(time)
+						timer.begin = begin
+						timer.end = end
+					done = True
+					break
+				if timertype == "3" and action == "standby":
+					if enabled == False:
+						timer.disabled = True
+					else:
+						timer.disabled = False
+						timer.autosleepdelay = int(time)
+						timer.timerType=2
+						timer.begin = begin
+						timer.end = end
+					done = True
+					break
+				if timertype == "2" and action == "shutdown":
+					if enabled == False:
+						timer.disabled = True
+					else:
+						timer.disabled = False
+						timer.autosleepdelay = int(time)
+						timer.timerType=3
+						timer.begin = begin
+						timer.end = end
+					done = True
+					break
+			
+			if done:
+				return {
+					"result": True,
+					"message": _("Sleeptimer set to %d minutes") % time if enabled else _("Sleeptimer has been disabled")
+				}
+			if enabled:
+				begin = int(time() + 60)
+				end = int(time() + 120)
+				timertype = 2
+				if action == "shutdown":
+					timertype = 3
+				entry = PowerTimerEntry(begin, end, False, 0, timertype)
+				entry.repeated = 0
+				entry.autosleepdelay = time
+				return {
+					"result": True,
+					"message": _("Sleeptimer set to %d minutes") % time
+				}
+			else:
+				return {
+					"result": True,
+					"message": _("Sleeptimer has been disabled")
+				}
+		except Exception, e:
+			return {
+				"result": False,
+				"message": _("SleepTimer Error")
+			}
 
 def getVPSChannels(session):
 	vpsfile="/etc/enigma2/vps.xml"

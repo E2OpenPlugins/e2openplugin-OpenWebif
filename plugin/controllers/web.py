@@ -576,6 +576,8 @@ class WebController(BaseController):
 		if "always_zap" in request.args.keys():
 			always_zap = int(request.args["always_zap"][0])
 
+		print self.vpsparams(request)
+
 		return editTimer(
 			self.session,
 			request.args["sRef"][0],
