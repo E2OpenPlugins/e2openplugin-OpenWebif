@@ -313,12 +313,25 @@ def toggleTimerStatus(session, serviceref, begin, end):
 			if timer.disabled:
 				timer.enable()
 				effect = "enabled"
+				sanity = TimerSanityCheck(rt.timer_list, timer)
+				if not sanity.check():
+					timer.disable()
+					return {
+						"result": False,
+						"message": _("Timer '%s' not enabled while Conflict") % (timer.name)
+					}
+				elif sanity.doubleCheck():
+					timer.disable()
+					return {
+						"result": False,
+						"message": _("Timer '%s' already exists!") % (timer.name)
+					}
 			else:
 				if timer.isRunning():
 					return {
 						"result": False,
 						"message": _("The timer '%s' now recorded! Not disabled!") % (timer.name)
-						}
+					}
 				else:
 					timer.disable()
 					effect = "disabled"
