@@ -562,6 +562,8 @@ class BouquetEditor(Source):
 			files.append("/etc/enigma2/userbouquet.favourites.tv")
 			files.append("/etc/enigma2/userbouquet.favourites.radio")
 			files.append("/etc/enigma2/lamedb")
+			files.append("/etc/tuxbox/cables.xml")
+			files.append("/etc/tuxbox/terrestrial.xml")
 			files.append("/etc/tuxbox/satellites.xml")
 			if config.ParentalControl.configured.value:
 				if config.ParentalControl.type.value == LIST_BLACKLIST:
