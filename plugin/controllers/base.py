@@ -24,13 +24,17 @@ import json
 import gzip
 import cStringIO
 
-remote=''
 try:
 	from boxbranding import getBoxType, getMachineName
+except:
+	from models.owibranding import getBoxType, getMachineName
+
+remote=''
+try:
 	from Components.RcModel import rc_model
 	remote = rc_model.getRcFolder() + "/remote"
 except:
-	from models.owibranding import getBoxType, getMachineName, rc_model
+	from models.owibranding import rc_model
 	remote = rc_model().getRcFolder()
 
 class BaseController(resource.Resource):
