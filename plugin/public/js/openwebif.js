@@ -259,6 +259,41 @@ function load_info_dialog(url,title,w,h){
 	});
 }
 
+
+function load_dm_spinner(url,title,w,h){
+	var buttons = {}
+	buttons[tstr_close] = function() { $(this).dialog("close");};
+	var width = 'auto',height='auto';
+	if (typeof w !== 'undefined')
+		width = w;
+	if (typeof h !== 'undefined')
+		height = h;
+
+	$("#modaldialog").html(loadspinner).dialog({
+		modal:true,
+		title:title,
+		autoOpen:true,
+		width:width,
+		height:height,
+		buttons:buttons,
+		close: function(event, ui) { 
+			$(this).dialog('destroy');
+		},
+		open: function() {
+		$.ajax({
+			url: url,
+			success: function(data) {
+				$("#modaldialog").html(data);
+			}
+			,error: function(){
+				$("#modaldialog").html("error! Loading Page");
+			}
+		});
+		$(this).siblings('.ui-dialog-buttonpane').find('button:eq(0)').focus(); 
+		}
+	});
+}
+
 function load_dm(url,title,w,h){
 	var buttons = {}
 	buttons[tstr_close] = function() { $(this).dialog("close");};
@@ -368,7 +403,8 @@ function open_epg_dialog(sRef) {
 	var w = $(window).width() -100;
 	var h = $(window).height() -100;
 	
-	load_dm(url,'',w,h);
+// TODO: Channel Name as Title
+	load_dm_spinner(url,'',w,h);
 }
 
 function open_epg_pop(sRef) {
@@ -393,7 +429,7 @@ function open_epg_search_dialog() {
 	var w = $(window).width() -100;
 	var h = $(window).height() -100;
 	
-	load_dm(url,tstr_epgsearch,w,h);
+	load_dm_spinner(url,tstr_epgsearch,w,h);
 }
 
 function open_epg_search_pop() {
