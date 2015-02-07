@@ -943,7 +943,7 @@ msgid "VPS"
 msgstr ""
 
 msgid "VPS Overwrite"
-msgstr "VPS - bezpečný mód"
+msgstr "VPS řízeno vysíláním"
 
 msgid "Add"
 msgstr "Přidat"
@@ -1202,3 +1202,6 @@ msgstr "Časovač usínání byl zakázán"
 
 msgid "Sleeptimer set to %d minutes"
 msgstr "Časovač usínání nastaven na %d minut"
+
+msgid "VPS Overwrite:"
+msgstr "VPS řízeno vysíláním"
