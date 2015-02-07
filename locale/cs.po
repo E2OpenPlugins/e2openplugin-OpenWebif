@@ -1203,5 +1203,5 @@ msgstr "Časovač usínání byl zakázán"
 msgid "Sleeptimer set to %d minutes"
 msgstr "Časovač usínání nastaven na %d minut"
 
-msgid "VPS Overwrite:"
+msgid "VPS Overwrite"
 msgstr "VPS řízeno vysíláním"
