@@ -24,14 +24,18 @@ import json
 import gzip
 import cStringIO
 
-remotesuffix=''
 try:
 	from boxbranding import getBoxType, getMachineName
-	from Components.RcModel import rc_model
-	remotesuffix = "/remote"
 except:
-	from models.owibranding import getBoxType, getMachineName, rc_model
-	rc_model = rc_model()
+	from models.owibranding import getBoxType, getMachineName
+
+remote=''
+try:
+	from Components.RcModel import rc_model
+	remote = rc_model.getRcFolder() + "/remote"
+except:
+	from models.owibranding import rc_model
+	remote = rc_model().getRcFolder()
 
 class BaseController(resource.Resource):
 	isLeaf = False
@@ -197,7 +201,7 @@ class BaseController(resource.Resource):
 		if not ret['boxname'] or not ret['customname']:
 			ret['boxname'] = getInfo()['brand']+" "+getInfo()['model']
 		ret['box'] = getBoxType()
-		ret["remote"] = rc_model.getRcFolder()+remotesuffix
+		ret["remote"] = remote
 
 		extras = []
 		extras.append({ 'key': 'ajax/settings','description': _("Settings")})
