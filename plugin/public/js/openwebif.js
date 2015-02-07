@@ -362,20 +362,18 @@ function toggle_chan_des(evId, sRef, idp) {
 	$(iddiv).slideToggle(200);
 }
 
-function open_epg_dialog() {
-	var spar = $("#epgSearch").val();
-	var url = "ajax/epgdialog?sstr=" + encodeURIComponent(spar);
-	$("#epgSearch").val("");
+function open_epg_dialog(sRef) {
+	var url = "ajax/epgdialog?sref=" + escape(sRef);
 	
 	var w = $(window).width() -100;
 	var h = $(window).height() -100;
 	
-	load_dm(url,tstr_epgsearch,w,h);
+	load_dm(url,'',w,h);
 }
 
 function open_epg_pop(sRef) {
 
-	open_epg_dialog();
+	open_epg_dialog(sRef);
 	return;
 
 	var url = 'ajax/epgpop?sref=' + escape(sRef);
