@@ -205,17 +205,6 @@ function initJsTranslation(strings) {
 	
 }
 
-function open_epg_search_dialog() {
-	var spar = $("#epgSearch").val();
-	var url = "ajax/epgdialog?sstr=" + encodeURIComponent(spar);
-	$("#epgSearch").val("");
-	
-	var w = $(window).width() -100;
-	var h = $(window).height() -100;
-	
-	load_dm(url,tstr_epgsearch,w,h);
-}
-
 function wait_for_openwebif() {
 	var restartCheck = window.setInterval(function() {
 		$.getJSON('/api/statusinfo').success(function() {
@@ -373,7 +362,22 @@ function toggle_chan_des(evId, sRef, idp) {
 	$(iddiv).slideToggle(200);
 }
 
+function open_epg_dialog() {
+	var spar = $("#epgSearch").val();
+	var url = "ajax/epgdialog?sstr=" + encodeURIComponent(spar);
+	$("#epgSearch").val("");
+	
+	var w = $(window).width() -100;
+	var h = $(window).height() -100;
+	
+	load_dm(url,tstr_epgsearch,w,h);
+}
+
 function open_epg_pop(sRef) {
+
+	open_epg_dialog();
+	return;
+
 	var url = 'ajax/epgpop?sref=' + escape(sRef);
 	$.popupWindow(url, {
 		height: 500,
@@ -383,7 +387,21 @@ function open_epg_pop(sRef) {
 	});	
 }
 
+function open_epg_search_dialog() {
+	var spar = $("#epgSearch").val();
+	var url = "ajax/epgdialog?sstr=" + encodeURIComponent(spar);
+	$("#epgSearch").val("");
+	
+	var w = $(window).width() -100;
+	var h = $(window).height() -100;
+	
+	load_dm(url,tstr_epgsearch,w,h);
+}
+
 function open_epg_search_pop() {
+	open_epg_search_dialog();
+	return;
+
 	var spar = $("#epgSearch").val();
 	var url = "ajax/epgpop?sstr=" + encodeURIComponent(spar);
 	$.popupWindow(url, {
@@ -865,6 +883,18 @@ function editTimer(serviceref, begin, end) {
 							}
 							$('#timerbegin').prop('readonly', r);
 							$('#timername').prop('readonly',r);
+							
+							if (typeof timer.vpsplugin_enabled !== 'undefined')
+							{
+								$('#vpsplugin_enabled').prop("checked", timer.vpsplugin_enabled);
+								$('#vpsplugin_overwrite').prop("checked", timer.vpsplugin_overwrite);
+								$('#has_vpsplugin1').show();
+								$('#has_vpsplugin2').show();
+							}
+							else {
+								$('#has_vpsplugin1').hide();
+								$('#has_vpsplugin2').hide();
+							}
 							
 							$('#editTimerForm').dialog("open");
 							$('#editTimerForm').dialog("option", "title", tstr_edit_timer + " - " + timer.name);

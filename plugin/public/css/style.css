@@ -427,6 +427,10 @@ color:#87BCF8;
 	margin-bottom: 5px;
 }
 
+.timerlist_row_l {
+	width: 150px; float: left;
+}
+
 #content
 {
 	display:block;
