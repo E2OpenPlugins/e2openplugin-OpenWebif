@@ -173,10 +173,10 @@ $('#editTimerForm').dialog({
 					repeated: repeated };
 				if ($('#dirname').val() != 'None')
 					urldata["dirname"] = $('#dirname').val();
-				if ($('#has_vpsplugin1').visible())
+				if (!$('#has_vpsplugin1').is(':hidden'))
 				{
-					urldata["vpsplugin_enabled"] = $('#vpsplugin_enabled').val();
-					urldata["vpsplugin_overwrite"] = $('#vpsplugin_overwrite').val();
+					urldata["vpsplugin_enabled"] = ($('#vpsplugin_enabled').is(':checked')?"1":"0");
+					urldata["vpsplugin_overwrite"] = ($('#vpsplugin_overwrite').is(':checked')?"1":"0");
 				}
 				if (!timeredit_begindestroy) {
 					var begindate = new Date($('#timerbegin').datetimepicker('getDate'));
