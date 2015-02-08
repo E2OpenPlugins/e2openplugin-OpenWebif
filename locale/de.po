@@ -1263,3 +1263,6 @@ msgstr "SleepTimer wurde deaktiviert"
 
 msgid "Sleeptimer set to %d minutes"
 msgstr "SleepTimer eingestellt auf %d Minuten"
+
+msgid "Safe mode"
+msgstr "Sicherheitsmodus"

@@ -1262,3 +1262,6 @@ msgstr ""
 
 msgid "Sleeptimer set to %d minutes"
 msgstr ""
+
+msgid "Safe mode"
+msgstr ""

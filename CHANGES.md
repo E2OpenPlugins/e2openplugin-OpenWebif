@@ -1,17 +1,21 @@
 ## Version 0.4.x
 ## (planed)
 **FEATURES**
+* powertimer api
+* improve movie move
+* add movie trash features
+
+## Version 0.4.5
+## (in development)
+**FEATURES**
 * epg search as modal dialog
 * channel epg as modal dialog
-* powertimer api
+* add vps option to timer dialog
 
 ## Version 0.4.4
-## (in development)
 **FEATURES**
 * add vps channel api
 * improve file security
-
-**FIXES**
 
 ## Version 0.4.3
 **FEATURES**
