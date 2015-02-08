@@ -923,6 +923,14 @@ function editTimer(serviceref, begin, end) {
 								$('#vpsplugin_enabled').prop("checked", timer.vpsplugin_enabled);
 								$('#vpsplugin_safemode').prop("checked", !timer.vpsplugin_overwrite);
 								$('#has_vpsplugin1').show();
+								if($('#vpsplugin_enabled').is(':checked')) {
+									$('#vpsplugin_safemode').show();
+									$('#has_vpsplugin2').show();
+								}
+								else {
+									$('#vpsplugin_safemode').hide();
+									$('#has_vpsplugin2').hide();
+								}
 							}
 							else {
 								$('#has_vpsplugin1').hide();
