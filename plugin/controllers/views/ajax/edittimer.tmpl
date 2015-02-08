@@ -114,18 +114,6 @@
 
 initTimerEditBegin();
 
-function checkVPS()
-{
-	if($('#vpsplugin_enabled').is(':checked')) {
-		$('#vpsplugin_safemode').show();
-		$('#has_vpsplugin2').show();
-	}
-	else {
-		$('#vpsplugin_safemode').hide();
-		$('#has_vpsplugin2').hide();
-	}
-}
-
 $('#vpsplugin_enabled').click(function() { checkVPS();});
 
 $('#timerend').datetimepicker({

@@ -677,7 +677,7 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	$('#left').val(this.left);
 	$('#counterFormat').val(this.counterFormat);
 	$('#vps').prop('checked',this.vps);
-	$('#vpso').prop('checked',this.vpso);
+	$('#vpssm').prop('checked',!this.vpso);
 	$('#series_labeling').prop('checked',this.series_labeling);
 	checkValues();
 };
@@ -840,7 +840,7 @@ function saveAT()
 	CurrentAT.left = $('#left').val();
 	CurrentAT.counterFormat = $('#counterFormat').val();
 	CurrentAT.vps = $('#vps').is(':checked');
-	CurrentAT.vpso = $('#vpso').is(':checked');
+	CurrentAT.vpso = !$('#vpssm').is(':checked');
 	CurrentAT.series_labeling = $('#series_labeling').is(':checked');
 	reqs += "match=" + encodeURIComponent(CurrentAT.match);
 	reqs += "&name=" + encodeURIComponent(CurrentAT.name);
