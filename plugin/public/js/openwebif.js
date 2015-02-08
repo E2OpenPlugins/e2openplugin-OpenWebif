@@ -961,7 +961,10 @@ function addTimer(evt,chsref,chname) {
 		margin_before = evt.recording_margin_before;
 		margin_after = evt.recording_margin_after;
 	}
-	if (!timeredit_initialized) {
+	
+	var lch=$('#bouquet_select > option').length;
+	
+	if (!timeredit_initialized || lch < 2) {
 		initTimerEdit();
 	}
 	
