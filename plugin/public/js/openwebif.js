@@ -921,13 +921,11 @@ function editTimer(serviceref, begin, end) {
 							if (typeof timer.vpsplugin_enabled !== 'undefined')
 							{
 								$('#vpsplugin_enabled').prop("checked", timer.vpsplugin_enabled);
-								$('#vpsplugin_overwrite').prop("checked", timer.vpsplugin_overwrite);
+								$('#vpsplugin_safemode').prop("checked", !timer.vpsplugin_overwrite);
 								$('#has_vpsplugin1').show();
-								$('#has_vpsplugin2').show();
 							}
 							else {
 								$('#has_vpsplugin1').hide();
-								$('#has_vpsplugin2').hide();
 							}
 							
 							$('#editTimerForm').dialog("open");
