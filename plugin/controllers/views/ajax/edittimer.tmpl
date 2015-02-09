@@ -225,7 +225,7 @@ $('#editTimerForm').dialog({
 				}
 				
 				if (canclose) {
-					if (reloadTimers) $("#content_container").load("/ajax/timers");
+					if (reloadTimers) load_maincontent("/ajax/timers");
 					$(this).dialog("close");
 				}
 			}

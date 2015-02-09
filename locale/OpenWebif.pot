@@ -1265,3 +1265,9 @@ msgstr ""
 
 msgid "Safe mode"
 msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Open in new window"
+msgstr ""
