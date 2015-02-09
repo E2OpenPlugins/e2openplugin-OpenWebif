@@ -133,7 +133,8 @@ $(function() {
 
 function initJsTranslation(strings) {
 	tstr_add_timer = strings.add_timer;
-	tstr_close = strings.cancel;
+	tstr_cancel = strings.cancel;
+	tstr_close = strings.close;
 	tstr_del_timer = strings.delete_timer_question;
 	tstr_del_autotimer = strings.at_delete_autotimer_question;
 	tstr_del_recording = strings.delete_recording_question;
@@ -203,6 +204,7 @@ function initJsTranslation(strings) {
 	tstr_timerpreview = strings.timer_preview;
 	tstr_timernewname = strings.timer_newname;
 	
+	tstr_open_in_new_window = strings.open_in_new_window;
 }
 
 function wait_for_openwebif() {
@@ -260,9 +262,7 @@ function load_info_dialog(url,title,w,h){
 }
 
 
-function load_dm_spinner(url,title,w,h){
-	var buttons = {}
-	buttons[tstr_close] = function() { $(this).dialog("close");};
+function load_dm_spinner(url,title,w,h,buttons){
 	var width = 'auto',height='auto';
 	if (typeof w !== 'undefined')
 		width = w;
@@ -330,7 +330,7 @@ function load_dm(url,title,w,h){
 function load_message_dm(url,title){
 	var buttons = {}
 	buttons[tstr_send_message] = function() { sendMessage();};
-	buttons[tstr_close] = function() { $(this).dialog("close");};
+	buttons[tstr_cancel] = function() { $(this).dialog("close");};
 
 	$.ajax({
 		url: url,
@@ -397,20 +397,20 @@ function toggle_chan_des(evId, sRef, idp) {
 	$(iddiv).slideToggle(200);
 }
 
-function open_epg_dialog(sRef) {
+function open_epg_dialog(sRef,Name) {
 	var url = "ajax/epgdialog?sref=" + escape(sRef);
 	
 	var w = $(window).width() -100;
 	var h = $(window).height() -100;
 	
-// TODO: Channel Name as Title
-	load_dm_spinner(url,'',w,h);
+	var buttons = {}
+	buttons[tstr_close] = function() { $(this).dialog("close");};
+	buttons[tstr_open_in_new_window] = function() { $(this).dialog("close"); open_epg_pop(sRef);};
+	
+	load_dm_spinner(url,Name,w,h,buttons);
 }
 
 function open_epg_pop(sRef) {
-
-	open_epg_dialog(sRef);
-	return;
 
 	var url = 'ajax/epgpop?sref=' + escape(sRef);
 	$.popupWindow(url, {
@@ -429,13 +429,14 @@ function open_epg_search_dialog() {
 	var w = $(window).width() -100;
 	var h = $(window).height() -100;
 	
-	load_dm_spinner(url,tstr_epgsearch,w,h);
+	var buttons = {}
+	buttons[tstr_close] = function() { $(this).dialog("close");};
+	buttons[tstr_open_in_new_window] = function() { $(this).dialog("close"); open_epg_search_pop();};
+	
+	load_dm_spinner(url,tstr_epgsearch,w,h,buttons);
 }
 
 function open_epg_search_pop() {
-	open_epg_search_dialog();
-	return;
-
 	var spar = $("#epgSearch").val();
 	var url = "ajax/epgpop?sstr=" + encodeURIComponent(spar);
 	$.popupWindow(url, {

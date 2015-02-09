@@ -20,7 +20,7 @@ tr {background-color:#f0f7fc;}
 			<div style="position:relative;top:10px;left:18px;color:#FFF;font-size:13px;font-weight:bold;">$info.date</div>
 		</div>
 		<div class='d120' style="height:60px;">
-			<div style="position:relative;top:0px;left:15px;"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "/images/default_picon.png")' onclick="open_epg_pop('$info.ref');" href="#" title="$tstrings['show_epg_for'] $info.name" border="0" alt='' /></div>
+			<div style="position:relative;top:0px;left:15px;"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "/images/default_picon.png")' onclick="open_epg_dialog('$info.ref','$info.name');" href="#" title="$tstrings['show_epg_for'] $info.name" border="0" alt='' /></div>
  		</div>
 		<div class='d120' style="height:40px;">
 			<div style="position:relative;top:8px;left:0px;color:#FFF;text-align:center;font-size:13px;font-weight:bold;">$info.provider</div>
