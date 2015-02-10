@@ -204,7 +204,16 @@ def getBouquets(stype):
 	serviceHandler = eServiceCenter.getInstance()
 	services = serviceHandler.list(eServiceReference('%s FROM BOUQUET "%s" ORDER BY bouquet'%(s_type, s_type2)))
 	bouquets = services and services.getContent("SN", True)
+	bouquets = removeHiddenBouquets(bouquets)
 	return { "bouquets": bouquets }
+
+def removeHiddenBouquets(bouquetList):
+	bouquets = []
+	for bouquet in bouquetList:
+		flags = int(bouquet[0].split(':')[1])
+		if not flags & eServiceReference.isInvisible:
+			bouquets.append(bouquet)
+	return bouquets
 
 def getProviders(stype):
 	s_type = service_types_tv
