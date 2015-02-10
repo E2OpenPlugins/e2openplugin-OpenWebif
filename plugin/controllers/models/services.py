@@ -204,7 +204,16 @@ def getBouquets(stype):
 	serviceHandler = eServiceCenter.getInstance()
 	services = serviceHandler.list(eServiceReference('%s FROM BOUQUET "%s" ORDER BY bouquet'%(s_type, s_type2)))
 	bouquets = services and services.getContent("SN", True)
+	bouquets = removeHiddenBouquets(bouquets)
 	return { "bouquets": bouquets }
+
+def removeHiddenBouquets(bouquetList):
+	bouquets = []
+	for bouquet in bouquetList:
+		flags = int(bouquet[0].split(':')[1])
+		if not flags & eServiceReference.isInvisible:
+			bouquets.append(bouquet)
+	return bouquets
 
 def getProviders(stype):
 	s_type = service_types_tv
@@ -214,7 +223,6 @@ def getProviders(stype):
 	services = serviceHandler.list(eServiceReference('%s FROM PROVIDERS ORDER BY name'%(s_type)))
 	providers = services and services.getContent("SN", True)
 	return { "providers": providers }
-
 
 def getSatellites(stype):
 	ret = []
@@ -260,10 +268,9 @@ def getSatellites(stype):
 				"service": service.toString(),
 				"name": service.getName()
 			})
-		
-	ret = sortSatellites(ret)		
-			
+	ret = sortSatellites(ret)
 	return { "satellites": ret }
+
 def sortSatellites(satList):
 	import re
 	sortDict = {}
@@ -276,7 +283,7 @@ def sortSatellites(satList):
 		if orb > 3600:
 			orb *= -1
 		elif orb > 1800:
-			orb -= 3600 
+			orb -= 3600
 		if not orb in sortDict:
 			sortDict[orb] = []
 		sortDict[orb].append(i)
@@ -285,7 +292,7 @@ def sortSatellites(satList):
 	for l in sorted(sortDict.keys()):
 		for v in sortDict[l]:
 			outList.append(satList[v])
-	return outList	
+	return outList
 
 def getProtection(sref):
 	isProtected = "0"
@@ -364,7 +371,7 @@ def getServices(sRef, showAll = True, showHidden = False):
 	for sitem in slist:
 		st = int(sitem[0].split(":")[1])
 		if not st & 512 or showHidden:
-			if showAll or st == 0: 
+			if showAll or st == 0:
 				service = {}
 				service['servicereference'] = sitem[0].encode("utf8")
 				service['servicename'] = sitem[1].encode("utf8")
@@ -673,7 +680,7 @@ def getSearchEpg(sstr, endtime=None):
 					ret.append(ev)
 			else:
 				ret.append(ev)
-		
+
 	return { "events": ret, "result": True }
 
 def getSearchSimilarEpg(ref, eventid):
