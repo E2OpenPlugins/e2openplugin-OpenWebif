@@ -250,7 +250,7 @@ msgid "Brand"
 msgstr "Značka"
 
 msgid "Cancel"
-msgstr "Zrušit"
+msgstr "Zavřít"
 
 msgid "Capacity"
 msgstr "Kapacita"
@@ -1165,7 +1165,7 @@ msgid "TimerList has been saved"
 msgstr "Seznam časovačů byl uložen"
 
 msgid "No event found! Not recording!"
-msgstr ""
+msgstr "Nenalezena událost! Nenahrává se!"
 
 msgid "Instant record for current Event started"
 msgstr "Začalo okamžité nahrávání pro aktuální událost"
@@ -1205,3 +1205,9 @@ msgstr "Časovač usínání nastaven na %d minut"
 
 msgid "Safe mode"
 msgstr "Bezpečný mód"
+
+msgid "Close"
+msgstr "Zavřít"
+
+msgid "Open in new window"
+msgstr "Otevřít v novém okně"
