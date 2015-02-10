@@ -411,7 +411,6 @@ function open_epg_dialog(sRef,Name) {
 }
 
 function open_epg_pop(sRef) {
-
 	var url = 'ajax/epgpop?sref=' + escape(sRef);
 	$.popupWindow(url, {
 		height: 500,
@@ -431,13 +430,12 @@ function open_epg_search_dialog() {
 	
 	var buttons = {}
 	buttons[tstr_close] = function() { $(this).dialog("close");};
-	buttons[tstr_open_in_new_window] = function() { $(this).dialog("close"); open_epg_search_pop();};
+	buttons[tstr_open_in_new_window] = function() { $(this).dialog("close"); open_epg_search_pop(spar);};
 	
 	load_dm_spinner(url,tstr_epgsearch,w,h,buttons);
 }
 
-function open_epg_search_pop() {
-	var spar = $("#epgSearch").val();
+function open_epg_search_pop(spar) {
 	var url = "ajax/epgpop?sstr=" + encodeURIComponent(spar);
 	$.popupWindow(url, {
 		height: 500,
@@ -445,7 +443,6 @@ function open_epg_search_pop() {
 		toolbar: false,
 		scrollbars: true
 	});
-	$("#epgSearch").val("");
 }
 
 function addTimerEvent(sRef, eventId) {

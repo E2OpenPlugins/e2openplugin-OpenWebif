@@ -404,6 +404,16 @@ class WebController(BaseController):
 			vpsplugin_time = int(float(request.args["vpsplugin_time"][0]))
 			if vpsplugin_time == -1:
 				vpsplugin_time = None
+		# partnerbox:
+		if "vps_pbox" in request.args:
+			vpsplugin_enabled = None
+			vpsplugin_overwrite = None
+			mode = request.args["vps_pbox"][0]
+			if "yes_safe" in mode:
+				vpsplugin_enabled = True
+			elif "yes" in mode:
+				vpsplugin_enabled = True
+				vpsplugin_overwrite = True
 		return { 
 			"vpsplugin_time":vpsplugin_time,
 			"vpsplugin_overwrite":vpsplugin_overwrite,
