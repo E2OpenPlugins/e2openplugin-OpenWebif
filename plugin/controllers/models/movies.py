@@ -165,6 +165,7 @@ def getAllMovies():
 def removeMovie(session, sRef):
 	service = ServiceReference(sRef)
 	result = False
+	deleted = False
 
 	if service is not None:
 		serviceHandler = eServiceCenter.getInstance()
@@ -173,8 +174,24 @@ def removeMovie(session, sRef):
 		name = info and info.getName(service.ref) or "this recording"
 
 	if offline is not None:
-		if not offline.deleteFromDisk(0):
-			result = True
+		fullpath = service.ref.getPath()
+		srcpath = '/'.join(fullpath.split('/')[:-1]) + '/'
+		# TODO: check trash
+		# TODO: check enable trash default value
+		# TODO: remove jpg
+		if '.Trash' not in fullpath and config.usage.movielist_trashcan.value:
+			try:
+				import Tools.Trashcan
+				trash = Tools.Trashcan.createTrashFolder(srcpath)
+				if trash:
+					res = _moveMovie(session, sRef, destpath=trash)
+					result = res['result']
+					deleted = result
+			except ImportError:
+				pass
+		if not deleted:
+			if not offline.deleteFromDisk(0):
+				result = True
 
 	if result == False:
 		return {
@@ -187,13 +204,13 @@ def removeMovie(session, sRef):
 			"message": "The movie '%s' has been deleted successfully" % name
 			}
 
-def moveMovie(session, sRef, destpath):
+def _moveMovie(session, sRef, destpath=None, newname=None):
 	import os
 	service = ServiceReference(sRef)
 	result = True
 	errText = 'unknown Error'
 
-	if not destpath[-1] == '/':
+	if destpath is not None and not destpath[-1] == '/':
 		destpath = destpath + '/'
 
 	if service is not None:
@@ -204,6 +221,8 @@ def moveMovie(session, sRef, destpath):
 		srcpath = '/'.join(fullpath.split('/')[:-1]) + '/'
 		fullfilename = fullpath.split('/')[-1]
 		fileName, fileExt = os.path.splitext(fullfilename)
+		if newname is not None:
+			newfullpath = srcpath + newname + fileExt
 
 		# TODO: check splitted recording
 		def domove():
@@ -219,23 +238,37 @@ def moveMovie(session, sRef, destpath):
 				src = srcpath + fileName + suffix
 				if exists(src):
 					try:
-						move(src, destpath + fileName + suffix)
+						if newname is not None:
+							move(src, srcpath + newname + suffix)
+						else:
+							move(src, destpath + fileName + suffix)
 					except OSError as ose:
+						#print "ERR:%s" % str(ose)
 						errorlist.append(str(ose))
 			return errorlist
 
-		if srcpath == destpath:
-			result = False
-			errText = 'Equal Source and Destination Path'
-		elif not os.path.exists(fullpath):
-			result = False
-			errText = 'File not exist'
-		elif not os.path.exists(destpath):
-			result = False
-			errText = 'Destination Path not exist'
-		elif os.path.exists(destpath + fullfilename):
-			errText = 'Destination File exist'
-			result = False
+		# MOVE
+		if newname is None:
+			if srcpath == destpath:
+				result = False
+				errText = 'Equal Source and Destination Path'
+			elif not os.path.exists(fullpath):
+				result = False
+				errText = 'File not exist'
+			elif not os.path.exists(destpath):
+				result = False
+				errText = 'Destination Path not exist'
+			elif os.path.exists(destpath + fullfilename):
+				errText = 'Destination File exist'
+				result = False
+		#rename
+		else:
+			if not os.path.exists(fullpath):
+				result = False
+				errText = 'File not exist'
+			elif os.path.exists(newfullpath):
+				result = False
+				errText = 'New File exist'
 
 		if result:
 			errlist = domove()
@@ -244,78 +277,25 @@ def moveMovie(session, sRef, destpath):
 			else:
 				result = False
 
+	etxt = "rename"
+	if newname is None:
+		etxt = "move"
 	if result == False:
 		return {
 			"result": False,
-			"message": "Could not move Movie '%s' Err: '%s'" % (name,errText)
+			"message": "Could not %s recording '%s' Err: '%s'" % (etxt,name,errText)
 			}
 	else:
 		return {
 			"result": True,
-			"message": "The movie '%s' has been moved successfully" % name
+			"message": "The recording '%s' has been %sd successfully" % (name,etxt)
 			}
+
+def moveMovie(session, sRef, destpath):
+	return _moveMovie (session,sRef,destpath=destpath)
 
 def renameMovie(session, sRef, newname):
-	import os
-	service = ServiceReference(sRef)
-	result = True
-	errText = 'unknown Error'
-
-	if service is not None:
-		serviceHandler = eServiceCenter.getInstance()
-		info = serviceHandler.info(service.ref)
-		name = info and info.getName(service.ref) or "this recording"
-		fullpath = service.ref.getPath()
-		srcpath = '/'.join(fullpath.split('/')[:-1]) + '/'
-		fullfilename = fullpath.split('/')[-1]
-		fileName, fileExt = os.path.splitext(fullfilename)
-		newfullpath = srcpath + newname + fileExt
-
-		# TODO: check splitted recording
-		def domove():
-			exists = os.path.exists
-			move = os.rename
-			errorlist = []
-			if fileExt == '.ts':
-				suffixes = ".ts.meta", ".ts.cuts", ".ts.ap", ".ts.sc", ".eit", ".ts", ".jpg"
-			else:
-				suffixes = "%s.ts.meta" % fileExt, "%s.cuts" % fileExt, fileExt, '.jpg', '.eit'
-
-			for suffix in suffixes:
-				src = srcpath + fileName + suffix
-				if exists(src):
-					try:
-						move(src, srcpath + newname + suffix)
-					except OSError as ose:
-						errorlist.append(str(ose))
-			return errorlist
-
-# TODO: check new filename 
-
-		if not os.path.exists(fullpath):
-			result = False
-			errText = 'File not exist'
-		elif os.path.exists(newfullpath):
-			result = False
-			errText = 'New File exist'
-
-		if result:
-			errlist = domove()
-			if not errlist:
-				result = True
-			else:
-				result = False
-
-	if result == False:
-		return {
-			"result": False,
-			"message": "Could not rename Movie '%s' Err: '%s'" % (name,errText)
-			}
-	else:
-		return {
-			"result": True,
-			"message": "The movie '%s' has been renamed successfully" % name
-			}
+	return _moveMovie (session,sRef,newname=newname)
 
 def getMovieTags(addtag = None, deltag = None):
 	tags = []
