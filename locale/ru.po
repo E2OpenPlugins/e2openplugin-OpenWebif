@@ -1161,10 +1161,25 @@ msgid "Timer '%s' not saved while Conflict"
 msgstr "Таймер '%s' не сохранен из-за конфликта"
 
 msgid "Could not find timer '%s' with given start and end time!"
-msgstr ""
+msgstr "Не удалось найти таймер '%s' с заданным временем начала и окончания!"
+
+msgid "The timer '%s' now recorded! Not disabled!"
+msgstr "Таймер '%s' сейчас записывается! Невозможно отключить!"
 
 msgid "The timer '%s' has been deleted successfully"
-msgstr "Не удалось найти таймер '%s' с заданным временем начала и окончания!"
+msgstr "Таймер '%s' был успешно удален"
+
+msgid "Timer '%s' already exists!"
+msgstr "Таймер '%s' уже существует!"
+
+msgid "Close"
+msgstr "Закрыть"
+
+msgid "Open in new window"
+msgstr "Открыть в новом окне"
+
+msgid "The timer '%s' now recorded! Not disabled!"
+msgstr "Таймер '%s' сейчас записывыется! Невозможно отключить!"
 
 msgid "No matching Timer found"
 msgstr "Не найден соответствующий таймер"
