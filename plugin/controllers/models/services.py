@@ -467,16 +467,19 @@ def getEventDesc(ref, idev):
 
 def getEvent(ref, idev):
 	epgcache = eEPGCache.getInstance()
-	events = epgcache.lookupEvent(['BDTSENRX', (ref, 2, int(idev))])
+	events = epgcache.lookupEvent(['IBDTSENRX', (ref, 2, int(idev))])
 	info = {}
 	for event in events:
-		info['begin'] = event[0]
-		info['duration'] = event[1]
-		info['title'] = event[2]
-		info['shortdesc'] = event[3]
-		info['longdesc'] = event[4]
-		info['channel'] = event[5]
-		info['sref'] = event[6]
+		info['id'] = event[0]
+		info['begin_str'] = strftime("%H:%M", (localtime(event[1])))
+		info['begin'] = event[1]
+		info['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
+		info['duration'] = event[2]
+		info['title'] = filterName(event[3])
+		info['shortdesc'] = event[4]
+		info['longdesc'] = event[5]
+		info['channel'] = filterName(event[6])
+		info['sref'] = event[7]
 		break;
 	return { 'event': info }
 
