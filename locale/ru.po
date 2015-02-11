@@ -1178,9 +1178,6 @@ msgstr "Закрыть"
 msgid "Open in new window"
 msgstr "Открыть в новом окне"
 
-msgid "The timer '%s' now recorded! Not disabled!"
-msgstr "Таймер '%s' сейчас записывыется! Невозможно отключить!"
-
 msgid "No matching Timer found"
 msgstr "Не найден соответствующий таймер"
 
