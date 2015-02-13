@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2014-11-01 19:04+0100\n"
-"PO-Revision-Date: 2014-12-20 01:22+0100\n"
+"PO-Revision-Date: 2015-02-11 23:30+0100\n"
 "Last-Translator: Svevrstt <svevrstt@gmail.com>\n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7.4\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -763,9 +763,8 @@ msgstr ""
 
 # Not translating licence information
 msgid ""
-"All Files of this Software are open source software; you can redistribute it "
-"and/or modify it under the terms of the GNU General Public License version 2 "
-"as published by the Free Software Foundation."
+"All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software "
+"Foundation."
 msgstr ""
 
 msgid "Root"
@@ -1200,7 +1199,89 @@ msgid "Distro"
 msgstr "Distribution av programvaran"
 
 msgid "Driver date"
-msgstr "Drivrutinerna daterade"
+msgstr "Verson av drivrutinerna"
 
-#~ msgid "Timer List"
-#~ msgstr "Timerlista"
+msgid "Conflicting Timer(s) detected! %s"
+msgstr "Timerkonflikt(er) upptäckta %s"
+
+msgid "Could not add timer '%s'!"
+msgstr "Kunde inte lägga till timer '%s'!"
+
+msgid "Timer '%s' added"
+msgstr "Timer '%s' lades till"
+
+msgid "EventId not found"
+msgstr "Aktivitetens ID kunde inte hittas"
+
+msgid "Timer '%s' changed"
+msgstr "Timer '%s' ändrades"
+
+msgid "Timer '%s' not saved while Conflict"
+msgstr "Timer '%s' sparades inte på grund av en konflikt"
+
+msgid "Could not find timer '%s' with given start and end time!"
+msgstr "Kunde inte hitta någon timer '%s' med angiven start-och stopptid"
+
+msgid "The timer '%s' has been deleted successfully"
+msgstr "Timern '%s' togs bort"
+
+msgid "No matching Timer found"
+msgstr "Kunde inte hitta någon passande timer"
+
+# The word framgångsrikt to get a string to  end the sentence
+msgid "The timer '%s' has been %s successfully"
+msgstr "Timern '%s' har %s framgångsrikt"
+
+msgid "List of Timers has been cleaned"
+msgstr "Timerlistan har rensats"
+
+msgid "TimerList has been saved"
+msgstr "Timerlistan har sparats"
+
+msgid "No event found! Not recording!"
+msgstr "Ingen aktivitet hittades. Spelar inte in!"
+
+msgid "Instant record for current Event started"
+msgstr "En direktinspelning av aktuellt program startades"
+
+msgid "Infinite Instant recording started"
+msgstr "En direktinspelning utan tidsgräns startades"
+
+msgid "Timer conflict detected! Not recording!"
+msgstr "En timerkonflikt har upptäckts. Spelar inte in!"
+
+msgid "Missing requesteter: sRef"
+msgstr "Begäran saknas: sRef"
+
+msgid "Unknown command: '%s'"
+msgstr "Odefinierad instruktion: '%s'"
+
+msgid "PowerTimer feature not available"
+msgstr "Funktionen för att hantera PowerTimer saknas"
+
+msgid "Sleeptimer is enabled"
+msgstr "Insommningstimer är aktiverad"
+
+msgid "Sleeptimer is disabled"
+msgstr "Insomningstimer är avaktiverad"
+
+msgid "SleepTimer feature not available"
+msgstr "Funktionen insomningstimer är inte tillgänglig"
+
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr "FEL: Kan inte ställa in insomningstimer medan enheten är i viloläge"
+
+msgid "Sleeptimer has been disabled"
+msgstr "Insomningstimer har avaktiverats"
+
+msgid "Sleeptimer set to %d minutes"
+msgstr "Insomningstimer är ställd på %d minuter"
+
+msgid "Safe mode"
+msgstr "Felsäkert läge"
+
+msgid "Close"
+msgstr "Stäng"
+
+msgid "Open in new window"
+msgstr "Öppna i ett nytt fönster"
