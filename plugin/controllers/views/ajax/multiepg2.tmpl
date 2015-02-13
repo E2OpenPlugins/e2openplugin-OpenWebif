@@ -7,13 +7,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="shortcut icon" href="/images/favicon.png">
-<link rel="stylesheet" type="text/css" href="/css/style.min.css" />
-<link type="text/css" href="/css/jquery-ui-1.8.18.custom.css" rel="stylesheet" />	
-<script type="text/javascript" src="/js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="/js/jquery-ui-1.8.18.custom.min.js"></script>
-<script type="text/javascript" src="/js/openwebif-1.0.min.js"></script>
-<script type="text/javascript" src="/js/jquery.fixedheadertable.min.js"></script>
+<link rel="shortcut icon" href="images/favicon.png">
+<link rel="stylesheet" type="text/css" href="css/style.min.css" />
+<link type="text/css" href="css/jquery-ui-1.8.18.custom.css" rel="stylesheet" />	
+<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
+<script type="text/javascript" src="js/openwebif-1.0.min.js"></script>
+<script type="text/javascript" src="js/jquery.fixedheadertable.min.js"></script>
 <script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
 
 <title>Open Webif $tstrings['multi_epg']</title>
@@ -54,7 +54,7 @@ html, body, #tvcontent { width:100%; height:100%;}
 <table style="margin:0">
 <tr>
 #for $slot in range(0,7)
-    <td class="plus #if $slot==$day then 'selected' else '' #" js:day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</td>
+	<td class="plus #if $slot==$day then 'selected' else '' #" js:day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</td>
 #end for
 </tr>
 </table>
@@ -104,21 +104,21 @@ html, body, #tvcontent { width:100%; height:100%;}
 var picons = $dumps($picons);
 var reloadTimers = false;
 \$(".bq").click(function() {
-    var id = \$(this).attr("js:ref");
-    \$("#tvcontent").html(loadspinner).load('/ajax/multiepg2?reloadtimer=0&bref='+id);
+	var id = \$(this).attr("js:ref");
+	\$("#tvcontent").html(loadspinner).load('ajax/multiepg2?reloadtimer=0&bref='+id);
 });
 \$(".event").click(function() {
-    var id = \$(this).attr("js:id");
-    var ref = \$(this).attr("js:ref");
-    \$("#eventdescription").load('/ajax/event?idev='+id+'&sref='+escape(ref), function() { 
+	var id = \$(this).attr("js:id");
+	var ref = \$(this).attr("js:ref");
+	\$("#eventdescription").load('ajax/event?idev='+id+'&sref='+escape(ref), function() { 
 		\$("#eventdescription").show(200).draggable( { handle: ".handle" } );
     });
 });
 \$(".plus").click(function() {
 	var day = \$(this).attr("js:day");
-	\$("#tvcontent").html(loadspinner).load('/ajax/multiepg2?reloadtimer=0&bref=${quote($bref)}&day='+day);
+	\$("#tvcontent").html(loadspinner).load('ajax/multiepg2?reloadtimer=0&bref=${quote($bref)}&day='+day);
 });
-\$('#editTimerForm').load('/ajax/edittimer');
+\$('#editTimerForm').load('ajax/edittimer');
 
 \$('#TBL1').fixedHeaderTable({ 
 	footer: true,

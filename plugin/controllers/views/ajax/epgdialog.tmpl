@@ -1,7 +1,7 @@
 #from urllib import quote
 #from Plugins.Extensions.OpenWebif.local import tstrings
 #if len($events) == 0
-<img src="/images/not_found.jpg" title="No items found" border="0">
+<img src="images/not_found.jpg" title="No items found" border="0">
 #else
 <style>
 table { font-size:12px; font-family: Verdana,Arial,sans-serif;}
@@ -10,7 +10,7 @@ tr {background-color: #F0F7FC;}
 .ti_icon {
 height:25px;
 width:25px;
-background-image:url('/images/timer_icons.png');
+background-image:url('images/timer_icons.png');
 display:inline-block;
 }
 .ti_empty {background-position:0px 0px;}
@@ -53,15 +53,10 @@ display:inline-block;
 #end for
 </div>
 <script type="text/javascript">
-#if len($timers) > 0
-#for $timer in $timers
-// $timer.serviceref;$timer.begin;$timer.duration
-#end for
-#end if
 #raw
 var reloadTimers = true;
 $(function() {
-	$('#editTimerForm').load('/ajax/edittimer');
+	$('#editTimerForm').load('ajax/edittimer');
 });
 #end raw
 </script>
