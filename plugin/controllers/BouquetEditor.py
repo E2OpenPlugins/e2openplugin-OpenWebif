@@ -15,7 +15,7 @@ from Components.config import config
 from os import remove, path, popen
 from Screens.InfoBar import InfoBar
 from ServiceReference import ServiceReference
-from Components.ParentalControl import parentalControl, IMG_WHITESERVICE, IMG_WHITEBOUQUET, IMG_BLACKSERVICE, IMG_BLACKBOUQUET, LIST_BLACKLIST
+from Components.ParentalControl import parentalControl
 from re import compile as re_compile
 from Components.NimManager import nimmanager 
 
@@ -490,7 +490,7 @@ class BouquetEditor(Source):
 			return returnValue
 			
 	def toggleLock(self, param):
-		if not config.ParentalControl.configured.value:
+		if "configured" in config.ParentalControl.dict().keys() and not config.ParentalControl.configured.value:
 			return (False, "Parent Control is not activated.")
 		sRef = None
 		if "sRef" in param:
@@ -498,7 +498,7 @@ class BouquetEditor(Source):
 				sRef =param["sRef"]
 		if sRef is None:
 			return (False, "No service given!")
-		if config.ParentalControl.setuppinactive.value:
+		if "setuppinactive" in config.ParentalControl.dict().keys() and config.ParentalControl.setuppinactive.value:
 			password = None
 			if "password" in param:
 				if param["password"] is not None:
@@ -512,33 +512,30 @@ class BouquetEditor(Source):
 				else:
 					return (False, "Parent Control Setup Pin is wrong!")
 		cur_ref = eServiceReference(sRef)
-		protection = parentalControl.getProtectionType(cur_ref.toCompareString())
-		if protection[0]:
+		protection = parentalControl.getProtectionLevel(cur_ref.toCompareString())
+		if protection:
 			parentalControl.unProtectService(cur_ref.toCompareString())
 		else:
 			parentalControl.protectService(cur_ref.toCompareString())
-		protection = parentalControl.getProtectionType(cur_ref.toCompareString())
 		if cur_ref.flags & eServiceReference.mustDescent:
 			serviceType = "Bouquet"
 		else:
 			serviceType = "Service"
-		protectionText = "%s %s is unlocked." % (serviceType, self.getName(cur_ref))
-		if protection[0]:
-			if protection[1] == IMG_BLACKSERVICE:
-				protectionText = "Service %s is locked." % self.getName(cur_ref)
-			elif protection[1] == IMG_BLACKBOUQUET:
-				#(locked -B-)
-				protectionText = "Bouquet %s is locked." % self.getName(cur_ref)
-			elif protection[1] == "":
-				# (locked)
-				protectionText = "%s %s is locked." % (serviceType, self.getName(cur_ref))
-		else:
-			if protection[1] == IMG_WHITESERVICE:
-				#(unlocked -S-)
-				protectionText = "Service %s is unlocked."  % self.getName(cur_ref)
-			elif protection[1] == IMG_WHITEBOUQUET:
-				#(unlocked -B-)
-				protectionText = "Bouquet %s is unlocked."  % self.getName(cur_ref)
+		if protection:
+			if "type" not in config.ParentalControl.dict().keys() or config.ParentalControl.type.value == LIST_BLACKLIST:
+				if parentalControl.blacklist.has_key(sref):
+					if "SERVICE" in parentalControl.blacklist.has_key(sref):
+						protectionText = "Service %s is locked." % self.getName(cur_ref)
+					elif "BOUQUET" in parentalControl.blacklist.has_key(sref):
+						protectionText = "Bouquet %s is locked." % self.getName(cur_ref)
+					else:
+						protectionText = "%s %s is locked." % (serviceType, self.getName(cur_ref))
+			else:
+				if hasattr(ParentalControl, "whitelist") and parentalControl.whitelist.has_key(sref):
+					if "SERVICE" in parentalControl.whitelist.has_key(sref):
+						protectionText = "Service %s is unlocked."  % self.getName(cur_ref)
+					elif "BOUQUET" in parentalControl.whitelist.has_key(sref):
+						protectionText = "Bouquet %s is unlocked."  % self.getName(cur_ref)
 		return (True, protectionText)
 
 	def backupFiles(self, param):
@@ -565,8 +562,8 @@ class BouquetEditor(Source):
 			files.append("/etc/tuxbox/cables.xml")
 			files.append("/etc/tuxbox/terrestrial.xml")
 			files.append("/etc/tuxbox/satellites.xml")
-			if config.ParentalControl.configured.value:
-				if config.ParentalControl.type.value == LIST_BLACKLIST:
+			if "configured" not in config.ParentalControl.dict().keys() or config.ParentalControl.configured.value:
+				if "type" not in config.ParentalControl.dict().keys() or config.ParentalControl.type.value == LIST_BLACKLIST:
 					files.append("/etc/enigma2/blacklist")
 				else:
 					files.append("/etc/enigma2/whitelist")

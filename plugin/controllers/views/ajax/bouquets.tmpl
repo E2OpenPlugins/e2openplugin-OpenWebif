@@ -7,7 +7,7 @@
 #for $bouquet in $bouquets
 <h1>
 <div>
-<div class="ow_i ow_i_stream1" onclick="window.open('/web/services.m3u?bRef=$quote($bouquet[0])','_blank');return false;" style="margin-left:30px;margin-bottom:-3px;" title="$tstrings['download_playlist'] $bouquet[1]" ></div>
+<div class="ow_i ow_i_stream1" onclick="window.open('web/services.m3u?bRef=$quote($bouquet[0])','_blank');return false;" style="margin-left:30px;margin-bottom:-3px;" title="$tstrings['download_playlist'] $bouquet[1]" ></div>
 <a style="display: inline-block;" href="#" id="ajax/channels?id=$quote($bouquet[0])&stype=$stype">$bouquet[1]</a>
 </div></h1><div>$tstrings["loading"] ...</div>
 #end for

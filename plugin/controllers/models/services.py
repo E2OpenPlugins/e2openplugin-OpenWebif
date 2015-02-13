@@ -11,7 +11,7 @@
 import re, unicodedata
 from Tools.Directories import fileExists
 from Components.Sources.ServiceList import ServiceList
-from Components.ParentalControl import parentalControl, IMG_WHITESERVICE, IMG_WHITEBOUQUET, IMG_BLACKSERVICE, IMG_BLACKBOUQUET
+from Components.ParentalControl import parentalControl
 from Components.config import config
 from ServiceReference import ServiceReference
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
@@ -296,25 +296,23 @@ def sortSatellites(satList):
 
 def getProtection(sref):
 	isProtected = "0"
-	if config.ParentalControl.configured.value:
-		protection = parentalControl.getProtectionType(sref)
-		if protection[0]:
-			if protection[1] == IMG_BLACKSERVICE:
-				#(locked -S-)
-				isProtected = "1"
-			elif protection[1] == IMG_BLACKBOUQUET:
-				#(locked -B-)
-				isProtected = "2"
-			elif protection[1] == "":
-				# (locked)
-				isProtected = "3"
-		else:
-			if protection[1] == IMG_WHITESERVICE:
-				#(unlocked -S-)
-				isProtected = "4"
-			elif protection[1] == IMG_WHITEBOUQUET:
-				#(unlocked -B-)
-				isProtected = "5"
+	if "configured" not in config.ParentalControl.dict().keys() or config.ParentalControl.configured.value:
+		protection = parentalControl.getProtectionLevel(sref)
+		if protection:
+			if "type" not in config.ParentalControl.dict().keys() or config.ParentalControl.type.value == LIST_BLACKLIST:
+				if parentalControl.blacklist.has_key(sref):
+					if "SERVICE" in parentalControl.blacklist.has_key(sref):
+						service['isprotected'] = '1'
+					elif "BOUQUET" in parentalControl.blacklist.has_key(sref):
+						service['isprotected'] = '2'
+					else:
+						service['isprotected'] = '3'
+			else:
+				if hasattr(ParentalControl, "whitelist") and parentalControl.whitelist.has_key(sref):
+					if "SERVICE" in parentalControl.whitelist.has_key(sref):
+						service['isprotected'] = '4'
+					elif "BOUQUET" in parentalControl.whitelist.has_key(sref):
+						service['isprotected'] = '5'
 	return isProtected
 
 def getChannels(idbouquet, stype):
@@ -335,7 +333,7 @@ def getChannels(idbouquet, stype):
 			chan = {}
 			chan['ref'] = quote(channel[0], safe=' ~@%#$&()*!+=:;,.?/\'')
 			chan['name'] = filterName(channel[1])
-			if config.ParentalControl.configured.value and config.OpenWebif.parentalenabled.value:
+			if ("configured" not in config.ParentalControl.dict().keys() or config.ParentalControl.configured.value) and config.OpenWebif.parentalenabled.value:
 				chan['protection'] = getProtection(channel[0])
 			else:
 				chan['protection'] = "0"
@@ -824,13 +822,13 @@ def getPicon(sname):
 	return "/images/default_picon.png"
 
 def getParentalControlList():
-	if not config.ParentalControl.configured.value:
+	if "configured" in config.ParentalControl.dict().keys() and config.ParentalControl.configured.value:
 		return {
 			"result": True,
 			"services": []
 		}
 	parentalControl.open()
-	if config.ParentalControl.type.value == "whitelist":
+	if "type" not in config.ParentalControl.dict().keys() and config.ParentalControl.type.value == "whitelist":
 		tservices = parentalControl.whitelist
 	else:
 		tservices = parentalControl.blacklist
@@ -844,7 +842,7 @@ def getParentalControlList():
 			})
 	return {
 		"result": True,
-		"type": config.ParentalControl.type.value,
+		"type": "type" not in config.ParentalControl.dict().keys() and config.ParentalControl.type.value or "blacklist",
 		"services": services
 	}
 

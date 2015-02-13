@@ -209,7 +209,7 @@ $('#editTimerForm').dialog({
 					urldata['endOld'] = Math.round(current_end);
 					$.ajax({
 						async: false,
-						url: "/api/timerchange?",
+						url: "api/timerchange?",
 						data: urldata,
 						success: function(data) {
 							result = $.parseJSON(data);
@@ -225,7 +225,7 @@ $('#editTimerForm').dialog({
 				}
 				
 				if (canclose) {
-					if (reloadTimers) load_maincontent("/ajax/timers");
+					if (reloadTimers) load_maincontent("ajax/timers");
 					$(this).dialog("close");
 				}
 			}

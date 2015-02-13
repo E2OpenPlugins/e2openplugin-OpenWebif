@@ -14,13 +14,13 @@ tr {background-color:#f0f7fc;}
 .dh20 { float:left;height:20px;}
 .dh14 { float:left;height:14px;}
 </style>
-<div style="width:680px;height:137px;background-image:url(/images/osd/osd_back.png);">
+<div style="width:680px;height:137px;background-image:url(images/osd/osd_back.png);">
 	<div style="float:left;width:120px;height:137px;">
 		<div class='d120' style="height:37px;">
 			<div style="position:relative;top:10px;left:18px;color:#FFF;font-size:13px;font-weight:bold;">$info.date</div>
 		</div>
 		<div class='d120' style="height:60px;">
-			<div style="position:relative;top:0px;left:15px;"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "/images/default_picon.png")' onclick="open_epg_dialog('$info.ref','$info.name');" href="#" title="$tstrings['show_epg_for'] $info.name" border="0" alt='' /></div>
+			<div style="position:relative;top:0px;left:15px;"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "images/default_picon.png")' onclick="open_epg_dialog('$info.ref','$info.name');" href="#" title="$tstrings['show_epg_for'] $info.name" border="0" alt='' /></div>
  		</div>
 		<div class='d120' style="height:40px;">
 			<div style="position:relative;top:8px;left:0px;color:#FFF;text-align:center;font-size:13px;font-weight:bold;">$info.provider</div>
@@ -28,7 +28,7 @@ tr {background-color:#f0f7fc;}
 	</div>
 	<div style="float:left;width:560px;height:137px;">
 		<div style="float:left;width:560px;height:25px;">
-			<div style="float:left;position:relative;top:5px;left:0px;width:480px;color:#FFF;text-align:center;font-size:18px;"><a style="color:#FFF" target="_blank" title="$tstrings['stream'] $getVar('now.title', '') from $info.name" href='/web/stream.m3u?ref=$info.ref&name=$info.name'>$info.name</a></div>
+			<div style="float:left;position:relative;top:5px;left:0px;width:480px;color:#FFF;text-align:center;font-size:18px;"><a style="color:#FFF" target="_blank" title="$tstrings['stream'] $getVar('now.title', '') from $info.name" href='web/stream.m3u?ref=$info.ref&name=$info.name'>$info.name</a></div>
 		</div>
 		<div style="float:left;width:560px;height:24px;">
 			<div class='dh24' style="width:70px;">
@@ -42,8 +42,8 @@ tr {background-color:#f0f7fc;}
 			</div>
 		</div>
 		<div style="float:left;width:560px;height:16px;">
-			<div style="float:left;position:relative;top:2px;left:15px;width:400px;height:14px;background-image:url(/images/osd/chan_bar_back.png);">
-				<div class='dh14' style="width:400px;"><img border='0' height='14px' width='${getVar("now.progress", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
+			<div style="float:left;position:relative;top:2px;left:15px;width:400px;height:14px;background-image:url(images/osd/chan_bar_back.png);">
+				<div class='dh14' style="width:400px;"><img border='0' height='14px' width='${getVar("now.progress", "0")}px' src='images/osd/chan_bar.png' alt='' /></div>
 			</div>
 		</div>
 		<div class='dh14' style="width:560px;">
@@ -65,8 +65,8 @@ tr {background-color:#f0f7fc;}
 				<div class='d14' style="float:left;top:6px;">Snr: $getVar("info.snr", "0") % </div>
 			</div>
 			<div class='dh20' style="width:100px;">
-				<div class='dh14' style="position:relative;top:8px;left:0px;width:100px;background-image:url(/images/osd/snr_bar_back.png);">
-					<div class='dh14' style="width:100px;"><img border='0' height='14px' width='${getVar("info.snr", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
+				<div class='dh14' style="position:relative;top:8px;left:0px;width:100px;background-image:url(images/osd/snr_bar_back.png);">
+					<div class='dh14' style="width:100px;"><img border='0' height='14px' width='${getVar("info.snr", "0")}px' src='images/osd/chan_bar.png' alt='' /></div>
 				</div>
 			</div>
 			<div class='dh20' style="width:100px;">
