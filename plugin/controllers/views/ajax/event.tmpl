@@ -10,9 +10,10 @@ table { font-size:12px; font-family: Verdana,Arial,sans-serif;}
 tr {background-color: #F0F7FC;}
 
 .ti_icon {
+margin:5px 2px 0px 0px;
 height:25px;
 width:25px;
-background-image:url('images/timer_icons.png');
+background-image:url('../images/timer_icons.png');
 display:inline-block;
 }
 .ti_empty {background-position:0px 0px;}
@@ -43,13 +44,13 @@ display:inline-block;
 				<div style="color:#A9D1FA; text-align:center">$time.strftime("%d", $etime) $tstrings[("month_" + ($time.strftime("%m", $etime)))]</div>
 			</div>
 
-			<div>
+			<div style="text-align:center">
 				
 				#if $transcoding
-<a href="#" onclick="jumper8001('$sref', '$channel');" title="$tstrings['stream']: $channel"><img src="images/ico_stream.png" width="25" height="25" border="0"></a>
-<a href="#" onclick="jumper8002('$sref', '$channel');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel"><img src="images/ico_stream02.png" width="25" height="25" border="0"></a>
+<a href="#" onclick="jumper8001('$sref', '$channel');" title="$tstrings['stream']: $channel"><img src="../images/ico_stream.png" style="width:24px; height:22px; margin:0px 2px 0px 0px" border="0"></a>
+<a href="#" onclick="jumper8002('$sref', '$channel');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel"><img src="../images/ico_stream02.png" style="width:24px; height:22px; margin:5px 2px 0px 0px" border="0"></a>
 #else
-<a target="_blank" href='web/stream.m3u?ref=$channel.ref&name=$channel.name' title="$tstrings['stream'] $channel.name"><img src="images/ico_stream.png" width="25" height="25" border="0"></a>
+<a target="_blank" href='../web/stream.m3u?ref=$sref&name=$channel' title="$tstrings['stream'] $channel"><img src="../images/ico_stream.png" style="width:24px; height:22px; margin:5px 2px 0px 0px" border="0"></a>
 #end if
 				<br>
 			
@@ -62,9 +63,9 @@ display:inline-block;
 					#end if
 					<a class="d_timer" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']"><div class="ti_icon ti_timerdelete"></div></a>
 					<br>
-					<a target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)"><img src="images/imdb.png" width="25" height="25" title="$tstrings['search_imdb']" border="0"></a>
+					<a target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)"><img src="../images/imdb.png" style="width:24px; height:24px; margin:0px 3px 0px 0px" title="$tstrings['search_imdb']" border="0"></a>
 					
-				<img src="/images/ico_zap.png" alt="Zap" title="$tstrings['zap']" style="cursor:pointer" onclick="zapChannel('$str($event['sref'])', '$channel')" />
+				<img src="../images/ico_zap.png" style="width:25px; height:25px; margin:5px 5px 0px 0px" alt="Zap" title="$tstrings['zap']" style="cursor:pointer" onclick="zapChannel('$str($event['sref'])', '$channel')" />
 			
 			</div>
 		</div>
