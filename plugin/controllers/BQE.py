@@ -13,7 +13,7 @@ from enigma import eServiceCenter, eServiceReference, iServiceInformation
 from base import BaseController
 from Screens.ChannelSelection import service_types_tv
 from Components.config import config
-from Components.ParentalControl import parentalControl, IMG_WHITESERVICE, IMG_WHITEBOUQUET, IMG_BLACKSERVICE, IMG_BLACKBOUQUET
+from Components.ParentalControl import parentalControl
 import os
 import json
 
@@ -218,32 +218,36 @@ class BQEWebController(BaseController):
 				if item[0].flags & eServiceReference.isMarker:
 					service['ismarker'] = '1'
 				service['isprotected'] = '0'
-				if config.ParentalControl.configured.value:
-					protection = parentalControl.getProtectionType(item[0].toCompareString())
-					if protection[0]:
-						if protection[1] == IMG_BLACKSERVICE:
-							service['isprotected'] = '1'
-						elif protection[1] == IMG_BLACKBOUQUET:
-							service['isprotected'] = '2'
-						elif protection[1] == "":
-							service['isprotected'] = '3'
-					else:
-						if protection[1] == IMG_WHITESERVICE:
-							service['isprotected'] = '4'
-						elif protection[1] == IMG_WHITEBOUQUET:
-							service['isprotected'] = '5'
+				if "configured" not in config.ParentalControl.dict().keys() or config.ParentalControl.configured.value:
+					sref = item[0].toCompareString()
+					protection = parentalControl.getProtectionLevel(sref)
+					if protection:
+						if "type" not in config.ParentalControl.dict().keys() or config.ParentalControl.type.value == LIST_BLACKLIST:
+							if parentalControl.blacklist.has_key(sref):
+								if "SERVICE" in parentalControl.blacklist.has_key(sref):
+									service['isprotected'] = '1'
+								elif "BOUQUET" in parentalControl.blacklist.has_key(sref):
+									service['isprotected'] = '2'
+								else:
+									service['isprotected'] = '3'
+						else:
+							if hasattr(ParentalControl, "whitelist") and parentalControl.whitelist.has_key(sref):
+								if "SERVICE" in parentalControl.whitelist.has_key(sref):
+									service['isprotected'] = '4'
+								elif "BOUQUET" in parentalControl.whitelist.has_key(sref):
+									service['isprotected'] = '5'
 				services.append(service)
 		return { "services": services }
 
 	def P_getprotectionsettings(self, request):
-		configured = config.ParentalControl.configured.value
+		configured = "configured" not in config.ParentalControl.dict().keys() or config.ParentalControl.configured.value
 		if configured:
-			if config.ParentalControl.type.value == LIST_BLACKLIST:
+			if "type" not in config.ParentalControl.dict().keys() or config.ParentalControl.type.value == LIST_BLACKLIST:
 				type = "0"
 			else:
 				type = "1"
-			setuppin = config.ParentalControl.setuppin.value
-			setuppinactive = config.ParentalControl.setuppinactive.value
+			setuppin = "setuppin" in config.ParentalControl.dict().keys() and config.ParentalControl.setuppin.value or -1
+			setuppinactive = "setuppin" in config.ParentalControl.dict().keys() and config.ParentalControl.setuppinactive.value
 		else:
 			type = ""
 			setuppin = ""
