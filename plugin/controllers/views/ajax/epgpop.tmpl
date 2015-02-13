@@ -61,7 +61,7 @@ display:inline-block;
 				<td colspan="2" rowspan="2">$event.longdesc</td>
 			</tr>
 			<tr>
-				<td style="padding:0px">
+				<td style="padding:0px text-align:center">
 					#set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
 					
 					<a href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']"><div class="ti_icon ti_timer"></div></a>
