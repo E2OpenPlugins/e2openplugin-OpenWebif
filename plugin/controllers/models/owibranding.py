@@ -401,9 +401,6 @@ def getAllInfo():
 	driverdate = 'unknown'
 	try:
 		driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-modules*').readline().split( )[2]
-		if "-r" in driverdate:
-			driverdate=driverdate.split('-r')[0]
-			driverdate = "%s-%s-%s" % (driverdate[-8:-4], driverdate[-4:-2], driverdate[-2:])
 	except:
 		pass
 
