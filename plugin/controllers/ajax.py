@@ -73,6 +73,14 @@ class AjaxController(BaseController):
 		event = getEvent(request.args["sref"][0], request.args["idev"][0])
 		event['event']['recording_margin_before'] = config.recording.margin_before.value
 		event['event']['recording_margin_after'] = config.recording.margin_after.value
+		at = False
+		try:
+			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
+			at = True
+		except ImportError:
+			pass
+		event['at'] = at
+		event['transcoding'] = getTranscodingSupport()
 		return event
 
 	def P_about(self, request):

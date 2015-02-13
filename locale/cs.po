@@ -310,7 +310,7 @@ msgid "Dolby"
 msgstr ""
 
 msgid "Done"
-msgstr "Dokončit"
+msgstr "Dokončeno"
 
 msgid "Download"
 msgstr "stáhnout"
@@ -328,7 +328,7 @@ msgid "Enable Timer"
 msgstr "Povolit časovač"
 
 msgid "Start"
-msgstr ""
+msgstr "Začátek"
 
 msgid "End"
 msgstr "Konec"
@@ -1174,13 +1174,13 @@ msgid "Infinite Instant recording started"
 msgstr "Začalo neomezené okamžité nahrávání"
 
 msgid "Timer conflict detected! Not recording!"
-msgstr ""
+msgstr "Konflikt časovačů! Nenahrává se!"
 
 msgid "Missing requesteter: sRef"
-msgstr ""
+msgstr "Chybějící požadavek: sRef"
 
 msgid "Unknown command: '%s'"
-msgstr ""
+msgstr "Neznámý příkaz: '%s'"
 
 msgid "PowerTimer feature not available"
 msgstr ""
