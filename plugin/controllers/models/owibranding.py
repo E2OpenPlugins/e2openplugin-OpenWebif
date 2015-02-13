@@ -400,8 +400,7 @@ def getAllInfo():
 	# reporting the installed dvb-module version is as close as we get without too much hassle
 	driverdate = 'unknown'
 	try:
-		driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-modules*').readline().split('-r')[0]
-		driverdate = "%s-%s-%s" % (driverdate[-8:-4], driverdate[-4:-2], driverdate[-2:])
+		driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-modules*').readline().split( )[2]
 	except:
 		pass
 
