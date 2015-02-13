@@ -529,13 +529,13 @@ class BouquetEditor(Source):
 					elif "BOUQUET" in parentalControl.blacklist.has_key(sref):
 						protectionText = "Bouquet %s is locked." % self.getName(cur_ref)
 					else:
-				protectionText = "%s %s is locked." % (serviceType, self.getName(cur_ref))
+						protectionText = "%s %s is locked." % (serviceType, self.getName(cur_ref))
 			else:
 				if hasattr(ParentalControl, "whitelist") and parentalControl.whitelist.has_key(sref):
 					if "SERVICE" in parentalControl.whitelist.has_key(sref):
 						protectionText = "Service %s is unlocked."  % self.getName(cur_ref)
 					elif "BOUQUET" in parentalControl.whitelist.has_key(sref):
-				protectionText = "Bouquet %s is unlocked."  % self.getName(cur_ref)
+						protectionText = "Bouquet %s is unlocked."  % self.getName(cur_ref)
 		return (True, protectionText)
 
 	def backupFiles(self, param):
