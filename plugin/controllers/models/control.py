@@ -74,7 +74,7 @@ def zapService(session, id, title = ""):
 	isRecording = isRecording and isRecording.startswith("/")
 
 	if not isRecording:
-		if config.ParentalControl.configured.value and config.OpenWebif.parentalenabled.value:
+		if config.ParentalControl.servicepinactive.value and config.OpenWebif.parentalenabled.value:
 			if getProtection(service.toString()) == "0":
 				return {
 					"result": False,
