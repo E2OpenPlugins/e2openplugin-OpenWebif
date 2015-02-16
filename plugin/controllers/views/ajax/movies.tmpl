@@ -54,7 +54,7 @@
 						<br>
 						#set $eventname_escaped =  $movie.eventname.replace("'", r"\'")
 						<a href='/file?action=download&file=$quote($movie.filename)' title="$tstrings['download'] $movie.eventname"><div class="ow_i ow_i_save"></div></a>
-						<a href='#' onClick="alert('comming soon');" title="$tstrings['rename_recording']"><div class="ow_i ow_i_edit"></div></a>
+						<a href='#' onClick="renameMovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['rename_recording']"><div class="ow_i ow_i_edit"></div></a>
 						<a href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><div class="ow_i ow_i_delete"></div></a>
 
 						</div>
