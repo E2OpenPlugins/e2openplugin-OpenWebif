@@ -4,6 +4,9 @@
 //******************************************************************************
 //* Copyright (C) 2011-2014 E2OpenPlugins
 //*
+//* V 1.0 - Initial Version
+//* V 1.1 - add movie move and rename
+//*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
 //* 		 Homey-GER
@@ -68,68 +71,52 @@ $(function() {
 	$( "#amount" ).val( $( "#slider" ).slider( "value" ) );
 	
 	$( ".epgsearch button:first" ).button({
-            icons: {
-                primary: "ui-icon-search"
-            }
-        });
+		icons: {
+				primary: "ui-icon-search"
+				}
+		});
 });
 
 
 (function($) {
-    var defaults = {
-        height: 500,
-        width: 500,
-        toolbar: false,
-        scrollbars: false,
-        status: false,
-        resizable: false,
-        left: 0,
-        top: 0,
-        center: true,
-        createNew: true,
-        location: false,
-        menubar: false,
-        onUnload: null
-    };
+	var defaults = {height: 500,width: 500,toolbar: false,scrollbars: false,status: false,resizable: false,left: 0,top: 0,center: true,createNew: true,location: false,menubar: false,onUnload: null};
 
-    $.popupWindow = function(url, opts) {
-        var options = $.extend({}, defaults, opts);
-        if (options.center) {
-            options.top = ((screen.height - options.height) / 2) - 50;
-            options.left = (screen.width - options.width) / 2;
-        }
+	$.popupWindow = function(url, opts) {
+		var options = $.extend({}, defaults, opts);
+		if (options.center) {
+			options.top = ((screen.height - options.height) / 2) - 50;
+			options.left = (screen.width - options.width) / 2;
+		}
 
-        var params = [];
-        params.push('location=' + (options.location ? 'yes' : 'no'));
-        params.push('menubar=' + (options.menubar ? 'yes' : 'no'));
-        params.push('toolbar=' + (options.toolbar ? 'yes' : 'no'));
-        params.push('scrollbars=' + (options.scrollbars ? 'yes' : 'no'));
-        params.push('status=' + (options.status ? 'yes' : 'no'));
-        params.push('resizable=' + (options.resizable ? 'yes' : 'no'));
-        params.push('height=' + options.height);
-        params.push('width=' + options.width);
-        params.push('left=' + options.left);
-        params.push('top=' + options.top);
+	var params = [];
+	params.push('location=' + (options.location ? 'yes' : 'no'));
+	params.push('menubar=' + (options.menubar ? 'yes' : 'no'));
+	params.push('toolbar=' + (options.toolbar ? 'yes' : 'no'));
+	params.push('scrollbars=' + (options.scrollbars ? 'yes' : 'no'));
+	params.push('status=' + (options.status ? 'yes' : 'no'));
+	params.push('resizable=' + (options.resizable ? 'yes' : 'no'));
+	params.push('height=' + options.height);
+	params.push('width=' + options.width);
+	params.push('left=' + options.left);
+	params.push('top=' + options.top);
 
-        var random = new Date().getTime();
-        var name = options.createNew ? 'popup_window_' + random : 'popup_window';
-        var win = window.open(url, name, params.join(','));
+	var random = new Date().getTime();
+	var name = options.createNew ? 'popup_window_' + random : 'popup_window';
+	var win = window.open(url, name, params.join(','));
 
-        if (options.onUnload && typeof options.onUnload === 'function') {
-            var unloadInterval = setInterval(function() {
-                if (!win || win.closed) {
-                    clearInterval(unloadInterval);
-                    options.onUnload();
-                }
-            }, 250);
-        }
+	if (options.onUnload && typeof options.onUnload === 'function') {
+		var unloadInterval = setInterval(function() {
+			if (!win || win.closed) {
+				clearInterval(unloadInterval);
+				options.onUnload();
+			}
+		}, 250);
+	}
 
-        if (win && win.focus) { win.focus(); }
-
-        return win;
-    };
+	if (win && win.focus) { win.focus(); }
+		return win;
+	};
 })(jQuery);
-
 
 function initJsTranslation(strings) {
 	tstr_add_timer = strings.add_timer;
@@ -138,6 +125,7 @@ function initJsTranslation(strings) {
 	tstr_del_timer = strings.delete_timer_question;
 	tstr_del_autotimer = strings.at_delete_autotimer_question;
 	tstr_del_recording = strings.delete_recording_question;
+	tstr_ren_recording = strings.rename_recording_question;
 	tstr_done = strings.done;
 	tstr_edit_timer = strings.edit_timer;
 	tstr_hour = strings.hour;
@@ -512,6 +500,14 @@ function deleteTimer(sRef, begin, end, title) {
 
 function cleanupTimer() {
 	webapi_execute("/api/timercleanup", function() { load_maincontent('/ajax/timers'); });
+}
+
+function renameMovie(sRef, title) {
+	var newname=prompt(tstr_ren_recording, title);
+	if (newname && newname!=title){
+		webapi_execute("/api/movierename?sRef=" + sRef+"&newname="+newname);
+		// TODO: check the api result first
+	}
 }
 
 function deleteMovie(sRef, divid, title) {

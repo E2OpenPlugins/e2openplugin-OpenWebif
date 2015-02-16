@@ -2,12 +2,15 @@
 ## (planed)
 **FEATURES**
 * powertimer api
-* improve movie move
-* add movie trash features
 
-## Version 0.4.5
+## Version 0.4.6
 ## (in development)
 **FEATURES**
+
+## Version 0.4.5
+**FEATURES**
+* add movie trash features
+* improve movie move and rename
 * epg search as modal dialog
 * channel epg as modal dialog
 * add vps option to timer dialog

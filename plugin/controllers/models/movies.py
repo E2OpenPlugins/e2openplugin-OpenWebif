@@ -239,7 +239,20 @@ def _moveMovie(session, sRef, destpath=None, newname=None):
 				if exists(src):
 					try:
 						if newname is not None:
-							move(src, srcpath + newname + suffix)
+							# rename title in meta file
+							if suffix == '.ts.meta':
+								# todo error handling
+								lines = []
+								with open(src, "r") as fin:
+									for line in fin:
+										lines.append(line)
+								lines[1]=newname+'\n'
+								lines[4]='\n'
+								with open(srcpath + newname + suffix, 'w') as fout:
+									fout.write(''.join(lines))
+								os.remove(src)
+							else:
+								move(src, srcpath + newname + suffix)
 						else:
 							move(src, destpath + fileName + suffix)
 					except OSError as ose:
