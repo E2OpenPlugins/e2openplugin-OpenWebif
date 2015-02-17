@@ -299,7 +299,7 @@ def getProtection(sref):
 	if config.ParentalControl.configured.value:
 		protection = parentalControl.getProtectionLevel(sref)
 		if protection:
-			if "type" not in config.ParentalControl.dict().keys() or config.ParentalControl.type.value == LIST_BLACKLIST:
+			if config.ParentalControl.type.value == "blacklist":
 				if parentalControl.blacklist.has_key(sref):
 					if "SERVICE" in parentalControl.blacklist.has_key(sref):
 						service['isprotected'] = '1'
@@ -828,7 +828,7 @@ def getParentalControlList():
 			"services": []
 		}
 	parentalControl.open()
-	if "type" not in config.ParentalControl.dict().keys() and config.ParentalControl.type.value == "whitelist":
+	if config.ParentalControl.type.value == "whitelist":
 		tservices = parentalControl.whitelist
 	else:
 		tservices = parentalControl.blacklist
@@ -842,7 +842,7 @@ def getParentalControlList():
 			})
 	return {
 		"result": True,
-		"type": "type" not in config.ParentalControl.dict().keys() and config.ParentalControl.type.value or "blacklist",
+		"type": config.ParentalControl.type.value,
 		"services": services
 	}
 
