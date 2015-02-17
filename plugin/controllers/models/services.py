@@ -296,7 +296,7 @@ def sortSatellites(satList):
 
 def getProtection(sref):
 	isProtected = "0"
-	if "configured" not in config.ParentalControl.dict().keys() or config.ParentalControl.configured.value:
+	if config.ParentalControl.configured.value:
 		protection = parentalControl.getProtectionLevel(sref)
 		if protection:
 			if "type" not in config.ParentalControl.dict().keys() or config.ParentalControl.type.value == LIST_BLACKLIST:
@@ -333,7 +333,7 @@ def getChannels(idbouquet, stype):
 			chan = {}
 			chan['ref'] = quote(channel[0], safe=' ~@%#$&()*!+=:;,.?/\'')
 			chan['name'] = filterName(channel[1])
-			if ("configured" not in config.ParentalControl.dict().keys() or config.ParentalControl.configured.value) and config.OpenWebif.parentalenabled.value:
+			if config.ParentalControl.configured.value and config.OpenWebif.parentalenabled.value:
 				chan['protection'] = getProtection(channel[0])
 			else:
 				chan['protection'] = "0"
@@ -822,7 +822,7 @@ def getPicon(sname):
 	return "/images/default_picon.png"
 
 def getParentalControlList():
-	if "configured" in config.ParentalControl.dict().keys() and config.ParentalControl.configured.value:
+	if config.ParentalControl.configured.value:
 		return {
 			"result": True,
 			"services": []

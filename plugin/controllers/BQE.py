@@ -218,7 +218,7 @@ class BQEWebController(BaseController):
 				if item[0].flags & eServiceReference.isMarker:
 					service['ismarker'] = '1'
 				service['isprotected'] = '0'
-				if "configured" not in config.ParentalControl.dict().keys() or config.ParentalControl.configured.value:
+				if config.ParentalControl.configured.value:
 					sref = item[0].toCompareString()
 					protection = parentalControl.getProtectionLevel(sref)
 					if protection:
@@ -240,7 +240,7 @@ class BQEWebController(BaseController):
 		return { "services": services }
 
 	def P_getprotectionsettings(self, request):
-		configured = "configured" not in config.ParentalControl.dict().keys() or config.ParentalControl.configured.value
+		configured = config.ParentalControl.configured.value
 		if configured:
 			if "type" not in config.ParentalControl.dict().keys() or config.ParentalControl.type.value == LIST_BLACKLIST:
 				type = "0"
