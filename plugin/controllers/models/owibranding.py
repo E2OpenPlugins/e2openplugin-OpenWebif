@@ -203,6 +203,9 @@ def getAllInfo():
 		elif procmodel.startswith("unibox-"):
 			brand = "Venton"
 			model = "HDe"
+		elif procmodel == "hd2400":
+			brand = "Mut@nt"
+			model = "hd2400"
 	elif fileExists("/proc/stb/info/model"):
 		f = open("/proc/stb/info/model",'r')
 		procmodel = f.readline().strip().lower()
