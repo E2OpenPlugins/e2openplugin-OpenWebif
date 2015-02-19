@@ -1,69 +1,92 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-08-07 23:29+0100\n"
+"POT-Creation-Date: 2014-11-01 19:04+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.6.10\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
-msgid "Cancel"
+msgid "Settings"
 msgstr ""
 
-msgid "Save"
+msgid "LCD4Linux Setup"
 msgstr ""
 
-msgid "OpenWebif url: http://yourip:port"
+msgid "AutoTimer"
 msgstr ""
 
-msgid "OpenWebInterface Enabled"
+msgid "BouquetEditor"
 msgstr ""
 
-msgid "Show box name in header"
+msgid "EPGRefresh"
 msgstr ""
 
-msgid "Use custom box name"
+msgid "IPv4-only kernel"
 msgstr ""
 
-msgid "Custom box name"
+msgid "IPv4-only Python/Twisted"
 msgstr ""
 
-msgid "HTTP port"
+msgid "none/IPv4-only network"
 msgstr ""
 
-msgid "Enable HTTP Authentication"
+msgid "Message sent successfully!"
 msgstr ""
 
-msgid "Enable HTTPS"
+msgid "No answer in time"
 msgstr ""
 
-msgid "HTTPS port"
+msgid "Answer is YES!"
 msgstr ""
 
-msgid "Require client cert for HTTPS"
+msgid "Answer is NO!"
 msgstr ""
 
-msgid "Enable Authentication for streaming"
+msgid "New"
 msgstr ""
 
-msgid "Disable access for user root"
+msgid "Services"
 msgstr ""
 
-msgid "Smart services renaming for XBMC"
+msgid "Cable"
 msgstr ""
 
-msgid "Enable Parental Control"
+msgid "Terrestrial"
 msgstr ""
 
-msgid "Add service name to stream information"
+msgid "W"
 msgstr ""
 
-msgid "OpenWebif Configuration"
+msgid "E"
+msgstr ""
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr ""
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr ""
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr ""
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr ""
+
+msgid "The parameter 'command' must be a number"
+msgstr ""
+
+#, python-format
+msgid "type %s is not a number"
 msgstr ""
 
 msgid "Mo"
@@ -168,12 +191,6 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-msgid "Timer List"
-msgstr ""
-
-msgid "New Name"
-msgstr ""
-
 msgid "Add Timer"
 msgstr ""
 
@@ -226,6 +243,9 @@ msgid "Box Uptime"
 msgstr ""
 
 msgid "Brand"
+msgstr ""
+
+msgid "Cancel"
 msgstr ""
 
 msgid "Capacity"
@@ -369,15 +389,6 @@ msgstr ""
 msgid "IP address"
 msgstr ""
 
-msgid "IPv4-only kernel"
-msgstr ""
-
-msgid "none/IPv4-only network"
-msgstr ""
-
-msgid "IPv4-only Python/Twisted"
-msgstr ""
-
 msgid "IPv6 address(es)"
 msgstr ""
 
@@ -459,6 +470,15 @@ msgstr ""
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr ""
 
+msgid "Show box name in header"
+msgstr ""
+
+msgid "Use custom box name"
+msgstr ""
+
+msgid "Custom box name"
+msgstr ""
+
 msgid "OSD"
 msgstr ""
 
@@ -516,6 +536,9 @@ msgstr ""
 msgid "Satfinder"
 msgstr ""
 
+msgid "Save"
+msgstr ""
+
 msgid "Screenshot"
 msgstr ""
 
@@ -531,19 +554,16 @@ msgstr ""
 msgid "Send Message"
 msgstr ""
 
+msgid "Waiting for answer ..."
+msgstr ""
+
 msgid "Send a Message"
 msgstr ""
 
 msgid "Service"
 msgstr ""
 
-msgid "Settings"
-msgstr ""
-
 msgid "Bouquet Editor"
-msgstr ""
-
-msgid "BouquetEditor"
 msgstr ""
 
 msgid "(shift + click for long pressure)"
@@ -616,6 +636,9 @@ msgid "Timer added"
 msgstr ""
 
 msgid "Timerlist"
+msgstr ""
+
+msgid "New Name"
 msgstr ""
 
 msgid "Autotimer Preview"
@@ -757,6 +780,9 @@ msgid "exact match"
 msgstr ""
 
 msgid "description match"
+msgstr ""
+
+msgid "start match"
 msgstr ""
 
 msgid "Search strictness"
@@ -933,7 +959,119 @@ msgstr ""
 msgid "Simulate"
 msgstr ""
 
+# New Autotimer Setting Windows name (not enabled to transfer atm)
+msgid "AutoTimer Settings"
+msgstr ""
+
+msgid "AutoPoll"
+msgstr ""
+
+msgid "Interval (in h)"
+msgstr ""
+
+msgid "Max Days"
+msgstr ""
+
+msgid "Try Guessing"
+msgstr ""
+
+msgid "Fastscan"
+msgstr ""
+
+msgid "Show in Extensionsmenu"
+msgstr ""
+
+msgid "Disabled on Conflict"
+msgstr ""
+
+msgid "Add Similar on Conflict"
+msgstr ""
+
+msgid "Notify if Conflict"
+msgstr ""
+
+msgid "Notify if Similar"
+msgstr ""
+
+msgid "Add Autotimer to Tags"
+msgstr ""
+
+msgid "Add Name to Tags"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Editor"
+msgstr ""
+
+msgid "Plain"
+msgstr ""
+
+msgid "Wizzard"
+msgstr ""
+
 msgid "Do you really want to delete the AT"
+msgstr ""
+
+msgid "Label series"
+msgstr ""
+
+msgid "Enable Messages"
+msgstr ""
+
+msgid "Delay Standby"
+msgstr ""
+
+msgid "Interval (min.)"
+msgstr ""
+
+msgid "Interval (sec.)"
+msgstr ""
+
+msgid "Afterevent"
+msgstr ""
+
+msgid "Force"
+msgstr ""
+
+msgid "Wakeup"
+msgstr ""
+
+msgid "Inherit Autotimer"
+msgstr ""
+
+msgid "Parse Autotimer"
+msgstr ""
+
+msgid "Always"
+msgstr ""
+
+msgid "Background only"
+msgstr ""
+
+msgid "Ask, default Yes"
+msgstr ""
+
+msgid "Ask, default No"
+msgstr ""
+
+msgid "Method"
+msgstr ""
+
+msgid "Visibly"
+msgstr ""
+
+msgid "Picture in Picture"
+msgstr ""
+
+msgid "Picture in Picture (hidden)"
+msgstr ""
+
+msgid "Fake Recording"
+msgstr ""
+
+msgid "Refresh now"
 msgstr ""
 
 msgid "Add Provider as new Bouquet"
@@ -993,61 +1131,143 @@ msgstr ""
 msgid "Do you really want to restore from file"
 msgstr ""
 
-msgid "LCD4Linux Setup"
+msgid "OpenWebif url: http://yourip:port"
 msgstr ""
 
-#, python-format
-msgid "Missing mandatory parameter '%s'"
+msgid "OpenWebInterface Enabled"
 msgstr ""
 
-#, python-format
-msgid "The parameter '%s' can't be empty"
+msgid "HTTP port"
 msgstr ""
 
-#, python-format
-msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgid "Enable HTTP Authentication"
 msgstr ""
 
-#, python-format
-msgid "Unknown Volume command %s"
+msgid "Enable HTTPS"
 msgstr ""
 
-msgid "The parameter 'command' must be a number"
+msgid "HTTPS port"
 msgstr ""
 
-#, python-format
-msgid "type %s is not a number"
+msgid "Enable HTTPS Authentication"
 msgstr ""
 
-msgid "New"
+msgid "Require client cert for HTTPS"
 msgstr ""
 
-msgid "Services"
+msgid "Enable Authentication for streaming"
 msgstr ""
 
-msgid "Cable"
+msgid "Disable access for user root"
 msgstr ""
 
-msgid "Terrestrial"
+msgid "Smart services renaming for XBMC"
 msgstr ""
 
-msgid "W"
+msgid "Enable Parental Control"
 msgstr ""
 
-msgid "E"
+msgid "Add service name to stream information"
 msgstr ""
 
-msgid "Message sent successfully!"
+msgid "Character encoding for EPG data"
 msgstr ""
 
-msgid "Waiting for answer ..."
+msgid "OpenWebif Configuration"
 msgstr ""
 
-msgid "No answer in time"
+msgid "transcoded"
 msgstr ""
 
-msgid "Answer is YES!"
+msgid "System OE"
 msgstr ""
 
-msgid "Answer is NO!"
+msgid "Distro"
+msgstr ""
+
+msgid "Driver date"
+msgstr ""
+
+msgid "Conflicting Timer(s) detected! %s"
+msgstr ""
+
+msgid "Could not add timer '%s'!"
+msgstr ""
+
+msgid "Timer '%s' added"
+msgstr ""
+
+msgid "EventId not found"
+msgstr ""
+
+msgid "Timer '%s' changed"
+msgstr ""
+
+msgid "Timer '%s' not saved while Conflict"
+msgstr ""
+
+msgid "Could not find timer '%s' with given start and end time!"
+msgstr ""
+
+msgid "The timer '%s' has been deleted successfully"
+msgstr ""
+
+msgid "No matching Timer found"
+msgstr ""
+
+msgid "The timer '%s' has been %s successfully"
+msgstr ""
+
+msgid "List of Timers has been cleaned"
+msgstr ""
+
+msgid "TimerList has been saved"
+msgstr ""
+
+msgid "No event found! Not recording!"
+msgstr ""
+
+msgid "Instant record for current Event started"
+msgstr ""
+
+msgid "Infinite Instant recording started"
+msgstr ""
+
+msgid "Timer conflict detected! Not recording!"
+msgstr ""
+
+msgid "Missing requesteter: sRef"
+msgstr ""
+
+msgid "Unknown command: '%s'"
+msgstr ""
+
+msgid "PowerTimer feature not available"
+msgstr ""
+
+msgid "Sleeptimer is enabled"
+msgstr ""
+
+msgid "Sleeptimer is disabled"
+msgstr ""
+
+msgid "SleepTimer feature not available"
+msgstr ""
+
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr ""
+
+msgid "Sleeptimer has been disabled"
+msgstr ""
+
+msgid "Sleeptimer set to %d minutes"
+msgstr ""
+
+msgid "Safe mode"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Open in new window"
 msgstr ""

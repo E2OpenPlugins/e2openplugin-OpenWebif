@@ -1,13 +1,40 @@
 ## Version 0.4.x
 ## (planed)
 **FEATURES**
-* epg search as modal dialog
-* channel epg as modal dialog
+* powertimer api
 
-## Version 0.4.2
+## Version 0.4.6
 ## (in development)
 **FEATURES**
-* powertimer api
+
+## Version 0.4.5
+**FEATURES**
+* add movie trash features
+* improve movie move and rename
+* epg search as modal dialog
+* channel epg as modal dialog
+* add vps option to timer dialog
+
+## Version 0.4.4
+**FEATURES**
+* add vps channel api
+* improve file security
+
+## Version 0.4.3
+**FEATURES**
+* add epgsearch endtime option
+* add svenska language
+* update french language
+* add new timer type
+* add toggle timer api
+
+**FIXES**
+* satlist orbital sort
+
+## Version 0.4.2
+**FEATURES**
+* ipkg add full package list api
+* full add full movie list api
 
 **FIXES**
 * sleeptimer crash

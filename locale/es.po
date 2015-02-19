@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-06-14 19:04+0100\n"
+"POT-Creation-Date: 2014-11-01 19:04+0100\n"
 "PO-Revision-Date: 2014-08-08 01:27+0200\n"
 "Last-Translator: Administrador <hsa2000@gmail.com>\n"
 "Language-Team: HSA2000 for OpenSpa\n"
@@ -18,50 +18,82 @@ msgstr ""
 "X-Poedit-SourceCharset: iso-8859-1\n"
 "X-Poedit-Country: SPAIN\n"
 
-msgid "Cancel"
-msgstr "Cancelar"
+msgid "Settings"
+msgstr "Configuración"
 
-msgid "Save"
-msgstr "Guardar"
+msgid "LCD4Linux Setup"
+msgstr "Configurar LCD4Linux"
 
-msgid "OpenWebif url: http://yourip:port"
-msgstr "Enlace OpenWebif: http://tuip:puerto"
+msgid "AutoTimer"
+msgstr "AutoProgramación"
 
-msgid "OpenWebInterface Enabled"
-msgstr "Enlace OpenWebInterface"
+msgid "BouquetEditor"
+msgstr "Editor de Favoritos"
 
-msgid "HTTP port"
-msgstr "Puerto HTTP"
+msgid "EPGRefresh"
+msgstr ""
 
-msgid "Enable HTTP Authentication"
-msgstr "Autenticación Enlace HTTP"
+msgid "IPv4-only kernel"
+msgstr "IPv4-solo kernel"
 
-msgid "Enable HTTPS"
-msgstr "Habilitar HTTPS"
+msgid "IPv4-only Python/Twisted"
+msgstr "IPv4-solo Python/Twisted"
 
-msgid "HTTPS port"
-msgstr "Puerto HTTPS"
+msgid "none/IPv4-only network"
+msgstr "no/IPv4-solo red"
 
-msgid "Require client cert for HTTPS"
-msgstr "Requiere certificado cliente para HTTPS"
+msgid "Message sent successfully!"
+msgstr "¡Mensage enviado correctamente!"
 
-msgid "Enable Authentication for streaming"
-msgstr "Habilitar Autenticación para streaming"
+msgid "No answer in time"
+msgstr "Sin respuesta en el tiempo de espera..."
 
-msgid "Disable access for user root"
-msgstr "Deshabilitar acceso para usuario root"
+msgid "Answer is YES!"
+msgstr "¡La respuesta es SI!"
 
-msgid "Smart services renaming for XBMC"
-msgstr "Servicios inteligentes para cambiar el nombre de XBMC"
+msgid "Answer is NO!"
+msgstr "¡La respuesta es NO!"
 
-msgid "Enable Parental Control"
-msgstr "Habilitar Control Parental"
+msgid "New"
+msgstr "Nuevo"
 
-msgid "Add service name to stream information"
-msgstr "Añadir nombre de servicio a la información de stream"
+msgid "Services"
+msgstr "Servicios"
 
-msgid "OpenWebif Configuration"
-msgstr "Configuración OpenWebif"
+msgid "Cable"
+msgstr "Cable"
+
+msgid "Terrestrial"
+msgstr "Terrestre"
+
+msgid "W"
+msgstr "W"
+
+msgid "E"
+msgstr "E"
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr "Falta parámetro obligatorio '%s'"
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr "El parámetro '%s' no puede estar vacio"
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr "Formato de parámetros incorrecto 'set=%s'. Usa set=set15"
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr "Comando del Volumen Desconocido %s"
+
+msgid "The parameter 'command' must be a number"
+msgstr "El parámetro 'comando' deber ser un número"
+
+#, python-format
+msgid "type %s is not a number"
+msgstr "El tipo %s no es un número"
 
 msgid "Mo"
 msgstr "Lu"
@@ -165,12 +197,6 @@ msgstr "Diciembre"
 msgid "About"
 msgstr "Acerca de"
 
-msgid "Timer List"
-msgstr "Lista de Grabación"
-
-msgid "New Name"
-msgstr "Nuevo Nombre"
-
 msgid "Add Timer"
 msgstr "Añadir Grabación"
 
@@ -225,6 +251,9 @@ msgstr "Funcionamiento Decodificador"
 msgid "Brand"
 msgstr "Marca"
 
+msgid "Cancel"
+msgstr "Cancelar"
+
 msgid "Capacity"
 msgstr "Capacidad"
 
@@ -242,9 +271,6 @@ msgstr "Limpiar Grabaciones"
 
 msgid "Contributors"
 msgstr "Colaboradores"
-
-msgid "Translation to Spanish"
-msgstr "Traducción al Español"
 
 msgid "Control"
 msgstr "Control"
@@ -369,15 +395,6 @@ msgstr "Hora"
 msgid "IP address"
 msgstr "Dirección IP"
 
-msgid "IPv4-only kernel"
-msgstr "IPv4-solo kernel"
-
-msgid "none/IPv4-only network"
-msgstr "no/IPv4-solo red"
-
-msgid "IPv4-only Python/Twisted"
-msgstr "IPv4-solo Python/Twisted"
-
 msgid "IPv6 address(es)"
 msgstr "Dirección(es) IPv6"
 
@@ -398,27 +415,6 @@ msgstr "Versión Kernel"
 
 msgid "LICENSE"
 msgstr "LICENCIA"
-
-msgid "All Files of this Software are open source software;"
-msgstr "Todos los archivos de este software son software de código abierto;"
-
-msgid "you can redistribute it and/or modify it under the"
-msgstr "usted puede redistribuirlo y/o modificarlo bajo los términos de la"
-
-msgid "terms of the GNU General Public License version 2 as"
-msgstr "Licencia Pública General GNU versión 2,"
-
-msgid "published by the Free Software Foundation."
-msgstr "publicada por la Free Software Foundation."
-
-msgid ""
-"All Files of this Software are open source software; you can redistribute it "
-"and/or modify it under the terms of the GNU General Public License version 2 "
-"as published by the Free Software Foundation."
-msgstr ""
-"Todos los archivos de este software son software de código abierto; usted puede redistribuirlo "
-"y / o modificarlo bajo los términos de la Licencia Pública General GNU versión 2, "
-"publicada por la Free Software Foundation."
 
 msgid "loading"
 msgstr "cargando"
@@ -480,6 +476,15 @@ msgstr "Encendido"
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Interfaz Web de Código Abierto para Decodificadores Linux"
 
+msgid "Show box name in header"
+msgstr ""
+
+msgid "Use custom box name"
+msgstr ""
+
+msgid "Custom box name"
+msgstr ""
+
 msgid "OSD"
 msgstr "OSD"
 
@@ -537,6 +542,9 @@ msgstr "Satelites"
 msgid "Satfinder"
 msgstr "Buscador de Satelite"
 
+msgid "Save"
+msgstr "Guardar"
+
 msgid "Screenshot"
 msgstr "Captura de Pantalla"
 
@@ -552,23 +560,17 @@ msgstr "segundos"
 msgid "Send Message"
 msgstr "Enviar Mensage"
 
+msgid "Waiting for answer ..."
+msgstr "Esperando Respuesta..."
+
 msgid "Send a Message"
 msgstr "Enviar un Mensage"
 
 msgid "Service"
 msgstr "Servicio"
 
-msgid "Settings"
-msgstr "Configuración"
-
 msgid "Bouquet Editor"
 msgstr "Editor de Favoritos"
-
-msgid "BouquetEditor"
-msgstr "Editor de Favoritos"
-
-msgid "AutoTimer"
-msgstr "AutoProgramación"
 
 msgid "(shift + click for long pressure)"
 msgstr "(shift + click para una larga presión)"
@@ -641,6 +643,9 @@ msgstr "Añadir grabación"
 
 msgid "Timerlist"
 msgstr "Lista de Grabaciones"
+
+msgid "New Name"
+msgstr "Nuevo Nombre"
 
 msgid "Autotimer Preview"
 msgstr "Previsualizar AutoProgramación"
@@ -735,64 +740,29 @@ msgstr "Saltar a"
 msgid "Zapped to"
 msgstr "Saltado a"
 
-msgid "LCD4Linux Setup"
-msgstr "Configurar LCD4Linux"
+msgid "Translation to Spanish"
+msgstr "Traducción al Español"
 
-#, python-format
-msgid "Missing mandatory parameter '%s'"
-msgstr "Falta parámetro obligatorio '%s'"
+msgid "All Files of this Software are open source software;"
+msgstr "Todos los archivos de este software son software de código abierto;"
 
-#, python-format
-msgid "The parameter '%s' can't be empty"
-msgstr "El parámetro '%s' no puede estar vacio"
+msgid "you can redistribute it and/or modify it under the"
+msgstr "usted puede redistribuirlo y/o modificarlo bajo los términos de la"
 
-#, python-format
-msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr "Formato de parámetros incorrecto 'set=%s'. Usa set=set15"
+msgid "terms of the GNU General Public License version 2 as"
+msgstr "Licencia Pública General GNU versión 2,"
 
-#, python-format
-msgid "Unknown Volume command %s"
-msgstr "Comando del Volumen Desconocido %s"
+msgid "published by the Free Software Foundation."
+msgstr "publicada por la Free Software Foundation."
 
-msgid "The parameter 'command' must be a number"
-msgstr "El parámetro 'comando' deber ser un número"
-
-#, python-format
-msgid "type %s is not a number"
-msgstr "El tipo %s no es un número"
-
-msgid "New"
-msgstr "Nuevo"
-
-msgid "Services"
-msgstr "Servicios"
-
-msgid "Cable"
-msgstr "Cable"
-
-msgid "Terrestrial"
-msgstr "Terrestre"
-
-msgid "W"
-msgstr "W"
-
-msgid "E"
-msgstr "E"
-
-msgid "Message sent successfully!"
-msgstr "¡Mensage enviado correctamente!"
-
-msgid "Waiting for answer ..."
-msgstr "Esperando Respuesta..."
-
-msgid "No answer in time"
-msgstr "Sin respuesta en el tiempo de espera..."
-
-msgid "Answer is YES!"
-msgstr "¡La respuesta es SI!"
-
-msgid "Answer is NO!"
-msgstr "¡La respuesta es NO!"
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 2 "
+"as published by the Free Software Foundation."
+msgstr ""
+"Todos los archivos de este software son software de código abierto; usted "
+"puede redistribuirlo y / o modificarlo bajo los términos de la Licencia "
+"Pública General GNU versión 2, publicada por la Free Software Foundation."
 
 msgid "Root"
 msgstr "Carpeta Raíz"
@@ -820,6 +790,9 @@ msgstr "coincidencia exacta"
 
 msgid "description match"
 msgstr "coincidencia descripción"
+
+msgid "start match"
+msgstr ""
 
 msgid "Search strictness"
 msgstr "Busqueda estricta"
@@ -998,6 +971,66 @@ msgstr "Simular"
 msgid "Do you really want to delete the AT"
 msgstr "¿Realmente quieres eliminar el AT?"
 
+msgid "Label series"
+msgstr ""
+
+msgid "Enable Messages"
+msgstr ""
+
+msgid "Delay Standby"
+msgstr ""
+
+msgid "Interval (min.)"
+msgstr ""
+
+msgid "Interval (sec.)"
+msgstr ""
+
+msgid "Afterevent"
+msgstr ""
+
+msgid "Force"
+msgstr ""
+
+msgid "Wakeup"
+msgstr ""
+
+msgid "Inherit Autotimer"
+msgstr ""
+
+msgid "Parse Autotimer"
+msgstr ""
+
+msgid "Always"
+msgstr ""
+
+msgid "Background only"
+msgstr ""
+
+msgid "Ask, default Yes"
+msgstr ""
+
+msgid "Ask, default No"
+msgstr ""
+
+msgid "Method"
+msgstr ""
+
+msgid "Visibly"
+msgstr ""
+
+msgid "Picture in Picture"
+msgstr ""
+
+msgid "Picture in Picture (hidden)"
+msgstr ""
+
+msgid "Fake Recording"
+msgstr ""
+
+msgid "Refresh now"
+msgstr ""
+
 msgid "Add Provider as new Bouquet"
 msgstr "Agregar proveedor como nuevo Favorito"
 
@@ -1054,3 +1087,54 @@ msgstr "Por favor, introduce el nombre del archivo"
 
 msgid "Do you really want to restore from file"
 msgstr "¿Realmente deseas restaurar desde el archivo?"
+
+msgid "OpenWebif url: http://yourip:port"
+msgstr "Enlace OpenWebif: http://tuip:puerto"
+
+msgid "OpenWebInterface Enabled"
+msgstr "Enlace OpenWebInterface"
+
+msgid "HTTP port"
+msgstr "Puerto HTTP"
+
+msgid "Enable HTTP Authentication"
+msgstr "Autenticación Enlace HTTP"
+
+msgid "Enable HTTPS"
+msgstr "Habilitar HTTPS"
+
+msgid "HTTPS port"
+msgstr "Puerto HTTPS"
+
+msgid "Enable HTTPS Authentication"
+msgstr "Autenticación Enlace HTTPS"
+
+msgid "Require client cert for HTTPS"
+msgstr "Requiere certificado cliente para HTTPS"
+
+msgid "Enable Authentication for streaming"
+msgstr "Habilitar Autenticación para streaming"
+
+msgid "Disable access for user root"
+msgstr "Deshabilitar acceso para usuario root"
+
+msgid "Smart services renaming for XBMC"
+msgstr "Servicios inteligentes para cambiar el nombre de XBMC"
+
+msgid "Enable Parental Control"
+msgstr "Habilitar Control Parental"
+
+msgid "Add service name to stream information"
+msgstr "Añadir nombre de servicio a la información de stream"
+
+msgid "Character encoding for EPG data"
+msgstr ""
+
+msgid "OpenWebif Configuration"
+msgstr "Configuración OpenWebif"
+
+msgid "transcoded"
+msgstr ""
+
+#~ msgid "Timer List"
+#~ msgstr "Lista de Grabación"

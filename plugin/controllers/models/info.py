@@ -9,6 +9,8 @@
 #                                                                            #
 ##############################################################################
 
+from Plugins.Extensions.OpenWebif.__init__ import _
+
 from Components.About import about
 from Components.config import config
 from Components.NimManager import nimmanager
@@ -16,19 +18,31 @@ from Components.Harddisk import harddiskmanager
 from Components.Network import iNetwork
 from RecordTimer import parseEvent
 from Screens.Standby import inStandby
+from timer import TimerEntry
 from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
-from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
+from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference, eEnv
 from twisted.web import version
 from socket import has_ipv6, AF_INET6, inet_ntop, inet_pton
+
+try:
+	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
+	from enigma import getEnigmaVersionString
+except:
+	from owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
+	def getEnigmaVersionString():
+		return about.getEnigmaVersionString()
 
 import NavigationInstance
 
 import os
 import sys
 import time
+import string
 
-OPENWEBIFVER = "OWIF 0.4.1"
+OPENWEBIFVER = "OWIF 0.4.6"
+
+STATICBOXINFO = None
 
 def getOpenWebifVer():
 	return OPENWEBIFVER
@@ -54,6 +68,7 @@ def normalize_ipv6(orig):
 
 def getAdapterIPv6(ifname):
 	addr = _("IPv4-only kernel")
+	firstpublic = None
 	
 	if fileExists('/proc/net/if_inet6'):
 		addr = _("IPv4-only Python/Twisted")
@@ -70,10 +85,14 @@ def getAdapterIPv6(ifname):
 				if ifname == tmp[5]:
 					tmpaddr = ":".join([ tmp[0][i:i+4] for i in range(0,len(tmp[0]),4) ])
 
+					if firstpublic is None and (tmpaddr.startswith('2') or tmpaddr.startswith('3')):
+						firstpublic = normalize_ipv6(tmpaddr)
+
 					if tmp[2].lower() != "ff":
 						tmpaddr = "%s/%s" % (tmpaddr, int(tmp[2].lower(), 16))
 
-					tempaddrs.append(normalize_ipv6(tmpaddr))
+					tmpaddr = normalize_ipv6(tmpaddr)
+					tempaddrs.append(tmpaddr)
 
 			if len(tempaddrs) > 1:
 				tempaddrs.sort()
@@ -83,7 +102,7 @@ def getAdapterIPv6(ifname):
 			elif len(tempaddrs) == 0:
 				addr = _("none/IPv4-only network")
 
-	return (addr)
+	return {'addr':addr, 'firstpublic':firstpublic }
 
 def formatIp(ip):
 	if ip is None or len(ip) != 4:
@@ -121,33 +140,24 @@ def getInfo():
 	# TODO: get webif versione somewhere!
 	info = {}
 
-	brand = "Dream Multimedia"
-	model = "unknown"
-	chipset = "unknown"
+	info['brand'] = getMachineBrand()
+	info['model'] = getMachineName()
+	info['boxtype'] = getBoxType()
+	info['machinebuild'] = getMachineBuild()
 
+	chipset = "unknown"
 	if fileExists("/etc/.box"):
-		brand = "HDMU"
 		f = open("/etc/.box",'r')
 		model = f.readline().strip().lower()
-		if model.startswith("et"):
-			brand = "Xtrend"
-		elif model.startswith("vu"):
-			brand = "VuPlus"
-		elif model.startswith("gb"):
-			brand = "GigaBlue"
-		elif model.startswith("ufs") or model.startswith("ufc"):
-			brand = "Kathrein"
+		f.close()
+		if model.startswith("ufs") or model.startswith("ufc"):
 			if model in ("ufs910", "ufs922", "ufc960"):
 				chipset = "SH4 @266MHz"
 			else:
 				chipset = "SH4 @450MHz"
-		elif model.startswith("xpeed"):
-			brand = "GoldenInterstar"
-		elif model.startswith("topf"):
-			brand = "Topfield"
+		elif model in ("topf", "tf7700hdpvr"):
 			chipset = "SH4 @266MHz"
 		elif model.startswith("azbox"):
-			brand = "AZBox"
 			f = open("/proc/stb/info/model",'r')
 			model = f.readline().strip().lower()
 			f.close()
@@ -158,34 +168,11 @@ def getInfo():
 			else:
 				chipset = "SIGMA 8634"
 		elif model.startswith("spark"):
-			brand = "Fulan"
-			chipset = "SH4 @450MHz"
-	elif fileExists("/proc/stb/info/boxtype"):
-		brand = "Xtrend"
-		f = open("/proc/stb/info/boxtype",'r')
-		model = f.readline().strip().lower()
-		if model.startswith("et"):
-			brand = "Xtrend"
-		elif model.startswith("ini"):
-			if model.endswith("sv"):
-				brand = "MiracleBox"
-			elif model.endswith("ru"):
-				brand = "Sezam"
+			if model == "spark7162":
+				chipset = "SH4 @540MHz"
 			else:
-				brand = "Venton"
-		elif model.startswith("xp"):
-			brand = "MaxDigital"
-		elif model.startswith("ixuss"):
-			brand = "Medialink"
-			model = model.replace(" ", "")
- 		f.close()
-	elif fileExists("/proc/stb/info/vumodel"):
-		brand = "VuPlus"
-		f = open("/proc/stb/info/vumodel",'r')
-		model = f.readline().strip().lower()
-		f.close()
+				chipset = "SH4 @450MHz"
 	elif fileExists("/proc/stb/info/azmodel"):
-		brand = "AZBox"
 		f = open("/proc/stb/info/model",'r')
 		model = f.readline().strip().lower()
 		f.close()
@@ -199,27 +186,25 @@ def getInfo():
 		f = open("/proc/stb/info/model",'r')
 		model = f.readline().strip().lower()
 		f.close()
+		if model in ("esi88", "sagemcom88", "nbox"):
+			if fileExists("/proc/boxtype"):
+				f = open("/proc/boxtype",'r')
+				model = f.readline().strip().lower()
+				f.close()
 		if model == "tf7700hdpvr":
-			brand = "Topfield"
 			chipset = "SH4 @266MHz"
-		elif model == "nbox":
-			brand = "Advanced Digital Broadcast"
+		elif model in ("nbox", "bska", "bsla", "bxzb", "bzzb"):
 			chipset = "SH4 @266MHz"
 		elif model in ("adb2850", "adb2849"):
-			brand = "Advanced Digital Broadcast"
 			chipset = "SH4 @450MHz"
-		elif model in ("esi88", "uhd88", "dsi87"):
-			brand = "SagemCom"
+		elif model in ("sagemcom88", "esi88", "uhd88", "dsi87"):
 			chipset = "SH4 @450MHz"
-
-	info['brand'] = brand
-	info['model'] = model
 
 	if fileExists("/proc/stb/info/chipset"):
 		f = open("/proc/stb/info/chipset",'r')
 		chipset = f.readline().strip()
 		f.close()
-		
+
 	info['chipset'] = chipset
 
 	memFree = 0
@@ -246,20 +231,12 @@ def getInfo():
 		uptimetext = "?"
 	info['uptime'] = uptimetext
 
-	if fileExists("/etc/bhversion"):
-		f = open("/etc/bhversion",'r')
-		imagever = f.readline().strip()
-		f.close()
-	elif fileExists("/etc/vtiversion.info"):
-		f = open("/etc/vtiversion.info",'r')
-		imagever = f.readline().strip()
-		f.close()
-	else:
-		imagever = about.getImageVersionString()
-
 	info["webifver"] = getOpenWebifVer()
-	info['imagever'] = imagever
-	info['enigmaver'] = about.getEnigmaVersionString()
+	info['imagedistro'] = getImageDistro()
+	info['oever'] = getOEVersion()
+	info['imagever'] = getImageVersion() + '.' + getImageBuild()
+	info['enigmaver'] = getEnigmaVersionString()
+	info['driverdate'] = getDriverDate()
 	info['kernelver'] = about.getKernelVersionString()
 
 	try:
@@ -285,22 +262,61 @@ def getInfo():
 			"dhcp": iNetwork.getAdapterAttribute(iface, "dhcp"),
 			"ip": formatIp(iNetwork.getAdapterAttribute(iface, "ip")),
 			"mask": formatIp(iNetwork.getAdapterAttribute(iface, "netmask")),
+			"v4prefix": sum([bin(int(x)).count('1') for x in formatIp(iNetwork.getAdapterAttribute(iface, "netmask")).split('.')]),
 			"gw": formatIp(iNetwork.getAdapterAttribute(iface, "gateway")),
-			"ipv6": getAdapterIPv6(iface)
+			"ipv6": getAdapterIPv6(iface)['addr'],
+			"firstpublic": getAdapterIPv6(iface)['firstpublic']
 		})
 
 	info['hdd'] = []
 	for hdd in harddiskmanager.hdd:
-		if hdd.free() <= 1024:
-			free = "%i MB" % (hdd.free())
+		dev = hdd.findMount()
+		if dev:
+			stat = os.statvfs(dev)
+			free = int((stat.f_bfree/1024) * (stat.f_bsize/1024))
 		else:
-			free = float(hdd.free()) / float(1024)
+			free = -1
+		
+		if free <= 1024:
+			free = "%i MB" % free
+		else:
+			free = free / 1024.
 			free = "%.3f GB" % free
+
+		size = hdd.diskSize() * 1000000 / 1048576.
+		if size > 1048576:
+			size = "%.2f TB" % (size / 1048576.)
+		elif size > 1024:
+			size = "%.1f GB" % (size / 1024.)
+		else:
+			size = "%d MB" % size
+
+		iecsize = hdd.diskSize()
+		# Harddisks > 1000 decimal Gigabytes are labelled in TB
+		if iecsize > 1000000:
+			iecsize = (iecsize + 50000) // float(100000) / 10
+			# Omit decimal fraction if it is 0
+			if (iecsize % 1 > 0):
+				iecsize = "%.1f TB" % iecsize
+			else:
+				iecsize = "%d TB" % iecsize
+		# Round harddisk sizes beyond ~300GB to full tens: 320, 500, 640, 750GB
+		elif iecsize > 300000:
+			iecsize = "%d GB" % ((iecsize + 5000) // 10000 * 10)
+		# ... be more precise for media < ~300GB (Sticks, SSDs, CF, MMC, ...): 1, 2, 4, 8, 16 ... 256GB
+		elif iecsize > 1000:
+			iecsize = "%d GB" % ((iecsize + 500) // 1000)
+		else:
+			iecsize = "%d MB" % iecsize
+
 		info['hdd'].append({
 			"model": hdd.model(),
-			"capacity": hdd.capacity(),
+			"capacity": size,
+			"labelled_capacity": iecsize,
 			"free": free
 		})
+	global STATICBOXINFO
+	STATICBOXINFO = info
 	return info
 
 def getFrontendStatus(session):
@@ -347,6 +363,14 @@ def getCurrentTime():
 		"time": "%2d:%02d:%02d" % (t.tm_hour, t.tm_min, t.tm_sec)
 	}
 
+def getTranscodingSupport():
+	global STATICBOXINFO
+	if STATICBOXINFO is None:
+		getInfo()
+	if (STATICBOXINFO['model'] in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or STATICBOXINFO['machinebuild'] in ('inihdp', 'hd2400', 'et10000', 'xpeedlx3', 'ew7356', 'dags3', 'dags4')) and (os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TranscodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo'))):
+		return True
+	return False
+
 def getStatusInfo(self):
 	statusinfo = {}
 
@@ -355,6 +379,7 @@ def getStatusInfo(self):
 
 	statusinfo['volume'] = vcontrol.getVolume()
 	statusinfo['muted'] = vcontrol.isMuted()
+	statusinfo['transcoding'] = getTranscodingSupport()
 
 	# Get currently running Service
 	event = None
@@ -369,6 +394,7 @@ def getStatusInfo(self):
 	else:
 		event = None
 
+	statusinfo['currservice_filename'] = ""
 	if event is not None:
 		curEvent = parseEvent(event)
 		statusinfo['currservice_name'] = curEvent[2].replace('\xc2\x86', '').replace('\xc2\x87', '')
@@ -379,14 +405,26 @@ def getStatusInfo(self):
 		if len(curEvent[3].decode('utf-8')) > 220:
 			statusinfo['currservice_description'] = curEvent[3].decode('utf-8')[0:220].encode('utf-8') + "..."
 		statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
+		if statusinfo['currservice_serviceref'].startswith('1:0:0'):
+			statusinfo['currservice_filename'] = '/' + '/'.join(serviceref.toString().split("/")[1:])
+		full_desc = statusinfo['currservice_name'] + '\n'
+		full_desc += statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end']  + '\n\n'
+		full_desc += event.getExtendedDescription().replace('\xc2\x86', '').replace('\xc2\x87', '').replace('\xc2\x8a', '\n')
+		statusinfo['currservice_fulldescription'] = full_desc
 	else:
 		statusinfo['currservice_name'] = "N/A"
 		statusinfo['currservice_begin'] = ""
 		statusinfo['currservice_end'] = ""
 		statusinfo['currservice_description'] = ""
+		statusinfo['currservice_fulldescription'] = "N/A"
 		if serviceref:
 			statusinfo['currservice_serviceref'] = serviceref.toString()
-			statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
+			if serviceHandlerInfo:
+				statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
+			elif serviceref.toString().find("http") != -1:
+				statusinfo['currservice_station'] = serviceref.toString().replace('%3a', ':')[serviceref.toString().find("http"):]
+			else:
+				statusinfo['currservice_station'] = "N/A"
 
 	# Get Standby State
 	from Screens.Standby import inStandby
@@ -399,6 +437,11 @@ def getStatusInfo(self):
 	recs = NavigationInstance.instance.getRecordings()
 	if recs:
 		statusinfo['isRecording'] = "true"
+		statusinfo['Recording_list'] = "\n"
+		for timer in NavigationInstance.instance.RecordTimer.timer_list:
+			if timer.state == TimerEntry.StateRunning:
+				if not timer.justplay:
+					statusinfo['Recording_list'] += timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '') + ": " + timer.name + "\n"
 	else:
 		statusinfo['isRecording'] = "false"
 

@@ -3,17 +3,17 @@
 <form>
 <div>
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">$tstrings['name']:</span>
+		<span class="timerlist_row_l">$tstrings['name']:</span>
 		<span><input type="text" name="timername" id="timername" style="width: 450px;" class="text ui-widget-content ui-corner-all" /></span>
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">$tstrings['description']:</span>
+		<span class="timerlist_row_l">$tstrings['description']:</span>
 		<span><textarea name="description" id="description" style="width: 450px; height: 50px;" class="text ui-widget-content ui-corner-all" /></span>
 	</div>
 	
 	<div class="timerlist_row">
-	<span style="width: 100px; float: left;">$tstrings['channel']:</span>
+	<span class="timerlist_row_l">$tstrings['channel']:</span>
 		<span>
 		<select id="bouquet_select" name="bouquet_select">
 			<option value="0">$tstrings['nothing']</option>
@@ -22,35 +22,35 @@
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">$tstrings['start']:</span>
+		<span class="timerlist_row_l">$tstrings['start']:</span>
 		<span>
 		<input type="text" name="timerbegin" id="timerbegin" value="" class="text ui-widget-content ui-corner-all" />
 		</span>
 	</div>
 
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">$tstrings['end']:</span>
+		<span class="timerlist_row_l">$tstrings['end']:</span>
 		<span>
 		<input type="text" name="timerend" id="timerend" value="" class="text ui-widget-content ui-corner-all" />
 		</span>
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left; block: inline;">$tstrings['enabled']:</span>
+		<span class="timerlist_row_l" style="block: inline;">$tstrings['enabled']:</span>
 		<span style="margin: 5px;">
 			<input type="checkbox" name="enabled" id="enabled" value="0" />
 		</span>
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">$tstrings['just_play']:</span>
+		<span class="timerlist_row_l">$tstrings['just_play']:</span>
 		<span style="margin: 5px;">
 			<input type="checkbox" name="justplay" id="justplay" value="0" />
 		</span>
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">$tstrings['repeated']:</span>
+		<span class="timerlist_row_l">$tstrings['repeated']:</span>
 		<span id="repeatdays" style="margin: 5px;">
 		#set $i=0
 		#for $day in [$tstrings['mo'], $tstrings['tu'], $tstrings['we'], $tstrings['th'], $tstrings['fr'], $tstrings['sa'], $tstrings['su']]
@@ -62,7 +62,7 @@
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">$tstrings['location']:</span>
+		<span class="timerlist_row_l">$tstrings['location']:</span>
 		<span>
 		<select id="dirname" name="dirname">
 			<option value="None">$tstrings['default']</option>
@@ -71,13 +71,13 @@
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">$tstrings['tags']:</span>
+		<span class="timerlist_row_l">$tstrings['tags']:</span>
 		<span id="tagsnew" style="margin:5px">
 		</span>
 	</div>
 	
 	<div class="timerlist_row">
-		<span style="width: 100px; float: left;">$tstrings['after_event']:</span>
+		<span class="timerlist_row_l">$tstrings['after_event']:</span>
 		<span>
 		<select id="afterevent" name="afterevent">
 			<option value="0">$tstrings['nothing']</option>
@@ -85,6 +85,16 @@
 			<option value="2">$tstrings['shutdown']</option>
 			<option value="3" selected="">$tstrings['auto']</option>
 		</select>
+		</span>
+	</div>
+	<div class="timerlist_row" id="has_vpsplugin1">
+		<span class="timerlist_row_l">$tstrings['vps']:</span>
+		<span style="margin: 5px;">
+			<input type="checkbox" name="vpsplugin_enabled" id="vpsplugin_enabled" value="0" />
+		</span>
+		<span id="has_vpsplugin2" class="timerlist_row_r">$tstrings['safe_mode']:</span>
+		<span style="margin: 5px;">
+			<input type="checkbox" name="vpsplugin_safemode" id="vpsplugin_safemode" value="0" />
 		</span>
 	</div>
 	<div id="errorbox" class="timerlist_row" style="color: red;">
@@ -103,6 +113,8 @@
 #raw
 
 initTimerEditBegin();
+
+$('#vpsplugin_enabled').click(function() { checkVPS();});
 
 $('#timerend').datetimepicker({
 	
@@ -132,8 +144,8 @@ $('#repeatdays').buttonset();
 
 $('#editTimerForm').dialog({
 	autoOpen: false,
-	height: 455,
-	width: 600,
+	height: 480,
+	width: 650,
 	modal: true,
 	buttons: [
 			{text: tstr_save,
@@ -161,6 +173,11 @@ $('#editTimerForm').dialog({
 					repeated: repeated };
 				if ($('#dirname').val() != 'None')
 					urldata["dirname"] = $('#dirname').val();
+				if (!$('#has_vpsplugin1').is(':hidden'))
+				{
+					urldata["vpsplugin_enabled"] = ($('#vpsplugin_enabled').is(':checked')?"1":"0");
+					urldata["vpsplugin_overwrite"] = ($('#vpsplugin_safemode').is(':checked')?"0":"1");
+				}
 				if (!timeredit_begindestroy) {
 					var begindate = new Date($('#timerbegin').datetimepicker('getDate'));
 					urldata["begin"] = Math.round(begindate.getTime() / 1000);
@@ -192,7 +209,7 @@ $('#editTimerForm').dialog({
 					urldata['endOld'] = Math.round(current_end);
 					$.ajax({
 						async: false,
-						url: "/api/timerchange?",
+						url: "api/timerchange?",
 						data: urldata,
 						success: function(data) {
 							result = $.parseJSON(data);
@@ -208,7 +225,7 @@ $('#editTimerForm').dialog({
 				}
 				
 				if (canclose) {
-					if (reloadTimers) $("#content_container").load("/ajax/timers");
+					if (reloadTimers) load_maincontent("ajax/timers");
 					$(this).dialog("close");
 				}
 			}
@@ -224,6 +241,8 @@ $('#editTimerForm').dialog({
 		return;
 	}
 });
+
+checkVPS();
 
 #end raw
 

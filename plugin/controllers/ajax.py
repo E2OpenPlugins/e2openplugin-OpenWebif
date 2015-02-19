@@ -8,18 +8,22 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-
 from Tools.Directories import fileExists
 from Components.config import config
 
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
-from models.info import getInfo, getPublicPath, getOpenWebifVer
+from models.info import getInfo, getPublicPath, getOpenWebifVer, getTranscodingSupport
 from models.movies import getMovieList
 from models.timers import getTimers
 from models.config import getConfigs, getConfigsSections
 from base import BaseController
 from time import mktime, localtime
 from models.locations import getLocations
+
+try:
+	from boxbranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
+except:
+	from models.owibranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
 
 class AjaxController(BaseController):
 	def __init__(self, session, path = ""):
@@ -58,12 +62,8 @@ class AjaxController(BaseController):
 		if "id" in request.args.keys():
 			idbouquet = request.args["id"][0]
 		channels = getChannels(idbouquet, stype)
-		info = getInfo()
-		model = info["model"]
-		channels['transcoding'] = False
+		channels['transcoding'] = getTranscodingSupport()
 		channels['type'] = stype
-		if model in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "hd2400", "xpeedlx3", "gbquad", "gbquadplus"):
-			channels['transcoding'] = True
 		return channels
 
 	def P_eventdescription(self, request):
@@ -73,6 +73,14 @@ class AjaxController(BaseController):
 		event = getEvent(request.args["sref"][0], request.args["idev"][0])
 		event['event']['recording_margin_before'] = config.recording.margin_before.value
 		event['event']['recording_margin_after'] = config.recording.margin_after.value
+		at = False
+		try:
+			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
+			at = True
+		except ImportError:
+			pass
+		event['at'] = at
+		event['transcoding'] = getTranscodingSupport()
 		return event
 
 	def P_about(self, request):
@@ -82,25 +90,12 @@ class AjaxController(BaseController):
 	
 	def P_boxinfo(self, request):
 		info = getInfo()
-		model = info["model"]
-		if model in ("et9000", "et9200", "et9500"):
-			model = "et9x00"
-		elif model in ("et5000", "et6000", "et6x00"):
-			model = "et5x00"
-		elif model == "et4000":
-			model = "et4x00"
-		elif model == "xp1000":
-			model = "xp1000"
-		elif model.startswith("vu"):
-			model = model.replace("vu", "")
-		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
-			info["boximage"] = model + ".jpg"
+		type = getBoxType()
+
+		if fileExists(getPublicPath("/images/boxes/"+type+".jpg")):
+			info["boximage"] = type+".jpg"
 		else:
 			info["boximage"] = "unknown.jpg"
-		if model in ("tf7700hdpvr", "topf", "TF 7700 HDPVR"):
-			info["model"] = "TF 7700 HDPVR"
-			if fileExists(getPublicPath("/images/boxes/topf.jpg")):
-				info["boximage"] = "topf.jpg"
 		return info
 
 	def P_epgpop(self, request):
@@ -125,12 +120,18 @@ class AjaxController(BaseController):
 	def P_screenshot(self, request):
 		box = {}
 		box['brand'] = "dmm"
-		if fileExists("/proc/stb/info/vumodel"):
+		if getMachineBrand() == 'Vu+':
 			box['brand'] = "vuplus"
+		elif getMachineBrand() == 'GigaBlue':
+			box['brand'] = "gigablue"
+		elif getMachineBrand() == 'Edision':
+			box['brand'] = "edision"
+		elif getMachineBrand() == 'iQon':
+			box['brand'] = "iqon"
+		elif getMachineBrand() == 'Technomate':
+			box['brand'] = "techomate"
 		elif fileExists("/proc/stb/info/azmodel"):
 			box['brand'] = "azbox"
-		elif fileExists("/proc/stb/info/gbmodel"):
-			box['brand'] = "gigablue"
 		return { "box": box }
 
 	def P_powerstate(self, request):
@@ -147,11 +148,7 @@ class AjaxController(BaseController):
 			movies = getMovieList(request.args["dirname"][0])
 		else:
 			movies = getMovieList()
-		info = getInfo()
-		model = info["model"]
-		movies['transcoding'] = False
-		if model in ("solo2", "duo2", "solose", "vusolo2", "vuduo2", "vusolose", "hd2400", "xpeedlx3", "gbquad", "gbquadplus"):
-			movies['transcoding'] = True
+		movies['transcoding'] = getTranscodingSupport()
 		return movies
 
 	def P_workinprogress(self, request):

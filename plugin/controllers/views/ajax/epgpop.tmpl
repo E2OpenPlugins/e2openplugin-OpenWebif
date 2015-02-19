@@ -7,7 +7,7 @@
 <title>No items found.</title>
 </head>
 <body style="background: #FFFFFF; scrollbar: auto;">
-<img src="/images/not_found.jpg" title="No items found" border="0">
+<img src="../images/not_found.jpg" title="No items found" border="0">
 </body>
 </html>
 #else
@@ -17,13 +17,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link type="text/css" href="/css/jquery-ui-1.8.18.custom.css" rel="stylesheet" />	
-<script type="text/javascript" src="/js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="/js/jquery-ui-1.8.18.custom.min.js"></script>
-<script type="text/javascript" src="/js/openwebif.js"></script>
+<link type="text/css" href="../css/jquery-ui-1.8.18.custom.css" rel="stylesheet" />	
+<script type="text/javascript" src="../js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-1.8.18.custom.min.js"></script>
+<script type="text/javascript" src="../js/openwebif.js"></script>
 <style>
 table { font-size:12px; font-family: Verdana,Arial,sans-serif;}
 tr {background-color: #F0F7FC;}
+.ti_icon {
+height:25px;
+width:25px;
+background-image:url('../images/timer_icons.png');
+display:inline-block;
+}
+.ti_empty {background-position:0px 0px;}
+.ti_timer {background-position:-25px 0px;}
+.ti_timerplay {background-position:-50px 0px;}
+.ti_timeredit {background-position:-75px 0px;}
+.ti_timerdelete {background-position:-100px 0px;}
+.ti_timerat {background-position:-125px 0px;}
+.d_timer{display:none;}
+
 </style>
 
 <title>Open Webif $tstrings['epg']</title>
@@ -47,10 +61,16 @@ tr {background-color: #F0F7FC;}
 				<td colspan="2" rowspan="2">$event.longdesc</td>
 			</tr>
 			<tr>
-				<td style="padding:0px">
+				<td style="padding:0px text-align:center">
 					#set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
-					<a href="#" onclick="addTimerEvent('$sref',$event.id);return false;"><img src="/images/timer.png" title="$tstrings['add_timer']" border="0"></a>																
-					<a target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)"><img src="/images/imdb.png" title="$tstrings['search_imdb']" border="0"></a>
+					
+					<a href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']"><div class="ti_icon ti_timer"></div></a>
+					<a href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']"><div class="ti_icon ti_timerplay"></div></a>
+					<a href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']"><div class="ti_icon ti_timeredit"></div></a>
+					<br>
+					<a class="d_timer" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']"><div class="ti_icon ti_timerdelete"></div></a>
+					<br>
+					<a target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)"><img src="../images/imdb.png" width="25" height="25" title="$tstrings['search_imdb']" border="0"></a>
 				</td>
 			</tr>
 			<tr>
@@ -58,7 +78,6 @@ tr {background-color: #F0F7FC;}
 			</tr>
 		</table>
 #end for
-				
 	</body>
 </html>
 #end if

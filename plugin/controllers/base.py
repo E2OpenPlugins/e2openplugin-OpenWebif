@@ -12,7 +12,6 @@
 from Plugins.Extensions.OpenWebif.__init__ import _
 
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
-
 from twisted.web import server, http, static, resource, error
 from Cheetah.Template import Template
 
@@ -25,24 +24,37 @@ import json
 import gzip
 import cStringIO
 
+try:
+	from boxbranding import getBoxType, getMachineName
+except:
+	from models.owibranding import getBoxType, getMachineName
+
+remote=''
+try:
+	from Components.RcModel import rc_model
+	remote = rc_model.getRcFolder() + "/remote"
+except:
+	from models.owibranding import rc_model
+	remote = rc_model().getRcFolder()
+
 class BaseController(resource.Resource):
 	isLeaf = False
-	
+
 	def __init__(self, path = ""):
 		resource.Resource.__init__(self)
-		
+
 		self.path = path
 		self.withMainTemplate = False
 		self.isJson = False
 		self.isCustom = False
 		self.isGZ = False
-	
+
 	def error404(self, request):
 		request.setHeader("content-type", "text/html")
 		request.setResponseCode(http.NOT_FOUND)
 		request.write("<html><head><title>Open Webif</title></head><body><h1>Error 404: Page not found</h1><br />The requested URL was not found on this server.</body></html>")
 		request.finish()
-		
+
 	def loadTemplate(self, path, module, args):
 		if fileExists(getViewsPath(path + ".py")) or fileExists(getViewsPath(path + ".pyo")):
 			if fileExists(getViewsPath(path + ".pyo")):
@@ -55,17 +67,17 @@ class BaseController(resource.Resource):
 		elif fileExists(getViewsPath(path + ".tmpl")):
 			return str(Template(file=getViewsPath(path + ".tmpl"), searchList=[args]))
 		return None
-		
+
 	def getChild(self, path, request):
 		return self.__class__(self.session, path)
-		
+
 	def compressBuf(self, buf):
 		zbuf = cStringIO.StringIO()
 		zfile = gzip.GzipFile(mode = 'wb',  fileobj = zbuf, compresslevel = 6)
 		zfile.write(buf)
 		zfile.close()
 		return zbuf.getvalue()
-		
+
 	def render(self, request):
 		# cache data
 		withMainTemplate = self.withMainTemplate
@@ -73,21 +85,21 @@ class BaseController(resource.Resource):
 		isJson = self.isJson
 		isCustom = self.isCustom
 		isGZ = self.isGZ
-		
+
 		if self.path == "":
 			self.path = "index"
-		
+
 		self.suppresslog = False
 		self.path = self.path.replace(".", "")
 		func = getattr(self, "P_" + self.path, None)
 		if callable(func):
 			request.setResponseCode(http.OK)
-			
+
 			# call prePageLoad function if exist
 			plfunc = getattr(self, "prePageLoad", None)
 			if callable(plfunc):
 				plfunc(request)
-				
+
 			data = func(request)
 			if data is None:
 #				if not self.suppresslog:
@@ -163,18 +175,18 @@ class BaseController(resource.Resource):
 #					else:
 					request.write(out)
 					request.finish()
-				
+
 		else:
 			print "[OpenWebif] page '%s' not found" % request.uri
 			self.error404(request)
-		
+
 		# restore cached data
 		self.withMainTemplate = withMainTemplate
 		self.path = path
 		self.isJson = isJson
 		self.isCustom = isCustom
 		self.isGZ = isGZ
-		
+
 		return server.NOT_DONE_YET
 
 	def prepareMainTemplate(self):
@@ -188,70 +200,9 @@ class BaseController(resource.Resource):
 		ret['boxname'] = getBoxName()['boxname']
 		if not ret['boxname'] or not ret['customname']:
 			ret['boxname'] = getInfo()['brand']+" "+getInfo()['model']
-		ret['box'] = "dmm"
-#		if open("/proc/stb/info/model",'r').read().strip().lower() == "gigablue":
-#			ret['box'] = "gigablue"
-		if fileExists("/etc/.box"):
-			ret['box'] = open("/etc/.box").read().strip().lower()
-		elif fileExists("/proc/stb/info/boxtype"):
-			ret['box'] = open("/proc/stb/info/boxtype").read().strip().lower()
-		elif fileExists("/proc/stb/info/vumodel"):
-			ret['box'] = open("/proc/stb/info/vumodel").read().strip().lower()
-		elif fileExists("/proc/stb/info/azmodel"):
-			ret['box'] = open("/proc/stb/info/azmodel").read().strip().lower()
-		elif fileExists("/proc/stb/info/model"):
-			ret['box'] = open("/proc/stb/info/model").read().strip().lower()
+		ret['box'] = getBoxType()
+		ret["remote"] = remote
 
-		if ret["box"] in ("vusolo", "vuduo", "vuuno", "vusolo2", "vuduo2", "vusolose", "solo", "duo", "uno", "solo2", "duo2", "solose"):
-			ret["remote"] = "vu_normal"
-		elif ret["box"] in ("vuultimo", "ultimo"):
-			ret["remote"] = "vu_ultimo"
-		elif ret["box"] == "e3hd":
-			ret["remote"] = "e3hd"
-		elif ret["box"] in ("et9x00", "et9000", "et9200", "et9500"):
-			ret["remote"] = "et9x00"
-		elif ret["box"] in ("et5x00", "et5000", "et6x00", "et6000"):
-			ret["remote"] = "et5x00"
-		elif ret["box"] in ("et4x00", "et4000"):
-			ret["remote"] = "et4x00"
-		elif ret["box"] == "gbquad":
-			ret["remote"] = "gigablue"
-		elif ret["box"] == "gbquadplus":
-			ret["remote"] = "gbquadplus"
-		elif ret["box"] == "et6500":
-			ret["remote"] = "et6500"
-		elif ret["box"] in ("et8x00", "et8000", "et1x000", "et10000"):
-			ret["remote"] = "et8000"
-		elif ret["box"] in ("formuler1", "formuler3"):
-			ret["remote"] = "formuler1"
-		elif ret["box"] in ("azboxme", "azboxminime", "me", "minime"):
-			ret["remote"] = "me"
-		elif ret["box"] in ("optimussos1", "optimussos1plus", "optimussos2", "optimussos2plus"):
-			ret["remote"] = "optimuss"
-		elif ret["box"] in ("premium", "premium+"):
-			ret["remote"] = "premium"
-		elif ret["box"] in ("elite", "ultra"):
-			ret["remote"] = "elite"
-		elif ret["box"] in ("ini-1000", "ini-1000ru"):
-			ret["remote"] = "ini-1000"
-		elif ret["box"] in ("ini-1000sv", "ini-5000sv"):
-			ret["remote"] = "miraclebox"
-		elif ret["box"] == "ini-3000":
-			ret["remote"] = "ini-3000"
-		elif ret["box"] in ("ini-7012", "ini-7000", "ini-5000", "ini-5000ru"):
-			ret["remote"] = "ini-7000"
-		elif ret["box"].startswith("spark"):
-			ret["remote"] = "spark"
-		elif ret["box"] == "xp1000":
-			ret["remote"] = "xp1000"
-		elif ret["box"].startswith("xpeedlx"):
-			ret["remote"] = "xpeedlx"
-		elif ret["box"] in ("nbox", "esi88", "adb2850", "adb2849", "dsi87"):
-			ret["remote"] = "nbox"
-		elif ret["box"].startswith("ixuss"):
-			ret["remote"] = ret["box"].replace(" ", "")
-		else:
-			ret["remote"] = "dmm"
 		extras = []
 		extras.append({ 'key': 'ajax/settings','description': _("Settings")})
 		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/LCD4linux/WebSite.pyo")):
@@ -270,7 +221,7 @@ class BaseController(resource.Resource):
 					lcd4linux_key = None
 			if lcd4linux_key:
 				extras.append({ 'key': lcd4linux_key, 'description': _("LCD4Linux Setup")})
-
+		
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
 			extras.append({ 'key': 'ajax/at','description': _('AutoTimer')})

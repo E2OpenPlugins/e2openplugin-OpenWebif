@@ -88,6 +88,9 @@ class grabScreenshot(resource.Resource):
 			os.unlink(self.filepath)
 		except:
 			print "Failed to remove:", self.filepath
-		self.request.finish()
+		try:
+			self.request.finish()
+		except RuntimeError, error:
+			print "[OpenWebif] grabFinished error: %s" % error
 		del self.request
 		del self.filepath

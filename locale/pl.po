@@ -1,62 +1,91 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-07-16 12:30+0100\n"
+"POT-Creation-Date: 2014-12-02 11:00+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: mickey <mickeyreg@gmail.com>\n"
-"Language-Team: \n"
+"Language-Team: none\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: ../plugin\n"
 
-msgid "Cancel"
-msgstr "Anuluj"
+msgid "Settings"
+msgstr "Ustawienia"
 
-msgid "Save"
-msgstr "Zapisz"
+msgid "LCD4Linux Setup"
+msgstr "Ustawienia LCD4Linux"
 
-msgid "OpenWebif url: http://yourip:port"
-msgstr "Adres OpenWebif:  http://ip_tunera:port"
+msgid "AutoTimer"
+msgstr "AutoTimer"
 
-msgid "OpenWebInterface Enabled"
-msgstr "Interfejs OpenWebif włączony"
+msgid "BouquetEditor"
+msgstr "Edytor bukietów"
 
-msgid "HTTP port"
-msgstr "Port HTTP"
+msgid "EPGRefresh"
+msgstr "EPGRefresh"
 
-msgid "Enable HTTP Authentication"
-msgstr "Włącz uwierzytelnianie HTTP"
+msgid "IPv4-only kernel"
+msgstr "kernel tylko IPv4"
 
-msgid "Enable HTTPS"
-msgstr "Włącz dostęp przez HTTPS"
+msgid "IPv4-only Python/Twisted"
+msgstr "Python/Twisted tylko dla IPv4"
 
-msgid "HTTPS port"
-msgstr "Port HTTPS"
+msgid "none/IPv4-only network"
+msgstr "brak lub sieć tylko IPv4"
 
-msgid "Require client cert for HTTPS"
-msgstr "Wymagaj certyfikatu klienta dla HTTPS"
+msgid "Message sent successfully!"
+msgstr "Wiadomość wysłana pomyślnie!"
 
-msgid "Enable Authentication for streaming"
-msgstr "Włącz uwierzytelnianie dla strumieniowania"
+msgid "No answer in time"
+msgstr "Brak odpowiedzi w czasie"
 
-msgid "Disable access for user root"
-msgstr "Zablokuj dostęp dla użytkownika root"
+msgid "Answer is YES!"
+msgstr "Odpowiedź: TAK!"
 
-msgid "Smart services renaming for XBMC"
-msgstr "Zmiana nazw kanałów dla XBMC"
+msgid "Answer is NO!"
+msgstr "Odpowiedź: NIE!"
 
-msgid "Enable Parental Control"
-msgstr "Włącz kontrolę rodzicielską"
+msgid "New"
+msgstr "Nowy"
 
-msgid "Add service name to stream information"
-msgstr "Dodaj nazwę kanału do info strumienia"
+msgid "Services"
+msgstr "Kanały"
 
-msgid "OpenWebif Configuration"
-msgstr "Konfiguracja Openwebif"
+msgid "Cable"
+msgstr "Kablowy"
+
+msgid "Terrestrial"
+msgstr "Naziemna"
+
+msgid "W"
+msgstr "W"
+
+msgid "E"
+msgstr "E"
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr "Brak wymaganego parametru '%s'"
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr "Parametr '%s' nie może być pusty"
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr "Zły format parametru 'set=%s'. Użyj set=set15"
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr "Nieznana komenda głośności %s"
+
+msgid "The parameter 'command' must be a number"
+msgstr "Parametr 'command' musi być liczbą"
+
+#, python-format
+msgid "type %s is not a number"
+msgstr "%s nie jest liczbą"
 
 msgid "Mo"
 msgstr "Pn"
@@ -163,6 +192,12 @@ msgstr "O OpenWebif"
 msgid "Add Timer"
 msgstr "Dodaj zadanie planowe"
 
+msgid "Add AutoTimer"
+msgstr "Dodaj AutoTimer"
+
+msgid "Add Zap Timer"
+msgstr "Dodaj planowe przełączenie"
+
 msgid "After Event"
 msgstr "Po nagraniu"
 
@@ -207,6 +242,9 @@ msgstr "Czas pracy odbiornika"
 
 msgid "Brand"
 msgstr "Marka"
+
+msgid "Cancel"
+msgstr "Anuluj"
 
 msgid "Capacity"
 msgstr "Pojemność"
@@ -282,6 +320,9 @@ msgstr "Edytuj zadanie planowe"
 
 msgid "Enable Timer"
 msgstr "Włącz zadanie planowe"
+
+msgid "Start"
+msgstr "Początek"
 
 msgid "End"
 msgstr "Koniec"
@@ -427,8 +468,20 @@ msgstr "Włącz"
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Otwarty interfejs dla odbiorników z systemem Linux"
 
+msgid "Show box name in header"
+msgstr "Pokaż nazwę odbiornika w nagłówku"
+
+msgid "Use custom box name"
+msgstr "Użyj własnej nazwy odbiornika"
+
+msgid "Custom box name"
+msgstr "Własna nazwa odbiornika"
+
 msgid "OSD"
 msgstr "OSD"
+
+msgid "Playback"
+msgstr "Odtwarzanie"
 
 msgid "Playlist"
 msgstr "Lista odtwarzania"
@@ -457,8 +510,14 @@ msgstr "Odśwież"
 msgid "Refresh automatically every"
 msgstr "Odśwież automatycznie co"
 
+msgid "Refresh Timer"
+msgstr "Odśwież zadanie planowe"
+
 msgid "Remote"
 msgstr "Pilot"
+
+msgid "Rename Recording"
+msgstr "Zmień nazwę nagrania"
 
 msgid "Repeated"
 msgstr "Powtarzalny"
@@ -475,6 +534,9 @@ msgstr "Satelity"
 msgid "Satfinder"
 msgstr "Miernik sygnału SAT"
 
+msgid "Save"
+msgstr "Zapisz"
+
 msgid "Screenshot"
 msgstr "Zrzut ekranu"
 
@@ -490,17 +552,20 @@ msgstr "sekund"
 msgid "Send Message"
 msgstr "Wyślij wiadomość"
 
+msgid "Waiting for answer ..."
+msgstr "Oczekiwanie na odpowiedź ..."
+
 msgid "Send a Message"
 msgstr "Wyślij wiadomość"
 
 msgid "Service"
 msgstr "Kanał"
 
-msgid "Settings"
-msgstr "Ustawienia"
+msgid "Bouquet Editor"
+msgstr "Edytor bukietów"
 
 msgid "(shift + click for long pressure)"
-msgstr "(długie naciśnięcie: shift + click)"
+msgstr "(długie naciśnięcie: shift + kliknij)"
 
 msgid "Show Full OpenWebif"
 msgstr "Pokaż pełny interfejs"
@@ -570,6 +635,12 @@ msgstr "Dodano zadanie planowe"
 
 msgid "Timerlist"
 msgstr "Lista zadań planowych"
+
+msgid "New Name"
+msgstr "Nowa nazwa"
+
+msgid "Autotimer Preview"
+msgstr "Podgląd zadania AutoTimer"
 
 msgid "Timer"
 msgstr "Zadanie planowe"
@@ -661,46 +732,450 @@ msgstr "Przełącz na"
 msgid "Zapped to"
 msgstr "Przełączono na"
 
-msgid "LCD4Linux Setup"
-msgstr "Ustawienia LCD4Linux"
+msgid "Translation to Spanish"
+msgstr "Tłumaczenie na hiszpański"
 
-#, python-format
-msgid "Missing mandatory parameter '%s'"
-msgstr "Brak wymaganego parametru '%s'"
+msgid "All Files of this Software are open source software;"
+msgstr "Wszystkie Pliki tego Oprogramowania to oprogramowanie otwarte;"
 
-#, python-format
-msgid "The parameter '%s' can't be empty"
-msgstr "Parametr '%s' nie może być pusty"
+msgid "you can redistribute it and/or modify it under the"
+msgstr "możesz je rozprowadzać dalej i/lub modyfikować zgodnie z"
 
-#, python-format
-msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr "Zły format parametru 'set=%s'. Użyj set=set15"
+msgid "terms of the GNU General Public License version 2 as"
+msgstr "warunkami licencji GNU GPL w wersji 2"
 
-#, python-format
-msgid "Unknown Volume command %s"
-msgstr "Nieznana komenda głośności %s"
+msgid "published by the Free Software Foundation."
+msgstr "opublikowanej przez Free Software Foundation."
 
-msgid "The parameter 'command' must be a number"
-msgstr "Parametr 'command' musi być liczbą"
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 2 "
+"as published by the Free Software Foundation."
+msgstr ""
+"Wszystkie Pliki tego Oprogramowania to oprogramowanie otwarte; możesz je "
+"rozprowadzać dalej i/lub modyfikować zgodnie z warunkami licencji GNU GPL w "
+"wersji 2 opublikowanej przez Free Software Foundation."
 
-#, python-format
-msgid "type %s is not a number"
-msgstr "%s nie jest liczbą"
+msgid "Root"
+msgstr "katalog główny"
 
-msgid "New"
-msgstr "Nowy"
+msgid "AutoTimer List"
+msgstr "Lista zadań AutoTimer"
 
-msgid "Services"
-msgstr "Kanały"
+msgid "AutoTimer Edit"
+msgstr "Edycja zadania AutoTimer"
 
-msgid "Cable"
-msgstr "Kablowy"
+msgid "Match title"
+msgstr "Zgodność tytułu"
 
-msgid "Terrestrial"
-msgstr "Naziemna"
+msgid "EPG encoding"
+msgstr "Kodowanie EPG"
 
-msgid "W"
-msgstr "W"
+msgid "Search type"
+msgstr "Typ szukania"
 
-msgid "E"
-msgstr "E"
+msgid "partial match"
+msgstr "częściowa zgodność"
+
+msgid "exact match"
+msgstr "dokładna zgodność"
+
+msgid "description match"
+msgstr "zgodność opisu"
+
+msgid "start match"
+msgstr "zgodność początku"
+
+msgid "Search strictness"
+msgstr "Dokładność szukania"
+
+msgid "case-sensitive search"
+msgstr "z uwzględnieniem wielkości liter"
+
+msgid "case-insensitive search"
+msgstr "bez uwzględnienia wielkości liter"
+
+msgid "Timer type"
+msgstr "Typ zadania planowego"
+
+msgid "record"
+msgstr "nagraj"
+
+msgid "zap"
+msgstr "przełącz"
+
+msgid "Override found with alternative service"
+msgstr "Nadpisz znalezione wśród alternatywnych kanałów"
+
+msgid "Only match during timespan"
+msgstr "Zgodność tylko w przedziale czasowym"
+
+msgid "Begin of timespan"
+msgstr "Początek przedziału czasowego"
+
+msgid "End of Timespan"
+msgstr "Koniec przedziału czasowego"
+
+msgid "Restrict to events on certain dates"
+msgstr "Ogranicz do zdarzeń w określonych terminach"
+
+msgid "Not after"
+msgstr "Nie później niż"
+
+msgid "Not before"
+msgstr "Nie wcześniej niż"
+
+msgid "Custom offset"
+msgstr "Własny margines"
+
+msgid "Offset before recording (in m)"
+msgstr "Margines przed nagraniem (w min)"
+
+msgid "Offset after recording (in m)"
+msgstr "Margines po nagraniu (w min)"
+
+msgid "Set maximum duration"
+msgstr "Ustaw maksymalny czas trwania"
+
+msgid "After event"
+msgstr "Po nagraniu"
+
+msgid "standard"
+msgstr "zwykły"
+
+msgid "auto"
+msgstr "automatycznie"
+
+msgid "do nothing"
+msgstr "nie rób nic"
+
+msgid "go to standby"
+msgstr "czuwanie"
+
+msgid "go to deep standby"
+msgstr "głębokie czuwanie"
+
+msgid "Execute \"after event\" during timespan"
+msgstr "Wykonaj \"po nagraniu\" w przedziale czasowym"
+
+msgid "Begin of \"after event\" timespan"
+msgstr "Początek przedziału czasowego \"po nagraniu\""
+
+msgid "End of \"after event\" timespan"
+msgstr "Koniec przedziału czasowego \"po nagraniu\""
+
+msgid "Record a maximum of x times"
+msgstr "Nagrywaj maksymalnie x razy"
+
+msgid "Amount of recordings left"
+msgstr "Liczba pozostałych nagrań"
+
+msgid "Never"
+msgstr "Nigdy"
+
+msgid "Monthly"
+msgstr "Co miesiąc"
+
+msgid "Weekly (Sunday)"
+msgstr "Co tydzień (od niedzieli)"
+
+msgid "Weekly (Monday)"
+msgstr "Co tydzień (od poniedziałku)"
+
+msgid "Reset count"
+msgstr "Resetuj licznik"
+
+msgid "Require description to be unique"
+msgstr "Wymagaj unikalnego opisu"
+
+msgid "No"
+msgstr "Nie"
+
+msgid "On same service"
+msgstr "Na tym samym kanale"
+
+msgid "On any service"
+msgstr "Na dowolnym kanale"
+
+msgid "Any service/recording"
+msgstr "Dowolny kanał/nagranie"
+
+msgid "Use a custom location"
+msgstr "Użyj własnej lokalizacji"
+
+msgid "select Tags"
+msgstr "wybierz znaczniki"
+
+msgid "select Channels"
+msgstr "wybierz kanały"
+
+msgid "select Bouquets"
+msgstr "wybierz bukiety"
+
+msgid "Enable Filtering"
+msgstr "Włącz filtrowanie"
+
+msgid "Include"
+msgstr "Dołącz"
+
+msgid "Exclude"
+msgstr "Wyłącz"
+
+msgid "in Title"
+msgstr "w tytule"
+
+msgid "in Shortdescription"
+msgstr "w krótkim opisie"
+
+msgid "in Description"
+msgstr "w opisie"
+
+msgid "on Weekday"
+msgstr "w dzień powszedni"
+
+msgid "Weekend"
+msgstr "weekend"
+
+msgid "Weekday"
+msgstr "dzień powszedni"
+
+msgid "VPS"
+msgstr "VPS"
+
+msgid "VPS Overwrite"
+msgstr "Nadpisz VPS"
+
+msgid "Add"
+msgstr "Dodaj"
+
+msgid "Delete"
+msgstr "Usuń"
+
+msgid "Reload"
+msgstr "Przeładuj"
+
+msgid "Parse"
+msgstr "Przetwarzaj"
+
+msgid "Simulate"
+msgstr "Symuluj"
+
+# New Autotimer Setting Windows name (not enabled to transfer atm)
+msgid "AutoTimer Settings"
+msgstr "Ustawienia AutoTimer"
+
+msgid "AutoPoll"
+msgstr "AutoPoll"
+
+msgid "Interval (in h)"
+msgstr "Przerwa (w godz.)"
+
+msgid "Max Days"
+msgstr "Max dni"
+
+msgid "Try Guessing"
+msgstr "Próbuj zgadywania"
+
+msgid "Fastscan"
+msgstr "Szybkie skanowanie"
+
+msgid "Show in Extensionsmenu"
+msgstr "Pokaż w menu rozszerzeń"
+
+msgid "Disabled on Conflict"
+msgstr "Wyłącz w przypadku konfliktu"
+
+msgid "Add Similar on Conflict"
+msgstr "Dodaj podobne w przypadku konfliktu"
+
+msgid "Notify if Conflict"
+msgstr "Powiadom w przypadku konfliktu"
+
+msgid "Notify if Similar"
+msgstr "Powiadom gdy podobne"
+
+msgid "Add Autotimer to Tags"
+msgstr "Dodaj zadanie AutoTimer do tagów"
+
+msgid "Add Name to Tags"
+msgstr "Dodaj nazwę do tagów"
+
+msgid "None"
+msgstr "Żaden"
+
+msgid "Editor"
+msgstr "Edytor"
+
+msgid "Plain"
+msgstr "Prosty"
+
+msgid "Wizzard"
+msgstr "Kreator"
+
+msgid "Do you really want to delete the AT"
+msgstr "Czy na pewno chcesz usunąć zadanie"
+
+msgid "Label series"
+msgstr "Seria nazw"
+
+msgid "Enable Messages"
+msgstr "Włącz wiadmości"
+
+msgid "Delay Standby"
+msgstr "Opóźnienie czuwania"
+
+msgid "Interval (min.)"
+msgstr "Przetwa (min.)"
+
+msgid "Interval (sec.)"
+msgstr "Przerwa (sek.)"
+
+msgid "Afterevent"
+msgstr "Po zdarzeniu"
+
+msgid "Force"
+msgstr "Wymuś"
+
+msgid "Wakeup"
+msgstr "Obudź"
+
+msgid "Inherit Autotimer"
+msgstr "Dziedzić zadanie AutoTimer"
+
+msgid "Parse Autotimer"
+msgstr "Analizuje zadanie AutoTimer"
+
+msgid "Always"
+msgstr "Zawsze"
+
+msgid "Background only"
+msgstr "Tylko tło"
+
+msgid "Ask, default Yes"
+msgstr "Pytaj, domyślnie Tak"
+
+msgid "Ask, default No"
+msgstr "Pytaj, domyślnie Nie"
+
+msgid "Method"
+msgstr "Metoda"
+
+msgid "Visibly"
+msgstr "Widoczność"
+
+msgid "Picture in Picture"
+msgstr "Obraz w obrazie"
+
+msgid "Picture in Picture (hidden)"
+msgstr "Obraz w obrazie (ukryty)"
+
+msgid "Fake Recording"
+msgstr "Udawane nagranie"
+
+msgid "Refresh now"
+msgstr "Odśwież teraz"
+
+msgid "Add Provider as new Bouquet"
+msgstr "Dodaj nadawcę jako bukiet"
+
+msgid "Add channel(s) to Bouquet"
+msgstr "Dodaj kanał(y) do bukietu"
+
+msgid "Add channel(s) as alternate"
+msgstr "Dodaj kanał(y) jako alternatywny(e)"
+
+msgid "Export"
+msgstr "Eksportuj"
+
+msgid "Import"
+msgstr "Importuj"
+
+msgid "Add Bouquet"
+msgstr "Dodaj bukiet"
+
+msgid "Rename Bouquet"
+msgstr "Zmień nazwę bukietu"
+
+msgid "Delete Bouquet"
+msgstr "Usuń bukiet"
+
+msgid "Add Marker"
+msgstr "Dodaj znacznik"
+
+msgid "Rename"
+msgstr "Zmień nazwę"
+
+msgid "Delete Channel(s)"
+msgstr "Usuń kanał(y)"
+
+msgid "Do you really want to delete the channel(s)"
+msgstr "Czy na pewno chcesz usunąć kanał(y)"
+
+msgid "Do you really want to delete the bouquet"
+msgstr "Czy na pewno chcesz usunąć bukiet"
+
+msgid "Name of the Bouquet"
+msgstr "Nazwa bukietu"
+
+msgid "Name of the Marker"
+msgstr "Nazwa znacznika"
+
+msgid "Enter new name for the bouquet"
+msgstr "Podaj nową nazwę dla bukietu"
+
+msgid "Enter new name for the marker"
+msgstr "Podaj nową nazwę dla znacznika"
+
+msgid "Please enter filename"
+msgstr "Podaj nazwę pliku"
+
+msgid "Do you really want to restore from file"
+msgstr "Czy na pewno chcesz przywrócić z pliku"
+
+msgid "OpenWebif url: http://yourip:port"
+msgstr "Adres OpenWebif:  http://ip_tunera:port"
+
+msgid "OpenWebInterface Enabled"
+msgstr "Interfejs OpenWebif włączony"
+
+msgid "HTTP port"
+msgstr "Port HTTP"
+
+msgid "Enable HTTP Authentication"
+msgstr "Włącz uwierzytelnianie HTTP"
+
+msgid "Enable HTTPS"
+msgstr "Włącz dostęp przez HTTPS"
+
+msgid "HTTPS port"
+msgstr "Port HTTPS"
+
+msgid "Enable HTTPS Authentication"
+msgstr "Włącz uwierzytelnianie HTTPS"
+
+msgid "Require client cert for HTTPS"
+msgstr "Wymagaj certyfikatu klienta dla HTTPS"
+
+msgid "Enable Authentication for streaming"
+msgstr "Włącz uwierzytelnianie dla strumieniowania"
+
+msgid "Disable access for user root"
+msgstr "Zablokuj dostęp dla użytkownika root"
+
+msgid "Smart services renaming for XBMC"
+msgstr "Zmiana nazw kanałów dla XBMC"
+
+msgid "Enable Parental Control"
+msgstr "Włącz kontrolę rodzicielską"
+
+msgid "Add service name to stream information"
+msgstr "Dodaj nazwę kanału do info strumienia"
+
+msgid "Character encoding for EPG data"
+msgstr "Kodowanie znaków dla danych EPG"
+
+msgid "OpenWebif Configuration"
+msgstr "Konfiguracja OpenWebif"
+
+msgid "transcoded"
+msgstr "transkodowane"

@@ -1,49 +1,130 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2013-12-04 20:24+0100\n"
+"POT-Creation-Date: 2014-11-01 19:04+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Irkoff <irkoff@gmail.com>\n"
-"Language-Team: http://gisclub.tv <irkoff@gmail.com>\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: uk_UA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Poedit 1.5.5\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
 msgid "(shift + click for long pressure)"
-msgstr "(shift + кнопка=довге натискання)"
+msgstr "(shift + кнопка = довге натискання)"
 
 msgid "AGC"
-msgstr "AGC"
+msgstr "Рівень сигналу"
 
 msgid "About"
 msgstr "Про додаток"
 
+msgid "Add"
+msgstr "Додати"
+
+msgid "Add AutoTimer"
+msgstr "Додати Автотаймер"
+
+msgid "Add Bouquet"
+msgstr "Додати букет"
+
+msgid "Add Marker"
+msgstr "Додати маркер"
+
+msgid "Add Provider as new Bouquet"
+msgstr "Додати провайдера як новий букет"
+
 msgid "Add Timer"
 msgstr "Додати таймер"
 
+msgid "Add Zap Timer"
+msgstr "Додати таймер перемикання"
+
+msgid "Add channel(s) as alternate"
+msgstr "Додати канал(и) як альтернативу"
+
+msgid "Add channel(s) to Bouquet"
+msgstr "Додати канал(и) в букет"
+
 msgid "Add service name to stream information"
-msgstr "Додати ім'я сервісу до стриму"
+msgstr "Додати назву сервісу в інформацію стриму"
 
 msgid "After Event"
 msgstr "Після події"
 
+msgid "After event"
+msgstr "Після події"
+
+msgid "Afterevent"
+msgstr "Після події"
+
 msgid "All"
-msgstr "Все"
+msgstr "Всі"
 
 msgid "All Channels"
 msgstr "Всі канали"
 
+msgid "All Files of this Software are open source software;"
+msgstr "Всі файли даного ПЗ є відкритим вихідним кодом;"
+
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 2 "
+"as published by the Free Software Foundation."
+msgstr ""
+"Всі файли даного ПЗ є відкритим вихідним кодом; Ви можете розповсюджувати "
+"та / або змінювати його відповідно до умов GNU General Public License версии "
+"2, опублікованій Free Software Foundation."
+
+msgid "Always"
+msgstr "Завжди"
+
+msgid "Amount of recordings left"
+msgstr "Кількість решти записів"
+
+msgid "Answer is NO!"
+msgstr "Відповідь - ТАК!"
+
+msgid "Answer is YES!"
+msgstr "Відповідь - НІ!"
+
+msgid "Any service/recording"
+msgstr "Будь який сервіс/запись"
+
+msgid "April"
+msgstr "Квітень"
+
+msgid "Ask, default No"
+msgstr "Запитати, за замовчуванням - Так"
+
+msgid "Ask, default Yes"
+msgstr "Запитати, за замовчуванням - Ні"
+
+msgid "August"
+msgstr "Серпень"
+
 msgid "Authors"
-msgstr "Автор"
+msgstr "Автори"
 
 msgid "Auto"
 msgstr "Авто"
+
+msgid "AutoTimer"
+msgstr "Автотаймер"
+
+msgid "AutoTimer Edit"
+msgstr "Редактор Автотаймеру"
+
+msgid "AutoTimer List"
+msgstr "Список Автотаймерів"
+
+msgid "Autotimer Preview"
+msgstr "Превью Автотаймерів"
 
 msgid "BER"
 msgstr "BER"
@@ -51,26 +132,41 @@ msgstr "BER"
 msgid "Back"
 msgstr "Назад"
 
+msgid "Background only"
+msgstr "Тільки в фоні"
+
 msgid "Begin"
 msgstr "Початок"
 
+msgid "Begin of \"after event\" timespan"
+msgstr "Початок \"після події\" в проміжку часу"
+
+msgid "Begin of timespan"
+msgstr "Початок тимчасового проміжку"
+
+msgid "Bouquet Editor"
+msgstr "Редактор букетів"
+
+msgid "BouquetEditor"
+msgstr "Редактор букетів"
+
 msgid "Bouquets"
-msgstr "Фаворити"
+msgstr "Букети"
 
 msgid "Box"
 msgstr "Ресивер"
 
 msgid "Box Control"
-msgstr "Керування"
+msgstr "Управління"
 
 msgid "Box Info"
-msgstr "Інформація про ресивер"
+msgstr "Інформація про ресівер"
 
 msgid "Box Uptime"
 msgstr "Час роботи ресивера"
 
 msgid "Brand"
-msgstr "Бренд"
+msgstr "Марка"
 
 msgid "Cable"
 msgstr "Кабельний"
@@ -87,17 +183,26 @@ msgstr "Канал"
 msgid "Channels"
 msgstr "Канали"
 
+msgid "Character encoding for EPG data"
+msgstr "Тип кодування тексту для даних EPG"
+
 msgid "Chipset"
 msgstr "Процесор"
 
 msgid "Cleanup Timers"
 msgstr "Очистити список таймерів"
 
+msgid "Conflicting Timer(s) detected! %s"
+msgstr "Виявлено конфлікт таймера(ів)! %s"
+
 msgid "Contributors"
-msgstr "Автори"
+msgstr "Приймали участь"
 
 msgid "Control"
-msgstr "Контроль"
+msgstr "Управління"
+
+msgid "Could not add timer '%s'!"
+msgstr "Не вдалося додати таймер '%s'!"
 
 msgid "Current"
 msgstr "Поточний"
@@ -105,17 +210,38 @@ msgstr "Поточний"
 msgid "Current Event"
 msgstr "Поточна подія"
 
+msgid "Custom box name"
+msgstr "Ім'я користувача ресивера"
+
+msgid "Custom offset"
+msgstr "Користувальницьке зміщення"
+
 msgid "DHCP"
 msgstr "DHCP"
 
+msgid "December"
+msgstr "Грудень"
+
 msgid "Deep-Standby"
-msgstr "Вимкнення"
+msgstr "Глибокий режим очікування"
 
 msgid "Default"
 msgstr "За замовчуванням"
 
+msgid "Delay Standby"
+msgstr "Відкладене вимкнення"
+
+msgid "Delete"
+msgstr "Видалити"
+
+msgid "Delete Bouquet"
+msgstr "Видалити букет"
+
+msgid "Delete Channel(s)"
+msgstr "Видалити канал(и)"
+
 msgid "Delete Recording"
-msgstr "Видалити фільм"
+msgstr "Видалити запис"
 
 msgid "Delete Timer"
 msgstr "Видалити таймер"
@@ -124,10 +250,31 @@ msgid "Description"
 msgstr "Опис"
 
 msgid "Disable Timer"
-msgstr "Вимкнути таймер"
+msgstr "Відключити таймер"
+
+msgid "Disable access for user root"
+msgstr "Відключити доступ для користувача root"
+
+msgid "Distro"
+msgstr "Програмне забезпечення"
+
+msgid "Do you really want to delete the AT"
+msgstr "Ви дійсно хочете видалити АТ?"
+
+msgid "Do you really want to delete the bouquet"
+msgstr "Ви дійсно хочете видалити?"
+
+msgid "Do you really want to delete the channel(s)"
+msgstr "Ви дійсно хочете видалити канал(и)?"
+
+msgid "Do you really want to restore from file"
+msgstr "Ви дійсно хочете відновити з файлу?"
 
 msgid "Dolby"
 msgstr "Dolby"
+
+msgid "Done"
+msgstr "Готово"
 
 msgid "Download"
 msgstr "Завантажити"
@@ -135,26 +282,49 @@ msgstr "Завантажити"
 msgid "Download Playlist for"
 msgstr "Завантажити плейлист для"
 
+msgid "Driver date"
+msgstr "Дата драйверів"
+
 msgid "Duration"
 msgstr "Тривалість"
 
 msgid "E"
-msgstr "Вост."
+msgstr "E"
 
 msgid "EPG"
 msgstr "EPG"
+
+msgid "EPG encoding"
+msgstr "Декодування EPG"
+
+msgid "EPGRefresh"
+msgstr "Оновлення EPG"
+
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr ""
+"ПОМИЛКА: Не вдається встановити таймер сну, ресивер знаходиться в режимі "
+"очікування"
 
 msgid "Edit Timer"
 msgstr "Редагувати таймер"
 
 msgid "Enable Authentication for streaming"
-msgstr "Включити ідентифікацію для стріму"
+msgstr "Включити аутентифікацію для стрімінга"
+
+msgid "Enable Filtering"
+msgstr "Застосувати фільтрацію"
 
 msgid "Enable HTTP Authentication"
-msgstr "Включити HTTP ідентифікацію"
+msgstr "Застосувати HTTP аутентифікацію"
 
 msgid "Enable HTTPS"
-msgstr "Включити HTTPS"
+msgstr "Застосувати HTTPS"
+
+msgid "Enable HTTPS Authentication"
+msgstr "Застосувати HTTPS аутентифікацію"
+
+msgid "Enable Messages"
+msgstr "Включити повідомлення"
 
 msgid "Enable Parental Control"
 msgstr "Включити батьківський контроль"
@@ -169,34 +339,70 @@ msgid "Encrypted"
 msgstr "Кодування"
 
 msgid "End"
-msgstr "Кінец"
+msgstr "Закінчення"
+
+msgid "End of \"after event\" timespan"
+msgstr "Закінчення \"після події\" в проміжку часу"
+
+msgid "End of Timespan"
+msgstr "Кінець тимчасового проміжку"
+
+msgid "Enter new name for the bouquet"
+msgstr "Введіть нову назву букета"
+
+msgid "Enter new name for the marker"
+msgstr "Введіть нову назву маркера"
 
 msgid "Epg Search"
-msgstr "EPG-Пошук"
+msgstr "Пошук EPG"
 
 msgid "Error"
 msgstr "Помилка"
 
+msgid "EventId not found"
+msgstr "Id події не знайден"
+
 msgid "Every"
 msgstr "Кожен"
 
+msgid "Exclude"
+msgstr "Виключити"
+
+msgid "Execute \"after event\" during timespan"
+msgstr "Виконати \"після події\" в проміжку часу"
+
+msgid "Export"
+msgstr "Експорт"
+
 msgid "Extras"
-msgstr "Екстра"
+msgstr "Додатково"
+
+msgid "Fake Recording"
+msgstr "Імітація запису"
+
+msgid "February"
+msgstr "Лютий"
 
 msgid "Firmware version"
-msgstr "Версія іміджу"
+msgstr "версія ПЗ"
+
+msgid "Force"
+msgstr "Примусово"
 
 msgid "Fr"
-msgstr "Птн."
+msgstr "Пт"
 
 msgid "Free"
 msgstr "Вільно"
 
 msgid "Free Memory"
-msgstr "Вільно пам'яті"
+msgstr "Вільна пам'ять"
+
+msgid "Fri"
+msgstr "Пятн"
 
 msgid "Friday"
-msgstr "Пятниця"
+msgstr "П'ятниця"
 
 msgid "Frontprocessor Version"
 msgstr "Версія фронтпроцессора"
@@ -208,43 +414,94 @@ msgid "Grab Screenshot"
 msgstr "Зробити скріншот"
 
 msgid "Gui version"
-msgstr "Версія Е2"
+msgstr "Версія GUI"
+
+msgid "HTTP port"
+msgstr "Порт HTTP"
+
+msgid "HTTPS port"
+msgstr "Порт HTTPS"
 
 msgid "Hard disk model"
-msgstr "Модель HDD"
+msgstr "Модель жорсткого диска"
 
 msgid "Hide full remote"
-msgstr "Скрити пульт"
+msgstr "Приховати повний пульт"
 
 msgid "High Resolution"
 msgstr "Висока роздільна здатність"
 
-msgid "HTTP port"
-msgstr "Порт для HTTP"
-
-msgid "HTTPS port"
-msgstr "Порт для HTTPS"
+msgid "Hour"
+msgstr "Година"
 
 msgid "IP address"
-msgstr "IP-адреса"
+msgstr "IP адреса"
+
+msgid "IPv4-only Python/Twisted"
+msgstr "IPv4-тільки Python/Twisted"
+
+msgid "IPv4-only kernel"
+msgstr "IPv4-тільки ядро"
+
+msgid "IPv6 address(es)"
+msgstr "IPv6 адрес(и)"
+
+msgid "Import"
+msgstr "Імпорт"
+
+msgid "Include"
+msgstr "Додати"
+
+msgid "Infinite Instant recording started"
+msgstr "Запис без певного часу закінчення почалася"
 
 msgid "Infos"
 msgstr "Інформація"
 
+msgid "Inherit Autotimer"
+msgstr "Наслідувати Автотаймер"
+
 msgid "Instant Record"
-msgstr "Миттєвий запис"
+msgstr "Негайний запис"
+
+msgid "Instant record for current Event started"
+msgstr "Миттєва запис для поточної події почалася"
+
+msgid "Interval (min.)"
+msgstr "Інтервал (хв.)"
+
+msgid "Interval (sec.)"
+msgstr "Інтервал (сек.)"
+
+msgid "January"
+msgstr "Січень"
 
 msgid "Javascript Libraries"
-msgstr "Javascript-бібліотека"
+msgstr "Бібліотека Javascript"
+
+msgid "July"
+msgstr "Липень"
+
+msgid "June"
+msgstr "Червень"
 
 msgid "Just play"
-msgstr "Тільки програти"
+msgstr "Тільки відтворити"
 
 msgid "Kernel version"
-msgstr "Версія kernel"
+msgstr "Версія ядра"
+
+msgid "LCD4Linux Setup"
+msgstr "Налаштування LCD4Linux"
 
 msgid "LICENSE"
 msgstr "Ліцензія"
+
+msgid "Label series"
+msgstr "Відзначити групу"
+
+msgid "List of Timers has been cleaned"
+msgstr "Список таймерів був очищенний"
 
 msgid "Location"
 msgstr "Розташування"
@@ -253,31 +510,67 @@ msgid "Locked"
 msgstr "Заблоковано"
 
 msgid "MAC address"
-msgstr "Мак адреса"
+msgstr "MAC-адреса"
 
 msgid "Main"
 msgstr "Меню"
 
+msgid "March"
+msgstr "Березень"
+
+msgid "Match title"
+msgstr "Збіг назви"
+
+msgid "May"
+msgstr "Травень"
+
+msgid "Message sent successfully!"
+msgstr "Повідомлення успішно відправлено!"
+
+msgid "Method"
+msgstr "Метод"
+
+msgid "Minute"
+msgstr "Хвилина"
+
+msgid "Missing mandatory parameter '%s'"
+msgstr "Відсутній обов'язковий параметр '%s'"
+
+msgid "Missing requesteter: sRef"
+msgstr "Відсутній параметр регістра: sRef"
+
 msgid "Mo"
-msgstr "Пн."
+msgstr "Пн"
 
 msgid "Model"
 msgstr "Модель"
 
+msgid "Mon"
+msgstr "Пон"
+
 msgid "Monday"
 msgstr "Понеділок"
 
+msgid "Monthly"
+msgstr "Щомісяця"
+
 msgid "Movielist"
-msgstr "Список фільмів"
+msgstr "Список записів"
 
 msgid "Movies"
-msgstr "Фільми"
+msgstr "Записи"
 
 msgid "MultiEPG"
-msgstr "MultiEPG"
+msgstr "Мульти EPG"
 
 msgid "Name"
 msgstr "Ім'я"
+
+msgid "Name of the Bouquet"
+msgstr "Назва букету"
+
+msgid "Name of the Marker"
+msgstr "Назва маркеру"
 
 msgid "Namespace"
 msgstr "Простір назв"
@@ -285,35 +578,110 @@ msgstr "Простір назв"
 msgid "Network Interface"
 msgstr "Мережевий інтерфейс"
 
+msgid "Never"
+msgstr "Ніколи"
+
 msgid "New"
 msgstr "Новий"
+
+msgid "New Name"
+msgstr "Нова назва"
+
+msgid "No"
+msgstr "Ні"
+
+msgid "No answer in time"
+msgstr "Немає відповіді довгий час"
+
+msgid "No event found! Not recording!"
+msgstr "Не знайдена подія! Немає запису!"
+
+msgid "No matching Timer found"
+msgstr "Не знайден відповідний таймер"
+
+msgid "Not after"
+msgstr "Немає після"
+
+msgid "Not before"
+msgstr "Не раніше, ніж"
 
 msgid "Nothing"
 msgstr "Нічого"
 
 msgid "Nothing playing."
-msgstr "Нічого відігравати."
+msgstr "Нема чого відтворити."
+
+msgid "November"
+msgstr "Листопад"
+
+msgid "Now"
+msgstr "Зараз"
 
 msgid "OSD"
 msgstr "OSD"
 
+msgid "October"
+msgstr "Жовтень"
+
+msgid "Offset after recording (in m)"
+msgstr "Об'єднати після запису ( хв.)"
+
+msgid "Offset before recording (in m)"
+msgstr "Об'єднати перед записом (у хв.)"
+
+msgid "On"
+msgstr "Включено"
+
+msgid "On any service"
+msgstr "Для будь-якого сервісу"
+
+msgid "On same service"
+msgstr "Для цього сервісу"
+
+msgid "Only match during timespan"
+msgstr "Тільки збіг в проміжок часу"
+
 msgid "Open Source Web Interface for Linux set-top box"
-msgstr "Веб Інтерфейс Вашого ресивера"
+msgstr "Вэб-інтерфейс Вашого ресивера"
 
 msgid "OpenWebInterface Enabled"
-msgstr "Веб Інтерфейс включений"
+msgstr "Вэб-інтерфейс включений"
 
 msgid "OpenWebif Configuration"
-msgstr "Налаштування вебінтерфейса"
+msgstr "Налаштування OpenWebif"
 
 msgid "OpenWebif url: http://yourip:port"
-msgstr "OpenWebif-URL: http://IP ресивера:порт"
+msgstr "OpenWebif url: http://IP ресивера:порт"
+
+msgid "Override found with alternative service"
+msgstr "Скасувати використання з альтернативним сервісом"
+
+msgid "Parse"
+msgstr "Аналіз"
+
+msgid "Parse Autotimer"
+msgstr "Пошук збігів Автотаймера"
+
+msgid "Picture in Picture"
+msgstr "PIP"
+
+msgid "Picture in Picture (hidden)"
+msgstr "PIP (приховати)"
+
+msgid "Playback"
+msgstr "Відтворити"
 
 msgid "Playlist"
 msgstr "Плейлист"
 
+msgid "Please enter filename"
+msgstr "Будь ласка, введіть назву файлу"
+
 msgid "Power Control"
-msgstr "Живлення ресивера"
+msgstr "Управління живленням"
+
+msgid "PowerTimer feature not available"
+msgstr "Функції тамера живлення не доступні"
 
 msgid "Provider"
 msgstr "Провайдер"
@@ -324,38 +692,83 @@ msgstr "Провайдери"
 msgid "Radio"
 msgstr "Радіо канали"
 
+msgid "Really delete the recording"
+msgstr "Дійсно видалити запис?"
+
+msgid "Really delete the timer"
+msgstr "Дійсно видалити таймер?"
+
 msgid "Reboot Box"
-msgstr "Перезавантаження"
+msgstr "Перезавантажити ресивер"
+
+msgid "Record a maximum of x times"
+msgstr "Записати максимум x разів"
 
 msgid "Recording Status"
-msgstr "Стан запису"
+msgstr "Статус запису"
 
 msgid "Refresh"
-msgstr "Обновити"
+msgstr "Оновити"
+
+msgid "Refresh Timer"
+msgstr "Оновити таймер"
 
 msgid "Refresh automatically every"
 msgstr "Оновлювати автоматично кожні"
 
+msgid "Refresh now"
+msgstr "Оновити зараз"
+
+msgid "Reload"
+msgstr "Перезавантажити"
+
 msgid "Remote"
 msgstr "Пульт"
+
+msgid "Rename"
+msgstr "Перейменувати"
+
+msgid "Rename Bouquet"
+msgstr "Перейменувати букет"
+
+msgid "Rename Recording"
+msgstr "Перейменувати запис"
 
 msgid "Repeated"
 msgstr "Повторити"
 
+msgid "Require client cert for HTTPS"
+msgstr "Вимагати клієнтський сертифікат для HTTPS"
+
+msgid "Require description to be unique"
+msgstr "Потрібно, щоб опис був унікальним"
+
+msgid "Reset count"
+msgstr "Скидання лічильника"
+
 msgid "Restart GUI"
-msgstr "Рестарт Е2"
+msgstr "Рестарт GUI"
+
+msgid "Restrict to events on certain dates"
+msgstr "Обмежити подію в певні дати"
+
+msgid "Root"
+msgstr "Root"
 
 msgid "SNR"
 msgstr "SNR"
 
 msgid "Sa"
-msgstr "Сб."
+msgstr "Сб"
+
+msgid "Sat"
+msgstr "Суб"
 
 msgid "Satellites"
 msgstr "Супутники"
 
 msgid "Satfinder"
-msgstr "Рівень сигналу"
+msgstr "Пошук супутника"
 
 msgid "Saturday"
 msgstr "Субота"
@@ -370,76 +783,121 @@ msgid "Search"
 msgstr "Пошук"
 
 msgid "Search IMDb"
-msgstr "Пошук в IMDb"
+msgstr "Пошук у IMDb"
+
+msgid "Search strictness"
+msgstr "Суворий пошук"
+
+msgid "Search type"
+msgstr "Тип пошуку"
 
 msgid "Send Message"
-msgstr "Надіслати повідомлення"
+msgstr "Відправити повідомлення"
 
 msgid "Send a Message"
-msgstr "Надіслати повідомлення"
+msgstr "Відправити повідомлення"
+
+msgid "September"
+msgstr "Вересень"
 
 msgid "Service"
-msgstr "Канал"
+msgstr "Сервіс"
 
 msgid "Services"
-msgstr "Сервіс"
+msgstr "Сервіси"
+
+msgid "Set maximum duration"
+msgstr "Встановіть максимальну тривалість"
 
 msgid "Settings"
 msgstr "Налаштування"
 
 msgid "Show EPG for"
-msgstr "Показати ЕПГ для"
+msgstr "Показати EPG для"
 
 msgid "Show Full OpenWebif"
-msgstr "Показати повний OpenWebif"
+msgstr "Показати весь веб-інтерфейс"
+
+msgid "Show box name in header"
+msgstr "Показувати назву ресивера в заголовку"
 
 msgid "Show full remote"
-msgstr "Повний пульт"
+msgstr "Показати весь пульт"
 
 msgid "Shutdown"
 msgstr "Вимкнути"
 
+msgid "Simulate"
+msgstr "Імітувати"
+
 msgid "Site and sources"
-msgstr "Сайт і початковий код"
+msgstr "Сайт та вихідний код"
+
+msgid "SleepTimer feature not available"
+msgstr "Функції тамймера сну недоступні"
+
+msgid "Sleeptimer has been disabled"
+msgstr "Таймер сну був відключений"
+
+msgid "Sleeptimer is disabled"
+msgstr "Таймер сну відключений"
+
+msgid "Sleeptimer is enabled"
+msgstr "Таймер сну включений"
+
+msgid "Sleeptimer set to %d minutes"
+msgstr "Таймер сну встановлений %d хвилин"
 
 msgid "Smart services renaming for XBMC"
 msgstr "Перейменувати сервіси для XBMC"
 
 msgid "Software"
-msgstr "Софт"
+msgstr "ПЗ"
 
 msgid "Sorry this page is not yet implemented"
-msgstr "На жаль, ця сторінка не доступна"
+msgstr "Вибачте, ця сторінка недоступна"
 
 msgid "Standby"
 msgstr "Режим очікування"
 
 msgid "Standby Toggle"
-msgstr "Режим очікування"
+msgstr "Вкл/викл режиму очікування"
+
+msgid "Start"
+msgstr "Старт"
 
 msgid "Start Instant Record"
-msgstr "Почати запис"
+msgstr "Негайний запис"
+
+msgid "Start time is after end time"
+msgstr "Час початку після часу закінчення"
 
 msgid "Stream"
 msgstr "Стрім"
 
 msgid "Su"
-msgstr "Нд."
+msgstr "Нд"
 
 msgid "Subnet mask"
 msgstr "Маска підмережі"
 
 msgid "Subservices"
-msgstr "Підмережі"
+msgstr "Подсервіси"
+
+msgid "Sun"
+msgstr "Нед"
 
 msgid "Sunday"
 msgstr "Неділя"
 
+msgid "System OE"
+msgstr "Система OE"
+
 msgid "TV"
-msgstr "ТБ"
+msgstr "ТВ"
 
 msgid "TV Multi EPG"
-msgstr "ТБ-Multi-EPG"
+msgstr "ТВ Мульти EPG"
 
 msgid "Tags"
 msgstr "Теги"
@@ -448,28 +906,67 @@ msgid "Teletext"
 msgstr "Телетекст"
 
 msgid "Television"
-msgstr "ТБ канали"
+msgstr "ТВ канали"
 
 msgid "Template Engine"
 msgstr "Шаблон"
 
 msgid "Terrestrial"
-msgstr "Эфірний"
+msgstr "Ефірний"
 
 msgid "Text"
 msgstr "Текст"
 
 msgid "Th"
-msgstr "Чт."
+msgstr "Чт"
+
+msgid "The parameter '%s' can't be empty"
+msgstr "Параметр '%s' не може бути порожнім"
+
+msgid "The parameter 'command' must be a number"
+msgstr "Параметр 'command' повинен бути чисельним"
+
+msgid "The timer '%s' has been %s successfully"
+msgstr "Таймер '%s' був %s успішно"
+
+msgid "The timer '%s' has been deleted successfully"
+msgstr "Не вдалося знайти таймер '%s' з заданим часом початку та закінчення!"
+
+msgid "Thu"
+msgstr "Чтв"
 
 msgid "Thursday"
-msgstr "Четверг"
+msgstr "Четвер"
+
+msgid "Time"
+msgstr "Час"
 
 msgid "Timeout"
-msgstr "Таймаут"
+msgstr "Тайм-аут"
 
 msgid "Timer"
 msgstr "Таймер"
+
+msgid "Timer '%s' added"
+msgstr "Таймер '%s' доданий"
+
+msgid "Timer '%s' changed"
+msgstr "Таймер '%s' змінен"
+
+msgid "Timer '%s' not saved while Conflict"
+msgstr "Таймер '%s' не збережен через конфлікт"
+
+msgid "Timer added"
+msgstr "Таймер додано"
+
+msgid "Timer conflict detected! Not recording!"
+msgstr "Виявлено конфлікт таймеру! Немає запису!"
+
+msgid "Timer type"
+msgstr "Тип таймеру"
+
+msgid "TimerList has been saved"
+msgstr "Список таймерів був збережений"
 
 msgid "Timerlist"
 msgstr "Список таймерів"
@@ -483,14 +980,20 @@ msgstr "Заголовок"
 msgid "Total Memory"
 msgstr "Всього пам'яті"
 
+msgid "Translation to Spanish"
+msgstr "Переклад на іспанський"
+
 msgid "Tu"
-msgstr "Вівт."
+msgstr "Вт"
+
+msgid "Tue"
+msgstr "Вівт"
 
 msgid "Tuesday"
 msgstr "Вівторок"
 
 msgid "Tuner Bit Error Rate BER"
-msgstr "Bit Error Rate - BER"
+msgstr "BER тюнера"
 
 msgid "Tuner Number (0-3)"
 msgstr "Номер тюнера (0-3)"
@@ -499,25 +1002,43 @@ msgid "Tuner Signal"
 msgstr "Сигнал тюнера"
 
 msgid "Tuner Signal Power AGC"
-msgstr "AGC"
+msgstr "Рівень сигналу тюнера (AGC)"
 
 msgid "Tuner Signal Quality SNR"
-msgstr "SNR"
+msgstr "Якість сигналу тюнера (SNR)"
 
 msgid "Tuner Signal Quality SNR_DB"
-msgstr "SNR_DB"
+msgstr "Якість сигналу тюнера (SNR) у дБ"
 
 msgid "Tuner Type"
 msgstr "Тип тюнера"
 
 msgid "Tuners"
-msgstr "Тюнер"
+msgstr "Тюнери"
 
 msgid "Type"
 msgstr "Тип"
 
+msgid "Unknown Volume command %s"
+msgstr "Невідома команда гучності %s"
+
+msgid "Unknown command: '%s'"
+msgstr "Невідома команда: '%s'"
+
 msgid "Upcoming Events"
-msgstr "Майбутні події"
+msgstr "Наступні події"
+
+msgid "Use a custom location"
+msgstr "Використовуйте інше розташування"
+
+msgid "Use custom box name"
+msgstr "Використовувати ім'я користувача ресивера"
+
+msgid "VPS"
+msgstr "VPS"
+
+msgid "VPS Overwrite"
+msgstr "Переписати VPS"
 
 msgid "Version"
 msgstr "Версія"
@@ -529,40 +1050,103 @@ msgid "Video Height"
 msgstr "Висота відео"
 
 msgid "Video Wide"
-msgstr "Широкоекранне"
+msgstr "Розмір відео"
 
 msgid "Video Width"
 msgstr "Ширина відео"
 
+msgid "Visibly"
+msgstr "Видимий (режим ТВ)"
+
 msgid "Volume"
-msgstr "Рівень"
+msgstr "Гучність"
 
 msgid "Volume Control"
 msgstr "Гучність"
 
 msgid "W"
-msgstr "Захід"
+msgstr "W"
+
+msgid "Waiting for answer ..."
+msgstr "Очікування відповіді..."
+
+msgid "Wakeup"
+msgstr "Пробудження"
 
 msgid "Warning"
 msgstr "Увага"
 
 msgid "We"
-msgstr "Сер."
+msgstr "Ср"
+
+msgid "Wed"
+msgstr "Сер"
 
 msgid "Wednesday"
 msgstr "Середа"
 
+msgid "Weekday"
+msgstr "Будні"
+
+msgid "Weekend"
+msgstr "Вихідні"
+
+msgid "Weekly (Monday)"
+msgstr "Щотижня (понеділок)"
+
+msgid "Weekly (Sunday)"
+msgstr "Щотижня (неділя)"
+
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr "Невірний формат параметру 'set=%s'. Використовуйте set=set15 "
+
 msgid "Yes/No"
-msgstr "Так/Ні"
+msgstr "Так/ні"
 
 msgid "Zap"
-msgstr "Перемкнути"
+msgstr "Переключити"
 
 msgid "Zap to"
-msgstr "Перейти до"
+msgstr "Перейти до "
+
+msgid "Zapped to"
+msgstr "Перемкнуто на"
+
+msgid "auto"
+msgstr "авто"
+
+msgid "case-insensitive search"
+msgstr "пошук без урахування регістру"
+
+msgid "case-sensitive search"
+msgstr "пошук з урахуванням регістру"
+
+msgid "description match"
+msgstr "збіг опису"
+
+msgid "do nothing"
+msgstr "нічого не робити"
+
+msgid "exact match"
+msgstr "повний збіг"
 
 msgid "finished"
 msgstr "закінчено"
+
+msgid "go to deep standby"
+msgstr "вимкнути ресивер"
+
+msgid "go to standby"
+msgstr "перейти у сплячий режим"
+
+msgid "in Description"
+msgstr "в описі"
+
+msgid "in Shortdescription"
+msgstr "в короткому описі"
+
+msgid "in Title"
+msgstr "в заголовку"
 
 msgid "loading"
 msgstr "завантаження"
@@ -570,14 +1154,59 @@ msgstr "завантаження"
 msgid "no description available"
 msgstr "немає опису"
 
+msgid "none/IPv4-only network"
+msgstr "ні/IPv4-тільки мережа"
+
+msgid "on Weekday"
+msgstr "у будні"
+
+msgid "partial match"
+msgstr "частковий збіг"
+
+msgid "published by the Free Software Foundation."
+msgstr "опублікованій Free Software Foundation."
+
+msgid "record"
+msgstr "запись"
+
 msgid "running"
 msgstr "запущено"
 
 msgid "seconds"
-msgstr "секунд"
+msgstr "секунди"
+
+msgid "select Bouquets"
+msgstr "перемкнути букети"
+
+msgid "select Channels"
+msgstr "перемкнути канали"
+
+msgid "select Tags"
+msgstr "вибір тегів"
+
+msgid "standard"
+msgstr "стандарт"
+
+msgid "start match"
+msgstr "збіг початку"
+
+msgid "terms of the GNU General Public License version 2 as"
+msgstr "умовами GNU General Public License версії 2,"
+
+msgid "transcoded"
+msgstr "транскодування"
+
+msgid "type %s is not a number"
+msgstr "тип %s не чисельний"
 
 msgid "waiting"
-msgstr "очікування"
+msgstr "чекайте"
+
+msgid "you can redistribute it and/or modify it under the"
+msgstr "Ви можете розповсюджувати та / або змінювати його відповідно"
+
+msgid "zap"
+msgstr "перейти"
 
 msgid "zap before Stream"
-msgstr "Переключити перед стрімом"
+msgstr "перемикати перед стримом"

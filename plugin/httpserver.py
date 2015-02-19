@@ -122,7 +122,8 @@ def HttpdStart(session):
 		global listener
 		port = config.OpenWebif.port.value
 
-		root = buildRootTree(session)
+		temproot = buildRootTree(session)
+		root = temproot
 		if config.OpenWebif.auth.value == True:
 			root = AuthResource(session, root)
 		site = server.Site(root)
@@ -174,12 +175,17 @@ def HttpdStart(session):
 						)
 					ctx.load_verify_locations(CA_FILE)
 
+				sslroot = temproot
+				if config.OpenWebif.https_auth.value == True:
+					sslroot = AuthResource(session, sslroot)
+				sslsite = server.Site(sslroot)
+
 				if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
 					# use ipv6
-					listener.append( reactor.listenSSL(httpsPort, site, context, interface='::') )
+					listener.append( reactor.listenSSL(httpsPort, sslsite, context, interface='::') )
 				else:
 					# ipv4 only
-					listener.append( reactor.listenSSL(httpsPort, site, context) )
+					listener.append( reactor.listenSSL(httpsPort, sslsite, context) )
 				print "[OpenWebif] started on", httpsPort
 				BJregisterService('https',httpsPort)
 			except CannotListenError:
@@ -192,19 +198,18 @@ def HttpdStart(session):
 
 		#Streaming requires listening on 127.0.0.1:80
 		if port != 80:
-			if not isOriginalWebifInstalled():
-				try:
-					if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
-						# use ipv6
-						# Dear Twisted devs: Learning English, lesson 1 - interface != address
-						listener.append( reactor.listenTCP(80, site, interface='::1') )
-						listener.append( reactor.listenTCP(80, site, interface='::ffff:127.0.0.1') )
-					else:
-						# ipv4 only
-						listener.append( reactor.listenTCP(80, site, interface='127.0.0.1') )
-					print "[OpenWebif] started stream listening on port 80"
-				except CannotListenError:
-					print "[OpenWebif] port 80 busy"
+			try:
+				if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
+					# use ipv6
+					# Dear Twisted devs: Learning English, lesson 1 - interface != address
+					listener.append( reactor.listenTCP(80, site, interface='::1') )
+					listener.append( reactor.listenTCP(80, site, interface='::ffff:127.0.0.1') )
+				else:
+					# ipv4 only
+					listener.append( reactor.listenTCP(80, site, interface='127.0.0.1') )
+				print "[OpenWebif] started stream listening on port 80"
+			except CannotListenError:
+				print "[OpenWebif] port 80 busy"
 
 
 def HttpdStop(session):
@@ -235,7 +240,7 @@ class AuthResource(resource.Resource):
 		session = request.getSession().sessionNamespaces
 		host = request.getHost().host
 
-		if (host == "localhost" or host == "127.0.0.1" or host == "::ffff:127.0.0.1") and not config.OpenWebif.auth_for_streaming.value:
+		if ((host == "localhost" or host == "127.0.0.1" or host == "::ffff:127.0.0.1") and not config.OpenWebif.auth_for_streaming.value) or request.uri == "/web/getipv6":
 			return self.resource.getChildWithDefault(path, request)
 		if "logged" in session.keys() and session["logged"]:
 			return self.resource.getChildWithDefault(path, request)

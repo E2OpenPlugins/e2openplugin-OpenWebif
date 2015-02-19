@@ -52,12 +52,24 @@
 							<th colspan="2" class="infoHeader">$tstrings['software']</th>
 						</tr>
 						<tr>
-							<td class="infoleft">$tstrings['kernel_version']:</td>
-							<td class="inforight">$kernelver</td>
+							<td class="infoleft">$tstrings['oe_version']:</td>
+							<td class="inforight">$oever</td>
+						</tr>
+						<tr>
+							<td class="infoleft">$tstrings['distro_version']:</td>
+							<td class="inforight">$imagedistro</td>
 						</tr>
 						<tr>
 							<td class="infoleft">$tstrings['firmware_version']:</td>
 							<td class="inforight">$imagever</td>
+						</tr>
+						<tr>
+							<td class="infoleft">$tstrings['driver_date']:</td>
+							<td class="inforight">$driverdate</td>
+						</tr>
+						<tr>
+							<td class="infoleft">$tstrings['kernel_version']:</td>
+							<td class="inforight">$kernelver</td>
 						</tr>
 						<tr>
 							<td class="infoleft">$tstrings['gui_version']:</td>
@@ -90,7 +102,7 @@
 						</tr>
 						<tr>
 							<td class="infoleft">$tstrings['capacity']:</td>
-							<td class="inforight">$hd.capacity</td>
+							<td class="inforight">$hd.capacity ("$hd.labelled_capacity")</td>
 						</tr>
 						<tr>
 							<td class="infoleft">$tstrings['free']:</td>
@@ -113,7 +125,7 @@
 						</tr>
 						<tr>
 							<td class="infoleft">$tstrings['ip_address']:</td>
-							<td class="inforight">$iface.ip</td>
+							<td class="inforight">$iface.ip/$iface.v4prefix</td>
 						</tr>
 						<tr>
 							<td class="infoleft">$tstrings['subnet_mask']:</td>

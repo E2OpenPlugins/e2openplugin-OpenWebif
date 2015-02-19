@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-08-07 23:30+0100\n"
+"POT-Creation-Date: 2014-11-01 19:04+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -13,59 +13,82 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
-msgid "Cancel"
-msgstr "Abbrechen"
+msgid "Settings"
+msgstr "Einstellungen"
 
-msgid "Save"
-msgstr "Speichern"
+msgid "LCD4Linux Setup"
+msgstr "LCD4Linux-Einstellungen"
 
-msgid "OpenWebif url: http://yourip:port"
-msgstr "OpenWebif-URL: http://ip_des_receivers:port"
+msgid "AutoTimer"
+msgstr ""
 
-msgid "OpenWebInterface Enabled"
-msgstr "OpenWebinterface einschalten"
+msgid "BouquetEditor"
+msgstr "Bouquet-Editor"
 
-msgid "Show box name in header"
-msgstr "Boxnamen in der Kopfzeile anzeigen"
+msgid "EPGRefresh"
+msgstr ""
 
-msgid "Use custom box name"
-msgstr "Eigenen Boxnamen verwenden"
+msgid "IPv4-only kernel"
+msgstr "Kernel ohne IPv6-Unterstützung"
 
-msgid "Custom box name"
-msgstr "Eigener Boxname"
+msgid "IPv4-only Python/Twisted"
+msgstr "Python/Twisted ohne IPv6-Unterstützung"
 
-msgid "HTTP port"
-msgstr "Port für HTTP"
+msgid "none/IPv4-only network"
+msgstr "keine/reines IPv4-Netzwerk"
 
-msgid "Enable HTTP Authentication"
-msgstr "Authentifizierung für HTTP aktivieren"
+msgid "Message sent successfully!"
+msgstr "Nachricht erfolgreich verschickt!"
 
-msgid "Enable HTTPS"
-msgstr "Aktivierung von HTTPS"
+msgid "No answer in time"
+msgstr "Keine rechtzeitige Antwort"
 
-msgid "HTTPS port"
-msgstr "Port für HTTPS"
+msgid "Answer is YES!"
+msgstr "Antwort lautet JA!"
 
-msgid "Require client cert for HTTPS"
-msgstr "Erzwinge zertifikatbasierte Anmeldung"
+msgid "Answer is NO!"
+msgstr "Antwort lautet NEIN!"
 
-msgid "Enable Authentication for streaming"
-msgstr "Authentifizierung für Streaming aktivieren"
+msgid "New"
+msgstr "Neu"
 
-msgid "Disable access for user root"
-msgstr "Anmeldung als Benutzer root verbieten"
+msgid "Services"
+msgstr "Sender"
 
-msgid "Smart services renaming for XBMC"
-msgstr "Sendernamen für XBMC umbenennen"
+msgid "Cable"
+msgstr "Kabel"
 
-msgid "Enable Parental Control"
-msgstr "Kindersicherung aktivieren"
+msgid "Terrestrial"
+msgstr "Terrestrisch"
 
-msgid "Add service name to stream information"
-msgstr "Servicenamen zu den Streaminformationen hinzufügen"
+msgid "W"
+msgstr "W"
 
-msgid "OpenWebif Configuration"
-msgstr "OpenWebif-Konfiguration"
+msgid "E"
+msgstr "O"
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr "Der benötigte Parameter '%s' fehlt"
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr "Der Parameter '%s' darf nicht leer sein"
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr "Falsches Parameter-Format 'set=%s'. Korrekt: set=set15 "
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr "Unbekannter Befehl %s für die Lautstärkesteuerung"
+
+msgid "The parameter 'command' must be a number"
+msgstr "Der Parameter 'command' muss eine Zahl sein"
+
+#, python-format
+msgid "type %s is not a number"
+msgstr "der Typ %s ist keine Zahl"
 
 msgid "Mo"
 msgstr "Mo"
@@ -169,12 +192,6 @@ msgstr "Dezember"
 msgid "About"
 msgstr "Über"
 
-msgid "Timer List"
-msgstr "Timer-Liste"
-
-msgid "New Name"
-msgstr "Neuer Name"
-
 msgid "Add Timer"
 msgstr "Timer hinzufügen"
 
@@ -228,6 +245,9 @@ msgstr "Receiver-Laufzeit"
 
 msgid "Brand"
 msgstr "Marke"
+
+msgid "Cancel"
+msgstr "Abbrechen"
 
 msgid "Capacity"
 msgstr "Kapazität"
@@ -370,15 +390,6 @@ msgstr "Stunde"
 msgid "IP address"
 msgstr "IP-Adresse"
 
-msgid "IPv4-only kernel"
-msgstr "Kernel ohne IPv6-Unterstützung"
-
-msgid "none/IPv4-only network"
-msgstr "keine/reines IPv4-Netzwerk"
-
-msgid "IPv4-only Python/Twisted"
-msgstr "Python/Twisted ohne IPv6-Unterstützung"
-
 msgid "IPv6 address(es)"
 msgstr "IPv6-Adresse(n)"
 
@@ -460,6 +471,15 @@ msgstr "Ein"
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Open-Source-Webinterface für Linux-Set-Top-Boxen"
 
+msgid "Show box name in header"
+msgstr "Boxnamen in der Kopfzeile anzeigen"
+
+msgid "Use custom box name"
+msgstr "Eigenen Boxnamen verwenden"
+
+msgid "Custom box name"
+msgstr "Eigener Boxname"
+
 msgid "OSD"
 msgstr "OSD"
 
@@ -517,6 +537,9 @@ msgstr "Satelliten"
 msgid "Satfinder"
 msgstr "Satellitenfinder"
 
+msgid "Save"
+msgstr "Speichern"
+
 msgid "Screenshot"
 msgstr "Bildschirmfoto"
 
@@ -532,19 +555,16 @@ msgstr "Sekunden"
 msgid "Send Message"
 msgstr "Nachricht senden"
 
+msgid "Waiting for answer ..."
+msgstr "Erwarte Antwort ..."
+
 msgid "Send a Message"
 msgstr "Nachricht senden"
 
 msgid "Service"
 msgstr "Kanal"
 
-msgid "Settings"
-msgstr "Einstellungen"
-
 msgid "Bouquet Editor"
-msgstr "Bouquet-Editor"
-
-msgid "BouquetEditor"
 msgstr "Bouquet-Editor"
 
 msgid "(shift + click for long pressure)"
@@ -618,6 +638,9 @@ msgstr "Timer hinzugefügt"
 
 msgid "Timerlist"
 msgstr "Timerliste"
+
+msgid "New Name"
+msgstr "Neuer Name"
 
 msgid "Autotimer Preview"
 msgstr "AutoTimer-Vorschau"
@@ -759,6 +782,9 @@ msgstr "gesamter Titel"
 
 msgid "description match"
 msgstr "Übereinstimmung in der Beschreibung"
+
+msgid "start match"
+msgstr ""
 
 msgid "Search strictness"
 msgstr "Genauigkeit der Suche"
@@ -934,8 +960,120 @@ msgstr "Parsen"
 msgid "Simulate"
 msgstr "Simulieren"
 
+# New Autotimer Setting Windows name (not enabled to transfer atm)
+msgid "AutoTimer Settings"
+msgstr "Autotimer-Einstellungen"
+
+msgid "AutoPoll"
+msgstr "AutoPoll"
+
+msgid "Interval (in h)"
+msgstr "Intervall (in Std.)"
+
+msgid "Max Days"
+msgstr "Max. Anzahl Tage"
+
+msgid "Try Guessing"
+msgstr "Versuche zu raten"
+
+msgid "Fastscan"
+msgstr "Fastscan"
+
+msgid "Show in Extensionsmenu"
+msgstr "Im Erweiterungsmenü anzeigen"
+
+msgid "Disabled on Conflict"
+msgstr "Deaktiveren bei Konflikt"
+
+msgid "Add Similar on Conflict"
+msgstr "Bei Konflikt ähnliche Sendungen zufügen"
+
+msgid "Notify if Conflict"
+msgstr "Bei Konflikt benachrichtigen"
+
+msgid "Notify if Similar"
+msgstr "Bei ähnlicher Sendung benachrichtigen"
+
+msgid "Add Autotimer to Tags"
+msgstr "\"Autotimer\" als Markierung zufügen"
+
+msgid "Add Name to Tags"
+msgstr "Name als Markierung zufügen"
+
+msgid "None"
+msgstr "Nichts"
+
+msgid "Editor"
+msgstr "Editor"
+
+msgid "Plain"
+msgstr "Einfach"
+
+msgid "Wizzard"
+msgstr "Assistent"
+
 msgid "Do you really want to delete the AT"
 msgstr "Wollen Sie folgenden AutoTimer wirklich löschen"
+
+msgid "Label series"
+msgstr ""
+
+msgid "Enable Messages"
+msgstr "Nachrichten anzeigen"
+
+msgid "Delay Standby"
+msgstr "Standby-Verzögerung"
+
+msgid "Interval (min.)"
+msgstr "Intervall (Min.)"
+
+msgid "Interval (sec.)"
+msgstr "Intervall (Sek.)"
+
+msgid "Afterevent"
+msgstr ""
+
+msgid "Force"
+msgstr "Erzwingen"
+
+msgid "Wakeup"
+msgstr "Aufwecken"
+
+msgid "Inherit Autotimer"
+msgstr "Sender aus AutoTimern übernehmen"
+
+msgid "Parse Autotimer"
+msgstr "AutoTimer auswerten"
+
+msgid "Always"
+msgstr "Immer"
+
+msgid "Background only"
+msgstr "Nur im Hintergrund"
+
+msgid "Ask, default Yes"
+msgstr "Nachfrage mit Standard Ja"
+
+msgid "Ask, default No"
+msgstr "Nachfrage mit Standard Nein"
+
+msgid "Method"
+msgstr "Methode"
+
+msgid "Visibly"
+msgstr "Sichtbar"
+
+msgid "Picture in Picture"
+msgstr "Bild in Bild"
+
+msgid "Picture in Picture (hidden)"
+msgstr "Bild in Bild (versteckt)"
+
+msgid "Fake Recording"
+msgstr "Scheinaufnahme"
+
+msgid "Refresh now"
+msgstr "Jetzt auffrischen"
 
 msgid "Add Provider as new Bouquet"
 msgstr "Anbieter als neues Bouquet hinzufügen"
@@ -994,61 +1132,144 @@ msgstr "Bitte den Dateinamen angeben"
 msgid "Do you really want to restore from file"
 msgstr "Wollen Sie diese Datei wirklich importieren"
 
-msgid "LCD4Linux Setup"
-msgstr "LCD4Linux-Einstellungen"
+msgid "OpenWebif url: http://yourip:port"
+msgstr "OpenWebif-URL: http://ip_des_receivers:port"
 
-#, python-format
-msgid "Missing mandatory parameter '%s'"
-msgstr "Der benötigte Parameter '%s' fehlt"
+msgid "OpenWebInterface Enabled"
+msgstr "OpenWebinterface einschalten"
 
-#, python-format
-msgid "The parameter '%s' can't be empty"
-msgstr "Der Parameter '%s' darf nicht leer sein"
+msgid "HTTP port"
+msgstr "Port für HTTP"
 
-#, python-format
-msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr "Falsches Parameter-Format 'set=%s'. Korrekt: set=set15 "
+msgid "Enable HTTP Authentication"
+msgstr "Authentifizierung für HTTP aktivieren"
 
-#, python-format
-msgid "Unknown Volume command %s"
-msgstr "Unbekannter Befehl %s für die Lautstärkesteuerung"
+msgid "Enable HTTPS"
+msgstr "Aktivierung von HTTPS"
 
-msgid "The parameter 'command' must be a number"
-msgstr "Der Parameter 'command' muss eine Zahl sein"
+msgid "HTTPS port"
+msgstr "Port für HTTPS"
 
-#, python-format
-msgid "type %s is not a number"
-msgstr "der Typ %s ist keine Zahl"
+msgid "Enable HTTPS Authentication"
+msgstr "Authentifizierung für HTTPS aktivieren"
 
-msgid "New"
-msgstr "Neu"
+msgid "Require client cert for HTTPS"
+msgstr "Erzwinge zertifikatbasierte Anmeldung"
 
-msgid "Services"
-msgstr "Sender"
+msgid "Enable Authentication for streaming"
+msgstr "Authentifizierung für Streaming aktivieren"
 
-msgid "Cable"
-msgstr "Kabel"
+msgid "Disable access for user root"
+msgstr "Anmeldung als Benutzer root verbieten"
 
-msgid "Terrestrial"
-msgstr "Terrestrisch"
+msgid "Smart services renaming for XBMC"
+msgstr "Sendernamen für XBMC umbenennen"
 
-msgid "W"
-msgstr "W"
+msgid "Enable Parental Control"
+msgstr "Kindersicherung aktivieren"
 
-msgid "E"
-msgstr "O"
+msgid "Add service name to stream information"
+msgstr "Servicenamen zu den Streaminformationen hinzufügen"
 
-msgid "Message sent successfully!"
-msgstr "Nachricht erfolgreich verschickt!"
+msgid "Character encoding for EPG data"
+msgstr "Zeichenkodierung der EPG Daten"
 
-msgid "Waiting for answer ..."
-msgstr "Erwarte Antwort ..."
+msgid "OpenWebif Configuration"
+msgstr "OpenWebif-Konfiguration"
 
-msgid "No answer in time"
-msgstr "Keine rechtzeitige Antwort"
+msgid "transcoded"
+msgstr "transkodiert"
 
-msgid "Answer is YES!"
-msgstr "Antwort lautet JA!"
+msgid "System OE"
+msgstr "OE-System"
 
-msgid "Answer is NO!"
-msgstr "Antwort lautet NEIN!"
+msgid "Distro"
+msgstr "Distribution"
+
+msgid "Driver date"
+msgstr "Treiberversion"
+
+msgid "Conflicting Timer(s) detected! %s"
+msgstr "Timerkonflikt(e) gefunden! %s"
+
+msgid "Could not add timer '%s'!"
+msgstr "Timer '%s' konnte nicht zugefügt werden!"
+
+msgid "Timer '%s' added"
+msgstr "Timer '%s' zugefügt"
+
+msgid "EventId not found"
+msgstr "EventId nicht gefunden"
+
+msgid "Timer '%s' changed"
+msgstr "Timer '%s' geändert"
+
+msgid "Timer '%s' not saved while Conflict"
+msgstr "Timer '%s' wegen Konflikt nicht gespeichert"
+
+msgid "Could not find timer '%s' with given start and end time!"
+msgstr "Timer '%s' mit angegebener Start-/Endzeit nicht gefunden!"
+
+msgid "The timer '%s' has been deleted successfully"
+msgstr "Timer '%s' erfolgreich gelöscht"
+
+msgid "No matching Timer found"
+msgstr "Kein entsprechender Timer gefunden"
+
+msgid "The timer '%s' has been %s successfully"
+msgstr "Timer '%s' wurde erfolgreich %s"
+
+msgid "List of Timers has been cleaned"
+msgstr "Timerliste wurde aufgeräumt"
+
+msgid "TimerList has been saved"
+msgstr "Timerliste wurde gespeichert"
+
+msgid "No event found! Not recording!"
+msgstr "Keine Sendung gefunden! Keine Aufnahme!"
+
+msgid "Instant record for current Event started"
+msgstr "Sofortaufnahme für aktuelle Sendung gestartet"
+
+msgid "Infinite Instant recording started"
+msgstr "Unbegrenzte Sofortaufnahme gestartet"
+
+msgid "Timer conflict detected! Not recording!"
+msgstr "Timerkonflikt gefunden! Keine Aufnahme!"
+
+msgid "Missing requesteter: sRef"
+msgstr "Fehlende Angabe: sRef"
+
+msgid "Unknown command: '%s'"
+msgstr "Unbekanntes Kommando: '%s'"
+
+msgid "PowerTimer feature not available"
+msgstr "PowerTimer-Funktion nicht verfügbar"
+
+msgid "Sleeptimer is enabled"
+msgstr "SleepTimer aktiviert"
+
+msgid "Sleeptimer is disabled"
+msgstr "SleepTimer deaktiviert"
+
+msgid "SleepTimer feature not available"
+msgstr "SleepTimer-Funktion nicht verfügbar"
+
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr "FEHLER: SleepTimer im Standby nicht verfügbar"
+
+msgid "Sleeptimer has been disabled"
+msgstr "SleepTimer wurde deaktiviert"
+
+msgid "Sleeptimer set to %d minutes"
+msgstr "SleepTimer eingestellt auf %d Minuten"
+
+msgid "Safe mode"
+msgstr "Sicherheitsmodus"
+
+
+msgid "Close"
+msgstr "Schließen"
+
+msgid "Open in new window"
+msgstr "In neuem Fenster öffnen"

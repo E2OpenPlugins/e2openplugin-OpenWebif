@@ -8,9 +8,10 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
+import re, unicodedata
 from Tools.Directories import fileExists
 from Components.Sources.ServiceList import ServiceList
-from Components.ParentalControl import parentalControl, IMG_WHITESERVICE, IMG_WHITEBOUQUET, IMG_BLACKSERVICE, IMG_BLACKBOUQUET
+from Components.ParentalControl import parentalControl
 from Components.config import config
 from ServiceReference import ServiceReference
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
@@ -203,7 +204,16 @@ def getBouquets(stype):
 	serviceHandler = eServiceCenter.getInstance()
 	services = serviceHandler.list(eServiceReference('%s FROM BOUQUET "%s" ORDER BY bouquet'%(s_type, s_type2)))
 	bouquets = services and services.getContent("SN", True)
+	bouquets = removeHiddenBouquets(bouquets)
 	return { "bouquets": bouquets }
+
+def removeHiddenBouquets(bouquetList):
+	bouquets = []
+	for bouquet in bouquetList:
+		flags = int(bouquet[0].split(':')[1])
+		if not flags & eServiceReference.isInvisible:
+			bouquets.append(bouquet)
+	return bouquets
 
 def getProviders(stype):
 	s_type = service_types_tv
@@ -213,7 +223,6 @@ def getProviders(stype):
 	services = serviceHandler.list(eServiceReference('%s FROM PROVIDERS ORDER BY name'%(s_type)))
 	providers = services and services.getContent("SN", True)
 	return { "providers": providers }
-
 
 def getSatellites(stype):
 	ret = []
@@ -255,36 +264,55 @@ def getSatellites(stype):
 						h = _("E")
 					service_name = ("%d.%d" + h) % (orbpos / 10, orbpos % 10)
 			service.setName("%s - %s" % (service_name, service_type))
-			s = service.toString()
 			ret.append({
 				"service": service.toString(),
 				"name": service.getName()
 			})
-
+	ret = sortSatellites(ret)
 	return { "satellites": ret }
 
+def sortSatellites(satList):
+	import re
+	sortDict = {}
+	i = 0
+	for k in satList:
+		result = re.search("[(]\s*satellitePosition\s*==\s*(\d+)\s*[)]", k["service"], re.IGNORECASE)
+		if result is None:
+			return satList
+		orb = int(result.group(1))
+		if orb > 3600:
+			orb *= -1
+		elif orb > 1800:
+			orb -= 3600
+		if not orb in sortDict:
+			sortDict[orb] = []
+		sortDict[orb].append(i)
+		i += 1
+	outList = []
+	for l in sorted(sortDict.keys()):
+		for v in sortDict[l]:
+			outList.append(satList[v])
+	return outList
 
 def getProtection(sref):
 	isProtected = "0"
 	if config.ParentalControl.configured.value:
-		protection = parentalControl.getProtectionType(sref)
-		if protection[0]:
-			if protection[1] == IMG_BLACKSERVICE:
-				#(locked -S-)
-				isProtected = "1"
-			elif protection[1] == IMG_BLACKBOUQUET:
-				#(locked -B-)
-				isProtected = "2"
-			elif protection[1] == "":
-				# (locked)
-				isProtected = "3"
-		else:
-			if protection[1] == IMG_WHITESERVICE:
-				#(unlocked -S-)
-				isProtected = "4"
-			elif protection[1] == IMG_WHITEBOUQUET:
-				#(unlocked -B-)
-				isProtected = "5"
+		protection = parentalControl.getProtectionLevel(sref)
+		if protection:
+			if config.ParentalControl.type.value == "blacklist":
+				if parentalControl.blacklist.has_key(sref):
+					if "SERVICE" in parentalControl.blacklist.has_key(sref):
+						service['isprotected'] = '1'
+					elif "BOUQUET" in parentalControl.blacklist.has_key(sref):
+						service['isprotected'] = '2'
+					else:
+						service['isprotected'] = '3'
+			else:
+				if hasattr(ParentalControl, "whitelist") and parentalControl.whitelist.has_key(sref):
+					if "SERVICE" in parentalControl.whitelist.has_key(sref):
+						service['isprotected'] = '4'
+					elif "BOUQUET" in parentalControl.whitelist.has_key(sref):
+						service['isprotected'] = '5'
 	return isProtected
 
 def getChannels(idbouquet, stype):
@@ -327,10 +355,9 @@ def getChannels(idbouquet, stype):
 				chan['next_idp'] = "nextd" + str(idp)
 				idp += 1
 			ret.append(chan)
-
 	return { "channels": ret }
 
-def getServices(sRef, showAll = True ):
+def getServices(sRef, showAll = True, showHidden = False):
 	services = []
 
 	if sRef == "":
@@ -341,11 +368,11 @@ def getServices(sRef, showAll = True ):
 
 	for sitem in slist:
 		st = int(sitem[0].split(":")[1])
-		if not st & 512:	# 512 is hidden service on sifteam image. Doesn't affect other images
-			if showAll or st == 0: 
+		if not st & 512 or showHidden:
+			if showAll or st == 0:
 				service = {}
-				service['servicereference'] = sitem[0]
-				service['servicename'] = sitem[1]
+				service['servicereference'] = sitem[0].encode("utf8")
+				service['servicename'] = sitem[1].encode("utf8")
 				services.append(service)
 
 	return { "services": services }
@@ -438,16 +465,19 @@ def getEventDesc(ref, idev):
 
 def getEvent(ref, idev):
 	epgcache = eEPGCache.getInstance()
-	events = epgcache.lookupEvent(['BDTSENRX', (ref, 2, int(idev))])
+	events = epgcache.lookupEvent(['IBDTSENRX', (ref, 2, int(idev))])
 	info = {}
 	for event in events:
-		info['begin'] = event[0]
-		info['duration'] = event[1]
-		info['title'] = event[2]
-		info['shortdesc'] = event[3]
-		info['longdesc'] = event[4]
-		info['channel'] = event[5]
-		info['sref'] = event[6]
+		info['id'] = event[0]
+		info['begin_str'] = strftime("%H:%M", (localtime(event[1])))
+		info['begin'] = event[1]
+		info['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
+		info['duration'] = event[2]
+		info['title'] = filterName(event[3])
+		info['shortdesc'] = event[4]
+		info['longdesc'] = event[5]
+		info['channel'] = filterName(event[6])
+		info['sref'] = event[7]
 		break;
 	return { 'event': info }
 
@@ -618,9 +648,14 @@ def getNowNextEpg(ref, servicetype):
 
 	return { "events": ret, "result": True }
 
-def getSearchEpg(sstr):
+def getSearchEpg(sstr, endtime=None):
 	ret = []
 	ev = {}
+	if config.OpenWebif.epg_encoding.value != 'utf-8':
+		try:
+			sstr = sstr.encode(config.OpenWebif.epg_encoding.value)
+		except UnicodeEncodeError:
+			pass
 	epgcache = eEPGCache.getInstance()
 	events = epgcache.search(('IBDTSENR', 128, eEPGCache.PARTIAL_TITLE_SEARCH, sstr, 1));
 	if events is not None:
@@ -640,7 +675,12 @@ def getSearchEpg(sstr):
 			ev['sname'] = filterName(event[6])
 			ev['picon'] = getPicon(event[7])
 			ev['now_timestamp'] = None
-			ret.append(ev)
+			if endtime:
+				# don't show events if begin after endtime
+				if event[1] <= endtime:
+					ret.append(ev)
+			else:
+				ret.append(ev)
 
 	return { "events": ret, "result": True }
 
@@ -755,8 +795,9 @@ def getPicon(sname):
 		pos = sname.rfind(':')
 	else:
 		return "/images/default_picon.png"
-
+	cname = None
 	if pos != -1:
+		cname = ServiceReference(sname[:pos].rstrip(':')).getServiceName()
 		sname = sname[:pos].rstrip(':').replace(':','_') + ".png"
 	filename = getPiconPath() + sname
 	if fileExists(filename):
@@ -769,10 +810,19 @@ def getPicon(sname):
 		filename = getPiconPath() + sname
 		if fileExists(filename):
 			return "/picon/" + sname
+	if cname is not None: # picon by channel name
+		cname = unicodedata.normalize('NFKD', unicode(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
+		cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').lower())
+		if len(cname) > 0:
+			filename = getPiconPath() + cname + ".png"
+		if fileExists(filename):
+			return "/picon/" + cname + ".png"
+		if len(cname) > 2 and cname.endswith('hd') and fileExists(getPiconPath() + cname[:-2] + ".png"):
+			return "/picon/" + cname[:-2] + ".png"
 	return "/images/default_picon.png"
 
 def getParentalControlList():
-	if not config.ParentalControl.configured.value:
+	if config.ParentalControl.configured.value:
 		return {
 			"result": True,
 			"services": []
@@ -794,4 +844,20 @@ def getParentalControlList():
 		"result": True,
 		"type": config.ParentalControl.type.value,
 		"services": services
+	}
+
+def loadEpg():
+	epgcache = eEPGCache.getInstance()
+	epgcache.load()
+	return {
+		"result": True,
+		"message": ""
+	}
+
+def saveEpg():
+	epgcache = eEPGCache.getInstance()
+	epgcache.save()
+	return {
+		"result": True,
+		"message": ""
 	}

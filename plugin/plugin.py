@@ -22,7 +22,8 @@ from Screens.MessageBox import MessageBox
 from Components.ActionMap import ActionMap
 from Components.Label import Label
 from Components.ConfigList import ConfigListScreen
-from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText
+from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection
+from enigma import getDesktop
 
 from httpserver import HttpdStart, HttpdStop, HttpdRestart
 
@@ -43,16 +44,31 @@ config.OpenWebif.webcache.collapsedmenus = ConfigText(default = "remote", fixed_
 config.OpenWebif.webcache.remotegrabscreenshot = ConfigYesNo(default = True)
 config.OpenWebif.webcache.zapstream = ConfigYesNo(default = False)
 # HTTPS
-config.OpenWebif.https_enabled = ConfigYesNo(default=True)
+config.OpenWebif.https_enabled = ConfigYesNo(default=False)
 config.OpenWebif.https_port = ConfigInteger(default = 443, limits=(1, 65535) )
+config.OpenWebif.https_auth = ConfigYesNo(default=True)
 config.OpenWebif.https_clientcert = ConfigYesNo(default=False)
 # Parental Control currently disabled for testing
 config.OpenWebif.parentalenabled = ConfigYesNo(default=False)
 # Use service name for stream
-config.OpenWebif.service_name_for_stream = ConfigYesNo(default=False)
+config.OpenWebif.service_name_for_stream = ConfigYesNo(default=True)
 # authentication for streaming
 config.OpenWebif.auth_for_streaming = ConfigYesNo(default=False)
 config.OpenWebif.no_root_access = ConfigYesNo(default=False)
+# encoding of EPG data
+config.OpenWebif.epg_encoding = ConfigSelection(default = 'utf-8', choices = [ 'utf-8',
+										'iso-8859-15',
+										'iso-8859-1',
+										'iso-8859-2',
+										'iso-8859-3',
+										'iso-8859-4',
+										'iso-8859-5',
+										'iso-8859-6',
+										'iso-8859-7',
+										'iso-8859-8',
+										'iso-8859-9',
+										'iso-8859-10',
+										'iso-8859-16'])
 
 
 class OpenWebifConfig(Screen, ConfigListScreen):
@@ -100,6 +116,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			self.list.append(getConfigListEntry(_("Enable HTTPS"), config.OpenWebif.https_enabled))
 			if config.OpenWebif.https_enabled.value:
 				self.list.append(getConfigListEntry(_("HTTPS port"), config.OpenWebif.https_port))
+				self.list.append(getConfigListEntry(_("Enable HTTPS Authentication"), config.OpenWebif.https_auth))
 				self.list.append(getConfigListEntry(_("Require client cert for HTTPS"), config.OpenWebif.https_clientcert))
 			if config.OpenWebif.auth.value:
 				self.list.append(getConfigListEntry(_("Enable Authentication for streaming"), config.OpenWebif.auth_for_streaming))
@@ -107,6 +124,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			self.list.append(getConfigListEntry(_("Smart services renaming for XBMC"), config.OpenWebif.xbmcservices))
 			self.list.append(getConfigListEntry(_("Enable Parental Control"), config.OpenWebif.parentalenabled))
 			self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
+			self.list.append(getConfigListEntry(_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))
 
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
@@ -130,7 +148,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			config.OpenWebif.auth_for_streaming.value = False
 			config.OpenWebif.auth_for_streaming.save()
 
-		if not config.OpenWebif.https_enabled == True:
+		if not config.OpenWebif.https_enabled.value == True:
 			config.OpenWebif.https_clientcert.value = False
 			config.OpenWebif.https_clientcert.save()
 
@@ -159,6 +177,12 @@ def startSession(reason, session):
 	global_session = session
 
 def Plugins(**kwargs):
-	return [PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startSession),
-		PluginDescriptor(where=[PluginDescriptor.WHERE_NETWORKCONFIG_READ], fnc=IfUpIfDown),
-		PluginDescriptor(name="OpenWebif", description=_("OpenWebif Configuration"), icon="openwebif.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=confplug)]
+	screenwidth = getDesktop(0).size().width()
+	if screenwidth and screenwidth == 1920:
+		return [PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startSession),
+				PluginDescriptor(where=[PluginDescriptor.WHERE_NETWORKCONFIG_READ], fnc=IfUpIfDown),
+				PluginDescriptor(name="OpenWebif", description=_("OpenWebif Configuration"), icon="openwebifhd.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=confplug)]
+	else:
+		return [PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startSession),
+			    PluginDescriptor(where=[PluginDescriptor.WHERE_NETWORKCONFIG_READ], fnc=IfUpIfDown),
+				PluginDescriptor(name="OpenWebif", description=_("OpenWebif Configuration"), icon="openwebif.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=confplug)]

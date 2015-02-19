@@ -14,22 +14,37 @@ from Plugins.Extensions.OpenWebif.__init__ import _
 from Components.config import config
 
 from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStatus
-from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent
+from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState, getStandbyState
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
-from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer, getPowerTimer, setPowerTimer
+from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer, getPowerTimer, setPowerTimer, getVPSChannels
 from models.message import sendMessage, getMessageAnswer
-from models.movies import getMovieList, removeMovie, getMovieTags, moveMovie, renameMovie
+from models.movies import getMovieList, removeMovie, getMovieTags, moveMovie, renameMovie, getAllMovies
 from models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot, setZapStream, saveConfig, getZapStream
 from models.stream import getStream, getTS, getStreamSubservices
 from models.servicelist import reloadServicesLists
 from models.mediaplayer import mediaPlayerAdd, mediaPlayerRemove, mediaPlayerPlay, mediaPlayerCommand, mediaPlayerCurrent, mediaPlayerList, mediaPlayerLoad, mediaPlayerSave, mediaPlayerFindFile
 from models.plugins import reloadPlugins
 
+from fcntl import ioctl
 from base import BaseController
 from stream import StreamController
+import re
+
+def whoami(request):
+	port = config.OpenWebif.port.value
+	proto = 'http'
+	if request.isSecure():
+		port = config.OpenWebif.https_port.value
+		proto = 'https'
+	ourhost = request.getHeader('host')
+	m = re.match('.+\:(\d+)$', ourhost)
+	if m is not None:
+		port = m.group(1)
+	return {'proto':proto, 'port':port }
+
 
 class WebController(BaseController):
 	def __init__(self, session, path = ""):
@@ -143,6 +158,32 @@ class WebController(BaseController):
 			return setPowerState(self.session, request.args["newstate"][0])
 		return getStandbyState(self.session)
 
+	def P_supports_powerup_without_waking_tv(self, request):
+		try:
+			#returns 'True' if the image supports the function "Power on without TV":
+			f = open("/tmp/powerup_without_waking_tv.txt", "r")
+			powerupWithoutWakingTv = f.read()
+			f.close()
+			if ((powerupWithoutWakingTv == 'True') or (powerupWithoutWakingTv == 'False')):
+				return True
+			else:
+				return False
+		except:
+			return False
+
+	def P_set_powerup_without_waking_tv(self, request):
+		if self.P_supports_powerup_without_waking_tv(request):
+			try:
+				#write "True" to file so that the box will power on ONCE skipping the HDMI-CEC communication:
+				f = open("/tmp/powerup_without_waking_tv.txt", "w")
+				f.write('True')
+				f.close()
+				return True
+			except:
+				return False
+		else:
+			return False
+
 	def P_getlocations(self, request):
 		return getLocations()
 
@@ -168,8 +209,12 @@ class WebController(BaseController):
 			sRef = request.args["sRef"][0]
 		else:
 			sRef = ""
+		if "hidden" in request.args.keys():
+			hidden = request.args["hidden"][0] == "1"
+		else:
+			hidden = False
 		self.isGZ=True
-		return getServices(sRef)
+		return getServices(sRef, True, hidden)
 
 	def P_servicesm3u(self, request):
 		if "bRef" in request.args.keys():
@@ -263,6 +308,9 @@ class WebController(BaseController):
 			dirname = request.args["dirname"][0]
 		self.isGZ=True
 		return getMovieList(dirname, tag, request.args)
+	
+	def P_fullmovielist(self, request):
+		return getAllMovies()
 
 	def P_movielisthtml(self, request):
 		tag = None
@@ -287,7 +335,7 @@ class WebController(BaseController):
 
 		request.setHeader('Content-Type', 'application/text')
 		movielist = getMovieList(dirname, tag)
-		movielist["host"] = "%s:%s" % (request.getRequestHostname(), config.OpenWebif.port.value)
+		movielist["host"] = "%s://%s:%s" % (whoami(request)['proto'], request.getRequestHostname(), whoami(request)['port'])
 		return movielist
 
 	def P_movielistrss(self, request):
@@ -300,7 +348,7 @@ class WebController(BaseController):
 			dirname = request.args["dirname"][0]
 
 		movielist = getMovieList(dirname, tag)
-		movielist["host"] = "%s:%s" % (request.getRequestHostname(), config.OpenWebif.port.value)
+		movielist["host"] = "%s://%s:%s" % (whoami(request)['proto'], request.getRequestHostname(), whoami(request)['port'])
 		return movielist
 
 	def P_moviedelete(self, request):
@@ -356,6 +404,16 @@ class WebController(BaseController):
 			vpsplugin_time = int(float(request.args["vpsplugin_time"][0]))
 			if vpsplugin_time == -1:
 				vpsplugin_time = None
+		# partnerbox:
+		if "vps_pbox" in request.args:
+			vpsplugin_enabled = None
+			vpsplugin_overwrite = None
+			mode = request.args["vps_pbox"][0]
+			if "yes_safe" in mode:
+				vpsplugin_enabled = True
+			elif "yes" in mode:
+				vpsplugin_enabled = True
+				vpsplugin_overwrite = True
 		return { 
 			"vpsplugin_time":vpsplugin_time,
 			"vpsplugin_overwrite":vpsplugin_overwrite,
@@ -401,6 +459,21 @@ class WebController(BaseController):
 		if "description" in request.args.keys():
 			description = request.args["description"][0]
 
+		eit = 0
+		if "eit" in request.args.keys() and type(request.args["eit"][0]) is int:
+			eventid = request.args["eit"][0]
+		else:
+			from enigma import eEPGCache, eServiceReference
+			queryTime = int(request.args["begin"][0]) + (int(request.args["end"][0]) - int(request.args["begin"][0])) / 2
+			event = eEPGCache.getInstance().lookupEventTime(eServiceReference(request.args["sRef"][0]), queryTime)
+			eventid = event and event.getEventId()
+		if eventid is not None:
+			eit = int(eventid)
+
+		always_zap = -1
+		if "always_zap" in request.args.keys():
+			always_zap = int(request.args["always_zap"][0])
+
 		return addTimer(
 			self.session,
 			request.args["sRef"][0],
@@ -414,7 +487,10 @@ class WebController(BaseController):
 			dirname,
 			tags,
 			repeated,
-			self.vpsparams(request)
+			self.vpsparams(request),
+			None,
+			eit,
+			always_zap
 		)
 
 	def P_timeraddbyeventid(self, request):
@@ -442,6 +518,10 @@ class WebController(BaseController):
 				"message": "The parameter 'eventid' must be a number"
 			}
 
+		always_zap = -1
+		if "always_zap" in request.args.keys():
+			always_zap = int(request.args["always_zap"][0])
+
 		return addTimerByEventId(
 			self.session,
 			eventid,
@@ -449,7 +529,8 @@ class WebController(BaseController):
 			justplay,
 			dirname,
 			tags,
-			self.vpsparams(request)
+			self.vpsparams(request),
+			always_zap
 		)
 
 	def P_timerchange(self, request):
@@ -501,6 +582,10 @@ class WebController(BaseController):
 				"message": "The parameter 'endOld' must be a number"
 			}
 
+		always_zap = -1
+		if "always_zap" in request.args.keys():
+			always_zap = int(request.args["always_zap"][0])
+
 		return editTimer(
 			self.session,
 			request.args["sRef"][0],
@@ -517,7 +602,8 @@ class WebController(BaseController):
 			request.args["channelOld"][0],
 			beginOld,
 			endOld,
-			self.vpsparams(request)
+			self.vpsparams(request),
+			always_zap
 		)
 
 	def P_timertogglestatus(self, request):
@@ -571,6 +657,9 @@ class WebController(BaseController):
 	def P_timerlistwrite(self, request):
 		return writeTimerList(self.session)
 
+	def P_vpschannels(self, request):
+		return getVPSChannels(self.session)
+
 	def P_recordnow(self, request):
 		infinite = False
 		if "undefinitely" in request.args.keys() or "infinite" in request.args.keys():
@@ -582,6 +671,20 @@ class WebController(BaseController):
 
 	def P_deviceinfo(self, request):
 		return getInfo()
+
+	def P_getipv6(self, request):
+		request.setHeader("content-type", "text/html")
+		firstpublic = ''
+		info = getInfo()['ifaces']
+		for iface in info:
+			public = iface['firstpublic']
+			if public is not None:
+				firstpublic = public
+				break
+
+		return {
+			"firstpublic": firstpublic
+		}
 
 	def P_epgbouquet(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
@@ -646,8 +749,14 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["search"])
 		if res:
 			return res
+		endtime = None
+		if "endtime" in request.args.keys():
+			try:
+				endtime = int(request.args["endtime"][0])
+			except Exception, e:
+				pass
 		self.isGZ=True
-		return getSearchEpg(request.args["search"][0])
+		return getSearchEpg(request.args["search"][0], endtime)
 
 	def P_epgsearchrss(self, request):
 		res = self.testMandatoryArguments(request, ["search"])
@@ -915,7 +1024,7 @@ class WebController(BaseController):
 
 	def P_powertimer(self, request):
 		if len(request.args):
-			res = self.testMandatoryArguments(request, ["timertype", "repeated", "afterevent", "disabled"])
+			res = self.testMandatoryArguments(request, ["start","end","timertype", "repeated", "afterevent", "disabled"])
 			if res:
 				return res
 			return setPowerTimer(self.session, request)
@@ -997,3 +1106,9 @@ class WebController(BaseController):
 		if "stype" in request.args.keys():
 			stype = request.args["stype"][0]
 		return getSatellites(stype)
+
+	def P_saveepg(self, request):
+		return saveEpg()
+
+	def P_loadepg(self, request):
+		return loadEpg()

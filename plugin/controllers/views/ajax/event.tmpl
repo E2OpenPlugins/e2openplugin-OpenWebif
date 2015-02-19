@@ -1,20 +1,42 @@
 #from urllib import quote
 #from json import dumps
-#set $etime = time.localtime($event['begin'])
-#set $channel = $event['channel'].replace("'", r"\'")
+#set $etime = time.localtime($event.begin)
+#set $channel = $event.channel.replace("'", r"\'")
+#set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
 #from Plugins.Extensions.OpenWebif.local import tstrings
+
+<style>
+table { font-size:12px; font-family: Verdana,Arial,sans-serif;}
+tr {background-color: #F0F7FC;}
+
+.ti_icon {
+margin:5px 2px 0px 0px;
+height:25px;
+width:25px;
+background-image:url('../images/timer_icons.png');
+display:inline-block;
+}
+.ti_empty {background-position:0px 0px;}
+.ti_timer {background-position:-25px 0px;}
+.ti_timerplay {background-position:-50px 0px;}
+.ti_timeredit {background-position:-75px 0px;}
+.ti_timerdelete {background-position:-100px 0px;}
+.ti_timerat {background-position:-125px 0px;}
+.d_timer{display:none;}
+
+</style>
 
 <!-- Icons from: http://findicons.com/pack/1987/eico -->
 <div id="leftmenu_main">
-	<div id="leftmenu_top" class="handle" style="cursor:move">$event['channel']
+	<div id="leftmenu_top" class="handle" style="cursor:move">$channel
 		<div id="leftmenu_expander_main" class="leftmenu_icon leftmenu_icon_collapse" onclick="\$('#eventdescription').hide(200)"></div>
 	</div>
 	<div id="leftmenu_container_main" style="padding:6px">
 		<div style="float:left; width:80px;">
 			<div id="station" style="background-color: #1c478e; padding:2px; width:75px; text-align:center; overflow:hidden">$event['channel']</div>
 			<div style="background-color: #1c478e; color:#fff; width:79px; font-size:23px; margin-top: 5px; text-align:center">
-				$time.strftime("%H:%M", $etime)<br/>
-				<span style="font-size:12px; color:#A9D1FA">$int($event['duration']/60) min</span>
+				$event.begin_str<br/>
+				<span style="font-size:12px; color:#A9D1FA">$int($event.duration/60) min</span>
 			</div>
 
 			<div style="background-color: #1c478e; color:#fff; width:79px;margin:5px 0">
@@ -22,19 +44,37 @@
 				<div style="color:#A9D1FA; text-align:center">$time.strftime("%d", $etime) $tstrings[("month_" + ($time.strftime("%m", $etime)))]</div>
 			</div>
 
-			<div>
-			    <img src="/images/ico_timer.png" alt="$tstrings['add_timer']" title="$tstrings['add_timer']" style="cursor:pointer" onclick="addTimer(theevent)" />
-			    <img src="/images/ico_zap.png" alt="Zap" title="$tstrings['zap']" style="cursor:pointer" onclick="zapChannel('$str($event['sref'])', '$channel')" />
-				<a href="/web/stream.m3u?ref=$quote($event['sref'])&name=$quote($event['channel'])" target="_blank"><img 
-					src="/images/ico_stream2.png" alt="Stream $channel" title="$tstrings['stream'] $channel" style="cursor:pointer" /></a>
+			<div style="text-align:center">
+				
+				#if $transcoding
+<a href="#" onclick="jumper8001('$sref', '$channel');" title="$tstrings['stream']: $channel"><img src="../images/ico_stream.png" style="width:24px; height:22px; margin:0px 2px 0px 0px" border="0"></a>
+<a href="#" onclick="jumper8002('$sref', '$channel');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel"><img src="../images/ico_stream02.png" style="width:24px; height:22px; margin:5px 2px 0px 0px" border="0"></a>
+#else
+<a target="_blank" href='../web/stream.m3u?ref=$sref&name=$channel' title="$tstrings['stream'] $channel"><img src="../images/ico_stream.png" style="width:24px; height:22px; margin:5px 2px 0px 0px" border="0"></a>
+#end if
+				<br>
+			
+					<a href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']"><div class="ti_icon ti_timer"></div></a>
+					<a href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']"><div class="ti_icon ti_timerplay"></div></a>
+					<br>
+					<a href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']"><div class="ti_icon ti_timeredit"></div></a>
+					#if $at
+					<a class="at_timer" href="#" onclick="addAutoTimerEvent('$sref','$channel','$event.title','$event.begin_str','$event.end');return false;" title="$tstrings['add_autotimer']"><div class="ti_icon ti_timerat"></div></a>
+					#end if
+					<a class="d_timer" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']"><div class="ti_icon ti_timerdelete"></div></a>
+					<br>
+					<a target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)"><img src="../images/imdb.png" style="width:24px; height:24px; margin:0px 3px 0px 0px" title="$tstrings['search_imdb']" border="0"></a>
+					
+				<img src="../images/ico_zap.png" style="width:25px; height:25px; margin:5px 5px 0px 0px" alt="Zap" title="$tstrings['zap']" style="cursor:pointer" onclick="zapChannel('$str($event['sref'])', '$channel')" />
+			
 			</div>
 		</div>
 		<div style="float:left; width:250px; margin-left: 5px">
-			<div style="font-size: 13px; font-weight: bold">$event['title']</div>
-#if $event['title'] != $event['shortdesc']
-			<div style="font-size: 12px; font-weight: bold">$event['shortdesc']</div>
+			<div style="font-size: 13px; font-weight: bold">$event.title</div>
+#if $event.title != $event.shortdesc
+			<div style="font-size: 12px; font-weight: bold">$event.shortdesc</div>
 #end if
-			<div style="max-height:400px; overflow:auto"><p>$(event['longdesc'].replace("\n","<br/>"))</p></div>
+			<div style="max-height:400px; overflow:auto"><p>$(event.longdesc.replace("\n","<br/>"))</p></div>
 		</div>
 		<div style="clear:left"></div>
 	</div>

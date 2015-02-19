@@ -14,13 +14,13 @@ tr {background-color:#f0f7fc;}
 .dh20 { float:left;height:20px;}
 .dh14 { float:left;height:14px;}
 </style>
-<div style="width:680px;height:137px;background-image:url(/images/osd/osd_back.png);">
+<div style="width:680px;height:137px;background-image:url(images/osd/osd_back.png);">
 	<div style="float:left;width:120px;height:137px;">
 		<div class='d120' style="height:37px;">
 			<div style="position:relative;top:10px;left:18px;color:#FFF;font-size:13px;font-weight:bold;">$info.date</div>
 		</div>
 		<div class='d120' style="height:60px;">
-			<div style="position:relative;top:0px;left:15px;"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "/images/default_picon.png")' onclick="open_epg_pop('$info.ref');" href="#" title="$tstrings['show_epg_for'] $info.name" border="0" alt='' /></div>
+			<div style="position:relative;top:0px;left:15px;"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "images/default_picon.png")' onclick="open_epg_dialog('$info.ref','$info.name');" href="#" title="$tstrings['show_epg_for'] $info.name" border="0" alt='' /></div>
  		</div>
 		<div class='d120' style="height:40px;">
 			<div style="position:relative;top:8px;left:0px;color:#FFF;text-align:center;font-size:13px;font-weight:bold;">$info.provider</div>
@@ -28,7 +28,7 @@ tr {background-color:#f0f7fc;}
 	</div>
 	<div style="float:left;width:560px;height:137px;">
 		<div style="float:left;width:560px;height:25px;">
-			<div style="float:left;position:relative;top:5px;left:0px;width:480px;color:#FFF;text-align:center;font-size:18px;"><a style="color:#FFF" target="_blank" title="$tstrings['stream'] $getVar('now.title', '') from $info.name" href='/web/stream.m3u?ref=$info.ref&name=$info.name'>$info.name</a></div>
+			<div style="float:left;position:relative;top:5px;left:0px;width:480px;color:#FFF;text-align:center;font-size:18px;"><a style="color:#FFF" target="_blank" title="$tstrings['stream'] $getVar('now.title', '') from $info.name" href='web/stream.m3u?ref=$info.ref&name=$info.name'>$info.name</a></div>
 		</div>
 		<div style="float:left;width:560px;height:24px;">
 			<div class='dh24' style="width:70px;">
@@ -42,8 +42,8 @@ tr {background-color:#f0f7fc;}
 			</div>
 		</div>
 		<div style="float:left;width:560px;height:16px;">
-			<div style="float:left;position:relative;top:2px;left:15px;width:400px;height:14px;background-image:url(/images/osd/chan_bar_back.png);">
-				<div class='dh14' style="width:400px;"><img border='0' height='14px' width='${getVar("now.progress", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
+			<div style="float:left;position:relative;top:2px;left:15px;width:400px;height:14px;background-image:url(images/osd/chan_bar_back.png);">
+				<div class='dh14' style="width:400px;"><img border='0' height='14px' width='${getVar("now.progress", "0")}px' src='images/osd/chan_bar.png' alt='' /></div>
 			</div>
 		</div>
 		<div class='dh14' style="width:560px;">
@@ -65,8 +65,8 @@ tr {background-color:#f0f7fc;}
 				<div class='d14' style="float:left;top:6px;">Snr: $getVar("info.snr", "0") % </div>
 			</div>
 			<div class='dh20' style="width:100px;">
-				<div class='dh14' style="position:relative;top:8px;left:0px;width:100px;background-image:url(/images/osd/snr_bar_back.png);">
-					<div class='dh14' style="width:100px;"><img border='0' height='14px' width='${getVar("info.snr", "0")}px' src='/images/osd/chan_bar.png' alt='' /></div>
+				<div class='dh14' style="position:relative;top:8px;left:0px;width:100px;background-image:url(images/osd/snr_bar_back.png);">
+					<div class='dh14' style="width:100px;"><img border='0' height='14px' width='${getVar("info.snr", "0")}px' src='images/osd/chan_bar.png' alt='' /></div>
 				</div>
 			</div>
 			<div class='dh20' style="width:100px;">
@@ -151,7 +151,7 @@ tr {background-color:#f0f7fc;}
 	<tr>
 		<td>$tstrings['name']: $info.name</td>
 		<td>$tstrings['provider']: $info.provider</td>
-		<td>$tstrings['namespace']: $info.namespace</td>
+		<td id="ns" data-ns="$info.namespace">$tstrings['namespace']: $info.namespace</td>
 	</tr>
 	<tr>
 		<td>$tstrings['video_width']: $info.width</td>
@@ -166,17 +166,17 @@ tr {background-color:#f0f7fc;}
 	<tr>
 		<td>$tstrings['teletext']: $info.txtpid</td>
 		<td>$tstrings['rec_status']: $info.rec_state</td>
-		<td>Pmtpid: $info.pmtpid</td>
+		<td id="pmtpid" data-pmtpid="$info.pmtpid">Pmtpid: $info.pmtpid</td>
 	</tr>
 	<tr>
-		<td>Apid: $info.apid</td>
-		<td>Vpid: $info.vpid</td>
-		<td>Pcrpid: $info.pcrpid</td>
+		<td id="apid" data-apid="$info.apid">Apid: $info.apid</td>
+		<td id="vpid" data-vpid="$info.vpid">Vpid: $info.vpid</td>
+		<td id="pcrpid" data-pcrpid="$info.pcrpid">Pcrpid: $info.pcrpid</td>
 	</tr>
 	<tr>
-		<td>Tsid: $info.tsid</td>
-		<td>Onid: $info.onid</td>
-		<td>Sid: $info.sid</td>
+		<td id="tsid" data-tsid="$info.tsid">Tsid: $info.tsid </td>
+		<td id="onid" data-onid="$info.onid">Onid: $info.onid</td>
+		<td id="sid" data-sid="$info.sid">Sid: $info.sid</td>
 	</tr>
 	<tr>
 		<td>Sref: $info.sref</td>
@@ -213,3 +213,34 @@ tr {background-color:#f0f7fc;}
 		</td>
 	</tr>
 </table>
+<script type="text/javascript">
+#raw
+function PrintDH(i)
+{
+var result = "0000";
+if (i >= 0 && i <= 15) {result="000"+i.toString(16);}
+else if (i >= 16 && i <= 255) {result="00"+i.toString(16);}
+else if (i >= 256 && i <= 4095) {result="0"+i.toString(16);}
+else if (i >= 4096 && i <= 65535) {result=i.toString(16);}
+else {result=i.toString(16);}
+return " (" + result + ")";
+}
+var v = parseInt($("#pmtpid").data("pmtpid"));
+$("#pmtpid").html($("#pmtpid").html() + PrintDH(v));
+v = parseInt($("#apid").data("apid"));
+$("#apid").html($("#apid").html() + PrintDH(v));
+v = parseInt($("#vpid").data("vpid"));
+$("#vpid").html($("#vpid").html() + PrintDH(v));
+v = parseInt($("#pcrpid").data("pcrpid"));
+$("#pcrpid").html($("#pcrpid").html() + PrintDH(v));
+v = parseInt($("#tsid").data("tsid"));
+$("#tsid").html($("#tsid").html() + PrintDH(v));
+v = parseInt($("#onid").data("onid"));
+$("#onid").html($("#onid").html() + PrintDH(v));
+v = parseInt($("#sid").data("sid"));
+$("#sid").html($("#sid").html() + PrintDH(v));
+v = parseInt($("#ns").data("ns"));
+$("#ns").html($("#ns").html() + PrintDH(v));
+#end raw
+
+</script>
