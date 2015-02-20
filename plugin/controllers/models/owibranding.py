@@ -124,7 +124,18 @@ def getAllInfo():
 	if tpmloaded:
 		orgdream = tpm_check()
 	
-	if fileExists("/proc/stb/info/hwmodel"):
+	if fileExists("/etc/.box"):
+		distro = "HDMU"
+		f = open("/etc/.box",'r')
+		tempmodel = f.readline().strip().lower()
+		if tempmodel.startswith("ufs") or model.startswith("ufc"):
+			brand = "Kathrein"
+			model = tempmodel.upcase()
+		elif tempmodel.startswith("spark"):
+			brand = "Fulan"
+			model = tempmodel.title()
+		procmodel = tempmodel
+	elif fileExists("/proc/stb/info/hwmodel"):
 		brand = "DAGS"
 		f = open("/proc/stb/info/hwmodel",'r')
 		procmodel = f.readline().strip()
@@ -230,19 +241,6 @@ def getAllInfo():
 			model = "DM8000"
 		else:
 			model = procmodel
-
-	if fileExists("/etc/.box"):
-		distro = "HDMU"
-		f = open("/etc/.box",'r')
-		tempmodel = f.readline().strip().lower()
-		if tempmodel.startswith("ufs") or model.startswith("ufc"):
-			brand = "Kathrein"
-			model = tempmodel.upcase()
-			procmodel = tempmodel
-		elif tempmodel.startswith("spark"):
-			brand = "Fulan"
-			model = tempmodel.title()
-			procmodel = tempmodel
 
 	type = procmodel
 	if type in ("et9000", "et9200", "et9500"):
