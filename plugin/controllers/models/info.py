@@ -367,7 +367,7 @@ def getTranscodingSupport():
 	global STATICBOXINFO
 	if STATICBOXINFO is None:
 		getInfo()
-	if (STATICBOXINFO['model'] in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or STATICBOXINFO['machinebuild'] in ('inihdp', 'hd2400', 'et10000', 'xpeedlx3', 'ew7356', 'dags3', 'dags4')) and (os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TranscodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo'))):
+	if (STATICBOXINFO['model'] in ("Solo²", "vusolo²", "Duo²", "Solo SE", "hd2400", "Quad", "gbquad", "Quad Plus", "gbquadplus", "xpeedlx3") or STATICBOXINFO['machinebuild'] in ('inihdp', 'hd2400', 'et10000', 'xpeedlx3', 'ew7356', 'dags3', 'dags4')) and (os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TranscodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo'))):
 		return True
 	return False
 
