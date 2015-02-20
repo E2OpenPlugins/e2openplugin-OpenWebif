@@ -194,7 +194,7 @@ class AjaxController(BaseController):
 			try:
 				day = int(request.args["day"][0])
 				now = localtime()
-				begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day, 6, 0, 0, -1, -1, -1) )
+				begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day, 0, 0, 0, -1, -1, -1) )
 			except Exception, e:
 				pass
 
@@ -222,7 +222,7 @@ class AjaxController(BaseController):
 			try:
 				day = int(request.args["day"][0])
 				now = localtime()
-				begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day, 6, 0, 0, -1, -1, -1) )
+				begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day, 0, 0, 0, -1, -1, -1) )
 			except Exception, e:
 				pass
 

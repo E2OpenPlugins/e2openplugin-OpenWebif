@@ -490,7 +490,7 @@ class BouquetEditor(Source):
 			return returnValue
 			
 	def toggleLock(self, param):
-		if "configured" in config.ParentalControl.dict().keys() and not config.ParentalControl.configured.value:
+		if not config.ParentalControl.configured.value:
 			return (False, "Parent Control is not activated.")
 		sRef = None
 		if "sRef" in param:
@@ -522,7 +522,7 @@ class BouquetEditor(Source):
 		else:
 			serviceType = "Service"
 		if protection:
-			if "type" not in config.ParentalControl.dict().keys() or config.ParentalControl.type.value == LIST_BLACKLIST:
+			if config.ParentalControl.type.value == "blacklist":
 				if parentalControl.blacklist.has_key(sref):
 					if "SERVICE" in parentalControl.blacklist.has_key(sref):
 						protectionText = "Service %s is locked." % self.getName(cur_ref)
@@ -562,8 +562,8 @@ class BouquetEditor(Source):
 			files.append("/etc/tuxbox/cables.xml")
 			files.append("/etc/tuxbox/terrestrial.xml")
 			files.append("/etc/tuxbox/satellites.xml")
-			if "configured" not in config.ParentalControl.dict().keys() or config.ParentalControl.configured.value:
-				if "type" not in config.ParentalControl.dict().keys() or config.ParentalControl.type.value == LIST_BLACKLIST:
+			if config.ParentalControl.configured.value:
+				if config.ParentalControl.type.value == "blacklist":
 					files.append("/etc/enigma2/blacklist")
 				else:
 					files.append("/etc/enigma2/whitelist")

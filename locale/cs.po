@@ -517,7 +517,7 @@ msgid "Refresh automatically every"
 msgstr "Aktualizovat každých"
 
 msgid "Refresh Timer"
-msgstr "Aktualizovat časovač"
+msgstr "Aktualizovat"
 
 msgid "Remote"
 msgstr "Ovladač"
