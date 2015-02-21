@@ -128,13 +128,28 @@ def getAllInfo():
 		distro = "HDMU"
 		f = open("/etc/.box",'r')
 		tempmodel = f.readline().strip().lower()
+		f.close()
 		if tempmodel.startswith("ufs") or model.startswith("ufc"):
 			brand = "Kathrein"
-			model = tempmodel.upcase()
 		elif tempmodel.startswith("spark"):
 			brand = "Fulan"
-			model = tempmodel.title()
-		procmodel = tempmodel
+		model = tempmodel
+		if tempmodel.startswith("et"):
+			brand = "Xtrend"
+			f = open("/proc/stb/info/boxtype",'r')
+		elif fileExists("/proc/stb/info/azmodel"):
+			brand = "AZBox"
+			f = open("/proc/stb/info/model",'r')
+		elif fileExists("/proc/stb/info/gbmodel"):
+			brand = "GigaBlue"
+			f = open("/proc/stb/info/gbmodel",'r')
+			model = f.upper().replace("GBQUAD", "Quad").replace("PLUS", " Plus")
+		elif fileExists("/proc/stb/info/vumodel"):
+			brand = "Vu+"
+			f = open("/proc/stb/info/vumodel",'r')
+			model = f.readline().strip().title().replace("olose", "olo SE").replace("olo2se", "olo2 SE").replace("2", "²")
+		procmodel = f.readline().strip()
+		f.close()
 	elif fileExists("/proc/stb/info/hwmodel"):
 		brand = "DAGS"
 		f = open("/proc/stb/info/hwmodel",'r')
