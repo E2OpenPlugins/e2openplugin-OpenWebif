@@ -148,6 +148,9 @@ def getAllInfo():
 			brand = "Vu+"
 			f = open("/proc/stb/info/vumodel",'r')
 			model = f.readline().strip().title().replace("olose", "olo SE").replace("olo2se", "olo2 SE").replace("2", "²")
+		else:
+			brand = "HDMU"
+			f = open("/etc/.box",'r')
 		procmodel = f.readline().strip()
 		f.close()
 	elif fileExists("/proc/stb/info/hwmodel"):
