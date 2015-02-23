@@ -143,7 +143,8 @@ def getAllInfo():
 		elif fileExists("/proc/stb/info/gbmodel"):
 			brand = "GigaBlue"
 			f = open("/proc/stb/info/gbmodel",'r')
-			model = f.upper().replace("GBQUAD", "Quad").replace("PLUS", " Plus")
+			gb = f.readline().strip()
+			model = gb.upper().replace("GBQUAD", "Quad").replace("PLUS", " Plus")
 		elif fileExists("/proc/stb/info/vumodel"):
 			brand = "Vu+"
 			f = open("/proc/stb/info/vumodel",'r')
