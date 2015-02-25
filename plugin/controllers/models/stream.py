@@ -65,7 +65,7 @@ def getStream(session, request, m3ufile):
 			portNumber = request.args["port"][0]
 			
 	# INI use dynamic encoder allocation, and each stream can have diffrent parameters 
-	if machinebuild in ('inihdp', 'hd2400', 'et10000', 'ew7356'):
+	if machinebuild in ('inihdp', 'hd2400', 'et10000'):
 		transcoder_port = 8001
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
@@ -76,6 +76,13 @@ def getStream(session, request, m3ufile):
 				aspectratio = config.plugins.transcodingsetup.aspectratio.value
 				interlaced = config.plugins.transcodingsetup.interlaced.value
 				args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+	if machinebuild in ('ew7356'):
+		transcoder_port = 8001
+		if "device" in request.args :
+			if request.args["device"][0] == "phone" :
+				bitrate = config.plugins.transcodingsetup.bitrate.value
+				framrate = config.plugins.transcodingsetup.framerate.value
+				args = "?bitrate=%s" % (bitrate)
 
 	# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
 	if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != transcoder_port:
@@ -137,7 +144,7 @@ def getTS(self, request):
 			portNumber = request.args["port"][0]
 			
 		# INI use dynamic encoder allocation, and each stream can have diffrent parameters
-		if machinebuild in ('inihdp', 'hd2400', 'et10000', 'ew7356'):
+		if machinebuild in ('inihdp', 'hd2400', 'et10000'):
 			if request.args["device"][0] == "phone" :
 				portNumber = config.OpenWebif.streamport.value
 				bitrate = config.plugins.transcodingsetup.bitrate.value
@@ -147,6 +154,12 @@ def getTS(self, request):
 				aspectratio = config.plugins.transcodingsetup.aspectratio.value
 				interlaced = config.plugins.transcodingsetup.interlaced.value
 				args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+		elif machinebuild in ('ew7356'):
+			if request.args["device"][0] == "phone" :
+				portNumber = config.OpenWebif.streamport.value
+				bitrate = config.plugins.transcodingsetup.bitrate.value
+				framrate = config.plugins.transcodingsetup.framerate.value
+				args = "?bitrate=%s" % (bitrate)
 			else:
 				args = ""
 		else: # All other boxes which use transtreamproxy
