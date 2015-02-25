@@ -52,7 +52,7 @@ def getStream(session, request, m3ufile):
 	machinebuild = info["machinebuild"]
 	transcoder_port = None
 	args = ""
-	if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or machinebuild in ('dags3', 'dags4', 'ew7356'):
+	if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or machinebuild in ('dags3', 'dags4'):
 		try:
 			transcoder_port = int(config.plugins.transcodingsetup.port.value)
 		except StandardError:
@@ -76,6 +76,13 @@ def getStream(session, request, m3ufile):
 				aspectratio = config.plugins.transcodingsetup.aspectratio.value
 				interlaced = config.plugins.transcodingsetup.interlaced.value
 				args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+	if machinebuild in ('ew7356'):
+		transcoder_port = 8001
+		if "device" in request.args :
+			if request.args["device"][0] == "phone" :
+				bitrate = config.plugins.transcodingsetup.bitrate.value
+				framrate = config.plugins.transcodingsetup.framerate.value
+				args = "?bitrate=%s" % (bitrate)
 
 	# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
 	if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != transcoder_port:
@@ -124,6 +131,7 @@ def getTS(self, request):
 		model = info["model"]
 		machinebuild = info["machinebuild"]
 		transcoder_port = None
+		args = ""
 		if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus"):
 			try:
 				transcoder_port = int(config.plugins.transcodingsetup.port.value)
@@ -137,20 +145,24 @@ def getTS(self, request):
 			portNumber = request.args["port"][0]
 			
 		# INI use dynamic encoder allocation, and each stream can have diffrent parameters
-		if machinebuild in ('inihdp', 'hd2400', 'et10000', 'ew7356'):
-			if request.args["device"][0] == "phone" :
-				portNumber = config.OpenWebif.streamport.value
-				bitrate = config.plugins.transcodingsetup.bitrate.value
-				resolution = config.plugins.transcodingsetup.resolution.value
-				(width, height) = tuple(resolution.split('x'))
-				framrate = config.plugins.transcodingsetup.framerate.value
-				aspectratio = config.plugins.transcodingsetup.aspectratio.value
-				interlaced = config.plugins.transcodingsetup.interlaced.value
-				args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
-			else:
-				args = ""
-		else: # All other boxes which use transtreamproxy
-			args = ""
+		if machinebuild in ('inihdp', 'hd2400', 'et10000'):
+			if "device" in request.args :
+				if request.args["device"][0] == "phone" :
+					portNumber = config.OpenWebif.streamport.value
+					bitrate = config.plugins.transcodingsetup.bitrate.value
+					resolution = config.plugins.transcodingsetup.resolution.value
+					(width, height) = tuple(resolution.split('x'))
+					framrate = config.plugins.transcodingsetup.framerate.value
+					aspectratio = config.plugins.transcodingsetup.aspectratio.value
+					interlaced = config.plugins.transcodingsetup.interlaced.value
+					args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+		elif machinebuild in ('ew7356'):
+			if "device" in request.args :
+				if request.args["device"][0] == "phone" :
+					portNumber = config.OpenWebif.streamport.value
+					bitrate = config.plugins.transcodingsetup.bitrate.value
+					framrate = config.plugins.transcodingsetup.framerate.value
+					args = "?bitrate=%s" % (bitrate)
 
 		# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
 		if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != transcoder_port:
