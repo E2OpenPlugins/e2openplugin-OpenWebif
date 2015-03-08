@@ -1,0 +1,1287 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenWebif\n"
+"POT-Creation-Date: 2014-11-01 19:04+0100\n"
+"PO-Revision-Date: 2015-03-08 01:00+0100\n"
+"Last-Translator: lupine <a_ecklon@hotmail.com>\n"
+"Language-Team: \n"
+"Language: da_DK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ../plugin\n"
+
+msgid "Settings"
+msgstr "Indstillinger"
+
+msgid "LCD4Linux Setup"
+msgstr "LCD4Linux opsætning"
+
+msgid "AutoTimer"
+msgstr "AutoTimer"
+
+msgid "BouquetEditor"
+msgstr "Redigere Favoritlister"
+
+msgid "EPGRefresh"
+msgstr "EPGRefresh"
+
+msgid "IPv4-only kernel"
+msgstr "Kun IPv4 kernel"
+
+msgid "IPv4-only Python/Twisted"
+msgstr "Kun IPv4 Python/twisted"
+
+msgid "none/IPv4-only network"
+msgstr "ingen/IPv4-only network"
+
+msgid "Message sent successfully!"
+msgstr "Din besked er sendt"
+
+msgid "No answer in time"
+msgstr "Ingen svar i tide"
+
+msgid "Answer is YES!"
+msgstr "Svaret er ja!"
+
+msgid "Answer is NO!"
+msgstr "Svaret er nej!"
+
+msgid "New"
+msgstr "Ny"
+
+msgid "Services"
+msgstr "Tjenester"
+
+msgid "Cable"
+msgstr "Kabel-TV"
+
+msgid "Terrestrial"
+msgstr "Antenne-TV"
+
+msgid "W"
+msgstr "V"
+
+msgid "E"
+msgstr "Ø"
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr "Mangler obligatorisk parameter '%s'"
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr "Parameteren '%s' kan ikke være tom"
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr "Forkert parameterformatering 'set=%s'. Anvend set=set15 "
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr "Forkert Volumen kommando %s"
+
+msgid "The parameter 'command' must be a number"
+msgstr "Parameteren 'command' skal være numerisk"
+
+#, python-format
+msgid "type %s is not a number"
+msgstr "typen %s er ikke et ciffer"
+
+msgid "Mo"
+msgstr "Ma"
+
+msgid "Tu"
+msgstr "Ti"
+
+msgid "We"
+msgstr "On"
+
+msgid "Th"
+msgstr "To"
+
+msgid "Fr"
+msgstr "Fr"
+
+msgid "Sa"
+msgstr "Lø"
+
+msgid "Su"
+msgstr "Sø"
+
+msgid "Sun"
+msgstr "Søn"
+
+msgid "Mon"
+msgstr "Man"
+
+msgid "Tue"
+msgstr "Tir"
+
+msgid "Wed"
+msgstr "Ons"
+
+msgid "Thu"
+msgstr "Tor"
+
+msgid "Fri"
+msgstr "Fre"
+
+msgid "Sat"
+msgstr "Lør"
+
+msgid "Monday"
+msgstr "Mandag"
+
+msgid "Tuesday"
+msgstr "Tirsdag"
+
+msgid "Wednesday"
+msgstr "Onsdag"
+
+msgid "Thursday"
+msgstr "Torsdag"
+
+msgid "Friday"
+msgstr "Fredag"
+
+msgid "Saturday"
+msgstr "Lørdag"
+
+msgid "Sunday"
+msgstr "Søndag"
+
+msgid "January"
+msgstr "Januar"
+
+msgid "February"
+msgstr "Februar"
+
+msgid "March"
+msgstr "Marts"
+
+msgid "April"
+msgstr "April"
+
+msgid "May"
+msgstr "Maj"
+
+msgid "June"
+msgstr "Juni"
+
+msgid "July"
+msgstr "Juli"
+
+msgid "August"
+msgstr "August"
+
+msgid "September"
+msgstr "September"
+
+msgid "October"
+msgstr "Oktober"
+
+msgid "November"
+msgstr "November"
+
+msgid "December"
+msgstr "December"
+
+msgid "About"
+msgstr "Om"
+
+msgid "Add Timer"
+msgstr "Tilføj timer"
+
+msgid "Add AutoTimer"
+msgstr "Tilføj Autotimer"
+
+msgid "Add Zap Timer"
+msgstr "Tilføj zaptimer"
+
+msgid "After Event"
+msgstr "Efter aktiviteten"
+
+msgid "AGC"
+msgstr "AGC"
+
+msgid "All"
+msgstr "Alt"
+
+msgid "All Channels"
+msgstr "Alle kanaler"
+
+msgid "Authors"
+msgstr "Applikationsudviklere"
+
+msgid "Auto"
+msgstr "Automatisk"
+
+msgid "Back"
+msgstr "Tilbage"
+
+msgid "Begin"
+msgstr "Begynde"
+
+msgid "BER"
+msgstr "BER"
+
+msgid "Bouquets"
+msgstr "Favoritlister"
+
+msgid "Box Info"
+msgstr "Boxinfo"
+
+msgid "Box"
+msgstr "Box"
+
+msgid "Box Control"
+msgstr "Boxstyring"
+
+msgid "Box Uptime"
+msgstr "Boxens drifttid"
+
+msgid "Brand"
+msgstr "Mærke"
+
+msgid "Cancel"
+msgstr "Afbryd"
+
+msgid "Capacity"
+msgstr "Kapacitet"
+
+msgid "Channel"
+msgstr "Kanal"
+
+msgid "Channels"
+msgstr "Kanaler"
+
+msgid "Chipset"
+msgstr "Chipset"
+
+# There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
+msgid "Cleanup Timers"
+msgstr "Ryd timer"
+
+msgid "Contributors"
+msgstr "Andre som har bidraget"
+
+msgid "Control"
+msgstr "Kontrol"
+
+msgid "Current"
+msgstr "Igangværende"
+
+msgid "Current Event"
+msgstr "Igangværende aktivitet"
+
+msgid "Deep-Standby"
+msgstr "Dyb-standby"
+
+msgid "Default"
+msgstr "Standardværdi"
+
+msgid "Delete Recording"
+msgstr "Slet optagelse"
+
+msgid "Really delete the recording"
+msgstr "Vil du virkelig slette denne optagelse"
+
+msgid "Delete Timer"
+msgstr "Slet timer"
+
+msgid "Really delete the timer"
+msgstr "Vil du virkelig slette denne timer"
+
+msgid "Description"
+msgstr "Beskrivelse"
+
+msgid "DHCP"
+msgstr "DHCP"
+
+msgid "Disable Timer"
+msgstr "Sluk for timer"
+
+msgid "Dolby"
+msgstr "Dolby"
+
+msgid "Done"
+msgstr "Udført"
+
+msgid "Download"
+msgstr "Hent"
+
+msgid "Download Playlist for"
+msgstr "Hent spilleliste for"
+
+msgid "Duration"
+msgstr "Varighed"
+
+msgid "Edit Timer"
+msgstr "Rediger timer"
+
+msgid "Enable Timer"
+msgstr "Aktiver timer"
+
+msgid "Start"
+msgstr "Start"
+
+msgid "End"
+msgstr "Slut"
+
+msgid "Enabled"
+msgstr "Aktiveret"
+
+msgid "Encrypted"
+msgstr "Krypteret"
+
+msgid "EPG"
+msgstr "EPG"
+
+msgid "Epg Search"
+msgstr "Søg i EPG"
+
+msgid "Error"
+msgstr "Fejl"
+
+msgid "Every"
+msgstr "Hver"
+
+msgid "Extras"
+msgstr "Extrafunktioner"
+
+msgid "finished"
+msgstr "afsluttet"
+
+msgid "Firmware version"
+msgstr "Firmware version"
+
+msgid "Frontprocessor Version"
+msgstr "Frontprocessorversion"
+
+msgid "Free"
+msgstr "Ledig"
+
+msgid "Free Memory"
+msgstr "Ledig hukommelse"
+
+msgid "Gateway"
+msgstr "Gateway"
+
+msgid "Grab Screenshot"
+msgstr "Tag et screenshot"
+
+msgid "Gui version"
+msgstr "Gui version"
+
+msgid "Hide full remote"
+msgstr "Skjul fuld fjernbetjening"
+
+msgid "High Resolution"
+msgstr "Høj opløsning"
+
+msgid "Hard disk model"
+msgstr "Harddiskmodel"
+
+msgid "Hour"
+msgstr "Time"
+
+msgid "IP address"
+msgstr "IP adresse"
+
+msgid "IPv6 address(es)"
+msgstr "IPv6 adress(er)"
+
+msgid "Infos"
+msgstr "Information"
+
+msgid "Instant Record"
+msgstr "Direkte optagelse"
+
+msgid "Javascript Libraries"
+msgstr "Javascript biblioteker"
+
+msgid "Just play"
+msgstr "Afspil nu"
+
+msgid "Kernel version"
+msgstr "Kernel version"
+
+msgid "LICENSE"
+msgstr "LICENS"
+
+msgid "loading"
+msgstr "indlæser"
+
+msgid "Location"
+msgstr "Lokation"
+
+msgid "Locked"
+msgstr "Låst"
+
+msgid "MAC address"
+msgstr "MAC adresse"
+
+msgid "Main"
+msgstr "Hovedfunktioner"
+
+msgid "Minute"
+msgstr "Minut"
+
+msgid "Model"
+msgstr "Model"
+
+msgid "Movielist"
+msgstr "Filmliste"
+
+msgid "Movies"
+msgstr "Film"
+
+msgid "MultiEPG"
+msgstr "MultiEPG"
+
+msgid "Name"
+msgstr "Navn"
+
+msgid "Namespace"
+msgstr "Navnerum"
+
+msgid "Network Interface"
+msgstr "Netværkssnit"
+
+msgid "no description available"
+msgstr "ingen beskrivelse"
+
+msgid "Sorry this page is not yet implemented"
+msgstr "Beklager, denne side er endnu ikke implementeret"
+
+msgid "Nothing"
+msgstr "Intet"
+
+msgid "Nothing playing."
+msgstr "Intet afspilles lige nu"
+
+msgid "Now"
+msgstr "Nu"
+
+msgid "On"
+msgstr "Til"
+
+# The translation could have been sharper but as it has to fit in it’s frame this may be an acceptable compromise. I would have prefered: "Open Source webbgränssnitt för Linuxbaserade digitalboxar"...
+msgid "Open Source Web Interface for Linux set-top box"
+msgstr "Open Source Web Interface for Linux-set-top-boxe"
+
+msgid "Show box name in header"
+msgstr "Vise boxens navn i rubrikken"
+
+msgid "Use custom box name"
+msgstr "Anvende tilpasset boxnavn"
+
+msgid "Custom box name"
+msgstr "Tilpasset boxnavn"
+
+msgid "OSD"
+msgstr "OSD"
+
+msgid "Playback"
+msgstr "Afspilning"
+
+msgid "Playlist"
+msgstr "Afspilningsliste"
+
+msgid "Power Control"
+msgstr "Strømstyring"
+
+msgid "Provider"
+msgstr "Leverandør"
+
+msgid "Providers"
+msgstr "Leverandører"
+
+msgid "Radio"
+msgstr "Radio"
+
+msgid "Reboot Box"
+msgstr "Genstarte boxen"
+
+msgid "Recording Status"
+msgstr "Optagelsesstatus"
+
+msgid "Refresh"
+msgstr "Opdatere"
+
+msgid "Refresh automatically every"
+msgstr "Opdater automatisk hvert"
+
+msgid "Refresh Timer"
+msgstr "Opdaterings timer"
+
+msgid "Remote"
+msgstr "Fjernbetjening"
+
+msgid "Rename Recording"
+msgstr "Omdøb optagelse"
+
+msgid "Repeated"
+msgstr "Repeteret"
+
+# Have to use "GUI" because of limited space. I would prefere "Användargränssnitt" if space were without limits.
+msgid "Restart GUI"
+msgstr "Genstart GUI"
+
+msgid "running"
+msgstr "kører"
+
+msgid "Satellites"
+msgstr "Satelliter"
+
+msgid "Satfinder"
+msgstr "Satfinder"
+
+msgid "Save"
+msgstr "Gem"
+
+msgid "Screenshot"
+msgstr "Screenshot"
+
+msgid "Search"
+msgstr "Søg"
+
+msgid "Search IMDb"
+msgstr "Søg i IMDb"
+
+msgid "seconds"
+msgstr "sekunder"
+
+msgid "Send Message"
+msgstr "Send meddelse"
+
+msgid "Waiting for answer ..."
+msgstr "Venter på svar..."
+
+msgid "Send a Message"
+msgstr "Send en meddelse"
+
+# Översätts ofta Leverantör
+msgid "Service"
+msgstr "Distributør"
+
+msgid "Bouquet Editor"
+msgstr "Rediger favoritlister"
+
+msgid "(shift + click for long pressure)"
+msgstr "(shift + klik for langt knappetryk)"
+
+msgid "Show Full OpenWebif"
+msgstr "Vis fuldt OpenWebif"
+
+msgid "Show full remote"
+msgstr "Vis fuld fjernbetjening"
+
+msgid "Show EPG for"
+msgstr "Vis EPG for"
+
+msgid "Shutdown"
+msgstr "Luk ned"
+
+msgid "Site and sources"
+msgstr "Hjemmeside og kilder"
+
+msgid "SNR"
+msgstr "SNR"
+
+msgid "Software"
+msgstr "Software"
+
+msgid "Standby"
+msgstr "Standby"
+
+msgid "Standby Toggle"
+msgstr "Skifte standby tilstand"
+
+msgid "Start time is after end time"
+msgstr "Starttiden er efter sluttiden"
+
+msgid "Start Instant Record"
+msgstr "Start direkte optagelse"
+
+msgid "Stream"
+msgstr "Stream"
+
+msgid "Subnet mask"
+msgstr "Subnet maske"
+
+msgid "Subservices"
+msgstr "Underleverandører"
+
+msgid "Tags"
+msgstr "Etiketter"
+
+msgid "Teletext"
+msgstr "Tekst-TV"
+
+msgid "Television"
+msgstr "Television"
+
+msgid "Template Engine"
+msgstr "Webudviklingsværktøj"
+
+msgid "Text"
+msgstr "Tekst"
+
+msgid "Time"
+msgstr "Tid"
+
+msgid "Timeout"
+msgstr "Timeout"
+
+msgid "Timer added"
+msgstr "Timer tilføjet"
+
+msgid "Timerlist"
+msgstr "Timerliste"
+
+msgid "New Name"
+msgstr "Nyt navn"
+
+msgid "Autotimer Preview"
+msgstr "AutoTimer fårhandsvisning"
+
+msgid "Timer"
+msgstr "Timer"
+
+# There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
+msgid "Timers"
+msgstr "Timere"
+
+msgid "Title"
+msgstr "Titel"
+
+msgid "Total Memory"
+msgstr "Total hukommelse"
+
+msgid "Tuner Bit Error Rate BER"
+msgstr "Tunerens Bit Error frekvens BER"
+
+msgid "Tuner Number (0-3)"
+msgstr "Modtager nummer (0-3)"
+
+msgid "Tuner Signal"
+msgstr "Modtagerens signal"
+
+msgid "Tuner Signal Quality SNR"
+msgstr "Modtagerens signalkvalitet SNR"
+
+msgid "Tuner Signal Quality SNR_DB"
+msgstr "Modtagerens signalkvalitet SNR_DB"
+
+msgid "Tuner Signal Power AGC"
+msgstr "Modtagerens signalstyrke AGC"
+
+msgid "Tuner Type"
+msgstr "Modtagertype"
+
+msgid "Tuners"
+msgstr "Modtagere"
+
+msgid "TV"
+msgstr "TV"
+
+msgid "TV Multi EPG"
+msgstr "TV Multi EPG"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Upcoming Events"
+msgstr "Kommende begivenheder"
+
+msgid "Version"
+msgstr "Version"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Video Height"
+msgstr "Billedhøjde"
+
+msgid "Video Wide"
+msgstr "Bredt billede"
+
+msgid "Video Width"
+msgstr "Billedbredde"
+
+msgid "Volume"
+msgstr "Lydstyrke"
+
+msgid "Volume Control"
+msgstr "Lydstyrkekontrol"
+
+msgid "waiting"
+msgstr "venter"
+
+msgid "Warning"
+msgstr "Advarsel"
+
+msgid "Yes/No"
+msgstr "Ja/Nej"
+
+msgid "Zap"
+msgstr "Zap"
+
+msgid "zap before Stream"
+msgstr "Zap før stream"
+
+msgid "Zap to"
+msgstr "Zap til"
+
+msgid "Zapped to"
+msgstr "Zappede til"
+
+msgid "Translation to Spanish"
+msgstr "Oversættelse til spansk"
+
+# Not translating licence information
+msgid "All Files of this Software are open source software;"
+msgstr "Alle filer i denne software er open source software"
+
+# Not translating licence information
+msgid "you can redistribute it and/or modify it under the"
+msgstr "du kan gengive det og/eller ændre det under de"
+
+# Not translating licence information
+msgid "terms of the GNU General Public License version 2 as"
+msgstr "regler for GNU General Public License version 2 der er"
+
+# Not translating licence information
+msgid "published by the Free Software Foundation."
+msgstr "udgivet af the Free Software Foundation"
+
+# Not translating licence information
+msgid ""
+"All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software "
+"Foundation."
+msgstr "Alle filer i denne software er open source software, du kan gengive det og eller ændre under de regler for GNU General Public License version 2 der er udgivet af the Free Software Foundation"
+
+msgid "Root"
+msgstr "Root"
+
+msgid "AutoTimer List"
+msgstr "AutoTimer liste"
+
+msgid "AutoTimer Edit"
+msgstr "Rediger AutoTimer"
+
+msgid "Match title"
+msgstr "Match tittelen"
+
+msgid "EPG encoding"
+msgstr "EPG kodning"
+
+msgid "Search type"
+msgstr "Søgetype"
+
+msgid "partial match"
+msgstr "ufuldstændig match"
+
+msgid "exact match"
+msgstr "Exact match"
+
+msgid "description match"
+msgstr "beskrivelse af match"
+
+msgid "start match"
+msgstr "start match"
+
+msgid "Search strictness"
+msgstr "Søgestyrke"
+
+msgid "case-sensitive search"
+msgstr "Søgning som skelner imellem store og små bogstaver"
+
+msgid "case-insensitive search"
+msgstr "Søgning som ikke skelner imellem store og små bogstaver"
+
+msgid "Timer type"
+msgstr "Timertype"
+
+msgid "record"
+msgstr "optag"
+
+msgid "zap"
+msgstr "zap"
+
+# One extra space inserted in front for better readability in context.
+msgid "Override found with alternative service"
+msgstr "Gennemtving alternativ distributør over det fundne"
+
+msgid "Only match during timespan"
+msgstr "Match kun indenfor tidsrum"
+
+msgid "Begin of timespan"
+msgstr "Tidsrummets begyndelse"
+
+msgid "End of Timespan"
+msgstr "Tidsrummets slutning"
+
+msgid "Restrict to events on certain dates"
+msgstr "Begræns til begivenheder på specifikke datoer"
+
+msgid "Not after"
+msgstr "Ikke efter"
+
+msgid "Not before"
+msgstr "Ikke før"
+
+msgid "Custom offset"
+msgstr "Afpasset tidsafgrænsning"
+
+msgid "Offset before recording (in m)"
+msgstr "Afgrænsning før optagelse (i min)"
+
+msgid "Offset after recording (in m)"
+msgstr "Afgrænsning efter optagelse (i min)"
+
+msgid "Set maximum duration"
+msgstr "Indstil maksimal varighed (i min)"
+
+msgid "After event"
+msgstr "Efter begivenheden"
+
+msgid "standard"
+msgstr "standard"
+
+msgid "auto"
+msgstr "automatisk"
+
+msgid "do nothing"
+msgstr "gør ingenting"
+
+msgid "go to standby"
+msgstr "gå i standby"
+
+msgid "go to deep standby"
+msgstr "gå i dyb standby"
+
+msgid "Execute \"after event\" during timespan"
+msgstr "Udfør \"efter begivenhed\" i tidsperioden"
+
+msgid "Begin of \"after event\" timespan"
+msgstr "Begynd \"efter begivenhed\" i tidsperioden"
+
+msgid "End of \"after event\" timespan"
+msgstr "Afslutning på \"efter begivenhed\" i tidsperioden"
+
+msgid "Record a maximum of x times"
+msgstr "Optag maksimalt x gange"
+
+msgid "Amount of recordings left"
+msgstr "Antal optagelser tilbage"
+
+msgid "Never"
+msgstr "Aldrig"
+
+msgid "Monthly"
+msgstr "Månedsvis"
+
+msgid "Weekly (Sunday)"
+msgstr "Ugentligt (søndag)"
+
+msgid "Weekly (Monday)"
+msgstr "Ugentligt (mandag)"
+
+msgid "Reset count"
+msgstr "Nulstil tæller"
+
+msgid "Require description to be unique"
+msgstr "En unik beskrivelse er krævet"
+
+msgid "No"
+msgstr "Nej"
+
+msgid "On same service"
+msgstr "Ved samme distributør"
+
+msgid "On any service"
+msgstr "På en valgfri distrubtør"
+
+msgid "Any service/recording"
+msgstr "Valgfri distributør/optagelse"
+
+msgid "Use a custom location"
+msgstr "Anvend en tilpasset lokation"
+
+msgid "select Tags"
+msgstr "Vælg etiketter"
+
+msgid "select Channels"
+msgstr "Vælg kanaler"
+
+msgid "select Bouquets"
+msgstr "Vælg favoritlister"
+
+msgid "Enable Filtering"
+msgstr "Slå filtrering til"
+
+msgid "Include"
+msgstr "Inkluder"
+
+msgid "Exclude"
+msgstr "Ekskluder"
+
+msgid "in Title"
+msgstr "i tittelen"
+
+msgid "in Shortdescription"
+msgstr "i kortfattet beskrivelse"
+
+msgid "in Description"
+msgstr "i beskrivelsen"
+
+msgid "on Weekday"
+msgstr "på ugedage"
+
+msgid "Weekend"
+msgstr "Weekend"
+
+msgid "Weekday"
+msgstr "Ugedag"
+
+msgid "VPS"
+msgstr "VPS"
+
+msgid "VPS Overwrite"
+msgstr "Overskriv VPS"
+
+msgid "Add"
+msgstr "Tilføj"
+
+msgid "Delete"
+msgstr "Slet"
+
+msgid "Reload"
+msgstr "Genindlæs"
+
+msgid "Parse"
+msgstr "Analyser"
+
+msgid "Simulate"
+msgstr "Simuler"
+
+# New Autotimer Setting Window name (not enabled to transfer atm)
+msgid "AutoTimer Settings"
+msgstr "AutoTimer indstillinger"
+
+msgid "AutoPoll"
+msgstr "Automatisk overvågning"
+
+msgid "Interval (in h)"
+msgstr "Interval (i timer)"
+
+msgid "Max Days"
+msgstr "Maks dage"
+
+msgid "Try Guessing"
+msgstr "Forsøg at gætte"
+
+msgid "Fastscan"
+msgstr "Hurtigsøgning"
+
+msgid "Show in Extensionsmenu"
+msgstr "Vis i udvidelsesmenuen"
+
+msgid "Disabled on Conflict"
+msgstr "Afbrudt ved konflikt"
+
+msgid "Add Similar on Conflict"
+msgstr "Tilføj lignende ved konflikt"
+
+msgid "Notify if Conflict"
+msgstr "Notificer ved konflikt"
+
+msgid "Notify if Similar"
+msgstr "Notificer ved lignende"
+
+msgid "Add Autotimer to Tags"
+msgstr "Tilføj Autotimer som etiket "
+
+msgid "Add Name to Tags"
+msgstr "Tilføj navn som etiket"
+
+msgid "None"
+msgstr "Intet"
+
+msgid "Editor"
+msgstr "Redigering"
+
+msgid "Plain"
+msgstr "Normal"
+
+msgid "Wizzard"
+msgstr "Anvend guide"
+
+msgid "Do you really want to delete the AT"
+msgstr "Vil du virkelig slette denne AT"
+
+msgid "Label series"
+msgstr "Tilføj etiket til serien"
+
+msgid "Enable Messages"
+msgstr "Aktiver beskeder"
+
+msgid "Delay Standby"
+msgstr "Forsink standby"
+
+msgid "Interval (min.)"
+msgstr "Interval (min.)"
+
+msgid "Interval (sec.)"
+msgstr "Interval (sec.)"
+
+msgid "Afterevent"
+msgstr "Efter begivenheden"
+
+msgid "Force"
+msgstr "Tving"
+
+msgid "Wakeup"
+msgstr "Vågn op"
+
+msgid "Inherit Autotimer"
+msgstr "Arv autotimer"
+
+msgid "Parse Autotimer"
+msgstr "Analyser Autotimer"
+
+msgid "Always"
+msgstr "Altid"
+
+msgid "Background only"
+msgstr "Kun i baggrunden"
+
+msgid "Ask, default Yes"
+msgstr "Spørg, med standardsvar Ja"
+
+msgid "Ask, default No"
+msgstr "Spørg, med standardsvar Nej"
+
+msgid "Method"
+msgstr "Metode"
+
+msgid "Visibly"
+msgstr "Synlig"
+
+msgid "Picture in Picture"
+msgstr "Billede i Billede"
+
+msgid "Picture in Picture (hidden)"
+msgstr "Billede i Billede (skjult)"
+
+msgid "Fake Recording"
+msgstr "Simuler optagelse"
+
+msgid "Refresh now"
+msgstr "Opdater nu"
+
+msgid "Add Provider as new Bouquet"
+msgstr "Tilføj leverandør som ny favoritliste"
+
+msgid "Add channel(s) to Bouquet"
+msgstr "Tilføj kanal(er) til en favoritliste"
+
+msgid "Add channel(s) as alternate"
+msgstr "Tilføj kanal(er) som alternativ"
+
+msgid "Export"
+msgstr "Eksporter"
+
+msgid "Import"
+msgstr "Importer"
+
+msgid "Add Bouquet"
+msgstr "Tilføj favoritliste"
+
+msgid "Rename Bouquet"
+msgstr "Omdøb favoritliste"
+
+msgid "Delete Bouquet"
+msgstr "Slet favoritliste"
+
+msgid "Add Marker"
+msgstr "Tilføj bogmærke"
+
+msgid "Rename"
+msgstr "Omdøb"
+
+msgid "Delete Channel(s)"
+msgstr "Slet kanal(er)"
+
+msgid "Do you really want to delete the channel(s)"
+msgstr "Vil du virkelig slette kanalen(er)"
+
+msgid "Do you really want to delete the bouquet"
+msgstr "Vil du virkelig slette favoritlisten"
+
+msgid "Name of the Bouquet"
+msgstr "Favoritlistens navn"
+
+msgid "Name of the Marker"
+msgstr "Bogmærkets navn"
+
+msgid "Enter new name for the bouquet"
+msgstr "Angiv et nyt navn til favoritlisten"
+
+msgid "Enter new name for the marker"
+msgstr "Angiv et nyt navn til bogmærket"
+
+msgid "Please enter filename"
+msgstr "Tilføj venligst filnavn"
+
+msgid "Do you really want to restore from file"
+msgstr "Vil du virkelig genskabe fra filen"
+
+msgid "OpenWebif url: http://yourip:port"
+msgstr "OpenWebif url: http://din_ipadresse:port"
+
+msgid "OpenWebInterface Enabled"
+msgstr "OpenWebif er aktiveret"
+
+msgid "HTTP port"
+msgstr "HTTP port"
+
+msgid "Enable HTTP Authentication"
+msgstr "Aktiver HTTP autorisation"
+
+msgid "Enable HTTPS"
+msgstr "Aktiver HTTPS"
+
+msgid "HTTPS port"
+msgstr "HTTPS port"
+
+msgid "Enable HTTPS Authentication"
+msgstr "Aktiver HTTPS autorisation"
+
+msgid "Require client cert for HTTPS"
+msgstr "Kræv klientcertifikat får HTTPS"
+
+msgid "Enable Authentication for streaming"
+msgstr "Aktiver autorisering af streaming"
+
+msgid "Disable access for user root"
+msgstr "Slå adgang for root brugeren fra"
+
+msgid "Smart services renaming for XBMC"
+msgstr "Smart navneændring for XBMC tjenester"
+
+msgid "Enable Parental Control"
+msgstr "Aktiver forældrekontrol"
+
+msgid "Add service name to stream information"
+msgstr "Tilføj distributørens navn til streaming informationerne"
+
+msgid "Character encoding for EPG data"
+msgstr "Karaktersæt enkodning til EPG data"
+
+msgid "OpenWebif Configuration"
+msgstr "OpenWebif indstillinger"
+
+msgid "transcoded"
+msgstr "transkodet"
+
+msgid "System OE"
+msgstr "OE system"
+
+msgid "Distro"
+msgstr "Distro"
+
+msgid "Driver date"
+msgstr "Driver versionsdato"
+
+msgid "Conflicting Timer(s) detected! %s"
+msgstr "Timerkonflikt(er) opdaget %s"
+
+msgid "Could not add timer '%s'!"
+msgstr "Kunne ikke tilføje timer '%s'!"
+
+msgid "Timer '%s' added"
+msgstr "Timer '%s' tilføjet"
+
+msgid "EventId not found"
+msgstr "Begivenheds ID kunne ikke findes"
+
+msgid "Timer '%s' changed"
+msgstr "Timer '%s' ændret"
+
+msgid "Timer '%s' not saved while Conflict"
+msgstr "Timer '%s' kunne ikke gemmes pga. en konflikt"
+
+msgid "Could not find timer '%s' with given start and end time!"
+msgstr "Kunne ikke finde en timer '%s' med den angivne start og stop tid"
+
+msgid "The timer '%s' has been deleted successfully"
+msgstr "Timeren '%s' er slettet"
+
+msgid "No matching Timer found"
+msgstr "Kunne ikke finde en matchende timer"
+
+# The word framgångsrikt to get a string to  end the sentence
+msgid "The timer '%s' has been %s successfully"
+msgstr "Timeren '%s' er blevet %s med succes"
+
+msgid "List of Timers has been cleaned"
+msgstr "Timerlisten er slettet"
+
+msgid "TimerList has been saved"
+msgstr "Timerlisten er gemt"
+
+msgid "No event found! Not recording!"
+msgstr "Ingen aktivitet fundet. Ingen optagelse."
+
+msgid "Instant record for current Event started"
+msgstr "En direkte optagelse af den aktuelle begivenhed er startet"
+
+msgid "Infinite Instant recording started"
+msgstr "En direkte optagelse med uendelig tidsgrænse er startet"
+
+msgid "Timer conflict detected! Not recording!"
+msgstr "Timerkonflikt opdaget. Optager ikke."
+
+msgid "Missing requesteter: sRef"
+msgstr "Manglende efterspørgsel: sRef"
+
+msgid "Unknown command: '%s'"
+msgstr "Ukendt kommando: '%s'"
+
+msgid "PowerTimer feature not available"
+msgstr "Powertimer funktion ikke tilgængelig"
+
+msgid "Sleeptimer is enabled"
+msgstr "Sleeptimer er aktiveret"
+
+msgid "Sleeptimer is disabled"
+msgstr "Sleeptimer er afbrudt"
+
+msgid "SleepTimer feature not available"
+msgstr "Sleeptimer funktion ikke tilgængelig"
+
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr "FEJL: Kan ikke indstille Sleeptimer mens enheden er i standby mode."
+
+msgid "Sleeptimer has been disabled"
+msgstr "Sleeptimeren er blevet afbrudt."
+
+msgid "Sleeptimer set to %d minutes"
+msgstr "Sleeptimeren er sat til %d minutter"
+
+msgid "Safe mode"
+msgstr "Fejlindstillings tilstand"
+
+msgid "Close"
+msgstr "Luk"
+
+msgid "Open in new window"
+msgstr "Åben i et nyt vindue"
