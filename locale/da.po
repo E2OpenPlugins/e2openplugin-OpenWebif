@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2014-11-01 19:04+0100\n"
-"PO-Revision-Date: 2015-03-08 01:00+0100\n"
+"PO-Revision-Date: 2015-03-10 23:51+0100\n"
 "Last-Translator: lupine <a_ecklon@hotmail.com>\n"
 "Language-Team: \n"
 "Language: da_DK\n"
@@ -497,10 +497,10 @@ msgid "Power Control"
 msgstr "Strømstyring"
 
 msgid "Provider"
-msgstr "Leverandør"
+msgstr "Udbyder"
 
 msgid "Providers"
-msgstr "Leverandører"
+msgstr "Udbyderer"
 
 msgid "Radio"
 msgstr "Radio"
@@ -616,7 +616,7 @@ msgid "Subnet mask"
 msgstr "Subnet maske"
 
 msgid "Subservices"
-msgstr "Underleverandører"
+msgstr "Underudbydere"
 
 msgid "Tags"
 msgstr "Etiketter"
@@ -625,7 +625,7 @@ msgid "Teletext"
 msgstr "Tekst-TV"
 
 msgid "Television"
-msgstr "Television"
+msgstr "TV"
 
 msgid "Template Engine"
 msgstr "Webudviklingsværktøj"
@@ -1088,7 +1088,7 @@ msgid "Refresh now"
 msgstr "Opdater nu"
 
 msgid "Add Provider as new Bouquet"
-msgstr "Tilføj leverandør som ny favoritliste"
+msgstr "Tilføj udbyder som ny favoritliste"
 
 msgid "Add channel(s) to Bouquet"
 msgstr "Tilføj kanal(er) til en favoritliste"
