@@ -174,21 +174,22 @@ def removeMovie(session, sRef):
 		name = info and info.getName(service.ref) or "this recording"
 
 	if offline is not None:
-		fullpath = service.ref.getPath()
-		srcpath = '/'.join(fullpath.split('/')[:-1]) + '/'
-		# TODO: check trash
-		# TODO: check enable trash default value
-		# TODO: remove jpg
-		if '.Trash' not in fullpath and config.usage.movielist_trashcan.value:
-			try:
-				import Tools.Trashcan
-				trash = Tools.Trashcan.createTrashFolder(srcpath)
-				if trash:
-					res = _moveMovie(session, sRef, destpath=trash)
-					result = res['result']
-					deleted = result
-			except ImportError:
-				pass
+		if hasattr(config.usage, 'movielist_trashcan'):
+			fullpath = service.ref.getPath()
+			srcpath = '/'.join(fullpath.split('/')[:-1]) + '/'
+			# TODO: check trash
+			# TODO: check enable trash default value
+			# TODO: remove jpg
+			if '.Trash' not in fullpath and config.usage.movielist_trashcan.value:
+				try:
+					import Tools.Trashcan
+					trash = Tools.Trashcan.createTrashFolder(srcpath)
+					if trash:
+						res = _moveMovie(session, sRef, destpath=trash)
+						result = res['result']
+						deleted = result
+				except ImportError:
+					pass
 		if not deleted:
 			if not offline.deleteFromDisk(0):
 				result = True
