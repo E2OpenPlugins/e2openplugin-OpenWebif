@@ -407,6 +407,8 @@ def getAllInfo():
 	try:
 		driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-modules*').readline().split( )[2]
 	except:
+		driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-proxy*').readline().split( )[2]
+	finally:
 		pass
 
 	info['oever'] = oever
