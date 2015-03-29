@@ -218,7 +218,7 @@ class BQEWebController(BaseController):
 				if item[0].flags & eServiceReference.isMarker:
 					service['ismarker'] = '1'
 				service['isprotected'] = '0'
-				if config.ParentalControl.configured.value:
+				if config.ParentalControl.configured.value and config.ParentalControl.servicepinactive.value:
 					sref = item[0].toCompareString()
 					protection = parentalControl.getProtectionLevel(sref)
 					if protection != -1:

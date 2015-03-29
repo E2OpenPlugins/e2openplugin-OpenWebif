@@ -297,7 +297,7 @@ def sortSatellites(satList):
 
 def getProtection(sref):
 	isProtected = "0"
-	if config.ParentalControl.configured.value:
+	if config.ParentalControl.configured.value and config.ParentalControl.servicepinactive.value:
 		protection = parentalControl.getProtectionLevel(sref)
 		if protection != -1:
 			if config.ParentalControl.type.value == "blacklist":
@@ -335,7 +335,7 @@ def getChannels(idbouquet, stype):
 			chan = {}
 			chan['ref'] = quote(channel[0], safe=' ~@%#$&()*!+=:;,.?/\'')
 			chan['name'] = filterName(channel[1])
-			if config.ParentalControl.configured.value and config.OpenWebif.parentalenabled.value:
+			if config.OpenWebif.parentalenabled.value and config.ParentalControl.configured.value and config.ParentalControl.servicepinactive.value:
 				chan['protection'] = getProtection(channel[0])
 			else:
 				chan['protection'] = "0"
