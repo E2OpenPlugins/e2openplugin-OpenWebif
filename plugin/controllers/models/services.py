@@ -208,11 +208,12 @@ def getBouquets(stype):
 	return { "bouquets": bouquets }
 
 def removeHiddenBouquets(bouquetList):
-	bouquets = []
-	for bouquet in bouquetList:
-		flags = int(bouquet[0].split(':')[1])
-		if not flags & eServiceReference.isInvisible:
-			bouquets.append(bouquet)
+	bouquets = bouquetList
+	if hasattr(eServiceReference, 'isInvisible'):
+		for bouquet in bouquetList:
+			flags = int(bouquet[0].split(':')[1])
+			if flags & eServiceReference.isInvisible and bouquet in bouquets:
+				bouquets.remove(bouquet)
 	return bouquets
 
 def getProviders(stype):
