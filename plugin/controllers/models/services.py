@@ -299,21 +299,22 @@ def getProtection(sref):
 	isProtected = "0"
 	if config.ParentalControl.configured.value:
 		protection = parentalControl.getProtectionLevel(sref)
-		if protection:
+		if protection != -1:
 			if config.ParentalControl.type.value == "blacklist":
 				if parentalControl.blacklist.has_key(sref):
-					if "SERVICE" in parentalControl.blacklist.has_key(sref):
-						service['isprotected'] = '1'
+					if "SERVICE" in parentalControl.blacklist[sref]:
+						isProtected = '1'
 					elif "BOUQUET" in parentalControl.blacklist.has_key(sref):
-						service['isprotected'] = '2'
+						isProtected = '2'
 					else:
-						service['isprotected'] = '3'
-			else:
-				if hasattr(ParentalControl, "whitelist") and parentalControl.whitelist.has_key(sref):
-					if "SERVICE" in parentalControl.whitelist.has_key(sref):
-						service['isprotected'] = '4'
-					elif "BOUQUET" in parentalControl.whitelist.has_key(sref):
-						service['isprotected'] = '5'
+						isProtected = '3'
+			elif config.ParentalControl.type.value == "whitelist":
+				if not parentalControl.whitelist.has_key(sref):
+					service = eServiceReference(sref)
+					if service.flags & eServiceReference.isGroup:
+						isprotected = '5'
+					else:
+						isProtected = '4'
 	return isProtected
 
 def getChannels(idbouquet, stype):

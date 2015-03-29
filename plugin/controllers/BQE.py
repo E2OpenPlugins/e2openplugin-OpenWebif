@@ -221,21 +221,21 @@ class BQEWebController(BaseController):
 				if config.ParentalControl.configured.value:
 					sref = item[0].toCompareString()
 					protection = parentalControl.getProtectionLevel(sref)
-					if protection:
+					if protection != -1:
 						if config.ParentalControl.type.value == "blacklist":
 							if parentalControl.blacklist.has_key(sref):
-								if "SERVICE" in parentalControl.blacklist.has_key(sref):
+								if "SERVICE" in parentalControl.blacklist[sref]:
 									service['isprotected'] = '1'
 								elif "BOUQUET" in parentalControl.blacklist.has_key(sref):
 									service['isprotected'] = '2'
 								else:
 									service['isprotected'] = '3'
-						else:
-							if hasattr(ParentalControl, "whitelist") and parentalControl.whitelist.has_key(sref):
-								if "SERVICE" in parentalControl.whitelist.has_key(sref):
-									service['isprotected'] = '4'
-								elif "BOUQUET" in parentalControl.whitelist.has_key(sref):
+						elif config.ParentalControl.type.value == "whitelist":
+							if not parentalControl.whitelist.has_key(sref):
+								if item[0].flags & eServiceReference.isGroup:
 									service['isprotected'] = '5'
+								else:
+									service['isprotected'] = '4'
 				services.append(service)
 		return { "services": services }
 
