@@ -14,7 +14,7 @@ from Components.Sources.Source import Source
 from ServiceReference import ServiceReference
 from Tools.FuzzyDate import FuzzyTime
 from os import stat as os_stat, listdir
-from os.path import islink, isdir, join, exists
+from os.path import islink, isdir, join, exists, split as os_path_split, realpath, abspath
 from Components.config import config
 from Components.MovieList import MovieList
 from Tools.Directories import fileExists
@@ -57,7 +57,20 @@ def getPosition(cutfile, movie_len):
 	else:
 		play_progress = 0
 	return play_progress
-	
+
+def checkParentalProtection(directory):
+	if hasattr(config.ParentalControl, 'moviepinactive'):
+		if config.ParentalControl.moviepinactive.value:
+			directory = os_path_split(directory)[0]
+			directory = realpath(directory)
+			directory = abspath(directory)
+			if directory[-1] != "/":
+				directory += "/"
+			is_protected = config.movielist.moviedirs_config.getConfigValue(directory, "protect")
+			if is_protected is not None and is_protected == 1:
+				return True
+	return False
+
 def getMovieList(directory=None, tag=None, rargs=None, locations=None):
 	movieliste = []
 
@@ -91,66 +104,72 @@ def getMovieList(directory=None, tag=None, rargs=None, locations=None):
 			ff = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + f)
 			folders.append(ff)
 
-	for root in folders:
-		movielist = MovieList(None)
-		movielist.load(root, None)
+	if config.OpenWebif.parentalenabled.value:
+		dir_is_protected = checkParentalProtection(directory)
+	else:
+		dir_is_protected = False
 
-		if tag != None:
-			movielist.reload(root=root, filter_tags=[tag])
-		#??? loadLength = True
+	if not dir_is_protected:
+		for root in folders:
+			movielist = MovieList(None)
+			movielist.load(root, None)
 
-		for (serviceref, info, begin, unknown) in movielist.list:
-			if serviceref.flags & eServiceReference.mustDescent:
-				continue
+			if tag != None:
+				movielist.reload(root=root, filter_tags=[tag])
+			#??? loadLength = True
 
-			rtime = info.getInfo(serviceref, iServiceInformation.sTimeCreate)
+			for (serviceref, info, begin, unknown) in movielist.list:
+				if serviceref.flags & eServiceReference.mustDescent:
+					continue
 
-			if rtime > 0:
-				t = FuzzyTime(rtime)
-				begin_string = t[0] + ", " + t[1]
-			else:
-				begin_string = "undefined"
+				rtime = info.getInfo(serviceref, iServiceInformation.sTimeCreate)
 
-			try:
-				Len = info.getLength(serviceref)
-			except:
-				Len = None
+				if rtime > 0:
+					t = FuzzyTime(rtime)
+					begin_string = t[0] + ", " + t[1]
+				else:
+					begin_string = "undefined"
 
-			filename = '/'.join(serviceref.toString().split("/")[1:])
-			filename = '/'+filename
-			pos = getPosition(filename + '.cuts', Len)
+				try:
+					Len = info.getLength(serviceref)
+				except:
+					Len = None
 
-			if Len > 0:
-				Len = "%d:%02d" % (Len / 60, Len % 60)
-			else:
-				Len = "?:??"
+				filename = '/'.join(serviceref.toString().split("/")[1:])
+				filename = '/'+filename
+				pos = getPosition(filename + '.cuts', Len)
 
-			sourceERef = info.getInfoString(serviceref, iServiceInformation.sServiceref)
-			sourceRef = ServiceReference(sourceERef)
-			event = info.getEvent(serviceref)
-			ext = event and event.getExtendedDescription() or ""
+				if Len > 0:
+					Len = "%d:%02d" % (Len / 60, Len % 60)
+				else:
+					Len = "?:??"
 
-			servicename = ServiceReference(serviceref).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
-			movie = {}
-			movie['filename'] = filename
-			movie['filename_stripped'] = filename.split("/")[-1]
-			movie['eventname'] = servicename
-			movie['description'] = info.getInfoString(serviceref, iServiceInformation.sDescription)
-			movie['begintime'] = begin_string
-			movie['serviceref'] = serviceref.toString()
-			movie['length'] = Len
-			movie['tags'] = info.getInfoString(serviceref, iServiceInformation.sTags)
-			filename = filename.replace("'","\'").replace("%","\%")
-			try:
-				movie['filesize'] = os_stat(filename).st_size
-			except:
-				movie['filesize'] = 0
-			movie['fullname'] = serviceref.toString()
-			movie['descriptionExtended'] = ext
-			movie['servicename'] = sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
-			movie['recordingtime'] = rtime
-			movie['lastseen'] = pos
-			movieliste.append(movie)
+				sourceERef = info.getInfoString(serviceref, iServiceInformation.sServiceref)
+				sourceRef = ServiceReference(sourceERef)
+				event = info.getEvent(serviceref)
+				ext = event and event.getExtendedDescription() or ""
+
+				servicename = ServiceReference(serviceref).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
+				movie = {}
+				movie['filename'] = filename
+				movie['filename_stripped'] = filename.split("/")[-1]
+				movie['eventname'] = servicename
+				movie['description'] = info.getInfoString(serviceref, iServiceInformation.sDescription)
+				movie['begintime'] = begin_string
+				movie['serviceref'] = serviceref.toString()
+				movie['length'] = Len
+				movie['tags'] = info.getInfoString(serviceref, iServiceInformation.sTags)
+				filename = filename.replace("'","\'").replace("%","\%")
+				try:
+					movie['filesize'] = os_stat(filename).st_size
+				except:
+					movie['filesize'] = 0
+				movie['fullname'] = serviceref.toString()
+				movie['descriptionExtended'] = ext
+				movie['servicename'] = sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
+				movie['recordingtime'] = rtime
+				movie['lastseen'] = pos
+				movieliste.append(movie)
 
 	if locations == None:
 		ml = { "movies": movieliste, "bookmarks": bookmarklist, "directory": directory }
@@ -174,21 +193,22 @@ def removeMovie(session, sRef):
 		name = info and info.getName(service.ref) or "this recording"
 
 	if offline is not None:
-		fullpath = service.ref.getPath()
-		srcpath = '/'.join(fullpath.split('/')[:-1]) + '/'
-		# TODO: check trash
-		# TODO: check enable trash default value
-		# TODO: remove jpg
-		if '.Trash' not in fullpath and config.usage.movielist_trashcan.value:
-			try:
-				import Tools.Trashcan
-				trash = Tools.Trashcan.createTrashFolder(srcpath)
-				if trash:
-					res = _moveMovie(session, sRef, destpath=trash)
-					result = res['result']
-					deleted = result
-			except ImportError:
-				pass
+		if hasattr(config.usage, 'movielist_trashcan'):
+			fullpath = service.ref.getPath()
+			srcpath = '/'.join(fullpath.split('/')[:-1]) + '/'
+			# TODO: check trash
+			# TODO: check enable trash default value
+			# TODO: remove jpg
+			if '.Trash' not in fullpath and config.usage.movielist_trashcan.value:
+				try:
+					import Tools.Trashcan
+					trash = Tools.Trashcan.createTrashFolder(srcpath)
+					if trash:
+						res = _moveMovie(session, sRef, destpath=trash)
+						result = res['result']
+						deleted = result
+				except ImportError:
+					pass
 		if not deleted:
 			if not offline.deleteFromDisk(0):
 				result = True

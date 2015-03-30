@@ -75,7 +75,7 @@ def zapService(session, id, title = ""):
 
 	if not isRecording:
 		if config.ParentalControl.servicepinactive.value and config.OpenWebif.parentalenabled.value:
-			if getProtection(service.toString()) == "0":
+			if getProtection(service.toString()) != "0":
 				return {
 					"result": False,
 					"message": "Service '%s' is blocked by parental Control" % title
