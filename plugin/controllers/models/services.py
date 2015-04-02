@@ -304,7 +304,7 @@ def getProtection(sref):
 				if parentalControl.blacklist.has_key(sref):
 					if "SERVICE" in parentalControl.blacklist[sref]:
 						isProtected = '1'
-					elif "BOUQUET" in parentalControl.blacklist.has_key(sref):
+					elif "BOUQUET" in parentalControl.blacklist[sref]:
 						isProtected = '2'
 					else:
 						isProtected = '3'
