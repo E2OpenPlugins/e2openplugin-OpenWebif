@@ -145,7 +145,7 @@ def getAllInfo():
 			f = open("/proc/stb/info/gbmodel",'r')
 			gb = f.readline().strip()
 			model = gb.upper().replace("GBQUAD", "Quad").replace("PLUS", " Plus")
-		elif fileExists("/proc/stb/info/vumodel") and tempmodel.startswith("vu") is False:
+		elif fileExists("/proc/stb/info/vumodel") and tempmodel.startswith("vu") is True:
 			brand = "Vu+"
 			f = open("/proc/stb/info/vumodel",'r')
 			model = f.readline().strip().title().replace("olose", "olo SE").replace("olo2se", "olo2 SE").replace("2", "²")
