@@ -226,7 +226,7 @@ class BQEWebController(BaseController):
 							if parentalControl.blacklist.has_key(sref):
 								if "SERVICE" in parentalControl.blacklist[sref]:
 									service['isprotected'] = '1'
-								elif "BOUQUET" in parentalControl.blacklist.has_key(sref):
+								elif "BOUQUET" in parentalControl.blacklist[sref]:
 									service['isprotected'] = '2'
 								else:
 									service['isprotected'] = '3'
