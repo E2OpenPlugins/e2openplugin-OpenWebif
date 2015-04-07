@@ -323,6 +323,8 @@ def getAllInfo():
 		remote = "hd2400"
 	elif procmodel.startswith("ixuss"):
 		remote = procmodel.replace(" ", "")
+	elif procmodel == "xcombo":
+		remote = "xcombo"
 
 	info['remote'] = remote
 
