@@ -1,0 +1,1275 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenWebif\n"
+"POT-Creation-Date: 2014-11-01 19:04+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: plnick\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: tr\n"
+"X-Poedit-SearchPath-0: ../plugin\n"
+
+msgid "Settings"
+msgstr "Ayarlar"
+
+msgid "LCD4Linux Setup"
+msgstr "LCD4Linux Kurulumu"
+
+msgid "AutoTimer"
+msgstr "AutoTimer"
+
+msgid "BouquetEditor"
+msgstr "BouquetEditor"
+
+msgid "EPGRefresh"
+msgstr "EPGRefresh"
+
+msgid "IPv4-only kernel"
+msgstr "IPv4-only kernel"
+
+msgid "IPv4-only Python/Twisted"
+msgstr ""
+
+msgid "none/IPv4-only network"
+msgstr ""
+
+msgid "Message sent successfully!"
+msgstr "Mesaj başarıyla gönderildi!"
+
+msgid "No answer in time"
+msgstr ""
+
+msgid "Answer is YES!"
+msgstr ""
+
+msgid "Answer is NO!"
+msgstr ""
+
+msgid "New"
+msgstr "Yeni"
+
+msgid "Services"
+msgstr "Kanallar"
+
+msgid "Cable"
+msgstr "Kablolu"
+
+msgid "Terrestrial"
+msgstr "Karasal"
+
+msgid "W"
+msgstr ""
+
+msgid "E"
+msgstr ""
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr ""
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr ""
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr ""
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr "%s  Ses komutu bilinmiyor"
+
+msgid "The parameter 'command' must be a number"
+msgstr ""
+
+#, python-format
+msgid "type %s is not a number"
+msgstr ""
+
+msgid "Mo"
+msgstr "Pzt"
+
+msgid "Tu"
+msgstr "Sal"
+
+msgid "We"
+msgstr "Çrş"
+
+msgid "Th"
+msgstr "Prş"
+
+msgid "Fr"
+msgstr "Cum"
+
+msgid "Sa"
+msgstr "Cmt"
+
+msgid "Su"
+msgstr "Paz"
+
+msgid "Sun"
+msgstr "Paz"
+
+msgid "Mon"
+msgstr "Pzt"
+
+msgid "Tue"
+msgstr "Sal"
+
+msgid "Wed"
+msgstr "Çrş"
+
+msgid "Thu"
+msgstr "Prş"
+
+msgid "Fri"
+msgstr "Cum"
+
+msgid "Sat"
+msgstr "Cmt"
+
+msgid "Monday"
+msgstr "Pazartesi"
+
+msgid "Tuesday"
+msgstr "Salı"
+
+msgid "Wednesday"
+msgstr "Çarşamba"
+
+msgid "Thursday"
+msgstr "Perşembe"
+
+msgid "Friday"
+msgstr "Cuma"
+
+msgid "Saturday"
+msgstr "Cumartesi"
+
+msgid "Sunday"
+msgstr "Pazar"
+
+msgid "January"
+msgstr "Ocak"
+
+msgid "February"
+msgstr "Şubat"
+
+msgid "March"
+msgstr "Mart"
+
+msgid "April"
+msgstr "Nisan"
+
+msgid "May"
+msgstr "Mayıs"
+
+msgid "June"
+msgstr "Haziran"
+
+msgid "July"
+msgstr "Temmuz"
+
+msgid "August"
+msgstr "Ağuıstos"
+
+msgid "September"
+msgstr "Eylül"
+
+msgid "October"
+msgstr "Ekim"
+
+msgid "November"
+msgstr "Kasım"
+
+msgid "December"
+msgstr "Aralık"
+
+msgid "About"
+msgstr "Hakkında"
+
+msgid "Add Timer"
+msgstr ""
+
+msgid "Add AutoTimer"
+msgstr ""
+
+msgid "Add Zap Timer"
+msgstr ""
+
+msgid "After Event"
+msgstr ""
+
+msgid "AGC"
+msgstr ""
+
+msgid "All"
+msgstr "Tümü"
+
+msgid "All Channels"
+msgstr "Tüm Kanallar"
+
+msgid "Authors"
+msgstr "Yazarlar"
+
+msgid "Auto"
+msgstr "Otomatik"
+
+msgid "Back"
+msgstr "Geri"
+
+msgid "Begin"
+msgstr ""
+
+msgid "BER"
+msgstr ""
+
+msgid "Bouquets"
+msgstr "Buketler"
+
+msgid "Box Info"
+msgstr "Alıcı Bilgisi"
+
+msgid "Box"
+msgstr "Alıcı"
+
+msgid "Box Control"
+msgstr "Alıcı Kontrol"
+
+msgid "Box Uptime"
+msgstr ""
+
+msgid "Brand"
+msgstr "Marka"
+
+msgid "Cancel"
+msgstr "Vazgeç"
+
+msgid "Capacity"
+msgstr "Kapasite"
+
+msgid "Channel"
+msgstr "Kanal"
+
+msgid "Channels"
+msgstr "Kanallar"
+
+msgid "Chipset"
+msgstr "Çipset"
+
+msgid "Cleanup Timers"
+msgstr ""
+
+msgid "Contributors"
+msgstr ""
+
+msgid "Control"
+msgstr "Kontrol"
+
+msgid "Current"
+msgstr ""
+
+msgid "Current Event"
+msgstr ""
+
+msgid "Deep-Standby"
+msgstr ""
+
+msgid "Default"
+msgstr "Öntanımlı"
+
+msgid "Delete Recording"
+msgstr ""
+
+msgid "Really delete the recording"
+msgstr "Kaydı gerçekten silecek misin ?"
+
+msgid "Delete Timer"
+msgstr "Zamanlayıcı Sil"
+
+msgid "Really delete the timer"
+msgstr "Zamanlayıcıyı gerçekten silecek misin ?"
+
+msgid "Description"
+msgstr "Tanım"
+
+msgid "DHCP"
+msgstr ""
+
+msgid "Disable Timer"
+msgstr ""
+
+msgid "Dolby"
+msgstr ""
+
+msgid "Done"
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "Download Playlist for"
+msgstr ""
+
+msgid "Duration"
+msgstr "Süre"
+
+msgid "Edit Timer"
+msgstr "Zamanlayıcı Etkinleştir"
+
+msgid "Enable Timer"
+msgstr "Zamanlayıcı Etkinleştir"
+
+msgid "Start"
+msgstr "Başlat"
+
+msgid "End"
+msgstr ""
+
+msgid "Enabled"
+msgstr "Etkin"
+
+msgid "Encrypted"
+msgstr "Şifreli"
+
+msgid "EPG"
+msgstr "EPG"
+
+msgid "Epg Search"
+msgstr "Epg Arama"
+
+msgid "Error"
+msgstr "Hata"
+
+msgid "Every"
+msgstr ""
+
+msgid "Extras"
+msgstr "Ekstralar"
+
+msgid "finished"
+msgstr "bitti"
+
+msgid "Firmware version"
+msgstr ""
+
+msgid "Frontprocessor Version"
+msgstr ""
+
+msgid "Free"
+msgstr ""
+
+msgid "Free Memory"
+msgstr "Boş Bellek"
+
+msgid "Gateway"
+msgstr ""
+
+msgid "Grab Screenshot"
+msgstr ""
+
+msgid "Gui version"
+msgstr "Arayüz sürümü"
+
+msgid "Hide full remote"
+msgstr ""
+
+msgid "High Resolution"
+msgstr "Yüksek Çözünürlük"
+
+msgid "Hard disk model"
+msgstr "Sabit disk modeli"
+
+msgid "Hour"
+msgstr "Saat"
+
+msgid "IP address"
+msgstr "İP adresi"
+
+msgid "IPv6 address(es)"
+msgstr "IPv6 adres(ler)i"
+
+msgid "Infos"
+msgstr "Bilgiler"
+
+msgid "Instant Record"
+msgstr ""
+
+msgid "Javascript Libraries"
+msgstr "Javascript Kütüphaneleri"
+
+msgid "Just play"
+msgstr ""
+
+msgid "Kernel version"
+msgstr "Karnel sürümü"
+
+msgid "LICENSE"
+msgstr "LİSANS"
+
+msgid "loading"
+msgstr "yükleniyor"
+
+msgid "Location"
+msgstr "konum"
+
+msgid "Locked"
+msgstr "Kilitli"
+
+msgid "MAC address"
+msgstr "MAC adresi"
+
+msgid "Main"
+msgstr ""
+
+msgid "Minute"
+msgstr "Dakika"
+
+msgid "Model"
+msgstr "Model"
+
+msgid "Movielist"
+msgstr ""
+
+msgid "Movies"
+msgstr ""
+
+msgid "MultiEPG"
+msgstr "Çoklu EPG"
+
+msgid "Name"
+msgstr "İsim"
+
+msgid "Namespace"
+msgstr ""
+
+msgid "Network Interface"
+msgstr "Ağ Arayüzü"
+
+msgid "no description available"
+msgstr "açıklama yok"
+
+msgid "Sorry this page is not yet implemented"
+msgstr ""
+
+msgid "Nothing"
+msgstr ""
+
+msgid "Nothing playing."
+msgstr ""
+
+msgid "Now"
+msgstr ""
+
+msgid "On"
+msgstr ""
+
+msgid "Open Source Web Interface for Linux set-top box"
+msgstr ""
+
+msgid "Show box name in header"
+msgstr ""
+
+msgid "Use custom box name"
+msgstr "Özel alıcı adı kullan"
+
+msgid "Custom box name"
+msgstr "Özel alıcı adı"
+
+msgid "OSD"
+msgstr ""
+
+msgid "Playback"
+msgstr ""
+
+msgid "Playlist"
+msgstr ""
+
+msgid "Power Control"
+msgstr "Güç Kontrol"
+
+msgid "Provider"
+msgstr "Sağlayıcı"
+
+msgid "Providers"
+msgstr "Sağlayıcılar"
+
+msgid "Radio"
+msgstr "Radyo"
+
+msgid "Reboot Box"
+msgstr "Alıcıyı Yeniden Başlat"
+
+msgid "Recording Status"
+msgstr "Kayıt Durumu"
+
+msgid "Refresh"
+msgstr "Tazele"
+
+msgid "Refresh automatically every"
+msgstr ""
+
+msgid "Refresh Timer"
+msgstr ""
+
+msgid "Remote"
+msgstr ""
+
+msgid "Rename Recording"
+msgstr "JKaydı Yeniden Adlandır"
+
+msgid "Repeated"
+msgstr ""
+
+msgid "Restart GUI"
+msgstr "Arayüzü yeniden başlat"
+
+msgid "running"
+msgstr ""
+
+msgid "Satellites"
+msgstr "Uydular"
+
+msgid "Satfinder"
+msgstr ""
+
+msgid "Save"
+msgstr "Kaydet"
+
+msgid "Screenshot"
+msgstr "Ekran Görüntüsü      "
+
+msgid "Search"
+msgstr "Arama"
+
+msgid "Search IMDb"
+msgstr "İMDB arama"
+
+msgid "seconds"
+msgstr "saniye"
+
+msgid "Send Message"
+msgstr "Mesaj Gönder"
+
+msgid "Waiting for answer ..."
+msgstr ""
+
+msgid "Send a Message"
+msgstr "Bir mesaj gönder"
+
+msgid "Service"
+msgstr "kanal"
+
+msgid "Bouquet Editor"
+msgstr "Buket Editör"
+
+msgid "(shift + click for long pressure)"
+msgstr ""
+
+msgid "Show Full OpenWebif"
+msgstr ""
+
+msgid "Show full remote"
+msgstr ""
+
+msgid "Show EPG for"
+msgstr "için EPG göster"
+
+msgid "Shutdown"
+msgstr "Kapat"
+
+msgid "Site and sources"
+msgstr ""
+
+msgid "SNR"
+msgstr ""
+
+msgid "Software"
+msgstr "Yazılım"
+
+msgid "Standby"
+msgstr ""
+
+msgid "Standby Toggle"
+msgstr ""
+
+msgid "Start time is after end time"
+msgstr ""
+
+msgid "Start Instant Record"
+msgstr ""
+
+msgid "Stream"
+msgstr ""
+
+msgid "Subnet mask"
+msgstr ""
+
+msgid "Subservices"
+msgstr ""
+
+msgid "Tags"
+msgstr ""
+
+msgid "Teletext"
+msgstr "Teleteks"
+
+msgid "Television"
+msgstr "Televizyon"
+
+msgid "Template Engine"
+msgstr ""
+
+msgid "Text"
+msgstr "Metin"
+
+msgid "Time"
+msgstr ""
+
+msgid "Timeout"
+msgstr "Zaman aşımı"
+
+msgid "Timer added"
+msgstr ""
+
+msgid "Timerlist"
+msgstr ""
+
+msgid "New Name"
+msgstr "Yeni İsim"
+
+msgid "Autotimer Preview"
+msgstr "Autotimer Önizleme"
+
+msgid "Timer"
+msgstr ""
+
+msgid "Timers"
+msgstr ""
+
+msgid "Title"
+msgstr "Başlık"
+
+msgid "Total Memory"
+msgstr "Toplam Bellek"
+
+msgid "Tuner Bit Error Rate BER"
+msgstr ""
+
+msgid "Tuner Number (0-3)"
+msgstr "Tuner Numarası (0-3)"
+
+msgid "Tuner Signal"
+msgstr "Tuner Sinyal"
+
+msgid "Tuner Signal Quality SNR"
+msgstr "Tuner Sinyal Kalitesi SNR"
+
+msgid "Tuner Signal Quality SNR_DB"
+msgstr "Tuner Sinyal Kalitesi SNR_DB"
+
+msgid "Tuner Signal Power AGC"
+msgstr "Tuner Sinyal Gücü AGC"
+
+msgid "Tuner Type"
+msgstr "Tuner Türü"
+
+msgid "Tuners"
+msgstr "Tunerler"
+
+msgid "TV"
+msgstr "TV"
+
+msgid "TV Multi EPG"
+msgstr "TV Çoklu EPG"
+
+msgid "Type"
+msgstr "Türü"
+
+msgid "Upcoming Events"
+msgstr ""
+
+msgid "Version"
+msgstr "Sürüm"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Video Height"
+msgstr "Video Yüksekliği"
+
+msgid "Video Wide"
+msgstr ""
+
+msgid "Video Width"
+msgstr "Video Genişliği"
+
+msgid "Volume"
+msgstr "Ses"
+
+msgid "Volume Control"
+msgstr "Ses Kontrol"
+
+msgid "waiting"
+msgstr "bekleniyor"
+
+msgid "Warning"
+msgstr "Uyarı"
+
+msgid "Yes/No"
+msgstr "Evet/Hayır"
+
+msgid "Zap"
+msgstr ""
+
+msgid "zap before Stream"
+msgstr ""
+
+msgid "Zap to"
+msgstr ""
+
+msgid "Zapped to"
+msgstr ""
+
+msgid "Translation to Spanish"
+msgstr ""
+
+msgid "All Files of this Software are open source software;"
+msgstr ""
+
+msgid "you can redistribute it and/or modify it under the"
+msgstr ""
+
+msgid "terms of the GNU General Public License version 2 as"
+msgstr ""
+
+msgid "published by the Free Software Foundation."
+msgstr ""
+
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 2 "
+"as published by the Free Software Foundation."
+msgstr ""
+
+msgid "Root"
+msgstr ""
+
+msgid "AutoTimer List"
+msgstr "Autotimer Liste"
+
+msgid "AutoTimer Edit"
+msgstr "Autotimer Düzenle"
+
+msgid "Match title"
+msgstr ""
+
+msgid "EPG encoding"
+msgstr ""
+
+msgid "Search type"
+msgstr "Arama türü"
+
+msgid "partial match"
+msgstr ""
+
+msgid "exact match"
+msgstr ""
+
+msgid "description match"
+msgstr ""
+
+msgid "start match"
+msgstr ""
+
+msgid "Search strictness"
+msgstr ""
+
+msgid "case-sensitive search"
+msgstr "harfe duyarlı arama"
+
+msgid "case-insensitive search"
+msgstr "harf duyarsız arama"
+
+msgid "Timer type"
+msgstr "Zamanlayıcı türü"
+
+msgid "record"
+msgstr "kayıt"
+
+msgid "zap"
+msgstr ""
+
+msgid "Override found with alternative service"
+msgstr ""
+
+msgid "Only match during timespan"
+msgstr ""
+
+msgid "Begin of timespan"
+msgstr ""
+
+msgid "End of Timespan"
+msgstr ""
+
+msgid "Restrict to events on certain dates"
+msgstr ""
+
+msgid "Not after"
+msgstr ""
+
+msgid "Not before"
+msgstr ""
+
+msgid "Custom offset"
+msgstr ""
+
+msgid "Offset before recording (in m)"
+msgstr ""
+
+msgid "Offset after recording (in m)"
+msgstr ""
+
+msgid "Set maximum duration"
+msgstr ""
+
+msgid "After event"
+msgstr ""
+
+msgid "standard"
+msgstr "standart"
+
+msgid "auto"
+msgstr "otomatik"
+
+msgid "do nothing"
+msgstr ""
+
+msgid "go to standby"
+msgstr ""
+
+msgid "go to deep standby"
+msgstr ""
+
+msgid "Execute \"after event\" during timespan"
+msgstr ""
+
+msgid "Begin of \"after event\" timespan"
+msgstr ""
+
+msgid "End of \"after event\" timespan"
+msgstr ""
+
+msgid "Record a maximum of x times"
+msgstr ""
+
+msgid "Amount of recordings left"
+msgstr ""
+
+msgid "Never"
+msgstr ""
+
+msgid "Monthly"
+msgstr "Aylık"
+
+msgid "Weekly (Sunday)"
+msgstr ""
+
+msgid "Weekly (Monday)"
+msgstr ""
+
+msgid "Reset count"
+msgstr ""
+
+msgid "Require description to be unique"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "On same service"
+msgstr ""
+
+msgid "On any service"
+msgstr ""
+
+msgid "Any service/recording"
+msgstr ""
+
+msgid "Use a custom location"
+msgstr ""
+
+msgid "select Tags"
+msgstr "Etiket Seç"
+
+msgid "select Channels"
+msgstr "Kanal Seç"
+
+msgid "select Bouquets"
+msgstr "Buket Seç"
+
+msgid "Enable Filtering"
+msgstr ""
+
+msgid "Include"
+msgstr ""
+
+msgid "Exclude"
+msgstr ""
+
+msgid "in Title"
+msgstr ""
+
+msgid "in Shortdescription"
+msgstr ""
+
+msgid "in Description"
+msgstr ""
+
+msgid "on Weekday"
+msgstr ""
+
+msgid "Weekend"
+msgstr "Hafta Sonu"
+
+msgid "Weekday"
+msgstr "İş Günü"
+
+msgid "VPS"
+msgstr ""
+
+msgid "VPS Overwrite"
+msgstr ""
+
+msgid "Add"
+msgstr "Ekle"
+
+msgid "Delete"
+msgstr "Sil"
+
+msgid "Reload"
+msgstr "Yeniden Yükle"
+
+msgid "Parse"
+msgstr "Ayrıştırma"
+
+msgid "Simulate"
+msgstr ""
+
+# New Autotimer Setting Windows name (not enabled to transfer atm)
+msgid "AutoTimer Settings"
+msgstr ""
+
+msgid "AutoPoll"
+msgstr ""
+
+msgid "Interval (in h)"
+msgstr ""
+
+msgid "Max Days"
+msgstr ""
+
+msgid "Try Guessing"
+msgstr ""
+
+msgid "Fastscan"
+msgstr ""
+
+msgid "Show in Extensionsmenu"
+msgstr "Eklentiler menüsünde göster"
+
+msgid "Disabled on Conflict"
+msgstr ""
+
+msgid "Add Similar on Conflict"
+msgstr ""
+
+msgid "Notify if Conflict"
+msgstr ""
+
+msgid "Notify if Similar"
+msgstr ""
+
+msgid "Add Autotimer to Tags"
+msgstr "Etiketlere Autotimer Ekle"
+
+msgid "Add Name to Tags"
+msgstr "Etiketlere İsim Ekle"
+
+msgid "None"
+msgstr ""
+
+msgid "Editor"
+msgstr "Editör"
+
+msgid "Plain"
+msgstr ""
+
+msgid "Wizzard"
+msgstr ""
+
+msgid "Do you really want to delete the AT"
+msgstr ""
+
+msgid "Label series"
+msgstr ""
+
+msgid "Enable Messages"
+msgstr "Mesajları Etkinleştir"
+
+msgid "Delay Standby"
+msgstr ""
+
+msgid "Interval (min.)"
+msgstr ""
+
+msgid "Interval (sec.)"
+msgstr ""
+
+msgid "Afterevent"
+msgstr ""
+
+msgid "Force"
+msgstr ""
+
+msgid "Wakeup"
+msgstr ""
+
+msgid "Inherit Autotimer"
+msgstr ""
+
+msgid "Parse Autotimer"
+msgstr ""
+
+msgid "Always"
+msgstr "Daima"
+
+msgid "Background only"
+msgstr "Sadece arkaplan"
+
+msgid "Ask, default Yes"
+msgstr ""
+
+msgid "Ask, default No"
+msgstr ""
+
+msgid "Method"
+msgstr "Yöntem"
+
+msgid "Visibly"
+msgstr ""
+
+msgid "Picture in Picture"
+msgstr ""
+
+msgid "Picture in Picture (hidden)"
+msgstr ""
+
+msgid "Fake Recording"
+msgstr ""
+
+msgid "Refresh now"
+msgstr "Şimdi tazele"
+
+msgid "Add Provider as new Bouquet"
+msgstr ""
+
+msgid "Add channel(s) to Bouquet"
+msgstr ""
+
+msgid "Add channel(s) as alternate"
+msgstr ""
+
+msgid "Export"
+msgstr "Dışa Aktar"
+
+msgid "Import"
+msgstr "İçe Aktar"
+
+msgid "Add Bouquet"
+msgstr "Buket Ekle"
+
+msgid "Rename Bouquet"
+msgstr "Buket Yeniden Adlandır"
+
+msgid "Delete Bouquet"
+msgstr "Buket Sil"
+
+msgid "Add Marker"
+msgstr "İşaretleyici Ekle"
+
+msgid "Rename"
+msgstr "Yeniden Adlandır"
+
+msgid "Delete Channel(s)"
+msgstr "Kanal(ları) Sil"
+
+msgid "Do you really want to delete the channel(s)"
+msgstr "Kanal(lar)ı silmek istiyor musunuz ?"
+
+msgid "Do you really want to delete the bouquet"
+msgstr "Buket(ler)i silmek istiyor musunuz ?"
+
+msgid "Name of the Bouquet"
+msgstr "Buket Adı"
+
+msgid "Name of the Marker"
+msgstr "İşaretleyici Adı"
+
+msgid "Enter new name for the bouquet"
+msgstr "Buket için yeni bir ad girin"
+
+msgid "Enter new name for the marker"
+msgstr "İşaretleyici için yeni bir ad girin"
+
+msgid "Please enter filename"
+msgstr "Lütfen dosya adı girin"
+
+msgid "Do you really want to restore from file"
+msgstr ""
+
+msgid "OpenWebif url: http://yourip:port"
+msgstr "OpenWebif url: http://yourip:port"
+
+msgid "OpenWebInterface Enabled"
+msgstr "OpenWebInterface Etkin"
+
+msgid "HTTP port"
+msgstr ""
+
+msgid "Enable HTTP Authentication"
+msgstr ""
+
+msgid "Enable HTTPS"
+msgstr ""
+
+msgid "HTTPS port"
+msgstr ""
+
+msgid "Enable HTTPS Authentication"
+msgstr ""
+
+msgid "Require client cert for HTTPS"
+msgstr ""
+
+msgid "Enable Authentication for streaming"
+msgstr ""
+
+msgid "Disable access for user root"
+msgstr ""
+
+msgid "Smart services renaming for XBMC"
+msgstr ""
+
+msgid "Enable Parental Control"
+msgstr "Ebeveyn Kontrolünü Etkinleştir"
+
+msgid "Add service name to stream information"
+msgstr ""
+
+msgid "Character encoding for EPG data"
+msgstr ""
+
+msgid "OpenWebif Configuration"
+msgstr "OpenWebif Yapılandırma"
+
+msgid "transcoded"
+msgstr ""
+
+msgid "System OE"
+msgstr ""
+
+msgid "Distro"
+msgstr ""
+
+msgid "Driver date"
+msgstr "Sürücü tarihi"
+
+msgid "Conflicting Timer(s) detected! %s"
+msgstr ""
+
+msgid "Could not add timer '%s'!"
+msgstr ""
+
+msgid "Timer '%s' added"
+msgstr ""
+
+msgid "EventId not found"
+msgstr ""
+
+msgid "Timer '%s' changed"
+msgstr ""
+
+msgid "Timer '%s' not saved while Conflict"
+msgstr ""
+
+msgid "Could not find timer '%s' with given start and end time!"
+msgstr ""
+
+msgid "The timer '%s' has been deleted successfully"
+msgstr ""
+
+msgid "No matching Timer found"
+msgstr "Zamanlayıcı eşleşmesi bulunamadı"
+
+msgid "The timer '%s' has been %s successfully"
+msgstr ""
+
+msgid "List of Timers has been cleaned"
+msgstr ""
+
+msgid "TimerList has been saved"
+msgstr ""
+
+msgid "No event found! Not recording!"
+msgstr ""
+
+msgid "Instant record for current Event started"
+msgstr ""
+
+msgid "Infinite Instant recording started"
+msgstr ""
+
+msgid "Timer conflict detected! Not recording!"
+msgstr ""
+
+msgid "Missing requesteter: sRef"
+msgstr ""
+
+msgid "Unknown command: '%s'"
+msgstr "Bilinmeyen komut: '%s'"
+
+msgid "PowerTimer feature not available"
+msgstr ""
+
+msgid "Sleeptimer is enabled"
+msgstr ""
+
+msgid "Sleeptimer is disabled"
+msgstr ""
+
+msgid "SleepTimer feature not available"
+msgstr ""
+
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr ""
+
+msgid "Sleeptimer has been disabled"
+msgstr ""
+
+msgid "Sleeptimer set to %d minutes"
+msgstr ""
+
+msgid "Safe mode"
+msgstr ""
+
+msgid "Close"
+msgstr "Kapat"
+
+msgid "Open in new window"
+msgstr "Yeni pencerede aç"
