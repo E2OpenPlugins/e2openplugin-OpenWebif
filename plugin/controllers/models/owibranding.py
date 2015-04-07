@@ -288,8 +288,10 @@ def getAllInfo():
 	info['type'] = type
 
 	remote = "dmm"
-	if procmodel in ("solo", "duo", "uno", "solo2", "duo2", "solose", "zero"):
+	if procmodel in ("solo", "duo", "uno", "solo2", "solose", "zero"):
 		remote = "vu_normal"
+	elif procmodel == "duo2":
+		remote = "vu_duo2"
 	elif procmodel == "ultimo":
 		remote = "vu_ultimo"
 	elif procmodel == "e3hd":
@@ -424,7 +426,10 @@ def getAllInfo():
 	try:
 		driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-modules*').readline().split( )[2]
 	except:
-		pass
+		try:
+			driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-proxy*').readline().split( )[2]
+		except:
+			pass
 
 	info['oever'] = oever
 	info['distro'] = distro

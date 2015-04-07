@@ -208,11 +208,12 @@ def getBouquets(stype):
 	return { "bouquets": bouquets }
 
 def removeHiddenBouquets(bouquetList):
-	bouquets = []
-	for bouquet in bouquetList:
-		flags = int(bouquet[0].split(':')[1])
-		if not flags & eServiceReference.isInvisible:
-			bouquets.append(bouquet)
+	bouquets = bouquetList
+	if hasattr(eServiceReference, 'isInvisible'):
+		for bouquet in bouquetList:
+			flags = int(bouquet[0].split(':')[1])
+			if flags & eServiceReference.isInvisible and bouquet in bouquets:
+				bouquets.remove(bouquet)
 	return bouquets
 
 def getProviders(stype):
@@ -296,23 +297,24 @@ def sortSatellites(satList):
 
 def getProtection(sref):
 	isProtected = "0"
-	if config.ParentalControl.configured.value:
+	if config.ParentalControl.configured.value and config.ParentalControl.servicepinactive.value:
 		protection = parentalControl.getProtectionLevel(sref)
-		if protection:
+		if protection != -1:
 			if config.ParentalControl.type.value == "blacklist":
 				if parentalControl.blacklist.has_key(sref):
-					if "SERVICE" in parentalControl.blacklist.has_key(sref):
-						service['isprotected'] = '1'
-					elif "BOUQUET" in parentalControl.blacklist.has_key(sref):
-						service['isprotected'] = '2'
+					if "SERVICE" in parentalControl.blacklist[sref]:
+						isProtected = '1'
+					elif "BOUQUET" in parentalControl.blacklist[sref]:
+						isProtected = '2'
 					else:
-						service['isprotected'] = '3'
-			else:
-				if hasattr(ParentalControl, "whitelist") and parentalControl.whitelist.has_key(sref):
-					if "SERVICE" in parentalControl.whitelist.has_key(sref):
-						service['isprotected'] = '4'
-					elif "BOUQUET" in parentalControl.whitelist.has_key(sref):
-						service['isprotected'] = '5'
+						isProtected = '3'
+			elif config.ParentalControl.type.value == "whitelist":
+				if not parentalControl.whitelist.has_key(sref):
+					service = eServiceReference(sref)
+					if service.flags & eServiceReference.isGroup:
+						isprotected = '5'
+					else:
+						isProtected = '4'
 	return isProtected
 
 def getChannels(idbouquet, stype):
@@ -333,7 +335,7 @@ def getChannels(idbouquet, stype):
 			chan = {}
 			chan['ref'] = quote(channel[0], safe=' ~@%#$&()*!+=:;,.?/\'')
 			chan['name'] = filterName(channel[1])
-			if config.ParentalControl.configured.value and config.OpenWebif.parentalenabled.value:
+			if config.OpenWebif.parentalenabled.value and config.ParentalControl.configured.value and config.ParentalControl.servicepinactive.value:
 				chan['protection'] = getProtection(channel[0])
 			else:
 				chan['protection'] = "0"
