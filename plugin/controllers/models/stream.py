@@ -105,7 +105,7 @@ def getTS(self, request):
 		if os.path.exists(filename + '.meta'):
 			metafile = open(filename + '.meta', "r")
 			name = ''
-			seconds = -1 				# unknown duration default
+			seconds = -1			# unknown duration default
 			line = metafile.readline()	# service ref
 			if line:
 				sRef = eServiceReference(line.strip()).toString()
@@ -113,9 +113,9 @@ def getTS(self, request):
 			if line2:
 				name = line2.strip()
 			line3 = metafile.readline()	# description
-			line4 = metafile.readline() # recording time
-			line5 = metafile.readline() # tags
-			line6 = metafile.readline() # length
+			line4 = metafile.readline()	# recording time
+			line5 = metafile.readline()	# tags
+			line6 = metafile.readline()	# length
 
 			if line6:
 				seconds = float(line6.strip()) / 90000 # In seconds

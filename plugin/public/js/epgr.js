@@ -165,10 +165,10 @@ function readEPGR2(chbq)
 					else
 						$('#er_'+name).val(val);
 				}
-				else {
-					if(name === "hasAutoTimer" && val === "True")
-						er_hasAutoTimer = true;
-				}
+				//else {
+				//	if(name === "hasAutoTimer" && val === "True")
+				//		er_hasAutoTimer = true;
+				//}
 			});
 			
 			UpdateCHBQ(chbq,begin,end);

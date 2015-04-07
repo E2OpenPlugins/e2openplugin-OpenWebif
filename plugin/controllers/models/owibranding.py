@@ -124,7 +124,37 @@ def getAllInfo():
 	if tpmloaded:
 		orgdream = tpm_check()
 	
-	if fileExists("/proc/stb/info/hwmodel"):
+	if fileExists("/etc/.box"):
+		distro = "HDMU"
+		f = open("/etc/.box",'r')
+		tempmodel = f.readline().strip().lower()
+		f.close()
+		if tempmodel.startswith("ufs") or model.startswith("ufc"):
+			brand = "Kathrein"
+		elif tempmodel.startswith("spark"):
+			brand = "Fulan"
+		model = tempmodel
+		if tempmodel.startswith("et"):
+			brand = "Xtrend"
+			f = open("/proc/stb/info/boxtype",'r')
+		elif fileExists("/proc/stb/info/azmodel"):
+			brand = "AZBox"
+			f = open("/proc/stb/info/model",'r')
+		elif fileExists("/proc/stb/info/gbmodel"):
+			brand = "GigaBlue"
+			f = open("/proc/stb/info/gbmodel",'r')
+			gb = f.readline().strip()
+			model = gb.upper().replace("GBQUAD", "Quad").replace("PLUS", " Plus")
+		elif fileExists("/proc/stb/info/vumodel") and tempmodel.startswith("vu") is True:
+			brand = "Vu+"
+			f = open("/proc/stb/info/vumodel",'r')
+			model = f.readline().strip().title().replace("olose", "olo SE").replace("olo2se", "olo2 SE").replace("2", "²")
+		else:
+			brand = "HDMU"
+			f = open("/etc/.box",'r')
+		procmodel = f.readline().strip()
+		f.close()
+	elif fileExists("/proc/stb/info/hwmodel"):
 		brand = "DAGS"
 		f = open("/proc/stb/info/hwmodel",'r')
 		procmodel = f.readline().strip()
@@ -233,19 +263,6 @@ def getAllInfo():
 			model = "DM8000"
 		else:
 			model = procmodel
-
-	if fileExists("/etc/.box"):
-		distro = "HDMU"
-		f = open("/etc/.box",'r')
-		tempmodel = f.readline().strip().lower()
-		if tempmodel.startswith("ufs") or model.startswith("ufc"):
-			brand = "Kathrein"
-			model = tempmodel.upcase()
-			procmodel = tempmodel
-		elif tempmodel.startswith("spark"):
-			brand = "Fulan"
-			model = tempmodel.title()
-			procmodel = tempmodel
 
 	type = procmodel
 	if type in ("et9000", "et9200", "et9500"):
