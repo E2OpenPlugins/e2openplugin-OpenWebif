@@ -132,12 +132,6 @@ def getAllInfo():
 		if (procmodel.startswith("optimuss") or procmodel.startswith("pingulux")):
 			brand = "Edision"
 			model = procmodel.replace("optimmuss", "Optimuss ").replace("plus", " Plus").replace(" os", " OS")
-	elif fileExists("/proc/stb/info/vumodel"):
-		brand = "Vu+"
-		f = open("/proc/stb/info/vumodel",'r')
-		procmodel = f.readline().strip()
-		f.close()
-		model = procmodel.title().replace("olose", "olo SE").replace("olo2se", "olo2 SE").replace("2", "Â²")
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBox"
 		f = open("/proc/stb/info/model",'r') # To-Do: Check if "model" is really correct ...
@@ -150,8 +144,13 @@ def getAllInfo():
 		procmodel = f.readline().strip()
 		f.close()
 		model = procmodel.upper().replace("GBQUAD", "Quad").replace("PLUS", " Plus")
+	elif fileExists("/proc/stb/info/vumodel"):
+		brand = "Vu+"
+		f = open("/proc/stb/info/vumodel",'r')
+		procmodel = f.readline().strip()
+		f.close()
+		model = procmodel.title().replace("olose", "olo SE").replace("olo2se", "olo2 SE").replace("2", "²")
 	elif fileExists("/proc/stb/info/boxtype"):
-		# boxtype exists on nearly every E2 box, if we have nothing better for detection we need to analyse its content
 		f = open("/proc/stb/info/boxtype",'r')
 		procmodel = f.readline().strip().lower()
 		f.close()
@@ -246,6 +245,10 @@ def getAllInfo():
 			brand = "Fulan"
 			model = tempmodel.title()
 			procmodel = tempmodel
+		elif tempmodel.startswith("xcombo"):
+			brand = "EVO"
+			model = "enfinityX combo plus"
+			procmodel = "vg2000"
 
 	type = procmodel
 	if type in ("et9000", "et9200", "et9500"):
@@ -323,7 +326,7 @@ def getAllInfo():
 		remote = "hd2400"
 	elif procmodel.startswith("ixuss"):
 		remote = procmodel.replace(" ", "")
-	elif procmodel == "xcombo":
+	elif procmodel == "vg2000":
 		remote = "xcombo"
 
 	info['remote'] = remote
