@@ -48,8 +48,7 @@ config.OpenWebif.https_enabled = ConfigYesNo(default=False)
 config.OpenWebif.https_port = ConfigInteger(default = 443, limits=(1, 65535) )
 config.OpenWebif.https_auth = ConfigYesNo(default=True)
 config.OpenWebif.https_clientcert = ConfigYesNo(default=False)
-# Parental Control currently disabled for testing
-config.OpenWebif.parentalenabled = ConfigYesNo(default=True)
+config.OpenWebif.parentalenabled = ConfigYesNo(default=False)
 # Use service name for stream
 config.OpenWebif.service_name_for_stream = ConfigYesNo(default=True)
 # authentication for streaming
