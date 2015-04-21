@@ -10,6 +10,7 @@
 ##############################################################################
 
 from enigma import eEnv
+from Screens.MessageBox import MessageBox
 from Components.config import config
 from Tools.Directories import fileExists
 from twisted.internet import reactor, ssl
