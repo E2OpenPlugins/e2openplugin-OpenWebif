@@ -149,7 +149,7 @@ def getAllInfo():
 		f = open("/proc/stb/info/vumodel",'r')
 		procmodel = f.readline().strip()
 		f.close()
-		model = procmodel.title().replace("olose", "olo SE").replace("olo2se", "olo2 SE").replace("2", "²")
+		model = procmodel.title().replace("olose", "olo SE").replace("olo2se", "olo2 SE").replace("2", "Â²")
 	elif fileExists("/proc/stb/info/boxtype"):
 		f = open("/proc/stb/info/boxtype",'r')
 		procmodel = f.readline().strip().lower()
