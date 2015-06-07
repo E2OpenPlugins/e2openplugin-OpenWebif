@@ -469,7 +469,7 @@ msgid "On"
 msgstr "Ein"
 
 msgid "Open Source Web Interface for Linux set-top box"
-msgstr "Open-Source-Webinterface für Linux-Set-Top-Boxen"
+msgstr "Quelloffenes Webinterface für Linux-Receiver"
 
 msgid "Show box name in header"
 msgstr "Boxnamen in der Kopfzeile anzeigen"
