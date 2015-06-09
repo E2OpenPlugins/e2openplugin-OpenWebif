@@ -255,6 +255,8 @@ def getAllInfo():
 		type = "et9x00"
 	elif type in ("et5000", "et6000", "et6x00"):
 		type = "et5x00"
+	elif type in ("et8500", "et8500s"):
+		type = "et8500"
 	elif type == "et4000":
 		type = "et4x00"
 	elif type == "xp1000":
