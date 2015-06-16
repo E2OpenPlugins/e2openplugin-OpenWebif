@@ -251,7 +251,7 @@ def getAllInfo():
 			procmodel = "vg2000"
 
 	type = procmodel
-	if type in ("et9000", "et9200", "et9500"):
+	if type in ("et9000", "et9100", "et9200", "et9500"):
 		type = "et9x00"
 	elif type in ("et5000", "et6000", "et6x00"):
 		type = "et5x00"
@@ -282,20 +282,22 @@ def getAllInfo():
 		remote = "vu_ultimo"
 	elif procmodel == "e3hd":
 		remote = "e3hd"
-	elif procmodel in ("et9x00", "et9000", "et9200", "et9500"):
+	elif procmodel in ("et9x00", "et9000", "et9100", "et9200", "et9500"):
 		remote = "et9x00"
 	elif procmodel in ("et5x00", "et5000", "et6x00", "et6000"):
 		remote = "et5x00"
 	elif procmodel in ("et4x00", "et4000"):
 		remote = "et4x00"
+	elif procmodel == "et6500":
+		remote = "et6500"
+	elif procmodel in ("et8x00", "et8000", "et8500", "et8500s","et1x000", "et10000"):
+		remote = "et8000"
+	elif procmodel in ("et7x00", "et7000", "et7500"):
+		remote = "et7x00"
 	elif procmodel == "gbquad":
 		remote = "gigablue"
 	elif procmodel == "gbquadplus":
 		remote = "gbquadplus"
-	elif procmodel == "et6500":
-		remote = "et6500"
-	elif procmodel in ("et8x00", "et8000", "et1x000", "et10000"):
-		remote = "et8000"
 	elif procmodel in ("formuler1", "formuler3"):
 		remote = "formuler1"
 	elif procmodel in ("azboxme", "azboxminime", "me", "minime"):
