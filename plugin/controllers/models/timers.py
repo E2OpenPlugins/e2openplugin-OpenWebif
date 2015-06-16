@@ -133,7 +133,6 @@ def getTimers(session):
 	}
 
 def addTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname, tags, repeated, vpsinfo=None, logentries=None, eit=0, always_zap=-1):
-	serviceref = unquote(serviceref)
 	rt = session.nav.RecordTimer
 
 	print "mao1", dirname
@@ -195,7 +194,6 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 	}
 
 def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vpsinfo, always_zap):
-	serviceref = unquote(serviceref)
 	event = eEPGCache.getInstance().lookupEventId(eServiceReference(serviceref), eventid)
 	if event is None:
 		return {
@@ -227,7 +225,6 @@ def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vps
 # !!! This new function must be tested !!!! 
 def editTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterEvent, dirname, tags, repeated, channelOld, beginOld, endOld, vpsinfo, always_zap):
 	# TODO: exception handling
-	serviceref = unquote(serviceref)
 	channelOld_str =  ':'.join(str(channelOld).split(':')[:11])
 	rt = session.nav.RecordTimer
 	for timer in rt.timer_list + rt.processed_timers:
@@ -286,7 +283,6 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 	}
 
 def removeTimer(session, serviceref, begin, end):
-	serviceref = unquote(serviceref)
 	serviceref_str = ':'.join(str(serviceref).split(':')[:11])
 	rt = session.nav.RecordTimer
 	for timer in rt.timer_list + rt.processed_timers:
