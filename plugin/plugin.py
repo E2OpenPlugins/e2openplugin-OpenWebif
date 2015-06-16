@@ -24,6 +24,7 @@ from Components.Label import Label
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection
 from enigma import getDesktop
+from controllers.models.info import getInfo
 
 from httpserver import HttpdStart, HttpdStop, HttpdRestart
 
@@ -48,7 +49,7 @@ config.OpenWebif.https_enabled = ConfigYesNo(default=False)
 config.OpenWebif.https_port = ConfigInteger(default = 443, limits=(1, 65535) )
 config.OpenWebif.https_auth = ConfigYesNo(default=True)
 config.OpenWebif.https_clientcert = ConfigYesNo(default=False)
-config.OpenWebif.parentalenabled = ConfigYesNo(default = False)
+config.OpenWebif.parentalenabled = ConfigYesNo(default=False)
 # Use service name for stream
 config.OpenWebif.service_name_for_stream = ConfigYesNo(default=True)
 # authentication for streaming
@@ -123,7 +124,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			self.list.append(getConfigListEntry(_("Smart services renaming for XBMC"), config.OpenWebif.xbmcservices))
 			self.list.append(getConfigListEntry(_("Enable Parental Control"), config.OpenWebif.parentalenabled))
 			self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
-			self.list.append(getConfigListEntry(_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))
+			# self.list.append(getConfigListEntry(_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))
 
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
@@ -175,13 +176,23 @@ def startSession(reason, session):
 	global global_session
 	global_session = session
 
-def Plugins(**kwargs):
-	screenwidth = getDesktop(0).size().width()
-	if screenwidth and screenwidth == 1920:
-		return [PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startSession),
-				PluginDescriptor(where=[PluginDescriptor.WHERE_NETWORKCONFIG_READ], fnc=IfUpIfDown),
-				PluginDescriptor(name="OpenWebif", description=_("OpenWebif Configuration"), icon="openwebifhd.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=confplug)]
+def main_menu(menuid, **kwargs):
+	if menuid == "network":
+		return [("OpenWebif", confplug, "openwebif", 37)]
 	else:
-		return [PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startSession),
-			    PluginDescriptor(where=[PluginDescriptor.WHERE_NETWORKCONFIG_READ], fnc=IfUpIfDown),
-				PluginDescriptor(name="OpenWebif", description=_("OpenWebif Configuration"), icon="openwebif.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=confplug)]
+		return []
+
+def Plugins(**kwargs):
+	result = [
+		PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startSession),
+		PluginDescriptor(where=[PluginDescriptor.WHERE_NETWORKCONFIG_READ], fnc=IfUpIfDown),
+		]
+	imagedistro = getInfo()['imagedistro']
+	screenwidth = getDesktop(0).size().width()
+	if imagedistro in ("openatv"):
+		result.append(PluginDescriptor(name="OpenWebif", description=_("OpenWebif Configuration"), where = PluginDescriptor.WHERE_MENU, fnc = main_menu))
+	if screenwidth and screenwidth == 1920:
+		result.append(PluginDescriptor(name="OpenWebif", description=_("OpenWebif Configuration"), icon="openwebifhd.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=confplug))
+	else:
+		result.append(PluginDescriptor(name="OpenWebif", description=_("OpenWebif Configuration"), icon="openwebif.png", where=[PluginDescriptor.WHERE_PLUGINMENU], fnc=confplug))
+	return result
