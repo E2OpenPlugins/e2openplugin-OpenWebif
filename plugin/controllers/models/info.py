@@ -291,7 +291,7 @@ def getInfo():
 		else:
 			size = "%d MB" % size
 
-		iecsize = hdd.diskSize() / float(500) * 512
+		iecsize = hdd.diskSize()
 		# Harddisks > 1000 decimal Gigabytes are labelled in TB
 		if iecsize > 1000000:
 			iecsize = (iecsize + 50000) // float(100000) / 10
