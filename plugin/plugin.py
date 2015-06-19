@@ -178,7 +178,7 @@ def startSession(reason, session):
 
 def main_menu(menuid, **kwargs):
 	if menuid == "network":
-		return [("OpenWebif", confplug, "openwebif", 37)]
+		return [("OpenWebif", confplug, "openwebif", 45)]
 	else:
 		return []
 
