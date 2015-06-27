@@ -842,7 +842,7 @@ function initTimerEditBegin()
 		dayNamesMin: [tstr_su, tstr_mo, tstr_tu, tstr_we, tstr_th, tstr_fr, tstr_sa, tstr_su],
 		
 		dateFormat: 'dd.mm.yy',
-		timeFormat: 'hh:mm',
+		timeFormat: 'HH:mm',
 		onClose: function(dateText, inst) {
 			if ($('#timerend').val() != '' &&
 				$(this).datetimepicker('getDate') > $('#timerend').datetimepicker('getDate')) {
