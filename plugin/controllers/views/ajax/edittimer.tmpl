@@ -106,7 +106,7 @@
 </div>
 </form>
 
-<script src="/js/jquery.timerpicker.js"></script>
+<script src="/js/jquery-ui-timepicker-addon.min.js"></script>
 
 <script type="text/javascript">
 
@@ -128,7 +128,7 @@ $('#timerend').datetimepicker({
 	dayNamesMin: [tstr_su, tstr_mo, tstr_tu, tstr_we, tstr_th, tstr_fr, tstr_sa, tstr_su],
 	
 	dateFormat: 'dd.mm.yy',
-	timeFormat: 'hh:mm',
+	timeFormat: 'HH:mm',
 	onClose: function(dateText, inst) {
 		if (!timeredit_begindestroy && $('#timerbegin').val() != '' &&	
 			$('#timerbegin').datetimepicker('getDate') > $(this).datetimepicker('getDate')) {
