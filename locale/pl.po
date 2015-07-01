@@ -1179,3 +1179,96 @@ msgstr "Konfiguracja OpenWebif"
 
 msgid "transcoded"
 msgstr "transkodowane"
+
+msgid "System OE"
+msgstr "Wersja OE"
+
+msgid "Distro"
+msgstr "Dystrybucja"
+
+msgid "Driver date"
+msgstr "Data sterowników"
+
+msgid "Conflicting Timer(s) detected! %s"
+msgstr "Wykryto konflikt zadań planowych! %s"
+
+msgid "Could not add timer '%s'!"
+msgstr "Nie można dodać zadań planowych '%s'!"
+
+msgid "Timer '%s' added"
+msgstr "Dodano zadania planowe '%s'"
+
+msgid "EventId not found"
+msgstr "Nie znaleziono identyfikatora zdarzenia"
+
+msgid "Timer '%s' changed"
+msgstr "Zmieniono zadania planowe '%s'"
+
+msgid "Timer '%s' not saved while Conflict"
+msgstr "Nie zapisano zadań planowych '%s' z powodu konfliktu"
+
+msgid "Could not find timer '%s' with given start and end time!"
+msgstr "Nie można zlaneźć zadania planowego '%s' w podanych granicach czasowych!"
+
+msgid "The timer '%s' has been deleted successfully"
+msgstr "Usunięto zadanie planowe '%s'"
+
+msgid "No matching Timer found"
+msgstr "Nie znaleziono zgodnych zadań planowych"
+
+msgid "The timer '%s' has been %s successfully"
+msgstr "Zmodyfikowano zadanie planowe '%s'"
+
+msgid "List of Timers has been cleaned"
+msgstr "Lista zadań planowych została wyczyszczona"
+
+msgid "TimerList has been saved"
+msgstr "Zapisano listę zadań planowych"
+
+msgid "No event found! Not recording!"
+msgstr "Nie znaleziono zdarzenia! Anulowano nagrywanie!"
+
+msgid "Instant record for current Event started"
+msgstr "Rozpoczęto natychmiastowe nagrywanie dla aktualnego zdarzenia"
+
+msgid "Infinite Instant recording started"
+msgstr "Rozpoczęto natychmiastowe nagrywanie bez ograniczeń"
+
+msgid "Timer conflict detected! Not recording!"
+msgstr "Wykryto konflikt zadań planowych! Anulowano nagrywanie!"
+
+msgid "Missing requesteter: sRef"
+msgstr "Brak wnioskodawcy: sRef"
+
+msgid "Unknown command: '%s'"
+msgstr "Nieznane polecenie: '%s'"
+
+msgid "PowerTimer feature not available"
+msgstr "Funkcja PowerTimer jest niedostępna"
+
+msgid "Sleeptimer is enabled"
+msgstr "Wyłącznik czasowy jest aktywny"
+
+msgid "Sleeptimer is disabled"
+msgstr "Wyłącznik czasowy jest nieaktywny"
+
+msgid "SleepTimer feature not available"
+msgstr "Funkcja wyłącznika czasowego jest niedostępna"
+
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr "BŁĄD: Nie można ustawić wyłącznika czasowego kiedy urządzenie jest w stanie czuwania"
+
+msgid "Sleeptimer has been disabled"
+msgstr "Wyłącznik czasowy został deaktywowany"
+
+msgid "Sleeptimer set to %d minutes"
+msgstr "Ustawiono wyłącznik czasowy na %d minut"
+
+msgid "Safe mode"
+msgstr "Tryb bezpieczny"
+
+msgid "Close"
+msgstr "Zamknij"
+
+msgid "Open in new window"
+msgstr "Otwórz w nowym oknie"
