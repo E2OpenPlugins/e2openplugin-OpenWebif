@@ -32,16 +32,11 @@ fieldset > label
 							<fieldset>
 								<br><label for="enabled">$tstrings['at_enabled']:</label>
 								<input type="checkbox" name="enabled" id="enabled" value="" class="checkbox ui-widget-content ui-corner-all">
-								<label for="name">$tstrings['at_description']:</label>
+								<br><label for="name">$tstrings['at_description']:</label>
 								<input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
-								<label for="match">$tstrings['at_title_match']:</label>
+								<br><label for="match">$tstrings['at_title_match']:</label>
 								<input type="text" name="match" id="match" class="text ui-widget-content ui-corner-all">
-								<br><label for="encoding">$tstrings['at_encoding']:</label>
-								<select name="encoding" id="encoding">
-								<option value="ISO8859-15" selected="selected">ISO8859-15</option>
-								<option value="UTF-8">UTF-8</option>
-								</select>
-								<label for="searchType">$tstrings['at_search_type']:</label>
+								<!-- <label for="searchType">$tstrings['at_search_type']:</label> -->
 								<select name="searchType" id="searchType">
 								<option value="partial" selected="selected">$tstrings['at_partial_match']</option>
 								<option value="exact">$tstrings['at_exact_match']</option>
@@ -50,7 +45,7 @@ fieldset > label
 									<option value="start">$tstrings['at_start_match']</option>
 								#end if
 								</select>
-								<br><label for="searchCase">$tstrings['at_search_strictness']:</label>
+								<!-- <br><label for="searchCase">$tstrings['at_search_strictness']:</label> -->
 								<select name="searchCase" id="searchCase">
 								<option value="sensitive" selected="selected">$tstrings['at_case_sensitive']</option>
 								<option value="insensitive">$tstrings['at_case_insensitive']</option>
