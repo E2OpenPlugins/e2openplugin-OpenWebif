@@ -69,7 +69,7 @@ config.OpenWebif.epg_encoding = ConfigSelection(default = 'utf-8', choices = [ '
 										'iso-8859-9',
 										'iso-8859-10',
 										'iso-8859-16'])
-
+imagedistro = getInfo()['imagedistro']
 
 class OpenWebifConfig(Screen, ConfigListScreen):
 	skin = """
@@ -124,7 +124,8 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			self.list.append(getConfigListEntry(_("Smart services renaming for XBMC"), config.OpenWebif.xbmcservices))
 			self.list.append(getConfigListEntry(_("Enable Parental Control"), config.OpenWebif.parentalenabled))
 			self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
-			# self.list.append(getConfigListEntry(_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))
+			if imagedistro in ("VTi-Team Image"):
+				self.list.append(getConfigListEntry(_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))
 
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
@@ -187,7 +188,6 @@ def Plugins(**kwargs):
 		PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startSession),
 		PluginDescriptor(where=[PluginDescriptor.WHERE_NETWORKCONFIG_READ], fnc=IfUpIfDown),
 		]
-	imagedistro = getInfo()['imagedistro']
 	screenwidth = getDesktop(0).size().width()
 	if imagedistro in ("openatv"):
 		result.append(PluginDescriptor(name="OpenWebif", description=_("OpenWebif Configuration"), where = PluginDescriptor.WHERE_MENU, fnc = main_menu))
