@@ -124,7 +124,8 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			self.list.append(getConfigListEntry(_("Smart services renaming for XBMC"), config.OpenWebif.xbmcservices))
 			self.list.append(getConfigListEntry(_("Enable Parental Control"), config.OpenWebif.parentalenabled))
 			self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
-			self.list.append(getConfigListEntry(_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))
+			if imagedistro in ("VTi-Team Image"):
+				self.list.append(getConfigListEntry(_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))
 
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
@@ -178,7 +179,7 @@ def startSession(reason, session):
 
 def main_menu(menuid, **kwargs):
 	if menuid == "network":
-		return [("OpenWebif", confplug, "openwebif", 37)]
+		return [("OpenWebif", confplug, "openwebif", 45)]
 	else:
 		return []
 
