@@ -288,7 +288,6 @@ function InitPage() {
 
 var atxml;
 var CurrentAT = null;
-var dencoding = null;
 
 function isBQ(sref)
 {
@@ -389,10 +388,6 @@ function getData()
 function FillAT(autotimerid)
 {
 	var def = $(atxml).find("defaults");
-	if(def)
-		dencoding=def.attr("encoding");
-	if(!dencoding)
-		dencoding="UTF-8";
 
 	$(atxml).find("timer").each(function () {
 		if($(this).attr("id")==autotimerid) {
@@ -562,11 +557,6 @@ function AutoTimerObj (xml) {
 	if(!this.counterFormat)
 		this.counterFormat='';
 
-	this.encoding = xml.attr("encoding");
-	if(!this.encoding) {
-		this.encoding = dencoding;
-	}
-
 	this.vps = false;
 	this.vpso = false;
 	if(xml.attr("vps_enabled") === "yes") {
@@ -697,10 +687,10 @@ function addAT(evt)
 	});
 	var name = tstr_timernewname;
 	var id = _id.toString();
-	var xml = '<timers><timer name="'+name+'" match="'+name+'" enabled="yes" id="'+id+'" encoding="ISO8859-15" justplay="0" overrideAlternatives="1"></timer></timers>';
+	var xml = '<timers><timer name="'+name+'" match="'+name+'" enabled="yes" id="'+id+'" justplay="0" overrideAlternatives="1"></timer></timers>';
 	if (typeof evt !== 'undefined') 
 	{
-		xml = '<timers><timer name="'+evt.name+'" match="'+evt.name+'" enabled="yes" id="'+id+'" encoding="ISO8859-15" from="'+evt.from+'" to="'+evt.to+'"';
+		xml = '<timers><timer name="'+evt.name+'" match="'+evt.name+'" enabled="yes" id="'+id+'" from="'+evt.from+'" to="'+evt.to+'"';
 		xml += ' searchType="exact" searchCase="sensitive" justplay="0" overrideAlternatives="1" '
 		xml += '><e2service><e2servicereference>'+evt.sref+'</e2servicereference><e2servicename>'+evt.sname+'</e2servicename></e2service>';
 		xml += '</timer></timers>';
@@ -861,7 +851,6 @@ function saveAT()
 	reqs += "&maxduration=";
 	if(CurrentAT.maxduration && CurrentAT.maxduration > -1)
 		reqs += CurrentAT.maxduration;
-	reqs += "&encoding=" + encodeURIComponent(CurrentAT.encoding);
 
 	if(CurrentAT.timerOffset) {
 		if(CurrentAT.timerOffsetAfter > -1 && CurrentAT.timerOffsetBefore > -1)
