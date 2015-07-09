@@ -69,7 +69,7 @@ config.OpenWebif.epg_encoding = ConfigSelection(default = 'utf-8', choices = [ '
 										'iso-8859-9',
 										'iso-8859-10',
 										'iso-8859-16'])
-
+imagedistro = getInfo()['imagedistro']
 
 class OpenWebifConfig(Screen, ConfigListScreen):
 	skin = """
@@ -188,7 +188,6 @@ def Plugins(**kwargs):
 		PluginDescriptor(where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=startSession),
 		PluginDescriptor(where=[PluginDescriptor.WHERE_NETWORKCONFIG_READ], fnc=IfUpIfDown),
 		]
-	imagedistro = getInfo()['imagedistro']
 	screenwidth = getDesktop(0).size().width()
 	if imagedistro in ("openatv"):
 		result.append(PluginDescriptor(name="OpenWebif", description=_("OpenWebif Configuration"), where = PluginDescriptor.WHERE_MENU, fnc = main_menu))
