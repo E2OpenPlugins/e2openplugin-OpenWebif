@@ -614,6 +614,11 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	
 	if(this.location) {
 		$('#location').val(this.location);
+		if(this.location !== $('#location').val()) {
+			current_location = "<option value='" + this.location + "'>" + this.location + "</option>";
+			$('#location').append(current_location);
+			$('#location').val(this.location);
+		}
 		$('#Location').prop('checked',true);
 	}
 	else
@@ -769,7 +774,6 @@ function saveAT()
 	CurrentAT.overrideAlternatives = $('#overrideAlternatives').is(':checked');
 	CurrentAT.timeSpan = $('#timeSpan').is(':checked');
 	CurrentAT.avoidDuplicateDescription = $('#avoidDuplicateDescription').val();
-	CurrentAT.location = $('#avoidDuplicateDescription').val();
 	CurrentAT.timeSpan = $('#timeSpan').is(':checked');
 	CurrentAT.from = $('#from').val();
 	CurrentAT.to = $('#to').val();
