@@ -886,6 +886,11 @@ function editTimer(serviceref, begin, end) {
 							$('#description').val(timer.description);
 							$('#bouquet_select').val(timer.serviceref);
 							$('#dirname').val(timer.dirname);
+							if(timer.dirname !== $('#dirname').val()) {
+								current_location = "<option value='" + timer.dirname + "'>" + timer.dirname + "</option>";
+								$('#dirname').append(current_location);
+								$('#dirname').val(timer.dirname);
+							}
 							$('#enabled').prop("checked", timer.disabled == 0);
 							$('#justplay').prop("checked", timer.justplay);
 							$('#afterevent').val(timer.afterevent);
