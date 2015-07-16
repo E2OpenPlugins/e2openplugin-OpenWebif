@@ -330,7 +330,7 @@ def getAllInfo():
 		remote = procmodel.replace(" ", "")
 	elif procmodel == "vg2000":
 		remote = "xcombo"
-	elif procmodel == "dm8000":
+	elif procmodel == "dm8000" and orgdream:
 		remote = "dmm1"
 	elif procmodel in ("dm7080", "dm7020hd", "dm7020hdv2", "dm800sev2", "dm500hdv2", "dm820"):
 		remote = "dmm2"
