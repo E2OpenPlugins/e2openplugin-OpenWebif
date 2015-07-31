@@ -182,7 +182,7 @@ def getInfo():
 			chipset = "SIGMA 8653"
 		else:
 			chipset = "SIGMA 8634"
-	else:
+	elif fileExists("/proc/stb/info/model"):
 		f = open("/proc/stb/info/model",'r')
 		model = f.readline().strip().lower()
 		f.close()
@@ -194,11 +194,18 @@ def getInfo():
 		if model == "tf7700hdpvr":
 			chipset = "SH4 @266MHz"
 		elif model in ("nbox", "bska", "bsla", "bxzb", "bzzb"):
-			chipset = "SH4 @266MHz"
-		elif model in ("adb2850", "adb2849"):
-			chipset = "SH4 @450MHz"
-		elif model in ("sagemcom88", "esi88", "uhd88", "dsi87"):
-			chipset = "SH4 @450MHz"
+			chipset = "STi7100 @266MHz"
+		elif model in ("arivalink200"):
+			chipset = "STi7109 @266MHz"
+		elif model in ("adb2850", "adb2849", "dsi87"):
+			chipset = "STi7111 @450MHz"
+		elif model in ("sagemcom88", "esi88", "uhd88"):
+			chipset = "STi7105 @450MHz"
+		elif model.startswith("spark"):
+			if model == "spark7162":
+				chipset = "STi7162 @540MHz"
+			else:
+				chipset = "STi7111 @450MHz"
 
 	if fileExists("/proc/stb/info/chipset"):
 		f = open("/proc/stb/info/chipset",'r')
