@@ -330,7 +330,57 @@ def moveMovie(session, sRef, destpath):
 def renameMovie(session, sRef, newname):
 	return _moveMovie (session,sRef,newname=newname)
 
-def getMovieTags(addtag = None, deltag = None):
+def getMovieTags(sRef = None, addtag = None, deltag = None):
+	
+	if sRef is not None:
+		result = False
+		service = ServiceReference(sRef)
+		if service is not None:
+			fullpath = service.ref.getPath()
+			filename = '/'.join(fullpath.split("/")[1:])
+			metafilename = '/'+filename + '.meta'
+			if fileExists(metafilename):
+				lines = []
+				with open(metafilename, 'r') as f:
+					lines = f.readlines()
+				if lines:
+					meta = ["","","","","","",""]
+					lines = [l.strip() for l in lines]
+					le = len(lines)
+					meta[0:le] = lines[0:le]
+					oldtags = meta[4].split(' ')
+
+					if addtag is not None:
+						addtag = addtag.replace(' ','_')
+						try:
+							oldtags.index(addtag)
+						except ValueError:
+							oldtags.append(addtag)
+					if deltag is not None:
+						deltag = deltag.replace(' ','_')
+					else:
+						deltag = 'dummy'
+					newtags = []
+					for tag in oldtags:
+						if tag is not deltag:
+							newtags.append(tag)
+
+					lines[4] = ' '.join(newtags)
+
+					with open(metafilename, 'w') as f:
+						f.write('\n'.join(lines))
+
+					result = True
+					return {
+						"result": result,
+						"tags" : newtags
+					}
+
+		return {
+			"result": result,
+			"resulttext" : "Recording not found"
+		}
+	
 	tags = []
 	wr = False
 	if fileExists(MOVIETAGFILE):

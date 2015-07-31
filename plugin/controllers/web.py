@@ -381,11 +381,14 @@ class WebController(BaseController):
 	def P_movietags(self, request):
 		_add = None
 		_del = None
+		_sref = None
 		if "add" in request.args.keys():
 			_add = request.args["add"][0]
 		if "del" in request.args.keys():
 			_del = request.args["del"][0]
-		return getMovieTags(_add,_del)
+		if "sref" in request.args.keys():
+			_sref = request.args["sref"][0]
+		return getMovieTags(_sref,_add,_del)
 
 	# a duplicate api ??
 	def P_gettags(self, request):
@@ -1112,3 +1115,22 @@ class WebController(BaseController):
 
 	def P_loadepg(self, request):
 		return loadEpg()
+
+	def P_getsubtitles(self, request):
+		service = self.session.nav.getCurrentService()
+		ret = { "subtitlelist": [], "result": False }
+		subtitle = service and service.subtitle()
+		subtitlelist = subtitle and subtitle.getSubtitleList()
+		if subtitlelist:
+			for i in range(0, len(subtitlelist)):
+				ret["result"] = True
+				subt = subtitlelist[i]
+				ret["subtitlelist"].append({
+					"type": subt[0],
+					"pid": subt[1],
+					"page_nr": subt[2],
+					"mag_nr": subt[3],
+					"lang": subt[4]
+				})
+		return ret
+
