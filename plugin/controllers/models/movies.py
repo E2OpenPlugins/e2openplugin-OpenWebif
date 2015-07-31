@@ -362,7 +362,7 @@ def getMovieTags(sRef = None, addtag = None, deltag = None):
 						deltag = 'dummy'
 					newtags = []
 					for tag in oldtags:
-						if tag is not deltag:
+						if tag != deltag:
 							newtags.append(tag)
 
 					lines[4] = ' '.join(newtags)
