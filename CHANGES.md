@@ -3,9 +3,21 @@
 **FEATURES**
 * powertimer api
 
-## Version 0.4.6
+## Version 0.4.7
 ## (in development)
 **FEATURES**
+* improve edit movie tags
+
+## Version 0.4.6
+**FEATURES**
+* add more supported box models
+
+**FIXES**
+* translations
+* encoding problems
+* owbranding
+* streaming problems
+* parental control
 
 ## Version 0.4.5
 **FEATURES**
