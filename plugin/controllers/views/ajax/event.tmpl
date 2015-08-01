@@ -2,6 +2,7 @@
 #from json import dumps
 #set $etime = time.localtime($event.begin)
 #set $channel = $event.channel.replace("'", r"\'")
+#set $title = $event.title.replace("'", r"\'")
 #set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
 #from Plugins.Extensions.OpenWebif.local import tstrings
 
@@ -59,7 +60,7 @@ display:inline-block;
 					<br>
 					<a href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']"><div class="ti_icon ti_timeredit"></div></a>
 					#if $at
-					<a class="at_timer" href="#" onclick="addAutoTimerEvent('$sref','$channel','$event.title','$event.begin_str','$event.end');return false;" title="$tstrings['add_autotimer']"><div class="ti_icon ti_timerat"></div></a>
+					<a class="at_timer" href="#" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin_str','$event.end');return false;" title="$tstrings['add_autotimer']"><div class="ti_icon ti_timerat"></div></a>
 					#end if
 					<a class="d_timer" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']"><div class="ti_icon ti_timerdelete"></div></a>
 					<br>
