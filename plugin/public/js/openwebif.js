@@ -467,9 +467,20 @@ function addAutoTimerEvent(sRef, sname, title ,begin, end) {
 			"sref" : sRef,
 			"sname" : sname
 		};
+		
+		var atd=$('#atdialog');
+		if (atd != 'undefined')
+		{
+			$("#content_container").load('/ajax/at', function() { 
+				$("#atdialog").show(200).draggable();
+			});
+		}
+		else {
+		
 		// open the autotimer edit view with a new autotimer
 		load_maincontent('ajax/at');
 		
+		}
 		$("#modaldialog").dialog('destroy');
 		
 }
