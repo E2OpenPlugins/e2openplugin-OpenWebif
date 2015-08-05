@@ -788,6 +788,9 @@ msgstr "exacte overeenkomst"
 msgid "description match"
 msgstr "overeenkomst in beschrijving"
 
+msgid "title or description match"
+msgstr ""
+
 msgid "start match"
 msgstr "aanvangen met vergelijken"
 

@@ -783,6 +783,9 @@ msgstr "gesamter Titel"
 msgid "description match"
 msgstr "Übereinstimmung in der Beschreibung"
 
+msgid "title or description match"
+msgstr "Teil des Titels oder Beschreibung"
+
 msgid "start match"
 msgstr ""
 

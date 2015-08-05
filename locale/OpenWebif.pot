@@ -782,6 +782,9 @@ msgstr ""
 msgid "description match"
 msgstr ""
 
+msgid "title or description match"
+msgstr ""
+
 msgid "start match"
 msgstr ""
 

@@ -786,6 +786,9 @@ msgstr "correspondance parfaite"
 msgid "description match"
 msgstr "description correspond"
 
+msgid "title or description match"
+msgstr ""
+
 msgid "start match"
 msgstr ""
 

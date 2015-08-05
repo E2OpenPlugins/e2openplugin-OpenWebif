@@ -791,6 +791,9 @@ msgstr "coincidencia exacta"
 msgid "description match"
 msgstr "coincidencia descripción"
 
+msgid "title or description match"
+msgstr ""
+
 msgid "start match"
 msgstr ""
 

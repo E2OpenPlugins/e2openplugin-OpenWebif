@@ -795,6 +795,9 @@ msgstr "exakt matchning"
 msgid "description match"
 msgstr "beskrivningen matchar"
 
+msgid "title or description match"
+msgstr ""
+
 msgid "start match"
 msgstr "titelns inledning matchar"
 

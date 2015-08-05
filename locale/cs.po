@@ -789,6 +789,9 @@ msgstr "přesně odpovídá"
 msgid "description match"
 msgstr "Popis odpovídá"
 
+msgid "title or description match"
+msgstr ""
+
 msgid "start match"
 msgstr ""
 

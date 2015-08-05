@@ -788,6 +788,9 @@ msgstr "полное совпадение"
 msgid "description match"
 msgstr "совпадение описания"
 
+msgid "title or description match"
+msgstr ""
+
 msgid "start match"
 msgstr "совпадение начала"
 

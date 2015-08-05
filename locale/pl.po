@@ -783,6 +783,9 @@ msgstr "dokładna zgodność"
 msgid "description match"
 msgstr "zgodność opisu"
 
+msgid "title or description match"
+msgstr ""
+
 msgid "start match"
 msgstr "zgodność początku"
 

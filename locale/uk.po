@@ -788,6 +788,9 @@ msgstr "повний збіг"
 msgid "description match"
 msgstr "збіг опису"
 
+msgid "title or description match"
+msgstr ""
+
 msgid "start match"
 msgstr "збіг початку"
 

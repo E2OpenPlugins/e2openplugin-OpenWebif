@@ -798,6 +798,9 @@ msgstr "Exact match"
 msgid "description match"
 msgstr "beskrivelse af match"
 
+msgid "title or description match"
+msgstr ""
+
 msgid "start match"
 msgstr "start match"
 
