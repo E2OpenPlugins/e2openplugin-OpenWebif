@@ -101,6 +101,15 @@
 			#end def
 		
 			#def searchMenu
+			#if $epgsearchcaps
+			<ul>
+				#if $epgsearchtype
+				<li><input type="checkbox" name="epgsearchtype" checked="checked" />$tstrings['epgsearchextended']</li>
+				#else
+				<li><input type="checkbox" name="epgsearchtype" />$tstrings['epgsearchextended']</li>
+				#end if
+			</ul>
+			#end if
 			<form action="" onSubmit="open_epg_search_dialog(); return false;">
 				<div style="width:100%; text-align:center; padding-top:5px;"><input type="text" id="epgSearch" size="14" /></div>
 				<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button>$tstrings['search']</button></div>

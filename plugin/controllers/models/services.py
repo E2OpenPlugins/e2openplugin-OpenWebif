@@ -659,7 +659,10 @@ def getSearchEpg(sstr, endtime=None):
 		except UnicodeEncodeError:
 			pass
 	epgcache = eEPGCache.getInstance()
-	events = epgcache.search(('IBDTSENR', 128, eEPGCache.PARTIAL_TITLE_SEARCH, sstr, 1));
+	search_type = eEPGCache.PARTIAL_TITLE_SEARCH
+	if config.OpenWebif.webcache.epg_desc_search.value:
+		search_type = eEPGCache.FULL_DESCRIPTION_SEARCH
+	events = epgcache.search(('IBDTSENR', 128, search_type, sstr, 1));
 	if events is not None:
 		for event in events:
 			ev = {}
