@@ -52,6 +52,19 @@ def getRemoteGrabScreenshot():
 		"remotegrabscreenshot": config.OpenWebif.webcache.remotegrabscreenshot.value
 	}
 
+def setEPGSearchType(value):
+	config.OpenWebif.webcache.epg_desc_search.value = value
+	config.OpenWebif.webcache.epg_desc_search.save()
+	return {
+		"result": True
+	}
+
+def getEPGSearchType():
+	return {
+		"result": True,
+		"epgsearchtype": config.OpenWebif.webcache.epg_desc_search.value
+	}
+
 def setZapStream(value):
 	config.OpenWebif.webcache.zapstream.value = value
 	config.OpenWebif.webcache.zapstream.save()

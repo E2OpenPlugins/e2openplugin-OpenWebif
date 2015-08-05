@@ -16,13 +16,15 @@ from twisted.web import server, http, static, resource, error
 from Cheetah.Template import Template
 
 from models.info import getInfo, getBasePath, getPublicPath, getViewsPath
-from models.config import getCollapsedMenus, getRemoteGrabScreenshot, getZapStream, getConfigsSections, getShowName, getCustomName, getBoxName
+from models.config import getCollapsedMenus, getRemoteGrabScreenshot, getZapStream, getEPGSearchType, getConfigsSections, getShowName, getCustomName, getBoxName
 
 import imp
 import sys
 import json
 import gzip
 import cStringIO
+
+from enigma import eEPGCache
 
 try:
 	from boxbranding import getBoxType, getMachineName
@@ -202,13 +204,20 @@ class BaseController(resource.Resource):
 			ret['boxname'] = getInfo()['brand']+" "+getInfo()['model']
 		ret['box'] = getBoxType()
 		ret["remote"] = remote
-
+		from Components.config import config
+		if hasattr(eEPGCache, 'FULL_DESCRIPTION_SEARCH'):
+			ret['epgsearchcaps'] = True
+		else:
+			ret['epgsearchcaps'] = False
+			if config.OpenWebif.webcache.epg_desc_search.value:
+				config.OpenWebif.webcache.epg_desc_search.value = False
+				config.OpenWebif.webcache.epg_desc_search.save()
+		ret['epgsearchtype'] = getEPGSearchType()['epgsearchtype']
 		extras = []
 		extras.append({ 'key': 'ajax/settings','description': _("Settings")})
 		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/LCD4linux/WebSite.pyo")):
 			lcd4linux_key = "lcd4linux/config"
 			if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/WebInterface/plugin.pyo")):
-				from Components.config import config
 				from Components.Network import iNetwork
 				ifaces = iNetwork.getConfiguredAdapters()
 				if len(ifaces):

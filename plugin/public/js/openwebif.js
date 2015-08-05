@@ -708,6 +708,13 @@ $(function() {
 	});
 });
 
+$(function() {
+	$("input[name=epgsearchtype]").click(function(evt) {
+		$('input[name=epgsearchtype]').attr('checked', evt.currentTarget.checked);
+		webapi_execute("/api/epgsearchtype?checked=" + evt.currentTarget.checked);
+	});
+});
+
 $(window).keydown(function(evt) {
 	if (evt.which == 16) { 
 		shiftbutton = true;
