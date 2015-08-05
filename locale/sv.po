@@ -763,8 +763,9 @@ msgstr ""
 
 # Not translating licence information
 msgid ""
-"All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software "
-"Foundation."
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 2 "
+"as published by the Free Software Foundation."
 msgstr ""
 
 msgid "Root"
@@ -1285,3 +1286,6 @@ msgstr "Stäng"
 
 msgid "Open in new window"
 msgstr "Öppna i ett nytt fönster"
+
+msgid "Include description"
+msgstr ""

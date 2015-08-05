@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-11-18 19:04+0100\n"
+"POT-Creation-Date: 2014-11-01 19:04+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Rob van der Does <robvddoes@gmail.com>\n"
 "Language-Team: \n"
@@ -752,8 +752,14 @@ msgstr "regels van de GNU General Public License versie 2 zoals"
 msgid "published by the Free Software Foundation."
 msgstr "gepubliceerd door de 'Free Software Foundation'."
 
-msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
-msgstr "Alle bestanden van deze software zijn Open Source; u kunt herdistribueren en modificeren volgens de regels van de GNU General Public License versie 2 zoals gepubliceerd door de 'Free Software Foundation'."
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 2 "
+"as published by the Free Software Foundation."
+msgstr ""
+"Alle bestanden van deze software zijn Open Source; u kunt herdistribueren en "
+"modificeren volgens de regels van de GNU General Public License versie 2 "
+"zoals gepubliceerd door de 'Free Software Foundation'."
 
 msgid "Root"
 msgstr "Root"
@@ -959,6 +965,58 @@ msgstr "Parse"
 msgid "Simulate"
 msgstr "Simuleer"
 
+# New Autotimer Setting Windows name (not enabled to transfer atm)
+msgid "AutoTimer Settings"
+msgstr ""
+
+msgid "AutoPoll"
+msgstr ""
+
+msgid "Interval (in h)"
+msgstr ""
+
+msgid "Max Days"
+msgstr ""
+
+msgid "Try Guessing"
+msgstr ""
+
+msgid "Fastscan"
+msgstr ""
+
+msgid "Show in Extensionsmenu"
+msgstr ""
+
+msgid "Disabled on Conflict"
+msgstr ""
+
+msgid "Add Similar on Conflict"
+msgstr ""
+
+msgid "Notify if Conflict"
+msgstr ""
+
+msgid "Notify if Similar"
+msgstr ""
+
+msgid "Add Autotimer to Tags"
+msgstr ""
+
+msgid "Add Name to Tags"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Editor"
+msgstr ""
+
+msgid "Plain"
+msgstr ""
+
+msgid "Wizzard"
+msgstr ""
+
 msgid "Do you really want to delete the AT"
 msgstr "Wilt u de AT echt verwijderen?"
 
@@ -1126,3 +1184,99 @@ msgstr "Openwebif configuratie"
 
 msgid "transcoded"
 msgstr "Getranscodeerd"
+
+msgid "System OE"
+msgstr ""
+
+msgid "Distro"
+msgstr ""
+
+msgid "Driver date"
+msgstr ""
+
+msgid "Conflicting Timer(s) detected! %s"
+msgstr ""
+
+msgid "Could not add timer '%s'!"
+msgstr ""
+
+msgid "Timer '%s' added"
+msgstr ""
+
+msgid "EventId not found"
+msgstr ""
+
+msgid "Timer '%s' changed"
+msgstr ""
+
+msgid "Timer '%s' not saved while Conflict"
+msgstr ""
+
+msgid "Could not find timer '%s' with given start and end time!"
+msgstr ""
+
+msgid "The timer '%s' has been deleted successfully"
+msgstr ""
+
+msgid "No matching Timer found"
+msgstr ""
+
+msgid "The timer '%s' has been %s successfully"
+msgstr ""
+
+msgid "List of Timers has been cleaned"
+msgstr ""
+
+msgid "TimerList has been saved"
+msgstr ""
+
+msgid "No event found! Not recording!"
+msgstr ""
+
+msgid "Instant record for current Event started"
+msgstr ""
+
+msgid "Infinite Instant recording started"
+msgstr ""
+
+msgid "Timer conflict detected! Not recording!"
+msgstr ""
+
+msgid "Missing requesteter: sRef"
+msgstr ""
+
+msgid "Unknown command: '%s'"
+msgstr ""
+
+msgid "PowerTimer feature not available"
+msgstr ""
+
+msgid "Sleeptimer is enabled"
+msgstr ""
+
+msgid "Sleeptimer is disabled"
+msgstr ""
+
+msgid "SleepTimer feature not available"
+msgstr ""
+
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr ""
+
+msgid "Sleeptimer has been disabled"
+msgstr ""
+
+msgid "Sleeptimer set to %d minutes"
+msgstr ""
+
+msgid "Safe mode"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Open in new window"
+msgstr ""
+
+msgid "Include description"
+msgstr ""

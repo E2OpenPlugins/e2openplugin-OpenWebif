@@ -1267,9 +1267,11 @@ msgstr "SleepTimer eingestellt auf %d Minuten"
 msgid "Safe mode"
 msgstr "Sicherheitsmodus"
 
-
 msgid "Close"
 msgstr "Schließen"
 
 msgid "Open in new window"
 msgstr "In neuem Fenster öffnen"
+
+msgid "Include description"
+msgstr "Beschreibung einbeziehen"

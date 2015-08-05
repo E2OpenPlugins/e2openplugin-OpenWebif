@@ -1271,3 +1271,6 @@ msgstr ""
 
 msgid "Open in new window"
 msgstr ""
+
+msgid "Include description"
+msgstr ""

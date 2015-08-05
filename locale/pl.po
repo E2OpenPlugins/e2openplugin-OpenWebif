@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-12-02 11:00+0100\n"
+"POT-Creation-Date: 2014-11-01 19:04+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: mickey <mickeyreg@gmail.com>\n"
 "Language-Team: none\n"
@@ -1208,7 +1208,8 @@ msgid "Timer '%s' not saved while Conflict"
 msgstr "Nie zapisano zadań planowych '%s' z powodu konfliktu"
 
 msgid "Could not find timer '%s' with given start and end time!"
-msgstr "Nie można zlaneźć zadania planowego '%s' w podanych granicach czasowych!"
+msgstr ""
+"Nie można zlaneźć zadania planowego '%s' w podanych granicach czasowych!"
 
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Usunięto zadanie planowe '%s'"
@@ -1256,7 +1257,9 @@ msgid "SleepTimer feature not available"
 msgstr "Funkcja wyłącznika czasowego jest niedostępna"
 
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "BŁĄD: Nie można ustawić wyłącznika czasowego kiedy urządzenie jest w stanie czuwania"
+msgstr ""
+"BŁĄD: Nie można ustawić wyłącznika czasowego kiedy urządzenie jest w stanie "
+"czuwania"
 
 msgid "Sleeptimer has been disabled"
 msgstr "Wyłącznik czasowy został deaktywowany"
@@ -1272,3 +1275,6 @@ msgstr "Zamknij"
 
 msgid "Open in new window"
 msgstr "Otwórz w nowym oknie"
+
+msgid "Include description"
+msgstr ""

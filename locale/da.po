@@ -763,9 +763,13 @@ msgstr "udgivet af the Free Software Foundation"
 
 # Not translating licence information
 msgid ""
-"All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software "
-"Foundation."
-msgstr "Alle filer i denne software er open source software, du kan gengive det og eller ændre under de regler for GNU General Public License version 2 der er udgivet af the Free Software Foundation"
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 2 "
+"as published by the Free Software Foundation."
+msgstr ""
+"Alle filer i denne software er open source software, du kan gengive det og "
+"eller ændre under de regler for GNU General Public License version 2 der er "
+"udgivet af the Free Software Foundation"
 
 msgid "Root"
 msgstr "Root"
@@ -1285,3 +1289,6 @@ msgstr "Luk"
 
 msgid "Open in new window"
 msgstr "Åben i et nyt vindue"
+
+msgid "Include description"
+msgstr ""

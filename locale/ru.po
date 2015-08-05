@@ -11,8 +11,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.7.1\n"
 "X-Poedit-Basepath: .\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && "
-"(n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
 msgid "Settings"
@@ -753,13 +753,13 @@ msgid "published by the Free Software Foundation."
 msgstr "опубликованой Free Software Foundation."
 
 msgid ""
-"All Files of this Software are open source software; you can redistribute it and/"
-"or modify it under the terms of the GNU General Public License version 2 as "
-"published by the Free Software Foundation."
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 2 "
+"as published by the Free Software Foundation."
 msgstr ""
-"Все файлы данного ПО являются открытым исходным кодом; Вы можете распространять "
-"и / или изменять его в соответствии с условиями GNU General Public License версии "
-"2, опубликованной Free Software Foundation."
+"Все файлы данного ПО являются открытым исходным кодом; Вы можете "
+"распространять и / или изменять его в соответствии с условиями GNU General "
+"Public License версии 2, опубликованной Free Software Foundation."
 
 msgid "Root"
 msgstr "Root"
@@ -965,6 +965,58 @@ msgstr "Анализ"
 msgid "Simulate"
 msgstr "Имитировать"
 
+# New Autotimer Setting Windows name (not enabled to transfer atm)
+msgid "AutoTimer Settings"
+msgstr ""
+
+msgid "AutoPoll"
+msgstr ""
+
+msgid "Interval (in h)"
+msgstr ""
+
+msgid "Max Days"
+msgstr ""
+
+msgid "Try Guessing"
+msgstr ""
+
+msgid "Fastscan"
+msgstr ""
+
+msgid "Show in Extensionsmenu"
+msgstr ""
+
+msgid "Disabled on Conflict"
+msgstr ""
+
+msgid "Add Similar on Conflict"
+msgstr ""
+
+msgid "Notify if Conflict"
+msgstr ""
+
+msgid "Notify if Similar"
+msgstr ""
+
+msgid "Add Autotimer to Tags"
+msgstr ""
+
+msgid "Add Name to Tags"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Editor"
+msgstr ""
+
+msgid "Plain"
+msgstr ""
+
+msgid "Wizzard"
+msgstr ""
+
 msgid "Do you really want to delete the AT"
 msgstr "Вы действительно хотите удалить АТ?"
 
@@ -1163,20 +1215,8 @@ msgstr "Таймер '%s' не сохранен из-за конфликта"
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Не удалось найти таймер '%s' с заданным временем начала и окончания!"
 
-msgid "The timer '%s' now recorded! Not disabled!"
-msgstr "Таймер '%s' сейчас записывается! Невозможно отключить!"
-
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Таймер '%s' был успешно удален"
-
-msgid "Timer '%s' already exists!"
-msgstr "Таймер '%s' уже существует!"
-
-msgid "Close"
-msgstr "Закрыть"
-
-msgid "Open in new window"
-msgstr "Открыть в новом окне"
 
 msgid "No matching Timer found"
 msgstr "Не найден соответствующий таймер"
@@ -1221,10 +1261,29 @@ msgid "SleepTimer feature not available"
 msgstr "Функции тамймера сна недоступны"
 
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "ОШИБКА: Не удается установить таймер сна, ресивер находится в режим ожидания"
+msgstr ""
+"ОШИБКА: Не удается установить таймер сна, ресивер находится в режим ожидания"
 
 msgid "Sleeptimer has been disabled"
 msgstr "Таймер сна был отключен"
 
 msgid "Sleeptimer set to %d minutes"
 msgstr "Таймер сна установлен на %d минут"
+
+msgid "Safe mode"
+msgstr ""
+
+msgid "Close"
+msgstr "Закрыть"
+
+msgid "Open in new window"
+msgstr "Открыть в новом окне"
+
+msgid "Include description"
+msgstr ""
+
+#~ msgid "The timer '%s' now recorded! Not disabled!"
+#~ msgstr "Таймер '%s' сейчас записывается! Невозможно отключить!"
+
+#~ msgid "Timer '%s' already exists!"
+#~ msgstr "Таймер '%s' уже существует!"
