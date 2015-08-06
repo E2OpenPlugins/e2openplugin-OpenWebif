@@ -789,6 +789,12 @@ msgstr ""
 msgid "title or description match"
 msgstr ""
 
+msgid "title or short description match"
+msgstr ""
+
+msgid "short description match"
+msgstr ""
+
 msgid "start match"
 msgstr ""
 

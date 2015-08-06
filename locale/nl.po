@@ -791,6 +791,12 @@ msgstr "overeenkomst in beschrijving"
 msgid "title or description match"
 msgstr ""
 
+msgid "title or short description match"
+msgstr ""
+
+msgid "short description match"
+msgstr ""
+
 msgid "start match"
 msgstr "aanvangen met vergelijken"
 
