@@ -881,6 +881,22 @@ class WebController(BaseController):
 					mnow["id"] = movie.getEventId()
 			except Exception, e:
 				mnow = now
+		elif mnow["sref"] == '':
+			serviceref = self.session.nav.getCurrentlyPlayingServiceReference()
+			if serviceref is not None:
+				try:
+					if serviceref.toString().startswith('4097:0:0:0:0:0:0:0:0:0:/'):
+						from enigma import eServiceCenter
+						serviceHandler = eServiceCenter.getInstance()
+						sinfo = serviceHandler.info(serviceref)
+						if sinfo:
+							mnow["title"] = sinfo.getName(serviceref)
+						servicepath = serviceref and serviceref.getPath()
+						if servicepath and servicepath.startswith("/"):
+							mnow["filename"] = servicepath
+							mnow["sref"] = serviceref.toString()
+				except Exception, e:
+					pass
 		return {
 			"info": info,
 			"now": mnow,
