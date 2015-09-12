@@ -3,20 +3,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2014-11-01 19:04+0100\n"
-"PO-Revision-Date: 2014-08-08 01:27+0200\n"
-"Last-Translator: Administrador <hsa2000@gmail.com>\n"
-"Language-Team: HSA2000 for OpenSpa\n"
+"PO-Revision-Date: 2015-09-12 13:52+0200\n"
+"Last-Translator: Joan González - Jglez3 <joan@gonzalezcrego.es>\n"
+"Language-Team: OpenPlus\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: ../plugin\n"
-"X-Poedit-Language: Spanish\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
-"X-Poedit-Country: SPAIN\n"
+"X-Poedit-SearchPath-0: ../plugin\n"
 
 msgid "Settings"
 msgstr "Configuración"
@@ -477,13 +475,13 @@ msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Interfaz Web de Código Abierto para Decodificadores Linux"
 
 msgid "Show box name in header"
-msgstr ""
+msgstr "Mostrar nombre del deco en la cabecera"
 
 msgid "Use custom box name"
-msgstr ""
+msgstr "Usar nombre personalizado para el deco"
 
 msgid "Custom box name"
-msgstr ""
+msgstr "Nombre personaliza del deco"
 
 msgid "OSD"
 msgstr "OSD"
@@ -791,8 +789,17 @@ msgstr "coincidencia exacta"
 msgid "description match"
 msgstr "coincidencia descripción"
 
+msgid "title or description match"
+msgstr "coincidencia en el título o la descripción"
+
+msgid "title or short description match"
+msgstr "coincidencia en el título o la descripción breve"
+
+msgid "short description match"
+msgstr "coincidencia en la descripción breve"
+
 msgid "start match"
-msgstr ""
+msgstr "coincidencia inicial"
 
 msgid "Search strictness"
 msgstr "Busqueda estricta"
@@ -968,6 +975,58 @@ msgstr "Analizar"
 msgid "Simulate"
 msgstr "Simular"
 
+# New Autotimer Setting Windows name (not enabled to transfer atm)
+msgid "AutoTimer Settings"
+msgstr "Ajustes Autotimer"
+
+msgid "AutoPoll"
+msgstr ""
+
+msgid "Interval (in h)"
+msgstr "Intervalo (en h)"
+
+msgid "Max Days"
+msgstr "Máximo de días"
+
+msgid "Try Guessing"
+msgstr ""
+
+msgid "Fastscan"
+msgstr "Búsqueda rápida"
+
+msgid "Show in Extensionsmenu"
+msgstr "Mostrar en el menú de extensiones"
+
+msgid "Disabled on Conflict"
+msgstr "Desactivado cuando hay conflicto"
+
+msgid "Add Similar on Conflict"
+msgstr "Añadir similar cuando hay conflicto"
+
+msgid "Notify if Conflict"
+msgstr "Notificar si hay conflicto"
+
+msgid "Notify if Similar"
+msgstr "Notificar si hay uno similar"
+
+msgid "Add Autotimer to Tags"
+msgstr "AñadirAutotimer a las etiquetas"
+
+msgid "Add Name to Tags"
+msgstr "Añadir nombre a las etiquetas"
+
+msgid "None"
+msgstr "Ninguno"
+
+msgid "Editor"
+msgstr "Editor"
+
+msgid "Plain"
+msgstr ""
+
+msgid "Wizzard"
+msgstr "Asistente"
+
 msgid "Do you really want to delete the AT"
 msgstr "¿Realmente quieres eliminar el AT?"
 
@@ -975,61 +1034,61 @@ msgid "Label series"
 msgstr ""
 
 msgid "Enable Messages"
-msgstr ""
+msgstr "Habilitar mensajes"
 
 msgid "Delay Standby"
-msgstr ""
+msgstr "Retrasar modo de espera"
 
 msgid "Interval (min.)"
-msgstr ""
+msgstr "Intervalo (min.)"
 
 msgid "Interval (sec.)"
-msgstr ""
+msgstr "Intervalo (seg.)"
 
 msgid "Afterevent"
-msgstr ""
+msgstr "Tras el evento"
 
 msgid "Force"
-msgstr ""
+msgstr "Forzar"
 
 msgid "Wakeup"
-msgstr ""
+msgstr "Despertar"
 
 msgid "Inherit Autotimer"
-msgstr ""
+msgstr "Heredar Autotimer"
 
 msgid "Parse Autotimer"
-msgstr ""
+msgstr "Analizar Autotimer"
 
 msgid "Always"
-msgstr ""
+msgstr "Siempre"
 
 msgid "Background only"
-msgstr ""
+msgstr "Solo en segundo plano"
 
 msgid "Ask, default Yes"
-msgstr ""
+msgstr "Preguntar, por defecto si"
 
 msgid "Ask, default No"
-msgstr ""
+msgstr "Preguntar, por defecto no"
 
 msgid "Method"
-msgstr ""
+msgstr "Método"
 
 msgid "Visibly"
-msgstr ""
+msgstr "Visible"
 
 msgid "Picture in Picture"
-msgstr ""
+msgstr "Picture in Picture"
 
 msgid "Picture in Picture (hidden)"
-msgstr ""
+msgstr "Picture in Picture (oculto)"
 
 msgid "Fake Recording"
-msgstr ""
+msgstr "Falsa grabación"
 
 msgid "Refresh now"
-msgstr ""
+msgstr "Refrescar ahora"
 
 msgid "Add Provider as new Bouquet"
 msgstr "Agregar proveedor como nuevo Favorito"
@@ -1128,13 +1187,112 @@ msgid "Add service name to stream information"
 msgstr "Añadir nombre de servicio a la información de stream"
 
 msgid "Character encoding for EPG data"
-msgstr ""
+msgstr "Codificación de caracteres para los datos del EPG"
 
 msgid "OpenWebif Configuration"
 msgstr "Configuración OpenWebif"
 
 msgid "transcoded"
+msgstr "transcodificado"
+
+msgid "System OE"
+msgstr "Sistema OE"
+
+msgid "Distro"
+msgstr "Distribución"
+
+msgid "Driver date"
+msgstr "Fecha de driver"
+
+msgid "Conflicting Timer(s) detected! %s"
+msgstr "Temporizador(es) conflictivo(s) detectados. %s"
+
+msgid "Could not add timer '%s'!"
+msgstr "No se puede añadir el temporizador '%s'."
+
+msgid "Timer '%s' added"
+msgstr "Temporizador '%s' añadido"
+
+msgid "EventId not found"
+msgstr "ID de evento no encontrado"
+
+msgid "Timer '%s' changed"
+msgstr "Temporizador '%s' cambiado"
+
+msgid "Timer '%s' not saved while Conflict"
+msgstr "El temporizador '%s' no se ha guardado por un conflicto"
+
+msgid "Could not find timer '%s' with given start and end time!"
 msgstr ""
+"No se ha encontrado el temporizador '%s' con estos tiempos de inicio y fin."
+
+msgid "The timer '%s' has been deleted successfully"
+msgstr "El tmeporizador '%s' se ha eliminado satisfactoriamente"
+
+msgid "No matching Timer found"
+msgstr "No se han encontrado coincidencia para el temporizador"
+
+msgid "The timer '%s' has been %s successfully"
+msgstr "El temporizador '%s' ha sido %s satisfactorio"
+
+msgid "List of Timers has been cleaned"
+msgstr "La lista de temporizadores se ha limpiado"
+
+msgid "TimerList has been saved"
+msgstr "La lista de temporizadores se ha guardado"
+
+msgid "No event found! Not recording!"
+msgstr "No se ha encontrado evento. No se está grabando."
+
+msgid "Instant record for current Event started"
+msgstr "Grabación instantánea iniciada para el evento actual"
+
+msgid "Infinite Instant recording started"
+msgstr "Grabación instantánea infinita iniciada"
+
+msgid "Timer conflict detected! Not recording!"
+msgstr "Detectado conflicto entre temporizadores. No se está grabando."
+
+msgid "Missing requesteter: sRef"
+msgstr ""
+
+msgid "Unknown command: '%s'"
+msgstr "Comando desconocido: '%s'"
+
+msgid "PowerTimer feature not available"
+msgstr "La característica temporizador de alimentación no está disponible."
+
+msgid "Sleeptimer is enabled"
+msgstr "Temporizador de apagado activado"
+
+msgid "Sleeptimer is disabled"
+msgstr "Temporizador de apagado desactivado"
+
+msgid "SleepTimer feature not available"
+msgstr "La característica temporizador de apagado no está disponible"
+
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr ""
+"ERROR: No se puede configurar un temporizador de apagado si el dispositivo "
+"está en modo de espera"
+
+msgid "Sleeptimer has been disabled"
+msgstr "El temporizador de apagado se ha desactivado"
+
+msgid "Sleeptimer set to %d minutes"
+msgstr "Temporizador de apagado configurado a %s minutos"
+
+msgid "Safe mode"
+msgstr "Modo seguro"
+
+msgid "Close"
+msgstr "Cerrar"
+
+msgid "Open in new window"
+msgstr "Abrir en nueva ventana"
+
+msgid "Include description"
+msgstr "Incluir descripción"
 
 #~ msgid "Timer List"
 #~ msgstr "Lista de Grabación"
