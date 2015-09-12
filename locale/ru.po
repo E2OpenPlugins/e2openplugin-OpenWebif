@@ -279,7 +279,7 @@ msgid "Current Event"
 msgstr "Текущее событие"
 
 msgid "Deep-Standby"
-msgstr "Глубокий режим ожидания"
+msgstr "Выключение"
 
 msgid "Default"
 msgstr "По умолчанию"
@@ -504,7 +504,7 @@ msgid "Radio"
 msgstr "Радио каналы"
 
 msgid "Reboot Box"
-msgstr "Перезагрузить ресивер"
+msgstr "Перезагрузить"
 
 msgid "Recording Status"
 msgstr "Статус записи"
@@ -597,7 +597,7 @@ msgid "Standby"
 msgstr "Режим ожидания"
 
 msgid "Standby Toggle"
-msgstr "Переключатель режима ожидания"
+msgstr "Режим ожидания"
 
 msgid "Start time is after end time"
 msgstr "Время начала после времени окончания"
