@@ -186,20 +186,15 @@ def getInfo():
 		f = open("/proc/stb/info/model",'r')
 		model = f.readline().strip().lower()
 		f.close()
-		if model in ("esi88", "sagemcom88", "nbox"):
-			if fileExists("/proc/boxtype"):
-				f = open("/proc/boxtype",'r')
-				model = f.readline().strip().lower()
-				f.close()
 		if model == "tf7700hdpvr":
 			chipset = "SH4 @266MHz"
-		elif model in ("nbox", "bska", "bsla", "bxzb", "bzzb"):
+		elif model == "nbox":
 			chipset = "STi7100 @266MHz"
-		elif model in ("arivalink200"):
+		elif model == "arivalink200":
 			chipset = "STi7109 @266MHz"
 		elif model in ("adb2850", "adb2849", "dsi87"):
 			chipset = "STi7111 @450MHz"
-		elif model in ("sagemcom88", "esi88", "uhd88"):
+		elif model in ("sagemcom88", "esi88"):
 			chipset = "STi7105 @450MHz"
 		elif model.startswith("spark"):
 			if model == "spark7162":

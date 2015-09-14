@@ -150,15 +150,30 @@ def getAllInfo():
 		procmodel = f.readline().strip()
 		f.close()
 		model = procmodel.title().replace("olose", "olo SE").replace("olo2se", "olo2 SE").replace("2", "²")
+	elif fileExists("/proc/boxtype"):
+		f = open("/proc/boxtype",'r')
+		procmodel = f.readline().strip().lower()
+		f.close()
+		if procmodel in ("adb2850", "adb2849", "bska", "bsla", "bxzb", "bzzb"):
+			brand = "Advanced Digital Broadcast"
+			if procmodel in ("bska", "bxzb"):
+				model = "ADB 5800S"
+			elif procmodel in ("bsla", "bzzb"):
+				model = "ADB 5800SX"
+			elif procmodel == "adb2849":
+				model = "ADB 2849ST"
+			else:
+				model = "ADB 2850ST"
+		elif procmodel in ("esi88", "uhd88"):
+			brand = "Sagemcom"
+			if procmodel == "uhd88":
+				model = "UHD 88"
+			else:
+				model = "ESI 88"
 	elif fileExists("/proc/stb/info/boxtype"):
 		f = open("/proc/stb/info/boxtype",'r')
 		procmodel = f.readline().strip().lower()
 		f.close()
-		if procmodel == "sagemcom88":
-			if fileExists("/proc/boxtype"):
-				f = open("/proc/boxtype",'r')
-				procmodel = f.readline().strip().lower()
-				f.close()
 		if procmodel.startswith("et"):
 			brand = "Xtrend"
 			model = procmodel.upper()
@@ -210,47 +225,25 @@ def getAllInfo():
 		elif procmodel == "hd2400":
 			brand = "Mut@nt"
 			model = "hd2400"
-		elif procmodel in ("sagemcom88", "esi88", "uhd88"):
-			brand = "Sagemcom"
-			if procmodel == "uhd88":
-				model = "UHD 88"
+		elif procmodel == "arivalink200":
+			brand = "Ferguson"
+			model = "Ariva @Link 200"
+		elif procmodel.startswith("spark"):
+			brand = "Fulan"
+			if procmodel == "spark7162":
+				model = "Spark 7162"
 			else:
-				model = "ESI 88"
+				model = "Spark"
 	elif fileExists("/proc/stb/info/model"):
 		f = open("/proc/stb/info/model",'r')
 		procmodel = f.readline().strip().lower()
 		f.close()
-		if procmodel in ("esi88", "sagemcom88", "nbox"):
-			if fileExists("/proc/boxtype"):
-				f = open("/proc/boxtype",'r')
-				procmodel = f.readline().strip().lower()
-				f.close()
 		if procmodel == "tf7700hdpvr":
 			brand = "Topfield"
 			model = "TF7700 HDPVR"
-		elif procmodel in ("adb2850", "adb2849", "nbox", "bska", "bsla", "bxzb", "bzzb"):
-			brand = "Advanced Digital Broadcast"
-			if procmodel in ("bska", "bxzb"):
-				model = "ADB 5800S"
-			elif procmodel in ("bsla", "bzzb"):
-				model = "ADB 5800SX"
-			elif procmodel == "adb2849":
-				model = "ADB 2849ST"
-			elif procmodel == "adb2850":
-				model = "ADB 2850ST"
-			else:
-				model = "NBOX"
-		elif procmodel in ("sagemcom88", "esi88", "uhd88", "dsi87"):
+		elif procmodel == "dsi87":
 			brand = "Sagemcom"
-			if procmodel == "uhd88":
-				model = "UHD 88"
-			elif procmodel =="dsi87":
-				model = "DSI 87"
-			else:
-				model = "ESI 88"
-		elif procmodel in ("arivalink200"):
-			brand = "Ferguson"
-			model = "Ariva @Link 200"
+			model = "DSI 87"
 		elif procmodel.startswith("spark"):
 			brand = "Fulan"
 			if procmodel == "spark7162":
@@ -356,7 +349,7 @@ def getAllInfo():
 		remote = "xp1000"
 	elif procmodel.startswith("xpeedlx"):
 		remote = "xpeedlx"
-	elif procmodel in ("adb2850", "adb2849", "nbox", "bska", "bsla", "bxzb", "bzzb", "sagemcom88", "esi88", "uhd88", "dsi87", "arivalink200"):
+	elif procmodel in ("adb2850", "adb2849", "bska", "bsla", "bxzb", "bzzb", "esi88", "uhd88", "dsi87", "arivalink200"):
 		remote = "nbox"
 	elif procmodel == "hd2400":
 		remote = "hd2400"
