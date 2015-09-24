@@ -12,7 +12,7 @@ from Tools.Directories import fileExists
 from Components.config import config
 
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
-from models.info import getInfo, getPublicPath, getOpenWebifVer, getTranscodingSupport
+from models.info import getInfo, getPublicPath, getOpenWebifVer, getTranscodingSupport, getLanguage
 from models.movies import getMovieList
 from models.timers import getTimers
 from models.config import getConfigs, getConfigsSections
@@ -81,6 +81,7 @@ class AjaxController(BaseController):
 			pass
 		event['at'] = at
 		event['transcoding'] = getTranscodingSupport()
+		event['kinopoisk'] = getLanguage()
 		return event
 
 	def P_about(self, request):
@@ -100,9 +101,13 @@ class AjaxController(BaseController):
 
 	def P_epgpop(self, request):
 		if "sref" in request.args.keys():
-			return getChannelEpg(request.args["sref"][0])
+			event = getChannelEpg(request.args["sref"][0])
+			event['kinopoisk'] = getLanguage()
+			return event
 		elif  "sstr" in request.args.keys():
-			return getSearchEpg(request.args["sstr"][0])
+			event = getSearchEpg(request.args["sstr"][0])
+			event['kinopoisk'] = getLanguage()
+			return event
 		else: 
 			return []
 
@@ -115,7 +120,7 @@ class AjaxController(BaseController):
 			at = True
 		except ImportError:
 			pass
-		return { "events": events['events'] , "timers" : timers['timers'] , "at" : at }
+		return { "events": events['events'] , "timers" : timers['timers'] , "at" : at, "kinopoisk": events['kinopoisk']}
 
 	def P_screenshot(self, request):
 		box = {}

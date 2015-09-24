@@ -16,6 +16,7 @@ from Components.config import config
 from Components.NimManager import nimmanager
 from Components.Harddisk import harddiskmanager
 from Components.Network import iNetwork
+from Components.Language import language
 from RecordTimer import parseEvent
 from Screens.Standby import inStandby
 from timer import TimerEntry
@@ -328,6 +329,12 @@ def getInfo():
 		if os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TranscodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo')):
 			info['transcoding'] = True
 
+	info['kinopoisk'] = False
+	lang = ['ru', 'uk', 'lv', 'lt', 'et']
+	for l in lang:
+		if l in language.getLanguage():
+			info['kinopoisk'] = True
+
 	global STATICBOXINFO
 	STATICBOXINFO = info
 	return info
@@ -381,6 +388,12 @@ def getTranscodingSupport():
 	if STATICBOXINFO is None:
 		getInfo()
 	return STATICBOXINFO['transcoding']
+
+def getLanguage():
+	global STATICBOXINFO
+	if STATICBOXINFO is None:
+		getInfo()
+	return STATICBOXINFO['kinopoisk']
 
 def getStatusInfo(self):
 	statusinfo = {}
