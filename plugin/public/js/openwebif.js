@@ -959,6 +959,15 @@ function editTimer(serviceref, begin, end) {
 								$('#has_vpsplugin1').hide();
 							}
 							
+							if (typeof timer.always_zap !== 'undefined')
+							{
+								$('#always_zap1').show();
+								$('#always_zap').prop("checked", timer.always_zap==1);
+								$('#justplay').prop("disabled",timer.always_zap==1);
+							} else {
+								$('#always_zap1').hide();
+							}
+							
 							$('#editTimerForm').dialog("open");
 							$('#editTimerForm').dialog("option", "title", tstr_edit_timer + " - " + timer.name);
 							
