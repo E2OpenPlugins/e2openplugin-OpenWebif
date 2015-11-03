@@ -1046,7 +1046,7 @@ function addTimer(evt,chsref,chname) {
 	$('#bouquet_select').val(serviceref);
 	if (serviceref !== $('#bouquet_select').val() && typeof servicename !== 'undefined' && servicename != '') {
 		$('#bouquet_select').append($("<option></option>").attr("value", serviceref).text(servicename));
-		$('#bouquet_select').val(timer.serviceref);
+		$('#bouquet_select').val(serviceref);
 	}
 
 	$('#editTimerForm').dialog("open");
