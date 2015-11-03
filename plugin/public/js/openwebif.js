@@ -903,6 +903,10 @@ function editTimer(serviceref, begin, end) {
 							$('#timername').val(timer.name);
 							$('#description').val(timer.description);
 							$('#bouquet_select').val(timer.serviceref);
+							if(timer.serviceref !== $('#bouquet_select').val()) {
+								$('#bouquet_select').append($("<option></option>").attr("value", timer.serviceref).text(timer.servicename));
+								$('#bouquet_select').val(timer.serviceref);
+							}
 							$('#dirname').val(timer.dirname);
 							if(timer.dirname !== $('#dirname').val()) {
 								current_location = "<option value='" + timer.dirname + "'>" + timer.dirname + "</option>";
@@ -983,7 +987,8 @@ function addTimer(evt,chsref,chname) {
 	current_serviceref = '';
 	current_begin = -1;
 	current_end = -1;
-	
+	servicename = '';
+
 	var begin = -1;
 	var end = -1;
 	var serviceref = '';
@@ -996,6 +1001,7 @@ function addTimer(evt,chsref,chname) {
 		begin = evt.begin;
 		end = evt.begin+evt.duration;
 		serviceref = evt.sref;
+		servicename = evt.channel;
 		title = evt.title;
 		desc = evt.shortdesc;
 		margin_before = evt.recording_margin_before;
@@ -1038,7 +1044,11 @@ function addTimer(evt,chsref,chname) {
 	$('#timerend').datetimepicker('setDate', enddate);
 
 	$('#bouquet_select').val(serviceref);
-	
+	if (serviceref !== $('#bouquet_select').val() && typeof servicename !== 'undefined' && servicename != '') {
+		$('#bouquet_select').append($("<option></option>").attr("value", serviceref).text(servicename));
+		$('#bouquet_select').val(serviceref);
+	}
+
 	$('#editTimerForm').dialog("open");
 	$('#editTimerForm').dialog("option", "title", tstr_add_timer);
 	$('#editTimerForm').dialog("option", "height", "auto");
