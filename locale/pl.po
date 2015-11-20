@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2014-11-01 19:04+0100\n"
+"POT-Creation-Date: 2015-09-14 08:10+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: mickey <mickeyreg@gmail.com>\n"
 "Language-Team: none\n"
@@ -784,13 +784,13 @@ msgid "description match"
 msgstr "zgodność opisu"
 
 msgid "title or description match"
-msgstr ""
+msgstr "zgodność tytułu lub opisu"
 
 msgid "title or short description match"
-msgstr ""
+msgstr "zgodność tytułu lub krótkiego opisu"
 
 msgid "short description match"
-msgstr ""
+msgstr "zgodność krótkiego opisu"
 
 msgid "start match"
 msgstr "zgodność początku"
@@ -1218,7 +1218,7 @@ msgstr "Nie zapisano zadań planowych '%s' z powodu konfliktu"
 
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr ""
-"Nie można zlaneźć zadania planowego '%s' w podanych granicach czasowych!"
+"Nie można znaleźć zadania planowego '%s' w podanych granicach czasowych!"
 
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Usunięto zadanie planowe '%s'"
@@ -1286,4 +1286,4 @@ msgid "Open in new window"
 msgstr "Otwórz w nowym oknie"
 
 msgid "Include description"
-msgstr ""
+msgstr "Dołącz opis"
