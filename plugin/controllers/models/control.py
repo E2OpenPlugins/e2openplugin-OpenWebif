@@ -113,7 +113,7 @@ def remoteControl(key, type = "", rcu = ""):
 			remotetype = "dreambox remote control (native)"
 		try:
 			from Tools.HardwareInfo import HardwareInfo
-			if HardwareInfo().get_device_model() in ("xp1000", "formuler1", "formuler3", "et9000", "et9200"):
+			if HardwareInfo().get_device_model() in ("xp1000", "formuler1", "formuler3", "et9000", "et9200", "hd1100", "hd1200"):
 				remotetype = "dreambox advanced remote control (native)"
 		except:
 			print "[OpenWebIf] wrong hw detection"
