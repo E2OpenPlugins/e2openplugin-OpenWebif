@@ -132,6 +132,12 @@ def getAllInfo():
 		if (procmodel.startswith("optimuss") or procmodel.startswith("pingulux")):
 			brand = "Edision"
 			model = procmodel.replace("optimmuss", "Optimuss ").replace("plus", " Plus").replace(" os", " OS")
+                elif (procmodel.startswith("fusion")):
+                        brand = "Xsarius"
+                        if procmodel == "fusionhd":
+                            model = procmodel.replace("fusionhd", "Fusion HD")
+                        elif procmodel == "fusionhdse":
+                            model = procmodel.replace("fusionhdse", "Fusion HD SE")
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBox"
 		f = open("/proc/stb/info/model",'r') # To-Do: Check if "model" is really correct ...
