@@ -559,9 +559,9 @@ class BouquetEditor(Source):
 			files.append("/etc/enigma2/userbouquet.favourites.tv")
 			files.append("/etc/enigma2/userbouquet.favourites.radio")
 			files.append("/etc/enigma2/lamedb")
-			files.append("/etc/tuxbox/cables.xml")
-			files.append("/etc/tuxbox/terrestrial.xml")
-			files.append("/etc/tuxbox/satellites.xml")
+			for xml in ("/etc/enigma2/cables.xml", "/etc/enigma2/terrestrial.xml", "/etc/enigma2/satellites.xml", "/etc/tuxbox/cables.xml", "/etc/tuxbox/terrestrial.xml", "/etc/tuxbox/satellites.xml"):
+				if path.exists(xml):
+					files.append(xml)
 			if config.ParentalControl.configured.value:
 				if config.ParentalControl.type.value == "blacklist":
 					files.append("/etc/enigma2/blacklist")
