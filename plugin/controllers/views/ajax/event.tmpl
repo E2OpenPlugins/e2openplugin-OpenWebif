@@ -78,7 +78,7 @@ display:inline-block;
 #if $event.title != $event.shortdesc
 			<div style="font-size: 12px; font-weight: bold">$event.shortdesc</div>
 #end if
-			<div style="max-height:400px; overflow:auto"><p>$(event.longdesc.replace("\n","<br/>"))</p></div>
+			<div style="max-height:400px; overflow:auto"><p>$(event.longdesc.replace("\n","<br/>").replace(u"\u008a","<br/>"))</p></div>
 		</div>
 		<div style="clear:left"></div>
 	</div>
