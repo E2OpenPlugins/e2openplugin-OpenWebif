@@ -474,7 +474,7 @@ msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Open Source webinterface voor Linux settopbox"
 
 msgid "Show box name in header"
-msgstr "Toon de naam van de box in de kopOh? "
+msgstr "Toon de naam van de box in de kop"
 
 msgid "Use custom box name"
 msgstr "Gebruik eigen naam voor de box"
