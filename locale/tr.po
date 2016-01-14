@@ -63,10 +63,10 @@ msgid "Terrestrial"
 msgstr "Karasal"
 
 msgid "W"
-msgstr ""
+msgstr "B"
 
 msgid "E"
-msgstr ""
+msgstr "D"
 
 #, python-format
 msgid "Missing mandatory parameter '%s'"
@@ -437,7 +437,7 @@ msgid "Movielist"
 msgstr ""
 
 msgid "Movies"
-msgstr ""
+msgstr "Filmler"
 
 msgid "MultiEPG"
 msgstr "Çoklu EPG"
@@ -464,7 +464,7 @@ msgid "Nothing playing."
 msgstr ""
 
 msgid "Now"
-msgstr ""
+msgstr "Şimdi"
 
 msgid "On"
 msgstr ""
@@ -981,7 +981,7 @@ msgid "Interval (in h)"
 msgstr ""
 
 msgid "Max Days"
-msgstr ""
+msgstr "Azami Gün"
 
 msgid "Try Guessing"
 msgstr ""
@@ -1089,7 +1089,7 @@ msgid "Add Provider as new Bouquet"
 msgstr ""
 
 msgid "Add channel(s) to Bouquet"
-msgstr ""
+msgstr "Bukete kanal(ları) ekle"
 
 msgid "Add channel(s) as alternate"
 msgstr ""
