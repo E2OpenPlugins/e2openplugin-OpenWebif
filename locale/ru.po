@@ -819,7 +819,7 @@ msgid "zap"
 msgstr "перейти"
 
 msgid "Override found with alternative service"
-msgstr "Отклонить найденное в альтернативном сервисе"
+msgstr "Заменить на найденное в альтернативном сервисе"
 
 msgid "Only match during timespan"
 msgstr "Только совпадение в промежуток времени"
@@ -831,7 +831,7 @@ msgid "End of Timespan"
 msgstr "Конец временного промежутка"
 
 msgid "Restrict to events on certain dates"
-msgstr "Ограничие событий на определенные даты"
+msgstr "Ограничение событий на определенные даты"
 
 msgid "Not after"
 msgstr "Нет после"
@@ -846,7 +846,7 @@ msgid "Offset before recording (in m)"
 msgstr "Сдвиг перед записью (в мин.)"
 
 msgid "Offset after recording (in m)"
-msgstr "Сдаиг после записи ( в мин.)"
+msgstr "Сдвиг после записи ( в мин.)"
 
 msgid "Set maximum duration"
 msgstr "Установите максимальную продолжительность"
@@ -867,7 +867,7 @@ msgid "go to standby"
 msgstr "перейти в режим ожидания"
 
 msgid "go to deep standby"
-msgstr "перейти в глубокий ражим ожидания"
+msgstr "перейти в глубокий режим ожидания"
 
 msgid "Execute \"after event\" during timespan"
 msgstr "Выполнить \"после события\" в промежутке времени"
@@ -900,7 +900,7 @@ msgid "Reset count"
 msgstr "Сброс счетчика"
 
 msgid "Require description to be unique"
-msgstr "Требование уникальности длч описания"
+msgstr "Требование уникальности для описания"
 
 msgid "No"
 msgstr "Нет"
@@ -974,21 +974,21 @@ msgstr "Анализ"
 msgid "Simulate"
 msgstr "Имитировать"
 
-# New Autotimer Setting Windows name (not enabled to transfer atm)
+
 msgid "AutoTimer Settings"
-msgstr "Настройки автотаймера"
+msgstr "Автотаймер - настройки"
 
 msgid "AutoPoll"
-msgstr "Интервал проверки"
+msgstr "Авто проверка"
 
 msgid "Interval (in h)"
-msgstr "Интрвал (в часах)"
+msgstr "Интервал (в часах)"
 
 msgid "Max Days"
 msgstr "Максимум дней"
 
 msgid "Try Guessing"
-msgstr "Попытка гадания"
+msgstr "Учесть существующий таймер"
 
 msgid "Fastscan"
 msgstr "Быстрый поиск"
@@ -997,7 +997,7 @@ msgid "Show in Extensionsmenu"
 msgstr "Показать в меню дополнений"
 
 msgid "Disabled on Conflict"
-msgstr "Отключенный при конфликте"
+msgstr "Добавить как отключенный при конфликте"
 
 msgid "Add Similar on Conflict"
 msgstr "Добавить аналогичный при конфликте"
@@ -1009,10 +1009,10 @@ msgid "Notify if Similar"
 msgstr "Показать сообщение при аналогичном"
 
 msgid "Add Autotimer to Tags"
-msgstr "Добавить автотаймер в тэги"
+msgstr "Добавить 'Autotimer' в тэги"
 
 msgid "Add Name to Tags"
-msgstr "Добавить имя в тэги"
+msgstr "Добавить название в тэги"
 
 msgid "None"
 msgstr "Ничего"
