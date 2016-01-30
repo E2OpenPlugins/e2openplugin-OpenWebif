@@ -246,6 +246,9 @@ def getAllInfo():
 				model = "Spark 7162"
 			else:
 				model = "Spark"
+		elif procmodel == "wetekplay":
+			brand = "WeTeK"
+			model = procmodel
 	elif fileExists("/proc/stb/info/model"):
 		f = open("/proc/stb/info/model",'r')
 		procmodel = f.readline().strip().lower()
@@ -375,6 +378,8 @@ def getAllInfo():
 		remote = "dmm1"
 	elif procmodel in ("dm7080", "dm7020hd", "dm7020hdv2", "dm800sev2", "dm500hdv2", "dm820"):
 		remote = "dmm2"
+	elif procmodel == "wetekplay":
+		remote = procmodel
 
 	info['remote'] = remote
 
