@@ -374,8 +374,8 @@ def getServices(sRef, showAll = True, showHidden = False):
 		if not st & 512 or showHidden:
 			if showAll or st == 0:
 				service = {}
-				service['servicereference'] = unicode(sitem[0], 'utf_8', errors='ignore').encode('ASCII', 'ignore')
-				service['servicename'] = unicode(sitem[1], 'utf_8', errors='ignore').encode('ASCII', 'ignore')
+				service['servicereference'] = unicode(sitem[0], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+				service['servicename'] = unicode(sitem[1], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 				services.append(service)
 
 	return { "services": services }
