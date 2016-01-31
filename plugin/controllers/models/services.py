@@ -108,7 +108,8 @@ def getCurrentFullInfo(session):
 		ref = None
 
 	if ref is not None:
-		inf['sref'] = ref
+		inf['sref'] = '_'.join(ref.split(':', 10)[:10]) 
+		inf['srefv2']= ref
 		inf['picon'] = getPicon(ref)
 		inf['wide'] = inf['aspect'] in (3, 4, 7, 8, 0xB, 0xC, 0xF, 0x10)
 		inf['ttext'] = getServiceInfoString(info, iServiceInformation.sTXTPID)
@@ -370,11 +371,14 @@ def getServices(sRef, showAll = True, showHidden = False):
 
 	for sitem in slist:
 		st = int(sitem[0].split(":")[1])
+		program = int(sitem[0].split(':')[3],16)
+
 		if not st & 512 or showHidden:
 			if showAll or st == 0:
 				service = {}
 				service['servicereference'] = unicode(sitem[0], 'utf_8', errors='ignore').encode('ASCII', 'ignore')
 				service['servicename'] = unicode(sitem[1], 'utf_8', errors='ignore').encode('ASCII', 'ignore')
+				service['program'] = program
 				services.append(service)
 
 	return { "services": services }
