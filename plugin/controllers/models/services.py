@@ -109,6 +109,7 @@ def getCurrentFullInfo(session):
 
 	if ref is not None:
 		inf['sref'] = '_'.join(ref.split(':', 10)[:10])
+		inf['srefv2']= ref
 		inf['picon'] = getPicon(ref)
 		inf['wide'] = inf['aspect'] in (3, 4, 7, 8, 0xB, 0xC, 0xF, 0x10)
 		inf['ttext'] = getServiceInfoString(info, iServiceInformation.sTXTPID)
