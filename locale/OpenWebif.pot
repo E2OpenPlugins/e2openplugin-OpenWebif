@@ -782,6 +782,15 @@ msgstr ""
 msgid "description match"
 msgstr ""
 
+msgid "title or description match"
+msgstr ""
+
+msgid "title or short description match"
+msgstr ""
+
+msgid "short description match"
+msgstr ""
+
 msgid "start match"
 msgstr ""
 
@@ -1270,4 +1279,7 @@ msgid "Close"
 msgstr ""
 
 msgid "Open in new window"
+msgstr ""
+
+msgid "Include description"
 msgstr ""

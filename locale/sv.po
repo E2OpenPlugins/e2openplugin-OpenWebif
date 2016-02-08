@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2014-11-01 19:04+0100\n"
-"PO-Revision-Date: 2015-02-11 23:30+0100\n"
+"PO-Revision-Date: 2015-09-14 20:21+0200\n"
 "Last-Translator: Svevrstt <svevrstt@gmail.com>\n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.4\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -37,7 +37,7 @@ msgid "IPv4-only Python/Twisted"
 msgstr "Endast Python/Twisted för IPv4"
 
 msgid "none/IPv4-only network"
-msgstr "inga/Endast IPv4-nätverk"
+msgstr "inga/endast IPv4-nätverk"
 
 msgid "Message sent successfully!"
 msgstr "Meddelandet skickades!"
@@ -794,6 +794,15 @@ msgstr "exakt matchning"
 msgid "description match"
 msgstr "beskrivningen matchar"
 
+msgid "title or description match"
+msgstr "titeln eller beskrivningen  matchar"
+
+msgid "title or short description match"
+msgstr "titeln eller kortfattade beskrivningen matchar"
+
+msgid "short description match"
+msgstr "kortfattade beskrivningen matchar"
+
 msgid "start match"
 msgstr "titelns inledning matchar"
 
@@ -1285,3 +1294,6 @@ msgstr "Stäng"
 
 msgid "Open in new window"
 msgstr "Öppna i ett nytt fönster"
+
+msgid "Include description"
+msgstr "Inkludera beskrivningen"

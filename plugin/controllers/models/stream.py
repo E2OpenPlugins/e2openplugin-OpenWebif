@@ -132,7 +132,7 @@ def getTS(self, request):
 		machinebuild = info["machinebuild"]
 		transcoder_port = None
 		args = ""
-		if model in ("Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus"):
+		if model in ("Solo4K", "Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus"):
 			try:
 				transcoder_port = int(config.plugins.transcodingsetup.port.value)
 			except StandardError:

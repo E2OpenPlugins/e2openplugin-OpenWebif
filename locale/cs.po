@@ -753,8 +753,14 @@ msgstr "podmínek GNU General Public License verze 2 jako"
 msgid "published by the Free Software Foundation."
 msgstr ""
 
-msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
-msgstr "Všechny soubory tohoto software jsou open source software; můžete je distribuovat a/nebo modifikovat podle podmínek GNU General Public License verze 2 jako published by the Free Software Foundation."
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 2 "
+"as published by the Free Software Foundation."
+msgstr ""
+"Všechny soubory tohoto software jsou open source software; můžete je "
+"distribuovat a/nebo modifikovat podle podmínek GNU General Public License "
+"verze 2 jako published by the Free Software Foundation."
 
 msgid "Root"
 msgstr "root"
@@ -782,6 +788,15 @@ msgstr "přesně odpovídá"
 
 msgid "description match"
 msgstr "Popis odpovídá"
+
+msgid "title or description match"
+msgstr ""
+
+msgid "title or short description match"
+msgstr ""
+
+msgid "short description match"
+msgstr ""
 
 msgid "start match"
 msgstr ""
@@ -960,6 +975,58 @@ msgstr ""
 msgid "Simulate"
 msgstr "Simulace"
 
+# New Autotimer Setting Windows name (not enabled to transfer atm)
+msgid "AutoTimer Settings"
+msgstr ""
+
+msgid "AutoPoll"
+msgstr ""
+
+msgid "Interval (in h)"
+msgstr ""
+
+msgid "Max Days"
+msgstr ""
+
+msgid "Try Guessing"
+msgstr ""
+
+msgid "Fastscan"
+msgstr ""
+
+msgid "Show in Extensionsmenu"
+msgstr ""
+
+msgid "Disabled on Conflict"
+msgstr ""
+
+msgid "Add Similar on Conflict"
+msgstr ""
+
+msgid "Notify if Conflict"
+msgstr ""
+
+msgid "Notify if Similar"
+msgstr ""
+
+msgid "Add Autotimer to Tags"
+msgstr ""
+
+msgid "Add Name to Tags"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Editor"
+msgstr ""
+
+msgid "Plain"
+msgstr ""
+
+msgid "Wizzard"
+msgstr ""
+
 msgid "Do you really want to delete the AT"
 msgstr "Opravdu chcete odstranit AT"
 
@@ -1128,6 +1195,15 @@ msgstr "Nastavení OpenWebif"
 msgid "transcoded"
 msgstr ""
 
+msgid "System OE"
+msgstr ""
+
+msgid "Distro"
+msgstr ""
+
+msgid "Driver date"
+msgstr ""
+
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Detekován(y) konfliktní časovač(e) %s"
 
@@ -1211,3 +1287,6 @@ msgstr "Zavřít"
 
 msgid "Open in new window"
 msgstr "Otevřít v novém okně"
+
+msgid "Include description"
+msgstr ""

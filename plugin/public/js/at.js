@@ -808,23 +808,32 @@ function saveAT()
 			var FM = tr.find(".FM");
 			var FI = tr.find(".FI");
 			var FS = tr.find(".FS");
-			
-			if (FM.val() === 'dayofweek'){
+			var FR = tr.find(".FR");
+			if (FR.is(':checked') === false){
+				if (FM.val() === 'dayofweek'){
+					_f.push (
+							{ 	"t" : FT.val(),
+								"w": FM.val(),
+								"v": FS.val()
+							}
+						); 
+				}
+				else {
+					_f.push (
+							{ 	"t" : FT.val(),
+								"w": FM.val(),
+								"v": FI.val()
+							}
+						); 
+					
+				}
+			} else {
 				_f.push (
-						{ 	"t" : FT.val(),
-							"w": FM.val(),
-							"v": FS.val()
-						}
-					); 
-			}
-			else {
-				_f.push (
-						{ 	"t" : FT.val(),
-							"w": FM.val(),
-							"v": FI.val()
-						}
-					); 
-				
+							{ 	"t" :FT.val(),
+								"w": FM.val(),
+								"v": ""
+							}
+						); 
 			}
 		}
 	});

@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2014-11-01 19:04+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Dima73 <Dima-73@inbox.lv>\n"
+"Last-Translator: Dimitrij <Dima-73@inbox.lv>\n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.1\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-Basepath: .\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && "
-"(n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
 msgid "Settings"
@@ -37,13 +37,13 @@ msgid "IPv4-only Python/Twisted"
 msgstr "IPv4-только Python/Twisted"
 
 msgid "none/IPv4-only network"
-msgstr "нет/IPv4-только сеть"
+msgstr "ничего/IPv4-только сеть"
 
 msgid "Message sent successfully!"
 msgstr "Сообщение успешно отправлено!"
 
 msgid "No answer in time"
-msgstr "Нет ответа долгое время"
+msgstr "Нет ответа в срок"
 
 msgid "Answer is YES!"
 msgstr "Ответ - ДА!"
@@ -207,7 +207,7 @@ msgid "After Event"
 msgstr "После события"
 
 msgid "AGC"
-msgstr "Уровень сигнала"
+msgstr "AGC"
 
 msgid "All"
 msgstr "Все"
@@ -240,13 +240,13 @@ msgid "Box"
 msgstr "Ресивер"
 
 msgid "Box Control"
-msgstr "Управление"
+msgstr "Управление ресивером"
 
 msgid "Box Uptime"
 msgstr "Время работы ресивера"
 
 msgid "Brand"
-msgstr "Марка"
+msgstr "Бренд"
 
 msgid "Cancel"
 msgstr "Отмена"
@@ -261,10 +261,10 @@ msgid "Channels"
 msgstr "Каналы"
 
 msgid "Chipset"
-msgstr "Процессор"
+msgstr "Чипсет"
 
 msgid "Cleanup Timers"
-msgstr "Очистить список таймеров"
+msgstr "Очистка выполненных таймеров"
 
 msgid "Contributors"
 msgstr "Принимали участие"
@@ -279,7 +279,7 @@ msgid "Current Event"
 msgstr "Текущее событие"
 
 msgid "Deep-Standby"
-msgstr "Глубокий режим ожидания"
+msgstr "Выключение"
 
 msgid "Default"
 msgstr "По умолчанию"
@@ -336,7 +336,7 @@ msgid "Enabled"
 msgstr "Включен"
 
 msgid "Encrypted"
-msgstr "Кодирование"
+msgstr "Кодированый"
 
 msgid "EPG"
 msgstr "EPG"
@@ -411,7 +411,7 @@ msgid "Kernel version"
 msgstr "Версия ядра"
 
 msgid "LICENSE"
-msgstr "Лицензия"
+msgstr "ЛИЦЕНЗИЯ"
 
 msgid "loading"
 msgstr "загрузка"
@@ -423,10 +423,10 @@ msgid "Locked"
 msgstr "Заблокировано"
 
 msgid "MAC address"
-msgstr "MAC-адрес"
+msgstr "MAC адрес"
 
 msgid "Main"
-msgstr "Меню"
+msgstr "Главный"
 
 msgid "Minute"
 msgstr "Минута"
@@ -453,7 +453,7 @@ msgid "Network Interface"
 msgstr "Сетевой интерфейс"
 
 msgid "no description available"
-msgstr "нет описания"
+msgstr "нет доступного описания"
 
 msgid "Sorry this page is not yet implemented"
 msgstr "Извините, эта страница недоступна"
@@ -468,19 +468,19 @@ msgid "Now"
 msgstr "Сейчас"
 
 msgid "On"
-msgstr "Включено"
+msgstr "Вкл"
 
 msgid "Open Source Web Interface for Linux set-top box"
-msgstr "Вэб-интерфейс Вашего ресивера"
+msgstr "Открытый вэб интерфейс для линукс-ресиверов"
 
 msgid "Show box name in header"
-msgstr "Показывать название ресивера в заголовке"
+msgstr "Показывать имя ресивера в заголовке"
 
 msgid "Use custom box name"
-msgstr "Использовать пользовательское ресивера"
+msgstr "Использовать пользовательское имя ресивера"
 
 msgid "Custom box name"
-msgstr "Пользовательское ресивера"
+msgstr "Пользовательское имя ресивера"
 
 msgid "OSD"
 msgstr "OSD"
@@ -504,7 +504,7 @@ msgid "Radio"
 msgstr "Радио каналы"
 
 msgid "Reboot Box"
-msgstr "Перезагрузить ресивер"
+msgstr "Перезагрузить"
 
 msgid "Recording Status"
 msgstr "Статус записи"
@@ -537,7 +537,7 @@ msgid "Satellites"
 msgstr "Спутники"
 
 msgid "Satfinder"
-msgstr "Поиск спутника"
+msgstr "Сигнал спутника"
 
 msgid "Save"
 msgstr "Сохранить"
@@ -558,7 +558,7 @@ msgid "Send Message"
 msgstr "Отправить сообщение"
 
 msgid "Waiting for answer ..."
-msgstr "Ожидание ответа..."
+msgstr "Ожидание для ответа..."
 
 msgid "Send a Message"
 msgstr "Отправить сообщение"
@@ -573,7 +573,7 @@ msgid "(shift + click for long pressure)"
 msgstr "(shift + кнопка = долгое нажатие)"
 
 msgid "Show Full OpenWebif"
-msgstr "Показать весь вэб-интерфейс"
+msgstr "Показать весь OpenWebif"
 
 msgid "Show full remote"
 msgstr "Показать весь пульт"
@@ -597,13 +597,13 @@ msgid "Standby"
 msgstr "Режим ожидания"
 
 msgid "Standby Toggle"
-msgstr "Вкл/выкл режима ожидания"
+msgstr "Режим ожидания"
 
 msgid "Start time is after end time"
 msgstr "Время начала после времени окончания"
 
 msgid "Start Instant Record"
-msgstr "Немедленная запись"
+msgstr "Старт немедленной записи"
 
 msgid "Stream"
 msgstr "Стрим"
@@ -621,10 +621,10 @@ msgid "Teletext"
 msgstr "Телетекст"
 
 msgid "Television"
-msgstr "ТВ каналы"
+msgstr "Телевидение"
 
 msgid "Template Engine"
-msgstr "Шаблон"
+msgstr "Шаблон движка"
 
 msgid "Text"
 msgstr "Текст"
@@ -654,13 +654,13 @@ msgid "Timers"
 msgstr "Таймеры"
 
 msgid "Title"
-msgstr "Заголовок"
+msgstr "Название"
 
 msgid "Total Memory"
 msgstr "Всего памяти"
 
 msgid "Tuner Bit Error Rate BER"
-msgstr "BER тюнера"
+msgstr "Частота битовых ошибок тюнера (BER)"
 
 msgid "Tuner Number (0-3)"
 msgstr "Номер тюнера (0-3)"
@@ -672,7 +672,7 @@ msgid "Tuner Signal Quality SNR"
 msgstr "Качество сигнала тюнера (SNR)"
 
 msgid "Tuner Signal Quality SNR_DB"
-msgstr "Качество сигнала тюнера (SNR) в дБ"
+msgstr "Качество сигнала тюнера (SNR_DB)"
 
 msgid "Tuner Signal Power AGC"
 msgstr "Уровень сигнала тюнера (AGC)"
@@ -693,7 +693,7 @@ msgid "Type"
 msgstr "Тип"
 
 msgid "Upcoming Events"
-msgstr "Следующие события"
+msgstr "Ближайшие события"
 
 msgid "Version"
 msgstr "Версия"
@@ -714,7 +714,7 @@ msgid "Volume"
 msgstr "Громкость"
 
 msgid "Volume Control"
-msgstr "Громкость"
+msgstr "Контроль громкости"
 
 msgid "waiting"
 msgstr "ожидайте"
@@ -723,19 +723,19 @@ msgid "Warning"
 msgstr "Внимание"
 
 msgid "Yes/No"
-msgstr "Да/нет"
+msgstr "Да/Нет"
 
 msgid "Zap"
-msgstr "Переключить"
+msgstr "Перейти"
 
 msgid "zap before Stream"
-msgstr "переключать перед стримом"
+msgstr "перейти перед стримом"
 
 msgid "Zap to"
-msgstr "Перейти к "
+msgstr "Перейти на"
 
 msgid "Zapped to"
-msgstr "Переключено на"
+msgstr "Перешли на"
 
 msgid "Translation to Spanish"
 msgstr "Перевод на испанский"
@@ -753,13 +753,13 @@ msgid "published by the Free Software Foundation."
 msgstr "опубликованой Free Software Foundation."
 
 msgid ""
-"All Files of this Software are open source software; you can redistribute it and/"
-"or modify it under the terms of the GNU General Public License version 2 as "
-"published by the Free Software Foundation."
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 2 "
+"as published by the Free Software Foundation."
 msgstr ""
-"Все файлы данного ПО являются открытым исходным кодом; Вы можете распространять "
-"и / или изменять его в соответствии с условиями GNU General Public License версии "
-"2, опубликованной Free Software Foundation."
+"Все файлы данного ПО являются открытым исходным кодом; Вы можете "
+"распространять и / или изменять его в соответствии с условиями GNU General "
+"Public License версии 2, опубликованной Free Software Foundation."
 
 msgid "Root"
 msgstr "Root"
@@ -771,10 +771,10 @@ msgid "AutoTimer Edit"
 msgstr "Редактор Автотаймера"
 
 msgid "Match title"
-msgstr "Совпадение названия"
+msgstr "Название совпадения"
 
 msgid "EPG encoding"
-msgstr "Декодирование EPG"
+msgstr "Кодировка EPG"
 
 msgid "Search type"
 msgstr "Тип поиска"
@@ -788,11 +788,20 @@ msgstr "полное совпадение"
 msgid "description match"
 msgstr "совпадение описания"
 
+msgid "title or description match"
+msgstr "название или описание совпадения"
+
+msgid "title or short description match"
+msgstr "название или короткое описание совпадения"
+
+msgid "short description match"
+msgstr "короткое описание совпадения"
+
 msgid "start match"
-msgstr "совпадение начала"
+msgstr "начало совпадения"
 
 msgid "Search strictness"
-msgstr "Строгий поиск"
+msgstr "Строгость поиска"
 
 msgid "case-sensitive search"
 msgstr "поиск с учетом регистра"
@@ -810,7 +819,7 @@ msgid "zap"
 msgstr "перейти"
 
 msgid "Override found with alternative service"
-msgstr "Отменить использование с альтернативным сервисом"
+msgstr "Заменить на найденное в альтернативном сервисе"
 
 msgid "Only match during timespan"
 msgstr "Только совпадение в промежуток времени"
@@ -822,22 +831,22 @@ msgid "End of Timespan"
 msgstr "Конец временного промежутка"
 
 msgid "Restrict to events on certain dates"
-msgstr "Ограничить событие в определенные даты"
+msgstr "Ограничение событий на определенные даты"
 
 msgid "Not after"
 msgstr "Нет после"
 
 msgid "Not before"
-msgstr "Не раньше, чем"
+msgstr "Нет перед"
 
 msgid "Custom offset"
 msgstr "Пользовательский сдвиг"
 
 msgid "Offset before recording (in m)"
-msgstr "Объединить перед записью (в мин.)"
+msgstr "Сдвиг перед записью (в мин.)"
 
 msgid "Offset after recording (in m)"
-msgstr "Объединить после записи ( мин.)"
+msgstr "Сдвиг после записи ( в мин.)"
 
 msgid "Set maximum duration"
 msgstr "Установите максимальную продолжительность"
@@ -855,10 +864,10 @@ msgid "do nothing"
 msgstr "ничего не делать"
 
 msgid "go to standby"
-msgstr "перейти в спящий режим"
+msgstr "перейти в режим ожидания"
 
 msgid "go to deep standby"
-msgstr "выключить ресивер"
+msgstr "перейти в глубокий режим ожидания"
 
 msgid "Execute \"after event\" during timespan"
 msgstr "Выполнить \"после события\" в промежутке времени"
@@ -891,7 +900,7 @@ msgid "Reset count"
 msgstr "Сброс счетчика"
 
 msgid "Require description to be unique"
-msgstr "Нужно, чтобы описание было уникальным"
+msgstr "Требование уникальности для описания"
 
 msgid "No"
 msgstr "Нет"
@@ -906,31 +915,31 @@ msgid "Any service/recording"
 msgstr "Любой сервис/запись"
 
 msgid "Use a custom location"
-msgstr "Используйте другое расположение"
+msgstr "Пользовательское расположение"
 
 msgid "select Tags"
 msgstr "выбор тэгов"
 
 msgid "select Channels"
-msgstr "переключить каналы"
+msgstr "выбор каналов"
 
 msgid "select Bouquets"
-msgstr "переключить букеты"
+msgstr "выбор букетов"
 
 msgid "Enable Filtering"
 msgstr "Применить фильтрацию"
 
 msgid "Include"
-msgstr "Добавить"
+msgstr "Включать"
 
 msgid "Exclude"
 msgstr "Исключить"
 
 msgid "in Title"
-msgstr "в заголовке"
+msgstr "в названии"
 
 msgid "in Shortdescription"
-msgstr "в кратком описании"
+msgstr "в коротком описании"
 
 msgid "in Description"
 msgstr "в описании"
@@ -948,7 +957,7 @@ msgid "VPS"
 msgstr "VPS"
 
 msgid "VPS Overwrite"
-msgstr "Переписать VPS"
+msgstr "Перезапись VPS"
 
 msgid "Add"
 msgstr "Добавить"
@@ -965,17 +974,69 @@ msgstr "Анализ"
 msgid "Simulate"
 msgstr "Имитировать"
 
+
+msgid "AutoTimer Settings"
+msgstr "Автотаймер - настройки"
+
+msgid "AutoPoll"
+msgstr "Авто проверка"
+
+msgid "Interval (in h)"
+msgstr "Интервал (в часах)"
+
+msgid "Max Days"
+msgstr "Максимум дней"
+
+msgid "Try Guessing"
+msgstr "Учесть существующий таймер"
+
+msgid "Fastscan"
+msgstr "Быстрый поиск"
+
+msgid "Show in Extensionsmenu"
+msgstr "Показать в меню дополнений"
+
+msgid "Disabled on Conflict"
+msgstr "Добавить как отключенный при конфликте"
+
+msgid "Add Similar on Conflict"
+msgstr "Добавить аналогичный при конфликте"
+
+msgid "Notify if Conflict"
+msgstr "Показать сообщение при конфилкте"
+
+msgid "Notify if Similar"
+msgstr "Показать сообщение при аналогичном"
+
+msgid "Add Autotimer to Tags"
+msgstr "Добавить 'Autotimer' в тэги"
+
+msgid "Add Name to Tags"
+msgstr "Добавить название в тэги"
+
+msgid "None"
+msgstr "Ничего"
+
+msgid "Editor"
+msgstr "Редактор"
+
+msgid "Plain"
+msgstr "Обычный"
+
+msgid "Wizzard"
+msgstr "Мастер"
+
 msgid "Do you really want to delete the AT"
 msgstr "Вы действительно хотите удалить АТ?"
 
 msgid "Label series"
-msgstr "Отметить группу"
+msgstr "Этикетки серий"
 
 msgid "Enable Messages"
 msgstr "Включить сообщения"
 
 msgid "Delay Standby"
-msgstr "Отложенное выключение"
+msgstr "Задержка в режиме ожидания"
 
 msgid "Interval (min.)"
 msgstr "Интервал (мин.)"
@@ -1017,10 +1078,10 @@ msgid "Visibly"
 msgstr "Видимый (режим ТВ)"
 
 msgid "Picture in Picture"
-msgstr "PIP"
+msgstr "Картинка в картинке (PiP)"
 
 msgid "Picture in Picture (hidden)"
-msgstr "PIP (скрыть)"
+msgstr "PiP (скрытый режим)"
 
 msgid "Fake Recording"
 msgstr "Имитация записи"
@@ -1089,7 +1150,7 @@ msgid "OpenWebif url: http://yourip:port"
 msgstr "OpenWebif url: http://IP ресивера:порт"
 
 msgid "OpenWebInterface Enabled"
-msgstr "Вэб-интерфейс включен"
+msgstr "OpenWebif включен"
 
 msgid "HTTP port"
 msgstr "Порт HTTP"
@@ -1163,20 +1224,8 @@ msgstr "Таймер '%s' не сохранен из-за конфликта"
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Не удалось найти таймер '%s' с заданным временем начала и окончания!"
 
-msgid "The timer '%s' now recorded! Not disabled!"
-msgstr "Таймер '%s' сейчас записывается! Невозможно отключить!"
-
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Таймер '%s' был успешно удален"
-
-msgid "Timer '%s' already exists!"
-msgstr "Таймер '%s' уже существует!"
-
-msgid "Close"
-msgstr "Закрыть"
-
-msgid "Open in new window"
-msgstr "Открыть в новом окне"
 
 msgid "No matching Timer found"
 msgstr "Не найден соответствующий таймер"
@@ -1221,10 +1270,32 @@ msgid "SleepTimer feature not available"
 msgstr "Функции тамймера сна недоступны"
 
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "ОШИБКА: Не удается установить таймер сна, ресивер находится в режим ожидания"
+msgstr ""
+"ОШИБКА: не удается установить таймер сна, ресивер находится в режим ожидания"
 
 msgid "Sleeptimer has been disabled"
 msgstr "Таймер сна был отключен"
 
 msgid "Sleeptimer set to %d minutes"
 msgstr "Таймер сна установлен на %d минут"
+
+msgid "Safe mode"
+msgstr "Безопасный режим"
+
+msgid "Close"
+msgstr "Закрыть"
+
+msgid "Open in new window"
+msgstr "Открыть в новом окне"
+
+msgid "Include description"
+msgstr "Включить описание"
+
+msgid "The timer '%s' now recorded! Not disabled!"
+msgstr "Таймер '%s' сейчас записывается! Невозможно отключить!"
+
+msgid "Timer '%s' already exists!"
+msgstr "Таймер '%s' уже существует!"
+
+msgid "Search KinoPoisk"
+msgstr "Искать в Кинопоиске"

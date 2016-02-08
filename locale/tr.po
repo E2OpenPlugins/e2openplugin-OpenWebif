@@ -5,13 +5,13 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.7.5\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Language: tr\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
 msgid "Settings"
@@ -63,10 +63,10 @@ msgid "Terrestrial"
 msgstr "Karasal"
 
 msgid "W"
-msgstr ""
+msgstr "B"
 
 msgid "E"
-msgstr ""
+msgstr "D"
 
 #, python-format
 msgid "Missing mandatory parameter '%s'"
@@ -437,7 +437,7 @@ msgid "Movielist"
 msgstr ""
 
 msgid "Movies"
-msgstr ""
+msgstr "Filmler"
 
 msgid "MultiEPG"
 msgstr "Çoklu EPG"
@@ -464,7 +464,7 @@ msgid "Nothing playing."
 msgstr ""
 
 msgid "Now"
-msgstr ""
+msgstr "Şimdi"
 
 msgid "On"
 msgstr ""
@@ -784,6 +784,15 @@ msgstr ""
 msgid "description match"
 msgstr ""
 
+msgid "title or description match"
+msgstr ""
+
+msgid "title or short description match"
+msgstr ""
+
+msgid "short description match"
+msgstr ""
+
 msgid "start match"
 msgstr ""
 
@@ -972,7 +981,7 @@ msgid "Interval (in h)"
 msgstr ""
 
 msgid "Max Days"
-msgstr ""
+msgstr "Azami Gün"
 
 msgid "Try Guessing"
 msgstr ""
@@ -1080,7 +1089,7 @@ msgid "Add Provider as new Bouquet"
 msgstr ""
 
 msgid "Add channel(s) to Bouquet"
-msgstr ""
+msgstr "Bukete kanal(ları) ekle"
 
 msgid "Add channel(s) as alternate"
 msgstr ""
@@ -1273,3 +1282,6 @@ msgstr "Kapat"
 
 msgid "Open in new window"
 msgstr "Yeni pencerede aç"
+
+msgid "Include description"
+msgstr ""

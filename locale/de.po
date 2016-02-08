@@ -783,6 +783,15 @@ msgstr "gesamter Titel"
 msgid "description match"
 msgstr "Übereinstimmung in der Beschreibung"
 
+msgid "title or description match"
+msgstr "Teil des Titels oder der Beschreibung"
+
+msgid "title or short description match"
+msgstr "Teil des Titels oder der Kurzbeschreibung"
+
+msgid "short description match"
+msgstr "Teil der Kurzbeschreibung"
+
 msgid "start match"
 msgstr ""
 
@@ -1267,9 +1276,11 @@ msgstr "SleepTimer eingestellt auf %d Minuten"
 msgid "Safe mode"
 msgstr "Sicherheitsmodus"
 
-
 msgid "Close"
 msgstr "Schließen"
 
 msgid "Open in new window"
 msgstr "In neuem Fenster öffnen"
+
+msgid "Include description"
+msgstr "Beschreibung einbeziehen"

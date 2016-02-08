@@ -48,6 +48,13 @@
 			<input type="checkbox" name="justplay" id="justplay" value="0" />
 		</span>
 	</div>
+
+	<div class="timerlist_row" id="always_zap1">
+		<span class="timerlist_row_l">Record+ZAP:</span>
+		<span style="margin: 5px;">
+			<input type="checkbox" name="always_zap" id="always_zap" value="0" />
+		</span>
+	</div>
 	
 	<div class="timerlist_row">
 		<span class="timerlist_row_l">$tstrings['repeated']:</span>
@@ -116,6 +123,10 @@ initTimerEditBegin();
 
 $('#vpsplugin_enabled').click(function() { checkVPS();});
 
+$('#always_zap').click(function() {
+	$('#justplay').prop("disabled",$('#always_zap').is(':checked'));
+});
+
 $('#timerend').datetimepicker({
 	
 	timeText: tstr_time,
@@ -167,10 +178,17 @@ $('#editTimerForm').dialog({
 					name: $('#timername').val(),
 					description: $('#description').val(),
 					disabled: ($('#enabled').is(':checked')?"0":"1"),
-					justplay: ($('#justplay').is(':checked')?"1":"0"),
 					afterevent: $('#afterevent').val(),
 					tags: tags,
 					repeated: repeated };
+				
+				if($('#always_zap').is(':checked')) {
+					urldata["always_zap"] = "1";
+					urldata["justplay"] = "0";
+				}
+				else
+					urldata["justplay"] = $('#justplay').is(':checked')?"1":"0";
+				
 				if ($('#dirname').val() != 'None')
 					urldata["dirname"] = $('#dirname').val();
 				if (!$('#has_vpsplugin1').is(':hidden'))

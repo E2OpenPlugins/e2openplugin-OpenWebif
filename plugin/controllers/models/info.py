@@ -16,6 +16,7 @@ from Components.config import config
 from Components.NimManager import nimmanager
 from Components.Harddisk import harddiskmanager
 from Components.Network import iNetwork
+from Components.Language import language
 from RecordTimer import parseEvent
 from Screens.Standby import inStandby
 from timer import TimerEntry
@@ -182,23 +183,25 @@ def getInfo():
 			chipset = "SIGMA 8653"
 		else:
 			chipset = "SIGMA 8634"
-	else:
+	elif fileExists("/proc/stb/info/model"):
 		f = open("/proc/stb/info/model",'r')
 		model = f.readline().strip().lower()
 		f.close()
-		if model in ("esi88", "sagemcom88", "nbox"):
-			if fileExists("/proc/boxtype"):
-				f = open("/proc/boxtype",'r')
-				model = f.readline().strip().lower()
-				f.close()
 		if model == "tf7700hdpvr":
 			chipset = "SH4 @266MHz"
-		elif model in ("nbox", "bska", "bsla", "bxzb", "bzzb"):
-			chipset = "SH4 @266MHz"
-		elif model in ("adb2850", "adb2849"):
-			chipset = "SH4 @450MHz"
-		elif model in ("sagemcom88", "esi88", "uhd88", "dsi87"):
-			chipset = "SH4 @450MHz"
+		elif model == "nbox":
+			chipset = "STi7100 @266MHz"
+		elif model == "arivalink200":
+			chipset = "STi7109 @266MHz"
+		elif model in ("adb2850", "adb2849", "dsi87"):
+			chipset = "STi7111 @450MHz"
+		elif model in ("sagemcom88", "esi88"):
+			chipset = "STi7105 @450MHz"
+		elif model.startswith("spark"):
+			if model == "spark7162":
+				chipset = "STi7162 @540MHz"
+			else:
+				chipset = "STi7111 @450MHz"
 
 	if fileExists("/proc/stb/info/chipset"):
 		f = open("/proc/stb/info/chipset",'r')
@@ -321,6 +324,12 @@ def getInfo():
 		if os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TranscodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo')):
 			info['transcoding'] = True
 
+	info['kinopoisk'] = False
+	lang = ['ru', 'uk', 'lv', 'lt', 'et']
+	for l in lang:
+		if l in language.getLanguage():
+			info['kinopoisk'] = True
+
 	global STATICBOXINFO
 	STATICBOXINFO = info
 	return info
@@ -374,6 +383,12 @@ def getTranscodingSupport():
 	if STATICBOXINFO is None:
 		getInfo()
 	return STATICBOXINFO['transcoding']
+
+def getLanguage():
+	global STATICBOXINFO
+	if STATICBOXINFO is None:
+		getInfo()
+	return STATICBOXINFO['kinopoisk']
 
 def getStatusInfo(self):
 	statusinfo = {}

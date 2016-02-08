@@ -70,7 +70,11 @@ display:inline-block;
 					<br>
 					<a class="d_timer" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']"><div class="ti_icon ti_timerdelete"></div></a>
 					<br>
+					#if $kinopoisk
+					<a target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)"><img src="../images/kinopoisk.png" width="25" height="25" title="$tstrings['search_kinopoisk']" border="0"></a>
+					#else
 					<a target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)"><img src="../images/imdb.png" width="25" height="25" title="$tstrings['search_imdb']" border="0"></a>
+					#end if
 				</td>
 			</tr>
 			<tr>

@@ -27,7 +27,7 @@ var rootreqstr = "/bouqueteditor/api/";
 
 function buildRefStr(type)
 {
-	var r = (Mode===0) ? '1:7:1:0:0:0:0:0:0:0:(type == 1) || (type == 17) || (type == 195) || (type == 25) ' : '1:7:2:0:0:0:0:0:0:0:(type == 2) ';
+	var r = (Mode===0) ? '1:7:1:0:0:0:0:0:0:0:(type == 1) || (type == 17) || (type == 195) || (type == 25) || (type == 22) ' : '1:7:2:0:0:0:0:0:0:0:(type == 2) ';
 	if(type===0) {
 		r+='FROM BOUQUET "bouquets.';
 		r+=(Mode===0) ? 'tv' : 'radio';
