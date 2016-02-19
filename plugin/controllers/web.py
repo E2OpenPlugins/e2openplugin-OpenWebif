@@ -191,8 +191,11 @@ class WebController(BaseController):
 		return getCurrentLocation()
 
 	def P_getallservices(self, request):
+		type = "tv"
+		if "type" in request.args.keys():
+			type = "radio"
 		if not config.OpenWebif.xbmcservices.value:
-			return getAllServices()
+			return getAllServices(type)
 
 		# rename services for xbmc
 		bouquets = getAllServices()

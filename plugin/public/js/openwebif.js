@@ -778,15 +778,20 @@ var current_end;
 var timeredit_initialized = false;
 var timeredit_begindestroy = false;
 
-function initTimerEdit() {
+function initTimerBQ(radio) {
+
+	var url="/api/getallservices";
+	if (radio == true) {
+		url += "?type=radio"
+	}
+
 	$.ajax({
 		async: false,
-		url: "/api/getallservices",
+		url: url,
 		success: function(data) {
 			services = $.parseJSON(data);
 			if (services.result) {
 				$('#bouquet_select').find('option').remove().end();
-					
 				for (var id in services.services) {
 					service = services.services[id];
 					for (var id2 in service.subservices) {
@@ -797,6 +802,12 @@ function initTimerEdit() {
 			}
 		}
 	});
+
+}
+
+function initTimerEdit(radio) {
+	
+	initTimerBQ(radio);
 	
 	$.ajax({
 		async: false,
@@ -887,6 +898,8 @@ function editTimer(serviceref, begin, end) {
 		initTimerEditBegin();
 		timeredit_begindestroy=false;
 	}
+
+	alert(serviceref);
 
 	
 	$.ajax({
@@ -996,7 +1009,7 @@ function addTimer(evt,chsref,chname) {
 	var desc = '';
 	var margin_before = 0;
 	var margin_after = 0;
-	
+
 	if (typeof evt !== 'undefined' && evt != '') {
 		begin = evt.begin;
 		end = evt.begin+evt.duration;
@@ -1007,21 +1020,37 @@ function addTimer(evt,chsref,chname) {
 		margin_before = evt.recording_margin_before;
 		margin_after = evt.recording_margin_after;
 	}
-	
+
 	var lch=$('#bouquet_select > option').length;
-	
-	if (!timeredit_initialized || lch < 2) {
-		initTimerEdit();
+
+	var radio = false;
+	if (typeof chsref !== 'undefined') {
+		radio = ( chsref.substring(0,6) == '1:0:2:');
 	}
-	
+
+	$('#cbtv').prop('checked',!radio);
+	$('#cbradio').prop('checked',radio);
+
+	if (!timeredit_initialized || lch < 2) {
+		initTimerEdit(radio);
+	}
+	else
+	{
+		var _chsref=$("#bouquet_select option:last").val();
+		if(radio && _chsref.substring(0,6) !== '1:0:2:')
+			initTimerEdit(radio);
+		if(!radio && _chsref.substring(0,6) == '1:0:2:')
+			initTimerEdit(radio);
+	}
+
 	if (typeof chsref !== 'undefined' && typeof chname !== 'undefined') {
-		// NOT NICE BUT IT WORKS
-		// TODO : remove the radio channel from the list after close
 		serviceref = chsref;
 		title = chname;
-		$('#bouquet_select').append($("<option></option>").attr("value", serviceref).text(chname));
+		if ($('#bouquet_select').val(chsref) === 'undefined') {
+			$('#bouquet_select').append($("<option></option>").attr("value", serviceref).text(chname));
+		}
 	}
-	
+
 	$('#timername').val(title);
 	$('#description').val(desc);
 	$('#dirname').val("None");
