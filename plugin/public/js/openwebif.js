@@ -890,8 +890,24 @@ function editTimer(serviceref, begin, end) {
 	current_begin = begin;
 	current_end = end;
 	
+	var radio = false;
+	if (typeof serviceref !== 'undefined') {
+		radio = ( serviceref.substring(0,6) == '1:0:2:');
+	}
+	
+	$('#cbtv').prop('checked',!radio);
+	$('#cbradio').prop('checked',radio);
+	
 	if (!timeredit_initialized) {
-		initTimerEdit();
+		initTimerEdit(radio);
+	}
+	else
+	{
+		var _chsref=$("#bouquet_select option:last").val();
+		if(radio && _chsref.substring(0,6) !== '1:0:2:')
+			initTimerEdit(radio);
+		if(!radio && _chsref.substring(0,6) == '1:0:2:')
+			initTimerEdit(radio);
 	}
 	
 	if (timeredit_begindestroy) {
@@ -899,9 +915,6 @@ function editTimer(serviceref, begin, end) {
 		timeredit_begindestroy=false;
 	}
 
-	alert(serviceref);
-
-	
 	$.ajax({
 		async: false,
 		url: "/api/timerlist",
