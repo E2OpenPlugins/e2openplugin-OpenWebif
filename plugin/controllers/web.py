@@ -358,8 +358,10 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-
-		return removeMovie(self.session, request.args["sRef"][0])
+		force = False
+		if "force" in request.args.keys():
+			force = True
+		return removeMovie(self.session, request.args["sRef"][0], force)
 
 	def P_moviemove(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])

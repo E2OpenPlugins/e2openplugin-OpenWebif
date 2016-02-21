@@ -3,8 +3,14 @@
 **FEATURES**
 * powertimer api
 
-## Version 0.4.7
+## Version 0.4.8
 ## (in development)
+**FEATURES**
+* get movie text info
+* improve movie trash
+* improve timers for radio
+
+## Version 0.4.7
 **FEATURES**
 * improve edit movie tags
 
