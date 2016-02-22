@@ -380,9 +380,11 @@ def getServices(sRef, showAll = True, showHidden = False):
 
 	return { "services": services }
 
-def getAllServices():
+def getAllServices(type):
 	services = []
-	bouquets = getBouquets("tv")["bouquets"]
+	if type is None:
+		type="tv"
+	bouquets = getBouquets(type)["bouquets"]
 	for bouquet in bouquets:
 		services.append({
 			"servicereference": bouquet[0],

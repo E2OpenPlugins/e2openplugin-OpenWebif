@@ -19,6 +19,10 @@
 			<option value="0">$tstrings['nothing']</option>
 		</select>
 		</span>
+		<label><input class="cbtvr" id="cbtv" type="checkbox" name="group1[]" /> TV </label>
+		<label><input class="cbtvr" id="cbradio" type="checkbox" name="group1[]" /> Radio </label>
+		<span>
+		</span>
 	</div>
 	
 	<div class="timerlist_row">
@@ -120,6 +124,11 @@
 #raw
 
 initTimerEditBegin();
+
+$('.cbtvr').click(function() {
+	$('input[name="' + this.name + '"]').not(this).prop('checked', false);
+	initTimerBQ($('#cbradio').is(':checked'));
+});
 
 $('#vpsplugin_enabled').click(function() { checkVPS();});
 
