@@ -191,8 +191,11 @@ class WebController(BaseController):
 		return getCurrentLocation()
 
 	def P_getallservices(self, request):
+		type = "tv"
+		if "type" in request.args.keys():
+			type = "radio"
 		if not config.OpenWebif.xbmcservices.value:
-			return getAllServices()
+			return getAllServices(type)
 
 		# rename services for xbmc
 		bouquets = getAllServices()
@@ -355,8 +358,10 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-
-		return removeMovie(self.session, request.args["sRef"][0])
+		force = False
+		if "force" in request.args.keys():
+			force = True
+		return removeMovie(self.session, request.args["sRef"][0], force)
 
 	def P_moviemove(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])

@@ -22,6 +22,34 @@ from time import strftime, localtime
 from Screens import MovieSelection
 
 MOVIETAGFILE = "/etc/enigma2/movietags"
+TRASHDIRNAME = "movie_trash"
+
+#TODO : optimize os import
+#TODO : optimize copy / move using FileTransferJob
+
+def _getTrashDir(path):
+	import os
+	path = os.path.realpath(path)
+	path = os.path.abspath(path)
+	while not os.path.ismount(path):
+		path = os.path.dirname(path)
+	if path.endswith("/"):
+		path = path + TRASHDIRNAME
+	else:
+		path = path + "/" + TRASHDIRNAME
+	if not fileExists(path):
+		statvfs = os.statvfs(path.rstrip(trash_dir_name))
+		free = (statvfs.f_frsize * statvfs.f_bavail) / (1024 * 1024 * 1024)
+		if free < 15:
+			return None
+		try:
+			os.makedirs(path)
+		except OSError:
+			pass
+	if fileExists(path, mode="w"):
+		return path
+	else:
+		return None
 
 def getPosition(cutfile, movie_len):
 	cut_list = []
@@ -109,6 +137,8 @@ def getMovieList(directory=None, tag=None, rargs=None, locations=None):
 	else:
 		dir_is_protected = False
 
+	import os
+
 	if not dir_is_protected:
 		for root in folders:
 			movielist = MovieList(None)
@@ -138,6 +168,20 @@ def getMovieList(directory=None, tag=None, rargs=None, locations=None):
 				filename = '/'.join(serviceref.toString().split("/")[1:])
 				filename = '/'+filename
 				pos = getPosition(filename + '.cuts', Len)
+				
+				# get txt
+				name, ext = os.path.splitext(filename)
+				ext = ext.lower()
+				
+				txtdesc = ""
+				
+				if ext != 'ts':
+					txtfile = name + '.txt'
+					if fileExists(txtfile):
+						txtlines = open(txtfile).readlines()
+						txtdesc = ""
+						for line in txtlines:
+							txtdesc += line
 
 				if Len > 0:
 					Len = "%d:%02d" % (Len / 60, Len % 60)
@@ -148,6 +192,9 @@ def getMovieList(directory=None, tag=None, rargs=None, locations=None):
 				sourceRef = ServiceReference(sourceERef)
 				event = info.getEvent(serviceref)
 				ext = event and event.getExtendedDescription() or ""
+
+				if ext == '' and txtdesc != '':
+					ext = txtdesc
 
 				servicename = ServiceReference(serviceref).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
 				movie = {}
@@ -181,11 +228,12 @@ def getAllMovies():
 	locations = config.movielist.videodirs.value[:] or []
 	return getMovieList(None, None, None, locations)
 
-def removeMovie(session, sRef):
+def removeMovie(session, sRef, Force=False):
 	service = ServiceReference(sRef)
 	result = False
 	deleted = False
-
+	message="service error"
+	
 	if service is not None:
 		serviceHandler = eServiceCenter.getInstance()
 		offline = serviceHandler.offlineOperations(service.ref)
@@ -193,30 +241,52 @@ def removeMovie(session, sRef):
 		name = info and info.getName(service.ref) or "this recording"
 
 	if offline is not None:
-		if hasattr(config.usage, 'movielist_trashcan'):
+		if Force == True:
+			message="force delete"
+		elif hasattr(config.usage, 'movielist_trashcan'):
 			fullpath = service.ref.getPath()
 			srcpath = '/'.join(fullpath.split('/')[:-1]) + '/'
 			# TODO: check trash
 			# TODO: check enable trash default value
-			# TODO: remove jpg
 			if '.Trash' not in fullpath and config.usage.movielist_trashcan.value:
+				result = False
+				message = "trashcan"
 				try:
 					import Tools.Trashcan
 					trash = Tools.Trashcan.createTrashFolder(srcpath)
 					if trash:
 						res = _moveMovie(session, sRef, destpath=trash)
 						result = res['result']
-						deleted = result
+						message = res['message']
 				except ImportError:
+					message = "trashcan exception"
 					pass
+				deleted = True
+		elif hasattr(config.usage, 'movielist_use_trash_dir'):
+			fullpath = service.ref.getPath()
+			srcpath = '/'.join(fullpath.split('/')[:-1]) + '/'
+			if TRASHDIRNAME not in fullpath and config.usage.movielist_use_trash_dir.value:
+				message = "trashdir"
+				try:
+					trash = _getTrashDir(fullpath)
+					if trash:
+						res = _moveMovie(session, sRef, destpath=trash)
+						result = res['result']
+						message = res['message']
+				except ImportError:
+					message = "trashdir exception"
+					pass
+				deleted = True
 		if not deleted:
 			if not offline.deleteFromDisk(0):
 				result = True
-
+	else:
+		message="no offline object"
+	
 	if result == False:
 		return {
 			"result": False,
-			"message": "Could not delete Movie '%s'" % name
+			"message": "Could not delete Movie '%s' / %s" % (name,message)
 			}
 	else:
 		return {
