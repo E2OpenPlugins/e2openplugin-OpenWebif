@@ -766,6 +766,18 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None):
 			if not timerlist.has_key(str(timer.service_ref)):
 				timerlist[str(timer.service_ref)] = []
 			timerlist[str(timer.service_ref)].append(timer)
+		
+		if begintime == -1:
+			# If no start time is requested, use current time as start time and extend
+			# show all events until 6:00 next day
+			bt = localtime()
+			offset = mktime( (bt.tm_year, bt.tm_mon, bt.tm_mday, bt.tm_hour - bt.tm_hour%2, 0,0, -1,-1,-1) )
+			lastevent = mktime( (bt.tm_year, bt.tm_mon, bt.tm_mday, 23, 59, 0, -1, -1, -1) ) + 6*3600
+		else:
+			# If a start time is requested, show all events in a 24 hour frame
+			bt = localtime(begintime)
+			offset = mktime( (bt.tm_year, bt.tm_mon, bt.tm_mday, bt.tm_hour - bt.tm_hour%2, 0,0, -1,-1,-1) )
+			lastevent = offset + 86399
 
 		for event in events:
 			ev = {}
@@ -780,14 +792,6 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None):
 			if not ret.has_key(channel):
 				ret[channel] = [ [], [], [], [], [], [], [], [], [], [], [], [] ]
 				picons[channel] = getPicon(event[4])
-
-			if offset is None:
-				bt = event[1]
-				if begintime > event[1]:
-					bt = begintime
-				et = localtime(bt)
-				offset = mktime( (et.tm_year, et.tm_mon, et.tm_mday, 0, 0, 0, -1, -1, -1) )
-				lastevent = mktime( (et.tm_year, et.tm_mon, et.tm_mday, 23, 59, 0, -1, -1, -1) )
 
 			slot = int((event[1]-offset) / 7200)
 			if slot > -1 and slot < 12 and event[1] < lastevent:
