@@ -156,6 +156,14 @@ def getAllInfo():
 		procmodel = f.readline().strip()
 		f.close()
 		model = procmodel.title().replace("olose", "olo SE").replace("olo2se", "olo2 SE").replace("2", "²")
+		if fileExists("/proc/stb/info/boxtype"):
+			f = open("/proc/stb/info/boxtype",'r')
+			p = f.readline().strip().lower()
+			f.close()
+			if p == "osmini":
+				brand = "Edision"
+				model = "OS mini"
+				procmodel = p
 	elif fileExists("/proc/boxtype"):
 		f = open("/proc/boxtype",'r')
 		procmodel = f.readline().strip().lower()
@@ -248,9 +256,6 @@ def getAllInfo():
 				model = "Spark"
 		elif procmodel == "wetekplay":
 			brand = "WeTeK"
-			model = procmodel
-		elif procmodel == "osmini":
-			brand = "Edision"
 			model = procmodel
 	elif fileExists("/proc/stb/info/model"):
 		f = open("/proc/stb/info/model",'r')
