@@ -9,6 +9,7 @@
 * get movie text info
 * improve movie trash
 * improve timers for radio
+* deprecated -> "Smart services renaming for XBMC" use url parameter "renameserviceforxmbc=1" for getallservices instead 
 
 ## Version 0.4.7
 **FEATURES**
