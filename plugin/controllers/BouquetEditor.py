@@ -8,6 +8,7 @@
 # http://creativecommons.org/licenses/by-nc-sa/3.0/ or send a letter to Creative
 # Commons, 559 Nathan Abbott Way, Stanford, California 94305, USA.
 
+from Plugins.Extensions.OpenWebif.__init__ import _
 from enigma import eServiceReference, eServiceCenter, eDVBDB
 from Components.Sources.Source import Source
 from Screens.ChannelSelection import service_types_tv, MODE_TV, MODE_RADIO
@@ -35,10 +36,9 @@ class BouquetEditor(Source):
 	RESTORE = 11
 	RENAME_SERVICE = 12
 	ADD_MARKER_TO_BOUQUET = 13
-	
+
 	BACKUP_PATH = "/tmp"
 	BACKUP_FILENAME = "webbouqueteditor_backup.tar"
-	
 
 	def __init__(self, session, func=ADD_BOUQUET):
 		Source.__init__(self)
@@ -47,16 +47,15 @@ class BouquetEditor(Source):
 		self.command = None
 		self.bouquet_rootstr = ""
 		self.result = ( False, "one two three four unknown command" )
-		
 
 	def handleCommand(self, cmd):
 		print "[WebComponents.BouquetEditor] handleCommand with cmd = ", cmd
 		if self.func is self.ADD_BOUQUET:
 			self.result = self.addToBouquet(cmd)
 		elif self.func is self.MOVE_BOUQUET:
-			self.result = self.moveBouquet(cmd)	
+			self.result = self.moveBouquet(cmd)
 		elif self.func is self.MOVE_SERVICE:
-			self.result = self.moveService(cmd)	
+			self.result = self.moveService(cmd)
 		elif self.func is self.REMOVE_BOUQUET:
 			self.result = self.removeBouquet(cmd)
 		elif self.func is self.REMOVE_SERVICE:
@@ -80,13 +79,13 @@ class BouquetEditor(Source):
 		elif self.func is self.ADD_MARKER_TO_BOUQUET:
 			self.result = self.addMarkerToBouquet(cmd)
 		else:
-			self.result = ( False, "one two three four unknown command" )
+			self.result = ( False, _("one two three four unknown command") )
 
 	def addToBouquet(self, param):
 		print "[WebComponents.BouquetEditor] addToBouquet with param = ", param
 		bName = param["name"]
 		if bName is None:
-			return (False, "No bouquet name given!")
+			return (False, _("No bouquet name given!"))
 		mode = MODE_TV # init
 		if "mode" in param:
 			if param["mode"] is not None:
@@ -116,23 +115,22 @@ class BouquetEditor(Source):
 									print "add", service.toString(), "to new bouquet failed"
 						mutableBouquet.flushChanges()
 						self.setRoot(self.bouquet_rootstr)
-						return (True, "Bouquet %s created." % bName)
+						return (True, _("Bouquet %s created.") % bName)
 					else:
-						return (False, "Get mutable list for new created bouquet failed!")
+						return (False, _("Get mutable list for new created bouquet failed!"))
 
 				else:
-					return (False, "Bouquet %s already exists." % bName)
+					return (False, _("Bouquet %s already exists.") % bName)
 			else:
-				return (False, "Bouquetlist is not editable!")
+				return (False, _("Bouquetlist is not editable!"))
 		else:
-			return (False, "Multi-Bouquet is not enabled!")
-
+			return (False, _("Multi-Bouquet is not enabled!"))
 
 	def addProviderToBouquetlist(self, param):
 		print "[WebComponents.BouquetEditor] addProviderToBouquet with param = ", param
 		refstr = sref = param["sProviderRef"]
 		if refstr is None:
-			return (False, "No provider given!")
+			return (False, _("No provider given!"))
 		mode = MODE_TV # init
 		if "mode" in param:
 			if param["mode"] is not None:
@@ -148,12 +146,12 @@ class BouquetEditor(Source):
 		print "[WebComponents.BouquetEditor] removeBouquet with param = ", param
 		refstr = sref = param["sBouquetRef"]
 		if refstr is None:
-			return (False, "No bouquet name given!")
+			return (False, _("No bouquet name given!"))
 		mode = MODE_TV # init
 		if "mode" in param:
 			if param["mode"] is not None:
 				mode = int(param["mode"])
-		
+
 		if param.has_key("BouquetRefRoot"):
 			bouquet_root = param["BouquetRefRoot"] # only when removing alternative
 		else:
@@ -179,21 +177,21 @@ class BouquetEditor(Source):
 				mutableList.flushChanges()
 				self.setRoot(self.bouquet_rootstr)
 			else:
-				return (False, "Bouquet %s removed failed." % filename)
+				return (False, _("Bouquet %s removed failed.") % filename)
 		else:
-			return (False, "Bouquet %s removed failed, sevicerefence or mutable list is not valid." % filename)
+			return (False, _("Bouquet %s removed failed, sevicerefence or mutable list is not valid.") % filename)
 		try:
 			if filename is not None:
 				remove(filename)
-				return (True, "Bouquet %s deleted." % bouquetName)
+				return (True, _("Bouquet %s deleted.") % bouquetName)
 		except OSError:
-			return (False, "Error: Bouquet %s could not deleted, OSError." % filename)
+			return (False, _("Error: Bouquet %s could not deleted, OSError.") % filename)
 
 	def moveBouquet(self, param):
 		print "[WebComponents.BouquetEditor] moveBouquet with param = ", param
 		sBouquetRef = param["sBouquetRef"]
 		if sBouquetRef is None:
-			return (False, "No bouquet name given!")
+			return (False, _("No bouquet name given!"))
 		mode = MODE_TV # init
 		if "mode" in param:
 			if param["mode"] is not None:
@@ -203,28 +201,28 @@ class BouquetEditor(Source):
 			if param["position"] is not None:
 				position = int(param["position"])
 		if position is None:
-			return (False, "No position given!")
+			return (False, _("No position given!"))
 		mutableBouquetList = self.getMutableBouquetList(mode)
 		if mutableBouquetList is not None:
 			ref = eServiceReference(sBouquetRef)
 			mutableBouquetList.moveService(ref, position)
 			mutableBouquetList.flushChanges()
 			self.setRoot(self.bouquet_rootstr)
-			return (True, "Bouquet %s moved." % self.getName(ref))
+			return (True, _("Bouquet %s moved.") % self.getName(ref))
 		else:
-			return (False, "Bouquet %s can not be moved." % self.getName(ref))
-			
+			return (False, _("Bouquet %s can not be moved.") % self.getName(ref))
+
 	def removeService(self, param):
 		print "[WebComponents.BouquetEditor] removeService with param = ", param
 		sBouquetRef = param["sBouquetRef"]
 		if sBouquetRef is None:
-			return (False, "No bouquet given!")
+			return (False, _("No bouquet given!"))
 		sRef = None
 		if "sRef" in param:
 			if param["sRef"] is not None:
 				sRef =param["sRef"]
 		if sRef is None:
-			return (False, "No service given!")
+			return (False, _("No service given!"))
 		ref = eServiceReference(sRef)
 		if ref.flags & eServiceReference.isGroup: # check if  service is an alternative, if so delete it with removeBouquet
 			new_param = {}
@@ -233,7 +231,7 @@ class BouquetEditor(Source):
 			new_param["BouquetRefRoot"] = sBouquetRef
 			returnValue = self.removeBouquet(new_param)
 			if returnValue[0]:
-				return (True, "Service %s removed." % self.getName(ref))
+				return (True, _("Service %s removed.") % self.getName(ref))
 		else:
 			bouquetRef = eServiceReference(sBouquetRef)
 			mutableBouquetList = self.getMutableList(bouquetRef)
@@ -241,46 +239,46 @@ class BouquetEditor(Source):
 				if not mutableBouquetList.removeService(ref):
 					mutableBouquetList.flushChanges()
 					self.setRoot(sBouquetRef)
-					return (True, "Service %s removed from bouquet %s." % (self.getName(ref), self.getName(bouquetRef)))
-		return (False, "Service %s can not be removed." % self.getName(ref))
+					return (True, _("Service %s removed from bouquet %s.") % (self.getName(ref), self.getName(bouquetRef)))
+		return (False, _("Service %s can not be removed.") % self.getName(ref))
 
 	def moveService(self, param):
 		print "[WebComponents.BouquetEditor] moveService with param = ", param
 		sBouquetRef = param["sBouquetRef"]
 		if sBouquetRef is None:
-			return (False, "No bouquet given!")
+			return (False,_( "No bouquet given!"))
 		sRef = None
 		if "sRef" in param:
 			if param["sRef"] is not None:
 				sRef =param["sRef"]
 		if sRef is None:
-			return (False, "No service given!")
+			return (False, _("No service given!"))
 		position = None
 		if "position" in param:
 			if param["position"] is not None:
 				position = int(param["position"])
 		if position is None:
-			return (False, "No position given!")
+			return (False, _("No position given!"))
 		mutableBouquetList = self.getMutableList(eServiceReference(sBouquetRef))
 		if mutableBouquetList is not None:
 			ref = eServiceReference(sRef)
 			mutableBouquetList.moveService(ref, position)
 			mutableBouquetList.flushChanges()
 			self.setRoot(sBouquetRef)
-			return (True, "Service %s moved." % self.getName(ref))
-		return (False, "Service can not be moved.")
+			return (True, _("Service %s moved.") % self.getName(ref))
+		return (False, _("Service can not be moved."))
 
 	def addServiceToBouquet(self, param):
 		print "[WebComponents.BouquetEditor] addService with param = ", param
 		sBouquetRef = param["sBouquetRef"]
 		if sBouquetRef is None:
-			return (False, "No bouquet given!")
+			return (False, _("No bouquet given!"))
 		sRef = None
 		if "sRef" in param:
 			if param["sRef"] is not None:
 				sRef =param["sRef"]
 		if sRef is None:
-			return (False, "No service given!")
+			return (False, _("No service given!"))
 		sName = None
 		if "Name" in param:
 			if param["Name"] is not None:
@@ -298,23 +296,23 @@ class BouquetEditor(Source):
 			if not mutableBouquetList.addService(ref, sRefBefore):
 				mutableBouquetList.flushChanges()
 				self.setRoot(sBouquetRef)
-				return (True, "Service %s added." % self.getName(ref))
+				return (True, _("Service %s added.") % self.getName(ref))
 			else:
 				bouquetName = self.getName(bouquetRef)
-				return (False, "Service %s already exists in bouquet %s." % (self.getName(ref), bouquetName))
-		return (False, "This service can not be added.")
-		
+				return (False, _("Service %s already exists in bouquet %s.") % (self.getName(ref), bouquetName))
+		return (False, _("This service can not be added."))
+
 	def addMarkerToBouquet(self, param):
 		print "[WebComponents.BouquetEditor] addMarkerToBouquet with param = ", param
 		sBouquetRef = param["sBouquetRef"]
 		if sBouquetRef is None:
-			return (False, "No bouquet given!")
+			return (False, _("No bouquet given!"))
 		name = None
 		if "Name" in param:
 			if param["Name"] is not None:
 				name =param["Name"]
 		if name is None:
-			return (False, "No marker-name given!")
+			return (False, _("No marker-name given!"))
 		sRefBefore = eServiceReference()
 		if "sRefBefore" in param:
 			if param["sRefBefore"] is not None:
@@ -328,23 +326,23 @@ class BouquetEditor(Source):
 			if not mutableBouquetList.addService(ref, sRefBefore):
 				mutableBouquetList.flushChanges()
 				self.setRoot(sBouquetRef)
-				return (True, "Marker added.")
+				return (True, _("Marker added."))
 			cnt+=1
-		return (False, "Internal error!")
-		
+		return (False, _("Internal error!"))
+
 	def renameService(self, param):
 		sRef = None
 		if "sRef" in param:
 			if param["sRef"] is not None:
 				sRef =param["sRef"]
 		if sRef is None:
-			return (False, "No service given!")
+			return (False, _("No service given!"))
 		sName = None
 		if "newName" in param:
 			if param["newName"] is not None:
 				sName =param["newName"]
 		if sName is None:
-			return (False, "No new servicename given!")		
+			return (False, _("No new servicename given!"))
 		sBouquetRef = None
 		if "sBouquetRef" in param:
 			if param["sBouquetRef"] is not None:
@@ -368,7 +366,7 @@ class BouquetEditor(Source):
 						else:
 							bouquet_rootstr = '1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "bouquets.radio" ORDER BY bouquet'
 						self.setRoot(bouquet_rootstr)
-					return (True, "Bouquet renamed successfully.")
+					return (True, _("Bouquet renamed successfully."))
 		else: # service
 			# services can not be renamed directly, so delete the current and add it again with new servicename
 			sRefBefore = None
@@ -384,9 +382,9 @@ class BouquetEditor(Source):
 			if returnValue[0]:
 				returnValue = self.addServiceToBouquet(new_param)
 				if returnValue[0]:
-					return (True, "Service renamed successfully.")
-		return (False, "Service can not be renamed.")
-		
+					return (True, _("Service renamed successfully."))
+		return (False, _("Service can not be renamed."))
+
 	def addServiceToAlternative(self, param):
 		sBouquetRef = param["sBouquetRef"]
 		if sBouquetRef is None:
@@ -396,10 +394,10 @@ class BouquetEditor(Source):
 			if param["sRef"] is not None:
 				sRef =param["sRef"] #  service to add to the alternative
 		if sRef is None:
-			return (False, "No service given!")
+			return (False, _("No service given!"))
 		sCurrentRef = param["sCurrentRef"] #  alternative service
 		if sCurrentRef is None:
-			return (False, "No current service given!")
+			return (False, _("No current service given!"))
 		cur_ref = eServiceReference(sCurrentRef) 
 		# check if  service is already an alternative
 		if not (cur_ref.flags & eServiceReference.isGroup):
@@ -430,11 +428,11 @@ class BouquetEditor(Source):
 						self.setRoot(sBouquetRef)
 						sCurrentRef = sref # currentRef is now an alternative (bouquet)
 					else:
-						return (False, "Get mutable list for new created alternative failed!")
+						return (False, _("Get mutable list for new created alternative failed!"))
 				else:
-					return (False, "Alternative %s created failed." % name)
+					return (False, _("Alternative %s created failed.") % name)
 			else:
-				return (False, "Bouquetlist is not editable!")
+				return (False, _("Bouquetlist is not editable!"))
 		# add service to alternative-bouquet
 		new_param = {}
 		new_param["sBouquetRef"] = sCurrentRef
@@ -446,21 +444,21 @@ class BouquetEditor(Source):
 			name = cur_service.getServiceName()
 			service_ref = ServiceReference(sRef)
 			service_name = service_ref.getServiceName()
-			return (True, "Added %s to alternative service %s." % (service_name,name))
+			return (True, _("Added %s to alternative service %s.") % (service_name,name))
 		else:
 			return returnValue
-			
+
 	def removeAlternativeServices(self, param):
 		print "[WebComponents.BouquetEditor] removeAlternativeServices with param = ", param
 		sBouquetRef = param["sBouquetRef"]
 		if sBouquetRef is None:
-			return (False, "No bouquet given!")
+			return (False, _("No bouquet given!"))
 		sRef = None
 		if "sRef" in param:
 			if param["sRef"] is not None:
 				sRef =param["sRef"]
 		if sRef is None:
-			return (False, "No service given!")
+			return (False, _("No service given!"))
 		cur_ref = eServiceReference(sRef) 
 		# check if  service is an alternative
 		if cur_ref.flags & eServiceReference.isGroup:
@@ -477,7 +475,7 @@ class BouquetEditor(Source):
 			else:
 				print "remove empty alternative list"
 		else:
-			return (False, "Service is not an alternative.")
+			return (False, _("Service is not an alternative."))
 		new_param = {}
 		new_param["sBouquetRef"] = sRef
 		new_param["mode"] = None # of no interest when passing BouquetRefRoot
@@ -485,32 +483,32 @@ class BouquetEditor(Source):
 		returnValue = self.removeBouquet(new_param)
 		if returnValue[0]:
 			self.setRoot(sBouquetRef)
-			return (True,"All alternative services deleted.")
+			return (True,_("All alternative services deleted."))
 		else:
 			return returnValue
-			
+
 	def toggleLock(self, param):
 		if not config.ParentalControl.configured.value:
-			return (False, "Parent Control is not activated.")
+			return (False, _("Parent Control is not activated."))
 		sRef = None
 		if "sRef" in param:
 			if param["sRef"] is not None:
 				sRef =param["sRef"]
 		if sRef is None:
-			return (False, "No service given!")
+			return (False, _("No service given!"))
 		if "setuppinactive" in config.ParentalControl.dict().keys() and config.ParentalControl.setuppinactive.value:
 			password = None
 			if "password" in param:
 				if param["password"] is not None:
 					password =param["password"]
 			if password is None:
-				return (False, "No Parent Control Setup Pin given!")
+				return (False, _("No Parent Control Setup Pin given!"))
 			else:
 				if password.isdigit():
 					if int(password) != config.ParentalControl.setuppin.value:
-						return (False, "Parent Control Setup Pin is wrong!")
+						return (False, _("Parent Control Setup Pin is wrong!"))
 				else:
-					return (False, "Parent Control Setup Pin is wrong!")
+					return (False, _("Parent Control Setup Pin is wrong!"))
 		cur_ref = eServiceReference(sRef)
 		protection = parentalControl.getProtectionLevel(cur_ref.toCompareString())
 		if protection:
@@ -525,17 +523,17 @@ class BouquetEditor(Source):
 			if config.ParentalControl.type.value == "blacklist":
 				if parentalControl.blacklist.has_key(sref):
 					if "SERVICE" in parentalControl.blacklist.has_key(sref):
-						protectionText = "Service %s is locked." % self.getName(cur_ref)
+						protectionText = _("Service %s is locked.") % self.getName(cur_ref)
 					elif "BOUQUET" in parentalControl.blacklist.has_key(sref):
-						protectionText = "Bouquet %s is locked." % self.getName(cur_ref)
+						protectionText = _("Bouquet %s is locked.") % self.getName(cur_ref)
 					else:
-						protectionText = "%s %s is locked." % (serviceType, self.getName(cur_ref))
+						protectionText = _("%s %s is locked.") % (serviceType, self.getName(cur_ref))
 			else:
 				if hasattr(ParentalControl, "whitelist") and parentalControl.whitelist.has_key(sref):
 					if "SERVICE" in parentalControl.whitelist.has_key(sref):
-						protectionText = "Service %s is unlocked."  % self.getName(cur_ref)
+						protectionText = _("Service %s is unlocked.") % self.getName(cur_ref)
 					elif "BOUQUET" in parentalControl.whitelist.has_key(sref):
-						protectionText = "Bouquet %s is unlocked."  % self.getName(cur_ref)
+						protectionText = _("Bouquet %s is unlocked.") % self.getName(cur_ref)
 		return (True, protectionText)
 
 	def backupFiles(self, param):
@@ -572,14 +570,14 @@ class BouquetEditor(Source):
 			tarFiles = ""
 			for arg in files:
 				if not path.exists(arg):
-					return (False, "Error while preparing backup file, %s does not exists." % arg)
+					return (False, _("Error while preparing backup file, %s does not exists.") % arg)
 				tarFiles += "%s " % arg
 			lines = popen("tar cvf %s %s" % (backupFilename,tarFiles)).readlines()
 			remove(checkfile)
 			return (True, tarFilename)
 		else:
-			return (False, "Error while preparing backup file.")
-		
+			return (False, _("Error while preparing backup file."))
+
 	def getPhysicalFilenamesFromServicereference(self, ref):
 		files = []
 		serviceHandler = eServiceCenter.getInstance()
@@ -597,7 +595,7 @@ class BouquetEditor(Source):
 					files.append(filename)
 					files += self.getPhysicalFilenamesFromServicereference(eServiceReference(service))
 		return files
-		
+
 	def restoreFiles(self, param):
 		tarFilename = param
 		backupFilename = tarFilename #path.join(self.BACKUP_PATH, tarFilename)
@@ -629,11 +627,11 @@ class BouquetEditor(Source):
 					servicelist.setRoot(root)
 					servicelist.setCurrentSelection(currentref)
 				remove(backupFilename)
-				return (True, "Bouquet-settings were restored successfully")
+				return (True, _("Bouquet-settings were restored successfully"))
 			else:
-				return (False, "Error, %s was not created with WebBouquetEditor..." % backupFilename)
+				return (False, _("Error, %s was not created with WebBouquetEditor...") % backupFilename)
 		else:
-			return (False, "Error, %s does not exists, restore is not possible..." % backupFilename)
+			return (False, _("Error, %s does not exists, restore is not possible...") % backupFilename)
 
 	def getMutableBouquetList(self, mode):
 		if mode == MODE_TV:
