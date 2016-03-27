@@ -87,13 +87,13 @@ def getShowName():
 def getCustomName():
 	return {
 		"result": True,
-		"customname": config.OpenWebif.identifier.custom.value
+		"customname": config.OpenWebif.identifier_custom.value
 	}
 
 def getBoxName():
 	return {
 		"result": True,
-		"boxname": config.OpenWebif.identifier.text.value
+		"boxname": config.OpenWebif.identifier_text.value
 	}
 
 def getJsonFromConfig(cnf):
