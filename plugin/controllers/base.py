@@ -90,6 +90,10 @@ class BaseController(resource.Resource):
 
 		if self.path == "":
 			self.path = "index"
+		elif self.path == "signal":
+			self.path = "tunersignal"
+			request.uri = request.uri.replace('signal', 'tunersignal')
+			request.path = request.path.replace('signal', 'tunersignal')
 
 		self.suppresslog = False
 		self.path = self.path.replace(".", "")

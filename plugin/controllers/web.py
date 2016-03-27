@@ -82,7 +82,7 @@ class WebController(BaseController):
 		self.suppresslog = True
 		return getStatusInfo(self)
 
-	def P_signal(self, request):
+	def P_tunersignal(self, request):
 		return getFrontendStatus(self.session)
 
 	def P_vol(self, request):
