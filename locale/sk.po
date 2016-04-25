@@ -1,0 +1,1481 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenWebif\n"
+"POT-Creation-Date: 2016-04-25 21:43+0200\n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-Basepath: .\n"
+"Last-Translator: Nicker <nickersk@gmail.com>\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Language: sk_SK\n"
+"X-Poedit-SearchPath-0: ../plugin\n"
+
+msgid "Settings"
+msgstr "Nastavenia"
+
+msgid "LCD4Linux Setup"
+msgstr "Nastavenie LCD4Linux"
+
+msgid "AutoTimer"
+msgstr "Automatický časovač"
+
+msgid "BouquetEditor"
+msgstr "Editor buketov"
+
+msgid "EPGRefresh"
+msgstr "obnovovanie EPG"
+
+msgid "IPv4-only kernel"
+msgstr "Jadro len IPv4"
+
+msgid "IPv4-only Python/Twisted"
+msgstr "Python/Twisted len IPv4"
+
+msgid "none/IPv4-only network"
+msgstr "žiadna/len IPv4 sieť"
+
+msgid "Message sent successfully!"
+msgstr "Správa úspešne odoslaná!"
+
+#, fuzzy
+msgid "No answer in time"
+msgstr "Odpoveď v čase"
+
+msgid "Answer is YES!"
+msgstr "Odpoveď je ÁNO!"
+
+msgid "Answer is NO!"
+msgstr "Odpoveď je NIE!"
+
+msgid "New"
+msgstr "Nový"
+
+msgid "Services"
+msgstr "Stanice"
+
+msgid "Cable"
+msgstr "Káblové"
+
+msgid "Terrestrial"
+msgstr "Pozemné"
+
+msgid "W"
+msgstr "Z"
+
+msgid "E"
+msgstr "V"
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr "Chýba povinný parameter '%s'"
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr "Parameter '%s' nemôže byť prázdny"
+
+#, fuzzy, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr "Nesprávny parameter formát \"nastaviť = %s. Použiť množinu = set15"
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr "Neznámy príkaz hlasitosti %s"
+
+#, fuzzy
+msgid "The parameter 'command' must be a number"
+msgstr "Parameter \"príkaz\" musí byť číslo"
+
+#, python-format
+msgid "type %s is not a number"
+msgstr "typ %s nie je číslo"
+
+msgid "Mo"
+msgstr "Po"
+
+msgid "Tu"
+msgstr "Ut"
+
+msgid "We"
+msgstr "St"
+
+msgid "Th"
+msgstr "Št"
+
+msgid "Fr"
+msgstr "Pi"
+
+msgid "Sa"
+msgstr "So"
+
+msgid "Su"
+msgstr "Ne"
+
+msgid "Sun"
+msgstr "Ned"
+
+msgid "Mon"
+msgstr "Pon"
+
+msgid "Tue"
+msgstr "Uto"
+
+msgid "Wed"
+msgstr "Str"
+
+msgid "Thu"
+msgstr "Štv"
+
+msgid "Fri"
+msgstr "Pia"
+
+msgid "Sat"
+msgstr "Sob"
+
+msgid "Monday"
+msgstr "Pondelok"
+
+msgid "Tuesday"
+msgstr "Utorok"
+
+msgid "Wednesday"
+msgstr "Streda"
+
+msgid "Thursday"
+msgstr "Štvrtok"
+
+msgid "Friday"
+msgstr "Piatok"
+
+msgid "Saturday"
+msgstr "Sobota"
+
+msgid "Sunday"
+msgstr "Nedeľa"
+
+msgid "January"
+msgstr "Január"
+
+msgid "February"
+msgstr "Február"
+
+#, fuzzy
+msgid "March"
+msgstr "Marec"
+
+msgid "April"
+msgstr "Apríl"
+
+msgid "May"
+msgstr "Máj"
+
+msgid "June"
+msgstr "Jún"
+
+msgid "July"
+msgstr "Júl"
+
+msgid "August"
+msgstr "August"
+
+msgid "September"
+msgstr "September"
+
+msgid "October"
+msgstr "Október"
+
+msgid "November"
+msgstr "November"
+
+msgid "December"
+msgstr "December"
+
+#, fuzzy
+msgid "About"
+msgstr "Informácie"
+
+#, fuzzy
+msgid "Add Timer"
+msgstr "Pridať časovač"
+
+#, fuzzy
+msgid "Add AutoTimer"
+msgstr "Pridať automatický časovač"
+
+#, fuzzy
+msgid "Add Zap Timer"
+msgstr "Pridajte časovač prepnutia pre aktuálnu udalosť"
+
+#, fuzzy
+msgid "After Event"
+msgstr "Po udalosti"
+
+msgid "AGC"
+msgstr "AGC"
+
+msgid "All"
+msgstr "Všetky"
+
+msgid "All Channels"
+msgstr "Všetky stanice"
+
+msgid "Authors"
+msgstr "Autori"
+
+msgid "Auto"
+msgstr "Auto"
+
+msgid "Back"
+msgstr "Späť"
+
+msgid "Begin"
+msgstr "Začať"
+
+msgid "BER"
+msgstr "BER"
+
+msgid "Bouquets"
+msgstr "Bukety"
+
+msgid "Box Info"
+msgstr "O prijímači"
+
+msgid "Box"
+msgstr "Prijímač"
+
+msgid "Box Control"
+msgstr "Ovládanie prijímača"
+
+msgid "Box Uptime"
+msgstr "Doba prevádzky"
+
+#, fuzzy
+msgid "Brand"
+msgstr "Značka"
+
+#, fuzzy
+msgid "Cancel"
+msgstr "Zrušiť"
+
+msgid "Capacity"
+msgstr "Kapacita:"
+
+msgid "Channel"
+msgstr "Stanica"
+
+msgid "Channels"
+msgstr "Stanice"
+
+msgid "Chipset"
+msgstr "Čipset"
+
+#, fuzzy
+msgid "Cleanup Timers"
+msgstr "Vyčistenie časovača"
+
+msgid "Contributors"
+msgstr "Prispievatelia"
+
+#, fuzzy
+msgid "Control"
+msgstr "Rodičovská kontrola"
+
+msgid "Current"
+msgstr "Teraz"
+
+msgid "Current Event"
+msgstr "Aktuálna relácia"
+
+msgid "Deep-Standby"
+msgstr "Hlboký spánok"
+
+msgid "Default"
+msgstr "Predvolené"
+
+#, fuzzy
+msgid "Delete Recording"
+msgstr "Zastaviť a zmazať nahrávku"
+
+#, fuzzy
+msgid "Really delete the recording"
+msgstr "Zmazať záznam"
+
+#, fuzzy
+msgid "Delete Timer"
+msgstr "Zmazať časovač"
+
+#, fuzzy
+msgid "Really delete the timer"
+msgstr "Naozaj vymazať časovač"
+
+msgid "Description"
+msgstr "Popis"
+
+msgid "DHCP"
+msgstr "DHCP"
+
+#, fuzzy
+msgid "Disable Timer"
+msgstr "Vypnúť časovač"
+
+msgid "Dolby"
+msgstr "Dolby"
+
+msgid "Done"
+msgstr "Hotovo"
+
+msgid "Download"
+msgstr "Stiahnuť"
+
+#, fuzzy
+msgid "Download Playlist for"
+msgstr "Stiahnuť Playlist pre"
+
+#, fuzzy
+msgid "Duration"
+msgstr "Zmeniť nahrávanie (trvanie)"
+
+#, fuzzy
+msgid "Edit Timer"
+msgstr "Úpraviť časovač"
+
+#, fuzzy
+msgid "Enable Timer"
+msgstr "Zapnúť časovač"
+
+#, fuzzy
+msgid "Start"
+msgstr "Spustiť"
+
+msgid "End"
+msgstr "Koniec"
+
+#, fuzzy
+msgid "Enabled"
+msgstr "Zapnuté"
+
+msgid "Encrypted"
+msgstr "Kódované"
+
+msgid "EPG"
+msgstr "EPG"
+
+msgid "Epg Search"
+msgstr "Hľadanie v EPG"
+
+msgid "Error"
+msgstr "Chyba"
+
+#, fuzzy
+msgid "Every"
+msgstr "Každú"
+
+msgid "Extras"
+msgstr "Extra"
+
+msgid "finished"
+msgstr "Ukončené"
+
+msgid "Firmware version"
+msgstr "Verzia firmvéru"
+
+msgid "Frontprocessor Version"
+msgstr "Verzia frontprocesora"
+
+msgid "Free"
+msgstr "Voľných:"
+
+msgid "Free Memory"
+msgstr "Voľná pamäť:"
+
+msgid "Gateway"
+msgstr "Brána"
+
+msgid "Grab Screenshot"
+msgstr "Snímka obrazovky"
+
+msgid "Gui version"
+msgstr "Verzia GUI"
+
+msgid "Hide full remote"
+msgstr "Skryť úplné diaľkové"
+
+#, fuzzy
+msgid "High Resolution"
+msgstr "Vysoké rozlíšenie"
+
+msgid "Hard disk model"
+msgstr "Model pevného disku"
+
+msgid "Hour"
+msgstr "Hodina"
+
+msgid "IP address"
+msgstr "IP adresa"
+
+msgid "IPv6 address(es)"
+msgstr "IPv6 adresa(y)"
+
+msgid "Infos"
+msgstr "Informácie"
+
+msgid "Instant Record"
+msgstr "Okamžité nahrávanie"
+
+msgid "Javascript Libraries"
+msgstr "Knižnice JavaScript "
+
+#, fuzzy
+msgid "Just play"
+msgstr "len prepnúť"
+
+msgid "Kernel version"
+msgstr "Verzia jadra"
+
+#, fuzzy
+msgid "LICENSE"
+msgstr "Licencia:"
+
+msgid "loading"
+msgstr "načítava sa"
+
+msgid "Location"
+msgstr "Umiestnenie"
+
+#, fuzzy
+msgid "Locked"
+msgstr "zamknutý"
+
+msgid "MAC address"
+msgstr "MAC adresa"
+
+#, fuzzy
+msgid "Main"
+msgstr "Hlavné"
+
+msgid "Minute"
+msgstr "minúta"
+
+msgid "Model"
+msgstr "Model"
+
+msgid "Movielist"
+msgstr "Zoznam filmov"
+
+#, fuzzy
+msgid "Movies"
+msgstr "Zobraziť filmy"
+
+#, fuzzy
+msgid "MultiEPG"
+msgstr "Nastavenia MultiEPG"
+
+msgid "Name"
+msgstr "Názov"
+
+#, fuzzy
+msgid "Namespace"
+msgstr "Priestor pre názvy"
+
+msgid "Network Interface"
+msgstr "Sietový adaptér"
+
+msgid "no description available"
+msgstr "popis nie je k dispozícii"
+
+#, fuzzy
+msgid "Sorry this page is not yet implemented"
+msgstr "Ospravedlňujeme sa táto stránka ešte nie je implementovaná"
+
+msgid "Nothing"
+msgstr "Nič"
+
+msgid "Nothing playing."
+msgstr "Nič sa neprehráva."
+
+msgid "Now"
+msgstr "Teraz"
+
+#, fuzzy
+msgid "On"
+msgstr "Zapnúť"
+
+#, fuzzy
+msgid "Open Source Web Interface for Linux set-top box"
+msgstr "Open Source webové rozhranie pre Linux prijímača"
+
+#, fuzzy
+msgid "Show box name in header"
+msgstr "Zobraziť názov poľa v hlavičke"
+
+msgid "Use custom box name"
+msgstr "Použiť vlastný názov prijímača"
+
+msgid "Custom box name"
+msgstr "Vlastný názov prímača"
+
+msgid "OSD"
+msgstr "OSD"
+
+#, fuzzy
+msgid "Playback"
+msgstr "Pokračovať v prehaávaní"
+
+msgid "Playlist"
+msgstr "Zoznam prehrávania"
+
+msgid "Power Control"
+msgstr "Ovládanie napájania"
+
+msgid "Provider"
+msgstr "Poskytovateľ"
+
+msgid "Providers"
+msgstr "Poskytovatelia"
+
+msgid "Radio"
+msgstr "Rádio"
+
+msgid "Reboot Box"
+msgstr "Reštartovať prijímač"
+
+msgid "Recording Status"
+msgstr "Stav nahrávania"
+
+#, fuzzy
+msgid "Refresh"
+msgstr "Obnoviť"
+
+msgid "Refresh automatically every"
+msgstr "Automaticky obnoviť každých"
+
+#, fuzzy
+msgid "Refresh Timer"
+msgstr "Obnoviť časovač"
+
+msgid "Remote"
+msgstr "Diaľkové"
+
+msgid "Rename Recording"
+msgstr "Premenovať nahrávku"
+
+msgid "Repeated"
+msgstr "Opakované"
+
+msgid "Restart GUI"
+msgstr "Reštartovať užívateľské rozhranie"
+
+msgid "running"
+msgstr "prebieha..."
+
+msgid "Satellites"
+msgstr "Satelity"
+
+msgid "Satfinder"
+msgstr "Hľadač satelitov"
+
+msgid "Save"
+msgstr "Uložiť"
+
+msgid "Screenshot"
+msgstr "Snímka obrazovky"
+
+msgid "Search"
+msgstr "Hľadať"
+
+msgid "Search IMDb"
+msgstr "Hľadať v IMDb"
+
+msgid "seconds"
+msgstr "sekundy"
+
+#, fuzzy
+msgid "Send Message"
+msgstr "Odoslať"
+
+msgid "Waiting for answer ..."
+msgstr "Čakám na odpoveď..."
+
+msgid "Send a Message"
+msgstr "Poslať správu"
+
+msgid "Service"
+msgstr "Stanica"
+
+msgid "Bouquet Editor"
+msgstr "Editor buketu"
+
+msgid "(shift + click for long pressure)"
+msgstr "(shift + klik pre dlhý tlak)"
+
+#, fuzzy
+msgid "Show Full OpenWebif"
+msgstr "Zobraziť plnú OpenWebif"
+
+#, fuzzy
+msgid "Show full remote"
+msgstr "Zobraziť plný vzdialený"
+
+#, fuzzy
+msgid "Show EPG for"
+msgstr "Zobraziť EPG..."
+
+#, fuzzy
+msgid "Shutdown"
+msgstr "Vypnúť"
+
+#, fuzzy
+msgid "Site and sources"
+msgstr "Stránky a zdroje"
+
+msgid "SNR"
+msgstr "SNR"
+
+msgid "Software"
+msgstr "Softvér"
+
+msgid "Standby"
+msgstr "Pohotovostný režim"
+
+#, fuzzy
+msgid "Standby Toggle"
+msgstr "Prepnúť na poh režim"
+
+#, fuzzy
+msgid "Start time is after end time"
+msgstr "Čas ukončenia sa nachádza pred časom začatia"
+
+#, fuzzy
+msgid "Start Instant Record"
+msgstr "Spustit okamžité nahrávanie"
+
+#, fuzzy
+msgid "Stream"
+msgstr "Stream"
+
+#, fuzzy
+msgid "Subnet mask"
+msgstr "Maska podsiete:"
+
+#, fuzzy
+msgid "Subservices"
+msgstr "Podkanály"
+
+#, fuzzy
+msgid "Tags"
+msgstr "Štítky"
+
+#, fuzzy
+msgid "Teletext"
+msgstr "Spustiť teletext"
+
+msgid "Television"
+msgstr "Televízia"
+
+msgid "Template Engine"
+msgstr "Engine šablóny"
+
+msgid "Text"
+msgstr "Text"
+
+msgid "Time"
+msgstr "Čas"
+
+#, fuzzy
+msgid "Timeout"
+msgstr "Žiadny časový limit"
+
+msgid "Timer added"
+msgstr "Časovač pridaný"
+
+#, fuzzy
+msgid "Timerlist"
+msgstr "Umiestnenie skončených časovačov v zozname časovačov"
+
+msgid "New Name"
+msgstr "Nový názov"
+
+msgid "Autotimer Preview"
+msgstr "Náhľad automatického časovača"
+
+msgid "Timer"
+msgstr "Časovač"
+
+msgid "Timers"
+msgstr "Časovače"
+
+#, fuzzy
+msgid "Title"
+msgstr "Titul"
+
+msgid "Total Memory"
+msgstr "Celková pamäť"
+
+#, fuzzy
+msgid "Tuner Bit Error Rate BER"
+msgstr "TUNER bitovej chybovosti BER"
+
+msgid "Tuner Number (0-3)"
+msgstr "Tuner číslo (0-3)"
+
+msgid "Tuner Signal"
+msgstr "Signál tunera"
+
+#, fuzzy
+msgid "Tuner Signal Quality SNR"
+msgstr "Prijímač signálu SNR"
+
+#, fuzzy
+msgid "Tuner Signal Quality SNR_DB"
+msgstr "Prijímač signálu SNR_DB"
+
+#, fuzzy
+msgid "Tuner Signal Power AGC"
+msgstr "Prijímač signálu silu AGC"
+
+#, fuzzy
+msgid "Tuner Type"
+msgstr "Typ tunera"
+
+msgid "Tuners"
+msgstr "Tunery"
+
+msgid "TV"
+msgstr "TV"
+
+#, fuzzy
+msgid "TV Multi EPG"
+msgstr "TV Multi EPG"
+
+#, fuzzy
+msgid "Type"
+msgstr "Typ"
+
+#, fuzzy
+msgid "Upcoming Events"
+msgstr "Nadchádzajúce relácie"
+
+msgid "Version"
+msgstr "Verzia"
+
+msgid "Video"
+msgstr "Video"
+
+#, fuzzy
+msgid "Video Height"
+msgstr "Výška videa"
+
+#, fuzzy
+msgid "Video Wide"
+msgstr "Video celej"
+
+msgid "Video Width"
+msgstr "Šírka videa"
+
+msgid "Volume"
+msgstr "Hlasitosť"
+
+msgid "Volume Control"
+msgstr "Ovládanie hlasitosti"
+
+msgid "waiting"
+msgstr "čakám"
+
+msgid "Warning"
+msgstr "Varovanie"
+
+msgid "Yes/No"
+msgstr "Áno/Nie"
+
+msgid "Zap"
+msgstr "Prepnúť"
+
+#, fuzzy
+msgid "zap before Stream"
+msgstr "Zap pred Stream"
+
+msgid "Zap to"
+msgstr "Prepnúť na"
+
+msgid "Zapped to"
+msgstr "Prepnuté na"
+
+msgid "Translation to Spanish"
+msgstr "Preklad do španielčiny"
+
+#, fuzzy
+msgid "All Files of this Software are open source software;"
+msgstr "Všetky súbory, tento softvér je open source softvér;"
+
+#, fuzzy
+msgid "you can redistribute it and/or modify it under the"
+msgstr "môžete ho šíriť a/alebo modifikovať podľa"
+
+#, fuzzy
+msgid "terms of the GNU General Public License version 2 as"
+msgstr "podmienok GNU General Public License verzie 2 ako"
+
+#, fuzzy
+msgid "published by the Free Software Foundation."
+msgstr "Vydalo Free Software Foundation."
+
+#, fuzzy
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 2 "
+"as published by the Free Software Foundation."
+msgstr ""
+"Všetky súbory, tento softvér je open source softvér; môžete ho šíriť a "
+"upravovať podľa podmienok GNU General Public License verzie 2 znení "
+"publikovanom podľa Free Software Foundation."
+
+msgid "Root"
+msgstr "Koreňový adresár"
+
+#, fuzzy
+msgid "AutoTimer List"
+msgstr "Zobraziť zoznam autočasovačov"
+
+#, fuzzy
+msgid "AutoTimer Edit"
+msgstr "Upraviť AutoTimer"
+
+#, fuzzy
+msgid "Match title"
+msgstr "Zhoda v názve"
+
+msgid "EPG encoding"
+msgstr "znaková sada EPG"
+
+msgid "Search type"
+msgstr "Typ vyhľadávania"
+
+msgid "partial match"
+msgstr "čiastočná zhoda"
+
+#, fuzzy
+msgid "exact match"
+msgstr "Presný výskyt"
+
+#, fuzzy
+msgid "description match"
+msgstr "Popis zodpovedá"
+
+#, fuzzy
+msgid "title or description match"
+msgstr "názov alebo popis zápas"
+
+#, fuzzy
+msgid "title or short description match"
+msgstr "nadpis alebo Zhrnutie zápasu"
+
+#, fuzzy
+msgid "short description match"
+msgstr "Zhrnutie zápasu"
+
+#, fuzzy
+msgid "start match"
+msgstr "Začínaná hra:"
+
+msgid "Search strictness"
+msgstr "Prísnosť hľadania"
+
+#, fuzzy
+msgid "case-sensitive search"
+msgstr "Rozlišovať veľkosť písmen"
+
+msgid "case-insensitive search"
+msgstr "hľadať - nerozlišovať veľkosť písmen"
+
+#, fuzzy
+msgid "Timer type"
+msgstr "Typ časovača"
+
+msgid "record"
+msgstr "nahrať"
+
+msgid "zap"
+msgstr "prepnúť"
+
+#, fuzzy
+msgid "Override found with alternative service"
+msgstr "Prepísať s alternatívnej služby"
+
+#, fuzzy
+msgid "Only match during timespan"
+msgstr "Jediný zápas počas časové rozpätie"
+
+#, fuzzy
+msgid "Begin of timespan"
+msgstr "Začiatok v časovom rozmedzí"
+
+#, fuzzy
+msgid "End of Timespan"
+msgstr "Koniec časové rozpätie"
+
+#, fuzzy
+msgid "Restrict to events on certain dates"
+msgstr "Obmedziť na udalosti v určitých dátumoch"
+
+msgid "Not after"
+msgstr "Nie po"
+
+#, fuzzy
+msgid "Not before"
+msgstr "Rezerva pred začiatkom nahrávania programu (min.)"
+
+#, fuzzy
+msgid "Custom offset"
+msgstr "Vlastný posun"
+
+#, fuzzy
+msgid "Offset before recording (in m)"
+msgstr "Pred nahrávaním (m)"
+
+#, fuzzy
+msgid "Offset after recording (in m)"
+msgstr "Posun po zázname (in m)"
+
+#, fuzzy
+msgid "Set maximum duration"
+msgstr "Nastaviť maximálnu dĺžku"
+
+#, fuzzy
+msgid "After event"
+msgstr "Po udalosti"
+
+#, fuzzy
+msgid "standard"
+msgstr "štandardné"
+
+msgid "auto"
+msgstr "auto"
+
+#, fuzzy
+msgid "do nothing"
+msgstr "žiadna akcia"
+
+#, fuzzy
+msgid "go to standby"
+msgstr "prejsť do pohotovostného režimu"
+
+#, fuzzy
+msgid "go to deep standby"
+msgstr "prejsť do vypnutia"
+
+#, fuzzy
+msgid "Execute \"after event\" during timespan"
+msgstr "Spustiť \"po udalosti\" počas časové rozpätie"
+
+#, fuzzy
+msgid "Begin of \"after event\" timespan"
+msgstr "Začiatok \"po udalosti\" časové rozpätie"
+
+#, fuzzy
+msgid "End of \"after event\" timespan"
+msgstr "Koniec \"po udalosti\" časové rozpätie"
+
+#, fuzzy
+msgid "Record a maximum of x times"
+msgstr "Rekordné maximum x krát"
+
+#, fuzzy
+msgid "Amount of recordings left"
+msgstr "Množstvo nahrávok vľavo"
+
+msgid "Never"
+msgstr "Nikdy"
+
+msgid "Monthly"
+msgstr "Mesačne"
+
+msgid "Weekly (Sunday)"
+msgstr "Týždenne (nedeľa)"
+
+msgid "Weekly (Monday)"
+msgstr "Týždeň (pondelok)"
+
+#, fuzzy
+msgid "Reset count"
+msgstr "Obnoviť počet"
+
+#, fuzzy
+msgid "Require description to be unique"
+msgstr "Vyžadujú Popis jedinečnosť"
+
+msgid "No"
+msgstr "Nie"
+
+#, fuzzy
+msgid "On same service"
+msgstr ""
+"Konfigurovať, aký typ tunera bude uprednostnený , ak je dostupná rovnaká "
+"stanica na rôznych tuneroch. Vyberte \"bez priority\", aby sa otestovala "
+"každá alternatíva nezávisle na type tuneru."
+
+#, fuzzy
+msgid "On any service"
+msgstr "lubovolný program"
+
+#, fuzzy
+msgid "Any service/recording"
+msgstr "lubovolný program/nahrávania"
+
+#, fuzzy
+msgid "Use a custom location"
+msgstr "Použiť vlastné umiestnenie"
+
+#, fuzzy
+msgid "select Tags"
+msgstr "vyberte položku"
+
+#, fuzzy
+msgid "select Channels"
+msgstr "výber kanálov"
+
+#, fuzzy
+msgid "select Bouquets"
+msgstr "vybrat prehlady"
+
+#, fuzzy
+msgid "Enable Filtering"
+msgstr "Zapnutie filtrovania"
+
+#, fuzzy
+msgid "Include"
+msgstr "Vždy zahrnúť ECM do nahrávok"
+
+#, fuzzy
+msgid "Exclude"
+msgstr "vylúčiť"
+
+#, fuzzy
+msgid "in Title"
+msgstr "Titul"
+
+#, fuzzy
+msgid "in Shortdescription"
+msgstr "stručný opis"
+
+msgid "in Description"
+msgstr "v popise"
+
+#, fuzzy
+msgid "on Weekday"
+msgstr "Pracovný deň"
+
+msgid "Weekend"
+msgstr "Víkend"
+
+msgid "Weekday"
+msgstr "Pracovný deň"
+
+msgid "VPS"
+msgstr "VPS"
+
+#, fuzzy
+msgid "VPS Overwrite"
+msgstr "VPS prepísať"
+
+msgid "Add"
+msgstr "Pridať"
+
+msgid "Delete"
+msgstr "Odstrániť"
+
+#, fuzzy
+msgid "Reload"
+msgstr "Znova natiahnuť"
+
+#, fuzzy
+msgid "Parse"
+msgstr "Syntaktická analýza"
+
+#, fuzzy
+msgid "Simulate"
+msgstr "napodobniť"
+
+# New Autotimer Setting Windows name (not enabled to transfer atm)
+msgid "AutoTimer Settings"
+msgstr "Nastavenia automatického časovača"
+
+#, fuzzy
+msgid "AutoPoll"
+msgstr "AutoPoll"
+
+msgid "Interval (in h)"
+msgstr "Interval (v h)"
+
+#, fuzzy
+msgid "Max Days"
+msgstr "Maximálny počet dní"
+
+#, fuzzy
+msgid "Try Guessing"
+msgstr "Skúste hádať"
+
+#, fuzzy
+msgid "Fastscan"
+msgstr "Použiť fastscan názvy kanálov"
+
+#, fuzzy
+msgid "Show in Extensionsmenu"
+msgstr "Zobraziť Extensionsmenu"
+
+#, fuzzy
+msgid "Disabled on Conflict"
+msgstr "Vypnuté na konflikt"
+
+#, fuzzy
+msgid "Add Similar on Conflict"
+msgstr "Pridať podobné konfliktu"
+
+#, fuzzy
+msgid "Notify if Conflict"
+msgstr "Upozorniť, ak konflikt"
+
+#, fuzzy
+msgid "Notify if Similar"
+msgstr "Upozorniť, ak sa podobné"
+
+#, fuzzy
+msgid "Add Autotimer to Tags"
+msgstr "Pridať Autotimer Tagy"
+
+#, fuzzy
+msgid "Add Name to Tags"
+msgstr "Pridať názov Tagy"
+
+#, fuzzy
+msgid "None"
+msgstr "Žiadne"
+
+msgid "Editor"
+msgstr "Editor"
+
+#, fuzzy
+msgid "Plain"
+msgstr "Rovina"
+
+#, fuzzy
+msgid "Wizzard"
+msgstr "Wizzard"
+
+#, fuzzy
+msgid "Do you really want to delete the AT"
+msgstr "Naozaj chcete zmazať ?"
+
+#, fuzzy
+msgid "Label series"
+msgstr "Menovky radov"
+
+msgid "Enable Messages"
+msgstr "Povoliť správy"
+
+#, fuzzy
+msgid "Delay Standby"
+msgstr "Oneskorenie v pohotovostnom"
+
+msgid "Interval (min.)"
+msgstr "Interval (min.)"
+
+msgid "Interval (sec.)"
+msgstr "Interval (sek.)"
+
+msgid "Afterevent"
+msgstr "Po udalosti"
+
+#, fuzzy
+msgid "Force"
+msgstr "Vynútiť odstraňovanie prekladania"
+
+msgid "Wakeup"
+msgstr "Prebudiť"
+
+#, fuzzy
+msgid "Inherit Autotimer"
+msgstr "Prevziat z Autotimeru"
+
+msgid "Parse Autotimer"
+msgstr "Analyzovať automatický časovač"
+
+#, fuzzy
+msgid "Always"
+msgstr "vždy"
+
+msgid "Background only"
+msgstr "Iba pozadie"
+
+#, fuzzy
+msgid "Ask, default Yes"
+msgstr "Opýtajte sa, predvolené Áno"
+
+#, fuzzy
+msgid "Ask, default No"
+msgstr "Požiadat, defaultne Nie"
+
+#, fuzzy
+msgid "Method"
+msgstr "Zvoľte systém usporiadania:"
+
+#, fuzzy
+msgid "Visibly"
+msgstr "Viditeľne"
+
+msgid "Picture in Picture"
+msgstr "Obraz v obraze"
+
+#, fuzzy
+msgid "Picture in Picture (hidden)"
+msgstr "Obraz v obraze (skryté)"
+
+msgid "Fake Recording"
+msgstr "Falošné nahrávanie"
+
+msgid "Refresh now"
+msgstr "Obnoviť teraz"
+
+#, fuzzy
+msgid "Add Provider as new Bouquet"
+msgstr "Pridanie poskytovateľa ako nové kytice"
+
+#, fuzzy
+msgid "Add channel(s) to Bouquet"
+msgstr "Pridať kanál(y)"
+
+#, fuzzy
+msgid "Add channel(s) as alternate"
+msgstr "Pridať kanál(y) ako náhradník"
+
+msgid "Export"
+msgstr "Exportovať"
+
+msgid "Import"
+msgstr "Importovať"
+
+#, fuzzy
+msgid "Add Bouquet"
+msgstr "pridať buket"
+
+msgid "Rename Bouquet"
+msgstr "Premenovať buket"
+
+msgid "Delete Bouquet"
+msgstr "Odstrániť buket"
+
+msgid "Add Marker"
+msgstr "Pridať značku"
+
+msgid "Rename"
+msgstr "Premenovať"
+
+msgid "Delete Channel(s)"
+msgstr "Odstrániť kanál(y)"
+
+#, fuzzy
+msgid "Do you really want to delete the channel(s)"
+msgstr "Naozaj chcete odstrániť kanál(y)"
+
+#, fuzzy
+msgid "Do you really want to delete the bouquet"
+msgstr "Skutučne chcete odstranit prehlad"
+
+msgid "Name of the Bouquet"
+msgstr "Názov buketu"
+
+msgid "Name of the Marker"
+msgstr "Názov značky"
+
+#, fuzzy
+msgid "Enter new name for the bouquet"
+msgstr "Zadajte názov nového prehladu."
+
+#, fuzzy
+msgid "Enter new name for the marker"
+msgstr "Zadajte nový názov pre značku"
+
+msgid "Please enter filename"
+msgstr "Prosím, zadajte názov súboru"
+
+#, fuzzy
+msgid "Do you really want to restore from file"
+msgstr "Naozaj chcete obnoviť zo súboru"
+
+#, fuzzy
+msgid "OpenWebif url: http://yourip:port"
+msgstr "OpenWebif url: http://vašaIP:port"
+
+msgid "OpenWebInterface Enabled"
+msgstr "OpenWebInterface zapnuté"
+
+msgid "HTTP port"
+msgstr "HTTP port"
+
+msgid "Enable HTTP Authentication"
+msgstr "Vyžadovať prihlásenie pre HTTP"
+
+msgid "Enable HTTPS"
+msgstr "Povoliť HTTPS"
+
+msgid "HTTPS port"
+msgstr "HTTPS port"
+
+#, fuzzy
+msgid "Enable HTTPS Authentication"
+msgstr "Povoliť HTTPS autentizácia"
+
+#, fuzzy
+msgid "Require client cert for HTTPS"
+msgstr "Vyžaduje klient cert https"
+
+#, fuzzy
+msgid "Enable Authentication for streaming"
+msgstr "Zapnúť overovanie pre streaming"
+
+#, fuzzy
+msgid "Disable access for user root"
+msgstr "Zakázat prístup pre uživatela root"
+
+#, fuzzy
+msgid "Smart services renaming for XBMC"
+msgstr "Inteligentné služby premenovanie XBMC"
+
+#, fuzzy
+msgid "Enable Parental Control"
+msgstr "Zapnúť rodičovskú zámku"
+
+#, fuzzy
+msgid "Add service name to stream information"
+msgstr "Pridať názov služby informácie o prúde"
+
+#, fuzzy
+msgid "Character encoding for EPG data"
+msgstr "Kódovanie údajov EPG"
+
+msgid "OpenWebif Configuration"
+msgstr "Nastavenie OpenWebif"
+
+#, fuzzy
+msgid "transcoded"
+msgstr "transcoded"
+
+msgid "System OE"
+msgstr "Systém OE"
+
+msgid "Distro"
+msgstr "Distribúcia"
+
+msgid "Driver date"
+msgstr "Dátum ovládačov"
+
+#, fuzzy
+msgid "Conflicting Timer(s) detected! %s"
+msgstr "Konfliktné časovačom zistené! %s"
+
+msgid "Could not add timer '%s'!"
+msgstr "Časovač '%s' sa nepodarilo pridať!"
+
+msgid "Timer '%s' added"
+msgstr "Časovač '%s' pridaný"
+
+msgid "EventId not found"
+msgstr "Id relácie nenájdené"
+
+#, fuzzy
+msgid "Timer '%s' changed"
+msgstr "Časovač '%s' zmenil"
+
+msgid "Timer '%s' not saved while Conflict"
+msgstr "Časovač '%s' sa počas konfliktu neuložil"
+
+#, fuzzy
+msgid "Could not find timer '%s' with given start and end time!"
+msgstr ""
+"Nepodarilo sa nájsť časovača \"%s\" s vzhľadom na počiatočný a koncový čas!"
+
+msgid "The timer '%s' has been deleted successfully"
+msgstr "Časovač '%s' bol úspešne odstránený"
+
+#, fuzzy
+msgid "No matching Timer found"
+msgstr "Žiadne zhodné časovač našiel"
+
+msgid "The timer '%s' has been %s successfully"
+msgstr "Časovač '%s' bol %s úspešne"
+
+#, fuzzy
+msgid "List of Timers has been cleaned"
+msgstr "Zoznam časovača bol vyčistený"
+
+#, fuzzy
+msgid "TimerList has been saved"
+msgstr "TimerList bol uložený"
+
+#, fuzzy
+msgid "No event found! Not recording!"
+msgstr "Žiadne informácie z EPG, spúšťam nekonečné nahrávanie."
+
+#, fuzzy
+msgid "Instant record for current Event started"
+msgstr "Okamžitý záznam aktuálne udalosti začali"
+
+#, fuzzy
+msgid "Infinite Instant recording started"
+msgstr "Nekonečné okamžité nahrávanie začalo"
+
+msgid "Timer conflict detected! Not recording!"
+msgstr "Bol zistený konflikt časovača! Nenahráva sa!"
+
+#, fuzzy
+msgid "Missing requesteter: sRef"
+msgstr "Chýba requesteter: sRef"
+
+#, fuzzy
+msgid "Unknown command: '%s'"
+msgstr "Neznámy príkaz hlasitosti %s"
+
+#, fuzzy
+msgid "PowerTimer feature not available"
+msgstr "PowerTimer funkcia nie je k dispozícii"
+
+#, fuzzy
+msgid "Sleeptimer is enabled"
+msgstr "Satelitný prijímač je zapnutý"
+
+#, fuzzy
+msgid "Sleeptimer is disabled"
+msgstr "Satelitný prijímač je vypnutý"
+
+msgid "SleepTimer feature not available"
+msgstr "Časovač vypnutia nie je k dispozícii"
+
+#, fuzzy
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr ""
+"Chyba: Nie je možné nastaviť automatické vypnutie, keď zariadenie je v "
+"pohotovostnom režime"
+
+#, fuzzy
+msgid "Sleeptimer has been disabled"
+msgstr "Satelitný prijímač je zakázaný"
+
+#, fuzzy
+msgid "Sleeptimer set to %d minutes"
+msgstr "Satelitný prijímač nastavte na %d minút"
+
+#, fuzzy
+msgid "Safe mode"
+msgstr "Bezpečný režim"
+
+msgid "Close"
+msgstr "Zatvoriť"
+
+msgid "Open in new window"
+msgstr "Otvoriť v novom okne"
+
+#, fuzzy
+msgid "Include description"
+msgstr "Obsahuje popis"
