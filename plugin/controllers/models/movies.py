@@ -111,7 +111,7 @@ def getMovieList(directory=None, tag=None, rargs=None, locations=None):
 
 	root = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory)
 
-	bookmarklist=[x for x in listdir(str(directory)) if (x[0] != '.' and (isdir(str(join(directory, x))) or (islink(str(join(directory, x))) and exists(str(join(directory, x))))))]
+	bookmarklist=[x for x in listdir(directory) if (x[0] != '.' and (isdir(join(directory, x)) or (islink(join(directory, x)) and exists(join(directory, x)))))]
 	bookmarklist.sort()
 
 	folders = []
