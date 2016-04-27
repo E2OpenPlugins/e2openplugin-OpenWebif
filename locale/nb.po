@@ -1,0 +1,1285 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenWebif\n"
+"POT-Creation-Date: 2014-11-01 19:04+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Andy1 <dmmm8000hdpvr@gmail.com>\n"
+"Language-Team: G.Jensen\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ../plugin\n"
+
+msgid "Settings"
+msgstr "Innstillinger"
+
+msgid "LCD4Linux Setup"
+msgstr "LCD4Linux innstilling"
+
+msgid "AutoTimer"
+msgstr "Autotidtaker"
+
+msgid "BouquetEditor"
+msgstr "Kanalliste redigerer"
+
+msgid "EPGRefresh"
+msgstr "Oppdater EPG"
+
+msgid "IPv4-only kernel"
+msgstr "IPv4 kjerne"
+
+msgid "IPv4-only Python/Twisted"
+msgstr "IPv4 Python/Vridd"
+
+msgid "none/IPv4-only network"
+msgstr "ingen/IPv4 nettverk"
+
+msgid "Message sent successfully!"
+msgstr "Meldingen er sendt!"
+
+msgid "No answer in time"
+msgstr "Svaret kom for sent"
+
+msgid "Answer is YES!"
+msgstr "Svaret er JA!"
+
+msgid "Answer is NO!"
+msgstr "Svaret er NEI!"
+
+msgid "New"
+msgstr "Ny"
+
+msgid "Services"
+msgstr "Kanaler"
+
+msgid "Cable"
+msgstr "Kabel-TV"
+
+msgid "Terrestrial"
+msgstr "Bakkenett"
+
+msgid "W"
+msgstr "V"
+
+msgid "E"
+msgstr "Ø"
+
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr "Savner obligatorisk parameter '%s'"
+
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr "Parameter '%s' kan ikke stå tom "
+
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr "Feil parameter format 'set=%s'. Bruk set=set15 "
+
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr "Ukjent volum instruktion %s"
+
+msgid "The parameter 'command' must be a number"
+msgstr "Parameter 'kommando' må være et tall"
+
+#, python-format
+msgid "type %s is not a number"
+msgstr "type %s er ikke et tall"
+
+msgid "Mo"
+msgstr "Ma"
+
+msgid "Tu"
+msgstr "Ti"
+
+msgid "We"
+msgstr "On"
+
+msgid "Th"
+msgstr "To"
+
+msgid "Fr"
+msgstr "Fr"
+
+msgid "Sa"
+msgstr "Lø"
+
+msgid "Su"
+msgstr "Sø"
+
+msgid "Sun"
+msgstr "Søn"
+
+msgid "Mon"
+msgstr "Man"
+
+msgid "Tue"
+msgstr "Tir"
+
+msgid "Wed"
+msgstr "Ons"
+
+msgid "Thu"
+msgstr "Tor"
+
+msgid "Fri"
+msgstr "Fre"
+
+msgid "Sat"
+msgstr "Lør"
+
+msgid "Monday"
+msgstr "Mandag"
+
+msgid "Tuesday"
+msgstr "Tirsdag"
+
+msgid "Wednesday"
+msgstr "Onsdag"
+
+msgid "Thursday"
+msgstr "Torsdag"
+
+msgid "Friday"
+msgstr "Fredag"
+
+msgid "Saturday"
+msgstr "Lørdag"
+
+msgid "Sunday"
+msgstr "Søndag"
+
+msgid "January"
+msgstr "Januar"
+
+msgid "February"
+msgstr "Februar"
+
+msgid "March"
+msgstr "Mars"
+
+msgid "April"
+msgstr "April"
+
+msgid "May"
+msgstr "Mai"
+
+msgid "June"
+msgstr "Juni"
+
+msgid "July"
+msgstr "Juli"
+
+msgid "August"
+msgstr "August"
+
+msgid "September"
+msgstr "September"
+
+msgid "October"
+msgstr "Oktober"
+
+msgid "November"
+msgstr "November"
+
+msgid "December"
+msgstr "Desember"
+
+msgid "About"
+msgstr "Om"
+
+msgid "Add Timer"
+msgstr "Legg til tidtaker"
+
+msgid "Add AutoTimer"
+msgstr "Legg til autotidtaker"
+
+msgid "Add Zap Timer"
+msgstr "Legg til zaptidtaker"
+
+msgid "After Event"
+msgstr "Etter aktiviteten"
+
+msgid "AGC"
+msgstr "AGC"
+
+msgid "All"
+msgstr "Alle"
+
+msgid "All Channels"
+msgstr "Alle kanaler"
+
+msgid "Authors"
+msgstr "Utviklere"
+
+msgid "Auto"
+msgstr "Auto"
+
+msgid "Back"
+msgstr "Tilbake"
+
+msgid "Begin"
+msgstr "Begynn"
+
+msgid "BER"
+msgstr "BER"
+
+msgid "Bouquets"
+msgstr "Kanallister"
+
+msgid "Box Info"
+msgstr "Mottakerinfo"
+
+msgid "Box"
+msgstr "Mottaker"
+
+msgid "Box Control"
+msgstr "Mottaker kontroll"
+
+msgid "Box Uptime"
+msgstr "Mottakers oppetid"
+
+msgid "Brand"
+msgstr "Merke"
+
+msgid "Cancel"
+msgstr "Avbryt"
+
+msgid "Capacity"
+msgstr "Kapasitet"
+
+msgid "Channel"
+msgstr "Kanal"
+
+msgid "Channels"
+msgstr "Kanaler"
+
+msgid "Chipset"
+msgstr "Brikkesett"
+
+msgid "Cleanup Timers"
+msgstr "Slett tidtakere"
+
+msgid "Contributors"
+msgstr "Bidragsytere"
+
+msgid "Control"
+msgstr "Kontroll"
+
+msgid "Current"
+msgstr "Gjeldende"
+
+msgid "Current Event"
+msgstr "Gjeldende aktivitet"
+
+msgid "Deep-Standby"
+msgstr "Slå helt av"
+
+msgid "Default"
+msgstr "Standard"
+
+msgid "Delete Recording"
+msgstr "Slett opptaket"
+
+msgid "Really delete the recording"
+msgstr "Skal opptaket slettes"
+
+msgid "Delete Timer"
+msgstr "Slett tidtaker"
+
+msgid "Really delete the timer"
+msgstr "Skal tidtaker slettes"
+
+msgid "Description"
+msgstr "Beskrivelse"
+
+msgid "DHCP"
+msgstr "DHCP"
+
+msgid "Disable Timer"
+msgstr "Slå av tidtaker"
+
+msgid "Dolby"
+msgstr "Dolby"
+
+msgid "Done"
+msgstr "Utført"
+
+msgid "Download"
+msgstr "Last ned"
+
+msgid "Download Playlist for"
+msgstr "Last ned avspillingsliste for"
+
+msgid "Duration"
+msgstr "Varighet"
+
+msgid "Edit Timer"
+msgstr "Rediger tidtaker"
+
+msgid "Enable Timer"
+msgstr "Aktiver tidtaker"
+
+msgid "Start"
+msgstr "Start"
+
+msgid "End"
+msgstr "Slutt"
+
+msgid "Enabled"
+msgstr "Aktivert"
+
+msgid "Encrypted"
+msgstr "Kryptert"
+
+msgid "EPG"
+msgstr "EPG"
+
+msgid "Epg Search"
+msgstr "EPG søk"
+
+msgid "Error"
+msgstr "Feil"
+
+msgid "Every"
+msgstr "Hver"
+
+msgid "Extras"
+msgstr "Ekstra"
+
+msgid "finished"
+msgstr "sluttført"
+
+msgid "Firmware version"
+msgstr "Firmware versjon"
+
+msgid "Frontprocessor Version"
+msgstr "Frontprosessor versjon"
+
+msgid "Free"
+msgstr "Ledig"
+
+msgid "Free Memory"
+msgstr "Ledig minne"
+
+msgid "Gateway"
+msgstr "Gateway"
+
+msgid "Grab Screenshot"
+msgstr "Ta skjermdump"
+
+msgid "Gui version"
+msgstr "Gui versjon"
+
+msgid "Hide full remote"
+msgstr "Skjul full fjernkontroll"
+
+msgid "High Resolution"
+msgstr "Høy oppløsning"
+
+msgid "Hard disk model"
+msgstr "Harddisk modell"
+
+msgid "Hour"
+msgstr "Time"
+
+msgid "IP address"
+msgstr "IP adresse"
+
+msgid "IPv6 address(es)"
+msgstr "IPv6 adresse(r)"
+
+msgid "Infos"
+msgstr "Info"
+
+msgid "Instant Record"
+msgstr "Direkteinnspilling"
+
+msgid "Javascript Libraries"
+msgstr "Javascript bibliotek"
+
+msgid "Just play"
+msgstr "Spill nå"
+
+msgid "Kernel version"
+msgstr "Kjerne versjon"
+
+msgid "LICENSE"
+msgstr "LISENS"
+
+msgid "loading"
+msgstr "laster"
+
+msgid "Location"
+msgstr "Plass"
+
+msgid "Locked"
+msgstr "Låst"
+
+msgid "MAC address"
+msgstr "MAC adresse"
+
+msgid "Main"
+msgstr "Hovedfunksjoner"
+
+msgid "Minute"
+msgstr "Minutt"
+
+msgid "Model"
+msgstr "Modell"
+
+msgid "Movielist"
+msgstr "Opptaksliste"
+
+msgid "Movies"
+msgstr "Filmer"
+
+msgid "MultiEPG"
+msgstr "MultiEPG"
+
+msgid "Name"
+msgstr "Navn"
+
+msgid "Namespace"
+msgstr "Navneområde"
+
+msgid "Network Interface"
+msgstr "Nettverkskort"
+
+msgid "no description available"
+msgstr "beskrivelse savnes"
+
+msgid "Sorry this page is not yet implemented"
+msgstr "Beklager, denne siden er ennå ikke klar til bruk"
+
+msgid "Nothing"
+msgstr "Ingenting"
+
+msgid "Nothing playing."
+msgstr "Ingenting spiller."
+
+msgid "Now"
+msgstr "Nå"
+
+msgid "On"
+msgstr "På"
+
+msgid "Open Source Web Interface for Linux set-top box"
+msgstr "Åpen kildekode og webgrensesnitt for Linux mottakere"
+
+msgid "Show box name in header"
+msgstr "Vis mottakernavn i overskrift"
+
+msgid "Use custom box name"
+msgstr "Bruk egendefinert mottakernavn"
+
+msgid "Custom box name"
+msgstr "Egendefinert mottakernavn"
+
+msgid "OSD"
+msgstr "OSD"
+
+msgid "Playback"
+msgstr "Avspilling"
+
+msgid "Playlist"
+msgstr "Opptaksliste"
+
+msgid "Power Control"
+msgstr "Strømstyring"
+
+msgid "Provider"
+msgstr "Distributør"
+
+msgid "Providers"
+msgstr "Distributører"
+
+msgid "Radio"
+msgstr "Radio"
+
+msgid "Reboot Box"
+msgstr "Start om"
+
+msgid "Recording Status"
+msgstr "Opptaksstatus"
+
+msgid "Refresh"
+msgstr "Oppdater"
+
+msgid "Refresh automatically every"
+msgstr "Oppdater automatiskt hver"
+
+msgid "Refresh Timer"
+msgstr "Oppdater tidtaker"
+
+msgid "Remote"
+msgstr "Fjernkontroll"
+
+msgid "Rename Recording"
+msgstr "Bytt navn på opptaket"
+
+msgid "Repeated"
+msgstr "Gjentatt"
+
+msgid "Restart GUI"
+msgstr "Start om GUI"
+
+msgid "running"
+msgstr "gjeldende"
+
+msgid "Satellites"
+msgstr "Satellitter"
+
+msgid "Satfinder"
+msgstr "Satellittsøker"
+
+msgid "Save"
+msgstr "Lagre"
+
+msgid "Screenshot"
+msgstr "Skjermdump"
+
+msgid "Search"
+msgstr "Søk"
+
+msgid "Search IMDb"
+msgstr "Søk i IMDb"
+
+msgid "seconds"
+msgstr "sekunder"
+
+msgid "Send Message"
+msgstr "Send melding"
+
+msgid "Waiting for answer ..."
+msgstr "Venter på svar..."
+
+msgid "Send a Message"
+msgstr "Send en melding"
+
+msgid "Service"
+msgstr "Leverandør"
+
+msgid "Bouquet Editor"
+msgstr "Kanalliste redigerer"
+
+msgid "(shift + click for long pressure)"
+msgstr "(shift + klikk for langt tastetrykk)"
+
+msgid "Show Full OpenWebif"
+msgstr "Vis hele OpenWebif"
+
+msgid "Show full remote"
+msgstr "Vis full fjernkontroll"
+
+msgid "Show EPG for"
+msgstr "Vis EPG for"
+
+msgid "Shutdown"
+msgstr "Slå av"
+
+msgid "Site and sources"
+msgstr "Side og kilder"
+
+msgid "SNR"
+msgstr "SNR"
+
+msgid "Software"
+msgstr "Programvare"
+
+msgid "Standby"
+msgstr "Avslått"
+
+msgid "Standby Toggle"
+msgstr "Slå av/på"
+
+msgid "Start time is after end time"
+msgstr "Starttiden er senere enn sluttiden"
+
+msgid "Start Instant Record"
+msgstr "Start direkteinnspilling"
+
+msgid "Stream"
+msgstr "Stream"
+
+msgid "Subnet mask"
+msgstr "Subnet mask"
+
+msgid "Subservices"
+msgstr "Underleverandører"
+
+msgid "Tags"
+msgstr "Merker"
+
+msgid "Teletext"
+msgstr "Tekst-TV"
+
+msgid "Television"
+msgstr "TV"
+
+msgid "Template Engine"
+msgstr "Webutviklingsverktøy"
+
+msgid "Text"
+msgstr "Tekst"
+
+msgid "Time"
+msgstr "Tid"
+
+msgid "Timeout"
+msgstr "Timeout"
+
+msgid "Timer added"
+msgstr "Tidtaker lagt til"
+
+msgid "Timerlist"
+msgstr "Tidtakerliste"
+
+msgid "New Name"
+msgstr "Nytt navn"
+
+msgid "Autotimer Preview"
+msgstr "Auto tidtaker forhåndsvisning"
+
+msgid "Timer"
+msgstr "Tidtaker"
+
+msgid "Timers"
+msgstr "Tidtakere"
+
+msgid "Title"
+msgstr "Tittel"
+
+msgid "Total Memory"
+msgstr "Tilgjengelig minne"
+
+msgid "Tuner Bit Error Rate BER"
+msgstr "Tuner bitfeilrate BER"
+
+msgid "Tuner Number (0-3)"
+msgstr "Tuner nummer (0-3)"
+
+msgid "Tuner Signal"
+msgstr "Tuner signal"
+
+msgid "Tuner Signal Quality SNR"
+msgstr "Tuner signalkvalitet SNR"
+
+msgid "Tuner Signal Quality SNR_DB"
+msgstr "Tuner signalkvalitet SNR_DB"
+
+msgid "Tuner Signal Power AGC"
+msgstr "Tuner signalstyrke AGC"
+
+msgid "Tuner Type"
+msgstr "Tuner type"
+
+msgid "Tuners"
+msgstr "Tunere"
+
+msgid "TV"
+msgstr "TV"
+
+msgid "TV Multi EPG"
+msgstr "TV Multi EPG"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Upcoming Events"
+msgstr "Kommende aktiviteter"
+
+msgid "Version"
+msgstr "Versjon"
+
+msgid "Video"
+msgstr "Bilde"
+
+msgid "Video Height"
+msgstr "Bildehøyde"
+
+msgid "Video Wide"
+msgstr "Bildebredde"
+
+msgid "Video Width"
+msgstr "Bildebredde"
+
+msgid "Volume"
+msgstr "Volum"
+
+msgid "Volume Control"
+msgstr "Volumkontroll"
+
+msgid "waiting"
+msgstr "venter"
+
+msgid "Warning"
+msgstr "Advarsel"
+
+msgid "Yes/No"
+msgstr "Ja/Nei"
+
+msgid "Zap"
+msgstr "Zap"
+
+msgid "zap before Stream"
+msgstr "zap før stream"
+
+msgid "Zap to"
+msgstr "Gå til"
+
+msgid "Zapped to"
+msgstr "Gått til"
+
+msgid "Translation to Spanish"
+msgstr "Oversettelse til spansk"
+
+msgid "All Files of this Software are open source software;"
+msgstr "Alle filer fra denne software er åpen kildekode software;"
+
+msgid "you can redistribute it and/or modify it under the"
+msgstr "du kan redistributere dette og eller modifisere under "
+
+msgid "terms of the GNU General Public License version 2 as"
+msgstr "vilkår av GNU General Public License versjon 2 som"
+
+msgid "published by the Free Software Foundation."
+msgstr "er publisert av Free Software Foundation."
+
+msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
+msgstr "Alle filer fra denne software er åpen kildekode software; du kan redistributere dette og eller modifisere under vilkår av GNU General Public License versjon 2 som er publisert av Free Software Foundation."
+
+msgid "Root"
+msgstr "Root"
+
+msgid "AutoTimer List"
+msgstr "Auto tidtaker liste"
+
+msgid "AutoTimer Edit"
+msgstr "Rediger Auto tidtaker"
+
+msgid "Match title"
+msgstr "Treff"
+
+msgid "EPG encoding"
+msgstr "EPG koding"
+
+msgid "Search type"
+msgstr "Søketype"
+
+msgid "partial match"
+msgstr "delvis samsvarssøk"
+
+msgid "exact match"
+msgstr "eksakt samsvarssøk"
+
+msgid "description match"
+msgstr "samsvarsøk på beskrivelse"
+
+msgid "title or description match"
+msgstr "samsvarssøk på tittel eller beskrivelse "
+
+msgid "title or short description match"
+msgstr "samsvarssøk på tittel eller kort beskrivelse"
+
+msgid "short description match"
+msgstr "samsvarersøk på kort beskrivelse"
+
+msgid "start match"
+msgstr "start samsvarssøk"
+
+msgid "Search strictness"
+msgstr "Søkefølsomhet"
+
+msgid "case-sensitive search"
+msgstr "søk, skill mellom store/små bokstaver"
+
+msgid "case-insensitive search"
+msgstr "søk, ikke skill mellom store/små bokstaver"
+
+msgid "Timer type"
+msgstr "Tidtakertype"
+
+msgid "record"
+msgstr "spill inn"
+
+msgid "zap"
+msgstr "gå til"
+
+msgid "Override found with alternative service"
+msgstr "Overstyr funnet med alternativ leverandør"
+
+msgid "Only match during timespan"
+msgstr "Samsvarssøk bare i tidsrommet"
+
+msgid "Begin of timespan"
+msgstr "Starten på tidsrom"
+
+msgid "End of Timespan"
+msgstr "Slutten på tidsrom"
+
+msgid "Restrict to events on certain dates"
+msgstr "Hindre kanaler på bestemte datoer"
+
+msgid "Not after"
+msgstr "Ikke etter"
+
+msgid "Not before"
+msgstr "Ikke før"
+
+msgid "Custom offset"
+msgstr "Tilpass ekstra tidsrom"
+
+msgid "Offset before recording (in m)"
+msgstr "Tidsrom før opptaket (i min)"
+
+msgid "Offset after recording (in m)"
+msgstr "Tidsrom etter opptaket (i min)"
+
+msgid "Set maximum duration"
+msgstr "Still inn maksimal varighet (i min)"
+
+msgid "After event"
+msgstr "Etter hendelse"
+
+msgid "standard"
+msgstr "standard"
+
+msgid "auto"
+msgstr "auto"
+
+msgid "do nothing"
+msgstr "gjør ingenting"
+
+msgid "go to standby"
+msgstr "gå til avslått"
+
+msgid "go to deep standby"
+msgstr "gå til helt avslått"
+
+msgid "Execute \"after event\" during timespan"
+msgstr "Utfør \"etter hendelse\" i tdsrommet"
+
+msgid "Begin of \"after event\" timespan"
+msgstr "Begynnelsen av \"etter hendelse\" tidsrom"
+
+msgid "End of \"after event\" timespan"
+msgstr "Slutten av \"etter hendelse \" tidsrom"
+
+msgid "Record a maximum of x times"
+msgstr "Ta opp maksimalt x ganger"
+
+msgid "Amount of recordings left"
+msgstr "Antall opptak igjen"
+
+msgid "Never"
+msgstr "Aldri"
+
+msgid "Monthly"
+msgstr "Månedlig"
+
+msgid "Weekly (Sunday)"
+msgstr "Ukentlig (Søndag)"
+
+msgid "Weekly (Monday)"
+msgstr "Ukentlig (Mandag)"
+
+msgid "Reset count"
+msgstr "Tilbakestill antall"
+
+msgid "Require description to be unique"
+msgstr "Krever at forklaringen er unik"
+
+msgid "No"
+msgstr "Nei"
+
+msgid "On same service"
+msgstr "Hos samme leverandør"
+
+msgid "On any service"
+msgstr "Hos valgfri leverandør"
+
+msgid "Any service/recording"
+msgstr "Valgfri leverandør/opptak"
+
+msgid "Use a custom location"
+msgstr "Bruk en egendefinert lagringsplass"
+
+msgid "select Tags"
+msgstr "velg merker"
+
+msgid "select Channels"
+msgstr "velg kanaler"
+
+msgid "select Bouquets"
+msgstr "velg kanallister"
+
+msgid "Enable Filtering"
+msgstr "Slå på filtrering"
+
+msgid "Include"
+msgstr "Inkluder"
+
+msgid "Exclude"
+msgstr "Ekskluder"
+
+msgid "in Title"
+msgstr "i tittel"
+
+msgid "in Shortdescription"
+msgstr "i kortforklaringen"
+
+msgid "in Description"
+msgstr "i forklaringen"
+
+msgid "on Weekday"
+msgstr "på ukedager"
+
+msgid "Weekend"
+msgstr "Helg"
+
+msgid "Weekday"
+msgstr "Ukedager"
+
+msgid "VPS"
+msgstr "VPS"
+
+msgid "VPS Overwrite"
+msgstr "Overskriv VPS"
+
+msgid "Add"
+msgstr "Legg til"
+
+msgid "Delete"
+msgstr "Slett"
+
+msgid "Reload"
+msgstr "Last om"
+
+msgid "Parse"
+msgstr "Analyser"
+
+msgid "Simulate"
+msgstr "Simuler"
+
+msgid "AutoTimer Settings"
+msgstr "Innstilling for autotidtaker"
+
+msgid "AutoPoll"
+msgstr "Auto overvåking"
+
+msgid "Interval (in h)"
+msgstr "Intervall (i timer)"
+
+msgid "Max Days"
+msgstr "Maks dager"
+
+msgid "Try Guessing"
+msgstr "Forsøk og gjette"
+
+msgid "Fastscan"
+msgstr "Hurtigsøk"
+
+msgid "Show in Extensionsmenu"
+msgstr "Vis i tilleggsmeny"
+
+msgid "Disabled on Conflict"
+msgstr "Frakoblet ved konflikt"
+
+msgid "Add Similar on Conflict"
+msgstr "Legg til lignende ved konflikt"
+
+msgid "Notify if Conflict"
+msgstr "Varsle ved konflikt"
+
+msgid "Notify if Similar"
+msgstr "Varsle hvis lignende finnes"
+
+msgid "Add Autotimer to Tags"
+msgstr "Legg til autotidtaker som merke"
+
+msgid "Add Name to Tags"
+msgstr "Legg til navn som merke"
+
+msgid "None"
+msgstr "Ingen"
+
+msgid "Editor"
+msgstr "Redigerer"
+
+msgid "Plain"
+msgstr "Normalt formular"
+
+msgid "Wizzard"
+msgstr "Veiviser"
+
+msgid "Do you really want to delete the AT"
+msgstr "Skal denne AT virkelig tas bort"
+
+msgid "Label series"
+msgstr "Legg til avsnittsinformasjon"
+
+msgid "Enable Messages"
+msgstr "Aktiver beskjeder"
+
+msgid "Delay Standby"
+msgstr "Utsett 'Slå av'"
+
+msgid "Interval (min.)"
+msgstr "Intervall (min.)"
+
+msgid "Interval (sec.)"
+msgstr "Intervall (sek.)"
+
+msgid "Afterevent"
+msgstr "Etter aktivitet"
+
+msgid "Force"
+msgstr "Tving"
+
+msgid "Wakeup"
+msgstr "Våkne opp"
+
+msgid "Inherit Autotimer"
+msgstr "Overfør autotidtaker"
+
+msgid "Parse Autotimer"
+msgstr "Analyser autotidtaker"
+
+msgid "Always"
+msgstr "Alltid"
+
+msgid "Background only"
+msgstr "Bare i bakgrunnen"
+
+msgid "Ask, default Yes"
+msgstr "Spør, standard Ja"
+
+msgid "Ask, default No"
+msgstr "Spør, standard Nei"
+
+msgid "Method"
+msgstr "Metode"
+
+msgid "Visibly"
+msgstr "Synlig"
+
+msgid "Picture in Picture"
+msgstr "Bilde i bilde"
+
+msgid "Picture in Picture (hidden)"
+msgstr "Bilde i bilde (skjult)"
+
+msgid "Fake Recording"
+msgstr "Simulert opptak"
+
+msgid "Refresh now"
+msgstr "Oppdater nå"
+
+msgid "Add Provider as new Bouquet"
+msgstr "Legg til distributør i ny kanalliste"
+
+msgid "Add channel(s) to Bouquet"
+msgstr "Legg til kanal(er) i kanalliste"
+
+msgid "Add channel(s) as alternate"
+msgstr "Legg til kanal(er) som alternativ"
+
+msgid "Export"
+msgstr "Eksporter"
+
+msgid "Import"
+msgstr "Importer"
+
+msgid "Add Bouquet"
+msgstr "Legg til kanalliste"
+
+msgid "Rename Bouquet"
+msgstr "Bytt navn på kanalliste"
+
+msgid "Delete Bouquet"
+msgstr "Slett kanalliste"
+
+msgid "Add Marker"
+msgstr "Legg til bokmerke"
+
+msgid "Rename"
+msgstr "Gi nytt navn"
+
+msgid "Delete Channel(s)"
+msgstr "Slett kanal(er)"
+
+msgid "Do you really want to delete the channel(s)"
+msgstr "Skal kanal(er) virkelig slettes"
+
+msgid "Do you really want to delete the bouquet"
+msgstr "Skal kanallisten virkelig slettes"
+
+msgid "Name of the Bouquet"
+msgstr "Kanallistens navn"
+
+msgid "Name of the Marker"
+msgstr "Bokmerkenavn"
+
+msgid "Enter new name for the bouquet"
+msgstr "Gi nytt navn på kanallisten"
+
+msgid "Enter new name for the marker"
+msgstr "Gi nytt navn på bokmerket"
+
+msgid "Please enter filename"
+msgstr "Angi et filnavn"
+
+msgid "Do you really want to restore from file"
+msgstr "Skal det tilbakestilles fra denne filen"
+
+msgid "OpenWebif url: http://yourip:port"
+msgstr "OpenWebif url: http://dinip:port"
+
+msgid "OpenWebInterface Enabled"
+msgstr "OpenWebInterface er aktivert"
+
+msgid "HTTP port"
+msgstr "HTTP port"
+
+msgid "Enable HTTP Authentication"
+msgstr "Aktiver HTTP autentisering"
+
+msgid "Enable HTTPS"
+msgstr "Aktiver HTTPS"
+
+msgid "HTTPS port"
+msgstr "HTTPS port"
+
+msgid "Enable HTTPS Authentication"
+msgstr "Aktiver HTTPS autentisering"
+
+msgid "Require client cert for HTTPS"
+msgstr "Krev klientsertifikat for HTTPS"
+
+msgid "Enable Authentication for streaming"
+msgstr "Aktiver autentisering for streaming"
+
+msgid "Disable access for user root"
+msgstr "Frakoble tilgang for root bruker"
+
+msgid "Smart services renaming for XBMC"
+msgstr "Smart sevice navnedring for XBMC"
+
+msgid "Enable Parental Control"
+msgstr "Aktiver foreldrekontroll"
+
+msgid "Add service name to stream information"
+msgstr "Legg til leverandørnavn i streaminformasjon"
+
+msgid "Character encoding for EPG data"
+msgstr "Tegnkodning for EPG data"
+
+msgid "OpenWebif Configuration"
+msgstr "OpenWebif innstilling"
+
+msgid "transcoded"
+msgstr "nedskalert"
+
+msgid "System OE"
+msgstr "OE system"
+
+msgid "Distro"
+msgstr "Distribusjon"
+
+msgid "Driver date"
+msgstr "Driver dato"
+
+msgid "Conflicting Timer(s) detected! %s"
+msgstr "Tidtakerkonflikt(er) oppdaget %s"
+
+msgid "Could not add timer '%s'!"
+msgstr "Kunne ikke legge til tidtaker '%s'!"
+
+msgid "Timer '%s' added"
+msgstr "Tidtaker '%s' lagt til"
+
+msgid "EventId not found"
+msgstr "Aktivitets Id ikke funnet"
+
+msgid "Timer '%s' changed"
+msgstr "Tidtaker '%s' ble endret"
+
+msgid "Timer '%s' not saved while Conflict"
+msgstr "Tidtaker '%s' ble ikke lagret pga. en konflikt"
+
+msgid "Could not find timer '%s' with given start and end time!"
+msgstr "Kunne ikke finne tidtaker '%s' med gitt start og stopptid!"
+
+msgid "The timer '%s' has been deleted successfully"
+msgstr "Tidtakeren '%s' har blitt slettet"
+
+msgid "No matching Timer found"
+msgstr "Kunne ikke finne passende tidtaker"
+
+msgid "The timer '%s' has been %s successfully"
+msgstr "Tidtakeren '%s' har blitt %s vellykket"
+
+msgid "List of Timers has been cleaned"
+msgstr "Tidtakerlisten har blitt ryddet opp i"
+
+msgid "TimerList has been saved"
+msgstr "Tidtakerlisten har blitt lagret"
+
+msgid "No event found! Not recording!"
+msgstr "Programmet ble ikke funnet! Spiller ikke inn!"
+
+msgid "Instant record for current Event started"
+msgstr "En direkeinnspilling av aktuellt program startet"
+
+msgid "Infinite Instant recording started"
+msgstr "En ubegrenset direkeinnspilling startet"
+
+msgid "Timer conflict detected! Not recording!"
+msgstr "En tidtakerkonflikt er oppdaget! Spiller ikke inn!"
+
+msgid "Missing requesteter: sRef"
+msgstr "Tapt anmoding: sRef"
+
+msgid "Unknown command: '%s'"
+msgstr "Ukjent kommando: '%s'"
+
+msgid "PowerTimer feature not available"
+msgstr "Strømtidtaker er ikke tilgjengelig"
+
+msgid "Sleeptimer is enabled"
+msgstr "Vekkerklokken er aktivert"
+
+msgid "Sleeptimer is disabled"
+msgstr "Vekkerklokken er deaktivert"
+
+msgid "SleepTimer feature not available"
+msgstr "Vekkerklokke funksjonen er ikke tilgjengelig"
+
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr "FEIL: Kan ikke stille inn vekkerklokken når mottaker er i avslått modus "
+
+msgid "Sleeptimer has been disabled"
+msgstr "Vekkerklokke har blitt frakoblet"
+
+msgid "Sleeptimer set to %d minutes"
+msgstr "Vekkerklokke er stilt på %d minutter"
+
+msgid "Safe mode"
+msgstr "Sikker modus"
+
+msgid "Close"
+msgstr "Lukk"
+
+msgid "Open in new window"
+msgstr "Åpne i et nytt vindu"
+
+msgid "Include description"
+msgstr "Inkluder beskrivelse"
+
