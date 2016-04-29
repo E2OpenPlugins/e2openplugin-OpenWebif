@@ -1,72 +1,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2016-04-25 21:43+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-04-27 07:17+0200\n"
 "PO-Revision-Date: \n"
+"Last-Translator: Nicker <nickersk@gmail.com>\n"
 "Language-Team: \n"
+"Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: .\n"
-"Last-Translator: Nicker <nickersk@gmail.com>\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"Language: sk_SK\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
-
-msgid "Settings"
-msgstr "Nastavenia"
-
-msgid "LCD4Linux Setup"
-msgstr "Nastavenie LCD4Linux"
-
-msgid "AutoTimer"
-msgstr "Automatický časovač"
-
-msgid "BouquetEditor"
-msgstr "Editor buketov"
-
-msgid "EPGRefresh"
-msgstr "obnovovanie EPG"
-
-msgid "IPv4-only kernel"
-msgstr "Jadro len IPv4"
-
-msgid "IPv4-only Python/Twisted"
-msgstr "Python/Twisted len IPv4"
-
-msgid "none/IPv4-only network"
-msgstr "žiadna/len IPv4 sieť"
-
-msgid "Message sent successfully!"
-msgstr "Správa úspešne odoslaná!"
-
-msgid "No answer in time"
-msgstr "Žiadna odpoveď načas"
-
-msgid "Answer is YES!"
-msgstr "Odpoveď je ÁNO!"
-
-msgid "Answer is NO!"
-msgstr "Odpoveď je NIE!"
-
-msgid "New"
-msgstr "Nový"
-
-msgid "Services"
-msgstr "Stanice"
-
-msgid "Cable"
-msgstr "Káblové"
-
-msgid "Terrestrial"
-msgstr "Pozemné"
-
-msgid "W"
-msgstr "Z"
-
-msgid "E"
-msgstr "V"
 
 #, python-format
 msgid "Missing mandatory parameter '%s'"
@@ -90,6 +37,405 @@ msgstr "Parameter \"príkaz\" musí byť číslo"
 #, python-format
 msgid "type %s is not a number"
 msgstr "typ %s nie je číslo"
+
+msgid "one two three four unknown command"
+msgstr "jeden dva tri štyri neznámy príkaz"
+
+msgid "No bouquet name given!"
+msgstr "Nie je uvedený názov prehľadu!"
+
+#, python-format
+msgid "Bouquet %s created."
+msgstr "Prehľad %s vytvorený."
+
+msgid "Get mutable list for new created bouquet failed!"
+msgstr "Získanie premenlivého zoznamu pre novovytvorený prehľad zlyhalo!"
+
+#, python-format
+msgid "Bouquet %s already exists."
+msgstr "Prehľad %s už existuje."
+
+msgid "Bouquetlist is not editable!"
+msgstr "Zoznam prehľadov sa nedá upraviť!"
+
+msgid "Multi-Bouquet is not enabled!"
+msgstr "Multi-prehľad nie je zapnutý!"
+
+msgid "No provider given!"
+msgstr "Nebol zadaný poskytovateľ!"
+
+#, python-format
+msgid "Bouquet %s removed failed."
+msgstr "Odstránenie prehľadu %s zlyhalo."
+
+#, python-format
+msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
+msgstr "Odstránenie prehľadu %s zlyhalo, zoznam referencií je neplatný."
+
+#, python-format
+msgid "Bouquet %s deleted."
+msgstr "Prehľad %s zmazaný."
+
+#, python-format
+msgid "Error: Bouquet %s could not deleted, OSError."
+msgstr "Chyba: Prehľad  %s sa nedá zmazať, OSerror."
+
+msgid "No position given!"
+msgstr "Nebola zadaná pozícia!"
+
+#, python-format
+msgid "Bouquet %s moved."
+msgstr "Prehľad %s presunutý."
+
+#, python-format
+msgid "Bouquet %s can not be moved."
+msgstr "Prehľad %s nemôže byť presunutý."
+
+msgid "No bouquet given!"
+msgstr "Nie je uvedený prehľad!"
+
+msgid "No service given!"
+msgstr "Nie je uvedená stanica!"
+
+#, python-format
+msgid "Service %s removed."
+msgstr "Stanica %s zmazaná."
+
+#, python-format
+msgid "Service %s removed from bouquet %s."
+msgstr "Stanica %s odstránená z prehľadu %s."
+
+#, python-format
+msgid "Service %s can not be removed."
+msgstr "Stanica %s sa nedá odstrániť."
+
+#, python-format
+msgid "Service %s moved."
+msgstr "Stanica %s presunutá."
+
+msgid "Service can not be moved."
+msgstr "Stanica sa nedá presunúť"
+
+#, python-format
+msgid "Service %s added."
+msgstr "Stanica %s pridaná."
+
+#, python-format
+msgid "Service %s already exists in bouquet %s."
+msgstr "Stanica %s už existuje v prehľade %s."
+
+msgid "This service can not be added."
+msgstr "Táto stanica sa nedá pridať."
+
+msgid "No marker-name given!"
+msgstr "Nie je uvedený názov značky!"
+
+msgid "Marker added."
+msgstr "Značka pridaná."
+
+msgid "Internal error!"
+msgstr "Vnútorná chyba!"
+
+msgid "No new servicename given!"
+msgstr "Nie je zadaný nový názov stanice!"
+
+msgid "Bouquet renamed successfully."
+msgstr "Prehľad úspešne premenovaný."
+
+msgid "Service renamed successfully."
+msgstr "Stanica úspešne premenovaná."
+
+msgid "Service can not be renamed."
+msgstr "Stanica sa nedá premenovať."
+
+msgid "No current service given!"
+msgstr "Nezadaná aktuálna stanica!"
+
+msgid "Get mutable list for new created alternative failed!"
+msgstr "Získanie premenlivého zoznamu pre novovytvorenú alternatívu zlyhalo!"
+
+#, python-format
+msgid "Alternative %s created failed."
+msgstr "Vytváranie altern. %s zlyhalo."
+
+#, python-format
+msgid "Added %s to alternative service %s."
+msgstr "%s pridaná k alternatívam stanice %s."
+
+msgid "Service is not an alternative."
+msgstr "Stanica nie je alternatívnou."
+
+msgid "All alternative services deleted."
+msgstr "Všetky alternatívne stanice odstránené."
+
+msgid "Parent Control is not activated."
+msgstr "Rodičovská kontrola nie je aktivovaná."
+
+msgid "No Parent Control Setup Pin given!"
+msgstr "Nebol zadaný PIN rodičovskej kontroly!"
+
+msgid "Parent Control Setup Pin is wrong!"
+msgstr "Zadaný PIN rodičovskej kontroly je nesprávny!"
+
+#, python-format
+msgid "Service %s is locked."
+msgstr "Služba %s je zamknutá."
+
+#, python-format
+msgid "Bouquet %s is locked."
+msgstr "Prehľad %s je zamknutý."
+
+#, python-format
+msgid "%s %s is locked."
+msgstr "%s %s je zamknutý."
+
+#, python-format
+msgid "Service %s is unlocked."
+msgstr "Služba %s nie je zamknutá."
+
+#, python-format
+msgid "Bouquet %s is unlocked."
+msgstr "Prehľad %s nie je zamknutý."
+
+#, python-format
+msgid "Error while preparing backup file, %s does not exists."
+msgstr "Chyba pri príprave záložného súboru, %s neexistuje."
+
+msgid "Error while preparing backup file."
+msgstr "Chyba pri príprave záložného súboru."
+
+msgid "Bouquet-settings were restored successfully"
+msgstr "Obnovenie nastavení prehľadu bolo úspešné"
+
+#, python-format
+msgid "Error, %s was not created with WebBouquetEditor..."
+msgstr "Chyba, %s nebol vytvorený web editorom prehľadov..."
+
+#, python-format
+msgid "Error, %s does not exists, restore is not possible..."
+msgstr "Chyba %s neexistuje, obnovenie nie je možné ..."
+
+msgid "IPv4-only kernel"
+msgstr "Jadro len IPv4"
+
+msgid "IPv4-only Python/Twisted"
+msgstr "Python/Twisted len IPv4"
+
+msgid "none/IPv4-only network"
+msgstr "žiadna/len IPv4 sieť"
+
+msgid "New"
+msgstr "Nový"
+
+msgid "Services"
+msgstr "Stanice"
+
+msgid "Cable"
+msgstr "Káblové"
+
+msgid "Terrestrial"
+msgstr "Pozemné"
+
+msgid "W"
+msgstr "Z"
+
+msgid "E"
+msgstr "V"
+
+msgid "Message sent successfully!"
+msgstr "Správa úspešne odoslaná!"
+
+msgid "No answer in time"
+msgstr "Žiadna odpoveď načas"
+
+msgid "Answer is YES!"
+msgstr "Odpoveď je ÁNO!"
+
+msgid "Answer is NO!"
+msgstr "Odpoveď je NIE!"
+
+#, python-format
+msgid "Conflicting Timer(s) detected! %s"
+msgstr "Nájdené konfliktné časovače! %s"
+
+#, python-format
+msgid "Could not add timer '%s'!"
+msgstr "Časovač '%s' sa nepodarilo pridať!"
+
+#, python-format
+msgid "Timer '%s' added"
+msgstr "Časovač '%s' pridaný"
+
+msgid "EventId not found"
+msgstr "Id relácie nenájdené"
+
+#, python-format
+msgid "Timer '%s' changed"
+msgstr "Časovač '%s' sa zmenil"
+
+#, python-format
+msgid "Timer '%s' not saved while Conflict"
+msgstr "Časovač '%s' sa počas konfliktu neuložil"
+
+#, python-format
+msgid "Could not find timer '%s' with given start and end time!"
+msgstr "Nepodarilo sa nájsť časovač '%s' so zadaným časom začatia a ukončenia!"
+
+#, python-format
+msgid "The timer '%s' has been deleted successfully"
+msgstr "Časovač '%s' bol úspešne odstránený"
+
+msgid "No matching Timer found"
+msgstr "Zhodný časovač sa nenašiel"
+
+#, python-format
+msgid "Timer '%s' not enabled while Conflict"
+msgstr "Časovač '%s' je počas konfliktu zakázaný"
+
+#, python-format
+msgid "Timer '%s' already exists!"
+msgstr "Časovač '%s 'už existuje!"
+
+#, python-format
+msgid "The timer '%s' now recorded! Not disabled!"
+msgstr "Časovač '%s' zaznamenaný! Nezakázaný!"
+
+#, python-format
+msgid "The timer '%s' has been %s successfully"
+msgstr "Časovač '%s' bol %s úspešne"
+
+msgid "List of Timers has been cleaned"
+msgstr "Zoznam časovačov bol vyčistený"
+
+msgid "TimerList has been saved"
+msgstr "Zoznam časovačov bol uložený"
+
+msgid "No event found! Not recording!"
+msgstr "Nenájdená žiadna relácia! Nenahráva sa!"
+
+msgid "Instant record for current Event started"
+msgstr "Okamžitý záznam aktuálnej relácie začal"
+
+msgid "Infinite Instant recording started"
+msgstr "Nekonečné okamžité nahrávanie začalo"
+
+msgid "Timer conflict detected! Not recording!"
+msgstr "Bol zistený konflikt časovača! Nenahráva sa!"
+
+msgid "Missing requesteter: sRef"
+msgstr "Chýba žiadateľ: sRef"
+
+#, python-format
+msgid "Unknown command: '%s'"
+msgstr "Neznámy príkaz: '%s'"
+
+msgid "PowerTimer feature not available"
+msgstr "Časovač napájania nie je k dispozícii"
+
+msgid "Sleeptimer is enabled"
+msgstr "Časovač uspania je povolený"
+
+msgid "Sleeptimer is disabled"
+msgstr "Časovač uspania je vypnutý"
+
+msgid "SleepTimer error"
+msgstr "Chyba časovača vypnutia"
+
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr ""
+"Chyba: Nie je možné nastaviť automatické vypnutie, keď zariadenie je v "
+"pohotovostnom režime"
+
+msgid "Sleeptimer has been disabled"
+msgstr "Časovač uspania bol vypnutý"
+
+#, python-format
+msgid "Sleeptimer set to %d minutes"
+msgstr "Časovač uspania nastavený na %d minút"
+
+msgid "SleepTimer Error"
+msgstr "Chyba časovača vypnutia"
+
+msgid "Error parsing vps.xml"
+msgstr "Chyba pri analýze vps.xml"
+
+msgid "VPS plugin not found"
+msgstr "VPS plugin nebol nájdený"
+
+msgid "Settings"
+msgstr "Nastavenia"
+
+msgid "LCD4Linux Setup"
+msgstr "Nastavenie LCD4Linux"
+
+msgid "AutoTimer"
+msgstr "Automatický časovač"
+
+msgid "BouquetEditor"
+msgstr "Editor prehľadov"
+
+msgid "EPGRefresh"
+msgstr "obnovovanie EPG"
+
+msgid "Cancel"
+msgstr "Zrušiť"
+
+msgid "Save"
+msgstr "Uložiť"
+
+msgid "OpenWebif url: http://yourip:port"
+msgstr "OpenWebif adresa: http://vašaIP:port"
+
+msgid "OpenWebInterface Enabled"
+msgstr "OpenWebInterface zapnuté"
+
+msgid "Show box name in header"
+msgstr "Zobraziť názov prijímača v hlavičke"
+
+msgid "Use custom box name"
+msgstr "Použiť vlastný názov prijímača"
+
+msgid "Custom box name"
+msgstr "Vlastný názov prímača"
+
+msgid "HTTP port"
+msgstr "HTTP port"
+
+msgid "Enable HTTP Authentication"
+msgstr "Vyžadovať prihlásenie pre HTTP"
+
+msgid "Enable HTTPS"
+msgstr "Povoliť HTTPS"
+
+msgid "HTTPS port"
+msgstr "HTTPS port"
+
+msgid "Enable HTTPS Authentication"
+msgstr "Vyžadovať prihlásenie pre HTTPS"
+
+msgid "Require client cert for HTTPS"
+msgstr "Vyžadovať certifikát klienta pre HTTPS"
+
+msgid "Enable Authentication for streaming"
+msgstr "Zapnúť overovanie pre streaming"
+
+msgid "Disable access for user root"
+msgstr "Zakázat prístup pre uživatela root"
+
+msgid "Smart services renaming for XBMC"
+msgstr "Inteligentné premenovanie staníc pre XBMC"
+
+msgid "Enable Parental Control"
+msgstr "Zapnúť rodičovskú zámku"
+
+msgid "Add service name to stream information"
+msgstr "Pridať názov služby do informácie o prúde"
+
+msgid "Character encoding for EPG data"
+msgstr "Kódovanie znakov pre dáta EPG"
+
+msgid "OpenWebif Configuration"
+msgstr "Nastavenie OpenWebif"
 
 msgid "Mo"
 msgstr "Po"
@@ -247,9 +593,6 @@ msgstr "Doba prevádzky"
 msgid "Brand"
 msgstr "Značka"
 
-msgid "Cancel"
-msgstr "Zrušiť"
-
 msgid "Capacity"
 msgstr "Kapacita:"
 
@@ -264,6 +607,9 @@ msgstr "Čipset"
 
 msgid "Cleanup Timers"
 msgstr "Vyčistenie časovačov"
+
+msgid "Close"
+msgstr "Zatvoriť"
 
 msgid "Contributors"
 msgstr "Prispievatelia"
@@ -289,6 +635,12 @@ msgstr "Zmazať nahrávku"
 msgid "Really delete the recording"
 msgstr "Naozaj chcete zmazať nahrávku"
 
+msgid "Delete Movie"
+msgstr "Zmazať film"
+
+msgid "Really delete the movie"
+msgstr "Naozaj zmazať film"
+
 msgid "Delete Timer"
 msgstr "Zmazať časovač"
 
@@ -304,6 +656,9 @@ msgstr "DHCP"
 msgid "Disable Timer"
 msgstr "Vypnúť časovač"
 
+msgid "Distro"
+msgstr "Distribúcia"
+
 msgid "Dolby"
 msgstr "Dolby"
 
@@ -315,6 +670,9 @@ msgstr "Stiahnuť"
 
 msgid "Download Playlist for"
 msgstr "Stiahnuť Playlist pre"
+
+msgid "Driver date"
+msgstr "Dátum ovládačov"
 
 msgid "Duration"
 msgstr "Trvanie"
@@ -342,6 +700,9 @@ msgstr "EPG"
 
 msgid "Epg Search"
 msgstr "Hľadanie v EPG"
+
+msgid "Include description"
+msgstr "Zahrnúť popis"
 
 msgid "Error"
 msgstr "Chyba"
@@ -466,23 +827,20 @@ msgstr "Nič sa neprehráva."
 msgid "Now"
 msgstr "Teraz"
 
+msgid "System OE"
+msgstr "Systém OE"
+
 msgid "On"
 msgstr "Zapnúť"
 
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Open Source webové rozhranie pre Linux prijímače"
 
-msgid "Show box name in header"
-msgstr "Zobraziť názov prijímača v hlavičke"
-
-msgid "Use custom box name"
-msgstr "Použiť vlastný názov prijímača"
-
-msgid "Custom box name"
-msgstr "Vlastný názov prímača"
-
 msgid "OSD"
 msgstr "OSD"
+
+msgid "Open in new window"
+msgstr "Otvoriť v novom okne"
 
 msgid "Playback"
 msgstr "Prehrávanie"
@@ -523,6 +881,9 @@ msgstr "Diaľkové"
 msgid "Rename Recording"
 msgstr "Premenovať nahrávku"
 
+msgid "Really rename the recording"
+msgstr "Naozaj premenovať nahrávku"
+
 msgid "Repeated"
 msgstr "Opakované"
 
@@ -532,14 +893,14 @@ msgstr "Reštartovať užívateľské rozhranie"
 msgid "running"
 msgstr "prebieha..."
 
+msgid "Safe mode"
+msgstr "Bezpečný režim"
+
 msgid "Satellites"
 msgstr "Satelity"
 
 msgid "Satfinder"
 msgstr "Hľadač satelitov"
-
-msgid "Save"
-msgstr "Uložiť"
 
 msgid "Screenshot"
 msgstr "Snímka obrazovky"
@@ -549,6 +910,9 @@ msgstr "Hľadať"
 
 msgid "Search IMDb"
 msgstr "Hľadať v IMDb"
+
+msgid "Search KinoPoisk"
+msgstr "Vyhľadávanie KinoPoisk"
 
 msgid "seconds"
 msgstr "sekundy"
@@ -566,7 +930,7 @@ msgid "Service"
 msgstr "Stanica"
 
 msgid "Bouquet Editor"
-msgstr "Editor buketu"
+msgstr "Editor prehľadu"
 
 msgid "(shift + click for long pressure)"
 msgstr "(dlhé pridržanie shift + klik)"
@@ -658,6 +1022,12 @@ msgstr "Názov"
 msgid "Total Memory"
 msgstr "Celková pamäť"
 
+msgid "transcoded"
+msgstr "transkódované"
+
+msgid "Transcode"
+msgstr "Transkódovanie"
+
 msgid "Tuner Bit Error Rate BER"
 msgstr "Tuner Bit Error Rate BER"
 
@@ -708,6 +1078,9 @@ msgstr "Šírku videa"
 
 msgid "Video Width"
 msgstr "Šírka videa"
+
+msgid "VPS"
+msgstr "VPS"
 
 msgid "Volume"
 msgstr "Hlasitosť"
@@ -863,10 +1236,10 @@ msgid "do nothing"
 msgstr "žiadna akcia"
 
 msgid "go to standby"
-msgstr "prejsť do pohotovostného režimu"
+msgstr "do pohotov. režimu"
 
 msgid "go to deep standby"
-msgstr "prejsť do režimu hlbokého spánku"
+msgstr "do hlbokého spánku"
 
 msgid "Execute \"after event\" during timespan"
 msgstr "Spustiť \"po udalosti\" počas časového rozpätie"
@@ -923,7 +1296,7 @@ msgid "select Channels"
 msgstr "výber staníc"
 
 msgid "select Bouquets"
-msgstr "výber buketov"
+msgstr "výber prehľadov"
 
 msgid "Enable Filtering"
 msgstr "Povoliť filtrovanie"
@@ -952,12 +1325,6 @@ msgstr "Víkend"
 msgid "Weekday"
 msgstr "Pracovný deň"
 
-msgid "VPS"
-msgstr "VPS"
-
-msgid "VPS Overwrite"
-msgstr "prepísať VPS"
-
 msgid "Add"
 msgstr "Pridať"
 
@@ -972,6 +1339,12 @@ msgstr "Analyzovať"
 
 msgid "Simulate"
 msgstr "Simulovať"
+
+msgid "Do you really want to delete the AT"
+msgstr "Naozaj chcete zmazať AT?"
+
+msgid "Label series"
+msgstr "Série menoviek"
 
 # New Autotimer Setting Windows name (not enabled to transfer atm)
 msgid "AutoTimer Settings"
@@ -1025,17 +1398,11 @@ msgstr "Prostý"
 msgid "Wizzard"
 msgstr "Sprievodca"
 
-msgid "Do you really want to delete the AT"
-msgstr "Naozaj chcete zmazať AT?"
-
-msgid "Label series"
-msgstr "Série menoviek"
-
 msgid "Enable Messages"
 msgstr "Povoliť správy"
 
 msgid "Delay Standby"
-msgstr "Oneskorenie pohotovostného režimu"
+msgstr "Oneskoriť poh. režim"
 
 msgid "Interval (min.)"
 msgstr "Interval (min.)"
@@ -1089,10 +1456,10 @@ msgid "Refresh now"
 msgstr "Obnoviť teraz"
 
 msgid "Add Provider as new Bouquet"
-msgstr "Pridať poskytovateľa ako nový buket"
+msgstr "Pridať poskytovateľa ako nový prehľad"
 
 msgid "Add channel(s) to Bouquet"
-msgstr "Pridať stanicu(e) do buketu"
+msgstr "Pridať stanicu(e) do prehľadu"
 
 msgid "Add channel(s) as alternate"
 msgstr "Pridať stanicu(e) ako alternatívu"
@@ -1104,13 +1471,13 @@ msgid "Import"
 msgstr "Importovať"
 
 msgid "Add Bouquet"
-msgstr "Pridať buket"
+msgstr "Pridať prehľad"
 
 msgid "Rename Bouquet"
-msgstr "Premenovať buket"
+msgstr "Premenovať prehľad"
 
 msgid "Delete Bouquet"
-msgstr "Odstrániť buket"
+msgstr "Odstrániť prehľad"
 
 msgid "Add Marker"
 msgstr "Pridať značku"
@@ -1125,16 +1492,16 @@ msgid "Do you really want to delete the channel(s)"
 msgstr "Naozaj chcete odstrániť stanicu(e)"
 
 msgid "Do you really want to delete the bouquet"
-msgstr "Naozaj chcete odstrániť buket"
+msgstr "Naozaj chcete odstrániť prehľad"
 
 msgid "Name of the Bouquet"
-msgstr "Názov buketu"
+msgstr "Názov prehľadu"
 
 msgid "Name of the Marker"
 msgstr "Názov značky"
 
 msgid "Enter new name for the bouquet"
-msgstr "Zadajte nový názov buketu"
+msgstr "Zadajte nový názov prehľadu"
 
 msgid "Enter new name for the marker"
 msgstr "Zadajte nový názov pre značku"
@@ -1145,148 +1512,8 @@ msgstr "Prosím, zadajte názov súboru"
 msgid "Do you really want to restore from file"
 msgstr "Naozaj chcete obnoviť zo súboru"
 
-msgid "OpenWebif url: http://yourip:port"
-msgstr "OpenWebif adresa: http://vašaIP:port"
+#~ msgid "VPS Overwrite"
+#~ msgstr "prepísať VPS"
 
-msgid "OpenWebInterface Enabled"
-msgstr "OpenWebInterface zapnuté"
-
-msgid "HTTP port"
-msgstr "HTTP port"
-
-msgid "Enable HTTP Authentication"
-msgstr "Vyžadovať prihlásenie pre HTTP"
-
-msgid "Enable HTTPS"
-msgstr "Povoliť HTTPS"
-
-msgid "HTTPS port"
-msgstr "HTTPS port"
-
-msgid "Enable HTTPS Authentication"
-msgstr "Vyžadovať prihlásenie pre HTTPS"
-
-msgid "Require client cert for HTTPS"
-msgstr "Vyžadovať certifikát klienta pre HTTPS"
-
-msgid "Enable Authentication for streaming"
-msgstr "Zapnúť overovanie pre streaming"
-
-msgid "Disable access for user root"
-msgstr "Zakázat prístup pre uživatela root"
-
-msgid "Smart services renaming for XBMC"
-msgstr "Inteligentné premenovanie staníc pre XBMC"
-
-msgid "Enable Parental Control"
-msgstr "Zapnúť rodičovskú zámku"
-
-msgid "Add service name to stream information"
-msgstr "Pridať názov služby do informácie o prúde"
-
-msgid "Character encoding for EPG data"
-msgstr "Kódovanie znakov pre dáta EPG"
-
-msgid "OpenWebif Configuration"
-msgstr "Nastavenie OpenWebif"
-
-msgid "transcoded"
-msgstr "transkódované"
-
-msgid "System OE"
-msgstr "Systém OE"
-
-msgid "Distro"
-msgstr "Distribúcia"
-
-msgid "Driver date"
-msgstr "Dátum ovládačov"
-
-msgid "Conflicting Timer(s) detected! %s"
-msgstr "Nájdené konfliktné časovače! %s"
-
-msgid "Could not add timer '%s'!"
-msgstr "Časovač '%s' sa nepodarilo pridať!"
-
-msgid "Timer '%s' added"
-msgstr "Časovač '%s' pridaný"
-
-msgid "EventId not found"
-msgstr "Id relácie nenájdené"
-
-msgid "Timer '%s' changed"
-msgstr "Časovač '%s' sa zmenil"
-
-msgid "Timer '%s' not saved while Conflict"
-msgstr "Časovač '%s' sa počas konfliktu neuložil"
-
-msgid "Could not find timer '%s' with given start and end time!"
-msgstr "Nepodarilo sa nájsť časovač '%s' so zadaným časom začatia a ukončenia!"
-
-msgid "The timer '%s' has been deleted successfully"
-msgstr "Časovač '%s' bol úspešne odstránený"
-
-msgid "No matching Timer found"
-msgstr "Zhodný časovač sa nenašiel"
-
-msgid "The timer '%s' has been %s successfully"
-msgstr "Časovač '%s' bol %s úspešne"
-
-msgid "List of Timers has been cleaned"
-msgstr "Zoznam časovačov bol vyčistený"
-
-msgid "TimerList has been saved"
-msgstr "Zoznam časovačov bol uložený"
-
-msgid "No event found! Not recording!"
-msgstr "Nenájdená žiadna relácia! Nenahráva sa!"
-
-msgid "Instant record for current Event started"
-msgstr "Okamžitý záznam aktuálnej relácie začal"
-
-msgid "Infinite Instant recording started"
-msgstr "Nekonečné okamžité nahrávanie začalo"
-
-msgid "Timer conflict detected! Not recording!"
-msgstr "Bol zistený konflikt časovača! Nenahráva sa!"
-
-msgid "Missing requesteter: sRef"
-msgstr "Chýba žiadateľ: sRef"
-
-msgid "Unknown command: '%s'"
-msgstr "Neznámy príkaz: '%s'"
-
-msgid "PowerTimer feature not available"
-msgstr "Časovač napájania nie je k dispozícii"
-
-msgid "Sleeptimer is enabled"
-msgstr "Časovač uspania je povolený"
-
-msgid "Sleeptimer is disabled"
-msgstr "Časovač uspania je vypnutý"
-
-msgid "SleepTimer feature not available"
-msgstr "Časovač vypnutia nie je k dispozícii"
-
-msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr ""
-"Chyba: Nie je možné nastaviť automatické vypnutie, keď zariadenie je v "
-"pohotovostnom režime"
-
-msgid "Sleeptimer has been disabled"
-msgstr "Časovač uspania bol vypnutý"
-
-msgid "Sleeptimer set to %d minutes"
-msgstr "Časovač uspania nastavený na %d minút"
-
-msgid "Safe mode"
-msgstr "Bezpečný režim"
-
-msgid "Close"
-msgstr "Zatvoriť"
-
-msgid "Open in new window"
-msgstr "Otvoriť v novom okne"
-
-msgid "Include description"
-msgstr "Zahrnúť popis"
+#~ msgid "SleepTimer feature not available"
+#~ msgstr "Časovač vypnutia nie je k dispozícii"
