@@ -196,12 +196,13 @@ def getMovieList(directory=None, tag=None, rargs=None, locations=None):
 				if ext == '' and txtdesc != '':
 					ext = txtdesc
 
+				desc = info.getInfoString(serviceref, iServiceInformation.sDescription)
 				servicename = ServiceReference(serviceref).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
 				movie = {}
 				movie['filename'] = filename
 				movie['filename_stripped'] = filename.split("/")[-1]
 				movie['eventname'] = servicename
-				movie['description'] = info.getInfoString(serviceref, iServiceInformation.sDescription)
+				movie['description'] = unicode(desc,'utf_8', errors='ignore').encode('utf_8', 'ignore')
 				movie['begintime'] = begin_string
 				movie['serviceref'] = serviceref.toString()
 				movie['length'] = Len
@@ -212,7 +213,7 @@ def getMovieList(directory=None, tag=None, rargs=None, locations=None):
 				except:
 					movie['filesize'] = 0
 				movie['fullname'] = serviceref.toString()
-				movie['descriptionExtended'] = ext
+				movie['descriptionExtended'] = unicode(ext,'utf_8', errors='ignore').encode('utf_8', 'ignore')
 				movie['servicename'] = sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
 				movie['recordingtime'] = rtime
 				movie['lastseen'] = pos

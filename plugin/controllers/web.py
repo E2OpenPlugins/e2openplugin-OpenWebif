@@ -328,6 +328,7 @@ class WebController(BaseController):
 		return getMovieList(dirname, tag, request.args)
 	
 	def P_fullmovielist(self, request):
+		self.isGZ=True
 		return getAllMovies()
 
 	def P_movielisthtml(self, request):
