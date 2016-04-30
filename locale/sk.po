@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 07:17+0200\n"
+"POT-Creation-Date: 2016-04-28 14:20+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Nicker <nickersk@gmail.com>\n"
 "Language-Team: \n"
@@ -11,9 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7\n"
-"X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Poedit-SearchPath-0: ../plugin\n"
 
 #, python-format
 msgid "Missing mandatory parameter '%s'"
@@ -354,7 +352,7 @@ msgid "Sleeptimer set to %d minutes"
 msgstr "Časovač uspania nastavený na %d minút"
 
 msgid "SleepTimer Error"
-msgstr "Chyba časovača vypnutia"
+msgstr "Sleeptimer chyba"
 
 msgid "Error parsing vps.xml"
 msgstr "Chyba pri analýze vps.xml"
@@ -390,13 +388,13 @@ msgid "OpenWebInterface Enabled"
 msgstr "OpenWebInterface zapnuté"
 
 msgid "Show box name in header"
-msgstr "Zobraziť názov prijímača v hlavičke"
+msgstr "Zobraziť názov prijímača v záhlaví"
 
 msgid "Use custom box name"
 msgstr "Použiť vlastný názov prijímača"
 
 msgid "Custom box name"
-msgstr "Vlastný názov prímača"
+msgstr "Vlastný názov prijímača"
 
 msgid "HTTP port"
 msgstr "HTTP port"
@@ -420,13 +418,13 @@ msgid "Enable Authentication for streaming"
 msgstr "Zapnúť overovanie pre streaming"
 
 msgid "Disable access for user root"
-msgstr "Zakázat prístup pre uživatela root"
+msgstr "Zakázať prístup pre užívateľa root"
 
 msgid "Smart services renaming for XBMC"
 msgstr "Inteligentné premenovanie staníc pre XBMC"
 
 msgid "Enable Parental Control"
-msgstr "Zapnúť rodičovskú zámku"
+msgstr "Zapnúť rodičovskú kontrolu"
 
 msgid "Add service name to stream information"
 msgstr "Pridať názov služby do informácie o prúde"
@@ -576,7 +574,7 @@ msgid "BER"
 msgstr "BER"
 
 msgid "Bouquets"
-msgstr "Bukety"
+msgstr "Prehľady"
 
 msgid "Box Info"
 msgstr "O prijímači"
@@ -594,7 +592,7 @@ msgid "Brand"
 msgstr "Značka"
 
 msgid "Capacity"
-msgstr "Kapacita:"
+msgstr "Kapacita"
 
 msgid "Channel"
 msgstr "Stanica"
@@ -723,10 +721,10 @@ msgid "Frontprocessor Version"
 msgstr "Verzia frontprocesora"
 
 msgid "Free"
-msgstr "Voľných:"
+msgstr "Voľných"
 
 msgid "Free Memory"
-msgstr "Voľná pamäť:"
+msgstr "Voľná pamäť"
 
 msgid "Gateway"
 msgstr "Brána"
@@ -888,7 +886,7 @@ msgid "Repeated"
 msgstr "Opakované"
 
 msgid "Restart GUI"
-msgstr "Reštartovať užívateľské rozhranie"
+msgstr "Reštartovať GUI"
 
 msgid "running"
 msgstr "prebieha..."
@@ -960,7 +958,7 @@ msgid "Standby"
 msgstr "Pohotovostný režim"
 
 msgid "Standby Toggle"
-msgstr "Prepnúť pohotovostný režim"
+msgstr "Pohotovostný režim"
 
 msgid "Start time is after end time"
 msgstr "Čas ukončenia sa nachádza pred časom začatia"
@@ -1027,6 +1025,15 @@ msgstr "transkódované"
 
 msgid "Transcode"
 msgstr "Transkódovanie"
+
+msgid "Transcoding Setup"
+msgstr "Transkódovanie"
+
+msgid "True"
+msgstr "Áno"
+
+msgid "False"
+msgstr "Nie"
 
 msgid "Tuner Bit Error Rate BER"
 msgstr "Tuner Bit Error Rate BER"
@@ -1236,10 +1243,10 @@ msgid "do nothing"
 msgstr "žiadna akcia"
 
 msgid "go to standby"
-msgstr "do pohotov. režimu"
+msgstr "prejsť do pohotovostného režimu"
 
 msgid "go to deep standby"
-msgstr "do hlbokého spánku"
+msgstr "prejsť do režimu hlbokého spánku"
 
 msgid "Execute \"after event\" during timespan"
 msgstr "Spustiť \"po udalosti\" počas časového rozpätie"
@@ -1402,7 +1409,7 @@ msgid "Enable Messages"
 msgstr "Povoliť správy"
 
 msgid "Delay Standby"
-msgstr "Oneskoriť poh. režim"
+msgstr "Oneskorenie pohotovostného režimu"
 
 msgid "Interval (min.)"
 msgstr "Interval (min.)"
