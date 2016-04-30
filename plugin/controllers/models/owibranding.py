@@ -183,6 +183,9 @@ def getAllInfo():
 		if procmodel.startswith("et"):
 			brand = "Xtrend"
 			model = procmodel.upper()
+		elif procmodel.startswith("xpeed"):
+			brand = "Golden Interstar"
+			model = procmodel
 		elif procmodel.startswith("xp"):
 			brand = "MaxDigital"
 			model = procmodel
