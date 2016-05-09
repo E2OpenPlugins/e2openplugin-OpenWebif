@@ -113,6 +113,7 @@ var reloadTimers = false;
 \$(".bq").click(function() {
 	var id = \$(this).attr("js:ref");
 	\$("#tvcontent").html(loadspinner).load('../ajax/multiepg2?reloadtimer=0&bref='+id);
+	if(typeof(Storage) !== "undefined") { localStorage.lastmbq = id; }
 });
 \$(".event").click(function() {
 	var id = \$(this).attr("js:id");
