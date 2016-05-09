@@ -1130,11 +1130,19 @@ function InitBouquets(tv)
 {
 	var mode="";
 	if (tv===true) {
+	
 		$('#btn0').click(function(){
 			$("#tvcontent").html(loadspinner).load("ajax/current");
 		});
 		$('#btn5').click(function(){
-			$("#tvcontent").html(loadspinner).load('ajax/multiepg');
+			var bq="";
+			if(typeof(Storage) !== "undefined") {
+				if(localStorage.lastmbq)
+				{
+					bq= "?bref=" + localStorage.lastmbq;
+				}
+			}
+			$("#tvcontent").html(loadspinner).load('ajax/multiepg' + bq);
 		});
 
 	} 

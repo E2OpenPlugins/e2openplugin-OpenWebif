@@ -78,15 +78,16 @@
 var picons = $dumps($picons);
 var reloadTimers = false;
 \$(".bq").click(function() {
-    var id = \$(this).attr("js:ref");
-    \$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref='+id);
+	var id = \$(this).attr("js:ref");
+	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref='+id);
+	if(typeof(Storage) !== "undefined") { localStorage.lastmbq = id; }
 });
 \$(".event").click(function() {
-    var id = \$(this).attr("js:id");
-    var ref = \$(this).attr("js:ref");
-    \$("#eventdescription").load('ajax/event?idev='+id+'&sref='+escape(ref), function() { 
+	var id = \$(this).attr("js:id");
+	var ref = \$(this).attr("js:ref");
+	\$("#eventdescription").load('ajax/event?idev='+id+'&sref='+escape(ref), function() { 
 		\$("#eventdescription").show(200).draggable( { handle: ".handle" } );
-    });
+	});
 });
 \$(".plus").click(function() {
 	var day = \$(this).attr("js:day");
