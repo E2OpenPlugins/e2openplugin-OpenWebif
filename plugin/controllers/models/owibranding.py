@@ -252,7 +252,7 @@ def getAllInfo():
 		elif procmodel == "wetekplay":
 			brand = "WeTeK"
 			model = procmodel
-		elif procmodel == "osmini":
+		elif procmodel.startswith("osmini"):
 			brand = "Edision"
 			model = procmodel
 	elif fileExists("/proc/stb/info/model"):
@@ -386,8 +386,8 @@ def getAllInfo():
 		remote = "dmm2"
 	elif procmodel == "wetekplay":
 		remote = procmodel
-	elif procmodel == "osmini":
-		remote = procmodel
+	elif procmodel.startswith("osmini"):
+		remote = "osmini"
 
 	info['remote'] = remote
 
