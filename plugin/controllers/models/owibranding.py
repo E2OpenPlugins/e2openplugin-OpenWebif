@@ -252,6 +252,12 @@ def getAllInfo():
 				model = "Spark 7162"
 			else:
 				model = "Spark"
+                elif procmodel == "spycat":
+                        brand = "Spycat"
+                        model = "spycat"
+                elif procmodel == "spycatmini":
+                        brand = "Spycat"
+                        model = "spycatmini"
 		elif procmodel == "wetekplay":
 			brand = "WeTeK"
 			model = procmodel
@@ -379,6 +385,8 @@ def getAllInfo():
 		remote = "hd1x00"
 	elif procmodel == "hd2400":
 		remote = "hd2400"
+        elif procmodel in ("spycat", "spycatmini"):
+                remote = "spycat"
 	elif procmodel.startswith("ixuss"):
 		remote = procmodel.replace(" ", "")
 	elif procmodel == "vg2000":
