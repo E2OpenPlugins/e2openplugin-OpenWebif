@@ -399,6 +399,10 @@ def getAllInfo():
 		remote = procmodel
 	elif procmodel.startswith("osmini"):
 		remote = "osmini"
+	elif procmodel in ("fusionhd"):
+		remote = procmodel
+	elif procmodel in ("fusionhdse"):
+		remote = procmodel
 
 	info['remote'] = remote
 
