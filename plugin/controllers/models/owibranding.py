@@ -405,7 +405,7 @@ def getAllInfo():
 		remote = procmodel
 	elif procmodel in ("fusionhdse"):
 		remote = procmodel
-        elif procmodel in ("fusionhdse"):
+        elif procmodel in ("purehd"):
                 remote = procmodel
 
 	info['remote'] = remote
