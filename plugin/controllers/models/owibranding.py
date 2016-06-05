@@ -135,11 +135,11 @@ def getAllInfo():
 		elif (procmodel.startswith("fusion") or procmodel.startswith("purehd")):
 			brand = "Xsarius"
 			if procmodel == "fusionhd":
-			model = procmodel.replace("fusionhd", "Fusion HD")
+				model = procmodel.replace("fusionhd", "Fusion HD")
 			elif procmodel == "fusionhdse":
-			model = procmodel.replace("fusionhdse", "Fusion HD SE")
+				model = procmodel.replace("fusionhdse", "Fusion HD SE")
 			elif procmodel == "purehd":
-			model = procmodel.replace("purehd", "PureHD")
+				model = procmodel.replace("purehd", "PureHD")
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBox"
 		f = open("/proc/stb/info/model",'r') # To-Do: Check if "model" is really correct ...
@@ -239,9 +239,9 @@ def getAllInfo():
 		elif procmodel == "hd1200":
 			brand = "Mut@nt"
 			model = "hd1200"
-                elif procmodel == "hd1265":
-                        brand = "Mut@nt"
-                        model = "hd1265"
+		elif procmodel == "hd1265":
+			brand = "Mut@nt"
+			model = "hd1265"
 		elif procmodel == "hd2400":
 			brand = "Mut@nt"
 			model = "hd2400"
@@ -254,12 +254,12 @@ def getAllInfo():
 				model = "Spark 7162"
 			else:
 				model = "Spark"
-                elif procmodel == "spycat":
-                        brand = "Spycat"
-                        model = "spycat"
-                elif procmodel == "spycatmini":
-                        brand = "Spycat"
-                        model = "spycatmini"
+		elif procmodel == "spycat":
+			brand = "Spycat"
+			model = "spycat"
+		elif procmodel == "spycatmini":
+			brand = "Spycat"
+			model = "spycatmini"
 		elif procmodel == "wetekplay":
 			brand = "WeTeK"
 			model = procmodel
@@ -387,8 +387,8 @@ def getAllInfo():
 		remote = "hd1x00"
 	elif procmodel == "hd2400":
 		remote = "hd2400"
-        elif procmodel in ("spycat", "spycatmini"):
-                remote = "spycat"
+	elif procmodel in ("spycat", "spycatmini"):
+		remote = "spycat"
 	elif procmodel.startswith("ixuss"):
 		remote = procmodel.replace(" ", "")
 	elif procmodel == "vg2000":
@@ -405,8 +405,8 @@ def getAllInfo():
 		remote = procmodel
 	elif procmodel in ("fusionhdse"):
 		remote = procmodel
-        elif procmodel in ("purehd"):
-                remote = procmodel
+	elif procmodel in ("purehd"):
+		remote = procmodel
 
 	info['remote'] = remote
 
