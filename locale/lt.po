@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2016-04-30 15:06+0200\n"
-"PO-Revision-Date: 2016-04-30 20:14+0200\n"
+"POT-Creation-Date: 2016-06-15 14:05+0300\n"
+"PO-Revision-Date: 2016-06-15 14:48+0300\n"
 "Last-Translator: Vytenis Pulokas <vyteniui@gmail.com>\n"
 "Language-Team: Vytenis Pulokas <vyteniui@gmail.com>\n"
 "Language: lt_LT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.8\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
@@ -17,75 +17,77 @@ msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:82
 msgid "one two three four unknown command"
-msgstr ""
+msgstr "vienas du trys keturi nežinoma komanda"
 
 #: ../plugin/controllers/BouquetEditor.py:88
 #: ../plugin/controllers/BouquetEditor.py:149
 #: ../plugin/controllers/BouquetEditor.py:194
 msgid "No bouquet name given!"
-msgstr ""
+msgstr "Bukietui nesuteiktas pavadinimas!"
 
 #: ../plugin/controllers/BouquetEditor.py:118
 #, python-format
 msgid "Bouquet %s created."
-msgstr ""
+msgstr "Bukietas %s sukurtas."
 
 #: ../plugin/controllers/BouquetEditor.py:120
 msgid "Get mutable list for new created bouquet failed!"
-msgstr ""
+msgstr "Naujai sukurtas bukietas neįkeltas į kintamą sąrašą!"
 
 #: ../plugin/controllers/BouquetEditor.py:123
 #, python-format
 msgid "Bouquet %s already exists."
-msgstr ""
+msgstr "Bukietas %s jau yra."
 
 #: ../plugin/controllers/BouquetEditor.py:125
 #: ../plugin/controllers/BouquetEditor.py:435
 msgid "Bouquetlist is not editable!"
-msgstr ""
+msgstr "Bukietų sąrašas neredaguojamas!"
 
 #: ../plugin/controllers/BouquetEditor.py:127
 msgid "Multi-Bouquet is not enabled!"
-msgstr ""
+msgstr "Perėjimas tarp bukietų neįjungtas!"
 
 #: ../plugin/controllers/BouquetEditor.py:133
 msgid "No provider given!"
-msgstr ""
+msgstr "Nenurodytas tiekėjas!"
 
 #: ../plugin/controllers/BouquetEditor.py:180
 #, python-format
 msgid "Bouquet %s removed failed."
-msgstr ""
+msgstr "Bukieto %s pašalinti nepavyko."
 
 #: ../plugin/controllers/BouquetEditor.py:182
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
 msgstr ""
+"Bukieto %s pašalinti nepavyko, kanalo nuoroda, arba kintamas sąrašas "
+"neteisingi."
 
 #: ../plugin/controllers/BouquetEditor.py:186
 #, python-format
 msgid "Bouquet %s deleted."
-msgstr ""
+msgstr "Bukietas %s ištrintas."
 
 #: ../plugin/controllers/BouquetEditor.py:188
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
-msgstr ""
+msgstr "Klaida: Bukietas %s negali būti ištrintas, OS klaida."
 
 #: ../plugin/controllers/BouquetEditor.py:204
 #: ../plugin/controllers/BouquetEditor.py:261
 msgid "No position given!"
-msgstr ""
+msgstr "Nenurodyta padėtis!"
 
 #: ../plugin/controllers/BouquetEditor.py:211
 #, python-format
 msgid "Bouquet %s moved."
-msgstr ""
+msgstr "Bukietas %s perkeltas."
 
 #: ../plugin/controllers/BouquetEditor.py:213
 #, python-format
 msgid "Bouquet %s can not be moved."
-msgstr ""
+msgstr "Bukietas %s negali būti perkeltas."
 
 #: ../plugin/controllers/BouquetEditor.py:219
 #: ../plugin/controllers/BouquetEditor.py:249
@@ -93,7 +95,7 @@ msgstr ""
 #: ../plugin/controllers/BouquetEditor.py:309
 #: ../plugin/controllers/BouquetEditor.py:455
 msgid "No bouquet given!"
-msgstr ""
+msgstr "Nenurodytas bukietas!"
 
 #: ../plugin/controllers/BouquetEditor.py:225
 #: ../plugin/controllers/BouquetEditor.py:255
@@ -103,165 +105,165 @@ msgstr ""
 #: ../plugin/controllers/BouquetEditor.py:461
 #: ../plugin/controllers/BouquetEditor.py:498
 msgid "No service given!"
-msgstr ""
+msgstr "Nenurodytas kanalas!"
 
 #: ../plugin/controllers/BouquetEditor.py:234
 #, python-format
 msgid "Service %s removed."
-msgstr ""
+msgstr "Kanalas %s pašalintas."
 
 #: ../plugin/controllers/BouquetEditor.py:242
 #, python-format
 msgid "Service %s removed from bouquet %s."
-msgstr ""
+msgstr "Kanalas %s iš bukieto %s pašalintas."
 
 #: ../plugin/controllers/BouquetEditor.py:243
 #, python-format
 msgid "Service %s can not be removed."
-msgstr ""
+msgstr "Kanalas %s negali būti pašalintas."
 
 #: ../plugin/controllers/BouquetEditor.py:268
 #, python-format
 msgid "Service %s moved."
-msgstr ""
+msgstr "Kanalas %s perkeltas."
 
 #: ../plugin/controllers/BouquetEditor.py:269
 msgid "Service can not be moved."
-msgstr ""
+msgstr "Kanalas negali būti perkeltas."
 
 #: ../plugin/controllers/BouquetEditor.py:299
 #, python-format
 msgid "Service %s added."
-msgstr ""
+msgstr "Kanalas %s įtrauktas."
 
 #: ../plugin/controllers/BouquetEditor.py:302
 #, python-format
 msgid "Service %s already exists in bouquet %s."
-msgstr ""
+msgstr "Kanalas %s bukiete %s jau yra."
 
 #: ../plugin/controllers/BouquetEditor.py:303
 msgid "This service can not be added."
-msgstr ""
+msgstr "Kanalas negali būti įtrauktas."
 
 #: ../plugin/controllers/BouquetEditor.py:315
 msgid "No marker-name given!"
-msgstr ""
+msgstr "Žymekliui nesuteiktas pavadinimas!"
 
 #: ../plugin/controllers/BouquetEditor.py:329
 msgid "Marker added."
-msgstr ""
+msgstr "Žymeklis įtrauktas."
 
 #: ../plugin/controllers/BouquetEditor.py:331
 msgid "Internal error!"
-msgstr ""
+msgstr "Vidinė klaida!"
 
 #: ../plugin/controllers/BouquetEditor.py:345
 msgid "No new servicename given!"
-msgstr ""
+msgstr "Nenurodytas naujo kanalo pavadinimas!"
 
 #: ../plugin/controllers/BouquetEditor.py:369
 msgid "Bouquet renamed successfully."
-msgstr ""
+msgstr "Bukietas pervadintas sėkmingai."
 
 #: ../plugin/controllers/BouquetEditor.py:385
 msgid "Service renamed successfully."
-msgstr ""
+msgstr "Kanalas pervadintas sėkmingai."
 
 #: ../plugin/controllers/BouquetEditor.py:386
 msgid "Service can not be renamed."
-msgstr ""
+msgstr "Kanalas negali būti pervadintas."
 
 #: ../plugin/controllers/BouquetEditor.py:400
 msgid "No current service given!"
-msgstr ""
+msgstr "Nenurodytas konkrečiai šis kanalas!"
 
 #: ../plugin/controllers/BouquetEditor.py:431
 msgid "Get mutable list for new created alternative failed!"
-msgstr ""
+msgstr "Naujai sukurta alternatyva neįkelta į kintamą sąrašą!"
 
 #: ../plugin/controllers/BouquetEditor.py:433
 #, python-format
 msgid "Alternative %s created failed."
-msgstr ""
+msgstr "Alternatyvos %s sukurti nepavyko."
 
 #: ../plugin/controllers/BouquetEditor.py:447
 #, python-format
 msgid "Added %s to alternative service %s."
-msgstr ""
+msgstr "Įtraukta %s į alternatyvų kanalą %s ."
 
 #: ../plugin/controllers/BouquetEditor.py:478
 msgid "Service is not an alternative."
-msgstr ""
+msgstr "Šis kanalas nealternatyvus."
 
 #: ../plugin/controllers/BouquetEditor.py:486
 msgid "All alternative services deleted."
-msgstr ""
+msgstr "Visi alternatyvūs kanalai ištrinti."
 
 #: ../plugin/controllers/BouquetEditor.py:492
 msgid "Parent Control is not activated."
-msgstr ""
+msgstr "Tėvų kontrolė neįjungta."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "No Parent Control Setup Pin given!"
-msgstr ""
+msgstr "Tėvų kontrolės PIN kodas nenustatytas!"
 
 #: ../plugin/controllers/BouquetEditor.py:509
 #: ../plugin/controllers/BouquetEditor.py:511
 msgid "Parent Control Setup Pin is wrong!"
-msgstr ""
+msgstr "Neteisingas tėvų kontrolės PIN kodas!"
 
 #: ../plugin/controllers/BouquetEditor.py:526
 #, python-format
 msgid "Service %s is locked."
-msgstr ""
+msgstr "Kanalas %s užrakintas."
 
 #: ../plugin/controllers/BouquetEditor.py:528
 #, python-format
 msgid "Bouquet %s is locked."
-msgstr ""
+msgstr "Bukietas %s užrakintas."
 
 #: ../plugin/controllers/BouquetEditor.py:530
 #, python-format
 msgid "%s %s is locked."
-msgstr ""
+msgstr "%s %s užrakinta."
 
 #: ../plugin/controllers/BouquetEditor.py:534
 #, python-format
 msgid "Service %s is unlocked."
-msgstr ""
+msgstr "Kanalas %s atrakintas."
 
 #: ../plugin/controllers/BouquetEditor.py:536
 #, python-format
 msgid "Bouquet %s is unlocked."
-msgstr ""
+msgstr "Bukietas %s atrakintas."
 
 #: ../plugin/controllers/BouquetEditor.py:573
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
-msgstr ""
+msgstr "Klaida ruošiant atsarginės kopijos failą, %s nėra."
 
 #: ../plugin/controllers/BouquetEditor.py:579
 msgid "Error while preparing backup file."
-msgstr ""
+msgstr "Klaida ruošiant atsarginės kopijos failą."
 
 #: ../plugin/controllers/BouquetEditor.py:630
 msgid "Bouquet-settings were restored successfully"
-msgstr ""
+msgstr "Bukieto nustatymai atkurti sėkmingai"
 
 #: ../plugin/controllers/BouquetEditor.py:632
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
-msgstr ""
+msgstr "Klaida, internetiniu bukietų redaktoriumi %s nesukurtas..."
 
 #: ../plugin/controllers/BouquetEditor.py:634
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
-msgstr ""
+msgstr "Klaida, %s nėra, atkurti neįmanoma..."
 
 #: ../plugin/controllers/base.py:221 ../plugin/local.py:181
 #: ../plugin/local.py:325
 msgid "Settings"
-msgstr "Nuostatos"
+msgstr "Visos nuostatos"
 
 #: ../plugin/controllers/base.py:236
 msgid "LCD4Linux Setup"
@@ -289,7 +291,7 @@ msgstr "IPv4 vien tik Python/Mišrus"
 
 #: ../plugin/controllers/models/info.py:104 ../plugin/local.py:116
 msgid "none/IPv4-only network"
-msgstr "nėra / IPv4 vien tik tinklas"
+msgstr "nėra / tik IPv4 tinklas"
 
 #: ../plugin/controllers/models/message.py:33
 msgid "Message sent successfully!"
@@ -378,12 +380,12 @@ msgstr "Kriterijus atitinkančio laikmačio nerasta"
 #: ../plugin/controllers/models/timers.py:317
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
-msgstr ""
+msgstr "Laikmatis '%s' neįtrauktas dėl konflikto"
 
 #: ../plugin/controllers/models/timers.py:323
 #, python-format
 msgid "Timer '%s' already exists!"
-msgstr "Laikmatis \"%s\" jau yra!"
+msgstr "Laikmatis '%s' jau yra!"
 
 #: ../plugin/controllers/models/timers.py:329
 #, python-format
@@ -405,7 +407,7 @@ msgstr "Laikmačių sąrašas išsaugotas"
 
 #: ../plugin/controllers/models/timers.py:372
 msgid "No event found! Not recording!"
-msgstr "Įvykių nerasta! Nieko neįrašoma!"
+msgstr "Įvykių nerasta! Nebus įrašoma!"
 
 #: ../plugin/controllers/models/timers.py:378
 msgid "Instant record for current Event started"
@@ -417,7 +419,7 @@ msgstr "Pradėtas neapribotas neplaninis įrašymas"
 
 #: ../plugin/controllers/models/timers.py:406
 msgid "Timer conflict detected! Not recording!"
-msgstr "Laikmačių konfliktas! Nieko neįrašoma!"
+msgstr "Laikmačių konfliktas! Nebus įrašoma!"
 
 #: ../plugin/controllers/models/timers.py:480
 msgid "Missing requesteter: sRef"
@@ -440,12 +442,12 @@ msgstr "Budėjimo laikmatis įjungtas"
 #: ../plugin/controllers/models/timers.py:635
 #: ../plugin/controllers/models/timers.py:661
 msgid "Sleeptimer is disabled"
-msgstr "Budėjimo laikmatis išungtas"
+msgstr "Budėjimo laikmatis išjungtas"
 
 #: ../plugin/controllers/models/timers.py:640
 #: ../plugin/controllers/models/timers.py:667
 msgid "SleepTimer error"
-msgstr ""
+msgstr "Budėjimo laikmačio klaida"
 
 #: ../plugin/controllers/models/timers.py:679
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
@@ -457,7 +459,7 @@ msgstr ""
 #: ../plugin/controllers/models/timers.py:753
 #: ../plugin/controllers/models/timers.py:771
 msgid "Sleeptimer has been disabled"
-msgstr "Budėjimo laikmatis buvo išungtas"
+msgstr "Budėjimo laikmatis buvo išjungtas"
 
 #: ../plugin/controllers/models/timers.py:690
 #: ../plugin/controllers/models/timers.py:753
@@ -469,15 +471,15 @@ msgstr "Budėjimo laikmatis nustatytas %d minučių"
 #: ../plugin/controllers/models/timers.py:695
 #: ../plugin/controllers/models/timers.py:776
 msgid "SleepTimer Error"
-msgstr ""
+msgstr "Budėjimo laikmačio klaida"
 
 #: ../plugin/controllers/models/timers.py:804
 msgid "Error parsing vps.xml"
-msgstr ""
+msgstr "Klaida apdorojant vps.xml"
 
 #: ../plugin/controllers/models/timers.py:809
 msgid "VPS plugin not found"
-msgstr ""
+msgstr "VPS įskiepio nerasta"
 
 #: ../plugin/controllers/web.py:63
 #, python-format
@@ -501,7 +503,7 @@ msgstr "Nežinoma komanda %s"
 
 #: ../plugin/controllers/web.py:143
 msgid "The parameter 'command' must be a number"
-msgstr "Parametras 'komanda' turi būti skaičius"
+msgstr "Parametras 'komanda' turi būti skaitmuo"
 
 #: ../plugin/controllers/web.py:304
 #, python-format
@@ -642,7 +644,7 @@ msgstr "gruodžio"
 
 #: ../plugin/local.py:42
 msgid "About"
-msgstr "Apie"
+msgstr "Apie OpenWebif"
 
 #: ../plugin/local.py:43
 msgid "Add Timer"
@@ -686,7 +688,7 @@ msgstr "Atgal"
 
 #: ../plugin/local.py:53 ../plugin/local.py:352
 msgid "Begin"
-msgstr "Pradėti"
+msgstr "Pradžia"
 
 #: ../plugin/local.py:54
 msgid "BER"
@@ -698,7 +700,7 @@ msgstr "Bukietai"
 
 #: ../plugin/local.py:56
 msgid "Box Info"
-msgstr "Info apie TV imtuvą"
+msgstr "Aparato informacija"
 
 #: ../plugin/local.py:57
 msgid "Box"
@@ -754,11 +756,11 @@ msgstr "Valdymas"
 
 #: ../plugin/local.py:70
 msgid "Current"
-msgstr "Šis"
+msgstr "Dabartinis"
 
 #: ../plugin/local.py:71
 msgid "Current Event"
-msgstr "Šis įvykis"
+msgstr "Dabas rodoma"
 
 #: ../plugin/local.py:72
 msgid "Deep-Standby"
@@ -778,11 +780,11 @@ msgstr "Tikrai ištrinti įrašą"
 
 #: ../plugin/local.py:76
 msgid "Delete Movie"
-msgstr ""
+msgstr "Šalinti filmą"
 
 #: ../plugin/local.py:77
 msgid "Really delete the movie"
-msgstr ""
+msgstr "Tikrai pašalinti filmą"
 
 #: ../plugin/local.py:78
 msgid "Delete Timer"
@@ -850,7 +852,7 @@ msgstr "Pabaiga"
 
 #: ../plugin/local.py:94 ../plugin/local.py:252 ../plugin/local.py:350
 msgid "Enabled"
-msgstr "Įjungta"
+msgstr "Įjungtas"
 
 #: ../plugin/local.py:95
 msgid "Encrypted"
@@ -890,7 +892,7 @@ msgstr "Mikroprogramos versija"
 
 #: ../plugin/local.py:104
 msgid "Frontprocessor Version"
-msgstr "Frontprocessor versija"
+msgstr "Sąsajos procesoriaus versija"
 
 #: ../plugin/local.py:105
 msgid "Free"
@@ -906,11 +908,11 @@ msgstr "Šliuzas"
 
 #: ../plugin/local.py:108
 msgid "Grab Screenshot"
-msgstr "Padaryti ekrano nuotrauką"
+msgstr "Ekrano nuotrauka"
 
 #: ../plugin/local.py:109
 msgid "Gui version"
-msgstr "Versija su grafine aplinka"
+msgstr "Grafinės aplinkos versija"
 
 #: ../plugin/local.py:110
 msgid "Hide full remote"
@@ -922,7 +924,7 @@ msgstr "Didelės raiškos"
 
 #: ../plugin/local.py:112
 msgid "Hard disk model"
-msgstr "Standžiojo disko modelis"
+msgstr "HDD modelis"
 
 #: ../plugin/local.py:113
 msgid "Hour"
@@ -938,11 +940,11 @@ msgstr "IPv6 adresas(ai)"
 
 #: ../plugin/local.py:119
 msgid "Infos"
-msgstr "Informacijos"
+msgstr "Informacija"
 
 #: ../plugin/local.py:120
 msgid "Instant Record"
-msgstr "Įrašymas nedelsiant"
+msgstr "Neplaninis įrašymas"
 
 #: ../plugin/local.py:121
 msgid "Javascript Libraries"
@@ -950,7 +952,7 @@ msgstr "Javascript bibliotekos"
 
 #: ../plugin/local.py:122
 msgid "Just play"
-msgstr "Tiesiog paleisti"
+msgstr "Tiesiog įjungti"
 
 #: ../plugin/local.py:123
 msgid "Kernel version"
@@ -1022,7 +1024,7 @@ msgstr "Atsiprašome, šis puslapis dar neužbaigtas"
 
 #: ../plugin/local.py:140
 msgid "Nothing"
-msgstr "Nieko"
+msgstr "Jokios."
 
 #: ../plugin/local.py:141
 msgid "Nothing playing."
@@ -1042,19 +1044,19 @@ msgstr "Įjungta"
 
 #: ../plugin/local.py:145
 msgid "Open Source Web Interface for Linux set-top box"
-msgstr "Atviro kodo Web sąsaja, skirta Linux TV imtuvams"
+msgstr "Atviro kodo Web sąsaja Linux TV imtuvams valdyti"
 
 #: ../plugin/local.py:146 ../plugin/plugin.py:110
 msgid "Show box name in header"
-msgstr "Rodyti TV imtuvo pavadinimą antraštėje"
+msgstr "Antraštėje rodyti TV imtuvo pavadinimą"
 
 #: ../plugin/local.py:147 ../plugin/plugin.py:112
 msgid "Use custom box name"
-msgstr "Naudoti esamą TV imtuvo pavadinimą"
+msgstr "Naudoti savą TV imtuvo pavadinimą"
 
 #: ../plugin/local.py:148 ../plugin/plugin.py:114
 msgid "Custom box name"
-msgstr "Esamas TV imtuvo pavadinimas"
+msgstr "Savas TV imtuvo pavadinimas"
 
 #: ../plugin/local.py:149
 msgid "OSD"
@@ -1086,11 +1088,11 @@ msgstr "Tiekėjai"
 
 #: ../plugin/local.py:156
 msgid "Radio"
-msgstr "Radijas"
+msgstr "TV / Radijas"
 
 #: ../plugin/local.py:157
 msgid "Reboot Box"
-msgstr "Paleisti TV imtuvą iš naujo"
+msgstr "Paleisti iš naujo"
 
 #: ../plugin/local.py:158
 msgid "Recording Status"
@@ -1114,15 +1116,15 @@ msgstr "Nuotolinis"
 
 #: ../plugin/local.py:163
 msgid "Rename Recording"
-msgstr "Pervardyti įrašą"
+msgstr "Pervadinti įrašą"
 
 #: ../plugin/local.py:164
 msgid "Really rename the recording"
-msgstr ""
+msgstr "Tikrai pervadinti įrašą"
 
 #: ../plugin/local.py:165
 msgid "Repeated"
-msgstr "Pakartotas"
+msgstr "Pakartotinas"
 
 #: ../plugin/local.py:166
 msgid "Restart GUI"
@@ -1179,7 +1181,7 @@ msgstr "Laukiama atsakymo..."
 
 #: ../plugin/local.py:179
 msgid "Send a Message"
-msgstr "Siųsti žinutę"
+msgstr "Siųsti žinutę į ekraną"
 
 #: ../plugin/local.py:180
 msgid "Service"
@@ -1227,7 +1229,7 @@ msgstr "Budėjimo režimas"
 
 #: ../plugin/local.py:192
 msgid "Standby Toggle"
-msgstr "Perjungti budėjimą į"
+msgstr "Į budėjimo būseną"
 
 #: ../plugin/local.py:193
 msgid "Start time is after end time"
@@ -1235,7 +1237,7 @@ msgstr "Pradžios laikas yra po pabaigos laiko"
 
 #: ../plugin/local.py:194
 msgid "Start Instant Record"
-msgstr "Pradėti įrašymą nedelsiant"
+msgstr "Pradėti neplaninį įrašymą"
 
 #: ../plugin/local.py:195
 msgid "Stream"
@@ -1247,7 +1249,7 @@ msgstr "Potinklio kaukė"
 
 #: ../plugin/local.py:197
 msgid "Subservices"
-msgstr "Subpaslaugos"
+msgstr "Subkanalai"
 
 #: ../plugin/local.py:198 ../plugin/local.py:303
 msgid "Tags"
@@ -1275,7 +1277,7 @@ msgstr "Laikas"
 
 #: ../plugin/local.py:204
 msgid "Timeout"
-msgstr "Laikas pradelstas"
+msgstr "Intervalas"
 
 #: ../plugin/local.py:205
 msgid "Timer added"
@@ -1315,11 +1317,11 @@ msgstr "perkoduota"
 
 #: ../plugin/local.py:214
 msgid "Transcode"
-msgstr ""
+msgstr "Perkoduoti"
 
 #: ../plugin/local.py:215
 msgid "Tuner Bit Error Rate BER"
-msgstr "Imtuvo klaidingų bitų santykis BER"
+msgstr "Imtuvo klaidingų bitų santykis (BER)"
 
 #: ../plugin/local.py:216
 msgid "Tuner Number (0-3)"
@@ -1355,7 +1357,7 @@ msgstr "TV"
 
 #: ../plugin/local.py:224
 msgid "TV Multi EPG"
-msgstr "TV MultiEPG"
+msgstr "Daugiakanalis TV EPG"
 
 #: ../plugin/local.py:225
 msgid "Type"
@@ -1407,7 +1409,7 @@ msgstr "Dėmesio"
 
 #: ../plugin/local.py:237
 msgid "Yes/No"
-msgstr "Taip/Ne"
+msgstr "Taip / Ne"
 
 #: ../plugin/local.py:238
 msgid "Zap"
@@ -1427,7 +1429,7 @@ msgstr "Perjungta į"
 
 #: ../plugin/local.py:242
 msgid "Translation to Spanish"
-msgstr "Vertimas į ispanų"
+msgstr "Vertimas į ispanų kalbą"
 
 #: ../plugin/local.py:243
 msgid "All Files of this Software are open source software;"
@@ -1443,7 +1445,7 @@ msgstr "GNU Bendrosios viešosios licencijos sąlygas v.2, kaip"
 
 #: ../plugin/local.py:246
 msgid "published by the Free Software Foundation."
-msgstr "paviešinta Free Software Foundation."
+msgstr "paviešinta 'Free Software Foundation'."
 
 #: ../plugin/local.py:247
 msgid ""
@@ -1453,11 +1455,11 @@ msgid ""
 msgstr ""
 "Visi šios programinės įrangos failai yra atviro kodo; jūs galite platinti ir/"
 "ar modifikuoti pagal GNU Bendrosios viešosios licencijos sąlygas v.2, kaip "
-"paviešinta Free Software Foundation."
+"paviešinta 'Free Software Foundation'."
 
 #: ../plugin/local.py:248
 msgid "Root"
-msgstr "Šakninis"
+msgstr "Pradinis"
 
 #: ../plugin/local.py:250
 msgid "AutoTimer List"
@@ -1473,7 +1475,7 @@ msgstr "Pavadinimas atitiks"
 
 #: ../plugin/local.py:255
 msgid "EPG encoding"
-msgstr "EPG kodavimas"
+msgstr "EPG koduotė"
 
 #: ../plugin/local.py:256
 msgid "Search type"
@@ -1573,7 +1575,7 @@ msgstr "Intarpas po įrašymo (min.)"
 
 #: ../plugin/local.py:280
 msgid "Set maximum duration"
-msgstr "Nustatyti maksimalią trukmę"
+msgstr "Nustatyti didžiausią trukmę"
 
 #: ../plugin/local.py:281
 msgid "After event"
@@ -1637,7 +1639,7 @@ msgstr "Kas savaitę (pirmadienis)"
 
 #: ../plugin/local.py:296
 msgid "Reset count"
-msgstr "Išvalyti skaitklį"
+msgstr "Išvalyti skaitiklį"
 
 #: ../plugin/local.py:297
 msgid "Require description to be unique"
@@ -1757,7 +1759,7 @@ msgstr "Maks. dienų"
 
 #: ../plugin/local.py:333
 msgid "Try Guessing"
-msgstr "Pabandykite atspėti"
+msgstr "Bandyti atspėti"
 
 #: ../plugin/local.py:334
 msgid "Fastscan"
@@ -1765,19 +1767,19 @@ msgstr "Greitas skenavimas"
 
 #: ../plugin/local.py:335
 msgid "Show in Extensionsmenu"
-msgstr "﻿Rodyti plėtinių meniu"
+msgstr "Rodyti tarp plėtinių meniu"
 
 #: ../plugin/local.py:336
 msgid "Disabled on Conflict"
-msgstr "Išjungtas, jei konfliktas"
+msgstr "Konflikto atveju išjungta"
 
 #: ../plugin/local.py:337
 msgid "Add Similar on Conflict"
-msgstr "Įtraukti panašų, jei konfliktas"
+msgstr "Konflikto atveju, pridėti panašų"
 
 #: ../plugin/local.py:338
 msgid "Notify if Conflict"
-msgstr "Pranešti, jei konfliktas"
+msgstr "Pranešti apie konfliktą"
 
 #: ../plugin/local.py:339
 msgid "Notify if Similar"
@@ -1877,7 +1879,7 @@ msgstr "Vaizdas vaizde (paslėptas)"
 
 #: ../plugin/local.py:371
 msgid "Fake Recording"
-msgstr "Netikras įrašymas"
+msgstr "Pseudo įrašymas"
 
 #: ../plugin/local.py:374
 msgid "Refresh now"
@@ -1909,7 +1911,7 @@ msgstr "Pridėti bukietą"
 
 #: ../plugin/local.py:384
 msgid "Rename Bouquet"
-msgstr "Pervardyti bukietą"
+msgstr "Pervadinti bukietą"
 
 #: ../plugin/local.py:385
 msgid "Delete Bouquet"
@@ -1921,7 +1923,7 @@ msgstr "Pridėti žymeklį"
 
 #: ../plugin/local.py:387
 msgid "Rename"
-msgstr "Pervardinti"
+msgstr "Pervadinti"
 
 #: ../plugin/local.py:388
 msgid "Delete Channel(s)"
@@ -2001,7 +2003,7 @@ msgstr "Uždrausti 'root' vartotojo prieigą"
 
 #: ../plugin/plugin.py:125
 msgid "Smart services renaming for XBMC"
-msgstr "XBMC (Kodi) tarnybų pervardijimas"
+msgstr "XBMC (Kodi) tarnybų pervadinimas"
 
 #: ../plugin/plugin.py:126
 msgid "Enable Parental Control"
@@ -2013,18 +2015,24 @@ msgstr "Į transliacijos informaciją įtraukti kanalo pavadinimą"
 
 #: ../plugin/plugin.py:129
 msgid "Character encoding for EPG data"
-msgstr "EPG naudojamų rašmenų koduotė"
+msgstr "EPG naudojamų šriftų koduotė"
 
 #: ../plugin/plugin.py:135 ../plugin/plugin.py:194 ../plugin/plugin.py:196
 #: ../plugin/plugin.py:198
 msgid "OpenWebif Configuration"
 msgstr "OpenWebif konfigūravimas"
 
-#~ msgid "VPS Overwrite"
-#~ msgstr "Perrašyti VPS"
+#~ msgid "False"
+#~ msgstr "Ne"
+
+#~ msgid "Record+ZAP:"
+#~ msgstr "Įjungti kanalą ir įrašymą:"
 
 #~ msgid "SleepTimer feature not available"
 #~ msgstr "Budėjimo laikmačio funkcija negalima"
 
 #~ msgid "Timer List"
 #~ msgstr "Laikmačių sąrašas"
+
+#~ msgid "VPS Overwrite"
+#~ msgstr "Perrašyti VPS"
