@@ -197,6 +197,9 @@ def getAllInfo():
 		elif procmodel.startswith("formuler"):
 			brand = "Formuler"
 			model = procmodel.replace("formuler","")
+		elif procmodel.startswith("g300"):
+			brand = "Miraclebox"
+			model = "Premiun twin+"
 		elif procmodel.startswith("ini"):
 			if procmodel.endswith("9000ru"):
  				brand = "Sezam"
