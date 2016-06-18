@@ -1323,8 +1323,8 @@ msgid "Tuner Bit Error Rate BER"
 msgstr "Ρυθμός Σφαλμάτων Tuner BER"
 
 #: ../plugin/local.py:216
-msgid "Tuner Number (0-3)"
-msgstr "Αριθμός Tuner (0-3)"
+msgid "Tuner Number"
+msgstr "Αριθμός Tuner"
 
 #: ../plugin/local.py:217
 msgid "Tuner Signal"

@@ -13,6 +13,7 @@ from Tools.Directories import fileExists
 from Components.Sources.ServiceList import ServiceList
 from Components.ParentalControl import parentalControl
 from Components.config import config
+from Components.NimManager import nimmanager
 from ServiceReference import ServiceReference
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache, getBestPlayableServiceReference
@@ -86,6 +87,8 @@ def getCurrentFullInfo(session):
 	now = next = {}
 
 	inf = getCurrentService(session)
+        
+        inf['tuners'] = list(map(chr, range(65,65+nimmanager.getSlotCount()))) 
 
 	try:
 		info = session.nav.getCurrentService().info()

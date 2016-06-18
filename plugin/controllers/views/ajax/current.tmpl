@@ -1,8 +1,7 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
 <!-- OSD -->
 <style>
-.ia,.ib,.id{float:left;position:relative;margin:0 0 3px 3px;height:26px;}
-.ia{width:22px;background-image:url(/images/osd/icon_axd.png);}
+.ib,.id{float:left;position:relative;margin:0 0 3px 3px;height:26px;}
 .id{width:64px;background-image:url(/images/osd/icon_64x26.png);}
 .ib{width:44px;background-image:url(/images/osd/icon_44x26.png);}
 .iconadl{float:left;position:relative;top:6px;left:15px;height:26px;color:#FFF;font-size:14px;}
@@ -13,6 +12,8 @@ tr {background-color:#f0f7fc;}
 .dh24 { float:left;height:24px;}
 .dh20 { float:left;height:20px;}
 .dh14 { float:left;height:14px;}
+.not-current,.is-current{font-size:16px;font-weight:bold;color:#eee;}
+.is-current{color:#f90;}
 </style>
 <div style="width:680px;height:137px;background-image:url(images/osd/osd_back.png);">
 	<div style="float:left;width:120px;height:137px;">
@@ -76,26 +77,18 @@ tr {background-color:#f0f7fc;}
 				<div class='d14' style="top:6px;">$info.width x $info.height</div>
 			</div>
 		</div>
-		<div style="float:left;width:560px;height:60px;">
-			<div style="float:left;width:110px;height:26px;">
-				<div class="iconadl">
-#set $ta = '26px'
-#set $tb = '26px'
-#set $tc = '26px'
-#set $td = '26px'
-#if $info.tunernumber == 0
-#set $ta = '0px'
-#else if $info.tunernumber == 1
-#set $tb = '0px'
-#else if $info.tunernumber == 2
-#set $tc = '0px'
-#else if $info.tunernumber == 3
-#set $td = '0px'
-#end if
-					<div class="ia" style="background-position: 0px -$ta"></div>
-					<div class="ia" style="background-position: -22px -$tb"></div>
-					<div class="ia" style="background-position: -44px -$tc"></div>
-					<div class="ia" style="background-position: -66px -$td"></div>
+		<div style="float:left;width:560px;height:60px">
+			<div style="float:left;width:auto;height:26px;padding-top:8px">
+				<div>
+#set $tnum = 0
+#for $tuner in $info.tuners
+    #if $info.tunernumber == $tnum
+    <span class="is-current">$tuner</span>
+    #else
+    <span class="not-current">$tuner</span>
+    #end if
+    #set $tnum = $tnum + 1
+#end for
 				</div>
 			</div>
 			<div style="float:left;width:400px;height:32px;">
@@ -180,7 +173,7 @@ tr {background-color:#f0f7fc;}
 	</tr>
 	<tr>
 		<td>Sref: $info.sref</td>
-		<td>$info.srefv2</td>
+		<td>$getVar("info.srefv2", "")</td>
 		<td>&nbsp;</td>
 	</tr>
 	<tr style="background-color:initial;" >
