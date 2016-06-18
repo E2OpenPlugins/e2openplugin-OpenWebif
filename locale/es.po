@@ -1324,8 +1324,8 @@ msgid "Tuner Bit Error Rate BER"
 msgstr "Bit de Tasa de Error del sintonizador BER"
 
 #: ../plugin/local.py:216
-msgid "Tuner Number (0-3)"
-msgstr "Numero de Sintonizador (0-3)"
+msgid "Tuner Number"
+msgstr "Numero de Sintonizador"
 
 #: ../plugin/local.py:217
 msgid "Tuner Signal"

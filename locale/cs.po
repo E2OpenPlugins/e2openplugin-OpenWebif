@@ -1319,8 +1319,8 @@ msgid "Tuner Bit Error Rate BER"
 msgstr "Bitová chyba signálu BER"
 
 #: ../plugin/local.py:216
-msgid "Tuner Number (0-3)"
-msgstr "Čislo tuneru (-)"
+msgid "Tuner Number"
+msgstr "Čislo tuneru"
 
 #: ../plugin/local.py:217
 msgid "Tuner Signal"
