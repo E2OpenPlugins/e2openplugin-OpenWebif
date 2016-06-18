@@ -85,10 +85,8 @@ def getCurrentService(session):
 
 def getCurrentFullInfo(session):
 	now = next = {}
-
 	inf = getCurrentService(session)
-        
-        inf['tuners'] = list(map(chr, range(65,65+nimmanager.getSlotCount()))) 
+	inf['tuners'] = list(map(chr, range(65,65+nimmanager.getSlotCount()))) 
 
 	try:
 		info = session.nav.getCurrentService().info()
