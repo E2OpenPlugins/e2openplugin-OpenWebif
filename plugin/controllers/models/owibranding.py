@@ -269,6 +269,9 @@ def getAllInfo():
 		elif procmodel.startswith("osmini"):
 			brand = "Edision"
 			model = procmodel
+		elif procmodel == "h5":
+			brand = "Zgemma"
+			model = "H5"
 	elif fileExists("/proc/stb/info/model"):
 		f = open("/proc/stb/info/model",'r')
 		procmodel = f.readline().strip().lower()
@@ -409,6 +412,8 @@ def getAllInfo():
 	elif procmodel in ("fusionhdse"):
 		remote = procmodel
 	elif procmodel in ("purehd"):
+		remote = procmodel
+	elif procmodel in ("h5"):
 		remote = procmodel
 
 	info['remote'] = remote
