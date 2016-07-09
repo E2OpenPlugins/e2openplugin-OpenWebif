@@ -183,8 +183,12 @@ def getAllInfo():
 		procmodel = f.readline().strip().lower()
 		f.close()
 		if procmodel.startswith("et"):
-			brand = "Xtrend"
-			model = procmodel.upper()
+			if procmodel == "et7000mini":
+				brand = "Galaxy Innovations"
+				model = "ET-7000 Mini"
+			else:
+				brand = "Xtrend"
+				model = procmodel.upper()
 		elif procmodel.startswith("xpeed"):
 			brand = "Golden Interstar"
 			model = procmodel
@@ -272,6 +276,9 @@ def getAllInfo():
 		elif procmodel == "h5":
 			brand = "Zgemma"
 			model = "H5"
+		elif procmodel == "lc":
+			brand = "Zgemma"
+			model = "LC"
 	elif fileExists("/proc/stb/info/model"):
 		f = open("/proc/stb/info/model",'r')
 		procmodel = f.readline().strip().lower()
@@ -359,6 +366,8 @@ def getAllInfo():
 		remote = "et8000"
 	elif procmodel in ("et7x00", "et7000", "et7500"):
 		remote = "et7x00"
+	elif procmodel == "et7000mini":
+		remote = "et7000mini"
 	elif procmodel == "gbquad":
 		remote = "gigablue"
 	elif procmodel == "gbquadplus":
@@ -413,8 +422,8 @@ def getAllInfo():
 		remote = procmodel
 	elif procmodel in ("purehd"):
 		remote = procmodel
-	elif procmodel in ("h5"):
-		remote = procmodel
+	elif procmodel in ("h5", "lc"):
+		remote = "h5"
 
 	info['remote'] = remote
 
