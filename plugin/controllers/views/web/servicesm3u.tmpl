@@ -2,5 +2,6 @@
 #EXTVLCOPT--http-reconnect=true
 #for $service in $services
 #EXTINF:-1,$service.servicename
+#EXTVLCOPT:program=$service.program
 http://$host/$service.servicereference
 #end for
