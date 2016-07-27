@@ -583,6 +583,39 @@ def getBouquetEpg(ref, begintime=-1, endtime=None):
 
 	return { "events": ret, "result": True }
 
+def getServicesNowNextEpg(sList):
+	ret = []
+	if not sList:
+		return { "events": ret, "result": False }
+
+	sRefList = sList.split(",")
+	search = ['IBDCTSERNX']
+	for service in sRefList:
+		search.append((service, 0, -1))
+		search.append((service, 1, -1))
+
+	epgcache = eEPGCache.getInstance()
+	events = epgcache.lookupEvent(search)
+	if events is not None:
+		for event in events:
+			ev = {}
+			ev['id'] = event[0]
+			ev['begin_timestamp'] = event[1]
+			ev['duration_sec'] = event[2]
+			ev['title'] = event[4]
+			ev['shortdesc'] = event[5]
+			ev['longdesc'] = event[6]
+			#if event[7] is not None:
+			#	achannels = GetWithAlternative(event[7], False)
+			#	if achannels:
+			#		ev['asrefs'] = achannels
+			ev['sref'] = event[7]
+			ev['sname'] = filterName(event[8])
+			ev['now_timestamp'] = event[3]
+			ret.append(ev)
+
+	return { "events": ret, "result": True }
+
 def getBouquetNowNextEpg(ref, servicetype):
 	ref = unquote(ref)
 	ret = []

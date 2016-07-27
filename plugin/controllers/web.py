@@ -14,7 +14,7 @@ from Plugins.Extensions.OpenWebif.__init__ import _
 from Components.config import config
 
 from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStatus
-from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
+from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState, getStandbyState
@@ -767,6 +767,14 @@ class WebController(BaseController):
 		info = getCurrentService(self.session)
 		ret = getBouquetNowNextEpg(request.args["bRef"][0], -1)
 		ret["info"]=info
+		return ret
+
+	def P_epgservicelistnownext(self, request):
+		res = self.testMandatoryArguments(request, ["sList"])
+		if res:
+			return res
+		self.isGZ=True
+		ret = getServicesNowNextEpg(request.args["sList"][0])
 		return ret
 
 	def P_epgsearch(self, request):
