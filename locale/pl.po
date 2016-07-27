@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2016-04-30 15:06+0200\n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2016-06-27 12:12+0100\n"
 "Last-Translator: mickey <mickeyreg@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pl\n"
@@ -13,75 +13,75 @@ msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:82
 msgid "one two three four unknown command"
-msgstr ""
+msgstr "raz dwa trzy cztery, nieznane polecenie"
 
 #: ../plugin/controllers/BouquetEditor.py:88
 #: ../plugin/controllers/BouquetEditor.py:149
 #: ../plugin/controllers/BouquetEditor.py:194
 msgid "No bouquet name given!"
-msgstr ""
+msgstr "Nie podano nazwy bukietu!"
 
 #: ../plugin/controllers/BouquetEditor.py:118
 #, python-format
 msgid "Bouquet %s created."
-msgstr ""
+msgstr "Utworzono bukiet %s."
 
 #: ../plugin/controllers/BouquetEditor.py:120
 msgid "Get mutable list for new created bouquet failed!"
-msgstr ""
+msgstr "Uzyskanie listy wyboru dla nowo utworzonego bukietu zakończone niepowodzeniem!"
 
 #: ../plugin/controllers/BouquetEditor.py:123
 #, python-format
 msgid "Bouquet %s already exists."
-msgstr ""
+msgstr "Bukiet %s już istnieje."
 
 #: ../plugin/controllers/BouquetEditor.py:125
 #: ../plugin/controllers/BouquetEditor.py:435
 msgid "Bouquetlist is not editable!"
-msgstr ""
+msgstr "Nie można edytować listy bukietów!"
 
 #: ../plugin/controllers/BouquetEditor.py:127
 msgid "Multi-Bouquet is not enabled!"
-msgstr ""
+msgstr "Tryb multi-bukietów jest niedostępny!"
 
 #: ../plugin/controllers/BouquetEditor.py:133
 msgid "No provider given!"
-msgstr ""
+msgstr "Nie podano dostawcy!"
 
 #: ../plugin/controllers/BouquetEditor.py:180
 #, python-format
 msgid "Bouquet %s removed failed."
-msgstr ""
+msgstr "Usunięcie bukietu %s nieudane."
 
 #: ../plugin/controllers/BouquetEditor.py:182
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr ""
+msgstr "Usunięcie bukietu %s nieudane, identyfikator usługi lub lista wyboru są nieprawidłowe."
 
 #: ../plugin/controllers/BouquetEditor.py:186
 #, python-format
 msgid "Bouquet %s deleted."
-msgstr ""
+msgstr "Usunięto bukiet %s."
 
 #: ../plugin/controllers/BouquetEditor.py:188
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
-msgstr ""
+msgstr "Błąd: Nie można usunąć bukietu %s, bład systemu."
 
 #: ../plugin/controllers/BouquetEditor.py:204
 #: ../plugin/controllers/BouquetEditor.py:261
 msgid "No position given!"
-msgstr ""
+msgstr "Nie podano pozycji!"
 
 #: ../plugin/controllers/BouquetEditor.py:211
 #, python-format
 msgid "Bouquet %s moved."
-msgstr ""
+msgstr "Przeniesiono bukiet %s."
 
 #: ../plugin/controllers/BouquetEditor.py:213
 #, python-format
 msgid "Bouquet %s can not be moved."
-msgstr ""
+msgstr "Nie można przenieść bukietu %s."
 
 #: ../plugin/controllers/BouquetEditor.py:219
 #: ../plugin/controllers/BouquetEditor.py:249
@@ -89,7 +89,7 @@ msgstr ""
 #: ../plugin/controllers/BouquetEditor.py:309
 #: ../plugin/controllers/BouquetEditor.py:455
 msgid "No bouquet given!"
-msgstr ""
+msgstr "Nie wybrano bukietu!"
 
 #: ../plugin/controllers/BouquetEditor.py:225
 #: ../plugin/controllers/BouquetEditor.py:255
@@ -99,160 +99,160 @@ msgstr ""
 #: ../plugin/controllers/BouquetEditor.py:461
 #: ../plugin/controllers/BouquetEditor.py:498
 msgid "No service given!"
-msgstr ""
+msgstr "Nie wybrano kanału!"
 
 #: ../plugin/controllers/BouquetEditor.py:234
 #, python-format
 msgid "Service %s removed."
-msgstr ""
+msgstr "Usunięto kanał %s."
 
 #: ../plugin/controllers/BouquetEditor.py:242
 #, python-format
 msgid "Service %s removed from bouquet %s."
-msgstr ""
+msgstr "Usunięto kanał %s z bukietu %s."
 
 #: ../plugin/controllers/BouquetEditor.py:243
 #, python-format
 msgid "Service %s can not be removed."
-msgstr ""
+msgstr "Nie można usunąć kanału %s."
 
 #: ../plugin/controllers/BouquetEditor.py:268
 #, python-format
 msgid "Service %s moved."
-msgstr ""
+msgstr "Przeniesiono kanał %s."
 
 #: ../plugin/controllers/BouquetEditor.py:269
 msgid "Service can not be moved."
-msgstr ""
+msgstr "Nie można przenieść kanału."
 
 #: ../plugin/controllers/BouquetEditor.py:299
 #, python-format
 msgid "Service %s added."
-msgstr ""
+msgstr "Dodano kanał %s."
 
 #: ../plugin/controllers/BouquetEditor.py:302
 #, python-format
 msgid "Service %s already exists in bouquet %s."
-msgstr ""
+msgstr "Kanał %s już istnieje w bukiecie %s."
 
 #: ../plugin/controllers/BouquetEditor.py:303
 msgid "This service can not be added."
-msgstr ""
+msgstr "Nie można dodać tego kanału."
 
 #: ../plugin/controllers/BouquetEditor.py:315
 msgid "No marker-name given!"
-msgstr ""
+msgstr "Nie podano nazwy znacznika!"
 
 #: ../plugin/controllers/BouquetEditor.py:329
 msgid "Marker added."
-msgstr ""
+msgstr "Dodano znacznik."
 
 #: ../plugin/controllers/BouquetEditor.py:331
 msgid "Internal error!"
-msgstr ""
+msgstr "Błąd wewnętrzny!"
 
 #: ../plugin/controllers/BouquetEditor.py:345
 msgid "No new servicename given!"
-msgstr ""
+msgstr "Nie podano nowej nazwy kanału!"
 
 #: ../plugin/controllers/BouquetEditor.py:369
 msgid "Bouquet renamed successfully."
-msgstr ""
+msgstr "Zmiana nazwy bukietu zakończona powodzeniem."
 
 #: ../plugin/controllers/BouquetEditor.py:385
 msgid "Service renamed successfully."
-msgstr ""
+msgstr "Zmiana nazwy kanału zakończona powodzeniem."
 
 #: ../plugin/controllers/BouquetEditor.py:386
 msgid "Service can not be renamed."
-msgstr ""
+msgstr "Nie można zmienić nazwy kanału."
 
 #: ../plugin/controllers/BouquetEditor.py:400
 msgid "No current service given!"
-msgstr ""
+msgstr "Nie wybrano aktualnego kanału!"
 
 #: ../plugin/controllers/BouquetEditor.py:431
 msgid "Get mutable list for new created alternative failed!"
-msgstr ""
+msgstr "Uzyskanie listy wyboru dla nowo utworzonej alternatywy zakończone niepowodzeniem!"
 
 #: ../plugin/controllers/BouquetEditor.py:433
 #, python-format
 msgid "Alternative %s created failed."
-msgstr ""
+msgstr "Nie udało się utworzyć alternatywy %s."
 
 #: ../plugin/controllers/BouquetEditor.py:447
 #, python-format
 msgid "Added %s to alternative service %s."
-msgstr ""
+msgstr "Dodano alternatywę %s do kanału %s."
 
 #: ../plugin/controllers/BouquetEditor.py:478
 msgid "Service is not an alternative."
-msgstr ""
+msgstr "Kanał nie jest alternatywny."
 
 #: ../plugin/controllers/BouquetEditor.py:486
 msgid "All alternative services deleted."
-msgstr ""
+msgstr "Usunięto wszystkie alternatywne kanały."
 
 #: ../plugin/controllers/BouquetEditor.py:492
 msgid "Parent Control is not activated."
-msgstr ""
+msgstr "Kontrolna rodzicielska jest wyłączona."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "No Parent Control Setup Pin given!"
-msgstr ""
+msgstr "Nie podano kodu PIN do kontroli rodzicielskiej!"
 
 #: ../plugin/controllers/BouquetEditor.py:509
 #: ../plugin/controllers/BouquetEditor.py:511
 msgid "Parent Control Setup Pin is wrong!"
-msgstr ""
+msgstr "Zły kod PIN do kontroli rodzicielskiej!"
 
 #: ../plugin/controllers/BouquetEditor.py:526
 #, python-format
 msgid "Service %s is locked."
-msgstr ""
+msgstr "Kanał %s został zablokowany."
 
 #: ../plugin/controllers/BouquetEditor.py:528
 #, python-format
 msgid "Bouquet %s is locked."
-msgstr ""
+msgstr "Bukiet %s został zablokowany."
 
 #: ../plugin/controllers/BouquetEditor.py:530
 #, python-format
 msgid "%s %s is locked."
-msgstr ""
+msgstr "%s %s został zablokowany."
 
 #: ../plugin/controllers/BouquetEditor.py:534
 #, python-format
 msgid "Service %s is unlocked."
-msgstr ""
+msgstr "Odblokowano kanał %s."
 
 #: ../plugin/controllers/BouquetEditor.py:536
 #, python-format
 msgid "Bouquet %s is unlocked."
-msgstr ""
+msgstr "Odblokowano bukiet %s."
 
 #: ../plugin/controllers/BouquetEditor.py:573
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
-msgstr ""
+msgstr "Błąd podczas przygotowania pliku kopii zapadowej, %s nie istnieje."
 
 #: ../plugin/controllers/BouquetEditor.py:579
 msgid "Error while preparing backup file."
-msgstr ""
+msgstr "Błąd podczas przygotowania pliku kopii zapadowej."
 
 #: ../plugin/controllers/BouquetEditor.py:630
 msgid "Bouquet-settings were restored successfully"
-msgstr ""
+msgstr "Ustawienia bukietów zostały przywrócone poprawnie"
 
 #: ../plugin/controllers/BouquetEditor.py:632
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
-msgstr ""
+msgstr "Błąd, nie udało się utworzyć %s używając aplikacji edytora bukietów..."
 
 #: ../plugin/controllers/BouquetEditor.py:634
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
-msgstr ""
+msgstr "Bład, nie istnieje %s, odtworzenie nie jest możliwe..."
 
 #: ../plugin/controllers/base.py:221 ../plugin/local.py:181
 #: ../plugin/local.py:325
@@ -375,17 +375,17 @@ msgstr "Nie znaleziono zgodnych zadań planowych"
 #: ../plugin/controllers/models/timers.py:317
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
-msgstr ""
+msgstr "Z powodu konfliktu zadanie planowe '%s' nie zostanie włączone"
 
 #: ../plugin/controllers/models/timers.py:323
 #, python-format
 msgid "Timer '%s' already exists!"
-msgstr ""
+msgstr "Już istnieje zadanie planowe '%s'!"
 
 #: ../plugin/controllers/models/timers.py:329
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
-msgstr ""
+msgstr "Zadanie planowe '%s' jest nagrywane! Nie zostanie wyłączone!"
 
 #: ../plugin/controllers/models/timers.py:337
 #, fuzzy, python-format
@@ -442,7 +442,7 @@ msgstr "Wyłącznik czasowy jest nieaktywny"
 #: ../plugin/controllers/models/timers.py:640
 #: ../plugin/controllers/models/timers.py:667
 msgid "SleepTimer error"
-msgstr ""
+msgstr "Błąd wyłącznika czasowego"
 
 #: ../plugin/controllers/models/timers.py:679
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
@@ -466,15 +466,15 @@ msgstr "Ustawiono wyłącznik czasowy na %d minut"
 #: ../plugin/controllers/models/timers.py:695
 #: ../plugin/controllers/models/timers.py:776
 msgid "SleepTimer Error"
-msgstr ""
+msgstr "Błąd wyłącznika czasowego"
 
 #: ../plugin/controllers/models/timers.py:804
 msgid "Error parsing vps.xml"
-msgstr ""
+msgstr "Błąd analizy składniowej vps.xml"
 
 #: ../plugin/controllers/models/timers.py:809
 msgid "VPS plugin not found"
-msgstr ""
+msgstr "Brak wtyczki VPS"
 
 #: ../plugin/controllers/web.py:63
 #, python-format
@@ -775,11 +775,11 @@ msgstr "Czy na pewno usunąć nagranie"
 
 #: ../plugin/local.py:76
 msgid "Delete Movie"
-msgstr ""
+msgstr "Usuń nagranie"
 
 #: ../plugin/local.py:77
 msgid "Really delete the movie"
-msgstr ""
+msgstr "Czy na pewno usunąć nagranie"
 
 #: ../plugin/local.py:78
 msgid "Delete Timer"
@@ -1115,7 +1115,7 @@ msgstr "Zmień nazwę nagrania"
 
 #: ../plugin/local.py:164
 msgid "Really rename the recording"
-msgstr ""
+msgstr "Czy na pewno zmienić nazwę nagrania"
 
 #: ../plugin/local.py:165
 msgid "Repeated"
@@ -1160,7 +1160,7 @@ msgstr "Szukaj w IMDb"
 
 #: ../plugin/local.py:175
 msgid "Search KinoPoisk"
-msgstr ""
+msgstr "Przeszukaj KinoPoisk"
 
 #: ../plugin/local.py:176
 msgid "seconds"
@@ -1312,7 +1312,7 @@ msgstr "transkodowane"
 
 #: ../plugin/local.py:214
 msgid "Transcode"
-msgstr ""
+msgstr "Transkoduj"
 
 #: ../plugin/local.py:215
 msgid "Tuner Bit Error Rate BER"
