@@ -2,8 +2,8 @@
 //* at.js: openwebif Autotimer plugin
 //* Version 1.8
 //******************************************************************************
-//* Copyright (C) 2014 Joerg Bleyel
-//* Copyright (C) 2014 E2OpenPlugins
+//* Copyright (C) 2014-2016 Joerg Bleyel
+//* Copyright (C) 2014-2016 E2OpenPlugins
 //*
 //* V 1.0 - Initial Version
 //* V 1.1 - Support translation, small ui fixes

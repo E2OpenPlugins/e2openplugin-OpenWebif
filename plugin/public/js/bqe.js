@@ -1,9 +1,9 @@
 //******************************************************************************
 //* bqe.js: openwebif Bouqueteditor plugin
-//* Version 1.0
+//* Version 1.1
 //******************************************************************************
-//* Copyright (C) 2014 Joerg Bleyel
-//* Copyright (C) 2014 E2OpenPlugins
+//* Copyright (C) 2014-2016 Joerg Bleyel
+//* Copyright (C) 2014-2016 E2OpenPlugins
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* License GPL V2
