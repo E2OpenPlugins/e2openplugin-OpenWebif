@@ -77,12 +77,10 @@ fieldset > label
 								<br><label for="timerOffset">$tstrings['at_timer_offset']:</label>
 								<input type="checkbox" name="timerOffset" id="timerOffset" value="" class="checkbox ui-widget-content ui-corner-all">
 									<span id="timerOffsetE">
-									<label for="obefore">$tstrings['at_timer_offset_before']:</label>
-									<select name="obefore" id="obefore">
-									</select>
-									<label for="oafter">$tstrings['at_timer_offset_after']:</label>
-									<select name="oafter" id="oafter">
-									</select>
+									<label for="tbefore">$tstrings['at_timer_offset_before']:</label>
+									<input type="text" name="tbefore" id="tbefore" value="" class="text number ui-widget-content ui-corner-all" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
+									<label for="tafter">$tstrings['at_timer_offset_after']:</label>
+									<input type="text" name="tafter" id="tafter" value="" class="text number ui-widget-content ui-corner-all" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
 									</span>
 								
 								<br><label for="maxDuration">$tstrings['at_max_duration']:</label>
@@ -313,7 +311,7 @@ fieldset > label
 
 <script type="text/javascript" src="/js/jquery-ui-timepicker-addon.min.js"></script>
 <script type="text/javascript" src="/js/chosen.jquery.min.js"></script>
-<script type="text/javascript" src="/js/at-1.7.min.js"></script>
+<script type="text/javascript" src="/js/at-1.8.min.js"></script>
 <script type="text/javascript">
 #raw
 $(function() { InitPage();});
