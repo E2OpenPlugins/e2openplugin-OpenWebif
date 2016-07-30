@@ -43,21 +43,18 @@ tr { vertical-align: top }
 #eventdescription { width: 375px; height: auto; position: fixed; top: 205px; left: 350px; z-index: 1000; display: none; overflow: auto; }
 html, body, #tvcontent { width:100%; height:100%;}
 #atdialog { width: 90%; height: auto; position: fixed; top: 10px; left: 10px; z-index: 1001; display: none; overflow: auto; }
-
+#navepg { margin-bottom: 1px; }
 thead tr, tfoot tr { display: block; width: 100%; }
-thead th, tfoot th { width: 200px; }
 tbody { width: 100%; height: 100%; overflow-y: auto; display: block; }
 .wrapper { overflow-x: auto; width: 100%; }
 </style>
 <div id="tvcontent">
-<div>
+
+<div id="navepg">
 #for $slot in range(0,7)
 <div class="float plus #if $slot==$day then 'selected' else '' #" js:day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div>
 #end for
 <br clear="all">
-</div>
-
-<div style="height:25px;overflow:hidden">
 #for $bq in $bouquets
 <div class="float bq #if $bq[0]==$bref then 'selected' else '' #" js:ref="$quote($bq[0])">$bq[1]</div>
 #end for
@@ -66,7 +63,7 @@ tbody { width: 100%; height: 100%; overflow-y: auto; display: block; }
 
 #set $renderEventBlock = $renderEvtBlock()
 <div class="wrapper">
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id="tbl1">
 <thead>
 <tr>
 	#for $sname, $eventlist in $events.iteritems()
@@ -74,7 +71,7 @@ tbody { width: 100%; height: 100%; overflow-y: auto; display: block; }
 	#end for
 </tr>
 </thead>
-<tbody id="evttbl">
+<tbody id="tbl1body">
 	#set hasEvents = False
 	#for $slot in range(0,12)
 <tr class="$(slot%2 and 'odd' or 'even')">
@@ -110,8 +107,8 @@ tbody { width: 100%; height: 100%; overflow-y: auto; display: block; }
 #end if
 
 <script>
-\$("#evttbl").height( (\$(window).height()-124) + "px");
-\$(window).resize(function(){ \$("#evttbl").height( (\$(window).height()-124) + "px"); });
+\$("#tbl1body").height( (\$(window).height()-124) + "px");
+\$(window).resize(function(){ \$("#tbl1body").height( (\$(window).height()-124) + "px"); });
 var picons = $dumps($picons);
 var reloadTimers = false;
 \$(".bq").click(function() {
