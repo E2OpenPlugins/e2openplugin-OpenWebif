@@ -41,7 +41,11 @@ import sys
 import time
 import string
 
+<<<<<<< HEAD
 OPENWEBIFVER = "OWIF 0.4.8"
+=======
+OPENWEBIFVER = "OWIF 0.4.9"
+>>>>>>> upstream/master
 
 STATICBOXINFO = None
 

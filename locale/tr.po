@@ -743,7 +743,11 @@ msgstr "Kapat"
 
 #: ../plugin/local.py:68
 msgid "Contributors"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Katkıcılar"
+>>>>>>> upstream/master
 
 #: ../plugin/local.py:69
 msgid "Control"
@@ -775,7 +779,11 @@ msgstr "Kaydı gerçekten silecek misin ?"
 
 #: ../plugin/local.py:76
 msgid "Delete Movie"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Filmi Sil"
+>>>>>>> upstream/master
 
 #: ../plugin/local.py:77
 msgid "Really delete the movie"
@@ -891,7 +899,11 @@ msgstr ""
 
 #: ../plugin/local.py:105
 msgid "Free"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Boşta"
+>>>>>>> upstream/master
 
 #: ../plugin/local.py:106
 msgid "Free Memory"
@@ -951,7 +963,11 @@ msgstr ""
 
 #: ../plugin/local.py:123
 msgid "Kernel version"
+<<<<<<< HEAD
 msgstr "Karnel sürümü"
+=======
+msgstr "Kernel sürümü"
+>>>>>>> upstream/master
 
 #: ../plugin/local.py:124
 msgid "LICENSE"
@@ -987,7 +1003,11 @@ msgstr "Model"
 
 #: ../plugin/local.py:132
 msgid "Movielist"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Film listesi"
+>>>>>>> upstream/master
 
 #: ../plugin/local.py:133
 msgid "Movies"
@@ -1035,7 +1055,11 @@ msgstr ""
 
 #: ../plugin/local.py:144
 msgid "On"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Açık"
+>>>>>>> upstream/master
 
 #: ../plugin/local.py:145
 msgid "Open Source Web Interface for Linux set-top box"
@@ -1107,7 +1131,11 @@ msgstr ""
 
 #: ../plugin/local.py:162
 msgid "Remote"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Kumanda"
+>>>>>>> upstream/master
 
 #: ../plugin/local.py:163
 msgid "Rename Recording"
@@ -1139,7 +1167,11 @@ msgstr "Uydular"
 
 #: ../plugin/local.py:170
 msgid "Satfinder"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Uydu bulucu"
+>>>>>>> upstream/master
 
 #: ../plugin/local.py:171 ../plugin/local.py:321 ../plugin/local.py:373
 #: ../plugin/plugin.py:93
@@ -1196,7 +1228,11 @@ msgstr ""
 
 #: ../plugin/local.py:185
 msgid "Show full remote"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Tüm kumandayı göster"
+>>>>>>> upstream/master
 
 #: ../plugin/local.py:186
 msgid "Show EPG for"
@@ -1756,7 +1792,11 @@ msgstr ""
 
 #: ../plugin/local.py:334
 msgid "Fastscan"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Hızlı tarama"
+>>>>>>> upstream/master
 
 #: ../plugin/local.py:335
 msgid "Show in Extensionsmenu"
@@ -1788,7 +1828,11 @@ msgstr "Etiketlere İsim Ekle"
 
 #: ../plugin/local.py:343
 msgid "None"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Yok"
+>>>>>>> upstream/master
 
 #: ../plugin/local.py:346
 msgid "Editor"
@@ -1800,7 +1844,11 @@ msgstr ""
 
 #: ../plugin/local.py:348
 msgid "Wizzard"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Sihirbaz"
+>>>>>>> upstream/master
 
 #: ../plugin/local.py:351
 msgid "Enable Messages"
@@ -1880,7 +1928,11 @@ msgstr "Şimdi tazele"
 
 #: ../plugin/local.py:376
 msgid "Add Provider as new Bouquet"
+<<<<<<< HEAD
 msgstr ""
+=======
+msgstr "Yeni bukete sağlayıcı ekle"
+>>>>>>> upstream/master
 
 #: ../plugin/local.py:377
 msgid "Add channel(s) to Bouquet"

@@ -1,9 +1,16 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
+<<<<<<< HEAD
 //* Version 1.7
 //******************************************************************************
 //* Copyright (C) 2014 Joerg Bleyel
 //* Copyright (C) 2014 E2OpenPlugins
+=======
+//* Version 1.8
+//******************************************************************************
+//* Copyright (C) 2014-2016 Joerg Bleyel
+//* Copyright (C) 2014-2016 E2OpenPlugins
+>>>>>>> upstream/master
 //*
 //* V 1.0 - Initial Version
 //* V 1.1 - Support translation, small ui fixes
@@ -13,6 +20,10 @@
 //* V 1.5 - autotimer settings
 //* V 1.6 - sort autotimer list
 //* V 1.7 - fix autotimer filter
+<<<<<<< HEAD
+=======
+//* V 1.8 - use textfield for offset
+>>>>>>> upstream/master
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -34,8 +45,11 @@ function toUnixDate(date){
 }
 
 function initValues () {
+<<<<<<< HEAD
 	var _sel1 = $('#oafter');
 	var _sel2 = $('#obefore');
+=======
+>>>>>>> upstream/master
 	var _sel3 = $('#maxduration');
 	var _sel4 = $('#counter');
 	var _sel5 = $('#left');
@@ -44,8 +58,11 @@ function initValues () {
 		var sx=x.toString();
 		if(x<10)
 			sx='0'+sx;
+<<<<<<< HEAD
 		_sel1.append($('<option></option>').val(x).html(sx));
 		_sel2.append($('<option></option>').val(x).html(sx));
+=======
+>>>>>>> upstream/master
 		_sel4.append($('<option></option>').val(x).html(sx));
 		_sel5.append($('<option></option>').val(x).html(sx));
 	}
@@ -56,8 +73,13 @@ function initValues () {
 			sx='0'+sx;
 		_sel3.append($('<option></option>').val(x).html(sx));
 	}
+<<<<<<< HEAD
 	$('#oafter').val('5');
 	$('#obefore').val('5');
+=======
+	$('#tafter').val('5');
+	$('#tbefore').val('5');
+>>>>>>> upstream/master
 	$('#maxduration').val('70');
 	var _dateb = new Date();
 	var _db = $.datepicker.formatDate('dd.mm.yy', _dateb);
@@ -641,8 +663,13 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	$('#timerOffset').prop('checked',this.timerOffset);
 	if(this.timerOffset)
 	{
+<<<<<<< HEAD
 		$('#oafter').val(this.timerOffsetAfter);
 		$('#obefore').val(this.timerOffsetBefore);
+=======
+		$('#tafter').val(this.timerOffsetAfter);
+		$('#tbefore').val(this.timerOffsetBefore);
+>>>>>>> upstream/master
 	}
 	$('#timeSpanAE').prop('checked',false);
 	$('#afterevent').val("");
@@ -808,8 +835,13 @@ function saveAT()
 		CurrentAT.location = null;
 
 	CurrentAT.timeFrame = $('#timeFrame').is(':checked');
+<<<<<<< HEAD
 	CurrentAT.timerOffsetBefore = $('#obefore').val();
 	CurrentAT.timerOffsetAfter = $('#oafter').val();
+=======
+	CurrentAT.timerOffsetBefore = $('#tbefore').val();
+	CurrentAT.timerOffsetAfter = $('#tafter').val();
+>>>>>>> upstream/master
 	CurrentAT.afterevent = $('#afterevent').val();
 	CurrentAT.aftereventfrom = $('#aefrom').val();
 	CurrentAT.aftereventto = $('#aeto').val();
@@ -886,6 +918,11 @@ function saveAT()
 		else
 			reqs += "&offset=";
 	}
+<<<<<<< HEAD
+=======
+	else
+		reqs += "&offset=";
+>>>>>>> upstream/master
 
 	if(CurrentAT.timeSpan)
 		reqs += "&timespanFrom=" + CurrentAT.from + "&timespanTo=" + CurrentAT.to;

@@ -151,7 +151,7 @@ class BQEWebController(BaseController):
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
 
-	def P_Removealternativeservices(self, request):
+	def P_removealternativeservices(self, request):
 		self.withMainTemplate = False
 		try:
 			from BouquetEditor import BouquetEditor
