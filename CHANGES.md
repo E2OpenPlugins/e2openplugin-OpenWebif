@@ -1,20 +1,8 @@
-<<<<<<< HEAD
-## Version 0.4.x
-=======
 ## Version x
->>>>>>> upstream/master
 ## (planed)
 **FEATURES**
 * powertimer api
 
-<<<<<<< HEAD
-## Version 0.4.8
-## (in development)
-**FEATURES**
-* get movie text info
-* improve movie trash
-* improve timers for radio
-=======
 ## Version 0.5.0
 ## (planed)
 **FEATURES**
@@ -31,7 +19,6 @@
 * improve movie trash
 * improve timers for radio
 * deprecated -> "Smart services renaming for XBMC" use url parameter "renameserviceforxmbc=1" for getallservices instead 
->>>>>>> upstream/master
 
 ## Version 0.4.7
 **FEATURES**

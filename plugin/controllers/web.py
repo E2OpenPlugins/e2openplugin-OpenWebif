@@ -14,11 +14,7 @@ from Plugins.Extensions.OpenWebif.__init__ import _
 from Components.config import config
 
 from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStatus
-<<<<<<< HEAD
-from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
-=======
 from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
->>>>>>> upstream/master
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState, getStandbyState

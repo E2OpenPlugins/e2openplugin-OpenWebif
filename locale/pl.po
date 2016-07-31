@@ -2,11 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2016-04-30 15:06+0200\n"
-<<<<<<< HEAD
-"PO-Revision-Date: \n"
-=======
 "PO-Revision-Date: 2016-06-27 12:12+0100\n"
->>>>>>> upstream/master
 "Last-Translator: mickey <mickeyreg@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pl\n"
@@ -17,62 +13,31 @@ msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:82
 msgid "one two three four unknown command"
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "raz dwa trzy cztery, nieznane polecenie"
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:88
 #: ../plugin/controllers/BouquetEditor.py:149
 #: ../plugin/controllers/BouquetEditor.py:194
 msgid "No bouquet name given!"
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Nie podano nazwy bukietu!"
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:118
 #, python-format
 msgid "Bouquet %s created."
-<<<<<<< HEAD
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:120
-msgid "Get mutable list for new created bouquet failed!"
-msgstr ""
-=======
 msgstr "Utworzono bukiet %s."
 
 #: ../plugin/controllers/BouquetEditor.py:120
 msgid "Get mutable list for new created bouquet failed!"
 msgstr "Uzyskanie listy wyboru dla nowo utworzonego bukietu zakończone niepowodzeniem!"
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:123
 #, python-format
 msgid "Bouquet %s already exists."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Bukiet %s już istnieje."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:125
 #: ../plugin/controllers/BouquetEditor.py:435
 msgid "Bouquetlist is not editable!"
-<<<<<<< HEAD
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:127
-msgid "Multi-Bouquet is not enabled!"
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:133
-msgid "No provider given!"
-msgstr ""
-=======
 msgstr "Nie można edytować listy bukietów!"
 
 #: ../plugin/controllers/BouquetEditor.py:127
@@ -82,70 +47,41 @@ msgstr "Tryb multi-bukietów jest niedostępny!"
 #: ../plugin/controllers/BouquetEditor.py:133
 msgid "No provider given!"
 msgstr "Nie podano dostawcy!"
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:180
 #, python-format
 msgid "Bouquet %s removed failed."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Usunięcie bukietu %s nieudane."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:182
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Usunięcie bukietu %s nieudane, identyfikator usługi lub lista wyboru są nieprawidłowe."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:186
 #, python-format
 msgid "Bouquet %s deleted."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Usunięto bukiet %s."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:188
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Błąd: Nie można usunąć bukietu %s, bład systemu."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:204
 #: ../plugin/controllers/BouquetEditor.py:261
 msgid "No position given!"
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Nie podano pozycji!"
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:211
 #, python-format
 msgid "Bouquet %s moved."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Przeniesiono bukiet %s."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:213
 #, python-format
 msgid "Bouquet %s can not be moved."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Nie można przenieść bukietu %s."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:219
 #: ../plugin/controllers/BouquetEditor.py:249
@@ -153,11 +89,7 @@ msgstr "Nie można przenieść bukietu %s."
 #: ../plugin/controllers/BouquetEditor.py:309
 #: ../plugin/controllers/BouquetEditor.py:455
 msgid "No bouquet given!"
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Nie wybrano bukietu!"
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:225
 #: ../plugin/controllers/BouquetEditor.py:255
@@ -167,111 +99,40 @@ msgstr "Nie wybrano bukietu!"
 #: ../plugin/controllers/BouquetEditor.py:461
 #: ../plugin/controllers/BouquetEditor.py:498
 msgid "No service given!"
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Nie wybrano kanału!"
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:234
 #, python-format
 msgid "Service %s removed."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Usunięto kanał %s."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:242
 #, python-format
 msgid "Service %s removed from bouquet %s."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Usunięto kanał %s z bukietu %s."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:243
 #, python-format
 msgid "Service %s can not be removed."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Nie można usunąć kanału %s."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:268
 #, python-format
 msgid "Service %s moved."
-<<<<<<< HEAD
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:269
-msgid "Service can not be moved."
-msgstr ""
-=======
 msgstr "Przeniesiono kanał %s."
 
 #: ../plugin/controllers/BouquetEditor.py:269
 msgid "Service can not be moved."
 msgstr "Nie można przenieść kanału."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:299
 #, python-format
 msgid "Service %s added."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Dodano kanał %s."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:302
 #, python-format
 msgid "Service %s already exists in bouquet %s."
-<<<<<<< HEAD
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:303
-msgid "This service can not be added."
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:315
-msgid "No marker-name given!"
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:329
-msgid "Marker added."
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:331
-msgid "Internal error!"
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:345
-msgid "No new servicename given!"
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:369
-msgid "Bouquet renamed successfully."
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:385
-msgid "Service renamed successfully."
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:386
-msgid "Service can not be renamed."
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:400
-msgid "No current service given!"
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:431
-msgid "Get mutable list for new created alternative failed!"
-msgstr ""
-=======
 msgstr "Kanał %s już istnieje w bukiecie %s."
 
 #: ../plugin/controllers/BouquetEditor.py:303
@@ -313,39 +174,15 @@ msgstr "Nie wybrano aktualnego kanału!"
 #: ../plugin/controllers/BouquetEditor.py:431
 msgid "Get mutable list for new created alternative failed!"
 msgstr "Uzyskanie listy wyboru dla nowo utworzonej alternatywy zakończone niepowodzeniem!"
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:433
 #, python-format
 msgid "Alternative %s created failed."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Nie udało się utworzyć alternatywy %s."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:447
 #, python-format
 msgid "Added %s to alternative service %s."
-<<<<<<< HEAD
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:478
-msgid "Service is not an alternative."
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:486
-msgid "All alternative services deleted."
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:492
-msgid "Parent Control is not activated."
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:505
-msgid "No Parent Control Setup Pin given!"
-msgstr ""
-=======
 msgstr "Dodano alternatywę %s do kanału %s."
 
 #: ../plugin/controllers/BouquetEditor.py:478
@@ -363,76 +200,40 @@ msgstr "Kontrolna rodzicielska jest wyłączona."
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "No Parent Control Setup Pin given!"
 msgstr "Nie podano kodu PIN do kontroli rodzicielskiej!"
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:509
 #: ../plugin/controllers/BouquetEditor.py:511
 msgid "Parent Control Setup Pin is wrong!"
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Zły kod PIN do kontroli rodzicielskiej!"
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:526
 #, python-format
 msgid "Service %s is locked."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Kanał %s został zablokowany."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:528
 #, python-format
 msgid "Bouquet %s is locked."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Bukiet %s został zablokowany."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:530
 #, python-format
 msgid "%s %s is locked."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "%s %s został zablokowany."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:534
 #, python-format
 msgid "Service %s is unlocked."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Odblokowano kanał %s."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:536
 #, python-format
 msgid "Bouquet %s is unlocked."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Odblokowano bukiet %s."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:573
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
-<<<<<<< HEAD
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:579
-msgid "Error while preparing backup file."
-msgstr ""
-
-#: ../plugin/controllers/BouquetEditor.py:630
-msgid "Bouquet-settings were restored successfully"
-msgstr ""
-=======
 msgstr "Błąd podczas przygotowania pliku kopii zapadowej, %s nie istnieje."
 
 #: ../plugin/controllers/BouquetEditor.py:579
@@ -442,25 +243,16 @@ msgstr "Błąd podczas przygotowania pliku kopii zapadowej."
 #: ../plugin/controllers/BouquetEditor.py:630
 msgid "Bouquet-settings were restored successfully"
 msgstr "Ustawienia bukietów zostały przywrócone poprawnie"
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:632
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Błąd, nie udało się utworzyć %s używając aplikacji edytora bukietów..."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/BouquetEditor.py:634
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Bład, nie istnieje %s, odtworzenie nie jest możliwe..."
->>>>>>> upstream/master
 
 #: ../plugin/controllers/base.py:221 ../plugin/local.py:181
 #: ../plugin/local.py:325
@@ -583,29 +375,17 @@ msgstr "Nie znaleziono zgodnych zadań planowych"
 #: ../plugin/controllers/models/timers.py:317
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Z powodu konfliktu zadanie planowe '%s' nie zostanie włączone"
->>>>>>> upstream/master
 
 #: ../plugin/controllers/models/timers.py:323
 #, python-format
 msgid "Timer '%s' already exists!"
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Już istnieje zadanie planowe '%s'!"
->>>>>>> upstream/master
 
 #: ../plugin/controllers/models/timers.py:329
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Zadanie planowe '%s' jest nagrywane! Nie zostanie wyłączone!"
->>>>>>> upstream/master
 
 #: ../plugin/controllers/models/timers.py:337
 #, fuzzy, python-format
@@ -662,11 +442,7 @@ msgstr "Wyłącznik czasowy jest nieaktywny"
 #: ../plugin/controllers/models/timers.py:640
 #: ../plugin/controllers/models/timers.py:667
 msgid "SleepTimer error"
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Błąd wyłącznika czasowego"
->>>>>>> upstream/master
 
 #: ../plugin/controllers/models/timers.py:679
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
@@ -690,47 +466,6 @@ msgstr "Ustawiono wyłącznik czasowy na %d minut"
 #: ../plugin/controllers/models/timers.py:695
 #: ../plugin/controllers/models/timers.py:776
 msgid "SleepTimer Error"
-<<<<<<< HEAD
-msgstr ""
-
-#: ../plugin/controllers/models/timers.py:804
-msgid "Error parsing vps.xml"
-msgstr ""
-
-#: ../plugin/controllers/models/timers.py:809
-msgid "VPS plugin not found"
-msgstr ""
-
-#: ../plugin/controllers/web.py:63
-#, python-format
-msgid "Missing mandatory parameter '%s'"
-msgstr "Brak wymaganego parametru '%s'"
-
-#: ../plugin/controllers/web.py:69
-#, python-format
-msgid "The parameter '%s' can't be empty"
-msgstr "Parametr '%s' nie może być pusty"
-
-#: ../plugin/controllers/web.py:103
-#, python-format
-msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr "Zły format parametru 'set=%s'. Użyj set=set15"
-
-#: ../plugin/controllers/web.py:108
-#, python-format
-msgid "Unknown Volume command %s"
-msgstr "Nieznana komenda głośności %s"
-
-#: ../plugin/controllers/web.py:143
-msgid "The parameter 'command' must be a number"
-msgstr "Parametr 'command' musi być liczbą"
-
-#: ../plugin/controllers/web.py:304
-#, python-format
-msgid "type %s is not a number"
-msgstr "%s nie jest liczbą"
-
-=======
 msgstr "Błąd wyłącznika czasowego"
 
 #: ../plugin/controllers/models/timers.py:804
@@ -770,7 +505,6 @@ msgstr "Parametr 'command' musi być liczbą"
 msgid "type %s is not a number"
 msgstr "%s nie jest liczbą"
 
->>>>>>> upstream/master
 #: ../plugin/local.py:5
 msgid "Mo"
 msgstr "Pn"
@@ -1033,22 +767,6 @@ msgstr "Domyślny"
 
 #: ../plugin/local.py:74
 msgid "Delete Recording"
-<<<<<<< HEAD
-msgstr "Usuń nagranie"
-
-#: ../plugin/local.py:75
-msgid "Really delete the recording"
-msgstr "Czy na pewno usunąć nagranie"
-
-#: ../plugin/local.py:76
-msgid "Delete Movie"
-msgstr ""
-
-#: ../plugin/local.py:77
-msgid "Really delete the movie"
-msgstr ""
-
-=======
 msgstr "Usuń nagranie"
 
 #: ../plugin/local.py:75
@@ -1063,7 +781,6 @@ msgstr "Usuń nagranie"
 msgid "Really delete the movie"
 msgstr "Czy na pewno usunąć nagranie"
 
->>>>>>> upstream/master
 #: ../plugin/local.py:78
 msgid "Delete Timer"
 msgstr "Usuń zadanie planowe"
@@ -1398,11 +1115,7 @@ msgstr "Zmień nazwę nagrania"
 
 #: ../plugin/local.py:164
 msgid "Really rename the recording"
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Czy na pewno zmienić nazwę nagrania"
->>>>>>> upstream/master
 
 #: ../plugin/local.py:165
 msgid "Repeated"
@@ -1447,11 +1160,7 @@ msgstr "Szukaj w IMDb"
 
 #: ../plugin/local.py:175
 msgid "Search KinoPoisk"
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Przeszukaj KinoPoisk"
->>>>>>> upstream/master
 
 #: ../plugin/local.py:176
 msgid "seconds"
@@ -1603,11 +1312,7 @@ msgstr "transkodowane"
 
 #: ../plugin/local.py:214
 msgid "Transcode"
-<<<<<<< HEAD
-msgstr ""
-=======
 msgstr "Transkoduj"
->>>>>>> upstream/master
 
 #: ../plugin/local.py:215
 msgid "Tuner Bit Error Rate BER"
