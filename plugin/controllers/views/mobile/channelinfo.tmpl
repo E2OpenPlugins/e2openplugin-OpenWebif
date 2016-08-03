@@ -55,12 +55,17 @@
 		<div id="contentContainer">
 			<ul data-role="listview" data-inset="true" data-theme="d">
 				<li data-role="list-divider" role="heading" data-theme="b">$tstrings['upcoming_events']</li>
+				#set $date=""
 				#for $event in $channelepg
+					#if $date <> $event.date
+						<li data-role="list-divider" role="heading" data-theme="b">$event.date</li>
+						#set $date = $event.date
+					#end if
 				<li style="padding: 3px;">
 					<a href="/mobile/eventview?eventid=$event.id&eventref=$event.sref" style="padding: 3px;">
-						<span class="ui-li-heading" style="margin-top: 0px; margin-bottom: 3px;">$event.title</span>
+						<span class="ui-li-heading" style="margin-top: 0px;">$event.title</span>
 						<span class="ui-li-desc" style="margin-bottom: 0px;">$event.begin - $event.end</span>
-					</a>	
+					</a>
 				</li>
 				#end for
 			</ul>
