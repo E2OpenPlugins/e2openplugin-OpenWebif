@@ -38,7 +38,7 @@ def _getTrashDir(path):
 	else:
 		path = path + "/" + TRASHDIRNAME
 	if not fileExists(path):
-		statvfs = os.statvfs(path.rstrip(trash_dir_name))
+		statvfs = os.statvfs(path.rstrip(TRASHDIRNAME))
 		free = (statvfs.f_frsize * statvfs.f_bavail) / (1024 * 1024 * 1024)
 		if free < 15:
 			return None
