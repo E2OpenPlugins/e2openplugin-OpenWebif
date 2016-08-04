@@ -15,7 +15,7 @@ msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:82
 msgid "one two three four unknown command"
-msgstr "μία δύο τρεις τέσσερις άγνωστη εντολή"
+msgstr "ένα δύο τρία τέσσερα άγνωστη εντολή"
 
 #: ../plugin/controllers/BouquetEditor.py:88
 #: ../plugin/controllers/BouquetEditor.py:149
@@ -917,7 +917,7 @@ msgstr "Έκδοση Επιφάνειας Χρήστη"
 
 #: ../plugin/local.py:110
 msgid "Hide full remote"
-msgstr "Απόκρυφη πλήρους τηλεχειριστηρίου"
+msgstr "Απόκρυψη πλήρους τηλεχειριστηρίου"
 
 #: ../plugin/local.py:111
 msgid "High Resolution"
