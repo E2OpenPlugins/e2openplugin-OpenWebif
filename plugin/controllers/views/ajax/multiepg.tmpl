@@ -77,8 +77,6 @@
 <script>
 var picons = $dumps($picons);
 var reloadTimers = false;
-\$("#tbl1body").height( (\$("#tvcontent").height()-\$("#navepg").height()-72) + "px");
-\$(window).resize(function(){ \$("#tbl1body").height( (\$("#tvcontent").height()-\$("#navepg").height()-72) + "px"); });
 \$(".bq").click(function() {
 	var id = \$(this).attr("js:ref");
 	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref='+id);
