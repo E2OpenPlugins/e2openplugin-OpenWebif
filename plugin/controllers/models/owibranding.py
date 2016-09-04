@@ -152,7 +152,7 @@ def getAllInfo():
 		procmodel = f.readline().strip()
 		f.close()
 		model = procmodel.upper().replace("GBQUAD", "Quad").replace("PLUS", " Plus")
-	elif fileExists("/proc/stb/info/vumodel"):
+	elif fileExists("/proc/stb/info/vumodel") and not fileExists("/proc/stb/info/boxtype"):
 		brand = "Vu+"
 		f = open("/proc/stb/info/vumodel",'r')
 		procmodel = f.readline().strip()
@@ -204,6 +204,9 @@ def getAllInfo():
 		elif procmodel.startswith("g300"):
 			brand = "Miraclebox"
 			model = "Premiun twin+"
+		elif procmodel == "7000s":
+			brand = "Miraclebox"
+			model = "Premium micro"
 		elif procmodel.startswith("ini"):
 			if procmodel.endswith("9000ru"):
  				brand = "Sezam"
@@ -386,6 +389,8 @@ def getAllInfo():
 		remote = "ini-1000"
 	elif procmodel in ("ini-1000sv", "ini-5000sv", "ini-9000de"):
 		remote = "miraclebox"
+	elif procmodel in ("7000s"):
+		remote = "miraclebox2"
 	elif procmodel == "ini-3000":
 		remote = "ini-3000"
 	elif procmodel in ("ini-7012", "ini-7000", "ini-5000", "ini-5000ru"):
