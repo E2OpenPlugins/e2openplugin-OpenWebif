@@ -120,22 +120,6 @@
 							<th colspan="2" class="infoHeader">$tstrings['network_interface']: $iface.name</th>
 						</tr>
 						<tr>
-							<td class="infoleft">$tstrings['dhcp']:</td>
-							<td class="inforight">$iface.dhcp</td>
-						</tr>
-						<tr>
-							<td class="infoleft">$tstrings['ip_address']:</td>
-							<td class="inforight">$iface.ip/$iface.v4prefix</td>
-						</tr>
-						<tr>
-							<td class="infoleft">$tstrings['subnet_mask']:</td>
-							<td class="inforight">$iface.mask</td>
-						</tr>
-						<tr>
-							<td class="infoleft">$tstrings['gateway']:</td>
-							<td class="inforight">$iface.gw</td>
-						</tr>
-						<tr>
 							<td class="infoleft">$tstrings['mac_address']:</td>
 							<td class="inforight">$iface.mac</td>
 						</tr>
@@ -143,6 +127,16 @@
 							<td class="infoleft">$tstrings['ipv6_address']:</td>
 							<td class="inforight">$iface.ipv6</td>
 						</tr>
+						#if $iface.ip != "0.0.0.0"
+							<tr>
+								<td class="infoleft">$tstrings['ipv4_address']:</td>
+								<td class="inforight">$iface.ip/$iface.v4prefix via $iface.gw</td>
+							</tr>
+							<tr>
+								<td class="infoleft">$tstrings['dhcp']:</td>
+								<td class="inforight">$iface.dhcp</td>
+							</tr>
+						#end if
 					</table>
 				</td>
 			</tr>

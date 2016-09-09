@@ -931,8 +931,8 @@ msgid "Hour"
 msgstr "Hora"
 
 #: ../plugin/local.py:114
-msgid "IP address"
-msgstr "Dirección IP"
+msgid "IPv4 address"
+msgstr "Dirección IPv4"
 
 #: ../plugin/local.py:118
 msgid "IPv6 address(es)"

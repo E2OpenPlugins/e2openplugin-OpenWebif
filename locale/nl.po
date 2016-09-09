@@ -929,12 +929,12 @@ msgid "Hour"
 msgstr "Uur"
 
 #: ../plugin/local.py:114
-msgid "IP address"
-msgstr "IP-adres"
+msgid "IPv4 address"
+msgstr "IPv4-adres"
 
 #: ../plugin/local.py:118
 msgid "IPv6 address(es)"
-msgstr "IPv6 adres(en)"
+msgstr "IPv6-adres(en)"
 
 #: ../plugin/local.py:119
 msgid "Infos"
