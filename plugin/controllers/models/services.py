@@ -32,6 +32,11 @@ def filterName(name):
 		name = name.replace('\xc2\x86', '').replace('\xc2\x87', '')
 	return name
 
+def convertDesc(val):
+	if val is not None:
+		return unicode(val,'utf_8', errors='ignore').encode('utf_8', 'ignore')
+	return val
+
 def getServiceInfoString(info, what):
 	v = info.getInfo(what)
 	if v == -1:
@@ -481,8 +486,8 @@ def getEvent(ref, idev):
 		info['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
 		info['duration'] = event[2]
 		info['title'] = filterName(event[3])
-		info['shortdesc'] = event[4]
-		info['longdesc'] = event[5]
+		info['shortdesc'] = convertDesc(event[4])
+		info['longdesc'] = convertDesc(event[5])
 		info['channel'] = filterName(event[6])
 		info['sref'] = event[7]
 		break;
@@ -515,8 +520,8 @@ def getChannelEpg(ref, begintime=-1, endtime=-1):
 					ev['duration_sec'] = event[2]
 					ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
 					ev['title'] = filterName(event[3])
-					ev['shortdesc'] = event[4]
-					ev['longdesc'] = event[5]
+					ev['shortdesc'] = convertDesc(event[4])
+					ev['longdesc'] = convertDesc(event[5])
 					ev['sref'] = ref
 					ev['sname'] = filterName(event[6])
 					ev['tleft'] = int (((event[1] + event[2]) - event[7]) / 60)
@@ -574,8 +579,8 @@ def getBouquetEpg(ref, begintime=-1, endtime=None):
 			ev['begin_timestamp'] = event[1]
 			ev['duration_sec'] = event[2]
 			ev['title'] = event[4]
-			ev['shortdesc'] = event[5]
-			ev['longdesc'] = event[6]
+			ev['shortdesc'] = convertDesc(event[5])
+			ev['longdesc'] = convertDesc(event[6])
 			ev['sref'] = event[7]
 			ev['sname'] = filterName(event[8])
 			ev['now_timestamp'] = event[3]
@@ -603,8 +608,8 @@ def getServicesNowNextEpg(sList):
 			ev['begin_timestamp'] = event[1]
 			ev['duration_sec'] = event[2]
 			ev['title'] = event[4]
-			ev['shortdesc'] = event[5]
-			ev['longdesc'] = event[6]
+			ev['shortdesc'] = convertDesc(event[5])
+			ev['longdesc'] = convertDesc(event[6])
 			#if event[7] is not None:
 			#	achannels = GetWithAlternative(event[7], False)
 			#	if achannels:
@@ -641,8 +646,8 @@ def getBouquetNowNextEpg(ref, servicetype):
 			ev['begin_timestamp'] = event[1]
 			ev['duration_sec'] = event[2]
 			ev['title'] = event[4]
-			ev['shortdesc'] = event[5]
-			ev['longdesc'] = event[6]
+			ev['shortdesc'] = convertDesc(event[5])
+			ev['longdesc'] = convertDesc(event[6])
 			if event[7] is not None:
 				achannels = GetWithAlternative(event[7], False)
 				if achannels:
@@ -667,8 +672,8 @@ def getNowNextEpg(ref, servicetype):
 				ev['begin_timestamp'] = event[1]
 				ev['duration_sec'] = event[2]
 				ev['title'] = event[4]
-				ev['shortdesc'] = event[5]
-				ev['longdesc'] = event[6]
+				ev['shortdesc'] = convertDesc(event[5])
+				ev['longdesc'] = convertDesc(event[6])
 				ev['sref'] = event[7]
 				ev['sname'] = filterName(event[8])
 				ev['now_timestamp'] = event[3]
@@ -712,8 +717,8 @@ def getSearchEpg(sstr, endtime=None):
 			ev['duration'] = int(event[2] / 60)
 			ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
 			ev['title'] = filterName(event[3])
-			ev['shortdesc'] = event[4]
-			ev['longdesc'] = event[5]
+			ev['shortdesc'] = convertDesc(event[4])
+			ev['longdesc'] = convertDesc(event[5])
 			ev['sref'] = event[7]
 			ev['sname'] = filterName(event[6])
 			ev['picon'] = getPicon(event[7])
@@ -744,8 +749,8 @@ def getSearchSimilarEpg(ref, eventid):
 			ev['duration'] = int(event[2] / 60)
 			ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
 			ev['title'] = event[3]
-			ev['shortdesc'] = event[4]
-			ev['longdesc'] = event[5]
+			ev['shortdesc'] = convertDesc(event[4])
+			ev['longdesc'] = convertDesc(event[5])
 			ev['sref'] = event[7]
 			ev['sname'] = filterName(event[6])
 			ev['picon'] = getPicon(event[7])
@@ -819,7 +824,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None):
 			ev['id'] = event[0]
 			ev['begin_timestamp'] = event[1]
 			ev['title'] = event[2]
-			ev['shortdesc'] = event[3]
+			ev['shortdesc'] = convertDesc(event[3])
 			ev['ref'] = event[4]
 			ev['timerStatus'] = getTimerEventStatus(event)
 
@@ -829,9 +834,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None):
 				picons[channel] = getPicon(event[4])
 
 			slot = int((event[1]-offset) / 7200)
-			if slot < 0:
-				slot = 0
-			if slot < 12 and event[1] < lastevent:
+			if slot > -1 and slot < 12 and event[1] < lastevent:
 				ret[channel][slot].append(ev)
 
 	return { "events": ret, "result": True, "picons": picons }
