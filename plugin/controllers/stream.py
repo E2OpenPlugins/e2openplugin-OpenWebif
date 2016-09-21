@@ -50,12 +50,8 @@ class StreamAdapter:
 	def requestWrite(self, notused1 = None, notused2 = None):
 		converter_args = []
 		self.converter = Streaming(converter_args)
-		if self.converter:
-			try:
-				self.converter.source = self
-				self.request.write(self.converter.getText())
-			except:
-				return
+		self.converter.source = self
+		self.request.write(self.converter.getText())
 
 class StreamController(resource.Resource):
 	def __init__(self, session, path = ""):
