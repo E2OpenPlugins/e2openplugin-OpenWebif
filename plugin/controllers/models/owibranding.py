@@ -511,7 +511,7 @@ def getAllInfo():
 			f = open("/etc/version",'r')
 			imagever = f.readline().strip()
 			f.close()
-			if kernel.major>2:
+			if kernel>2:
 				oever = "OpenVuplus 2.1"
 
 	# reporting the installed dvb-module version is as close as we get without too much hassle
