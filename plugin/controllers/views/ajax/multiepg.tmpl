@@ -24,6 +24,7 @@
 	#tbl1 thead tr, #tbl1 tfoot tr { display: block; width: 100%; }
 	#tbl1 tbody { width: 100%; height: 100%; overflow-y: auto; display: block; }
 	.wrapper { overflow-x: auto; width: 100%; }
+	td.border { width: 190px; }
 </style>
 
 <div id="navepg">
@@ -77,6 +78,22 @@
 <script>
 var picons = $dumps($picons);
 var reloadTimers = false;
+function getScrollBarWidth () {
+    var \$outer = \$('<div>').css({visibility: 'hidden', width: 100, overflow: 'scroll'}).appendTo('body'),
+        widthWithScroll = \$('<div>').css({width: '100%'}).appendTo(\$outer).outerWidth();
+    \$outer.remove();
+    return 100 - widthWithScroll;
+}
+var scrollBarWidth=getScrollBarWidth();
+function fixTableHeight() {
+    var addScrollBarWidth = scrollBarWidth;
+    if (\$('#tbl1').width() <= \$("#tvcontent").width()){
+        addScrollBarWidth = 0;
+    }
+    \$("#tbl1body").height( (\$("#tvcontent").height() - \$("#navepg").height() - 2*\$("#tbl1 thead").height() - addScrollBarWidth - 2) + "px");
+}
+fixTableHeight();
+\$(window).resize(function(){ fixTableHeight(); });
 \$(".bq").click(function() {
 	var id = \$(this).attr("js:ref");
 	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref='+id);
