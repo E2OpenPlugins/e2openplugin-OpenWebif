@@ -273,7 +273,7 @@ def getAllInfo():
 		elif procmodel == "wetekplay":
 			brand = "WeTeK"
 			model = procmodel
-		elif procmodel.startswith("osmini"):
+		elif procmodel.startswith("osm"):
 			brand = "Edision"
 			model = procmodel
 		elif procmodel == "h5":
@@ -419,7 +419,7 @@ def getAllInfo():
 		remote = "dmm2"
 	elif procmodel == "wetekplay":
 		remote = procmodel
-	elif procmodel.startswith("osmini"):
+	elif procmodel.startswith("osm"):
 		remote = "osmini"
 	elif procmodel in ("fusionhd"):
 		remote = procmodel
