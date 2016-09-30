@@ -15,7 +15,6 @@ from Components.About import about
 from Components.config import config
 from Components.NimManager import nimmanager
 from Components.Harddisk import harddiskmanager
-from Components.Network import iNetwork
 from Components.Language import language
 from RecordTimer import parseEvent
 from Screens.Standby import inStandby
@@ -33,6 +32,14 @@ except:
 	from owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
 	def getEnigmaVersionString():
 		return about.getEnigmaVersionString()
+
+
+DREAMOS = False
+try:
+	from Components.Network import iNetwork
+except:
+	from Components.Network import iNetworkInfo
+	DREAMOS = True
 
 import NavigationInstance
 
@@ -257,60 +264,88 @@ def getInfo():
 		})
 
 	info['ifaces'] = []
-	ifaces = iNetwork.getConfiguredAdapters()
-	for iface in ifaces:
-		info['ifaces'].append({
-			"name": iNetwork.getAdapterName(iface),
-			"mac": iNetwork.getAdapterAttribute(iface, "mac"),
-			"dhcp": iNetwork.getAdapterAttribute(iface, "dhcp"),
-			"ip": formatIp(iNetwork.getAdapterAttribute(iface, "ip")),
-			"mask": formatIp(iNetwork.getAdapterAttribute(iface, "netmask")),
-			"v4prefix": sum([bin(int(x)).count('1') for x in formatIp(iNetwork.getAdapterAttribute(iface, "netmask")).split('.')]),
-			"gw": formatIp(iNetwork.getAdapterAttribute(iface, "gateway")),
-			"ipv6": getAdapterIPv6(iface)['addr'],
-			"firstpublic": getAdapterIPv6(iface)['firstpublic']
-		})
+	if DREAMOS:
+		ifaces = iNetworkInfo.getConfiguredInterfaces()
+		for iface in ifaces.itervalues():
+			infos = {
+				"name": iface.ethernet.interface,
+				"mac": iface.ethernet.mac,
+			}
+			ip4 = iface.ipv4
+			ip6 = iface.ipv6
+			if ip4:
+				infos["dhcp"] = ip4.method
+				infos["ip"] = ip4.address
+				infos["mask"] = ip4.netmask
+				infos["gw"] = ip4.gateway
+				infos["v4prefix"] = sum([bin(int(x)).count('1') for x in ip4.netmask.split('.')])
+			if ip6:
+				infos["ipv6"] = ip6.address
+				# TODO: IPv6 firstpublic for DreamOS
+				infos["firstpublic"] = ""
+			info['ifaces'].append(infos)
+	else:
+		ifaces = iNetwork.getConfiguredAdapters()
+		for iface in ifaces:
+			info['ifaces'].append({
+				"name": iNetwork.getAdapterName(iface),
+				"mac": iNetwork.getAdapterAttribute(iface, "mac"),
+				"dhcp": iNetwork.getAdapterAttribute(iface, "dhcp"),
+				"ip": formatIp(iNetwork.getAdapterAttribute(iface, "ip")),
+				"mask": formatIp(iNetwork.getAdapterAttribute(iface, "netmask")),
+				"v4prefix": sum([bin(int(x)).count('1') for x in formatIp(iNetwork.getAdapterAttribute(iface, "netmask")).split('.')]),
+				"gw": formatIp(iNetwork.getAdapterAttribute(iface, "gateway")),
+				"ipv6": getAdapterIPv6(iface)['addr'],
+				"firstpublic": getAdapterIPv6(iface)['firstpublic']
+			})
 
 	info['hdd'] = []
 	for hdd in harddiskmanager.hdd:
-		dev = hdd.findMount()
-		if dev:
-			stat = os.statvfs(dev)
-			free = int((stat.f_bfree/1024) * (stat.f_bsize/1024))
+		if DREAMOS and hdd:
+			free = hdd.free()
 		else:
-			free = -1
-		
+			dev = hdd.findMount()
+			if dev:
+				stat = os.statvfs(dev)
+				free = int((stat.f_bfree/1024) * (stat.f_bsize/1024))
+			else:
+				free = -1
+
 		if free <= 1024:
 			free = "%i MB" % free
 		else:
 			free = free / 1024.
 			free = "%.3f GB" % free
 
-		size = hdd.diskSize() * 1000000 / 1048576.
-		if size > 1048576:
-			size = "%.2f TB" % (size / 1048576.)
-		elif size > 1024:
-			size = "%.1f GB" % (size / 1024.)
+		if DREAMOS:
+			size = hdd.capacity() # TODO: hdd size with SI units for DreamOS
+			iecsize = hdd.capacity()
 		else:
-			size = "%d MB" % size
-
-		iecsize = hdd.diskSize()
-		# Harddisks > 1000 decimal Gigabytes are labelled in TB
-		if iecsize > 1000000:
-			iecsize = (iecsize + 50000) // float(100000) / 10
-			# Omit decimal fraction if it is 0
-			if (iecsize % 1 > 0):
-				iecsize = "%.1f TB" % iecsize
+			size = hdd.diskSize() * 1000000 / 1048576.
+			if size > 1048576:
+				size = "%.2f TB" % (size / 1048576.)
+			elif size > 1024:
+				size = "%.1f GB" % (size / 1024.)
 			else:
-				iecsize = "%d TB" % iecsize
-		# Round harddisk sizes beyond ~300GB to full tens: 320, 500, 640, 750GB
-		elif iecsize > 300000:
-			iecsize = "%d GB" % ((iecsize + 5000) // 10000 * 10)
-		# ... be more precise for media < ~300GB (Sticks, SSDs, CF, MMC, ...): 1, 2, 4, 8, 16 ... 256GB
-		elif iecsize > 1000:
-			iecsize = "%d GB" % ((iecsize + 500) // 1000)
-		else:
-			iecsize = "%d MB" % iecsize
+				size = "%d MB" % size
+
+			iecsize = hdd.diskSize()
+			# Harddisks > 1000 decimal Gigabytes are labelled in TB
+			if iecsize > 1000000:
+				iecsize = (iecsize + 50000) // float(100000) / 10
+				# Omit decimal fraction if it is 0
+				if (iecsize % 1 > 0):
+					iecsize = "%.1f TB" % iecsize
+				else:
+					iecsize = "%d TB" % iecsize
+			# Round harddisk sizes beyond ~300GB to full tens: 320, 500, 640, 750GB
+			elif iecsize > 300000:
+				iecsize = "%d GB" % ((iecsize + 5000) // 10000 * 10)
+			# ... be more precise for media < ~300GB (Sticks, SSDs, CF, MMC, ...): 1, 2, 4, 8, 16 ... 256GB
+			elif iecsize > 1000:
+				iecsize = "%d GB" % ((iecsize + 500) // 1000)
+			else:
+				iecsize = "%d MB" % iecsize
 
 		info['hdd'].append({
 			"model": hdd.model(),

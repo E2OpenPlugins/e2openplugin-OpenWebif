@@ -11,16 +11,21 @@
 from enigma import eConsoleAppContainer
 from twisted.web import static, resource, http, server
 import os
+from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
 
 GRAB_PATH = '/usr/bin/grab'
+DREAMOS = getInfo()['oever'] == "OE 2.2"
 
 class grabScreenshot(resource.Resource):
 	def __init__(self,session, path = ""):
 		resource.Resource.__init__(self)
 		self.session = session
 		self.container = eConsoleAppContainer()
-		self.container.appClosed.append(self.grabFinished)
-		# self.container.dataAvail.append(self.grabData)
+		if DREAMOS:
+			self.container.appClosed_conn= self.container.dataAvail.connect(self.grabFinished)
+		else:
+			self.container.appClosed.append(self.grabFinished)
+			# self.container.dataAvail.append(self.grabData)
 
 	def render(self, request):
 		self.request = request
