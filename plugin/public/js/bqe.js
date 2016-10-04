@@ -7,6 +7,9 @@
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //*          Robert Damas <https://github.com/rdamas>
+
+//* V 2.0 - complete refactored
+
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
 //*******************************************************************************
