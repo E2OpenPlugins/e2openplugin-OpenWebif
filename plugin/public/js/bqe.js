@@ -24,6 +24,9 @@
 		// keep track of which list in left pane is shown.
 		// 0: satellites, 1: providers, 2: all channels
 		var cType;
+		
+		// Array of services type markers.
+		var sType;
 
 		return {
 			// Callback for display left panel providers list
@@ -75,7 +78,7 @@
 			buildRefStr: function (type) {
 				var r;
 				if (self.Mode === 0) {
-					r = '1:7:1:0:0:0:0:0:0:0:(type == 1) || (type == 17) || (type == 195) || (type == 25) || (type == 22) ';
+					r = '1:7:1:0:0:0:0:0:0:0:(type == 1) || (type == 17) || (type == 195) || (type == 25) || (type == 22) || (type == 31) || (type == 211) ';
 				} else {
 					r = '1:7:2:0:0:0:0:0:0:0:(type == 2) ';
 				}
@@ -96,7 +99,7 @@
 
 			// Callback function for TV/Radio button
 			// @param nmode int 
-			//        0: TV, 1: Radio, 3: initial setup, triggers reload
+			//        0: TV, 1: Radio, 2: Option, 3: initial setup, triggers reload
 			setTvRadioMode: function (nmode) {
 				var reload = false;
 				if (nmode !== self.Mode || nmode === 3) {
@@ -173,8 +176,11 @@
 					var options = '';
 					var s = data['services'];
 					$.each( s, function ( key, val ) {
-						var name = val['servicename']
-						options += '<li class="ui-widget-content">'+name+'</li>';
+						var sref = val['servicereference'];
+						var name = val['servicename'];
+						var stype = sref.split(':')[2];
+						var m = '<span class="marker">' + (self.sType[stype] || '') + '</span>';
+						options += '<li class="ui-widget-content" data-stype="'+stype+'" data-sref="'+encodeURIComponent(sref)+'">'+name+m+'</li>';
 					});
 					if (callback) {
 						callback(options);
@@ -211,7 +217,9 @@
 					$.each( s, function ( key, val ) {
 						var sref = val['servicereference'];
 						var name = val['servicename'];
-						options += '<li class="ui-widget-content" data-sref="'+encodeURIComponent(sref)+'">'+name+'</li>';
+						var stype = sref.split(':')[2];
+						var m = '<span class="marker">' + (self.sType[stype] || '') + '</span>';
+						options += '<li class="ui-widget-content" data-stype="'+stype+'" data-sref="'+encodeURIComponent(sref)+'">'+name+m+'</li>';
 					});
 					if (callback) {
 						callback(options);
@@ -575,6 +583,7 @@
 				self = this;
 				self.Mode = 0;
 				self.cType = 1;
+				self.sType = { '1': '[SD]', '16': '[SD4]', '19': '[HD]', '1F': '[UHD]', 'D3': '[OPT]' };
 
 				// Styled button sets; #tb1, #tb2 in left pane, #tb3 in right pane
 				$('#tb1').buttonset();
