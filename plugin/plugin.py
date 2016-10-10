@@ -71,7 +71,8 @@ config.OpenWebif.epg_encoding = ConfigSelection(default = 'utf-8', choices = [ '
 										'iso-8859-10',
 										'iso-8859-16'])
 
-config.OpenWebif.theme = ConfigSelection(default = 'default', choices = [ 'default','black','white'])
+config.OpenWebif.theme = ConfigSelection(default = 'redmond', choices = ['base','black-tie','blitzer','cupertino','dark-hive','dot-luv','eggplant','excite-bike','flick','hot-sneaks','humanity','le-frog','mint-choc','overcast','pepper-grinder','redmond','smoothness','south-street','start','sunny','swanky-purse','trontastic','ui-darkness','ui-lightness','vader'])
+
 
 imagedistro = getInfo()['imagedistro']
 
@@ -130,7 +131,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
 			if imagedistro in ("VTi-Team Image"):
 				self.list.append(getConfigListEntry(_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))
-			self.list.append(getConfigListEntry(_("Webinterface Theme"), config.OpenWebif.theme))
+			self.list.append(getConfigListEntry(_("Webinterface jQuery UI Theme"), config.OpenWebif.theme))
 
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)

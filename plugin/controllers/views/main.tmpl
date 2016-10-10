@@ -8,10 +8,8 @@
 <link type="text/css" href="css/font-awesome.min.css" rel="stylesheet"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 #set $t="redmond"
-#if $theme == "black"
-	#set $t="vader"
-#else if $theme == "white"
-	#set $t="smoothness"
+#if $theme
+	#set $t=$theme
 #end if
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/$t/jquery-ui.css">
 <link type="text/css" href="css/style.css" rel="stylesheet"/>
