@@ -19,10 +19,6 @@ body {
 	padding: 0;
 	font-family: Verdana,Arial,sans-serif;
 	font-size: 13px;
-	color: #061C37;
-	background: #1C478E;
-	background-image:url(../images/background.png);
-	background-repeat:repeat-x;
 }
 
 *
@@ -37,13 +33,14 @@ body {
 	height:auto;
 	position: relative; 
 	margin-left:10px;
-	margin-right:35px;
+	margin-right:10px;
 }
 
 #header
 {
-	height:70px;
+	height:150px;
 	overflow:hidden;
+	border:none;
 }
 
 #header h1
@@ -53,14 +50,13 @@ body {
 	text-align:left;
 	font-size:42px;
 	color:#FFF;
-	margin: 20px
+	margin: 20px 20px 0px 20px
 }
 
 #header h2
 {
 	font-family: Arial, Verdana,sans-serif;
 	text-align:right;
-	color:#A9D1FA;
 	margin-top:23px;
 	width:500px;
 	float: right;
@@ -100,7 +96,7 @@ body {
 
 #osd_bottom
 {
-	color: #A9D1FA;
+	/*color: #A9D1FA;*/
 	display: block;
 	font-size: 12px;
 	float:left;
@@ -127,14 +123,9 @@ body {
 {
 	width:180px;
 	float:left;
-	border: 2px solid #176093;
-	background-color: #f0f7fc;
 	padding: 0 0 0 0;
-	outline: 0 none;
-	-moz-outline-style: 0 none;
-	display: block;
-	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 	border-bottom-style: none;
+	display: block;
 }
 
 .leftmenu_icon
@@ -165,7 +156,7 @@ body {
 	margin:4px;
 }
 
-#leftmenu_main a
+#_leftmenu_main a
 {
 	color: #176093;
 }
@@ -174,7 +165,6 @@ body {
 {
 	font-size:14px;
 	font-weight:bold;
-	color: #6cb2e4;
 	padding-bottom: 2px;
 	margin-bottom: 5px;
 	border-bottom: 1px solid #d7edfc;
@@ -192,7 +182,6 @@ body {
 	list-style: none;
 	padding: 0px;
 	text-align:left;
-	color: #176093;
 }
 
 #leftmenu_main ul li a, #leftmenu_main ul li a:visited
@@ -366,7 +355,6 @@ color:#87BCF8;
 	display: inline-block;
 }
 
-
 .channel_rightE
 {
 	font-size:13px;
@@ -423,20 +411,13 @@ color:#87BCF8;
 
 #content_main
 {
-	background-color:#FFF;
-	width:100%;
+	height:100%;
 	min-width:700px;
 	padding-left:10px;
 	padding-top:10px;
 	padding-right:10px;
 	padding-bottom:10px;
-	border: 2px solid #176093;
-	outline: 0 none;
-	-moz-outline-style: 0 none;
 	border-bottom-style: none;
-	padding-left: 10px;
-	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
-	height:100%;
 }
 
 #content h1

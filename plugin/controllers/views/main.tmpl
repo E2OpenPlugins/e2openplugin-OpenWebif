@@ -22,22 +22,22 @@
 </head>
 <body>
 	<div id="container">
-		<div id="header">
+		<div id="header" class="ui-widget-header">
 			<h1><a href="/">Open<span class="off">Webif</span></a></h1>
 			#if $showname
 			<h2>$tstrings['openwebif_header']<br /><span class="off">$boxname</span></h2>
 			#else
 			<h2>$tstrings['openwebif_header']</h2>
 			#end if
+			<div id="statusheader">
+				<div id="osd">$tstrings['nothing_play']</div>
+				<div id="osd_status"></div>
+				<div id="osd_bottom"></div>
+			</div>
 		</div>
 		
-		<div id="statusheader">
-			<div id="osd">$tstrings['nothing_play']</div>
-			<div id="osd_status"></div>
-			<div id="osd_bottom"></div>
-		</div>
 		
-		<div id="leftmenu">
+		<div id="leftmenu" class="ui-widget-content">
 			#def menu($title, $name, $content)
 			<div id="leftmenu_main">
 				<div id="leftmenu_top" class="ui-widget-header">
