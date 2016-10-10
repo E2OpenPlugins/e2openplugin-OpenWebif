@@ -256,19 +256,23 @@ color:#87BCF8;
 
 #tvcontentmain
 {
-	border: 1px solid #4297d7;
+	/*border: 1px solid #4297d7;*/
 	width: 100%;
-	height:800px;
+	max-height: 80vh;
 	margin: 0;
 	padding: 0;
-	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
 
 #tvcontent,#timers,#movies
 {
-	height:730px;
-	padding:10px;
+	max-height: 90%;
+	padding-top: 4px;
 	overflow:auto;
+}
+
+#tvcontent a,#timers a,#movies a
+{
+	display: inline-block;
 }
 
 .powerStateButtons
@@ -454,6 +458,7 @@ color:#87BCF8;
 	border-bottom-style: none;
 	padding-left: 10px;
 	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
+	height:100%;
 }
 
 #content h1
@@ -637,3 +642,6 @@ html, body
 .ow_i_stream1 { background-position: -160px 0px;}
 .ow_i_stream2 { background-position: -176px 0px;}
 .ow_i_timer { background-position: -192px 0px;}
+
+/* JQuery UI Modifications */
+.ui-checkboxradio-icon { display:none; } 
