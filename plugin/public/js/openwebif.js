@@ -1121,6 +1121,7 @@ function InitAccordeon(obj)
 	
 	$(obj).accordion({
 		active: true,
+		animate: false,
 		activate: function(event, ui) {
 			ui.oldPanel.empty();
 			ui.oldPanel.html(tstr_loading + " ...");

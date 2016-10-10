@@ -152,24 +152,17 @@ body {
 	background-position: -64px 0;
 }
 
+
 #leftmenu_top
 {
 	height:18px;
 	margin:2px;
 	padding:4px;
-	border: 1px solid #4297d7; 
-	background: #1c478e url(../images/ui-bg_highlight-soft_55_1c478e_1x100.png) 50% 50% repeat-x; 
-	color: #ffffff; 
-	font-weight: bold;
-	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
 
 #leftmenu_main
 {
-	margin:4px; 
-	border: 1px solid #a6c9e2; 
-	background: #fcfdfd url(../images/ui-bg_inset-hard_100_fcfdfd_1x100.png) 50% bottom repeat-x; color: #061C37;
-	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
+	margin:4px;
 }
 
 #leftmenu_main a
@@ -243,11 +236,7 @@ color:#87BCF8;
 #toolbar-header {
 	text-align:center;
 	padding:2px;
-	border: 1px solid #4297d7; 
-	background: #1c478e url(../images/ui-bg_highlight-soft_55_1c478e_1x100.png) 50% 50% repeat-x; 
-	color: #ffffff; 
 	font-weight: bold;
-	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
 
 #toolbar {
@@ -256,7 +245,6 @@ color:#87BCF8;
 
 #tvcontentmain
 {
-	/*border: 1px solid #4297d7;*/
 	width: 100%;
 	max-height: 80vh;
 	margin: 0;
@@ -287,23 +275,15 @@ color:#87BCF8;
 .powerStateButtons ul {
 	list-style: none;
 	padding: 0;
-	margin-top: 25px;
 }
 
 .powerStateButtons li {
-	margin-top: 25px;
-	background: url("../images/ui-bg_highlight-soft_55_1c478e_1x100.png") repeat-x scroll 50% 50% #1C478E;
+	margin-top: 10px;
 	width: 220px;
-	height: 40px;
 	line-height: 40px;
-	color: #FFFFFF !important;
 	text-align: center;
 	font-size: 18px;
-	font-weight: bold;
 	cursor: pointer;
-	border: 1px solid #4297d7; 
-	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
-	box-shadow: #666 3px 3px 3px;
 }
 
 .powerStateButtons li:hover {
@@ -325,14 +305,7 @@ color:#87BCF8;
 	text-align:center;
 	margin-top: 25px;
 }
-/*
-#screenshotspinnerl {
-	margin-top: -60px;
-	float:right;
-	width:64px;
-	height:64px;
-}
-*/
+
 .channel_tr
 {
 	width:100%; 
@@ -358,7 +331,6 @@ color:#87BCF8;
 
 .channel_left
 {
-	background-color: #F0F7FC;
 	font-size:13px;
 	display:block;
 	float:left;
@@ -382,12 +354,18 @@ color:#87BCF8;
 
 .channel_right
 {
-	background-color: #F0F7FC;
 	font-size:13px;
 	float:right;
 	width: 30%;
 	text-align: right;
 }
+
+.channel_right a
+{
+	width: auto;
+	display: inline-block;
+}
+
 
 .channel_rightE
 {
@@ -513,10 +491,6 @@ color:#87BCF8;
 	height:18px;
 	margin:2px;
 	padding:4px;
-	border: 1px solid #4297d7; 
-	background: #1c478e url(../images/ui-bg_highlight-soft_55_1c478e_1x100.png) 50% 50% repeat-x; 
-	color: #ffffff; 
-	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 	font-size: 16px;
 	font-weight:bold;
 	text-align: center;
@@ -544,16 +518,6 @@ color:#87BCF8;
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
-}
-
-.infoHeader {
-
-	padding:2px;
-	border: 1px solid #4297d7; 
-	background: #1c478e url(../images/ui-bg_highlight-soft_55_1c478e_1x100.png) 50% 50% repeat-x; 
-	color: #ffffff; 
-	font-weight: bold;
 	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
 
@@ -645,3 +609,5 @@ html, body
 
 /* JQuery UI Modifications */
 .ui-checkboxradio-icon { display:none; } 
+i.fa-mobile {font-size: 18px;}
+a.focus {outline: none;}

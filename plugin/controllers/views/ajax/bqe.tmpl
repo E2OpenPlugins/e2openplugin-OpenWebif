@@ -21,26 +21,26 @@
 <div id="content_main" style="min-height: 500px;">
 <div id="info">
 
-<h3>$tstrings['Bouquet_Editor']</h3>
-<div style="background-color: #eee; display: inline-block; width: 100%; zoom: 1;">
+<h3 class="ui-widget-header">$tstrings['Bouquet_Editor']</h3>
+<div style="background-color: #eee; display: inline-block; width: 100%; zoom: 1;height: 90%;">
 
 <div style="width:50%; height:50%; float:left">
 <div style="padding:5px;">
 
 <!-- TODO: change to class -->
-<div id="toolbar-header">
-    <span id="tb1">
-        <input type="radio" id="toolbar-choose-tv" name="tb1" checked="checked" /><label for="toolbar-choose-tv">$tstrings['tv']</label>
-        <input type="radio" id="toolbar-choose-radio" name="tb1"/><label for="toolbar-choose-radio">$tstrings['radio']</label>
-    </span>
+<div id="toolbar-header" class="ui-widget-header">
+	<span id="tb1">
+		<input type="radio" id="toolbar-choose-tv" name="tb1" checked="checked" /><label for="toolbar-choose-tv">$tstrings['tv']</label>
+		<input type="radio" id="toolbar-choose-radio" name="tb1"/><label for="toolbar-choose-radio">$tstrings['radio']</label>
+	</span>
 </div>
 
-<div id="toolbar-header">
-    <span id="tb2">
-        <input type="radio" id="toolbar-choose-satellites" name="tb2" /><label for="toolbar-choose-satellites">$tstrings['satellites']</label>
-        <input type="radio" id="toolbar-choose-providers" name="tb2" checked="checked" /><label for="toolbar-choose-providers">$tstrings['providers']</label>
-        <input type="radio" id="toolbar-choose-channels" name="tb2" /><label for="toolbar-choose-channels">$tstrings['all_channels']</label>
-    </span>
+<div id="toolbar-header" class="ui-widget-header">
+	<span id="tb2">
+		<input type="radio" id="toolbar-choose-satellites" name="tb2" /><label for="toolbar-choose-satellites">$tstrings['satellites']</label>
+		<input type="radio" id="toolbar-choose-providers" name="tb2" checked="checked" /><label for="toolbar-choose-providers">$tstrings['providers']</label>
+		<input type="radio" id="toolbar-choose-channels" name="tb2" /><label for="toolbar-choose-channels">$tstrings['all_channels']</label>
+	</span>
 </div>
 
 <div id="sel0" style="height: 200px;overflow-y:scroll;">
@@ -70,7 +70,7 @@
 <div style="width:50%; height:50%; float:right">
 <div style="padding:5px;">
 
-<div id="toolbar-header">
+<div id="toolbar-header" class="ui-widget-header">
 	<span id="tb3">
 		<button id="toolbar-bouquets-reload">$tstrings['bqe_reload']</button>
 		<button id="toolbar-bouquets-export">$tstrings['bqe_export']</button>
