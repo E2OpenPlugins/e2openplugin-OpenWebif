@@ -240,6 +240,7 @@ function load_info_dialog(url,title,w,h){
 				height:height,
 				close: function(event, ui) { 
 					$(this).dialog('destroy');
+					$("#modaldialog").html('');
 				},
 			});
 		},error: function(){
@@ -266,6 +267,7 @@ function load_dm_spinner(url,title,w,h,buttons){
 		buttons:buttons,
 		close: function(event, ui) { 
 			$(this).dialog('destroy');
+			$("#modaldialog").html('');
 		},
 		open: function() {
 		$.ajax({
@@ -303,6 +305,7 @@ function load_dm(url,title,w,h){
 				buttons:buttons,
 				close: function(event, ui) { 
 					$(this).dialog('destroy');
+					$("#modaldialog").html('');
 				},
 				open: function() {
 					$(this).siblings('.ui-dialog-buttonpane').find('button:eq(0)').focus(); 
@@ -331,6 +334,7 @@ function load_message_dm(url,title){
 				buttons: buttons,
 				close: function(event, ui) { 
 					$(this).dialog('destroy');
+					$("#modaldialog").html('');
 				}
 			});
 		}
@@ -482,7 +486,7 @@ function addAutoTimerEvent(sRef, sname, title ,begin, end) {
 		
 		}
 		$("#modaldialog").dialog('destroy');
-		
+		$("#modaldialog").html('');
 }
 
 function delTimerEvent(obj) {
@@ -1101,6 +1105,7 @@ function addTimer(evt,chsref,chname) {
 function InitAccordeon(obj)
 {
 	// init accordeon for jquery UI 1.8.x
+	/*
 	$(obj).accordion({
 		active: false,
 		change: function(event, ui) {
@@ -1111,8 +1116,9 @@ function InitAccordeon(obj)
 		autoHeight: false,
 		collapsible: true
 	});
+	*/
 	// init accordeon for jquery UI 1.11.x
-	/*
+	
 	$(obj).accordion({
 		active: true,
 		activate: function(event, ui) {
@@ -1123,7 +1129,7 @@ function InitAccordeon(obj)
 		heightStyle: "content",
 		collapsible: true
 	});
-	*/
+	
 }
 
 function InitBouquets(tv)

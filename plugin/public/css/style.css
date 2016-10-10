@@ -306,7 +306,6 @@ color:#87BCF8;
 	border: 1px solid #000000; 
 }
 
-
 .moviecontainer_left { 
 	float: left;
 	width: 70%;
@@ -322,14 +321,14 @@ color:#87BCF8;
 	text-align:center;
 	margin-top: 25px;
 }
-
+/*
 #screenshotspinnerl {
 	margin-top: -60px;
 	float:right;
 	width:64px;
 	height:64px;
 }
-
+*/
 .channel_tr
 {
 	width:100%; 

@@ -3,13 +3,17 @@
 **FEATURES**
 * powertimer api
 
-## Version 0.5.0
+## Version 0.5.x
 ## (planed)
 **FEATURES**
 * removed "Smart services renaming for XBMC" and replaced with url parameter "renameserviceforxmbc=1" for getallservices 
 
-## Version 0.4.9
+## Version 0.5.0
 ## (in development)
+**FEATURES**
+* new theme setting
+
+## Version 0.4.9
 **FEATURES**
 * new api call epgservicelistnownext
 
