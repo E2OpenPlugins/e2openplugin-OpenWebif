@@ -320,9 +320,13 @@ color:#87BCF8;
 	width:100%;
 }
 
+.channel_left,.channel_right
+{
+	font-size:14px;
+}
+
 .channel_left
 {
-	font-size:13px;
 	display:block;
 	float:left;
 	width: 70%;
@@ -345,7 +349,6 @@ color:#87BCF8;
 
 .channel_right
 {
-	font-size:13px;
 	float:right;
 	width: 30%;
 	text-align: right;
@@ -442,7 +445,6 @@ color:#87BCF8;
 #content a
 {
 	text-decoration:none;
-	color: #176093;
 }
 
 #info
@@ -497,11 +499,12 @@ color:#87BCF8;
 
 .infomain 
 {
-	border: 1px solid #4297d7;
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
+	background-repeat: no-repeat;
+	background-image: none;
+	font-size:13px;
 }
 
 #volslider > div.volslider { 
@@ -561,7 +564,7 @@ html, body
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
 
 /* timerlist movielist */
-.tm_row { background-color: #F0F7FC;margin-top: 2px;margin-bottom: 5px;font-size: 13px;border: 1px solid #F0F7FC;}
+.tm_row { margin-top: 2px;margin-bottom: 5px;font-size: 13px;}
 .tm_row:hover { border: 1px dotted #4297D7;}
 .tm_buttons , .tm_text {float: left; margin-left:85px;}
 .tm_text div {padding: 3px;}
@@ -590,8 +593,8 @@ html, body
 
 /* JQuery UI Modifications */
 .ui-checkboxradio-icon { display:none; } 
+i.fa {margin-left:3px;margin-right:3px;font-size: 14px;}
 i.fa-mobile {font-size: 18px;}
-i.fa {margin-left:3px;margin-right:3px;}
 a.focus {outline: none;}
 #expandmepg,#compressmepg,#refreshmepg {float : right;display:none;}
 #expandmepgi,#compressmepgi,#refreshmepgi {font-size: 18px; float : right;margin-top: 5px;margin-right: 5px;}

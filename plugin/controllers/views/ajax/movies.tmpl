@@ -32,16 +32,16 @@
 		<div id="movies">
 		#set $count = 0
 		#for $movie in $movies
-			<div class="tm_row" id="$count">
+			<div class="tm_row ui-widget-content" id="$count">
 				<div class="tm_text">
 					<div class="tm_buttons">
 						<div>
-						<a href='#' onClick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><div class="ow_i ow_i_play"></div></a>
+						<a href='#' onClick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><div><i class="fa fa-play"></i></div></a>
 						#if $transcoding
-						<a href="#" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream']: $movie.eventname"><div class="ow_i ow_i_stream1"></div></a>
-						<a href="#" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] ($tstrings['transcoded']): $movie.eventname"><div class="ow_i ow_i_stream2"></div></a>
+						<a href="#" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream']: $movie.eventname"><div><i class="fa fa-desktop"></i></div></a>
+						<a href="#" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] ($tstrings['transcoded']): $movie.eventname"><div><i class="fa fa-mobile"></i></div></a>
 						#else
-						<a target="_blank" href='web/ts.m3u?file=$quote($movie.filename)' title="$tstrings['stream'] $movie.eventname"><div class="ow_i ow_i_stream1"></div></a>
+						<a target="_blank" href='web/ts.m3u?file=$quote($movie.filename)' title="$tstrings['stream'] $movie.eventname"><div><i class="fa fa-desktop"></i></div></a>
 						#end if
 						<br><br>
 						#set $w = $movie.lastseen
@@ -53,9 +53,9 @@
 						#end if
 						<br>
 						#set $eventname_escaped =  $movie.eventname.replace("'", r"\'")
-						<a href='/file?action=download&file=$quote($movie.filename)' title="$tstrings['download'] $movie.eventname"><div class="ow_i ow_i_save"></div></a>
-						<a href='#' onClick="renameMovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['rename_recording']"><div class="ow_i ow_i_edit"></div></a>
-						<a href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><div class="ow_i ow_i_delete"></div></a>
+						<a href='/file?action=download&file=$quote($movie.filename)' title="$tstrings['download'] $movie.eventname"><div><i class="fa fa-save"></i></div></a>
+						<a href='#' onClick="renameMovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['rename_recording']"><div><i class="fa fa-edit"></i></div></a>
+						<a href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><div><i class="fa fa-trash-o"></i></div></a>
 
 						</div>
 						</div>
