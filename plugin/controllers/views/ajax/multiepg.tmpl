@@ -29,8 +29,10 @@
 
 <div id="navepg">
 #for $slot in range(0,7)
-    <div class="float plus #if $slot==$day then 'selected' else '' #" js:day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div>
+	<div class="float plus #if $slot==$day then 'selected' else '' #" js:day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div>
 #end for
+<div id="compressmepg" onclick="CompressMEPG();"><i id="compressmepgi" class="fa fa-compress" aria-hidden="true"></i></div>
+<div id="refreshmepg" onclick="RefreshMEPG();"><i id="refreshmepgi" class="fa fa-refresh" aria-hidden="true"></i></div>
 	<br clear="all">
 
 #for $bq in $bouquets

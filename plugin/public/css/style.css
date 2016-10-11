@@ -41,6 +41,8 @@ body {
 	height:150px;
 	overflow:hidden;
 	border:none;
+	background-repeat: no-repeat;
+	background-image: none;
 }
 
 #header h1
@@ -523,11 +525,9 @@ color:#87BCF8;
 
 #spinner 
 {
-	position:relative;
-	width:120px;
-	height:120px;
-	left:0;
-	top:200px;
+	position:fixed;
+	left:50%;
+	top:50%;
 	z-index:1;
 }
 
@@ -591,4 +591,7 @@ html, body
 /* JQuery UI Modifications */
 .ui-checkboxradio-icon { display:none; } 
 i.fa-mobile {font-size: 18px;}
+i.fa {margin-left:3px;margin-right:3px;}
 a.focus {outline: none;}
+#expandmepg,#compressmepg,#refreshmepg {float : right;display:none;}
+#expandmepgi,#compressmepgi,#refreshmepgi {font-size: 18px; float : right;margin-top: 5px;margin-right: 5px;}

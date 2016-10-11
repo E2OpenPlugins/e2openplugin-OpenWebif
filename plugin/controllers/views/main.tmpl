@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="images/favicon.png">
-<link type="text/css" href="css/font-awesome.min.css" rel="stylesheet"/>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 #set $t="redmond"
 #if $theme
@@ -60,7 +60,6 @@
 			<ul>
 				<li><a href='#' onclick="load_maincontent('ajax/tv'); return false;">$tstrings['television']</a></li>
 				<li><a href='#' onclick="load_maincontent('ajax/radio'); return false;">$tstrings['radio']</a></li>
-				<li><a href='#' onclick="OpenMEPG();return false;" target=_blank>$tstrings['tv_multi_epg']</a></li>
 			</ul>
 			#end def
 		
@@ -230,17 +229,4 @@
 	<div id="editTimerForm" title="$tstrings['edit_timer']"></div>
 	
 </body>
-<script>
-function OpenMEPG()
-{
-var bq="";
-if(typeof(Storage) !== "undefined") {
-	if(localStorage.lastmbq)
-	{
-		bq= "?bref=" + localStorage.lastmbq;
-	}
-}
-window.open('ajax/multiepg2' + bq,"_blank");
-}
-</script>
 </html>

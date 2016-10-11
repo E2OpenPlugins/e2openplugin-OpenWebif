@@ -567,6 +567,8 @@ function getStatusInfo() {
 		// Set Volume
 		$("#slider").slider("value", statusinfo['volume']);
 		$("#amount").val(statusinfo['volume']);
+
+// TODO: remove images
 		
 		// Set Mute Status
 		if (statusinfo['muted'] == true) {
@@ -576,29 +578,31 @@ function getStatusInfo() {
 			mutestatus = 0;
 			$("#volimage").attr("src","/images/volume.png");
 		}
+// TODO: remove inline style
 
+		var stream = "";
 		if ((statusinfo['currservice_station']) && ((statusinfo['currservice_serviceref'].indexOf("1:0:1") !== -1) || (statusinfo['currservice_serviceref'].indexOf("1:134:1") !== -1))) {
 			var stream = "";
 			if (statusinfo['transcoding']) {
-				stream += "<a href='#' onclick=\"jumper8001('" + statusinfo['currservice_serviceref'] + "', '" + statusinfo['currservice_station'] + "')\"; title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream.png'></img></a>&nbsp;";
-				stream += "<a href='#' onclick=\"jumper8002('" + statusinfo['currservice_serviceref'] + "', '" + statusinfo['currservice_station'] + "')\"; title='" + tstr_stream + " (" + tstr_transcoded + "): " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream02.png'></img></a>&nbsp;";
+				stream += "<a href='#' onclick=\"jumper8001('" + statusinfo['currservice_serviceref'] + "', '" + statusinfo['currservice_station'] + "')\"; title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>&nbsp;";
+				stream += "<a href='#' onclick=\"jumper8002('" + statusinfo['currservice_serviceref'] + "', '" + statusinfo['currservice_station'] + "')\"; title='" + tstr_stream + " (" + tstr_transcoded + "): " + statusinfo['currservice_station'] + "'><i class='fa fa-mobile'></i></a>&nbsp;";
 			} else {
-				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + statusinfo['currservice_serviceref'] + "&name=" + statusinfo['currservice_station'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream.png'></img></a>&nbsp;";
+				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + statusinfo['currservice_serviceref'] + "&name=" + statusinfo['currservice_station'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>&nbsp;";
 			}
 			$("#osd").html(stream + "<span style='color:#EA7409;font-weight:bold'><a style='color:#EA7409;font-weight:bold;text-decoration:none;' href='#' onClick='load_maincontent(\"ajax/tv\");return false;'>" + statusinfo['currservice_station'] + "</a></span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + "<a style='color:#ffffff;text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + statusinfo['currservice_serviceref'] + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 			$("#osd_bottom").html(statusinfo['currservice_description']);
 		} else if ((statusinfo['currservice_station']) && ((statusinfo['currservice_serviceref'].indexOf("1:0:2") !== -1) || (statusinfo['currservice_serviceref'].indexOf("1:134:2") !== -1))) {
 			var stream = "";
-			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + statusinfo['currservice_serviceref'] + "&name=" + statusinfo['currservice_station'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream.png'></img></a>&nbsp;";
+			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + statusinfo['currservice_serviceref'] + "&name=" + statusinfo['currservice_station'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>&nbsp;";
 			$("#osd").html(stream + "<span style='color:#EA7409;font-weight:bold;'>" + "<a style='color:#EA7409;font-weight:bold;text-decoration:none;' href='#' onClick='load_maincontent(\"ajax/radio\");return false;'>" + statusinfo['currservice_station'] + "</a></span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + "<a style='color:#ffffff;text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + statusinfo['currservice_serviceref'] + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 			$("#osd_bottom").html(statusinfo['currservice_description']);
 		} else if ((statusinfo['currservice_station']) && ((statusinfo['currservice_serviceref'].indexOf("1:0:0") !== -1))) {
 			var stream = "";
 			if (statusinfo['transcoding']) {
-				stream += "<a href='#' onclick=\"jumper80('" + statusinfo['currservice_filename'] + "')\"; title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream.png'></img></a>&nbsp;";
-				stream += "<a href='#' onclick=\"jumper8003('" + statusinfo['currservice_filename'] + "')\"; title='" + tstr_stream + " (" + tstr_transcoded + "): " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream02.png'></img></a>&nbsp;";
+				stream += "<a href='#' onclick=\"jumper80('" + statusinfo['currservice_filename'] + "')\"; title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>&nbsp;";
+				stream += "<a href='#' onclick=\"jumper8003('" + statusinfo['currservice_filename'] + "')\"; title='" + tstr_stream + " (" + tstr_transcoded + "): " + statusinfo['currservice_station'] + "'><i class='fa fa-mobile'></i></a>&nbsp;";
 			} else {
-				stream += "<a target='_blank' href='/web/ts.m3u?file=" + statusinfo['currservice_filename'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream.png'></img></a>&nbsp;";
+				stream += "<a target='_blank' href='/web/ts.m3u?file=" + statusinfo['currservice_filename'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>&nbsp;";
 			}
 			$("#osd").html(stream + "<span style='color:#EA7409;font-weight:bold;'>" + statusinfo['currservice_station'] + "</span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + statusinfo['currservice_name']);
 			$("#osd_bottom").html(statusinfo['currservice_description']);
@@ -609,6 +613,8 @@ function getStatusInfo() {
 			$("#osd").html(tstr_nothing_play);
 			$("#osd_bottom").html('');
 		}
+		
+// TODO: remove images
 		var status = "";
 		if (statusinfo['isRecording'] == 'true') {
 			var timercall = "load_maincontent('ajax/timers'); return false;";
@@ -1133,12 +1139,53 @@ function InitAccordeon(obj)
 	
 }
 
+function RefreshMEPG()
+{
+	if(typeof(Storage) !== "undefined") {
+		if(localStorage.lastmbq)
+		{
+			var bq= "?bref=" + localStorage.lastmbq;
+			$("#tvcontent").html(loadspinner).load('ajax/multiepg' + bq,function() {
+				ExpandMEPG();
+			});
+		}
+	}
+
+}
+
+function ExpandMEPG()
+{
+	$("#expandmepg").hide();
+	$("#compressmepg").show();
+	$("#refreshmepg").show();
+	$("#header").hide();
+	$("#leftmenu").hide();
+	$('#content').css('margin-left', '5px')
+	$('#tvcontentmain > #toolbar-header').hide();
+	$("#tbl1body").height('100%');
+	$("#tvcontent").css('max-height','100%');
+
+}
+
+function CompressMEPG()
+{
+	$("#refreshmepg").hide();
+	$("#expandmepg").show();
+	$("#compressmepg").hide();
+	$("#header").show();
+	$("#leftmenu").show();
+	$('#content').css('margin-left', '185px')
+	$('#tvcontentmain > #toolbar-header').show();
+	$("#tvcontent").css('max-height','90%');
+	fixTableHeight();
+}
+
 function InitBouquets(tv)
 {
 	var mode="";
 	if (tv===true) {
-	
 		$('#btn0').click(function(){
+			$("#expandmepg").hide();
 			$("#tvcontent").html(loadspinner).load("ajax/current");
 		});
 		$('#btn5').click(function(){
@@ -1150,6 +1197,7 @@ function InitBouquets(tv)
 				}
 			}
 			$("#tvcontent").html(loadspinner).load('ajax/multiepg' + bq);
+			$("#expandmepg").show();
 		});
 
 	} 
@@ -1157,15 +1205,19 @@ function InitBouquets(tv)
 		mode= "?stype=radio";
 	}
 	$('#btn1').click(function(){
+		$("#expandmepg").hide();
 		$("#tvcontent").html(loadspinner).load("ajax/bouquets" + mode);
 	});
 	$('#btn2').click(function(){
+		$("#expandmepg").hide();
 		$("#tvcontent").html(loadspinner).load("ajax/providers" + mode);
 	});
 	$('#btn3').click(function(){
+		$("#expandmepg").hide();
 		$("#tvcontent").load("ajax/satellites" + mode);
 	});
 	$('#btn4').click(function(){
+		$("#expandmepg").hide();
 		$("#tvcontent").html(loadspinner).load("ajax/channels" + mode);
 	});
 	
