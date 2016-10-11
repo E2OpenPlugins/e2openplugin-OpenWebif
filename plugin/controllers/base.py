@@ -209,10 +209,6 @@ class BaseController(resource.Resource):
 		ret['box'] = getBoxType()
 		ret["remote"] = remote
 		from Components.config import config
-		if config.OpenWebif.theme.value:
-			ret['theme'] = config.OpenWebif.theme.value
-		else:
-			ret['theme'] = 'default'
 		if hasattr(eEPGCache, 'FULL_DESCRIPTION_SEARCH'):
 			ret['epgsearchcaps'] = True
 		else:
@@ -253,5 +249,10 @@ class BaseController(resource.Resource):
 		except ImportError:
 			pass
 		ret['extras'] = extras
-
+		if config.OpenWebif.theme.value:
+			ret['themes'] = config.OpenWebif.theme.choices
+			ret['theme'] = config.OpenWebif.theme.value
+		else:
+			ret['themes'] = []
+			ret['theme'] = 'redmond'
 		return ret

@@ -1291,3 +1291,13 @@ function jumper8001( sref, sname ) {
 }
 
 /* Vu+ Transcoding end*/
+
+function ChangeTheme(theme)
+{
+	$.ajax({
+		url: "api/settheme?theme=" + theme,
+		success: function() {
+			document.location.reload(true);
+		}
+	});
+}

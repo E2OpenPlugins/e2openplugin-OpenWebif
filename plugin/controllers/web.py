@@ -1185,3 +1185,10 @@ class WebController(BaseController):
 				})
 		return ret
 
+	def P_settheme(self, request):
+		if "theme" in request.args.keys():
+			theme = request.args["theme"][0]
+			config.OpenWebif.theme.value = theme
+			config.OpenWebif.theme.save()
+		return {}
+
