@@ -1192,3 +1192,10 @@ class WebController(BaseController):
 			config.OpenWebif.theme.save()
 		return {}
 
+	def P_css(self, request):
+		ret = {}
+		if config.OpenWebif.theme.value:
+			ret['theme'] = config.OpenWebif.theme.value
+		else:
+			ret['theme'] = 'redmond'
+		return ret
