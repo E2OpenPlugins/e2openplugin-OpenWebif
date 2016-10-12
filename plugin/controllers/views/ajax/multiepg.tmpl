@@ -115,5 +115,9 @@ fixTableHeight();
 });
 if(!timeredit_initialized)
 	\$('#editTimerForm').load('/ajax/edittimer');
+if(\$("#header").is(':hidden')) { 
+	\$('#compressmepg').show();
+	\$('#refreshmepg').show();
+}
 </script>
 
