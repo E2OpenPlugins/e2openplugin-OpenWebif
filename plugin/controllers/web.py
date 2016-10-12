@@ -1193,6 +1193,7 @@ class WebController(BaseController):
 		return {}
 
 	def P_css(self, request):
+		request.setHeader("content-type", "text/css")
 		ret = {}
 		if config.OpenWebif.theme.value:
 			ret['theme'] = config.OpenWebif.theme.value
