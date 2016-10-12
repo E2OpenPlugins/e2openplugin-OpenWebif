@@ -4,38 +4,38 @@
 .ib,.id{float:left;position:relative;margin:0 0 3px 3px;height:26px;}
 .id{width:64px;background-image:url(/images/osd/icon_64x26.png);}
 .ib{width:44px;background-image:url(/images/osd/icon_44x26.png);}
-.iconadl{float:left;position:relative;top:6px;left:15px;height:26px;color:#FFF;font-size:14px;}
+.iconadl{float:left;position:relative;top:6px;left:15px;height:26px;font-size:14px;}
 tr {background-color:#f0f7fc;}
-.d14 { position:relative;height:14px;color:#FFF;font-size:14px;left:0px;top:0px;}
-.d24 { position:relative;color:#FFF;font-size:14px;left:0px;top:10px;}
+.d14 { position:relative;height:14px;font-size:14px;left:0px;top:0px;}
+.d24 { position:relative;font-size:14px;left:0px;top:10px;}
 .d120 { float:left;display:block;width:120px;}
 .dh24 { float:left;height:24px;}
 .dh20 { float:left;height:20px;}
 .dh14 { float:left;height:14px;}
-.not-current,.is-current{font-size:16px;font-weight:bold;color:#eee;}
-.is-current{color:#f90;}
+.not-current,.is-current{font-size:16px;font-weight:bold;opacity:0.3;}
+.is-current{opacity: 1;}
 </style>
-<div style="width:680px;height:137px;background-image:url(images/osd/osd_back.png);">
+<div style="width:680px;height:137px;" class="ui-widget-content">
 	<div style="float:left;width:120px;height:137px;">
 		<div class='d120' style="height:37px;">
-			<div style="position:relative;top:10px;left:18px;color:#FFF;font-size:13px;font-weight:bold;">$info.date</div>
+			<div style="position:relative;top:10px;left:18px;font-size:13px;font-weight:bold;">$info.date</div>
 		</div>
 		<div class='d120' style="height:60px;">
 			<div style="position:relative;top:0px;left:15px;"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "images/default_picon.png")' onclick="open_epg_dialog('$info.ref','$info.name');" href="#" title="$tstrings['show_epg_for'] $info.name" border="0" alt='' /></div>
  		</div>
 		<div class='d120' style="height:40px;">
-			<div style="position:relative;top:8px;left:0px;color:#FFF;text-align:center;font-size:13px;font-weight:bold;">$info.provider</div>
+			<div style="position:relative;top:8px;left:0px;text-align:center;font-size:13px;font-weight:bold;">$info.provider</div>
 		</div>
 	</div>
 	<div style="float:left;width:560px;height:137px;">
 		<div style="float:left;width:560px;height:25px;">
-			<div style="float:left;position:relative;top:5px;left:0px;width:480px;color:#FFF;text-align:center;font-size:18px;"><a style="color:#FFF" target="_blank" title="$tstrings['stream'] $getVar('now.title', '') from $info.name" href='web/stream.m3u?ref=$info.ref&name=$info.name'>$info.name</a></div>
+			<div style="float:left;position:relative;top:5px;left:0px;width:480px;text-align:center;font-size:18px;"><a target="_blank" title="$tstrings['stream'] $getVar('now.title', '') from $info.name" href='web/stream.m3u?ref=$info.ref&name=$info.name'>$info.name</a></div>
 		</div>
 		<div style="float:left;width:560px;height:24px;">
 			<div class='dh24' style="width:70px;">
 				<div class='d24' style="left:15px;">$getVar("now.begin", " ")</div>
 			</div>
-			<div class='dh24' style="width:360px;">
+			<div class='dh24' style="width:360px;-o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;">
 				<div class='d24'>$getVar("now.title", " ")</div>
 			</div>
 			<div class='dh24' style="width:130px;">
@@ -51,7 +51,7 @@ tr {background-color:#f0f7fc;}
 			<div class='dh14' style="width:70px;">
 				<div class='d14' style="left:15px;">$getVar("next.begin", " ")</div>
 			</div>
-			<div class='dh14'style="width:360px;">
+			<div class='dh14'style="width:360px;-o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;">
 				<div class='d14'>$getVar("next.title", " ")</div>
 			</div>
 			<div class='dh14' style="width:130px;">
