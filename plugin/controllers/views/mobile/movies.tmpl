@@ -5,29 +5,26 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="user-scalable=no, width=device-width"/>
 	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<link rel="stylesheet" type="text/css" href="/css/jquery.mobile-1.0.min.css" media="screen"/>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/css/iphone.css" media="screen"/>
-	<script src="/js/jquery-1.6.2.min.js"></script>
-	<script src="/js/jquery.mobile-1.0.min.js"></script>
- </head>
- <body> 
+</head>
+<body> 
 	<div data-role="page">
-
 		<div id="header">
 			<div class="button" onClick="history.back()">$tstrings['back']</div>
 			<h1><a style="color:#FFF;text-decoration:none;" href='/mobile'>OpenWebif</a></h1>
 			<h2>$tstrings['movies']</h2>
 		</div>
-
 		<div data-role="fieldcontain">
-		   <select name="select-choice-1" id="select-choice-moviedir" onChange="window.location.href='/mobile/movies?dirname='+escape(options[selectedIndex].value);">
-			  <option value="$directory">$directory</option>
-			  #for $bookmark in $bookmarks
-			  <option value="$bookmark">$bookmark</option>
-			  #end for
-		   </select>
+			<select name="select-choice-1" id="select-choice-moviedir" onChange="window.location.href='/mobile/movies?dirname='+escape(options[selectedIndex].value);">
+				<option value="$directory">$directory</option>
+				#for $bookmark in $bookmarks
+				<option value="$bookmark">$bookmark</option>
+				#end for
+			</select>
 		</div>
-
 		<div id="contentContainer">
 			<ul data-role="listview" data-inset="true" data-theme="d">
 				<li data-role="list-divider" role="heading" data-theme="b">$tstrings['movies']</li>
@@ -40,13 +37,10 @@
 				#end for
 			</ul>
 		</div>
-
 		<div id="footer">
 			<p>OpenWebif Mobile</p>
 			<a onclick="document.location.href='/index?mode=fullpage';return false;" href="#">$tstrings['show_full_openwebif']</a>
 		</div>
-		
 	</div>
  </body>
 </html>
-      

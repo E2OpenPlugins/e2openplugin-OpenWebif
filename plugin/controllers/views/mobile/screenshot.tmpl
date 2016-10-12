@@ -1,40 +1,36 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
 <html>
- <head>
+<head>
 	<title>OpenWebif</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="user-scalable=no, width=device-width"/>
 	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<link rel="stylesheet" type="text/css" href="/css/jquery.mobile-1.0.min.css" media="screen"/>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/css/iphone.css" media="screen"/>
-	<script src="/js/jquery-1.6.2.min.js"></script>
-	<script src="/js/jquery.mobile-1.0.min.js"></script>
- </head>
- <body>
+</head>
+<body>
 	<div data-role="page">
 		<div id="header">
 			<div class="button" onClick="history.back()">$tstrings['back']</div>
 			<h1><a style="color:#FFF;text-decoration:none;" href='/mobile'>OpenWebif</a></h1>
 		</div>
-		
 		<div>
 			<fieldset data-type="horizontal" data-role="controlgroup" style="width: 275px; margin: auto; margin-top: 15px;">
-			   <div onClick="jQuery('#screenshot').attr('src','/grab?r=275&mode=all&timestamp=' + new Date().getTime()); return false;"><input type="radio" id="radio-view-a" name="radio-view"><label for="radio-view-a" data-theme="c">$tstrings['all']</label></div>
-			   <div onClick="jQuery('#screenshot').attr('src','/grab?r=275&mode=video&timestamp=' + new Date().getTime()); return false;"><input type="radio" id="radio-view-b" name="radio-view"><label for="radio-view-b" data-theme="c">$tstrings['video']</label></div>
-			   <div onClick="jQuery('#screenshot').attr('src','/grab?r=275&mode=osd&timestamp=' + new Date().getTime()); return false;"><input type="radio" id="radio-view-c" name="radio-view"><label for="radio-view-c" data-theme="c">$tstrings['osd']</label></div>
+				<div onClick="jQuery('#screenshot').attr('src','/grab?r=275&mode=all&timestamp=' + new Date().getTime()); return false;"><input type="radio" id="radio-view-a" name="radio-view"><label for="radio-view-a" data-theme="c">$tstrings['all']</label></div>
+				<div onClick="jQuery('#screenshot').attr('src','/grab?r=275&mode=video&timestamp=' + new Date().getTime()); return false;"><input type="radio" id="radio-view-b" name="radio-view"><label for="radio-view-b" data-theme="c">$tstrings['video']</label></div>
+				<div onClick="jQuery('#screenshot').attr('src','/grab?r=275&mode=osd&timestamp=' + new Date().getTime()); return false;"><input type="radio" id="radio-view-c" name="radio-view"><label for="radio-view-c" data-theme="c">$tstrings['osd']</label></div>
 			</fieldset>
-			
 			<div id="mainContent">
 				<img id="screenshot" src="/grab?r=275&mode=all" width="275" height="154" alt="$tstrings['screenshot']">
 			</div>
-			
 			<a href="#" onClick="location.reload(true)" data-role="button">$tstrings['refresh']</a>
-			
 			<div id="footer">
 				<p>OpenWebif Mobile</p>
 				<a onclick="document.location.href='/index?mode=fullpage';return false;" href="#">$tstrings['show_full_openwebif']</a>
 			</div>
 		</div>
 	</div>
- </body>
+</body>
 </html>
