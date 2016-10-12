@@ -1,15 +1,34 @@
 #from urllib import quote
 #from Plugins.Extensions.OpenWebif.local import tstrings
+#set $sort=''
+#if $sorttype != ''
+	#set $sort = '&sort=' + $sorttype
+#end if
 <div id="content_main" style="min-height: 500px;">
 	<div id="tvcontentmain">
 		<div id="toolbar-header" class="ui-widget-header">
-			<span id="toolbar">
+		<div style=display:inline-block;float:left;>
+			<select id="moviesort">
+			#set $count = 0
+			#set $sortnames = ['default','Name','Name desc','Date','Date desc']
+			#set $sorttypes = ['','name','named','date','dated']
+			#for $title in $sortnames
+				<option value="$sorttypes[$count]"
+				#if $count == $sortkey
+					selected="selected"
+				#end if
+				>$title</option>
+				#set $count += 1
+			#end for
+		</select>
+		</div>
+		<span id="toolbar">
 		#set $path=''
 		<span id="moviebuttons">
-			<button onclick="load_maincontent_spin('ajax/movies?dirname=/'); return false">$tstrings['Root']</button>
+			<button onclick="load_maincontent_spin('ajax/movies?dirname=/$sort'); return false">$tstrings['Root']</button>
 			#for $dir in $directory[0:-1].split("/")[1:-1]
 				#set $path += '/' + $dir
-				<button onclick="load_maincontent_spin('ajax/movies?dirname='+escape('$path'));">$dir</button>
+				<button onclick="load_maincontent_spin('ajax/movies?dirname='+escape('$path')+'&sort=$sort');">$dir</button>
 			#end for
 			#if $directory != '/'
 				<button><span style="color: red; font-weight: bold;">
@@ -19,7 +38,7 @@
 		</span>
 
 		#if $len($bookmarks)
-			<select name="directory" onChange="load_maincontent_spin('ajax/movies?dirname='+escape(options[selectedIndex].value)); return false;">
+			<select id="directory">
 			<option>Subdirs:</option>
 			#for $bookmark in $bookmarks
 				<option value="$directory$bookmark">$bookmark</option>
@@ -28,7 +47,6 @@
 		#end if
 		</span>
 		</div>
-
 		<div id="movies">
 		#set $count = 0
 		#for $movie in $movies
@@ -85,4 +103,14 @@
 
 <script type="text/javascript">
 \$('#moviebuttons').buttonset();
+\$("#moviesort").selectmenu({change: function(event, ui) {
+	load_maincontent_spin('ajax/movies?dirname='+escape('$directory')+'&sort='+ ui.item.value)
+}
+});
+#if $len($bookmarks)
+\$("#directory").selectmenu({change: function(event, ui) {
+	load_maincontent_spin('ajax/movies?dirname='+escape(ui.item.value)$sort)
+}
+});
+#end if
 </script>

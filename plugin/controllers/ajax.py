@@ -149,11 +149,33 @@ class AjaxController(BaseController):
 		return {}
 
 	def P_movies(self, request):
+		sorttype = ''
+		if "sort" in request.args.keys():
+			sorttype = request.args["sort"][0]
 		if "dirname" in request.args.keys():
 			movies = getMovieList(request.args["dirname"][0])
 		else:
 			movies = getMovieList()
 		movies['transcoding'] = getTranscodingSupport()
+		
+		if sorttype != '':
+			unsort = movies['movies']
+		if sorttype == 'name':
+			sortkey=1
+			movies['movies'] = sorted(unsort, key=lambda k: k['eventname']) 
+		elif sorttype == 'named':
+			sortkey=2
+			movies['movies'] = sorted(unsort, key=lambda k: k['eventname'],reverse=True) 
+		elif sorttype == 'date':
+			sortkey=3
+			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime']) 
+		elif sorttype == 'dated':
+			sortkey=4
+			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime'],reverse=True) 
+		else:
+			sortkey=0
+		movies['sortkey'] = sortkey
+		movies['sorttype'] = sorttype
 		return movies
 
 	def P_workinprogress(self, request):
