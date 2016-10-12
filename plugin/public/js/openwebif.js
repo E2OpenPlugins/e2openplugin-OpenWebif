@@ -20,7 +20,7 @@
 //*******************************************************************************
 
 $.fx.speeds._default = 1000;
-var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0,at2add = null;
+var loadspinner = "<div id='spinner'><div class='fa fa-spinner fa-spin'></div></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0,at2add = null;
 
 $(function() {
 	
