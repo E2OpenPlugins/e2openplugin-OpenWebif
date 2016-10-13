@@ -1,20 +1,30 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
 #from json import dumps
+#set $t="redmond"
+#if $theme
+	#set $t=$theme
+#end if
 <!doctype html5>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="images/favicon.png">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-#set $t="redmond"
-#if $theme
-	#set $t=$theme
-#end if
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/$t/jquery-ui.css">
+<script>if(!window.jQuery) {
+document.write(unescape('%3Cscript src="js/jquery.min.js"%3E%3C/script%3E'))
+document.write(unescape('%3Cscript src="js/jquery-ui.min.js"%3E%3C/script%3E'))
+document.write(unescape('%3Clink rel="stylesheet" href="css/jquery-ui.min.css"%3E'))
+}
+else
+{
+document.write(unescape('%3Cscript src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"%3E%3C/script%3E'))
+document.write(unescape('%3Clink rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/$t/jquery-ui.css"%3E'))
+}
+</script>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <link type="text/css" href="css/style.css" rel="stylesheet"/>
 <link type="text/css" href="web/css" rel="stylesheet"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/openwebif.js"></script>
 <script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
 <title>Open Webif</title>
