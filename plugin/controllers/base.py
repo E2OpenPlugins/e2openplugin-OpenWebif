@@ -219,35 +219,48 @@ class BaseController(resource.Resource):
 		ret['epgsearchtype'] = getEPGSearchType()['epgsearchtype']
 		extras = []
 		extras.append({ 'key': 'ajax/settings','description': _("Settings")})
+		from Components.Network import iNetwork
+		ifaces = iNetwork.getConfiguredAdapters()
+		if len(ifaces):
+			ip_list = iNetwork.getAdapterAttribute(ifaces[0], "ip") # use only the first configured interface
+			ip = "%d.%d.%d.%d" % (ip_list[0], ip_list[1], ip_list[2], ip_list[3])
+
 		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/LCD4linux/WebSite.pyo")):
 			lcd4linux_key = "lcd4linux/config"
 			if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/WebInterface/plugin.pyo")):
-				from Components.Network import iNetwork
-				ifaces = iNetwork.getConfiguredAdapters()
-				if len(ifaces):
-					ip_list = iNetwork.getAdapterAttribute(ifaces[0], "ip") # use only the first configured interface
-					ip = "%d.%d.%d.%d" % (ip_list[0], ip_list[1], ip_list[2], ip_list[3])
 				try:
 					lcd4linux_port = "http://" + ip + ":" + str(config.plugins.Webinterface.http.port.value) + "/"
 					lcd4linux_key = lcd4linux_port + 'lcd4linux/config'
 				except KeyError:
 					lcd4linux_key = None
 			if lcd4linux_key:
-				extras.append({ 'key': lcd4linux_key, 'description': _("LCD4Linux Setup")})
-		
+				extras.append({ 'key': lcd4linux_key, 'description': _("LCD4Linux Setup") , 'nw':'1'})
+
+		if fileExists("/etc/tuxbox/config/oscam.conf"):
+			import ConfigParser
+			oconfig = ConfigParser.ConfigParser()
+			oconfig.readfp(open("/etc/tuxbox/config/oscam.conf"))
+			port = oconfig.get("webif","httpport")
+			url = "http://" + ip + ":" + port + "/"
+			if port[0] == '+':
+				url = "https://" + ip + ":" + port[1:] + "/"
+			extras.append({ 'key': url, 'description': _("OSCam Webinterface"), 'nw':'1'})
+
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
 			extras.append({ 'key': 'ajax/at','description': _('AutoTimer')})
 		except ImportError:
 			pass
+
 		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/OpenWebif/controllers/views/ajax/bqe.tmpl")):
 			extras.append({ 'key': 'ajax/bqe','description': _('BouquetEditor')})
-		
+
 		try:
 			from Plugins.Extensions.EPGRefresh.EPGRefresh import epgrefresh
 			extras.append({ 'key': 'ajax/epgr','description': _('EPGRefresh')})
 		except ImportError:
 			pass
+
 		ret['extras'] = extras
 		if config.OpenWebif.theme.value:
 			ret['themes'] = config.OpenWebif.theme.choices
