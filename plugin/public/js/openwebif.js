@@ -1296,3 +1296,39 @@ function ChangeTheme(theme)
 		}
 	});
 }
+
+function tvdirectlink()
+{
+	var parts=window.location.href.toLowerCase().split("#");
+	if(parts[1] == 'tv')
+	{
+		if(parts[2] == 'mepg' || parts[2] == 'mepgfull')
+		{
+			$("#btn5").click();
+			if(parts[2] == 'mepgfull')
+			{
+				$("#expandmepg").click();
+			}
+		}
+	}
+}
+
+function directlink()
+{
+	var parts=window.location.href.toLowerCase().split("#");
+	var lnk='ajax/tv';
+	if(parts[1] == 'radio')
+	{
+		lnk='ajax/radio';
+	}
+	if(parts[1] == 'movies')
+	{
+		lnk='ajax/movies';
+	}
+	if(parts[1] == 'timer')
+	{
+		lnk='ajax/timers';
+	}
+
+	load_maincontent(lnk);
+}
