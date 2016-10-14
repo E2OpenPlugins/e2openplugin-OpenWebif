@@ -3,15 +3,16 @@
 **FEATURES**
 * powertimer api
 
-## Version 0.5.x
-## (planed)
-**FEATURES**
-* removed "Smart services renaming for XBMC" and replaced with url parameter "renameserviceforxmbc=1" for getallservices 
-
-## Version 0.5.0
+## Version 1.0.0
 ## (in development)
 **FEATURES**
+* removed "Smart services renaming for XBMC" and replaced with url parameter "renameserviceforxmbc=1" for getallservices 
 * new theme setting
+* allow sort recordings
+* update jQuery and jQuery UI
+* use fontawesome for some images
+* add oscam webif to extras
+Thanks to MDXDave for some ideas to improve the UI
 
 ## Version 0.4.9
 **FEATURES**

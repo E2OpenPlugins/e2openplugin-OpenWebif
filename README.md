@@ -1,10 +1,20 @@
+OpenWebif
+=========
+Open Source Web Interface for E2 based Linux set-top box
 
-OpenWebif (Theme branch)
-========================
+** Please check out the new [Wiki Page](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/wiki). **
 
-This branch is currently only for testing.
+Depends
+-------
+python-pprint
+python-cheetah
+python-json
+python-unixadmin
+python-misc
+python-twisted-web
+python-pyopenssl
+python-compression
 
-Todo:
-* test all pages
-* remove all color definitions from style.css
-* remove unneeded files (css, images , js ...)
+License
+-------
+Licensed under the GNU General Public License, Version 2.0. See [LICENSE](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt) for more details.

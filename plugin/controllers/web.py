@@ -207,13 +207,7 @@ class WebController(BaseController):
 					service["servicename"] = "%d - %s" % (count + 1, service["servicename"])
 					count += 1
 			return bouquets
-		
-# TODO : remove this if the setting is removed
-		if not config.OpenWebif.xbmcservices.value:
-			return getAllServices(type)
 
-# TODO : remove this if the setting is removed
-		# rename services for xbmc
 		bouquets = getAllServices(type)
 		count = 0
 		for bouquet in bouquets["services"]:
