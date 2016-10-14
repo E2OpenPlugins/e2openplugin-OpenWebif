@@ -9,21 +9,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="images/favicon.png">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script>if(!window.jQuery) {
-document.write('<script src="js/jquery.min.js"<\/script>')
-document.write('<script src="js/jquery-ui.min.js"<\/script>')
-document.write('<link rel="stylesheet" href="css/jquery-ui.min.css">')
-document.write('<link rel="stylesheet" href="css/font-awesome.min.css">')
-}
-else
-{
-document.write('<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/$t/jquery-ui.css">')
-document.write('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">')
-}
-</script>
-
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="css/jquery-ui.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/$t/jquery-ui.css">
 <link type="text/css" href="css/style.css" rel="stylesheet"/>
 <link type="text/css" href="web/css" rel="stylesheet"/>
 <script type="text/javascript" src="js/openwebif.js"></script>
@@ -182,7 +172,7 @@ document.write('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/fon
 			</ul>
 			#end def
 			#def themeMenu
-			<ul<li>
+			<ul id='thememenu'><li>
 				#if $themes
 					<select name="selectheme" id="selectheme" style="min-width: 150px;margin: 5px;border:none;font-size: 1em;">
 					#for $stheme in $themes
