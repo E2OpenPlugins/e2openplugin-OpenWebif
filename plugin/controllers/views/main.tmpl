@@ -43,9 +43,9 @@
 				<div id="leftmenu_top" class="ui-widget-header">
 					$title
 					#if $name in $collapsed
-					<div id="leftmenu_expander_$name" class="leftmenu_icon leftmenu_icon_collapse" onclick="toggleMenu('$name');"></div>
+					<div id="leftmenu_expander_$name" class="ui-selectmenu-icon ui-icon ui-icon-caret-1-w" onclick="toggleMenu('$name');"></div>
 					#else
-					<div id="leftmenu_expander_$name" class="leftmenu_icon" onclick="toggleMenu('$name');"></div>
+					<div id="leftmenu_expander_$name" class="ui-selectmenu-icon ui-icon ui-icon-caret-1-s" onclick="toggleMenu('$name');"></div>
 					#end if
 				</div>
 				#if $name in $collapsed

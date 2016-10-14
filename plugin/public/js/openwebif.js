@@ -207,13 +207,14 @@ function wait_for_openwebif() {
 
 function handle_power_state_dialog(new_power_state) {
 	var timeout = 0;
+	var sp = loadspinner.replace("'spinner'","'spinner1'");
 	$("#modaldialog").dialog('close');
 	if ( new_power_state === 2 ) {
-		load_info_dialog('ajax/rebootdialog',tstr_reboot_box);
+		load_info_dialog(sp,tstr_reboot_box);
 		wait_for_openwebif();
 		timeout = 1000 ;
 	} else if ( new_power_state === 3 ) {
-		load_info_dialog('ajax/rebootdialog',tstr_restart_gui);
+		load_info_dialog(sp,tstr_restart_gui);
 		wait_for_openwebif();
 		timeout = 1000 ;
 	}
@@ -222,31 +223,23 @@ function handle_power_state_dialog(new_power_state) {
 	}, timeout);
 }
 
-function load_info_dialog(url,title,w,h){
+function load_info_dialog(data,title,w,h){
 	var width = 'auto',height='auto';
 	if (typeof w !== 'undefined')
 		width = w;
 	if (typeof h !== 'undefined')
 		height = h;
 
-	$.ajax({
-		url: url,
-		success: function(data) {
-			$("#modaldialog").html(data).dialog({
-				modal:true,
-				title:title,
-				autoOpen:true,
-				width:width,
-				height:height,
-				close: function(event, ui) { 
-					$(this).dialog('destroy');
-					$("#modaldialog").html('');
-				},
-			});
-		},error: function(){
-			alert('error! Loading Page');
-		}
-		
+	$("#modaldialog").html(data).dialog({
+		modal:true,
+		title:title,
+		autoOpen:true,
+		width:width,
+		height:height,
+		close: function(event, ui) { 
+			$(this).dialog('destroy');
+			$("#modaldialog").html('');
+		},
 	});
 }
 
@@ -498,9 +491,9 @@ function toggleTimerStatus(sRef, begin, end) {
 	var data = { sRef: sRef, begin: begin, end: end };
 	$.getJSON(url, data, function(result){
 		var obj = $('#img-'+begin+'-'+end);
-		obj.removeClass("ow_i_disabled");
-		obj.removeClass("ow_i_enabled");
-		obj.addClass(result['disabled'] ? "ow_i_disabled" : "ow_i_enabled");
+		obj.removeClass("fa-square-o");
+		obj.removeClass("fa-check-square-o");
+		obj.addClass(result['disabled'] ? "fa-square-o" : "fa-check-square-o");
 	});
 }
 
@@ -691,13 +684,15 @@ function sendMessage() {
 function toggleMenu(name) {
 	var expander_id = "#leftmenu_expander_" + name;
 	var container_id = "#leftmenu_container_" + name;
-	if ($(expander_id).hasClass("leftmenu_icon_collapse")) {
-		$(expander_id).removeClass("leftmenu_icon_collapse");
+	if ($(expander_id).hasClass("ui-icon-caret-1-w")) {
+		$(expander_id).removeClass("ui-icon-caret-1-w");
+		$(expander_id).addClass("ui-icon-caret-1-s");
 		$(container_id).show('fast');
 		webapi_execute("/api/expandmenu?name=" + name);
 	}
 	else {
-		$(expander_id).addClass("leftmenu_icon_collapse");
+		$(expander_id).addClass("ui-icon-caret-1-w");
+		$(expander_id).removeClass("ui-icon-caret-1-s");
 		$(container_id).hide('fast');
 		webapi_execute("/api/collapsemenu?name=" + name);
 	}

@@ -98,7 +98,6 @@ body {
 
 #osd_bottom
 {
-	/*color: #A9D1FA;*/
 	display: block;
 	font-size: 12px;
 	float:left;
@@ -130,22 +129,6 @@ body {
 	display: block;
 }
 
-.leftmenu_icon
-{
-	width: 16px;
-	height: 16px;
-	float: right;
-	cursor: pointer;
-	background-image: url(/images/ui-icons_d8e7f3_256x240.png);
-	background-position: 0 0;
-}
-
-.leftmenu_icon_collapse
-{
-	background-position: -64px 0;
-}
-
-
 #leftmenu_top
 {
 	height:18px;
@@ -156,11 +139,6 @@ body {
 #leftmenu_main
 {
 	margin:4px;
-}
-
-#_leftmenu_main a
-{
-	color: #176093;
 }
 
 #leftmenu_main h3
@@ -237,7 +215,7 @@ color:#87BCF8;
 #tvcontentmain
 {
 	width: 100%;
-	max-height: 80vh;
+/*	max-height: 80vh; */
 	margin: 0;
 	padding: 0;
 }
@@ -300,7 +278,7 @@ color:#87BCF8;
 .channel_tr
 {
 	width:100%; 
-	background-color: #F0F7FC;
+/*	background-color: #F0F7FC;*/
 }
 
 .channel_tr div
@@ -310,7 +288,7 @@ color:#87BCF8;
 
 .channel_tr div div
 {
-	border-top: 1px dotted #4297d7;
+/*	border-top: 1px dotted #4297d7;*/
 }
 
 .channel_content
@@ -323,6 +301,8 @@ color:#87BCF8;
 .channel_left,.channel_right
 {
 	font-size:14px;
+	height:18px;
+	background-color:rgba(0,0,0,0.1);
 }
 
 .channel_left
@@ -416,7 +396,7 @@ color:#87BCF8;
 
 #content_main
 {
-	height:100%;
+	/*height:100%;*/
 	min-width:700px;
 	padding-left:10px;
 	padding-top:10px;
@@ -526,7 +506,7 @@ color:#87BCF8;
 	color:#7198E1;
 }
 
-#spinner 
+#spinner,#spinner1
 {
 	position:fixed;
 	left:50%;
@@ -534,6 +514,13 @@ color:#87BCF8;
 	z-index:1;
 	font-size: 100px;
 }
+#spinner1
+{
+	left:5%;
+	top:5%;
+	position:relative;
+}
+
 
 #configuration
 {
@@ -573,24 +560,8 @@ html, body
 .tm_buttons div {padding: initial;}
 .tm_buttons div div {margin:3px 0px 3px 3px;}
 
-.mlp { height:10px; width:70px; background:#1c478e url(../images/ui-bg_highlight-soft_55_1c478e_1x100.png) 50% 50% repeat-x;}
+.mlp { height:10px; width:70px; background:#1c478e;}
 .mlpp { height:8px;position:relative;background-color: white;border: 1px solid #4297d7;margin:0 !important;}
-
-/* icons*/
-.ow_i { width:16px;height:16px; display:inline-block;background-image:url(/images/ico_x16.png);}
-.ow_i_folder { background-position: 0px 0px;}
-.ow_i_delete { background-position: -16px 0px;}
-.ow_i_play { background-position: -32px 0px;}
-.ow_i_info { background-position: -48px 0px;}
-.ow_i_disabled { background-position: -64px 0px;}
-.ow_i_save { background-position: -80px 0px;}
-.ow_i_edit { background-position: -96px 0px;}
-.ow_i_enabled { background-position: -112px 0px;}
-.ow_i_epg { background-position: -128px 0px;}
-.ow_i_lock { background-position: -144px 0px;}
-.ow_i_stream1 { background-position: -160px 0px;}
-.ow_i_stream2 { background-position: -176px 0px;}
-.ow_i_timer { background-position: -192px 0px;}
 
 /* JQuery UI Modifications */
 .ui-checkboxradio-icon { display:none; } 
