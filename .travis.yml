@@ -1,0 +1,13 @@
+language: python
+
+python:
+- "2.7"
+
+install:
+- pip install cheetah
+- pip install twisted
+- pip install pyopenssl
+
+script: 
+- python -m compileall -l . -l plugin -l plugin/backport -l plugin/controllers -l plugin/controllers/models
+- cheetah compile -R plugin
