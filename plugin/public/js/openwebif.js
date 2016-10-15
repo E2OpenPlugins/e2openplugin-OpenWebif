@@ -197,11 +197,12 @@ function initJsTranslation(strings) {
 
 function wait_for_openwebif() {
 	var restartCheck = window.setInterval(function() {
-		$.getJSON('/api/statusinfo').success(function() {
-			window.clearInterval(restartCheck);
-			$("#modaldialog").dialog('close');
-			location.reload();
-		});
+		webapi_execute('/api/statusinfo',
+			function() {
+				window.clearInterval(restartCheck);
+				$("#modaldialog").dialog('close');
+				location.reload();
+			});
 	}, 2000);
 }
 
@@ -368,10 +369,10 @@ function load_maincontent_spin(url) {
 
 function webapi_execute(url, callback) {
 	var jqxhr = $.ajax( url ).done(function() { 
-    		if (typeof callback !== 'undefined') {
-    			callback();
-    		}
-    	});
+	if (typeof callback !== 'undefined') {
+			callback();
+		}
+	});
 	return false;
 }
 
@@ -447,6 +448,20 @@ function addTimerEventPlay(sRef, eventId) {
 
 function addEditTimerEvent(sRef, eventId) {
 	var url="/api/event?sref=" + sRef + "&idev=" + eventId;
+	$.ajax({
+		url: url,
+		dataType: "json",
+		success: function(result) { 
+			if (typeof result !== 'undefined' && typeof result.event !== 'undefined') {
+				addTimer(result.event);
+			}
+			else
+				alert("Event not found");
+		},
+		error: function(data) {}
+	});
+	
+/*	
 	$.getJSON(url, function(result){
 		if (typeof result !== 'undefined' && typeof result.event !== 'undefined') {
 			addTimer(result.event);
@@ -454,6 +469,7 @@ function addEditTimerEvent(sRef, eventId) {
 		else
 			alert("Event not found");
 	});
+*/
 }
 
 function addAutoTimerEvent(sRef, sname, title ,begin, end) {
@@ -489,12 +505,27 @@ function delTimerEvent(obj) {
 function toggleTimerStatus(sRef, begin, end) {
 	var url="/api/timertogglestatus?";
 	var data = { sRef: sRef, begin: begin, end: end };
+	
+	$.ajax({
+		url: url,
+		dataType: "json",
+		data:data,
+		success: function(result) { 
+			var obj = $('#img-'+begin+'-'+end);
+			obj.removeClass("fa-square-o");
+			obj.removeClass("fa-check-square-o");
+			obj.addClass(result['disabled'] ? "fa-square-o" : "fa-check-square-o");
+		},
+		error: function(data) {}
+	});
+/*	
 	$.getJSON(url, data, function(result){
 		var obj = $('#img-'+begin+'-'+end);
 		obj.removeClass("fa-square-o");
 		obj.removeClass("fa-check-square-o");
 		obj.addClass(result['disabled'] ? "fa-square-o" : "fa-check-square-o");
 	});
+*/
 }
 
 function deleteTimer(sRef, begin, end, title) {
@@ -532,7 +563,9 @@ function playRecording(sRef) {
 	// for debugging 
 	console.debug(sr);
 	var url = '/api/zap?sRef=' + sr;
-	$.getJSON(url, function(result){
+	
+	webapi_execute(url,
+	function() {
 		$("#osd").html(" ");
 		$("#osd_bottom").html(" ");
 	});
@@ -540,7 +573,8 @@ function playRecording(sRef) {
 
 function zapChannel(sRef, sname) {
 	var url = '/api/zap?sRef=' + escape(sRef);
-	$.getJSON(url, function(result){
+	webapi_execute(url,
+	function() {
 		$("#osd").html(tstr_zap_to + ': ' + sname);
 		$("#osd_bottom").html(" ");
 	});
