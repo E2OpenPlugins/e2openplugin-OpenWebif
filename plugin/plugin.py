@@ -30,7 +30,7 @@ from httpserver import HttpdStart, HttpdStop, HttpdRestart
 
 from __init__ import _
 
-THEMES = ['base','black-tie','blitzer','cupertino','dark-hive','dot-luv','eggplant','excite-bike','flick','hot-sneaks','humanity','le-frog','mint-choc','overcast','pepper-grinder','redmond','smoothness','south-street','start','sunny','swanky-purse','trontastic','ui-darkness','ui-lightness','vader']
+THEMES = ['original','base','black-tie','blitzer','cupertino','dark-hive','dot-luv','eggplant','excite-bike','flick','hot-sneaks','humanity','le-frog','mint-choc','overcast','pepper-grinder','smoothness','south-street','start','sunny','swanky-purse','trontastic','ui-darkness','ui-lightness','vader']
 
 config.OpenWebif = ConfigSubsection()
 config.OpenWebif.enabled = ConfigYesNo(default=True)
@@ -73,7 +73,7 @@ config.OpenWebif.epg_encoding = ConfigSelection(default = 'utf-8', choices = [ '
 										'iso-8859-10',
 										'iso-8859-16'])
 
-config.OpenWebif.theme = ConfigSelection(default = 'redmond', choices = THEMES )
+config.OpenWebif.theme = ConfigSelection(default = 'original', choices = THEMES )
 
 imagedistro = getInfo()['imagedistro']
 

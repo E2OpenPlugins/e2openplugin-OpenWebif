@@ -571,3 +571,12 @@ a.focus {outline: none;}
 #expandmepg,#compressmepg,#refreshmepg {float : right;display:none;}
 #expandmepgi,#compressmepgi,#refreshmepgi {font-size: 18px; float : right;margin-top: 5px;margin-right: 5px;}
 .ui-selectmenu-text {margin-left:5px; }
+
+.tcurrent
+{
+	font-size:12px;
+}
+
+.tcurrent tr {background-color:rgba(128,128,128,0.1);}
+
+#dcurrent {width:680px;height:137px;}

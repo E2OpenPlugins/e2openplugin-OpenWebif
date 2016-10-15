@@ -5,7 +5,6 @@
 .id{width:64px;background-image:url(/images/osd/icon_64x26.png);}
 .ib{width:44px;background-image:url(/images/osd/icon_44x26.png);}
 .iconadl{float:left;position:relative;top:6px;left:15px;height:26px;font-size:14px;}
-tr {background-color: rgba(128,128,128,0.1);}
 .d14 { position:relative;height:14px;font-size:14px;left:0px;top:0px;}
 .d24 { position:relative;font-size:14px;left:0px;top:10px;}
 .d120 { float:left;display:block;width:120px;}
@@ -15,7 +14,7 @@ tr {background-color: rgba(128,128,128,0.1);}
 .not-current,.is-current{font-size:16px;font-weight:bold;opacity:0.3;}
 .is-current{opacity: 1;}
 </style>
-<div style="width:680px;height:137px;" class="ui-widget-content">
+<div id="dcurrent" class="ui-widget-content">
 	<div style="float:left;width:120px;height:137px;">
 		<div class='d120' style="height:37px;">
 			<div style="position:relative;top:10px;left:18px;font-size:13px;font-weight:bold;">$info.date</div>
@@ -137,7 +136,7 @@ tr {background-color: rgba(128,128,128,0.1);}
 <!-- /END OSD -->
 
 <br />
-<table class="ui-widget-content" style="font-size:12px;" width="100%" border="0" cellspacing="1" cellpadding="5">
+<table class="ui-widget-content tcurrent" width="100%" border="0" cellspacing="1" cellpadding="5">
 	<tr style="background-color:initial;" >
 		<th colspan="3" class="ui-widget-header">$tstrings['service']</th>
 	</tr>

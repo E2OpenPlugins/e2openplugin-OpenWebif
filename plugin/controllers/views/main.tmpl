@@ -1,6 +1,6 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
 #from json import dumps
-#set $t="redmond"
+#set $t="original"
 #if $theme
 	#set $t=$theme
 #end if
@@ -13,7 +13,9 @@
 <script src="js/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="css/jquery-ui.min.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/$t/jquery-ui.css">
+#if $t != "original"
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/$t/jquery-ui.css">
+#end if
 <link type="text/css" href="css/style.css" rel="stylesheet"/>
 <link type="text/css" href="web/css" rel="stylesheet"/>
 <script type="text/javascript" src="js/openwebif.js"></script>
