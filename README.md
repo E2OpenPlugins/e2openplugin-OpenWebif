@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/E2OpenPlugins/e2openplugin-OpenWebif.svg?branch=Theme)](https://travis-ci.org/E2OpenPlugins/e2openplugin-OpenWebif)
+
 OpenWebif
 =========
 Open Source Web Interface for E2 based Linux set-top box
