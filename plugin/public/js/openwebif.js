@@ -460,16 +460,6 @@ function addEditTimerEvent(sRef, eventId) {
 		},
 		error: function(data) {}
 	});
-	
-/*	
-	$.getJSON(url, function(result){
-		if (typeof result !== 'undefined' && typeof result.event !== 'undefined') {
-			addTimer(result.event);
-		}
-		else
-			alert("Event not found");
-	});
-*/
 }
 
 function addAutoTimerEvent(sRef, sname, title ,begin, end) {
@@ -518,14 +508,6 @@ function toggleTimerStatus(sRef, begin, end) {
 		},
 		error: function(data) {}
 	});
-/*	
-	$.getJSON(url, data, function(result){
-		var obj = $('#img-'+begin+'-'+end);
-		obj.removeClass("fa-square-o");
-		obj.removeClass("fa-check-square-o");
-		obj.addClass(result['disabled'] ? "fa-square-o" : "fa-check-square-o");
-	});
-*/
 }
 
 function deleteTimer(sRef, begin, end, title) {
@@ -589,8 +571,12 @@ function toggleStandby() {
 }
 
 function getStatusInfo() {
-	$.ajaxSetup({ cache: false });
-	$.getJSON('/api/statusinfo').success(function(statusinfo) {
+
+	$.ajax({
+		url: '/api/statusinfo',
+		dataType: "json",
+		cache: false,
+		success: function(statusinfo) { 
 		// Set Volume
 		$("#slider").slider("value", statusinfo['volume']);
 		$("#amount").val(statusinfo['volume']);
@@ -655,8 +641,9 @@ function getStatusInfo() {
 		}
 		status += "' width='58' height='24' /></a>";
 		$("#osd_status").html(status);
-	}).error(function() {
+	} , error: function() {
 		$("#osd, #osd_bottom").html("");
+	}
 	});
 }
 
@@ -682,8 +669,12 @@ function grabScreenshot(mode) {
 }
 
 function getMessageAnswer() {
-	$.getJSON('/api/messageanswer', function(result){
-		$('#messageSentResponse').html(result['message']);
+	$.ajax({
+		url: '/api/messageanswer',
+		dataType: "json",
+		success: function(result) { 
+			$('#messageSentResponse').html(result['message']);
+		}
 	});
 }
 
@@ -704,15 +695,18 @@ function sendMessage() {
 	var type = $('#messageType').val();
 	var timeout = $('#messageTimeout').val();
 
-	$.getJSON('/api/message?text=' + text + '&type=' + type + '&timeout=' + timeout, function(result){
-		$('#messageSentResponse').html(result['message']);
-		if(type==0)
-		{
-			MessageAnswerCounter=timeout;
-			setTimeout(countdowngetMessage, 1000);
+	$.ajax({
+		url: '/api/message?text=' + text + '&type=' + type + '&timeout=' + timeout,
+		dataType: "json",
+		success: function(result) { 
+			$('#messageSentResponse').html(result['message']);
+			if(type==0)
+			{
+				MessageAnswerCounter=timeout;
+				setTimeout(countdowngetMessage, 1000);
+			}
 		}
 	});
-	
 }
 
 function toggleMenu(name) {
