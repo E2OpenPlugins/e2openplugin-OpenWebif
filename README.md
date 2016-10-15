@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/E2OpenPlugins/e2openplugin-OpenWebif.svg?branch=Theme)](https://travis-ci.org/E2OpenPlugins/e2openplugin-OpenWebif)
+[![Current release](https://img.shields.io/github/release/E2OpenPlugins/e2openplugin-OpenWebif.svg?style=flat-square)](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/releases)
 
 OpenWebif
 =========
