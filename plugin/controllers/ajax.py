@@ -201,6 +201,12 @@ class AjaxController(BaseController):
 			"result": True
 		}
 		ret['configsections'] = getConfigsSections()['sections']
+		if config.OpenWebif.theme.value:
+			ret['themes'] = config.OpenWebif.theme.choices
+			ret['theme'] = config.OpenWebif.theme.value
+		else:
+			ret['themes'] = []
+			ret['theme'] = 'original'
 		return ret
 
 	def P_multiepg(self, request):

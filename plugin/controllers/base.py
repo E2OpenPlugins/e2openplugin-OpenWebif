@@ -263,9 +263,7 @@ class BaseController(resource.Resource):
 
 		ret['extras'] = extras
 		if config.OpenWebif.theme.value:
-			ret['themes'] = config.OpenWebif.theme.choices
 			ret['theme'] = config.OpenWebif.theme.value
 		else:
-			ret['themes'] = []
-			ret['theme'] = 'redmond'
+			ret['theme'] = 'original'
 		return ret

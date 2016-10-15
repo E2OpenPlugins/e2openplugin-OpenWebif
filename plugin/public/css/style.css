@@ -92,7 +92,7 @@ body {
 	height: 18px;
 	width: 80%;
 	margin-left: 5px;
-	margin-top: 15px;
+	margin-top: 20px;
 	overflow:hidden;
 }
 
@@ -222,7 +222,7 @@ color:#87BCF8;
 
 #tvcontent,#timers,#movies
 {
-	max-height: 90%;
+	max-height: 95%;
 	padding-top: 4px;
 	overflow:auto;
 }
@@ -580,3 +580,5 @@ a.focus {outline: none;}
 .tcurrent tr {background-color:rgba(128,128,128,0.1);}
 
 #dcurrent {width:680px;height:137px;}
+
+#tvcontentmain { height :calc(100vh - 195px);}

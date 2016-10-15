@@ -1187,7 +1187,7 @@ function ExpandMEPG()
 	$('#tvcontentmain > #toolbar-header').hide();
 	$("#tbl1body").height('100%');
 	$("#tvcontent").css('max-height','100%');
-
+	$("#tvcontentmain").css('height','calc(100vh - 50px)');
 }
 
 function CompressMEPG()
@@ -1200,6 +1200,7 @@ function CompressMEPG()
 	$('#content').css('margin-left', '185px')
 	$('#tvcontentmain > #toolbar-header').show();
 	$("#tvcontent").css('max-height','90%');
+	$("#tvcontentmain").css('height','calc(100vh - 195px)');
 	fixTableHeight();
 }
 
@@ -1356,6 +1357,10 @@ function directlink()
 	if(parts[1] == 'timer')
 	{
 		lnk='ajax/timers';
+	}
+	if(parts[1] == 'settings')
+	{
+		lnk='ajax/settings';
 	}
 
 	load_maincontent(lnk);

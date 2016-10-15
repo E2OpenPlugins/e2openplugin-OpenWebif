@@ -5,6 +5,9 @@
 		<div id="toolbar-header" class="ui-widget-header">
 			<span id="toolbar">
 				<span id="settingsbuttons">
+				#if $themes
+					<button id='themesbtn' onclick="load_theme(); return false;">OpenWebif Browser Theme</button>
+				#end if
 				#for $sec in $configsections
 					<button id='$sec["key"]' onclick="load_scontent('ajax/config?section=$sec["key"]'); return false;">$sec["description"]</button>
 				#end for
@@ -14,12 +17,34 @@
 
 		<div id="scontent"></div>
 		</div>
+		#if $themes
+		<div id='themeselect' style="display:none;">
+			<select name="selectheme" id="selectheme" style="min-width: 150px;margin: 5px;border:none;font-size: 1em;">
+			#for $stheme in $themes
+				#if $stheme == $theme
+					<option selected="selected">$stheme</option>
+				#else
+					<option>$stheme</option>
+				#end if
+			#end for
+			</select>
+		</div>
+		#end if
 
 	</div>
 </div>
 #raw
 <script type="text/javascript">
+	function load_theme() {
+		$("#scontent").html();
+		$("#themeselect").show();
+		$("#selectheme").change(function() {
+			ChangeTheme($(this).val());
+		});
+		return false;
+	}
 	function load_scontent(url) {
+		$("#themeselect").hide();
 		$("#scontent").load(url , function () {
 			$("#scontent").find("#content_main").attr("id","content_main1");
 		});

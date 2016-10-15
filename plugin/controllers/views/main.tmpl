@@ -173,21 +173,6 @@
 				#end for
 			</ul>
 			#end def
-			#def themeMenu
-			<ul id='thememenu'><li>
-				#if $themes
-					<select name="selectheme" id="selectheme" style="min-width: 150px;margin: 5px;border:none;font-size: 1em;">
-					#for $stheme in $themes
-						#if $stheme == $theme
-							<option selected="selected">$stheme</option>
-						#else
-							<option>$stheme</option>
-						#end if
-					#end for
-					</select>
-				#end if
-			</li></ul>
-			#end def
 			<div id="menucontainer">
 				$menu($tstrings['main'], "main", $mainMenu)
 				$menu($tstrings['volumecontrol'], "volume", $volumeMenu)
@@ -197,9 +182,6 @@
 				$menu($tstrings['stream'], "stream", $streamMenu)
 				$menu($tstrings['extras'], "extras", $extrasMenu)
 				$menu($tstrings['epgsearch'], "search", $searchMenu)
-				#if $themes
-					$menu("Theme", "theme", $themeMenu)
-				#end if
 			</div>
 			<div id="remotecontainer" style="display: none;">
 				<div id="leftmenu_main">
@@ -246,9 +228,6 @@
 <script type="text/javascript">
 \$(document).ready(function() {
 	\$("#remote_container").load("static/remotes/${remote}.html");
-	\$("#selectheme").change(function() {
-		ChangeTheme(\$(this).val());
-	});
 	directlink();
 });
 </script>
