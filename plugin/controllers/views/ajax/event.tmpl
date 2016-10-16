@@ -7,6 +7,18 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
 
 <style>
+.tb { display:inline-block; margin-top:10px;width: 36px; height: 36px;}
+.bb {width: 38px; height: 38px; margin-top:10px;}
+#cl { font-size:32px;margin-top:7px; }
+#pp { font-size:14px; margin-left:24px; margin-top:-38px; }
+#tp {font-family: Arial;font-weight:bold; font-size:12px; margin-left:22px; margin-top:-38px; }
+#tp2 {font-weight:bold; font-size:20px; margin-left:22px; margin-top:-44px; }
+.fl { float:left;}
+.fr { float:right;}
+#station { cursor:pointer;}
+
+.im { font-family:Impact,Arial;font-size:20px; margin-top:15px;}
+
 .ti_icon {
 margin:5px 2px 0px 0px;
 height:25px;
@@ -31,7 +43,8 @@ display:inline-block;
 	</div>
 	<div id="leftmenu_container_main" class="ui-widget-content" style="padding:6px">
 		<div style="float:left; width:80px;">
-			<div id="station" style="background-color: #1c478e; padding:2px; width:75px; text-align:center; overflow:hidden">$event['channel']</div>
+			<div id="station" style="background-color: #1c478e; padding:2px; width:75px; text-align:center; overflow:hidden" onclick="zapChannel('$str($event['sref'])', '$channel')" title="$tstrings['zap']">$event['channel']</div>
+		
 			<div style="background-color: #1c478e; color:#fff; width:79px; font-size:23px; margin-top: 5px; text-align:center">
 				$event.begin_str<br/>
 				<span style="font-size:12px; color:#A9D1FA">$int($event.duration/60) min</span>
@@ -42,32 +55,69 @@ display:inline-block;
 				<div style="color:#A9D1FA; text-align:center">$time.strftime("%d", $etime) $tstrings[("month_" + ($time.strftime("%m", $etime)))]</div>
 			</div>
 
-			<div style="text-align:center">
+			<div style="margin-left:1px; margin-right:3px;">
 				
-				#if $transcoding
-<a href="#" onclick="jumper8001('$sref', '$channel');" title="$tstrings['stream']: $channel"><img src="../images/ico_stream.png" style="width:24px; height:22px; margin:0px 2px 0px 0px" border="0"></a>
-<a href="#" onclick="jumper8002('$sref', '$channel');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel"><img src="../images/ico_stream02.png" style="width:24px; height:22px; margin:5px 2px 0px 0px" border="0"></a>
-#else
-<a target="_blank" href='../web/stream.m3u?ref=$sref&name=$channel' title="$tstrings['stream'] $channel"><img src="../images/ico_stream.png" style="width:24px; height:22px; margin:5px 2px 0px 0px" border="0"></a>
-#end if
-				<br>
+			#if $transcoding
+			<a class="fl" href="#" onclick="jumper8001('$sref', '$channel');" title="$tstrings['stream']: $channel"><i class="fa fa-desktop" style="font-size:22px;"></i></a>
+			<a class="fr" href="#" onclick="jumper8002('$sref', '$channel');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel"><i class="fa fa-mobile" style="font-size:26px;margin-top:-3px;"></i></a>
+			#else
+			<a class="fl" target="_blank" href='../web/stream.m3u?ref=$sref&name=$channel' title="$tstrings['stream'] $channel"><i class="fa fa-desktop" style="font-size:22px;"></i></a>
+			#end if
 			
-					<a href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']"><div class="ti_icon ti_timer"></div></a>
-					<a href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']"><div class="ti_icon ti_timerplay"></div></a>
-					<br>
-					<a href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']"><div class="ti_icon ti_timeredit"></div></a>
-					#if $at
-					<a class="at_timer" href="#" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin_str','$event.end');return false;" title="$tstrings['add_autotimer']"><div class="ti_icon ti_timerat"></div></a>
-					#end if
-					<a class="d_timer" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']"><div class="ti_icon ti_timerdelete"></div></a>
-					<br>
-					#if $kinopoisk
-					<a target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)"><img src="../images/kinopoisk.png" style="width:24px; height:24px; margin:0px 3px 0px 0px" title="$tstrings['search_kinopoisk']" border="0"></a>
-					#else
-					<a target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)"><img src="../images/imdb.png" style="width:24px; height:24px; margin:0px 3px 0px 0px" title="$tstrings['search_imdb']" border="0"></a>
-					#end if
-				<img src="../images/ico_zap.png" style="width:25px; height:25px; margin:5px 5px 0px 0px" alt="Zap" title="$tstrings['zap']" style="cursor:pointer" onclick="zapChannel('$str($event['sref'])', '$channel')" />
+			<br>
 			
+			<a class="tb fl" href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']">
+			<span class="bb">
+			<i id="cl" class="fa fa-clock-o"></i>
+			<i id="tp2" class="fa b">+</i>
+			</span>
+			</a>
+			
+			<a class="tb fr" href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']">
+			<span class="bb">
+			<i id="cl" class="fa fa-clock-o"></i>
+			<i id="pp" class="fa fa-play"></i>
+			</span>
+			</a>
+			
+			<br>
+			
+			<a class="tb fl" href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']">
+			<span class="bb">
+			<i id="cl" class="fa fa-clock-o"></i>
+			</span>
+			</a>
+
+			#if $at
+			
+			<a class="tb fr" href="#" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin_str','$event.end');return false;" title="$tstrings['add_autotimer']">
+			<span class="bb">
+			<i id="cl" class="fa fa-clock-o"></i>
+			<i id="tp" class="fa">AT</i>
+			</span>
+			</a>
+			
+			#end if
+			
+			<br>
+			
+			
+			<a class="tb" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']">
+			<span class="bb">
+			<i id="cl" class="fa fa-clock-o"></i>
+			<i id="pp" class="fa fa-trash"></i>
+			</span>
+			</a>
+			
+			<br>
+			
+				#if $kinopoisk
+				<a class="tb fl" target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)"><img src="../images/kinopoisk.png" style="width:24px; height:24px; margin:0px 3px 0px 0px" title="$tstrings['search_kinopoisk']" border="0"></a>
+				#else
+				<a class="im tb fl" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']">IMDb</a>
+				#end if
+			
+
 			</div>
 		</div>
 		<div style="float:left; width:250px; margin-left: 5px">
