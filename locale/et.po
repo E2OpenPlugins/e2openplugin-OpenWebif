@@ -2,67 +2,69 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2016-04-30 15:06+0200\n"
-"PO-Revision-Date: 2016-04-30 20:14+0200\n"
+"PO-Revision-Date: 2016-10-16 11:20+0300\n"
 "Last-Translator: rimas\n"
 "Language-Team: Estonian\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.9\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../plugin/controllers/BouquetEditor.py:82
 msgid "one two three four unknown command"
-msgstr ""
+msgstr "üks kaks kolm tundmatu käsk"
 
 #: ../plugin/controllers/BouquetEditor.py:88
 #: ../plugin/controllers/BouquetEditor.py:149
 #: ../plugin/controllers/BouquetEditor.py:194
 msgid "No bouquet name given!"
-msgstr ""
+msgstr "Lemmiknimekirja nimi puudub!"
 
 #: ../plugin/controllers/BouquetEditor.py:118
 #, python-format
 msgid "Bouquet %s created."
-msgstr ""
+msgstr "Lemmiknimekiri %s loodud."
 
 #: ../plugin/controllers/BouquetEditor.py:120
 msgid "Get mutable list for new created bouquet failed!"
-msgstr ""
+msgstr "Uue lemmiknimekirja jaoks muutuva nimekirja hankimine nurjus!"
 
 #: ../plugin/controllers/BouquetEditor.py:123
 #, python-format
 msgid "Bouquet %s already exists."
-msgstr ""
+msgstr "Lemmiknimekiri %s on juba olemas."
 
 #: ../plugin/controllers/BouquetEditor.py:125
 #: ../plugin/controllers/BouquetEditor.py:435
 msgid "Bouquetlist is not editable!"
-msgstr ""
+msgstr "Lemmiknimekirjade loend ei ole muudetav!"
 
 #: ../plugin/controllers/BouquetEditor.py:127
 msgid "Multi-Bouquet is not enabled!"
-msgstr ""
+msgstr "Luba mitme nimekirja kasutus!"
 
 #: ../plugin/controllers/BouquetEditor.py:133
 msgid "No provider given!"
-msgstr ""
+msgstr "Levitaja nimi puudub!"
 
 #: ../plugin/controllers/BouquetEditor.py:180
 #, python-format
 msgid "Bouquet %s removed failed."
-msgstr ""
+msgstr "Lemmiknimekirja %s eemaldamine nurjus."
 
 #: ../plugin/controllers/BouquetEditor.py:182
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
 msgstr ""
+"Lemmiknimekirja %s eemaldamine nurjus, viitenumber või muutuv nimekiri ei "
+"ole kehtivad."
 
 #: ../plugin/controllers/BouquetEditor.py:186
 #, python-format
 msgid "Bouquet %s deleted."
-msgstr ""
+msgstr "Lemmiknimekiri %s kustutatud."
 
 #: ../plugin/controllers/BouquetEditor.py:188
 #, python-format
@@ -72,17 +74,17 @@ msgstr ""
 #: ../plugin/controllers/BouquetEditor.py:204
 #: ../plugin/controllers/BouquetEditor.py:261
 msgid "No position given!"
-msgstr ""
+msgstr "Asukoht andmata!"
 
 #: ../plugin/controllers/BouquetEditor.py:211
 #, python-format
 msgid "Bouquet %s moved."
-msgstr ""
+msgstr "Lemmiknimekiri %s liigutatud."
 
 #: ../plugin/controllers/BouquetEditor.py:213
 #, python-format
 msgid "Bouquet %s can not be moved."
-msgstr ""
+msgstr "Lemmiknimekirja %s ei saa liigutada."
 
 #: ../plugin/controllers/BouquetEditor.py:219
 #: ../plugin/controllers/BouquetEditor.py:249
@@ -90,7 +92,7 @@ msgstr ""
 #: ../plugin/controllers/BouquetEditor.py:309
 #: ../plugin/controllers/BouquetEditor.py:455
 msgid "No bouquet given!"
-msgstr ""
+msgstr "Lemmiknimekiri andmata!"
 
 #: ../plugin/controllers/BouquetEditor.py:225
 #: ../plugin/controllers/BouquetEditor.py:255
@@ -100,150 +102,150 @@ msgstr ""
 #: ../plugin/controllers/BouquetEditor.py:461
 #: ../plugin/controllers/BouquetEditor.py:498
 msgid "No service given!"
-msgstr ""
+msgstr "Kanal andmata!"
 
 #: ../plugin/controllers/BouquetEditor.py:234
 #, python-format
 msgid "Service %s removed."
-msgstr ""
+msgstr "Kanal %s eemaldatud."
 
 #: ../plugin/controllers/BouquetEditor.py:242
 #, python-format
 msgid "Service %s removed from bouquet %s."
-msgstr ""
+msgstr "Kanal %s eemaldati lemmiknimekirjast %s."
 
 #: ../plugin/controllers/BouquetEditor.py:243
 #, python-format
 msgid "Service %s can not be removed."
-msgstr ""
+msgstr "Kanalit %s ei saa eemaldada."
 
 #: ../plugin/controllers/BouquetEditor.py:268
 #, python-format
 msgid "Service %s moved."
-msgstr ""
+msgstr "Kanal %s liigutatud."
 
 #: ../plugin/controllers/BouquetEditor.py:269
 msgid "Service can not be moved."
-msgstr ""
+msgstr "Kanalit ei saa liigutada."
 
 #: ../plugin/controllers/BouquetEditor.py:299
 #, python-format
 msgid "Service %s added."
-msgstr ""
+msgstr "Kanal '%s' lisatud"
 
 #: ../plugin/controllers/BouquetEditor.py:302
 #, python-format
 msgid "Service %s already exists in bouquet %s."
-msgstr ""
+msgstr "Kanal %s on lemmiknimekirjas %s juba olemas."
 
 #: ../plugin/controllers/BouquetEditor.py:303
 msgid "This service can not be added."
-msgstr ""
+msgstr "Seda kanalit ei saa lisada"
 
 #: ../plugin/controllers/BouquetEditor.py:315
 msgid "No marker-name given!"
-msgstr ""
+msgstr "Märgise nimi andmata!"
 
 #: ../plugin/controllers/BouquetEditor.py:329
 msgid "Marker added."
-msgstr ""
+msgstr "Märgis lisatud."
 
 #: ../plugin/controllers/BouquetEditor.py:331
 msgid "Internal error!"
-msgstr ""
+msgstr "Sisemine viga!"
 
 #: ../plugin/controllers/BouquetEditor.py:345
 msgid "No new servicename given!"
-msgstr ""
+msgstr "Uue kanali nimi andmata!"
 
 #: ../plugin/controllers/BouquetEditor.py:369
 msgid "Bouquet renamed successfully."
-msgstr ""
+msgstr "Lemmiknimekiri nimetati ümber."
 
 #: ../plugin/controllers/BouquetEditor.py:385
 msgid "Service renamed successfully."
-msgstr ""
+msgstr "Kanal nimetati ümber."
 
 #: ../plugin/controllers/BouquetEditor.py:386
 msgid "Service can not be renamed."
-msgstr ""
+msgstr "Kanalit ei saa ümber nimetada."
 
 #: ../plugin/controllers/BouquetEditor.py:400
 msgid "No current service given!"
-msgstr ""
+msgstr "Aktiivne kanal andmata!"
 
 #: ../plugin/controllers/BouquetEditor.py:431
 msgid "Get mutable list for new created alternative failed!"
-msgstr ""
+msgstr "Uue asenduskanali jaoks muutuva nimekirja hankimine nurjus!"
 
 #: ../plugin/controllers/BouquetEditor.py:433
 #, python-format
 msgid "Alternative %s created failed."
-msgstr ""
+msgstr "Asenduskanali %s loomine nurjus."
 
 #: ../plugin/controllers/BouquetEditor.py:447
 #, python-format
 msgid "Added %s to alternative service %s."
-msgstr ""
+msgstr "%s lisati asenduskanalile %s."
 
 #: ../plugin/controllers/BouquetEditor.py:478
 msgid "Service is not an alternative."
-msgstr ""
+msgstr "See ei ole asenduskanal."
 
 #: ../plugin/controllers/BouquetEditor.py:486
 msgid "All alternative services deleted."
-msgstr ""
+msgstr "Kõik asenduskanalid on kustutatud."
 
 #: ../plugin/controllers/BouquetEditor.py:492
 msgid "Parent Control is not activated."
-msgstr ""
+msgstr "Lapselukk ei ole sees."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "No Parent Control Setup Pin given!"
-msgstr ""
+msgstr "Lapseluku PIN sisestamata!"
 
 #: ../plugin/controllers/BouquetEditor.py:509
 #: ../plugin/controllers/BouquetEditor.py:511
 msgid "Parent Control Setup Pin is wrong!"
-msgstr ""
+msgstr "Lapseluku PIN on vale!"
 
 #: ../plugin/controllers/BouquetEditor.py:526
 #, python-format
 msgid "Service %s is locked."
-msgstr ""
+msgstr "Kanal %s on lukustatud."
 
 #: ../plugin/controllers/BouquetEditor.py:528
 #, python-format
 msgid "Bouquet %s is locked."
-msgstr ""
+msgstr "Lemmiknimekiri %s on lukustatud."
 
 #: ../plugin/controllers/BouquetEditor.py:530
 #, python-format
 msgid "%s %s is locked."
-msgstr ""
+msgstr "%s %s is locked."
 
 #: ../plugin/controllers/BouquetEditor.py:534
 #, python-format
 msgid "Service %s is unlocked."
-msgstr ""
+msgstr "Kanali %s lukustus maas"
 
 #: ../plugin/controllers/BouquetEditor.py:536
 #, python-format
 msgid "Bouquet %s is unlocked."
-msgstr ""
+msgstr "Lemmiknimekirja %s lukustus maas"
 
 #: ../plugin/controllers/BouquetEditor.py:573
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
-msgstr ""
+msgstr "Viga varukoopia loomisel, %s pole olemas."
 
 #: ../plugin/controllers/BouquetEditor.py:579
 msgid "Error while preparing backup file."
-msgstr ""
+msgstr "Viga varukoopia loomisel."
 
 #: ../plugin/controllers/BouquetEditor.py:630
 msgid "Bouquet-settings were restored successfully"
-msgstr ""
+msgstr "Lemmiknimekirjad taastati edukalt"
 
 #: ../plugin/controllers/BouquetEditor.py:632
 #, python-format
@@ -253,7 +255,7 @@ msgstr ""
 #: ../plugin/controllers/BouquetEditor.py:634
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
-msgstr ""
+msgstr "Viga, %s pole olema, taastamine ei ole võimalik"
 
 #: ../plugin/controllers/base.py:221 ../plugin/local.py:181
 #: ../plugin/local.py:325
@@ -341,7 +343,7 @@ msgstr "Taimeri '%s' lisamine nurjus!"
 #: ../plugin/controllers/models/timers.py:193
 #, python-format
 msgid "Timer '%s' added"
-msgstr "Taimer '%s' lisati"
+msgstr "Taimer '%s' lisatud"
 
 #: ../plugin/controllers/models/timers.py:201
 msgid "EventId not found"
@@ -375,17 +377,17 @@ msgstr "Taimeri vastet ei leitud"
 #: ../plugin/controllers/models/timers.py:317
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
-msgstr ""
+msgstr "Taimerit '%s' ei lubatud vastuolu tõttu"
 
 #: ../plugin/controllers/models/timers.py:323
 #, python-format
 msgid "Timer '%s' already exists!"
-msgstr ""
+msgstr "Taimer '%s' on juba olemas."
 
 #: ../plugin/controllers/models/timers.py:329
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
-msgstr ""
+msgstr "Taimer '%s' on nüüd salvestav! Mitte keelatud!"
 
 #: ../plugin/controllers/models/timers.py:337
 #, python-format
@@ -442,7 +444,7 @@ msgstr "Unetaimer keelati"
 #: ../plugin/controllers/models/timers.py:640
 #: ../plugin/controllers/models/timers.py:667
 msgid "SleepTimer error"
-msgstr ""
+msgstr "Unetaimeri viga"
 
 #: ../plugin/controllers/models/timers.py:679
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
@@ -464,15 +466,15 @@ msgstr "Unetaimer määratud %d minutile"
 #: ../plugin/controllers/models/timers.py:695
 #: ../plugin/controllers/models/timers.py:776
 msgid "SleepTimer Error"
-msgstr ""
+msgstr "Unetaimeri viga"
 
 #: ../plugin/controllers/models/timers.py:804
 msgid "Error parsing vps.xml"
-msgstr ""
+msgstr "Viga vps.xml faili parsimisel"
 
 #: ../plugin/controllers/models/timers.py:809
 msgid "VPS plugin not found"
-msgstr ""
+msgstr "VPS pluginat ei leitud"
 
 #: ../plugin/controllers/web.py:63
 #, python-format
@@ -773,11 +775,11 @@ msgstr "Kas kustutad salvestise"
 
 #: ../plugin/local.py:76
 msgid "Delete Movie"
-msgstr ""
+msgstr "Kustuta salvestis"
 
 #: ../plugin/local.py:77
 msgid "Really delete the movie"
-msgstr ""
+msgstr "Kas kustutada salvestis"
 
 #: ../plugin/local.py:78
 msgid "Delete Timer"
@@ -861,7 +863,7 @@ msgstr "Epg otsing"
 
 #: ../plugin/local.py:98
 msgid "Include description"
-msgstr "Kaas sisututvustus"
+msgstr "Hõlma sisututvustus"
 
 #: ../plugin/local.py:99
 msgid "Error"
@@ -1113,7 +1115,7 @@ msgstr "Nimeta salvestus ümber"
 
 #: ../plugin/local.py:164
 msgid "Really rename the recording"
-msgstr ""
+msgstr "Kas nimetada ümber salvestus"
 
 #: ../plugin/local.py:165
 msgid "Repeated"
@@ -1158,7 +1160,7 @@ msgstr "IMDb otsing"
 
 #: ../plugin/local.py:175
 msgid "Search KinoPoisk"
-msgstr ""
+msgstr "KinoPoisk otsis"
 
 #: ../plugin/local.py:176
 msgid "seconds"
@@ -1226,7 +1228,7 @@ msgstr "Ooteseisund"
 
 #: ../plugin/local.py:193
 msgid "Start time is after end time"
-msgstr "Algusaeg on lõppajast hilisem"
+msgstr "Algusaeg on lõpuajast hilisem"
 
 #: ../plugin/local.py:194
 msgid "Start Instant Record"
@@ -1310,7 +1312,7 @@ msgstr "transkodeeritud"
 
 #: ../plugin/local.py:214
 msgid "Transcode"
-msgstr ""
+msgstr "Transkodeeri"
 
 #: ../plugin/local.py:215
 msgid "Tuner Bit Error Rate BER"
