@@ -351,7 +351,7 @@ function load_tvcontent_spin(url) {
 }
 
 function load_maincontent(url) {
-	if (lastcontenturl != url) {
+	if (lastcontenturl != url || url.includes('screenshot') || url.includes('timer')) {
 		$("#content_container").load(url);
 		lastcontenturl = url;
 	}
@@ -1228,6 +1228,9 @@ function InitBouquets(tv)
 	} 
 	else {
 		mode= "?stype=radio";
+		$('#btn0').click(function(){
+			$("#tvcontent").html(loadspinner).load("ajax/current"+ mode);
+		});
 	}
 	$('#btn1').click(function(){
 		$("#expandmepg").hide();
