@@ -595,3 +595,10 @@ font-size:16px;font-weight:bold;opacity:0.3;
 	font-size:20px;
 	margin-left:15px;
 }
+
+.sellist li:hover { background: rgba(243, 152, 20, 0.5); color: white;}
+.sellist .ui-selected { background: #F39814; color: white; }
+.sellist { list-style-type: none; margin: 0; padding: 0; }
+.sellist li { margin: 3px; padding: 0.4em; font-size: 1em; height: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor:pointer;}
+#atlist li { font-size: 1.1em;}
+

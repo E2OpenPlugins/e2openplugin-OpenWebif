@@ -1,19 +1,4 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
-
-<style>
-  #slist .ui-selecting { background: #FECA40; }
-  #slist .ui-selected { background: #F39814; color: white; }
-  #slist { list-style-type: none; margin: 0; padding: 0; }
-  #slist li { margin: 3px; padding: 0.4em; font-size: 1em; height: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
-  optgroup {font-weight: bolder;}
-fieldset > label
-{
-	-webkit-margin-top-collapse: separate;
-	margin-top: 1.5em;
-	display: inline-block;
-}
-</style>
-
 <div id="content_main" class="ui-widget-content" style="min-height: 500px;">
 	<div id="info">
 
@@ -21,7 +6,7 @@ fieldset > label
 		<div style="display: inline-block; width: 100%; zoom: 1;">
 			<div style="float:left;width:200px;">
 				<h3 class="ui-widget-header">$tstrings['settings']</h3>
-				<ol id="slist">
+				<ol class="sellist" id="slist">
 				#if $themes
 					<li id='themesbtn' class="ui-selected">OpenWebif Settings</li>
 				#end if

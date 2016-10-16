@@ -1,10 +1,6 @@
 #filter WebSafe
 #from Plugins.Extensions.OpenWebif.local import tstrings
 <style>
-  #atlist .ui-selecting { background: #FECA40; }
-  #atlist .ui-selected { background: #F39814; color: white; }
-  #atlist { list-style-type: none; margin: 0; padding: 0; }
-  #atlist li { margin: 3px; padding: 0.4em; font-size: 1.1em; height: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
   optgroup {font-weight: bolder;}
 fieldset > label
 {
@@ -20,7 +16,7 @@ fieldset > label
 		<div style="display: inline-block; width: 100%; zoom: 1;">
 			<div style="float:left;width:200px;">
 				<h3 class="ui-widget-header">$tstrings['at_list']</h3>
-				<ol id="atlist">
+				<ol class="sellist" id="atlist">
 				</ol>
 				
 			</div>
