@@ -25,7 +25,7 @@
 		<span id="toolbar">
 		#set $path=''
 		<span id="moviebuttons">
-			<button onclick="load_maincontent_spin('ajax/movies?dirname=/$sort'); return false">$tstrings['Root']</button>
+			<!-- <button onclick="load_maincontent_spin('ajax/movies?dirname=/$sort'); return false">$tstrings['Root']</button>-->
 			#for $dir in $directory[0:-1].split("/")[1:-1]
 				#set $path += '/' + $dir
 				<button onclick="load_maincontent_spin('ajax/movies?dirname='+escape('$path')+'&sort=$sort');">$dir</button>
