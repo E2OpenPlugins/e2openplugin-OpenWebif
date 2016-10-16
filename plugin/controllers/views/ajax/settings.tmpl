@@ -23,9 +23,8 @@ fieldset > label
 				<h3 class="ui-widget-header">$tstrings['settings']</h3>
 				<ol id="slist">
 				#if $themes
-					<li id='themesbtn'>OpenWebif Settings</li>
+					<li id='themesbtn' class="ui-selected">OpenWebif Settings</li>
 				#end if
-				<li id='sep'><hr></li>
 				#for $sec in $configsections
 					<li id='$sec["key"]' data-id='ajax/config?section=$sec["key"]'>$sec["description"]</li>
 				#end for
@@ -84,6 +83,7 @@ $(function() {
 			});
 		}
 	});
+	load_theme();
 });
 	function load_theme() {
 		$("#scontent").html('');

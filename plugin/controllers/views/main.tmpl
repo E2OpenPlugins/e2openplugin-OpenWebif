@@ -63,8 +63,8 @@
 			<ul>
 				<li><a href='#' onclick="load_maincontent('ajax/tv'); return false;">$tstrings['television']</a></li>
 				<li><a href='#' onclick="load_maincontent('ajax/radio'); return false;">$tstrings['radio']</a></li>
-				<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">$tstrings['timers']</a></li>
 				<li><a href='#' onclick="load_maincontent_spin('ajax/movies'); return false;">$tstrings['movies']</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">$tstrings['timers']</a></li>
  <!--				<li><a href='#' onclick="load_maincontent('ajax/workinprogress'); return false;">Web Tv</a></li> -->
 			</ul>
 			#end def
@@ -142,6 +142,7 @@
 			
 			#def extrasMenu
 			<ul>
+				<li><a href='#' onclick="load_maincontent('ajax/boxinfo'); return false;">$tstrings["box_info"]</a></li>
 				#for $extra in $extras
 					#if $extra.has_key('nw')
 						<li><a href='$extra["key"]' target='_blank'>$extra["description"]</a></li>
