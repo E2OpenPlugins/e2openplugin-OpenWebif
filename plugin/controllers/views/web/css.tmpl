@@ -28,9 +28,8 @@
 	vader
 */
 
-#set $t="original"
-#if $theme
-	#set $t=$theme
+#if not $theme
+	#set $theme="original"
 #end if
 
 #if $theme == "excite-bike"
@@ -149,7 +148,6 @@ body {
 	color: #176093;
 }
 
-
 #leftmenu
 {
 	border: 2px solid #176093;
@@ -193,8 +191,29 @@ table .tcurrent
 
 #header { background : none;}
 
-#else
+#content_main
+{
+	background-color:#FFF;
+	border: 2px solid #176093;
+	outline: 0 none;
+}
 
+.channel_left,.channel_right
+{
+	background-color: #F0F7FC;
+}
+
+#currenttuners span
+{
+	color:#f90;
+}
+
+#spinner,#spinner1
+{
+	color:#1c478e;
+}
+
+#else
 
 #end if
 

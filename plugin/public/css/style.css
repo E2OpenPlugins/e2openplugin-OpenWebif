@@ -110,7 +110,7 @@ body {
 #osd_status
 {
 	float:right;
-	margin-top: 15px;
+	margin-top: 20px;
 }
 
 @media screen and (max-width: 1533px) {
@@ -396,13 +396,14 @@ color:#87BCF8;
 
 #content_main
 {
-	/*height:100%;*/
 	min-width:700px;
 	padding-left:10px;
 	padding-top:10px;
 	padding-right:10px;
 	padding-bottom:10px;
 	border-bottom-style: none;
+	-moz-outline-style: 0 none;
+	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
 
 #content h1
@@ -582,3 +583,8 @@ a.focus {outline: none;}
 #dcurrent {width:680px;height:137px;}
 
 #tvcontentmain { height :calc(100vh - 195px);}
+
+#currenttuners span
+{
+font-size:16px;font-weight:bold;opacity:0.3;
+}

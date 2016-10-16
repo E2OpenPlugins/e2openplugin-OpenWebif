@@ -11,8 +11,6 @@
 .dh24 { float:left;height:24px;}
 .dh20 { float:left;height:20px;}
 .dh14 { float:left;height:14px;}
-.not-current,.is-current{font-size:16px;font-weight:bold;opacity:0.3;}
-.is-current{opacity: 1;}
 </style>
 <div id="dcurrent" class="ui-widget-content">
 	<div style="float:left;width:120px;height:137px;">
@@ -78,15 +76,15 @@
 		</div>
 		<div style="float:left;width:560px;height:60px">
 			<div style="float:left;width:auto;height:26px;padding-top:8px">
-				<div>
+				<div id="currenttuners">
 #set $tnum = 0
 #for $tuner in $info.tuners
-    #if $info.tunernumber == $tnum
-    <span class="is-current">$tuner</span>
-    #else
-    <span class="not-current">$tuner</span>
-    #end if
-    #set $tnum = $tnum + 1
+	#if $info.tunernumber == $tnum
+		<span style="opacity:1">$tuner</span>
+	#else
+		<span>$tuner</span>
+	#end if
+	#set $tnum = $tnum + 1
 #end for
 				</div>
 			</div>
