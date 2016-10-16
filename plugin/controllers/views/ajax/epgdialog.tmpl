@@ -4,25 +4,28 @@
 <img src="images/not_found.jpg" title="No items found" border="0">
 #else
 <style>
+
+.tb { display:inline-block; margin-top:10px;width: 36px; height: 36px;}
+.bb {width: 38px; height: 38px; margin-top:10px;}
+#cl { font-size:32px;margin-top:7px; }
+#pp { font-size:14px; margin-left:24px; margin-top:-38px; }
+#tp {font-family: Arial;font-weight:bold; font-size:12px; margin-left:22px; margin-top:-38px; }
+#tp2 {font-weight:bold; font-size:20px; margin-left:22px; margin-top:-44px; }
+.fl { float:left;}
+.fr { float:right;}
+#station { cursor:pointer;}
+
+.im { font-family:Impact,Arial;font-size:18px; margin-top:20px;text-decoration:none;}
+
 table { font-size:12px; font-family: Verdana,Arial,sans-serif;}
 tr {background-color: #F0F7FC;}
 
-.ti_icon {
-height:25px;
-width:25px;
-background-image:url('images/timer_icons.png');
-display:inline-block;
-}
-.ti_empty {background-position:0px 0px;}
-.ti_timer {background-position:-25px 0px;}
-.ti_timerplay {background-position:-50px 0px;}
-.ti_timeredit {background-position:-75px 0px;}
-.ti_timerdelete {background-position:-100px 0px;}
-.ti_timerat {background-position:-125px 0px;}
 .d_timer{display:none;}
 </style>
 <div style="background-color: #1C478E;">
 #for $event in $events
+		#set $channel = $event.sname.replace("'", r"\'")
+		#set $title = $event.title.replace("'", r"\'")
 		<table style="font-size:12px;" width="100%" border="0" cellspacing="1" cellpadding="5">
 			<tr>
 				<td style="padding:0px" width="102px"><img width="100px" height="60px" src="$event.picon" title="" border="0"></td>
@@ -33,20 +36,59 @@ display:inline-block;
 			<tr>
 				#set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
 				<td rowspan="3" style="text-align:center" id="$sref;$event.begin_timestamp;$event.duration">
-					<a href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']"><div class="ti_icon ti_timer"></div></a>
-					<a href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']"><div class="ti_icon ti_timerplay"></div></a>
-					<a href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']"><div class="ti_icon ti_timeredit"></div></a>
-					<br>
-					#if $at
-					<a class="at_timer" href="#" onclick="addAutoTimerEvent('$sref','$event.sname','$event.title','$event.begin','$event.end');return false;" title="$tstrings['add_autotimer']"><div class="ti_icon ti_timerat"></div></a>
-					#end if
-					<a class="d_timer" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']"><div class="ti_icon ti_timerdelete"></div></a>
-					<br>
-					#if $kinopoisk
-					<a target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)"><img src="/images/kinopoisk.png" width="25" height="25" title="$tstrings['search_kinopoisk']" border="0"></a>
-					#else
-					<a target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)"><img src="/images/imdb.png" width="25" height="25" title="$tstrings['search_imdb']" border="0"></a>
-					#end if
+
+			<a class="tb fl" href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']">
+			<span class="bb">
+			<i id="cl" class="fa fa-clock-o"></i>
+			<i id="tp2" class="fa b">+</i>
+			</span>
+			</a>
+			
+			<a class="tb fr" href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']">
+			<span class="bb">
+			<i id="cl" class="fa fa-clock-o"></i>
+			<i id="pp" class="fa fa-play"></i>
+			</span>
+			</a>
+			
+			<br>
+			
+			<a class="tb fl" href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']">
+			<span class="bb">
+			<i id="cl" class="fa fa-clock-o"></i>
+			</span>
+			</a>
+
+			#set $iml = "fl"
+			#if $at
+			#set $iml = "fr"
+			<a class="tb fr" href="#" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin','$event.end');return false;" title="$tstrings['add_autotimer']">
+			<span class="bb">
+			<i id="cl" class="fa fa-clock-o"></i>
+			<i id="tp" class="fa">AT</i>
+			</span>
+			</a>
+			<br>
+			<a class="d_timer tb fl" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']">
+			#else 
+			<a class="d_timer tb fr" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']">
+			#end if
+			
+			<span class="bb">
+			<i id="cl" class="fa fa-clock-o"></i>
+			<i id="pp" class="fa fa-trash"></i>
+			</span>
+			</a>
+			
+			<br>
+			
+			#if $kinopoisk
+			<a class="tb $iml" target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)"><img src="../images/kinopoisk.png" style="width:24px; height:24px; margin:0px 3px 0px 0px" title="$tstrings['search_kinopoisk']" border="0"></a>
+			#else
+			<a class="im tb $iml" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']">IMDb</a>
+			#end if
+			
+			
 				</td>
 				<td colspan="2">$event.shortdesc</td>
 			</tr>
