@@ -22,20 +22,18 @@
 <div id="info">
 
 <h3 class="ui-widget-header">$tstrings['Bouquet_Editor']</h3>
-<div style="background-color: #eee; display: inline-block; width: 100%; zoom: 1;height: 90%;">
+<div style="background-color: #eee; display: inline-block; width: 100%; zoom: 1;height: 700px;">
 
 <div style="width:50%; height:50%; float:left">
 <div style="padding:5px;">
 
 <!-- TODO: change to class -->
+
 <div id="toolbar-header" class="ui-widget-header">
 	<span id="tb1">
 		<input type="radio" id="toolbar-choose-tv" name="tb1" checked="checked" /><label for="toolbar-choose-tv">$tstrings['tv']</label>
 		<input type="radio" id="toolbar-choose-radio" name="tb1"/><label for="toolbar-choose-radio">$tstrings['radio']</label>
 	</span>
-</div>
-
-<div id="toolbar-header" class="ui-widget-header">
 	<span id="tb2">
 		<input type="radio" id="toolbar-choose-satellites" name="tb2" /><label for="toolbar-choose-satellites">$tstrings['satellites']</label>
 		<input type="radio" id="toolbar-choose-providers" name="tb2" checked="checked" /><label for="toolbar-choose-providers">$tstrings['providers']</label>
@@ -43,19 +41,19 @@
 	</span>
 </div>
 
-<div id="sel0" style="height: 200px;overflow-y:scroll;">
+<div id="sel0" style="height: 255px;overflow-y:scroll;margin:5px;">
 	<ol id="provider" class="selectable"></ol>
 </div>
 
-<div style="margin:5px 0 5px 0;">
+<div style="margin:5px;">
 	<button id="btn-provider-add">$tstrings['bqe_add_provider_as_bouquet']</button>
 </div>
 
-<div style="margin:5px 0 5px 0;">
+<div style="margin:5px;">
 	$tstrings['bqe_search']: <input id="searchch" value="...">
 </div>
 
-<div id="sel1" style="height: 300px;overflow-y:scroll;">
+<div id="sel1" style="height: 300px;overflow-y:scroll;margin:5px;">
 	<ol id="channels" class="selectable"></ol>
 </div>
 	

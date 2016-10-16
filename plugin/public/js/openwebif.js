@@ -1200,7 +1200,7 @@ function CompressMEPG()
 	$('#content').css('margin-left', '185px')
 	$('#tvcontentmain > #toolbar-header').show();
 	$("#tvcontent").css('max-height','90%');
-	$("#tvcontentmain").css('height','calc(100vh - 195px)');
+	$("#tvcontentmain").css('height','calc(100vh - 200px)');
 	fixTableHeight();
 }
 
