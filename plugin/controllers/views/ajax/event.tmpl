@@ -18,20 +18,6 @@
 #station { cursor:pointer;}
 
 .im { font-family:Impact,Arial;font-size:20px; margin-top:15px;}
-
-.ti_icon {
-margin:5px 2px 0px 0px;
-height:25px;
-width:25px;
-background-image:url('../images/timer_icons.png');
-display:inline-block;
-}
-.ti_empty {background-position:0px 0px;}
-.ti_timer {background-position:-25px 0px;}
-.ti_timerplay {background-position:-50px 0px;}
-.ti_timeredit {background-position:-75px 0px;}
-.ti_timerdelete {background-position:-100px 0px;}
-.ti_timerat {background-position:-125px 0px;}
 .d_timer{display:none;}
 
 </style>
@@ -101,8 +87,7 @@ display:inline-block;
 			
 			<br>
 			
-			
-			<a class="tb" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']">
+			<a class="d_timer tb" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']">
 			<span class="bb">
 			<i id="cl" class="fa fa-clock-o"></i>
 			<i id="pp" class="fa fa-trash"></i>
@@ -116,7 +101,6 @@ display:inline-block;
 				#else
 				<a class="im tb fl" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']">IMDb</a>
 				#end if
-			
 
 			</div>
 		</div>
