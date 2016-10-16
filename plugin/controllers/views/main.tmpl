@@ -26,11 +26,10 @@
 	<div id="container">
 		<div id="header" class="ui-widget-header">
 			<h1><a href="/">Open<span class="off">Webif</span></a></h1>
-			#if $showname
-			<h2>$tstrings['openwebif_header']<br /><span class="off">$boxname</span></h2>
-			#else
-			<h2>$tstrings['openwebif_header']</h2>
+			#if not $showname
+				#set boxname=$tstrings['box_info']
 			#end if
+			<h2>$tstrings['openwebif_header']<br/><span class="off" onclick="load_maincontent('ajax/boxinfo'); return false">$boxname</span></h2>
 			<div id="statusheader">
 				<div id="osd">$tstrings['nothing_play']</div>
 				<div id="osd_status"></div>
@@ -64,9 +63,12 @@
 			<ul>
 				<li><a href='#' onclick="load_maincontent('ajax/tv'); return false;">$tstrings['television']</a></li>
 				<li><a href='#' onclick="load_maincontent('ajax/radio'); return false;">$tstrings['radio']</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">$tstrings['timers']</a></li>
+				<li><a href='#' onclick="load_maincontent_spin('ajax/movies'); return false;">$tstrings['movies']</a></li>
+ <!--				<li><a href='#' onclick="load_maincontent('ajax/workinprogress'); return false;">Web Tv</a></li> -->
 			</ul>
 			#end def
-		
+
 			#def volumeMenu
 			<div class="volslider">
 					<p style="text-align:center; padding-bottom:8px;"> 
@@ -78,34 +80,6 @@
 			<div style="width:100%; text-align:center; padding-top:5px; padding-bottom:10px;"><img id="volimage" src="images/volume.png" title="" border="0" width="48" height="48"></div>
 			#end def
 
-			#def controlMenu
-			<ul>
-				<li><a href='#' onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;">$tstrings['powercontrol']</a></li>
-				<li><a href='#' onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</a></li>
-				<li><a href='#' onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;">$tstrings['sendamessage']</a></li>
-				<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">$tstrings['timers']</a></li>
-			</ul>
-			#end def
-		
-			#def infoMenu
-			<ul>
-				<li><a href="#" onclick="load_maincontent('ajax/boxinfo'); return false">$tstrings['box_info']</a></li>
-				<li><a href="#" onclick="load_maincontent('ajax/about'); return false">$tstrings['about']</a></li>
-			</ul>
-			#end def
-		
-			#def streamMenu
-			<ul>
-				<li><a href='#' onclick="load_maincontent_spin('ajax/movies'); return false;">$tstrings['movies']</a></li>
- <!--				<li><a href='#' onclick="load_maincontent('ajax/workinprogress'); return false;">Web Tv</a></li> -->
-				#if $zapstream
-				<li><input type="checkbox" name="zapstream" checked="checked" />$tstrings['zapbeforestream']</li>
-				#else
-				<li><input type="checkbox" name="zapstream" />$tstrings['zapbeforestream']</li>
-				#end if
-			</ul>
-			#end def
-		
 			#def searchMenu
 			#if $epgsearchcaps
 			<ul>
@@ -157,7 +131,11 @@
 					#else
 					<li><input type="checkbox" name="remotegrabscreen" />$tstrings['grabscreenshot']</li>
 					#end if
-					<li><a href="#" onclick="toggleFullRemote(); return false;">$tstrings['showfullremote']</a></li>
+					<li style="display: inline-flex;margin-bottom:5px;margin-top:5px;">
+					<a class="fbb" href='#' onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a>
+					<a class="fbb" href='#' onclick="load_maincontent('ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a>
+					<a class="fbb" href='#' onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+					<a class="fbb" href='#' onclick="toggleFullRemote();return false;"><i class="fa fa-expand" aria-hidden="true"></i></a></li>
 				</ul>
 			</div>
 			#end def
@@ -176,10 +154,7 @@
 			<div id="menucontainer">
 				$menu($tstrings['main'], "main", $mainMenu)
 				$menu($tstrings['volumecontrol'], "volume", $volumeMenu)
-				$menu($tstrings['boxcontrol'], "control", $controlMenu)
 				$menu($tstrings['remote'], "remote", $remoteMenu)
-				$menu($tstrings['info'], "info", $infoMenu)
-				$menu($tstrings['stream'], "stream", $streamMenu)
 				$menu($tstrings['extras'], "extras", $extrasMenu)
 				$menu($tstrings['epgsearch'], "search", $searchMenu)
 			</div>
@@ -197,7 +172,8 @@
 							#else
 							<li><input type="checkbox" name="remotegrabscreen" />$tstrings['grabscreenshot']</li>
 							#end if
-							<li><a href="#" onclick="toggleFullRemote(); return false;" class="leftmenu_remotelink">$tstrings['hidefullremote']</a></li>
+							<li style="display: inline-flex;margin-bottom:5px;margin-top:5px;">
+							<a class="fbb" href='#' onclick="toggleFullRemote();return false;"><i class="fa fa-compress" aria-hidden="true"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -208,7 +184,7 @@
 			<div id="content_container">
 			$content
 			</div>
-			<div id="footer"><h3>&nbsp;&nbsp;<a href="https://github.com/E2OpenPlugins">E2OpenPlugins</a> | <a href="http://www.opena.tv">openATV</a> | <a href="http://www.vuplus-community.net">Black Hole</a> | <a href="http://www.egami-image.com">EGAMI</a> | <a href="http://www.hdfreaks.cc">OpenHDF</a> | <a href="http://www.hdmedia-universe.com">HDMU</a> | <a href="http://openpli.org">OpenPli</a> | <a href="http://forum.sifteam.eu">Sif</a> | <a href="http://openspa.info">OpenSpa</a> | <a href="http://www.world-of-satellite.com">OpenViX</a> | <a href="http://www.droidsat.org">OpenDroid</a> | <a href="http://www.vuplus-support.org">VTi</a></h3></div>
+			<div id="footer"><h3>&nbsp;&nbsp;<a href="https://github.com/E2OpenPlugins">E2OpenPlugins</a> | <a href="http://www.opena.tv">openATV</a> | <a href="http://www.vuplus-community.net">Black Hole</a> | <a href="http://www.egami-image.com">EGAMI</a> | <a href="http://www.hdfreaks.cc">OpenHDF</a> | <a href="http://www.hdmedia-universe.com">HDMU</a> | <a href="http://openpli.org">OpenPli</a> | <a href="http://forum.sifteam.eu">Sif</a> | <a href="http://openspa.info">OpenSpa</a> | <a href="http://www.world-of-satellite.com">OpenViX</a> | <a href="http://www.droidsat.org">OpenDroid</a> | <a href="http://www.vuplus-support.org">VTi</a> | <a href="#" onclick="load_maincontent('ajax/about'); return false">$tstrings['about']</a></h3></div>
 		</div>
 	</div>
 	<form name="portForm" action="web/stream.m3u" method="GET" target="_blank">

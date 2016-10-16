@@ -527,6 +527,7 @@ color:#87BCF8;
 {
 	margin-top: 15px;
 	width: 100%;
+	font-size: .9em;
 }
 
 #configuration select
@@ -587,4 +588,10 @@ a.focus {outline: none;}
 #currenttuners span
 {
 font-size:16px;font-weight:bold;opacity:0.3;
+}
+
+.fbb i
+{
+	font-size:20px;
+	margin-left:15px;
 }

@@ -16,7 +16,7 @@ from twisted.web import server, http, static, resource, error
 from Cheetah.Template import Template
 
 from models.info import getInfo, getBasePath, getPublicPath, getViewsPath
-from models.config import getCollapsedMenus, getRemoteGrabScreenshot, getZapStream, getEPGSearchType, getConfigsSections, getShowName, getCustomName, getBoxName
+from models.config import getCollapsedMenus, getRemoteGrabScreenshot, getEPGSearchType, getConfigsSections, getShowName, getCustomName, getBoxName
 
 import imp
 import sys
@@ -200,7 +200,6 @@ class BaseController(resource.Resource):
 		ret = getCollapsedMenus()
 		ret['remotegrabscreenshot'] = getRemoteGrabScreenshot()['remotegrabscreenshot']
 		ret['configsections'] = getConfigsSections()['sections']
-		ret['zapstream'] = getZapStream()['zapstream']
 		ret['showname'] = getShowName()['showname']
 		ret['customname'] = getCustomName()['customname']
 		ret['boxname'] = getBoxName()['boxname']
