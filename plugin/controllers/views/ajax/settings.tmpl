@@ -1,24 +1,48 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
+
+<style>
+  #slist .ui-selecting { background: #FECA40; }
+  #slist .ui-selected { background: #F39814; color: white; }
+  #slist { list-style-type: none; margin: 0; padding: 0; }
+  #slist li { margin: 3px; padding: 0.4em; font-size: 1em; height: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+  optgroup {font-weight: bolder;}
+fieldset > label
+{
+	-webkit-margin-top-collapse: separate;
+	margin-top: 1.5em;
+	display: inline-block;
+}
+</style>
+
 <div id="content_main" class="ui-widget-content" style="min-height: 500px;">
 	<div id="info">
-		<h3 class="ui-widget-header">$tstrings['settings']</h3>
-		<div id="toolbar-header" class="ui-widget-header">
-			<span id="toolbar">
-				<span id="settingsbuttons">
-				#if $themes
-					<button id='themesbtn' onclick="load_theme(); return false;">OpenWebif Browser Theme</button>
-				#end if
-				#for $sec in $configsections
-					<button id='$sec["key"]' onclick="load_scontent('ajax/config?section=$sec["key"]'); return false;">$sec["description"]</button>
-				#end for
-				</span>
-			</span>
-		</div>
 
-		<div id="scontent"></div>
-		</div>
+		<div style="background-color: #00000">
+		<div style="display: inline-block; width: 100%; zoom: 1;">
+			<div style="float:left;width:200px;">
+				<h3 class="ui-widget-header">$tstrings['settings']</h3>
+				<ol id="slist">
+				#if $themes
+					<li id='themesbtn'>OpenWebif Settings</li>
+				#end if
+				<li id='sep'><hr></li>
+				#for $sec in $configsections
+					<li id='$sec["key"]' data-id='ajax/config?section=$sec["key"]'>$sec["description"]</li>
+				#end for
+				</ol>
+				
+			</div>
+			<div style="margin-left:200px;">
+				<div style="display: inline-block; width: 100%; zoom: 1;">
+					<div id="scontent"></div>
+					</div>
 		#if $themes
-		<div id='themeselect' style="display:none;">
+		<div id='osettings' style="display:none;">
+			<div id="content_main2">
+				<h3>Openwebif Browser settings</h3>
+				<hr />
+				<table id="configuration">
+				<tr><td>Theme</td><td>
 			<select name="selectheme" id="selectheme" style="min-width: 150px;margin: 5px;border:none;font-size: 1em;">
 			#for $stheme in $themes
 				#if $stheme == $theme
@@ -28,23 +52,49 @@
 				#end if
 			#end for
 			</select>
+				</td></tr>
+				<tr><td>$tstrings['zapbeforestream']</td><td>
+				#set $zapstream = 1
+				#if $zapstream
+				<input type="checkbox" name="zapstream" checked="checked"/>
+				#else
+				<input type="checkbox" name="zapstream"/>
+				#end if
+				</td></tr>
+				</table>
+			</div>
 		</div>
 		#end if
-
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 #raw
 <script type="text/javascript">
+$(function() { 
+	$( "#slist" ).selectable({
+		selected: function( event, ui ) {
+			var ids = $('#slist .ui-selected').map(function() {
+				if($(this).data('id') !== undefined) {
+					load_scontent($(this).data('id'));
+				} else {
+					load_theme();
+				}
+			});
+		}
+	});
+});
 	function load_theme() {
-		$("#scontent").html();
-		$("#themeselect").show();
+		$("#scontent").html('');
+		$("#osettings").show();
 		$("#selectheme").change(function() {
 			ChangeTheme($(this).val());
 		});
 		return false;
 	}
 	function load_scontent(url) {
-		$("#themeselect").hide();
+		$("#osettings").hide();
 		$("#scontent").load(url , function () {
 			$("#scontent").find("#content_main").attr("id","content_main1");
 		});

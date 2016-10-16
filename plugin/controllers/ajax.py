@@ -15,7 +15,7 @@ from models.services import getCurrentService, getBouquets, getChannels, getSate
 from models.info import getInfo, getPublicPath, getOpenWebifVer, getTranscodingSupport, getLanguage
 from models.movies import getMovieList
 from models.timers import getTimers
-from models.config import getConfigs, getConfigsSections
+from models.config import getConfigs, getConfigsSections, getZapStream
 from base import BaseController
 from time import mktime, localtime
 from models.locations import getLocations
@@ -207,6 +207,7 @@ class AjaxController(BaseController):
 		else:
 			ret['themes'] = []
 			ret['theme'] = 'original'
+		ret['zapstream'] = getZapStream()['zapstream']
 		return ret
 
 	def P_multiepg(self, request):
