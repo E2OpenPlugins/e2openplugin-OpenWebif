@@ -1188,6 +1188,7 @@ function ExpandMEPG()
 	$("#tbl1body").height('100%');
 	$("#tvcontent").css('max-height','100%');
 	$("#tvcontentmain").css('height','calc(100vh - 50px)');
+	fixTableHeight();
 }
 
 function CompressMEPG()
