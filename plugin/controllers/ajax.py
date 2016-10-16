@@ -100,27 +100,26 @@ class AjaxController(BaseController):
 		return info
 
 	def P_epgpop(self, request):
+		events=[]
+		timers=[]
 		if "sref" in request.args.keys():
-			event = getChannelEpg(request.args["sref"][0])
-			event['kinopoisk'] = getLanguage()
-			return event
-		elif  "sstr" in request.args.keys():
-			event = getSearchEpg(request.args["sstr"][0])
-			event['kinopoisk'] = getLanguage()
-			return event
-		else: 
-			return []
+			ev = getChannelEpg(request.args["sref"][0])
+			events = ev["events"]
+		elif "sstr" in request.args.keys():
+			ev = getSearchEpg(request.args["sstr"][0])
+			events = ev["events"]
+		at = False
+		if len(events) > 0: 
+			timers = getTimers(self.session)
+			try:
+				from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
+				at = True
+			except ImportError:
+				pass
+		return { "events": events , "timers" : timers , "at" : at, "kinopoisk": getLanguage()}
 
 	def P_epgdialog(self, request):
-		events = self.P_epgpop(request)
-		timers = getTimers(self.session)
-		at = False
-		try:
-			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
-			at = True
-		except ImportError:
-			pass
-		return { "events": events['events'] , "timers" : timers['timers'] , "at" : at, "kinopoisk": events['kinopoisk']}
+		return self.P_epgpop(request)
 
 	def P_screenshot(self, request):
 		box = {}
