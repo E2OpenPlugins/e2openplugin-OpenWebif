@@ -32,8 +32,6 @@
 	#set $theme="original"
 #end if
 
-#set $theme="original"
-
 #if $theme == "excite-bike"
 #header { background : #eeeeee;}
 #end if
@@ -45,6 +43,11 @@
 
 #if $theme == "vader"
 .off { color : #000000;}
+#content_main { background-color: #000;border: 2px solid #888888; background-image:none !important; }
+.tm_row { background-color: #404040;border: 1px solid #888888;}
+.tm_row:hover { border: 1px dotted #888888;}
+.channel_left,.channel_right { background-color: #404040; }
+
 #end if
 
 #if $theme == "sunny"
@@ -197,7 +200,6 @@ table .tcurrent
 {
 	background-color:#FFF;
 	border: 2px solid #176093;
-	outline: 0 none;
 }
 
 .channel_left,.channel_right
@@ -214,6 +216,12 @@ table .tcurrent
 {
 	color:#1c478e;
 }
+
+#footer h3 a,#footer h3 a:visited
+{
+	color:#7198E1;
+}
+
 
 #else
 

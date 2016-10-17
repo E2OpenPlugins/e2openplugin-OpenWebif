@@ -22,9 +22,13 @@
 <script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
 <title>Open Webif</title>
 </head>
+#if $t == "original"
 <body>
+#else
+<body class="ui-widget-header">
+#end if
 	<div id="container">
-		<div id="header" class="ui-widget-header">
+		<div id="header">
 			<h1><a href="/">Open<span class="off">Webif</span></a></h1>
 			#if not $showname
 				#set boxname=$tstrings['box_info']
