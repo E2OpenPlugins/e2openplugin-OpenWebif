@@ -20,108 +20,116 @@
 <link rel="stylesheet" href="../css/font-awesome.min.css">
 <style>
 
-
-.tb { display:inline-block; margin-top:10px;width: 36px; height: 36px;}
+a {text-decoration:none;color:#000;}
+.tb { display:inline-block; margin-left:3px;}
 .bb {width: 38px; height: 38px; margin-top:10px;}
 #cl { font-size:32px;margin-top:7px; }
 #pp { font-size:14px; margin-left:24px; margin-top:-38px; }
 #tp {font-family: Arial;font-weight:bold; font-size:12px; margin-left:22px; margin-top:-38px; }
 #tp2 {font-weight:bold; font-size:20px; margin-left:22px; margin-top:-44px; }
-.fl { float:left;}
-.fr { float:right;}
 #station { cursor:pointer;}
 
-.im { font-family:Impact,Arial;font-size:20px; margin-top:15px;}
+.im { font-family:Impact,Arial;font-size:18px;text-decoration:none;}
 
 table { font-size:12px; font-family: Verdana,Arial,sans-serif;}
 tr {background-color: #F0F7FC;}
+
 .d_timer{display:none;}
 
+.ETVTAB {font-size:12px;width:100%;}
+.ETVTAB td { width:50px;height:40px;}
+.eft td { height:60px;}
+.efi { width:100px;}
+.eft td > div { display:table;width:100%;}
+.esl1,.esl2 { display:table-cell;width:30%;font-size:13px;color: #061C37;font-weight: bold;vertical-align: middle;height: 60px;padding-left: 10px;}
+.esl2 { width:70%;border-left: 1px solid black;}
+.eff {width:100% !important;vertical-align: top;padding-left:10px;}
+.efi img {width:100px;height:60px; border:none;}
+.eff1 {width:100%;}
 </style>
 
 <title>Open Webif $tstrings['epg']</title>
 </head>
 	<body style="background: #1C478E; scrollbar: auto;">
-		
+<table class="ETVTAB" border="0" cellspacing="1" cellpadding="5">
 #for $event in $events
 		#set $channel = $event.sname.replace("'", r"\'")
 		#set $title = $event.title.replace("'", r"\'")
-		<table style="font-size:12px;" width="100%" border="0" cellspacing="1" cellpadding="5">
-			<tr>
-				<td style="padding:0px" width="102px"><img width="100px" height="60px" src="$event.picon" title="" border="0"></td>
-				<td style="font-size:13px;color: #061C37;font-weight: bold;" width="30%">$event.sname<br />$event.date</td>
-				<td>$event.title</td>
-			</tr>
-			<tr>
-				<td>$event.begin</td>
-				<td>$event.duration min.</td>
-				<td>$event.shortdesc</td>
-			</tr>
-			<tr>
-				<td valign="top">$event.end</td>
-				<td colspan="2" rowspan="2">$event.longdesc</td>
-			</tr>
-			<tr>
-				<td style="padding:0px text-align:center">
-					#set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
-					
-			<a class="tb fl" href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']">
+		#set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
+
+
+	<tbody data-id='$sref;$event.begin_timestamp;$event.duration'>
+	<tr class="eft">
+	<td class="efi" colspan="2"><img src="$event.picon" title=""></td>
+	<td style="width:100%;height:60px;">
+		<div>
+		<div class="esl1">$event.sname<br />$event.date</div>
+		<div class="esl2">$event.title<br/>$event.begin&nbsp;-&nbsp;$event.end&nbsp;($event.duration min.)</div>
+		</div>
+	</td>
+	</tr>
+	<tr>
+		<td>	
+			<a class="tb" href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']">
 			<span class="bb">
 			<i id="cl" class="fa fa-clock-o"></i>
 			<i id="tp2" class="fa b">+</i>
 			</span>
 			</a>
-			
-			<a class="tb fr" href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']">
+	</td>
+		<td >
+			<a class="tb" href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']">
 			<span class="bb">
 			<i id="cl" class="fa fa-clock-o"></i>
 			<i id="pp" class="fa fa-play"></i>
 			</span>
-			</a>
-			
-			<br>
-			
-			<a class="tb fl" href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']">
+			</a></td>
+		<td class="eff" rowspan="4"><div class="eff1">
+			<span>$event.shortdesc</span><br><br></div>
+			$event.longdesc
+
+	</td>
+	</tr>
+	<tr>
+	<td><a class="tb" href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']">
 			<span class="bb">
 			<i id="cl" class="fa fa-clock-o"></i>
 			</span>
 			</a>
-
-			#set $at = 0
-			#if $at
-			
-			<a class="tb fr" href="#" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin','$event.end');return false;" title="$tstrings['add_autotimer']">
+	</td>
+	<td>
+				#if $at
+			<a class="tb" href="#" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin','$event.end');return false;" title="$tstrings['add_autotimer']">
 			<span class="bb">
 			<i id="cl" class="fa fa-clock-o"></i>
 			<i id="tp" class="fa">AT</i>
 			</span>
 			</a>
-			<br>
-			<a class="d_timer tb fl" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']">
-			#else
-			<a class="d_timer tb fr" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']">
-			#end if
-			
-			<span class="bb">
+				#end if
+	
+	</td>
+	</tr>
+	<tr>
+	<td>
+				<a class="d_timer tb" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']">
+				<span class="bb">
 			<i id="cl" class="fa fa-clock-o"></i>
 			<i id="pp" class="fa fa-trash"></i>
 			</span>
 			</a>
-			
-			<br>
-			
+</td>
+	<td>
 			#if $kinopoisk
-			<a class="tb fl" target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)"><img src="../images/kinopoisk.png" style="width:24px; height:24px; margin:0px 3px 0px 0px" title="$tstrings['search_kinopoisk']" border="0"></a>
+			<a class="tb" target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)"><img src="../images/kinopoisk.png" style="width:24px; height:24px; margin:0px 3px 0px 0px" title="$tstrings['search_kinopoisk']" border="0"></a>
 			#else
-			<a class="im tb fl" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']">IMDb</a>
+			<a class="im tb" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']">IMDb</a>
 			#end if
-			</td>
-			</tr>
-			<tr>
-				<td colspan="3"></td>
-			</tr>
-		</table>
+	
+	</td>
+	</tr>
+</tbody>
 #end for
+</table>
 	</body>
 </html>
 #end if

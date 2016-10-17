@@ -11,6 +11,19 @@
 <link rel="shortcut icon" href="images/favicon.png">
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
+<style>
+* {
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+font-weight: inherit;
+font-style: inherit;
+font-size: 100%;
+font-family: inherit;
+background: transparent;
+}
+</style>
 <link rel="stylesheet" href="css/jquery-ui.min.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 #if $t != "original"
@@ -172,13 +185,20 @@
 							$tstrings['shiftforlong']
 						</div>
 						<ul>
+							#set $checked = ""
 							#if $remotegrabscreenshot
-							<li><input type="checkbox" name="remotegrabscreen" checked="checked" />$tstrings['grabscreenshot']</li>
-							#else
-							<li><input type="checkbox" name="remotegrabscreen" />$tstrings['grabscreenshot']</li>
+								#set $checked = "checked='checked'"
 							#end if
-							<li style="display: inline-flex;margin-bottom:5px;margin-top:5px;">
-							<a class="fbb" href='#' onclick="toggleFullRemote();return false;"><i class="fa fa-compress" aria-hidden="true"></i></a></li>
+							
+							<li><input type="checkbox" name="remotegrabscreen" $checked /><span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span></li>
+							<li style="margin-bottom:5px;margin-top:5px;">
+							<div class="tbl"><div>
+							<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
+						<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
+							<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
+							<div><a class="fbb" href='#' title=$tstrings['showfullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-compress" aria-hidden="true"></i></a></div>
+							</div></div>
+							</li>
 						</ul>
 					</div>
 				</div>

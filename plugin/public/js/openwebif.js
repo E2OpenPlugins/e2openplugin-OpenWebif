@@ -24,6 +24,8 @@ var loadspinner = "<div id='spinner'><div class='fa fa-spinner fa-spin'></div></
 
 $(function() {
 	
+// no execption on popup window
+try {
 	$( "#dialog" ).dialog({
 		autoOpen: false,
 		show: "fade",
@@ -75,6 +77,10 @@ $(function() {
 				primary: "ui-icon-search"
 				}
 		});
+
+}
+catch(err) {}
+
 });
 
 
@@ -1368,4 +1374,33 @@ function directlink()
 	}
 
 	load_maincontent(lnk);
+}
+
+function ShowTimers(timers)
+{
+	if (timers.length > 0)
+	{
+		$( "tbody" ).each(function( index ) {
+			var parts=$( this ).data('id').split(';');
+			if (parts.length == 3)
+			{
+				var sref = parts[0];
+				var begin = parseInt(parts[1]);
+				var end = parseInt(parts[2]) + ( begin * 3600 );
+				timers.forEach(function(entry) {
+					if(entry["sref"] == sref)
+					{
+						var b = parseInt(entry["begin"]);
+						var e = parseInt(entry["end"]);
+						
+						if ( end > b && begin < e ) {
+							console.log( entry);
+						}
+					}
+				});
+			}
+			
+		});
+	
+	}
 }

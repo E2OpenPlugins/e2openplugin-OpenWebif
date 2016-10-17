@@ -9,8 +9,7 @@
 <style>
 
 
-.tb .tbr { padding:0; margin:0 0 0 0; background-color:#FFF;}
-.tbr { margin-left:-5px}
+.tb,.tbr { padding:0; margin:0 0 0 0; background-color:#FFF;width:40px}
 .bb { margin:0;margin-top:5px;display:block;}
 #cl { font-size:32px;padding:0;margin:10px 0 0 0; width:10px; }
 #pp,#tp,#tp2 {margin-left:12px; margin-top:-6px;}
@@ -19,12 +18,15 @@
 #tp2 {font-family: Arial;font-weight:bold; font-size:20px;}
 .fl { float:left;}
 .fr { float:right;}
-#station { cursor:pointer;}
+#station { cursor:pointer;overflow:hidden;}
 
 .im { font-family:Impact,Arial;font-size:24px; }
 .d_timer{display:none;}
 
-.tbl div div {width:40px;height:45px;}
+.tstation { background-color: #1c478e; color:#fff; width:80px;margin-top: 5px;}
+
+.eventt td {width:40px;text-align:center;}
+.eventt td,tr {height:40px;}
 
 </style>
 
@@ -34,58 +36,79 @@
 		<div id="leftmenu_expander_main" class="ui-selectmenu-icon ui-icon ui-icon-closethick" onclick="\$('#eventdescription').hide(200)"></div>
 	</div>
 	<div id="leftmenu_container_main" class="ui-widget-content" style="padding:6px">
-		<div style="float:left; width:80px;">
-			<div id="station" style="background-color: #1c478e; padding:2px; width:75px; text-align:center; overflow:hidden" onclick="zapChannel('$str($event['sref'])', '$channel')" title="$tstrings['zap']">$event['channel']</div>
 		
-			<div style="background-color: #1c478e; color:#fff; width:79px; font-size:23px; margin-top: 5px; text-align:center">
+		
+		
+		<table class="eventt" style="width: 100%;">
+		<tbody>
+		<tr style="height: 160px;">
+		<td style="width: 80px;" colspan="2">
+		
+			<div class="tstation" id="station" onclick="zapChannel('$str($event['sref'])', '$channel')" title="$tstrings['zap']">$event['channel']</div>
+		
+			<div class="tstation" style="font-size:23px;">
 				$event.begin_str<br/>
 				<span style="font-size:12px; color:#A9D1FA">$int($event.duration/60) min</span>
 			</div>
 
-			<div style="background-color: #1c478e; color:#fff; width:79px;margin:5px 0">
+			<div class="tstation">
 				<div style="font-size:23px; text-align:center">$tstrings[("day_" + ($time.strftime("%w", $etime)))]</div>
 				<div style="color:#A9D1FA; text-align:center">$time.strftime("%d", $etime) $tstrings[("month_" + ($time.strftime("%m", $etime)))]</div>
 			</div>
-
-			<div style="margin-left:1px; margin-right:3px;">
-			<div class="tbl">
-				<div>
+		
+		
+		</td>
+		<td style="width: 100%;text-align:left;" rowspan="6">
+		
+			<div style="font-size: 13px; font-weight: bold">$event.title</div>
+#if $event.title != $event.shortdesc
+			<div style="font-size: 12px; font-weight: bold">$event.shortdesc</div>
+#end if
+			<div style="font-size: 13px;max-height:300px; overflow:auto"><p>$(event.longdesc.replace("\n","<br/>").replace(u"\u008a","<br/>"))</p></div>
+		
+		</td>
+		</tr>
+		<tr>
+		
 					#if $transcoding
-					<div><a href="#" onclick="jumper8001('$sref', '$channel');" title="$tstrings['stream']: $channel"><i class="fa fa-desktop" style="font-size:22px;"></i></a></div>
-					<div><a href="#" onclick="jumper8002('$sref', '$channel');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel"><i class="fa fa-mobile" style="font-size:26px;margin-top:-3px;"></i></a></div>
+					<td><a href="#" onclick="jumper8001('$sref', '$channel');" title="$tstrings['stream']: $channel"><i class="fa fa-desktop" style="font-size:22px;"></i></a></td>
+					<td><a href="#" onclick="jumper8002('$sref', '$channel');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel"><i class="fa fa-mobile" style="font-size:26px;margin-top:-3px;"></i></a></td>
 					#else
-					<div><a target="_blank" href='../web/stream.m3u?ref=$sref&name=$channel' title="$tstrings['stream'] $channel"><i class="fa fa-desktop" style="font-size:22px;"></i></a></div>
-					<div></div>
+					<td><a target="_blank" href='../web/stream.m3u?ref=$sref&name=$channel' title="$tstrings['stream'] $channel"><i class="fa fa-desktop" style="font-size:22px;"></i></a></td>
+					<td></td>
 					#end if
-				</div>
-				<div>
-					<div>
+		
+		</tr>
+		<tr>
+		
+			<td>
 					<a class="tb" href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']">
 					<span class="fa-stack">
 					<i id="cl" class="fa fa-stack-1x fa-clock-o"></i>
 					<i id="tp2" class="fa fa-stack-1x b">+</i>
 					</span>
 					</a>
-					</div>
-					<div>
+					</td>
+					<td>
 					<a class="tbr" href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']">
 					<span class="fa-stack">
 					<i id="cl" class="fa fa-stack-1x fa-clock-o"></i>
 					<i id="pp" class="fa fa-stack-1x fa-play"></i>
 					</span>
 					</a>
-					</div>
-				</div>
-
-				<div>
-					<div>
+					</td>
+		
+		</tr>
+		<tr>
+		
+		<td>
 					<a class="tb" href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']">
 					<span class="fa-stack">
 					<i id="cl" class="fa fa-stack-1x fa-clock-o"></i>
 					</span>
 					</a>
-					</div>
-					<div>
+					</td>
+					<td>
 					#if $at
 					<a class="tbr" href="#" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin_str','$event.end');return false;" title="$tstrings['add_autotimer']">
 					<span class="fa-stack">
@@ -94,46 +117,39 @@
 					</span>
 					</a>
 					#end if
-					</div>
-				</div>
-
-				<div>
-					<div>
+					</td>
+		
+		</tr>
+		<tr>
+		
+					<td>
 					<a class="d_timer tb" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']">
 					<span class="fa-stack">
 					<i id="cl" class="fa fa-stack-1x fa-clock-o"></i>
 					<i id="pp" class="fa fa-stack-1x fa-trash"></i>
 					</span>
 					</a>
-					</div>
-					<div>
-					</div>
-				</div>
-
-				<div>
-					<div>
+					</td>
+					<td>
+					</td>
+		</tr>
+		<tr>
+		
+					<td>
 					#if $kinopoisk
 					<a class="tb fl" target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)"><img src="../images/kinopoisk.png" style="width:24px; height:24px; margin:0px 3px 0px 0px" title="$tstrings['search_kinopoisk']" border="0"></a>
 					#else
 					<a class="im tb fl" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']">IMDb</a>
 					#end if
-					</div>
-					<div>
-					</div>
+					</td>
+					<td>
+					</td>
 				</div>
-
-			</div> <!-- TABLE -->
-
-			</div>
-		</div>
-		<div style="float:left; width:250px; margin-left: 5px">
-			<div style="font-size: 13px; font-weight: bold">$event.title</div>
-#if $event.title != $event.shortdesc
-			<div style="font-size: 12px; font-weight: bold">$event.shortdesc</div>
-#end if
-			<div style="max-height:400px; overflow:auto"><p>$(event.longdesc.replace("\n","<br/>").replace(u"\u008a","<br/>"))</p></div>
-		</div>
-		<div style="clear:left"></div>
+		
+		</tr>
+		</tbody>
+		</table>
+		
 	</div>
 </div>
 <script>

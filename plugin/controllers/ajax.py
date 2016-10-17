@@ -110,7 +110,8 @@ class AjaxController(BaseController):
 			events = ev["events"]
 		at = False
 		if len(events) > 0: 
-			timers = getTimers(self.session)
+			t = getTimers(self.session)
+			timers = t["timers"]
 			try:
 				from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
 				at = True
