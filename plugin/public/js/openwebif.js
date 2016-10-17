@@ -1192,8 +1192,8 @@ function ExpandMEPG()
 	$('#content').css('margin-left', '5px')
 	$('#tvcontentmain > #toolbar-header').hide();
 	$("#tbl1body").height('100%');
-	$("#tvcontent").css('max-height','100%');
-	$("#tvcontentmain").css('height','calc(100vh - 50px)');
+	$("#tvcontent").css('height','100%');
+	$("#tvcontentmain").css('height','950px');
 	fixTableHeight();
 }
 
@@ -1206,9 +1206,21 @@ function CompressMEPG()
 	$("#leftmenu").show();
 	$('#content').css('margin-left', '185px')
 	$('#tvcontentmain > #toolbar-header').show();
-	$("#tvcontent").css('max-height','90%');
-	$("#tvcontentmain").css('height','calc(100vh - 200px)');
+	$("#tvcontent").css('height','730px');
+	$("#tvcontentmain").css('height','800px');
 	fixTableHeight();
+}
+
+//$(window).resize(function(){ mainresize(); });
+
+function mainresize()
+{
+	console.log("WH" + $( window ).height() + "TVH" + $("#tvcontentmain").height());
+
+	if($("#tvcontentmain")) {
+		//$("#tvcontentmain").height($( window ).height()-220);
+		try {fixTableHeight(); } catch(err) {}
+	}
 }
 
 function InitBouquets(tv)

@@ -82,18 +82,25 @@
 var picons = $dumps($picons);
 var reloadTimers = false;
 function getScrollBarWidth () {
-    var \$outer = \$('<div>').css({visibility: 'hidden', width: 100, overflow: 'scroll'}).appendTo('body'),
-        widthWithScroll = \$('<div>').css({width: '100%'}).appendTo(\$outer).outerWidth();
-    \$outer.remove();
-    return 100 - widthWithScroll;
+	var \$outer = \$('<div>').css({visibility: 'hidden', width: 100, overflow: 'scroll'}).appendTo('body'),
+		widthWithScroll = \$('<div>').css({width: '100%'}).appendTo(\$outer).outerWidth();
+	\$outer.remove();
+	return 100 - widthWithScroll;
 }
 var scrollBarWidth=getScrollBarWidth();
 function fixTableHeight() {
-    var addScrollBarWidth = scrollBarWidth;
-    if (\$('#tbl1').width() <= \$("#tvcontent").width()){
-        addScrollBarWidth = 0;
-    }
-    \$("#tbl1body").height( (\$("#tvcontent").height() - \$("#navepg").height() - 2*\$("#tbl1 thead").height() - addScrollBarWidth - 2) + "px");
+	var addScrollBarWidth = scrollBarWidth;
+	if (\$('#tbl1').width() <= \$("#tvcontent").width()){
+		addScrollBarWidth = 0;
+	}
+	
+	\$("#tbl1body").height( (\$("#tvcontent").height() - \$("#navepg").height() - 2*\$("#tbl1 thead").height() - addScrollBarWidth - 2) + "px");
+	
+	if (!\$('#toolbar-header').is(':visible')) { 
+		var dh = \$(document).height();
+		\$("#tvcontentmain").height(dh-80);
+		\$("#tbl1body").height(dh-210);
+	}
 }
 fixTableHeight();
 \$(window).resize(function(){ fixTableHeight(); });

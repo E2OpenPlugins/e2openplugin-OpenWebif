@@ -33,7 +33,7 @@ body {
 	height:auto;
 	position: relative; 
 	margin-left:10px;
-	margin-right:10px;
+	margin-right:35px;
 }
 
 #header
@@ -215,21 +215,22 @@ color:#87BCF8;
 #tvcontentmain
 {
 	width: 100%;
-/*	max-height: 80vh; */
+	height: 800px;
 	margin: 0;
 	padding: 0;
 }
 
 #tvcontent,#timers,#movies
 {
-	max-height: 95%;
-	padding-top: 4px;
+	height: 730px;
+	padding: 10px;
+	/*padding-top: 4px;*/
 	overflow:auto;
 }
 
 #tvcontent a,#timers a,#movies a
 {
-	display: inline-block;
+	/*display: inline-block;*/
 }
 
 .powerStateButtons
@@ -258,6 +259,7 @@ color:#87BCF8;
 .powerStateButtons li:hover {
 	border: 1px solid #000000; 
 }
+
 
 .moviecontainer_left { 
 	float: left;
@@ -396,12 +398,14 @@ color:#87BCF8;
 
 #content_main
 {
+	width:100%;
 	min-width:700px;
 	padding-left:10px;
 	padding-top:10px;
 	padding-right:10px;
 	padding-bottom:10px;
 	border-bottom-style: none;
+	outline: 0 none;
 	-moz-outline-style: 0 none;
 	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
@@ -583,7 +587,7 @@ a.focus {outline: none;}
 
 #dcurrent {width:680px;height:137px;}
 
-#tvcontentmain { height :calc(100vh - 200px);}
+#tvcontentmain { /* height:800px; */}
 
 #currenttuners span
 {
