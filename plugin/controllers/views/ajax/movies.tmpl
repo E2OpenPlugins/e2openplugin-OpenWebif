@@ -51,8 +51,7 @@
 		#set $count = 0
 		#for $movie in $movies
 			<div class="tm_row" id="$count">
-				<div class="tm_text">
-					<div class="tm_buttons">
+				<div class="m_buttons tm_buttons">
 						<div>
 						<a href='#' onClick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><div><i class="fa fa-play"></i></div></a>
 						#if $transcoding
@@ -76,7 +75,8 @@
 						<a href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><div><i class="fa fa-trash-o"></i></div></a>
 
 						</div>
-						</div>
+				</div>
+				<div class="tm_text">
 					#if $movie.eventname != ""
 						<div>
 							<span style="color: #176093; font-weight: bold;">$movie.eventname</span><br /> $movie.servicename  $movie.begintime<br /> $movie.length min.
@@ -93,7 +93,6 @@
 						</div>
 					#end if
 				</div>
-				<div style="clear: both;"></div>
 				#set $count += 1
 			</div>
 		#end for

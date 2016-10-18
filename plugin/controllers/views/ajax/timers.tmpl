@@ -16,8 +16,7 @@
 		<div id="timers">
 		#for $timer in $timers
 			<div class="tm_row" id="$timer.begin-$timer.end">
-				<div class="tm_text">
-					<div class="tm_buttons">
+				<div class="t_buttons tm_buttons">
 						<div>
 						#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
 						#set $tname=quote($timer.name)
@@ -32,6 +31,7 @@
 						</i></div></a>
 						</div>
 					</div>
+				<div class="tm_text">
 					<div>
 						<div style="color: #176093; font-weight: bold;">
 							$timer.name

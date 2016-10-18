@@ -608,7 +608,7 @@ function getStatusInfo() {
 			} else {
 				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + statusinfo['currservice_serviceref'] + "&name=" + statusinfo['currservice_station'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>&nbsp;";
 			}
-			$("#osd").html(stream + "<span style='color:#EA7409;font-weight:bold'><a style='color:#EA7409;font-weight:bold;text-decoration:none;' href='#' onClick='load_maincontent(\"ajax/tv\");return false;'>" + statusinfo['currservice_station'] + "</a></span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + "<a style='color:#ffffff;text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + statusinfo['currservice_serviceref'] + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
+			$("#osd").html(stream + "<a href='#' onClick='load_maincontent(\"ajax/tv\");return false;'><span class='osdch'>" + statusinfo['currservice_station'] + "</span></a>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + "<a style='color:#ffffff;text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + statusinfo['currservice_serviceref'] + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 			$("#osd_bottom").html(statusinfo['currservice_description']);
 		} else if ((statusinfo['currservice_station']) && ((statusinfo['currservice_serviceref'].indexOf("1:0:2") !== -1) || (statusinfo['currservice_serviceref'].indexOf("1:134:2") !== -1))) {
 			var stream = "";
@@ -1037,8 +1037,7 @@ function editTimer(serviceref, begin, end) {
 								$('#always_zap1').hide();
 							}
 							
-							$('#editTimerForm').dialog("open");
-							$('#editTimerForm').dialog("option", "title", tstr_edit_timer + " - " + timer.name);
+							openTimerDlg(tstr_edit_timer + " - " + timer.name);
 							
 							break;
 						}
@@ -1048,7 +1047,7 @@ function editTimer(serviceref, begin, end) {
 	});
 }
 
-function addTimer(evt,chsref,chname) {
+function addTimer(evt,chsref,chname,top) {
 	current_serviceref = '';
 	current_begin = -1;
 	current_end = -1;
@@ -1130,9 +1129,16 @@ function addTimer(evt,chsref,chname) {
 		$('#bouquet_select').val(serviceref);
 	}
 
+	openTimerDlg(tstr_add_timer);
+}
+
+function openTimerDlg(title)
+{
 	$('#editTimerForm').dialog("open");
-	$('#editTimerForm').dialog("option", "title", tstr_add_timer);
+	$('#editTimerForm').dialog("option", "title", title);
 	$('#editTimerForm').dialog("option", "height", "auto");
+	$('#editTimerForm').dialog("option", "position", ['center',100]);
+
 }
 
 /* Timer management end */
@@ -1343,6 +1349,9 @@ function ChangeTheme(theme)
 	$.ajax({
 		url: "api/settheme?theme=" + theme,
 		success: function() {
+			// todo : remove link
+			var parts=window.location.href.toLowerCase().split("#");
+			document.location.href = parts[0] + '#settings';
 			document.location.reload(true);
 		}
 	});
@@ -1351,6 +1360,7 @@ function ChangeTheme(theme)
 function tvdirectlink()
 {
 	var parts=window.location.href.toLowerCase().split("#");
+	window.location.hash="";
 	if(parts[1] == 'tv')
 	{
 		if(parts[2] == 'mepg' || parts[2] == 'mepgfull')
@@ -1367,6 +1377,7 @@ function tvdirectlink()
 function directlink()
 {
 	var parts=window.location.href.toLowerCase().split("#");
+	window.location.hash="";
 	var lnk='ajax/tv';
 	if(parts[1] == 'radio')
 	{
@@ -1392,27 +1403,45 @@ function ShowTimers(timers)
 {
 	if (timers.length > 0)
 	{
+		
 		$( "tbody" ).each(function( index ) {
 			var parts=$( this ).data('id').split(';');
 			if (parts.length == 3)
 			{
 				var sref = parts[0];
 				var begin = parseInt(parts[1]);
-				var end = parseInt(parts[2]) + ( begin * 3600 );
+				var end = begin + ( parseInt(parts[2]) * 60 );
+				var evt = $( this );
 				timers.forEach(function(entry) {
 					if(entry["sref"] == sref)
 					{
 						var b = parseInt(entry["begin"]);
 						var e = parseInt(entry["end"]);
 						
+						// event end > timerbegin & event begin < timer end
 						if ( end > b && begin < e ) {
-							console.log( entry);
+							
+							var addt = evt.find('.addtimer').first();
+							var delt = evt.find('.deltimer').first();
+							var pan = evt.find('.timerpanel').first();
+							
+							if ( begin >= b && end <= e )
+							{
+								addt.hide();
+								delt.show();
+								pan.css("background-color", "red");
+							}
+							else
+							{
+								pan.css("background-color", "yellow");
+							}
 						}
 					}
 				});
 			}
 			
 		});
+		
 	
 	}
 }

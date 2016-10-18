@@ -8,7 +8,7 @@
 .tb { display:inline-block; margin-left:3px;}
 .bb {width: 38px; height: 38px; margin-top:10px;}
 #cl { font-size:32px;margin-top:7px; }
-#pp { font-size:14px; margin-left:24px; margin-top:-38px; }
+#pp { font-size:12px; margin-left:25px; margin-top:-39px; }
 #tp {font-family: Arial;font-weight:bold; font-size:12px; margin-left:22px; margin-top:-38px; }
 #tp2 {font-weight:bold; font-size:20px; margin-left:22px; margin-top:-44px; }
 #station { cursor:pointer;}
@@ -18,7 +18,7 @@
 table { font-size:12px; font-family: Verdana,Arial,sans-serif;}
 tr {background-color: #F0F7FC;}
 
-.d_timer{display:none;}
+.deltimer{display:none;}
 
 .ETVTAB {font-size:12px;width:100%;}
 .ETVTAB td { width:50px;height:40px;}
@@ -49,21 +49,31 @@ tr {background-color: #F0F7FC;}
 	</td>
 	</tr>
 	<tr>
-		<td>	
-			<a class="tb" href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']">
+		<td class="timerpanel">	
+			<a class="tb addtimer" href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']">
 			<span class="bb">
 			<i id="cl" class="fa fa-clock-o"></i>
 			<i id="tp2" class="fa b">+</i>
 			</span>
 			</a>
-	</td>
-		<td >
-			<a class="tb" href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']">
+			<a class="tb deltimer" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']">
+				<span class="bb">
+			<i id="cl" class="fa fa-clock-o"></i>
+			<i id="pp" class="fa fa-trash"></i>
+			</span>
+			</a>
+		</td>
+		<td>
+		
+		<a class="tb" href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']">
 			<span class="bb">
 			<i id="cl" class="fa fa-clock-o"></i>
-			<i id="pp" class="fa fa-play"></i>
+			<i id="pp" class="fa fa-edit"></i>
 			</span>
-			</a></td>
+			</a>
+			
+			
+			</td>
 		<td class="eff" rowspan="4"><div class="eff1">
 			<span>$event.shortdesc</span><br><br></div>
 			$event.longdesc
@@ -71,9 +81,12 @@ tr {background-color: #F0F7FC;}
 	</td>
 	</tr>
 	<tr>
-	<td><a class="tb" href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']">
+	<td>
+	
+			<a class="tb" href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']">
 			<span class="bb">
 			<i id="cl" class="fa fa-clock-o"></i>
+			<i id="pp" class="fa fa-play"></i>
 			</span>
 			</a>
 	</td>
@@ -91,12 +104,7 @@ tr {background-color: #F0F7FC;}
 	</tr>
 	<tr>
 	<td>
-				<a class="d_timer tb" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']">
-				<span class="bb">
-			<i id="cl" class="fa fa-clock-o"></i>
-			<i id="pp" class="fa fa-trash"></i>
-			</span>
-			</a>
+
 </td>
 	<td>
 			#if $kinopoisk
@@ -121,8 +129,7 @@ var t = [
 var reloadTimers = true;
 $(function() {
 	$('#editTimerForm').load('ajax/edittimer');
-	// TODO 
-	//ShowTimers(t);
+	ShowTimers(t);
 });
 #end raw
 </script>

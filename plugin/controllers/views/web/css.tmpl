@@ -46,8 +46,9 @@
 #content_main { background-color: #000;border: 2px solid #888888; background-image:none !important; }
 .tm_row { background-color: #404040;border: 1px solid #888888;}
 .tm_row:hover { border: 1px dotted #888888;}
-.channel_left,.channel_right { background-color: #404040; }
-
+.cht .fr { background-color: #404040; }
+.sellist .ui-selected { background: #8a8a8a; color: white; }
+.sellist li:hover { background: rgba(243, 243, 243, 0.5); color: white;}
 #end if
 
 #if $theme == "sunny"
@@ -202,8 +203,7 @@ table .tcurrent
 	border: 2px solid #176093;
 }
 
-.channel_left,.channel_right
-{
+.cht .fr { 
 	background-color: #F0F7FC;
 }
 
@@ -222,6 +222,7 @@ table .tcurrent
 	color:#7198E1;
 }
 
+.osdch { color:#EA7409;}
 
 #else
 

@@ -1,4 +1,5 @@
 #from urllib import quote
+#from json import dumps
 #from Plugins.Extensions.OpenWebif.local import tstrings
 #if len($events) == 0
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -15,16 +16,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="images/favicon.png">
 <script src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/openwebif.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="../css/jquery-ui.min.css">
 <link rel="stylesheet" href="../css/font-awesome.min.css">
+<link type="text/css" href="../css/style.css" rel="stylesheet"/>
+<link type="text/css" href="../web/css" rel="stylesheet"/>
+<script type="text/javascript" src="../js/openwebif.js"></script>
+<script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
 <style>
 
 a {text-decoration:none;color:#000;}
 .tb { display:inline-block; margin-left:3px;}
 .bb {width: 38px; height: 38px; margin-top:10px;}
 #cl { font-size:32px;margin-top:7px; }
-#pp { font-size:14px; margin-left:24px; margin-top:-38px; }
+#pp { font-size:12px; margin-left:25px; margin-top:-39px; }
 #tp {font-family: Arial;font-weight:bold; font-size:12px; margin-left:22px; margin-top:-38px; }
 #tp2 {font-weight:bold; font-size:20px; margin-left:22px; margin-top:-44px; }
 #station { cursor:pointer;}
@@ -34,7 +41,7 @@ a {text-decoration:none;color:#000;}
 table { font-size:12px; font-family: Verdana,Arial,sans-serif;}
 tr {background-color: #F0F7FC;}
 
-.d_timer{display:none;}
+.deltimer{display:none;}
 
 .ETVTAB {font-size:12px;width:100%;}
 .ETVTAB td { width:50px;height:40px;}
@@ -57,7 +64,6 @@ tr {background-color: #F0F7FC;}
 		#set $title = $event.title.replace("'", r"\'")
 		#set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
 
-
 	<tbody data-id='$sref;$event.begin_timestamp;$event.duration'>
 	<tr class="eft">
 	<td class="efi" colspan="2"><img src="$event.picon" title=""></td>
@@ -69,21 +75,31 @@ tr {background-color: #F0F7FC;}
 	</td>
 	</tr>
 	<tr>
-		<td>	
-			<a class="tb" href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']">
+		<td class="timerpanel">	
+			<a class="tb addtimer" href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']">
 			<span class="bb">
 			<i id="cl" class="fa fa-clock-o"></i>
 			<i id="tp2" class="fa b">+</i>
 			</span>
 			</a>
+			<a class="tb deltimer" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']">
+				<span class="bb">
+			<i id="cl" class="fa fa-clock-o"></i>
+			<i id="pp" class="fa fa-trash"></i>
+			</span>
+			</a>
 	</td>
 		<td >
-			<a class="tb" href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']">
+		
+		<a class="tb" href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']">
 			<span class="bb">
 			<i id="cl" class="fa fa-clock-o"></i>
-			<i id="pp" class="fa fa-play"></i>
+			<i id="pp" class="fa fa-edit"></i>
 			</span>
-			</a></td>
+			</a>
+			
+			
+			</td>
 		<td class="eff" rowspan="4"><div class="eff1">
 			<span>$event.shortdesc</span><br><br></div>
 			$event.longdesc
@@ -91,9 +107,12 @@ tr {background-color: #F0F7FC;}
 	</td>
 	</tr>
 	<tr>
-	<td><a class="tb" href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']">
+	<td>
+	
+			<a class="tb" href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']">
 			<span class="bb">
 			<i id="cl" class="fa fa-clock-o"></i>
+			<i id="pp" class="fa fa-play"></i>
 			</span>
 			</a>
 	</td>
@@ -111,12 +130,7 @@ tr {background-color: #F0F7FC;}
 	</tr>
 	<tr>
 	<td>
-				<a class="d_timer tb" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']">
-				<span class="bb">
-			<i id="cl" class="fa fa-clock-o"></i>
-			<i id="pp" class="fa fa-trash"></i>
-			</span>
-			</a>
+
 </td>
 	<td>
 			#if $kinopoisk
@@ -130,6 +144,21 @@ tr {background-color: #F0F7FC;}
 </tbody>
 #end for
 </table>
-	</body>
+<div id="editTimerForm" title="$tstrings['edit_timer']"></div>
+</body>
+<script type="text/javascript">
+var t = [
+#for $timer in $timers
+	{'begin':$timer.begin,'end':$timer.end,'sref':'$timer.serviceref'},
+#end for
+];
+#raw
+var reloadTimers = true;
+$(function() {
+	$('#editTimerForm').load('../ajax/edittimer');
+	ShowTimers(t);
+});
+#end raw
+</script>
 </html>
 #end if
