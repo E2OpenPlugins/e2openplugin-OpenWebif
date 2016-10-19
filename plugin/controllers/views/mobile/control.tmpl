@@ -76,7 +76,7 @@
 		}
 		return false;
 	}
-	jQuery('#mainPage').live('pageinit', function(event) {
+	jQuery('#mainPage').on('pageinit', function(event) {
 		var volupdate;
 		jQuery("#slider").change(function() {
 			clearTimeout(volupdate);
