@@ -8,16 +8,23 @@
 	<div id="tvcontentmain">
 		<div id="toolbar-header" class="ui-widget-header">
 		<div style=display:inline-block;float:left;>
-			<select id="moviesort">
+			<select id="moviesort" style="customicons ui-menu-icons">
 			#set $count = 0
 			#set $sortnames = ['default','Name','Name desc','Date','Date desc']
+			#set $de = $tstrings['default']
+			#set $da = 'Date'
+			#set $na = $tstrings['name']
+			#set $sortnames = [$de,$na,$na,$da,$da]
 			#set $sorttypes = ['','name','named','date','dated']
+			#set $sortimg = ['','fa-sort-alpha-asc','fa-sort-alpha-desc','fa-sort-numeric-asc','fa-sort-numeric-desc']
+			#set $defsort = ''
 			#for $title in $sortnames
 				<option value="$sorttypes[$count]"
 				#if $count == $sortkey
 					selected="selected"
+					#set $defsort=$sortimg[$count]
 				#end if
-				>$title</option>
+				 data-class="$sortimg[$count]">$title</option>
 				#set $count += 1
 			#end for
 		</select>
@@ -28,7 +35,7 @@
 			<!-- <button onclick="load_maincontent_spin('ajax/movies?dirname=/$sort'); return false">$tstrings['Root']</button>-->
 			#for $dir in $directory[0:-1].split("/")[1:-1]
 				#set $path += '/' + $dir
-				<button onclick="load_maincontent_spin('ajax/movies?dirname='+escape('$path')+'&sort=$sort');">$dir</button>
+				<button onclick="load_maincontent_spin('ajax/movies?dirname='+escape('$path') +'$sort');">$dir</button>
 			#end for
 			#if $directory != '/'
 				<button><span style="color: red; font-weight: bold;">
@@ -102,13 +109,38 @@
 
 <script type="text/javascript">
 \$('#moviebuttons').buttonset();
-\$("#moviesort").selectmenu({change: function(event, ui) {
-	load_maincontent_spin('ajax/movies?dirname='+escape('$directory')+'&sort='+ ui.item.value)
-}
-});
+
+\$( function() {
+	\$.widget( "custom.iconselectmenu", \$.ui.selectmenu, {
+		_renderItem: function( ul, item ) {
+			var li = \$( "<li>" ),
+			wrapper = \$( "<div>",{ text: item.label } ).prepend (
+				\$( "<span class='sortimg'>").append (
+					\$( "<i>", { "class": "fa " + item.element.attr( "data-class" ) })
+				)
+			);
+			return li.append( wrapper ).appendTo( ul );
+		}
+	});
+
+	\$("#moviesort").iconselectmenu({change: function(event, ui) {
+		load_maincontent_spin('ajax/movies?dirname='+escape('$directory')+'&sort='+ ui.item.value)
+	}
+	});
+
+	if('$defsort' != '')
+	{
+		var img = \$( "<span class='sortimg'>").append (
+				\$( "<i>", { "class": "fa " + "$defsort" })
+			)
+		\$(".ui-selectmenu-text").prepend(img);
+	}
+
+} );
+
 #if $len($bookmarks)
 \$("#directory").selectmenu({change: function(event, ui) {
-	load_maincontent_spin('ajax/movies?dirname='+escape(ui.item.value)$sort)
+	load_maincontent_spin('ajax/movies?dirname='+escape(ui.item.value)+'$sort')
 }
 });
 #end if
