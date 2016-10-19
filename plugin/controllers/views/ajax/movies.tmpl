@@ -8,7 +8,7 @@
 	<div id="tvcontentmain">
 		<div id="toolbar-header" class="ui-widget-header">
 		<div style=display:inline-block;float:left;>
-			<select id="moviesort" style="customicons ui-menu-icons">
+			<select id="moviesort">
 			#set $count = 0
 			#set $sortnames = ['default','Name','Name desc','Date','Date desc']
 			#set $de = $tstrings['default']
@@ -116,7 +116,7 @@
 			var li = \$( "<li>" ),
 			wrapper = \$( "<div>",{ text: item.label } ).prepend (
 				\$( "<span class='sortimg'>").append (
-					\$( "<i>", { "class": "fa " + item.element.attr( "data-class" ) })
+					\$( "<i>", { "class": "fa " + item.element.data("class") })
 				)
 			);
 			return li.append( wrapper ).appendTo( ul );
@@ -126,7 +126,7 @@
 	\$("#moviesort").iconselectmenu({change: function(event, ui) {
 		load_maincontent_spin('ajax/movies?dirname='+escape('$directory')+'&sort='+ ui.item.value)
 	}
-	});
+	}).addClass("ui-menu-icons");
 
 	if('$defsort' != '')
 	{
