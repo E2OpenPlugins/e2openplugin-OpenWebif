@@ -48,8 +48,10 @@
 .tm_row { background-color: #404040;border: 1px solid #888888;}
 .tm_row:hover { border: 1px dotted #888888;}
 .cht .fr { background-color: #404040; }
-.sellist .ui-selected { background: #8a8a8a; color: white; }
-.sellist li:hover { background: rgba(243, 243, 243, 0.5); color: white;}
+.selectable .ui-selected, .sellist .ui-selected { background: #8a8a8a; color: white; }
+.selectable li:hover, .sellist li:hover { background: rgba(243, 243, 243, 0.5); color: white;}
+.tm_row { background-color: #888888;border: 1px solid #888888;}
+
 #end if
 
 #if $theme == "sunny"
@@ -70,6 +72,15 @@
 
 #if $theme == "le-frog"
 .off { color : #4ca20b;}
+
+body {background-image:none !important;}
+.selectable .ui-selected,.sellist .ui-selected { background: #3a8104; color: white; }
+.selectable li:hover, .sellist li:hover { background: rgba(58, 129, 4, 0.5); color: white;}
+.marker { color: #ccc; }
+.tm_row { background-color: rgba(58, 129, 4, 0.5);border: 1px solid #3a8104;}
+.tm_title {color: #FFFFFF; }
+.tm_desc {color: #CCCCCC; }
+
 #end if
 
 #if $theme == "humanity"
@@ -86,6 +97,15 @@
 
 #if $theme == "dark-hive"
 .off { color : #000000;}
+body {background-image:none !important;}
+.selectable .ui-selected,.sellist .ui-selected { background: #26b3f7; color: white; }
+.selectable li:hover, .sellist li:hover { background: rgba(38, 179, 247, 0.5); color: white;}
+.marker { color: #ccc; }
+.tm_row { background-color: rgba(38, 179, 247, 0.3);border: 1px solid #26b3f7;}
+.cht .fr { 
+	background-color:rgba(38, 179, 247, 0.3);
+}
+
 #end if
 
 #if $theme == "blitzer"
@@ -147,7 +167,6 @@ body {
 {
 	color: #6cb2e4;
 	border-bottom: 1px solid #d7edfc;
-
 }
 
 #leftmenu_main ul li

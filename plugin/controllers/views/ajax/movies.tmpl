@@ -1,6 +1,6 @@
 #from urllib import quote
 #from Plugins.Extensions.OpenWebif.local import tstrings
-<div id="content_main" style="min-height: 500px;">
+<div id="content_main" class="ui-widget-content" style="min-height: 500px;">
 	<div id="tvcontentmain">
 		<div id="toolbar-header" class="ui-widget-header">
 		<div style=display:inline-block;float:left;>
@@ -78,17 +78,17 @@
 				<div class="tm_text">
 					#if $movie.eventname != ""
 						<div>
-							<span style="color: #176093; font-weight: bold;">$movie.eventname</span><br /> $movie.servicename  $movie.begintime<br /> $movie.length min.
+							<span class="tm_title">$movie.eventname</span><br /> $movie.servicename  $movie.begintime<br /> $movie.length min.
 						</div>
 						<div>
-							<span style="color: #7F8181; font-weight: bold;">$movie.description</span>
+							<span class="tm_desc" style="font-weight: bold;">$movie.description</span>
 						</div>
 						<div>
-							<span style="color: #7F8181;">$movie.descriptionExtended</span>
+							<span class="tm_desc">$movie.descriptionExtended</span>
 						</div>
 					#else
 						<div>
-							<span style="color: #176093; font-weight: bold;">$movie.filename</span>
+							<span class="tm_title">$movie.filename</span>
 						</div>
 					#end if
 				</div>

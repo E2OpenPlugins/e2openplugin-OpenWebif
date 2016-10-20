@@ -1,7 +1,7 @@
 #filter WebSafe
 #from urllib import quote
 #from Plugins.Extensions.OpenWebif.local import tstrings
-<div id="content_main" style="min-height: 500px;">
+<div id="content_main" class="ui-widget-content" style="min-height: 500px;">
 	<div id="tvcontentmain">
 		<div id="toolbar-header" class="ui-widget-header">
 			<span id="toolbar">
@@ -33,7 +33,7 @@
 					</div>
 				<div class="tm_text">
 					<div>
-						<div style="color: #176093; font-weight: bold;">
+						<div class="tm_title">
 							$timer.name
 						</div>
 						$timer.realbegin - $timer.realend
@@ -59,7 +59,7 @@
 						$timer.description
 					</div>
 					<div>
-						<span style="color: #7F8181; font-weight: bold;">
+						<span class="tm_desc" style="font-weight: bold;">
 							#if $timer.state == 0
 								$tstrings['waiting']
 							#elif $timer.state == 2
