@@ -21,7 +21,7 @@
 			<select name="select-choice-1" id="select-choice-moviedir" onChange="window.location.href='/mobile/movies?dirname='+escape(options[selectedIndex].value);">
 				<option value="$directory">$directory</option>
 				#for $bookmark in $bookmarks
-				<option value="$bookmark">$bookmark</option>
+				<option value="$directory$bookmark">$bookmark</option>
 				#end for
 			</select>
 		</div>
