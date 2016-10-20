@@ -1136,8 +1136,6 @@ function openTimerDlg(title)
 {
 	$('#editTimerForm').dialog("open");
 	$('#editTimerForm').dialog("option", "title", title);
-	$('#editTimerForm').dialog("option", "height", "auto");
-	$('#editTimerForm').dialog("option", "position", ['center',100]);
 
 }
 
@@ -1445,3 +1443,161 @@ function ShowTimers(timers)
 	
 	}
 }
+
+var MLHelper;
+
+(function() {
+
+	var MovieListObj = function () {
+		var self;
+		var _movies = [];
+		var currentsort = 'name';
+		
+		return {
+		
+			Init: function ( ) {
+				self = this;
+			},
+			Load: function ( newsort) {
+
+				currentsort = newsort;
+				$.widget( "custom.iconselectmenu", $.ui.selectmenu, {
+					_renderItem: function( ul, item ) {
+						var li = $( "<li>" ),
+						wrapper = $( "<div>",{ text: item.label } ).prepend (
+						$( "<span class='sortimg'>").append (
+							$( "<i>", { "class": "fa " + item.element.data("class") })
+							)
+						);
+						return li.append( wrapper ).appendTo( ul );
+					}
+				});
+
+				$("#moviesort").iconselectmenu({change: function(event, ui) {
+					MLHelper.SortMovies(ui.item.value);
+					}
+				}).addClass("ui-menu-icons");
+				
+				self.SetSortImg();
+				
+				self.ReadMovies();
+			},
+			SetSortImg()
+			{
+			
+				$("#moviesort option").each(function()
+				{
+					var simg='';
+					if( $(this).val() == $( "#moviesort" ).val() )
+					{
+						simg=$(this).data("class");
+						if (simg) {
+							var img = $( "<span class='sortimg'>").append (
+								$( "<i>", { "class": "fa " + simg })
+								)
+							$(".ui-selectmenu-text").prepend(img);
+						}
+					}
+				});
+			}
+			,SortMovies: function(idx)
+			{
+				var sorted = self._movies.slice(0);
+			
+				if(idx=='name')
+				{
+					// sort by name
+					sorted.sort(function(a,b) {
+						var x = a.title.toLowerCase();
+						var y = b.title.toLowerCase();
+						return x < y ? -1 : x > y ? 1 : 0;
+					});
+				
+				}
+			
+				if(idx=='named')
+				{
+					// sort by name desc
+					sorted.sort(function(a,b) {
+						var x = b.title.toLowerCase();
+						var y = a.title.toLowerCase();
+						return x < y ? -1 : x > y ? 1 : 0;
+					});
+						
+				
+				}
+			
+				if(idx=='date')
+				{
+				
+						
+					// sort by date desc
+					sorted.sort(function(a,b) {
+						return b.start - a.start;
+					});
+				
+				
+				}
+			
+				if(idx=='dated')
+				{
+					
+					// sort by date
+					sorted.sort(function(a,b) {
+						return a.start - b.start;
+					});
+				
+				
+				}
+				
+				$('#movies').empty();
+				
+				for (var i = 0, len = sorted.length; i < len; i++) {
+					$('#movies').append ( 
+						sorted[i].html
+					);
+				}
+				
+				self.ChangeSort(idx);
+				self.SetSortImg();
+			
+			},
+			ChangeSort : function(nsort)
+			{
+				$.ajax({
+					url: "api/setmoviesort?sort=" + nsort,
+					success: function() {
+					}
+				});
+			}, 
+			ReadMovies :function()
+			{
+				self._movies = [];
+				
+				$('#movies').children('.tm_row').each(function() { 
+				
+				var d = $(this).data('start');
+				var t = $(this).data('title');
+			
+				self._movies.push (
+					{
+					'id':$(this).attr('id'),
+					'title':t,
+					'start':d,
+					'html': $(this)
+					}
+				);
+				});
+			
+			}
+		
+		}
+
+	};
+	
+	if (typeof MLHelper == 'undefined') {
+		MLHelper = new MovieListObj();
+		MLHelper.Init();
+	}
+
+})();

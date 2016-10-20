@@ -1182,15 +1182,22 @@ class WebController(BaseController):
 	def P_settheme(self, request):
 		if "theme" in request.args.keys():
 			theme = request.args["theme"][0]
-			config.OpenWebif.theme.value = theme
-			config.OpenWebif.theme.save()
+			config.OpenWebif.webcache.theme.value = theme
+			config.OpenWebif.webcache.theme.save()
+		return {}
+
+	def P_setmoviesort(self, request):
+		if "nsort" in request.args.keys():
+			nsort = request.args["nsort"][0]
+			config.OpenWebif.webcache.moviesort.value = nsort
+			config.OpenWebif.webcache.moviesort.save()
 		return {}
 
 	def P_css(self, request):
 		request.setHeader("content-type", "text/css")
 		ret = {}
-		if config.OpenWebif.theme.value:
-			ret['theme'] = config.OpenWebif.theme.value
+		if config.OpenWebif.webcache.theme.value:
+			ret['theme'] = config.OpenWebif.webcache.theme.value
 		else:
 			ret['theme'] = 'redmond'
 		return ret

@@ -30,7 +30,8 @@ from httpserver import HttpdStart, HttpdStop, HttpdRestart
 
 from __init__ import _
 
-THEMES = ['original','base','black-tie','blitzer','cupertino','dark-hive','dot-luv','eggplant','excite-bike','flick','hot-sneaks','humanity','le-frog','mint-choc','overcast','pepper-grinder','smoothness','south-street','start','sunny','swanky-purse','trontastic','ui-darkness','ui-lightness','vader']
+# not used redmond -> original , trontastic , ui-lightness
+THEMES = ['original','base','black-tie','blitzer','cupertino','dark-hive','dot-luv','eggplant','excite-bike','flick','hot-sneaks','humanity','le-frog','mint-choc','overcast','pepper-grinder','smoothness','south-street','start','sunny','swanky-purse','ui-darkness','vader']
 
 config.OpenWebif = ConfigSubsection()
 config.OpenWebif.enabled = ConfigYesNo(default=True)
@@ -47,6 +48,9 @@ config.OpenWebif.webcache.collapsedmenus = ConfigText(default = "remote", fixed_
 config.OpenWebif.webcache.remotegrabscreenshot = ConfigYesNo(default = True)
 config.OpenWebif.webcache.zapstream = ConfigYesNo(default = False)
 config.OpenWebif.webcache.epg_desc_search = ConfigYesNo(default = False)
+config.OpenWebif.webcache.theme = ConfigSelection(default = 'original', choices = THEMES )
+config.OpenWebif.webcache.moviesort = ConfigSelection(default = 'name', choices = ['','name','named','date','dated'] )
+
 # HTTPS
 config.OpenWebif.https_enabled = ConfigYesNo(default=False)
 config.OpenWebif.https_port = ConfigInteger(default = 443, limits=(1, 65535) )
@@ -73,7 +77,6 @@ config.OpenWebif.epg_encoding = ConfigSelection(default = 'utf-8', choices = [ '
 										'iso-8859-10',
 										'iso-8859-16'])
 
-config.OpenWebif.theme = ConfigSelection(default = 'original', choices = THEMES )
 
 imagedistro = getInfo()['imagedistro']
 
@@ -131,7 +134,9 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
 			if imagedistro in ("VTi-Team Image"):
 				self.list.append(getConfigListEntry(_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))
-			self.list.append(getConfigListEntry(_("Webinterface jQuery UI Theme"), config.OpenWebif.theme))
+			#FIXME Submenu			
+			#self.list.append(getConfigListEntry(_("Webinterface jQuery UI Theme"), config.OpenWebif.webcache.theme))
+			#self.list.append(getConfigListEntry(_("Movie List Sort"), config.OpenWebif.webcache.moviesort))
 
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)

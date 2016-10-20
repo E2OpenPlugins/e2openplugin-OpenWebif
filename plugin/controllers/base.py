@@ -261,8 +261,8 @@ class BaseController(resource.Resource):
 			pass
 
 		ret['extras'] = extras
-		if config.OpenWebif.theme.value:
-			ret['theme'] = config.OpenWebif.theme.value
+		if config.OpenWebif.webcache.theme.value:
+			ret['theme'] = config.OpenWebif.webcache.theme.value
 		else:
 			ret['theme'] = 'original'
 		return ret

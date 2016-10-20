@@ -146,33 +146,25 @@ class AjaxController(BaseController):
 		return {}
 
 	def P_movies(self, request):
-		sorttype = ''
-		if "sort" in request.args.keys():
-			sorttype = request.args["sort"][0]
 		if "dirname" in request.args.keys():
 			movies = getMovieList(request.args["dirname"][0])
 		else:
 			movies = getMovieList()
 		movies['transcoding'] = getTranscodingSupport()
-		
-		if sorttype != '':
-			unsort = movies['movies']
+
+		sorttype = config.OpenWebif.webcache.moviesort.value
+		unsort = movies['movies']
+
 		if sorttype == 'name':
-			sortkey=1
 			movies['movies'] = sorted(unsort, key=lambda k: k['eventname']) 
 		elif sorttype == 'named':
-			sortkey=2
 			movies['movies'] = sorted(unsort, key=lambda k: k['eventname'],reverse=True) 
 		elif sorttype == 'date':
-			sortkey=3
 			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime']) 
 		elif sorttype == 'dated':
-			sortkey=4
 			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime'],reverse=True) 
-		else:
-			sortkey=0
-		movies['sortkey'] = sortkey
-		movies['sorttype'] = sorttype
+
+		movies['sort'] = sorttype
 		return movies
 
 	def P_workinprogress(self, request):
@@ -201,9 +193,9 @@ class AjaxController(BaseController):
 			"result": True
 		}
 		ret['configsections'] = getConfigsSections()['sections']
-		if config.OpenWebif.theme.value:
-			ret['themes'] = config.OpenWebif.theme.choices
-			ret['theme'] = config.OpenWebif.theme.value
+		if config.OpenWebif.webcache.theme.value:
+			ret['themes'] = config.OpenWebif.webcache.theme.choices
+			ret['theme'] = config.OpenWebif.webcache.theme.value
 		else:
 			ret['themes'] = []
 			ret['theme'] = 'original'

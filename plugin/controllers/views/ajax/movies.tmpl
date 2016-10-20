@@ -1,28 +1,20 @@
 #from urllib import quote
 #from Plugins.Extensions.OpenWebif.local import tstrings
-#set $sort=''
-#if $sorttype != ''
-	#set $sort = '&sort=' + $sorttype
-#end if
 <div id="content_main" style="min-height: 500px;">
 	<div id="tvcontentmain">
 		<div id="toolbar-header" class="ui-widget-header">
 		<div style=display:inline-block;float:left;>
 			<select id="moviesort">
 			#set $count = 0
-			#set $sortnames = ['default','Name','Name desc','Date','Date desc']
-			#set $de = $tstrings['default']
-			#set $da = 'Date'
+			#set $da = $tstrings['date']
 			#set $na = $tstrings['name']
-			#set $sortnames = [$de,$na,$na,$da,$da]
-			#set $sorttypes = ['','name','named','date','dated']
-			#set $sortimg = ['','fa-sort-alpha-asc','fa-sort-alpha-desc','fa-sort-numeric-asc','fa-sort-numeric-desc']
-			#set $defsort = ''
+			#set $sortnames = [$na,$na,$da,$da]
+			#set $sorttypes = ['name','named','date','dated']
+			#set $sortimg = ['fa-sort-alpha-asc','fa-sort-alpha-desc','fa-sort-numeric-asc','fa-sort-numeric-desc']
 			#for $title in $sortnames
 				<option value="$sorttypes[$count]"
-				#if $count == $sortkey
+				#if $sorttypes[$count] == $sort
 					selected="selected"
-					#set $defsort=$sortimg[$count]
 				#end if
 				 data-class="$sortimg[$count]">$title</option>
 				#set $count += 1
@@ -32,10 +24,10 @@
 		<span id="toolbar">
 		#set $path=''
 		<span id="moviebuttons">
-			<!-- <button onclick="load_maincontent_spin('ajax/movies?dirname=/$sort'); return false">$tstrings['Root']</button>-->
+			<!-- <button onclick="load_maincontent_spin('ajax/movies?dirname=/'); return false">$tstrings['Root']</button>-->
 			#for $dir in $directory[0:-1].split("/")[1:-1]
 				#set $path += '/' + $dir
-				<button onclick="load_maincontent_spin('ajax/movies?dirname='+escape('$path') +'$sort');">$dir</button>
+				<button onclick="load_maincontent_spin('ajax/movies?dirname='+escape('$path'));">$dir</button>
 			#end for
 			#if $directory != '/'
 				<button><span style="color: red; font-weight: bold;">
@@ -57,7 +49,7 @@
 		<div id="movies">
 		#set $count = 0
 		#for $movie in $movies
-			<div class="tm_row" id="$count">
+			<div class="tm_row" id="$count" data-title="$movie.eventname.replace("\"", r"'")" data-start="$movie.recordingtime">
 				<div class="m_buttons tm_buttons">
 						<div>
 						<a href='#' onClick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><div><i class="fa fa-play"></i></div></a>
@@ -108,40 +100,18 @@
 </div>
 
 <script type="text/javascript">
+
 \$('#moviebuttons').buttonset();
-
 \$( function() {
-	\$.widget( "custom.iconselectmenu", \$.ui.selectmenu, {
-		_renderItem: function( ul, item ) {
-			var li = \$( "<li>" ),
-			wrapper = \$( "<div>",{ text: item.label } ).prepend (
-				\$( "<span class='sortimg'>").append (
-					\$( "<i>", { "class": "fa " + item.element.data("class") })
-				)
-			);
-			return li.append( wrapper ).appendTo( ul );
-		}
-	});
-
-	\$("#moviesort").iconselectmenu({change: function(event, ui) {
-		load_maincontent_spin('ajax/movies?dirname='+escape('$directory')+'&sort='+ ui.item.value)
-	}
-	}).addClass("ui-menu-icons");
-
-	if('$defsort' != '')
-	{
-		var img = \$( "<span class='sortimg'>").append (
-				\$( "<i>", { "class": "fa " + "$defsort" })
-			)
-		\$(".ui-selectmenu-text").prepend(img);
-	}
-
-} );
+	MLHelper.Load($sort);
+});
 
 #if $len($bookmarks)
 \$("#directory").selectmenu({change: function(event, ui) {
-	load_maincontent_spin('ajax/movies?dirname='+escape(ui.item.value)+'$sort')
+	load_maincontent_spin('ajax/movies?dirname='+escape(ui.item.value))
 }
 });
+
 #end if
+
 </script>
