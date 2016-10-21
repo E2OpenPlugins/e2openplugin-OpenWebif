@@ -117,7 +117,11 @@ class AjaxController(BaseController):
 				at = True
 			except ImportError:
 				pass
-		return { "events": events , "timers" : timers , "at" : at, "kinopoisk": getLanguage()}
+		if config.OpenWebif.webcache.theme.value:
+			theme = config.OpenWebif.webcache.theme.value
+		else:
+			theme = 'original'
+		return { "theme":theme, "events": events , "timers" : timers , "at" : at, "kinopoisk": getLanguage()}
 
 	def P_epgdialog(self, request):
 		return self.P_epgpop(request)

@@ -12,6 +12,10 @@
 </body>
 </html>
 #else
+#set $t="original"
+#if $varExists('theme')
+	#set $t=$theme
+#end if
 <!doctype html5>
 <html>
 <head>
@@ -21,6 +25,9 @@
 <script src="../js/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="../css/jquery-ui.min.css">
 <link rel="stylesheet" href="../css/font-awesome.min.css">
+#if $t != "original"
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/$t/jquery-ui.css">
+#end if
 <link type="text/css" href="../css/style.css" rel="stylesheet"/>
 <link type="text/css" href="../web/css" rel="stylesheet"/>
 <script type="text/javascript" src="../js/openwebif.js"></script>
@@ -48,7 +55,7 @@ tr {background-color: #F0F7FC;}
 .eft td { height:60px;}
 .efi { width:100px;}
 .eft td > div { display:table;width:100%;}
-.esl1,.esl2 { display:table-cell;width:30%;font-size:13px;color: #061C37;font-weight: bold;vertical-align: middle;height: 60px;padding-left: 10px;}
+.esl1,.esl2 { display:table-cell;width:30%;font-size:13px;font-weight: bold;vertical-align: middle;height: 60px;padding-left: 10px;}
 .esl2 { width:70%;border-left: 1px solid black;}
 .eff {width:100% !important;vertical-align: top;padding-left:10px;}
 .efi img {width:100px;height:60px; border:none;}
@@ -57,7 +64,8 @@ tr {background-color: #F0F7FC;}
 
 <title>Open Webif $tstrings['epg']</title>
 </head>
-	<body style="background: #1C478E; scrollbar: auto;">
+<body>
+<div class="ETV">	
 <table class="ETVTAB" border="0" cellspacing="1" cellpadding="5">
 #for $event in $events
 		#set $channel = $event.sname.replace("'", r"\'")
@@ -144,6 +152,7 @@ tr {background-color: #F0F7FC;}
 </tbody>
 #end for
 </table>
+</div>
 <div id="editTimerForm" title="$tstrings['edit_timer']"></div>
 </body>
 <script type="text/javascript">
@@ -158,6 +167,19 @@ $(function() {
 	$('#editTimerForm').load('../ajax/edittimer');
 	ShowTimers(t);
 });
+
+$(document).ready(function () {
+	$(".ui-dialog").css({position: 'fixed',top:'10'});
+	$(document).scroll(function (e) {
+// FIXME !!
+//		if ($(".ui-widget-overlay"))
+//		{
+//			$(".ui-widget-overlay").css({ position: 'fixed',top: '0'});
+//			$(".ui-dialog").css({position: 'fixed',top: $(window).scrollTop()});
+//		}
+	});
+});
+
 #end raw
 </script>
 </html>

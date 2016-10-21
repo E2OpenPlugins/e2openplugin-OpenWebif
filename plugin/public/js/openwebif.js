@@ -403,8 +403,8 @@ function open_epg_dialog(sRef,Name) {
 function open_epg_pop(sRef) {
 	var url = 'ajax/epgpop?sref=' + escape(sRef);
 	$.popupWindow(url, {
-		height: 500,
-		width: 900,
+		height: $(window).height(),
+		width: $(window).width(),
 		toolbar: false,
 		scrollbars: true
 	});	
