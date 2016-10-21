@@ -9,7 +9,7 @@
 <style>
 
 
-.tb,.tbr { padding:0; margin:0 0 0 0; background-color:#FFF;width:40px}
+.tb,.tbr { padding:0; margin:0 0 0 0; background:none;width:40px}
 .bb { margin:0;margin-top:5px;display:block;}
 #cl { font-size:32px;padding:0;margin:10px 0 0 0; width:10px; }
 #pp,#tp,#tp2 {margin-left:12px; margin-top:-6px;}
@@ -23,7 +23,7 @@
 .im { font-family:Impact,Arial;font-size:24px; }
 .d_timer{display:none;}
 
-.tstation { background-color: #1c478e; color:#fff; width:80px;margin-top: 5px;}
+.tstation { width:80px;margin-top: 5px;}
 
 .eventt td {width:40px;text-align:center;}
 .eventt td,tr {height:40px;}
@@ -44,14 +44,14 @@
 		<tr style="height: 160px;">
 		<td style="width: 80px;" colspan="2">
 		
-			<div class="tstation" id="station" onclick="zapChannel('$str($event['sref'])', '$channel')" title="$tstrings['zap']">$event['channel']</div>
+			<div class="tstation station" id="station" onclick="zapChannel('$str($event['sref'])', '$channel')" title="$tstrings['zap']">$event['channel']</div>
 		
-			<div class="tstation" style="font-size:23px;">
+			<div class="tstation station" style="font-size:23px;">
 				$event.begin_str<br/>
 				<span style="font-size:12px; color:#A9D1FA">$int($event.duration/60) min</span>
 			</div>
 
-			<div class="tstation">
+			<div class="tstation station">
 				<div style="font-size:23px; text-align:center">$tstrings[("day_" + ($time.strftime("%w", $etime)))]</div>
 				<div style="color:#A9D1FA; text-align:center">$time.strftime("%d", $etime) $tstrings[("month_" + ($time.strftime("%m", $etime)))]</div>
 			</div>
@@ -155,5 +155,5 @@
 <script>
 var theevent = $dumps($event);
 if (picons[theevent['channel']])
-	\$('#station').html('<img src="'+picons[theevent['channel']]+'" width="75" />');
+	\$('#station').html('<img src="'+picons[theevent['channel']]+'" width="80" />');
 </script>

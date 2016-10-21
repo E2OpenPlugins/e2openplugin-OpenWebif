@@ -565,7 +565,7 @@ font-size:16px;font-weight:bold;opacity:0.3;
 .tm_title {color: #176093; font-weight: bold; }
 .tm_desc {color: #7F8181; }
 
-#tbl1 .service { color:#fff; background-color: #1c47ae;}
+.station { color:#fff; background-color: #1c47ae;}
 #tbl1 .title { color:#061c37;}
 #tbl1 .desc { color:#176093;}
 #tbl1 .even { background-color: #dfeffc;}
