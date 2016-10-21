@@ -97,7 +97,17 @@ def getBoxName():
 	}
 
 def getJsonFromConfig(cnf):
-	if cnf.__class__.__name__ == "ConfigSelection" or cnf.__class__.__name__ == "ConfigSelectionNumber":
+	if cnf.__class__.__name__ == "ConfigSelection" or cnf.__class__.__name__ == "ConfigSelectionNumber" or cnf.__class__.__name__ == "TconfigSelection":
+		if cnf.__class__.__name__ == "ConfigSelectionNumber":
+			if cnf.choices == None and cnf.min != None and cnf.max != None:
+				choices = []
+				steps  = 1
+				if cnf.steps != None:
+					steps = cnf.steps
+				for i in range(cnf.min, cnf.max, steps):
+					choices.append( i,i )
+				return {"result": True,"type": "select", "choices": choices,"current": cnf.value}
+				#return {"result": True,"type": "select","min": cnf.min,"max": cnf.max,"choices": choices,"current": cnf.value}
 		if type(cnf.choices.choices) == dict:
 			choices = []
 			for choice in cnf.choices.choices:
@@ -137,7 +147,7 @@ def getJsonFromConfig(cnf):
 			"type": "number",
 			"current": cnf.value
 		}
-	elif cnf.__class__.__name__ == "ConfigInteger":
+	elif cnf.__class__.__name__ == "ConfigInteger" or cnf.__class__.__name__ == "TconfigInteger":
 		return {
 			"result": True,
 			"type": "number",
@@ -172,7 +182,7 @@ def saveConfig(path, value):
 			cnf.value = values
 		elif cnf.__class__.__name__ == "ConfigNumber":
 			cnf.value = int(value)
-		elif  cnf.__class__.__name__ == "ConfigInteger":
+		elif  cnf.__class__.__name__ == "ConfigInteger" or cnf.__class__.__name__ == "TconfigInteger":
 			cnf_min = int(cnf.limits[0][0])
 			cnf_max = int(cnf.limits[0][1])
 			cnf_value = int(value)
