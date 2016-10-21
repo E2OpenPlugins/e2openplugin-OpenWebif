@@ -16,7 +16,6 @@
 .im { font-family:Impact,Arial;font-size:18px;text-decoration:none;}
 
 table { font-size:12px; font-family: Verdana,Arial,sans-serif;}
-tr {background-color: #F0F7FC;}
 
 .deltimer{display:none;}
 
@@ -25,13 +24,13 @@ tr {background-color: #F0F7FC;}
 .eft td { height:60px;}
 .efi { width:100px;}
 .eft td > div { display:table;width:100%;}
-.esl1,.esl2 { display:table-cell;width:30%;font-size:13px;color: #061C37;font-weight: bold;vertical-align: middle;height: 60px;padding-left: 10px;}
+.esl1,.esl2 { display:table-cell;width:30%;font-size:13px;font-weight: bold;vertical-align: middle;height: 60px;padding-left: 10px;}
 .esl2 { width:70%;border-left: 1px solid black;}
 .eff {width:100% !important;vertical-align: top;padding-left:10px;}
 .efi img {width:100px;height:60px; border:none;}
 .eff1 {width:100%;}
 </style>
-<div style="background-color: #1C478E;">
+<div class="ETV">
 <table class="ETVTAB" border="0" cellspacing="1" cellpadding="5">
 #for $event in $events
 		#set $channel = $event.sname.replace("'", r"\'")

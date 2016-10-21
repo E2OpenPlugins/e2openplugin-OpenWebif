@@ -224,9 +224,6 @@ function handle_power_state_dialog(new_power_state) {
 		load_reboot_dialog(sp,tstr_restart_gui);
 		wait_for_openwebif();
 		timeout = 1000 ;
-	} else if ( new_power_state === 4 ) {
-		load_reboot_dialog(sp,tstr_restart_gui);
-		return;
 	}
 	setTimeout(function () {
 		webapi_execute('api/powerstate?newstate=' + new_power_state);
