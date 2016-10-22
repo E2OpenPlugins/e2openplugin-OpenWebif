@@ -43,21 +43,18 @@
 
 	<div>
 		<div class="tcl">
-			<div class="tcld" id="$channel.now_idp">$tstrings['no_description_available']</div>
+			<div class="tcld ui-state-default" id="$channel.now_idp">$tstrings['no_description_available']</div>
 		</div>
-		<div class="tcr">
-		</div>
+		<div class="tcr"></div>
 	</div>
 
 	<div>
 		<div class="tcl">
-			<div class="meter-wrap">
-				<div class="meter-value" style="width: ${channel.progress}px;">
-				</div>
+			<div class="ui-progressbar ui-corner-all ui-widget ui-widget-content">
+				<div class="ui-progressbar-value ui-corner-left ui-widget-header" style="width: ${channel.progress}%;"></div>
 			</div>
 		</div>
-		<div class="tcr">
-		</div>
+		<div class="tcr"></div>
 	</div>
 
 	<div>
@@ -72,10 +69,9 @@
 
 	<div>
 		<div class="tcl">
-			<div class="tcld" id="$channel.next_idp">$tstrings['no_description_available']</div>
+			<div class="tcld ui-state-default" id="$channel.next_idp">$tstrings['no_description_available']</div>
 		</div>
-		<div class="tcr">
-		</div>
+		<div class="tcr"></div>
 	</div>
 #end if
 </div>

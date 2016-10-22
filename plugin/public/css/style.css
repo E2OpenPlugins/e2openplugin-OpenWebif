@@ -549,17 +549,9 @@ font-size:16px;font-weight:bold;opacity:0.3;
 .cht > div {display:table-row;}
 .cht .tcl {display:table-cell;width:80%;}
 .cht .tcr {display:table-cell;width:20%;text-align: right;}
-.cht .tcld {
-	display: none;
-	background-color: #F0F7FC;
-	color: #7F8181;
-}
-
-.cht .fr { 
-	font-size:14px;
-	height:24px;
-	background-color:rgba(0,0,0,0.1);
-}
+.cht .tcld { display: none;}
+.cht .fr { font-size:14px;height:24px;background-color:rgba(0,0,0,0.1);}
+.cht .ui-progressbar { height:0.4em; width: 50%; margin: 2px 0 4px; }
 
 .sortimg {margin-right:10px;}
 .marker { float: right; opacity: 0.5; color: #00c; font-size: 80%; }
