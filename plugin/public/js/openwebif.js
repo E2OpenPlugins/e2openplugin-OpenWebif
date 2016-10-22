@@ -1278,9 +1278,7 @@ function InitBouquets(tv)
 	if (tv===true) {
 		var parts=window.location.href.toLowerCase().split("#");
 		window.location.hash="";
-		console.log(parts[1])
 		if (parts[1] == 'tv') {
-			console.log(parts[2])
 			if(parts[2] == 'mepg' || parts[2] == 'mepgfull')
 			{
 				mepgdirect=0;
@@ -1487,7 +1485,7 @@ var MLHelper;
 				
 				self.ReadMovies();
 			},
-			SetSortImg()
+			SetSortImg: function ()
 			{
 			
 				$("#moviesort option").each(function()

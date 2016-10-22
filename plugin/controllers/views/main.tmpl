@@ -73,17 +73,6 @@
 			</ul>
 			#end def
 
-			#def volumeMenu
-			<div class="volslider">
-					<p style="text-align:center; padding-bottom:8px;"> 
-						<label for="amount">$tstrings['volume']:</label>
-						<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold; width:40px;" />
-					</p>
-				<div id="slider" style="width:130px;"></div>
-			</div>
-			<div style="width:100%; text-align:center; padding-top:5px; padding-bottom:10px;"><img id="volimage" src="images/volume.png" title="" border="0" width="48" height="48"></div>
-			#end def
-
 			#def searchMenu
 			#if $epgsearchcaps
 			<ul>
@@ -102,6 +91,17 @@
 			
 			#def remoteMenu
 			<div style="width:100%; text-align:center;">
+					<ul>
+					<li style="margin-bottom:5px;margin-top:5px;">
+					<div class="tbl"><div>
+					<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
+				<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
+					<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
+					<div><a class="fbb" href='#' title=$tstrings['showfullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-expand" aria-hidden="true"></i></a></div>
+					</div></div>
+					</li>
+					</ul>
+					<div class="ui-widget-header" style="border-bottom: none;background: none;margin-left: 5px;margin-right: 5px;"></div>
 				<img src="images/remotes/ow_remote.png" width="135" height="183" usemap="#menuremote" border="0">
 				<map name="menuremote" >
 					<area shape="circle" coords="67,148,13" alt="ok" onclick="pressMenuRemote('352');">
@@ -129,22 +129,26 @@
 				<div id="help">
 					$tstrings['shiftforlong']
 				</div>
-				<ul>
+					<ul>
 					#set $checked = ""
 					#if $remotegrabscreenshot
 						#set $checked = "checked='checked'"
 					#end if
-					
-					<li><input type="checkbox" name="remotegrabscreen" $checked /><span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span></li>
 					<li style="margin-bottom:5px;margin-top:5px;">
-					<div class="tbl"><div>
-					<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
-				<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
-					<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
-					<div><a class="fbb" href='#' title=$tstrings['showfullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-expand" aria-hidden="true"></i></a></div>
-					</div></div>
+					<input type="checkbox" name="remotegrabscreen" $checked /><span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span>
 					</li>
-				</ul>
+					</ul>
+					<div class="volslider" style="display:table-row;margin-bottom:15px">
+						<div style="display:table-cell;vertical-align: middle;"><img style="margin-left:5px;" id="volimage" src="images/volume.png" title="" border="0" width="24" height="24">
+						</div>
+						<div style="vertical-align: middle;display:table-cell;">
+							<div id="slider" style="margin-left:10px;margin-right:10px;width:90px;"></div>
+						</div>
+						<div style="vertical-align: middle;display:table-cell;">
+							<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold; width:15px;" />
+						</div>
+					</div>
+					<div style="margin-bottom:5px;"></div>
 			</div>
 			#end def
 			
@@ -162,15 +166,25 @@
 			#end def
 			<div id="menucontainer">
 				$menu($tstrings['main'], "main", $mainMenu)
-				$menu($tstrings['volumecontrol'], "volume", $volumeMenu)
 				$menu($tstrings['remote'], "remote", $remoteMenu)
 				$menu($tstrings['extras'], "extras", $extrasMenu)
 				$menu($tstrings['epgsearch'], "search", $searchMenu)
 			</div>
 			<div id="remotecontainer" style="display: none;">
 				<div id="leftmenu_main">
-					<div id="leftmenu_top">$tstrings['remote']</div>
+					<div id="leftmenu_top" class="ui-widget-header">$tstrings['remote']</div>
 					<div style="width:100%; text-align:center;">
+					<ul>
+					<li style="margin-bottom:5px;"
+							<div class="tbl"><div>
+							<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
+						<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
+							<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
+							<div><a class="fbb" href='#' title=$tstrings['showfullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-compress" aria-hidden="true"></i></a></div>
+							</div></div>
+							</li>
+					</ul>
+					
 						<div id="remote_container" style="width:100%; text-align:center;"></div>
 						<div id="help">
 							$tstrings['shiftforlong']
@@ -181,15 +195,8 @@
 								#set $checked = "checked='checked'"
 							#end if
 							
-							<li><input type="checkbox" name="remotegrabscreen" $checked /><span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span></li>
-							<li style="margin-bottom:5px;margin-top:5px;">
-							<div class="tbl"><div>
-							<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
-						<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
-							<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
-							<div><a class="fbb" href='#' title=$tstrings['showfullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-compress" aria-hidden="true"></i></a></div>
-							</div></div>
-							</li>
+							<li style="margin-bottom:5px;">
+							<input type="checkbox" name="remotegrabscreen" $checked /><span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span></li>
 						</ul>
 					</div>
 				</div>
