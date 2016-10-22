@@ -12,6 +12,11 @@
 * update jQuery and jQuery UI
 * use fontawesome for some images
 * add oscam webif to extras
+* allow open (tv,radio,recording,timer,multiepg) with direct link
+* fix settings save issue
+* improve bouquet editor
+* reorg main menu
+* quit support for very old browser (with no html5 support)
 Thanks to MDXDave for some ideas to improve the UI
 
 ## Version 0.4.9

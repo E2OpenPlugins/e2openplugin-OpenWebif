@@ -4,7 +4,7 @@
 #if $varExists('theme')
 	#set $t=$theme
 #end if
-<!doctype html5>
+<!doctype html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -45,12 +45,12 @@
 		<div id="leftmenu" class="ui-widget-content">
 			#def menu($title, $name, $content)
 			<div id="leftmenu_main">
-				<div id="leftmenu_top" class="ui-widget-header">
+				<div id="leftmenu_top" class="ui-widget-header" onclick="toggleMenu('$name');">
 					$title
 					#if $name in $collapsed
-					<div id="leftmenu_expander_$name" class="ui-selectmenu-icon ui-icon ui-icon-caret-1-w" onclick="toggleMenu('$name');"></div>
+					<div id="leftmenu_expander_$name" class="ui-selectmenu-icon ui-icon ui-icon-caret-1-w"></div>
 					#else
-					<div id="leftmenu_expander_$name" class="ui-selectmenu-icon ui-icon ui-icon-caret-1-s" onclick="toggleMenu('$name');"></div>
+					<div id="leftmenu_expander_$name" class="ui-selectmenu-icon ui-icon ui-icon-caret-1-s"></div>
 					#end if
 				</div>
 				#if $name in $collapsed

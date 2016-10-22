@@ -461,11 +461,13 @@ color:#87BCF8;
 #configuration select
 {
 	width: 200px;
+	cursor: pointer;
 }
 
 #configuration td:first-child
 {
 	width: 350px;
+	cursor: default;
 }
 
 html, body
@@ -565,22 +567,14 @@ font-size:16px;font-weight:bold;opacity:0.3;
 .tm_title {color: #176093; font-weight: bold; }
 .tm_desc {color: #7F8181; }
 
-.station { color:#fff; background-color: #1c47ae;}
-#tbl1 .title { color:#061c37;}
-#tbl1 .desc { color:#176093;}
-#tbl1 .even { background-color: #dfeffc;}
-#tbl1 .odd { background-color: #f0f7fc;}
-#tbl1 .border { border-right: 1px solid #4297d7;}
-#tbl1 .timer { color: #f00; }
-#tbl1 .timer.disabled { color: #f80; }
-
-#navepg .bq { background-color: #1c478e;color: #fff;}
-#navepg .bq.selected { color: #A9D1FA;}
-
-#navepg .plus { background-color: #dfeffc;color: #1c478e;}
-#navepg .plus.selected { color: #ea7409;}
 
 .ETVTAB tr {background-color: #F0F7FC;}
 .ETV {background-color: #1C478E;}
 
 .esl1,.esl2 { color: #061C37;}
+
+.link:hover { color:#87BCF8;}
+
+#leftmenu_top, .link,.service {cursor:pointer;}
+
+

@@ -6,8 +6,8 @@
 	table { font-family: Verdana; font-size: 11px; }
 	tr { vertical-align: top }
 	.float { float:left }
-	.service { font-weight: bold; font-size: 12px; line-height:30px; padding: 3px; white-space: nowrap; overflow: hidden; width: 184px}
-	.service img { width:50px; height:30px; float:left; margin-right:10px; }
+	.service { font-weight: bold; font-size: 12px; line-height:30px; padding-right: 4px; white-space: nowrap; overflow: hidden; width: 184px}
+	.service img { width:50px; height:30px; float:left; margin-right:10px; border: 0;}
 	.title { font-weight: bold;}
 	.desc { font-size: 10px;}
 	.event { cursor: pointer; width: 190px; overflow:hidden; }
@@ -18,20 +18,21 @@
 	#navepg { margin-bottom: 1px; }
 	#tbl1 thead tr, #tbl1 tfoot tr { display: block; width: 100%; }
 	#tbl1 tbody { width: 100%; height: 100%; overflow-y: auto; display: block; }
+	.ui-widget-content.nobg { background-image: none; } 
 	.wrapper { overflow-x: auto; width: 100%; }
 	td.border { width: 190px; }
 </style>
 
 <div id="navepg">
 #for $slot in range(0,7)
-	<div class="float plus #if $slot==$day then 'selected' else '' #" js:day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div>
+	<div class="float plus ui-state-default #if $slot==$day then 'ui-state-active' else '' #" js:day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div>
 #end for
-<div id="compressmepg" onclick="CompressMEPG();"><i id="compressmepgi" class="fa fa-compress" aria-hidden="true"></i></div>
-<div id="refreshmepg" onclick="RefreshMEPG();"><i id="refreshmepgi" class="fa fa-refresh" aria-hidden="true"></i></div>
+<div id="compressmepg" onclick="CompressMEPG();"><i id="compressmepgi" class="fa fa-compress link" aria-hidden="true"></i></div>
+<div id="refreshmepg" onclick="RefreshMEPG();"><i id="refreshmepgi" class="fa fa-refresh link" aria-hidden="true"></i></div>
 	<br clear="all">
 
 #for $bq in $bouquets
-	<div class="float bq #if $bq[0]==$bref then 'selected' else '' #" js:ref="$quote($bq[0])">$bq[1]</div>
+	<div class="float bq ui-state-default #if $bq[0]==$bref then 'ui-state-active' else '' #" js:ref="$quote($bq[0])">$bq[1]</div>
 #end for
 <br clear="all">
 </div>
@@ -42,29 +43,29 @@
 <thead>
 <tr>
 	#for $sname, $eventlist in $events.iteritems()
-	<td class="border"><div class="service station"><img src="$(picons[$sname])" /> $sname</div></td>
+	<td class="border"><div class="service ui-widget-header"><img src="$(picons[$sname])" /> $sname</div></td>
 	#end for
 </tr>
 </thead>
 <tbody id="tbl1body">
 	#set hasEvents = False
 	#for $slot in range(0,12)
-<tr class="$(slot%2 and 'odd' or 'even')">
-	#for $sname, $eventlist in $events.iteritems()
-<td class="border">
-	#for $event in $eventlist[$slot]
-		$renderEventBlock.render($event)
-		#set hasEvents = True
-	#end for
-</td>
-	#end for
-</tr>
+	<tr class="$(slot%2 and 'ui-widget-content' or 'ui-widget-content ui-state-hover') nobg">
+		#for $sname, $eventlist in $events.iteritems()
+		<td class="border">
+			#for $event in $eventlist[$slot]
+				$renderEventBlock.render($event)
+				#set hasEvents = True
+			#end for
+		</td>
+		#end for
+	</tr>
 	#end for
 </tbody>
 <tfoot>
 <tr>
 	#for $sname, $eventlist in $events.iteritems()
-	<td class="border"><div class="service station"><img src="$(picons[$sname])" /> $sname</div></td>
+	<td class="border"><div class="service ui-widget-header"><img src="$(picons[$sname])" /> $sname</div></td>
 	#end for
 </tr>
 </tfoot>

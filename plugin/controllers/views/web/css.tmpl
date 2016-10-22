@@ -44,14 +44,10 @@
 
 #if $theme == "vader"
 .off { color : #000000;}
-#content_main { background-color: #000;border: 2px solid #888888; background-image:none !important; }
-.tm_row { background-color: #404040;border: 1px solid #888888;}
-.tm_row:hover { border: 1px dotted #888888;}
+#content_main { background-color: #000;border: 2px solid #888; background-image:none !important; }
 .cht .fr { background-color: #404040; }
 .selectable .ui-selected, .sellist .ui-selected { background: #8a8a8a; color: white; }
 .selectable li:hover, .sellist li:hover { background: rgba(243, 243, 243, 0.5); color: white;}
-.tm_row { background-color: #888888;border: 1px solid #888888;}
-
 .marker { color: #888; }
 
 #end if
@@ -72,17 +68,9 @@ body {background-image:none !important;}
 .station { color:#fff; background-color: #2191c0;}
 #tbl1 .title { color:#EEE;}
 #tbl1 .desc { color:#caccce;}
-#tbl1 .even { background-color: rgba(38, 179, 247, 0.5);}
-#tbl1 .odd { background-color: rgba(38, 179, 247, 0.7);}
 #tbl1 .border { border-right: 1px solid #4297d7;}
 #tbl1 .timer { color: #f00; }
 #tbl1 .timer.disabled { color: #f80; }
-
-#navepg .bq { background-color: #2191c0;color: #fff;}
-#navepg .bq.selected { color: #AAA;}
-
-#navepg .plus { background-color: #2191c0;color: #1c478e;}
-#navepg .plus.selected { color: #ea7409;}
 
 #end if
 
@@ -107,7 +95,6 @@ body {background-image:none !important;}
 .marker { color: #ccc; }
 .tm_row { background-color: rgba(58, 129, 4, 0.5);border: 1px solid #3a8104;}
 .tm_title {color: #FFFFFF; }
-.tm_desc {color: #CCCCCC; }
 
 #end if
 
@@ -141,42 +128,31 @@ body {background-image:none !important;}
 .station { color:#fff; background-color: #8e8e8e;}
 #tbl1 .title { color:#EEE;}
 #tbl1 .desc { color:#caccce;}
-#tbl1 .even { background-color: rgba(38, 179, 247, 0.5);}
-#tbl1 .odd { background-color: rgba(38, 179, 247, 0.7);}
 #tbl1 .border { border-right: 1px solid #4297d7;}
 #tbl1 .timer { color: #f00; }
 #tbl1 .timer.disabled { color: #f80; }
-
-#navepg .bq { background-color: #2a92e0;color: #fff;}
-#navepg .bq.selected { color: #AAA;}
-
-#navepg .plus { background-color: #dfeffc;color: #1c478e;}
-#navepg .plus.selected { color: #ea7409;}
 
 #end if
 
 #if $theme == "ui-darkness" or $theme == "vader"
 body {background-image:none !important;}
 
-.station { color:#fff; background-color: #8e8e8e;}
-#tbl1 .title { color:#EEE;}
-#tbl1 .desc { color:#caccce;}
-#tbl1 .even { background-color: rgba(142, 142, 142, 0.5);}
-#tbl1 .odd { background-color: rgba(142, 148, 142, 0.7);}
-#tbl1 .border { border-right: 1px solid #aaa;}
 #tbl1 .timer { color: #f00; }
 #tbl1 .timer.disabled { color: #f80; }
-
-#navepg .bq { background-color: #8e8e8e;color: #fff;}
-#navepg .bq.selected { color: #555;}
-
-#navepg .plus { background-color: #8e8e8e;color: #fff;}
-#navepg .plus.selected { color: #555;}
 
 .ETVTAB tr {background-color: #222;}
 .esl1,.esl2 { color: #eee;}
 .ETV {background-color: #eee;}
 
+.tm_title {color: #FFF; }
+.tm_desc {color: #CCC; }
+.tm_row { background-color: #232323;border: 1px solid #888;}
+.tm_row:hover { border: 1px dotted #888;}
+
+#end if
+
+#if $theme == "ui-darkness" 
+.marker { color: #f39814; }
 #end if
 
 #if $theme == "blitzer"
@@ -205,6 +181,7 @@ body {background-image:none !important;}
 #if $theme == "base"
 #header { background : #007fff;}
 .off { color : #c5c5c5;}
+.station { color:#fff; background-color: #007fff;}
 #end if
 
 #if $theme == "overcast"
@@ -349,7 +326,16 @@ table .tcurrent
 
 .osdch { color:#EA7409;}
 
+.station { color:#fff; background-color: #1c47ae;}
+#tbl1 .title { color:#061c37;}
+#tbl1 .desc { color:#176093;}
+#tbl1 .border { border-right: 1px solid #4297d7;}
+#tbl1 .timer { color: #f00; }
+#tbl1 .timer.disabled { color: #f80; }
+
 #else
+
+#tbl1 .border { border-right: 1px solid;}
 
 #end if
 
