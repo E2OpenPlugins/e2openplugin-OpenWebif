@@ -3,8 +3,8 @@
 	<div id="info">
 
 		<div style="background-color: #00000">
-		<div style="display: inline-block; width: 100%; zoom: 1;">
-			<div style="float:left;width:200px;">
+		<div style="display:table-row; width: 100%; zoom: 1;">
+			<div style="display:table-cell;width:200px;">
 				<h3 class="ui-widget-header">$tstrings['settings']</h3>
 				<ol class="sellist" id="slist">
 				#if $themes
@@ -16,7 +16,8 @@
 				</ol>
 				
 			</div>
-			<div style="margin-left:200px;">
+			<div class="ui-widget-header" style="display:table-cell;background: none;border-bottom:none;border-top:none;border-left:none;width:1px;"></div>
+			<div style="display:table-cell;width: 100%;">
 				<div style="width: 100%; zoom: 1;">
 					<div id="scontent"></div>
 					</div>

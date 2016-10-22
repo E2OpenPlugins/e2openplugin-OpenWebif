@@ -10,22 +10,22 @@ fieldset > label
 }
 </style>
 
-<div id="content_main" style="min-height: 500px;" class="ui-widget-content">
+<div id="content_main" style="min-height: 500px;">
 	<div id="info">
 		<div style="background-color: #00000">
-		<div style="display: inline-block; width: 100%; zoom: 1;">
-			<div style="float:left;width:200px;">
+		<div style="display: table-row; width: 100%; zoom: 1;">
+			<div style="display:table-cell;width:200px;vertical-align:top;" class="ui-widget-content">
 				<h3 class="ui-widget-header">$tstrings['at_list']</h3>
 				<ol class="sellist" id="atlist">
 				</ol>
 				
 			</div>
-			<div style="margin-left:200px;">
-				<div style="display: inline-block; width: 100%; zoom: 1;">
+			<div style="display:table-cell;with:100%;" class="ui-widget-content">
+				<div style="display: inline-block; width: 100%; zoom: 1; class="ui-widget-content"">
 					<h3 class="ui-widget-header">$tstrings['at_at_edit'] <span id='at_name'></span></h3>
 					<div id="ateditcontent">
 						<form>
-							<fieldset class="ui-widget-content">
+							<fieldset style="border:none">
 								<br><label for="enabled">$tstrings['at_enabled']:</label>
 								<input type="checkbox" name="enabled" id="enabled" value="" class="checkbox ui-widget-content ui-corner-all">
 								<br><label for="name">$tstrings['at_description']:</label>
