@@ -121,5 +121,12 @@ if(\$("#header").is(':hidden')) {
 	\$('#compressmepg').show();
 	\$('#refreshmepg').show();
 }
+if(mepgdirect==1) {
+	mepgdirect=0;
+	\$("#expandmepg").click();
+} else { 
+	\$('#compressmepg').show();
+	\$('#refreshmepg').show();
+}
 </script>
 

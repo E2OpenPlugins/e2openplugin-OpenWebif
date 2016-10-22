@@ -1225,6 +1225,8 @@ function mainresize()
 	}
 }
 
+var mepgdirect=0;
+
 function InitBouquets(tv)
 {
 	var mode="";
@@ -1270,9 +1272,29 @@ function InitBouquets(tv)
 	});
 	
 	$("#tvbutton").buttonset();
-	$("#tvcontent").load("ajax/bouquets" + mode);
+
+	var link = "ajax/bouquets" + mode;
+
+	if (tv===true) {
+		var parts=window.location.href.toLowerCase().split("#");
+		window.location.hash="";
+		console.log(parts[1])
+		if (parts[1] == 'tv') {
+			console.log(parts[2])
+			if(parts[2] == 'mepg' || parts[2] == 'mepgfull')
+			{
+				mepgdirect=0;
+				if(parts[2] == 'mepgfull')
+					mepgdirect=1;
+				$("#btn5").click();
+				return;
+			}
+		}
+	}
 	
+	$("#tvcontent").load("ajax/bouquets" + mode);
 }
+
 
 /* Vu+ Transcoding begin*/
 
@@ -1353,27 +1375,9 @@ function ChangeTheme(theme)
 	});
 }
 
-function tvdirectlink()
-{
-	var parts=window.location.href.toLowerCase().split("#");
-	window.location.hash="";
-	if(parts[1] == 'tv')
-	{
-		if(parts[2] == 'mepg' || parts[2] == 'mepgfull')
-		{
-			$("#btn5").click();
-			if(parts[2] == 'mepgfull')
-			{
-				$("#expandmepg").click();
-			}
-		}
-	}
-}
-
 function directlink()
 {
 	var parts=window.location.href.toLowerCase().split("#");
-	window.location.hash="";
 	var lnk='ajax/tv';
 	if(parts[1] == 'radio')
 	{
@@ -1391,7 +1395,10 @@ function directlink()
 	{
 		lnk='ajax/settings';
 	}
-
+	if(parts[1] != 'tv') {
+		window.location.hash="";
+	}
+	
 	load_maincontent(lnk);
 }
 
