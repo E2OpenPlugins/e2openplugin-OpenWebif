@@ -5,7 +5,12 @@ OpenWebif
 =========
 Open Source Web Interface for E2 based Linux set-top box
 
-** Please check out the new [Wiki Page](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/wiki). **
+Screenshot Version 1.0.x
+-------
+![](screenshots/Image1.jpg)
+![](screenshots/Image2.jpg)
+![](screenshots/Image3.jpg)
+
 
 Depends
 -------
