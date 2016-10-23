@@ -1034,6 +1034,9 @@ function reloadAT()
 			var ids = $('#atlist .ui-selected').map(function() {
 				FillAT($(this).data('id'));
 			});
+		},
+		classes: {
+			"ui-selected": "ui-state-active"
 		}
 	});
 }

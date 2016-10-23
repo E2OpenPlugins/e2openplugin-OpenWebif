@@ -8,7 +8,7 @@
 				<h3 class="ui-widget-header">$tstrings['settings']</h3>
 				<ol class="sellist" id="slist">
 				#if $themes
-					<li id='themesbtn' class="ui-selected">OpenWebif Settings</li>
+					<li id='themesbtn' class="ui-selected ui-state-active">OpenWebif Settings</li>
 				#end if
 				#for $sec in $configsections
 					<li id='$sec["key"]' data-id='ajax/config?section=$sec["key"]'>$sec["description"]</li>
@@ -66,6 +66,9 @@ $(function() {
 					load_theme();
 				}
 			});
+		},
+		classes: {
+			"ui-selected": "ui-state-active"
 		}
 	});
 	load_theme();
