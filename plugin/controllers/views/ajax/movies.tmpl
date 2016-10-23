@@ -49,7 +49,7 @@
 		<div id="movies">
 		#set $count = 0
 		#for $movie in $movies
-			<div class="tm_row" id="$count" data-title="$movie.eventname.replace("\"", r"'")" data-start="$movie.recordingtime">
+			<div class="tm_row ui-widget-content ui-state-default" id="$count" data-title="$movie.eventname.replace("\"", r"'")" data-start="$movie.recordingtime">
 				<div class="m_buttons tm_buttons">
 						<div>
 						<a href='#' onClick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><div><i class="fa fa-play"></i></div></a>

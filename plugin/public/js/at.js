@@ -329,7 +329,7 @@ function Parse() {
 	});
 	
 	$(atlist).each(function () {
-		$("#atlist").append($("<li></li>").html($(this).attr("name")).addClass('ui-widget-content').data('id',$(this).attr("id")));
+		$("#atlist").append($("<li></li>").html($(this).attr("name")).data('id',$(this).attr("id")));
 	});
 	
 	if(at2add)
@@ -722,7 +722,7 @@ function addAT(evt)
 	var xmlDoc = $.parseXML( xml )
 	
 	$(xmlDoc).find("timer").each(function () {
-		$( "#atlist" ).append($('<li></li>').html($(this).attr("name")).addClass('ui-widget-content').data('id',$(this).attr("id")));
+		$( "#atlist" ).append($('<li></li>').html($(this).attr("name")).data('id',$(this).attr("id")));
 		CurrentAT = new AutoTimerObj($(this));
 		CurrentAT.isNew = true;
 		CurrentAT.MustSave = true;

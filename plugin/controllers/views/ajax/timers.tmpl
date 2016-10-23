@@ -15,7 +15,7 @@
 
 		<div id="timers">
 		#for $timer in $timers
-			<div class="tm_row" id="$timer.begin-$timer.end">
+			<div class="tm_row ui-widget-content ui-state-default" id="$timer.begin-$timer.end">
 				<div class="t_buttons tm_buttons">
 						<div>
 						#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')

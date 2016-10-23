@@ -195,11 +195,6 @@ a img { border: none;}
 	font-size:13px;
 }
 
-#leftmenu_main ul li a:hover
-{
-color:#87BCF8;
-}
-
 #leftmenu_main #help
 {
 	font-size: 9px;
@@ -567,8 +562,7 @@ font-size:16px;font-weight:bold;opacity:0.3;
 .sortimg {margin-right:10px;}
 .marker { float: right; opacity: 0.5; color: #00c; font-size: 80%; }
 
-.tm_title {color: #176093; font-weight: bold; }
-.tm_desc {color: #7F8181; }
+.tm_title {font-weight: bold; }
 
 .link:hover { color:#87BCF8;}
 
