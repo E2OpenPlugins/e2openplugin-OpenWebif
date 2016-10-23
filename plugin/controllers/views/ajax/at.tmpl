@@ -5,28 +5,33 @@
 fieldset > label
 {
 	-webkit-margin-top-collapse: separate;
-	margin-top: 1.5em;
+	margin-top: .5em;
+	margin-bottom: 1em;
 	display: inline-block;
 }
 </style>
 
-<div id="content_main" style="min-height: 500px;">
+<div id="content_main" style="min-height: 500px;background-image:none;" class="ui-widget-content">
 	<div id="info">
-		<div style="background-color: #00000">
-		<div style="display: table-row; width: 100%; zoom: 1;">
-			<div style="display:table-cell;width:200px;vertical-align:top;" class="ui-widget-content">
+		<div style="display: table;width: 100%;">
+		<div style="display: table-row;">
+			<div style="display:table-cell;width:200px;vertical-align:top;">
 				<h3 class="ui-widget-header">$tstrings['at_list']</h3>
+			</div>
+			<div style="display:table-cell;vertical-align:top;">
+				<h3 class="ui-widget-header">$tstrings['at_at_edit'] <span id='at_name'></span></h3>
+			</div>
+		</div>
+		<div style="display: table-row;">
+			<div style="display:table-cell;width:200px;vertical-align:top;">
 				<ol class="sellist" id="atlist">
 				</ol>
-				
 			</div>
-			<div style="display:table-cell;with:100%;" class="ui-widget-content">
-				<div style="display: inline-block; width: 100%; zoom: 1; class="ui-widget-content"">
-					<h3 class="ui-widget-header">$tstrings['at_at_edit'] <span id='at_name'></span></h3>
+			<div style="display:table-cell;">
 					<div id="ateditcontent">
 						<form>
 							<fieldset style="border:none">
-								<br><label for="enabled">$tstrings['at_enabled']:</label>
+								<label for="enabled">$tstrings['at_enabled']:</label>
 								<input type="checkbox" name="enabled" id="enabled" value="" class="checkbox ui-widget-content ui-corner-all">
 								<br><label for="name">$tstrings['at_description']:</label>
 								<input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
@@ -216,7 +221,7 @@ fieldset > label
 							</fieldset>
 						</form>
 						
-						<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+					<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
 						<div id="actions">
 						<button id="atbutton0">$tstrings['at_add']</button>
 						<button id="atbutton1">$tstrings['at_del']</button>
@@ -226,17 +231,16 @@ fieldset > label
 						<button id="atbutton5">$tstrings['at_simulate']</button>
 						<button id="atbutton6">$tstrings['at_timers']</button>
 						<button id="atbutton7">$tstrings['at_settings']</button>
-						</div></div>
-						<div id="errorbox" class="timerlist_row" style="color: red;">
-		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
-			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
-			<span id="error"></span>
-			<span id="success" style="color: green;"></span>
-		</div>
-	</div>
-		<span style="display: block;clear: both;"/>
-		</div>
-		</div>
+						</div>
+					</div>
+					<div id="errorbox" class="timerlist_row" style="color: red;">
+					<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+					<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span></p>
+						<span id="error"></span>
+						<span id="success" style="color: green;"></span>
+					</div>
+					</div>
+			</div>
 	</div>
 	</div>
 	</div>

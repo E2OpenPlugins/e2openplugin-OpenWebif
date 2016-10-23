@@ -343,6 +343,7 @@ function Parse() {
 		if(item) {
 			FillAT(item.data('id'));
 			item.addClass('ui-selected');
+			item.addClass('ui-state-active');
 		}
 	}
 }
