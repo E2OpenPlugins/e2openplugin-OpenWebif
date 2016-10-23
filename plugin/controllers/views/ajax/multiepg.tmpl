@@ -92,9 +92,9 @@ function fixTableHeight() {
 	\$("#tbl1body").height( (\$("#tvcontent").height() - \$("#navepg").height() - 2*\$("#tbl1 thead").height() - addScrollBarWidth - 2) + "px");
 	
 	if (!\$('#toolbar-header').is(':visible')) { 
-		var dh = \$(document).height();
-		\$("#tvcontentmain").height(dh-80);
-		\$("#tbl1body").height(dh-210);
+		var dh = \$(window).height();
+		\$("#tvcontentmain").height(dh-70);
+		\$("#tbl1body").height(dh-200);
 	}
 }
 fixTableHeight();

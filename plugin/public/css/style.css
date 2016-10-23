@@ -90,6 +90,7 @@ a img { border: none;}
 {
 	border: none;
 	background: none;
+	font-weight: bold;
 }
 
 #statusheader
