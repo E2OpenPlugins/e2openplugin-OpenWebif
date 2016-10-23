@@ -1,6 +1,6 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 1.8
+//* Version 1.9
 //******************************************************************************
 //* Copyright (C) 2014-2016 Joerg Bleyel
 //* Copyright (C) 2014-2016 E2OpenPlugins
@@ -14,6 +14,7 @@
 //* V 1.6 - sort autotimer list
 //* V 1.7 - fix autotimer filter
 //* V 1.8 - use textfield for offset
+//* V 1.9 - error handling
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -312,6 +313,11 @@ function Parse() {
 	
 	var atlist = []
 	
+	var state=$(atxml).find("e2state").first();
+	if (state.text() == 'false') {
+		showError($(atxml).find("e2statetext").first().text());
+	}
+
 	$(atxml).find("timer").each(function () {
 		atlist.push($(this));
 	});
@@ -765,7 +771,6 @@ function readAT()
 			Parse();
 		},error: function (request, status, error) {
 			showError(request.responseText);
-			// TODO : error handling
 		}
 	});
 }
