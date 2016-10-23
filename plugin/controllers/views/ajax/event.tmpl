@@ -25,15 +25,15 @@
 
 .tstation { width:80px;margin-top: 5px;}
 
-.eventt td {width:40px;text-align:center;}
-.eventt td,tr {height:40px;}
+.eventt td {width:40px;text-align:center;height:40px;}
 
 </style>
 
 <!-- Icons from: http://findicons.com/pack/1987/eico -->
 <div id="leftmenu_main ui-widget-content">
-	<div id="leftmenu_top" class="handle ui-widget-header" style="cursor:move">$channel
-		<div id="leftmenu_expander_main" class="ui-selectmenu-icon ui-icon ui-icon-closethick" onclick="\$('#eventdescription').hide(200)"></div>
+	<div id="leftmenu_top" class="ui-widget-header">
+		<div class="handle" style="cursor:move;float:left;width:95%">$channel</div>
+		<div id="leftmenu_expander_main" class="ui-selectmenu-icon ui-icon ui-icon-closethick" onclick="\$('#eventdescription').hide(200)" style="cursor:pointer"></div>
 	</div>
 	<div id="leftmenu_container_main" class="ui-widget ui-widget-content" style="padding:6px">
 		
@@ -62,9 +62,9 @@
 		
 			<div style="font-size:1.4em; font-weight: bold">$event.title</div>
 #if $event.title != $event.shortdesc
-			<div style="font-size:1.2em; font-weight: bold">$event.shortdesc</div>
+			<div style="font-size:1.2em; font-weight:bold;margin-top:0.2em">$event.shortdesc</div>
 #end if
-			<div style="font-size:1.1em;max-height:300px; overflow:auto"><p>$(event.longdesc.replace("\n","<br/>").replace(u"\u008a","<br/>"))</p></div>
+			<div style="font-size:1.1em;max-height:300px;overflow:auto;margin-top:0.4em"><p>$(event.longdesc.replace("\n","<br/>").replace(u"\u008a","<br/>"))</p></div>
 		
 		</td>
 		</tr>
