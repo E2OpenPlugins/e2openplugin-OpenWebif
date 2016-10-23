@@ -30,11 +30,11 @@
 #end if
 	<div id="container">
 		<div id="header">
-			<h1><a href="/">Open<span class="off">Webif</span></a></h1>
+			<h1><a href="/">Open<span class="ui-state-active">Webif</span></a></h1>
 			#if not $showname
 				#set boxname=$tstrings['box_info']
 			#end if
-			<h2>$tstrings['openwebif_header']<br/><span class="off" onclick="load_maincontent('ajax/boxinfo'); return false">$boxname</span></h2>
+			<h2>$tstrings['openwebif_header']<br/><span class="ui-state-active" onclick="load_maincontent('ajax/boxinfo'); return false">$boxname</span></h2>
 			<div id="statusheader">
 				<div id="osd">$tstrings['nothing_play']</div>
 				<div id="osd_status"></div>

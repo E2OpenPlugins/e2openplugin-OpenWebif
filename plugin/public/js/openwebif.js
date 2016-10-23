@@ -1365,10 +1365,8 @@ function ChangeTheme(theme)
 	$.ajax({
 		url: "api/settheme?theme=" + theme,
 		success: function() {
-			// todo : remove link
-			var parts=window.location.href.toLowerCase().split("#");
-			document.location.href = parts[0] + '#settings';
-			document.location.reload(true);
+			window.location.hash = '#settings';
+			window.location.reload(true);
 		}
 	});
 }

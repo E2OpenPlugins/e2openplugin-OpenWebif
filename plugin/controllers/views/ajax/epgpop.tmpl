@@ -148,11 +148,18 @@ var t = [
 #raw
 var reloadTimers = true;
 $(function() {
-	$('#editTimerForm').load('../ajax/edittimer');
-	ShowTimers(t);
+	$("#editTimerForm").load('../ajax/edittimer', function() { 
+	if (t.length > 0) {
+		// FIXME 
+		$( "tbody" ).first(function() {
+			if($( this ).data('id')) {
+				ShowTimers(t);
+			}
+		});
+	}
 });
 
-$(document).ready(function () {
+$(function() {
 	$(".ui-dialog").css({position: 'fixed',top:'10'});
 	$(document).scroll(function (e) {
 // FIXME !!

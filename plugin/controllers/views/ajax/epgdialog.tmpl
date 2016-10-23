@@ -112,7 +112,14 @@ var t = [
 var reloadTimers = true;
 $(function() {
 	$('#editTimerForm').load('ajax/edittimer');
-	ShowTimers(t);
+	if (t.length > 0) {
+		// FIXME 
+		$( "tbody" ).first(function() {
+			if($( this ).data('id')) {
+				ShowTimers(t);
+			}
+		});
+	}
 });
 #end raw
 </script>
