@@ -568,12 +568,6 @@ font-size:16px;font-weight:bold;opacity:0.3;
 .tm_title {color: #176093; font-weight: bold; }
 .tm_desc {color: #7F8181; }
 
-
-.ETVTAB tr {background-color: #F0F7FC;}
-.ETV {background-color: #1C478E;}
-
-.esl1,.esl2 { color: #061C37;}
-
 .link:hover { color:#87BCF8;}
 
 #leftmenu_top, .link,.service {cursor:pointer;}

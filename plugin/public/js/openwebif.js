@@ -263,6 +263,9 @@ function load_dm_spinner(url,title,w,h,buttons){
 		width:width,
 		height:height,
 		buttons:buttons,
+		create: function(event, ui) {
+	        $(event.target).parent().css('position', 'fixed');
+	    },
 		close: function(event, ui) { 
 			$(this).dialog('destroy');
 			$("#modaldialog").html('');
