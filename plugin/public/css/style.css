@@ -505,12 +505,6 @@ html, body
 /* JQuery UI Modifications */
 .ui-checkboxradio-icon { display:none; } 
 
-i.fa {margin-left:3px;margin-right:3px;font-size: 16px;}
-i.fa-mobile {font-size: 22px;}
-
-.tm_buttons i.fa {margin:0 0 0 5;font-size: 20px;}
-.tm_buttons i.fa-mobile {margin:0 0 0 10;font-size: 24px;}
-
 .mlp { height:10px; width:90px; background:#1c478e;}
 .mlpp { height:8px;position:relative;background-color: white;border: 1px solid #4297d7;margin:0 !important;}
 
@@ -530,13 +524,6 @@ a.focus {outline: none;}
 #currenttuners span
 {
 font-size:16px;font-weight:bold;opacity:0.3;
-}
-
-.fbb i
-{
-	font-size:20px;
-	margin-left:10px;
-	margin-right:10px;
 }
 
 .selectable li:hover , .sellist li:hover { background: rgba(0, 0, 0, 0.1);}
@@ -567,5 +554,110 @@ font-size:16px;font-weight:bold;opacity:0.3;
 .link:hover { color:#87BCF8;}
 
 #leftmenu_top, .link,.service {cursor:pointer;}
+
+/* fontello font */
+
+@font-face {
+  font-family: 'fontello';
+  src: url('../fonts/fontello.eot?91154625');
+  src: url('../fonts/fontello.eot?91154625#iefix') format('embedded-opentype'),
+       url('../fonts/fontello.woff2?91154625') format('woff2'),
+       url('../fonts/fontello.woff?91154625') format('woff'),
+       url('../fonts/fontello.ttf?91154625') format('truetype'),
+       url('../fonts/fontello.svg?91154625#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 fontello;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-spin {
+  -webkit-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear;
+}
+
+@-webkit-keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+.fa-stack {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  vertical-align: middle;
+}
+.fa-stack-1x,
+.fa-stack-2x {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+.fa-stack-1x {
+  line-height: inherit;
+}
+.fa-stack-2x {
+  font-size: 2em;
+}
+
+.fa-envelope-o:before { content: '\e800'; } /* '' */
+.fa-play:before { content: '\e801'; } /* '' */
+.fa-check-square-o:before { content: '\e802'; } /* '' */
+.fa-trash-o:before { content: '\e803'; } /* '' */
+.fa-expand:before { content: '\e804'; } /* '' */
+.fa-compress:before { content: '\e805'; } /* '' */
+.fa-clock-o:before { content: '\e806'; } /* '' */
+.fa-power-off:before { content: '\e807'; } /* '' */
+.fa-edit:before { content: '\e808'; } /* '' */
+.fa-save:before { content: '\e809'; } /* '' */
+.fa-list-alt:before { content: '\e80a'; } /* '' */
+.fa-square-o:before { content: '\f096'; } /* '' */
+.fa-desktop:before { content: '\f108'; } /* '' */
+.fa-mobile:before { content: '\f10b'; } /* '' */
+.fa-spinner:before { content: '\f110'; } /* '' */
+.fa-sort-alpha-asc:before { content: '\f15d'; } /* '' */
+.fa-sort-alpha-desc:before { content: '\f15e'; } /* '' */
+.fa-sort-numeric-asc:before { content: '\f162'; } /* '' */
+.fa-sort-numeric-desc:before { content: '\f163'; } /* '' */
+
+i.fa {margin-left:3px;margin-right:3px;font-size: 16px;}
+i.fa-mobile {font-size: 22px;}
+
+.tm_buttons i.fa {margin:0 0 0 5;font-size: 20px;}
+.tm_buttons i.fa-mobile {margin:0 0 0 10;font-size: 24px;}
+
+.fbb i
+{
+	font-size:20px;
+	margin-left:10px;
+	margin-right:10px;
+}
 
 
