@@ -244,7 +244,7 @@ function load_reboot_dialog(data,title){
 		close: function(event, ui) { 
 			$(this).dialog('destroy');
 			$("#modaldialog").html('');
-		},
+		}
 	});
 }
 

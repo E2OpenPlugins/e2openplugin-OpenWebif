@@ -29,6 +29,8 @@ body {
 	text-align:left;
 }
 
+a img { border: none;}
+
 #container
 {
 	display: block; 
