@@ -400,16 +400,6 @@ function open_epg_dialog(sRef,Name) {
 	load_dm_spinner(url,Name,w,h,buttons);
 }
 
-function open_epg_pop(sRef) {
-	var url = 'ajax/epgpop?sref=' + escape(sRef);
-	$.popupWindow(url, {
-		height: $(window).height(),
-		width: $(window).width(),
-		toolbar: false,
-		scrollbars: true
-	});	
-}
-
 function open_epg_search_dialog() {
 	var spar = $("#epgSearch").val();
 	var url = "ajax/epgdialog?sstr=" + encodeURIComponent(spar);
@@ -425,14 +415,21 @@ function open_epg_search_dialog() {
 	load_dm_spinner(url,tstr_epgsearch,w,h,buttons);
 }
 
-function open_epg_search_pop(spar) {
-	var url = "ajax/epgpop?sstr=" + encodeURIComponent(spar);
+function _epg_pop(url) {
 	$.popupWindow(url, {
-		height: 500,
-		width: 900,
+		height: $(window).height(),
+		width: $(window).width(),
 		toolbar: false,
 		scrollbars: true
-	});
+	});	
+}
+
+function open_epg_search_pop(spar) {
+	_epg_pop("ajax/epgpop?sstr=" + encodeURIComponent(spar));
+}
+
+function open_epg_pop(sRef) {
+	_epg_pop('ajax/epgpop?sref=' + escape(sRef));
 }
 
 function addTimerEvent(sRef, eventId) {
