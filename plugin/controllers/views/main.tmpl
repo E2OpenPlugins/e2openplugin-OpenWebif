@@ -24,6 +24,8 @@
 </head>
 #if $t == "original"
 <body>
+#elif $t == "excite-bike" or $t == "pepper-grinder"
+<body class="ui-widget-header ui-state-hover">
 #else
 <body class="ui-widget-header">
 #end if
@@ -145,7 +147,7 @@
 							<div id="slider" style="margin-left:10px;margin-right:10px;width:90px;"></div>
 						</div>
 						<div style="vertical-align: middle;display:table-cell;">
-							<input class="ui-state-active" style="border:none;font-weight:bold;width:18px;" type="text" id="amount"/>
+							<input class="ui-state-active" style="border:none;font-weight:bold;width:20px;" type="text" id="amount"/>
 						</div>
 					</div>
 					<div style="margin-bottom:5px;"></div>
@@ -202,7 +204,6 @@
 				</div>
 			</div>
 		</div>
-		
 		<div id="content">
 			<div id="content_container">
 			$content
@@ -229,6 +230,7 @@
 	\$("#remote_container").load("static/remotes/${remote}.html");
 	directlink();
 });
+theme = '$t';
 </script>
 </body>
 </html>

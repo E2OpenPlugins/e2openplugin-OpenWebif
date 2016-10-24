@@ -20,7 +20,7 @@
 //*******************************************************************************
 
 $.fx.speeds._default = 1000;
-var loadspinner = "<div id='spinner'><div class='fa fa-spinner fa-spin'></div></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0,at2add = null;
+var theme='original',loadspinner = "<div id='spinner'><div class='fa fa-spinner fa-spin'></div></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0,at2add = null;
 
 $(function() {
 	
@@ -1602,3 +1602,21 @@ var MLHelper;
 	}
 
 })();
+
+
+function setTMHover()
+{
+
+	var cls='ui-state-active';
+
+	if (theme=='pepper-grinder') {
+		$('.tm_row').removeClass('ui-state-default');
+		$('.tm_row').addClass('ui-state-hover');
+	}
+	
+	$('.tm_row').hover(
+		function(){ $(this).addClass(cls) },
+		function(){ $(this).removeClass(cls) }
+	)
+
+}

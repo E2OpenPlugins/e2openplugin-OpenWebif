@@ -33,16 +33,41 @@
 	#set $theme="original"
 #end if
 
-#if $theme == "hot-sneaks"
-.ui-widget-header #menucontainer a { color: initial; }
+#if $theme == "base"
+/* fix header problme */
+#container { margin-right:0px;}
+#header { margin-right:15px;}
+#content { padding-right:30px;}
+
+.station { color:#fff; background-color: #007fff;}
+#header {/* background : #007fff; */}
+
 #end if
 
 #if $theme == "excite-bike"
-#header { background : #eeeeee;}
+.ui-widget-header #menucontainer a { color: initial; }
 #end if
 
 #if $theme == "pepper-grinder"
-#header { background : #eceadf;}
+.ui-widget-header #menucontainer a { color: initial; }
+.ui-widget-header #accordion a { color: inherit; }
+#end if
+
+#if $theme == "south-street"
+.tm_row{ background-image: none!important;} 
+#end if
+
+#if $theme == "smoothness"
+.tm_row{ background-image: none!important;} 
+#end if
+
+
+#if $theme == "eggplant"
+.tm_row{ background-image: none!important;} 
+#end if
+
+#if $theme == "hot-sneaks"
+.ui-widget-header #menucontainer a { color: initial; }
 #end if
 
 #if $theme == "vader"
@@ -71,6 +96,7 @@ body {background-image:none !important;}
 #tbl1 .border { border-right: 1px solid #4297d7;}
 #tbl1 .timer { color: #f00; }
 #tbl1 .timer.disabled { color: #f80; }
+.tm_row{ background-image: none!important;} 
 
 #end if
 
@@ -78,6 +104,7 @@ body {background-image:none !important;}
 
 body {background-image:none !important;}
 .marker { color: #ccc; }
+.tm_row{ background-image: none!important;} 
 
 #end if
 
@@ -92,6 +119,8 @@ body {background-image:none !important;}
 #tbl1 .timer { color: #f00; }
 #tbl1 .timer.disabled { color: #f80; }
 
+.tm_row{ background-image: none!important;} 
+
 #end if
 
 #if $theme == "ui-darkness" or $theme == "vader"
@@ -99,6 +128,7 @@ body {background-image:none !important;}
 
 #tbl1 .timer { color: #f00; }
 #tbl1 .timer.disabled { color: #f80; }
+.tm_row{ background-image: none!important;} 
 
 #end if
 
@@ -114,15 +144,12 @@ body {background-image:none !important;}
 
 #if $theme == "black-tie"
 .ui-widget-header a { color:#000;}
+.tm_row{ background-image: none!important;} 
 #end if
 
 #if $theme == "cupertino"
 body {background-image:none !important;}
-#end if
-
-#if $theme == "base"
-#header { background : #007fff;}
-.station { color:#fff; background-color: #007fff;}
+.tm_row{ background-image: none!important;} 
 #end if
 
 #if $theme == "overcast"
@@ -131,11 +158,13 @@ body {background-image:none !important;}
 
 #if $theme == "mint-choc"
 body { background-image:none !important;}
+.tm_row{ background-image: none!important;} 
 #end if
 
 #if $theme == "humanity"
 .ui-widget-header a { color:#000;}
 #configuration { color : #000;}
+.tm_row{ background-image: none!important;} 
 #end if
 
 #if $theme == "original"
@@ -285,6 +314,7 @@ table .tcurrent
 .tm_desc {color: #7F8181; }
 
 .tm_row { background-image:none !important; }
+.tm_row:hover { border: 1px dotted #4297D7;}
 
 #else
 

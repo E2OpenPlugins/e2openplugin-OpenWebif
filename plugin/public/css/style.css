@@ -492,7 +492,6 @@ html, body
 
 /* timerlist movielist */
 .tm_row { margin-top: 2px;margin-bottom: 5px;font-size: 13px;}
-.tm_row:hover { border: 1px dotted #4297D7;}
 
 .tm_row > div {display:table-cell;vertical-align:top;}
 .tm_text div {margin: 3px;}

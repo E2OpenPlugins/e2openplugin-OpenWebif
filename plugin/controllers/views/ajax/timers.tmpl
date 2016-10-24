@@ -80,6 +80,7 @@
 #raw
 var reloadTimers = true;
 $(function() {
+	setTMHover();
 	$('#timerbuttons').buttonset();
 	if(!timeredit_initialized)
 		$('#editTimerForm').load('ajax/edittimer');

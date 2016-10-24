@@ -30,7 +30,7 @@
 				<button onclick="load_maincontent_spin('ajax/movies?dirname='+escape('$path'));">$dir</button>
 			#end for
 			#if $directory != '/'
-				<button><span style="color: red; font-weight: bold;">
+				<button class="ui-state-active"><span style="font-weight: bold;">
 					#echo $directory[0:-1].split("/")[-1]
 				</span></button>
 			#end if
@@ -101,9 +101,10 @@
 
 <script type="text/javascript">
 
-\$('#moviebuttons').buttonset();
 \$( function() {
+	\$('#moviebuttons').buttonset();
 	MLHelper.Load($sort);
+	setTMHover();
 });
 
 #if $len($bookmarks)
