@@ -220,10 +220,11 @@ class BaseController(resource.Resource):
 					data = res.replace("\n", "")
 					data = res.replace("--config-dir ", "-c ")
 					binary = res.split(" ")[0]
-					try:
-						data = data.split("-d ")[1]
-						data = data.split("-")[0]
-					except:
+					if "-c " in data:
+						data = data.split("-c ")[1]
+						if " " in data:
+							data = data.split(" ")[0]
+					else:
 						try:
 							cmd = binary + ' -V | grep ConfigDir'
 							res = os.popen(cmd).read()
