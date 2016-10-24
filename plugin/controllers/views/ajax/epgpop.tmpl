@@ -36,19 +36,14 @@
 
 a {text-decoration:none;color:#000;}
 .tb { display:inline-block; margin-left:3px;}
-.bb {width: 38px; height: 38px; margin-top:10px;}
-#cl { font-size:32px;margin-top:7px; }
-#pp { font-size:12px; float:right; margin-top:-39px; }
-#tp {font-family: Arial;font-weight:bold; font-size:12px; float:right; margin-top:-38px; }
-#tp2 {font-weight:bold; font-size:20px; float:right; margin-top:-44px; }
+.tb i.fa { font-size:32px;}
 #station { cursor:pointer;}
 .im { font-family:Impact,Arial;font-size:18px;text-decoration:none;}
 table { font-size:12px; font-family: Verdana,Arial,sans-serif;}
 .deltimer{display:none;}
-
 .ETV table {font-size:12px;width:100%;}
 .ETV table td { width:50px;height:40px;}
-.eft td { height:60px;}
+.eft td { height:60px;vertical-align: middle;}
 .efi { width:100px;}
 .eft td > div { display:table;width:100%;}
 .esl1,.esl2 { display:table-cell;width:30%;font-size:13px;font-weight: bold;vertical-align: middle;height: 60px;padding-left: 10px;}
@@ -82,21 +77,15 @@ table { font-size:12px; font-family: Verdana,Arial,sans-serif;}
 	<tr>
 		<td class="timerpanel panel ui-state-hover">
 			<a class="tb addtimer" href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']">
-			<span class="bb">
-			<i id="cl" class="fa fa-clock-o"></i><i id="tp2" class="fa b">+</i>
-			</span>
+			<i class="fa fa-timerplus"></i>
 			</a>
 			<a class="tb deltimer" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']">
-				<span class="bb">
-			<i id="cl" class="fa fa-clock-o"></i><i id="pp" class="fa fa-trash"></i>
-			</span>
+			<i class="fa fa-timerdelete"></i>
 			</a>
 	</td>
 		<td class="panel ui-state-hover">
 		<a class="tb" href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']">
-			<span class="bb">
-			<i id="cl" class="fa fa-clock-o"></i><i id="pp" class="fa fa-edit"></i>
-			</span>
+			<i class="fa fa-timeredit"></i>
 			</a>
 			</td>
 		<td class="eff" rowspan="4"><div class="eff1">
@@ -107,17 +96,13 @@ table { font-size:12px; font-family: Verdana,Arial,sans-serif;}
 	<tr>
 		<td class="panel ui-state-hover">
 			<a class="tb" href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']">
-			<span class="bb">
-			<i id="cl" class="fa fa-clock-o"></i><i id="pp" class="fa fa-play"></i>
-			</span>
+			<i class="fa fa-timerplay"></i>
 			</a>
 	</td>
 		<td class="panel ui-state-hover">
 				#if $at
 			<a class="tb" href="#" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin','$event.end');return false;" title="$tstrings['add_autotimer']">
-			<span class="bb">
-				<i id="cl" class="fa fa-clock-o"></i><i id="tp" class="fa">AT</i>
-			</span>
+				<i class="fa fa-timerat"></i>
 			</a>
 				#end if
 	</td>
@@ -147,7 +132,7 @@ var t = [
 #raw
 var reloadTimers = true;
 $(function() {
-	$("#editTimerForm").load('../ajax/edittimer', function() { 
+	$('#editTimerForm').load('ajax/edittimer');
 	if (t.length > 0) {
 		// FIXME 
 		$( "tbody" ).first(function() {

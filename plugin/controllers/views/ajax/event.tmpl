@@ -7,26 +7,13 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
 
 <style>
-
-
 .tb,.tbr { padding:0; margin:0 0 0 0; background:none;width:40px}
-.bb { margin:0;margin-top:5px;display:block;}
-#cl { font-size:32px;padding:0;margin:10px 0 0 0; width:10px; }
-#pp,#tp,#tp2 {margin-left:12px; margin-top:-6px;}
-#pp {font-size:14px;}
-#tp {font-family: Arial;font-weight:bold; font-size:12px;}
-#tp2 {font-family: Arial;font-weight:bold; font-size:20px;}
-.fl { float:left;}
-.fr { float:right;}
+.tb i.fa { font-size:32px;}
 #station { cursor:pointer;overflow:hidden;}
-
 .im { font-family:Impact,Arial;font-size:24px; }
 .d_timer{display:none;}
-
 .tstation { width:80px;margin-top: 5px;}
-
 .eventt td {width:40px;text-align:center;height:40px;}
-
 </style>
 
 <!-- Icons from: http://findicons.com/pack/1987/eico -->
@@ -36,8 +23,6 @@
 		<div id="leftmenu_expander_main" class="ui-selectmenu-icon ui-icon ui-icon-closethick" onclick="\$('#eventdescription').hide(200)" style="cursor:pointer"></div>
 	</div>
 	<div id="leftmenu_container_main" class="ui-widget ui-widget-content" style="padding:6px">
-		
-		
 		
 		<table class="eventt" style="width: 100%;">
 		<tbody>
@@ -83,18 +68,12 @@
 		
 			<td>
 					<a class="tb" href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']">
-					<span class="fa-stack">
-					<i id="cl" class="fa fa-stack-1x fa-clock-o"></i>
-					<i id="tp2" class="fa fa-stack-1x b">+</i>
-					</span>
+					<i class="fa fa-timerplus"></i>
 					</a>
 					</td>
 					<td>
 					<a class="tbr" href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']">
-					<span class="fa-stack">
-					<i id="cl" class="fa fa-stack-1x fa-clock-o"></i>
-					<i id="pp" class="fa fa-stack-1x fa-play"></i>
-					</span>
+					<i class="fa fa-timerplay"></i>
 					</a>
 					</td>
 		
@@ -103,19 +82,13 @@
 		
 		<td>
 					<a class="tb" href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']">
-					<span class="fa-stack">
-					<i id="cl" class="fa fa-stack-1x fa-clock-o"></i>
-					<i id="pp" class="fa fa-stack-1x fa-edit"></i>
-					</span>
+					<i class="fa fa-timeredit"></i>
 					</a>
 					</td>
 					<td>
 					#if $at
 					<a class="tbr" href="#" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin_str','$event.end');return false;" title="$tstrings['add_autotimer']">
-					<span class="fa-stack">
-					<i id="cl" class="fa fa-stack-1x fa-clock-o"></i>
-					<i id="tp" class="fa fa-stack-1x">AT</i>
-					</span>
+					<i class="fa fa-timerat"></i>
 					</a>
 					#end if
 					</td>
@@ -125,10 +98,7 @@
 		
 					<td>
 					<a class="d_timer tb" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']">
-					<span class="fa-stack">
-					<i id="cl" class="fa fa-stack-1x fa-clock-o"></i>
-					<i id="pp" class="fa fa-stack-1x fa-trash"></i>
-					</span>
+					<i class="fa fa-timerdelete"></i>
 					</a>
 					</td>
 					<td>
@@ -138,9 +108,9 @@
 		
 					<td>
 					#if $kinopoisk
-					<a class="tb fl" target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)"><img src="../images/kinopoisk.png" style="width:24px; height:24px; margin:0px 3px 0px 0px" title="$tstrings['search_kinopoisk']" border="0"></a>
+					<a class="tb" target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)"><img src="../images/kinopoisk.png" style="width:24px; height:24px; margin:0px 3px 0px 0px" title="$tstrings['search_kinopoisk']" border="0"></a>
 					#else
-					<a class="im tb fl" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']">IMDb</a>
+					<a class="tb im" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']">IMDb</a>
 					#end if
 					</td>
 					<td>
