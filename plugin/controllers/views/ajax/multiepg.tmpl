@@ -17,9 +17,9 @@
 	#eventdescription { width: 375px; height: auto; position: fixed; top: 205px; left: 350px; z-index: 100; display: none; overflow: auto; }
 	#navepg { margin-bottom: 1px; }
 	#tbl1 thead tr, #tbl1 tfoot tr { display: block; width: 100%; }
-	#tbl1 tbody { width: 100%; height: 100%; overflow-y: auto; display: block; }
+	#tbl1 tbody { width: 100%; height: 100%; overflow-y: auto; display: block; overflow-x: hidden;}
 	.ui-widget-content.nobg { background-image: none; } 
-	.wrapper { overflow-x: auto; width: 100%; }
+	.wrapper { overflow-x: auto; width: 100%; -ms-overflow-style: -ms-autohiding-scrollbar;}
 	td.border { width: 190px; }
 </style>
 
@@ -94,7 +94,7 @@ function fixTableHeight() {
 	if (!\$('#toolbar-header').is(':visible')) { 
 		var dh = \$(window).height();
 		\$("#tvcontentmain").height(dh-80);
-		\$("#tbl1body").height(dh-210);
+		\$("#tbl1body").height(dh-215);
 	}
 }
 fixTableHeight();

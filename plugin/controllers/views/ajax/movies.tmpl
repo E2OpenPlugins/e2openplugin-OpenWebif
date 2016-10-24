@@ -63,9 +63,10 @@
 						#set $w = $movie.lastseen
 						#if $w > 0
 							#set $w = $w * 70 / 100
-							#set $size = str($w) + 'px'
-							<div class="mlp"><div class="mlpp" style="width:$size">
-							</div></div>
+							#set $size = str($w) + '%'
+							<div class="ui-progressbar ui-corner-all ui-widget ui-widget-content">
+								<div class="ui-progressbar-value ui-corner-left ui-widget-header" style="width: $size;"></div>
+							</div>
 						#end if
 						<br>
 						#set $eventname_escaped =  $movie.eventname.replace("'", r"\'")

@@ -1291,6 +1291,9 @@ function InitBouquets(tv)
 	}
 	
 	$("#tvcontent").load("ajax/bouquets" + mode);
+	
+	if (theme == 'pepper-grinder')
+		$("#tvcontent").addClass('ui-state-active');
 }
 
 
