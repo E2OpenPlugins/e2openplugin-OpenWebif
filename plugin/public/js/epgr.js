@@ -305,9 +305,9 @@ function initValues () {
 	$('#er_end').val('6:30');
 	$('#er_begin').timepicker();
 	$('#er_end').timepicker();
-	$("#bouquets").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
+	$("#bouquets").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "100%"});
 	$("#bouquets").chosen().change( function() {$("#bouquets").val($(this).val());er_bqchchanged = true;});
-	$("#channels").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
+	$("#channels").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "100%"});
 	$("#channels").chosen().change( function() {$("#channels").val($(this).val());er_bqchchanged = true;});
 }
 

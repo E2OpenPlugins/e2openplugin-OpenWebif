@@ -44,6 +44,11 @@ a img { border: none;}
 	*/
 }
 
+/*
+FIXME : complete reorg header
+*/
+
+
 #header
 {
 	/* Lower space
@@ -110,7 +115,7 @@ a img { border: none;}
 	height: 24px;
 	width: 80%;
 	margin-left: 5px;
-	margin-top: 16px;
+	margin-top: 20px;
 	overflow:hidden;
 }
 
@@ -653,7 +658,7 @@ font-size:16px;font-weight:bold;opacity:0.3;
 .fa-sort-numeric-desc:before { content: '\f163'; } /* '' */
 
 i.fa {margin-left:3px;margin-right:3px;font-size: 16px;}
-i.fa-mobile {font-size: 22px;}
+i.fa-mobile {font-size: 20px;margin-top:-5px;}
 
 .tm_buttons i.fa {margin:0 0 0 5;font-size: 20px;}
 .tm_buttons i.fa-mobile {margin:0 0 0 10;font-size: 24px;}

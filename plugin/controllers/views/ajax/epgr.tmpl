@@ -8,6 +8,11 @@ label
 	margin-top: 1.5em;
 	display: inline-block;
 }
+.t2,.t3 { display:table;width: 100%; padding-bottom:10px;}
+.t2 > div { display:table-cell;width: 50%;}
+.t3 > div { display:table-cell;width: 33%;}
+.t3.ui-widget-content,.t2.ui-widget-content { border-top:none;border-left:none;border-right:none;}
+
 </style>
 <div id="content_main" style="min-height: 500px;" class="ui-widget-content">
 <div id="info">
@@ -17,27 +22,67 @@ label
 <div id="epgrefreshcontent">
 	<form>
 	<fieldset style="border:none;">
+		<div class="t3 ui-widget-content">
+			<div>
 		<label for="enabled">$tstrings['er_enabled']:</label>
 		<input type="checkbox" name="er_enabled" id="er_enabled" value="" class="checkbox ui-widget-content ui-corner-all">
-		<br><label for="er_enablemessage">$tstrings['er_enable_messages']:</label>
+			</div>
+			<div>
+		<label for="er_enablemessage">$tstrings['er_enable_messages']:</label>
 		<input type="checkbox" name="er_enablemessage" id="er_enablemessage" value="" class="checkbox ui-widget-content ui-corner-all">
-		<br><label for="er_begin">$tstrings['er_begin']:</label>
+			</div>
+			<div>
+		</span><label for="er_adapter">$tstrings['er_adapter']:</label>
+		<select name="er_adapter" id="er_adapter">
+		<option value="main" selected="selected">$tstrings['er_main']</option>
+		<option value="pip">$tstrings['er_pip']</option>
+		<option value="pip_hidden">$tstrings['er_pip_hidden']</option>
+		<option value="record">$tstrings['er_fake_recording']</option>
+		</select>
+			</div>
+		</div>
+		<div class="t2 ui-widget-content">
+			<div>
+		<label for="er_begin">$tstrings['er_begin']:</label>
 		<input type="text" name="er_begin" id="er_begin" value="" class="text date ui-widget-content ui-corner-all">
-		<br><label for="er_end">$tstrings['er_end']:</label>
+			</div>
+			<div>
+		<label for="er_end">$tstrings['er_end']:</label>
 		<input type="text" name="er_end" id="er_end" value="" class="text date ui-widget-content ui-corner-all">
-		<br><label for="er_delay_standby">$tstrings['er_delay_standby']:</label>
+			</div>
+		</div>
+		<div class="t2 ui-widget-content">
+			<div>
+		<label for="er_delay_standby">$tstrings['er_delay_standby']:</label>
 		<input type="text" name="er_delay_standby" id="er_delay_standby" class="text ui-widget-content ui-corner-all">
-		<br><label id="lblm" for="er_interval">$tstrings['er_interval_min']:</label><label id="lbls" for="er_interval">$tstrings['er_interval_sec']:</label>
+			</div>
+			<div>
+		<label id="lblm" for="er_interval">$tstrings['er_interval_min']:</label><label id="lbls" for="er_interval">$tstrings['er_interval_sec']:</label>
 		<input type="text" name="er_interval" id="er_interval" class="text ui-widget-content ui-corner-all">
-		<br><label for="er_afterevent">$tstrings['er_afterevent']:</label>
+			</div>
+		</div>
+		<div class="t3 ui-widget-content">
+			<div>
+		<label for="er_afterevent">$tstrings['er_afterevent']:</label>
 		<input type="checkbox" name="er_afterevent" id="er_afterevent" value="" class="checkbox ui-widget-content ui-corner-all">
-		<br><label for="er_force">$tstrings['er_force']:</label>
+			</div>
+			<div>
+		<label for="er_force">$tstrings['er_force']:</label>
 		<input type="checkbox" name="er_force" id="er_force" value="" class="checkbox ui-widget-content ui-corner-all">
-		<br><label for="er_wakeup">$tstrings['er_wakeup']:</label>
+			</div>
+			<div>
+		<label for="er_wakeup">$tstrings['er_wakeup']:</label>
 		<input type="checkbox" name="er_wakeup" id="er_wakeup" value="" class="checkbox ui-widget-content ui-corner-all">
-		<span id="er_hasAT"><br><label for="er_inherit_autotimer">$tstrings['er_inherit_autotimer']:</label>
+			</div>
+		</div>
+		
+		<div class="t2 ui-widget-content">
+			<div>
+		<span id="er_hasAT"><label for="er_inherit_autotimer">$tstrings['er_inherit_autotimer']:</label>
 		<input type="checkbox" name="er_inherit_autotimer" id="er_inherit_autotimer" value="" class="checkbox ui-widget-content ui-corner-all">
-		<br><label for="er_parse_autotimer">$tstrings['er_parse_autotimer']:</label>
+			</div>
+			<div>
+		<label for="er_parse_autotimer">$tstrings['er_parse_autotimer']:</label>
 		<select name="er_parse_autotimer" id="er_parse_autotimer">
 		<option value="always">$tstrings['er_always']</option>
 		<option value="never" selected="selected">$tstrings['er_never']</option>
@@ -45,19 +90,21 @@ label
 		<option value="ask_yes">$tstrings['er_ask_yes']</option>
 		<option value="ask_no">$tstrings['er_ask_no']</option>
 		</select>
-		</span><br><label for="er_adapter">$tstrings['er_adapter']:</label>
-		<select name="er_adapter" id="er_adapter">
-		<option value="main" selected="selected">$tstrings['er_main']</option>
-		<option value="pip">$tstrings['er_pip']</option>
-		<option value="pip_hidden">$tstrings['er_pip_hidden']</option>
-		<option value="record">$tstrings['er_fake_recording']</option>
-		</select>
-		<br><label for="bouquets">$tstrings['at_bouquets']:</label>
+			</div>
+		</div>
+		
+		<br>
+		<label for="bouquets">$tstrings['at_bouquets']:</label>
+		<br>
 		<select data-placeholder="$tstrings['at_select_bouquets']" name="bouquets" id="bouquets" class="bq_select_box" multiple tabindex="16">
 		</select>
-		<br><label for="channels">$tstrings['at_channels']:</label>
+		<br>
+		<label for="channels">$tstrings['at_channels']:</label>
+		<br>
 		<select data-placeholder="$tstrings['at_select_channels']" name="channels" id="channels" class="ch_select_box" multiple tabindex="16">
 		</select>
+		<br>
+		<br>
 	</fieldset>
 	</form>
 	<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
@@ -66,8 +113,8 @@ label
 	<button id="epgrbutton1">$tstrings['er_save']</button>
 	<button id="epgrbutton2">$tstrings['er_refresh']</button>
 	</div></div>
-	<div id="errorbox" class="timerlist_row" style="color: red;">
-	<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+	<div id="errorbox" class="timerlist_row" style="color: red;margin-top:10px;">
+	<div class="ui-state-error ui-corner-all" style="padding:.7em;"> 
 	<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
 	<span id="error"></span>
 	<span id="success" style="color: green;"></span>
