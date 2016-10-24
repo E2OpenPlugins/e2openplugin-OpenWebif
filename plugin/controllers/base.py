@@ -18,6 +18,7 @@ from Cheetah.Template import Template
 from models.info import getInfo, getBasePath, getPublicPath, getViewsPath
 from models.config import getCollapsedMenus, getRemoteGrabScreenshot, getEPGSearchType, getConfigsSections, getShowName, getCustomName, getBoxName
 
+import os
 import imp
 import sys
 import json
@@ -25,6 +26,17 @@ import gzip
 import cStringIO
 
 from enigma import eEPGCache
+
+def new_getRequestHostname(self):
+	host = self.getHeader(b'host')
+	if host:
+		if host[0]=='[':
+			return host.split(']',1)[0] + "]"
+		return host.split(':', 1)[0].encode('ascii')
+	return self.getHost().host.encode('ascii')
+
+http.Request.getRequestHostname = new_getRequestHostname
+
 
 try:
 	from boxbranding import getBoxType, getMachineName
@@ -158,7 +170,7 @@ class BaseController(resource.Resource):
 					self.error404(request)
 				else:
 					if self.withMainTemplate:
-						args = self.prepareMainTemplate()
+						args = self.prepareMainTemplate(request)
 						args["content"] = out
 						nout = self.loadTemplate("main", "main", args)
 						if nout:
@@ -195,7 +207,38 @@ class BaseController(resource.Resource):
 
 		return server.NOT_DONE_YET
 
-	def prepareMainTemplate(self):
+	def oscamconfPath(self):
+		# Find and parse running oscam
+		cmd = 'ps.procps -eo command | sort -u | grep -v "grep" | grep -c "/oscam"'
+		res = os.popen(cmd).read()
+		if res:
+			data = res.replace("\n", "")
+			if int(data) == 1:
+				cmd = 'ps.procps -eo command | sort -u | grep -v "grep" | grep "/oscam"'
+				res = os.popen(cmd).read()
+				if res:
+					data = res.replace("\n", "")
+					data = res.replace("--config-dir ", "-c ")
+					binary = res.split(" ")[0]
+					try:
+						data = data.split("-d ")[1]
+						data = data.split("-")[0]
+					except:
+						try:
+							cmd = binary + ' -V | grep ConfigDir'
+							res = os.popen(cmd).read()
+							data = res.split(":")[1]
+						except:
+							return None
+					data = data.strip() + '/oscam.conf'
+					if os.path.exists(data):
+						return data
+					return None
+			elif int(data) > 1:
+				return None
+		return None
+
+	def prepareMainTemplate(self, request):
 		# here will be generated the dictionary for the main template
 		ret = getCollapsedMenus()
 		ret['remotegrabscreenshot'] = getRemoteGrabScreenshot()['remotegrabscreenshot']
@@ -235,14 +278,17 @@ class BaseController(resource.Resource):
 			if lcd4linux_key:
 				extras.append({ 'key': lcd4linux_key, 'description': _("LCD4Linux Setup") , 'nw':'1'})
 
-		if fileExists("/etc/tuxbox/config/oscam.conf"):
+		self.oscamconf = self.oscamconfPath()
+		if self.oscamconf is not None:
 			import ConfigParser
 			oconfig = ConfigParser.ConfigParser()
-			oconfig.readfp(open("/etc/tuxbox/config/oscam.conf"))
+			oconfig.readfp(open(self.oscamconf))
 			port = oconfig.get("webif","httpport")
-			url = "http://" + ip + ":" + port + "/"
+			proto = "http"
 			if port[0] == '+':
-				url = "https://" + ip + ":" + port[1:] + "/"
+				proto = "https"
+				port = port[1:]
+			url = "%s://%s:%s" % (proto, request.getRequestHostname(), port)
 			extras.append({ 'key': url, 'description': _("OSCam Webinterface"), 'nw':'1'})
 
 		try:
