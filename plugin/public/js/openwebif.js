@@ -193,6 +193,9 @@ function initJsTranslation(strings) {
 	tstr_timernewname = strings.timer_newname;
 	
 	tstr_open_in_new_window = strings.open_in_new_window;
+	tstr_error_load_page = strings.tstr_error_load_page;
+	tstr_timer_added = strings.tstr_timer_added;
+	tstr_event_not_found = strings.tstr_event_not_found;
 }
 
 function wait_for_openwebif() {
@@ -243,7 +246,7 @@ function load_info_dialog(url,title,w,h){
 				},
 			});
 		},error: function(){
-			alert('error! Loading Page');
+			alert(tstr_error_load_page);
 		}
 		
 	});
@@ -274,7 +277,7 @@ function load_dm_spinner(url,title,w,h,buttons){
 				$("#modaldialog").html(data);
 			}
 			,error: function(){
-				$("#modaldialog").html("error! Loading Page");
+				$("#modaldialog").html(tstr_error_load_page);
 			}
 		});
 		$(this).siblings('.ui-dialog-buttonpane').find('button:eq(0)').focus(); 
@@ -309,7 +312,7 @@ function load_dm(url,title,w,h){
 				}
 			});
 		},error: function(){
-			alert('error! Loading Page');
+			alert(tstr_error_load_page);
 		}
 		
 	});
@@ -436,14 +439,14 @@ function open_epg_search_pop(spar) {
 function addTimerEvent(sRef, eventId) {
 	webapi_execute("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId,
 		function() {
-			alert("Timer Added"); 
+			alert(tstr_timer_added); 
 		} 
 	);
 }
 function addTimerEventPlay(sRef, eventId) {
 	webapi_execute("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId + "&eit=0&disabled=0&justplay=1&afterevent=3",
 		function() {
-			alert("Timer Added"); 
+			alert(tstr_timer_added); 
 		} 
 	);
 }
@@ -455,7 +458,7 @@ function addEditTimerEvent(sRef, eventId) {
 			addTimer(result.event);
 		}
 		else
-			alert("Event not found");
+			alert(tstr_event_not_found);
 	});
 }
 
