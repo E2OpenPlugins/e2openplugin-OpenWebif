@@ -395,4 +395,15 @@ tstrings = {'mo': _("Mo"),
 	'bqe_filename': _("Please enter filename"),
 	'bqe_restore_question': _("Do you really want to restore from file"),
 
+	'via': _("via"),
+	'record_zap': _("Record+ZAP"),
+	'pmt_pid': _("Pmtpid"),
+	'a_pid': _("Apid"),
+	'v_pid': _("Vpid"), 
+	'pcr_pid': _("Pcrpid"),
+	'ts_id': _("Tsid"),
+	'on_id': _("Onid"),
+	's_id': _("Sid"),
+	's_ref': _("Sref"),
+
  	}
