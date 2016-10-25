@@ -599,28 +599,31 @@ function getStatusInfo() {
 
 		var stream = "";
 		if ((statusinfo['currservice_station']) && ((statusinfo['currservice_serviceref'].indexOf("1:0:1") !== -1) || (statusinfo['currservice_serviceref'].indexOf("1:134:1") !== -1))) {
-			var stream = "";
+			stream = "<div id='osdicon'>";
 			if (statusinfo['transcoding']) {
-				stream += "<a href='#' onclick=\"jumper8001('" + statusinfo['currservice_serviceref'] + "', '" + statusinfo['currservice_station'] + "')\"; title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>&nbsp;";
-				stream += "<a href='#' onclick=\"jumper8002('" + statusinfo['currservice_serviceref'] + "', '" + statusinfo['currservice_station'] + "')\"; title='" + tstr_stream + " (" + tstr_transcoded + "): " + statusinfo['currservice_station'] + "'><i class='fa fa-mobile'></i></a>&nbsp;";
+				stream += "<a href='#' onclick=\"jumper8001('" + statusinfo['currservice_serviceref'] + "', '" + statusinfo['currservice_station'] + "')\"; title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>";
+				stream += "<a href='#' onclick=\"jumper8002('" + statusinfo['currservice_serviceref'] + "', '" + statusinfo['currservice_station'] + "')\"; title='" + tstr_stream + " (" + tstr_transcoded + "): " + statusinfo['currservice_station'] + "'><i class='fa fa-mobile'></i></a>";
 			} else {
-				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + statusinfo['currservice_serviceref'] + "&name=" + statusinfo['currservice_station'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>&nbsp;";
+				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + statusinfo['currservice_serviceref'] + "&name=" + statusinfo['currservice_station'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>";
 			}
+			stream +="</div>";
 			$("#osd").html(stream + "<a href='#' onClick='load_maincontent(\"ajax/tv\");return false;'><span class='osdch'>" + statusinfo['currservice_station'] + "</span></a>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + "<a style='color:#ffffff;text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + statusinfo['currservice_serviceref'] + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 			$("#osd_bottom").html(statusinfo['currservice_description']);
 		} else if ((statusinfo['currservice_station']) && ((statusinfo['currservice_serviceref'].indexOf("1:0:2") !== -1) || (statusinfo['currservice_serviceref'].indexOf("1:134:2") !== -1))) {
-			var stream = "";
-			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + statusinfo['currservice_serviceref'] + "&name=" + statusinfo['currservice_station'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>&nbsp;";
+			stream = "<div id='osdicon'>";
+			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + statusinfo['currservice_serviceref'] + "&name=" + statusinfo['currservice_station'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>";
+			stream +="</div>";
 			$("#osd").html(stream + "<span style='color:#EA7409;font-weight:bold;'>" + "<a style='color:#EA7409;font-weight:bold;text-decoration:none;' href='#' onClick='load_maincontent(\"ajax/radio\");return false;'>" + statusinfo['currservice_station'] + "</a></span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + "<a style='color:#ffffff;text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + statusinfo['currservice_serviceref'] + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 			$("#osd_bottom").html(statusinfo['currservice_description']);
 		} else if ((statusinfo['currservice_station']) && ((statusinfo['currservice_serviceref'].indexOf("1:0:0") !== -1))) {
-			var stream = "";
+			stream = "<div id='osdicon'>";
 			if (statusinfo['transcoding']) {
-				stream += "<a href='#' onclick=\"jumper80('" + statusinfo['currservice_filename'] + "')\"; title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>&nbsp;";
-				stream += "<a href='#' onclick=\"jumper8003('" + statusinfo['currservice_filename'] + "')\"; title='" + tstr_stream + " (" + tstr_transcoded + "): " + statusinfo['currservice_station'] + "'><i class='fa fa-mobile'></i></a>&nbsp;";
+				stream += "<a href='#' onclick=\"jumper80('" + statusinfo['currservice_filename'] + "')\"; title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>";
+				stream += "<a href='#' onclick=\"jumper8003('" + statusinfo['currservice_filename'] + "')\"; title='" + tstr_stream + " (" + tstr_transcoded + "): " + statusinfo['currservice_station'] + "'><i class='fa fa-mobile'></i></a>";
 			} else {
-				stream += "<a target='_blank' href='/web/ts.m3u?file=" + statusinfo['currservice_filename'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>&nbsp;";
+				stream += "<a target='_blank' href='/web/ts.m3u?file=" + statusinfo['currservice_filename'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>";
 			}
+			stream +="</div>";
 			$("#osd").html(stream + "<span style='color:#EA7409;font-weight:bold;'>" + statusinfo['currservice_station'] + "</span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + statusinfo['currservice_name']);
 			$("#osd_bottom").html(statusinfo['currservice_description']);
 		} else if (statusinfo['currservice_station']) {
