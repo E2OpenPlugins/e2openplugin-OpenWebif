@@ -613,12 +613,17 @@
 					selected: function ( event, ui ) {
 						$(ui.selected).addClass('ui-selected').siblings().removeClass('ui-selected');
 						self.changeProvider($(ui.selected).data('sref'), self.showChannels);
+					},classes: {
+						"ui-selected": "ui-state-active" 
 					}
 				});
 
 				// Setup selection callback function for left pane channels list
 				$('#channels').selectable({
 					stop: self.setChannelButtons
+					,classes: {
+						"ui-selected": "ui-state-active" 
+					}
 				});
 
 				// Setup callback functions for right pane bouquets list
@@ -637,6 +642,8 @@
 					selected: function ( event, ui ) {
 						$(ui.selected).addClass('ui-selected').siblings().removeClass('ui-selected');
 						self.changeBouquet($(ui.selected).data('sref'), self.showBouquetChannels);
+					},classes: {
+						"ui-selected": "ui-state-active" 
 					}
 				});
 
@@ -653,7 +660,10 @@
 				}).selectable({
 					filter: 'li',
 					cancel: '.handle',
-					stop: self.setBouquetChannelButtons
+					stop: self.setBouquetChannelButtons,
+					classes: {
+						"ui-selected": "ui-state-active" 
+					}
 				});
 
 				// Setup callback functions for left pane toolbar buttons
