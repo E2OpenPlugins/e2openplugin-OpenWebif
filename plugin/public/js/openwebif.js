@@ -1,11 +1,12 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.0
+//* Version 2.0
 //******************************************************************************
 //* Copyright (C) 2011-2014 E2OpenPlugins
 //*
 //* V 1.0 - Initial Version
 //* V 1.1 - add movie move and rename
+//* V 2.0 - movie sort object, spinner, theme support, ...
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -23,6 +24,8 @@ $.fx.speeds._default = 1000;
 var theme='original',loadspinner = "<div id='spinner'><div class='fa fa-spinner fa-spin'></div></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0,at2add = null;
 
 $(function() {
+	
+	SetSpinner();
 	
 // no execption on popup window
 try {
@@ -1178,16 +1181,13 @@ function InitAccordeon(obj)
 
 function RefreshMEPG()
 {
-	if(typeof(Storage) !== "undefined") {
-		if(localStorage.lastmbq)
-		{
-			var bq= "?bref=" + localStorage.lastmbq;
-			$("#tvcontent").html(loadspinner).load('ajax/multiepg' + bq,function() {
-				ExpandMEPG();
-			});
-		}
-	}
-
+	var bq = '';
+	var lbq=GetLSValue('lastmbq','');
+	if(lbq!='')
+		bq= "?bref=" + lbq;
+	$("#tvcontent").html(loadspinner).load('ajax/multiepg' + bq,function() {
+		ExpandMEPG();
+	});
 }
 
 function ExpandMEPG()
@@ -1242,13 +1242,11 @@ function InitBouquets(tv)
 			$("#tvcontent").html(loadspinner).load("ajax/current");
 		});
 		$('#btn5').click(function(){
-			var bq="";
-			if(typeof(Storage) !== "undefined") {
-				if(localStorage.lastmbq)
-				{
-					bq= "?bref=" + localStorage.lastmbq;
-				}
-			}
+		
+			var bq = '';
+			var lbq=GetLSValue('lastmbq','');
+			if(lbq!='')
+				bq= "?bref=" + lbq;
 			$("#tvcontent").html(loadspinner).load('ajax/multiepg' + bq);
 			$("#expandmepg").show();
 		});
@@ -1575,7 +1573,7 @@ var MLHelper;
 			ChangeSort : function(nsort)
 			{
 				$.ajax({
-					url: "api/setmoviesort?sort=" + nsort,
+					url: "api/setmoviesort?nsort=" + nsort,
 					success: function() {
 					}
 				});
@@ -1627,5 +1625,33 @@ function setTMHover()
 		function(){ $(this).addClass(cls) },
 		function(){ $(this).removeClass(cls) }
 	)
-
 }
+
+// Localstorage
+
+function SetLSValue(t,val)
+{
+	if(typeof(Storage) !== "undefined") {
+		localStorage.setItem(t,val);
+	}
+}
+
+function GetLSValue(t,def)
+{
+	var ret = def;
+	if(typeof(Storage) !== "undefined") {
+		var value = localStorage.getItem(t);
+		if (value !== undefined && value !== null)
+		{
+			ret = value;
+		}
+	}
+	return ret;
+}
+
+function SetSpinner()
+{
+	var spin = GetLSValue('spinner','fa-spinner');
+	loadspinner = "<div id='spinner'><div class='fa " + spin + " fa-spin'></div></div>";
+}
+

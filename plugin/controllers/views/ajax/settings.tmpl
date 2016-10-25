@@ -43,6 +43,27 @@
 				<input type="checkbox" name="zapstream"/>
 				#end if
 				</td></tr>
+				<tr><td>Spinner</td><td>
+				<div>
+				<span class="spinner">
+				<fieldset style="border:none;">
+				<label for="fa-spinner"><i class="fa fa-spinner"></i></label>
+				<input type="radio" name="Spin" id="fa-spinner">
+				<label for="fa-spin1"><i class="fa fa-spin1"></i></label>
+				<input type="radio" name="Spin" id="fa-spin1">
+				<label for="fa-spin2"><i class="fa fa-spin2"></i></label>
+				<input type="radio" name="Spin" id="fa-spin2">
+				<label for="fa-spin3"><i class="fa fa-spin3"></i></label>
+				<input type="radio" name="Spin" id="fa-spin3">
+				<label for="fa-spin4"><i class="fa fa-spin4"></i></label>
+				<input type="radio" name="Spin" id="fa-spin4">
+				<label for="fa-spin5"><i class="fa fa-spin5"></i></label>
+				<input type="radio" name="Spin" id="fa-spin5">
+				<label for="fa-spin6"><i class="fa fa-spin6"></i></label>
+				<input type="radio" name="Spin" id="fa-spin6">
+				</fieldset>
+				</span>
+				</td></tr>
 				</table>
 			</div>
 		</div>
@@ -69,6 +90,16 @@ $(function() {
 		}
 	});
 	load_theme();
+	
+	$( ".spinner input[type='radio']" ).checkboxradio({ icon: false });
+	$( ".spinner fieldset" ).controlgroup();
+	var spin = GetLSValue('spinner','fa-spinner');
+	$('#'+spin).attr('checked', true).checkboxradio("refresh");
+	$(".spinner input:radio").change(function() {
+		SetLSValue('spinner',$(this).attr('id'));
+		SetSpinner();
+	});
+	
 });
 	function load_theme() {
 		$("#scontent").html('');
