@@ -2012,3 +2012,33 @@ msgstr ""
 #: ../plugin/plugin.py:198
 msgid "OpenWebif Configuration"
 msgstr ""
+
+msgid "Record+ZAP"
+msgstr ""
+
+msgid "via"
+msgstr ""
+
+msgid "Pmtpid"
+msgstr ""
+
+msgid "Apid"
+msgstr ""
+
+msgid "Vpid"
+msgstr ""
+
+msgid "Pcrpid"
+msgstr ""
+
+msgid "Tsid"
+msgstr ""
+
+msgid "Onid"
+msgstr ""
+
+msgid "Sid"
+msgstr ""
+
+msgid "Sref"
+msgstr ""
