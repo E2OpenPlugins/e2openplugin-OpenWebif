@@ -1,67 +1,54 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
 
+
+<style>
+.t,.t2,.t3 { display:table;width: 100%; padding-bottom:10px;}
+.t3.ui-widget-content,.t2.ui-widget-content,.t.ui-widget-content { border:none;}
+.t3 > div,.t > div,.t2 > div { display:table-cell;}
+.t div:first-child { width: 150px;vertical-align:top;}
+.t2 div{ width: 50%;}
+.t3 div{ width: 33%;}
+#enabled,#justplay,#always_zap,#timerend,#cbradio,#rcb,#sep1,#timerbegin {margin-left:5px;}
+#justplay,#always_zap,#sep1,#timerbegin {margin-right:5px;}
+
+</style>
 <form>
 <div>
-	<div class="timerlist_row">
-		<span class="timerlist_row_l">$tstrings['name']:</span>
-		<span><input type="text" name="timername" id="timername" style="width: 450px;" class="text ui-widget-content ui-corner-all" /></span>
+	<div class="t ui-widget-content">
+		<div>$tstrings['enabled']:<input type="checkbox" name="enabled" id="enabled" value="0" /></div>
+		<div>$tstrings['just_play']:<input type="checkbox" name="justplay" id="justplay" value="0" /><span id="sep1">/</span>
+		$tstrings['record_zap']:<input type="checkbox" name="always_zap" id="always_zap" value="0" /></div>
 	</div>
-	
-	<div class="timerlist_row">
-		<span class="timerlist_row_l">$tstrings['description']:</span>
-		<span><textarea name="description" id="description" style="width: 450px; height: 50px;" class="text ui-widget-content ui-corner-all" /></span>
+
+	<div class="t ui-widget-content">
+		<div>$tstrings['name']:</div>
+		<div><input type="text" name="timername" id="timername" style="width:100%;" class="text ui-widget-content ui-corner-all" /></div>
 	</div>
-	
-	<div class="timerlist_row">
-	<span class="timerlist_row_l">$tstrings['channel']:</span>
-		<span>
-		<select id="bouquet_select" name="bouquet_select">
+	<div class="t ui-widget-content">
+		<div>$tstrings['description']:</div>
+		<div><textarea name="description" id="description" style="width:100%; height: 50px;" class="text ui-widget-content ui-corner-all" /></div>
+	</div>
+	<div class="t ui-widget-content">
+		<div>$tstrings['channel']:
+		<label style="display:none;"><input class="cbtvr" id="cbtv" type="checkbox" name="group1[]" /> $tstrings['tv'] </label>
+		<span id="rcb">($tstrings['radio']:<input class="cbtvr" id="cbradio" type="checkbox" name="group1[]" />)</span>
+		</div>
+		<div>
+		<select id="bouquet_select" name="bouquet_select" style="width:100%;">
 			<option value="0">$tstrings['nothing']</option>
-		</select>
-		</span>
-		<label><input class="cbtvr" id="cbtv" type="checkbox" name="group1[]" /> $tstrings['tv'] </label>
-		<label><input class="cbtvr" id="cbradio" type="checkbox" name="group1[]" /> $tstrings['radio'] </label>
-		<span>
-		</span>
-	</div>
-	
-	<div class="timerlist_row">
-		<span class="timerlist_row_l">$tstrings['start']:</span>
-		<span>
-		<input type="text" name="timerbegin" id="timerbegin" value="" class="text ui-widget-content ui-corner-all" />
-		</span>
+		</select></div>
 	</div>
 
-	<div class="timerlist_row">
-		<span class="timerlist_row_l">$tstrings['end']:</span>
-		<span>
-		<input type="text" name="timerend" id="timerend" value="" class="text ui-widget-content ui-corner-all" />
-		</span>
-	</div>
-	
-	<div class="timerlist_row">
-		<span class="timerlist_row_l" style="block: inline;">$tstrings['enabled']:</span>
-		<span style="margin: 5px;">
-			<input type="checkbox" name="enabled" id="enabled" value="0" />
-		</span>
-	</div>
-	
-	<div class="timerlist_row">
-		<span class="timerlist_row_l">$tstrings['just_play']:</span>
-		<span style="margin: 5px;">
-			<input type="checkbox" name="justplay" id="justplay" value="0" />
-		</span>
+	<div class="t ui-widget-content">
+		<div>$tstrings['time']:</div>
+		<div>$tstrings['start']:<input type="text" name="timerbegin" id="timerbegin" value="" class="text ui-widget-content ui-corner-all" />&nbsp;
+		$tstrings['end']:<input type="text" name="timerend" id="timerend" value="" class="text ui-widget-content ui-corner-all" /></div>
 	</div>
 
-	<div class="timerlist_row" id="always_zap1">
-		<span class="timerlist_row_l">$tstrings['record_zap']:</span>
-		<span style="margin: 5px;">
-			<input type="checkbox" name="always_zap" id="always_zap" value="0" />
-		</span>
-	</div>
-	
-	<div class="timerlist_row">
-		<span class="timerlist_row_l">$tstrings['repeated']:</span>
+
+	<div class="t ui-widget-content">
+		<div>$tstrings['repeated']:</div>
+		<div>
 		<span id="repeatdays" style="margin: 5px;">
 		#set $i=0
 		#for $day in [$tstrings['mo'], $tstrings['tu'], $tstrings['we'], $tstrings['th'], $tstrings['fr'], $tstrings['sa'], $tstrings['su']]
@@ -70,34 +57,30 @@
 			#set $i=$i+1
 		#end for
 		</span>
+		</div>
 	</div>
-	
-	<div class="timerlist_row">
-		<span class="timerlist_row_l">$tstrings['location']:</span>
-		<span>
+
+	<div class="t ui-widget-content">
+		<div>$tstrings['location']:</div>
+		<div>
 		<select id="dirname" name="dirname">
 			<option value="None">$tstrings['default']</option>
 		</select>
-		</span>
+		</div>
 	</div>
-	
-	<div class="timerlist_row">
-		<span class="timerlist_row_l">$tstrings['tags']:</span>
-		<span id="tagsnew" style="margin:5px">
-		</span>
-	</div>
-	
-	<div class="timerlist_row">
-		<span class="timerlist_row_l">$tstrings['after_event']:</span>
-		<span>
+
+	<div class="t ui-widget-content">
+		<div>$tstrings['after_event']:</div>
+		<div>
 		<select id="afterevent" name="afterevent">
 			<option value="0">$tstrings['nothing']</option>
 			<option value="1">$tstrings['standby']</option>
 			<option value="2">$tstrings['shutdown']</option>
 			<option value="3" selected="">$tstrings['auto']</option>
 		</select>
-		</span>
+		</div>
 	</div>
+
 	<div class="timerlist_row" id="has_vpsplugin1">
 		<span class="timerlist_row_l">$tstrings['vps']:</span>
 		<span style="margin: 5px;">
@@ -108,6 +91,14 @@
 			<input type="checkbox" name="vpsplugin_safemode" id="vpsplugin_safemode" value="0" />
 		</span>
 	</div>
+	
+	<div class="timerlist_row">
+		<span class="timerlist_row_l">$tstrings['tags']:</span>
+		<span id="tagsnew" style="margin:5px">
+		</span>
+	</div>
+	
+	
 	<div id="errorbox" class="timerlist_row" style="color: red;">
 		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
 			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
@@ -162,10 +153,13 @@ $('#timerend').datetimepicker({
 
 $('#repeatdays').buttonset();
 
+var h = ($(window).height() > 700) ? 540:480;
+var w = ($(window).width() > 800) ? 740:650;
+
 $('#editTimerForm').dialog({
 	autoOpen: false,
-	height: 480,
-	width: 650,
+	height: h,
+	width: w,
 	modal: true,
 	buttons: [
 			{text: tstr_save,
