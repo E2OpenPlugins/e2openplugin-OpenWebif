@@ -10,6 +10,7 @@
 .t3 div{ width: 33%;}
 #enabled,#justplay,#always_zap,#timerend,#cbradio,#rcb,#sep1,#timerbegin {margin-left:5px;}
 #justplay,#always_zap,#sep1,#timerbegin {margin-right:5px;}
+#repeatdays > label,#tagsnew > label { line-height:.9em;padding-left:10px;padding-right:10px; }
 
 </style>
 <form>
@@ -153,7 +154,7 @@ $('#timerend').datetimepicker({
 
 $('#repeatdays').buttonset();
 
-var h = ($(window).height() > 700) ? 540:480;
+var h = ($(window).height() > 700) ? 620:520;
 var w = ($(window).width() > 800) ? 740:650;
 
 $('#editTimerForm').dialog({

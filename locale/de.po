@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2016-04-30 20:14+0200\n"
+"POT-Creation-Date: 2016-10-26 01:20+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
@@ -946,7 +946,7 @@ msgstr "Javascript-Bibliothek"
 
 #: ../plugin/local.py:122
 msgid "Just play"
-msgstr "Umschaltt."
+msgstr "Umschalttimer"
 
 #: ../plugin/local.py:123
 msgid "Kernel version"
@@ -2013,6 +2013,36 @@ msgstr "Zeichenkodierung der EPG Daten"
 #: ../plugin/plugin.py:198
 msgid "OpenWebif Configuration"
 msgstr "OpenWebif-Konfiguration"
+
+msgid "Record+ZAP"
+msgstr "Umschalten und aufnehmen"
+
+msgid "via"
+msgstr ""
+
+msgid "Pmtpid"
+msgstr ""
+
+msgid "Apid"
+msgstr ""
+
+msgid "Vpid"
+msgstr ""
+
+msgid "Pcrpid"
+msgstr ""
+
+msgid "Tsid"
+msgstr ""
+
+msgid "Onid"
+msgstr ""
+
+msgid "Sid"
+msgstr ""
+
+msgid "Sref"
+msgstr ""
 
 #~ msgid "VPS Overwrite"
 #~ msgstr "VPS überschreiben"
