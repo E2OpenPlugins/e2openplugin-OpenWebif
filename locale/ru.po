@@ -17,75 +17,75 @@ msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:82
 msgid "one two three four unknown command"
-msgstr ""
+msgstr "одна /две / три / четыре неизвестные команды"
 
 #: ../plugin/controllers/BouquetEditor.py:88
 #: ../plugin/controllers/BouquetEditor.py:149
 #: ../plugin/controllers/BouquetEditor.py:194
 msgid "No bouquet name given!"
-msgstr ""
+msgstr "Не задано название букета!"
 
 #: ../plugin/controllers/BouquetEditor.py:118
 #, python-format
 msgid "Bouquet %s created."
-msgstr ""
+msgstr "Букет %s создан."
 
 #: ../plugin/controllers/BouquetEditor.py:120
 msgid "Get mutable list for new created bouquet failed!"
-msgstr ""
+msgstr "Получить изменяемый список для нового созданного букета не удалось!"
 
 #: ../plugin/controllers/BouquetEditor.py:123
 #, python-format
 msgid "Bouquet %s already exists."
-msgstr ""
+msgstr "Букет %s уже существует."
 
 #: ../plugin/controllers/BouquetEditor.py:125
 #: ../plugin/controllers/BouquetEditor.py:435
 msgid "Bouquetlist is not editable!"
-msgstr ""
+msgstr "Список букетов не редактируется!"
 
 #: ../plugin/controllers/BouquetEditor.py:127
 msgid "Multi-Bouquet is not enabled!"
-msgstr ""
+msgstr "Мульти-букеты не включены!"
 
 #: ../plugin/controllers/BouquetEditor.py:133
 msgid "No provider given!"
-msgstr ""
+msgstr "Не задан провайдер!"
 
 #: ../plugin/controllers/BouquetEditor.py:180
 #, python-format
 msgid "Bouquet %s removed failed."
-msgstr ""
+msgstr "Ошибка удаления букета %s"
 
 #: ../plugin/controllers/BouquetEditor.py:182
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr ""
+msgstr "Ошибка удаления букета %s, референс  или изменяемый список не является действительным."
 
 #: ../plugin/controllers/BouquetEditor.py:186
 #, python-format
 msgid "Bouquet %s deleted."
-msgstr ""
+msgstr "Букет %s удален."
 
 #: ../plugin/controllers/BouquetEditor.py:188
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
-msgstr ""
+msgstr "Ошибка: Букет %s не может быть удален, OSError."
 
 #: ../plugin/controllers/BouquetEditor.py:204
 #: ../plugin/controllers/BouquetEditor.py:261
 msgid "No position given!"
-msgstr ""
+msgstr "Не задана позиция!"
 
 #: ../plugin/controllers/BouquetEditor.py:211
 #, python-format
 msgid "Bouquet %s moved."
-msgstr ""
+msgstr "Букет %s перемещен."
 
 #: ../plugin/controllers/BouquetEditor.py:213
 #, python-format
 msgid "Bouquet %s can not be moved."
-msgstr ""
+msgstr "Букет %s не может быть перемещен."
 
 #: ../plugin/controllers/BouquetEditor.py:219
 #: ../plugin/controllers/BouquetEditor.py:249
@@ -93,7 +93,7 @@ msgstr ""
 #: ../plugin/controllers/BouquetEditor.py:309
 #: ../plugin/controllers/BouquetEditor.py:455
 msgid "No bouquet given!"
-msgstr ""
+msgstr "Не задан букет!"
 
 #: ../plugin/controllers/BouquetEditor.py:225
 #: ../plugin/controllers/BouquetEditor.py:255
@@ -103,160 +103,160 @@ msgstr ""
 #: ../plugin/controllers/BouquetEditor.py:461
 #: ../plugin/controllers/BouquetEditor.py:498
 msgid "No service given!"
-msgstr ""
+msgstr "Не задан сервис!"
 
 #: ../plugin/controllers/BouquetEditor.py:234
 #, python-format
 msgid "Service %s removed."
-msgstr ""
+msgstr "Сервис %s удален."
 
 #: ../plugin/controllers/BouquetEditor.py:242
 #, python-format
 msgid "Service %s removed from bouquet %s."
-msgstr ""
+msgstr "Сервис %s удален из букета %s."
 
 #: ../plugin/controllers/BouquetEditor.py:243
 #, python-format
 msgid "Service %s can not be removed."
-msgstr ""
+msgstr "Сервис %s не может быть удален."
 
 #: ../plugin/controllers/BouquetEditor.py:268
 #, python-format
 msgid "Service %s moved."
-msgstr ""
+msgstr "Сервис %s перемещен."
 
 #: ../plugin/controllers/BouquetEditor.py:269
 msgid "Service can not be moved."
-msgstr ""
+msgstr "Сервис не может быть перемещен."
 
 #: ../plugin/controllers/BouquetEditor.py:299
 #, python-format
 msgid "Service %s added."
-msgstr ""
+msgstr "Сервис %s добавлен."
 
 #: ../plugin/controllers/BouquetEditor.py:302
 #, python-format
 msgid "Service %s already exists in bouquet %s."
-msgstr ""
+msgstr "Сервис %s уже существует в букете %s"
 
 #: ../plugin/controllers/BouquetEditor.py:303
 msgid "This service can not be added."
-msgstr ""
+msgstr "Этот сервис не может быть добавлен."
 
 #: ../plugin/controllers/BouquetEditor.py:315
 msgid "No marker-name given!"
-msgstr ""
+msgstr "Не задано название маркера!"
 
 #: ../plugin/controllers/BouquetEditor.py:329
 msgid "Marker added."
-msgstr ""
+msgstr "Маркер добавлен."
 
 #: ../plugin/controllers/BouquetEditor.py:331
 msgid "Internal error!"
-msgstr ""
+msgstr "Внутренная ошибка!"
 
 #: ../plugin/controllers/BouquetEditor.py:345
 msgid "No new servicename given!"
-msgstr ""
+msgstr "Не задано новое название сервиса!"
 
 #: ../plugin/controllers/BouquetEditor.py:369
 msgid "Bouquet renamed successfully."
-msgstr ""
+msgstr "Букет переименован успешно."
 
 #: ../plugin/controllers/BouquetEditor.py:385
 msgid "Service renamed successfully."
-msgstr ""
+msgstr "Сервис переименован успешно."
 
 #: ../plugin/controllers/BouquetEditor.py:386
 msgid "Service can not be renamed."
-msgstr ""
+msgstr "Сервис не может быть переименован."
 
 #: ../plugin/controllers/BouquetEditor.py:400
 msgid "No current service given!"
-msgstr ""
+msgstr "Не задан текщий серви!"
 
 #: ../plugin/controllers/BouquetEditor.py:431
 msgid "Get mutable list for new created alternative failed!"
-msgstr ""
+msgstr "Получить изменяемый список для нововой созданной альтернативы не удалось!"
 
 #: ../plugin/controllers/BouquetEditor.py:433
 #, python-format
 msgid "Alternative %s created failed."
-msgstr ""
+msgstr "Ошибка создания %s альтернативы."
 
 #: ../plugin/controllers/BouquetEditor.py:447
 #, python-format
 msgid "Added %s to alternative service %s."
-msgstr ""
+msgstr "Добавлен %s в альтернативный сервис %s."
 
 #: ../plugin/controllers/BouquetEditor.py:478
 msgid "Service is not an alternative."
-msgstr ""
+msgstr "Сервис не является альтернативой."
 
 #: ../plugin/controllers/BouquetEditor.py:486
 msgid "All alternative services deleted."
-msgstr ""
+msgstr "Все альтернативные сервисы удалены."
 
 #: ../plugin/controllers/BouquetEditor.py:492
 msgid "Parent Control is not activated."
-msgstr ""
+msgstr "Родительский контроль не активен."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "No Parent Control Setup Pin given!"
-msgstr ""
+msgstr "Не задан код родительского контроля!"
 
 #: ../plugin/controllers/BouquetEditor.py:509
 #: ../plugin/controllers/BouquetEditor.py:511
 msgid "Parent Control Setup Pin is wrong!"
-msgstr ""
+msgstr "Ошибочный код родительского контроля!"
 
 #: ../plugin/controllers/BouquetEditor.py:526
 #, python-format
 msgid "Service %s is locked."
-msgstr ""
+msgstr "Сервис %s заблокирован."
 
 #: ../plugin/controllers/BouquetEditor.py:528
 #, python-format
 msgid "Bouquet %s is locked."
-msgstr ""
+msgstr "Букет %s заблокирован."
 
 #: ../plugin/controllers/BouquetEditor.py:530
 #, python-format
 msgid "%s %s is locked."
-msgstr ""
+msgstr "%s %s заблокирован."
 
 #: ../plugin/controllers/BouquetEditor.py:534
 #, python-format
 msgid "Service %s is unlocked."
-msgstr ""
+msgstr "Service %s разблокирован."
 
 #: ../plugin/controllers/BouquetEditor.py:536
 #, python-format
 msgid "Bouquet %s is unlocked."
-msgstr ""
+msgstr "Bouquet %s разблокирован."
 
 #: ../plugin/controllers/BouquetEditor.py:573
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
-msgstr ""
+msgstr "Ошибка при подготовке создания файла бекапа, %s не существует."
 
 #: ../plugin/controllers/BouquetEditor.py:579
 msgid "Error while preparing backup file."
-msgstr ""
+msgstr "Ошибка при подготовке создания файла бекапа."
 
 #: ../plugin/controllers/BouquetEditor.py:630
 msgid "Bouquet-settings were restored successfully"
-msgstr ""
+msgstr "Настройки букетов востановлены успешно"
 
 #: ../plugin/controllers/BouquetEditor.py:632
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
-msgstr ""
+msgstr "Ошибка, %s не был создан с помощью Редактора букетов..."
 
 #: ../plugin/controllers/BouquetEditor.py:634
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
-msgstr ""
+msgstr "Ошибка, %s не существует, восстановление невозможно..."
 
 #: ../plugin/controllers/base.py:221 ../plugin/local.py:181
 #: ../plugin/local.py:325
@@ -378,7 +378,7 @@ msgstr "Не найден соответствующий таймер"
 #: ../plugin/controllers/models/timers.py:317
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
-msgstr ""
+msgstr "Таймер '%s' не сожет быть включен из-за конфликта"
 
 #: ../plugin/controllers/models/timers.py:323
 #, python-format
@@ -445,7 +445,7 @@ msgstr "Таймер сна отключен"
 #: ../plugin/controllers/models/timers.py:640
 #: ../plugin/controllers/models/timers.py:667
 msgid "SleepTimer error"
-msgstr ""
+msgstr "Ошибка таймера сна"
 
 #: ../plugin/controllers/models/timers.py:679
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
@@ -468,15 +468,15 @@ msgstr "Таймер сна установлен на %d минут"
 #: ../plugin/controllers/models/timers.py:695
 #: ../plugin/controllers/models/timers.py:776
 msgid "SleepTimer Error"
-msgstr ""
+msgstr "Ошибка таймера сна"
 
 #: ../plugin/controllers/models/timers.py:804
 msgid "Error parsing vps.xml"
-msgstr ""
+msgstr "Ошибка чтения vps.xml"
 
 #: ../plugin/controllers/models/timers.py:809
 msgid "VPS plugin not found"
-msgstr ""
+msgstr "Плагин VPS не найден"
 
 #: ../plugin/controllers/web.py:63
 #, python-format
@@ -777,11 +777,11 @@ msgstr "Действительно удалить запись?"
 
 #: ../plugin/local.py:76
 msgid "Delete Movie"
-msgstr ""
+msgstr "Удалить видео"
 
 #: ../plugin/local.py:77
 msgid "Really delete the movie"
-msgstr ""
+msgstr "Действительно удалить видео?"
 
 #: ../plugin/local.py:78
 msgid "Delete Timer"
@@ -1117,7 +1117,7 @@ msgstr "Переименовать запись"
 
 #: ../plugin/local.py:164
 msgid "Really rename the recording"
-msgstr ""
+msgstr "Действительно переименовать запись?"
 
 #: ../plugin/local.py:165
 msgid "Repeated"
@@ -1310,11 +1310,11 @@ msgstr "Всего памяти"
 
 #: ../plugin/local.py:213
 msgid "transcoded"
-msgstr "транскодирование"
+msgstr "транскодировано"
 
 #: ../plugin/local.py:214
 msgid "Transcode"
-msgstr ""
+msgstr "Транскодирование"
 
 #: ../plugin/local.py:215
 msgid "Tuner Bit Error Rate BER"
@@ -2019,8 +2019,45 @@ msgstr "Тип кодировки текста для данных EPG"
 msgid "OpenWebif Configuration"
 msgstr "Настройки OpenWebif"
 
-#~ msgid "VPS Overwrite"
-#~ msgstr "Перезапись VPS"
+msgid "Record+ZAP"
+msgstr "Запись+Перейти"
 
-#~ msgid "SleepTimer feature not available"
-#~ msgstr "Функции тамймера сна недоступны"
+msgid "via"
+msgstr "via"
+
+msgid "Pmtpid"
+msgstr "Pmtpid"
+
+msgid "Apid"
+msgstr "Apid"
+
+msgid "Vpid"
+msgstr "Vpid"
+
+msgid "Pcrpid"
+msgstr "Pcrpid"
+
+msgid "Tsid"
+msgstr "Tsid"
+
+msgid "Onid"
+msgstr "Onid"
+
+msgid "Sid"
+msgstr "Sid"
+
+msgid "Sref"
+msgstr "Sref"
+
+msgid "error! Loading Page"
+msgstr "ошибка загрузки страницы!"
+
+msgid "Timer Added"
+msgstr "Таймер добавлен"
+
+msgid "Event not found"
+msgstr "Событие не найдено"
+
+msgid "NOT implemented YET"
+msgstr "НЕ реализовано ЕЩЕ"
+
