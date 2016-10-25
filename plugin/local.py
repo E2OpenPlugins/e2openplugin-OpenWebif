@@ -325,7 +325,7 @@ tstrings = {'mo': _("Mo"),
 	'at_settings': _("Settings"),
 	'at_delete_autotimer_question': _("Do you really want to delete the AT"),
 	'at_label_series': _("Label series"),
-	
+
 	'ats_auto_timmer_settings': _("AutoTimer Settings"),
 	'ats_autopoll': _("AutoPoll"),
 	'ats_interval': _("Interval (in h)"),
@@ -405,5 +405,9 @@ tstrings = {'mo': _("Mo"),
 	'on_id': _("Onid"),
 	's_id': _("Sid"),
 	's_ref': _("Sref"),
+
+	'tstr_error_load_page': _("error! Loading Page"),
+	'tstr_timer_added': _("Timer Added"),
+	'tstr_event_not_found': _("Event not found"),
 
  	}
