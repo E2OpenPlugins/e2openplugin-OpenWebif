@@ -6,7 +6,7 @@
 				<h3 class="ui-widget-header">$tstrings['settings']</h3>
 				<ol class="sellist" id="slist">
 				#if $themes
-					<li id='themesbtn' class="ui-selected ui-state-active">OpenWebif Settings</li>
+					<li id='themesbtn' class="ui-selected">OpenWebif Settings</li>
 				#end if
 				#for $sec in $configsections
 					<li id='$sec["key"]' data-id='ajax/config?section=$sec["key"]'>$sec["description"]</li>
@@ -46,7 +46,7 @@
 				<tr><td>Spinner</td><td>
 				<div>
 				<span class="spinner">
-				<fieldset style="border:none;">
+				<fieldset style="border:none;" id="fsspinner">
 				<label for="fa-spinner"><i class="fa fa-spinner"></i></label>
 				<input type="radio" name="Spin" id="fa-spinner">
 				<label for="fa-spin1"><i class="fa fa-spin1"></i></label>
@@ -101,6 +101,11 @@ $(function() {
 	});
 	
 	setHover('#slist li');
+	$('#fsspinner > label').css('padding-left','10px');
+	$('#fsspinner > label').css('padding-right','10px');
+	
+	$("#themesbtn").addClass(getActiveCls());
+	
 	
 });
 	function load_theme() {

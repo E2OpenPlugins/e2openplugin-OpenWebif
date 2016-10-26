@@ -7,7 +7,7 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
 
 <style>
-.tb,.tbr { padding:0; margin:0 0 0 0; background:none;width:40px}
+.tb { padding:0; margin:0 0 0 0; background:none;width:40px}
 .tb i.fa { font-size:32px;}
 #station { cursor:pointer;overflow:hidden;}
 .im { font-family:Impact,Arial;font-size:24px; }
@@ -72,8 +72,8 @@
 					</a>
 					</td>
 					<td>
-					<a class="tbr" href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']">
-					<i class="fa fa-timerplay"></i>
+					<a class="tb" href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']">
+					<i class="fa fa-timeredit"></i>
 					</a>
 					</td>
 		
@@ -81,13 +81,13 @@
 		<tr>
 		
 		<td>
-					<a class="tb" href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']">
-					<i class="fa fa-timeredit"></i>
+					<a class="tb" href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']">
+					<i class="fa fa-timerplay"></i>
 					</a>
 					</td>
 					<td>
 					#if $at
-					<a class="tbr" href="#" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin_str','$event.end');return false;" title="$tstrings['add_autotimer']">
+					<a class="tb" href="#" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin_str','$event.end');return false;" title="$tstrings['add_autotimer']">
 					<i class="fa fa-timerat"></i>
 					</a>
 					#end if

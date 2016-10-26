@@ -12,9 +12,13 @@
 			</span>
 		</div>
 		<div class="screenshotContainer">
-			<img id="screenshotimage" src="" alt="$tstrings['loading'] ..." width="300px">
+			<img id="screenshotimage" src="" alt="$tstrings['loading'] ..." width="350px">
+			<div id="screenshotspinnerl" style="top: 50%;left: 50%;margin-left: 50px;margin-top: 50px;;position:absolute;font-size:50px">
+				<div id="screenshotspinner" class='fa fa-spin' style="display: none;"></div>
+			</div>
 		</div>
-		<div id="screenShotRefresh" style="margin-top: 15px; margin-left: auto; margin-right: auto; width: 700px; text-align: center;">
+
+		<div id="screenShotRefresh" style="margin-top: 15px; margin-left: auto; margin-right: auto; width: 720px; text-align: center;">
 			<input type="checkbox" id="screenshotRefreshHD" value="0">
 			$tstrings['high_resolution']
 			<input type="checkbox" id="screenshotRefreshStatus" value="0">
@@ -25,9 +29,6 @@
 			<span id="screenshotrefreshbutton">
 				<button onclick="grabScreenshot('auto'); return false">$tstrings['refresh']</button>
 			</span>
-		</div>
-		<div id="screenshotspinnerl" style="font-size:50px">
-			<div id="screenshotspinner" class='fa fa-spinner fa-spin' style="display: none;"></div>
 		</div>
 	</div>
 </div>
@@ -68,5 +69,8 @@
 		screenshotMode = 'all'; // reset on page reload
 		grabScreenshot(screenshotMode);
 	});
+	
+	$('#screenshotspinner').addClass(GetLSValue('spinner','fa-spinner'));
+	
 </script>
 #end raw

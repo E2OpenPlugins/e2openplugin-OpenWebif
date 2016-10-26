@@ -676,9 +676,9 @@ function grabScreenshot(mode) {
 	if (($('#screenshotRefreshHD').is(':checked'))){
 		$('#screenshotimage').attr("src",'/grab?format=jpg&mode=' + mode + '&timestamp=' + timestamp);
 	} else {
-		$('#screenshotimage').attr("src",'/grab?format=jpg&r=700&mode=' + mode + '&timestamp=' + timestamp);
+		$('#screenshotimage').attr("src",'/grab?format=jpg&r=720&mode=' + mode + '&timestamp=' + timestamp);
 	}
-	$('#screenshotimage').attr("width",700);
+	$('#screenshotimage').attr("width",720);
 }
 
 function getMessageAnswer() {

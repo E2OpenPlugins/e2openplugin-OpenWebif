@@ -654,9 +654,9 @@ font-size:16px;font-weight:bold;opacity:0.3;
 .fa-save:before { content: '\e809'; } /* '' */
 .fa-list-alt:before { content: '\e80a'; } /* '' */
 .fa-refresh:before { content: '\e80b'; } /* '' */
-.fa-timerat:before { content: '\e80c'; } /* '' */
-.fa-timerplay:before { content: '\e80d'; } /* '' */
-.fa-timeredit:before { content: '\e80e'; } /* '' */
+.fa-timerat:before { content: '\e80d'; } /* '' */
+.fa-timerplay:before { content: '\e80e'; } /* '' */
+.fa-timeredit:before { content: '\e80c'; } /* '' */
 .fa-timertrash:before { content: '\e80f'; } /* '' */
 .fa-timerplus:before { content: '\e810'; } /* '' */
 .fa-timerminus:before { content: '\e811'; } /* '' */
