@@ -1,8 +1,8 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
 <div id="content_main" class="ui-widget-content" style="min-height: 500px;background-image:none;">
 	<div id="info">
-		<div style="display:table-row; width: 100%; zoom: 1;">
-			<div style="display:table-cell;width:200px;">
+		<div style="display:table; width: 100%; zoom: 1;">
+			<div style="display:table-cell;width:220px;">
 				<h3 class="ui-widget-header">$tstrings['settings']</h3>
 				<ol class="sellist" id="slist">
 				#if $themes
@@ -15,7 +15,7 @@
 				
 			</div>
 			<div class="ui-widget-header" style="display:table-cell;background: none;border-bottom:none;border-top:none;border-left:none;width:1px;"></div>
-			<div style="display:table-cell;width: 100%;">
+			<div style="display:table-cell;">
 				<div style="width: 100%; zoom: 1;">
 					<div id="scontent"></div>
 					</div>
@@ -86,7 +86,7 @@ $(function() {
 			});
 		},
 		classes: {
-			"ui-selected": "ui-state-active"
+			"ui-selected": getActiveCls()
 		}
 	});
 	load_theme();
@@ -99,6 +99,8 @@ $(function() {
 		SetLSValue('spinner',$(this).attr('id'));
 		SetSpinner();
 	});
+	
+	setHover('#slist li');
 	
 });
 	function load_theme() {

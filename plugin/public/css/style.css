@@ -537,8 +537,6 @@ a.focus {outline: none;}
 font-size:16px;font-weight:bold;opacity:0.3;
 }
 
-.selectable li:hover , .sellist li:hover { background: rgba(0, 0, 0, 0.1);}
-
 .sellist { list-style-type: none; margin: 0; padding: 0; }
 .sellist li { margin: 3px; padding: 0.4em; font-size: 1em; height: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor:pointer;}
 #atlist li { font-size: 1.1em;}

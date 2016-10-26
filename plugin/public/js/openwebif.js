@@ -1610,12 +1610,28 @@ var MLHelper;
 
 })();
 
+function getHoverCls()
+{
+	return (theme=='pepper-grinder') ? 'ui-state-active':'ui-state-hover';
+}
+function getActiveCls()
+{
+	return (theme=='pepper-grinder') ? 'ui-state-hover':'ui-state-active';
+}
+
+function setHover(obj)
+{
+	var cls=getHoverCls();
+	
+	$(obj).hover(
+		function(){ $(this).addClass(cls) },
+		function(){ $(this).removeClass(cls) }
+	)
+}
 
 function setTMHover()
 {
-
 	var cls='ui-state-active';
-
 	if (theme=='pepper-grinder') {
 		$('.tm_row').removeClass('ui-state-default');
 		$('.tm_row').addClass('ui-state-hover');

@@ -1,6 +1,6 @@
 //******************************************************************************
 //* bqe.js: openwebif Bouqueteditor plugin
-//* Version 2.0
+//* Version 2.1
 //******************************************************************************
 //* Copyright (C) 2014-2016 Joerg Bleyel
 //* Copyright (C) 2014-2016 E2OpenPlugins
@@ -9,6 +9,7 @@
 //*          Robert Damas <https://github.com/rdamas>
 
 //* V 2.0 - complete refactored
+//* V 2.1 - theme support
 
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
@@ -31,6 +32,10 @@
 		// Array of services type markers.
 		var sType;
 
+		var hovercls;
+
+		var activecls;
+
 		return {
 			// Callback for display left panel providers list
 			// Triggers fetching and displaying dependent services list
@@ -48,12 +53,14 @@
 					$('#provider').children().first().data('sref'),
 					self.showChannels
 				);
+				self.setHover('#provider');
 			},
 		
 			// Callback for display left panel services list
 			showChannels: function (options) {
 				$('#channels').html(options);
 				self.setChannelButtons();
+				self.setHover('#channels');
 			},
 
 			// Callback for display right panel bouquet list
@@ -67,12 +74,14 @@
 					$('#bql').children().first().data('sref'),
 					self.showBouquetChannels
 				);
+				self.setHover('#bql');
 			},
 
 			// Callback for display right panel services list
 			showBouquetChannels: function (options) {
 				$('#bqs').html(options);
 				self.setBouquetChannelButtons();
+				self.setHover('#bqs');
 			},
 
 			// Build ref string for selecting services list
@@ -201,7 +210,7 @@
 					$.each( s, function ( key, val ) {
 						var sref = val['servicereference'];
 						var name = val['servicename'];
-						options += '<li class="ui-widget-content" data-sref="'+encodeURIComponent(sref)+'"><div class="handle"><span class="ui-icon ui-icon-carat-2-n-s"></span></div>'+name+'</li>';
+						options += '<li class="ui-widget-content" data-sref="'+encodeURIComponent(sref)+'"><div class="handle"><span class="ui-icon ui-icon-arrow-2-n-s"></span></div>'+name+'</li>';
 					});
 					if (callback) {
 						callback(options);
@@ -243,7 +252,7 @@
 						var sref = val['servicereference']
 						var name = val['servicename']
 						var m = (val['ismarker'] == 1) ? '<span style="float:right">(M)</span>' : '';
-						options += '<li class="ui-widget-content" data-ismarker="'+val['ismarker']+'" data-sref="'+encodeURIComponent(sref)+'"><div class="handle"><span class="ui-icon ui-icon-carat-2-n-s"></span></div>'+name+m+'</li>';
+						options += '<li class="ui-widget-content" data-ismarker="'+val['ismarker']+'" data-sref="'+encodeURIComponent(sref)+'"><div class="handle"><span class="ui-icon ui-icon-arrow-2-n-s"></span></div>'+name+m+'</li>';
 					});
 					if (callback) {
 						callback(options);
@@ -587,6 +596,8 @@
 				self.Mode = 0;
 				self.cType = 1;
 				self.sType = { '1': '[SD]', '16': '[SD4]', '19': '[HD]', '1F': '[UHD]', 'D3': '[OPT]' };
+				self.hovercls = getHoverCls();
+				self.activecls = getActiveCls();
 
 				// Styled button sets; #tb1, #tb2 in left pane, #tb3 in right pane
 				$('#tb1').buttonset();
@@ -614,7 +625,7 @@
 						$(ui.selected).addClass('ui-selected').siblings().removeClass('ui-selected');
 						self.changeProvider($(ui.selected).data('sref'), self.showChannels);
 					},classes: {
-						"ui-selected": "ui-state-active" 
+						"ui-selected": self.activecls 
 					}
 				});
 
@@ -622,7 +633,7 @@
 				$('#channels').selectable({
 					stop: self.setChannelButtons
 					,classes: {
-						"ui-selected": "ui-state-active" 
+						"ui-selected": self.activecls 
 					}
 				});
 
@@ -643,7 +654,7 @@
 						$(ui.selected).addClass('ui-selected').siblings().removeClass('ui-selected');
 						self.changeBouquet($(ui.selected).data('sref'), self.showBouquetChannels);
 					},classes: {
-						"ui-selected": "ui-state-active" 
+						"ui-selected": self.activecls 
 					}
 				});
 
@@ -662,7 +673,7 @@
 					cancel: '.handle',
 					stop: self.setBouquetChannelButtons,
 					classes: {
-						"ui-selected": "ui-state-active" 
+						"ui-selected": self.activecls 
 					}
 				});
 
@@ -705,7 +716,13 @@
 
 				// Initially build all lists.
 				self.setTvRadioMode(3);
-			},
+			},setHover : function(obj)
+			{
+				$(obj + ' li').hover(
+					function(){ $(this).addClass(self.hovercls) },
+					function(){ $(this).removeClass(self.hovercls) }
+				)
+			}
 		 }
 	};
 

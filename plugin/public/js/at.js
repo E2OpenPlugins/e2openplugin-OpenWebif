@@ -1,6 +1,6 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 1.9
+//* Version 2.0
 //******************************************************************************
 //* Copyright (C) 2014-2016 Joerg Bleyel
 //* Copyright (C) 2014-2016 E2OpenPlugins
@@ -15,6 +15,7 @@
 //* V 1.7 - fix autotimer filter
 //* V 1.8 - use textfield for offset
 //* V 1.9 - error handling
+//* V 2.0 - theme support
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -343,8 +344,9 @@ function Parse() {
 		if(item) {
 			FillAT(item.data('id'));
 			item.addClass('ui-selected');
-			item.addClass('ui-state-active');
+			item.addClass(getActiveCls());
 		}
+		setHover('#atlist li');
 	}
 }
 
@@ -1037,7 +1039,7 @@ function reloadAT()
 			});
 		},
 		classes: {
-			"ui-selected": "ui-state-active"
+			"ui-selected": getActiveCls()
 		}
 	});
 }
