@@ -498,8 +498,30 @@ function addAutoTimerEvent(sRef, sname, title ,begin, end) {
 		$("#modaldialog").html('');
 }
 
-function delTimerEvent(obj) {
-	// TODO: get timerinfo from event
+function delTimerEvent(sRef,eventId) {
+
+	var url="/api/event?sref=" + sRef + "&idev=" + eventId;
+	$.ajax({
+		url: url,
+		dataType: "json",
+		success: function(result) { 
+			if (typeof result !== 'undefined' && typeof result.event !== 'undefined') {
+				// FIXME : this will not work if the timer is modified
+				var begin = result.event.begin - 60 * result.event.recording_margin_before;
+				var end = result.event.begin + result.event.duration + 60 * result.event.recording_margin_after;
+				var t = decodeURIComponent(result.event.title);
+				if (confirm(tstr_del_timer + ": " + t) === true) {
+					webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end, 
+						function() { $('.event[data-id='+eventId+'] .timer').remove(); } 
+					);
+				}
+			}
+			else
+				alert(tstr_event_not_found);
+		},
+		error: function(data) {}
+	});
+
 }
 
 function toggleTimerStatus(sRef, begin, end) {
@@ -1409,8 +1431,7 @@ function ShowTimers(timers)
 {
 	if (timers.length > 0)
 	{
-		
-		$( "tbody" ).each(function( index ) {
+		$( ".ETV tbody" ).each(function( index ) {
 			var parts=$( this ).data('id').split(';');
 			if (parts.length == 3)
 			{
@@ -1610,13 +1631,18 @@ var MLHelper;
 
 })();
 
+function reversetheme()
+{
+	return (theme=='pepper-grinder' || theme=='vader' || theme == 'smoothness' || theme == 'le-frog' || theme == 'mint-choc' || theme == 'humanity' || theme == 'eggplant' || theme == 'dot-luv' || theme == 'black-tie' );
+}
+
 function getHoverCls()
 {
-	return (theme=='pepper-grinder') ? 'ui-state-active':'ui-state-hover';
+	return reversetheme() ? 'ui-state-active':'ui-state-hover';
 }
 function getActiveCls()
 {
-	return (theme=='pepper-grinder') ? 'ui-state-hover':'ui-state-active';
+	return reversetheme() ? 'ui-state-hover':'ui-state-active';
 }
 
 function setHover(obj)

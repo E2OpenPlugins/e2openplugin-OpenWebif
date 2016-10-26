@@ -310,10 +310,9 @@ function initValues () {
 	$("#channels").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "100%"});
 	$("#channels").chosen().change( function() {$("#channels").val($(this).val());er_bqchchanged = true;});
 
-	console.log(theme);
-	if (theme == 'eggplant')
+	$(".chosen-container .chosen-drop").addClass('ui-widget-content');
+	if (theme == 'eggplant' || theme == 'vader')
 	{
-		$(".chosen-container .chosen-drop").addClass('ui-widget-content');
 		$(".chosen-container .chosen-drop").css('background-image','none');
 	}
 }

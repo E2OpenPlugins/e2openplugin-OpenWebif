@@ -29,6 +29,13 @@
 	redmond -> original
 */
 
+/* 
+	TODO :
+	* remove extra color for MEPG Timer
+	* optimize marker
+	* optimize config color
+*/ 
+
 #if not $theme
 	#set $theme="original"
 #end if
@@ -38,45 +45,22 @@
 #container { margin-right:0px;}
 #header { margin-right:15px;}
 #content { padding-right:30px;}
-
 .station { color:#fff; background-color: #007fff;}
-#header {/* background : #007fff; */}
 
 #end if
 
-#if $theme == "excite-bike"
+#if $theme == "excite-bike" or  $theme == "pepper-grinder" or $theme == "hot-sneaks"
 .ui-widget-header #menucontainer a { color: initial; }
 .ui-widget-header #remotecontainer a { color: initial; }
 #end if
 
-#if $theme == "pepper-grinder"
-.ui-widget-header #menucontainer a { color: initial; }
-.ui-widget-header #remotecontainer a { color: initial; }
-.ui-widget-header #accordion a { /*color: inherit;*/ }
-#end if
-
-#if $theme == "south-street"
+#if $theme == "south-street" or $theme == "smoothness" or $theme == "cupertino" or $theme == "mint-choc" or $theme == "ui-darkness" or $theme == "vader" or $theme == "eggplant" or $theme == "start" or $theme == "le-frog" or $theme == "dark-hive" or $theme == "humanity" or $theme == "flick" or $theme == "sunny"
 .tm_row{ background-image: none!important;} 
-#end if
-
-#if $theme == "smoothness"
-.tm_row{ background-image: none!important;} 
-#end if
-
-#if $theme == "flick"
-body{ background-image: none!important;} 
+body { background-image:none !important;}
 #end if
 
 #if $theme == "eggplant"
-body{ background-image: none!important;} 
-.tm_row{ background-image: none!important;} 
 .marker { color: #4297d7;}
-
-#end if
-
-#if $theme == "hot-sneaks"
-.ui-widget-header #menucontainer a { color: initial; }
-.ui-widget-header #remotecontainer a { color: initial; }
 #end if
 
 #if $theme == "vader"
@@ -84,41 +68,27 @@ body{ background-image: none!important;}
 .cht .fr { background-color: #404040; }
 .marker { color: #888; }
 
-.sellist li.ui-selected {
-	border: 1px solid #dddddd;
-	color: #FFF;
-}
-
 #end if
 
 #if $theme == "sunny"
 .ui-widget-header a { color : #000;}
-body {background-image:none !important;}
 #configuration { color : #000;}
 .ui-widget-content { background-image:none !important;}
 #end if
 
 #if $theme == "start"
 .ui-widget-header a { color : #000;}
-
 .station { color:#fff; background-color: #2191c0;}
 #tbl1 .border { border-right: 1px solid #4297d7;}
 #tbl1 .timer { color: #f00; }
 #tbl1 .timer.disabled { color: #f80; }
-.tm_row{ background-image: none!important;} 
-
 #end if
 
 #if $theme == "le-frog"
-
-body {background-image:none !important;}
 .marker { color: #ccc; }
-.tm_row{ background-image: none!important;} 
-
 #end if
 
 #if $theme == "dark-hive"
-body {background-image:none !important;}
 .marker { color: #ccc; }
 .cht .fr { 
 	background-color:rgba(38, 179, 247, 0.3);
@@ -128,17 +98,11 @@ body {background-image:none !important;}
 #tbl1 .timer { color: #f00; }
 #tbl1 .timer.disabled { color: #f80; }
 
-.tm_row{ background-image: none!important;} 
-
 #end if
 
 #if $theme == "ui-darkness" or $theme == "vader"
-body {background-image:none !important;}
-
 #tbl1 .timer { color: #f00; }
 #tbl1 .timer.disabled { color: #f80; }
-.tm_row{ background-image: none!important;} 
-
 #end if
 
 #if $theme == "ui-darkness" 
@@ -147,17 +111,10 @@ body {background-image:none !important;}
 
 #if $theme == "blitzer"
 .ui-widget-header a { color:#000;}
-
 #end if
-
 
 #if $theme == "black-tie"
 .ui-widget-header a { color:#000;}
-.tm_row{ background-image: none!important;} 
-#end if
-
-#if $theme == "cupertino"
-body {background-image:none !important;}
 .tm_row{ background-image: none!important;} 
 #end if
 
@@ -165,16 +122,9 @@ body {background-image:none !important;}
 .ui-widget-content { background-image:none !important;}
 #end if
 
-#if $theme == "mint-choc"
-body { background-image:none !important;}
-.tm_row{ background-image: none!important;} 
-#end if
-
 #if $theme == "humanity"
-body { background-image:none !important;}
 .ui-widget-header a { color:#000;}
 #configuration { color : #000;}
-.tm_row{ background-image: none!important;} 
 #end if
 
 #if $theme == "original"

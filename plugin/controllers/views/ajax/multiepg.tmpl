@@ -25,14 +25,14 @@
 
 <div id="navepg">
 #for $slot in range(0,7)
-	<div class="float plus ui-state-default #if $slot==$day then 'ui-state-active' else '' #" js:day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div>
+	<div class="float plus ui-state-default #if $slot==$day then 'ui-state-active' else '' #" data-day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div>
 #end for
 <div id="compressmepg" onclick="CompressMEPG();"><i id="compressmepgi" class="fa fa-compress link" aria-hidden="true"></i></div>
 <div id="refreshmepg" onclick="RefreshMEPG();"><i id="refreshmepgi" class="fa fa-refresh link" aria-hidden="true"></i></div>
 	<br clear="all">
 
 #for $bq in $bouquets
-	<div class="float bq ui-state-default #if $bq[0]==$bref then 'ui-state-active' else '' #" js:ref="$quote($bq[0])">$bq[1]</div>
+	<div class="float bq ui-state-default #if $bq[0]==$bref then 'ui-state-active' else '' #" data-ref="$quote($bq[0])">$bq[1]</div>
 #end for
 <br clear="all">
 </div>
@@ -100,19 +100,19 @@ function fixTableHeight() {
 fixTableHeight();
 \$(window).resize(function(){ fixTableHeight(); });
 \$(".bq").click(function() {
-	var id = \$(this).attr("js:ref");
+	var id = \$(this).data("ref");
 	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref='+id);
 	if(typeof(Storage) !== "undefined") { localStorage.lastmbq = id; }
 });
 \$(".event").click(function() {
-	var id = \$(this).attr("js:id");
-	var ref = \$(this).attr("js:ref");
+	var id = \$(this).data("id");
+	var ref = \$(this).data("ref");
 	\$("#eventdescription").load('ajax/event?idev='+id+'&sref='+escape(ref), function() { 
 		\$("#eventdescription").show(200).draggable( { handle: ".handle" } );
 	});
 });
 \$(".plus").click(function() {
-	var day = \$(this).attr("js:day");
+	var day = \$(this).data("day");
 	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day='+day);
 });
 if(!timeredit_initialized)

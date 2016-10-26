@@ -79,7 +79,7 @@ table { font-size:12px; font-family: Verdana,Arial,sans-serif;}
 			<a class="tb addtimer" href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']">
 			<i class="fa fa-timerplus"></i>
 			</a>
-			<a class="tb deltimer" href="#" onclick="delTimerEvent(this);return false;" title="$tstrings['delete_timer']">
+			<a class="tb deltimer" href="#" onclick="delTimerEvent('$sref',$event.id);return false;" title="$tstrings['delete_timer']">
 			<i class="fa fa-timertrash"></i>
 			</a>
 	</td>
@@ -134,12 +134,9 @@ var reloadTimers = true;
 $(function() {
 	$('#editTimerForm').load('ajax/edittimer');
 	if (t.length > 0) {
-		// FIXME 
-		$( "tbody" ).first(function() {
-			if($( this ).data('id')) {
-				ShowTimers(t);
-			}
-		});
+		var x = $(".ETV tbody");
+		if (x != undefined)
+			ShowTimers(t);
 	}
 });
 

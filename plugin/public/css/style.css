@@ -538,7 +538,7 @@ font-size:16px;font-weight:bold;opacity:0.3;
 }
 
 .sellist { list-style-type: none; margin: 0; padding: 0; }
-.sellist li { margin: 3px; padding: 0.4em; font-size: 1em; height: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor:pointer;}
+.sellist li { margin: 3px; padding: 0.4em; font-size: 1em; height: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor:pointer; border:1px solid transparent}
 #atlist li { font-size: 1.1em;}
 
 .tbl { display:table; }
