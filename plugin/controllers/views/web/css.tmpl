@@ -63,20 +63,27 @@
 body { background-image:none !important;}
 #end if
 
-#if $theme == "eggplant"
-.marker { color: #4297d7;}
+#if $theme == "vader" or $theme == "dark-hive" or $theme == "dot-luv" or $theme == "eggplant" or $theme == "le-frog" or $theme == "mint-choc" or $theme == "ui-darkness"
+.marker { color: #FFF;}
+#end if
+	
+#if $theme == "humanity" or $theme == "overcast" or $theme == "pepper-grinder"
+.marker { color: #000;}
+#end if
+
+#if $theme == "swanky-purse"
+.marker { color: #efec9f;}
 #end if
 
 #if $theme == "vader"
 #content_main { background-color: #000;border: 2px solid #888; background-image:none !important; }
 .cht .fr { background-color: #404040; }
-.marker { color: #888; }
-
 #end if
 
 #if $theme == "sunny"
 .ui-widget-header a { color : #000;}
 .ui-widget-content { background-image:none !important;}
+#header span.ui-state-active {color:darkblue;}
 #end if
 
 #if $theme == "start"
@@ -85,22 +92,13 @@ body { background-image:none !important;}
 #tbl1 .border { border-right: 1px solid #4297d7;}
 #end if
 
-#if $theme == "le-frog"
-.marker { color: #ccc; }
-#end if
-
 #if $theme == "dark-hive"
-.marker { color: #ccc; }
 .cht .fr { 
 	background-color:rgba(38, 179, 247, 0.3);
 }
 
 #tbl1 .border { border-right: 1px solid #4297d7;}
 
-#end if
-
-#if $theme == "ui-darkness" 
-.marker { color: #f39814; }
 #end if
 
 #if $theme == "blitzer"
