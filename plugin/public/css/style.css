@@ -121,7 +121,6 @@ FIXME : complete reorg header
 	font-size: 13px;
 	display: block;
 	float:left;
-	color: #ffffff;
 	height: 24px;
 	width: 80%;
 	margin-left: 5px;
@@ -492,6 +491,11 @@ FIXME : complete reorg header
 	cursor: default;
 }
 
+#configuration tr
+{
+	line-height: 2em;
+}
+
 html, body
 {
 	text-align: center;
@@ -544,6 +548,8 @@ font-size:16px;font-weight:bold;opacity:0.3;
 .tbl { display:table; }
 .tbl div { display:table-row; }
 .tbl div div { display:table-cell; }
+#tbl1 .timer { color :#eb0208};
+#tbl1 .timer.disabled { color: #ffea0e; }
 
 .osdch {font-weight:bold;text-decoration:none;}
 

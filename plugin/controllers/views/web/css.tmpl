@@ -40,6 +40,10 @@
 	#set $theme="original"
 #end if
 
+#if $theme == "base" or  $theme == "swanky-purse"
+#osd a {color:initial;}
+#end if
+
 #if $theme == "base"
 /* fix header problme */
 #container { margin-right:0px;}
@@ -72,7 +76,6 @@ body { background-image:none !important;}
 
 #if $theme == "sunny"
 .ui-widget-header a { color : #000;}
-#configuration { color : #000;}
 .ui-widget-content { background-image:none !important;}
 #end if
 
@@ -80,8 +83,6 @@ body { background-image:none !important;}
 .ui-widget-header a { color : #000;}
 .station { color:#fff; background-color: #2191c0;}
 #tbl1 .border { border-right: 1px solid #4297d7;}
-#tbl1 .timer { color: #f00; }
-#tbl1 .timer.disabled { color: #f80; }
 #end if
 
 #if $theme == "le-frog"
@@ -95,14 +96,7 @@ body { background-image:none !important;}
 }
 
 #tbl1 .border { border-right: 1px solid #4297d7;}
-#tbl1 .timer { color: #f00; }
-#tbl1 .timer.disabled { color: #f80; }
 
-#end if
-
-#if $theme == "ui-darkness" or $theme == "vader"
-#tbl1 .timer { color: #f00; }
-#tbl1 .timer.disabled { color: #f80; }
 #end if
 
 #if $theme == "ui-darkness" 
@@ -124,7 +118,6 @@ body { background-image:none !important;}
 
 #if $theme == "humanity"
 .ui-widget-header a { color:#000;}
-#configuration { color : #000;}
 #end if
 
 #if $theme == "original"
@@ -255,19 +248,15 @@ table .tcurrent
 	color:#7198E1;
 }
 
+#osd { color: #ffffff;}
 .osdch { color:#EA7409;}
-
 .station { color:#fff; background-color: #1c47ae;}
+
 #tbl1 .title { color:#061c37;}
 #tbl1 .desc { color:#176093;}
 #tbl1 .border { border-right: 1px solid #4297d7;}
-#tbl1 .timer { color: #f00; }
-#tbl1 .timer.disabled { color: #f80; }
 
-#header span.ui-state-active 
-{
-	color:#67A0F5;
-}
+#header span.ui-state-active {color:#67A0F5;}
 
 .tm_row { background-color: #F0F7FC;border: 1px solid #F0F7FC;}
 .tm_title {color: #176093;}
@@ -276,7 +265,10 @@ table .tcurrent
 .tm_row { background-image:none !important; }
 .tm_row:hover { border: 1px dotted #4297D7;}
 
+
 #else
+
+#leftmenu_main ul li a:hover { background-color: rgba(0,0,0,.1); }
 
 #tbl1 .border { border-right: 1px solid;}
 
