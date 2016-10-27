@@ -78,6 +78,19 @@ def getZapStream():
 		"zapstream": config.OpenWebif.webcache.zapstream.value
 	}
 
+def setShowChPicon(value):
+	config.OpenWebif.webcache.showchannelpicon.value = value
+	config.OpenWebif.webcache.showchannelpicon.save()
+	return {
+		"result": True
+	}
+
+def getShowChPicon():
+	return {
+		"result": True,
+		"showchannelpicon": config.OpenWebif.webcache.showchannelpicon.value
+	}
+
 def getShowName():
 	return {
 		"result": True,

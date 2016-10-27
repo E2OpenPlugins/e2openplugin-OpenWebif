@@ -50,6 +50,7 @@ config.OpenWebif.webcache.zapstream = ConfigYesNo(default = False)
 config.OpenWebif.webcache.epg_desc_search = ConfigYesNo(default = False)
 config.OpenWebif.webcache.theme = ConfigSelection(default = 'original', choices = THEMES )
 config.OpenWebif.webcache.moviesort = ConfigSelection(default = 'name', choices = ['','name','named','date','dated'] )
+config.OpenWebif.webcache.showchannelpicon = ConfigYesNo(default = True)
 
 # HTTPS
 config.OpenWebif.https_enabled = ConfigYesNo(default=False)

@@ -15,7 +15,7 @@ from models.services import getCurrentService, getBouquets, getChannels, getSate
 from models.info import getInfo, getPublicPath, getOpenWebifVer, getTranscodingSupport, getLanguage
 from models.movies import getMovieList
 from models.timers import getTimers
-from models.config import getConfigs, getConfigsSections, getZapStream
+from models.config import getConfigs, getConfigsSections, getZapStream, getShowChPicon
 from base import BaseController
 from time import mktime, localtime
 from models.locations import getLocations
@@ -64,6 +64,7 @@ class AjaxController(BaseController):
 		channels = getChannels(idbouquet, stype)
 		channels['transcoding'] = getTranscodingSupport()
 		channels['type'] = stype
+		channels['showchannelpicon'] = getShowChPicon()['showchannelpicon']
 		return channels
 
 	def P_eventdescription(self, request):
@@ -206,6 +207,7 @@ class AjaxController(BaseController):
 			ret['themes'] = []
 			ret['theme'] = 'original'
 		ret['zapstream'] = getZapStream()['zapstream']
+		ret['showchannelpicon'] = getShowChPicon()['showchannelpicon']
 		return ret
 
 	def P_multiepg(self, request):

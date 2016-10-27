@@ -338,10 +338,11 @@ def getChannels(idbouquet, stype):
 	services = serviceHandler.list(eServiceReference(idbouquet))
 	channels = services and services.getContent("SN", True)
 	for channel in channels:
+		chan = {}
+		chan['ref'] = quote(channel[0], safe=' ~@%#$&()*!+=:;,.?/\'')
+		chan['name'] = filterName(channel[1])
 		if not int(channel[0].split(":")[1]) & 64:
-			chan = {}
-			chan['ref'] = quote(channel[0], safe=' ~@%#$&()*!+=:;,.?/\'')
-			chan['name'] = filterName(channel[1])
+			chan['picon'] = getPicon(chan['ref'])
 			if config.OpenWebif.parentalenabled.value and config.ParentalControl.configured.value and config.ParentalControl.servicepinactive.value:
 				chan['protection'] = getProtection(channel[0])
 			else:
@@ -363,7 +364,7 @@ def getChannels(idbouquet, stype):
 				chan['next_ev_id'] = nextevent[0][3]
 				chan['next_idp'] = "nextd" + str(idp)
 				idp += 1
-			ret.append(chan)
+		ret.append(chan)
 	return { "channels": ret }
 
 def getServices(sRef, showAll = True, showHidden = False):

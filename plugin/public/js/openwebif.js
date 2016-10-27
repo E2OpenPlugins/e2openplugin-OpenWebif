@@ -625,7 +625,49 @@ function getStatusInfo() {
 		}
 // TODO: remove inline style
 
-		var stream = "";
+		var sref = statusinfo['currservice_serviceref'];
+		var station = statusinfo['currservice_station'];
+		
+		if (station) {
+			var stream = "<div id='osdicon'>";
+			var streamtitle = tstr_stream + ": " + station + "'><i class='fa fa-desktop'></i></a>";
+			var streamtitletrans = tstr_stream + " (" + tstr_transcoded + "): " + station + "'><i class='fa fa-mobile'></i></a>";
+			var _osdch = "<span class='osdch'>" + station + "</span></a>&nbsp;&nbsp;";
+			var _beginend = _osdch + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;";
+			
+			if ((sref.indexOf("1:0:1") !== -1) || (sref.indexOf("1:134:1") !== -1)) {
+				if (statusinfo['transcoding']) {
+					stream += "<a href='#' onclick=\"jumper8001('" + sref + "', '" + station + "')\"; title='" + streamtitle;
+					stream += "<a href='#' onclick=\"jumper8002('" + sref + "', '" + station + "')\"; title='" + streamtitletrans;
+				} else {
+					stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "' title='" + streamtitle;
+				}
+				stream +="</div>";
+				$("#osd").html(stream + "<a href='#' onClick='load_maincontent(\"ajax/tv\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
+			} else if ((sref.indexOf("1:0:2") !== -1) || (sref.indexOf("1:134:2") !== -1)) {
+				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "' title='" + streamtitle;
+				stream +="</div>";
+				$("#osd").html(stream + "<a href='#' onClick='load_maincontent(\"ajax/radio\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
+			} else if (sref.indexOf("1:0:0") !== -1) {
+				if (statusinfo['transcoding']) {
+					stream += "<a href='#' onclick=\"jumper80('" + statusinfo['currservice_filename'] + "')\"; title='" + streamtitle;
+					stream += "<a href='#' onclick=\"jumper8003('" + statusinfo['currservice_filename'] + "')\"; title='" + streamtitletrans;
+				} else {
+					stream += "<a target='_blank' href='/web/ts.m3u?file=" + statusinfo['currservice_filename'] + "' title='" + streamtitle;
+				}
+				stream +="</div>";
+				$("#osd").html(stream + _beginend + statusinfo['currservice_name']);
+			} else {
+				$("#osd").html(_beginend + statusinfo['currservice_name']);
+			}
+			$("#osd_bottom").html(statusinfo['currservice_description']);
+		} else {
+			$("#osd").html(tstr_nothing_play);
+			$("#osd_bottom").html('');
+		}
+		
+		/*
+		
 		if ((statusinfo['currservice_station']) && ((statusinfo['currservice_serviceref'].indexOf("1:0:1") !== -1) || (statusinfo['currservice_serviceref'].indexOf("1:134:1") !== -1))) {
 			stream = "<div id='osdicon'>";
 			if (statusinfo['transcoding']) {
@@ -661,6 +703,7 @@ function getStatusInfo() {
 			$("#osd").html(tstr_nothing_play);
 			$("#osd_bottom").html('');
 		}
+		*/
 		
 // TODO: remove images
 		var status = "";
@@ -773,6 +816,13 @@ $(function() {
 	$("input[name=zapstream]").click(function(evt) {
 		$('input[name=zapstream]').attr('checked', evt.currentTarget.checked);
 		webapi_execute("/api/zapstream?checked=" + evt.currentTarget.checked);
+	});
+});
+
+$(function() {
+	$("input[name=showchannelpicon]").click(function(evt) {
+		$('input[name=showchannelpicon]').attr('checked', evt.currentTarget.checked);
+		webapi_execute("/api/showchannelpicon?checked=" + evt.currentTarget.checked);
 	});
 });
 

@@ -22,7 +22,7 @@ from models.locations import getLocations, getCurrentLocation, addLocation, remo
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer, getPowerTimer, setPowerTimer, getVPSChannels
 from models.message import sendMessage, getMessageAnswer
 from models.movies import getMovieList, removeMovie, getMovieTags, moveMovie, renameMovie, getAllMovies
-from models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot, setZapStream, saveConfig, getZapStream, setEPGSearchType
+from models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, setRemoteGrabScreenshot, setZapStream, saveConfig, getZapStream, setEPGSearchType, setShowChPicon
 from models.stream import getStream, getTS, getStreamSubservices
 from models.servicelist import reloadServicesLists
 from models.mediaplayer import mediaPlayerAdd, mediaPlayerRemove, mediaPlayerPlay, mediaPlayerCommand, mediaPlayerCurrent, mediaPlayerList, mediaPlayerLoad, mediaPlayerSave, mediaPlayerFindFile
@@ -959,6 +959,12 @@ class WebController(BaseController):
 		if res:
 			return res
 		return setZapStream(request.args["checked"][0] == "true")
+
+	def P_showchannelpicon(self, request):
+		res = self.testMandatoryArguments(request, ["checked"])
+		if res:
+			return res
+		return setShowChPicon(request.args["checked"][0] == "true")
 
 	def P_epgsearchtype(self, request):
 		res = self.testMandatoryArguments(request, ["checked"])

@@ -36,11 +36,17 @@
 			</select>
 				</td></tr>
 				<tr><td>$tstrings['zapbeforestream']</td><td>
-				#set $zapstream = 1
 				#if $zapstream
 				<input type="checkbox" name="zapstream" checked="checked"/>
 				#else
 				<input type="checkbox" name="zapstream"/>
+				#end if
+				</td></tr>
+				<tr><td>Show Picon in channel list</td><td>
+				#if $showchannelpicon
+				<input type="checkbox" name="showchannelpicon" checked="checked"/>
+				#else
+				<input type="checkbox" name="showchannelpicon"/>
 				#end if
 				</td></tr>
 				<tr><td>Spinner</td><td>
@@ -103,10 +109,8 @@ $(function() {
 	setHover('#slist li');
 	$('#fsspinner > label').css('padding-left','10px');
 	$('#fsspinner > label').css('padding-right','10px');
-	
 	$("#themesbtn").addClass(getActiveCls());
-	
-	
+
 });
 	function load_theme() {
 		$("#scontent").html('');

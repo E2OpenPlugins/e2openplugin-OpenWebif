@@ -1,79 +1,113 @@
 #for $channel in $channels
 #from Plugins.Extensions.OpenWebif.local import tstrings
-<div class="cht">
+<style>
+
+.ccht {width:100%;margin:0;padding:0;font-size:13px;}
+.ccht > div,.tt {display:table;width:100%;}
+.ccht .a {display:table-cell;width:120px;}
+.ccht .b {display:table-cell;font-style:italic;}
+.ccht .c {display:table-cell;width:50%;}
+//.ccht .tcr {display:table-cell;width:20%;text-align: right;}
+.ccht .tcld { display: none;}
+.ccht .fr { font-size:16px;height:26px;background-color:rgba(0,0,0,0.1);}
+.ccht .ui-progressbar { height:0.4em; width: 50%; margin: 2px 0 4px; }
+.ccht .a a {margin-right:3px;}
+.pic { width:60px; }
+
+</style>
+
+<div class="ccht">
 	<div class="fr">
-		<div class="tcl">
-		#set $name =  $channel.name.replace("'", r"\'")
-		#if $channel.protection == "0"
-		<a href="#" onclick="zapChannel('$channel.ref', '$name'); return false" title="$tstrings['zap_to'] $channel.name">$channel.name</a><br />
-		#else
-		<a href="#" onclick="return false" title="$tstrings['locked']">$channel.name</a><br />
+		<div class="a">
+		#if $channel.has_key('protection') 
+			#if $channel.protection == "0"
+			#if $type == "radio"
+			<a href="#" onclick="addTimer('','$channel.ref','$channel.name')" title="$tstrings['add_timer']"><i class="fa fa-clock-o"></i></a>
+			#end if
+			<a href="#" onclick="open_epg_dialog('$channel.ref','$channel.name')" title="$tstrings['show_epg_for'] $channel.name"><i class="fa fa-list-alt"></i></a>
+			#if $transcoding
+			<a href="#" onclick="jumper8001('$channel.ref', '$channel.name');" title="$tstrings['stream']: $channel.name"><i class="fa fa-desktop"></i></a>
+			<a href="#" onclick="jumper8002('$channel.ref', '$channel.name');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel.name"><i class="fa fa-mobile"></i></a>
+			#else
+			<a target="_blank" href='web/stream.m3u?ref=$channel.ref&name=$channel.name' title="$tstrings['stream'] $channel.name"><i class="fa fa-desktop"></i></a>
+			#end if
+			#else
+			<a target="_blank" href='#' title="$tstrings['locked']"><i class="fa fa-lock"></i></a>
+			#end if
 		#end if
 		</div>
-
-		<div class="tcr">
-		#if $channel.protection == "0"
-		#if $type == "radio"
-		<a href="#" onclick="addTimer('','$channel.ref','$channel.name')" title="$tstrings['add_timer']"><i class="fa fa-clock-o"></i></a>
-		#end if
-		<a href="#" onclick="open_epg_dialog('$channel.ref','$channel.name')" title="$tstrings['show_epg_for'] $channel.name"><i class="fa fa-list-alt"></i></a>
-		#if $transcoding
-		<a href="#" onclick="jumper8001('$channel.ref', '$channel.name');" title="$tstrings['stream']: $channel.name"><i class="fa fa-desktop"></i></a>
-		<a href="#" onclick="jumper8002('$channel.ref', '$channel.name');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel.name"><i class="fa fa-mobile"></i></a>
-		#else
-		<a target="_blank" href='web/stream.m3u?ref=$channel.ref&name=$channel.name' title="$tstrings['stream'] $channel.name"><i class="fa fa-desktop"></i></a>
-		#end if
-		#else
-		<a target="_blank" href='#' title="$tstrings['locked']"><i class="fa fa-lock"></i></a>
-		#end if
+	
+		<div class="b">
+			#set $name =  $channel.name.replace("'", r"\'")
+			#if $channel.has_key('protection') 
+				#if $channel.protection == "0"
+				<a href="#" onclick="zapChannel('$channel.ref', '$name'); return false" title="$tstrings['zap_to'] $channel.name">$channel.name</a>
+				#else
+				<a href="#" onclick="return false" title="$tstrings['locked']">$channel.name</a>
+				#end if
+			#else
+				<span>$channel.name</span>
+			#end if
 		</div>
 	</div>
+	
+#if $channel.has_key('protection') and $channel.has_key('now_title') and $channel.protection == "0"
 
-#if $channel.has_key('now_title') and $channel.protection == "0"
-
-	<div>
-		<div class="tcl">
-		$channel.now_begin - $channel.now_end &nbsp;&nbsp;&nbsp;
-		<a href='#' onClick="toggle_chan_des('$channel.now_ev_id', '$channel.ref', '$channel.now_idp'); return false" title="$channel.now_title">$channel.now_title</a>
-		</div>
-		<div class="tcr">
-		+$channel.now_left min
-		</div>
-	</div>
 
 	<div>
-		<div class="tcl">
-			<div class="tcld ui-state-default" id="$channel.now_idp">$tstrings['no_description_available']</div>
+		#if $showchannelpicon
+		<div style="display:table-cell;width:120px;vertical-align:middle;">
+			<img class="pic" src="$channel.picon" title="">
 		</div>
-		<div class="tcr"></div>
-	</div>
-
-	<div>
-		<div class="tcl">
-			<div class="ui-progressbar ui-corner-all ui-widget ui-widget-content">
-				<div class="ui-progressbar-value ui-corner-left ui-widget-header" style="width: ${channel.progress}%;"></div>
+		#else
+		<div style="display:none;">
+		</div>
+		#end if
+		<div style="display:table-cell">
+		<div class="tt">
+			<div class="a">
+				$channel.now_begin - $channel.now_end &nbsp;&nbsp;&nbsp;
+			</div>
+			<div class="b">
+				<a href='#' onClick="toggle_chan_des('$channel.now_ev_id', '$channel.ref', '$channel.now_idp'); return false" title="$channel.now_title">$channel.now_title</a>&nbsp;(+$channel.now_left min)
 			</div>
 		</div>
-		<div class="tcr"></div>
+
+		<div class="tt">
+			<div class="c">
+				<div class="tcld ui-state-default" id="$channel.now_idp">$tstrings['no_description_available']</div>
+			</div>
+		</div>
+
+		<div class="tt">
+			<div class="c">
+				<div class="ui-progressbar ui-corner-all ui-widget ui-widget-content">
+					<div class="ui-progressbar-value ui-corner-left ui-widget-header" style="width: ${channel.progress}%;"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="tt">
+			<div class="a">
+				$channel.next_begin - $channel.next_end &nbsp;&nbsp;&nbsp;
+			</div>
+			<div class="b">
+				<a href='#' onClick="toggle_chan_des('$channel.next_ev_id', '$channel.ref', '$channel.next_idp'); return false" title="$channel.next_title">$channel.next_title</a>&nbsp;($channel.next_duration min)
+			</div>
+		</div>
+
+		<div class="tt">
+			<div class="c">
+				<div class="tcld ui-state-default" id="$channel.next_idp">$tstrings['no_description_available']</div>
+			</div>
+		</div>
+	
+		</div>
 	</div>
 
-	<div>
-		<div class="tcl">
-		$channel.next_begin - $channel.next_end &nbsp;&nbsp;&nbsp;
-		<a href='#' onClick="toggle_chan_des('$channel.next_ev_id', '$channel.ref', '$channel.next_idp'); return false" title="$channel.next_title">$channel.next_title</a>
-		</div>
-		<div class="tcr">
-		$channel.next_duration min
-		</div>
-	</div>
-
-	<div>
-		<div class="tcl">
-			<div class="tcld ui-state-default" id="$channel.next_idp">$tstrings['no_description_available']</div>
-		</div>
-		<div class="tcr"></div>
-	</div>
+	
 #end if
+
 </div>
 #end for
 
