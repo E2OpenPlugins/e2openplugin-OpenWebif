@@ -118,6 +118,13 @@ function initValues () {
 	$("#channels").chosen().change( function() {$("#channels").val($(this).val());});
 	$("#tags").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
 	$("#tags").chosen().change( function() {$("#tags").val($(this).val());});
+	
+	$(".chosen-container .chosen-drop").addClass('ui-widget-content');
+	if (theme == 'eggplant' || theme == 'vader')
+	{
+		$(".chosen-container .chosen-drop").css('background-image','none');
+	}
+	
 }
 
 function AddFilter(a,b,c)
