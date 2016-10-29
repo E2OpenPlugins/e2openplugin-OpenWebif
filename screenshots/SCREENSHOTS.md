@@ -1,28 +1,9 @@
-
 # OpenWebif Screenshots
 
 ## Main Screen
 
-![](original-main.jpg)
-![](base-main.jpg)
-![](black-tie-main.jpg)
-![](blitzer-main.jpg)
-![](cupertino-main.jpg)
-![](dark-hive-main.jpg)
-![](dot-luv-main.jpg)
-![](eggplant-main.jpg)
-![](excite-bike-main.jpg)
-![](flick-main.jpg)
-![](hot-sneaks-main.jpg)
-![](humanity-main.jpg)
-![](le-frog-main.jpg)
-![](mint-choc-main.jpg)
-![](overcast-main.jpg)
-![](pepper-grinder-main.jpg)
-![](smoothness-main.jpg)
-![](south-street-main.jpg)
-![](start-main.jpg)
-![](sunny-main.jpg)
-![](swanky-purse-main.jpg)
-![](ui-darkness-main.jpg)
-![](vader-main.jpg)
+<img src="original-main.jpg" width="260"><img src="base-main.jpg" width="260"><img src="black-tie-main.jpg" width="260"><img src="blitzer-main.jpg" width="260"><img src="cupertino-main.jpg" width="260"><img src="dark-hive-main.jpg" width="260"><img src="dot-luv-main.jpg" width="260"><img src="eggplant-main.jpg" width="260"><img src="excite-bike-main.jpg" width="260"><img src="flick-main.jpg" width="260"><img src="hot-sneaks-main.jpg" width="260"><img src="humanity-main.jpg" width="260"><img src="le-frog-main.jpg" width="260"><img src="mint-choc-main.jpg" width="260"><img src="overcast-main.jpg" width="260"><img src="pepper-grinder-main.jpg" width="260"><img src="smoothness-main.jpg" width="260"><img src="south-street-main.jpg" width="260"><img src="start-main.jpg" width="260"><img src="sunny-main.jpg" width="260"><img src="swanky-purse-main.jpg" width="260"><img src="ui-darkness-main.jpg" width="260"><img src="vader-main.jpg" width="260">
+
+## Multi EPG
+
+<img src="original-mepg.jpg" width="260"><img src="base-mepg.jpg" width="260"><img src="black-tie-mepg.jpg" width="260"><img src="blitzer-mepg.jpg" width="260"><img src="cupertino-mepg.jpg" width="260"><img src="dark-hive-mepg.jpg" width="260"><img src="dot-luv-mepg.jpg" width="260"><img src="eggplant-mepg.jpg" width="260"><img src="excite-bike-mepg.jpg" width="260"><img src="flick-mepg.jpg" width="260"><img src="hot-sneaks-mepg.jpg" width="260"><img src="humanity-mepg.jpg" width="260"><img src="le-frog-mepg.jpg" width="260"><img src="mint-choc-mepg.jpg" width="260"><img src="overcast-mepg.jpg" width="260"><img src="pepper-grinder-mepg.jpg" width="260"><img src="smoothness-mepg.jpg" width="260"><img src="south-street-mepg.jpg" width="260"><img src="start-mepg.jpg" width="260"><img src="sunny-mepg.jpg" width="260"><img src="swanky-purse-mepg.jpg" width="260"><img src="ui-darkness-mepg.jpg" width="260"><img src="vader-mepg.jpg" width="260">
