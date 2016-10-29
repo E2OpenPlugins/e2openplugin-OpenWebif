@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2016-04-30 15:06+0200\n"
-"PO-Revision-Date: 2016-10-16 11:20+0300\n"
+"POT-Creation-Date: 2016-10-29 10:34+0300\n"
+"PO-Revision-Date: 2016-10-29 10:39+0300\n"
 "Last-Translator: rimas\n"
 "Language-Team: Estonian\n"
 "Language: et\n"
@@ -69,7 +69,7 @@ msgstr "Lemmiknimekiri %s kustutatud."
 #: ../plugin/controllers/BouquetEditor.py:188
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
-msgstr ""
+msgstr "Viga: Lemmiknimekirja %s eemaldamine nurjus, OS viga."
 
 #: ../plugin/controllers/BouquetEditor.py:204
 #: ../plugin/controllers/BouquetEditor.py:261
@@ -250,7 +250,7 @@ msgstr "Lemmiknimekirjad taastati edukalt"
 #: ../plugin/controllers/BouquetEditor.py:632
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
-msgstr ""
+msgstr "Viga: %s ei ole loodud WebBouquetEditor laiendusega."
 
 #: ../plugin/controllers/BouquetEditor.py:634
 #, python-format
@@ -1087,7 +1087,7 @@ msgstr "Raadio"
 
 #: ../plugin/local.py:157
 msgid "Reboot Box"
-msgstr "Taaskäivita"
+msgstr "Taaskäivitus"
 
 #: ../plugin/local.py:158
 msgid "Recording Status"
@@ -1123,7 +1123,7 @@ msgstr "Korduv"
 
 #: ../plugin/local.py:166
 msgid "Restart GUI"
-msgstr "Taaskäivita E2"
+msgstr "E2 taaskäivitus"
 
 #: ../plugin/local.py:167
 msgid "running"
@@ -1160,7 +1160,7 @@ msgstr "IMDb otsing"
 
 #: ../plugin/local.py:175
 msgid "Search KinoPoisk"
-msgstr "KinoPoisk otsis"
+msgstr "KinoPoisk otsing"
 
 #: ../plugin/local.py:176
 msgid "seconds"
@@ -2017,8 +2017,32 @@ msgstr "EPG andmete tähemärgistik"
 msgid "OpenWebif Configuration"
 msgstr "OpenWebif seadistus"
 
-#~ msgid "VPS Overwrite"
-#~ msgstr "VPS ülekirjutamine"
+msgid "Record+ZAP"
+msgstr "Salvestus+kanalivahetus"
 
-#~ msgid "SleepTimer feature not available"
-#~ msgstr "Unetaimeri võimalus puudub"
+msgid "via"
+msgstr "üle"
+
+msgid "Pmtpid"
+msgstr "Pmtpid"
+
+msgid "Apid"
+msgstr "Apid"
+
+msgid "Vpid"
+msgstr "Vpid"
+
+msgid "Pcrpid"
+msgstr "Pcrpid"
+
+msgid "Tsid"
+msgstr "Tsid"
+
+msgid "Onid"
+msgstr "Onid"
+
+msgid "Sid"
+msgstr "Sid"
+
+msgid "Sref"
+msgstr "Sref"
