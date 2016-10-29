@@ -281,11 +281,14 @@ function InitPage() {
 	var buttons = {}
 	buttons["Save"] = function() {setAutoTimerSettings(); $(this).dialog("close");};
 	buttons["Cancel"] = function() {$(this).dialog("close");};
+	
+	var t = $("#atbutton7").data('title');
+	
 	$("#atsettingdlg").dialog({
 		modal : true, 
 		overlay: { backgroundColor: "#000", opacity: 0.5 }, 
 		autoOpen: false,
-		title: "AutoTimer Settings",
+		title: t,
 		width: 600,
 		height: 400,
 		buttons: buttons
@@ -1137,7 +1140,7 @@ function showError(txt,st)
 {
 	st = typeof st !== 'undefined' ? st : "False";
 	
-	if (st === true || st === 'True' || st === 'true') {
+	if (st === true || st === 'True' || st === 'true') {
 		$('#statusbox').removeClass('ui-state-error').addClass('ui-state-highlight');
 		$('#statusicon').removeClass('ui-icon-alert').addClass('ui-icon-info');
 	} else {

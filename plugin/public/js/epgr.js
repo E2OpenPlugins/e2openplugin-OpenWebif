@@ -354,7 +354,7 @@ function showError(txt,st)
 	st = typeof st !== 'undefined' ? st : 'False';
 	$('#statustext').text('');
 
-	if (st === true || st === 'True' || st === 'true') {
+	if (st === true || st === 'True' || st === 'true') {
 		$('#statusbox').removeClass('ui-state-error').addClass('ui-state-highlight');
 		$('#statusicon').removeClass('ui-icon-alert').addClass('ui-icon-info');
 	} else {

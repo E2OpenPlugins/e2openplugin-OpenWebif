@@ -370,7 +370,7 @@
 			addChannel: function () {
 				var reqjobs = [];
 				var bref = $('#bql li.ui-selected').data('sref');
-				var dstref = $('#bqs li.ui-selected').data('sref') || '';
+				var dstref = $('#bqs li.ui-selected').data('sref') || '';
 			
 				$('#channels li.ui-selected').each(function () {
 					reqjobs.push($.getJSON( '/bouqueteditor/api/addservicetobouquet?sBouquetRef=' + bref + '&sRef=' + $(this).data('sref') + '&sRefBefore=' + dstref, function () {}));
@@ -429,7 +429,7 @@
 				if (newname.length) {
 	
 					var bref = $('#bql li.ui-selected').data('sref');
-					var dstref = $('#bqs li.ui-selected').data('sref') || '';
+					var dstref = $('#bqs li.ui-selected').data('sref') || '';
 		
 					$.getJSON( '/bouqueteditor/api/addmarkertobouquet?sBouquetRef=' + bref + '&Name=' + encodeURIComponent(newname) +'&sRefBefore=' + dstref , function ( data ) {
 						var r = data.Result;
@@ -496,7 +496,7 @@
 				st = typeof st !== 'undefined' ? st : 'False';
 				$('#statustext').text('');
 			
-				if (st === true || st === 'True' || st === 'true') {
+				if (st === true || st === 'True' || st === 'true') {
 					$('#statusbox').removeClass('ui-state-error').addClass('ui-state-highlight');
 					$('#statusicon').removeClass('ui-icon-alert').addClass('ui-icon-info');
 				} else {

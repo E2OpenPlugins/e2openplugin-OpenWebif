@@ -6,13 +6,12 @@
 				<h3 class="ui-widget-header">$tstrings['settings']</h3>
 				<ol class="sellist" id="slist">
 				#if $themes
-					<li id='themesbtn' class="ui-selected">OpenWebif Settings</li>
+					<li id='themesbtn' class="ui-selected">$tstrings['tstr_ow_settings']</li>
 				#end if
 				#for $sec in $configsections
 					<li id='$sec["key"]' data-id='ajax/config?section=$sec["key"]'>$sec["description"]</li>
 				#end for
 				</ol>
-				
 			</div>
 			<div class="ui-widget-header" style="display:table-cell;background: none;border-bottom:none;border-top:none;border-left:none;width:1px;"></div>
 			<div style="display:table-cell;">
@@ -22,9 +21,9 @@
 		#if $themes
 		<div id='osettings' style="display:none;">
 			<div id="content_main2">
-				<h3 class="ui-widget-header">Openwebif Browser settings</h3>
+				<h3 class="ui-widget-header">$tstrings['tstr_ow_browser_settings']</h3>
 				<table id="configuration">
-				<tr><td>Theme</td><td>
+				<tr><td>$tstrings['tstr_theme']</td><td>
 			<select name="selectheme" id="selectheme" style="min-width: 150px;margin: 5px;border:none;font-size: 1em;">
 			#for $stheme in $themes
 				#if $stheme == $theme
@@ -49,7 +48,7 @@
 				<input type="checkbox" name="showchannelpicon"/>
 				#end if
 				</td></tr>
-				<tr><td>Spinner</td><td>
+				<tr><td>$tstrings['tstr_spinner']</td><td>
 				<div>
 				<span class="spinner">
 				<fieldset style="border:none;" id="fsspinner">

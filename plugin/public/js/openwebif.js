@@ -1649,7 +1649,7 @@ var MLHelper;
 
 function reversetheme()
 {
-	return (theme=='pepper-grinder' || theme=='vader' || theme == 'smoothness' || theme == 'le-frog' || theme == 'mint-choc' || theme == 'humanity' || theme == 'eggplant' || theme == 'dot-luv' || theme == 'black-tie' );
+	return (theme=='pepper-grinder' || theme=='vader' || theme == 'smoothness' || theme == 'le-frog' || theme == 'mint-choc' || theme == 'humanity' || theme == 'eggplant' || theme == 'dot-luv' || theme == 'black-tie' );
 }
 
 function getHoverCls()

@@ -2,14 +2,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2016-04-30 15:02+0200\n"
+"POT-Creation-Date: 2016-10-29 21:53+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
@@ -256,36 +256,40 @@ msgstr ""
 msgid "Error, %s does not exists, restore is not possible..."
 msgstr ""
 
-#: ../plugin/controllers/base.py:221 ../plugin/local.py:181
-#: ../plugin/local.py:325
+#: ../plugin/controllers/base.py:264 ../plugin/local.py:182
+#: ../plugin/local.py:326
 msgid "Settings"
 msgstr ""
 
-#: ../plugin/controllers/base.py:236
+#: ../plugin/controllers/base.py:280
 msgid "LCD4Linux Setup"
 msgstr ""
 
-#: ../plugin/controllers/base.py:240
+#: ../plugin/controllers/base.py:293
+msgid "OSCam Webinterface"
+msgstr ""
+
+#: ../plugin/controllers/base.py:297
 msgid "AutoTimer"
 msgstr ""
 
-#: ../plugin/controllers/base.py:244
+#: ../plugin/controllers/base.py:302
 msgid "BouquetEditor"
 msgstr ""
 
-#: ../plugin/controllers/base.py:248
+#: ../plugin/controllers/base.py:306
 msgid "EPGRefresh"
 msgstr ""
 
-#: ../plugin/controllers/models/info.py:71 ../plugin/local.py:115
+#: ../plugin/controllers/models/info.py:71 ../plugin/local.py:116
 msgid "IPv4-only kernel"
 msgstr ""
 
-#: ../plugin/controllers/models/info.py:75 ../plugin/local.py:117
+#: ../plugin/controllers/models/info.py:75 ../plugin/local.py:118
 msgid "IPv4-only Python/Twisted"
 msgstr ""
 
-#: ../plugin/controllers/models/info.py:104 ../plugin/local.py:116
+#: ../plugin/controllers/models/info.py:104 ../plugin/local.py:117
 msgid "none/IPv4-only network"
 msgstr ""
 
@@ -305,27 +309,27 @@ msgstr ""
 msgid "Answer is NO!"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:251
+#: ../plugin/controllers/models/services.py:257
 msgid "New"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:253
+#: ../plugin/controllers/models/services.py:259
 msgid "Services"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:258
+#: ../plugin/controllers/models/services.py:264
 msgid "Cable"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:260
+#: ../plugin/controllers/models/services.py:266
 msgid "Terrestrial"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:264
+#: ../plugin/controllers/models/services.py:270
 msgid "W"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:266
+#: ../plugin/controllers/models/services.py:272
 msgid "E"
 msgstr ""
 
@@ -499,7 +503,7 @@ msgstr ""
 msgid "The parameter 'command' must be a number"
 msgstr ""
 
-#: ../plugin/controllers/web.py:304
+#: ../plugin/controllers/web.py:298
 #, python-format
 msgid "type %s is not a number"
 msgstr ""
@@ -652,7 +656,7 @@ msgstr ""
 msgid "Add Zap Timer"
 msgstr ""
 
-#: ../plugin/local.py:46
+#: ../plugin/local.py:46 ../plugin/local.py:358
 msgid "After Event"
 msgstr ""
 
@@ -660,7 +664,7 @@ msgstr ""
 msgid "AGC"
 msgstr ""
 
-#: ../plugin/local.py:48 ../plugin/local.py:345
+#: ../plugin/local.py:48 ../plugin/local.py:346
 msgid "All"
 msgstr ""
 
@@ -672,7 +676,7 @@ msgstr ""
 msgid "Authors"
 msgstr ""
 
-#: ../plugin/local.py:51 ../plugin/local.py:344
+#: ../plugin/local.py:51 ../plugin/local.py:345
 msgid "Auto"
 msgstr ""
 
@@ -680,7 +684,7 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: ../plugin/local.py:53 ../plugin/local.py:352
+#: ../plugin/local.py:53 ../plugin/local.py:353
 msgid "Begin"
 msgstr ""
 
@@ -688,7 +692,7 @@ msgstr ""
 msgid "BER"
 msgstr ""
 
-#: ../plugin/local.py:55 ../plugin/local.py:307
+#: ../plugin/local.py:55 ../plugin/local.py:308
 msgid "Bouquets"
 msgstr ""
 
@@ -712,7 +716,7 @@ msgstr ""
 msgid "Brand"
 msgstr ""
 
-#: ../plugin/local.py:61 ../plugin/plugin.py:92
+#: ../plugin/local.py:61 ../plugin/plugin.py:101
 msgid "Cancel"
 msgstr ""
 
@@ -724,7 +728,7 @@ msgstr ""
 msgid "Channel"
 msgstr ""
 
-#: ../plugin/local.py:64 ../plugin/local.py:305
+#: ../plugin/local.py:64 ../plugin/local.py:306
 msgid "Channels"
 msgstr ""
 
@@ -757,1288 +761,1326 @@ msgid "Current Event"
 msgstr ""
 
 #: ../plugin/local.py:72
-msgid "Deep-Standby"
+msgid "Date"
 msgstr ""
 
 #: ../plugin/local.py:73
-msgid "Default"
+msgid "Deep-Standby"
 msgstr ""
 
 #: ../plugin/local.py:74
-msgid "Delete Recording"
+msgid "Default"
 msgstr ""
 
 #: ../plugin/local.py:75
-msgid "Really delete the recording"
+msgid "Delete Recording"
 msgstr ""
 
 #: ../plugin/local.py:76
-msgid "Delete Movie"
+msgid "Really delete the recording"
 msgstr ""
 
 #: ../plugin/local.py:77
-msgid "Really delete the movie"
+msgid "Delete Movie"
 msgstr ""
 
 #: ../plugin/local.py:78
-msgid "Delete Timer"
+msgid "Really delete the movie"
 msgstr ""
 
 #: ../plugin/local.py:79
+msgid "Delete Timer"
+msgstr ""
+
+#: ../plugin/local.py:80
 msgid "Really delete the timer"
 msgstr ""
 
-#: ../plugin/local.py:80 ../plugin/local.py:253
+#: ../plugin/local.py:81 ../plugin/local.py:254
 msgid "Description"
 msgstr ""
 
-#: ../plugin/local.py:81
+#: ../plugin/local.py:82
 msgid "DHCP"
 msgstr ""
 
-#: ../plugin/local.py:82
+#: ../plugin/local.py:83
 msgid "Disable Timer"
 msgstr ""
 
-#: ../plugin/local.py:83
+#: ../plugin/local.py:84
 msgid "Distro"
 msgstr ""
 
-#: ../plugin/local.py:84
+#: ../plugin/local.py:85
 msgid "Dolby"
 msgstr ""
 
-#: ../plugin/local.py:85
+#: ../plugin/local.py:86
 msgid "Done"
 msgstr ""
 
-#: ../plugin/local.py:86
+#: ../plugin/local.py:87
 msgid "Download"
 msgstr ""
 
-#: ../plugin/local.py:87
+#: ../plugin/local.py:88
 msgid "Download Playlist for"
 msgstr ""
 
-#: ../plugin/local.py:88
+#: ../plugin/local.py:89
 msgid "Driver date"
 msgstr ""
 
-#: ../plugin/local.py:89
+#: ../plugin/local.py:90
 msgid "Duration"
 msgstr ""
 
-#: ../plugin/local.py:90
+#: ../plugin/local.py:91
 msgid "Edit Timer"
 msgstr ""
 
-#: ../plugin/local.py:91
+#: ../plugin/local.py:92
 msgid "Enable Timer"
 msgstr ""
 
-#: ../plugin/local.py:92
+#: ../plugin/local.py:93
 msgid "Start"
 msgstr ""
 
-#: ../plugin/local.py:93 ../plugin/local.py:353
+#: ../plugin/local.py:94 ../plugin/local.py:354
 msgid "End"
 msgstr ""
 
-#: ../plugin/local.py:94 ../plugin/local.py:252 ../plugin/local.py:350
+#: ../plugin/local.py:95 ../plugin/local.py:253 ../plugin/local.py:351
 msgid "Enabled"
 msgstr ""
 
-#: ../plugin/local.py:95
+#: ../plugin/local.py:96
 msgid "Encrypted"
 msgstr ""
 
-#: ../plugin/local.py:96
+#: ../plugin/local.py:97
 msgid "EPG"
 msgstr ""
 
-#: ../plugin/local.py:97
+#: ../plugin/local.py:98
 msgid "Epg Search"
 msgstr ""
 
-#: ../plugin/local.py:98
+#: ../plugin/local.py:99
 msgid "Include description"
 msgstr ""
 
-#: ../plugin/local.py:99
+#: ../plugin/local.py:100
 msgid "Error"
 msgstr ""
 
-#: ../plugin/local.py:100
+#: ../plugin/local.py:101
 msgid "Every"
 msgstr ""
 
-#: ../plugin/local.py:101
+#: ../plugin/local.py:102
 msgid "Extras"
 msgstr ""
 
-#: ../plugin/local.py:102
+#: ../plugin/local.py:103
 msgid "finished"
 msgstr ""
 
-#: ../plugin/local.py:103
+#: ../plugin/local.py:104
 msgid "Firmware version"
 msgstr ""
 
-#: ../plugin/local.py:104
+#: ../plugin/local.py:105
 msgid "Frontprocessor Version"
 msgstr ""
 
-#: ../plugin/local.py:105
+#: ../plugin/local.py:106
 msgid "Free"
 msgstr ""
 
-#: ../plugin/local.py:106
+#: ../plugin/local.py:107
 msgid "Free Memory"
 msgstr ""
 
-#: ../plugin/local.py:107
+#: ../plugin/local.py:108
 msgid "Gateway"
 msgstr ""
 
-#: ../plugin/local.py:108
+#: ../plugin/local.py:109
 msgid "Grab Screenshot"
 msgstr ""
 
-#: ../plugin/local.py:109
+#: ../plugin/local.py:110
 msgid "Gui version"
 msgstr ""
 
-#: ../plugin/local.py:110
+#: ../plugin/local.py:111
 msgid "Hide full remote"
 msgstr ""
 
-#: ../plugin/local.py:111
+#: ../plugin/local.py:112
 msgid "High Resolution"
 msgstr ""
 
-#: ../plugin/local.py:112
+#: ../plugin/local.py:113
 msgid "Hard disk model"
 msgstr ""
 
-#: ../plugin/local.py:113
+#: ../plugin/local.py:114
 msgid "Hour"
 msgstr ""
 
-#: ../plugin/local.py:114
+#: ../plugin/local.py:115
 msgid "IPv4 address"
 msgstr ""
 
-#: ../plugin/local.py:118
+#: ../plugin/local.py:119
 msgid "IPv6 address(es)"
 msgstr ""
 
-#: ../plugin/local.py:119
+#: ../plugin/local.py:120
 msgid "Infos"
 msgstr ""
 
-#: ../plugin/local.py:120
+#: ../plugin/local.py:121
 msgid "Instant Record"
 msgstr ""
 
-#: ../plugin/local.py:121
+#: ../plugin/local.py:122
 msgid "Javascript Libraries"
 msgstr ""
 
-#: ../plugin/local.py:122
+#: ../plugin/local.py:123
 msgid "Just play"
 msgstr ""
 
-#: ../plugin/local.py:123
+#: ../plugin/local.py:124
 msgid "Kernel version"
 msgstr ""
 
-#: ../plugin/local.py:124
+#: ../plugin/local.py:125
 msgid "LICENSE"
 msgstr ""
 
-#: ../plugin/local.py:125
+#: ../plugin/local.py:126
 msgid "loading"
 msgstr ""
 
-#: ../plugin/local.py:126
+#: ../plugin/local.py:127
 msgid "Location"
 msgstr ""
 
-#: ../plugin/local.py:127
+#: ../plugin/local.py:128
 msgid "Locked"
 msgstr ""
 
-#: ../plugin/local.py:128
+#: ../plugin/local.py:129
 msgid "MAC address"
 msgstr ""
 
-#: ../plugin/local.py:129
+#: ../plugin/local.py:130
 msgid "Main"
 msgstr ""
 
-#: ../plugin/local.py:130
+#: ../plugin/local.py:131
 msgid "Minute"
 msgstr ""
 
-#: ../plugin/local.py:131
+#: ../plugin/local.py:132
 msgid "Model"
 msgstr ""
 
-#: ../plugin/local.py:132
+#: ../plugin/local.py:133
 msgid "Movielist"
 msgstr ""
 
-#: ../plugin/local.py:133
+#: ../plugin/local.py:134
 msgid "Movies"
 msgstr ""
 
-#: ../plugin/local.py:134
+#: ../plugin/local.py:135
 msgid "MultiEPG"
 msgstr ""
 
-#: ../plugin/local.py:135
+#: ../plugin/local.py:136
 msgid "Name"
 msgstr ""
 
-#: ../plugin/local.py:136
+#: ../plugin/local.py:137
 msgid "Namespace"
 msgstr ""
 
-#: ../plugin/local.py:137
+#: ../plugin/local.py:138
 msgid "Network Interface"
 msgstr ""
 
-#: ../plugin/local.py:138
+#: ../plugin/local.py:139
 msgid "no description available"
 msgstr ""
 
-#: ../plugin/local.py:139
+#: ../plugin/local.py:140
 msgid "Sorry this page is not yet implemented"
 msgstr ""
 
-#: ../plugin/local.py:140
+#: ../plugin/local.py:141
 msgid "Nothing"
 msgstr ""
 
-#: ../plugin/local.py:141
+#: ../plugin/local.py:142
 msgid "Nothing playing."
 msgstr ""
 
-#: ../plugin/local.py:142
+#: ../plugin/local.py:143
 msgid "Now"
 msgstr ""
 
-#: ../plugin/local.py:143
+#: ../plugin/local.py:144
 msgid "System OE"
 msgstr ""
 
-#: ../plugin/local.py:144
+#: ../plugin/local.py:145
 msgid "On"
 msgstr ""
 
-#: ../plugin/local.py:145
+#: ../plugin/local.py:146
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr ""
 
-#: ../plugin/local.py:146 ../plugin/plugin.py:110
+#: ../plugin/local.py:147 ../plugin/plugin.py:119
 msgid "Show box name in header"
 msgstr ""
 
-#: ../plugin/local.py:147 ../plugin/plugin.py:112
+#: ../plugin/local.py:148 ../plugin/plugin.py:121
 msgid "Use custom box name"
 msgstr ""
 
-#: ../plugin/local.py:148 ../plugin/plugin.py:114
+#: ../plugin/local.py:149 ../plugin/plugin.py:123
 msgid "Custom box name"
 msgstr ""
 
-#: ../plugin/local.py:149
+#: ../plugin/local.py:150
 msgid "OSD"
 msgstr ""
 
-#: ../plugin/local.py:150
+#: ../plugin/local.py:151
 msgid "Open in new window"
 msgstr ""
 
-#: ../plugin/local.py:151
+#: ../plugin/local.py:152
 msgid "Playback"
 msgstr ""
 
-#: ../plugin/local.py:152
+#: ../plugin/local.py:153
 msgid "Playlist"
 msgstr ""
 
-#: ../plugin/local.py:153
+#: ../plugin/local.py:154
 msgid "Power Control"
 msgstr ""
 
-#: ../plugin/local.py:154
+#: ../plugin/local.py:155
 msgid "Provider"
 msgstr ""
 
-#: ../plugin/local.py:155
+#: ../plugin/local.py:156
 msgid "Providers"
 msgstr ""
 
-#: ../plugin/local.py:156
+#: ../plugin/local.py:157
 msgid "Radio"
 msgstr ""
 
-#: ../plugin/local.py:157
+#: ../plugin/local.py:158
 msgid "Reboot Box"
 msgstr ""
 
-#: ../plugin/local.py:158
+#: ../plugin/local.py:159
 msgid "Recording Status"
 msgstr ""
 
-#: ../plugin/local.py:159 ../plugin/local.py:342
+#: ../plugin/local.py:160 ../plugin/local.py:343
 msgid "Refresh"
 msgstr ""
 
-#: ../plugin/local.py:160
+#: ../plugin/local.py:161
 msgid "Refresh automatically every"
 msgstr ""
 
-#: ../plugin/local.py:161
+#: ../plugin/local.py:162
 msgid "Refresh Timer"
 msgstr ""
 
-#: ../plugin/local.py:162
+#: ../plugin/local.py:163
 msgid "Remote"
 msgstr ""
 
-#: ../plugin/local.py:163
+#: ../plugin/local.py:164
 msgid "Rename Recording"
 msgstr ""
 
-#: ../plugin/local.py:164
+#: ../plugin/local.py:165
 msgid "Really rename the recording"
 msgstr ""
 
-#: ../plugin/local.py:165
+#: ../plugin/local.py:166
 msgid "Repeated"
 msgstr ""
 
-#: ../plugin/local.py:166
+#: ../plugin/local.py:167
 msgid "Restart GUI"
 msgstr ""
 
-#: ../plugin/local.py:167
+#: ../plugin/local.py:168
 msgid "running"
 msgstr ""
 
-#: ../plugin/local.py:168
+#: ../plugin/local.py:169
 msgid "Safe mode"
 msgstr ""
 
-#: ../plugin/local.py:169
+#: ../plugin/local.py:170
 msgid "Satellites"
 msgstr ""
 
-#: ../plugin/local.py:170
+#: ../plugin/local.py:171
 msgid "Satfinder"
 msgstr ""
 
-#: ../plugin/local.py:171 ../plugin/local.py:321 ../plugin/local.py:373
-#: ../plugin/plugin.py:93
+#: ../plugin/local.py:172 ../plugin/local.py:322 ../plugin/local.py:374
+#: ../plugin/plugin.py:102
 msgid "Save"
 msgstr ""
 
-#: ../plugin/local.py:172
+#: ../plugin/local.py:173
 msgid "Screenshot"
 msgstr ""
 
-#: ../plugin/local.py:173 ../plugin/local.py:379
+#: ../plugin/local.py:174 ../plugin/local.py:380
 msgid "Search"
 msgstr ""
 
-#: ../plugin/local.py:174
+#: ../plugin/local.py:175
 msgid "Search IMDb"
 msgstr ""
 
-#: ../plugin/local.py:175
+#: ../plugin/local.py:176
 msgid "Search KinoPoisk"
 msgstr ""
 
-#: ../plugin/local.py:176
+#: ../plugin/local.py:177
 msgid "seconds"
 msgstr ""
 
-#: ../plugin/local.py:177
+#: ../plugin/local.py:178
 msgid "Send Message"
 msgstr ""
 
-#: ../plugin/local.py:178
+#: ../plugin/local.py:179
 msgid "Waiting for answer ..."
 msgstr ""
 
-#: ../plugin/local.py:179
+#: ../plugin/local.py:180
 msgid "Send a Message"
 msgstr ""
 
-#: ../plugin/local.py:180
+#: ../plugin/local.py:181
 msgid "Service"
 msgstr ""
 
-#: ../plugin/local.py:182
+#: ../plugin/local.py:183
 msgid "Bouquet Editor"
 msgstr ""
 
-#: ../plugin/local.py:183
+#: ../plugin/local.py:184
 msgid "(shift + click for long pressure)"
 msgstr ""
 
-#: ../plugin/local.py:184
+#: ../plugin/local.py:185
 msgid "Show Full OpenWebif"
 msgstr ""
 
-#: ../plugin/local.py:185
+#: ../plugin/local.py:186
 msgid "Show full remote"
 msgstr ""
 
-#: ../plugin/local.py:186
+#: ../plugin/local.py:187
 msgid "Show EPG for"
 msgstr ""
 
-#: ../plugin/local.py:187
+#: ../plugin/local.py:188
 msgid "Shutdown"
 msgstr ""
 
-#: ../plugin/local.py:188
+#: ../plugin/local.py:189
 msgid "Site and sources"
 msgstr ""
 
-#: ../plugin/local.py:189
+#: ../plugin/local.py:190
 msgid "SNR"
 msgstr ""
 
-#: ../plugin/local.py:190
+#: ../plugin/local.py:191
 msgid "Software"
 msgstr ""
 
-#: ../plugin/local.py:191
+#: ../plugin/local.py:192
 msgid "Standby"
 msgstr ""
 
-#: ../plugin/local.py:192
+#: ../plugin/local.py:193
 msgid "Standby Toggle"
 msgstr ""
 
-#: ../plugin/local.py:193
+#: ../plugin/local.py:194
 msgid "Start time is after end time"
 msgstr ""
 
-#: ../plugin/local.py:194
+#: ../plugin/local.py:195
 msgid "Start Instant Record"
 msgstr ""
 
-#: ../plugin/local.py:195
+#: ../plugin/local.py:196
 msgid "Stream"
 msgstr ""
 
-#: ../plugin/local.py:196
+#: ../plugin/local.py:197
 msgid "Subnet mask"
 msgstr ""
 
-#: ../plugin/local.py:197
+#: ../plugin/local.py:198
 msgid "Subservices"
 msgstr ""
 
-#: ../plugin/local.py:198 ../plugin/local.py:303
+#: ../plugin/local.py:199 ../plugin/local.py:304
 msgid "Tags"
 msgstr ""
 
-#: ../plugin/local.py:199
+#: ../plugin/local.py:200
 msgid "Teletext"
 msgstr ""
 
-#: ../plugin/local.py:200
+#: ../plugin/local.py:201
 msgid "Television"
 msgstr ""
 
-#: ../plugin/local.py:201
+#: ../plugin/local.py:202
 msgid "Template Engine"
 msgstr ""
 
-#: ../plugin/local.py:202
+#: ../plugin/local.py:203
 msgid "Text"
 msgstr ""
 
-#: ../plugin/local.py:203
+#: ../plugin/local.py:204
 msgid "Time"
 msgstr ""
 
-#: ../plugin/local.py:204
+#: ../plugin/local.py:205
 msgid "Timeout"
 msgstr ""
 
-#: ../plugin/local.py:205
+#: ../plugin/local.py:206
 msgid "Timer added"
 msgstr ""
 
-#: ../plugin/local.py:206
+#: ../plugin/local.py:207
 msgid "Timerlist"
 msgstr ""
 
-#: ../plugin/local.py:207
+#: ../plugin/local.py:208
 msgid "New Name"
 msgstr ""
 
-#: ../plugin/local.py:208
+#: ../plugin/local.py:209
 msgid "Autotimer Preview"
 msgstr ""
 
-#: ../plugin/local.py:209
+#: ../plugin/local.py:210
 msgid "Timer"
 msgstr ""
 
-#: ../plugin/local.py:210 ../plugin/local.py:324
+#: ../plugin/local.py:211 ../plugin/local.py:325
 msgid "Timers"
 msgstr ""
 
-#: ../plugin/local.py:211
+#: ../plugin/local.py:212
 msgid "Title"
 msgstr ""
 
-#: ../plugin/local.py:212
+#: ../plugin/local.py:213
 msgid "Total Memory"
 msgstr ""
 
-#: ../plugin/local.py:213
+#: ../plugin/local.py:214
 msgid "transcoded"
 msgstr ""
 
-#: ../plugin/local.py:214
+#: ../plugin/local.py:215
 msgid "Transcode"
 msgstr ""
 
-#: ../plugin/local.py:215
+#: ../plugin/local.py:216
 msgid "Tuner Bit Error Rate BER"
 msgstr ""
 
-#: ../plugin/local.py:216
+#: ../plugin/local.py:217
 msgid "Tuner Number"
 msgstr ""
 
-#: ../plugin/local.py:217
+#: ../plugin/local.py:218
 msgid "Tuner Signal"
 msgstr ""
 
-#: ../plugin/local.py:218
+#: ../plugin/local.py:219
 msgid "Tuner Signal Quality SNR"
 msgstr ""
 
-#: ../plugin/local.py:219
+#: ../plugin/local.py:220
 msgid "Tuner Signal Quality SNR_DB"
 msgstr ""
 
-#: ../plugin/local.py:220
+#: ../plugin/local.py:221
 msgid "Tuner Signal Power AGC"
 msgstr ""
 
-#: ../plugin/local.py:221
+#: ../plugin/local.py:222
 msgid "Tuner Type"
 msgstr ""
 
-#: ../plugin/local.py:222
+#: ../plugin/local.py:223
 msgid "Tuners"
 msgstr ""
 
-#: ../plugin/local.py:223
+#: ../plugin/local.py:224
 msgid "TV"
 msgstr ""
 
-#: ../plugin/local.py:224
+#: ../plugin/local.py:225
 msgid "TV Multi EPG"
 msgstr ""
 
-#: ../plugin/local.py:225
+#: ../plugin/local.py:226
 msgid "Type"
 msgstr ""
 
-#: ../plugin/local.py:226
+#: ../plugin/local.py:227
 msgid "Upcoming Events"
 msgstr ""
 
-#: ../plugin/local.py:227
+#: ../plugin/local.py:228
 msgid "Version"
 msgstr ""
 
-#: ../plugin/local.py:228
+#: ../plugin/local.py:229
 msgid "Video"
 msgstr ""
 
-#: ../plugin/local.py:229
+#: ../plugin/local.py:230
 msgid "Video Height"
 msgstr ""
 
-#: ../plugin/local.py:230
+#: ../plugin/local.py:231
 msgid "Video Wide"
 msgstr ""
 
-#: ../plugin/local.py:231
+#: ../plugin/local.py:232
 msgid "Video Width"
 msgstr ""
 
-#: ../plugin/local.py:232
+#: ../plugin/local.py:233
 msgid "VPS"
 msgstr ""
 
-#: ../plugin/local.py:233
+#: ../plugin/local.py:234
 msgid "Volume"
 msgstr ""
 
-#: ../plugin/local.py:234
+#: ../plugin/local.py:235
 msgid "Volume Control"
 msgstr ""
 
-#: ../plugin/local.py:235
+#: ../plugin/local.py:236
 msgid "waiting"
 msgstr ""
 
-#: ../plugin/local.py:236
+#: ../plugin/local.py:237
 msgid "Warning"
 msgstr ""
 
-#: ../plugin/local.py:237
+#: ../plugin/local.py:238
 msgid "Yes/No"
 msgstr ""
 
-#: ../plugin/local.py:238
+#: ../plugin/local.py:239
 msgid "Zap"
 msgstr ""
 
-#: ../plugin/local.py:239
+#: ../plugin/local.py:240
 msgid "zap before Stream"
 msgstr ""
 
-#: ../plugin/local.py:240
+#: ../plugin/local.py:241
 msgid "Zap to"
 msgstr ""
 
-#: ../plugin/local.py:241
+#: ../plugin/local.py:242
 msgid "Zapped to"
 msgstr ""
 
-#: ../plugin/local.py:242
+#: ../plugin/local.py:243
 msgid "Translation to Spanish"
 msgstr ""
 
-#: ../plugin/local.py:243
+#: ../plugin/local.py:244
 msgid "All Files of this Software are open source software;"
 msgstr ""
 
-#: ../plugin/local.py:244
+#: ../plugin/local.py:245
 msgid "you can redistribute it and/or modify it under the"
 msgstr ""
 
-#: ../plugin/local.py:245
+#: ../plugin/local.py:246
 msgid "terms of the GNU General Public License version 2 as"
 msgstr ""
 
-#: ../plugin/local.py:246
+#: ../plugin/local.py:247
 msgid "published by the Free Software Foundation."
 msgstr ""
 
-#: ../plugin/local.py:247
+#: ../plugin/local.py:248
 msgid ""
 "All Files of this Software are open source software; you can redistribute it "
 "and/or modify it under the terms of the GNU General Public License version 2 "
 "as published by the Free Software Foundation."
 msgstr ""
 
-#: ../plugin/local.py:248
+#: ../plugin/local.py:249
 msgid "Root"
 msgstr ""
 
-#: ../plugin/local.py:250
+#: ../plugin/local.py:251
 msgid "AutoTimer List"
 msgstr ""
 
-#: ../plugin/local.py:251
+#: ../plugin/local.py:252
 msgid "AutoTimer Edit"
 msgstr ""
 
-#: ../plugin/local.py:254
+#: ../plugin/local.py:255
 msgid "Match title"
 msgstr ""
 
-#: ../plugin/local.py:255
+#: ../plugin/local.py:256
 msgid "EPG encoding"
 msgstr ""
 
-#: ../plugin/local.py:256
+#: ../plugin/local.py:257
 msgid "Search type"
 msgstr ""
 
-#: ../plugin/local.py:257
+#: ../plugin/local.py:258
 msgid "partial match"
 msgstr ""
 
-#: ../plugin/local.py:258
+#: ../plugin/local.py:259
 msgid "exact match"
 msgstr ""
 
-#: ../plugin/local.py:259
+#: ../plugin/local.py:260
 msgid "description match"
 msgstr ""
 
-#: ../plugin/local.py:260
+#: ../plugin/local.py:261
 msgid "title or description match"
 msgstr ""
 
-#: ../plugin/local.py:261
+#: ../plugin/local.py:262
 msgid "title or short description match"
 msgstr ""
 
-#: ../plugin/local.py:262
+#: ../plugin/local.py:263
 msgid "short description match"
 msgstr ""
 
-#: ../plugin/local.py:263
+#: ../plugin/local.py:264
 msgid "start match"
 msgstr ""
 
-#: ../plugin/local.py:264
+#: ../plugin/local.py:265
 msgid "Search strictness"
 msgstr ""
 
-#: ../plugin/local.py:265
+#: ../plugin/local.py:266
 msgid "case-sensitive search"
 msgstr ""
 
-#: ../plugin/local.py:266
+#: ../plugin/local.py:267
 msgid "case-insensitive search"
 msgstr ""
 
-#: ../plugin/local.py:267
+#: ../plugin/local.py:268
 msgid "Timer type"
 msgstr ""
 
-#: ../plugin/local.py:268
+#: ../plugin/local.py:269
 msgid "record"
 msgstr ""
 
-#: ../plugin/local.py:269
+#: ../plugin/local.py:270
 msgid "zap"
 msgstr ""
 
-#: ../plugin/local.py:270
+#: ../plugin/local.py:271
 msgid "Override found with alternative service"
 msgstr ""
 
-#: ../plugin/local.py:271
+#: ../plugin/local.py:272
 msgid "Only match during timespan"
 msgstr ""
 
-#: ../plugin/local.py:272
+#: ../plugin/local.py:273
 msgid "Begin of timespan"
 msgstr ""
 
-#: ../plugin/local.py:273
+#: ../plugin/local.py:274
 msgid "End of Timespan"
 msgstr ""
 
-#: ../plugin/local.py:274
+#: ../plugin/local.py:275
 msgid "Restrict to events on certain dates"
 msgstr ""
 
-#: ../plugin/local.py:275
+#: ../plugin/local.py:276
 msgid "Not after"
 msgstr ""
 
-#: ../plugin/local.py:276
+#: ../plugin/local.py:277
 msgid "Not before"
 msgstr ""
 
-#: ../plugin/local.py:277
+#: ../plugin/local.py:278
 msgid "Custom offset"
 msgstr ""
 
-#: ../plugin/local.py:278
+#: ../plugin/local.py:279
 msgid "Offset before recording (in m)"
 msgstr ""
 
-#: ../plugin/local.py:279
+#: ../plugin/local.py:280
 msgid "Offset after recording (in m)"
 msgstr ""
 
-#: ../plugin/local.py:280
+#: ../plugin/local.py:281
 msgid "Set maximum duration"
 msgstr ""
 
-#: ../plugin/local.py:281
+#: ../plugin/local.py:282
 msgid "After event"
 msgstr ""
 
-#: ../plugin/local.py:282
+#: ../plugin/local.py:283
 msgid "standard"
 msgstr ""
 
-#: ../plugin/local.py:283
+#: ../plugin/local.py:284
 msgid "auto"
 msgstr ""
 
-#: ../plugin/local.py:284
+#: ../plugin/local.py:285
 msgid "do nothing"
 msgstr ""
 
-#: ../plugin/local.py:285
+#: ../plugin/local.py:286
 msgid "go to standby"
 msgstr ""
 
-#: ../plugin/local.py:286
+#: ../plugin/local.py:287
 msgid "go to deep standby"
 msgstr ""
 
-#: ../plugin/local.py:287
+#: ../plugin/local.py:288
 msgid "Execute \"after event\" during timespan"
 msgstr ""
 
-#: ../plugin/local.py:288
+#: ../plugin/local.py:289
 msgid "Begin of \"after event\" timespan"
 msgstr ""
 
-#: ../plugin/local.py:289
+#: ../plugin/local.py:290
 msgid "End of \"after event\" timespan"
 msgstr ""
 
-#: ../plugin/local.py:290
+#: ../plugin/local.py:291
 msgid "Record a maximum of x times"
 msgstr ""
 
-#: ../plugin/local.py:291
+#: ../plugin/local.py:292
 msgid "Amount of recordings left"
 msgstr ""
 
-#: ../plugin/local.py:292 ../plugin/local.py:363
+#: ../plugin/local.py:293 ../plugin/local.py:364
 msgid "Never"
 msgstr ""
 
-#: ../plugin/local.py:293
+#: ../plugin/local.py:294
 msgid "Monthly"
 msgstr ""
 
-#: ../plugin/local.py:294
+#: ../plugin/local.py:295
 msgid "Weekly (Sunday)"
 msgstr ""
 
-#: ../plugin/local.py:295
+#: ../plugin/local.py:296
 msgid "Weekly (Monday)"
 msgstr ""
 
-#: ../plugin/local.py:296
+#: ../plugin/local.py:297
 msgid "Reset count"
 msgstr ""
 
-#: ../plugin/local.py:297
+#: ../plugin/local.py:298
 msgid "Require description to be unique"
 msgstr ""
 
-#: ../plugin/local.py:298
+#: ../plugin/local.py:299
 msgid "No"
 msgstr ""
 
-#: ../plugin/local.py:299
+#: ../plugin/local.py:300
 msgid "On same service"
 msgstr ""
 
-#: ../plugin/local.py:300
+#: ../plugin/local.py:301
 msgid "On any service"
 msgstr ""
 
-#: ../plugin/local.py:301
+#: ../plugin/local.py:302
 msgid "Any service/recording"
 msgstr ""
 
-#: ../plugin/local.py:302
+#: ../plugin/local.py:303
 msgid "Use a custom location"
 msgstr ""
 
-#: ../plugin/local.py:304
+#: ../plugin/local.py:305
 msgid "select Tags"
 msgstr ""
 
-#: ../plugin/local.py:306
+#: ../plugin/local.py:307
 msgid "select Channels"
 msgstr ""
 
-#: ../plugin/local.py:308
+#: ../plugin/local.py:309
 msgid "select Bouquets"
 msgstr ""
 
-#: ../plugin/local.py:309
+#: ../plugin/local.py:310
 msgid "Enable Filtering"
 msgstr ""
 
-#: ../plugin/local.py:310
+#: ../plugin/local.py:311
 msgid "Include"
 msgstr ""
 
-#: ../plugin/local.py:311
+#: ../plugin/local.py:312
 msgid "Exclude"
 msgstr ""
 
-#: ../plugin/local.py:312
+#: ../plugin/local.py:313
 msgid "in Title"
 msgstr ""
 
-#: ../plugin/local.py:313
+#: ../plugin/local.py:314
 msgid "in Shortdescription"
 msgstr ""
 
-#: ../plugin/local.py:314
+#: ../plugin/local.py:315
 msgid "in Description"
 msgstr ""
 
-#: ../plugin/local.py:315
+#: ../plugin/local.py:316
 msgid "on Weekday"
 msgstr ""
 
-#: ../plugin/local.py:316
+#: ../plugin/local.py:317
 msgid "Weekend"
 msgstr ""
 
-#: ../plugin/local.py:317
+#: ../plugin/local.py:318
 msgid "Weekday"
 msgstr ""
 
-#: ../plugin/local.py:318
+#: ../plugin/local.py:319
 msgid "Add"
 msgstr ""
 
-#: ../plugin/local.py:319
+#: ../plugin/local.py:320
 msgid "Delete"
 msgstr ""
 
-#: ../plugin/local.py:320 ../plugin/local.py:372 ../plugin/local.py:380
+#: ../plugin/local.py:321 ../plugin/local.py:373 ../plugin/local.py:381
 msgid "Reload"
 msgstr ""
 
-#: ../plugin/local.py:322
+#: ../plugin/local.py:323
 msgid "Parse"
 msgstr ""
 
-#: ../plugin/local.py:323
+#: ../plugin/local.py:324
 msgid "Simulate"
 msgstr ""
 
-#: ../plugin/local.py:326
+#: ../plugin/local.py:327
 msgid "Do you really want to delete the AT"
 msgstr ""
 
-#: ../plugin/local.py:327
+#: ../plugin/local.py:328
 msgid "Label series"
 msgstr ""
 
-#: ../plugin/local.py:329
+#: ../plugin/local.py:330
 msgid "AutoTimer Settings"
 msgstr ""
 
-#: ../plugin/local.py:330
+#: ../plugin/local.py:331
 msgid "AutoPoll"
 msgstr ""
 
-#: ../plugin/local.py:331
+#: ../plugin/local.py:332
 msgid "Interval (in h)"
 msgstr ""
 
-#: ../plugin/local.py:332
+#: ../plugin/local.py:333
 msgid "Max Days"
 msgstr ""
 
-#: ../plugin/local.py:333
+#: ../plugin/local.py:334
 msgid "Try Guessing"
 msgstr ""
 
-#: ../plugin/local.py:334
+#: ../plugin/local.py:335
 msgid "Fastscan"
 msgstr ""
 
-#: ../plugin/local.py:335
+#: ../plugin/local.py:336
 msgid "Show in Extensionsmenu"
 msgstr ""
 
-#: ../plugin/local.py:336
+#: ../plugin/local.py:337
 msgid "Disabled on Conflict"
 msgstr ""
 
-#: ../plugin/local.py:337
+#: ../plugin/local.py:338
 msgid "Add Similar on Conflict"
 msgstr ""
 
-#: ../plugin/local.py:338
+#: ../plugin/local.py:339
 msgid "Notify if Conflict"
 msgstr ""
 
-#: ../plugin/local.py:339
+#: ../plugin/local.py:340
 msgid "Notify if Similar"
 msgstr ""
 
-#: ../plugin/local.py:340
+#: ../plugin/local.py:341
 msgid "Add Autotimer to Tags"
 msgstr ""
 
-#: ../plugin/local.py:341
+#: ../plugin/local.py:342
 msgid "Add Name to Tags"
 msgstr ""
 
-#: ../plugin/local.py:343
+#: ../plugin/local.py:344
 msgid "None"
 msgstr ""
 
-#: ../plugin/local.py:346
+#: ../plugin/local.py:347
 msgid "Editor"
 msgstr ""
 
-#: ../plugin/local.py:347
+#: ../plugin/local.py:348
 msgid "Plain"
 msgstr ""
 
-#: ../plugin/local.py:348
+#: ../plugin/local.py:349
 msgid "Wizzard"
 msgstr ""
 
-#: ../plugin/local.py:351
+#: ../plugin/local.py:352
 msgid "Enable Messages"
 msgstr ""
 
-#: ../plugin/local.py:354
+#: ../plugin/local.py:355
 msgid "Delay Standby"
 msgstr ""
 
-#: ../plugin/local.py:355
+#: ../plugin/local.py:356
 msgid "Interval (min.)"
 msgstr ""
 
-#: ../plugin/local.py:356
+#: ../plugin/local.py:357
 msgid "Interval (sec.)"
 msgstr ""
 
-#: ../plugin/local.py:357
-msgid "Afterevent"
-msgstr ""
-
-#: ../plugin/local.py:358
+#: ../plugin/local.py:359
 msgid "Force"
 msgstr ""
 
-#: ../plugin/local.py:359
+#: ../plugin/local.py:360
 msgid "Wakeup"
 msgstr ""
 
-#: ../plugin/local.py:360
+#: ../plugin/local.py:361
 msgid "Inherit Autotimer"
 msgstr ""
 
-#: ../plugin/local.py:361
+#: ../plugin/local.py:362
 msgid "Parse Autotimer"
 msgstr ""
 
-#: ../plugin/local.py:362
+#: ../plugin/local.py:363
 msgid "Always"
 msgstr ""
 
-#: ../plugin/local.py:364
+#: ../plugin/local.py:365
 msgid "Background only"
 msgstr ""
 
-#: ../plugin/local.py:365
+#: ../plugin/local.py:366
 msgid "Ask, default Yes"
 msgstr ""
 
-#: ../plugin/local.py:366
+#: ../plugin/local.py:367
 msgid "Ask, default No"
 msgstr ""
 
-#: ../plugin/local.py:367
+#: ../plugin/local.py:368
 msgid "Method"
 msgstr ""
 
-#: ../plugin/local.py:368
+#: ../plugin/local.py:369
 msgid "Visibly"
 msgstr ""
 
-#: ../plugin/local.py:369
+#: ../plugin/local.py:370
 msgid "Picture in Picture"
 msgstr ""
 
-#: ../plugin/local.py:370
+#: ../plugin/local.py:371
 msgid "Picture in Picture (hidden)"
 msgstr ""
 
-#: ../plugin/local.py:371
+#: ../plugin/local.py:372
 msgid "Fake Recording"
 msgstr ""
 
-#: ../plugin/local.py:374
+#: ../plugin/local.py:375
 msgid "Refresh now"
 msgstr ""
 
-#: ../plugin/local.py:376
+#: ../plugin/local.py:377
 msgid "Add Provider as new Bouquet"
 msgstr ""
 
-#: ../plugin/local.py:377
+#: ../plugin/local.py:378
 msgid "Add channel(s) to Bouquet"
 msgstr ""
 
-#: ../plugin/local.py:378
+#: ../plugin/local.py:379
 msgid "Add channel(s) as alternate"
 msgstr ""
 
-#: ../plugin/local.py:381
+#: ../plugin/local.py:382
 msgid "Export"
 msgstr ""
 
-#: ../plugin/local.py:382
+#: ../plugin/local.py:383
 msgid "Import"
 msgstr ""
 
-#: ../plugin/local.py:383
+#: ../plugin/local.py:384
 msgid "Add Bouquet"
 msgstr ""
 
-#: ../plugin/local.py:384
+#: ../plugin/local.py:385
 msgid "Rename Bouquet"
 msgstr ""
 
-#: ../plugin/local.py:385
+#: ../plugin/local.py:386
 msgid "Delete Bouquet"
 msgstr ""
 
-#: ../plugin/local.py:386
+#: ../plugin/local.py:387
 msgid "Add Marker"
 msgstr ""
 
-#: ../plugin/local.py:387
+#: ../plugin/local.py:388
 msgid "Rename"
 msgstr ""
 
-#: ../plugin/local.py:388
+#: ../plugin/local.py:389
 msgid "Delete Channel(s)"
 msgstr ""
 
-#: ../plugin/local.py:389
+#: ../plugin/local.py:390
 msgid "Do you really want to delete the channel(s)"
 msgstr ""
 
-#: ../plugin/local.py:390
+#: ../plugin/local.py:391
 msgid "Do you really want to delete the bouquet"
 msgstr ""
 
-#: ../plugin/local.py:391
+#: ../plugin/local.py:392
 msgid "Name of the Bouquet"
 msgstr ""
 
-#: ../plugin/local.py:392
+#: ../plugin/local.py:393
 msgid "Name of the Marker"
 msgstr ""
 
-#: ../plugin/local.py:393
+#: ../plugin/local.py:394
 msgid "Enter new name for the bouquet"
 msgstr ""
 
-#: ../plugin/local.py:394
+#: ../plugin/local.py:395
 msgid "Enter new name for the marker"
 msgstr ""
 
-#: ../plugin/local.py:395
+#: ../plugin/local.py:396
 msgid "Please enter filename"
 msgstr ""
 
-#: ../plugin/local.py:396
+#: ../plugin/local.py:397
 msgid "Do you really want to restore from file"
 msgstr ""
 
-#: ../plugin/plugin.py:94
-msgid "OpenWebif url: http://yourip:port"
-msgstr ""
-
-#: ../plugin/plugin.py:108
-msgid "OpenWebInterface Enabled"
-msgstr ""
-
-#: ../plugin/plugin.py:115
-msgid "HTTP port"
-msgstr ""
-
-#: ../plugin/plugin.py:116
-msgid "Enable HTTP Authentication"
-msgstr ""
-
-#: ../plugin/plugin.py:117
-msgid "Enable HTTPS"
-msgstr ""
-
-#: ../plugin/plugin.py:119
-msgid "HTTPS port"
-msgstr ""
-
-#: ../plugin/plugin.py:120
-msgid "Enable HTTPS Authentication"
-msgstr ""
-
-#: ../plugin/plugin.py:121
-msgid "Require client cert for HTTPS"
-msgstr ""
-
-#: ../plugin/plugin.py:123
-msgid "Enable Authentication for streaming"
-msgstr ""
-
-#: ../plugin/plugin.py:124
-msgid "Disable access for user root"
-msgstr ""
-
-#: ../plugin/plugin.py:125
-msgid "Smart services renaming for XBMC"
-msgstr ""
-
-#: ../plugin/plugin.py:126
-msgid "Enable Parental Control"
-msgstr ""
-
-#: ../plugin/plugin.py:127
-msgid "Add service name to stream information"
-msgstr ""
-
-#: ../plugin/plugin.py:129
-msgid "Character encoding for EPG data"
-msgstr ""
-
-#: ../plugin/plugin.py:135 ../plugin/plugin.py:194 ../plugin/plugin.py:196
-#: ../plugin/plugin.py:198
-msgid "OpenWebif Configuration"
-msgstr ""
-
-msgid "Record+ZAP"
-msgstr ""
-
+#: ../plugin/local.py:399
 msgid "via"
 msgstr ""
 
+#: ../plugin/local.py:400
+msgid "Record+ZAP"
+msgstr ""
+
+#: ../plugin/local.py:401
 msgid "Pmtpid"
 msgstr ""
 
+#: ../plugin/local.py:402
 msgid "Apid"
 msgstr ""
 
+#: ../plugin/local.py:403
 msgid "Vpid"
 msgstr ""
 
+#: ../plugin/local.py:404
 msgid "Pcrpid"
 msgstr ""
 
+#: ../plugin/local.py:405
 msgid "Tsid"
 msgstr ""
 
+#: ../plugin/local.py:406
 msgid "Onid"
 msgstr ""
 
+#: ../plugin/local.py:407
 msgid "Sid"
 msgstr ""
 
+#: ../plugin/local.py:408
 msgid "Sref"
+msgstr ""
+
+#: ../plugin/local.py:410
+msgid "error! Loading Page"
+msgstr ""
+
+#: ../plugin/local.py:411
+msgid "Timer Added"
+msgstr ""
+
+#: ../plugin/local.py:412
+msgid "Event not found"
+msgstr ""
+
+#: ../plugin/local.py:414
+msgid "OpenWebif Browser Settings"
+msgstr ""
+
+#: ../plugin/local.py:415
+msgid "OpenWebif Settings"
+msgstr ""
+
+#: ../plugin/local.py:416
+msgid "Theme"
+msgstr ""
+
+#: ../plugin/local.py:417
+msgid "Show Picon in channel list"
+msgstr ""
+
+#: ../plugin/local.py:418
+msgid "Spinner"
+msgstr ""
+
+#: ../plugin/plugin.py:103
+msgid "OpenWebif url: http://yourip:port"
+msgstr ""
+
+#: ../plugin/plugin.py:117
+msgid "OpenWebInterface Enabled"
+msgstr ""
+
+#: ../plugin/plugin.py:124
+msgid "HTTP port"
+msgstr ""
+
+#: ../plugin/plugin.py:125
+msgid "Enable HTTP Authentication"
+msgstr ""
+
+#: ../plugin/plugin.py:126
+msgid "Enable HTTPS"
+msgstr ""
+
+#: ../plugin/plugin.py:128
+msgid "HTTPS port"
+msgstr ""
+
+#: ../plugin/plugin.py:129
+msgid "Enable HTTPS Authentication"
+msgstr ""
+
+#: ../plugin/plugin.py:130
+msgid "Require client cert for HTTPS"
+msgstr ""
+
+#: ../plugin/plugin.py:132
+msgid "Enable Authentication for streaming"
+msgstr ""
+
+#: ../plugin/plugin.py:133
+msgid "Disable access for user root"
+msgstr ""
+
+#: ../plugin/plugin.py:134
+msgid "Enable Parental Control"
+msgstr ""
+
+#: ../plugin/plugin.py:135
+msgid "Add service name to stream information"
+msgstr ""
+
+#: ../plugin/plugin.py:137
+msgid "Character encoding for EPG data"
+msgstr ""
+
+#: ../plugin/plugin.py:146 ../plugin/plugin.py:205 ../plugin/plugin.py:207
+#: ../plugin/plugin.py:209
+msgid "OpenWebif Configuration"
 msgstr ""
