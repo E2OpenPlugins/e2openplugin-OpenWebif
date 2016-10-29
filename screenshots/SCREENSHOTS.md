@@ -1,4 +1,5 @@
 # OpenWebif Screenshots
+![FullScreen](SCREENSHOTSFS.md)
 
 ## Main Screen
 
