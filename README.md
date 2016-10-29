@@ -1,19 +1,16 @@
 [![Build Status](https://travis-ci.org/E2OpenPlugins/e2openplugin-OpenWebif.svg?branch=master)](https://travis-ci.org/E2OpenPlugins/e2openplugin-OpenWebif)
 [![Current release](https://img.shields.io/github/release/E2OpenPlugins/e2openplugin-OpenWebif.svg?style=flat-square)](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/releases)
 
-OpenWebif
-=========
+# OpenWebif
 Open Source Web Interface for E2 based Linux set-top box
 
-Screenshot Version 1.0.x
--------
-![](screenshots/Image1.jpg)
-![](screenshots/Image2.jpg)
-![](screenshots/Image3.jpg)
+## Changelog
+[Link](CHANGES.md)
 
+## Screenshots
+[Link](screenshots/SCREENSHOTS.md)
 
-Depends
--------
+## Depends
 python-pprint
 python-cheetah
 python-json
@@ -23,6 +20,5 @@ python-twisted-web
 python-pyopenssl
 python-compression
 
-License
--------
+## License
 Licensed under the GNU General Public License, Version 2.0. See [LICENSE](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt) for more details.

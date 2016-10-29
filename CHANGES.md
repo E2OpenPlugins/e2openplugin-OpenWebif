@@ -3,8 +3,13 @@
 **FEATURES**
 * powertimer api
 
-## Version 1.0.0
+## Version 1.0.1
 ## (in development)
+* improve theme support
+* update translations
+* fix settings
+
+## Version 1.0.0
 **FEATURES**
 * removed "Smart services renaming for XBMC" and replaced with url parameter "renameserviceforxmbc=1" for getallservices 
 * new theme setting
