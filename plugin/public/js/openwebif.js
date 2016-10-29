@@ -790,20 +790,6 @@ $(function() {
 });
 
 $(function() {
-	$("input[name=zapstream]").click(function(evt) {
-		$('input[name=zapstream]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("/api/zapstream?checked=" + evt.currentTarget.checked);
-	});
-});
-
-$(function() {
-	$("input[name=showchannelpicon]").click(function(evt) {
-		$('input[name=showchannelpicon]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("/api/showchannelpicon?checked=" + evt.currentTarget.checked);
-	});
-});
-
-$(function() {
 	$("input[name=epgsearchtype]").click(function(evt) {
 		$('input[name=epgsearchtype]').attr('checked', evt.currentTarget.checked);
 		webapi_execute("/api/epgsearchtype?checked=" + evt.currentTarget.checked);
@@ -1340,6 +1326,11 @@ function InitBouquets(tv)
 				$("#btn5").click();
 				return;
 			}
+			else if (parts[2] == 'current')
+			{
+				$("#btn0").click();
+				return;
+			}
 		}
 	}
 	
@@ -1431,23 +1422,21 @@ function directlink()
 {
 	var parts=window.location.href.toLowerCase().split("#");
 	var lnk='ajax/tv';
-	if(parts[1] == 'radio')
+	var p = parts[1];
+
+	switch (p)
 	{
-		lnk='ajax/radio';
+		case 'radio':
+		case 'movies':
+		case 'timer':
+		case 'settings':
+		case 'at':
+		case 'bqe':
+		case 'epgr':
+			lnk='ajax/' + p;
+			break;
 	}
-	if(parts[1] == 'movies')
-	{
-		lnk='ajax/movies';
-	}
-	if(parts[1] == 'timer')
-	{
-		lnk='ajax/timers';
-	}
-	if(parts[1] == 'settings')
-	{
-		lnk='ajax/settings';
-	}
-	if(parts[1] != 'tv') {
+	if(p != 'tv') {
 		window.location.hash="";
 	}
 	

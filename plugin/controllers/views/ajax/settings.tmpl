@@ -80,6 +80,22 @@
 </div>
 #raw
 <script type="text/javascript">
+function load_theme() {
+	$("#scontent").html('');
+	$("#osettings").show();
+	$("#selectheme").change(function() {
+	ChangeTheme($(this).val());
+	});
+	return false;
+}
+
+function load_scontent(url) {
+	$("#osettings").hide();
+	$("#scontent").load(url , function () {
+		$("#scontent").find("#content_main").attr("id","content_main1");
+	});
+	return false;
+}
 $(function() { 
 	$( "#slist" ).selectable({
 		selected: function( event, ui ) {
@@ -111,21 +127,15 @@ $(function() {
 	$('#fsspinner > label').css('padding-right','10px');
 	$("#themesbtn").addClass(getActiveCls());
 
+	$("input[name=zapstream]").click(function(evt) {
+		$('input[name=zapstream]').attr('checked', evt.currentTarget.checked);
+		webapi_execute("/api/zapstream?checked=" + evt.currentTarget.checked);
+	});
+
+	$("input[name=showchannelpicon]").click(function(evt) {
+		$('input[name=showchannelpicon]').attr('checked', evt.currentTarget.checked);
+		webapi_execute("/api/showchannelpicon?checked=" + evt.currentTarget.checked);
+	});
 });
-	function load_theme() {
-		$("#scontent").html('');
-		$("#osettings").show();
-		$("#selectheme").change(function() {
-			ChangeTheme($(this).val());
-		});
-		return false;
-	}
-	function load_scontent(url) {
-		$("#osettings").hide();
-		$("#scontent").load(url , function () {
-			$("#scontent").find("#content_main").attr("id","content_main1");
-		});
-		return false;
-	}
 </script>
 #end raw

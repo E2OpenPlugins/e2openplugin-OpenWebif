@@ -233,11 +233,12 @@ fieldset > label
 						<button id="atbutton7">$tstrings['at_settings']</button>
 						</div>
 					</div>
-					<div id="errorbox" class="timerlist_row" style="color: red;">
-					<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
-					<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span></p>
-						<span id="error"></span>
-						<span id="success" style="color: green;"></span>
+					<div id="statuscont" style="display:none">
+					<div id="statusbox" class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+						<p>
+							<span id="statusicon" class="ui-icon ui-icon-alert" style="margin-right: .3em;"></span> 
+							<span id="statustext"></span>
+						</p>
 					</div>
 					</div>
 			</div>
@@ -311,7 +312,7 @@ fieldset > label
 
 <script type="text/javascript" src="/js/jquery-ui-timepicker-addon.min.js"></script>
 <script type="text/javascript" src="/js/chosen.jquery.min.js"></script>
-<script type="text/javascript" src="/js/at-2.0.min.js"></script>
+<script type="text/javascript" src="/js/at-2.1.min.js"></script>
 <script type="text/javascript">
 #raw
 $(function() { InitPage();});

@@ -1,6 +1,6 @@
 //******************************************************************************
 //* bqe.js: openwebif Bouqueteditor plugin
-//* Version 2.1
+//* Version 2.2
 //******************************************************************************
 //* Copyright (C) 2014-2016 Joerg Bleyel
 //* Copyright (C) 2014-2016 E2OpenPlugins
@@ -10,6 +10,7 @@
 
 //* V 2.0 - complete refactored
 //* V 2.1 - theme support
+//* V 2.2 - update status label
 
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
@@ -493,19 +494,21 @@
 			// @param st bool False: error, True: success
 			showError: function (txt, st) {
 				st = typeof st !== 'undefined' ? st : 'False';
-				$('#success').text('');
-				$('#error').text('');
+				$('#statustext').text('');
 			
-				if (st === true || st === 'True') {
-					$('#success').text(txt);
+				if (st === true || st === 'True' || st === 'true') {
+					$('#statusbox').removeClass('ui-state-error').addClass('ui-state-highlight');
+					$('#statusicon').removeClass('ui-icon-alert').addClass('ui-icon-info');
 				} else {
-					$('#error').text(txt);
+					$('#statusbox').removeClass('ui-state-highlight').addClass('ui-state-error');
+					$('#statusicon').removeClass('ui-icon-info').addClass('ui-icon-alert');
 				}
+				$('#statustext').text(txt);
 			
 				if (txt !== '') {
-					$('#errorbox').show();
+					$('#statuscont').show();
 				} else {
-					$('#errorbox').hide();
+					$('#statuscont').hide();
 				}
 			},
 

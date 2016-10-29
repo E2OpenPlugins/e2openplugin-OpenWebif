@@ -1,11 +1,12 @@
 //******************************************************************************
 //* epgr.js: openwebif EPGRefresh plugin
-//* Version 1.0
+//* Version 1.1
 //******************************************************************************
 //* Copyright (C) 2014 Joerg Bleyel
 //* Copyright (C) 2014 E2OpenPlugins
 //*
 //* V 1.0 - Initial Version
+//* V 1.1 - Theme Support
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //*
@@ -327,7 +328,7 @@ function InitPage() {
 	$("#epgrbutton1").button({icons: { primary: "ui-icon-disk"}});
 	$("#epgrbutton2").click(function () { DoRefresh(); });
 	// TODO: icons
-	$('#errorbox').hide();
+	$('#statuscont').hide();
 }
 
 
@@ -350,16 +351,22 @@ function DoRefresh()
 
 function showError(txt,st)
 {
-	st = typeof st !== 'undefined' ? st : "False";
-	$('#success').text("");
-	$('#error').text("");
-	if(st === "True")
-		$('#success').text(txt);
-	else
-		$('#error').text(txt);
-	if(txt!=="")
-		$('#errorbox').show();
-	else
-		$('#errorbox').hide();
+	st = typeof st !== 'undefined' ? st : 'False';
+	$('#statustext').text('');
+
+	if (st === true || st === 'True' || st === 'true') {
+		$('#statusbox').removeClass('ui-state-error').addClass('ui-state-highlight');
+		$('#statusicon').removeClass('ui-icon-alert').addClass('ui-icon-info');
+	} else {
+		$('#statusbox').removeClass('ui-state-highlight').addClass('ui-state-error');
+		$('#statusicon').removeClass('ui-icon-info').addClass('ui-icon-alert');
+	}
+	$('#statustext').text(txt);
+
+	if (txt !== '') {
+		$('#statuscont').show();
+	} else {
+		$('#statuscont').hide();
+	}
 }
 

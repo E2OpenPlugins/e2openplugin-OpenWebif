@@ -113,13 +113,16 @@ label
 	<button id="epgrbutton1">$tstrings['er_save']</button>
 	<button id="epgrbutton2">$tstrings['er_refresh']</button>
 	</div></div>
-	<div id="errorbox" class="timerlist_row" style="color: red;margin-top:10px;">
-	<div class="ui-state-error ui-corner-all" style="padding:.7em;"> 
-	<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
-	<span id="error"></span>
-	<span id="success" style="color: green;"></span>
+	
+	<div id="statuscont" style="display:none;margin-top:10px;">
+	<div id="statusbox" class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+		<p>
+			<span id="statusicon" class="ui-icon ui-icon-alert" style="margin-right: .3em;"></span> 
+			<span id="statustext"></span>
+		</p>
 	</div>
-</div>
+	</div>
+	
 </div>
 </div>
 </div>
