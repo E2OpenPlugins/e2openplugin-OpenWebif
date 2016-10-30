@@ -835,7 +835,9 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None):
 				picons[channel] = getPicon(event[4])
 
 			slot = int((event[1]-offset) / 7200)
-			if slot > -1 and slot < 12 and event[1] < lastevent:
+			if slot < 0:
+				slot = 0
+			if slot < 12 and event[1] < lastevent:
 				ret[channel][slot].append(ev)
 
 	return { "events": ret, "result": True, "picons": picons }
