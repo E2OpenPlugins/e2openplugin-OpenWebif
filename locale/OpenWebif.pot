@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2016-10-31 15:11+0100\n"
+"POT-Creation-Date: 2016-10-31 20:27+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -2022,6 +2022,10 @@ msgstr ""
 
 #: ../plugin/local.py:417
 msgid "Mutli EPG Mode"
+msgstr ""
+
+#: ../plugin/local.py:419
+msgid "Display duraton (s)"
 msgstr ""
 
 #: ../plugin/plugin.py:103
