@@ -2025,7 +2025,7 @@ msgid "Mutli EPG Mode"
 msgstr ""
 
 #: ../plugin/local.py:419
-msgid "Display duraton (s)"
+msgid "Display duration (s)"
 msgstr ""
 
 #: ../plugin/plugin.py:103
