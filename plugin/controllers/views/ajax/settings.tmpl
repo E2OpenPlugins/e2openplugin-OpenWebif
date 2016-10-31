@@ -49,7 +49,6 @@
 				#end if
 				</td></tr>
 				<tr><td>$tstrings['tstr_spinner']</td><td>
-				<div>
 				<span class="spinner">
 				<fieldset style="border:none;" id="fsspinner">
 				<label for="fa-spinner"><i class="fa fa-spinner"></i></label>
@@ -69,6 +68,16 @@
 				</fieldset>
 				</span>
 				</td></tr>
+				<tr><td>$tstrings['tstr_mepg_mode']</td><td>
+				<span class="mepgmode">
+				<fieldset style="border:none;" id="fsmepgmode">
+				<label for="MM_1">Mode 1</label>
+				<input type="radio" name="MMODE" id="MM_1">
+				<label for="MM_2">Mode 2</label>
+				<input type="radio" name="MMODE" id="MM_2">
+				</fieldset>
+				</span>
+				</td></tr>
 				</table>
 			</div>
 		</div>
@@ -77,8 +86,9 @@
 		</div>
 	</div>
 </div>
-#raw
 <script type="text/javascript">
+var mepgmode=$mepgmode;
+#raw
 function load_theme() {
 	$("#scontent").html('');
 	$("#osettings").show();
@@ -112,13 +122,21 @@ $(function() {
 	});
 	load_theme();
 	
-	$( ".spinner input[type='radio']" ).checkboxradio({ icon: false });
-	$( ".spinner fieldset" ).controlgroup();
+	$(".spinner input[type='radio']").checkboxradio({ icon: false });
+	$(".spinner fieldset").controlgroup();
 	var spin = GetLSValue('spinner','fa-spinner');
 	$('#'+spin).attr('checked', true).checkboxradio("refresh");
 	$(".spinner input:radio").change(function() {
 		SetLSValue('spinner',$(this).attr('id'));
 		SetSpinner();
+	});
+
+	$(".mepgmode input[type='radio']" ).checkboxradio({ icon: false });
+	$(".mepgmode fieldset" ).controlgroup();
+	$("#MM_"+mepgmode).attr('checked', true).checkboxradio("refresh");
+	$(".mepgmode input:radio").change(function() {
+		var nm = $(this).attr('id').split("_").pop();
+		webapi_execute("/api/setmepgmode?mode=" + nm);
 	});
 	
 	setHover('#slist li');

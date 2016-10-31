@@ -208,6 +208,9 @@ class AjaxController(BaseController):
 			ret['theme'] = 'original'
 		ret['zapstream'] = getZapStream()['zapstream']
 		ret['showchannelpicon'] = getShowChPicon()['showchannelpicon']
+		if config.OpenWebif.webcache.mepgmode.value:
+			ret['mepgmode'] = str(config.OpenWebif.webcache.mepgmode.value)
+		ret['mepgmode'] = '1'
 		return ret
 
 	def P_multiepg(self, request):
@@ -216,9 +219,7 @@ class AjaxController(BaseController):
 			bref = bouq['bouquets'][0][0]
 		else:
 			bref = request.args["bref"][0]
-
 		endtime = 1440
-				
 		begintime = -1
 		day = 0
 		if "day" in request.args.keys():
@@ -228,12 +229,17 @@ class AjaxController(BaseController):
 				begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day, 0, 0, 0, -1, -1, -1) )
 			except Exception, e:
 				pass
-
-		epg = getMultiEpg(self, bref, begintime, endtime)
+		mode = 1
+		if config.OpenWebif.webcache.mepgmode.value:
+			try:
+				mode = int(config.OpenWebif.webcache.mepgmode.value)
+			except Exception, e:
+				pass
+		epg = getMultiEpg(self, bref, begintime, endtime, mode)
 		epg['bouquets'] = bouq['bouquets']
 		epg['bref'] = bref
 		epg['day'] = day
-
+		epg['mode'] = mode
 		return epg
 
 	def P_at(self, request):

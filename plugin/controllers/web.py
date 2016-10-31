@@ -1207,3 +1207,16 @@ class WebController(BaseController):
 		else:
 			ret['theme'] = 'redmond'
 		return ret
+
+	def P_setmepgmode(self, request):
+		if "mode" in request.args.keys():
+			try:
+				mode = request.args["mode"][0]
+				config.OpenWebif.webcache.mepgmode.value = int(mode)
+				config.OpenWebif.webcache.mepgmode.save()
+			except Exception, e:
+				pass
+		return {}
+	
+
+
