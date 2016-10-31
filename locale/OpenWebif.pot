@@ -2021,7 +2021,7 @@ msgid "Spinner"
 msgstr ""
 
 #: ../plugin/local.py:417
-msgid "Mutli EPG Mode"
+msgid "Multi EPG Mode"
 msgstr ""
 
 #: ../plugin/local.py:419

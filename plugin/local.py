@@ -415,7 +415,7 @@ tstrings = {'mo': _("Mo"),
 	'tstr_theme': _("Theme"),
 	'tstr_show_picon_in_channel_list': _("Show Picon in channel list"),
 	'tstr_spinner': _("Spinner"),
-	'tstr_mepg_mode': _("Mutli EPG Mode"),
+	'tstr_mepg_mode': _("Multi EPG Mode"),
 	'display_duration_s': _("Display duration (s)"),
 
 	}

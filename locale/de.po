@@ -2022,8 +2022,8 @@ msgid "Spinner"
 msgstr "Spinner"
 
 #: ../plugin/local.py:417
-msgid "Mutli EPG Mode"
-msgstr "Mutli EPG Modus"
+msgid "Multi EPG Mode"
+msgstr "Multi EPG Modus"
 
 #: ../plugin/local.py:419
 msgid "Display duration (s)"
