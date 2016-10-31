@@ -24,10 +24,10 @@
 		<span id="toolbar">
 		#set $path=''
 		<span id="moviebuttons">
-			<!-- <button onclick="load_maincontent_spin('ajax/movies?dirname=/'); return false">$tstrings['Root']</button>-->
+			<!-- <button onclick="load_maincontent_spin('../ajax/movies?dirname=/'); return false">$tstrings['Root']</button>-->
 			#for $dir in $directory[0:-1].split("/")[1:-1]
 				#set $path += '/' + $dir
-				<button onclick="load_maincontent_spin('ajax/movies?dirname='+escape('$path'));">$dir</button>
+				<button onclick="load_maincontent_spin('../ajax/movies?dirname='+escape('$path'));">$dir</button>
 			#end for
 			#if $directory != '/'
 				<button class="ui-state-active"><span style="font-weight: bold;">
@@ -57,7 +57,7 @@
 						<a href="#" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream']: $movie.eventname"><div><i class="fa fa-desktop"></i></div></a>
 						<a href="#" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] ($tstrings['transcoded']): $movie.eventname"><div><i class="fa fa-mobile"></i></div></a>
 						#else
-						<a target="_blank" href='web/ts.m3u?file=$quote($movie.filename)' title="$tstrings['stream'] $movie.eventname"><div><i class="fa fa-desktop"></i></div></a>
+						<a target="_blank" href='../web/ts.m3u?file=$quote($movie.filename)' title="$tstrings['stream'] $movie.eventname"><div><i class="fa fa-desktop"></i></div></a>
 						#end if
 						<br><br>
 						#set $w = $movie.lastseen
@@ -110,7 +110,7 @@
 
 #if $len($bookmarks)
 \$("#directory").selectmenu({change: function(event, ui) {
-	load_maincontent_spin('ajax/movies?dirname='+escape(ui.item.value))
+	load_maincontent_spin('../ajax/movies?dirname='+escape(ui.item.value))
 }
 });
 

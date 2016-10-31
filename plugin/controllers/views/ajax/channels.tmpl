@@ -13,7 +13,7 @@
 			<a href="#" onclick="jumper8001('$channel.ref', '$channel.name');" title="$tstrings['stream']: $channel.name"><i class="fa fa-desktop"></i></a>
 			<a href="#" onclick="jumper8002('$channel.ref', '$channel.name');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel.name"><i class="fa fa-mobile"></i></a>
 			#else
-			<a target="_blank" href='web/stream.m3u?ref=$channel.ref&name=$channel.name' title="$tstrings['stream'] $channel.name"><i class="fa fa-desktop"></i></a>
+			<a target="_blank" href='../web/stream.m3u?ref=$channel.ref&name=$channel.name' title="$tstrings['stream'] $channel.name"><i class="fa fa-desktop"></i></a>
 			#end if
 			#else
 			<a target="_blank" href='#' title="$tstrings['locked']"><i class="fa fa-lock"></i></a>

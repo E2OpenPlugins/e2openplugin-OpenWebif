@@ -1,12 +1,13 @@
 //******************************************************************************
 //* epgr.js: openwebif EPGRefresh plugin
-//* Version 1.1
+//* Version 1.2
 //******************************************************************************
 //* Copyright (C) 2014 Joerg Bleyel
 //* Copyright (C) 2014 E2OpenPlugins
 //*
 //* V 1.0 - Initial Version
 //* V 1.1 - Theme Support
+//* V 1.2 - use relativ links
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //*
@@ -35,7 +36,7 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 
 function saveEPGR()
 {
-	var reqs = "/epgrefresh/set?&enabled=";
+	var reqs = "../epgrefresh/set?&enabled=";
 	reqs += $('#er_enabled').is(':checked') ? "true":"";
 	reqs += "&enablemessage=";
 	reqs += $('#er_enablemessage').is(':checked') ? "true":"";
@@ -106,7 +107,7 @@ function SaveCHBQ()
 		});
 	}
 
-	var reqss = "/epgrefresh/add?multi=1";
+	var reqss = "../epgrefresh/add?multi=1";
 	
 	if (reqs!="")
 		reqss+= reqs;
@@ -136,7 +137,7 @@ function readEPGR2(chbq)
 	er_hasAutoTimer = false;
 
 	$.ajax({
-		type: "GET", url: "/epgrefresh/get",
+		type: "GET", url: "../epgrefresh/get",
 		dataType: "xml",
 		success: function (xml)
 		{
@@ -247,7 +248,7 @@ function UpdateCHBQ(chbq,begin,end)
 function readEPGR()
 {
 	$.ajax({
-		type: "GET", url: "/epgrefresh",
+		type: "GET", url: "../epgrefresh",
 		dataType: "xml",
 		success: function (xml)
 		{
@@ -268,7 +269,7 @@ function reloadEPGR()
 function getAllServices()
 {
 	// TODO: Errorhandling
-	$.getJSON( "/api/getallservices", function( data ) {
+	$.getJSON( "../api/getallservices", function( data ) {
 		var bqs = data['services'];
 		var options = "";
 		var boptions = "";
@@ -335,7 +336,7 @@ function InitPage() {
 function DoRefresh()
 {
 	$.ajax({
-		type: "GET", url: "/epgrefresh/refresh",
+		type: "GET", url: "../epgrefresh/refresh",
 		dataType: "xml",
 		success: function (xml)
 		{
