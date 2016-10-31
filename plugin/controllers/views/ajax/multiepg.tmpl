@@ -124,7 +124,7 @@
 #else
 <div class="wrapper">
 <div id="tbl1body" style="position: relative; width: 100%;">
-	<div id="tblinner" style="height: auto;width: 100%; overflow: auto; white-space: nowrap;">
+	<div id="tblinner" style="height: auto;width: 100%; white-space: nowrap;">
 	<div class="timetable">
 	<div>
 	<div class="timetable-now"></div>
@@ -247,8 +247,11 @@ function fixTableHeight() {
 		addScrollBarWidth = 0;
 	}
 	
+#if $mode == 1
 	\$("#tbl1body").height( (\$("#tvcontent").height() - \$("#navepg").height() - 2*\$("#tbl1 thead").height() - addScrollBarWidth - 2) + "px");
-	
+#else
+	\$("#tbl1body").height( (\$("#tvcontent").height() - \$("#navepg").height() - 20 - addScrollBarWidth - 2) + "px");
+#end if
 	if (!\$('#toolbar-header').is(':visible')) { 
 		var dh = \$(window).height();
 		\$("#tvcontentmain").height(dh-80);
