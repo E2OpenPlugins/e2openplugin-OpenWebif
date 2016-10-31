@@ -149,10 +149,13 @@ def getCurrentFullInfo(session):
 	frontendData = feinfo and feinfo.getAll(True)
 
 	if frontendData is not None:
+		cur_info = feinfo.getTransponderData(True)
 		inf['tunertype'] = frontendData.get("tuner_type", "UNKNOWN")
 		if frontendData.get("system", -1) == 1:
 			inf['tunertype'] = "DVB-S2"
 		inf['tunernumber'] = frontendData.get("tuner_number")
+		if cur_info:
+			inf['orbital_position'] = cur_info.get('orbital_position', None)
 	else:
 		inf['tunernumber'] = "N/A"
 		inf['tunertype'] = "N/A"
