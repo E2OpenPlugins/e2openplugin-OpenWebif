@@ -1,6 +1,6 @@
 //******************************************************************************
 //* bqe.js: openwebif Bouqueteditor plugin
-//* Version 2.2
+//* Version 2.3
 //******************************************************************************
 //* Copyright (C) 2014-2016 Joerg Bleyel
 //* Copyright (C) 2014-2016 E2OpenPlugins
@@ -11,6 +11,7 @@
 //* V 2.0 - complete refactored
 //* V 2.1 - theme support
 //* V 2.2 - update status label
+//* V 2.3 - fix #198
 
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
@@ -145,7 +146,8 @@
 			getSatellites: function (callback) {
 				self.cType = 0;
 				var ref = self.buildRefStr(2);
-				$.getJSON( '/api/getsatellites?sRef=' + ref, function ( data ) {
+				var stype = (self.Mode === 0) ? '' : '&stype=radio';
+				$.getJSON( '/api/getsatellites?sRef=' + ref + stype, function ( data ) {
 					var options = '';
 					var s = data['satellites'];
 					$.each( s, function ( key, val ) {
