@@ -534,10 +534,14 @@ function toggleTimerStatus(sRef, begin, end) {
 		dataType: "json",
 		data:data,
 		success: function(result) { 
-			var obj = $('#img-'+begin+'-'+end + ' > i');
-			obj.removeClass("fa-square-o");
-			obj.removeClass("fa-check-square-o");
-			obj.addClass(result['disabled'] ? "fa-square-o" : "fa-check-square-o");
+			
+			$('#img-'+begin+'-'+end + ' > i').each( function (){ 
+				if( $(this).data("ref") == sRef) {
+					$(this).removeClass("fa-square-o");
+					$(this).removeClass("fa-check-square-o");
+					$(this).addClass(result['disabled'] ? "fa-square-o" : "fa-check-square-o");
+				}
+			});
 		},
 		error: function(data) {}
 	});

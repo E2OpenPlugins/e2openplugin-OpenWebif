@@ -24,9 +24,9 @@
 						<a href='#' onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$tname');" title="$tstrings['delete_timer']"><div><i class="fa fa-trash-o"></i></div></a>
 						<a href='#' onClick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end');" 
 						#if $timer.disabled
-						title="$tstrings['enable_timer']"><div id="img-$timer.begin-$timer.end"><i class="fa fa-square-o">
+						title="$tstrings['enable_timer']"><div id='img-$timer.begin-$timer.end'><i data-ref="$sref" class="fa fa-square-o">
 						#else
-						title="$tstrings['disable_timer']"><div id="img-$timer.begin-$timer.end"><i class="fa fa-check-square-o">
+						title="$tstrings['disable_timer']"><div id='img-$timer.begin-$timer.end'><i data-ref="$sref" class="fa fa-check-square-o">
 						#end if
 						</i></div></a>
 						</div>
