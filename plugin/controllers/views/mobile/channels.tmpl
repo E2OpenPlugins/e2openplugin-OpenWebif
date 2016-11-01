@@ -22,11 +22,12 @@
 				#for $channel in $channels
 				<li>
 				<a href="/mobile/channelinfo?sref=$channel.ref" style="padding: 3px;">
-				<span class="ui-li-heading" style="margin-top: 0px; margin-bottom: 3px;">$channel.name</span>
+				<h3>$channel.name</h3>
 				#if $channel.has_key('now_title')
-				<span class="ui-li-desc" style="margin-bottom: 0px;">$channel.now_title</span>
+				<p>$channel.now_title</p>
 				#end if	
 				</a>
+				<a href="#" onclick="dlg('$channel.ref', '$channel.name');return false;" aria-expanded="false" class="ui-btn ui-btn-icon-notext ui-icon-gear ui-btn-a" title="...more"></a>
 				</li>
 				#end for
 			</ul>
@@ -35,6 +36,73 @@
 			<p>OpenWebif Mobile</p>
 			<a onclick="document.location.href='/index?mode=fullpage';return false;" href="#">$tstrings['show_full_openwebif']</a>
 		</div>
+
+	<div data-role="popup" id="stream" data-theme="b">
+		<div data-role="content" data-theme="b">
+			<span class="title">Stream</span>
+			<a href="#home" onclick="zapChannel();" data-role="button" data-theme="a">$tstrings['zap']</a>
+			<a href="#home" onclick="jumper8001();" data-role="button" data-theme="a">$tstrings['stream']</a>
+			<a href="#home" onclick="jumper8002();" data-role="button" data-theme="a">$tstrings['stream'] ($tstrings['transcoded'])</a>
+			<a href="#home" data-role="button" data-theme="d" data-rel="back">Cancel</a>
+		</div>
 	</div>
- </body>
+</div>
+
+	<form name="portForm" action="/web/stream.m3u" method="GET" target="_blank">
+		<input type="hidden" name="ref">
+		<input type="hidden" name="name">
+		<input type="hidden" name="device">
+	</form>
+	<form name="portFormTs" action="/web/ts.m3u" method="GET" target="_blank">
+		<input type="hidden" name="file">
+		<input type="hidden" name="device">
+	</form>
+
+
+</body>
+<script>
+#raw
+
+$(document).ready(function(){
+	$("#stream").popup();
+});
+
+var sref='';
+var sname='';
+
+function webapi_execute(url) {
+	var jqxhr = $.ajax( url ).done(function() { 
+	});
+}
+
+function zapChannel() {
+	var url = '/api/zap?sRef=' + escape(sref);
+	webapi_execute(url);
+}
+
+function jumper8002( ) {
+	document.portForm.ref.value = sref;
+	document.portForm.name.value = sname;
+	document.portForm.device.value = "phone";
+	document.portForm.submit();
+}
+
+function jumper8001( ) {
+	document.portForm.ref.value = sref;
+	document.portForm.name.value = sname;
+	document.portForm.device.value = "etc";
+	document.portForm.submit();
+}
+
+function dlg(a,b)
+{
+	sref = a;
+	sname = b;
+	
+	$("#stream").popup("open"); 
+}
+
+
+</script>
+#end raw
 </html>
