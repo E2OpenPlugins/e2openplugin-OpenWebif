@@ -22,12 +22,24 @@
 	.ui-widget-content.nobg , .ui-widget-header.nobg{ background-image: none; } 
 	.wrapper { overflow-x: auto; width: 100%; -ms-overflow-style: -ms-autohiding-scrollbar;}
 	td.border { width: 190px; }
+	.plus.ui-state-default.lbl { border:none; background:none; cursor:default; color:inherit;}
 </style>
 
 <div id="navepg">
 #for $slot in range(0,7)
 	<div class="float plus ui-state-default #if $slot==$day then 'ui-state-active' else '' #" data-day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div>
 #end for
+<div class="float plus ui-state-default lbl">&nbsp;$tstrings['display_mode']:&nbsp;</div>
+<div class="float plus ui-state-default #if $mode==1 then 'ui-state-active' else '' #" data-day="101">$tstrings['tv_guide']</div>
+<div class="float plus ui-state-default #if $mode==2 then 'ui-state-active' else '' #" data-day="102">$tstrings['timeline']</div>
+#if $mode == 2
+<!-- TODO
+<div class="float plus ui-state-default lbl">&nbsp;Primetimes:&nbsp;</div>
+<div class="float plus ui-state-default data-day="201">06:00</div>
+<div class="float plus ui-state-default data-day="202">12:00</div>
+<div class="float plus ui-state-default data-day="203">20:00</div>
+-->
+#end if
 <div id="compressmepg" onclick="CompressMEPG();"><i id="compressmepgi" class="fa fa-compress link" aria-hidden="true"></i></div>
 <div id="refreshmepg" onclick="RefreshMEPG();"><i id="refreshmepgi" class="fa fa-refresh link" aria-hidden="true"></i></div>
 	<br clear="all">
@@ -124,7 +136,7 @@
 #else
 <div class="wrapper">
 <div id="tbl1body" style="position: relative; width: 100%;">
-	<div id="tblinner" style="height: auto;width: 100%; white-space: nowrap;">
+	<div id="tblinner" style="height: auto;width: 100%; white-space: nowrap;overflow-y: hidden;">
 	<div class="timetable">
 	<div>
 	<div class="timetable-now"></div>
@@ -147,9 +159,9 @@
 					#set $t = $first + ($slot * 3600)
 					<li class="event" style="width:600px;" >
 						<span class="ui-widget-header nobg">
-							<span class="ename">$strftime("%H:%M", $localtime($t))</span>
+							<span class="ename">$tstrings[("day_" + ($strftime("%w",$localtime($t))))], $strftime('%d.%m.', $localtime($t))</span>
 							<span class="etime">
-								<span>$strftime("%A / %e / %B", $localtime($t))</span>
+								<span>$strftime("%H:%M", $localtime($t))</span>
 							</span>
 						</span>
 					</li>
@@ -276,7 +288,28 @@ fixTableHeight();
 });
 \$(".plus").click(function() {
 	var day = \$(this).data("day");
-	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day='+day);
+	if (day != undefined) {
+		if (day > 200)
+		{
+			// todo primetime
+		}
+		else if (day > 100)
+		{
+			var mode = day - 100;
+			if (mode != $mode) {
+			
+				$.ajax({
+				url: 'api/setmepgmode?mode=' + mode,
+					success: function(data) {
+						\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day=$day');
+					}
+				});
+			}
+		}
+		else {
+			\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day='+day);
+		}
+	}
 });
 if(!timeredit_initialized)
 	\$('#editTimerForm').load('/ajax/edittimer');
