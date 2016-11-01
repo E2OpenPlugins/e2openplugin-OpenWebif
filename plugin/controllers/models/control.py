@@ -13,6 +13,19 @@ from enigma import eServiceReference, eActionMap, eServiceCenter
 from urllib import unquote
 from services import getProtection
 from Screens.InfoBar import InfoBar, MoviePlayer
+import NavigationInstance
+
+def getPlayingref(ref):
+	playingref = None
+	if NavigationInstance.instance:
+		playingref = NavigationInstance.instance.getCurrentlyPlayingServiceReference()
+	if not playingref:
+		playingref = eServiceReference()
+	return playingref
+
+def isPlayableForCur(ref):
+	info = eServiceCenter.getInstance().info(ref)
+	return info and info.isPlayable(ref, getPlayingref(ref))
 
 def zapInServiceList(service):
 	InfoBar_Instance = InfoBar.instance
@@ -59,7 +72,7 @@ def zapInServiceList(service):
 	servicelist.setCurrentSelection(service) #select the service in servicelist
 	servicelist.zap()
 
-def zapService(session, id, title = ""):
+def zapService(session, id, title = "", stream=False):
 	# Must NOT unquote id here, breaks zap to streams
 	service = eServiceReference(id)
 
@@ -67,8 +80,6 @@ def zapService(session, id, title = ""):
 		service.setName(title)
 	else:
 		title = id
-
-	# TODO: check standby
 
 	isRecording = service.getPath()
 	isRecording = isRecording and isRecording.startswith("/")
@@ -91,7 +102,21 @@ def zapService(session, id, title = ""):
 		if isinstance(session.current_dialog, MoviePlayer):
 			session.current_dialog.lastservice = service
 			session.current_dialog.close()
-		zapInServiceList(service)
+		from Screens.Standby import inStandby
+		if inStandby is None:
+			zapInServiceList(service)
+		else:
+			if stream:
+				stop_text = ""
+				if session.nav.getCurrentlyPlayingServiceReference() and isPlayableForCur(service):
+					session.nav.stopService()
+					stop_text = ": simple stop current service"
+				return {
+					"result": True,
+					"message": "For stream don't need zap in standby %s" % stop_text
+				}
+			else:
+				session.nav.playService(service)
 
 	return {
 		"result": True,
