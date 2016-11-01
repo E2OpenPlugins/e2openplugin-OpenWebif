@@ -1,6 +1,6 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 2.2
+//* Version 2.1
 //******************************************************************************
 //* Copyright (C) 2014-2016 Joerg Bleyel
 //* Copyright (C) 2014-2016 E2OpenPlugins
@@ -17,7 +17,6 @@
 //* V 1.9 - error handling
 //* V 2.0 - theme support
 //* V 2.1 - update status label
-//* V 2.2 - use relativ links
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -379,7 +378,7 @@ function getTags()
 function getAllServices()
 {
 	// TODO: Errorhandling
-	$.getJSON( "../api/getallservices", function( data ) {
+	$.getJSON( "/api/getallservices", function( data ) {
 		var bqs = data['services'];
 		var options = "";
 		var boptions = "";
@@ -755,7 +754,7 @@ function delAT()
 		if(confirm(tstr_del_autotimer + " (" + CurrentAT.name + ") ?") === false)
 			return;
 		$.ajax({
-			type: "GET", url: "../autotimer/remove?id=" + CurrentAT.id,
+			type: "GET", url: "/autotimer/remove?id=" + CurrentAT.id,
 			dataType: "xml",
 			success: function (xml)
 			{
@@ -776,7 +775,7 @@ function readAT()
 {
 	CurrentAT = null;
 	$.ajax({
-		type: "GET", url: "../autotimer",
+		type: "GET", url: "/autotimer",
 		dataType: "xml",
 		success: function (xml)
 		{
@@ -794,7 +793,7 @@ function saveAT()
 	if(CurrentAT) // && CurrentAT.MustSave)
 	{
 
-	var reqs = "../autotimer/edit?";
+	var reqs = "/autotimer/edit?";
 	CurrentAT.enabled = $('#enabled').is(':checked');
 	CurrentAT.name = $('#name').val();
 	CurrentAT.match = $('#match').val();
@@ -986,7 +985,7 @@ function simulateAT()
 	$("#simtb").append("<tr><td COLSPAN=5>"+loadspinner+"</td></tr>");
 
 	$.ajax({
-		type: "GET", url: "../autotimer/simulate",
+		type: "GET", url: "/autotimer/simulate",
 		dataType: "xml",
 		success: function (xml)
 		{
@@ -1024,7 +1023,7 @@ function simulateAT()
 function parseAT()
 {
 	$.ajax({
-		type: "GET", url: "../autotimer/parse",
+		type: "GET", url: "/autotimer/parse",
 		dataType: "xml",
 		success: function (xml)
 		{
@@ -1057,7 +1056,7 @@ function reloadAT()
 function listTimers()
 {
 	$("#timerdlg").dialog( "open" );
-	$("#timerdlgcont").html(loadspinner).load('../ajax/timers #timers', function() {
+	$("#timerdlgcont").html(loadspinner).load('ajax/timers #timers', function() {
 		$("#timerdlgcont #timers .moviecontainer_main .moviecontainer_right div a:first").hide();
 	});
 }
@@ -1066,7 +1065,7 @@ function listTimers()
 function getAutoTimerSettings()
 {
 	$.ajax({
-		type: "GET", url: "../autotimer/get",
+		type: "GET", url: "/autotimer/get",
 		dataType: "xml",
 		success: function (xml)
 		{
@@ -1095,7 +1094,7 @@ function getAutoTimerSettings()
 
 function setAutoTimerSettings()
 {
-	var reqs = "../autotimer/set?&autopoll=";
+	var reqs = "/autotimer/set?&autopoll=";
 	reqs += $('#ats_autopoll').is(':checked') ? "true":"";
 	reqs += "&interval=" + $('#ats_interval').val();
 	reqs += "&try_guessing=";

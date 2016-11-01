@@ -9,16 +9,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<link rel="shortcut icon" href="../images/favicon.png">
-<script src="../js/jquery.min.js"></script>
-<script src="../js/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="../css/jquery-ui.min.css">
+<link rel="shortcut icon" href="images/favicon.png">
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="css/jquery-ui.min.css">
 #if $t != "original"
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/$t/jquery-ui.css">
 #end if
-<link type="text/css" href="../css/style.min.css" rel="stylesheet"/>
-<link type="text/css" href="../web/css" rel="stylesheet"/>
-<script type="text/javascript" src="../js/openwebif-2.1.min.js"></script>
+<link type="text/css" href="css/style.min.css" rel="stylesheet"/>
+<link type="text/css" href="web/css" rel="stylesheet"/>
+<script type="text/javascript" src="js/openwebif-2.0.min.js"></script>
 <script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
 <title>Open Webif</title>
 </head>
@@ -35,7 +35,7 @@
 			#if not $showname
 				#set boxname=$tstrings['box_info']
 			#end if
-			<h2>$tstrings['openwebif_header']<br/><span class="ui-state-active" onclick="load_maincontent('../ajax/boxinfo'); return false">$boxname</span></h2>
+			<h2>$tstrings['openwebif_header']<br/><span class="ui-state-active" onclick="load_maincontent('ajax/boxinfo'); return false">$boxname</span></h2>
 			<div id="statusheader">
 				<div id="osd">$tstrings['nothing_play']</div>
 				<div id="osd_status"></div>
@@ -67,11 +67,11 @@
 		
 			#def mainMenu
 			<ul>
-				<li><a href='#' onclick="load_maincontent('../ajax/tv'); return false;">$tstrings['television']</a></li>
-				<li><a href='#' onclick="load_maincontent('../ajax/radio'); return false;">$tstrings['radio']</a></li>
-				<li><a href='#' onclick="load_maincontent_spin('../ajax/movies'); return false;">$tstrings['movies']</a></li>
-				<li><a href='#' onclick="load_maincontent('../ajax/timers'); return false;">$tstrings['timers']</a></li>
- <!--				<li><a href='#' onclick="load_maincontent('../ajax/workinprogress'); return false;">Web Tv</a></li> -->
+				<li><a href='#' onclick="load_maincontent('ajax/tv'); return false;">$tstrings['television']</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/radio'); return false;">$tstrings['radio']</a></li>
+				<li><a href='#' onclick="load_maincontent_spin('ajax/movies'); return false;">$tstrings['movies']</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">$tstrings['timers']</a></li>
+ <!--				<li><a href='#' onclick="load_maincontent('ajax/workinprogress'); return false;">Web Tv</a></li> -->
 			</ul>
 			#end def
 
@@ -96,15 +96,15 @@
 					<ul>
 					<li style="margin-bottom:5px;margin-top:5px;">
 					<div class="tbl"><div>
-					<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('../ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
-				<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('../ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
-					<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('../ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
+					<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
+				<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
+					<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
 					<div><a class="fbb" href='#' title=$tstrings['showfullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-expand" aria-hidden="true"></i></a></div>
 					</div></div>
 					</li>
 					</ul>
 					<div class="ui-widget-header" style="border-bottom: none;background: none;margin-left: 5px;margin-right: 5px;"></div>
-				<img src="../images/remotes/ow_remote.png" width="135" height="183" usemap="#menuremote" border="0">
+				<img src="images/remotes/ow_remote.png" width="135" height="183" usemap="#menuremote" border="0">
 				<map name="menuremote" >
 					<area shape="circle" coords="67,148,13" alt="ok" onclick="pressMenuRemote('352');">
 					<area shape="circle" coords="68,173,9" alt="down" onclick="pressMenuRemote('108');">
@@ -137,11 +137,11 @@
 						#set $checked = "checked='checked'"
 					#end if
 					<li style="margin-bottom:5px;margin-top:5px;">
-					<input type="checkbox" name="remotegrabscreen" $checked /><span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('../ajax/screenshot');return false;">$tstrings['grabscreenshot']</span>
+					<input type="checkbox" name="remotegrabscreen" $checked /><span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span>
 					</li>
 					</ul>
 					<div class="volslider" style="display:table-row;margin-bottom:15px">
-						<div style="display:table-cell;vertical-align: middle;"><img style="margin-left:5px;" id="volimage" src="../images/volume.png" title="" border="0" width="24" height="24">
+						<div style="display:table-cell;vertical-align: middle;"><img style="margin-left:5px;" id="volimage" src="images/volume.png" title="" border="0" width="24" height="24">
 						</div>
 						<div style="vertical-align: middle;display:table-cell;">
 							<div id="slider" style="margin-left:10px;margin-right:10px;width:90px;"></div>
@@ -156,7 +156,7 @@
 			
 			#def extrasMenu
 			<ul>
-				<li><a href='#' onclick="load_maincontent('../ajax/boxinfo'); return false;">$tstrings["box_info"]</a></li>
+				<li><a href='#' onclick="load_maincontent('ajax/boxinfo'); return false;">$tstrings["box_info"]</a></li>
 				#for $extra in $extras
 					#if $extra.has_key('nw')
 						<li><a href='$extra["key"]' target='_blank'>$extra["description"]</a></li>
@@ -179,9 +179,9 @@
 					<ul>
 					<li style="margin-bottom:5px;">
 							<div class="tbl"><div>
-							<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('../ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
-						<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('../ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
-							<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('../ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
+							<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
+						<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
+							<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
 							<div><a class="fbb" href='#' title=$tstrings['showfullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-compress" aria-hidden="true"></i></a></div>
 							</div></div>
 							</li>
@@ -198,7 +198,7 @@
 							#end if
 							
 							<li style="margin-bottom:5px;">
-							<input type="checkbox" name="remotegrabscreen" $checked /><span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('../ajax/screenshot');return false;">$tstrings['grabscreenshot']</span></li>
+							<input type="checkbox" name="remotegrabscreen" $checked /><span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span></li>
 						</ul>
 					</div>
 				</div>
@@ -208,7 +208,7 @@
 			<div id="content_container">
 			$content
 			</div>
-			<div id="footer"><h3>&nbsp;&nbsp;<a href="https://github.com/E2OpenPlugins">E2OpenPlugins</a> | <a href="http://www.opena.tv">openATV</a> | <a href="http://www.vuplus-community.net">Black Hole</a> | <a href="http://www.droidsat.org">OpenDroid</a> | <a href="http://www.egami-image.com">EGAMI</a> | <a href="http://www.hdfreaks.cc">OpenHDF</a> | <a href="http://image.openmips.com">openMips</a> | <a href="http://openpli.org">OpenPli</a> | <a href="http://forum.sifteam.eu">Sif</a> | <a href="http://openspa.info">OpenSpa</a> | <a href="http://www.world-of-satellite.com">OpenViX</a> | <a href="http://www.vuplus-support.org">VTi</a> | <a href="#" onclick="load_maincontent('../ajax/about'); return false">$tstrings['about']</a></h3></div>
+			<div id="footer"><h3>&nbsp;&nbsp;<a href="https://github.com/E2OpenPlugins">E2OpenPlugins</a> | <a href="http://www.opena.tv">openATV</a> | <a href="http://www.vuplus-community.net">Black Hole</a> | <a href="http://www.droidsat.org">OpenDroid</a> | <a href="http://www.egami-image.com">EGAMI</a> | <a href="http://www.hdfreaks.cc">OpenHDF</a> | <a href="http://image.openmips.com">openMips</a> | <a href="http://openpli.org">OpenPli</a> | <a href="http://forum.sifteam.eu">Sif</a> | <a href="http://openspa.info">OpenSpa</a> | <a href="http://www.world-of-satellite.com">OpenViX</a> | <a href="http://www.vuplus-support.org">VTi</a> | <a href="#" onclick="load_maincontent('ajax/about'); return false">$tstrings['about']</a></h3></div>
 		</div>
 	</div>
 	<form name="portForm" action="web/stream.m3u" method="GET" target="_blank">
@@ -227,7 +227,7 @@
 	<div id="editTimerForm" title="$tstrings['edit_timer']"></div>
 <script type="text/javascript">
 \$(document).ready(function() {
-	\$("#remote_container").load("../static/remotes/${remote}.html");
+	\$("#remote_container").load("static/remotes/${remote}.html");
 	directlink();
 });
 theme = '$t';

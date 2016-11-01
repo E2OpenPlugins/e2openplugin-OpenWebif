@@ -1,6 +1,6 @@
 //******************************************************************************
 //* bqe.js: openwebif Bouqueteditor plugin
-//* Version 2.4
+//* Version 2.3
 //******************************************************************************
 //* Copyright (C) 2014-2016 Joerg Bleyel
 //* Copyright (C) 2014-2016 E2OpenPlugins
@@ -12,7 +12,6 @@
 //* V 2.1 - theme support
 //* V 2.2 - update status label
 //* V 2.3 - fix #198
-//* V 2.4 - use relativ links
 
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
@@ -148,7 +147,7 @@
 				self.cType = 0;
 				var ref = self.buildRefStr(2);
 				var stype = (self.Mode === 0) ? '' : '&stype=radio';
-				$.getJSON( '../api/getsatellites?sRef=' + ref + stype, function ( data ) {
+				$.getJSON( '/api/getsatellites?sRef=' + ref + stype, function ( data ) {
 					var options = '';
 					var s = data['satellites'];
 					$.each( s, function ( key, val ) {
@@ -168,7 +167,7 @@
 			getProviders: function (callback) {
 				self.cType = 1;
 				var ref = self.buildRefStr(1);
-				$.getJSON( '../api/getservices?sRef=' + ref, function ( data ) {
+				$.getJSON( '/api/getservices?sRef=' + ref, function ( data ) {
 					var options = '';
 					var s = data['services'];
 					$.each( s, function ( key, val ) {
@@ -188,7 +187,7 @@
 			getChannels: function (callback) {
 				self.cType = 2;
 				var ref = self.buildRefStr(3);
-				$.getJSON( '../api/getservices?sRef=' + ref, function ( data ) {
+				$.getJSON( '/api/getservices?sRef=' + ref, function ( data ) {
 					var options = '';
 					var s = data['services'];
 					$.each( s, function ( key, val ) {
@@ -208,7 +207,7 @@
 			// @param callback function display bouquets list
 			getBouquets: function (callback) {
 				var ref = self.buildRefStr(0);
-				$.getJSON( '../bouqueteditor/api/getservices?sRef=' + ref, function ( data ) {
+				$.getJSON( '/bouqueteditor/api/getservices?sRef=' + ref, function ( data ) {
 					var options = '';
 					var s = data['services'];
 					$.each( s, function ( key, val ) {
@@ -227,7 +226,7 @@
 			// @param sref string selected provider reference string 
 			// @param callback function display services list
 			changeProvider: function (sref, callback) {
-				$.getJSON( '../api/getservices?sRef=' + sref, function ( data ) {
+				$.getJSON( '/api/getservices?sRef=' + sref, function ( data ) {
 					var options = '';
 					var s = data['services'];
 					$.each( s, function ( key, val ) {
@@ -249,7 +248,7 @@
 			// @param sref string selected bouquet reference string 
 			// @param callback function display services list
 			changeBouquet: function (sref, callback) {
-				$.getJSON( '../bouqueteditor/api/getservices?sRef=' + sref, function ( data ) {
+				$.getJSON( '/bouqueteditor/api/getservices?sRef=' + sref, function ( data ) {
 					var options = '';
 					var s = data['services'];
 					$.each( s, function ( key, val ) {
@@ -268,7 +267,7 @@
 			// providers list to bouquets list
 			addProvider: function () {
 				var sref = $('#provider li.ui-selected').data('sref');
-				$.getJSON( '../bouqueteditor/api/addprovidertobouquetlist?sProviderRef=' + sref + '&mode=' + self.Mode, function ( data ) {
+				$.getJSON( '/bouqueteditor/api/addprovidertobouquetlist?sProviderRef=' + sref + '&mode=' + self.Mode, function ( data ) {
 					var r = data.Result;
 					if (r.length == 2) {
 						self.showError(r[1],r[0]);
@@ -279,7 +278,7 @@
 
 			// Callback function for moving bouquet in bouquets list
 			moveBouquet: function (obj) {
-				$.getJSON( '../bouqueteditor/api/movebouquet?sBouquetRef='+ obj.sBouquetRef 
+				$.getJSON( '/bouqueteditor/api/movebouquet?sBouquetRef='+ obj.sBouquetRef 
 					+ '&mode=' + obj.mode
 					+ '&position=' + obj.position, function () {});
 			},
@@ -289,7 +288,7 @@
 			addBouquet: function () {
 				var newname = prompt(tstr_bqe_name_bouquet + ':');
 				if (newname.length) {
-					$.getJSON( '../bouqueteditor/api/addbouquet?name=' + encodeURIComponent(newname) + '&mode=' + self.Mode , function ( data ) {
+					$.getJSON( '/bouqueteditor/api/addbouquet?name=' + encodeURIComponent(newname) + '&mode=' + self.Mode , function ( data ) {
 						var r = data.Result;
 						if (r.length == 2) {
 							self.showError(r[1],r[0]);
@@ -312,7 +311,7 @@
 
 				var newname=prompt(tstr_bqe_rename_bouquet + ':', sname);
 				if (newname && newname!=sname){
-					$.getJSON( '../bouqueteditor/api/renameservice?sRef=' + sref + '&mode=' + self.Mode + '&newName=' + encodeURIComponent(newname), function ( data ) {
+					$.getJSON( '/bouqueteditor/api/renameservice?sRef=' + sref + '&mode=' + self.Mode + '&newName=' + encodeURIComponent(newname), function ( data ) {
 						var r = data.Result;
 						if (r.length == 2) {
 							self.showError(r[1],r[0]);
@@ -334,7 +333,7 @@
 					return;
 				}
 
-				$.getJSON( '../bouqueteditor/api/removebouquet?sBouquetRef=' + sref + '&mode=' + self.Mode, function ( data ) {
+				$.getJSON( '/bouqueteditor/api/removebouquet?sBouquetRef=' + sref + '&mode=' + self.Mode, function ( data ) {
 					var r = data.Result;
 					if (r.length == 2) {
 						self.showError(r[1],r[0]);
@@ -363,7 +362,7 @@
 
 			// Callback function for moving service in right pane services list
 			moveChannel: function (obj) {
-				$.getJSON( '../bouqueteditor/api/moveservice?sBouquetRef='+ obj.sBouquetRef 
+				$.getJSON( '/bouqueteditor/api/moveservice?sBouquetRef='+ obj.sBouquetRef 
 					+ '&sRef=' + obj.sRef + '&mode=' + obj.mode
 					+ '&position=' + obj.position, function () {});
 			},
@@ -376,7 +375,7 @@
 				var dstref = $('#bqs li.ui-selected').data('sref') || '';
 			
 				$('#channels li.ui-selected').each(function () {
-					reqjobs.push($.getJSON( '../bouqueteditor/api/addservicetobouquet?sBouquetRef=' + bref + '&sRef=' + $(this).data('sref') + '&sRefBefore=' + dstref, function () {}));
+					reqjobs.push($.getJSON( '/bouqueteditor/api/addservicetobouquet?sBouquetRef=' + bref + '&sRef=' + $(this).data('sref') + '&sRefBefore=' + dstref, function () {}));
 				});
 
 				if (reqjobs.length !== 0) {
@@ -402,7 +401,7 @@
 				var bref = $('#bql li.ui-selected').data('sref');
 				var snames = [];
 				var jobs = [];
-				var jobtemplate = '../bouqueteditor/api/removeservice?sBouquetRef=' + bref + '&mode=' + self.Mode + '&sRef=';
+				var jobtemplate = '/bouqueteditor/api/removeservice?sBouquetRef=' + bref + '&mode=' + self.Mode + '&sRef=';
 
 				$('#bqs li.ui-selected').each(function () { 
 					snames.push($(this).text());
@@ -434,7 +433,7 @@
 					var bref = $('#bql li.ui-selected').data('sref');
 					var dstref = $('#bqs li.ui-selected').data('sref') || '';
 		
-					$.getJSON( '../bouqueteditor/api/addmarkertobouquet?sBouquetRef=' + bref + '&Name=' + encodeURIComponent(newname) +'&sRefBefore=' + dstref , function ( data ) {
+					$.getJSON( '/bouqueteditor/api/addmarkertobouquet?sBouquetRef=' + bref + '&Name=' + encodeURIComponent(newname) +'&sRefBefore=' + dstref , function ( data ) {
 						var r = data.Result;
 						if (r.length == 2) {
 							self.showError(r[1],r[0]);
@@ -466,7 +465,7 @@
 
 				var newname = prompt(tstr_bqe_rename_marker + ': ', sname);
 				if (newname && newname !== sname) {
-					$.getJSON( '../bouqueteditor/api/renameservice?sBouquetRef=' + bref + '&sRef=' + sref + '&newName=' + encodeURIComponent(newname) + '&sRefBefore=' + dstref, function ( data ) {
+					$.getJSON( '/bouqueteditor/api/renameservice?sBouquetRef=' + bref + '&sRef=' + sref + '&newName=' + encodeURIComponent(newname) + '&sRefBefore=' + dstref, function ( data ) {
 						var r = data.Result;
 						if (r.length == 2) {
 							self.showError(r[1],r[0]);
@@ -520,7 +519,7 @@
 			exportBouquets: function () {
 				var fn = prompt(tstr_bqe_filename + ': ', 'bouquets_backup');
 				if (fn) {
-					$.getJSON( '../bouqueteditor/api/backup?Filename='+fn, function ( data ) {
+					$.getJSON( '/bouqueteditor/api/backup?Filename='+fn, function ( data ) {
 						var r = data.Result;
 						if (r[0] === false) {
 							showError(r[1],r[0]);
@@ -554,7 +553,7 @@
 				{
 					var formData = new FormData(this);
 					$.ajax({
-						url: '../bouqueteditor/uploadrestore',
+						url: '/bouqueteditor/uploadrestore',
 						type: 'POST',
 						data:  formData,
 						mimeType:"multipart/form-data",
@@ -585,7 +584,7 @@
 			// Callback function for restoring uploaded bouquet backup file
 			doRestore: function (fn) {
 				if (fn) {
-					$.getJSON( '../bouqueteditor/api/restore?Filename='+fn, function ( data ) {
+					$.getJSON( '/bouqueteditor/api/restore?Filename='+fn, function ( data ) {
 						// console.log(data);
 						var r = data.Result;
 						if (r.length == 2) {

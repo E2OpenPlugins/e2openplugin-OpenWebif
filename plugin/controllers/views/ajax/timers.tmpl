@@ -8,7 +8,7 @@
 				<span id="timerbuttons">
 					<button id="timerbutton0" onclick="addTimer(); return false">$tstrings['add_timer']</button>
 					<button id="timerbutton1" onclick="cleanupTimer(); return false">$tstrings['cleanup_timer']</button>
-					<button id="timerbutton2" onclick="lastcontenturl='';load_maincontent('../ajax/timers'); return false;">$tstrings['refresh_timer']</button>
+					<button id="timerbutton2" onclick="lastcontenturl='';load_maincontent('ajax/timers'); return false;">$tstrings['refresh_timer']</button>
 				</span>
 			</span>
 		</div>
@@ -83,7 +83,7 @@ $(function() {
 	setTMHover();
 	$('#timerbuttons').buttonset();
 	if(!timeredit_initialized)
-		$('#editTimerForm').load('../ajax/edittimer');
+		$('#editTimerForm').load('ajax/edittimer');
 });
 #end raw
 </script>

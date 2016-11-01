@@ -262,24 +262,24 @@ fixTableHeight();
 \$(window).resize(function(){ fixTableHeight(); });
 \$(".bq").click(function() {
 	var id = \$(this).data("ref");
-	\$("#tvcontent").html(loadspinner).load('../ajax/multiepg?bref='+id);
+	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref='+id);
 	if(typeof(Storage) !== "undefined") { localStorage.lastmbq = id; }
 });
 \$(".event").click(function() {
 	var id = \$(this).data("id");
 	if (id != undefined) {
 		var ref = \$(this).data("ref");
-		\$("#eventdescription").load('../ajax/event?idev='+id+'&sref='+escape(ref), function() { 
+		\$("#eventdescription").load('ajax/event?idev='+id+'&sref='+escape(ref), function() { 
 			\$("#eventdescription").show(200).draggable( { handle: ".handle" } );
 		});
 	}
 });
 \$(".plus").click(function() {
 	var day = \$(this).data("day");
-	\$("#tvcontent").html(loadspinner).load('../ajax/multiepg?bref=${quote($bref)}&day='+day);
+	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day='+day);
 });
 if(!timeredit_initialized)
-	\$('#editTimerForm').load('../ajax/edittimer');
+	\$('#editTimerForm').load('/ajax/edittimer');
 if(\$("#header").is(':hidden')) { 
 	\$('#compressmepg').show();
 	\$('#refreshmepg').show();

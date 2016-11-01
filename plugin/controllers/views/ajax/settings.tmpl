@@ -9,7 +9,7 @@
 					<li id='themesbtn' class="ui-selected">$tstrings['tstr_ow_settings']</li>
 				#end if
 				#for $sec in $configsections
-					<li id='$sec["key"]' data-id='../ajax/config?section=$sec["key"]'>$sec["description"]</li>
+					<li id='$sec["key"]' data-id='ajax/config?section=$sec["key"]'>$sec["description"]</li>
 				#end for
 				</ol>
 			</div>
@@ -136,7 +136,7 @@ $(function() {
 	$("#MM_"+mepgmode).attr('checked', true).checkboxradio("refresh");
 	$(".mepgmode input:radio").change(function() {
 		var nm = $(this).attr('id').split("_").pop();
-		webapi_execute("../api/setmepgmode?mode=" + nm);
+		webapi_execute("/api/setmepgmode?mode=" + nm);
 	});
 	
 	setHover('#slist li');
@@ -146,12 +146,12 @@ $(function() {
 
 	$("input[name=zapstream]").click(function(evt) {
 		$('input[name=zapstream]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("../api/zapstream?checked=" + evt.currentTarget.checked);
+		webapi_execute("/api/zapstream?checked=" + evt.currentTarget.checked);
 	});
 
 	$("input[name=showchannelpicon]").click(function(evt) {
 		$('input[name=showchannelpicon]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("../api/showchannelpicon?checked=" + evt.currentTarget.checked);
+		webapi_execute("/api/showchannelpicon?checked=" + evt.currentTarget.checked);
 	});
 });
 </script>

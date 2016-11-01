@@ -1,13 +1,12 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 2.1
+//* Version 2.0
 //******************************************************************************
 //* Copyright (C) 2011-2014 E2OpenPlugins
 //*
 //* V 1.0 - Initial Version
 //* V 1.1 - add movie move and rename
 //* V 2.0 - movie sort object, spinner, theme support, ...
-//* V 2.1 - use relativ links
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -210,7 +209,7 @@ function initJsTranslation(strings) {
 
 function wait_for_openwebif() {
 	var restartCheck = window.setInterval(function() {
-		webapi_execute('../api/statusinfo',
+		webapi_execute('/api/statusinfo',
 			function() {
 				window.clearInterval(restartCheck);
 				$("#modaldialog").dialog('close');
@@ -233,7 +232,7 @@ function handle_power_state_dialog(new_power_state) {
 		timeout = 1000 ;
 	}
 	setTimeout(function () {
-		webapi_execute('../api/powerstate?newstate=' + new_power_state);
+		webapi_execute('api/powerstate?newstate=' + new_power_state);
 	}, timeout);
 }
 
@@ -391,14 +390,14 @@ function webapi_execute(url, callback) {
 }
 
 function toggle_chan_des(evId, sRef, idp) {
-	var url = '../ajax/eventdescription?sref=' + escape(sRef) + '&idev=' + evId;
+	var url = 'ajax/eventdescription?sref=' + escape(sRef) + '&idev=' + evId;
 	var iddiv = "#" + idp;
 	$(iddiv).load(url);
 	$(iddiv).slideToggle(200);
 }
 
 function open_epg_dialog(sRef,Name) {
-	var url = "../ajax/epgdialog?sref=" + escape(sRef);
+	var url = "ajax/epgdialog?sref=" + escape(sRef);
 	
 	var w = $(window).width() -100;
 	var h = $(window).height() -100;
@@ -412,7 +411,7 @@ function open_epg_dialog(sRef,Name) {
 
 function open_epg_search_dialog() {
 	var spar = $("#epgSearch").val();
-	var url = "../ajax/epgdialog?sstr=" + encodeURIComponent(spar);
+	var url = "ajax/epgdialog?sstr=" + encodeURIComponent(spar);
 	$("#epgSearch").val("");
 	
 	var w = $(window).width() -100;
@@ -435,22 +434,22 @@ function _epg_pop(url) {
 }
 
 function open_epg_search_pop(spar) {
-	_epg_pop("../ajax/epgpop?sstr=" + encodeURIComponent(spar));
+	_epg_pop("ajax/epgpop?sstr=" + encodeURIComponent(spar));
 }
 
 function open_epg_pop(sRef) {
-	_epg_pop('../ajax/epgpop?sref=' + escape(sRef));
+	_epg_pop('ajax/epgpop?sref=' + escape(sRef));
 }
 
 function addTimerEvent(sRef, eventId) {
-	webapi_execute("../api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId,
+	webapi_execute("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId,
 		function() {
 			alert(tstr_timer_added); 
 		} 
 	);
 }
 function addTimerEventPlay(sRef, eventId) {
-	webapi_execute("../api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId + "&eit=0&disabled=0&justplay=1&afterevent=3",
+	webapi_execute("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId + "&eit=0&disabled=0&justplay=1&afterevent=3",
 		function() {
 			alert(tstr_timer_added); 
 		} 
@@ -458,7 +457,7 @@ function addTimerEventPlay(sRef, eventId) {
 }
 
 function addEditTimerEvent(sRef, eventId) {
-	var url="../api/event?sref=" + sRef + "&idev=" + eventId;
+	var url="/api/event?sref=" + sRef + "&idev=" + eventId;
 	$.ajax({
 		url: url,
 		dataType: "json",
@@ -497,12 +496,12 @@ function addAutoTimerEvent(sRef, sname, title ,begin, end) {
 			$("#eventdescription").html('');
 		}
 		
-		load_maincontent('../ajax/at');
+		load_maincontent('ajax/at');
 }
 
 function delTimerEvent(sRef,eventId) {
 
-	var url="../api/event?sref=" + sRef + "&idev=" + eventId;
+	var url="/api/event?sref=" + sRef + "&idev=" + eventId;
 	$.ajax({
 		url: url,
 		dataType: "json",
@@ -513,7 +512,7 @@ function delTimerEvent(sRef,eventId) {
 				var end = result.event.begin + result.event.duration + 60 * result.event.recording_margin_after;
 				var t = decodeURIComponent(result.event.title);
 				if (confirm(tstr_del_timer + ": " + t) === true) {
-					webapi_execute("../api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end, 
+					webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end, 
 						function() { $('.event[data-id='+eventId+'] .timer').remove(); } 
 					);
 				}
@@ -527,7 +526,7 @@ function delTimerEvent(sRef,eventId) {
 }
 
 function toggleTimerStatus(sRef, begin, end) {
-	var url="../api/timertogglestatus?";
+	var url="/api/timertogglestatus?";
 	var data = { sRef: sRef, begin: begin, end: end };
 	
 	$.ajax({
@@ -547,27 +546,27 @@ function toggleTimerStatus(sRef, begin, end) {
 function deleteTimer(sRef, begin, end, title) {
 	var t = decodeURIComponent(title);
 	if (confirm(tstr_del_timer + ": " + t) === true) {
-		webapi_execute("../api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end, 
+		webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end, 
 			function() { $('#'+begin+'-'+end).remove(); } 
 		);
 	}
 }
 
 function cleanupTimer() {
-	webapi_execute("../api/timercleanup", function() { load_maincontent('../ajax/timers'); });
+	webapi_execute("/api/timercleanup", function() { load_maincontent('/ajax/timers'); });
 }
 
 function renameMovie(sRef, title) {
 	var newname=prompt(tstr_ren_recording, title);
 	if (newname && newname!=title){
-		webapi_execute("../api/movierename?sRef=" + sRef+"&newname="+newname);
+		webapi_execute("/api/movierename?sRef=" + sRef+"&newname="+newname);
 		// TODO: check the api result first
 	}
 }
 
 function deleteMovie(sRef, divid, title) {
 	if (confirm(tstr_del_recording + ": " + title) === true) {
-		webapi_execute("../api/moviedelete?sRef=" + sRef);
+		webapi_execute("/api/moviedelete?sRef=" + sRef);
 		// TODO: check the api result first
 		$('#' + divid).remove();
 	}
@@ -578,7 +577,7 @@ function playRecording(sRef) {
 	var sr = sRef.replace(/-/g,'%2D').replace(/_/g,'%5F').replace(/\//g,'%2F');
 	// for debugging 
 	console.debug(sr);
-	var url = '../api/zap?sRef=' + sr;
+	var url = '/api/zap?sRef=' + sr;
 	
 	webapi_execute(url,
 	function() {
@@ -588,7 +587,7 @@ function playRecording(sRef) {
 }
 
 function zapChannel(sRef, sname) {
-	var url = '../api/zap?sRef=' + escape(sRef);
+	var url = '/api/zap?sRef=' + escape(sRef);
 	webapi_execute(url,
 	function() {
 		$("#osd").html(tstr_zap_to + ': ' + sname);
@@ -598,9 +597,9 @@ function zapChannel(sRef, sname) {
 
 function toggleStandby() {
 	if (shiftbutton) {
-		webapi_execute('../api/set_powerup_without_waking_tv');
+		webapi_execute('api/set_powerup_without_waking_tv');
 	}
-	webapi_execute('../api/powerstate?newstate=0');
+	webapi_execute('api/powerstate?newstate=0');
 	setTimeout(getStatusInfo, 1500);
 }
 
@@ -622,20 +621,20 @@ function setOSD( statusinfo )
 				stream += "<a href='#' onclick=\"jumper8001('" + sref + "', '" + station + "')\"; title='" + streamtitle;
 				stream += "<a href='#' onclick=\"jumper8002('" + sref + "', '" + station + "')\"; title='" + streamtitletrans;
 			} else {
-				stream += "<a target='_blank' href='../web/stream.m3u?ref=" + sref + "&name=" + station + "' title='" + streamtitle;
+				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "' title='" + streamtitle;
 			}
 			stream +="</div>";
-			$("#osd").html(stream + "<a href='#' onClick='load_maincontent(\"../ajax/tv\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
+			$("#osd").html(stream + "<a href='#' onClick='load_maincontent(\"ajax/tv\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 		} else if ((sref.indexOf("1:0:2") !== -1) || (sref.indexOf("1:134:2") !== -1)) {
 			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "' title='" + streamtitle;
 			stream +="</div>";
-			$("#osd").html(stream + "<a href='#' onClick='load_maincontent(\"../ajax/radio\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
+			$("#osd").html(stream + "<a href='#' onClick='load_maincontent(\"ajax/radio\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 		} else if (sref.indexOf("1:0:0") !== -1) {
 			if (statusinfo['transcoding']) {
 				stream += "<a href='#' onclick=\"jumper80('" + statusinfo['currservice_filename'] + "')\"; title='" + streamtitle;
 				stream += "<a href='#' onclick=\"jumper8003('" + statusinfo['currservice_filename'] + "')\"; title='" + streamtitletrans;
 			} else {
-				stream += "<a target='_blank' href='../web/ts.m3u?file=" + statusinfo['currservice_filename'] + "' title='" + streamtitle;
+				stream += "<a target='_blank' href='/web/ts.m3u?file=" + statusinfo['currservice_filename'] + "' title='" + streamtitle;
 			}
 			stream +="</div>";
 			$("#osd").html(stream + _beginend + statusinfo['currservice_name']);
@@ -653,7 +652,7 @@ function setOSD( statusinfo )
 function getStatusInfo() {
 
 	$.ajax({
-		url: '../api/statusinfo',
+		url: '/api/statusinfo',
 		dataType: "json",
 		cache: false,
 		success: function(statusinfo) { 
@@ -666,10 +665,10 @@ function getStatusInfo() {
 		// Set Mute Status
 		if (statusinfo['muted'] == true) {
 			mutestatus = 1;
-			$("#volimage").attr("src","../images/volume_mute.png");
+			$("#volimage").attr("src","/images/volume_mute.png");
 		} else {
 			mutestatus = 0;
-			$("#volimage").attr("src","../images/volume.png");
+			$("#volimage").attr("src","/images/volume.png");
 		}
 		
 		setOSD(statusinfo);
@@ -683,7 +682,7 @@ function getStatusInfo() {
 
 		var status = "";
 		if (statusinfo['isRecording'] == 'true') {
-			status = "<a href='#' onClick='load_maincontent(\"../ajax/timers\"); return false;'><div title='" + tstr_rec_status + statusinfo['Recording_list'] + "' class='led-box'><div class='led-red'></div></div></a>";
+			status = "<a href='#' onClick='load_maincontent(\"ajax/timers\"); return false;'><div title='" + tstr_rec_status + statusinfo['Recording_list'] + "' class='led-box'><div class='led-red'></div></div></a>";
 		}
 		
 		status += "<div class='pwrbtncontout'><div class='pwrbtncont' title='" + tit + "'><label class='label pwrbtn'><input type='checkbox' "+sb+" id='pwrbtn' onchange='toggleStandby();return true;' /><div class='pwrbtn-control'></div></label></div></div>";
@@ -726,7 +725,7 @@ function grabScreenshot(mode) {
 
 function getMessageAnswer() {
 	$.ajax({
-		url: '../api/messageanswer',
+		url: '/api/messageanswer',
 		dataType: "json",
 		success: function(result) { 
 			$('#messageSentResponse').html(result['message']);
@@ -752,7 +751,7 @@ function sendMessage() {
 	var timeout = $('#messageTimeout').val();
 
 	$.ajax({
-		url: '../api/message?text=' + text + '&type=' + type + '&timeout=' + timeout,
+		url: '/api/message?text=' + text + '&type=' + type + '&timeout=' + timeout,
 		dataType: "json",
 		success: function(result) { 
 			$('#messageSentResponse').html(result['message']);
@@ -772,13 +771,13 @@ function toggleMenu(name) {
 		$(expander_id).removeClass("ui-icon-caret-1-w");
 		$(expander_id).addClass("ui-icon-caret-1-s");
 		$(container_id).show('fast');
-		webapi_execute("../api/expandmenu?name=" + name);
+		webapi_execute("/api/expandmenu?name=" + name);
 	}
 	else {
 		$(expander_id).addClass("ui-icon-caret-1-w");
 		$(expander_id).removeClass("ui-icon-caret-1-s");
 		$(container_id).hide('fast');
-		webapi_execute("../api/collapsemenu?name=" + name);
+		webapi_execute("/api/collapsemenu?name=" + name);
 	}
 }
 
@@ -786,14 +785,14 @@ function toggleMenu(name) {
 $(function() {
 	$("input[name=remotegrabscreen]").click(function(evt) {
 		$('input[name=remotegrabscreen]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("../api/remotegrabscreenshot?checked=" + evt.currentTarget.checked);
+		webapi_execute("/api/remotegrabscreenshot?checked=" + evt.currentTarget.checked);
 	});
 });
 
 $(function() {
 	$("input[name=epgsearchtype]").click(function(evt) {
 		$('input[name=epgsearchtype]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("../api/epgsearchtype?checked=" + evt.currentTarget.checked);
+		webapi_execute("/api/epgsearchtype?checked=" + evt.currentTarget.checked);
 	});
 });
 
@@ -810,19 +809,19 @@ $(window).keydown(function(evt) {
 function callScreenShot(){
 	if ($('input[name=remotegrabscreen]').is(':checked'))
 	{
-		if (lastcontenturl == '../ajax/screenshot') {
+		if (lastcontenturl == 'ajax/screenshot') {
 			grabScreenshot(screenshotMode);
 		} else {
-			load_maincontent('../ajax/screenshot');
+			load_maincontent('ajax/screenshot');
 		}
 	}
 }
 
 function pressMenuRemote(code) {
 	if (shiftbutton) {
-		webapi_execute("../api/remotecontrol?type=long&command=" + code);
+		webapi_execute("/api/remotecontrol?type=long&command=" + code);
 	} else {
-		webapi_execute("../api/remotecontrol?command=" + code);
+		webapi_execute("/api/remotecontrol?command=" + code);
 	}
 	if (grabTimer > 0) {
 		clearTimeout(grabTimer);
@@ -836,7 +835,7 @@ function toggleFullRemote() {
 }
 
 function saveConfig(key, value) {
-	webapi_execute("../api/saveconfig?key=" + escape(key) + "&value=" + escape(value));
+	webapi_execute("/api/saveconfig?key=" + escape(key) + "&value=" + escape(value));
 	if (key == "config.usage.setup_level") {
 		// TODO: refresh the menu box with new sections list
 		$("#content_container").load(lastcontenturl);
@@ -862,7 +861,7 @@ var timeredit_begindestroy = false;
 
 function initTimerBQ(radio) {
 
-	var url="../api/getallservices";
+	var url="/api/getallservices";
 	if (radio == true) {
 		url += "?type=radio"
 	}
@@ -893,7 +892,7 @@ function initTimerEdit(radio) {
 	
 	$.ajax({
 		async: false,
-		url: "../api/getlocations",
+		url: "/api/getlocations",
 		success: function(data) {
 			locs = $.parseJSON(data);
 			if (locs.result) {
@@ -910,7 +909,7 @@ function initTimerEdit(radio) {
 	
 	$.ajax({
 		async: false,
-		url: "../api/gettags",
+		url: "/api/gettags",
 		success: function(data) {
 			tags = $.parseJSON(data);
 			if (tags.result) {
@@ -999,7 +998,7 @@ function editTimer(serviceref, begin, end) {
 
 	$.ajax({
 		async: false,
-		url: "../api/timerlist",
+		url: "/api/timerlist",
 		success: function(data) {
 			timers = $.parseJSON(data);
 			if (timers.result) {
@@ -1221,7 +1220,7 @@ function RefreshMEPG()
 	var lbq=GetLSValue('lastmbq','');
 	if(lbq!='')
 		bq= "?bref=" + lbq;
-	$("#tvcontent").html(loadspinner).load('../ajax/multiepg' + bq,function() {
+	$("#tvcontent").html(loadspinner).load('ajax/multiepg' + bq,function() {
 		ExpandMEPG();
 	});
 }
@@ -1275,7 +1274,7 @@ function InitBouquets(tv)
 	if (tv===true) {
 		$('#btn0').click(function(){
 			$("#expandmepg").hide();
-			$("#tvcontent").html(loadspinner).load("../ajax/current");
+			$("#tvcontent").html(loadspinner).load("ajax/current");
 		});
 		$('#btn5').click(function(){
 		
@@ -1283,7 +1282,7 @@ function InitBouquets(tv)
 			var lbq=GetLSValue('lastmbq','');
 			if(lbq!='')
 				bq= "?bref=" + lbq;
-			$("#tvcontent").html(loadspinner).load('../ajax/multiepg' + bq);
+			$("#tvcontent").html(loadspinner).load('ajax/multiepg' + bq);
 			$("#expandmepg").show();
 		});
 
@@ -1291,29 +1290,29 @@ function InitBouquets(tv)
 	else {
 		mode= "?stype=radio";
 		$('#btn0').click(function(){
-			$("#tvcontent").html(loadspinner).load("../ajax/current"+ mode);
+			$("#tvcontent").html(loadspinner).load("ajax/current"+ mode);
 		});
 	}
 	$('#btn1').click(function(){
 		$("#expandmepg").hide();
-		$("#tvcontent").html(loadspinner).load("../ajax/bouquets" + mode);
+		$("#tvcontent").html(loadspinner).load("ajax/bouquets" + mode);
 	});
 	$('#btn2').click(function(){
 		$("#expandmepg").hide();
-		$("#tvcontent").html(loadspinner).load("../ajax/providers" + mode);
+		$("#tvcontent").html(loadspinner).load("ajax/providers" + mode);
 	});
 	$('#btn3').click(function(){
 		$("#expandmepg").hide();
-		$("#tvcontent").load("../ajax/satellites" + mode);
+		$("#tvcontent").load("ajax/satellites" + mode);
 	});
 	$('#btn4').click(function(){
 		$("#expandmepg").hide();
-		$("#tvcontent").html(loadspinner).load("../ajax/channels" + mode);
+		$("#tvcontent").html(loadspinner).load("ajax/channels" + mode);
 	});
 	
 	$("#tvbutton").buttonset();
 
-	var link = "../ajax/bouquets" + mode;
+	var link = "ajax/bouquets" + mode;
 
 	if (tv===true) {
 		var parts=window.location.href.toLowerCase().split("#");
@@ -1335,7 +1334,7 @@ function InitBouquets(tv)
 		}
 	}
 	
-	$("#tvcontent").load("../ajax/bouquets" + mode);
+	$("#tvcontent").load("ajax/bouquets" + mode);
 	
 	if (theme == 'pepper-grinder')
 		$("#tvcontent").addClass('ui-state-active');
@@ -1411,7 +1410,7 @@ function jumper8001( sref, sname ) {
 function ChangeTheme(theme)
 {
 	$.ajax({
-		url: "../api/settheme?theme=" + theme,
+		url: "api/settheme?theme=" + theme,
 		success: function() {
 			window.location.hash = '#settings';
 			window.location.reload(true);
@@ -1422,7 +1421,7 @@ function ChangeTheme(theme)
 function directlink()
 {
 	var parts=window.location.href.toLowerCase().split("#");
-	var lnk='../ajax/tv';
+	var lnk='ajax/tv';
 	var p = parts[1];
 
 	switch (p)
@@ -1434,7 +1433,7 @@ function directlink()
 		case 'at':
 		case 'bqe':
 		case 'epgr':
-			lnk='../ajax/' + p;
+			lnk='ajax/' + p;
 			break;
 	}
 	if(p != 'tv') {
@@ -1611,7 +1610,7 @@ var MLHelper;
 			ChangeSort : function(nsort)
 			{
 				$.ajax({
-					url: "../api/setmoviesort?nsort=" + nsort,
+					url: "api/setmoviesort?nsort=" + nsort,
 					success: function() {
 					}
 				});

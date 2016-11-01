@@ -108,7 +108,7 @@
 </div>
 </form>
 
-<script src="../js/jquery-ui-timepicker-addon.min.js"></script>
+<script src="/js/jquery-ui-timepicker-addon.min.js"></script>
 
 <script type="text/javascript">
 
@@ -210,7 +210,7 @@ $('#editTimerForm').dialog({
 				if (current_serviceref == "") {
 					$.ajax({
 						async: false,
-						url: "../api/timeradd?",
+						url: "/api/timeradd?",
 						data: urldata,
 						success: function(data) {
 							result = $.parseJSON(data);
@@ -230,7 +230,7 @@ $('#editTimerForm').dialog({
 					urldata['endOld'] = Math.round(current_end);
 					$.ajax({
 						async: false,
-						url: "../api/timerchange?",
+						url: "api/timerchange?",
 						data: urldata,
 						success: function(data) {
 							result = $.parseJSON(data);
@@ -246,7 +246,7 @@ $('#editTimerForm').dialog({
 				}
 				
 				if (canclose) {
-					if (reloadTimers) load_maincontent("../ajax/timers");
+					if (reloadTimers) load_maincontent("ajax/timers");
 					$(this).dialog("close");
 				}
 			}
