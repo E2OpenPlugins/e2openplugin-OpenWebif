@@ -208,9 +208,6 @@ class AjaxController(BaseController):
 			ret['theme'] = 'original'
 		ret['zapstream'] = getZapStream()['zapstream']
 		ret['showchannelpicon'] = getShowChPicon()['showchannelpicon']
-		ret['mepgmode'] = '1'
-		if config.OpenWebif.webcache.mepgmode.value:
-			ret['mepgmode'] = str(config.OpenWebif.webcache.mepgmode.value)
 		return ret
 
 	def P_multiepg(self, request):

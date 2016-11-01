@@ -68,16 +68,6 @@
 				</fieldset>
 				</span>
 				</td></tr>
-				<tr><td>$tstrings['tstr_mepg_mode']</td><td>
-				<span class="mepgmode">
-				<fieldset style="border:none;" id="fsmepgmode">
-				<label for="MM_1">Mode 1</label>
-				<input type="radio" name="MMODE" id="MM_1">
-				<label for="MM_2">Mode 2</label>
-				<input type="radio" name="MMODE" id="MM_2">
-				</fieldset>
-				</span>
-				</td></tr>
 				</table>
 			</div>
 		</div>
@@ -131,14 +121,6 @@ $(function() {
 		SetSpinner();
 	});
 
-	$(".mepgmode input[type='radio']" ).checkboxradio({ icon: false });
-	$(".mepgmode fieldset" ).controlgroup();
-	$("#MM_"+mepgmode).attr('checked', true).checkboxradio("refresh");
-	$(".mepgmode input:radio").change(function() {
-		var nm = $(this).attr('id').split("_").pop();
-		webapi_execute("/api/setmepgmode?mode=" + nm);
-	});
-	
 	setHover('#slist li');
 	$('#fsspinner > label').css('padding-left','10px');
 	$('#fsspinner > label').css('padding-right','10px');

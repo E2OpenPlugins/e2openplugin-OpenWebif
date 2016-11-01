@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2016-10-31 20:27+0100\n"
+"POT-Creation-Date: 2016-11-01 14:58+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -309,27 +309,27 @@ msgstr "Antwort lautet JA!"
 msgid "Answer is NO!"
 msgstr "Antwort lautet NEIN!"
 
-#: ../plugin/controllers/models/services.py:257
+#: ../plugin/controllers/models/services.py:260
 msgid "New"
 msgstr "Neu"
 
-#: ../plugin/controllers/models/services.py:259
+#: ../plugin/controllers/models/services.py:262
 msgid "Services"
 msgstr "Sender"
 
-#: ../plugin/controllers/models/services.py:264
+#: ../plugin/controllers/models/services.py:267
 msgid "Cable"
 msgstr "Kabel"
 
-#: ../plugin/controllers/models/services.py:266
+#: ../plugin/controllers/models/services.py:269
 msgid "Terrestrial"
 msgstr "Terrestrisch"
 
-#: ../plugin/controllers/models/services.py:270
+#: ../plugin/controllers/models/services.py:273
 msgid "W"
 msgstr "W"
 
-#: ../plugin/controllers/models/services.py:272
+#: ../plugin/controllers/models/services.py:275
 msgid "E"
 msgstr "O"
 
@@ -1989,45 +1989,57 @@ msgstr ""
 msgid "Sref"
 msgstr ""
 
-#: ../plugin/local.py:408
+#: ../plugin/local.py:407
+msgid "Orbital Position"
+msgstr ""
+
+#: ../plugin/local.py:409
 msgid "error! Loading Page"
 msgstr "Fehler! beim Laden der Seite"
 
-#: ../plugin/local.py:409
+#: ../plugin/local.py:410
 msgid "Timer Added"
 msgstr "Timer Hinzugefügt"
 
-#: ../plugin/local.py:410
+#: ../plugin/local.py:411
 msgid "Event not found"
 msgstr "Event nicht gefunden"
 
-#: ../plugin/local.py:412
+#: ../plugin/local.py:413
 msgid "OpenWebif Browser Settings"
 msgstr "OpenWebif Browser Einstellungen"
 
-#: ../plugin/local.py:413
+#: ../plugin/local.py:414
 msgid "OpenWebif Settings"
 msgstr "OpenWebif Einstellungen"
 
-#: ../plugin/local.py:414
+#: ../plugin/local.py:415
 msgid "Theme"
 msgstr "Theme"
 
-#: ../plugin/local.py:415
+#: ../plugin/local.py:416
 msgid "Show Picon in channel list"
 msgstr "Zeige Picon in Senderliste"
 
-#: ../plugin/local.py:416
+#: ../plugin/local.py:417
 msgid "Spinner"
 msgstr "Spinner"
 
-#: ../plugin/local.py:417
-msgid "Multi EPG Mode"
-msgstr "Multi EPG Modus"
-
-#: ../plugin/local.py:419
+#: ../plugin/local.py:418
 msgid "Display duration (s)"
 msgstr "Anzeigedauer (s)"
+
+#: ../plugin/local.py:420
+msgid "Display Mode"
+msgstr "Anzeige Modus"
+
+#: ../plugin/local.py:421
+msgid "TV Guide"
+msgstr "Zeitschrift"
+
+#: ../plugin/local.py:422
+msgid "Timeline"
+msgstr "Zeitstrahl"
 
 #: ../plugin/plugin.py:103
 msgid "OpenWebif url: http://yourip:port"
@@ -2085,6 +2097,9 @@ msgstr "Zeichenkodierung der EPG Daten"
 #: ../plugin/plugin.py:209
 msgid "OpenWebif Configuration"
 msgstr "OpenWebif-Konfiguration"
+
+#~ msgid "Multi EPG Mode"
+#~ msgstr "Multi EPG Modus"
 
 #~ msgid "Smart services renaming for XBMC"
 #~ msgstr "Sendernamen für XBMC umbenennen"
