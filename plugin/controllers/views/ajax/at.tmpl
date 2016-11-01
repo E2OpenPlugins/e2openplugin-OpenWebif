@@ -14,20 +14,17 @@ fieldset > label
 <div id="content_main" style="min-height: 500px;background-image:none;" class="ui-widget-content">
 	<div id="info">
 		<div style="display: table;width: 100%;">
-		<div style="display: table-row;">
 			<div style="display:table-cell;width:200px;vertical-align:top;">
 				<h3 class="ui-widget-header">$tstrings['at_list']</h3>
-			</div>
-			<div style="display:table-cell;vertical-align:top;">
-				<h3 class="ui-widget-header">$tstrings['at_at_edit'] <span id='at_name'></span></h3>
-			</div>
-		</div>
-		<div style="display: table-row;">
-			<div style="display:table-cell;width:200px;vertical-align:top;">
+				<div style="overflow:auto;max-height:600px;">
 				<ol class="sellist" id="atlist">
 				</ol>
+				</div>
 			</div>
+			<div class="ui-widget-header" style="display:table-cell;background: none;border-bottom:none;border-top:none;border-left:none;width:1px;"></div>
 			<div style="display:table-cell;">
+				<div style="width: 100%; zoom: 1;">
+				<h3 class="ui-widget-header">$tstrings['at_at_edit'] <span id='at_name'></span></h3>
 					<div id="ateditcontent">
 						<form>
 							<fieldset style="border:none">
