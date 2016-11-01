@@ -10,6 +10,7 @@
 * fix settings
 * new second multiepg / #36 #267
 * show orbital position in current info / #188
+* fix very old timer list issue / #410 , #411
 
 ## Version 1.0.0
 **FEATURES**

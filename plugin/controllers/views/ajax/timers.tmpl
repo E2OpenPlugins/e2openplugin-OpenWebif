@@ -60,7 +60,9 @@
 					</div>
 					<div>
 						<span class="tm_desc" style="font-weight: bold;">
-							#if $timer.state == 0
+							#if $timer.disabled
+								$tstrings['disabled']
+							#elif $timer.state == 0
 								$tstrings['waiting']
 							#elif $timer.state == 2
 								$tstrings['running']
