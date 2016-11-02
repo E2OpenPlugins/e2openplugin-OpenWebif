@@ -58,33 +58,26 @@
 </body>
 <script>
 #raw
-
 $(document).ready(function(){
 	$("#stream").popup();
 });
-
 var sref='';
 var sname='';
-
 function zapChannel() {
 	$.ajax('/api/zap?sRef=' + escape(sref));
 }
-
 function jumper(mode) {
 	document.portForm.ref.value = sref;
 	document.portForm.name.value = sname;
 	document.portForm.device.value = mode;
 	document.portForm.submit();
 }
-
 function dlg(a,b)
 {
 	sref = a;
 	sname = b;
 	$("#stream").popup("open"); 
 }
-
-
 </script>
 #end raw
 </html>

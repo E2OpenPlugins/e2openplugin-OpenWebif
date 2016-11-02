@@ -1,6 +1,5 @@
 #from urllib import quote
 #from Plugins.Extensions.OpenWebif.local import tstrings
-#set $transcoding = True
 <html>
  <head>
 	<title>OpenWebif</title>
@@ -70,33 +69,27 @@
  </body>
  <script>
 #raw
-
 $(document).ready(function(){
 	$("#stream").popup();
 });
-
 var sRef='';
 var file='';
-
 function playRecording() {
 	var sr = sRef.replace(/-/g,'%2D').replace(/_/g,'%5F').replace(/\//g,'%2F');
 	$.ajax('/api/zap?sRef=' + sref);
 }
-
 function jumper(mode) {
 	document.portForm.file.value = file;
 	document.portForm.name.value = sname;
 	document.portForm.device.value = mode;
 	document.portForm.submit();
 }
-
 function dlg(a,b)
 {
 	sref = a;
 	file = b;
 	$("#stream").popup("open"); 
 }
-
 </script>
 #end raw
 </html>

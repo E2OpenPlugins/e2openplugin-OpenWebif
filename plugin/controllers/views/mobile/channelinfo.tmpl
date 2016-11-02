@@ -16,8 +16,8 @@
 		<div id="header">
 			<div class="button" onClick="history.back()">$tstrings['back']</div>
 			<h1><a style="color:#FFF;text-decoration:none;" href='/mobile'>OpenWebif</a></h1>
-			#set $link=quote('/mobile/channelzap?sref=' + $channelinfo.sref, safe=' ~@#$&()*!+=:;,.?/\'')
-			<div class="button" style="right:5px;left:auto;" onClick="window.open('$link');return false;">$tstrings['zap']</div>
+			#set $link=quote($channelinfo.sref, safe=' ~@#$&()*!+=:;,.?/\'')
+			<div class="button" style="right:5px;left:auto;" onClick="zapChannel('$link');return false;">$tstrings['zap']</div>
 		</div>
 		<div id="mainContent" class="ui-corner-all">
 			<table width="100%" border="0" cellspacing="1" cellpadding="5">
@@ -25,7 +25,7 @@
 							<th colspan="3" class="ui-btn-up-b" style="text-align: left;">$tstrings['service']</th>
 						</tr>
 						<tr style="background-color:  #f0f7fc;">
-							<td width="200"><img src="$channelinfo.picon" border="0" alt=""></td>
+							<td width="200"><img src="$channelinfo.picon" border="0" alt="" style="max-width:100px"></td>
 							<td width="100%" valign="top">
 							<strong>$channelinfo.sname</strong><br />
 							#if $channelinfo.title
@@ -61,8 +61,8 @@
 					#end if
 				<li style="padding: 3px;">
 					<a href="/mobile/eventview?eventid=$event.id&eventref=$event.sref" style="padding: 3px;">
-						<span class="ui-li-heading" style="margin-top: 0px;">$event.title</span>
-						<span class="ui-li-desc" style="margin-bottom: 0px;">$event.begin - $event.end</span>
+						<h3>$event.title</h3>
+						<p>$event.begin - $event.end</p>
 					</a>
 				</li>
 				#end for
@@ -75,4 +75,11 @@
 		</div>
 	</div>
  </body>
+<script>
+#raw
+function zapChannel(sref) {
+	$.ajax('/api/zap?sRef=' + escape(sref));
+}
+</script>
+#end raw
 </html>
