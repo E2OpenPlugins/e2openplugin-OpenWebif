@@ -135,12 +135,8 @@ def getTimers(session):
 def addTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname, tags, repeated, vpsinfo=None, logentries=None, eit=0, always_zap=-1):
 	rt = session.nav.RecordTimer
 
-	print "mao1", dirname
-
 	if not dirname:
 		dirname = preferredTimerPath()
-
-	print "mao2", dirname
 
 	try:
 		timer = RecordTimerEntry(
@@ -164,12 +160,23 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 		conflicts = rt.record(timer)
 		if conflicts:
 			errors = []
+			conflictinfo = []
 			for conflict in conflicts:
 				errors.append(conflict.name)
+				conflictinfo.append({
+					"serviceref": str(conflict.service_ref),
+					"servicename": conflict.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
+					"name": conflict.name,
+					"begin" : conflict.begin,
+					"end" : conflict.end,
+					"realbegin":strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.begin)))),
+					"realend":strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.end))))
+				})
 
 			return {
 				"result": False,
-				"message": _("Conflicting Timer(s) detected! %s") % " / ".join(errors)
+				"message": _("Conflicting Timer(s) detected! %s") % " / ".join(errors),
+				"conflicts" : conflictinfo
 			}
 		#VPS
 		if vpsinfo is not None:
@@ -272,9 +279,24 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 					"message": _("Timer '%s' changed") % name
 				}
 			else:
+				errors = []
+				conflictinfo = []
+				for conflict in conflicts:
+					errors.append(conflict.name)
+					conflictinfo.append({
+						"serviceref": str(conflict.service_ref),
+						"servicename": conflict.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
+						"name": conflict.name,
+						"begin" : conflict.begin,
+						"end" : conflict.end,
+						"realbegin":strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.begin)))),
+						"realend":strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.end))))
+					})
+				
 				return {
 					"result": False,
-					"message": _("Timer '%s' not saved while Conflict") % name
+					"message": _("Timer '%s' not saved while Conflict") % name,
+					"conflicts" : conflictinfo
 				}
 
 	return {
