@@ -41,8 +41,10 @@
 		<div data-role="content" data-theme="b">
 			<span class="title">Stream</span>
 			<a href="#home" onclick="zapChannel();" data-role="button" data-theme="a">$tstrings['zap']</a>
-			<a href="#home" onclick="jumper8001();" data-role="button" data-theme="a">$tstrings['stream']</a>
-			<a href="#home" onclick="jumper8002();" data-role="button" data-theme="a">$tstrings['stream'] ($tstrings['transcoded'])</a>
+			<a href="#home" onclick="jumper('etc');" data-role="button" data-theme="a">$tstrings['stream']</a>
+			#if $transcoding
+			<a href="#home" onclick="jumper('phone');" data-role="button" data-theme="a">$tstrings['stream'] ($tstrings['transcoded'])</a>
+			#end if
 			<a href="#home" data-role="button" data-theme="d" data-rel="back">Cancel</a>
 		</div>
 	</div>
@@ -53,12 +55,6 @@
 		<input type="hidden" name="name">
 		<input type="hidden" name="device">
 	</form>
-	<form name="portFormTs" action="/web/ts.m3u" method="GET" target="_blank">
-		<input type="hidden" name="file">
-		<input type="hidden" name="device">
-	</form>
-
-
 </body>
 <script>
 #raw
@@ -70,27 +66,14 @@ $(document).ready(function(){
 var sref='';
 var sname='';
 
-function webapi_execute(url) {
-	var jqxhr = $.ajax( url ).done(function() { 
-	});
-}
-
 function zapChannel() {
-	var url = '/api/zap?sRef=' + escape(sref);
-	webapi_execute(url);
+	$.ajax('/api/zap?sRef=' + escape(sref));
 }
 
-function jumper8002( ) {
+function jumper(mode) {
 	document.portForm.ref.value = sref;
 	document.portForm.name.value = sname;
-	document.portForm.device.value = "phone";
-	document.portForm.submit();
-}
-
-function jumper8001( ) {
-	document.portForm.ref.value = sref;
-	document.portForm.name.value = sname;
-	document.portForm.device.value = "etc";
+	document.portForm.device.value = mode;
 	document.portForm.submit();
 }
 
@@ -98,7 +81,6 @@ function dlg(a,b)
 {
 	sref = a;
 	sname = b;
-	
 	$("#stream").popup("open"); 
 }
 

@@ -1,4 +1,6 @@
+#from urllib import quote
 #from Plugins.Extensions.OpenWebif.local import tstrings
+#set $transcoding = True
 <html>
  <head>
 	<title>OpenWebif</title>
@@ -29,11 +31,16 @@
 			<ul data-role="listview" data-inset="true" data-theme="d">
 				<li data-role="list-divider" role="heading" data-theme="b">$tstrings['movies']</li>
 				#for $movie in $movies
+				<li data-icon="false">
+				<a href="#" onclick="dlg('$quote($movie.serviceref)', '$quote($movie.filename)');return false;" style="padding: 3px;">
 				#if $movie.eventname != ""
-				<li>$movie.eventname</li>
+				<h3>$movie.eventname</h3>
 				#else
-				<li>$movie.filename</li>
+				<h3>$movie.filename</h3>
 				#end if
+				<p>...</p>
+				</a>
+				</li>
 				#end for
 			</ul>
 		</div>
@@ -41,6 +48,55 @@
 			<p>OpenWebif Mobile</p>
 			<a onclick="document.location.href='/index?mode=fullpage';return false;" href="#">$tstrings['show_full_openwebif']</a>
 		</div>
+
+	<div data-role="popup" id="stream" data-theme="b">
+		<div data-role="content" data-theme="b">
+			<span class="title">Stream</span>
+			<a href="#home" onclick="playRecording();" data-role="button" data-theme="a">$tstrings['playback']</a>
+			<a href="#home" onclick="jumper('etc');" data-role="button" data-theme="a">$tstrings['stream']</a>
+			#if $transcoding
+			<a href="#home" onclick="jumper('phone');" data-role="button" data-theme="a">$tstrings['stream'] ($tstrings['transcoded'])</a>
+			#end if
+			<a href="#home" data-role="button" data-theme="d" data-rel="back">Cancel</a>
+		</div>
 	</div>
+
+	</div>
+	
+	<form name="portForm" action="/web/ts.m3u" method="GET" target="_blank">
+		<input type="hidden" name="file">
+		<input type="hidden" name="device">
+	</form>
  </body>
+ <script>
+#raw
+
+$(document).ready(function(){
+	$("#stream").popup();
+});
+
+var sRef='';
+var file='';
+
+function playRecording() {
+	var sr = sRef.replace(/-/g,'%2D').replace(/_/g,'%5F').replace(/\//g,'%2F');
+	$.ajax('/api/zap?sRef=' + sref);
+}
+
+function jumper(mode) {
+	document.portForm.file.value = file;
+	document.portForm.name.value = sname;
+	document.portForm.device.value = mode;
+	document.portForm.submit();
+}
+
+function dlg(a,b)
+{
+	sref = a;
+	file = b;
+	$("#stream").popup("open"); 
+}
+
+</script>
+#end raw
 </html>

@@ -12,6 +12,7 @@ from base import BaseController
 from models.movies import getMovieList
 from models.timers import getTimers
 from models.services import getBouquets, getChannels, getChannelEpg, getEvent, getPicon
+from models.info import getTranscodingSupport
 from urllib import quote
 from time import localtime, strftime
 
@@ -42,6 +43,7 @@ class MobileController(BaseController):
 			stype = request.args["stype"][0]
 		if "id" in request.args.keys():
 			idbouquet = request.args["id"][0]
+		channels['transcoding'] = getTranscodingSupport()
 		return getChannels(idbouquet, stype)
 
 	def P_channelinfo(self, request):
@@ -123,6 +125,7 @@ class MobileController(BaseController):
 			movies = getMovieList(request.args["dirname"][0])
 		else:
 			movies = getMovieList()
+		movies['transcoding'] = getTranscodingSupport()
 		return movies
 		
 	def P_about(self, request):
