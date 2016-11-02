@@ -422,4 +422,8 @@ tstrings = {'mo': _("Mo"),
 	'tv_guide': _("TV Guide"),
 	'timeline': _("Timeline"),
 
+	'free': _("free"),
+	'live': _("live"),
+	'record_stream': _("record/stream"),
+
 	}

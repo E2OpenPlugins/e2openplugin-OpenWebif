@@ -91,7 +91,7 @@ class AjaxController(BaseController):
 		return { "info": info }
 	
 	def P_boxinfo(self, request):
-		info = getInfo()
+		info = getInfo(self.session)
 		type = getBoxType()
 
 		if fileExists(getPublicPath("/images/boxes/"+type+".png")):

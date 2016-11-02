@@ -137,7 +137,7 @@ def getPiconPath():
 	else:
 		return ""
 
-def getInfo():
+def getInfo(session = None):
 	# TODO: get webif versione somewhere!
 	info = {}
 
@@ -253,7 +253,8 @@ def getInfo():
 	for i in range(0, nimmanager.getSlotCount()):
 		info['tuners'].append({
 			"name": nimmanager.getNim(i).getSlotName(),
-			"type": nimmanager.getNimName(i) + " (" + nimmanager.getNim(i).getFriendlyType() + ")"
+			"type": nimmanager.getNimName(i) + " (" + nimmanager.getNim(i).getFriendlyType() + ")",
+			"state": 0
 		})
 
 	info['ifaces'] = []
@@ -329,6 +330,18 @@ def getInfo():
 	for l in lang:
 		if l in language.getLanguage():
 			info['kinopoisk'] = True
+
+	if session:
+		recs = NavigationInstance.instance.getRecordings()
+		if recs:
+			for rec in recs:
+				nr = rec.frontendInfo().getAll(True)["tuner_number"]
+				info['tuners'][nr]['state'] = 1
+	
+		service = session.nav.getCurrentService()
+		if service is not None:
+			nr = service.frontendInfo().getAll(True) ['tuner_number']
+			info['tuners'][nr]['state'] += 2
 
 	global STATICBOXINFO
 	STATICBOXINFO = info
