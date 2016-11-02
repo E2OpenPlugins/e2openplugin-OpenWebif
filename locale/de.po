@@ -2035,7 +2035,7 @@ msgstr "Anzeigedauer (s)"
 
 #: ../plugin/local.py:421
 msgid "Display Mode"
-msgstr "Anzeige Modus"
+msgstr "Anzeigemodus"
 
 #: ../plugin/local.py:422
 msgid "TV Guide"
