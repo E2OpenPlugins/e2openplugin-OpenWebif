@@ -759,4 +759,26 @@ i.fa-mobile {font-size: 22px;}
 	margin-right:10px;
 }
 
+.tled-box {margin: 2px 5px -1px 5px;display:inline-block;}
+.tled.black {background-color: #DDD;}
+.tled.green {background-color: #0F0;}
+.tled.red {background-color: #F00;}
+.tled.yellow {background-color: #fff700;}
+.tled.orange {background-color: #f18c16;}
+.tled {margin: 0 auto;width: 14px;height: 14px;border-radius: 50%;box-shadow: rgba(255, 255, 255, 0.1) 0 -1px 1px 1px, inset #441313 0 -1px 8px, rgba(255, 255, 255, 0.5) 0 1px 1px;}
+
+.tbltc {display:table;width:100%;}
+.tbltc > div {display:table-row;}
+.tbltc > div > div{display:table-cell;}
+
+/*Multiepg mode 2*/
+.timetable { border:none; height: 1px;}
+.timetable > div { display:table; margin:0; padding:0;}
+.timetable-now { position: relative;top: 0;left: 0;z-index: 1;width: 2px;height: 100%;background-color: #0fb8fb;float:left;}
+
+.channel-listing { white-space: normal;display:table;list-style:none;counter-reset:n 0;padding: 0;}
+.channel-listing > li { display: block; white-space: nowrap; width: 16380px; overflow: hidden; font-size: 0px; vertical-align: top;}
+.channel-listing > li > span { position: absolute; left: 0px; z-index: 2; border-width: 0px; width: 140px;white-space: nowrap; }
+.channel-listing > li > span > div { vertical-align: top; height:50px;}
+.channel-listing > li > span > div > span { font-size: 10px; display:inherit; }
 

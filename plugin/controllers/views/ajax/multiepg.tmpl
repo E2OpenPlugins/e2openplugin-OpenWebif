@@ -11,7 +11,7 @@
 	.service img { width:50px; height:30px; float:left; margin-right:10px; border: 0;}
 	.title { font-weight: bold;}
 	.desc { font-size: 10px; line-height: 1.25em; max-height: 3.75em; overflow: hidden; }
-	.event { cursor: pointer; width: 190px; overflow:hidden; margin-bottom: 0.75ex;}
+	.event { cursor: pointer; width: 190px; overflow:hidden; margin-bottom: 0.75em;}
 	.bq { font-size: 11px; font-weight: bold; padding: 2px 4px; line-height: 18px; cursor: pointer; white-space: nowrap; display: inline-block; margin: 1px 1px 0px 0px;}
 	.plus { font-size: 13px; font-weight: bold; padding: 2px 4px; line-height: 21px; cursor: pointer; white-space: nowrap; }
 	.timer { font-weight: bold; font-size: 10px; }
@@ -53,11 +53,6 @@
 #if $mode == 2
 
 <style>
-.channel-listing { white-space: normal;display:table;list-style:none;counter-reset:n 0;padding: 0;}
-.channel-listing > li { display: block; white-space: nowrap; width: 16380px; overflow: hidden; font-size: 0px; vertical-align: top;}
-.channel-listing > li > span { position: absolute; left: 0px; z-index: 2; border-width: 0px; width: 140px;white-space: nowrap; }
-.channel-listing > li > span > div { vertical-align: top; height:50px;}
-.channel-listing > li > span > div > span { font-size: 10px; display:inherit; }
 .picon { display: inline-block; margin:0; max-width: 100px;}
 .picon > img { max-height: 30px;}
 
@@ -69,11 +64,6 @@
 .etime { display: inline-block; padding-right: 20px; font-weight: 200; line-height: 1,4; font-size: 12px; }
 .event { display: inline-block; border-width: 0px 0px 0px 1px; }
 .event .ename,.event .etime { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-.timetable { border:none; height: 1px;}
-.timetable > div { display:table; margin:0; padding:0;}
-.timetable-now { position: relative;top: 0;left: 0;z-index: 1;width: 2px;height: 100%;background-color: #0fb8fb;float:left;}
-
 </style>
 
 #set $now = $mktime($localtime())
@@ -274,7 +264,7 @@ fixTableHeight();
 \$(window).resize(function(){ fixTableHeight(); });
 \$(".bq").click(function() {
 	var id = \$(this).data("ref");
-	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref='+id);
+	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref='+id +'&day=$day');
 	if(typeof(Storage) !== "undefined") { localStorage.lastmbq = id; }
 });
 \$(".event").click(function() {
