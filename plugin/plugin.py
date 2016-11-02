@@ -80,6 +80,7 @@ config.OpenWebif.epg_encoding = ConfigSelection(default = 'utf-8', choices = [ '
 
 
 imagedistro = getInfo()['imagedistro']
+DREAMOS = getInfo()['oever'] == "OE 2.2"
 
 class OpenWebifConfig(Screen, ConfigListScreen):
 	skin = """
@@ -188,6 +189,8 @@ def IfUpIfDown(reason, **kwargs):
 def startSession(reason, session):
 	global global_session
 	global_session = session
+	if DREAMOS: # it seems that DreamOS deactivated WHERE_NETWORKCONFIG_READ
+		HttpdStart(global_session)
 
 def main_menu(menuid, **kwargs):
 	if menuid == "network":
