@@ -41,7 +41,7 @@ import sys
 import time
 import string
 
-OPENWEBIFVER = "OWIF 1.0.1"
+OPENWEBIFVER = "OWIF 1.0.2"
 
 STATICBOXINFO = None
 
@@ -254,7 +254,8 @@ def getInfo(session = None):
 		info['tuners'].append({
 			"name": nimmanager.getNim(i).getSlotName(),
 			"type": nimmanager.getNimName(i) + " (" + nimmanager.getNim(i).getFriendlyType() + ")",
-			"state": 0
+			"rec": "",
+			"live": ""
 		})
 
 	info['ifaces'] = []
@@ -331,21 +332,60 @@ def getInfo(session = None):
 		if l in language.getLanguage():
 			info['kinopoisk'] = True
 
+	info['EX'] = ''
+
 	if session:
-		recs = NavigationInstance.instance.getRecordings()
-		if recs:
-			for rec in recs:
-				nr = rec.frontendInfo().getAll(True)["tuner_number"]
-				info['tuners'][nr]['state'] = 1
-	
-		service = session.nav.getCurrentService()
-		if service is not None:
-			nr = service.frontendInfo().getAll(True) ['tuner_number']
-			info['tuners'][nr]['state'] += 2
+		try:
+			recs = NavigationInstance.instance.getRecordings()
+			if recs:
+				#from Plugins.Extensions.OpenWebif.controllers.stream import streamList
+				#s_sname = ''
+				#s_cip = ''
+				#for s in streamList:
+				#	srefn = s.ref.toString()
+				#	ref = eServiceReference(srefn)
+				#	s_sname = ref.getInfo().getName()
+				#	s_cip = s.clientIP
+
+				sname = ''
+				rt = NavigationInstance.instance.RecordTimer
+				if len(rt.timer_list) == 1:
+					sname = rt.timer_list[0].service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
+
+				for rec in recs:
+					feinfo = rec.frontendInfo()
+					frontendData = feinfo and feinfo.getAll(True)
+					cur_info = feinfo.getTransponderData(True)
+					nr = frontendData['tuner_number']
+					info['tuners'][nr]['rec'] = getOrbitalText(cur_info) + ' / ' + sname
+
+			service = session.nav.getCurrentService()
+			if service is not None:
+				sname = service.info().getName()
+				feinfo = service.frontendInfo()
+				frontendData = feinfo and feinfo.getAll(True)
+				cur_info = feinfo.getTransponderData(True)
+				nr = frontendData['tuner_number']
+				info['tuners'][nr]['live'] = getOrbitalText(cur_info) + ' / ' + sname
+		except Exception, error:
+			info['EX'] = error
 
 	global STATICBOXINFO
 	STATICBOXINFO = info
 	return info
+
+def getOrbitalText(cur_info):
+	if cur_info:
+		tunerType = cur_info.get('tuner_type')
+		if tunerType == "DVB-S":
+			pos = int(cur_info.get('orbital_position'))
+			direction = 'E'
+			if pos > 1800:
+				pos = 3600 - pos
+				direction = 'W'
+			return "%d.%d° %s" % (pos/10, pos%10, direction)
+		return tunerType
+	return ''
 
 def getFrontendStatus(session):
 	inf = {}

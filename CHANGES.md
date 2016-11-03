@@ -3,8 +3,14 @@
 **FEATURES**
 * powertimer api
 
-## Version 1.0.1
+## Version 1.0.2
 ## (in development)
+* add conflict info to add timer api
+* fix timer conflicts / #338
+* fix display tuner state in box info / #204
+* update mobile webinterface / #350
+
+## Version 1.0.1
 * improve theme support
 * update translations
 * fix settings
