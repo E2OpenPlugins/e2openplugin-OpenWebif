@@ -281,16 +281,28 @@ class BaseController(resource.Resource):
 
 		self.oscamconf = self.oscamconfPath()
 		if self.oscamconf is not None:
-			import ConfigParser
-			oconfig = ConfigParser.ConfigParser()
-			oconfig.readfp(open(self.oscamconf))
-			port = oconfig.get("webif","httpport")
+			data = open(self.oscamconf, "r").readlines()
+			webif = False
 			proto = "http"
-			if port[0] == '+':
-				proto = "https"
-				port = port[1:]
+			httpuser = httppwd = httpport = False
+			for i in data:
+				if "[webif]" in i.lower():
+					webif = True
+				elif "httpuser" in i.lower():
+					httpuser = True
+					user = i.split("=")[1].strip()
+				elif "httppwd" in i.lower():
+					httppwd = True
+					pwd = i.split("=")[1].strip()
+				elif "httpport" in i.lower():
+					httpport = True
+					port = i.split("=")[1].strip()
+					if port[0] == '+':
+						proto = "https"
+						port = port[1:]
 			url = "%s://%s:%s" % (proto, request.getRequestHostname(), port)
-			extras.append({ 'key': url, 'description': _("OSCam Webinterface"), 'nw':'1'})
+			if webif:
+				extras.append({ 'key': url, 'description': _("OSCam Webinterface"), 'nw':'1'})
 
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
