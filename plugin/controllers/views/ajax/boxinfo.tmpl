@@ -84,12 +84,41 @@
 						<tr>
 							<th colspan="2" class="ui-widget-header">$tstrings['tuners']</th>
 						</tr>
-						#for $tuner in $tuners
 						<tr>
-							<td class="infoleft">$tuner.name:</td>
-							<td class="inforight">$tuner.type</td>
-						</tr>
+							<td colspan="2">
+						#for $tuner in $tuners
+							<div style="display:table;width:100%;">
+								<div style="display:table-cell;width:10%;padding-left:10px;">
+									$tuner.name
+								</div>
+								<div style="display:table-cell;width:40%;">
+									$tuner.type
+								</div>
+								<div style="display:table-cell;">
+									#if $tuner.live != ''
+									<div style="display:table;width:100%;">
+										<div class='tled-box'><div class='tled green'></div></div>$tuner.live
+									</div>
+									#end if
+									#if $tuner.rec != ''
+									<div style="display:table;width:100%;">
+										<div class='tled-box'><div class='tled red'></div></div>$tuner.rec
+									</div>
+									#end if
+								</div>
+							</div>
 						#end for
+							</td>
+						</tr>
+						#if $EX != ''
+						<tr><td colspan="2">$EX</td></tr>
+						#end if
+<!--					<tr><td colspan="2">
+						<div class='tled-box'><div class='tled black'></div></div>free
+						<div class='tled-box'><div class='tled green'></div></div>Live
+						<div class='tled-box'><div class='tled red'></div></div>Record or Stream
+						<div class='tled-box'><div class='tled orange'></div></div>Record or Stream and Live
+						</td></tr>-->
 					</table>
 				</td>
 			</tr>
