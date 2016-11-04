@@ -218,7 +218,16 @@ $('#editTimerForm').dialog({
 								canclose = true;
 							}
 							else {
-								$("#error").text(result.message);
+								if(result.conflicts)
+								{
+									var conftext='Timer Conflicts:<br>';
+									result.conflicts.forEach(function(entry) {
+										conftext += entry.name+" / "+entry.servicename+" / "+entry.realbegin+" - "+entry.realend+"<br>";
+									});
+									$("#error").text(conftext);
+								} else {
+									$("#error").text(result.message);
+								}
 								$("#errorbox").show();
 							}
 						}
@@ -238,7 +247,16 @@ $('#editTimerForm').dialog({
 								canclose = true;
 							}
 							else {
-								$("#error").text(result.message);
+								if(result.conflicts)
+								{
+									var conftext='Timer Conflicts:<br>';
+									result.conflicts.forEach(function(entry) {
+										conftext += entry.name+" / "+entry.servicename+" / "+entry.realbegin+" - "+entry.realend+"<br>";
+									});
+									$("#error").text(conftext);
+								} else {
+									$("#error").text(result.message);
+								}
 								$("#errorbox").show();
 							}
 						}
