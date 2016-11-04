@@ -338,19 +338,35 @@ def getInfo(session = None):
 		try:
 			recs = NavigationInstance.instance.getRecordings()
 			if recs:
-				#from Plugins.Extensions.OpenWebif.controllers.stream import streamList
-				#s_sname = ''
-				#s_cip = ''
-				#for s in streamList:
-				#	srefn = s.ref.toString()
-				#	ref = eServiceReference(srefn)
-				#	s_sname = ref.getInfo().getName()
-				#	s_cip = s.clientIP
+				# only one stream and only TV
+				from Plugins.Extensions.OpenWebif.controllers.stream import streamList
+				s_name = ''
+				s_cip = ''
+				if len(streamList)==1:
+					from Screens.ChannelSelection import service_types_tv
+					from enigma import eEPGCache
+					epgcache = eEPGCache.getInstance()
+					serviceHandler = eServiceCenter.getInstance()
+					services = serviceHandler.list(eServiceReference('%s ORDER BY name'%(service_types_tv)))
+					channels = services and services.getContent("SN", True)
+					s = streamList[0]
+					srefs = s.ref.toString()
+					for channel in channels:
+						if srefs == channel[0]:
+							s_name = channel[1] + ' (' + s.clientIP + ')'
+							break
 
 				sname = ''
-				rt = NavigationInstance.instance.RecordTimer
-				if len(rt.timer_list) == 1:
-					sname = rt.timer_list[0].service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
+				timers = []
+				for timer in NavigationInstance.instance.RecordTimer.timer_list:
+					if timer.isRunning() and not timer.justplay:
+						timers.append(timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''))
+				# only one recording
+				if len(timers) == 1:
+					sname = timers[0]
+					
+				if sname == '' and s_name != '':
+					sname = s_name
 
 				for rec in recs:
 					feinfo = rec.frontendInfo()
