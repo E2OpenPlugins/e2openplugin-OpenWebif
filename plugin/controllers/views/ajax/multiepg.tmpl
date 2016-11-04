@@ -29,17 +29,16 @@
 #for $slot in range(0,7)
 	<div class="float plus ui-state-default #if $slot==$day then 'ui-state-active' else '' #" data-day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div>
 #end for
+#if $mode == 2
+<div class="float plus ui-state-default lbl">&nbsp;Primetimes:&nbsp;</div>
+<div id="pt0" class="float plus ui-state-default" data-day="201">06:00</div>
+<div id="pt1" class="float plus ui-state-default" data-day="202">12:00</div>
+<div id="pt2" class="float plus ui-state-default" data-day="203">20:00</div>
+#end if
 <div class="float plus ui-state-default lbl">&nbsp;$tstrings['display_mode']:&nbsp;</div>
 <div class="float plus ui-state-default #if $mode==1 then 'ui-state-active' else '' #" data-day="101">$tstrings['tv_guide']</div>
 <div class="float plus ui-state-default #if $mode==2 then 'ui-state-active' else '' #" data-day="102">$tstrings['timeline']</div>
-#if $mode == 2
-<!-- TODO
-<div class="float plus ui-state-default lbl">&nbsp;Primetimes:&nbsp;</div>
-<div class="float plus ui-state-default data-day="201">06:00</div>
-<div class="float plus ui-state-default data-day="202">12:00</div>
-<div class="float plus ui-state-default data-day="203">20:00</div>
--->
-#end if
+
 <div id="compressmepg" onclick="CompressMEPG();"><i id="compressmepgi" class="fa fa-compress link" aria-hidden="true"></i></div>
 <div id="refreshmepg" onclick="RefreshMEPG();"><i id="refreshmepgi" class="fa fa-refresh link" aria-hidden="true"></i></div>
 	<br clear="all">
@@ -126,17 +125,17 @@
 #else
 <div class="wrapper">
 <div id="tbl1body" style="position: relative; width: 100%;">
-	<div id="tblinner" style="height: auto;width: 100%; white-space: nowrap;overflow-y: hidden;">
+	<div id="tblinner" style="height: auto;width: 100%; white-space: nowrap;">
 	<div class="timetable">
 	<div>
 	<div class="timetable-now"></div>
 	</div>
 	</div>
 
-	<ol class="channel-listing ui-widget-header nobg" style="border:none;">
+	<ol id="timescroller" class="channel-listing ui-widget-header nobg" style="border:none;">
 		<li>
 			<span>
-				<div>
+				<div class="togglescroll ui-widget-header">
 					<h2 class="picon" ></h2>
 					<span></span>
 				</div>
@@ -147,7 +146,7 @@
 				</li>
 				#for $slot in range(0,50)
 					#set $t = $first + ($slot * 3600)
-					<li class="event" style="width:600px;" >
+					<li class="event" style="width:600px;" data-dt="$strftime("%H:%M", $localtime($t))">
 						<span class="ui-widget-header nobg">
 							<span class="ename">$tstrings[("day_" + ($strftime("%w",$localtime($t))))], $strftime('%d.%m.', $localtime($t))</span>
 							<span class="etime">
@@ -281,7 +280,25 @@ fixTableHeight();
 	if (day != undefined) {
 		if (day > 200)
 		{
-			// todo primetime
+			var d = day - 200;
+			var dt = \$(this).html();
+			var pos = 0;
+			\$('#tblinner').scrollLeft(0);
+			
+			\$("#timescroller li ol .event").each( function (){
+				if (pos == 0) {
+					if (\$(this).data("dt") == dt) {
+						if(\$(this).position() != undefined)
+							pos = \$(this).position().left;
+					}
+				}
+			});
+			
+			if(pos>0)
+			{
+				pos-=200;
+				\$('#tblinner').animate({scrollLeft: pos}, 500);
+			}
 		}
 		else if (day > 100)
 		{
@@ -311,5 +328,37 @@ if(mepgdirect==1) {
 	mepgdirect=0;
 	\$("#expandmepg").click();
 }
+
+\$(".togglescroll").click(function() {
+
+	if(\$('#tblinner').css('overflow-y')=='hidden') {
+		\$('#tblinner').css('overflow-y','');
+		\$('.togglescroll').removeClass('ui-widget-header');
+		SetLSValue('MultiEPGScrollStyle','1');
+	}else{
+		\$('#tblinner').css('overflow-y','hidden');
+		\$('.togglescroll').addClass('ui-widget-header');
+		SetLSValue('MultiEPGScrollStyle','0');
+	}
+});
+
+#if $mode == 2
+
+\$(function() { 
+	
+	if(GetLSValue('MultiEPGScrollStyle','0')=='0') {
+		\$('#tblinner').css('overflow-y','hidden');
+		\$('.togglescroll').addClass('ui-widget-header');
+	}
+	else
+	{
+		\$('#tblinner').css('overflow-y','');
+		\$('.togglescroll').removeClass('ui-widget-header');
+	}
+
+});
+
+#end if
+
 </script>
 
