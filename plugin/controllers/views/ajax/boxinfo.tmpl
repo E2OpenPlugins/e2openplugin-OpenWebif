@@ -15,12 +15,8 @@
 							<th colspan="2" class="ui-widget-header">$tstrings['box']</th>
 						</tr>
 						<tr>
-							<td class="infoleft">$tstrings['brand']:</td>
-							<td class="inforight">$brand</td>
-						</tr>
-						<tr>
-							<td class="infoleft">$tstrings['model']:</td>
-							<td class="inforight">$model</td>
+							<td class="infoleft">$tstrings['brand'] & $tstrings['model']:</td>
+							<td class="inforight">$brand $model</td>
 						</tr>
 						<tr>
 							<td class="infoleft">$tstrings['chipset']:</td>
@@ -31,12 +27,8 @@
 							<td class="inforight">$str($fp_version)</td>
 						</tr>
 						<tr>
-							<td class="infoleft">$tstrings['total_memory']:</td>
-							<td class="inforight">$mem1</td>
-						</tr>
-						<tr>
-							<td class="infoleft">$tstrings['free_memory']:</td>
-							<td class="inforight">$mem2</td>
+							<td class="infoleft">$tstrings['total_memory'] / $tstrings['free_memory']:</td>
+							<td class="inforight">$mem1 / $mem2</td>
 						</tr>
 						<tr>
 							<td class="infoleft">$tstrings['box_uptime']:</td>
@@ -84,32 +76,21 @@
 						<tr>
 							<th colspan="2" class="ui-widget-header">$tstrings['tuners']</th>
 						</tr>
-						<tr>
-							<td colspan="2">
 						#for $tuner in $tuners
-							<div style="display:table;width:100%;">
-								<div style="display:table-cell;width:10%;padding-left:10px;">
-									$tuner.name
-								</div>
-								<div style="display:table-cell;width:40%;">
-									$tuner.type
-								</div>
-								<div style="display:table-cell;">
+						<tr>
+							<td class="infoleft" style="vertical-align:text-top;">$tuner.name</td>
+							<td class="inforight">
+								$tuner.type<br>
 									#if $tuner.live != ''
-									<div style="display:table;width:100%;">
-										<div class='tled-box'><div class='tled green'></div></div>$tuner.live
-									</div>
+										<div class='tled-box'><div class='tled green'></div></div>$tuner.live<br>
 									#end if
 									#if $tuner.rec != ''
-									<div style="display:table;width:100%;">
-										<div class='tled-box'><div class='tled red'></div></div>$tuner.rec
-									</div>
+										<div class='tled-box'><div class='tled red'></div></div>$tuner.rec<br>
 									#end if
-								</div>
 							</div>
-						#end for
 							</td>
 						</tr>
+						#end for
 						#if $EX != ''
 						<tr><td colspan="2">$EX</td></tr>
 						#end if
@@ -130,12 +111,8 @@
 							<th colspan="2" class="ui-widget-header">$tstrings['hdd_model']: $hd.model</th>
 						</tr>
 						<tr>
-							<td class="infoleft">$tstrings['capacity']:</td>
-							<td class="inforight">$hd.capacity ("$hd.labelled_capacity")</td>
-						</tr>
-						<tr>
-							<td class="infoleft">$tstrings['free']:</td>
-							<td class="inforight">$hd.free</td>
+							<td class="infoleft">$tstrings['capacity'] / $tstrings['free']:</td>
+							<td class="inforight">$hd.capacity ("$hd.labelled_capacity") / $hd.free</td>
 						</tr>
 					</table>
 				</td>
