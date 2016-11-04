@@ -1,12 +1,13 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 2.0
+//* Version 2.1
 //******************************************************************************
 //* Copyright (C) 2011-2014 E2OpenPlugins
 //*
 //* V 1.0 - Initial Version
 //* V 1.1 - add movie move and rename
 //* V 2.0 - movie sort object, spinner, theme support, ...
+//* V 2.1 - support timer conflicts / fix IE cache issue
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -205,6 +206,11 @@ function initJsTranslation(strings) {
 	tstr_error_load_page = strings.tstr_error_load_page;
 	tstr_timer_added = strings.tstr_timer_added;
 	tstr_event_not_found = strings.tstr_event_not_found;
+	
+	tstr_channel = strings.channel;
+	tstr_end = strings.begin;
+	tstr_begin = strings.end;
+
 }
 
 function wait_for_openwebif() {
@@ -364,7 +370,7 @@ function load_tvcontent_spin(url) {
 }
 
 function load_maincontent(url) {
-	if (lastcontenturl != url || url.includes('screenshot') || url.includes('timer')) {
+	if (lastcontenturl != url || ( url.indexOf('screenshot') > -1 ) || ( url.indexOf('timer') > -1 ) || ( url.indexOf('boxinfo') > -1 )) {
 		$("#content_container").load(url);
 		lastcontenturl = url;
 	}
@@ -381,7 +387,7 @@ function load_maincontent_spin(url) {
 }
 
 function webapi_execute(url, callback) {
-	var jqxhr = $.ajax( url ).done(function() { 
+	var jqxhr = $.ajax({ url: url, cache: false, async: false}).done(function() { 
 	if (typeof callback !== 'undefined') {
 			callback();
 		}
@@ -441,18 +447,63 @@ function open_epg_pop(sRef) {
 	_epg_pop('ajax/epgpop?sref=' + escape(sRef));
 }
 
+function TimerConflict(conflicts)
+{
+	var SplitText = "<div class='tbltc'><div><div>Name</div><div>"+tstr_channel+"</div><div>"+tstr_end+"</div><div>"+tstr_begin+"</div></div>";
+	conflicts.forEach(function(entry) {
+		SplitText +="<div><div>"+entry.name+"</div><div>"+entry.servicename+"</div><div>"+entry.realbegin+"</div><div>"+entry.realend+"</div></div>";
+	});
+
+	SplitText +="</div>";
+	var buttons = {};
+	buttons[tstr_close] = function() { $(this).dialog("close");};
+	$('<div></div>').dialog({
+		modal: true,
+		height: 500,
+		width: 600,
+		autoOpen:true,
+		title: "Timer Conflicts",
+		open: function () {
+			$(this).html(SplitText);
+		}, buttons: buttons
+	});
+}
+
+function webapi_execute_result(url, callback) {
+	$.ajax({
+		async: false,
+		url: url,
+		cache : false,
+		success: function(data) {
+			result = $.parseJSON(data);
+			if (typeof callback !== 'undefined') {
+				if(result)
+					callback(result.result,result.message,result.conflicts);
+				else
+					callback(false,'error');
+			}
+		}
+	});
+}
+
 function addTimerEvent(sRef, eventId) {
-	webapi_execute("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId,
-		function() {
-			alert(tstr_timer_added); 
-		} 
+	webapi_execute_result("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId,
+		function(state,txt,conflicts) {
+			if (!state && conflicts)
+				TimerConflict(conflicts);
+			else
+				alert( state ? tstr_timer_added : txt );
+		}
 	);
 }
 function addTimerEventPlay(sRef, eventId) {
-	webapi_execute("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId + "&eit=0&disabled=0&justplay=1&afterevent=3",
-		function() {
-			alert(tstr_timer_added); 
-		} 
+	webapi_execute_result("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId + "&eit=0&disabled=0&justplay=1&afterevent=3",
+		function(state,txt,conflicts) {
+			if (!state && conflicts)
+				TimerConflict(conflicts);
+			else
+				alert( state ? tstr_timer_added : txt );
+		}
 	);
 }
 
@@ -731,6 +782,7 @@ function getMessageAnswer() {
 	$.ajax({
 		url: '/api/messageanswer',
 		dataType: "json",
+		cache: false,
 		success: function(result) { 
 			$('#messageSentResponse').html(result['message']);
 		}
@@ -757,6 +809,7 @@ function sendMessage() {
 	$.ajax({
 		url: '/api/message?text=' + text + '&type=' + type + '&timeout=' + timeout,
 		dataType: "json",
+		cache: false,
 		success: function(result) { 
 			$('#messageSentResponse').html(result['message']);
 			if(type==0)
@@ -822,11 +875,10 @@ function callScreenShot(){
 }
 
 function pressMenuRemote(code) {
-	if (shiftbutton) {
-		webapi_execute("/api/remotecontrol?type=long&command=" + code);
-	} else {
-		webapi_execute("/api/remotecontrol?command=" + code);
-	}
+	
+	var url = "/api/remotecontrol?" + ((shiftbutton) ? "type=long&" : "") + "command=" + code;
+	webapi_execute(url);
+	
 	if (grabTimer > 0) {
 		clearTimeout(grabTimer);
 	}
