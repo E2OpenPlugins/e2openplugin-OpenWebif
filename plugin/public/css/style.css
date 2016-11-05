@@ -479,13 +479,13 @@ FIXME : complete reorg header
 
 .infoleft
 {
-	width: 50%;
+	width: 40%;
 	text-align: left;
 	padding-left: 10px;
 }
 .inforight
 {
-	width: 50%;
+	width: 60%;
 }
 
 .infomain 

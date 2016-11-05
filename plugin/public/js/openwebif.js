@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 2.1
+//* Version 2.2
 //******************************************************************************
 //* Copyright (C) 2011-2014 E2OpenPlugins
 //*
@@ -8,6 +8,7 @@
 //* V 1.1 - add movie move and rename
 //* V 2.0 - movie sort object, spinner, theme support, ...
 //* V 2.1 - support timer conflicts / fix IE cache issue
+//* V 2.2 - remove sync requests
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -22,7 +23,7 @@
 //*******************************************************************************
 
 $.fx.speeds._default = 1000;
-var theme='original',loadspinner = "<div id='spinner'><div class='fa fa-spinner fa-spin'></div></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0,at2add = null;
+var theme='original',loadspinner = "<div id='spinner'><div class='fa fa-spinner fa-spin'></div></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0,at2add = null,_location = [],_tags = [];
 
 $(function() {
 	
@@ -81,6 +82,9 @@ try {
 				primary: "ui-icon-search"
 				}
 		});
+
+	_locations = loadLocations();
+	_tags = loadTags();
 
 }
 catch(err) {}
@@ -944,41 +948,50 @@ function initTimerBQ(radio) {
 
 function initTimerEdit(radio) {
 	
+	// FIXME: async
 	initTimerBQ(radio);
 	
-	$.ajax({
-		async: false,
-		url: "/api/getlocations",
-		success: function(data) {
-			locs = $.parseJSON(data);
-			if (locs.result) {
-				$('#dirname').find('option').remove().end();
-				$('#dirname').append($("<option></option>").attr("value", "None").text("Default"));
-						
-				for (var id in locs.locations) {
-					loc = locs.locations[id];
-					$('#dirname').append($("<option></option>").attr("value", loc).text(loc));
-				}
-			}
-		}
-	});
-	
-	$.ajax({
-		async: false,
-		url: "/api/gettags",
-		success: function(data) {
-			tags = $.parseJSON(data);
-			if (tags.result) {
-				for (var id in tags.tags) {
-					tag = tags.tags[id];
-					$('#tagsnew').append("<input type='checkbox' name='tagsnew' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
-				}
-				$('#tagsnew').buttonset();
-			}
-		}
-	});
+	$('#dirname').find('option').remove().end();
+	$('#dirname').append($("<option></option>").attr("value", "None").text("Default"));
+	for (var id in _locations) {
+		var loc = _locations[id];
+		$('#dirname').append($("<option></option>").attr("value", loc).text(loc));
+	}
+
+	$('#tagsnew').html('');
+	for (var id in _tags) {
+		var tag = _tags[id];
+		$('#tagsnew').append("<input type='checkbox' name='tagsnew' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
+	}
+	$('#tagsnew').buttonset();
 	
 	timeredit_initialized = true;
+}
+
+function loadLocations()
+{
+	_locations = [];
+	$.ajax({
+		url: "/api/getlocations",
+		success: function(data) {
+			var loc = $.parseJSON(data);
+			if (loc.result)
+				_locations = loc.locations;
+		}
+	});
+}
+
+function loadTags()
+{
+	_tags = [];
+	$.ajax({
+		url: "/api/gettags",
+		success: function(data) {
+			var tag = $.parseJSON(data);
+			if (tag.result)
+				_tags = tag.tags;
+		}
+	});
 }
 
 function checkVPS()
@@ -1053,7 +1066,6 @@ function editTimer(serviceref, begin, end) {
 	}
 
 	$.ajax({
-		async: false,
 		url: "/api/timerlist",
 		success: function(data) {
 			timers = $.parseJSON(data);

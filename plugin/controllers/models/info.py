@@ -363,18 +363,18 @@ def getInfo(session = None):
 			free = -1
 		
 		if free <= 1024:
-			free = "%i MB" % free
+			free = "%i %s" % (free,_("MB"))
 		else:
 			free = free / 1024.
-			free = "%.1f GB" % free
+			free = "%.1f %s" % (free,_("GB"))
 
 		size = hdd.diskSize() * 1000000 / 1048576.
 		if size > 1048576:
-			size = "%.1f TB" % (size / 1048576.)
+			size = "%.1f %s" % ((size / 1048576.),_("TB"))
 		elif size > 1024:
-			size = "%.1f GB" % (size / 1024.)
+			size = "%.1f %s" % ((size / 1024.),_("GB"))
 		else:
-			size = "%d MB" % size
+			size = "%d %s" % (size,_("MB"))
 
 		iecsize = hdd.diskSize()
 		# Harddisks > 1000 decimal Gigabytes are labelled in TB
@@ -382,17 +382,17 @@ def getInfo(session = None):
 			iecsize = (iecsize + 50000) // float(100000) / 10
 			# Omit decimal fraction if it is 0
 			if (iecsize % 1 > 0):
-				iecsize = "%.1f TB" % iecsize
+				iecsize = "%.1f %s" % (iecsize,_("TB"))
 			else:
-				iecsize = "%d TB" % iecsize
+				iecsize = "%d %s" % (iecsize,_("TB"))
 		# Round harddisk sizes beyond ~300GB to full tens: 320, 500, 640, 750GB
 		elif iecsize > 300000:
-			iecsize = "%d GB" % ((iecsize + 5000) // 10000 * 10)
+			iecsize = "%d %s" % (((iecsize + 5000) // 10000 * 10),_("GB"))
 		# ... be more precise for media < ~300GB (Sticks, SSDs, CF, MMC, ...): 1, 2, 4, 8, 16 ... 256GB
 		elif iecsize > 1000:
-			iecsize = "%d GB" % ((iecsize + 500) // 1000)
+			iecsize = "%d %s" % (((iecsize + 500) // 1000),_("GB"))
 		else:
-			iecsize = "%d MB" % iecsize
+			iecsize = "%d %s" % (iecsize,_("MB"))
 
 		info['hdd'].append({
 			"model": hdd.model(),
@@ -462,8 +462,9 @@ def getInfo(session = None):
 				feinfo = service.frontendInfo()
 				frontendData = feinfo and feinfo.getAll(True)
 				cur_info = feinfo.getTransponderData(True)
-				nr = frontendData['tuner_number']
-				info['tuners'][nr]['live'] = getOrbitalText(cur_info) + ' / ' + sname
+				if cur_info:
+					nr = frontendData['tuner_number']
+					info['tuners'][nr]['live'] = getOrbitalText(cur_info) + ' / ' + sname
 		except Exception, error:
 			info['EX'] = error
 
