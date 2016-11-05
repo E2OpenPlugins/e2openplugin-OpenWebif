@@ -209,35 +209,13 @@ class BaseController(resource.Resource):
 
 	def oscamconfPath(self):
 		# Find and parse running oscam
-		cmd = 'ps.procps -eo command | sort -u | grep -v "grep" | grep -c "/oscam"'
-		res = os.popen(cmd).read()
-		if res:
-			data = res.replace("\n", "")
-			if int(data) == 1:
-				cmd = 'ps.procps -eo command | sort -u | grep -v "grep" | grep "/oscam"'
-				res = os.popen(cmd).read()
-				if res:
-					data = res.replace("\n", "")
-					data = res.replace("--config-dir ", "-c ")
-					binary = res.split(" ")[0]
-					if "-c " in data:
-						data = data.split("-c ")[1]
-						if " " in data:
-							data = data.split(" ")[0]
-					else:
-						try:
-							cmd = binary + ' -V | grep ConfigDir'
-							res = os.popen(cmd).read()
-							data = res.split(":")[1]
-						except:
-							return None
-					data = data.strip() + '/oscam.conf'
-					if os.path.exists(data):
-						return data
-					return None
-			elif int(data) > 1:
-				return None
-		return None
+		opath = None
+		if fileExists("/tmp/.oscam/oscam.version"):
+			data = open("/tmp/.oscam/oscam.version", "r").readlines()
+			for i in data:
+				if "configdir:" in i.lower():
+					opath = i.split(":")[1].strip() + "/oscam.conf"
+		return opath
 
 	def prepareMainTemplate(self, request):
 		# here will be generated the dictionary for the main template
