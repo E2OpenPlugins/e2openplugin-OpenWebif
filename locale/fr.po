@@ -289,6 +289,28 @@ msgstr "Python/Twisted seulement en IPv4"
 msgid "none/IPv4-only network"
 msgstr "aucun/réseau seulement en IPv4"
 
+msgid "kB"
+msgstr "ko"
+
+#: ../plugin/controllers/models/info.py:366
+#: ../plugin/controllers/models/info.py:377
+#: ../plugin/controllers/models/info.py:395
+msgid "MB"
+msgstr "Mo"
+
+#: ../plugin/controllers/models/info.py:369
+#: ../plugin/controllers/models/info.py:375
+#: ../plugin/controllers/models/info.py:390
+#: ../plugin/controllers/models/info.py:393
+msgid "GB"
+msgstr "Go"
+
+#: ../plugin/controllers/models/info.py:373
+#: ../plugin/controllers/models/info.py:385
+#: ../plugin/controllers/models/info.py:387
+msgid "TB"
+msgstr "To"
+
 #: ../plugin/controllers/models/message.py:33
 msgid "Message sent successfully!"
 msgstr "Message envoyé avec succès"

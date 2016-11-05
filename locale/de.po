@@ -267,7 +267,7 @@ msgstr "LCD4Linux-Einstellungen"
 
 #: ../plugin/controllers/base.py:305
 msgid "OSCam Webinterface"
-msgstr ""
+msgstr "OSCam-Webinterface"
 
 #: ../plugin/controllers/base.py:309
 msgid "AutoTimer"
@@ -289,7 +289,7 @@ msgstr ""
 #: ../plugin/controllers/models/info.py:75
 #: ../plugin/controllers/models/info.py:82
 msgid "static"
-msgstr ""
+msgstr "statisch"
 
 #: ../plugin/controllers/models/info.py:66
 #: ../plugin/controllers/models/info.py:84 ../plugin/local.py:80
@@ -299,12 +299,12 @@ msgstr "DHCP"
 #: ../plugin/controllers/models/info.py:68
 #: ../plugin/controllers/models/info.py:86
 msgid "manual/disabled"
-msgstr ""
+msgstr "manuell/deaktiviert"
 
 #: ../plugin/controllers/models/info.py:90
 #: ../plugin/controllers/models/info.py:102
 msgid "unknown"
-msgstr ""
+msgstr "unbekannt"
 
 #: ../plugin/controllers/models/info.py:135 ../plugin/local.py:115
 msgid "IPv4-only kernel"
@@ -332,24 +332,27 @@ msgstr "Chipsatz"
 msgid "Frontprocessor Version"
 msgstr "Frontprozessor-Version"
 
+msgid "kB"
+msgstr "kB"
+
 #: ../plugin/controllers/models/info.py:366
 #: ../plugin/controllers/models/info.py:377
 #: ../plugin/controllers/models/info.py:395
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: ../plugin/controllers/models/info.py:369
 #: ../plugin/controllers/models/info.py:375
 #: ../plugin/controllers/models/info.py:390
 #: ../plugin/controllers/models/info.py:393
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: ../plugin/controllers/models/info.py:373
 #: ../plugin/controllers/models/info.py:385
 #: ../plugin/controllers/models/info.py:387
 msgid "TB"
-msgstr ""
+msgstr "TB"
 
 #: ../plugin/controllers/models/message.py:33
 msgid "Message sent successfully!"
