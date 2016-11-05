@@ -822,7 +822,7 @@ msgid "Download Playlist for"
 msgstr "stahnout playlist pro"
 
 #: ../plugin/local.py:88
-msgid "Driver date"
+msgid "Drivers"
 msgstr ""
 
 #: ../plugin/local.py:89
@@ -950,7 +950,7 @@ msgid "Just play"
 msgstr "Jen přepnout"
 
 #: ../plugin/local.py:123
-msgid "Kernel version"
+msgid "Kernel"
 msgstr "Verze jádra"
 
 #: ../plugin/local.py:124
@@ -1303,7 +1303,7 @@ msgid "Title"
 msgstr "Název"
 
 #: ../plugin/local.py:212
-msgid "Total Memory"
+msgid "Main Memory"
 msgstr "Celková paměť"
 
 #: ../plugin/local.py:213

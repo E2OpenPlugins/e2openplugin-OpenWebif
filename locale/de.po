@@ -825,8 +825,8 @@ msgid "Download Playlist for"
 msgstr "Herunterladen der Wiedergabeliste für"
 
 #: ../plugin/local.py:88
-msgid "Driver date"
-msgstr "Treiberversion"
+msgid "Drivers"
+msgstr "Treiber"
 
 #: ../plugin/local.py:89
 msgid "Duration"
@@ -953,8 +953,8 @@ msgid "Just play"
 msgstr "Umschalttimer"
 
 #: ../plugin/local.py:123
-msgid "Kernel version"
-msgstr "Kernelversion"
+msgid "Kernel"
+msgstr "Kernel"
 
 #: ../plugin/local.py:124
 msgid "LICENSE"
@@ -1306,8 +1306,8 @@ msgid "Title"
 msgstr "Titel"
 
 #: ../plugin/local.py:212
-msgid "Total Memory"
-msgstr "Gesamtspeicher"
+msgid "Main Memory"
+msgstr "Hauptspeicher"
 
 #: ../plugin/local.py:213
 msgid "transcoded"
@@ -2113,3 +2113,9 @@ msgstr "OpenWebif-Konfiguration"
 
 #~ msgid "SleepTimer feature not available"
 #~ msgstr "SleepTimer-Funktion nicht verfügbar"
+
+msgid "%s free / %s total"
+msgstr "%s frei / %s insgesamt"
+
+msgid "Link Speed"
+msgstr "Verbindungsgeschwindigkeit"

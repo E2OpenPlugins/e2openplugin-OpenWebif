@@ -823,7 +823,7 @@ msgid "Download Playlist for"
 msgstr "下载播放列表"
 
 #: ../plugin/local.py:88
-msgid "Driver date"
+msgid "Drivers"
 msgstr "驱动日期"
 
 #: ../plugin/local.py:89
@@ -951,7 +951,7 @@ msgid "Just play"
 msgstr "仅播放"
 
 #: ../plugin/local.py:123
-msgid "Kernel version"
+msgid "Kernel"
 msgstr "内核版本"
 
 #: ../plugin/local.py:124
@@ -1304,7 +1304,7 @@ msgid "Title"
 msgstr "标题"
 
 #: ../plugin/local.py:212
-msgid "Total Memory"
+msgid "Main Memory"
 msgstr "总内存"
 
 #: ../plugin/local.py:213

@@ -48,6 +48,70 @@ STATICBOXINFO = None
 def getOpenWebifVer():
 	return OPENWEBIFVER
 
+def getFriendlyImageDistro():
+	dist = getImageDistro().replace("openatv","OpenATV").replace("openhdf","OpenHDF")
+	return dist
+
+def getIPMethod(iface):
+	# iNetwork.getAdapterAttribute is crap and not portable
+	ipmethod = _("SLAAC")
+	if fileExists('/etc/network/interfaces'):
+		ifaces = '/etc/network/interfaces'
+		for line in file(ifaces).readlines():
+			if not line.startswith('#'):
+				if line.startswith('iface') and "inet6" in line and iface in line:
+					if "static" in line:
+						ipmethod = _("static")
+					if "dhcp" in line:
+						ipmethod = _("DHCP")
+					if "manual" in line:
+						ipmethod = _("manual/disabled")
+					if "6to4" in line:
+						ipmethod = "6to4"
+	return ipmethod
+
+def getIPv4Method(iface):
+	# iNetwork.getAdapterAttribute is crap and not portable
+	ipv4method = _("static")
+	if fileExists('/etc/network/interfaces'):
+		ifaces = '/etc/network/interfaces'
+		for line in file(ifaces).readlines():
+			if not line.startswith('#'):
+				if line.startswith('iface') and "inet " in line and iface in line:
+					if "static" in line:
+						ipv4method = _("static")
+					if "dhcp" in line:
+						ipv4method = _("DHCP")
+					if "manual" in line:
+						ipv4method = _("manual/disabled")
+	return ipv4method
+
+def getLinkSpeed(iface):
+	speed = _("unknown")
+	try:
+		speed = os.popen('ethtool ' + iface + ' | grep Speed: | awk \'{ print $2 }\'').read().strip()
+	except:
+		pass
+	speed = str(speed)
+	speed = speed.replace("Mb/s"," MBit/s")
+	speed = speed.replace("10000 MBit/s","10 GBit/s")
+	speed = speed.replace("1000 MBit/s","1 GBit/s")
+	return speed
+
+def getNICChipSet(iface):
+	nic = _("unknown")
+	try:
+		nic = os.popen('ethtool -i ' + iface + ' | grep driver: | awk \'{ print $2 }\'').read().strip()
+	except:
+		pass
+	nic = str(nic)
+	return nic
+
+def getFriendlyNICChipSet(iface):
+	friendlynic = getNICChipSet(iface)
+	friendlynic = friendlynic.replace("bcmgenet", "Broadcom Generic Gigabit Ethernet")
+	return friendlynic
+
 def normalize_ipv6(orig):
 	net = []
 
@@ -219,6 +283,7 @@ def getInfo(session = None):
 		elif key in ("MemFree", "Buffers", "Cached"):
 			memFree += int(parts[1].strip().split(' ',1)[0])
 	info['mem2'] = "%s kB" % memFree
+	info['mem3'] = _("%s free / %s total") % (info['mem2'],info['mem1'])
 
 	try:
 		f = open("/proc/uptime", "rb")
@@ -236,6 +301,7 @@ def getInfo(session = None):
 
 	info["webifver"] = getOpenWebifVer()
 	info['imagedistro'] = getImageDistro()
+	info['friendlyimagedistro'] = getFriendlyImageDistro()
 	info['oever'] = getOEVersion()
 	info['imagever'] = getImageVersion() + '.' + getImageBuild()
 	info['enigmaver'] = getEnigmaVersionString()
@@ -248,6 +314,16 @@ def getInfo(session = None):
 		from Tools.DreamboxHardware import getFPVersion
 
 	info['fp_version'] = getFPVersion()
+
+	friendlychipsetdescription = _("Chipset")
+	friendlychipsettext = info['chipset'].replace("bcm","Broadcom ")
+	if not (info['fp_version'] is None or info['fp_version'] is "0"):
+		friendlychipsetdescription = friendlychipsetdescription + " (" + _("Frontprocessor Version") + ")"
+		friendlychipsettext = friendlychipsettext +  " (" + str(info['fp_version']) + ")"
+
+	info['friendlychipsetdescription'] = friendlychipsetdescription
+	info['friendlychipsettext'] = friendlychipsettext
+
 
 	info['tuners'] = []
 	for i in range(0, nimmanager.getSlotCount()):
@@ -263,13 +339,17 @@ def getInfo(session = None):
 	for iface in ifaces:
 		info['ifaces'].append({
 			"name": iNetwork.getAdapterName(iface),
+			"friendlynic": getFriendlyNICChipSet(iface),
+			"linkspeed": getLinkSpeed(iface),
 			"mac": iNetwork.getAdapterAttribute(iface, "mac"),
 			"dhcp": iNetwork.getAdapterAttribute(iface, "dhcp"),
+			"ipv4method": getIPv4Method(iface),
 			"ip": formatIp(iNetwork.getAdapterAttribute(iface, "ip")),
 			"mask": formatIp(iNetwork.getAdapterAttribute(iface, "netmask")),
 			"v4prefix": sum([bin(int(x)).count('1') for x in formatIp(iNetwork.getAdapterAttribute(iface, "netmask")).split('.')]),
 			"gw": formatIp(iNetwork.getAdapterAttribute(iface, "gateway")),
 			"ipv6": getAdapterIPv6(iface)['addr'],
+			"ipmethod": getIPMethod(iface),
 			"firstpublic": getAdapterIPv6(iface)['firstpublic']
 		})
 
@@ -286,11 +366,11 @@ def getInfo(session = None):
 			free = "%i MB" % free
 		else:
 			free = free / 1024.
-			free = "%.3f GB" % free
+			free = "%.1f GB" % free
 
 		size = hdd.diskSize() * 1000000 / 1048576.
 		if size > 1048576:
-			size = "%.2f TB" % (size / 1048576.)
+			size = "%.1f TB" % (size / 1048576.)
 		elif size > 1024:
 			size = "%.1f GB" % (size / 1024.)
 		else:
@@ -318,7 +398,8 @@ def getInfo(session = None):
 			"model": hdd.model(),
 			"capacity": size,
 			"labelled_capacity": iecsize,
-			"free": free
+			"free": free,
+			"friendlycapacity": _("%s free / %s total") % (free,size+' ("'+iecsize+'")')
 		})
 
 	info['transcoding'] = False

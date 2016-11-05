@@ -834,7 +834,7 @@ msgid "Download Playlist for"
 msgstr "Last ned avspillingsliste for"
 
 #: ../plugin/local.py:88
-msgid "Driver date"
+msgid "Drivers"
 msgstr "Driver dato"
 
 #: ../plugin/local.py:89
@@ -965,7 +965,7 @@ msgid "Just play"
 msgstr "Spill nå"
 
 #: ../plugin/local.py:123
-msgid "Kernel version"
+msgid "Kernel"
 msgstr "Kjerne versjon"
 
 #: ../plugin/local.py:124
@@ -1327,7 +1327,7 @@ msgid "Title"
 msgstr "Tittel"
 
 #: ../plugin/local.py:212
-msgid "Total Memory"
+msgid "Main Memory"
 msgstr "Tilgjengelig minne"
 
 #: ../plugin/local.py:213

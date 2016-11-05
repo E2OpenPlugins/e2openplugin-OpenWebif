@@ -19,16 +19,12 @@
 							<td class="inforight">$brand $model</td>
 						</tr>
 						<tr>
-							<td class="infoleft">$tstrings['chipset']:</td>
-							<td class="inforight">$chipset</td>
+							<td class="infoleft">$friendlychipsetdescription:</td>
+							<td class="inforight">$friendlychipsettext</td>
 						</tr>
 						<tr>
-							<td class="infoleft">$tstrings['fp_version']:</td>
-							<td class="inforight">$str($fp_version)</td>
-						</tr>
-						<tr>
-							<td class="infoleft">$tstrings['total_memory'] / $tstrings['free_memory']:</td>
-							<td class="inforight">$mem1 / $mem2</td>
+							<td class="infoleft">$tstrings['main_memory']:</td>
+							<td class="inforight">$mem3</td>
 						</tr>
 						<tr>
 							<td class="infoleft">$tstrings['box_uptime']:</td>
@@ -48,24 +44,12 @@
 							<td class="inforight">$oever</td>
 						</tr>
 						<tr>
-							<td class="infoleft">$tstrings['distro_version']:</td>
-							<td class="inforight">$imagedistro</td>
-						</tr>
-						<tr>
 							<td class="infoleft">$tstrings['firmware_version']:</td>
-							<td class="inforight">$imagever</td>
+							<td class="inforight">$friendlyimagedistro $imagever ($enigmaver)</td>
 						</tr>
 						<tr>
-							<td class="infoleft">$tstrings['driver_date']:</td>
-							<td class="inforight">$driverdate</td>
-						</tr>
-						<tr>
-							<td class="infoleft">$tstrings['kernel_version']:</td>
-							<td class="inforight">$kernelver</td>
-						</tr>
-						<tr>
-							<td class="infoleft">$tstrings['gui_version']:</td>
-							<td class="inforight">$enigmaver</td>
+							<td class="infoleft">$tstrings['kernel_version'] / $tstrings['driver_date']:</td>
+							<td class="inforight">$kernelver / $driverdate</td>
 						</tr>
 					</table>
 				</td>
@@ -111,8 +95,8 @@
 							<th colspan="2" class="ui-widget-header">$tstrings['hdd_model']: $hd.model</th>
 						</tr>
 						<tr>
-							<td class="infoleft">$tstrings['capacity'] / $tstrings['free']:</td>
-							<td class="inforight">$hd.capacity ("$hd.labelled_capacity") / $hd.free</td>
+							<td class="infoleft">$tstrings['capacity']:</td>
+							<td class="inforight">$hd.friendlycapacity</td>
 						</tr>
 					</table>
 				</td>
@@ -123,7 +107,11 @@
 				<td width="100%">
 					<table cellspacing="0" class="infomain ui-widget-content" >
 						<tr>
-							<th colspan="2" class="ui-widget-header">$tstrings['network_interface']: $iface.name</th>
+							<th colspan="2" class="ui-widget-header">$tstrings['network_interface']: $iface.name ($iface.friendlynic)</th>
+						</tr>
+						<tr>
+							<td class="infoleft">$tstrings['linkspeed']:</td>
+							<td class="inforight">$iface.linkspeed</td>
 						</tr>
 						<tr>
 							<td class="infoleft">$tstrings['mac_address']:</td>
@@ -131,16 +119,12 @@
 						</tr>
 						<tr>
 							<td class="infoleft">$tstrings['ipv6_address']:</td>
-							<td class="inforight">$iface.ipv6</td>
+							<td class="inforight">$iface.ipv6 ($iface.ipmethod)</td>
 						</tr>
 						#if $iface.ip != "0.0.0.0"
 							<tr>
 								<td class="infoleft">$tstrings['ipv4_address']:</td>
-								<td class="inforight">$iface.ip/$iface.v4prefix $tstrings['via'] $iface.gw</td>
-							</tr>
-							<tr>
-								<td class="infoleft">$tstrings['dhcp']:</td>
-								<td class="inforight">$iface.dhcp</td>
+								<td class="inforight">$iface.ip/$iface.v4prefix $tstrings['via'] $iface.gw ($iface.ipv4method)</td>
 							</tr>
 						#end if
 					</table>

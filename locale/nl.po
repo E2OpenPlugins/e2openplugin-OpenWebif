@@ -825,7 +825,7 @@ msgid "Download Playlist for"
 msgstr "Download playlist voor"
 
 #: ../plugin/local.py:88
-msgid "Driver date"
+msgid "Drivers"
 msgstr "Stuurprogramma datum"
 
 #: ../plugin/local.py:89
@@ -953,7 +953,7 @@ msgid "Just play"
 msgstr "Alleen afspelen"
 
 #: ../plugin/local.py:123
-msgid "Kernel version"
+msgid "Kernel"
 msgstr "Kernel versie"
 
 #: ../plugin/local.py:124
@@ -1306,7 +1306,7 @@ msgid "Title"
 msgstr "Titel"
 
 #: ../plugin/local.py:212
-msgid "Total Memory"
+msgid "Main Memory"
 msgstr "Totaal geheugen"
 
 #: ../plugin/local.py:213

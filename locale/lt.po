@@ -827,7 +827,7 @@ msgid "Download Playlist for"
 msgstr "Parsisiųsti grojaraštį"
 
 #: ../plugin/local.py:88
-msgid "Driver date"
+msgid "Drivers"
 msgstr "Tvarkyklių data"
 
 #: ../plugin/local.py:89
@@ -955,7 +955,7 @@ msgid "Just play"
 msgstr "Tiesiog įjungti"
 
 #: ../plugin/local.py:123
-msgid "Kernel version"
+msgid "Kernel"
 msgstr "Branduolio versija"
 
 #: ../plugin/local.py:124
@@ -1308,7 +1308,7 @@ msgid "Title"
 msgstr "Antraštė"
 
 #: ../plugin/local.py:212
-msgid "Total Memory"
+msgid "Main Memory"
 msgstr "Atminties iš viso"
 
 #: ../plugin/local.py:213

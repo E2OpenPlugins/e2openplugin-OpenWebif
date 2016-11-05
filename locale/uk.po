@@ -825,7 +825,7 @@ msgid "Download Playlist for"
 msgstr "Завантажити плейлист для"
 
 #: ../plugin/local.py:88
-msgid "Driver date"
+msgid "Drivers"
 msgstr "Дата драйверів"
 
 #: ../plugin/local.py:89
@@ -953,7 +953,7 @@ msgid "Just play"
 msgstr "Тільки відтворити"
 
 #: ../plugin/local.py:123
-msgid "Kernel version"
+msgid "Kernel"
 msgstr "Версія ядра"
 
 #: ../plugin/local.py:124
@@ -1306,7 +1306,7 @@ msgid "Title"
 msgstr "Заголовок"
 
 #: ../plugin/local.py:212
-msgid "Total Memory"
+msgid "Main Memory"
 msgstr "Всього пам'яті"
 
 #: ../plugin/local.py:213
