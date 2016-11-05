@@ -317,7 +317,7 @@ def getInfo(session = None):
 
 	friendlychipsetdescription = _("Chipset")
 	friendlychipsettext = info['chipset'].replace("bcm","Broadcom ")
-	if not (info['fp_version'] is None or info['fp_version'] is "0"):
+	if not (info['fp_version'] is None or info['fp_version'] == 0):
 		friendlychipsetdescription = friendlychipsetdescription + " (" + _("Frontprocessor Version") + ")"
 		friendlychipsettext = friendlychipsettext +  " (" + str(info['fp_version']) + ")"
 
