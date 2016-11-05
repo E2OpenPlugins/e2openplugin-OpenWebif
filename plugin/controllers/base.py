@@ -279,7 +279,9 @@ class BaseController(resource.Resource):
 			if lcd4linux_key:
 				extras.append({ 'key': lcd4linux_key, 'description': _("LCD4Linux Setup") , 'nw':'1'})
 
-		self.oscamconf = self.oscamconfPath()
+		self.oscamconf = None
+		if not getInfo()['imagedistro'] == "openpli":
+			self.oscamconf = self.oscamconfPath()
 		if self.oscamconf is not None:
 			data = open(self.oscamconf, "r").readlines()
 			webif = False
