@@ -2166,3 +2166,9 @@ msgstr "OpenWebif-Konfiguration"
 
 #~ msgid "SleepTimer feature not available"
 #~ msgstr "SleepTimer-Funktion nicht verfügbar"
+
+msgid "Network Shares"
+msgstr "Netzwerk-Freigaben"
+
+msgid "using"
+msgstr "mittels"

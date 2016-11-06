@@ -24,7 +24,7 @@ from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
 from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference, eEnv
 from twisted.web import version
-from socket import has_ipv6, AF_INET6, inet_ntop, inet_pton
+from socket import has_ipv6, AF_INET6, AF_INET, inet_ntop, inet_pton, getaddrinfo
 
 try:
 	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
@@ -279,10 +279,10 @@ def getInfo(session = None):
 		parts = line.split(':')
 		key = parts[0].strip()
 		if key == "MemTotal":
-			info['mem1'] = parts[1].strip()
+			info['mem1'] = parts[1].strip().replace("kB", _("kB"))
 		elif key in ("MemFree", "Buffers", "Cached"):
 			memFree += int(parts[1].strip().split(' ',1)[0])
-	info['mem2'] = "%s kB" % memFree
+	info['mem2'] = "%s %s" % (memFree,_("kB"))
 	info['mem3'] = _("%s free / %s total") % (info['mem2'],info['mem1'])
 
 	try:
@@ -317,6 +317,8 @@ def getInfo(session = None):
 
 	friendlychipsetdescription = _("Chipset")
 	friendlychipsettext = info['chipset'].replace("bcm","Broadcom ")
+	if friendlychipsettext in ("7335", "7356", "7362", "73625", "7424", "7425", "7429"):
+		friendlychipsettext = "Broadcom " + friendlychipsettext
 	if not (info['fp_version'] is None or info['fp_version'] == 0):
 		friendlychipsetdescription = friendlychipsetdescription + " (" + _("Frontprocessor Version") + ")"
 		friendlychipsettext = friendlychipsettext +  " (" + str(info['fp_version']) + ")"
@@ -399,8 +401,74 @@ def getInfo(session = None):
 			"capacity": size,
 			"labelled_capacity": iecsize,
 			"free": free,
+			"mount": dev,
 			"friendlycapacity": _("%s free / %s total") % (free,size+' ("'+iecsize+'")')
 		})
+
+	info['shares'] = []
+	if fileExists('/etc/auto.network'):
+		autofs = '/etc/auto.network'
+		method = "autofs"
+		for line in file(autofs).readlines():
+			if not line.startswith('#'):
+				# Replace escaped spaces that can appear inside credentials with underscores
+				# Not elegant but we wouldn't want to expose credentials on the OWIF anyways
+				tmpline = line.replace("\ ","_")
+				tmp = tmpline.split()
+				name = tmp[0].strip()
+				type = "unknown"
+				if "cifs" in tmp[1]:
+					# Linux still defaults to SMBv1
+					type = "SMBv1"
+					settings = tmp[1].split(",")
+					for setting in settings:
+						if setting.startswith("vers="):
+							type = setting.replace("vers=", "SMBv")
+				elif "nfs" in tmp[1]:
+					type = "NFS"
+
+				# Default is r/w
+				mode = _("r/w")
+				settings = tmp[1].split(",")
+				for setting in settings:
+					if setting == "ro":
+						mode = _("r/o")
+
+				uri = tmp[2].strip()[1:]
+				server = uri.split('/')[2]
+				ipaddress  = None
+				if server:
+					# Will fail on literal IPs
+					try:
+						# Try IPv6 first, as will Linux
+						if has_ipv6:
+							tmpaddress = None
+							tmpaddress = getaddrinfo(server, 0, AF_INET6)
+							if tmpaddress:
+								ipaddress = "[" + list(tmpaddress)[0][4][0] + "]"
+						# Use IPv4 if IPv6 fails or is not present
+						if ipaddress is None:
+							tmpaddress = None
+							tmpaddress = getaddrinfo(server, 0, AF_INET)
+							if tmpaddress:
+								ipaddress = list(tmpaddress)[0][4][0]
+					except:
+						pass
+						
+				friendlyaddress = server
+				if ipaddress is not None and not ipaddress == server:
+					friendlyaddress = server + " ("+ ipaddress + ")"
+				info['shares'].append({
+					"name": name,
+					"method": method,
+					"type": type,
+					"mode": mode,
+					"path": uri,
+					"host": server,
+					"ipaddress": ipaddress,
+					"friendlyaddress": friendlyaddress
+				})
+	# TODO: fstab
 
 	info['transcoding'] = False
 	if (info['model'] in ("Solo4K", "Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or info['machinebuild'] in ('inihdp', 'hd2400', 'et10000', 'xpeedlx3', 'ew7356', 'dags3', 'dags4')):

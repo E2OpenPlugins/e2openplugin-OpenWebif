@@ -2150,3 +2150,9 @@ msgstr ""
 #: ../plugin/plugin.py:209
 msgid "OpenWebif Configuration"
 msgstr ""
+
+msgid "Network Shares"
+msgstr ""
+
+msgid "using"
+msgstr ""

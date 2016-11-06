@@ -96,12 +96,29 @@
 						</tr>
 						<tr>
 							<td class="infoleft">$tstrings['capacity']:</td>
-							<td class="inforight">$hd.friendlycapacity</td>
+							<td class="inforight">$hd.friendlycapacity ($hd.mount)</td>
 						</tr>
 					</table>
 				</td>
 			</tr>
 			#end for
+			#if $shares
+			<tr>
+				<td width="100%">
+					<table cellspacing="0" class="infomain ui-widget-content" >
+						<tr>
+							<th colspan="2" class="ui-widget-header">$tstrings['networkshares']:</th>
+						</tr>
+						#for $share in $shares
+						<tr>
+							<td class="infoleft">$share.name:</td>
+							<td class="inforight">$share.type $tstrings['using'] $share.method: $share.path ($share.friendlyaddress)</td>
+						</tr>
+						#end for
+					</table>
+				</td>
+			</tr>
+			#end if
 			#for $iface in $ifaces
 			<tr>
 				<td width="100%">
