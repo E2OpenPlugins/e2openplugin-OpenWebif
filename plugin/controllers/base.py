@@ -210,12 +210,18 @@ class BaseController(resource.Resource):
 	def oscamconfPath(self):
 		# Find and parse running oscam
 		opath = None
+		owebif = None
 		if fileExists("/tmp/.oscam/oscam.version"):
 			data = open("/tmp/.oscam/oscam.version", "r").readlines()
 			for i in data:
 				if "configdir:" in i.lower():
 					opath = i.split(":")[1].strip() + "/oscam.conf"
-		return opath
+				if "web interface support:" in i.lower():
+					owebif = i.split(":")[1].strip()
+		if owebif == "yes":
+			return opath
+		else:
+			return None
 
 	def prepareMainTemplate(self, request):
 		# here will be generated the dictionary for the main template
