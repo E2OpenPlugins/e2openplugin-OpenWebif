@@ -262,6 +262,7 @@ class BaseController(resource.Resource):
 			data = open(self.oscamconf, "r").readlines()
 			webif = False
 			proto = "http"
+			port = "8888"
 			httpuser = httppwd = httpport = False
 			for i in data:
 				if "[webif]" in i.lower():
