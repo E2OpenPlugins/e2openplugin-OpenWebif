@@ -43,8 +43,9 @@ class MobileController(BaseController):
 			stype = request.args["stype"][0]
 		if "id" in request.args.keys():
 			idbouquet = request.args["id"][0]
+		channels = getChannels(idbouquet, stype)
 		channels['transcoding'] = getTranscodingSupport()
-		return getChannels(idbouquet, stype)
+		return channels
 
 	def P_channelinfo(self, request):
 		channelinfo = {}
