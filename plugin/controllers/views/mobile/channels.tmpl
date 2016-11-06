@@ -1,17 +1,17 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
 <html>
- <head>
-	<title>OpenWebif</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="user-scalable=no, width=device-width"/>
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="/css/iphone.css" media="screen"/>
- </head>
- <body> 
-	<div data-role="page">
+<head>
+<title>OpenWebif</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, width=device-width"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" href="/css/jquery.mobile-1.4.5.min.css">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.mobile-1.4.5.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/iphone.css" media="screen"/>
+</head>
+<body> 
+	<div data-role="page" id="chpage">
 		<div id="header">
 			<div class="button" onClick="history.back()">$tstrings['back']</div>
 			<h1><a style="color:#FFF;text-decoration:none;" href='/mobile'>OpenWebif</a></h1>
@@ -48,17 +48,15 @@
 			<a href="#home" data-role="button" data-theme="d" data-rel="back">Cancel</a>
 		</div>
 	</div>
-</div>
 
 	<form name="portForm" action="/web/stream.m3u" method="GET" target="_blank">
 		<input type="hidden" name="ref">
 		<input type="hidden" name="name">
 		<input type="hidden" name="device">
 	</form>
-</body>
 <script>
 #raw
-$(document).ready(function(){
+jQuery('#chpage').on('pageinit', function(event) {
 	$("#stream").popup();
 });
 var sref='';
@@ -80,4 +78,6 @@ function dlg(a,b)
 }
 </script>
 #end raw
+</div>
+</body>
 </html>
