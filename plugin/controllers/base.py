@@ -285,8 +285,8 @@ class BaseController(resource.Resource):
 					if port[0] == '+':
 						proto = "https"
 						port = port[1:]
-			url = "%s://%s:%s" % (proto, request.getRequestHostname(), port)
 			if webif:
+				url = "%s://%s:%s" % (proto, request.getRequestHostname(), port)
 				extras.append({ 'key': url, 'description': _("OSCam Webinterface"), 'nw':'1'})
 
 		try:
