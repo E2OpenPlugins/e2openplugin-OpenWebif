@@ -10,15 +10,14 @@
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/iphone.css" media="screen"/>
-<script type="text/javascript" src="/js/openwebif.js"></script>
 </head>
 <body> 
 	<div data-role="page">
 		<div id="header">
 		<div class="button" onClick="history.back()">$tstrings['back']</div>
 		<h1><a style="color:#FFF;text-decoration:none;" href='/mobile'>OpenWebif</a></h1>
-		#set $link=quote('/mobile/timeradded?eventid=' + $event.id + '&eventref=' + $event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
-		<div class="button" style="right:5px;left:auto;" onClick="window.open('$link');return false;">$tstrings['add_timer']</div>
+		#set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
+		<div class="button" style="right:5px;left:auto;" onclick="addTimerEvent('$sref',$event.id);return false;">$tstrings['add_timer']</div>
 	</div>
 		<div id="mainContent" class="ui-corner-all">
 			<table width="100%" border="0" cellspacing="1" cellpadding="5">
@@ -51,4 +50,21 @@
 		</div>
 	</div>
 </body>
+<script>
+function addTimerEvent(sRef, eventId) {
+	var url = "/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId;
+	\$.ajax({
+		async: false,
+		url: url,
+		cache : false,
+		success: function(data) {
+			result = \$.parseJSON(data);
+			if (!state && conflicts)
+				alert( "Error Timer Confict" );
+			else
+				alert( result.result ? "$tstrings['tstr_timer_added']" : result.message );
+		}
+	});
+}
+</script>
 </html>
