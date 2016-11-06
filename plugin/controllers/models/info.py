@@ -313,7 +313,10 @@ def getInfo(session = None):
 	except ImportError:
 		from Tools.DreamboxHardware import getFPVersion
 
-	info['fp_version'] = getFPVersion()
+	try:
+		info['fp_version'] = getFPVersion()
+	except:
+		info['fp_version'] = None
 
 	friendlychipsetdescription = _("Chipset")
 	friendlychipsettext = info['chipset'].replace("bcm","Broadcom ")
