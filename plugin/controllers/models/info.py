@@ -418,11 +418,13 @@ def getInfo(session = None):
 				# Not elegant but we wouldn't want to expose credentials on the OWIF anyways
 				tmpline = line.replace("\ ","_")
 				tmp = tmpline.split()
+				if not len(tmp) == 3:
+					continue
 				name = tmp[0].strip()
 				type = "unknown"
 				if "cifs" in tmp[1]:
 					# Linux still defaults to SMBv1
-					type = "SMBv1"
+					type = "SMBv1.0"
 					settings = tmp[1].split(",")
 					for setting in settings:
 						if setting.startswith("vers="):
@@ -437,8 +439,15 @@ def getInfo(session = None):
 					if setting == "ro":
 						mode = _("r/o")
 
-				uri = tmp[2].strip()[1:]
-				server = uri.split('/')[2]
+				uri = tmp[2]
+				parts = []
+				parts = tmp[2].split(':')
+				if parts[0] is "":
+					server = uri.split('/')[2]
+					uri = uri.strip()[1:]
+				else:
+					server = parts[0]
+
 				ipaddress  = None
 				if server:
 					# Will fail on literal IPs
