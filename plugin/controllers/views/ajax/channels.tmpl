@@ -3,7 +3,7 @@
 <div class="cht">
 	<div class="fr">
 		<div class="a">
-		#if $channel.has_key('protection') 
+		#if $channel.has_key('protection')
 			#if $channel.protection == "0"
 			#if $type == "radio"
 			<a href="#" onclick="addTimer('','$channel.ref','$channel.name')" title="$tstrings['add_timer']"><i class="fa fa-clock-o"></i></a>
@@ -20,10 +20,10 @@
 			#end if
 		#end if
 		</div>
-	
+
 		<div class="b">
 			#set $name =  $channel.name.replace("'", r"\'")
-			#if $channel.has_key('protection') 
+			#if $channel.has_key('protection')
 				#if $channel.protection == "0"
 				<a href="#" onclick="zapChannel('$channel.ref', '$name'); return false" title="$tstrings['zap_to'] $channel.name">$channel.name</a>
 				#else
@@ -40,14 +40,14 @@
 
 	<div>
 		#if $showchannelpicon
-		<div style="display:table-cell;width:120px;vertical-align:middle;">
+		<div class="channel-picon">
 			<img class="pic" src="$channel.picon" title="">
 		</div>
 		#else
 		<div style="display:none;">
 		</div>
 		#end if
-		<div style="display:table-cell">
+		<div class="channel-info">
 		<div class="tt">
 			<div class="a">
 				$channel.now_begin - $channel.now_end &nbsp;&nbsp;&nbsp;
