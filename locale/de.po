@@ -2172,3 +2172,6 @@ msgstr "Netzwerk-Freigaben"
 
 msgid "using"
 msgstr "mittels"
+
+msgid "Show Picons in channel list"
+msgstr "Picons in der Senderliste anzeigen"

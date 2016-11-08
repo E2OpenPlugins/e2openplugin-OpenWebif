@@ -2156,3 +2156,7 @@ msgstr ""
 
 msgid "using"
 msgstr ""
+
+msgid "Show Picons in channel list"
+msgstr ""
+

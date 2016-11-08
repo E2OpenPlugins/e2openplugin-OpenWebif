@@ -415,7 +415,7 @@ tstrings = {'mo': _("Mo"),
 	'tstr_ow_browser_settings': _("OpenWebif Browser Settings"),
 	'tstr_ow_settings': _("OpenWebif Settings"),
 	'tstr_theme': _("Theme"),
-	'tstr_show_picon_in_channel_list': _("Show Picon in channel list"),
+	'tstr_show_picon_in_channel_list': _("Show Picons in channel list"),
 	'tstr_spinner': _("Spinner"),
 	'display_duration_s': _("Display duration (s)"),
 
