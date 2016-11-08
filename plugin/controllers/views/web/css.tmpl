@@ -1,9 +1,10 @@
 #filter WebSafe
-/* 
+/*
 	All Themes:
 	base
 	black-tie
 	blitzer
+	clear
 	cupertino
 	dark-hive
 	dot-luv
@@ -29,12 +30,12 @@
 	redmond -> original
 */
 
-/* 
+/*
 	TODO :
 	* remove extra color for MEPG Timer
 	* optimize marker
 	* optimize config color
-*/ 
+*/
 
 #if not $theme
 	#set $theme="original"
@@ -59,14 +60,14 @@
 #end if
 
 #if $theme == "south-street" or $theme == "smoothness" or $theme == "cupertino" or $theme == "mint-choc" or $theme == "ui-darkness" or $theme == "vader" or $theme == "eggplant" or $theme == "start" or $theme == "le-frog" or $theme == "dark-hive" or $theme == "humanity" or $theme == "flick" or $theme == "sunny"
-.tm_row{ background-image: none!important;} 
+.tm_row{ background-image: none!important;}
 body { background-image:none !important;}
 #end if
 
 #if $theme == "vader" or $theme == "dark-hive" or $theme == "dot-luv" or $theme == "eggplant" or $theme == "le-frog" or $theme == "mint-choc" or $theme == "ui-darkness"
 .marker { color: #FFF;}
 #end if
-	
+
 #if $theme == "humanity" or $theme == "overcast" or $theme == "pepper-grinder"
 .marker { color: #000;}
 #end if
@@ -93,7 +94,7 @@ body { background-image:none !important;}
 #end if
 
 #if $theme == "dark-hive"
-.cht .fr { 
+.cht .fr {
 	background-color:rgba(38, 179, 247, 0.3);
 }
 
@@ -107,7 +108,7 @@ body { background-image:none !important;}
 
 #if $theme == "black-tie"
 .ui-widget-header a { color:#000;}
-.tm_row{ background-image: none!important;} 
+.tm_row{ background-image: none!important;}
 #end if
 
 #if $theme == "overcast"
@@ -144,15 +145,15 @@ body {
 
 #info h3
 {
-	border: 1px solid #4297d7; 
-	background: #1c478e url(../images/ui-bg_highlight-soft_55_1c478e_1x100.png) 50% 50% repeat-x; 
-	color: #ffffff; 
+	border: 1px solid #4297d7;
+	background: #1c478e url(../images/ui-bg_highlight-soft_55_1c478e_1x100.png) 50% 50% repeat-x;
+	color: #ffffff;
 }
 
 
 #leftmenu_main
 {
-	border: 1px solid #a6c9e2; 
+	border: 1px solid #a6c9e2;
 	background: #fcfdfd url(../images/ui-bg_inset-hard_100_fcfdfd_1x100.png) 50% bottom repeat-x; color: #061C37;
 	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
@@ -189,15 +190,15 @@ body {
 
 #leftmenu_top
 {
-	color: #ffffff; 
+	color: #ffffff;
 	font-weight: bold;
 	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
 
 #toolbar-header {
-	border: 1px solid #4297d7; 
-	background: #1c478e url(../images/ui-bg_highlight-soft_55_1c478e_1x100.png) 50% 50% repeat-x; 
-	color: #ffffff; 
+	border: 1px solid #4297d7;
+	background: #1c478e url(../images/ui-bg_highlight-soft_55_1c478e_1x100.png) 50% 50% repeat-x;
+	color: #ffffff;
 	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
 
@@ -213,9 +214,9 @@ table .tcurrent
 
 #info h3
 {
-	border: 1px solid #4297d7; 
+	border: 1px solid #4297d7;
 	background: #1c478e url(../images/ui-bg_highlight-soft_55_1c478e_1x100.png) 50% 50% repeat-x;
-	color: #ffffff; 
+	color: #ffffff;
 	-moz-border-radius: 5px; -webkit-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
 }
 
@@ -227,7 +228,7 @@ table .tcurrent
 	border: 2px solid #176093;
 }
 
-.cht .fr { 
+.cht .fr {
 	background-color: #F0F7FC;
 }
 
@@ -270,6 +271,109 @@ table .tcurrent
 
 #tbl1 .border { border-right: 1px solid;}
 
+#end if
+
+#if $theme == "clear"
+:focus, :active {
+  outline: 0;
+}
+.ui-widget-header { background: #363636;}
+.ui-widget-header a { color : #000;}
+#header {
+    height: 100px;
+}
+#header h1 {
+    font-size: 22px;
+    margin: 15px 10px 0 8px;
+}
+#header h2 {
+    font-size: 12px;
+    margin-top: 18px;
+}
+#osd {
+    margin-top: 5px;
+    height: auto;
+}
+#osd_status {
+    margin-top: 10px;
+}
+#osd_bottom {
+    margin-left: 40px;
+}
+.cht:nth-child(even) {
+    background-color: #ffffff;
+}
+.cht:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+.cht .fr {
+    position: relative;
+    font-size: 12px;
+    height: 22px;
+    background-color: transparent;
+}
+.cht .fr * {
+    margin: 0;
+}
+.cht .fr .a {
+    position: absolute;
+    left: 150px;
+}
+.cht .fr .b {
+    position: absolute;
+    left: 0;
+    font-size: 11px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.cht .fr .a,
+.cht .fr .b,
+.cht .channel-picon {
+    width: 130px;
+}
+.cht .fr .a,
+.cht .fr .b {
+	padding: 5px 10px 2px 10px;
+}
+.cht .fr .b a:first-child {
+    padding-right: 10px;
+}
+.cht .channel-picon {
+    text-align: center;
+}
+.cht .channel-info {
+    padding: 5px 10px 8px 10px;
+}
+.cht .channel-info .a {
+    font-style: italic;
+    font-size: 11px;
+}
+.cht .channel-info .b {
+    font-style: normal;
+    font-weight: bold;
+}
+.cht .ui-progressbar {
+    width: 80px;
+}
+.cht .channel-info .ui-progressbar-value {
+    background-color: #79b7e7 !important;
+}
+#toolbar *,
+#accordion * {
+    color: #363636 !important;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+    border: 1px solid #8e8e93;
+}
+.ui-widget-header,
+.ui-widget-content,
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+    border: 1px solid #363636;
+}
+#footer a {
+    color: #fff;
+}
 #end if
 
 #end filter
