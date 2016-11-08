@@ -13,12 +13,12 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="css/jquery-ui.min.css">
-#if $t != "original"
+#if $t != "original" and $t != "clear"
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/$t/jquery-ui.css">
 #end if
 <link type="text/css" href="css/style.min.css" rel="stylesheet"/>
 <link type="text/css" href="web/css" rel="stylesheet"/>
-<script type="text/javascript" src="js/openwebif-2.3.min.js"></script>
+<script type="text/javascript" src="js/openwebif-2.2.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
 <script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
 <title>Open Webif</title>
@@ -43,8 +43,8 @@
 				<div id="osd_bottom"></div>
 			</div>
 		</div>
-		
-		
+
+
 		<div id="leftmenu" class="ui-widget-content">
 			#def menu($title, $name, $content)
 			<div id="leftmenu_main">
@@ -65,14 +65,14 @@
 				</div>
 			</div>
 			#end def
-		
+
 			#def mainMenu
 			<ul>
 				<li><a href='#' onclick="load_maincontent('ajax/tv'); return false;">$tstrings['television']</a></li>
 				<li><a href='#' onclick="load_maincontent('ajax/radio'); return false;">$tstrings['radio']</a></li>
 				<li><a href='#' onclick="load_maincontent_spin('ajax/movies'); return false;">$tstrings['movies']</a></li>
 				<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">$tstrings['timers']</a></li>
-			<!--	<li><a href='#' onclick="load_maincontent('ajax/webtv'); return false;">Web Tv</a></li> -->
+ <!--				<li><a href='#' onclick="load_maincontent('ajax/workinprogress'); return false;">Web Tv</a></li> -->
 			</ul>
 			#end def
 
@@ -91,7 +91,7 @@
 				<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button>$tstrings['search']</button></div>
 			</form>
 			#end def
-			
+
 			#def remoteMenu
 			<div style="width:100%; text-align:center;">
 					<ul>
@@ -154,7 +154,7 @@
 					<div style="margin-bottom:5px;"></div>
 			</div>
 			#end def
-			
+
 			#def extrasMenu
 			<ul>
 				<li><a href='#' onclick="load_maincontent('ajax/boxinfo'); return false;">$tstrings["box_info"]</a></li>
@@ -187,7 +187,7 @@
 							</div></div>
 							</li>
 					</ul>
-					
+
 						<div id="remote_container" style="width:100%; text-align:center;"></div>
 						<div id="help">
 							$tstrings['shiftforlong']
@@ -197,7 +197,7 @@
 							#if $remotegrabscreenshot
 								#set $checked = "checked='checked'"
 							#end if
-							
+
 							<li style="margin-bottom:5px;">
 							<input type="checkbox" name="remotegrabscreen" $checked /><span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span></li>
 						</ul>

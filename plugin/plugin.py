@@ -31,7 +31,7 @@ from httpserver import HttpdStart, HttpdStop, HttpdRestart
 from __init__ import _
 
 # not used redmond -> original , trontastic , ui-lightness
-THEMES = ['original','base','black-tie','blitzer','cupertino','dark-hive','dot-luv','eggplant','excite-bike','flick','hot-sneaks','humanity','le-frog','mint-choc','overcast','pepper-grinder','smoothness','south-street','start','sunny','swanky-purse','ui-darkness','vader']
+THEMES = ['original','base','black-tie','blitzer','clear','cupertino','dark-hive','dot-luv','eggplant','excite-bike','flick','hot-sneaks','humanity','le-frog','mint-choc','overcast','pepper-grinder','smoothness','south-street','start','sunny','swanky-purse','ui-darkness','vader']
 
 config.OpenWebif = ConfigSubsection()
 config.OpenWebif.enabled = ConfigYesNo(default=True)
