@@ -15,6 +15,7 @@ from models.services import getBouquets, getChannels, getChannelEpg, getEvent, g
 from models.info import getTranscodingSupport
 from urllib import quote
 from time import localtime, strftime
+from urllib import unquote, quote
 
 class MobileController(BaseController):
 	def __init__(self, session, path = ""):
@@ -123,7 +124,15 @@ class MobileController(BaseController):
 
 	def P_movies(self, request):
 		if "dirname" in request.args.keys():
-			movies = getMovieList(request.args["dirname"][0])
+			directory = unquote(request.args["dirname"][0])
+			try:
+					directory.decode('utf-8')
+			except UnicodeDecodeError:
+				try:
+					directory = directory.decode("cp1252").encode("utf-8")
+				except UnicodeDecodeError:
+					directory = directory.decode("iso-8859-1").encode("utf-8")
+			movies = getMovieList(directory)
 		else:
 			movies = getMovieList()
 		movies['transcoding'] = getTranscodingSupport()
