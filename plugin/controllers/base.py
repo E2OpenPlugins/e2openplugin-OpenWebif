@@ -211,14 +211,19 @@ class BaseController(resource.Resource):
 		# Find and parse running oscam
 		opath = None
 		owebif = None
+		oport = None
 		if fileExists("/tmp/.oscam/oscam.version"):
 			data = open("/tmp/.oscam/oscam.version", "r").readlines()
 			for i in data:
 				if "configdir:" in i.lower():
 					opath = i.split(":")[1].strip() + "/oscam.conf"
-				if "web interface support:" in i.lower():
+				elif "web interface support:" in i.lower():
 					owebif = i.split(":")[1].strip()
-		if owebif == "yes":
+				elif "webifport:" in i.lower():
+					oport = i.split(":")[1].strip()
+				else:
+					continue
+		if owebif == "yes" and oport is not "0":
 			return opath
 		else:
 			return None
