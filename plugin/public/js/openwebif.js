@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 2.2
+//* Version 2.3
 //******************************************************************************
 //* Copyright (C) 2011-2014 E2OpenPlugins
 //*
@@ -9,6 +9,7 @@
 //* V 2.0 - movie sort object, spinner, theme support, ...
 //* V 2.1 - support timer conflicts / fix IE cache issue
 //* V 2.2 - remove sync requests
+//* V 2.3 - prepare web tv / better timer conflicts
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -23,7 +24,7 @@
 //*******************************************************************************
 
 $.fx.speeds._default = 1000;
-var theme='original',loadspinner = "<div id='spinner'><div class='fa fa-spinner fa-spin'></div></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0,at2add = null,_location = [],_tags = [];
+var theme='original',loadspinner = "<div id='spinner'><div class='fa fa-spinner fa-spin'></div></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0,at2add = null,_location = [],_tags = [],current_ref=null,current_name=null;
 
 $(function() {
 	
@@ -451,8 +452,12 @@ function open_epg_pop(sRef) {
 	_epg_pop('ajax/epgpop?sref=' + escape(sRef));
 }
 
-function TimerConflict(conflicts)
+function TimerConflict(conflicts,sRef, eventId, justplay)
 {
+	// !!! TODO !!!
+	// the first conflict entry is the new timer but this new timer don't exits
+	// If there is a deactivate button we need to create the new timer again
+	// sRef, eventId, justplay are needed to create the new timer
 	var SplitText = "<div class='tbltc'><div><div>Name</div><div>"+tstr_channel+"</div><div>"+tstr_end+"</div><div>"+tstr_begin+"</div></div>";
 	conflicts.forEach(function(entry) {
 		SplitText +="<div><div>"+entry.name+"</div><div>"+entry.servicename+"</div><div>"+entry.realbegin+"</div><div>"+entry.realend+"</div></div>";
@@ -490,26 +495,34 @@ function webapi_execute_result(url, callback) {
 	});
 }
 
-function addTimerEvent(sRef, eventId) {
-	webapi_execute_result("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId,
+function addTimerEvent(sRef, eventId, justplay) {
+
+	var url = "/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId;
+	if(justplay)
+		url += "&eit=0&disabled=0&justplay=1&afterevent=3";
+
+	webapi_execute_result(url,
 		function(state,txt,conflicts) {
 			if (!state && conflicts)
-				TimerConflict(conflicts);
+				TimerConflict(conflicts,sRef,eventId,justplay);
 			else
 				alert( state ? tstr_timer_added : txt );
 		}
 	);
 }
+
+/*
 function addTimerEventPlay(sRef, eventId) {
 	webapi_execute_result("/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId + "&eit=0&disabled=0&justplay=1&afterevent=3",
 		function(state,txt,conflicts) {
 			if (!state && conflicts)
-				TimerConflict(conflicts);
+				TimerConflict(conflicts,sRef,eventId,True);
 			else
 				alert( state ? tstr_timer_added : txt );
 		}
 	);
 }
+*/
 
 function addEditTimerEvent(sRef, eventId) {
 	var url="/api/event?sref=" + sRef + "&idev=" + eventId;
@@ -665,8 +678,8 @@ function toggleStandby() {
 function setOSD( statusinfo )
 {
 
-	var sref = statusinfo['currservice_serviceref'];
-	var station = statusinfo['currservice_station'];
+	var sref = current_ref = statusinfo['currservice_serviceref'];
+	var station = current_name = statusinfo['currservice_station'];
 	
 	if (station) {
 		var stream = "<div id='osdicon'>";

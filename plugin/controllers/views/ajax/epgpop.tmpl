@@ -77,7 +77,7 @@ table { font-size:12px; font-family: Verdana,Arial,sans-serif;}
 	</tr>
 	<tr>
 		<td class="timerpanel panel ui-state-hover">
-			<a class="tb addtimer" href="#" onclick="addTimerEvent('$sref',$event.id);return false;" title="$tstrings['add_timer']">
+			<a class="tb addtimer" href="#" onclick="addTimerEvent('$sref',$event.id,false);return false;" title="$tstrings['add_timer']">
 			<i class="fa fa-timerplus"></i>
 			</a>
 			<a class="tb deltimer" href="#" onclick="delTimerEvent('$sref',$event.id);return false;" title="$tstrings['delete_timer']">
@@ -96,7 +96,7 @@ table { font-size:12px; font-family: Verdana,Arial,sans-serif;}
 	</tr>
 	<tr>
 		<td class="panel ui-state-hover">
-			<a class="tb" href="#" onclick="addTimerEventPlay('$sref',$event.id);return false;" title="$tstrings['add_zaptimer']">
+			<a class="tb" href="#" onclick="addTimerEvent('$sref',$event.id,true);return false;" title="$tstrings['add_zaptimer']">
 			<i class="fa fa-timerplay"></i>
 			</a>
 	</td>
