@@ -15,7 +15,6 @@ from models.services import getBouquets, getChannels, getChannelEpg, getEvent, g
 from models.info import getTranscodingSupport
 from urllib import quote
 from time import localtime, strftime
-from urllib import unquote, quote
 
 class MobileController(BaseController):
 	def __init__(self, session, path = ""):
@@ -83,9 +82,6 @@ class MobileController(BaseController):
 			# Make sure at least some basic channel info gets returned when there is no EPG
 			return { "channelinfo": channelinfo, "channelepg": None }
 
-	def P_channelzap(self, request):
-		return self.P_channelinfo(request)
-
 	def P_eventview(self, request):
 		event = {}
 		event['sref'] = ""
@@ -113,9 +109,6 @@ class MobileController(BaseController):
 
 		return { "event": event }
 
-	def P_timeradded(self, request):
-		return self.P_eventview(request)
-
 	def P_satfinder(self, request):
 		return {}
 
@@ -124,15 +117,7 @@ class MobileController(BaseController):
 
 	def P_movies(self, request):
 		if "dirname" in request.args.keys():
-			directory = unquote(request.args["dirname"][0])
-			try:
-					directory.decode('utf-8')
-			except UnicodeDecodeError:
-				try:
-					directory = directory.decode("cp1252").encode("utf-8")
-				except UnicodeDecodeError:
-					directory = directory.decode("iso-8859-1").encode("utf-8")
-			movies = getMovieList(directory)
+			movies = getMovieList(request.args["dirname"][0])
 		else:
 			movies = getMovieList()
 		movies['transcoding'] = getTranscodingSupport()

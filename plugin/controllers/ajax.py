@@ -19,7 +19,6 @@ from models.config import getConfigs, getConfigsSections, getZapStream, getShowC
 from base import BaseController
 from time import mktime, localtime
 from models.locations import getLocations
-from urllib import unquote, quote
 
 try:
 	from boxbranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
@@ -155,15 +154,7 @@ class AjaxController(BaseController):
 
 	def P_movies(self, request):
 		if "dirname" in request.args.keys():
-			directory = unquote(request.args["dirname"][0])
-			try:
-					directory.decode('utf-8')
-			except UnicodeDecodeError:
-				try:
-					directory = directory.decode("cp1252").encode("utf-8")
-				except UnicodeDecodeError:
-					directory = directory.decode("iso-8859-1").encode("utf-8")
-			movies = getMovieList(directory)
+			movies = getMovieList(request.args["dirname"][0])
 		else:
 			movies = getMovieList()
 		movies['transcoding'] = getTranscodingSupport()
@@ -274,10 +265,11 @@ class AjaxController(BaseController):
 		return ret
 
 	def P_bqe(self, request):
-		ret = {}
-		return ret
+		return {}
 
 	def P_epgr(self, request):
-		ret = {}
-		return ret
+		return {}
+
+	def P_webtv(self, request):
+		return {"transcoding" : getTranscodingSupport()}
 
