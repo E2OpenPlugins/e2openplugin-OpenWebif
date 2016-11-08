@@ -624,6 +624,8 @@ font-size:16px;font-weight:bold;opacity:0.3;
 .cht .ui-progressbar { height:0.4em; width: 50%; margin: 2px 0 4px; }
 .cht .a a {margin-right:3px;}
 .cht .pic { width:60px; }
+.cht .channel-picon { display:table-cell;width:120px;vertical-align:middle; }
+.cht .channel-info { display:table-cell; }
 
 .m_buttons .ui-progressbar { height:0.5em; width: 90%; margin: 2px 0 4px; }
 
