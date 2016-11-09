@@ -532,19 +532,22 @@ def getInfo(session = None):
 				for rec in recs:
 					feinfo = rec.frontendInfo()
 					frontendData = feinfo and feinfo.getAll(True)
-					cur_info = feinfo.getTransponderData(True)
-					nr = frontendData['tuner_number']
-					info['tuners'][nr]['rec'] = getOrbitalText(cur_info) + ' / ' + sname
+					if frontendData is not None:
+						cur_info = feinfo.getTransponderData(True)
+						if cur_info:
+							nr = frontendData['tuner_number']
+							info['tuners'][nr]['rec'] = getOrbitalText(cur_info) + ' / ' + sname
 
 			service = session.nav.getCurrentService()
 			if service is not None:
 				sname = service.info().getName()
 				feinfo = service.frontendInfo()
 				frontendData = feinfo and feinfo.getAll(True)
-				cur_info = feinfo.getTransponderData(True)
-				if cur_info:
-					nr = frontendData['tuner_number']
-					info['tuners'][nr]['live'] = getOrbitalText(cur_info) + ' / ' + sname
+				if frontendData is not None:
+					cur_info = feinfo.getTransponderData(True)
+					if cur_info:
+						nr = frontendData['tuner_number']
+						info['tuners'][nr]['live'] = getOrbitalText(cur_info) + ' / ' + sname
 		except Exception, error:
 			info['EX'] = error
 
