@@ -1,0 +1,252 @@
+#filter WebSafe
+#from Plugins.Extensions.OpenWebif.local import tstrings
+<style>
+#streamchannels-menu {
+	max-height: 300px;
+}
+.overflow{ height:200px;}
+</style>
+<div id="content_main" style="min-height: 500px;background-image:none;" class="ui-widget-content">
+	<div id="info">
+	<div style="display: inline-block; width: 100%; zoom: 1;background-image:none;" class="ui-widget-content">
+		<h3 class="ui-widget-header">Player</h3>
+				<div id="vlcPlayer" style="margin:0 auto 0 auto;width:640px;height:400px;">
+					<embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" width="640px" height="360px" id="vlc"></embed>
+				</div>
+				<div style="display:table;margin-bottom:10px;width: 95%;">
+					<div style="display:table-cell;">
+					Channel: <select name="streamchannels" id="streamchannels" tabindex="16"></select>
+					</div>
+					<div style="display:table-cell;">
+					Recordings: <select name="streamrecordings" id="streamrecordings" tabindex="10"></select>
+					</div>
+				</div>
+				<div style="display:table;margin-bottom:10px;width: 95%;">
+					<div style="display:inline-block;">
+							Deinterlace: <select id="deinterlace">
+								<option value="off">Off</option>
+								<option value="blend">Blend</option>
+								<option value="bob">Bob</option>
+								<option value="discard">Discard</option>
+								<option value="linear">Linear</option>
+								<option value="mean">Mean</option>
+								<option value="x">X</option>
+								<option value="yadif">Yadif</option>
+								<option value="yadif2x">Yadif2x</option>
+							</select>
+						<label for="vlcautoplay">Autoplay:</label>
+						<input type="checkbox" name="vlcautoplay" id="vlcautoplay" value="" class="checkbox ui-widget-content ui-corner-all">
+						<button id="btnstop">Stop</button>
+						<button id="btnplay">Play</button>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+<script type="text/javascript" src="/js/chosen.jquery.min.js"></script>
+<script>
+#raw
+
+(function() {
+
+	var PlayerObj = function () {
+		var self;
+		var _vlc;
+		return {
+			setup: function () {
+				self = this;
+				self._vlc = document.getElementById("vlc");
+				
+				$("#streamchannels").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "400px"});
+				$("#streamchannels").chosen().change( 
+					function() {
+						self.setUrl($("#streamchannels").val(),$("#streamchannels option:selected").text(),true);
+						self.play();
+					}
+				);
+				
+				$("#streamrecordings").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "300px"});
+				$("#streamrecordings").chosen().change( 
+					function() {
+						var ref = $("#streamrecordings").val();
+						var name = $("#streamrecordings option:selected").text();
+						if(ref!='')
+						{
+							if(ref == name)
+							{
+								$("#streamrecordings").empty();
+								$('#streamrecordings').trigger("chosen:updated");
+								self.getRecordings(ref,function(){
+									$('#streamrecordings').trigger("chosen:updated");
+								});
+							}
+							else {
+								self.setUrl(ref,name,false);
+								self.play();
+							}
+						}
+					}
+				);
+				
+				$("#deinterlace").chosen({disable_search: true,no_results_text: "",width: "300px"});
+				$("#deinterlace").chosen().change( 
+						function() {
+							var dv = $("#deinterlace").val();
+							SetLSValue('vlcdeinterlace',dv);
+							self.setDeinterlace(dv);
+						}
+				);
+				
+				var dv = GetLSValue('vlcdeinterlace','off');
+				$("#deinterlace").val( dv );
+				$('#deinterlace').trigger("chosen:updated");
+				self.setDeinterlace(dv);
+				
+				self.getAllServices(function() 
+					{
+						if(current_ref) {
+							$("#streamchannels").val( current_ref );
+						}
+						$('#streamchannels').trigger("chosen:updated");
+					}
+				);
+				self.getRecordings('',function(){
+					$('#streamrecordings').trigger("chosen:updated");
+				});
+				
+				$(".chosen-container .chosen-drop").addClass('ui-widget-content');
+				if (theme == 'eggplant' || theme == 'vader')
+				{
+					$(".chosen-container .chosen-drop").css('background-image','none');
+				}
+				
+				$('#btnstop').click(function(){
+					self.stop();
+				});
+				$('#btnplay').click(function(){
+					self.play();
+				});
+				
+				if(current_ref) {
+					self.setUrl(current_ref,current_name,true);
+					if ($('#autoplay').is(':checked') === true)
+						self.play();
+				}
+				
+				$('#vlcautoplay').click(function() { 
+					SetLSValue('vlcautoplay',$('#vlcautoplay').is(':checked'));
+				});
+				
+				var ap = GetLSValue('vlcautoplay',false);
+				$('#vlcautoplay').prop('checked',ap);
+				
+			},isInArray: function(array, search) { 
+				return (array.indexOf(search) >= 0) ? true : false; 
+			},getAllServices: function(callback) {
+				$.getJSON( "/api/getallservices", function( data ) {
+					var bqs = data['services'];
+					var options = "";
+					var refs = [];
+					$.each( bqs, function( key, val ) {
+						var name = val['servicename'];
+						var slist = val['subservices'];
+						var items = [];
+						$.each( slist, function( key, val ) {
+							var ref = val['servicereference']
+							if (!self.isInArray(refs,ref)) {
+								refs.push(ref);
+								if(ref.substring(0, 4) == "1:0:" || ref.substring(0, 7) == "1:134:1")
+									items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
+							}
+						});
+						if (items.length>0) {
+							options += "<optgroup label='" + name + "'>" + items.join("") + "</optgroup>";
+						}
+					});
+					$("#streamchannels").append( options);
+					callback();
+				});
+			},getRecordings: function(_dirname,callback) {
+				var rdata = {};
+				if(_dirname != '')
+					rdata = {dirname: _dirname};
+				$.ajax({
+					url: '/api/movielist',
+					dataType: 'json',
+					cache: false,
+					data: rdata,
+					success: function ( data ) {
+						var mv = data['movies'];
+						var dn = data['directory'];
+						var subdirs = data['bookmarks'];
+						var items = [];
+						var lastdir = '';
+						var dira = dn.split('/');
+						var options='';
+						if(dira.length>1) {
+							for (index = 0;index < dira.length - 2; ++index) {
+								lastdir += dira[index] + '/';
+							}
+						}
+						if(lastdir!='') {
+							options = "<optgroup label='Folders'>";
+							options += "<option value='' disabled selected style='display:none;'></option>";
+							options += "<option value='" + lastdir + "'>" + lastdir + "</option>";
+							for (index = 0;index < subdirs.length - 1; ++index) {
+								options += "<option value='" + dn + subdirs[index] + "'>" + dn + subdirs[index] + "</option>";
+							}
+							options += "</optgroup>";
+						}
+						
+						
+						$.each( mv, function( key, val ) {
+							var ref = val['filename'];
+							var name =  val['eventname'];
+							items.push( "<option value='" + ref + "'>" + name + "</option>" );
+						});
+						options += "<optgroup label='" + dn + "'>" + items.join("") + "</optgroup>";
+						$("#streamrecordings").append( options );
+						callback();
+					}
+				});
+			}, setDeinterlace: function(val){
+					var modes = ["blend", "bob", "discard", "linear", "mean", "x", "yadif", "yadif2x"];
+					try {
+						if(val != "off" && modes.indexOf(val) >= 0)
+							self._vlc.video.deinterlace.enable(val);
+						else
+							self._vlc.video.deinterlace.disable();
+					} catch (e) {
+					}
+			}, setUrl: function(sref,name,live) {
+				try {
+					if (live)
+						url = '/web/stream.m3u?ref=' + sref +'&name=' + name;
+					else
+						url = '/web/ts.m3u?file=' + sref;
+					self._vlc.playlist.clear();
+					self._vlc.playlist.add(url);
+				} catch (e) {
+				}
+			}, stop: function() {
+				try {
+					self._vlc.playlist.stop();
+				} catch (e) {
+				}
+			}, play: function() {
+				try {
+					self._vlc.playlist.play();
+				} catch (e) {
+				}
+			},
+		}
+	};
+
+	var playerobj = new PlayerObj();
+	playerobj.setup();
+
+})();
+</script>
+#end raw
+<link rel="stylesheet" type="text/css" href="/css/chosen.min.css" />
+#end filter
