@@ -13,6 +13,12 @@
 				<div id="vlcPlayer" style="margin:0 auto 0 auto;width:640px;height:400px;">
 					<embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" width="640px" height="360px" id="vlc"></embed>
 				</div>
+				<div id="htmlPlayer" style="margin:0 auto 0 auto;width:640px;height:400px;">
+				<video id="htmlp" width="640" height="360" controls>
+				</video>
+				</div>
+				<div id="vxgPlayer" style="margin:0 auto 0 auto;width:640px;height:500px;">
+				</div>
 				<div style="display:table;margin-bottom:10px;width: 95%;">
 					<div style="display:table-cell;">
 					Channel: <select name="streamchannels" id="streamchannels" tabindex="16"></select>
@@ -36,6 +42,15 @@
 							</select>
 						<label for="vlcautoplay">Autoplay:</label>
 						<input type="checkbox" name="vlcautoplay" id="vlcautoplay" value="" class="checkbox ui-widget-content ui-corner-all">
+						<label for="transcoding">Transcoding:</label>
+						<input type="checkbox" name="transcoding" id="transcoding" value="" class="checkbox ui-widget-content ui-corner-all">
+						
+						Player: <select id="webtvplayer">
+								<option value="vlc">VLC</option>
+								<option value="vxg">VXG</option>
+								<option value="html">HTML5</option>
+							</select>
+						
 						<button id="btnstop">Stop</button>
 						<button id="btnplay">Play</button>
 					</div>
@@ -44,6 +59,7 @@
 			</div>
 		</div>
 <script type="text/javascript" src="/js/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="/js/vxgplayer-1.8.11.min.js"></script>
 <script>
 #raw
 
@@ -52,10 +68,12 @@
 	var PlayerObj = function () {
 		var self;
 		var _vlc;
+		var _html;
+		var vxgplayerId = null;
+		var currentp;
 		return {
 			setup: function () {
 				self = this;
-				self._vlc = document.getElementById("vlc");
 				
 				$("#streamchannels").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "400px"});
 				$("#streamchannels").chosen().change( 
@@ -96,7 +114,20 @@
 							self.setDeinterlace(dv);
 						}
 				);
-				
+
+				$("#webtvplayer").chosen({disable_search: true,no_results_text: "",width: "300px"});
+				$("#webtvplayer").chosen().change( 
+						function() {
+							var dv = $("#webtvplayer").val();
+							SetLSValue('webtvplayer',dv);
+							self.setPlayer(dv);
+						}
+				);
+				var pl = GetLSValue('webtvplayer','vlc');
+				$("#webtvplayer").val( pl );
+				$('#webtvplayer').trigger("chosen:updated");
+				self.setPlayer(pl);
+
 				var dv = GetLSValue('vlcdeinterlace','off');
 				$("#deinterlace").val( dv );
 				$('#deinterlace').trigger("chosen:updated");
@@ -132,13 +163,18 @@
 					if ($('#autoplay').is(':checked') === true)
 						self.play();
 				}
-				
+
 				$('#vlcautoplay').click(function() { 
 					SetLSValue('vlcautoplay',$('#vlcautoplay').is(':checked'));
 				});
-				
 				var ap = GetLSValue('vlcautoplay',false);
 				$('#vlcautoplay').prop('checked',ap);
+
+				$('#webtvtranscoding').click(function() { 
+					SetLSValue('webtvtranscoding',$('#webtvtranscoding').is(':checked'));
+				});
+				var ap = GetLSValue('webtvtranscoding',false);
+				$('#webtvtranscoding').prop('checked',ap);
 				
 			},isInArray: function(array, search) { 
 				return (array.indexOf(search) >= 0) ? true : false; 
@@ -219,25 +255,81 @@
 					} catch (e) {
 					}
 			}, setUrl: function(sref,name,live) {
+
 				try {
+					
 					if (live)
-						url = '/web/stream.m3u?ref=' + sref +'&name=' + name;
+						url = 'http://' + window.location.hostname + ':8001/' + sref;
 					else
-						url = '/web/ts.m3u?file=' + sref;
-					self._vlc.playlist.clear();
-					self._vlc.playlist.add(url);
+						url = 'http://' + window.location.hostname + ':8001/' + sref;
+					
+					if(self._vlc) {
+						self._vlc.playlist.clear();
+						self._vlc.playlist.add(url);
+					}
+					if(self._html) {
+						self._html.src = url;
+					}
+					if(self.currentp == 'vxg')
+						vxgplayer(self.vxgplayerId).src(url);
+					
+					console.log(url);
+						
 				} catch (e) {
 				}
 			}, stop: function() {
-				try {
-					self._vlc.playlist.stop();
-				} catch (e) {
-				}
+				if(self.currentp == 'vxg')
+					vxgplayer(self.vxgplayerId).stop();
+				if(self.currentp == 'vlc')
+					try { self._vlc.playlist.stop(); } catch (e) { }
+				if(self.currentp == 'html')
+					try { self._html.stop(); } catch (e) { }
 			}, play: function() {
-				try {
-					self._vlc.playlist.play();
-				} catch (e) {
+				if(self.currentp == 'vxg')
+					vxgplayer(self.vxgplayerId).play();
+				if(self.currentp == 'vlc')
+					try { self._vlc.playlist.play(); } catch (e) { }
+				if(self.currentp == 'html')
+					try { self._html.play(); } catch (e) { }
+			}, setPlayer : function (pl) {
+				self._vlc = null;
+				self._html = null;
+				$('#vlcPlayer').hide();
+				$('#vxgPlayer').hide();
+				$('#htmlPlayer').hide();
+				self.currentp = pl;
+				
+				if(pl == 'vlc'){
+					self._vlc = document.getElementById("vlc");
+					$('#vlcPlayer').show();
 				}
+				if(pl == 'html'){
+					self._html = document.getElementById("htmlp");
+					$('#htmlPlayer').show();
+				}
+				if(pl == 'vxg'){
+					if(!vxgplayerId)
+						self.createVX();
+					$('#vxgPlayer').show();
+				}
+			}, createVX: function() {
+			
+				self.vxgplayerId = 'vxg_media_player1';
+				var div = document.createElement('div');
+				div.setAttribute("id", self.vxgplayerId);
+				div.setAttribute("class", "vxgplayer");
+				var _parent = document.getElementById('vxgPlayer');
+				_parent.appendChild(div);
+				vxgplayer(self.vxgplayerId, {
+					nmf_path: 'media_player.nmf',
+					nmf_src: '/js/media_player.nmf',
+					latency: 300000,
+					aspect_ratio_mode: 1,
+					autohide: 3,
+					controls: true,
+					avsync: true,
+					autoreconnect: 1
+				});
 			},
 		}
 	};
@@ -249,4 +341,5 @@
 </script>
 #end raw
 <link rel="stylesheet" type="text/css" href="/css/chosen.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/vxgplayer-1.8.11.min.css" />
 #end filter
