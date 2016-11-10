@@ -271,5 +271,17 @@ class AjaxController(BaseController):
 		return {}
 
 	def P_webtv(self, request):
-		return {"transcoding" : getTranscodingSupport()}
+		vxgenabled = False
+		if fileExists(getPublicPath("/js/media_player.pexe")):
+			vxgenabled = True
+		transcoding = getTranscodingSupport()
+		transcoder_port = 0
+		if transcoding:
+			try:
+				transcoder_port = int(config.plugins.transcodingsetup.port.value)
+				if getMachineBuild() in ('inihdp', 'hd2400', 'et10000','ew7356'):
+					transcoder_port = int(config.OpenWebif.streamport.value)
+			except StandardError:
+				transcoder_port = 0
+		return {"transcoder_port" : transcoder_port, "vxgenabled" : vxgenabled}
 

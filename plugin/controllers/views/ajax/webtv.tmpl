@@ -17,8 +17,10 @@
 				<video id="htmlp" width="640" height="360" controls>
 				</video>
 				</div>
+				#if $vxgenabled
 				<div id="vxgPlayer" style="margin:0 auto 0 auto;width:640px;height:500px;">
 				</div>
+				#end if
 				<div style="display:table;margin-bottom:10px;width: 95%;">
 					<div style="display:table-cell;">
 					Channel: <select name="streamchannels" id="streamchannels" tabindex="16"></select>
@@ -29,6 +31,7 @@
 				</div>
 				<div style="display:table;margin-bottom:10px;width: 95%;">
 					<div style="display:inline-block;">
+						<div id="Deinterlace">
 							Deinterlace: <select id="deinterlace">
 								<option value="off">Off</option>
 								<option value="blend">Blend</option>
@@ -40,11 +43,13 @@
 								<option value="yadif">Yadif</option>
 								<option value="yadif2x">Yadif2x</option>
 							</select>
+						</div>
 						<label for="vlcautoplay">Autoplay:</label>
 						<input type="checkbox" name="vlcautoplay" id="vlcautoplay" value="" class="checkbox ui-widget-content ui-corner-all">
+						#if $transcoder_port <> 0
 						<label for="transcoding">Transcoding:</label>
 						<input type="checkbox" name="transcoding" id="transcoding" value="" class="checkbox ui-widget-content ui-corner-all">
-						
+						#end if
 						Player: <select id="webtvplayer">
 								<option value="vlc">VLC</option>
 								<option value="vxg">VXG</option>
@@ -59,9 +64,12 @@
 			</div>
 		</div>
 <script type="text/javascript" src="/js/chosen.jquery.min.js"></script>
+#if $vxgenabled
 <script type="text/javascript" src="/js/vxgplayer-1.8.11.min.js"></script>
+#end if
 <script>
-#raw
+var isChrome = !!window.chrome && !!window.chrome.webstore;
+var isFirefox = typeof InstallTrigger !== 'undefined';
 
 (function() {
 
@@ -75,27 +83,36 @@
 			setup: function () {
 				self = this;
 				
-				$("#streamchannels").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "400px"});
-				$("#streamchannels").chosen().change( 
+				if (isChrome)
+					\$("#webtvplayer option[value='vlc']").remove();
+#if $vxgenabled
+				if (isFirefox)
+					\$("#webtvplayer option[value='vxg']").remove();
+#else
+				\$("#webtvplayer option[value='vxg']").remove();
+#end if
+
+				\$("#streamchannels").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "400px"});
+				\$("#streamchannels").chosen().change( 
 					function() {
-						self.setUrl($("#streamchannels").val(),$("#streamchannels option:selected").text(),true);
+						self.setUrl(\$("#streamchannels").val(),\$("#streamchannels option:selected").text(),true);
 						self.play();
 					}
 				);
 				
-				$("#streamrecordings").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "300px"});
-				$("#streamrecordings").chosen().change( 
+				\$("#streamrecordings").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "300px"});
+				\$("#streamrecordings").chosen().change( 
 					function() {
-						var ref = $("#streamrecordings").val();
-						var name = $("#streamrecordings option:selected").text();
+						var ref = \$("#streamrecordings").val();
+						var name = \$("#streamrecordings option:selected").text();
 						if(ref!='')
 						{
 							if(ref == name)
 							{
-								$("#streamrecordings").empty();
-								$('#streamrecordings').trigger("chosen:updated");
+								\$("#streamrecordings").empty();
+								\$('#streamrecordings').trigger("chosen:updated");
 								self.getRecordings(ref,function(){
-									$('#streamrecordings').trigger("chosen:updated");
+									\$('#streamrecordings').trigger("chosen:updated");
 								});
 							}
 							else {
@@ -106,88 +123,88 @@
 					}
 				);
 				
-				$("#deinterlace").chosen({disable_search: true,no_results_text: "",width: "300px"});
-				$("#deinterlace").chosen().change( 
+				\$("#deinterlace").chosen({disable_search: true,no_results_text: "",width: "300px"});
+				\$("#deinterlace").chosen().change( 
 						function() {
-							var dv = $("#deinterlace").val();
+							var dv = \$("#deinterlace").val();
 							SetLSValue('vlcdeinterlace',dv);
 							self.setDeinterlace(dv);
 						}
 				);
 
-				$("#webtvplayer").chosen({disable_search: true,no_results_text: "",width: "300px"});
-				$("#webtvplayer").chosen().change( 
+				\$("#webtvplayer").chosen({disable_search: true,no_results_text: "",width: "300px"});
+				\$("#webtvplayer").chosen().change( 
 						function() {
-							var dv = $("#webtvplayer").val();
+							var dv = \$("#webtvplayer").val();
 							SetLSValue('webtvplayer',dv);
 							self.setPlayer(dv);
 						}
 				);
 				var pl = GetLSValue('webtvplayer','vlc');
-				$("#webtvplayer").val( pl );
-				$('#webtvplayer').trigger("chosen:updated");
+				\$("#webtvplayer").val( pl );
+				\$('#webtvplayer').trigger("chosen:updated");
 				self.setPlayer(pl);
 
 				var dv = GetLSValue('vlcdeinterlace','off');
-				$("#deinterlace").val( dv );
-				$('#deinterlace').trigger("chosen:updated");
+				\$("#deinterlace").val( dv );
+				\$('#deinterlace').trigger("chosen:updated");
 				self.setDeinterlace(dv);
 				
 				self.getAllServices(function() 
 					{
 						if(current_ref) {
-							$("#streamchannels").val( current_ref );
+							\$("#streamchannels").val( current_ref );
 						}
-						$('#streamchannels').trigger("chosen:updated");
+						\$('#streamchannels').trigger("chosen:updated");
 					}
 				);
 				self.getRecordings('',function(){
-					$('#streamrecordings').trigger("chosen:updated");
+					\$('#streamrecordings').trigger("chosen:updated");
 				});
 				
-				$(".chosen-container .chosen-drop").addClass('ui-widget-content');
+				\$(".chosen-container .chosen-drop").addClass('ui-widget-content');
 				if (theme == 'eggplant' || theme == 'vader')
 				{
-					$(".chosen-container .chosen-drop").css('background-image','none');
+					\$(".chosen-container .chosen-drop").css('background-image','none');
 				}
 				
-				$('#btnstop').click(function(){
+				\$('#btnstop').click(function(){
 					self.stop();
 				});
-				$('#btnplay').click(function(){
+				\$('#btnplay').click(function(){
 					self.play();
 				});
 				
 				if(current_ref) {
 					self.setUrl(current_ref,current_name,true);
-					if ($('#autoplay').is(':checked') === true)
+					if (\$('#autoplay').is(':checked') === true)
 						self.play();
 				}
 
-				$('#vlcautoplay').click(function() { 
-					SetLSValue('vlcautoplay',$('#vlcautoplay').is(':checked'));
+				\$('#vlcautoplay').click(function() { 
+					SetLSValue('vlcautoplay',\$('#vlcautoplay').is(':checked'));
 				});
 				var ap = GetLSValue('vlcautoplay',false);
-				$('#vlcautoplay').prop('checked',ap);
-
-				$('#webtvtranscoding').click(function() { 
-					SetLSValue('webtvtranscoding',$('#webtvtranscoding').is(':checked'));
+				\$('#vlcautoplay').prop('checked',ap);
+#if $transcoder_port <> 0
+				\$('#webtvtranscoding').click(function() { 
+					SetLSValue('webtvtranscoding',\$('#webtvtranscoding').is(':checked'));
 				});
 				var ap = GetLSValue('webtvtranscoding',false);
-				$('#webtvtranscoding').prop('checked',ap);
-				
+				\$('#webtvtranscoding').prop('checked',ap);
+#end if
 			},isInArray: function(array, search) { 
 				return (array.indexOf(search) >= 0) ? true : false; 
 			},getAllServices: function(callback) {
-				$.getJSON( "/api/getallservices", function( data ) {
+				\$.getJSON( "/api/getallservices", function( data ) {
 					var bqs = data['services'];
 					var options = "";
 					var refs = [];
-					$.each( bqs, function( key, val ) {
+					\$.each( bqs, function( key, val ) {
 						var name = val['servicename'];
 						var slist = val['subservices'];
 						var items = [];
-						$.each( slist, function( key, val ) {
+						\$.each( slist, function( key, val ) {
 							var ref = val['servicereference']
 							if (!self.isInArray(refs,ref)) {
 								refs.push(ref);
@@ -199,14 +216,14 @@
 							options += "<optgroup label='" + name + "'>" + items.join("") + "</optgroup>";
 						}
 					});
-					$("#streamchannels").append( options);
+					\$("#streamchannels").append( options);
 					callback();
 				});
 			},getRecordings: function(_dirname,callback) {
 				var rdata = {};
 				if(_dirname != '')
 					rdata = {dirname: _dirname};
-				$.ajax({
+				\$.ajax({
 					url: '/api/movielist',
 					dataType: 'json',
 					cache: false,
@@ -241,7 +258,7 @@
 							items.push( "<option value='" + ref + "'>" + name + "</option>" );
 						});
 						options += "<optgroup label='" + dn + "'>" + items.join("") + "</optgroup>";
-						$("#streamrecordings").append( options );
+						\$("#streamrecordings").append( options );
 						callback();
 					}
 				});
@@ -258,10 +275,17 @@
 
 				try {
 					
-					if (live)
-						url = 'http://' + window.location.hostname + ':8001/' + sref;
+					if($transcoder_port != 0 && \$('#webtvtranscoding').is(':checked'))
+					{
+						url = 'http://' + window.location.hostname + ':$transcoder_port/' + sref;
+					}
 					else
-						url = 'http://' + window.location.hostname + ':8001/' + sref;
+					{
+						if (live)
+							url = 'http://' + window.location.hostname + ':8001/' + sref;
+						else
+							url = '/file?file=' + sref;
+					}
 					
 					if(self._vlc) {
 						self._vlc.playlist.clear();
@@ -270,23 +294,26 @@
 					if(self._html) {
 						self._html.src = url;
 					}
+#if $vxgenabled
 					if(self.currentp == 'vxg')
 						vxgplayer(self.vxgplayerId).src(url);
-					
-					console.log(url);
-						
+#end if
 				} catch (e) {
 				}
 			}, stop: function() {
+#if $vxgenabled
 				if(self.currentp == 'vxg')
 					vxgplayer(self.vxgplayerId).stop();
+#end if
 				if(self.currentp == 'vlc')
 					try { self._vlc.playlist.stop(); } catch (e) { }
 				if(self.currentp == 'html')
 					try { self._html.stop(); } catch (e) { }
 			}, play: function() {
+#if $vxgenabled
 				if(self.currentp == 'vxg')
 					vxgplayer(self.vxgplayerId).play();
+#end if
 				if(self.currentp == 'vlc')
 					try { self._vlc.playlist.play(); } catch (e) { }
 				if(self.currentp == 'html')
@@ -294,23 +321,30 @@
 			}, setPlayer : function (pl) {
 				self._vlc = null;
 				self._html = null;
-				$('#vlcPlayer').hide();
-				$('#vxgPlayer').hide();
-				$('#htmlPlayer').hide();
+				\$('#vlcPlayer').hide();
+#if $vxgenabled
+				\$('#vxgPlayer').hide();
+#end if
+				\$('#htmlPlayer').hide();
 				self.currentp = pl;
 				
 				if(pl == 'vlc'){
 					self._vlc = document.getElementById("vlc");
-					$('#vlcPlayer').show();
+					\$('#Deinterlace').show();
+					\$('#vlcPlayer').show();
 				}
+				else
+					\$('#Deinterlace').hide();
+				
 				if(pl == 'html'){
 					self._html = document.getElementById("htmlp");
-					$('#htmlPlayer').show();
+					\$('#htmlPlayer').show();
 				}
+#if $vxgenabled
 				if(pl == 'vxg'){
 					if(!vxgplayerId)
 						self.createVX();
-					$('#vxgPlayer').show();
+					\$('#vxgPlayer').show();
 				}
 			}, createVX: function() {
 			
@@ -330,6 +364,7 @@
 					avsync: true,
 					autoreconnect: 1
 				});
+#end if
 			},
 		}
 	};
@@ -339,7 +374,11 @@
 
 })();
 </script>
-#end raw
 <link rel="stylesheet" type="text/css" href="/css/chosen.min.css" />
+#if $vxgenabled
 <link rel="stylesheet" type="text/css" href="/css/vxgplayer-1.8.11.min.css" />
+<style>
+.vxgplayer-error { margin-left:0px;}
+</style>
+#end if
 #end filter
