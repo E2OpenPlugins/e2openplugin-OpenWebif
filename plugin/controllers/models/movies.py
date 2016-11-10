@@ -20,6 +20,7 @@ from Components.MovieList import MovieList
 from Tools.Directories import fileExists
 from time import strftime, localtime
 from Screens import MovieSelection
+from urllib import unquote
 
 MOVIETAGFILE = "/etc/enigma2/movietags"
 TRASHDIRNAME = "movie_trash"
