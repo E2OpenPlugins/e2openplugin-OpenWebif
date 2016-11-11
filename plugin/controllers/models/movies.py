@@ -100,8 +100,22 @@ def checkParentalProtection(directory):
 				return True
 	return False
 
-def getMovieList(directory=None, tag=None, rargs=None, locations=None):
+def getMovieList(rargs=None, locations=None):
 	movieliste = []
+
+	tag = None
+	if rargs and "tag" in rargs.keys():
+		tag = rargs["tag"][0]
+
+	directory = None
+	if rargs and "dirname" in rargs.keys():
+		directory = rargs["dirname"][0]
+
+	fields = None
+	if rargs and "fields" in rargs.keys():
+		fields = rargs["fields"][0]
+	else:
+		fields = 'pos,size,desc'
 
 	if directory is None:
 		directory = MovieSelection.defaultMoviePath()
@@ -178,7 +192,8 @@ def getMovieList(directory=None, tag=None, rargs=None, locations=None):
 
 				filename = '/'.join(serviceref.toString().split("/")[1:])
 				filename = '/'+filename
-				pos = getPosition(filename + '.cuts', Len)
+				if 'pos' in fields: 
+					pos = getPosition(filename + '.cuts', Len)
 				
 				# get txt
 				name, ext = os.path.splitext(filename)
@@ -186,7 +201,7 @@ def getMovieList(directory=None, tag=None, rargs=None, locations=None):
 				
 				txtdesc = ""
 				
-				if ext != 'ts':
+				if 'desc' in fields and ext != 'ts':
 					txtfile = name + '.txt'
 					if fileExists(txtfile):
 						txtlines = open(txtfile).readlines()
@@ -201,33 +216,38 @@ def getMovieList(directory=None, tag=None, rargs=None, locations=None):
 
 				sourceERef = info.getInfoString(serviceref, iServiceInformation.sServiceref)
 				sourceRef = ServiceReference(sourceERef)
-				event = info.getEvent(serviceref)
-				ext = event and event.getExtendedDescription() or ""
+				if 'desc' in fields:
+					event = info.getEvent(serviceref)
+					ext = event and event.getExtendedDescription() or ""
+					if ext == '' and txtdesc != '':
+						ext = txtdesc
 
-				if ext == '' and txtdesc != '':
-					ext = txtdesc
-
-				desc = info.getInfoString(serviceref, iServiceInformation.sDescription)
+				if 'desc' in fields:
+					desc = info.getInfoString(serviceref, iServiceInformation.sDescription)
 				servicename = ServiceReference(serviceref).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
 				movie = {}
 				movie['filename'] = filename
 				movie['filename_stripped'] = filename.split("/")[-1]
 				movie['eventname'] = servicename
-				movie['description'] = unicode(desc,'utf_8', errors='ignore').encode('utf_8', 'ignore')
+				if 'desc' in fields:
+					movie['description'] = unicode(desc,'utf_8', errors='ignore').encode('utf_8', 'ignore')
 				movie['begintime'] = begin_string
 				movie['serviceref'] = serviceref.toString()
 				movie['length'] = Len
 				movie['tags'] = info.getInfoString(serviceref, iServiceInformation.sTags)
-				filename = filename.replace("'","\'").replace("%","\%")
-				try:
-					movie['filesize'] = os_stat(filename).st_size
-				except:
-					movie['filesize'] = 0
+				if 'size' in fields:
+					filename = filename.replace("'","\'").replace("%","\%")
+					try:
+						movie['filesize'] = os_stat(filename).st_size
+					except:
+						movie['filesize'] = 0
 				movie['fullname'] = serviceref.toString()
-				movie['descriptionExtended'] = unicode(ext,'utf_8', errors='ignore').encode('utf_8', 'ignore')
+				if 'desc' in fields:
+					movie['descriptionExtended'] = unicode(ext,'utf_8', errors='ignore').encode('utf_8', 'ignore')
 				movie['servicename'] = sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
 				movie['recordingtime'] = rtime
-				movie['lastseen'] = pos
+				if 'pos' in fields: 
+					movie['lastseen'] = pos
 				movieliste.append(movie)
 
 	if locations == None:
@@ -238,7 +258,7 @@ def getMovieList(directory=None, tag=None, rargs=None, locations=None):
 
 def getAllMovies():
 	locations = config.movielist.videodirs.value[:] or []
-	return getMovieList(None, None, None, locations)
+	return getMovieList(None, locations)
 
 def removeMovie(session, sRef, Force=False):
 	service = ServiceReference(sRef)

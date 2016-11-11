@@ -153,10 +153,7 @@ class AjaxController(BaseController):
 		return {}
 
 	def P_movies(self, request):
-		if "dirname" in request.args.keys():
-			movies = getMovieList(request.args["dirname"][0])
-		else:
-			movies = getMovieList()
+		movies = getMovieList(request.args)
 		movies['transcoding'] = getTranscodingSupport()
 
 		sorttype = config.OpenWebif.webcache.moviesort.value
