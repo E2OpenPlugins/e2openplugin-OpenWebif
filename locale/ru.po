@@ -721,7 +721,7 @@ msgstr "Отмена"
 
 #: ../plugin/local.py:62
 msgid "Capacity"
-msgstr "Емкость"
+msgstr "Объем"
 
 #: ../plugin/local.py:63
 msgid "Channel"
@@ -825,7 +825,7 @@ msgstr "Загрузить плейлист для"
 
 #: ../plugin/local.py:88
 msgid "Drivers"
-msgstr "Дата драйверов"
+msgstr "Драйвера"
 
 #: ../plugin/local.py:89
 msgid "Duration"
@@ -953,7 +953,7 @@ msgstr "Только воспроизвести"
 
 #: ../plugin/local.py:123
 msgid "Kernel"
-msgstr "Версия ядра"
+msgstr "Ядро линукса"
 
 #: ../plugin/local.py:124
 msgid "LICENSE"
@@ -977,7 +977,7 @@ msgstr "MAC адрес"
 
 #: ../plugin/local.py:129
 msgid "Main"
-msgstr "Главный"
+msgstr "Главная"
 
 #: ../plugin/local.py:130
 msgid "Minute"
@@ -1306,11 +1306,11 @@ msgstr "Название"
 
 #: ../plugin/local.py:212
 msgid "Main Memory"
-msgstr "Всего памяти"
+msgstr "Главная память"
 
 #: ../plugin/local.py:213
 msgid "transcoded"
-msgstr "транскодировано"
+msgstr "транскодировать"
 
 #: ../plugin/local.py:214
 msgid "Transcode"
@@ -1338,7 +1338,7 @@ msgstr "Качество сигнала тюнера (SNR_DB)"
 
 #: ../plugin/local.py:220
 msgid "Tuner Signal Power AGC"
-msgstr "Уровень сигнала тюнера (AGC)"
+msgstr "Сила сигнала тюнера (AGC)"
 
 #: ../plugin/local.py:221
 msgid "Tuner Type"
@@ -2061,3 +2061,42 @@ msgstr "Событие не найдено"
 msgid "NOT implemented YET"
 msgstr "НЕ реализовано ЕЩЕ"
 
+msgid "OpenWebif Browser Settings"
+msgstr "Настройки браузера OpenWebif"
+
+msgid "OpenWebif Settings"
+msgstr "Настройки OpenWebif"
+
+msgid "Theme"
+msgstr "Тема"
+
+msgid "Show Picon in channel list"
+msgstr "Показать пикон в списке каналов"
+
+msgid "Spinner"
+msgstr "Спиннер"
+
+msgid "Display duration (s)"
+msgstr "Продолжительность дисплея (сек)"
+
+msgid "Display Mode"
+msgstr "Режим дисплея"
+
+msgid "TV Guide"
+msgstr "ТВ гид"
+
+msgid "Timeline"
+msgstr "График"
+
+#: ../plugin/local.py:425
+msgid "Link Speed"
+msgstr "Скорость связи"
+
+msgid "Network Shares"
+msgstr "Сетевые подключения"
+
+msgid "using"
+msgstr "использование"
+
+msgid "Show Picons in channel list"
+msgstr "Показать пиконы в списке каналов"
