@@ -21,24 +21,41 @@
 			<h1><a style="color:#FFF;text-decoration:none;" href='/mobile'>OpenWebif</a></h1>
 		</div>
 		<div id="contentContainer">
-			<ul data-role="listview" data-inset="true" data-theme="d">
-				<li data-role="list-divider" role="heading" data-theme="b">$tstrings['timer_list']</li>
+			<div data-role="collapsibleset">
+				<div data-role="collapsible" data-disabled="true" data-collapsed-icon="false" data-theme="b">
+					<h2>$tstrings['timer_list']</h2>
+				</div>
+				#set $oldstartdate = ""
 				#for $timer in $timers
 				#set $duration = $timer.duration/60
-				#set $starttime = datetime.datetime.fromtimestamp($timer.begin).strftime("%d.%m.%Y")
-				#set $endtime = datetime.datetime.fromtimestamp($timer.end).strftime("%d.%m.%Y")
-				<li>
-					#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
-					#set $name=quote($timer.name, safe=' ~@#$&()*!+=:;,.?/\'').replace("'","\\'")
-					<a href="#">
-						<span class="ui-li-heading" style="margin-top: 3px; margin-bottom: 3px;">$timer.name ($timer.servicename)</span>
-						<span class="ui-li-desc" style="margin-top: 3px; margin-bottom: 3px;">$starttime - $endtime ($duration min)</span>
-					</a>
-					
-					<a href="#" onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$name');" aria-expanded="false" class="ui-btn ui-btn-icon-notext ui-icon-delete ui-btn-a" title="delete"></a>
-				</li>
+				#set $starttime = datetime.datetime.fromtimestamp($timer.begin).strftime("%H:%M")
+				#set $startdate = datetime.datetime.fromtimestamp($timer.begin).strftime("%d.%m.%Y")
+				#set $endtime = datetime.datetime.fromtimestamp($timer.end).strftime("%H:%M")
+				#if $startdate <> $oldstartdate
+				#if $oldstartdate <> ""
+					</ul>
+				</div>
+				<div data-role="collapsible">
+				#else
+				<div data-role="collapsible" data-collapsed="false">
+				#end if
+					<h2>$startdate</h2>
+					#set $oldstartdate = $startdate
+					<ul data-role="listview" data-inset="false" data-theme="a">
+				#end if
+					<li>
+						#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
+						#set $name=quote($timer.name, safe=' ~@#$&()*!+=:;,.?/\'').replace("'","\\'")
+						<a href="#">
+							<h2>$timer.name</h2>
+							<p><strong>$timer.servicename - $starttime - $endtime ($duration min)</strong></p>
+							<p>$timer.description</p>
+						</a>
+						<a href="#" onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$name');" aria-expanded="false" class="ui-btn ui-btn-icon-notext ui-icon-delete ui-btn-a" title="delete"></a>
+					</li>
 				#end for
-			</ul>
+				</ul>
+			</div>
 			<button onClick="document.location.reload(true)">$tstrings['refresh']</button>
 		</div>
 		<div id="footer">
