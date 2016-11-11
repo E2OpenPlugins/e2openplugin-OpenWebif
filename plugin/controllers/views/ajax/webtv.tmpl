@@ -22,14 +22,20 @@
 				</div>
 				#end if
 				<div style="display:table;margin-bottom:10px;width: 95%;">
-					<div style="display:table-cell;">
-					Channel: <select name="streamchannels" id="streamchannels" tabindex="16"></select>
-					</div>
-					<div style="display:table-cell;">
-					Recordings: <select name="streamrecordings" id="streamrecordings" tabindex="10"></select>
-					</div>
+					<span id="srcbuttons" style="margin-right:10px;">
+					<input type="radio" id="sbtn0" name="srcbutton" checked="checked" /><label for="sbtn0">$tstrings['channels']</label>
+					<input type="radio" id="sbtn1" name="srcbutton" /><label for="sbtn1">$tstrings['movies']</label>
+					</span>
+					<select name="streamchannels" id="streamchannels" tabindex="16"></select>
+					<select name="streamrecordings" id="streamrecordings" tabindex="10"></select>
 				</div>
 				<div style="display:table;margin-bottom:10px;width: 95%;">
+					<span id="plbuttons" style="margin-right:10px;">
+					<input type="radio" id="plbtn_vlc" name="plbutton" /><label id="lplbtn_vlc" for="plbtn_vlc">VLC</label>
+					<input type="radio" id="plbtn_vxg" name="plbutton" /><label id="lplbtn_vxg" for="plbtn_vxg">VXG</label>
+					<input type="radio" id="plbtn_html" name="plbutton" /><label id="lplbtn_html" for="plbtn_html">HTML</label>
+					</span>
+
 					<div style="display:inline-block;">
 						<div id="Deinterlace">
 							Deinterlace: <select id="deinterlace">
@@ -50,12 +56,6 @@
 						<label for="transcoding">Transcoding:</label>
 						<input type="checkbox" name="transcoding" id="transcoding" value="" class="checkbox ui-widget-content ui-corner-all">
 						#end if
-						Player: <select id="webtvplayer">
-								<option value="vlc">VLC</option>
-								<option value="vxg">VXG</option>
-								<option value="html">HTML5</option>
-							</select>
-						
 						<button id="btnstop">Stop</button>
 						<button id="btnplay">Play</button>
 					</div>
@@ -83,14 +83,52 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 			setup: function () {
 				self = this;
 				
-				if (isChrome)
-					\$("#webtvplayer option[value='vlc']").remove();
+				if (isChrome) {
+					\$("#plbtn_vlc").remove();
+					\$("#lplbtn_vlc").remove();
+				}
+				else
+				{
+					\$('#plbtn_vlc').click(function(){
+						SetLSValue('webtvplayer','vlc');
+						self.setPlayer('vlc');
+					});
+				}
+				
 #if $vxgenabled
-				if (isFirefox)
-					\$("#webtvplayer option[value='vxg']").remove();
+				if (isFirefox) {
+					\$("#plbtn_vxg").remove();
+					\$("#lplbtn_vxg").remove();
+				}
+				else
+				{
+					\$('#plbtn_vxg').click(function(){
+						SetLSValue('webtvplayer','vxg');
+						self.setPlayer('vxg');
+					});
+				}
 #else
-				\$("#webtvplayer option[value='vxg']").remove();
+				\$("#plbtn_vxg").remove();
+				\$("#lplbtn_vxg").remove();
 #end if
+
+				\$('#plbtn_html').click(function(){
+					SetLSValue('webtvplayer','html');
+					self.setPlayer('html');
+				});
+				
+				\$("#plbuttons").buttonset();
+
+				\$('#sbtn0').click(function(){
+					\$('#streamchannels_chosen').show();
+					\$('#streamrecordings_chosen').hide();
+				});
+				\$('#sbtn1').click(function(){
+					\$('#streamrecordings_chosen').show();
+					\$('#streamchannels_chosen').hide();
+				});
+				
+				\$("#srcbuttons").buttonset();
 
 				\$("#streamchannels").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "400px"});
 				\$("#streamchannels").chosen().change( 
@@ -131,18 +169,15 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 							self.setDeinterlace(dv);
 						}
 				);
+				
+#if $vxgenabled
+				var defp = (isChrome) ? 'vxg': 'vlc';
+#else
+				var defp = (isChrome) ? 'html': 'vlc';
+#end if
+				var pl = GetLSValue('webtvplayer',defp);
 
-				\$("#webtvplayer").chosen({disable_search: true,no_results_text: "",width: "300px"});
-				\$("#webtvplayer").chosen().change( 
-						function() {
-							var dv = \$("#webtvplayer").val();
-							SetLSValue('webtvplayer',dv);
-							self.setPlayer(dv);
-						}
-				);
-				var pl = GetLSValue('webtvplayer','vlc');
-				\$("#webtvplayer").val( pl );
-				\$('#webtvplayer').trigger("chosen:updated");
+				\$('#plbtn_'+pl).prop('checked',true).button("refresh");
 				self.setPlayer(pl);
 
 				var dv = GetLSValue('vlcdeinterlace','off');
@@ -180,6 +215,9 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 					if (\$('#autoplay').is(':checked') === true)
 						self.play();
 				}
+
+				\$('#streamchannels_chosen').show();
+				\$('#streamrecordings_chosen').hide();
 
 				\$('#vlcautoplay').click(function() { 
 					SetLSValue('vlcautoplay',\$('#vlcautoplay').is(':checked'));
@@ -342,7 +380,7 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 				}
 #if $vxgenabled
 				if(pl == 'vxg'){
-					if(!vxgplayerId)
+					if(!self.vxgplayerId)
 						self.createVX();
 					\$('#vxgPlayer').show();
 				}
