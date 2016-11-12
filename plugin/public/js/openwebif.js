@@ -886,7 +886,8 @@ $(window).keydown(function(evt) {
 });
 
 function callScreenShot(){
-	if ($('input[name=remotegrabscreen]').is(':checked'))
+
+	if(GetLSValue('remotegrabscreen',true)=='true')
 	{
 		if (lastcontenturl == 'ajax/screenshot') {
 			grabScreenshot(screenshotMode);
