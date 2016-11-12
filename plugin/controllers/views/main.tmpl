@@ -18,7 +18,7 @@
 #end if
 <link type="text/css" href="css/style.min.css" rel="stylesheet"/>
 <link type="text/css" href="web/css" rel="stylesheet"/>
-<script type="text/javascript" src="js/openwebif-2.4.min.js"></script>
+<script type="text/javascript" src="js/openwebif-2.5.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
 <script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
 <title>Open Webif</title>
@@ -79,11 +79,7 @@
 			#def searchMenu
 			#if $epgsearchcaps
 			<ul>
-				#if $epgsearchtype
-				<li><input type="checkbox" name="epgsearchtype" checked="checked" />$tstrings['epgsearchextended']</li>
-				#else
 				<li><input type="checkbox" name="epgsearchtype" />$tstrings['epgsearchextended']</li>
-				#end if
 			</ul>
 			#end if
 			<form action="" onSubmit="open_epg_search_dialog(); return false;">
@@ -133,12 +129,8 @@
 					$tstrings['shiftforlong']
 				</div>
 					<ul>
-					#set $checked = ""
-					#if $remotegrabscreenshot
-						#set $checked = "checked='checked'"
-					#end if
 					<li style="margin-bottom:5px;margin-top:5px;">
-					<input type="checkbox" name="remotegrabscreen" $checked /><span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span>
+					<input type="checkbox" class="remotegrabscreen" name="remotegrabscreen1" /><span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span>
 					</li>
 					</ul>
 					<div class="volslider" style="display:table-row;margin-bottom:15px">
@@ -193,13 +185,8 @@
 							$tstrings['shiftforlong']
 						</div>
 						<ul>
-							#set $checked = ""
-							#if $remotegrabscreenshot
-								#set $checked = "checked='checked'"
-							#end if
-							
 							<li style="margin-bottom:5px;">
-							<input type="checkbox" name="remotegrabscreen" $checked /><span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span></li>
+							<input type="checkbox" class="remotegrabscreen" name="remotegrabscreen2" /><span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span></li>
 						</ul>
 					</div>
 				</div>

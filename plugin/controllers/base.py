@@ -16,7 +16,7 @@ from twisted.web import server, http, static, resource, error
 from Cheetah.Template import Template
 
 from models.info import getInfo, getBasePath, getPublicPath, getViewsPath
-from models.config import getCollapsedMenus, getRemoteGrabScreenshot, getEPGSearchType, getConfigsSections, getShowName, getCustomName, getBoxName
+from models.config import getCollapsedMenus, getConfigsSections, getShowName, getCustomName, getBoxName
 
 import os
 import imp
@@ -231,7 +231,6 @@ class BaseController(resource.Resource):
 	def prepareMainTemplate(self, request):
 		# here will be generated the dictionary for the main template
 		ret = getCollapsedMenus()
-		ret['remotegrabscreenshot'] = getRemoteGrabScreenshot()['remotegrabscreenshot']
 		ret['configsections'] = getConfigsSections()['sections']
 		ret['showname'] = getShowName()['showname']
 		ret['customname'] = getCustomName()['customname']
@@ -248,7 +247,6 @@ class BaseController(resource.Resource):
 			if config.OpenWebif.webcache.epg_desc_search.value:
 				config.OpenWebif.webcache.epg_desc_search.value = False
 				config.OpenWebif.webcache.epg_desc_search.save()
-		ret['epgsearchtype'] = getEPGSearchType()['epgsearchtype']
 		extras = []
 		extras.append({ 'key': 'ajax/settings','description': _("Settings")})
 		from Components.Network import iNetwork

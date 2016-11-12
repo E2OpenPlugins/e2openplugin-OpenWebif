@@ -9,8 +9,7 @@
 #                                                                            #
 ##############################################################################
 
-from Tools.Directories import fileExists
-from models.info import getBasePath, getPublicPath, getViewsPath, getPiconPath
+from models.info import getPublicPath, getPiconPath
 from models.grab import grabScreenshot
 from base import BaseController
 from web import WebController
@@ -25,7 +24,7 @@ from ER import ERController
 from BQE import BQEController
 from transcoding import TranscodingController
 from wol import WOLSetupController, WOLClientController
-from twisted.web import static, http
+from twisted.web import static
 
 class RootController(BaseController):
 	def __init__(self, session, path = ""):
@@ -70,6 +69,6 @@ class RootController(BaseController):
 		if uagent and mode != 'fullpage':
 			if uagent.lower().find("iphone") != -1 or uagent.lower().find("ipod") != -1 or uagent.lower().find("blackberry") != -1 or uagent.lower().find("mobile") != -1:
 				request.setHeader("Location", "/mobile/")
-				request.setResponseCode(http.FOUND)
+				request.setResponseCode(200)
 				return ""
 		return {}

@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 2.4
+//* Version 2.5
 //******************************************************************************
 //* Copyright (C) 2011-2014 E2OpenPlugins
 //*
@@ -11,6 +11,7 @@
 //* V 2.2 - remove sync requests
 //* V 2.3 - prepare web tv / better timer conflicts
 //* V 2.4 - improve movie sort
+//* V 2.5 - improve settings
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -857,17 +858,17 @@ function toggleMenu(name) {
 
 // keep checkboxes syncronized
 $(function() {
-	$("input[name=remotegrabscreen]").click(function(evt) {
-		$('input[name=remotegrabscreen]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("/api/remotegrabscreenshot?checked=" + evt.currentTarget.checked);
+	$('.remotegrabscreen').click(function(evt) {
+		$('.remotegrabscreen').prop('checked', evt.currentTarget.checked);
+		SetLSValue('remotegrabscreen',evt.currentTarget.checked);
 	});
-});
 
-$(function() {
-	$("input[name=epgsearchtype]").click(function(evt) {
-		$('input[name=epgsearchtype]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("/api/epgsearchtype?checked=" + evt.currentTarget.checked);
+	$('input[name=epgsearchtype]').click(function(evt) {
+		$('input[name=epgsearchtype]').prop('checked', evt.currentTarget.checked);
+		SetLSValue('epgsearchtype',evt.currentTarget.checked);
 	});
+	$('input[name=epgsearchtype]').prop('checked',(GetLSValue('epgsearchtype',false)=='true'));
+	$('.remotegrabscreen').prop('checked',(GetLSValue('remotegrabscreen',true)=='true'));
 });
 
 $(window).keydown(function(evt) {

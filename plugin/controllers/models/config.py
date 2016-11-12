@@ -39,32 +39,6 @@ def getCollapsedMenus():
 		"collapsed": config.OpenWebif.webcache.collapsedmenus.value.split("|")
 	}
 
-def setRemoteGrabScreenshot(value):
-	config.OpenWebif.webcache.remotegrabscreenshot.value = value
-	config.OpenWebif.webcache.remotegrabscreenshot.save()
-	return {
-		"result": True
-	}
-
-def getRemoteGrabScreenshot():
-	return {
-		"result": True,
-		"remotegrabscreenshot": config.OpenWebif.webcache.remotegrabscreenshot.value
-	}
-
-def setEPGSearchType(value):
-	config.OpenWebif.webcache.epg_desc_search.value = value
-	config.OpenWebif.webcache.epg_desc_search.save()
-	return {
-		"result": True
-	}
-
-def getEPGSearchType():
-	return {
-		"result": True,
-		"epgsearchtype": config.OpenWebif.webcache.epg_desc_search.value
-	}
-
 def setZapStream(value):
 	config.OpenWebif.webcache.zapstream.value = value
 	config.OpenWebif.webcache.zapstream.save()
