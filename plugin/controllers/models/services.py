@@ -697,7 +697,7 @@ def getNowNextEpg(ref, servicetype):
 
 	return { "events": ret, "result": True }
 
-def getSearchEpg(sstr, endtime=None):
+def getSearchEpg(sstr, endtime=None, fulldesc=False):
 	ret = []
 	ev = {}
 	if config.OpenWebif.epg_encoding.value != 'utf-8':
@@ -707,8 +707,9 @@ def getSearchEpg(sstr, endtime=None):
 			pass
 	epgcache = eEPGCache.getInstance()
 	search_type = eEPGCache.PARTIAL_TITLE_SEARCH
-	if config.OpenWebif.webcache.epg_desc_search.value:
-		search_type = eEPGCache.FULL_DESCRIPTION_SEARCH
+	if fulldesc:
+		if hasattr(eEPGCache, 'FULL_DESCRIPTION_SEARCH'):
+			search_type = eEPGCache.FULL_DESCRIPTION_SEARCH
 	events = epgcache.search(('IBDTSENR', 128, search_type, sstr, 1));
 	if events is not None:
 		for event in events:

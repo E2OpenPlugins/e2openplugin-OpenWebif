@@ -751,7 +751,10 @@ class WebController(BaseController):
 			except Exception, e:
 				pass
 		self.isGZ=True
-		return getSearchEpg(request.args["search"][0], endtime)
+		fulldesc=False
+		if "full" in request.args.keys():
+			fulldesc=True
+		return getSearchEpg(request.args["search"][0], endtime,fulldesc)
 
 	def P_epgsearchrss(self, request):
 		res = self.testMandatoryArguments(request, ["search"])

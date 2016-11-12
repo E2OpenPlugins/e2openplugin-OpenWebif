@@ -244,9 +244,6 @@ class BaseController(resource.Resource):
 			ret['epgsearchcaps'] = True
 		else:
 			ret['epgsearchcaps'] = False
-			if config.OpenWebif.webcache.epg_desc_search.value:
-				config.OpenWebif.webcache.epg_desc_search.value = False
-				config.OpenWebif.webcache.epg_desc_search.save()
 		extras = []
 		extras.append({ 'key': 'ajax/settings','description': _("Settings")})
 		from Components.Network import iNetwork
