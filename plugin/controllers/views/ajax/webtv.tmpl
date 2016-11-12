@@ -4,9 +4,8 @@
 #streamchannels-menu {
 	max-height: 300px;
 }
-.overflow{ height:200px;}
 </style>
-<div id="content_main" style="min-height: 500px;background-image:none;" class="ui-widget-content">
+<div id="content_main" style="min-height: 550px;background-image:none;" class="ui-widget-content">
 	<div id="info">
 	<div style="display: inline-block; width: 100%; zoom: 1;background-image:none;" class="ui-widget-content">
 		<h3 class="ui-widget-header">Player</h3>
@@ -21,23 +20,14 @@
 				<div id="vxgPlayer" style="margin:0 auto 0 auto;width:640px;height:500px;">
 				</div>
 				#end if
-				<div style="display:table;margin-bottom:10px;width: 95%;">
-					<span id="srcbuttons" style="margin-right:10px;">
-					<input type="radio" id="sbtn0" name="srcbutton" checked="checked" /><label for="sbtn0">$tstrings['channels']</label>
-					<input type="radio" id="sbtn1" name="srcbutton" /><label for="sbtn1">$tstrings['movies']</label>
-					</span>
-					<select name="streamchannels" id="streamchannels" tabindex="16"></select>
-					<select name="streamrecordings" id="streamrecordings" tabindex="10"></select>
-				</div>
-				<div style="display:table;margin-bottom:10px;width: 95%;">
+				<div style="display:table;margin:10 auto 10 auto;">
 					<span id="plbuttons" style="margin-right:10px;">
 					<input type="radio" id="plbtn_vlc" name="plbutton" /><label id="lplbtn_vlc" for="plbtn_vlc">VLC</label>
 					<input type="radio" id="plbtn_vxg" name="plbutton" /><label id="lplbtn_vxg" for="plbtn_vxg">VXG</label>
 					<input type="radio" id="plbtn_html" name="plbutton" /><label id="lplbtn_html" for="plbtn_html">HTML</label>
 					</span>
-
-					<div style="display:inline-block;">
-						<div id="Deinterlace">
+					<div style="display:inline-block;margin-left:10px;">
+						<span id="Deinterlace">
 							Deinterlace: <select id="deinterlace">
 								<option value="off">Off</option>
 								<option value="blend">Blend</option>
@@ -49,16 +39,40 @@
 								<option value="yadif">Yadif</option>
 								<option value="yadif2x">Yadif2x</option>
 							</select>
+						</span>
+						<div style="display:inline-block;margin-left:10px;">
+							<label for="vlcautoplay">Autoplay:</label>
+							<input type="checkbox" name="vlcautoplay" id="vlcautoplay" value="" class="checkbox ui-widget-content ui-corner-all">
+							#if $transcoder_port <> 0
+							<label for="transcoding">Transcoding:</label>
+							<input type="checkbox" name="transcoding" id="transcoding" value="" class="checkbox ui-widget-content ui-corner-all">
+							#end if
+							<button id="btnstop" style="margin-left:5px;">Stop</button>
+							<button id="btnplay" style="margin-left:5px;">Play</button>
 						</div>
-						<label for="vlcautoplay">Autoplay:</label>
-						<input type="checkbox" name="vlcautoplay" id="vlcautoplay" value="" class="checkbox ui-widget-content ui-corner-all">
-						#if $transcoder_port <> 0
-						<label for="transcoding">Transcoding:</label>
-						<input type="checkbox" name="transcoding" id="transcoding" value="" class="checkbox ui-widget-content ui-corner-all">
-						#end if
-						<button id="btnstop">Stop</button>
-						<button id="btnplay">Play</button>
 					</div>
+				</div>
+				<div style="display:table;margin-top:10px;margin-bottom:10px;width: 95%;">
+					<span id="srcbuttons" style="margin-right:10px;">
+					<input type="radio" id="sbtn0" name="srcbutton" checked="checked" /><label for="sbtn0">$tstrings['channels']</label>
+					<input type="radio" id="sbtn1" name="srcbutton" /><label for="sbtn1">$tstrings['movies']</label>
+					</span>
+					<span style="display:inline-block;">
+					<select name="streamchannels" id="streamchannels" tabindex="16"></select>
+					<select name="streamrecordings" id="streamrecordings" tabindex="10"></select>
+					<select id="moviesort">
+					#set $count = 0
+					#set $da = $tstrings['date']
+					#set $na = $tstrings['name']
+					#set $sortnames = [$na,$na,$da,$da]
+					#set $sorttypes = ['name','named','date','dated']
+					#set $sortimg = ['fa-sort-alpha-asc','fa-sort-alpha-desc','fa-sort-numeric-asc','fa-sort-numeric-desc']
+					#for $title in $sortnames
+						<option value="$sorttypes[$count]" data-class="$sortimg[$count]">$title</option>
+						#set $count += 1
+					#end for
+					</select>
+					</span>
 				</div>
 				
 			</div>
@@ -69,7 +83,6 @@
 #end if
 <script>
 var isChrome = !!window.chrome && !!window.chrome.webstore;
-var isFirefox = typeof InstallTrigger !== 'undefined';
 
 (function() {
 
@@ -79,10 +92,13 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 		var _html;
 		var vxgplayerId = null;
 		var currentp;
+		var _movies = [];
+		var folderoptions;
+		var dn;
 		return {
 			setup: function () {
 				self = this;
-				
+
 				if (isChrome) {
 					\$("#plbtn_vlc").remove();
 					\$("#lplbtn_vlc").remove();
@@ -96,7 +112,7 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 				}
 				
 #if $vxgenabled
-				if (isFirefox) {
+				if (!isChrome) {
 					\$("#plbtn_vxg").remove();
 					\$("#lplbtn_vxg").remove();
 				}
@@ -122,10 +138,12 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 				\$('#sbtn0').click(function(){
 					\$('#streamchannels_chosen').show();
 					\$('#streamrecordings_chosen').hide();
+					\$('#moviesort-button').hide();
 				});
 				\$('#sbtn1').click(function(){
 					\$('#streamrecordings_chosen').show();
 					\$('#streamchannels_chosen').hide();
+					\$('#moviesort-button').show();
 				});
 				
 				\$("#srcbuttons").buttonset();
@@ -138,7 +156,7 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 					}
 				);
 				
-				\$("#streamrecordings").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "300px"});
+				\$("#streamrecordings").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "400px"});
 				\$("#streamrecordings").chosen().change( 
 					function() {
 						var ref = \$("#streamrecordings").val();
@@ -161,7 +179,7 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 					}
 				);
 				
-				\$("#deinterlace").chosen({disable_search: true,no_results_text: "",width: "300px"});
+				\$("#deinterlace").chosen({disable_search: true,no_results_text: "",width: "150px"});
 				\$("#deinterlace").chosen().change( 
 						function() {
 							var dv = \$("#deinterlace").val();
@@ -231,6 +249,97 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 				var ap = GetLSValue('webtvtranscoding',false);
 				\$('#webtvtranscoding').prop('checked',ap);
 #end if
+				\$.widget( "custom.iconselectmenu", \$.ui.selectmenu, {
+					_renderItem: function( ul, item ) {
+						var li = \$( "<li>" ),
+						wrapper = \$( "<div>",{ text: item.label } ).prepend (
+						\$( "<span class='sortimg'>").append (
+							\$( "<i>", { "class": "fa " + item.element.data("class") })
+							)
+						);
+						return li.append( wrapper ).appendTo( ul );
+					}
+				});	
+
+				\$("#moviesort").iconselectmenu({change: function(event, ui) {
+					\$("#streamrecordings").empty();
+					SetLSValue('webtvms',ui.item.value);
+					self.SortMovies();
+					}
+				}).addClass("ui-menu-icons");
+				
+				\$('#moviesort-button').hide();
+				\$("#moviesort-button").css('margin-left','10px');
+
+			},SortMovies: function () {
+
+				var sorted = self._movies.slice(0);
+				var idx = GetLSValue('webtvms','name');
+			
+				if(idx=='name')
+				{
+					// sort by name
+					sorted.sort(function(a,b) {
+						var x = a.title.toLowerCase();
+						var y = b.title.toLowerCase();
+						return x < y ? -1 : x > y ? 1 : 0;
+					});
+				}
+			
+				if(idx=='named')
+				{
+					// sort by name desc
+					sorted.sort(function(a,b) {
+						var x = b.title.toLowerCase();
+						var y = a.title.toLowerCase();
+						return x < y ? -1 : x > y ? 1 : 0;
+					});
+				}
+			
+				if(idx=='date')
+				{
+					// sort by date desc
+					sorted.sort(function(a,b) {
+						return b.start - a.start;
+					});
+				}
+				if(idx=='dated')
+				{
+					// sort by date
+					sorted.sort(function(a,b) {
+						return a.start - b.start;
+					});
+				}
+				var options = self.folderoptions;
+				var items = [];
+				// TODO : format list
+				for (var i = 0, len = sorted.length; i < len; i++) {
+					items.push (
+						"<option value='" + sorted[i].fn + "'>" + sorted[i].title + "&nbsp;/&nbsp;" + sorted[i].bt + "</option>"
+					);
+				}
+				options += "<optgroup label='" + self.dn + "'>" + items.join("") + "</optgroup>";
+				\$("#streamrecordings").append( options );
+
+				self.SetSortImg();
+				\$('#streamrecordings').trigger("chosen:updated");
+
+			},SetSortImg: function () {
+			
+				\$("#moviesort option").each(function()
+				{
+					var simg='';
+					if( \$(this).val() == \$( "#moviesort" ).val() )
+					{
+						simg=\$(this).data("class");
+						if (simg) {
+							var img = \$( "<span class='sortimg'>").append (
+								\$( "<i>", { "class": "fa " + simg })
+								)
+							\$("#moviesort-button .ui-selectmenu-text").prepend(img);
+						}
+					}
+				});
 			},isInArray: function(array, search) { 
 				return (array.indexOf(search) >= 0) ? true : false; 
 			},getAllServices: function(callback) {
@@ -250,6 +359,7 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 									items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
 							}
 						});
+						
 						if (items.length>0) {
 							options += "<optgroup label='" + name + "'>" + items.join("") + "</optgroup>";
 						}
@@ -258,9 +368,9 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 					callback();
 				});
 			},getRecordings: function(_dirname,callback) {
-				var rdata = {};
+				var rdata = {fields:'f'};
 				if(_dirname != '')
-					rdata = {dirname: _dirname};
+					rdata = {dirname: _dirname,fields:'f'};
 				\$.ajax({
 					url: '/api/movielist',
 					dataType: 'json',
@@ -268,11 +378,11 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 					data: rdata,
 					success: function ( data ) {
 						var mv = data['movies'];
-						var dn = data['directory'];
+						self.dn = data['directory'];
 						var subdirs = data['bookmarks'];
 						var items = [];
 						var lastdir = '';
-						var dira = dn.split('/');
+						var dira = self.dn.split('/');
 						var options='';
 						if(dira.length>1) {
 							for (index = 0;index < dira.length - 2; ++index) {
@@ -284,19 +394,21 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 							options += "<option value='' disabled selected style='display:none;'></option>";
 							options += "<option value='" + lastdir + "'>" + lastdir + "</option>";
 							for (index = 0;index < subdirs.length - 1; ++index) {
-								options += "<option value='" + dn + subdirs[index] + "'>" + dn + subdirs[index] + "</option>";
+								options += "<option value='" + self.dn + subdirs[index] + "'>" + self.dn + subdirs[index] + "</option>";
 							}
 							options += "</optgroup>";
 						}
 						
+						self.folderoptions = options;
+						
+						self._movies = [];
 						
 						$.each( mv, function( key, val ) {
-							var ref = val['filename'];
-							var name =  val['eventname'];
-							items.push( "<option value='" + ref + "'>" + name + "</option>" );
+							var _fn = val['filename'].replace(/'/g, '___');
+							self._movies.push({ title :  val['eventname'], bt : val['begintime'], start:val['recordingtime'],fn:_fn});
 						});
-						options += "<optgroup label='" + dn + "'>" + items.join("") + "</optgroup>";
-						\$("#streamrecordings").append( options );
+						
+						self.SortMovies();
 						callback();
 					}
 				});
@@ -312,6 +424,13 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
 			}, setUrl: function(sref,name,live) {
 
 				try {
+					
+					if (!live) {
+						var fn = sref.split('/').reverse()[0];
+						var path = sref.substring(0,sref.length-fn.length);
+						fn = fn.replace(/___/g, "'");
+						sref = path + escape(fn);
+					}
 					
 					if($transcoder_port != 0 && \$('#webtvtranscoding').is(':checked'))
 					{
