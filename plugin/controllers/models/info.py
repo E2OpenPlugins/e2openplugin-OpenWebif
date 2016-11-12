@@ -87,11 +87,11 @@ def getIPv4Method(iface):
 	return ipv4method
 
 def getLinkSpeed(iface):
-	speed = _("unknown")
-	if fileExists('/sys/class/net/' + iface + '/speed'):
-		f = open('/sys/class/net/' + iface + '/speed','r')
-		speed = f.read().strip()
-		f.close()
+	try:
+		with open('/sys/class/net/' + iface + '/speed','r') as f:
+			speed = f.read().strip()
+	except:
+		speed = _("unknown")
 	speed = str(speed) + " MBit/s"
 	speed = speed.replace("10000 MBit/s","10 GBit/s")
 	speed = speed.replace("1000 MBit/s","1 GBit/s")
@@ -99,12 +99,11 @@ def getLinkSpeed(iface):
 
 def getNICChipSet(iface):
 	nic = _("unknown")
-	if fileExists('/sys/class/net/' + iface + '/device/driver'):
-		try:
-			nic = os.path.realpath('/sys/class/net/' + iface + '/device/driver').split('/')[-1]
-			nic = str(nic)
-		except:
-			pass
+	try:
+		nic = os.path.realpath('/sys/class/net/' + iface + '/device/driver').split('/')[-1]
+		nic = str(nic)
+	except:
+		pass
 	return nic
 
 def getFriendlyNICChipSet(iface):
