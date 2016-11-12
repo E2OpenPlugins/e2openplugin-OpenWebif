@@ -5,7 +5,7 @@ P=${D}/ipkg.tmp.$$
 B=${D}/ipkg.build.$$
 
 pushd ${D} &> /dev/null
-VER=$(head -n 3 CHANGES.md | grep -i '## Version' | sed 's/^## Version \([[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+\)/\1/')
+VER=$(head -n 1 CHANGES.md | grep -i '## Version' | sed 's/^## Version \([[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+\)/\1/')
 GITVER=e2openpluginsgit$(git log -1 --format="%ci" | awk -F" " '{ print $1 }' | tr -d "-")
 PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_all.ipk
 popd &> /dev/null

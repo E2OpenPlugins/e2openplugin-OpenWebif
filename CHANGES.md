@@ -1,14 +1,11 @@
-## Version x
-## (planed)
-**FEATURES**
-* powertimer api
-
 ## Version 1.0.3
 ## (in development)
 * add web tv / #422
 * improve timer conflicts / #339
 * improve movielist api
 * improve box info
+### TODO
+* powertimer api
 
 ## Version 1.0.2
 * add conflict info to add timer api
