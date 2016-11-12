@@ -311,56 +311,25 @@ class WebController(BaseController):
 		return getMessageAnswer()
 
 	def P_movielist(self, request):
-		tag = None
-		if "tag" in request.args.keys():
-			tag = request.args["tag"][0]
-
-		dirname = None
-		if "dirname" in request.args.keys():
-			dirname = request.args["dirname"][0]
 		self.isGZ=True
-		return getMovieList(dirname, tag, request.args)
+		return getMovieList(request.args)
 	
 	def P_fullmovielist(self, request):
 		self.isGZ=True
 		return getAllMovies()
 
 	def P_movielisthtml(self, request):
-		tag = None
-		if "tag" in request.args.keys():
-			tag = request.args["tag"][0]
-		
-		dirname = None
-		if "dirname" in request.args.keys():
-			dirname = request.args["dirname"][0]
-		
 		request.setHeader("content-type", "text/html")
-		return getMovieList(dirname, tag)
+		return getMovieList(request.args)
 
 	def P_movielistm3u(self, request):
-		tag = None
-		if "tag" in request.args.keys():
-			tag = request.args["tag"][0]
-
-		dirname = None
-		if "dirname" in request.args.keys():
-			dirname = request.args["dirname"][0]
-
 		request.setHeader('Content-Type', 'application/text')
-		movielist = getMovieList(dirname, tag)
+		movielist = getMovieList(request.args)
 		movielist["host"] = "%s://%s:%s" % (whoami(request)['proto'], request.getRequestHostname(), whoami(request)['port'])
 		return movielist
 
 	def P_movielistrss(self, request):
-		tag = None
-		if "tag" in request.args.keys():
-			tag = request.args["tag"][0]
-
-		dirname = None
-		if "dirname" in request.args.keys():
-			dirname = request.args["dirname"][0]
-
-		movielist = getMovieList(dirname, tag)
+		movielist = getMovieList(request.args)
 		movielist["host"] = "%s://%s:%s" % (whoami(request)['proto'], request.getRequestHostname(), whoami(request)['port'])
 		return movielist
 

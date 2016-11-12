@@ -116,10 +116,7 @@ class MobileController(BaseController):
 		return getTimers(self.session)
 
 	def P_movies(self, request):
-		if "dirname" in request.args.keys():
-			movies = getMovieList(request.args["dirname"][0])
-		else:
-			movies = getMovieList()
+		movies = getMovieList(request.args)
 		movies['transcoding'] = getTranscodingSupport()
 		return movies
 		

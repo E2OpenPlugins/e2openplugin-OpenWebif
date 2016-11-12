@@ -1621,7 +1621,7 @@ var MLHelper;
 							var img = $( "<span class='sortimg'>").append (
 								$( "<i>", { "class": "fa " + simg })
 								)
-							$(".ui-selectmenu-text").prepend(img);
+							$("#moviesort-button .ui-selectmenu-text").prepend(img);
 						}
 					}
 				});
