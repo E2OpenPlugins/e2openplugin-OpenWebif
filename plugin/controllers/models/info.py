@@ -88,23 +88,23 @@ def getIPv4Method(iface):
 
 def getLinkSpeed(iface):
 	speed = _("unknown")
-	try:
-		speed = os.popen('ethtool ' + iface + ' | grep Speed: | awk \'{ print $2 }\'').read().strip()
-	except:
-		pass
-	speed = str(speed)
-	speed = speed.replace("Mb/s"," MBit/s")
+	if fileExists('/sys/class/net/' + iface + '/speed'):
+		f = open('/sys/class/net/' + iface + '/speed','r')
+		speed = f.read().strip()
+		f.close()
+	speed = str(speed) + " MBit/s"
 	speed = speed.replace("10000 MBit/s","10 GBit/s")
 	speed = speed.replace("1000 MBit/s","1 GBit/s")
 	return speed
 
 def getNICChipSet(iface):
 	nic = _("unknown")
-	try:
-		nic = os.popen('ethtool -i ' + iface + ' | grep driver: | awk \'{ print $2 }\'').read().strip()
-	except:
-		pass
-	nic = str(nic)
+	if fileExists('/sys/class/net/' + iface + '/device/driver'):
+		try:
+			nic = os.path.realpath('/sys/class/net/' + iface + '/device/driver').split('/')[-1]
+			nic = str(nic)
+		except:
+			pass
 	return nic
 
 def getFriendlyNICChipSet(iface):
