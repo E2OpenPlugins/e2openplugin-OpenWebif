@@ -5,10 +5,14 @@
 
 ## Version 1.0.3
 ## (in development)
+* add web tv / #422
+* improve timer conflicts / #339
+* improve movielist api
+* improve box info
 
 ## Version 1.0.2
 * add conflict info to add timer api
-* fix timer conflicts / #338
+* fix timer conflicts / #339
 * fix display tuner state in box info / #204
 * update mobile webinterface / #350
 * improve bouquet editor / #419

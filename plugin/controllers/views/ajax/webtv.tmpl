@@ -41,12 +41,10 @@
 							</select>
 						</span>
 						<div style="display:inline-block;margin-left:10px;">
-							<label for="vlcautoplay">Autoplay:</label>
-							<input type="checkbox" name="vlcautoplay" id="vlcautoplay" value="" class="checkbox ui-widget-content ui-corner-all">
-							#if $transcoder_port <> 0
-							<label for="transcoding">Transcoding:</label>
-							<input type="checkbox" name="transcoding" id="transcoding" value="" class="checkbox ui-widget-content ui-corner-all">
-							#end if
+							<label for="wautoplay">Autoplay</label>
+							<input type="checkbox" name="wautoplay" id="wautoplay">
+							<label id="wtranscodingl" for="wtranscoding">Transcoding</label>
+							<input type="checkbox" data-port="$transcoder_port" name="wtranscoding" id="wtranscoding">
 							<button id="btnstop" style="margin-left:5px;">Stop</button>
 							<button id="btnplay" style="margin-left:5px;">Play</button>
 						</div>
@@ -92,7 +90,6 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 		var _html;
 		var vxgplayerId = null;
 		var currentp;
-		var _movies = [];
 		var folderoptions;
 		var dn;
 		return {
@@ -228,27 +225,37 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 					self.play();
 				});
 				
+				\$('#wautoplay').click(function() { 
+					SetLSValue('wautoplay',\$('#wautoplay').is(':checked'));
+					\$(this).blur();
+				});
+				var ap = (GetLSValue('wautoplay',false) === 'true');
+				\$('#wautoplay').prop('checked',ap);
+				
 				if(current_ref) {
 					self.setUrl(current_ref,current_name,true);
-					if (\$('#autoplay').is(':checked') === true)
+					if (ap)
 						self.play();
 				}
 
 				\$('#streamchannels_chosen').show();
 				\$('#streamrecordings_chosen').hide();
 
-				\$('#vlcautoplay').click(function() { 
-					SetLSValue('vlcautoplay',\$('#vlcautoplay').is(':checked'));
-				});
-				var ap = GetLSValue('vlcautoplay',false);
-				\$('#vlcautoplay').prop('checked',ap);
-#if $transcoder_port <> 0
-				\$('#webtvtranscoding').click(function() { 
-					SetLSValue('webtvtranscoding',\$('#webtvtranscoding').is(':checked'));
-				});
-				var ap = GetLSValue('webtvtranscoding',false);
-				\$('#webtvtranscoding').prop('checked',ap);
-#end if
+				if(\$('#wtranscoding').data('port')!='0')
+				{
+					\$('#wtranscoding').click(function() { 
+						SetLSValue('wtranscoding',\$('#wtranscoding').is(':checked'));
+						\$(this).blur();
+					});
+					var ap = (GetLSValue('wtranscoding',false) === 'true');
+					\$('#wtranscoding').prop('checked',ap);
+				}
+				else
+				{
+					\$('#wtranscoding').hide();
+					\$('#wtranscodingl').hide();
+				}
+
 				\$.widget( "custom.iconselectmenu", \$.ui.selectmenu, {
 					_renderItem: function( ul, item ) {
 						var li = \$( "<li>" ),
@@ -260,86 +267,43 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 						return li.append( wrapper ).appendTo( ul );
 					}
 				});	
+				
+				var ms = GetLSValue('webtvms','name');
+				\$('#moviesort').val(ms).change();
 
-				\$("#moviesort").iconselectmenu({change: function(event, ui) {
+				\$('#moviesort').iconselectmenu({change: function(event, ui) {
 					\$("#streamrecordings").empty();
 					SetLSValue('webtvms',ui.item.value);
 					self.SortMovies();
 					}
-				}).addClass("ui-menu-icons");
-				
+				}).addClass('ui-menu-icons');
+
 				\$('#moviesort-button').hide();
-				\$("#moviesort-button").css('margin-left','10px');
+				\$('#moviesort-button').css('margin-left','10px');
+				
+				\$('#wautoplay').checkboxradio();
+				\$('#wtranscoding').checkboxradio();
+				
+				\$('#btnstop').button();
+				\$('#btnplay').button();
 
 			},SortMovies: function () {
 
-				var sorted = self._movies.slice(0);
 				var idx = GetLSValue('webtvms','name');
-			
-				if(idx=='name')
-				{
-					// sort by name
-					sorted.sort(function(a,b) {
-						var x = a.title.toLowerCase();
-						var y = b.title.toLowerCase();
-						return x < y ? -1 : x > y ? 1 : 0;
-					});
-				}
-			
-				if(idx=='named')
-				{
-					// sort by name desc
-					sorted.sort(function(a,b) {
-						var x = b.title.toLowerCase();
-						var y = a.title.toLowerCase();
-						return x < y ? -1 : x > y ? 1 : 0;
-					});
-				}
-			
-				if(idx=='date')
-				{
-					// sort by date desc
-					sorted.sort(function(a,b) {
-						return b.start - a.start;
-					});
-				}
-				if(idx=='dated')
-				{
-					// sort by date
-					sorted.sort(function(a,b) {
-						return a.start - b.start;
-					});
-				}
+				var _mv = MLHelper.SortMovies(idx).slice();
+
 				var options = self.folderoptions;
 				var items = [];
 				// TODO : format list
-				for (var i = 0, len = sorted.length; i < len; i++) {
+				for (var i = 0, len = _mv.length; i < len; i++) {
 					items.push (
-						"<option value='" + sorted[i].fn + "'>" + sorted[i].title + "&nbsp;/&nbsp;" + sorted[i].bt + "</option>"
+						"<option value='" + _mv[i].fn + "'>" + _mv[i].title + "&nbsp;/&nbsp;" + _mv[i].bt + "</option>"
 					);
 				}
 				options += "<optgroup label='" + self.dn + "'>" + items.join("") + "</optgroup>";
 				\$("#streamrecordings").append( options );
-
-				self.SetSortImg();
 				\$('#streamrecordings').trigger("chosen:updated");
 
-			},SetSortImg: function () {
-			
-				\$("#moviesort option").each(function()
-				{
-					var simg='';
-					if( \$(this).val() == \$( "#moviesort" ).val() )
-					{
-						simg=\$(this).data("class");
-						if (simg) {
-							var img = \$( "<span class='sortimg'>").append (
-								\$( "<i>", { "class": "fa " + simg })
-								)
-							\$("#moviesort-button .ui-selectmenu-text").prepend(img);
-						}
-					}
-				});
 			},isInArray: function(array, search) { 
 				return (array.indexOf(search) >= 0) ? true : false; 
 			},getAllServices: function(callback) {
@@ -401,13 +365,14 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 						
 						self.folderoptions = options;
 						
-						self._movies = [];
+						var _mv = [];
 						
 						$.each( mv, function( key, val ) {
 							var _fn = val['filename'].replace(/'/g, '___');
-							self._movies.push({ title :  val['eventname'], bt : val['begintime'], start:val['recordingtime'],fn:_fn});
+							_mv.push({ title :  val['eventname'], bt : val['begintime'], start:val['recordingtime'],fn:_fn});
 						});
 						
+						MLHelper.SetMovies(_mv);
 						self.SortMovies();
 						callback();
 					}
@@ -432,9 +397,10 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 						sref = path + escape(fn);
 					}
 					
-					if($transcoder_port != 0 && \$('#webtvtranscoding').is(':checked'))
+					var tp = \$('#wtranscoding').data('port');
+					if(tp!='0' && \$('#wtranscoding').is(':checked'))
 					{
-						url = 'http://' + window.location.hostname + ':$transcoder_port/' + sref;
+						url = 'http://' + window.location.hostname + ':'+ tp +'/' + sref;
 					}
 					else
 					{

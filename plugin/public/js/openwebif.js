@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 2.3
+//* Version 2.4
 //******************************************************************************
 //* Copyright (C) 2011-2014 E2OpenPlugins
 //*
@@ -10,6 +10,7 @@
 //* V 2.1 - support timer conflicts / fix IE cache issue
 //* V 2.2 - remove sync requests
 //* V 2.3 - prepare web tv / better timer conflicts
+//* V 2.4 - improve movie sort
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -643,7 +644,6 @@ function deleteMovie(sRef, divid, title) {
 		$('#' + divid).remove();
 	}
 }
-
 
 function playRecording(sRef) {
 	var sr = sRef.replace(/-/g,'%2D').replace(/_/g,'%5F').replace(/\//g,'%2F');
@@ -1601,6 +1601,7 @@ var MLHelper;
 
 				$("#moviesort").iconselectmenu({change: function(event, ui) {
 					MLHelper.SortMovies(ui.item.value);
+					MLHelper.ChangeSort(ui.item.value);
 					}
 				}).addClass("ui-menu-icons");
 				
@@ -1657,9 +1658,9 @@ var MLHelper;
 				{
 				
 						
-					// sort by date desc
+					// sort by date
 					sorted.sort(function(a,b) {
-						return b.start - a.start;
+						return a.start - b.start;
 					});
 				
 				
@@ -1668,9 +1669,9 @@ var MLHelper;
 				if(idx=='dated')
 				{
 					
-					// sort by date
+					// sort by date desc
 					sorted.sort(function(a,b) {
-						return a.start - b.start;
+						return b.start - a.start;
 					});
 				
 				
@@ -1684,8 +1685,9 @@ var MLHelper;
 					);
 				}
 				
-				self.ChangeSort(idx);
 				self.SetSortImg();
+				
+				return sorted;
 			
 			},
 			ChangeSort : function(nsort)
@@ -1715,6 +1717,10 @@ var MLHelper;
 				);
 				});
 			
+			},
+			SetMovies :function(mv)
+			{
+				self._movies = mv.slice();
 			}
 		
 		}
