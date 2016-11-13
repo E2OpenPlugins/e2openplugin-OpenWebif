@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 2.6
+//* Version 2.7
 //******************************************************************************
 //* Copyright (C) 2011-2014 E2OpenPlugins
 //*
@@ -13,6 +13,7 @@
 //* V 2.4 - improve movie sort
 //* V 2.5 - improve settings
 //* V 2.6 - getallservices public function
+//* V 2.7 - getallservices cache / improve bool values / improve screenshots
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -425,7 +426,7 @@ function open_epg_dialog(sRef,Name) {
 
 function open_epg_search_dialog() {
 	var spar = $("#epgSearch").val();
-	var full = (GetLSValue('epgsearchtype',false)=='true') ? '&full=1' : ''
+	var full = GetLSValue('epgsearchtype',false) ? '&full=1' : ''
 	var url = "ajax/epgdialog?sstr=" + encodeURIComponent(spar) + full;
 	$("#epgSearch").val("");
 	
@@ -790,7 +791,7 @@ function grabScreenshot(mode) {
 		mode = screenshotMode;
 	}
 	timestamp = new Date().getTime();
-	if (($('#screenshotRefreshHD').is(':checked'))){
+	if (GetLSValue('ssr_hd',false)){
 		$('#screenshotimage').attr("src",'/grab?format=jpg&mode=' + mode + '&timestamp=' + timestamp);
 	} else {
 		$('#screenshotimage').attr("src",'/grab?format=jpg&r=720&mode=' + mode + '&timestamp=' + timestamp);
@@ -870,10 +871,10 @@ $(function() {
 		SetLSValue('epgsearchtype',evt.currentTarget.checked);
 	});
 	if (typeof $('input[name=epgsearchtype]') !== 'undefined')
-		$('input[name=epgsearchtype]').prop('checked',(GetLSValue('epgsearchtype',false)=='true'));
+		$('input[name=epgsearchtype]').prop('checked',GetLSValue('epgsearchtype',false));
 	else
 		SetLSValue('epgsearchtype',false);
-	$('.remotegrabscreen').prop('checked',(GetLSValue('remotegrabscreen',true)=='true'));
+	$('.remotegrabscreen').prop('checked',GetLSValue('remotegrabscreen',true));
 });
 
 $(window).keydown(function(evt) {
@@ -888,7 +889,7 @@ $(window).keydown(function(evt) {
 
 function callScreenShot(){
 
-	if(GetLSValue('remotegrabscreen',true)=='true')
+	if(GetLSValue('remotegrabscreen',true))
 	{
 		if (lastcontenturl == 'ajax/screenshot') {
 			grabScreenshot(screenshotMode);
@@ -1778,7 +1779,12 @@ function GetLSValue(t,def)
 		var value = localStorage.getItem(t);
 		if (value !== undefined && value !== null)
 		{
-			ret = value;
+			if(value === "true")
+				return true;
+			else if(value === "false")
+				return false;
+			else
+				ret = value;
 		}
 	}
 	return ret;
@@ -1792,6 +1798,35 @@ function SetSpinner()
 
 function isInArray(array, search) { return (array.indexOf(search) >= 0) ? true : false; }
 
+function FillAllServices(bqs,callback)
+{
+	var options = "";
+	var boptions = "";
+	var refs = [];
+	$.each( bqs, function( key, val ) {
+		var ref = val['servicereference']
+		var name = val['servicename'];
+		boptions += "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>";
+		var slist = val['subservices'];
+		var items = [];
+		$.each( slist, function( key, val ) {
+			var ref = val['servicereference']
+			if (!isInArray(refs,ref)) {
+				refs.push(ref);
+				if(ref.substring(0, 4) == "1:0:")
+					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
+				if(ref.substring(0, 7) == "1:134:1")
+					items.push( "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>" );
+			}
+		});
+		if (items.length>0) {
+			options += "<optgroup label='" + name + "'>" + items.join("") + "</optgroup>";
+		}
+	});
+	callback(options,boptions);
+
+}
+
 function GetAllServices(callback)
 {
 	if (typeof callback === 'undefined')
@@ -1800,37 +1835,80 @@ function GetAllServices(callback)
 	var date = new Date();
 	date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
 
+	// load allservices only once a day
+	var cache = GetLSValue('gas-date','')
+	if(cache === date) {
+		cache = GetLSValue('gas-data',null)
+		if(cache != null) {
+			var js = $.parseJSON(cache);
+			var bqs = js['services'];
+			FillAllServices(bqs,callback);
+			return;
+		}
+	}
 	$.ajax({
 		url: '/api/getallservices',
-		dataType: 'json',
-		data: { date: date },
 		success: function ( data ) {
-			var bqs = data['services'];
-			var options = "";
-			var boptions = "";
-			var refs = [];
-			$.each( bqs, function( key, val ) {
-				var ref = val['servicereference']
-				var name = val['servicename'];
-				boptions += "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>";
-				var slist = val['subservices'];
-				var items = [];
-				$.each( slist, function( key, val ) {
-					var ref = val['servicereference']
-					if (!isInArray(refs,ref)) {
-						refs.push(ref);
-						if(ref.substring(0, 4) == "1:0:")
-							items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
-						if(ref.substring(0, 7) == "1:134:1")
-							items.push( "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>" );
-					}
-				});
-				if (items.length>0) {
-					options += "<optgroup label='" + name + "'>" + items.join("") + "</optgroup>";
-				}
-			});
-			callback(options,boptions);
+			SetLSValue('gas-data',data);
+			SetLSValue('gas-date',date);
+			var js = $.parseJSON(data);
+			var bqs = js['services'];
+			FillAllServices(bqs,callback);
 		}
 	});
-
 }
+
+var SSHelperObj = function () {
+	var self;
+	var screenshotInterval = false;
+	var ssr_i = 30;
+
+	return {
+
+		setup: function()
+		{
+			self = this;
+			self.ssr_i = parseInt(GetLSValue('ssr_i','30'));
+			$('#screenshotbutton').buttonset();
+			$('#screenshotrefreshbutton').buttonset();
+			$('#ssr_i').val(self.ssr_i);
+			$('#ssr_s').prop('checked',GetLSValue('ssr_s',false));
+			$('#ssr_hd').prop('checked',GetLSValue('ssr_hd',false));
+			$('#screenshotspinner').addClass(GetLSValue('spinner','fa-spinner'));
+
+			$('#ssr_hd').change(function() {
+				SetLSValue('ssr_hd',$('#ssr_hd').is(':checked'));
+				grabScreenshot('auto');
+			});
+		
+			$('#ssr_i').change(function() {
+				var t = $('#ssr_i').val();
+				SetLSValue('ssr_i',t);
+				ssr_i = parseInt(t);
+				if($('#ssr_s').is(':checked'))
+				{
+					clearInterval(self.screenshotInterval);
+					self.setSInterval();
+				}
+			});
+			
+			$('#ssr_s').change(function() {
+				var v = $('#ssr_s').is(':checked');
+				if (v) {
+					self.setSInterval();
+				} else {
+					clearInterval(self.screenshotInterval); 
+				}
+				SetLSValue('ssr_s',v);
+			});
+		
+			screenshotMode = 'all'; // reset on page reload
+			grabScreenshot(screenshotMode);
+
+		},setSInterval: function()
+		{
+			self.screenshotInterval = setInterval("grabScreenshot('auto')", (self.ssr_i+1)*1000);
+		}
+	}
+};
+

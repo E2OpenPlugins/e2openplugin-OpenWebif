@@ -19,12 +19,9 @@
 		</div>
 
 		<div id="screenShotRefresh" style="margin-top: 15px; margin-left: auto; margin-right: auto; width: 720px; text-align: center;">
-			<input type="checkbox" id="screenshotRefreshHD" value="0">
-			$tstrings['high_resolution']
-			<input type="checkbox" id="screenshotRefreshStatus" value="0">
-			$tstrings['refresh_auto']
-			<input type="text" size="1" id="screenshotRefreshInterval" value="30">
-			$tstrings['seconds']
+			<input type="checkbox" id="ssr_hd" value="0">$tstrings['high_resolution']
+			<input type="checkbox" id="ssr_s" value="0">$tstrings['refresh_auto']
+			<input type="text" size="2" id="ssr_i" value="30">$tstrings['seconds']
 			<br>
 			<span id="screenshotrefreshbutton">
 				<button onclick="grabScreenshot('auto'); return false">$tstrings['refresh']</button>
@@ -33,44 +30,8 @@
 	</div>
 </div>
 
-#raw
 <script type="text/javascript">
-	$('#screenshotbutton').buttonset();
-	$('#screenshotrefreshbutton').buttonset();
-	$('#screenshotRefreshStatus').attr('checked', false);
-	$('#screenshotRefreshInterval').val(30);
-	
-	var screenshotInterval = false;
-	
-	$('#screenshotRefreshInterval').change(function() {
-		if ($('#screenshotRefreshStatus').is(':checked')) {
-			clearInterval(screenshotInterval); 
-			screenshotInterval = 
-				setInterval("grabScreenshot('auto')", 
-					(parseInt(jQuery('#screenshotRefreshInterval').val())+1)*1000);
-		}
-	});
-	
-	$('#screenshotRefreshStatus').change(function() {
-		if ($('#screenshotRefreshStatus').is(':checked')) {
-			screenshotInterval = 
-				setInterval("grabScreenshot('auto')", 
-					(parseInt(jQuery('#screenshotRefreshInterval').val())+1)*1000);
-		} else {
-			clearInterval(screenshotInterval); 
-		}
-	});
-
-	$('#screenshotRefreshHD').change(function() {
-		grabScreenshot('auto');
-	});
-
-	$(document).ready(function() {
-		screenshotMode = 'all'; // reset on page reload
-		grabScreenshot(screenshotMode);
-	});
-	
-	$('#screenshotspinner').addClass(GetLSValue('spinner','fa-spinner'));
-	
-</script>
+#raw
+$(function() { var SSHelper=new SSHelperObj(); SSHelper.setup()});
 #end raw
+</script>
