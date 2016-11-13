@@ -200,14 +200,14 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 				\$('#deinterlace').trigger("chosen:updated");
 				self.setDeinterlace(dv);
 				
-				self.getAllServices(function() 
-					{
-						if(current_ref) {
-							\$("#streamchannels").val( current_ref );
-						}
-						\$('#streamchannels').trigger("chosen:updated");
+				GetAllServices(function ( options , boptions) {
+					\$("#streamchannels").append( options);
+					if(current_ref) {
+						\$("#streamchannels").val( current_ref );
 					}
-				);
+					\$('#streamchannels').trigger("chosen:updated");
+				});
+				
 				self.getRecordings('',function(){
 					\$('#streamrecordings').trigger("chosen:updated");
 				});
@@ -304,33 +304,6 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 				\$("#streamrecordings").append( options );
 				\$('#streamrecordings').trigger("chosen:updated");
 
-			},isInArray: function(array, search) { 
-				return (array.indexOf(search) >= 0) ? true : false; 
-			},getAllServices: function(callback) {
-				\$.getJSON( "/api/getallservices", function( data ) {
-					var bqs = data['services'];
-					var options = "";
-					var refs = [];
-					\$.each( bqs, function( key, val ) {
-						var name = val['servicename'];
-						var slist = val['subservices'];
-						var items = [];
-						\$.each( slist, function( key, val ) {
-							var ref = val['servicereference']
-							if (!self.isInArray(refs,ref)) {
-								refs.push(ref);
-								if(ref.substring(0, 4) == "1:0:" || ref.substring(0, 7) == "1:134:1")
-									items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
-							}
-						});
-						
-						if (items.length>0) {
-							options += "<optgroup label='" + name + "'>" + items.join("") + "</optgroup>";
-						}
-					});
-					\$("#streamchannels").append( options);
-					callback();
-				});
 			},getRecordings: function(_dirname,callback) {
 				var rdata = {fields:'f'};
 				if(_dirname != '')

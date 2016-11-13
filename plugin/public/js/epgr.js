@@ -1,6 +1,6 @@
 //******************************************************************************
 //* epgr.js: openwebif EPGRefresh plugin
-//* Version 1.2
+//* Version 1.3
 //******************************************************************************
 //* Copyright (C) 2016 Joerg Bleyel
 //* Copyright (C) 2016 E2OpenPlugins
@@ -8,6 +8,7 @@
 //* V 1.0 - Initial Version
 //* V 1.1 - Theme Support
 //* V 1.2 - Refactor
+//* V 1.3 - use public getallservices
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //*
@@ -26,7 +27,6 @@ function toUnixDate(date){
 	d.setSeconds( 0 );
 	return Math.floor(d.getTime() / 1000);
 }
-function isInArray(array, search) { return (array.indexOf(search) >= 0) ? true : false; }
 function addZero(i) { if (i < 10) { i = "0" + i; } return i; }
 function isBQ(sref) {return ((sref.indexOf("FROM BOUQUET") > -1) && (sref.indexOf("1:134:1") != 0));}
 function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
@@ -72,32 +72,7 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 
 			}, getAllServices: function () {
 			
-				// TODO: Errorhandling
-				$.getJSON( "/api/getallservices", function( data ) {
-					var bqs = data['services'];
-					var options = "";
-					var boptions = "";
-					var refs = [];
-					$.each( bqs, function( key, val ) {
-						var ref = val['servicereference']
-						var name = val['servicename'];
-						boptions += "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>";
-						var slist = val['subservices'];
-						var items = [];
-						$.each( slist, function( key, val ) {
-							var ref = val['servicereference']
-							if (!isInArray(refs,ref)) {
-								refs.push(ref);
-								if(ref.substring(0, 4) == "1:0:")
-									items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
-								if(ref.substring(0, 7) == "1:134:1")
-									items.push( "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>" );
-							}
-						});
-						if (items.length>0) {
-							options += "<optgroup label='" + name + "'>" + items.join("") + "</optgroup>";
-						}
-					});
+				GetAllServices(function ( options , boptions) {
 					$("#channels").append( options);
 					$('#channels').trigger("chosen:updated");
 					$("#bouquets").append( boptions);

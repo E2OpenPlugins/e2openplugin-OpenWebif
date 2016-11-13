@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 2.5
+//* Version 2.6
 //******************************************************************************
 //* Copyright (C) 2011-2014 E2OpenPlugins
 //*
@@ -12,6 +12,7 @@
 //* V 2.3 - prepare web tv / better timer conflicts
 //* V 2.4 - improve movie sort
 //* V 2.5 - improve settings
+//* V 2.6 - getallservices public function
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -1636,7 +1637,7 @@ var MLHelper;
 			,SortMovies: function(idx)
 			{
 				var sorted = self._movies.slice(0);
-			
+
 				if(idx=='name')
 				{
 					// sort by name
@@ -1645,42 +1646,25 @@ var MLHelper;
 						var y = b.title.toLowerCase();
 						return x < y ? -1 : x > y ? 1 : 0;
 					});
-				
 				}
-			
+				// sort by name desc
 				if(idx=='named')
 				{
-					// sort by name desc
-					sorted.sort(function(a,b) {
-						var x = b.title.toLowerCase();
-						var y = a.title.toLowerCase();
-						return x < y ? -1 : x > y ? 1 : 0;
-					});
-						
-				
+					sorted.sort(function(a,b){var x = b.title.toLowerCase();var y = a.title.toLowerCase();return x < y ? -1 : x > y ? 1 : 0;});
 				}
-			
 				if(idx=='date')
 				{
-				
-						
 					// sort by date
 					sorted.sort(function(a,b) {
 						return a.start - b.start;
 					});
-				
-				
 				}
-			
 				if(idx=='dated')
 				{
-					
 					// sort by date desc
 					sorted.sort(function(a,b) {
 						return b.start - a.start;
 					});
-				
-				
 				}
 				
 				$('#movies').empty();
@@ -1806,3 +1790,47 @@ function SetSpinner()
 	loadspinner = "<div id='spinner'><div class='fa " + spin + " fa-spin'></div></div>";
 }
 
+function isInArray(array, search) { return (array.indexOf(search) >= 0) ? true : false; }
+
+function GetAllServices(callback)
+{
+	if (typeof callback === 'undefined')
+		return;
+
+	var date = new Date();
+	date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+
+	$.ajax({
+		url: '/api/getallservices',
+		dataType: 'json',
+		data: { date: date },
+		success: function ( data ) {
+			var bqs = data['services'];
+			var options = "";
+			var boptions = "";
+			var refs = [];
+			$.each( bqs, function( key, val ) {
+				var ref = val['servicereference']
+				var name = val['servicename'];
+				boptions += "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>";
+				var slist = val['subservices'];
+				var items = [];
+				$.each( slist, function( key, val ) {
+					var ref = val['servicereference']
+					if (!isInArray(refs,ref)) {
+						refs.push(ref);
+						if(ref.substring(0, 4) == "1:0:")
+							items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
+						if(ref.substring(0, 7) == "1:134:1")
+							items.push( "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>" );
+					}
+				});
+				if (items.length>0) {
+					options += "<optgroup label='" + name + "'>" + items.join("") + "</optgroup>";
+				}
+			});
+			callback(options,boptions);
+		}
+	});
+
+}

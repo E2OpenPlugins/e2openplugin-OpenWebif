@@ -1,6 +1,6 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 2.1
+//* Version 2.2
 //******************************************************************************
 //* Copyright (C) 2014-2016 Joerg Bleyel
 //* Copyright (C) 2014-2016 E2OpenPlugins
@@ -17,6 +17,7 @@
 //* V 1.9 - error handling
 //* V 2.0 - theme support
 //* V 2.1 - update status label
+//* V 2.2 - use public getallservices
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -359,8 +360,6 @@ function Parse() {
 	}
 }
 
-function isInArray(array, search) { return (array.indexOf(search) >= 0) ? true : false; }
-
 function getTags()
 {
 	// TODO: Errorhandling
@@ -377,30 +376,7 @@ function getTags()
 
 function getAllServices()
 {
-	// TODO: Errorhandling
-	$.getJSON( "/api/getallservices", function( data ) {
-		var bqs = data['services'];
-		var options = "";
-		var boptions = "";
-		var refs = [];
-		$.each( bqs, function( key, val ) {
-			var ref = val['servicereference']
-			var name = val['servicename'];
-			boptions += "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>";
-			var slist = val['subservices'];
-			var items = [];
-			$.each( slist, function( key, val ) {
-				var ref = val['servicereference']
-				if (!isInArray(refs,ref)) {
-					refs.push(ref);
-					if(ref.substring(0, 4) == "1:0:" || ref.substring(0, 7) == "1:134:1")
-						items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
-				}
-			});
-			if (items.length>0) {
-				options += "<optgroup label='" + name + "'>" + items.join("") + "</optgroup>";
-			}
-		});
+	GetAllServices(function ( options , boptions) {
 		$("#channels").append( options);
 		$('#channels').trigger("chosen:updated");
 		$("#bouquets").append( boptions);
