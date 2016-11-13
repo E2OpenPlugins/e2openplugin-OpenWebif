@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2016-11-06 11:59+0200\n"
-"PO-Revision-Date: 2016-11-06 12:37+0200\n"
+"POT-Creation-Date: 2016-11-11 11:05+0200\n"
+"PO-Revision-Date: 2016-11-11 11:14+0200\n"
 "Last-Translator: rimas\n"
 "Language-Team: Estonian\n"
 "Language: et\n"
@@ -769,7 +769,7 @@ msgstr "Vastuvõtja juhtimine"
 
 #: ../plugin/local.py:59
 msgid "Box Uptime"
-msgstr "Tuuneri tööaeg"
+msgstr "Vastuvõtja tööaeg"
 
 #: ../plugin/local.py:60
 msgid "Brand"
@@ -833,7 +833,7 @@ msgstr "Kustuta salvestis"
 
 #: ../plugin/local.py:76
 msgid "Really delete the recording"
-msgstr "Kas kustutad salvestise"
+msgstr "Kas kustutada salvestis"
 
 #: ../plugin/local.py:77
 msgid "Delete Timer"
@@ -841,7 +841,7 @@ msgstr "Kustuta taimer"
 
 #: ../plugin/local.py:78
 msgid "Really delete the timer"
-msgstr "Kas kustutad taimeri"
+msgstr "Kas kustutada taimer"
 
 #: ../plugin/local.py:79 ../plugin/local.py:253
 msgid "Description"
@@ -877,7 +877,7 @@ msgstr "Hangi mängukava"
 
 #: ../plugin/local.py:88
 msgid "Drivers"
-msgstr "Ajurid"
+msgstr "ajurid"
 
 #: ../plugin/local.py:89
 msgid "Duration"
@@ -969,7 +969,7 @@ msgstr "Kõrglahutus"
 
 #: ../plugin/local.py:112
 msgid "Hard disk model"
-msgstr "Kõvaketta mudel"
+msgstr "Kõvaketas"
 
 #: ../plugin/local.py:113
 msgid "Hour"
@@ -1161,11 +1161,11 @@ msgstr "Pult"
 
 #: ../plugin/local.py:163
 msgid "Rename Recording"
-msgstr "Nimeta salvestus ümber"
+msgstr "Nimeta salvestis ümber"
 
 #: ../plugin/local.py:164
 msgid "Really rename the recording"
-msgstr "Kas nimetada ümber salvestus"
+msgstr "Kas nimetada salvestis ümber"
 
 #: ../plugin/local.py:165
 msgid "Repeated"
@@ -1462,7 +1462,7 @@ msgstr "Kanalivahetus"
 
 #: ../plugin/local.py:239
 msgid "zap before Stream"
-msgstr "esmalt kanalivahetus"
+msgstr "Kanalivahetus enne voogesitust"
 
 #: ../plugin/local.py:240
 msgid "Zap to"
@@ -2084,7 +2084,7 @@ msgstr "Kuva kestus"
 
 #: ../plugin/local.py:421
 msgid "Display Mode"
-msgstr ""
+msgstr "Kava laad"
 
 #: ../plugin/local.py:422
 msgid "TV Guide"
@@ -2092,7 +2092,7 @@ msgstr "Telekava"
 
 #: ../plugin/local.py:423
 msgid "Timeline"
-msgstr "Ajaskaala"
+msgstr "Ajakava"
 
 #: ../plugin/local.py:425
 msgid "Link Speed"
@@ -2154,6 +2154,15 @@ msgstr "EPG andmete tähemärgistik"
 #: ../plugin/plugin.py:209
 msgid "OpenWebif Configuration"
 msgstr "OpenWebif seadistus"
+
+msgid "Network Shares"
+msgstr "Võrgujaod"
+
+msgid "using"
+msgstr "kasutades"
+
+msgid "Show Picons in channel list"
+msgstr "Kuva pikonid kanalinimekirjas"
 
 #~ msgid "Driver date"
 #~ msgstr "Ajurite väljalase"
