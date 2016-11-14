@@ -108,7 +108,8 @@ def getNICChipSet(iface):
 
 def getFriendlyNICChipSet(iface):
 	friendlynic = getNICChipSet(iface)
-	friendlynic = friendlynic.replace("bcmgenet", "Broadcom Generic Gigabit Ethernet")
+	friendlynic = friendlynic.replace("bcmgenet", "Broadcom Gigabit Ethernet")
+	friendlynic = friendlynic.replace("bcmemac", "Broadcom STB 10/100 EMAC")
 	return friendlynic
 
 def normalize_ipv6(orig):
@@ -331,6 +332,7 @@ def getInfo(session = None):
 
 	info['tuners'] = []
 	for i in range(0, nimmanager.getSlotCount()):
+		print "[OpenWebif] -D- tuner '%d' '%s' '%s'" % (i,nimmanager.getNimName(i),nimmanager.getNim(i).getSlotName())
 		info['tuners'].append({
 			"name": nimmanager.getNim(i).getSlotName(),
 			"type": nimmanager.getNimName(i) + " (" + nimmanager.getNim(i).getFriendlyType() + ")",
@@ -502,6 +504,8 @@ def getInfo(session = None):
 				from Plugins.Extensions.OpenWebif.controllers.stream import streamList
 				s_name = ''
 				s_cip = ''
+
+				print "[OpenWebif] -D- streamList count '%d'" % len(streamList)
 				if len(streamList)==1:
 					from Screens.ChannelSelection import service_types_tv
 					from enigma import eEPGCache
@@ -515,18 +519,26 @@ def getInfo(session = None):
 						if srefs == channel[0]:
 							s_name = channel[1] + ' (' + s.clientIP + ')'
 							break
+				print "[OpenWebif] -D- s_name '%s'" % s_name
+
+				for stream in streamList:
+					srefs = stream.ref.toString()
+					print "[OpenWebif] -D- srefs '%s'" % srefs
 
 				sname = ''
 				timers = []
 				for timer in NavigationInstance.instance.RecordTimer.timer_list:
 					if timer.isRunning() and not timer.justplay:
 						timers.append(timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''))
+						print "[OpenWebif] -D- timer '%s'" % timer.service_ref.getServiceName()
 				# only one recording
 				if len(timers) == 1:
 					sname = timers[0]
 					
 				if sname == '' and s_name != '':
 					sname = s_name
+
+				print "[OpenWebif] -D- recs count '%d'" % len(recs)
 
 				for rec in recs:
 					feinfo = rec.frontendInfo()

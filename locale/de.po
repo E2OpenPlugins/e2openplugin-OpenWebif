@@ -2094,6 +2094,9 @@ msgstr "Zeitschrift"
 msgid "Timeline"
 msgstr "Zeitstrahl"
 
+msgid "Web TV"
+msgstr "Web TV"
+
 #: ../plugin/local.py:425
 msgid "Link Speed"
 msgstr "Verbindungsgeschwindigkeit"

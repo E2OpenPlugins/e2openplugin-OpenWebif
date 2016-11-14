@@ -2090,6 +2090,9 @@ msgstr ""
 msgid "Timeline"
 msgstr ""
 
+msgid "Web TV"
+msgstr ""
+
 #: ../plugin/local.py:425
 msgid "Link Speed"
 msgstr ""
