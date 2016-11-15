@@ -24,7 +24,7 @@ from ER import ERController
 from BQE import BQEController
 from transcoding import TranscodingController
 from wol import WOLSetupController, WOLClientController
-from twisted.web import static
+from twisted.web import static, http
 
 class RootController(BaseController):
 	def __init__(self, session, path = ""):
@@ -69,6 +69,6 @@ class RootController(BaseController):
 		if uagent and mode != 'fullpage':
 			if uagent.lower().find("iphone") != -1 or uagent.lower().find("ipod") != -1 or uagent.lower().find("blackberry") != -1 or uagent.lower().find("mobile") != -1:
 				request.setHeader("Location", "/mobile/")
-				request.setResponseCode(200)
+				request.setResponseCode(http.FOUND)
 				return ""
 		return {}

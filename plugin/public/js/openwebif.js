@@ -1905,6 +1905,9 @@ var SSHelperObj = function () {
 			screenshotMode = 'all'; // reset on page reload
 			grabScreenshot(screenshotMode);
 
+			if(GetLSValue('ssr_s',false))
+				setSInterval();
+
 		},setSInterval: function()
 		{
 			self.screenshotInterval = setInterval("grabScreenshot('auto')", (self.ssr_i+1)*1000);

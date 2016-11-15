@@ -51,6 +51,7 @@
 					</div>
 				</div>
 				<div style="display:table;margin-top:10px;margin-bottom:10px;width: 95%;">
+					<div style="display:table;margin:10 auto 10 auto;">
 					<span id="srcbuttons" style="margin-right:10px;">
 					<input type="radio" id="sbtn0" name="srcbutton" checked="checked" /><label for="sbtn0">$tstrings['channels']</label>
 					<input type="radio" id="sbtn1" name="srcbutton" /><label for="sbtn1">$tstrings['movies']</label>
@@ -71,6 +72,7 @@
 					#end for
 					</select>
 					</span>
+					</div>
 				</div>
 				
 			</div>
@@ -133,13 +135,13 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 				\$("#plbuttons").buttonset();
 
 				\$('#sbtn0').click(function(){
-					\$('#streamchannels_chosen').show();
-					\$('#streamrecordings_chosen').hide();
+					\$('#streamchannels_chosen').css('display','inline-block');
+					\$('#streamrecordings_chosen').css('display','none');
 					\$('#moviesort-button').hide();
 				});
 				\$('#sbtn1').click(function(){
-					\$('#streamrecordings_chosen').show();
-					\$('#streamchannels_chosen').hide();
+					\$('#streamrecordings_chosen').css('display','inline-block');
+					\$('#streamchannels_chosen').css('display','none');
 					\$('#moviesort-button').show();
 				});
 				
@@ -220,9 +222,11 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 				
 				\$('#btnstop').click(function(){
 					self.stop();
+					\$(this).blur();
 				});
 				\$('#btnplay').click(function(){
 					self.play();
+					\$(this).blur();
 				});
 				
 				\$('#wautoplay').click(function() { 
@@ -238,8 +242,8 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 						self.play();
 				}
 
-				\$('#streamchannels_chosen').show();
-				\$('#streamrecordings_chosen').hide();
+				\$('#streamchannels_chosen').css('display','inline-block');
+				\$('#streamrecordings_chosen').css('display','none');
 
 				if(\$('#wtranscoding').data('port')!='0')
 				{
