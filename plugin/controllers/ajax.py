@@ -19,11 +19,17 @@ from models.config import getConfigs, getConfigsSections, getZapStream, getShowC
 from base import BaseController
 from time import mktime, localtime
 from models.locations import getLocations
+from twisted.web.resource import Resource
 
 try:
 	from boxbranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
 except:
 	from models.owibranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
+
+class GetSession(Resource):
+	def GetSID(self, request):
+		sid = request.getSession().uid
+		return sid
 
 class AjaxController(BaseController):
 	def __init__(self, session, path = ""):
@@ -271,6 +277,8 @@ class AjaxController(BaseController):
 		return {}
 
 	def P_webtv(self, request):
+		session = GetSession()
+		sid = str(session.GetSID(request))
 		vxgenabled = False
 		if fileExists(getPublicPath("/js/media_player.pexe")):
 			vxgenabled = True
@@ -283,5 +291,5 @@ class AjaxController(BaseController):
 					transcoder_port = int(config.OpenWebif.streamport.value)
 			except StandardError:
 				transcoder_port = 0
-		return {"transcoder_port" : transcoder_port, "vxgenabled" : vxgenabled}
+		return {"transcoder_port" : transcoder_port, "vxgenabled" : vxgenabled, "sid" : sid}
 

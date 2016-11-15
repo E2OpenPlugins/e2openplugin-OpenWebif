@@ -22,6 +22,7 @@
 				#end if
 				<div style="display:table;margin:10 auto 10 auto;">
 					<span id="plbuttons" style="margin-right:10px;">
+					<input type="hidden" id="sid" value="$sid" />
 					<input type="radio" id="plbtn_vlc" name="plbutton" /><label id="lplbtn_vlc" for="plbtn_vlc">VLC</label>
 					<input type="radio" id="plbtn_vxg" name="plbutton" /><label id="lplbtn_vxg" for="plbtn_vxg">VXG</label>
 					<input type="radio" id="plbtn_html" name="plbutton" /><label id="lplbtn_html" for="plbtn_html">HTML</label>
@@ -366,7 +367,7 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 			}, setUrl: function(sref,name,live) {
 
 				try {
-					
+					sid = document.getElementById('sid').value
 					if (!live) {
 						var fn = sref.split('/').reverse()[0];
 						var path = sref.substring(0,sref.length-fn.length);
@@ -377,14 +378,14 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 					var tp = \$('#wtranscoding').data('port');
 					if(tp!='0' && \$('#wtranscoding').is(':checked'))
 					{
-						url = 'http://' + window.location.hostname + ':'+ tp +'/' + sref;
+						url = 'http://' + window.location.hostname + ':'+ tp +'/' + sref + '&sid=' + sid;
 					}
 					else
 					{
 						if (live)
-							url = 'http://' + window.location.hostname + ':8001/' + sref;
+							url = 'http://' + window.location.hostname + ':8001/' + sref + '&sid=' + sid;
 						else
-							url = '/file?file=' + sref;
+							url = '/file?file=' + sref + '&sid=' + sid;
 					}
 					
 					if(self._vlc) {

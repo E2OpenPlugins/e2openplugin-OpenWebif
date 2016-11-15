@@ -238,6 +238,23 @@ class AuthResource(resource.Resource):
 			return self.resource.render(request)
 
 	def getChildWithDefault(self, path, request):
+		url = str(request.uri)
+		sid = None
+		if url.startswith('/web/stream?'):
+			m = re.search('(?:\?|&)sid=(.+?)(?:$|&)', url)
+			if m:
+				sid = str(m.groups()[0])
+				# Strip sid from URL:
+				url = re.sub('&sid=.+?$', '', url)
+				url = re.sub('&sid=.+?&', '&', url)
+				request.uri = url
+				# TODO: Use twisted.web.server.Site.getSession(sid) to check if a session with this sid exists (fails with KeyError if not)
+				#       or use something like if sid is in twisted.web.server.Site.sessions ...
+				# try:
+				#	twisted.web.server.Site.getSession(sid)
+				#	return self.resource.getChildWithDefault(path, request)
+				# except:
+				#	pass
 		session = request.getSession().sessionNamespaces
 		host = request.getHost().host
 
