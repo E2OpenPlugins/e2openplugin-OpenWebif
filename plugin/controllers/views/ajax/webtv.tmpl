@@ -378,14 +378,18 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 					var tp = \$('#wtranscoding').data('port');
 					if(tp!='0' && \$('#wtranscoding').is(':checked'))
 					{
-						url = 'http://' + window.location.hostname + ':'+ tp +'/' + sref + '&sid=' + sid;
+						url = 'http://' + window.location.hostname + ':'+ tp +'/' + sref + '?sid=' + sid;
 					}
 					else
 					{
 						if (live)
-							url = 'http://' + window.location.hostname + ':8001/' + sref + '&sid=' + sid;
-						else
-							url = '/file?file=' + sref + '&sid=' + sid;
+							url = 'http://' + window.location.hostname + ':8001/' + sref + '?sid=' + sid;
+						else {
+							baseurl = window.location.protocol + '//' + window.location.hostname;
+							if (window.location.port != "")
+							      baseurl = baseurl + ':' + window.location.port;
+							url =  baseurl + '/file?file=' + sref + '?sid=' + sid;
+						}
 					}
 					
 					if(self._vlc) {
