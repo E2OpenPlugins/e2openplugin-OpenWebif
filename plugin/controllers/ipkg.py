@@ -160,6 +160,7 @@ class IpkgController(resource.Resource):
 			nresult = nresult.replace("\n "," ")
 			if self.format == "json":
 				data = []
+				nresult=unicode(nresult, errors='ignore')
 				data.append({"result": True,"packages": nresult.split("\n")})
 				self.request.setHeader("content-type", "text/plain")
 				self.request.write(json.dumps(data))

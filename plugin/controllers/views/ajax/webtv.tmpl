@@ -9,6 +9,19 @@
 	<div id="info">
 	<div style="display: inline-block; width: 100%; zoom: 1;background-image:none;" class="ui-widget-content">
 		<h3 class="ui-widget-header">Player</h3>
+				<div id="errPlayer" style="margin:0 auto 0 auto;width:640px;height:400px;">
+					<div>
+						The currect selected player and source will not work.
+						
+						VLC Player will not work in Chrome.
+						VXG Player will only work in Chrome.
+						
+						Openwebif via HTTP and Live Stream will not work.
+						
+						....
+						
+					</div>
+				</div>
 				<div id="vlcPlayer" style="margin:0 auto 0 auto;width:640px;height:400px;">
 					<embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" width="640px" height="360px" id="vlc"></embed>
 				</div>
@@ -139,11 +152,13 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 					\$('#streamchannels_chosen').css('display','inline-block');
 					\$('#streamrecordings_chosen').css('display','none');
 					\$('#moviesort-button').hide();
+					self.CheckPlayer();
 				});
 				\$('#sbtn1').click(function(){
 					\$('#streamrecordings_chosen').css('display','inline-block');
 					\$('#streamchannels_chosen').css('display','none');
 					\$('#moviesort-button').show();
+					self.CheckPlayer();
 				});
 				
 				\$("#srcbuttons").buttonset();
@@ -167,6 +182,7 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 							{
 								\$("#streamrecordings").empty();
 								\$('#streamrecordings').trigger("chosen:updated");
+								\$("#moviesort-button .ui-selectmenu-text .sortimg").empty();
 								self.getRecordings(ref,function(){
 									\$('#streamrecordings').trigger("chosen:updated");
 								});
@@ -291,7 +307,9 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 				
 				\$('#btnstop').button();
 				\$('#btnplay').button();
-
+				
+				self.CheckPlayer();
+				
 			},SortMovies: function () {
 
 				var idx = GetLSValue('webtvms','name');
@@ -308,6 +326,43 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 				options += "<optgroup label='" + self.dn + "'>" + items.join("") + "</optgroup>";
 				\$("#streamrecordings").append( options );
 				\$('#streamrecordings').trigger("chosen:updated");
+
+			},CheckPlayer: function () {
+			
+				var live = (\$('#moviesort-button').css('display') == 'none')
+				var pl = self.currentp;
+				if(pl == 'html')
+				{
+					if (live) {
+						\$('#htmlPlayer').hide();
+						\$('#errPlayer').show();
+					} else {
+						\$('#htmlPlayer').show();
+						\$('#errPlayer').hide();
+					}
+				}
+
+				if(pl == 'vxg')
+				{
+					if (live && window.location.protocol == 'https') {
+						\$('#vxgPlayer').hide();
+						\$('#errPlayer').show();
+					} else {
+						\$('#vxgPlayer').show();
+						\$('#errPlayer').hide();
+					}
+				}
+
+				if(pl == 'vlc')
+				{
+					if (live && window.location.protocol == 'https') {
+						\$('#vlcPlayer').hide();
+						\$('#errPlayer').show();
+					} else {
+						\$('#vlcPlayer').show();
+						\$('#errPlayer').hide();
+					}
+				}
 
 			},getRecordings: function(_dirname,callback) {
 				var rdata = {fields:'f'};
@@ -362,8 +417,7 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 							self._vlc.video.deinterlace.enable(val);
 						else
 							self._vlc.video.deinterlace.disable();
-					} catch (e) {
-					}
+					} catch (e) { }
 			}, setUrl: function(sref,name,live) {
 
 				try {
@@ -387,10 +441,12 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 						else {
 							baseurl = window.location.protocol + '//' + window.location.hostname;
 							if (window.location.port != "")
-							      baseurl = baseurl + ':' + window.location.port;
-							url =  baseurl + '/file?file=' + sref + '?sid=' + sid;
+								baseurl = baseurl + ':' + window.location.port;
+							url = baseurl + '/file?file=' + sref + '?sid=' + sid;
 						}
 					}
+					
+					console.log(url);
 					
 					if(self._vlc) {
 						self._vlc.playlist.clear();
@@ -451,6 +507,9 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 						self.createVX();
 					\$('#vxgPlayer').show();
 				}
+				
+				self.CheckPlayer();
+				
 			}, createVX: function() {
 			
 				self.vxgplayerId = 'vxg_media_player1';
