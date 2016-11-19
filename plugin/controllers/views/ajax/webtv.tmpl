@@ -424,7 +424,7 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 					sid = document.getElementById('sid').value
 					if (!live) {
 						var fn = sref.split('/').reverse()[0];
-						var path = sref.substring(0,sref.length-fn.length);
+						var path = encodeURIComponent(sref.substring(0,sref.length-fn.length));
 						fn = fn.replace(/___/g, "'");
 						sref = path + escape(fn);
 					}
