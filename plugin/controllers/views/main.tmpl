@@ -219,6 +219,20 @@
 	directlink();
 });
 theme = '$t';
+if(theme != 'original' && theme != 'clear')
+{
+	var styleSheet = document.styleSheets[1];
+	if(styleSheet.cssRules == null)
+	{
+		$.ajax({
+			url: "api/settheme?theme=original",
+			success: function() {
+				window.location.hash = '';
+				window.location.reload(true);
+			}
+		});
+	}
+}
 </script>
 </body>
 </html>
