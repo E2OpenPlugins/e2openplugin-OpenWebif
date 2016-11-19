@@ -250,7 +250,7 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 					SetLSValue('wautoplay',\$('#wautoplay').is(':checked'));
 					\$(this).blur();
 				});
-				var ap = (GetLSValue('wautoplay',false) === 'true');
+				var ap = GetLSValue('wautoplay',false);
 				\$('#wautoplay').prop('checked',ap);
 				
 				if(current_ref) {
@@ -268,7 +268,7 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 						SetLSValue('wtranscoding',\$('#wtranscoding').is(':checked'));
 						\$(this).blur();
 					});
-					var ap = (GetLSValue('wtranscoding',false) === 'true');
+					var ap = GetLSValue('wtranscoding',false);
 					\$('#wtranscoding').prop('checked',ap);
 				}
 				else
@@ -430,7 +430,8 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 					}
 					
 					var tp = \$('#wtranscoding').data('port');
-					if(tp!='0' && \$('#wtranscoding').is(':checked'))
+					var trans = GetLSValue('wtranscoding',false);
+					if(tp!='0' && trans)
 					{
 						url = 'http://' + window.location.hostname + ':'+ tp +'/' + sref + '?sid=' + sid;
 					}
