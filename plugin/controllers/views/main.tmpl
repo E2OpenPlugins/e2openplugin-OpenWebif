@@ -222,8 +222,8 @@ theme = '$t';
 if(theme != 'original' && theme != 'clear')
 {
 	var styleSheet = document.styleSheets[1];
-	if(styleSheet.cssRules == null)
-	{
+	$.ajax({type: "HEAD",async: true, url: styleSheet.href,
+	}).error(function(){
 		$.ajax({
 			url: "api/settheme?theme=original",
 			success: function() {
@@ -231,7 +231,7 @@ if(theme != 'original' && theme != 'clear')
 				window.location.reload(true);
 			}
 		});
-	}
+	});
 }
 </script>
 </body>
