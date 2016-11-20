@@ -387,7 +387,7 @@ var isChrome = !!window.chrome;
 							options = "<optgroup label='Folders'>";
 							options += "<option value='' disabled selected style='display:none;'></option>";
 							options += "<option value='" + lastdir + "'>" + lastdir + "</option>";
-							for (index = 0;index < subdirs.length - 1; ++index) {
+							for (index = 0;index < subdirs.length; ++index) {
 								options += "<option value='" + self.dn + subdirs[index] + "'>" + self.dn + subdirs[index] + "</option>";
 							}
 							options += "</optgroup>";
