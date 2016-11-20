@@ -643,9 +643,9 @@ font-size:16px;font-weight:bold;opacity:0.3;
 
 @font-face {
 	font-family: 'fontello';
-	src: url('../fonts/fontello.woff2?39628511') format('woff2'),
-	url('../fonts/fontello.woff?39628511') format('woff'),
-	url('../fonts/fontello.ttf?39628511') format('truetype');
+	src: url('../fonts/fontello.woff2?41137707') format('woff2'),
+	url('../fonts/fontello.woff?41137707') format('woff'),
+	url('../fonts/fontello.ttf?41137707') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -727,12 +727,21 @@ font-size:16px;font-weight:bold;opacity:0.3;
 .fa-save:before { content: '\e809'; } /* '' */
 .fa-list-alt:before { content: '\e80a'; } /* '' */
 .fa-refresh:before { content: '\e80b'; } /* '' */
-.fa-timerat:before { content: '\e80d'; } /* '' */
-.fa-timerplay:before { content: '\e80e'; } /* '' */
-.fa-timeredit:before { content: '\e80c'; } /* '' */
+.fa-timeredit:before { content: '\e80c'; } /* '' */
+.fa-timerat:before { content: '\e80d'; } /* '' */
+.fa-timerplay:before { content: '\e80e'; } /* '' */
 .fa-timertrash:before { content: '\e80f'; } /* '' */
 .fa-timerplus:before { content: '\e810'; } /* '' */
 .fa-timerminus:before { content: '\e811'; } /* '' */
+.fa-search:before { content: '\e812'; } /* '' */
+.fa-down-dir:before { content: '\e813'; } /* '' */
+.fa-left-dir:before { content: '\e814'; } /* '' */
+.fa-right-dir:before { content: '\e815'; } /* '' */
+.fa-up-dir:before { content: '\e816'; } /* '' */
+.fa-cw:before { content: '\e817'; } /* '' */
+.fa-plus:before { content: '\e818'; } /* '' */
+.fa-minus:before { content: '\e819'; } /* '' */
+.fa-cancel:before { content: '\e81a'; } /* '' */
 .fa-spin1:before { content: '\e830'; } /* '' */
 .fa-spin2:before { content: '\e831'; } /* '' */
 .fa-spin3:before { content: '\e832'; } /* '' */
@@ -740,13 +749,37 @@ font-size:16px;font-weight:bold;opacity:0.3;
 .fa-spin5:before { content: '\e838'; } /* '' */
 .fa-spin6:before { content: '\e839'; } /* '' */
 .fa-square-o:before { content: '\f096'; } /* '' */
+.fa-angle-left:before { content: '\f104'; } /* '' */
+.fa-angle-right:before { content: '\f105'; } /* '' */
+.fa-angle-up:before { content: '\f106'; } /* '' */
+.fa-angle-down:before { content: '\f107'; } /* '' */
 .fa-desktop:before { content: '\f108'; } /* '' */
 .fa-mobile:before { content: '\f10b'; } /* '' */
 .fa-spinner:before { content: '\f110'; } /* '' */
+.fa-angle-circled-left:before { content: '\f137'; } /* '' */
+.fa-angle-circled-right:before { content: '\f138'; } /* '' */
+.fa-angle-circled-up:before { content: '\f139'; } /* '' */
+.fa-angle-circled-down:before { content: '\f13a'; } /* '' */
 .fa-sort-alpha-asc:before { content: '\f15d'; } /* '' */
 .fa-sort-alpha-desc:before { content: '\f15e'; } /* '' */
 .fa-sort-numeric-asc:before { content: '\f162'; } /* '' */
 .fa-sort-numeric-desc:before { content: '\f163'; } /* '' */
+
+
+.ui-icon-plus:after {content: '\e818';}
+.ui-icon-minus:after {content: '\e819';}
+
+.ui-icon-circle-triangle-w:after {content: '\f137';}
+.ui-icon-circle-triangle-e:after {content: '\f138';}
+.ui-icon-arrowrefresh-1-w:after {content: '\e80b';}
+.ui-icon-disk::after {content: '\e809';}
+
+.ui-icon-search:after {content: '\e812';}
+.ui-icon-triangle-1-e:after {content: '\e815';}
+.ui-icon-triangle-1-s:after {content: '\e813';}
+.ui-icon-closethick:after {content: '\e81a';}
+.ui-icon-caret-1-s:after {content: '\f107';}
+.ui-icon-caret-1-w:after {content: '\f104';}
 
 i.fa {margin-left:3px;margin-right:3px;font-size: 16px;}
 i.fa-mobile {font-size: 22px;}
@@ -784,3 +817,88 @@ i.fa-mobile {font-size: 22px;}
 .channel-listing > li > span > div { vertical-align: top; height:50px;}
 .channel-listing > li > span > div > span { font-size: 10px; display:inherit; }
 
+
+.ui-state-disabled .ui-icon {
+    filter: Alpha(Opacity=35)
+}
+
+.ui-icon {
+    width: 16px;
+    height: 16px
+}
+
+.ui-icon {
+  background-image: none !important;
+  display: block;
+  font: normal normal normal 14px/16px sans-serif;
+  height: 1em;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  text-indent: -9999px;
+  width: 1em;
+}
+
+.ui-icon:after {
+  display: block;
+  height: 1em;
+  left: 50%;
+  line-height: 1em;
+  margin-left: -0.5em;
+  margin-top: -0.5em;
+  position: absolute;
+  text-align: center;
+  text-indent: 0;
+  text-transform: none;
+  top: 50%;
+  transform: translate(0,0);
+  vertical-align: middle;
+  width: 1em;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-transform: translate(0,0);
+  -webkit-font-smoothing: antialiased;
+  -webkit-transform: translate(0,0);
+}
+[class^="ui-icon-"]:after,
+[class*=' ui-icon-']:after {
+  font-family: 'fontello';
+}
+
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+  display: inline-block;
+}
+
+.ui-button-icon-only .ui-icon,
+.ui-button-text-icon-primary .ui-icon,
+.ui-button-text-icon-secondary .ui-icon,
+.ui-button-text-icons .ui-icon,
+.ui-button-icons-only .ui-icon {
+  margin-top: -0.5em;
+  position: absolute;
+  top: 50%;
+}
+.ui-button-icon-only .ui-icon {
+  left: 50%;
+  margin-left: -0.5em;
+}
+.ui-button-text-icon-primary .ui-button-icon-primary,
+.ui-button-text-icons .ui-button-icon-primary,
+.ui-button-icons-only .ui-button-icon-primary {
+  left: 0.5em;
+}
+.ui-button-text-icon-secondary .ui-button-icon-secondary,
+.ui-button-text-icons .ui-button-icon-secondary,
+.ui-button-icons-only .ui-button-icon-secondary {
+  right: 0.5em;
+}
+
+.ui-button .ui-icon
+{
+	display:inline-block;
+	margin-top: -0.35em;
+}
+
+.ui-icon-blank,.ui-icon-blank:after{
+	display:none !important;
+}
