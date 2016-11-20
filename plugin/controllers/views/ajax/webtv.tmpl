@@ -35,10 +35,9 @@
 				#end if
 				<div style="display:table;margin:10 auto 10 auto;">
 					<span id="plbuttons" style="margin-right:10px;">
-					<input type="hidden" id="sid" value="$sid" />
-					<input type="radio" id="plbtn_vlc" name="plbutton" /><label id="lplbtn_vlc" for="plbtn_vlc">VLC</label>
-					<input type="radio" id="plbtn_vxg" name="plbutton" /><label id="lplbtn_vxg" for="plbtn_vxg">VXG</label>
-					<input type="radio" id="plbtn_html" name="plbutton" /><label id="lplbtn_html" for="plbtn_html">HTML</label>
+					<input type="radio" id="plbtn_vlc" name="rplbutton" /><label id="lplbtn_vlc" for="plbtn_vlc">VLC</label>
+					<input type="radio" id="plbtn_vxg" name="rplbutton" /><label id="lplbtn_vxg" for="plbtn_vxg">VXG</label>
+					<input type="radio" id="plbtn_html" name="rplbutton" /><label id="lplbtn_html" for="plbtn_html">HTML</label>
 					</span>
 					<div style="display:inline-block;margin-left:10px;">
 						<span id="Deinterlace">
@@ -96,7 +95,7 @@
 <script type="text/javascript" src="/js/vxgplayer-1.8.11.min.js"></script>
 #end if
 <script>
-var isChrome = !!window.chrome && !!window.chrome.webstore;
+var isChrome = !!window.chrome;
 
 (function() {
 
@@ -108,56 +107,53 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 		var currentp;
 		var folderoptions;
 		var dn;
+		var url;
+		var pr;
+		var pl;
+		var hasvlc=false;
+		var hasvxg=false;
+		var sid='$sid';
 		return {
 			setup: function () {
 				self = this;
-
+				self.pl = GetLSValue('webtvplayerl','vlc');
+				self.pr = GetLSValue('webtvplayerr','vlc');
 				if (isChrome) {
-					\$("#plbtn_vlc").remove();
-					\$("#lplbtn_vlc").remove();
-				}
-				else
-				{
-					\$('#plbtn_vlc').click(function(){
-						SetLSValue('webtvplayer','vlc');
-						self.setPlayer('vlc');
-					});
-				}
-				
+					\$('#plbtn_vlc').remove();
+					\$('#lplbtn_vlc').remove();
+				} else
+					self.hasvlc=true;
 #if $vxgenabled
-				if (!isChrome) {
-					\$("#plbtn_vxg").remove();
-					\$("#lplbtn_vxg").remove();
+				self.hasvxg = true;
+#end if
+				if (isChrome && self.hasvxg)
+				{
+					self.pl = GetLSValue('webtvplayerl','vxg');
+					self.pr = GetLSValue('webtvplayerr','vxg');
 				}
 				else
 				{
-					\$('#plbtn_vxg').click(function(){
-						SetLSValue('webtvplayer','vxg');
-						self.setPlayer('vxg');
-					});
+					\$('#plbtn_vxg').remove();
+					\$('#lplbtn_vxg').remove();
 				}
-#else
-				\$("#plbtn_vxg").remove();
-				\$("#lplbtn_vxg").remove();
-#end if
 
-				\$('#plbtn_html').click(function(){
-					SetLSValue('webtvplayer','html');
-					self.setPlayer('html');
-				});
-				
-				\$("#plbuttons").buttonset();
+				SetLSValue('webtvplayerl',self.pl);
+				SetLSValue('webtvplayerr',self.pr);
 
 				\$('#sbtn0').click(function(){
 					\$('#streamchannels_chosen').css('display','inline-block');
 					\$('#streamrecordings_chosen').css('display','none');
 					\$('#moviesort-button').hide();
+					self.currentp = self.pl;
+					self.setPlayer(self.pl);
 					self.CheckPlayer();
 				});
 				\$('#sbtn1').click(function(){
 					\$('#streamrecordings_chosen').css('display','inline-block');
 					\$('#streamchannels_chosen').css('display','none');
 					\$('#moviesort-button').show();
+					self.currentp = self.pr;
+					self.setPlayer(self.pr);
 					self.CheckPlayer();
 				});
 				
@@ -204,16 +200,6 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 						}
 				);
 				
-#if $vxgenabled
-				var defp = (isChrome) ? 'vxg': 'vlc';
-#else
-				var defp = (isChrome) ? 'html': 'vlc';
-#end if
-				var pl = GetLSValue('webtvplayer',defp);
-
-				\$('#plbtn_'+pl).prop('checked',true).button("refresh");
-				self.setPlayer(pl);
-
 				var dv = GetLSValue('vlcdeinterlace','off');
 				\$("#deinterlace").val( dv );
 				\$('#deinterlace').trigger("chosen:updated");
@@ -246,19 +232,6 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 					\$(this).blur();
 				});
 				
-				\$('#wautoplay').click(function() { 
-					SetLSValue('wautoplay',\$('#wautoplay').is(':checked'));
-					\$(this).blur();
-				});
-				var ap = GetLSValue('wautoplay',false);
-				\$('#wautoplay').prop('checked',ap);
-				
-				if(current_ref) {
-					self.setUrl(current_ref,current_name,true);
-					if (ap)
-						self.play();
-				}
-
 				\$('#streamchannels_chosen').css('display','inline-block');
 				\$('#streamrecordings_chosen').css('display','none');
 
@@ -308,8 +281,37 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 				\$('#btnstop').button();
 				\$('#btnplay').button();
 				
+				\$("#plbuttons").buttonset();
+				
+				\$('#plbtn_vlc').click(function(){
+					self.setRecPlayer('vlc');
+				});
+				\$('#plbtn_vxg').click(function(){
+					self.setRecPlayer('vxg');
+				});
+				\$('#plbtn_html').click(function(){
+					self.setRecPlayer('html');
+				});
+				
+				self.setPlayer(self.pl);
 				self.CheckPlayer();
 				
+				\$('#wautoplay').click(function() { 
+					SetLSValue('wautoplay',\$('#wautoplay').is(':checked'));
+					\$(this).blur();
+				});
+				var ap = GetLSValue('wautoplay',false);
+				\$('#wautoplay').prop('checked',ap);
+
+				if(current_ref) {
+					self.setUrl(current_ref,current_name,true);
+					if (ap)
+						self.play();
+				}
+			},setRecPlayer: function (pl) {
+				self.currentp = self.pr = pl;
+				SetLSValue('webtvplayerr',self.currentp);
+				self.setPlayer(self.currentp);
 			},SortMovies: function () {
 
 				var idx = GetLSValue('webtvms','name');
@@ -331,37 +333,39 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 			
 				var live = (\$('#moviesort-button').css('display') == 'none')
 				var pl = self.currentp;
+				
+				\$('#errPlayer').hide();
 				if(pl == 'html')
-				{
-					if (live) {
-						\$('#htmlPlayer').hide();
-						\$('#errPlayer').show();
-					} else {
-						\$('#htmlPlayer').show();
-						\$('#errPlayer').hide();
-					}
+					\$('#htmlPlayer').show();
+				else {
+					\$('#htmlPlayer').hide();
 				}
-
+				
 				if(pl == 'vxg')
-				{
-					if (live && window.location.protocol == 'https') {
-						\$('#vxgPlayer').hide();
-						\$('#errPlayer').show();
-					} else {
-						\$('#vxgPlayer').show();
-						\$('#errPlayer').hide();
-					}
-				}
+					\$('#vxgPlayer').show();
+				else
+					\$('#vxgPlayer').hide();
 
 				if(pl == 'vlc')
-				{
-					if (live && window.location.protocol == 'https') {
-						\$('#vlcPlayer').hide();
-						\$('#errPlayer').show();
-					} else {
-						\$('#vlcPlayer').show();
-						\$('#errPlayer').hide();
-					}
+					\$('#vlcPlayer').show();
+				else
+					\$('#vlcPlayer').hide();
+				
+				if (live && window.location.protocol == 'https') {
+					\$('#vlcPlayer').hide();
+					\$('#vxgPlayer').hide();
+					\$('#errPlayer').show();
+				}
+				if (live) {
+					\$('#plbuttons').hide();
+				} else {
+					\$('#plbtn_html').prop('checked',false).button("refresh");
+					if(self.hasvxg)
+						\$('#plbtn_vxg').prop('checked',false).button("refresh");
+					if(self.hasvlc)
+						\$('#plbtn_vlc').prop('checked',false).button("refresh");
+					\$('#plbtn_'+pl).prop('checked',true).button("refresh");
+					\$('#plbuttons').show();
 				}
 
 			},getRecordings: function(_dirname,callback) {
@@ -421,7 +425,11 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 			}, setUrl: function(sref,name,live) {
 
 				try {
-					sid = document.getElementById('sid').value
+					var sessionid = ''
+					// fixme ? or &
+					if(live && self.sid!='')
+						sessionid = '?sid=' + self.sid;
+
 					if (!live) {
 						var fn = sref.split('/').reverse()[0];
 						var path = encodeURIComponent(sref.substring(0,sref.length-fn.length));
@@ -433,17 +441,19 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 					var trans = GetLSValue('wtranscoding',false);
 					if(tp!='0' && trans)
 					{
-						url = 'http://' + window.location.hostname + ':'+ tp +'/' + sref + '?sid=' + sid;
+						// fixme session transcoding
+						url = 'http://' + window.location.hostname + ':'+ tp +'/' + sref;// + sessionid;
 					}
 					else
 					{
+						// fixme session param
 						if (live)
-							url = 'http://' + window.location.hostname + ':8001/' + sref + '?sid=' + sid;
+							url = 'http://' + window.location.hostname + ':8001/' + sref;// + sessionid;
 						else {
 							baseurl = window.location.protocol + '//' + window.location.hostname;
 							if (window.location.port != "")
 								baseurl = baseurl + ':' + window.location.port;
-							url = baseurl + '/file?file=' + sref + '?sid=' + sid;
+							url = baseurl + '/file?file=' + sref;// + sessionid;
 						}
 					}
 					

@@ -279,6 +279,7 @@ class AjaxController(BaseController):
 	def P_webtv(self, request):
 		session = GetSession()
 		sid = str(session.GetSID(request))
+		# FIXME set sid to empty string if stream auth is OFF
 		vxgenabled = False
 		if fileExists(getPublicPath("/js/media_player.pexe")):
 			vxgenabled = True
