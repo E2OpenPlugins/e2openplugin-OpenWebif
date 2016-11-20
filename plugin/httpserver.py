@@ -242,20 +242,20 @@ class AuthResource(resource.Resource):
 		url = str(request.uri)
 		sid = None
 		if url.startswith('/web/stream?') or url.startswith('/file?'):
-			m = re.search('(?:\?|&)sid=(.+?)(?:$|&|\?)', url)
+			m = re.search('(?:\?|&)sessionid=(.+?)(?:$|&|\?)', url)
 			if m:
 				sid = str(m.groups()[0])
 				# Strip sid from URL:
-				url = re.sub('(?:\?|&)sid=.+?$', '', url)
-				url = re.sub('(?:\?|&)sid=.+?(&|\?)', '\1', url)
+				url = re.sub('(?:\?|&)sessionid=.+?$', '', url)
+				url = re.sub('(?:\?|&)sessionid=.+?(&|\?)', '\1', url)
 				# Strip sid from args:
 				args = request.args
 				newargs = {}
 				for key, values in args.items():
 					newvalues=[]
 					for value in values:
-						value = re.sub('(?:\?|&)sid=.+?$', '', value)
-						value = re.sub('(?:\?|&)sid=.+?(&|\?)', '\1', value)
+						value = re.sub('(?:\?|&)sessionid=.+?$', '', value)
+						value = re.sub('(?:\?|&)sessionid=.+?(&|\?)', '\1', value)
 						newvalues.append(value)
 					newargs[key] = newvalues
 				request.args = newargs

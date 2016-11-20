@@ -16,7 +16,7 @@
 						VLC Player will not work in Chrome.
 						VXG Player will only work in Chrome.
 						
-						Openwebif via HTTP and Live Stream will not work.
+						Openwebif via HTTPS and Live Stream will not work.
 						
 						....
 						
@@ -35,6 +35,7 @@
 				#end if
 				<div style="display:table;margin:10 auto 10 auto;">
 					<span id="plbuttons" style="margin-right:10px;">
+					<input type="hidden" id="sid" value="$sid" />
 					<input type="radio" id="plbtn_vlc" name="rplbutton" /><label id="lplbtn_vlc" for="plbtn_vlc">VLC</label>
 					<input type="radio" id="plbtn_vxg" name="rplbutton" /><label id="lplbtn_vxg" for="plbtn_vxg">VXG</label>
 					<input type="radio" id="plbtn_html" name="rplbutton" /><label id="lplbtn_html" for="plbtn_html">HTML</label>
@@ -112,7 +113,6 @@ var isChrome = !!window.chrome;
 		var pl;
 		var hasvlc=false;
 		var hasvxg=false;
-		var sid='$sid';
 		return {
 			setup: function () {
 				self = this;
@@ -426,9 +426,7 @@ var isChrome = !!window.chrome;
 
 				try {
 					var sessionid = ''
-					// fixme ? or &
-					if(live && self.sid!='')
-						sessionid = '?sid=' + self.sid;
+					sid = document.getElementById('sid').value;
 
 					if (!live) {
 						var fn = sref.split('/').reverse()[0];
@@ -441,19 +439,20 @@ var isChrome = !!window.chrome;
 					var trans = GetLSValue('wtranscoding',false);
 					if(tp!='0' && trans)
 					{
-						// fixme session transcoding
-						url = 'http://' + window.location.hostname + ':'+ tp +'/' + sref;// + sessionid;
+						if(sid!='') sessionid = '?sessionid=' + sid;
+						url = 'http://' + window.location.hostname + ':'+ tp +'/' + sref; // + sessionid;
 					}
 					else
 					{
-						// fixme session param
-						if (live)
-							url = 'http://' + window.location.hostname + ':8001/' + sref;// + sessionid;
-						else {
+						if (live) {
+							if(sid!='') sessionid = '&sessionid=' + sid;
+							url = 'http://' + window.location.hostname + ':8001/' + sref + sessionid;
+						} else {
+							if(sid!='') sessionid = '&sessionid=' + sid;
 							baseurl = window.location.protocol + '//' + window.location.hostname;
 							if (window.location.port != "")
 								baseurl = baseurl + ':' + window.location.port;
-							url = baseurl + '/file?file=' + sref;// + sessionid;
+							url = baseurl + '/file?file=' + sref + sessionid;
 						}
 					}
 					
