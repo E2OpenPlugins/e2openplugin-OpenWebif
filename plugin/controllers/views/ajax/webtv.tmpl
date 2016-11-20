@@ -419,9 +419,8 @@ var isChrome = !!window.chrome;
 
 				try {
 					var sessionid = '';
-					//if(self.sid!='')
-					//	sessionid = '?sessionid=' + sid;
-
+					if (self.sid != '')
+						sessionid = '&sessionid=' + self.sid;
 					if (!live) {
 						var fn = sref.split('/').reverse()[0];
 						var path = encodeURIComponent(sref.substring(0,sref.length-fn.length));
@@ -433,7 +432,7 @@ var isChrome = !!window.chrome;
 					var trans = GetLSValue('wtranscoding',false);
 					if(tp!='0' && trans)
 					{
-						url = 'http://' + window.location.hostname + ':'+ tp +'/' + sref + sessionid;
+						url = 'http://' + window.location.hostname + ':'+ tp +'/' + sref;// + sessionid;
 					}
 					else
 					{
