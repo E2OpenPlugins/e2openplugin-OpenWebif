@@ -22,20 +22,19 @@
 						
 					</div>
 				</div>
-				<div id="vlcPlayer" style="margin:0 auto 0 auto;width:640px;height:400px;">
+				<div id="vlcPlayer" style="margin:0 auto 0 auto;width:640px;height:400px;display:none;">
 					<embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" width="640px" height="360px" id="vlc"></embed>
 				</div>
-				<div id="htmlPlayer" style="margin:0 auto 0 auto;width:640px;height:400px;">
+				<div id="htmlPlayer" style="margin:0 auto 0 auto;width:640px;height:400px;display:none;">
 				<video id="htmlp" width="640" height="360" controls>
 				</video>
 				</div>
 				#if $vxgenabled
-				<div id="vxgPlayer" style="margin:0 auto 0 auto;width:640px;height:500px;">
+				<div id="vxgPlayer" style="margin:0 auto 0 auto;width:640px;height:500px;display:none;">
 				</div>
 				#end if
 				<div style="display:table;margin:10 auto 10 auto;">
 					<span id="plbuttons" style="margin-right:10px;">
-					<input type="hidden" id="sid" value="$sid" />
 					<input type="radio" id="plbtn_vlc" name="rplbutton" /><label id="lplbtn_vlc" for="plbtn_vlc">VLC</label>
 					<input type="radio" id="plbtn_vxg" name="rplbutton" /><label id="lplbtn_vxg" for="plbtn_vxg">VXG</label>
 					<input type="radio" id="plbtn_html" name="rplbutton" /><label id="lplbtn_html" for="plbtn_html">HTML</label>
@@ -108,7 +107,7 @@ var isChrome = !!window.chrome;
 		var currentp;
 		var folderoptions;
 		var dn;
-		var url;
+		var currenturl;
 		var pr;
 		var pl;
 		var hasvlc=false;
@@ -116,6 +115,8 @@ var isChrome = !!window.chrome;
 		return {
 			setup: function () {
 				self = this;
+				self.sid = '$sid';
+				self.hasvlc = self.hasvxg = false;
 				self.pl = GetLSValue('webtvplayerl','vlc');
 				self.pr = GetLSValue('webtvplayerr','vlc');
 				if (isChrome) {
@@ -240,6 +241,12 @@ var isChrome = !!window.chrome;
 					\$('#wtranscoding').click(function() { 
 						SetLSValue('wtranscoding',\$('#wtranscoding').is(':checked'));
 						\$(this).blur();
+						self.stop();
+						var live = (\$('#moviesort-button').css('display') == 'none');
+						if(live)
+							\$("#streamchannels").trigger('change');
+						else
+							\$("#streamrecordings").trigger('change');
 					});
 					var ap = GetLSValue('wtranscoding',false);
 					\$('#wtranscoding').prop('checked',ap);
@@ -331,42 +338,28 @@ var isChrome = !!window.chrome;
 
 			},CheckPlayer: function () {
 			
-				var live = (\$('#moviesort-button').css('display') == 'none')
+				var live = (\$('#moviesort-button').css('display') == 'none');
 				var pl = self.currentp;
 				
 				\$('#errPlayer').hide();
-				if(pl == 'html')
-					\$('#htmlPlayer').show();
-				else {
-					\$('#htmlPlayer').hide();
-				}
-				
-				if(pl == 'vxg')
-					\$('#vxgPlayer').show();
-				else
-					\$('#vxgPlayer').hide();
+				\$('#htmlPlayer').toggle(pl == 'html');
+				\$('#vxgPlayer').toggle(pl == 'vxg');
+				\$('#vlcPlayer').toggle(pl == 'vlc');
 
-				if(pl == 'vlc')
-					\$('#vlcPlayer').show();
-				else
-					\$('#vlcPlayer').hide();
-				
 				if (live && window.location.protocol == 'https') {
 					\$('#vlcPlayer').hide();
 					\$('#vxgPlayer').hide();
 					\$('#errPlayer').show();
 				}
-				if (live) {
-					\$('#plbuttons').hide();
-				} else {
+				if (!live) {
 					\$('#plbtn_html').prop('checked',false).button("refresh");
 					if(self.hasvxg)
 						\$('#plbtn_vxg').prop('checked',false).button("refresh");
 					if(self.hasvlc)
 						\$('#plbtn_vlc').prop('checked',false).button("refresh");
 					\$('#plbtn_'+pl).prop('checked',true).button("refresh");
-					\$('#plbuttons').show();
 				}
+				\$('#plbuttons').toggle(!live);
 
 			},getRecordings: function(_dirname,callback) {
 				var rdata = {fields:'f'};
@@ -425,8 +418,9 @@ var isChrome = !!window.chrome;
 			}, setUrl: function(sref,name,live) {
 
 				try {
-					var sessionid = ''
-					sid = document.getElementById('sid').value;
+					var sessionid = '';
+					//if(self.sid!='')
+					//	sessionid = '?sessionid=' + sid;
 
 					if (!live) {
 						var fn = sref.split('/').reverse()[0];
@@ -439,24 +433,19 @@ var isChrome = !!window.chrome;
 					var trans = GetLSValue('wtranscoding',false);
 					if(tp!='0' && trans)
 					{
-						if(sid!='') sessionid = '?sessionid=' + sid;
-						url = 'http://' + window.location.hostname + ':'+ tp +'/' + sref; // + sessionid;
+						url = 'http://' + window.location.hostname + ':'+ tp +'/' + sref + sessionid;
 					}
 					else
 					{
 						if (live) {
-							if(sid!='') sessionid = '&sessionid=' + sid;
 							url = 'http://' + window.location.hostname + ':8001/' + sref + sessionid;
 						} else {
-							if(sid!='') sessionid = '&sessionid=' + sid;
 							baseurl = window.location.protocol + '//' + window.location.hostname;
 							if (window.location.port != "")
 								baseurl = baseurl + ':' + window.location.port;
 							url = baseurl + '/file?file=' + sref + sessionid;
 						}
 					}
-					
-					console.log(url);
 					
 					if(self._vlc) {
 						self._vlc.playlist.clear();
@@ -492,32 +481,24 @@ var isChrome = !!window.chrome;
 			}, setPlayer : function (pl) {
 				self._vlc = null;
 				self._html = null;
-				\$('#vlcPlayer').hide();
-#if $vxgenabled
-				\$('#vxgPlayer').hide();
-#end if
-				\$('#htmlPlayer').hide();
 				self.currentp = pl;
+
+				\$('#Deinterlace').toggle(pl == 'vlc');
+				\$('#vlcPlayer').toggle(pl == 'vlc');
+				\$('#htmlPlayer').toggle(pl == 'html');
 				
-				if(pl == 'vlc'){
+				if(pl == 'vlc')
 					self._vlc = document.getElementById("vlc");
-					\$('#Deinterlace').show();
-					\$('#vlcPlayer').show();
-				}
-				else
-					\$('#Deinterlace').hide();
 				
-				if(pl == 'html'){
+				if(pl == 'html')
 					self._html = document.getElementById("htmlp");
-					\$('#htmlPlayer').show();
-				}
+
 #if $vxgenabled
+				\$('#vxgPlayer').toggle(pl == 'vxg');
 				if(pl == 'vxg'){
 					if(!self.vxgplayerId)
 						self.createVX();
-					\$('#vxgPlayer').show();
 				}
-				
 				self.CheckPlayer();
 				
 			}, createVX: function() {
