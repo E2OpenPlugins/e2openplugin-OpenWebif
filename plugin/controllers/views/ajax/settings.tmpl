@@ -1,13 +1,25 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
+<style>
+/* TODO Theme Support */
+
+.listNav,.ln-letters {overflow:hidden;}
+.listNavHide {display: none;}
+.listNavShow {display: list-item;}
+
+.ln-letters a { font-size:0.9em;display:block;float:left;padding:2px 6px;border:1px solid silver;border-right:none;text-decoration:none;}
+.ln-letters .ln-last { border-right: 1px solid silver;}
+.ln-letters a:hover,.ln-selected { background-color:#eaeaea;}
+.ln-letters .ln-disabled {color:#ccc;}
+
+</style>
 <div id="content_main" class="ui-widget-content" style="min-height: 500px;background-image:none;">
 	<div id="info">
 		<div style="display:table; width: 100%; zoom: 1;">
 			<div style="display:table-cell;width:220px;">
 				<h3 class="ui-widget-header">$tstrings['settings']</h3>
 				<ol class="sellist" id="slist">
-				#if $themes
-					<li id='themesbtn' class="ui-selected">$tstrings['tstr_ow_settings']</li>
-				#end if
+				<li id='themesbtn' data-id="owsettings" class="ui-selected">$tstrings['tstr_ow_settings']</li>
+				<li id='pkgbtn' data-id="packages" class="ui-selected">Packages</li>
 				#for $sec in $configsections
 					<li id='$sec["key"]' data-id='ajax/config?section=$sec["key"]'>$sec["description"]</li>
 				#end for
@@ -18,21 +30,20 @@
 				<div style="width: 100%; zoom: 1;">
 					<div id="scontent"></div>
 					</div>
-		#if $themes
 		<div id='osettings' style="display:none;">
 			<div id="content_main2">
 				<h3 class="ui-widget-header">$tstrings['tstr_ow_browser_settings']</h3>
 				<table id="configuration">
 				<tr><td>$tstrings['tstr_theme']</td><td>
-			<select name="selectheme" id="selectheme" style="min-width: 150px;margin: 5px;border:none;font-size: 1em;">
-			#for $stheme in $themes
-				#if $stheme == $theme
-					<option selected="selected">$stheme</option>
-				#else
-					<option>$stheme</option>
-				#end if
-			#end for
-			</select>
+				<select name="selectheme" id="selectheme" style="min-width: 150px;margin: 5px;border:none;font-size: 1em;">
+				#for $stheme in $themes
+					#if $stheme == $theme
+						<option selected="selected">$stheme</option>
+					#else
+						<option>$stheme</option>
+					#end if
+				#end for
+				</select>
 				</td></tr>
 				<tr><td>$tstrings['zapbeforestream']</td><td>
 				#if $zapstream
@@ -71,24 +82,182 @@
 				</table>
 			</div>
 		</div>
-		#end if
+		
+		<div id='packages' style="display:none;">
+			<div id="content_main2">
+				<h3 class="ui-widget-header">Packages</h3>
+				<span id="tb2">
+				<input class="pkgbtn" type="radio" id="pkgbtn1" name="tb2" checked="checked" /><label for="pkgbtn1">Update</label>
+				<input class="pkgbtn" type="radio" id="pkgbtn2" name="tb2" /><label for="pkgbtn2">Installed</label>
+				<input class="pkgbtn" type="radio" id="pkgbtn3" name="tb2" /><label for="pkgbtn3">All</label>
+				<input class="pkgbtn" type="radio" id="pkgbtn4" name="tb2" /><label for="pkgbtn4">More..</label>
+				</span>
+				<div id="pkgmore">
+				<br>
+				<button id="updatefeed">Update from Feed</button>
+				<br>
+				<button id="selectfile">Select IPK File</button>
+				<form id="uploadpkg" style="display:none" action"uploadpkg"="" method="post" enctype="multipart/form-data" encoding="multipart/form-data">
+				<input type="file" name="rfile" id="rfile" maxlength="100000" accept="text/*">
+				<input type="hidden" name="filename" id="filename">
+				</form>
+				<textarea id="resulttext" style='height:300px;width:100%'>
+				</textarea>
+				</div>
+				<div id="tblpackages">
+				<ul id="packagelist"></ul>
+				</div>
+			</div>
+		</div>
+		
 		</div>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
 #raw
-function load_theme() {
-	$("#scontent").html('');
-	$("#osettings").show();
-	$("#selectheme").change(function() {
-	ChangeTheme($(this).val());
+
+
+var filteredpkg;
+
+
+function prepareRestore() {
+	var fn = $(this).val();
+	fn = fn.replace('C:\\fakepath\\','');
+	if (confirm('Upload Plackage' + ' ( ' + fn + ') ?') === false) {
+		return;
+	}
+
+	var frm = document.forms["uploadpkg"];
+	frm.filename.value = fn;	
+
+	$('form#uploadpkg')
+		.unbind('submit')
+		.submit(function (e) 
+	{
+		var formData = new FormData(this);
+		$.ajax({
+			url: '/ipkg/upload',
+			type: 'POST',
+			data: formData,
+			mimeType:"multipart/form-data",
+			contentType: false,
+			cache: false,
+			processData:false,
+			dataType: 'json',
+			success: function (data, textStatus, jqXHR) {
+				var r = data.Result;
+				if (r[0]=='true') {
+					alert("DONE");
+				} else {
+					alert("Upload File Error: " + r[1]);
+				}
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				alert("Upload File Error: " + errorThrown);
+			}
+		});
+		e.preventDefault();
+		try {
+			e.unbind();
+		} catch(e){}
 	});
-	return false;
+	$('form#uploadpkg').submit();
+}
+function getPkgFilename(){
+	var frm = document.forms["form_uploadpkg"];
+	frm.filename.value = frm.file.value;
+}
+
+function FillPackages(pkgs,mode)
+{
+	var _update = $.grep(pkgs, function(v) {
+		return (v.u == '1');
+	});
+	var _installed = $.grep(pkgs, function(v) {
+		return (v.i == '1');
+	});
+
+	if (mode == 'pkgbtn1')
+		filteredpkg = _update.slice();
+	else if (mode == 'pkgbtn2')
+		filteredpkg = _installed.slice();
+	else
+		filteredpkg = pkgs.slice();
+
+
+	$("#packagelist").html('');
+	$("#packagelist-nav").remove();
+
+	var row='';
+	$.each( filteredpkg, function( key, val ) {
+		row += "<li>"+val['name']+" (" + val['v'] + ")</li>";
+//	"i": "0", "d": "ATSC A/52 surround sound stream decoder", "u": "0", "name": "a52dec", "v": "0.7.4-r4-opt1"
+	});
+	$("#packagelist").html(row);
+	$("#packagelist").listnav({includeAll:false,showCounts:false,initLetter:'a'});
+	
+}
+
+function UpdateFeed()
+{
+	$('#resulttext').val('');
+	
+	$.ajax({
+		url: '/ipkg?command=update',
+		success: function ( data ) {
+			$('#resulttext').val(data);
+		}
+	});
+}
+
+function ShowPackages(mode)
+{
+	$("#tblpackages").hide();
+	if (mode == 'pkgbtn4') {
+		$("#pkgmore").show();
+		return;
+	}
+
+	$("#pkgmore").hide();
+	$("#tblpackages").show();
+
+	var pkgcache = GetLSValue('pkgcache',null)
+	if(pkgcache != null) {
+		var pkgs = $.parseJSON(pkgcache);
+		FillPackages(pkgs,mode);
+	}
+	else
+	{
+		$.ajax({
+			url: '/ipkg?command=listall',
+			success: function ( data ) {
+				SetLSValue('pkgcache',data)
+				var js = $.parseJSON(data);
+				FillPackages(js,mode);
+			}
+		});
+	}
 }
 
 function load_scontent(url) {
+	$("#scontent").html('');
 	$("#osettings").hide();
+	$("#packages").hide();
+	if(url=='owsettings')
+	{
+		$("#osettings").show();
+		$("#selectheme").change(function() {
+			ChangeTheme($(this).val());
+		});
+		return;
+	}
+	if(url=='packages')
+	{
+		$("#packages").show();
+		ShowPackages('pkgbtn1');
+		return;
+	}
 	$("#scontent").load(url , function () {
 		$("#scontent").find("#content_main").attr("id","content_main1");
 	});
@@ -100,8 +269,6 @@ $(function() {
 			var ids = $('#slist .ui-selected').map(function() {
 				if($(this).data('id') !== undefined) {
 					load_scontent($(this).data('id'));
-				} else {
-					load_theme();
 				}
 			});
 		},
@@ -109,7 +276,7 @@ $(function() {
 			"ui-selected": getActiveCls()
 		}
 	});
-	load_theme();
+	load_scontent('owsettings');
 	
 	$(".spinner input[type='radio']").checkboxradio({ icon: false });
 	$(".spinner fieldset").controlgroup();
@@ -134,6 +301,16 @@ $(function() {
 		$('input[name=showchannelpicon]').attr('checked', evt.currentTarget.checked);
 		webapi_execute("/api/showchannelpicon?checked=" + evt.currentTarget.checked);
 	});
+	
+	$('#tb2').buttonset();
+	$('.pkgbtn').click(function () { ShowPackages($(this).attr('id')); });
+
+	$('#selectfile').click(function () {$("#rfile").trigger('click'); });
+	$('#rfile').change(prepareRestore);
+	
+	$('#updatefeed').click(function () {UpdateFeed(); });
+	
+
 });
 </script>
 #end raw

@@ -17,10 +17,14 @@ import json
 import gzip
 import cStringIO
 
-class IpkgController(resource.Resource):
+from base import BaseController
 
-	def __init__(self, path = ""):
-		resource.Resource.__init__(self)
+class IpkgController(BaseController):
+
+	def __init__(self, session, path = ""):
+		BaseController.__init__(self, path)
+		self.session = session
+		self.putChild('upload', IPKGUpload(session))
 
 	def compressBuf(self, buf):
 		zbuf = cStringIO.StringIO()
@@ -198,3 +202,44 @@ class IpkgController(resource.Resource):
 		request.write(html)
 		request.finish()
 		return server.NOT_DONE_YET
+
+class IPKGUpload(resource.Resource):
+	def __init__(self, session):
+		self.session = session
+		resource.Resource.__init__(self)
+
+	def mbasename(self, fname):
+		l = fname.split('/')
+		win = l[len(l)-1]
+		l2 = win.split('\\')
+		return l2[len(l2)-1]
+
+	def render_POST(self, request):
+		request.setResponseCode(http.OK)
+		request.setHeader('content-type', 'text/plain')
+		request.setHeader('charset', 'UTF-8')
+		content = request.args['rfile'][0]
+		filename = self.mbasename(request.args['filename'][0])
+
+		if not content:
+			result = [False,_('Error upload File')]
+		else:
+			if not filename.endswith(".ipk"):
+				result = [False,_('wrong filetype')]
+			else:
+				import os
+				FN = "/tmp/" + filename
+				fileh = os.open(FN, os.O_WRONLY|os.O_CREAT )
+				bytes = 0
+				if fileh:
+					bytes = os.write(fileh, content)
+					os.close(fileh)
+				if bytes <= 0:
+					try:
+						os.remove(FN)
+					except OSError, oe:
+						pass
+					result = [False,_('Error writing File')]
+				else:
+					result = [True,FN]
+		return json.dumps({"Result": result })
