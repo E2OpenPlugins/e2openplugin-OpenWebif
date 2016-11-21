@@ -9,18 +9,8 @@
 	<div id="info">
 	<div style="display: inline-block; width: 100%; zoom: 1;background-image:none;" class="ui-widget-content">
 		<h3 class="ui-widget-header">Player</h3>
-				<div id="errPlayer" style="margin:0 auto 0 auto;width:640px;height:400px;">
-					<div>
-						The currect selected player and source will not work.
-						
-						VLC Player will not work in Chrome.
-						VXG Player will only work in Chrome.
-						
-						Openwebif via HTTPS and Live Stream will not work.
-						
-						....
-						
-					</div>
+				<div id="errPlayer">
+					<br><br><br>No live TV support while using HTTPS!
 				</div>
 				<div id="vlcPlayer" style="margin:0 auto 0 auto;width:640px;height:400px;display:none;">
 					<embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" width="640px" height="360px" id="vlc"></embed>
@@ -96,6 +86,7 @@
 #end if
 <script>
 var isChrome = !!window.chrome;
+var isSecure = (window.location.protocol == 'https:');
 
 (function() {
 
@@ -346,7 +337,7 @@ var isChrome = !!window.chrome;
 				\$('#vxgPlayer').toggle(pl == 'vxg');
 				\$('#vlcPlayer').toggle(pl == 'vlc');
 
-				if (live && window.location.protocol == 'https') {
+				if (live && isSecure) {
 					\$('#vlcPlayer').hide();
 					\$('#vxgPlayer').hide();
 					\$('#errPlayer').show();
@@ -534,6 +525,7 @@ var isChrome = !!window.chrome;
 <link rel="stylesheet" type="text/css" href="/css/vxgplayer-1.8.15.min.css" />
 <style>
 .vxgplayer-error { margin-left:0px;}
+#errPlayer {width:640px;height:400px; margin:0 auto;text-align: center;}
 </style>
 #end if
 #end filter
