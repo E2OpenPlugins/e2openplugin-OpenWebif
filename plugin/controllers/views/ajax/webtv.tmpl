@@ -9,9 +9,6 @@
 	<div id="info">
 	<div style="display: inline-block; width: 100%; zoom: 1;background-image:none;" class="ui-widget-content">
 		<h3 class="ui-widget-header">Player</h3>
-				<div id="errPlayer">
-					<br><br><br>No live TV support while using HTTPS!
-				</div>
 				<div id="vlcPlayer" style="margin:0 auto 0 auto;width:640px;height:400px;display:none;">
 					<embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" width="640px" height="360px" id="vlc"></embed>
 				</div>
@@ -197,14 +194,16 @@ var isSecure = (window.location.protocol == 'https:');
 				\$('#deinterlace').trigger("chosen:updated");
 				self.setDeinterlace(dv);
 				
-				GetAllServices(function ( options , boptions) {
-					\$("#streamchannels").append( options);
-					if(current_ref) {
-						\$("#streamchannels").val( current_ref );
-					}
-					\$('#streamchannels').trigger("chosen:updated");
-				});
-				
+				if(!isSecure) {
+					GetAllServices(function ( options , boptions) {
+						\$("#streamchannels").append( options);
+						if(current_ref) {
+							\$("#streamchannels").val( current_ref );
+						}
+						\$('#streamchannels').trigger("chosen:updated");
+					});
+				}
+
 				self.getRecordings('',function(){
 					\$('#streamrecordings').trigger("chosen:updated");
 				});
@@ -301,11 +300,19 @@ var isSecure = (window.location.protocol == 'https:');
 				var ap = GetLSValue('wautoplay',false);
 				\$('#wautoplay').prop('checked',ap);
 
-				if(current_ref) {
-					self.setUrl(current_ref,current_name,true);
-					if (ap)
-						self.play();
+				if(isSecure) {
+					\$('#srcbuttons').hide();
+					\$('#sbtn1').trigger( "click" );
 				}
+				else
+				{
+					if(current_ref) {
+						self.setUrl(current_ref,current_name,true);
+						if (ap)
+							self.play();
+					}
+				}
+				
 			},setRecPlayer: function (pl) {
 				self.currentp = self.pr = pl;
 				SetLSValue('webtvplayerr',self.currentp);
@@ -332,16 +339,10 @@ var isSecure = (window.location.protocol == 'https:');
 				var live = (\$('#moviesort-button').css('display') == 'none');
 				var pl = self.currentp;
 				
-				\$('#errPlayer').hide();
 				\$('#htmlPlayer').toggle(pl == 'html');
 				\$('#vxgPlayer').toggle(pl == 'vxg');
 				\$('#vlcPlayer').toggle(pl == 'vlc');
 
-				if (live && isSecure) {
-					\$('#vlcPlayer').hide();
-					\$('#vxgPlayer').hide();
-					\$('#errPlayer').show();
-				}
 				if (!live) {
 					\$('#plbtn_html').prop('checked',false).button("refresh");
 					if(self.hasvxg)
@@ -525,7 +526,6 @@ var isSecure = (window.location.protocol == 'https:');
 <link rel="stylesheet" type="text/css" href="/css/vxgplayer-1.8.15.min.css" />
 <style>
 .vxgplayer-error { margin-left:0px;}
-#errPlayer {width:640px;height:400px; margin:0 auto;text-align: center;}
 </style>
 #end if
 #end filter
