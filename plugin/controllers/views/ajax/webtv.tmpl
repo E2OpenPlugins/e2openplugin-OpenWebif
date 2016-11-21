@@ -418,9 +418,10 @@ var isChrome = !!window.chrome;
 			}, setUrl: function(sref,name,live) {
 
 				try {
-					var sessionid = '';
+					var auth = '';
 					if (self.sid != '')
-						sessionid = '&sessionid=' + self.sid;
+						auth = '-sid:' + self.sid + '@';
+
 					if (!live) {
 						var fn = sref.split('/').reverse()[0];
 						var path = encodeURIComponent(sref.substring(0,sref.length-fn.length));
@@ -432,17 +433,17 @@ var isChrome = !!window.chrome;
 					var trans = GetLSValue('wtranscoding',false);
 					if(tp!='0' && trans)
 					{
-						url = 'http://' + window.location.hostname + ':'+ tp +'/' + sref;// + sessionid;
+						url = 'http://' + auth + window.location.hostname + ':'+ tp +'/' + sref;
 					}
 					else
 					{
 						if (live) {
-							url = 'http://' + window.location.hostname + ':8001/' + sref + sessionid;
+							url = 'http://' + auth + window.location.hostname + ':8001/' + sref;
 						} else {
-							baseurl = window.location.protocol + '//' + window.location.hostname;
+							baseurl = window.location.protocol + '//' + auth + window.location.hostname;
 							if (window.location.port != "")
 								baseurl = baseurl + ':' + window.location.port;
-							url = baseurl + '/file?file=' + sref + sessionid;
+							url = baseurl + '/file?file=' + sref;
 						}
 					}
 					

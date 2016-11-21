@@ -239,39 +239,20 @@ class AuthResource(resource.Resource):
 
 	def getChildWithDefault(self, path, request):
 		global site
-		url = str(request.uri)
-		sid = None
-		if url.startswith('/web/stream?') or url.startswith('/file?'):
-			m = re.search('(?:\?|&)sessionid=(.+?)(?:$|&|\?)', url)
-			if m:
-				sid = str(m.groups()[0])
-				# Strip sid from URL:
-				url = re.sub('(?:\?|&)sessionid=.+?$', '', url)
-				url = re.sub('(?:\?|&)sessionid=.+?(&|\?)', '\1', url)
-				# Strip sid from args:
-				args = request.args
-				newargs = {}
-				for key, values in args.items():
-					newvalues=[]
-					for value in values:
-						value = re.sub('(?:\?|&)sessionid=.+?$', '', value)
-						value = re.sub('(?:\?|&)sessionid=.+?(&|\?)', '\1', value)
-						newvalues.append(value)
-					newargs[key] = newvalues
-				request.args = newargs
-				request.uri = url
-				try:
-					oldsession = site.getSession(sid).sessionNamespaces
-					if "logged" in oldsession.keys() and oldsession["logged"]:
-						session = request.getSession().sessionNamespaces
-						session["logged"] = True
-				except:
-					pass
 		session = request.getSession().sessionNamespaces
 		host = request.getHost().host
 
 		if ((host == "localhost" or host == "127.0.0.1" or host == "::ffff:127.0.0.1") and not config.OpenWebif.auth_for_streaming.value) or request.uri == "/web/getipv6":
 			return self.resource.getChildWithDefault(path, request)
+		if request.getUser() == "-sid":
+			sid = str(request.getPassword())
+			try:
+				oldsession = site.getSession(sid).sessionNamespaces
+				if "logged" in oldsession.keys() and oldsession["logged"]:
+					session = request.getSession().sessionNamespaces
+					session["logged"] = True
+			except:
+				pass
 		if "logged" in session.keys() and session["logged"]:
 			return self.resource.getChildWithDefault(path, request)
 		if self.login(request.getUser(), request.getPassword(), request.transport.socket.getpeername()[0]) == False:
