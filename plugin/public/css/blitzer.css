@@ -227,3 +227,6 @@ a.ui-button:active,
 	-webkit-box-shadow: -8px -8px 8px #333333;
 	box-shadow: -8px -8px 8px #333333;
 }
+
+.ui-widget-header a { color:#000;}
+

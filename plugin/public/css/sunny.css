@@ -228,3 +228,9 @@ a.ui-button:active,
 	-webkit-box-shadow: -7px -7px 7px #cccccc;
 	box-shadow: -7px -7px 7px #cccccc;
 }
+
+.ui-widget-header a { color : #000;}
+.ui-widget-content { background-image:none !important;}
+#header span.ui-state-active {color:darkblue;}
+
+

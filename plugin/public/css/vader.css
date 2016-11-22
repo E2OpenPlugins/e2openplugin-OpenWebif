@@ -226,3 +226,8 @@ a.ui-button:active,
 	-webkit-box-shadow: -8px -8px 8px #aaaaaa;
 	box-shadow: -8px -8px 8px #aaaaaa;
 }
+
+#content_main { background-color: #000;border: 2px solid #888; background-image:none !important; }
+.cht .fr { background-color: #404040; }
+
+

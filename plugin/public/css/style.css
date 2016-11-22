@@ -630,7 +630,7 @@ font-size:16px;font-weight:bold;opacity:0.3;
 .m_buttons .ui-progressbar { height:0.5em; width: 90%; margin: 2px 0 4px; }
 
 .sortimg {margin-right:10px;}
-.marker { float: right; opacity: 0.8; color: #00c; font-size: 80%; }
+.marker { float: right; opacity: 0.8; font-size: 80%; }
 
 .tm_title {font-weight: bold; }
 .tm_text,.tm_desc {font-weight: normal; }

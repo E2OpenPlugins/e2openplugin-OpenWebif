@@ -228,3 +228,8 @@ a.ui-button:active,
 	-webkit-box-shadow: 5px 5px 0px #999999;
 	box-shadow: 5px 5px 0px #999999;
 }
+
+.ui-widget-header a { color : #000;}
+.station { color:#fff; background-color: #2191c0;}
+#tbl1 .border { border-right: 1px solid #4297d7;}
+

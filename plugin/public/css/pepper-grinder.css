@@ -227,3 +227,9 @@ a.ui-button:active,
 	-webkit-box-shadow: -10px 0 5px #000000;
 	box-shadow: -10px 0 5px #000000;
 }
+
+.ui-widget-header #menucontainer a { color: initial; }
+.ui-widget-header #remotecontainer a { color: initial; }
+
+.marker { color: #000;}
+

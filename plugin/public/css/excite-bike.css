@@ -228,3 +228,6 @@ a.ui-button:active,
 	-webkit-box-shadow: 6px 6px 0px #e69700;
 	box-shadow: 6px 6px 0px #e69700;
 }
+
+.ui-widget-header #menucontainer a { color: initial; }
+.ui-widget-header #remotecontainer a { color: initial; }

@@ -225,3 +225,9 @@ a.ui-button:active,
 	-webkit-box-shadow: -4px -4px 4px #aaaaaa;
 	box-shadow: -4px -4px 4px #aaaaaa;
 }
+
+.marker { color: #000;}
+
+.ui-widget-content { background-image:none !important;}
+
+

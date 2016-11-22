@@ -25,8 +25,9 @@
 <script src="../js/jquery.min.js"></script>
 <script src="../js/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="../css/jquery-ui.min.css">
-#if $t != "original"
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/$t/jquery-ui.css">
+#if $t != "original" and $t != "clear"
+	#set $t = $t + '.css'
+	<link rel="stylesheet" href="../css/$t">
 #end if
 <link type="text/css" href="../css/style.min.css" rel="stylesheet"/>
 <link type="text/css" href="../web/css" rel="stylesheet"/>
