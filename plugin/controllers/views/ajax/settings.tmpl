@@ -1,5 +1,4 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
-#if $enablepkg
 <style>
 /* TODO Theme Support */
 
@@ -13,7 +12,6 @@
 .ln-letters .ln-disabled {color:#ccc;}
 
 </style>
-#end if
 <div id="content_main" class="ui-widget-content" style="min-height: 500px;background-image:none;">
 	<div id="info">
 		<div style="display:table; width: 100%; zoom: 1;">
@@ -21,9 +19,7 @@
 				<h3 class="ui-widget-header">$tstrings['settings']</h3>
 				<ol class="sellist" id="slist">
 				<li id='themesbtn' data-id="owsettings" class="ui-selected">$tstrings['tstr_ow_settings']</li>
-				#if $enablepkg
 				<li id='pkgbtn' data-id="packages" class="ui-selected">Packages</li>
-				#end if
 				#for $sec in $configsections
 					<li id='$sec["key"]' data-id='ajax/config?section=$sec["key"]'>$sec["description"]</li>
 				#end for
@@ -87,7 +83,6 @@
 			</div>
 		</div>
 		
-		#if $enablepkg
 		<div id='packages' style="display:none;">
 			<div id="content_main2">
 				<h3 class="ui-widget-header">Packages</h3>
@@ -114,15 +109,18 @@
 				</div>
 			</div>
 		</div>
-		#end if
+		
 		</div>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
-#if $enablepkg
 #raw
+
+
 var filteredpkg;
+
+
 function prepareRestore() {
 	var fn = $(this).val();
 	fn = fn.replace('C:\\fakepath\\','');
@@ -241,14 +239,6 @@ function ShowPackages(mode)
 		});
 	}
 }
-$(function() { 
-	$('#tb2').buttonset();
-	$('.pkgbtn').click(function () { ShowPackages($(this).attr('id')); });
-	$('#selectfile').click(function () {$("#rfile").trigger('click'); });
-	$('#rfile').change(prepareRestore);
-	$('#updatefeed').click(function () {UpdateFeed(); });
-
-});
 
 function load_scontent(url) {
 	$("#scontent").html('');
@@ -273,36 +263,6 @@ function load_scontent(url) {
 	});
 	return false;
 }
-
-#end raw
-
-#else
-
-#raw
-
-function load_scontent(url) {
-	$("#scontent").html('');
-	$("#osettings").hide();
-	if(url=='owsettings')
-	{
-		$("#osettings").show();
-		$("#selectheme").change(function() {
-			ChangeTheme($(this).val());
-		});
-		return;
-	}
-	$("#scontent").load(url , function () {
-		$("#scontent").find("#content_main").attr("id","content_main1");
-	});
-	return false;
-}
-
-#end raw
-
-#end if
-
-#raw
-
 $(function() { 
 	$( "#slist" ).selectable({
 		selected: function( event, ui ) {
@@ -342,6 +302,15 @@ $(function() {
 		webapi_execute("/api/showchannelpicon?checked=" + evt.currentTarget.checked);
 	});
 	
+	$('#tb2').buttonset();
+	$('.pkgbtn').click(function () { ShowPackages($(this).attr('id')); });
+
+	$('#selectfile').click(function () {$("#rfile").trigger('click'); });
+	$('#rfile').change(prepareRestore);
+	
+	$('#updatefeed').click(function () {UpdateFeed(); });
+	
+
 });
 </script>
 #end raw

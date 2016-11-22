@@ -76,7 +76,6 @@ config.OpenWebif.epg_encoding = ConfigSelection(default = 'utf-8', choices = [ '
 										'iso-8859-10',
 										'iso-8859-16'])
 
-config.OpenWebif.enablepkg = ConfigYesNo(default=False)
 
 imagedistro = getInfo()['imagedistro']
 
@@ -137,8 +136,6 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			#FIXME Submenu			
 			#self.list.append(getConfigListEntry(_("Webinterface jQuery UI Theme"), config.OpenWebif.webcache.theme))
 			#self.list.append(getConfigListEntry(_("Movie List Sort"), config.OpenWebif.webcache.moviesort))
-			if config.OpenWebif.auth.value:
-				self.list.append(getConfigListEntry(_("Enable Package Manager"), config.OpenWebif.enablepkg))
 
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
