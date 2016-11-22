@@ -1,0 +1,233 @@
+/*!
+ * jQuery UI CSS Framework 1.12.1
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/category/theming/
+ *
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Helvetica%2CArial%2Csans-serif&fwDefault=normal&fsDefault=1.1em&cornerRadius=5px&bgColorHeader=888888&bgTextureHeader=highlight_hard&bgImgOpacityHeader=15&borderColorHeader=404040&fcHeader=ffffff&iconColorHeader=cccccc&bgColorContent=121212&bgTextureContent=gloss_wave&bgImgOpacityContent=16&borderColorContent=404040&fcContent=eeeeee&iconColorContent=bbbbbb&bgColorDefault=adadad&bgTextureDefault=highlight_soft&bgImgOpacityDefault=35&borderColorDefault=cccccc&fcDefault=333333&iconColorDefault=666666&bgColorHover=dddddd&bgTextureHover=highlight_soft&bgImgOpacityHover=60&borderColorHover=dddddd&fcHover=000000&iconColorHover=c98000&bgColorActive=121212&bgTextureActive=inset_soft&bgImgOpacityActive=15&borderColorActive=000000&fcActive=ffffff&iconColorActive=f29a00&bgColorHighlight=555555&bgTextureHighlight=highlight_hard&bgImgOpacityHighlight=55&borderColorHighlight=404040&fcHighlight=cccccc&iconColorHighlight=aaaaaa&bgColorError=fef1ec&bgTextureError=glass&bgImgOpacityError=95&borderColorError=cd0a0a&fcError=cd0a0a&iconColorError=cd0a0a
+ */
+
+
+/* Component containers
+----------------------------------*/
+.ui-widget {
+	font-family: Helvetica,Arial,sans-serif;
+	font-size: 1.1em;
+}
+.ui-widget .ui-widget {
+	font-size: 1em;
+}
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+	font-family: Helvetica,Arial,sans-serif;
+	font-size: 1em;
+}
+.ui-widget.ui-widget-content {
+	border: 1px solid #cccccc;
+}
+.ui-widget-content {
+	border: 1px solid #404040;
+	background: #121212;/* url("images/ui-bg_gloss-wave_16_121212_500x100.png") 50% top repeat-x;*/
+	color: #eeeeee;
+}
+.ui-widget-content a {
+	color: #eeeeee;
+}
+.ui-widget-header {
+	border: 1px solid #404040;
+	background: #888888 url("images/ui-bg_highlight-hard_15_888888_1x100.png") 50% 50% repeat-x;
+	color: #ffffff;
+	font-weight: bold;
+}
+.ui-widget-header a {
+	color: #ffffff;
+}
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+
+/* We use html here because we need a greater specificity to make sure disabled
+works properly when clicked or hovered */
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+	border: 1px solid #cccccc;
+	background: #adadad url("images/ui-bg_highlight-soft_35_adadad_1x100.png") 50% 50% repeat-x;
+	font-weight: normal;
+	color: #333333;
+}
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited,
+a.ui-button,
+a:link.ui-button,
+a:visited.ui-button,
+.ui-button {
+	color: #333333;
+	text-decoration: none;
+}
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus,
+.ui-button:hover,
+.ui-button:focus {
+	border: 1px solid #dddddd;
+	background: #dddddd url("images/ui-bg_highlight-soft_60_dddddd_1x100.png") 50% 50% repeat-x;
+	font-weight: normal;
+	color: #000000;
+}
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited,
+.ui-state-focus a,
+.ui-state-focus a:hover,
+.ui-state-focus a:link,
+.ui-state-focus a:visited,
+a.ui-button:hover,
+a.ui-button:focus {
+	color: #000000;
+	text-decoration: none;
+}
+
+.ui-visual-focus {
+	box-shadow: 0 0 3px 1px rgb(94, 158, 214);
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+	border: 1px solid #000000;
+	background: #121212 url("images/ui-bg_inset-soft_15_121212_1x100.png") 50% 50% repeat-x;
+	font-weight: normal;
+	color: #ffffff;
+}
+.ui-icon-background,
+.ui-state-active .ui-icon-background {
+	border: #000000;
+	background-color: #ffffff;
+}
+.ui-state-active a,
+.ui-state-active a:link,
+.ui-state-active a:visited {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight {
+	border: 1px solid #404040;
+	background: #555555 url("images/ui-bg_highlight-hard_55_555555_1x100.png") 50% top repeat-x;
+	color: #cccccc;
+}
+.ui-state-checked {
+	border: 1px solid #404040;
+	background: #555555;
+}
+.ui-state-highlight a,
+.ui-widget-content .ui-state-highlight a,
+.ui-widget-header .ui-state-highlight a {
+	color: #cccccc;
+}
+.ui-state-error,
+.ui-widget-content .ui-state-error,
+.ui-widget-header .ui-state-error {
+	border: 1px solid #cd0a0a;
+	background: #fef1ec url("images/ui-bg_glass_95_fef1ec_1x400.png") 50% 50% repeat-x;
+	color: #cd0a0a;
+}
+.ui-state-error a,
+.ui-widget-content .ui-state-error a,
+.ui-widget-header .ui-state-error a {
+	color: #cd0a0a;
+}
+.ui-state-error-text,
+.ui-widget-content .ui-state-error-text,
+.ui-widget-header .ui-state-error-text {
+	color: #cd0a0a;
+}
+.ui-priority-primary,
+.ui-widget-content .ui-priority-primary,
+.ui-widget-header .ui-priority-primary {
+	font-weight: bold;
+}
+.ui-priority-secondary,
+.ui-widget-content .ui-priority-secondary,
+.ui-widget-header .ui-priority-secondary {
+	opacity: .7;
+	filter:Alpha(Opacity=70); /* support: IE8 */
+	font-weight: normal;
+}
+.ui-state-disabled,
+.ui-widget-content .ui-state-disabled,
+.ui-widget-header .ui-state-disabled {
+	opacity: .35;
+	filter:Alpha(Opacity=35); /* support: IE8 */
+	background-image: none;
+}
+.ui-state-disabled .ui-icon {
+	filter:Alpha(Opacity=35); /* support: IE8 - See #6059 */
+}
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Corner radius */
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-left,
+.ui-corner-tl {
+	border-top-left-radius: 5px;
+}
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-right,
+.ui-corner-tr {
+	border-top-right-radius: 5px;
+}
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-left,
+.ui-corner-bl {
+	border-bottom-left-radius: 5px;
+}
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-right,
+.ui-corner-br {
+	border-bottom-right-radius: 5px;
+}
+
+/* Overlays */
+.ui-widget-overlay {
+	background: #aaaaaa;
+	opacity: .3;
+	filter: Alpha(Opacity=30); /* support: IE8 */
+}
+.ui-widget-shadow {
+	-webkit-box-shadow: -8px -8px 8px #aaaaaa;
+	box-shadow: -8px -8px 8px #aaaaaa;
+}
+
+#content_main { background-color: #000;border: 2px solid #888; background-image:none !important; }
+.cht .fr { background-color: #404040; }
+
+
