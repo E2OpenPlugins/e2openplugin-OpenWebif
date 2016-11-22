@@ -103,7 +103,7 @@ var isSecure = (window.location.protocol == 'https:');
 		return {
 			setup: function () {
 				self = this;
-				self.sid = '$sid';
+				self.auth = '$auth';
 				self.hasvlc = self.hasvxg = false;
 				self.pl = GetLSValue('webtvplayerl','vlc');
 				self.pr = GetLSValue('webtvplayerr','vlc');
@@ -410,10 +410,6 @@ var isSecure = (window.location.protocol == 'https:');
 			}, setUrl: function(sref,name,live) {
 
 				try {
-					var auth = '';
-					if (self.sid != '')
-						auth = '-sid:' + self.sid + '@';
-
 					if (!live) {
 						var fn = sref.split('/').reverse()[0];
 						var path = encodeURIComponent(sref.substring(0,sref.length-fn.length));
@@ -425,14 +421,14 @@ var isSecure = (window.location.protocol == 'https:');
 					var trans = GetLSValue('wtranscoding',false);
 					if(tp!='0' && trans)
 					{
-						url = 'http://' + auth + window.location.hostname + ':'+ tp +'/' + sref;
+						url = 'http://' + self.auth + window.location.hostname + ':'+ tp +'/' + sref;
 					}
 					else
 					{
 						if (live) {
-							url = 'http://' + auth + window.location.hostname + ':8001/' + sref;
+							url = 'http://' + self.auth + window.location.hostname + ':8001/' + sref;
 						} else {
-							baseurl = window.location.protocol + '//' + auth + window.location.hostname;
+							baseurl = window.location.protocol + '//' + self.auth + window.location.hostname;
 							if (window.location.port != "")
 								baseurl = baseurl + ':' + window.location.port;
 							url = baseurl + '/file?file=' + sref;

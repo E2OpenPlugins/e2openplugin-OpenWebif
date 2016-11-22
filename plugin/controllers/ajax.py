@@ -31,6 +31,13 @@ class GetSession(Resource):
 		sid = request.getSession().uid
 		return sid
 
+	def GetAuth(self, request):
+		session = request.getSession().sessionNamespaces
+		if "pwd" in session.keys() and session["pwd"] is not None:
+			return (session["user"],session["pwd"])
+		else:
+			return None
+
 class AjaxController(BaseController):
 	def __init__(self, session, path = ""):
 		BaseController.__init__(self, path)
@@ -279,9 +286,12 @@ class AjaxController(BaseController):
 	def P_webtv(self, request):
 		if config.OpenWebif.auth_for_streaming.value:
 			session = GetSession()
-			sid = str(session.GetSID(request))
+			if session.GetAuth(request) is not None:
+				auth = ':'.join(session.GetAuth(request)) + "@"
+			else:
+				auth = '-sid:' + str(session.GetSID(request)) + "@"
 		else:
-			sid=''
+			auth=''
 		vxgenabled = False
 		if fileExists(getPublicPath("/js/media_player.pexe")):
 			vxgenabled = True
@@ -294,5 +304,5 @@ class AjaxController(BaseController):
 					transcoder_port = int(config.OpenWebif.streamport.value)
 			except StandardError:
 				transcoder_port = 0
-		return {"transcoder_port" : transcoder_port, "vxgenabled" : vxgenabled, "sid" : sid}
+		return {"transcoder_port" : transcoder_port, "vxgenabled" : vxgenabled, "auth" : auth}
 

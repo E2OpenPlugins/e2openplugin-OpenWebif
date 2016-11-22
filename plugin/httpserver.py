@@ -224,6 +224,14 @@ class AuthResource(resource.Resource):
 		resource.Resource.__init__(self)
 		self.resource = root
 
+	def noShell(self, request):
+		user = request.getUser()
+		if fileExists('/etc/passwd'):
+			for line in file('/etc/passwd').readlines():
+				line = line.strip()
+				if line.startswith(user + ":") and line.endswith(":/bin/false"):
+					return True
+		return False
 
 	def render(self, request):
 		host = request.getHost().host
@@ -261,6 +269,11 @@ class AuthResource(resource.Resource):
 			return errpage
 		else:
 			session["logged"] = True
+			session["user"] = request.getUser()
+			session["pwd"] = None
+			noshell = self.noShell(request)
+			if noshell is True:
+				session["pwd"] = request.getPassword()
 			return self.resource.getChildWithDefault(path, request)
 
 	def login(self, user, passwd, peer):
