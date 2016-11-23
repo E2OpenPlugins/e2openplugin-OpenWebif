@@ -1,13 +1,17 @@
-## Version 1.0.3
+## Version 1.0.4
 ## (in development)
-* add web tv / #422
-* improve timer conflicts / #339
-* improve movielist api
-* improve box info
+* improve access security
+* add package manager
 * use jquery UI offline
 
 ### TODO
 * powertimer api
+
+## Version 1.0.3
+* add web tv / #422
+* improve timer conflicts / #339
+* improve movielist api
+* improve box info
 
 ## Version 1.0.2
 * add conflict info to add timer api

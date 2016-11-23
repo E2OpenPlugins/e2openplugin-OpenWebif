@@ -96,6 +96,8 @@
 				<br>
 				<button id="updatefeed">Update from Feed</button>
 				<br>
+				<button id="upgrade">Upgrade all Packages</button>
+				<br>
 				<button id="selectfile">Select IPK File</button>
 				<form id="uploadpkg" style="display:none" action"uploadpkg"="" method="post" enctype="multipart/form-data" encoding="multipart/form-data">
 				<input type="file" name="rfile" id="rfile" maxlength="100000" accept="text/*">
@@ -185,7 +187,6 @@ function FillPackages(pkgs,mode)
 	else
 		filteredpkg = pkgs.slice();
 
-
 	$("#packagelist").html('');
 	$("#packagelist-nav").remove();
 
@@ -199,12 +200,12 @@ function FillPackages(pkgs,mode)
 	
 }
 
-function UpdateFeed()
+function Action(action)
 {
 	$('#resulttext').val('');
 	
 	$.ajax({
-		url: '/ipkg?command=update',
+		url: action,
 		success: function ( data ) {
 			$('#resulttext').val(data);
 		}
@@ -304,13 +305,10 @@ $(function() {
 	
 	$('#tb2').buttonset();
 	$('.pkgbtn').click(function () { ShowPackages($(this).attr('id')); });
-
 	$('#selectfile').click(function () {$("#rfile").trigger('click'); });
 	$('#rfile').change(prepareRestore);
-	
-	$('#updatefeed').click(function () {UpdateFeed(); });
-	
-
+	$('#updatefeed').click(function () {Action('/ipkg?command=update'); });
+	$('#upgrade').click(function () {Action('/ipkg?command=upgrade'); });
 });
 </script>
 #end raw
