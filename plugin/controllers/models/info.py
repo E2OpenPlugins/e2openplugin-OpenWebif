@@ -201,9 +201,13 @@ def getPiconPath():
 	else:
 		return ""
 
-def getInfo(session = None):
+def getInfo(session = None, need_fullinfo = False):
 	# TODO: get webif versione somewhere!
 	info = {}
+	global STATICBOXINFO
+
+	if not (STATICBOXINFO is None or need_fullinfo):
+		return STATICBOXINFO
 
 	info['brand'] = getMachineBrand()
 	info['model'] = getMachineName()
