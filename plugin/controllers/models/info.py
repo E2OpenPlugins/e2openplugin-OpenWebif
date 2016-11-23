@@ -40,6 +40,7 @@ import os
 import sys
 import time
 import string
+import glob
 
 OPENWEBIFVER = "OWIF 1.0.4"
 
@@ -414,8 +415,8 @@ def getInfo(session = None, need_fullinfo = False):
 		})
 
 	info['shares'] = []
-	if fileExists('/etc/auto.network'):
-		autofs = '/etc/auto.network'
+	listing = glob.glob('/etc/auto.netw*')
+	for autofs in listing:
 		method = "autofs"
 		for line in file(autofs).readlines():
 			if not line.startswith('#'):
@@ -566,7 +567,6 @@ def getInfo(session = None, need_fullinfo = False):
 		except Exception, error:
 			info['EX'] = error
 
-	global STATICBOXINFO
 	STATICBOXINFO = info
 	return info
 
