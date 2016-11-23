@@ -365,7 +365,7 @@ class AuthResource(resource.Resource):
 					cpass = getspnam(user)[1]
 				except:
 					return False
-			return not cpass or crypt(passwd, cpass) == cpass
+			return crypt(passwd, cpass) == cpass
 		return False
 
 #
