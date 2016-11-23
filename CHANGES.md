@@ -4,6 +4,7 @@
 * improve timer conflicts / #339
 * improve movielist api
 * improve box info
+* use jquery UI offline
 
 ### TODO
 * powertimer api
