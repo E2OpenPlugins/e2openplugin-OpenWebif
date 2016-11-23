@@ -2178,3 +2178,10 @@ msgstr "mittels"
 
 msgid "Show Picons in channel list"
 msgstr "Picons in der Senderliste anzeigen"
+
+msgid "Without auth only local access is allowed!"
+msgstr "Ohne Anmeldung ist nur lokaler Zugriff möglich!"
+
+msgid "Enable access from VPNs"
+msgstr "Auch Zugriff aus VPNs erlauben"
+

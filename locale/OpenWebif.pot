@@ -2163,3 +2163,9 @@ msgstr ""
 msgid "Show Picons in channel list"
 msgstr ""
 
+msgid "Without auth only local access is allowed!"
+msgstr ""
+
+msgid "Enable access from VPNs"
+msgstr ""
+

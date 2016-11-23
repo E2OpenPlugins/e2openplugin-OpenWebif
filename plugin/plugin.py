@@ -61,6 +61,8 @@ config.OpenWebif.service_name_for_stream = ConfigYesNo(default=True)
 # authentication for streaming
 config.OpenWebif.auth_for_streaming = ConfigYesNo(default=False)
 config.OpenWebif.no_root_access = ConfigYesNo(default=False)
+config.OpenWebif.local_access_only = ConfigSelection(default=' ', choices=[' '])
+config.OpenWebif.vpn_access = ConfigYesNo(default=False)
 # encoding of EPG data
 config.OpenWebif.epg_encoding = ConfigSelection(default = 'utf-8', choices = [ 'utf-8',
 										'iso-8859-15',
@@ -129,6 +131,9 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			if config.OpenWebif.auth.value:
 				self.list.append(getConfigListEntry(_("Enable Authentication for streaming"), config.OpenWebif.auth_for_streaming))
 				self.list.append(getConfigListEntry(_("Disable access for user root"), config.OpenWebif.no_root_access))
+			if not config.OpenWebif.auth.value or not config.OpenWebif.https_auth.value:
+				self.list.append(getConfigListEntry(_("Without auth only local access is allowed!"), config.OpenWebif.local_access_only))
+				self.list.append(getConfigListEntry(_("Enable access from VPNs"), config.OpenWebif.vpn_access))
 			self.list.append(getConfigListEntry(_("Enable Parental Control"), config.OpenWebif.parentalenabled))
 			self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
 			if imagedistro in ("VTi-Team Image"):
