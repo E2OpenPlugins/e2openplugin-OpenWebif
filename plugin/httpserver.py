@@ -291,6 +291,10 @@ class AuthResource(resource.Resource):
 
 		if peer.startswith("::ffff:"):
 			peer = peer.replace("::ffff:","")
+
+		if peer.startswith("fe80::") and "%" in peer:
+			peer = peer.split ("%")[0]
+
 		# Handle all conditions where auth may be skipped/disabled
 
 		# #1: Auth is disabled and access is from local network
