@@ -352,6 +352,8 @@ var isSecure = (window.location.protocol == 'https:');
 					\$('#plbtn_'+pl).prop('checked',true).button("refresh");
 				}
 				\$('#plbuttons').toggle(!live);
+				\$('#btnstop').toggle(pl != 'html');
+				\$('#btnplay').toggle(pl != 'html');
 
 			},getRecordings: function(_dirname,callback) {
 				var rdata = {fields:'f'};

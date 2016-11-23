@@ -100,7 +100,7 @@
 				<br>
 				<button id="selectfile">Select IPK File</button>
 				<form id="uploadpkg" style="display:none" action"uploadpkg"="" method="post" enctype="multipart/form-data" encoding="multipart/form-data">
-				<input type="file" name="rfile" id="rfile" maxlength="100000" accept="text/*">
+				<input type="file" name="rfile" id="rfile" maxlength="100000">
 				<input type="hidden" name="filename" id="filename">
 				</form>
 				<textarea id="resulttext" style='height:300px;width:100%'>
@@ -149,7 +149,7 @@ function prepareRestore() {
 			dataType: 'json',
 			success: function (data, textStatus, jqXHR) {
 				var r = data.Result;
-				if (r[0]=='true') {
+				if (r[0]==true) {
 					alert("DONE");
 				} else {
 					alert("Upload File Error: " + r[1]);
