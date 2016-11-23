@@ -69,7 +69,6 @@ def getAllNetworks():
 	else:
 		return tempaddrs
 
-
 def verifyCallback(connection, x509, errnum, errdepth, ok):
 	if not ok:
 		print '[OpenWebif] Invalid cert from subject: ', x509.get_subject()
@@ -290,6 +289,8 @@ class AuthResource(resource.Resource):
 		if peer is None:
 			peer = request.transport.socket.getpeername()[0]
 
+		if peer.startswith("::ffff:"):
+			peer = peer.replace("::ffff:","")
 		# Handle all conditions where auth may be skipped/disabled
 
 		# #1: Auth is disabled and access is from local network
