@@ -100,6 +100,7 @@ class BaseController(resource.Resource):
 		isJson = self.isJson
 		isCustom = self.isCustom
 		isGZ = self.isGZ
+		isMobile = self.isMobile
 
 		if self.path == "":
 			self.path = "index"
@@ -297,13 +298,24 @@ class BaseController(resource.Resource):
 		except ImportError:
 			pass
 
+		try:
+			from Plugins.Extensions.WebInterface.WebChilds.Toplevel import loaded_plugins
+			for plugins in loaded_plugins:
+				if plugins[0] in ["fancontrol"]:
+					try:
+						extras.append({ 'key': plugins[0], 'description': plugins[2] , 'if':'1'})
+					except KeyError:
+						pass
+		except ImportError:
+			pass
+
 		ret['extras'] = extras
 		theme = 'original'
 		ret['themes'] = False
 		if config.OpenWebif.webcache.theme.value:
 			ret['theme'] = config.OpenWebif.webcache.theme.value
 		if not os.path.exists(getPublicPath('themes')):
-			if not ( theme == 'original' or theme == 'clear') 
+			if not ( theme == 'original' or theme == 'clear'):
 				ret['theme'] = 'original'
 		else:
 			ret['themes'] = True

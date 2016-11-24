@@ -25,6 +25,7 @@ from BQE import BQEController
 from transcoding import TranscodingController
 from wol import WOLSetupController, WOLClientController
 from twisted.web import static, http
+import os
 
 class RootController(BaseController):
 	def __init__(self, session, path = ""):
