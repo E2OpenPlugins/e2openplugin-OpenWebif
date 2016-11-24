@@ -1,1449 +1,1514 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2016-06-22 18:10+0800\n"
+"POT-Creation-Date: 2016-11-24 15:32+0100\n"
 "PO-Revision-Date: \n"
+"Last-Translator: neoatomic <neoatomic@users.noreply.github.com>\n"
 "Language-Team: satfan <satfan@163.com>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: ..\n"
-"Last-Translator: 王彪 <satfan@163.com>\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Language: zh_CN\n"
 "X-Poedit-SearchPath-0: plugin\n"
 "X-Poedit-SearchPath-1: U\n"
 
-#: ../plugin/controllers/BouquetEditor.py:82
+#: plugin/controllers/BouquetEditor.py:82
 msgid "one two three four unknown command"
 msgstr "1 2 3 4 未知的命令"
 
-#: ../plugin/controllers/BouquetEditor.py:88
-#: ../plugin/controllers/BouquetEditor.py:149
-#: ../plugin/controllers/BouquetEditor.py:194
+#: plugin/controllers/BouquetEditor.py:88
+#: plugin/controllers/BouquetEditor.py:149
+#: plugin/controllers/BouquetEditor.py:194
 msgid "No bouquet name given!"
 msgstr "没有指定节目分组名称!"
 
-#: ../plugin/controllers/BouquetEditor.py:118
+#: plugin/controllers/BouquetEditor.py:118
 #, python-format
 msgid "Bouquet %s created."
 msgstr "自定义组%s 已创建"
 
-#: ../plugin/controllers/BouquetEditor.py:120
+#: plugin/controllers/BouquetEditor.py:120
 msgid "Get mutable list for new created bouquet failed!"
 msgstr "创建新的自定义组失败！"
 
-#: ../plugin/controllers/BouquetEditor.py:123
+#: plugin/controllers/BouquetEditor.py:123
 #, python-format
 msgid "Bouquet %s already exists."
 msgstr "自定义组%s已经存在。"
 
-#: ../plugin/controllers/BouquetEditor.py:125
-#: ../plugin/controllers/BouquetEditor.py:435
+#: plugin/controllers/BouquetEditor.py:125
+#: plugin/controllers/BouquetEditor.py:435
 msgid "Bouquetlist is not editable!"
 msgstr "节目分组列表不可编辑!"
 
-#: ../plugin/controllers/BouquetEditor.py:127
+#: plugin/controllers/BouquetEditor.py:127
 msgid "Multi-Bouquet is not enabled!"
 msgstr "多个节目分组不能编辑!"
 
-#: ../plugin/controllers/BouquetEditor.py:133
+#: plugin/controllers/BouquetEditor.py:133
 msgid "No provider given!"
 msgstr "没有指定服务商!"
 
-#: ../plugin/controllers/BouquetEditor.py:180
+#: plugin/controllers/BouquetEditor.py:180
 #, python-format
 msgid "Bouquet %s removed failed."
 msgstr "移除节目分组%s失败"
 
-#: ../plugin/controllers/BouquetEditor.py:182
+#: plugin/controllers/BouquetEditor.py:182
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
 msgstr "移除节目分组%s失败, 服务或名称无效."
 
-#: ../plugin/controllers/BouquetEditor.py:186
+#: plugin/controllers/BouquetEditor.py:186
 #, python-format
 msgid "Bouquet %s deleted."
 msgstr "节目分组%s已删除."
 
-#: ../plugin/controllers/BouquetEditor.py:188
+#: plugin/controllers/BouquetEditor.py:188
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
 msgstr "错误: 节目分组%s不能被删除, 系统错误"
 
-#: ../plugin/controllers/BouquetEditor.py:204
-#: ../plugin/controllers/BouquetEditor.py:261
+#: plugin/controllers/BouquetEditor.py:204
+#: plugin/controllers/BouquetEditor.py:261
 msgid "No position given!"
 msgstr "没有指定位置!"
 
-#: ../plugin/controllers/BouquetEditor.py:211
+#: plugin/controllers/BouquetEditor.py:211
 #, python-format
 msgid "Bouquet %s moved."
 msgstr "移动自定义组 %s."
 
-#: ../plugin/controllers/BouquetEditor.py:213
+#: plugin/controllers/BouquetEditor.py:213
 #, python-format
 msgid "Bouquet %s can not be moved."
 msgstr "节目分组%s不能移动"
 
-#: ../plugin/controllers/BouquetEditor.py:219
-#: ../plugin/controllers/BouquetEditor.py:249
-#: ../plugin/controllers/BouquetEditor.py:275
-#: ../plugin/controllers/BouquetEditor.py:309
-#: ../plugin/controllers/BouquetEditor.py:455
+#: plugin/controllers/BouquetEditor.py:219
+#: plugin/controllers/BouquetEditor.py:249
+#: plugin/controllers/BouquetEditor.py:275
+#: plugin/controllers/BouquetEditor.py:309
+#: plugin/controllers/BouquetEditor.py:455
 msgid "No bouquet given!"
 msgstr "没有指定节目分组名称!"
 
-#: ../plugin/controllers/BouquetEditor.py:225
-#: ../plugin/controllers/BouquetEditor.py:255
-#: ../plugin/controllers/BouquetEditor.py:281
-#: ../plugin/controllers/BouquetEditor.py:339
-#: ../plugin/controllers/BouquetEditor.py:397
-#: ../plugin/controllers/BouquetEditor.py:461
-#: ../plugin/controllers/BouquetEditor.py:498
+#: plugin/controllers/BouquetEditor.py:225
+#: plugin/controllers/BouquetEditor.py:255
+#: plugin/controllers/BouquetEditor.py:281
+#: plugin/controllers/BouquetEditor.py:339
+#: plugin/controllers/BouquetEditor.py:397
+#: plugin/controllers/BouquetEditor.py:461
+#: plugin/controllers/BouquetEditor.py:498
 msgid "No service given!"
 msgstr "没有指定频道!"
 
-#: ../plugin/controllers/BouquetEditor.py:234
+#: plugin/controllers/BouquetEditor.py:234
 #, python-format
 msgid "Service %s removed."
 msgstr "移除频道%s"
 
-#: ../plugin/controllers/BouquetEditor.py:242
+#: plugin/controllers/BouquetEditor.py:242
 #, python-format
 msgid "Service %s removed from bouquet %s."
 msgstr "频道%s已从节目分组%s中移除."
 
-#: ../plugin/controllers/BouquetEditor.py:243
+#: plugin/controllers/BouquetEditor.py:243
 #, python-format
 msgid "Service %s can not be removed."
 msgstr "频道%s不能被移除."
 
-#: ../plugin/controllers/BouquetEditor.py:268
+#: plugin/controllers/BouquetEditor.py:268
 #, python-format
 msgid "Service %s moved."
 msgstr "移动频道%s."
 
-#: ../plugin/controllers/BouquetEditor.py:269
+#: plugin/controllers/BouquetEditor.py:269
 msgid "Service can not be moved."
 msgstr "频道不能被移动"
 
-#: ../plugin/controllers/BouquetEditor.py:299
+#: plugin/controllers/BouquetEditor.py:299
 #, python-format
 msgid "Service %s added."
 msgstr "频道%s已添加"
 
-#: ../plugin/controllers/BouquetEditor.py:302
+#: plugin/controllers/BouquetEditor.py:302
 #, python-format
 msgid "Service %s already exists in bouquet %s."
 msgstr "频道%s已经存在于节目分组%s."
 
-#: ../plugin/controllers/BouquetEditor.py:303
+#: plugin/controllers/BouquetEditor.py:303
 msgid "This service can not be added."
 msgstr "频道不能被添加."
 
-#: ../plugin/controllers/BouquetEditor.py:315
+#: plugin/controllers/BouquetEditor.py:315
 msgid "No marker-name given!"
 msgstr "没有指定标记名称"
 
-#: ../plugin/controllers/BouquetEditor.py:329
+#: plugin/controllers/BouquetEditor.py:329
 msgid "Marker added."
 msgstr "标记已添加."
 
-#: ../plugin/controllers/BouquetEditor.py:331
+#: plugin/controllers/BouquetEditor.py:331
 msgid "Internal error!"
 msgstr "内部错误!"
 
-#: ../plugin/controllers/BouquetEditor.py:345
+#: plugin/controllers/BouquetEditor.py:345
 msgid "No new servicename given!"
 msgstr "没有指定新的频道名."
 
-#: ../plugin/controllers/BouquetEditor.py:369
+#: plugin/controllers/BouquetEditor.py:369
 msgid "Bouquet renamed successfully."
 msgstr "节目分组改名完成."
 
-#: ../plugin/controllers/BouquetEditor.py:385
+#: plugin/controllers/BouquetEditor.py:385
 msgid "Service renamed successfully."
 msgstr "频道改名完成."
 
-#: ../plugin/controllers/BouquetEditor.py:386
+#: plugin/controllers/BouquetEditor.py:386
 msgid "Service can not be renamed."
 msgstr "频道不能改名."
 
-#: ../plugin/controllers/BouquetEditor.py:400
+#: plugin/controllers/BouquetEditor.py:400
 msgid "No current service given!"
 msgstr "没有指定当前频道!"
 
-#: ../plugin/controllers/BouquetEditor.py:431
+#: plugin/controllers/BouquetEditor.py:431
 msgid "Get mutable list for new created alternative failed!"
 msgstr "创建新的自定义组失败！"
 
-#: ../plugin/controllers/BouquetEditor.py:433
+#: plugin/controllers/BouquetEditor.py:433
 #, python-format
 msgid "Alternative %s created failed."
 msgstr "替代%s创建失败."
 
-#: ../plugin/controllers/BouquetEditor.py:447
+#: plugin/controllers/BouquetEditor.py:447
 #, python-format
 msgid "Added %s to alternative service %s."
 msgstr "添加 %s 到替代频道 %s."
 
-#: ../plugin/controllers/BouquetEditor.py:478
+#: plugin/controllers/BouquetEditor.py:478
 msgid "Service is not an alternative."
 msgstr "当前频道不是替代频道。"
 
-#: ../plugin/controllers/BouquetEditor.py:486
+#: plugin/controllers/BouquetEditor.py:486
 msgid "All alternative services deleted."
 msgstr "删除所有的替代频道."
 
-#: ../plugin/controllers/BouquetEditor.py:492
+#: plugin/controllers/BouquetEditor.py:492
 msgid "Parent Control is not activated."
 msgstr "未启用家长控制。"
 
-#: ../plugin/controllers/BouquetEditor.py:505
+#: plugin/controllers/BouquetEditor.py:505
 msgid "No Parent Control Setup Pin given!"
 msgstr "没有指定PIN码!"
 
-#: ../plugin/controllers/BouquetEditor.py:509
-#: ../plugin/controllers/BouquetEditor.py:511
+#: plugin/controllers/BouquetEditor.py:509
+#: plugin/controllers/BouquetEditor.py:511
 msgid "Parent Control Setup Pin is wrong!"
 msgstr "PIN码错误！"
 
-#: ../plugin/controllers/BouquetEditor.py:526
+#: plugin/controllers/BouquetEditor.py:526
 #, python-format
 msgid "Service %s is locked."
 msgstr "频道%s已加锁。"
 
-#: ../plugin/controllers/BouquetEditor.py:528
+#: plugin/controllers/BouquetEditor.py:528
 #, python-format
 msgid "Bouquet %s is locked."
 msgstr "节目分组%s已加锁。"
 
-#: ../plugin/controllers/BouquetEditor.py:530
+#: plugin/controllers/BouquetEditor.py:530
 #, python-format
 msgid "%s %s is locked."
 msgstr "%s %s 已加锁."
 
-#: ../plugin/controllers/BouquetEditor.py:534
+#: plugin/controllers/BouquetEditor.py:534
 #, python-format
 msgid "Service %s is unlocked."
 msgstr "频道 %s 已解锁."
 
-#: ../plugin/controllers/BouquetEditor.py:536
+#: plugin/controllers/BouquetEditor.py:536
 #, python-format
 msgid "Bouquet %s is unlocked."
 msgstr "节目分组 %s 已解锁."
 
-#: ../plugin/controllers/BouquetEditor.py:573
+#: plugin/controllers/BouquetEditor.py:573
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
 msgstr "创建备份文件错误！%s不存在。"
 
-#: ../plugin/controllers/BouquetEditor.py:579
+#: plugin/controllers/BouquetEditor.py:579
 msgid "Error while preparing backup file."
 msgstr "创建备份文件错误。"
 
-#: ../plugin/controllers/BouquetEditor.py:630
+#: plugin/controllers/BouquetEditor.py:630
 msgid "Bouquet-settings were restored successfully"
 msgstr "节目分组设置已成功恢复"
 
-#: ../plugin/controllers/BouquetEditor.py:632
+#: plugin/controllers/BouquetEditor.py:632
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
 msgstr "错误。创建节目分组%s失败..."
 
-#: ../plugin/controllers/BouquetEditor.py:634
+#: plugin/controllers/BouquetEditor.py:634
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
 msgstr "错误，%s不存在，不能恢复..."
 
-#: ../plugin/controllers/base.py:221 ../plugin/local.py:181
-#: ../plugin/local.py:325
+#: plugin/controllers/base.py:248 plugin/local.py:181 plugin/local.py:325
 msgid "Settings"
 msgstr "设置"
 
-#: ../plugin/controllers/base.py:236
+#: plugin/controllers/base.py:264
 msgid "LCD4Linux Setup"
 msgstr "LCD设置"
 
-#: ../plugin/controllers/base.py:240
+#: plugin/controllers/base.py:279
+msgid "OSCam Webinterface"
+msgstr ""
+
+#: plugin/controllers/base.py:283
 msgid "AutoTimer"
 msgstr "自动定时器"
 
-#: ../plugin/controllers/base.py:244
+#: plugin/controllers/base.py:288
 msgid "BouquetEditor"
 msgstr "编辑节目分组"
 
-#: ../plugin/controllers/base.py:248
+#: plugin/controllers/base.py:292
 msgid "EPGRefresh"
 msgstr "EPG 刷新"
 
-#: ../plugin/controllers/models/info.py:71 ../plugin/local.py:115
+#: plugin/controllers/ipkg.py:238
+msgid "Error upload File"
+msgstr ""
+
+#: plugin/controllers/ipkg.py:241
+msgid "wrong filetype"
+msgstr ""
+
+#: plugin/controllers/ipkg.py:255
+msgid "Error writing File"
+msgstr ""
+
+#: plugin/controllers/models/info.py:58
+msgid "SLAAC"
+msgstr ""
+
+#: plugin/controllers/models/info.py:65 plugin/controllers/models/info.py:76
+#: plugin/controllers/models/info.py:83
+msgid "static"
+msgstr ""
+
+#: plugin/controllers/models/info.py:67 plugin/controllers/models/info.py:85
+#: plugin/local.py:80
+msgid "DHCP"
+msgstr "DHCP"
+
+#: plugin/controllers/models/info.py:69 plugin/controllers/models/info.py:87
+msgid "manual/disabled"
+msgstr ""
+
+#: plugin/controllers/models/info.py:95 plugin/controllers/models/info.py:102
+msgid "unknown"
+msgstr ""
+
+#: plugin/controllers/models/info.py:136 plugin/local.py:115
 msgid "IPv4-only kernel"
 msgstr "IPv4-only kernel"
 
-#: ../plugin/controllers/models/info.py:75 ../plugin/local.py:117
+#: plugin/controllers/models/info.py:140 plugin/local.py:117
 msgid "IPv4-only Python/Twisted"
 msgstr "IPv4-only Python/Twisted"
 
-#: ../plugin/controllers/models/info.py:104 ../plugin/local.py:116
+#: plugin/controllers/models/info.py:169 plugin/local.py:116
 msgid "none/IPv4-only network"
 msgstr "仅IPv4网络"
 
-#: ../plugin/controllers/models/message.py:33
+#: plugin/controllers/models/info.py:287 plugin/controllers/models/info.py:290
+msgid "kB"
+msgstr ""
+
+#: plugin/controllers/models/info.py:291 plugin/controllers/models/info.py:414
+#, python-format
+msgid "%s free / %s total"
+msgstr ""
+
+#: plugin/controllers/models/info.py:326 plugin/local.py:65
+msgid "Chipset"
+msgstr "芯片组"
+
+#: plugin/controllers/models/info.py:331 plugin/local.py:104
+msgid "Frontprocessor Version"
+msgstr "前端版本"
+
+#: plugin/controllers/models/info.py:377 plugin/controllers/models/info.py:388
+#: plugin/controllers/models/info.py:406
+msgid "MB"
+msgstr ""
+
+#: plugin/controllers/models/info.py:380 plugin/controllers/models/info.py:386
+#: plugin/controllers/models/info.py:401 plugin/controllers/models/info.py:404
+msgid "GB"
+msgstr ""
+
+#: plugin/controllers/models/info.py:384 plugin/controllers/models/info.py:396
+#: plugin/controllers/models/info.py:398
+msgid "TB"
+msgstr ""
+
+#: plugin/controllers/models/info.py:442
+msgid "r/w"
+msgstr ""
+
+#: plugin/controllers/models/info.py:446
+msgid "r/o"
+msgstr ""
+
+#: plugin/controllers/models/message.py:33
 msgid "Message sent successfully!"
 msgstr "成功发送消息！"
 
-#: ../plugin/controllers/models/message.py:43
+#: plugin/controllers/models/message.py:43
 msgid "No answer in time"
 msgstr "无响应"
 
-#: ../plugin/controllers/models/message.py:48
+#: plugin/controllers/models/message.py:48
 msgid "Answer is YES!"
 msgstr "是！"
 
-#: ../plugin/controllers/models/message.py:48
+#: plugin/controllers/models/message.py:48
 msgid "Answer is NO!"
 msgstr "否！"
 
-#: ../plugin/controllers/models/services.py:251
+#: plugin/controllers/models/services.py:260
 msgid "New"
 msgstr "新的"
 
-#: ../plugin/controllers/models/services.py:253
+#: plugin/controllers/models/services.py:262
 msgid "Services"
 msgstr "频道"
 
-#: ../plugin/controllers/models/services.py:258
+#: plugin/controllers/models/services.py:267
 msgid "Cable"
 msgstr "有线"
 
-#: ../plugin/controllers/models/services.py:260
+#: plugin/controllers/models/services.py:269
 msgid "Terrestrial"
 msgstr "地面波"
 
-#: ../plugin/controllers/models/services.py:264
+#: plugin/controllers/models/services.py:273
 msgid "W"
 msgstr "W"
 
-#: ../plugin/controllers/models/services.py:266
+#: plugin/controllers/models/services.py:275
 msgid "E"
 msgstr "E"
 
-#: ../plugin/controllers/models/timers.py:172
+#: plugin/controllers/models/timers.py:178
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "检测到的计时器！%s"
 
-#: ../plugin/controllers/models/timers.py:188
+#: plugin/controllers/models/timers.py:195
 #, python-format
 msgid "Could not add timer '%s'!"
 msgstr "不能添加定时器“%s”!"
 
-#: ../plugin/controllers/models/timers.py:193
+#: plugin/controllers/models/timers.py:200
 #, python-format
 msgid "Timer '%s' added"
 msgstr "定时器 '%s' 已添加"
 
-#: ../plugin/controllers/models/timers.py:201
+#: plugin/controllers/models/timers.py:208
 msgid "EventId not found"
 msgstr "未找到事件ID"
 
-#: ../plugin/controllers/models/timers.py:272
+#: plugin/controllers/models/timers.py:279
 #, python-format
 msgid "Timer '%s' changed"
 msgstr "定时器 '%s' 已更改"
 
-#: ../plugin/controllers/models/timers.py:277
+#: plugin/controllers/models/timers.py:298
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "定时器 '%s' 冲突，未保存。"
 
-#: ../plugin/controllers/models/timers.py:282
+#: plugin/controllers/models/timers.py:304
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "未找到指定开始时间和结束时间的定时器 '%s' ！"
 
-#: ../plugin/controllers/models/timers.py:294
+#: plugin/controllers/models/timers.py:316
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "定时器'%s'已被成功删除"
 
-#: ../plugin/controllers/models/timers.py:299
-#: ../plugin/controllers/models/timers.py:343
+#: plugin/controllers/models/timers.py:321
+#: plugin/controllers/models/timers.py:365
 msgid "No matching Timer found"
 msgstr "无找到匹配的定时器"
 
-#: ../plugin/controllers/models/timers.py:317
+#: plugin/controllers/models/timers.py:339
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "定时器 '%s' 冲突，未保存。"
 
-#: ../plugin/controllers/models/timers.py:323
+#: plugin/controllers/models/timers.py:345
 #, python-format
 msgid "Timer '%s' already exists!"
 msgstr "定时器 '%s' 已存在!"
 
-#: ../plugin/controllers/models/timers.py:329
+#: plugin/controllers/models/timers.py:351
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "定时器 '%s' 正在录制! 不能禁用!"
 
-#: ../plugin/controllers/models/timers.py:337
+#: plugin/controllers/models/timers.py:359
 #, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "定时器 '%s' 已 %s 成功"
 
-#: ../plugin/controllers/models/timers.py:350
+#: plugin/controllers/models/timers.py:372
 msgid "List of Timers has been cleaned"
 msgstr "定时器列表已被清除"
 
-#: ../plugin/controllers/models/timers.py:357
+#: plugin/controllers/models/timers.py:379
 msgid "TimerList has been saved"
 msgstr "定时器列表已保存"
 
-#: ../plugin/controllers/models/timers.py:372
+#: plugin/controllers/models/timers.py:394
 msgid "No event found! Not recording!"
 msgstr "定时器事件未找到！未录制！"
 
-#: ../plugin/controllers/models/timers.py:378
+#: plugin/controllers/models/timers.py:400
 msgid "Instant record for current Event started"
 msgstr "开始录制当前事件"
 
-#: ../plugin/controllers/models/timers.py:387
+#: plugin/controllers/models/timers.py:409
 msgid "Infinite Instant recording started"
 msgstr "开始录制（不限时长）"
 
-#: ../plugin/controllers/models/timers.py:406
+#: plugin/controllers/models/timers.py:428
 msgid "Timer conflict detected! Not recording!"
 msgstr "检测到定时器冲突！停止录制！"
 
-#: ../plugin/controllers/models/timers.py:480
+#: plugin/controllers/models/timers.py:502
 msgid "Missing requesteter: sRef"
 msgstr "缺少请求: sRef"
 
-#: ../plugin/controllers/models/timers.py:502
+#: plugin/controllers/models/timers.py:524
 #, python-format
 msgid "Unknown command: '%s'"
 msgstr "未知命令： '%s'"
 
-#: ../plugin/controllers/models/timers.py:559
+#: plugin/controllers/models/timers.py:581
 msgid "PowerTimer feature not available"
 msgstr "电源定时器功能不可用"
 
-#: ../plugin/controllers/models/timers.py:635
-#: ../plugin/controllers/models/timers.py:661
+#: plugin/controllers/models/timers.py:657
+#: plugin/controllers/models/timers.py:683
 msgid "Sleeptimer is enabled"
 msgstr "定时休眠已启用"
 
-#: ../plugin/controllers/models/timers.py:635
-#: ../plugin/controllers/models/timers.py:661
+#: plugin/controllers/models/timers.py:657
+#: plugin/controllers/models/timers.py:683
 msgid "Sleeptimer is disabled"
 msgstr "定时休眠已禁用"
 
-#: ../plugin/controllers/models/timers.py:640
-#: ../plugin/controllers/models/timers.py:667
+#: plugin/controllers/models/timers.py:662
+#: plugin/controllers/models/timers.py:689
 msgid "SleepTimer error"
 msgstr "定时休眠出错"
 
-#: ../plugin/controllers/models/timers.py:679
+#: plugin/controllers/models/timers.py:701
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr "错误：无法设置SleepTimer当设备处于待机模式"
 
-#: ../plugin/controllers/models/timers.py:684
-#: ../plugin/controllers/models/timers.py:753
-#: ../plugin/controllers/models/timers.py:771
+#: plugin/controllers/models/timers.py:706
+#: plugin/controllers/models/timers.py:775
+#: plugin/controllers/models/timers.py:793
 msgid "Sleeptimer has been disabled"
 msgstr "定时休眠已禁用"
 
-#: ../plugin/controllers/models/timers.py:690
-#: ../plugin/controllers/models/timers.py:753
-#: ../plugin/controllers/models/timers.py:766
+#: plugin/controllers/models/timers.py:712
+#: plugin/controllers/models/timers.py:775
+#: plugin/controllers/models/timers.py:788
 #, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "定时休眠设置为%d分钟"
 
-#: ../plugin/controllers/models/timers.py:695
-#: ../plugin/controllers/models/timers.py:776
+#: plugin/controllers/models/timers.py:717
+#: plugin/controllers/models/timers.py:798
 msgid "SleepTimer Error"
 msgstr "定时休眠出错"
 
-#: ../plugin/controllers/models/timers.py:804
+#: plugin/controllers/models/timers.py:826
 msgid "Error parsing vps.xml"
 msgstr "分析vps.xml出错"
 
-#: ../plugin/controllers/models/timers.py:809
+#: plugin/controllers/models/timers.py:831
 msgid "VPS plugin not found"
 msgstr "未找到VPS插件"
 
-#: ../plugin/controllers/web.py:63
+#: plugin/controllers/web.py:63
 #, python-format
 msgid "Missing mandatory parameter '%s'"
 msgstr "缺少强制参数 '%s'"
 
-#: ../plugin/controllers/web.py:69
+#: plugin/controllers/web.py:69
 #, python-format
 msgid "The parameter '%s' can't be empty"
 msgstr "参数 “%s” 不能为空"
 
-#: ../plugin/controllers/web.py:103
+#: plugin/controllers/web.py:103
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "错误的参数格式设置'set=%s', 使用 set=set15"
 
-#: ../plugin/controllers/web.py:108
+#: plugin/controllers/web.py:108
 #, python-format
 msgid "Unknown Volume command %s"
 msgstr "未知音量命令 %s"
 
-#: ../plugin/controllers/web.py:143
+#: plugin/controllers/web.py:143
 msgid "The parameter 'command' must be a number"
 msgstr "命令参数必须是数字"
 
-#: ../plugin/controllers/web.py:304
+#: plugin/controllers/web.py:298
 #, python-format
 msgid "type %s is not a number"
 msgstr "类型 %s 的不是数字"
 
-#: ../plugin/local.py:5
+#: plugin/local.py:5
 msgid "Mo"
 msgstr "星期一"
 
-#: ../plugin/local.py:6
+#: plugin/local.py:6
 msgid "Tu"
 msgstr "星期二"
 
-#: ../plugin/local.py:7
+#: plugin/local.py:7
 msgid "We"
 msgstr "星期三"
 
-#: ../plugin/local.py:8
+#: plugin/local.py:8
 msgid "Th"
 msgstr "星期四"
 
-#: ../plugin/local.py:9
+#: plugin/local.py:9
 msgid "Fr"
 msgstr "星期五"
 
-#: ../plugin/local.py:10
+#: plugin/local.py:10
 msgid "Sa"
 msgstr "星期六"
 
-#: ../plugin/local.py:11
+#: plugin/local.py:11
 msgid "Su"
 msgstr "星期日"
 
-#: ../plugin/local.py:13
+#: plugin/local.py:13
 msgid "Sun"
 msgstr "星期日"
 
-#: ../plugin/local.py:14
+#: plugin/local.py:14
 msgid "Mon"
 msgstr "星期一"
 
-#: ../plugin/local.py:15
+#: plugin/local.py:15
 msgid "Tue"
 msgstr "星期二"
 
-#: ../plugin/local.py:16
+#: plugin/local.py:16
 msgid "Wed"
 msgstr "星期三"
 
-#: ../plugin/local.py:17
+#: plugin/local.py:17
 msgid "Thu"
 msgstr "星期四"
 
-#: ../plugin/local.py:18
+#: plugin/local.py:18
 msgid "Fri"
 msgstr "星期五"
 
-#: ../plugin/local.py:19
+#: plugin/local.py:19
 msgid "Sat"
 msgstr "星期六"
 
-#: ../plugin/local.py:21
+#: plugin/local.py:21
 msgid "Monday"
 msgstr "星期一"
 
-#: ../plugin/local.py:22
+#: plugin/local.py:22
 msgid "Tuesday"
 msgstr "星期二"
 
-#: ../plugin/local.py:23
+#: plugin/local.py:23
 msgid "Wednesday"
 msgstr "星期三"
 
-#: ../plugin/local.py:24
+#: plugin/local.py:24
 msgid "Thursday"
 msgstr "星期四"
 
-#: ../plugin/local.py:25
+#: plugin/local.py:25
 msgid "Friday"
 msgstr "星期五"
 
-#: ../plugin/local.py:26
+#: plugin/local.py:26
 msgid "Saturday"
 msgstr "星期六"
 
-#: ../plugin/local.py:27
+#: plugin/local.py:27
 msgid "Sunday"
 msgstr "星期日"
 
-#: ../plugin/local.py:29
+#: plugin/local.py:29
 msgid "January"
 msgstr "一月"
 
-#: ../plugin/local.py:30
+#: plugin/local.py:30
 msgid "February"
 msgstr "二月"
 
-#: ../plugin/local.py:31
+#: plugin/local.py:31
 msgid "March"
 msgstr "三月"
 
-#: ../plugin/local.py:32
+#: plugin/local.py:32
 msgid "April"
 msgstr "四月"
 
-#: ../plugin/local.py:33
+#: plugin/local.py:33
 msgid "May"
 msgstr "可能"
 
-#: ../plugin/local.py:34
+#: plugin/local.py:34
 msgid "June"
 msgstr "六月"
 
-#: ../plugin/local.py:35
+#: plugin/local.py:35
 msgid "July"
 msgstr "七月"
 
-#: ../plugin/local.py:36
+#: plugin/local.py:36
 msgid "August"
 msgstr "八月"
 
-#: ../plugin/local.py:37
+#: plugin/local.py:37
 msgid "September"
 msgstr "九月"
 
-#: ../plugin/local.py:38
+#: plugin/local.py:38
 msgid "October"
 msgstr "十月"
 
-#: ../plugin/local.py:39
+#: plugin/local.py:39
 msgid "November"
 msgstr "十一月"
 
-#: ../plugin/local.py:40
+#: plugin/local.py:40
 msgid "December"
 msgstr "十二月"
 
-#: ../plugin/local.py:42
+#: plugin/local.py:42
 msgid "About"
 msgstr "关于"
 
-#: ../plugin/local.py:43
+#: plugin/local.py:43
 msgid "Add Timer"
 msgstr "添加定时器"
 
-#: ../plugin/local.py:44
+#: plugin/local.py:44
 msgid "Add AutoTimer"
 msgstr "添加自动定时"
 
-#: ../plugin/local.py:45
+#: plugin/local.py:45
 msgid "Add Zap Timer"
 msgstr "添加定时切换"
 
-#: ../plugin/local.py:46
+#: plugin/local.py:46 plugin/local.py:357
 msgid "After Event"
 msgstr "事件后"
 
-#: ../plugin/local.py:47
+#: plugin/local.py:47
 msgid "AGC"
 msgstr "AGC"
 
-#: ../plugin/local.py:48 ../plugin/local.py:345
+#: plugin/local.py:48 plugin/local.py:345
 msgid "All"
 msgstr "全部"
 
-#: ../plugin/local.py:49
+#: plugin/local.py:49
 msgid "All Channels"
 msgstr "全部频道"
 
-#: ../plugin/local.py:50
+#: plugin/local.py:50
 msgid "Authors"
 msgstr "作者"
 
-#: ../plugin/local.py:51 ../plugin/local.py:344
+#: plugin/local.py:51 plugin/local.py:344
 msgid "Auto"
 msgstr "自动"
 
-#: ../plugin/local.py:52
+#: plugin/local.py:52
 msgid "Back"
 msgstr "返回"
 
-#: ../plugin/local.py:53 ../plugin/local.py:352
+#: plugin/local.py:53 plugin/local.py:352
 msgid "Begin"
 msgstr "开始"
 
-#: ../plugin/local.py:54
+#: plugin/local.py:54
 msgid "BER"
 msgstr "误码率"
 
-#: ../plugin/local.py:55 ../plugin/local.py:307
+#: plugin/local.py:55 plugin/local.py:307
 msgid "Bouquets"
 msgstr "节目分组"
 
-#: ../plugin/local.py:56
+#: plugin/local.py:56
 msgid "Box Info"
 msgstr "机顶盒信息"
 
-#: ../plugin/local.py:57
+#: plugin/local.py:57
 msgid "Box"
 msgstr "机顶盒"
 
-#: ../plugin/local.py:58
+#: plugin/local.py:58
 msgid "Box Control"
 msgstr "机顶盒控制"
 
-#: ../plugin/local.py:59
+#: plugin/local.py:59
 msgid "Box Uptime"
 msgstr "运行时间"
 
-#: ../plugin/local.py:60
+#: plugin/local.py:60
 msgid "Brand"
 msgstr "品牌"
 
-#: ../plugin/local.py:61 ../plugin/plugin.py:92
+#: plugin/local.py:61 plugin/plugin.py:101
 msgid "Cancel"
 msgstr "取消"
 
-#: ../plugin/local.py:62
+#: plugin/local.py:62
 msgid "Capacity"
 msgstr "容量"
 
-#: ../plugin/local.py:63
+#: plugin/local.py:63
 msgid "Channel"
 msgstr "频道"
 
-#: ../plugin/local.py:64 ../plugin/local.py:305
+#: plugin/local.py:64 plugin/local.py:305
 msgid "Channels"
 msgstr "频道"
 
-#: ../plugin/local.py:65
-msgid "Chipset"
-msgstr "芯片组"
-
-#: ../plugin/local.py:66
+#: plugin/local.py:66
 msgid "Cleanup Timers"
 msgstr "清理定时器"
 
-#: ../plugin/local.py:67
+#: plugin/local.py:67
 msgid "Close"
 msgstr "关闭"
 
-#: ../plugin/local.py:68
+#: plugin/local.py:68
 msgid "Contributors"
 msgstr "贡献者"
 
-#: ../plugin/local.py:69
+#: plugin/local.py:69
 msgid "Control"
 msgstr "控制"
 
-#: ../plugin/local.py:70
+#: plugin/local.py:70
 msgid "Current"
 msgstr "当前频道"
 
-#: ../plugin/local.py:71
+#: plugin/local.py:71
 msgid "Current Event"
 msgstr "当前事件"
 
-#: ../plugin/local.py:72
+#: plugin/local.py:72
+msgid "Date"
+msgstr ""
+
+#: plugin/local.py:73
 msgid "Deep-Standby"
 msgstr "深度待机"
 
-#: ../plugin/local.py:73
+#: plugin/local.py:74
 msgid "Default"
 msgstr "默认"
 
-#: ../plugin/local.py:74
+#: plugin/local.py:75
 msgid "Delete Recording"
 msgstr "删除录制"
 
-#: ../plugin/local.py:75
+#: plugin/local.py:76
 msgid "Really delete the recording"
 msgstr "确定要删除录制？"
 
-#: ../plugin/local.py:76
-msgid "Delete Movie"
-msgstr "删除电影"
-
-#: ../plugin/local.py:77
-msgid "Really delete the movie"
-msgstr "确定要删除电影?"
-
-#: ../plugin/local.py:78
+#: plugin/local.py:77
 msgid "Delete Timer"
 msgstr "删除定时器"
 
-#: ../plugin/local.py:79
+#: plugin/local.py:78
 msgid "Really delete the timer"
 msgstr "确定要删除计时器？"
 
-#: ../plugin/local.py:80 ../plugin/local.py:253
+#: plugin/local.py:79 plugin/local.py:253
 msgid "Description"
 msgstr "描述"
 
-#: ../plugin/local.py:81
-msgid "DHCP"
-msgstr "DHCP"
-
-#: ../plugin/local.py:82
+#: plugin/local.py:81
 msgid "Disable Timer"
 msgstr "禁用计时器"
 
-#: ../plugin/local.py:83
+#: plugin/local.py:82
+msgid "disabled"
+msgstr ""
+
+#: plugin/local.py:83
 msgid "Distro"
 msgstr "发行版本"
 
-#: ../plugin/local.py:84
+#: plugin/local.py:84
 msgid "Dolby"
 msgstr "杜比"
 
-#: ../plugin/local.py:85
+#: plugin/local.py:85
 msgid "Done"
 msgstr "完成"
 
-#: ../plugin/local.py:86
+#: plugin/local.py:86
 msgid "Download"
 msgstr "下载"
 
-#: ../plugin/local.py:87
+#: plugin/local.py:87
 msgid "Download Playlist for"
 msgstr "下载播放列表"
 
-#: ../plugin/local.py:88
+#: plugin/local.py:88
 msgid "Drivers"
 msgstr "驱动日期"
 
-#: ../plugin/local.py:89
+#: plugin/local.py:89
 msgid "Duration"
 msgstr "持续时间"
 
-#: ../plugin/local.py:90
+#: plugin/local.py:90
 msgid "Edit Timer"
 msgstr "编辑定时器"
 
-#: ../plugin/local.py:91
+#: plugin/local.py:91
 msgid "Enable Timer"
 msgstr "启用定时器"
 
-#: ../plugin/local.py:92
+#: plugin/local.py:92
 msgid "Start"
 msgstr "开始"
 
-#: ../plugin/local.py:93 ../plugin/local.py:353
+#: plugin/local.py:93 plugin/local.py:353
 msgid "End"
 msgstr "结束"
 
-#: ../plugin/local.py:94 ../plugin/local.py:252 ../plugin/local.py:350
+#: plugin/local.py:94 plugin/local.py:252 plugin/local.py:350
 msgid "Enabled"
 msgstr "启用"
 
-#: ../plugin/local.py:95
+#: plugin/local.py:95
 msgid "Encrypted"
 msgstr "加密"
 
-#: ../plugin/local.py:96
+#: plugin/local.py:96
 msgid "EPG"
 msgstr "EPG"
 
-#: ../plugin/local.py:97
+#: plugin/local.py:97
 msgid "Epg Search"
 msgstr "EPG 搜索"
 
-#: ../plugin/local.py:98
+#: plugin/local.py:98
 msgid "Include description"
 msgstr "包含描述"
 
-#: ../plugin/local.py:99
+#: plugin/local.py:99
 msgid "Error"
 msgstr "错误"
 
-#: ../plugin/local.py:100
+#: plugin/local.py:100
 msgid "Every"
 msgstr "每天"
 
-#: ../plugin/local.py:101
+#: plugin/local.py:101
 msgid "Extras"
 msgstr "扩展设置"
 
-#: ../plugin/local.py:102
+#: plugin/local.py:102
 msgid "finished"
 msgstr "完成"
 
-#: ../plugin/local.py:103
+#: plugin/local.py:103
 msgid "Firmware version"
 msgstr "固件版本"
 
-#: ../plugin/local.py:104
-msgid "Frontprocessor Version"
-msgstr "前端版本"
-
-#: ../plugin/local.py:105
+#: plugin/local.py:105
 msgid "Free"
 msgstr "空闲的"
 
-#: ../plugin/local.py:106
+#: plugin/local.py:106
 msgid "Free Memory"
 msgstr "空闲内存"
 
-#: ../plugin/local.py:107
+#: plugin/local.py:107
 msgid "Gateway"
 msgstr "网关地址"
 
-#: ../plugin/local.py:108
+#: plugin/local.py:108
 msgid "Grab Screenshot"
 msgstr "截屏"
 
-#: ../plugin/local.py:109
+#: plugin/local.py:109
 msgid "Gui version"
 msgstr "GUI 版本"
 
-#: ../plugin/local.py:110
+#: plugin/local.py:110
 msgid "Hide full remote"
 msgstr "隐藏完整的遥控"
 
-#: ../plugin/local.py:111
+#: plugin/local.py:111
 msgid "High Resolution"
 msgstr "高分辨率"
 
-#: ../plugin/local.py:112
+#: plugin/local.py:112
 msgid "Hard disk model"
 msgstr "硬盘型号"
 
-#: ../plugin/local.py:113
+#: plugin/local.py:113
 msgid "Hour"
 msgstr "小时"
 
-#: ../plugin/local.py:114
+#: plugin/local.py:114
 msgid "IPv4 address"
 msgstr "IPv4地址"
 
-#: ../plugin/local.py:118
+#: plugin/local.py:118
 msgid "IPv6 address(es)"
 msgstr "IPv6地址"
 
-#: ../plugin/local.py:119
+#: plugin/local.py:119
 msgid "Infos"
 msgstr "信息"
 
-#: ../plugin/local.py:120
+#: plugin/local.py:120
 msgid "Instant Record"
 msgstr "录制"
 
-#: ../plugin/local.py:121
+#: plugin/local.py:121
 msgid "Javascript Libraries"
 msgstr "JavaScript库"
 
-#: ../plugin/local.py:122
+#: plugin/local.py:122
 msgid "Just play"
 msgstr "仅播放"
 
-#: ../plugin/local.py:123
+#: plugin/local.py:123
 msgid "Kernel"
 msgstr "内核版本"
 
-#: ../plugin/local.py:124
+#: plugin/local.py:124
 msgid "LICENSE"
 msgstr "许可证"
 
-#: ../plugin/local.py:125
+#: plugin/local.py:125
 msgid "loading"
 msgstr "加载中"
 
-#: ../plugin/local.py:126
+#: plugin/local.py:126
 msgid "Location"
 msgstr "位置"
 
-#: ../plugin/local.py:127
+#: plugin/local.py:127
 msgid "Locked"
 msgstr "锁定"
 
-#: ../plugin/local.py:128
+#: plugin/local.py:128
 msgid "MAC address"
 msgstr "MAC 地址"
 
-#: ../plugin/local.py:129
+#: plugin/local.py:129
 msgid "Main"
 msgstr "主要"
 
-#: ../plugin/local.py:130
+#: plugin/local.py:130
 msgid "Minute"
 msgstr "分钟"
 
-#: ../plugin/local.py:131
+#: plugin/local.py:131
 msgid "Model"
 msgstr "型号"
 
-#: ../plugin/local.py:132
+#: plugin/local.py:132
 msgid "Movielist"
 msgstr "电影列表"
 
-#: ../plugin/local.py:133
+#: plugin/local.py:133
 msgid "Movies"
 msgstr "影音"
 
-#: ../plugin/local.py:134
+#: plugin/local.py:134
 msgid "MultiEPG"
 msgstr "多路EPG"
 
-#: ../plugin/local.py:135
+#: plugin/local.py:135
 msgid "Name"
 msgstr "频道名"
 
-#: ../plugin/local.py:136
+#: plugin/local.py:136
 msgid "Namespace"
 msgstr "命名空间"
 
-#: ../plugin/local.py:137
+#: plugin/local.py:137
 msgid "Network Interface"
 msgstr "网络接口"
 
-#: ../plugin/local.py:138
+#: plugin/local.py:138
 msgid "no description available"
 msgstr "无可用说明"
 
-#: ../plugin/local.py:139
+#: plugin/local.py:139
 msgid "Sorry this page is not yet implemented"
 msgstr "对不起，这一页还未完成"
 
-#: ../plugin/local.py:140
+#: plugin/local.py:140
 msgid "Nothing"
 msgstr "什么也不做"
 
-#: ../plugin/local.py:141
+#: plugin/local.py:141
 msgid "Nothing playing."
 msgstr "没有什么可以播放"
 
-#: ../plugin/local.py:142
+#: plugin/local.py:142
 msgid "Now"
 msgstr "现在"
 
-#: ../plugin/local.py:143
+#: plugin/local.py:143
 msgid "System OE"
 msgstr "OE 系统"
 
-#: ../plugin/local.py:144
+#: plugin/local.py:144
 msgid "On"
 msgstr "On"
 
-#: ../plugin/local.py:145
+#: plugin/local.py:145
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "用于Linux机顶盒的开源Web界面"
 
-#: ../plugin/local.py:146 ../plugin/plugin.py:110
+#: plugin/local.py:146 plugin/plugin.py:119
 msgid "Show box name in header"
 msgstr "在标题中显示机顶盒名称"
 
-#: ../plugin/local.py:147 ../plugin/plugin.py:112
+#: plugin/local.py:147 plugin/plugin.py:121
 msgid "Use custom box name"
 msgstr "使用自定义名称"
 
-#: ../plugin/local.py:148 ../plugin/plugin.py:114
+#: plugin/local.py:148 plugin/plugin.py:123
 msgid "Custom box name"
 msgstr "自定义名称"
 
-#: ../plugin/local.py:149
+#: plugin/local.py:149
 msgid "OSD"
 msgstr "OSD"
 
-#: ../plugin/local.py:150
+#: plugin/local.py:150
 msgid "Open in new window"
 msgstr "在新窗口中打开"
 
-#: ../plugin/local.py:151
+#: plugin/local.py:151
 msgid "Playback"
 msgstr "回放"
 
-#: ../plugin/local.py:152
+#: plugin/local.py:152
 msgid "Playlist"
 msgstr "播放列表"
 
-#: ../plugin/local.py:153
+#: plugin/local.py:153
 msgid "Power Control"
 msgstr "电源控制"
 
-#: ../plugin/local.py:154
+#: plugin/local.py:154
 msgid "Provider"
 msgstr "服务提供商"
 
-#: ../plugin/local.py:155
+#: plugin/local.py:155
 msgid "Providers"
 msgstr "供应商"
 
-#: ../plugin/local.py:156
+#: plugin/local.py:156
 msgid "Radio"
 msgstr "音频节目"
 
-#: ../plugin/local.py:157
+#: plugin/local.py:157
 msgid "Reboot Box"
 msgstr "重启机顶盒"
 
-#: ../plugin/local.py:158
+#: plugin/local.py:158
 msgid "Recording Status"
 msgstr "录制信息"
 
-#: ../plugin/local.py:159 ../plugin/local.py:342
+#: plugin/local.py:159 plugin/local.py:342
 msgid "Refresh"
 msgstr "刷新"
 
-#: ../plugin/local.py:160
+#: plugin/local.py:160
 msgid "Refresh automatically every"
 msgstr "自动刷新"
 
-#: ../plugin/local.py:161
+#: plugin/local.py:161
 msgid "Refresh Timer"
 msgstr "刷新定时器"
 
-#: ../plugin/local.py:162
+#: plugin/local.py:162
 msgid "Remote"
 msgstr "远程遥控"
 
-#: ../plugin/local.py:163
+#: plugin/local.py:163
 msgid "Rename Recording"
 msgstr "重命名录制"
 
-#: ../plugin/local.py:164
+#: plugin/local.py:164
 msgid "Really rename the recording"
 msgstr "确定要重命名录制？"
 
-#: ../plugin/local.py:165
+#: plugin/local.py:165
 msgid "Repeated"
 msgstr "重复"
 
-#: ../plugin/local.py:166
+#: plugin/local.py:166
 msgid "Restart GUI"
 msgstr "重新启动GUI"
 
-#: ../plugin/local.py:167
+#: plugin/local.py:167
 msgid "running"
 msgstr "运行"
 
-#: ../plugin/local.py:168
+#: plugin/local.py:168
 msgid "Safe mode"
 msgstr "安全模式"
 
-#: ../plugin/local.py:169
+#: plugin/local.py:169
 msgid "Satellites"
 msgstr "卫星"
 
-#: ../plugin/local.py:170
+#: plugin/local.py:170
 msgid "Satfinder"
 msgstr "寻星"
 
-#: ../plugin/local.py:171 ../plugin/local.py:321 ../plugin/local.py:373
-#: ../plugin/plugin.py:93
+#: plugin/local.py:171 plugin/local.py:321 plugin/local.py:373
+#: plugin/plugin.py:102
 msgid "Save"
 msgstr "保存"
 
-#: ../plugin/local.py:172
+#: plugin/local.py:172
 msgid "Screenshot"
 msgstr "截屏"
 
-#: ../plugin/local.py:173 ../plugin/local.py:379
+#: plugin/local.py:173 plugin/local.py:379
 msgid "Search"
 msgstr "搜索"
 
-#: ../plugin/local.py:174
+#: plugin/local.py:174
 msgid "Search IMDb"
 msgstr "搜索IMDB"
 
-#: ../plugin/local.py:175
+#: plugin/local.py:175
 msgid "Search KinoPoisk"
 msgstr "搜索 KinoPoisk"
 
-#: ../plugin/local.py:176
+#: plugin/local.py:176
 msgid "seconds"
 msgstr "秒"
 
-#: ../plugin/local.py:177
+#: plugin/local.py:177
 msgid "Send Message"
 msgstr "发送信息"
 
-#: ../plugin/local.py:178
+#: plugin/local.py:178
 msgid "Waiting for answer ..."
 msgstr "等待响应…"
 
-#: ../plugin/local.py:179
+#: plugin/local.py:179
 msgid "Send a Message"
 msgstr "发送消息"
 
-#: ../plugin/local.py:180
+#: plugin/local.py:180
 msgid "Service"
 msgstr "频道"
 
-#: ../plugin/local.py:182
+#: plugin/local.py:182
 msgid "Bouquet Editor"
 msgstr "节目分组编辑器"
 
-#: ../plugin/local.py:183
+#: plugin/local.py:183
 msgid "(shift + click for long pressure)"
 msgstr "（长按Shift +点击）"
 
-#: ../plugin/local.py:184
+#: plugin/local.py:184
 msgid "Show Full OpenWebif"
 msgstr "显示完整的OpenWebif"
 
-#: ../plugin/local.py:185
+#: plugin/local.py:185
 msgid "Show full remote"
 msgstr "显示完整的遥控"
 
-#: ../plugin/local.py:186
+#: plugin/local.py:186
 msgid "Show EPG for"
 msgstr "显示EPG为"
 
-#: ../plugin/local.py:187
+#: plugin/local.py:187
 msgid "Shutdown"
 msgstr "关机"
 
-#: ../plugin/local.py:188
+#: plugin/local.py:188
 msgid "Site and sources"
 msgstr "来源站点"
 
-#: ../plugin/local.py:189
+#: plugin/local.py:189
 msgid "SNR"
 msgstr "SNR信噪比"
 
-#: ../plugin/local.py:190
+#: plugin/local.py:190
 msgid "Software"
 msgstr "软件开发"
 
-#: ../plugin/local.py:191
+#: plugin/local.py:191
 msgid "Standby"
 msgstr "待机"
 
-#: ../plugin/local.py:192
+#: plugin/local.py:192
 msgid "Standby Toggle"
 msgstr "待机开关"
 
-#: ../plugin/local.py:193
+#: plugin/local.py:193
 msgid "Start time is after end time"
 msgstr "开始时间为结束时间后"
 
-#: ../plugin/local.py:194
+#: plugin/local.py:194
 msgid "Start Instant Record"
 msgstr "开始录制"
 
-#: ../plugin/local.py:195
+#: plugin/local.py:195
 msgid "Stream"
 msgstr "串流服务"
 
-#: ../plugin/local.py:196
+#: plugin/local.py:196
 msgid "Subnet mask"
 msgstr "子网掩码"
 
-#: ../plugin/local.py:197
+#: plugin/local.py:197
 msgid "Subservices"
 msgstr "子服务"
 
-#: ../plugin/local.py:198 ../plugin/local.py:303
+#: plugin/local.py:198 plugin/local.py:303
 msgid "Tags"
 msgstr "标签"
 
-#: ../plugin/local.py:199
+#: plugin/local.py:199
 msgid "Teletext"
 msgstr "图文电视"
 
-#: ../plugin/local.py:200
+#: plugin/local.py:200
 msgid "Television"
 msgstr "电视节目"
 
-#: ../plugin/local.py:201
+#: plugin/local.py:201
 msgid "Template Engine"
 msgstr "模板引擎"
 
-#: ../plugin/local.py:202
+#: plugin/local.py:202
 msgid "Text"
 msgstr "文本"
 
-#: ../plugin/local.py:203
+#: plugin/local.py:203
 msgid "Time"
 msgstr "时间"
 
-#: ../plugin/local.py:204
+#: plugin/local.py:204
 msgid "Timeout"
 msgstr "超时设置"
 
-#: ../plugin/local.py:205
+#: plugin/local.py:205
 msgid "Timer added"
 msgstr "添加定时器"
 
-#: ../plugin/local.py:206
+#: plugin/local.py:206
 msgid "Timerlist"
 msgstr "定时器列表"
 
-#: ../plugin/local.py:207
+#: plugin/local.py:207
 msgid "New Name"
 msgstr "新的名称"
 
-#: ../plugin/local.py:208
+#: plugin/local.py:208
 msgid "Autotimer Preview"
 msgstr "自动计时器预览"
 
-#: ../plugin/local.py:209
+#: plugin/local.py:209
 msgid "Timer"
 msgstr "定时器"
 
-#: ../plugin/local.py:210 ../plugin/local.py:324
+#: plugin/local.py:210 plugin/local.py:324
 msgid "Timers"
 msgstr "定时器"
 
-#: ../plugin/local.py:211
+#: plugin/local.py:211
 msgid "Title"
 msgstr "标题"
 
-#: ../plugin/local.py:212
+#: plugin/local.py:212
 msgid "Main Memory"
 msgstr "总内存"
 
-#: ../plugin/local.py:213
+#: plugin/local.py:213
 msgid "transcoded"
 msgstr "转码"
 
-#: ../plugin/local.py:214
+#: plugin/local.py:214
 msgid "Transcode"
 msgstr "转码"
 
-#: ../plugin/local.py:215
+#: plugin/local.py:215
 msgid "Tuner Bit Error Rate BER"
 msgstr "误码率"
 
-#: ../plugin/local.py:216
+#: plugin/local.py:216
 msgid "Tuner Number"
 msgstr "调谐器编号"
 
-#: ../plugin/local.py:217
+#: plugin/local.py:217
 msgid "Tuner Signal"
 msgstr "调谐器信息"
 
-#: ../plugin/local.py:218
+#: plugin/local.py:218
 msgid "Tuner Signal Quality SNR"
 msgstr "SNR信噪比（%）"
 
-#: ../plugin/local.py:219
+#: plugin/local.py:219
 msgid "Tuner Signal Quality SNR_DB"
 msgstr "SNR信号质量（DB）"
 
-#: ../plugin/local.py:220
+#: plugin/local.py:220
 msgid "Tuner Signal Power AGC"
 msgstr "AGC信号电平"
 
-#: ../plugin/local.py:221
+#: plugin/local.py:221
 msgid "Tuner Type"
 msgstr "调制类型"
 
-#: ../plugin/local.py:222
+#: plugin/local.py:222
 msgid "Tuners"
 msgstr "调谐器"
 
-#: ../plugin/local.py:223
+#: plugin/local.py:223
 msgid "TV"
 msgstr "电视节目"
 
-#: ../plugin/local.py:224
+#: plugin/local.py:224
 msgid "TV Multi EPG"
 msgstr "多路EPG"
 
-#: ../plugin/local.py:225
+#: plugin/local.py:225
 msgid "Type"
 msgstr "类型"
 
-#: ../plugin/local.py:226
+#: plugin/local.py:226
 msgid "Upcoming Events"
 msgstr "节目预告"
 
-#: ../plugin/local.py:227
+#: plugin/local.py:227
 msgid "Version"
 msgstr "版本"
 
-#: ../plugin/local.py:228
+#: plugin/local.py:228
 msgid "Video"
 msgstr "视频"
 
-#: ../plugin/local.py:229
+#: plugin/local.py:229
 msgid "Video Height"
 msgstr "视频高度"
 
-#: ../plugin/local.py:230
+#: plugin/local.py:230
 msgid "Video Wide"
 msgstr "视频宽度"
 
-#: ../plugin/local.py:231
+#: plugin/local.py:231
 msgid "Video Width"
 msgstr "视频宽度"
 
-#: ../plugin/local.py:232
+#: plugin/local.py:232
 msgid "VPS"
 msgstr "VPS"
 
-#: ../plugin/local.py:233
+#: plugin/local.py:233
 msgid "Volume"
 msgstr "音量"
 
-#: ../plugin/local.py:234
+#: plugin/local.py:234
 msgid "Volume Control"
 msgstr "音量控制"
 
-#: ../plugin/local.py:235
+#: plugin/local.py:235
 msgid "waiting"
 msgstr "等待"
 
-#: ../plugin/local.py:236
+#: plugin/local.py:236
 msgid "Warning"
 msgstr "警告"
 
-#: ../plugin/local.py:237
+#: plugin/local.py:237
 msgid "Yes/No"
 msgstr "Yes/No"
 
-#: ../plugin/local.py:238
+#: plugin/local.py:238
 msgid "Zap"
 msgstr "切换频道"
 
-#: ../plugin/local.py:239
+#: plugin/local.py:239
 msgid "zap before Stream"
 msgstr "串流之前切换频道"
 
-#: ../plugin/local.py:240
+#: plugin/local.py:240
 msgid "Zap to"
 msgstr "切换到"
 
-#: ../plugin/local.py:241
+#: plugin/local.py:241
 msgid "Zapped to"
 msgstr "快速切换到"
 
-#: ../plugin/local.py:242
+#: plugin/local.py:242
 msgid "Translation to Spanish"
 msgstr "西班牙语翻译"
 
-#: ../plugin/local.py:243
+#: plugin/local.py:243
 msgid "All Files of this Software are open source software;"
 msgstr "本软件的所有文件都是开源软件"
 
-#: ../plugin/local.py:244
+#: plugin/local.py:244
 msgid "you can redistribute it and/or modify it under the"
 msgstr "您可以重新分配或修改它"
 
-#: ../plugin/local.py:245
+#: plugin/local.py:245
 msgid "terms of the GNU General Public License version 2 as"
 msgstr "GPL V2"
 
-#: ../plugin/local.py:246
+#: plugin/local.py:246
 msgid "published by the Free Software Foundation."
 msgstr "由自由软件基金会发布。"
 
-#: ../plugin/local.py:247
+#: plugin/local.py:247
 msgid ""
 "All Files of this Software are open source software; you can redistribute it "
 "and/or modify it under the terms of the GNU General Public License version 2 "
@@ -1452,567 +1517,691 @@ msgstr ""
 "本软件的所有文件都是开源软件；您可以在遵循GPL V2协议的基础上重新分配和修改"
 "它。"
 
-#: ../plugin/local.py:248
+#: plugin/local.py:248
 msgid "Root"
 msgstr "Root"
 
-#: ../plugin/local.py:250
+#: plugin/local.py:250
 msgid "AutoTimer List"
 msgstr "自动定时器列表"
 
-#: ../plugin/local.py:251
+#: plugin/local.py:251
 msgid "AutoTimer Edit"
 msgstr "自动计时器编辑"
 
-#: ../plugin/local.py:254
+#: plugin/local.py:254
 msgid "Match title"
 msgstr "匹配标题"
 
-#: ../plugin/local.py:255
+#: plugin/local.py:255
 msgid "EPG encoding"
 msgstr "EPG 编码"
 
-#: ../plugin/local.py:256
+#: plugin/local.py:256
 msgid "Search type"
 msgstr "搜索类型"
 
-#: ../plugin/local.py:257
+#: plugin/local.py:257
 msgid "partial match"
 msgstr "部分匹配"
 
-#: ../plugin/local.py:258
+#: plugin/local.py:258
 msgid "exact match"
 msgstr "精准匹配"
 
-#: ../plugin/local.py:259
+#: plugin/local.py:259
 msgid "description match"
 msgstr "描述匹配"
 
-#: ../plugin/local.py:260
+#: plugin/local.py:260
 msgid "title or description match"
 msgstr "标题或描述匹配"
 
-#: ../plugin/local.py:261
+#: plugin/local.py:261
 msgid "title or short description match"
 msgstr "标题或简介匹配"
 
-#: ../plugin/local.py:262
+#: plugin/local.py:262
 msgid "short description match"
 msgstr "简介匹配"
 
-#: ../plugin/local.py:263
+#: plugin/local.py:263
 msgid "start match"
 msgstr "开始匹配"
 
-#: ../plugin/local.py:264
+#: plugin/local.py:264
 msgid "Search strictness"
 msgstr "搜索（严格）"
 
-#: ../plugin/local.py:265
+#: plugin/local.py:265
 msgid "case-sensitive search"
 msgstr "搜索（区分大小写）"
 
-#: ../plugin/local.py:266
+#: plugin/local.py:266
 msgid "case-insensitive search"
 msgstr "搜索（不区分大小写）"
 
-#: ../plugin/local.py:267
+#: plugin/local.py:267
 msgid "Timer type"
 msgstr "计时器类型"
 
-#: ../plugin/local.py:268
+#: plugin/local.py:268
 msgid "record"
 msgstr "录制"
 
-#: ../plugin/local.py:269
+#: plugin/local.py:269
 msgid "zap"
 msgstr "切换频道"
 
-#: ../plugin/local.py:270
+#: plugin/local.py:270
 msgid "Override found with alternative service"
 msgstr "覆盖替代频道"
 
-#: ../plugin/local.py:271
+#: plugin/local.py:271
 msgid "Only match during timespan"
 msgstr "仅在匹配期间"
 
-#: ../plugin/local.py:272
+#: plugin/local.py:272
 msgid "Begin of timespan"
 msgstr "开始时间"
 
-#: ../plugin/local.py:273
+#: plugin/local.py:273
 msgid "End of Timespan"
 msgstr "结束时间"
 
-#: ../plugin/local.py:274
+#: plugin/local.py:274
 msgid "Restrict to events on certain dates"
 msgstr "限制在特定日期的事件"
 
-#: ../plugin/local.py:275
+#: plugin/local.py:275
 msgid "Not after"
 msgstr "不在这之后"
 
-#: ../plugin/local.py:276
+#: plugin/local.py:276
 msgid "Not before"
 msgstr "不在这之前"
 
-#: ../plugin/local.py:277
+#: plugin/local.py:277
 msgid "Custom offset"
 msgstr "自定义偏移"
 
-#: ../plugin/local.py:278
+#: plugin/local.py:278
 msgid "Offset before recording (in m)"
 msgstr "录制前偏移（分钟）"
 
-#: ../plugin/local.py:279
+#: plugin/local.py:279
 msgid "Offset after recording (in m)"
 msgstr "录制后偏移（分钟）"
 
-#: ../plugin/local.py:280
+#: plugin/local.py:280
 msgid "Set maximum duration"
 msgstr "设置最大持续时间"
 
-#: ../plugin/local.py:281
+#: plugin/local.py:281
 msgid "After event"
 msgstr "事件之后"
 
-#: ../plugin/local.py:282
+#: plugin/local.py:282
 msgid "standard"
 msgstr "标准"
 
-#: ../plugin/local.py:283
+#: plugin/local.py:283
 msgid "auto"
 msgstr "自动"
 
-#: ../plugin/local.py:284
+#: plugin/local.py:284
 msgid "do nothing"
 msgstr "什么也不做"
 
-#: ../plugin/local.py:285
+#: plugin/local.py:285
 msgid "go to standby"
 msgstr "进入待机状态"
 
-#: ../plugin/local.py:286
+#: plugin/local.py:286
 msgid "go to deep standby"
 msgstr "深度待机"
 
-#: ../plugin/local.py:287
+#: plugin/local.py:287
 msgid "Execute \"after event\" during timespan"
 msgstr "执行（在事件后的时间跨度内）"
 
-#: ../plugin/local.py:288
+#: plugin/local.py:288
 msgid "Begin of \"after event\" timespan"
 msgstr "开始（在事件后的时间跨度内）"
 
-#: ../plugin/local.py:289
+#: plugin/local.py:289
 msgid "End of \"after event\" timespan"
 msgstr "结束（在事件后的时间跨度内）"
 
-#: ../plugin/local.py:290
+#: plugin/local.py:290
 msgid "Record a maximum of x times"
 msgstr "最大录制次数"
 
-#: ../plugin/local.py:291
+#: plugin/local.py:291
 msgid "Amount of recordings left"
 msgstr "留下的记录量"
 
-#: ../plugin/local.py:292 ../plugin/local.py:363
+#: plugin/local.py:292 plugin/local.py:363
 msgid "Never"
 msgstr "从不"
 
-#: ../plugin/local.py:293
+#: plugin/local.py:293
 msgid "Monthly"
 msgstr "月"
 
-#: ../plugin/local.py:294
+#: plugin/local.py:294
 msgid "Weekly (Sunday)"
 msgstr "每周（星期日）"
 
-#: ../plugin/local.py:295
+#: plugin/local.py:295
 msgid "Weekly (Monday)"
 msgstr "每周（星期一）"
 
-#: ../plugin/local.py:296
+#: plugin/local.py:296
 msgid "Reset count"
 msgstr "复位计数"
 
-#: ../plugin/local.py:297
+#: plugin/local.py:297
 msgid "Require description to be unique"
 msgstr "需要独特的描述"
 
-#: ../plugin/local.py:298
+#: plugin/local.py:298
 msgid "No"
 msgstr "No"
 
-#: ../plugin/local.py:299
+#: plugin/local.py:299
 msgid "On same service"
 msgstr "在相同服务"
 
-#: ../plugin/local.py:300
+#: plugin/local.py:300
 msgid "On any service"
 msgstr "在任何服务"
 
-#: ../plugin/local.py:301
+#: plugin/local.py:301
 msgid "Any service/recording"
 msgstr "任何频道/录制"
 
-#: ../plugin/local.py:302
+#: plugin/local.py:302
 msgid "Use a custom location"
 msgstr "使用自定义位置"
 
-#: ../plugin/local.py:304
+#: plugin/local.py:304
 msgid "select Tags"
 msgstr "选择标签"
 
-#: ../plugin/local.py:306
+#: plugin/local.py:306
 msgid "select Channels"
 msgstr "选择频道"
 
-#: ../plugin/local.py:308
+#: plugin/local.py:308
 msgid "select Bouquets"
 msgstr "选择节目分组"
 
-#: ../plugin/local.py:309
+#: plugin/local.py:309
 msgid "Enable Filtering"
 msgstr "启用过滤"
 
-#: ../plugin/local.py:310
+#: plugin/local.py:310
 msgid "Include"
 msgstr "包含"
 
-#: ../plugin/local.py:311
+#: plugin/local.py:311
 msgid "Exclude"
 msgstr "排除"
 
-#: ../plugin/local.py:312
+#: plugin/local.py:312
 msgid "in Title"
 msgstr "从标题"
 
-#: ../plugin/local.py:313
+#: plugin/local.py:313
 msgid "in Shortdescription"
 msgstr "从简介"
 
-#: ../plugin/local.py:314
+#: plugin/local.py:314
 msgid "in Description"
 msgstr "从描述"
 
-#: ../plugin/local.py:315
+#: plugin/local.py:315
 msgid "on Weekday"
 msgstr "在工作日"
 
-#: ../plugin/local.py:316
+#: plugin/local.py:316
 msgid "Weekend"
 msgstr "周末"
 
-#: ../plugin/local.py:317
+#: plugin/local.py:317
 msgid "Weekday"
 msgstr "工作日"
 
-#: ../plugin/local.py:318
+#: plugin/local.py:318
 msgid "Add"
 msgstr "添加"
 
-#: ../plugin/local.py:319
+#: plugin/local.py:319
 msgid "Delete"
 msgstr "删除"
 
-#: ../plugin/local.py:320 ../plugin/local.py:372 ../plugin/local.py:380
+#: plugin/local.py:320 plugin/local.py:372 plugin/local.py:380
 msgid "Reload"
 msgstr "重新载入"
 
-#: ../plugin/local.py:322
+#: plugin/local.py:322
 msgid "Parse"
 msgstr "分析"
 
-#: ../plugin/local.py:323
+#: plugin/local.py:323
 msgid "Simulate"
 msgstr "模拟"
 
-#: ../plugin/local.py:326
+#: plugin/local.py:326
 msgid "Do you really want to delete the AT"
 msgstr "你真的想删除在"
 
-#: ../plugin/local.py:327
+#: plugin/local.py:327
 msgid "Label series"
 msgstr "标签系列"
 
-#: ../plugin/local.py:329
+#: plugin/local.py:329
 msgid "AutoTimer Settings"
 msgstr "自动定时设置"
 
-#: ../plugin/local.py:330
+#: plugin/local.py:330
 msgid "AutoPoll"
 msgstr "自动轮巡"
 
-#: ../plugin/local.py:331
+#: plugin/local.py:331
 msgid "Interval (in h)"
 msgstr "间隔（小时）"
 
-#: ../plugin/local.py:332
+#: plugin/local.py:332
 msgid "Max Days"
 msgstr "最大日期"
 
-#: ../plugin/local.py:333
+#: plugin/local.py:333
 msgid "Try Guessing"
 msgstr "尝试猜测"
 
-#: ../plugin/local.py:334
+#: plugin/local.py:334
 msgid "Fastscan"
 msgstr "快速扫描"
 
-#: ../plugin/local.py:335
+#: plugin/local.py:335
 msgid "Show in Extensionsmenu"
 msgstr "在扩展菜单中显示"
 
-#: ../plugin/local.py:336
+#: plugin/local.py:336
 msgid "Disabled on Conflict"
 msgstr "禁用（冲突时）"
 
-#: ../plugin/local.py:337
+#: plugin/local.py:337
 msgid "Add Similar on Conflict"
 msgstr "添加类似（冲突时）"
 
-#: ../plugin/local.py:338
+#: plugin/local.py:338
 msgid "Notify if Conflict"
 msgstr "通知（发生冲突时）"
 
-#: ../plugin/local.py:339
+#: plugin/local.py:339
 msgid "Notify if Similar"
 msgstr "通知（如果类似）"
 
-#: ../plugin/local.py:340
+#: plugin/local.py:340
 msgid "Add Autotimer to Tags"
 msgstr "添加自动定时器到标签"
 
-#: ../plugin/local.py:341
+#: plugin/local.py:341
 msgid "Add Name to Tags"
 msgstr "添加名称到标签"
 
-#: ../plugin/local.py:343
+#: plugin/local.py:343
 msgid "None"
 msgstr "无"
 
-#: ../plugin/local.py:346
+#: plugin/local.py:346
 msgid "Editor"
 msgstr "编辑"
 
-#: ../plugin/local.py:347
+#: plugin/local.py:347
 msgid "Plain"
 msgstr "普通"
 
-#: ../plugin/local.py:348
+#: plugin/local.py:348
 msgid "Wizzard"
 msgstr "向导"
 
-#: ../plugin/local.py:351
+#: plugin/local.py:351
 msgid "Enable Messages"
 msgstr "启用消息"
 
-#: ../plugin/local.py:354
+#: plugin/local.py:354
 msgid "Delay Standby"
 msgstr "延迟待机"
 
-#: ../plugin/local.py:355
+#: plugin/local.py:355
 msgid "Interval (min.)"
 msgstr "间隔（分钟）"
 
-#: ../plugin/local.py:356
+#: plugin/local.py:356
 msgid "Interval (sec.)"
 msgstr "间隔（秒）"
 
-#: ../plugin/local.py:357
-msgid "Afterevent"
-msgstr "事件后"
-
-#: ../plugin/local.py:358
+#: plugin/local.py:358
 msgid "Force"
 msgstr "强制"
 
-#: ../plugin/local.py:359
+#: plugin/local.py:359
 msgid "Wakeup"
 msgstr "唤醒"
 
-#: ../plugin/local.py:360
+#: plugin/local.py:360
 msgid "Inherit Autotimer"
 msgstr "沿用自动计时器"
 
-#: ../plugin/local.py:361
+#: plugin/local.py:361
 msgid "Parse Autotimer"
 msgstr "分析自动计时器"
 
-#: ../plugin/local.py:362
+#: plugin/local.py:362
 msgid "Always"
 msgstr "始终"
 
-#: ../plugin/local.py:364
+#: plugin/local.py:364
 msgid "Background only"
 msgstr "只有背景"
 
-#: ../plugin/local.py:365
+#: plugin/local.py:365
 msgid "Ask, default Yes"
 msgstr "要求，默认是"
 
-#: ../plugin/local.py:366
+#: plugin/local.py:366
 msgid "Ask, default No"
 msgstr "要求，默认否"
 
-#: ../plugin/local.py:367
+#: plugin/local.py:367
 msgid "Method"
 msgstr "模式"
 
-#: ../plugin/local.py:368
+#: plugin/local.py:368
 msgid "Visibly"
 msgstr "可见"
 
-#: ../plugin/local.py:369
+#: plugin/local.py:369
 msgid "Picture in Picture"
 msgstr "画中画"
 
-#: ../plugin/local.py:370
+#: plugin/local.py:370
 msgid "Picture in Picture (hidden)"
 msgstr "画中画（隐藏）"
 
-#: ../plugin/local.py:371
+#: plugin/local.py:371
 msgid "Fake Recording"
 msgstr "伪造录制"
 
-#: ../plugin/local.py:374
+#: plugin/local.py:374
 msgid "Refresh now"
 msgstr "立即刷新"
 
-#: ../plugin/local.py:376
+#: plugin/local.py:376
 msgid "Add Provider as new Bouquet"
 msgstr "添加供应商为节目分组"
 
-#: ../plugin/local.py:377
+#: plugin/local.py:377
 msgid "Add channel(s) to Bouquet"
 msgstr "添加频道到节目分组"
 
-#: ../plugin/local.py:378
+#: plugin/local.py:378
 msgid "Add channel(s) as alternate"
 msgstr "添加频道作为替代"
 
-#: ../plugin/local.py:381
+#: plugin/local.py:381
 msgid "Export"
 msgstr "导出"
 
-#: ../plugin/local.py:382
+#: plugin/local.py:382
 msgid "Import"
 msgstr "导入"
 
-#: ../plugin/local.py:383
+#: plugin/local.py:383
 msgid "Add Bouquet"
 msgstr "增加节目分组"
 
-#: ../plugin/local.py:384
+#: plugin/local.py:384
 msgid "Rename Bouquet"
 msgstr "重命名节目分组"
 
-#: ../plugin/local.py:385
+#: plugin/local.py:385
 msgid "Delete Bouquet"
 msgstr "删除节目分组"
 
-#: ../plugin/local.py:386
+#: plugin/local.py:386
 msgid "Add Marker"
 msgstr "添加标记"
 
-#: ../plugin/local.py:387
+#: plugin/local.py:387
 msgid "Rename"
 msgstr "重命名"
 
-#: ../plugin/local.py:388
+#: plugin/local.py:388
 msgid "Delete Channel(s)"
 msgstr "删除频道"
 
-#: ../plugin/local.py:389
+#: plugin/local.py:389
 msgid "Do you really want to delete the channel(s)"
 msgstr "你真的想删除该频道？"
 
-#: ../plugin/local.py:390
+#: plugin/local.py:390
 msgid "Do you really want to delete the bouquet"
 msgstr "你真的要删除节目分组？"
 
-#: ../plugin/local.py:391
+#: plugin/local.py:391
 msgid "Name of the Bouquet"
 msgstr "节目分组名称"
 
-#: ../plugin/local.py:392
+#: plugin/local.py:392
 msgid "Name of the Marker"
 msgstr "标记名称"
 
-#: ../plugin/local.py:393
+#: plugin/local.py:393
 msgid "Enter new name for the bouquet"
 msgstr "为节目分组输入新名称"
 
-#: ../plugin/local.py:394
+#: plugin/local.py:394
 msgid "Enter new name for the marker"
 msgstr "为标记输入新的名称"
 
-#: ../plugin/local.py:395
+#: plugin/local.py:395
 msgid "Please enter filename"
 msgstr "请输入文件名"
 
-#: ../plugin/local.py:396
+#: plugin/local.py:396
 msgid "Do you really want to restore from file"
 msgstr "你真的想从文件中恢复？"
 
-#: ../plugin/plugin.py:94
+#: plugin/local.py:398
+msgid "via"
+msgstr ""
+
+#: plugin/local.py:399
+msgid "Record+ZAP"
+msgstr ""
+
+#: plugin/local.py:400
+msgid "Pmtpid"
+msgstr ""
+
+#: plugin/local.py:401
+msgid "Apid"
+msgstr ""
+
+#: plugin/local.py:402
+msgid "Vpid"
+msgstr ""
+
+#: plugin/local.py:403
+msgid "Pcrpid"
+msgstr ""
+
+#: plugin/local.py:404
+msgid "Tsid"
+msgstr ""
+
+#: plugin/local.py:405
+msgid "Onid"
+msgstr ""
+
+#: plugin/local.py:406
+msgid "Sid"
+msgstr ""
+
+#: plugin/local.py:407
+msgid "Sref"
+msgstr ""
+
+#: plugin/local.py:408
+msgid "Orbital Position"
+msgstr ""
+
+#: plugin/local.py:410
+msgid "error! Loading Page"
+msgstr ""
+
+#: plugin/local.py:411
+msgid "Timer Added"
+msgstr ""
+
+#: plugin/local.py:412
+msgid "Event not found"
+msgstr ""
+
+#: plugin/local.py:413
+msgid "Show Picon in channel list"
+msgstr ""
+
+#: plugin/local.py:415
+msgid "OpenWebif Browser Settings"
+msgstr ""
+
+#: plugin/local.py:416
+msgid "OpenWebif Settings"
+msgstr ""
+
+#: plugin/local.py:417
+msgid "Theme"
+msgstr ""
+
+#: plugin/local.py:418
+msgid "Show Picons in channel list"
+msgstr ""
+
+#: plugin/local.py:419
+msgid "Spinner"
+msgstr ""
+
+#: plugin/local.py:420
+msgid "Display duration (s)"
+msgstr ""
+
+#: plugin/local.py:422
+msgid "Display Mode"
+msgstr ""
+
+#: plugin/local.py:423
+msgid "TV Guide"
+msgstr ""
+
+#: plugin/local.py:424
+msgid "Timeline"
+msgstr ""
+
+#: plugin/local.py:425
+msgid "Web TV"
+msgstr ""
+
+#: plugin/local.py:427
+msgid "Link Speed"
+msgstr ""
+
+#: plugin/local.py:428
+msgid "Network Shares"
+msgstr ""
+
+#: plugin/local.py:429
+msgid "using"
+msgstr ""
+
+#: plugin/plugin.py:103
 msgid "OpenWebif url: http://yourip:port"
 msgstr "OpenWebif 访问: http://您的IP地址:端口"
 
-#: ../plugin/plugin.py:108
+#: plugin/plugin.py:117
 msgid "OpenWebInterface Enabled"
 msgstr "启用 OpenWebInterface"
 
-#: ../plugin/plugin.py:115
+#: plugin/plugin.py:124
 msgid "HTTP port"
 msgstr "HTTP 端口"
 
-#: ../plugin/plugin.py:116
+#: plugin/plugin.py:125
 msgid "Enable HTTP Authentication"
 msgstr "启用HTTP认证"
 
-#: ../plugin/plugin.py:117
+#: plugin/plugin.py:126
 msgid "Enable HTTPS"
 msgstr "启用 HTTPS"
 
-#: ../plugin/plugin.py:119
+#: plugin/plugin.py:128
 msgid "HTTPS port"
 msgstr "HTTPS 端口"
 
-#: ../plugin/plugin.py:120
+#: plugin/plugin.py:129
 msgid "Enable HTTPS Authentication"
 msgstr "启用HTTPS认证"
 
-#: ../plugin/plugin.py:121
+#: plugin/plugin.py:130
 msgid "Require client cert for HTTPS"
 msgstr "HTTPS需要客户端证书"
 
-#: ../plugin/plugin.py:123
+#: plugin/plugin.py:132
 msgid "Enable Authentication for streaming"
 msgstr "启用串流验证"
 
-#: ../plugin/plugin.py:124
+#: plugin/plugin.py:133
 msgid "Disable access for user root"
 msgstr "禁用root用户接入"
 
-#: ../plugin/plugin.py:125
-msgid "Smart services renaming for XBMC"
-msgstr "为XBMC重命名智能服务"
+#: plugin/plugin.py:135
+msgid "Without auth only local access is allowed!"
+msgstr ""
 
-#: ../plugin/plugin.py:126
+#: plugin/plugin.py:136
+msgid "Enable access from VPNs"
+msgstr ""
+
+#: plugin/plugin.py:137
 msgid "Enable Parental Control"
 msgstr "启用家长控制"
 
-#: ../plugin/plugin.py:127
+#: plugin/plugin.py:138
 msgid "Add service name to stream information"
 msgstr "添加频道名称到数据流信息"
 
-#: ../plugin/plugin.py:129
+#: plugin/plugin.py:140
 msgid "Character encoding for EPG data"
 msgstr "EPG 编码特征"
 
-#: ../plugin/plugin.py:135 ../plugin/plugin.py:194 ../plugin/plugin.py:196
-#: ../plugin/plugin.py:198
+#: plugin/plugin.py:149 plugin/plugin.py:208 plugin/plugin.py:210
+#: plugin/plugin.py:212
 msgid "OpenWebif Configuration"
 msgstr "OpenWebif 配置"
+
+#~ msgid "Delete Movie"
+#~ msgstr "删除电影"
+
+#~ msgid "Really delete the movie"
+#~ msgstr "确定要删除电影?"
+
+#~ msgid "Afterevent"
+#~ msgstr "事件后"
+
+#~ msgid "Smart services renaming for XBMC"
+#~ msgstr "为XBMC重命名智能服务"

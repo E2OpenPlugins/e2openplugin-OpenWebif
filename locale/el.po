@@ -1,1454 +1,1519 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebIf\n"
-"POT-Creation-Date: 2016-08-04 03:44+0300\n"
+"POT-Creation-Date: 2016-11-24 15:30+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: MCelliot_g <mcelliot_g@hotmail.com>\n"
+"Last-Translator: neoatomic <neoatomic@users.noreply.github.com>\n"
 "Language-Team: satdreamgr\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
-#: ../plugin/controllers/BouquetEditor.py:82
+#: plugin/controllers/BouquetEditor.py:82
 msgid "one two three four unknown command"
 msgstr "ένα δύο τρία τέσσερα άγνωστη εντολή"
 
-#: ../plugin/controllers/BouquetEditor.py:88
-#: ../plugin/controllers/BouquetEditor.py:149
-#: ../plugin/controllers/BouquetEditor.py:194
+#: plugin/controllers/BouquetEditor.py:88
+#: plugin/controllers/BouquetEditor.py:149
+#: plugin/controllers/BouquetEditor.py:194
 msgid "No bouquet name given!"
 msgstr "Δεν δόθηκε όνομα μπουκέτου!"
 
-#: ../plugin/controllers/BouquetEditor.py:118
+#: plugin/controllers/BouquetEditor.py:118
 #, python-format
 msgid "Bouquet %s created."
 msgstr "Το μπουκέτο %s δημιουργήθηκε."
 
-#: ../plugin/controllers/BouquetEditor.py:120
+#: plugin/controllers/BouquetEditor.py:120
 msgid "Get mutable list for new created bouquet failed!"
 msgstr "Αποτυχία λήψης μεταβλητής λίστας για τα νεοδημιουργημένα μπουκέτα!"
 
-#: ../plugin/controllers/BouquetEditor.py:123
+#: plugin/controllers/BouquetEditor.py:123
 #, python-format
 msgid "Bouquet %s already exists."
 msgstr "Το μπουκέτο %s υπάρχει ήδη!"
 
-#: ../plugin/controllers/BouquetEditor.py:125
-#: ../plugin/controllers/BouquetEditor.py:435
+#: plugin/controllers/BouquetEditor.py:125
+#: plugin/controllers/BouquetEditor.py:435
 msgid "Bouquetlist is not editable!"
 msgstr "Αδυναμία επεξεργασίας λίστας μπουκέτου!"
 
-#: ../plugin/controllers/BouquetEditor.py:127
+#: plugin/controllers/BouquetEditor.py:127
 msgid "Multi-Bouquet is not enabled!"
 msgstr "Τα Πολλαπλά Μπουκέτα είναι ανενεργά!"
 
-#: ../plugin/controllers/BouquetEditor.py:133
+#: plugin/controllers/BouquetEditor.py:133
 msgid "No provider given!"
 msgstr "Δεν δόθηκε πάροχος!"
 
-#: ../plugin/controllers/BouquetEditor.py:180
+#: plugin/controllers/BouquetEditor.py:180
 #, python-format
 msgid "Bouquet %s removed failed."
 msgstr "Αποτυχία αφαίρεσης του μπουκέτου %s."
 
-#: ../plugin/controllers/BouquetEditor.py:182
+#: plugin/controllers/BouquetEditor.py:182
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
 msgstr ""
 "Η αφαίρεση του μπουκέτου %s απέτυχε, μη έγκυρη αναφορά υπηρεσίας ή μεταβλητή "
 "λίστα."
 
-#: ../plugin/controllers/BouquetEditor.py:186
+#: plugin/controllers/BouquetEditor.py:186
 #, python-format
 msgid "Bouquet %s deleted."
 msgstr "Το μπουκέτο %s διαγράφηκε."
 
-#: ../plugin/controllers/BouquetEditor.py:188
+#: plugin/controllers/BouquetEditor.py:188
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
 msgstr "Σφάλμα: Αδυναμία διαγραφής του Μπουκέτου %s, Σφάλμα OS."
 
-#: ../plugin/controllers/BouquetEditor.py:204
-#: ../plugin/controllers/BouquetEditor.py:261
+#: plugin/controllers/BouquetEditor.py:204
+#: plugin/controllers/BouquetEditor.py:261
 msgid "No position given!"
 msgstr "Δεν δόθηκε θέση!"
 
-#: ../plugin/controllers/BouquetEditor.py:211
+#: plugin/controllers/BouquetEditor.py:211
 #, python-format
 msgid "Bouquet %s moved."
 msgstr "Το Μπουκέτο %s μετακινήθηκε!"
 
-#: ../plugin/controllers/BouquetEditor.py:213
+#: plugin/controllers/BouquetEditor.py:213
 #, python-format
 msgid "Bouquet %s can not be moved."
 msgstr "Αδυναμία μετακίνησης του Μπουκέτου %s."
 
-#: ../plugin/controllers/BouquetEditor.py:219
-#: ../plugin/controllers/BouquetEditor.py:249
-#: ../plugin/controllers/BouquetEditor.py:275
-#: ../plugin/controllers/BouquetEditor.py:309
-#: ../plugin/controllers/BouquetEditor.py:455
+#: plugin/controllers/BouquetEditor.py:219
+#: plugin/controllers/BouquetEditor.py:249
+#: plugin/controllers/BouquetEditor.py:275
+#: plugin/controllers/BouquetEditor.py:309
+#: plugin/controllers/BouquetEditor.py:455
 msgid "No bouquet given!"
 msgstr "Δεν δόθηκε μπουκέτο!"
 
-#: ../plugin/controllers/BouquetEditor.py:225
-#: ../plugin/controllers/BouquetEditor.py:255
-#: ../plugin/controllers/BouquetEditor.py:281
-#: ../plugin/controllers/BouquetEditor.py:339
-#: ../plugin/controllers/BouquetEditor.py:397
-#: ../plugin/controllers/BouquetEditor.py:461
-#: ../plugin/controllers/BouquetEditor.py:498
+#: plugin/controllers/BouquetEditor.py:225
+#: plugin/controllers/BouquetEditor.py:255
+#: plugin/controllers/BouquetEditor.py:281
+#: plugin/controllers/BouquetEditor.py:339
+#: plugin/controllers/BouquetEditor.py:397
+#: plugin/controllers/BouquetEditor.py:461
+#: plugin/controllers/BouquetEditor.py:498
 msgid "No service given!"
 msgstr "Δεν δόθηκε υπηρεσία!"
 
-#: ../plugin/controllers/BouquetEditor.py:234
+#: plugin/controllers/BouquetEditor.py:234
 #, python-format
 msgid "Service %s removed."
 msgstr "Η υπηρεσία %s αφαιρέθηκε."
 
-#: ../plugin/controllers/BouquetEditor.py:242
+#: plugin/controllers/BouquetEditor.py:242
 #, python-format
 msgid "Service %s removed from bouquet %s."
 msgstr "Η υπηρεσία %s αφαιρέθηκε από το μπουκέτο %s."
 
-#: ../plugin/controllers/BouquetEditor.py:243
+#: plugin/controllers/BouquetEditor.py:243
 #, python-format
 msgid "Service %s can not be removed."
 msgstr "Αδυναμία αφαίρεσης της υπηρεσίας %s."
 
-#: ../plugin/controllers/BouquetEditor.py:268
+#: plugin/controllers/BouquetEditor.py:268
 #, python-format
 msgid "Service %s moved."
 msgstr "Η υπηρεσία %s μετακινήθηκε."
 
-#: ../plugin/controllers/BouquetEditor.py:269
+#: plugin/controllers/BouquetEditor.py:269
 msgid "Service can not be moved."
 msgstr "Αδυναμία μετακίνησης της υπηρεσίας."
 
-#: ../plugin/controllers/BouquetEditor.py:299
+#: plugin/controllers/BouquetEditor.py:299
 #, python-format
 msgid "Service %s added."
 msgstr "Η υπηρεσία %s προστέθηκε."
 
-#: ../plugin/controllers/BouquetEditor.py:302
+#: plugin/controllers/BouquetEditor.py:302
 #, python-format
 msgid "Service %s already exists in bouquet %s."
 msgstr "Η υπηρεσία %s υπάρχει ήδη στο μπουκέτο %s."
 
-#: ../plugin/controllers/BouquetEditor.py:303
+#: plugin/controllers/BouquetEditor.py:303
 msgid "This service can not be added."
 msgstr "Αδυναμία προσθήκης αυτής της υπηρεσίας."
 
-#: ../plugin/controllers/BouquetEditor.py:315
+#: plugin/controllers/BouquetEditor.py:315
 msgid "No marker-name given!"
 msgstr "Δεν δόθηκε όνομα σημειωτή!"
 
-#: ../plugin/controllers/BouquetEditor.py:329
+#: plugin/controllers/BouquetEditor.py:329
 msgid "Marker added."
 msgstr "Ο Σημειωτής προστέθηκε."
 
-#: ../plugin/controllers/BouquetEditor.py:331
+#: plugin/controllers/BouquetEditor.py:331
 msgid "Internal error!"
 msgstr "Εσωτερικό σφάλμα!"
 
-#: ../plugin/controllers/BouquetEditor.py:345
+#: plugin/controllers/BouquetEditor.py:345
 msgid "No new servicename given!"
 msgstr "Δεν δόθηκε νέο όνομα υπηρεσίας!"
 
-#: ../plugin/controllers/BouquetEditor.py:369
+#: plugin/controllers/BouquetEditor.py:369
 msgid "Bouquet renamed successfully."
 msgstr "Επιτυχία μετονομασίας Μπουκέτου."
 
-#: ../plugin/controllers/BouquetEditor.py:385
+#: plugin/controllers/BouquetEditor.py:385
 msgid "Service renamed successfully."
 msgstr "Επιτυχία μετονομασίας Υπηρεσίας."
 
-#: ../plugin/controllers/BouquetEditor.py:386
+#: plugin/controllers/BouquetEditor.py:386
 msgid "Service can not be renamed."
 msgstr "Αδυναμία μετονομασίας υπηρεσίας."
 
-#: ../plugin/controllers/BouquetEditor.py:400
+#: plugin/controllers/BouquetEditor.py:400
 msgid "No current service given!"
 msgstr "Δεν δόθηκε τρέχουσα υπηρεσία!"
 
-#: ../plugin/controllers/BouquetEditor.py:431
+#: plugin/controllers/BouquetEditor.py:431
 msgid "Get mutable list for new created alternative failed!"
 msgstr "Αποτυχία λήψης μεταβλητής λίστας για τα νεοδημιουργημένα εναλλακτικά!"
 
-#: ../plugin/controllers/BouquetEditor.py:433
+#: plugin/controllers/BouquetEditor.py:433
 #, python-format
 msgid "Alternative %s created failed."
 msgstr "Αποτυχία δημιουργίας εναλλακτικού %s."
 
-#: ../plugin/controllers/BouquetEditor.py:447
+#: plugin/controllers/BouquetEditor.py:447
 #, python-format
 msgid "Added %s to alternative service %s."
 msgstr "Το %s προστέθηκε στην εναλλακτική υπηρεσία %s."
 
-#: ../plugin/controllers/BouquetEditor.py:478
+#: plugin/controllers/BouquetEditor.py:478
 msgid "Service is not an alternative."
 msgstr "Η υπηρεσία δεν είναι εναλλακτική."
 
-#: ../plugin/controllers/BouquetEditor.py:486
+#: plugin/controllers/BouquetEditor.py:486
 msgid "All alternative services deleted."
 msgstr "Όλες οι εναλλακτικές υπηρεσίες διαγράφηκαν."
 
-#: ../plugin/controllers/BouquetEditor.py:492
+#: plugin/controllers/BouquetEditor.py:492
 msgid "Parent Control is not activated."
 msgstr "Ο γονικός έλεγχος δεν είναι ενεργός."
 
-#: ../plugin/controllers/BouquetEditor.py:505
+#: plugin/controllers/BouquetEditor.py:505
 msgid "No Parent Control Setup Pin given!"
 msgstr "Δεν δόθηκε Pin Ρυθμίσεων Γονικής Προστασίας!"
 
-#: ../plugin/controllers/BouquetEditor.py:509
-#: ../plugin/controllers/BouquetEditor.py:511
+#: plugin/controllers/BouquetEditor.py:509
+#: plugin/controllers/BouquetEditor.py:511
 msgid "Parent Control Setup Pin is wrong!"
 msgstr "Το Pin Ρυθμίσεων Γονικού Ελέγχου είναι λανθασμένο!"
 
-#: ../plugin/controllers/BouquetEditor.py:526
+#: plugin/controllers/BouquetEditor.py:526
 #, python-format
 msgid "Service %s is locked."
 msgstr "Η υπηρεσία %s είναι κλειδωμένη."
 
-#: ../plugin/controllers/BouquetEditor.py:528
+#: plugin/controllers/BouquetEditor.py:528
 #, python-format
 msgid "Bouquet %s is locked."
 msgstr "Το μπουκέτο %s είναι κλειδωμένο."
 
-#: ../plugin/controllers/BouquetEditor.py:530
+#: plugin/controllers/BouquetEditor.py:530
 #, python-format
 msgid "%s %s is locked."
 msgstr "Το %s %s είναι κλειδωμένο."
 
-#: ../plugin/controllers/BouquetEditor.py:534
+#: plugin/controllers/BouquetEditor.py:534
 #, python-format
 msgid "Service %s is unlocked."
 msgstr "Η υπηρεσία %s είναι ξεκλείδωτη."
 
-#: ../plugin/controllers/BouquetEditor.py:536
+#: plugin/controllers/BouquetEditor.py:536
 #, python-format
 msgid "Bouquet %s is unlocked."
 msgstr "Το μπουκέτο %s είναι ξεκλείδωτο."
 
-#: ../plugin/controllers/BouquetEditor.py:573
+#: plugin/controllers/BouquetEditor.py:573
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
 msgstr ""
 "Σφάλμα κατά την προετοιμασία του αντίγραφου ασφαλείας, το %s δεν υπάρχει."
 
-#: ../plugin/controllers/BouquetEditor.py:579
+#: plugin/controllers/BouquetEditor.py:579
 msgid "Error while preparing backup file."
 msgstr "Σφάλμα κατά την προετοιμασία του αντιγράφου ασφαλείας."
 
-#: ../plugin/controllers/BouquetEditor.py:630
+#: plugin/controllers/BouquetEditor.py:630
 msgid "Bouquet-settings were restored successfully"
 msgstr "Επιτυχία επαναφοράς ρυθμίσεων μπουκέτου"
 
-#: ../plugin/controllers/BouquetEditor.py:632
+#: plugin/controllers/BouquetEditor.py:632
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
 msgstr ""
 "Σφάλμα, το %s δεν δημιουργήθηκε με τον Επεξεργαστή Μπουκέτων Διαδικτύου"
 
-#: ../plugin/controllers/BouquetEditor.py:634
+#: plugin/controllers/BouquetEditor.py:634
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
 msgstr "Σφάλμα, το %s δεν υπάρχει, αδύνατη η επαναφορά..."
 
-#: ../plugin/controllers/base.py:221 ../plugin/local.py:181
-#: ../plugin/local.py:325
+#: plugin/controllers/base.py:248 plugin/local.py:181 plugin/local.py:325
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
-#: ../plugin/controllers/base.py:236
+#: plugin/controllers/base.py:264
 msgid "LCD4Linux Setup"
 msgstr "Ρυθμίσεις LCD4Linux"
 
-#: ../plugin/controllers/base.py:240
+#: plugin/controllers/base.py:279
+msgid "OSCam Webinterface"
+msgstr ""
+
+#: plugin/controllers/base.py:283
 msgid "AutoTimer"
 msgstr "Αυτόματος Χρονοδιακόπτης"
 
-#: ../plugin/controllers/base.py:244
+#: plugin/controllers/base.py:288
 msgid "BouquetEditor"
 msgstr "Επεξεργασία Μπουκέτων"
 
-#: ../plugin/controllers/base.py:248
+#: plugin/controllers/base.py:292
 msgid "EPGRefresh"
 msgstr "Ανανέωση EPG"
 
-#: ../plugin/controllers/models/info.py:71 ../plugin/local.py:115
+#: plugin/controllers/ipkg.py:238
+msgid "Error upload File"
+msgstr ""
+
+#: plugin/controllers/ipkg.py:241
+msgid "wrong filetype"
+msgstr ""
+
+#: plugin/controllers/ipkg.py:255
+msgid "Error writing File"
+msgstr ""
+
+#: plugin/controllers/models/info.py:58
+msgid "SLAAC"
+msgstr ""
+
+#: plugin/controllers/models/info.py:65 plugin/controllers/models/info.py:76
+#: plugin/controllers/models/info.py:83
+msgid "static"
+msgstr ""
+
+#: plugin/controllers/models/info.py:67 plugin/controllers/models/info.py:85
+#: plugin/local.py:80
+msgid "DHCP"
+msgstr "DHCP"
+
+#: plugin/controllers/models/info.py:69 plugin/controllers/models/info.py:87
+msgid "manual/disabled"
+msgstr ""
+
+#: plugin/controllers/models/info.py:95 plugin/controllers/models/info.py:102
+msgid "unknown"
+msgstr ""
+
+#: plugin/controllers/models/info.py:136 plugin/local.py:115
 msgid "IPv4-only kernel"
 msgstr "Kernel IPv4 μόνο"
 
-#: ../plugin/controllers/models/info.py:75 ../plugin/local.py:117
+#: plugin/controllers/models/info.py:140 plugin/local.py:117
 msgid "IPv4-only Python/Twisted"
 msgstr "Python/Twisted IPv4 μόνο"
 
-#: ../plugin/controllers/models/info.py:104 ../plugin/local.py:116
+#: plugin/controllers/models/info.py:169 plugin/local.py:116
 msgid "none/IPv4-only network"
 msgstr "Δίκτυο κανένα/IPv4 μόνο"
 
-#: ../plugin/controllers/models/message.py:33
+#: plugin/controllers/models/info.py:287 plugin/controllers/models/info.py:290
+msgid "kB"
+msgstr ""
+
+#: plugin/controllers/models/info.py:291 plugin/controllers/models/info.py:414
+#, python-format
+msgid "%s free / %s total"
+msgstr ""
+
+#: plugin/controllers/models/info.py:326 plugin/local.py:65
+msgid "Chipset"
+msgstr "Chipset"
+
+#: plugin/controllers/models/info.py:331 plugin/local.py:104
+msgid "Frontprocessor Version"
+msgstr "Έκδοση Frontprocessor"
+
+#: plugin/controllers/models/info.py:377 plugin/controllers/models/info.py:388
+#: plugin/controllers/models/info.py:406
+msgid "MB"
+msgstr ""
+
+#: plugin/controllers/models/info.py:380 plugin/controllers/models/info.py:386
+#: plugin/controllers/models/info.py:401 plugin/controllers/models/info.py:404
+msgid "GB"
+msgstr ""
+
+#: plugin/controllers/models/info.py:384 plugin/controllers/models/info.py:396
+#: plugin/controllers/models/info.py:398
+msgid "TB"
+msgstr ""
+
+#: plugin/controllers/models/info.py:442
+msgid "r/w"
+msgstr ""
+
+#: plugin/controllers/models/info.py:446
+msgid "r/o"
+msgstr ""
+
+#: plugin/controllers/models/message.py:33
 msgid "Message sent successfully!"
 msgstr "Επιτυχής αποστολή μηνύματος!"
 
-#: ../plugin/controllers/models/message.py:43
+#: plugin/controllers/models/message.py:43
 msgid "No answer in time"
 msgstr "Μη έγκαιρη απάντηση"
 
-#: ../plugin/controllers/models/message.py:48
+#: plugin/controllers/models/message.py:48
 msgid "Answer is YES!"
 msgstr "Η απάντηση είναι ΝΑΙ!"
 
-#: ../plugin/controllers/models/message.py:48
+#: plugin/controllers/models/message.py:48
 msgid "Answer is NO!"
 msgstr "Η απάντηση είναι ΟΧΙ!"
 
-#: ../plugin/controllers/models/services.py:251
+#: plugin/controllers/models/services.py:260
 msgid "New"
 msgstr "Νέο"
 
-#: ../plugin/controllers/models/services.py:253
+#: plugin/controllers/models/services.py:262
 msgid "Services"
 msgstr "Υπηρεσίες"
 
-#: ../plugin/controllers/models/services.py:258
+#: plugin/controllers/models/services.py:267
 msgid "Cable"
 msgstr "Καλωδιακό"
 
-#: ../plugin/controllers/models/services.py:260
+#: plugin/controllers/models/services.py:269
 msgid "Terrestrial"
 msgstr "Επίγειο"
 
-#: ../plugin/controllers/models/services.py:264
+#: plugin/controllers/models/services.py:273
 msgid "W"
 msgstr "Δ"
 
-#: ../plugin/controllers/models/services.py:266
+#: plugin/controllers/models/services.py:275
 msgid "E"
 msgstr "Α"
 
-#: ../plugin/controllers/models/timers.py:172
+#: plugin/controllers/models/timers.py:178
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Εντοπίστηκε(αν) διένεξη Χρονοδιακόπτη(ων)! %s"
 
-#: ../plugin/controllers/models/timers.py:188
+#: plugin/controllers/models/timers.py:195
 #, python-format
 msgid "Could not add timer '%s'!"
 msgstr "Αδυναμία προσθήκης χρονοδιακόπτη '%s'!"
 
-#: ../plugin/controllers/models/timers.py:193
+#: plugin/controllers/models/timers.py:200
 #, python-format
 msgid "Timer '%s' added"
 msgstr "Ο χρονοδιακόπτης '%s' προστέθηκε"
 
-#: ../plugin/controllers/models/timers.py:201
+#: plugin/controllers/models/timers.py:208
 msgid "EventId not found"
 msgstr "Το EventId δεν βρέθηκε"
 
-#: ../plugin/controllers/models/timers.py:272
+#: plugin/controllers/models/timers.py:279
 #, python-format
 msgid "Timer '%s' changed"
 msgstr "Ο χρονοδιακόπτης '%s' άλλαξε"
 
-#: ../plugin/controllers/models/timers.py:277
+#: plugin/controllers/models/timers.py:298
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "Ο χρονοδιακόπτης '%s' δεν αποθηκεύτηκε λόγω διένεξης"
 
-#: ../plugin/controllers/models/timers.py:282
+#: plugin/controllers/models/timers.py:304
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr ""
 "Αδυναμία εύρεσης του χρονοδιακόπτη '%s' με δεδομένη ώρα έναρξης και λήξης!"
 
-#: ../plugin/controllers/models/timers.py:294
+#: plugin/controllers/models/timers.py:316
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Ο χρονοδιακόπτης '%s' διαγράφτηκε επιτυχώς"
 
-#: ../plugin/controllers/models/timers.py:299
-#: ../plugin/controllers/models/timers.py:343
+#: plugin/controllers/models/timers.py:321
+#: plugin/controllers/models/timers.py:365
 msgid "No matching Timer found"
 msgstr "Δεν βρέθηκε ο αντίστοιχος Χρονοδιακόπτης"
 
-#: ../plugin/controllers/models/timers.py:317
+#: plugin/controllers/models/timers.py:339
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "Ο χρονοδιακόπτης '%s' δεν ενεργοποιήθηκε κατά τη Διένεξη"
 
-#: ../plugin/controllers/models/timers.py:323
+#: plugin/controllers/models/timers.py:345
 #, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Ο χρονοδιακόπτης '%s' υπάρχει ήδη!"
 
-#: ../plugin/controllers/models/timers.py:329
+#: plugin/controllers/models/timers.py:351
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "Γίνεται τώρα εγγραφή του χρονοδιακόπτη '%s'! Δεν απενεργοποιήθηκε!"
 
-#: ../plugin/controllers/models/timers.py:337
+#: plugin/controllers/models/timers.py:359
 #, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "Ο χρονοδιακόπτης '%s' έχει %s με επιτυχία"
 
-#: ../plugin/controllers/models/timers.py:350
+#: plugin/controllers/models/timers.py:372
 msgid "List of Timers has been cleaned"
 msgstr "Έγινε εκκαθάριση της λίστας χρονοδιακοπτών"
 
-#: ../plugin/controllers/models/timers.py:357
+#: plugin/controllers/models/timers.py:379
 msgid "TimerList has been saved"
 msgstr "Η λίστα χρονοδιακοπτών αποθηκεύτηκε"
 
-#: ../plugin/controllers/models/timers.py:372
+#: plugin/controllers/models/timers.py:394
 msgid "No event found! Not recording!"
 msgstr "Δεν βρέθηκε πρόγραμμα! Μη εγγραφή!"
 
-#: ../plugin/controllers/models/timers.py:378
+#: plugin/controllers/models/timers.py:400
 msgid "Instant record for current Event started"
 msgstr "Έχει ξεκινήσει άμεση εγγραφή για το τρέχον πρόγραμμα"
 
-#: ../plugin/controllers/models/timers.py:387
+#: plugin/controllers/models/timers.py:409
 msgid "Infinite Instant recording started"
 msgstr "Έχει ξεκινήσει απεριόριστη άμεση εγγραφή"
 
-#: ../plugin/controllers/models/timers.py:406
+#: plugin/controllers/models/timers.py:428
 msgid "Timer conflict detected! Not recording!"
 msgstr "Εντοπίστηκε διένεξη χρονοδιακόπτη! Μη εγγραφή!"
 
-#: ../plugin/controllers/models/timers.py:480
+#: plugin/controllers/models/timers.py:502
 msgid "Missing requesteter: sRef"
 msgstr "Έλλειψη αναφοράς: sRef"
 
-#: ../plugin/controllers/models/timers.py:502
+#: plugin/controllers/models/timers.py:524
 #, python-format
 msgid "Unknown command: '%s'"
 msgstr "Άγνωστη εντολή: '%s'"
 
-#: ../plugin/controllers/models/timers.py:559
+#: plugin/controllers/models/timers.py:581
 msgid "PowerTimer feature not available"
 msgstr "Ο χρονοδιακόπτης απενεργοποίησης δεν είναι διαθέσιμος"
 
-#: ../plugin/controllers/models/timers.py:635
-#: ../plugin/controllers/models/timers.py:661
+#: plugin/controllers/models/timers.py:657
+#: plugin/controllers/models/timers.py:683
 msgid "Sleeptimer is enabled"
 msgstr "Ο χρονοδιακόπτης ύπνου είναι ενεργός"
 
-#: ../plugin/controllers/models/timers.py:635
-#: ../plugin/controllers/models/timers.py:661
+#: plugin/controllers/models/timers.py:657
+#: plugin/controllers/models/timers.py:683
 msgid "Sleeptimer is disabled"
 msgstr "Ο χρονοδιακόπτης ύπνου είναι ανενεργός"
 
-#: ../plugin/controllers/models/timers.py:640
-#: ../plugin/controllers/models/timers.py:667
+#: plugin/controllers/models/timers.py:662
+#: plugin/controllers/models/timers.py:689
 msgid "SleepTimer error"
 msgstr "Σφάλμα Χρονοδιακόπτη Ύπνου"
 
-#: ../plugin/controllers/models/timers.py:679
+#: plugin/controllers/models/timers.py:701
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr ""
 "ΣΦΑΛΜΑ: Αδυναμία ορισμού του Χρονοδιακόπτη Ύπνου όταν η συσκευή βρίσκεται σε "
 "αναμονή"
 
-#: ../plugin/controllers/models/timers.py:684
-#: ../plugin/controllers/models/timers.py:753
-#: ../plugin/controllers/models/timers.py:771
+#: plugin/controllers/models/timers.py:706
+#: plugin/controllers/models/timers.py:775
+#: plugin/controllers/models/timers.py:793
 msgid "Sleeptimer has been disabled"
 msgstr "Ο χρονοδιακόπτης ύπνου απενεργοποιήθηκε"
 
-#: ../plugin/controllers/models/timers.py:690
-#: ../plugin/controllers/models/timers.py:753
-#: ../plugin/controllers/models/timers.py:766
+#: plugin/controllers/models/timers.py:712
+#: plugin/controllers/models/timers.py:775
+#: plugin/controllers/models/timers.py:788
 #, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Ο χρονοδιακόπτης ύπνου έχει οριστεί σε %d λεπτά"
 
-#: ../plugin/controllers/models/timers.py:695
-#: ../plugin/controllers/models/timers.py:776
+#: plugin/controllers/models/timers.py:717
+#: plugin/controllers/models/timers.py:798
 msgid "SleepTimer Error"
 msgstr "Σφάλμα Χρονοδιακόπτη Ύπνου"
 
-#: ../plugin/controllers/models/timers.py:804
+#: plugin/controllers/models/timers.py:826
 msgid "Error parsing vps.xml"
 msgstr "Σφάλμα ανάλυσης του vps.xml"
 
-#: ../plugin/controllers/models/timers.py:809
+#: plugin/controllers/models/timers.py:831
 msgid "VPS plugin not found"
 msgstr "Το πρόσθετο VPS δεν βρέθηκε"
 
-#: ../plugin/controllers/web.py:63
+#: plugin/controllers/web.py:63
 #, python-format
 msgid "Missing mandatory parameter '%s'"
 msgstr "Λείπει η απαραίτητη παράμετρος '%s'"
 
-#: ../plugin/controllers/web.py:69
+#: plugin/controllers/web.py:69
 #, python-format
 msgid "The parameter '%s' can't be empty"
 msgstr "Η παράμετρος '%s' δεν μπορεί να είναι κενή"
 
-#: ../plugin/controllers/web.py:103
+#: plugin/controllers/web.py:103
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Λανθασμένη μορφή παραμέτρου 'set=%s'. Χρήση set=set15 "
 
-#: ../plugin/controllers/web.py:108
+#: plugin/controllers/web.py:108
 #, python-format
 msgid "Unknown Volume command %s"
 msgstr "Άγνωστη εντολή Έντασης %s"
 
-#: ../plugin/controllers/web.py:143
+#: plugin/controllers/web.py:143
 msgid "The parameter 'command' must be a number"
 msgstr "Η παράμετρος 'εντολή' πρέπει να είναι αριθμός"
 
-#: ../plugin/controllers/web.py:304
+#: plugin/controllers/web.py:298
 #, python-format
 msgid "type %s is not a number"
 msgstr "ο τύπος %s δεν είναι αριθμός"
 
-#: ../plugin/local.py:5
+#: plugin/local.py:5
 msgid "Mo"
 msgstr "Δε"
 
-#: ../plugin/local.py:6
+#: plugin/local.py:6
 msgid "Tu"
 msgstr "Τρ"
 
-#: ../plugin/local.py:7
+#: plugin/local.py:7
 msgid "We"
 msgstr "Τε"
 
-#: ../plugin/local.py:8
+#: plugin/local.py:8
 msgid "Th"
 msgstr "Πέ"
 
-#: ../plugin/local.py:9
+#: plugin/local.py:9
 msgid "Fr"
 msgstr "Πα"
 
-#: ../plugin/local.py:10
+#: plugin/local.py:10
 msgid "Sa"
 msgstr "Σά"
 
-#: ../plugin/local.py:11
+#: plugin/local.py:11
 msgid "Su"
 msgstr "Κυ"
 
-#: ../plugin/local.py:13
+#: plugin/local.py:13
 msgid "Sun"
 msgstr "Κυρ"
 
-#: ../plugin/local.py:14
+#: plugin/local.py:14
 msgid "Mon"
 msgstr "Δευ"
 
-#: ../plugin/local.py:15
+#: plugin/local.py:15
 msgid "Tue"
 msgstr "Τρί"
 
-#: ../plugin/local.py:16
+#: plugin/local.py:16
 msgid "Wed"
 msgstr "Τετ"
 
-#: ../plugin/local.py:17
+#: plugin/local.py:17
 msgid "Thu"
 msgstr "Πέμ"
 
-#: ../plugin/local.py:18
+#: plugin/local.py:18
 msgid "Fri"
 msgstr "Παρ"
 
-#: ../plugin/local.py:19
+#: plugin/local.py:19
 msgid "Sat"
 msgstr "Σάβ"
 
-#: ../plugin/local.py:21
+#: plugin/local.py:21
 msgid "Monday"
 msgstr "Δευτέρα"
 
-#: ../plugin/local.py:22
+#: plugin/local.py:22
 msgid "Tuesday"
 msgstr "Τρίτη"
 
-#: ../plugin/local.py:23
+#: plugin/local.py:23
 msgid "Wednesday"
 msgstr "Τετάρτη"
 
-#: ../plugin/local.py:24
+#: plugin/local.py:24
 msgid "Thursday"
 msgstr "Πέμπτη"
 
-#: ../plugin/local.py:25
+#: plugin/local.py:25
 msgid "Friday"
 msgstr "Παρασκευή"
 
-#: ../plugin/local.py:26
+#: plugin/local.py:26
 msgid "Saturday"
 msgstr "Σάββατο"
 
-#: ../plugin/local.py:27
+#: plugin/local.py:27
 msgid "Sunday"
 msgstr "Κυριακή"
 
-#: ../plugin/local.py:29
+#: plugin/local.py:29
 msgid "January"
 msgstr "Ιανουαρίου"
 
-#: ../plugin/local.py:30
+#: plugin/local.py:30
 msgid "February"
 msgstr "Φεβρουαρίου"
 
-#: ../plugin/local.py:31
+#: plugin/local.py:31
 msgid "March"
 msgstr "Μαρτίου"
 
-#: ../plugin/local.py:32
+#: plugin/local.py:32
 msgid "April"
 msgstr "Απριλίου"
 
-#: ../plugin/local.py:33
+#: plugin/local.py:33
 msgid "May"
 msgstr "Μαΐου"
 
-#: ../plugin/local.py:34
+#: plugin/local.py:34
 msgid "June"
 msgstr "Ιουνίου"
 
-#: ../plugin/local.py:35
+#: plugin/local.py:35
 msgid "July"
 msgstr "Ιουλίου"
 
-#: ../plugin/local.py:36
+#: plugin/local.py:36
 msgid "August"
 msgstr "Αυγούστου"
 
-#: ../plugin/local.py:37
+#: plugin/local.py:37
 msgid "September"
 msgstr "Σεπτεμβρίου"
 
-#: ../plugin/local.py:38
+#: plugin/local.py:38
 msgid "October"
 msgstr "Οκτωβρίου"
 
-#: ../plugin/local.py:39
+#: plugin/local.py:39
 msgid "November"
 msgstr "Νοεμβρίου"
 
-#: ../plugin/local.py:40
+#: plugin/local.py:40
 msgid "December"
 msgstr "Δεκεμβρίου"
 
-#: ../plugin/local.py:42
+#: plugin/local.py:42
 msgid "About"
 msgstr "Περί"
 
-#: ../plugin/local.py:43
+#: plugin/local.py:43
 msgid "Add Timer"
 msgstr "Προσθήκη Χρονοδιακόπτη"
 
-#: ../plugin/local.py:44
+#: plugin/local.py:44
 msgid "Add AutoTimer"
 msgstr "Προσθήκη Αυτ. Χρ/κόπτη"
 
-#: ../plugin/local.py:45
+#: plugin/local.py:45
 msgid "Add Zap Timer"
 msgstr "Προσθήκη Χρονοδιακόπτη Ζάπινγκ"
 
-#: ../plugin/local.py:46
+#: plugin/local.py:46 plugin/local.py:357
 msgid "After Event"
 msgstr "Μετά το πρόγραμμα"
 
-#: ../plugin/local.py:47
+#: plugin/local.py:47
 msgid "AGC"
 msgstr "AGC"
 
-#: ../plugin/local.py:48 ../plugin/local.py:345
+#: plugin/local.py:48 plugin/local.py:345
 msgid "All"
 msgstr "Όλα"
 
-#: ../plugin/local.py:49
+#: plugin/local.py:49
 msgid "All Channels"
 msgstr "Όλα τα κανάλια"
 
-#: ../plugin/local.py:50
+#: plugin/local.py:50
 msgid "Authors"
 msgstr "Συγγραφείς"
 
-#: ../plugin/local.py:51 ../plugin/local.py:344
+#: plugin/local.py:51 plugin/local.py:344
 msgid "Auto"
 msgstr "Αυτόματα"
 
-#: ../plugin/local.py:52
+#: plugin/local.py:52
 msgid "Back"
 msgstr "Πίσω"
 
-#: ../plugin/local.py:53 ../plugin/local.py:352
+#: plugin/local.py:53 plugin/local.py:352
 msgid "Begin"
 msgstr "Αρχή"
 
-#: ../plugin/local.py:54
+#: plugin/local.py:54
 msgid "BER"
 msgstr "BER"
 
-#: ../plugin/local.py:55 ../plugin/local.py:307
+#: plugin/local.py:55 plugin/local.py:307
 msgid "Bouquets"
 msgstr "Μπουκέτα"
 
-#: ../plugin/local.py:56
+#: plugin/local.py:56
 msgid "Box Info"
 msgstr "Πληροφορίες Δέκτη"
 
-#: ../plugin/local.py:57
+#: plugin/local.py:57
 msgid "Box"
 msgstr "Δέκτης"
 
-#: ../plugin/local.py:58
+#: plugin/local.py:58
 msgid "Box Control"
 msgstr "Έλεγχος Δέκτη"
 
-#: ../plugin/local.py:59
+#: plugin/local.py:59
 msgid "Box Uptime"
 msgstr "Χρόνος Λειτουργίας Δέκτη"
 
-#: ../plugin/local.py:60
+#: plugin/local.py:60
 msgid "Brand"
 msgstr "Μάρκα"
 
-#: ../plugin/local.py:61 ../plugin/plugin.py:92
+#: plugin/local.py:61 plugin/plugin.py:101
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: ../plugin/local.py:62
+#: plugin/local.py:62
 msgid "Capacity"
 msgstr "Χωρητικότητα"
 
-#: ../plugin/local.py:63
+#: plugin/local.py:63
 msgid "Channel"
 msgstr "Κανάλι"
 
-#: ../plugin/local.py:64 ../plugin/local.py:305
+#: plugin/local.py:64 plugin/local.py:305
 msgid "Channels"
 msgstr "Κανάλια"
 
-#: ../plugin/local.py:65
-msgid "Chipset"
-msgstr "Chipset"
-
-#: ../plugin/local.py:66
+#: plugin/local.py:66
 msgid "Cleanup Timers"
 msgstr "Εκκαθάριση Χρονοδιακοπτών"
 
-#: ../plugin/local.py:67
+#: plugin/local.py:67
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: ../plugin/local.py:68
+#: plugin/local.py:68
 msgid "Contributors"
 msgstr "Συντελεστές"
 
-#: ../plugin/local.py:69
+#: plugin/local.py:69
 msgid "Control"
 msgstr "Έλεγχος"
 
-#: ../plugin/local.py:70
+#: plugin/local.py:70
 msgid "Current"
 msgstr "Τρέχον"
 
-#: ../plugin/local.py:71
+#: plugin/local.py:71
 msgid "Current Event"
 msgstr "Τρέχον Πρόγραμμα"
 
-#: ../plugin/local.py:72
+#: plugin/local.py:72
+msgid "Date"
+msgstr ""
+
+#: plugin/local.py:73
 msgid "Deep-Standby"
 msgstr "Βαθιά Αναμονή"
 
-#: ../plugin/local.py:73
+#: plugin/local.py:74
 msgid "Default"
 msgstr "Προεπιλογή"
 
-#: ../plugin/local.py:74
+#: plugin/local.py:75
 msgid "Delete Recording"
 msgstr "Διαγραφή Ταινίας"
 
-#: ../plugin/local.py:75
+#: plugin/local.py:76
 msgid "Really delete the recording"
 msgstr "Να γίνει σίγουρα διαγραφή της εγγραφής"
 
-#: ../plugin/local.py:76
-msgid "Delete Movie"
-msgstr "Διαγραφή Ταινίας"
-
-#: ../plugin/local.py:77
-msgid "Really delete the movie"
-msgstr "Να διαγραφεί σίγουρα η ταινία"
-
-#: ../plugin/local.py:78
+#: plugin/local.py:77
 msgid "Delete Timer"
 msgstr "Διαγραφή Χρονοδιακόπτη"
 
-#: ../plugin/local.py:79
+#: plugin/local.py:78
 msgid "Really delete the timer"
 msgstr "Να γίνει σίγουρα διαγραφή του χρονοδιακόπτη"
 
-#: ../plugin/local.py:80 ../plugin/local.py:253
+#: plugin/local.py:79 plugin/local.py:253
 msgid "Description"
 msgstr "Περιγραφή"
 
-#: ../plugin/local.py:81
-msgid "DHCP"
-msgstr "DHCP"
-
-#: ../plugin/local.py:82
+#: plugin/local.py:81
 msgid "Disable Timer"
 msgstr "Απενεργοποίηση Χρονοδιακόπτη"
 
-#: ../plugin/local.py:83
+#: plugin/local.py:82
+msgid "disabled"
+msgstr ""
+
+#: plugin/local.py:83
 msgid "Distro"
 msgstr "Διανομή"
 
-#: ../plugin/local.py:84
+#: plugin/local.py:84
 msgid "Dolby"
 msgstr "Dolby"
 
-#: ../plugin/local.py:85
+#: plugin/local.py:85
 msgid "Done"
 msgstr "Ολοκληρώθηκε"
 
-#: ../plugin/local.py:86
+#: plugin/local.py:86
 msgid "Download"
 msgstr "Λήψη"
 
-#: ../plugin/local.py:87
+#: plugin/local.py:87
 msgid "Download Playlist for"
 msgstr "Λήψη Λίστας Αναπαραγωγής για"
 
-#: ../plugin/local.py:88
+#: plugin/local.py:88
 msgid "Drivers"
 msgstr "Ημερομηνία οδηγού"
 
-#: ../plugin/local.py:89
+#: plugin/local.py:89
 msgid "Duration"
 msgstr "Διάρκεια"
 
-#: ../plugin/local.py:90
+#: plugin/local.py:90
 msgid "Edit Timer"
 msgstr "Επεξεργασία Χρονοδιακόπτη"
 
-#: ../plugin/local.py:91
+#: plugin/local.py:91
 msgid "Enable Timer"
 msgstr "Ενεργοποίηση Χρονοδιακόπτη"
 
-#: ../plugin/local.py:92
+#: plugin/local.py:92
 msgid "Start"
 msgstr "Εκκίνηση"
 
-#: ../plugin/local.py:93 ../plugin/local.py:353
+#: plugin/local.py:93 plugin/local.py:353
 msgid "End"
 msgstr "Τέλος"
 
-#: ../plugin/local.py:94 ../plugin/local.py:252 ../plugin/local.py:350
+#: plugin/local.py:94 plugin/local.py:252 plugin/local.py:350
 msgid "Enabled"
 msgstr "Ενεργό"
 
-#: ../plugin/local.py:95
+#: plugin/local.py:95
 msgid "Encrypted"
 msgstr "Κωδικοποιημένο"
 
-#: ../plugin/local.py:96
+#: plugin/local.py:96
 msgid "EPG"
 msgstr "EPG"
 
-#: ../plugin/local.py:97
+#: plugin/local.py:97
 msgid "Epg Search"
 msgstr "Αναζήτηση Epg"
 
-#: ../plugin/local.py:98
+#: plugin/local.py:98
 msgid "Include description"
 msgstr "Συμπερίληψη περιγραφής"
 
-#: ../plugin/local.py:99
+#: plugin/local.py:99
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: ../plugin/local.py:100
+#: plugin/local.py:100
 msgid "Every"
 msgstr "Κάθε"
 
-#: ../plugin/local.py:101
+#: plugin/local.py:101
 msgid "Extras"
 msgstr "Πρόσθετα"
 
-#: ../plugin/local.py:102
+#: plugin/local.py:102
 msgid "finished"
 msgstr "ολοκληρώθηκε"
 
-#: ../plugin/local.py:103
+#: plugin/local.py:103
 msgid "Firmware version"
 msgstr "Έκδοση Υλικού"
 
-#: ../plugin/local.py:104
-msgid "Frontprocessor Version"
-msgstr "Έκδοση Frontprocessor"
-
-#: ../plugin/local.py:105
+#: plugin/local.py:105
 msgid "Free"
 msgstr "Ελεύθερα"
 
-#: ../plugin/local.py:106
+#: plugin/local.py:106
 msgid "Free Memory"
 msgstr "Ελεύθερη Μνήμη"
 
-#: ../plugin/local.py:107
+#: plugin/local.py:107
 msgid "Gateway"
 msgstr "Πύλη"
 
-#: ../plugin/local.py:108
+#: plugin/local.py:108
 msgid "Grab Screenshot"
 msgstr "Λήψη Στιγμιότυπου"
 
-#: ../plugin/local.py:109
+#: plugin/local.py:109
 msgid "Gui version"
 msgstr "Έκδοση Επιφάνειας Χρήστη"
 
-#: ../plugin/local.py:110
+#: plugin/local.py:110
 msgid "Hide full remote"
 msgstr "Απόκρυψη πλήρους τηλεχειριστηρίου"
 
-#: ../plugin/local.py:111
+#: plugin/local.py:111
 msgid "High Resolution"
 msgstr "Υψηλή Ανάλυση"
 
-#: ../plugin/local.py:112
+#: plugin/local.py:112
 msgid "Hard disk model"
 msgstr "Μοντέλο Σκληρού Δίσκου"
 
-#: ../plugin/local.py:113
+#: plugin/local.py:113
 msgid "Hour"
 msgstr "Ώρα"
 
-#: ../plugin/local.py:114
+#: plugin/local.py:114
 msgid "IPv4 address"
 msgstr "Διεύθυνση IPv4"
 
-#: ../plugin/local.py:118
+#: plugin/local.py:118
 msgid "IPv6 address(es)"
 msgstr "IPv6 διεύθυνση(εις)"
 
-#: ../plugin/local.py:119
+#: plugin/local.py:119
 msgid "Infos"
 msgstr "Πληροφορίες"
 
-#: ../plugin/local.py:120
+#: plugin/local.py:120
 msgid "Instant Record"
 msgstr "Άμεση Εγγραφή"
 
-#: ../plugin/local.py:121
+#: plugin/local.py:121
 msgid "Javascript Libraries"
 msgstr "Βιβλιοθήκες Javascript"
 
-#: ../plugin/local.py:122
+#: plugin/local.py:122
 msgid "Just play"
 msgstr "Αναπαραγωγή"
 
-#: ../plugin/local.py:123
+#: plugin/local.py:123
 msgid "Kernel"
 msgstr "Έκδοση Kernel"
 
-#: ../plugin/local.py:124
+#: plugin/local.py:124
 msgid "LICENSE"
 msgstr "ΑΔΕΙΑ"
 
-#: ../plugin/local.py:125
+#: plugin/local.py:125
 msgid "loading"
 msgstr "φόρτωση"
 
-#: ../plugin/local.py:126
+#: plugin/local.py:126
 msgid "Location"
 msgstr "Τοποθεσία"
 
-#: ../plugin/local.py:127
+#: plugin/local.py:127
 msgid "Locked"
 msgstr "Κλειδωμένο"
 
-#: ../plugin/local.py:128
+#: plugin/local.py:128
 msgid "MAC address"
 msgstr "Διεύθυνση MAC"
 
-#: ../plugin/local.py:129
+#: plugin/local.py:129
 msgid "Main"
 msgstr "Κύριο"
 
-#: ../plugin/local.py:130
+#: plugin/local.py:130
 msgid "Minute"
 msgstr "Λεπτό"
 
-#: ../plugin/local.py:131
+#: plugin/local.py:131
 msgid "Model"
 msgstr "Μοντέλο"
 
-#: ../plugin/local.py:132
+#: plugin/local.py:132
 msgid "Movielist"
 msgstr "Λίστα Ταινιών"
 
-#: ../plugin/local.py:133
+#: plugin/local.py:133
 msgid "Movies"
 msgstr "Ταινίες"
 
-#: ../plugin/local.py:134
+#: plugin/local.py:134
 msgid "MultiEPG"
 msgstr "Πολλαπλός EPG"
 
-#: ../plugin/local.py:135
+#: plugin/local.py:135
 msgid "Name"
 msgstr "Όνομα"
 
-#: ../plugin/local.py:136
+#: plugin/local.py:136
 msgid "Namespace"
 msgstr "Χώρος ονόματος"
 
-#: ../plugin/local.py:137
+#: plugin/local.py:137
 msgid "Network Interface"
 msgstr "Διεπαφή Δικτύου"
 
-#: ../plugin/local.py:138
+#: plugin/local.py:138
 msgid "no description available"
 msgstr "μη διαθέσιμη περιγραφή"
 
-#: ../plugin/local.py:139
+#: plugin/local.py:139
 msgid "Sorry this page is not yet implemented"
 msgstr "Λυπούμαστε, αυτή η σελίδα δεν είναι ακόμα διαθέσιμη"
 
-#: ../plugin/local.py:140
+#: plugin/local.py:140
 msgid "Nothing"
 msgstr "Τίποτα"
 
-#: ../plugin/local.py:141
+#: plugin/local.py:141
 msgid "Nothing playing."
 msgstr "Καμία αναπαραγωγή."
 
-#: ../plugin/local.py:142
+#: plugin/local.py:142
 msgid "Now"
 msgstr "Τώρα"
 
-#: ../plugin/local.py:143
+#: plugin/local.py:143
 msgid "System OE"
 msgstr "ΟΕ Συστήματος"
 
-#: ../plugin/local.py:144
+#: plugin/local.py:144
 msgid "On"
 msgstr "Ανοικτό"
 
-#: ../plugin/local.py:145
+#: plugin/local.py:145
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Διεπαφή Δικτύου Ανοικτού Λογισμικού για δέκτες με Linux"
 
-#: ../plugin/local.py:146 ../plugin/plugin.py:110
+#: plugin/local.py:146 plugin/plugin.py:119
 msgid "Show box name in header"
 msgstr "Εμφάνιση ονόματος δέκτη στην κεφαλίδα"
 
-#: ../plugin/local.py:147 ../plugin/plugin.py:112
+#: plugin/local.py:147 plugin/plugin.py:121
 msgid "Use custom box name"
 msgstr "Χρήση ονόματος χρήστη για το δέκτη"
 
-#: ../plugin/local.py:148 ../plugin/plugin.py:114
+#: plugin/local.py:148 plugin/plugin.py:123
 msgid "Custom box name"
 msgstr "Όνομα χρήστη για το δέκτη"
 
-#: ../plugin/local.py:149
+#: plugin/local.py:149
 msgid "OSD"
 msgstr "OSD"
 
-#: ../plugin/local.py:150
+#: plugin/local.py:150
 msgid "Open in new window"
 msgstr "Άνοιγμα σε νέο παράθυρο"
 
-#: ../plugin/local.py:151
+#: plugin/local.py:151
 msgid "Playback"
 msgstr "Αναπαραγωγή"
 
-#: ../plugin/local.py:152
+#: plugin/local.py:152
 msgid "Playlist"
 msgstr "Λίστα αναπαραγωγής"
 
-#: ../plugin/local.py:153
+#: plugin/local.py:153
 msgid "Power Control"
 msgstr "Έλεγχος Τροφοδοσίας"
 
-#: ../plugin/local.py:154
+#: plugin/local.py:154
 msgid "Provider"
 msgstr "Πάροχος"
 
-#: ../plugin/local.py:155
+#: plugin/local.py:155
 msgid "Providers"
 msgstr "Πάροχοι"
 
-#: ../plugin/local.py:156
+#: plugin/local.py:156
 msgid "Radio"
 msgstr "Ραδιόφωνο"
 
-#: ../plugin/local.py:157
+#: plugin/local.py:157
 msgid "Reboot Box"
 msgstr "Επανεκκίνηση Δέκτη"
 
-#: ../plugin/local.py:158
+#: plugin/local.py:158
 msgid "Recording Status"
 msgstr "Κατάσταση Εγγραφής"
 
-#: ../plugin/local.py:159 ../plugin/local.py:342
+#: plugin/local.py:159 plugin/local.py:342
 msgid "Refresh"
 msgstr "Ανανέωση"
 
-#: ../plugin/local.py:160
+#: plugin/local.py:160
 msgid "Refresh automatically every"
 msgstr "Αυτόματη ανανέωση κάθε"
 
-#: ../plugin/local.py:161
+#: plugin/local.py:161
 msgid "Refresh Timer"
 msgstr "Ανανέωση Χρονοδιακόπτη"
 
-#: ../plugin/local.py:162
+#: plugin/local.py:162
 msgid "Remote"
 msgstr "Τηλεχειριστήριο"
 
-#: ../plugin/local.py:163
+#: plugin/local.py:163
 msgid "Rename Recording"
 msgstr "Μετονομασία Εγγραφής"
 
-#: ../plugin/local.py:164
+#: plugin/local.py:164
 msgid "Really rename the recording"
 msgstr "Να γίνει σίγουρα μετονομασία της εγγραφής"
 
-#: ../plugin/local.py:165
+#: plugin/local.py:165
 msgid "Repeated"
 msgstr "Επαναλαμβανόμενο"
 
-#: ../plugin/local.py:166
+#: plugin/local.py:166
 msgid "Restart GUI"
 msgstr "Επανεκκίνηση GUI"
 
-#: ../plugin/local.py:167
+#: plugin/local.py:167
 msgid "running"
 msgstr "σε εκτέλεση"
 
-#: ../plugin/local.py:168
+#: plugin/local.py:168
 msgid "Safe mode"
 msgstr "Ασφαλής λειτουργία"
 
-#: ../plugin/local.py:169
+#: plugin/local.py:169
 msgid "Satellites"
 msgstr "Δορυφόροι"
 
-#: ../plugin/local.py:170
+#: plugin/local.py:170
 msgid "Satfinder"
 msgstr "Έλεγχος σήματος"
 
-#: ../plugin/local.py:171 ../plugin/local.py:321 ../plugin/local.py:373
-#: ../plugin/plugin.py:93
+#: plugin/local.py:171 plugin/local.py:321 plugin/local.py:373
+#: plugin/plugin.py:102
 msgid "Save"
 msgstr "Αποθήκευση"
 
-#: ../plugin/local.py:172
+#: plugin/local.py:172
 msgid "Screenshot"
 msgstr "Στιγμιότυπο"
 
-#: ../plugin/local.py:173 ../plugin/local.py:379
+#: plugin/local.py:173 plugin/local.py:379
 msgid "Search"
 msgstr "Αναζήτηση"
 
-#: ../plugin/local.py:174
+#: plugin/local.py:174
 msgid "Search IMDb"
 msgstr "Αναζήτηση IMDb"
 
-#: ../plugin/local.py:175
+#: plugin/local.py:175
 msgid "Search KinoPoisk"
 msgstr "Αναζήτηση στο KinoPoisk"
 
-#: ../plugin/local.py:176
+#: plugin/local.py:176
 msgid "seconds"
 msgstr "δευτερόλεπτα"
 
-#: ../plugin/local.py:177
+#: plugin/local.py:177
 msgid "Send Message"
 msgstr "Αποστολή Μηνύματος"
 
-#: ../plugin/local.py:178
+#: plugin/local.py:178
 msgid "Waiting for answer ..."
 msgstr "Αναμονή για απάντηση ..."
 
-#: ../plugin/local.py:179
+#: plugin/local.py:179
 msgid "Send a Message"
 msgstr "Αποστολή ενός Μηνύματος"
 
-#: ../plugin/local.py:180
+#: plugin/local.py:180
 msgid "Service"
 msgstr "Υπηρεσία"
 
-#: ../plugin/local.py:182
+#: plugin/local.py:182
 msgid "Bouquet Editor"
 msgstr "Επεξεργασία Μπουκέτων"
 
-#: ../plugin/local.py:183
+#: plugin/local.py:183
 msgid "(shift + click for long pressure)"
 msgstr "(shift + κλικ για παρατεταμένο πάτημα)"
 
-#: ../plugin/local.py:184
+#: plugin/local.py:184
 msgid "Show Full OpenWebif"
 msgstr "Εμφάνιση Πλήρους OpenWebif"
 
-#: ../plugin/local.py:185
+#: plugin/local.py:185
 msgid "Show full remote"
 msgstr "Εμφάνιση πλήρους τηλεχειριστηρίου"
 
-#: ../plugin/local.py:186
+#: plugin/local.py:186
 msgid "Show EPG for"
 msgstr "Εμφάνιση EPG για"
 
-#: ../plugin/local.py:187
+#: plugin/local.py:187
 msgid "Shutdown"
 msgstr "Τερματισμός"
 
-#: ../plugin/local.py:188
+#: plugin/local.py:188
 msgid "Site and sources"
 msgstr "Ιστοσελίδα και πηγές"
 
-#: ../plugin/local.py:189
+#: plugin/local.py:189
 msgid "SNR"
 msgstr "SNR"
 
-#: ../plugin/local.py:190
+#: plugin/local.py:190
 msgid "Software"
 msgstr "Λογισμικό"
 
-#: ../plugin/local.py:191
+#: plugin/local.py:191
 msgid "Standby"
 msgstr "Αναμονή"
 
-#: ../plugin/local.py:192
+#: plugin/local.py:192
 msgid "Standby Toggle"
 msgstr "Εναλλαγή Αναμονής"
 
-#: ../plugin/local.py:193
+#: plugin/local.py:193
 msgid "Start time is after end time"
 msgstr "Η ώρα έναρξης είναι μετά την ώρα τερματισμού"
 
-#: ../plugin/local.py:194
+#: plugin/local.py:194
 msgid "Start Instant Record"
 msgstr "Εκκίνηση Άμεσης Εγγραφής"
 
-#: ../plugin/local.py:195
+#: plugin/local.py:195
 msgid "Stream"
 msgstr "Ροή"
 
-#: ../plugin/local.py:196
+#: plugin/local.py:196
 msgid "Subnet mask"
 msgstr "Μάσκα Υποδικτύου"
 
-#: ../plugin/local.py:197
+#: plugin/local.py:197
 msgid "Subservices"
 msgstr "Υπο-υπηρεσίες"
 
-#: ../plugin/local.py:198 ../plugin/local.py:303
+#: plugin/local.py:198 plugin/local.py:303
 msgid "Tags"
 msgstr "Ετικέτες"
 
-#: ../plugin/local.py:199
+#: plugin/local.py:199
 msgid "Teletext"
 msgstr "Τηλεκείμενο"
 
-#: ../plugin/local.py:200
+#: plugin/local.py:200
 msgid "Television"
 msgstr "Τηλεόραση"
 
-#: ../plugin/local.py:201
+#: plugin/local.py:201
 msgid "Template Engine"
 msgstr "Μηχανή Προτύπου"
 
-#: ../plugin/local.py:202
+#: plugin/local.py:202
 msgid "Text"
 msgstr "Κείμενο"
 
-#: ../plugin/local.py:203
+#: plugin/local.py:203
 msgid "Time"
 msgstr "Χρόνος"
 
-#: ../plugin/local.py:204
+#: plugin/local.py:204
 msgid "Timeout"
 msgstr "Χρόνος Λήξης"
 
-#: ../plugin/local.py:205
+#: plugin/local.py:205
 msgid "Timer added"
 msgstr "Έγινε προσθήκη του χρονοδιακόπτη"
 
-#: ../plugin/local.py:206
+#: plugin/local.py:206
 msgid "Timerlist"
 msgstr "Λίστα χρονοδιακοπτών"
 
-#: ../plugin/local.py:207
+#: plugin/local.py:207
 msgid "New Name"
 msgstr "Νέο Όνομα"
 
-#: ../plugin/local.py:208
+#: plugin/local.py:208
 msgid "Autotimer Preview"
 msgstr "Προεπισκόπηση Αυτόματου Χρονοδιακόπτη"
 
-#: ../plugin/local.py:209
+#: plugin/local.py:209
 msgid "Timer"
 msgstr "Χρονοδιακόπτης"
 
-#: ../plugin/local.py:210 ../plugin/local.py:324
+#: plugin/local.py:210 plugin/local.py:324
 msgid "Timers"
 msgstr "Χρονοδιακόπτες"
 
-#: ../plugin/local.py:211
+#: plugin/local.py:211
 msgid "Title"
 msgstr "Τίτλος"
 
-#: ../plugin/local.py:212
+#: plugin/local.py:212
 msgid "Main Memory"
 msgstr "Συνολική Μνήμη"
 
-#: ../plugin/local.py:213
+#: plugin/local.py:213
 msgid "transcoded"
 msgstr "διαδικοποιημένο"
 
-#: ../plugin/local.py:214
+#: plugin/local.py:214
 msgid "Transcode"
 msgstr "Διακωδικοποίηση"
 
-#: ../plugin/local.py:215
+#: plugin/local.py:215
 msgid "Tuner Bit Error Rate BER"
 msgstr "Ρυθμός Σφαλμάτων Tuner BER"
 
-#: ../plugin/local.py:216
+#: plugin/local.py:216
 msgid "Tuner Number"
 msgstr "Αριθμός Tuner"
 
-#: ../plugin/local.py:217
+#: plugin/local.py:217
 msgid "Tuner Signal"
 msgstr "Σήμα Tuner"
 
-#: ../plugin/local.py:218
+#: plugin/local.py:218
 msgid "Tuner Signal Quality SNR"
 msgstr "Ποιότητα Σήματος Tuner SNR"
 
-#: ../plugin/local.py:219
+#: plugin/local.py:219
 msgid "Tuner Signal Quality SNR_DB"
 msgstr "Ποιότητα Σήματος Tuner SNR_DB"
 
-#: ../plugin/local.py:220
+#: plugin/local.py:220
 msgid "Tuner Signal Power AGC"
 msgstr "Ισχύς Σήματος Tuner AGC"
 
-#: ../plugin/local.py:221
+#: plugin/local.py:221
 msgid "Tuner Type"
 msgstr "Τύπος Tuner"
 
-#: ../plugin/local.py:222
+#: plugin/local.py:222
 msgid "Tuners"
 msgstr "Tuners"
 
-#: ../plugin/local.py:223
+#: plugin/local.py:223
 msgid "TV"
 msgstr "TV"
 
-#: ../plugin/local.py:224
+#: plugin/local.py:224
 msgid "TV Multi EPG"
 msgstr "Πολλαπλός EPG TV"
 
-#: ../plugin/local.py:225
+#: plugin/local.py:225
 msgid "Type"
 msgstr "Τύπος"
 
-#: ../plugin/local.py:226
+#: plugin/local.py:226
 msgid "Upcoming Events"
 msgstr "Επερχόμενες Εκπομπές"
 
-#: ../plugin/local.py:227
+#: plugin/local.py:227
 msgid "Version"
 msgstr "Έκδοση"
 
-#: ../plugin/local.py:228
+#: plugin/local.py:228
 msgid "Video"
 msgstr "Βίντεο"
 
-#: ../plugin/local.py:229
+#: plugin/local.py:229
 msgid "Video Height"
 msgstr "Ύψος Βίντεο"
 
-#: ../plugin/local.py:230
+#: plugin/local.py:230
 msgid "Video Wide"
 msgstr "Ευρεία Εικόνα"
 
-#: ../plugin/local.py:231
+#: plugin/local.py:231
 msgid "Video Width"
 msgstr "Πλάτος Βίντεο"
 
-#: ../plugin/local.py:232
+#: plugin/local.py:232
 msgid "VPS"
 msgstr "VPS"
 
-#: ../plugin/local.py:233
+#: plugin/local.py:233
 msgid "Volume"
 msgstr "Ένταση"
 
-#: ../plugin/local.py:234
+#: plugin/local.py:234
 msgid "Volume Control"
 msgstr "Έλεγχος Έντασης"
 
-#: ../plugin/local.py:235
+#: plugin/local.py:235
 msgid "waiting"
 msgstr "αναμονή"
 
-#: ../plugin/local.py:236
+#: plugin/local.py:236
 msgid "Warning"
 msgstr "Προειδοποίηση"
 
-#: ../plugin/local.py:237
+#: plugin/local.py:237
 msgid "Yes/No"
 msgstr "Ναι/Όχι"
 
-#: ../plugin/local.py:238
+#: plugin/local.py:238
 msgid "Zap"
 msgstr "Μετάβαση"
 
-#: ../plugin/local.py:239
+#: plugin/local.py:239
 msgid "zap before Stream"
 msgstr "μετάβαση πριν τη Ροή"
 
-#: ../plugin/local.py:240
+#: plugin/local.py:240
 msgid "Zap to"
 msgstr "Μετάβαση σε"
 
-#: ../plugin/local.py:241
+#: plugin/local.py:241
 msgid "Zapped to"
 msgstr "Έγινε μετάβαση σε"
 
-#: ../plugin/local.py:242
+#: plugin/local.py:242
 msgid "Translation to Spanish"
 msgstr "Μετάφραση στα Ισπανικά"
 
-#: ../plugin/local.py:243
+#: plugin/local.py:243
 msgid "All Files of this Software are open source software;"
 msgstr "Όλα τα αρχεία αυτού του Λογισμικού είναι ανοικτού τύπου; "
 
-#: ../plugin/local.py:244
+#: plugin/local.py:244
 msgid "you can redistribute it and/or modify it under the"
 msgstr "μπορείτε να το αναδιανείμετε και/ή να το τροποποιήσετε υπό τους"
 
-#: ../plugin/local.py:245
+#: plugin/local.py:245
 msgid "terms of the GNU General Public License version 2 as"
 msgstr "όρους της Γενικής Δημόσιας Άδειας GNU έκδοση 2 όπως"
 
-#: ../plugin/local.py:246
+#: plugin/local.py:246
 msgid "published by the Free Software Foundation."
 msgstr "αυτή έχει δημοσιευτεί από το Ίδρυμα Ελεύθερου Λογισμικού."
 
-#: ../plugin/local.py:247
+#: plugin/local.py:247
 msgid ""
 "All Files of this Software are open source software; you can redistribute it "
 "and/or modify it under the terms of the GNU General Public License version 2 "
@@ -1459,568 +1524,692 @@ msgstr ""
 "Άδειας GNU έκδοση 2 όπως αυτή έχει δημοσιευτεί από το Ίδρυμα Ελεύθερου "
 "Λογισμικού."
 
-#: ../plugin/local.py:248
+#: plugin/local.py:248
 msgid "Root"
 msgstr "Ρίζα"
 
-#: ../plugin/local.py:250
+#: plugin/local.py:250
 msgid "AutoTimer List"
 msgstr "Λίστα Αυτόματων Χρονοδιακοπτών"
 
-#: ../plugin/local.py:251
+#: plugin/local.py:251
 msgid "AutoTimer Edit"
 msgstr "Επεξεργασία Αυτόματου Χρονοδιακόπτη"
 
-#: ../plugin/local.py:254
+#: plugin/local.py:254
 msgid "Match title"
 msgstr "Συσχέτιση τίτλου"
 
-#: ../plugin/local.py:255
+#: plugin/local.py:255
 msgid "EPG encoding"
 msgstr "Κωδικοποίηση EPG"
 
-#: ../plugin/local.py:256
+#: plugin/local.py:256
 msgid "Search type"
 msgstr "Τύπος αναζήτησης"
 
-#: ../plugin/local.py:257
+#: plugin/local.py:257
 msgid "partial match"
 msgstr "μερική συσχέτιση"
 
-#: ../plugin/local.py:258
+#: plugin/local.py:258
 msgid "exact match"
 msgstr "ακριβής συσχέτιση"
 
-#: ../plugin/local.py:259
+#: plugin/local.py:259
 msgid "description match"
 msgstr "συσχέτιση περιγραφής"
 
-#: ../plugin/local.py:260
+#: plugin/local.py:260
 msgid "title or description match"
 msgstr "συσχέτιση τίτλου ή περιγραφής"
 
-#: ../plugin/local.py:261
+#: plugin/local.py:261
 msgid "title or short description match"
 msgstr "συσχέτιση τίτλου ή σύντομης περιγραφής"
 
-#: ../plugin/local.py:262
+#: plugin/local.py:262
 msgid "short description match"
 msgstr "συσχέτιση σύντομης περιγραφής"
 
-#: ../plugin/local.py:263
+#: plugin/local.py:263
 msgid "start match"
 msgstr "εκκίνηση συσχέτισης"
 
-#: ../plugin/local.py:264
+#: plugin/local.py:264
 msgid "Search strictness"
 msgstr "Αυστηρότητα αναζήτησης"
 
-#: ../plugin/local.py:265
+#: plugin/local.py:265
 msgid "case-sensitive search"
 msgstr "αναζήτηση με διάκριση μικρών-κεφαλαίων"
 
-#: ../plugin/local.py:266
+#: plugin/local.py:266
 msgid "case-insensitive search"
 msgstr "αναζήτηση χωρίς διάκριση μικρών-κεφαλαίων"
 
-#: ../plugin/local.py:267
+#: plugin/local.py:267
 msgid "Timer type"
 msgstr "Τύπος χρονοδιακόπτη"
 
-#: ../plugin/local.py:268
+#: plugin/local.py:268
 msgid "record"
 msgstr "εγγραφή"
 
-#: ../plugin/local.py:269
+#: plugin/local.py:269
 msgid "zap"
 msgstr "μετάβαση"
 
-#: ../plugin/local.py:270
+#: plugin/local.py:270
 msgid "Override found with alternative service"
 msgstr "Βρέθηκε υπερκάλυψη με την εναλλακτική υπηρεσία"
 
-#: ../plugin/local.py:271
+#: plugin/local.py:271
 msgid "Only match during timespan"
 msgstr "Συσχέτιση μόνο κατά τη διάρκεια του χρονικού διαστήματος"
 
-#: ../plugin/local.py:272
+#: plugin/local.py:272
 msgid "Begin of timespan"
 msgstr "Εκκίνηση χρονικού διαστήματος"
 
-#: ../plugin/local.py:273
+#: plugin/local.py:273
 msgid "End of Timespan"
 msgstr "Τέλος χρονικού διαστήματος"
 
-#: ../plugin/local.py:274
+#: plugin/local.py:274
 msgid "Restrict to events on certain dates"
 msgstr "Περιορισμός σε προγράμματα συγκεκριμένων ημερομηνιών"
 
-#: ../plugin/local.py:275
+#: plugin/local.py:275
 msgid "Not after"
 msgstr "Όχι έπειτα από"
 
-#: ../plugin/local.py:276
+#: plugin/local.py:276
 msgid "Not before"
 msgstr "Όχι πριν από"
 
-#: ../plugin/local.py:277
+#: plugin/local.py:277
 msgid "Custom offset"
 msgstr "Μετατόπιση χρόνου από το χρήστη"
 
-#: ../plugin/local.py:278
+#: plugin/local.py:278
 msgid "Offset before recording (in m)"
 msgstr "Μετατόπιση χρόνου πριν την εγγραφή (σε λεπτά)"
 
-#: ../plugin/local.py:279
+#: plugin/local.py:279
 msgid "Offset after recording (in m)"
 msgstr "Μετατόπιση χρόνου μετά την εγγραφή (σε λεπτά)"
 
-#: ../plugin/local.py:280
+#: plugin/local.py:280
 msgid "Set maximum duration"
 msgstr "Ορισμός μέγιστης διάρκειας"
 
-#: ../plugin/local.py:281
+#: plugin/local.py:281
 msgid "After event"
 msgstr "Μετά την εκπομπή"
 
-#: ../plugin/local.py:282
+#: plugin/local.py:282
 msgid "standard"
 msgstr "στάνταρ"
 
-#: ../plugin/local.py:283
+#: plugin/local.py:283
 msgid "auto"
 msgstr "αυτόματο"
 
-#: ../plugin/local.py:284
+#: plugin/local.py:284
 msgid "do nothing"
 msgstr "να μη γίνει τίποτα"
 
-#: ../plugin/local.py:285
+#: plugin/local.py:285
 msgid "go to standby"
 msgstr "μετάβαση σε αναμονή"
 
-#: ../plugin/local.py:286
+#: plugin/local.py:286
 msgid "go to deep standby"
 msgstr "μετάβαση σε βαθιά αναμονή"
 
-#: ../plugin/local.py:287
+#: plugin/local.py:287
 msgid "Execute \"after event\" during timespan"
 msgstr "Εκτέλεση του \"μετά το πρόγραμμα\" κατά το χρονικό διάστημα"
 
-#: ../plugin/local.py:288
+#: plugin/local.py:288
 msgid "Begin of \"after event\" timespan"
 msgstr "Αρχή χρονικής διάρκειας \"μετά το πρόγραμμα\""
 
-#: ../plugin/local.py:289
+#: plugin/local.py:289
 msgid "End of \"after event\" timespan"
 msgstr "Τέλος χρονικής διάρκειας \"μετά το πρόγραμμα\""
 
-#: ../plugin/local.py:290
+#: plugin/local.py:290
 msgid "Record a maximum of x times"
 msgstr "Εγγραφή το μέγιστο x φορές"
 
-#: ../plugin/local.py:291
+#: plugin/local.py:291
 msgid "Amount of recordings left"
 msgstr "Αριθμός εγγραφών που απομένουν"
 
-#: ../plugin/local.py:292 ../plugin/local.py:363
+#: plugin/local.py:292 plugin/local.py:363
 msgid "Never"
 msgstr "Ποτέ"
 
-#: ../plugin/local.py:293
+#: plugin/local.py:293
 msgid "Monthly"
 msgstr "Μηνιαία"
 
-#: ../plugin/local.py:294
+#: plugin/local.py:294
 msgid "Weekly (Sunday)"
 msgstr "Εβδομαδιαία (Κυριακή)"
 
-#: ../plugin/local.py:295
+#: plugin/local.py:295
 msgid "Weekly (Monday)"
 msgstr "Εβδομαδιαία (Δευτέρα)"
 
-#: ../plugin/local.py:296
+#: plugin/local.py:296
 msgid "Reset count"
 msgstr "Μηδενισμός μετρητών"
 
-#: ../plugin/local.py:297
+#: plugin/local.py:297
 msgid "Require description to be unique"
 msgstr "Απαίτηση μοναδικότητας της περιγραφής"
 
-#: ../plugin/local.py:298
+#: plugin/local.py:298
 msgid "No"
 msgstr "Όχι"
 
-#: ../plugin/local.py:299
+#: plugin/local.py:299
 msgid "On same service"
 msgstr "Στην ίδια υπηρεσία"
 
-#: ../plugin/local.py:300
+#: plugin/local.py:300
 msgid "On any service"
 msgstr "Σε οποιαδήποτε υπηρεσία"
 
-#: ../plugin/local.py:301
+#: plugin/local.py:301
 msgid "Any service/recording"
 msgstr "Κάθε υπηρεσία/εγγραφή"
 
-#: ../plugin/local.py:302
+#: plugin/local.py:302
 msgid "Use a custom location"
 msgstr "Χρήση τοποθεσίας ορισμένης από το χρήστη"
 
-#: ../plugin/local.py:304
+#: plugin/local.py:304
 msgid "select Tags"
 msgstr "επιλογή Ετικετών"
 
-#: ../plugin/local.py:306
+#: plugin/local.py:306
 msgid "select Channels"
 msgstr "επιλογή Καναλιών"
 
-#: ../plugin/local.py:308
+#: plugin/local.py:308
 msgid "select Bouquets"
 msgstr "επιλογή Μπουκέτων"
 
-#: ../plugin/local.py:309
+#: plugin/local.py:309
 msgid "Enable Filtering"
 msgstr "Ενεργοποίηση Φίλτρων"
 
-#: ../plugin/local.py:310
+#: plugin/local.py:310
 msgid "Include"
 msgstr "Συμπερίληψη"
 
-#: ../plugin/local.py:311
+#: plugin/local.py:311
 msgid "Exclude"
 msgstr "Εξαίρεση"
 
-#: ../plugin/local.py:312
+#: plugin/local.py:312
 msgid "in Title"
 msgstr "σε Τίτλο"
 
-#: ../plugin/local.py:313
+#: plugin/local.py:313
 msgid "in Shortdescription"
 msgstr "σε Σύντομη περιγραφή"
 
-#: ../plugin/local.py:314
+#: plugin/local.py:314
 msgid "in Description"
 msgstr "σε Περιγραφή"
 
-#: ../plugin/local.py:315
+#: plugin/local.py:315
 msgid "on Weekday"
 msgstr "σε Καθημερινή"
 
-#: ../plugin/local.py:316
+#: plugin/local.py:316
 msgid "Weekend"
 msgstr "Σαββατοκύριακο"
 
-#: ../plugin/local.py:317
+#: plugin/local.py:317
 msgid "Weekday"
 msgstr "Καθημερινή"
 
-#: ../plugin/local.py:318
+#: plugin/local.py:318
 msgid "Add"
 msgstr "Προσθήκη"
 
-#: ../plugin/local.py:319
+#: plugin/local.py:319
 msgid "Delete"
 msgstr "Διαγραφή"
 
-#: ../plugin/local.py:320 ../plugin/local.py:372 ../plugin/local.py:380
+#: plugin/local.py:320 plugin/local.py:372 plugin/local.py:380
 msgid "Reload"
 msgstr "Ανανέωση"
 
-#: ../plugin/local.py:322
+#: plugin/local.py:322
 msgid "Parse"
 msgstr "Ανάλυση"
 
-#: ../plugin/local.py:323
+#: plugin/local.py:323
 msgid "Simulate"
 msgstr "Εξομοίωση"
 
-#: ../plugin/local.py:326
+#: plugin/local.py:326
 msgid "Do you really want to delete the AT"
 msgstr "Θέλετε σίγουρα να διαγράψετε τον ΑΧ"
 
-#: ../plugin/local.py:327
+#: plugin/local.py:327
 msgid "Label series"
 msgstr "Σειρές ετικετών"
 
 # New Autotimer Setting Windows name (not enabled to transfer atm)
-#: ../plugin/local.py:329
+#: plugin/local.py:329
 msgid "AutoTimer Settings"
 msgstr "Ρυθμίσεις Αυτ. Χρ/κόπτη"
 
-#: ../plugin/local.py:330
+#: plugin/local.py:330
 msgid "AutoPoll"
 msgstr "Αυτόματος Έλεγχος"
 
-#: ../plugin/local.py:331
+#: plugin/local.py:331
 msgid "Interval (in h)"
 msgstr "Μεσοδιάστημα (σε ώρες)"
 
-#: ../plugin/local.py:332
+#: plugin/local.py:332
 msgid "Max Days"
 msgstr "Μέγιστος αριθμός ημερών"
 
-#: ../plugin/local.py:333
+#: plugin/local.py:333
 msgid "Try Guessing"
 msgstr "Προσπάθεια προσδιορισμού"
 
-#: ../plugin/local.py:334
+#: plugin/local.py:334
 msgid "Fastscan"
 msgstr "Γρήγορη ανίχνευση"
 
-#: ../plugin/local.py:335
+#: plugin/local.py:335
 msgid "Show in Extensionsmenu"
 msgstr "Εμφάνιση στο μενού επεκτάσεων"
 
-#: ../plugin/local.py:336
+#: plugin/local.py:336
 msgid "Disabled on Conflict"
 msgstr "Ανενεργό κατά τη διένεξη"
 
-#: ../plugin/local.py:337
+#: plugin/local.py:337
 msgid "Add Similar on Conflict"
 msgstr "Προσθήκη Παρόμοιων κατά τη διένεξη"
 
-#: ../plugin/local.py:338
+#: plugin/local.py:338
 msgid "Notify if Conflict"
 msgstr "Ειδοποίηση αν υπάρχει διένεξη"
 
-#: ../plugin/local.py:339
+#: plugin/local.py:339
 msgid "Notify if Similar"
 msgstr "Ειδοποίηση αν υπάρχει Παρόμοιο"
 
-#: ../plugin/local.py:340
+#: plugin/local.py:340
 msgid "Add Autotimer to Tags"
 msgstr "Προσθήκη Αυτόματου Χρονοδιακόπτη στις Ετικέτες"
 
-#: ../plugin/local.py:341
+#: plugin/local.py:341
 msgid "Add Name to Tags"
 msgstr "Προσθήκη ονόματος στις Ετικέτες"
 
-#: ../plugin/local.py:343
+#: plugin/local.py:343
 msgid "None"
 msgstr "Κανένα"
 
-#: ../plugin/local.py:346
+#: plugin/local.py:346
 msgid "Editor"
 msgstr "Επεξεργασία"
 
-#: ../plugin/local.py:347
+#: plugin/local.py:347
 msgid "Plain"
 msgstr "Απλό"
 
-#: ../plugin/local.py:348
+#: plugin/local.py:348
 msgid "Wizzard"
 msgstr "Οδηγός"
 
-#: ../plugin/local.py:351
+#: plugin/local.py:351
 msgid "Enable Messages"
 msgstr "Ενεργοποίηση Μηνυμάτων"
 
-#: ../plugin/local.py:354
+#: plugin/local.py:354
 msgid "Delay Standby"
 msgstr "Καθυστέρηση Αναμονής"
 
-#: ../plugin/local.py:355
+#: plugin/local.py:355
 msgid "Interval (min.)"
 msgstr "Μεσοδιάστημα (λεπτά)"
 
-#: ../plugin/local.py:356
+#: plugin/local.py:356
 msgid "Interval (sec.)"
 msgstr "Μεσοδιάστημα (δευτ.)"
 
-#: ../plugin/local.py:357
-msgid "Afterevent"
-msgstr "Μετά το πρόγραμμα"
-
-#: ../plugin/local.py:358
+#: plugin/local.py:358
 msgid "Force"
 msgstr "Εξαναγκασμός"
 
-#: ../plugin/local.py:359
+#: plugin/local.py:359
 msgid "Wakeup"
 msgstr "Αφύπνιση"
 
-#: ../plugin/local.py:360
+#: plugin/local.py:360
 msgid "Inherit Autotimer"
 msgstr "Διαδοχή Αυτόματου Χρονοδιακόπτη"
 
-#: ../plugin/local.py:361
+#: plugin/local.py:361
 msgid "Parse Autotimer"
 msgstr "Ανάλυση Αυτόματου Χρονοδιακόπτη"
 
-#: ../plugin/local.py:362
+#: plugin/local.py:362
 msgid "Always"
 msgstr "Πάντα"
 
-#: ../plugin/local.py:364
+#: plugin/local.py:364
 msgid "Background only"
 msgstr "Μόνο στο παρασκήνιο"
 
-#: ../plugin/local.py:365
+#: plugin/local.py:365
 msgid "Ask, default Yes"
 msgstr "Ερώτηση, προεπιλογή Ναι"
 
-#: ../plugin/local.py:366
+#: plugin/local.py:366
 msgid "Ask, default No"
 msgstr "Ερώτηση, προεπιλογή Όχι"
 
-#: ../plugin/local.py:367
+#: plugin/local.py:367
 msgid "Method"
 msgstr "Μέθοδος"
 
-#: ../plugin/local.py:368
+#: plugin/local.py:368
 msgid "Visibly"
 msgstr "Ορατά"
 
-#: ../plugin/local.py:369
+#: plugin/local.py:369
 msgid "Picture in Picture"
 msgstr "Εικόνα σε Εικόνα"
 
-#: ../plugin/local.py:370
+#: plugin/local.py:370
 msgid "Picture in Picture (hidden)"
 msgstr "Εικόνα σε Εικόνα (κρυφό)"
 
-#: ../plugin/local.py:371
+#: plugin/local.py:371
 msgid "Fake Recording"
 msgstr "Προσποίηση Εγγραφής"
 
-#: ../plugin/local.py:374
+#: plugin/local.py:374
 msgid "Refresh now"
 msgstr "Ανανέωση τώρα"
 
-#: ../plugin/local.py:376
+#: plugin/local.py:376
 msgid "Add Provider as new Bouquet"
 msgstr "Προσθήκη Παρόχου ως νέο μπουκέτο"
 
-#: ../plugin/local.py:377
+#: plugin/local.py:377
 msgid "Add channel(s) to Bouquet"
 msgstr "Προσθήκη καναλιού(ών) σε Μπουκέτο"
 
-#: ../plugin/local.py:378
+#: plugin/local.py:378
 msgid "Add channel(s) as alternate"
 msgstr "Προσθήκη καναλιού(ών) ως εναλλακτικό"
 
-#: ../plugin/local.py:381
+#: plugin/local.py:381
 msgid "Export"
 msgstr "Εξαγωγή"
 
-#: ../plugin/local.py:382
+#: plugin/local.py:382
 msgid "Import"
 msgstr "Εισαγωγή"
 
-#: ../plugin/local.py:383
+#: plugin/local.py:383
 msgid "Add Bouquet"
 msgstr "Προσθήκη Μπουκέτου"
 
-#: ../plugin/local.py:384
+#: plugin/local.py:384
 msgid "Rename Bouquet"
 msgstr "Μετονομασία Μπουκέτου"
 
-#: ../plugin/local.py:385
+#: plugin/local.py:385
 msgid "Delete Bouquet"
 msgstr "Διαγραφή Μπουκέτου"
 
-#: ../plugin/local.py:386
+#: plugin/local.py:386
 msgid "Add Marker"
 msgstr "Προσθήκη Σημειωτή"
 
-#: ../plugin/local.py:387
+#: plugin/local.py:387
 msgid "Rename"
 msgstr "Μετονομασία"
 
-#: ../plugin/local.py:388
+#: plugin/local.py:388
 msgid "Delete Channel(s)"
 msgstr "Διαγραφή Καναλιού(ών)"
 
-#: ../plugin/local.py:389
+#: plugin/local.py:389
 msgid "Do you really want to delete the channel(s)"
 msgstr "Θέλετε σίγουρα να διαγραφεί το/τα κανάλι/κανάλια"
 
-#: ../plugin/local.py:390
+#: plugin/local.py:390
 msgid "Do you really want to delete the bouquet"
 msgstr "Θέλετε σίγουρα να διαγραφεί το μπουκέτο"
 
-#: ../plugin/local.py:391
+#: plugin/local.py:391
 msgid "Name of the Bouquet"
 msgstr "Όνομα μπουκέτου"
 
-#: ../plugin/local.py:392
+#: plugin/local.py:392
 msgid "Name of the Marker"
 msgstr "Όνομα Σημειωτή"
 
-#: ../plugin/local.py:393
+#: plugin/local.py:393
 msgid "Enter new name for the bouquet"
 msgstr "Εισαγωγή νέου ονόματος μπουκέτου"
 
-#: ../plugin/local.py:394
+#: plugin/local.py:394
 msgid "Enter new name for the marker"
 msgstr "Εισαγωγή νέου ονόματος σημειωτή"
 
-#: ../plugin/local.py:395
+#: plugin/local.py:395
 msgid "Please enter filename"
 msgstr "Εισαγωγή νέου ονόματος αρχείου"
 
-#: ../plugin/local.py:396
+#: plugin/local.py:396
 msgid "Do you really want to restore from file"
 msgstr "Θέλετε σίγουρα να γίνει επαναφορά από το αρχείο"
 
-#: ../plugin/plugin.py:94
+#: plugin/local.py:398
+msgid "via"
+msgstr ""
+
+#: plugin/local.py:399
+msgid "Record+ZAP"
+msgstr ""
+
+#: plugin/local.py:400
+msgid "Pmtpid"
+msgstr ""
+
+#: plugin/local.py:401
+msgid "Apid"
+msgstr ""
+
+#: plugin/local.py:402
+msgid "Vpid"
+msgstr ""
+
+#: plugin/local.py:403
+msgid "Pcrpid"
+msgstr ""
+
+#: plugin/local.py:404
+msgid "Tsid"
+msgstr ""
+
+#: plugin/local.py:405
+msgid "Onid"
+msgstr ""
+
+#: plugin/local.py:406
+msgid "Sid"
+msgstr ""
+
+#: plugin/local.py:407
+msgid "Sref"
+msgstr ""
+
+#: plugin/local.py:408
+msgid "Orbital Position"
+msgstr ""
+
+#: plugin/local.py:410
+msgid "error! Loading Page"
+msgstr ""
+
+#: plugin/local.py:411
+msgid "Timer Added"
+msgstr ""
+
+#: plugin/local.py:412
+msgid "Event not found"
+msgstr ""
+
+#: plugin/local.py:413
+msgid "Show Picon in channel list"
+msgstr ""
+
+#: plugin/local.py:415
+msgid "OpenWebif Browser Settings"
+msgstr ""
+
+#: plugin/local.py:416
+msgid "OpenWebif Settings"
+msgstr ""
+
+#: plugin/local.py:417
+msgid "Theme"
+msgstr ""
+
+#: plugin/local.py:418
+msgid "Show Picons in channel list"
+msgstr ""
+
+#: plugin/local.py:419
+msgid "Spinner"
+msgstr ""
+
+#: plugin/local.py:420
+msgid "Display duration (s)"
+msgstr ""
+
+#: plugin/local.py:422
+msgid "Display Mode"
+msgstr ""
+
+#: plugin/local.py:423
+msgid "TV Guide"
+msgstr ""
+
+#: plugin/local.py:424
+msgid "Timeline"
+msgstr ""
+
+#: plugin/local.py:425
+msgid "Web TV"
+msgstr ""
+
+#: plugin/local.py:427
+msgid "Link Speed"
+msgstr ""
+
+#: plugin/local.py:428
+msgid "Network Shares"
+msgstr ""
+
+#: plugin/local.py:429
+msgid "using"
+msgstr ""
+
+#: plugin/plugin.py:103
 msgid "OpenWebif url: http://yourip:port"
 msgstr "OpenWebif url: http://yourip:port"
 
-#: ../plugin/plugin.py:108
+#: plugin/plugin.py:117
 msgid "OpenWebInterface Enabled"
 msgstr "OpenWebInterface Ενεργό"
 
-#: ../plugin/plugin.py:115
+#: plugin/plugin.py:124
 msgid "HTTP port"
 msgstr "Θύρα HTTP"
 
-#: ../plugin/plugin.py:116
+#: plugin/plugin.py:125
 msgid "Enable HTTP Authentication"
 msgstr "Ενεργοποίηση πιστοποίησης HTTP"
 
-#: ../plugin/plugin.py:117
+#: plugin/plugin.py:126
 msgid "Enable HTTPS"
 msgstr "Ενεργοποίηση HTTPS"
 
-#: ../plugin/plugin.py:119
+#: plugin/plugin.py:128
 msgid "HTTPS port"
 msgstr "Θύρα HTTPS"
 
-#: ../plugin/plugin.py:120
+#: plugin/plugin.py:129
 msgid "Enable HTTPS Authentication"
 msgstr "Ενεργοποίηση πιστοποίησης HTTPS"
 
-#: ../plugin/plugin.py:121
+#: plugin/plugin.py:130
 msgid "Require client cert for HTTPS"
 msgstr "Απαίτηση πιστοποίησης πελάτη για HTTPS"
 
-#: ../plugin/plugin.py:123
+#: plugin/plugin.py:132
 msgid "Enable Authentication for streaming"
 msgstr "Ενεργοποίηση Πιστοποίησης για ροή"
 
-#: ../plugin/plugin.py:124
+#: plugin/plugin.py:133
 msgid "Disable access for user root"
 msgstr "Απενεργοποίηση πρόσβασης για το χρήστη root"
 
-#: ../plugin/plugin.py:125
-msgid "Smart services renaming for XBMC"
-msgstr "Έξυπνη μετονομασία συσκευών για το XBMC"
+#: plugin/plugin.py:135
+msgid "Without auth only local access is allowed!"
+msgstr ""
 
-#: ../plugin/plugin.py:126
+#: plugin/plugin.py:136
+msgid "Enable access from VPNs"
+msgstr ""
+
+#: plugin/plugin.py:137
 msgid "Enable Parental Control"
 msgstr "Ενεργοποίηση γονικού ελέγχου"
 
-#: ../plugin/plugin.py:127
+#: plugin/plugin.py:138
 msgid "Add service name to stream information"
 msgstr "Προσθήκη ονόματος υπηρεσίας στις πληροφορίες ροής"
 
-#: ../plugin/plugin.py:129
+#: plugin/plugin.py:140
 msgid "Character encoding for EPG data"
 msgstr "Κωδικοποίηση χαρακτήρων για τα δεδομένα του EPG"
 
-#: ../plugin/plugin.py:135 ../plugin/plugin.py:194 ../plugin/plugin.py:196
-#: ../plugin/plugin.py:198
+#: plugin/plugin.py:149 plugin/plugin.py:208 plugin/plugin.py:210
+#: plugin/plugin.py:212
 msgid "OpenWebif Configuration"
 msgstr "Ρυθμίσεις OpenWebif"
+
+#~ msgid "Delete Movie"
+#~ msgstr "Διαγραφή Ταινίας"
+
+#~ msgid "Really delete the movie"
+#~ msgstr "Να διαγραφεί σίγουρα η ταινία"
+
+#~ msgid "Afterevent"
+#~ msgstr "Μετά το πρόγραμμα"
+
+#~ msgid "Smart services renaming for XBMC"
+#~ msgstr "Έξυπνη μετονομασία συσκευών για το XBMC"
