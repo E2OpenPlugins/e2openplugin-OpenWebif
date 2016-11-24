@@ -303,7 +303,7 @@ class BaseController(resource.Resource):
 		if config.OpenWebif.webcache.theme.value:
 			ret['theme'] = config.OpenWebif.webcache.theme.value
 		if not os.path.exists(getPublicPath('themes')):
-			if not ( theme == 'original' or theme = 'clear') 
+			if not ( theme == 'original' or theme == 'clear') 
 				ret['theme'] = 'original'
 		else:
 			ret['themes'] = True
