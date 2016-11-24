@@ -1,1450 +1,1518 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2016-04-30 20:14+0200\n"
+"POT-Creation-Date: 2016-11-24 15:32+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Dimitrij <Dima-73@inbox.lv>\n"
+"Last-Translator: neoatomic <neoatomic@users.noreply.github.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
-#: ../plugin/controllers/BouquetEditor.py:82
+#: plugin/controllers/BouquetEditor.py:82
 msgid "one two three four unknown command"
 msgstr "одна /две / три / четыре неизвестные команды"
 
-#: ../plugin/controllers/BouquetEditor.py:88
-#: ../plugin/controllers/BouquetEditor.py:149
-#: ../plugin/controllers/BouquetEditor.py:194
+#: plugin/controllers/BouquetEditor.py:88
+#: plugin/controllers/BouquetEditor.py:149
+#: plugin/controllers/BouquetEditor.py:194
 msgid "No bouquet name given!"
 msgstr "Не задано название букета!"
 
-#: ../plugin/controllers/BouquetEditor.py:118
+#: plugin/controllers/BouquetEditor.py:118
 #, python-format
 msgid "Bouquet %s created."
 msgstr "Букет %s создан."
 
-#: ../plugin/controllers/BouquetEditor.py:120
+#: plugin/controllers/BouquetEditor.py:120
 msgid "Get mutable list for new created bouquet failed!"
 msgstr "Получить изменяемый список для нового созданного букета не удалось!"
 
-#: ../plugin/controllers/BouquetEditor.py:123
+#: plugin/controllers/BouquetEditor.py:123
 #, python-format
 msgid "Bouquet %s already exists."
 msgstr "Букет %s уже существует."
 
-#: ../plugin/controllers/BouquetEditor.py:125
-#: ../plugin/controllers/BouquetEditor.py:435
+#: plugin/controllers/BouquetEditor.py:125
+#: plugin/controllers/BouquetEditor.py:435
 msgid "Bouquetlist is not editable!"
 msgstr "Список букетов не редактируется!"
 
-#: ../plugin/controllers/BouquetEditor.py:127
+#: plugin/controllers/BouquetEditor.py:127
 msgid "Multi-Bouquet is not enabled!"
 msgstr "Мульти-букеты не включены!"
 
-#: ../plugin/controllers/BouquetEditor.py:133
+#: plugin/controllers/BouquetEditor.py:133
 msgid "No provider given!"
 msgstr "Не задан провайдер!"
 
-#: ../plugin/controllers/BouquetEditor.py:180
+#: plugin/controllers/BouquetEditor.py:180
 #, python-format
 msgid "Bouquet %s removed failed."
 msgstr "Ошибка удаления букета %s"
 
-#: ../plugin/controllers/BouquetEditor.py:182
+#: plugin/controllers/BouquetEditor.py:182
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Ошибка удаления букета %s, референс  или изменяемый список не является действительным."
+msgstr ""
+"Ошибка удаления букета %s, референс  или изменяемый список не является "
+"действительным."
 
-#: ../plugin/controllers/BouquetEditor.py:186
+#: plugin/controllers/BouquetEditor.py:186
 #, python-format
 msgid "Bouquet %s deleted."
 msgstr "Букет %s удален."
 
-#: ../plugin/controllers/BouquetEditor.py:188
+#: plugin/controllers/BouquetEditor.py:188
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
 msgstr "Ошибка: Букет %s не может быть удален, OSError."
 
-#: ../plugin/controllers/BouquetEditor.py:204
-#: ../plugin/controllers/BouquetEditor.py:261
+#: plugin/controllers/BouquetEditor.py:204
+#: plugin/controllers/BouquetEditor.py:261
 msgid "No position given!"
 msgstr "Не задана позиция!"
 
-#: ../plugin/controllers/BouquetEditor.py:211
+#: plugin/controllers/BouquetEditor.py:211
 #, python-format
 msgid "Bouquet %s moved."
 msgstr "Букет %s перемещен."
 
-#: ../plugin/controllers/BouquetEditor.py:213
+#: plugin/controllers/BouquetEditor.py:213
 #, python-format
 msgid "Bouquet %s can not be moved."
 msgstr "Букет %s не может быть перемещен."
 
-#: ../plugin/controllers/BouquetEditor.py:219
-#: ../plugin/controllers/BouquetEditor.py:249
-#: ../plugin/controllers/BouquetEditor.py:275
-#: ../plugin/controllers/BouquetEditor.py:309
-#: ../plugin/controllers/BouquetEditor.py:455
+#: plugin/controllers/BouquetEditor.py:219
+#: plugin/controllers/BouquetEditor.py:249
+#: plugin/controllers/BouquetEditor.py:275
+#: plugin/controllers/BouquetEditor.py:309
+#: plugin/controllers/BouquetEditor.py:455
 msgid "No bouquet given!"
 msgstr "Не задан букет!"
 
-#: ../plugin/controllers/BouquetEditor.py:225
-#: ../plugin/controllers/BouquetEditor.py:255
-#: ../plugin/controllers/BouquetEditor.py:281
-#: ../plugin/controllers/BouquetEditor.py:339
-#: ../plugin/controllers/BouquetEditor.py:397
-#: ../plugin/controllers/BouquetEditor.py:461
-#: ../plugin/controllers/BouquetEditor.py:498
+#: plugin/controllers/BouquetEditor.py:225
+#: plugin/controllers/BouquetEditor.py:255
+#: plugin/controllers/BouquetEditor.py:281
+#: plugin/controllers/BouquetEditor.py:339
+#: plugin/controllers/BouquetEditor.py:397
+#: plugin/controllers/BouquetEditor.py:461
+#: plugin/controllers/BouquetEditor.py:498
 msgid "No service given!"
 msgstr "Не задан сервис!"
 
-#: ../plugin/controllers/BouquetEditor.py:234
+#: plugin/controllers/BouquetEditor.py:234
 #, python-format
 msgid "Service %s removed."
 msgstr "Сервис %s удален."
 
-#: ../plugin/controllers/BouquetEditor.py:242
+#: plugin/controllers/BouquetEditor.py:242
 #, python-format
 msgid "Service %s removed from bouquet %s."
 msgstr "Сервис %s удален из букета %s."
 
-#: ../plugin/controllers/BouquetEditor.py:243
+#: plugin/controllers/BouquetEditor.py:243
 #, python-format
 msgid "Service %s can not be removed."
 msgstr "Сервис %s не может быть удален."
 
-#: ../plugin/controllers/BouquetEditor.py:268
+#: plugin/controllers/BouquetEditor.py:268
 #, python-format
 msgid "Service %s moved."
 msgstr "Сервис %s перемещен."
 
-#: ../plugin/controllers/BouquetEditor.py:269
+#: plugin/controllers/BouquetEditor.py:269
 msgid "Service can not be moved."
 msgstr "Сервис не может быть перемещен."
 
-#: ../plugin/controllers/BouquetEditor.py:299
+#: plugin/controllers/BouquetEditor.py:299
 #, python-format
 msgid "Service %s added."
 msgstr "Сервис %s добавлен."
 
-#: ../plugin/controllers/BouquetEditor.py:302
+#: plugin/controllers/BouquetEditor.py:302
 #, python-format
 msgid "Service %s already exists in bouquet %s."
 msgstr "Сервис %s уже существует в букете %s"
 
-#: ../plugin/controllers/BouquetEditor.py:303
+#: plugin/controllers/BouquetEditor.py:303
 msgid "This service can not be added."
 msgstr "Этот сервис не может быть добавлен."
 
-#: ../plugin/controllers/BouquetEditor.py:315
+#: plugin/controllers/BouquetEditor.py:315
 msgid "No marker-name given!"
 msgstr "Не задано название маркера!"
 
-#: ../plugin/controllers/BouquetEditor.py:329
+#: plugin/controllers/BouquetEditor.py:329
 msgid "Marker added."
 msgstr "Маркер добавлен."
 
-#: ../plugin/controllers/BouquetEditor.py:331
+#: plugin/controllers/BouquetEditor.py:331
 msgid "Internal error!"
 msgstr "Внутренная ошибка!"
 
-#: ../plugin/controllers/BouquetEditor.py:345
+#: plugin/controllers/BouquetEditor.py:345
 msgid "No new servicename given!"
 msgstr "Не задано новое название сервиса!"
 
-#: ../plugin/controllers/BouquetEditor.py:369
+#: plugin/controllers/BouquetEditor.py:369
 msgid "Bouquet renamed successfully."
 msgstr "Букет переименован успешно."
 
-#: ../plugin/controllers/BouquetEditor.py:385
+#: plugin/controllers/BouquetEditor.py:385
 msgid "Service renamed successfully."
 msgstr "Сервис переименован успешно."
 
-#: ../plugin/controllers/BouquetEditor.py:386
+#: plugin/controllers/BouquetEditor.py:386
 msgid "Service can not be renamed."
 msgstr "Сервис не может быть переименован."
 
-#: ../plugin/controllers/BouquetEditor.py:400
+#: plugin/controllers/BouquetEditor.py:400
 msgid "No current service given!"
 msgstr "Не задан текщий серви!"
 
-#: ../plugin/controllers/BouquetEditor.py:431
+#: plugin/controllers/BouquetEditor.py:431
 msgid "Get mutable list for new created alternative failed!"
-msgstr "Получить изменяемый список для нововой созданной альтернативы не удалось!"
+msgstr ""
+"Получить изменяемый список для нововой созданной альтернативы не удалось!"
 
-#: ../plugin/controllers/BouquetEditor.py:433
+#: plugin/controllers/BouquetEditor.py:433
 #, python-format
 msgid "Alternative %s created failed."
 msgstr "Ошибка создания %s альтернативы."
 
-#: ../plugin/controllers/BouquetEditor.py:447
+#: plugin/controllers/BouquetEditor.py:447
 #, python-format
 msgid "Added %s to alternative service %s."
 msgstr "Добавлен %s в альтернативный сервис %s."
 
-#: ../plugin/controllers/BouquetEditor.py:478
+#: plugin/controllers/BouquetEditor.py:478
 msgid "Service is not an alternative."
 msgstr "Сервис не является альтернативой."
 
-#: ../plugin/controllers/BouquetEditor.py:486
+#: plugin/controllers/BouquetEditor.py:486
 msgid "All alternative services deleted."
 msgstr "Все альтернативные сервисы удалены."
 
-#: ../plugin/controllers/BouquetEditor.py:492
+#: plugin/controllers/BouquetEditor.py:492
 msgid "Parent Control is not activated."
 msgstr "Родительский контроль не активен."
 
-#: ../plugin/controllers/BouquetEditor.py:505
+#: plugin/controllers/BouquetEditor.py:505
 msgid "No Parent Control Setup Pin given!"
 msgstr "Не задан код родительского контроля!"
 
-#: ../plugin/controllers/BouquetEditor.py:509
-#: ../plugin/controllers/BouquetEditor.py:511
+#: plugin/controllers/BouquetEditor.py:509
+#: plugin/controllers/BouquetEditor.py:511
 msgid "Parent Control Setup Pin is wrong!"
 msgstr "Ошибочный код родительского контроля!"
 
-#: ../plugin/controllers/BouquetEditor.py:526
+#: plugin/controllers/BouquetEditor.py:526
 #, python-format
 msgid "Service %s is locked."
 msgstr "Сервис %s заблокирован."
 
-#: ../plugin/controllers/BouquetEditor.py:528
+#: plugin/controllers/BouquetEditor.py:528
 #, python-format
 msgid "Bouquet %s is locked."
 msgstr "Букет %s заблокирован."
 
-#: ../plugin/controllers/BouquetEditor.py:530
+#: plugin/controllers/BouquetEditor.py:530
 #, python-format
 msgid "%s %s is locked."
 msgstr "%s %s заблокирован."
 
-#: ../plugin/controllers/BouquetEditor.py:534
+#: plugin/controllers/BouquetEditor.py:534
 #, python-format
 msgid "Service %s is unlocked."
 msgstr "Service %s разблокирован."
 
-#: ../plugin/controllers/BouquetEditor.py:536
+#: plugin/controllers/BouquetEditor.py:536
 #, python-format
 msgid "Bouquet %s is unlocked."
 msgstr "Bouquet %s разблокирован."
 
-#: ../plugin/controllers/BouquetEditor.py:573
+#: plugin/controllers/BouquetEditor.py:573
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
 msgstr "Ошибка при подготовке создания файла бекапа, %s не существует."
 
-#: ../plugin/controllers/BouquetEditor.py:579
+#: plugin/controllers/BouquetEditor.py:579
 msgid "Error while preparing backup file."
 msgstr "Ошибка при подготовке создания файла бекапа."
 
-#: ../plugin/controllers/BouquetEditor.py:630
+#: plugin/controllers/BouquetEditor.py:630
 msgid "Bouquet-settings were restored successfully"
 msgstr "Настройки букетов востановлены успешно"
 
-#: ../plugin/controllers/BouquetEditor.py:632
+#: plugin/controllers/BouquetEditor.py:632
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
 msgstr "Ошибка, %s не был создан с помощью Редактора букетов..."
 
-#: ../plugin/controllers/BouquetEditor.py:634
+#: plugin/controllers/BouquetEditor.py:634
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
 msgstr "Ошибка, %s не существует, восстановление невозможно..."
 
-#: ../plugin/controllers/base.py:221 ../plugin/local.py:181
-#: ../plugin/local.py:325
+#: plugin/controllers/base.py:248 plugin/local.py:181 plugin/local.py:325
 msgid "Settings"
 msgstr "Настройки"
 
-#: ../plugin/controllers/base.py:236
+#: plugin/controllers/base.py:264
 msgid "LCD4Linux Setup"
 msgstr "Настройки LCD4Linux"
 
-#: ../plugin/controllers/base.py:240
+#: plugin/controllers/base.py:279
+msgid "OSCam Webinterface"
+msgstr ""
+
+#: plugin/controllers/base.py:283
 msgid "AutoTimer"
 msgstr "Автотаймер"
 
-#: ../plugin/controllers/base.py:244
+#: plugin/controllers/base.py:288
 msgid "BouquetEditor"
 msgstr "Редактор букетов"
 
-#: ../plugin/controllers/base.py:248
+#: plugin/controllers/base.py:292
 msgid "EPGRefresh"
 msgstr "Обновление EPG"
 
-#: ../plugin/controllers/models/info.py:71 ../plugin/local.py:115
+#: plugin/controllers/ipkg.py:238
+msgid "Error upload File"
+msgstr ""
+
+#: plugin/controllers/ipkg.py:241
+msgid "wrong filetype"
+msgstr ""
+
+#: plugin/controllers/ipkg.py:255
+msgid "Error writing File"
+msgstr ""
+
+#: plugin/controllers/models/info.py:58
+msgid "SLAAC"
+msgstr ""
+
+#: plugin/controllers/models/info.py:65 plugin/controllers/models/info.py:76
+#: plugin/controllers/models/info.py:83
+msgid "static"
+msgstr ""
+
+#: plugin/controllers/models/info.py:67 plugin/controllers/models/info.py:85
+#: plugin/local.py:80
+msgid "DHCP"
+msgstr "DHCP"
+
+#: plugin/controllers/models/info.py:69 plugin/controllers/models/info.py:87
+msgid "manual/disabled"
+msgstr ""
+
+#: plugin/controllers/models/info.py:95 plugin/controllers/models/info.py:102
+msgid "unknown"
+msgstr ""
+
+#: plugin/controllers/models/info.py:136 plugin/local.py:115
 msgid "IPv4-only kernel"
 msgstr "IPv4-только ядро"
 
-#: ../plugin/controllers/models/info.py:75 ../plugin/local.py:117
+#: plugin/controllers/models/info.py:140 plugin/local.py:117
 msgid "IPv4-only Python/Twisted"
 msgstr "IPv4-только Python/Twisted"
 
-#: ../plugin/controllers/models/info.py:104 ../plugin/local.py:116
+#: plugin/controllers/models/info.py:169 plugin/local.py:116
 msgid "none/IPv4-only network"
 msgstr "ничего/IPv4-только сеть"
 
-#: ../plugin/controllers/models/message.py:33
+#: plugin/controllers/models/info.py:287 plugin/controllers/models/info.py:290
+msgid "kB"
+msgstr ""
+
+#: plugin/controllers/models/info.py:291 plugin/controllers/models/info.py:414
+#, python-format
+msgid "%s free / %s total"
+msgstr ""
+
+#: plugin/controllers/models/info.py:326 plugin/local.py:65
+msgid "Chipset"
+msgstr "Чипсет"
+
+#: plugin/controllers/models/info.py:331 plugin/local.py:104
+msgid "Frontprocessor Version"
+msgstr "Версия фронтпроцессора"
+
+#: plugin/controllers/models/info.py:377 plugin/controllers/models/info.py:388
+#: plugin/controllers/models/info.py:406
+msgid "MB"
+msgstr ""
+
+#: plugin/controllers/models/info.py:380 plugin/controllers/models/info.py:386
+#: plugin/controllers/models/info.py:401 plugin/controllers/models/info.py:404
+msgid "GB"
+msgstr ""
+
+#: plugin/controllers/models/info.py:384 plugin/controllers/models/info.py:396
+#: plugin/controllers/models/info.py:398
+msgid "TB"
+msgstr ""
+
+#: plugin/controllers/models/info.py:442
+msgid "r/w"
+msgstr ""
+
+#: plugin/controllers/models/info.py:446
+msgid "r/o"
+msgstr ""
+
+#: plugin/controllers/models/message.py:33
 msgid "Message sent successfully!"
 msgstr "Сообщение успешно отправлено!"
 
-#: ../plugin/controllers/models/message.py:43
+#: plugin/controllers/models/message.py:43
 msgid "No answer in time"
 msgstr "Нет ответа в срок"
 
-#: ../plugin/controllers/models/message.py:48
+#: plugin/controllers/models/message.py:48
 msgid "Answer is YES!"
 msgstr "Ответ - ДА!"
 
-#: ../plugin/controllers/models/message.py:48
+#: plugin/controllers/models/message.py:48
 msgid "Answer is NO!"
 msgstr "Ответ - НЕТ!"
 
-#: ../plugin/controllers/models/services.py:251
+#: plugin/controllers/models/services.py:260
 msgid "New"
 msgstr "Новый"
 
-#: ../plugin/controllers/models/services.py:253
+#: plugin/controllers/models/services.py:262
 msgid "Services"
 msgstr "Сервисы"
 
-#: ../plugin/controllers/models/services.py:258
+#: plugin/controllers/models/services.py:267
 msgid "Cable"
 msgstr "Кабельный"
 
-#: ../plugin/controllers/models/services.py:260
+#: plugin/controllers/models/services.py:269
 msgid "Terrestrial"
 msgstr "Эфирный"
 
-#: ../plugin/controllers/models/services.py:264
+#: plugin/controllers/models/services.py:273
 msgid "W"
 msgstr "W"
 
-#: ../plugin/controllers/models/services.py:266
+#: plugin/controllers/models/services.py:275
 msgid "E"
 msgstr "E"
 
-#: ../plugin/controllers/models/timers.py:172
+#: plugin/controllers/models/timers.py:178
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Обнаружен конфликт таймера(ов)! %s"
 
-#: ../plugin/controllers/models/timers.py:188
+#: plugin/controllers/models/timers.py:195
 #, python-format
 msgid "Could not add timer '%s'!"
 msgstr "Не удалось добавить таймер '%s'!"
 
-#: ../plugin/controllers/models/timers.py:193
+#: plugin/controllers/models/timers.py:200
 #, python-format
 msgid "Timer '%s' added"
 msgstr "Таймер '%s' добавлен"
 
-#: ../plugin/controllers/models/timers.py:201
+#: plugin/controllers/models/timers.py:208
 msgid "EventId not found"
 msgstr "Id события не найден"
 
-#: ../plugin/controllers/models/timers.py:272
+#: plugin/controllers/models/timers.py:279
 #, python-format
 msgid "Timer '%s' changed"
 msgstr "Таймер '%s' изменен"
 
-#: ../plugin/controllers/models/timers.py:277
+#: plugin/controllers/models/timers.py:298
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "Таймер '%s' не сохранен из-за конфликта"
 
-#: ../plugin/controllers/models/timers.py:282
+#: plugin/controllers/models/timers.py:304
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Не удалось найти таймер '%s' с заданным временем начала и окончания!"
 
-#: ../plugin/controllers/models/timers.py:294
+#: plugin/controllers/models/timers.py:316
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Таймер '%s' был успешно удален"
 
-#: ../plugin/controllers/models/timers.py:299
-#: ../plugin/controllers/models/timers.py:343
+#: plugin/controllers/models/timers.py:321
+#: plugin/controllers/models/timers.py:365
 msgid "No matching Timer found"
 msgstr "Не найден соответствующий таймер"
 
-#: ../plugin/controllers/models/timers.py:317
+#: plugin/controllers/models/timers.py:339
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "Таймер '%s' не сожет быть включен из-за конфликта"
 
-#: ../plugin/controllers/models/timers.py:323
+#: plugin/controllers/models/timers.py:345
 #, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Таймер '%s' уже существует!"
 
-#: ../plugin/controllers/models/timers.py:329
+#: plugin/controllers/models/timers.py:351
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "Таймер '%s' сейчас записывается! Невозможно отключить!"
 
-#: ../plugin/controllers/models/timers.py:337
+#: plugin/controllers/models/timers.py:359
 #, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "Таймер '%s' был %s успешно"
 
-#: ../plugin/controllers/models/timers.py:350
+#: plugin/controllers/models/timers.py:372
 msgid "List of Timers has been cleaned"
 msgstr "Список таймеров была очищенен"
 
-#: ../plugin/controllers/models/timers.py:357
+#: plugin/controllers/models/timers.py:379
 msgid "TimerList has been saved"
 msgstr "Список таймеров был сохранен"
 
-#: ../plugin/controllers/models/timers.py:372
+#: plugin/controllers/models/timers.py:394
 msgid "No event found! Not recording!"
 msgstr "Не найдено событие! Нет записи!"
 
-#: ../plugin/controllers/models/timers.py:378
+#: plugin/controllers/models/timers.py:400
 msgid "Instant record for current Event started"
 msgstr "Мгновенная запись для текущего события началась"
 
-#: ../plugin/controllers/models/timers.py:387
+#: plugin/controllers/models/timers.py:409
 msgid "Infinite Instant recording started"
 msgstr "Запись без определенного времени окончания началась"
 
-#: ../plugin/controllers/models/timers.py:406
+#: plugin/controllers/models/timers.py:428
 msgid "Timer conflict detected! Not recording!"
 msgstr "Обнаружен конфликт таймера! Нет записи!"
 
-#: ../plugin/controllers/models/timers.py:480
+#: plugin/controllers/models/timers.py:502
 msgid "Missing requesteter: sRef"
 msgstr "Отсутствует параметр регистра: sRef"
 
-#: ../plugin/controllers/models/timers.py:502
+#: plugin/controllers/models/timers.py:524
 #, python-format
 msgid "Unknown command: '%s'"
 msgstr "Неизвестная команда: '%s'"
 
-#: ../plugin/controllers/models/timers.py:559
+#: plugin/controllers/models/timers.py:581
 msgid "PowerTimer feature not available"
 msgstr "Функции тамера питания не доступны"
 
-#: ../plugin/controllers/models/timers.py:635
-#: ../plugin/controllers/models/timers.py:661
+#: plugin/controllers/models/timers.py:657
+#: plugin/controllers/models/timers.py:683
 msgid "Sleeptimer is enabled"
 msgstr "Таймер сна включен"
 
-#: ../plugin/controllers/models/timers.py:635
-#: ../plugin/controllers/models/timers.py:661
+#: plugin/controllers/models/timers.py:657
+#: plugin/controllers/models/timers.py:683
 msgid "Sleeptimer is disabled"
 msgstr "Таймер сна отключен"
 
-#: ../plugin/controllers/models/timers.py:640
-#: ../plugin/controllers/models/timers.py:667
+#: plugin/controllers/models/timers.py:662
+#: plugin/controllers/models/timers.py:689
 msgid "SleepTimer error"
 msgstr "Ошибка таймера сна"
 
-#: ../plugin/controllers/models/timers.py:679
+#: plugin/controllers/models/timers.py:701
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr ""
 "ОШИБКА: не удается установить таймер сна, ресивер находится в режим ожидания"
 
-#: ../plugin/controllers/models/timers.py:684
-#: ../plugin/controllers/models/timers.py:753
-#: ../plugin/controllers/models/timers.py:771
+#: plugin/controllers/models/timers.py:706
+#: plugin/controllers/models/timers.py:775
+#: plugin/controllers/models/timers.py:793
 msgid "Sleeptimer has been disabled"
 msgstr "Таймер сна был отключен"
 
-#: ../plugin/controllers/models/timers.py:690
-#: ../plugin/controllers/models/timers.py:753
-#: ../plugin/controllers/models/timers.py:766
+#: plugin/controllers/models/timers.py:712
+#: plugin/controllers/models/timers.py:775
+#: plugin/controllers/models/timers.py:788
 #, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Таймер сна установлен на %d минут"
 
-#: ../plugin/controllers/models/timers.py:695
-#: ../plugin/controllers/models/timers.py:776
+#: plugin/controllers/models/timers.py:717
+#: plugin/controllers/models/timers.py:798
 msgid "SleepTimer Error"
 msgstr "Ошибка таймера сна"
 
-#: ../plugin/controllers/models/timers.py:804
+#: plugin/controllers/models/timers.py:826
 msgid "Error parsing vps.xml"
 msgstr "Ошибка чтения vps.xml"
 
-#: ../plugin/controllers/models/timers.py:809
+#: plugin/controllers/models/timers.py:831
 msgid "VPS plugin not found"
 msgstr "Плагин VPS не найден"
 
-#: ../plugin/controllers/web.py:63
+#: plugin/controllers/web.py:63
 #, python-format
 msgid "Missing mandatory parameter '%s'"
 msgstr "Отсутствует обязательный параметр '%s'"
 
-#: ../plugin/controllers/web.py:69
+#: plugin/controllers/web.py:69
 #, python-format
 msgid "The parameter '%s' can't be empty"
 msgstr "Параметр '%s' не может быть пустым"
 
-#: ../plugin/controllers/web.py:103
+#: plugin/controllers/web.py:103
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Неправильный формат параметра 'set=%s'. Используйте set=set15 "
 
-#: ../plugin/controllers/web.py:108
+#: plugin/controllers/web.py:108
 #, python-format
 msgid "Unknown Volume command %s"
 msgstr "Неизвестная команда громкости %s"
 
-#: ../plugin/controllers/web.py:143
+#: plugin/controllers/web.py:143
 msgid "The parameter 'command' must be a number"
 msgstr "Параметр 'command' должен быть численным"
 
-#: ../plugin/controllers/web.py:304
+#: plugin/controllers/web.py:298
 #, python-format
 msgid "type %s is not a number"
 msgstr "тип %s не численный"
 
-#: ../plugin/local.py:5
+#: plugin/local.py:5
 msgid "Mo"
 msgstr "Пн"
 
-#: ../plugin/local.py:6
+#: plugin/local.py:6
 msgid "Tu"
 msgstr "Вт"
 
-#: ../plugin/local.py:7
+#: plugin/local.py:7
 msgid "We"
 msgstr "Ср"
 
-#: ../plugin/local.py:8
+#: plugin/local.py:8
 msgid "Th"
 msgstr "Чт"
 
-#: ../plugin/local.py:9
+#: plugin/local.py:9
 msgid "Fr"
 msgstr "Пт"
 
-#: ../plugin/local.py:10
+#: plugin/local.py:10
 msgid "Sa"
 msgstr "Сб"
 
-#: ../plugin/local.py:11
+#: plugin/local.py:11
 msgid "Su"
 msgstr "Вс"
 
-#: ../plugin/local.py:13
+#: plugin/local.py:13
 msgid "Sun"
 msgstr "Вск"
 
-#: ../plugin/local.py:14
+#: plugin/local.py:14
 msgid "Mon"
 msgstr "Пон"
 
-#: ../plugin/local.py:15
+#: plugin/local.py:15
 msgid "Tue"
 msgstr "Втр"
 
-#: ../plugin/local.py:16
+#: plugin/local.py:16
 msgid "Wed"
 msgstr "Срд"
 
-#: ../plugin/local.py:17
+#: plugin/local.py:17
 msgid "Thu"
 msgstr "Чтв"
 
-#: ../plugin/local.py:18
+#: plugin/local.py:18
 msgid "Fri"
 msgstr "Птн"
 
-#: ../plugin/local.py:19
+#: plugin/local.py:19
 msgid "Sat"
 msgstr "Суб"
 
-#: ../plugin/local.py:21
+#: plugin/local.py:21
 msgid "Monday"
 msgstr "Понедельник"
 
-#: ../plugin/local.py:22
+#: plugin/local.py:22
 msgid "Tuesday"
 msgstr "Вторник"
 
-#: ../plugin/local.py:23
+#: plugin/local.py:23
 msgid "Wednesday"
 msgstr "Среда"
 
-#: ../plugin/local.py:24
+#: plugin/local.py:24
 msgid "Thursday"
 msgstr "Четверг"
 
-#: ../plugin/local.py:25
+#: plugin/local.py:25
 msgid "Friday"
 msgstr "Пятница"
 
-#: ../plugin/local.py:26
+#: plugin/local.py:26
 msgid "Saturday"
 msgstr "Суббота"
 
-#: ../plugin/local.py:27
+#: plugin/local.py:27
 msgid "Sunday"
 msgstr "Воскресенье"
 
-#: ../plugin/local.py:29
+#: plugin/local.py:29
 msgid "January"
 msgstr "Январь"
 
-#: ../plugin/local.py:30
+#: plugin/local.py:30
 msgid "February"
 msgstr "Февраль"
 
-#: ../plugin/local.py:31
+#: plugin/local.py:31
 msgid "March"
 msgstr "Март"
 
-#: ../plugin/local.py:32
+#: plugin/local.py:32
 msgid "April"
 msgstr "Апрель"
 
-#: ../plugin/local.py:33
+#: plugin/local.py:33
 msgid "May"
 msgstr "Май"
 
-#: ../plugin/local.py:34
+#: plugin/local.py:34
 msgid "June"
 msgstr "Июнь"
 
-#: ../plugin/local.py:35
+#: plugin/local.py:35
 msgid "July"
 msgstr "Июль"
 
-#: ../plugin/local.py:36
+#: plugin/local.py:36
 msgid "August"
 msgstr "Август"
 
-#: ../plugin/local.py:37
+#: plugin/local.py:37
 msgid "September"
 msgstr "Сентябрь"
 
-#: ../plugin/local.py:38
+#: plugin/local.py:38
 msgid "October"
 msgstr "Октябрь"
 
-#: ../plugin/local.py:39
+#: plugin/local.py:39
 msgid "November"
 msgstr "Ноябрь"
 
-#: ../plugin/local.py:40
+#: plugin/local.py:40
 msgid "December"
 msgstr "Декабрь"
 
-#: ../plugin/local.py:42
+#: plugin/local.py:42
 msgid "About"
 msgstr "О плагине"
 
-#: ../plugin/local.py:43
+#: plugin/local.py:43
 msgid "Add Timer"
 msgstr "Добавить таймер"
 
-#: ../plugin/local.py:44
+#: plugin/local.py:44
 msgid "Add AutoTimer"
 msgstr "Добавить Автотаймер"
 
-#: ../plugin/local.py:45
+#: plugin/local.py:45
 msgid "Add Zap Timer"
 msgstr "Добавить таймер переключения"
 
-#: ../plugin/local.py:46
+#: plugin/local.py:46 plugin/local.py:357
 msgid "After Event"
 msgstr "После события"
 
-#: ../plugin/local.py:47
+#: plugin/local.py:47
 msgid "AGC"
 msgstr "AGC"
 
-#: ../plugin/local.py:48 ../plugin/local.py:345
+#: plugin/local.py:48 plugin/local.py:345
 msgid "All"
 msgstr "Все"
 
-#: ../plugin/local.py:49
+#: plugin/local.py:49
 msgid "All Channels"
 msgstr "Все каналы"
 
-#: ../plugin/local.py:50
+#: plugin/local.py:50
 msgid "Authors"
 msgstr "Авторы"
 
-#: ../plugin/local.py:51 ../plugin/local.py:344
+#: plugin/local.py:51 plugin/local.py:344
 msgid "Auto"
 msgstr "Авто"
 
-#: ../plugin/local.py:52
+#: plugin/local.py:52
 msgid "Back"
 msgstr "Назад"
 
-#: ../plugin/local.py:53 ../plugin/local.py:352
+#: plugin/local.py:53 plugin/local.py:352
 msgid "Begin"
 msgstr "Начало"
 
-#: ../plugin/local.py:54
+#: plugin/local.py:54
 msgid "BER"
 msgstr "BER"
 
-#: ../plugin/local.py:55 ../plugin/local.py:307
+#: plugin/local.py:55 plugin/local.py:307
 msgid "Bouquets"
 msgstr "Букеты"
 
-#: ../plugin/local.py:56
+#: plugin/local.py:56
 msgid "Box Info"
 msgstr "Информация о ресивере"
 
-#: ../plugin/local.py:57
+#: plugin/local.py:57
 msgid "Box"
 msgstr "Ресивер"
 
-#: ../plugin/local.py:58
+#: plugin/local.py:58
 msgid "Box Control"
 msgstr "Управление ресивером"
 
-#: ../plugin/local.py:59
+#: plugin/local.py:59
 msgid "Box Uptime"
 msgstr "Время работы ресивера"
 
-#: ../plugin/local.py:60
+#: plugin/local.py:60
 msgid "Brand"
 msgstr "Бренд"
 
-#: ../plugin/local.py:61 ../plugin/plugin.py:92
+#: plugin/local.py:61 plugin/plugin.py:101
 msgid "Cancel"
 msgstr "Отмена"
 
-#: ../plugin/local.py:62
+#: plugin/local.py:62
 msgid "Capacity"
 msgstr "Объем"
 
-#: ../plugin/local.py:63
+#: plugin/local.py:63
 msgid "Channel"
 msgstr "Канал"
 
-#: ../plugin/local.py:64 ../plugin/local.py:305
+#: plugin/local.py:64 plugin/local.py:305
 msgid "Channels"
 msgstr "Каналы"
 
-#: ../plugin/local.py:65
-msgid "Chipset"
-msgstr "Чипсет"
-
-#: ../plugin/local.py:66
+#: plugin/local.py:66
 msgid "Cleanup Timers"
 msgstr "Очистка выполненных таймеров"
 
-#: ../plugin/local.py:67
+#: plugin/local.py:67
 msgid "Close"
 msgstr "Закрыть"
 
-#: ../plugin/local.py:68
+#: plugin/local.py:68
 msgid "Contributors"
 msgstr "Принимали участие"
 
-#: ../plugin/local.py:69
+#: plugin/local.py:69
 msgid "Control"
 msgstr "Управление"
 
-#: ../plugin/local.py:70
+#: plugin/local.py:70
 msgid "Current"
 msgstr "Текущий"
 
-#: ../plugin/local.py:71
+#: plugin/local.py:71
 msgid "Current Event"
 msgstr "Текущее событие"
 
-#: ../plugin/local.py:72
+#: plugin/local.py:72
+msgid "Date"
+msgstr ""
+
+#: plugin/local.py:73
 msgid "Deep-Standby"
 msgstr "Выключение"
 
-#: ../plugin/local.py:73
+#: plugin/local.py:74
 msgid "Default"
 msgstr "По умолчанию"
 
-#: ../plugin/local.py:74
+#: plugin/local.py:75
 msgid "Delete Recording"
 msgstr "Удалить запись"
 
-#: ../plugin/local.py:75
+#: plugin/local.py:76
 msgid "Really delete the recording"
 msgstr "Действительно удалить запись?"
 
-#: ../plugin/local.py:76
-msgid "Delete Movie"
-msgstr "Удалить видео"
-
-#: ../plugin/local.py:77
-msgid "Really delete the movie"
-msgstr "Действительно удалить видео?"
-
-#: ../plugin/local.py:78
+#: plugin/local.py:77
 msgid "Delete Timer"
 msgstr "Удалить таймер"
 
-#: ../plugin/local.py:79
+#: plugin/local.py:78
 msgid "Really delete the timer"
 msgstr "Действительно удалить таймер?"
 
-#: ../plugin/local.py:80 ../plugin/local.py:253
+#: plugin/local.py:79 plugin/local.py:253
 msgid "Description"
 msgstr "Описание"
 
-#: ../plugin/local.py:81
-msgid "DHCP"
-msgstr "DHCP"
-
-#: ../plugin/local.py:82
+#: plugin/local.py:81
 msgid "Disable Timer"
 msgstr "Отключить таймер"
 
-#: ../plugin/local.py:83
+#: plugin/local.py:82
+msgid "disabled"
+msgstr ""
+
+#: plugin/local.py:83
 msgid "Distro"
 msgstr "Программное обеспечение"
 
-#: ../plugin/local.py:84
+#: plugin/local.py:84
 msgid "Dolby"
 msgstr "Dolby"
 
-#: ../plugin/local.py:85
+#: plugin/local.py:85
 msgid "Done"
 msgstr "Готово"
 
-#: ../plugin/local.py:86
+#: plugin/local.py:86
 msgid "Download"
 msgstr "Загрузить"
 
-#: ../plugin/local.py:87
+#: plugin/local.py:87
 msgid "Download Playlist for"
 msgstr "Загрузить плейлист для"
 
-#: ../plugin/local.py:88
+#: plugin/local.py:88
 msgid "Drivers"
 msgstr "Драйвера"
 
-#: ../plugin/local.py:89
+#: plugin/local.py:89
 msgid "Duration"
 msgstr "Длительность"
 
-#: ../plugin/local.py:90
+#: plugin/local.py:90
 msgid "Edit Timer"
 msgstr "Редактировать таймер"
 
-#: ../plugin/local.py:91
+#: plugin/local.py:91
 msgid "Enable Timer"
 msgstr "Включить таймер"
 
-#: ../plugin/local.py:92
+#: plugin/local.py:92
 msgid "Start"
 msgstr "Старт"
 
-#: ../plugin/local.py:93 ../plugin/local.py:353
+#: plugin/local.py:93 plugin/local.py:353
 msgid "End"
 msgstr "Окончание"
 
-#: ../plugin/local.py:94 ../plugin/local.py:252 ../plugin/local.py:350
+#: plugin/local.py:94 plugin/local.py:252 plugin/local.py:350
 msgid "Enabled"
 msgstr "Включен"
 
-#: ../plugin/local.py:95
+#: plugin/local.py:95
 msgid "Encrypted"
 msgstr "Кодированый"
 
-#: ../plugin/local.py:96
+#: plugin/local.py:96
 msgid "EPG"
 msgstr "EPG"
 
-#: ../plugin/local.py:97
+#: plugin/local.py:97
 msgid "Epg Search"
 msgstr "Поиск EPG"
 
-#: ../plugin/local.py:98
+#: plugin/local.py:98
 msgid "Include description"
 msgstr "Включить описание"
 
-#: ../plugin/local.py:99
+#: plugin/local.py:99
 msgid "Error"
 msgstr "Ошибка"
 
-#: ../plugin/local.py:100
+#: plugin/local.py:100
 msgid "Every"
 msgstr "Каждый"
 
-#: ../plugin/local.py:101
+#: plugin/local.py:101
 msgid "Extras"
 msgstr "Дополнительно"
 
-#: ../plugin/local.py:102
+#: plugin/local.py:102
 msgid "finished"
 msgstr "закончено"
 
-#: ../plugin/local.py:103
+#: plugin/local.py:103
 msgid "Firmware version"
 msgstr "версия ПО"
 
-#: ../plugin/local.py:104
-msgid "Frontprocessor Version"
-msgstr "Версия фронтпроцессора"
-
-#: ../plugin/local.py:105
+#: plugin/local.py:105
 msgid "Free"
 msgstr "Свободно"
 
-#: ../plugin/local.py:106
+#: plugin/local.py:106
 msgid "Free Memory"
 msgstr "Свободная память"
 
-#: ../plugin/local.py:107
+#: plugin/local.py:107
 msgid "Gateway"
 msgstr "Шлюз"
 
-#: ../plugin/local.py:108
+#: plugin/local.py:108
 msgid "Grab Screenshot"
 msgstr "Сделать скриншот"
 
-#: ../plugin/local.py:109
+#: plugin/local.py:109
 msgid "Gui version"
 msgstr "Версия GUI"
 
-#: ../plugin/local.py:110
+#: plugin/local.py:110
 msgid "Hide full remote"
 msgstr "Скрыть полный пульт"
 
-#: ../plugin/local.py:111
+#: plugin/local.py:111
 msgid "High Resolution"
 msgstr "Высокое разрешение"
 
-#: ../plugin/local.py:112
+#: plugin/local.py:112
 msgid "Hard disk model"
 msgstr "Модель жесткого диска"
 
-#: ../plugin/local.py:113
+#: plugin/local.py:113
 msgid "Hour"
 msgstr "Час"
 
-#: ../plugin/local.py:114
+#: plugin/local.py:114
 msgid "IPv4 address"
 msgstr "IPv4 адрес"
 
-#: ../plugin/local.py:118
+#: plugin/local.py:118
 msgid "IPv6 address(es)"
 msgstr "IPv6 адрес(а)"
 
-#: ../plugin/local.py:119
+#: plugin/local.py:119
 msgid "Infos"
 msgstr "Информация"
 
-#: ../plugin/local.py:120
+#: plugin/local.py:120
 msgid "Instant Record"
 msgstr "Немедленная запись"
 
-#: ../plugin/local.py:121
+#: plugin/local.py:121
 msgid "Javascript Libraries"
 msgstr "Библиотека Javascript"
 
-#: ../plugin/local.py:122
+#: plugin/local.py:122
 msgid "Just play"
 msgstr "Только воспроизвести"
 
-#: ../plugin/local.py:123
+#: plugin/local.py:123
 msgid "Kernel"
 msgstr "Ядро линукса"
 
-#: ../plugin/local.py:124
+#: plugin/local.py:124
 msgid "LICENSE"
 msgstr "ЛИЦЕНЗИЯ"
 
-#: ../plugin/local.py:125
+#: plugin/local.py:125
 msgid "loading"
 msgstr "загрузка"
 
-#: ../plugin/local.py:126
+#: plugin/local.py:126
 msgid "Location"
 msgstr "Расположение"
 
-#: ../plugin/local.py:127
+#: plugin/local.py:127
 msgid "Locked"
 msgstr "Заблокировано"
 
-#: ../plugin/local.py:128
+#: plugin/local.py:128
 msgid "MAC address"
 msgstr "MAC адрес"
 
-#: ../plugin/local.py:129
+#: plugin/local.py:129
 msgid "Main"
 msgstr "Главная"
 
-#: ../plugin/local.py:130
+#: plugin/local.py:130
 msgid "Minute"
 msgstr "Минута"
 
-#: ../plugin/local.py:131
+#: plugin/local.py:131
 msgid "Model"
 msgstr "Модель"
 
-#: ../plugin/local.py:132
+#: plugin/local.py:132
 msgid "Movielist"
 msgstr "Список записей"
 
-#: ../plugin/local.py:133
+#: plugin/local.py:133
 msgid "Movies"
 msgstr "Записи"
 
-#: ../plugin/local.py:134
+#: plugin/local.py:134
 msgid "MultiEPG"
 msgstr "Мульти EPG"
 
-#: ../plugin/local.py:135
+#: plugin/local.py:135
 msgid "Name"
 msgstr "Имя"
 
-#: ../plugin/local.py:136
+#: plugin/local.py:136
 msgid "Namespace"
 msgstr "Пространство названий"
 
-#: ../plugin/local.py:137
+#: plugin/local.py:137
 msgid "Network Interface"
 msgstr "Сетевой интерфейс"
 
-#: ../plugin/local.py:138
+#: plugin/local.py:138
 msgid "no description available"
 msgstr "нет доступного описания"
 
-#: ../plugin/local.py:139
+#: plugin/local.py:139
 msgid "Sorry this page is not yet implemented"
 msgstr "Извините, эта страница недоступна"
 
-#: ../plugin/local.py:140
+#: plugin/local.py:140
 msgid "Nothing"
 msgstr "Ничего"
 
-#: ../plugin/local.py:141
+#: plugin/local.py:141
 msgid "Nothing playing."
 msgstr "Нечего воспроизвести."
 
-#: ../plugin/local.py:142
+#: plugin/local.py:142
 msgid "Now"
 msgstr "Сейчас"
 
-#: ../plugin/local.py:143
+#: plugin/local.py:143
 msgid "System OE"
 msgstr "Система OE"
 
-#: ../plugin/local.py:144
+#: plugin/local.py:144
 msgid "On"
 msgstr "Вкл"
 
-#: ../plugin/local.py:145
+#: plugin/local.py:145
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Открытый вэб интерфейс для линукс-ресиверов"
 
-#: ../plugin/local.py:146 ../plugin/plugin.py:110
+#: plugin/local.py:146 plugin/plugin.py:119
 msgid "Show box name in header"
 msgstr "Показывать имя ресивера в заголовке"
 
-#: ../plugin/local.py:147 ../plugin/plugin.py:112
+#: plugin/local.py:147 plugin/plugin.py:121
 msgid "Use custom box name"
 msgstr "Использовать пользовательское имя ресивера"
 
-#: ../plugin/local.py:148 ../plugin/plugin.py:114
+#: plugin/local.py:148 plugin/plugin.py:123
 msgid "Custom box name"
 msgstr "Пользовательское имя ресивера"
 
-#: ../plugin/local.py:149
+#: plugin/local.py:149
 msgid "OSD"
 msgstr "OSD"
 
-#: ../plugin/local.py:150
+#: plugin/local.py:150
 msgid "Open in new window"
 msgstr "Открыть в новом окне"
 
-#: ../plugin/local.py:151
+#: plugin/local.py:151
 msgid "Playback"
 msgstr "Воспроизвести"
 
-#: ../plugin/local.py:152
+#: plugin/local.py:152
 msgid "Playlist"
 msgstr "Плейлист"
 
-#: ../plugin/local.py:153
+#: plugin/local.py:153
 msgid "Power Control"
 msgstr "Управление питанием"
 
-#: ../plugin/local.py:154
+#: plugin/local.py:154
 msgid "Provider"
 msgstr "Провайдер"
 
-#: ../plugin/local.py:155
+#: plugin/local.py:155
 msgid "Providers"
 msgstr "Провайдеры"
 
-#: ../plugin/local.py:156
+#: plugin/local.py:156
 msgid "Radio"
 msgstr "Радио каналы"
 
-#: ../plugin/local.py:157
+#: plugin/local.py:157
 msgid "Reboot Box"
 msgstr "Перезагрузить"
 
-#: ../plugin/local.py:158
+#: plugin/local.py:158
 msgid "Recording Status"
 msgstr "Статус записи"
 
-#: ../plugin/local.py:159 ../plugin/local.py:342
+#: plugin/local.py:159 plugin/local.py:342
 msgid "Refresh"
 msgstr "Обновить"
 
-#: ../plugin/local.py:160
+#: plugin/local.py:160
 msgid "Refresh automatically every"
 msgstr "Обновлять автоматически каждые"
 
-#: ../plugin/local.py:161
+#: plugin/local.py:161
 msgid "Refresh Timer"
 msgstr "Обновить таймер"
 
-#: ../plugin/local.py:162
+#: plugin/local.py:162
 msgid "Remote"
 msgstr "Пульт"
 
-#: ../plugin/local.py:163
+#: plugin/local.py:163
 msgid "Rename Recording"
 msgstr "Переименовать запись"
 
-#: ../plugin/local.py:164
+#: plugin/local.py:164
 msgid "Really rename the recording"
 msgstr "Действительно переименовать запись?"
 
-#: ../plugin/local.py:165
+#: plugin/local.py:165
 msgid "Repeated"
 msgstr "Повторить"
 
-#: ../plugin/local.py:166
+#: plugin/local.py:166
 msgid "Restart GUI"
 msgstr "Рестарт GUI"
 
-#: ../plugin/local.py:167
+#: plugin/local.py:167
 msgid "running"
 msgstr "запущено"
 
-#: ../plugin/local.py:168
+#: plugin/local.py:168
 msgid "Safe mode"
 msgstr "Безопасный режим"
 
-#: ../plugin/local.py:169
+#: plugin/local.py:169
 msgid "Satellites"
 msgstr "Спутники"
 
-#: ../plugin/local.py:170
+#: plugin/local.py:170
 msgid "Satfinder"
 msgstr "Сигнал спутника"
 
-#: ../plugin/local.py:171 ../plugin/local.py:321 ../plugin/local.py:373
-#: ../plugin/plugin.py:93
+#: plugin/local.py:171 plugin/local.py:321 plugin/local.py:373
+#: plugin/plugin.py:102
 msgid "Save"
 msgstr "Сохранить"
 
-#: ../plugin/local.py:172
+#: plugin/local.py:172
 msgid "Screenshot"
 msgstr "Скриншот"
 
-#: ../plugin/local.py:173 ../plugin/local.py:379
+#: plugin/local.py:173 plugin/local.py:379
 msgid "Search"
 msgstr "Поиск"
 
-#: ../plugin/local.py:174
+#: plugin/local.py:174
 msgid "Search IMDb"
 msgstr "Поиск в IMDb"
 
-#: ../plugin/local.py:175
+#: plugin/local.py:175
 msgid "Search KinoPoisk"
 msgstr "Искать в Кинопоиске"
 
-#: ../plugin/local.py:176
+#: plugin/local.py:176
 msgid "seconds"
 msgstr "секунды"
 
-#: ../plugin/local.py:177
+#: plugin/local.py:177
 msgid "Send Message"
 msgstr "Отправить сообщение"
 
-#: ../plugin/local.py:178
+#: plugin/local.py:178
 msgid "Waiting for answer ..."
 msgstr "Ожидание для ответа..."
 
-#: ../plugin/local.py:179
+#: plugin/local.py:179
 msgid "Send a Message"
 msgstr "Отправить сообщение"
 
-#: ../plugin/local.py:180
+#: plugin/local.py:180
 msgid "Service"
 msgstr "Сервис"
 
-#: ../plugin/local.py:182
+#: plugin/local.py:182
 msgid "Bouquet Editor"
 msgstr "Редактор букетов"
 
-#: ../plugin/local.py:183
+#: plugin/local.py:183
 msgid "(shift + click for long pressure)"
 msgstr "(shift + кнопка = долгое нажатие)"
 
-#: ../plugin/local.py:184
+#: plugin/local.py:184
 msgid "Show Full OpenWebif"
 msgstr "Показать весь OpenWebif"
 
-#: ../plugin/local.py:185
+#: plugin/local.py:185
 msgid "Show full remote"
 msgstr "Показать весь пульт"
 
-#: ../plugin/local.py:186
+#: plugin/local.py:186
 msgid "Show EPG for"
 msgstr "Показать EPG для"
 
-#: ../plugin/local.py:187
+#: plugin/local.py:187
 msgid "Shutdown"
 msgstr "Выключить"
 
-#: ../plugin/local.py:188
+#: plugin/local.py:188
 msgid "Site and sources"
 msgstr "Сайт и исходный код"
 
-#: ../plugin/local.py:189
+#: plugin/local.py:189
 msgid "SNR"
 msgstr "SNR"
 
-#: ../plugin/local.py:190
+#: plugin/local.py:190
 msgid "Software"
 msgstr "ПО"
 
-#: ../plugin/local.py:191
+#: plugin/local.py:191
 msgid "Standby"
 msgstr "Режим ожидания"
 
-#: ../plugin/local.py:192
+#: plugin/local.py:192
 msgid "Standby Toggle"
 msgstr "Режим ожидания"
 
-#: ../plugin/local.py:193
+#: plugin/local.py:193
 msgid "Start time is after end time"
 msgstr "Время начала после времени окончания"
 
-#: ../plugin/local.py:194
+#: plugin/local.py:194
 msgid "Start Instant Record"
 msgstr "Старт немедленной записи"
 
-#: ../plugin/local.py:195
+#: plugin/local.py:195
 msgid "Stream"
 msgstr "Стрим"
 
-#: ../plugin/local.py:196
+#: plugin/local.py:196
 msgid "Subnet mask"
 msgstr "Маска подсети"
 
-#: ../plugin/local.py:197
+#: plugin/local.py:197
 msgid "Subservices"
 msgstr "Подсервисы"
 
-#: ../plugin/local.py:198 ../plugin/local.py:303
+#: plugin/local.py:198 plugin/local.py:303
 msgid "Tags"
 msgstr "Тэги"
 
-#: ../plugin/local.py:199
+#: plugin/local.py:199
 msgid "Teletext"
 msgstr "Телетекст"
 
-#: ../plugin/local.py:200
+#: plugin/local.py:200
 msgid "Television"
 msgstr "Телевидение"
 
-#: ../plugin/local.py:201
+#: plugin/local.py:201
 msgid "Template Engine"
 msgstr "Шаблон движка"
 
-#: ../plugin/local.py:202
+#: plugin/local.py:202
 msgid "Text"
 msgstr "Текст"
 
-#: ../plugin/local.py:203
+#: plugin/local.py:203
 msgid "Time"
 msgstr "Время"
 
-#: ../plugin/local.py:204
+#: plugin/local.py:204
 msgid "Timeout"
 msgstr "Тайм-аут"
 
-#: ../plugin/local.py:205
+#: plugin/local.py:205
 msgid "Timer added"
 msgstr "Таймер добавлен"
 
-#: ../plugin/local.py:206
+#: plugin/local.py:206
 msgid "Timerlist"
 msgstr "Список таймеров"
 
-#: ../plugin/local.py:207
+#: plugin/local.py:207
 msgid "New Name"
 msgstr "Новое название"
 
-#: ../plugin/local.py:208
+#: plugin/local.py:208
 msgid "Autotimer Preview"
 msgstr "Превью Автотаймеров"
 
-#: ../plugin/local.py:209
+#: plugin/local.py:209
 msgid "Timer"
 msgstr "Таймер"
 
-#: ../plugin/local.py:210 ../plugin/local.py:324
+#: plugin/local.py:210 plugin/local.py:324
 msgid "Timers"
 msgstr "Таймеры"
 
-#: ../plugin/local.py:211
+#: plugin/local.py:211
 msgid "Title"
 msgstr "Название"
 
-#: ../plugin/local.py:212
+#: plugin/local.py:212
 msgid "Main Memory"
 msgstr "Главная память"
 
-#: ../plugin/local.py:213
+#: plugin/local.py:213
 msgid "transcoded"
 msgstr "транскодировать"
 
-#: ../plugin/local.py:214
+#: plugin/local.py:214
 msgid "Transcode"
 msgstr "Транскодирование"
 
-#: ../plugin/local.py:215
+#: plugin/local.py:215
 msgid "Tuner Bit Error Rate BER"
 msgstr "Частота битовых ошибок тюнера (BER)"
 
-#: ../plugin/local.py:216
+#: plugin/local.py:216
 msgid "Tuner Number"
 msgstr "Номер тюнера"
 
-#: ../plugin/local.py:217
+#: plugin/local.py:217
 msgid "Tuner Signal"
 msgstr "Сигнал тюнера"
 
-#: ../plugin/local.py:218
+#: plugin/local.py:218
 msgid "Tuner Signal Quality SNR"
 msgstr "Качество сигнала тюнера (SNR)"
 
-#: ../plugin/local.py:219
+#: plugin/local.py:219
 msgid "Tuner Signal Quality SNR_DB"
 msgstr "Качество сигнала тюнера (SNR_DB)"
 
-#: ../plugin/local.py:220
+#: plugin/local.py:220
 msgid "Tuner Signal Power AGC"
 msgstr "Сила сигнала тюнера (AGC)"
 
-#: ../plugin/local.py:221
+#: plugin/local.py:221
 msgid "Tuner Type"
 msgstr "Тип тюнера"
 
-#: ../plugin/local.py:222
+#: plugin/local.py:222
 msgid "Tuners"
 msgstr "Тюнеры"
 
-#: ../plugin/local.py:223
+#: plugin/local.py:223
 msgid "TV"
 msgstr "ТВ"
 
-#: ../plugin/local.py:224
+#: plugin/local.py:224
 msgid "TV Multi EPG"
 msgstr "ТВ Мульти EPG"
 
-#: ../plugin/local.py:225
+#: plugin/local.py:225
 msgid "Type"
 msgstr "Тип"
 
-#: ../plugin/local.py:226
+#: plugin/local.py:226
 msgid "Upcoming Events"
 msgstr "Ближайшие события"
 
-#: ../plugin/local.py:227
+#: plugin/local.py:227
 msgid "Version"
 msgstr "Версия"
 
-#: ../plugin/local.py:228
+#: plugin/local.py:228
 msgid "Video"
 msgstr "Видео"
 
-#: ../plugin/local.py:229
+#: plugin/local.py:229
 msgid "Video Height"
 msgstr "Высота видео"
 
-#: ../plugin/local.py:230
+#: plugin/local.py:230
 msgid "Video Wide"
 msgstr "Размер видео"
 
-#: ../plugin/local.py:231
+#: plugin/local.py:231
 msgid "Video Width"
 msgstr "Ширина видео"
 
-#: ../plugin/local.py:232
+#: plugin/local.py:232
 msgid "VPS"
 msgstr "VPS"
 
-#: ../plugin/local.py:233
+#: plugin/local.py:233
 msgid "Volume"
 msgstr "Громкость"
 
-#: ../plugin/local.py:234
+#: plugin/local.py:234
 msgid "Volume Control"
 msgstr "Контроль громкости"
 
-#: ../plugin/local.py:235
+#: plugin/local.py:235
 msgid "waiting"
 msgstr "ожидайте"
 
-#: ../plugin/local.py:236
+#: plugin/local.py:236
 msgid "Warning"
 msgstr "Внимание"
 
-#: ../plugin/local.py:237
+#: plugin/local.py:237
 msgid "Yes/No"
 msgstr "Да/Нет"
 
-#: ../plugin/local.py:238
+#: plugin/local.py:238
 msgid "Zap"
 msgstr "Перейти"
 
-#: ../plugin/local.py:239
+#: plugin/local.py:239
 msgid "zap before Stream"
 msgstr "перейти перед стримом"
 
-#: ../plugin/local.py:240
+#: plugin/local.py:240
 msgid "Zap to"
 msgstr "Перейти на"
 
-#: ../plugin/local.py:241
+#: plugin/local.py:241
 msgid "Zapped to"
 msgstr "Перешли на"
 
-#: ../plugin/local.py:242
+#: plugin/local.py:242
 msgid "Translation to Spanish"
 msgstr "Перевод на испанский"
 
-#: ../plugin/local.py:243
+#: plugin/local.py:243
 msgid "All Files of this Software are open source software;"
 msgstr "Все файлы данного ПО являются открытым исходным кодом;"
 
-#: ../plugin/local.py:244
+#: plugin/local.py:244
 msgid "you can redistribute it and/or modify it under the"
 msgstr "Вы можете распространять и / или изменять его в соответствии"
 
-#: ../plugin/local.py:245
+#: plugin/local.py:245
 msgid "terms of the GNU General Public License version 2 as"
 msgstr "условиями GNU General Public License версии 2,"
 
-#: ../plugin/local.py:246
+#: plugin/local.py:246
 msgid "published by the Free Software Foundation."
 msgstr "опубликованой Free Software Foundation."
 
-#: ../plugin/local.py:247
+#: plugin/local.py:247
 msgid ""
 "All Files of this Software are open source software; you can redistribute it "
 "and/or modify it under the terms of the GNU General Public License version 2 "
@@ -1454,649 +1522,694 @@ msgstr ""
 "распространять и / или изменять его в соответствии с условиями GNU General "
 "Public License версии 2, опубликованной Free Software Foundation."
 
-#: ../plugin/local.py:248
+#: plugin/local.py:248
 msgid "Root"
 msgstr "Root"
 
-#: ../plugin/local.py:250
+#: plugin/local.py:250
 msgid "AutoTimer List"
 msgstr "Список Автотаймеров"
 
-#: ../plugin/local.py:251
+#: plugin/local.py:251
 msgid "AutoTimer Edit"
 msgstr "Редактор Автотаймера"
 
-#: ../plugin/local.py:254
+#: plugin/local.py:254
 msgid "Match title"
 msgstr "Название совпадения"
 
-#: ../plugin/local.py:255
+#: plugin/local.py:255
 msgid "EPG encoding"
 msgstr "Кодировка EPG"
 
-#: ../plugin/local.py:256
+#: plugin/local.py:256
 msgid "Search type"
 msgstr "Тип поиска"
 
-#: ../plugin/local.py:257
+#: plugin/local.py:257
 msgid "partial match"
 msgstr "частичное совпадение"
 
-#: ../plugin/local.py:258
+#: plugin/local.py:258
 msgid "exact match"
 msgstr "полное совпадение"
 
-#: ../plugin/local.py:259
+#: plugin/local.py:259
 msgid "description match"
 msgstr "совпадение описания"
 
-#: ../plugin/local.py:260
+#: plugin/local.py:260
 msgid "title or description match"
 msgstr "название или описание совпадения"
 
-#: ../plugin/local.py:261
+#: plugin/local.py:261
 msgid "title or short description match"
 msgstr "название или короткое описание совпадения"
 
-#: ../plugin/local.py:262
+#: plugin/local.py:262
 msgid "short description match"
 msgstr "короткое описание совпадения"
 
-#: ../plugin/local.py:263
+#: plugin/local.py:263
 msgid "start match"
 msgstr "начало совпадения"
 
-#: ../plugin/local.py:264
+#: plugin/local.py:264
 msgid "Search strictness"
 msgstr "Строгость поиска"
 
-#: ../plugin/local.py:265
+#: plugin/local.py:265
 msgid "case-sensitive search"
 msgstr "поиск с учетом регистра"
 
-#: ../plugin/local.py:266
+#: plugin/local.py:266
 msgid "case-insensitive search"
 msgstr "поиск без учета регистра"
 
-#: ../plugin/local.py:267
+#: plugin/local.py:267
 msgid "Timer type"
 msgstr "Тип таймера"
 
-#: ../plugin/local.py:268
+#: plugin/local.py:268
 msgid "record"
 msgstr "запись"
 
-#: ../plugin/local.py:269
+#: plugin/local.py:269
 msgid "zap"
 msgstr "перейти"
 
-#: ../plugin/local.py:270
+#: plugin/local.py:270
 msgid "Override found with alternative service"
 msgstr "Заменить на найденное в альтернативном сервисе"
 
-#: ../plugin/local.py:271
+#: plugin/local.py:271
 msgid "Only match during timespan"
 msgstr "Только совпадение в промежуток времени"
 
-#: ../plugin/local.py:272
+#: plugin/local.py:272
 msgid "Begin of timespan"
 msgstr "Начало временного промежутка"
 
-#: ../plugin/local.py:273
+#: plugin/local.py:273
 msgid "End of Timespan"
 msgstr "Конец временного промежутка"
 
-#: ../plugin/local.py:274
+#: plugin/local.py:274
 msgid "Restrict to events on certain dates"
 msgstr "Ограничение событий на определенные даты"
 
-#: ../plugin/local.py:275
+#: plugin/local.py:275
 msgid "Not after"
 msgstr "Нет после"
 
-#: ../plugin/local.py:276
+#: plugin/local.py:276
 msgid "Not before"
 msgstr "Нет перед"
 
-#: ../plugin/local.py:277
+#: plugin/local.py:277
 msgid "Custom offset"
 msgstr "Пользовательский сдвиг"
 
-#: ../plugin/local.py:278
+#: plugin/local.py:278
 msgid "Offset before recording (in m)"
 msgstr "Сдвиг перед записью (в мин.)"
 
-#: ../plugin/local.py:279
+#: plugin/local.py:279
 msgid "Offset after recording (in m)"
 msgstr "Сдвиг после записи ( в мин.)"
 
-#: ../plugin/local.py:280
+#: plugin/local.py:280
 msgid "Set maximum duration"
 msgstr "Установите максимальную продолжительность"
 
-#: ../plugin/local.py:281
+#: plugin/local.py:281
 msgid "After event"
 msgstr "После события"
 
-#: ../plugin/local.py:282
+#: plugin/local.py:282
 msgid "standard"
 msgstr "стандарт"
 
-#: ../plugin/local.py:283
+#: plugin/local.py:283
 msgid "auto"
 msgstr "авто"
 
-#: ../plugin/local.py:284
+#: plugin/local.py:284
 msgid "do nothing"
 msgstr "ничего не делать"
 
-#: ../plugin/local.py:285
+#: plugin/local.py:285
 msgid "go to standby"
 msgstr "перейти в режим ожидания"
 
-#: ../plugin/local.py:286
+#: plugin/local.py:286
 msgid "go to deep standby"
 msgstr "перейти в глубокий режим ожидания"
 
-#: ../plugin/local.py:287
+#: plugin/local.py:287
 msgid "Execute \"after event\" during timespan"
 msgstr "Выполнить \"после события\" в промежутке времени"
 
-#: ../plugin/local.py:288
+#: plugin/local.py:288
 msgid "Begin of \"after event\" timespan"
 msgstr "Начало \"после события\" в промежутке времени"
 
-#: ../plugin/local.py:289
+#: plugin/local.py:289
 msgid "End of \"after event\" timespan"
 msgstr "Окончание \"после события\" в промежутке времени"
 
-#: ../plugin/local.py:290
+#: plugin/local.py:290
 msgid "Record a maximum of x times"
 msgstr "Записать максимум х раз"
 
-#: ../plugin/local.py:291
+#: plugin/local.py:291
 msgid "Amount of recordings left"
 msgstr "Количество оставшихся записей"
 
-#: ../plugin/local.py:292 ../plugin/local.py:363
+#: plugin/local.py:292 plugin/local.py:363
 msgid "Never"
 msgstr "Никогда"
 
-#: ../plugin/local.py:293
+#: plugin/local.py:293
 msgid "Monthly"
 msgstr "Ежемесячно"
 
-#: ../plugin/local.py:294
+#: plugin/local.py:294
 msgid "Weekly (Sunday)"
 msgstr "Еженедельно (воскресенье)"
 
-#: ../plugin/local.py:295
+#: plugin/local.py:295
 msgid "Weekly (Monday)"
 msgstr "Еженедельно (понедельник)"
 
-#: ../plugin/local.py:296
+#: plugin/local.py:296
 msgid "Reset count"
 msgstr "Сброс счетчика"
 
-#: ../plugin/local.py:297
+#: plugin/local.py:297
 msgid "Require description to be unique"
 msgstr "Требование уникальности для описания"
 
-#: ../plugin/local.py:298
+#: plugin/local.py:298
 msgid "No"
 msgstr "Нет"
 
-#: ../plugin/local.py:299
+#: plugin/local.py:299
 msgid "On same service"
 msgstr "Для этого сервиса"
 
-#: ../plugin/local.py:300
+#: plugin/local.py:300
 msgid "On any service"
 msgstr "Для любого сервиса"
 
-#: ../plugin/local.py:301
+#: plugin/local.py:301
 msgid "Any service/recording"
 msgstr "Любой сервис/запись"
 
-#: ../plugin/local.py:302
+#: plugin/local.py:302
 msgid "Use a custom location"
 msgstr "Пользовательское расположение"
 
-#: ../plugin/local.py:304
+#: plugin/local.py:304
 msgid "select Tags"
 msgstr "выбор тэгов"
 
-#: ../plugin/local.py:306
+#: plugin/local.py:306
 msgid "select Channels"
 msgstr "выбор каналов"
 
-#: ../plugin/local.py:308
+#: plugin/local.py:308
 msgid "select Bouquets"
 msgstr "выбор букетов"
 
-#: ../plugin/local.py:309
+#: plugin/local.py:309
 msgid "Enable Filtering"
 msgstr "Применить фильтрацию"
 
-#: ../plugin/local.py:310
+#: plugin/local.py:310
 msgid "Include"
 msgstr "Включать"
 
-#: ../plugin/local.py:311
+#: plugin/local.py:311
 msgid "Exclude"
 msgstr "Исключить"
 
-#: ../plugin/local.py:312
+#: plugin/local.py:312
 msgid "in Title"
 msgstr "в названии"
 
-#: ../plugin/local.py:313
+#: plugin/local.py:313
 msgid "in Shortdescription"
 msgstr "в коротком описании"
 
-#: ../plugin/local.py:314
+#: plugin/local.py:314
 msgid "in Description"
 msgstr "в описании"
 
-#: ../plugin/local.py:315
+#: plugin/local.py:315
 msgid "on Weekday"
 msgstr "в будни"
 
-#: ../plugin/local.py:316
+#: plugin/local.py:316
 msgid "Weekend"
 msgstr "Выходные"
 
-#: ../plugin/local.py:317
+#: plugin/local.py:317
 msgid "Weekday"
 msgstr "Будни"
 
-#: ../plugin/local.py:318
+#: plugin/local.py:318
 msgid "Add"
 msgstr "Добавить"
 
-#: ../plugin/local.py:319
+#: plugin/local.py:319
 msgid "Delete"
 msgstr "Удалить"
 
-#: ../plugin/local.py:320 ../plugin/local.py:372 ../plugin/local.py:380
+#: plugin/local.py:320 plugin/local.py:372 plugin/local.py:380
 msgid "Reload"
 msgstr "Перезагрузить"
 
-#: ../plugin/local.py:322
+#: plugin/local.py:322
 msgid "Parse"
 msgstr "Анализ"
 
-#: ../plugin/local.py:323
+#: plugin/local.py:323
 msgid "Simulate"
 msgstr "Имитировать"
 
-#: ../plugin/local.py:326
+#: plugin/local.py:326
 msgid "Do you really want to delete the AT"
 msgstr "Вы действительно хотите удалить АТ?"
 
-#: ../plugin/local.py:327
+#: plugin/local.py:327
 msgid "Label series"
 msgstr "Этикетки серий"
 
-#: ../plugin/local.py:329
+#: plugin/local.py:329
 msgid "AutoTimer Settings"
 msgstr "Автотаймер - настройки"
 
-#: ../plugin/local.py:330
+#: plugin/local.py:330
 msgid "AutoPoll"
 msgstr "Авто проверка"
 
-#: ../plugin/local.py:331
+#: plugin/local.py:331
 msgid "Interval (in h)"
 msgstr "Интервал (в часах)"
 
-#: ../plugin/local.py:332
+#: plugin/local.py:332
 msgid "Max Days"
 msgstr "Максимум дней"
 
-#: ../plugin/local.py:333
+#: plugin/local.py:333
 msgid "Try Guessing"
 msgstr "Учесть существующий таймер"
 
-#: ../plugin/local.py:334
+#: plugin/local.py:334
 msgid "Fastscan"
 msgstr "Быстрый поиск"
 
-#: ../plugin/local.py:335
+#: plugin/local.py:335
 msgid "Show in Extensionsmenu"
 msgstr "Показать в меню дополнений"
 
-#: ../plugin/local.py:336
+#: plugin/local.py:336
 msgid "Disabled on Conflict"
 msgstr "Добавить как отключенный при конфликте"
 
-#: ../plugin/local.py:337
+#: plugin/local.py:337
 msgid "Add Similar on Conflict"
 msgstr "Добавить аналогичный при конфликте"
 
-#: ../plugin/local.py:338
+#: plugin/local.py:338
 msgid "Notify if Conflict"
 msgstr "Показать сообщение при конфилкте"
 
-#: ../plugin/local.py:339
+#: plugin/local.py:339
 msgid "Notify if Similar"
 msgstr "Показать сообщение при аналогичном"
 
-#: ../plugin/local.py:340
+#: plugin/local.py:340
 msgid "Add Autotimer to Tags"
 msgstr "Добавить 'Autotimer' в тэги"
 
-#: ../plugin/local.py:341
+#: plugin/local.py:341
 msgid "Add Name to Tags"
 msgstr "Добавить название в тэги"
 
-#: ../plugin/local.py:343
+#: plugin/local.py:343
 msgid "None"
 msgstr "Ничего"
 
-#: ../plugin/local.py:346
+#: plugin/local.py:346
 msgid "Editor"
 msgstr "Редактор"
 
-#: ../plugin/local.py:347
+#: plugin/local.py:347
 msgid "Plain"
 msgstr "Обычный"
 
-#: ../plugin/local.py:348
+#: plugin/local.py:348
 msgid "Wizzard"
 msgstr "Мастер"
 
-#: ../plugin/local.py:351
+#: plugin/local.py:351
 msgid "Enable Messages"
 msgstr "Включить сообщения"
 
-#: ../plugin/local.py:354
+#: plugin/local.py:354
 msgid "Delay Standby"
 msgstr "Задержка в режиме ожидания"
 
-#: ../plugin/local.py:355
+#: plugin/local.py:355
 msgid "Interval (min.)"
 msgstr "Интервал (мин.)"
 
-#: ../plugin/local.py:356
+#: plugin/local.py:356
 msgid "Interval (sec.)"
 msgstr "Интервал (сек.)"
 
-#: ../plugin/local.py:357
-msgid "Afterevent"
-msgstr "После события"
-
-#: ../plugin/local.py:358
+#: plugin/local.py:358
 msgid "Force"
 msgstr "Принудительно"
 
-#: ../plugin/local.py:359
+#: plugin/local.py:359
 msgid "Wakeup"
 msgstr "Пробуждение"
 
-#: ../plugin/local.py:360
+#: plugin/local.py:360
 msgid "Inherit Autotimer"
 msgstr "Наследовать Автотаймер"
 
-#: ../plugin/local.py:361
+#: plugin/local.py:361
 msgid "Parse Autotimer"
 msgstr "Поиск совпадений Автотаймера"
 
-#: ../plugin/local.py:362
+#: plugin/local.py:362
 msgid "Always"
 msgstr "Всегда"
 
-#: ../plugin/local.py:364
+#: plugin/local.py:364
 msgid "Background only"
 msgstr "Только в фоне"
 
-#: ../plugin/local.py:365
+#: plugin/local.py:365
 msgid "Ask, default Yes"
 msgstr "Спросить, по умолчанию - Да"
 
-#: ../plugin/local.py:366
+#: plugin/local.py:366
 msgid "Ask, default No"
 msgstr "Спросить, по умолчанию - Нет"
 
-#: ../plugin/local.py:367
+#: plugin/local.py:367
 msgid "Method"
 msgstr "Метод"
 
-#: ../plugin/local.py:368
+#: plugin/local.py:368
 msgid "Visibly"
 msgstr "Видимый (режим ТВ)"
 
-#: ../plugin/local.py:369
+#: plugin/local.py:369
 msgid "Picture in Picture"
 msgstr "Картинка в картинке (PiP)"
 
-#: ../plugin/local.py:370
+#: plugin/local.py:370
 msgid "Picture in Picture (hidden)"
 msgstr "PiP (скрытый режим)"
 
-#: ../plugin/local.py:371
+#: plugin/local.py:371
 msgid "Fake Recording"
 msgstr "Имитация записи"
 
-#: ../plugin/local.py:374
+#: plugin/local.py:374
 msgid "Refresh now"
 msgstr "Обновить сейчас"
 
-#: ../plugin/local.py:376
+#: plugin/local.py:376
 msgid "Add Provider as new Bouquet"
 msgstr "Добавить провайдера как новый букет"
 
-#: ../plugin/local.py:377
+#: plugin/local.py:377
 msgid "Add channel(s) to Bouquet"
 msgstr "Добавить канал(ы) в букет"
 
-#: ../plugin/local.py:378
+#: plugin/local.py:378
 msgid "Add channel(s) as alternate"
 msgstr "Добавить канал(ы) как альтернативу"
 
-#: ../plugin/local.py:381
+#: plugin/local.py:381
 msgid "Export"
 msgstr "Экспорт"
 
-#: ../plugin/local.py:382
+#: plugin/local.py:382
 msgid "Import"
 msgstr "Импорт"
 
-#: ../plugin/local.py:383
+#: plugin/local.py:383
 msgid "Add Bouquet"
 msgstr "Добавить букет"
 
-#: ../plugin/local.py:384
+#: plugin/local.py:384
 msgid "Rename Bouquet"
 msgstr "Переименовать букет"
 
-#: ../plugin/local.py:385
+#: plugin/local.py:385
 msgid "Delete Bouquet"
 msgstr "Удалить букет"
 
-#: ../plugin/local.py:386
+#: plugin/local.py:386
 msgid "Add Marker"
 msgstr "Добавить маркер"
 
-#: ../plugin/local.py:387
+#: plugin/local.py:387
 msgid "Rename"
 msgstr "Переименовать"
 
-#: ../plugin/local.py:388
+#: plugin/local.py:388
 msgid "Delete Channel(s)"
 msgstr "Удалить канал(ы)"
 
-#: ../plugin/local.py:389
+#: plugin/local.py:389
 msgid "Do you really want to delete the channel(s)"
 msgstr "Вы действительно хотите удалить канал(ы)?"
 
-#: ../plugin/local.py:390
+#: plugin/local.py:390
 msgid "Do you really want to delete the bouquet"
 msgstr "Вы действительно хотите удалить букет?"
 
-#: ../plugin/local.py:391
+#: plugin/local.py:391
 msgid "Name of the Bouquet"
 msgstr "Название букета"
 
-#: ../plugin/local.py:392
+#: plugin/local.py:392
 msgid "Name of the Marker"
 msgstr "Название маркера"
 
-#: ../plugin/local.py:393
+#: plugin/local.py:393
 msgid "Enter new name for the bouquet"
 msgstr "Введите новое название букета"
 
-#: ../plugin/local.py:394
+#: plugin/local.py:394
 msgid "Enter new name for the marker"
 msgstr "Введите новое название маркера"
 
-#: ../plugin/local.py:395
+#: plugin/local.py:395
 msgid "Please enter filename"
 msgstr "Пожалуйста, введите название файла"
 
-#: ../plugin/local.py:396
+#: plugin/local.py:396
 msgid "Do you really want to restore from file"
 msgstr "Вы действительно хотите восстановить из файла?"
 
-#: ../plugin/plugin.py:94
-msgid "OpenWebif url: http://yourip:port"
-msgstr "OpenWebif url: http://IP ресивера:порт"
-
-#: ../plugin/plugin.py:108
-msgid "OpenWebInterface Enabled"
-msgstr "OpenWebif включен"
-
-#: ../plugin/plugin.py:115
-msgid "HTTP port"
-msgstr "Порт HTTP"
-
-#: ../plugin/plugin.py:116
-msgid "Enable HTTP Authentication"
-msgstr "Применить HTTP аутентификацию"
-
-#: ../plugin/plugin.py:117
-msgid "Enable HTTPS"
-msgstr "Применить HTTPS"
-
-#: ../plugin/plugin.py:119
-msgid "HTTPS port"
-msgstr "Порт HTTPS"
-
-#: ../plugin/plugin.py:120
-msgid "Enable HTTPS Authentication"
-msgstr "Применить HTTPS аутентификацию"
-
-#: ../plugin/plugin.py:121
-msgid "Require client cert for HTTPS"
-msgstr "Требовать клиентский сертификат для HTTPS"
-
-#: ../plugin/plugin.py:123
-msgid "Enable Authentication for streaming"
-msgstr "Включить аутентификацию для стриминга"
-
-#: ../plugin/plugin.py:124
-msgid "Disable access for user root"
-msgstr "Отключить доступ для пользователя root"
-
-#: ../plugin/plugin.py:125
-msgid "Smart services renaming for XBMC"
-msgstr "Переименовать сервисы для XBMC"
-
-#: ../plugin/plugin.py:126
-msgid "Enable Parental Control"
-msgstr "Включить родительский контроль"
-
-#: ../plugin/plugin.py:127
-msgid "Add service name to stream information"
-msgstr "Добавить название сервиса в информацию стрима"
-
-#: ../plugin/plugin.py:129
-msgid "Character encoding for EPG data"
-msgstr "Тип кодировки текста для данных EPG"
-
-#: ../plugin/plugin.py:135 ../plugin/plugin.py:194 ../plugin/plugin.py:196
-#: ../plugin/plugin.py:198
-msgid "OpenWebif Configuration"
-msgstr "Настройки OpenWebif"
-
-msgid "Record+ZAP"
-msgstr "Запись+Перейти"
-
+#: plugin/local.py:398
 msgid "via"
 msgstr "via"
 
+#: plugin/local.py:399
+msgid "Record+ZAP"
+msgstr "Запись+Перейти"
+
+#: plugin/local.py:400
 msgid "Pmtpid"
 msgstr "Pmtpid"
 
+#: plugin/local.py:401
 msgid "Apid"
 msgstr "Apid"
 
+#: plugin/local.py:402
 msgid "Vpid"
 msgstr "Vpid"
 
+#: plugin/local.py:403
 msgid "Pcrpid"
 msgstr "Pcrpid"
 
+#: plugin/local.py:404
 msgid "Tsid"
 msgstr "Tsid"
 
+#: plugin/local.py:405
 msgid "Onid"
 msgstr "Onid"
 
+#: plugin/local.py:406
 msgid "Sid"
 msgstr "Sid"
 
+#: plugin/local.py:407
 msgid "Sref"
 msgstr "Sref"
 
+#: plugin/local.py:408
+msgid "Orbital Position"
+msgstr ""
+
+#: plugin/local.py:410
 msgid "error! Loading Page"
 msgstr "ошибка загрузки страницы!"
 
+#: plugin/local.py:411
 msgid "Timer Added"
 msgstr "Таймер добавлен"
 
+#: plugin/local.py:412
 msgid "Event not found"
 msgstr "Событие не найдено"
 
-msgid "NOT implemented YET"
-msgstr "НЕ реализовано ЕЩЕ"
-
-msgid "OpenWebif Browser Settings"
-msgstr "Настройки браузера OpenWebif"
-
-msgid "OpenWebif Settings"
-msgstr "Настройки OpenWebif"
-
-msgid "Theme"
-msgstr "Тема"
-
+#: plugin/local.py:413
 msgid "Show Picon in channel list"
 msgstr "Показать пикон в списке каналов"
 
+#: plugin/local.py:415
+msgid "OpenWebif Browser Settings"
+msgstr "Настройки браузера OpenWebif"
+
+#: plugin/local.py:416
+msgid "OpenWebif Settings"
+msgstr "Настройки OpenWebif"
+
+#: plugin/local.py:417
+msgid "Theme"
+msgstr "Тема"
+
+#: plugin/local.py:418
+msgid "Show Picons in channel list"
+msgstr "Показать пиконы в списке каналов"
+
+#: plugin/local.py:419
 msgid "Spinner"
 msgstr "Спиннер"
 
+#: plugin/local.py:420
 msgid "Display duration (s)"
 msgstr "Продолжительность дисплея (сек)"
 
+#: plugin/local.py:422
 msgid "Display Mode"
 msgstr "Режим дисплея"
 
+#: plugin/local.py:423
 msgid "TV Guide"
 msgstr "ТВ гид"
 
+#: plugin/local.py:424
 msgid "Timeline"
 msgstr "График"
 
-#: ../plugin/local.py:425
+#: plugin/local.py:425
+msgid "Web TV"
+msgstr ""
+
+#: plugin/local.py:427
 msgid "Link Speed"
 msgstr "Скорость связи"
 
+#: plugin/local.py:428
 msgid "Network Shares"
 msgstr "Сетевые подключения"
 
+#: plugin/local.py:429
 msgid "using"
 msgstr "использование"
 
-msgid "Show Picons in channel list"
-msgstr "Показать пиконы в списке каналов"
+#: plugin/plugin.py:103
+msgid "OpenWebif url: http://yourip:port"
+msgstr "OpenWebif url: http://IP ресивера:порт"
+
+#: plugin/plugin.py:117
+msgid "OpenWebInterface Enabled"
+msgstr "OpenWebif включен"
+
+#: plugin/plugin.py:124
+msgid "HTTP port"
+msgstr "Порт HTTP"
+
+#: plugin/plugin.py:125
+msgid "Enable HTTP Authentication"
+msgstr "Применить HTTP аутентификацию"
+
+#: plugin/plugin.py:126
+msgid "Enable HTTPS"
+msgstr "Применить HTTPS"
+
+#: plugin/plugin.py:128
+msgid "HTTPS port"
+msgstr "Порт HTTPS"
+
+#: plugin/plugin.py:129
+msgid "Enable HTTPS Authentication"
+msgstr "Применить HTTPS аутентификацию"
+
+#: plugin/plugin.py:130
+msgid "Require client cert for HTTPS"
+msgstr "Требовать клиентский сертификат для HTTPS"
+
+#: plugin/plugin.py:132
+msgid "Enable Authentication for streaming"
+msgstr "Включить аутентификацию для стриминга"
+
+#: plugin/plugin.py:133
+msgid "Disable access for user root"
+msgstr "Отключить доступ для пользователя root"
+
+#: plugin/plugin.py:135
+msgid "Without auth only local access is allowed!"
+msgstr ""
+
+#: plugin/plugin.py:136
+msgid "Enable access from VPNs"
+msgstr ""
+
+#: plugin/plugin.py:137
+msgid "Enable Parental Control"
+msgstr "Включить родительский контроль"
+
+#: plugin/plugin.py:138
+msgid "Add service name to stream information"
+msgstr "Добавить название сервиса в информацию стрима"
+
+#: plugin/plugin.py:140
+msgid "Character encoding for EPG data"
+msgstr "Тип кодировки текста для данных EPG"
+
+#: plugin/plugin.py:149 plugin/plugin.py:208 plugin/plugin.py:210
+#: plugin/plugin.py:212
+msgid "OpenWebif Configuration"
+msgstr "Настройки OpenWebif"
+
+#~ msgid "Delete Movie"
+#~ msgstr "Удалить видео"
+
+#~ msgid "Really delete the movie"
+#~ msgstr "Действительно удалить видео?"
+
+#~ msgid "Afterevent"
+#~ msgstr "После события"
+
+#~ msgid "Smart services renaming for XBMC"
+#~ msgstr "Переименовать сервисы для XBMC"
+
+#~ msgid "NOT implemented YET"
+#~ msgstr "НЕ реализовано ЕЩЕ"
