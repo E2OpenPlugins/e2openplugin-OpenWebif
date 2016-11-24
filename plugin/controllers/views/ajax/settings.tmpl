@@ -10,6 +10,7 @@
 .ln-letters .ln-last { border-right: 1px solid silver;}
 .ln-letters a:hover,.ln-selected { background-color:#eaeaea;}
 .ln-letters .ln-disabled {color:#ccc;}
+#tmpfiles li { list-style-type:none;}
 
 </style>
 <div id="content_main" class="ui-widget-content" style="min-height: 500px;background-image:none;">
@@ -92,13 +93,21 @@
 				<input class="pkgbtn" type="radio" id="pkgbtn3" name="tb2" /><label for="pkgbtn3">All</label>
 				<input class="pkgbtn" type="radio" id="pkgbtn4" name="tb2" /><label for="pkgbtn4">More..</label>
 				</span>
+				<span id="tb3">
+				<button id="installpk">Install</button>
+				<button id="deletepk">Remove</button>
+				</span>
 				<div id="pkgmore">
-				<br>
+				<br><br>
 				<button id="updatefeed">Update from Feed</button>
-				<br>
+				<br><br>
 				<button id="upgrade">Upgrade all Packages</button>
-				<br>
-				<button id="selectfile">Select IPK File</button>
+				<br><br>
+				<button id="selectfile">Select IPK File for Upload</button>
+				<br><br>
+				Uploaded Files:<br>
+				<ul id='tmpfiles'></ul>
+				<br><br>
 				<form id="uploadpkg" style="display:none" action"uploadpkg"="" method="post" enctype="multipart/form-data" encoding="multipart/form-data">
 				<input type="file" name="rfile" id="rfile" maxlength="100000">
 				<input type="hidden" name="filename" id="filename">
@@ -119,9 +128,9 @@
 <script type="text/javascript">
 #raw
 
-
 var filteredpkg;
-
+var sellist = [];
+var inst=false;
 
 function prepareRestore() {
 	var fn = $(this).val();
@@ -180,11 +189,15 @@ function FillPackages(pkgs,mode)
 		return (v.i == '1');
 	});
 
+	sellist = [];
+	inst = false;
+
 	if (mode == 'pkgbtn1')
 		filteredpkg = _update.slice();
-	else if (mode == 'pkgbtn2')
+	else if (mode == 'pkgbtn2') {
+		inst = true;
 		filteredpkg = _installed.slice();
-	else
+	} else
 		filteredpkg = pkgs.slice();
 
 	$("#packagelist").html('');
@@ -197,7 +210,37 @@ function FillPackages(pkgs,mode)
 	});
 	$("#packagelist").html(row);
 	$("#packagelist").listnav({includeAll:false,showCounts:false,initLetter:'a'});
+
+	$('#packagelist > li').click( function () {
+		selunsel($(this));
+	});
 	
+}
+
+function selunsel(obj)
+{
+	$(obj).toggleClass( "ui-state-hover" );
+
+	var pk = $(obj).html();
+	pk = pk.split('(')[0];
+	pk = pk.substring(1,pk.length-1);
+
+	sellist.push(pk);
+
+}
+
+function InstallPK()
+{
+	for (var i = 0, len = sellist.length; i < len; i++) {
+		console.log(sellist[i]);
+	}
+}
+
+function RemovePK()
+{
+	for (var i = 0, len = sellist.length; i < len; i++) {
+		console.log(sellist[i]);
+	}
 }
 
 function Action(action)
@@ -217,6 +260,18 @@ function ShowPackages(mode)
 	$("#tblpackages").hide();
 	if (mode == 'pkgbtn4') {
 		$("#pkgmore").show();
+		$('#tmpfiles').empty();
+		$.ajax({
+			url: '/ipkg?command=tmp',
+			dataType: 'json',
+			success: function (data) {
+				var files = '';
+				$.each( data.ipkfiles, function( key, val ) {
+					files+='<li>' + val['name'] + '</li>'
+				});
+				$('#tmpfiles').html(files);
+			}
+		});
 		return;
 	}
 
@@ -304,11 +359,15 @@ $(function() {
 	});
 	
 	$('#tb2').buttonset();
+	$('#tb3').buttonset();
 	$('.pkgbtn').click(function () { ShowPackages($(this).attr('id')); });
 	$('#selectfile').click(function () {$("#rfile").trigger('click'); });
 	$('#rfile').change(prepareRestore);
 	$('#updatefeed').click(function () {Action('/ipkg?command=update'); });
 	$('#upgrade').click(function () {Action('/ipkg?command=upgrade'); });
+	$('#installpk').click(function () {InstallPK(); });
+	$('#removepk').click(function () {RemovePK(); });
+	
 });
 </script>
 #end raw

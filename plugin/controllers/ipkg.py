@@ -60,7 +60,8 @@ class IpkgController(BaseController):
 				ipks = []
 				for tmpfile in tmpfiles:
 					ipks.append({
-						'name': tmpfile,
+						'path': tmpfile,
+						'name' : (tmpfile.split('/')[-1]),
 						'size' : stat(tmpfile).st_size,
 						'date' : stat(tmpfile).st_mtime,
 					})
