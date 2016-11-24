@@ -867,7 +867,7 @@ msgstr "Beschrijving"
 
 #: plugin/local.py:81
 msgid "Disable Timer"
-msgstr "Schakel timer uit"
+msgstr "Timer uitschakelen"
 
 #: plugin/local.py:82
 msgid "disabled"
@@ -907,7 +907,7 @@ msgstr "Pas timer aan"
 
 #: plugin/local.py:91
 msgid "Enable Timer"
-msgstr "Schakel timer in"
+msgstr "Timer inschakelen"
 
 #: plugin/local.py:92
 msgid "Start"
@@ -1115,11 +1115,11 @@ msgstr "Toon rechts boven de naam van de box"
 
 #: plugin/local.py:147 plugin/plugin.py:121
 msgid "Use custom box name"
-msgstr "Gebruik een eigen naam voor de box"
+msgstr "Gebruik een alternatieve naam voor de box"
 
 #: plugin/local.py:148 plugin/plugin.py:123
 msgid "Custom box name"
-msgstr "Eigen naam voor de box"
+msgstr "Alternatieve naam voor de box"
 
 #: plugin/local.py:149
 msgid "OSD"
@@ -1742,7 +1742,7 @@ msgstr "Kies Bouquetten"
 
 #: plugin/local.py:309
 msgid "Enable Filtering"
-msgstr "Schakel filters in"
+msgstr "Filters inschakelen"
 
 #: plugin/local.py:310
 msgid "Include"
@@ -1875,7 +1875,7 @@ msgstr "Wizzard"
 
 #: plugin/local.py:351
 msgid "Enable Messages"
-msgstr "Schakel berichten in"
+msgstr "Berichten inschakelen"
 
 #: plugin/local.py:354
 msgid "Delay Standby"
@@ -2167,11 +2167,11 @@ msgstr "Een gebruikers certificaat is vereist voor HTTPS"
 
 #: plugin/plugin.py:132
 msgid "Enable Authentication for streaming"
-msgstr "Schakel streaming authenticatie in"
+msgstr "Streaming authenticatie inschakelen"
 
 #: plugin/plugin.py:133
 msgid "Disable access for user root"
-msgstr "Schakel root-gebruiker toegang uit"
+msgstr "Root-gebruiker toegang uitschakelen"
 
 #: plugin/plugin.py:135
 msgid "Without auth only local access is allowed!"
@@ -2183,7 +2183,7 @@ msgstr "Toegang voor VPNs inschakelen"
 
 #: plugin/plugin.py:137
 msgid "Enable Parental Control"
-msgstr "Schakel kinderslot in"
+msgstr "Kinderslot inschakelen"
 
 #: plugin/plugin.py:138
 msgid "Add service name to stream information"
