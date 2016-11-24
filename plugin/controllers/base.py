@@ -62,6 +62,7 @@ class BaseController(resource.Resource):
 		self.isJson = False
 		self.isCustom = False
 		self.isGZ = False
+		self.isMobile = False
 
 	def error404(self, request):
 		request.setHeader("content-type", "text/html")
@@ -169,7 +170,9 @@ class BaseController(resource.Resource):
 					print "[OpenWebif] ERROR! Template not found for page '%s'" % request.uri
 					self.error404(request)
 				else:
-					if self.withMainTemplate:
+					if self.isMobile:
+						out = self.loadTemplate("head", self.path, args) + out
+					elif self.withMainTemplate:
 						args = self.prepareMainTemplate(request)
 						args["content"] = out
 						nout = self.loadTemplate("main", "main", args)
@@ -204,6 +207,7 @@ class BaseController(resource.Resource):
 		self.isJson = isJson
 		self.isCustom = isCustom
 		self.isGZ = isGZ
+		self.isMobile = isMobile
 
 		return server.NOT_DONE_YET
 
@@ -294,8 +298,14 @@ class BaseController(resource.Resource):
 			pass
 
 		ret['extras'] = extras
+		theme = 'original'
+		ret['themes'] = False
 		if config.OpenWebif.webcache.theme.value:
 			ret['theme'] = config.OpenWebif.webcache.theme.value
+		if not os.path.exists(getPublicPath('themes')):
+			if not ( theme == 'original' or theme = 'clear') 
+				ret['theme'] = 'original'
 		else:
-			ret['theme'] = 'original'
+			ret['themes'] = True
+		ret['webtv'] = os.path.exists(getPublicPath('webtv'))
 		return ret

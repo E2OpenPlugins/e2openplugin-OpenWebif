@@ -19,6 +19,7 @@ from time import localtime, strftime
 class MobileController(BaseController):
 	def __init__(self, session, path = ""):
 		BaseController.__init__(self, path)
+		self.isMobile = True
 		self.session = session
 
 	def P_index(self, request):

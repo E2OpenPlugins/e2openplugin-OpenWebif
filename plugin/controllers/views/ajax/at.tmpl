@@ -29,13 +29,13 @@ fieldset > label
 						<form>
 							<fieldset style="border:none">
 								<label for="enabled">$tstrings['at_enabled']:</label>
-								<input type="checkbox" name="enabled" id="enabled" value="" class="checkbox ui-widget-content ui-corner-all">
+								<input type="checkbox" id="enabled" value="">
 								<br><label for="name">$tstrings['at_description']:</label>
-								<input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
+								<input type="text" id="name">
 								<br><label for="match">$tstrings['at_title_match']:</label>
-								<input type="text" name="match" id="match" class="text ui-widget-content ui-corner-all">
+								<input type="text" id="match">
 								<!-- <label for="searchType">$tstrings['at_search_type']:</label> -->
-								<select name="searchType" id="searchType">
+								<select id="searchType">
 								<option value="partial" selected="selected">$tstrings['at_partial_match']</option>
 								<option value="exact">$tstrings['at_exact_match']</option>
 								<option value="description">$tstrings['at_description_match']</option>
@@ -44,53 +44,53 @@ fieldset > label
 								#end if
 								</select>
 								<!-- <br><label for="searchCase">$tstrings['at_search_strictness']:</label> -->
-								<select name="searchCase" id="searchCase">
+								<select id="searchCase">
 								<option value="sensitive" selected="selected">$tstrings['at_case_sensitive']</option>
 								<option value="insensitive">$tstrings['at_case_insensitive']</option>
 								</select>
 								<br><label for="justplay">$tstrings['at_timer_type']:</label>
-								<select name="justplay" id="justplay">
+								<select id="justplay">
 								<option value="0" selected="selected">$tstrings['at_record']</option>
 								<option value="1">$tstrings['at_zap']</option>
 								</select>
 								<label for="overrideAlternatives">$tstrings['at_override_alt']:</label>
-								<input type="checkbox" name="overrideAlternatives" id="overrideAlternatives" value="" class="checkbox ui-widget-content ui-corner-all">
+								<input type="checkbox" id="overrideAlternatives" value="">
 								<br><label for="timeSpan">$tstrings['at_timespan']:</label>
-								<input type="checkbox" name="timeSpan" id="timeSpan" value="" class="checkbox ui-widget-content ui-corner-all">
+								<input type="checkbox" id="timeSpan" value="">
 									<span id="timeSpanE">
 									<label for="from">$tstrings['at_timespan_begin']:</label>
-									<input type="text" name="from" id="from" value="" class="text ui-widget-content ui-corner-all">
+									<input type="text" id="from" value="">
 									<label for="to">$tstrings['at_timespan_end']:</label>
-									<input type="text" name="to" id="to" value="" class="text ui-widget-content ui-corner-all">
+									<input type="text" id="to" value="">
 									</span>
 								<br><label for="timeFrame">$tstrings['at_datespan']:</label>
-								<input type="checkbox" name="timeFrame" id="timeFrame" value="" class="checkbox ui-widget-content ui-corner-all">
+								<input type="checkbox" id="timeFrame" value="">
 									<span id="timeFrameE">
 									<label for="after">$tstrings['at_datespan_before']:</label>
-									<input type="text" name="after" id="after" value="" class="text date ui-widget-content ui-corner-all">
-									<input type="checkbox" name="timeFrameAfter" id="timeFrameAfter" value="" class="checkbox ui-widget-content ui-corner-all">
+									<input type="text" id="after" value="">
+									<input type="checkbox" id="timeFrameAfter" value="">
 									<label for="before">$tstrings['at_datespan_after']:</label>
-									<span id="beforeE"><input type="text" name="before" id="before" value="" class="text date ui-widget-content ui-corner-all"></span>
+									<span id="beforeE"><input type="text" id="before" value="" class="text date ui-widget-content ui-corner-all"></span>
 									</span>
 								<br><label for="timerOffset">$tstrings['at_timer_offset']:</label>
-								<input type="checkbox" name="timerOffset" id="timerOffset" value="" class="checkbox ui-widget-content ui-corner-all">
+								<input type="checkbox" id="timerOffset" value="">
 									<span id="timerOffsetE">
 									<label for="tbefore">$tstrings['at_timer_offset_before']:</label>
-									<input type="text" name="tbefore" id="tbefore" value="" class="text number ui-widget-content ui-corner-all" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
+									<input type="text" id="tbefore" value="" class="text number ui-widget-content ui-corner-all" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
 									<label for="tafter">$tstrings['at_timer_offset_after']:</label>
-									<input type="text" name="tafter" id="tafter" value="" class="text number ui-widget-content ui-corner-all" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
+									<input type="text" id="tafter" value="" class="text number ui-widget-content ui-corner-all" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
 									</span>
 								
 								<br><label for="maxDuration">$tstrings['at_max_duration']:</label>
-								<input type="checkbox" name="maxDuration" id="maxDuration" value="" class="checkbox ui-widget-content ui-corner-all">
+								<input type="checkbox" id="maxDuration" value="">
 									<span id="maxDurationE">
 									<label for="maxduration"></label>
-									<select name="maxduration" id="maxduration">
+									<select id="maxduration">
 									</select>
 									</span>
 								
 								<br><label for="afterevent">$tstrings['at_after_event']:</label>
-								<select name="afterevent" id="afterevent">
+								<select id="afterevent">
 								<option value="" selected="selected">$tstrings['at_after_event_standard']</option>
 								<option value="none">$tstrings['at_after_event_nothing']</option>
 								<option value="standby">$tstrings['at_after_event_standby']</option>
@@ -99,24 +99,24 @@ fieldset > label
 								</select>
 								<br><br><span id="AftereventE">
 								<label for="timeSpanAE">$tstrings['at_event_timespan']:</label>
-								<input type="checkbox" name="timeSpanAE" id="timeSpanAE" value="" class="checkbox ui-widget-content ui-corner-all">
+								<input type="checkbox" id="timeSpanAE" value="">
 									<span id="timeSpanAEE">
 									<br><br><label for="from">$tstrings['at_event_timespan_begin']:</label>
-									<input type="text" name="aefrom" id="aefrom" value="" class="text ui-widget-content ui-corner-all">
+									<input type="text" id="aefrom" value="">
 									<br><br><label for="to">$tstrings['at_event_timespan_end']:</label>
-									<input type="text" name="aeto" id="aeto" value="" class="text ui-widget-content ui-corner-all">
+									<input type="text" id="aeto" value="">
 									</span>
 								</span>
 								
 								<br><label for="counter">$tstrings['at_max_counter']:</label>
-								<select name="counter" id="counter">
+								<select id="counter">
 								</select>
 								<span id="CounterE">
 								<label for="left">$tstrings['at_left']:</label>
-								<select name="left" id="left">
+								<select id="left">
 								</select>
 								<label for="counterFormat">$tstrings['at_reset_count']:</label>
-								<select id="counterFormat" name="counterFormat" size="1">
+								<select id="counterFormat" size="1">
 								<option value="" selected>$tstrings['at_never']</option>
 								<option value="%m">$tstrings['at_monthly']</option>
 								<option value="%U">$tstrings['at_weekly_sun']</option>
@@ -125,7 +125,7 @@ fieldset > label
 								</span>
 								
 								<br><label for="avoidDuplicateDescription">$tstrings['at_avoid_dup']:</label>
-								<select name="avoidDuplicateDescription" id="avoidDuplicateDescription">
+								<select id="avoidDuplicateDescription">
 								<option value="0" selected="selected">$tstrings['at_avoid_dup_no']</option>
 								<option value="1">$tstrings['at_avoid_dup_same_service']</option>
 								<option value="2">$tstrings['at_avoid_dup_any_service']</option>
@@ -133,10 +133,10 @@ fieldset > label
 								</select>
 								<br><label for="Location">$tstrings['at_location']:</label>
 								
-								<input type="checkbox" name="Location" id="Location" value="" class="checkbox ui-widget-content ui-corner-all">
+								<input type="checkbox" id="Location" value="">
 									<span id="LocationE">
 									<label for="location"></label>
-									<select name="location" id="location">
+									<select id="location">
 										#for $location in $locations
 											<option value="$location">$location</option>
 										#end for
@@ -145,26 +145,26 @@ fieldset > label
 									
 								<br><label for="Tags">$tstrings['at_tags']:</label>
 									<span id="TagsE">
-									<select data-placeholder="$tstrings['at_select_tags']" name="tags" id="tags" class="tags_select_box" multiple tabindex="16">
+									<select data-placeholder="$tstrings['at_select_tags']" id="tags" class="tags_select_box" multiple tabindex="16">
 									</select>
 									</span>
 								<br><label for="Bouquets">$tstrings['at_bouquets']:</label>
-								<input type="checkbox" name="Bouquets" id="Bouquets" value="" class="checkbox ui-widget-content ui-corner-all">
+								<input type="checkbox" id="Bouquets" value="">
 									<span id="BouquetsE">
-									<select data-placeholder="$tstrings['at_select_bouquets']" name="bouquets" id="bouquets" class="bq_select_box" multiple tabindex="16">
+									<select data-placeholder="$tstrings['at_select_bouquets']" id="bouquets" class="bq_select_box" multiple tabindex="16">
 									</select>
 									</span>
 								<br><label for="Channels">$tstrings['at_channels']:</label>
-								<input type="checkbox" name="Channels" id="Channels" value="" class="checkbox ui-widget-content ui-corner-all">
+								<input type="checkbox" id="Channels" value="">
 									<span id="ChannelsE">
-									<select data-placeholder="$tstrings['at_select_channels']" name="channels" id="channels" class="ch_select_box" multiple tabindex="16">
+									<select data-placeholder="$tstrings['at_select_channels']" id="channels" class="ch_select_box" multiple tabindex="16">
 									</select>
 									</span>
 								<br>
 								<br>
 								<div>
 								<label for="Filter">$tstrings['at_filter']:</label>
-								<input type="checkbox" name="Filter" id="Filter" value="" class="checkbox ui-widget-content ui-corner-all">
+								<input type="checkbox" id="Filter" value="" >
 									<span id="FilterE" style="display:inline-table">
 									<input type="button" id="AddFilter" value="$tstrings['at_add']"/>
 									<table id="filterlist">
@@ -197,7 +197,7 @@ fieldset > label
 									<option value="weekday">$tstrings['at_filter_weekday']</option>
 									</select>
 									</td>
-									<td><input type="checkbox" name="RemoveFilter" id="RemoveFilterID" value="" class="FR checkbox"> $tstrings['at_del']</td>
+									<td><input type="checkbox" id="RemoveFilterID" value="" class="FR checkbox"> $tstrings['at_del']</td>
 									</tr>
 									</table>
 									</span>
@@ -205,15 +205,15 @@ fieldset > label
 								
 								#if $hasVPS == 1
 								<br><label for="vps">$tstrings['vps']:</label>
-								<input type="checkbox" name="vps" id="vps" value="" class="checkbox ui-widget-content ui-corner-all">
+								<input type="checkbox" id="vps" value="">
 								<span id="vpsE">
 								<label for="vpssm">$tstrings['safe_mode']:</label>
-									<input type="checkbox" name="vpssm" id="vpssm" value="" class="checkbox ui-widget-content ui-corner-all">
+									<input type="checkbox" id="vpssm" value="">
 								</span>
 								#end if
 								#if $hasSeriesPlugin == 1
 								<br><label for="seriesplugin">$tstrings['at_label_series']:</label>
-								<input type="checkbox" name="series_labeling" id="series_labeling" value="" class="checkbox ui-widget-content ui-corner-all">
+								<input type="checkbox" id="series_labeling" value="">
 								#end if
 							</fieldset>
 						</form>
@@ -265,39 +265,39 @@ fieldset > label
 <form>
 <fieldset>
 <label for="ats_autopoll">$tstrings['ats_autopoll']:</label>
-<input type="checkbox" name="ats_autopoll" id="ats_autopoll" value="" class="checkbox ui-widget-content ui-corner-all">
+<input type="checkbox" id="ats_autopoll" value="" >
 <label for="ats_interval">$tstrings['ats_interval']:</label>
-<input type="text" size="5" name="ats_interval" id="ats_interval" class="text ui-widget-content ui-corner-all">
+<input type="text" size="5" id="ats_interval">
 <label for="ats_maxdaysinfuture">$tstrings['ats_maxdaysinfuture']:</label>
-<input type="text" size="5" name="ats_maxdaysinfuture" id="ats_maxdaysinfuture" class="text ui-widget-content ui-corner-all">
+<input type="text" size="5" id="ats_maxdaysinfuture">
 <br><label for="ats_try_guessing">$tstrings['ats_try_guessing']:</label>
-<input type="checkbox" name="ats_try_guessing" id="ats_try_guessing" value="" class="checkbox ui-widget-content ui-corner-all">
+<input type="checkbox" id="ats_try_guessing" value="" >
 <label for="ats_fastscan">$tstrings['ats_fastscan']:</label>
-<input type="checkbox" name="ats_fastscan" id="ats_fastscan" value="" class="checkbox ui-widget-content ui-corner-all">
+<input type="checkbox" id="ats_fastscan" value="" >
 <label for="ats_show_in_extensionsmenu">$tstrings['ats_show_in_extensionsmenu']:</label>
-<input type="checkbox" name="ats_show_in_extensionsmenu" id="ats_show_in_extensionsmenu" value="" class="checkbox ui-widget-content ui-corner-all">
+<input type="checkbox" id="ats_show_in_extensionsmenu" value="" >
 <br><label for="ats_disabled_on_conflict">$tstrings['ats_disabled_on_conflict']:</label>
-<input type="checkbox" name="ats_disabled_on_conflict" id="ats_disabled_on_conflict" value="" class="checkbox ui-widget-content ui-corner-all">
+<input type="checkbox" id="ats_disabled_on_conflict" value="" >
 <label for="ats_addsimilar_on_conflict">$tstrings['ats_addsimilar_on_conflict']:</label>
-<input type="checkbox" name="ats_addsimilar_on_conflict" id="ats_addsimilar_on_conflict" value="" class="checkbox ui-widget-content ui-corner-all">
+<input type="checkbox" id="ats_addsimilar_on_conflict" value="" >
 <br><label for="ats_notifconflict">$tstrings['ats_notifconflict']:</label>
-<input type="checkbox" name="ats_notifconflict" id="ats_notifconflict" value="" class="checkbox ui-widget-content ui-corner-all">
+<input type="checkbox" id="ats_notifconflict" value="" >
 <label for="ats_notifsimilar">$tstrings['ats_notifsimilar']:</label>
-<input type="checkbox" name="ats_notifsimilar" id="ats_notifsimilar" value="" class="checkbox ui-widget-content ui-corner-all">
+<input type="checkbox" id="ats_notifsimilar" value="" >
 <br><label for="ats_add_autotimer_to_tags">$tstrings['ats_add_autotimer_to_tags']:</label>
-<input type="checkbox" name="ats_add_autotimer_to_tags" id="ats_add_autotimer_to_tags" value="" class="checkbox ui-widget-content ui-corner-all">
+<input type="checkbox" id="ats_add_autotimer_to_tags" value="" >
 <label for="ats_add_name_to_tags">$tstrings['ats_add_name_to_tags']:</label>
-<input type="checkbox" name="ats_add_name_to_tags" id="ats_add_name_to_tags" value="" class="checkbox ui-widget-content ui-corner-all">
+<input type="checkbox" id="ats_add_name_to_tags" value="" >
 
 <br><label for="ats_refresh">$tstrings['ats_refresh']:</label>
-<select id="ats_refresh" name="ats_refresh" size="1">
+<select id="ats_refresh" size="1">
 				<option value="none" selected="selected">$tstrings['ats_refresh_none']</option>
 				<option value="auto" selected="selected">$tstrings['ats_refresh_auto']</option>
 				<option value="all" selected="selected">$tstrings['ats_refresh_all']</option>
 </select>
 
 <label for="ats_editor">$tstrings['ats_editor']</label>
-<select id="ats_editor" name="ats_editor" size="1">
+<select id="ats_editor" size="1">
 			<option value="plain" selected="selected">$tstrings['ats_editor_plain']</option>
 			<option value="wizzard" selected="selected">$tstrings['ats_editor_wizzard']</option>
 </select>

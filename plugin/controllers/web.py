@@ -1162,10 +1162,10 @@ class WebController(BaseController):
 	def P_css(self, request):
 		request.setHeader("content-type", "text/css")
 		ret = {}
+		theme = 'original'
 		if config.OpenWebif.webcache.theme.value:
-			ret['theme'] = config.OpenWebif.webcache.theme.value
-		else:
-			ret['theme'] = 'redmond'
+			theme = config.OpenWebif.webcache.theme.value
+		ret['theme'] = theme
 		return ret
 
 	def P_setmepgmode(self, request):

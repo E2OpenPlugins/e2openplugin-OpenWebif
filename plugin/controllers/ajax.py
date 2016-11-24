@@ -214,7 +214,10 @@ class AjaxController(BaseController):
 		}
 		ret['configsections'] = getConfigsSections()['sections']
 		if config.OpenWebif.webcache.theme.value:
-			ret['themes'] = config.OpenWebif.webcache.theme.choices
+			if os.path.exists(getPublicPath('themes')):
+				ret['themes'] = config.OpenWebif.webcache.theme.choices
+			else:
+				ret['themes'] = ['original','clear']
 			ret['theme'] = config.OpenWebif.webcache.theme.value
 		else:
 			ret['themes'] = []

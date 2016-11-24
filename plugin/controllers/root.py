@@ -37,12 +37,17 @@ class RootController(BaseController):
 		self.putChild("ajax", AjaxController(session))
 		self.putChild("file", FileController(session))
 		self.putChild("grab", grabScreenshot(session))
-		self.putChild("mobile", MobileController(session))
+		if os.path.exists(getPublicPath('mobile')):
+			self.putChild("mobile", MobileController(session))
 		self.putChild("js", static.File(getPublicPath() + "/js"))
 		self.putChild("css", static.File(getPublicPath() + "/css"))
 		self.putChild("static", static.File(getPublicPath() + "/static"))
 		self.putChild("images", static.File(getPublicPath() + "/images"))
 		self.putChild("fonts", static.File(getPublicPath() + "/fonts"))
+		if os.path.exists(getPublicPath('themes')):
+			self.putChild("themes", static.File(getPublicPath() + "/themes"))
+		if os.path.exists(getPublicPath('webtv')):
+			self.putChild("webtv", static.File(getPublicPath() + "/webtv"))
 		self.putChild("ipkg", IpkgController(session))
 		self.putChild("autotimer", ATController(session))
 		self.putChild("serienrecorder", SRController(session))
@@ -66,7 +71,7 @@ class RootController(BaseController):
 		if "mode" in request.args.keys():
 			mode = request.args["mode"][0]
 		uagent = request.getHeader('User-Agent')
-		if uagent and mode != 'fullpage':
+		if uagent and mode != 'fullpage' and os.path.exists(getPublicPath('mobile')):
 			if uagent.lower().find("iphone") != -1 or uagent.lower().find("ipod") != -1 or uagent.lower().find("blackberry") != -1 or uagent.lower().find("mobile") != -1:
 				request.setHeader("Location", "/mobile/")
 				request.setResponseCode(http.FOUND)
