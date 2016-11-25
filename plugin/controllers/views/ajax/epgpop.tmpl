@@ -8,7 +8,8 @@
 <title>No items found.</title>
 </head>
 <body style="background: #FFFFFF; scrollbar: auto;">
-<img src="../images/not_found.png" title="No items found" border="0">
+<img src="../images/not_found.jpg" title="No items found" border="0" style="display:none;" id="ajpg">
+<img src="../themes/not_found.png" title="No items found" border="0" onerror='\$(this).hide();\$("#ajpg").show();'>
 </body>
 </html>
 #else

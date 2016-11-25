@@ -1,7 +1,8 @@
 #from urllib import quote
 #from Plugins.Extensions.OpenWebif.local import tstrings
 #if len($events) == 0
-<img src="images/not_found.png" title="No items found" border="0">
+<img src="images/not_found.jpg" title="No items found" border="0" style="display:none;" id="ajpg">
+<img src="themes/not_found.png" title="No items found" border="0" onerror='\$(this).hide();\$("#ajpg").show();'>
 #else
 <style>
 .tb { display:inline-block; margin-left:3px;}
