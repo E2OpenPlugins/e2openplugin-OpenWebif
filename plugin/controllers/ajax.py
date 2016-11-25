@@ -188,9 +188,6 @@ class AjaxController(BaseController):
 		movies['sort'] = sorttype
 		return movies
 
-	def P_workinprogress(self, request):
-		return {}
-
 	def P_radio(self, request):
 		return {}
 
