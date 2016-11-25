@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2016-11-24 15:30+0100\n"
-"PO-Revision-Date: 2016-11-24 15:30+0100\n"
-"Last-Translator: neoatomic <neoatomic@users.noreply.github.com>\n"
+"POT-Creation-Date: 2016-11-25 17:42+0200\n"
+"PO-Revision-Date: 2016-11-25 17:44+0200\n"
+"Last-Translator: rimas\n"
 "Language-Team: Estonian\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 
 #: plugin/controllers/BouquetEditor.py:82
 msgid "one two three four unknown command"
-msgstr "üks kaks kolm tundmatu käsk"
+msgstr "üks kaks kolm neli tundmatu käsk"
 
 #: plugin/controllers/BouquetEditor.py:88
 #: plugin/controllers/BouquetEditor.py:149
@@ -29,7 +29,7 @@ msgstr "Lemmiknimekiri %s loodud."
 
 #: plugin/controllers/BouquetEditor.py:120
 msgid "Get mutable list for new created bouquet failed!"
-msgstr "Uue lemmiknimekirja jaoks muutuva nimekirja hankimine nurjus!"
+msgstr "Uue lemmiknimekirja jaoks muudetava nimekirja hankimine nurjus!"
 
 #: plugin/controllers/BouquetEditor.py:123
 #, python-format
@@ -283,15 +283,15 @@ msgstr "EPG värskendus"
 
 #: plugin/controllers/ipkg.py:238
 msgid "Error upload File"
-msgstr ""
+msgstr "Viga faili üleslaadimisel"
 
 #: plugin/controllers/ipkg.py:241
 msgid "wrong filetype"
-msgstr ""
+msgstr "vale failitüüp"
 
 #: plugin/controllers/ipkg.py:255
 msgid "Error writing File"
-msgstr ""
+msgstr "Viga faili kirjutamisel"
 
 #: plugin/controllers/models/info.py:58
 msgid "SLAAC"
@@ -329,12 +329,12 @@ msgstr "pole/IPv4-ainult võrk"
 
 #: plugin/controllers/models/info.py:287 plugin/controllers/models/info.py:290
 msgid "kB"
-msgstr ""
+msgstr "kB"
 
 #: plugin/controllers/models/info.py:291 plugin/controllers/models/info.py:414
 #, python-format
 msgid "%s free / %s total"
-msgstr "%s vaba / %s kokku"
+msgstr "Vaba %s / kokku %s"
 
 #: plugin/controllers/models/info.py:326 plugin/local.py:65
 msgid "Chipset"
@@ -361,11 +361,11 @@ msgstr "TB"
 
 #: plugin/controllers/models/info.py:442
 msgid "r/w"
-msgstr ""
+msgstr "r/w"
 
 #: plugin/controllers/models/info.py:446
 msgid "r/o"
-msgstr ""
+msgstr "r/o"
 
 #: plugin/controllers/models/message.py:33
 msgid "Message sent successfully!"
@@ -2075,7 +2075,7 @@ msgstr "Saadet ei leitud"
 
 #: plugin/local.py:413
 msgid "Show Picon in channel list"
-msgstr "Kuva pikon kanalinimekirjas"
+msgstr "Kuva kanalinimekirjas pikonid"
 
 #: plugin/local.py:415
 msgid "OpenWebif Browser Settings"
@@ -2115,7 +2115,7 @@ msgstr "Ajakava"
 
 #: plugin/local.py:425
 msgid "Web TV"
-msgstr ""
+msgstr "Veebi TV"
 
 #: plugin/local.py:427
 msgid "Link Speed"
@@ -2131,7 +2131,7 @@ msgstr "kasutades"
 
 #: plugin/plugin.py:103
 msgid "OpenWebif url: http://yourip:port"
-msgstr "OpenWebif url: http://sinuip:port"
+msgstr "OpenWebif url: http://sinu_ip:port"
 
 #: plugin/plugin.py:117
 msgid "OpenWebInterface Enabled"
@@ -2143,7 +2143,7 @@ msgstr "HTTP port"
 
 #: plugin/plugin.py:125
 msgid "Enable HTTP Authentication"
-msgstr "Http voogude autentimine"
+msgstr "HTTP autentimine"
 
 #: plugin/plugin.py:126
 msgid "Enable HTTPS"
@@ -2155,7 +2155,7 @@ msgstr "HTTPS port"
 
 #: plugin/plugin.py:129
 msgid "Enable HTTPS Authentication"
-msgstr "Https voogude autentimine"
+msgstr "HTTPS autentimine"
 
 #: plugin/plugin.py:130
 msgid "Require client cert for HTTPS"
@@ -2163,19 +2163,19 @@ msgstr "HTTPS nõuab kliendi serti"
 
 #: plugin/plugin.py:132
 msgid "Enable Authentication for streaming"
-msgstr "Luba voogesituse autentimine"
+msgstr "Voogesituse autentimine"
 
 #: plugin/plugin.py:133
 msgid "Disable access for user root"
-msgstr "Keela juurdepääs kasutaja juurkataloogi"
+msgstr "Keela juurkasutajale ligipääs"
 
 #: plugin/plugin.py:135
 msgid "Without auth only local access is allowed!"
-msgstr ""
+msgstr "Autentimata on lubatud ainult kohalik aadress!"
 
 #: plugin/plugin.py:136
 msgid "Enable access from VPNs"
-msgstr ""
+msgstr "Luba VPN ligipääs"
 
 #: plugin/plugin.py:137
 msgid "Enable Parental Control"
@@ -2183,7 +2183,7 @@ msgstr "Luba lapselukk"
 
 #: plugin/plugin.py:138
 msgid "Add service name to stream information"
-msgstr "Lisa kanalinimi voo infosse"
+msgstr "Lisa kanali nimi voo infosse"
 
 #: plugin/plugin.py:140
 msgid "Character encoding for EPG data"
