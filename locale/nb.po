@@ -1255,7 +1255,7 @@ msgid "Bouquet Editor"
 msgstr "Kanalliste redigerer"
 
 #: plugin/local.py:183
-msgid "(shift + click for long pressure)"
+msgid "(Shift + Click for Long Press)"
 msgstr "(shift + klikk for langt tastetrykk)"
 
 #: plugin/local.py:184
