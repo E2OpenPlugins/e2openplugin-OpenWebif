@@ -40,6 +40,7 @@ class RootController(BaseController):
 		self.putChild("grab", grabScreenshot(session))
 		if os.path.exists(getPublicPath('mobile')):
 			self.putChild("mobile", MobileController(session))
+			self.putChild("m", static.File(getPublicPath() + "/mobile"))
 		self.putChild("js", static.File(getPublicPath() + "/js"))
 		self.putChild("css", static.File(getPublicPath() + "/css"))
 		self.putChild("static", static.File(getPublicPath() + "/static"))

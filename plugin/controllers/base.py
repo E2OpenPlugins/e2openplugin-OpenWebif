@@ -172,7 +172,8 @@ class BaseController(resource.Resource):
 					self.error404(request)
 				else:
 					if self.isMobile:
-						out = self.loadTemplate("head", self.path, args) + out
+						head = self.loadTemplate('mobile/head', 'head', [])
+						out = head + out
 					elif self.withMainTemplate:
 						args = self.prepareMainTemplate(request)
 						args["content"] = out
@@ -300,13 +301,12 @@ class BaseController(resource.Resource):
 
 		# TODO : TEST
 		try:
+			# this will currenly only work if NO Webiterface plugin installed
 			from Plugins.Extensions.WebInterface.WebChilds.Toplevel import loaded_plugins
 			for plugins in loaded_plugins:
 				if plugins[0] in ["fancontrol"]:
 					try:
-						url = "http://" + ip + ":" + str(config.plugins.Webinterface.http.port.value) + "/"
-						url = url + plugins[0]
-						extras.append({ 'key': url, 'description': plugins[2] , 'nw':'2'})
+						extras.append({ 'key': plugins[0], 'description': plugins[2] , 'nw':'2'})
 					except KeyError:
 						pass
 		except ImportError:
