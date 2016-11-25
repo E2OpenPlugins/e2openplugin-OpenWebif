@@ -215,6 +215,10 @@
 	</div>
 	<div id="editTimerForm" title="$tstrings['edit_timer']"></div>
 <script type="text/javascript">
+var h = window.innerHeight - 210;
+document.write('<style> #tvcontentmain { height: '+h.toString()+'px; } </style>');
+h=h-70;
+document.write('<style> #tvcontent,#movies,#timer { height: '+h.toString()+'px; } </style>');
 \$(document).ready(function() {
 	\$("#remote_container").load("static/remotes/${remote}.html");
 	directlink();
