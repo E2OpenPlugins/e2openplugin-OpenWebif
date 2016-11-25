@@ -1258,7 +1258,7 @@ msgid "Bouquet Editor"
 msgstr "Επεξεργασία Μπουκέτων"
 
 #: plugin/local.py:183
-msgid "(shift + click for long pressure)"
+msgid "(Shift + Click for Long Press)"
 msgstr "(shift + κλικ για παρατεταμένο πάτημα)"
 
 #: plugin/local.py:184
