@@ -20,6 +20,7 @@ from base import BaseController
 from time import mktime, localtime
 from models.locations import getLocations
 from twisted.web.resource import Resource
+import os
 
 try:
 	from boxbranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
@@ -296,7 +297,7 @@ class AjaxController(BaseController):
 		else:
 			auth=''
 		vxgenabled = False
-		if fileExists(getPublicPath("/js/media_player.pexe")):
+		if fileExists(getPublicPath("/webtv/media_player.pexe")):
 			vxgenabled = True
 		transcoding = getTranscodingSupport()
 		transcoder_port = 0

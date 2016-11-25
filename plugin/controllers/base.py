@@ -298,12 +298,15 @@ class BaseController(resource.Resource):
 		except ImportError:
 			pass
 
+		# TODO : TEST
 		try:
 			from Plugins.Extensions.WebInterface.WebChilds.Toplevel import loaded_plugins
 			for plugins in loaded_plugins:
 				if plugins[0] in ["fancontrol"]:
 					try:
-						extras.append({ 'key': plugins[0], 'description': plugins[2] , 'if':'1'})
+						url = "http://" + ip + ":" + str(config.plugins.Webinterface.http.port.value) + "/"
+						url = url + plugins[0]
+						extras.append({ 'key': url, 'description': plugins[2] , 'nw':'2'})
 					except KeyError:
 						pass
 		except ImportError:

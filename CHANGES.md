@@ -1,5 +1,11 @@
-## Version 1.0.4
+## Version 1.1.0
 ## (in development)
+* reduce package size
+* allow remove mobile, webtv, themes without any impact to reduce the package size again
+-> remove the folder /public/webtv and/or mobile and/or themes 
+* add fancontrol2 webif to extras
+
+## Version 1.0.4
 * improve access security
 * add package manager
 * use jquery UI offline

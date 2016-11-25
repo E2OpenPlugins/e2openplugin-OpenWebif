@@ -155,9 +155,11 @@
 				<li><a href='#' onclick="load_maincontent('ajax/boxinfo'); return false;">$tstrings["box_info"]</a></li>
 				#for $extra in $extras
 					#if $extra.has_key('nw')
+						#if $extra["nw"] == "1"
 						<li><a href='$extra["key"]' target='_blank'>$extra["description"]</a></li>
-					#elif $extra.has_key('if')
-						<li><a href='#' onclick="load_maincontent('$extra["key"]'); return false;">$extra["description"]</a></li>
+						#else
+						<li><a href='#' onclick="_epg_pop('$extra["key"]'); return false;">$extra["description"]</a></li>
+						#end if
 					#else
 						<li><a href='#' onclick="load_maincontent('$extra["key"]'); return false;">$extra["description"]</a></li>
 					#end if
