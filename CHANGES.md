@@ -6,6 +6,8 @@
 * add fancontrol2 webif to extras / #453
 * improve mutliepg / #462
 * improve channel list / #461
+* now button in timeline multiepg / #466
+* show timer in timeline multiepg / #460
 
 ## Version 1.0.4
 * improve access security

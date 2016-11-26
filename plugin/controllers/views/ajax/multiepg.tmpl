@@ -34,6 +34,10 @@
 <div id="pt0" class="float plus ui-state-default" data-day="201">06:00</div>
 <div id="pt1" class="float plus ui-state-default" data-day="202">12:00</div>
 <div id="pt2" class="float plus ui-state-default" data-day="203">20:00</div>
+#if $day == 0
+<div id="pt3" class="float">&nbsp;</div>
+<div id="pt4" class="float plus ui-state-default" data-day="200">$tstrings['now']</div>
+#end if
 #end if
 <div class="float plus ui-state-default lbl">&nbsp;$tstrings['display_mode']:&nbsp;</div>
 <div class="float plus ui-state-default #if $mode==1 then 'ui-state-active' else '' #" data-day="101">$tstrings['tv_guide']</div>
@@ -60,9 +64,9 @@
 .event a,.event > span { padding: 0 0 0 10px; height:48px; width:100%; display: block; white-space: normal; overflow: hidden; }
 .event a:link:hover { text-decoration: none; }
 .ename { display: block; width: 100%; float: left; font-weight: 200; line-height: 1,4; font-size: 14px; }
-.etime { display: inline-block; padding-right: 20px; font-weight: 200; line-height: 1,4; font-size: 12px; }
+.etime,.etimer  { display: inline-block; padding-right: 20px; font-weight: 200; line-height: 1,4; font-size: 12px; }
 .event { display: inline-block; border-width: 0px 0px 0px 1px; }
-.event .ename,.event .etime { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.event .ename,.event .etime,.event .etimer { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 </style>
 
 #set $now = $mktime($localtime())
@@ -149,9 +153,7 @@
 					<li class="event" style="width:600px;" data-dt="$strftime("%H:%M", $localtime($t))">
 						<span class="ui-widget-header nobg">
 							<span class="ename">$tstrings[("day_" + ($strftime("%w",$localtime($t))))], $strftime('%d.%m.', $localtime($t))</span>
-							<span class="etime">
-								<span>$strftime("%H:%M", $localtime($t))</span>
-							</span>
+							<span class="etime">$strftime("%H:%M", $localtime($t))</span>
 						</span>
 					</li>
 				#end for
@@ -187,10 +189,10 @@
 					<li class="event" data-ref="$ref" data-id="${event.id}" style="width:${event.duration/6}px;" >
 						<a href="#" class="ui-widget-content ${iscurr}" title="$event['title']">
 						<span class="ename">$event['title']</span>
-						<span class="etime">
-						<span>$strftime("%H:%M", $localtime($event['begin_timestamp']))
-						</span>
-						</span>
+						<span class="etime">$strftime("%H:%M", $localtime($event['begin_timestamp']))</span>
+						#if $event['timerStatus'] != ''
+						<span class="etimer $event['timerStatus']">$tstrings['timer']</span>
+						#end if
 						</a>
 					</li>
 					#set $c = $c + 1
@@ -278,10 +280,10 @@ fixTableHeight();
 \$(".plus").click(function() {
 	var day = \$(this).data("day");
 	if (day != undefined) {
-		if (day > 200)
+		if (day > 199)
 		{
 			var d = day - 200;
-			var dt = \$(this).html();
+			var dt = (d==0) ? '' : \$(this).html();
 			var pos = 0;
 			\$('#tblinner').scrollLeft(0);
 			
@@ -293,6 +295,12 @@ fixTableHeight();
 					}
 				}
 			});
+			
+			if(d=='')
+			{
+				var l = \$(".timetable-now").css('left');
+				pos = parseInt(l.replace('px',''));
+			}
 			
 			if(pos>0)
 			{
@@ -320,15 +328,13 @@ fixTableHeight();
 });
 if(!timeredit_initialized)
 	\$('#editTimerForm').load('/ajax/edittimer');
+
 if(\$("#header").is(':hidden')) { 
-	\$('#compressmepg').show();
-	\$('#refreshmepg2').show();
+	\$('#compressmepg').show();\$('#refreshmepg2').show();
 }
 if(mepgdirect==1) {
-	mepgdirect=0;
-	\$("#expandmepg").click();
+	mepgdirect=0;\$("#expandmepg").click();
 }
-
 \$(".togglescroll").click(function() {
 
 	if(\$('#tblinner').css('overflow-y')=='hidden') {
@@ -341,9 +347,7 @@ if(mepgdirect==1) {
 		SetLSValue('MultiEPGScrollStyle','0');
 	}
 });
-
 #if $mode == 2
-
 \$(function() { 
 	
 	if(GetLSValue('MultiEPGScrollStyle','0')=='0') {
@@ -357,8 +361,5 @@ if(mepgdirect==1) {
 	}
 
 });
-
 #end if
-
 </script>
-

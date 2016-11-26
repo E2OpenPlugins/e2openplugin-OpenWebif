@@ -609,8 +609,8 @@ font-size:16px;font-weight:bold;opacity:0.3;
 .tbl { display:table; }
 .tbl div { display:table-row; }
 .tbl div div { display:table-cell; }
-#tbl1 .timer { color :#eb0208};
-#tbl1 .timer.disabled { color: #ffea0e; }
+.timer { color :#eb0208;}
+.timer.disabled {text-decoration:line-through;}
 
 .osdch {font-weight:bold;text-decoration:none;}
 
