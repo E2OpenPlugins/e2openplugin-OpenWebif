@@ -3,7 +3,9 @@
 * reduce package size
 * allow remove mobile, webtv, themes without any impact to reduce the package size again
 -> remove the folder /public/webtv and/or mobile and/or themes 
-* add fancontrol2 webif to extras
+* add fancontrol2 webif to extras / #453
+* improve mutliepg / #462
+* improve channel list / #461
 
 ## Version 1.0.4
 * improve access security

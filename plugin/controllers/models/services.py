@@ -367,7 +367,8 @@ def getChannels(idbouquet, stype):
 				chan['next_ev_id'] = nextevent[0][3]
 				chan['next_idp'] = "nextd" + str(idp)
 				idp += 1
-		ret.append(chan)
+		if int(channel[0].split(":")[1]) != 832:
+			ret.append(chan)
 	return { "channels": ret }
 
 def getServices(sRef, showAll = True, showHidden = False):

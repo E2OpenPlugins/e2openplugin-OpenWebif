@@ -585,7 +585,7 @@ html, body
 .ui-checkboxradio-icon { display:none; } 
 
 a.focus {outline: none;}
-#expandmepg,#compressmepg,#refreshmepg {float : right;display:none;}
+#expandmepg,#compressmepg,#refreshmepg,#refreshmepg2 {float : right;display:none;}
 #expandmepgi,#compressmepgi,#refreshmepgi {font-size: 18px; float : right;margin-top: 5px;margin-right: 5px;margin-left: 5px;}
 .ui-selectmenu-text {margin-left:5px; }
 

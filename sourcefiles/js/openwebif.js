@@ -1305,12 +1305,14 @@ function InitAccordeon(obj)
 
 function RefreshMEPG()
 {
+	var full = ($("#compressmepg").is(":visible"));
 	var bq = '';
 	var lbq=GetLSValue('lastmbq','');
 	if(lbq!='')
 		bq= "?bref=" + lbq;
 	$("#tvcontent").html(loadspinner).load('ajax/multiepg' + bq,function() {
-		ExpandMEPG();
+		if(full)
+			ExpandMEPG();
 	});
 }
 
@@ -1318,7 +1320,7 @@ function ExpandMEPG()
 {
 	$("#expandmepg").hide();
 	$("#compressmepg").show();
-	$("#refreshmepg").show();
+	$("#refreshmepg2").show();
 	$("#header").hide();
 	$("#leftmenu").hide();
 	$('#content').css('margin-left', '5px')
@@ -1331,9 +1333,11 @@ function ExpandMEPG()
 
 function CompressMEPG()
 {
-	$("#refreshmepg").hide();
+	$("#refreshmepg").show();
 	$("#expandmepg").show();
 	$("#compressmepg").hide();
+	$("#refreshmepg").show();
+	$("#refreshmepg2").hide();
 	$("#header").show();
 	$("#leftmenu").show();
 	$('#content').css('margin-left', '185px')
@@ -1363,6 +1367,7 @@ function InitBouquets(tv)
 	if (tv===true) {
 		$('#btn0').click(function(){
 			$("#expandmepg").hide();
+			$("#refreshmepg").hide();
 			$("#tvcontent").html(loadspinner).load("ajax/current");
 		});
 		$('#btn5').click(function(){
@@ -1373,6 +1378,7 @@ function InitBouquets(tv)
 				bq= "?bref=" + lbq;
 			$("#tvcontent").html(loadspinner).load('ajax/multiepg' + bq);
 			$("#expandmepg").show();
+			$("#refreshmepg").show();
 		});
 
 	} 
@@ -1384,18 +1390,22 @@ function InitBouquets(tv)
 	}
 	$('#btn1').click(function(){
 		$("#expandmepg").hide();
+		$("#refreshmepg").hide();
 		$("#tvcontent").html(loadspinner).load("ajax/bouquets" + mode);
 	});
 	$('#btn2').click(function(){
 		$("#expandmepg").hide();
+		$("#refreshmepg").hide();
 		$("#tvcontent").html(loadspinner).load("ajax/providers" + mode);
 	});
 	$('#btn3').click(function(){
 		$("#expandmepg").hide();
+		$("#refreshmepg").hide();
 		$("#tvcontent").load("ajax/satellites" + mode);
 	});
 	$('#btn4').click(function(){
 		$("#expandmepg").hide();
+		$("#refreshmepg").hide();
 		$("#tvcontent").html(loadspinner).load("ajax/channels" + mode);
 	});
 	

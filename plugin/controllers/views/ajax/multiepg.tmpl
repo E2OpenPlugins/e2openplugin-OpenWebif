@@ -40,7 +40,7 @@
 <div class="float plus ui-state-default #if $mode==2 then 'ui-state-active' else '' #" data-day="102">$tstrings['timeline']</div>
 
 <div id="compressmepg" onclick="CompressMEPG();"><i id="compressmepgi" class="fa fa-compress link" aria-hidden="true"></i></div>
-<div id="refreshmepg" onclick="RefreshMEPG();"><i id="refreshmepgi" class="fa fa-refresh link" aria-hidden="true"></i></div>
+<div id="refreshmepg2" onclick="RefreshMEPG();"><i id="refreshmepgi" class="fa fa-refresh link" aria-hidden="true"></i></div>
 	<br clear="all">
 
 #for $bq in $bouquets
@@ -322,7 +322,7 @@ if(!timeredit_initialized)
 	\$('#editTimerForm').load('/ajax/edittimer');
 if(\$("#header").is(':hidden')) { 
 	\$('#compressmepg').show();
-	\$('#refreshmepg').show();
+	\$('#refreshmepg2').show();
 }
 if(mepgdirect==1) {
 	mepgdirect=0;
