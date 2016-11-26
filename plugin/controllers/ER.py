@@ -20,7 +20,7 @@ class ERController(resource.Resource):
 			EPGRefreshListServicesResource, EPGRefreshAddRemoveServiceResource, \
 			EPGRefreshStartRefreshResource, API_VERSION
 		except ImportError:
-			print "ER plugin not found"
+			print "EPG Refresh Plugin not found"
 			return
 		self.putChild('get', EPGRefreshSettingsResource())
 		self.putChild('set', EPGRefreshChangeSettingsResource())

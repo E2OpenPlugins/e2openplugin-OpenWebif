@@ -299,14 +299,11 @@ class BaseController(resource.Resource):
 		except ImportError:
 			pass
 
-		# TODO : TEST
 		try:
-			print "DEBUG plugin0"
-			# this will currenly only work if NO Webiterface plugin installed
+			# this will currenly only works if NO Webiterface plugin installed
+			# TODO: test if webinterface AND openwebif installed
 			from Plugins.Extensions.WebInterface.WebChilds.Toplevel import loaded_plugins
 			for plugins in loaded_plugins:
-				print "DEBUG plugin1 %s" % plugins[0]
-				print "DEBUG plugin2 %s" % plugins[2]
 				if plugins[0] in ["fancontrol"]:
 					try:
 						extras.append({ 'key': plugins[0], 'description': plugins[2] , 'nw':'2'})

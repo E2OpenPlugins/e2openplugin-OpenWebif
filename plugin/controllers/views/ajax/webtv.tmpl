@@ -83,8 +83,7 @@
 #end if
 <script type="text/javascript" src="/webtv/webtv.js"></script>
 <script type="text/javascript">
-var playerobj = new PlayerObj();
-\$(function() { playerobj.setup($vxgenabled,'$auth');});
+\$(function() { var playerObj=new PlayerObj(); playerObj.setup(('$vxgenabled' === 'True'),'$auth')});
 </script>
 <link rel="stylesheet" type="text/css" href="/css/chosen.min.css" />
 #if $vxgenabled
