@@ -255,6 +255,9 @@ def getAllInfo():
 		elif procmodel == "hd2400":
 			brand = "Mut@nt"
 			model = "hd2400"
+		elif procmodel == "hd51":
+			brand = "Mut@nt"
+			model = "hd51"
 		elif procmodel == "arivalink200":
 			brand = "Ferguson"
 			model = "Ariva @Link 200"
@@ -403,7 +406,7 @@ def getAllInfo():
 		remote = "xpeedlx"
 	elif procmodel in ("adb2850", "adb2849", "bska", "bsla", "bxzb", "bzzb", "esi88", "uhd88", "dsi87", "arivalink200"):
 		remote = "nbox"
-	elif procmodel in ("hd1100", "hd1200", "hd1265"):
+	elif procmodel in ("hd1100", "hd1200", "hd1265", "hd51"):
 		remote = "hd1x00"
 	elif procmodel == "hd2400":
 		remote = "hd2400"
