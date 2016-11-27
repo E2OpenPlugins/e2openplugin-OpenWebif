@@ -1,16 +1,13 @@
 #filter WebSafe
 #from Plugins.Extensions.OpenWebif.local import tstrings
+#raw
 <style>
-  optgroup {font-weight: bolder;}
-fieldset > label
-{
-	-webkit-margin-top-collapse: separate;
-	margin-top: .5em;
-	margin-bottom: 1em;
-	display: inline-block;
-}
+optgroup{font-weight:bolder;}
+fieldset > label{-webkit-margin-top-collapse: separate;margin-top: .5em;margin-bottom: 1em;display: inline-block;}
+input#to,input#from,.text.number {width:60px;}
+.text.date {width:80px;}
 </style>
-
+#end raw
 <div id="content_main" style="min-height: 500px;background-image:none;" class="ui-widget-content">
 	<div id="info">
 		<div style="display: table;width: 100%;">
@@ -67,20 +64,19 @@ fieldset > label
 								<input type="checkbox" id="timeFrame" value="">
 									<span id="timeFrameE">
 									<label for="after">$tstrings['at_datespan_before']:</label>
-									<input type="text" id="after" value="">
+									<input type="text" id="after" value="" class="text date">
 									<input type="checkbox" id="timeFrameAfter" value="">
 									<label for="before">$tstrings['at_datespan_after']:</label>
-									<span id="beforeE"><input type="text" id="before" value="" class="text date ui-widget-content ui-corner-all"></span>
+									<span id="beforeE"><input type="text" id="before" value="" class="text date"></span>
 									</span>
 								<br><label for="timerOffset">$tstrings['at_timer_offset']:</label>
 								<input type="checkbox" id="timerOffset" value="">
 									<span id="timerOffsetE">
 									<label for="tbefore">$tstrings['at_timer_offset_before']:</label>
-									<input type="text" id="tbefore" value="" class="text number ui-widget-content ui-corner-all" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
+									<input type="text" id="tbefore" value="" class="text number" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
 									<label for="tafter">$tstrings['at_timer_offset_after']:</label>
-									<input type="text" id="tafter" value="" class="text number ui-widget-content ui-corner-all" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
+									<input type="text" id="tafter" value="" class="text number" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
 									</span>
-								
 								<br><label for="maxDuration">$tstrings['at_max_duration']:</label>
 								<input type="checkbox" id="maxDuration" value="">
 									<span id="maxDurationE">
@@ -88,7 +84,6 @@ fieldset > label
 									<select id="maxduration">
 									</select>
 									</span>
-								
 								<br><label for="afterevent">$tstrings['at_after_event']:</label>
 								<select id="afterevent">
 								<option value="" selected="selected">$tstrings['at_after_event_standard']</option>
@@ -107,7 +102,6 @@ fieldset > label
 									<input type="text" id="aeto" value="">
 									</span>
 								</span>
-								
 								<br><label for="counter">$tstrings['at_max_counter']:</label>
 								<select id="counter">
 								</select>
@@ -123,7 +117,6 @@ fieldset > label
 								<option value="%W">$tstrings['at_weekly_mon']</option>
 								</select>
 								</span>
-								
 								<br><label for="avoidDuplicateDescription">$tstrings['at_avoid_dup']:</label>
 								<select id="avoidDuplicateDescription">
 								<option value="0" selected="selected">$tstrings['at_avoid_dup_no']</option>
@@ -132,7 +125,6 @@ fieldset > label
 								<option value="3">$tstrings['at_avoid_dup_any_service_rec']</option>
 								</select>
 								<br><label for="Location">$tstrings['at_location']:</label>
-								
 								<input type="checkbox" id="Location" value="">
 									<span id="LocationE">
 									<label for="location"></label>
@@ -142,7 +134,6 @@ fieldset > label
 										#end for
 									</select>
 									</span>
-									
 								<br><label for="Tags">$tstrings['at_tags']:</label>
 									<span id="TagsE">
 									<select data-placeholder="$tstrings['at_select_tags']" id="tags" class="tags_select_box" multiple tabindex="16">
@@ -202,7 +193,6 @@ fieldset > label
 									</table>
 									</span>
 								</div>
-								
 								#if $hasVPS == 1
 								<br><label for="vps">$tstrings['vps']:</label>
 								<input type="checkbox" id="vps" value="">
@@ -217,7 +207,6 @@ fieldset > label
 								#end if
 							</fieldset>
 						</form>
-						
 					<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
 						<div id="actions">
 						<button id="atbutton0">$tstrings['at_add']</button>
@@ -233,7 +222,7 @@ fieldset > label
 					<div id="statuscont" style="display:none">
 					<div id="statusbox" class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
 						<p>
-							<span id="statusicon" class="ui-icon ui-icon-alert" style="margin-right: .3em;"></span> 
+							<span id="statusicon" class="ui-icon ui-icon-alert" style="margin-right: .3em;"></span>
 							<span id="statustext"></span>
 						</p>
 					</div>
@@ -291,15 +280,15 @@ fieldset > label
 
 <br><label for="ats_refresh">$tstrings['ats_refresh']:</label>
 <select id="ats_refresh" size="1">
-				<option value="none" selected="selected">$tstrings['ats_refresh_none']</option>
-				<option value="auto" selected="selected">$tstrings['ats_refresh_auto']</option>
-				<option value="all" selected="selected">$tstrings['ats_refresh_all']</option>
+	<option value="none" selected="selected">$tstrings['ats_refresh_none']</option>
+	<option value="auto" selected="selected">$tstrings['ats_refresh_auto']</option>
+	<option value="all" selected="selected">$tstrings['ats_refresh_all']</option>
 </select>
 
 <label for="ats_editor">$tstrings['ats_editor']</label>
 <select id="ats_editor" size="1">
-			<option value="plain" selected="selected">$tstrings['ats_editor_plain']</option>
-			<option value="wizzard" selected="selected">$tstrings['ats_editor_wizzard']</option>
+	<option value="plain" selected="selected">$tstrings['ats_editor_plain']</option>
+	<option value="wizzard" selected="selected">$tstrings['ats_editor_wizzard']</option>
 </select>
 
 </fieldset>
@@ -308,7 +297,7 @@ fieldset > label
 <div>
 
 <script type="text/javascript" src="/js/chosen.jquery.min.js"></script>
-<script type="text/javascript" src="/js/at-2.2.min.js"></script>
+<script type="text/javascript" src="/js/at-2.3.min.js"></script>
 <script type="text/javascript">
 #raw
 $(function() { InitPage();});

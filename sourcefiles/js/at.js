@@ -1,6 +1,6 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 2.2
+//* Version 2.3
 //******************************************************************************
 //* Copyright (C) 2014-2016 Joerg Bleyel
 //* Copyright (C) 2014-2016 E2OpenPlugins
@@ -18,9 +18,11 @@
 //* V 2.0 - theme support
 //* V 2.1 - update status label
 //* V 2.2 - use public getallservices
+//* V 2.3 - fix afterevent
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
+//*			 rdamas
 //*
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
