@@ -769,175 +769,189 @@ function saveAT()
 	if(CurrentAT) // && CurrentAT.MustSave)
 	{
 
-	var reqs = "/autotimer/edit?";
-	CurrentAT.enabled = $('#enabled').is(':checked');
-	CurrentAT.name = $('#name').val();
-	CurrentAT.match = $('#match').val();
-	CurrentAT.searchType = $('#searchType').val();
-	CurrentAT.searchCase = $('#searchCase').val();
-	CurrentAT.justplay = $('#justplay').val();
-	CurrentAT.overrideAlternatives = $('#overrideAlternatives').is(':checked');
-	CurrentAT.timeSpan = $('#timeSpan').is(':checked');
-	CurrentAT.avoidDuplicateDescription = $('#avoidDuplicateDescription').val();
-	CurrentAT.timeSpan = $('#timeSpan').is(':checked');
-	CurrentAT.from = $('#from').val();
-	CurrentAT.to = $('#to').val();
-	CurrentAT.timerOffset = $('#timerOffset').is(':checked');
-	CurrentAT.before = $('#before').val();
-	CurrentAT.after = $('#after').val();
-	
-	if($('#maxDuration').is(':checked')) {
-		CurrentAT.maxduration = $('#maxduration').val();
-	}
-	else
-		CurrentAT.maxduration = null;
+		var reqs = "/autotimer/edit?";
+		CurrentAT.enabled = $('#enabled').is(':checked');
+		CurrentAT.name = $('#name').val();
+		CurrentAT.match = $('#match').val();
+		CurrentAT.searchType = $('#searchType').val();
+		CurrentAT.searchCase = $('#searchCase').val();
+		CurrentAT.justplay = $('#justplay').val();
+		CurrentAT.overrideAlternatives = $('#overrideAlternatives').is(':checked');
+		CurrentAT.timeSpan = $('#timeSpan').is(':checked');
+		CurrentAT.avoidDuplicateDescription = $('#avoidDuplicateDescription').val();
+		CurrentAT.timeSpan = $('#timeSpan').is(':checked');
+		CurrentAT.from = $('#from').val();
+		CurrentAT.to = $('#to').val();
+		CurrentAT.timerOffset = $('#timerOffset').is(':checked');
+		CurrentAT.before = $('#before').val();
+		CurrentAT.after = $('#after').val();
 
-	if($('#Location').is(':checked'))
-		CurrentAT.location = $('#location').val();
-	else
-		CurrentAT.location = null;
-
-	CurrentAT.timeFrame = $('#timeFrame').is(':checked');
-	CurrentAT.timerOffsetBefore = $('#tbefore').val();
-	CurrentAT.timerOffsetAfter = $('#tafter').val();
-	CurrentAT.afterevent = $('#afterevent').val();
-	CurrentAT.aftereventfrom = $('#aefrom').val();
-	CurrentAT.aftereventto = $('#aeto').val();
-	CurrentAT.Bouquets = $("#bouquets").chosen().val();
-	CurrentAT.Channels = $("#channels").chosen().val();
-	var _f = [];
-	$.each($('#filterlist tr'), function(index, value) {
-		var tr = $(value);
-		if(tr.prop('id') !== "dummyfilter") {
-			var FT = tr.find(".FT");
-			var FM = tr.find(".FM");
-			var FI = tr.find(".FI");
-			var FS = tr.find(".FS");
-			var FR = tr.find(".FR");
-			if (FR.is(':checked') === false){
-				if (FM.val() === 'dayofweek'){
-					_f.push (
-							{ 	"t" : FT.val(),
-								"w": FM.val(),
-								"v": FS.val()
-							}
-						); 
-				}
-				else {
-					_f.push (
-							{ 	"t" : FT.val(),
-								"w": FM.val(),
-								"v": FI.val()
-							}
-						); 
-					
-				}
-			} else {
-				_f.push (
-							{ 	"t" :FT.val(),
-								"w": FM.val(),
-								"v": ""
-							}
-						); 
-			}
+		if($('#maxDuration').is(':checked')) {
+			CurrentAT.maxduration = $('#maxduration').val();
 		}
-	});
-	CurrentAT.Filters = _f.slice();
-	CurrentAT.Tags = $("#tags").chosen().val();
-	CurrentAT.counter = $('#counter').val();
-	CurrentAT.left = $('#left').val();
-	CurrentAT.counterFormat = $('#counterFormat').val();
-	CurrentAT.vps = $('#vps').is(':checked');
-	CurrentAT.vpso = !$('#vpssm').is(':checked');
-	CurrentAT.series_labeling = $('#series_labeling').is(':checked');
-	reqs += "match=" + encodeURIComponent(CurrentAT.match);
-	reqs += "&name=" + encodeURIComponent(CurrentAT.name);
-	reqs += "&enabled=";
-	reqs += (CurrentAT.enabled) ? "1" : "0";
-	reqs += "&justplay=" + CurrentAT.justplay;
-	reqs += "&setEndtime=";
-	reqs += (CurrentAT.setEndtime) ? "1" : "0";
-	reqs += "&searchCase=" + CurrentAT.searchCase;
-	reqs += "&overrideAlternatives=";
-	reqs += (CurrentAT.overrideAlternatives) ? "1" : "0";
-	reqs += "&avoidDuplicateDescription=" + CurrentAT.avoidDuplicateDescription;
-	// TODO:
-	//	reqs += "&searchForDuplicateDescription=" + CurrentAT.searchForDuplicateDescription;
-	if(CurrentAT.location)
-		reqs += "&location=" + encodeURIComponent(CurrentAT.location);
-	reqs += "&searchType=" + CurrentAT.searchType;
-	reqs += "&maxduration=";
-	if(CurrentAT.maxduration && CurrentAT.maxduration > -1)
-		reqs += CurrentAT.maxduration;
+		else
+			CurrentAT.maxduration = null;
 
-	if(CurrentAT.timerOffset) {
-		if(CurrentAT.timerOffsetAfter > -1 && CurrentAT.timerOffsetBefore > -1)
-			reqs += "&offset=" + CurrentAT.timerOffsetBefore + "," + CurrentAT.timerOffsetAfter;
+		if($('#Location').is(':checked'))
+			CurrentAT.location = $('#location').val();
+		else
+			CurrentAT.location = null;
+
+		CurrentAT.timeFrame = $('#timeFrame').is(':checked');
+		CurrentAT.timerOffsetBefore = $('#tbefore').val();
+		CurrentAT.timerOffsetAfter = $('#tafter').val();
+		CurrentAT.afterevent = $('#afterevent').val();
+		CurrentAT.aftereventfrom = $('#aefrom').val();
+		CurrentAT.aftereventto = $('#aeto').val();
+		CurrentAT.Bouquets = $("#bouquets").chosen().val();
+		CurrentAT.Channels = $("#channels").chosen().val();
+		var _f = [];
+		$.each($('#filterlist tr'), function(index, value) {
+			var tr = $(value);
+			if(tr.prop('id') !== "dummyfilter") {
+				var FT = tr.find(".FT");
+				var FM = tr.find(".FM");
+				var FI = tr.find(".FI");
+				var FS = tr.find(".FS");
+				var FR = tr.find(".FR");
+				if (FR.is(':checked') === false){
+					if (FM.val() === 'dayofweek'){
+						_f.push (
+								{ 	"t" : FT.val(),
+									"w": FM.val(),
+									"v": FS.val()
+								}
+							); 
+					}
+					else {
+						_f.push (
+								{ 	"t" : FT.val(),
+									"w": FM.val(),
+									"v": FI.val()
+								}
+							); 
+
+					}
+				} else {
+					_f.push (
+								{ 	"t" :FT.val(),
+									"w": FM.val(),
+									"v": ""
+								}
+							); 
+				}
+			}
+		});
+		CurrentAT.Filters = _f.slice();
+		CurrentAT.Tags = $("#tags").chosen().val();
+		CurrentAT.counter = $('#counter').val();
+		CurrentAT.left = $('#left').val();
+		CurrentAT.counterFormat = $('#counterFormat').val();
+		CurrentAT.vps = $('#vps').is(':checked');
+		CurrentAT.vpso = !$('#vpssm').is(':checked');
+		CurrentAT.series_labeling = $('#series_labeling').is(':checked');
+		reqs += "match=" + encodeURIComponent(CurrentAT.match);
+		reqs += "&name=" + encodeURIComponent(CurrentAT.name);
+		reqs += "&enabled=";
+		reqs += (CurrentAT.enabled) ? "1" : "0";
+		reqs += "&justplay=" + CurrentAT.justplay;
+		reqs += "&setEndtime=";
+		reqs += (CurrentAT.setEndtime) ? "1" : "0";
+		reqs += "&searchCase=" + CurrentAT.searchCase;
+		reqs += "&overrideAlternatives=";
+		reqs += (CurrentAT.overrideAlternatives) ? "1" : "0";
+		reqs += "&avoidDuplicateDescription=" + CurrentAT.avoidDuplicateDescription;
+		// TODO:
+		//	reqs += "&searchForDuplicateDescription=" + CurrentAT.searchForDuplicateDescription;
+		if(CurrentAT.location)
+			reqs += "&location=" + encodeURIComponent(CurrentAT.location);
+		reqs += "&searchType=" + CurrentAT.searchType;
+		reqs += "&maxduration=";
+		if(CurrentAT.maxduration && CurrentAT.maxduration > -1)
+			reqs += CurrentAT.maxduration;
+
+		if(CurrentAT.timerOffset) {
+			if(CurrentAT.timerOffsetAfter > -1 && CurrentAT.timerOffsetBefore > -1)
+				reqs += "&offset=" + CurrentAT.timerOffsetBefore + "," + CurrentAT.timerOffsetAfter;
+			else
+				reqs += "&offset=";
+		}
 		else
 			reqs += "&offset=";
-	}
-	else
-		reqs += "&offset=";
 
-	if(CurrentAT.timeSpan)
-		reqs += "&timespanFrom=" + CurrentAT.from + "&timespanTo=" + CurrentAT.to;
-	else
-		reqs += "&timespanFrom=&timespanTo=";
+		if(CurrentAT.timeSpan)
+			reqs += "&timespanFrom=" + CurrentAT.from + "&timespanTo=" + CurrentAT.to;
+		else
+			reqs += "&timespanFrom=&timespanTo=";
 
-	if(CurrentAT.timeFrame)
-		reqs += "&before=" + toUnixDate(CurrentAT.before) + "&after=" + toUnixDate(CurrentAT.after);
-	else
-		reqs += "&before=&after=";
+		if(CurrentAT.timeFrame)
+			reqs += "&before=" + toUnixDate(CurrentAT.before) + "&after=" + toUnixDate(CurrentAT.after);
+		else
+			reqs += "&before=&after=";
 
-	if(CurrentAT.Tags && CurrentAT.Tags.length > 0) {
-		$.each( CurrentAT.Tags, function( index, value ){
-			reqs += "&tag=" + value;
-		});
-	} else
-		reqs += "&tag=";
+		if(CurrentAT.Tags && CurrentAT.Tags.length > 0) {
+			$.each( CurrentAT.Tags, function( index, value ){
+				reqs += "&tag=" + value;
+			});
+		} else
+			reqs += "&tag=";
 
-	reqs += "&services=";
-	if(CurrentAT.Channels && CurrentAT.Channels.length > 0) {
-		var _s = [];
-		$.each( CurrentAT.Channels, function( index, value ){
-			_s.push(encodeURIComponent(value));
-		});
-		reqs += _s.join(',');
-	}
+		reqs += "&services=";
+		if(CurrentAT.Channels && CurrentAT.Channels.length > 0) {
+			var _s = [];
+			$.each( CurrentAT.Channels, function( index, value ){
+				_s.push(encodeURIComponent(value));
+			});
+			reqs += _s.join(',');
+		}
 
-	reqs += "&bouquets=";
-	if(CurrentAT.Bouquets && CurrentAT.Bouquets.length > 0) {
-		reqs += CurrentAT.Bouquets.join(',');
-	}
+		reqs += "&bouquets=";
+		if(CurrentAT.Bouquets && CurrentAT.Bouquets.length > 0) {
+			reqs += CurrentAT.Bouquets.join(',');
+		}
 
-	if(CurrentAT.Filters && CurrentAT.Filters.length > 0) {
-		$.each( CurrentAT.Filters, function( index, value ){
-			var fr = "&"
-			if(value.t === "exclude")
-				fr+="!";
-			fr += value.w;
-			fr += "=";
-			if (value.w === 'dayofweek')
-				fr += value.v;
-			else
-				fr += encodeURIComponent(value.v);
-			reqs += fr;
-		});
-	}
+		if(CurrentAT.Filters && CurrentAT.Filters.length > 0) {
+			$.each( CurrentAT.Filters, function( index, value ){
+				var fr = "&"
+				if(value.t === "exclude")
+					fr+="!";
+				fr += value.w;
+				fr += "=";
+				if (value.w === 'dayofweek')
+					fr += value.v;
+				else
+					fr += encodeURIComponent(value.v);
+				reqs += fr;
+			});
+		}
 
-	if(!CurrentAT.vps)
-		CurrentAT.vpo=false;
+		if(!CurrentAT.vps)
+			CurrentAT.vpo=false;
 
-	reqs += "&vps_enabled=";
-	reqs += (CurrentAT.vps) ? "1" : "0";
-	reqs += "&vps_overwrite=";
-	reqs += (CurrentAT.vpso) ? "1" : "0";
-	reqs += "&series_labeling=";
-	reqs += (CurrentAT.series_labeling) ? "1" : "0";
-	
-	if(!CurrentAT.isNew)
-		reqs += "&id=" + CurrentAT.id;
-		
+		reqs += "&vps_enabled=";
+		reqs += (CurrentAT.vps) ? "1" : "0";
+		reqs += "&vps_overwrite=";
+		reqs += (CurrentAT.vpso) ? "1" : "0";
+		reqs += "&series_labeling=";
+		reqs += (CurrentAT.series_labeling) ? "1" : "0";
+		var _ae = CurrentAT.afterevent;
+		if (_ae == "") {
+			_ae = "default";
+		} else if (_ae == "none") {
+			_ae = "nothing";
+		} else if (_ae == "shutdown") {
+			_ae = "deepstandby";
+		}
+		reqs += "&afterevent=" + _ae;
+		if (_ae !== "default") {
+			reqs += "&aftereventFrom=" + CurrentAT.aftereventfrom;
+			reqs += "&aftereventTo=" + CurrentAT.aftereventto;
+		}
+
+		if(!CurrentAT.isNew) {
+			reqs += "&id=" + CurrentAT.id;
+		}
+
 		$.ajax({
 			type: "GET", url: reqs,
 			dataType: "xml",
@@ -1132,4 +1146,4 @@ function showError(txt,st)
 	}
 	
 }
-
+//# sourceURL=js/at.js
