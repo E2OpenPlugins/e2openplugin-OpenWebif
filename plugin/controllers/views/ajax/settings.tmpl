@@ -10,7 +10,7 @@
 .ln-letters .ln-last { border-right: 1px solid silver;}
 .ln-letters a:hover,.ln-selected { background-color:#eaeaea;}
 .ln-letters .ln-disabled {color:#ccc;}
-#tmpfiles li { list-style-type:none;}
+#packagelist li.installed {font-weight:bold;}
 
 </style>
 <div id="content_main" class="ui-widget-content" style="min-height: 500px;background-image:none;">
@@ -93,10 +93,6 @@
 				<input class="pkgbtn" type="radio" id="pkgbtn3" name="tb2" /><label for="pkgbtn3">All</label>
 				<input class="pkgbtn" type="radio" id="pkgbtn4" name="tb2" /><label for="pkgbtn4">More..</label>
 				</span>
-				<span id="tb3">
-				<button id="installpk">Install</button>
-				<button id="deletepk">Remove</button>
-				</span>
 				<div id="pkgmore">
 				<br><br>
 				<button id="updatefeed">Update from Feed</button>
@@ -131,13 +127,11 @@
 // TODO minimize js
 
 var filteredpkg;
-var sellist = [];
-var inst=false;
 
-function prepareRestore() {
+function prepareUpload() {
 	var fn = $(this).val();
 	fn = fn.replace('C:\\fakepath\\','');
-	if (confirm('Upload Plackage' + ' ( ' + fn + ') ?') === false) {
+	if (confirm('Upload Package' + ' ( ' + fn + ') ?') === false) {
 		return;
 	}
 
@@ -191,13 +185,9 @@ function FillPackages(pkgs,mode)
 		return (v.i == '1');
 	});
 
-	sellist = [];
-	inst = false;
-
 	if (mode == 'pkgbtn1')
 		filteredpkg = _update.slice();
 	else if (mode == 'pkgbtn2') {
-		inst = true;
 		filteredpkg = _installed.slice();
 	} else
 		filteredpkg = pkgs.slice();
@@ -207,48 +197,41 @@ function FillPackages(pkgs,mode)
 
 	var row='';
 	$.each( filteredpkg, function( key, val ) {
-		row += "<li>"+val['name']+" (" + val['v'] + ")</li>";
-//	"i": "0", "d": "ATSC A/52 surround sound stream decoder", "u": "0", "name": "a52dec", "v": "0.7.4-r4-opt1"
+		var name = val['name'];
+		var index = -1;
+		var sel = (val['i'] == '1') ? "class='installed' ":"";
+		row += "<li "+sel+"data-i='"+val['i']+"'>"+name+" (" + val['v'] + ")</li>";
 	});
 	$("#packagelist").html(row);
 	$("#packagelist").listnav({includeAll:false,showCounts:false,initLetter:'a'});
 
 	$('#packagelist > li').click( function () {
-		selunsel($(this));
+		ask($(this),false);
 	});
-	
 }
 
-function selunsel(obj)
+function ask(obj,man)
 {
-	$(obj).toggleClass( "ui-state-hover" );
-
 	var pk = $(obj).html();
-	pk = pk.split('(')[0];
-	pk = pk.substring(1,pk.length-1);
-
-	sellist.push(pk);
-
-}
-
-function InstallPK()
-{
-	for (var i = 0, len = sellist.length; i < len; i++) {
-		console.log(sellist[i]);
+	var i = ($(obj).data('i') == '1');
+	if(!man) {
+		pk = pk.split('(')[0];
+		pk = pk.substring(0,pk.length-1);
 	}
-}
-
-function RemovePK()
-{
-	for (var i = 0, len = sellist.length; i < len; i++) {
-		console.log(sellist[i]);
+	if(i) {
+		if (confirm('Remove Package' + ' ( ' + pk + ') ?') === true) {
+			return;
+		}
+	} else {
+		if (confirm('Install Package' + ' ( ' + pk + ') ?') === true) {
+			return;
+		}
 	}
 }
 
 function Action(action)
 {
 	$('#resulttext').val('');
-	
 	$.ajax({
 		url: action,
 		success: function ( data ) {
@@ -272,6 +255,9 @@ function ShowPackages(mode)
 					files+='<li>' + val['name'] + '</li>'
 				});
 				$('#tmpfiles').html(files);
+				$('#tmpfiles > li').click( function () {
+					ask($(this),true);
+				});
 			}
 		});
 		return;
@@ -364,12 +350,10 @@ $(function() {
 	$('#tb3').buttonset();
 	$('.pkgbtn').click(function () { ShowPackages($(this).attr('id')); });
 	$('#selectfile').click(function () {$("#rfile").trigger('click'); });
-	$('#rfile').change(prepareRestore);
+	$('#rfile').change(prepareUpload);
 	$('#updatefeed').click(function () {Action('/ipkg?command=update'); });
 	$('#upgrade').click(function () {Action('/ipkg?command=upgrade'); });
-	$('#installpk').click(function () {InstallPK(); });
-	$('#removepk').click(function () {RemovePK(); });
-	
+
 });
 </script>
 #end raw
