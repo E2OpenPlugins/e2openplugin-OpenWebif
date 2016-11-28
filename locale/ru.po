@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2016-11-24 15:32+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: neoatomic <neoatomic@users.noreply.github.com>\n"
+"Last-Translator: Dimitrij <Dima-73@inbox.lv>\n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.9\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
@@ -271,7 +271,7 @@ msgstr "Настройки LCD4Linux"
 
 #: plugin/controllers/base.py:279
 msgid "OSCam Webinterface"
-msgstr ""
+msgstr "Веб-интерфейс OSCam"
 
 #: plugin/controllers/base.py:283
 msgid "AutoTimer"
@@ -287,24 +287,24 @@ msgstr "Обновление EPG"
 
 #: plugin/controllers/ipkg.py:238
 msgid "Error upload File"
-msgstr ""
+msgstr "Ошибка загрузки файла"
 
 #: plugin/controllers/ipkg.py:241
 msgid "wrong filetype"
-msgstr ""
+msgstr "ошибочный тип файла"
 
 #: plugin/controllers/ipkg.py:255
 msgid "Error writing File"
-msgstr ""
+msgstr "Ошибка записи файла"
 
 #: plugin/controllers/models/info.py:58
 msgid "SLAAC"
-msgstr ""
+msgstr "SLAAC"
 
 #: plugin/controllers/models/info.py:65 plugin/controllers/models/info.py:76
 #: plugin/controllers/models/info.py:83
 msgid "static"
-msgstr ""
+msgstr "статистический"
 
 #: plugin/controllers/models/info.py:67 plugin/controllers/models/info.py:85
 #: plugin/local.py:80
@@ -313,11 +313,11 @@ msgstr "DHCP"
 
 #: plugin/controllers/models/info.py:69 plugin/controllers/models/info.py:87
 msgid "manual/disabled"
-msgstr ""
+msgstr "ручной/отключено"
 
 #: plugin/controllers/models/info.py:95 plugin/controllers/models/info.py:102
 msgid "unknown"
-msgstr ""
+msgstr "неизвестно"
 
 #: plugin/controllers/models/info.py:136 plugin/local.py:115
 msgid "IPv4-only kernel"
@@ -333,12 +333,12 @@ msgstr "ничего/IPv4-только сеть"
 
 #: plugin/controllers/models/info.py:287 plugin/controllers/models/info.py:290
 msgid "kB"
-msgstr ""
+msgstr "КБ"
 
 #: plugin/controllers/models/info.py:291 plugin/controllers/models/info.py:414
 #, python-format
 msgid "%s free / %s total"
-msgstr ""
+msgstr "%s свободно / %s всего"
 
 #: plugin/controllers/models/info.py:326 plugin/local.py:65
 msgid "Chipset"
@@ -351,25 +351,25 @@ msgstr "Версия фронтпроцессора"
 #: plugin/controllers/models/info.py:377 plugin/controllers/models/info.py:388
 #: plugin/controllers/models/info.py:406
 msgid "MB"
-msgstr ""
+msgstr "МБ"
 
 #: plugin/controllers/models/info.py:380 plugin/controllers/models/info.py:386
 #: plugin/controllers/models/info.py:401 plugin/controllers/models/info.py:404
 msgid "GB"
-msgstr ""
+msgstr "ГБ"
 
 #: plugin/controllers/models/info.py:384 plugin/controllers/models/info.py:396
 #: plugin/controllers/models/info.py:398
 msgid "TB"
-msgstr ""
+msgstr "ТБ"
 
 #: plugin/controllers/models/info.py:442
 msgid "r/w"
-msgstr ""
+msgstr "r/w"
 
 #: plugin/controllers/models/info.py:446
 msgid "r/o"
-msgstr ""
+msgstr "r/o"
 
 #: plugin/controllers/models/message.py:33
 msgid "Message sent successfully!"
@@ -837,7 +837,7 @@ msgstr "Текущее событие"
 
 #: plugin/local.py:72
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 #: plugin/local.py:73
 msgid "Deep-Standby"
@@ -873,7 +873,7 @@ msgstr "Отключить таймер"
 
 #: plugin/local.py:82
 msgid "disabled"
-msgstr ""
+msgstr "отключено"
 
 #: plugin/local.py:83
 msgid "Distro"
@@ -2064,7 +2064,7 @@ msgstr "Sref"
 
 #: plugin/local.py:408
 msgid "Orbital Position"
-msgstr ""
+msgstr "Орбитальная позиция"
 
 #: plugin/local.py:410
 msgid "error! Loading Page"
@@ -2120,7 +2120,7 @@ msgstr "График"
 
 #: plugin/local.py:425
 msgid "Web TV"
-msgstr ""
+msgstr "Веб ТВ"
 
 #: plugin/local.py:427
 msgid "Link Speed"
@@ -2176,11 +2176,11 @@ msgstr "Отключить доступ для пользователя root"
 
 #: plugin/plugin.py:135
 msgid "Without auth only local access is allowed!"
-msgstr ""
+msgstr "Без аутентификации разрешен только локальный доступ!"
 
 #: plugin/plugin.py:136
 msgid "Enable access from VPNs"
-msgstr ""
+msgstr "Включить доступ из VPN"
 
 #: plugin/plugin.py:137
 msgid "Enable Parental Control"
