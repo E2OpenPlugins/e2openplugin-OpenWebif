@@ -86,7 +86,7 @@ class BQEWebController(BaseController):
 		try:
 			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_MARKER_TO_BOUQUET)
-			bqe.handleCommand(self.buildCommand('sBouquetRef,Name,sRefBefore',request.args))
+			bqe.handleCommand(self.buildCommand('sBouquetRef,Name,sRefBefore,SP',request.args))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -205,20 +205,29 @@ class BQEWebController(BaseController):
 		serviceslist = serviceHandler.list(eServiceReference(sRef))
 		fulllist = serviceslist and serviceslist.getContent("RN", True)
 
+		pos=0;
 		for item in fulllist:
+			pos=pos+1
 			sref = item[0].toString()
-			if not int(sref.split(":")[1]) & 512:	# 512 is hidden service on sifteam image. Doesn't affect other images
+			hs = (int(sref.split(":")[1]) & 512)
+			sp = (sref[:7] == '1:832:D')
+			if not hs or sp:	# 512 is hidden service on sifteam image. Doesn't affect other images
 				service = {}
+				service['pos'] = pos
 				service['servicereference'] = sref
-				service['servicename'] = item[1]
 				service['isgroup'] = '0'
-				if item[0].flags & eServiceReference.isGroup:
-					service['isgroup'] = '1'
 				service['ismarker'] = '0'
-				if item[0].flags & eServiceReference.isMarker:
-					service['ismarker'] = '1'
 				service['isprotected'] = '0'
-				if config.ParentalControl.configured.value and config.ParentalControl.servicepinactive.value:
+				if sp:
+					service['ismarker'] = '2'
+					service['servicename'] = ''
+				else:
+					service['servicename'] = item[1]
+					if item[0].flags & eServiceReference.isGroup:
+						service['isgroup'] = '1'
+					if item[0].flags & eServiceReference.isMarker:
+						service['ismarker'] = '1'
+				if not sp and config.ParentalControl.configured.value and config.ParentalControl.servicepinactive.value:
 					sref = item[0].toCompareString()
 					protection = parentalControl.getProtectionLevel(sref)
 					if protection != -1:

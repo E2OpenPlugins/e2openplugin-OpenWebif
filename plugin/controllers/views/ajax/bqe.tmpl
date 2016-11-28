@@ -1,117 +1,96 @@
 #filter WebSafe
 #from Plugins.Extensions.OpenWebif.local import tstrings
-
 <style>
-	.select { width: 100%; }
-	.sortable { list-style-type: none; margin: 0; padding: 0; width: 200px; }
-	.sortable li { margin: 0 1px 1px 2px; padding-left: 1.5em; font-size: .8em;  height:20px;}
-	.sortable li span { margin: 0 0 0 -1.5em; display: inline-block; }
+.select { width: 100%; }
+.sortable { list-style-type: none; margin: 0; padding: 0; width: 200px; }
+.sortable li { margin: 0 1px 1px 2px; padding-left: 1.5em; font-size: .8em;  height:20px;}
+.sortable li span { margin: 0 0 0 -1.5em; display: inline-block; }
+ #bql li .handle, #bqs li .handle { display: inline-block;width: 2em;}
+ #bql li span,#bqs li span {font-size: 12px;margin-top: 3px;margin-left: 2px;}
 
-	 #bql li .handle { display: inline-block;width: 2em;}
-	 #bqs li .handle { display: inline-block;width: 2em;}
-
-	.selectable { list-style-type: none; margin: 0; padding: 0; width: 100%; }
-	.selectable li { margin: 1px; padding: 0.1em; font-size: 1em; height: 20px; cursor: pointer; background-image:none; }
-
+.selectable { list-style-type: none; margin: 0; padding: 0; width: 100%; }
+.selectable li { margin: 1px; padding: 0.1em; font-size: 1em; height: 20px; cursor: pointer; background-image:none; }
 </style>
 <div id="content_container">
-<div id="content_main" style="min-height: 500px;" class="ui-widget-content">
-<div id="info">
-
-<h3 class="ui-widget-header">$tstrings['Bouquet_Editor']</h3>
-<div style="display: inline-block; width: 100%; zoom: 1;height: 700px;">
-
-<div style="width:50%; height:50%; float:left">
-<div style="padding:5px;">
-
-<!-- TODO: change to class -->
-
-<div id="toolbar-header" class="ui-widget-header">
-	<span id="tb1">
-		<input type="radio" id="toolbar-choose-tv" name="tb1" checked="checked" /><label for="toolbar-choose-tv">$tstrings['tv']</label>
-		<input type="radio" id="toolbar-choose-radio" name="tb1"/><label for="toolbar-choose-radio">$tstrings['radio']</label>
-	</span>
-	<span id="tb2">
-		<input type="radio" id="toolbar-choose-satellites" name="tb2" /><label for="toolbar-choose-satellites">$tstrings['satellites']</label>
-		<input type="radio" id="toolbar-choose-providers" name="tb2" checked="checked" /><label for="toolbar-choose-providers">$tstrings['providers']</label>
-		<input type="radio" id="toolbar-choose-channels" name="tb2" /><label for="toolbar-choose-channels">$tstrings['all_channels']</label>
-	</span>
-</div>
-
-<div id="sel0" style="height: 255px;overflow-y:scroll;margin:5px;">
-	<ol id="provider" class="selectable"></ol>
-</div>
-
-<div style="margin:5px;">
-	<button id="btn-provider-add">$tstrings['bqe_add_provider_as_bouquet']</button>
-</div>
-
-<div style="margin:5px;">
-	$tstrings['bqe_search']: <input id="searchch" value="...">
-</div>
-
-<div id="sel1" style="height: 300px;overflow-y:scroll;margin:5px;">
-	<ol id="channels" class="selectable"></ol>
-</div>
-	
-<div style="margin:5px 0 5px 0;">
-	<button id="btn-channel-add">$tstrings['bqe_add_channel']</button>
-	<button id="btn-alternative-add">$tstrings['bqe_add_alternative']</button>
-</div>
-
-</div>
-</div>
-
-<div style="width:50%; height:50%; float:right">
-<div style="padding:5px;">
-
-<div id="toolbar-header" class="ui-widget-header">
-	<span id="tb3">
-		<button id="toolbar-bouquets-reload">$tstrings['bqe_reload']</button>
-		<button id="toolbar-bouquets-export">$tstrings['bqe_export']</button>
-		<button id="toolbar-bouquets-import">$tstrings['bqe_import']</button>
-	</span>
-</div>
-
-<div style="padding:5px;">
-	<div id="sel2" style="height: 280px;overflow-y:scroll;">
-		<ol id="bql" class="selectable"></ol>
+	<div id="content_main" style="min-height: 500px;" class="ui-widget-content">
+		<div id="info">
+		<h3 class="ui-widget-header">$tstrings['Bouquet_Editor']</h3>
+		<div style="display: inline-block; width: 100%; zoom: 1;height: 700px;">
+		<div style="width:50%; height:50%; float:left">
+		<div style="padding:5px;">
+		<div id="toolbar-header" class="ui-widget-header">
+			<span id="tb1">
+				<input type="radio" id="toolbar-choose-tv" name="tb1" checked="checked" /><label for="toolbar-choose-tv">$tstrings['tv']</label>
+				<input type="radio" id="toolbar-choose-radio" name="tb1"/><label for="toolbar-choose-radio">$tstrings['radio']</label>
+			</span>
+			<span id="tb2">
+				<input type="radio" id="toolbar-choose-satellites" name="tb2" /><label for="toolbar-choose-satellites">$tstrings['satellites']</label>
+				<input type="radio" id="toolbar-choose-providers" name="tb2" checked="checked" /><label for="toolbar-choose-providers">$tstrings['providers']</label>
+				<input type="radio" id="toolbar-choose-channels" name="tb2" /><label for="toolbar-choose-channels">$tstrings['all_channels']</label>
+			</span>
+		</div>
+		<div id="sel0" style="height: 255px;overflow-y:scroll;margin:5px;">
+			<ol id="provider" class="selectable"></ol>
+		</div>
+		<div style="margin:5px;">
+			<button id="btn-provider-add">$tstrings['bqe_add_provider_as_bouquet']</button>
+		</div>
+		<div style="margin:5px;">
+			$tstrings['bqe_search']: <input id="searchch" value="...">
+		</div>
+		<div id="sel1" style="height: 300px;overflow-y:scroll;margin:5px;">
+			<ol id="channels" class="selectable"></ol>
+		</div>
+		<div style="margin:5px 0 5px 0;">
+			<button id="btn-channel-add">$tstrings['bqe_add_channel']</button>
+			<button id="btn-alternative-add">$tstrings['bqe_add_alternative']</button>
+		</div>
+		</div>
+		</div>
+		<div style="width:50%; height:50%; float:right">
+		<div style="padding:5px;">
+		<div id="toolbar-header" class="ui-widget-header">
+			<span id="tb3">
+				<button id="toolbar-bouquets-reload">$tstrings['bqe_reload']</button>
+				<button id="toolbar-bouquets-export">$tstrings['bqe_export']</button>
+				<button id="toolbar-bouquets-import">$tstrings['bqe_import']</button>
+			</span>
+		</div>
+		<div style="padding:5px;">
+			<div id="sel2" style="height: 280px;overflow-y:scroll;">
+				<ol id="bql" class="selectable"></ol>
+			</div>
+			<div style="margin:5px 0 5px 0;">
+				<button id="btn-bouquet-add">$tstrings['bqe_add_bq']</button>
+				<button id="btn-bouquet-rename">$tstrings['bqe_rename_bq']</button>
+				<button id="btn-bouquet-delete">$tstrings['bqe_delete_bq']</button>
+			</div>
+			<div id="sel3" style="height: 300px;overflow-y:scroll;">
+				<ol id="bqs" class="selectable"></ol>
+			</div>
+			<div style="margin:5px 0 5px 0;">
+				<button id="btn-channel-delete">$tstrings['delete']</button>
+				<button id="btn-marker-add">$tstrings['bqe_add_marker']</button>
+				<button id="btn-spacer-add">$tstrings['bqe_add_spacer']</button>
+				<button id="btn-marker-group-rename">$tstrings['bqe_rename']</button>
+			</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		<br clear="all">
+		<div id="statuscont" style="display:none">
+			<div id="statusbox" class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+				<p>
+					<span id="statusicon" class="ui-icon ui-icon-alert" style="margin-right: .3em;"></span> 
+					<span id="statustext"></span>
+				</p>
+			</div>
+		</div>
 	</div>
-	<div style="margin:5px 0 5px 0;">
-		<button id="btn-bouquet-add">$tstrings['bqe_add_bq']</button>
-		<button id="btn-bouquet-rename">$tstrings['bqe_rename_bq']</button>
-		<button id="btn-bouquet-delete">$tstrings['bqe_delete_bq']</button>
-	</div>
-	
-	<div id="sel3" style="height: 300px;overflow-y:scroll;">
-		<ol id="bqs" class="selectable"></ol>
-	</div>
-	<div style="margin:5px 0 5px 0;">
-		<button id="btn-channel-delete">$tstrings['bqe_delete_channel']</button>
-		<button id="btn-marker-add">$tstrings['bqe_add_marker']</button>
-		<button id="btn-marker-group-rename">$tstrings['bqe_rename']</button>
-	</div>
-	
+	<form id="uploadrestore" style="display:none" action"uploadrestore"="" method="post" enctype="multipart/form-data" encoding="multipart/form-data">
+	<input type="file" name="rfile" id="rfile">
+	</form>
 </div>
-
-</div>
-</div>
-</div>
-<br clear="all">
-<div id="statuscont" style="display:none">
-	<div id="statusbox" class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
-		<p>
-			<span id="statusicon" class="ui-icon ui-icon-alert" style="margin-right: .3em;"></span> 
-			<span id="statustext"></span>
-		</p>
-	</div>
-</div>
-
-</div>
-<form id="uploadrestore" style="display:none" action"uploadrestore"="" method="post" enctype="multipart/form-data" encoding="multipart/form-data">
-<input type="file" name="rfile" id="rfile">
-</form>
-
-</div>
-<script src="js/bqe-2.4.min.js"></script>
+<script src="js/bqe-2.5.min.js"></script>
 #end filter

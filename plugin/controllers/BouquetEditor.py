@@ -312,7 +312,10 @@ class BouquetEditor(Source):
 			if param["Name"] is not None:
 				name =param["Name"]
 		if name is None:
-			return (False, _("No marker-name given!"))
+			if not "SP" in param:
+				return (False, _("No marker-name given!"))
+			else
+				return (False, _("Add Spacer not working currently"))
 		sRefBefore = eServiceReference()
 		if "sRefBefore" in param:
 			if param["sRefBefore"] is not None:
@@ -321,7 +324,11 @@ class BouquetEditor(Source):
 		mutableBouquetList = self.getMutableList(bouquet_ref)
 		cnt = 0
 		while mutableBouquetList:
-			service_str = '1:64:%d:0:0:0:0:0:0:0::%s'%(cnt, name)
+			if name is None:
+				service_str = '1:832:D:0:0:0:0:0:0:0:'
+			else:
+				service_str = '1:64:%d:0:0:0:0:0:0:0::%s'%(cnt, name)
+			#FIXME add numbermarker
 			ref = eServiceReference(service_str)
 			if not mutableBouquetList.addService(ref, sRefBefore):
 				mutableBouquetList.flushChanges()

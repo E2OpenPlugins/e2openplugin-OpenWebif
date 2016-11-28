@@ -347,6 +347,18 @@
       "css": "angle-circled-down",
       "code": 61754,
       "src": "fontawesome"
+    },
+    {
+      "uid": "6605ee6441bf499ffa3c63d3c7409471",
+      "css": "move",
+      "code": 61511,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "531bc468eecbb8867d822f1c11f1e039",
+      "css": "calendar",
+      "code": 59419,
+      "src": "fontawesome"
     }
   ]
 }
