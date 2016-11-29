@@ -517,7 +517,7 @@ msgstr "ERRO: O Timer de repouso não pode ser definido enquanto o dispositivo e
 #: plugin/controllers/models/timers.py:706 plugin/controllers/models/timers.py:775
 #: plugin/controllers/models/timers.py:793
 msgid "Sleeptimer has been disabled"
-msgstr "O TIMER de repouso  foi deativado."
+msgstr "O TIMER de repouso foi desativado"
 
 #: plugin/controllers/models/timers.py:712 plugin/controllers/models/timers.py:775
 #: plugin/controllers/models/timers.py:788
