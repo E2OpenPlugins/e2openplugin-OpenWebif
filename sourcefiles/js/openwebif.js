@@ -1879,6 +1879,11 @@ var SSHelperObj = function () {
 		{
 			self = this;
 			self.ssr_i = parseInt(GetLSValue('ssr_i','30'));
+			
+			$('#screenshotbutton0').click(function(){grabScreenshot('all');});
+			$('#screenshotbutton1').click(function(){grabScreenshot('video');});
+			$('#screenshotbutton2').click(function(){grabScreenshot('osd');});
+			
 			$('#screenshotbutton').buttonset();
 			$('#screenshotrefreshbutton').buttonset();
 			$('#ssr_i').val(self.ssr_i);
@@ -1916,7 +1921,7 @@ var SSHelperObj = function () {
 			grabScreenshot(screenshotMode);
 
 			if(GetLSValue('ssr_s',false))
-				setSInterval();
+				self.setSInterval();
 
 		},setSInterval: function()
 		{
