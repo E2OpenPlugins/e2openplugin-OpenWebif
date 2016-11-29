@@ -517,7 +517,7 @@ msgstr "ERRO: O Timer de repouso não pode ser definido enquanto o dispositivo e
 #: plugin/controllers/models/timers.py:706 plugin/controllers/models/timers.py:775
 #: plugin/controllers/models/timers.py:793
 msgid "Sleeptimer has been disabled"
-msgstr "O TIMER de repouso foi desativado"
+msgstr "O Timer de repouso foi desativado"
 
 #: plugin/controllers/models/timers.py:712 plugin/controllers/models/timers.py:775
 #: plugin/controllers/models/timers.py:788
@@ -1236,7 +1236,7 @@ msgstr "Editor de Bouquets"
 
 #: plugin/local.py:183
 msgid "(Shift + Click for Long Press)"
-msgstr "(shift + Clique para Pressão Longa)"
+msgstr "(Shift + Clique para Pressão Longa)"
 
 #: plugin/local.py:184
 msgid "Show Full OpenWebif"
@@ -1308,7 +1308,7 @@ msgstr "Televisão"
 
 #: plugin/local.py:201
 msgid "Template Engine"
-msgstr "Mecanismo de modelo"
+msgstr "Mecanismo modelo"
 
 #: plugin/local.py:202
 msgid "Text"
@@ -1340,7 +1340,7 @@ msgstr "Previsualizar AutoTimer"
 
 #: plugin/local.py:209
 msgid "Timer"
-msgstr "Timers"
+msgstr "Timer"
 
 #: plugin/local.py:210 plugin/local.py:324
 msgid "Timers"
@@ -1384,7 +1384,7 @@ msgstr "Tuner Qualidade do Sinal SNR_DB"
 
 #: plugin/local.py:220
 msgid "Tuner Signal Power AGC"
-msgstr "Sinal do Tune AGC"
+msgstr "Sinal do Tuner AGC"
 
 #: plugin/local.py:221
 msgid "Tuner Type"
@@ -1392,7 +1392,7 @@ msgstr "Tipo de Tuner"
 
 #: plugin/local.py:222
 msgid "Tuners"
-msgstr "Tuners:"
+msgstr "Tuners"
 
 #: plugin/local.py:223
 msgid "TV"
@@ -1480,11 +1480,11 @@ msgstr "Todos os ficheiros neste Software são Open Source."
 
 #: plugin/local.py:244
 msgid "you can redistribute it and/or modify it under the"
-msgstr "pode distribuí-los ou modificá-los nos ternos da"
+msgstr "pode distribuí-los ou modificá-los nos"
 
 #: plugin/local.py:245
 msgid "terms of the GNU General Public License version 2 as"
-msgstr "ternos da licença púbica GNU versão 2 como"
+msgstr "termos da licença púbica GNU versão 2 como "
 
 #: plugin/local.py:246
 msgid "published by the Free Software Foundation."
@@ -1512,7 +1512,7 @@ msgstr "Editar AutoTimer"
 
 #: plugin/local.py:254
 msgid "Match title"
-msgstr "Título corresnpondente"
+msgstr "Título correspondente"
 
 #: plugin/local.py:255
 msgid "EPG encoding"
@@ -1596,11 +1596,11 @@ msgstr "Restrito a eventos em certas datas"
 
 #: plugin/local.py:275
 msgid "Not after"
-msgstr "Depois do evento"
+msgstr "Não após"
 
 #: plugin/local.py:276
 msgid "Not before"
-msgstr "Perguntar sempre antes de enviar"
+msgstr "Não antes"
 
 #: plugin/local.py:277
 msgid "Custom offset"
@@ -1680,7 +1680,7 @@ msgstr "Semanal (Segunda)"
 
 #: plugin/local.py:296
 msgid "Reset count"
-msgstr "Restabelecer contadores"
+msgstr "Reiniciar contadores"
 
 #: plugin/local.py:297
 msgid "Require description to be unique"
@@ -1696,11 +1696,11 @@ msgstr "No mesmo serviço"
 
 #: plugin/local.py:300
 msgid "On any service"
-msgstr "Qualquer serviço/gravação"
+msgstr "Em qualquer serviço"
 
 #: plugin/local.py:301
 msgid "Any service/recording"
-msgstr "Qualquer serviço/gravação"
+msgstr "Qualquer serviço/a gravar"
 
 #: plugin/local.py:302
 msgid "Use a custom location"
@@ -1736,7 +1736,7 @@ msgstr "no Título"
 
 #: plugin/local.py:313
 msgid "in Shortdescription"
-msgstr "em Descrição curta"
+msgstr "na Descrição curta"
 
 #: plugin/local.py:314
 msgid "in Description"
@@ -1908,11 +1908,11 @@ msgstr "Visivelmente"
 
 #: plugin/local.py:369
 msgid "Picture in Picture"
-msgstr "PIP - Imagem na Imagem "
+msgstr "PIP-Imagem na Imagem "
 
 #: plugin/local.py:370
 msgid "Picture in Picture (hidden)"
-msgstr "PIP - Imagem na Imagem (escondido)"
+msgstr "PIP-Imagem na Imagem (escondido)"
 
 #: plugin/local.py:371
 msgid "Fake Recording"
@@ -1988,7 +1988,7 @@ msgstr "Escreva o nome do novo Bouquet"
 
 #: plugin/local.py:394
 msgid "Enter new name for the marker"
-msgstr "Escreva o nome da nova marca"
+msgstr "Escreva o novo nome do marcador"
 
 #: plugin/local.py:395
 msgid "Please enter filename"
@@ -2040,7 +2040,7 @@ msgstr "Sref"
 
 #: plugin/local.py:408
 msgid "Orbital Position"
-msgstr "Posição orbital"
+msgstr "Posição Orbital"
 
 #: plugin/local.py:410
 msgid "error! Loading Page"
@@ -2056,7 +2056,7 @@ msgstr "Evento não encontrado"
 
 #: plugin/local.py:413
 msgid "Show Picon in channel list"
-msgstr "Mostrar picons na Lista de Canais"
+msgstr "Mostrar Picon na Lista de Canais"
 
 #: plugin/local.py:415
 msgid "OpenWebif Browser Settings"
@@ -2116,7 +2116,7 @@ msgstr "OpenWebif url: http://o_seu_ip:porta"
 
 #: plugin/plugin.py:117
 msgid "OpenWebInterface Enabled"
-msgstr "OpenWebInterface ativado"
+msgstr "OpenWebInterface Ativado"
 
 #: plugin/plugin.py:124
 msgid "HTTP port"
@@ -2124,7 +2124,7 @@ msgstr "Porta HTTP"
 
 #: plugin/plugin.py:125
 msgid "Enable HTTP Authentication"
-msgstr "Ativar a autenticação HTTP"
+msgstr "Ativar a Autenticação HTTP"
 
 #: plugin/plugin.py:126
 msgid "Enable HTTPS"
@@ -2136,7 +2136,7 @@ msgstr "Porta HTTPS"
 
 #: plugin/plugin.py:129
 msgid "Enable HTTPS Authentication"
-msgstr "Ativar a autenticação HTTPS"
+msgstr "Ativar a Autenticação HTTPS"
 
 #: plugin/plugin.py:130
 msgid "Require client cert for HTTPS"
@@ -2144,7 +2144,7 @@ msgstr "Exigir certificado de cliente para HTTPS"
 
 #: plugin/plugin.py:132
 msgid "Enable Authentication for streaming"
-msgstr "Ativar a autenticação nas transmissões"
+msgstr "Ativar Autenticação nas transmissões"
 
 #: plugin/plugin.py:133
 msgid "Disable access for user root"
@@ -2168,7 +2168,7 @@ msgstr "Adicionar o nome do serviço à informação da stream"
 
 #: plugin/plugin.py:140
 msgid "Character encoding for EPG data"
-msgstr "Informação dos Carateres de Codificação para EPG"
+msgstr "Codificação de Carateres para dados EPG"
 
 #: plugin/plugin.py:149 plugin/plugin.py:208 plugin/plugin.py:210 plugin/plugin.py:212
 msgid "OpenWebif Configuration"
