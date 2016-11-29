@@ -13,7 +13,7 @@
 //* V 2.2 - update status label
 //* V 2.3 - fix #198
 //* V 2.4 - improve search fix #419
-//* V 2.5 - prepare support spacers #239 !! NOT FINISHED !!
+//* V 2.5 - prepare support spacers #239
 
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
@@ -316,11 +316,10 @@
 							var sref = val['servicereference'];
 							var m = (val['ismarker'] == 1) ? '<span style="float:right">(M)</span>' : '';
 							var name=val['servicename'];
-							// TODO
-							//var pos = val['pos'];
-							//if(val['ismarker'] == 2)
-							//	m= '<span style="float:right">(S)</span>';
-							//name = pos.toString() + ' - ' + name;
+							var pos = val['pos'];
+							if(val['ismarker'] == 2)
+								m= '<span style="float:right">(S)</span>';
+							name = pos.toString() + ' - ' + name;
 							if(name!='')
 								options.push( $('<li/>', {
 									class: "ui-widget-content",
@@ -475,8 +474,13 @@
 						mode: obj.mode,  
 						position: obj.position 
 					}, 
-					success: function () {}
+					success:self.renumberChannel
 				});
+			},
+
+			renumberChannel: function ()
+			{
+				//TODO
 			},
 
 			// Add selected services from left pane channels list to right pane channels list
@@ -557,10 +561,8 @@
 			addMarker: function () {
 				self._addMarker(false);
 			},
-			// FIXME : -> BouquetEditor.py
 			addSpacer: function () {
-				alert("Implementation not finished yet!");
-				//self._addMarker(true);
+				self._addMarker(true);
 			},
 			// Callback function for right pane add marker button
 			// Prompts for marker name, marker will be added before selected service
@@ -792,9 +794,6 @@
 				$('#btn-spacer-add').click(self.addSpacer);
 				$('#btn-marker-group-rename').click(self.renameMarkerGroup);
 				
-				// FIXME : remove if working
-				$('#btn-spacer-add').hide();
-
 				// Setup selection callback function for left pane providers list
 				// Triggers building services list for selected provider
 				$('#provider').selectable({
