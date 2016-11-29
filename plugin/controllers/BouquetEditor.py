@@ -314,7 +314,7 @@ class BouquetEditor(Source):
 		if name is None:
 			if not "SP" in param:
 				return (False, _("No marker-name given!"))
-			else
+			else:
 				return (False, _("Add Spacer not working currently"))
 		sRefBefore = eServiceReference()
 		if "sRefBefore" in param:
