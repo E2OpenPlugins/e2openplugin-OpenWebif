@@ -314,13 +314,13 @@ class BaseController(resource.Resource):
 
 		ret['extras'] = extras
 		theme = 'original'
-		ret['themes'] = False
 		if config.OpenWebif.webcache.theme.value:
-			ret['theme'] = config.OpenWebif.webcache.theme.value
+			theme = config.OpenWebif.webcache.theme.value
 		if not os.path.exists(getPublicPath('themes')):
 			if not ( theme == 'original' or theme == 'clear'):
-				ret['theme'] = 'original'
-		else:
-			ret['themes'] = True
+				theme = 'original'
+				config.OpenWebif.webcache.theme.value = theme
+				config.OpenWebif.webcache.theme.save()
+		ret['theme'] = theme
 		ret['webtv'] = os.path.exists(getPublicPath('webtv'))
 		return ret
