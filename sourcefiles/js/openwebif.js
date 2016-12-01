@@ -1899,7 +1899,7 @@ var SSHelperObj = function () {
 			$('#ssr_i').change(function() {
 				var t = $('#ssr_i').val();
 				SetLSValue('ssr_i',t);
-				ssr_i = parseInt(t);
+				self.ssr_i = parseInt(t);
 				if($('#ssr_s').is(':checked'))
 				{
 					clearInterval(self.screenshotInterval);
