@@ -412,7 +412,7 @@ var PlayerObj = function () {
 			_parent.appendChild(div);
 			vxgplayer(self.vxgplayerId, {
 				nmf_path: 'media_player.nmf',
-				nmf_src: '/webtv/media_player.nmf',
+				nmf_src: '/vxg/media_player.nmf',
 				latency: 300000,
 				aspect_ratio_mode: 1,
 				autohide: 3,

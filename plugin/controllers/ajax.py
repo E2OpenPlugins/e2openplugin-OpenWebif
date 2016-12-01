@@ -294,7 +294,7 @@ class AjaxController(BaseController):
 		else:
 			auth=''
 		vxgenabled = False
-		if fileExists(getPublicPath("/webtv/media_player.pexe")):
+		if fileExists(getPublicPath("/vxg/media_player.pexe")):
 			vxgenabled = True
 		transcoding = getTranscodingSupport()
 		transcoder_port = 0
