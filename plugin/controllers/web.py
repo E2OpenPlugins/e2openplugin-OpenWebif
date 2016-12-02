@@ -154,6 +154,8 @@ class WebController(BaseController):
 		return remoteControl(id, type, rcu)
 
 	def P_powerstate(self, request):
+		if "shift" in request.args.keys():
+			self.P_set_powerup_without_waking_tv(request)
 		if "newstate" in request.args.keys():
 			return setPowerState(self.session, request.args["newstate"][0])
 		return getStandbyState(self.session)
