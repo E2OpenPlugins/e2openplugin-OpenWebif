@@ -672,7 +672,8 @@ function zapChannel(sRef, sname) {
 }
 
 function toggleStandby() {
-	webapi_execute('api/powerstate?newstate=0' + (shiftbutton) ? '&shift=1':'' );
+	var sh = (shiftbutton) ? '&shift=1':'';
+	webapi_execute('api/powerstate?newstate=0'+sh);
 	setTimeout(getStatusInfo, 1500);
 }
 
