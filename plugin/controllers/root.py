@@ -50,6 +50,8 @@ class RootController(BaseController):
 			self.putChild("themes", static.File(getPublicPath() + "/themes"))
 		if os.path.exists(getPublicPath('webtv')):
 			self.putChild("webtv", static.File(getPublicPath() + "/webtv"))
+		if os.path.exists(getPublicPath('vxg')):
+			self.putChild("vxg", static.File(getPublicPath() + "/vxg"))
 		self.putChild("ipkg", IpkgController(session))
 		self.putChild("autotimer", ATController(session))
 		self.putChild("serienrecorder", SRController(session))
