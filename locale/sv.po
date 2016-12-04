@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2016-11-24 15:32+0100\n"
-"PO-Revision-Date: 2016-11-24 15:32+0100\n"
-"Last-Translator: neoatomic <neoatomic@users.noreply.github.com>\n"
+"PO-Revision-Date: 2016-12-04 01:45+0100\n"
+"Last-Translator: Svevrstt <svevrstt@gmail.com>\n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -15,77 +15,80 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
+# Vad nu det här kan vara bra för?
 #: plugin/controllers/BouquetEditor.py:82
 msgid "one two three four unknown command"
-msgstr ""
+msgstr "ett två tre fyra okänt kommando"
 
 #: plugin/controllers/BouquetEditor.py:88
 #: plugin/controllers/BouquetEditor.py:149
 #: plugin/controllers/BouquetEditor.py:194
 msgid "No bouquet name given!"
-msgstr ""
+msgstr "Namn saknas för favoritlistan!"
 
 #: plugin/controllers/BouquetEditor.py:118
 #, python-format
 msgid "Bouquet %s created."
-msgstr ""
+msgstr "Favoritlista %s  skapades."
 
 #: plugin/controllers/BouquetEditor.py:120
 msgid "Get mutable list for new created bouquet failed!"
-msgstr ""
+msgstr "Den föränderliga listan för en ny favorit kunde inte hämtas!"
 
 #: plugin/controllers/BouquetEditor.py:123
 #, python-format
 msgid "Bouquet %s already exists."
-msgstr ""
+msgstr "Favoritlistan %s finns redan."
 
 #: plugin/controllers/BouquetEditor.py:125
 #: plugin/controllers/BouquetEditor.py:435
 msgid "Bouquetlist is not editable!"
-msgstr ""
+msgstr "Favoritlistan kan inte redigeras!"
 
 #: plugin/controllers/BouquetEditor.py:127
 msgid "Multi-Bouquet is not enabled!"
-msgstr ""
+msgstr "Multi-favoritlista är inte aktiverad!"
 
 #: plugin/controllers/BouquetEditor.py:133
 msgid "No provider given!"
-msgstr ""
+msgstr "Ingen leverantör angavs!"
 
 #: plugin/controllers/BouquetEditor.py:180
 #, python-format
 msgid "Bouquet %s removed failed."
-msgstr ""
+msgstr "Borttagning av favoritlista %s misslyckades."
 
 #: plugin/controllers/BouquetEditor.py:182
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
 msgstr ""
+"Borttagning av favoritlista %s misslyckades. Distributören eller föränderlig "
+"lista är ogiltig."
 
 #: plugin/controllers/BouquetEditor.py:186
 #, python-format
 msgid "Bouquet %s deleted."
-msgstr ""
+msgstr "Favoritlistan %s togs bort."
 
 #: plugin/controllers/BouquetEditor.py:188
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
-msgstr ""
+msgstr "Fel: Favoritlistan %s kunde inte tas bort, OSError."
 
 #: plugin/controllers/BouquetEditor.py:204
 #: plugin/controllers/BouquetEditor.py:261
 msgid "No position given!"
-msgstr ""
+msgstr "Position angavs inte!"
 
 #: plugin/controllers/BouquetEditor.py:211
 #, python-format
 msgid "Bouquet %s moved."
-msgstr ""
+msgstr "Favoritlista %s flyttades."
 
 #: plugin/controllers/BouquetEditor.py:213
 #, python-format
 msgid "Bouquet %s can not be moved."
-msgstr ""
+msgstr "Favoritlista %s kan inte flyttas."
 
 #: plugin/controllers/BouquetEditor.py:219
 #: plugin/controllers/BouquetEditor.py:249
@@ -93,7 +96,7 @@ msgstr ""
 #: plugin/controllers/BouquetEditor.py:309
 #: plugin/controllers/BouquetEditor.py:455
 msgid "No bouquet given!"
-msgstr ""
+msgstr "Ingen favoritlista angavs!"
 
 #: plugin/controllers/BouquetEditor.py:225
 #: plugin/controllers/BouquetEditor.py:255
@@ -103,160 +106,161 @@ msgstr ""
 #: plugin/controllers/BouquetEditor.py:461
 #: plugin/controllers/BouquetEditor.py:498
 msgid "No service given!"
-msgstr ""
+msgstr "Ingen distributör angavs!"
 
 #: plugin/controllers/BouquetEditor.py:234
 #, python-format
 msgid "Service %s removed."
-msgstr ""
+msgstr "Distributör %s togs bort."
 
 #: plugin/controllers/BouquetEditor.py:242
 #, python-format
 msgid "Service %s removed from bouquet %s."
-msgstr ""
+msgstr "Distributör %s togs bort från favoritlistan %s."
 
 #: plugin/controllers/BouquetEditor.py:243
 #, python-format
 msgid "Service %s can not be removed."
-msgstr ""
+msgstr "Distributör %s kan inte tas bort."
 
 #: plugin/controllers/BouquetEditor.py:268
 #, python-format
 msgid "Service %s moved."
-msgstr ""
+msgstr "Distributör %s flyttades."
 
 #: plugin/controllers/BouquetEditor.py:269
 msgid "Service can not be moved."
-msgstr ""
+msgstr "Distributören kan inte tas bort."
 
 #: plugin/controllers/BouquetEditor.py:299
 #, python-format
 msgid "Service %s added."
-msgstr ""
+msgstr "Distributören %s lades till."
 
 #: plugin/controllers/BouquetEditor.py:302
 #, python-format
 msgid "Service %s already exists in bouquet %s."
-msgstr ""
+msgstr "Distributören %s finns redan i favoritlista %s."
 
 #: plugin/controllers/BouquetEditor.py:303
 msgid "This service can not be added."
-msgstr ""
+msgstr "Distributören kan inte läggas till."
 
 #: plugin/controllers/BouquetEditor.py:315
 msgid "No marker-name given!"
-msgstr ""
+msgstr "Bokmärkesnamnet angavs inte!"
 
 #: plugin/controllers/BouquetEditor.py:329
 msgid "Marker added."
-msgstr ""
+msgstr "Bokmärket lades till."
 
 #: plugin/controllers/BouquetEditor.py:331
 msgid "Internal error!"
-msgstr ""
+msgstr "Internt fel!"
 
 #: plugin/controllers/BouquetEditor.py:345
 msgid "No new servicename given!"
-msgstr ""
+msgstr "Ett nytt distributörsnamn angavs inte!"
 
 #: plugin/controllers/BouquetEditor.py:369
 msgid "Bouquet renamed successfully."
-msgstr ""
+msgstr "Namnet på favoritlistan ändrades."
 
 #: plugin/controllers/BouquetEditor.py:385
 msgid "Service renamed successfully."
-msgstr ""
+msgstr "Namnet på distributören ändrades."
 
 #: plugin/controllers/BouquetEditor.py:386
 msgid "Service can not be renamed."
-msgstr ""
+msgstr "Distributörens namn kan inte ändras."
 
 #: plugin/controllers/BouquetEditor.py:400
 msgid "No current service given!"
-msgstr ""
+msgstr "Ingen aktuell distributör angiven!"
 
 #: plugin/controllers/BouquetEditor.py:431
 msgid "Get mutable list for new created alternative failed!"
 msgstr ""
+"Den föränderliga listan för en ny alternativ distributör kunde inte hämtas!"
 
 #: plugin/controllers/BouquetEditor.py:433
 #, python-format
 msgid "Alternative %s created failed."
-msgstr ""
+msgstr "Misslyckades med att skapa alternativ distributör %s"
 
 #: plugin/controllers/BouquetEditor.py:447
 #, python-format
 msgid "Added %s to alternative service %s."
-msgstr ""
+msgstr "Lade till %s som alternativ distributör %s."
 
 #: plugin/controllers/BouquetEditor.py:478
 msgid "Service is not an alternative."
-msgstr ""
+msgstr "Distributören är inte en alternativ distributör."
 
 #: plugin/controllers/BouquetEditor.py:486
 msgid "All alternative services deleted."
-msgstr ""
+msgstr "Alla alternativa distributörer togs bort."
 
 #: plugin/controllers/BouquetEditor.py:492
 msgid "Parent Control is not activated."
-msgstr ""
+msgstr "Föräldrakontroll är inte aktiverat."
 
 #: plugin/controllers/BouquetEditor.py:505
 msgid "No Parent Control Setup Pin given!"
-msgstr ""
+msgstr "Ingen kod för föräldrakontroll angavs!"
 
 #: plugin/controllers/BouquetEditor.py:509
 #: plugin/controllers/BouquetEditor.py:511
 msgid "Parent Control Setup Pin is wrong!"
-msgstr ""
+msgstr "Koden för föräldrakontroll är fel!"
 
 #: plugin/controllers/BouquetEditor.py:526
 #, python-format
 msgid "Service %s is locked."
-msgstr ""
+msgstr "Distributören %s är låst."
 
 #: plugin/controllers/BouquetEditor.py:528
 #, python-format
 msgid "Bouquet %s is locked."
-msgstr ""
+msgstr "Favoritlistan %s är låst."
 
 #: plugin/controllers/BouquetEditor.py:530
 #, python-format
 msgid "%s %s is locked."
-msgstr ""
+msgstr "%s %s är låst."
 
 #: plugin/controllers/BouquetEditor.py:534
 #, python-format
 msgid "Service %s is unlocked."
-msgstr ""
+msgstr "Distributören %s är upplåst."
 
 #: plugin/controllers/BouquetEditor.py:536
 #, python-format
 msgid "Bouquet %s is unlocked."
-msgstr ""
+msgstr "Favoritlistan %s är upplåst."
 
 #: plugin/controllers/BouquetEditor.py:573
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
-msgstr ""
+msgstr "Fel vid förberedelse av säkerhetskopiering, filen %s saknas."
 
 #: plugin/controllers/BouquetEditor.py:579
 msgid "Error while preparing backup file."
-msgstr ""
+msgstr "Fel vid förberedelse av fil för säkerhetskopia."
 
 #: plugin/controllers/BouquetEditor.py:630
 msgid "Bouquet-settings were restored successfully"
-msgstr ""
+msgstr "Favoritlistans inställningar återskapades."
 
 #: plugin/controllers/BouquetEditor.py:632
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
-msgstr ""
+msgstr "Fel: %s skapades inte av WebBouquetEditor... "
 
 #: plugin/controllers/BouquetEditor.py:634
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
-msgstr ""
+msgstr "Fel: %s existerar inte. Därför akn återställning inte utföras..."
 
 #: plugin/controllers/base.py:248 plugin/local.py:181 plugin/local.py:325
 msgid "Settings"
@@ -268,7 +272,7 @@ msgstr "LCD4Linux inställning"
 
 #: plugin/controllers/base.py:279
 msgid "OSCam Webinterface"
-msgstr ""
+msgstr "Webbgränssnitt för OSCam "
 
 #: plugin/controllers/base.py:283
 msgid "AutoTimer"
@@ -284,24 +288,24 @@ msgstr "EPGRefresh"
 
 #: plugin/controllers/ipkg.py:238
 msgid "Error upload File"
-msgstr ""
+msgstr "Fel vid uppladdning av fil"
 
 #: plugin/controllers/ipkg.py:241
 msgid "wrong filetype"
-msgstr ""
+msgstr "Fel filtyp"
 
 #: plugin/controllers/ipkg.py:255
 msgid "Error writing File"
-msgstr ""
+msgstr "Fel när filen skrevs"
 
 #: plugin/controllers/models/info.py:58
 msgid "SLAAC"
-msgstr ""
+msgstr "SLAAC"
 
 #: plugin/controllers/models/info.py:65 plugin/controllers/models/info.py:76
 #: plugin/controllers/models/info.py:83
 msgid "static"
-msgstr ""
+msgstr "statisk"
 
 #: plugin/controllers/models/info.py:67 plugin/controllers/models/info.py:85
 #: plugin/local.py:80
@@ -310,11 +314,11 @@ msgstr "DHCP"
 
 #: plugin/controllers/models/info.py:69 plugin/controllers/models/info.py:87
 msgid "manual/disabled"
-msgstr ""
+msgstr "manuell/avaktiverad"
 
 #: plugin/controllers/models/info.py:95 plugin/controllers/models/info.py:102
 msgid "unknown"
-msgstr ""
+msgstr "okänd"
 
 #: plugin/controllers/models/info.py:136 plugin/local.py:115
 msgid "IPv4-only kernel"
@@ -330,12 +334,12 @@ msgstr "inga/endast IPv4-nätverk"
 
 #: plugin/controllers/models/info.py:287 plugin/controllers/models/info.py:290
 msgid "kB"
-msgstr ""
+msgstr "kB"
 
 #: plugin/controllers/models/info.py:291 plugin/controllers/models/info.py:414
 #, python-format
 msgid "%s free / %s total"
-msgstr ""
+msgstr "%s ledigt / %s totalt"
 
 #: plugin/controllers/models/info.py:326 plugin/local.py:65
 msgid "Chipset"
@@ -348,22 +352,24 @@ msgstr "Frontprocessorversion"
 #: plugin/controllers/models/info.py:377 plugin/controllers/models/info.py:388
 #: plugin/controllers/models/info.py:406
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: plugin/controllers/models/info.py:380 plugin/controllers/models/info.py:386
 #: plugin/controllers/models/info.py:401 plugin/controllers/models/info.py:404
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: plugin/controllers/models/info.py:384 plugin/controllers/models/info.py:396
 #: plugin/controllers/models/info.py:398
 msgid "TB"
-msgstr ""
+msgstr "TB"
 
+# Lämnas oöversatt t.v. eftersom begreppen kan vara mer kända på engelska än svenska. Står för behörigheten: Läs- och skriv-behörighet
 #: plugin/controllers/models/info.py:442
 msgid "r/w"
 msgstr ""
 
+# Lämnas oöversatt t.v. eftersom begreppen kan vara mer kända på engelska än svenska. Står för behörigheten: Enbart läsbehörighet
 #: plugin/controllers/models/info.py:446
 msgid "r/o"
 msgstr ""
@@ -455,19 +461,19 @@ msgstr "Kunde inte hitta någon passande timer"
 #: plugin/controllers/models/timers.py:339
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
-msgstr ""
+msgstr "Timern '%s' kan inte aktiveras p.g.a. en konflikt"
 
 #: plugin/controllers/models/timers.py:345
 #, python-format
 msgid "Timer '%s' already exists!"
-msgstr ""
+msgstr "Timern '%s' finns redan!"
 
 #: plugin/controllers/models/timers.py:351
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
-msgstr ""
+msgstr "Timern '%s' har registrerats! Inte avaktiverad!"
 
-# The word framgångsrikt to get a string to  end the sentence
+# The word "framgångsrikt" to get a string to end the sentence.
 #: plugin/controllers/models/timers.py:359
 #, python-format
 msgid "The timer '%s' has been %s successfully"
@@ -523,7 +529,7 @@ msgstr "Insomningstimer är avaktiverad"
 #: plugin/controllers/models/timers.py:662
 #: plugin/controllers/models/timers.py:689
 msgid "SleepTimer error"
-msgstr ""
+msgstr "Fel på insomningstimern"
 
 #: plugin/controllers/models/timers.py:701
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
@@ -545,15 +551,15 @@ msgstr "Insomningstimer är ställd på %d minuter"
 #: plugin/controllers/models/timers.py:717
 #: plugin/controllers/models/timers.py:798
 msgid "SleepTimer Error"
-msgstr ""
+msgstr "Fel på insomningstimern"
 
 #: plugin/controllers/models/timers.py:826
 msgid "Error parsing vps.xml"
-msgstr ""
+msgstr "vps.xml feltolkas"
 
 #: plugin/controllers/models/timers.py:831
 msgid "VPS plugin not found"
-msgstr ""
+msgstr "Insticksprogrammet för VPS kunde hittas"
 
 #: plugin/controllers/web.py:63
 #, python-format
@@ -790,7 +796,7 @@ msgstr "Boxens drifttid"
 
 #: plugin/local.py:60
 msgid "Brand"
-msgstr "Märke"
+msgstr "Fabrikat"
 
 #: plugin/local.py:61 plugin/plugin.py:101
 msgid "Cancel"
@@ -835,7 +841,7 @@ msgstr "Pågående aktivitet"
 
 #: plugin/local.py:72
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: plugin/local.py:73
 msgid "Deep-Standby"
@@ -871,7 +877,7 @@ msgstr "Slå av timern"
 
 #: plugin/local.py:82
 msgid "disabled"
-msgstr ""
+msgstr "avaktiverat"
 
 #: plugin/local.py:83
 msgid "Distro"
@@ -895,7 +901,7 @@ msgstr "Ladda ner spellista för"
 
 #: plugin/local.py:88
 msgid "Drivers"
-msgstr "Verson av drivrutinerna"
+msgstr "Version av drivrutinerna"
 
 #: plugin/local.py:89
 msgid "Duration"
@@ -1184,7 +1190,7 @@ msgstr "Byt namn på inspelningen"
 
 #: plugin/local.py:164
 msgid "Really rename the recording"
-msgstr ""
+msgstr "Skall namnet på inspelningen verkligen bytas"
 
 #: plugin/local.py:165
 msgid "Repeated"
@@ -1230,7 +1236,7 @@ msgstr "Sök i IMDb"
 
 #: plugin/local.py:175
 msgid "Search KinoPoisk"
-msgstr ""
+msgstr "Sök i KinoPoisk"
 
 #: plugin/local.py:176
 msgid "seconds"
@@ -1248,7 +1254,7 @@ msgstr "Väntar på svar..."
 msgid "Send a Message"
 msgstr "Skicka ett meddelande"
 
-# Översätts ofta Leverantör
+# Översätts ofta till Leverantör i stället.
 #: plugin/local.py:180
 msgid "Service"
 msgstr "Distributör"
@@ -1384,7 +1390,7 @@ msgstr "omkodad"
 
 #: plugin/local.py:214
 msgid "Transcode"
-msgstr ""
+msgstr "Koda om"
 
 #: plugin/local.py:215
 msgid "Tuner Bit Error Rate BER"
@@ -1811,7 +1817,6 @@ msgstr "Vill du verkligen ta bort denna AutoTimer"
 msgid "Label series"
 msgstr "Lägg till avsnittsinformation för TV-serier"
 
-# New Autotimer Setting Window name (not enabled to transfer atm)
 #: plugin/local.py:329
 msgid "AutoTimer Settings"
 msgstr "Inställningar för AutoTimer"
@@ -2028,117 +2033,126 @@ msgstr "Vänligen ange ett filnamn"
 msgid "Do you really want to restore from file"
 msgstr "Vill du verkligen återställa från en fil"
 
+# Lämnas oöversatt t.v.
 #: plugin/local.py:398
 msgid "via"
 msgstr ""
 
 #: plugin/local.py:399
 msgid "Record+ZAP"
-msgstr ""
+msgstr "Spela in & zappa"
 
+# Lämnas oöversatt t.v.
 #: plugin/local.py:400
 msgid "Pmtpid"
 msgstr ""
 
+# Lämnas oöversatt t.v.
 #: plugin/local.py:401
 msgid "Apid"
 msgstr ""
 
+# Lämnas oöversatt t.v.
 #: plugin/local.py:402
 msgid "Vpid"
 msgstr ""
 
+# Lämnas oöversatt t.v.
 #: plugin/local.py:403
 msgid "Pcrpid"
 msgstr ""
 
+# Lämnas oöversatt t.v.
 #: plugin/local.py:404
 msgid "Tsid"
 msgstr ""
 
+# Lämnas oöversatt t.v.
 #: plugin/local.py:405
 msgid "Onid"
 msgstr ""
 
+# Lämnas oöversatt t.v.
 #: plugin/local.py:406
 msgid "Sid"
 msgstr ""
 
+# Lämnas oöversatt t.v.
 #: plugin/local.py:407
 msgid "Sref"
 msgstr ""
 
 #: plugin/local.py:408
 msgid "Orbital Position"
-msgstr ""
+msgstr "Omloppsbanans position"
 
 #: plugin/local.py:410
 msgid "error! Loading Page"
-msgstr ""
+msgstr "Fel! Laddar sidan"
 
 #: plugin/local.py:411
 msgid "Timer Added"
-msgstr ""
+msgstr "Timer tillagd"
 
 #: plugin/local.py:412
 msgid "Event not found"
-msgstr ""
+msgstr "Aktiviteten hittades inte"
 
 #: plugin/local.py:413
 msgid "Show Picon in channel list"
-msgstr ""
+msgstr "Visa programikon i kanallistan"
 
 #: plugin/local.py:415
 msgid "OpenWebif Browser Settings"
-msgstr ""
+msgstr "OpenWebifs inställningar för webbläsare"
 
 #: plugin/local.py:416
 msgid "OpenWebif Settings"
-msgstr ""
+msgstr "Inställningar för OpenWebif"
 
 #: plugin/local.py:417
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: plugin/local.py:418
 msgid "Show Picons in channel list"
-msgstr ""
+msgstr "Visa programikoner i kanallistan"
 
 #: plugin/local.py:419
 msgid "Spinner"
-msgstr ""
+msgstr "Vänta-ikon"
 
 #: plugin/local.py:420
 msgid "Display duration (s)"
-msgstr ""
+msgstr "Tid att visa (s)"
 
 #: plugin/local.py:422
 msgid "Display Mode"
-msgstr ""
+msgstr "Visningsläge"
 
 #: plugin/local.py:423
 msgid "TV Guide"
-msgstr ""
+msgstr "TV tablå"
 
 #: plugin/local.py:424
 msgid "Timeline"
-msgstr ""
+msgstr "Tidslinje"
 
 #: plugin/local.py:425
 msgid "Web TV"
-msgstr ""
+msgstr "Webb-TV"
 
 #: plugin/local.py:427
 msgid "Link Speed"
-msgstr ""
+msgstr "Länkhastighet"
 
 #: plugin/local.py:428
 msgid "Network Shares"
-msgstr ""
+msgstr "Delade nätverksresurser"
 
 #: plugin/local.py:429
 msgid "using"
-msgstr ""
+msgstr "användning"
 
 #: plugin/plugin.py:103
 msgid "OpenWebif url: http://yourip:port"
@@ -2146,7 +2160,7 @@ msgstr "OpenWebif url: http://din_ipadress:port"
 
 #: plugin/plugin.py:117
 msgid "OpenWebInterface Enabled"
-msgstr "OpenWebif är aktiverat"
+msgstr "OpenWebif är aktiverad"
 
 #: plugin/plugin.py:124
 msgid "HTTP port"
@@ -2182,11 +2196,11 @@ msgstr "Slå av åtkomst för rootanvändaren"
 
 #: plugin/plugin.py:135
 msgid "Without auth only local access is allowed!"
-msgstr ""
+msgstr "Endast lokal åtkomst är tillåten utan inloggning!"
 
 #: plugin/plugin.py:136
 msgid "Enable access from VPNs"
-msgstr ""
+msgstr "Aktivera åtkomst från VPN"
 
 #: plugin/plugin.py:137
 msgid "Enable Parental Control"
