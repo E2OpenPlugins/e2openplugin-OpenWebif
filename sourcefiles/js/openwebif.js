@@ -759,16 +759,16 @@ function getStatusInfo() {
 			status = "<a href='#' onClick='load_maincontent(\"ajax/timers\"); return false;'><div title='" + tstr_rec_status + statusinfo['Recording_list'] + "' class='led-box'><div class='led-red'></div></div></a>";
 		}
 		
-		status += "<div class='pwrbtncontout'><div class='pwrbtncont' title='" + tit + "'><label class='label pwrbtn'><input type='checkbox' "+sb+" id='pwrbtn' onchange='toggleStandby();return true;' /><div class='pwrbtn-control'></div></label></div></div>";
-		/*
+		//status += "<div class='pwrbtncontout'><div class='pwrbtncont' title='" + tit + "'><label class='label pwrbtn'><input type='checkbox' "+sb+" id='pwrbtn' onchange='toggleStandby();return true;' /><div class='pwrbtn-control'></div></label></div></div>";
+		
 		status += "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_";
 		if (statusinfo['inStandby'] == 'true') {
 			status += "standby.png' title='" + tstr_on + "' alt='" + tstr_standby;
 		} else {
 			status += "on.png' title='" + tstr_standby + "' alt='" + tstr_on;
 		}
-		status += "' width='58' height='24' /></a>";
-		*/
+		status += "' width='56' height='29' /></a>";
+		
 		$("#osd_status").html(status);
 	} , error: function() {
 		$("#osd, #osd_bottom").html("");

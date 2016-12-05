@@ -1,5 +1,9 @@
-## Version 1.1.0
+## Version 1.2.0
 ## (in development)
+* fix shift detection on standby button
+* add missing theme images
+
+## Version 1.1.0
 * reduce package size
 * allow remove mobile, webtv, themes without any impact to reduce the package size again
 -> remove the folder /public/webtv and/or mobile and/or themes 
@@ -9,13 +13,14 @@
 * now button in timeline multiepg / #466
 * show timer in timeline multiepg / #460
 
+### TODO
+* powertimer api
+* improve package manager
+
 ## Version 1.0.4
 * improve access security
 * add package manager
 * use jquery UI offline
-
-### TODO
-* powertimer api
 
 ## Version 1.0.3
 * add web tv / #422
