@@ -2,7 +2,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2016-11-24 15:32+0100\n"
-"PO-Revision-Date: 2016-12-04 01:45+0100\n"
 "Last-Translator: Svevrstt <svevrstt@gmail.com>\n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -20,8 +19,7 @@ msgstr ""
 msgid "one two three four unknown command"
 msgstr "ett två tre fyra okänt kommando"
 
-#: plugin/controllers/BouquetEditor.py:88
-#: plugin/controllers/BouquetEditor.py:149
+#: plugin/controllers/BouquetEditor.py:88 plugin/controllers/BouquetEditor.py:149
 #: plugin/controllers/BouquetEditor.py:194
 msgid "No bouquet name given!"
 msgstr "Namn saknas för favoritlistan!"
@@ -40,8 +38,7 @@ msgstr "Den föränderliga listan för en ny favorit kunde inte hämtas!"
 msgid "Bouquet %s already exists."
 msgstr "Favoritlistan %s finns redan."
 
-#: plugin/controllers/BouquetEditor.py:125
-#: plugin/controllers/BouquetEditor.py:435
+#: plugin/controllers/BouquetEditor.py:125 plugin/controllers/BouquetEditor.py:435
 msgid "Bouquetlist is not editable!"
 msgstr "Favoritlistan kan inte redigeras!"
 
@@ -61,9 +58,7 @@ msgstr "Borttagning av favoritlista %s misslyckades."
 #: plugin/controllers/BouquetEditor.py:182
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr ""
-"Borttagning av favoritlista %s misslyckades. Distributören eller föränderlig "
-"lista är ogiltig."
+msgstr "Borttagning av favoritlista %s misslyckades. Distributören eller föränderlig lista är ogiltig."
 
 #: plugin/controllers/BouquetEditor.py:186
 #, python-format
@@ -75,8 +70,7 @@ msgstr "Favoritlistan %s togs bort."
 msgid "Error: Bouquet %s could not deleted, OSError."
 msgstr "Fel: Favoritlistan %s kunde inte tas bort, OSError."
 
-#: plugin/controllers/BouquetEditor.py:204
-#: plugin/controllers/BouquetEditor.py:261
+#: plugin/controllers/BouquetEditor.py:204 plugin/controllers/BouquetEditor.py:261
 msgid "No position given!"
 msgstr "Position angavs inte!"
 
@@ -90,20 +84,15 @@ msgstr "Favoritlista %s flyttades."
 msgid "Bouquet %s can not be moved."
 msgstr "Favoritlista %s kan inte flyttas."
 
-#: plugin/controllers/BouquetEditor.py:219
-#: plugin/controllers/BouquetEditor.py:249
-#: plugin/controllers/BouquetEditor.py:275
-#: plugin/controllers/BouquetEditor.py:309
+#: plugin/controllers/BouquetEditor.py:219 plugin/controllers/BouquetEditor.py:249
+#: plugin/controllers/BouquetEditor.py:275 plugin/controllers/BouquetEditor.py:309
 #: plugin/controllers/BouquetEditor.py:455
 msgid "No bouquet given!"
 msgstr "Ingen favoritlista angavs!"
 
-#: plugin/controllers/BouquetEditor.py:225
-#: plugin/controllers/BouquetEditor.py:255
-#: plugin/controllers/BouquetEditor.py:281
-#: plugin/controllers/BouquetEditor.py:339
-#: plugin/controllers/BouquetEditor.py:397
-#: plugin/controllers/BouquetEditor.py:461
+#: plugin/controllers/BouquetEditor.py:225 plugin/controllers/BouquetEditor.py:255
+#: plugin/controllers/BouquetEditor.py:281 plugin/controllers/BouquetEditor.py:339
+#: plugin/controllers/BouquetEditor.py:397 plugin/controllers/BouquetEditor.py:461
 #: plugin/controllers/BouquetEditor.py:498
 msgid "No service given!"
 msgstr "Ingen distributör angavs!"
@@ -180,8 +169,7 @@ msgstr "Ingen aktuell distributör angiven!"
 
 #: plugin/controllers/BouquetEditor.py:431
 msgid "Get mutable list for new created alternative failed!"
-msgstr ""
-"Den föränderliga listan för en ny alternativ distributör kunde inte hämtas!"
+msgstr "Den föränderliga listan för en ny alternativ distributör kunde inte hämtas!"
 
 #: plugin/controllers/BouquetEditor.py:433
 #, python-format
@@ -209,8 +197,7 @@ msgstr "Föräldrakontroll är inte aktiverat."
 msgid "No Parent Control Setup Pin given!"
 msgstr "Ingen kod för föräldrakontroll angavs!"
 
-#: plugin/controllers/BouquetEditor.py:509
-#: plugin/controllers/BouquetEditor.py:511
+#: plugin/controllers/BouquetEditor.py:509 plugin/controllers/BouquetEditor.py:511
 msgid "Parent Control Setup Pin is wrong!"
 msgstr "Koden för föräldrakontroll är fel!"
 
@@ -260,7 +247,7 @@ msgstr "Fel: %s skapades inte av WebBouquetEditor... "
 #: plugin/controllers/BouquetEditor.py:634
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
-msgstr "Fel: %s existerar inte. Därför akn återställning inte utföras..."
+msgstr "Fel: %s existerar inte. Därför kan återställning inte utföras..."
 
 #: plugin/controllers/base.py:248 plugin/local.py:181 plugin/local.py:325
 msgid "Settings"
@@ -307,8 +294,7 @@ msgstr "SLAAC"
 msgid "static"
 msgstr "statisk"
 
-#: plugin/controllers/models/info.py:67 plugin/controllers/models/info.py:85
-#: plugin/local.py:80
+#: plugin/controllers/models/info.py:67 plugin/controllers/models/info.py:85 plugin/local.py:80
 msgid "DHCP"
 msgstr "DHCP"
 
@@ -453,8 +439,7 @@ msgstr "Kunde inte hitta någon timer '%s' med angiven start-och stopptid"
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Timern '%s' togs bort"
 
-#: plugin/controllers/models/timers.py:321
-#: plugin/controllers/models/timers.py:365
+#: plugin/controllers/models/timers.py:321 plugin/controllers/models/timers.py:365
 msgid "No matching Timer found"
 msgstr "Kunde inte hitta någon passande timer"
 
@@ -516,18 +501,15 @@ msgstr "Odefinierad instruktion: '%s'"
 msgid "PowerTimer feature not available"
 msgstr "Funktionen för att hantera PowerTimer saknas"
 
-#: plugin/controllers/models/timers.py:657
-#: plugin/controllers/models/timers.py:683
+#: plugin/controllers/models/timers.py:657 plugin/controllers/models/timers.py:683
 msgid "Sleeptimer is enabled"
 msgstr "Insommningstimer är aktiverad"
 
-#: plugin/controllers/models/timers.py:657
-#: plugin/controllers/models/timers.py:683
+#: plugin/controllers/models/timers.py:657 plugin/controllers/models/timers.py:683
 msgid "Sleeptimer is disabled"
 msgstr "Insomningstimer är avaktiverad"
 
-#: plugin/controllers/models/timers.py:662
-#: plugin/controllers/models/timers.py:689
+#: plugin/controllers/models/timers.py:662 plugin/controllers/models/timers.py:689
 msgid "SleepTimer error"
 msgstr "Fel på insomningstimern"
 
@@ -535,21 +517,18 @@ msgstr "Fel på insomningstimern"
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr "FEL: Kan inte ställa in insomningstimer medan enheten är i viloläge"
 
-#: plugin/controllers/models/timers.py:706
-#: plugin/controllers/models/timers.py:775
+#: plugin/controllers/models/timers.py:706 plugin/controllers/models/timers.py:775
 #: plugin/controllers/models/timers.py:793
 msgid "Sleeptimer has been disabled"
 msgstr "Insomningstimer har avaktiverats"
 
-#: plugin/controllers/models/timers.py:712
-#: plugin/controllers/models/timers.py:775
+#: plugin/controllers/models/timers.py:712 plugin/controllers/models/timers.py:775
 #: plugin/controllers/models/timers.py:788
 #, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Insomningstimer är ställd på %d minuter"
 
-#: plugin/controllers/models/timers.py:717
-#: plugin/controllers/models/timers.py:798
+#: plugin/controllers/models/timers.py:717 plugin/controllers/models/timers.py:798
 msgid "SleepTimer Error"
 msgstr "Fel på insomningstimern"
 
@@ -559,7 +538,7 @@ msgstr "vps.xml feltolkas"
 
 #: plugin/controllers/models/timers.py:831
 msgid "VPS plugin not found"
-msgstr "Insticksprogrammet för VPS kunde hittas"
+msgstr "Insticksprogrammet för VPS kunde inte hittas"
 
 #: plugin/controllers/web.py:63
 #, python-format
@@ -1217,8 +1196,7 @@ msgstr "Satelliter"
 msgid "Satfinder"
 msgstr "Satfinder"
 
-#: plugin/local.py:171 plugin/local.py:321 plugin/local.py:373
-#: plugin/plugin.py:102
+#: plugin/local.py:171 plugin/local.py:321 plugin/local.py:373 plugin/plugin.py:102
 msgid "Save"
 msgstr "Spara"
 
@@ -1527,9 +1505,8 @@ msgstr ""
 # Not translating licence information
 #: plugin/local.py:247
 msgid ""
-"All Files of this Software are open source software; you can redistribute it "
-"and/or modify it under the terms of the GNU General Public License version 2 "
-"as published by the Free Software Foundation."
+"All Files of this Software are open source software; you can redistribute it and/or modify it under "
+"the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
 msgstr ""
 
 #: plugin/local.py:248
@@ -2214,8 +2191,7 @@ msgstr "Lägg till distributörens namn till strömningsinformationen"
 msgid "Character encoding for EPG data"
 msgstr "Teckenkodning av EPG-data"
 
-#: plugin/plugin.py:149 plugin/plugin.py:208 plugin/plugin.py:210
-#: plugin/plugin.py:212
+#: plugin/plugin.py:149 plugin/plugin.py:208 plugin/plugin.py:210 plugin/plugin.py:212
 msgid "OpenWebif Configuration"
 msgstr "Inställningar för OpenWebif"
 
