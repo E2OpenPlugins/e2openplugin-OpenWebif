@@ -225,7 +225,13 @@ class AjaxController(BaseController):
 		return ret
 
 	def P_multiepg(self, request):
-		bouq = getBouquets("tv")
+		epgmode = "tv"
+		if "epgmode" in request.args.keys():
+			epgmode = request.args["epgmode"][0]
+			if epgmode not in ["tv", "radio"]:
+				epgmode = "tv"
+				
+		bouq = getBouquets(epgmode)
 		if "bref" not in request.args.keys():
 			bref = bouq['bouquets'][0][0]
 		else:
@@ -252,6 +258,7 @@ class AjaxController(BaseController):
 		epg['bref'] = bref
 		epg['day'] = day
 		epg['mode'] = mode
+		epg['epgmode'] = epgmode
 		return epg
 
 	def P_at(self, request):
