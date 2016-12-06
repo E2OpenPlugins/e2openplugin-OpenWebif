@@ -202,8 +202,9 @@ class WebController(BaseController):
 			count = 0
 			for bouquet in bouquets["services"]:
 				for service in bouquet["subservices"]:
-					service["servicename"] = "%d - %s" % (count + 1, service["servicename"])
-					count += 1
+					if not int(service["servicereference"].split(":")[1]) & 64:
+						service["servicename"] = "%d - %s" % (count + 1, service["servicename"])
+						count += 1
 			return bouquets
 		return bouquets
 
