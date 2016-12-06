@@ -229,10 +229,10 @@ class BaseController(resource.Resource):
 					oport = i.split(":")[1].strip()
 				else:
 					continue
-		if owebif == "yes" and oport is not "0":
-			return opath
-		else:
-			return None
+		if owebif == "yes" and oport is not "0" and opath is not None:
+			if fileExists(opath):
+				return opath
+		return None
 
 	def prepareMainTemplate(self, request):
 		# here will be generated the dictionary for the main template
