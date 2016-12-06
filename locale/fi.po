@@ -1,0 +1,2209 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenWebif\n"
+"POT-Creation-Date: 2016-11-24 15:30+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Samzam <http://www.world-of-satellite.com>\n"
+"Language-Team: \n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ../plugin\n"
+
+#: plugin/controllers/BouquetEditor.py:82
+msgid "one two three four unknown command"
+msgstr "yksi, kaksi, kolme, tuntematon komento"
+
+#: plugin/controllers/BouquetEditor.py:88
+#: plugin/controllers/BouquetEditor.py:149
+#: plugin/controllers/BouquetEditor.py:194
+msgid "No bouquet name given!"
+msgstr "Suosikkilistalla ei ole nimeä!"
+
+#: plugin/controllers/BouquetEditor.py:118
+#, python-format
+msgid "Bouquet %s created."
+msgstr "Suosikkilista %s luotu."
+
+#: plugin/controllers/BouquetEditor.py:120
+msgid "Get mutable list for new created bouquet failed!"
+msgstr "Listanmuutos uudelle suosikkilistalle epäonnistui!"
+
+#: plugin/controllers/BouquetEditor.py:123
+#, python-format
+msgid "Bouquet %s already exists."
+msgstr "Suosikkilista %s on jo olemassa."
+
+#: plugin/controllers/BouquetEditor.py:125
+#: plugin/controllers/BouquetEditor.py:435
+msgid "Bouquetlist is not editable!"
+msgstr "Suosikkilista ei ole muokattavissa!"
+
+#: plugin/controllers/BouquetEditor.py:127
+msgid "Multi-Bouquet is not enabled!"
+msgstr "Useiden suosikkilistojen käyttö ei ole päällä!"
+
+#: plugin/controllers/BouquetEditor.py:133
+msgid "No provider given!"
+msgstr "Palveluntarjoajaa ei ole annettu!"
+
+#: plugin/controllers/BouquetEditor.py:180
+#, python-format
+msgid "Bouquet %s removed failed."
+msgstr "Suosikkilistan %s poisto epäonnistui."
+
+#: plugin/controllers/BouquetEditor.py:182
+#, python-format
+msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
+msgstr ""
+"Suosikkilistan %s poisto epäonnistui, kanavareferenssi tai listanmuutos ole "
+"hyväksyttävissä."
+
+#: plugin/controllers/BouquetEditor.py:186
+#, python-format
+msgid "Bouquet %s deleted."
+msgstr "Suosikkilista %s poistettu."
+
+#: plugin/controllers/BouquetEditor.py:188
+#, python-format
+msgid "Error: Bouquet %s could not deleted, OSError."
+msgstr "Virhe: Suosikkilistaa %s ei voi poistaa. Käyttöjärjestelmävirhe."
+
+#: plugin/controllers/BouquetEditor.py:204
+#: plugin/controllers/BouquetEditor.py:261
+msgid "No position given!"
+msgstr "Sijaintia ei ole annettu!"
+
+#: plugin/controllers/BouquetEditor.py:211
+#, python-format
+msgid "Bouquet %s moved."
+msgstr "Suosikkilista %s siirretty."
+
+#: plugin/controllers/BouquetEditor.py:213
+#, python-format
+msgid "Bouquet %s can not be moved."
+msgstr "Suosikkilistaa %s ei voi siirtää."
+
+#: plugin/controllers/BouquetEditor.py:219
+#: plugin/controllers/BouquetEditor.py:249
+#: plugin/controllers/BouquetEditor.py:275
+#: plugin/controllers/BouquetEditor.py:309
+#: plugin/controllers/BouquetEditor.py:455
+msgid "No bouquet given!"
+msgstr "Suosikkilistaa ei ole annettu!"
+
+#: plugin/controllers/BouquetEditor.py:225
+#: plugin/controllers/BouquetEditor.py:255
+#: plugin/controllers/BouquetEditor.py:281
+#: plugin/controllers/BouquetEditor.py:339
+#: plugin/controllers/BouquetEditor.py:397
+#: plugin/controllers/BouquetEditor.py:461
+#: plugin/controllers/BouquetEditor.py:498
+msgid "No service given!"
+msgstr "Kanavaa ei ole annettu!"
+
+#: plugin/controllers/BouquetEditor.py:234
+#, python-format
+msgid "Service %s removed."
+msgstr "Kanava %s poistettu."
+
+#: plugin/controllers/BouquetEditor.py:242
+#, python-format
+msgid "Service %s removed from bouquet %s."
+msgstr "Kanava %s poistettu suosikkilistalta %s."
+
+#: plugin/controllers/BouquetEditor.py:243
+#, python-format
+msgid "Service %s can not be removed."
+msgstr "Kanavaa %s ei voi poistaa."
+
+#: plugin/controllers/BouquetEditor.py:268
+#, python-format
+msgid "Service %s moved."
+msgstr "Kanava %s siirretty."
+
+#: plugin/controllers/BouquetEditor.py:269
+msgid "Service can not be moved."
+msgstr "Kanavaa ei voi siirtää."
+
+#: plugin/controllers/BouquetEditor.py:299
+#, python-format
+msgid "Service %s added."
+msgstr "Kanava %s lisätty."
+
+#: plugin/controllers/BouquetEditor.py:302
+#, python-format
+msgid "Service %s already exists in bouquet %s."
+msgstr "Kanava %s on jo suosikkilistalla %s."
+
+#: plugin/controllers/BouquetEditor.py:303
+msgid "This service can not be added."
+msgstr "Tätä kanavaa ei voi lisätä."
+
+#: plugin/controllers/BouquetEditor.py:315
+msgid "No marker-name given!"
+msgstr "Väliotsikolle ei ole annettu nimeä!"
+
+#: plugin/controllers/BouquetEditor.py:329
+msgid "Marker added."
+msgstr "Väliotsikko lisätty."
+
+#: plugin/controllers/BouquetEditor.py:331
+msgid "Internal error!"
+msgstr "Sisäinen virhe!"
+
+#: plugin/controllers/BouquetEditor.py:345
+msgid "No new servicename given!"
+msgstr "Kanavanimeä ei ole annettu!"
+
+#: plugin/controllers/BouquetEditor.py:369
+msgid "Bouquet renamed successfully."
+msgstr "Suosikkilistan uudelleen nimeäminen onnistui."
+
+#: plugin/controllers/BouquetEditor.py:385
+msgid "Service renamed successfully."
+msgstr "Kanavan uudelleen nimeäminen onnistui."
+
+#: plugin/controllers/BouquetEditor.py:386
+msgid "Service can not be renamed."
+msgstr "Kanavaa ei voi uudelleen nimetä."
+
+#: plugin/controllers/BouquetEditor.py:400
+msgid "No current service given!"
+msgstr "Nykyistä kanavaa ei ole annettu!"
+
+#: plugin/controllers/BouquetEditor.py:431
+msgid "Get mutable list for new created alternative failed!"
+msgstr "Vaihtoehtoisen kanavan muutos suosikkilistaan epäonnistui!"
+
+#: plugin/controllers/BouquetEditor.py:433
+#, python-format
+msgid "Alternative %s created failed."
+msgstr "Vaihtoehdon %s lisääminen epäonnistui."
+
+#: plugin/controllers/BouquetEditor.py:447
+#, python-format
+msgid "Added %s to alternative service %s."
+msgstr "Lisätty %s vaihtoehdoksi kanavalle %s."
+
+#: plugin/controllers/BouquetEditor.py:478
+msgid "Service is not an alternative."
+msgstr "Kanava ei ole vaihtoehtoinen."
+
+#: plugin/controllers/BouquetEditor.py:486
+msgid "All alternative services deleted."
+msgstr "Kaikki vaihtoehtoiset kanavat poistettu."
+
+#: plugin/controllers/BouquetEditor.py:492
+msgid "Parent Control is not activated."
+msgstr "Lapsilukkoa ei ole aktivoitu."
+
+#: plugin/controllers/BouquetEditor.py:505
+msgid "No Parent Control Setup Pin given!"
+msgstr "Lapsilukolle ei ole annettu PIN-koodia!"
+
+#: plugin/controllers/BouquetEditor.py:509
+#: plugin/controllers/BouquetEditor.py:511
+msgid "Parent Control Setup Pin is wrong!"
+msgstr "Lapsilukon PIN-koodi on väärä!"
+
+#: plugin/controllers/BouquetEditor.py:526
+#, python-format
+msgid "Service %s is locked."
+msgstr "Kanava %s on lukittu."
+
+#: plugin/controllers/BouquetEditor.py:528
+#, python-format
+msgid "Bouquet %s is locked."
+msgstr "Suosikkilista %s on lukittu."
+
+#: plugin/controllers/BouquetEditor.py:530
+#, python-format
+msgid "%s %s is locked."
+msgstr "%s %s on lukittu."
+
+#: plugin/controllers/BouquetEditor.py:534
+#, python-format
+msgid "Service %s is unlocked."
+msgstr "Kanava %s on avattu."
+
+#: plugin/controllers/BouquetEditor.py:536
+#, python-format
+msgid "Bouquet %s is unlocked."
+msgstr "Suosikkilista %s on avattu."
+
+#: plugin/controllers/BouquetEditor.py:573
+#, python-format
+msgid "Error while preparing backup file, %s does not exists."
+msgstr "Virhe varmuuskopioinnissa, %s ei löydy."
+
+#: plugin/controllers/BouquetEditor.py:579
+msgid "Error while preparing backup file."
+msgstr "Virhe varmuuskopioinnissa."
+
+#: plugin/controllers/BouquetEditor.py:630
+msgid "Bouquet-settings were restored successfully"
+msgstr "Suosikkilistojen asetuksien palautus onnistui"
+
+#: plugin/controllers/BouquetEditor.py:632
+#, python-format
+msgid "Error, %s was not created with WebBouquetEditor..."
+msgstr "Virhe, %s ei luotu web-suosikkilistojen järjestelyllä..."
+
+#: plugin/controllers/BouquetEditor.py:634
+#, python-format
+msgid "Error, %s does not exists, restore is not possible..."
+msgstr "Virhe, %s ei löydy. Palautus ei onnistu..."
+
+#: plugin/controllers/base.py:248 plugin/local.py:181 plugin/local.py:325
+msgid "Settings"
+msgstr "Asetukset"
+
+#: plugin/controllers/base.py:264
+msgid "LCD4Linux Setup"
+msgstr "LCD4Linux-asetukset"
+
+#: plugin/controllers/base.py:279
+msgid "OSCam Webinterface"
+msgstr "OSCam Webinterface"
+
+#: plugin/controllers/base.py:283
+msgid "AutoTimer"
+msgstr "Automaattiajastus"
+
+#: plugin/controllers/base.py:288
+msgid "BouquetEditor"
+msgstr "Suosikkien järjestely"
+
+#: plugin/controllers/base.py:292
+msgid "EPGRefresh"
+msgstr "EPGRefresh"
+
+#: plugin/controllers/ipkg.py:238
+msgid "Error upload File"
+msgstr "Virhe tiedoston latauksessa"
+
+#: plugin/controllers/ipkg.py:241
+msgid "wrong filetype"
+msgstr "väärä tiedostotyyppi"
+
+#: plugin/controllers/ipkg.py:255
+msgid "Error writing File"
+msgstr "Virhe tiedoston tallennuksessa"
+
+#: plugin/controllers/models/info.py:58
+msgid "SLAAC"
+msgstr "SLAAC"
+
+#: plugin/controllers/models/info.py:65 plugin/controllers/models/info.py:76
+#: plugin/controllers/models/info.py:83
+msgid "static"
+msgstr "staattinen"
+
+#: plugin/controllers/models/info.py:67 plugin/controllers/models/info.py:85
+#: plugin/local.py:80
+msgid "DHCP"
+msgstr "DHCP"
+
+#: plugin/controllers/models/info.py:69 plugin/controllers/models/info.py:87
+msgid "manual/disabled"
+msgstr "manuaalinen/pois"
+
+#: plugin/controllers/models/info.py:95 plugin/controllers/models/info.py:102
+msgid "unknown"
+msgstr "tuntematon"
+
+#: plugin/controllers/models/info.py:136 plugin/local.py:115
+msgid "IPv4-only kernel"
+msgstr "IPv4-vain kernel"
+
+#: plugin/controllers/models/info.py:140 plugin/local.py:117
+msgid "IPv4-only Python/Twisted"
+msgstr "IPv4-vain Python/Twisted"
+
+#: plugin/controllers/models/info.py:169 plugin/local.py:116
+msgid "none/IPv4-only network"
+msgstr "ei/IPv4-vain verkkoa"
+
+#: plugin/controllers/models/info.py:287 plugin/controllers/models/info.py:290
+msgid "kB"
+msgstr "kB"
+
+#: plugin/controllers/models/info.py:291 plugin/controllers/models/info.py:414
+#, python-format
+msgid "%s free / %s total"
+msgstr "%s vapaana / %s kaikkiaan"
+
+#: plugin/controllers/models/info.py:326 plugin/local.py:65
+msgid "Chipset"
+msgstr "Piirisarja"
+
+#: plugin/controllers/models/info.py:331 plugin/local.py:104
+msgid "Frontprocessor Version"
+msgstr "Edustaprosessorin versio"
+
+#: plugin/controllers/models/info.py:377 plugin/controllers/models/info.py:388
+#: plugin/controllers/models/info.py:406
+msgid "MB"
+msgstr "MB"
+
+#: plugin/controllers/models/info.py:380 plugin/controllers/models/info.py:386
+#: plugin/controllers/models/info.py:401 plugin/controllers/models/info.py:404
+msgid "GB"
+msgstr "GB"
+
+#: plugin/controllers/models/info.py:384 plugin/controllers/models/info.py:396
+#: plugin/controllers/models/info.py:398
+msgid "TB"
+msgstr "TB"
+
+#: plugin/controllers/models/info.py:442
+msgid "r/w"
+msgstr "r/w"
+
+#: plugin/controllers/models/info.py:446
+msgid "r/o"
+msgstr "r/o"
+
+#: plugin/controllers/models/message.py:33
+msgid "Message sent successfully!"
+msgstr "Viestin lähetys onnistui!"
+
+#: plugin/controllers/models/message.py:43
+msgid "No answer in time"
+msgstr "Ei vastausta ajoissa"
+
+#: plugin/controllers/models/message.py:48
+msgid "Answer is YES!"
+msgstr "Vastaus on KYLLÄ!"
+
+#: plugin/controllers/models/message.py:48
+msgid "Answer is NO!"
+msgstr "Vastaus on EI!"
+
+#: plugin/controllers/models/services.py:260
+msgid "New"
+msgstr "Uusi"
+
+#: plugin/controllers/models/services.py:262
+msgid "Services"
+msgstr "Kanavat"
+
+#: plugin/controllers/models/services.py:267
+msgid "Cable"
+msgstr "Kaapeliverkko"
+
+#: plugin/controllers/models/services.py:269
+msgid "Terrestrial"
+msgstr "Antenniverkko"
+
+#: plugin/controllers/models/services.py:273
+msgid "W"
+msgstr "W"
+
+#: plugin/controllers/models/services.py:275
+msgid "E"
+msgstr "O"
+
+#: plugin/controllers/models/timers.py:178
+#, python-format
+msgid "Conflicting Timer(s) detected! %s"
+msgstr "Ajastus ristiriita havaittu! %s"
+
+#: plugin/controllers/models/timers.py:195
+#, python-format
+msgid "Could not add timer '%s'!"
+msgstr "Ei voi lisätä ajastusta '%s'!"
+
+#: plugin/controllers/models/timers.py:200
+#, python-format
+msgid "Timer '%s' added"
+msgstr "Ajastus '%s' lisätty"
+
+#: plugin/controllers/models/timers.py:208
+msgid "EventId not found"
+msgstr "Ohjelmatunnistetta ei löydy"
+
+#: plugin/controllers/models/timers.py:279
+#, python-format
+msgid "Timer '%s' changed"
+msgstr "Ajastus '%s' muutettu"
+
+#: plugin/controllers/models/timers.py:298
+#, python-format
+msgid "Timer '%s' not saved while Conflict"
+msgstr "Ajastusta '%s' ei tallennettu ristiriidan takia"
+
+#: plugin/controllers/models/timers.py:304
+#, python-format
+msgid "Could not find timer '%s' with given start and end time!"
+msgstr "Ei löydy ajastusta '%s' annetuilla alku- ja loppuajoilla!"
+
+#: plugin/controllers/models/timers.py:316
+#, python-format
+msgid "The timer '%s' has been deleted successfully"
+msgstr "Ajastuksen '%s' poisto onnistui"
+
+#: plugin/controllers/models/timers.py:321
+#: plugin/controllers/models/timers.py:365
+msgid "No matching Timer found"
+msgstr "Vastaavaa ajastusta ei löytynyt"
+
+#: plugin/controllers/models/timers.py:339
+#, python-format
+msgid "Timer '%s' not enabled while Conflict"
+msgstr "Ajastus '%s' ei onnistu ristiriidan takia"
+
+#: plugin/controllers/models/timers.py:345
+#, python-format
+msgid "Timer '%s' already exists!"
+msgstr "Ajastus '%s' on jo olemassa!"
+
+#: plugin/controllers/models/timers.py:351
+#, python-format
+msgid "The timer '%s' now recorded! Not disabled!"
+msgstr "Ajastusta '%s' tallennetaan! Käytössä!"
+
+#: plugin/controllers/models/timers.py:359
+#, python-format
+msgid "The timer '%s' has been %s successfully"
+msgstr "Ajastuksen '%s' poisto %s onnistui"
+
+#: plugin/controllers/models/timers.py:372
+msgid "List of Timers has been cleaned"
+msgstr "Ajastuslista tyhjennetty"
+
+#: plugin/controllers/models/timers.py:379
+msgid "TimerList has been saved"
+msgstr "Ajastuslista tallennettu"
+
+#: plugin/controllers/models/timers.py:394
+msgid "No event found! Not recording!"
+msgstr "Ohjelmaa ei löydy! Ei tallennusta!"
+
+#: plugin/controllers/models/timers.py:400
+msgid "Instant record for current Event started"
+msgstr "Nykyisen ohjelman tallennus aloitettu"
+
+#: plugin/controllers/models/timers.py:409
+msgid "Infinite Instant recording started"
+msgstr "Jatkuva tallennus aloitettu"
+
+#: plugin/controllers/models/timers.py:428
+msgid "Timer conflict detected! Not recording!"
+msgstr "Ajastusristiriita havaittu! Ei tallennusta!"
+
+#: plugin/controllers/models/timers.py:502
+msgid "Missing requesteter: sRef"
+msgstr "Virheellinen pyyntö: sRef"
+
+#: plugin/controllers/models/timers.py:524
+#, python-format
+msgid "Unknown command: '%s'"
+msgstr "Tuntematon komento: '%s'"
+
+#: plugin/controllers/models/timers.py:581
+msgid "PowerTimer feature not available"
+msgstr "Virta-ajastusta ei saatavilla"
+
+#: plugin/controllers/models/timers.py:657
+#: plugin/controllers/models/timers.py:683
+msgid "Sleeptimer is enabled"
+msgstr "Uniajastin aktivoitu"
+
+#: plugin/controllers/models/timers.py:657
+#: plugin/controllers/models/timers.py:683
+msgid "Sleeptimer is disabled"
+msgstr "Uniajastin poistettu"
+
+#: plugin/controllers/models/timers.py:662
+#: plugin/controllers/models/timers.py:689
+msgid "SleepTimer error"
+msgstr "Uniajastinvirhe"
+
+#: plugin/controllers/models/timers.py:701
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr "VIRHE: Uniajastusta ei voi aktivoida valmiustilassa"
+
+#: plugin/controllers/models/timers.py:706
+#: plugin/controllers/models/timers.py:775
+#: plugin/controllers/models/timers.py:793
+msgid "Sleeptimer has been disabled"
+msgstr "Uniajastus poistettu"
+
+#: plugin/controllers/models/timers.py:712
+#: plugin/controllers/models/timers.py:775
+#: plugin/controllers/models/timers.py:788
+#, python-format
+msgid "Sleeptimer set to %d minutes"
+msgstr "Uniajastus asetettu %d minuuttiin"
+
+#: plugin/controllers/models/timers.py:717
+#: plugin/controllers/models/timers.py:798
+msgid "SleepTimer Error"
+msgstr "Uniajastinvirhe"
+
+#: plugin/controllers/models/timers.py:826
+msgid "Error parsing vps.xml"
+msgstr "Virhe vps.xml:n käsittelyssä"
+
+#: plugin/controllers/models/timers.py:831
+msgid "VPS plugin not found"
+msgstr "VPS pluginia ei löydy"
+
+#: plugin/controllers/web.py:63
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr "Puuttuva pakollinen asetus '%s'"
+
+#: plugin/controllers/web.py:69
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr "Asetus '%s' ei voi olla tyhjä"
+
+#: plugin/controllers/web.py:103
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr "Väärä asetusmuoto 'set=%s'. Käytä set=set15 "
+
+#: plugin/controllers/web.py:108
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr "Tuntematon äänenvoimakkuuskomento %s"
+
+#: plugin/controllers/web.py:143
+msgid "The parameter 'command' must be a number"
+msgstr "Asetus 'komento' pitää olla numero"
+
+#: plugin/controllers/web.py:298
+#, python-format
+msgid "type %s is not a number"
+msgstr "tyyppi %s ei ole numero"
+
+#: plugin/local.py:5
+msgid "Mo"
+msgstr "Ma"
+
+#: plugin/local.py:6
+msgid "Tu"
+msgstr "Ti"
+
+#: plugin/local.py:7
+msgid "We"
+msgstr "Ke"
+
+#: plugin/local.py:8
+msgid "Th"
+msgstr "To"
+
+#: plugin/local.py:9
+msgid "Fr"
+msgstr "Pe"
+
+#: plugin/local.py:10
+msgid "Sa"
+msgstr "La"
+
+#: plugin/local.py:11
+msgid "Su"
+msgstr "Su"
+
+#: plugin/local.py:13
+msgid "Sun"
+msgstr "Sun"
+
+#: plugin/local.py:14
+msgid "Mon"
+msgstr "Maa"
+
+#: plugin/local.py:15
+msgid "Tue"
+msgstr "Tii"
+
+#: plugin/local.py:16
+msgid "Wed"
+msgstr "Kes"
+
+#: plugin/local.py:17
+msgid "Thu"
+msgstr "Tor"
+
+#: plugin/local.py:18
+msgid "Fri"
+msgstr "Per"
+
+#: plugin/local.py:19
+msgid "Sat"
+msgstr "Lau"
+
+#: plugin/local.py:21
+msgid "Monday"
+msgstr "Maanantai"
+
+#: plugin/local.py:22
+msgid "Tuesday"
+msgstr "Tiistai"
+
+#: plugin/local.py:23
+msgid "Wednesday"
+msgstr "Keskiviikko"
+
+#: plugin/local.py:24
+msgid "Thursday"
+msgstr "Torstai"
+
+#: plugin/local.py:25
+msgid "Friday"
+msgstr "Perjantai"
+
+#: plugin/local.py:26
+msgid "Saturday"
+msgstr "Lauantai"
+
+#: plugin/local.py:27
+msgid "Sunday"
+msgstr "Sunnuntai"
+
+#: plugin/local.py:29
+msgid "January"
+msgstr "Tammikuu"
+
+#: plugin/local.py:30
+msgid "February"
+msgstr "Helmikuu"
+
+#: plugin/local.py:31
+msgid "March"
+msgstr "Maaliskuu"
+
+#: plugin/local.py:32
+msgid "April"
+msgstr "Huhtikuu"
+
+#: plugin/local.py:33
+msgid "May"
+msgstr "Toukokuu"
+
+#: plugin/local.py:34
+msgid "June"
+msgstr "Kesäkuu"
+
+#: plugin/local.py:35
+msgid "July"
+msgstr "Heinäkuu"
+
+#: plugin/local.py:36
+msgid "August"
+msgstr "Elokuu"
+
+#: plugin/local.py:37
+msgid "September"
+msgstr "Syyskuu"
+
+#: plugin/local.py:38
+msgid "October"
+msgstr "Lokakuu"
+
+#: plugin/local.py:39
+msgid "November"
+msgstr "Marraskuu"
+
+#: plugin/local.py:40
+msgid "December"
+msgstr "Joulukuu"
+
+#: plugin/local.py:42
+msgid "About"
+msgstr "Tietoja"
+
+#: plugin/local.py:43
+msgid "Add Timer"
+msgstr "Lisää ajastus"
+
+#: plugin/local.py:44
+msgid "Add AutoTimer"
+msgstr "Lisää automaattiajastus"
+
+#: plugin/local.py:45
+msgid "Add Zap Timer"
+msgstr "Lisää kanavanvaihtoajastus"
+
+#: plugin/local.py:46 plugin/local.py:357
+msgid "After Event"
+msgstr "Ajastuksen jälkeen"
+
+#: plugin/local.py:47
+msgid "AGC"
+msgstr "AGC"
+
+#: plugin/local.py:48 plugin/local.py:345
+msgid "All"
+msgstr "Kaikki"
+
+#: plugin/local.py:49
+msgid "All Channels"
+msgstr "Kaikki kanavat"
+
+#: plugin/local.py:50
+msgid "Authors"
+msgstr "Julkaisijat"
+
+#: plugin/local.py:51 plugin/local.py:344
+msgid "Auto"
+msgstr "Automaattinen"
+
+#: plugin/local.py:52
+msgid "Back"
+msgstr "Takaisin"
+
+#: plugin/local.py:53 plugin/local.py:352
+msgid "Begin"
+msgstr "Alku"
+
+#: plugin/local.py:54
+msgid "BER"
+msgstr "BER"
+
+#: plugin/local.py:55 plugin/local.py:307
+msgid "Bouquets"
+msgstr "Suosikkilistat"
+
+#: plugin/local.py:56
+msgid "Box Info"
+msgstr "Vastaanottimen tiedot"
+
+#: plugin/local.py:57
+msgid "Box"
+msgstr "Vastaanotin"
+
+#: plugin/local.py:58
+msgid "Box Control"
+msgstr "Järjestelmä"
+
+#: plugin/local.py:59
+msgid "Box Uptime"
+msgstr "Käynnissäoloaika"
+
+#: plugin/local.py:60
+msgid "Brand"
+msgstr "Merkki"
+
+#: plugin/local.py:61 plugin/plugin.py:101
+msgid "Cancel"
+msgstr "Peruuta"
+
+#: plugin/local.py:62
+msgid "Capacity"
+msgstr "Kapasiteetti"
+
+#: plugin/local.py:63
+msgid "Channel"
+msgstr "Kanava"
+
+#: plugin/local.py:64 plugin/local.py:305
+msgid "Channels"
+msgstr "Kanavat"
+
+#: plugin/local.py:66
+msgid "Cleanup Timers"
+msgstr "Tyhjennä ajastukset"
+
+#: plugin/local.py:67
+msgid "Close"
+msgstr "Sulje"
+
+#: plugin/local.py:68
+msgid "Contributors"
+msgstr "Avustajat"
+
+#: plugin/local.py:69
+msgid "Control"
+msgstr "Ohjaus"
+
+#: plugin/local.py:70
+msgid "Current"
+msgstr "Nykyinen"
+
+#: plugin/local.py:71
+msgid "Current Event"
+msgstr "Nykyinen ohjelma"
+
+#: plugin/local.py:72
+msgid "Date"
+msgstr "Päivämäärä"
+
+#: plugin/local.py:73
+msgid "Deep-Standby"
+msgstr "Virransäästötila"
+
+#: plugin/local.py:74
+msgid "Default"
+msgstr "Oletus"
+
+#: plugin/local.py:75
+msgid "Delete Recording"
+msgstr "Poista tallennus"
+
+#: plugin/local.py:76
+msgid "Really delete the recording"
+msgstr "Haluatko todella poistaa tallennuksen"
+
+#: plugin/local.py:77
+msgid "Delete Timer"
+msgstr "Poista ajastus"
+
+#: plugin/local.py:78
+msgid "Really delete the timer"
+msgstr "Haluatko todella poistaa ajastuksen"
+
+#: plugin/local.py:79 plugin/local.py:253
+msgid "Description"
+msgstr "Kuvaus"
+
+#: plugin/local.py:81
+msgid "Disable Timer"
+msgstr "Poista ajastus käytöstä"
+
+#: plugin/local.py:82
+msgid "disabled"
+msgstr "poistettu"
+
+#: plugin/local.py:83
+msgid "Distro"
+msgstr "Jakelu"
+
+#: plugin/local.py:84
+msgid "Dolby"
+msgstr "Dolby"
+
+#: plugin/local.py:85
+msgid "Done"
+msgstr "Valmis"
+
+#: plugin/local.py:86
+msgid "Download"
+msgstr "Lataa"
+
+#: plugin/local.py:87
+msgid "Download Playlist for"
+msgstr "Lataa soittolista"
+
+#: plugin/local.py:88
+msgid "Drivers"
+msgstr "Ajurit"
+
+#: plugin/local.py:89
+msgid "Duration"
+msgstr "Kesto"
+
+#: plugin/local.py:90
+msgid "Edit Timer"
+msgstr "Muokkaa ajastusta"
+
+#: plugin/local.py:91
+msgid "Enable Timer"
+msgstr "Ota ajastus käyttöön"
+
+#: plugin/local.py:92
+msgid "Start"
+msgstr "Aloitus"
+
+#: plugin/local.py:93 plugin/local.py:353
+msgid "End"
+msgstr "Lopetus"
+
+#: plugin/local.py:94 plugin/local.py:252 plugin/local.py:350
+msgid "Enabled"
+msgstr "Sallittu"
+
+#: plugin/local.py:95
+msgid "Encrypted"
+msgstr "Salattu"
+
+#: plugin/local.py:96
+msgid "EPG"
+msgstr "EPG"
+
+#: plugin/local.py:97
+msgid "Epg Search"
+msgstr "Ohjelmaopashaku"
+
+#: plugin/local.py:98
+msgid "Include description"
+msgstr "Lisää kuvaus"
+
+#: plugin/local.py:99
+msgid "Error"
+msgstr "Virhe"
+
+#: plugin/local.py:100
+msgid "Every"
+msgstr "Joka"
+
+#: plugin/local.py:101
+msgid "Extras"
+msgstr "Extrat"
+
+#: plugin/local.py:102
+msgid "finished"
+msgstr "lopetettu"
+
+#: plugin/local.py:103
+msgid "Firmware version"
+msgstr "Ohjelmisto"
+
+#: plugin/local.py:105
+msgid "Free"
+msgstr "Vapaa"
+
+#: plugin/local.py:106
+msgid "Free Memory"
+msgstr "Vapaa muisti"
+
+#: plugin/local.py:107
+msgid "Gateway"
+msgstr "Reitti"
+
+#: plugin/local.py:108
+msgid "Grab Screenshot"
+msgstr "Ota kuvankaappaus"
+
+#: plugin/local.py:109
+msgid "Gui version"
+msgstr "GUI-Versio"
+
+#: plugin/local.py:110
+msgid "Hide full remote"
+msgstr "Piilota koko kaukosäädin"
+
+#: plugin/local.py:111
+msgid "High Resolution"
+msgstr "Suuri resoluutio"
+
+#: plugin/local.py:112
+msgid "Hard disk model"
+msgstr "Kiintolevytyyppi"
+
+#: plugin/local.py:113
+msgid "Hour"
+msgstr "Tunti"
+
+#: plugin/local.py:114
+msgid "IPv4 address"
+msgstr "IPv4-osoite"
+
+#: plugin/local.py:118
+msgid "IPv6 address(es)"
+msgstr "IPv6-osoitteet"
+
+#: plugin/local.py:119
+msgid "Infos"
+msgstr "Tiedot"
+
+#: plugin/local.py:120
+msgid "Instant Record"
+msgstr "Välitön tallennus"
+
+#: plugin/local.py:121
+msgid "Javascript Libraries"
+msgstr "Javascript-kirjastot"
+
+#: plugin/local.py:122
+msgid "Just play"
+msgstr "Toista"
+
+#: plugin/local.py:123
+msgid "Kernel"
+msgstr "Kernel"
+
+#: plugin/local.py:124
+msgid "LICENSE"
+msgstr "LISENSSI"
+
+#: plugin/local.py:125
+msgid "loading"
+msgstr "lataa"
+
+#: plugin/local.py:126
+msgid "Location"
+msgstr "Sijainti"
+
+#: plugin/local.py:127
+msgid "Locked"
+msgstr "Lukittu"
+
+#: plugin/local.py:128
+msgid "MAC address"
+msgstr "MAC-osoite"
+
+#: plugin/local.py:129
+msgid "Main"
+msgstr "Päävalikko"
+
+#: plugin/local.py:130
+msgid "Minute"
+msgstr "Minuutti"
+
+#: plugin/local.py:131
+msgid "Model"
+msgstr "Malli"
+
+#: plugin/local.py:132
+msgid "Movielist"
+msgstr "Tallennelista"
+
+#: plugin/local.py:133
+msgid "Movies"
+msgstr "Tallenteet"
+
+#: plugin/local.py:134
+msgid "MultiEPG"
+msgstr "MultiEPG"
+
+#: plugin/local.py:135
+msgid "Name"
+msgstr "Nimi"
+
+#: plugin/local.py:136
+msgid "Namespace"
+msgstr "Nimiavaruus"
+
+#: plugin/local.py:137
+msgid "Network Interface"
+msgstr "Verkkokortti"
+
+#: plugin/local.py:138
+msgid "no description available"
+msgstr "ei kuvausta saatavilla"
+
+#: plugin/local.py:139
+msgid "Sorry this page is not yet implemented"
+msgstr "Valitettavasti tämä sivu ei ole vielä saatavilla"
+
+#: plugin/local.py:140
+msgid "Nothing"
+msgstr "Ei mitään"
+
+#: plugin/local.py:141
+msgid "Nothing playing."
+msgstr "Mitään ei toisteta"
+
+#: plugin/local.py:142
+msgid "Now"
+msgstr "Nyt"
+
+#: plugin/local.py:143
+msgid "System OE"
+msgstr "OE-järjestelmä"
+
+#: plugin/local.py:144
+msgid "On"
+msgstr "Päällä"
+
+#: plugin/local.py:145
+msgid "Open Source Web Interface for Linux set-top box"
+msgstr "Open Source Web Interface for Linux set-top box"
+
+#: plugin/local.py:146 plugin/plugin.py:119
+msgid "Show box name in header"
+msgstr "Näytä vastaanottimen nimi otsikossa"
+
+#: plugin/local.py:147 plugin/plugin.py:121
+msgid "Use custom box name"
+msgstr "Käytä omaa vastaanotinnimeä"
+
+#: plugin/local.py:148 plugin/plugin.py:123
+msgid "Custom box name"
+msgstr "Oma vastaanotinnimi"
+
+#: plugin/local.py:149
+msgid "OSD"
+msgstr "Kuvaruutunäyttö"
+
+#: plugin/local.py:150
+msgid "Open in new window"
+msgstr "Avaa uuteen ikkunaan"
+
+#: plugin/local.py:151
+msgid "Playback"
+msgstr "Toista"
+
+#: plugin/local.py:152
+msgid "Playlist"
+msgstr "Toistolista"
+
+#: plugin/local.py:153
+msgid "Power Control"
+msgstr "Virtanappi"
+
+#: plugin/local.py:154
+msgid "Provider"
+msgstr "Palveluntarjoaja"
+
+#: plugin/local.py:155
+msgid "Providers"
+msgstr "Palveluntarjoajat"
+
+#: plugin/local.py:156
+msgid "Radio"
+msgstr "Radio"
+
+#: plugin/local.py:157
+msgid "Reboot Box"
+msgstr "Käynnistä uudelleen"
+
+#: plugin/local.py:158
+msgid "Recording Status"
+msgstr "Tallennuksen tila"
+
+#: plugin/local.py:159 plugin/local.py:342
+msgid "Refresh"
+msgstr "Kaappaa"
+
+#: plugin/local.py:160
+msgid "Refresh automatically every"
+msgstr "Kaappaa välillä"
+
+#: plugin/local.py:161
+msgid "Refresh Timer"
+msgstr "Päivitä ajastuslista"
+
+#: plugin/local.py:162
+msgid "Remote"
+msgstr "Kaukosäädin"
+
+#: plugin/local.py:163
+msgid "Rename Recording"
+msgstr "Uudelleennimeä tallennus"
+
+#: plugin/local.py:164
+msgid "Really rename the recording"
+msgstr "Haluatko todella uudelleennimetä tallennuksen"
+
+#: plugin/local.py:165
+msgid "Repeated"
+msgstr "Toistetaan"
+
+#: plugin/local.py:166
+msgid "Restart GUI"
+msgstr "Käyttöliittymän uudelleenkäynnistys"
+
+#: plugin/local.py:167
+msgid "running"
+msgstr "käynnissä"
+
+#: plugin/local.py:168
+msgid "Safe mode"
+msgstr "Turvamoodi"
+
+#: plugin/local.py:169
+msgid "Satellites"
+msgstr "Satelliitit"
+
+#: plugin/local.py:170
+msgid "Satfinder"
+msgstr "Satelliittietsin"
+
+#: plugin/local.py:171 plugin/local.py:321 plugin/local.py:373
+#: plugin/plugin.py:102
+msgid "Save"
+msgstr "Tallenna"
+
+#: plugin/local.py:172
+msgid "Screenshot"
+msgstr "Kuvankaappaus"
+
+#: plugin/local.py:173 plugin/local.py:379
+msgid "Search"
+msgstr "Haku"
+
+#: plugin/local.py:174
+msgid "Search IMDb"
+msgstr "Hae IMDb:stä"
+
+#: plugin/local.py:175
+msgid "Search KinoPoisk"
+msgstr "Hae KinoPoisk:sta"
+
+#: plugin/local.py:176
+msgid "seconds"
+msgstr "sekuntia"
+
+#: plugin/local.py:177
+msgid "Send Message"
+msgstr "Lähetä viesti"
+
+#: plugin/local.py:178
+msgid "Waiting for answer ..."
+msgstr "Odotetaan vastausta ..."
+
+#: plugin/local.py:179
+msgid "Send a Message"
+msgstr "Lähetä viesti"
+
+#: plugin/local.py:180
+msgid "Service"
+msgstr "Kanava"
+
+#: plugin/local.py:182
+msgid "Bouquet Editor"
+msgstr "Suosikkilistojen järjestely"
+
+#: plugin/local.py:183
+msgid "(Shift + Click for Long Press)"
+msgstr "(Vaihto + pitkä painallus)"
+
+#: plugin/local.py:184
+msgid "Show Full OpenWebif"
+msgstr "OpenWebif työpöytäversio"
+
+#: plugin/local.py:185
+msgid "Show full remote"
+msgstr "Näytä koko kaukosäädin"
+
+#: plugin/local.py:186
+msgid "Show EPG for"
+msgstr "Näytä ohjelmaopas kanavalle"
+
+#: plugin/local.py:187
+msgid "Shutdown"
+msgstr "Sammuta"
+
+#: plugin/local.py:188
+msgid "Site and sources"
+msgstr "Sivut ja lähteet"
+
+#: plugin/local.py:189
+msgid "SNR"
+msgstr "SNR"
+
+#: plugin/local.py:190
+msgid "Software"
+msgstr "Ohjelmisto"
+
+#: plugin/local.py:191
+msgid "Standby"
+msgstr "Valmiustila"
+
+#: plugin/local.py:192
+msgid "Standby Toggle"
+msgstr "Valmiustilanappi"
+
+#: plugin/local.py:193
+msgid "Start time is after end time"
+msgstr "Aloitusaika on loppuajan jälkeen"
+
+#: plugin/local.py:194
+msgid "Start Instant Record"
+msgstr "Aloita välitön tallennus"
+
+#: plugin/local.py:195
+msgid "Stream"
+msgstr "Suoratoisto"
+
+#: plugin/local.py:196
+msgid "Subnet mask"
+msgstr "Aliverkon peite"
+
+#: plugin/local.py:197
+msgid "Subservices"
+msgstr "Alipalvelut"
+
+#: plugin/local.py:198 plugin/local.py:303
+msgid "Tags"
+msgstr "Merkit"
+
+#: plugin/local.py:199
+msgid "Teletext"
+msgstr "Teksti-TV"
+
+#: plugin/local.py:200
+msgid "Television"
+msgstr "Televisio"
+
+#: plugin/local.py:201
+msgid "Template Engine"
+msgstr "Teema"
+
+#: plugin/local.py:202
+msgid "Text"
+msgstr "Teksti"
+
+#: plugin/local.py:203
+msgid "Time"
+msgstr "Aika"
+
+#: plugin/local.py:204
+msgid "Timeout"
+msgstr "Aikaylitys"
+
+#: plugin/local.py:205
+msgid "Timer added"
+msgstr "Ajastus lisätty"
+
+#: plugin/local.py:206
+msgid "Timerlist"
+msgstr "Ajastuslista"
+
+#: plugin/local.py:207
+msgid "New Name"
+msgstr "Uusi nimi"
+
+#: plugin/local.py:208
+msgid "Autotimer Preview"
+msgstr "Automaattiajastuksen esikatselu"
+
+#: plugin/local.py:209
+msgid "Timer"
+msgstr "Ajastukset"
+
+#: plugin/local.py:210 plugin/local.py:324
+msgid "Timers"
+msgstr "Ajastukset"
+
+#: plugin/local.py:211
+msgid "Title"
+msgstr "Ohjelmannimi"
+
+#: plugin/local.py:212
+msgid "Main Memory"
+msgstr "Muistinkäyttö"
+
+#: plugin/local.py:213
+msgid "transcoded"
+msgstr "transkoodaus"
+
+#: plugin/local.py:214
+msgid "Transcode"
+msgstr "Transkoodaus"
+
+#: plugin/local.py:215
+msgid "Tuner Bit Error Rate BER"
+msgstr "Virittimen BER"
+
+#: plugin/local.py:216
+msgid "Tuner Number"
+msgstr "Virittimen numero"
+
+#: plugin/local.py:217
+msgid "Tuner Signal"
+msgstr "Virittimen signaali"
+
+#: plugin/local.py:218
+msgid "Tuner Signal Quality SNR"
+msgstr "Virittimen SNR"
+
+#: plugin/local.py:219
+msgid "Tuner Signal Quality SNR_DB"
+msgstr "Virittimen SNR_DB"
+
+#: plugin/local.py:220
+msgid "Tuner Signal Power AGC"
+msgstr "Virittimen AGC"
+
+#: plugin/local.py:221
+msgid "Tuner Type"
+msgstr "Viritintyyppi"
+
+#: plugin/local.py:222
+msgid "Tuners"
+msgstr "Virittimet"
+
+#: plugin/local.py:223
+msgid "TV"
+msgstr "TV"
+
+#: plugin/local.py:224
+msgid "TV Multi EPG"
+msgstr "TV-Multi-EPG"
+
+#: plugin/local.py:225
+msgid "Type"
+msgstr "Tyyppi"
+
+#: plugin/local.py:226
+msgid "Upcoming Events"
+msgstr "Tulevat ohjelmat"
+
+#: plugin/local.py:227
+msgid "Version"
+msgstr "Versio"
+
+#: plugin/local.py:228
+msgid "Video"
+msgstr "Video"
+
+#: plugin/local.py:229
+msgid "Video Height"
+msgstr "Kuvan korkeus"
+
+#: plugin/local.py:230
+msgid "Video Wide"
+msgstr "Leveä kuva"
+
+#: plugin/local.py:231
+msgid "Video Width"
+msgstr "Kuvan leveys"
+
+#: plugin/local.py:232
+msgid "VPS"
+msgstr "VPS"
+
+#: plugin/local.py:233
+msgid "Volume"
+msgstr "Äänenvoimakkuus"
+
+#: plugin/local.py:234
+msgid "Volume Control"
+msgstr "Äänenvoimakkuussäädin"
+
+#: plugin/local.py:235
+msgid "waiting"
+msgstr "odotetaan"
+
+#: plugin/local.py:236
+msgid "Warning"
+msgstr "Varoitus"
+
+#: plugin/local.py:237
+msgid "Yes/No"
+msgstr "Kyllä/Ei"
+
+#: plugin/local.py:238
+msgid "Zap"
+msgstr "Kanavanvaihto"
+
+#: plugin/local.py:239
+msgid "zap before Stream"
+msgstr "Vaihda kanava ennen suoratoistoa"
+
+#: plugin/local.py:240
+msgid "Zap to"
+msgstr "Vaihda kanavalle"
+
+#: plugin/local.py:241
+msgid "Zapped to"
+msgstr "Vaihdettu kanavalle"
+
+#: plugin/local.py:242
+msgid "Translation to Spanish"
+msgstr "Espanjankielinen käännös"
+
+#: plugin/local.py:243
+msgid "All Files of this Software are open source software;"
+msgstr "Kaikki tämän ohjelmiston tiedostot ovat avointa lähdekoodia;"
+
+#: plugin/local.py:244
+msgid "you can redistribute it and/or modify it under the"
+msgstr "voit jakaa ja muokata"
+
+#: plugin/local.py:245
+msgid "terms of the GNU General Public License version 2 as"
+msgstr "GNU General Public License versio 2 ehtojen mukaan"
+
+#: plugin/local.py:246
+msgid "published by the Free Software Foundation."
+msgstr "julkaissut Free Software Foundation."
+
+#: plugin/local.py:247
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 2 "
+"as published by the Free Software Foundation."
+msgstr ""
+"Kaikki tämän ohjelma tiedostot ovat avointa lähdekoodia; Voit jakaa ja "
+"muokata niitä GNU General Public License versio 2 ehtojen mukaan jonka on "
+"julkaissut Free Software Foundation."
+
+#: plugin/local.py:248
+msgid "Root"
+msgstr "Juuri"
+
+#: plugin/local.py:250
+msgid "AutoTimer List"
+msgstr "Automaattiajastuslista"
+
+#: plugin/local.py:251
+msgid "AutoTimer Edit"
+msgstr "Automaattiajastusten muokkaus"
+
+#: plugin/local.py:254
+msgid "Match title"
+msgstr "Hae ohjelmannimi"
+
+#: plugin/local.py:255
+msgid "EPG encoding"
+msgstr "EPG:n enkoodaaus"
+
+#: plugin/local.py:256
+msgid "Search type"
+msgstr "Haun tyyppi"
+
+#: plugin/local.py:257
+msgid "partial match"
+msgstr "Osittainen vastaavuus"
+
+#: plugin/local.py:258
+msgid "exact match"
+msgstr "Täysi vastaavuus"
+
+#: plugin/local.py:259
+msgid "description match"
+msgstr "Kuvaushaku"
+
+#: plugin/local.py:260
+msgid "title or description match"
+msgstr "Nimi tai kuvaushaku"
+
+#: plugin/local.py:261
+msgid "title or short description match"
+msgstr "Nimi tai lyhytkuvaushaku"
+
+#: plugin/local.py:262
+msgid "short description match"
+msgstr "Lyhytkuvaushaku"
+
+#: plugin/local.py:263
+msgid "start match"
+msgstr "hae alku"
+
+#: plugin/local.py:264
+msgid "Search strictness"
+msgstr "Haun tarkkuus"
+
+#: plugin/local.py:265
+msgid "case-sensitive search"
+msgstr "Merkkikokoriippuvainen haku"
+
+#: plugin/local.py:266
+msgid "case-insensitive search"
+msgstr "Merkkikokoriippumaton haku"
+
+#: plugin/local.py:267
+msgid "Timer type"
+msgstr "Ajastuksen tyyppi"
+
+#: plugin/local.py:268
+msgid "record"
+msgstr "Tallennus"
+
+#: plugin/local.py:269
+msgid "zap"
+msgstr "Kanavanvaihto"
+
+#: plugin/local.py:270
+msgid "Override found with alternative service"
+msgstr "Käytä automaattista vaihtoehtojen valintaa"
+
+#: plugin/local.py:271
+msgid "Only match during timespan"
+msgstr "Hae vain aikajaksolta"
+
+#: plugin/local.py:272
+msgid "Begin of timespan"
+msgstr "Aikajakson alku"
+
+#: plugin/local.py:273
+msgid "End of Timespan"
+msgstr "Aikajakson loppu"
+
+#: plugin/local.py:274
+msgid "Restrict to events on certain dates"
+msgstr "Rajoita vain tiettyjen päivien ohjelmiin"
+
+#: plugin/local.py:275
+msgid "Not after"
+msgstr "Ei jälkeen"
+
+#: plugin/local.py:276
+msgid "Not before"
+msgstr "Ei ennen"
+
+#: plugin/local.py:277
+msgid "Custom offset"
+msgstr "Aseta lisäajat"
+
+#: plugin/local.py:278
+msgid "Offset before recording (in m)"
+msgstr "Lisäaika ennen tallennusta"
+
+#: plugin/local.py:279
+msgid "Offset after recording (in m)"
+msgstr "Lisäaika tallennuksen jälkeen"
+
+#: plugin/local.py:280
+msgid "Set maximum duration"
+msgstr "Aseta maksimikesto"
+
+#: plugin/local.py:281
+msgid "After event"
+msgstr "Ajastuksen jälkeen"
+
+#: plugin/local.py:282
+msgid "standard"
+msgstr "Vakio"
+
+#: plugin/local.py:283
+msgid "auto"
+msgstr "Automaattinen"
+
+#: plugin/local.py:284
+msgid "do nothing"
+msgstr "Ei mitään"
+
+#: plugin/local.py:285
+msgid "go to standby"
+msgstr "Mene valmiustilaan"
+
+#: plugin/local.py:286
+msgid "go to deep standby"
+msgstr "Mene virransäästötilaan"
+
+#: plugin/local.py:287
+msgid "Execute \"after event\" during timespan"
+msgstr "Toteuta \"ajastuksen jälkeen\" aikajaksolla"
+
+#: plugin/local.py:288
+msgid "Begin of \"after event\" timespan"
+msgstr "Aikajakson \"ajastuksen jälkeen\" alku"
+
+#: plugin/local.py:289
+msgid "End of \"after event\" timespan"
+msgstr "Aikajakson \"ajastuksen jälkeen\" loppu"
+
+#: plugin/local.py:290
+msgid "Record a maximum of x times"
+msgstr "Tallenna enintään X-kertaa"
+
+#: plugin/local.py:291
+msgid "Amount of recordings left"
+msgstr "Tallennuksia jäljellä"
+
+#: plugin/local.py:292 plugin/local.py:363
+msgid "Never"
+msgstr "Ei koskaan"
+
+#: plugin/local.py:293
+msgid "Monthly"
+msgstr "Kuukausittain"
+
+#: plugin/local.py:294
+msgid "Weekly (Sunday)"
+msgstr "Viikottain (sunnuntai)"
+
+#: plugin/local.py:295
+msgid "Weekly (Monday)"
+msgstr "Viikottain (maanantai)"
+
+#: plugin/local.py:296
+msgid "Reset count"
+msgstr "Nollaa laskuri"
+
+#: plugin/local.py:297
+msgid "Require description to be unique"
+msgstr "Vaadi yksilöllinen kuvaus"
+
+#: plugin/local.py:298
+msgid "No"
+msgstr "Ei"
+
+#: plugin/local.py:299
+msgid "On same service"
+msgstr "Samalta kanavalta"
+
+#: plugin/local.py:300
+msgid "On any service"
+msgstr "Miltä tahansa kanavalta"
+
+#: plugin/local.py:301
+msgid "Any service/recording"
+msgstr "Kanava/tallennus"
+
+#: plugin/local.py:302
+msgid "Use a custom location"
+msgstr "Käytä omaa tiedostosijaintia"
+
+#: plugin/local.py:304
+msgid "select Tags"
+msgstr "valitse merkit"
+
+#: plugin/local.py:306
+msgid "select Channels"
+msgstr "Valitse kanavat"
+
+#: plugin/local.py:308
+msgid "select Bouquets"
+msgstr "Valitse suosikkilistat"
+
+#: plugin/local.py:309
+msgid "Enable Filtering"
+msgstr "Suodata"
+
+#: plugin/local.py:310
+msgid "Include"
+msgstr "Sisällytä"
+
+#: plugin/local.py:311
+msgid "Exclude"
+msgstr "Hylkää"
+
+#: plugin/local.py:312
+msgid "in Title"
+msgstr "nimessä"
+
+#: plugin/local.py:313
+msgid "in Shortdescription"
+msgstr "lyhyessä kuvauksessa"
+
+#: plugin/local.py:314
+msgid "in Description"
+msgstr "kuvauksessa"
+
+#: plugin/local.py:315
+msgid "on Weekday"
+msgstr "arkisin"
+
+#: plugin/local.py:316
+msgid "Weekend"
+msgstr "viikonloppuisin"
+
+#: plugin/local.py:317
+msgid "Weekday"
+msgstr "viikonpäivä"
+
+#: plugin/local.py:318
+msgid "Add"
+msgstr "Lisää"
+
+#: plugin/local.py:319
+msgid "Delete"
+msgstr "Poista"
+
+#: plugin/local.py:320 plugin/local.py:372 plugin/local.py:380
+msgid "Reload"
+msgstr "Lataa uudelleen"
+
+#: plugin/local.py:322
+msgid "Parse"
+msgstr "Jäsentele"
+
+#: plugin/local.py:323
+msgid "Simulate"
+msgstr "Simuloi"
+
+#: plugin/local.py:326
+msgid "Do you really want to delete the AT"
+msgstr "Haluatko varmasti poistaa automaattiajastuksen"
+
+#: plugin/local.py:327
+msgid "Label series"
+msgstr "Nimeä sarjat"
+
+# New Autotimer Setting Windows name (not enabled to transfer atm)
+#: plugin/local.py:329
+msgid "AutoTimer Settings"
+msgstr "Automaattiajastuksen asetukset"
+
+#: plugin/local.py:330
+msgid "AutoPoll"
+msgstr "Automaattinen haku"
+
+#: plugin/local.py:331
+msgid "Interval (in h)"
+msgstr "Väli (h)"
+
+#: plugin/local.py:332
+msgid "Max Days"
+msgstr "Päivien maksimi määrä"
+
+#: plugin/local.py:333
+msgid "Try Guessing"
+msgstr "Kokeile kyselyä"
+
+#: plugin/local.py:334
+msgid "Fastscan"
+msgstr "Pikahaku"
+
+#: plugin/local.py:335
+msgid "Show in Extensionsmenu"
+msgstr "Näytä laajennusvalikossa"
+
+#: plugin/local.py:336
+msgid "Disabled on Conflict"
+msgstr "Poistettu käytöstä ristiriidan takia"
+
+#: plugin/local.py:337
+msgid "Add Similar on Conflict"
+msgstr "Lisää samanlaisiin ristiriidassa"
+
+#: plugin/local.py:338
+msgid "Notify if Conflict"
+msgstr "Ilmoita ristiriidoista"
+
+#: plugin/local.py:339
+msgid "Notify if Similar"
+msgstr "Ilmoita samanlaisista"
+
+#: plugin/local.py:340
+msgid "Add Autotimer to Tags"
+msgstr "Lisää automaattiajastus merkkeihin"
+
+#: plugin/local.py:341
+msgid "Add Name to Tags"
+msgstr "Lisää nimi merkeille"
+
+#: plugin/local.py:343
+msgid "None"
+msgstr "Ei ollenkaan"
+
+#: plugin/local.py:346
+msgid "Editor"
+msgstr "Muokkaaja"
+
+#: plugin/local.py:347
+msgid "Plain"
+msgstr "Helppo"
+
+#: plugin/local.py:348
+msgid "Wizzard"
+msgstr "Avustaja"
+
+#: plugin/local.py:351
+msgid "Enable Messages"
+msgstr "Salli viestit"
+
+#: plugin/local.py:354
+msgid "Delay Standby"
+msgstr "Viivästetty valmiustila"
+
+#: plugin/local.py:355
+msgid "Interval (min.)"
+msgstr "Väli (min.)"
+
+#: plugin/local.py:356
+msgid "Interval (sec.)"
+msgstr "Väli (sek.)"
+
+#: plugin/local.py:358
+msgid "Force"
+msgstr "Pakota"
+
+#: plugin/local.py:359
+msgid "Wakeup"
+msgstr "Herätä"
+
+#: plugin/local.py:360
+msgid "Inherit Autotimer"
+msgstr "Yhdistä automaatiajastukseen"
+
+#: plugin/local.py:361
+msgid "Parse Autotimer"
+msgstr "Jäsentele automaattiajastukset"
+
+#: plugin/local.py:362
+msgid "Always"
+msgstr "Aina"
+
+#: plugin/local.py:364
+msgid "Background only"
+msgstr "Vain taustalla"
+
+#: plugin/local.py:365
+msgid "Ask, default Yes"
+msgstr "Kysy, oletus kyllä"
+
+#: plugin/local.py:366
+msgid "Ask, default No"
+msgstr "Kysy, oletus ei"
+
+#: plugin/local.py:367
+msgid "Method"
+msgstr "Tapa"
+
+#: plugin/local.py:368
+msgid "Visibly"
+msgstr "Näkyvyys"
+
+#: plugin/local.py:369
+msgid "Picture in Picture"
+msgstr "Kuva kuvassa"
+
+#: plugin/local.py:370
+msgid "Picture in Picture (hidden)"
+msgstr "Kuva kuvassa (piilotettu)"
+
+#: plugin/local.py:371
+msgid "Fake Recording"
+msgstr "Valeajastus"
+
+#: plugin/local.py:374
+msgid "Refresh now"
+msgstr "Virkistä nyt"
+
+#: plugin/local.py:376
+msgid "Add Provider as new Bouquet"
+msgstr "Lisää palveluntarjoaja uudeksi suosikkilistaksi"
+
+#: plugin/local.py:377
+msgid "Add channel(s) to Bouquet"
+msgstr "Lisää kanavia suosikkilistaan"
+
+#: plugin/local.py:378
+msgid "Add channel(s) as alternate"
+msgstr "Lisää vaihtoehtoisia kanavia"
+
+#: plugin/local.py:381
+msgid "Export"
+msgstr "Vie"
+
+#: plugin/local.py:382
+msgid "Import"
+msgstr "Tuo"
+
+#: plugin/local.py:383
+msgid "Add Bouquet"
+msgstr "Lisää suosikkilista"
+
+#: plugin/local.py:384
+msgid "Rename Bouquet"
+msgstr "Uudelleennimeä suosikkilista"
+
+#: plugin/local.py:385
+msgid "Delete Bouquet"
+msgstr "Poista suosikkilista"
+
+#: plugin/local.py:386
+msgid "Add Marker"
+msgstr "Lisää väliotsikko"
+
+#: plugin/local.py:387
+msgid "Rename"
+msgstr "Uudelleennimeä"
+
+#: plugin/local.py:388
+msgid "Delete Channel(s)"
+msgstr "Poista kanavia"
+
+#: plugin/local.py:389
+msgid "Do you really want to delete the channel(s)"
+msgstr "Haluatko varmasti poistaa kanavat"
+
+#: plugin/local.py:390
+msgid "Do you really want to delete the bouquet"
+msgstr "Haluatko varmasti poistaa suosikkilistan"
+
+#: plugin/local.py:391
+msgid "Name of the Bouquet"
+msgstr "Suosikkilistan nimi"
+
+#: plugin/local.py:392
+msgid "Name of the Marker"
+msgstr "Väliotsikon nimi"
+
+#: plugin/local.py:393
+msgid "Enter new name for the bouquet"
+msgstr "Syötä suosikkilistalle uusi nimi"
+
+#: plugin/local.py:394
+msgid "Enter new name for the marker"
+msgstr "Syötä uusi nimi väliotsikolle"
+
+#: plugin/local.py:395
+msgid "Please enter filename"
+msgstr "Syötä tiedostonnimi"
+
+#: plugin/local.py:396
+msgid "Do you really want to restore from file"
+msgstr "Haluatko varmasti palauttaa tiedostosta"
+
+#: plugin/local.py:398
+msgid "via"
+msgstr "reittiä"
+
+#: plugin/local.py:399
+msgid "Record+ZAP"
+msgstr "Tallennus+kanavanvaihto"
+
+#: plugin/local.py:400
+msgid "Pmtpid"
+msgstr "Pmtpid"
+
+#: plugin/local.py:401
+msgid "Apid"
+msgstr "Apid"
+
+#: plugin/local.py:402
+msgid "Vpid"
+msgstr "Vpid"
+
+#: plugin/local.py:403
+msgid "Pcrpid"
+msgstr "Pcrpid"
+
+#: plugin/local.py:404
+msgid "Tsid"
+msgstr "Tsid"
+
+#: plugin/local.py:405
+msgid "Onid"
+msgstr "Onid"
+
+#: plugin/local.py:406
+msgid "Sid"
+msgstr "Sid"
+
+#: plugin/local.py:407
+msgid "Sref"
+msgstr "Sref"
+
+#: plugin/local.py:408
+msgid "Orbital Position"
+msgstr "Satelliitin sijainti"
+
+#: plugin/local.py:410
+msgid "error! Loading Page"
+msgstr "Virhe sivun latauksessa!"
+
+#: plugin/local.py:411
+msgid "Timer Added"
+msgstr "Ajastus lisätty"
+
+#: plugin/local.py:412
+msgid "Event not found"
+msgstr "Ohjelmaa ei löydy"
+
+#: plugin/local.py:413
+msgid "Show Picon in channel list"
+msgstr "Näytä kuvake kanavalistassa"
+
+#: plugin/local.py:415
+msgid "OpenWebif Browser Settings"
+msgstr "OpenWebif selaimen asetukset"
+
+#: plugin/local.py:416
+msgid "OpenWebif Settings"
+msgstr "OpenWebif asetukset"
+
+#: plugin/local.py:417
+msgid "Theme"
+msgstr "Teema"
+
+#: plugin/local.py:418
+msgid "Show Picons in channel list"
+msgstr "Näytä kuvakkeet kanavalistassa"
+
+#: plugin/local.py:419
+msgid "Spinner"
+msgstr "Spinneri"
+
+#: plugin/local.py:420
+msgid "Display duration (s)"
+msgstr "Näytä kesto (s)"
+
+#: plugin/local.py:422
+msgid "Display Mode"
+msgstr "Näyttömuoto"
+
+#: plugin/local.py:423
+msgid "TV Guide"
+msgstr "TV-opas"
+
+#: plugin/local.py:424
+msgid "Timeline"
+msgstr "Aikajana"
+
+#: plugin/local.py:425
+msgid "Web TV"
+msgstr "Web TV"
+
+#: plugin/local.py:427
+msgid "Link Speed"
+msgstr "Verkon nopeus"
+
+#: plugin/local.py:428
+msgid "Network Shares"
+msgstr "Verkkojaot"
+
+#: plugin/local.py:429
+msgid "using"
+msgstr "käyttää"
+
+#: plugin/plugin.py:103
+msgid "OpenWebif url: http://yourip:port"
+msgstr "OpenWebif-url: http://ip-osoite:portti"
+
+#: plugin/plugin.py:117
+msgid "OpenWebInterface Enabled"
+msgstr "OpenWeb-käyttöliittymä sallittu"
+
+#: plugin/plugin.py:124
+msgid "HTTP port"
+msgstr "HTTP-portti"
+
+#: plugin/plugin.py:125
+msgid "Enable HTTP Authentication"
+msgstr "Vaadi HTTP:llä pääsyyn salasana"
+
+#: plugin/plugin.py:126
+msgid "Enable HTTPS"
+msgstr "Käytä HTTPS:ää"
+
+#: plugin/plugin.py:128
+msgid "HTTPS port"
+msgstr "HTTPS-portti"
+
+#: plugin/plugin.py:129
+msgid "Enable HTTPS Authentication"
+msgstr "Vaadi HTTPS:llä pääsyyn salasana"
+
+#: plugin/plugin.py:130
+msgid "Require client cert for HTTPS"
+msgstr "Vaadi asiakkaalta HTTPS-hyväksyntä"
+
+#: plugin/plugin.py:132
+msgid "Enable Authentication for streaming"
+msgstr "Vaadi salasana suoratoistolle"
+
+#: plugin/plugin.py:133
+msgid "Disable access for user root"
+msgstr "Poista pääsy käyttäjän juuritiedostoihin"
+
+#: plugin/plugin.py:135
+msgid "Without auth only local access is allowed!"
+msgstr "Vain lähiverkko-osoitteet sallittu!"
+
+#: plugin/plugin.py:136
+msgid "Enable access from VPNs"
+msgstr "Salli pääsy VPN-tunnelista"
+
+#: plugin/plugin.py:137
+msgid "Enable Parental Control"
+msgstr "Käytä lapsilukkoa"
+
+#: plugin/plugin.py:138
+msgid "Add service name to stream information"
+msgstr "Lisää kanavannimi suoratoistotietoihin"
+
+#: plugin/plugin.py:140
+msgid "Character encoding for EPG data"
+msgstr "Ohjelmaoppaan merkistökoodaus"
+
+#: plugin/plugin.py:149 plugin/plugin.py:208 plugin/plugin.py:210
+#: plugin/plugin.py:212
+msgid "OpenWebif Configuration"
+msgstr "OpenWebif-asetukset"
+
+#~ msgid "Multi EPG Mode"
+#~ msgstr "Multi EPG Modus"
+
+#~ msgid "Smart services renaming for XBMC"
+#~ msgstr "Sendernamen für XBMC umbenennen"
+
+#~ msgid "VPS Overwrite"
+#~ msgstr "VPS überschreiben"
+
+#~ msgid "SleepTimer feature not available"
+#~ msgstr "SleepTimer-Funktion nicht verfügbar"
