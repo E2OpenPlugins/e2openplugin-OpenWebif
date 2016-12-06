@@ -40,7 +40,6 @@ import os
 import sys
 import time
 import string
-import glob
 
 OPENWEBIFVER = "OWIF 1.2.0"
 
@@ -415,77 +414,78 @@ def getInfo(session = None, need_fullinfo = False):
 		})
 
 	info['shares'] = []
-	listing = glob.glob('/etc/auto.netw*')
-	for autofs in listing:
-		method = "autofs"
-		for line in file(autofs).readlines():
-			if not line.startswith('#'):
-				# Replace escaped spaces that can appear inside credentials with underscores
-				# Not elegant but we wouldn't want to expose credentials on the OWIF anyways
-				tmpline = line.replace("\ ","_")
-				tmp = tmpline.split()
-				if not len(tmp) == 3:
-					continue
-				name = tmp[0].strip()
-				type = "unknown"
-				if "cifs" in tmp[1]:
-					# Linux still defaults to SMBv1
-					type = "SMBv1.0"
+	autofiles = ('/etc/auto.network','/etc/auto.network_vti')
+	for autofs in autofiles:
+		if fileExists(autofs):
+			method = "autofs"
+			for line in file(autofs).readlines():
+				if not line.startswith('#'):
+					# Replace escaped spaces that can appear inside credentials with underscores
+					# Not elegant but we wouldn't want to expose credentials on the OWIF anyways
+					tmpline = line.replace("\ ","_")
+					tmp = tmpline.split()
+					if not len(tmp) == 3:
+						continue
+					name = tmp[0].strip()
+					type = "unknown"
+					if "cifs" in tmp[1]:
+						# Linux still defaults to SMBv1
+						type = "SMBv1.0"
+						settings = tmp[1].split(",")
+						for setting in settings:
+							if setting.startswith("vers="):
+								type = setting.replace("vers=", "SMBv")
+					elif "nfs" in tmp[1]:
+						type = "NFS"
+
+					# Default is r/w
+					mode = _("r/w")
 					settings = tmp[1].split(",")
 					for setting in settings:
-						if setting.startswith("vers="):
-							type = setting.replace("vers=", "SMBv")
-				elif "nfs" in tmp[1]:
-					type = "NFS"
+						if setting == "ro":
+							mode = _("r/o")
 
-				# Default is r/w
-				mode = _("r/w")
-				settings = tmp[1].split(",")
-				for setting in settings:
-					if setting == "ro":
-						mode = _("r/o")
+					uri = tmp[2]
+					parts = []
+					parts = tmp[2].split(':')
+					if parts[0] is "":
+						server = uri.split('/')[2]
+						uri = uri.strip()[1:]
+					else:
+						server = parts[0]
 
-				uri = tmp[2]
-				parts = []
-				parts = tmp[2].split(':')
-				if parts[0] is "":
-					server = uri.split('/')[2]
-					uri = uri.strip()[1:]
-				else:
-					server = parts[0]
-
-				ipaddress  = None
-				if server:
-					# Will fail on literal IPs
-					try:
-						# Try IPv6 first, as will Linux
-						if has_ipv6:
-							tmpaddress = None
-							tmpaddress = getaddrinfo(server, 0, AF_INET6)
-							if tmpaddress:
-								ipaddress = "[" + list(tmpaddress)[0][4][0] + "]"
-						# Use IPv4 if IPv6 fails or is not present
-						if ipaddress is None:
-							tmpaddress = None
-							tmpaddress = getaddrinfo(server, 0, AF_INET)
-							if tmpaddress:
-								ipaddress = list(tmpaddress)[0][4][0]
-					except:
-						pass
+					ipaddress  = None
+					if server:
+						# Will fail on literal IPs
+						try:
+							# Try IPv6 first, as will Linux
+							if has_ipv6:
+								tmpaddress = None
+								tmpaddress = getaddrinfo(server, 0, AF_INET6)
+								if tmpaddress:
+									ipaddress = "[" + list(tmpaddress)[0][4][0] + "]"
+							# Use IPv4 if IPv6 fails or is not present
+							if ipaddress is None:
+								tmpaddress = None
+								tmpaddress = getaddrinfo(server, 0, AF_INET)
+								if tmpaddress:
+									ipaddress = list(tmpaddress)[0][4][0]
+						except:
+							pass
 						
-				friendlyaddress = server
-				if ipaddress is not None and not ipaddress == server:
-					friendlyaddress = server + " ("+ ipaddress + ")"
-				info['shares'].append({
-					"name": name,
-					"method": method,
-					"type": type,
-					"mode": mode,
-					"path": uri,
-					"host": server,
-					"ipaddress": ipaddress,
-					"friendlyaddress": friendlyaddress
-				})
+					friendlyaddress = server
+					if ipaddress is not None and not ipaddress == server:
+						friendlyaddress = server + " ("+ ipaddress + ")"
+					info['shares'].append({
+						"name": name,
+						"method": method,
+						"type": type,
+						"mode": mode,
+						"path": uri,
+						"host": server,
+						"ipaddress": ipaddress,
+						"friendlyaddress": friendlyaddress
+					})
 	# TODO: fstab
 
 	info['transcoding'] = False
