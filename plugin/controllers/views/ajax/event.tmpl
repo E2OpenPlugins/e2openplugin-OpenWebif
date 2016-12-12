@@ -67,7 +67,7 @@
 		<tr>
 		
 			<td>
-					<a class="tb" href="#" onclick="addTimerEvent('$sref',$event.id,false);return false;" title="$tstrings['add_timer']">
+					<a class="tb" href="#" onclick="addTimerEvent('$sref',$event.id,false,cbAddTimerEvent);return false;" title="$tstrings['add_timer']">
 					<i class="fa fa-timerplus"></i>
 					</a>
 					</td>
@@ -81,7 +81,7 @@
 		<tr>
 		
 		<td>
-					<a class="tb" href="#" onclick="addTimerEvent('$sref',$event.id,true);return false;" title="$tstrings['add_zaptimer']">
+					<a class="tb" href="#" onclick="addTimerEvent('$sref',$event.id,true,cbAddTimerEvent);return false;" title="$tstrings['add_zaptimer']">
 					<i class="fa fa-timerplay"></i>
 					</a>
 					</td>

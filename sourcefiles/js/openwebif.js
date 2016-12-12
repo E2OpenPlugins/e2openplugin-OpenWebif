@@ -207,6 +207,7 @@ function initJsTranslation(strings) {
 	tstr_bqe_filename = strings.bqe_filename;
 	tstr_bqe_restore_question = strings.bqe_restore_question;
 	
+	tstr_timer = strings.timer;
 	tstr_timerlist = strings.timer_list;
 	tstr_timerpreview = strings.timer_preview;
 	tstr_timernewname = strings.timer_newname;
@@ -500,7 +501,14 @@ function webapi_execute_result(url, callback) {
 	});
 }
 
-function addTimerEvent(sRef, eventId, justplay) {
+function cbAddTimerEvent(state) {
+	if (state.state) {
+		$('.event[data-id='+state.eventId+'] .timer').remove();
+		$('.event[data-id='+state.eventId+'] div:first').append('<div class="timer">'+tstr_timer+'</div>');
+	}
+}
+
+function addTimerEvent(sRef, eventId, justplay, callback) {
 
 	var url = "/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId;
 	if(justplay)
@@ -508,10 +516,19 @@ function addTimerEvent(sRef, eventId, justplay) {
 
 	webapi_execute_result(url,
 		function(state,txt,conflicts) {
-			if (!state && conflicts)
+			if (!state && conflicts) {
 				TimerConflict(conflicts,sRef,eventId,justplay);
-			else
+			} else if (typeof callback !== 'undefined') {
+				callback({
+					sRef: sRef, 
+					eventId: eventId, 
+					justplay: justplay,
+					state: state,
+					txt: txt
+				});
+			} else {
 				alert( state ? tstr_timer_added : txt );
+			}
 		}
 	);
 }
