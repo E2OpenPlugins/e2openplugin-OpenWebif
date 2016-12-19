@@ -28,6 +28,11 @@ class ATController(resource.Resource):
 		self.putChild('get', AutoTimerSettingsResource())
 		self.putChild('set', AutoTimerChangeSettingsResource())
 		self.putChild('simulate', AutoTimerSimulateResource())
+		try:
+			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerTestResource
+			self.putChild('test', AutoTimerTestResource())
+		except ImportError:
+			pass
 
 	def render(self, request):
 		request.setResponseCode(http.OK)

@@ -265,6 +265,7 @@ class AjaxController(BaseController):
 		ret = {}
 		ret['hasVPS'] = 0
 		ret['hasSeriesPlugin'] = 0
+		ret['test'] = 0
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimer import typeMap
 			ret['types'] = typeMap
@@ -282,6 +283,11 @@ class AjaxController(BaseController):
 			from Plugins.Extensions.SeriesPlugin.plugin import Plugins
 			ret['hasSeriesPlugin'] = 1
 		except ImportError as ie:
+			pass
+		try:
+			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerTestResource
+			ret['test'] = 1
+		except ImportError:
 			pass
 		return ret
 
