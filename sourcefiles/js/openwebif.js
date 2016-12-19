@@ -1326,8 +1326,8 @@ function RefreshMEPG(mode)
 	var bq = '';
 	var lbq=GetLSValue('lastmbq_'+mode,'');
 	if(lbq!='')
-		bq= "?bref=" + lbq;
-	$("#tvcontent").html(loadspinner).load('ajax/multiepg' + bq,function() {
+		bq= "&bref=" + lbq;
+	$("#tvcontent").html(loadspinner).load('ajax/multiepg?epgmode=' + mode + bq,function() {
 		if(full)
 			ExpandMEPG();
 	});
@@ -1387,18 +1387,7 @@ function InitBouquets(tv)
 			$("#refreshmepg").hide();
 			$("#tvcontent").html(loadspinner).load("ajax/current");
 		});
-		$('#btn5').click(function(){
-		
-			var bq = '';
-			var lbq=GetLSValue('lastmbq_tv','');
-			if(lbq!='')
-				bq= "?bref=" + lbq;
-			$("#tvcontent").html(loadspinner).load('ajax/multiepg?epgmode=tv'+bq);
-			$("#expandmepg").show();
-			$("#refreshmepg").show();
-		});
-
-	} 
+	}
 	else {
 		mode= "?stype=radio";
 		$('#btn0').click(function(){
@@ -1406,17 +1395,19 @@ function InitBouquets(tv)
 			$("#refreshmepg").hide();
 			$("#tvcontent").html(loadspinner).load("ajax/current"+ mode);
 		});
-		$('#btn5').click(function(){
-		
-			var bq = '';
-			var lbq=GetLSValue('lastmbq_radio','');
-			if(lbq!='')
-				bq= "?bref=" + lbq;
-			$("#tvcontent").html(loadspinner).load('ajax/multiepg?epgmode=radio'+bq);
-			$("#expandmepg").show();
-			$("#refreshmepg").show();
-		});
 	}
+	
+	$('#btn5').click(function(){
+		var emode = (tv===true) ? 'tv':'radio';
+		var bq = '';
+		var lbq=GetLSValue('lastmbq_'+emode,'');
+		if(lbq!='')
+			bq= "&bref=" + lbq;
+		$("#tvcontent").html(loadspinner).load('ajax/multiepg?epgmode='+emode+bq);
+		$("#expandmepg").show();
+		$("#refreshmepg").show();
+	});
+	
 	$('#btn1').click(function(){
 		$("#expandmepg").hide();
 		$("#refreshmepg").hide();
