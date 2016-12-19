@@ -264,7 +264,7 @@ fixTableHeight();
 	var id = \$(this).data("ref");
 	var epgmode = "$epgmode";
 	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref='+id +'&day=$day&epgmode=' + epgmode);
-	if(typeof(Storage) !== "undefined") { localStorage.lastmbq = id; }
+	SetLSValue("lastmbq_"+epgmode,id);
 });
 \$(".event").click(function() {
 	var id = \$(this).data("id");

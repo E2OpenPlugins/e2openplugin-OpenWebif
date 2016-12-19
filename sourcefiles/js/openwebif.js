@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.1.1
+//* Version 1.2.1
 //******************************************************************************
 //* Copyright (C) 2011-2016 E2OpenPlugins
 //*
@@ -15,6 +15,7 @@
 //* V 2.6   - getallservices public function
 //* V 2.7   - getallservices cache / improve bool values / improve screenshots
 //* V 1.1.1 - epg fixes / change version numbering to match OWIF versioning
+//* V 1.2.1 - fix multiepg
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -1319,11 +1320,11 @@ function InitAccordeon(obj)
 	
 }
 
-function RefreshMEPG()
+function RefreshMEPG(mode)
 {
 	var full = ($("#compressmepg").is(":visible"));
 	var bq = '';
-	var lbq=GetLSValue('lastmbq','');
+	var lbq=GetLSValue('lastmbq_'+mode,'');
 	if(lbq!='')
 		bq= "?bref=" + lbq;
 	$("#tvcontent").html(loadspinner).load('ajax/multiepg' + bq,function() {
@@ -1388,12 +1389,11 @@ function InitBouquets(tv)
 		});
 		$('#btn5').click(function(){
 		
-			//var bq = '';
-			//var lbq=GetLSValue('lastmbq','');
-			//if(lbq!='')
-			//	bq= "?bref=" + lbq;
-			//alert(bq);
-			$("#tvcontent").html(loadspinner).load('ajax/multiepg?epgmode=tv');
+			var bq = '';
+			var lbq=GetLSValue('lastmbq_tv','');
+			if(lbq!='')
+				bq= "?bref=" + lbq;
+			$("#tvcontent").html(loadspinner).load('ajax/multiepg?epgmode=tv'+bq);
 			$("#expandmepg").show();
 			$("#refreshmepg").show();
 		});
@@ -1408,7 +1408,11 @@ function InitBouquets(tv)
 		});
 		$('#btn5').click(function(){
 		
-			$("#tvcontent").html(loadspinner).load('ajax/multiepg?epgmode=radio');
+			var bq = '';
+			var lbq=GetLSValue('lastmbq_radio','');
+			if(lbq!='')
+				bq= "?bref=" + lbq;
+			$("#tvcontent").html(loadspinner).load('ajax/multiepg?epgmode=radio'+bq);
 			$("#expandmepg").show();
 			$("#refreshmepg").show();
 		});
