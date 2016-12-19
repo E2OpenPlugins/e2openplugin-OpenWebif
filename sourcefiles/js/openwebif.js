@@ -1,19 +1,20 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 2.7
+//* Version 1.1.1
 //******************************************************************************
-//* Copyright (C) 2011-2014 E2OpenPlugins
+//* Copyright (C) 2011-2016 E2OpenPlugins
 //*
-//* V 1.0 - Initial Version
-//* V 1.1 - add movie move and rename
-//* V 2.0 - movie sort object, spinner, theme support, ...
-//* V 2.1 - support timer conflicts / fix IE cache issue
-//* V 2.2 - remove sync requests
-//* V 2.3 - prepare web tv / better timer conflicts
-//* V 2.4 - improve movie sort
-//* V 2.5 - improve settings
-//* V 2.6 - getallservices public function
-//* V 2.7 - getallservices cache / improve bool values / improve screenshots
+//* V 1.0   - Initial Version
+//* V 1.1   - add movie move and rename
+//* V 2.0   - movie sort object, spinner, theme support, ...
+//* V 2.1   - support timer conflicts / fix IE cache issue
+//* V 2.2   - remove sync requests
+//* V 2.3   - prepare web tv / better timer conflicts
+//* V 2.4   - improve movie sort
+//* V 2.5   - improve settings
+//* V 2.6   - getallservices public function
+//* V 2.7   - getallservices cache / improve bool values / improve screenshots
+//* V 1.1.1 - epg fixes / change version numbering to match OWIF versioning
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -1387,11 +1388,12 @@ function InitBouquets(tv)
 		});
 		$('#btn5').click(function(){
 		
-			var bq = '';
-			var lbq=GetLSValue('lastmbq','');
-			if(lbq!='')
-				bq= "?bref=" + lbq;
-			$("#tvcontent").html(loadspinner).load('ajax/multiepg' + bq);
+			//var bq = '';
+			//var lbq=GetLSValue('lastmbq','');
+			//if(lbq!='')
+			//	bq= "?bref=" + lbq;
+			//alert(bq);
+			$("#tvcontent").html(loadspinner).load('ajax/multiepg?epgmode=tv');
 			$("#expandmepg").show();
 			$("#refreshmepg").show();
 		});
@@ -1400,7 +1402,15 @@ function InitBouquets(tv)
 	else {
 		mode= "?stype=radio";
 		$('#btn0').click(function(){
+			$("#expandmepg").hide();
+			$("#refreshmepg").hide();
 			$("#tvcontent").html(loadspinner).load("ajax/current"+ mode);
+		});
+		$('#btn5').click(function(){
+		
+			$("#tvcontent").html(loadspinner).load('ajax/multiepg?epgmode=radio');
+			$("#expandmepg").show();
+			$("#refreshmepg").show();
 		});
 	}
 	$('#btn1').click(function(){

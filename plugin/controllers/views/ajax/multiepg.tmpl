@@ -43,10 +43,6 @@
 <div class="float plus ui-state-default #if $mode==1 then 'ui-state-active' else '' #" data-day="101">$tstrings['tv_guide']</div>
 <div class="float plus ui-state-default #if $mode==2 then 'ui-state-active' else '' #" data-day="102">$tstrings['timeline']</div>
 
-<div class="float plus ui-state-default lbl">&nbsp;EPG-Mode:&nbsp;</div>
-<div class="float plus ui-state-default epg-mode #if $epgmode=="tv" then 'ui-state-active' else '' #" data-tvradio="tv">TV</div>
-<div class="float plus ui-state-default epg-mode #if $epgmode=="radio" then 'ui-state-active' else '' #" data-tvradio="radio">Radio</div>
-
 <div id="compressmepg" onclick="CompressMEPG();"><i id="compressmepgi" class="fa fa-compress link" aria-hidden="true"></i></div>
 <div id="refreshmepg2" onclick="RefreshMEPG();"><i id="refreshmepgi" class="fa fa-refresh link" aria-hidden="true"></i></div>
 	<br clear="all">
@@ -266,8 +262,8 @@ fixTableHeight();
 \$(window).resize(function(){ fixTableHeight(); });
 \$(".bq").click(function() {
 	var id = \$(this).data("ref");
-	var epgmode = \$('.plus.epg-mode.ui-state-active').data('tvradio');
-	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref='+id +'&day=$day&epgmode='+epgmode);
+	var epgmode = "$epgmode";
+	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref='+id +'&day=$day&epgmode=' + epgmode);
 	if(typeof(Storage) !== "undefined") { localStorage.lastmbq = id; }
 });
 \$(".event").click(function() {
@@ -281,7 +277,7 @@ fixTableHeight();
 });
 \$(".plus").click(function() {
 	var day = \$(this).data("day");
-	var epgmode = \$('.plus.epg-mode.ui-state-active').data('tvradio');
+	var epgmode = $epgmode;
 	if (day != undefined) {
 		if (day > 199)
 		{
