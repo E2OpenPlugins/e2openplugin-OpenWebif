@@ -1,5 +1,10 @@
 #from urllib import quote
 #from Plugins.Extensions.OpenWebif.local import tstrings
+<style>
+input.editor {
+    width: 90%;
+}
+</style>
 <div id="content_main" class="ui-widget-content" style="min-height: 500px;">
 	<div id="tvcontentmain">
 		<div id="toolbar-header" class="ui-widget-header">
@@ -71,7 +76,7 @@
 						<br>
 						#set $eventname_escaped =  $movie.eventname.replace("'", r"\'")
 						<a href='/file?action=download&file=$quote($movie.filename)' title="$tstrings['download'] $movie.eventname"><div><i class="fa fa-save"></i></div></a>
-						<a href='#' onClick="renameMovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['rename_recording']"><div><i class="fa fa-edit"></i></div></a>
+						<a><div><i class="fa fa-edit" id="edit-$count" data-evname="$eventname_escaped" data-sref="$quote($movie.serviceref)" ></i></div></a>
 						<a href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><div><i class="fa fa-trash-o"></i></div></a>
 
 						</div>
@@ -79,7 +84,7 @@
 				<div class="tm_text">
 					#if $movie.eventname != ""
 						<div>
-							<span class="tm_title">$movie.eventname</span><br /> $movie.servicename  $movie.begintime<br /> $movie.length min.
+							<span class="tm_title editable" data-activator="#edit-$count" data-input-class="editor">$movie.eventname</span><br /> $movie.servicename  $movie.begintime<br /> $movie.length min.
 						</div>
 						<div>
 							<span class="tm_desc" style="font-weight: bold;">$movie.description</span>
@@ -89,7 +94,7 @@
 						</div>
 					#else
 						<div>
-							<span class="tm_title">$movie.filename</span>
+							<span class="tm_title editable" data-activator="#edit-$count" data-input-class="editor">$movie.filename</span>
 						</div>
 					#end if
 				</div>
@@ -101,7 +106,6 @@
 </div>
 
 <script type="text/javascript">
-
 \$( function() {
 	\$('#moviebuttons').buttonset();
 	MLHelper.Load('$sort');
@@ -115,5 +119,17 @@
 });
 
 #end if
-
+</script>
+<script src="/js/jinplace.min.js"></script>
+<script type="text/javascript">
+\$('.editable')
+    .jinplace({
+        submitFunction: function(opts, newname) {
+            var data = \$(opts.activator.selector).data();
+            if (newname && newname != data.evname) {
+                webapi_execute("/api/movierename?sRef="+data.sref+"&newname="+escape(newname));
+            }
+            return newname;
+        }
+    })
 </script>
