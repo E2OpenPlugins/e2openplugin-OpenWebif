@@ -698,7 +698,7 @@ def getNowNextEpg(ref, servicetype):
 
 	return { "events": ret, "result": True }
 
-def getSearchEpg(sstr, endtime=None, fulldesc=False):
+def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False):
 	ret = []
 	ev = {}
 	if config.OpenWebif.epg_encoding.value != 'utf-8':
@@ -713,7 +713,18 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False):
 			search_type = eEPGCache.FULL_DESCRIPTION_SEARCH
 	events = epgcache.search(('IBDTSENR', 128, search_type, sstr, 1));
 	if events is not None:
+		if bouquetsonly:
+			# collect service references from TV bouquets
+			bsref = {}
+			for service in getAllServices('tv')['services']:
+				for service2 in service['subservices']:
+					bsref[service2['servicereference']] = True
+				else:
+					bsref[service['servicereference']] = True
+			
 		for event in events:
+			if bouquetsonly and not event[7] in bsref:
+				continue
 			ev = {}
 			ev['id'] = event[0]
 			ev['date'] = "%s %s" % (tstrings[("day_" + strftime("%w", (localtime(event[1]))))], strftime("%d.%m.%Y", (localtime(event[1]))))

@@ -126,8 +126,11 @@ class AjaxController(BaseController):
 			fulldesc = False
 			if "full" in request.args.keys():
 				fulldesc=True
-			ev = getSearchEpg(request.args["sstr"][0],None,fulldesc)
-			events = ev["events"]
+			bouquetsonly = False
+			if "bouquetsonly" in request.args.keys():
+				bouquetsonly = True
+			ev = getSearchEpg(request.args["sstr"][0],None,fulldesc,bouquetsonly)
+			events = sorted(ev["events"], key=lambda ev: ev['begin_timestamp'])
 		at = False
 		if len(events) > 0: 
 			t = getTimers(self.session)

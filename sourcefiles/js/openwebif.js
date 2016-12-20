@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.1
+//* Version 1.2.2
 //******************************************************************************
 //* Copyright (C) 2011-2016 E2OpenPlugins
 //*
@@ -16,6 +16,7 @@
 //* V 2.7   - getallservices cache / improve bool values / improve screenshots
 //* V 1.1.1 - epg fixes / change version numbering to match OWIF versioning
 //* V 1.2.1 - fix multiepg
+//* V 1.2.2 - improve epgsearch
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -430,7 +431,8 @@ function open_epg_dialog(sRef,Name) {
 function open_epg_search_dialog() {
 	var spar = $("#epgSearch").val();
 	var full = GetLSValue('epgsearchtype',false) ? '&full=1' : ''
-	var url = "ajax/epgdialog?sstr=" + encodeURIComponent(spar) + full;
+	var bouquetsonly = GetLSValue('epgsearchbouquetsonly',false) ? '&bouquetsonly=1' : ''
+	var url = "ajax/epgdialog?sstr=" + encodeURIComponent(spar) + full + bouquetsonly;
 	$("#epgSearch").val("");
 	
 	var w = $(window).width() -100;
@@ -882,16 +884,27 @@ $(function() {
 		$('.remotegrabscreen').prop('checked', evt.currentTarget.checked);
 		SetLSValue('remotegrabscreen',evt.currentTarget.checked);
 	});
+	$('.remotegrabscreen').prop('checked',GetLSValue('remotegrabscreen',true));
 
 	$('input[name=epgsearchtype]').click(function(evt) {
 		$('input[name=epgsearchtype]').prop('checked', evt.currentTarget.checked);
 		SetLSValue('epgsearchtype',evt.currentTarget.checked);
 	});
-	if (typeof $('input[name=epgsearchtype]') !== 'undefined')
+	if (typeof $('input[name=epgsearchtype]') !== 'undefined') {
 		$('input[name=epgsearchtype]').prop('checked',GetLSValue('epgsearchtype',false));
-	else
+	} else {
 		SetLSValue('epgsearchtype',false);
-	$('.remotegrabscreen').prop('checked',GetLSValue('remotegrabscreen',true));
+	}
+	
+	$('input[name=epgsearchbouquetsonly]').click(function(evt) {
+		$('input[name=epgsearchbouquetsonly]').prop('checked', evt.currentTarget.checked);
+		SetLSValue('epgsearchbouquetsonly',evt.currentTarget.checked);
+	});
+	if (typeof $('input[name=epgsearchbouquetsonly]') !== 'undefined') {
+		$('input[name=epgsearchbouquetsonly]').prop('checked',GetLSValue('epgsearchbouquetsonly',false));
+	} else {
+		SetLSValue('epgsearchbouquetsonly',false);
+	}
 });
 
 $(window).keydown(function(evt) {
