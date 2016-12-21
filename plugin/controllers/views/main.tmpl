@@ -19,7 +19,7 @@
 #end if
 <link type="text/css" href="css/style.min.css" rel="stylesheet"/>
 <link type="text/css" href="web/css" rel="stylesheet"/>
-<script type="text/javascript" src="js/openwebif-1.2.1.min.js"></script>
+<script type="text/javascript" src="js/openwebif-1.2.2.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
 <script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
 <title>Open Webif</title>
@@ -83,6 +83,7 @@
 			#if $epgsearchcaps
 			<ul>
 				<li><input type="checkbox" name="epgsearchtype" />$tstrings['epgsearchextended']</li>
+				<li><input type="checkbox" name="epgsearchbouquetsonly" />$tstrings['epgsearchbouquetsonly']</li>
 			</ul>
 			#end if
 			<form action="" onSubmit="open_epg_search_dialog(); return false;">
