@@ -1,0 +1,16 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
+<div id="content_main" class="ui-widget-content"><div id="tvcontentmain"><div id="toolbar-header" class="ui-widget-header">
+<span id="toolbar"><span id="tvrbtn">
+<input type="radio" id="btn0" name="tvrbtn" /><label for="btn0">$tstrings['current']</label>
+<input type="radio" id="btn1" name="tvrbtn" checked="checked" /><label for="btn1">$tstrings['bouquets']</label>
+<input type="radio" id="btn2" name="tvrbtn" /><label for="btn2">$tstrings['providers']</label>
+<input type="radio" id="btn3" name="tvrbtn" /><label for="btn3">$tstrings['satellites']</label>
+<input type="radio" id="btn4" name="tvrbtn" /><label for="btn4">$tstrings['all_channels']</label>
+<input type="radio" id="btn5" name="tvrbtn" /><label for="btn5">$tstrings['epg']</label>
+</span></span>
+<div id="expandmepg" onclick="ExpandMEPG();"><i id="expandmepgi" class="fa fa-expand link" aria-hidden="true"></i></div>
+<div id="refreshmepg" onclick="RefreshMEPG('$epgmode');"><i id="refreshmepgi" class="fa fa-refresh link" aria-hidden="true"></i></div>
+</div><div id="tvcontent"></div></div></div>
+<script type="text/javascript">
+\$(function() { InitTVRatio('$epgmode');});
+</script>

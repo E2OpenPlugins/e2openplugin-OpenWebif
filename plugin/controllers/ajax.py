@@ -203,6 +203,14 @@ class AjaxController(BaseController):
 	def P_tv(self, request):
 		return {}
 
+	def P_tvradio(self, request):
+		epgmode = "tv"
+		if "epgmode" in request.args.keys():
+			epgmode = request.args["epgmode"][0]
+			if epgmode not in ["tv", "radio"]:
+				epgmode = "tv"
+		return{"epgmode": epgmode}
+
 	def P_config(self, request):
 		section = "usage"
 		if "section" in request.args.keys():

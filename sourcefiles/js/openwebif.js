@@ -1391,6 +1391,79 @@ function mainresize()
 
 var mepgdirect=0;
 
+function InitTVRadio(epgmode)
+{
+
+	var mode = (epgmode == 'radio') ? '?stype=radio':'';
+	
+	$('#btn0').click(function(){
+		$("#expandmepg").hide();
+		$("#refreshmepg").hide();
+		$("#tvcontent").html(loadspinner).load("ajax/current" +mode);
+	});
+
+	$('#btn5').click(function(){
+		var bq = '';
+		var lbq=GetLSValue('lastmbq_'+epgmode,'');
+		if(lbq!='')
+			bq= "&bref=" + lbq;
+		$("#tvcontent").html(loadspinner).load('ajax/multiepg?epgmode='+epgmode+bq);
+		$("#expandmepg").show();
+		$("#refreshmepg").show();
+	});
+
+	$('#btn1').click(function(){
+		$("#expandmepg").hide();
+		$("#refreshmepg").hide();
+		$("#tvcontent").html(loadspinner).load("ajax/bouquets" + mode);
+	});
+	$('#btn2').click(function(){
+		$("#expandmepg").hide();
+		$("#refreshmepg").hide();
+		$("#tvcontent").html(loadspinner).load("ajax/providers" + mode);
+	});
+	$('#btn3').click(function(){
+		$("#expandmepg").hide();
+		$("#refreshmepg").hide();
+		$("#tvcontent").load("ajax/satellites" + mode);
+	});
+	$('#btn4').click(function(){
+		$("#expandmepg").hide();
+		$("#refreshmepg").hide();
+		$("#tvcontent").html(loadspinner).load("ajax/channels" + mode);
+	});
+	
+	$("#tvbutton").buttonset();
+
+	var link = "ajax/bouquets" + mode;
+
+	if (tv===true) {
+		var parts=window.location.href.toLowerCase().split("#");
+		window.location.hash="";
+		if (parts[1] == 'tv') {
+			if(parts[2] == 'mepg' || parts[2] == 'mepgfull')
+			{
+				mepgdirect=0;
+				if(parts[2] == 'mepgfull')
+					mepgdirect=1;
+				$("#btn5").click();
+				return;
+			}
+			else if (parts[2] == 'current')
+			{
+				$("#btn0").click();
+				return;
+			}
+		}
+	}
+	
+	$("#tvcontent").load("ajax/bouquets" + mode);
+	
+	if (theme == 'pepper-grinder')
+		$("#tvcontent").addClass('ui-state-active');
+
+}
+
 function InitBouquets(tv)
 {
 	var mode="";
