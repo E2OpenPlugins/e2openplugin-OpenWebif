@@ -377,8 +377,10 @@ def _moveMovie(session, sRef, destpath=None, newname=None):
 								move(src, srcpath + newname + suffix)
 						else:
 							move(src, destpath + fileName + suffix)
+					except IOError,e:
+						errorlist.append("I/O error({0})".format(e))
+						break
 					except OSError as ose:
-						#print "ERR:%s" % str(ose)
 						errorlist.append(str(ose))
 			return errorlist
 
@@ -410,6 +412,7 @@ def _moveMovie(session, sRef, destpath=None, newname=None):
 			if not errlist:
 				result = True
 			else:
+				errText = errlist[0]
 				result = False
 
 	etxt = "rename"
