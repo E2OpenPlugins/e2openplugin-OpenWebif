@@ -426,7 +426,10 @@ def BJregisterService(protocol, port):
 		from Plugins.Extensions.Bonjour.Bonjour import bonjour
 		service = bonjour.buildService(protocol, port, 'OpenWebif')
 		bonjour.registerService(service, True)
-		return True
-
-	except ImportError, e:
-		return False
+	except:
+		pass
+	try:
+		servicetype = '_' + protocol + '._tcp'
+		enigma.e2avahi_announce('OpenWebif', servicetype, port)
+	except:
+		pass
