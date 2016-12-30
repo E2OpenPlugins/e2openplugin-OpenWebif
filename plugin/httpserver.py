@@ -9,7 +9,7 @@
 #                                                                            #
 ##############################################################################
 
-from enigma import eEnv
+import enigma
 from Screens.MessageBox import MessageBox
 from Components.config import config
 from Tools.Directories import fileExists
@@ -78,7 +78,7 @@ def verifyCallback(connection, x509, errnum, errdepth, ok):
 	return True
 
 def isOriginalWebifInstalled():
-	pluginpath = eEnv.resolve('${libdir}/enigma2/python/Plugins/Extensions/WebInterface/plugin.py')
+	pluginpath = enigma.eEnv.resolve('${libdir}/enigma2/python/Plugins/Extensions/WebInterface/plugin.py')
 	if fileExists(pluginpath) or fileExists(pluginpath + "o") or fileExists(pluginpath + "c"):
 		return True
 
@@ -89,8 +89,8 @@ def buildRootTree(session):
 
 	if not isOriginalWebifInstalled():
 		# this is an hack! any better idea?
-		origwebifpath = eEnv.resolve('${libdir}/enigma2/python/Plugins/Extensions/WebInterface')
-		hookpath = eEnv.resolve('${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/pluginshook.src')
+		origwebifpath = enigma.eEnv.resolve('${libdir}/enigma2/python/Plugins/Extensions/WebInterface')
+		hookpath = enigma.eEnv.resolve('${libdir}/enigma2/python/Plugins/Extensions/OpenWebif/pluginshook.src')
 		if not os.path.islink(origwebifpath + "/WebChilds/Toplevel.py"):
 			print "[OpenWebif] hooking original webif plugins"
 
