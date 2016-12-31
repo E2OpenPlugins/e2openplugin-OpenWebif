@@ -430,6 +430,6 @@ def BJregisterService(protocol, port):
 		pass
 	try:
 		servicetype = '_' + protocol + '._tcp'
-		enigma.e2avahi_announce('OpenWebif', servicetype, port)
+		enigma.e2avahi_announce(None, servicetype, port)
 	except:
 		pass
