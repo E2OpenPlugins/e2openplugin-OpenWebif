@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2016-11-24 15:30+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Samzam <http://www.world-of-satellite.com>\n"
+"Last-Translator: Samzam <http://www.opena.tv>\n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -318,15 +318,15 @@ msgstr "tuntematon"
 
 #: plugin/controllers/models/info.py:136 plugin/local.py:115
 msgid "IPv4-only kernel"
-msgstr "IPv4-vain kernel"
+msgstr "Vain IPv4 Kernel"
 
 #: plugin/controllers/models/info.py:140 plugin/local.py:117
 msgid "IPv4-only Python/Twisted"
-msgstr "IPv4-vain Python/Twisted"
+msgstr "Vain IPv4 Python/Twisted"
 
 #: plugin/controllers/models/info.py:169 plugin/local.py:116
 msgid "none/IPv4-only network"
-msgstr "ei/IPv4-vain verkkoa"
+msgstr "Ei/vain IPv4-verkko"
 
 #: plugin/controllers/models/info.py:287 plugin/controllers/models/info.py:290
 msgid "kB"
@@ -613,31 +613,31 @@ msgstr "Su"
 
 #: plugin/local.py:13
 msgid "Sun"
-msgstr "Sun"
+msgstr "Su"
 
 #: plugin/local.py:14
 msgid "Mon"
-msgstr "Maa"
+msgstr "Ma"
 
 #: plugin/local.py:15
 msgid "Tue"
-msgstr "Tii"
+msgstr "Ti"
 
 #: plugin/local.py:16
 msgid "Wed"
-msgstr "Kes"
+msgstr "Ke"
 
 #: plugin/local.py:17
 msgid "Thu"
-msgstr "Tor"
+msgstr "To"
 
 #: plugin/local.py:18
 msgid "Fri"
-msgstr "Per"
+msgstr "Pe"
 
 #: plugin/local.py:19
 msgid "Sat"
-msgstr "Lau"
+msgstr "La"
 
 #: plugin/local.py:21
 msgid "Monday"
@@ -849,7 +849,7 @@ msgstr "Poista tallennus"
 
 #: plugin/local.py:76
 msgid "Really delete the recording"
-msgstr "Haluatko todella poistaa tallennuksen"
+msgstr "Poistetaan tallennus"
 
 #: plugin/local.py:77
 msgid "Delete Timer"
@@ -857,7 +857,7 @@ msgstr "Poista ajastus"
 
 #: plugin/local.py:78
 msgid "Really delete the timer"
-msgstr "Haluatko todella poistaa ajastuksen"
+msgstr "Poistetaan ajastus"
 
 #: plugin/local.py:79 plugin/local.py:253
 msgid "Description"
@@ -1101,7 +1101,7 @@ msgstr "OE-järjestelmä"
 
 #: plugin/local.py:144
 msgid "On"
-msgstr "Päällä"
+msgstr "Päälle"
 
 #: plugin/local.py:145
 msgid "Open Source Web Interface for Linux set-top box"
@@ -1137,7 +1137,7 @@ msgstr "Toistolista"
 
 #: plugin/local.py:153
 msgid "Power Control"
-msgstr "Virtanappi"
+msgstr "Virranhallinta"
 
 #: plugin/local.py:154
 msgid "Provider"
@@ -1157,7 +1157,7 @@ msgstr "Käynnistä uudelleen"
 
 #: plugin/local.py:158
 msgid "Recording Status"
-msgstr "Tallennuksen tila"
+msgstr "Tallennetaan..."
 
 #: plugin/local.py:159 plugin/local.py:342
 msgid "Refresh"
@@ -1181,7 +1181,7 @@ msgstr "Uudelleennimeä tallennus"
 
 #: plugin/local.py:164
 msgid "Really rename the recording"
-msgstr "Haluatko todella uudelleennimetä tallennuksen"
+msgstr "Uudelleen nimetään tallennus"
 
 #: plugin/local.py:165
 msgid "Repeated"
@@ -1286,7 +1286,7 @@ msgstr "Ohjelmisto"
 
 #: plugin/local.py:191
 msgid "Standby"
-msgstr "Valmiustila"
+msgstr "Valmiustilaan"
 
 #: plugin/local.py:192
 msgid "Standby Toggle"
@@ -1358,7 +1358,7 @@ msgstr "Automaattiajastuksen esikatselu"
 
 #: plugin/local.py:209
 msgid "Timer"
-msgstr "Ajastukset"
+msgstr "Ajastus"
 
 #: plugin/local.py:210 plugin/local.py:324
 msgid "Timers"
