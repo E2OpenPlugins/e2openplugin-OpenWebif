@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2016-11-24 15:31+0100\n"
-"PO-Revision-Date: 2016-11-24 15:31+0100\n"
-"Last-Translator: neoatomic <neoatomic@users.noreply.github.com>\n"
+"POT-Creation-Date: 2016-11-24 15:28+0100\n"
+"PO-Revision-Date: 2017-01-02 15:58+0200\n"
+"Last-Translator: Vytenis Pulokas <vyteniui@gmail.com>\n"
 "Language-Team: Vytenis Pulokas <vyteniui@gmail.com>\n"
 "Language: lt_LT\n"
 "MIME-Version: 1.0\n"
@@ -270,7 +270,7 @@ msgstr "LCD4Linux sąranka"
 
 #: plugin/controllers/base.py:279
 msgid "OSCam Webinterface"
-msgstr ""
+msgstr "OSCam interneto sąsaja"
 
 #: plugin/controllers/base.py:283
 msgid "AutoTimer"
@@ -286,24 +286,24 @@ msgstr "EPG atnaujinimas"
 
 #: plugin/controllers/ipkg.py:238
 msgid "Error upload File"
-msgstr ""
+msgstr "Failo įkėlimo klaida"
 
 #: plugin/controllers/ipkg.py:241
 msgid "wrong filetype"
-msgstr ""
+msgstr "netinkamas failo tipas"
 
 #: plugin/controllers/ipkg.py:255
 msgid "Error writing File"
-msgstr ""
+msgstr "Failo įrašymo klaida"
 
 #: plugin/controllers/models/info.py:58
 msgid "SLAAC"
-msgstr ""
+msgstr "SLAAC"
 
 #: plugin/controllers/models/info.py:65 plugin/controllers/models/info.py:76
 #: plugin/controllers/models/info.py:83
 msgid "static"
-msgstr ""
+msgstr "statinis"
 
 #: plugin/controllers/models/info.py:67 plugin/controllers/models/info.py:85
 #: plugin/local.py:80
@@ -312,11 +312,11 @@ msgstr "DHCP"
 
 #: plugin/controllers/models/info.py:69 plugin/controllers/models/info.py:87
 msgid "manual/disabled"
-msgstr ""
+msgstr "rankomis/išjungta"
 
 #: plugin/controllers/models/info.py:95 plugin/controllers/models/info.py:102
 msgid "unknown"
-msgstr ""
+msgstr "nežinoma"
 
 #: plugin/controllers/models/info.py:136 plugin/local.py:115
 msgid "IPv4-only kernel"
@@ -332,12 +332,12 @@ msgstr "nėra / tik IPv4 tinklas"
 
 #: plugin/controllers/models/info.py:287 plugin/controllers/models/info.py:290
 msgid "kB"
-msgstr ""
+msgstr "kB"
 
 #: plugin/controllers/models/info.py:291 plugin/controllers/models/info.py:414
 #, python-format
 msgid "%s free / %s total"
-msgstr ""
+msgstr "%s laisvų / %s iš viso"
 
 #: plugin/controllers/models/info.py:326 plugin/local.py:65
 msgid "Chipset"
@@ -350,25 +350,25 @@ msgstr "Sąsajos procesoriaus versija"
 #: plugin/controllers/models/info.py:377 plugin/controllers/models/info.py:388
 #: plugin/controllers/models/info.py:406
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: plugin/controllers/models/info.py:380 plugin/controllers/models/info.py:386
 #: plugin/controllers/models/info.py:401 plugin/controllers/models/info.py:404
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: plugin/controllers/models/info.py:384 plugin/controllers/models/info.py:396
 #: plugin/controllers/models/info.py:398
 msgid "TB"
-msgstr ""
+msgstr "TB"
 
 #: plugin/controllers/models/info.py:442
 msgid "r/w"
-msgstr ""
+msgstr "skaityti/rašyti"
 
 #: plugin/controllers/models/info.py:446
 msgid "r/o"
-msgstr ""
+msgstr "tik skaityti"
 
 #: plugin/controllers/models/message.py:33
 msgid "Message sent successfully!"
@@ -837,7 +837,7 @@ msgstr "Dabas rodoma"
 
 #: plugin/local.py:72
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #: plugin/local.py:73
 msgid "Deep-Standby"
@@ -873,7 +873,7 @@ msgstr "Išjungti laikmatį"
 
 #: plugin/local.py:82
 msgid "disabled"
-msgstr ""
+msgstr "išjungtas"
 
 #: plugin/local.py:83
 msgid "Distro"
@@ -1258,7 +1258,7 @@ msgstr "Bukietų redaktorius"
 
 #: plugin/local.py:183
 msgid "(Shift + Click for Long Press)"
-msgstr "(shift + click ilgam nuspaudimui)"
+msgstr "(Shift+click pele ilgam nuspaudimui)"
 
 #: plugin/local.py:184
 msgid "Show Full OpenWebif"
@@ -2024,115 +2024,115 @@ msgstr "Ar tikrai norite atkurti iš failo"
 
 #: plugin/local.py:398
 msgid "via"
-msgstr ""
+msgstr "per"
 
 #: plugin/local.py:399
 msgid "Record+ZAP"
-msgstr ""
+msgstr "Įjungti kanalą ir įrašymą"
 
 #: plugin/local.py:400
 msgid "Pmtpid"
-msgstr ""
+msgstr "Pmtpid"
 
 #: plugin/local.py:401
 msgid "Apid"
-msgstr ""
+msgstr "Apid"
 
 #: plugin/local.py:402
 msgid "Vpid"
-msgstr ""
+msgstr "VPId"
 
 #: plugin/local.py:403
 msgid "Pcrpid"
-msgstr ""
+msgstr "Pcrpid"
 
 #: plugin/local.py:404
 msgid "Tsid"
-msgstr ""
+msgstr "TSID"
 
 #: plugin/local.py:405
 msgid "Onid"
-msgstr ""
+msgstr "ONID"
 
 #: plugin/local.py:406
 msgid "Sid"
-msgstr ""
+msgstr "SID"
 
 #: plugin/local.py:407
 msgid "Sref"
-msgstr ""
+msgstr "Sref"
 
 #: plugin/local.py:408
 msgid "Orbital Position"
-msgstr ""
+msgstr "Padėtis orbitoje"
 
 #: plugin/local.py:410
 msgid "error! Loading Page"
-msgstr ""
+msgstr "klaida! atveriama"
 
 #: plugin/local.py:411
 msgid "Timer Added"
-msgstr ""
+msgstr "Laikmatis įtrauktas"
 
 #: plugin/local.py:412
 msgid "Event not found"
-msgstr ""
+msgstr "Įvykio nerasta"
 
 #: plugin/local.py:413
 msgid "Show Picon in channel list"
-msgstr ""
+msgstr "Kanalų sąraše rodyti piktogramas"
 
 #: plugin/local.py:415
 msgid "OpenWebif Browser Settings"
-msgstr ""
+msgstr "OpenWebif naršyklės nuostatos"
 
 #: plugin/local.py:416
 msgid "OpenWebif Settings"
-msgstr ""
+msgstr "OpenWebif nuostatos"
 
 #: plugin/local.py:417
 msgid "Theme"
-msgstr ""
+msgstr "Aplinkos tema"
 
 #: plugin/local.py:418
 msgid "Show Picons in channel list"
-msgstr ""
+msgstr "Kanalų sąraše rodyti piktogramas"
 
 #: plugin/local.py:419
 msgid "Spinner"
-msgstr ""
+msgstr "Suktukas"
 
 #: plugin/local.py:420
 msgid "Display duration (s)"
-msgstr ""
+msgstr "Rodymo trukmė (sek.)"
 
 #: plugin/local.py:422
 msgid "Display Mode"
-msgstr ""
+msgstr "Atvaizdavimo būdas"
 
 #: plugin/local.py:423
 msgid "TV Guide"
-msgstr ""
+msgstr "TV gidas"
 
 #: plugin/local.py:424
 msgid "Timeline"
-msgstr ""
+msgstr "Chronologija"
 
 #: plugin/local.py:425
 msgid "Web TV"
-msgstr ""
+msgstr "Interneto TV"
 
 #: plugin/local.py:427
 msgid "Link Speed"
-msgstr ""
+msgstr "Ryšio sparta"
 
 #: plugin/local.py:428
 msgid "Network Shares"
-msgstr ""
+msgstr "Bendri tinklo resursai"
 
 #: plugin/local.py:429
 msgid "using"
-msgstr ""
+msgstr "naudojamas"
 
 #: plugin/plugin.py:103
 msgid "OpenWebif url: http://yourip:port"
@@ -2176,11 +2176,11 @@ msgstr "Uždrausti 'root' vartotojo prieigą"
 
 #: plugin/plugin.py:135
 msgid "Without auth only local access is allowed!"
-msgstr ""
+msgstr "Be autentikacijos leidžiamas tik vietinis prisijungimas!"
 
 #: plugin/plugin.py:136
 msgid "Enable access from VPNs"
-msgstr ""
+msgstr "Leisti VPN prieigą"
 
 #: plugin/plugin.py:137
 msgid "Enable Parental Control"
@@ -2198,30 +2198,3 @@ msgstr "EPG naudojamų šriftų koduotė"
 #: plugin/plugin.py:212
 msgid "OpenWebif Configuration"
 msgstr "OpenWebif konfigūravimas"
-
-#~ msgid "Delete Movie"
-#~ msgstr "Šalinti filmą"
-
-#~ msgid "Really delete the movie"
-#~ msgstr "Tikrai pašalinti filmą"
-
-#~ msgid "Afterevent"
-#~ msgstr "Po įvykio"
-
-#~ msgid "Smart services renaming for XBMC"
-#~ msgstr "XBMC (Kodi) tarnybų pervadinimas"
-
-#~ msgid "False"
-#~ msgstr "Ne"
-
-#~ msgid "Record+ZAP:"
-#~ msgstr "Įjungti kanalą ir įrašymą:"
-
-#~ msgid "SleepTimer feature not available"
-#~ msgstr "Budėjimo laikmačio funkcija negalima"
-
-#~ msgid "Timer List"
-#~ msgstr "Laikmačių sąrašas"
-
-#~ msgid "VPS Overwrite"
-#~ msgstr "Perrašyti VPS"
