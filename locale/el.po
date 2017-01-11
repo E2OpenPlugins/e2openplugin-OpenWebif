@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebIf\n"
-"POT-Creation-Date: 2016-11-24 15:30+0100\n"
+"POT-Creation-Date: 2017-01-11 12:40+0200\n"
 "PO-Revision-Date: \n"
-"Last-Translator: neoatomic <neoatomic@users.noreply.github.com>\n"
+"Last-Translator: MCelliot_g <mcelliot_g@hotmail.com>\n"
 "Language-Team: satdreamgr\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.8\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
@@ -270,7 +270,7 @@ msgstr "Ρυθμίσεις LCD4Linux"
 
 #: plugin/controllers/base.py:279
 msgid "OSCam Webinterface"
-msgstr ""
+msgstr "Διεπαφή Δικτύου OSCam"
 
 #: plugin/controllers/base.py:283
 msgid "AutoTimer"
@@ -286,24 +286,24 @@ msgstr "Ανανέωση EPG"
 
 #: plugin/controllers/ipkg.py:238
 msgid "Error upload File"
-msgstr ""
+msgstr "Σφάλμα ανεβάσματος Αρχείου"
 
 #: plugin/controllers/ipkg.py:241
 msgid "wrong filetype"
-msgstr ""
+msgstr "λανθασμένος τύπος αρχείου"
 
 #: plugin/controllers/ipkg.py:255
 msgid "Error writing File"
-msgstr ""
+msgstr "Σφάλμα εγγραφής Αρχείου"
 
 #: plugin/controllers/models/info.py:58
 msgid "SLAAC"
-msgstr ""
+msgstr "SLAAC"
 
 #: plugin/controllers/models/info.py:65 plugin/controllers/models/info.py:76
 #: plugin/controllers/models/info.py:83
 msgid "static"
-msgstr ""
+msgstr "στατική"
 
 #: plugin/controllers/models/info.py:67 plugin/controllers/models/info.py:85
 #: plugin/local.py:80
@@ -312,11 +312,11 @@ msgstr "DHCP"
 
 #: plugin/controllers/models/info.py:69 plugin/controllers/models/info.py:87
 msgid "manual/disabled"
-msgstr ""
+msgstr "χειροκίνητο/ανενεργό"
 
 #: plugin/controllers/models/info.py:95 plugin/controllers/models/info.py:102
 msgid "unknown"
-msgstr ""
+msgstr "άγνωστο"
 
 #: plugin/controllers/models/info.py:136 plugin/local.py:115
 msgid "IPv4-only kernel"
@@ -332,12 +332,12 @@ msgstr "Δίκτυο κανένα/IPv4 μόνο"
 
 #: plugin/controllers/models/info.py:287 plugin/controllers/models/info.py:290
 msgid "kB"
-msgstr ""
+msgstr "kB"
 
 #: plugin/controllers/models/info.py:291 plugin/controllers/models/info.py:414
 #, python-format
 msgid "%s free / %s total"
-msgstr ""
+msgstr "%s ελεύθερα / %s συνολικά"
 
 #: plugin/controllers/models/info.py:326 plugin/local.py:65
 msgid "Chipset"
@@ -350,25 +350,25 @@ msgstr "Έκδοση Frontprocessor"
 #: plugin/controllers/models/info.py:377 plugin/controllers/models/info.py:388
 #: plugin/controllers/models/info.py:406
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: plugin/controllers/models/info.py:380 plugin/controllers/models/info.py:386
 #: plugin/controllers/models/info.py:401 plugin/controllers/models/info.py:404
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: plugin/controllers/models/info.py:384 plugin/controllers/models/info.py:396
 #: plugin/controllers/models/info.py:398
 msgid "TB"
-msgstr ""
+msgstr "TB"
 
 #: plugin/controllers/models/info.py:442
 msgid "r/w"
-msgstr ""
+msgstr "r/w"
 
 #: plugin/controllers/models/info.py:446
 msgid "r/o"
-msgstr ""
+msgstr "r/o"
 
 #: plugin/controllers/models/message.py:33
 msgid "Message sent successfully!"
@@ -838,7 +838,7 @@ msgstr "Τρέχον Πρόγραμμα"
 
 #: plugin/local.py:72
 msgid "Date"
-msgstr ""
+msgstr "Ημερομηνία"
 
 #: plugin/local.py:73
 msgid "Deep-Standby"
@@ -874,7 +874,7 @@ msgstr "Απενεργοποίηση Χρονοδιακόπτη"
 
 #: plugin/local.py:82
 msgid "disabled"
-msgstr ""
+msgstr "ανενεργό"
 
 #: plugin/local.py:83
 msgid "Distro"
@@ -898,7 +898,7 @@ msgstr "Λήψη Λίστας Αναπαραγωγής για"
 
 #: plugin/local.py:88
 msgid "Drivers"
-msgstr "Ημερομηνία οδηγού"
+msgstr "Οδηγοί"
 
 #: plugin/local.py:89
 msgid "Duration"
@@ -1022,7 +1022,7 @@ msgstr "Αναπαραγωγή"
 
 #: plugin/local.py:123
 msgid "Kernel"
-msgstr "Έκδοση Kernel"
+msgstr "Kernel"
 
 #: plugin/local.py:124
 msgid "LICENSE"
@@ -1259,7 +1259,7 @@ msgstr "Επεξεργασία Μπουκέτων"
 
 #: plugin/local.py:183
 msgid "(Shift + Click for Long Press)"
-msgstr "(shift + κλικ για παρατεταμένο πάτημα)"
+msgstr "(Shift + Click για Παρατεταμένη Πίεση)"
 
 #: plugin/local.py:184
 msgid "Show Full OpenWebif"
@@ -1375,7 +1375,7 @@ msgstr "Τίτλος"
 
 #: plugin/local.py:212
 msgid "Main Memory"
-msgstr "Συνολική Μνήμη"
+msgstr "Κύρια Μνήμη"
 
 #: plugin/local.py:213
 msgid "transcoded"
@@ -2027,115 +2027,115 @@ msgstr "Θέλετε σίγουρα να γίνει επαναφορά από τ
 
 #: plugin/local.py:398
 msgid "via"
-msgstr ""
+msgstr "μέσω"
 
 #: plugin/local.py:399
 msgid "Record+ZAP"
-msgstr ""
+msgstr "Εγγραφή+ΖΑΠ"
 
 #: plugin/local.py:400
 msgid "Pmtpid"
-msgstr ""
+msgstr "Pmtpid"
 
 #: plugin/local.py:401
 msgid "Apid"
-msgstr ""
+msgstr "Apid"
 
 #: plugin/local.py:402
 msgid "Vpid"
-msgstr ""
+msgstr "Vpid"
 
 #: plugin/local.py:403
 msgid "Pcrpid"
-msgstr ""
+msgstr "Pcrpid"
 
 #: plugin/local.py:404
 msgid "Tsid"
-msgstr ""
+msgstr "Tsid"
 
 #: plugin/local.py:405
 msgid "Onid"
-msgstr ""
+msgstr "Onid"
 
 #: plugin/local.py:406
 msgid "Sid"
-msgstr ""
+msgstr "Sid"
 
 #: plugin/local.py:407
 msgid "Sref"
-msgstr ""
+msgstr "Αναφ"
 
 #: plugin/local.py:408
 msgid "Orbital Position"
-msgstr ""
+msgstr "Τροχιακή Θέση"
 
 #: plugin/local.py:410
 msgid "error! Loading Page"
-msgstr ""
+msgstr "σφάλμα! Φόρτωση Σελίδας"
 
 #: plugin/local.py:411
 msgid "Timer Added"
-msgstr ""
+msgstr "Ο Χρονοδιακόπτης Προστέθηκε"
 
 #: plugin/local.py:412
 msgid "Event not found"
-msgstr ""
+msgstr "Το πρόγραμμα δεν βρέθηκε"
 
 #: plugin/local.py:413
 msgid "Show Picon in channel list"
-msgstr ""
+msgstr "Εμφάνιση Λογότυπου στη λίστα καναλιών"
 
 #: plugin/local.py:415
 msgid "OpenWebif Browser Settings"
-msgstr ""
+msgstr "Ρυθμίσεις Πλοηγού OpenWebif"
 
 #: plugin/local.py:416
 msgid "OpenWebif Settings"
-msgstr ""
+msgstr "Ρυθμίσεις OpenWebif"
 
 #: plugin/local.py:417
 msgid "Theme"
-msgstr ""
+msgstr "Θέμα"
 
 #: plugin/local.py:418
 msgid "Show Picons in channel list"
-msgstr ""
+msgstr "Εμφάνιση Λογότυπων στη λίστα καναλιών"
 
 #: plugin/local.py:419
 msgid "Spinner"
-msgstr ""
+msgstr "Κινούμενο γραφικό"
 
 #: plugin/local.py:420
 msgid "Display duration (s)"
-msgstr ""
+msgstr "Εμφάνιση διάρκειας (ων)"
 
 #: plugin/local.py:422
 msgid "Display Mode"
-msgstr ""
+msgstr "Λειτουργία Οθόνης"
 
 #: plugin/local.py:423
 msgid "TV Guide"
-msgstr ""
+msgstr "Οδηγός TV"
 
 #: plugin/local.py:424
 msgid "Timeline"
-msgstr ""
+msgstr "Γραμμή χρόνου"
 
 #: plugin/local.py:425
 msgid "Web TV"
-msgstr ""
+msgstr "Web TV"
 
 #: plugin/local.py:427
 msgid "Link Speed"
-msgstr ""
+msgstr "Ταχύτητα Σύνδεσης"
 
 #: plugin/local.py:428
 msgid "Network Shares"
-msgstr ""
+msgstr "Κοινόχρηστα Στοιχεία Δικτύου"
 
 #: plugin/local.py:429
 msgid "using"
-msgstr ""
+msgstr "με χρήση"
 
 #: plugin/plugin.py:103
 msgid "OpenWebif url: http://yourip:port"
@@ -2179,11 +2179,11 @@ msgstr "Απενεργοποίηση πρόσβασης για το χρήστη
 
 #: plugin/plugin.py:135
 msgid "Without auth only local access is allowed!"
-msgstr ""
+msgstr "Χωρίς πιστοποίηση, μόνο τοπική πρόσβαση επιτρεπτή!"
 
 #: plugin/plugin.py:136
 msgid "Enable access from VPNs"
-msgstr ""
+msgstr "Ενεργοποίηση πρόσβασης από VPNs"
 
 #: plugin/plugin.py:137
 msgid "Enable Parental Control"
@@ -2207,6 +2207,21 @@ msgstr "Ρυθμίσεις OpenWebif"
 
 #~ msgid "Really delete the movie"
 #~ msgstr "Να διαγραφεί σίγουρα η ταινία"
+
+#~ msgid "Driver date"
+#~ msgstr "Ημερομηνία οδηγού"
+
+#~ msgid "IP address"
+#~ msgstr "Διεύθυνση IP"
+
+#~ msgid "Kernel version"
+#~ msgstr "Έκδοση Kernel"
+
+#~ msgid "(shift + click for long pressure)"
+#~ msgstr "(shift + κλικ για παρατεταμένο πάτημα)"
+
+#~ msgid "Total Memory"
+#~ msgstr "Συνολική Μνήμη"
 
 #~ msgid "Afterevent"
 #~ msgstr "Μετά το πρόγραμμα"
