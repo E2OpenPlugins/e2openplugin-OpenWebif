@@ -9,88 +9,66 @@
 #                                                                            #
 ##############################################################################
 from enigma import eConsoleAppContainer
-from twisted.web import static, resource, http, server
-import os
+from twisted.web import resource, server
 
 GRAB_PATH = '/usr/bin/grab'
 
 class grabScreenshot(resource.Resource):
-	def __init__(self,session, path = ""):
+	def __init__(self, session, path = None):
 		resource.Resource.__init__(self)
 		self.session = session
 		self.container = eConsoleAppContainer()
 		self.container.appClosed.append(self.grabFinished)
-		# self.container.dataAvail.append(self.grabData)
+		self.container.stdoutAvail.append(self.grabData)
+		self.container.setBufferSize(32768)
 
 	def render(self, request):
 		self.request = request
-		graboptions = [GRAB_PATH]
+		graboptions = [GRAB_PATH, '-q', '-s']
 
-		if "format" in request.args.keys():
-			self.fileformat = request.args["format"][0]
+		if "format" in request.args:
+			fileformat = request.args["format"][0]
 		else:
-			self.fileformat = "jpg"
+			fileformat = "jpg"
 
-		if self.fileformat == "jpg":
+		if fileformat == "jpg":
 			graboptions.append("-j")
 			graboptions.append("95")
-		elif self.fileformat == "png":
+		elif fileformat == "png":
 			graboptions.append("-p")
-		elif self.fileformat != "bmp":
-			self.fileformat = "bmp"
+		elif fileformat != "bmp":
+			fileformat = "bmp"
 
-		if "r" in request.args.keys():
+		if "r" in request.args:
 			size = request.args["r"][0]
 			graboptions.append("-r")
 			graboptions.append("%d" % int(size))
 
-		if "mode" in request.args.keys():
+		if "mode" in request.args:
 			mode = request.args["mode"][0]
 			if mode == "osd":
 				graboptions.append("-o")
 			elif mode == "video":
 				graboptions.append("-v")
 
+		self.container.execute(GRAB_PATH, *graboptions)
+
 		try:
 			ref = self.session.nav.getCurrentlyPlayingServiceReference().toString()
+			sref = '_'.join(ref.split(':', 10)[:10])
 		except:
-			ref = None 
+			sref = 'screenshot'
 
-		if ref is not None:
-			self.sref = '_'.join(ref.split(':', 10)[:10])
-		else:
-			self.sref = 'screenshot'
-
-		self.filepath = "/tmp/screenshot." + self.fileformat
-		graboptions.append(self.filepath)
-		self.container.execute(GRAB_PATH, *graboptions)
+		self.request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (sref, fileformat))
+		self.request.setHeader('Content-Type','image/%s' % fileformat)
 		return server.NOT_DONE_YET
 
 	def grabData(self, data):
-		print "[W] grab:", data,
+		self.request.write(data)
 
 	def grabFinished(self, retval = None):
-		fileformat = self.fileformat
-		if fileformat == "jpg":
-			fileformat = "jpeg"
-		try:
-			fd = open(self.filepath)
-			data = fd.read()
-			fd.close()
-			self.request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (self.sref,self.fileformat))
-			self.request.setHeader('Content-Type','image/%s' % fileformat)
-			self.request.setHeader('Content-Length', '%i' % len(data))
-			self.request.write(data)
-		except Exception, error:
-			self.request.setResponseCode(http.OK)
-			self.request.write("Error creating screenshot:\n %s" % error)
-		try:
-			os.unlink(self.filepath)
-		except:
-			print "Failed to remove:", self.filepath
 		try:
 			self.request.finish()
 		except RuntimeError, error:
 			print "[OpenWebif] grabFinished error: %s" % error
 		del self.request
-		del self.filepath
