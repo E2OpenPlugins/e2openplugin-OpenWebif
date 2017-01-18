@@ -13,24 +13,16 @@ from twisted.web import resource, server
 
 GRAB_PATH = '/usr/bin/grab'
 
-class grabScreenshot(resource.Resource):
-	def __init__(self, session, path = None):
-		resource.Resource.__init__(self)
-		self.session = session
-		self.container = eConsoleAppContainer()
-		self.container.appClosed.append(self.grabFinished)
-		self.container.stdoutAvail.append(self.grabData)
-		self.container.setBufferSize(32768)
-
-	def render(self, request):
+class GrabRequest(object):
+	def __init__(self, request, session):
 		self.request = request
+
 		graboptions = [GRAB_PATH, '-q', '-s']
 
 		if "format" in request.args:
 			fileformat = request.args["format"][0]
 		else:
 			fileformat = "jpg"
-
 		if fileformat == "jpg":
 			graboptions.append("-j")
 			graboptions.append("95")
@@ -50,25 +42,35 @@ class grabScreenshot(resource.Resource):
 				graboptions.append("-o")
 			elif mode == "video":
 				graboptions.append("-v")
-
+		self.container = eConsoleAppContainer()
+		self.container.appClosed.append(self.grabFinished)
+		self.container.stdoutAvail.append(request.write)
+		self.container.setBufferSize(32768)
 		self.container.execute(GRAB_PATH, *graboptions)
-
 		try:
-			ref = self.session.nav.getCurrentlyPlayingServiceReference().toString()
+			ref = session.nav.getCurrentlyPlayingServiceReference().toString()
 			sref = '_'.join(ref.split(':', 10)[:10])
 		except:
 			sref = 'screenshot'
-
-		self.request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (sref, fileformat))
-		self.request.setHeader('Content-Type','image/%s' % fileformat)
-		return server.NOT_DONE_YET
-
-	def grabData(self, data):
-		self.request.write(data)
+		request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (sref, fileformat))
+		request.setHeader('Content-Type','image/%s' % fileformat)
 
 	def grabFinished(self, retval = None):
 		try:
 			self.request.finish()
 		except RuntimeError, error:
 			print "[OpenWebif] grabFinished error: %s" % error
+		# Break the chain of ownership
 		del self.request
+
+class grabScreenshot(resource.Resource):
+	def __init__(self, session, path = None):
+		resource.Resource.__init__(self)
+		self.session = session
+
+	def render(self, request):
+		# Add a reference to the grabber to the Request object. This keeps
+		# the object alive at least until the request finishes
+		request.grab_in_progress = GrabRequest(request, self.session)
+		return server.NOT_DONE_YET
+
