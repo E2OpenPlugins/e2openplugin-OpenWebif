@@ -52,8 +52,17 @@ class GrabRequest(object):
 			sref = '_'.join(ref.split(':', 10)[:10])
 		except:
 			sref = 'screenshot'
+		request.notifyFinish().addErrback(self.requestAborted)
 		request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (sref, fileformat))
 		request.setHeader('Content-Type','image/%s' % fileformat)
+
+	def requestAborted(self, err):
+		# Called when client disconnected early, abort the process and
+		# don't call request.finish()
+		del self.container.appClosed[:]
+		self.container.kill()
+		del self.request
+		del self.container
 
 	def grabFinished(self, retval = None):
 		try:
