@@ -312,6 +312,9 @@ class BaseController(resource.Resource):
 		except ImportError:
 			pass
 
+		if os.path.exists('/usr/bin/shellinaboxd') and (fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/OpenWebif/controllers/views/ajax/terminal.tmpl")) or fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/OpenWebif/controllers/views/ajax/terminal.pyo"))):
+			extras.append({ 'key': 'ajax/terminal','description': _('Terminal')})
+
 		ret['extras'] = extras
 		theme = 'original'
 		if config.OpenWebif.webcache.theme.value:

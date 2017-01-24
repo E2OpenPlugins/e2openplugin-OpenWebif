@@ -1,0 +1,30 @@
+#filter WebSafe
+<head>
+	<style>
+		p {
+			font-size:	1.1em;
+		}
+		#shell, #output {
+			width:		95%;
+			height:		90%;
+			margin: 	20px 10px;
+		}
+		#output {
+			overflow:	scroll;
+			border:		2px solid #999;
+		}
+	</style>
+</head>
+<div id="content_main" class="ui-widget-content" style="min-height: 500px;">
+	<div id="tvcontentmain">
+		<div id="info">
+		<div style="display: inline-block; width: 100%; zoom: 1;background-image:none;" class="ui-widget-content">
+			<h3 class="ui-widget-header">Terminal</h3>
+		</div>
+		<div id="timers">
+			<iframe id="shell" src="terminal" style="display:inline-block;margin-left:10px;"></iframe>
+		</div>
+	</div>
+</div>
+#end filter
+

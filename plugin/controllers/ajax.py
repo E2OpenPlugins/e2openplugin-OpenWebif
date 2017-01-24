@@ -194,6 +194,9 @@ class AjaxController(BaseController):
 	def P_radio(self, request):
 		return {}
 
+	def P_terminal(self, request):
+		return {}
+
 	def P_timers(self, request):
 		return getTimers(self.session)
 
