@@ -24,7 +24,7 @@ from ER import ERController
 from BQE import BQEController
 from transcoding import TranscodingController
 from wol import WOLSetupController, WOLClientController
-from twisted.web import static, http
+from twisted.web import static, http, proxy
 import os
 
 class RootController(BaseController):
@@ -52,6 +52,8 @@ class RootController(BaseController):
 			self.putChild("webtv", static.File(getPublicPath() + "/webtv"))
 		if os.path.exists(getPublicPath('vxg')):
 			self.putChild("vxg", static.File(getPublicPath() + "/vxg"))
+		if os.path.exists('/usr/bin/shellinaboxd'):
+			self.putChild("terminal", proxy.ReverseProxyResource('::1', 4200, '/'))
 		self.putChild("ipkg", IpkgController(session))
 		self.putChild("autotimer", ATController(session))
 		self.putChild("serienrecorder", SRController(session))
