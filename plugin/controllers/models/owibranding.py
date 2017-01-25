@@ -132,7 +132,7 @@ def getAllInfo():
 		if (procmodel.startswith("optimuss") or procmodel.startswith("pingulux")):
 			brand = "Edision"
 			model = procmodel.replace("optimmuss", "Optimuss ").replace("plus", " Plus").replace(" os", " OS")
-		elif (procmodel.startswith("fusion") or procmodel.startswith("purehd")):
+		elif (procmodel.startswith("fusion") or procmodel.startswith("purehd") or procmodel.startswith("revo4k")):
 			brand = "Xsarius"
 			if procmodel == "fusionhd":
 				model = procmodel.replace("fusionhd", "Fusion HD")
@@ -140,6 +140,8 @@ def getAllInfo():
 				model = procmodel.replace("fusionhdse", "Fusion HD SE")
 			elif procmodel == "purehd":
 				model = procmodel.replace("purehd", "PureHD")
+                        elif procmodel == "revo4k":
+                                model = procmodel.replace("revo4k", "Revo4K")
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBox"
 		f = open("/proc/stb/info/model",'r') # To-Do: Check if "model" is really correct ...
@@ -436,6 +438,8 @@ def getAllInfo():
 		remote = procmodel
 	elif procmodel in ("purehd"):
 		remote = procmodel
+        elif procmodel in ("revo4k"):
+                remote = procmodel
 	elif procmodel in ("h5", "lc"):
 		remote = "h5"
 
