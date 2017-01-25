@@ -271,10 +271,19 @@ class AuthResource(resource.Resource):
 
 	def render(self, request):
 		host = request.getHost().host
+		peer = request.getClientIP()
+		if peer is None:
+			peer = request.transport.socket.getpeername()[0]
+
+		if peer.startswith("::ffff:"):
+			peer = peer.replace("::ffff:","")
+
+		if peer.startswith("fe80::") and "%" in peer:
+			peer = peer.split ("%")[0]
 
 		if (host == "localhost" or host == "127.0.0.1" or host == "::ffff:127.0.0.1") and not config.OpenWebif.auth_for_streaming.value:
 			return self.resource.render(request)
-		if self.login(request.getUser(), request.getPassword(), request.transport.socket.getpeername()[0]) == False:
+		if self.login(request.getUser(), request.getPassword(), peer) == False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
 			errpage = resource.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
 			return errpage.render(request)
@@ -326,8 +335,8 @@ class AuthResource(resource.Resource):
 			except:
 				pass
 
-		# If we get to here, no expection applied
-		# Either block with forbiodden (If auth is disabled) ...
+		# If we get to here, no exception applied
+		# Either block with forbidden (If auth is disabled) ...
 		if (not request.isSecure() and config.OpenWebif.auth.value == False) or (request.isSecure() and config.OpenWebif.https_auth.value == False):
 			errpage = resource.ErrorPage(http.FORBIDDEN,'Forbidden','403.6 IP address rejected')
 			return errpage
@@ -336,7 +345,7 @@ class AuthResource(resource.Resource):
 		if "logged" in session.keys() and session["logged"]:
 			return self.resource.getChildWithDefault(path, request)
 
-		if self.login(request.getUser(), request.getPassword(), request.transport.socket.getpeername()[0]) == False:
+		if self.login(request.getUser(), request.getPassword(), peer) == False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
 			errpage = resource.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
 			return errpage
@@ -351,9 +360,14 @@ class AuthResource(resource.Resource):
 
 	def login(self, user, passwd, peer):
 		if user=="root" and config.OpenWebif.no_root_access.value:
-			# Override "no root" for logins from local network
-			match=re.match("(::ffff:|)(192\.168|10\.\d{1,3})\.\d{1,3}\.\d{1,3}", peer)
-			if match is None:
+			# Override "no root" for logins from local/private networks
+			samenet = False
+			networks = getAllNetworks()
+			if networks is not None:
+				for network in networks:
+					if ipaddress.ip_address(unicode(peer)) in ipaddress.ip_network(unicode(network), strict=False):
+						samenet=True
+			if not (ipaddress.ip_address(unicode(peer)).is_private or samenet):
 				return False
 		from crypt import crypt
 		from pwd import getpwnam
