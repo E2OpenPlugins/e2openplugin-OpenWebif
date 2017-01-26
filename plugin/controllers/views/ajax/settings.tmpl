@@ -269,22 +269,28 @@ function ShowPackages(mode)
 	$("#pkgmore").hide();
 	$("#tblpackages").show();
 
-	var pkgcache = GetLSValue('pkgcache',null)
-	if(pkgcache != null) {
-		var pkgs = $.parseJSON(pkgcache);
-		FillPackages(pkgs,mode);
+	var date = new Date();
+	date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+date.getHours();
+
+	var cache = GetLSValue('pkg-date','')
+	if(cache === date) {
+		cache = GetLSValue('pkg-data',null);
+		if(cache != null) {
+			var pkgs = $.parseJSON(cache);
+			FillPackages(pkgs,mode);
+			return;
+		}
 	}
-	else
-	{
-		$.ajax({
-			url: '/ipkg?command=listall',
-			success: function ( data ) {
-				SetLSValue('pkgcache',data)
-				var js = $.parseJSON(data);
-				FillPackages(js,mode);
-			}
-		});
-	}
+
+	$.ajax({
+		url: '/ipkg?command=listall',
+		success: function ( data ) {
+			SetLSValue('pkg-date',date);
+			SetLSValue('pkg-data',data);
+			var js = $.parseJSON(data);
+			FillPackages(js,mode);
+		}
+	});
 }
 
 function load_scontent(url) {

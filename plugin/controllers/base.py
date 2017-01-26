@@ -134,7 +134,8 @@ class BaseController(resource.Resource):
 #				if not self.suppresslog:
 #					print "[OpenWebif] page '%s' ok (json)" % request.uri
 				supported=[]
-				request.setHeader("content-type", "application/json")
+				#FIXME: parseJSON did not work
+				#request.setHeader("content-type", "application/json")
 				if self.isGZ:
 					acceptHeaders = request.requestHeaders.getRawHeaders('Accept-Encoding', [])
 					supported = ','.join(acceptHeaders).split(',')
@@ -149,6 +150,7 @@ class BaseController(resource.Resource):
 					request.setHeader('Content-Length', '%d' % len(compstr))
 					request.write(compstr)
 				else:
+					request.setHeader("content-type", "text/plain")
 					request.write(json.dumps(data))
 				request.finish()
 			elif type(data) is str:
