@@ -130,8 +130,8 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 				self.list.append(getConfigListEntry(_("Require client cert for HTTPS"), config.OpenWebif.https_clientcert))
 			if config.OpenWebif.auth.value:
 				self.list.append(getConfigListEntry(_("Enable Authentication for streaming"), config.OpenWebif.auth_for_streaming))
-				self.list.append(getConfigListEntry(_("Disable access for user root"), config.OpenWebif.no_root_access))
-			if not config.OpenWebif.auth.value or not config.OpenWebif.https_auth.value:
+				self.list.append(getConfigListEntry(_("Disable remote access for user root"), config.OpenWebif.no_root_access))
+			if not config.OpenWebif.auth.value or (config.OpenWebif.https_enabled.value and not config.OpenWebif.https_auth.value):
 				self.list.append(getConfigListEntry(_("Without auth only local access is allowed!"), config.OpenWebif.local_access_only))
 				self.list.append(getConfigListEntry(_("Enable access from VPNs"), config.OpenWebif.vpn_access))
 			self.list.append(getConfigListEntry(_("Enable Parental Control"), config.OpenWebif.parentalenabled))

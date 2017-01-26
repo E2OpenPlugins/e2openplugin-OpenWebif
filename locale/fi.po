@@ -2168,7 +2168,7 @@ msgid "Enable Authentication for streaming"
 msgstr "Vaadi salasana suoratoistolle"
 
 #: plugin/plugin.py:133
-msgid "Disable access for user root"
+msgid "Disable remote access for user root"
 msgstr "Poista pääsy käyttäjän juuritiedostoihin"
 
 #: plugin/plugin.py:135

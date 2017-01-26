@@ -2167,7 +2167,7 @@ msgid "Enable Authentication for streaming"
 msgstr "Povolit ověřování pro streamování"
 
 #: plugin/plugin.py:133
-msgid "Disable access for user root"
+msgid "Disable remote access for user root"
 msgstr "Zakázat přístup pro uživatele root"
 
 #: plugin/plugin.py:135

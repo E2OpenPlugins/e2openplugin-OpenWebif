@@ -1573,7 +1573,7 @@ msgstr "Exigir certificado de cliente para HTTPS"
 msgid "Enable Authentication for streaming"
 msgstr "Ativar Autenticação nas transmissões"
 
-msgid "Disable access for user root"
+msgid "Disable remote access for user root"
 msgstr "Desativar acesso ao utilizador 'root'"
 
 msgid "Without auth only local access is allowed!"

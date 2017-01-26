@@ -2166,7 +2166,7 @@ msgid "Enable Authentication for streaming"
 msgstr "启用串流验证"
 
 #: plugin/plugin.py:133
-msgid "Disable access for user root"
+msgid "Disable remote access for user root"
 msgstr "禁用root用户接入"
 
 #: plugin/plugin.py:135

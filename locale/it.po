@@ -2164,7 +2164,7 @@ msgid "Enable Authentication for streaming"
 msgstr "Abilitare l'autentificazione per lo streaming"
 
 #: plugin/plugin.py:133
-msgid "Disable access for user root"
+msgid "Disable remote access for user root"
 msgstr "Disabilita l'accesso come utente di root"
 
 #: plugin/plugin.py:135
