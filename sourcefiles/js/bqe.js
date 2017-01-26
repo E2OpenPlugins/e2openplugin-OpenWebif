@@ -272,7 +272,7 @@
 							options.push( $('<li/>', {
 								class: "ui-widget-content",
 								data: { sref: sref }
-							}).html('<div class="handle"><span class="ui-icon ui-icon-arrow-2-n-s"></span></div>'+name+'</li>') );
+							}).html('<div class="handle"><span class="ui-icon ui-icon-dragndrop"></span></div>'+name+'</li>') );
 						});
 						if (callback) {
 							callback(options);
@@ -327,7 +327,7 @@
 										ismarker: val['ismarker'],
 										sref: sref
 									}
-								}).html('<div class="handle"><span class="ui-icon ui-icon-arrow-2-n-s"></span></div>'+name+m+'</li>') );
+								}).html('<div class="handle"><span class="ui-icon ui-icon-dragndrop"></span></div>'+name+m+'</li>') );
 						});
 						if (callback) {
 							callback(options);

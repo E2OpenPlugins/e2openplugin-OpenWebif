@@ -643,9 +643,9 @@ font-size:16px;font-weight:bold;opacity:0.3;
 
 @font-face {
 	font-family: 'fontello';
-	src: url('../fonts/fontello.woff2?35805527') format('woff2'),
-	url('../fonts/fontello.woff?35805527') format('woff'),
-	url('../fonts/fontello.ttf?35805527') format('truetype');
+	src: url('../fonts/fontello.woff2?25611282') format('woff2'),
+	url('../fonts/fontello.woff?25611282') format('woff'),
+	url('../fonts/fontello.ttf?25611282') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -751,6 +751,7 @@ font-size:16px;font-weight:bold;opacity:0.3;
 .fa-spin6:before { content: '\e839'; } /* '' */
 .fa-move:before { content: '\f047'; } /* '' */
 .fa-square-o:before { content: '\f096'; } /* '' */
+.fa-menu:before { content: '\f0c9'; } /* '' */
 .fa-angle-left:before { content: '\f104'; } /* '' */
 .fa-angle-right:before { content: '\f105'; } /* '' */
 .fa-angle-up:before { content: '\f106'; } /* '' */
@@ -783,6 +784,8 @@ font-size:16px;font-weight:bold;opacity:0.3;
 .ui-icon-caret-1-w:after {content: '\f104';}
 .ui-icon-arrow-2-n-s:after {content: '\f047';}
 .ui-icon-calendar:after {content: '\e81b';}
+
+.ui-icon-dragndrop:after {content: '\f0c9';}
 
 i.fa {margin-left:3px;margin-right:3px;font-size: 16px;}
 i.fa-mobile {font-size: 22px;}
