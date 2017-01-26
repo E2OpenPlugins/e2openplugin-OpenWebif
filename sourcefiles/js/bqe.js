@@ -168,7 +168,7 @@
 				$.ajax({
 					url: '/api/getsatellites',
 					dataType: 'json',
-		            contentType: "application/json; charset=utf-8",
+					contentType: "application/json; charset=utf-8",
 					cache: true,
 					data: { sRef: ref, stype: stype, date: self.date },
 					success: function ( data ) {
@@ -198,7 +198,7 @@
 				$.ajax({
 					url: '/api/getservices',
 					dataType: 'json',
-		            contentType: "application/json; charset=utf-8",
+					contentType: "application/json; charset=utf-8",
 					cache: true,
 					data: { sRef: ref, date: self.date },
 					success: function ( data ) {
@@ -228,7 +228,7 @@
 				$.ajax({
 					url: '/api/getservices?sRef=' + ref,
 					dataType: 'json',
-		            contentType: "application/json; charset=utf-8",
+					contentType: "application/json; charset=utf-8",
 					cache: true,
 					data: { sRef: ref, date: self.date },
 					success: function ( data ) {
@@ -264,7 +264,7 @@
 				$.ajax({
 					url: '/bouqueteditor/api/getservices',
 					dataType: 'json',
-		            contentType: "application/json; charset=utf-8",
+					contentType: "application/json; charset=utf-8",
 					cache: false,
 					data: { sRef: ref },
 					success: function ( data ) {
@@ -293,7 +293,7 @@
 				$.ajax({
 					url: '/api/getservices',
 					dataType: 'json',
-		            contentType: "application/json; charset=utf-8",
+					contentType: "application/json; charset=utf-8",
 					cache: true,
 					data: { sRef: sref, date: self.date },
 					success: function ( data ) {
@@ -312,7 +312,7 @@
 				$.ajax({
 					url: '/bouqueteditor/api/getservices',
 					dataType: 'json',
-		            contentType: "application/json; charset=utf-8",
+					contentType: "application/json; charset=utf-8",
 					cache: false,
 					data: { sRef: sref },
 					success: function ( data ) {
@@ -349,7 +349,7 @@
 				$.ajax({
 					url: '/bouqueteditor/api/addprovidertobouquetlist',
 					dataType: 'json',
-		            contentType: "application/json; charset=utf-8",
+					contentType: "application/json; charset=utf-8",
 					cache: true,
 					data: { sProviderRef: sref, mode: self.Mode, date: self.date },
 					success: function ( data ) {
@@ -367,7 +367,7 @@
 				$.ajax({
 					url: '/bouqueteditor/api/movebouquet',
 					dataType: 'json',
-		            contentType: "application/json; charset=utf-8",
+					contentType: "application/json; charset=utf-8",
 					cache: false,
 					data: { sBouquetRef: obj.sBouquetRef, mode: obj.mode, position: obj.position },
 					success: function () {}
@@ -382,7 +382,7 @@
 					$.ajax({
 						url: '/bouqueteditor/api/addbouquet',
 						dataType: 'json',
-		                contentType: "application/json; charset=utf-8",
+						contentType: "application/json; charset=utf-8",
 						cache: false,
 						data: { name: newname, mode: self.Mode },
 						success: function ( data ) {
@@ -412,7 +412,7 @@
 					$.ajax({
 						url: '/bouqueteditor/api/renameservice',
 						dataType: 'json',
-		                contentType: "application/json; charset=utf-8",
+						contentType: "application/json; charset=utf-8",
 						cache: false,
 						data: { sRef: sref, mode: self.Mode, newName: newname },
 						success: function ( data ) {
@@ -441,7 +441,7 @@
 				$.ajax({
 					url: '/bouqueteditor/api/removebouquet',
 					dataType: 'json',
-		            contentType: "application/json; charset=utf-8",
+					contentType: "application/json; charset=utf-8",
 					cache: false,
 					data: { sBouquetRef: sref, mode: self.Mode },
 					success: function ( data ) {
@@ -478,7 +478,7 @@
 				$.ajax({
 					url: '/bouqueteditor/api/moveservice',
 					dataType: 'json',
-		            contentType: "application/json; charset=utf-8",
+					contentType: "application/json; charset=utf-8",
 					cache: false,
 					data: {
 						sBouquetRef: obj.sBouquetRef,
@@ -506,7 +506,7 @@
 					reqjobs.push($.ajax({
 						url: '/bouqueteditor/api/addservicetobouquet',
 						dataType: 'json',
-		                contentType: "application/json; charset=utf-8",
+						contentType: "application/json; charset=utf-8",
 						cache: false,
 						data: {
 							sBouquetRef: bref,
@@ -559,7 +559,7 @@
 					reqjobs.push($.ajax({
 						url: '/bouqueteditor/api/removeservice',
 						dataType: 'json',
-		                contentType: "application/json; charset=utf-8",
+						contentType: "application/json; charset=utf-8",
 						cache: false,
 						data: jobdata,
 						success: function (){}
@@ -593,7 +593,7 @@
 					$.ajax({
 						url: '/bouqueteditor/api/addmarkertobouquet',
 						dataType: 'json',
-		                contentType: "application/json; charset=utf-8",
+						contentType: "application/json; charset=utf-8",
 						cache: false,
 						data: params,
 						success: function ( data ) {
@@ -632,7 +632,7 @@
 					$.ajax({
 						url: '/bouqueteditor/api/renameservice',
 						dataType: 'json',
-		                contentType: "application/json; charset=utf-8",
+						contentType: "application/json; charset=utf-8",
 						cache: false,
 						data: { sBouquetRef: bref, sRef: sref, newName: newname, sRefBefore: dstref },
 						success: function ( data ) {
@@ -696,7 +696,7 @@
 					$.ajax({
 						url: '/bouqueteditor/api/backup',
 						dataType: 'json',
-		                contentType: "application/json; charset=utf-8",
+						contentType: "application/json; charset=utf-8",
 						cache: false,
 						data: { Filename: fn },
 						success: function ( data ) {
@@ -742,7 +742,7 @@
 						cache: false,
 						processData:false,
 						dataType: 'json',
-		                contentType: "application/json; charset=utf-8",
+						contentType: "application/json; charset=utf-8",
 						success: function (data, textStatus, jqXHR) {
 							var r = data.Result;
 							if (r[0]) {
@@ -769,7 +769,7 @@
 					$.ajax({
 						url: '/bouqueteditor/api/restore',
 						dataType: 'json',
-		                contentType: "application/json; charset=utf-8",
+						contentType: "application/json; charset=utf-8",
 						cache: false,
 						data: { Filename: fn }, 
 						success: function ( data ) {
