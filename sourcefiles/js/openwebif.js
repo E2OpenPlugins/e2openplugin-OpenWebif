@@ -555,6 +555,7 @@ function addEditTimerEvent(sRef, eventId) {
 	$.ajax({
 		url: url,
 		dataType: "json",
+		contentType: "application/json; charset=utf-8",
 		success: function(result) { 
 			if (typeof result !== 'undefined' && typeof result.event !== 'undefined') {
 				addTimer(result.event);
@@ -599,6 +600,7 @@ function delTimerEvent(sRef,eventId) {
 	$.ajax({
 		url: url,
 		dataType: "json",
+		contentType: "application/json; charset=utf-8",
 		success: function(result) { 
 			if (typeof result !== 'undefined' && typeof result.event !== 'undefined') {
 				// FIXME : this will not work if the timer is modified
@@ -626,6 +628,7 @@ function toggleTimerStatus(sRef, begin, end) {
 	$.ajax({
 		url: url,
 		dataType: "json",
+		contentType: "application/json; charset=utf-8",
 		data:data,
 		success: function(result) { 
 			
@@ -749,6 +752,7 @@ function getStatusInfo() {
 	$.ajax({
 		url: '/api/statusinfo',
 		dataType: "json",
+		contentType: "application/json; charset=utf-8",
 		cache: false,
 		success: function(statusinfo) { 
 		// Set Volume
@@ -822,6 +826,7 @@ function getMessageAnswer() {
 	$.ajax({
 		url: '/api/messageanswer',
 		dataType: "json",
+		contentType: "application/json; charset=utf-8",
 		cache: false,
 		success: function(result) { 
 			$('#messageSentResponse').html(result['message']);
@@ -849,6 +854,7 @@ function sendMessage() {
 	$.ajax({
 		url: '/api/message?text=' + text + '&type=' + type + '&timeout=' + timeout,
 		dataType: "json",
+		contentType: "application/json; charset=utf-8",
 		cache: false,
 		success: function(result) { 
 			$('#messageSentResponse').html(result['message']);
