@@ -168,6 +168,7 @@
 				$.ajax({
 					url: '/api/getsatellites',
 					dataType: 'json',
+					contentType: "application/json; charset=utf-8",
 					cache: true,
 					data: { sRef: ref, stype: stype, date: self.date },
 					success: function ( data ) {
@@ -187,7 +188,7 @@
 					}
 				});
 			},
-		
+
 			// Callback function for left pane "providers" button.
 			// Fetches provider list, param callback displays list.
 			// @param callback function
@@ -195,8 +196,9 @@
 				self.cType = 1;
 				var ref = self.buildRefStr(1);
 				$.ajax({
-					url: '/api/getservices', 
+					url: '/api/getservices',
 					dataType: 'json',
+					contentType: "application/json; charset=utf-8",
 					cache: true,
 					data: { sRef: ref, date: self.date },
 					success: function ( data ) {
@@ -216,7 +218,7 @@
 					}
 				});
 			},
-		
+
 			// Callback function for left pane "channels" button.
 			// Fetches channels list, param callback displays list.
 			// @param callback function
@@ -224,8 +226,9 @@
 				self.cType = 2;
 				var ref = self.buildRefStr(3);
 				$.ajax({
-					url: '/api/getservices?sRef=' + ref, 
+					url: '/api/getservices?sRef=' + ref,
 					dataType: 'json',
+					contentType: "application/json; charset=utf-8",
 					cache: true,
 					data: { sRef: ref, date: self.date },
 					success: function ( data ) {
@@ -235,7 +238,7 @@
 					}
 				});
 			},
-			
+
 			fillChannels: function (callback)
 			{
 				var options = [];
@@ -253,14 +256,15 @@
 					callback(options);
 				}
 			},
-			
+
 			// Callback function for fetching right panel bouquets list.
 			// @param callback function display bouquets list
 			getBouquets: function (callback) {
 				var ref = self.buildRefStr(0);
 				$.ajax({
-					url: '/bouqueteditor/api/getservices', 
+					url: '/bouqueteditor/api/getservices',
 					dataType: 'json',
+					contentType: "application/json; charset=utf-8",
 					cache: false,
 					data: { sRef: ref },
 					success: function ( data ) {
@@ -283,12 +287,13 @@
 
 			// Callback function for selecting provider in left panel
 			// providers list.
-			// @param sref string selected provider reference string 
+			// @param sref string selected provider reference string
 			// @param callback function display services list
 			changeProvider: function (sref, callback) {
 				$.ajax({
-					url: '/api/getservices', 
+					url: '/api/getservices',
 					dataType: 'json',
+					contentType: "application/json; charset=utf-8",
 					cache: true,
 					data: { sRef: sref, date: self.date },
 					success: function ( data ) {
@@ -301,12 +306,13 @@
 
 			// Callback function for selecting bouquet in right panel
 			// bouquets list.
-			// @param sref string selected bouquet reference string 
+			// @param sref string selected bouquet reference string
 			// @param callback function display services list
 			changeBouquet: function (sref, callback) {
 				$.ajax({
-					url: '/bouqueteditor/api/getservices', 
+					url: '/bouqueteditor/api/getservices',
 					dataType: 'json',
+					contentType: "application/json; charset=utf-8",
 					cache: false,
 					data: { sRef: sref },
 					success: function ( data ) {
@@ -323,7 +329,7 @@
 							if(name!='')
 								options.push( $('<li/>', {
 									class: "ui-widget-content",
-									data: { 
+									data: {
 										ismarker: val['ismarker'],
 										sref: sref
 									}
@@ -341,8 +347,9 @@
 			addProvider: function () {
 				var sref = $('#provider li.ui-selected').data('sref');
 				$.ajax({
-					url: '/bouqueteditor/api/addprovidertobouquetlist', 
+					url: '/bouqueteditor/api/addprovidertobouquetlist',
 					dataType: 'json',
+					contentType: "application/json; charset=utf-8",
 					cache: true,
 					data: { sProviderRef: sref, mode: self.Mode, date: self.date },
 					success: function ( data ) {
@@ -360,6 +367,7 @@
 				$.ajax({
 					url: '/bouqueteditor/api/movebouquet',
 					dataType: 'json',
+					contentType: "application/json; charset=utf-8",
 					cache: false,
 					data: { sBouquetRef: obj.sBouquetRef, mode: obj.mode, position: obj.position },
 					success: function () {}
@@ -374,8 +382,9 @@
 					$.ajax({
 						url: '/bouqueteditor/api/addbouquet',
 						dataType: 'json',
+						contentType: "application/json; charset=utf-8",
 						cache: false,
-						data: { name: newname, mode: self.Mode }, 
+						data: { name: newname, mode: self.Mode },
 						success: function ( data ) {
 							var r = data.Result;
 							if (r.length == 2) {
@@ -386,7 +395,7 @@
 					});
 				}
 			},
-		
+
 			// Callback function for bouquet rename button in right pane
 			// Prompts for new bouquet name
 			renameBouquet: function () {
@@ -403,8 +412,9 @@
 					$.ajax({
 						url: '/bouqueteditor/api/renameservice',
 						dataType: 'json',
+						contentType: "application/json; charset=utf-8",
 						cache: false,
-						data: { sRef: sref, mode: self.Mode, newName: newname }, 
+						data: { sRef: sref, mode: self.Mode, newName: newname },
 						success: function ( data ) {
 							var r = data.Result;
 							if (r.length == 2) {
@@ -431,8 +441,9 @@
 				$.ajax({
 					url: '/bouqueteditor/api/removebouquet',
 					dataType: 'json',
+					contentType: "application/json; charset=utf-8",
 					cache: false,
-					data: { sBouquetRef: sref, mode: self.Mode }, 
+					data: { sBouquetRef: sref, mode: self.Mode },
 					success: function ( data ) {
 						var r = data.Result;
 						if (r.length == 2) {
@@ -467,13 +478,14 @@
 				$.ajax({
 					url: '/bouqueteditor/api/moveservice',
 					dataType: 'json',
+					contentType: "application/json; charset=utf-8",
 					cache: false,
-					data: { 
-						sBouquetRef: obj.sBouquetRef, 
-						sRef: obj.sRef, 
-						mode: obj.mode,  
-						position: obj.position 
-					}, 
+					data: {
+						sBouquetRef: obj.sBouquetRef,
+						sRef: obj.sRef,
+						mode: obj.mode,
+						position: obj.position
+					},
 					success:self.renumberChannel
 				});
 			},
@@ -489,18 +501,19 @@
 				var reqjobs = [];
 				var bref = $('#bql li.ui-selected').data('sref');
 				var dstref = $('#bqs li.ui-selected').data('sref') || '';
-			
+
 				$('#channels li.ui-selected').each(function () {
 					reqjobs.push($.ajax({
 						url: '/bouqueteditor/api/addservicetobouquet',
 						dataType: 'json',
+						contentType: "application/json; charset=utf-8",
 						cache: false,
-						data: { 
+						data: {
 							sBouquetRef: bref,
 							sRef: $(this).data('sref'),
-							sRefBefore: dstref 
-						}, 
-						success: function () {} 
+							sRefBefore: dstref
+						},
+						success: function () {}
 					}));
 				});
 
@@ -528,7 +541,7 @@
 				var snames = [];
 				var jobs = [];
 
-				$('#bqs li.ui-selected').each(function () { 
+				$('#bqs li.ui-selected').each(function () {
 					snames.push( $(this).text() );
 					jobs.push({
 						sBouquetRef: bref,
@@ -536,7 +549,7 @@
 						sRef: $(this).data('sref')
 					});
 				});
-			
+
 				if (confirm(tstr_bqe_del_channel_question + "\n" + snames.join(', ') + ' ?') === false) {
 					return;
 				}
@@ -546,9 +559,10 @@
 					reqjobs.push($.ajax({
 						url: '/bouqueteditor/api/removeservice',
 						dataType: 'json',
+						contentType: "application/json; charset=utf-8",
 						cache: false,
-						data: jobdata, 
-						success: function (){} 
+						data: jobdata,
+						success: function (){}
 					}));
 				});
 
@@ -579,8 +593,9 @@
 					$.ajax({
 						url: '/bouqueteditor/api/addmarkertobouquet',
 						dataType: 'json',
+						contentType: "application/json; charset=utf-8",
 						cache: false,
-						data: params, 
+						data: params,
 						success: function ( data ) {
 							var r = data.Result;
 							if (r.length == 2) {
@@ -605,7 +620,7 @@
 				if (item.data('ismarker') == 0) {
 					return;
 				}
-			
+
 				var pos = item.index()
 				var sname = item.text();
 				var sref = item.data('sref');
@@ -617,8 +632,9 @@
 					$.ajax({
 						url: '/bouqueteditor/api/renameservice',
 						dataType: 'json',
+						contentType: "application/json; charset=utf-8",
 						cache: false,
-						data: { sBouquetRef: bref, sRef: sref, newName: newname, sRefBefore: dstref }, 
+						data: { sBouquetRef: bref, sRef: sref, newName: newname, sRefBefore: dstref },
 						success: function ( data ) {
 							var r = data.Result;
 							if (r.length == 2) {
@@ -631,10 +647,10 @@
 			},
 
 			// Callback function for search box in left pane
-			// Filters matching services in channels list. 
+			// Filters matching services in channels list.
 			searchChannel: function (txt) {
 				var t = txt.toLowerCase();
-				
+
 				self.filterChannelsCache = [];
 				$.each( self.allChannelsCache, function ( key, val ) {
 					var name = val['servicename'];
@@ -644,7 +660,7 @@
 							servicereference:val['servicereference']
 						});
 				});
-				
+
 				self.fillChannels(self.showChannels);
 				self.setChannelButtons();
 			},
@@ -655,7 +671,7 @@
 			showError: function (txt, st) {
 				st = typeof st !== 'undefined' ? st : 'False';
 				$('#statustext').text('');
-			
+
 				if (st === true || st === 'True' || st === 'true') {
 					$('#statusbox').removeClass('ui-state-error').addClass('ui-state-highlight');
 					$('#statusicon').removeClass('ui-icon-alert').addClass('ui-icon-info');
@@ -664,7 +680,7 @@
 					$('#statusicon').removeClass('ui-icon-info').addClass('ui-icon-alert');
 				}
 				$('#statustext').text(txt);
-			
+
 				if (txt !== '') {
 					$('#statuscont').show();
 				} else {
@@ -680,8 +696,9 @@
 					$.ajax({
 						url: '/bouqueteditor/api/backup',
 						dataType: 'json',
+						contentType: "application/json; charset=utf-8",
 						cache: false,
-						data: { Filename: fn }, 
+						data: { Filename: fn },
 						success: function ( data ) {
 							var r = data.Result;
 							if (r[0] === false) {
@@ -710,10 +727,10 @@
 				if (confirm(tstr_bqe_restore_question + ' ( ' + fn + ') ?') === false) {
 					return;
 				}
-	
+
 				$('form#uploadrestore')
 					.unbind('submit')
-					.submit(function (e) 
+					.submit(function (e)
 				{
 					var formData = new FormData(this);
 					$.ajax({
@@ -725,6 +742,7 @@
 						cache: false,
 						processData:false,
 						dataType: 'json',
+						contentType: "application/json; charset=utf-8",
 						success: function (data, textStatus, jqXHR) {
 							var r = data.Result;
 							if (r[0]) {
@@ -751,6 +769,7 @@
 					$.ajax({
 						url: '/bouqueteditor/api/restore',
 						dataType: 'json',
+						contentType: "application/json; charset=utf-8",
 						cache: false,
 						data: { Filename: fn }, 
 						success: function ( data ) {
