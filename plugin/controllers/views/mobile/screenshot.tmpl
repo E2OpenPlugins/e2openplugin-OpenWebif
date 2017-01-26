@@ -7,9 +7,9 @@
 		</div>
 		<div>
 			<fieldset data-type="horizontal" data-role="controlgroup" style="width: 275px; margin: auto; margin-top: 15px;">
-				<div onClick="jQuery('#screenshot').attr('src','/grab?r=275&mode=all); return false;"><input type="radio" id="radio-view-a" name="radio-view"><label for="radio-view-a" data-theme="c">$tstrings['all']</label></div>
-				<div onClick="jQuery('#screenshot').attr('src','/grab?r=275&mode=video); return false;"><input type="radio" id="radio-view-b" name="radio-view"><label for="radio-view-b" data-theme="c">$tstrings['video']</label></div>
-				<div onClick="jQuery('#screenshot').attr('src','/grab?r=275&mode=osd); return false;"><input type="radio" id="radio-view-c" name="radio-view"><label for="radio-view-c" data-theme="c">$tstrings['osd']</label></div>
+				<div onClick="jQuery('#screenshot').attr('src','/grab?r=275&mode=all&timestamp=' + new Date().getTime()); return false;"><input type="radio" id="radio-view-a" name="radio-view"><label for="radio-view-a" data-theme="c">$tstrings['all']</label></div>
+				<div onClick="jQuery('#screenshot').attr('src','/grab?r=275&mode=video&timestamp=' + new Date().getTime()); return false;"><input type="radio" id="radio-view-b" name="radio-view"><label for="radio-view-b" data-theme="c">$tstrings['video']</label></div>
+				<div onClick="jQuery('#screenshot').attr('src','/grab?r=275&mode=osd&timestamp=' + new Date().getTime()); return false;"><input type="radio" id="radio-view-c" name="radio-view"><label for="radio-view-c" data-theme="c">$tstrings['osd']</label></div>
 			</fieldset>
 			<div id="mainContent">
 				<img id="screenshot" src="/grab?r=275&mode=all" width="275" height="154" alt="$tstrings['screenshot']">
