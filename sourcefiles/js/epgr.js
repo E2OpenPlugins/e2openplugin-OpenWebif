@@ -86,7 +86,6 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 				$.ajax({
 					type: "GET", url: "/epgrefresh",
 					dataType: "xml",
-					contentType: "application/xml; charset=utf-8",
 					success: function (xml)
 					{
 						self.readEPGR2(xml);
@@ -105,7 +104,6 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 				$.ajax({
 					type: "GET", url: "/epgrefresh/get",
 					dataType: "xml",
-					contentType: "application/xml; charset=utf-8",
 					success: function (xml)
 					{
 						var settings = [];
@@ -243,7 +241,6 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 				$.ajax({
 					type: "GET", url: reqs,
 					dataType: "xml",
-					contentType: "application/xml; charset=utf-8",
 					success: function (xml)
 					{
 						var state=$(xml).find("e2state").first();
@@ -293,7 +290,6 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 				$.ajax({
 					type: "GET", url: reqss,
 					dataType: "xml",
-					contentType: "application/xml; charset=utf-8",
 					success: function (xml)
 					{
 						var state=$(xml).find("e2state").first();
@@ -310,7 +306,6 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 				$.ajax({
 					type: "GET", url: "/epgrefresh/refresh",
 					dataType: "xml",
-					contentType: "application/xml; charset=utf-8",
 					success: function (xml)
 					{
 						var state=$(xml).find("e2state").first();

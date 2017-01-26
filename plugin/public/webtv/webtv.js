@@ -276,7 +276,6 @@ var PlayerObj = function () {
 			$.ajax({
 				url: '/api/movielist',
 				dataType: 'json',
-				contentType: "application/json; charset=utf-8",
 				cache: false,
 				data: rdata,
 				success: function ( data ) {

@@ -734,7 +734,6 @@ function delAT()
 		$.ajax({
 			type: "GET", url: "/autotimer/remove?id=" + CurrentAT.id,
 			dataType: "xml",
-			contentType: "application/xml; charset=utf-8",
 			success: function (xml)
 			{
 				var state=$(xml).find("e2state").first();
@@ -756,7 +755,6 @@ function readAT()
 	$.ajax({
 		type: "GET", url: "/autotimer",
 		dataType: "xml",
-		contentType: "application/xml; charset=utf-8",
 		success: function (xml)
 		{
 			atxml=xml;
@@ -959,7 +957,6 @@ function saveAT()
 		$.ajax({
 			type: "GET", url: reqs,
 			dataType: "xml",
-			contentType: "application/xml; charset=utf-8",
 			success: function (xml)
 			{
 				var state=$(xml).find("e2state").first();
@@ -982,7 +979,6 @@ function simulateAT()
 	$.ajax({
 		type: "GET", url: "/autotimer/simulate",
 		dataType: "xml",
-		contentType: "application/xml; charset=utf-8",
 		success: function (xml)
 		{
 			var lines= [];
@@ -1021,7 +1017,6 @@ function parseAT()
 	$.ajax({
 		type: "GET", url: "/autotimer/parse",
 		dataType: "xml",
-		contentType: "application/xml; charset=utf-8",
 		success: function (xml)
 		{
 			var state=$(xml).find("e2state").first();
@@ -1064,7 +1059,6 @@ function getAutoTimerSettings()
 	$.ajax({
 		type: "GET", url: "/autotimer/get",
 		dataType: "xml",
-		contentType: "application/xml; charset=utf-8",
 		success: function (xml)
 		{
 			var settings = [];
@@ -1121,7 +1115,6 @@ function setAutoTimerSettings()
 	$.ajax({
 		type: "GET", url: reqs,
 		dataType: "xml",
-		contentType: "application/xml; charset=utf-8",
 		success: function (xml)
 		{
 			var state=$(xml).find("e2state").first();
