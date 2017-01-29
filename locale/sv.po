@@ -2169,7 +2169,7 @@ msgstr "Aktivera autentisering för strömning"
 
 #: plugin/plugin.py:133
 msgid "Disable remote access for user root"
-msgstr "Slå av åtkomst för rootanvändaren"
+msgstr "Slå av fjärråtkomst för rootanvändaren"
 
 #: plugin/plugin.py:135
 msgid "Without auth only local access is allowed!"
