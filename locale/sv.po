@@ -12,6 +12,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"PO-Revision-Date: 2016-11-24 15:32+0100\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
 # Vad nu det här kan vara bra för?
@@ -2169,7 +2170,7 @@ msgstr "Aktivera autentisering för strömning"
 
 #: plugin/plugin.py:133
 msgid "Disable remote access for user root"
-msgstr "Slå av åtkomst för rootanvändaren"
+msgstr "Slå av fjärråtkomst för rootanvändaren"
 
 #: plugin/plugin.py:135
 msgid "Without auth only local access is allowed!"
