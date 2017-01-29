@@ -12,6 +12,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"PO-Revision-Date: 2016-11-24 15:32+0100\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
 # Vad nu det här kan vara bra för?
