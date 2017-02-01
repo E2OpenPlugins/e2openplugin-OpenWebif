@@ -54,7 +54,7 @@ class GrabRequest(object):
 			sref = 'screenshot'
 		request.notifyFinish().addErrback(self.requestAborted)
 		request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (sref, fileformat))
-		request.setHeader('Content-Type','image/%s' % fileformat)
+		request.setHeader('Content-Type','image/%s' % fileformat.replace("jpg","jpeg"))
 		request.setHeader('Cache-Control','no-cache')
 
 	def requestAborted(self, err):
