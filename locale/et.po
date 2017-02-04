@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2016-11-25 17:42+0200\n"
-"PO-Revision-Date: 2016-11-25 17:44+0200\n"
+"PO-Revision-Date: 2017-02-04 16:39+0200\n"
 "Last-Translator: rimas\n"
 "Language-Team: Estonian\n"
 "Language: et\n"
@@ -2167,7 +2167,7 @@ msgstr "Voogesituse autentimine"
 
 #: plugin/plugin.py:133
 msgid "Disable remote access for user root"
-msgstr "Keela juurkasutajale ligipääs"
+msgstr "Keela kaugligipääs kasutaja juurkataloogile"
 
 #: plugin/plugin.py:135
 msgid "Without auth only local access is allowed!"
