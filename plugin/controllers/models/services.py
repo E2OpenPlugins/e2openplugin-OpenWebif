@@ -168,17 +168,17 @@ def getCurrentFullInfo(session):
 	if frontendStatus is not None:
 		percent = frontendStatus.get("tuner_signal_quality")
 		if percent is not None:
-			inf['snr'] = int(percent * 100 / 65536)
+			inf['snr'] = int(percent * 100 / 65535)
 			inf['snr_db'] = inf['snr']
 		percent = frontendStatus.get("tuner_signal_quality_db")
 		if percent is not None:
 			inf['snr_db'] = "%3.02f dB" % (percent / 100.0)
 		percent = frontendStatus.get("tuner_signal_power")
 		if percent is not None:
-			inf['agc'] = int(percent * 100 / 65536)
+			inf['agc'] = int(percent * 100 / 65535)
 		percent =  frontendStatus.get("tuner_bit_error_rate")
 		if percent is not None:
-			inf['ber'] = int(percent * 100 / 65536)
+			inf['ber'] = int(percent * 100 / 65535)
 	else:
 		inf['snr'] = 0
 		inf['snr_db'] = inf['snr']
