@@ -18,75 +18,75 @@ msgstr ""
 
 #: plugin/controllers/BouquetEditor.py:82
 msgid "one two three four unknown command"
-msgstr ""
+msgstr "uno dos tres cuatro comando desconocido"
 
 #: plugin/controllers/BouquetEditor.py:88
 #: plugin/controllers/BouquetEditor.py:149
 #: plugin/controllers/BouquetEditor.py:194
 msgid "No bouquet name given!"
-msgstr ""
+msgstr "Ningún nombre de favorito introducido!"
 
 #: plugin/controllers/BouquetEditor.py:118
 #, python-format
 msgid "Bouquet %s created."
-msgstr ""
+msgstr "Favorito %s creado."
 
 #: plugin/controllers/BouquetEditor.py:120
 msgid "Get mutable list for new created bouquet failed!"
-msgstr ""
+msgstr "Obtener lista mutable para el nuevo favorito creado ha fallado!"
 
 #: plugin/controllers/BouquetEditor.py:123
 #, python-format
 msgid "Bouquet %s already exists."
-msgstr ""
+msgstr "Favorito %s ya existe."
 
 #: plugin/controllers/BouquetEditor.py:125
 #: plugin/controllers/BouquetEditor.py:435
 msgid "Bouquetlist is not editable!"
-msgstr ""
+msgstr "Lista de favoritos no es editable!"
 
 #: plugin/controllers/BouquetEditor.py:127
 msgid "Multi-Bouquet is not enabled!"
-msgstr ""
+msgstr "Multi-Favoritos no está habilitado!"
 
 #: plugin/controllers/BouquetEditor.py:133
 msgid "No provider given!"
-msgstr ""
+msgstr "Ningún proveedor introducido!"
 
 #: plugin/controllers/BouquetEditor.py:180
 #, python-format
 msgid "Bouquet %s removed failed."
-msgstr ""
+msgstr "Fallo borrado favorito %s"
 
 #: plugin/controllers/BouquetEditor.py:182
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr ""
+msgstr "Fallo borrado favorito %s, servicereference o lista mutable no son válidos"
 
 #: plugin/controllers/BouquetEditor.py:186
 #, python-format
 msgid "Bouquet %s deleted."
-msgstr ""
+msgstr "Favorito %s borrado"
 
 #: plugin/controllers/BouquetEditor.py:188
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
-msgstr ""
+msgstr "Error: Favorito %s no se puede borrar, OSError."
 
 #: plugin/controllers/BouquetEditor.py:204
 #: plugin/controllers/BouquetEditor.py:261
 msgid "No position given!"
-msgstr ""
+msgstr "Ninguna posición introducida!"
 
 #: plugin/controllers/BouquetEditor.py:211
 #, python-format
 msgid "Bouquet %s moved."
-msgstr ""
+msgstr "Favorito %s movido"
 
 #: plugin/controllers/BouquetEditor.py:213
 #, python-format
 msgid "Bouquet %s can not be moved."
-msgstr ""
+msgstr "Favorito %s no se puede mover"
 
 #: plugin/controllers/BouquetEditor.py:219
 #: plugin/controllers/BouquetEditor.py:249
@@ -94,7 +94,7 @@ msgstr ""
 #: plugin/controllers/BouquetEditor.py:309
 #: plugin/controllers/BouquetEditor.py:455
 msgid "No bouquet given!"
-msgstr ""
+msgstr "Ningún favorito introducido!"
 
 #: plugin/controllers/BouquetEditor.py:225
 #: plugin/controllers/BouquetEditor.py:255
@@ -104,160 +104,160 @@ msgstr ""
 #: plugin/controllers/BouquetEditor.py:461
 #: plugin/controllers/BouquetEditor.py:498
 msgid "No service given!"
-msgstr ""
+msgstr "Ningún servicio introducido!"
 
 #: plugin/controllers/BouquetEditor.py:234
 #, python-format
 msgid "Service %s removed."
-msgstr ""
+msgstr "Servicio %s borrado."
 
 #: plugin/controllers/BouquetEditor.py:242
 #, python-format
 msgid "Service %s removed from bouquet %s."
-msgstr ""
+msgstr "Servicio %s borrado del favorito %s."
 
 #: plugin/controllers/BouquetEditor.py:243
 #, python-format
 msgid "Service %s can not be removed."
-msgstr ""
+msgstr "Servicio %s no se puede borrar."
 
 #: plugin/controllers/BouquetEditor.py:268
 #, python-format
 msgid "Service %s moved."
-msgstr ""
+msgstr "Servicio %s movido"
 
 #: plugin/controllers/BouquetEditor.py:269
 msgid "Service can not be moved."
-msgstr ""
+msgstr "Servicio no se puede mover."
 
 #: plugin/controllers/BouquetEditor.py:299
 #, python-format
 msgid "Service %s added."
-msgstr ""
+msgstr "Servicio %s añadido."
 
 #: plugin/controllers/BouquetEditor.py:302
 #, python-format
 msgid "Service %s already exists in bouquet %s."
-msgstr ""
+msgstr "Servicio %s ya existe en el favorito %s."
 
 #: plugin/controllers/BouquetEditor.py:303
 msgid "This service can not be added."
-msgstr ""
+msgstr "Este servicio no se puede añadir."
 
 #: plugin/controllers/BouquetEditor.py:315
 msgid "No marker-name given!"
-msgstr ""
+msgstr "Ningún nombre de marcador introducido!"
 
 #: plugin/controllers/BouquetEditor.py:329
 msgid "Marker added."
-msgstr ""
+msgstr "Marcador añadido."
 
 #: plugin/controllers/BouquetEditor.py:331
 msgid "Internal error!"
-msgstr ""
+msgstr "Error interno!"
 
 #: plugin/controllers/BouquetEditor.py:345
 msgid "No new servicename given!"
-msgstr ""
+msgstr "Ningún nombre de servicio introducido!"
 
 #: plugin/controllers/BouquetEditor.py:369
 msgid "Bouquet renamed successfully."
-msgstr ""
+msgstr "Favorito renombrado correctamente"
 
 #: plugin/controllers/BouquetEditor.py:385
 msgid "Service renamed successfully."
-msgstr ""
+msgstr "Servicio renombrado correctamente"
 
 #: plugin/controllers/BouquetEditor.py:386
 msgid "Service can not be renamed."
-msgstr ""
+msgstr "Servicio no se puede renombrar"
 
 #: plugin/controllers/BouquetEditor.py:400
 msgid "No current service given!"
-msgstr ""
+msgstr "Ningún servicio actual introducido!"
 
 #: plugin/controllers/BouquetEditor.py:431
 msgid "Get mutable list for new created alternative failed!"
-msgstr ""
+msgstr "Fallo obtención lista mutable para la nueva alternativa creada!"
 
 #: plugin/controllers/BouquetEditor.py:433
 #, python-format
 msgid "Alternative %s created failed."
-msgstr ""
+msgstr "Crear alternativa %s ha fallado."
 
 #: plugin/controllers/BouquetEditor.py:447
 #, python-format
 msgid "Added %s to alternative service %s."
-msgstr ""
+msgstr "%s añadido al servicio alternativo %s."
 
 #: plugin/controllers/BouquetEditor.py:478
 msgid "Service is not an alternative."
-msgstr ""
+msgstr "Servicio no es una alternativa"
 
 #: plugin/controllers/BouquetEditor.py:486
 msgid "All alternative services deleted."
-msgstr ""
+msgstr "Todos los servicios alternativos borrados"
 
 #: plugin/controllers/BouquetEditor.py:492
 msgid "Parent Control is not activated."
-msgstr ""
+msgstr "Control parental no está activado."
 
 #: plugin/controllers/BouquetEditor.py:505
 msgid "No Parent Control Setup Pin given!"
-msgstr ""
+msgstr "Ningún PIN para configuración control parental introducido!"
 
 #: plugin/controllers/BouquetEditor.py:509
 #: plugin/controllers/BouquetEditor.py:511
 msgid "Parent Control Setup Pin is wrong!"
-msgstr ""
+msgstr "PIN configuración control parental erróneo!"
 
 #: plugin/controllers/BouquetEditor.py:526
 #, python-format
 msgid "Service %s is locked."
-msgstr ""
+msgstr "Servicio %s bloqueado."
 
 #: plugin/controllers/BouquetEditor.py:528
 #, python-format
 msgid "Bouquet %s is locked."
-msgstr ""
+msgstr "Favorito %s bloqueado."
 
 #: plugin/controllers/BouquetEditor.py:530
 #, python-format
 msgid "%s %s is locked."
-msgstr ""
+msgstr "%s %s bloqueados."
 
 #: plugin/controllers/BouquetEditor.py:534
 #, python-format
 msgid "Service %s is unlocked."
-msgstr ""
+msgstr "Servicio %s desbloqueado"
 
 #: plugin/controllers/BouquetEditor.py:536
 #, python-format
 msgid "Bouquet %s is unlocked."
-msgstr ""
+msgstr "Favorito %s desbloqueado"
 
 #: plugin/controllers/BouquetEditor.py:573
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
-msgstr ""
+msgstr "Error durante preparación del backup, %s no existe."
 
 #: plugin/controllers/BouquetEditor.py:579
 msgid "Error while preparing backup file."
-msgstr ""
+msgstr "Error durante la preparación del backup."
 
 #: plugin/controllers/BouquetEditor.py:630
 msgid "Bouquet-settings were restored successfully"
-msgstr ""
+msgstr "Configuración favoritos se ha restaurado con éxito"
 
 #: plugin/controllers/BouquetEditor.py:632
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
-msgstr ""
+msgstr "Error, %s no ha sido creado con WebBouquetEditor..."
 
 #: plugin/controllers/BouquetEditor.py:634
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
-msgstr ""
+msgstr "Error, %s no existe, la restauración no es posible..."
 
 #: plugin/controllers/base.py:248 plugin/local.py:181 plugin/local.py:325
 msgid "Settings"
@@ -285,15 +285,15 @@ msgstr ""
 
 #: plugin/controllers/ipkg.py:238
 msgid "Error upload File"
-msgstr ""
+msgstr "Error subiendo archivo"
 
 #: plugin/controllers/ipkg.py:241
 msgid "wrong filetype"
-msgstr ""
+msgstr "Tipo de archivo erróneo"
 
 #: plugin/controllers/ipkg.py:255
 msgid "Error writing File"
-msgstr ""
+msgstr "Error escritura archivo"
 
 #: plugin/controllers/models/info.py:58
 msgid "SLAAC"
@@ -302,7 +302,7 @@ msgstr ""
 #: plugin/controllers/models/info.py:65 plugin/controllers/models/info.py:76
 #: plugin/controllers/models/info.py:83
 msgid "static"
-msgstr ""
+msgstr "estático"
 
 #: plugin/controllers/models/info.py:67 plugin/controllers/models/info.py:85
 #: plugin/local.py:80
@@ -311,11 +311,11 @@ msgstr "DHCP"
 
 #: plugin/controllers/models/info.py:69 plugin/controllers/models/info.py:87
 msgid "manual/disabled"
-msgstr ""
+msgstr "manual/deshabilitado"
 
 #: plugin/controllers/models/info.py:95 plugin/controllers/models/info.py:102
 msgid "unknown"
-msgstr ""
+msgstr "desconocido"
 
 #: plugin/controllers/models/info.py:136 plugin/local.py:115
 msgid "IPv4-only kernel"
@@ -336,7 +336,7 @@ msgstr ""
 #: plugin/controllers/models/info.py:291 plugin/controllers/models/info.py:414
 #, python-format
 msgid "%s free / %s total"
-msgstr ""
+msgstr "% libre / %s total"
 
 #: plugin/controllers/models/info.py:326 plugin/local.py:65
 msgid "Chipset"
@@ -457,17 +457,17 @@ msgstr "No se han encontrado coincidencia para el temporizador"
 #: plugin/controllers/models/timers.py:339
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
-msgstr ""
+msgstr "Temporizador %s no habilitado durante el conflicto"
 
 #: plugin/controllers/models/timers.py:345
 #, python-format
 msgid "Timer '%s' already exists!"
-msgstr ""
+msgstr "Temporizador '%s' ya existe!"
 
 #: plugin/controllers/models/timers.py:351
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
-msgstr ""
+msgstr "Temporizador '%s' se ha grabado! No está deshabilitado!"
 
 #: plugin/controllers/models/timers.py:359
 #, python-format
@@ -524,7 +524,7 @@ msgstr "Temporizador de apagado desactivado"
 #: plugin/controllers/models/timers.py:662
 #: plugin/controllers/models/timers.py:689
 msgid "SleepTimer error"
-msgstr ""
+msgstr "Error temporizador de apagado"
 
 #: plugin/controllers/models/timers.py:701
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
@@ -548,7 +548,7 @@ msgstr "Temporizador de apagado configurado a %s minutos"
 #: plugin/controllers/models/timers.py:717
 #: plugin/controllers/models/timers.py:798
 msgid "SleepTimer Error"
-msgstr ""
+msgstr "Error temporizador de apagado"
 
 #: plugin/controllers/models/timers.py:826
 msgid "Error parsing vps.xml"
@@ -556,7 +556,7 @@ msgstr ""
 
 #: plugin/controllers/models/timers.py:831
 msgid "VPS plugin not found"
-msgstr ""
+msgstr "Plugin VPS no encontrado"
 
 #: plugin/controllers/web.py:63
 #, python-format
@@ -1121,7 +1121,7 @@ msgstr "Usar nombre personalizado para el deco"
 
 #: plugin/local.py:148 plugin/plugin.py:123
 msgid "Custom box name"
-msgstr "Nombre personaliza del deco"
+msgstr "Nombre personalizado del deco"
 
 #: plugin/local.py:149
 msgid "OSD"
@@ -1185,7 +1185,7 @@ msgstr "Renombrar Grabación"
 
 #: plugin/local.py:164
 msgid "Really rename the recording"
-msgstr ""
+msgstr "Estás seguro en renombrar la grabación"
 
 #: plugin/local.py:165
 msgid "Repeated"
@@ -1230,7 +1230,7 @@ msgstr "Buscar en IMDb"
 
 #: plugin/local.py:175
 msgid "Search KinoPoisk"
-msgstr ""
+msgstr "Buscar KinoPoisk"
 
 #: plugin/local.py:176
 msgid "seconds"
@@ -1258,7 +1258,7 @@ msgstr "Editor de Favoritos"
 
 #: plugin/local.py:183
 msgid "(Shift + Click for Long Press)"
-msgstr "(shift + click para una larga presión)"
+msgstr "(shift + click para una pulsación larga)"
 
 #: plugin/local.py:184
 msgid "Show Full OpenWebif"
@@ -1382,7 +1382,7 @@ msgstr "transcodificado"
 
 #: plugin/local.py:214
 msgid "Transcode"
-msgstr ""
+msgstr "Transcodificar"
 
 #: plugin/local.py:215
 msgid "Tuner Bit Error Rate BER"
@@ -1544,7 +1544,7 @@ msgstr "Codificación EPG"
 
 #: plugin/local.py:256
 msgid "Search type"
-msgstr "Tipo de Busqueda"
+msgstr "Tipo de Búsqueda"
 
 #: plugin/local.py:257
 msgid "partial match"
@@ -1804,7 +1804,7 @@ msgstr "¿Realmente quieres eliminar el AT?"
 
 #: plugin/local.py:327
 msgid "Label series"
-msgstr ""
+msgstr "Serie de etiquetas"
 
 # New Autotimer Setting Windows name (not enabled to transfer atm)
 #: plugin/local.py:329
@@ -1825,7 +1825,7 @@ msgstr "Máximo de días"
 
 #: plugin/local.py:333
 msgid "Try Guessing"
-msgstr ""
+msgstr "Tratar de adivinar"
 
 #: plugin/local.py:334
 msgid "Fastscan"
@@ -2029,7 +2029,7 @@ msgstr ""
 
 #: plugin/local.py:399
 msgid "Record+ZAP"
-msgstr ""
+msgstr "Grabar+Zapear"
 
 #: plugin/local.py:400
 msgid "Pmtpid"
@@ -2065,39 +2065,39 @@ msgstr ""
 
 #: plugin/local.py:408
 msgid "Orbital Position"
-msgstr ""
+msgstr "Posición orbital"
 
 #: plugin/local.py:410
 msgid "error! Loading Page"
-msgstr ""
+msgstr "error! Cargando página"
 
 #: plugin/local.py:411
 msgid "Timer Added"
-msgstr ""
+msgstr "Temporizador añadido"
 
 #: plugin/local.py:412
 msgid "Event not found"
-msgstr ""
+msgstr "Evento no encontrado"
 
 #: plugin/local.py:413
 msgid "Show Picon in channel list"
-msgstr ""
+msgstr "Mostar Picon en lista de canales"
 
 #: plugin/local.py:415
 msgid "OpenWebif Browser Settings"
-msgstr ""
+msgstr "Configuración navegador OpenWebif"
 
 #: plugin/local.py:416
 msgid "OpenWebif Settings"
-msgstr ""
+msgstr "Configuración OpenWebif"
 
 #: plugin/local.py:417
 msgid "Theme"
-msgstr ""
+msgstr "tema"
 
 #: plugin/local.py:418
 msgid "Show Picons in channel list"
-msgstr ""
+msgstr "Mostrar Picon en lista de canales"
 
 #: plugin/local.py:419
 msgid "Spinner"
@@ -2105,19 +2105,19 @@ msgstr ""
 
 #: plugin/local.py:420
 msgid "Display duration (s)"
-msgstr ""
+msgstr "Duración de visualización (s)"
 
 #: plugin/local.py:422
 msgid "Display Mode"
-msgstr ""
+msgstr "Modo visualización"
 
 #: plugin/local.py:423
 msgid "TV Guide"
-msgstr ""
+msgstr "Guía TV"
 
 #: plugin/local.py:424
 msgid "Timeline"
-msgstr ""
+msgstr "Plazo"
 
 #: plugin/local.py:425
 msgid "Web TV"
@@ -2129,11 +2129,11 @@ msgstr ""
 
 #: plugin/local.py:428
 msgid "Network Shares"
-msgstr ""
+msgstr "Montajes de red"
 
 #: plugin/local.py:429
 msgid "using"
-msgstr ""
+msgstr "usando"
 
 #: plugin/plugin.py:103
 msgid "OpenWebif url: http://yourip:port"
@@ -2173,15 +2173,15 @@ msgstr "Habilitar Autenticación para streaming"
 
 #: plugin/plugin.py:133
 msgid "Disable remote access for user root"
-msgstr "Deshabilitar acceso para usuario root"
+msgstr "Deshabilitar acceso remoto para el usuario root"
 
 #: plugin/plugin.py:135
 msgid "Without auth only local access is allowed!"
-msgstr ""
+msgstr "Sin autorización, solo se permite el acceso local!"
 
 #: plugin/plugin.py:136
 msgid "Enable access from VPNs"
-msgstr ""
+msgstr "Habilitar acceso desde VPNs"
 
 #: plugin/plugin.py:137
 msgid "Enable Parental Control"
