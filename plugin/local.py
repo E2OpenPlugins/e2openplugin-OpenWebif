@@ -429,4 +429,5 @@ tstrings = {'mo': _("Mo"),
 	'linkspeed': _("Link Speed"),
 	'networkshares': _("Network Shares"),
 	'using': _("using"),
+	'terminal': _("Terminal"),
 	}
