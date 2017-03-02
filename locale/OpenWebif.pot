@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: E2OpenPlugins / OpenWebif\n"
-"POT-Creation-Date: 2017-03-02 23:00+0300\n"
+"POT-Creation-Date: 2017-03-02 23:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME\n"
 "Language-Team: TEAM <EMAIL@ADDRESS>\n"
@@ -1650,3 +1650,46 @@ msgstr ""
 
 msgid "Enable access from VPNs"
 msgstr ""
+
+msgid "Player"
+msgstr ""
+
+msgid "Deinterlace"
+msgstr ""
+
+msgid "Off"
+msgstr ""
+
+msgid "Blend"
+msgstr ""
+
+msgid "Bob"
+msgstr ""
+
+msgid "Discard"
+msgstr ""
+
+msgid "Linear"
+msgstr ""
+
+msgid "Mean"
+msgstr ""
+
+msgid "Yadif"
+msgstr ""
+
+msgid "Yadif2x"
+msgstr ""
+
+msgid "Autoplay"
+msgstr ""
+
+msgid "Transcoding"
+msgstr ""
+
+msgid "Stop"
+msgstr ""
+
+msgid "Play"
+msgstr ""
+
