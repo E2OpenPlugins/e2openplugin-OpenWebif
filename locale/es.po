@@ -543,7 +543,7 @@ msgstr "El temporizador de apagado se ha desactivado"
 #: plugin/controllers/models/timers.py:788
 #, fuzzy, python-format
 msgid "Sleeptimer set to %d minutes"
-msgstr "Temporizador de apagado configurado a %s minutos"
+msgstr "Temporizador de apagado configurado a %d minutos"
 
 #: plugin/controllers/models/timers.py:717
 #: plugin/controllers/models/timers.py:798
