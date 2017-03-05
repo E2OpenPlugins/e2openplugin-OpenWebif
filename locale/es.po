@@ -336,7 +336,7 @@ msgstr ""
 #: plugin/controllers/models/info.py:291 plugin/controllers/models/info.py:414
 #, python-format
 msgid "%s free / %s total"
-msgstr "% libre / %s total"
+msgstr "%s libre / %s total"
 
 #: plugin/controllers/models/info.py:326 plugin/local.py:65
 msgid "Chipset"
