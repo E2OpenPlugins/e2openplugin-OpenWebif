@@ -511,15 +511,18 @@ def getAllInfo():
 				pass
 
 		if distro == "openpli":
-			imagever = "2.1"
-			# Todo: Detect OpenPLi 3.0
-			if has_ipv6:
-				# IPv6 support for Python was added in 4.0
-				imagever = "4.0"
-				oever = "PLi-OE"
-				imagelist = imagever.split('.')
-				imagebuild = imagelist.pop()
-				imagever = ".".join(imagelist)
+                        oever = "PLi-OE"
+			try:
+				imagelist = open("/etc/issue").readlines()[-2].split()[1].split('.')
+	                        imagever = imagelist.pop(0)
+        	                if imagelist:
+                	                imagebuild = "".join(imagelist)  
+                        	else:
+                                	# deal with major release versions only
+                                	imagebuild = "0"
+			except:
+				# just in case
+				pass
 		elif distro == "openrsi":
 			oever = "PLi-OE"
 		else:
