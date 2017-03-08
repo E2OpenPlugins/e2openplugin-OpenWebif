@@ -349,6 +349,8 @@ def getAllInfo():
 		type = "et5x00"
 	elif type == "et4000":
 		type = "et4x00"
+	elif type == "et11000":
+		type = "et1x000"
 	elif type == "xp1000":
 		type = "xp1000"
 	elif type in ("bska", "bxzb"):
@@ -382,11 +384,11 @@ def getAllInfo():
 		remote = "et4x00"
 	elif procmodel == "et6500":
 		remote = "et6500"
-	elif procmodel in ("et8x00", "et8000", "et8500", "et8500s","et1x000", "et10000"):
+	elif procmodel in ("et8x00", "et8000", "et8500", "et8500s", "et10000"):
 		remote = "et8000"
 	elif procmodel in ("et7x00", "et7000", "et7500"):
 		remote = "et7x00"
-	elif procmodel == "et7000mini":
+	elif procmodel == "et7000mini", "et11000":
 		remote = "et7000mini"
 	elif procmodel == "gbquad":
 		remote = "gigablue"
