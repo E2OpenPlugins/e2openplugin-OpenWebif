@@ -261,7 +261,7 @@ def getAllInfo():
 			brand = "Mut@nt"
 			model = "hd51"
 		elif procmodel = = "hd11":
-			brand = "Mutant"
+			brand = "Mut@nt"
 			model = "hd11"
 		elif procmodel == "hd500c":
 			brand = "Mut@nt"
