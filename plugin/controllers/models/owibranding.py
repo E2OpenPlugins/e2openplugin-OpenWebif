@@ -188,6 +188,9 @@ def getAllInfo():
 			if procmodel == "et7000mini":
 				brand = "Galaxy Innovations"
 				model = "ET-7000 Mini"
+			elif procmodel == "et11000":
+				brand = "Galaxy Innovations"
+				model = "ET-11000"
 			else:
 				brand = "Xtrend"
 				model = procmodel.upper()
@@ -349,8 +352,6 @@ def getAllInfo():
 		type = "et5x00"
 	elif type == "et4000":
 		type = "et4x00"
-	elif type == "et11000":
-		type = "et1x000"
 	elif type == "xp1000":
 		type = "xp1000"
 	elif type in ("bska", "bxzb"):
