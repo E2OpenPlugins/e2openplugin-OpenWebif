@@ -389,7 +389,7 @@ def getAllInfo():
 		remote = "et8000"
 	elif procmodel in ("et7x00", "et7000", "et7500"):
 		remote = "et7x00"
-	elif procmodel == ("et7000mini", "et11000"):
+	elif procmodel in ("et7000mini", "et11000"):
 		remote = "et7000mini"
 	elif procmodel == "gbquad":
 		remote = "gigablue"
