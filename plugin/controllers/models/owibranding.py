@@ -140,8 +140,8 @@ def getAllInfo():
 				model = procmodel.replace("fusionhdse", "Fusion HD SE")
 			elif procmodel == "purehd":
 				model = procmodel.replace("purehd", "PureHD")
-                        elif procmodel == "revo4k":
-                                model = procmodel.replace("revo4k", "Revo4K")
+			elif procmodel == "revo4k":
+				model = procmodel.replace("revo4k", "Revo4K")
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBox"
 		f = open("/proc/stb/info/model",'r') # To-Do: Check if "model" is really correct ...
@@ -214,7 +214,7 @@ def getAllInfo():
 			model = "Premium micro"
 		elif procmodel.startswith("ini"):
 			if procmodel.endswith("9000ru"):
- 				brand = "Sezam"
+				brand = "Sezam"
 				model = "Marvel"
 			elif procmodel.endswith("5000ru"):
 				brand = "Sezam"
@@ -299,6 +299,9 @@ def getAllInfo():
 		elif procmodel == "lc":
 			brand = "Zgemma"
 			model = "LC"
+		elif procmodel == "vs1500":
+			brand = "Vimastec"
+			model = "vs1500"
 		elif procmodel == "sf4008":
 			brand = "Octagon"
 			model = procmodel
@@ -447,12 +450,14 @@ def getAllInfo():
 		remote = procmodel
 	elif procmodel in ("purehd"):
 		remote = procmodel
-        elif procmodel in ("revo4k"):
-                remote = procmodel
+	elif procmodel in ("revo4k"):
+		remote = procmodel
 	elif procmodel in ("h5", "lc"):
 		remote = "h5"
 	elif procmodel == "sf4008":
 		remote = "octagon"
+	elif procmodel in ("vs1100", "vs1500"):
+		remote = "vs1x00"
 
 	info['remote'] = remote
 
@@ -512,15 +517,15 @@ def getAllInfo():
 				pass
 
 		if distro == "openpli":
-                        oever = "PLi-OE"
+			oever = "PLi-OE"
 			try:
 				imagelist = open("/etc/issue").readlines()[-2].split()[1].split('.')
-	                        imagever = imagelist.pop(0)
-        	                if imagelist:
-                	                imagebuild = "".join(imagelist)  
-                        	else:
-                                	# deal with major release versions only
-                                	imagebuild = "0"
+				imagever = imagelist.pop(0)
+				if imagelist:
+					imagebuild = "".join(imagelist)
+				else:
+					# deal with major release versions only
+					imagebuild = "0"
 			except:
 				# just in case
 				pass
