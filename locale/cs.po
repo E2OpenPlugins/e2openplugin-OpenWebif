@@ -2102,7 +2102,7 @@ msgstr ""
 
 #: plugin/local.py:411
 msgid "Timer Added"
-msgstr "%Casovač přidán"
+msgstr "Časovač přidán"
 
 #: plugin/local.py:412
 msgid "Event not found"
