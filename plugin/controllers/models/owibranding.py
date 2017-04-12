@@ -298,6 +298,9 @@ def getAllInfo():
 		elif procmodel.startswith("osm"):
 			brand = "Edision"
 			model = procmodel
+		elif procmodel == "h3":
+			brand = "Zgemma"
+			model = "H3"
 		elif procmodel == "h5":
 			brand = "Zgemma"
 			model = "H5"
@@ -459,7 +462,7 @@ def getAllInfo():
 		remote = procmodel
         elif procmodel in ("galaxy4k"):
                 remote = procmodel
-	elif procmodel in ("h5", "lc"):
+	elif procmodel in ("h3", "h5", "lc"):
 		remote = "h5"
 	elif procmodel == "sf4008":
 		remote = "octagon"
