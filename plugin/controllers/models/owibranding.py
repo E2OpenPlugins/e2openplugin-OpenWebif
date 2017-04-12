@@ -213,10 +213,10 @@ def getAllInfo():
 			model = "Premiun twin+"
 		elif procmodel == "7000s":
 			brand = "Miraclebox"
-			model = "Premium micro"
-                elif procmodel == "microv2":
-                        brand = "Miraclebox"
-                        model = "Micro V2"
+			model = "Premium Micro"
+		elif procmodel == "7005S":
+			brand = "Miraclebox"
+			model = "Premium Micro v2"
 		elif procmodel.startswith("ini"):
 			if procmodel.endswith("9000ru"):
 				brand = "Sezam"
@@ -417,7 +417,7 @@ def getAllInfo():
 		remote = "ini-1000"
 	elif procmodel in ("ini-1000sv", "ini-5000sv", "ini-9000de"):
 		remote = "miraclebox"
-	elif procmodel in ("7000s", "microv2"):
+	elif procmodel in ("7000s", "7005S", "microv2"):
 		remote = "miraclebox2"
 	elif procmodel == "ini-3000":
 		remote = "ini-3000"
