@@ -1574,7 +1574,7 @@ msgid "Enable Authentication for streaming"
 msgstr "Ativar Autenticação nas transmissões"
 
 msgid "Disable remote access for user root"
-msgstr "Desativar acesso ao utilizador 'root'"
+msgstr "Desativar acesso remoto ao utilizador root"
 
 msgid "Without auth only local access is allowed!"
 msgstr "Sem autorização apenas o acesso local é permitido!"
