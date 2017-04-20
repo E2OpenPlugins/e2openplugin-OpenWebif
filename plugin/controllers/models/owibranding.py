@@ -142,8 +142,8 @@ def getAllInfo():
 				model = procmodel.replace("purehd", "PureHD")
 			elif procmodel == "revo4k":
 				model = procmodel.replace("revo4k", "Revo4K")
-                        elif procmodel == "galaxy4k":
-                                model = procmodel.replace("galaxy4k", "Galaxy4K")
+			elif procmodel == "galaxy4k":
+				model = procmodel.replace("galaxy4k", "Galaxy4K")
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBox"
 		f = open("/proc/stb/info/model",'r') # To-Do: Check if "model" is really correct ...
@@ -211,7 +211,7 @@ def getAllInfo():
 		elif procmodel.startswith("g300"):
 			procmodel = "mbtwinplus"
 			brand = "Miraclebox"
-			model = "Premiun twin+"
+			model = "Premium Twin+"
 		elif procmodel == "7000s":
 			procmodel = "mbmicro"
 			brand = "Miraclebox"
@@ -463,8 +463,8 @@ def getAllInfo():
 		remote = procmodel
 	elif procmodel in ("revo4k"):
 		remote = procmodel
-        elif procmodel in ("galaxy4k"):
-                remote = procmodel
+	elif procmodel in ("galaxy4k"):
+		remote = procmodel
 	elif procmodel in ("h3", "h5", "lc"):
 		remote = "h5"
 	elif procmodel == "sf4008":
