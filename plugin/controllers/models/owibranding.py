@@ -430,7 +430,7 @@ def getAllInfo():
 	elif procmodel == "mbtwinplus":
 		remote = "miraclebox"
 	elif procmodel == "alphatriplehd":
-		remote = "alphatriplehd" 	
+		remote = "alphatriplehd"	
 	elif procmodel == "ini-3000":
 		remote = "ini-3000"
 	elif procmodel in ("ini-7012", "ini-7000", "ini-5000", "ini-5000ru"):
