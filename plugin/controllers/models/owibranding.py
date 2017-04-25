@@ -208,10 +208,12 @@ def getAllInfo():
 		elif procmodel.startswith("formuler"):
 			brand = "Formuler"
 			model = procmodel.replace("formuler","")
-		elif procmodel.startswith("g300"):
-			procmodel = "mbtwinplus"
+		elif procmodel.startswith("mbtwinplus"):
 			brand = "Miraclebox"
 			model = "Premium Twin+"
+		elif procmodel.startswith("alphatriplehd"):
+			brand = "SAB"
+			model = "Alpha Triple HD"
 		elif procmodel == "7000s":
 			procmodel = "mbmicro"
 			brand = "Miraclebox"
@@ -425,6 +427,10 @@ def getAllInfo():
 		remote = "miraclebox"
 	elif procmodel in ("7000s", "7005s"):
 		remote = "miraclebox2"
+	elif procmodel == "mbtwinplus":
+		remote = "miraclebox"
+	elif procmodel == "alphatriplehd":
+		remote = "alphatriplehd" 	
 	elif procmodel == "ini-3000":
 		remote = "ini-3000"
 	elif procmodel in ("ini-7012", "ini-7000", "ini-5000", "ini-5000ru"):
