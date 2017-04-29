@@ -14,7 +14,7 @@
 from Plugins.Extensions.OpenWebif.__init__ import _
 from Components.About import about
 from socket import has_ipv6
-from Tools.Directories import fileExists, pathExistsf
+from Tools.Directories import fileExists, pathExists
 import string
 import os, hashlib
 
