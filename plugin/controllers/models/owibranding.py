@@ -214,7 +214,7 @@ def getAllInfo():
 		elif procmodel.startswith("alphatriplehd"):
 			brand = "SAB"
 			model = "Alpha Triple HD"
-		elif procmodel in("7000s", "mbmicro"):
+		elif procmodel in ("7000s", "mbmicro"):
 			procmodel = "mbmicro"
 			brand = "Miraclebox"
 			model = "Premium Micro"
