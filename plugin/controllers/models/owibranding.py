@@ -214,11 +214,11 @@ def getAllInfo():
 		elif procmodel.startswith("alphatriplehd"):
 			brand = "SAB"
 			model = "Alpha Triple HD"
-		elif procmodel == "7000s":
+		elif procmodel in("7000s", "mbmicro"):
 			procmodel = "mbmicro"
 			brand = "Miraclebox"
 			model = "Premium Micro"
-		elif procmodel == "7005s":
+		elif procmodel in ("7005s", "mbmicrov2"):
 			procmodel = "mbmicrov2"
 			brand = "Miraclebox"
 			model = "Premium Micro v2"
@@ -297,6 +297,9 @@ def getAllInfo():
 		elif procmodel == "spycatminiplus":
 			brand = "Spycat"
 			model = "spycatminiplus"
+		elif procmodel == "spycat4kmini":
+			brand = "Spycat"
+			model = "spycat4kmini"
 		elif procmodel == "wetekplay":
 			brand = "WeTeK"
 			model = procmodel
@@ -411,7 +414,7 @@ def getAllInfo():
 		remote = "gigablue"
 	elif procmodel == "gbquadplus":
 		remote = "gbquadplus"
-	elif procmodel in ("formuler1", "formuler3", "formuler4"):
+	elif procmodel in ("formuler1", "formuler3", "formuler4", "formuler4turbo"):
 		remote = "formuler1"
 	elif procmodel in ("azboxme", "azboxminime", "me", "minime"):
 		remote = "me"
@@ -428,7 +431,7 @@ def getAllInfo():
 	elif procmodel in ("mbtwinplus", "mbmicro", "mbmicrov2"):
 		remote = "miraclebox2"
 	elif procmodel == "alphatriplehd":
-		remote = "alphatriplehd"	
+		remote = "alphatriplehd"
 	elif procmodel == "ini-3000":
 		remote = "ini-3000"
 	elif procmodel in ("ini-7012", "ini-7000", "ini-5000", "ini-5000ru"):
@@ -441,11 +444,11 @@ def getAllInfo():
 		remote = "xpeedlx"
 	elif procmodel in ("adb2850", "adb2849", "bska", "bsla", "bxzb", "bzzb", "esi88", "uhd88", "dsi87", "arivalink200"):
 		remote = "nbox"
-	elif procmodel in ("hd1100", "hd1200", "hd1265", "hd51", "hd11", "hd500c"):
+	elif procmodel in ("hd1100", "hd1200", "hd1265", "hd1400", "hd51", "hd11", "hd500c", "hd530c"):
 		remote = "hd1x00"
 	elif procmodel == "hd2400":
 		remote = "hd2400"
-	elif procmodel in ("spycat", "spycatmini", "spycatminiplus"):
+	elif procmodel in ("spycat", "spycatmini", "spycatminiplus", "spycat4kmini"):
 		remote = "spycat"
 	elif procmodel.startswith("ixuss"):
 		remote = procmodel.replace(" ", "")
@@ -469,7 +472,9 @@ def getAllInfo():
 		remote = procmodel
 	elif procmodel in ("galaxy4k"):
 		remote = procmodel
-	elif procmodel in ("h3", "h5", "lc"):
+	elif procmodel in ("h3", "lc", "sh1"):
+		remote = "h3"
+	elif procmodel in ("h5", "h7", "i55"):
 		remote = "h5"
 	elif procmodel == "sf4008":
 		remote = "octagon"
