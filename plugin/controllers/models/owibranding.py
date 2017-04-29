@@ -14,7 +14,7 @@
 from Plugins.Extensions.OpenWebif.__init__ import _
 from Components.About import about
 from socket import has_ipv6
-from Tools.Directories import fileExists, pathExists
+from Tools.Directories import fileExists, pathExistsf
 import string
 import os, hashlib
 
@@ -425,10 +425,8 @@ def getAllInfo():
 		remote = "ini-1000"
 	elif procmodel in ("ini-1000sv", "ini-5000sv", "ini-9000de"):
 		remote = "miraclebox"
-	elif procmodel in ("7000s", "7005s"):
+	elif procmodel in ("mbtwinplus", "mbmicro", "mbmicrov2"):
 		remote = "miraclebox2"
-	elif procmodel == "mbtwinplus":
-		remote = "miraclebox"
 	elif procmodel == "alphatriplehd":
 		remote = "alphatriplehd"	
 	elif procmodel == "ini-3000":
