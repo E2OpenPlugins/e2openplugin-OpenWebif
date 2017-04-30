@@ -343,6 +343,8 @@ def getChannels(idbouquet, stype):
 	for channel in channels:
 		chan = {}
 		chan['ref'] = quote(channel[0], safe=' ~@%#$&()*!+=:;,.?/\'')
+		if chan['ref'].split(":")[1] == '320': # Hide hidden number markers
+			continue
 		chan['name'] = filterName(channel[1])
 		if not int(channel[0].split(":")[1]) & 64:
 			chan['picon'] = getPicon(chan['ref'])
