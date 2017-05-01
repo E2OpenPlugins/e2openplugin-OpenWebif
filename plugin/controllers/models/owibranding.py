@@ -201,10 +201,13 @@ def getAllInfo():
 			model = procmodel
 		elif procmodel.startswith("xp"):
 			brand = "MaxDigital"
-			model = procmodel
+			model = procmodel.upper()
 		elif procmodel.startswith("ixuss"):
 			brand = "Medialink"
 			model = procmodel.replace(" ", "")
+		elif procmodel == "formuler4turbo":
+			brand = "Formuler"
+			model = "4 Turbo"
 		elif procmodel.startswith("formuler"):
 			brand = "Formuler"
 			model = procmodel.replace("formuler","")
@@ -260,25 +263,28 @@ def getAllInfo():
 			model = "HDe"
 		elif procmodel == "hd1100":
 			brand = "Mut@nt"
-			model = "hd1100"
+			model = "HD1100"
 		elif procmodel == "hd1200":
 			brand = "Mut@nt"
-			model = "hd1200"
+			model = "HD1200"
 		elif procmodel == "hd1265":
 			brand = "Mut@nt"
-			model = "hd1265"
+			model = "HD1265"
 		elif procmodel == "hd2400":
 			brand = "Mut@nt"
-			model = "hd2400"
+			model = "HD2400"
 		elif procmodel == "hd51":
 			brand = "Mut@nt"
-			model = "hd51"
+			model = "HD51"
 		elif procmodel == "hd11":
 			brand = "Mut@nt"
-			model = "hd11"
+			model = "HD11"
 		elif procmodel == "hd500c":
 			brand = "Mut@nt"
-			model = "hd500c"
+			model = "HD500c"
+		elif procmodel == "hd530c":
+			brand = "Mut@nt"
+			model = "HD530c"
 		elif procmodel == "arivalink200":
 			brand = "Ferguson"
 			model = "Ariva @Link 200"
@@ -290,31 +296,44 @@ def getAllInfo():
 				model = "Spark"
 		elif procmodel == "spycat":
 			brand = "Spycat"
-			model = "spycat"
+			model = "Spycat"
 		elif procmodel == "spycatmini":
 			brand = "Spycat"
-			model = "spycatmini"
+			model = "Spycat Mini"
 		elif procmodel == "spycatminiplus":
 			brand = "Spycat"
-			model = "spycatminiplus"
+			model = "Spycat Mini+"
 		elif procmodel == "spycat4kmini":
 			brand = "Spycat"
-			model = "spycat4kmini"
+			model = "spycat 4K Mini"
 		elif procmodel == "wetekplay":
 			brand = "WeTeK"
-			model = procmodel
+			model = "Play"
 		elif procmodel.startswith("osm"):
 			brand = "Edision"
-			model = procmodel
+			if procmodel == "osmini":
+				model = "OS Mini"
+			elif procmodel == "osminiplus":
+				model = "OS Mini+"
+			elif procmodel == "osmega":
+				model = "OS Mega"
+			else:
+				model = procmodel
 		elif procmodel == "h3":
 			brand = "Zgemma"
-			model = "H3"
+			model = "H3 series"
 		elif procmodel == "h5":
 			brand = "Zgemma"
-			model = "H5"
+			model = "H5 series"
+		elif procmodel == "h7":
+			brand = "Zgemma"
+			model = "H7 series"
 		elif procmodel == "lc":
 			brand = "Zgemma"
 			model = "LC"
+		elif procmodel == "i55":
+			brand = "Zgemma"
+			model = "i55"
 		elif procmodel == "vs1500":
 			brand = "Vimastec"
 			model = "vs1500"
@@ -472,10 +491,12 @@ def getAllInfo():
 		remote = procmodel
 	elif procmodel in ("galaxy4k"):
 		remote = procmodel
-	elif procmodel in ("h3", "lc", "sh1"):
+	elif procmodel in ("sh1", "lc"):
+		remote = "sh1"
+	elif procmodel in ("h3", "h5", "h7"):
 		remote = "h3"
-	elif procmodel in ("h5", "h7", "i55"):
-		remote = "h5"
+	elif procmodel == "i55":
+		remote = "i55"
 	elif procmodel == "sf4008":
 		remote = "octagon"
 	elif procmodel in ("vs1100", "vs1500"):
