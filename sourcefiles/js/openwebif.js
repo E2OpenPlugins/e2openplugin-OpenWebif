@@ -1,8 +1,8 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.2
+//* Version 1.2.3
 //******************************************************************************
-//* Copyright (C) 2011-2016 E2OpenPlugins
+//* Copyright (C) 2011-2017 E2OpenPlugins
 //*
 //* V 1.0   - Initial Version
 //* V 1.1   - add movie move and rename
@@ -17,6 +17,7 @@
 //* V 1.1.1 - epg fixes / change version numbering to match OWIF versioning
 //* V 1.2.1 - fix multiepg
 //* V 1.2.2 - improve epgsearch
+//* V 1.2.3 - fix add at from multiepg
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -566,9 +567,14 @@ function addEditTimerEvent(sRef, eventId) {
 	});
 }
 
+function htmlEscape(str) {
+	return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 function addAutoTimerEvent(sRef, sname, title ,begin, end) {
-	at2add = {
-			"name" : title,
+	
+		at2add = {
+			"name" : htmlEscape(title),
 			"from" : begin,
 			"to" : end,
 			"sref" : sRef,

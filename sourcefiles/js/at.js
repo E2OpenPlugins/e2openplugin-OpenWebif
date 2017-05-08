@@ -1,9 +1,9 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 2.3
+//* Version 2.4
 //******************************************************************************
-//* Copyright (C) 2014-2016 Joerg Bleyel
-//* Copyright (C) 2014-2016 E2OpenPlugins
+//* Copyright (C) 2014-2017 Joerg Bleyel
+//* Copyright (C) 2014-2017 E2OpenPlugins
 //*
 //* V 1.0 - Initial Version
 //* V 1.1 - Support translation, small ui fixes
@@ -19,6 +19,7 @@
 //* V 2.1 - update status label
 //* V 2.2 - use public getallservices
 //* V 2.3 - fix afterevent
+//* V 2.4 - fix simulate
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -360,6 +361,10 @@ function Parse() {
 		}
 		setHover('#atlist li');
 	}
+	if(atlist.length>0)
+		$("#atbutton5").show();
+	else
+		$("#atbutton5").hide();
 }
 
 function getTags()
@@ -396,7 +401,6 @@ function getData()
 function FillAT(autotimerid)
 {
 	var def = $(atxml).find("defaults");
-
 	$(atxml).find("timer").each(function () {
 		if($(this).attr("id")==autotimerid) {
 			CurrentAT = new AutoTimerObj($(this));
@@ -989,11 +993,19 @@ function simulateAT()
 				line += '<td>' + $(this).find('e2servicename').text() + '</td>';
 				var s = $(this).find('e2timebegin').text();
 				var d = new Date(Math.round(s) * 1000)
-				s = (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes();
+				var h = d.getHours();
+				var m = d.getMinutes();
+				var _h = (h>9) ? '':'0' + h.toString();
+				var _m = (m>9) ? '':'0' + m.toString();
+				s = (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear() + ' ' + _h + ':' + _m;
 				line += '<td>' + s + '</td>';
 				s = $(this).find('e2timeend').text();
 				d = new Date(Math.round(s) * 1000)
-				s = (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes();
+				var h = d.getHours();
+				var m = d.getMinutes();
+				var _h = (h>9) ? '':'0' + h.toString();
+				var _m = (m>9) ? '':'0' + m.toString();
+				s = (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear() + ' ' + _h + ':' + _m;
 				line += '<td>' + s + '</td>';
 				line += '</tr>';
 				lines.push(line);
