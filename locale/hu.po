@@ -1939,7 +1939,7 @@ msgstr ""
 
 #: plugin/local.py:376
 msgid "Add Provider as new Bouquet"
-msgstr "A Szolgáltató hozzáadása újaként Bouquet"
+msgstr "A Szolgáltató hozzáadása újként Bouquet"
 
 #: plugin/local.py:377
 msgid "Add channel(s) to Bouquet"
