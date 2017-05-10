@@ -1300,218 +1300,220 @@ msgstr ""
 
 #: plugin/local.py:195
 msgid "Stream"
-msgstr ""
+msgstr "Stream"
 
 #: plugin/local.py:196
 msgid "Subnet mask"
-msgstr ""
+msgstr "Alhálózati maszk"
 
 #: plugin/local.py:197
 msgid "Subservices"
-msgstr ""
+msgstr "részszolgáltatásokat"
 
 #: plugin/local.py:198 plugin/local.py:303
 msgid "Tags"
-msgstr ""
+msgstr "Címkék"
 
 #: plugin/local.py:199
 msgid "Teletext"
-msgstr ""
+msgstr "Teletext"
 
 #: plugin/local.py:200
 msgid "Television"
-msgstr ""
+msgstr "Televízió"
 
 #: plugin/local.py:201
 msgid "Template Engine"
-msgstr ""
+msgstr "Sablon motor"
 
 #: plugin/local.py:202
 msgid "Text"
-msgstr ""
+msgstr "Szöveg"
 
 #: plugin/local.py:203
 msgid "Time"
-msgstr ""
+msgstr "Idő"
 
 #: plugin/local.py:204
 msgid "Timeout"
-msgstr ""
+msgstr "Időtúllépés"
 
 #: plugin/local.py:205
 msgid "Timer added"
-msgstr ""
+msgstr "Időzítés hozzáadva"
 
 #: plugin/local.py:206
 msgid "Timerlist"
-msgstr ""
+msgstr "Idõzítõ lista"
 
 #: plugin/local.py:207
 msgid "New Name"
-msgstr ""
+msgstr "Új név"
 
 #: plugin/local.py:208
 msgid "Autotimer Preview"
-msgstr ""
+msgstr "Automatikus időzítő előnézet"
 
 #: plugin/local.py:209
 msgid "Timer"
-msgstr ""
+msgstr "Időzítő"
 
 #: plugin/local.py:210 plugin/local.py:324
 msgid "Timers"
-msgstr ""
+msgstr "Időzítők"
 
 #: plugin/local.py:211
 msgid "Title"
-msgstr ""
+msgstr "Cím"
 
 #: plugin/local.py:212
 msgid "Main Memory"
-msgstr ""
+msgstr "Fő memória"
 
 #: plugin/local.py:213
 msgid "transcoded"
-msgstr ""
+msgstr "átkódolt"
 
 #: plugin/local.py:214
 msgid "Transcode"
-msgstr ""
+msgstr "Átkódolás"
 
 #: plugin/local.py:215
 msgid "Tuner Bit Error Rate BER"
-msgstr ""
+msgstr "Tuner Bit Error Rate BER"
 
 #: plugin/local.py:216
 msgid "Tuner Number"
-msgstr ""
+msgstr "Tuner száma"
 
 #: plugin/local.py:217
 msgid "Tuner Signal"
-msgstr ""
+msgstr "Tuner jel"
 
 #: plugin/local.py:218
 msgid "Tuner Signal Quality SNR"
-msgstr ""
+msgstr "Tuner jel minősége SNR"
 
 #: plugin/local.py:219
 msgid "Tuner Signal Quality SNR_DB"
-msgstr ""
+msgstr "Tuner jel minősége SNR_DB"
 
 #: plugin/local.py:220
 msgid "Tuner Signal Power AGC"
-msgstr ""
+msgstr "Tuner jelerősség AGC"
 
 #: plugin/local.py:221
 msgid "Tuner Type"
-msgstr ""
+msgstr "Tuner típusa"
 
 #: plugin/local.py:222
 msgid "Tuners"
-msgstr ""
+msgstr "Tuners"
 
 #: plugin/local.py:223
 msgid "TV"
-msgstr ""
+msgstr "TV"
 
 #: plugin/local.py:224
 msgid "TV Multi EPG"
-msgstr ""
+msgstr "TV Több EPG"
 
 #: plugin/local.py:225
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
 #: plugin/local.py:226
 msgid "Upcoming Events"
-msgstr ""
+msgstr "Közelgő események"
 
 #: plugin/local.py:227
 msgid "Version"
-msgstr ""
+msgstr "Version"
 
 #: plugin/local.py:228
 msgid "Video"
-msgstr ""
+msgstr "Videó"
 
 #: plugin/local.py:229
 msgid "Video Height"
-msgstr ""
+msgstr "Videómagasság"
 
 #: plugin/local.py:230
 msgid "Video Wide"
-msgstr ""
+msgstr "Videó széles"
 
 #: plugin/local.py:231
 msgid "Video Width"
-msgstr ""
+msgstr "Videó szélessége"
 
 #: plugin/local.py:232
 msgid "VPS"
-msgstr ""
+msgstr "VSP"
 
 #: plugin/local.py:233
 msgid "Volume"
-msgstr ""
+msgstr "Hangerő"
 
 #: plugin/local.py:234
 msgid "Volume Control"
-msgstr ""
+msgstr "Hangerőszabályozó"
 
 #: plugin/local.py:235
 msgid "waiting"
-msgstr ""
+msgstr "várakozás"
 
 #: plugin/local.py:236
 msgid "Warning"
-msgstr ""
+msgstr "Figyelem"
 
 #: plugin/local.py:237
 msgid "Yes/No"
-msgstr ""
+msgstr "Igen/nem"
 
 #: plugin/local.py:238
 msgid "Zap"
-msgstr ""
+msgstr "Zap"
 
 #: plugin/local.py:239
 msgid "zap before Stream"
-msgstr ""
+msgstr "zap before Stream"
 
 #: plugin/local.py:240
 msgid "Zap to"
-msgstr ""
+msgstr "Zap to"
 
 #: plugin/local.py:241
 msgid "Zapped to"
-msgstr ""
+msgstr "Zapped to"
 
 #: plugin/local.py:242
 msgid "Translation to Spanish"
-msgstr ""
+msgstr "Fordítás spanyolra"
 
 #: plugin/local.py:243
 msgid "All Files of this Software are open source software;"
-msgstr ""
+msgstr "A szoftver minden fájlja nyílt forráskódú szoftver;"
 
 #: plugin/local.py:244
 msgid "you can redistribute it and/or modify it under the"
-msgstr ""
+msgstr "Újraosztja és vagy módosíthatja azt a"
 
 #: plugin/local.py:245
 msgid "terms of the GNU General Public License version 2 as"
-msgstr ""
+msgstr "A GNU Általános Nyilvános Licenc 2"
 
 #: plugin/local.py:246
 msgid "published by the Free Software Foundation."
-msgstr ""
+msgstr "Amint azt a Free Software Foundation közzétette."
 
 #: plugin/local.py:247
 msgid ""
 "All Files of this Software are open source software; you can redistribute it "
 "and/or modify it under the terms of the GNU General Public License version 2 "
 "as published by the Free Software Foundation."
-msgstr ""
+msgstr "A szoftver összes fájlja nyílt forráskódú szoftver; Eloszthatja azt "
+"És / vagy módosíthatja azt a GNU General Public License 2. verziójának értelmében"
+", Amint azt a Free Software Foundation közzétette."
 
 #: plugin/local.py:248
 msgid "Root"
@@ -1519,79 +1521,79 @@ msgstr "Root"
 
 #: plugin/local.py:250
 msgid "AutoTimer List"
-msgstr ""
+msgstr "Automatikus időzítő lista"
 
 #: plugin/local.py:251
 msgid "AutoTimer Edit"
-msgstr ""
+msgstr "Automatikus időzítő szerkesztése"
 
 #: plugin/local.py:254
 msgid "Match title"
-msgstr ""
+msgstr "Match title"
 
 #: plugin/local.py:255
 msgid "EPG encoding"
-msgstr ""
+msgstr "EPG kódolás"
 
 #: plugin/local.py:256
 msgid "Search type"
-msgstr ""
+msgstr "Keresés típusa"
 
 #: plugin/local.py:257
 msgid "partial match"
-msgstr ""
+msgstr "részleges egyezés"
 
 #: plugin/local.py:258
 msgid "exact match"
-msgstr ""
+msgstr "Pontos egyezés"
 
 #: plugin/local.py:259
 msgid "description match"
-msgstr ""
+msgstr "leírás egyezés"
 
 #: plugin/local.py:260
 msgid "title or description match"
-msgstr ""
+msgstr "Cím vagy leírás egyezés"
 
 #: plugin/local.py:261
 msgid "title or short description match"
-msgstr ""
+msgstr "Cím vagy rövid leírás egyezés"
 
 #: plugin/local.py:262
 msgid "short description match"
-msgstr ""
+msgstr "Rövid leírás egyezés"
 
 #: plugin/local.py:263
 msgid "start match"
-msgstr ""
+msgstr "start egyezés"
 
 #: plugin/local.py:264
 msgid "Search strictness"
-msgstr ""
+msgstr "Szigorúság keresése"
 
 #: plugin/local.py:265
 msgid "case-sensitive search"
-msgstr ""
+msgstr "Kis-és nagybetűkre érzékeny keresés"
 
 #: plugin/local.py:266
 msgid "case-insensitive search"
-msgstr ""
+msgstr "Esetlen-érzéketlen keresés"
 
 #: plugin/local.py:267
 msgid "Timer type"
-msgstr ""
+msgstr "Időzítő típusa"
 
 #: plugin/local.py:268
 msgid "record"
-msgstr ""
+msgstr "rekord"
 
 #: plugin/local.py:269
 msgid "zap"
-msgstr ""
+msgstr "zap"
 
 #: plugin/local.py:270
 msgid "Override found with alternative service"
-msgstr ""
+msgstr "Az alternatív szolgáltatást kínáló felülbírálat"
 
 #: plugin/local.py:271
 msgid "Only match during timespan"
