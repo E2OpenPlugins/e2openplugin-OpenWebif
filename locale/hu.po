@@ -262,7 +262,7 @@ msgstr "Beállítások"
 
 #: plugin/controllers/base.py:264
 msgid "LCD4Linux Setup"
-msgstr ""
+msgstr "LCD4Linux Setup"
 
 #: plugin/controllers/base.py:279
 msgid "OSCam Webinterface"
@@ -282,299 +282,299 @@ msgstr "EPG frissítés"
 
 #: plugin/controllers/ipkg.py:238
 msgid "Error upload File"
-msgstr ""
+msgstr "Hiba történt a fájl feltöltése közben"
 
 #: plugin/controllers/ipkg.py:241
 msgid "wrong filetype"
-msgstr ""
+msgstr "Rossz filetype"
 
 #: plugin/controllers/ipkg.py:255
 msgid "Error writing File"
-msgstr ""
+msgstr "Hiba történt a fájl írása közben"
 
 #: plugin/controllers/models/info.py:58
 msgid "SLAAC"
-msgstr ""
+msgstr "SLAAC"
 
 #: plugin/controllers/models/info.py:65 plugin/controllers/models/info.py:76
 #: plugin/controllers/models/info.py:83
 msgid "static"
-msgstr ""
+msgstr "statikus"
 
 #: plugin/controllers/models/info.py:67 plugin/controllers/models/info.py:85
 #: plugin/local.py:80
 msgid "DHCP"
-msgstr ""
+msgstr "DHCP"
 
 #: plugin/controllers/models/info.py:69 plugin/controllers/models/info.py:87
 msgid "manual/disabled"
-msgstr ""
+msgstr "kézi/Tiltva"
 
 #: plugin/controllers/models/info.py:95 plugin/controllers/models/info.py:102
 msgid "unknown"
-msgstr ""
+msgstr "ismeretlen"
 
 #: plugin/controllers/models/info.py:136 plugin/local.py:115
 msgid "IPv4-only kernel"
-msgstr ""
+msgstr "Csak IPv4-alapú kernel"
 
 #: plugin/controllers/models/info.py:140 plugin/local.py:117
 msgid "IPv4-only Python/Twisted"
-msgstr ""
+msgstr "Csak IPv4-es Python/Twisted"
 
 #: plugin/controllers/models/info.py:169 plugin/local.py:116
 msgid "none/IPv4-only network"
-msgstr ""
+msgstr "Nincs/egyetlen IPv4-alapú hálózat"
 
 #: plugin/controllers/models/info.py:287 plugin/controllers/models/info.py:290
 msgid "kB"
-msgstr ""
+msgstr "kB"
 
 #: plugin/controllers/models/info.py:291 plugin/controllers/models/info.py:414
 #, python-format
 msgid "%s free / %s total"
-msgstr ""
+msgstr "%s szabad /%s összesen"
 
 #: plugin/controllers/models/info.py:326 plugin/local.py:65
 msgid "Chipset"
-msgstr ""
+msgstr "Chipset"
 
 #: plugin/controllers/models/info.py:331 plugin/local.py:104
 msgid "Frontprocessor Version"
-msgstr ""
+msgstr "Frontprocesszor verzió"
 
 #: plugin/controllers/models/info.py:377 plugin/controllers/models/info.py:388
 #: plugin/controllers/models/info.py:406
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: plugin/controllers/models/info.py:380 plugin/controllers/models/info.py:386
 #: plugin/controllers/models/info.py:401 plugin/controllers/models/info.py:404
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: plugin/controllers/models/info.py:384 plugin/controllers/models/info.py:396
 #: plugin/controllers/models/info.py:398
 msgid "TB"
-msgstr ""
+msgstr "TB"
 
 #: plugin/controllers/models/info.py:442
 msgid "r/w"
-msgstr ""
+msgstr "r/w"
 
 #: plugin/controllers/models/info.py:446
 msgid "r/o"
-msgstr ""
+msgstr "r/o"
 
 #: plugin/controllers/models/message.py:33
 msgid "Message sent successfully!"
-msgstr ""
+msgstr "Az üzenet sikeresen elküldve!"
 
 #: plugin/controllers/models/message.py:43
 msgid "No answer in time"
-msgstr ""
+msgstr "Nincs válasz időben"
 
 #: plugin/controllers/models/message.py:48
 msgid "Answer is YES!"
-msgstr ""
+msgstr "A válasz IGEN!"
 
 #: plugin/controllers/models/message.py:48
 msgid "Answer is NO!"
-msgstr ""
+msgstr "A válasz NEM!"
 
 #: plugin/controllers/models/services.py:260
 msgid "New"
-msgstr ""
+msgstr "Új"
 
 #: plugin/controllers/models/services.py:262
 msgid "Services"
-msgstr ""
+msgstr "Szolgáltatások"
 
 #: plugin/controllers/models/services.py:267
 msgid "Cable"
-msgstr ""
+msgstr "Kábel"
 
 #: plugin/controllers/models/services.py:269
 msgid "Terrestrial"
-msgstr ""
+msgstr "Földi"
 
 #: plugin/controllers/models/services.py:273
 msgid "W"
-msgstr ""
+msgstr "W"
 
 #: plugin/controllers/models/services.py:275
 msgid "E"
-msgstr ""
+msgstr "E"
 
 #: plugin/controllers/models/timers.py:178
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
-msgstr ""
+msgstr "Ellenőrzött időzítők észlelve! %s"
 
 #: plugin/controllers/models/timers.py:195
 #, python-format
 msgid "Could not add timer '%s'!"
-msgstr ""
+msgstr "Nem lehet hozzáadni a'%s'időzítőt!"
 
 #: plugin/controllers/models/timers.py:200
 #, python-format
 msgid "Timer '%s' added"
-msgstr ""
+msgstr "Időzítő '%s' hozzáadva"
 
 #: plugin/controllers/models/timers.py:208
 msgid "EventId not found"
-msgstr ""
+msgstr "Esemény nem található"
 
 #: plugin/controllers/models/timers.py:279
 #, python-format
 msgid "Timer '%s' changed"
-msgstr ""
+msgstr "Időzítő '%s' megváltozott"
 
 #: plugin/controllers/models/timers.py:298
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
-msgstr ""
+msgstr "Az '%s' időzítő nem menthető"
 
 #: plugin/controllers/models/timers.py:304
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
-msgstr ""
+msgstr "Az '%s' időzítő nem található az adott kezdő és befejező időpontban!"
 
 #: plugin/controllers/models/timers.py:316
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
-msgstr ""
+msgstr "Az '%s' időzítő sikeresen törölve lett"
 
 #: plugin/controllers/models/timers.py:321
 #: plugin/controllers/models/timers.py:365
 msgid "No matching Timer found"
-msgstr ""
+msgstr "Nem talált megfelelő időzítő"
 
 #: plugin/controllers/models/timers.py:339
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
-msgstr ""
+msgstr "A '%s' időzítő nem engedélyezett"
 
 #: plugin/controllers/models/timers.py:345
 #, python-format
 msgid "Timer '%s' already exists!"
-msgstr ""
+msgstr "Időkapcsoló '%s' már létezik!"
 
 #: plugin/controllers/models/timers.py:351
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
-msgstr ""
+msgstr "Az időzítő '%s' most rögzítve! Nem tiltva!"
 
 #: plugin/controllers/models/timers.py:359
 #, python-format
 msgid "The timer '%s' has been %s successfully"
-msgstr ""
+msgstr "Az időzítő '%s' sikeres %s volt"
 
 #: plugin/controllers/models/timers.py:372
 msgid "List of Timers has been cleaned"
-msgstr ""
+msgstr "Az időzítők listája tisztításra került"
 
 #: plugin/controllers/models/timers.py:379
 msgid "TimerList has been saved"
-msgstr ""
+msgstr "Az időzítő lista mentésre került"
 
 #: plugin/controllers/models/timers.py:394
 msgid "No event found! Not recording!"
-msgstr ""
+msgstr "Nincs találat! Nem rögzítjük!"
 
 #: plugin/controllers/models/timers.py:400
 msgid "Instant record for current Event started"
-msgstr ""
+msgstr "Az aktuális esemény azonnali rögzítése megkezdődött"
 
 #: plugin/controllers/models/timers.py:409
 msgid "Infinite Instant recording started"
-msgstr ""
+msgstr "Végtelen azonnali felvétel elkezdődött"
 
 #: plugin/controllers/models/timers.py:428
 msgid "Timer conflict detected! Not recording!"
-msgstr ""
+msgstr "Időzítő konfliktus észlelhető! Nem rögzítjük!"
 
 #: plugin/controllers/models/timers.py:502
 msgid "Missing requesteter: sRef"
-msgstr ""
+msgstr "Hiányzó kérelem: sRef"
 
 #: plugin/controllers/models/timers.py:524
 #, python-format
 msgid "Unknown command: '%s'"
-msgstr ""
+msgstr "Ismeretlen parancs: '%s'"
 
 #: plugin/controllers/models/timers.py:581
 msgid "PowerTimer feature not available"
-msgstr ""
+msgstr "Power Időzítő Funkció nem áll rendelkezésre"
 
 #: plugin/controllers/models/timers.py:657
 #: plugin/controllers/models/timers.py:683
 msgid "Sleeptimer is enabled"
-msgstr ""
+msgstr "Az alvásidőzítő engedélyezve van"
 
 #: plugin/controllers/models/timers.py:657
 #: plugin/controllers/models/timers.py:683
 msgid "Sleeptimer is disabled"
-msgstr ""
+msgstr "Az alvó időzítő le van tiltva"
 
 #: plugin/controllers/models/timers.py:662
 #: plugin/controllers/models/timers.py:689
 msgid "SleepTimer error"
-msgstr ""
+msgstr "Alvóidőzítő hiba"
 
 #: plugin/controllers/models/timers.py:701
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr ""
+msgstr "HIBA: Nem állítható be az alvásidőzítő, amíg az eszköz készenléti üzemmódban van"
 
 #: plugin/controllers/models/timers.py:706
 #: plugin/controllers/models/timers.py:775
 #: plugin/controllers/models/timers.py:793
 msgid "Sleeptimer has been disabled"
-msgstr ""
+msgstr "Az elalváskapcsoló letiltott"
 
 #: plugin/controllers/models/timers.py:712
 #: plugin/controllers/models/timers.py:775
 #: plugin/controllers/models/timers.py:788
 #, python-format
 msgid "Sleeptimer set to %d minutes"
-msgstr ""
+msgstr "Az alvóidőzítő beállítása %d perc"
 
 #: plugin/controllers/models/timers.py:717
 #: plugin/controllers/models/timers.py:798
 msgid "SleepTimer Error"
-msgstr ""
+msgstr "Elalvási időzítő hiba"
 
 #: plugin/controllers/models/timers.py:826
 msgid "Error parsing vps.xml"
-msgstr ""
+msgstr "Hiba történt a vps.xml elemzésében"
 
 #: plugin/controllers/models/timers.py:831
 msgid "VPS plugin not found"
-msgstr ""
+msgstr "A VPS bővítmény nem található"
 
 #: plugin/controllers/web.py:63
 #, python-format
 msgid "Missing mandatory parameter '%s'"
-msgstr ""
+msgstr "Hiányzó kötelező paraméter '%s'"
 
 #: plugin/controllers/web.py:69
 #, python-format
 msgid "The parameter '%s' can't be empty"
-msgstr ""
+msgstr "A paraméter '%s' nem lehet üres"
 
 #: plugin/controllers/web.py:103
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr ""
+msgstr "Helytelen paraméterformátum 'set=%s'. Use set=set15 "
 
 #: plugin/controllers/web.py:108
 #, python-format
 msgid "Unknown Volume command %s"
-msgstr ""
+msgstr "Ismeretlen Hangerő parancs %s"
 
 #: plugin/controllers/web.py:143
 msgid "The parameter 'command' must be a number"
-msgstr ""
+msgstr "A 'parancs' paraméternek számnak kell lennie"
 
 #: plugin/controllers/web.py:298
 #, python-format
@@ -795,7 +795,7 @@ msgstr "Töröl"
 
 #: plugin/local.py:62
 msgid "Capacity"
-msgstr ""
+msgstr "Kapacitás"
 
 #: plugin/local.py:63
 msgid "Channel"
@@ -835,7 +835,7 @@ msgstr "Dátum"
 
 #: plugin/local.py:73
 msgid "Deep-Standby"
-msgstr ""
+msgstr "Mély készenlét"
 
 #: plugin/local.py:74
 msgid "Default"
@@ -979,87 +979,87 @@ msgstr "Táviránytó elrejtése"
 
 #: plugin/local.py:111
 msgid "High Resolution"
-msgstr ""
+msgstr "Nagy felbontású"
 
 #: plugin/local.py:112
 msgid "Hard disk model"
-msgstr ""
+msgstr "Merevlemez modell"
 
 #: plugin/local.py:113
 msgid "Hour"
-msgstr ""
+msgstr "Óra"
 
 #: plugin/local.py:114
 msgid "IPv4 address"
-msgstr ""
+msgstr "IPv4 cím"
 
 #: plugin/local.py:118
 msgid "IPv6 address(es)"
-msgstr ""
+msgstr "IPv6 cím (ek)"
 
 #: plugin/local.py:119
 msgid "Infos"
-msgstr ""
+msgstr "infó"
 
 #: plugin/local.py:120
 msgid "Instant Record"
-msgstr ""
+msgstr "Azonnali felvétel"
 
 #: plugin/local.py:121
 msgid "Javascript Libraries"
-msgstr ""
+msgstr "Javascript könyvtárak"
 
 #: plugin/local.py:122
 msgid "Just play"
-msgstr ""
+msgstr "csak lejátszás"
 
 #: plugin/local.py:123
 msgid "Kernel"
-msgstr ""
+msgstr "Kernel"
 
 #: plugin/local.py:124
 msgid "LICENSE"
-msgstr ""
+msgstr "ENGEDÉLY"
 
 #: plugin/local.py:125
 msgid "loading"
-msgstr ""
+msgstr "Betöltés"
 
 #: plugin/local.py:126
 msgid "Location"
-msgstr ""
+msgstr "Helymeghatározás"
 
 #: plugin/local.py:127
 msgid "Locked"
-msgstr ""
+msgstr "Zárt"
 
 #: plugin/local.py:128
 msgid "MAC address"
-msgstr ""
+msgstr "Mac cím"
 
 #: plugin/local.py:129
 msgid "Main"
-msgstr ""
+msgstr "Fő"
 
 #: plugin/local.py:130
 msgid "Minute"
-msgstr ""
+msgstr "Perc"
 
 #: plugin/local.py:131
 msgid "Model"
-msgstr ""
+msgstr "Modell"
 
 #: plugin/local.py:132
 msgid "Movielist"
-msgstr ""
+msgstr "Filmlista"
 
 #: plugin/local.py:133
 msgid "Movies"
-msgstr ""
+msgstr "Filmek"
 
 #: plugin/local.py:134
 msgid "MultiEPG"
-msgstr ""
+msgstr "Több EPG"
 
 #: plugin/local.py:135
 msgid "Name"
