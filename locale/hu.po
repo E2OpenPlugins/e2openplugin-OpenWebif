@@ -1103,7 +1103,7 @@ msgstr "On"
 
 #: plugin/local.py:145
 msgid "Open Source Web Interface for Linux set-top box"
-msgstr "Nyílt forráskód Webes felület a Linux set-top boxhoz"
+msgstr "Nyílt forráskódú Webes felület a Linux set-top boxhoz"
 
 #: plugin/local.py:146 plugin/plugin.py:119
 msgid "Show box name in header"
