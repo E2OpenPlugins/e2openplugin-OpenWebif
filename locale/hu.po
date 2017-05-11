@@ -135,7 +135,7 @@ msgstr "szolgáltatás %s hozzáadva"
 #: plugin/controllers/BouquetEditor.py:302
 #, python-format
 msgid "Service %s already exists in bouquet %s."
-msgstr ""
+msgstr "A szolgáltatás %s már létezik bouquet %s."
 
 #: plugin/controllers/BouquetEditor.py:303
 msgid "This service can not be added."
@@ -1821,103 +1821,103 @@ msgstr ""
 
 #: plugin/local.py:334
 msgid "Fastscan"
-msgstr ""
+msgstr "Gyors szkennelés"
 
 #: plugin/local.py:335
 msgid "Show in Extensionsmenu"
-msgstr ""
+msgstr "Bővítmények menü megjelenítése"
 
 #: plugin/local.py:336
 msgid "Disabled on Conflict"
-msgstr ""
+msgstr "Letiltva ütközés"
 
 #: plugin/local.py:337
 msgid "Add Similar on Conflict"
-msgstr ""
+msgstr "Hasonló hozzáadás ütközés"
 
 #: plugin/local.py:338
 msgid "Notify if Conflict"
-msgstr ""
+msgstr "Értesítse a ütközés"
 
 #: plugin/local.py:339
 msgid "Notify if Similar"
-msgstr ""
+msgstr "Értesítés, ha hasonló"
 
 #: plugin/local.py:340
 msgid "Add Autotimer to Tags"
-msgstr ""
+msgstr "Add hozzá az automata időzítő címkékhez"
 
 #: plugin/local.py:341
 msgid "Add Name to Tags"
-msgstr ""
+msgstr "Cím hozzáadása címkékhez"
 
 #: plugin/local.py:343
 msgid "None"
-msgstr ""
+msgstr "Egyik sem"
 
 #: plugin/local.py:346
 msgid "Editor"
-msgstr ""
+msgstr "Szerkesztő"
 
 #: plugin/local.py:347
 msgid "Plain"
-msgstr ""
+msgstr "Egyszerű"
 
 #: plugin/local.py:348
 msgid "Wizzard"
-msgstr ""
+msgstr "Varázsló"
 
 #: plugin/local.py:351
 msgid "Enable Messages"
-msgstr ""
+msgstr "Üzenetek engedélyezése"
 
 #: plugin/local.py:354
 msgid "Delay Standby"
-msgstr ""
+msgstr "Késleltetés készenlét"
 
 #: plugin/local.py:355
 msgid "Interval (min.)"
-msgstr ""
+msgstr "Intervallum (perc.)"
 
 #: plugin/local.py:356
 msgid "Interval (sec.)"
-msgstr ""
+msgstr "Intervallum (másodperc)"
 
 #: plugin/local.py:358
 msgid "Force"
-msgstr ""
+msgstr "kényszerítés"
 
 #: plugin/local.py:359
 msgid "Wakeup"
-msgstr ""
+msgstr "felébred"
 
 #: plugin/local.py:360
 msgid "Inherit Autotimer"
-msgstr ""
+msgstr "Eredeti Automata időzítő"
 
 #: plugin/local.py:361
 msgid "Parse Autotimer"
-msgstr ""
+msgstr "Automatikus időzítő elemzése"
 
 #: plugin/local.py:362
 msgid "Always"
-msgstr ""
+msgstr "Mindig"
 
 #: plugin/local.py:364
 msgid "Background only"
-msgstr ""
+msgstr "Csak a háttér"
 
 #: plugin/local.py:365
 msgid "Ask, default Yes"
-msgstr ""
+msgstr "Kérdezd, alapértelmezett Igen"
 
 #: plugin/local.py:366
 msgid "Ask, default No"
-msgstr ""
+msgstr "Kérdezd, alapértelmezett Nem"
 
 #: plugin/local.py:367
 msgid "Method"
-msgstr ""
+msgstr "Módszer"
 
 #: plugin/local.py:368
 msgid "Visibly"
