@@ -55,7 +55,9 @@ class GrabRequest(object):
 		request.notifyFinish().addErrback(self.requestAborted)
 		request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (sref, fileformat))
 		request.setHeader('Content-Type','image/%s' % fileformat.replace("jpg","jpeg"))
-		request.setHeader('Cache-Control','no-cache')
+		request.setHeader('Expires','Sat, 26 Jul 1997 05:00:00 GMT')
+		request.setHeader('Cache-Control','no-store, no-cache, must-revalidate, post-check=0, pre-check=0')
+		request.setHeader('Pragma','no-cache')
 
 	def requestAborted(self, err):
 		# Called when client disconnected early, abort the process and
