@@ -1063,71 +1063,71 @@ msgstr "Több EPG"
 
 #: plugin/local.py:135
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 #: plugin/local.py:136
 msgid "Namespace"
-msgstr ""
+msgstr "névtér"
 
 #: plugin/local.py:137
 msgid "Network Interface"
-msgstr ""
+msgstr "Hálózati felület"
 
 #: plugin/local.py:138
 msgid "no description available"
-msgstr ""
+msgstr "Nem érhető el leírás"
 
 #: plugin/local.py:139
 msgid "Sorry this page is not yet implemented"
-msgstr ""
+msgstr "Sajnos ez az oldal még nem működik"
 
 #: plugin/local.py:140
 msgid "Nothing"
-msgstr ""
+msgstr "Semmi"
 
 #: plugin/local.py:141
 msgid "Nothing playing."
-msgstr ""
+msgstr "Semmi sem lejátszás."
 
 #: plugin/local.py:142
 msgid "Now"
-msgstr ""
+msgstr "Most"
 
 #: plugin/local.py:143
 msgid "System OE"
-msgstr ""
+msgstr "Rendszer OE"
 
 #: plugin/local.py:144
 msgid "On"
-msgstr ""
+msgstr "On"
 
 #: plugin/local.py:145
 msgid "Open Source Web Interface for Linux set-top box"
-msgstr ""
+msgstr "Nyílt forráskód Webes felület a Linux set-top boxhoz"
 
 #: plugin/local.py:146 plugin/plugin.py:119
 msgid "Show box name in header"
-msgstr ""
+msgstr "A box neve a fejlécben"
 
 #: plugin/local.py:147 plugin/plugin.py:121
 msgid "Use custom box name"
-msgstr ""
+msgstr "Használja az egyéni box nevet"
 
 #: plugin/local.py:148 plugin/plugin.py:123
 msgid "Custom box name"
-msgstr ""
+msgstr "Egyedi box neve"
 
 #: plugin/local.py:149
 msgid "OSD"
-msgstr ""
+msgstr "OSD"
 
 #: plugin/local.py:150
 msgid "Open in new window"
-msgstr ""
+msgstr "Megnyitás új ablakban"
 
 #: plugin/local.py:151
 msgid "Playback"
-msgstr ""
+msgstr "visszajátszás"
 
 #: plugin/local.py:152
 msgid "Playlist"
@@ -1921,23 +1921,23 @@ msgstr ""
 
 #: plugin/local.py:368
 msgid "Visibly"
-msgstr ""
+msgstr "Láthatóan"
 
 #: plugin/local.py:369
 msgid "Picture in Picture"
-msgstr ""
+msgstr "Kép a képben"
 
 #: plugin/local.py:370
 msgid "Picture in Picture (hidden)"
-msgstr ""
+msgstr "Kép a képben (rejtett)"
 
 #: plugin/local.py:371
 msgid "Fake Recording"
-msgstr ""
+msgstr "Hamis felvétel"
 
 #: plugin/local.py:374
 msgid "Refresh now"
-msgstr ""
+msgstr "Frissítse most"
 
 #: plugin/local.py:376
 msgid "Add Provider as new Bouquet"
@@ -2041,7 +2041,7 @@ msgstr "Pcrpid"
 
 #: plugin/local.py:404
 msgid "Tsid"
-msgstr ""
+msgstr "Tsid"
 
 #: plugin/local.py:405
 msgid "Onid"
