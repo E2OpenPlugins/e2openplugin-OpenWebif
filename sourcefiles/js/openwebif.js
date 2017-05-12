@@ -815,10 +815,11 @@ function grabScreenshot(mode) {
 	} else {
 		mode = screenshotMode;
 	}
+	timestamp = new Date().getTime();
 	if (GetLSValue('ssr_hd',false)){
-		$('#screenshotimage').attr("src",'/grab?format=jpg&mode=' + mode);
+		$('#screenshotimage').attr("src",'/grab?format=jpg&mode=' + mode + '#' + timestamp);
 	} else {
-		$('#screenshotimage').attr("src",'/grab?format=jpg&r=720&mode=' + mode);
+		$('#screenshotimage').attr("src",'/grab?format=jpg&r=720&mode=' + mode + '#' + timestamp);
 	}
 	$('#screenshotimage').attr("width",720);
 }
