@@ -1039,7 +1039,7 @@ msgstr "Mac cím"
 
 #: plugin/local.py:129
 msgid "Main"
-msgstr "Fő menü"
+msgstr "Menü"
 
 #: plugin/local.py:130
 msgid "Minute"
