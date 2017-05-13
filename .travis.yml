@@ -20,7 +20,7 @@ after_success:
 
 deploy:
   provider: pages
-  api_key: "db6c21dfcc771a6d93b8dcb5e22781e75edbb844"
+  github_token: "db6c21dfcc771a6d93b8dcb5e22781e75edbb844"
   file: "${PKG}"
   skip_cleanup: true
   target_branch: gh-pages
