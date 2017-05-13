@@ -15,6 +15,7 @@ script:
 
 after_success:
 - ./create_ipk.sh
+- echo ${PKG}
 
 deploy:
   provider: pages
