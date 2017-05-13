@@ -28,5 +28,5 @@ deploy:
   skip_cleanup: true
   on:
     repro: jbleyel/e2openplugin-OpenWebif
-#    tags: true
+    tags: true
     all_branches: true
