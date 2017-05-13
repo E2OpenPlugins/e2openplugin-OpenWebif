@@ -16,17 +16,11 @@ script:
 after_success:
 - ./create_ipk.sh
 
-branches:
-  only:
-    - master 
-    - /v\d+\.\d+[a-z]/
-
 deploy:
-  provider: releases
+  provider: pages
   api_key: "db6c21dfcc771a6d93b8dcb5e22781e75edbb844"
   file: "${PKG}"
   skip_cleanup: true
+  target_branch: gh-pages
   on:
-    repro: jbleyel/e2openplugin-OpenWebif
-    tags: true
-    all_branches: true
+    branch: master
