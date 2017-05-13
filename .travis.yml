@@ -18,7 +18,7 @@ after_success:
 
 deploy:
   provider: releases
-  api_key: "GITHUB OAUTH TOKEN"
+  api_key: "db6c21dfcc771a6d93b8dcb5e22781e75edbb844"
   file: "${PKG}"
   skip_cleanup: true
   on:
