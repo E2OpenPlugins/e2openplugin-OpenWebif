@@ -11,15 +11,16 @@ python:
 script: 
 #- python -m compileall -l . -l plugin -l plugin/backport -l plugin/controllers -l plugin/controllers/models
 #- cheetah compile -R plugin
-- ./create_ipk.sh
 - ls
 
+after_success:
+- ./create_ipk.sh
+
 deploy:
-  api_key:
-    secure: xxx
-  file: "${RELEASE_FILE}"
   provider: releases
+  api_key: "GITHUB OAUTH TOKEN"
+  file: "${PKG}"
   skip_cleanup: true
   on:
-    repo: jbleyel/e2openplugin-OpenWebif
     tags: true
+    deploy:
