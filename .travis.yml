@@ -20,7 +20,7 @@ deploy:
     secure: xxx
   file: "${RELEASE_FILE}"
   provider: releases
-    skip_cleanup: true
+  skip_cleanup: true
   on:
     repo: jbleyel/e2openplugin-OpenWebif
     tags: true
