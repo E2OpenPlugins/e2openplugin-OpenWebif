@@ -26,6 +26,6 @@ deploy:
   file: "${PKG}"
   skip_cleanup: true
   on:
+    repro: jbleyel/e2openplugin-OpenWebif
     tags: true
-    deploy:
     all_branches: true
