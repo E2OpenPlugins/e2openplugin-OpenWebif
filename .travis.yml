@@ -9,9 +9,10 @@ python:
 #- pip install pyopenssl
 
 script: 
-- ls
 #- python -m compileall -l . -l plugin -l plugin/backport -l plugin/controllers -l plugin/controllers/models
 #- cheetah compile -R plugin
+- ./create_ipk.sh
+- ls
 
 deploy:
   api_key:
