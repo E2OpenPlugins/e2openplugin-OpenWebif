@@ -16,7 +16,7 @@ script:
 after_success:
 - ./create_ipk.sh
 - export PKG=$(ls -1 *.ipk)
-- echo ${PKG}
+- echo "${PKG}"
 
 deploy:
   provider: pages
