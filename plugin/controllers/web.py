@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ##############################################################################
-#                        2011 E2OpenPlugins                                  #
+#                        2011-2017 E2OpenPlugins                             #
 #                                                                            #
 #  This file is open source software; you can redistribute it and/or modify  #
 #     it under the terms of the GNU General Public License version 2 as      #
@@ -275,7 +275,11 @@ class WebController(BaseController):
 		if res:
 			return res
 
-		return removeLocation(request.args["dirname"][0])
+		remove = False
+		if "removeFolder" in request.args.keys():
+			remove = request.args["removeFolder"][0] == "1"
+
+		return removeLocation(request.args["dirname"][0],remove)
 
 	def P_message(self, request):
 		res = self.testMandatoryArguments(request, ["text", "type"])
