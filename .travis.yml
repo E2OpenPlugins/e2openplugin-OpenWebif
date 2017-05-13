@@ -19,6 +19,7 @@ after_success:
 branches:
   only:
     - master 
+    - /v\d+\.\d+[a-z]/
 
 deploy:
   provider: releases
@@ -27,5 +28,5 @@ deploy:
   skip_cleanup: true
   on:
     repro: jbleyel/e2openplugin-OpenWebif
-    tags: true
+#    tags: true
     all_branches: true
