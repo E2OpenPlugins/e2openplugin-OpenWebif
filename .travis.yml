@@ -16,12 +16,14 @@ script:
 after_success:
 - ./create_ipk.sh
 - export PKG=$(ls -1 *.ipk)
-- echo "${PKG}"
+- mkdir Rel
+- mv "${PKG}" ./Rel
 
 deploy:
   provider: pages
+  local_dir: Rel
   github_token: "db6c21dfcc771a6d93b8dcb5e22781e75edbb844"
-  file: "${PKG}"
+#  file: "${PKG}"
   skip_cleanup: true
   target_branch: gh-pages
   on:
