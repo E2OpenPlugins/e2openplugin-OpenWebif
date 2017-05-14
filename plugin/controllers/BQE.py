@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ##############################################################################
-#                        2013 E2OpenPlugins                                  #
+#                        2013 - 2017 E2OpenPlugins                           #
 #                                                                            #
 #  This file is open source software; you can redistribute it and/or modify  #
 #     it under the terms of the GNU General Public License version 2 as      #
@@ -11,11 +11,17 @@
 from twisted.web import static, resource, http, server
 from enigma import eServiceCenter, eServiceReference, iServiceInformation
 from base import BaseController
-from Screens.ChannelSelection import service_types_tv
 from Components.config import config
 from Components.ParentalControl import parentalControl
 import os
 import json
+
+# FIXME:
+# remove #from Screens.ChannelSelection import service_types_tv
+# because of missing 211
+
+service_types_tv = '1:7:1:0:0:0:0:0:0:0:(type == 1) || (type == 17) || (type == 22) || (type == 25) || (type == 31) || (type == 134) || (type == 195) || (type == 211)'
+service_types_radio = '1:7:2:0:0:0:0:0:0:0:(type == 2) || (type == 10)'
 
 class BQEWebController(BaseController):
 	def __init__(self, session, path = ""):
@@ -191,6 +197,37 @@ class BQEWebController(BaseController):
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
 
+	def P_calcpos(self, request):
+		type = 0
+		if "type" in request.args.keys():
+			type = request.args["type"][0]
+		bRef = '%s FROM BOUQUET "bouquets.tv" ORDER BY bouquet' % (service_types_tv)
+		if type = 1:
+			bRef = '%s FROM BOUQUET "bouquets.radio" ORDER BY bouquet' % (service_types_radio)
+
+		serviceHandler = eServiceCenter.getInstance()
+		serviceslist = serviceHandler.list(eServiceReference(bRef))
+		bqlist = serviceslist and serviceslist.getContent("RN", True)
+		pos=0
+		services = []
+		for bq in bqlist:
+			bqref = bq[0].toString()
+			service = {}
+			service['servicereference'] = bqref
+			service['startpos'] = pos
+			serviceslist = serviceHandler.list(eServiceReference(bqref))
+			fulllist = serviceslist and serviceslist.getContent("RN", True)
+			for item in fulllist:
+				sref = item[0].toString()
+				hs = (int(sref.split(":")[1]) & 512)
+				sp = (sref[:7] == '1:832:D')
+				if not hs or sp:	# 512 is hidden service on sifteam image. Doesn't affect other images
+					pos=pos+1
+					if not sp and item[0].flags & eServiceReference.isMarker:
+						pos=pos-1
+			services.append(service)
+		return { "services": services }
+
 	def P_getservices(self, request):
 		if "sRef" in request.args.keys():
 			sRef = request.args["sRef"][0]
@@ -207,11 +244,11 @@ class BQEWebController(BaseController):
 
 		pos=0;
 		for item in fulllist:
-			pos=pos+1
 			sref = item[0].toString()
 			hs = (int(sref.split(":")[1]) & 512)
 			sp = (sref[:7] == '1:832:D')
 			if not hs or sp:	# 512 is hidden service on sifteam image. Doesn't affect other images
+				pos=pos+1
 				service = {}
 				service['pos'] = pos
 				service['servicereference'] = sref
@@ -227,6 +264,9 @@ class BQEWebController(BaseController):
 						service['isgroup'] = '1'
 					if item[0].flags & eServiceReference.isMarker:
 						service['ismarker'] = '1'
+						# dont inc the pos for markers
+						pos=pos-1
+						service['pos'] = 0
 				if not sp and config.ParentalControl.configured.value and config.ParentalControl.servicepinactive.value:
 					sref = item[0].toCompareString()
 					protection = parentalControl.getProtectionLevel(sref)

@@ -7,6 +7,7 @@
 * fix timer epg encoding bug 
 * update localisation
 * add removeFolder to removelocations #593
+* improve bqe channel numbering #239
 
 ## Version 1.2.1
 * fix shift detection on standby button
