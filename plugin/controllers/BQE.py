@@ -202,7 +202,7 @@ class BQEWebController(BaseController):
 		if "type" in request.args.keys():
 			type = request.args["type"][0]
 		bRef = '%s FROM BOUQUET "bouquets.tv" ORDER BY bouquet' % (service_types_tv)
-		if type = 1:
+		if type == 1:
 			bRef = '%s FROM BOUQUET "bouquets.radio" ORDER BY bouquet' % (service_types_radio)
 
 		serviceHandler = eServiceCenter.getInstance()
