@@ -73,7 +73,7 @@ class WebController(BaseController):
 
 	def P_about(self, request):
 		return {
-			"info": getInfo(need_fullinfo=True),
+			"info": getInfo(self.session, need_fullinfo = True),
 			"service": getCurrentService(self.session)
 		}
 
