@@ -27,6 +27,7 @@ from models.stream import getStream, getTS, getStreamSubservices
 from models.servicelist import reloadServicesLists
 from models.mediaplayer import mediaPlayerAdd, mediaPlayerRemove, mediaPlayerPlay, mediaPlayerCommand, mediaPlayerCurrent, mediaPlayerList, mediaPlayerLoad, mediaPlayerSave, mediaPlayerFindFile
 from models.plugins import reloadPlugins
+from Screens.InfoBar import InfoBar
 
 from fcntl import ioctl
 from base import BaseController
@@ -70,6 +71,39 @@ class WebController(BaseController):
 				}
 
 		return None
+
+	def P_tsstart(self, request):
+		success = True
+		try:
+			InfoBar.instance.startTimeshift()
+		except Exception, e:
+			success = False
+		return self.P_tstate(request,success)
+
+#	TODO: improve after action / save , save+record , nothing
+#	config.timeshift.favoriteSaveAction .... 
+	def P_tsstop(self, request):
+		success = True
+		oldcheck = False
+		try:
+			if config.usage.check_timeshift.value:
+				oldcheck = config.usage.check_timeshift.value
+				# don't ask but also don't save
+				config.usage.check_timeshift.value = False
+				config.usage.check_timeshift.save()
+			InfoBar.instance.stopTimeshift()
+		except Exception, e:
+			success = False
+		if config.usage.check_timeshift.value:
+			config.usage.check_timeshift.value = oldcheck
+			config.usage.check_timeshift.save()
+		return self.P_tstate(request,success)
+
+	def P_tsstate(self, request, success = True):
+		return {
+			"state" : success,
+			"timeshiftEnabled": InfoBar.instance.timeshiftEnabled()
+		}
 
 	def P_about(self, request):
 		return {
