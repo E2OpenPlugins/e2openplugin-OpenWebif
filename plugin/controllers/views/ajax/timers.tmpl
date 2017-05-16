@@ -1,5 +1,6 @@
 #filter WebSafe
 #from urllib import quote
+#from time import localtime, strftime
 #from Plugins.Extensions.OpenWebif.local import tstrings
 <div id="content_main" class="ui-widget-content" style="min-height: 500px;">
 	<div id="tvcontentmain">
@@ -36,6 +37,7 @@
 						<div class="tm_title">
 							$timer.name
 						</div>
+						$tstrings[("day_" + (time.strftime("%w", time.localtime($timer.begin))))]
 						$timer.realbegin - $timer.realend
 						#if $timer.repeated != 0
 							<div>

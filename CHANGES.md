@@ -1,18 +1,19 @@
 ## Version 1.2.5
 ## (in development)
-* improve remote control #603
-* app timeshift api #551
-* show filesize #493
+* improve remote control / #603
+* app timeshift api / #551
+* show filesize / #493
+* show weekday for timer and recording / #541
 
 ## Version 1.2.4
-* show boxname in title #528
-* fix autotimer preview #589
-* fix autotimer create #581
+* show boxname in title / #528
+* fix autotimer preview / #589
+* fix autotimer create / #581
 * fix several box pictures and remote controls
 * fix timer epg encoding bug 
-* update localisation
-* add removeFolder to removelocations #593
-* improve bqe channel numbering #239
+* update locale
+* add removeFolder to removelocations / #593
+* improve bqe channel numbering / #239
 
 ## Version 1.2.1
 * fix shift detection on standby button
