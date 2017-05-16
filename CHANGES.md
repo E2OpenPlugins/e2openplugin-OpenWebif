@@ -1,5 +1,9 @@
-## Version 1.2.4
+## Version 1.2.5
 ## (in development)
+* improve remote control #603
+* app timeshift api #551
+
+## Version 1.2.4
 * show boxname in title #528
 * fix autotimer preview #589
 * fix autotimer create #581

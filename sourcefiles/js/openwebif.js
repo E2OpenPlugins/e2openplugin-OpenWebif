@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.4
+//* Version 1.2.5
 //******************************************************************************
 //* Copyright (C) 2011-2017 E2OpenPlugins
 //*
@@ -19,6 +19,7 @@
 //* V 1.2.2 - improve epgsearch
 //* V 1.2.3 - fix add at from multiepg
 //* V 1.2.4 - fix screenshot refresh
+//* V 1.2.5 - improve remote control #603
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -944,7 +945,7 @@ function pressMenuRemote(code) {
 	if (grabTimer > 0) {
 		clearTimeout(grabTimer);
 	}
-	grabTimer = setTimeout("callScreenShot()", 1000);
+	grabTimer = setTimeout("callScreenShot()", (code > 1 && code < 12) ? 1500:1000);
 }
 
 function toggleFullRemote() {
