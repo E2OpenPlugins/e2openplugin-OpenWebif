@@ -373,7 +373,7 @@ def getChannels(idbouquet, stype):
 			ret.append(chan)
 	return { "channels": ret }
 
-def getServices(sRef, showAll = True, showHidden = False):
+def getServices(sRef, showAll = True, showHidden = False, pos = 0):
 	services = []
 
 	if sRef == "":
@@ -384,27 +384,33 @@ def getServices(sRef, showAll = True, showHidden = False):
 
 	for sitem in slist:
 		st = int(sitem[0].split(":")[1])
+		if (sitem[0][:7] == '1:832:D') or (not (st & 512) and not (st & 64)):
+			pos = pos + 1
 		if not st & 512 or showHidden:
 			if showAll or st == 0:
 				service = {}
+				service['pos'] = 0 if (st & 64) else pos
 				service['servicereference'] = unicode(sitem[0], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 				service['program'] = int(service['servicereference'].split(':')[3], 16)
 				service['servicename'] = unicode(sitem[1], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 				services.append(service)
 
-	return { "services": services }
+	return { "services": services,"pos" : pos }
 
 def getAllServices(type):
 	services = []
 	if type is None:
 		type="tv"
 	bouquets = getBouquets(type)["bouquets"]
+	pos = 0
 	for bouquet in bouquets:
+		sv = getServices(bouquet[0],True,False,pos)
 		services.append({
 			"servicereference": bouquet[0],
 			"servicename": bouquet[1],
-			"subservices": getServices(bouquet[0])["services"]
+			"subservices": sv["services"]
 		})
+		pos = sv["pos"]
 
 	return {
 		"result": True,

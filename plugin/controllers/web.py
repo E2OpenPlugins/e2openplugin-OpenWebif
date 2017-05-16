@@ -233,12 +233,10 @@ class WebController(BaseController):
 			type = "radio"
 		bouquets = getAllServices(type)
 		if "renameserviceforxmbc" in request.args.keys():
-			count = 0
 			for bouquet in bouquets["services"]:
 				for service in bouquet["subservices"]:
 					if not int(service["servicereference"].split(":")[1]) & 64:
-						service["servicename"] = "%d - %s" % (count + 1, service["servicename"])
-						count += 1
+						service["servicename"] = "%d - %s" % (service["pos"], service["servicename"])
 			return bouquets
 		return bouquets
 
