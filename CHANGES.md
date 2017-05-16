@@ -2,6 +2,7 @@
 ## (in development)
 * improve remote control #603
 * app timeshift api #551
+* show filesize #493
 
 ## Version 1.2.4
 * show boxname in title #528

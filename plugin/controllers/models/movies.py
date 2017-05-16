@@ -235,12 +235,23 @@ def getMovieList(rargs=None, locations=None):
 				movie['serviceref'] = serviceref.toString()
 				movie['length'] = Len
 				movie['tags'] = info.getInfoString(serviceref, iServiceInformation.sTags)
+				movie['filesize_readable'] = ''
 				if 'size' in fields:
 					filename = filename.replace("'","\'").replace("%","\%")
+					size = 0
 					try:
-						movie['filesize'] = os_stat(filename).st_size
+						size = os_stat(filename).st_size
+						sz=''
+						if size > 1073741824:
+							sz = "%.2f %s" % ((size / 1073741824.),_("GB"))
+						elif size > 1048576:
+							sz = "%.2f %s" % ((size / 1048576.),_("MB"))
+						elif size > 1024:
+							sz = "%.2f %s" % ((size / 1024.),_("kB"))
 					except:
-						movie['filesize'] = 0
+						size = 0
+					movie['filesize'] = size
+					movie['filesize_readable'] = sz
 				movie['fullname'] = serviceref.toString()
 				if 'desc' in fields:
 					movie['descriptionExtended'] = unicode(ext,'utf_8', errors='ignore').encode('utf_8', 'ignore')
