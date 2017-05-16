@@ -561,7 +561,7 @@ class BouquetEditor(Source):
 			#files.append("/etc/enigma2/userbouquet.favourites.tv")
 			#files.append("/etc/enigma2/userbouquet.favourites.radio")
 			files.append("/etc/enigma2/lamedb")
-			for xml in ("/etc/tuxbox/cables.xml", "/etc/tuxbox/terrestrial.xml", "/etc/tuxbox/satellites.xml"):
+			for xml in ("/etc/tuxbox/cables.xml", "/etc/tuxbox/terrestrial.xml", "/etc/tuxbox/satellites.xml","/etc/tuxbox/atsc.xml","/etc/enigma2/lamedb5"):
 				if path.exists(xml):
 					files.append(xml)
 			if config.ParentalControl.configured.value:
