@@ -1497,31 +1497,9 @@ msgstr "Zappé vers"
 msgid "Translation to Spanish"
 msgstr "Traduction en Espagnol"
 
-#: plugin/local.py:243
-msgid "All Files of this Software are open source software;"
-msgstr "Tous les fichiers de ce logiciel sont open source;"
-
-#: plugin/local.py:244
-msgid "you can redistribute it and/or modify it under the"
-msgstr "vous pouvez le redistribuer et/ou le modifier sous les"
-
-#: plugin/local.py:245
-msgid "terms of the GNU General Public License version 2 as"
-msgstr "termes de la GNU General Public License version 2 comme"
-
-#: plugin/local.py:246
-msgid "published by the Free Software Foundation."
-msgstr "publié par la Free Software Foundation."
-
 #: plugin/local.py:247
-msgid ""
-"All Files of this Software are open source software; you can redistribute it "
-"and/or modify it under the terms of the GNU General Public License version 2 "
-"as published by the Free Software Foundation."
-msgstr ""
-"Tous les fichiers de ce logiciel sont open source; vous pouvez le "
-"redistribuer et/ou le modifier sous les termes de la GNU General Public "
-"License version 2 comme publié par la Free Software Foundation."
+msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
+msgstr "Tous les fichiers de ce logiciel sont open source; vous pouvez le redistribuer et/ou le modifier sous les termes de la GNU General Public License version 2 comme publié par la Free Software Foundation."
 
 #: plugin/local.py:248
 msgid "Root"

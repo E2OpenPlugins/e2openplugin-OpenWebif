@@ -1490,29 +1490,6 @@ msgstr "Umgeschaltet auf"
 msgid "Translation to Spanish"
 msgstr ""
 
-#: plugin/local.py:243
-msgid "All Files of this Software are open source software;"
-msgstr ""
-
-#: plugin/local.py:244
-msgid "you can redistribute it and/or modify it under the"
-msgstr ""
-
-#: plugin/local.py:245
-msgid "terms of the GNU General Public License version 2 as"
-msgstr ""
-
-#: plugin/local.py:246
-msgid "published by the Free Software Foundation."
-msgstr ""
-
-#: plugin/local.py:247
-msgid ""
-"All Files of this Software are open source software; you can redistribute it "
-"and/or modify it under the terms of the GNU General Public License version 2 "
-"as published by the Free Software Foundation."
-msgstr ""
-
 #: plugin/local.py:248
 msgid "Root"
 msgstr "Hauptverzeichnis"

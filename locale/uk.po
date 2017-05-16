@@ -1494,31 +1494,9 @@ msgstr "Перемкнуто на"
 msgid "Translation to Spanish"
 msgstr "Переклад на іспанський"
 
-#: plugin/local.py:243
-msgid "All Files of this Software are open source software;"
-msgstr "Всі файли даного ПЗ є відкритим вихідним кодом;"
-
-#: plugin/local.py:244
-msgid "you can redistribute it and/or modify it under the"
-msgstr "Ви можете розповсюджувати та / або змінювати його відповідно"
-
-#: plugin/local.py:245
-msgid "terms of the GNU General Public License version 2 as"
-msgstr "умовами GNU General Public License версії 2,"
-
-#: plugin/local.py:246
-msgid "published by the Free Software Foundation."
-msgstr "опублікованій Free Software Foundation."
-
 #: plugin/local.py:247
-msgid ""
-"All Files of this Software are open source software; you can redistribute it "
-"and/or modify it under the terms of the GNU General Public License version 2 "
-"as published by the Free Software Foundation."
-msgstr ""
-"Всі файли даного ПЗ є відкритим вихідним кодом; Ви можете розповсюджувати "
-"та / або змінювати його відповідно до умов GNU General Public License версии "
-"2, опублікованій Free Software Foundation."
+msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
+msgstr "Всі файли даного ПЗ є відкритим вихідним кодом; Ви можете розповсюджувати та / або змінювати його відповідно до умов GNU General Public License версии 2, опублікованій Free Software Foundation."
 
 #: plugin/local.py:248
 msgid "Root"

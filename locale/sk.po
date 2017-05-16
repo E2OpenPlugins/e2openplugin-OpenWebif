@@ -1492,31 +1492,9 @@ msgstr "Prepnuté na"
 msgid "Translation to Spanish"
 msgstr "Preklad do španielčiny"
 
-#: plugin/local.py:243
-msgid "All Files of this Software are open source software;"
-msgstr "Všetky súbory tohto softvéru sú open source;"
-
-#: plugin/local.py:244
-msgid "you can redistribute it and/or modify it under the"
-msgstr "môžete ho šíriť a/alebo modifikovať podľa"
-
-#: plugin/local.py:245
-msgid "terms of the GNU General Public License version 2 as"
-msgstr "podmienok GNU General Public License verzie 2 v"
-
-#: plugin/local.py:246
-msgid "published by the Free Software Foundation."
-msgstr "vydané Free Software Foundation."
-
 #: plugin/local.py:247
-msgid ""
-"All Files of this Software are open source software; you can redistribute it "
-"and/or modify it under the terms of the GNU General Public License version 2 "
-"as published by the Free Software Foundation."
-msgstr ""
-"Všetky súbory v tomto softvéri sú open source; môžete ho šíriť a/alebo "
-"upravovať podľa podmienok GNU General Public License verzie 2 v znení "
-"publikovanom Free Software Foundation."
+msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
+msgstr "Všetky súbory v tomto softvéri sú open source; môžete ho šíriť a/alebo upravovať podľa podmienok GNU General Public License verzie 2 v znení publikovanom Free Software Foundation."
 
 #: plugin/local.py:248
 msgid "Root"

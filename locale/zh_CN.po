@@ -1492,30 +1492,9 @@ msgstr "快速切换到"
 msgid "Translation to Spanish"
 msgstr "西班牙语翻译"
 
-#: plugin/local.py:243
-msgid "All Files of this Software are open source software;"
-msgstr "本软件的所有文件都是开源软件"
-
-#: plugin/local.py:244
-msgid "you can redistribute it and/or modify it under the"
-msgstr "您可以重新分配或修改它"
-
-#: plugin/local.py:245
-msgid "terms of the GNU General Public License version 2 as"
-msgstr "GPL V2"
-
-#: plugin/local.py:246
-msgid "published by the Free Software Foundation."
-msgstr "由自由软件基金会发布。"
-
 #: plugin/local.py:247
-msgid ""
-"All Files of this Software are open source software; you can redistribute it "
-"and/or modify it under the terms of the GNU General Public License version 2 "
-"as published by the Free Software Foundation."
-msgstr ""
-"本软件的所有文件都是开源软件；您可以在遵循GPL V2协议的基础上重新分配和修改"
-"它。"
+msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
+msgstr "本软件的所有文件都是开源软件；您可以在遵循GPL V2协议的基础上重新分配和修改它。"
 
 #: plugin/local.py:248
 msgid "Root"

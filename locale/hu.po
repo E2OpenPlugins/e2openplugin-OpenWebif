@@ -1490,30 +1490,9 @@ msgstr "Zapped to"
 msgid "Translation to Spanish"
 msgstr "Fordítás spanyolra"
 
-#: plugin/local.py:243
-msgid "All Files of this Software are open source software;"
-msgstr "A szoftver minden fájlja nyílt forráskódú szoftver;"
-
-#: plugin/local.py:244
-msgid "you can redistribute it and/or modify it under the"
-msgstr "Újraosztja és vagy módosíthatja azt a"
-
-#: plugin/local.py:245
-msgid "terms of the GNU General Public License version 2 as"
-msgstr "A GNU Általános Nyilvános Licenc 2"
-
-#: plugin/local.py:246
-msgid "published by the Free Software Foundation."
-msgstr "Amint azt a Free Software Foundation közzétette."
-
 #: plugin/local.py:247
-msgid ""
-"All Files of this Software are open source software; you can redistribute it "
-"and/or modify it under the terms of the GNU General Public License version 2 "
-"as published by the Free Software Foundation."
-msgstr "A szoftver összes fájlja nyílt forráskódú szoftver; Eloszthatja azt "
-"És / vagy módosíthatja azt a GNU General Public License 2. verziójának értelmében"
-", Amint azt a Free Software Foundation közzétette."
+msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
+msgstr "A szoftver összes fájlja nyílt forráskódú szoftver; Eloszthatja azt És / vagy módosíthatja azt a GNU General Public License 2. verziójának értelmében, Amint azt a Free Software Foundation közzétette."
 
 #: plugin/local.py:248
 msgid "Root"

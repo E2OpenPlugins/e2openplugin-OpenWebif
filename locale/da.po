@@ -1498,36 +1498,9 @@ msgstr "Zappede til"
 msgid "Translation to Spanish"
 msgstr "Oversættelse til spansk"
 
-# Not translating licence information
-#: plugin/local.py:243
-msgid "All Files of this Software are open source software;"
-msgstr "Alle filer i denne software er open source software"
-
-# Not translating licence information
-#: plugin/local.py:244
-msgid "you can redistribute it and/or modify it under the"
-msgstr "du kan gengive det og/eller ændre det under de"
-
-# Not translating licence information
-#: plugin/local.py:245
-msgid "terms of the GNU General Public License version 2 as"
-msgstr "regler for GNU General Public License version 2 der er"
-
-# Not translating licence information
-#: plugin/local.py:246
-msgid "published by the Free Software Foundation."
-msgstr "udgivet af the Free Software Foundation"
-
-# Not translating licence information
 #: plugin/local.py:247
-msgid ""
-"All Files of this Software are open source software; you can redistribute it "
-"and/or modify it under the terms of the GNU General Public License version 2 "
-"as published by the Free Software Foundation."
-msgstr ""
-"Alle filer i denne software er open source software, du kan gengive det og "
-"eller ændre under de regler for GNU General Public License version 2 der er "
-"udgivet af the Free Software Foundation"
+msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
+msgstr "Alle filer i denne software er open source software; du kan gengive det og/eller ændre det under de regler for GNU General Public License version 2 der er udgivet af the Free Software Foundation."
 
 #: plugin/local.py:248
 msgid "Root"
