@@ -4,6 +4,7 @@
 * app timeshift api / #551
 * show filesize / #493
 * show weekday for timer and recording / #541
+* improve edit timer / #463
 
 ## Version 1.2.4
 * show boxname in title / #528

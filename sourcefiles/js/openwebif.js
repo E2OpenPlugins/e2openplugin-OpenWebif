@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.5
+//* Version 1.2.6
 //******************************************************************************
 //* Copyright (C) 2011-2017 E2OpenPlugins
 //*
@@ -20,6 +20,7 @@
 //* V 1.2.3 - fix add at from multiepg
 //* V 1.2.4 - fix screenshot refresh
 //* V 1.2.5 - improve remote control #603
+//* V 1.2.6 - improve full channel list and edit timer
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -980,28 +981,15 @@ var timeredit_begindestroy = false;
 
 function initTimerBQ(radio) {
 
-	var url="/api/getallservices";
-	if (radio == true) {
-		url += "?type=radio"
-	}
-
-	$.ajax({
-		async: false,
-		url: url,
-		success: function(data) {
-			services = $.parseJSON(data);
-			if (services.result) {
-				$('#bouquet_select').find('option').remove().end();
-				for (var id in services.services) {
-					service = services.services[id];
-					for (var id2 in service.subservices) {
-						subservice = service.subservices[id2];
-						$('#bouquet_select').append($("<option></option>").attr("value", subservice.servicereference).text(subservice.servicename));
-					}
-				}
-			}
+	$('#bouquet_select').find('optgroup').remove().end();
+	$('#bouquet_select').find('option').remove().end();
+	GetAllServices(function ( options , boptions) {
+		$("#bouquet_select").append( options);
+		if(current_ref) {
+			$("#bouquet_select").val( current_ref );
 		}
-	});
+		$('#bouquet_select').trigger("chosen:updated");
+	} , radio);
 
 }
 
@@ -1951,18 +1939,31 @@ function FillAllServices(bqs,callback)
 
 }
 
-function GetAllServices(callback)
+function GetAllServices(callback,radio)
 {
 	if (typeof callback === 'undefined')
 		return;
+	if (typeof callback === 'undefined')
+		radio = false;
+	
+	var v = "gas-date";
+	var vd = "gas-data";
+	var ru = "";
 
+	if (radio)
+	{
+		v += "r";
+		vd += "r";
+		ru = "&type=radio";
+	}
+	
 	var date = new Date();
 	date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
 
 	// load allservices only once a day
-	var cache = GetLSValue('gas-date','')
+	var cache = GetLSValue(vd,'')
 	if(cache === date) {
-		cache = GetLSValue('gas-data',null)
+		cache = GetLSValue(v,null)
 		if(cache != null) {
 			var js = $.parseJSON(cache);
 			var bqs = js['services'];
@@ -1971,10 +1972,10 @@ function GetAllServices(callback)
 		}
 	}
 	$.ajax({
-		url: '/api/getallservices?renameserviceforxmbc=1',
+		url: '/api/getallservices?renameserviceforxmbc=1'+ru,
 		success: function ( data ) {
-			SetLSValue('gas-data',data);
-			SetLSValue('gas-date',date);
+			SetLSValue(v,data);
+			SetLSValue(vd,date);
 			var js = $.parseJSON(data);
 			var bqs = js['services'];
 			FillAllServices(bqs,callback);

@@ -4,13 +4,13 @@
 .t,.t2,.t3 { display:table;width: 100%; padding-bottom:10px;background-image:none;}
 .t3.ui-widget-content,.t2.ui-widget-content,.t.ui-widget-content { border:none;}
 .t3 > div,.t > div,.t2 > div { display:table-cell;}
-.t div:first-child { width: 150px;vertical-align:top;}
+.t > div:first-child { width: 150px;vertical-align:top;}
 .t2 div{ width: 50%;}
 .t3 div{ width: 33%;}
 #enabled,#justplay,#always_zap,#timerend,#cbradio,#rcb,#sep1,#timerbegin {margin-left:5px;}
 #justplay,#always_zap,#sep1,#timerbegin {margin-right:5px;}
 #repeatdays > label,#tagsnew > label { line-height:.9em;padding-left:10px;padding-right:10px; }
-
+#bouquet_select-menu {max-height: 300px;}
 </style>
 <form>
 <div>
@@ -151,6 +151,18 @@ $('#timerend').datetimepicker({
 
 $('#repeatdays').buttonset();
 
+$(function() { 
+	$("#bouquet_select").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "100%"});
+
+	$(".chosen-container .chosen-drop").addClass('ui-widget-content');
+	if (theme == 'eggplant' || theme == 'vader')
+	{
+		$(".chosen-container .chosen-drop").css('background-image','none');
+	}
+
+});
+
+
 var h = ($(window).height() > 700) ? 620:520;
 var w = ($(window).width() > 800) ? 740:650;
 
@@ -282,5 +294,5 @@ $('#editTimerForm').dialog({
 checkVPS();
 
 #end raw
-
 </script>
+<link rel="stylesheet" type="text/css" href="/css/chosen.min.css" />
