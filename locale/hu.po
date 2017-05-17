@@ -1087,7 +1087,7 @@ msgstr "Semmi"
 
 #: plugin/local.py:141
 msgid "Nothing playing."
-msgstr "Semmi sem lejátszás."
+msgstr "Nincs lejátszás."
 
 #: plugin/local.py:142
 msgid "Now"
@@ -1491,8 +1491,9 @@ msgid "Translation to Spanish"
 msgstr "Fordítás spanyolra"
 
 #: plugin/local.py:247
-msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
-msgstr "A szoftver összes fájlja nyílt forráskódú szoftver; Eloszthatja azt És / vagy módosíthatja azt a GNU General Public License 2. verziójának értelmében, Amint azt a Free Software Foundation közzétette."
+msgid ""
+"All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
+msgstr "A Szoftver összes fájlja nyílt forráskódú szoftver, amelyet tovább lehet terjeszteni és / vagy módosíthatja a Free Software Foundation által kiadott GNU General Public License version 2 alatt."
 
 #: plugin/local.py:248
 msgid "Root"
