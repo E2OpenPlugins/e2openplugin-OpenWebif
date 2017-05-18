@@ -5,6 +5,7 @@
 * show filesize / #493
 * show weekday for timer and recording / #541
 * improve edit timer / #463
+* show date on mobile epg info / #366
 
 ## Version 1.2.4
 * show boxname in title / #528

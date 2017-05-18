@@ -18,7 +18,7 @@
 								<td width="100%" valign="top">
 								<strong>$event['channel']</strong><br />
 									$event['title']<br />
-									$event['begin'] - $event['end'] ( $event['duration'] min )<br />
+									$tstrings[("day_" + (time.strftime("%w", time.localtime($event['start']))))], $time.strftime("%d.%m.%Y", time.localtime($event['start'])) / $event['begin'] - $event['end'] ( $event['duration'] min )<br />
 								</td>
 							</tr>
 							<tr>

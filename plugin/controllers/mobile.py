@@ -105,6 +105,7 @@ class MobileController(BaseController):
 			event['picon'] = getPicon(ref)
 			event['end'] = event['begin'] + event['duration']
 			event['duration'] = int(event['duration'] / 60)
+			event['start'] = event['begin']
 			event['begin'] = strftime("%H:%M", (localtime(event['begin'])))
 			event['end'] = strftime("%H:%M", (localtime(event['end'])))
 
