@@ -1709,7 +1709,7 @@ msgstr "Válasszon Címkét"
 
 #: plugin/local.py:306
 msgid "select Channels"
-msgstr "VVálasszon Csatornát"
+msgstr "Válasszon Csatornát"
 
 #: plugin/local.py:308
 msgid "select Bouquets"
