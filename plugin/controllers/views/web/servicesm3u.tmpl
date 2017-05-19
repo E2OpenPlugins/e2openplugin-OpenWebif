@@ -3,5 +3,5 @@
 #for $service in $services
 #EXTINF:-1,$service.servicename
 #EXTVLCOPT:program=$service.program
-http://$host/$service.servicereference
+http://$auth$host/$service.servicereference
 #end for

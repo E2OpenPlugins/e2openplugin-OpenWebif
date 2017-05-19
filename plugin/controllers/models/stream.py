@@ -15,6 +15,19 @@ from urllib import unquote, quote
 import os
 import re
 from Components.config import config
+from twisted.web.resource import Resource
+
+class GetSession(Resource):
+	def GetSID(self, request):
+		sid = request.getSession().uid
+		return sid
+
+	def GetAuth(self, request):
+		session = request.getSession().sessionNamespaces
+		if "pwd" in session.keys() and session["pwd"] is not None:
+			return (session["user"],session["pwd"])
+		else:
+			return None
 
 def getStream(session, request, m3ufile):
 	if "ref" in request.args:
@@ -88,7 +101,16 @@ def getStream(session, request, m3ufile):
 	if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != transcoder_port:
 		progopt="%s#EXTVLCOPT:program=%d\n" % (progopt, int(sRef.split(':')[3],16))
 
-	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s:%s/%s%s\n" % (progopt,request.getRequestHostname(), portNumber, sRef, args)
+	if config.OpenWebif.auth_for_streaming.value:
+		asession = GetSession()
+		if asession.GetAuth(request) is not None:
+			auth = ':'.join(asession.GetAuth(request)) + "@"
+		else:
+			auth = '-sid:' + str(asession.GetSID(request)) + "@"
+	else:
+		auth=''
+
+	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s%s:%s/%s%s\n" % (progopt,auth,request.getRequestHostname(), portNumber, sRef, args)
 	request.setHeader('Content-Type', 'application/text')
 	return response
 

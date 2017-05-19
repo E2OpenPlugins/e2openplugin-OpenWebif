@@ -16,6 +16,7 @@ from models.info import getInfo, getPublicPath, getOpenWebifVer, getTranscodingS
 from models.movies import getMovieList
 from models.timers import getTimers
 from models.config import getConfigs, getConfigsSections, getZapStream, getShowChPicon
+from models.stream import GetSession
 from base import BaseController
 from time import mktime, localtime
 from models.locations import getLocations
@@ -26,18 +27,6 @@ try:
 	from boxbranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
 except:
 	from models.owibranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
-
-class GetSession(Resource):
-	def GetSID(self, request):
-		sid = request.getSession().uid
-		return sid
-
-	def GetAuth(self, request):
-		session = request.getSession().sessionNamespaces
-		if "pwd" in session.keys() and session["pwd"] is not None:
-			return (session["user"],session["pwd"])
-		else:
-			return None
 
 class AjaxController(BaseController):
 	def __init__(self, session, path = ""):

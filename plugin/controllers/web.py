@@ -23,7 +23,7 @@ from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, rem
 from models.message import sendMessage, getMessageAnswer
 from models.movies import getMovieList, removeMovie, getMovieTags, moveMovie, renameMovie, getAllMovies
 from models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, setZapStream, saveConfig, getZapStream, setShowChPicon
-from models.stream import getStream, getTS, getStreamSubservices
+from models.stream import getStream, getTS, getStreamSubservices, GetSession
 from models.servicelist import reloadServicesLists
 from models.mediaplayer import mediaPlayerAdd, mediaPlayerRemove, mediaPlayerPlay, mediaPlayerCommand, mediaPlayerCurrent, mediaPlayerList, mediaPlayerLoad, mediaPlayerSave, mediaPlayerFindFile
 from models.plugins import reloadPlugins
@@ -45,7 +45,6 @@ def whoami(request):
 	if m is not None:
 		port = m.group(1)
 	return {'proto':proto, 'port':port }
-
 
 class WebController(BaseController):
 	def __init__(self, session, path = ""):
@@ -260,7 +259,16 @@ class WebController(BaseController):
 
 		request.setHeader('Content-Type', 'application/text')
 		services = getServices(bRef,False)
+		if config.OpenWebif.auth_for_streaming.value:
+			session = GetSession()
+			if session.GetAuth(request) is not None:
+				auth = ':'.join(session.GetAuth(request)) + "@"
+			else:
+				auth = '-sid:' + str(session.GetSID(request)) + "@"
+		else:
+			auth=''
 		services["host"] = "%s:8001" % request.getRequestHostname()
+		services["auth"] = auth
 		return services
 
 	def P_subservices(self, request):
