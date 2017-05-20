@@ -1497,8 +1497,8 @@ msgid "Translation to Spanish"
 msgstr "Vertimas į ispanų kalbą"
 
 #: plugin/local.py:247
-msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
-msgstr "Visi šios programinės įrangos failai yra atviro kodo; jūs galite platinti ir/ar modifikuoti pagal GNU Bendrosios viešosios licencijos sąlygas v.2, kaip paviešinta 'Free Software Foundation'."
+msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
+msgstr "Visi šios programinės įrangos failai yra atviro kodo; jūs galite platinti ir/ar modifikuoti pagal GNU Bendrosios viešosios licencijos sąlygas v.3, kaip paviešinta 'Free Software Foundation'."
 
 #: plugin/local.py:248
 msgid "Root"

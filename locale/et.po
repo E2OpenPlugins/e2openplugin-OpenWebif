@@ -1491,31 +1491,9 @@ msgstr "Vahetatud kanalile"
 msgid "Translation to Spanish"
 msgstr "Hispaaniakeelne tõlge"
 
-#: plugin/local.py:243
-msgid "All Files of this Software are open source software;"
-msgstr "Kõik selle tarkvara failid vaba lähtekoodiga;"
-
-#: plugin/local.py:244
-msgid "you can redistribute it and/or modify it under the"
-msgstr "neid võib levitada ja/või muuta vastavalt"
-
-#: plugin/local.py:245
-msgid "terms of the GNU General Public License version 2 as"
-msgstr "GNU Üldise Avaliku Litsentsi v.2 tingimustele."
-
-#: plugin/local.py:246
-msgid "published by the Free Software Foundation."
-msgstr "Avaldajaks Free Software Foundation."
-
 #: plugin/local.py:247
-msgid ""
-"All Files of this Software are open source software; you can redistribute it "
-"and/or modify it under the terms of the GNU General Public License version 2 "
-"as published by the Free Software Foundation."
-msgstr ""
-"Kõik selle tarkvara failid vaba lähtekoodiga; neid võib levitada ja/või "
-"muuta vastavalt GNU Üldise Avaliku Litsentsi v.2 tingimustele, avaldajaks "
-"Free Software Foundation"
+msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
+msgstr "Kõik selle tarkvara failid vaba lähtekoodiga; neid võib levitada ja/või muuta vastavalt GNU Üldise Avaliku Litsentsi v.3 tingimustele, avaldajaks Free Software Foundation"
 
 #: plugin/local.py:248
 msgid "Root"

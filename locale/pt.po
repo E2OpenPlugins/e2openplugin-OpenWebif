@@ -1068,8 +1068,8 @@ msgstr "Zapped para"
 msgid "Translation to Spanish"
 msgstr "Tradução para Espanhol"
 
-msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
-msgstr "Todos os ficheiros neste Software são Open Source; pode distribuí-los ou modificá-los nos ternos da licença púbica GNU versão 2 como publicado pela Fundação de Software Livre."
+msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
+msgstr "Todos os ficheiros neste Software são Open Source; pode distribuí-los ou modificá-los nos ternos da licença púbica GNU versão 3 como publicado pela Fundação de Software Livre."
 
 msgid "Root"
 msgstr "Raíz"

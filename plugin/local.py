@@ -242,7 +242,7 @@ tstrings = {'mo': _("Mo"),
 	'zap_to': _("Zap to"),
 	'zapped_to': _("Zapped to"),
 	'translation_spanish': _('Translation to Spanish'),
-	'license_text': _('All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation.'),
+	'license_text': _('All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation.'),
 	'Root': _('Root'),
 
 	'at_list': _("AutoTimer List"),

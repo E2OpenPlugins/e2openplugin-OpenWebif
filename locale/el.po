@@ -1498,8 +1498,8 @@ msgid "Translation to Spanish"
 msgstr "Μετάφραση στα Ισπανικά"
 
 #: plugin/local.py:247
-msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation."
-msgstr "Όλα τα αρχεία αυτού του Λογισμικού είναι ανοικτού κώδικα: μπορείτε να τα αναδιανείμετε και/ή να τα τροποποιήσετε υπό τους όρους της Γενικής Δημόσιας Άδειας GNU έκδοση 2 όπως αυτή έχει δημοσιευτεί από το Ίδρυμα Ελεύθερου Λογισμικού."
+msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
+msgstr "Όλα τα αρχεία αυτού του Λογισμικού είναι ανοικτού κώδικα: μπορείτε να τα αναδιανείμετε και/ή να τα τροποποιήσετε υπό τους όρους της Γενικής Δημόσιας Άδειας GNU έκδοση 3 όπως αυτή έχει δημοσιευτεί από το Ίδρυμα Ελεύθερου Λογισμικού."
 
 #: plugin/local.py:248
 msgid "Root"
