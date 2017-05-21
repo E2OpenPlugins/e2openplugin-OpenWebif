@@ -421,6 +421,7 @@ tstrings = {'mo': _("Mo"),
 	'tv_guide': _("TV Guide"),
 	'timeline': _("Timeline"),
 	'webtv': _("Web TV"),
+	'cw': _("Calendar Week"),
 
 	'linkspeed': _("Link Speed"),
 	'networkshares': _("Network Shares"),

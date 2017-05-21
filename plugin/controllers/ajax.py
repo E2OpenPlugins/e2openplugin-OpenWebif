@@ -242,12 +242,20 @@ class AjaxController(BaseController):
 		endtime = 1440
 		begintime = -1
 		day = 0
+		week = 0
+		wadd = 0
+		if "week" in request.args.keys():
+			try:
+				week = int(request.args["week"][0])
+				wadd = week * 7
+			except Exception, e:
+				pass
 		if "day" in request.args.keys():
 			try:
 				day = int(request.args["day"][0])
-				if day > 0:
+				if day > 0 or wadd > 0:
 					now = localtime()
-					begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day, 0, 0, 0, -1, -1, -1) )
+					begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day + wadd, 0, 0, 0, -1, -1, -1) )
 			except Exception, e:
 				pass
 		mode = 1
@@ -260,6 +268,7 @@ class AjaxController(BaseController):
 		epg['bouquets'] = bouq['bouquets']
 		epg['bref'] = bref
 		epg['day'] = day
+		epg['week'] = week
 		epg['mode'] = mode
 		epg['epgmode'] = epgmode
 		return epg

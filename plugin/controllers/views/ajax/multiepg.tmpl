@@ -38,6 +38,12 @@
 <div id="pt3" class="float">&nbsp;</div>
 <div id="pt4" class="float plus ui-state-default" data-day="200">$tstrings['now']</div>
 #end if
+#else
+<div class="float plus ui-state-default lbl">&nbsp;$tstrings['cw']:&nbsp;</div>
+#for $wk in range(0,3)
+	#set $w = $wk + 1000
+	<div class="float plus ui-state-default #if $wk==$week then 'ui-state-active' else '' #" data-day="$(w)">$time.strftime("%V",time.localtime(time.time()+604800*wk))</div>
+#end for
 #end if
 <div class="float plus ui-state-default lbl">&nbsp;$tstrings['display_mode']:&nbsp;</div>
 <div class="float plus ui-state-default #if $mode==1 then 'ui-state-active' else '' #" data-day="101">$tstrings['tv_guide']</div>
@@ -279,7 +285,12 @@ fixTableHeight();
 	var day = \$(this).data("day");
 	var epgmode = "$epgmode";
 	if (day != undefined) {
-		if (day > 199)
+		if (day > 999)
+		{
+			var w = day - 1000;
+			\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day='+$day+'&epgmode='+epgmode+'&week='+w);
+		}
+		else if (day > 199)
 		{
 			var d = day - 200;
 			var dt = (d==0) ? '' : \$(this).html();
@@ -315,13 +326,13 @@ fixTableHeight();
 				$.ajax({
 				url: 'api/setmepgmode?mode=' + mode,
 					success: function(data) {
-						\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day=$day&epgmode='+epgmode);
+						\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day=$day&epgmode='+epgmode+'&week='+$week);
 					}
 				});
 			}
 		}
 		else {
-			\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day='+day+'&epgmode='+epgmode);
+			\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day='+day+'&epgmode='+epgmode+'&week='+$week);
 		}
 	} else {
 		epgmode = \$(this).data("tvradio");
