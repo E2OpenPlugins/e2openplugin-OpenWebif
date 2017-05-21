@@ -46,10 +46,13 @@ function addTimerEvent(sRef, eventId) {
 		cache : false,
 		success: function(data) {
 			result = \$.parseJSON(data);
-			if (!state && conflicts)
-				alert( "Error Timer Confict" );
-			else
-				alert( result.result ? "$tstrings['tstr_timer_added']" : result.message );
+			if(result) {
+				if(!result.result && result.conflicts)
+					alert( "Error Timer Confict" );
+				else
+					alert( result.result ? "$tstrings['tstr_timer_added']" : result.message );
+			} else
+				alert( "Error Creating Timer" );
 		}
 	});
 }
