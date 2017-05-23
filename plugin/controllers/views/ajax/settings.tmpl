@@ -1,16 +1,17 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
 <style>
-/* TODO Theme Support */
-
-.listNav,.ln-letters {overflow:hidden;}
-.listNavHide {display: none;}
-.listNavShow {display: list-item;}
-
 .ln-letters a { font-size:0.9em;display:block;float:left;padding:2px 6px;border:1px solid silver;border-right:none;text-decoration:none;}
 .ln-letters .ln-last { border-right: 1px solid silver;}
 .ln-letters a:hover,.ln-selected { background-color:#eaeaea;}
 .ln-letters .ln-disabled {color:#ccc;}
+#packagelist {padding:0;}
+#packagelist li {margin:4px 0;}
 #packagelist li.installed {font-weight:bold;}
+#packagelist li {list-style-type:none;}
+#packagelist li i {margin:0 10px;}
+#packagelist .g {color:green;}
+#packagelist .r {color:red;}
+#searchpkd {margin:5px 5px; display:inline-block;}
 
 </style>
 <div id="content_main" class="ui-widget-content" style="min-height: 500px;background-image:none;">
@@ -92,6 +93,7 @@
 				<input class="pkgbtn" type="radio" id="pkgbtn2" name="tb2" /><label for="pkgbtn2">Installed</label>
 				<input class="pkgbtn" type="radio" id="pkgbtn3" name="tb2" /><label for="pkgbtn3">All</label>
 				<input class="pkgbtn" type="radio" id="pkgbtn4" name="tb2" /><label for="pkgbtn4">More..</label>
+				<div id="searchpkd"><label for="searchpk">Search:</label><input id="searchpk" value="..." class='ui-widget ui-widget-content ui-corner-all'></div>
 				</span>
 				<div id="pkgmore">
 				<br><br>
@@ -112,7 +114,7 @@
 				</textarea>
 				</div>
 				<div id="tblpackages">
-				<ul id="packagelist"></ul>
+				<ul id="packagelist"><div id='spinner'><div class='fa fa-spinner fa-spin'></div></div></ul>
 				</div>
 			</div>
 		</div>
@@ -123,13 +125,10 @@
 </div>
 <script type="text/javascript">
 #raw
-
-/*! jQuery ListNav - v2.4.10 - 2015-09 Copyright Eric Steinborn - https://github.com/esteinborn/jquery-listnav */
-!function(a){a.fn.listnav=function(b){var c=a.extend({},a.fn.listnav.defaults,b),d=["_","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","-"],e=!1,f="";return f=null!==document.ontouchstart?"click":"touchend click",c.prefixes=a.map(c.prefixes,function(a){return a.toLowerCase()}),this.each(function(){function b(){if(o.append(n()),p=a(".ln-letters",o).slice(0,1),c.showCounts&&(q=a(".ln-letter-count",o).slice(0,1)),h(),k(),m(),c.flagDisabled&&j(),c.includeAll||a(".all",p).remove(),c.includeNums||a("._",p).remove(),c.includeOther||a(".-",p).remove(),c.removeDisabled&&a(".ln-disabled",p).remove(),a(":last",p).addClass("ln-last"),a.cookie&&null!==c.cookieName){var b=a.cookie(c.cookieName);null!==b&&"undefined"!=typeof b&&(c.initLetter=b)}if(""!==c.initLetter)e=!0,a("."+c.initLetter.toLowerCase(),p).slice(0,1).trigger(f);else if(c.includeAll)a(".all",p).addClass("ln-selected");else for(var g=c.includeNums?0:1;g<d.length;g++)if(w[d[g]]>0){e=!0,a("."+d[g],p).slice(0,1).trigger(f);break}}function g(){var b=q.outerHeight();q.css({top:a("a:first",o).slice(0,1).position().top-b})}function h(){var b,d,e="",f=c.prefixes.length>0,g=c.filterSelector.length>0;a(v).children().each(function(){if(d=a(this),b=g?a.trim(d.find(c.filterSelector).text()).toLowerCase():a.trim(d.text()).toLowerCase(),""!==b){if(f){var h=a.map(c.prefixes,function(a){return a.indexOf(" ")<=0?a+" ":a}),j=a.grep(h,function(a){return 0===b.indexOf(a)});if(j.length>0){var k=b.toLowerCase().split(j[0])[1];return e=null!==k?a.trim(k).charAt(0):b.charAt(0),void i(e,d,!0)}}e=b.charAt(0),i(e,d)}})}function i(a,b,c){/\W/.test(a)&&(a="-"),isNaN(a)||(a="_"),b.addClass("ln-"+a),void 0===w[a]&&(w[a]=0),w[a]++,c||x++}function j(){for(var b=0;b<d.length;b++)void 0===w[d[b]]&&a("."+d[b],p).addClass("ln-disabled")}function k(){v.append('<li class="ln-no-match listNavHide">'+c.noMatchText+"</li>")}function l(b){return a(b).hasClass("all")?y=c.dontCount?x-v.find(c.dontCount).length:x:(b=".ln-"+a(b).attr("class").split(" ")[0],t=c.dontCount?v.find(b).not(c.dontCount).length:v.find(b).length,void 0!==t?t:0)}function m(){c.showCounts&&(o.mouseover(function(){g()}),a(".ln-letters a",o).mouseover(function(){r=a(this).position().left,s=a(this).outerWidth()+"px",t=l(this),q.css({left:r,width:s}).text(t).addClass("letterCountShow").removeClass("listNavHide")}).mouseout(function(){q.addClass("listNavHide").removeClass("letterCountShow")})),a("a",p).bind(f,function(b){b.preventDefault();var d=a(this),f=d.attr("class").split(" ")[0],g=v.children(".ln-no-match");if(A!==f){if(a("a.ln-selected",p).removeClass("ln-selected"),"all"===f)v.children().addClass("listNavShow").removeClass("listNavHide"),g.addClass("listNavHide").removeClass("listNavShow"),z=!0;else{z?(v.children().addClass("listNavHide").removeClass("listNavShow"),z=!1):""!==A&&v.children(".ln-"+A).addClass("listNavHide").removeClass("listNavShow");var h=l(this);h>0?(v.children(".ln-"+f).addClass("listNavShow").removeClass("listNavHide"),g.addClass("listNavHide").removeClass("listNavShow")):g.addClass("listNavShow").removeClass("listNavHide")}A=f,a.cookie&&null!==c.cookieName&&a.cookie(c.cookieName,f,{expires:999}),d.addClass("ln-selected"),d.blur(),e||null===c.onClick?e=!1:c.onClick(f)}})}function n(){for(var a=[],b=1;b<d.length;b++)0===a.length&&a.push('<a class="all" href="#">'+c.allText+'</a><a class="_" href="#">0-9</a>'),a.push('<a class="'+d[b]+'" href="#">'+("-"===d[b]?"...":d[b].toUpperCase())+"</a>");return'<div class="ln-letters">'+a.join("")+"</div>"+(c.showCounts?'<div class="ln-letter-count listNavHide">0</div>':"")}var o,p,q,r,s,t,u=this.id,v=a(this),w={},x=0,y=0,z=!0,A="";a("#"+u+"-nav").length||a('<div id="'+u+'-nav" class="listNav"/>').insertBefore(v),o=a("#"+u+"-nav"),b()})},a.fn.listnav.defaults={initLetter:"",includeAll:!0,allText:"All",includeOther:!1,includeNums:!0,flagDisabled:!0,removeDisabled:!1,noMatchText:"No matching entries",showCounts:!0,dontCount:"",cookieName:null,onClick:null,prefixes:[],filterSelector:""}}(jQuery);
-
 // TODO minimize js
 
 var filteredpkg;
+var filterval='';
 
 function prepareUpload() {
 	var fn = $(this).val();
@@ -179,10 +178,33 @@ function getPkgFilename(){
 	frm.filename.value = frm.file.value;
 }
 
+function ShowFilterPackages()
+{
+	var row='';
+	$.each( filteredpkg, function( key, val ) {
+		var name = val['name'];
+		var desc = val['d'];
+		if(filterval=== '' || name.search(filterval) !== -1 ) {
+			var upd = (val['u'] == '0') ? "":val['u'];
+			var i = val['i'];
+			var sel = (i == '1') ? "class='installed' ":"";
+			if(i == '1' && val['u'] != '0')
+				i = '2';
+			var ico = (i == '1') ? "fa-trash-o r":"fa-save g";
+			if(upd!='') {
+				upd = " -> " + upd;
+			}
+			row += "<li "+sel+"data-i='"+i+"'>"+ "<i class='fa "+ico+"'></i>" + name +" (" + val['v'] + upd +")</li>";
+		}
+	});
+	$("#packagelist").html(row);
+
+}
+
 function FillPackages(pkgs,mode)
 {
 	var _update = $.grep(pkgs, function(v) {
-		return (v.u == '1');
+		return (v.u != '0');
 	});
 	var _installed = $.grep(pkgs, function(v) {
 		return (v.i == '1');
@@ -196,49 +218,62 @@ function FillPackages(pkgs,mode)
 		filteredpkg = pkgs.slice();
 
 	$("#packagelist").html('');
-	$("#packagelist-nav").remove();
 
-	var row='';
-	$.each( filteredpkg, function( key, val ) {
-		var name = val['name'];
-		var index = -1;
-		var sel = (val['i'] == '1') ? "class='installed' ":"";
-		row += "<li "+sel+"data-i='"+val['i']+"'>"+name+" (" + val['v'] + ")</li>";
-	});
-	$("#packagelist").html(row);
-	$("#packagelist").listnav({includeAll:false,showCounts:false,initLetter:'a'});
+	ShowFilterPackages();
 
 	$('#packagelist > li').click( function () {
 		ask($(this),false);
 	});
+
+
 }
 
 function ask(obj,man)
 {
 	var pk = $(obj).html();
-	var i = ($(obj).data('i') == '1');
+	var i = $(obj).data('i');
 	if(!man) {
 		pk = pk.split('(')[0];
+		pk = pk.split('</i>')[1];
 		pk = pk.substring(0,pk.length-1);
 	}
-	if(i) {
+	
+	var cmd = '';
+	
+	if(i=='1') {
 		if (confirm('Remove Package' + ' ( ' + pk + ') ?') === true) {
-			return;
+			cmd = 'remove&' + pk;
+		}
+	} else if (i=='2') {
+		if (confirm('Update Package' + ' ( ' + pk + ') ?') === true) {
+			cmd = 'install&package=' + pk;
 		}
 	} else {
 		if (confirm('Install Package' + ' ( ' + pk + ') ?') === true) {
-			return;
+			cmd = 'install&package=' + pk;
 		}
 	}
+	
+	if(cmd != '')
+	{
+		Action('/ipkg?command='+cmd,'true');
+		$("#tblpackages").hide();
+		$("#pkgmore").show();
+		$('#pkgbtn4').prop('checked', true); 
+	}
+	
 }
 
-function Action(action)
+function Action(action,rl)
 {
 	$('#resulttext').val('');
 	$.ajax({
 		url: action,
 		success: function ( data ) {
 			$('#resulttext').val(data);
+			if(rl !== undefined) {
+				SetLSValue('pkg-date','');
+			}
 		}
 	});
 }
@@ -360,8 +395,27 @@ $(function() {
 	$('.pkgbtn').click(function () { ShowPackages($(this).attr('id')); });
 	$('#selectfile').click(function () {$("#rfile").trigger('click'); });
 	$('#rfile').change(prepareUpload);
-	$('#updatefeed').click(function () {Action('/ipkg?command=update'); });
-	$('#upgrade').click(function () {Action('/ipkg?command=upgrade'); });
+	$('#updatefeed').click(function () {Action('/ipkg?command=update',true); });
+	$('#upgrade').click(function () {Action('/ipkg?command=upgrade','true'); });
+	
+	$('#searchpk').focus(function () { 
+		if ($(this).val() === '...') {
+			$(this).val('');
+		}
+	}).keyup(function (){
+		if ($(this).data('val') !== this.value) {
+			filterval=this.value;
+			ShowFilterPackages();
+		}
+		$(this).data('val', this.value);
+	}); /*.blur(function (){
+		filterval='';
+		$(this).data('val', '');
+		if ($(this).val() === '') {
+			$(this).val('...');
+		}
+	});
+	*/
 
 });
 </script>
