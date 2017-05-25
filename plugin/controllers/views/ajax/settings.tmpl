@@ -1,18 +1,14 @@
 #from Plugins.Extensions.OpenWebif.local import tstrings
 <style>
-.ln-letters a { font-size:0.9em;display:block;float:left;padding:2px 6px;border:1px solid silver;border-right:none;text-decoration:none;}
-.ln-letters .ln-last { border-right: 1px solid silver;}
-.ln-letters a:hover,.ln-selected { background-color:#eaeaea;}
-.ln-letters .ln-disabled {color:#ccc;}
 #packagelist {padding:0;}
-#packagelist li {margin:4px 0;}
 #packagelist li.installed {font-weight:bold;}
-#packagelist li {list-style-type:none;}
+#packagelist li {list-style-type:none;margin:4px 0;}
 #packagelist li i {margin:0 10px;}
 #packagelist .g {color:green;}
 #packagelist .r {color:red;}
 #searchpkd {margin:5px 5px; display:inline-block;}
-
+#packagelist li div {display:inline-table;}
+#packagelist li div span {font-weight:initial;font-size:smaller;}
 </style>
 <div id="content_main" class="ui-widget-content" style="min-height: 500px;background-image:none;">
 	<div id="info">
@@ -184,7 +180,7 @@ function ShowFilterPackages()
 	$.each( filteredpkg, function( key, val ) {
 		var name = val['name'];
 		var desc = val['d'];
-		if(filterval=== '' || name.search(filterval) !== -1 ) {
+		if(filterval=== '' || name.toLowerCase().search(filterval.toLowerCase()) !== -1 || desc.toLowerCase().search(filterval.toLowerCase()) !== -1) {
 			var upd = (val['u'] == '0') ? "":val['u'];
 			var i = val['i'];
 			var sel = (i == '1') ? "class='installed' ":"";
@@ -194,7 +190,7 @@ function ShowFilterPackages()
 			if(upd!='') {
 				upd = " -> " + upd;
 			}
-			row += "<li "+sel+"data-i='"+i+"'>"+ "<i class='fa "+ico+"'></i>" + name +" (" + val['v'] + upd +")</li>";
+			row += "<li "+sel+"data-i='"+i+"' data-n='"+name+"'>"+ "<i class='fa "+ico+"'></i><div>" + name +" (" + val['v'] + upd +")<br><span>" + desc + "</span></div></li>";
 		}
 	});
 	$("#packagelist").html(row);
@@ -233,9 +229,7 @@ function ask(obj,man)
 	var pk = $(obj).html();
 	var i = $(obj).data('i');
 	if(!man) {
-		pk = pk.split('(')[0];
-		pk = pk.split('</i>')[1];
-		pk = pk.substring(0,pk.length-1);
+		pk = $(obj).data('n');
 	}
 	
 	var cmd = '';
