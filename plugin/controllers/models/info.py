@@ -307,7 +307,10 @@ def getInfo(session = None, need_fullinfo = False):
 	info['imagedistro'] = getImageDistro()
 	info['friendlyimagedistro'] = getFriendlyImageDistro()
 	info['oever'] = getOEVersion()
-	info['imagever'] = getImageVersion() + '.' + getImageBuild()
+	info['imagever'] = getImageVersion()
+	ib = getImageBuild()
+	if ib:
+		info['imagever'] = info['imagever'] + "." + ib
 	info['enigmaver'] = getEnigmaVersionString()
 	info['driverdate'] = getDriverDate()
 	info['kernelver'] = about.getKernelVersionString()

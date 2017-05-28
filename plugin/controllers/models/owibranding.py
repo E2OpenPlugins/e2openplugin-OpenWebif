@@ -568,7 +568,8 @@ def getAllInfo():
 					imagebuild = "".join(imagelist)
 				else:
 					# deal with major release versions only
-					imagebuild = "0"
+					if imagever.isnumeric():
+						imagebuild = "0"
 			except:
 				# just in case
 				pass
