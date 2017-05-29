@@ -1,6 +1,6 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 2.4
+//* Version 2.5
 //******************************************************************************
 //* Copyright (C) 2014-2017 Joerg Bleyel
 //* Copyright (C) 2014-2017 E2OpenPlugins
@@ -20,6 +20,7 @@
 //* V 2.2 - use public getallservices
 //* V 2.3 - fix afterevent
 //* V 2.4 - fix simulate
+//* V 2.5 - add test api / fix counter
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -258,9 +259,10 @@ function InitPage() {
 	$("#atbutton3").click(function () { saveAT(); });
 	$("#atbutton3").button({icons: { primary: "ui-icon-disk"}});
 	$("#atbutton4").click(function () { parseAT(); });
-	$("#atbutton5").click(function () { simulateAT(); });
-	$("#atbutton6").click(function () { listTimers(); });
-	$("#atbutton7").click(function () { getAutoTimerSettings(); });
+	$("#atbutton5").click(function () { test_simulateAT(true); });
+	$("#atbutton6").click(function () { test_simulateAT(false); });
+	$("#atbutton7").click(function () { listTimers(); });
+	$("#atbutton8").click(function () { getAutoTimerSettings(); });
 	// TODO: icons
 
 	$('#statuscont').hide();
@@ -286,7 +288,7 @@ function InitPage() {
 	buttons["Save"] = function() {setAutoTimerSettings(); $(this).dialog("close");};
 	buttons["Cancel"] = function() {$(this).dialog("close");};
 	
-	var t = $("#atbutton7").data('title');
+	var t = $("#atbutton8").data('title');
 	
 	$("#atsettingdlg").dialog({
 		modal : true, 
@@ -361,10 +363,13 @@ function Parse() {
 		}
 		setHover('#atlist li');
 	}
-	if(atlist.length>0)
+	if(atlist.length>0) {
 		$("#atbutton5").show();
-	else
+		$("#atbutton6").show();
+	} else {
 		$("#atbutton5").hide();
+		$("#atbutton6").hide();
+	}
 }
 
 function getTags()
@@ -876,6 +881,12 @@ function saveAT()
 		if(CurrentAT.maxduration && CurrentAT.maxduration > -1)
 			reqs += CurrentAT.maxduration;
 
+		if(CurrentAT.counter!='0')
+		{
+			reqs += "&counter=" + CurrentAT.counter;
+			reqs += "&counterFormat=" + CurrentAT.counterFormat;
+		}
+		
 		if(CurrentAT.timerOffset) {
 			if(CurrentAT.timerOffsetAfter > -1 && CurrentAT.timerOffsetBefore > -1)
 				reqs += "&offset=" + CurrentAT.timerOffsetBefore + "," + CurrentAT.timerOffsetAfter;
@@ -975,19 +986,24 @@ function saveAT()
 	}
 }
 
-function simulateAT()
+function test_simulateAT(simulate)
 {
-	$("#simdlg").dialog( "open" );
-	$("#simtb").append("<tr><td COLSPAN=5>"+loadspinner+"</td></tr>");
 
+	$("#simdlg").dialog( "open" );
+	$("#simtb").append("<tr><td COLSPAN=6>"+loadspinner+"</td></tr>");
+
+	var link = simulate ? "simulate":"test";
+	var tag = simulate ? "e2simulatedtimer":"e2testtimer";
+	
 	$.ajax({
-		type: "GET", url: "/autotimer/simulate",
+		type: "GET", url: "/autotimer/" +link,
 		dataType: "xml",
 		success: function (xml)
 		{
 			var lines= [];
-			$(xml).find("e2simulatedtimer").each(function () {
+			$(xml).find(tag).each(function () {
 				var line = '<tr>';
+				line += '<td>' + $(this).find('e2state').text() + '</td>';
 				line += '<td>' + $(this).find('e2autotimername').text() + '</td>';
 				line += '<td>' + $(this).find('e2name').text() + '</td>';
 				line += '<td>' + $(this).find('e2servicename').text() + '</td>';
@@ -995,16 +1011,16 @@ function simulateAT()
 				var d = new Date(Math.round(s) * 1000)
 				var h = d.getHours();
 				var m = d.getMinutes();
-				var _h = (h>9) ? '':'0' + h.toString();
-				var _m = (m>9) ? '':'0' + m.toString();
+				var _h = ((h>9) ? '':'0') + h.toString();
+				var _m = ((m>9) ? '':'0') + m.toString();
 				s = (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear() + ' ' + _h + ':' + _m;
 				line += '<td>' + s + '</td>';
 				s = $(this).find('e2timeend').text();
 				d = new Date(Math.round(s) * 1000)
-				var h = d.getHours();
-				var m = d.getMinutes();
-				var _h = (h>9) ? '':'0' + h.toString();
-				var _m = (m>9) ? '':'0' + m.toString();
+				h = d.getHours();
+				m = d.getMinutes();
+				var _h = ((h>9) ? '':'0') + h.toString();
+				var _m = ((m>9) ? '':'0') + m.toString();
 				s = (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear() + ' ' + _h + ':' + _m;
 				line += '<td>' + s + '</td>';
 				line += '</tr>';
@@ -1016,7 +1032,7 @@ function simulateAT()
 				$("#simtb").append(val);
 			});
 			if(lines.length===0)
-				$("#simtb").append("<tr><td COLSPAN=5>NO Timer found</td></tr>");
+				$("#simtb").append("<tr><td COLSPAN=6>NO Timer found</td></tr>");
 		},
 		error: function (request, status, error) {
 			showError(request.responseText);
