@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.6
+//* Version 1.2.7
 //******************************************************************************
 //* Copyright (C) 2011-2017 E2OpenPlugins
 //*
@@ -21,6 +21,7 @@
 //* V 1.2.4 - fix screenshot refresh
 //* V 1.2.5 - improve remote control #603
 //* V 1.2.6 - improve full channel list and edit timer
+//* V 1.2.7 - improve movie rename/delete, fix timer channel selection #612
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -663,19 +664,40 @@ function cleanupTimer() {
 	webapi_execute("/api/timercleanup", function() { load_maincontent('/ajax/timers'); });
 }
 
+function webapi_execute_movie(url,callback)
+{
+	$.ajax({
+		async: false,
+		url: url,
+		cache : false,
+		success: function(data) {
+			result = $.parseJSON(data);
+			if(result) {
+				if (!result.result)
+					alert(result.message);
+				if (typeof callback !== 'undefined') 
+					callback(result.result)
+			}
+		}
+	});
+}
+
 function renameMovie(sRef, title) {
 	var newname=prompt(tstr_ren_recording, title);
 	if (newname && newname!=title){
-		webapi_execute("/api/movierename?sRef=" + sRef+"&newname="+newname);
-		// TODO: check the api result first
+		webapi_execute_movie("/api/movierename?sRef=" + sRef+"&newname="+newname);
+		// TODO reload if success
 	}
 }
 
 function deleteMovie(sRef, divid, title) {
 	if (confirm(tstr_del_recording + ": " + title) === true) {
-		webapi_execute("/api/moviedelete?sRef=" + sRef);
-		// TODO: check the api result first
-		$('#' + divid).remove();
+		webapi_execute_movie("/api/moviedelete?sRef=" + sRef,
+			function (state) {
+				if(state) 
+					$('#' + divid).remove();
+			}
+		);
 	}
 }
 
@@ -1229,7 +1251,7 @@ function addTimer(evt,chsref,chname,top) {
 		margin_after = evt.recording_margin_after;
 	}
 
-	var lch=$('#bouquet_select > option').length;
+	var lch=$('#bouquet_select > optgroup').length;
 
 	var radio = false;
 	if (typeof chsref !== 'undefined') {
@@ -1281,10 +1303,15 @@ function addTimer(evt,chsref,chname,top) {
 	$('#timerend').datetimepicker('setDate', enddate);
 
 	$('#bouquet_select').val(serviceref);
-	if (serviceref !== $('#bouquet_select').val() && typeof servicename !== 'undefined' && servicename != '') {
+	$('#bouquet_select').trigger("chosen:updated");
+	
+	// TODO :check if needed
+	/*
+	 if (serviceref !== $('#bouquet_select').val() && typeof servicename !== 'undefined' && servicename != '') {
 		$('#bouquet_select').append($("<option></option>").attr("value", serviceref).text(servicename));
 		$('#bouquet_select').val(serviceref);
 	}
+	*/
 
 	openTimerDlg(tstr_add_timer);
 }
@@ -1943,7 +1970,7 @@ function GetAllServices(callback,radio)
 {
 	if (typeof callback === 'undefined')
 		return;
-	if (typeof callback === 'undefined')
+	if (typeof radio === 'undefined')
 		radio = false;
 	
 	var v = "gas-date";
