@@ -184,7 +184,7 @@ class IpkgController(BaseController):
 				self.request.write(json.dumps(data))
 				self.request.finish()
 			else:
-				self.request.write("<body><html>\n")
+				self.request.write("<html><body>\n")
 				self.request.write(nresult.replace("\n", "<br>\n"))
 				self.request.write("</body></html>\n")
 				self.request.finish()
