@@ -1,18 +1,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2016-11-24 15:32+0100\n"
+"POT-Creation-Date: 2017-06-08 10:04+0200\n"
+"PO-Revision-Date: 2017-06-08 10:05+0200\n"
 "Last-Translator: Svevrstt <svevrstt@gmail.com>\n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.12\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"PO-Revision-Date: 2016-11-24 15:32+0100\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
 # Vad nu det här kan vara bra för?
@@ -20,7 +20,8 @@ msgstr ""
 msgid "one two three four unknown command"
 msgstr "ett två tre fyra okänt kommando"
 
-#: plugin/controllers/BouquetEditor.py:88 plugin/controllers/BouquetEditor.py:149
+#: plugin/controllers/BouquetEditor.py:88
+#: plugin/controllers/BouquetEditor.py:149
 #: plugin/controllers/BouquetEditor.py:194
 msgid "No bouquet name given!"
 msgstr "Namn saknas för favoritlistan!"
@@ -39,7 +40,8 @@ msgstr "Den föränderliga listan för en ny favorit kunde inte hämtas!"
 msgid "Bouquet %s already exists."
 msgstr "Favoritlistan %s finns redan."
 
-#: plugin/controllers/BouquetEditor.py:125 plugin/controllers/BouquetEditor.py:435
+#: plugin/controllers/BouquetEditor.py:125
+#: plugin/controllers/BouquetEditor.py:439
 msgid "Bouquetlist is not editable!"
 msgstr "Favoritlistan kan inte redigeras!"
 
@@ -59,7 +61,9 @@ msgstr "Borttagning av favoritlista %s misslyckades."
 #: plugin/controllers/BouquetEditor.py:182
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Borttagning av favoritlista %s misslyckades. Distributören eller föränderlig lista är ogiltig."
+msgstr ""
+"Borttagning av favoritlista %s misslyckades. Distributören eller föränderlig "
+"lista är ogiltig."
 
 #: plugin/controllers/BouquetEditor.py:186
 #, python-format
@@ -71,7 +75,8 @@ msgstr "Favoritlistan %s togs bort."
 msgid "Error: Bouquet %s could not deleted, OSError."
 msgstr "Fel: Favoritlistan %s kunde inte tas bort, OSError."
 
-#: plugin/controllers/BouquetEditor.py:204 plugin/controllers/BouquetEditor.py:261
+#: plugin/controllers/BouquetEditor.py:204
+#: plugin/controllers/BouquetEditor.py:261
 msgid "No position given!"
 msgstr "Position angavs inte!"
 
@@ -85,16 +90,21 @@ msgstr "Favoritlista %s flyttades."
 msgid "Bouquet %s can not be moved."
 msgstr "Favoritlista %s kan inte flyttas."
 
-#: plugin/controllers/BouquetEditor.py:219 plugin/controllers/BouquetEditor.py:249
-#: plugin/controllers/BouquetEditor.py:275 plugin/controllers/BouquetEditor.py:309
-#: plugin/controllers/BouquetEditor.py:455
+#: plugin/controllers/BouquetEditor.py:219
+#: plugin/controllers/BouquetEditor.py:249
+#: plugin/controllers/BouquetEditor.py:275
+#: plugin/controllers/BouquetEditor.py:309
+#: plugin/controllers/BouquetEditor.py:459
 msgid "No bouquet given!"
 msgstr "Ingen favoritlista angavs!"
 
-#: plugin/controllers/BouquetEditor.py:225 plugin/controllers/BouquetEditor.py:255
-#: plugin/controllers/BouquetEditor.py:281 plugin/controllers/BouquetEditor.py:339
-#: plugin/controllers/BouquetEditor.py:397 plugin/controllers/BouquetEditor.py:461
-#: plugin/controllers/BouquetEditor.py:498
+#: plugin/controllers/BouquetEditor.py:225
+#: plugin/controllers/BouquetEditor.py:255
+#: plugin/controllers/BouquetEditor.py:281
+#: plugin/controllers/BouquetEditor.py:343
+#: plugin/controllers/BouquetEditor.py:401
+#: plugin/controllers/BouquetEditor.py:465
+#: plugin/controllers/BouquetEditor.py:502
 msgid "No service given!"
 msgstr "Ingen distributör angavs!"
 
@@ -136,218 +146,228 @@ msgstr "Distributören %s finns redan i favoritlista %s."
 msgid "This service can not be added."
 msgstr "Distributören kan inte läggas till."
 
-#: plugin/controllers/BouquetEditor.py:315
+#: plugin/controllers/BouquetEditor.py:316
 msgid "No marker-name given!"
 msgstr "Bokmärkesnamnet angavs inte!"
 
-#: plugin/controllers/BouquetEditor.py:329
+#: plugin/controllers/BouquetEditor.py:333
 msgid "Marker added."
 msgstr "Bokmärket lades till."
 
-#: plugin/controllers/BouquetEditor.py:331
+#: plugin/controllers/BouquetEditor.py:335
 msgid "Internal error!"
 msgstr "Internt fel!"
 
-#: plugin/controllers/BouquetEditor.py:345
+#: plugin/controllers/BouquetEditor.py:349
 msgid "No new servicename given!"
 msgstr "Ett nytt distributörsnamn angavs inte!"
 
-#: plugin/controllers/BouquetEditor.py:369
+#: plugin/controllers/BouquetEditor.py:373
 msgid "Bouquet renamed successfully."
 msgstr "Namnet på favoritlistan ändrades."
 
-#: plugin/controllers/BouquetEditor.py:385
+#: plugin/controllers/BouquetEditor.py:389
 msgid "Service renamed successfully."
 msgstr "Namnet på distributören ändrades."
 
-#: plugin/controllers/BouquetEditor.py:386
+#: plugin/controllers/BouquetEditor.py:390
 msgid "Service can not be renamed."
 msgstr "Distributörens namn kan inte ändras."
 
-#: plugin/controllers/BouquetEditor.py:400
+#: plugin/controllers/BouquetEditor.py:404
 msgid "No current service given!"
 msgstr "Ingen aktuell distributör angiven!"
 
-#: plugin/controllers/BouquetEditor.py:431
+#: plugin/controllers/BouquetEditor.py:435
 msgid "Get mutable list for new created alternative failed!"
-msgstr "Den föränderliga listan för en ny alternativ distributör kunde inte hämtas!"
+msgstr ""
+"Den föränderliga listan för en ny alternativ distributör kunde inte hämtas!"
 
-#: plugin/controllers/BouquetEditor.py:433
+#: plugin/controllers/BouquetEditor.py:437
 #, python-format
 msgid "Alternative %s created failed."
 msgstr "Misslyckades med att skapa alternativ distributör %s"
 
-#: plugin/controllers/BouquetEditor.py:447
+#: plugin/controllers/BouquetEditor.py:451
 #, python-format
 msgid "Added %s to alternative service %s."
 msgstr "Lade till %s som alternativ distributör %s."
 
-#: plugin/controllers/BouquetEditor.py:478
+#: plugin/controllers/BouquetEditor.py:482
 msgid "Service is not an alternative."
 msgstr "Distributören är inte en alternativ distributör."
 
-#: plugin/controllers/BouquetEditor.py:486
+#: plugin/controllers/BouquetEditor.py:490
 msgid "All alternative services deleted."
 msgstr "Alla alternativa distributörer togs bort."
 
-#: plugin/controllers/BouquetEditor.py:492
+#: plugin/controllers/BouquetEditor.py:496
 msgid "Parent Control is not activated."
 msgstr "Föräldrakontroll är inte aktiverat."
 
-#: plugin/controllers/BouquetEditor.py:505
+#: plugin/controllers/BouquetEditor.py:509
 msgid "No Parent Control Setup Pin given!"
 msgstr "Ingen kod för föräldrakontroll angavs!"
 
-#: plugin/controllers/BouquetEditor.py:509 plugin/controllers/BouquetEditor.py:511
+#: plugin/controllers/BouquetEditor.py:513
+#: plugin/controllers/BouquetEditor.py:515
 msgid "Parent Control Setup Pin is wrong!"
 msgstr "Koden för föräldrakontroll är fel!"
 
-#: plugin/controllers/BouquetEditor.py:526
+#: plugin/controllers/BouquetEditor.py:530
 #, python-format
 msgid "Service %s is locked."
 msgstr "Distributören %s är låst."
 
-#: plugin/controllers/BouquetEditor.py:528
+#: plugin/controllers/BouquetEditor.py:532
 #, python-format
 msgid "Bouquet %s is locked."
 msgstr "Favoritlistan %s är låst."
 
-#: plugin/controllers/BouquetEditor.py:530
+#: plugin/controllers/BouquetEditor.py:534
 #, python-format
 msgid "%s %s is locked."
 msgstr "%s %s är låst."
 
-#: plugin/controllers/BouquetEditor.py:534
+#: plugin/controllers/BouquetEditor.py:538
 #, python-format
 msgid "Service %s is unlocked."
 msgstr "Distributören %s är upplåst."
 
-#: plugin/controllers/BouquetEditor.py:536
+#: plugin/controllers/BouquetEditor.py:540
 #, python-format
 msgid "Bouquet %s is unlocked."
 msgstr "Favoritlistan %s är upplåst."
 
-#: plugin/controllers/BouquetEditor.py:573
+#: plugin/controllers/BouquetEditor.py:577
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
 msgstr "Fel vid förberedelse av säkerhetskopiering, filen %s saknas."
 
-#: plugin/controllers/BouquetEditor.py:579
+#: plugin/controllers/BouquetEditor.py:583
 msgid "Error while preparing backup file."
 msgstr "Fel vid förberedelse av fil för säkerhetskopia."
 
-#: plugin/controllers/BouquetEditor.py:630
+#: plugin/controllers/BouquetEditor.py:634
 msgid "Bouquet-settings were restored successfully"
 msgstr "Favoritlistans inställningar återskapades."
 
-#: plugin/controllers/BouquetEditor.py:632
+#: plugin/controllers/BouquetEditor.py:636
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
 msgstr "Fel: %s skapades inte av WebBouquetEditor... "
 
-#: plugin/controllers/BouquetEditor.py:634
+#: plugin/controllers/BouquetEditor.py:638
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
 msgstr "Fel: %s existerar inte. Därför kan återställning inte utföras..."
 
-#: plugin/controllers/base.py:248 plugin/local.py:181 plugin/local.py:325
+#: plugin/controllers/base.py:256 plugin/local.py:183 plugin/local.py:323
 msgid "Settings"
 msgstr "Inställningar"
 
-#: plugin/controllers/base.py:264
+#: plugin/controllers/base.py:272
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux inställning"
 
-#: plugin/controllers/base.py:279
+#: plugin/controllers/base.py:287
 msgid "OSCam Webinterface"
 msgstr "Webbgränssnitt för OSCam "
 
-#: plugin/controllers/base.py:283
+#: plugin/controllers/base.py:291
 msgid "AutoTimer"
 msgstr "AutoTimer"
 
-#: plugin/controllers/base.py:288
+#: plugin/controllers/base.py:296
 msgid "BouquetEditor"
 msgstr "Redigera favoritlistor"
 
-#: plugin/controllers/base.py:292
+#: plugin/controllers/base.py:300
 msgid "EPGRefresh"
 msgstr "EPGRefresh"
 
-#: plugin/controllers/ipkg.py:238
+#: plugin/controllers/base.py:318
+msgid "Terminal"
+msgstr ""
+
+#: plugin/controllers/ipkg.py:239
 msgid "Error upload File"
 msgstr "Fel vid uppladdning av fil"
 
-#: plugin/controllers/ipkg.py:241
+#: plugin/controllers/ipkg.py:242
 msgid "wrong filetype"
 msgstr "Fel filtyp"
 
-#: plugin/controllers/ipkg.py:255
+#: plugin/controllers/ipkg.py:256
 msgid "Error writing File"
 msgstr "Fel när filen skrevs"
 
-#: plugin/controllers/models/info.py:58
+#: plugin/controllers/models/info.py:57
 msgid "SLAAC"
 msgstr "SLAAC"
 
-#: plugin/controllers/models/info.py:65 plugin/controllers/models/info.py:76
-#: plugin/controllers/models/info.py:83
+#: plugin/controllers/models/info.py:64 plugin/controllers/models/info.py:75
+#: plugin/controllers/models/info.py:82
 msgid "static"
 msgstr "statisk"
 
-#: plugin/controllers/models/info.py:67 plugin/controllers/models/info.py:85 plugin/local.py:80
+#: plugin/controllers/models/info.py:66 plugin/controllers/models/info.py:84
+#: plugin/local.py:81
 msgid "DHCP"
 msgstr "DHCP"
 
-#: plugin/controllers/models/info.py:69 plugin/controllers/models/info.py:87
+#: plugin/controllers/models/info.py:68 plugin/controllers/models/info.py:86
 msgid "manual/disabled"
 msgstr "manuell/avaktiverad"
 
-#: plugin/controllers/models/info.py:95 plugin/controllers/models/info.py:102
+#: plugin/controllers/models/info.py:94 plugin/controllers/models/info.py:101
 msgid "unknown"
 msgstr "okänd"
 
-#: plugin/controllers/models/info.py:136 plugin/local.py:115
+#: plugin/controllers/models/info.py:135 plugin/local.py:117
 msgid "IPv4-only kernel"
 msgstr "Kernel enbart för IPv4"
 
-#: plugin/controllers/models/info.py:140 plugin/local.py:117
+#: plugin/controllers/models/info.py:139 plugin/local.py:119
 msgid "IPv4-only Python/Twisted"
 msgstr "Endast Python/Twisted för IPv4"
 
-#: plugin/controllers/models/info.py:169 plugin/local.py:116
+#: plugin/controllers/models/info.py:168 plugin/local.py:118
 msgid "none/IPv4-only network"
 msgstr "inga/endast IPv4-nätverk"
 
-#: plugin/controllers/models/info.py:287 plugin/controllers/models/info.py:290
+#: plugin/controllers/models/info.py:286 plugin/controllers/models/info.py:289
+#: plugin/controllers/models/movies.py:250
 msgid "kB"
 msgstr "kB"
 
-#: plugin/controllers/models/info.py:291 plugin/controllers/models/info.py:414
+#: plugin/controllers/models/info.py:290 plugin/controllers/models/info.py:413
 #, python-format
 msgid "%s free / %s total"
 msgstr "%s ledigt / %s totalt"
 
-#: plugin/controllers/models/info.py:326 plugin/local.py:65
+#: plugin/controllers/models/info.py:325 plugin/local.py:65
 msgid "Chipset"
 msgstr "Chipset"
 
-#: plugin/controllers/models/info.py:331 plugin/local.py:104
+#: plugin/controllers/models/info.py:330 plugin/local.py:106
 msgid "Frontprocessor Version"
 msgstr "Frontprocessorversion"
 
-#: plugin/controllers/models/info.py:377 plugin/controllers/models/info.py:388
-#: plugin/controllers/models/info.py:406
+#: plugin/controllers/models/info.py:376 plugin/controllers/models/info.py:387
+#: plugin/controllers/models/info.py:405
+#: plugin/controllers/models/movies.py:248
 msgid "MB"
 msgstr "MB"
 
-#: plugin/controllers/models/info.py:380 plugin/controllers/models/info.py:386
-#: plugin/controllers/models/info.py:401 plugin/controllers/models/info.py:404
+#: plugin/controllers/models/info.py:379 plugin/controllers/models/info.py:385
+#: plugin/controllers/models/info.py:400 plugin/controllers/models/info.py:403
+#: plugin/controllers/models/movies.py:246
 msgid "GB"
 msgstr "GB"
 
-#: plugin/controllers/models/info.py:384 plugin/controllers/models/info.py:396
-#: plugin/controllers/models/info.py:398
+#: plugin/controllers/models/info.py:383 plugin/controllers/models/info.py:395
+#: plugin/controllers/models/info.py:397
 msgid "TB"
 msgstr "TB"
 
@@ -440,7 +460,8 @@ msgstr "Kunde inte hitta någon timer '%s' med angiven start-och stopptid"
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Timern '%s' togs bort"
 
-#: plugin/controllers/models/timers.py:321 plugin/controllers/models/timers.py:365
+#: plugin/controllers/models/timers.py:321
+#: plugin/controllers/models/timers.py:365
 msgid "No matching Timer found"
 msgstr "Kunde inte hitta någon passande timer"
 
@@ -502,15 +523,18 @@ msgstr "Odefinierad instruktion: '%s'"
 msgid "PowerTimer feature not available"
 msgstr "Funktionen för att hantera PowerTimer saknas"
 
-#: plugin/controllers/models/timers.py:657 plugin/controllers/models/timers.py:683
+#: plugin/controllers/models/timers.py:657
+#: plugin/controllers/models/timers.py:683
 msgid "Sleeptimer is enabled"
 msgstr "Insommningstimer är aktiverad"
 
-#: plugin/controllers/models/timers.py:657 plugin/controllers/models/timers.py:683
+#: plugin/controllers/models/timers.py:657
+#: plugin/controllers/models/timers.py:683
 msgid "Sleeptimer is disabled"
 msgstr "Insomningstimer är avaktiverad"
 
-#: plugin/controllers/models/timers.py:662 plugin/controllers/models/timers.py:689
+#: plugin/controllers/models/timers.py:662
+#: plugin/controllers/models/timers.py:689
 msgid "SleepTimer error"
 msgstr "Fel på insomningstimern"
 
@@ -518,18 +542,21 @@ msgstr "Fel på insomningstimern"
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr "FEL: Kan inte ställa in insomningstimer medan enheten är i viloläge"
 
-#: plugin/controllers/models/timers.py:706 plugin/controllers/models/timers.py:775
+#: plugin/controllers/models/timers.py:706
+#: plugin/controllers/models/timers.py:775
 #: plugin/controllers/models/timers.py:793
 msgid "Sleeptimer has been disabled"
 msgstr "Insomningstimer har avaktiverats"
 
-#: plugin/controllers/models/timers.py:712 plugin/controllers/models/timers.py:775
+#: plugin/controllers/models/timers.py:712
+#: plugin/controllers/models/timers.py:775
 #: plugin/controllers/models/timers.py:788
 #, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Insomningstimer är ställd på %d minuter"
 
-#: plugin/controllers/models/timers.py:717 plugin/controllers/models/timers.py:798
+#: plugin/controllers/models/timers.py:717
+#: plugin/controllers/models/timers.py:798
 msgid "SleepTimer Error"
 msgstr "Fel på insomningstimern"
 
@@ -551,21 +578,21 @@ msgstr "Saknar den obligatoriska parametern '%s'"
 msgid "The parameter '%s' can't be empty"
 msgstr "Parametern '%s' kan inte vara tom "
 
-#: plugin/controllers/web.py:103
+#: plugin/controllers/web.py:136
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Fel parameterformat 'set=%s'. Använd set=set15 "
 
-#: plugin/controllers/web.py:108
+#: plugin/controllers/web.py:141
 #, python-format
 msgid "Unknown Volume command %s"
 msgstr "Okänd volyminstruktion %s"
 
-#: plugin/controllers/web.py:143
+#: plugin/controllers/web.py:176
 msgid "The parameter 'command' must be a number"
 msgstr "Parametern 'command' måste vara numerisk"
 
-#: plugin/controllers/web.py:298
+#: plugin/controllers/web.py:334
 #, python-format
 msgid "type %s is not a number"
 msgstr "typ %s är inte en siffra"
@@ -718,7 +745,7 @@ msgstr "Lägg till Autotimer"
 msgid "Add Zap Timer"
 msgstr "Lägg till zaptimer"
 
-#: plugin/local.py:46 plugin/local.py:357
+#: plugin/local.py:46 plugin/local.py:355
 msgid "After Event"
 msgstr "Efter aktiviteten"
 
@@ -726,7 +753,7 @@ msgstr "Efter aktiviteten"
 msgid "AGC"
 msgstr "AGC"
 
-#: plugin/local.py:48 plugin/local.py:345
+#: plugin/local.py:48 plugin/local.py:343
 msgid "All"
 msgstr "Allt"
 
@@ -738,7 +765,7 @@ msgstr "Alla kanaler"
 msgid "Authors"
 msgstr "Applikationsutvecklare"
 
-#: plugin/local.py:51 plugin/local.py:344
+#: plugin/local.py:51 plugin/local.py:342
 msgid "Auto"
 msgstr "Automatiskt"
 
@@ -746,7 +773,7 @@ msgstr "Automatiskt"
 msgid "Back"
 msgstr "Tillbaka"
 
-#: plugin/local.py:53 plugin/local.py:352
+#: plugin/local.py:53 plugin/local.py:350
 msgid "Begin"
 msgstr "Börjar"
 
@@ -754,7 +781,7 @@ msgstr "Börjar"
 msgid "BER"
 msgstr "BER"
 
-#: plugin/local.py:55 plugin/local.py:307
+#: plugin/local.py:55 plugin/local.py:305
 msgid "Bouquets"
 msgstr "Favoritlistor"
 
@@ -790,7 +817,7 @@ msgstr "Kapacitet"
 msgid "Channel"
 msgstr "Kanal"
 
-#: plugin/local.py:64 plugin/local.py:305
+#: plugin/local.py:64 plugin/local.py:303
 msgid "Channels"
 msgstr "Kanaler"
 
@@ -831,1277 +858,1293 @@ msgstr "Djupt viloläge"
 msgid "Default"
 msgstr "Standardvärde"
 
-#: plugin/local.py:75
+#: plugin/local.py:75 plugin/local.py:317
+msgid "Delete"
+msgstr "Ta bort"
+
+#: plugin/local.py:76
 msgid "Delete Recording"
 msgstr "Ta bort inspelningen"
 
-#: plugin/local.py:76
+#: plugin/local.py:77
 msgid "Really delete the recording"
 msgstr "Vill du verkligen ta bort inspelningen"
 
-#: plugin/local.py:77
+#: plugin/local.py:78
 msgid "Delete Timer"
 msgstr "Ta bort timern"
 
-#: plugin/local.py:78
+#: plugin/local.py:79
 msgid "Really delete the timer"
 msgstr "Vill du verkligen ta bort timern"
 
-#: plugin/local.py:79 plugin/local.py:253
+#: plugin/local.py:80 plugin/local.py:251
 msgid "Description"
 msgstr "Beskrivning"
 
-#: plugin/local.py:81
+#: plugin/local.py:82
 msgid "Disable Timer"
 msgstr "Slå av timern"
 
-#: plugin/local.py:82
+#: plugin/local.py:83
 msgid "disabled"
 msgstr "avaktiverat"
 
-#: plugin/local.py:83
+#: plugin/local.py:84
 msgid "Distro"
 msgstr "Distribution av programvaran"
 
-#: plugin/local.py:84
+#: plugin/local.py:85
 msgid "Dolby"
 msgstr "Dolby"
 
-#: plugin/local.py:85
+#: plugin/local.py:86
 msgid "Done"
 msgstr "Utfört"
 
-#: plugin/local.py:86
+#: plugin/local.py:87
 msgid "Download"
 msgstr "Ladda ner"
 
-#: plugin/local.py:87
+#: plugin/local.py:88
 msgid "Download Playlist for"
 msgstr "Ladda ner spellista för"
 
-#: plugin/local.py:88
+#: plugin/local.py:89
 msgid "Drivers"
 msgstr "Version av drivrutinerna"
 
-#: plugin/local.py:89
+#: plugin/local.py:90
 msgid "Duration"
 msgstr "Varaktighet (i min)"
 
-#: plugin/local.py:90
+#: plugin/local.py:91
 msgid "Edit Timer"
 msgstr "Redigera timern"
 
-#: plugin/local.py:91
+#: plugin/local.py:92
 msgid "Enable Timer"
 msgstr "Aktivera timern"
 
-#: plugin/local.py:92
+#: plugin/local.py:93
 msgid "Start"
 msgstr "Börjar"
 
-#: plugin/local.py:93 plugin/local.py:353
+#: plugin/local.py:94 plugin/local.py:351
 msgid "End"
 msgstr "Slutar"
 
-#: plugin/local.py:94 plugin/local.py:252 plugin/local.py:350
+#: plugin/local.py:95 plugin/local.py:250 plugin/local.py:348
 msgid "Enabled"
 msgstr "Aktiverat"
 
-#: plugin/local.py:95
+#: plugin/local.py:96
 msgid "Encrypted"
 msgstr "Krypterat"
 
-#: plugin/local.py:96
+#: plugin/local.py:97
 msgid "EPG"
 msgstr "EPG"
 
-#: plugin/local.py:97
+#: plugin/local.py:98
 msgid "Epg Search"
 msgstr "Sökning i EPG"
 
-#: plugin/local.py:98
+#: plugin/local.py:99
 msgid "Include description"
 msgstr "Inkludera beskrivningen"
 
-#: plugin/local.py:99
+#: plugin/local.py:100
+msgid "Restrict to Bouquets"
+msgstr ""
+
+#: plugin/local.py:101
 msgid "Error"
 msgstr "Fel"
 
-#: plugin/local.py:100
+#: plugin/local.py:102
 msgid "Every"
 msgstr "Varje"
 
-#: plugin/local.py:101
+#: plugin/local.py:103
 msgid "Extras"
 msgstr "Extrafunktioner"
 
-#: plugin/local.py:102
+#: plugin/local.py:104
 msgid "finished"
 msgstr "slutfördes"
 
-#: plugin/local.py:103
+#: plugin/local.py:105
 msgid "Firmware version"
 msgstr "Firmware version"
 
-#: plugin/local.py:105
+#: plugin/local.py:107
 msgid "Free"
 msgstr "Ledigt"
 
-#: plugin/local.py:106
+#: plugin/local.py:108
 msgid "Free Memory"
 msgstr "Ledigt minne"
 
-#: plugin/local.py:107
+#: plugin/local.py:109
 msgid "Gateway"
 msgstr "Gateway"
 
-#: plugin/local.py:108
+#: plugin/local.py:110
 msgid "Grab Screenshot"
 msgstr "Ta en skärmdump"
 
-#: plugin/local.py:109
+#: plugin/local.py:111
 msgid "Gui version"
 msgstr "Gui version"
 
-#: plugin/local.py:110
+#: plugin/local.py:112
 msgid "Hide full remote"
 msgstr "Dölj stor fjärrkontroll"
 
-#: plugin/local.py:111
+#: plugin/local.py:113
 msgid "High Resolution"
 msgstr "Hög upplösning"
 
-#: plugin/local.py:112
+#: plugin/local.py:114
 msgid "Hard disk model"
 msgstr "Hårddiskmodell"
 
-#: plugin/local.py:113
+#: plugin/local.py:115
 msgid "Hour"
 msgstr "Timme"
 
-#: plugin/local.py:114
+#: plugin/local.py:116
 msgid "IPv4 address"
 msgstr "IPv4-adress"
 
-#: plugin/local.py:118
+#: plugin/local.py:120
 msgid "IPv6 address(es)"
 msgstr "IPv6 adress(er)"
 
-#: plugin/local.py:119
+#: plugin/local.py:121
 msgid "Infos"
 msgstr "Information"
 
-#: plugin/local.py:120
+#: plugin/local.py:122
 msgid "Instant Record"
 msgstr "Direktinspelning"
 
-#: plugin/local.py:121
+#: plugin/local.py:123
 msgid "Javascript Libraries"
 msgstr "Javascriptbibliotek"
 
-#: plugin/local.py:122
+#: plugin/local.py:124
 msgid "Just play"
 msgstr "Spela upp"
 
-#: plugin/local.py:123
+#: plugin/local.py:125
 msgid "Kernel"
 msgstr "Kernel"
 
-#: plugin/local.py:124
+#: plugin/local.py:126
 msgid "LICENSE"
 msgstr "LICENS"
 
-#: plugin/local.py:125
+#: plugin/local.py:127
 msgid "loading"
 msgstr "laddar"
 
-#: plugin/local.py:126
+#: plugin/local.py:128
 msgid "Location"
 msgstr "Plats"
 
-#: plugin/local.py:127
+#: plugin/local.py:129
 msgid "Locked"
 msgstr "Låst"
 
-#: plugin/local.py:128
+#: plugin/local.py:130
 msgid "MAC address"
 msgstr "MAC-adress"
 
-#: plugin/local.py:129
+#: plugin/local.py:131
 msgid "Main"
 msgstr "Huvudfunktioner"
 
-#: plugin/local.py:130
+#: plugin/local.py:132
 msgid "Minute"
 msgstr "Minut"
 
-#: plugin/local.py:131
+#: plugin/local.py:133
 msgid "Model"
 msgstr "Modell"
 
-#: plugin/local.py:132
+#: plugin/local.py:134
 msgid "Movielist"
 msgstr "Filmlista"
 
-#: plugin/local.py:133
+#: plugin/local.py:135
 msgid "Movies"
 msgstr "Filmer"
 
-#: plugin/local.py:134
+#: plugin/local.py:136
 msgid "MultiEPG"
 msgstr "MultiEPG"
 
-#: plugin/local.py:135
+#: plugin/local.py:137
 msgid "Name"
 msgstr "Namn"
 
-#: plugin/local.py:136
+#: plugin/local.py:138
 msgid "Namespace"
 msgstr "Namnrymd"
 
-#: plugin/local.py:137
+#: plugin/local.py:139
 msgid "Network Interface"
 msgstr "Nätverksgränssnitt"
 
-#: plugin/local.py:138
+#: plugin/local.py:140
 msgid "no description available"
 msgstr "beskrivning saknas"
 
-#: plugin/local.py:139
+#: plugin/local.py:141
 msgid "Sorry this page is not yet implemented"
 msgstr "Tyvärr är sidan inte implementerad ännu"
 
-#: plugin/local.py:140
+#: plugin/local.py:142
 msgid "Nothing"
 msgstr "Inget"
 
-#: plugin/local.py:141
+#: plugin/local.py:143
 msgid "Nothing playing."
 msgstr "Inget spelas upp"
 
-#: plugin/local.py:142
+#: plugin/local.py:144
 msgid "Now"
 msgstr "Nu"
 
-#: plugin/local.py:143
+#: plugin/local.py:145
 msgid "System OE"
 msgstr "OE system"
 
-#: plugin/local.py:144
+#: plugin/local.py:146
 msgid "On"
 msgstr "På"
 
 # The translation could have been sharper but as it has to fit in it’s frame this may be an acceptable compromise. I would have prefered: "Open Source webbgränssnitt för Linuxbaserade digitalboxar"...
-#: plugin/local.py:145
+#: plugin/local.py:147
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Open Source webbstöd för Linux-set-top-boxar"
 
-#: plugin/local.py:146 plugin/plugin.py:119
+#: plugin/local.py:148 plugin/plugin.py:119
 msgid "Show box name in header"
 msgstr "Visa digitalboxens namn i rubriken"
 
-#: plugin/local.py:147 plugin/plugin.py:121
+#: plugin/local.py:149 plugin/plugin.py:121
 msgid "Use custom box name"
 msgstr "Använd anpassat boxnamn"
 
-#: plugin/local.py:148 plugin/plugin.py:123
+#: plugin/local.py:150 plugin/plugin.py:123
 msgid "Custom box name"
 msgstr "Anpassat boxnamn"
 
-#: plugin/local.py:149
+#: plugin/local.py:151
 msgid "OSD"
 msgstr "OSD"
 
-#: plugin/local.py:150
+#: plugin/local.py:152
 msgid "Open in new window"
 msgstr "Öppna i ett nytt fönster"
 
-#: plugin/local.py:151
+#: plugin/local.py:153
 msgid "Playback"
 msgstr "Uppspelning"
 
-#: plugin/local.py:152
+#: plugin/local.py:154
 msgid "Playlist"
 msgstr "Spellista"
 
-#: plugin/local.py:153
+#: plugin/local.py:155
 msgid "Power Control"
 msgstr "Strömbrytare"
 
-#: plugin/local.py:154
+#: plugin/local.py:156
 msgid "Provider"
 msgstr "Leverantör"
 
-#: plugin/local.py:155
+#: plugin/local.py:157
 msgid "Providers"
 msgstr "Leverantörer"
 
-#: plugin/local.py:156
+#: plugin/local.py:158
 msgid "Radio"
 msgstr "Radio"
 
-#: plugin/local.py:157
+#: plugin/local.py:159
 msgid "Reboot Box"
 msgstr "Starta om boxen"
 
-#: plugin/local.py:158
+#: plugin/local.py:160
 msgid "Recording Status"
 msgstr "Inspelning pågår"
 
-#: plugin/local.py:159 plugin/local.py:342
+#: plugin/local.py:161 plugin/local.py:340
 msgid "Refresh"
 msgstr "Uppdatera"
 
-#: plugin/local.py:160
+#: plugin/local.py:162
 msgid "Refresh automatically every"
 msgstr "Uppdatera automatiskt varje"
 
-#: plugin/local.py:161
+#: plugin/local.py:163
 msgid "Refresh Timer"
 msgstr "Uppdatera listan"
 
-#: plugin/local.py:162
+#: plugin/local.py:164
 msgid "Remote"
 msgstr "Fjärrkontroll"
 
-#: plugin/local.py:163
+#: plugin/local.py:165
 msgid "Rename Recording"
 msgstr "Byt namn på inspelningen"
 
-#: plugin/local.py:164
+#: plugin/local.py:166
 msgid "Really rename the recording"
 msgstr "Skall namnet på inspelningen verkligen bytas"
 
-#: plugin/local.py:165
+#: plugin/local.py:167
 msgid "Repeated"
 msgstr "Repeterat"
 
 # Have to use "GUI" because of limited space. I would prefere "Användargränssnitt" if space were without limits.
-#: plugin/local.py:166
+#: plugin/local.py:168
 msgid "Restart GUI"
 msgstr "Starta om GUI"
 
-#: plugin/local.py:167
+#: plugin/local.py:169
 msgid "running"
 msgstr "pågår"
 
-#: plugin/local.py:168
+#: plugin/local.py:170
 msgid "Safe mode"
 msgstr "Felsäkert läge"
 
-#: plugin/local.py:169
+#: plugin/local.py:171
 msgid "Satellites"
 msgstr "Satelliter"
 
-#: plugin/local.py:170
+#: plugin/local.py:172
 msgid "Satfinder"
 msgstr "Satfinder"
 
-#: plugin/local.py:171 plugin/local.py:321 plugin/local.py:373 plugin/plugin.py:102
+#: plugin/local.py:173 plugin/local.py:319 plugin/local.py:371
+#: plugin/plugin.py:102
 msgid "Save"
 msgstr "Spara"
 
-#: plugin/local.py:172
+#: plugin/local.py:174
 msgid "Screenshot"
 msgstr "Skärmdump"
 
-#: plugin/local.py:173 plugin/local.py:379
+#: plugin/local.py:175 plugin/local.py:377
 msgid "Search"
 msgstr "Sök"
 
-#: plugin/local.py:174
+#: plugin/local.py:176
 msgid "Search IMDb"
 msgstr "Sök i IMDb"
 
-#: plugin/local.py:175
+#: plugin/local.py:177
 msgid "Search KinoPoisk"
 msgstr "Sök i KinoPoisk"
 
-#: plugin/local.py:176
+#: plugin/local.py:178
 msgid "seconds"
 msgstr "sekunder"
 
-#: plugin/local.py:177
+#: plugin/local.py:179
 msgid "Send Message"
 msgstr "Skicka meddelandet"
 
-#: plugin/local.py:178
+#: plugin/local.py:180
 msgid "Waiting for answer ..."
 msgstr "Väntar på svar..."
 
-#: plugin/local.py:179
+#: plugin/local.py:181
 msgid "Send a Message"
 msgstr "Skicka ett meddelande"
 
 # Översätts ofta till Leverantör i stället.
-#: plugin/local.py:180
+#: plugin/local.py:182
 msgid "Service"
 msgstr "Distributör"
 
-#: plugin/local.py:182
+#: plugin/local.py:184
 msgid "Bouquet Editor"
 msgstr "Redigerare för favoritlistor"
 
-#: plugin/local.py:183
+#: plugin/local.py:185
 msgid "(Shift + Click for Long Press)"
 msgstr "(shift + klick ger lång knapptryckning)"
 
-#: plugin/local.py:184
+#: plugin/local.py:186
 msgid "Show Full OpenWebif"
 msgstr "Visa fullständiga OpenWebif"
 
-#: plugin/local.py:185
+#: plugin/local.py:187
 msgid "Show full remote"
 msgstr "Visa stor fjärrkontroll"
 
-#: plugin/local.py:186
+#: plugin/local.py:188
 msgid "Show EPG for"
 msgstr "Visa EPG för"
 
-#: plugin/local.py:187
+#: plugin/local.py:189
 msgid "Shutdown"
 msgstr "Stäng av"
 
-#: plugin/local.py:188
+#: plugin/local.py:190
 msgid "Site and sources"
 msgstr "Webbplats och källor"
 
-#: plugin/local.py:189
+#: plugin/local.py:191
 msgid "SNR"
 msgstr "SNR"
 
-#: plugin/local.py:190
+#: plugin/local.py:192
 msgid "Software"
 msgstr "Programvara"
 
-#: plugin/local.py:191
+#: plugin/local.py:193
 msgid "Standby"
 msgstr "Viloläge"
 
-#: plugin/local.py:192
+#: plugin/local.py:194
 msgid "Standby Toggle"
 msgstr "På/Viloläge"
 
-#: plugin/local.py:193
+#: plugin/local.py:195
 msgid "Start time is after end time"
 msgstr "Starttiden är senare än sluttiden"
 
-#: plugin/local.py:194
+#: plugin/local.py:196
 msgid "Start Instant Record"
 msgstr "Starta direktinspelning"
 
-#: plugin/local.py:195
+#: plugin/local.py:197
 msgid "Stream"
 msgstr "Strömma"
 
-#: plugin/local.py:196
+#: plugin/local.py:198
 msgid "Subnet mask"
 msgstr "Subnet mask"
 
-#: plugin/local.py:197
+#: plugin/local.py:199
 msgid "Subservices"
 msgstr "Underleverantörer"
 
-#: plugin/local.py:198 plugin/local.py:303
+#: plugin/local.py:200 plugin/local.py:301
 msgid "Tags"
 msgstr "Etiketter"
 
-#: plugin/local.py:199
+#: plugin/local.py:201
 msgid "Teletext"
 msgstr "Text-TV"
 
-#: plugin/local.py:200
+#: plugin/local.py:202
 msgid "Television"
 msgstr "Television"
 
-#: plugin/local.py:201
+#: plugin/local.py:203
 msgid "Template Engine"
 msgstr "Webbutvecklingsverktyg"
 
-#: plugin/local.py:202
+#: plugin/local.py:204
 msgid "Text"
 msgstr "Text"
 
-#: plugin/local.py:203
+#: plugin/local.py:205
 msgid "Time"
 msgstr "Tid"
 
-#: plugin/local.py:204
+#: plugin/local.py:206
 msgid "Timeout"
 msgstr "Timeout"
 
-#: plugin/local.py:205
+#: plugin/local.py:207
 msgid "Timer added"
 msgstr "Timmer lades till"
 
-#: plugin/local.py:206
+#: plugin/local.py:208
 msgid "Timerlist"
 msgstr "Timerlista"
 
-#: plugin/local.py:207
+#: plugin/local.py:209
 msgid "New Name"
 msgstr "Nytt namn"
 
-#: plugin/local.py:208
+#: plugin/local.py:210
 msgid "Autotimer Preview"
 msgstr "AutoTimer förhandsvisning"
 
-#: plugin/local.py:209
+#: plugin/local.py:211
 msgid "Timer"
 msgstr "Timer"
 
 # There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
-#: plugin/local.py:210 plugin/local.py:324
+#: plugin/local.py:212 plugin/local.py:322
 msgid "Timers"
 msgstr "Timer"
 
-#: plugin/local.py:211
+#: plugin/local.py:213
 msgid "Title"
 msgstr "Titel"
 
-#: plugin/local.py:212
+#: plugin/local.py:214
 msgid "Main Memory"
 msgstr "Totalt minne"
 
-#: plugin/local.py:213
+#: plugin/local.py:215
 msgid "transcoded"
 msgstr "omkodad"
 
-#: plugin/local.py:214
+#: plugin/local.py:216
 msgid "Transcode"
 msgstr "Koda om"
 
-#: plugin/local.py:215
+#: plugin/local.py:217
 msgid "Tuner Bit Error Rate BER"
 msgstr "Mottagarens bitfelfrekvens BER"
 
-#: plugin/local.py:216
+#: plugin/local.py:218
 msgid "Tuner Number"
 msgstr "Mottagare nummer"
 
-#: plugin/local.py:217
+#: plugin/local.py:219
 msgid "Tuner Signal"
 msgstr "Mottagarens signal"
 
-#: plugin/local.py:218
+#: plugin/local.py:220
 msgid "Tuner Signal Quality SNR"
 msgstr "Mottagarens signalkvalitet SNR"
 
-#: plugin/local.py:219
+#: plugin/local.py:221
 msgid "Tuner Signal Quality SNR_DB"
 msgstr "Mottagarens signalkvalitet SNR_DB"
 
-#: plugin/local.py:220
+#: plugin/local.py:222
 msgid "Tuner Signal Power AGC"
 msgstr "Mottagarens signalstyrka AGC"
 
-#: plugin/local.py:221
+#: plugin/local.py:223
 msgid "Tuner Type"
 msgstr "Mottagartyp"
 
-#: plugin/local.py:222
+#: plugin/local.py:224
 msgid "Tuners"
 msgstr "Mottagare"
 
-#: plugin/local.py:223
+#: plugin/local.py:225
 msgid "TV"
 msgstr "TV"
 
-#: plugin/local.py:224
+#: plugin/local.py:226
 msgid "TV Multi EPG"
 msgstr "TV Multi EPG"
 
-#: plugin/local.py:225
+#: plugin/local.py:227
 msgid "Type"
 msgstr "Typ"
 
-#: plugin/local.py:226
+#: plugin/local.py:228
 msgid "Upcoming Events"
 msgstr "Kommande aktiviteter"
 
-#: plugin/local.py:227
+#: plugin/local.py:229
 msgid "Version"
 msgstr "Version"
 
-#: plugin/local.py:228
+#: plugin/local.py:230
 msgid "Video"
 msgstr "Video"
 
-#: plugin/local.py:229
+#: plugin/local.py:231
 msgid "Video Height"
 msgstr "Bildhöjd"
 
-#: plugin/local.py:230
+#: plugin/local.py:232
 msgid "Video Wide"
 msgstr "Bredbild"
 
-#: plugin/local.py:231
+#: plugin/local.py:233
 msgid "Video Width"
 msgstr "Bildbredd"
 
-#: plugin/local.py:232
+#: plugin/local.py:234
 msgid "VPS"
 msgstr "VPS"
 
-#: plugin/local.py:233
+#: plugin/local.py:235
 msgid "Volume"
 msgstr "Volym"
 
-#: plugin/local.py:234
+#: plugin/local.py:236
 msgid "Volume Control"
 msgstr "Volymkontroll"
 
-#: plugin/local.py:235
+#: plugin/local.py:237
 msgid "waiting"
 msgstr "väntar"
 
-#: plugin/local.py:236
+#: plugin/local.py:238
 msgid "Warning"
 msgstr "Varning"
 
-#: plugin/local.py:237
+#: plugin/local.py:239
 msgid "Yes/No"
 msgstr "Ja/Nej"
 
-#: plugin/local.py:238
+#: plugin/local.py:240
 msgid "Zap"
 msgstr "Zappa"
 
-#: plugin/local.py:239
+#: plugin/local.py:241
 msgid "zap before Stream"
 msgstr "zappa före strömning"
 
-#: plugin/local.py:240
+#: plugin/local.py:242
 msgid "Zap to"
 msgstr "Zappa till"
 
-#: plugin/local.py:241
+#: plugin/local.py:243
 msgid "Zapped to"
 msgstr "Zappade till"
 
-#: plugin/local.py:242
+#: plugin/local.py:244
 msgid "Translation to Spanish"
 msgstr "Översättning till spanska"
 
-#: plugin/local.py:248
+#: plugin/local.py:245
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 3 "
+"as published by the Free Software Foundation."
+msgstr ""
+
+#: plugin/local.py:246
 msgid "Root"
 msgstr "Root"
 
-#: plugin/local.py:250
+#: plugin/local.py:248
 msgid "AutoTimer List"
 msgstr "AutoTimer-lista"
 
-#: plugin/local.py:251
+#: plugin/local.py:249
 msgid "AutoTimer Edit"
 msgstr "Redigera AutoTimer"
 
-#: plugin/local.py:254
+#: plugin/local.py:252
 msgid "Match title"
 msgstr "Matcha titeln"
 
-#: plugin/local.py:255
+#: plugin/local.py:253
 msgid "EPG encoding"
 msgstr "EPG teckenkodning"
 
-#: plugin/local.py:256
+#: plugin/local.py:254
 msgid "Search type"
 msgstr "Typ av sökning"
 
-#: plugin/local.py:257
+#: plugin/local.py:255
 msgid "partial match"
 msgstr "ofullständig matchning"
 
-#: plugin/local.py:258
+#: plugin/local.py:256
 msgid "exact match"
 msgstr "exakt matchning"
 
-#: plugin/local.py:259
+#: plugin/local.py:257
 msgid "description match"
 msgstr "beskrivningen matchar"
 
-#: plugin/local.py:260
+#: plugin/local.py:258
 msgid "title or description match"
 msgstr "titeln eller beskrivningen  matchar"
 
-#: plugin/local.py:261
+#: plugin/local.py:259
 msgid "title or short description match"
 msgstr "titeln eller kortfattade beskrivningen matchar"
 
-#: plugin/local.py:262
+#: plugin/local.py:260
 msgid "short description match"
 msgstr "kortfattade beskrivningen matchar"
 
-#: plugin/local.py:263
+#: plugin/local.py:261
 msgid "start match"
 msgstr "titelns inledning matchar"
 
-#: plugin/local.py:264
+#: plugin/local.py:262
 msgid "Search strictness"
 msgstr "Söknoggrannhet"
 
-#: plugin/local.py:265
+#: plugin/local.py:263
 msgid "case-sensitive search"
 msgstr "Sökning som gör skillnad på gemener/VERSALER"
 
-#: plugin/local.py:266
+#: plugin/local.py:264
 msgid "case-insensitive search"
 msgstr "Sökning som inte gör skillnad på gemener/VERSALER"
 
-#: plugin/local.py:267
+#: plugin/local.py:265
 msgid "Timer type"
 msgstr "Timertyp"
 
-#: plugin/local.py:268
+#: plugin/local.py:266
 msgid "record"
 msgstr "spela in"
 
-#: plugin/local.py:269
+#: plugin/local.py:267
 msgid "zap"
 msgstr "zappa"
 
 # One extra space inserted in front for better readability in context.
-#: plugin/local.py:270
+#: plugin/local.py:268
 msgid "Override found with alternative service"
 msgstr " Använd vid behov samma kanal från en alternativ distributör"
 
-#: plugin/local.py:271
+#: plugin/local.py:269
 msgid "Only match during timespan"
 msgstr "Enbart matchning under tidsintervallet "
 
-#: plugin/local.py:272
+#: plugin/local.py:270
 msgid "Begin of timespan"
 msgstr "Perioden börjar"
 
-#: plugin/local.py:273
+#: plugin/local.py:271
 msgid "End of Timespan"
 msgstr "Perioden slutar"
 
-#: plugin/local.py:274
+#: plugin/local.py:272
 msgid "Restrict to events on certain dates"
 msgstr "Tider skall bokas endast vissa datum"
 
-#: plugin/local.py:275
+#: plugin/local.py:273
 msgid "Not after"
 msgstr "Inte efter"
 
-#: plugin/local.py:276
+#: plugin/local.py:274
 msgid "Not before"
 msgstr "Inte före"
 
-#: plugin/local.py:277
+#: plugin/local.py:275
 msgid "Custom offset"
 msgstr "Anpassad extra tidsmarginal"
 
-#: plugin/local.py:278
+#: plugin/local.py:276
 msgid "Offset before recording (in m)"
 msgstr "Marginal före inspelningen (i min)"
 
-#: plugin/local.py:279
+#: plugin/local.py:277
 msgid "Offset after recording (in m)"
 msgstr "Marginal efter inspelningen (i min)"
 
-#: plugin/local.py:280
+#: plugin/local.py:278
 msgid "Set maximum duration"
 msgstr "Ställ in maximal varaktighet (i min)"
 
-#: plugin/local.py:281
+#: plugin/local.py:279
 msgid "After event"
 msgstr "Välj hur aktiveteten skall slutföras"
 
-#: plugin/local.py:282
+#: plugin/local.py:280
 msgid "standard"
 msgstr "standard"
 
-#: plugin/local.py:283
+#: plugin/local.py:281
 msgid "auto"
 msgstr "automatisk"
 
-#: plugin/local.py:284
+#: plugin/local.py:282
 msgid "do nothing"
 msgstr "gör inget"
 
-#: plugin/local.py:285
+#: plugin/local.py:283
 msgid "go to standby"
 msgstr "inta viloläge"
 
-#: plugin/local.py:286
+#: plugin/local.py:284
 msgid "go to deep standby"
 msgstr "inta djupt viloläge"
 
-#: plugin/local.py:287
+#: plugin/local.py:285
 msgid "Execute \"after event\" during timespan"
 msgstr "Begränsa valt avslutsalternativ till att gälla tidsintervallet"
 
-#: plugin/local.py:288
+#: plugin/local.py:286
 msgid "Begin of \"after event\" timespan"
 msgstr "Början av begränsningsperioden (tt:mm)"
 
-#: plugin/local.py:289
+#: plugin/local.py:287
 msgid "End of \"after event\" timespan"
 msgstr "Slutet på begränsningsperioden (tt:mm)"
 
-#: plugin/local.py:290
+#: plugin/local.py:288
 msgid "Record a maximum of x times"
 msgstr "Spela maximalt in vid x tillfällen"
 
-#: plugin/local.py:291
+#: plugin/local.py:289
 msgid "Amount of recordings left"
 msgstr "Antal inspelningar kvar"
 
-#: plugin/local.py:292 plugin/local.py:363
+#: plugin/local.py:290 plugin/local.py:361
 msgid "Never"
 msgstr "Aldrig"
 
-#: plugin/local.py:293
+#: plugin/local.py:291
 msgid "Monthly"
 msgstr "Månadsvis"
 
-#: plugin/local.py:294
+#: plugin/local.py:292
 msgid "Weekly (Sunday)"
 msgstr "Veckovis (söndag)"
 
-#: plugin/local.py:295
+#: plugin/local.py:293
 msgid "Weekly (Monday)"
 msgstr "Veckovis (måndag)"
 
-#: plugin/local.py:296
+#: plugin/local.py:294
 msgid "Reset count"
 msgstr "Återställ antalet"
 
-#: plugin/local.py:297
+#: plugin/local.py:295
 msgid "Require description to be unique"
 msgstr "Kräv att beskrivningen är unik"
 
-#: plugin/local.py:298
+#: plugin/local.py:296
 msgid "No"
 msgstr "Nej"
 
-#: plugin/local.py:299
+#: plugin/local.py:297
 msgid "On same service"
 msgstr "Hos samma distributör"
 
-#: plugin/local.py:300
+#: plugin/local.py:298
 msgid "On any service"
 msgstr "Hos valfri distributör"
 
-#: plugin/local.py:301
+#: plugin/local.py:299
 msgid "Any service/recording"
 msgstr "Valfri distributör/inspelning"
 
-#: plugin/local.py:302
+#: plugin/local.py:300
 msgid "Use a custom location"
 msgstr "Använd en anpassad lagringsplats"
 
-#: plugin/local.py:304
+#: plugin/local.py:302
 msgid "select Tags"
 msgstr "Välj etiketter"
 
-#: plugin/local.py:306
+#: plugin/local.py:304
 msgid "select Channels"
 msgstr "Välj kanaler"
 
-#: plugin/local.py:308
+#: plugin/local.py:306
 msgid "select Bouquets"
 msgstr "Välj favoritlistor"
 
-#: plugin/local.py:309
+#: plugin/local.py:307
 msgid "Enable Filtering"
 msgstr "Slå på filtrering"
 
-#: plugin/local.py:310
+#: plugin/local.py:308
 msgid "Include"
 msgstr "Inkludera"
 
-#: plugin/local.py:311
+#: plugin/local.py:309
 msgid "Exclude"
 msgstr "Undanta"
 
-#: plugin/local.py:312
+#: plugin/local.py:310
 msgid "in Title"
 msgstr "i titeln"
 
-#: plugin/local.py:313
+#: plugin/local.py:311
 msgid "in Shortdescription"
 msgstr "i kortfattade beskrivningen"
 
-#: plugin/local.py:314
+#: plugin/local.py:312
 msgid "in Description"
 msgstr "i beskrivningen"
 
-#: plugin/local.py:315
+#: plugin/local.py:313
 msgid "on Weekday"
 msgstr "på veckodagar"
 
-#: plugin/local.py:316
+#: plugin/local.py:314
 msgid "Weekend"
 msgstr "Veckoslut"
 
-#: plugin/local.py:317
+#: plugin/local.py:315
 msgid "Weekday"
 msgstr "Veckodagar"
 
-#: plugin/local.py:318
+#: plugin/local.py:316
 msgid "Add"
 msgstr "Lägg till"
 
-#: plugin/local.py:319
-msgid "Delete"
-msgstr "Ta bort"
-
-#: plugin/local.py:320 plugin/local.py:372 plugin/local.py:380
+#: plugin/local.py:318 plugin/local.py:370 plugin/local.py:378
 msgid "Reload"
 msgstr "Ladda om"
 
-#: plugin/local.py:322
+#: plugin/local.py:320
 msgid "Parse"
 msgstr "Analysera"
 
-#: plugin/local.py:323
+#: plugin/local.py:321
 msgid "Simulate"
 msgstr "Simulera"
 
-#: plugin/local.py:326
+#: plugin/local.py:324
 msgid "Do you really want to delete the AT"
 msgstr "Vill du verkligen ta bort denna AutoTimer"
 
-#: plugin/local.py:327
+#: plugin/local.py:325
 msgid "Label series"
 msgstr "Lägg till avsnittsinformation för TV-serier"
 
-#: plugin/local.py:329
+#: plugin/local.py:327
 msgid "AutoTimer Settings"
 msgstr "Inställningar för AutoTimer"
 
-#: plugin/local.py:330
+#: plugin/local.py:328
 msgid "AutoPoll"
 msgstr "Automatiskt bevakning"
 
-#: plugin/local.py:331
+#: plugin/local.py:329
 msgid "Interval (in h)"
 msgstr "Intervall (i tim)"
 
-#: plugin/local.py:332
+#: plugin/local.py:330
 msgid "Max Days"
 msgstr "Max dagar framåt"
 
-#: plugin/local.py:333
+#: plugin/local.py:331
 msgid "Try Guessing"
 msgstr "Försök att gissa"
 
-#: plugin/local.py:334
+#: plugin/local.py:332
 msgid "Fastscan"
 msgstr "Snabb avsökning"
 
-#: plugin/local.py:335
+#: plugin/local.py:333
 msgid "Show in Extensionsmenu"
 msgstr "Visa i utvidgningsmenyn"
 
-#: plugin/local.py:336
+#: plugin/local.py:334
 msgid "Disabled on Conflict"
 msgstr "Avaktiverad vid konflikt"
 
-#: plugin/local.py:337
+#: plugin/local.py:335
 msgid "Add Similar on Conflict"
 msgstr "Lägg till liknande vid konflikt"
 
-#: plugin/local.py:338
+#: plugin/local.py:336
 msgid "Notify if Conflict"
 msgstr "Meddela vid konflikt"
 
-#: plugin/local.py:339
+#: plugin/local.py:337
 msgid "Notify if Similar"
 msgstr "Meddela om liknande finns"
 
-#: plugin/local.py:340
+#: plugin/local.py:338
 msgid "Add Autotimer to Tags"
 msgstr "Lägg till \"Autotimer\" som etikett"
 
-#: plugin/local.py:341
+#: plugin/local.py:339
 msgid "Add Name to Tags"
 msgstr "Lägg till \"Beskrivning\" som etikett"
 
-#: plugin/local.py:343
+#: plugin/local.py:341
 msgid "None"
 msgstr "Inga"
 
-#: plugin/local.py:346
+#: plugin/local.py:344
 msgid "Editor"
 msgstr "Redigerare"
 
-#: plugin/local.py:347
+#: plugin/local.py:345
 msgid "Plain"
 msgstr "Normalt formulär"
 
-#: plugin/local.py:348
+#: plugin/local.py:346
 msgid "Wizzard"
 msgstr "Använd guide"
 
-#: plugin/local.py:351
+#: plugin/local.py:349
 msgid "Enable Messages"
 msgstr "Aktivera statusmeddelanden"
 
-#: plugin/local.py:354
+#: plugin/local.py:352
 msgid "Delay Standby"
 msgstr "Fördröj uppdateringen om mottagaren inte är i viloläge (min)"
 
-#: plugin/local.py:355
+#: plugin/local.py:353
 msgid "Interval (min.)"
 msgstr "Tid för att hålla servicekanalen öppen (min)"
 
-#: plugin/local.py:356
+#: plugin/local.py:354
 msgid "Interval (sec.)"
 msgstr "Tid för att hålla servicekanalen öppen (sek)"
 
-#: plugin/local.py:358
+#: plugin/local.py:356
 msgid "Force"
 msgstr "Tvinga fram en uppdatering"
 
-#: plugin/local.py:359
+#: plugin/local.py:357
 msgid "Wakeup"
 msgstr "Vakna från djupt viloläge för EPG-uppdateringar"
 
-#: plugin/local.py:360
+#: plugin/local.py:358
 msgid "Inherit Autotimer"
 msgstr "Överför distributörer från Autotimer"
 
-#: plugin/local.py:361
+#: plugin/local.py:359
 msgid "Parse Autotimer"
 msgstr "Starta en Autotimeranalys efter EPG uppdateringar"
 
-#: plugin/local.py:362
+#: plugin/local.py:360
 msgid "Always"
 msgstr "Alltid"
 
-#: plugin/local.py:364
+#: plugin/local.py:362
 msgid "Background only"
 msgstr "Uppdateringen sker i bakgrunden"
 
-#: plugin/local.py:365
+#: plugin/local.py:363
 msgid "Ask, default Yes"
 msgstr "Fråga, med standardsvar Ja"
 
-#: plugin/local.py:366
+#: plugin/local.py:364
 msgid "Ask, default No"
 msgstr "Fråga, med standardsvar Nej"
 
-#: plugin/local.py:367
+#: plugin/local.py:365
 msgid "Method"
 msgstr "Uppdatera EPG genom att använda"
 
-#: plugin/local.py:368
+#: plugin/local.py:366
 msgid "Visibly"
 msgstr "Synlig"
 
-#: plugin/local.py:369
+#: plugin/local.py:367
 msgid "Picture in Picture"
 msgstr "Bild i Bild"
 
-#: plugin/local.py:370
+#: plugin/local.py:368
 msgid "Picture in Picture (hidden)"
 msgstr "Bild i Bild (dold)"
 
-#: plugin/local.py:371
+#: plugin/local.py:369
 msgid "Fake Recording"
 msgstr "Simulerad inspelning"
 
-#: plugin/local.py:374
+#: plugin/local.py:372
 msgid "Refresh now"
 msgstr "Uppdatera nu"
 
-#: plugin/local.py:376
+#: plugin/local.py:374
 msgid "Add Provider as new Bouquet"
 msgstr "Lägg till leverantören som en ny favoritlista"
 
-#: plugin/local.py:377
+#: plugin/local.py:375
 msgid "Add channel(s) to Bouquet"
 msgstr "Lägg till kanal(er) till en favoritlista"
 
-#: plugin/local.py:378
+#: plugin/local.py:376
 msgid "Add channel(s) as alternate"
 msgstr "Lägg till kanalen som alternativ"
 
-#: plugin/local.py:381
+#: plugin/local.py:379
 msgid "Export"
 msgstr "Exportera"
 
-#: plugin/local.py:382
+#: plugin/local.py:380
 msgid "Import"
 msgstr "Importera"
 
-#: plugin/local.py:383
+#: plugin/local.py:381
 msgid "Add Bouquet"
 msgstr "Lägg till favoritlista"
 
-#: plugin/local.py:384
+#: plugin/local.py:382
 msgid "Rename Bouquet"
 msgstr "Byt namn på favoritlista"
 
-#: plugin/local.py:385
+#: plugin/local.py:383
 msgid "Delete Bouquet"
 msgstr "Ta bort favoritlista"
 
-#: plugin/local.py:386
+#: plugin/local.py:384
 msgid "Add Marker"
 msgstr "Lägg till bokmärke"
 
-#: plugin/local.py:387
+#: plugin/local.py:385
+msgid "Add Spacer"
+msgstr ""
+
+#: plugin/local.py:386
 msgid "Rename"
 msgstr "Byt namn"
 
+#: plugin/local.py:387
+msgid "Do you really want to delete the selected item(s)"
+msgstr ""
+
 #: plugin/local.py:388
-msgid "Delete Channel(s)"
-msgstr "Ta bort kanalen (kanalerna)"
-
-#: plugin/local.py:389
-msgid "Do you really want to delete the channel(s)"
-msgstr "Vill du verkligen ta bort kanalerna"
-
-#: plugin/local.py:390
 msgid "Do you really want to delete the bouquet"
 msgstr "Vill du verkligen ta bort favoritlistan"
 
-#: plugin/local.py:391
+#: plugin/local.py:389
 msgid "Name of the Bouquet"
 msgstr "Favoritlistans namn"
 
-#: plugin/local.py:392
+#: plugin/local.py:390
 msgid "Name of the Marker"
 msgstr "Bokmärkets namn"
 
-#: plugin/local.py:393
+#: plugin/local.py:391
 msgid "Enter new name for the bouquet"
 msgstr "Ange ett nytt namn för favoritlistan"
 
-#: plugin/local.py:394
+#: plugin/local.py:392
 msgid "Enter new name for the marker"
 msgstr "Ange ett nytt namn för bokmärket"
 
-#: plugin/local.py:395
+#: plugin/local.py:393
 msgid "Please enter filename"
 msgstr "Vänligen ange ett filnamn"
 
-#: plugin/local.py:396
+#: plugin/local.py:394
 msgid "Do you really want to restore from file"
 msgstr "Vill du verkligen återställa från en fil"
 
 # Lämnas oöversatt t.v.
-#: plugin/local.py:398
+#: plugin/local.py:396
 msgid "via"
 msgstr ""
 
-#: plugin/local.py:399
+#: plugin/local.py:397
 msgid "Record+ZAP"
 msgstr "Spela in & zappa"
 
 # Lämnas oöversatt t.v.
-#: plugin/local.py:400
+#: plugin/local.py:398
 msgid "Pmtpid"
 msgstr ""
 
 # Lämnas oöversatt t.v.
-#: plugin/local.py:401
+#: plugin/local.py:399
 msgid "Apid"
 msgstr ""
 
 # Lämnas oöversatt t.v.
-#: plugin/local.py:402
+#: plugin/local.py:400
 msgid "Vpid"
 msgstr ""
 
 # Lämnas oöversatt t.v.
-#: plugin/local.py:403
+#: plugin/local.py:401
 msgid "Pcrpid"
 msgstr ""
 
 # Lämnas oöversatt t.v.
-#: plugin/local.py:404
+#: plugin/local.py:402
 msgid "Tsid"
 msgstr ""
 
 # Lämnas oöversatt t.v.
-#: plugin/local.py:405
+#: plugin/local.py:403
 msgid "Onid"
 msgstr ""
 
 # Lämnas oöversatt t.v.
-#: plugin/local.py:406
+#: plugin/local.py:404
 msgid "Sid"
 msgstr ""
 
 # Lämnas oöversatt t.v.
-#: plugin/local.py:407
+#: plugin/local.py:405
 msgid "Sref"
 msgstr ""
 
-#: plugin/local.py:408
+#: plugin/local.py:406
 msgid "Orbital Position"
 msgstr "Omloppsbanans position"
 
-#: plugin/local.py:410
+#: plugin/local.py:408
 msgid "error! Loading Page"
 msgstr "Fel! Laddar sidan"
 
-#: plugin/local.py:411
+#: plugin/local.py:409
 msgid "Timer Added"
 msgstr "Timer tillagd"
 
-#: plugin/local.py:412
+#: plugin/local.py:410
 msgid "Event not found"
 msgstr "Aktiviteten hittades inte"
 
-#: plugin/local.py:413
+#: plugin/local.py:411
 msgid "Show Picon in channel list"
 msgstr "Visa programikon i kanallistan"
 
-#: plugin/local.py:415
+#: plugin/local.py:413
 msgid "OpenWebif Browser Settings"
 msgstr "OpenWebifs inställningar för webbläsare"
 
-#: plugin/local.py:416
+#: plugin/local.py:414
 msgid "OpenWebif Settings"
 msgstr "Inställningar för OpenWebif"
 
-#: plugin/local.py:417
+#: plugin/local.py:415
 msgid "Theme"
 msgstr "Tema"
 
-#: plugin/local.py:418
+#: plugin/local.py:416
 msgid "Show Picons in channel list"
 msgstr "Visa programikoner i kanallistan"
 
-#: plugin/local.py:419
+#: plugin/local.py:417
 msgid "Spinner"
 msgstr "Vänta-ikon"
 
-#: plugin/local.py:420
+#: plugin/local.py:418
 msgid "Display duration (s)"
 msgstr "Tid att visa (s)"
 
-#: plugin/local.py:422
+#: plugin/local.py:420
 msgid "Display Mode"
 msgstr "Visningsläge"
 
-#: plugin/local.py:423
+#: plugin/local.py:421
 msgid "TV Guide"
 msgstr "TV tablå"
 
-#: plugin/local.py:424
+#: plugin/local.py:422
 msgid "Timeline"
 msgstr "Tidslinje"
 
-#: plugin/local.py:425
+#: plugin/local.py:423
 msgid "Web TV"
 msgstr "Webb-TV"
 
-#: plugin/local.py:427
+#: plugin/local.py:424
+msgid "Calendar Week"
+msgstr ""
+
+#: plugin/local.py:426
 msgid "Link Speed"
 msgstr "Länkhastighet"
 
-#: plugin/local.py:428
+#: plugin/local.py:427
 msgid "Network Shares"
 msgstr "Delade nätverksresurser"
 
-#: plugin/local.py:429
+#: plugin/local.py:428
 msgid "using"
 msgstr "användning"
 
@@ -2165,9 +2208,16 @@ msgstr "Lägg till distributörens namn till strömningsinformationen"
 msgid "Character encoding for EPG data"
 msgstr "Teckenkodning av EPG-data"
 
-#: plugin/plugin.py:149 plugin/plugin.py:208 plugin/plugin.py:210 plugin/plugin.py:212
+#: plugin/plugin.py:149 plugin/plugin.py:208 plugin/plugin.py:210
+#: plugin/plugin.py:212
 msgid "OpenWebif Configuration"
 msgstr "Inställningar för OpenWebif"
+
+#~ msgid "Delete Channel(s)"
+#~ msgstr "Ta bort kanalen (kanalerna)"
+
+#~ msgid "Do you really want to delete the channel(s)"
+#~ msgstr "Vill du verkligen ta bort kanalerna"
 
 #~ msgid "Afterevent"
 #~ msgstr "Tillämpa avslutande aktiviteter"
