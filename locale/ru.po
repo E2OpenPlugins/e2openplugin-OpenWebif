@@ -180,7 +180,7 @@ msgstr "Не задан текщий серви!"
 #: plugin/controllers/BouquetEditor.py:435
 msgid "Get mutable list for new created alternative failed!"
 msgstr ""
-"Получить изменяемый список для нововой созданной альтернативы не удалось!"
+"Получить изменяемый список для новой созданной альтернативы не удалось!"
 
 #: plugin/controllers/BouquetEditor.py:437
 #, python-format
@@ -952,7 +952,7 @@ msgstr "Включить описание"
 
 #: plugin/local.py:100
 msgid "Restrict to Bouquets"
-msgstr ""
+msgstr "Ограничение на букеты"
 
 #: plugin/local.py:101
 msgid "Error"
@@ -1979,7 +1979,7 @@ msgstr "Добавить маркер"
 
 #: plugin/local.py:385
 msgid "Add Spacer"
-msgstr ""
+msgstr "Добавить пробел"
 
 #: plugin/local.py:386
 msgid "Rename"
@@ -1987,7 +1987,7 @@ msgstr "Переименовать"
 
 #: plugin/local.py:387
 msgid "Do you really want to delete the selected item(s)"
-msgstr ""
+msgstr "Вы действительно хотите удалить выбранные элементы?"
 
 #: plugin/local.py:388
 msgid "Do you really want to delete the bouquet"
@@ -2119,7 +2119,7 @@ msgstr "Веб ТВ"
 
 #: plugin/local.py:424
 msgid "Calendar Week"
-msgstr ""
+msgstr "Календарь недели"
 
 #: plugin/local.py:426
 msgid "Link Speed"
@@ -2197,24 +2197,3 @@ msgstr "Тип кодировки текста для данных EPG"
 #: plugin/plugin.py:212
 msgid "OpenWebif Configuration"
 msgstr "Настройки OpenWebif"
-
-#~ msgid "Delete Channel(s)"
-#~ msgstr "Удалить канал(ы)"
-
-#~ msgid "Do you really want to delete the channel(s)"
-#~ msgstr "Вы действительно хотите удалить канал(ы)?"
-
-#~ msgid "Delete Movie"
-#~ msgstr "Удалить видео"
-
-#~ msgid "Really delete the movie"
-#~ msgstr "Действительно удалить видео?"
-
-#~ msgid "Afterevent"
-#~ msgstr "После события"
-
-#~ msgid "Smart services renaming for XBMC"
-#~ msgstr "Переименовать сервисы для XBMC"
-
-#~ msgid "NOT implemented YET"
-#~ msgstr "НЕ реализовано ЕЩЕ"
