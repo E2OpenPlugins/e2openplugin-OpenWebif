@@ -53,7 +53,7 @@ msgstr "Nincs megadva szolgáltató!"
 #: plugin/controllers/BouquetEditor.py:180
 #, python-format
 msgid "Bouquet %s removed failed."
-msgstr ""
+msgstr "Bouquet %s eltávolítva nem sikerült."
 
 #: plugin/controllers/BouquetEditor.py:182
 #, python-format
