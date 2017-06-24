@@ -997,10 +997,16 @@ class WebController(BaseController):
 		return tvbrowser(self.session, request)
 
 	def P_saveconfig(self, request):
-		res = self.testMandatoryArguments(request, ["key", "value"])
-		if res:
-			return res
-		return saveConfig(request.args["key"][0], request.args["value"][0])
+		if request.method == b'POST':
+			res = self.testMandatoryArguments(request, ["key", "value"])
+			if res:
+				return res
+			key = request.args["key"][0]
+			if "/" not in key and "%" not in key and "." in key:
+				keys = key.split('.')
+				if len(keys) == 3 and keys[0] == 'config':
+					return saveConfig(key, request.args["value"][0])
+		return {"result": False}
 
 	def P_mediaplayeradd(self, request):
 		res = self.testMandatoryArguments(request, ["file"])

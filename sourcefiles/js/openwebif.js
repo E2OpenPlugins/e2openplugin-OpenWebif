@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.7
+//* Version 1.2.8
 //******************************************************************************
 //* Copyright (C) 2011-2017 E2OpenPlugins
 //*
@@ -22,6 +22,7 @@
 //* V 1.2.5 - improve remote control #603
 //* V 1.2.6 - improve full channel list and edit timer
 //* V 1.2.7 - improve movie rename/delete, fix timer channel selection #612
+//* V 1.2.8 - improve save config #620
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -977,11 +978,12 @@ function toggleFullRemote() {
 }
 
 function saveConfig(key, value) {
-	webapi_execute("/api/saveconfig?key=" + escape(key) + "&value=" + escape(value));
-	if (key == "config.usage.setup_level") {
-		// TODO: refresh the menu box with new sections list
-		$("#content_container").load(lastcontenturl);
-	}
+	$.ajax({ url: "/api/saveconfig?key=" + escape(key) + "&value=" + escape(value), cache: false, async: true, type: "POST"}).done(function() { 
+		if (key == "config.usage.setup_level") {
+			// TODO: refresh the menu box with new sections list
+			$("#content_container").load(lastcontenturl);
+		}
+	});
 }
 
 function numberTextboxKeydownFilter(event) {
