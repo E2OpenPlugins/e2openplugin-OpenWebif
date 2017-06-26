@@ -18,6 +18,7 @@ import gzip
 import cStringIO
 
 from base import BaseController
+from Components.config import config
 
 class IpkgController(BaseController):
 
@@ -234,8 +235,7 @@ class IPKGUpload(resource.Resource):
 		request.setHeader('charset', 'UTF-8')
 		content = request.args['rfile'][0]
 		filename = self.mbasename(request.args['filename'][0])
-
-		if not content:
+		if not content or not config.OpenWebif.allow_upload_ipk.value:
 			result = [False,_('Error upload File')]
 		else:
 			if not filename.endswith(".ipk"):

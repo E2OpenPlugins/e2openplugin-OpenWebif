@@ -63,6 +63,7 @@ config.OpenWebif.auth_for_streaming = ConfigYesNo(default=False)
 config.OpenWebif.no_root_access = ConfigYesNo(default=False)
 config.OpenWebif.local_access_only = ConfigSelection(default=' ', choices=[' '])
 config.OpenWebif.vpn_access = ConfigYesNo(default=False)
+config.OpenWebif.allow_upload_ipk = ConfigYesNo(default=False)
 # encoding of EPG data
 config.OpenWebif.epg_encoding = ConfigSelection(default = 'utf-8', choices = [ 'utf-8',
 										'iso-8859-15',
@@ -138,6 +139,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
 			if imagedistro in ("VTi-Team Image"):
 				self.list.append(getConfigListEntry(_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))
+			self.list.append(getConfigListEntry(_("Allow IPK Upload"), config.OpenWebif.allow_upload_ipk))
 			#FIXME Submenu			
 			#self.list.append(getConfigListEntry(_("Webinterface jQuery UI Theme"), config.OpenWebif.webcache.theme))
 			#self.list.append(getConfigListEntry(_("Movie List Sort"), config.OpenWebif.webcache.moviesort))
