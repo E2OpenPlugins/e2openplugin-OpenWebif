@@ -27,14 +27,19 @@ try:
 except ImportError:
 	from Plugins.Extensions.OpenWebif.backport.OrderedDict import OrderedDict
 
+# The fields fetched by filterName() and convertDesc() all need to be
+# html-escaped, so do it there.
+#
+from cgi import escape as html_escape
+
 def filterName(name):
 	if name is not None:
-		name = name.replace('\xc2\x86', '').replace('\xc2\x87', '')
+		name = html_escape(name.replace('\xc2\x86', '').replace('\xc2\x87', ''), quote=True)
 	return name
 
 def convertDesc(val):
 	if val is not None:
-		return unicode(val,'utf_8', errors='ignore').encode('utf_8', 'ignore')
+		return html_escape(unicode(val,'utf_8', errors='ignore').encode('utf_8', 'ignore'), quote=True);
 	return val
 
 def getServiceInfoString(info, what):
