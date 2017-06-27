@@ -88,6 +88,10 @@ $(function() {
 	$('#timerbuttons').buttonset();
 	if(!timeredit_initialized)
 		$('#editTimerForm').load('ajax/edittimer');
+	$('#timers').scroll(function() {
+		SetLSValue('TimerListOffset',$('#timers').scrollTop());
+	});
+	$('#timers').scrollTop(GetLSValue('TimerListOffset',0));
 });
 #end raw
 </script>
