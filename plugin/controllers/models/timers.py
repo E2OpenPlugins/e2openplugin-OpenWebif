@@ -507,7 +507,7 @@ def tvbrowser(session, request):
 
 	tags = []
 	if 'tags' in request.args and request.args['tags'][0]:
-		tags = unescape(request.args['tags'][0]).split(' ')
+		tags = unquote(request.args['tags'][0]).split(' ')
 
 	if request.args['command'][0] == "add":
 		del request.args['command'][0]
