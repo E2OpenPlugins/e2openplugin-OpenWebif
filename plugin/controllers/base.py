@@ -306,11 +306,10 @@ class BaseController(resource.Resource):
 			# TODO: test if webinterface AND openwebif installed
 			from Plugins.Extensions.WebInterface.WebChilds.Toplevel import loaded_plugins
 			for plugins in loaded_plugins:
-				if plugins[0] in ["fancontrol"]:
-					try:
-						extras.append({ 'key': plugins[0], 'description': plugins[2] , 'nw':'2'})
-					except KeyError:
-						pass
+				try:
+					extras.append({ 'key': plugins[0], 'description': plugins[2] , 'nw':str(plugins[3])})
+				except KeyError:
+					pass
 		except ImportError:
 			pass
 
