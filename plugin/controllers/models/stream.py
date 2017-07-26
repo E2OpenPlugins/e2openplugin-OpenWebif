@@ -65,7 +65,7 @@ def getStream(session, request, m3ufile):
 	machinebuild = info["machinebuild"]
 	transcoder_port = None
 	args = ""
-	if model in ("Uno4K", "Ultimo4K", "Solo4K", "Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or machinebuild in ('dags7356', 'dags7252'):
+	if model in ("Uno4K", "Ultimo4K", "Solo4K", "Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or machinebuild in ('dags7356', 'dags7252', 'gb7252', 'gb7356'):
 		try:
 			transcoder_port = int(config.plugins.transcodingsetup.port.value)
 		except StandardError:
@@ -154,7 +154,7 @@ def getTS(self, request):
 		machinebuild = info["machinebuild"]
 		transcoder_port = None
 		args = ""
-		if model in ("Uno4K", "Ultimo4K", "Solo4K", "Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus"):
+		if model in ("Uno4K", "Ultimo4K", "Solo4K", "Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or machinebuild in ('gb7252', 'gb7356'):
 			try:
 				transcoder_port = int(config.plugins.transcodingsetup.port.value)
 			except StandardError:
@@ -165,7 +165,7 @@ def getTS(self, request):
 					portNumber = transcoder_port
 		if "port" in request.args:
 			portNumber = request.args["port"][0]
-			
+
 		# INI use dynamic encoder allocation, and each stream can have diffrent parameters
 		if machinebuild in ('inihdp', 'hd2400', 'et10000'):
 			if "device" in request.args :
