@@ -225,6 +225,7 @@ class AjaxController(BaseController):
 			ret['theme'] = 'original'
 		ret['zapstream'] = getZapStream()['zapstream']
 		ret['showchannelpicon'] = getShowChPicon()['showchannelpicon']
+		ret['allowipkupload'] = config.OpenWebif.allow_upload_ipk.value
 		return ret
 
 	def P_multiepg(self, request):

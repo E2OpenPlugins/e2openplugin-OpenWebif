@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.8
+//* Version 1.2.9
 //******************************************************************************
 //* Copyright (C) 2011-2017 E2OpenPlugins
 //*
@@ -23,6 +23,7 @@
 //* V 1.2.6 - improve full channel list and edit timer
 //* V 1.2.7 - improve movie rename/delete, fix timer channel selection #612
 //* V 1.2.8 - improve save config #620
+//* V 1.2.9 - improve timer #624
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -1149,6 +1150,7 @@ function editTimer(serviceref, begin, end) {
 							$('#timername').val(timer.name);
 							$('#description').val(timer.description);
 							$('#bouquet_select').val(timer.serviceref);
+							$('#bouquet_select').trigger("chosen:updated");
 							if(timer.serviceref !== $('#bouquet_select').val()) {
 								$('#bouquet_select').append($("<option></option>").attr("value", timer.serviceref).text(timer.servicename));
 								$('#bouquet_select').val(timer.serviceref);

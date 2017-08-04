@@ -1,11 +1,16 @@
-## Version 1.2.5
+## Version 1.2.6
 ## (in development)
+
+## Version 1.2.5
 * improve remote control / #603
 * app timeshift api / #551
 * show filesize / #493
 * show weekday for timer and recording / #541
 * improve edit timer / #463
 * show date on mobile epg info / #366
+* fix edit timer / #624
+* improve now/next api
+* fix CVE 2017-9807 / #620 
 
 ## Version 1.2.4
 * show boxname in title / #528
