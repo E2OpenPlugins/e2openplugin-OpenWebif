@@ -266,7 +266,8 @@ function Action(action,rl)
 	$.ajax({
 		url: action,
 		success: function ( data ) {
-			$('#resulttext').val(data);
+			var txt = data.replace('<html><body>','').replace('</body></html>','').replace(/<br>/g,'');
+			$('#resulttext').val(txt);
 			if(rl !== undefined) {
 				SetLSValue('pkg-date','');
 			}

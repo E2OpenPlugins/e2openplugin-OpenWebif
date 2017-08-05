@@ -10,7 +10,8 @@
 * show date on mobile epg info / #366
 * fix edit timer / #624
 * improve now/next api
-* fix CVE 2017-9807 / #620 
+* fix CVE 2017-9807 / #620
+* improve package manager / #608
 
 ## Version 1.2.4
 * show boxname in title / #528
