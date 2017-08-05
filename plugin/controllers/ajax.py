@@ -249,7 +249,7 @@ class AjaxController(BaseController):
 			try:
 				week = int(request.args["week"][0])
 				wadd = week * 7
-			except Exception, e:
+			except ValueError:
 				pass
 		if "day" in request.args.keys():
 			try:
@@ -257,13 +257,13 @@ class AjaxController(BaseController):
 				if day > 0 or wadd > 0:
 					now = localtime()
 					begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day + wadd, 0, 0, 0, -1, -1, -1) )
-			except Exception, e:
+			except ValueError:
 				pass
 		mode = 1
 		if config.OpenWebif.webcache.mepgmode.value:
 			try:
 				mode = int(config.OpenWebif.webcache.mepgmode.value)
-			except Exception, e:
+			except ValueError:
 				pass
 		epg = getMultiEpg(self, bref, begintime, endtime, mode)
 		epg['bouquets'] = bouq['bouquets']

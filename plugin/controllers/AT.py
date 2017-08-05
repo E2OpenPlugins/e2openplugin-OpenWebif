@@ -20,7 +20,7 @@ class ATController(resource.Resource):
 			AutoTimerRemoveAutoTimerResource, AutoTimerSettingsResource, \
 			AutoTimerSimulateResource
 		except ImportError:
-			print "AT plugin not found"
+			#print "AT plugin not found"
 			return
 		self.putChild('parse', AutoTimerDoParseResource())
 		self.putChild('remove', AutoTimerRemoveAutoTimerResource())
@@ -32,6 +32,7 @@ class ATController(resource.Resource):
 			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerTestResource
 			self.putChild('test', AutoTimerTestResource())
 		except ImportError:
+			# this is not an error
 			pass
 
 	def render(self, request):
@@ -45,7 +46,6 @@ class ATController(resource.Resource):
 					autotimer.readXml()
 					return ''.join(autotimer.getXml())
 			except Exception:
-				pass
-			return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>AutoTimer Config not found</e2statetext></e2simplexmlresult>'
+				return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>AutoTimer Config not found</e2statetext></e2simplexmlresult>'
 		except ImportError:
 			return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>AutoTimer Plugin not found</e2statetext></e2simplexmlresult>'
