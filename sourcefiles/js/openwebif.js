@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.9
+//* Version 1.2.10
 //******************************************************************************
 //* Copyright (C) 2011-2017 E2OpenPlugins
 //*
@@ -24,6 +24,7 @@
 //* V 1.2.7 - improve movie rename/delete, fix timer channel selection #612
 //* V 1.2.8 - improve save config #620
 //* V 1.2.9 - improve timer #624
+//* V 1.2.10 - improve screenshot refresh #625
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -2013,17 +2014,16 @@ function GetAllServices(callback,radio)
 		}
 	});
 }
-
 var SSHelperObj = function () {
 	var self;
 	var screenshotInterval = false;
 	var ssr_i = 30;
 
 	return {
-
 		setup: function()
 		{
 			self = this;
+			clearInterval(self.screenshotInterval);
 			self.ssr_i = parseInt(GetLSValue('ssr_i','30'));
 			
 			$('#screenshotbutton0').click(function(){grabScreenshot('all');});
@@ -2075,3 +2075,6 @@ var SSHelperObj = function () {
 		}
 	}
 };
+
+var SSHelper = new SSHelperObj();
+
