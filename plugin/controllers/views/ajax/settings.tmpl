@@ -97,6 +97,7 @@
 				<br><br>
 				<button id="upgrade">Upgrade all Packages</button>
 				<br><br>
+				<div id="pkgupload">
 				<button id="selectfile">Select IPK File for Upload</button>
 				<br><br>
 				Uploaded Files:<br>
@@ -106,6 +107,7 @@
 				<input type="file" name="rfile" id="rfile" maxlength="100000">
 				<input type="hidden" name="filename" id="filename">
 				</form>
+				</div>
 				<textarea id="resulttext" style='height:300px;width:100%'>
 				</textarea>
 				</div>
@@ -277,6 +279,8 @@ function ShowPackages(mode)
 	$("#tblpackages").hide();
 	if (mode == 'pkgbtn4') {
 		$("#pkgmore").show();
+		if(noupload)
+			return;
 		$('#tmpfiles').empty();
 		$.ajax({
 			url: '/ipkg?command=tmp',
@@ -410,7 +414,14 @@ $(function() {
 		}
 	});
 	*/
-
 });
-</script>
 #end raw
+#if $allowipkupload
+var noupload=true;
+#else
+\$(function() { 
+	\$("#pkgupload").remove();
+});
+var noupload=false;
+#end if
+</script>
