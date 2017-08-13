@@ -26,31 +26,8 @@ MOVIETAGFILE = "/etc/enigma2/movietags"
 TRASHDIRNAME = "movie_trash"
 
 #TODO : optimize os import
-#TODO : optimize copy / move using FileTransferJob
-
-def _getTrashDir(path):
-	import os
-	path = os.path.realpath(path)
-	path = os.path.abspath(path)
-	while not os.path.ismount(path):
-		path = os.path.dirname(path)
-	if path.endswith("/"):
-		path = path + TRASHDIRNAME
-	else:
-		path = path + "/" + TRASHDIRNAME
-	if not fileExists(path):
-		statvfs = os.statvfs(path.rstrip(TRASHDIRNAME))
-		free = (statvfs.f_frsize * statvfs.f_bavail) / (1024 * 1024 * 1024)
-		if free < 15:
-			return None
-		try:
-			os.makedirs(path)
-		except OSError:
-			pass
-	if fileExists(path, mode="w"):
-		return path
-	else:
-		return None
+#TODO : optimize move using FileTransferJob if available
+#TODO : add copy api
 
 def getPosition(cutfile, movie_len):
 	cut_list = []
@@ -297,28 +274,43 @@ def removeMovie(session, sRef, Force=False):
 				try:
 					import Tools.Trashcan
 					trash = Tools.Trashcan.createTrashFolder(srcpath)
-					if trash:
-						res = _moveMovie(session, sRef, destpath=trash)
-						result = res['result']
-						message = res['message']
+					MovieSelection.moveServiceFiles(service.ref, trash)
+					result = True
+					message= "The recording '%s' has been successfully moved to trashcan" % name
 				except ImportError:
 					message = "trashcan exception"
 					pass
+				except Exception, e:
+					print "Failed to move to .Trash folder:", e
+					message = "Failed to move to .Trash folder: %s" + str(e)
 				deleted = True
 		elif hasattr(config.usage, 'movielist_use_trash_dir'):
 			fullpath = service.ref.getPath()
-			srcpath = '/'.join(fullpath.split('/')[:-1]) + '/'
 			if TRASHDIRNAME not in fullpath and config.usage.movielist_use_trash_dir.value:
 				message = "trashdir"
 				try:
-					trash = _getTrashDir(fullpath)
-					if trash:
-						res = _moveMovie(session, sRef, destpath=trash)
-						result = res['result']
-						message = res['message']
+					from Screens.MovieSelection import getTrashDir
+					from Components.FileTransfer import FileTransferJob
+					from Components.Task import job_manager
+					trash_dir = getTrashDir(fullpath)
+					if trash_dir:
+						src_file = str(fullpath)
+						dst_file = trash_dir
+						if dst_file.endswith("/"):
+							dst_file = trash_dir[:-1]
+						text = _("remove")
+						job_manager.AddJob(FileTransferJob(src_file,dst_file, False, False, "%s : %s" % (text, src_file)))
+						# No Result because of async job
+						message= "The recording '%s' has been successfully moved to trashcan" % name
+						result = True
+					else:
+						message = _("Delete failed, because there is no movie trash !\nDisable movie trash in configuration to delete this item")
 				except ImportError:
 					message = "trashdir exception"
 					pass
+				except Exception, e:
+					print "Failed to move to trashdir:", e
+					message = "Failed to move to trashdir: %s" + str(e)
 				deleted = True
 		if not deleted:
 			if not offline.deleteFromDisk(0):
@@ -358,12 +350,13 @@ def _moveMovie(session, sRef, destpath=None, newname=None):
 			newfullpath = srcpath + newname + fileExt
 
 		# TODO: check splitted recording
+		# TODO: use FileTransferJob
 		def domove():
 			exists = os.path.exists
 			move = os.rename
 			errorlist = []
 			if fileExt == '.ts':
-				suffixes = ".ts.meta", ".ts.cuts", ".ts.ap", ".ts.sc", ".eit", ".ts", ".jpg"
+				suffixes = ".ts.meta", ".ts.cuts", ".ts.ap", ".ts.sc", ".eit", ".ts", ".jpg", ".ts_mp.jpg"
 			else:
 				suffixes = "%s.ts.meta" % fileExt, "%s.cuts" % fileExt, fileExt, '.jpg', '.eit'
 

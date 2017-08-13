@@ -1,5 +1,6 @@
 ## Version 1.2.6
 ## (in development)
+* improve recording move to trash / #633
 
 ## Version 1.2.5
 * improve remote control / #603
