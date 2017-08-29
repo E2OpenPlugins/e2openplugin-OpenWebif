@@ -11,12 +11,14 @@
 
 import os
 import re
-from twisted.web import static, resource, http
-from urllib import unquote, quote
-from Components.config import config
-from os import path as os_path, listdir
-from Tools.Directories import fileExists
 import glob
+from urllib import unquote, quote
+import json
+
+from twisted.web import static, resource, http
+
+from Components.config import config
+from Tools.Directories import fileExists
 
 def new_getRequestHostname(self):
 	host = self.getHeader(b'host')
@@ -28,7 +30,6 @@ def new_getRequestHostname(self):
 
 http.Request.getRequestHostname = new_getRequestHostname
 
-import json
 
 class FileController(resource.Resource):
 
@@ -92,11 +93,11 @@ class FileController(resource.Resource):
 				files.sort()
 				tmpfiles = files[:]
 				for x in tmpfiles:
-					if os_path.isdir(x):
+					if os.path.isdir(x):
 						directories.append(x + '/')
 						files.remove(x)
 				data.append({"result": True,"dirs": directories,"files": files})
 			else:
 				data.append({"result": False,"message": "path %s not exits" % (path)})
-			request.setHeader("content-type", "text/plain")
+			request.setHeader("content-type", "application/json")
 			return json.dumps(data)
