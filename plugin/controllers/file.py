@@ -99,5 +99,5 @@ class FileController(resource.Resource):
 				data.append({"result": True,"dirs": directories,"files": files})
 			else:
 				data.append({"result": False,"message": "path %s not exits" % (path)})
-			request.setHeader("content-type", "application/json")
-			return json.dumps(data)
+			request.setHeader("content-type", "application/json; charset=utf-8")
+			return json.dumps(data, indent=2)
