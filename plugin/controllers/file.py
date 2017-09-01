@@ -12,7 +12,7 @@
 import os
 import re
 import glob
-from urllib import unquote, quote
+from urllib import quote
 import json
 
 from twisted.web import static, resource, http
@@ -42,7 +42,7 @@ class FileController(resource.Resource):
 			action = request.args["action"][0]
 
 		if "file" in request.args:
-			filename = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
+			filename = request.args["file"][0].decode('utf-8', 'ignore').encode('utf-8')
 			filename = re.sub("^/+", "/", os.path.realpath(filename))
 
 			if not os.path.exists(filename):
@@ -99,5 +99,5 @@ class FileController(resource.Resource):
 				data.append({"result": True,"dirs": directories,"files": files})
 			else:
 				data.append({"result": False,"message": "path %s not exits" % (path)})
-			request.setHeader("content-type", "application/json")
-			return json.dumps(data)
+			request.setHeader("content-type", "application/json; charset=utf-8")
+			return json.dumps(data, indent=2)
