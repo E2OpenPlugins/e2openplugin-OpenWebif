@@ -82,7 +82,7 @@ class IpkgController(BaseController):
 		if path.exists(tmpFilename):
 			remove(tmpFilename)
 		lines = popen('/usr/bin/opkg list | gzip > %s' % tmpFilename).readlines()
-		request.setHeader("Content-Disposition:", "attachment;filename=\"%s\"" % (tmpFilename.split('/')[-1]))
+		request.setHeader("Content-Disposition", "attachment;filename=\"%s\"" % (tmpFilename.split('/')[-1]))
 		rfile = static.File(tmpFilename, defaultType = "application/octet-stream")
 		return rfile.render(request)
 

@@ -257,7 +257,7 @@ class WebController(BaseController):
 		else:
 			bRef = ""
 
-		request.setHeader('Content-Type', 'application/text')
+		request.setHeader('Content-Type', 'application/vnd.apple.mpegurl')
 		services = getServices(bRef,False)
 		if config.OpenWebif.auth_for_streaming.value:
 			session = GetSession()
@@ -359,7 +359,7 @@ class WebController(BaseController):
 		return getMovieList(request.args)
 
 	def P_movielistm3u(self, request):
-		request.setHeader('Content-Type', 'application/text')
+		request.setHeader('Content-Type', 'application/vnd.apple.mpegurl')
 		movielist = getMovieList(request.args)
 		movielist["host"] = "%s://%s:%s" % (whoami(request)['proto'], request.getRequestHostname(), whoami(request)['port'])
 		return movielist

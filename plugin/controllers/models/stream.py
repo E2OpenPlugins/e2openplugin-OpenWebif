@@ -111,7 +111,7 @@ def getStream(session, request, m3ufile):
 		auth=''
 
 	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s%s:%s/%s%s\n" % (progopt,auth,request.getRequestHostname(), portNumber, sRef, args)
-	request.setHeader('Content-Type', 'application/text')
+	request.setHeader('Content-Type', 'application/vnd.apple.mpegurl')
 	return response
 
 def getTS(self, request):
@@ -201,7 +201,7 @@ def getTS(self, request):
 				portNumber = m.group(1)
 
 		response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%s%s://%s:%s/file?file=%s%s\n" % ((progopt,proto, request.getRequestHostname(), portNumber, quote(filename), args))
-		request.setHeader('Content-Type', 'application/text')
+		request.setHeader('Content-Type', 'application/vnd.apple.mpegurl')
 		return response
 	else:
 		return "Missing file parameter"
