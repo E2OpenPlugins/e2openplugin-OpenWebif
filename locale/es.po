@@ -1125,7 +1125,7 @@ msgstr "Encendido"
 
 #: plugin/local.py:147
 msgid "Open Source Web Interface for Linux set-top box"
-msgstr "Interfaz Web de Código Abierto para Decodificadores Linux"
+msgstr "Interfaz Web de Código Libre para Receptores Linux"
 
 #: plugin/local.py:148 plugin/plugin.py:119
 msgid "Show box name in header"
