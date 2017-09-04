@@ -8,6 +8,9 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
+import os
+
+from twisted.web import static, http, proxy
 
 from models.info import getPublicPath, getPiconPath
 from models.grab import grabScreenshot
@@ -24,8 +27,8 @@ from ER import ERController
 from BQE import BQEController
 from transcoding import TranscodingController
 from wol import WOLSetupController, WOLClientController
-from twisted.web import static, http, proxy
-import os
+import rest_fs_access
+
 
 class RootController(BaseController):
 	def __init__(self, session, path = ""):
@@ -37,6 +40,8 @@ class RootController(BaseController):
 		self.putChild("api", ApiController(session))
 		self.putChild("ajax", AjaxController(session))
 		self.putChild("file", FileController(session))
+		self.putChild("file_rest", rest_fs_access.FileController(
+			session=session, resource_prefix="file_rest", root="/"))
 		self.putChild("grab", grabScreenshot(session))
 		if os.path.exists(getPublicPath('mobile')):
 			self.putChild("mobile", MobileController(session))
