@@ -38,6 +38,7 @@ import os
 import json
 import glob
 import re
+import urlparse
 
 import twisted.web.static
 from twisted.web.server import Site, GzipEncoderFactory
@@ -192,11 +193,12 @@ class FileController(twisted.web.resource.Resource):
 			ValueError: If contained path value is invalid.
 			IOError: If contained path value is not existing.
 		"""
-		if not request.path.startswith(self._resource_prefix):
+		rq_path = urlparse.unquote(request.path)
+		if not rq_path.startswith(self._resource_prefix):
 			raise ValueError("Invalid Request Path {!r}".format(request.path))
 
 		file_path = os.path.join(
-			self._root, request.path[len(self._resource_prefix) + 1:])
+			self._root, rq_path[len(self._resource_prefix) + 1:])
 		file_path = re.sub(MANY_SLASHES_REGEX, '/', file_path)
 
 		if not os.path.exists(file_path):
@@ -236,7 +238,11 @@ class FileController(twisted.web.resource.Resource):
 		return file.FileController().render(request)
 
 	def _glob(self, path, pattern='*'):
-		return glob.iglob('/'.join((path, pattern)))
+		if path == '/':
+			glob_me = '/' + pattern
+		else:
+			glob_me = '/'.join((path, pattern))
+		return glob.iglob(glob_me)
 
 	def _walk(self, path):
 		for root, dirs, files in os.walk(path):
