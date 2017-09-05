@@ -37,12 +37,18 @@ Delete example file 'example.txt'
 import os
 import json
 import glob
+import re
 
 import twisted.web.static
 from twisted.web.server import Site, GzipEncoderFactory
 from twisted.web.resource import Resource, EncodingResourceWrapper
 from twisted.internet import reactor
 from twisted.web import http
+
+import file
+
+MANY_SLASHES_PATTERN = r'[\/]+'
+MANY_SLASHES_REGEX = re.compile(MANY_SLASHES_PATTERN)
 
 #: default path from which files will be served
 DEFAULT_ROOT_PATH = os.path.abspath(os.path.dirname(__file__))
@@ -191,6 +197,7 @@ class FileController(twisted.web.resource.Resource):
 
 		file_path = os.path.join(
 			self._root, request.path[len(self._resource_prefix) + 1:])
+		file_path = re.sub(MANY_SLASHES_REGEX, '/', file_path)
 
 		if not os.path.exists(file_path):
 			raise IOError("Not Found {!r}".format(file_path))
@@ -226,7 +233,7 @@ class FileController(twisted.web.resource.Resource):
 		Returns:
 			HTTP response with headers
 		"""
-		return "legacy code"
+		return file.FileController().render(request)
 
 	def _glob(self, path, pattern='*'):
 		return glob.iglob('/'.join((path, pattern)))
