@@ -268,11 +268,10 @@ class FileController(twisted.web.resource.Resource):
 			generator = self._glob(path)
 
 		for item in generator:
-			item_rel = os.path.relpath(item, self._root).replace('\\', '/')
 			if os.path.isdir(item):
-				response_data['dirs'].append(item_rel)
+				response_data['dirs'].append(item)
 			else:
-				response_data['files'].append(item_rel)
+				response_data['files'].append(item)
 
 		return self._json_response(request, response_data)
 
