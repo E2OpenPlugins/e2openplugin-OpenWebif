@@ -121,8 +121,7 @@ def getMovieList(rargs=None, locations=None):
 		if os.path.isdir(abs_p):
 			bookmarklist.append(item)
 
-	folders = []
-	folders.append(root)
+	folders = [root]
 	if rargs and "recursive" in rargs.keys():
 		for f in bookmarklist:
 			if f[-1] != "/":
@@ -133,6 +132,7 @@ def getMovieList(rargs=None, locations=None):
 	# get all locations
 	if locations is not None:
 		folders = []
+
 		for f in locations:
 			if f[-1] != "/":
 				f += "/"
@@ -151,7 +151,6 @@ def getMovieList(rargs=None, locations=None):
 
 			if tag is not None:
 				movielist.reload(root=root, filter_tags=[tag])
-			#??? loadLength = True
 
 			for (serviceref, info, begin, unknown) in movielist.list:
 				if serviceref.flags & eServiceReference.mustDescent:
@@ -174,13 +173,12 @@ def getMovieList(rargs=None, locations=None):
 				filename = '/'+filename
 				if 'pos' in fields: 
 					pos = getPosition(filename + '.cuts', Len)
-				
+
 				# get txt
 				name, ext = os.path.splitext(filename)
 				ext = ext.lower()
-				
 				txtdesc = ""
-				
+
 				if 'desc' in fields and ext != 'ts':
 					txtfile = name + '.txt'
 					if fileExists(txtfile):
@@ -196,6 +194,7 @@ def getMovieList(rargs=None, locations=None):
 
 				sourceERef = info.getInfoString(serviceref, iServiceInformation.sServiceref)
 				sourceRef = ServiceReference(sourceERef)
+
 				if 'desc' in fields:
 					event = info.getEvent(serviceref)
 					ext = event and event.getExtendedDescription() or ""
@@ -204,6 +203,7 @@ def getMovieList(rargs=None, locations=None):
 
 				if 'desc' in fields:
 					desc = info.getInfoString(serviceref, iServiceInformation.sDescription)
+
 				servicename = ServiceReference(serviceref).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
 				movie = {}
 				movie['filename'] = filename
@@ -216,6 +216,7 @@ def getMovieList(rargs=None, locations=None):
 				movie['length'] = Len
 				movie['tags'] = info.getInfoString(serviceref, iServiceInformation.sTags)
 				movie['filesize_readable'] = ''
+
 				if 'size' in fields:
 					filename = filename.replace("'","\'").replace("%","\%")
 					size = 0
@@ -232,13 +233,18 @@ def getMovieList(rargs=None, locations=None):
 						pass
 					movie['filesize'] = size
 					movie['filesize_readable'] = sz
+
 				movie['fullname'] = serviceref.toString()
+
 				if 'desc' in fields:
 					movie['descriptionExtended'] = unicode(ext,'utf_8', errors='ignore').encode('utf_8', 'ignore')
+
 				movie['servicename'] = sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
 				movie['recordingtime'] = rtime
-				if 'pos' in fields: 
+
+				if 'pos' in fields:
 					movie['lastseen'] = pos
+
 				movieliste.append(movie)
 
 	if locations is None:
