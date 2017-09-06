@@ -84,11 +84,9 @@ def getMovieList(rargs=None, locations=None):
 	if rargs and "dirname" in rargs.keys():
 		directory = rargs["dirname"][0]
 
-	fields = None
+	fields = 'pos,size,desc'
 	if rargs and "fields" in rargs.keys():
 		fields = rargs["fields"][0]
-	else:
-		fields = 'pos,size,desc'
 
 	if directory is None:
 		directory = MovieSelection.defaultMoviePath()
@@ -218,9 +216,9 @@ def getMovieList(rargs=None, locations=None):
 				if 'size' in fields:
 					filename = filename.replace("'","\'").replace("%","\%")
 					size = 0
+					sz = ''
 					try:
 						size = os.stat(filename).st_size
-						sz=''
 						if size > 1073741824:
 							sz = "%.2f %s" % ((size / 1073741824.),_("GB"))
 						elif size > 1048576:
@@ -228,7 +226,7 @@ def getMovieList(rargs=None, locations=None):
 						elif size > 1024:
 							sz = "%.2f %s" % ((size / 1024.),_("kB"))
 					except:
-						size = 0
+						pass
 					movie['filesize'] = size
 					movie['filesize_readable'] = sz
 				movie['fullname'] = serviceref.toString()
