@@ -238,7 +238,7 @@ def getMovieList(rargs=None, locations=None):
 					movie['lastseen'] = pos
 				movieliste.append(movie)
 
-	if locations == None:
+	if locations is None:
 		ml = { "movies": movieliste, "bookmarks": bookmarklist, "directory": directory }
 	else:
 		ml = { "movies": movieliste, "locations": locations}
@@ -261,7 +261,7 @@ def removeMovie(session, sRef, Force=False):
 		name = info and info.getName(service.ref) or "this recording"
 
 	if offline is not None:
-		if Force == True:
+		if Force is True:
 			message="force delete"
 		elif hasattr(config.usage, 'movielist_trashcan'):
 			fullpath = service.ref.getPath()
@@ -318,7 +318,7 @@ def removeMovie(session, sRef, Force=False):
 	else:
 		message="no offline object"
 	
-	if result == False:
+	if result is False:
 		return {
 			"result": False,
 			"message": "Could not delete Movie '%s' / %s" % (name,message)
@@ -421,7 +421,7 @@ def _moveMovie(session, sRef, destpath=None, newname=None):
 	etxt = "rename"
 	if newname is None:
 		etxt = "move"
-	if result == False:
+	if result is False:
 		return {
 			"result": False,
 			"message": "Could not %s recording '%s' Err: '%s'" % (etxt,name,errText)
