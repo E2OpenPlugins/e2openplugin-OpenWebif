@@ -192,8 +192,10 @@ def getMovieList(rargs=None, locations=None):
 				else:
 					Len = "?:??"
 
-				sourceERef = info.getInfoString(serviceref, iServiceInformation.sServiceref)
-				sourceRef = ServiceReference(sourceERef)
+				sourceRef = ServiceReference(
+					info.getInfoString(
+						serviceref, iServiceInformation.sServiceref)
+				)
 
 				if 'desc' in fields:
 					event = info.getEvent(serviceref)
@@ -248,10 +250,16 @@ def getMovieList(rargs=None, locations=None):
 				movieliste.append(movie)
 
 	if locations is None:
-		ml = { "movies": movieliste, "bookmarks": bookmarklist, "directory": directory }
-	else:
-		ml = { "movies": movieliste, "locations": locations}
-	return ml
+		return {
+			"movies": movieliste,
+			"bookmarks": bookmarklist,
+			"directory": directory
+		}
+
+	return {
+		"movies": movieliste,
+		"locations": locations
+	}
 
 
 def getAllMovies():
