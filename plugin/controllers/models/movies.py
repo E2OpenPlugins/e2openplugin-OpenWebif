@@ -81,16 +81,17 @@ def checkParentalProtection(directory):
 
 def getMovieList(rargs=None, locations=None):
 	movieliste = []
-
 	tag = None
+	directory = None
+	fields = 'pos,size,desc'
+	bookmarklist = []
+
 	if rargs and "tag" in rargs.keys():
 		tag = rargs["tag"][0]
 
-	directory = None
 	if rargs and "dirname" in rargs.keys():
 		directory = rargs["dirname"][0]
 
-	fields = 'pos,size,desc'
 	if rargs and "fields" in rargs.keys():
 		fields = rargs["fields"][0]
 
@@ -119,7 +120,6 @@ def getMovieList(rargs=None, locations=None):
 	#bookmarklist=[x for x in os.listdir(directory) if (x[0] != '.' and (os.path.isdir(os.path.join(directory, x)) or (os.path.islink(os.path.join(directory, x)) and os.path.exists(os.path.join(directory, x)))))]
 	#bookmarklist.sort()
 
-	bookmarklist = []
 	for item in sorted(os.listdir(directory)):
 		abs_p = os.path.join(directory, item)
 		if os.path.isdir(abs_p):
