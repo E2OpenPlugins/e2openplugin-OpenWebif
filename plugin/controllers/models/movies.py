@@ -165,14 +165,14 @@ def getMovieList(rargs=None, locations=None):
 					begin_string = "undefined"
 
 				try:
-					Len = info.getLength(serviceref)
+					len = info.getLength(serviceref)
 				except:
-					Len = None
+					len = None
 
 				filename = '/'.join(serviceref.toString().split("/")[1:])
 				filename = '/'+filename
 				if 'pos' in fields: 
-					pos = getPosition(filename + '.cuts', Len)
+					pos = getPosition(filename + '.cuts', len)
 
 				# get txt
 				name, ext = os.path.splitext(filename)
@@ -189,10 +189,10 @@ def getMovieList(rargs=None, locations=None):
 						for line in txtlines:
 							txtdesc += line
 
-				if Len > 0:
-					Len = "%d:%02d" % (Len / 60, Len % 60)
+				if len > 0:
+					len = "%d:%02d" % (len / 60, len % 60)
 				else:
-					Len = "?:??"
+					len = "?:??"
 
 				sourceRef = ServiceReference(
 					info.getInfoString(
@@ -201,9 +201,9 @@ def getMovieList(rargs=None, locations=None):
 
 				if 'desc' in fields:
 					event = info.getEvent(serviceref)
-					ext = event and event.getExtendedDescription() or ""
-					if ext == '' and txtdesc != '':
-						ext = txtdesc
+					extended_description = event and event.getExtendedDescription() or ""
+					if extended_description == '' and txtdesc != '':
+						extended_description = txtdesc
 
 				if 'desc' in fields:
 					desc = info.getInfoString(serviceref, iServiceInformation.sDescription)
@@ -217,7 +217,7 @@ def getMovieList(rargs=None, locations=None):
 					movie['description'] = unicode(desc,'utf_8', errors='ignore').encode('utf_8', 'ignore')
 				movie['begintime'] = begin_string
 				movie['serviceref'] = serviceref.toString()
-				movie['length'] = Len
+				movie['length'] = len
 				movie['tags'] = info.getInfoString(serviceref, iServiceInformation.sTags)
 				movie['filesize_readable'] = ''
 
@@ -241,7 +241,7 @@ def getMovieList(rargs=None, locations=None):
 				movie['fullname'] = serviceref.toString()
 
 				if 'desc' in fields:
-					movie['descriptionExtended'] = unicode(ext,'utf_8', errors='ignore').encode('utf_8', 'ignore')
+					movie['descriptionExtended'] = unicode(extended_description,'utf_8', errors='ignore').encode('utf_8', 'ignore')
 
 				movie['servicename'] = sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
 				movie['recordingtime'] = rtime
