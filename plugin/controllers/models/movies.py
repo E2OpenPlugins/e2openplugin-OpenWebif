@@ -176,7 +176,9 @@ def getMovieList(rargs=None, locations=None):
 
 				# get txt
 				name, ext = os.path.splitext(filename)
-				ext = ext.lower()
+				# DANGER, WILL ROBINSON! splitext returns extension with
+				# leading dot..
+				ext = ext[1:].lower()
 				txtdesc = ""
 
 				if 'desc' in fields and ext != 'ts':
