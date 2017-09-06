@@ -8,24 +8,20 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
+import os
+from urllib import unquote
 
 from enigma import eServiceReference, iServiceInformation, eServiceCenter
-from Components.Sources.Source import Source
 from ServiceReference import ServiceReference
 from Tools.FuzzyDate import FuzzyTime
-from os import stat as os_stat, listdir
-from os.path import islink, isdir, join, exists, split as os_path_split, realpath, abspath
 from Components.config import config
 from Components.MovieList import MovieList
 from Tools.Directories import fileExists
-from time import strftime, localtime
 from Screens import MovieSelection
-from urllib import unquote
 
 MOVIETAGFILE = "/etc/enigma2/movietags"
 TRASHDIRNAME = "movie_trash"
 
-#TODO : optimize os import
 #TODO : optimize move using FileTransferJob if available
 #TODO : add copy api
 
@@ -67,9 +63,9 @@ def getPosition(cutfile, movie_len):
 def checkParentalProtection(directory):
 	if hasattr(config.ParentalControl, 'moviepinactive'):
 		if config.ParentalControl.moviepinactive.value:
-			directory = os_path_split(directory)[0]
-			directory = realpath(directory)
-			directory = abspath(directory)
+			directory = os.path.split(directory)[0]
+			directory = os.path.realpath(directory)
+			directory = os.path.abspath(directory)
 			if directory[-1] != "/":
 				directory += "/"
 			is_protected = config.movielist.moviedirs_config.getConfigValue(directory, "protect")
@@ -113,7 +109,7 @@ def getMovieList(rargs=None, locations=None):
 
 	root = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory)
 
-	bookmarklist=[x for x in listdir(directory) if (x[0] != '.' and (isdir(join(directory, x)) or (islink(join(directory, x)) and exists(join(directory, x)))))]
+	bookmarklist=[x for x in os.listdir(directory) if (x[0] != '.' and (os.path.isdir(os.path.join(directory, x)) or (os.path.islink(os.path.join(directory, x)) and os.path.exists(os.path.join(directory, x)))))]
 	bookmarklist.sort()
 
 	folders = []
@@ -217,7 +213,7 @@ def getMovieList(rargs=None, locations=None):
 					filename = filename.replace("'","\'").replace("%","\%")
 					size = 0
 					try:
-						size = os_stat(filename).st_size
+						size = os.stat(filename).st_size
 						sz=''
 						if size > 1073741824:
 							sz = "%.2f %s" % ((size / 1073741824.),_("GB"))
