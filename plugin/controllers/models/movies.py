@@ -135,8 +135,6 @@ def getMovieList(rargs=None, locations=None):
 	else:
 		dir_is_protected = False
 
-	import os
-
 	if not dir_is_protected:
 		for root in folders:
 			movielist = MovieList(None)
@@ -326,7 +324,6 @@ def removeMovie(session, sRef, Force=False):
 			}
 
 def _moveMovie(session, sRef, destpath=None, newname=None):
-	import os
 	service = ServiceReference(sRef)
 	result = True
 	errText = 'unknown Error'
