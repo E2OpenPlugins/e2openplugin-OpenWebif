@@ -22,6 +22,9 @@ from Screens import MovieSelection
 MOVIETAGFILE = "/etc/enigma2/movietags"
 TRASHDIRNAME = "movie_trash"
 
+MOVIE_LIST_SREF_ROOT = '2:0:1:0:0:0:0:0:0:0:'
+MOVIE_LIST_ROOT_FALLBACK = '/media'
+
 #TODO : optimize move using FileTransferJob if available
 #TODO : add copy api
 
@@ -104,11 +107,12 @@ def getMovieList(rargs=None, locations=None):
 				directory = directory.decode("iso-8859-1").encode("utf-8")
 
 	if not directory:
-		directory = "/media/"
-	elif directory[-1] != "/":
+		directory = MOVIE_LIST_ROOT_FALLBACK
+
+	if directory[-1] != "/":
 		directory += "/"
 
-	root = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory)
+	root = eServiceReference(MOVIE_LIST_SREF_ROOT + directory)
 
 	# lambda functions tend to be hard to read ...
 	# ... and the current implementation will return links to FILES too
@@ -126,7 +130,7 @@ def getMovieList(rargs=None, locations=None):
 		for f in bookmarklist:
 			if f[-1] != "/":
 				f += "/"
-			ff = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory + f)
+			ff = eServiceReference(MOVIE_LIST_SREF_ROOT + directory + f)
 			folders.append(ff)
 
 	# get all locations
@@ -136,7 +140,7 @@ def getMovieList(rargs=None, locations=None):
 		for f in locations:
 			if f[-1] != "/":
 				f += "/"
-			ff = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + f)
+			ff = eServiceReference(MOVIE_LIST_SREF_ROOT + f)
 			folders.append(ff)
 
 	if config.OpenWebif.parentalenabled.value:
@@ -266,7 +270,7 @@ def getMovieList(rargs=None, locations=None):
 
 def getAllMovies():
 	locations = config.movielist.videodirs.value[:] or []
-	return getMovieList(None, locations)
+	return getMovieList(locations=locations)
 
 
 def removeMovie(session, sRef, Force=False):
