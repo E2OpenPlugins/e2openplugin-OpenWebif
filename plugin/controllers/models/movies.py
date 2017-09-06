@@ -25,6 +25,7 @@ TRASHDIRNAME = "movie_trash"
 #TODO : optimize move using FileTransferJob if available
 #TODO : add copy api
 
+
 def getPosition(cutfile, movie_len):
 	cut_list = []
 	if movie_len is not None and fileExists(cutfile):
@@ -60,6 +61,7 @@ def getPosition(cutfile, movie_len):
 		play_progress = 0
 	return play_progress
 
+
 def checkParentalProtection(directory):
 	if hasattr(config.ParentalControl, 'moviepinactive'):
 		if config.ParentalControl.moviepinactive.value:
@@ -72,6 +74,7 @@ def checkParentalProtection(directory):
 			if is_protected is not None and is_protected == 1:
 				return True
 	return False
+
 
 def getMovieList(rargs=None, locations=None):
 	movieliste = []
@@ -146,7 +149,7 @@ def getMovieList(rargs=None, locations=None):
 			movielist = MovieList(None)
 			movielist.load(root, None)
 
-			if tag != None:
+			if tag is not None:
 				movielist.reload(root=root, filter_tags=[tag])
 			#??? loadLength = True
 
@@ -244,9 +247,11 @@ def getMovieList(rargs=None, locations=None):
 		ml = { "movies": movieliste, "locations": locations}
 	return ml
 
+
 def getAllMovies():
 	locations = config.movielist.videodirs.value[:] or []
 	return getMovieList(None, locations)
+
 
 def removeMovie(session, sRef, Force=False):
 	service = ServiceReference(sRef)
@@ -328,6 +333,7 @@ def removeMovie(session, sRef, Force=False):
 			"result": True,
 			"message": "The movie '%s' has been deleted successfully" % name
 			}
+
 
 def _moveMovie(session, sRef, destpath=None, newname=None):
 	service = ServiceReference(sRef)
@@ -432,11 +438,14 @@ def _moveMovie(session, sRef, destpath=None, newname=None):
 			"message": "The recording '%s' has been %sd successfully" % (name,etxt)
 			}
 
+
 def moveMovie(session, sRef, destpath):
 	return _moveMovie (session,sRef,destpath=destpath)
 
+
 def renameMovie(session, sRef, newname):
 	return _moveMovie (session,sRef,newname=newname)
+
 
 def getMovieTags(sRef = None, addtag = None, deltag = None):
 	
@@ -510,4 +519,3 @@ def getMovieTags(sRef = None, addtag = None, deltag = None):
 		"result": True,
 		"tags": tags
 	}
-
