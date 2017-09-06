@@ -5,3 +5,4 @@
 *.ipk
 /.idea
 *~
+/contrib/model_movies/folder
