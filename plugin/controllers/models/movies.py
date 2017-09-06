@@ -9,7 +9,6 @@
 #                                                                            #
 ##############################################################################
 import os
-from urllib import unquote
 
 from enigma import eServiceReference, iServiceInformation, eServiceCenter
 from ServiceReference import ServiceReference
@@ -98,7 +97,6 @@ def getMovieList(rargs=None, locations=None):
 	if directory is None:
 		directory = MovieSelection.defaultMoviePath()
 	else:
-		directory = unquote(directory)
 		try:
 			directory.decode('utf-8')
 		except UnicodeDecodeError:
