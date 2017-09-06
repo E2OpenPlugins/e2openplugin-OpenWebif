@@ -109,8 +109,16 @@ def getMovieList(rargs=None, locations=None):
 
 	root = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + directory)
 
-	bookmarklist=[x for x in os.listdir(directory) if (x[0] != '.' and (os.path.isdir(os.path.join(directory, x)) or (os.path.islink(os.path.join(directory, x)) and os.path.exists(os.path.join(directory, x)))))]
-	bookmarklist.sort()
+	# lambda functions tend to be hard to read ...
+	# ... and the current implementation will return links to FILES too
+	#bookmarklist=[x for x in os.listdir(directory) if (x[0] != '.' and (os.path.isdir(os.path.join(directory, x)) or (os.path.islink(os.path.join(directory, x)) and os.path.exists(os.path.join(directory, x)))))]
+	#bookmarklist.sort()
+
+	bookmarklist = []
+	for item in sorted(os.listdir(directory)):
+		abs_p = os.path.join(directory, item)
+		if os.path.isdir(abs_p):
+			bookmarklist.append(item)
 
 	folders = []
 	folders.append(root)
