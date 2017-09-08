@@ -40,12 +40,11 @@ class RootController(BaseController):
 		self.putChild("web", WebController(session))
 		self.putChild("api", ApiController(session))
 		self.putChild("ajax", AjaxController(session))
-		self.putChild("file", FileController())
 		wrapped = EncodingResourceWrapper(
 			rest_fs_access.FileController(
 				root='/', resource_prefix="/file_rest", session=session),
 			[GzipEncoderFactory()])
-		self.putChild("file_rest", wrapped)
+		self.putChild("file", wrapped)
 		self.putChild("grab", grabScreenshot(session))
 		if os.path.exists(getPublicPath('mobile')):
 			self.putChild("mobile", MobileController(session))
