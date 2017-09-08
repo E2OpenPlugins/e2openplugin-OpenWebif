@@ -224,7 +224,7 @@ class FileController(twisted.web.resource.Resource):
 
 		return ''
 
-	def render_attic_GET(self, request):
+	def render_legacy(self, request):
 		"""
 		Render response for an HTTP GET request. In order to maintain
 		backward compatibility this method emulates the behaviour of the
@@ -329,7 +329,7 @@ class FileController(twisted.web.resource.Resource):
 		attic_args = {'file', 'dir'}
 
 		if len(attic_args & set(request.args.keys())) >= 1:
-			return self.render_attic_GET(request)
+			return self.render_legacy(request)
 
 		request.setHeader(
 			'Access-Control-Allow-Origin', CORS_DEFAULT_ALLOW_ORIGIN)
