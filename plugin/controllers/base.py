@@ -36,7 +36,7 @@ def new_getRequestHostname(self):
 
 http.Request.getRequestHostname = new_getRequestHostname
 
-remote = ''
+REMOTE = ''
 
 try:
 	from boxbranding import getBoxType, getMachineName
@@ -45,10 +45,10 @@ except:
 
 try:
 	from Components.RcModel import rc_model
-	remote = rc_model.getRcFolder() + "/remote"
+	REMOTE = rc_model.getRcFolder() + "/remote"
 except:
 	from models.owibranding import rc_model
-	remote = rc_model().getRcFolder()
+	REMOTE = rc_model().getRcFolder()
 
 
 class BaseController(resource.Resource):
@@ -258,7 +258,7 @@ class BaseController(resource.Resource):
 		if not ret['boxname'] or not ret['customname']:
 			ret['boxname'] = getInfo()['brand']+" "+getInfo()['model']
 		ret['box'] = getBoxType()
-		ret["remote"] = remote
+		ret["remote"] = REMOTE
 		from Components.config import config
 		if hasattr(eEPGCache, 'FULL_DESCRIPTION_SEARCH'):
 			ret['epgsearchcaps'] = True
