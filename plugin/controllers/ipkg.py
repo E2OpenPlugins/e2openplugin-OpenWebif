@@ -27,13 +27,6 @@ class IpkgController(BaseController):
 		BaseController.__init__(self, path=path, session=session)
 		self.putChild('upload', IPKGUpload(self.session))
 
-	def compressBuf(self, buf):
-		zbuf = cStringIO.StringIO()
-		zfile = gzip.GzipFile(mode = 'wb',  fileobj = zbuf, compresslevel = 6)
-		zfile.write(buf)
-		zfile.close()
-		return zbuf.getvalue()
-
 	def render(self, request):
 		action =''
 		package = ''
