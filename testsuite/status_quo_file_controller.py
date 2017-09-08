@@ -31,6 +31,38 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 		self.assertTrue(len(req.text) > 20)
 		self.assertEqual(200, req.status_code)  # should this be allowed at all?
 
+	def test_etc_passwd_stream(self):
+		params = {
+			"file": "/etc/passwd",
+			"action": "stream",
+		}
+		req = requests.get(self.file_url, params=params)
+		print("Tried to fetch {!r}".format(req.url))
+		# print(req.text)
+		expected_body = '#EXTM3U\n#EXTVLCOPT--http-reconnect=true\n#EXTINF:-1,stream\nhttp://{netloc}:80/file?action=download&file=/etc/passwd'.format(netloc=self.enigma2_host)
+		self.assertEquals(expected_body, req.text)
+		self.assertEqual(200, req.status_code)
+
+	def test_etc_passwd_download(self):
+		params = {
+			"file": "/etc/passwd",
+			"action": "download",
+		}
+		req = requests.get(self.file_url, params=params)
+		print("Tried to fetch {!r}".format(req.url))
+		self.assertTrue(len(req.text) > 20)
+		self.assertEqual(200, req.status_code)
+
+	def test_invalid_action(self):
+		params = {
+			"file": "/etc/passwd",
+			"action": "invalid",
+		}
+		req = requests.get(self.file_url, params=params)
+		print("Tried to fetch {!r}".format(req.url))
+		self.assertEquals("wrong action parameter", req.text)
+		self.assertEqual(200, req.status_code)
+
 	def test_nonexisting_file(self):
 		randy = uuid.uuid4().hex
 		params = {
