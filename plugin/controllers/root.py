@@ -35,7 +35,7 @@ class RootController(BaseController):
 		self.putChild("web", WebController(session))
 		self.putChild("api", ApiController(session))
 		self.putChild("ajax", AjaxController(session))
-		self.putChild("file", FileController(session))
+		self.putChild("file", FileController())
 		self.putChild("grab", grabScreenshot(session))
 		if os.path.exists(getPublicPath('mobile')):
 			self.putChild("mobile", MobileController(session))
