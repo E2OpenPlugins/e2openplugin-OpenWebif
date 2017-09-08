@@ -58,7 +58,7 @@ class RootController(BaseController):
 		self.putChild("serienrecorder", SRController(session))
 		self.putChild("epgrefresh", ERController(session))
 		self.putChild("bouqueteditor", BQEController(session))
-		self.putChild("transcoding", TranscodingController(session))
+		self.putChild("transcoding", TranscodingController())
 		self.putChild("wol", WOLClientController())
 		self.putChild("wolsetup", WOLSetupController(session))
 		if piconpath:
