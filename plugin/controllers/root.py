@@ -42,7 +42,7 @@ class RootController(BaseController):
 		self.putChild("ajax", AjaxController(session))
 		wrapped = EncodingResourceWrapper(
 			rest_fs_access.FileController(
-				root='/', resource_prefix="/file_rest", session=session),
+				root='/', resource_prefix="/file", session=session),
 			[GzipEncoderFactory()])
 		self.putChild("file", wrapped)
 		self.putChild("grab", grabScreenshot(session))
