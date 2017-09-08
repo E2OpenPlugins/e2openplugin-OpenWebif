@@ -54,15 +54,27 @@ except:
 class BaseController(resource.Resource):
 	isLeaf = False
 
-	def __init__(self, path = ""):
+	def __init__(self, path = "", **kwargs):
+		"""
+
+		Args:
+			path: Base path
+			session: (?) Session instance
+			withMainTemplate: (?)
+			isJson: responses shall be JSON encoded
+			isCustom: (?)
+			isGZ: responses shall be GZIP compressed
+			isMobile: (?) responses shall be optimised for mobile devices
+		"""
 		resource.Resource.__init__(self)
 
 		self.path = path
-		self.withMainTemplate = False
-		self.isJson = False
-		self.isCustom = False
-		self.isGZ = False
-		self.isMobile = False
+		self.session = kwargs.get("session")
+		self.withMainTemplate = kwargs.get("withMainTemplate", False)
+		self.isJson = kwargs.get("isJson", False)
+		self.isCustom = kwargs.get("isCustom", False)
+		self.isGZ = kwargs.get("isGZ", False)
+		self.isMobile = kwargs.get("isMobile", False)
 
 	def error404(self, request):
 		request.setHeader("content-type", "text/html")
