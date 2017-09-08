@@ -133,7 +133,7 @@ class WebController(BaseController):
 				res = getVolumeStatus()
 				res["result"] = False
 				res["message"] = _("Wrong parameter format 'set=%s'. Use set=set15 ") % request.args["set"][0]
-				return rets
+				return res
 
 		res = getVolumeStatus()
 		res["result"] = False
