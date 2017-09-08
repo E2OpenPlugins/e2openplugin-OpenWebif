@@ -8,24 +8,23 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-
-from Plugins.Extensions.OpenWebif.__init__ import _
-
-from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
-from twisted.web import server, http, static, resource, error
-from Cheetah.Template import Template
-
-from models.info import getInfo, getBasePath, getPublicPath, getViewsPath
-from models.config import getCollapsedMenus, getConfigsSections, getShowName, getCustomName, getBoxName
-
 import os
 import imp
-import sys
 import json
 import gzip
 import cStringIO
 
+from twisted.web import server, http, resource
+
+from Plugins.Extensions.OpenWebif.__init__ import _
+from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
+from Cheetah.Template import Template
 from enigma import eEPGCache
+
+from models.info import getInfo, getPublicPath, getViewsPath
+from models.config import getCollapsedMenus, getConfigsSections
+from models.config import getShowName, getCustomName, getBoxName
+
 
 def new_getRequestHostname(self):
 	host = self.getHeader(b'host')
@@ -37,19 +36,20 @@ def new_getRequestHostname(self):
 
 http.Request.getRequestHostname = new_getRequestHostname
 
+remote = ''
 
 try:
 	from boxbranding import getBoxType, getMachineName
 except:
 	from models.owibranding import getBoxType, getMachineName
 
-remote=''
 try:
 	from Components.RcModel import rc_model
 	remote = rc_model.getRcFolder() + "/remote"
 except:
 	from models.owibranding import rc_model
 	remote = rc_model().getRcFolder()
+
 
 class BaseController(resource.Resource):
 	isLeaf = False
