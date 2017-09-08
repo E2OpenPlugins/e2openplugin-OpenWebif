@@ -20,6 +20,8 @@ from Plugins.Extensions.OpenWebif.__init__ import _
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
 from Cheetah.Template import Template
 from enigma import eEPGCache
+from Components.config import config
+from Components.Network import iNetwork
 
 from models.info import getInfo, getPublicPath, getViewsPath
 from models.config import getCollapsedMenus, getConfigsSections
@@ -259,14 +261,11 @@ class BaseController(resource.Resource):
 			ret['boxname'] = getInfo()['brand']+" "+getInfo()['model']
 		ret['box'] = getBoxType()
 		ret["remote"] = REMOTE
-		from Components.config import config
 		if hasattr(eEPGCache, 'FULL_DESCRIPTION_SEARCH'):
 			ret['epgsearchcaps'] = True
 		else:
 			ret['epgsearchcaps'] = False
-		extras = []
-		extras.append({ 'key': 'ajax/settings','description': _("Settings")})
-		from Components.Network import iNetwork
+		extras = [{'key': 'ajax/settings', 'description': _("Settings")}]
 		ifaces = iNetwork.getConfiguredAdapters()
 		if len(ifaces):
 			ip_list = iNetwork.getAdapterAttribute(ifaces[0], "ip") # use only the first configured interface
