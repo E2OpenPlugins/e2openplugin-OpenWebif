@@ -41,9 +41,6 @@ import re
 import urlparse
 
 import twisted.web.static
-from twisted.web.server import Site, GzipEncoderFactory
-from twisted.web.resource import Resource, EncodingResourceWrapper
-from twisted.internet import reactor
 from twisted.web import http
 
 import file
@@ -425,6 +422,10 @@ class FileController(twisted.web.resource.Resource):
 
 
 if __name__ == '__main__':
+	from twisted.web.resource import Resource, EncodingResourceWrapper
+	from twisted.web.server import Site, GzipEncoderFactory
+	from twisted.internet import reactor
+
 	# standard factory example
 	factory_s = Site(FileController(DEFAULT_ROOT_PATH))
 
