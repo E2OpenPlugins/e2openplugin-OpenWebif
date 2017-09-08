@@ -30,8 +30,7 @@ except:
 
 class AjaxController(BaseController):
 	def __init__(self, session, path = ""):
-		BaseController.__init__(self, path)
-		self.session = session
+		BaseController.__init__(self, path=path, session=session)
 
 	def P_current(self, request):
 		return getCurrentFullInfo(self.session)

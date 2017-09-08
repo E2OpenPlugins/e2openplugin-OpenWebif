@@ -29,8 +29,7 @@ import os
 
 class RootController(BaseController):
 	def __init__(self, session, path = ""):
-		BaseController.__init__(self, path)
-		self.session = session
+		BaseController.__init__(self, path=path, session=session)
 		piconpath = getPiconPath()
 
 		self.putChild("web", WebController(session))
