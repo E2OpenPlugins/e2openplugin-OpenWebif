@@ -8,12 +8,13 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-from twisted.web import static, resource, http, server
+from twisted.web import resource, http
 
 class ATController(resource.Resource):
-	def __init__(self, session, path = ""):
+	def __init__(self, session):
 		resource.Resource.__init__(self)
 		self.session = session
+
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerDoParseResource, \
 			AutoTimerAddOrEditAutoTimerResource, AutoTimerChangeSettingsResource, \
