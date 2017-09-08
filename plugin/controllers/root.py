@@ -34,14 +34,13 @@ import rest_fs_access
 
 class RootController(BaseController):
 	def __init__(self, session, path = ""):
-		BaseController.__init__(self, path)
-		self.session = session
+		BaseController.__init__(self, path=path, session=session)
 		piconpath = getPiconPath()
 
 		self.putChild("web", WebController(session))
 		self.putChild("api", ApiController(session))
 		self.putChild("ajax", AjaxController(session))
-		self.putChild("file", FileController(session))
+		self.putChild("file", FileController())
 		wrapped = EncodingResourceWrapper(
 			rest_fs_access.FileController(
 				root='/', resource_prefix="/file_rest", session=session),

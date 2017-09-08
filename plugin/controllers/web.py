@@ -48,8 +48,7 @@ def whoami(request):
 
 class WebController(BaseController):
 	def __init__(self, session, path = ""):
-		BaseController.__init__(self, path)
-		self.session = session
+		BaseController.__init__(self, path=path, session=session)
 		self.putChild("stream", StreamController(session))
 
 	def prePageLoad(self, request):
@@ -134,7 +133,7 @@ class WebController(BaseController):
 				res = getVolumeStatus()
 				res["result"] = False
 				res["message"] = _("Wrong parameter format 'set=%s'. Use set=set15 ") % request.args["set"][0]
-				return rets
+				return res
 
 		res = getVolumeStatus()
 		res["result"] = False

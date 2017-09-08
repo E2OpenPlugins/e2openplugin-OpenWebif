@@ -32,10 +32,6 @@ http.Request.getRequestHostname = new_getRequestHostname
 
 
 class FileController(resource.Resource):
-
-	def __init__(self, path = ""):
-		resource.Resource.__init__(self)
-
 	def render(self, request):
 		action = "download"
 		if "action" in request.args:

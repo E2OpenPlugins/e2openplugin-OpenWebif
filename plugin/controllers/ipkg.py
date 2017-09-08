@@ -20,19 +20,12 @@ import cStringIO
 from base import BaseController
 from Components.config import config
 
+
 class IpkgController(BaseController):
 
 	def __init__(self, session, path = ""):
-		BaseController.__init__(self, path)
-		self.session = session
-		self.putChild('upload', IPKGUpload(session))
-
-	def compressBuf(self, buf):
-		zbuf = cStringIO.StringIO()
-		zfile = gzip.GzipFile(mode = 'wb',  fileobj = zbuf, compresslevel = 6)
-		zfile.write(buf)
-		zfile.close()
-		return zbuf.getvalue()
+		BaseController.__init__(self, path=path, session=session)
+		self.putChild('upload', IPKGUpload(self.session))
 
 	def render(self, request):
 		action =''
@@ -218,10 +211,11 @@ class IpkgController(BaseController):
 		request.finish()
 		return server.NOT_DONE_YET
 
+
 class IPKGUpload(resource.Resource):
 	def __init__(self, session):
-		self.session = session
 		resource.Resource.__init__(self)
+		self.session = session
 
 	def mbasename(self, fname):
 		l = fname.split('/')
