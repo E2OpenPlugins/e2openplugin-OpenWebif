@@ -8,12 +8,13 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-from twisted.web import static, resource, http
+from twisted.web import resource
 from Components.config import config
+
 
 class WOLSetupController(resource.Resource):
 
-	def __init__(self, session, path = ""):
+	def __init__(self, session):
 		resource.Resource.__init__(self)
 		self.session = session
 
@@ -75,11 +76,8 @@ class WOLSetupController(resource.Resource):
 				</e2configs>""" %      (str(config.plugins.wolconfig.activate.value),
 							locations, str(config.plugins.wolconfig.location.value))
 
+
 class WOLClientController(resource.Resource):
-
-	def __init__(self, path = ""):
-		resource.Resource.__init__(self)
-
 	def render(self, request):
 		import struct, socket
 		request.setHeader('Content-type', 'application/xhtml+xml')
