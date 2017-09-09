@@ -402,7 +402,7 @@ class FileController(twisted.web.resource.Resource):
 				request, response_code=http.NOT_IMPLEMENTED,
 				message="I really need data to write.")
 
-		target_filename = ''.join((target_path, filename))
+		target_filename = '/'.join((target_path, filename))
 
 		if os.path.exists(target_filename):
 			return self.error_response(
