@@ -4,12 +4,12 @@
 RESTful Filesystem access using HTTP
 ------------------------------------
 
-This controller and helper classes exposes parts or all of the server's
-filesystem. Means to retrieve and delete files are provided as well as the
+This controller exposes parts or all of the server's filesystem.
+Means to retrieve and delete files are provided as well as the
 ability to list folder contents.
 
 The generated responses are returned as JSON data with appropriate HTTP headers.
-Output will be compressed using gzip most of the times.
+Output will be compressed using gzip most of the times (if enabled by wrapper).
 
 Example calls using curl
 ++++++++++++++++++++++++
@@ -33,6 +33,10 @@ Delete example file 'example.txt'
 
     curl --noproxy localhost -iv -X DELETE http://localhost:18888/file/example.txt
 
+Create example file 'test.dat' using HTTP POST request on /file
+
+    curl --noproxy localhost -iv -X POST http://localhost:18888/file?filename=test.dat -F "data=blabla"
+
 """
 import os
 import json
@@ -43,8 +47,15 @@ import urlparse
 import twisted.web.static
 from twisted.web import http
 
-from utilities import MANY_SLASHES_REGEX
-import file
+from utilities import MANY_SLASHES_REGEX, lenient_force_utf_8
+
+HAVE_LEGACY_FILE = False
+
+try:
+	import file
+	HAVE_LEGACY_FILE = True
+except ImportError:
+	pass
 
 #: default path from which files will be served
 DEFAULT_ROOT_PATH = os.path.abspath(os.path.dirname(__file__))
@@ -74,6 +85,10 @@ DELETE_WHITELIST = [
 	'/media',
 ]
 
+
+def dump_upload(request, target_filename):
+	with open(target_filename, "wb") as handle:
+		handle.write(request.args['data'][0])
 
 class FileController(twisted.web.resource.Resource):
 	isLeaf = True
@@ -324,7 +339,11 @@ class FileController(twisted.web.resource.Resource):
 		attic_args = {'file', 'dir'}
 
 		if len(attic_args & set(request.args.keys())) >= 1:
-			return self.render_legacy(request)
+			if HAVE_LEGACY_FILE:
+				return self.render_legacy(request)
+			else:
+				return self.error_response(
+					request, response_code=http.NOT_IMPLEMENTED)
 
 		request.setHeader(
 			'Access-Control-Allow-Origin', CORS_DEFAULT_ALLOW_ORIGIN)
@@ -354,7 +373,58 @@ class FileController(twisted.web.resource.Resource):
 		"""
 		request.setHeader(
 			'Access-Control-Allow-Origin', CORS_DEFAULT_ALLOW_ORIGIN)
-		return self.error_response(request, response_code=http.NOT_IMPLEMENTED)
+
+		try:
+			target_path = self._existing_path_or_bust(request)
+		except ValueError as vexc:
+			return self.error_response(
+				request, response_code=http.BAD_REQUEST, message=vexc.message)
+		except IOError as iexc:
+			return self.error_response(
+				request, response_code=http.NOT_FOUND, message=iexc.message)
+
+		if not os.path.isdir(target_path):
+			return self.error_response(
+				request, response_code=http.NOT_IMPLEMENTED,
+				message="Needs to be an existing path")
+
+		fn_arg = request.args.get("filename", [None])
+		filename_raw = fn_arg[0]
+		if filename_raw:
+			filename = lenient_force_utf_8(filename_raw).split('/')[-1]
+		else:
+			return self.error_response(
+				request, response_code=http.NOT_IMPLEMENTED,
+				message="I really need a filename.")
+
+		if not request.args.get('data'):
+			return self.error_response(
+				request, response_code=http.NOT_IMPLEMENTED,
+				message="I really need data to write.")
+
+		target_filename = ''.join((target_path, filename))
+
+		if not os.path.exists(target_filename):
+			return self.error_response(
+				request, response_code=http.NOT_IMPLEMENTED,
+				message="Existing target")
+
+		try:
+			dump_upload(request, target_filename)
+		except Exception as exc:
+			return self.error_response(
+				request, response_code=http.INTERNAL_SERVER_ERROR,
+				message=exc.message)
+
+		response_data = self.get_response_data_template(request)
+		response_data.update(
+			{
+				'result': True,
+				'filename': target_filename,
+			}
+		)
+
+		return self._json_response(request, response_data)
 
 	def render_PUT(self, request):
 		"""
