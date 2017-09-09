@@ -404,10 +404,10 @@ class FileController(twisted.web.resource.Resource):
 
 		target_filename = ''.join((target_path, filename))
 
-		if not os.path.exists(target_filename):
+		if os.path.exists(target_filename):
 			return self.error_response(
 				request, response_code=http.NOT_IMPLEMENTED,
-				message="Existing target")
+				message="Existing target {!r}".format(target_filename))
 
 		try:
 			dump_upload(request, target_filename)
