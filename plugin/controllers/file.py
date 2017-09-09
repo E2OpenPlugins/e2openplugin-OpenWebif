@@ -19,6 +19,8 @@ from twisted.web import static, resource, http
 
 from Components.config import config
 from Tools.Directories import fileExists
+from utilities import lenient_force_utf_8, sanitise_filename_slashes
+
 
 def new_getRequestHostname(self):
 	host = self.getHeader(b'host')
@@ -38,8 +40,8 @@ class FileController(resource.Resource):
 			action = request.args["action"][0]
 
 		if "file" in request.args:
-			filename = request.args["file"][0].decode('utf-8', 'ignore').encode('utf-8')
-			filename = re.sub("^/+", "/", os.path.realpath(filename))
+			filename = lenient_force_utf_8(request.args["file"][0])
+			filename = sanitise_filename_slashes(os.path.realpath(filename))
 
 			if not os.path.exists(filename):
 				return "File '%s' not found" % (filename)

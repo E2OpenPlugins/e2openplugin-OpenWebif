@@ -43,10 +43,8 @@ import urlparse
 import twisted.web.static
 from twisted.web import http
 
+from utilities import MANY_SLASHES_REGEX
 import file
-
-MANY_SLASHES_PATTERN = r'[\/]+'
-MANY_SLASHES_REGEX = re.compile(MANY_SLASHES_PATTERN)
 
 #: default path from which files will be served
 DEFAULT_ROOT_PATH = os.path.abspath(os.path.dirname(__file__))
