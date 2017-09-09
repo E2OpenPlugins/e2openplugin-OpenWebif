@@ -28,6 +28,8 @@ from models.servicelist import reloadServicesLists
 from models.mediaplayer import mediaPlayerAdd, mediaPlayerRemove, mediaPlayerPlay, mediaPlayerCommand, mediaPlayerCurrent, mediaPlayerList, mediaPlayerLoad, mediaPlayerSave, mediaPlayerFindFile
 from models.plugins import reloadPlugins
 from Screens.InfoBar import InfoBar
+from enigma import eEPGCache, eServiceReference
+from RecordTimer import parseEvent
 
 from fcntl import ioctl
 from base import BaseController
@@ -774,6 +776,43 @@ class WebController(BaseController):
 		self.isGZ=True
 		ret = getServicesNowNextEpg(request.args["sList"][0])
 		return ret
+
+	def P_epglookup(self, request):
+		res = self.testMandatoryArguments(request, ["service_reference", "item_id"])
+		if res:
+			return res
+
+		service_reference = request.args["service_reference"][0]
+		try:
+			item_id = int(request.args["item_id"][0])
+		except Exception as exc:
+			item_id = 0
+
+		epg_cache = eEPGCache.getInstance()
+		args = [
+			'EX', (service_reference, 2, item_id)
+		]
+		longinfo = epg_cache.lookupEvent(args)
+		event = epg_cache.lookupEventId(
+			eServiceReference(service_reference), item_id)
+
+		if event is None:
+			return {
+				"result": False,
+				"message": "EventId not found"
+			}
+
+		(begin, end, title, shortinfo, eit) = parseEvent(event)
+		return {
+			"result": True,
+			"longinfo": longinfo,
+			"begin": begin,
+			"end": end,
+			"title": title,
+			"shortinfo": shortinfo,
+			"global_id": '{!s}{!s}'.format(service_reference, item_id),
+			"item_id": eit
+		}
 
 	def P_epgsearch(self, request):
 		res = self.testMandatoryArguments(request, ["search"])
