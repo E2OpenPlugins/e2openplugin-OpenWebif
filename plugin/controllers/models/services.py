@@ -39,7 +39,7 @@ def filterName(name):
 
 def convertDesc(val):
 	if val is not None:
-		return html_escape(unicode(val,'utf_8', errors='ignore').encode('utf_8', 'ignore'), quote=True);
+		return html_escape(unicode(val,'utf_8', errors='ignore').encode('utf_8', 'ignore'), quote=True)
 	return val
 
 def getServiceInfoString(info, what):
@@ -142,7 +142,7 @@ def getCurrentFullInfo(session):
 		idx = 0
 		while idx < n:
 			i = audio.getTrackInfo(idx)
-			description = i.getDescription();
+			description = i.getDescription()
 			if "AC3" in description or "DTS" in description or "Dolby Digital" in description:
 				inf['dolby'] = True
 			idx += 1
@@ -737,7 +737,7 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False):
 	if fulldesc:
 		if hasattr(eEPGCache, 'FULL_DESCRIPTION_SEARCH'):
 			search_type = eEPGCache.FULL_DESCRIPTION_SEARCH
-	events = epgcache.search(('IBDTSENR', 128, search_type, sstr, 1));
+	events = epgcache.search(('IBDTSENR', 128, search_type, sstr, 1))
 	if events is not None:
 		if bouquetsonly:
 			# collect service references from TV bouquets
@@ -780,7 +780,7 @@ def getSearchSimilarEpg(ref, eventid):
 	ret = []
 	ev = {}
 	epgcache = eEPGCache.getInstance()
-	events = epgcache.search(('IBDTSENR', 128, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, ref, eventid));
+	events = epgcache.search(('IBDTSENR', 128, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, ref, eventid))
 	if events is not None:
 		for event in events:
 			ev = {}

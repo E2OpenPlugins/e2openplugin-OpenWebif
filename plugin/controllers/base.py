@@ -8,24 +8,25 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-
-from Plugins.Extensions.OpenWebif.__init__ import _
-
-from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
-from twisted.web import server, http, static, resource, error
-from Cheetah.Template import Template
-
-from models.info import getInfo, getBasePath, getPublicPath, getViewsPath
-from models.config import getCollapsedMenus, getConfigsSections, getShowName, getCustomName, getBoxName
-
 import os
 import imp
-import sys
 import json
 import gzip
 import cStringIO
 
+from twisted.web import server, http, resource
+
+from Plugins.Extensions.OpenWebif.__init__ import _
+from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
+from Cheetah.Template import Template
 from enigma import eEPGCache
+from Components.config import config
+from Components.Network import iNetwork
+
+from models.info import getInfo, getPublicPath, getViewsPath
+from models.config import getCollapsedMenus, getConfigsSections
+from models.config import getShowName, getCustomName, getBoxName
+
 
 def new_getRequestHostname(self):
 	host = self.getHeader(b'host')
@@ -37,32 +38,45 @@ def new_getRequestHostname(self):
 
 http.Request.getRequestHostname = new_getRequestHostname
 
+REMOTE = ''
 
 try:
 	from boxbranding import getBoxType, getMachineName
 except:
 	from models.owibranding import getBoxType, getMachineName
 
-remote=''
 try:
 	from Components.RcModel import rc_model
-	remote = rc_model.getRcFolder() + "/remote"
+	REMOTE = rc_model.getRcFolder() + "/remote"
 except:
 	from models.owibranding import rc_model
-	remote = rc_model().getRcFolder()
+	REMOTE = rc_model().getRcFolder()
+
 
 class BaseController(resource.Resource):
 	isLeaf = False
 
-	def __init__(self, path = ""):
+	def __init__(self, path = "", **kwargs):
+		"""
+
+		Args:
+			path: Base path
+			session: (?) Session instance
+			withMainTemplate: (?)
+			isJson: responses shall be JSON encoded
+			isCustom: (?)
+			isGZ: responses shall be GZIP compressed
+			isMobile: (?) responses shall be optimised for mobile devices
+		"""
 		resource.Resource.__init__(self)
 
 		self.path = path
-		self.withMainTemplate = False
-		self.isJson = False
-		self.isCustom = False
-		self.isGZ = False
-		self.isMobile = False
+		self.session = kwargs.get("session")
+		self.withMainTemplate = kwargs.get("withMainTemplate", False)
+		self.isJson = kwargs.get("isJson", False)
+		self.isCustom = kwargs.get("isCustom", False)
+		self.isGZ = kwargs.get("isGZ", False)
+		self.isMobile = kwargs.get("isMobile", False)
 
 	def error404(self, request):
 		request.setHeader("content-type", "text/html")
@@ -246,30 +260,27 @@ class BaseController(resource.Resource):
 		if not ret['boxname'] or not ret['customname']:
 			ret['boxname'] = getInfo()['brand']+" "+getInfo()['model']
 		ret['box'] = getBoxType()
-		ret["remote"] = remote
-		from Components.config import config
+		ret["remote"] = REMOTE
 		if hasattr(eEPGCache, 'FULL_DESCRIPTION_SEARCH'):
 			ret['epgsearchcaps'] = True
 		else:
 			ret['epgsearchcaps'] = False
-		extras = []
-		extras.append({ 'key': 'ajax/settings','description': _("Settings")})
-		from Components.Network import iNetwork
+		extras = [{'key': 'ajax/settings', 'description': _("Settings")}]
 		ifaces = iNetwork.getConfiguredAdapters()
 		if len(ifaces):
 			ip_list = iNetwork.getAdapterAttribute(ifaces[0], "ip") # use only the first configured interface
 			ip = "%d.%d.%d.%d" % (ip_list[0], ip_list[1], ip_list[2], ip_list[3])
 
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/LCD4linux/WebSite.pyo")):
-			lcd4linux_key = "lcd4linux/config"
-			if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/WebInterface/plugin.pyo")):
-				try:
-					lcd4linux_port = "http://" + ip + ":" + str(config.plugins.Webinterface.http.port.value) + "/"
-					lcd4linux_key = lcd4linux_port + 'lcd4linux/config'
-				except KeyError:
-					lcd4linux_key = None
-			if lcd4linux_key:
-				extras.append({ 'key': lcd4linux_key, 'description': _("LCD4Linux Setup") , 'nw':'1'})
+			if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/LCD4linux/WebSite.pyo")):
+				lcd4linux_key = "lcd4linux/config"
+				if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/WebInterface/plugin.pyo")):
+					try:
+						lcd4linux_port = "http://" + ip + ":" + str(config.plugins.Webinterface.http.port.value) + "/"
+						lcd4linux_key = lcd4linux_port + 'lcd4linux/config'
+					except KeyError:
+						lcd4linux_key = None
+				if lcd4linux_key:
+					extras.append({ 'key': lcd4linux_key, 'description': _("LCD4Linux Setup") , 'nw':'1'})
 
 		self.oscamconf = self.oscamconfPath()
 		if self.oscamconf is not None:

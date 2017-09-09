@@ -8,8 +8,10 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-from twisted.web import static, resource, http
+from twisted.web import resource
+
 from Components.config import config
+
 
 def get_transcoding_features(encoder = 0):
 	features = {
@@ -43,11 +45,8 @@ def get_transcoding_features(encoder = 0):
 					pass
 	return encoder_features
 
+
 class TranscodingController(resource.Resource):
-
-	def __init__(self, path = ""):
-		resource.Resource.__init__(self)
-
 	def render(self, request):
 		request.setHeader('Content-type', 'application/xhtml+xml')
 		request.setHeader('charset', 'UTF-8')

@@ -23,11 +23,11 @@ import json
 service_types_tv = '1:7:1:0:0:0:0:0:0:0:(type == 1) || (type == 17) || (type == 22) || (type == 25) || (type == 31) || (type == 134) || (type == 195) || (type == 211)'
 service_types_radio = '1:7:2:0:0:0:0:0:0:0:(type == 2) || (type == 10)'
 
+
 class BQEWebController(BaseController):
 	def __init__(self, session, path = ""):
-		BaseController.__init__(self, path)
-		self.session = session
-	
+		BaseController.__init__(self, path=path, session=session)
+
 	def returnResult(self, req, result):
 		if self.isJson:
 			return { "Result": result }
@@ -309,6 +309,7 @@ class BQEWebController(BaseController):
 		ps['SetupPin'] = setuppin
 		return { "ps": ps }
 
+
 class BQEUploadFile(resource.Resource):
 	FN = "/tmp/bouquets_backup.tar"
 	def __init__(self, session):
@@ -338,6 +339,7 @@ class BQEUploadFile(resource.Resource):
 				result = [True,self.FN]
 		return json.dumps({"Result": result })
 
+
 class BQEApiController(BQEWebController):
 	def __init__(self, session, path = ""):
 		BQEWebController.__init__(self, session, path)
@@ -345,10 +347,10 @@ class BQEApiController(BQEWebController):
 	def prePageLoad(self, request):
 		self.isJson = True
 
+
 class BQEController(BaseController):
 	def __init__(self, session, path = ""):
-		BaseController.__init__(self, path)
-		self.session = session
+		BaseController.__init__(self, path=path, session=session)
 		self.putChild("web", BQEWebController(session))
 		self.putChild("api", BQEApiController(session))
 		self.putChild('tmp', static.File('/tmp'))

@@ -29,14 +29,13 @@ import os
 
 class RootController(BaseController):
 	def __init__(self, session, path = ""):
-		BaseController.__init__(self, path)
-		self.session = session
+		BaseController.__init__(self, path=path, session=session)
 		piconpath = getPiconPath()
 
 		self.putChild("web", WebController(session))
 		self.putChild("api", ApiController(session))
 		self.putChild("ajax", AjaxController(session))
-		self.putChild("file", FileController(session))
+		self.putChild("file", FileController())
 		self.putChild("grab", grabScreenshot(session))
 		if os.path.exists(getPublicPath('mobile')):
 			self.putChild("mobile", MobileController(session))
@@ -59,8 +58,8 @@ class RootController(BaseController):
 		self.putChild("serienrecorder", SRController(session))
 		self.putChild("epgrefresh", ERController(session))
 		self.putChild("bouqueteditor", BQEController(session))
-		self.putChild("transcoding", TranscodingController(session))
-		self.putChild("wol", WOLClientController(session))
+		self.putChild("transcoding", TranscodingController())
+		self.putChild("wol", WOLClientController())
 		self.putChild("wolsetup", WOLSetupController(session))
 		if piconpath:
 			self.putChild("picon", static.File(piconpath))
