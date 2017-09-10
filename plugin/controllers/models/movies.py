@@ -170,13 +170,14 @@ def getMovieList(rargs=None, locations=None):
 					'filename_stripped': filename.split("/")[-1],
 					'serviceref': serviceref.toString(),
 					'length': "?:??",
+					'lastseen': 0,
 					'filesize_readable': '',
 					'recordingtime': rtime,
 					'begintime': 'undefined',
 					'eventname': ServiceReference(serviceref).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
 					'servicename': sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
 					'tags': info.getInfoString(serviceref, iServiceInformation.sTags),
-					'fullname': serviceref.toString()
+					'fullname': serviceref.toString(),
 				}
 
 				if rtime > 0:
