@@ -82,7 +82,7 @@ def getMovieList(rargs=None, locations=None):
 	movieliste = []
 	tag = None
 	directory = None
-	fields = 'pos,size,desc'
+	fields = None
 	bookmarklist = []
 
 	if rargs and "tag" in rargs.keys():
@@ -112,11 +112,6 @@ def getMovieList(rargs=None, locations=None):
 		directory += "/"
 
 	root = eServiceReference(MOVIE_LIST_SREF_ROOT + directory)
-
-	# lambda functions tend to be hard to read ...
-	# ... and the current implementation will return links to FILES too
-	#bookmarklist=[x for x in os.listdir(directory) if (x[0] != '.' and (os.path.isdir(os.path.join(directory, x)) or (os.path.islink(os.path.join(directory, x)) and os.path.exists(os.path.join(directory, x)))))]
-	#bookmarklist.sort()
 
 	for item in sorted(os.listdir(directory)):
 		abs_p = os.path.join(directory, item)
@@ -158,75 +153,66 @@ def getMovieList(rargs=None, locations=None):
 				if serviceref.flags & eServiceReference.mustDescent:
 					continue
 
-				rtime = info.getInfo(serviceref, iServiceInformation.sTimeCreate)
-
-				if rtime > 0:
-					t = FuzzyTime(rtime)
-					begin_string = t[0] + ", " + t[1]
-				else:
-					begin_string = "undefined"
-
-				try:
-					len = info.getLength(serviceref)
-				except:
-					len = None
-
-				filename = '/'.join(serviceref.toString().split("/")[1:])
-				filename = '/'+filename
-				if 'pos' in fields: 
-					pos = getPosition(filename + '.cuts', len)
-
-				# get txt
-				name, ext = os.path.splitext(filename)
-				# DANGER, WILL ROBINSON! splitext returns extension with
-				# leading dot..
-				ext = ext[1:].lower()
+				length_minutes = 0
 				txtdesc = ""
-
-				if 'desc' in fields and ext != 'ts':
-					txtfile = name + '.txt'
-					if fileExists(txtfile):
-						txtlines = open(txtfile).readlines()
-						txtdesc = ""
-						for line in txtlines:
-							txtdesc += line
-
-				if len > 0:
-					len = "%d:%02d" % (len / 60, len % 60)
-				else:
-					len = "?:??"
+				filename = '/'.join(serviceref.toString().split("/")[1:])
+				filename = '/' + filename
+				name, ext = os.path.splitext(filename)
 
 				sourceRef = ServiceReference(
 					info.getInfoString(
-						serviceref, iServiceInformation.sServiceref)
-				)
+						serviceref, iServiceInformation.sServiceref))
+				rtime = info.getInfo(
+					serviceref, iServiceInformation.sTimeCreate)
 
-				if 'desc' in fields:
+				movie = {
+					'filename': filename,
+					'filename_stripped': filename.split("/")[-1],
+					'serviceref': serviceref.toString(),
+					'length': "?:??",
+					'lastseen': 0,
+					'filesize_readable': '',
+					'recordingtime': rtime,
+					'begintime': 'undefined',
+					'eventname': ServiceReference(serviceref).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
+					'servicename': sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
+					'tags': info.getInfoString(serviceref, iServiceInformation.sTags),
+					'fullname': serviceref.toString(),
+				}
+
+				if rtime > 0:
+					fuzzy_rtime = FuzzyTime(rtime)
+					movie['begintime'] = fuzzy_rtime[0] + ", " + fuzzy_rtime[1]
+
+				try:
+					length_minutes = info.getLength(serviceref)
+				except:
+					pass
+
+				if length_minutes:
+					movie['length'] = "%d:%02d" % (length_minutes / 60, length_minutes % 60)
+					if fields is None or 'pos' in fields:
+						movie['lastseen'] = getPosition(filename + '.cuts', length_minutes)
+
+				if fields is None or 'desc' in fields:
+					txtfile = name + '.txt'
+					if ext.lower() != '.ts' and os.path.isfile(txtfile):
+						with open(txtfile, "rb") as handle:
+							txtdesc = ''.join(handle.readlines())
+
 					event = info.getEvent(serviceref)
 					extended_description = event and event.getExtendedDescription() or ""
 					if extended_description == '' and txtdesc != '':
 						extended_description = txtdesc
+					movie['descriptionExtended'] = unicode(extended_description,'utf_8', errors='ignore').encode('utf_8', 'ignore')
 
-				if 'desc' in fields:
 					desc = info.getInfoString(serviceref, iServiceInformation.sDescription)
-
-				servicename = ServiceReference(serviceref).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
-				movie = {}
-				movie['filename'] = filename
-				movie['filename_stripped'] = filename.split("/")[-1]
-				movie['eventname'] = servicename
-				if 'desc' in fields:
 					movie['description'] = unicode(desc,'utf_8', errors='ignore').encode('utf_8', 'ignore')
-				movie['begintime'] = begin_string
-				movie['serviceref'] = serviceref.toString()
-				movie['length'] = len
-				movie['tags'] = info.getInfoString(serviceref, iServiceInformation.sTags)
-				movie['filesize_readable'] = ''
 
-				if 'size' in fields:
-					filename = filename.replace("'","\'").replace("%","\%")
+				if fields is None or 'size' in fields:
 					size = 0
 					sz = ''
+
 					try:
 						size = os.stat(filename).st_size
 						if size > 1073741824:
@@ -237,19 +223,9 @@ def getMovieList(rargs=None, locations=None):
 							sz = "%.2f %s" % ((size / 1024.),_("kB"))
 					except:
 						pass
+
 					movie['filesize'] = size
 					movie['filesize_readable'] = sz
-
-				movie['fullname'] = serviceref.toString()
-
-				if 'desc' in fields:
-					movie['descriptionExtended'] = unicode(extended_description,'utf_8', errors='ignore').encode('utf_8', 'ignore')
-
-				movie['servicename'] = sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
-				movie['recordingtime'] = rtime
-
-				if 'pos' in fields:
-					movie['lastseen'] = pos
 
 				movieliste.append(movie)
 

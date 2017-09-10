@@ -347,6 +347,8 @@ class WebController(BaseController):
 
 	def P_movielist(self, request):
 		self.isGZ=True
+		if self.isJson:
+			request.setHeader("content-type", "application/json; charset=utf-8")
 		return getMovieList(request.args)
 	
 	def P_fullmovielist(self, request):
@@ -776,20 +778,28 @@ class WebController(BaseController):
 		return ret
 
 	def P_epgsearch(self, request):
-		res = self.testMandatoryArguments(request, ["search"])
-		if res:
-			return res
-		endtime = None
-		if "endtime" in request.args.keys():
-			try:
-				endtime = int(request.args["endtime"][0])
-			except Exception, e:
-				pass
 		self.isGZ=True
-		fulldesc=False
-		if "full" in request.args.keys():
-			fulldesc=True
-		return getSearchEpg(request.args["search"][0], endtime,fulldesc)
+		if "search" in request.args.keys():
+			endtime = None
+			if "endtime" in request.args.keys():
+				try:
+					endtime = int(request.args["endtime"][0])
+				except Exception, e:
+					pass
+			fulldesc=False
+			if "full" in request.args.keys():
+				fulldesc=True
+			return getSearchEpg(request.args["search"][0], endtime,fulldesc)
+		else:
+			res = self.testMandatoryArguments(request, ["sref", "eventid"])
+			if res:
+				return res
+			service_reference = request.args["sref"][0]
+			try:
+				item_id = int(request.args["eventid"][0])
+			except Exception as exc:
+				item_id = 0
+			return getEvent(service_reference,item_id)
 
 	def P_epgsearchrss(self, request):
 		res = self.testMandatoryArguments(request, ["search"])

@@ -544,6 +544,7 @@ def getPowerTimer(session):
 			timers.append({
 			"timertype": str(timer.timerType),
 			"timertypename": str({
+				TIMERTYPE.NONE: "nothing",
 				TIMERTYPE.WAKEUP: "wakeup",
 				TIMERTYPE.WAKEUPTOSTANDBY: "wakeuptostandby",
 				TIMERTYPE.AUTOSTANDBY: "autostandby",
@@ -559,6 +560,7 @@ def getPowerTimer(session):
 			"afterevent": str(timer.afterEvent),
 			"aftereventname": str({
 				AFTEREVENT.NONE: "nothing",
+				AFTEREVENT.WAKEUP: "wakeup",
 				AFTEREVENT.WAKEUPTOSTANDBY: "wakeuptostandby",
 				AFTEREVENT.STANDBY: "standby",
 				AFTEREVENT.DEEPSTANDBY: "deepstandby"
@@ -584,7 +586,7 @@ def getPowerTimer(session):
 def setPowerTimer(session, request):
 
 	timertype = 0
-	if "timertype" in request.args.keys() and request.args["afterevent"][0] in ["0", "1", "2", "3","4","5","6","7"]:
+	if "timertype" in request.args.keys() and request.args["afterevent"][0] in ["0","1","2","3","4","5","6","7","8"]:
 		cmd = int(request.args["timertype"][0])
 	begin = int(time() + 60)
 	if "begin" in request.args.keys():
@@ -599,7 +601,7 @@ def setPowerTimer(session, request):
 	if "repeated" in request.args.keys():
 		repeated = request.args["repeated"][0] == "1"
 	afterevent = 0
-	if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["0", "1", "2", "3"]:
+	if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["0","1","2","3","4"]:
 		afterevent = int(request.args["afterevent"][0])
 	autosleepinstandbyonly = "no"
 	if "autosleepinstandbyonly" in request.args.keys():
