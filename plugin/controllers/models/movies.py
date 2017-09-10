@@ -210,7 +210,6 @@ def getMovieList(rargs=None, locations=None):
 					movie['description'] = unicode(desc,'utf_8', errors='ignore').encode('utf_8', 'ignore')
 
 				if fields is None or 'size' in fields:
-					filename = filename.replace("'", "\'").replace("%", "\%")
 					size = 0
 					sz = ''
 
