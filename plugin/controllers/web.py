@@ -1013,7 +1013,7 @@ class WebController(BaseController):
 			key = request.args["key"][0]
 			if "/" not in key and "%" not in key and "." in key:
 				keys = key.split('.')
-				if len(keys) == 3 and keys[0] == 'config':
+				if len(keys) in (3, 4) and keys[0] == 'config':
 					return saveConfig(key, request.args["value"][0])
 		return {"result": False}
 
