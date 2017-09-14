@@ -16,300 +16,242 @@ Unit Test for Code Trying to Mitigate a Remote Code Execution Vulnerability
     uid=0(root) gid=0(root)
 
 """
+import os
+import sys
 import unittest
-import re
 import pickle
 
-PATTERN_ITEM_OR_KEY_ACCESS = r'^(?P<attr_name>[a-zA-Z][\w\d]*)' \
-                             r'\[((?P<index>\d+)|' \
-                             r'[\'\"](?P<key>[\s\w\d]+)[\'\"])\]$'
-REGEX_ITEM_OR_KEY_ACCESS = re.compile(PATTERN_ITEM_OR_KEY_ACCESS)
+# hack: alter include path in such ways that utilities library is included
+sys.path.append(os.path.join(os.path.dirname(__file__), '../plugin'))
+
+from controllers.utilities import get_config_attribute
 
 SOME_BAD_KEY = "config.__class__.__name__ == 1 or (open('you lost your mind?" \
-               " according to my last psych EVALuation, yes', 'wb') " \
-               "and config or config)"
+			   " according to my last psych EVALuation, yes', 'wb') " \
+			   "and config or config)"
 
 SOME_OLD_BAD_KEY = "config.__class__ == 1 or (__import__('os').system(" \
-                   "'touch ' + chr(47) + 'tmp' + chr(47) + 'py100 &')) " \
-                   "and config or config)"
+				   "'touch ' + chr(47) + 'tmp' + chr(47) + 'py100 &')) " \
+				   "and config or config)"
 
 KEY_RIGHT = 123456
 
 
 class ConfigObjectMockup(object):
-    """
-    Mock implementation of :py:class:`Components.config.Config`.
-    """
+	"""
+	Mock implementation of :py:class:`Components.config.Config`.
+	"""
 
-    def __init__(self, value=None):
-        self._value = value
+	def __init__(self, value=None):
+		self._value = value
 
-    def save(self):
-        return True
+	def save(self):
+		return True
 
-    def handleKey(self, key):
-        return key
+	def handleKey(self, key):
+		return key
 
-    def get_saved_value(self):
-        return self._value
+	def get_saved_value(self):
+		return self._value
 
-    saved_value = property(get_saved_value)
+	saved_value = property(get_saved_value)
 
-    def pickle(self):
-        return pickle.dumps(self)
+	def pickle(self):
+		return pickle.dumps(self)
 
-    def __eq__(self, other):
-        return self._value == other
+	def __eq__(self, other):
+		return self._value == other
 
 
 def is_invalid_key(key):
-    """
-    Vulnerable key validation as implemented in
-    :py:meth:`controllers.WebController.P_saveconfig`.
+	"""
+	Vulnerable key validation as implemented in
+	:py:meth:`controllers.WebController.P_saveconfig`.
 
-    Args:
-        key: configuration member access key
-    Returns:
-        True if key appears to be valid
-    """
-    if "/" not in key and "%" not in key and "." in key:
-        keys = key.split('.')
-        if len(keys) in (3, 4, 5) and keys[0] == 'config':
-            return False
-    return True
+	Args:
+		key: configuration member access key
+	Returns:
+		True if key appears to be valid
+	"""
+	if "/" not in key and "%" not in key and "." in key:
+		keys = key.split('.')
+		if len(keys) in (3, 4, 5) and keys[0] == 'config':
+			return False
+	return True
 
 
 def get_config_attribute_insane(path):
-    """
-    Determine attribute to be accessed by *path* using :py:func:`eval`.
+	"""
+	Determine attribute to be accessed by *path* using :py:func:`eval`.
 
-    Args:
-        path: character string specifying which attribute is to be accessed
+	Args:
+		path: character string specifying which attribute is to be accessed
 
-    Returns:
-        Attribute of object described by *path*
-    """
-    if not is_invalid_key(path):
-        return eval(path)
-    raise ValueError("invalid path {!r}".format(path))
-
-
-def get_config_attribute(path, root_obj, head=None):
-    """
-    Determine attribute of *root_obj* to be accessed by *path* in a
-    (somewhat) safe manner.
-    This implementation will allow key and index based accessing too
-    (e.g. ``config.some_list[0]`` or ``config.some_dict['some_key']``)
-    The *path* value needs to start with *head* (default='config').
-
-    Args:
-        path: character string specifying which attribute is to be accessed
-        root_obj: An object whose attributes are to be accessed.
-        head: Value of the first portion of *path*
-
-    Returns:
-        Attribute of *root_obj*
-
-    Raises:
-        ValueError: If *path* is invalid.
-        AttributeError: If attribute cannot be accessed
-    """
-    if head is None:
-        head = 'config'
-    portions = path.split('.')
-
-    if len(portions) < 2:
-        raise ValueError('Invalid path length')
-
-    if portions[0] != head:
-        raise ValueError(
-            'Head is {!r}, expected {!r}'.format(portions[0], head))
-
-    current_obj = root_obj
-
-    for attr_name in portions[1:]:
-        if not attr_name:
-            raise ValueError("empty attr_name")
-
-        if attr_name.startswith('_'):
-            raise ValueError('private member')
-
-        matcher = REGEX_ITEM_OR_KEY_ACCESS.match(attr_name)
-
-        if matcher:
-            gdict = matcher.groupdict()
-            attr_name = gdict.get('attr_name')
-            next_obj = getattr(current_obj, attr_name)
-
-            if gdict.get("index"):
-                index = int(gdict.get("index"))
-                current_obj = next_obj[index]
-            else:
-                key = gdict["key"]
-                current_obj = next_obj[key]
-        else:
-            current_obj = getattr(current_obj, attr_name)
-
-    return current_obj
+	Returns:
+		Attribute of object described by *path*
+	"""
+	if not is_invalid_key(path):
+		return eval(path)
+	raise ValueError("invalid path {!r}".format(path))
 
 
 class EvilEvalTestCase(unittest.TestCase):
-    def setUp(self):
-        """
-        Create a :py:class:`Components.config.Config` object like the one
-        described in Components/config.py.
+	def setUp(self):
+		"""
+		Create a :py:class:`Components.config.Config` object like the one
+		described in Components/config.py.
 
-        .. highlight:: python
+		.. highlight:: python
 
-            config.bla = ConfigSubsection()
-            config.bla.test = ConfigYesNo()
-            config.nim = ConfigSubList()
-            config.nim.append(ConfigSubsection())
-            config.nim[0].bla = ConfigYesNo()
-            config.nim.append(ConfigSubsection())
-            config.nim[1].bla = ConfigYesNo()
-            config.nim[1].blub = ConfigYesNo()
-            config.arg = ConfigSubDict()
-            config.arg["Hello"] = ConfigYesNo()
+			config.bla = ConfigSubsection()
+			config.bla.test = ConfigYesNo()
+			config.nim = ConfigSubList()
+			config.nim.append(ConfigSubsection())
+			config.nim[0].bla = ConfigYesNo()
+			config.nim.append(ConfigSubsection())
+			config.nim[1].bla = ConfigYesNo()
+			config.nim[1].blub = ConfigYesNo()
+			config.arg = ConfigSubDict()
+			config.arg["Hello"] = ConfigYesNo()
 
-            config.arg["Hello"].handleKey(KEY_RIGHT)
-            config.arg["Hello"].handleKey(KEY_RIGHT)
+			config.arg["Hello"].handleKey(KEY_RIGHT)
+			config.arg["Hello"].handleKey(KEY_RIGHT)
 
-            config.saved_value
+			config.saved_value
 
-            configfile.save()
-            config.save()
-            print config.pickle()
+			configfile.save()
+			config.save()
+			print config.pickle()
 
-        """
-        self.config_obj = ConfigObjectMockup()
-        self.config_obj.bla = ConfigObjectMockup()
-        self.config_obj.bla.test = ConfigObjectMockup(True)
-        self.config_obj.nim = list()
-        self.config_obj.nim.append(ConfigObjectMockup())
-        self.config_obj.nim[0].bla = ConfigObjectMockup(True)
-        self.config_obj.nim.append(ConfigObjectMockup())
-        self.config_obj.nim[1].bla = ConfigObjectMockup(True)
-        self.config_obj.nim[1].blub = ConfigObjectMockup(True)
-        self.config_obj.arg = dict()
-        self.config_obj.arg["Hello"] = ConfigObjectMockup(True)
-        self.config_obj.arg["Hello"].handleKey(KEY_RIGHT)
-        global config
-        config = self.config_obj
+		"""
+		self.config_obj = ConfigObjectMockup()
+		self.config_obj.bla = ConfigObjectMockup()
+		self.config_obj.bla.test = ConfigObjectMockup(True)
+		self.config_obj.nim = list()
+		self.config_obj.nim.append(ConfigObjectMockup())
+		self.config_obj.nim[0].bla = ConfigObjectMockup(True)
+		self.config_obj.nim.append(ConfigObjectMockup())
+		self.config_obj.nim[1].bla = ConfigObjectMockup(True)
+		self.config_obj.nim[1].blub = ConfigObjectMockup(True)
+		self.config_obj.arg = dict()
+		self.config_obj.arg["Hello"] = ConfigObjectMockup(True)
+		self.config_obj.arg["Hello"].handleKey(KEY_RIGHT)
+		global config
+		config = self.config_obj
 
-    def testMockup(self):
-        self.assertTrue(self.config_obj.bla.test)
-        self.assertTrue(self.config_obj.nim[0].bla)
-        self.assertTrue(self.config_obj.nim[1].bla)
-        self.assertTrue(self.config_obj.nim[1].blub)
-        self.assertEqual(2, len(self.config_obj.nim))
-        self.assertTrue(self.config_obj.arg['Hello'])
-        self.assertEqual(KEY_RIGHT,
-                         self.config_obj.arg['Hello'].handleKey(KEY_RIGHT))
+	def testMockup(self):
+		self.assertTrue(self.config_obj.bla.test)
+		self.assertTrue(self.config_obj.nim[0].bla)
+		self.assertTrue(self.config_obj.nim[1].bla)
+		self.assertTrue(self.config_obj.nim[1].blub)
+		self.assertEqual(2, len(self.config_obj.nim))
+		self.assertTrue(self.config_obj.arg['Hello'])
+		self.assertEqual(KEY_RIGHT,
+						 self.config_obj.arg['Hello'].handleKey(KEY_RIGHT))
 
-        mockie_messer = ConfigObjectMockup("Und der Haifisch")
-        self.assertEquals("Und der Haifisch", mockie_messer.saved_value)
-        self.assertEquals(
-            "ccopy_reg\n_reconstructor\np0\n(c__main__\nConfigObjectMockup\np1"
-            "\nc__builtin__\nobject\np2\nNtp3\nRp4\n(dp5\nS'_value'\np6\nS'Und"
-            " der Haifisch'\np7\nsb.", mockie_messer.pickle())
+		mockie_messer = ConfigObjectMockup("Und der Haifisch")
+		self.assertEquals("Und der Haifisch", mockie_messer.saved_value)
+		self.assertEquals(
+			"ccopy_reg\n_reconstructor\np0\n(c__main__\nConfigObjectMockup\np1"
+			"\nc__builtin__\nobject\np2\nNtp3\nRp4\n(dp5\nS'_value'\np6\nS'Und"
+			" der Haifisch'\np7\nsb.", mockie_messer.pickle())
 
-    def testAtticSanitation(self):
-        # D-OH! EPIC FAIL :)
-        self.assertFalse(is_invalid_key(SOME_BAD_KEY))
+	def testAtticSanitation(self):
+		# D-OH! EPIC FAIL :)
+		self.assertFalse(is_invalid_key(SOME_BAD_KEY))
 
-    def testAtticSanitation2(self):
-        # D-OH! EPIC FAIL :)
-        self.assertFalse(is_invalid_key(SOME_OLD_BAD_KEY))
+	def testAtticSanitation2(self):
+		# D-OH! EPIC FAIL :)
+		self.assertFalse(is_invalid_key(SOME_OLD_BAD_KEY))
 
-    def testBraveNewSanitation(self):
-        with self.assertRaises(ValueError) as context:
-            get_config_attribute(SOME_BAD_KEY, self.config_obj)
-        self.assertTrue('private member' in context.exception)
+	def testBraveNewSanitation(self):
+		with self.assertRaises(ValueError) as context:
+			get_config_attribute(SOME_BAD_KEY, self.config_obj)
+		self.assertTrue('private member' in context.exception)
 
-        with self.assertRaises(ValueError) as context:
-            get_config_attribute('__class__', self.config_obj)
-        self.assertTrue('Invalid path length' in context.exception)
+		with self.assertRaises(ValueError) as context:
+			get_config_attribute('__class__', self.config_obj)
+		self.assertTrue('Invalid path length' in context.exception)
 
-        with self.assertRaises(ValueError) as context:
-            get_config_attribute('config.__class__..', self.config_obj)
-        self.assertTrue('private member' in context.exception)
+		with self.assertRaises(ValueError) as context:
+			get_config_attribute('config.__class__..', self.config_obj)
+		self.assertTrue('private member' in context.exception)
 
-        with self.assertRaises(ValueError) as context:
-            get_config_attribute('config.nim.__class__.__name__',
-                                 self.config_obj)
-        self.assertTrue('private member' in context.exception)
+		with self.assertRaises(ValueError) as context:
+			get_config_attribute('config.nim.__class__.__name__',
+								 self.config_obj)
+		self.assertTrue('private member' in context.exception)
 
-        with self.assertRaises(ValueError) as context:
-            get_config_attribute('config.nim................', self.config_obj)
-        self.assertTrue('empty attr_name' in context.exception)
+		with self.assertRaises(ValueError) as context:
+			get_config_attribute('config.nim................', self.config_obj)
+		self.assertTrue('empty attr_name' in context.exception)
 
-    def testMockupAccess(self):
-        self.assertTrue(get_config_attribute_insane('config.bla.test'))
-        self.assertTrue(get_config_attribute_insane('config.nim[0].bla'))
-        self.assertTrue(get_config_attribute_insane('config.nim[1].bla'))
-        self.assertTrue(get_config_attribute_insane('config.nim[1].blub'))
+	def testMockupAccess(self):
+		self.assertTrue(get_config_attribute_insane('config.bla.test'))
+		self.assertTrue(get_config_attribute_insane('config.nim[0].bla'))
+		self.assertTrue(get_config_attribute_insane('config.nim[1].bla'))
+		self.assertTrue(get_config_attribute_insane('config.nim[1].blub'))
 
-        # accessing the following members is not implemented:
-        # self.assertEqual(2, len(get_config_value_insane('config.nim')))
-        # self.assertTrue(get_config_value_insane("config.arg['Hello']"))
-        # self.assertEqual(KEY_RIGHT, get_config_value_insane(
-        # "config.arg['Hello']").handleKey(KEY_RIGHT))
+		# accessing the following members is not implemented:
+		# self.assertEqual(2, len(get_config_value_insane('config.nim')))
+		# self.assertTrue(get_config_value_insane("config.arg['Hello']"))
+		# self.assertEqual(KEY_RIGHT, get_config_value_insane(
+		# "config.arg['Hello']").handleKey(KEY_RIGHT))
 
-        with self.assertRaises(AttributeError) as context:
-            get_config_attribute_insane('config.hats.net')
-        self.assertTrue(
-            "'ConfigObjectMockup' object has no attribute 'hats'" in context.exception)
+		with self.assertRaises(AttributeError) as context:
+			get_config_attribute_insane('config.hats.net')
+		self.assertTrue(
+			"'ConfigObjectMockup' object has no attribute 'hats'" in context.exception)
 
-        with self.assertRaises(IndexError) as context:
-            get_config_attribute_insane('config.nim[2].bla')
-        self.assertTrue("list index out of range" in context.exception)
+		with self.assertRaises(IndexError) as context:
+			get_config_attribute_insane('config.nim[2].bla')
+		self.assertTrue("list index out of range" in context.exception)
 
-        with self.assertRaises(AttributeError) as context:
-            get_config_attribute_insane('config.nim.nosuchnumber')
-        self.assertTrue(
-            "'list' object has no attribute 'nosuchnumber'" in context.exception)
+		with self.assertRaises(AttributeError) as context:
+			get_config_attribute_insane('config.nim.nosuchnumber')
+		self.assertTrue(
+			"'list' object has no attribute 'nosuchnumber'" in context.exception)
 
-    def testMockupBraveNewAccess(self):
-        with self.assertRaises(ValueError) as context:
-            get_config_attribute('KONFIG.nim.nosuchnumber', self.config_obj)
+	def testMockupBraveNewAccess(self):
+		with self.assertRaises(ValueError) as context:
+			get_config_attribute('KONFIG.nim.nosuchnumber', self.config_obj)
 
-        self.assertTrue(
-            "Head is 'KONFIG', expected 'config'" in context.exception)
+		self.assertTrue(
+			"Head is 'KONFIG', expected 'config'" in context.exception)
 
-        self.assertTrue(
-            get_config_attribute('config.bla.test', self.config_obj))
-        self.assertTrue(
-            get_config_attribute('config.nim[0].bla', self.config_obj))
-        self.assertTrue(
-            get_config_attribute('config.nim[1].bla', self.config_obj))
-        self.assertTrue(
-            get_config_attribute('config.nim[1].blub', self.config_obj))
-        self.assertEqual(
-            2,
-            len(get_config_attribute('config.nim', self.config_obj)))
-        self.assertTrue(
-            get_config_attribute("config.arg['Hello']", self.config_obj))
-        self.assertEqual(
-            KEY_RIGHT,
-            get_config_attribute(
-                "config.arg['Hello']",
-                self.config_obj).handleKey(KEY_RIGHT))
+		self.assertTrue(
+			get_config_attribute('config.bla.test', self.config_obj))
+		self.assertTrue(
+			get_config_attribute('config.nim[0].bla', self.config_obj))
+		self.assertTrue(
+			get_config_attribute('config.nim[1].bla', self.config_obj))
+		self.assertTrue(
+			get_config_attribute('config.nim[1].blub', self.config_obj))
+		self.assertEqual(
+			2,
+			len(get_config_attribute('config.nim', self.config_obj)))
+		self.assertTrue(
+			get_config_attribute("config.arg['Hello']", self.config_obj))
+		self.assertEqual(
+			KEY_RIGHT,
+			get_config_attribute(
+				"config.arg['Hello']",
+				self.config_obj).handleKey(KEY_RIGHT))
 
-        with self.assertRaises(AttributeError) as context:
-            get_config_attribute('config.hats.net', self.config_obj)
-        self.assertTrue(
-            "'ConfigObjectMockup' object has no attribute 'hats'" in context.exception)
+		with self.assertRaises(AttributeError) as context:
+			get_config_attribute('config.hats.net', self.config_obj)
+		self.assertTrue(
+			"'ConfigObjectMockup' object has no attribute 'hats'" in context.exception)
 
-        with self.assertRaises(IndexError) as context:
-            get_config_attribute('config.nim[2].bla', self.config_obj)
-        self.assertTrue("list index out of range" in context.exception)
+		with self.assertRaises(IndexError) as context:
+			get_config_attribute('config.nim[2].bla', self.config_obj)
+		self.assertTrue("list index out of range" in context.exception)
 
-        with self.assertRaises(AttributeError) as context:
-            get_config_attribute('config.nim.nosuchnumber', self.config_obj)
-        self.assertTrue(
-            "'list' object has no attribute 'nosuchnumber'" in context.exception)
+		with self.assertRaises(AttributeError) as context:
+			get_config_attribute('config.nim.nosuchnumber', self.config_obj)
+		self.assertTrue(
+			"'list' object has no attribute 'nosuchnumber'" in context.exception)
 
 
 if __name__ == '__main__':
-    unittest.main()
+	unittest.main()
