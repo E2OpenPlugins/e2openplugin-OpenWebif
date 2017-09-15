@@ -359,13 +359,9 @@ def getAllInfo():
 				model = "Spark 7162"
 			else:
 				model = "Spark"
-		elif (procmodel.startswith("dm") and not procmodel == "dm8000"):
+		elif (procmodel.startswith("dm")):
 			brand = "Dream Multimedia"
 			model = procmodel.replace("dm", "DM", 1)
-		# A "dm8000" is only a Dreambox if it passes the tpm verification:
-		elif procmodel == "dm8000" and orgdream:
-			brand = "Dream Multimedia"
-			model = "DM8000"
 		else:
 			model = procmodel
 
@@ -478,7 +474,7 @@ def getAllInfo():
 		remote = procmodel.replace(" ", "")
 	elif procmodel == "vg2000":
 		remote = "xcombo"
-	elif procmodel == "dm8000" and orgdream:
+	elif procmodel == "dm8000":
 		remote = "dmm1"
 	elif procmodel in ("dm7080", "dm7020hd", "dm7020hdv2", "dm800sev2", "dm500hdv2", "dm520", "dm820", "dm900"):
 		remote = "dmm2"
