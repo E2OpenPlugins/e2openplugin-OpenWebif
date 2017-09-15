@@ -111,6 +111,14 @@ def getMovieList(rargs=None, locations=None):
 	if directory[-1] != "/":
 		directory += "/"
 
+	if not os.path.isdir(directory):
+		return {
+			"movies": [],
+			"locations": [],
+			"bookmarks": [],
+			"directory": [],
+		}
+
 	root = eServiceReference(MOVIE_LIST_SREF_ROOT + directory)
 
 	for item in sorted(os.listdir(directory)):
