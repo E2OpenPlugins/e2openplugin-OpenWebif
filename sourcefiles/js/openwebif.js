@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.11
+//* Version 1.2.12
 //******************************************************************************
 //* Copyright (C) 2011-2017 E2OpenPlugins
 //*
@@ -26,6 +26,7 @@
 //* V 1.2.9 - improve timer #624
 //* V 1.2.10 - improve screenshot refresh #625
 //* V 1.2.11 - improve visual feedback for adding timer in multiepg
+//* V 1.2.12 - improve timer edit
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -1006,7 +1007,7 @@ var current_end;
 var timeredit_initialized = false;
 var timeredit_begindestroy = false;
 
-function initTimerBQ(radio) {
+function initTimerBQ(radio, callback) {
 
 	$('#bouquet_select').find('optgroup').remove().end();
 	$('#bouquet_select').find('option').remove().end();
@@ -1016,15 +1017,14 @@ function initTimerBQ(radio) {
 			$("#bouquet_select").val( current_ref );
 		}
 		$('#bouquet_select').trigger("chosen:updated");
+		callback();
 	} , radio);
 
 }
 
-function initTimerEdit(radio) {
+function initTimerEdit(radio, callback) {
 	
-	// FIXME: async
-	initTimerBQ(radio);
-	
+	var bottomhalf = function() {
 	$('#dirname').find('option').remove().end();
 	$('#dirname').append($("<option></option>").attr("value", "None").text("Default"));
 	for (var id in _locations) {
@@ -1041,6 +1041,10 @@ function initTimerEdit(radio) {
 	$("#tagsnew > input").checkboxradio({icon: false});
 	
 	timeredit_initialized = true;
+		callback();
+	}
+
+	initTimerBQ(radio, bottomhalf);
 }
 
 function loadLocations()
@@ -1123,17 +1127,7 @@ function editTimer(serviceref, begin, end) {
 	$('#cbtv').prop('checked',!radio);
 	$('#cbradio').prop('checked',radio);
 	
-	if (!timeredit_initialized) {
-		initTimerEdit(radio);
-	}
-	else
-	{
-		var _chsref=$("#bouquet_select option:last").val();
-		if(radio && _chsref.substring(0,6) !== '1:0:2:')
-			initTimerEdit(radio);
-		if(!radio && _chsref.substring(0,6) == '1:0:2:')
-			initTimerEdit(radio);
-	}
+	var bottomhalf = function() {
 	
 	if (timeredit_begindestroy) {
 		initTimerEditBegin();
@@ -1242,6 +1236,23 @@ function editTimer(serviceref, begin, end) {
 			}
 		}
 	});
+	};
+	
+	if (!timeredit_initialized) {
+		initTimerEdit(radio, bottomhalf);
+	}
+	else
+	{
+		var _chsref=$("#bouquet_select option:last").val();
+		if(radio && _chsref.substring(0,6) !== '1:0:2:') {
+			initTimerEdit(radio, bottomhalf);
+		} else if(!radio && _chsref.substring(0,6) == '1:0:2:') {
+			initTimerEdit(radio, bottomhalf);
+		} else {
+			bottomhalf();
+		} 
+	}
+	
 }
 
 function addTimer(evt,chsref,chname,top) {
@@ -1279,18 +1290,7 @@ function addTimer(evt,chsref,chname,top) {
 	$('#cbtv').prop('checked',!radio);
 	$('#cbradio').prop('checked',radio);
 
-	if (!timeredit_initialized || lch < 2) {
-		initTimerEdit(radio);
-	}
-	else
-	{
-		var _chsref=$("#bouquet_select option:last").val();
-		if(radio && _chsref.substring(0,6) !== '1:0:2:')
-			initTimerEdit(radio);
-		if(!radio && _chsref.substring(0,6) == '1:0:2:')
-			initTimerEdit(radio);
-	}
-
+	var bottomhalf = function() {
 	if (typeof chsref !== 'undefined' && typeof chname !== 'undefined') {
 		serviceref = chsref;
 		title = chname;
@@ -1330,6 +1330,23 @@ function addTimer(evt,chsref,chname,top) {
 	*/
 
 	openTimerDlg(tstr_add_timer);
+	};
+	
+	if (!timeredit_initialized || lch < 2) {
+		initTimerEdit(radio, bottomhalf);
+	}
+	else
+	{
+		var _chsref=$("#bouquet_select option:last").val();
+		if(radio && _chsref.substring(0,6) !== '1:0:2:') {
+			initTimerEdit(radio, bottomhalf);
+		} else if(!radio && _chsref.substring(0,6) == '1:0:2:') {
+			initTimerEdit(radio, bottomhalf);
+		} else {
+			bottomhalf();
+		}
+	}
+
 }
 
 function openTimerDlg(title)
@@ -2088,4 +2105,3 @@ var SSHelperObj = function () {
 };
 
 var SSHelper = new SSHelperObj();
-
