@@ -224,9 +224,11 @@
 	<div id="editTimerForm" title="$tstrings['edit_timer']"></div>
 <script type="text/javascript">
 var h = window.innerHeight - 210;
-document.write('<style> #tvcontentmain { height: '+h.toString()+'px; } </style>');
-h=h-70;
-document.write('<style> #tvcontent,#movies,#timers { height: '+h.toString()+'px; } </style>');
+var hh = h-70;
+var css = document.createElement("style");
+css.type = "text/css";
+css.innerHTML = '#tvcontentmain { height: '+h.toString()+'px; } #tvcontent,#movies,#timers { height: '+hh.toString()+'px; }';
+document.body.appendChild(css);
 \$(document).ready(function() {
 	\$("#remote_container").load("static/remotes/${remote}.html");
 	directlink();
