@@ -8,6 +8,7 @@ from os import path, listdir
 import xml.etree.cElementTree
 
 from Plugins.Extensions.OpenWebif.__init__ import _
+from Plugins.Extensions.OpenWebif.controllers.utilities import get_config_attribute
 
 def addCollapsedMenu(name):
 	tags = config.OpenWebif.webcache.collapsedmenus.value.split("|")
@@ -147,7 +148,15 @@ def getJsonFromConfig(cnf):
 
 def saveConfig(path, value):
 	try:
-		cnf = eval(path)
+		cnf = get_config_attribute(path, root_obj=config)
+	except Exception as exc:
+		print "[OpenWebif] ", exc
+		return {
+			"result": False,
+			"message": "I'm sorry Dave, I'm afraid I can't do that"
+		}
+
+	try:
 		if cnf.__class__.__name__ == "ConfigBoolean" or cnf.__class__.__name__ == "ConfigEnableDisable" or cnf.__class__.__name__ == "ConfigYesNo":
 			cnf.value = value == "true"
 		elif cnf.__class__.__name__ == "ConfigSet":
