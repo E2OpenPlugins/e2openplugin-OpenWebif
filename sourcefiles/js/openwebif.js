@@ -1035,9 +1035,10 @@ function initTimerEdit(radio) {
 	$('#tagsnew').html('');
 	for (var id in _tags) {
 		var tag = _tags[id];
-		$('#tagsnew').append("<input type='checkbox' name='tagsnew' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
+		$('#tagsnew').append("<input type='checkbox' name='"+tag+"' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
 	}
-	$('#tagsnew').buttonset();
+	
+	$("#tagsnew > input").checkboxradio({icon: false});
 	
 	timeredit_initialized = true;
 }
@@ -1169,17 +1170,28 @@ function editTimer(serviceref, begin, end) {
 							$('#errorbox').hide();
 							var flags=timer.repeated;
 							for (var i=0; i<7; i++) {
-								$('#day'+i).attr('checked', ((flags & 1)==1));
+								$('#day'+i).prop('checked', ((flags & 1)==1)).checkboxradio("refresh");
 								flags >>= 1;
 							}
-							$('#repeatdays').buttonset('refresh');
 							
-							$('#tagsnew').find('input').attr('checked',false);
+							$('#tagsnew > input').prop('checked',false).checkboxradio("refresh");
+							
 							var tags = timer.tags.split(' ');
 							for (var j=0; j<tags.length; j++) {
-								$('#tag_'+tags[j]).attr('checked', true);
+								var tag = tags[j].replace(/\(/g,'_').replace(/\)/g,'_').replace(/\'/g,'_');
+								if (tag.length>0)
+								{
+									if($('#tag_'+tag).length)
+									{
+										$('#tag_'+tag).prop('checked', true).checkboxradio("refresh");
+									}
+									else
+									{
+										$('#tagsnew').append("<input type='checkbox' checked='checked' name='"+tag+"' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
 							}
-							$('#tagsnew').buttonset('refresh');
+								}
+							}
+							$("#tagsnew > input").checkboxradio({icon: false});
 							
 							$('#timerbegin').datetimepicker('setDate', (new Date(Math.round(timer.begin) * 1000)));
 							$('#timerend').datetimepicker('setDate', (new Date(Math.round(timer.end) * 1000)));
@@ -1296,12 +1308,10 @@ function addTimer(evt,chsref,chname,top) {
 	$('#errorbox').hide();
 
 	for (var i=0; i<7; i++) {
-		$('#day'+i).attr('checked', false);
+		$('#day'+i).attr('checked', false).checkboxradio('refresh');
 	}
-	$('#repeatdays').buttonset('refresh');
 	
-	$('#tagsnew').find('input').attr('checked',false);
-	$('#tagsnew').buttonset('refresh');
+	$('#tagsnew > input').prop('checked',false).checkboxradio("refresh");
 
 	var begindate = begin !== -1 ? new Date( (Math.round(begin) - margin_before*60) * 1000) : new Date();
 	$('#timerbegin').datetimepicker('setDate', begindate);
