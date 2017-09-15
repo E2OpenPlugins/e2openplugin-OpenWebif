@@ -25,17 +25,6 @@ def reloadTransponders(self):
 def reloadParentalControl(self):
 	Components.ParentalControl.parentalControl.open()
 
-def clearAllServices(self):
-	satList = []
-	satellites = {}
-	transponders = {}
-	self.eDVBDB.readSatellites(satList, satellites, transponders)
-	positions = [x[0] for x in satList] 
-	for pos in positions: # sat
-		self.eDVBDB.removeServices(-1, -1, -1, pos)
-	self.eDVBDB.removeServices(0xFFFF0000 - 0x100000000) # cable
-	self.eDVBDB.removeServices(0xEEEE0000 - 0x100000000) # terrestrial
-
 def reloadServicesLists(self, request):
 	self.eDVBDB = eDVBDB.getInstance()
 	res = "False"
@@ -47,13 +36,11 @@ def reloadServicesLists(self, request):
 		mode = ""
 
 	if mode == "0":
-		clearAllServices(self)
 		reloadLameDB(self)
 		reloadUserBouquets(self)
 		res = True
 		msg = "reloaded both"
 	elif mode == "1":
-		clearAllServices(self)
 		reloadLameDB(self)
 		res = True
 		msg = "reloaded lamedb"

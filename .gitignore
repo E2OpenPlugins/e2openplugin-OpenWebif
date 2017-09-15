@@ -1,6 +1,6 @@
 .DS_Store
 ._*
-*.py[cdo]
+*.py[cod]
 *.swp
 *.ipk
 /.idea

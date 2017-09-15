@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.10
+//* Version 1.2.11
 //******************************************************************************
 //* Copyright (C) 2011-2017 E2OpenPlugins
 //*
@@ -25,6 +25,7 @@
 //* V 1.2.8 - improve save config #620
 //* V 1.2.9 - improve timer #624
 //* V 1.2.10 - improve screenshot refresh #625
+//* V 1.2.11 - improve visual feedback for adding timer in multiepg
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -515,8 +516,8 @@ function webapi_execute_result(url, callback) {
 
 function cbAddTimerEvent(state) {
 	if (state.state) {
-		$('.event[data-id='+state.eventId+'] .timer').remove();
-		$('.event[data-id='+state.eventId+'] div:first').append('<div class="timer">'+tstr_timer+'</div>');
+		$('.event[data-id='+state.eventId+'][data-ref="'+state.sRef+'"] .timer').remove();
+		$('.event[data-id='+state.eventId+'][data-ref="'+state.sRef+'"] div:first').append('<div class="timer">'+tstr_timer+'</div>');
 	}
 }
 
