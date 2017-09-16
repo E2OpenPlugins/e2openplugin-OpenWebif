@@ -1011,10 +1011,8 @@ class WebController(BaseController):
 			if res:
 				return res
 			key = request.args["key"][0]
-			if "/" not in key and "%" not in key and "." in key:
-				keys = key.split('.')
-				if len(keys) in (3, 4, 5) and keys[0] == 'config':
-					return saveConfig(key, request.args["value"][0])
+			value = request.args["value"][0]
+			return saveConfig(key, value)
 		return {"result": False}
 
 	def P_mediaplayeradd(self, request):
