@@ -105,7 +105,13 @@
 <thead>
 <tr>
 	#for $sname, $eventlist in $events.iteritems()
-	<td class="border"><div class="service ui-widget-header"><img src="$(picons[$sname])" /> $sname</div></td>
+	#set $evl = $eventlist[0]
+	#set $ref= ""
+	#if $evl
+		#set $ev=$evl[0]
+		#set $ref = "data-ref='" + $ev.ref + "'"
+	#end if
+	<td class="border"><div class="service ui-widget-header" $ref><img src="$(picons[$sname])" /> $sname</div></td>
 	#end for
 </tr>
 </thead>
@@ -281,6 +287,14 @@ fixTableHeight();
 		});
 	}
 });
+#if $mode == 1
+\$(".service").click(function() {
+	var ref = \$(this).data("ref");
+	if (ref != undefined) {
+		zapChannel(ref, '');
+	}
+});
+#end if
 \$(".plus").click(function() {
 	var day = \$(this).data("day");
 	var epgmode = "$epgmode";
