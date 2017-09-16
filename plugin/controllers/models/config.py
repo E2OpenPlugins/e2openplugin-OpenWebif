@@ -157,7 +157,7 @@ def saveConfig(path, value):
 		}
 
 	try:
-		if cnf.__class__.__name__ == "ConfigBoolean" or cnf.__class__.__name__ == "ConfigEnableDisable" or cnf.__class__.__name__ == "ConfigYesNo":
+		if cnf.__class__.__name__ in ("ConfigBoolean", "ConfigEnableDisable", "ConfigYesNo"):
 			cnf.value = value == "true"
 		elif cnf.__class__.__name__ == "ConfigSet":
 			values = cnf.value
@@ -168,7 +168,7 @@ def saveConfig(path, value):
 			cnf.value = values
 		elif cnf.__class__.__name__ == "ConfigNumber":
 			cnf.value = int(value)
-		elif  cnf.__class__.__name__ == "ConfigInteger" or cnf.__class__.__name__ == "TconfigInteger":
+		elif cnf.__class__.__name__ in ("ConfigInteger", "TconfigInteger"):
 			cnf_min = int(cnf.limits[0][0])
 			cnf_max = int(cnf.limits[0][1])
 			cnf_value = int(value)
