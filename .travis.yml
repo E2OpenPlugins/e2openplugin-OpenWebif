@@ -7,8 +7,28 @@ install:
 - pip install cheetah
 - pip install twisted
 - pip install pyopenssl
+- pip install bandit
 
 script: 
 - python -m compileall -l . -l plugin -l plugin/backport -l plugin/controllers -l plugin/controllers/models
 - cheetah compile -R plugin
 - python testsuite/evil_eval.py
+
+after_success:
+- bandit -r plugin -f html -o bandit.html
+- ./create_ipk.sh
+- export PKG=$(ls -1 *.ipk)
+- mkdir Rel
+- mv "${PKG}" ./Rel
+- mv bandit.html ./Rel
+
+deploy:
+  provider: pages
+  local_dir: Rel
+  github_token: $GITHUB_TOKEN
+#  file: "${PKG}"
+  skip_cleanup: true
+  target_branch: gh-pages
+  on:
+    branch: master
+    
