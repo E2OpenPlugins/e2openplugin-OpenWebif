@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2017-06-08 10:03+0200\n"
+"POT-Creation-Date: 2016-11-24 15:28+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Pr2 <dummy@dummy.com>\n"
+"Last-Translator: Pr2\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
@@ -248,7 +248,7 @@ msgstr "Erreur lors de la préparation du fichier de sauvegarde."
 
 #: plugin/controllers/BouquetEditor.py:634
 msgid "Bouquet-settings were restored successfully"
-msgstr "Les paramètres du bouquet restauré avec succès."
+msgstr "Les paramètres du bouquet restauré avec succès"
 
 #: plugin/controllers/BouquetEditor.py:636
 #, python-format
@@ -286,7 +286,7 @@ msgstr "Rafraîchir EPG"
 
 #: plugin/controllers/base.py:318
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: plugin/controllers/ipkg.py:239
 msgid "Error upload File"
@@ -324,7 +324,7 @@ msgstr "inconnu"
 
 #: plugin/controllers/models/info.py:135 plugin/local.py:117
 msgid "IPv4-only kernel"
-msgstr "noyau seulement en IPv4"
+msgstr "Noyau seulement en IPv4"
 
 #: plugin/controllers/models/info.py:139 plugin/local.py:119
 msgid "IPv4-only Python/Twisted"
@@ -379,7 +379,7 @@ msgstr "r/o"
 
 #: plugin/controllers/models/message.py:33
 msgid "Message sent successfully!"
-msgstr "Message envoyé avec succès"
+msgstr "Message envoyé avec succès!"
 
 #: plugin/controllers/models/message.py:43
 msgid "No answer in time"
@@ -538,7 +538,7 @@ msgstr "Erreur de timer de sommeil"
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr ""
 "ERREUR: Impossible de définir un Timer de sommeil pendant que le "
-"périphérique est en veille."
+"périphérique est en veille"
 
 #: plugin/controllers/models/timers.py:706
 #: plugin/controllers/models/timers.py:775
@@ -584,7 +584,7 @@ msgstr "Mauvais format du paramètre 'set=%s'. Utilisation de set=set15 "
 #: plugin/controllers/web.py:141
 #, python-format
 msgid "Unknown Volume command %s"
-msgstr "commande de Volume %s inconnue"
+msgstr "Commande de Volume %s inconnue"
 
 #: plugin/controllers/web.py:176
 msgid "The parameter 'command' must be a number"
@@ -953,7 +953,7 @@ msgstr "Inclure la description"
 
 #: plugin/local.py:100
 msgid "Restrict to Bouquets"
-msgstr ""
+msgstr "Limiter aux Bouquets"
 
 #: plugin/local.py:101
 msgid "Error"
@@ -969,7 +969,7 @@ msgstr "Extras"
 
 #: plugin/local.py:104
 msgid "finished"
-msgstr "Terminé"
+msgstr "terminé"
 
 #: plugin/local.py:105
 msgid "Firmware version"
@@ -1258,7 +1258,7 @@ msgstr "Envoyer message"
 
 #: plugin/local.py:180
 msgid "Waiting for answer ..."
-msgstr "En attente de la réponse"
+msgstr "En attente de la réponse…"
 
 #: plugin/local.py:181
 msgid "Send a Message"
@@ -1498,7 +1498,7 @@ msgstr "Zapper"
 
 #: plugin/local.py:241
 msgid "zap before Stream"
-msgstr "Zapper avant de streamer"
+msgstr "zapper avant de streamer"
 
 #: plugin/local.py:242
 msgid "Zap to"
@@ -1580,11 +1580,11 @@ msgstr "Recherche rigoureuse"
 
 #: plugin/local.py:263
 msgid "case-sensitive search"
-msgstr "Recherche non sensible à la case"
+msgstr "recherche sensible à la case"
 
 #: plugin/local.py:264
 msgid "case-insensitive search"
-msgstr "Recherche sensible à la case"
+msgstr "recherche non sensible à la case"
 
 #: plugin/local.py:265
 msgid "Timer type"
@@ -1813,7 +1813,7 @@ msgstr "AutoPoll"
 
 #: plugin/local.py:329
 msgid "Interval (in h)"
-msgstr "interval (en h)"
+msgstr "Interval (en h)"
 
 #: plugin/local.py:330
 msgid "Max Days"
@@ -1897,7 +1897,7 @@ msgstr "Réveil"
 
 #: plugin/local.py:358
 msgid "Inherit Autotimer"
-msgstr "hériter Autotimer"
+msgstr "Hériter Autotimer"
 
 #: plugin/local.py:359
 msgid "Parse Autotimer"
@@ -1929,7 +1929,7 @@ msgstr "Visibilité"
 
 #: plugin/local.py:367
 msgid "Picture in Picture"
-msgstr "image dans Image"
+msgstr "Image dans Image"
 
 #: plugin/local.py:368
 msgid "Picture in Picture (hidden)"
@@ -1981,7 +1981,7 @@ msgstr "Ajouter Marqueur"
 
 #: plugin/local.py:385
 msgid "Add Spacer"
-msgstr ""
+msgstr "Ajouter espace"
 
 #: plugin/local.py:386
 msgid "Rename"
@@ -1989,7 +1989,7 @@ msgstr "Renommer"
 
 #: plugin/local.py:387
 msgid "Do you really want to delete the selected item(s)"
-msgstr ""
+msgstr "Voulez-vous vraiment effacer l(es) élément(s) sélectionné(s)"
 
 #: plugin/local.py:388
 msgid "Do you really want to delete the bouquet"
@@ -2121,7 +2121,7 @@ msgstr "Web TV"
 
 #: plugin/local.py:424
 msgid "Calendar Week"
-msgstr ""
+msgstr "Calendrier de la semaine"
 
 #: plugin/local.py:426
 msgid "Link Speed"
@@ -2145,7 +2145,7 @@ msgstr "OpenWebInterface activé"
 
 #: plugin/plugin.py:124
 msgid "HTTP port"
-msgstr "port HTTP"
+msgstr "Port HTTP"
 
 #: plugin/plugin.py:125
 msgid "Enable HTTP Authentication"
@@ -2157,7 +2157,7 @@ msgstr "Activer HTTPS"
 
 #: plugin/plugin.py:128
 msgid "HTTPS port"
-msgstr "port HTTPS"
+msgstr "Port HTTPS"
 
 #: plugin/plugin.py:129
 msgid "Enable HTTPS Authentication"
@@ -2199,18 +2199,3 @@ msgstr "Caractère d'encodage pour les données EPG"
 #: plugin/plugin.py:212
 msgid "OpenWebif Configuration"
 msgstr "Configuration OpenWebif"
-
-#~ msgid "Delete Channel(s)"
-#~ msgstr "Effacer la/les chaîne(s)"
-
-#~ msgid "Do you really want to delete the channel(s)"
-#~ msgstr "Voulez-vous vraiment effacer la/les chaîne(s)"
-
-#~ msgid "Smart services renaming for XBMC"
-#~ msgstr "Renommer les services intelligement pour XBMC"
-
-#~ msgid "VPS Overwrite"
-#~ msgstr "VPS écrasement"
-
-#~ msgid "Timer List"
-#~ msgstr "Liste des timers"
