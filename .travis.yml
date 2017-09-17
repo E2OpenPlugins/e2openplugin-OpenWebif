@@ -26,7 +26,6 @@ deploy:
   provider: pages
   local_dir: Rel
   github_token: $GITHUB_TOKEN
-#  file: "${PKG}"
   skip_cleanup: true
   target_branch: gh-pages
   on:
