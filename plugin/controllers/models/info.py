@@ -194,6 +194,8 @@ def getPiconPath():
 		return "/media/cf/picon/"
 	elif pathExists("/media/hdd/picon/"):
 		return "/media/hdd/picon/"
+	elif pathExists("/media/mmc/picon/"):
+		return "/media/mmc/picon/"
 	elif pathExists("/usr/share/enigma2/picon/"):
 		return "/usr/share/enigma2/picon/"
 	elif pathExists("/picon/"):
