@@ -20,5 +20,11 @@ python-pyopenssl
 python-compression
 python-ipaddress
 
+## Latest Bandit Report
+[Link](http://e2openplugins.github.io/e2openplugin-OpenWebif/bandit.html) 
+
+## Latest ipk file
+[Link](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/tree/gh-pages)
+
 ## License
 Licensed under the GNU General Public License, Version 3. See [LICENSE](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt) for more details.
