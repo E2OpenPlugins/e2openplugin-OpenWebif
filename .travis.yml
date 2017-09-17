@@ -13,13 +13,14 @@ install:
 script: 
 - python -m compileall -l . -l plugin -l plugin/backport -l plugin/controllers -l plugin/controllers/models
 - cheetah compile -R plugin
-#- ls
 
 after_success:
+- bandit -r plugin -f html -o bandit.html 
 - ./create_ipk.sh
 - export PKG=$(ls -1 *.ipk)
 - mkdir Rel
 - mv "${PKG}" ./Rel
+- mv bandit.html ./Rel
 
 deploy:
   provider: pages
