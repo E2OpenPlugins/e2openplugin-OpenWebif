@@ -20,7 +20,7 @@ import os, hashlib
 
 try:
 	from Components.About import about
-except:
+except ImportError:
 	pass
 
 tpmloaded = 1
@@ -548,7 +548,7 @@ def getAllInfo():
 		distro = "Graterlia OS"
 		try:
 			imagever = about.getImageVersionString()
-		except:
+		except: # nosec
 			pass
 	# ToDo: If your distro gets detected as OpenPLi, feel free to add a detection for your distro here ...
 	else:
@@ -561,7 +561,7 @@ def getAllInfo():
 				oeline = f.readline().strip().lower()
 				f.close()
 				distro = oeline.split( )[1].replace("-all","")
-			except:
+			except: # nosec
 				pass
 
 		if distro == "openpli":
@@ -575,7 +575,7 @@ def getAllInfo():
 					# deal with major release versions only
 					if imagever.isnumeric():
 						imagebuild = "0"
-			except:
+			except: # nosec
 				# just in case
 				pass
 		elif distro == "openrsi":
@@ -583,7 +583,7 @@ def getAllInfo():
 		else:
 			try:
 				imagever = about.getImageVersionString()
-			except:
+			except: # nosec
 				pass
 
 		if (distro == "unknown" and brand == "Vu+" and fileExists("/etc/version")):
@@ -598,14 +598,14 @@ def getAllInfo():
 	# reporting the installed dvb-module version is as close as we get without too much hassle
 	driverdate = 'unknown'
 	try:
-		driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-modules*').readline().split( )[2]
+		driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-modules*').readline().split( )[2] # nosec
 	except:
 		try:
-			driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-proxy*').readline().split( )[2]
+			driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-proxy*').readline().split( )[2] # nosec
 		except:
 			try:
-				driverdate = os.popen('/usr/bin/opkg -V0 list_installed *kernel-core-default-gos*').readline().split( )[2]
-			except:
+				driverdate = os.popen('/usr/bin/opkg -V0 list_installed *kernel-core-default-gos*').readline().split( )[2] # nosec
+			except: # nosec
 				pass
 
 	info['oever'] = oever

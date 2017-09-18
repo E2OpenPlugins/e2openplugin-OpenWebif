@@ -332,7 +332,7 @@ class AuthResource(resource.Resource):
 					session = request.getSession().sessionNamespaces
 					session["logged"] = True
 					return self.resource.getChildWithDefault(path, request)
-			except:
+			except: # nosec
 				pass
 
 		# If we get to here, no exception applied
@@ -440,10 +440,10 @@ def BJregisterService(protocol, port):
 		from Plugins.Extensions.Bonjour.Bonjour import bonjour
 		service = bonjour.buildService(protocol, port, 'OpenWebif')
 		bonjour.registerService(service, True)
-	except:
+	except: # nosec
 		pass
 	try:
 		servicetype = '_' + protocol + '._tcp'
 		enigma.e2avahi_announce(None, servicetype, port)
-	except:
+	except: # nosec
 		pass

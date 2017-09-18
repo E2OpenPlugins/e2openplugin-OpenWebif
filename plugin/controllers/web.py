@@ -936,7 +936,7 @@ class WebController(BaseController):
 						if servicepath and servicepath.startswith("/"):
 							mnow["filename"] = servicepath
 							mnow["sref"] = serviceref.toString()
-				except Exception, e:
+				except Exception, e: # nosec
 					pass
 		return {
 			"info": info,

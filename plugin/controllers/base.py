@@ -234,8 +234,8 @@ class BaseController(resource.Resource):
 		opath = None
 		owebif = None
 		oport = None
-		if fileExists("/tmp/.oscam/oscam.version"):
-			data = open("/tmp/.oscam/oscam.version", "r").readlines()
+		if fileExists("/tmp/.oscam/oscam.version"): # nosec
+			data = open("/tmp/.oscam/oscam.version", "r").readlines() # nosec
 			for i in data:
 				if "configdir:" in i.lower():
 					opath = i.split(":")[1].strip() + "/oscam.conf"
