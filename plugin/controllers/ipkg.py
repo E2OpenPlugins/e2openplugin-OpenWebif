@@ -191,7 +191,7 @@ class IpkgController(BaseController):
 			request.setHeader("content-type", "text/plain")
 			if self.format == "json":
 				request.write(json.dumps(data, encoding="ISO-8859-1"))
-			else
+			else:
 				request.write("<html><body><br>" + data + "</body></html>")
 		request.finish()
 
