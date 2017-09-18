@@ -16,6 +16,7 @@ from os import path, popen, remove, stat
 import json
 import gzip
 import cStringIO
+import subprocess
 
 from base import BaseController
 from Components.config import config
@@ -74,6 +75,7 @@ class IpkgController(BaseController):
 		tmpFilename = "/tmp/opkg-list.gz"
 		if path.exists(tmpFilename):
 			remove(tmpFilename)
+		#FIXME: dont use popen
 		lines = popen('/usr/bin/opkg list | gzip > %s' % tmpFilename).readlines()
 		request.setHeader("Content-Disposition", "attachment;filename=\"%s\"" % (tmpFilename.split('/')[-1]))
 		rfile = static.File(tmpFilename, defaultType = "application/octet-stream")
@@ -115,7 +117,7 @@ class IpkgController(BaseController):
 	def getPackages(self):
 		map = {}
 		try:
-			out = popen("opkg list")
+			out = subprocess.check_output(['opkg', 'list'], shell=False)
 			for line in out:
 				if line[0] == " ":
 					continue
@@ -127,12 +129,12 @@ class IpkgController(BaseController):
 					("" if len(package) < 3 else package[2][:-1]),
 					 "0" , 
 					 "0"] } )
-			out = popen("opkg list-installed")
+			out = subprocess.check_output(['opkg', 'list-installed'], shell=False)
 			for line in out:
 				package = line.split(' - ')
 				if map.has_key(package[0]):
 					map[package[0]][2] = "1"
-			out = popen("opkg list-upgradable")
+			out = subprocess.check_output(['opkg', 'list-upgradable'], shell=False)
 			for line in out:
 				package = line.split(' - ')
 				if map.has_key(package[0]):
