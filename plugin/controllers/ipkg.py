@@ -117,7 +117,8 @@ class IpkgController(BaseController):
 	def getPackages(self):
 		map = {}
 		try:
-			out = subprocess.check_output(['opkg', 'list'], shell=False)
+			opkg = '/usr/bin/opkg'
+			out = subprocess.check_output([opkg, 'list'])
 			for line in out:
 				if line[0] == " ":
 					continue
@@ -129,12 +130,12 @@ class IpkgController(BaseController):
 					("" if len(package) < 3 else package[2][:-1]),
 					 "0" , 
 					 "0"] } )
-			out = subprocess.check_output(['opkg', 'list-installed'], shell=False)
+			out = subprocess.check_output([opkg, 'list-installed'])
 			for line in out:
 				package = line.split(' - ')
 				if map.has_key(package[0]):
 					map[package[0]][2] = "1"
-			out = subprocess.check_output(['opkg', 'list-upgradable'], shell=False)
+			out = subprocess.check_output([opkg, 'list-upgradable'])
 			for line in out:
 				package = line.split(' - ')
 				if map.has_key(package[0]):
