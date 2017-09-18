@@ -43,13 +43,12 @@ class IpkgController(BaseController):
 		if "format" in request.args:
 			self.format = request.args["format"][0]
 		if action is not '':
-			#TODO : use new getpackges for list, list_installed and list_upgradable
-			if action in ( "list", "list_installed", "list_upgradable", "update", "upgrade" ):
+			if action in ( "update", "upgrade" ):
 				return self.CallOPKG(request,action)
 			elif action in ( "info", "status", "install", "remove" ):
 				return self.CallOPKGP(request,action,package)
-			elif action in ( "listall" ):
-				return self.CallOPKListAll(request)
+			elif action in ( "listall", "list", "list_installed", "list_upgradable" ):
+				return self.CallOPKList(request,action)
 			elif action in ( "tmp" ):
 				import glob
 				tmpfiles = glob.glob('/tmp/*.ipk') # nosec
@@ -86,7 +85,7 @@ class IpkgController(BaseController):
 				except IOError:
 					pass
 
-	def getPackages():
+	def getPackages(self,action):
 		map = {}
 		for feed in enumFeeds():
 			package = None
@@ -139,20 +138,40 @@ class IpkgController(BaseController):
 	
 		keys=map.keys()
 		keys.sort()
-		ret = []
-		for name in keys:
-			ret.append({
-				"name": name,
-				"v": map[name][0],
-				"d": map[name][1],
-				"i": map[name][2],
-				"u": map[name][3]
-			})
-		return ret
+		self.ResultString = ""
+		if action == "listall":
+			self.format = "json"
+			ret = []
+			for name in keys:
+				ret.append({
+					"name": name,
+					"v": map[name][0],
+					"d": map[name][1],
+					"i": map[name][2],
+					"u": map[name][3]
+				})
+			return ret
+		elif action == "list":
+			for name in keys:
+				self.ResultString += name + " - " + map[name][0] + " - " + map[name][1] + "<br>"
+		elif action == "list_installed":
+			for name in keys:
+				if map[name][2] == "1":
+					self.ResultString += name + " - " + map[name][0] + "<br>"
+		elif action == "list_upgradable":
+			for name in keys:
+				if len(map[name][3]) > 1:
+					self.ResultString += name + " - " + map[name][3] + " - " + map[name][0] + "<br>"
+		if self.format == "json":
+			data = []
+			nresult=unicode(nresult, errors='ignore')
+			data.append({"result": True,"packages": self.ResultString.split("<br>")})
+			return data
+		return self.ResultString
 
 #TDOD: check encoding
-	def CallOPKListAll(self, request):
-		data = self.getPackages()
+	def CallOPKList(self, request, action):
+		data = self.getPackages(action)
 		acceptHeaders = request.requestHeaders.getRawHeaders('Accept-Encoding', [])
 		supported = ','.join(acceptHeaders).split(',')
 		if 'gzip' in supported:
@@ -162,13 +181,19 @@ class IpkgController(BaseController):
 			else:
 				encoding = 'gzip'
 			request.responseHeaders.setRawHeaders('Content-Encoding',[encoding])
-			compstr = self.compressBuf(json.dumps(data, encoding="ISO-8859-1"))
+			if self.format == "json":
+				compstr = self.compressBuf(json.dumps(data, encoding="ISO-8859-1"))
+			else:
+				compstr = self.compressBuf("<html><body><br>" + data + "</body></html>")
 			request.setHeader('Content-Length', '%d' % len(compstr))
 			request.write(compstr)
 		else:
 			request.setHeader("content-type", "text/plain")
-			request.write(json.dumps(data, encoding="ISO-8859-1"))
-			request.finish()
+			if self.format == "json":
+				request.write(json.dumps(data, encoding="ISO-8859-1"))
+			else
+				request.write("<html><body><br>" + data + "</body></html>")
+		request.finish()
 
 	def CallOPKG(self, request, action, parms=[]):
 		cmd = ["/usr/bin/opkg", "ipkg", action] + parms
@@ -233,7 +258,7 @@ class IpkgController(BaseController):
 	def ShowHint(self, request):
 		html = "<html><body><h1>OpenWebif Interface for OPKG</h1>"
 		html += "Usage : ?command=<cmd>&package=packagename<&format=json><br>"
-		html += "Valid Commands:<br>list,listgz,listall,list_installed,list_installed,list_upgradable<br>"
+		html += "Valid Commands:<br>list,listall,list_installed,list_installed,list_upgradable<br>"
 		html += "Valid Package Commands:<br>info,status,install,remove<br>"
 		html += "Valid Formats:<br>json,html(default)<br>"
 		html += "</body></html>"
