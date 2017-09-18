@@ -11,16 +11,18 @@
 
 from enigma import eConsoleAppContainer
 from twisted.web import static, server, resource, http
-from os import path, popen, remove, stat
+#from os import path, popen, remove, stat
 
+import os
 import json
 import gzip
 import cStringIO
-import subprocess # nosec
 
 from base import BaseController
 from Components.config import config
 
+PACKAGES = '/var/lib/opkg/lists'
+INSTALLEDPACKAGES = '/var/lib/opkg/status'
 
 class IpkgController(BaseController):
 
@@ -41,12 +43,11 @@ class IpkgController(BaseController):
 		if "format" in request.args:
 			self.format = request.args["format"][0]
 		if action is not '':
+			#TODO : use new getpackges for list, list_installed and list_upgradable
 			if action in ( "list", "list_installed", "list_upgradable", "update", "upgrade" ):
 				return self.CallOPKG(request,action)
 			elif action in ( "info", "status", "install", "remove" ):
 				return self.CallOPKGP(request,action,package)
-			elif action in ( "listgz" ):
-				return self.CallOPKListGZ(request)
 			elif action in ( "listall" ):
 				return self.CallOPKListAll(request)
 			elif action in ( "tmp" ):
@@ -71,15 +72,85 @@ class IpkgController(BaseController):
 
 		return ShowError(request,"Error")
 
-	def CallOPKListGZ(self, request):
-		tmpFilename = "/tmp/opkg-list.gz" # nosec
-		if path.exists(tmpFilename):
-			remove(tmpFilename)
-		lines = popen('/usr/bin/opkg list | gzip > %s' % tmpFilename).readlines() # nosec
-		request.setHeader("Content-Disposition", "attachment;filename=\"%s\"" % (tmpFilename.split('/')[-1]))
-		rfile = static.File(tmpFilename, defaultType = "application/octet-stream")
-		return rfile.render(request)
+	def enumFeeds(self):
+		for fn in os.listdir('/etc/opkg'):
+			if fn.endswith('-feed.conf'):
+				file = open(os.path.join('/etc/opkg', fn))
+				feedfile = file.readlines()
+				file.close()
+				try:
+					for feed in feedfile:
+						yield feed.split()[1]
+				except IndexError:
+					pass
+				except IOError:
+					pass
 
+	def getPackages():
+		map = {}
+		for feed in enumFeeds():
+			package = None
+			try:
+				for line in open(os.path.join(PACKAGES, feed), 'r'):
+					if line.startswith('Package:'):
+						package = line.split(":",1)[1].strip()
+						version = ''
+						description = ''
+						continue
+					if package is None:
+						continue
+					if line.startswith('Version:'):
+						version = line.split(":",1)[1].strip()
+					#TDOD : check description
+					elif line.startswith('Description:'):
+						description = line.split(":",1)[1].strip()
+					elif description and line.startswith(' '):
+						description += line[:-1]
+					elif len(line) <= 1:
+						d = description.split(' ',3)
+						if len(d) > 3:
+							if d[1] == 'version':
+								description = d[3]
+							if description.startswith('gitAUTOINC'):
+								description = description.split(' ',1)[1]
+						map.update( { package : [ version , description.strip(), "0" , "0"] } )		
+						package = None
+			except IOError:
+				pass
+	
+		for line in open(INSTALLEDPACKAGES, 'r'):
+			if line.startswith('Package:'):
+				package = line.split(":",1)[1].strip()
+				version = ''
+				continue
+			if package is None:
+				continue
+			if line.startswith('Version:'):
+				version = line.split(":",1)[1].strip()
+			elif len(line) <= 1:
+				if map.has_key(package):
+					if map[package][0] == version:
+						map[package][1] = "1"
+					else:
+						nv = map[package][0]
+						map[package][0] = version
+						map[package][3] = nv
+				package = None
+	
+		keys=map.keys()
+		keys.sort()
+		ret = []
+		for name in keys:
+			ret.append({
+				"name": name,
+				"v": map[name][0],
+				"d": map[name][1],
+				"i": map[name][2],
+				"u": map[name][3]
+			})
+		return ret
+
+#TDOD: check encoding
 	def CallOPKListAll(self, request):
 		data = self.getPackages()
 		acceptHeaders = request.requestHeaders.getRawHeaders('Accept-Encoding', [])
@@ -112,48 +183,6 @@ class IpkgController(BaseController):
 		self.olddata = None
 		self.container.execute(*cmd)
 		return server.NOT_DONE_YET
-
-	def getPackages(self):
-		map = {}
-		try:
-			opkg = '/usr/bin/opkg'
-			out = subprocess.check_output([opkg, 'list']) # nosec
-			for line in out:
-				if line[0] == " ":
-					continue
-				package = line.split(' - ')
-				if map.has_key(package[0]):
-					if map[package[0]][0] > package[1]:
-						continue
-				map.update( { package[0] : [ (package[1][:-1] if len(package) < 3 else package[1]),
-					("" if len(package) < 3 else package[2][:-1]),
-					 "0" , 
-					 "0"] } )
-			out = subprocess.check_output([opkg, 'list-installed']) # nosec
-			for line in out:
-				package = line.split(' - ')
-				if map.has_key(package[0]):
-					map[package[0]][2] = "1"
-			out = subprocess.check_output([opkg, 'list-upgradable']) # nosec
-			for line in out:
-				package = line.split(' - ')
-				if map.has_key(package[0]):
-					map[package[0]][0] = package[1]
-					map[package[0]][3] = package[2][:-1]
-			keys=map.keys()
-			keys.sort()
-			ret = []
-			for name in keys:
-				ret.append({
-				"name": name,
-				"v": map[name][0],
-				"d": map[name][1],
-				"i": map[name][2],
-				"u": map[name][3]
-				})
-			return ret
-		except Exception, e:
-			return []
 
 	def connectionError(self, err):
 		self.IsAlive = False
@@ -237,16 +266,15 @@ class IPKGUpload(resource.Resource):
 			if not filename.endswith(".ipk"):
 				result = [False,_('wrong filetype')]
 			else:
-				import os
 				FN = "/tmp/" + filename # nosec
-				fileh = os.open(FN, os.O_WRONLY|os.O_CREAT )
+				fileh = open(FN, O_WRONLY|O_CREAT )
 				bytes = 0
 				if fileh:
-					bytes = os.write(fileh, content)
-					os.close(fileh)
+					bytes = write(fileh, content)
+					close(fileh)
 				if bytes <= 0:
 					try:
-						os.remove(FN)
+						remove(FN)
 					except OSError, oe:
 						pass
 					result = [False,_('Error writing File')]
