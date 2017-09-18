@@ -195,7 +195,7 @@ class WebController(BaseController):
 	def P_supports_powerup_without_waking_tv(self, request):
 		try:
 			#returns 'True' if the image supports the function "Power on without TV":
-			f = open("/tmp/powerup_without_waking_tv.txt", "r")
+			f = open("/tmp/powerup_without_waking_tv.txt", "r") # nosec
 			powerupWithoutWakingTv = f.read()
 			f.close()
 			if ((powerupWithoutWakingTv == 'True') or (powerupWithoutWakingTv == 'False')):
@@ -209,7 +209,7 @@ class WebController(BaseController):
 		if self.P_supports_powerup_without_waking_tv(request):
 			try:
 				#write "True" to file so that the box will power on ONCE skipping the HDMI-CEC communication:
-				f = open("/tmp/powerup_without_waking_tv.txt", "w")
+				f = open("/tmp/powerup_without_waking_tv.txt", "w") # nosec
 				f.write('True')
 				f.close()
 				return True
@@ -327,7 +327,7 @@ class WebController(BaseController):
 
 		try:
 			ttype = int(request.args["type"][0])
-		except Exception, e:
+		except ValueError:
 			return {
 				"result": False,
 				"message": _("type %s is not a number") % request.args["type"][0]
@@ -337,7 +337,7 @@ class WebController(BaseController):
 		if "timeout" in request.args.keys():
 			try:
 				timeout = int(request.args["timeout"][0])
-			except Exception, e:
+			except ValueError:
 				pass
 
 		return sendMessage(self.session, request.args["text"][0], ttype, timeout)
@@ -719,7 +719,7 @@ class WebController(BaseController):
 		if "time" in request.args.keys():
 			try:
 				begintime = int(request.args["time"][0])
-			except Exception, e:
+			except ValueError:
 				pass
 		self.isGZ=True
 		return getBouquetEpg(request.args["bRef"][0], begintime)
@@ -733,14 +733,14 @@ class WebController(BaseController):
 		if "time" in request.args.keys():
 			try:
 				begintime = int(request.args["time"][0])
-			except Exception, e:
+			except ValueError:
 				pass
 
 		endtime = -1
 		if "endTime" in request.args.keys():
 			try:
 				endtime = int(request.args["endTime"][0])
-			except Exception, e:
+			except ValueError:
 				pass
 		self.isGZ=True
 		return getBouquetEpg(request.args["bRef"][0], begintime, endtime)
@@ -784,7 +784,7 @@ class WebController(BaseController):
 			if "endtime" in request.args.keys():
 				try:
 					endtime = int(request.args["endtime"][0])
-				except Exception, e:
+				except ValueError:
 					pass
 			fulldesc=False
 			if "full" in request.args.keys():
@@ -795,10 +795,11 @@ class WebController(BaseController):
 			if res:
 				return res
 			service_reference = request.args["sref"][0]
+			item_id = 0
 			try:
 				item_id = int(request.args["eventid"][0])
-			except Exception as exc:
-				item_id = 0
+			except ValueError:
+				pass
 			return getEvent(service_reference,item_id)
 
 	def P_epgsearchrss(self, request):
@@ -821,14 +822,14 @@ class WebController(BaseController):
 		if "time" in request.args.keys():
 			try:
 				begintime = int(request.args["time"][0])
-			except Exception, e:
+			except ValueError:
 				pass
 
 		endtime = -1
 		if "endTime" in request.args.keys():
 			try:
 				endtime = int(request.args["endTime"][0])
-			except Exception, e:
+			except ValueError:
 				pass
 		self.isGZ=True
 		return getChannelEpg(request.args["sRef"][0], begintime, endtime)
@@ -852,7 +853,7 @@ class WebController(BaseController):
 
 		try:
 			eventid = int(request.args["eventid"][0])
-		except Exception, e:
+		except ValueError:
 			return {
 				"result": False,
 				"message": "The parameter 'eventid' must be a number"
@@ -1113,7 +1114,7 @@ class WebController(BaseController):
 					time = 999
 				elif time < 0:
 					time = 0
-			except Exception, e:
+			except ValueError:
 				pass
 
 		action = "standby"
@@ -1222,10 +1223,9 @@ class WebController(BaseController):
 	def P_setmepgmode(self, request):
 		if "mode" in request.args.keys():
 			try:
-				mode = request.args["mode"][0]
-				config.OpenWebif.webcache.mepgmode.value = int(mode)
+				config.OpenWebif.webcache.mepgmode.value = int(request.args["mode"][0])
 				config.OpenWebif.webcache.mepgmode.save()
-			except Exception, e:
+			except ValueError:
 				pass
 		return {}
 	

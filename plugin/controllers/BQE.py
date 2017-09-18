@@ -311,7 +311,7 @@ class BQEWebController(BaseController):
 
 
 class BQEUploadFile(resource.Resource):
-	FN = "/tmp/bouquets_backup.tar"
+	FN = "/tmp/bouquets_backup.tar" # nosec
 	def __init__(self, session):
 		self.session = session
 		resource.Resource.__init__(self)
@@ -353,6 +353,6 @@ class BQEController(BaseController):
 		BaseController.__init__(self, path=path, session=session)
 		self.putChild("web", BQEWebController(session))
 		self.putChild("api", BQEApiController(session))
-		self.putChild('tmp', static.File('/tmp'))
+		self.putChild('tmp', static.File('/tmp')) # nosec
 		self.putChild('uploadrestore', BQEUploadFile(session))
 

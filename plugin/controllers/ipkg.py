@@ -51,7 +51,7 @@ class IpkgController(BaseController):
 				return self.CallOPKListAll(request)
 			elif action in ( "tmp" ):
 				import glob
-				tmpfiles = glob.glob('/tmp/*.ipk')
+				tmpfiles = glob.glob('/tmp/*.ipk') # nosec
 				ipks = []
 				for tmpfile in tmpfiles:
 					ipks.append({
@@ -238,7 +238,7 @@ class IPKGUpload(resource.Resource):
 				result = [False,_('wrong filetype')]
 			else:
 				import os
-				FN = "/tmp/" + filename
+				FN = "/tmp/" + filename # nosec
 				fileh = os.open(FN, os.O_WRONLY|os.O_CREAT )
 				bytes = 0
 				if fileh:
