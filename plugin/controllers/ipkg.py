@@ -16,7 +16,7 @@ from os import path, popen, remove, stat
 import json
 import gzip
 import cStringIO
-import subprocess
+import subprocess # nosec
 
 from base import BaseController
 from Components.config import config
@@ -72,11 +72,10 @@ class IpkgController(BaseController):
 		return ShowError(request,"Error")
 
 	def CallOPKListGZ(self, request):
-		tmpFilename = "/tmp/opkg-list.gz"
+		tmpFilename = "/tmp/opkg-list.gz" # nosec
 		if path.exists(tmpFilename):
 			remove(tmpFilename)
-		#FIXME: dont use popen
-		lines = popen('/usr/bin/opkg list | gzip > %s' % tmpFilename).readlines()
+		lines = popen('/usr/bin/opkg list | gzip > %s' % tmpFilename).readlines() # nosec
 		request.setHeader("Content-Disposition", "attachment;filename=\"%s\"" % (tmpFilename.split('/')[-1]))
 		rfile = static.File(tmpFilename, defaultType = "application/octet-stream")
 		return rfile.render(request)
@@ -118,7 +117,7 @@ class IpkgController(BaseController):
 		map = {}
 		try:
 			opkg = '/usr/bin/opkg'
-			out = subprocess.check_output([opkg, 'list'])
+			out = subprocess.check_output([opkg, 'list']) # nosec
 			for line in out:
 				if line[0] == " ":
 					continue
@@ -130,12 +129,12 @@ class IpkgController(BaseController):
 					("" if len(package) < 3 else package[2][:-1]),
 					 "0" , 
 					 "0"] } )
-			out = subprocess.check_output([opkg, 'list-installed'])
+			out = subprocess.check_output([opkg, 'list-installed']) # nosec
 			for line in out:
 				package = line.split(' - ')
 				if map.has_key(package[0]):
 					map[package[0]][2] = "1"
-			out = subprocess.check_output([opkg, 'list-upgradable'])
+			out = subprocess.check_output([opkg, 'list-upgradable']) # nosec
 			for line in out:
 				package = line.split(' - ')
 				if map.has_key(package[0]):
