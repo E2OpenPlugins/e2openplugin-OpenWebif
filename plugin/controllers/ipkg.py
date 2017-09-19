@@ -11,8 +11,9 @@
 
 from enigma import eConsoleAppContainer
 from twisted.web import static, server, resource, http
-from os import path, popen, remove, stat
+#from os import path, popen, remove, stat
 
+import os
 import json
 import gzip
 import cStringIO
@@ -20,6 +21,8 @@ import cStringIO
 from base import BaseController
 from Components.config import config
 
+PACKAGES = '/var/lib/opkg/lists'
+INSTALLEDPACKAGES = '/var/lib/opkg/status'
 
 class IpkgController(BaseController):
 
@@ -40,17 +43,15 @@ class IpkgController(BaseController):
 		if "format" in request.args:
 			self.format = request.args["format"][0]
 		if action is not '':
-			if action in ( "list", "list_installed", "list_upgradable", "update", "upgrade" ):
+			if action in ( "update", "upgrade" ):
 				return self.CallOPKG(request,action)
 			elif action in ( "info", "status", "install", "remove" ):
 				return self.CallOPKGP(request,action,package)
-			elif action in ( "listgz" ):
-				return self.CallOPKListGZ(request)
-			elif action in ( "listall" ):
-				return self.CallOPKListAll(request)
+			elif action in ( "listall", "list", "list_installed", "list_upgradable" ):
+				return self.CallOPKList(request,action)
 			elif action in ( "tmp" ):
 				import glob
-				tmpfiles = glob.glob('/tmp/*.ipk')
+				tmpfiles = glob.glob('/tmp/*.ipk') # nosec
 				ipks = []
 				for tmpfile in tmpfiles:
 					ipks.append({
@@ -70,17 +71,107 @@ class IpkgController(BaseController):
 
 		return ShowError(request,"Error")
 
-	def CallOPKListGZ(self, request):
-		tmpFilename = "/tmp/opkg-list.gz"
-		if path.exists(tmpFilename):
-			remove(tmpFilename)
-		lines = popen('/usr/bin/opkg list | gzip > %s' % tmpFilename).readlines()
-		request.setHeader("Content-Disposition", "attachment;filename=\"%s\"" % (tmpFilename.split('/')[-1]))
-		rfile = static.File(tmpFilename, defaultType = "application/octet-stream")
-		return rfile.render(request)
+	def enumFeeds(self):
+		for fn in os.listdir('/etc/opkg'):
+			if fn.endswith('-feed.conf'):
+				file = open(os.path.join('/etc/opkg', fn))
+				feedfile = file.readlines()
+				file.close()
+				try:
+					for feed in feedfile:
+						yield feed.split()[1]
+				except IndexError:
+					pass
+				except IOError:
+					pass
 
-	def CallOPKListAll(self, request):
-		data = self.getPackages()
+	def getPackages(self,action):
+		map = {}
+		for feed in enumFeeds():
+			package = None
+			try:
+				for line in open(os.path.join(PACKAGES, feed), 'r'):
+					if line.startswith('Package:'):
+						package = line.split(":",1)[1].strip()
+						version = ''
+						description = ''
+						continue
+					if package is None:
+						continue
+					if line.startswith('Version:'):
+						version = line.split(":",1)[1].strip()
+					#TDOD : check description
+					elif line.startswith('Description:'):
+						description = line.split(":",1)[1].strip()
+					elif description and line.startswith(' '):
+						description += line[:-1]
+					elif len(line) <= 1:
+						d = description.split(' ',3)
+						if len(d) > 3:
+							if d[1] == 'version':
+								description = d[3]
+							if description.startswith('gitAUTOINC'):
+								description = description.split(' ',1)[1]
+						map.update( { package : [ version , description.strip(), "0" , "0"] } )		
+						package = None
+			except IOError:
+				pass
+	
+		for line in open(INSTALLEDPACKAGES, 'r'):
+			if line.startswith('Package:'):
+				package = line.split(":",1)[1].strip()
+				version = ''
+				continue
+			if package is None:
+				continue
+			if line.startswith('Version:'):
+				version = line.split(":",1)[1].strip()
+			elif len(line) <= 1:
+				if map.has_key(package):
+					if map[package][0] == version:
+						map[package][1] = "1"
+					else:
+						nv = map[package][0]
+						map[package][0] = version
+						map[package][3] = nv
+				package = None
+	
+		keys=map.keys()
+		keys.sort()
+		self.ResultString = ""
+		if action == "listall":
+			self.format = "json"
+			ret = []
+			for name in keys:
+				ret.append({
+					"name": name,
+					"v": map[name][0],
+					"d": map[name][1],
+					"i": map[name][2],
+					"u": map[name][3]
+				})
+			return ret
+		elif action == "list":
+			for name in keys:
+				self.ResultString += name + " - " + map[name][0] + " - " + map[name][1] + "<br>"
+		elif action == "list_installed":
+			for name in keys:
+				if map[name][2] == "1":
+					self.ResultString += name + " - " + map[name][0] + "<br>"
+		elif action == "list_upgradable":
+			for name in keys:
+				if len(map[name][3]) > 1:
+					self.ResultString += name + " - " + map[name][3] + " - " + map[name][0] + "<br>"
+		if self.format == "json":
+			data = []
+			nresult=unicode(nresult, errors='ignore')
+			data.append({"result": True,"packages": self.ResultString.split("<br>")})
+			return data
+		return self.ResultString
+
+#TDOD: check encoding
+	def CallOPKList(self, request, action):
+		data = self.getPackages(action)
 		acceptHeaders = request.requestHeaders.getRawHeaders('Accept-Encoding', [])
 		supported = ','.join(acceptHeaders).split(',')
 		if 'gzip' in supported:
@@ -90,13 +181,19 @@ class IpkgController(BaseController):
 			else:
 				encoding = 'gzip'
 			request.responseHeaders.setRawHeaders('Content-Encoding',[encoding])
-			compstr = self.compressBuf(json.dumps(data, encoding="ISO-8859-1"))
+			if self.format == "json":
+				compstr = self.compressBuf(json.dumps(data, encoding="ISO-8859-1"))
+			else:
+				compstr = self.compressBuf("<html><body><br>" + data + "</body></html>")
 			request.setHeader('Content-Length', '%d' % len(compstr))
 			request.write(compstr)
 		else:
 			request.setHeader("content-type", "text/plain")
-			request.write(json.dumps(data, encoding="ISO-8859-1"))
-			request.finish()
+			if self.format == "json":
+				request.write(json.dumps(data, encoding="ISO-8859-1"))
+			else:
+				request.write("<html><body><br>" + data + "</body></html>")
+		request.finish()
 
 	def CallOPKG(self, request, action, parms=[]):
 		cmd = ["/usr/bin/opkg", "ipkg", action] + parms
@@ -111,47 +208,6 @@ class IpkgController(BaseController):
 		self.olddata = None
 		self.container.execute(*cmd)
 		return server.NOT_DONE_YET
-
-	def getPackages(self):
-		map = {}
-		try:
-			out = popen("opkg list")
-			for line in out:
-				if line[0] == " ":
-					continue
-				package = line.split(' - ')
-				if map.has_key(package[0]):
-					if map[package[0]][0] > package[1]:
-						continue
-				map.update( { package[0] : [ (package[1][:-1] if len(package) < 3 else package[1]),
-					("" if len(package) < 3 else package[2][:-1]),
-					 "0" , 
-					 "0"] } )
-			out = popen("opkg list-installed")
-			for line in out:
-				package = line.split(' - ')
-				if map.has_key(package[0]):
-					map[package[0]][2] = "1"
-			out = popen("opkg list-upgradable")
-			for line in out:
-				package = line.split(' - ')
-				if map.has_key(package[0]):
-					map[package[0]][0] = package[1]
-					map[package[0]][3] = package[2][:-1]
-			keys=map.keys()
-			keys.sort()
-			ret = []
-			for name in keys:
-				ret.append({
-				"name": name,
-				"v": map[name][0],
-				"d": map[name][1],
-				"i": map[name][2],
-				"u": map[name][3]
-				})
-			return ret
-		except Exception, e:
-			return []
 
 	def connectionError(self, err):
 		self.IsAlive = False
@@ -202,7 +258,7 @@ class IpkgController(BaseController):
 	def ShowHint(self, request):
 		html = "<html><body><h1>OpenWebif Interface for OPKG</h1>"
 		html += "Usage : ?command=<cmd>&package=packagename<&format=json><br>"
-		html += "Valid Commands:<br>list,listgz,listall,list_installed,list_installed,list_upgradable<br>"
+		html += "Valid Commands:<br>list,listall,list_installed,list_installed,list_upgradable<br>"
 		html += "Valid Package Commands:<br>info,status,install,remove<br>"
 		html += "Valid Formats:<br>json,html(default)<br>"
 		html += "</body></html>"
@@ -235,16 +291,15 @@ class IPKGUpload(resource.Resource):
 			if not filename.endswith(".ipk"):
 				result = [False,_('wrong filetype')]
 			else:
-				import os
-				FN = "/tmp/" + filename
-				fileh = os.open(FN, os.O_WRONLY|os.O_CREAT )
+				FN = "/tmp/" + filename # nosec
+				fileh = open(FN, O_WRONLY|O_CREAT )
 				bytes = 0
 				if fileh:
-					bytes = os.write(fileh, content)
-					os.close(fileh)
+					bytes = write(fileh, content)
+					close(fileh)
 				if bytes <= 0:
 					try:
-						os.remove(FN)
+						remove(FN)
 					except OSError, oe:
 						pass
 					result = [False,_('Error writing File')]

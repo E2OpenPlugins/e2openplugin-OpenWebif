@@ -37,7 +37,7 @@ class BouquetEditor(Source):
 	RENAME_SERVICE = 12
 	ADD_MARKER_TO_BOUQUET = 13
 
-	BACKUP_PATH = "/tmp"
+	BACKUP_PATH = "/tmp" # nosec
 	BACKUP_FILENAME = "webbouqueteditor_backup.tar"
 
 	def __init__(self, session, func=ADD_BOUQUET):
@@ -576,7 +576,7 @@ class BouquetEditor(Source):
 				if not path.exists(arg):
 					return (False, _("Error while preparing backup file, %s does not exists.") % arg)
 				tarFiles += "%s " % arg
-			lines = popen("tar cvf %s %s" % (backupFilename,tarFiles)).readlines()
+			lines = popen("tar cvf %s %s" % (backupFilename,tarFiles)).readlines() # nosec
 			remove(checkfile)
 			return (True, tarFilename)
 		else:
@@ -605,7 +605,7 @@ class BouquetEditor(Source):
 		backupFilename = tarFilename #path.join(self.BACKUP_PATH, tarFilename)
 		if path.exists(backupFilename):
 			check_tar = False
-			lines = popen('tar -tf %s' % backupFilename).readlines()
+			lines = popen('tar -tf %s' % backupFilename).readlines() # nosec
 			for line in lines:
 				pos = line.find('tmp/.webouquetedit')
 				if pos != -1:
@@ -619,7 +619,7 @@ class BouquetEditor(Source):
 				for bouquetfiles in files:
 					if path.exists(bouquetfiles):
 						remove(bouquetfiles)
-				lines = popen('tar xvf %s -C / --exclude tmp/.webouquetedit' % backupFilename).readlines()
+				lines = popen('tar xvf %s -C / --exclude tmp/.webouquetedit' % backupFilename).readlines() # nosec
 				nimmanager.readTransponders()
 				eDVBDB.getInstance().reloadServicelist()
 				eDVBDB.getInstance().reloadBouquets()
