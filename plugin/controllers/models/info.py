@@ -171,7 +171,7 @@ def getAdapterIPv6(ifname):
 
 def formatIp(ip):
 	if ip is None or len(ip) != 4:
-		return "0.0.0.0"
+		return "0.0.0.0" # nosec
 	return "%d.%d.%d.%d" % (ip[0], ip[1], ip[2], ip[3])
 
 def getBasePath():
