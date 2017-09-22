@@ -1,6 +1,11 @@
-## Version 1.2.6
+## Version 1.2.7
 ## (in development)
+* improve file api
+
+## Version 1.2.6
 * improve recording move to trash / #633
+* improve edit timer / #631
+* fix some bandit issues
 
 ## Version 1.2.5
 * improve remote control / #603
