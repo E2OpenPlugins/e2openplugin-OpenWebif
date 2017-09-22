@@ -139,7 +139,9 @@ def getAllInfo():
 			elif procmodel == "fusionhdse":
 				model = procmodel.replace("fusionhdse", "Fusion HD SE")
 			elif procmodel == "purehd":
-				model = procmodel.replace("purehd", "PureHD")
+				model = procmodel.replace("purehd", "Pure HD")
+                        elif procmodel == "purehdse":
+                                model = procmodel.replace("purehdse", "Pure HD SE")
 			elif procmodel == "revo4k":
 				model = procmodel.replace("revo4k", "Revo4K")
 			elif procmodel == "galaxy4k":
@@ -490,8 +492,8 @@ def getAllInfo():
 		remote = procmodel
 	elif procmodel in ("fusionhdse"):
 		remote = procmodel
-	elif procmodel in ("purehd"):
-		remote = procmodel
+	elif procmodel in ("purehd", "purehdse"):
+		remote = "purehd"
 	elif procmodel in ("revo4k"):
 		remote = procmodel
 	elif procmodel in ("galaxy4k"):
