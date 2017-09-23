@@ -254,13 +254,6 @@ class FileController(twisted.web.resource.Resource):
 			glob_me = '/'.join((path, pattern))
 		return glob.iglob(glob_me)
 
-	def _walk(self, path):
-		for root, dirs, files in os.walk(path):
-			for dir_item in dirs:
-				yield os.path.join(root, dir_item)
-			for file_item in files:
-				yield os.path.join(root, file_item)
-
 	def render_path_listing(self, request, path):
 		"""
 		Generate a file/folder listing of *path*'s contents.
@@ -283,9 +276,6 @@ class FileController(twisted.web.resource.Resource):
 		generator = None
 		if "pattern" in request.args:
 			generator = self._glob(path, request.args["pattern"][0])
-
-		if "recursive" in request.args:
-			generator = self._walk(path)
 
 		if generator is None:
 			generator = self._glob(path)
