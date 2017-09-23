@@ -72,10 +72,9 @@ class MoviefilesTestCase(unittest.TestCase):
 		req = requests.get(self.file_controller_url)
 		self.assertTrue(req.status_code, 200)
 
-		raw_data = req.json()
-		data = raw_data[0]
-		self.assertEqual(1, len(raw_data))
-		self.assertTrue(data['result'])
+		data = req.json()
+		self.assertTrue(len(data) >= 1)
+		self.assertTrue(len(set(data.keys()) & set(['Result', 'result'])) == 1)
 		files = set(copy.copy(EXPECTED_FILES))
 		common_files = set(data['files']) & files
 		self.assertEqual(files, common_files)
