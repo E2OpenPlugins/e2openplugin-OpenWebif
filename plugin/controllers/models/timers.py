@@ -805,9 +805,9 @@ def getVPSChannels(session):
 	from Tools.Directories import fileExists
 	if fileExists(vpsfile):
 		try:
-			import xml.etree.cElementTree
+			import xml.etree.cElementTree # nosec
 			vpsfile = file(vpsfile, 'r')
-			vpsdom = xml.etree.cElementTree.parse(vpsfile)
+			vpsdom = xml.etree.cElementTree.parse(vpsfile) # nosec
 			vpsfile.close()
 			xmldata = vpsdom.getroot()
 			channels = []

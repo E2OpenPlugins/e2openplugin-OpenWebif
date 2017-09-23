@@ -54,7 +54,7 @@
 		#set $i=0
 		#for $day in [$tstrings['mo'], $tstrings['tu'], $tstrings['we'], $tstrings['th'], $tstrings['fr'], $tstrings['sa'], $tstrings['su']]
 			#set $value = 2 ** $i
-			<input type="checkbox" name="repeated" id="day$i" value="$value" /><label for="day$i">$day</label>
+			<label for="day$i">$day</label><input type="checkbox" name="day$i" id="day$i" value="$value" />
 			#set $i=$i+1
 		#end for
 		</span>

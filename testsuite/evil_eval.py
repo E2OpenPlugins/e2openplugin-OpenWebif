@@ -186,6 +186,11 @@ class EvilEvalTestCase(unittest.TestCase):
 			get_config_attribute('config.nim................', self.config_obj)
 		self.assertTrue('empty attr_name' in context.exception)
 
+		with self.assertRaises(AttributeError) as context:
+			get_config_attribute('config.nim', None)
+		self.assertTrue(
+			"'NoneType' object has no attribute 'nim'" in context.exception)
+
 	def testMockupAccess(self):
 		self.assertTrue(get_config_attribute_insane('config.bla.test'))
 		self.assertTrue(get_config_attribute_insane('config.nim[0].bla'))

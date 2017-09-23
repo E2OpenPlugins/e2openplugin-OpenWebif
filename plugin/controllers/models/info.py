@@ -41,7 +41,7 @@ import sys
 import time
 import string
 
-OPENWEBIFVER = "OWIF 1.2.6"
+OPENWEBIFVER = "OWIF 1.2.7"
 
 STATICBOXINFO = None
 
@@ -171,7 +171,7 @@ def getAdapterIPv6(ifname):
 
 def formatIp(ip):
 	if ip is None or len(ip) != 4:
-		return "0.0.0.0"
+		return "0.0.0.0" # nosec
 	return "%d.%d.%d.%d" % (ip[0], ip[1], ip[2], ip[3])
 
 def getBasePath():
@@ -192,6 +192,8 @@ def getPiconPath():
 		return "/media/usb/picon/"
 	elif pathExists("/media/cf/picon/"):
 		return "/media/cf/picon/"
+	elif pathExists("/media/mmc/picon/"):
+		return "/media/mmc/picon/"
 	elif pathExists("/media/hdd/picon/"):
 		return "/media/hdd/picon/"
 	elif pathExists("/usr/share/enigma2/picon/"):

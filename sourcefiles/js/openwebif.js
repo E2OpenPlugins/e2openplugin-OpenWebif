@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.11
+//* Version 1.2.12
 //******************************************************************************
 //* Copyright (C) 2011-2017 E2OpenPlugins
 //*
@@ -26,6 +26,7 @@
 //* V 1.2.9 - improve timer #624
 //* V 1.2.10 - improve screenshot refresh #625
 //* V 1.2.11 - improve visual feedback for adding timer in multiepg
+//* V 1.2.12 - improve timer edit
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -1006,7 +1007,7 @@ var current_end;
 var timeredit_initialized = false;
 var timeredit_begindestroy = false;
 
-function initTimerBQ(radio) {
+function initTimerBQ(radio, callback) {
 
 	$('#bouquet_select').find('optgroup').remove().end();
 	$('#bouquet_select').find('option').remove().end();
@@ -1016,15 +1017,14 @@ function initTimerBQ(radio) {
 			$("#bouquet_select").val( current_ref );
 		}
 		$('#bouquet_select').trigger("chosen:updated");
+		callback();
 	} , radio);
 
 }
 
-function initTimerEdit(radio) {
+function initTimerEdit(radio, callback) {
 	
-	// FIXME: async
-	initTimerBQ(radio);
-	
+	var bottomhalf = function() {
 	$('#dirname').find('option').remove().end();
 	$('#dirname').append($("<option></option>").attr("value", "None").text("Default"));
 	for (var id in _locations) {
@@ -1035,11 +1035,16 @@ function initTimerEdit(radio) {
 	$('#tagsnew').html('');
 	for (var id in _tags) {
 		var tag = _tags[id];
-		$('#tagsnew').append("<input type='checkbox' name='tagsnew' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
+		$('#tagsnew').append("<input type='checkbox' name='"+tag+"' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
 	}
-	$('#tagsnew').buttonset();
+	
+	$("#tagsnew > input").checkboxradio({icon: false});
 	
 	timeredit_initialized = true;
+		callback();
+	}
+
+	initTimerBQ(radio, bottomhalf);
 }
 
 function loadLocations()
@@ -1122,17 +1127,7 @@ function editTimer(serviceref, begin, end) {
 	$('#cbtv').prop('checked',!radio);
 	$('#cbradio').prop('checked',radio);
 	
-	if (!timeredit_initialized) {
-		initTimerEdit(radio);
-	}
-	else
-	{
-		var _chsref=$("#bouquet_select option:last").val();
-		if(radio && _chsref.substring(0,6) !== '1:0:2:')
-			initTimerEdit(radio);
-		if(!radio && _chsref.substring(0,6) == '1:0:2:')
-			initTimerEdit(radio);
-	}
+	var bottomhalf = function() {
 	
 	if (timeredit_begindestroy) {
 		initTimerEditBegin();
@@ -1169,17 +1164,28 @@ function editTimer(serviceref, begin, end) {
 							$('#errorbox').hide();
 							var flags=timer.repeated;
 							for (var i=0; i<7; i++) {
-								$('#day'+i).attr('checked', ((flags & 1)==1));
+								$('#day'+i).prop('checked', ((flags & 1)==1)).checkboxradio("refresh");
 								flags >>= 1;
 							}
-							$('#repeatdays').buttonset('refresh');
 							
-							$('#tagsnew').find('input').attr('checked',false);
+							$('#tagsnew > input').prop('checked',false).checkboxradio("refresh");
+							
 							var tags = timer.tags.split(' ');
 							for (var j=0; j<tags.length; j++) {
-								$('#tag_'+tags[j]).attr('checked', true);
+								var tag = tags[j].replace(/\(/g,'_').replace(/\)/g,'_').replace(/\'/g,'_');
+								if (tag.length>0)
+								{
+									if($('#tag_'+tag).length)
+									{
+										$('#tag_'+tag).prop('checked', true).checkboxradio("refresh");
+									}
+									else
+									{
+										$('#tagsnew').append("<input type='checkbox' checked='checked' name='"+tag+"' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
 							}
-							$('#tagsnew').buttonset('refresh');
+								}
+							}
+							$("#tagsnew > input").checkboxradio({icon: false});
 							
 							$('#timerbegin').datetimepicker('setDate', (new Date(Math.round(timer.begin) * 1000)));
 							$('#timerend').datetimepicker('setDate', (new Date(Math.round(timer.end) * 1000)));
@@ -1230,6 +1236,23 @@ function editTimer(serviceref, begin, end) {
 			}
 		}
 	});
+	};
+	
+	if (!timeredit_initialized) {
+		initTimerEdit(radio, bottomhalf);
+	}
+	else
+	{
+		var _chsref=$("#bouquet_select option:last").val();
+		if(radio && _chsref.substring(0,6) !== '1:0:2:') {
+			initTimerEdit(radio, bottomhalf);
+		} else if(!radio && _chsref.substring(0,6) == '1:0:2:') {
+			initTimerEdit(radio, bottomhalf);
+		} else {
+			bottomhalf();
+		} 
+	}
+	
 }
 
 function addTimer(evt,chsref,chname,top) {
@@ -1267,18 +1290,7 @@ function addTimer(evt,chsref,chname,top) {
 	$('#cbtv').prop('checked',!radio);
 	$('#cbradio').prop('checked',radio);
 
-	if (!timeredit_initialized || lch < 2) {
-		initTimerEdit(radio);
-	}
-	else
-	{
-		var _chsref=$("#bouquet_select option:last").val();
-		if(radio && _chsref.substring(0,6) !== '1:0:2:')
-			initTimerEdit(radio);
-		if(!radio && _chsref.substring(0,6) == '1:0:2:')
-			initTimerEdit(radio);
-	}
-
+	var bottomhalf = function() {
 	if (typeof chsref !== 'undefined' && typeof chname !== 'undefined') {
 		serviceref = chsref;
 		title = chname;
@@ -1296,12 +1308,10 @@ function addTimer(evt,chsref,chname,top) {
 	$('#errorbox').hide();
 
 	for (var i=0; i<7; i++) {
-		$('#day'+i).attr('checked', false);
+		$('#day'+i).attr('checked', false).checkboxradio('refresh');
 	}
-	$('#repeatdays').buttonset('refresh');
 	
-	$('#tagsnew').find('input').attr('checked',false);
-	$('#tagsnew').buttonset('refresh');
+	$('#tagsnew > input').prop('checked',false).checkboxradio("refresh");
 
 	var begindate = begin !== -1 ? new Date( (Math.round(begin) - margin_before*60) * 1000) : new Date();
 	$('#timerbegin').datetimepicker('setDate', begindate);
@@ -1320,6 +1330,23 @@ function addTimer(evt,chsref,chname,top) {
 	*/
 
 	openTimerDlg(tstr_add_timer);
+	};
+	
+	if (!timeredit_initialized || lch < 2) {
+		initTimerEdit(radio, bottomhalf);
+	}
+	else
+	{
+		var _chsref=$("#bouquet_select option:last").val();
+		if(radio && _chsref.substring(0,6) !== '1:0:2:') {
+			initTimerEdit(radio, bottomhalf);
+		} else if(!radio && _chsref.substring(0,6) == '1:0:2:') {
+			initTimerEdit(radio, bottomhalf);
+		} else {
+			bottomhalf();
+		}
+	}
+
 }
 
 function openTimerDlg(title)
@@ -2078,4 +2105,3 @@ var SSHelperObj = function () {
 };
 
 var SSHelper = new SSHelperObj();
-

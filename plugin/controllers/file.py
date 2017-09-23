@@ -78,12 +78,17 @@ class FileController(resource.Resource):
 		if "dir" in request.args:
 			path = request.args["dir"][0]
 			pattern = '*'
-			data = []
+			nofiles = False
 			if "pattern" in request.args:
 				pattern = request.args["pattern"][0]
+			if "nofiles" in request.args:
+				nofiles = True
 			directories = []
 			files = []
+			request.setHeader("content-type", "application/json; charset=utf-8")
 			if fileExists(path):
+				if path == '/':
+					path=''
 				try:
 					files = glob.glob(path+'/'+pattern)
 				except:
@@ -94,8 +99,8 @@ class FileController(resource.Resource):
 					if os.path.isdir(x):
 						directories.append(x + '/')
 						files.remove(x)
-				data.append({"result": True,"dirs": directories,"files": files})
+				if nofiles:
+					files = []
+				return json.dumps({"Result": True,"dirs": directories,"files": files}, indent=2)
 			else:
-				data.append({"result": False,"message": "path %s not exits" % (path)})
-			request.setHeader("content-type", "application/json; charset=utf-8")
-			return json.dumps(data, indent=2)
+				return json.dumps({"Result": False,"message": "path %s not exits" % (path)}, indent=2)
