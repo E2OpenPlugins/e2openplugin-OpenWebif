@@ -8,6 +8,11 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
+import os
+
+from twisted.web import static, http, proxy
+from twisted.web.server import GzipEncoderFactory
+from twisted.web.resource import EncodingResourceWrapper
 
 from models.info import getPublicPath, getPiconPath
 from models.grab import grabScreenshot
@@ -15,7 +20,6 @@ from base import BaseController
 from web import WebController
 from ajax import AjaxController
 from api import ApiController
-from file import FileController
 from mobile import MobileController
 from ipkg import IpkgController
 from AT import ATController
@@ -24,8 +28,8 @@ from ER import ERController
 from BQE import BQEController
 from transcoding import TranscodingController
 from wol import WOLSetupController, WOLClientController
-from twisted.web import static, http, proxy
-import os
+import rest_fs_access
+
 
 class RootController(BaseController):
 	def __init__(self, session, path = ""):
@@ -35,7 +39,15 @@ class RootController(BaseController):
 		self.putChild("web", WebController(session))
 		self.putChild("api", ApiController(session))
 		self.putChild("ajax", AjaxController(session))
-		self.putChild("file", FileController())
+		#: gzip compression enabled file controller
+		gzip_wrapped_fs_controller = EncodingResourceWrapper(
+			rest_fs_access.FileController(
+				root='/',
+				resource_prefix="/file",
+				session=session),
+			[GzipEncoderFactory()]
+		)
+		self.putChild("file", gzip_wrapped_fs_controller)
 		self.putChild("grab", grabScreenshot(session))
 		if os.path.exists(getPublicPath('mobile')):
 			self.putChild("mobile", MobileController(session))
