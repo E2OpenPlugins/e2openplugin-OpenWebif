@@ -20,7 +20,6 @@ from base import BaseController
 from web import WebController
 from ajax import AjaxController
 from api import ApiController
-from file import FileController
 from mobile import MobileController
 from ipkg import IpkgController
 from AT import ATController
@@ -40,11 +39,15 @@ class RootController(BaseController):
 		self.putChild("web", WebController(session))
 		self.putChild("api", ApiController(session))
 		self.putChild("ajax", AjaxController(session))
-		wrapped = EncodingResourceWrapper(
+		#: gzip compression enabled file controller
+		gzip_wrapped_fs_controller = EncodingResourceWrapper(
 			rest_fs_access.FileController(
-				root='/', resource_prefix="/file", session=session),
-			[GzipEncoderFactory()])
-		self.putChild("file", wrapped)
+				root='/',
+				resource_prefix="/file",
+				session=session),
+			[GzipEncoderFactory()]
+		)
+		self.putChild("file", gzip_wrapped_fs_controller)
 		self.putChild("grab", grabScreenshot(session))
 		if os.path.exists(getPublicPath('mobile')):
 			self.putChild("mobile", MobileController(session))
