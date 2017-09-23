@@ -2,6 +2,13 @@
 
 from __init__ import _
 
+from Components.config import config
+
+try:
+	AT_unit = config.plugins.autotimer.unit.value == "hour" and _("hour") or _("minute")
+except NameError:
+	AT_unit = "hour"
+
 tstrings = {'mo': _("Mo"),
 	'tu': _("Tu"),
 	'we': _("We"),
@@ -326,7 +333,7 @@ tstrings = {'mo': _("Mo"),
 
 	'ats_auto_timer_settings': _("AutoTimer Settings"),
 	'ats_autopoll': _("AutoPoll"),
-	'ats_interval': _("Interval (in h)"),
+	'ats_interval': _("Interval (in %s)") % AT_unit[:1],
 	'ats_maxdaysinfuture': _("Max Days"),
 	'ats_try_guessing': _("Try Guessing"),
 	'ats_fastscan': _("Fastscan"),
