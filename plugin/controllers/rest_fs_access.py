@@ -49,13 +49,12 @@ from twisted.web import http
 
 from utilities import MANY_SLASHES_REGEX, lenient_force_utf_8
 
-HAVE_LEGACY_FILE = False
-
 try:
 	import file
+
 	HAVE_LEGACY_FILE = True
 except ImportError:
-	pass
+	HAVE_LEGACY_FILE = False
 
 #: default path from which files will be served
 DEFAULT_ROOT_PATH = os.path.abspath(os.path.dirname(__file__))
@@ -89,6 +88,7 @@ DELETE_WHITELIST = [
 def dump_upload(request, target_filename):
 	with open(target_filename, "wb") as handle:
 		handle.write(request.args['data'][0])
+
 
 class FileController(twisted.web.resource.Resource):
 	isLeaf = True
