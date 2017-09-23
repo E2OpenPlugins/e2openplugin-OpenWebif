@@ -4,6 +4,8 @@ import os
 import copy
 import unittest
 import urllib
+import uuid
+import tempfile
 
 import requests
 
@@ -61,12 +63,18 @@ class MoviefilesTestCase(unittest.TestCase):
 	maxDiff = None
 
 	def setUp(self):
+		self.test_filename = uuid.uuid4().hex + '-test.file'
+		self.test_file = tempfile.mktemp()
+		with open(self.test_file, "wb") as tgt:
+			tgt.write("TEST1234")
 		self.enigma2_host = os.environ.get(ENV_VAR, ENV_VAL_FALLBACK)
 		self.file_controller_url = "http://{netloc}/file?dir={dir}".format(
 			netloc=self.enigma2_host, dir=MOVIE_FOLDER)
 		self.api_controller_url = "http://{netloc}/api/movielist".format(
 			netloc=self.enigma2_host)
 		self.file_url = 'http://{host}/file'.format(host=self.enigma2_host)
+		self.testfile_upload_url = "http://{netloc}/file{dir}".format(
+			netloc=self.enigma2_host, dir=MOVIE_FOLDER)
 
 	def testFilesResponseByFileController(self):
 		req = requests.get(self.file_controller_url)
@@ -108,6 +116,36 @@ class MoviefilesTestCase(unittest.TestCase):
 			file=urllib.quote(MAIN_TS_FILE.encode("utf_8")))
 		self.assertEquals(expected_body, req.text)
 		self.assertEqual(200, req.status_code)
+
+	def testUpload(self):
+		files = {
+			"data": open(self.test_file, "rb")
+		}
+		params =  {
+			"filename": self.test_filename,
+		}
+
+		# upload file
+		req = requests.post(self.testfile_upload_url, params=params, files=files)
+		self.assertEqual(200, req.status_code)
+
+		# does uploaded file exist?
+		req = requests.get(self.testfile_upload_url)
+		self.assertTrue(req.status_code, 200)
+
+		data = req.json()
+		test_filename_remote = u"{dir}/{filename}".format(
+			dir=MOVIE_FOLDER, filename=self.test_filename)
+		self.assertTrue(test_filename_remote in data['files'])
+
+		# delete uploaded file
+		test_filename_remote_url = self.testfile_upload_url + '/' + self.test_filename
+		req = requests.delete(test_filename_remote_url)
+		self.assertTrue(req.status_code, 200)
+
+		# we expect that the uploaded file does not exist any more
+		req = requests.get(test_filename_remote_url)
+		self.assertTrue(req.status_code, 404)
 
 
 def dump_disclaimer(tow_files=False):
