@@ -8,6 +8,8 @@ try:
 	AT_unit = config.plugins.autotimer.unit.value == "hour" and _("hour") or _("minute")
 except NameError:
 	AT_unit = "hour"
+except KeyError:
+	AT_unit = "hour"
 
 tstrings = {'mo': _("Mo"),
 	'tu': _("Tu"),
