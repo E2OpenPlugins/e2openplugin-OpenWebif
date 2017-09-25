@@ -27,6 +27,7 @@
 //* V 1.2.10 - improve screenshot refresh #625
 //* V 1.2.11 - improve visual feedback for adding timer in multiepg
 //* V 1.2.12 - improve timer edit
+//* V 1.2.13 - fix repeating timer edit #631
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
