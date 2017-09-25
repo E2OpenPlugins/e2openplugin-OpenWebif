@@ -326,7 +326,7 @@ class AjaxController(BaseController):
 		if transcoding:
 			try:
 				transcoder_port = int(config.plugins.transcodingsetup.port.value)
-				if getMachineBuild() in ('inihdp', 'hd2400', 'et10000','ew7356','formuler1tc'):
+				if getMachineBuild() in ('inihdp', 'hd2400', 'et10000', 'et13000','ew7356','formuler1tc'):
 					transcoder_port = int(config.OpenWebif.streamport.value)
 			except StandardError:
 				transcoder_port = 0
