@@ -1308,7 +1308,7 @@ function addTimer(evt,chsref,chname,top) {
 	$('#errorbox').hide();
 
 	for (var i=0; i<7; i++) {
-		$('#day'+i).attr('checked', false).checkboxradio('refresh');
+		$('#day'+i).prop('checked', false).checkboxradio('refresh');
 	}
 	
 	$('#tagsnew > input').prop('checked',false).checkboxradio("refresh");
