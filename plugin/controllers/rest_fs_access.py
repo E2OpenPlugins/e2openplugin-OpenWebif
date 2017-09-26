@@ -43,6 +43,9 @@ import json
 import glob
 import re
 import urlparse
+import datetime
+import time
+from wsgiref.handlers import format_date_time
 
 import twisted.web.static
 from twisted.web import http
@@ -147,6 +150,17 @@ class FileController(twisted.web.resource.Resource):
 				attr_name = '_{:s}'.format(arg_name)
 				setattr(self, attr_name, kwargs.get(arg_name))
 		self.session = kwargs.get("session")
+
+	def _cache(self, request, expires=False):
+		if expires is False:
+			request.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0')
+			request.setHeader('Expires', '-1')
+		else:
+			now = datetime.datetime.now()
+			expires_time = now + datetime.timedelta(seconds=expires)
+			request.setHeader('Cache-Control', 'public')
+			request.setHeader('Expires', format_date_time(time.mktime(expires_time.timetuple())))
+
 
 	def _json_response(self, request, data):
 		"""
@@ -320,7 +334,10 @@ class FileController(twisted.web.resource.Resource):
 		"""
 		result = twisted.web.static.File(
 			path, defaultType="application/octet-stream")
-
+		expires = 3600 * 24 * 30
+		if path.lower().endswith('.ts'):
+			expires = False
+		self._cache(request, expires=expires)
 		return result.render(request)
 
 	def render_GET(self, request):
