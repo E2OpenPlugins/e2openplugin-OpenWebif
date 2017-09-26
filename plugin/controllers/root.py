@@ -42,7 +42,7 @@ class RootController(BaseController):
 		encoder_factory = rest_fs_access.ExtGzipEncoderFactory(
 			extensions=[
 				'txt', 'json', 'html', 'xml', 'js',
-				'eit', 'sc'
+				'eit', 'sc', 'ap'
 			])
 		#: gzip compression enabled file controller
 		wrapped_fs_controller = EncodingResourceWrapper(
