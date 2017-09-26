@@ -11,7 +11,6 @@
 import os
 
 from twisted.web import static, http, proxy
-from twisted.web.server import GzipEncoderFactory
 from twisted.web.resource import EncodingResourceWrapper
 
 from models.info import getPublicPath, getPiconPath
@@ -39,15 +38,21 @@ class RootController(BaseController):
 		self.putChild("web", WebController(session))
 		self.putChild("api", ApiController(session))
 		self.putChild("ajax", AjaxController(session))
+
+		encoder_factory = rest_fs_access.ExtGzipEncoderFactory(
+			extensions=[
+				'txt', 'json', 'html', 'xml', 'js',
+				'eit', 'sc'
+			])
 		#: gzip compression enabled file controller
-		gzip_wrapped_fs_controller = EncodingResourceWrapper(
+		wrapped_fs_controller = EncodingResourceWrapper(
 			rest_fs_access.FileController(
 				root='/',
 				resource_prefix="/file",
 				session=session),
-			[GzipEncoderFactory()]
+			[encoder_factory]
 		)
-		self.putChild("file", gzip_wrapped_fs_controller)
+		self.putChild("file", wrapped_fs_controller)
 		self.putChild("grab", grabScreenshot(session))
 		if os.path.exists(getPublicPath('mobile')):
 			self.putChild("mobile", MobileController(session))

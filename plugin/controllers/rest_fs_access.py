@@ -46,6 +46,7 @@ import urlparse
 
 import twisted.web.static
 from twisted.web import http
+from twisted.web.server import GzipEncoderFactory
 
 from utilities import MANY_SLASHES_REGEX, lenient_force_utf_8
 
@@ -90,6 +91,30 @@ def dump_upload(request, target_filename):
 		handle.write(request.args['data'][0])
 
 
+class ExtGzipEncoderFactory(GzipEncoderFactory):
+	def __init__(self, *args, **kwargs):
+		self.gzip_allowed = kwargs.get("extensions", [])
+		self.compressLevel = kwargs.get("compressLevel", 6)
+
+	def encoderForRequest(self, request):
+		"""
+		Check the request path if the extension allows the file to be
+		send compressed. If so use GzipEncoderFactory which may compress
+		the file contents if the client supports it.
+		"""
+		try:
+			(trunk, ext) = os.path.splitext(request.path)
+			ext_normalised = ext.lower()[1:]
+
+			if ext_normalised in self.gzip_allowed:
+				# print("{!r}: we want GZIP!".format(ext_normalised))
+				return GzipEncoderFactory.encoderForRequest(self, request)
+			# else:
+			# 	print("{!r}: we do not want GZIP!".format(ext_normalised))
+		except Exception as exc:
+			print exc
+
+
 class FileController(twisted.web.resource.Resource):
 	isLeaf = True
 	_override_args = (
@@ -98,7 +123,6 @@ class FileController(twisted.web.resource.Resource):
 	_root = os.path.abspath(os.path.dirname(__file__))
 	_do_delete = False
 	_delete_whitelist = DELETE_WHITELIST
-	never_gzip_extensions = ('.ts',)
 
 	def __init__(self, *args, **kwargs):
 		"""
@@ -298,16 +322,6 @@ class FileController(twisted.web.resource.Resource):
 		Returns:
 			HTTP response with headers
 		"""
-		(_, ext) = os.path.splitext(path)
-
-		if ext in self.never_gzip_extensions:
-			# hack: remove gzip from the list of supported encodings
-			acceptHeaders = request.requestHeaders.getRawHeaders(
-				'accept-encoding', [])
-			supported = ','.join(acceptHeaders).split(',')
-			request.requestHeaders.setRawHeaders(
-				'accept-encoding', list(set(supported) - {'gzip'}))
-
 		result = twisted.web.static.File(
 			path, defaultType="application/octet-stream")
 
