@@ -181,7 +181,6 @@ class FileController(twisted.web.resource.Resource):
 				"path": request.path,
 				"uri": request.uri,
 				"method": request.method,
-				"postpath": request.postpath,
 				"file_path": file_path,
 			},
 			"result": False,
@@ -288,14 +287,11 @@ class FileController(twisted.web.resource.Resource):
 		Returns:
 			HTTP response with headers
 		"""
-		response_data = self.get_response_data_template(request)
-		response_data.update(
-			{
-				'result': True,
-				'dirs': [],
-				'files': [],
-			}
-		)
+		response_data = {
+			'result': True,
+			'dirs': [],
+			'files': [],
+		}
 
 		generator = None
 		if "pattern" in request.args:
@@ -420,13 +416,10 @@ class FileController(twisted.web.resource.Resource):
 				request, response_code=http.INTERNAL_SERVER_ERROR,
 				message=exc.message)
 
-		response_data = self.get_response_data_template(request)
-		response_data.update(
-			{
-				'result': True,
-				'filename': target_filename,
-			}
-		)
+		response_data = {
+			'result': True,
+			'filename': target_filename,
+		}
 
 		return self._json_response(request, response_data)
 
@@ -476,7 +469,7 @@ class FileController(twisted.web.resource.Resource):
 				return self.error_response(request,
 										   response_code=http.FORBIDDEN)
 
-		response_data = self.get_response_data_template(request)
+		response_data = {'result': False}
 		try:
 			response_data['result'] = True
 			if self._do_delete:
