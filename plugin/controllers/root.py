@@ -39,9 +39,9 @@ class RootController(BaseController):
 		self.putChild("api", ApiController(session))
 		self.putChild("ajax", AjaxController(session))
 
-		encoder_factory = rest_fs_access.ExtGzipEncoderFactory(
+		encoder_factory = rest_fs_access.GzipEncodeByFileExtensionFactory(
 			extensions=[
-				'txt', 'json', 'html', 'xml', 'js',
+				'txt', 'json', 'html', 'xml', 'js', 'conf', 'cfg',
 				'eit', 'sc', 'ap'
 			])
 		#: gzip compression enabled file controller

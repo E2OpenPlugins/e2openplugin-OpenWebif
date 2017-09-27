@@ -9,7 +9,8 @@ Means to retrieve and delete files are provided as well as the
 ability to list folder contents.
 
 The generated responses are returned as JSON data with appropriate HTTP headers.
-Output will be compressed using gzip most of the times (if enabled by wrapper).
+Output will be compressed using gzip for some files if using wrapper
+and requested by client.
 
 Example calls using curl
 ++++++++++++++++++++++++
@@ -94,7 +95,18 @@ def dump_upload(request, target_filename):
 		handle.write(request.args['data'][0])
 
 
-class ExtGzipEncoderFactory(GzipEncoderFactory):
+class GzipEncodeByFileExtensionFactory(GzipEncoderFactory):
+	"""
+	A gzip content encoding factory. Compression is enabled for paths having
+	an extension contained in *self.gzip_allowed*.
+
+	Args:
+		extensions: Extensions for which compression will be enabled.
+			Default is [] -- no compression at all
+		compressLevel: Gzip compression level
+			Default is 6
+	"""
+
 	def __init__(self, *args, **kwargs):
 		self.gzip_allowed = kwargs.get("extensions", [])
 		self.compressLevel = kwargs.get("compressLevel", 6)
@@ -153,14 +165,15 @@ class FileController(twisted.web.resource.Resource):
 
 	def _cache(self, request, expires=False):
 		if expires is False:
-			request.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0')
+			request.setHeader('Cache-Control',
+							  'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0')
 			request.setHeader('Expires', '-1')
 		else:
 			now = datetime.datetime.now()
 			expires_time = now + datetime.timedelta(seconds=expires)
 			request.setHeader('Cache-Control', 'public')
-			request.setHeader('Expires', format_date_time(time.mktime(expires_time.timetuple())))
-
+			request.setHeader('Expires', format_date_time(
+				time.mktime(expires_time.timetuple())))
 
 	def _json_response(self, request, data):
 		"""
