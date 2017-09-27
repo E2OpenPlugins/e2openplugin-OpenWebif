@@ -38,6 +38,64 @@ Create example file 'test.dat' using HTTP POST request on /file
 
     curl --noproxy localhost -iv -X POST http://localhost:18888/file?filename=test.dat -F "data=blabla"
 
+Request file '/etc/sysctl.conf' (compressed)
+
+    curl --compressed -H "Accept-Encoding: gzip" --noproxy localhost -I http://localhost/file/etc/sysctl.conf
+
+Example Response:
+
+	HTTP/1.1 200 OK
+	Content-Encoding: gzip
+	Accept-Ranges: bytes
+	Expires: Fri, 27 Oct 2017 17:24:11 GMT
+	Server: TwistedWeb/16.2.0
+	Last-Modified: Thu, 01 Jan 1970 00:05:52 GMT
+	Cache-Control: public
+	Date: Wed, 27 Sep 2017 17:24:11 GMT
+	Access-Control-Allow-Origin: *
+	Content-Type: text/plain
+	Set-Cookie: TWISTED_SESSION=7aa774819460330851b703cb3d82b240; Path=/
+
+Request file '/etc/sysctl.conf' (without compression)
+
+	curl --noproxy localhost -I http://localhost/file/etc/sysctl.conf
+
+Example Response:
+
+	HTTP/1.1 200 OK
+	Content-Length: 2065
+	Accept-Ranges: bytes
+	Expires: Fri, 27 Oct 2017 17:26:05 GMT
+	Server: TwistedWeb/16.2.0
+	Last-Modified: Thu, 01 Jan 1970 00:05:52 GMT
+	Cache-Control: public
+	Date: Wed, 27 Sep 2017 17:26:05 GMT
+	Access-Control-Allow-Origin: *
+	Content-Type: text/plain
+	Set-Cookie: TWISTED_SESSION=0b3688af9874df9b432f09bedae63c40; Path=/
+
+Create example file 'test_01.ts' using HTTP POST request on /file. After that
+request 'test_01.ts' compressed. Because of the file extension the server will
+_not_ return its content gzip encoded and orders the client not to cache the
+result.
+
+	curl --noproxy localhost -iv -X POST http://localhost/file/tmp?filename=test_01.ts -F "data=dummy"
+	curl --compressed -H "Accept-Encoding: gzip" --noproxy localhost -I http://localhost/file/tmp/test_01.ts
+
+Example response:
+
+	HTTP/1.1 200 OK
+	Content-Length: 5
+	Accept-Ranges: bytes
+	Expires: -1
+	Server: TwistedWeb/16.2.0
+	Last-Modified: Wed, 27 Sep 2017 17:33:08 GMT
+	Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
+	Date: Wed, 27 Sep 2017 17:33:19 GMT
+	Access-Control-Allow-Origin: *
+	Content-Type: video/MP2T
+	Set-Cookie: TWISTED_SESSION=7d3e06aa234b04e1124d4812c80dad22; Path=/
+
 """
 import os
 import json
@@ -351,6 +409,7 @@ class FileController(twisted.web.resource.Resource):
 		if path.lower().endswith('.ts'):
 			expires = False
 		self._cache(request, expires=expires)
+
 		return result.render(request)
 
 	def render_GET(self, request):
