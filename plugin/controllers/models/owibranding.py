@@ -314,7 +314,7 @@ def getAllInfo():
 		elif procmodel == "wetekplay":
 			brand = "WeTeK"
 			model = "Play"
-		elif procmodel.startswith("osm"):
+		elif procmodel.startswith("os"):
 			brand = "Edision"
 			if procmodel == "osmini":
 				model = "OS Mini"
@@ -322,6 +322,8 @@ def getAllInfo():
 				model = "OS Mini+"
 			elif procmodel == "osmega":
 				model = "OS Mega"
+			elif procmodel == "osnino":
+				model = "OS Nino"
 			else:
 				model = procmodel
 		elif procmodel == "h3":
@@ -488,6 +490,8 @@ def getAllInfo():
 		remote = procmodel
 	elif procmodel.startswith("osm"):
 		remote = "osmini"
+	elif procmodel.startswith("osn"):
+		remote = "edision1"
 	elif procmodel in ("fusionhd"):
 		remote = procmodel
 	elif procmodel in ("fusionhdse"):
