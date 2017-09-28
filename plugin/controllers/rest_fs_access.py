@@ -9,7 +9,8 @@ Means to retrieve and delete files are provided as well as the
 ability to list folder contents.
 
 The generated responses are returned as JSON data with appropriate HTTP headers.
-Output will be compressed using gzip most of the times (if enabled by wrapper).
+Output will be compressed using gzip for some files if using wrapper
+and requested by client.
 
 Example calls using curl
 ++++++++++++++++++++++++
@@ -37,15 +38,77 @@ Create example file 'test.dat' using HTTP POST request on /file
 
     curl --noproxy localhost -iv -X POST http://localhost:18888/file?filename=test.dat -F "data=blabla"
 
+Request file '/etc/sysctl.conf' (compressed)
+
+    curl --compressed -H "Accept-Encoding: gzip" --noproxy localhost -I http://localhost/file/etc/sysctl.conf
+
+Example Response:
+
+	HTTP/1.1 200 OK
+	Content-Encoding: gzip
+	Accept-Ranges: bytes
+	Expires: Fri, 27 Oct 2017 17:24:11 GMT
+	Server: TwistedWeb/16.2.0
+	Last-Modified: Thu, 01 Jan 1970 00:05:52 GMT
+	Cache-Control: public
+	Date: Wed, 27 Sep 2017 17:24:11 GMT
+	Access-Control-Allow-Origin: *
+	Content-Type: text/plain
+	Set-Cookie: TWISTED_SESSION=7aa774819460330851b703cb3d82b240; Path=/
+
+Request file '/etc/sysctl.conf' (without compression)
+
+	curl --noproxy localhost -I http://localhost/file/etc/sysctl.conf
+
+Example Response:
+
+	HTTP/1.1 200 OK
+	Content-Length: 2065
+	Accept-Ranges: bytes
+	Expires: Fri, 27 Oct 2017 17:26:05 GMT
+	Server: TwistedWeb/16.2.0
+	Last-Modified: Thu, 01 Jan 1970 00:05:52 GMT
+	Cache-Control: public
+	Date: Wed, 27 Sep 2017 17:26:05 GMT
+	Access-Control-Allow-Origin: *
+	Content-Type: text/plain
+	Set-Cookie: TWISTED_SESSION=0b3688af9874df9b432f09bedae63c40; Path=/
+
+Create example file 'test_01.ts' using HTTP POST request on /file. After that
+request 'test_01.ts' compressed. Because of the file extension the server will
+_not_ return its content gzip encoded and orders the client not to cache the
+result.
+
+	curl --noproxy localhost -iv -X POST http://localhost/file/tmp?filename=test_01.ts -F "data=dummy"
+	curl --compressed -H "Accept-Encoding: gzip" --noproxy localhost -I http://localhost/file/tmp/test_01.ts
+
+Example response:
+
+	HTTP/1.1 200 OK
+	Content-Length: 5
+	Accept-Ranges: bytes
+	Expires: -1
+	Server: TwistedWeb/16.2.0
+	Last-Modified: Wed, 27 Sep 2017 17:33:08 GMT
+	Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
+	Date: Wed, 27 Sep 2017 17:33:19 GMT
+	Access-Control-Allow-Origin: *
+	Content-Type: video/MP2T
+	Set-Cookie: TWISTED_SESSION=7d3e06aa234b04e1124d4812c80dad22; Path=/
+
 """
 import os
 import json
 import glob
 import re
 import urlparse
+import datetime
+import time
+from wsgiref.handlers import format_date_time
 
 import twisted.web.static
 from twisted.web import http
+from twisted.web.server import GzipEncoderFactory
 
 from utilities import MANY_SLASHES_REGEX, lenient_force_utf_8
 
@@ -90,6 +153,41 @@ def dump_upload(request, target_filename):
 		handle.write(request.args['data'][0])
 
 
+class GzipEncodeByFileExtensionFactory(GzipEncoderFactory):
+	"""
+	A gzip content encoding factory. Compression is enabled for paths having
+	an extension contained in *self.gzip_allowed*.
+
+	Args:
+		extensions: Extensions for which compression will be enabled.
+			Default is [] -- no compression at all
+		compressLevel: Gzip compression level
+			Default is 6
+	"""
+
+	def __init__(self, *args, **kwargs):
+		self.gzip_allowed = kwargs.get("extensions", [])
+		self.compressLevel = kwargs.get("compressLevel", 6)
+
+	def encoderForRequest(self, request):
+		"""
+		Check the request path if the extension allows the file to be
+		send compressed. If so use GzipEncoderFactory which may compress
+		the file contents if the client supports it.
+		"""
+		try:
+			(trunk, ext) = os.path.splitext(request.path)
+			ext_normalised = ext.lower()[1:]
+
+			if ext_normalised in self.gzip_allowed:
+				# print("{!r}: we want GZIP!".format(ext_normalised))
+				return GzipEncoderFactory.encoderForRequest(self, request)
+			# else:
+			# 	print("{!r}: we do not want GZIP!".format(ext_normalised))
+		except Exception as exc:
+			print exc
+
+
 class FileController(twisted.web.resource.Resource):
 	isLeaf = True
 	_override_args = (
@@ -98,7 +196,6 @@ class FileController(twisted.web.resource.Resource):
 	_root = os.path.abspath(os.path.dirname(__file__))
 	_do_delete = False
 	_delete_whitelist = DELETE_WHITELIST
-	never_gzip_extensions = ('.ts',)
 
 	def __init__(self, *args, **kwargs):
 		"""
@@ -123,6 +220,18 @@ class FileController(twisted.web.resource.Resource):
 				attr_name = '_{:s}'.format(arg_name)
 				setattr(self, attr_name, kwargs.get(arg_name))
 		self.session = kwargs.get("session")
+
+	def _cache(self, request, expires=False):
+		if expires is False:
+			request.setHeader('Cache-Control',
+							  'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0')
+			request.setHeader('Expires', '-1')
+		else:
+			now = datetime.datetime.now()
+			expires_time = now + datetime.timedelta(seconds=expires)
+			request.setHeader('Cache-Control', 'public')
+			request.setHeader('Expires', format_date_time(
+				time.mktime(expires_time.timetuple())))
 
 	def _json_response(self, request, data):
 		"""
@@ -157,7 +266,6 @@ class FileController(twisted.web.resource.Resource):
 				"path": request.path,
 				"uri": request.uri,
 				"method": request.method,
-				"postpath": request.postpath,
 				"file_path": file_path,
 			},
 			"result": False,
@@ -264,14 +372,11 @@ class FileController(twisted.web.resource.Resource):
 		Returns:
 			HTTP response with headers
 		"""
-		response_data = self.get_response_data_template(request)
-		response_data.update(
-			{
-				'result': True,
-				'dirs': [],
-				'files': [],
-			}
-		)
+		response_data = {
+			'result': True,
+			'dirs': [],
+			'files': [],
+		}
 
 		generator = None
 		if "pattern" in request.args:
@@ -298,18 +403,12 @@ class FileController(twisted.web.resource.Resource):
 		Returns:
 			HTTP response with headers
 		"""
-		(_, ext) = os.path.splitext(path)
-
-		if ext in self.never_gzip_extensions:
-			# hack: remove gzip from the list of supported encodings
-			acceptHeaders = request.requestHeaders.getRawHeaders(
-				'accept-encoding', [])
-			supported = ','.join(acceptHeaders).split(',')
-			request.requestHeaders.setRawHeaders(
-				'accept-encoding', list(set(supported) - {'gzip'}))
-
 		result = twisted.web.static.File(
 			path, defaultType="application/octet-stream")
+		expires = 3600 * 24 * 30
+		if path.lower().endswith('.ts'):
+			expires = False
+		self._cache(request, expires=expires)
 
 		return result.render(request)
 
@@ -406,13 +505,10 @@ class FileController(twisted.web.resource.Resource):
 				request, response_code=http.INTERNAL_SERVER_ERROR,
 				message=exc.message)
 
-		response_data = self.get_response_data_template(request)
-		response_data.update(
-			{
-				'result': True,
-				'filename': target_filename,
-			}
-		)
+		response_data = {
+			'result': True,
+			'filename': target_filename,
+		}
 
 		return self._json_response(request, response_data)
 
@@ -462,7 +558,7 @@ class FileController(twisted.web.resource.Resource):
 				return self.error_response(request,
 										   response_code=http.FORBIDDEN)
 
-		response_data = self.get_response_data_template(request)
+		response_data = {'result': False}
 		try:
 			response_data['result'] = True
 			if self._do_delete:

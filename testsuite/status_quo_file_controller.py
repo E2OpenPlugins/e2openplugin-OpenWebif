@@ -83,7 +83,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 		print("Tried to fetch {!r}".format(req.url))
 		minimal_expectation = {"message": "path {:s} not exits".format(randy),
 							   "result": False}
-		result = req.json()[0]
+		result = req.json()
 		for key in minimal_expectation:
 			self.assertEquals(minimal_expectation[key], result.get(key))
 		self.assertEqual(200, req.status_code)
@@ -97,7 +97,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 		req = requests.get(self.file_url, params=params)
 		print("Tried to fetch {!r}".format(req.url))
 		minimal_expectation = {"dirs": [], "result": True}
-		result = req.json()[0]
+		result = req.json()
 		for key in minimal_expectation:
 			self.assertEquals(minimal_expectation[key], result.get(key))
 		self.assertEqual(200, req.status_code)
@@ -111,7 +111,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 		print("Tried to fetch {!r}".format(req.url))
 		minimal_expectation = {"dirs": ['/etc/opkg/'], "result": True,
 							   "files": []}
-		result = req.json()[0]
+		result = req.json()
 		for key in minimal_expectation:
 			self.assertEquals(minimal_expectation[key], result.get(key))
 		self.assertEqual(200, req.status_code)
