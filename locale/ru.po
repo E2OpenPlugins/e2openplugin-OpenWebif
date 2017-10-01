@@ -1064,7 +1064,7 @@ msgstr "Главная"
 
 #: plugin/local.py:132
 msgid "Minute"
-msgstr "Минута"
+msgstr "Mинута"
 
 #: plugin/local.py:133
 msgid "Model"
