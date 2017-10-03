@@ -87,7 +87,7 @@ class IpkgController(BaseController):
 
 	def getPackages(self,action):
 		map = {}
-		for feed in enumFeeds():
+		for feed in self.enumFeeds():
 			package = None
 			try:
 				for line in open(os.path.join(PACKAGES, feed), 'r'):
