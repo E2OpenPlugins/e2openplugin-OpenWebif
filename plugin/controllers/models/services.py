@@ -909,8 +909,22 @@ def getPicon(sname):
 	filename = getPiconPath() + sname
 	if fileExists(filename):
 		return "/picon/" + sname
-	fields = sname.split('_', 3)
-	if len(fields) > 2 and fields[2] != '2':
+	fields = sname.split('_', 8)
+	if len(fields) > 7 and not fields[6].endswith("0000"):
+		#remove "sub-network" from namespace
+		fields[6] = fields[6][:-4] + "0000"
+		sname='_'.join(fields)
+		filename = getPiconPath() + sname
+		if fileExists(filename):
+			return "/picon/" + sname
+	if len(fields) > 1 and fields[0] != '1':
+		#fallback to 1 for other reftypes
+		fields[0] = '1'
+		sname='_'.join(fields)
+		filename = getPiconPath() + sname
+		if fileExists(filename):
+			return "/picon/" + sname
+	if len(fields) > 3 and fields[2] != '1':
 		#fallback to 1 for tv services with nonstandard servicetypes
 		fields[2] = '1'
 		sname='_'.join(fields)
