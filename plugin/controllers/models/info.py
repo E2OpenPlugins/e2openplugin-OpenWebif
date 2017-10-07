@@ -188,7 +188,11 @@ def getViewsPath(file = ""):
 	return getBasePath() + "/controllers/views/" + file
 
 def getPiconPath():
-	if pathExists("/media/usb/picon/"):
+	if pathExists("/usr/share/enigma2/picon/"):
+		return "/usr/share/enigma2/picon/"
+	elif pathExists("/picon/"):
+		return "/picon/"
+	elif pathExists("/media/usb/picon/"):
 		return "/media/usb/picon/"
 	elif pathExists("/media/cf/picon/"):
 		return "/media/cf/picon/"
@@ -196,10 +200,6 @@ def getPiconPath():
 		return "/media/mmc/picon/"
 	elif pathExists("/media/hdd/picon/"):
 		return "/media/hdd/picon/"
-	elif pathExists("/usr/share/enigma2/picon/"):
-		return "/usr/share/enigma2/picon/"
-	elif pathExists("/picon/"):
-		return "/picon/"
 	else:
 		return ""
 
