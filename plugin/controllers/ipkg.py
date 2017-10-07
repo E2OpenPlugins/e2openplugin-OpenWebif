@@ -65,11 +65,11 @@ class IpkgController(BaseController):
 				request.finish()
 				return server.NOT_DONE_YET
 			else:
-				return ShowError(request,"Unknown command: "+ self.command)
+				return self.ShowError(request,"Unknown command: "+ action)
 		else:
 			return self.ShowHint(request)
 
-		return ShowError(request,"Error")
+		return self.ShowError(request,"Error")
 
 	def enumFeeds(self):
 		for fn in os.listdir('/etc/opkg'):
@@ -129,7 +129,7 @@ class IpkgController(BaseController):
 			elif len(line) <= 1:
 				if map.has_key(package):
 					if map[package][0] == version:
-						map[package][1] = "1"
+						map[package][2] = "1"
 					else:
 						nv = map[package][0]
 						map[package][0] = version
@@ -194,6 +194,7 @@ class IpkgController(BaseController):
 			else:
 				request.write("<html><body><br>" + data + "</body></html>")
 		request.finish()
+		return server.NOT_DONE_YET
 
 	def CallOPKG(self, request, action, parms=[]):
 		cmd = ["/usr/bin/opkg", "ipkg", action] + parms
@@ -258,7 +259,7 @@ class IpkgController(BaseController):
 	def ShowHint(self, request):
 		html = "<html><body><h1>OpenWebif Interface for OPKG</h1>"
 		html += "Usage : ?command=<cmd>&package=packagename<&format=json><br>"
-		html += "Valid Commands:<br>list,listall,list_installed,list_installed,list_upgradable<br>"
+		html += "Valid Commands:<br>list,listall,list_installed,list_upgradable<br>"
 		html += "Valid Package Commands:<br>info,status,install,remove<br>"
 		html += "Valid Formats:<br>json,html(default)<br>"
 		html += "</body></html>"
