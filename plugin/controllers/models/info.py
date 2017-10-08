@@ -45,6 +45,8 @@ OPENWEBIFVER = "OWIF 1.2.7"
 
 STATICBOXINFO = None
 
+PICONPATH = None
+
 def getOpenWebifVer():
 	return OPENWEBIFVER
 
@@ -188,6 +190,33 @@ def getViewsPath(file = ""):
 	return getBasePath() + "/controllers/views/" + file
 
 def getPiconPath():
+
+	global PICONPATH
+
+	if PICONPATH is not None:
+		return PICONPATH
+
+	pathlist = [
+		"/media/usb/",
+		"/media/cf/",
+		"/media/mmc/",
+		"/media/hdd/",
+		"/usr/share/enigma2/",
+		"/"
+		]
+	
+	PICONPATH = ""
+	
+	for p in pathlist:
+		if pathExists(p+ "owfpicon/"):
+			PICONPATH = p + "owfpicon/"
+		if pathExists(p+ "picon/"):
+			PICONPATH = p + "picon/"
+
+	return PICONPATH
+
+
+def _getPiconPath():
 	if pathExists("/media/usb/picon/"):
 		return "/media/usb/picon/"
 	elif pathExists("/media/cf/picon/"):
