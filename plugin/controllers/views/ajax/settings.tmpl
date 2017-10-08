@@ -57,19 +57,6 @@
 				<input type="checkbox" name="showchannelpicon"/>
 				#end if
 				</td></tr>
-				#if $showchannelpicon
-				<tr><td>PiconPath</td><td>
-				<select name="selectpiconpath" id="selectpiconpath" style="min-width: 150px;margin: 5px;border:none;font-size: 1em;">
-				#for $piconpath in $piconpaths
-					#if $piconpath == $currentpiconpath
-						<option selected="selected">$piconpath</option>
-					#else
-						<option>$piconpath</option>
-					#end if
-				#end for
-				</select>
-				</td></tr>
-				#end if
 				<tr><td>$tstrings['tstr_spinner']</td><td>
 				<span class="spinner">
 				<fieldset style="border:none;" id="fsspinner">
@@ -349,9 +336,6 @@ function load_scontent(url) {
 		$("#osettings").show();
 		$("#selectheme").change(function() {
 			ChangeTheme($(this).val());
-		});
-		$("#selectpiconpath").change(function() {
-			$.ajax({url: "api/piconpath?piconpath=" + $(this).val()});
 		});
 		return;
 	}

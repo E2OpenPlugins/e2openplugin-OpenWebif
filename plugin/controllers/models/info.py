@@ -187,28 +187,7 @@ def getPublicPath(file = ""):
 def getViewsPath(file = ""):
 	return getBasePath() + "/controllers/views/" + file
 
-def getPiconPaths():
-	paths = []
-	pathlist = [
-		"/usr/share/enigma2/picon/",
-		"/picon/",
-		"/media/usb/picon/",
-		"/media/cf/picon/",
-		"/media/mmc/picon/",
-		"/media/hdd/picon/"
-		]
-	for p in pathlist:
-		if pathExists(p):
-			paths.append(p)
-
-	return paths
-	
 def getPiconPath():
-
-	piconpath = config.OpenWebif.webcache.piconpath.value
-	if pathExists(piconpath):
-		return piconpath
-	
 	if pathExists("/media/usb/picon/"):
 		return "/media/usb/picon/"
 	elif pathExists("/media/cf/picon/"):

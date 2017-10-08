@@ -12,7 +12,7 @@ from Tools.Directories import fileExists
 from Components.config import config
 
 from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
-from models.info import getInfo, getPublicPath, getOpenWebifVer, getTranscodingSupport, getLanguage, getPiconPaths
+from models.info import getInfo, getPublicPath, getOpenWebifVer, getTranscodingSupport, getLanguage
 from models.movies import getMovieList
 from models.timers import getTimers
 from models.config import getConfigs, getConfigsSections, getZapStream, getShowChPicon
@@ -225,8 +225,6 @@ class AjaxController(BaseController):
 		ret['zapstream'] = getZapStream()['zapstream']
 		ret['showchannelpicon'] = getShowChPicon()['showchannelpicon']
 		ret['allowipkupload'] = config.OpenWebif.allow_upload_ipk.value
-		ret['currentpiconpath'] = config.OpenWebif.webcache.piconpath.value
-		ret['piconpaths'] = getPiconPaths()
 		return ret
 
 	def P_multiepg(self, request):
