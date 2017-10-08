@@ -50,6 +50,7 @@ config.OpenWebif.webcache.theme = ConfigSelection(default = 'original', choices 
 config.OpenWebif.webcache.moviesort = ConfigSelection(default = 'name', choices = ['name','named','date','dated'] )
 config.OpenWebif.webcache.showchannelpicon = ConfigYesNo(default = True)
 config.OpenWebif.webcache.mepgmode = ConfigInteger(default = 1, limits=(1, 2) )
+config.OpenWebif.webcache.piconpath = ConfigText(default = "/usr/share/enigma2/picon/", fixed_size = False)
 # HTTPS
 config.OpenWebif.https_enabled = ConfigYesNo(default=False)
 config.OpenWebif.https_port = ConfigInteger(default = 443, limits=(1, 65535) )

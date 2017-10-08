@@ -1226,6 +1226,12 @@ class WebController(BaseController):
 			except ValueError:
 				pass
 		return {}
-	
+
+	def P_piconpath(self, request):
+		if "piconpath" in request.args.keys():
+			piconpath = request.args["piconpath"][0]
+			config.OpenWebif.webcache.piconpath.value = piconpath
+			config.OpenWebif.webcache.piconpath.save()
+		return {}
 
 
