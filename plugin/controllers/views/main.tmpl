@@ -86,7 +86,7 @@
 				<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button>$tstrings['search']</button></div>
 			</form>
 			#end def
-			
+
 			#def remoteMenu
 			<div style="width:100%; text-align:center;">
 					<ul>
@@ -162,6 +162,7 @@
 				#end for
 			</ul>
 			#end def
+
 			<div id="menucontainer">
 				$menu($tstrings['main'], "main", $mainMenu)
 				$menu($tstrings['remote'], "remote", $remoteMenu)
@@ -173,16 +174,16 @@
 					<div id="leftmenu_top" class="ui-widget-header">$tstrings['remote']</div>
 					<div style="width:100%; text-align:center;">
 					<ul>
-					<li style="margin-bottom:5px;">
+						<li style="margin-bottom:5px;">
 							<div class="tbl"><div>
 							<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
 						<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
 							<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
 							<div><a class="fbb" href='#' title=$tstrings['hidefullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-compress" aria-hidden="true"></i></a></div>
 							</div></div>
-							</li>
+						</li>
 					</ul>
-					
+
 						<div id="remote_container" style="width:100%; text-align:center;"></div>
 						<div id="help">
 							$tstrings['shiftforlong']
