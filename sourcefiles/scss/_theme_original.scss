@@ -1,3 +1,5 @@
+@import "variables";
+
 body {
   background: #1C478E;
   background-image: url(../images/background.png);
@@ -29,7 +31,7 @@ body {
 
 #leftmenu_main h3 {
   color: #6cb2e4;
-  border-bottom: 1px solid #d7edfc;
+  border-bottom: 1px solid $leftmenu-colour-light-blue;
 }
 
 #leftmenu_main ul li a:hover {
