@@ -33,9 +33,9 @@ a img { border: none;}
 
 #container
 {
-	display: block; 
+	display: block;
 	height:auto;
-	position: relative; 
+	position: relative;
 	margin-left:10px;
 	margin-right:35px;
 	/* Lower space
@@ -91,7 +91,7 @@ FIXME : complete reorg header
 	text-decoration:none;
 }
 
-#header span.ui-state-active 
+#header span.ui-state-active
 {
 	border: none;
 	background: none;
@@ -160,7 +160,7 @@ FIXME : complete reorg header
 }
 
 
-.pwrbtncontout { 
+.pwrbtncontout {
 	font-size: 16px;
 	line-height: 1em;
 	display:inline-block;
@@ -213,75 +213,8 @@ FIXME : complete reorg header
    }
  }
 
-#leftmenu
-{
-	width:180px;
-	float:left;
-	padding: 0 0 0 0;
-	border-bottom-style: none;
-	display: block;
-}
+@import "leftmenu";
 
-#leftmenu_top
-{
-	height:18px;
-	margin:2px;
-	padding:4px;
-}
-
-#leftmenu_main
-{
-	margin:4px;
-}
-
-#leftmenu_main h3
-{
-	font-size:14px;
-	font-weight:bold;
-	padding-bottom: 2px;
-	margin-bottom: 5px;
-	border-bottom: 1px solid #d7edfc;
-
-}
-
-#leftmenu_main ul
-{
-	list-style: none;
-	padding-left: 5px;
-}
-
-#leftmenu_main ul li
-{
-	list-style: none;
-	padding: 0px;
-	text-align:left;
-}
-
-#leftmenu_main ul li a, #leftmenu_main ul li a:visited
-{
-	display:block;
-	list-style: none;
-	padding: 0px;
-	padding-left:0;
-	padding-top:2px;
-	padding-bottom:4px;
-	text-align:left;
-	text-decoration:none;
-	font-size:13px;
-}
-
-#leftmenu_main #help
-{
-	font-size: 9px;
-	text-align: center;
-	margin-top: 3px;
-	margin-bottom: 5px;
-}
-
-#leftmenu_main input
-{
-	margin-right: 5px;
-}
 
 .ui-tabs
 {
@@ -345,16 +278,16 @@ FIXME : complete reorg header
 }
 
 .powerStateButtons li:hover {
-	border: 1px solid #000000; 
+	border: 1px solid #000000;
 }
 
 
-.moviecontainer_left { 
+.moviecontainer_left {
 	float: left;
 	width: 70%;
 }
 
-.moviecontainer_right { 
+.moviecontainer_right {
 	float: right;
 	width: 30%;
 }
@@ -365,7 +298,7 @@ FIXME : complete reorg header
 	margin-top: 25px;
 }
 
-.meter-wrap 
+.meter-wrap
 {
 	position: relative;
 	float:left;
@@ -488,7 +421,7 @@ FIXME : complete reorg header
 	width: 60%;
 }
 
-.infomain 
+.infomain
 {
 	width: 100%;
 	margin: 0;
@@ -498,8 +431,8 @@ FIXME : complete reorg header
 	font-size:13px;
 }
 
-#volslider > div.volslider { 
-	padding: 10px !important; 
+#volslider > div.volslider {
+	padding: 10px !important;
 }
 
 #footer
@@ -582,7 +515,7 @@ html, body
 
 
 /* JQuery UI Modifications */
-.ui-checkboxradio-icon { display:none; } 
+.ui-checkboxradio-icon { display:none; }
 
 a.focus {outline: none;}
 #expandmepg,#compressmepg,#refreshmepg,#refreshmepg2 {float : right;display:none;}
