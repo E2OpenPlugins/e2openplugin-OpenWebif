@@ -10,8 +10,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 	<link rel="shortcut icon" href="images/favicon.png">
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="css/jquery-ui.min.css">
 	#if $t != "original" and $t != "clear"
 		#set $t = $t + '.css'
@@ -19,10 +17,6 @@
 	#end if
 	<link type="text/css" href="css/style.min.css" rel="stylesheet"/>
 	<link type="text/css" href="web/css" rel="stylesheet"/>
-	<script type="text/javascript" src="js/openwebif-1.2.13.min.js"></script>
-	<script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
-	<script type="text/javascript" src="/js/chosen.1.8.2.min.js"></script>
-	<script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
 	<title>$boxname - OpenWebif</title>
 </head>
 #if $t == "original"
@@ -222,6 +216,12 @@
 		<p>Sorry, this function is not yet implemented.</p>
 	</div>
 	<div id="editTimerForm" title="$tstrings['edit_timer']"></div>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/openwebif-1.2.13.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
+	<script type="text/javascript" src="/js/chosen.1.8.2.min.js"></script>
+	<script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
 	<script type="text/javascript">
 		var h = window.innerHeight - 210;
 		var hh = h-70;
