@@ -6,8 +6,8 @@
 #end if
 
 #def menu($title, $name, $content)
-<div id="leftmenu_main">
-	<div id="leftmenu_top" class="ui-widget-header" onclick="toggleMenu('$name');">
+<div class="some-leftmenu-main">
+	<div class="some-leftmenu-top ui-widget-header" onclick="toggleMenu('$name');">
 		$title
 		#if $name in $collapsed
 		<div id="leftmenu_expander_$name" class="ui-selectmenu-icon ui-icon ui-icon-caret-1-w"></div>
@@ -127,7 +127,7 @@
 					<area shape="rect" coords="46,0,89,25" alt="2" onclick="pressMenuRemote('3');">
 					<area shape="rect" coords="2,0,41,25" alt="1" onclick="pressMenuRemote('2');">
 				</map>
-				<div id="help">
+				<div class="help">
 					$tstrings['shiftforlong']
 				</div>
 					<ul>
@@ -173,22 +173,22 @@
 				$menu($tstrings['epgsearch'], "search", $searchMenu)
 			</div>
 			<div id="remotecontainer" style="display: none;">
-				<div id="leftmenu_main">
-					<div id="leftmenu_top" class="ui-widget-header">$tstrings['remote']</div>
+				<div class="some-leftmenu-main">
+					<div class="some-leftmenu-top ui-widget-header">$tstrings['remote']</div>
 					<div style="width:100%; text-align:center;">
-					<ul>
-						<li style="margin-bottom:5px;">
-							<div class="tbl"><div>
-							<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
-						<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
-							<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
-							<div><a class="fbb" href='#' title=$tstrings['hidefullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-compress" aria-hidden="true"></i></a></div>
-							</div></div>
-						</li>
-					</ul>
+						<ul>
+							<li style="margin-bottom:5px;">
+								<div class="tbl"><div>
+								<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
+							<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
+								<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
+								<div><a class="fbb" href='#' title=$tstrings['hidefullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-compress" aria-hidden="true"></i></a></div>
+								</div></div>
+							</li>
+						</ul>
 
 						<div id="remote_container" style="width:100%; text-align:center;"></div>
-						<div id="help">
+						<div class="help">
 							$tstrings['shiftforlong']
 						</div>
 						<ul>
