@@ -6,3 +6,5 @@
 /.idea
 *~
 /contrib/model_movies/folder
+.sass-cache/
+*.css.map
