@@ -11,11 +11,18 @@ body {
   color: #A9D1FA;
 }
 
-#content a, #leftmenu_main a, #leftmenu_main ul li {
-  color: #176093;
+#content a {
+  color: $content-link-colour;
 }
 
-#info h3, #leftmenu_main, #leftmenu, #leftmenu_top, #toolbar-header {
+#info h3,
+div.some-leftmenu-main,
+#leftmenu_main,
+div.some-leftmenu,
+#leftmenu,
+div.some-leftmenu-top,
+#leftmenu_top,
+#toolbar-header {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -khtml-border-radius: 5px;
@@ -23,27 +30,35 @@ body {
 }
 
 /* leftmenu stuff */
+div.some-leftmenu-main,
 #leftmenu_main {
   border: 1px solid #a6c9e2;
   background: #fcfdfd;
   color: #061C37;
+
+  h3 {
+    color: #6cb2e4;
+    border-bottom: 1px solid $leftmenu-colour-light-blue;
+  }
+
+  a,
+  ul li {
+    color: $content-link-colour;
+  }
+
+  ul li a:hover {
+    color: #87BCF8;
+  }
 }
 
-#leftmenu_main h3 {
-  color: #6cb2e4;
-  border-bottom: 1px solid $leftmenu-colour-light-blue;
-}
-
-#leftmenu_main ul li a:hover {
-  color: #87BCF8;
-}
-
+div.some-leftmenu,
 #leftmenu {
   border: 2px solid #176093;
   outline: 0 none;
   -moz-outline-style: 0 none;
 }
 
+div.some-leftmenu-top,
 #leftmenu_top {
   color: #fff;
   font-weight: bold;

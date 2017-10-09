@@ -1,5 +1,6 @@
 @import "variables";
 
+div.some-leftmenu,
 #leftmenu {
   width: 180px;
   float: left;
@@ -8,12 +9,15 @@
   display: block;
 }
 
+div.some-leftmenu-top,
 #leftmenu_top {
   height: 18px;
   margin: 2px;
   padding: 4px;
+  cursor:pointer;
 }
 
+div.some-leftmenu-main,
 #leftmenu_main {
   margin: 4px;
 
@@ -48,7 +52,7 @@
     }
   }
 
-  #help {
+  div.help {
     font-size: 9px;
     text-align: center;
     margin-top: 3px;
