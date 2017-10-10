@@ -65,7 +65,7 @@ div.some-leftmenu-top,
 }
 
 #toolbar-header {
-  border: 1px solid #4297d7;
+  border: 1px solid $theme_original-border-colour;
   color: #fff;
 }
 
@@ -125,7 +125,7 @@ table .tcurrent {
 }
 
 #tbl1 .border {
-  border-right: 1px solid #4297d7;
+  border-right: 1px solid $theme_original-border-colour;
 }
 
 #header span.ui-state-active {
@@ -134,6 +134,10 @@ table .tcurrent {
 
 .tm_row {
   border: 1px solid #F0F7FC;
+  background-image: none !important;
+  &:hover {
+    border: 1px dotted $theme_original-border-colour;
+  }
 }
 
 .tm_title {
@@ -142,14 +146,6 @@ table .tcurrent {
 
 .tm_desc {
   color: #7F8181;
-}
-
-.tm_row {
-  background-image: none !important;
-}
-
-.tm_row:hover {
-  border: 1px dotted #4297D7;
 }
 
 .marker {
