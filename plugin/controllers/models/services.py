@@ -739,6 +739,9 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False):
 			search_type = eEPGCache.FULL_DESCRIPTION_SEARCH
 	events = epgcache.search(('IBDTSENR', 128, search_type, sstr, 1))
 	if events is not None:
+		#TODO : discuss #677
+		#events.sort(key = lambda x: (x[1],x[6])) # sort by date,sname
+		#events.sort(key = lambda x: x[1]) # sort by date
 		if bouquetsonly:
 			# collect service references from TV bouquets
 			bsref = {}
@@ -782,6 +785,9 @@ def getSearchSimilarEpg(ref, eventid):
 	epgcache = eEPGCache.getInstance()
 	events = epgcache.search(('IBDTSENR', 128, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, ref, eventid))
 	if events is not None:
+		#TODO : discuss #677
+		#events.sort(key = lambda x: (x[1],x[6])) # sort by date,sname
+		#events.sort(key = lambda x: x[1]) # sort by date
 		for event in events:
 			ev = {}
 			ev['id'] = event[0]
