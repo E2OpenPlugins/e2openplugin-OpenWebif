@@ -1,0 +1,50 @@
+@import "../theme_original";
+/*
+  simplified 'original' theme  optimised for smaller screen
+  DANGER, WILL ROBINSON:
+  Abusive use of '!important' as style.min.css is loaded after theme specific
+  CSS content.
+*/
+body {
+  background-image: none !important;
+}
+
+#container {
+  margin: 0 !important;
+}
+
+#header {
+  height: 8em !important; /* forced override */
+  padding-right: 0.5em;
+
+  h1, h2, h3 {
+    display: none;
+  }
+}
+
+#content_container {
+  max-width: 95%;
+}
+
+#statusheader {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 0.5em;
+}
+
+
+#leftmenu,
+#content_main {
+  margin: 0.5em;
+}
+
+#leftmenu {
+  margin-right: 0.25em;
+}
+
+#content_main {
+  margin-left: 0;
+}
+
+#footer {
+  display: none;
+}
