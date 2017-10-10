@@ -36,6 +36,10 @@ SCSS_MAP = [
 		os.path.join(SCSS_ROOT, "theme/original.scss"),
 		os.path.join(CSS_ROOT, "theme_original.css")
 	),
+	(
+		os.path.join(SCSS_ROOT, "theme/original-small-screen.scss"),
+		os.path.join(CSS_ROOT, "../themes/original-small-screen.css")
+	),
 ]
 
 #: default locations of used binaries
