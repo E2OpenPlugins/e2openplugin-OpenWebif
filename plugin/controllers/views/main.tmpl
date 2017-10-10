@@ -4,7 +4,6 @@
 #if $varExists('theme')
 	#set $t=$theme
 #end if
-
 #def menu($title, $name, $content)
 <div class="some-leftmenu-main">
 	#set $caret="s"
@@ -21,6 +20,103 @@
 	$content
 	</div>
 </div>
+#end def
+#def mainMenu
+<ul>
+	<li><a href='#' onclick="load_maincontent('ajax/tv'); return false;">$tstrings['television']</a></li>
+	<li><a href='#' onclick="load_maincontent('ajax/radio'); return false;">$tstrings['radio']</a></li>
+	<li><a href='#' onclick="load_maincontent_spin('ajax/movies'); return false;">$tstrings['movies']</a></li>
+	<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">$tstrings['timers']</a></li>
+	#if $webtv
+	<li><a href='#' onclick="load_maincontent('ajax/webtv'); return false;">$tstrings['webtv']</a></li>
+	#end if
+</ul>
+#end def
+#def searchMenu
+#if $epgsearchcaps
+<ul>
+	<li><input type="checkbox" name="epgsearchtype" />$tstrings['epgsearchextended']</li>
+	<li><input type="checkbox" name="epgsearchbouquetsonly" />$tstrings['epgsearchbouquetsonly']</li>
+</ul>
+#end if
+<form action="" onSubmit="open_epg_search_dialog(); return false;">
+	<div style="width:100%; text-align:center; padding-top:5px;"><input type="text" id="epgSearch" size="14" /></div>
+	<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button>$tstrings['search']</button></div>
+</form>
+#end def
+#def remoteMenu
+<div style="width:100%; text-align:center;">
+		<ul>
+		<li style="margin-bottom:5px;margin-top:5px;">
+		<div class="tbl"><div>
+		<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
+	<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
+		<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
+		<div><a class="fbb" href='#' title=$tstrings['showfullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-expand" aria-hidden="true"></i></a></div>
+		</div></div>
+		</li>
+		</ul>
+		<div class="ui-widget-header" style="border-bottom: none;background: none;margin-left: 5px;margin-right: 5px;"></div>
+	<img src="images/remotes/ow_remote.png" width="135" height="183" usemap="#menuremote" border="0">
+	<map name="menuremote" >
+		<area shape="circle" coords="67,148,13" alt="ok" onclick="pressMenuRemote('352');">
+		<area shape="circle" coords="68,173,9" alt="down" onclick="pressMenuRemote('108');">
+		<area shape="circle" coords="44,151,9" alt="left" onclick="pressMenuRemote('105');">
+		<area shape="circle" coords="92,151,9" alt="right" onclick="pressMenuRemote('106');">
+		<area shape="circle" coords="68,126,9" alt="up" onclick="pressMenuRemote('103');">
+		<area shape="circle" coords="117,167,11" alt="blue" onclick="pressMenuRemote('401');">
+		<area shape="circle" coords="117,137,11" alt="yellow" onclick="pressMenuRemote('400');">
+		<area shape="circle" coords="18,167,11" alt="green" onclick="pressMenuRemote('399');">
+		<area shape="circle" coords="18,137,11" alt="red" onclick="pressMenuRemote('398');">
+		<area shape="rect" coords="2,88,41,111" alt="menu" onclick="pressMenuRemote('139');">
+		<area shape="rect" coords="93,88,133,111" alt="exit" onclick="pressMenuRemote('174');">
+		<area shape="rect" coords="46,88,87,111" alt="0" onclick="pressMenuRemote('11');">
+		<area shape="rect" coords="93,60,133,84" alt="9" onclick="pressMenuRemote('10');">
+		<area shape="rect" coords="46,60,87,84" alt="8" onclick="pressMenuRemote('9');">
+		<area shape="rect" coords="2,60,41,84" alt="7" onclick="pressMenuRemote('8');">
+		<area shape="rect" coords="93,31,133,55" alt="6" onclick="pressMenuRemote('7');">
+		<area shape="rect" coords="46,31,87,55" alt="5" onclick="pressMenuRemote('6');">
+		<area shape="rect" coords="2,31,41,55" alt="4" onclick="pressMenuRemote('5');">
+		<area shape="rect" coords="93,0,133,25" alt="3" onclick="pressMenuRemote('4');">
+		<area shape="rect" coords="46,0,89,25" alt="2" onclick="pressMenuRemote('3');">
+		<area shape="rect" coords="2,0,41,25" alt="1" onclick="pressMenuRemote('2');">
+	</map>
+	<div class="help">
+		$tstrings['shiftforlong']
+	</div>
+	<ul>
+		<li style="margin-bottom:5px;margin-top:5px;">
+			<input type="checkbox" class="remotegrabscreen" name="remotegrabscreen1" /><span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span>
+		</li>
+	</ul>
+	<div class="volslider" style="display:table-row;margin-bottom:15px">
+		<div style="display:table-cell;vertical-align: middle;"><img style="margin-left:5px;" id="volimage" src="images/volume.png" title="" border="0" width="24" height="24">
+		</div>
+		<div style="vertical-align: middle;display:table-cell;">
+			<div id="slider" style="margin-left:10px;margin-right:10px;width:90px;"></div>
+		</div>
+		<div style="vertical-align: middle;display:table-cell;">
+			<input class="ui-state-active" style="border:none;font-weight:bold;width:22px;" type="text" id="amount"/>
+		</div>
+	</div>
+	<div style="margin-bottom:5px;"></div>
+</div>
+#end def
+#def extrasMenu
+<ul>
+	<li><a href='#' onclick="load_maincontent('ajax/boxinfo'); return false;">$tstrings["box_info"]</a></li>
+	#for $extra in $extras
+		#if $extra.has_key('nw')
+			#if $extra["nw"] == "1"
+			<li><a href='$extra["key"]' target='_blank'>$extra["description"]</a></li>
+			#else
+			<li><a href='#' onclick="_epg_pop('$extra["key"]'); return false;">$extra["description"]</a></li>
+			#end if
+		#else
+			<li><a href='#' onclick="load_maincontent('$extra["key"]'); return false;">$extra["description"]</a></li>
+		#end if
+	#end for
+</ul>
 #end def
 <!doctype html>
 <html>
@@ -62,107 +158,6 @@
 		</div>
 
 		<div id="leftmenu" class="ui-widget-content">
-			#def mainMenu
-			<ul>
-				<li><a href='#' onclick="load_maincontent('ajax/tv'); return false;">$tstrings['television']</a></li>
-				<li><a href='#' onclick="load_maincontent('ajax/radio'); return false;">$tstrings['radio']</a></li>
-				<li><a href='#' onclick="load_maincontent_spin('ajax/movies'); return false;">$tstrings['movies']</a></li>
-				<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">$tstrings['timers']</a></li>
-				#if $webtv
-				<li><a href='#' onclick="load_maincontent('ajax/webtv'); return false;">$tstrings['webtv']</a></li>
-				#end if
-			</ul>
-			#end def
-
-			#def searchMenu
-			#if $epgsearchcaps
-			<ul>
-				<li><input type="checkbox" name="epgsearchtype" />$tstrings['epgsearchextended']</li>
-				<li><input type="checkbox" name="epgsearchbouquetsonly" />$tstrings['epgsearchbouquetsonly']</li>
-			</ul>
-			#end if
-			<form action="" onSubmit="open_epg_search_dialog(); return false;">
-				<div style="width:100%; text-align:center; padding-top:5px;"><input type="text" id="epgSearch" size="14" /></div>
-				<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button>$tstrings['search']</button></div>
-			</form>
-			#end def
-
-			#def remoteMenu
-			<div style="width:100%; text-align:center;">
-					<ul>
-					<li style="margin-bottom:5px;margin-top:5px;">
-					<div class="tbl"><div>
-					<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
-				<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
-					<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
-					<div><a class="fbb" href='#' title=$tstrings['showfullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-expand" aria-hidden="true"></i></a></div>
-					</div></div>
-					</li>
-					</ul>
-					<div class="ui-widget-header" style="border-bottom: none;background: none;margin-left: 5px;margin-right: 5px;"></div>
-				<img src="images/remotes/ow_remote.png" width="135" height="183" usemap="#menuremote" border="0">
-				<map name="menuremote" >
-					<area shape="circle" coords="67,148,13" alt="ok" onclick="pressMenuRemote('352');">
-					<area shape="circle" coords="68,173,9" alt="down" onclick="pressMenuRemote('108');">
-					<area shape="circle" coords="44,151,9" alt="left" onclick="pressMenuRemote('105');">
-					<area shape="circle" coords="92,151,9" alt="right" onclick="pressMenuRemote('106');">
-					<area shape="circle" coords="68,126,9" alt="up" onclick="pressMenuRemote('103');">
-					<area shape="circle" coords="117,167,11" alt="blue" onclick="pressMenuRemote('401');">
-					<area shape="circle" coords="117,137,11" alt="yellow" onclick="pressMenuRemote('400');">
-					<area shape="circle" coords="18,167,11" alt="green" onclick="pressMenuRemote('399');">
-					<area shape="circle" coords="18,137,11" alt="red" onclick="pressMenuRemote('398');">
-					<area shape="rect" coords="2,88,41,111" alt="menu" onclick="pressMenuRemote('139');">
-					<area shape="rect" coords="93,88,133,111" alt="exit" onclick="pressMenuRemote('174');">
-					<area shape="rect" coords="46,88,87,111" alt="0" onclick="pressMenuRemote('11');">
-					<area shape="rect" coords="93,60,133,84" alt="9" onclick="pressMenuRemote('10');">
-					<area shape="rect" coords="46,60,87,84" alt="8" onclick="pressMenuRemote('9');">
-					<area shape="rect" coords="2,60,41,84" alt="7" onclick="pressMenuRemote('8');">
-					<area shape="rect" coords="93,31,133,55" alt="6" onclick="pressMenuRemote('7');">
-					<area shape="rect" coords="46,31,87,55" alt="5" onclick="pressMenuRemote('6');">
-					<area shape="rect" coords="2,31,41,55" alt="4" onclick="pressMenuRemote('5');">
-					<area shape="rect" coords="93,0,133,25" alt="3" onclick="pressMenuRemote('4');">
-					<area shape="rect" coords="46,0,89,25" alt="2" onclick="pressMenuRemote('3');">
-					<area shape="rect" coords="2,0,41,25" alt="1" onclick="pressMenuRemote('2');">
-				</map>
-				<div class="help">
-					$tstrings['shiftforlong']
-				</div>
-					<ul>
-					<li style="margin-bottom:5px;margin-top:5px;">
-					<input type="checkbox" class="remotegrabscreen" name="remotegrabscreen1" /><span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span>
-					</li>
-					</ul>
-					<div class="volslider" style="display:table-row;margin-bottom:15px">
-						<div style="display:table-cell;vertical-align: middle;"><img style="margin-left:5px;" id="volimage" src="images/volume.png" title="" border="0" width="24" height="24">
-						</div>
-						<div style="vertical-align: middle;display:table-cell;">
-							<div id="slider" style="margin-left:10px;margin-right:10px;width:90px;"></div>
-						</div>
-						<div style="vertical-align: middle;display:table-cell;">
-							<input class="ui-state-active" style="border:none;font-weight:bold;width:22px;" type="text" id="amount"/>
-						</div>
-					</div>
-					<div style="margin-bottom:5px;"></div>
-			</div>
-			#end def
-
-			#def extrasMenu
-			<ul>
-				<li><a href='#' onclick="load_maincontent('ajax/boxinfo'); return false;">$tstrings["box_info"]</a></li>
-				#for $extra in $extras
-					#if $extra.has_key('nw')
-						#if $extra["nw"] == "1"
-						<li><a href='$extra["key"]' target='_blank'>$extra["description"]</a></li>
-						#else
-						<li><a href='#' onclick="_epg_pop('$extra["key"]'); return false;">$extra["description"]</a></li>
-						#end if
-					#else
-						<li><a href='#' onclick="load_maincontent('$extra["key"]'); return false;">$extra["description"]</a></li>
-					#end if
-				#end for
-			</ul>
-			#end def
-
 			<div id="menucontainer">
 				$menu($tstrings['main'], "main", $mainMenu)
 				$menu($tstrings['remote'], "remote", $remoteMenu)
@@ -197,6 +192,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div id="content">
 			<div id="content_container">
 			$content
