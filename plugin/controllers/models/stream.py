@@ -89,7 +89,7 @@ def getStream(session, request, m3ufile):
 				aspectratio = config.plugins.transcodingsetup.aspectratio.value
 				interlaced = config.plugins.transcodingsetup.interlaced.value
 				args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
-	if machinebuild in ('ew7356', 'formuler1tc'):
+	if machinebuild in ('ew7356', 'formuler1tc', 'tiviaraplus'):
 		transcoder_port = 8001
 		if "device" in request.args :
 			if request.args["device"][0] == "phone" :
@@ -178,7 +178,7 @@ def getTS(self, request):
 					aspectratio = config.plugins.transcodingsetup.aspectratio.value
 					interlaced = config.plugins.transcodingsetup.interlaced.value
 					args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
-		elif machinebuild in ('ew7356', 'formuler1tc'):
+		elif machinebuild in ('ew7356', 'formuler1tc', 'tiviaraplus'):
 			if "device" in request.args :
 				if request.args["device"][0] == "phone" :
 					portNumber = config.OpenWebif.streamport.value
