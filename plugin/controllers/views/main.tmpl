@@ -7,19 +7,17 @@
 
 #def menu($title, $name, $content)
 <div class="some-leftmenu-main">
+	#set $caret="s"
+	#set $style_val="display: initial"
+	#if $name in $collapsed
+		#set $caret="w"
+		#set $style_val="display: none"
+	#end if
 	<div class="some-leftmenu-top ui-widget-header" onclick="toggleMenu('$name');">
 		$title
-		#if $name in $collapsed
-		<div id="leftmenu_expander_$name" class="ui-selectmenu-icon ui-icon ui-icon-caret-1-w"></div>
-		#else
-		<div id="leftmenu_expander_$name" class="ui-selectmenu-icon ui-icon ui-icon-caret-1-s"></div>
-		#end if
+		<div id="leftmenu_expander_$name" class="ui-selectmenu-icon ui-icon ui-icon-caret-1-$caret"></div>
 	</div>
-	#if $name in $collapsed
-	<div id="leftmenu_container_$name" style="display: none;">
-	#else
-	<div id="leftmenu_container_$name">
-	#end if
+	<div id="leftmenu_container_$name" style="$style_val">
 	$content
 	</div>
 </div>
