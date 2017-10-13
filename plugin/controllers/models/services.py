@@ -898,57 +898,60 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 	return { "events": ret, "result": True, "picons": picons }
 
 def getPicon(sname):
-	# remove URL part
-	if ("://" in sname) or ("%3a//" in sname) or ("%3A//" in sname):
-		sname = unquote(sname)
-		sname = ":".join(sname.split(":")[:10]) + "::" + sname.split(":")[-1]
-
-	sname = GetWithAlternative(sname)
-	if sname is not None:
-		pos = sname.rfind(':')
-	else:
-		return "/images/default_picon.png"
-	cname = None
-	if pos != -1:
-		cname = ServiceReference(sname[:pos].rstrip(':')).getServiceName()
-		sname = sname[:pos].rstrip(':').replace(':','_') + ".png"
-	filename = getPiconPath() + sname
-	if fileExists(filename):
-		return "/picon/" + sname
-	fields = sname.split('_', 8)
-	if len(fields) > 7 and not fields[6].endswith("0000"):
-		#remove "sub-network" from namespace
-		fields[6] = fields[6][:-4] + "0000"
-		sname='_'.join(fields)
-		filename = getPiconPath() + sname
+	
+	pp = getPiconPath()
+	if pp is not None:
+		# remove URL part
+		if ("://" in sname) or ("%3a//" in sname) or ("%3A//" in sname):
+			sname = unquote(sname)
+			sname = ":".join(sname.split(":")[:10]) + "::" + sname.split(":")[-1]
+	
+		sname = GetWithAlternative(sname)
+		if sname is not None:
+			pos = sname.rfind(':')
+		else:
+			return "/images/default_picon.png"
+		cname = None
+		if pos != -1:
+			cname = ServiceReference(sname[:pos].rstrip(':')).getServiceName()
+			sname = sname[:pos].rstrip(':').replace(':','_') + ".png"
+		filename = pp + sname
 		if fileExists(filename):
 			return "/picon/" + sname
-	if len(fields) > 1 and fields[0] != '1':
-		#fallback to 1 for other reftypes
-		fields[0] = '1'
-		sname='_'.join(fields)
-		filename = getPiconPath() + sname
-		if fileExists(filename):
-			return "/picon/" + sname
-	if len(fields) > 3 and fields[2] != '1':
-		#fallback to 1 for tv services with nonstandard servicetypes
-		fields[2] = '1'
-		sname='_'.join(fields)
-		filename = getPiconPath() + sname
-		if fileExists(filename):
-			return "/picon/" + sname
-	if cname is not None: # picon by channel name
-		cname1 = cname.replace('\xc2\x86','').replace('\xc2\x87', '').replace('/', '_').encode('utf-8', 'ignore')
-		if fileExists(getPiconPath() + cname1 + ".png"):
-			return "/picon/" + cname1 + ".png"
-		cname = unicodedata.normalize('NFKD', unicode(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
-		cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').lower())
-		if len(cname) > 0:
-			filename = getPiconPath() + cname + ".png"
-		if fileExists(filename):
-			return "/picon/" + cname + ".png"
-		if len(cname) > 2 and cname.endswith('hd') and fileExists(getPiconPath() + cname[:-2] + ".png"):
-			return "/picon/" + cname[:-2] + ".png"
+		fields = sname.split('_', 8)
+		if len(fields) > 7 and not fields[6].endswith("0000"):
+			#remove "sub-network" from namespace
+			fields[6] = fields[6][:-4] + "0000"
+			sname='_'.join(fields)
+			filename = pp + sname
+			if fileExists(filename):
+				return "/picon/" + sname
+		if len(fields) > 1 and fields[0] != '1':
+			#fallback to 1 for other reftypes
+			fields[0] = '1'
+			sname='_'.join(fields)
+			filename = pp + sname
+			if fileExists(filename):
+				return "/picon/" + sname
+		if len(fields) > 3 and fields[2] != '1':
+			#fallback to 1 for tv services with nonstandard servicetypes
+			fields[2] = '1'
+			sname='_'.join(fields)
+			filename = pp + sname
+			if fileExists(filename):
+				return "/picon/" + sname
+		if cname is not None: # picon by channel name
+			cname1 = cname.replace('\xc2\x86','').replace('\xc2\x87', '').replace('/', '_').encode('utf-8', 'ignore')
+			if fileExists(pp + cname1 + ".png"):
+				return "/picon/" + cname1 + ".png"
+			cname = unicodedata.normalize('NFKD', unicode(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
+			cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').lower())
+			if len(cname) > 0:
+				filename = pp + cname + ".png"
+			if fileExists(filename):
+				return "/picon/" + cname + ".png"
+			if len(cname) > 2 and cname.endswith('hd') and fileExists(pp + cname[:-2] + ".png"):
+				return "/picon/" + cname[:-2] + ".png"
 	return "/images/default_picon.png"
 
 def getParentalControlList():

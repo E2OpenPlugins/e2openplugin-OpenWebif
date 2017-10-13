@@ -218,8 +218,7 @@ def getPiconPath():
 			PICONPATH = p + "picon/"
 			return PICONPATH
 
-	PICONPATH = ""
-	return PICONPATH
+	return None
 
 def _getPiconPath():
 	if pathExists("/media/usb/picon/"):
