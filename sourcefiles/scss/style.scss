@@ -57,8 +57,7 @@ FIXME : complete reorg header
 	height:150px;
 	overflow:hidden;
 	border:none;
-	background-repeat: no-repeat;
-	background-image: none;
+	background: none no-repeat;
 }
 
 #header h1
@@ -337,10 +336,7 @@ FIXME : complete reorg header
 {
 	width:100%;
 	min-width:700px;
-	padding-left:10px;
-	padding-top:10px;
-	padding-right:10px;
-	padding-bottom:10px;
+	padding: 10px;
 	border-bottom-style: none;
 	outline: 0 none;
 	-moz-outline-style: 0 none;
@@ -424,8 +420,7 @@ FIXME : complete reorg header
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	background-repeat: no-repeat;
-	background-image: none;
+	background: none no-repeat;
 	font-size:13px;
 }
 
