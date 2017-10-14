@@ -63,17 +63,15 @@ FIXME : complete reorg header
 
 #header h1
 {
-	font-family: Arial, Verdana,sans-serif;
 	float:left;
 	text-align:left;
 	font-size:42px;
 	color:#FFF;
-	margin: 20px 20px 0px 20px
+	margin: 20px 20px 0 20px;
 }
 
 #header h2
 {
-	font-family: Arial, Verdana,sans-serif;
 	text-align:right;
 	margin-top:23px;
 	width:500px;
@@ -169,7 +167,7 @@ FIXME : complete reorg header
 .pwrbtncont {
 	position:relative;
 	top: 1px;
-	left: 0px;
+	left: 0;
 }
 
 .pwrbtn .pwrbtn-control {
@@ -758,8 +756,8 @@ i.fa-mobile {font-size: 22px;}
 .timetable-now { position: relative;top: 0;left: 0;z-index: 1;width: 2px;height: 100%;background-color: #0fb8fb;float:left;}
 
 .channel-listing { white-space: normal;display:table;list-style:none;counter-reset:n 0;padding: 0;}
-.channel-listing > li { display: block; white-space: nowrap; width: 16380px; overflow: hidden; font-size: 0px; vertical-align: top;}
-.channel-listing > li > span { position: absolute; left: 0px; z-index: 2; border-width: 0px; width: 140px;white-space: nowrap; }
+.channel-listing > li { display: block; white-space: nowrap; width: 16380px; overflow: hidden; font-size: 0; vertical-align: top;}
+.channel-listing > li > span { position: absolute; left: 0; z-index: 2; border-width: 0; width: 140px;white-space: nowrap; }
 .channel-listing > li > span > div { vertical-align: top; height:50px;}
 .channel-listing > li > span > div > span { font-size: 10px; display:inherit; }
 
