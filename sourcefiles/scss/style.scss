@@ -723,8 +723,15 @@ font-size:16px;font-weight:bold;opacity:0.3;
 i.fa {margin-left:3px;margin-right:3px;font-size: 16px;}
 i.fa-mobile {font-size: 22px;}
 
-.tm_buttons i.fa {margin:0 0 0 5;font-size: 20px;}
-.tm_buttons i.fa-mobile {margin:0 0 0 10;font-size: 24px;}
+.tm_buttons i.fa {
+	margin:0 0 0 5px;
+	font-size: 20px;
+}
+
+.tm_buttons i.fa-mobile {
+	margin:0 0 0 10px;
+	font-size: 24px;
+}
 
 .fbb i
 {
