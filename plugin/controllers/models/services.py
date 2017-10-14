@@ -160,11 +160,10 @@ def getCurrentFullInfo(session):
 			inf['tunertype'] = "DVB-S2"
 		inf['tunernumber'] = frontendData.get("tuner_number")
 		orb = getOrbitalText(cur_info)
+		inf['orbital_position'] = orb
 		if cur_info:
 			if cur_info.get('tuner_type') == "DVB-S":
 				inf['orbital_position'] = _("Orbital Position") + ': ' + orb
-		#if cur_info:
-		#	inf['orbital_position'] = cur_info.get('orbital_position', None)
 	else:
 		inf['tunernumber'] = "N/A"
 		inf['tunertype'] = "N/A"
