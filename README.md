@@ -15,7 +15,7 @@ Licensed under the GNU General Public License, Version 3. See [LICENSE](https://
 
 ## Latest Package
 
-The most recent package may be downloaded from [here](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/tree/gh-pages) (ipk package).
+The most recent package may be downloaded [here](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/tree/gh-pages) (ipk package).
 
 ### Installation
 
