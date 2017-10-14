@@ -22,10 +22,14 @@ The most recent package may be downloaded from [here](https://github.com/E2OpenP
 ```bash
 # Remotely logged in via Telnet/SSH to enigma2 device
 cd /tmp
-init 4                    # graceful enigma2 shutdown
-wget '<URL of .ipk file>' # e.g. https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/gh-pages/enigma2-plugin-extensions-openwebif_1.2.7-e2openpluginsgit20171014_all.ipk
-opkg install <.ipk file>  # e.g. enigma2-plugin-extensions-openwebif_1.2.7-e2openpluginsgit20171014_all.ipk
-init 3                    # start enigma2 again
+init 4                        # graceful enigma2 shutdown
+# wget '<URL of .ipk file>'
+# example:
+wget 'https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/gh-pages/enigma2-plugin-extensions-openwebif_1.2.7-e2openpluginsgit20171014_all.ipk'
+# opkg install <.ipk file>
+# example:
+opkg install ./enigma2-plugin-extensions-openwebif_1.2.7-e2openpluginsgit20171014_all.ipk
+init 3                        # start enigma2 again
 ```
 
 ## Development Information
