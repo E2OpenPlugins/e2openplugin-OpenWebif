@@ -53,8 +53,9 @@ _(Dependencies should be handled by using ipkg/opkg packages)_
 
 ### Compiling JavaScript Files
 
-TBD: Please provide information how e.g. `public/js/openwebif-1.2.3.min.js`
-is generated.
+The javascipt source files inside of /sourcefiles/js needs to compress via UglifyJS2 on http://refresh-sf.com/.
+You need to increase the version and write down your modification description inside of the source file.
+The compressed file have the following syntax : xx-<version>.min.js
 
 ### Compiling CSS Files
 
