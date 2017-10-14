@@ -23,12 +23,12 @@
 #end def
 #def mainMenu
 <ul>
-	<li><a href='#' onclick="load_maincontent('ajax/tv'); return false;">$tstrings['television']</a></li>
-	<li><a href='#' onclick="load_maincontent('ajax/radio'); return false;">$tstrings['radio']</a></li>
-	<li><a href='#' onclick="load_maincontent_spin('ajax/movies'); return false;">$tstrings['movies']</a></li>
-	<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">$tstrings['timers']</a></li>
+	<li><a class="lmc" href="ajax/tv">$tstrings['television']</a></li>
+	<li><a class="lmc" href="ajax/radio">$tstrings['radio']</a></li>
+	<li><a class="lmc spin" href="ajax/movies">$tstrings['movies']</a></li>
+	<li><a class="lmc" href="ajax/timers">$tstrings['timers']</a></li>
 	#if $webtv
-	<li><a href='#' onclick="load_maincontent('ajax/webtv'); return false;">$tstrings['webtv']</a></li>
+	<li><a class="lmc" href="ajax/webtv">$tstrings['webtv']</a></li>
 	#end if
 </ul>
 #end def
@@ -50,7 +50,7 @@
 		<li style="margin-bottom:5px;margin-top:5px;">
 		<div class="tbl"><div>
 		<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
-	<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
+	<!--<div><a class="lmc fbb" href="ajax/screenshot" title=$tstrings['grabscreenshot'].replace(" ","&nbsp;")><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
 		<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
 		<div><a class="fbb" href='#' title=$tstrings['showfullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-expand" aria-hidden="true"></i></a></div>
 		</div></div>
@@ -104,16 +104,17 @@
 #end def
 #def extrasMenu
 <ul>
-	<li><a href='#' onclick="load_maincontent('ajax/boxinfo'); return false;">$tstrings["box_info"]</a></li>
+	<li><a class="lmc" href="ajax/boxinfo">$tstrings["box_info"]</a></li>
 	#for $extra in $extras
+		#set $target_url = $extra["key"];
 		#if $extra.has_key('nw')
 			#if $extra["nw"] == "1"
-			<li><a href='$extra["key"]' target='_blank'>$extra["description"]</a></li>
+			<li><a href="$target_url" target='_blank'>$extra["description"]</a></li>
 			#else
-			<li><a href='#' onclick="_epg_pop('$extra["key"]'); return false;">$extra["description"]</a></li>
+			<li><a class="lmc pop" href="$target_url">$extra["description"]</a></li>
 			#end if
 		#else
-			<li><a href='#' onclick="load_maincontent('$extra["key"]'); return false;">$extra["description"]</a></li>
+			<li><a class="lmc" href="$target_url">$extra["description"]</a></li>
 		#end if
 	#end for
 </ul>
@@ -197,7 +198,7 @@
 			<div id="content_container">
 			$content
 			</div>
-			<div id="footer"><h3>&nbsp;&nbsp;<a href="https://github.com/E2OpenPlugins">E2OpenPlugins</a> | <a href="http://www.opena.tv">openATV</a> | <a href="http://www.vuplus-community.net">Black Hole</a> | <a href="http://www.droidsat.org">OpenDroid</a> | <a href="http://www.egami-image.com">EGAMI</a> | <a href="http://www.hdfreaks.cc">OpenHDF</a> | <a href="http://image.openmips.com">openMips</a> | <a href="http://openpli.org">OpenPli</a> | <a href="http://forum.sifteam.eu">Sif</a> | <a href="http://openspa.info">OpenSpa</a> | <a href="http://www.world-of-satellite.com">OpenViX</a> | <a href="http://www.vuplus-support.org">VTi</a> | <a href="#" onclick="load_maincontent('ajax/about'); return false">$tstrings['about']</a></h3></div>
+			<div id="footer"><h3>&nbsp;&nbsp;<a href="https://github.com/E2OpenPlugins">E2OpenPlugins</a> | <a href="http://www.opena.tv">openATV</a> | <a href="http://www.vuplus-community.net">Black Hole</a> | <a href="http://www.droidsat.org">OpenDroid</a> | <a href="http://www.egami-image.com">EGAMI</a> | <a href="http://www.hdfreaks.cc">OpenHDF</a> | <a href="http://image.openmips.com">openMips</a> | <a href="http://openpli.org">OpenPli</a> | <a href="http://forum.sifteam.eu">Sif</a> | <a href="http://openspa.info">OpenSpa</a> | <a href="http://www.world-of-satellite.com">OpenViX</a> | <a href="http://www.vuplus-support.org">VTi</a> | <a class="lmc" href="ajax/about">$tstrings['about']</a></h3></div>
 		</div>
 	</div>
 	<form name="portForm" action="web/stream.m3u" method="GET" target="_blank">
@@ -232,6 +233,19 @@
 		\$(document).ready(function() {
 			\$("#remote_container").load("static/remotes/${remote}.html");
 			directlink();
+			\$('a.lmc').on("click", function() {
+				var target_url = \$(this).prop("href");
+				if(\$(this).hasClass("spin")) {
+					load_maincontent_spin(target_url);
+				}
+				else if(\$(this).hasClass("pop")) {
+					_epg_pop(target_url);
+				}
+				else {
+					load_maincontent(target_url);
+				}
+				return false;
+			});
 		});
 		theme = '$t';
 		SetLSValue('TimerListOffset',0);
