@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2017-06-08 10:02+0200\n"
-"PO-Revision-Date: 2017-06-08 10:02+0200\n"
-"Last-Translator: rimas\n"
+"PO-Revision-Date: 2017-10-14 14:53+0300\n"
+"Last-Translator: rimas <rimas@meil.com>\n"
 "Language-Team: Estonian\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: plugin/controllers/BouquetEditor.py:82
@@ -20,7 +20,7 @@ msgstr "üks kaks kolm neli tundmatu käsk"
 #: plugin/controllers/BouquetEditor.py:149
 #: plugin/controllers/BouquetEditor.py:194
 msgid "No bouquet name given!"
-msgstr "Lemmiknimekirja nimi puudub!"
+msgstr "Lemmiknimekirjal puudub nimi!"
 
 #: plugin/controllers/BouquetEditor.py:118
 #, python-format
@@ -131,7 +131,7 @@ msgstr "Kanalit ei saa liigutada."
 #: plugin/controllers/BouquetEditor.py:299
 #, python-format
 msgid "Service %s added."
-msgstr "Kanal '%s' lisatud"
+msgstr "Kanal '%s' lisatud."
 
 #: plugin/controllers/BouquetEditor.py:302
 #, python-format
@@ -227,12 +227,12 @@ msgstr "%s %s is locked."
 #: plugin/controllers/BouquetEditor.py:538
 #, python-format
 msgid "Service %s is unlocked."
-msgstr "Kanali %s lukustus maas"
+msgstr "Kanali %s lukustus maas."
 
 #: plugin/controllers/BouquetEditor.py:540
 #, python-format
 msgid "Bouquet %s is unlocked."
-msgstr "Lemmiknimekirja %s lukustus maas"
+msgstr "Lemmiknimekirja %s lukustus maas."
 
 #: plugin/controllers/BouquetEditor.py:577
 #, python-format
@@ -255,7 +255,7 @@ msgstr "Viga: %s ei ole loodud WebBouquetEditor laiendusega."
 #: plugin/controllers/BouquetEditor.py:638
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
-msgstr "Viga, %s pole olema, taastamine ei ole võimalik"
+msgstr "Viga, %s pole olemas, taastamine ei ole võimalik"
 
 #: plugin/controllers/base.py:256 plugin/local.py:183 plugin/local.py:323
 msgid "Settings"
@@ -283,7 +283,7 @@ msgstr "EPG värskendus"
 
 #: plugin/controllers/base.py:318
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: plugin/controllers/ipkg.py:239
 msgid "Error upload File"
@@ -466,7 +466,7 @@ msgstr "Taimerit '%s' ei lubatud vastuolu tõttu"
 #: plugin/controllers/models/timers.py:345
 #, python-format
 msgid "Timer '%s' already exists!"
-msgstr "Taimer '%s' on juba olemas."
+msgstr "Taimer '%s' on juba olemas!"
 
 #: plugin/controllers/models/timers.py:351
 #, python-format
@@ -903,7 +903,7 @@ msgstr "Hangi mängukava"
 
 #: plugin/local.py:89
 msgid "Drivers"
-msgstr "ajurid"
+msgstr "Ajurid"
 
 #: plugin/local.py:90
 msgid "Duration"
@@ -947,7 +947,7 @@ msgstr "Hõlma sisututvustus"
 
 #: plugin/local.py:100
 msgid "Restrict to Bouquets"
-msgstr ""
+msgstr "Ainult kindlas nimekirjas"
 
 #: plugin/local.py:101
 msgid "Error"
@@ -1063,7 +1063,7 @@ msgstr "Minut"
 
 #: plugin/local.py:133
 msgid "Model"
-msgstr "mudel"
+msgstr "Mudel"
 
 #: plugin/local.py:134
 msgid "Movielist"
@@ -1514,7 +1514,7 @@ msgid ""
 msgstr ""
 "Kõik selle tarkvara failid vaba lähtekoodiga; neid võib levitada ja/või "
 "muuta vastavalt GNU Üldise Avaliku Litsentsi v.3 tingimustele, avaldajaks "
-"Free Software Foundation"
+"Free Software Foundation."
 
 #: plugin/local.py:246
 msgid "Root"
@@ -1790,7 +1790,7 @@ msgstr "Matki"
 
 #: plugin/local.py:324
 msgid "Do you really want to delete the AT"
-msgstr "Kas kustutad selle autotaimeri?"
+msgstr "Kas kustutada autotaimer"
 
 #: plugin/local.py:325
 msgid "Label series"
@@ -1922,11 +1922,11 @@ msgstr "Nähtavalt"
 
 #: plugin/local.py:367
 msgid "Picture in Picture"
-msgstr "Pilt pildis "
+msgstr "Pilt pildis"
 
 #: plugin/local.py:368
 msgid "Picture in Picture (hidden)"
-msgstr "Picture in Picture (peidetud)"
+msgstr "PiP (varjatud)"
 
 #: plugin/local.py:369
 msgid "Fake Recording"
@@ -1942,11 +1942,11 @@ msgstr "Lisa levitaja uue lemmiknimekirjana"
 
 #: plugin/local.py:375
 msgid "Add channel(s) to Bouquet"
-msgstr "Lisa kanal(id) lemmiknimekirja"
+msgstr "Lisa lemmiknimekirja"
 
 #: plugin/local.py:376
 msgid "Add channel(s) as alternate"
-msgstr "Lisa kanal(id) asenduskanalina"
+msgstr "Lisa asenduskanalina"
 
 #: plugin/local.py:379
 msgid "Export"
@@ -1974,7 +1974,7 @@ msgstr "Lisa märgis"
 
 #: plugin/local.py:385
 msgid "Add Spacer"
-msgstr ""
+msgstr "Lisa eraldaja"
 
 #: plugin/local.py:386
 msgid "Rename"
@@ -1982,11 +1982,11 @@ msgstr "Nimeta ümber"
 
 #: plugin/local.py:387
 msgid "Do you really want to delete the selected item(s)"
-msgstr ""
+msgstr "Kas kustutad valitud elemendid"
 
 #: plugin/local.py:388
 msgid "Do you really want to delete the bouquet"
-msgstr "Kas kustutad lemmiknimekirja"
+msgstr "Kas kustutada lemmiknimekiri"
 
 #: plugin/local.py:389
 msgid "Name of the Bouquet"
@@ -2058,7 +2058,7 @@ msgstr "Orbitaalpositsioon"
 
 #: plugin/local.py:408
 msgid "error! Loading Page"
-msgstr "Tõrge lehe laadimisel."
+msgstr "Tõrge lehe laadimisel"
 
 #: plugin/local.py:409
 msgid "Timer Added"
@@ -2074,7 +2074,7 @@ msgstr "Kuva kanalinimekirjas pikonid"
 
 #: plugin/local.py:413
 msgid "OpenWebif Browser Settings"
-msgstr "OpenWebif lehitseja seaded"
+msgstr "OpenWebif brauseri seaded"
 
 #: plugin/local.py:414
 msgid "OpenWebif Settings"
@@ -2114,7 +2114,7 @@ msgstr "Veebi TV"
 
 #: plugin/local.py:424
 msgid "Calendar Week"
-msgstr ""
+msgstr "Kalendrinädal"
 
 #: plugin/local.py:426
 msgid "Link Speed"
