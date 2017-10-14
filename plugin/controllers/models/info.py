@@ -191,6 +191,8 @@ def getViewsPath(file = ""):
 
 def getPiconPath():
 
+	#FIXME: check path again after a few hours to detect new paths
+
 	global PICONPATH
 
 	if PICONPATH is not None:

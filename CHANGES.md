@@ -1,6 +1,9 @@
 ## Version 1.2.7
 ## (in development)
 * improve file api
+* use sass for css
+* improve css files
+* improve picon path handling
 
 ## Version 1.2.6
 * improve recording move to trash / #633
