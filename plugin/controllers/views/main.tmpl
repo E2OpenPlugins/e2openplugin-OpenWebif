@@ -126,7 +126,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 	<link rel="shortcut icon" href="images/favicon.png">
 	<link type="text/css" rel="stylesheet" href="css/jquery-ui.min.css">
-	#if $t != "original" and $t != "clear"
+	#if $t not in ["original", "clear"]
 		#set $theme_css = $t + '.css'
 		<link type="text/css" rel="stylesheet" href="themes/$theme_css">
 	#end if
