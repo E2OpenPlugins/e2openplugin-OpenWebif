@@ -127,8 +127,8 @@
 	<link rel="shortcut icon" href="images/favicon.png">
 	<link type="text/css" rel="stylesheet" href="css/jquery-ui.min.css">
 	#if $t != "original" and $t != "clear"
-		#set $t = $t + '.css'
-		<link type="text/css" rel="stylesheet" href="themes/$t">
+		#set $theme_css = $t + '.css'
+		<link type="text/css" rel="stylesheet" href="themes/$theme_css">
 	#end if
 	<link type="text/css" href="css/style.min.css" rel="stylesheet"/>
 	#if $t == "original"
