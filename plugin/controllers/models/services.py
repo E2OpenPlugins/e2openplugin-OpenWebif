@@ -18,7 +18,7 @@ from ServiceReference import ServiceReference
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache, getBestPlayableServiceReference
 from time import time, localtime, strftime, mktime
-from info import getPiconPath, GetWithAlternative
+from info import getPiconPath, GetWithAlternative, getOrbitalText
 from urllib import quote, unquote
 from Plugins.Extensions.OpenWebif.local import tstrings #using the tstrings dic is faster than translating with _ func from __init__
 
@@ -159,8 +159,11 @@ def getCurrentFullInfo(session):
 		if frontendData.get("system", -1) == 1:
 			inf['tunertype'] = "DVB-S2"
 		inf['tunernumber'] = frontendData.get("tuner_number")
+		orb = getOrbitalText(cur_info)
+		inf['orbital_position'] = orb
 		if cur_info:
-			inf['orbital_position'] = cur_info.get('orbital_position', None)
+			if cur_info.get('tuner_type') == "DVB-S":
+				inf['orbital_position'] = _("Orbital Position") + ': ' + orb
 	else:
 		inf['tunernumber'] = "N/A"
 		inf['tunertype'] = "N/A"
