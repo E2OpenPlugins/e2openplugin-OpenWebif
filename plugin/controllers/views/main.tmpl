@@ -126,9 +126,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 	<link rel="shortcut icon" href="images/favicon.png">
 	<link type="text/css" rel="stylesheet" href="css/jquery-ui.min.css">
-	#if $t != "original" and $t != "clear"
-		#set $t = $t + '.css'
-		<link type="text/css" rel="stylesheet" href="themes/$t">
+	#if $t not in ["original", "clear"]
+		#set $theme_css = $t + '.css'
+		<link type="text/css" rel="stylesheet" href="themes/$theme_css">
 	#end if
 	<link type="text/css" href="css/style.min.css" rel="stylesheet"/>
 	#if $t == "original"
@@ -137,13 +137,15 @@
 	<link type="text/css" href="web/css" rel="stylesheet"/>
 	<title>$boxname - OpenWebif</title>
 </head>
-#if $t == "original"
-<body>
-#elif $t == "excite-bike" or $t == "pepper-grinder"
-<body class="ui-widget-header ui-state-hover">
-#else
-<body class="ui-widget-header">
+#set $body_classes = [$t]
+#if $t not in ["original", "original-small-screen"]
+#set $body_classes += ["ui-widget-header"]
 #end if
+#if $t in ["excite-bike", "pepper-grinder"]
+#set $body_classes += ["ui-state-hover"]
+#end if
+#set $body_css_class = ' '.join($body_classes)
+<body class="$body_css_class">
 	<div id="container">
 		<div id="header">
 			<h1><a href="/">Open<span class="ui-state-active">Webif</span></a></h1>
