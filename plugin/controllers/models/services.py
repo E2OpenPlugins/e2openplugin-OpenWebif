@@ -8,7 +8,10 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-import re, unicodedata
+import re
+import unicodedata
+from time import time, localtime, strftime, mktime
+
 from Tools.Directories import fileExists
 from Components.Sources.ServiceList import ServiceList
 from Components.ParentalControl import parentalControl
@@ -17,10 +20,10 @@ from Components.NimManager import nimmanager
 from ServiceReference import ServiceReference
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache, getBestPlayableServiceReference
-from time import time, localtime, strftime, mktime
 from info import getPiconPath, GetWithAlternative, getOrbitalText
 from urllib import quote, unquote
 from Plugins.Extensions.OpenWebif.local import tstrings #using the tstrings dic is faster than translating with _ func from __init__
+from Plugins.Extensions.OpenWebif.controllers.utilities import parse_servicereference,SERVICE_TYPE_LOOKUP, NS_LOOKUP
 
 try:
 	from collections import OrderedDict
@@ -353,6 +356,9 @@ def getChannels(idbouquet, stype):
 		chan['ref'] = quote(channel[0], safe=' ~@%#$&()*!+=:;,.?/\'')
 		if chan['ref'].split(":")[1] == '320': # Hide hidden number markers
 			continue
+		psref = parse_servicereference(channel[0])
+		chan['service_type'] = SERVICE_TYPE_LOOKUP.get(psref.get('service_type'), "UNKNOWN")
+		chan['ns'] = NS_LOOKUP.get(psref.get('ns'), "UNKNOWN")
 		chan['name'] = filterName(channel[1])
 		if not int(channel[0].split(":")[1]) & 64:
 			chan['picon'] = getPicon(chan['ref'])
