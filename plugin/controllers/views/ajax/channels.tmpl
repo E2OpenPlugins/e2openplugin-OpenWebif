@@ -29,6 +29,7 @@
 
 		<div class="b">
 			#set $name =  $channel.name.replace("'", r"\'")
+			<span class="channel-name">
 			#if $channel.has_key('protection')
 				#if $channel.protection == "0"
 					<a href="#" onclick="zapChannel('$channel.ref', '$name'); return false" title="$tstrings['zap_to'] $channel.name">$channel.name</a>
@@ -36,8 +37,10 @@
 					<a href="#" onclick="return false" title="$tstrings['locked']">$channel.name</a>
 				#end if
 			#else
-				<span>$channel.name</span>
+				$channel.name
 			#end if
+			</span>
+			<span class="channel-tag ST-$channel.service_type">$channel.service_type</span><span class="channel-tag NS-$channel.ns">$channel.ns</span>
 		</div>
 	</div>
 
@@ -53,7 +56,7 @@
 		<div class="channel-info">
 			<div class="tt">
 				<div class="a">
-					$channel.now_begin - $channel.now_end &nbsp;&nbsp;&nbsp;
+					$channel.now_begin &mdash; $channel.now_end &nbsp;&nbsp;&nbsp;
 				</div>
 				<div class="b">
 					<a href='#' onClick="toggle_chan_des('$channel.now_ev_id', '$channel.ref', '$channel.now_idp'); return false" title="$channel.now_title">$channel.now_title</a>&nbsp;(+$channel.now_left min)
@@ -73,7 +76,7 @@
 			</div>
 			<div class="tt">
 				<div class="a">
-					$channel.next_begin - $channel.next_end &nbsp;&nbsp;&nbsp;
+					$channel.next_begin &mdash; $channel.next_end &nbsp;&nbsp;&nbsp;
 				</div>
 				<div class="b">
 					<a href='#' onClick="toggle_chan_des('$channel.next_ev_id', '$channel.ref', '$channel.next_idp'); return false" title="$channel.next_title">$channel.next_title</a>&nbsp;($channel.next_duration min)
