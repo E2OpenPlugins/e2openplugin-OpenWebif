@@ -30,7 +30,7 @@
 	<div class="float plus ui-state-default #if $slot==$day then 'ui-state-active' else '' #" data-day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div>
 #end for
 #if $mode == 2
-<div class="float plus ui-state-default lbl">&nbsp;$tstrings['Primetimes']:&nbsp;</div>
+<div class="float plus ui-state-default lbl">&nbsp;$tstrings['prime_times']:&nbsp;</div>
 <div id="pt0" class="float plus ui-state-default" data-day="201">06:00</div>
 <div id="pt1" class="float plus ui-state-default" data-day="202">12:00</div>
 <div id="pt2" class="float plus ui-state-default" data-day="203">20:00</div>
