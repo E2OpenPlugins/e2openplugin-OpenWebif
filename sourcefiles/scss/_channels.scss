@@ -1,0 +1,64 @@
+.cht > div, .tt {
+  display: table;
+  width: 100%;
+}
+
+.cht {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+
+  .a {
+    display: table-cell;
+    width: 120px;
+  }
+
+  .b {
+    display: table-cell;
+    font-style: italic;
+  }
+
+  .c {
+    display: table-cell;
+    width: 50%;
+  }
+
+  .tcld {
+    display: none;
+  }
+
+  .fr {
+    font-size: 16px;
+    height: 26px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .ui-progressbar {
+    height: 0.4em;
+    width: 50%;
+    margin: 2px 0 4px;
+  }
+
+  .a a {
+    margin-right: 3px;
+  }
+
+  .pic {
+    width: 60px;
+  }
+
+  .channel-picon {
+    display: table-cell;
+    width: 120px;
+    vertical-align: middle;
+  }
+
+  .channel-info {
+    display: table-cell;
+  }
+
+  .channel-name {
+    white-space: nowrap;
+  }
+}
