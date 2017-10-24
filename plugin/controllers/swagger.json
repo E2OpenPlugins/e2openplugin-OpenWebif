@@ -9,8 +9,8 @@
       "email": "apiteam@swagger.io"
     },
     "license": {
-      "name": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      "name": "GPL Version 2.0",
+      "url": "http://www.gnu.org/licenses/gpl-2.0.html"
     }
   },
   "basePath": "/api",
