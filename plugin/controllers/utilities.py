@@ -14,14 +14,31 @@ REGEX_ITEM_OR_KEY_ACCESS = re.compile(PATTERN_ITEM_OR_KEY_ACCESS)
 # https://wiki.neutrino-hd.de/wiki/Enigma:Services:Formatbeschreibung
 # Dezimalwert: 1=TV, 2=Radio, 4=NVod, andere=Daten
 
-SERVICE_TYPE_TV = 1
-SERVICE_TYPE_RADIO = 2
-SERVICE_TYPE_HDTV = 25
+SERVICE_TYPE_TV = 0x01
+SERVICE_TYPE_RADIO = 0x02
+SERVICE_TYPE_SD4 = 0x10
+SERVICE_TYPE_HDTV = 0x19
+SERVICE_TYPE_UHD = 0x1f
+SERVICE_TYPE_OPT = 0xd3
+
+# type 1 = digital television service
+# type 2 = digital radio sound service
+# type 4 = nvod reference service (NYI)
+# type 10 = advanced codec digital radio sound service
+# type 17 = MPEG-2 HD digital television service
+# type 22 = advanced codec SD digital television
+# type 24 = advanced codec SD NVOD reference service (NYI)
+# type 25 = advanced codec HD digital television
+# type 27 = advanced codec HD NVOD reference service (NYI)
+
 
 SERVICE_TYPE = {
 	'TV': SERVICE_TYPE_TV,
 	'HDTV': SERVICE_TYPE_HDTV,
-	'RADIO': SERVICE_TYPE_RADIO
+	'RADIO': SERVICE_TYPE_RADIO,
+	'UHD': SERVICE_TYPE_UHD,
+	'SD4': SERVICE_TYPE_SD4,
+	'OPT': SERVICE_TYPE_OPT,
 }
 
 SERVICE_TYPE_LOOKUP = {v: k for k, v in SERVICE_TYPE.iteritems()}
