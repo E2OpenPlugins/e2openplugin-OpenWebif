@@ -105,6 +105,12 @@ class ApiController(resource.Resource):
 		try:
 			request.setResponseCode(http.OK)
 			data = func(request)
+			try:
+				if "result" not in data:
+					data["result"] = True
+			except Exception:
+				# ignoring exceptions is bad.
+				pass
 			return json_response(data=data, request=request)
 		except Exception as exc:
 			request.setResponseCode(http.INTERNAL_SERVER_ERROR)
