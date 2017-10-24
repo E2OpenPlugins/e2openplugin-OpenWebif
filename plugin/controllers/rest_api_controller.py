@@ -1,4 +1,15 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+RESTful API access using HTTP
+-----------------------------
+
+This controller exposes the application programming interface (API) as
+implemented by the ``web`` controller.
+
+The generated responses are returned as JSON data with appropriate HTTP headers.
+Output will be compressed using gzip if requested by client.
+"""
 import urlparse
 import copy
 import os
@@ -13,10 +24,12 @@ from rest import CORS_DEFAULT_ALLOW_ORIGIN
 SWAGGER_TEMPLATE = os.path.join(
 	os.path.dirname(__file__), 'swagger.json')
 
+
 class ApiController(resource.Resource):
 	isLeaf = True
 
 	def __init__(self, session, path="", *args, **kwargs):
+		#: web controller instance
 		self.webcrap = WebController(session, path)
 		self._resource_prefix = kwargs.get("resource_prefix", '/api')
 		self._cors_header = copy.copy(CORS_DEFAULT)
@@ -43,12 +56,28 @@ class ApiController(resource.Resource):
 		return ''
 
 	def _index(self, request):
+		"""
+		Return a swagger/JSON based description of the implemented interface.
+
+		Args:
+			request (twisted.web.server.Request): HTTP request object
+		Returns:
+			HTTP response with headers
+		"""
 		with open(SWAGGER_TEMPLATE, "rb") as src:
 			data = json.load(src)
 		# data['host'] = data['host']
 		return json_response(request, data)
 
 	def render_GET(self, request):
+		"""
+		HTTP GET implementation.
+
+		Args:
+			request (twisted.web.server.Request): HTTP request object
+		Returns:
+			HTTP response with headers
+		"""
 		# as implemented in BaseController --v
 		request.path = request.path.replace('signal', 'tunersignal')
 		rq_path = urlparse.unquote(request.path)
