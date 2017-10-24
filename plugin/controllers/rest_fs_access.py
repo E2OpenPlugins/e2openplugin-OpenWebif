@@ -98,7 +98,6 @@ Example response:
 
 """
 import os
-import json
 import glob
 import re
 import urlparse
@@ -111,6 +110,7 @@ from twisted.web import http
 from twisted.web.server import GzipEncoderFactory
 
 from utilities import MANY_SLASHES_REGEX, lenient_force_utf_8
+from rest import json_response, CORS_DEFAULT, CORS_DEFAULT_ALLOW_ORIGIN
 
 try:
 	import file
@@ -122,25 +122,6 @@ except ImportError:
 #: default path from which files will be served
 DEFAULT_ROOT_PATH = os.path.abspath(os.path.dirname(__file__))
 
-#: CORS - HTTP headers the client may use
-CORS_ALLOWED_CLIENT_HEADERS = [
-	'Content-Type',
-]
-
-#: CORS - HTTP methods the client may use
-CORS_ALLOWED_METHODS_DEFAULT = ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS']
-
-#: CORS - default origin header value
-CORS_DEFAULT_ALLOW_ORIGIN = '*'
-
-#: CORS - HTTP headers the server will send as part of OPTIONS response
-CORS_DEFAULT = {
-	'Access-Control-Allow-Origin': CORS_DEFAULT_ALLOW_ORIGIN,
-	'Access-Control-Allow-Credentials': 'true',
-	'Access-Control-Max-Age': '86400',
-	'Access-Control-Allow-Methods': ','.join(CORS_ALLOWED_METHODS_DEFAULT),
-	'Access-Control-Allow-Headers': ', '.join(CORS_ALLOWED_CLIENT_HEADERS)
-}
 
 #: paths where file delete operations shall be allowed
 DELETE_WHITELIST = [
@@ -233,20 +214,6 @@ class FileController(twisted.web.resource.Resource):
 			request.setHeader('Expires', format_date_time(
 				time.mktime(expires_time.timetuple())))
 
-	def _json_response(self, request, data):
-		"""
-		Create a JSON representation for *data* and set HTTP headers indicating
-		that JSON encoded data is returned.
-
-		Args:
-			request (twisted.web.server.Request): HTTP request object
-			data: response content
-		Returns:
-			JSON representation of *data* with appropriate HTTP headers
-		"""
-		request.setHeader("content-type", "application/json; charset=utf-8")
-		return json.dumps(data, indent=2)
-
 	def get_response_data_template(self, request):
 		"""
 		Generate a response data :class:`dict` containing default values and
@@ -296,7 +263,7 @@ class FileController(twisted.web.resource.Resource):
 			response_data['me'][attr_name] = getattr(self, attr_name)
 
 		request.setResponseCode(response_code)
-		return self._json_response(request, response_data)
+		return json_response(request, response_data)
 
 	def _existing_path_or_bust(self, request):
 		"""
@@ -391,7 +358,7 @@ class FileController(twisted.web.resource.Resource):
 			else:
 				response_data['files'].append(item)
 
-		return self._json_response(request, response_data)
+		return json_response(request, response_data)
 
 	def render_file(self, request, path):
 		"""
@@ -510,7 +477,7 @@ class FileController(twisted.web.resource.Resource):
 			'filename': target_filename,
 		}
 
-		return self._json_response(request, response_data)
+		return json_response(request, response_data)
 
 	def render_PUT(self, request):
 		"""
@@ -572,7 +539,7 @@ class FileController(twisted.web.resource.Resource):
 				target_path, eexc.message)
 			request.setResponseCode(http.INTERNAL_SERVER_ERROR)
 
-		return self._json_response(request, response_data)
+		return json_response(request, response_data)
 
 
 if __name__ == '__main__':
