@@ -98,7 +98,7 @@ class ApiController(resource.Resource):
 			request.setResponseCode(http.NOT_FOUND)
 			data = {
 				"method": repr(func_path),
-				"success": False
+				"result": False
 			}
 			return json_response(request, data)
 
@@ -110,6 +110,6 @@ class ApiController(resource.Resource):
 			request.setResponseCode(http.INTERNAL_SERVER_ERROR)
 			data = {
 				"exception": repr(exc),
-				"success": False
+				"result": False
 			}
 			return json_response(request, data)
