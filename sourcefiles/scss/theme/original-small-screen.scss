@@ -50,38 +50,5 @@ body.original-small-screen {
     display: inline-block;
   }
 
-  span.channel-tag {
-    vertical-align: middle;
-    font-size: 70%;
-    text-align: center;
-    display: inline-block;
-    min-width: 4em;
-    color: #666666;
-    border: 1px solid #888888;
-    border-radius: 8px;
-    padding: 0.2em;
-    margin-left: 0.2em;
-    margin-right: 0.2em;
-  }
-
-  span.NS-DVB-C {
-    background-color: rgba(0, 0, 170, 0.2);
-  }
-
-  span.NS-DVB-S {
-    background-color: rgba(0, 170, 0, 0.2);
-  }
-
-  span.ST-HDTV {
-    background-color: rgba(0, 0, 170, 0.3);
-  }
-
-  span.ST-TV {
-    background-color: rgba(170, 170, 170, 0.5);
-  }
-
-  span.ST-RADIO {
-    background-color: rgba(20, 110, 120, 0.5);
-  }
-
+  @import "../channel_tags";
 }

@@ -151,3 +151,11 @@ table .tcurrent {
 .marker {
   color: #00c;
 }
+
+@import "channel_tags";
+/* in case no one likes to see these tags: */
+/*
+span.channel-tag {
+  display: none;
+}
+*/
