@@ -39,21 +39,27 @@ class ApiController(resource.Resource):
 		return ''
 
 	def render_GET(self, request):
+		# as implemented in BaseController --v
 		request.path = request.path.replace('signal', 'tunersignal')
 		rq_path = urlparse.unquote(request.path)
 
 		if not rq_path.startswith(self._resource_prefix):
 			raise ValueError("Invalid Request Path {!r}".format(request.path))
 
+		request.setHeader(
+			'Access-Control-Allow-Origin', CORS_DEFAULT_ALLOW_ORIGIN)
+
+		# as implemented in BaseController -----------------v
 		func_path = rq_path[len(self._resource_prefix) + 1:].replace(".", "")
 
 		func = getattr(self.webcrap, "P_" + func_path, None)
 		if func is None:
 			request.setResponseCode(http.NOT_FOUND)
-			return "NOT FOUND: {!r}".format(func_path)
-
-		request.setHeader(
-			'Access-Control-Allow-Origin', CORS_DEFAULT_ALLOW_ORIGIN)
+			data = {
+				"method": repr(func_path),
+				"success": False
+			}
+			return json_response(request, data)
 
 		try:
 			request.setResponseCode(http.OK)
@@ -61,5 +67,8 @@ class ApiController(resource.Resource):
 			return json_response(data=data, request=request)
 		except Exception as exc:
 			request.setResponseCode(http.INTERNAL_SERVER_ERROR)
-			request.setHeader("content-type", "text/plain")
-			return repr(exc)
+			data = {
+				"exception": repr(exc),
+				"success": False
+			}
+			return json_response(request, data)
