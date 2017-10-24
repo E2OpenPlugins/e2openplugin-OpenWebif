@@ -4,10 +4,6 @@
     "description": "Enigma2 API",
     "version": "1.2.7x",
     "title": "Enigma2 RESTful API",
-    "termsOfService": "http://swagger.io/terms/",
-    "contact": {
-      "email": "apiteam@swagger.io"
-    },
     "license": {
       "name": "GPL Version 2.0",
       "url": "http://www.gnu.org/licenses/gpl-2.0.html"
