@@ -66,7 +66,6 @@ class ApiController(resource.Resource):
 		"""
 		with open(SWAGGER_TEMPLATE, "rb") as src:
 			data = json.load(src)
-		# data['host'] = data['host']
 		return json_response(request, data)
 
 	def render_GET(self, request):
