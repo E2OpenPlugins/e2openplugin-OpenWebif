@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import urlparse
 import copy
+import os
+import json
 
 from twisted.web import http, resource
 
@@ -8,6 +10,8 @@ from web import WebController
 from rest import json_response, CORS_ALLOWED_METHODS_DEFAULT, CORS_DEFAULT
 from rest import CORS_DEFAULT_ALLOW_ORIGIN
 
+SWAGGER_TEMPLATE = os.path.join(
+	os.path.dirname(__file__), 'swagger.json')
 
 class ApiController(resource.Resource):
 	isLeaf = True
@@ -38,6 +42,12 @@ class ApiController(resource.Resource):
 
 		return ''
 
+	def _index(self, request):
+		with open(SWAGGER_TEMPLATE, "rb") as src:
+			data = json.load(src)
+		# data['host'] = data['host']
+		return json_response(request, data)
+
 	def render_GET(self, request):
 		# as implemented in BaseController --v
 		request.path = request.path.replace('signal', 'tunersignal')
@@ -51,6 +61,9 @@ class ApiController(resource.Resource):
 
 		# as implemented in BaseController -----------------v
 		func_path = rq_path[len(self._resource_prefix) + 1:].replace(".", "")
+
+		if func_path in ("", "index"):
+			return self._index(request)
 
 		func = getattr(self.webcrap, "P_" + func_path, None)
 		if func is None:
