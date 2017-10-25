@@ -7,4 +7,5 @@ class ApiController(WebController):
 		WebController.__init__(self, session, path)
 
 	def prePageLoad(self, request):
+		request.setHeader("content-type", "application/json")
 		self.isJson = True
