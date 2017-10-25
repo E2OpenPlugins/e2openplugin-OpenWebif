@@ -1,15 +1,16 @@
 span.channel-tag {
   vertical-align: middle;
   font-size: 70%;
+  font-style: normal;
   text-align: center;
   display: inline-block;
-  min-width: 4em;
+  min-width: 4.1rem;
   color: #666666;
   border: 1px solid #888888;
-  border-radius: 8px;
-  padding: 0.2em;
-  margin-left: 0.2em;
-  margin-right: 0.2em;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
 }
 
 span.NS-DVB-C {
@@ -30,4 +31,16 @@ span.ST-TV {
 
 span.ST-RADIO {
   background-color: rgba(20, 110, 120, 0.5);
+}
+
+span.UHD {
+  background-color: rgba(30, 180, 0, 0.5);
+}
+
+span.SD4 {
+  background-color: rgba(180, 30, 0, 0.5);
+}
+
+span.OPT {
+  background-color: rgba(0, 60, 180, 0.5);
 }
