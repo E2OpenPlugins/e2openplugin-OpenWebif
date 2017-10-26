@@ -214,6 +214,24 @@
         }
       }
     },
+    "/current": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Example ajax controller query: retrieve *current* information",
+        "description": "",
+        "operationId": "current_get",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
     "/powerstate": {
       "get": {
         "tags": [

@@ -5,7 +5,7 @@ RESTful API access using HTTP
 -----------------------------
 
 This controller exposes the application programming interface (API) as
-implemented by the ``web`` controller.
+implemented by the ``web`` and ``ajax`` controller.
 
 The generated responses are returned as JSON data with appropriate HTTP headers.
 Output will be compressed using gzip if requested by client.
@@ -18,11 +18,14 @@ import json
 from twisted.web import http, resource
 
 from web import WebController
+from ajax import AjaxController
 from rest import json_response, CORS_ALLOWED_METHODS_DEFAULT, CORS_DEFAULT
 from rest import CORS_DEFAULT_ALLOW_ORIGIN
 
 SWAGGER_TEMPLATE = os.path.join(
 	os.path.dirname(__file__), 'swagger.json')
+
+OWIF_PREFIX = 'P_'
 
 
 class ApiController(resource.Resource):
@@ -30,7 +33,9 @@ class ApiController(resource.Resource):
 
 	def __init__(self, session, path="", *args, **kwargs):
 		#: web controller instance
-		self.webcrap = WebController(session, path)
+		self.web_instance = WebController(session, path)
+		#: ajax controller instance
+		self.ajax_instance = AjaxController(session, path)
 		self._resource_prefix = kwargs.get("resource_prefix", '/api')
 		self._cors_header = copy.copy(CORS_DEFAULT)
 		http_verbs = []
@@ -93,7 +98,28 @@ class ApiController(resource.Resource):
 		if func_path in ("", "index"):
 			return self._index(request)
 
-		func = getattr(self.webcrap, "P_" + func_path, None)
+		#: name of OpenWebif method to be called
+		owif_func = "{:s}{:s}".format(OWIF_PREFIX, func_path)
+
+		#: callable methods
+		funcs = [
+			# TODO: add method of *self*
+			('web', getattr(self.web_instance, owif_func, None)),
+			('ajax', getattr(self.ajax_instance, owif_func, None)),
+		]
+
+		#: method to be called
+		func = None
+		#: nickname for controller instance
+		source_controller = None
+
+		# query controller instances for given method - first match wins
+		for candidate_controller, candidate in funcs:
+			if callable(candidate):
+				func = candidate
+				source_controller = candidate_controller
+				break
+
 		if func is None:
 			request.setResponseCode(http.NOT_FOUND)
 			data = {
@@ -105,6 +131,7 @@ class ApiController(resource.Resource):
 		try:
 			request.setResponseCode(http.OK)
 			data = func(request)
+			data['_controller'] = source_controller
 			try:
 				if "result" not in data:
 					data["result"] = True
