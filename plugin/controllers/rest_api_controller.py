@@ -75,6 +75,7 @@ class ApiController(resource.Resource):
 		"""
 		with open(SWAGGER_TEMPLATE, "rb") as src:
 			data = json.load(src)
+
 		return json_response(request, data)
 
 	def render_GET(self, request):
@@ -142,6 +143,7 @@ class ApiController(resource.Resource):
 			except Exception:
 				# ignoring exceptions is bad.
 				pass
+
 			return json_response(data=data, request=request)
 		except Exception as exc:
 			request.setResponseCode(http.INTERNAL_SERVER_ERROR)
@@ -149,4 +151,5 @@ class ApiController(resource.Resource):
 				"exception": repr(exc),
 				"result": False
 			}
+
 			return json_response(request, data)
