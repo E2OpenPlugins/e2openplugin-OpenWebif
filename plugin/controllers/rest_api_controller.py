@@ -9,6 +9,10 @@ implemented by the ``web`` and ``ajax`` controller.
 
 The generated responses are returned as JSON data with appropriate HTTP headers.
 Output will be compressed using gzip if requested by client.
+
+A swagger v2 (https://swagger.io/) compatible API specification will be
+returned when accessing the /api/ endpoint. The API specification is consumable
+e.g. by a Swagger UI (https://swagger.io/swagger-ui/) instance.
 """
 import urlparse
 import copy
