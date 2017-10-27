@@ -830,3 +830,10 @@ i.fa-mobile {font-size: 22px;}
 .ui-icon-blank,.ui-icon-blank:after{
 	display:none !important;
 }
+
+body:not(.original-small-screen)
+{
+	span.channel-tag {
+		display: none;
+	}
+}
