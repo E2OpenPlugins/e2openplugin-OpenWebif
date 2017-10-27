@@ -40,7 +40,9 @@
 				$channel.name
 			#end if
 			</span>
-			<span class="channel-tag ST-$channel.service_type">$channel.service_type</span><span class="channel-tag NS-$channel.ns">$channel.ns</span>
+			#if $channel.has_key('ns')
+				<span class="channel-tag ST-$channel.service_type">$channel.service_type</span><span class="channel-tag NS-$channel.ns">$channel.ns</span>
+			#end if
 		</div>
 	</div>
 
