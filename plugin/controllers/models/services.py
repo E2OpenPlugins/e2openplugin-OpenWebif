@@ -360,7 +360,7 @@ def getChannels(idbouquet, stype):
 		if not int(channel[0].split(":")[1]) & 64:
 			psref = parse_servicereference(channel[0])
 			chan['service_type'] = SERVICE_TYPE_LOOKUP.get(psref.get('service_type'), "UNKNOWN")
-			chan['ns'] = NS_LOOKUP.get(psref.get('ns'), "UNKNOWN")
+			chan['ns'] = NS_LOOKUP.get(psref.get('ns'), "DVB-S")
 			chan['picon'] = getPicon(chan['ref'])
 			if config.OpenWebif.parentalenabled.value and config.ParentalControl.configured.value and config.ParentalControl.servicepinactive.value:
 				chan['protection'] = getProtection(channel[0])
