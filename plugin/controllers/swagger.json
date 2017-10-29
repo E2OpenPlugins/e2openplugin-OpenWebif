@@ -131,6 +131,24 @@
         }
       }
     },
+    "/statusinfo": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Retrieve status information",
+        "description": "",
+        "operationId": "statusinfo_get",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
     "/epgbouquet": {
       "get": {
         "tags": [
