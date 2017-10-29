@@ -7,4 +7,5 @@
 *~
 /contrib/model_movies/folder
 .sass-cache/
+.vscode/
 *.css.map

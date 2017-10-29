@@ -356,11 +356,11 @@ def getChannels(idbouquet, stype):
 		chan['ref'] = quote(channel[0], safe=' ~@%#$&()*!+=:;,.?/\'')
 		if chan['ref'].split(":")[1] == '320': # Hide hidden number markers
 			continue
-		psref = parse_servicereference(channel[0])
-		chan['service_type'] = SERVICE_TYPE_LOOKUP.get(psref.get('service_type'), "UNKNOWN")
-		chan['ns'] = NS_LOOKUP.get(psref.get('ns'), "UNKNOWN")
 		chan['name'] = filterName(channel[1])
 		if not int(channel[0].split(":")[1]) & 64:
+			psref = parse_servicereference(channel[0])
+			chan['service_type'] = SERVICE_TYPE_LOOKUP.get(psref.get('service_type'), "UNKNOWN")
+			chan['ns'] = NS_LOOKUP.get(psref.get('ns'), "DVB-S")
 			chan['picon'] = getPicon(chan['ref'])
 			if config.OpenWebif.parentalenabled.value and config.ParentalControl.configured.value and config.ParentalControl.servicepinactive.value:
 				chan['protection'] = getProtection(channel[0])
