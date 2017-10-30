@@ -165,7 +165,7 @@ class GzipEncodeByFileExtensionFactory(GzipEncoderFactory):
 			self.log.error(exc)
 
 
-class FileController(twisted.web.resource.Resource):
+class RESTFilesystemController(twisted.web.resource.Resource):
 	isLeaf = True
 	_override_args = (
 		'resource_prefix', 'root', 'do_delete', 'delete_whitelist')
@@ -530,17 +530,17 @@ if __name__ == '__main__':
 	from twisted.internet import reactor
 
 	# standard factory example
-	factory_s = Site(FileController(DEFAULT_ROOT_PATH))
+	factory_s = Site(RESTFilesystemController(DEFAULT_ROOT_PATH))
 
 	# experimental factory
 	root = Resource()
-	root.putChild("/", FileController)
-	root.putChild("/fs", FileController)
+	root.putChild("/", RESTFilesystemController)
+	root.putChild("/fs", RESTFilesystemController)
 	factory_r = Site(root)
 
 	#  experimental factory: enable gzip compression
 	wrapped = EncodingResourceWrapper(
-		FileController(
+		RESTFilesystemController(
 			root=DEFAULT_ROOT_PATH,
 			# DANGER, WILL ROBINSON! These values allow deletion of ALL files!
 			do_delete=True, delete_whitelist=[]
