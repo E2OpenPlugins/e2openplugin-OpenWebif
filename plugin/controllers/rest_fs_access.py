@@ -16,31 +16,31 @@ Example calls using curl
 ++++++++++++++++++++++++
 
 The following examples assume that the FileController instance is accessible
-as '/file' on 'localhost', port 18888 (http://localhost:18888/file).
+as '/fs' on 'localhost', port 18888 (http://localhost:18888/fs).
 
 Fetch list of files and folders in root folder:
 
-    curl --noproxy localhost -iv http://localhost:18888/file
+    curl --noproxy localhost -iv http://localhost:18888/fs
 
 Fetch example file 'example.txt'
 
-    curl --noproxy localhost -iv http://localhost:18888/file/example.txt
+    curl --noproxy localhost -iv http://localhost:18888/fs/example.txt
 
 Fetch gzipped example file 'example.txt'
 
-    curl --compressed -H "Accept-Encoding: gzip" --noproxy localhost -iv http://localhost:18888/file/example.txt
+    curl --compressed -H "Accept-Encoding: gzip" --noproxy localhost -iv http://localhost:18888/fs/example.txt
 
 Delete example file 'example.txt'
 
-    curl --noproxy localhost -iv -X DELETE http://localhost:18888/file/example.txt
+    curl --noproxy localhost -iv -X DELETE http://localhost:18888/fs/example.txt
 
-Create example file 'test.dat' using HTTP POST request on /file
+Create example file 'test.dat' using HTTP POST request on /fs
 
-    curl --noproxy localhost -iv -X POST http://localhost:18888/file?filename=test.dat -F "data=blabla"
+    curl --noproxy localhost -iv -X POST http://localhost:18888/fs?filename=test.dat -F "data=blabla"
 
 Request file '/etc/sysctl.conf' (compressed)
 
-    curl --compressed -H "Accept-Encoding: gzip" --noproxy localhost -I http://localhost/file/etc/sysctl.conf
+    curl --compressed -H "Accept-Encoding: gzip" --noproxy localhost -I http://localhost/fs/etc/sysctl.conf
 
 Example Response:
 
@@ -58,7 +58,7 @@ Example Response:
 
 Request file '/etc/sysctl.conf' (without compression)
 
-	curl --noproxy localhost -I http://localhost/file/etc/sysctl.conf
+	curl --noproxy localhost -I http://localhost/fs/etc/sysctl.conf
 
 Example Response:
 
@@ -74,13 +74,13 @@ Example Response:
 	Content-Type: text/plain
 	Set-Cookie: TWISTED_SESSION=0b3688af9874df9b432f09bedae63c40; Path=/
 
-Create example file 'test_01.ts' using HTTP POST request on /file. After that
+Create example file 'test_01.ts' using HTTP POST request on /fs. After that
 request 'test_01.ts' compressed. Because of the file extension the server will
 _not_ return its content gzip encoded and orders the client not to cache the
 result.
 
-	curl --noproxy localhost -iv -X POST http://localhost/file/tmp?filename=test_01.ts -F "data=dummy"
-	curl --compressed -H "Accept-Encoding: gzip" --noproxy localhost -I http://localhost/file/tmp/test_01.ts
+	curl --noproxy localhost -iv -X POST http://localhost/fs/tmp?filename=test_01.ts -F "data=dummy"
+	curl --compressed -H "Accept-Encoding: gzip" --noproxy localhost -I http://localhost/fs/tmp/test_01.ts
 
 Example response:
 
@@ -98,49 +98,23 @@ Example response:
 
 """
 import os
-import json
 import glob
 import re
 import urlparse
 import datetime
 import time
 from wsgiref.handlers import format_date_time
+import logging
 
 import twisted.web.static
 from twisted.web import http
-from twisted.web.server import GzipEncoderFactory
+from twisted.web.server import GzipEncoderFactory, NOT_DONE_YET
 
 from utilities import MANY_SLASHES_REGEX, lenient_force_utf_8
-
-try:
-	import file
-
-	HAVE_LEGACY_FILE = True
-except ImportError:
-	HAVE_LEGACY_FILE = False
+from rest import json_response, CORS_DEFAULT, CORS_DEFAULT_ALLOW_ORIGIN
 
 #: default path from which files will be served
 DEFAULT_ROOT_PATH = os.path.abspath(os.path.dirname(__file__))
-
-#: CORS - HTTP headers the client may use
-CORS_ALLOWED_CLIENT_HEADERS = [
-	'Content-Type',
-]
-
-#: CORS - HTTP methods the client may use
-CORS_ALLOWED_METHODS_DEFAULT = ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS']
-
-#: CORS - default origin header value
-CORS_DEFAULT_ALLOW_ORIGIN = '*'
-
-#: CORS - HTTP headers the server will send as part of OPTIONS response
-CORS_DEFAULT = {
-	'Access-Control-Allow-Origin': CORS_DEFAULT_ALLOW_ORIGIN,
-	'Access-Control-Allow-Credentials': 'true',
-	'Access-Control-Max-Age': '86400',
-	'Access-Control-Allow-Methods': ','.join(CORS_ALLOWED_METHODS_DEFAULT),
-	'Access-Control-Allow-Headers': ', '.join(CORS_ALLOWED_CLIENT_HEADERS)
-}
 
 #: paths where file delete operations shall be allowed
 DELETE_WHITELIST = [
@@ -168,6 +142,7 @@ class GzipEncodeByFileExtensionFactory(GzipEncoderFactory):
 	def __init__(self, *args, **kwargs):
 		self.gzip_allowed = kwargs.get("extensions", [])
 		self.compressLevel = kwargs.get("compressLevel", 6)
+		self.log = logging.getLogger(__name__)
 
 	def encoderForRequest(self, request):
 		"""
@@ -175,24 +150,26 @@ class GzipEncodeByFileExtensionFactory(GzipEncoderFactory):
 		send compressed. If so use GzipEncoderFactory which may compress
 		the file contents if the client supports it.
 		"""
+		self.log.debug("GZIP? {!r}".format(request.path))
 		try:
 			(trunk, ext) = os.path.splitext(request.path)
 			ext_normalised = ext.lower()[1:]
 
 			if ext_normalised in self.gzip_allowed:
-				# print("{!r}: we want GZIP!".format(ext_normalised))
+				self.log.debug("{!r}: we want GZIP!".format(ext_normalised))
 				return GzipEncoderFactory.encoderForRequest(self, request)
-			# else:
-			# 	print("{!r}: we do not want GZIP!".format(ext_normalised))
+			else:
+				self.log.debug(
+					"{!r}: we do not want GZIP!".format(ext_normalised))
 		except Exception as exc:
-			print exc
+			self.log.error(exc)
 
 
-class FileController(twisted.web.resource.Resource):
+class RESTFilesystemController(twisted.web.resource.Resource):
 	isLeaf = True
 	_override_args = (
 		'resource_prefix', 'root', 'do_delete', 'delete_whitelist')
-	_resource_prefix = '/file'
+	_resource_prefix = '/fs'
 	_root = os.path.abspath(os.path.dirname(__file__))
 	_do_delete = False
 	_delete_whitelist = DELETE_WHITELIST
@@ -220,32 +197,24 @@ class FileController(twisted.web.resource.Resource):
 				attr_name = '_{:s}'.format(arg_name)
 				setattr(self, attr_name, kwargs.get(arg_name))
 		self.session = kwargs.get("session")
+		self.log = logging.getLogger(__name__)
 
 	def _cache(self, request, expires=False):
+		headers = {}
 		if expires is False:
-			request.setHeader('Cache-Control',
-							  'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0')
-			request.setHeader('Expires', '-1')
+			headers[
+				'Cache-Control'] = 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0'
+			headers['Expires'] = '-1'
 		else:
 			now = datetime.datetime.now()
 			expires_time = now + datetime.timedelta(seconds=expires)
-			request.setHeader('Cache-Control', 'public')
-			request.setHeader('Expires', format_date_time(
-				time.mktime(expires_time.timetuple())))
-
-	def _json_response(self, request, data):
-		"""
-		Create a JSON representation for *data* and set HTTP headers indicating
-		that JSON encoded data is returned.
-
-		Args:
-			request (twisted.web.server.Request): HTTP request object
-			data: response content
-		Returns:
-			JSON representation of *data* with appropriate HTTP headers
-		"""
-		request.setHeader("content-type", "application/json; charset=utf-8")
-		return json.dumps(data, indent=2)
+			headers['Cache-Control'] = 'public'
+			headers['Expires'] = format_date_time(
+				time.mktime(expires_time.timetuple()))
+		for key in headers:
+			self.log.debug(
+				"CACHE: {key}={val}".format(key=key, val=headers[key]))
+			request.setHeader(key, headers[key])
 
 	def get_response_data_template(self, request):
 		"""
@@ -296,7 +265,7 @@ class FileController(twisted.web.resource.Resource):
 			response_data['me'][attr_name] = getattr(self, attr_name)
 
 		request.setResponseCode(response_code)
-		return self._json_response(request, response_data)
+		return json_response(request, response_data)
 
 	def _existing_path_or_bust(self, request):
 		"""
@@ -330,7 +299,7 @@ class FileController(twisted.web.resource.Resource):
 
 		Example request
 
-			curl -iv --noproxy localhost http://localhost:18888/file
+			curl -iv --noproxy localhost http://localhost:18888/fs
 
 		Args:
 			request (twisted.web.server.Request): HTTP request object
@@ -341,19 +310,6 @@ class FileController(twisted.web.resource.Resource):
 			request.setHeader(key, CORS_DEFAULT[key])
 
 		return ''
-
-	def render_legacy(self, request):
-		"""
-		Render response for an HTTP GET request. In order to maintain
-		backward compatibility this method emulates the behaviour of the
-		legacy method implementation.
-
-		Args:
-			request (twisted.web.server.Request): HTTP request object
-		Returns:
-			HTTP response with headers
-		"""
-		return file.FileController().render(request)
 
 	def _glob(self, path, pattern='*'):
 		if path == '/':
@@ -391,7 +347,7 @@ class FileController(twisted.web.resource.Resource):
 			else:
 				response_data['files'].append(item)
 
-		return self._json_response(request, response_data)
+		return json_response(request, response_data)
 
 	def render_file(self, request, path):
 		"""
@@ -403,14 +359,19 @@ class FileController(twisted.web.resource.Resource):
 		Returns:
 			HTTP response with headers
 		"""
+		self.log.info("rendering {!r} ...".format(path))
 		result = twisted.web.static.File(
 			path, defaultType="application/octet-stream")
 		expires = 3600 * 24 * 30
 		if path.lower().endswith('.ts'):
 			expires = False
+		self.log.info("rendering {!r}: add cache header".format(path))
 		self._cache(request, expires=expires)
+		self.log.info("rendering {!r}: returning".format(path))
 
-		return result.render(request)
+		result.render_GET(request)
+		request.finish()
+		return NOT_DONE_YET
 
 	def render_GET(self, request):
 		"""
@@ -425,15 +386,6 @@ class FileController(twisted.web.resource.Resource):
 		Returns:
 			HTTP response with headers
 		"""
-		attic_args = {'file', 'dir'}
-
-		if len(attic_args & set(request.args.keys())) >= 1:
-			if HAVE_LEGACY_FILE:
-				return self.render_legacy(request)
-			else:
-				return self.error_response(
-					request, response_code=http.NOT_IMPLEMENTED)
-
 		request.setHeader(
 			'Access-Control-Allow-Origin', CORS_DEFAULT_ALLOW_ORIGIN)
 
@@ -510,7 +462,7 @@ class FileController(twisted.web.resource.Resource):
 			'filename': target_filename,
 		}
 
-		return self._json_response(request, response_data)
+		return json_response(request, response_data)
 
 	def render_PUT(self, request):
 		"""
@@ -572,7 +524,7 @@ class FileController(twisted.web.resource.Resource):
 				target_path, eexc.message)
 			request.setResponseCode(http.INTERNAL_SERVER_ERROR)
 
-		return self._json_response(request, response_data)
+		return json_response(request, response_data)
 
 
 if __name__ == '__main__':
@@ -581,17 +533,17 @@ if __name__ == '__main__':
 	from twisted.internet import reactor
 
 	# standard factory example
-	factory_s = Site(FileController(DEFAULT_ROOT_PATH))
+	factory_s = Site(RESTFilesystemController(DEFAULT_ROOT_PATH))
 
 	# experimental factory
 	root = Resource()
-	root.putChild("/", FileController)
-	root.putChild("/file", FileController)
+	root.putChild("/", RESTFilesystemController)
+	root.putChild("/fs", RESTFilesystemController)
 	factory_r = Site(root)
 
 	#  experimental factory: enable gzip compression
 	wrapped = EncodingResourceWrapper(
-		FileController(
+		RESTFilesystemController(
 			root=DEFAULT_ROOT_PATH,
 			# DANGER, WILL ROBINSON! These values allow deletion of ALL files!
 			do_delete=True, delete_whitelist=[]

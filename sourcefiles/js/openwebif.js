@@ -505,7 +505,7 @@ function webapi_execute_result(url, callback) {
 		url: url,
 		cache : false,
 		success: function(data) {
-			result = $.parseJSON(data);
+			result = json_dammit(data);
 			if (typeof callback !== 'undefined') {
 				if(result)
 					callback(result.result,result.message,result.conflicts);
@@ -677,7 +677,7 @@ function webapi_execute_movie(url,callback)
 		url: url,
 		cache : false,
 		success: function(data) {
-			result = $.parseJSON(data);
+			result = json_dammit(data);
 			if(result) {
 				if (!result.result)
 					alert(result.message);
@@ -1054,7 +1054,7 @@ function loadLocations()
 	$.ajax({
 		url: "/api/getlocations",
 		success: function(data) {
-			var loc = $.parseJSON(data);
+			var loc = json_dammit(data);
 			if (loc.result)
 				_locations = loc.locations;
 		}
@@ -1067,7 +1067,7 @@ function loadTags()
 	$.ajax({
 		url: "/api/gettags",
 		success: function(data) {
-			var tag = $.parseJSON(data);
+			var tag = json_dammit(data);
 			if (tag.result)
 				_tags = tag.tags;
 		}
@@ -1114,6 +1114,17 @@ function initTimerEditBegin()
 	});
 }
 
+function json_dammit(value) {
+	var result = null;
+	try {
+		$.parseJSON(value);
+	}
+	catch(e) {
+		result = value;
+	}
+	return result;
+}
+
 function editTimer(serviceref, begin, end) {
 	serviceref=decodeURI(serviceref);
 	current_serviceref = serviceref;
@@ -1138,7 +1149,7 @@ function editTimer(serviceref, begin, end) {
 	$.ajax({
 		url: "/api/timerlist",
 		success: function(data) {
-			timers = $.parseJSON(data);
+			timers = json_dammit(data);
 			if (timers.result) {
 				for (var id in timers.timers) {
 					timer = timers.timers[id];
@@ -2026,7 +2037,7 @@ function GetAllServices(callback,radio)
 	if(cache === date) {
 		cache = GetLSValue(v,null)
 		if(cache != null) {
-			var js = $.parseJSON(cache);
+			var js = json_dammit(cache);
 			var bqs = js['services'];
 			FillAllServices(bqs,callback);
 			return;
@@ -2037,7 +2048,7 @@ function GetAllServices(callback,radio)
 		success: function ( data ) {
 			SetLSValue(v,data);
 			SetLSValue(vd,date);
-			var js = $.parseJSON(data);
+			var js = json_dammit(data);
 			var bqs = js['services'];
 			FillAllServices(bqs,callback);
 		}

@@ -45,7 +45,7 @@ function addTimerEvent(sRef, eventId) {
 		url: url,
 		cache : false,
 		success: function(data) {
-			result = \$.parseJSON(data);
+			result = json_dammit(data);
 			if(result) {
 				if(!result.result && result.conflicts)
 					alert( "Error Timer Confict" );
