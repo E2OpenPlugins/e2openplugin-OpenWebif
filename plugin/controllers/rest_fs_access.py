@@ -98,19 +98,20 @@ Example response:
 
 """
 import os
-import json
 import glob
 import re
 import urlparse
 import datetime
 import time
 from wsgiref.handlers import format_date_time
+import logging
 
 import twisted.web.static
 from twisted.web import http
-from twisted.web.server import GzipEncoderFactory
+from twisted.web.server import GzipEncoderFactory, NOT_DONE_YET
 
 from utilities import MANY_SLASHES_REGEX, lenient_force_utf_8
+from rest import json_response, CORS_DEFAULT, CORS_DEFAULT_ALLOW_ORIGIN
 
 try:
 	import file
@@ -122,25 +123,6 @@ except ImportError:
 #: default path from which files will be served
 DEFAULT_ROOT_PATH = os.path.abspath(os.path.dirname(__file__))
 
-#: CORS - HTTP headers the client may use
-CORS_ALLOWED_CLIENT_HEADERS = [
-	'Content-Type',
-]
-
-#: CORS - HTTP methods the client may use
-CORS_ALLOWED_METHODS_DEFAULT = ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS']
-
-#: CORS - default origin header value
-CORS_DEFAULT_ALLOW_ORIGIN = '*'
-
-#: CORS - HTTP headers the server will send as part of OPTIONS response
-CORS_DEFAULT = {
-	'Access-Control-Allow-Origin': CORS_DEFAULT_ALLOW_ORIGIN,
-	'Access-Control-Allow-Credentials': 'true',
-	'Access-Control-Max-Age': '86400',
-	'Access-Control-Allow-Methods': ','.join(CORS_ALLOWED_METHODS_DEFAULT),
-	'Access-Control-Allow-Headers': ', '.join(CORS_ALLOWED_CLIENT_HEADERS)
-}
 
 #: paths where file delete operations shall be allowed
 DELETE_WHITELIST = [
@@ -168,6 +150,7 @@ class GzipEncodeByFileExtensionFactory(GzipEncoderFactory):
 	def __init__(self, *args, **kwargs):
 		self.gzip_allowed = kwargs.get("extensions", [])
 		self.compressLevel = kwargs.get("compressLevel", 6)
+		self.log = logging.getLogger(__name__)
 
 	def encoderForRequest(self, request):
 		"""
@@ -175,17 +158,18 @@ class GzipEncodeByFileExtensionFactory(GzipEncoderFactory):
 		send compressed. If so use GzipEncoderFactory which may compress
 		the file contents if the client supports it.
 		"""
+		self.log.debug("GZIP? {!r}".format(request.path))
 		try:
 			(trunk, ext) = os.path.splitext(request.path)
 			ext_normalised = ext.lower()[1:]
 
 			if ext_normalised in self.gzip_allowed:
-				# print("{!r}: we want GZIP!".format(ext_normalised))
+				self.log.debug("{!r}: we want GZIP!".format(ext_normalised))
 				return GzipEncoderFactory.encoderForRequest(self, request)
-			# else:
-			# 	print("{!r}: we do not want GZIP!".format(ext_normalised))
+			else:
+				self.log.debug("{!r}: we do not want GZIP!".format(ext_normalised))
 		except Exception as exc:
-			print exc
+			self.log.error(exc)
 
 
 class FileController(twisted.web.resource.Resource):
@@ -220,32 +204,21 @@ class FileController(twisted.web.resource.Resource):
 				attr_name = '_{:s}'.format(arg_name)
 				setattr(self, attr_name, kwargs.get(arg_name))
 		self.session = kwargs.get("session")
+		self.log = logging.getLogger(__name__)
 
 	def _cache(self, request, expires=False):
+		headers = {}
 		if expires is False:
-			request.setHeader('Cache-Control',
-							  'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0')
-			request.setHeader('Expires', '-1')
+			headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0'
+			headers['Expires'] = '-1'
 		else:
 			now = datetime.datetime.now()
 			expires_time = now + datetime.timedelta(seconds=expires)
-			request.setHeader('Cache-Control', 'public')
-			request.setHeader('Expires', format_date_time(
-				time.mktime(expires_time.timetuple())))
-
-	def _json_response(self, request, data):
-		"""
-		Create a JSON representation for *data* and set HTTP headers indicating
-		that JSON encoded data is returned.
-
-		Args:
-			request (twisted.web.server.Request): HTTP request object
-			data: response content
-		Returns:
-			JSON representation of *data* with appropriate HTTP headers
-		"""
-		request.setHeader("content-type", "application/json; charset=utf-8")
-		return json.dumps(data, indent=2)
+			headers['Cache-Control'] =  'public'
+			headers['Expires'] = format_date_time(time.mktime(expires_time.timetuple()))
+		for key in headers:
+			self.log.debug("CACHE: {key}={val}".format(key=key, val=headers[key]))
+			request.setHeader(key, headers[key])
 
 	def get_response_data_template(self, request):
 		"""
@@ -296,7 +269,7 @@ class FileController(twisted.web.resource.Resource):
 			response_data['me'][attr_name] = getattr(self, attr_name)
 
 		request.setResponseCode(response_code)
-		return self._json_response(request, response_data)
+		return json_response(request, response_data)
 
 	def _existing_path_or_bust(self, request):
 		"""
@@ -391,7 +364,7 @@ class FileController(twisted.web.resource.Resource):
 			else:
 				response_data['files'].append(item)
 
-		return self._json_response(request, response_data)
+		return json_response(request, response_data)
 
 	def render_file(self, request, path):
 		"""
@@ -403,14 +376,19 @@ class FileController(twisted.web.resource.Resource):
 		Returns:
 			HTTP response with headers
 		"""
+		self.log.info("rendering {!r} ...".format(path))
 		result = twisted.web.static.File(
 			path, defaultType="application/octet-stream")
 		expires = 3600 * 24 * 30
 		if path.lower().endswith('.ts'):
 			expires = False
+		self.log.info("rendering {!r}: add cache header".format(path))
 		self._cache(request, expires=expires)
+		self.log.info("rendering {!r}: returning".format(path))
 
-		return result.render(request)
+		result.render_GET(request)
+		request.finish()
+		return NOT_DONE_YET
 
 	def render_GET(self, request):
 		"""
@@ -510,7 +488,7 @@ class FileController(twisted.web.resource.Resource):
 			'filename': target_filename,
 		}
 
-		return self._json_response(request, response_data)
+		return json_response(request, response_data)
 
 	def render_PUT(self, request):
 		"""
@@ -572,7 +550,7 @@ class FileController(twisted.web.resource.Resource):
 				target_path, eexc.message)
 			request.setResponseCode(http.INTERNAL_SERVER_ERROR)
 
-		return self._json_response(request, response_data)
+		return json_response(request, response_data)
 
 
 if __name__ == '__main__':

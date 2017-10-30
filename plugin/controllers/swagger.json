@@ -1,0 +1,539 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Enigma2 API",
+    "version": "1.2.7x",
+    "title": "Enigma2 RESTful API",
+    "license": {
+      "name": "GPL Version 2.0",
+      "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+    }
+  },
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/movielist": {
+      "get": {
+        "tags": [
+          "movie"
+        ],
+        "summary": "Retrieve list of available movies on host",
+        "description": "",
+        "operationId": "movielist_get",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/moviedelete": {
+      "get": {
+        "tags": [
+          "movie"
+        ],
+        "summary": "Delete movie on host",
+        "description": "",
+        "operationId": "movie_delete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "sRef",
+            "in": "query",
+            "description": "Service reference",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/getservices": {
+      "get": {
+        "tags": [
+          "service"
+        ],
+        "summary": "Retrieve list of available services on host",
+        "description": "",
+        "operationId": "services_get",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/subservices": {
+      "get": {
+        "tags": [
+          "service"
+        ],
+        "summary": "Retrieve list of available subservices on host",
+        "description": "",
+        "operationId": "subservices_get",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/getallservices": {
+      "get": {
+        "tags": [
+          "service"
+        ],
+        "summary": "Retrieve list of all available services on host",
+        "description": "",
+        "operationId": "getallservices_get",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/about": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Retrieve system information",
+        "description": "",
+        "operationId": "about_get",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/statusinfo": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Retrieve status information",
+        "description": "",
+        "operationId": "statusinfo_get",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/epgbouquet": {
+      "get": {
+        "tags": [
+          "epg"
+        ],
+        "summary": "Retrieve EPG dataset for given bouquet",
+        "description": "",
+        "operationId": "epgbouquet_get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bRef",
+            "in": "query",
+            "description": "Bouquet reference",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/epgservice": {
+      "get": {
+        "tags": [
+          "epg"
+        ],
+        "summary": "Retrieve EPG dataset for given service",
+        "description": "",
+        "operationId": "epgservice_get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "sRef",
+            "in": "query",
+            "description": "Service reference",
+            "required": true,
+            "type": "string",
+            "default": "1:0:19:7C:6:85:FFFF0000:0:0:0:"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/zap": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Zap to given service",
+        "description": "",
+        "operationId": "zap_get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "sRef",
+            "in": "query",
+            "description": "Service reference",
+            "required": true,
+            "type": "string",
+            "default": "1:0:19:7C:6:85:FFFF0000:0:0:0:"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/current": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Example ajax controller query: retrieve *current* information",
+        "description": "",
+        "operationId": "current_get",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/powerstate": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Get or set power state",
+        "description": "",
+        "operationId": "powerstate_get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "newstate",
+            "in": "query",
+            "description": "New state",
+            "type": "string",
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/message": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Display message on screen",
+        "description": "",
+        "operationId": "message_get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "text",
+            "in": "query",
+            "description": "Message to display",
+            "type": "string",
+            "default": "Hello"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Message type",
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+          },
+          {
+            "name": "timeout",
+            "in": "query",
+            "description": "Message timeout",
+            "default": 10,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/messageanswer": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Display message on screen",
+        "description": "",
+        "operationId": "messageanswer_get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "text",
+            "in": "query",
+            "description": "Message to display",
+            "type": "string",
+            "default": "Hello"
+          },
+          {
+            "name": "getanswer",
+            "in": "query",
+            "description": "get answer",
+            "type": "string",
+            "default": "now"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Message type",
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          {
+            "name": "timeout",
+            "in": "query",
+            "description": "Message timeout",
+            "default": 10,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/epgsearch": {
+      "get": {
+        "tags": [
+          "epg"
+        ],
+        "summary": "Retrieve matching EPG datasets for given search term",
+        "description": "",
+        "operationId": "epgsearch_get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search term",
+            "required": true,
+            "type": "string",
+            "default": "The Walking Dead"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/timerlist": {
+      "get": {
+        "tags": [
+          "timer"
+        ],
+        "summary": "Retrieve list of available timers on host",
+        "description": "",
+        "operationId": "timerlist_get",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/timeradd": {
+      "get": {
+        "tags": [
+          "timer"
+        ],
+        "summary": "Add timer",
+        "description": "",
+        "operationId": "timeradd_get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "sRef",
+            "in": "query",
+            "description": "Service reference",
+            "required": true,
+            "type": "string",
+            "default": "1:0:19:7C:6:85:FFFF0000:0:0:0:"
+          },
+          {
+            "name": "begin",
+            "in": "query",
+            "description": "Timer start",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "description": "Timer end",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/timerdelete": {
+      "get": {
+        "tags": [
+          "timer"
+        ],
+        "summary": "Delete timer",
+        "description": "",
+        "operationId": "timerdelete_get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "sRef",
+            "in": "query",
+            "description": "Service reference",
+            "required": true,
+            "type": "string",
+            "default": "1:0:19:7C:6:85:FFFF0000:0:0:0:"
+          },
+          {
+            "name": "begin",
+            "in": "query",
+            "description": "Timer start",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "description": "Timer end",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/timeraddbyeventid": {
+      "get": {
+        "tags": [
+          "timer"
+        ],
+        "summary": "Add timer",
+        "description": "",
+        "operationId": "timeraddbyeventid_get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "sRef",
+            "in": "query",
+            "description": "Service reference",
+            "required": true,
+            "type": "string",
+            "default": "1:0:19:7C:6:85:FFFF0000:0:0:0:"
+          },
+          {
+            "name": "eventid",
+            "in": "query",
+            "description": "Event ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    }
+  }
+}
