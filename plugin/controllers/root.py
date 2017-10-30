@@ -27,6 +27,7 @@ from ER import ERController
 from BQE import BQEController
 from transcoding import TranscodingController
 from wol import WOLSetupController, WOLClientController
+from file import FileController
 import rest_fs_access
 import rest_api_controller
 
@@ -48,15 +49,18 @@ class RootController(BaseController):
 				'txt', 'json', 'html', 'xml', 'js', 'conf', 'cfg',
 				'eit', 'sc', 'ap'
 			])
+
 		#: gzip compression enabled file controller
 		wrapped_fs_controller = EncodingResourceWrapper(
-			rest_fs_access.FileController(
+			rest_fs_access.RESTFilesystemController(
 				root='/',
-				resource_prefix="/file",
+				resource_prefix="/fs",
 				session=session),
 			[encoder_factory]
 		)
-		self.putChild("file", wrapped_fs_controller)
+		self.putChild("fs", wrapped_fs_controller)
+
+		self.putChild("file", FileController())
 		self.putChild("grab", grabScreenshot(session))
 		if os.path.exists(getPublicPath('mobile')):
 			self.putChild("mobile", MobileController(session))
