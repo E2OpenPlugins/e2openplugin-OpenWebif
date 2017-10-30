@@ -224,7 +224,7 @@ $('#editTimerForm').dialog({
 						url: "/api/timeradd?",
 						data: urldata,
 						success: function(data) {
-							result = $.parseJSON(data);
+							result = json_dammit(data);
 							if (result.result) {
 								canclose = true;
 							}
@@ -253,7 +253,7 @@ $('#editTimerForm').dialog({
 						url: "api/timerchange?",
 						data: urldata,
 						success: function(data) {
-							result = $.parseJSON(data);
+							result = json_dammit(data);
 							if (result.result) {
 								canclose = true;
 							}
