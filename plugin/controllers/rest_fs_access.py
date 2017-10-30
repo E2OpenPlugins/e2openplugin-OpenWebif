@@ -16,31 +16,31 @@ Example calls using curl
 ++++++++++++++++++++++++
 
 The following examples assume that the FileController instance is accessible
-as '/file' on 'localhost', port 18888 (http://localhost:18888/file).
+as '/fs' on 'localhost', port 18888 (http://localhost:18888/fs).
 
 Fetch list of files and folders in root folder:
 
-    curl --noproxy localhost -iv http://localhost:18888/file
+    curl --noproxy localhost -iv http://localhost:18888/fs
 
 Fetch example file 'example.txt'
 
-    curl --noproxy localhost -iv http://localhost:18888/file/example.txt
+    curl --noproxy localhost -iv http://localhost:18888/fs/example.txt
 
 Fetch gzipped example file 'example.txt'
 
-    curl --compressed -H "Accept-Encoding: gzip" --noproxy localhost -iv http://localhost:18888/file/example.txt
+    curl --compressed -H "Accept-Encoding: gzip" --noproxy localhost -iv http://localhost:18888/fs/example.txt
 
 Delete example file 'example.txt'
 
-    curl --noproxy localhost -iv -X DELETE http://localhost:18888/file/example.txt
+    curl --noproxy localhost -iv -X DELETE http://localhost:18888/fs/example.txt
 
-Create example file 'test.dat' using HTTP POST request on /file
+Create example file 'test.dat' using HTTP POST request on /fs
 
-    curl --noproxy localhost -iv -X POST http://localhost:18888/file?filename=test.dat -F "data=blabla"
+    curl --noproxy localhost -iv -X POST http://localhost:18888/fs?filename=test.dat -F "data=blabla"
 
 Request file '/etc/sysctl.conf' (compressed)
 
-    curl --compressed -H "Accept-Encoding: gzip" --noproxy localhost -I http://localhost/file/etc/sysctl.conf
+    curl --compressed -H "Accept-Encoding: gzip" --noproxy localhost -I http://localhost/fs/etc/sysctl.conf
 
 Example Response:
 
@@ -58,7 +58,7 @@ Example Response:
 
 Request file '/etc/sysctl.conf' (without compression)
 
-	curl --noproxy localhost -I http://localhost/file/etc/sysctl.conf
+	curl --noproxy localhost -I http://localhost/fs/etc/sysctl.conf
 
 Example Response:
 
@@ -74,13 +74,13 @@ Example Response:
 	Content-Type: text/plain
 	Set-Cookie: TWISTED_SESSION=0b3688af9874df9b432f09bedae63c40; Path=/
 
-Create example file 'test_01.ts' using HTTP POST request on /file. After that
+Create example file 'test_01.ts' using HTTP POST request on /fs. After that
 request 'test_01.ts' compressed. Because of the file extension the server will
 _not_ return its content gzip encoded and orders the client not to cache the
 result.
 
-	curl --noproxy localhost -iv -X POST http://localhost/file/tmp?filename=test_01.ts -F "data=dummy"
-	curl --compressed -H "Accept-Encoding: gzip" --noproxy localhost -I http://localhost/file/tmp/test_01.ts
+	curl --noproxy localhost -iv -X POST http://localhost/fs/tmp?filename=test_01.ts -F "data=dummy"
+	curl --compressed -H "Accept-Encoding: gzip" --noproxy localhost -I http://localhost/fs/tmp/test_01.ts
 
 Example response:
 
@@ -112,13 +112,6 @@ from twisted.web.server import GzipEncoderFactory, NOT_DONE_YET
 
 from utilities import MANY_SLASHES_REGEX, lenient_force_utf_8
 from rest import json_response, CORS_DEFAULT, CORS_DEFAULT_ALLOW_ORIGIN
-
-try:
-	import file
-
-	HAVE_LEGACY_FILE = True
-except ImportError:
-	HAVE_LEGACY_FILE = False
 
 #: default path from which files will be served
 DEFAULT_ROOT_PATH = os.path.abspath(os.path.dirname(__file__))
@@ -176,7 +169,7 @@ class FileController(twisted.web.resource.Resource):
 	isLeaf = True
 	_override_args = (
 		'resource_prefix', 'root', 'do_delete', 'delete_whitelist')
-	_resource_prefix = '/file'
+	_resource_prefix = '/fs'
 	_root = os.path.abspath(os.path.dirname(__file__))
 	_do_delete = False
 	_delete_whitelist = DELETE_WHITELIST
@@ -303,7 +296,7 @@ class FileController(twisted.web.resource.Resource):
 
 		Example request
 
-			curl -iv --noproxy localhost http://localhost:18888/file
+			curl -iv --noproxy localhost http://localhost:18888/fs
 
 		Args:
 			request (twisted.web.server.Request): HTTP request object
@@ -314,19 +307,6 @@ class FileController(twisted.web.resource.Resource):
 			request.setHeader(key, CORS_DEFAULT[key])
 
 		return ''
-
-	def render_legacy(self, request):
-		"""
-		Render response for an HTTP GET request. In order to maintain
-		backward compatibility this method emulates the behaviour of the
-		legacy method implementation.
-
-		Args:
-			request (twisted.web.server.Request): HTTP request object
-		Returns:
-			HTTP response with headers
-		"""
-		return file.FileController().render(request)
 
 	def _glob(self, path, pattern='*'):
 		if path == '/':
@@ -403,15 +383,6 @@ class FileController(twisted.web.resource.Resource):
 		Returns:
 			HTTP response with headers
 		"""
-		attic_args = {'file', 'dir'}
-
-		if len(attic_args & set(request.args.keys())) >= 1:
-			if HAVE_LEGACY_FILE:
-				return self.render_legacy(request)
-			else:
-				return self.error_response(
-					request, response_code=http.NOT_IMPLEMENTED)
-
 		request.setHeader(
 			'Access-Control-Allow-Origin', CORS_DEFAULT_ALLOW_ORIGIN)
 
@@ -564,7 +535,7 @@ if __name__ == '__main__':
 	# experimental factory
 	root = Resource()
 	root.putChild("/", FileController)
-	root.putChild("/file", FileController)
+	root.putChild("/fs", FileController)
 	factory_r = Site(root)
 
 	#  experimental factory: enable gzip compression
