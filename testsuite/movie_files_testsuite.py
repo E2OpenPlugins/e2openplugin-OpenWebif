@@ -3,7 +3,6 @@
 import os
 import copy
 import unittest
-import urllib
 import uuid
 import tempfile
 
@@ -68,12 +67,12 @@ class MoviefilesTestCase(unittest.TestCase):
 		with open(self.test_file, "wb") as tgt:
 			tgt.write("TEST1234")
 		self.enigma2_host = os.environ.get(ENV_VAR, ENV_VAL_FALLBACK)
-		self.file_controller_url = "http://{netloc}/file?dir={dir}".format(
+		self.file_controller_url = "http://{netloc}/fs?dir={dir}".format(
 			netloc=self.enigma2_host, dir=MOVIE_FOLDER)
 		self.api_controller_url = "http://{netloc}/api/movielist".format(
 			netloc=self.enigma2_host)
-		self.file_url = 'http://{host}/file'.format(host=self.enigma2_host)
-		self.testfile_upload_url = "http://{netloc}/file{dir}".format(
+		self.file_url = 'http://{host}/fs'.format(host=self.enigma2_host)
+		self.testfile_upload_url = "http://{netloc}/fs{dir}".format(
 			netloc=self.enigma2_host, dir=MOVIE_FOLDER)
 
 	def testFilesResponseByFileController(self):
@@ -102,20 +101,6 @@ class MoviefilesTestCase(unittest.TestCase):
 		self.assertEqual(1, found)
 		self.assertEqual("Animal Kingdom", movie_item['eventname'])
 		self.assertEqual(movie_item, EXPECTED_MOVIE_ITEM)
-
-	def test_etc_passwd_stream(self):
-		params = {
-			"file": MAIN_TS_FILE,
-			"action": "stream",
-		}
-		req = requests.get(self.file_url, params=params)
-		print("Tried to fetch {!r}".format(req.url))
-		# print(req.text)
-		expected_body = '#EXTM3U\n#EXTVLCOPT--http-reconnect=true\n#EXTINF:-1,stream\nhttp://{netloc}:80/file?action=download&file={file}'.format(
-			netloc=self.enigma2_host,
-			file=urllib.quote(MAIN_TS_FILE.encode("utf_8")))
-		self.assertEquals(expected_body, req.text)
-		self.assertEqual(200, req.status_code)
 
 	def testUpload(self):
 		files = {
