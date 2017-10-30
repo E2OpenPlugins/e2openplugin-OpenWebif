@@ -116,7 +116,6 @@ from rest import json_response, CORS_DEFAULT, CORS_DEFAULT_ALLOW_ORIGIN
 #: default path from which files will be served
 DEFAULT_ROOT_PATH = os.path.abspath(os.path.dirname(__file__))
 
-
 #: paths where file delete operations shall be allowed
 DELETE_WHITELIST = [
 	'/media',
@@ -160,7 +159,8 @@ class GzipEncodeByFileExtensionFactory(GzipEncoderFactory):
 				self.log.debug("{!r}: we want GZIP!".format(ext_normalised))
 				return GzipEncoderFactory.encoderForRequest(self, request)
 			else:
-				self.log.debug("{!r}: we do not want GZIP!".format(ext_normalised))
+				self.log.debug(
+					"{!r}: we do not want GZIP!".format(ext_normalised))
 		except Exception as exc:
 			self.log.error(exc)
 
@@ -202,15 +202,18 @@ class RESTFilesystemController(twisted.web.resource.Resource):
 	def _cache(self, request, expires=False):
 		headers = {}
 		if expires is False:
-			headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0'
+			headers[
+				'Cache-Control'] = 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0'
 			headers['Expires'] = '-1'
 		else:
 			now = datetime.datetime.now()
 			expires_time = now + datetime.timedelta(seconds=expires)
-			headers['Cache-Control'] =  'public'
-			headers['Expires'] = format_date_time(time.mktime(expires_time.timetuple()))
+			headers['Cache-Control'] = 'public'
+			headers['Expires'] = format_date_time(
+				time.mktime(expires_time.timetuple()))
 		for key in headers:
-			self.log.debug("CACHE: {key}={val}".format(key=key, val=headers[key]))
+			self.log.debug(
+				"CACHE: {key}={val}".format(key=key, val=headers[key]))
 			request.setHeader(key, headers[key])
 
 	def get_response_data_template(self, request):
