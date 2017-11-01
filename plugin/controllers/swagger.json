@@ -184,7 +184,64 @@
             "in": "query",
             "description": "Bouquet reference",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "default": "1:7:1:0:0:0:0:0:0:0:FROM BOUQUET \"userbouquet.favourites.tv\" ORDER BY bouquet"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/epgnow": {
+      "get": {
+        "tags": [
+          "epg", "bouquet"
+        ],
+        "summary": "Retrieve EPG *NOW* dataset for given bouquet",
+        "description": "",
+        "operationId": "epgnow_get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bRef",
+            "in": "query",
+            "description": "Bouquet reference",
+            "required": true,
+            "type": "string",
+            "default": "1:7:1:0:0:0:0:0:0:0:FROM BOUQUET \"userbouquet.favourites.tv\" ORDER BY bouquet"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/epgnext": {
+      "get": {
+        "tags": [
+          "epg", "bouquet"
+        ],
+        "summary": "Retrieve EPG *NEXT* dataset for given bouquet",
+        "description": "",
+        "operationId": "epgnext_get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bRef",
+            "in": "query",
+            "description": "Bouquet reference",
+            "required": true,
+            "type": "string",
+            "default": "1:7:1:0:0:0:0:0:0:0:FROM BOUQUET \"userbouquet.favourites.tv\" ORDER BY bouquet"
           }
         ],
         "responses": {
