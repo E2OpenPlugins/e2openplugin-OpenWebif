@@ -718,7 +718,9 @@ def getStatusInfo(self):
 		event = None
 
 	statusinfo['currservice_filename'] = ""
+	statusinfo['currservice_id'] = -1
 	if event is not None:
+		#(begin, end, name, description, eit)
 		curEvent = parseEvent(event)
 		statusinfo['currservice_name'] = curEvent[2].replace('\xc2\x86', '').replace('\xc2\x87', '')
 		statusinfo['currservice_serviceref'] = serviceref.toString()
@@ -734,6 +736,7 @@ def getStatusInfo(self):
 		full_desc += statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end']  + '\n\n'
 		full_desc += event.getExtendedDescription().replace('\xc2\x86', '').replace('\xc2\x87', '').replace('\xc2\x8a', '\n')
 		statusinfo['currservice_fulldescription'] = full_desc
+		statusinfo['currservice_id'] = curEvent[4]
 	else:
 		statusinfo['currservice_name'] = "N/A"
 		statusinfo['currservice_begin'] = ""
