@@ -722,6 +722,7 @@ def getStatusInfo(self):
 			serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
 	else:
 		event = None
+		serviceHandlerInfo = None
 
 	if event is not None:
 		#(begin, end, name, description, eit)
