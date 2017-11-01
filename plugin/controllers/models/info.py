@@ -548,9 +548,11 @@ def getInfo(session = None, need_fullinfo = False):
 
 	info['kinopoisk'] = False
 	lang = ['ru', 'uk', 'lv', 'lt', 'et']
+	current_language = language.getLanguage()
 	for l in lang:
-		if l in language.getLanguage():
+		if l in current_language:
 			info['kinopoisk'] = True
+			break
 
 	info['EX'] = ''
 
