@@ -87,8 +87,6 @@ class ApiController(resource.Resource):
 		Returns:
 			HTTP response with headers
 		"""
-		# as implemented in BaseController --v
-		request.path = request.path.replace('signal', 'tunersignal')
 		rq_path = urlparse.unquote(request.path)
 
 		if not rq_path.startswith(self._resource_prefix):
