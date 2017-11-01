@@ -170,7 +170,7 @@
     "/epgbouquet": {
       "get": {
         "tags": [
-          "epg"
+          "epg", "bouquet"
         ],
         "summary": "Retrieve EPG dataset for given bouquet",
         "description": "",
@@ -186,6 +186,14 @@
             "required": true,
             "type": "string",
             "default": "1:7:1:0:0:0:0:0:0:0:FROM BOUQUET \"userbouquet.favourites.tv\" ORDER BY bouquet"
+          },
+          {
+            "name": "time",
+            "in": "query",
+            "description": "begin time",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "responses": {
@@ -231,6 +239,34 @@
         "summary": "Retrieve EPG *NEXT* dataset for given bouquet",
         "description": "",
         "operationId": "epgnext_get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bRef",
+            "in": "query",
+            "description": "Bouquet reference",
+            "required": true,
+            "type": "string",
+            "default": "1:7:1:0:0:0:0:0:0:0:FROM BOUQUET \"userbouquet.favourites.tv\" ORDER BY bouquet"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/epgnownext": {
+      "get": {
+        "tags": [
+          "epg", "bouquet"
+        ],
+        "summary": "Retrieve EPG *NOW* and *NEXT* dataset for given bouquet",
+        "description": "",
+        "operationId": "epgnownext_get",
         "produces": [
           "application/json"
         ],
