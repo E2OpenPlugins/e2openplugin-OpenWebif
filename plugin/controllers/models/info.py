@@ -529,7 +529,20 @@ def getInfo(session = None, need_fullinfo = False):
 	# TODO: fstab
 
 	info['transcoding'] = False
-	if (info['model'] in ("Uno4K", "Ultimo4K", "Solo4K", "Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or info['machinebuild'] in ('inihdp', 'hd2400', 'et10000', 'et13000', 'sf5008', 'xpeedlx3', 'ew7356', 'dags7356', 'dags7252', 'formuler1tc', 'gb7356', 'gb7252', 'tiviaraplus', '8100s')):
+	#: models transcoding feature
+	TC_MODELS = (
+		"Uno4K", "Ultimo4K", "Solo4K", "Solo²", "Duo²", "Solo SE",
+		"Quad", "Quad Plus"
+	)
+
+	#: machinebuilds transcoding feature
+	TC_MACHINEBUILD = (
+		'inihdp', 'hd2400', 'et10000', 'et13000', 'sf5008', 'xpeedlx3',
+		'ew7356', 'dags7356', 'dags7252', 'formuler1tc', 'gb7356', 'gb7252',
+		'tiviaraplus', '8100s'
+	)
+
+	if info['model'] in TC_MODELS or info['machinebuild'] in TC_MACHINEBUILD:
 		if os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TranscodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo')):
 			info['transcoding'] = True
 
