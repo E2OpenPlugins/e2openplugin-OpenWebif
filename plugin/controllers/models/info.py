@@ -727,10 +727,14 @@ def getStatusInfo(self):
 	if event is not None:
 		#(begin, end, name, description, eit)
 		curEvent = parseEvent(event)
+		begin_timestamp = int(curEvent[0]) + (config.recording.margin_before.value * 60)
+		end_timestamp = int(curEvent[1]) - (config.recording.margin_after.value * 60)
 		statusinfo['currservice_name'] = curEvent[2].replace('\xc2\x86', '').replace('\xc2\x87', '')
 		statusinfo['currservice_serviceref'] = serviceref_string
-		statusinfo['currservice_begin'] = strftime("%H:%M", (localtime(int(curEvent[0])+(config.recording.margin_before.value*60))))
-		statusinfo['currservice_end'] = strftime("%H:%M", (localtime(int(curEvent[1])-(config.recording.margin_after.value*60))))
+		statusinfo['currservice_begin'] = strftime("%H:%M", (localtime(begin_timestamp)))
+		statusinfo['currservice_begin_timestamp'] = begin_timestamp
+		statusinfo['currservice_end'] = strftime("%H:%M", (localtime(end_timestamp)))
+		statusinfo['currservice_end_timestamp'] = end_timestamp
 		statusinfo['currservice_description'] = curEvent[3]
 		if len(curEvent[3].decode('utf-8')) > 220:
 			statusinfo['currservice_description'] = curEvent[3].decode('utf-8')[0:220].encode('utf-8') + "..."
