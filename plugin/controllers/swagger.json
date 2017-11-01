@@ -149,6 +149,24 @@
         }
       }
     },
+    "/deviceinfo": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Retrieve device information",
+        "description": "",
+        "operationId": "deviceinfo_get",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
     "/epgbouquet": {
       "get": {
         "tags": [
