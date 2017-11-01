@@ -695,19 +695,21 @@ def getLanguage():
 	return STATICBOXINFO['kinopoisk']
 
 def getStatusInfo(self):
-	statusinfo = {}
-
 	# Get Current Volume and Mute Status
 	vcontrol = eDVBVolumecontrol.getInstance()
-
-	statusinfo['volume'] = vcontrol.getVolume()
-	statusinfo['muted'] = vcontrol.isMuted()
-	statusinfo['transcoding'] = getTranscodingSupport()
+	statusinfo = {
+		'volume': vcontrol.getVolume(),
+		'muted': vcontrol.isMuted(),
+		'transcoding': getTranscodingSupport(),
+		'currservice_filename': "",
+		'currservice_id': -1,
+	}
 
 	# Get currently running Service
 	event = None
 	serviceref = self.session.nav.getCurrentlyPlayingServiceReference()
 	serviceref_string = None
+	currservice_station = None
 	if serviceref is not None:
 		serviceHandler = eServiceCenter.getInstance()
 		serviceHandlerInfo = serviceHandler.info(serviceref)
@@ -716,11 +718,11 @@ def getStatusInfo(self):
 		serviceinfo = service and service.info()
 		event = serviceinfo and serviceinfo.getEvent(0)
 		serviceref_string = serviceref.toString()
+		currservice_station = serviceHandlerInfo.getName(
+			serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
 	else:
 		event = None
 
-	statusinfo['currservice_filename'] = ""
-	statusinfo['currservice_id'] = -1
 	if event is not None:
 		#(begin, end, name, description, eit)
 		curEvent = parseEvent(event)
@@ -731,7 +733,7 @@ def getStatusInfo(self):
 		statusinfo['currservice_description'] = curEvent[3]
 		if len(curEvent[3].decode('utf-8')) > 220:
 			statusinfo['currservice_description'] = curEvent[3].decode('utf-8')[0:220].encode('utf-8') + "..."
-		statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
+		statusinfo['currservice_station'] = currservice_station
 		if statusinfo['currservice_serviceref'].startswith('1:0:0'):
 			statusinfo['currservice_filename'] = '/' + '/'.join(serviceref_string.split("/")[1:])
 		full_desc = statusinfo['currservice_name'] + '\n'
@@ -748,7 +750,7 @@ def getStatusInfo(self):
 		if serviceref:
 			statusinfo['currservice_serviceref'] = serviceref_string
 			if serviceHandlerInfo:
-				statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
+				statusinfo['currservice_station'] = currservice_station
 			elif serviceref_string.find("http") != -1:
 				statusinfo['currservice_station'] = serviceref_string.replace('%3a', ':')[serviceref_string.find("http"):]
 			else:
