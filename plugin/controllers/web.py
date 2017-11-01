@@ -694,7 +694,7 @@ class WebController(BaseController):
 		return getCurrentTime()
 
 	def P_deviceinfo(self, request):
-		return getInfo(need_fullinfo=True)
+		return getInfo(session=self.session, need_fullinfo=True)
 
 	def P_getipv6(self, request):
 		request.setHeader("content-type", "text/html")
