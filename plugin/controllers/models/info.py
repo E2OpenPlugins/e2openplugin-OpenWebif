@@ -707,6 +707,7 @@ def getStatusInfo(self):
 	# Get currently running Service
 	event = None
 	serviceref = self.session.nav.getCurrentlyPlayingServiceReference()
+	serviceref_string = None
 	if serviceref is not None:
 		serviceHandler = eServiceCenter.getInstance()
 		serviceHandlerInfo = serviceHandler.info(serviceref)
@@ -714,6 +715,7 @@ def getStatusInfo(self):
 		service = self.session.nav.getCurrentService()
 		serviceinfo = service and service.info()
 		event = serviceinfo and serviceinfo.getEvent(0)
+		serviceref_string = serviceref.toString()
 	else:
 		event = None
 
@@ -723,7 +725,7 @@ def getStatusInfo(self):
 		#(begin, end, name, description, eit)
 		curEvent = parseEvent(event)
 		statusinfo['currservice_name'] = curEvent[2].replace('\xc2\x86', '').replace('\xc2\x87', '')
-		statusinfo['currservice_serviceref'] = serviceref.toString()
+		statusinfo['currservice_serviceref'] = serviceref_string
 		statusinfo['currservice_begin'] = strftime("%H:%M", (localtime(int(curEvent[0])+(config.recording.margin_before.value*60))))
 		statusinfo['currservice_end'] = strftime("%H:%M", (localtime(int(curEvent[1])-(config.recording.margin_after.value*60))))
 		statusinfo['currservice_description'] = curEvent[3]
@@ -731,7 +733,7 @@ def getStatusInfo(self):
 			statusinfo['currservice_description'] = curEvent[3].decode('utf-8')[0:220].encode('utf-8') + "..."
 		statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
 		if statusinfo['currservice_serviceref'].startswith('1:0:0'):
-			statusinfo['currservice_filename'] = '/' + '/'.join(serviceref.toString().split("/")[1:])
+			statusinfo['currservice_filename'] = '/' + '/'.join(serviceref_string.split("/")[1:])
 		full_desc = statusinfo['currservice_name'] + '\n'
 		full_desc += statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end']  + '\n\n'
 		full_desc += event.getExtendedDescription().replace('\xc2\x86', '').replace('\xc2\x87', '').replace('\xc2\x8a', '\n')
@@ -744,11 +746,11 @@ def getStatusInfo(self):
 		statusinfo['currservice_description'] = ""
 		statusinfo['currservice_fulldescription'] = "N/A"
 		if serviceref:
-			statusinfo['currservice_serviceref'] = serviceref.toString()
+			statusinfo['currservice_serviceref'] = serviceref_string
 			if serviceHandlerInfo:
 				statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
-			elif serviceref.toString().find("http") != -1:
-				statusinfo['currservice_station'] = serviceref.toString().replace('%3a', ':')[serviceref.toString().find("http"):]
+			elif serviceref_string.find("http") != -1:
+				statusinfo['currservice_station'] = serviceref_string.replace('%3a', ':')[serviceref_string.find("http"):]
 			else:
 				statusinfo['currservice_station'] = "N/A"
 
