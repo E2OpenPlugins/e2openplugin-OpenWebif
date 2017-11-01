@@ -759,7 +759,7 @@ def getStatusInfo(self):
 
 	# Get Standby State
 	from Screens.Standby import inStandby
-	if inStandby == None:
+	if inStandby is None:
 		statusinfo['inStandby'] = "false"
 	else:
 		statusinfo['inStandby'] = "true"
