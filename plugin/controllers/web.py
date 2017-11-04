@@ -1231,6 +1231,6 @@ class WebController(BaseController):
 		if "section" in request.args.keys():
 			return getConfigs(request.args["section"][0])
 		else:
-			return getConfigsSections()['sections']
+			return getConfigsSections()
 		return {}
 
