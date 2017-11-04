@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Enigma2 API",
-    "version": "1.2.7x",
+    "version": "1.2.8x",
     "title": "Enigma2 RESTful API",
     "license": {
       "name": "GPL Version 2.0",

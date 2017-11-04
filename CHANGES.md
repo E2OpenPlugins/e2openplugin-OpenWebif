@@ -1,5 +1,10 @@
-## Version 1.2.7
+## Version 1.2.8
 ## (in development)
+* new file api
+* new restfull api incl. swagger
+* new config api
+
+## Version 1.2.7
 * improve file api
 * use sass for css
 * improve css files
