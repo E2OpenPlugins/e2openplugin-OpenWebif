@@ -6,7 +6,8 @@ B=${D}/ipkg.build.$$
 
 pushd ${D} &> /dev/null
 VER=$(head -n 1 CHANGES.md | grep -i '## Version' | sed 's/^## Version \([[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+\)/\1/')
-GITVER=e2openpluginsgit$(git log -1 --format="%ci" | awk -F" " '{ print $1 }' | tr -d "-")
+# '%cd': committer date (format respects --date= option); '%t': abbreviated tree hash
+GITVER=e2openpluginsgit$(git log -1 --format="%cd" --date="format:%Y%m%d")
 PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_sh4.ipk
 popd &> /dev/null
 
