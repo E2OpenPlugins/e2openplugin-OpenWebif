@@ -1,7 +1,7 @@
 ## Version 1.2.8
 ## (in development)
 * new file api
-* new restfull api incl. swagger
+* new RESTful API with OpenAPI specification
 * new config api
 
 ## Version 1.2.7
