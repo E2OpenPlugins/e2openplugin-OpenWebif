@@ -26,6 +26,12 @@ from ajax import AjaxController
 from rest import json_response, CORS_ALLOWED_METHODS_DEFAULT, CORS_DEFAULT
 from rest import CORS_DEFAULT_ALLOW_ORIGIN
 
+try:
+	from rest_configuration_api import ConfigurationApiController
+except Exception as exc:
+	print("Cannot import rest_configuration_api/ConfigurationApiController")
+	print exc
+
 SWAGGER_TEMPLATE = os.path.join(
 	os.path.dirname(__file__), 'swagger.json')
 
@@ -33,9 +39,15 @@ OWIF_PREFIX = 'P_'
 
 
 class ApiController(resource.Resource):
-	isLeaf = True
+	isLeaf = False
 
 	def __init__(self, session, path="", *args, **kwargs):
+		resource.Resource.__init__(self)
+		self.putChild("", self)
+		try:
+			self.putChild("configuration", ConfigurationApiController())
+		except NameError:
+			pass
 		#: web controller instance
 		self.web_instance = WebController(session, path)
 		#: ajax controller instance
@@ -49,6 +61,11 @@ class ApiController(resource.Resource):
 			if hasattr(self, method_name):
 				http_verbs.append(verb)
 		self._cors_header['Access-Control-Allow-Methods'] = ','.join(http_verbs)
+
+	def getChild(self, path, request):
+		if path in self.children:
+			return self.children[path]
+		return self
 
 	def render_OPTIONS(self, request):
 		"""
@@ -151,3 +168,15 @@ class ApiController(resource.Resource):
 			}
 
 			return json_response(request, data)
+
+
+if __name__ == '__main__':
+	from twisted.web.server import Site
+	from twisted.internet import reactor
+
+	root = ApiController(session=None)
+	#root.putChild("configuration", RESTControllerSkeleton())
+	factory_r = Site(root)
+
+	reactor.listenTCP(19999, factory_r)
+	reactor.run()
