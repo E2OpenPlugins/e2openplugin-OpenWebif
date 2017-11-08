@@ -1117,7 +1117,7 @@ function initTimerEditBegin()
 function json_dammit(value) {
 	var result = null;
 	try {
-		$.parseJSON(value);
+		result = $.parseJSON(value);
 	}
 	catch(e) {
 		result = value;
