@@ -426,7 +426,7 @@ def getAllInfo():
 		remote = "vu_duo2"
 	elif procmodel == "ultimo":
 		remote = "vu_ultimo"
-	elif procmodel == "vuuno4kse":
+	elif procmodel == "uno4kse":
 		remote = "vuuno4kse"
 	elif procmodel == "e3hd":
 		remote = "e3hd"
