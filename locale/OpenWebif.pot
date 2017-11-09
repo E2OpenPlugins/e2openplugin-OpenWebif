@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2017-10-22 12:00+0300\n"
+"POT-Creation-Date: 2017-11-09 08:54+0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: plnick\n"
 "Language-Team: \n"
@@ -2187,4 +2187,7 @@ msgid "OpenWebif Configuration"
 msgstr ""
 
 msgid "Primetimes"
+msgstr ""
+
+msgid "Enable/Disable Screenshot on key press or"
 msgstr ""
