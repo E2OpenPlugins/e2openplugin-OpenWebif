@@ -436,4 +436,5 @@ tstrings = {'mo': _("Mo"),
 	'networkshares': _("Network Shares"),
 	'using': _("using"),
 	'prime_times': _("Primetimes"),
+	'titscreenshot': _("Enable/Disable Screenshot on key press or"),
 	}
