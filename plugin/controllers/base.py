@@ -125,7 +125,10 @@ class BaseController(resource.Resource):
 
 		self.suppresslog = False
 		self.path = self.path.replace(".", "")
-		func = getattr(self, "P_" + self.path, None)
+		if request.path.startswith('/api/config'):
+			func = getattr(self, "P_config", None)
+		else:
+			func = getattr(self, "P_" + self.path, None)
 		if callable(func):
 			request.setResponseCode(http.OK)
 

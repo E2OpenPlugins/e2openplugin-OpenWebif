@@ -1228,10 +1228,15 @@ class WebController(BaseController):
 		return {}
 	
 	def P_config(self, request):
-		if "section" in request.args.keys():
-			return getConfigs(request.args["section"][0])
-		else:
+		if request.path == '/api/config':
 			return getConfigsSections()
+		else:
+			try:
+				sect = request.path.split('/')
+				if len(sect) == 4:
+					return getConfigs(sect[3])
+			except Exception, e:
+				pass
 		return {}
 
 class ApiController(WebController):
