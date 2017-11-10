@@ -25,12 +25,14 @@ from web import WebController
 from ajax import AjaxController
 from rest import json_response, CORS_ALLOWED_METHODS_DEFAULT, CORS_DEFAULT
 from rest import CORS_DEFAULT_ALLOW_ORIGIN
+from rest_saveconfig_api import SaveConfigApiController
 
 try:
 	from rest_configuration_api import ConfigurationApiController
 except Exception as exc:
 	print("Cannot import rest_configuration_api/ConfigurationApiController")
 	print exc
+
 
 SWAGGER_TEMPLATE = os.path.join(
 	os.path.dirname(__file__), 'swagger.json')
@@ -44,6 +46,8 @@ class ApiController(resource.Resource):
 	def __init__(self, session, path="", *args, **kwargs):
 		resource.Resource.__init__(self)
 		self.putChild("", self)
+		self.putChild("saveconfig", SaveConfigApiController(
+			session=session, path=path))
 		try:
 			self.putChild("configuration", ConfigurationApiController())
 		except NameError:
