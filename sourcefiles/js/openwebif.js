@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.15
+//* Version 1.2.16
 //******************************************************************************
 //* Copyright (C) 2011-2017 E2OpenPlugins
 //*
@@ -28,7 +28,7 @@
 //* V 1.2.11 - improve visual feedback for adding timer in multiepg
 //* V 1.2.12 - improve timer edit
 //* V 1.2.13 - fix repeating timer edit #631
-//* V 1.2.14,15 - fix json parse
+//* V 1.2.14,15,16 - fix json parse
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -1115,17 +1115,6 @@ function initTimerEditBegin()
 	});
 }
 
-function json_dammit(value) {
-	var result = null;
-	try {
-		result = $.parseJSON(value);
-	}
-	catch(e) {
-		result = value;
-	}
-	return result;
-}
-
 function editTimer(serviceref, begin, end) {
 	serviceref=decodeURI(serviceref);
 	current_serviceref = serviceref;
@@ -2049,7 +2038,7 @@ function GetAllServices(callback,radio)
 		dataType: "json",
 		success: function ( data ) {
 			var sdata = JSON.stringify(data)
-			SetLSValue(v,data);
+			SetLSValue(v,sdata);
 			SetLSValue(vd,date);
 			var bqs = data['services'];
 			FillAllServices(bqs,callback);
