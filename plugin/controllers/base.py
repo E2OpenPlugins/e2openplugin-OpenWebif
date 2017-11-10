@@ -148,6 +148,8 @@ class BaseController(resource.Resource):
 #				if not self.suppresslog:
 #					print "[OpenWebif] page '%s' ok (json)" % request.uri
 				supported=[]
+				# FIXME : now we can set this cause of complete remove of parseJSON
+				# BUT we need to test this first
 				#request.setHeader("content-type", "application/json")
 				if self.isGZ:
 					acceptHeaders = request.requestHeaders.getRawHeaders('Accept-Encoding', [])
