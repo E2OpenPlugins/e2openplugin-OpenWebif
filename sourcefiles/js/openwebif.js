@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.12
+//* Version 1.2.15
 //******************************************************************************
 //* Copyright (C) 2011-2017 E2OpenPlugins
 //*
@@ -28,6 +28,7 @@
 //* V 1.2.11 - improve visual feedback for adding timer in multiepg
 //* V 1.2.12 - improve timer edit
 //* V 1.2.13 - fix repeating timer edit #631
+//* V 1.2.14,15 - fix json parse
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -504,8 +505,8 @@ function webapi_execute_result(url, callback) {
 		async: false,
 		url: url,
 		cache : false,
-		success: function(data) {
-			result = json_dammit(data);
+		dataType: "json",
+		success: function(result) {
 			if (typeof callback !== 'undefined') {
 				if(result)
 					callback(result.result,result.message,result.conflicts);
@@ -676,8 +677,8 @@ function webapi_execute_movie(url,callback)
 		async: false,
 		url: url,
 		cache : false,
-		success: function(data) {
-			result = json_dammit(data);
+		dataType: "json",
+		success: function(result) {
 			if(result) {
 				if (!result.result)
 					alert(result.message);
@@ -1053,8 +1054,8 @@ function loadLocations()
 	_locations = [];
 	$.ajax({
 		url: "/api/getlocations",
-		success: function(data) {
-			var loc = json_dammit(data);
+		dataType: "json",
+		success: function(loc) {
 			if (loc.result)
 				_locations = loc.locations;
 		}
@@ -1066,8 +1067,8 @@ function loadTags()
 	_tags = [];
 	$.ajax({
 		url: "/api/gettags",
-		success: function(data) {
-			var tag = json_dammit(data);
+		dataType: "json",
+		success: function(tag) {
 			if (tag.result)
 				_tags = tag.tags;
 		}
@@ -1148,8 +1149,8 @@ function editTimer(serviceref, begin, end) {
 
 	$.ajax({
 		url: "/api/timerlist",
-		success: function(data) {
-			timers = json_dammit(data);
+		dataType: "json",
+		success: function(timers) {
 			if (timers.result) {
 				for (var id in timers.timers) {
 					timer = timers.timers[id];
@@ -2037,7 +2038,7 @@ function GetAllServices(callback,radio)
 	if(cache === date) {
 		cache = GetLSValue(v,null)
 		if(cache != null) {
-			var js = json_dammit(cache);
+			var js = JSON.parse(cache);
 			var bqs = js['services'];
 			FillAllServices(bqs,callback);
 			return;
@@ -2045,11 +2046,12 @@ function GetAllServices(callback,radio)
 	}
 	$.ajax({
 		url: '/api/getallservices?renameserviceforxmbc=1'+ru,
+		dataType: "json",
 		success: function ( data ) {
+			var sdata = JSON.stringify(data)
 			SetLSValue(v,data);
 			SetLSValue(vd,date);
-			var js = json_dammit(data);
-			var bqs = js['services'];
+			var bqs = data['services'];
 			FillAllServices(bqs,callback);
 		}
 	});
