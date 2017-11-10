@@ -17,7 +17,7 @@ from twisted.web.server import GzipEncoderFactory
 from models.info import getPublicPath, getPiconPath
 from models.grab import grabScreenshot
 from base import BaseController
-from web import WebController
+from web import WebController, ApiController
 from ajax import AjaxController
 from mobile import MobileController
 from ipkg import IpkgController
@@ -41,7 +41,8 @@ class RootController(BaseController):
 		api_controller_instance = EncodingResourceWrapper(
 			rest_api_controller.ApiController(session, resource_prefix='/api'),
 			[GzipEncoderFactory()])
-		self.putChild("api", api_controller_instance)
+		self.putChild("apiv2", api_controller_instance)
+		self.putChild("api", ApiController(session))
 		self.putChild("ajax", AjaxController(session))
 
 		encoder_factory = rest_fs_access.GzipEncodeByFileExtensionFactory(
