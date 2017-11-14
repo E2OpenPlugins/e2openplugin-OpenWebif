@@ -1,6 +1,6 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 2.5
+//* Version 2.6
 //******************************************************************************
 //* Copyright (C) 2014-2017 Joerg Bleyel
 //* Copyright (C) 2014-2017 E2OpenPlugins
@@ -21,6 +21,7 @@
 //* V 2.3 - fix afterevent
 //* V 2.4 - fix simulate
 //* V 2.5 - add test api / fix counter
+//* V 2.6 - add rec+zap timer support
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -438,9 +439,20 @@ function AutoTimerObj (xml) {
 	if(xml.attr("searchCase"))
 		this.searchCase=xml.attr("searchCase");
 
+	// justplay 0 = record
+	// justplay 1 = zap
+	// justplay 2 = reord+zap
+	
 	this.justplay = "0";
 	if(xml.attr("justplay"))
 		this.justplay=xml.attr("justplay");
+
+	if(xml.attr("always_zap"))
+	{
+		var az = xml.attr("always_zap");
+		if(az == "1")
+			this.justplay = "2";
+	}
 
 	this.overrideAlternatives = (xml.attr("overrideAlternatives") == "1");
 
@@ -865,7 +877,12 @@ function saveAT()
 		reqs += "&name=" + encodeURIComponent(CurrentAT.name);
 		reqs += "&enabled=";
 		reqs += (CurrentAT.enabled) ? "1" : "0";
-		reqs += "&justplay=" + CurrentAT.justplay;
+		if(CurrentAT.justplay=="2")
+		{
+			reqs += "&justplay=0&always_zap=1";
+		}
+		else
+			reqs += "&justplay=" + CurrentAT.justplay;
 		reqs += "&setEndtime=";
 		reqs += (CurrentAT.setEndtime) ? "1" : "0";
 		reqs += "&searchCase=" + CurrentAT.searchCase;
