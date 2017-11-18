@@ -3,6 +3,7 @@
 * new file api
 * new RESTful API with OpenAPI specification
 * new config api
+* allow timers for IPTV / #715
 
 ## Version 1.2.7
 * improve file api

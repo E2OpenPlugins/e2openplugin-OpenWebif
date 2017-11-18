@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.16
+//* Version 1.2.17
 //******************************************************************************
 //* Copyright (C) 2011-2017 E2OpenPlugins
 //*
@@ -29,6 +29,7 @@
 //* V 1.2.12 - improve timer edit
 //* V 1.2.13 - fix repeating timer edit #631
 //* V 1.2.14,15,16 - fix json parse
+//* V 1.2.17 - allow timers for IPTV #715
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -1257,7 +1258,7 @@ function editTimer(serviceref, begin, end) {
 	
 }
 
-function addTimer(evt,chsref,chname,top) {
+function addTimer(evt,chsref,chname,top,isradio) {
 	current_serviceref = '';
 	current_begin = -1;
 	current_end = -1;
@@ -1285,6 +1286,9 @@ function addTimer(evt,chsref,chname,top) {
 	var lch=$('#bouquet_select > optgroup').length;
 
 	var radio = false;
+	if (typeof isradio !== 'undefined')
+		radio = true;
+	
 	if (typeof chsref !== 'undefined') {
 		radio = ( chsref.substring(0,6) == '1:0:2:');
 	}
@@ -1988,6 +1992,8 @@ function FillAllServices(bqs,callback)
 			if (!isInArray(refs,ref)) {
 				refs.push(ref);
 				if(ref.substring(0, 4) == "1:0:")
+					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
+				if(ref.substring(0, 5) == "4097:")
 					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
 				if(ref.substring(0, 7) == "1:134:1")
 					items.push( "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>" );
