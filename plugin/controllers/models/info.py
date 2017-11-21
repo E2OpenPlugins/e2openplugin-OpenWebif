@@ -531,7 +531,7 @@ def getInfo(session = None, need_fullinfo = False):
 	info['transcoding'] = False
 	#: models transcoding feature
 	TC_MODELS = (
-		"Uno4K", "Ultimo4K", "Solo4K", "Solo²", "Duo²", "Solo SE",
+		"Uno4K", "Uno4K SE", "Ultimo4K", "Solo4K", "Solo²", "Duo²", "Solo SE",
 		"Quad", "Quad Plus"
 	)
 
