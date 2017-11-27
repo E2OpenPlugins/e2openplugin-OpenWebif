@@ -311,6 +311,12 @@ def getAllInfo():
 		elif procmodel == "spycat4kmini":
 			brand = "Spycat"
 			model = "spycat 4K Mini"
+		elif procmodel == "vipercombo":
+			brand = "Amiko"
+			model = "ViperCombo"
+		elif procmodel == "vipert2c":
+			brand = "Amiko"
+			model = "ViperT2C"
 		elif procmodel == "wetekplay":
 			brand = "WeTeK"
 			model = "Play"
@@ -335,9 +341,6 @@ def getAllInfo():
 		elif procmodel == "h5":
 			brand = "Zgemma"
 			model = "H5 series"
-		elif procmodel == "h6":
-			brand = "Zgemma"
-			model = "H6 series"
 		elif procmodel == "h7":
 			brand = "Zgemma"
 			model = "H7 series"
@@ -515,10 +518,12 @@ def getAllInfo():
 		remote = procmodel
 	elif procmodel in ("sh1", "lc"):
 		remote = "sh1"
-	elif procmodel in ("h3", "h4", "h5", "h6", "h7"):
+	elif procmodel in ("h3", "h4", "h5", "h7"):
 		remote = "h3"
 	elif procmodel == "i55":
 		remote = "i55"
+	elif procmodel in ("vipercombo", "vipert2c"):
+		remote = "amiko"
 	elif procmodel == "sf4008":
 		remote = "octagon"
 	elif procmodel in ("vs1100", "vs1500"):
