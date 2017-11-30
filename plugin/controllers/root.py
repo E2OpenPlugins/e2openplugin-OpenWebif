@@ -11,8 +11,6 @@
 import os
 
 from twisted.web import static, http, proxy
-from twisted.web.resource import EncodingResourceWrapper
-from twisted.web.server import GzipEncoderFactory
 
 from models.info import getPublicPath, getPiconPath
 from models.grab import grabScreenshot
@@ -28,8 +26,6 @@ from BQE import BQEController
 from transcoding import TranscodingController
 from wol import WOLSetupController, WOLClientController
 from file import FileController
-import rest_fs_access
-import rest_api_controller
 
 
 class RootController(BaseController):
@@ -38,29 +34,8 @@ class RootController(BaseController):
 		piconpath = getPiconPath()
 
 		self.putChild("web", WebController(session))
-		api_controller_instance = EncodingResourceWrapper(
-			rest_api_controller.ApiController(session, resource_prefix='/api'),
-			[GzipEncoderFactory()])
-		self.putChild("apiv2", api_controller_instance)
 		self.putChild("api", ApiController(session))
 		self.putChild("ajax", AjaxController(session))
-
-		encoder_factory = rest_fs_access.GzipEncodeByFileExtensionFactory(
-			extensions=[
-				'txt', 'json', 'html', 'xml', 'js', 'conf', 'cfg',
-				'eit', 'sc', 'ap'
-			])
-
-		#: gzip compression enabled file controller
-		wrapped_fs_controller = EncodingResourceWrapper(
-			rest_fs_access.RESTFilesystemController(
-				root='/',
-				resource_prefix="/fs",
-				session=session),
-			[encoder_factory]
-		)
-		self.putChild("fs", wrapped_fs_controller)
-
 		self.putChild("file", FileController())
 		self.putChild("grab", grabScreenshot(session))
 		if os.path.exists(getPublicPath('mobile')):
