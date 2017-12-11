@@ -223,8 +223,8 @@ $('#editTimerForm').dialog({
 						async: false,
 						url: "/api/timeradd?",
 						data: urldata,
-						success: function(data) {
-							result = json_dammit(data);
+						dataType: "json",
+						success: function(result) {
 							if (result.result) {
 								canclose = true;
 							}
@@ -252,8 +252,8 @@ $('#editTimerForm').dialog({
 						async: false,
 						url: "api/timerchange?",
 						data: urldata,
-						success: function(data) {
-							result = json_dammit(data);
+						dataType: "json",
+						success: function(result) {
 							if (result.result) {
 								canclose = true;
 							}

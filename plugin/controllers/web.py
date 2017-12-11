@@ -1228,9 +1228,62 @@ class WebController(BaseController):
 		return {}
 	
 	def P_config(self, request):
-		if "section" in request.args.keys():
-			return getConfigs(request.args["section"][0])
+		
+		def RepresentsInt(s):
+			try: 
+				int(s)
+				return True
+			except ValueError:
+				return False
+		
+		setcs = getConfigsSections()
+		if request.path == '/api/config':
+			return setcs
 		else:
-			return getConfigsSections()
+			try:
+				sect = request.path.split('/')
+				if len(sect) == 4:
+					cfgs = getConfigs(sect[3])
+					resultcfgs = []
+					for cfg in cfgs['configs']:
+						min = -1
+						kv=[]
+						data = cfg['data']
+						if data.has_key('choices'):
+							for ch in data['choices']:
+								if type(ch).__name__ == 'tuple' and len(ch)==2 and ch[0] == ch[1]:
+									if RepresentsInt(ch[0]):
+										kv.append(int(ch[0]))
+									else:
+										kv=[]
+										break
+								else:
+									kv=[]
+									break
+						
+						if len(kv) > 1:
+							if kv[1] == (kv[0]+1):
+								min = kv[0]
+								max = kv[len(kv)-1]
+
+						if min > -1:
+							data['min'] = min
+							data['max'] = max
+							del data['choices']
+							cfg['data'] = data
+							resultcfgs.append(cfg)
+						else:
+							resultcfgs.append(cfg)
+					return { 'configs' : resultcfgs }
+			except Exception, e:
+				#TODO show exception
+				pass
 		return {}
+
+class ApiController(WebController):
+	def __init__(self, session, path = ""):
+		WebController.__init__(self, session, path)
+
+	def prePageLoad(self, request):
+		self.isJson = True
 

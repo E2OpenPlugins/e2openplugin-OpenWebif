@@ -6,7 +6,7 @@
 		#if $channel.has_key('protection')
 			#if $channel.protection == "0"
 				#if $type == "radio"
-					<a href="#" onclick="addTimer('','$channel.ref','$channel.name')" title="$tstrings['add_timer']"><i class="fa fa-clock-o"></i></a>
+					<a href="#" onclick="addTimer('','$channel.ref','$channel.name','')" title="$tstrings['add_timer']"><i class="fa fa-clock-o"></i></a>
 				#end if
 				#if '4097:' in $channel.ref
 					#set $rname = ":" + $channel.name

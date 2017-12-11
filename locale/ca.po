@@ -1,268 +1,264 @@
-#, fuzzy
+# Administrador <hsa2000@gmail.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2017-11-09 08:54+0300\n"
-"PO-Revision-Date: \n"
-"Last-Translator: plnick\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2017-06-08 10:02+0200\n"
+"PO-Revision-Date: 2017-11-10 22:14+0100\n"
+"Last-Translator: JR <openspateam@gmail.com>\n"
+"Language-Team: OpenSPA\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-SearchPath-0: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.4\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: iso-8859-1\n"
+"X-Poedit-SearchPath-0: ../plugin\n"
 
 #: plugin/controllers/BouquetEditor.py:82
 msgid "one two three four unknown command"
-msgstr ""
+msgstr "un dos tres quatre ordre desconeguda"
 
-#: plugin/controllers/BouquetEditor.py:88
-#: plugin/controllers/BouquetEditor.py:149
+#: plugin/controllers/BouquetEditor.py:88 plugin/controllers/BouquetEditor.py:149
 #: plugin/controllers/BouquetEditor.py:194
 msgid "No bouquet name given!"
-msgstr ""
+msgstr "Cap nom de llista introduït!"
 
 #: plugin/controllers/BouquetEditor.py:118
 #, python-format
 msgid "Bouquet %s created."
-msgstr ""
+msgstr "Llista %s creada."
 
 #: plugin/controllers/BouquetEditor.py:120
 msgid "Get mutable list for new created bouquet failed!"
-msgstr ""
+msgstr "Obtenir llista mutable per a la nova llista ha fallat!"
 
 #: plugin/controllers/BouquetEditor.py:123
 #, python-format
 msgid "Bouquet %s already exists."
-msgstr ""
+msgstr "Llista %s ja existeix."
 
-#: plugin/controllers/BouquetEditor.py:125
-#: plugin/controllers/BouquetEditor.py:439
+#: plugin/controllers/BouquetEditor.py:125 plugin/controllers/BouquetEditor.py:439
 msgid "Bouquetlist is not editable!"
-msgstr ""
+msgstr "Llista de favorits no és editable!"
 
 #: plugin/controllers/BouquetEditor.py:127
 msgid "Multi-Bouquet is not enabled!"
-msgstr ""
+msgstr "Multi-llistes no està habilitat!"
 
 #: plugin/controllers/BouquetEditor.py:133
 msgid "No provider given!"
-msgstr ""
+msgstr "Cap proveïdor introduït!"
 
 #: plugin/controllers/BouquetEditor.py:180
 #, python-format
 msgid "Bouquet %s removed failed."
-msgstr ""
+msgstr "Ha fallat l'esborrat de la llista %s."
 
 #: plugin/controllers/BouquetEditor.py:182
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
 msgstr ""
+"Ha fallat l'esborrat de la llista %s, servicereference o llista mutable no són "
+"vàlids."
 
 #: plugin/controllers/BouquetEditor.py:186
 #, python-format
 msgid "Bouquet %s deleted."
-msgstr ""
+msgstr "Llista %s esborrada."
 
 #: plugin/controllers/BouquetEditor.py:188
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
-msgstr ""
+msgstr "Error: Llista %s no es pot esborrar, OSError."
 
-#: plugin/controllers/BouquetEditor.py:204
-#: plugin/controllers/BouquetEditor.py:261
+#: plugin/controllers/BouquetEditor.py:204 plugin/controllers/BouquetEditor.py:261
 msgid "No position given!"
-msgstr ""
+msgstr "Cap posició introduïda!"
 
 #: plugin/controllers/BouquetEditor.py:211
 #, python-format
 msgid "Bouquet %s moved."
-msgstr ""
+msgstr "Llista %s moguda."
 
 #: plugin/controllers/BouquetEditor.py:213
 #, python-format
 msgid "Bouquet %s can not be moved."
-msgstr ""
+msgstr "Llista %s no es pot moure."
 
-#: plugin/controllers/BouquetEditor.py:219
-#: plugin/controllers/BouquetEditor.py:249
-#: plugin/controllers/BouquetEditor.py:275
-#: plugin/controllers/BouquetEditor.py:309
+#: plugin/controllers/BouquetEditor.py:219 plugin/controllers/BouquetEditor.py:249
+#: plugin/controllers/BouquetEditor.py:275 plugin/controllers/BouquetEditor.py:309
 #: plugin/controllers/BouquetEditor.py:459
 msgid "No bouquet given!"
-msgstr ""
+msgstr "Cap llista introduida!"
 
-#: plugin/controllers/BouquetEditor.py:225
-#: plugin/controllers/BouquetEditor.py:255
-#: plugin/controllers/BouquetEditor.py:281
-#: plugin/controllers/BouquetEditor.py:343
-#: plugin/controllers/BouquetEditor.py:401
-#: plugin/controllers/BouquetEditor.py:465
+#: plugin/controllers/BouquetEditor.py:225 plugin/controllers/BouquetEditor.py:255
+#: plugin/controllers/BouquetEditor.py:281 plugin/controllers/BouquetEditor.py:343
+#: plugin/controllers/BouquetEditor.py:401 plugin/controllers/BouquetEditor.py:465
 #: plugin/controllers/BouquetEditor.py:502
 msgid "No service given!"
-msgstr ""
+msgstr "Cap servei introduït!"
 
 #: plugin/controllers/BouquetEditor.py:234
 #, python-format
 msgid "Service %s removed."
-msgstr ""
+msgstr "Servei %s esborrat."
 
 #: plugin/controllers/BouquetEditor.py:242
 #, python-format
 msgid "Service %s removed from bouquet %s."
-msgstr ""
+msgstr "Servei %s esborrat de la llista %s."
 
 #: plugin/controllers/BouquetEditor.py:243
 #, python-format
 msgid "Service %s can not be removed."
-msgstr ""
+msgstr "Servei %s no es pot esborrar."
 
 #: plugin/controllers/BouquetEditor.py:268
 #, python-format
 msgid "Service %s moved."
-msgstr ""
+msgstr "Servei %s mogut."
 
 #: plugin/controllers/BouquetEditor.py:269
 msgid "Service can not be moved."
-msgstr ""
+msgstr "Servei no es pot moure."
 
 #: plugin/controllers/BouquetEditor.py:299
 #, python-format
 msgid "Service %s added."
-msgstr ""
+msgstr "Servei %s afegit."
 
 #: plugin/controllers/BouquetEditor.py:302
 #, python-format
 msgid "Service %s already exists in bouquet %s."
-msgstr ""
+msgstr "Servei %s ja existeix a la llista %s."
 
 #: plugin/controllers/BouquetEditor.py:303
 msgid "This service can not be added."
-msgstr ""
+msgstr "Aquest servei no es pot afegir."
 
 #: plugin/controllers/BouquetEditor.py:316
 msgid "No marker-name given!"
-msgstr ""
+msgstr "Cap nom de marcador introduït!"
 
 #: plugin/controllers/BouquetEditor.py:333
 msgid "Marker added."
-msgstr ""
+msgstr "Marcador afegit."
 
 #: plugin/controllers/BouquetEditor.py:335
 msgid "Internal error!"
-msgstr ""
+msgstr "Error intern!"
 
 #: plugin/controllers/BouquetEditor.py:349
 msgid "No new servicename given!"
-msgstr ""
+msgstr "Cap nom de servei introduït!"
 
 #: plugin/controllers/BouquetEditor.py:373
 msgid "Bouquet renamed successfully."
-msgstr ""
+msgstr "Llista renombrada correctament."
 
 #: plugin/controllers/BouquetEditor.py:389
 msgid "Service renamed successfully."
-msgstr ""
+msgstr "Servei renombrat correctament."
 
 #: plugin/controllers/BouquetEditor.py:390
 msgid "Service can not be renamed."
-msgstr ""
+msgstr "Servei no es pot renombrar."
 
 #: plugin/controllers/BouquetEditor.py:404
 msgid "No current service given!"
-msgstr ""
+msgstr "Cap servei actual introduït!"
 
 #: plugin/controllers/BouquetEditor.py:435
 msgid "Get mutable list for new created alternative failed!"
-msgstr ""
+msgstr "Ha fallat l'obtenció de llista mutable per la nova alternativa creada!"
 
 #: plugin/controllers/BouquetEditor.py:437
 #, python-format
 msgid "Alternative %s created failed."
-msgstr ""
+msgstr "Crear alternativa %s ha fallat."
 
 #: plugin/controllers/BouquetEditor.py:451
 #, python-format
 msgid "Added %s to alternative service %s."
-msgstr ""
+msgstr "%s afegit al servei alternatiu %s."
 
 #: plugin/controllers/BouquetEditor.py:482
 msgid "Service is not an alternative."
-msgstr ""
+msgstr "Servei no és una alternativa."
 
 #: plugin/controllers/BouquetEditor.py:490
 msgid "All alternative services deleted."
-msgstr ""
+msgstr "Tots els serveis alternatius esborrats."
 
 #: plugin/controllers/BouquetEditor.py:496
 msgid "Parent Control is not activated."
-msgstr ""
+msgstr "Control parental no està activat."
 
 #: plugin/controllers/BouquetEditor.py:509
 msgid "No Parent Control Setup Pin given!"
-msgstr ""
+msgstr "Cap PIN per a configuració control parental introduït!"
 
-#: plugin/controllers/BouquetEditor.py:513
-#: plugin/controllers/BouquetEditor.py:515
+#: plugin/controllers/BouquetEditor.py:513 plugin/controllers/BouquetEditor.py:515
 msgid "Parent Control Setup Pin is wrong!"
-msgstr ""
+msgstr "PIN configuració control parental erroni!"
 
 #: plugin/controllers/BouquetEditor.py:530
 #, python-format
 msgid "Service %s is locked."
-msgstr ""
+msgstr "Servei %s bloquejat."
 
 #: plugin/controllers/BouquetEditor.py:532
 #, python-format
 msgid "Bouquet %s is locked."
-msgstr ""
+msgstr "Llista %s bloquejada."
 
 #: plugin/controllers/BouquetEditor.py:534
 #, python-format
 msgid "%s %s is locked."
-msgstr ""
+msgstr "%s %s està bloquejat."
 
 #: plugin/controllers/BouquetEditor.py:538
 #, python-format
 msgid "Service %s is unlocked."
-msgstr ""
+msgstr "Servei %s desbloquejat."
 
 #: plugin/controllers/BouquetEditor.py:540
 #, python-format
 msgid "Bouquet %s is unlocked."
-msgstr ""
+msgstr "Llista %s desbloquejada."
 
 #: plugin/controllers/BouquetEditor.py:577
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
-msgstr ""
+msgstr "Error durant la preparació del backup, %s no existeix."
 
 #: plugin/controllers/BouquetEditor.py:583
 msgid "Error while preparing backup file."
-msgstr ""
+msgstr "Error durant la preparació del backup."
 
 #: plugin/controllers/BouquetEditor.py:634
 msgid "Bouquet-settings were restored successfully"
-msgstr ""
+msgstr "Configuració de llistes s'ha restaurat amb èxit"
 
 #: plugin/controllers/BouquetEditor.py:636
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
-msgstr ""
+msgstr "Error, %s no ha sigut creat amb WebBouquetEditor..."
 
 #: plugin/controllers/BouquetEditor.py:638
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
-msgstr ""
+msgstr "Error, %s no existeix, la restauració no és possible..."
 
 #: plugin/controllers/base.py:256 plugin/local.py:183 plugin/local.py:323
 msgid "Settings"
-msgstr ""
+msgstr "Configuració"
 
 #: plugin/controllers/base.py:272
 msgid "LCD4Linux Setup"
-msgstr ""
+msgstr "Configurar LCD4Linux"
 
 #: plugin/controllers/base.py:287
 msgid "OSCam Webinterface"
@@ -270,11 +266,11 @@ msgstr ""
 
 #: plugin/controllers/base.py:291
 msgid "AutoTimer"
-msgstr ""
+msgstr "AutoProgramació"
 
 #: plugin/controllers/base.py:296
 msgid "BouquetEditor"
-msgstr ""
+msgstr "Editor de llistes"
 
 #: plugin/controllers/base.py:300
 msgid "EPGRefresh"
@@ -286,15 +282,15 @@ msgstr ""
 
 #: plugin/controllers/ipkg.py:239
 msgid "Error upload File"
-msgstr ""
+msgstr "Error pujant arxiu"
 
 #: plugin/controllers/ipkg.py:242
 msgid "wrong filetype"
-msgstr ""
+msgstr "Tipus d'arxiu erroni"
 
 #: plugin/controllers/ipkg.py:256
 msgid "Error writing File"
-msgstr ""
+msgstr "Error escritura arxiu"
 
 #: plugin/controllers/models/info.py:57
 msgid "SLAAC"
@@ -303,32 +299,32 @@ msgstr ""
 #: plugin/controllers/models/info.py:64 plugin/controllers/models/info.py:75
 #: plugin/controllers/models/info.py:82
 msgid "static"
-msgstr ""
+msgstr "estàtic"
 
 #: plugin/controllers/models/info.py:66 plugin/controllers/models/info.py:84
 #: plugin/local.py:81
 msgid "DHCP"
-msgstr ""
+msgstr "DHCP"
 
 #: plugin/controllers/models/info.py:68 plugin/controllers/models/info.py:86
 msgid "manual/disabled"
-msgstr ""
+msgstr "manual/deshabilitat"
 
 #: plugin/controllers/models/info.py:94 plugin/controllers/models/info.py:101
 msgid "unknown"
-msgstr ""
+msgstr "desconegut"
 
 #: plugin/controllers/models/info.py:135 plugin/local.py:117
 msgid "IPv4-only kernel"
-msgstr ""
+msgstr "IPv4-només kernel"
 
 #: plugin/controllers/models/info.py:139 plugin/local.py:119
 msgid "IPv4-only Python/Twisted"
-msgstr ""
+msgstr "IPv4-només Python/Twisted"
 
 #: plugin/controllers/models/info.py:168 plugin/local.py:118
 msgid "none/IPv4-only network"
-msgstr ""
+msgstr "no/IPv4-només xarxa"
 
 #: plugin/controllers/models/info.py:286 plugin/controllers/models/info.py:289
 #: plugin/controllers/models/movies.py:250
@@ -338,19 +334,18 @@ msgstr ""
 #: plugin/controllers/models/info.py:290 plugin/controllers/models/info.py:413
 #, python-format
 msgid "%s free / %s total"
-msgstr ""
+msgstr "%s lliure / %s total"
 
 #: plugin/controllers/models/info.py:325 plugin/local.py:65
 msgid "Chipset"
-msgstr ""
+msgstr "Chipset"
 
 #: plugin/controllers/models/info.py:330 plugin/local.py:106
 msgid "Frontprocessor Version"
-msgstr ""
+msgstr "Versió Frontprocessor"
 
 #: plugin/controllers/models/info.py:376 plugin/controllers/models/info.py:387
-#: plugin/controllers/models/info.py:405
-#: plugin/controllers/models/movies.py:248
+#: plugin/controllers/models/info.py:405 plugin/controllers/models/movies.py:248
 msgid "MB"
 msgstr ""
 
@@ -375,131 +370,130 @@ msgstr ""
 
 #: plugin/controllers/models/message.py:33
 msgid "Message sent successfully!"
-msgstr ""
+msgstr "¡Missatge enviat correctament!"
 
 #: plugin/controllers/models/message.py:43
 msgid "No answer in time"
-msgstr ""
+msgstr "Sense resposta a temps"
 
 #: plugin/controllers/models/message.py:48
 msgid "Answer is YES!"
-msgstr ""
+msgstr "¡La resposta és SI!"
 
 #: plugin/controllers/models/message.py:48
 msgid "Answer is NO!"
-msgstr ""
+msgstr "¡La resposta és NO!"
 
 #: plugin/controllers/models/services.py:260
 msgid "New"
-msgstr ""
+msgstr "Nou"
 
 #: plugin/controllers/models/services.py:262
 msgid "Services"
-msgstr ""
+msgstr "Serveis"
 
 #: plugin/controllers/models/services.py:267
 msgid "Cable"
-msgstr ""
+msgstr "Cable"
 
 #: plugin/controllers/models/services.py:269
 msgid "Terrestrial"
-msgstr ""
+msgstr "Terrestre"
 
 #: plugin/controllers/models/services.py:273
 msgid "W"
-msgstr ""
+msgstr "W"
 
 #: plugin/controllers/models/services.py:275
 msgid "E"
-msgstr ""
+msgstr "E"
 
 #: plugin/controllers/models/timers.py:178
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
-msgstr ""
+msgstr "Temporitzador(s) conflictiu(s) detectat(s)! %s"
 
 #: plugin/controllers/models/timers.py:195
 #, python-format
 msgid "Could not add timer '%s'!"
-msgstr ""
+msgstr "No es pot afegir el temporitzador '%s'!"
 
 #: plugin/controllers/models/timers.py:200
 #, python-format
 msgid "Timer '%s' added"
-msgstr ""
+msgstr "Temporitzador '%s' afegit"
 
 #: plugin/controllers/models/timers.py:208
 msgid "EventId not found"
-msgstr ""
+msgstr "ID de programa no trobat"
 
 #: plugin/controllers/models/timers.py:279
 #, python-format
 msgid "Timer '%s' changed"
-msgstr ""
+msgstr "Temporitzador '%s' canviat"
 
 #: plugin/controllers/models/timers.py:298
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
-msgstr ""
+msgstr "El temporitzador '%s' no s'ha guardat per un conflicte"
 
 #: plugin/controllers/models/timers.py:304
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
-msgstr ""
+msgstr "No s'ha trobat el temporitzador '%s' amb aquests temps d'inici i fi."
 
 #: plugin/controllers/models/timers.py:316
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
-msgstr ""
+msgstr "El tmeporitzador '%s' s'ha eliminat satisfactòriament"
 
-#: plugin/controllers/models/timers.py:321
-#: plugin/controllers/models/timers.py:365
+#: plugin/controllers/models/timers.py:321 plugin/controllers/models/timers.py:365
 msgid "No matching Timer found"
-msgstr ""
+msgstr "No s'ha trobat coincidència als temporitzadors"
 
 #: plugin/controllers/models/timers.py:339
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
-msgstr ""
+msgstr "Temporitzador %s no habilitat durant el conflicte"
 
 #: plugin/controllers/models/timers.py:345
 #, python-format
 msgid "Timer '%s' already exists!"
-msgstr ""
+msgstr "Temporitzador '%s' ja existeix!"
 
 #: plugin/controllers/models/timers.py:351
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
-msgstr ""
+msgstr "Temporitzador '%s' s'ha gravat! No està deshabilitat!"
 
 #: plugin/controllers/models/timers.py:359
 #, python-format
 msgid "The timer '%s' has been %s successfully"
-msgstr ""
+msgstr "El temporitzador '%s' ha sigut %s satisfactòriament"
 
 #: plugin/controllers/models/timers.py:372
 msgid "List of Timers has been cleaned"
-msgstr ""
+msgstr "La llista de temporitzadors s'ha netejat"
 
 #: plugin/controllers/models/timers.py:379
 msgid "TimerList has been saved"
-msgstr ""
+msgstr "La llista de temporitzadors s'ha guardat"
 
 #: plugin/controllers/models/timers.py:394
 msgid "No event found! Not recording!"
-msgstr ""
+msgstr "No s'ha trobat programa! No s'està gravant!"
 
 #: plugin/controllers/models/timers.py:400
 msgid "Instant record for current Event started"
-msgstr ""
+msgstr "Gravació instantània iniciada per al programa actual"
 
 #: plugin/controllers/models/timers.py:409
 msgid "Infinite Instant recording started"
-msgstr ""
+msgstr "Gravació instantània infinita iniciada"
 
 #: plugin/controllers/models/timers.py:428
 msgid "Timer conflict detected! Not recording!"
-msgstr ""
+msgstr "Detectat conflicte entre temporitzadors. No s'està gravant."
 
 #: plugin/controllers/models/timers.py:502
 msgid "Missing requesteter: sRef"
@@ -508,48 +502,44 @@ msgstr ""
 #: plugin/controllers/models/timers.py:524
 #, python-format
 msgid "Unknown command: '%s'"
-msgstr ""
+msgstr "Ordre desconeguda: '%s'"
 
 #: plugin/controllers/models/timers.py:581
 msgid "PowerTimer feature not available"
-msgstr ""
+msgstr "La característica temporitzador d'alimentació no està disponible."
 
-#: plugin/controllers/models/timers.py:657
-#: plugin/controllers/models/timers.py:683
+#: plugin/controllers/models/timers.py:657 plugin/controllers/models/timers.py:683
 msgid "Sleeptimer is enabled"
-msgstr ""
+msgstr "Temporitzador d'apagat activat"
 
-#: plugin/controllers/models/timers.py:657
-#: plugin/controllers/models/timers.py:683
+#: plugin/controllers/models/timers.py:657 plugin/controllers/models/timers.py:683
 msgid "Sleeptimer is disabled"
-msgstr ""
+msgstr "Temporitzador d'apagat desactivat"
 
-#: plugin/controllers/models/timers.py:662
-#: plugin/controllers/models/timers.py:689
+#: plugin/controllers/models/timers.py:662 plugin/controllers/models/timers.py:689
 msgid "SleepTimer error"
-msgstr ""
+msgstr "Error temporitzador d'apagat"
 
 #: plugin/controllers/models/timers.py:701
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr ""
+"ERROR: No es pot configurar un temporitzador d'apagat si el dispositiu està en mode "
+"d'espera"
 
-#: plugin/controllers/models/timers.py:706
-#: plugin/controllers/models/timers.py:775
+#: plugin/controllers/models/timers.py:706 plugin/controllers/models/timers.py:775
 #: plugin/controllers/models/timers.py:793
 msgid "Sleeptimer has been disabled"
-msgstr ""
+msgstr "El temporitzador d'apagat s'ha desactivat"
 
-#: plugin/controllers/models/timers.py:712
-#: plugin/controllers/models/timers.py:775
+#: plugin/controllers/models/timers.py:712 plugin/controllers/models/timers.py:775
 #: plugin/controllers/models/timers.py:788
-#, python-format
+#, fuzzy, python-format
 msgid "Sleeptimer set to %d minutes"
-msgstr ""
+msgstr "Temporitzador d'apagat configurat a %d minuts"
 
-#: plugin/controllers/models/timers.py:717
-#: plugin/controllers/models/timers.py:798
+#: plugin/controllers/models/timers.py:717 plugin/controllers/models/timers.py:798
 msgid "SleepTimer Error"
-msgstr ""
+msgstr "Error temporitzador d'apagat"
 
 #: plugin/controllers/models/timers.py:826
 msgid "Error parsing vps.xml"
@@ -557,392 +547,392 @@ msgstr ""
 
 #: plugin/controllers/models/timers.py:831
 msgid "VPS plugin not found"
-msgstr ""
+msgstr "Plugin VPS no trobat"
 
 #: plugin/controllers/web.py:63
 #, python-format
 msgid "Missing mandatory parameter '%s'"
-msgstr ""
+msgstr "Falta paràmetre obligatori '%s'"
 
 #: plugin/controllers/web.py:69
 #, python-format
 msgid "The parameter '%s' can't be empty"
-msgstr ""
+msgstr "El paràmetre '%s' no pot estar buit"
 
 #: plugin/controllers/web.py:136
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr ""
+msgstr "Format de paràmetres incorrecte 'set=%s'. Utilitza set=set15"
 
 #: plugin/controllers/web.py:141
 #, python-format
 msgid "Unknown Volume command %s"
-msgstr ""
+msgstr "Ordre %s de Volum Desconeguda"
 
 #: plugin/controllers/web.py:176
 msgid "The parameter 'command' must be a number"
-msgstr ""
+msgstr "El paràmetre 'ordre' ha de ser un número"
 
 #: plugin/controllers/web.py:334
 #, python-format
 msgid "type %s is not a number"
-msgstr ""
+msgstr "El tipus %s no és un número"
 
 #: plugin/local.py:5
 msgid "Mo"
-msgstr ""
+msgstr "Dil"
 
 #: plugin/local.py:6
 msgid "Tu"
-msgstr ""
+msgstr "Dim"
 
 #: plugin/local.py:7
 msgid "We"
-msgstr ""
+msgstr "Dimx"
 
 #: plugin/local.py:8
 msgid "Th"
-msgstr ""
+msgstr "Dij"
 
 #: plugin/local.py:9
 msgid "Fr"
-msgstr ""
+msgstr "Div"
 
 #: plugin/local.py:10
 msgid "Sa"
-msgstr ""
+msgstr "Dis"
 
 #: plugin/local.py:11
 msgid "Su"
-msgstr ""
+msgstr "Diu"
 
 #: plugin/local.py:13
 msgid "Sun"
-msgstr ""
+msgstr "Diu"
 
 #: plugin/local.py:14
 msgid "Mon"
-msgstr ""
+msgstr "Dil"
 
 #: plugin/local.py:15
 msgid "Tue"
-msgstr ""
+msgstr "Dim"
 
 #: plugin/local.py:16
 msgid "Wed"
-msgstr ""
+msgstr "Dimx"
 
 #: plugin/local.py:17
 msgid "Thu"
-msgstr ""
+msgstr "Dij"
 
 #: plugin/local.py:18
 msgid "Fri"
-msgstr ""
+msgstr "Div"
 
 #: plugin/local.py:19
 msgid "Sat"
-msgstr ""
+msgstr "Dis"
 
 #: plugin/local.py:21
 msgid "Monday"
-msgstr ""
+msgstr "Dilluns"
 
 #: plugin/local.py:22
 msgid "Tuesday"
-msgstr ""
+msgstr "Dimarts"
 
 #: plugin/local.py:23
 msgid "Wednesday"
-msgstr ""
+msgstr "Dimecres"
 
 #: plugin/local.py:24
 msgid "Thursday"
-msgstr ""
+msgstr "Dijous"
 
 #: plugin/local.py:25
 msgid "Friday"
-msgstr ""
+msgstr "Divendres"
 
 #: plugin/local.py:26
 msgid "Saturday"
-msgstr ""
+msgstr "Dissabte"
 
 #: plugin/local.py:27
 msgid "Sunday"
-msgstr ""
+msgstr "Diumenge"
 
 #: plugin/local.py:29
 msgid "January"
-msgstr ""
+msgstr "Gener"
 
 #: plugin/local.py:30
 msgid "February"
-msgstr ""
+msgstr "Febrer"
 
 #: plugin/local.py:31
 msgid "March"
-msgstr ""
+msgstr "Març"
 
 #: plugin/local.py:32
 msgid "April"
-msgstr ""
+msgstr "Abril"
 
 #: plugin/local.py:33
 msgid "May"
-msgstr ""
+msgstr "Maig"
 
 #: plugin/local.py:34
 msgid "June"
-msgstr ""
+msgstr "Juny"
 
 #: plugin/local.py:35
 msgid "July"
-msgstr ""
+msgstr "Juliol"
 
 #: plugin/local.py:36
 msgid "August"
-msgstr ""
+msgstr "Agost"
 
 #: plugin/local.py:37
 msgid "September"
-msgstr ""
+msgstr "Setembre"
 
 #: plugin/local.py:38
 msgid "October"
-msgstr ""
+msgstr "Octubre"
 
 #: plugin/local.py:39
 msgid "November"
-msgstr ""
+msgstr "Novembre"
 
 #: plugin/local.py:40
 msgid "December"
-msgstr ""
+msgstr "Desembre"
 
 #: plugin/local.py:42
 msgid "About"
-msgstr ""
+msgstr "Sobre"
 
 #: plugin/local.py:43
 msgid "Add Timer"
-msgstr ""
+msgstr "Afegir Gravació"
 
 #: plugin/local.py:44
 msgid "Add AutoTimer"
-msgstr ""
+msgstr "Afegir AutoProgramació"
 
 #: plugin/local.py:45
 msgid "Add Zap Timer"
-msgstr ""
+msgstr "Afegir Temporitzador de zàping"
 
 #: plugin/local.py:46 plugin/local.py:355
 msgid "After Event"
-msgstr ""
+msgstr "Després del Programa"
 
 #: plugin/local.py:47
 msgid "AGC"
-msgstr ""
+msgstr "AGC"
 
 #: plugin/local.py:48 plugin/local.py:343
 msgid "All"
-msgstr ""
+msgstr "Tot"
 
 #: plugin/local.py:49
 msgid "All Channels"
-msgstr ""
+msgstr "Tots els Canals"
 
 #: plugin/local.py:50
 msgid "Authors"
-msgstr ""
+msgstr "Autor"
 
 #: plugin/local.py:51 plugin/local.py:342
 msgid "Auto"
-msgstr ""
+msgstr "Automàtic"
 
 #: plugin/local.py:52
 msgid "Back"
-msgstr ""
+msgstr "Enrera"
 
 #: plugin/local.py:53 plugin/local.py:350
 msgid "Begin"
-msgstr ""
+msgstr "Iniciar"
 
 #: plugin/local.py:54
 msgid "BER"
-msgstr ""
+msgstr "BER"
 
 #: plugin/local.py:55 plugin/local.py:305
 msgid "Bouquets"
-msgstr ""
+msgstr "Llistes"
 
 #: plugin/local.py:56
 msgid "Box Info"
-msgstr ""
+msgstr "Informació Deco"
 
 #: plugin/local.py:57
 msgid "Box"
-msgstr ""
+msgstr "Decodificador"
 
 #: plugin/local.py:58
 msgid "Box Control"
-msgstr ""
+msgstr "Control Deco"
 
 #: plugin/local.py:59
 msgid "Box Uptime"
-msgstr ""
+msgstr "Funcionament Decodificador"
 
 #: plugin/local.py:60
 msgid "Brand"
-msgstr ""
+msgstr "Marca"
 
 #: plugin/local.py:61 plugin/plugin.py:101
 msgid "Cancel"
-msgstr ""
+msgstr "Cancel·lar"
 
 #: plugin/local.py:62
 msgid "Capacity"
-msgstr ""
+msgstr "Capacitat"
 
 #: plugin/local.py:63
 msgid "Channel"
-msgstr ""
+msgstr "Canal"
 
 #: plugin/local.py:64 plugin/local.py:303
 msgid "Channels"
-msgstr ""
+msgstr "Canals"
 
 #: plugin/local.py:66
 msgid "Cleanup Timers"
-msgstr ""
+msgstr "Netejar Gravacions"
 
 #: plugin/local.py:67
 msgid "Close"
-msgstr ""
+msgstr "Tancar"
 
 #: plugin/local.py:68
 msgid "Contributors"
-msgstr ""
+msgstr "Col·laboradors"
 
 #: plugin/local.py:69
 msgid "Control"
-msgstr ""
+msgstr "Control"
 
 #: plugin/local.py:70
 msgid "Current"
-msgstr ""
+msgstr "Actual"
 
 #: plugin/local.py:71
 msgid "Current Event"
-msgstr ""
+msgstr "Programa Actual"
 
 #: plugin/local.py:72
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #: plugin/local.py:73
 msgid "Deep-Standby"
-msgstr ""
+msgstr "Repòs Profund"
 
 #: plugin/local.py:74
 msgid "Default"
-msgstr ""
+msgstr "Per Defecte"
 
 #: plugin/local.py:75 plugin/local.py:317
 msgid "Delete"
-msgstr ""
+msgstr "Esborrar"
 
 #: plugin/local.py:76
 msgid "Delete Recording"
-msgstr ""
+msgstr "Esborrar Pel·lícula"
 
 #: plugin/local.py:77
 msgid "Really delete the recording"
-msgstr ""
+msgstr "Vols esborrar la pel·lícula?"
 
 #: plugin/local.py:78
 msgid "Delete Timer"
-msgstr ""
+msgstr "Esborrar Gravació"
 
 #: plugin/local.py:79
 msgid "Really delete the timer"
-msgstr ""
+msgstr "Vols esborrar la gravació?"
 
 #: plugin/local.py:80 plugin/local.py:251
 msgid "Description"
-msgstr ""
+msgstr "Descripció"
 
 #: plugin/local.py:82
 msgid "Disable Timer"
-msgstr ""
+msgstr "Deshabilitar Gravació"
 
 #: plugin/local.py:83
 msgid "disabled"
-msgstr ""
+msgstr "deshabilitat"
 
 #: plugin/local.py:84
 msgid "Distro"
-msgstr ""
+msgstr "Distribució"
 
 #: plugin/local.py:85
 msgid "Dolby"
-msgstr ""
+msgstr "Dolby"
 
 #: plugin/local.py:86
 msgid "Done"
-msgstr ""
+msgstr "Realitzat"
 
 #: plugin/local.py:87
 msgid "Download"
-msgstr ""
+msgstr "Baixar"
 
 #: plugin/local.py:88
 msgid "Download Playlist for"
-msgstr ""
+msgstr "Baixar Llista de reproducció per a"
 
 #: plugin/local.py:89
 msgid "Drivers"
-msgstr ""
+msgstr "Data de driver"
 
 #: plugin/local.py:90
 msgid "Duration"
-msgstr ""
+msgstr "Duració"
 
 #: plugin/local.py:91
 msgid "Edit Timer"
-msgstr ""
+msgstr "Editar Gravació"
 
 #: plugin/local.py:92
 msgid "Enable Timer"
-msgstr ""
+msgstr "Habilitar Gravació"
 
 #: plugin/local.py:93
 msgid "Start"
-msgstr ""
+msgstr "Inici"
 
 #: plugin/local.py:94 plugin/local.py:351
 msgid "End"
-msgstr ""
+msgstr "Fi"
 
 #: plugin/local.py:95 plugin/local.py:250 plugin/local.py:348
 msgid "Enabled"
-msgstr ""
+msgstr "Habilitar"
 
 #: plugin/local.py:96
 msgid "Encrypted"
-msgstr ""
+msgstr "Encriptat"
 
 #: plugin/local.py:97
 msgid "EPG"
-msgstr ""
+msgstr "EPG"
 
 #: plugin/local.py:98
 msgid "Epg Search"
-msgstr ""
+msgstr "Buscar EPG"
 
 #: plugin/local.py:99
 msgid "Include description"
-msgstr ""
+msgstr "Incloure descripció"
 
 #: plugin/local.py:100
 msgid "Restrict to Bouquets"
@@ -950,848 +940,854 @@ msgstr ""
 
 #: plugin/local.py:101
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #: plugin/local.py:102
 msgid "Every"
-msgstr ""
+msgstr "Cada"
 
 #: plugin/local.py:103
 msgid "Extras"
-msgstr ""
+msgstr "Extres"
 
 #: plugin/local.py:104
 msgid "finished"
-msgstr ""
+msgstr "acabat"
 
 #: plugin/local.py:105
 msgid "Firmware version"
-msgstr ""
+msgstr "Versió de firmware"
 
 #: plugin/local.py:107
 msgid "Free"
-msgstr ""
+msgstr "Lliure"
 
 #: plugin/local.py:108
 msgid "Free Memory"
-msgstr ""
+msgstr "Memòria lliure"
 
 #: plugin/local.py:109
 msgid "Gateway"
-msgstr ""
+msgstr "Porta d'enllaç"
 
 #: plugin/local.py:110
 msgid "Grab Screenshot"
-msgstr ""
+msgstr "Captura de Pantalla"
 
 #: plugin/local.py:111
 msgid "Gui version"
-msgstr ""
+msgstr "Versió GUI"
 
 #: plugin/local.py:112
 msgid "Hide full remote"
-msgstr ""
+msgstr "Ocultar comandament completo"
 
 #: plugin/local.py:113
 msgid "High Resolution"
-msgstr ""
+msgstr "Alta resolució"
 
 #: plugin/local.py:114
 msgid "Hard disk model"
-msgstr ""
+msgstr "Model Disc Duro"
 
 #: plugin/local.py:115
 msgid "Hour"
-msgstr ""
+msgstr "Hora"
 
 #: plugin/local.py:116
 msgid "IPv4 address"
-msgstr ""
+msgstr "Direcció IPv4"
 
 #: plugin/local.py:120
 msgid "IPv6 address(es)"
-msgstr ""
+msgstr "Direcció(es) IPv6"
 
 #: plugin/local.py:121
 msgid "Infos"
-msgstr ""
+msgstr "Informació"
 
 #: plugin/local.py:122
 msgid "Instant Record"
-msgstr ""
+msgstr "Gravació instantània"
 
 #: plugin/local.py:123
 msgid "Javascript Libraries"
-msgstr ""
+msgstr "Llibreries Javascript"
 
 #: plugin/local.py:124
 msgid "Just play"
-msgstr ""
+msgstr "Només repr."
 
 #: plugin/local.py:125
 msgid "Kernel"
-msgstr ""
+msgstr "Versió Kernel"
 
 #: plugin/local.py:126
 msgid "LICENSE"
-msgstr ""
+msgstr "LLICÈNCIA"
 
 #: plugin/local.py:127
 msgid "loading"
-msgstr ""
+msgstr "carregant"
 
 #: plugin/local.py:128
 msgid "Location"
-msgstr ""
+msgstr "Localització"
 
 #: plugin/local.py:129
 msgid "Locked"
-msgstr ""
+msgstr "Bloquejat"
 
 #: plugin/local.py:130
 msgid "MAC address"
-msgstr ""
+msgstr "Direcció MAC"
 
 #: plugin/local.py:131
 msgid "Main"
-msgstr ""
+msgstr "Principal"
 
 #: plugin/local.py:132
 msgid "Minute"
-msgstr ""
+msgstr "Minut"
 
 #: plugin/local.py:133
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 #: plugin/local.py:134
 msgid "Movielist"
-msgstr ""
+msgstr "Llista de Pel·lícules"
 
 #: plugin/local.py:135
 msgid "Movies"
-msgstr ""
+msgstr "Pel·lícules"
 
 #: plugin/local.py:136
 msgid "MultiEPG"
-msgstr ""
+msgstr "MultiEPG"
 
 #: plugin/local.py:137
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: plugin/local.py:138
 msgid "Namespace"
-msgstr ""
+msgstr "Nom d'espai"
 
 #: plugin/local.py:139
 msgid "Network Interface"
-msgstr ""
+msgstr "Interfície de xarxa"
 
 #: plugin/local.py:140
 msgid "no description available"
-msgstr ""
+msgstr "no hi ha descripció disponible"
 
 #: plugin/local.py:141
 msgid "Sorry this page is not yet implemented"
-msgstr ""
+msgstr "Ho sentim, aquesta pàgina encara no està implementada"
 
 #: plugin/local.py:142
 msgid "Nothing"
-msgstr ""
+msgstr "Res"
 
 #: plugin/local.py:143
 msgid "Nothing playing."
-msgstr ""
+msgstr "Res a reproduir."
 
 #: plugin/local.py:144
 msgid "Now"
-msgstr ""
+msgstr "Ara"
 
 #: plugin/local.py:145
 msgid "System OE"
-msgstr ""
+msgstr "Sistema OE"
 
 #: plugin/local.py:146
 msgid "On"
-msgstr ""
+msgstr "On"
 
 #: plugin/local.py:147
 msgid "Open Source Web Interface for Linux set-top box"
-msgstr ""
+msgstr "Interfície Web de Codi Lliure per a Receptors Linux"
 
 #: plugin/local.py:148 plugin/plugin.py:119
 msgid "Show box name in header"
-msgstr ""
+msgstr "Mostrar nom del deco a la capçalera"
 
 #: plugin/local.py:149 plugin/plugin.py:121
 msgid "Use custom box name"
-msgstr ""
+msgstr "Utilitzar nom personalitzat per al deco"
 
 #: plugin/local.py:150 plugin/plugin.py:123
 msgid "Custom box name"
-msgstr ""
+msgstr "Nom personalitzat del deco"
 
 #: plugin/local.py:151
 msgid "OSD"
-msgstr ""
+msgstr "OSD"
 
 #: plugin/local.py:152
 msgid "Open in new window"
-msgstr ""
+msgstr "Obrir en nova finestra"
 
 #: plugin/local.py:153
 msgid "Playback"
-msgstr ""
+msgstr "Reproducció"
 
 #: plugin/local.py:154
 msgid "Playlist"
-msgstr ""
+msgstr "Llista de reproducció"
 
 #: plugin/local.py:155
 msgid "Power Control"
-msgstr ""
+msgstr "Control d'encesa"
 
 #: plugin/local.py:156
 msgid "Provider"
-msgstr ""
+msgstr "Proveïdor"
 
 #: plugin/local.py:157
 msgid "Providers"
-msgstr ""
+msgstr "Proveïdors"
 
 #: plugin/local.py:158
 msgid "Radio"
-msgstr ""
+msgstr "Ràdio"
 
 #: plugin/local.py:159
 msgid "Reboot Box"
-msgstr ""
+msgstr "Reiniciar Deco"
 
 #: plugin/local.py:160
 msgid "Recording Status"
-msgstr ""
+msgstr "Estat de Gravació"
 
 #: plugin/local.py:161 plugin/local.py:340
 msgid "Refresh"
-msgstr ""
+msgstr "Refrescar"
 
 #: plugin/local.py:162
 msgid "Refresh automatically every"
-msgstr ""
+msgstr "Actualitzar automàticament cada"
 
 #: plugin/local.py:163
 msgid "Refresh Timer"
-msgstr ""
+msgstr "Actualitzar Gravació"
 
 #: plugin/local.py:164
 msgid "Remote"
-msgstr ""
+msgstr "Comandament a distància"
 
 #: plugin/local.py:165
 msgid "Rename Recording"
-msgstr ""
+msgstr "Renombrar Gravació"
 
 #: plugin/local.py:166
 msgid "Really rename the recording"
-msgstr ""
+msgstr "Estàs segur en renombrar la gravació"
 
 #: plugin/local.py:167
 msgid "Repeated"
-msgstr ""
+msgstr "Repetir"
 
 #: plugin/local.py:168
 msgid "Restart GUI"
-msgstr ""
+msgstr "Reiniciar GUI"
 
 #: plugin/local.py:169
 msgid "running"
-msgstr ""
+msgstr "funcionant"
 
 #: plugin/local.py:170
 msgid "Safe mode"
-msgstr ""
+msgstr "Mode segur"
 
 #: plugin/local.py:171
 msgid "Satellites"
-msgstr ""
+msgstr "Satèl·lits"
 
 #: plugin/local.py:172
 msgid "Satfinder"
-msgstr ""
+msgstr "Buscador de satèl·lit"
 
-#: plugin/local.py:173 plugin/local.py:319 plugin/local.py:371
-#: plugin/plugin.py:102
+#: plugin/local.py:173 plugin/local.py:319 plugin/local.py:371 plugin/plugin.py:102
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 #: plugin/local.py:174
 msgid "Screenshot"
-msgstr ""
+msgstr "Captura de Pantalla"
 
 #: plugin/local.py:175 plugin/local.py:377
 msgid "Search"
-msgstr ""
+msgstr "Buscar"
 
 #: plugin/local.py:176
 msgid "Search IMDb"
-msgstr ""
+msgstr "Buscar en IMDb"
 
 #: plugin/local.py:177
 msgid "Search KinoPoisk"
-msgstr ""
+msgstr "Buscar KinoPoisk"
 
 #: plugin/local.py:178
 msgid "seconds"
-msgstr ""
+msgstr "segons"
 
 #: plugin/local.py:179
 msgid "Send Message"
-msgstr ""
+msgstr "Enviar missatge"
 
 #: plugin/local.py:180
 msgid "Waiting for answer ..."
-msgstr ""
+msgstr "Esperant reposta..."
 
 #: plugin/local.py:181
 msgid "Send a Message"
-msgstr ""
+msgstr "Enviar un missatge"
 
 #: plugin/local.py:182
 msgid "Service"
-msgstr ""
+msgstr "Servei"
 
 #: plugin/local.py:184
 msgid "Bouquet Editor"
-msgstr ""
+msgstr "Editor de llistes"
 
 #: plugin/local.py:185
 msgid "(Shift + Click for Long Press)"
-msgstr ""
+msgstr "(shift + click per a una pulsació llarga)"
 
 #: plugin/local.py:186
 msgid "Show Full OpenWebif"
-msgstr ""
+msgstr "Veure OpenWebif Complert"
 
 #: plugin/local.py:187
 msgid "Show full remote"
-msgstr ""
+msgstr "Veure comandament a distància complert"
 
 #: plugin/local.py:188
 msgid "Show EPG for"
-msgstr ""
+msgstr "Veure EPG per a"
 
 #: plugin/local.py:189
 msgid "Shutdown"
-msgstr ""
+msgstr "Apagar"
 
 #: plugin/local.py:190
 msgid "Site and sources"
-msgstr ""
+msgstr "Lloc i fonts"
 
 #: plugin/local.py:191
 msgid "SNR"
-msgstr ""
+msgstr "SNR"
 
 #: plugin/local.py:192
 msgid "Software"
-msgstr ""
+msgstr "Software"
 
 #: plugin/local.py:193
 msgid "Standby"
-msgstr ""
+msgstr "Mode d'espera"
 
 #: plugin/local.py:194
 msgid "Standby Toggle"
-msgstr ""
+msgstr "Activar Repòs"
 
 #: plugin/local.py:195
 msgid "Start time is after end time"
-msgstr ""
+msgstr "L'hora d'inici és després de l'hora de finalització"
 
 #: plugin/local.py:196
 msgid "Start Instant Record"
-msgstr ""
+msgstr "Iniciar Gravació Instantània"
 
 #: plugin/local.py:197
 msgid "Stream"
-msgstr ""
+msgstr "Stream"
 
 #: plugin/local.py:198
 msgid "Subnet mask"
-msgstr ""
+msgstr "Màscara de xarxa"
 
 #: plugin/local.py:199
 msgid "Subservices"
-msgstr ""
+msgstr "Subserveis"
 
 #: plugin/local.py:200 plugin/local.py:301
 msgid "Tags"
-msgstr ""
+msgstr "Etiquetes"
 
 #: plugin/local.py:201
 msgid "Teletext"
-msgstr ""
+msgstr "Teletext"
 
 #: plugin/local.py:202
 msgid "Television"
-msgstr ""
+msgstr "Televisió"
 
 #: plugin/local.py:203
 msgid "Template Engine"
-msgstr ""
+msgstr "Motor de la Plantilla"
 
 #: plugin/local.py:204
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: plugin/local.py:205
 msgid "Time"
-msgstr ""
+msgstr "Temps"
 
 #: plugin/local.py:206
 msgid "Timeout"
-msgstr ""
+msgstr "Temps d'espera"
 
 #: plugin/local.py:207
 msgid "Timer added"
-msgstr ""
+msgstr "Afegir gravació"
 
 #: plugin/local.py:208
 msgid "Timerlist"
-msgstr ""
+msgstr "Llista de gravacions"
 
 #: plugin/local.py:209
 msgid "New Name"
-msgstr ""
+msgstr "Nom nou"
 
 #: plugin/local.py:210
 msgid "Autotimer Preview"
-msgstr ""
+msgstr "Previsualitzar AutoProgramació"
 
 #: plugin/local.py:211
 msgid "Timer"
-msgstr ""
+msgstr "Gravació"
 
 #: plugin/local.py:212 plugin/local.py:322
 msgid "Timers"
-msgstr ""
+msgstr "Gravacions"
 
 #: plugin/local.py:213
 msgid "Title"
-msgstr ""
+msgstr "Títul"
 
 #: plugin/local.py:214
 msgid "Main Memory"
-msgstr ""
+msgstr "Memòria principal"
 
 #: plugin/local.py:215
 msgid "transcoded"
-msgstr ""
+msgstr "transcodificat"
 
 #: plugin/local.py:216
 msgid "Transcode"
-msgstr ""
+msgstr "Transcodificar"
 
 #: plugin/local.py:217
 msgid "Tuner Bit Error Rate BER"
-msgstr ""
+msgstr "Bit de taxa d'error (BER) del sintonitzador"
 
 #: plugin/local.py:218
 msgid "Tuner Number"
-msgstr ""
+msgstr "Número de sintonitzador"
 
 #: plugin/local.py:219
 msgid "Tuner Signal"
-msgstr ""
+msgstr "Senyal del sintonitzador"
 
 #: plugin/local.py:220
 msgid "Tuner Signal Quality SNR"
-msgstr ""
+msgstr "Qualitat de senyal del sintonitzador SNR"
 
 #: plugin/local.py:221
 msgid "Tuner Signal Quality SNR_DB"
-msgstr ""
+msgstr "Qualitat de senyal del sintonitzador SNR DB"
 
 #: plugin/local.py:222
 msgid "Tuner Signal Power AGC"
-msgstr ""
+msgstr "Potència de senyal del sintonitzador AGC"
 
 #: plugin/local.py:223
 msgid "Tuner Type"
-msgstr ""
+msgstr "Tipus de sintonitzador"
 
 #: plugin/local.py:224
 msgid "Tuners"
-msgstr ""
+msgstr "Sintonitzadors"
 
 #: plugin/local.py:225
 msgid "TV"
-msgstr ""
+msgstr "TV"
 
 #: plugin/local.py:226
 msgid "TV Multi EPG"
-msgstr ""
+msgstr "TV Multi EPG"
 
 #: plugin/local.py:227
 msgid "Type"
-msgstr ""
+msgstr "Tipus"
 
 #: plugin/local.py:228
 msgid "Upcoming Events"
-msgstr ""
+msgstr "Pròxims programes"
 
 #: plugin/local.py:229
 msgid "Version"
-msgstr ""
+msgstr "Versió"
 
 #: plugin/local.py:230
 msgid "Video"
-msgstr ""
+msgstr "Vídeo"
 
 #: plugin/local.py:231
 msgid "Video Height"
-msgstr ""
+msgstr "Altura de vídeo"
 
 #: plugin/local.py:232
 msgid "Video Wide"
-msgstr ""
+msgstr "Vídeo ample"
 
 #: plugin/local.py:233
 msgid "Video Width"
-msgstr ""
+msgstr "Ample de Video"
 
 #: plugin/local.py:234
 msgid "VPS"
-msgstr ""
+msgstr "VPS"
 
 #: plugin/local.py:235
 msgid "Volume"
-msgstr ""
+msgstr "Volum"
 
 #: plugin/local.py:236
 msgid "Volume Control"
-msgstr ""
+msgstr "Control de volum"
 
 #: plugin/local.py:237
 msgid "waiting"
-msgstr ""
+msgstr "esperant"
 
 #: plugin/local.py:238
 msgid "Warning"
-msgstr ""
+msgstr "Advertència"
 
 #: plugin/local.py:239
 msgid "Yes/No"
-msgstr ""
+msgstr "Si/No"
 
 #: plugin/local.py:240
 msgid "Zap"
-msgstr ""
+msgstr "Canviar"
 
 #: plugin/local.py:241
 msgid "zap before Stream"
-msgstr ""
+msgstr "canviar abans del stream"
 
 #: plugin/local.py:242
 msgid "Zap to"
-msgstr ""
+msgstr "Canviar a"
 
 #: plugin/local.py:243
 msgid "Zapped to"
-msgstr ""
+msgstr "Canviat a"
 
 #: plugin/local.py:244
 msgid "Translation to Spanish"
-msgstr ""
+msgstr "Traducció a l'espanyol"
 
 #: plugin/local.py:245
-msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
+msgid ""
+"All Files of this Software are open source software; you can redistribute it and/or "
+"modify it under the terms of the GNU General Public License version 3 as published "
+"by the Free Software Foundation."
 msgstr ""
+"Tots els arxius d'aquest software són software de codi obert;  pots redistribuir-lo "
+"i / o modificar-lo baix els termes de la Llicència Pública General GNU versió 3, "
+"publicada per la Free Software Foundation."
 
 #: plugin/local.py:246
 msgid "Root"
-msgstr ""
+msgstr "Carpeta arrel"
 
 #: plugin/local.py:248
 msgid "AutoTimer List"
-msgstr ""
+msgstr "Llista autoProg."
 
 #: plugin/local.py:249
 msgid "AutoTimer Edit"
-msgstr ""
+msgstr "Editar autoProgramació"
 
 #: plugin/local.py:252
 msgid "Match title"
-msgstr ""
+msgstr "Coincidència de títul"
 
 #: plugin/local.py:253
 msgid "EPG encoding"
-msgstr ""
+msgstr "Codificació EPG"
 
 #: plugin/local.py:254
 msgid "Search type"
-msgstr ""
+msgstr "Tipus de recerca"
 
 #: plugin/local.py:255
 msgid "partial match"
-msgstr ""
+msgstr "coincidència parcial"
 
 #: plugin/local.py:256
 msgid "exact match"
-msgstr ""
+msgstr "coincidència exacta"
 
 #: plugin/local.py:257
 msgid "description match"
-msgstr ""
+msgstr "coincidència en descripció"
 
 #: plugin/local.py:258
 msgid "title or description match"
-msgstr ""
+msgstr "coincidència en títul o descripció"
 
 #: plugin/local.py:259
 msgid "title or short description match"
-msgstr ""
+msgstr "coincidència en títul o descripció curta"
 
 #: plugin/local.py:260
 msgid "short description match"
-msgstr ""
+msgstr "coincidència en descripció curta"
 
 #: plugin/local.py:261
 msgid "start match"
-msgstr ""
+msgstr "coincidència inicial"
 
 #: plugin/local.py:262
 msgid "Search strictness"
-msgstr ""
+msgstr "Recerca estricta"
 
 #: plugin/local.py:263
 msgid "case-sensitive search"
-msgstr ""
+msgstr "recerca distingint majúscules/minúscules"
 
 #: plugin/local.py:264
 msgid "case-insensitive search"
-msgstr ""
+msgstr "recerca sense distingir majúscules/minúscules"
 
 #: plugin/local.py:265
 msgid "Timer type"
-msgstr ""
+msgstr "Tipus gravació"
 
 #: plugin/local.py:266
 msgid "record"
-msgstr ""
+msgstr "gravar"
 
 #: plugin/local.py:267
 msgid "zap"
-msgstr ""
+msgstr "canviar"
 
 #: plugin/local.py:268
 msgid "Override found with alternative service"
-msgstr ""
+msgstr "Anular trobat amb un servei alternatiu"
 
 #: plugin/local.py:269
 msgid "Only match during timespan"
-msgstr ""
+msgstr "Només coincidir durant l'interval de temps"
 
 #: plugin/local.py:270
 msgid "Begin of timespan"
-msgstr ""
+msgstr "Inici de l'interval de temps"
 
 #: plugin/local.py:271
 msgid "End of Timespan"
-msgstr ""
+msgstr "Fi de l'interval de temps"
 
 #: plugin/local.py:272
 msgid "Restrict to events on certain dates"
-msgstr ""
+msgstr "Restringir als programes en determinades dates"
 
 #: plugin/local.py:273
 msgid "Not after"
-msgstr ""
+msgstr "No després de"
 
 #: plugin/local.py:274
 msgid "Not before"
-msgstr ""
+msgstr "No abans de"
 
 #: plugin/local.py:275
 msgid "Custom offset"
-msgstr ""
+msgstr "Marge personalitzat"
 
 #: plugin/local.py:276
 msgid "Offset before recording (in m)"
-msgstr ""
+msgstr "Marge abans de gravar (en min.)"
 
 #: plugin/local.py:277
 msgid "Offset after recording (in m)"
-msgstr ""
+msgstr "Marge després de gravar (en min.)"
 
 #: plugin/local.py:278
 msgid "Set maximum duration"
-msgstr ""
+msgstr "Configurar duració màxima"
 
 #: plugin/local.py:279
 msgid "After event"
-msgstr ""
+msgstr "Després del programa"
 
 #: plugin/local.py:280
 msgid "standard"
-msgstr ""
+msgstr "estàndar"
 
 #: plugin/local.py:281
 msgid "auto"
-msgstr ""
+msgstr "automàtic"
 
 #: plugin/local.py:282
 msgid "do nothing"
-msgstr ""
+msgstr "no fer res"
 
 #: plugin/local.py:283
 msgid "go to standby"
-msgstr ""
+msgstr "anar a repòs"
 
 #: plugin/local.py:284
 msgid "go to deep standby"
-msgstr ""
+msgstr "anar a repòs profund"
 
 #: plugin/local.py:285
 msgid "Execute \"after event\" during timespan"
-msgstr ""
+msgstr "Executar \"després del programa\" durant l'interval de temps"
 
 #: plugin/local.py:286
 msgid "Begin of \"after event\" timespan"
-msgstr ""
+msgstr "Inici del \"després del programa\" interval de temps"
 
 #: plugin/local.py:287
 msgid "End of \"after event\" timespan"
-msgstr ""
+msgstr "Fi del \"després del programa\" interval de temps"
 
 #: plugin/local.py:288
 msgid "Record a maximum of x times"
-msgstr ""
+msgstr "Gravar un màxim de x vegades"
 
 #: plugin/local.py:289
 msgid "Amount of recordings left"
-msgstr ""
+msgstr "Quantitat de gravacions faltants"
 
 #: plugin/local.py:290 plugin/local.py:361
 msgid "Never"
-msgstr ""
+msgstr "Mai"
 
 #: plugin/local.py:291
 msgid "Monthly"
-msgstr ""
+msgstr "Mensual"
 
 #: plugin/local.py:292
 msgid "Weekly (Sunday)"
-msgstr ""
+msgstr "Setmanal (Diumenge)"
 
 #: plugin/local.py:293
 msgid "Weekly (Monday)"
-msgstr ""
+msgstr "Setmanal (Dilluns)"
 
 #: plugin/local.py:294
 msgid "Reset count"
-msgstr ""
+msgstr "Restablir contador"
 
 #: plugin/local.py:295
 msgid "Require description to be unique"
-msgstr ""
+msgstr "Requereix descripció per a ser únic"
 
 #: plugin/local.py:296
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: plugin/local.py:297
 msgid "On same service"
-msgstr ""
+msgstr "En el mateix servei"
 
 #: plugin/local.py:298
 msgid "On any service"
-msgstr ""
+msgstr "En qualsevol servei"
 
 #: plugin/local.py:299
 msgid "Any service/recording"
-msgstr ""
+msgstr "Qualsevol servei/gravació"
 
 #: plugin/local.py:300
 msgid "Use a custom location"
-msgstr ""
+msgstr "Utilitzar una ubicació personalitzada"
 
 #: plugin/local.py:302
 msgid "select Tags"
-msgstr ""
+msgstr "sel·leccionar etiquetes"
 
 #: plugin/local.py:304
 msgid "select Channels"
-msgstr ""
+msgstr "sel·leccionar canals"
 
 #: plugin/local.py:306
 msgid "select Bouquets"
-msgstr ""
+msgstr "sel·lecionar llistes"
 
 #: plugin/local.py:307
 msgid "Enable Filtering"
-msgstr ""
+msgstr "Habilitar filtrat"
 
 #: plugin/local.py:308
 msgid "Include"
-msgstr ""
+msgstr "Incloure"
 
 #: plugin/local.py:309
 msgid "Exclude"
-msgstr ""
+msgstr "Excloure"
 
 #: plugin/local.py:310
 msgid "in Title"
-msgstr ""
+msgstr "al Títul"
 
 #: plugin/local.py:311
 msgid "in Shortdescription"
-msgstr ""
+msgstr "a la descripció curta"
 
 #: plugin/local.py:312
 msgid "in Description"
-msgstr ""
+msgstr "a la descripció"
 
 #: plugin/local.py:313
 msgid "on Weekday"
-msgstr ""
+msgstr "de Dilluns a Divendres"
 
 #: plugin/local.py:314
 msgid "Weekend"
-msgstr ""
+msgstr "Cap de setmana"
 
 #: plugin/local.py:315
 msgid "Weekday"
-msgstr ""
+msgstr "Díes laborables"
 
 #: plugin/local.py:316
 msgid "Add"
-msgstr ""
+msgstr "Afegir"
 
 #: plugin/local.py:318 plugin/local.py:370 plugin/local.py:378
 msgid "Reload"
-msgstr ""
+msgstr "Recarregar"
 
 #: plugin/local.py:320
 msgid "Parse"
-msgstr ""
+msgstr "Analitzar"
 
 #: plugin/local.py:321
 msgid "Simulate"
-msgstr ""
+msgstr "Simular"
 
 #: plugin/local.py:324
 msgid "Do you really want to delete the AT"
-msgstr ""
+msgstr "Realment vols eliminar l'AT?"
 
 #: plugin/local.py:325
 msgid "Label series"
-msgstr ""
+msgstr "Sèrie d'etiquetes"
 
+# New Autotimer Setting Windows name (not enabled to transfer atm)
 #: plugin/local.py:327
 msgid "AutoTimer Settings"
-msgstr ""
+msgstr "Configuració Autotimer"
 
 #: plugin/local.py:328
 msgid "AutoPoll"
@@ -1799,55 +1795,55 @@ msgstr ""
 
 #: plugin/local.py:329
 msgid "Interval (in h)"
-msgstr ""
+msgstr "Interval (en h)"
 
 #: plugin/local.py:330
 msgid "Max Days"
-msgstr ""
+msgstr "Màxim de dies"
 
 #: plugin/local.py:331
 msgid "Try Guessing"
-msgstr ""
+msgstr "Tractar d'encertar"
 
 #: plugin/local.py:332
 msgid "Fastscan"
-msgstr ""
+msgstr "Recerca rápida"
 
 #: plugin/local.py:333
 msgid "Show in Extensionsmenu"
-msgstr ""
+msgstr "Mostrar al menú d'extensions"
 
 #: plugin/local.py:334
 msgid "Disabled on Conflict"
-msgstr ""
+msgstr "Desactivat quan hi ha conflicte"
 
 #: plugin/local.py:335
 msgid "Add Similar on Conflict"
-msgstr ""
+msgstr "Afegir similar quan hi ha conflicte"
 
 #: plugin/local.py:336
 msgid "Notify if Conflict"
-msgstr ""
+msgstr "Notificar si hi ha conflicte"
 
 #: plugin/local.py:337
 msgid "Notify if Similar"
-msgstr ""
+msgstr "Notificar si hi ha un similar"
 
 #: plugin/local.py:338
 msgid "Add Autotimer to Tags"
-msgstr ""
+msgstr "Afegir Autotimer a les etiquetes"
 
 #: plugin/local.py:339
 msgid "Add Name to Tags"
-msgstr ""
+msgstr "Afegir nom a les etiquetes"
 
 #: plugin/local.py:341
 msgid "None"
-msgstr ""
+msgstr "Cap"
 
 #: plugin/local.py:344
 msgid "Editor"
-msgstr ""
+msgstr "Editor"
 
 #: plugin/local.py:345
 msgid "Plain"
@@ -1855,115 +1851,115 @@ msgstr ""
 
 #: plugin/local.py:346
 msgid "Wizzard"
-msgstr ""
+msgstr "Assistent"
 
 #: plugin/local.py:349
 msgid "Enable Messages"
-msgstr ""
+msgstr "Habilitar missatges"
 
 #: plugin/local.py:352
 msgid "Delay Standby"
-msgstr ""
+msgstr "Retard repòs"
 
 #: plugin/local.py:353
 msgid "Interval (min.)"
-msgstr ""
+msgstr "Interval (min.)"
 
 #: plugin/local.py:354
 msgid "Interval (sec.)"
-msgstr ""
+msgstr "Interval (seg.)"
 
 #: plugin/local.py:356
 msgid "Force"
-msgstr ""
+msgstr "Forçar"
 
 #: plugin/local.py:357
 msgid "Wakeup"
-msgstr ""
+msgstr "Despertar"
 
 #: plugin/local.py:358
 msgid "Inherit Autotimer"
-msgstr ""
+msgstr "Heretar Autotimer"
 
 #: plugin/local.py:359
 msgid "Parse Autotimer"
-msgstr ""
+msgstr "Analitzar Autotimer"
 
 #: plugin/local.py:360
 msgid "Always"
-msgstr ""
+msgstr "Sempre"
 
 #: plugin/local.py:362
 msgid "Background only"
-msgstr ""
+msgstr "Només en segon pla"
 
 #: plugin/local.py:363
 msgid "Ask, default Yes"
-msgstr ""
+msgstr "Preguntar, per defecte Si"
 
 #: plugin/local.py:364
 msgid "Ask, default No"
-msgstr ""
+msgstr "Preguntar, per defecte No"
 
 #: plugin/local.py:365
 msgid "Method"
-msgstr ""
+msgstr "Mètode"
 
 #: plugin/local.py:366
 msgid "Visibly"
-msgstr ""
+msgstr "Visible"
 
 #: plugin/local.py:367
 msgid "Picture in Picture"
-msgstr ""
+msgstr "Picture in Picture"
 
 #: plugin/local.py:368
 msgid "Picture in Picture (hidden)"
-msgstr ""
+msgstr "Picture in Picture (ocult)"
 
 #: plugin/local.py:369
 msgid "Fake Recording"
-msgstr ""
+msgstr "Gravació falsa"
 
 #: plugin/local.py:372
 msgid "Refresh now"
-msgstr ""
+msgstr "Refrescar ara"
 
 #: plugin/local.py:374
 msgid "Add Provider as new Bouquet"
-msgstr ""
+msgstr "Afegir proveïdor com nova llista"
 
 #: plugin/local.py:375
 msgid "Add channel(s) to Bouquet"
-msgstr ""
+msgstr "Afegir canal(s) a llista"
 
 #: plugin/local.py:376
 msgid "Add channel(s) as alternate"
-msgstr ""
+msgstr "Afegir canal(s) com alternatiu"
 
 #: plugin/local.py:379
 msgid "Export"
-msgstr ""
+msgstr "Exportar"
 
 #: plugin/local.py:380
 msgid "Import"
-msgstr ""
+msgstr "Importar"
 
 #: plugin/local.py:381
 msgid "Add Bouquet"
-msgstr ""
+msgstr "Afegir llista"
 
 #: plugin/local.py:382
 msgid "Rename Bouquet"
-msgstr ""
+msgstr "Renombrar llista"
 
 #: plugin/local.py:383
 msgid "Delete Bouquet"
-msgstr ""
+msgstr "Esborrar llista"
 
 #: plugin/local.py:384
 msgid "Add Marker"
-msgstr ""
+msgstr "Afegir marca"
 
 #: plugin/local.py:385
 msgid "Add Spacer"
@@ -1971,7 +1967,7 @@ msgstr ""
 
 #: plugin/local.py:386
 msgid "Rename"
-msgstr ""
+msgstr "Renombrar"
 
 #: plugin/local.py:387
 msgid "Do you really want to delete the selected item(s)"
@@ -1979,31 +1975,31 @@ msgstr ""
 
 #: plugin/local.py:388
 msgid "Do you really want to delete the bouquet"
-msgstr ""
+msgstr "Realment vols esborrar la llista?"
 
 #: plugin/local.py:389
 msgid "Name of the Bouquet"
-msgstr ""
+msgstr "Nom de la llista"
 
 #: plugin/local.py:390
 msgid "Name of the Marker"
-msgstr ""
+msgstr "Nom de la marca"
 
 #: plugin/local.py:391
 msgid "Enter new name for the bouquet"
-msgstr ""
+msgstr "Introdueix nou nom per a la llista"
 
 #: plugin/local.py:392
 msgid "Enter new name for the marker"
-msgstr ""
+msgstr "Introdueix nou nom per a la marca"
 
 #: plugin/local.py:393
 msgid "Please enter filename"
-msgstr ""
+msgstr "Si us plau, introdueix el nom de l'arxiu"
 
 #: plugin/local.py:394
 msgid "Do you really want to restore from file"
-msgstr ""
+msgstr "Realment vols restaurar des de l'arxiu?"
 
 #: plugin/local.py:396
 msgid "via"
@@ -2011,7 +2007,7 @@ msgstr ""
 
 #: plugin/local.py:397
 msgid "Record+ZAP"
-msgstr ""
+msgstr "Gravar+Fer zàping"
 
 #: plugin/local.py:398
 msgid "Pmtpid"
@@ -2047,39 +2043,39 @@ msgstr ""
 
 #: plugin/local.py:406
 msgid "Orbital Position"
-msgstr ""
+msgstr "Posició orbital"
 
 #: plugin/local.py:408
 msgid "error! Loading Page"
-msgstr ""
+msgstr "error! Carregant pàgina"
 
 #: plugin/local.py:409
 msgid "Timer Added"
-msgstr ""
+msgstr "Temporitzador afegit"
 
 #: plugin/local.py:410
 msgid "Event not found"
-msgstr ""
+msgstr "Event no trobat"
 
 #: plugin/local.py:411
 msgid "Show Picon in channel list"
-msgstr ""
+msgstr "Mostar Picon en llista de canals"
 
 #: plugin/local.py:413
 msgid "OpenWebif Browser Settings"
-msgstr ""
+msgstr "Configuració navegador OpenWebif"
 
 #: plugin/local.py:414
 msgid "OpenWebif Settings"
-msgstr ""
+msgstr "Configuració OpenWebif"
 
 #: plugin/local.py:415
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: plugin/local.py:416
 msgid "Show Picons in channel list"
-msgstr ""
+msgstr "Mostrar Picons en llista de canals"
 
 #: plugin/local.py:417
 msgid "Spinner"
@@ -2087,19 +2083,19 @@ msgstr ""
 
 #: plugin/local.py:418
 msgid "Display duration (s)"
-msgstr ""
+msgstr "Duració de visualització (s)"
 
 #: plugin/local.py:420
 msgid "Display Mode"
-msgstr ""
+msgstr "Mode visualització"
 
 #: plugin/local.py:421
 msgid "TV Guide"
-msgstr ""
+msgstr "Guia TV"
 
 #: plugin/local.py:422
 msgid "Timeline"
-msgstr ""
+msgstr "Plaç"
 
 #: plugin/local.py:423
 msgid "Web TV"
@@ -2107,7 +2103,7 @@ msgstr ""
 
 #: plugin/local.py:424
 msgid "Calendar Week"
-msgstr ""
+msgstr "Calendari setmanal"
 
 #: plugin/local.py:426
 msgid "Link Speed"
@@ -2115,79 +2111,93 @@ msgstr ""
 
 #: plugin/local.py:427
 msgid "Network Shares"
-msgstr ""
+msgstr "Muntatges de xarxa"
 
 #: plugin/local.py:428
 msgid "using"
-msgstr ""
+msgstr "utilitzant"
 
 #: plugin/plugin.py:103
 msgid "OpenWebif url: http://yourip:port"
-msgstr ""
+msgstr "Enllaç OpenWebif: http://ip:port"
 
 #: plugin/plugin.py:117
 msgid "OpenWebInterface Enabled"
-msgstr ""
+msgstr "Enllaç OpenWebInterface"
 
 #: plugin/plugin.py:124
 msgid "HTTP port"
-msgstr ""
+msgstr "Port HTTP"
 
 #: plugin/plugin.py:125
 msgid "Enable HTTP Authentication"
-msgstr ""
+msgstr "Autenticació enllaç HTTP"
 
 #: plugin/plugin.py:126
 msgid "Enable HTTPS"
-msgstr ""
+msgstr "Habilitar HTTPS"
 
 #: plugin/plugin.py:128
 msgid "HTTPS port"
-msgstr ""
+msgstr "Port HTTPS"
 
 #: plugin/plugin.py:129
 msgid "Enable HTTPS Authentication"
-msgstr ""
+msgstr "Autenticació enllaç HTTPS"
 
 #: plugin/plugin.py:130
 msgid "Require client cert for HTTPS"
-msgstr ""
+msgstr "Requereix certificat client per a HTTPS"
 
 #: plugin/plugin.py:132
 msgid "Enable Authentication for streaming"
-msgstr ""
+msgstr "Habilitar autenticació per a streaming"
 
 #: plugin/plugin.py:133
 msgid "Disable remote access for user root"
-msgstr ""
+msgstr "Deshabilitar accès remot per a l'usuari root"
 
 #: plugin/plugin.py:135
 msgid "Without auth only local access is allowed!"
-msgstr ""
+msgstr "Sense autorització, només es permet l'accès local!"
 
 #: plugin/plugin.py:136
 msgid "Enable access from VPNs"
-msgstr ""
+msgstr "Habilitar accès des de VPNs"
 
 #: plugin/plugin.py:137
 msgid "Enable Parental Control"
-msgstr ""
+msgstr "Habilitar Control Parental"
 
 #: plugin/plugin.py:138
 msgid "Add service name to stream information"
-msgstr ""
+msgstr "Afegir nom de servei a la informació de stream"
 
 #: plugin/plugin.py:140
 msgid "Character encoding for EPG data"
-msgstr ""
+msgstr "Codificació de caràcters per a l'EPG"
 
-#: plugin/plugin.py:149 plugin/plugin.py:208 plugin/plugin.py:210
-#: plugin/plugin.py:212
+#: plugin/plugin.py:149 plugin/plugin.py:208 plugin/plugin.py:210 plugin/plugin.py:212
 msgid "OpenWebif Configuration"
-msgstr ""
+msgstr "Configuració OpenWebif"
 
-msgid "Primetimes"
-msgstr ""
+#~ msgid "Delete Channel(s)"
+#~ msgstr "Esborrar canal(s)"
 
-msgid "Enable/Disable Screenshot on key press or"
-msgstr ""
+#~ msgid "Do you really want to delete the channel(s)"
+#~ msgstr "¿Realment vols esborrar el canal(s)?"
+
+#~ msgid "Afterevent"
+#~ msgstr "Després del programa"
+
+#~ msgid "Smart services renaming for XBMC"
+#~ msgstr "Serveis intel·ligents de renombrat per a XBMC"
+
+#~ msgid "VPS Overwrite"
+#~ msgstr "Sobrescriure VPS"
+
+#~ msgid "SleepTimer feature not available"
+#~ msgstr "La característica temporitzador d'apagat no està disponible"
+
+#~ msgid "Timer List"
+#~ msgstr "Llista de gravacions"

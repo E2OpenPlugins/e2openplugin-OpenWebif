@@ -125,7 +125,10 @@ class BaseController(resource.Resource):
 
 		self.suppresslog = False
 		self.path = self.path.replace(".", "")
-		func = getattr(self, "P_" + self.path, None)
+		if request.path.startswith('/api/config'):
+			func = getattr(self, "P_config", None)
+		else:
+			func = getattr(self, "P_" + self.path, None)
 		if callable(func):
 			request.setResponseCode(http.OK)
 
@@ -148,6 +151,8 @@ class BaseController(resource.Resource):
 #				if not self.suppresslog:
 #					print "[OpenWebif] page '%s' ok (json)" % request.uri
 				supported=[]
+				# FIXME : now we can set this cause of complete remove of parseJSON
+				# BUT we need to test this first
 				#request.setHeader("content-type", "application/json")
 				if self.isGZ:
 					acceptHeaders = request.requestHeaders.getRawHeaders('Accept-Encoding', [])
@@ -158,10 +163,16 @@ class BaseController(resource.Resource):
 						encoding = '%s,gzip' % ','.join(encoding)
 					else:
 						encoding = 'gzip'
-					request.responseHeaders.setRawHeaders('Content-Encoding',[encoding])
-					compstr = self.compressBuf(json.dumps(data))
-					request.setHeader('Content-Length', '%d' % len(compstr))
-					request.write(compstr)
+					try:
+						compstr = self.compressBuf(json.dumps(data))
+						request.setHeader('Content-Length', '%d' % len(compstr))
+						request.responseHeaders.setRawHeaders('Content-Encoding',[encoding])
+						request.write(compstr)
+					except Exception as exc:
+						request.setResponseCode(http.INTERNAL_SERVER_ERROR)
+						request.setHeader("content-type", "application/json")
+						request.write(json.dumps({"result": False, "request": request.path , "exception": repr(exc)}))
+						pass
 				else:
 					request.setHeader("content-type", "text/plain")
 					request.write(json.dumps(data))

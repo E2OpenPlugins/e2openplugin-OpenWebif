@@ -44,8 +44,8 @@ function addTimerEvent(sRef, eventId) {
 		async: false,
 		url: url,
 		cache : false,
-		success: function(data) {
-			result = json_dammit(data);
+		dataType: 'json',
+		success: function(result) {
 			if(result) {
 				if(!result.result && result.conflicts)
 					alert( "Error Timer Confict" );

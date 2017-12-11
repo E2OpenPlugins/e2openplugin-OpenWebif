@@ -310,7 +310,7 @@ function ShowPackages(mode)
 	if(cache === date) {
 		cache = GetLSValue('pkg-data',null);
 		if(cache != null) {
-			var pkgs = json_dammit(cache);
+			var pkgs = JSON.parse(cache);
 			FillPackages(pkgs,mode);
 			return;
 		}
@@ -321,8 +321,8 @@ function ShowPackages(mode)
 		success: function ( data ) {
 			SetLSValue('pkg-date',date);
 			SetLSValue('pkg-data',data);
-			var js = json_dammit(data);
-			FillPackages(js,mode);
+			var pkgs = JSON.parse(data);
+			FillPackages(pkgs,mode);
 		}
 	});
 }

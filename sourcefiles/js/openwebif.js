@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.12
+//* Version 1.2.17
 //******************************************************************************
 //* Copyright (C) 2011-2017 E2OpenPlugins
 //*
@@ -28,6 +28,8 @@
 //* V 1.2.11 - improve visual feedback for adding timer in multiepg
 //* V 1.2.12 - improve timer edit
 //* V 1.2.13 - fix repeating timer edit #631
+//* V 1.2.14,15,16 - fix json parse
+//* V 1.2.17 - allow timers for IPTV #715
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -504,8 +506,8 @@ function webapi_execute_result(url, callback) {
 		async: false,
 		url: url,
 		cache : false,
-		success: function(data) {
-			result = json_dammit(data);
+		dataType: "json",
+		success: function(result) {
 			if (typeof callback !== 'undefined') {
 				if(result)
 					callback(result.result,result.message,result.conflicts);
@@ -676,8 +678,8 @@ function webapi_execute_movie(url,callback)
 		async: false,
 		url: url,
 		cache : false,
-		success: function(data) {
-			result = json_dammit(data);
+		dataType: "json",
+		success: function(result) {
 			if(result) {
 				if (!result.result)
 					alert(result.message);
@@ -1053,8 +1055,8 @@ function loadLocations()
 	_locations = [];
 	$.ajax({
 		url: "/api/getlocations",
-		success: function(data) {
-			var loc = json_dammit(data);
+		dataType: "json",
+		success: function(loc) {
 			if (loc.result)
 				_locations = loc.locations;
 		}
@@ -1066,8 +1068,8 @@ function loadTags()
 	_tags = [];
 	$.ajax({
 		url: "/api/gettags",
-		success: function(data) {
-			var tag = json_dammit(data);
+		dataType: "json",
+		success: function(tag) {
 			if (tag.result)
 				_tags = tag.tags;
 		}
@@ -1114,17 +1116,6 @@ function initTimerEditBegin()
 	});
 }
 
-function json_dammit(value) {
-	var result = null;
-	try {
-		$.parseJSON(value);
-	}
-	catch(e) {
-		result = value;
-	}
-	return result;
-}
-
 function editTimer(serviceref, begin, end) {
 	serviceref=decodeURI(serviceref);
 	current_serviceref = serviceref;
@@ -1148,8 +1139,8 @@ function editTimer(serviceref, begin, end) {
 
 	$.ajax({
 		url: "/api/timerlist",
-		success: function(data) {
-			timers = json_dammit(data);
+		dataType: "json",
+		success: function(timers) {
 			if (timers.result) {
 				for (var id in timers.timers) {
 					timer = timers.timers[id];
@@ -1267,7 +1258,7 @@ function editTimer(serviceref, begin, end) {
 	
 }
 
-function addTimer(evt,chsref,chname,top) {
+function addTimer(evt,chsref,chname,top,isradio) {
 	current_serviceref = '';
 	current_begin = -1;
 	current_end = -1;
@@ -1295,6 +1286,9 @@ function addTimer(evt,chsref,chname,top) {
 	var lch=$('#bouquet_select > optgroup').length;
 
 	var radio = false;
+	if (typeof isradio !== 'undefined')
+		radio = true;
+	
 	if (typeof chsref !== 'undefined') {
 		radio = ( chsref.substring(0,6) == '1:0:2:');
 	}
@@ -1999,6 +1993,8 @@ function FillAllServices(bqs,callback)
 				refs.push(ref);
 				if(ref.substring(0, 4) == "1:0:")
 					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
+				if(ref.substring(0, 5) == "4097:")
+					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
 				if(ref.substring(0, 7) == "1:134:1")
 					items.push( "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>" );
 			}
@@ -2037,7 +2033,7 @@ function GetAllServices(callback,radio)
 	if(cache === date) {
 		cache = GetLSValue(v,null)
 		if(cache != null) {
-			var js = json_dammit(cache);
+			var js = JSON.parse(cache);
 			var bqs = js['services'];
 			FillAllServices(bqs,callback);
 			return;
@@ -2045,11 +2041,12 @@ function GetAllServices(callback,radio)
 	}
 	$.ajax({
 		url: '/api/getallservices?renameserviceforxmbc=1'+ru,
+		dataType: "json",
 		success: function ( data ) {
-			SetLSValue(v,data);
+			var sdata = JSON.stringify(data)
+			SetLSValue(v,sdata);
 			SetLSValue(vd,date);
-			var js = json_dammit(data);
-			var bqs = js['services'];
+			var bqs = data['services'];
 			FillAllServices(bqs,callback);
 		}
 	});
