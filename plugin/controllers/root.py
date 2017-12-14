@@ -11,8 +11,9 @@
 import os
 
 from twisted.web import static, http, proxy
+from Components.config import config
 
-from models.info import getPublicPath, getPiconPath
+from models.info import getPublicPath, getPiconPath, getBasePath
 from models.grab import grabScreenshot
 from base import BaseController
 from web import WebController, ApiController
@@ -73,6 +74,8 @@ class RootController(BaseController):
 	# the "pages functions" must be called P_pagename
 	# example http://boxip/index => P_index
 	def P_index(self, request):
+		if config.OpenWebif.responsive_enabled.value and os.path.exists(getBasePath() + "/controllers/views/responsive"):
+			return {}
 		mode = ''
 		if "mode" in request.args.keys():
 			mode = request.args["mode"][0]

@@ -160,6 +160,9 @@ class AjaxController(BaseController):
 	def P_message(self, request):
 		return {}
 
+	def P_myepg(self, request):
+		return {}
+
 	def P_movies(self, request):
 		movies = getMovieList(request.args)
 		movies['transcoding'] = getTranscodingSupport()

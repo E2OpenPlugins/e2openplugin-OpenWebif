@@ -85,6 +85,8 @@ config.OpenWebif.epg_encoding = ConfigSelection(default = 'utf-8', choices = [ '
 										'iso-8859-10',
 										'iso-8859-16'])
 
+import vtiaddon
+vtiaddon.expandConfig()
 
 imagedistro = getInfo()['imagedistro']
 
@@ -123,6 +125,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		self.list = []
 		self.list.append(getConfigListEntry(_("OpenWebInterface Enabled"), config.OpenWebif.enabled))
 		if config.OpenWebif.enabled.value:
+			self.list.append(getConfigListEntry(_("Use new design"), config.OpenWebif.responsive_enabled))
 			self.list.append(getConfigListEntry(_("Show box name in header"), config.OpenWebif.identifier))
 			if config.OpenWebif.identifier.value:
 				self.list.append(getConfigListEntry(_("Use custom box name"), config.OpenWebif.identifier_custom))

@@ -17,6 +17,7 @@ from Components.NimManager import nimmanager
 from Components.Harddisk import harddiskmanager
 from Components.Network import iNetwork
 from Components.Language import language
+from ServiceReference import ServiceReference
 from RecordTimer import parseEvent
 from Screens.Standby import inStandby
 from timer import TimerEntry
@@ -25,7 +26,7 @@ from time import time, localtime, strftime
 from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference, eEnv
 from twisted.web import version
 from socket import has_ipv6, AF_INET6, AF_INET, inet_ntop, inet_pton, getaddrinfo
-
+from enigma import eEPGCache
 try:
 	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
 	from enigma import getEnigmaVersionString
@@ -41,7 +42,7 @@ import sys
 import time
 import string
 
-OPENWEBIFVER = "OWIF 1.2.8"
+OPENWEBIFVER = "OWIF 1.3.0"
 
 STATICBOXINFO = None
 
@@ -187,7 +188,10 @@ def getPublicPath(file = ""):
 	return getBasePath() + "/public/" + file
 
 def getViewsPath(file = ""):
-	return getBasePath() + "/controllers/views/" + file
+	if config.OpenWebif.responsive_enabled.value and os.path.exists(getBasePath() + "/controllers/views/responsive") and not (file.startswith('web/') or file.startswith('/web/')):
+		return getBasePath() + "/controllers/views/responsive/" + file
+	else:
+		return getBasePath() + "/controllers/views/" + file
 
 def getPiconPath():
 
@@ -694,6 +698,21 @@ def getLanguage():
 		getInfo()
 	return STATICBOXINFO['kinopoisk']
 
+def getStreamServiceName(ref):
+	if isinstance(ref, eServiceReference):
+		servicereference = ServiceReference(ref)
+		if servicereference:
+			return servicereference.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
+	return ""
+
+def getStreamEventName(ref):
+	if isinstance(ref, eServiceReference):
+		epg = eEPGCache.getInstance()
+		event = epg and epg.lookupEventTime(ref, -1, 0)
+		if event:
+			return event.getEventName()
+	return ""
+
 def getStatusInfo(self):
 	# Get Current Volume and Mute Status
 	vcontrol = eDVBVolumecontrol.getInstance()
@@ -754,6 +773,10 @@ def getStatusInfo(self):
 		statusinfo['currservice_fulldescription'] = "N/A"
 		if serviceref:
 			statusinfo['currservice_serviceref'] = serviceref_string
+			if statusinfo['currservice_serviceref'].startswith('1:0:0') or statusinfo['currservice_serviceref'].startswith('4097:0:0'):
+				this_path = '/' + '/'.join(serviceref_string.split("/")[1:])
+				if os.path.exists(this_path):
+					statusinfo['currservice_filename'] = this_path
 			if serviceHandlerInfo:
 				statusinfo['currservice_station'] = currservice_station
 			elif serviceref_string.find("http") != -1:
@@ -777,6 +800,8 @@ def getStatusInfo(self):
 			if timer.state == TimerEntry.StateRunning:
 				if not timer.justplay:
 					statusinfo['Recording_list'] += timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '') + ": " + timer.name + "\n"
+		if statusinfo['Recording_list'] == "\n":
+			statusinfo['isRecording'] = "false"
 	else:
 		statusinfo['isRecording'] = "false"
 
