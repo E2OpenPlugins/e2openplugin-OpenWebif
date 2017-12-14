@@ -1,0 +1,19 @@
+#from urllib import quote
+#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+#set $i=0
+<ul class="nav nav-tabs tab-col-$skinColor" >
+#for $satellite in $satellites
+		#if $i == 0
+	<li><a data-toggle="tab" href='#tab' onclick="load_subcontent('ajax/channels?id=$quote($satellite.service)&stype=$stype'); return false;" >$satellite.name</a></li>
+		#else
+			<li><a href='#tab' data-toggle="tab" onclick="load_subcontent('ajax/channels?id=$quote($satellite.service)&stype=$stype'); return false;" >$satellite.name</a></li>
+		#end if
+		#set $i = $i + 1
+#end for
+</ul>
+<div class="tab-content">
+	<div class="tab-pane active" id="tab">
+		<div id='sub_content_container'></div>
+	</div>
+</div>

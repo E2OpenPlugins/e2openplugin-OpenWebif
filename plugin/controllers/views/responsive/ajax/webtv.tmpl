@@ -1,0 +1,114 @@
+#filter WebSafe
+#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+
+
+<style>
+#streamchannels-menu {max-height: 300px;}
+</style>
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div class="card">
+		<div class="header">
+			<div class="row clearfix">
+				<div class="col-xs-12 col-sm-6">
+					<h2 id="configtitle"><i class="material-icons material-icons-centered">tv</i>WebTV</h2>
+				</div>
+			</div>
+		</div>
+		<div class="body" >
+			<div id="content_main">
+				<div class="row clearfix id="info">
+					<div class="row clearfix">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div id="vlcPlayer" style="margin:0 auto 0 auto;width:640px;height:400px;display:none;">
+								<embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" width="640px" height="360px" id="vlc"></embed>
+							</div>
+							<div id="htmlPlayer" style="margin:0 auto 0 auto;width:640px;height:400px;display:none;">
+								<video id="htmlp" width="640" height="360" controls></video>
+							</div>
+						#if $vxgenabled
+								<div id="vxgPlayer" style="margin:0 auto 0 auto;width:640px;height:500px;display:none;">
+								</div>
+						#end if
+						</div>
+					</div>
+					<div class="row clearfix">
+						<div class="col-xs-12 align-center">
+							<input type="radio" class="radio-vti radio-col-$skinColor" id="plbtn_vlc"><label for="plbtn_vlc">VLC</label></input>
+							<input type="radio" class="radio-vti radio-col-$skinColor" id="plbtn_vxg" /><label for="plbtn_vxg">VXG</label>
+							<input type="radio" class="radio-vti radio-col-$skinColor" id="plbtn_html"  /><label for="plbtn_html">HTML</label>
+
+						</div>
+					</div>
+	
+					<div style="display:inline-block;margin-left:10px;">
+						<span id="Deinterlace">
+							Deinterlace: <select id="deinterlace">
+								<option value="off">Off</option>
+								<option value="blend">Blend</option>
+								<option value="bob">Bob</option>
+								<option value="discard">Discard</option>
+								<option value="linear">Linear</option>
+								<option value="mean">Mean</option>
+								<option value="x">X</option>
+								<option value="yadif">Yadif</option>
+								<option value="yadif2x">Yadif2x</option>
+							</select>
+						</span>
+						<div style="display:inline-block;margin-left:10px;">
+							<label for="wautoplay">Autoplay</label>
+							<input type="checkbox" name="wautoplay" id="wautoplay">
+							<label id="wtranscodingl" for="wtranscoding">Transcoding</label>
+							<input type="checkbox" data-port="$transcoder_port" name="wtranscoding" id="wtranscoding">
+							<button id="btnstop" style="margin-left:5px;">Stop</button>
+							<button id="btnplay" style="margin-left:5px;">Play</button>
+						</div>
+					</div>
+				</div>
+				<div style="display:table;margin-top:10px;margin-bottom:10px;width: 95%;">
+					<div style="display:table;margin:10 auto 10 auto;">
+					<span id="srcbuttons" style="margin-right:10px;">
+					<input type="radio" id="sbtn0" name="srcbutton" checked="checked" /><label for="sbtn0">$tstrings['channels']</label>
+					<input type="radio" id="sbtn1" name="srcbutton" /><label for="sbtn1">$tstrings['movies']</label>
+					</span>
+					<span style="display:inline-block;">
+					<select name="streamchannels" id="streamchannels" tabindex="16"></select>
+					<select name="streamrecordings" id="streamrecordings" tabindex="10"></select>
+					<select id="moviesort">
+					#set $count = 0
+					#set $da = $tstrings['date']
+					#set $na = $tstrings['name']
+					#set $sortnames = [$na,$na,$da,$da]
+					#set $sorttypes = ['name','named','date','dated']
+					#set $sortimg = ['fa-sort-alpha-asc','fa-sort-alpha-desc','fa-sort-numeric-asc','fa-sort-numeric-desc']
+					#for $title in $sortnames
+						<option value="$sorttypes[$count]" data-class="$sortimg[$count]">$title</option>
+						#set $count += 1
+					#end for
+					</select>
+					</span>
+					</div>
+				</div>
+				
+		</div>
+		
+		
+		</div>
+	</div>
+</div>
+#if $vxgenabled
+<script type="text/javascript" src="/vxg/vxgplayer-1.8.40.min.js"></script>
+#end if
+<script type="text/javascript" src="/webtv/webtv.js"></script>
+<script type="text/javascript">
+\$(function() { var playerObj=new PlayerObj(); playerObj.setup(('$vxgenabled' === 'True'),'$auth')});
+</script>
+<link rel="stylesheet" type="text/css" href="/css/chosen.min.css" />
+#if $vxgenabled
+<link rel="stylesheet" type="text/css" href="/vxg/vxgplayer-1.8.40.min.css" />
+<style>
+.vxgplayer-error { margin-left:0px;}
+</style>
+#end if
+#end filter

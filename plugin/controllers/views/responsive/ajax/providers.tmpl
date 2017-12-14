@@ -1,0 +1,12 @@
+#from urllib import quote
+
+<ul class="nav nav-tabs tab-col-green" >
+#for $provider in $providers
+	<li><a data-toggle="tab" href='#tab' onclick="load_subcontent('ajax/channels?id=$quote($provider[0])&stype=$stype'); return false;" >$provider[1]</a></li>
+#end for
+</ul>
+<div class="tab-content">
+	<div class="tab-pane active" id="tab">
+		<div id='sub_content_container'></div>
+	</div>
+</div>

@@ -1,0 +1,137 @@
+#filter WebSafe
+#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+<style>
+.select { width: 100%; }
+.sortable { list-style-type: none; margin: 0; padding: 0; width: 200px; }
+.sortable li { margin: 0 1px 1px 2px; padding-left: 1.5em; font-size: .8em;  height:20px;}
+.sortable li span { margin: 0 0 0 -1.5em; display: inline-block; }
+
+
+
+</style>
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div class="card">
+		<div class="header">
+			<div class="row clearfix">
+				<div class="col-xs-12 col-sm-6">
+					<h2><i class="material-icons material-icons-centered">view_list</i>$tstrings['Bouquet_Editor']</h2>
+				</div>
+			</div>
+			<ul class="header-dropdown m-r--5">
+				<li>
+				<li class="dropdown"><a href="#" id="toolbar-bouquets-reload" ><i class="material-icons">autorenew</i></a>
+				<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+					<ul class="dropdown-menu pull-right">
+						<li><a href="#"  id="toolbar-bouquets-export"  ><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['bqe_export']</a></li>
+						<li><a href="#"  id="toolbar-bouquets-import"><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['bqe_import']</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="body" id="bqemain">
+			<div class="row clearfix">
+				<div class="col-xs-12 align-center">
+					<input type="radio" class="radio-vti radio-col-$skinColor" id="toolbar-choose-tv" name="tb1" checked="checked" /><label for="toolbar-choose-tv">$tstrings['tv']</label>
+					<input type="radio" class="radio-vti radio-col-$skinColor" id="toolbar-choose-radio" name="tb1"/><label for="toolbar-choose-radio">$tstrings['radio']</label>
+					<input type="radio" class="radio-vti radio-col-$skinColor" id="toolbar-choose-satellites" name="tb2" /><label for="toolbar-choose-satellites">$tstrings['satellites']</label>
+					<input type="radio" class="radio-vti radio-col-$skinColor" id="toolbar-choose-providers" name="tb2" checked="checked" /><label for="toolbar-choose-providers">$tstrings['providers']</label>
+					<input type="radio" class="radio-vti radio-col-$skinColor" id="toolbar-choose-channels" name="tb2" /><label for="toolbar-choose-channels">$tstrings['all_channels']</label>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-xs-12 col-md-6">
+					<div class="row clearfix" style="height: 250px;overflow-y:scroll;margin-bottom:5px">
+						<div class="col-xs-12">
+							<ol id="provider" class="selectable"></ol>
+						</div>
+					</div>
+					<div class="row clearfix">
+						<div class="col-xs-12 col-sm-6">
+							<div class="form-group">
+								<div class="form-line">
+									<input type="text" class="form-control" id="searchch" placeholder="$tstrings['bqe_search']">
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<button class="btn btn-default waves-effect" id="btn-provider-add">$tstrings['bqe_add_provider_as_bouquet']</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<div class="row clearfix" style="height: 250px;overflow-y:scroll;margin-bottom:5px">
+						<div class="col-xs-12">
+							<ol id="channels" class="selectable"></ol>
+						</div>
+					</div>
+					<div class="row clearfix align-center">
+						<div class="col-xs-12">
+							<div class="btn-group" role="group">
+								<button class="btn btn-default waves-effect" id="btn-channel-add">$tstrings['bqe_add_channel']</button>
+								<button class="btn btn-default waves-effect" id="btn-alternative-add">$tstrings['bqe_add_alternative']</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-xs-12 col-md-6">
+					<div class="row clearfix" style="height: 250px;overflow-y:scroll;margin-bottom:5px">
+						<div class="col-xs-12">
+							<ol id="bql" class="selectable"></ol>
+						</div>
+					</div>
+					<div class="row clearfix align-center">
+						<div class="col-xs-12">
+							<div class="btn-group" role="group">
+								<button class="btn btn-default waves-effect" id="btn-bouquet-add">$tstrings['bqe_add_bq']</button>
+								<button class="btn btn-default waves-effect" id="btn-bouquet-rename">$tstrings['bqe_rename_bq']</button>
+								<button class="btn btn-default waves-effect" id="btn-bouquet-delete">$tstrings['bqe_delete_bq']</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<div class="row clearfix" style="height: 250px;overflow-y:scroll;margin-bottom:5px">
+						<div class="col-xs-12">
+							<ol id="bqs" class="selectable"></ol>
+						</div>
+					</div>
+					<div class="row clearfix align-center">
+						<div class="col-xs-12">
+							<div class="btn-group" role="group">
+								<button class="btn btn-default waves-effect" id="btn-channel-delete">$tstrings['delete']</button>
+								<button class="btn btn-default waves-effect" id="btn-marker-add">$tstrings['bqe_add_marker']</button>
+								<!--<button class="btn btn-default waves-effect" id="btn-spacer-add">$tstrings['bqe_add_spacer']</button>-->
+								<button class="btn btn-default waves-effect" id="btn-marker-group-rename">$tstrings['bqe_rename']</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+		<!--<div id="statuscont" style="display:none">
+			<div id="statusbox" class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+				<p>
+					<span id="statusicon" class="ui-icon ui-icon-alert" style="margin-right: .3em;"></span> 
+					<span id="statustext"></span>
+				</p>
+			</div>
+		</div> -->
+		<form id="uploadrestore" style="display:none" action"uploadrestore"="" method="post" enctype="multipart/form-data" encoding="multipart/form-data">
+			<input type="file" name="rfile" id="rfile">
+		</form>
+
+<script src="/themes/absb/js/vti-responsive-bqe.js"></script>
+<script type="text/javascript">
+
+\$.AdminBSB.input.activate();
+\$.AdminBSB.select.activate();
+</script>
+#end filter
+

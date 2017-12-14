@@ -1,0 +1,842 @@
+#filter WebSafe
+#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div class="card">
+		<div class="header">
+			<div class="row clearfix">
+				<div class="col-xs-12 col-sm-8 col-md-9">
+					<h2 id="configtitle"><i class="material-icons material-icons-centered">history</i>$tstrings['at_at_edit']<span id='at_name'></span></h2>
+				</div>
+				<div class="col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl">
+					<div class="row vti-vspace-20"></div>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-3">
+					<select id="atlist" class="form-control"></select>
+				</div>
+			</div>
+		</div>
+<div class="body" >
+			<div id="content_main">
+				<div id="info">
+					<div class="row clearfix">
+						<div class="col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl">
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="addAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">add</i><span>$tstrings['at_add']</span></button>
+									<button onClick="delAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="reloadAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">autorenew</i><span>$tstrings['at_reload']</span></button>
+									<button onClick="saveAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="parseAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
+									<button onClick="test_simulateAT(true); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerModal" ><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="test_simulateAT(false); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerModal" ><i class="material-icons">extension</i><span>Test</span></button>
+									<button onClick="listTimers(); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerList" ><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="atbtn btn bg-$skinColor waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 hidden-xs hidden-md hidden-lg hidden-xl">
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="addAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">add</i><span>$tstrings['at_add']</span></button>
+									<button onClick="delAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
+									<button onClick="reloadAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">autorenew</i><span>$tstrings['at_reload']</span></button>
+									<button onClick="saveAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="parseAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
+									<button onClick="test_simulateAT(true); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerModal" ><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
+									<button onClick="test_simulateAT(false); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerModal" ><i class="material-icons">extension</i><span>Test</span></button>
+									<button onClick="listTimers(); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerList" ><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="atbtn btn bg-$skinColor waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 hidden-xs hidden-sm hidden-lg hidden-xl">
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="addAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">add</i><span>$tstrings['at_add']</span></button>
+									<button onClick="delAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
+									<button onClick="reloadAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">autorenew</i><span>$tstrings['at_reload']</span></button>
+									<button onClick="saveAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
+									<button onClick="parseAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
+									<button onClick="test_simulateAT(true); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerModal" ><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="test_simulateAT(false); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerModal" ><i class="material-icons">extension</i><span>Test</span></button>
+									<button onClick="listTimers(); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerList" ><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
+									<button onClick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="atbtn btn bg-$skinColor waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 align-center hidden-xs hidden-sm hidden-md">
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="addAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">add</i><span>$tstrings['at_add']</span></button>
+									<button onClick="delAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
+									<button onClick="reloadAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">autorenew</i><span>$tstrings['at_reload']</span></button>
+									<button onClick="saveAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
+									<button onClick="parseAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
+									<button onClick="test_simulateAT(true); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerModal" ><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
+									<button onClick="test_simulateAT(false); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerModal" ><i class="material-icons">extension</i><span>Test</span></button>
+									<button onClick="listTimers(); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerList" ><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
+									<button onClick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="atbtn btn bg-$skinColor waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row clearfix vti-masked-input">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div id="ateditcontent">
+								<form><fieldset style="border:none">
+									<div class="form-group">
+										<div class="row clearfix">
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label>$tstrings['at_enabled']:&nbsp;</label>
+														<input type="checkbox" id="enabled" class="form-control chk-col-$skinColor" value="">
+														<label for="enabled">&nbsp;</label>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label style="float:left;">$tstrings['at_description']:&nbsp;</label>
+														<div  class="form-line">
+															<input type="text" class="form-control" id="name">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label>$tstrings['at_timer_type']:&nbsp;</label>
+														<select class="form-control show-tick" id="justplay">
+															<option value="0" selected="selected">$tstrings['at_record']</option>
+															<option value="1">$tstrings['at_zap']</option>
+															<option value="2">$tstrings['at_record']+$tstrings['at_zap']</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row clearfix">
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label style="float:left;">$tstrings['at_title_match']:&nbsp;</label>
+														<div  class="form-line">
+															<input type="text" class="form-control inactive" id="match" >
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label>$tstrings['at_search_type']:&nbsp;</label>
+														<select class="form-control show-tick" id="searchType">
+															<option value="partial" selected="selected">$tstrings['at_partial_match']</option>
+															<option value="exact">$tstrings['at_exact_match']</option>
+															<option value="description">$tstrings['at_description_match']</option>
+															<option value="full">$tstrings['at_title_or_description_match']</option>
+															<option value="shortdesc">$tstrings['at_short_description_match']</option>
+															<option value="title_shortdesc">$tstrings['at_title_or_short_description_match']</option>
+															#if $types.has_key('start')
+																<option value="start">$tstrings['at_start_match']</option>
+															#end if
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label>$tstrings['at_search_strictness']:&nbsp;</label>
+														<select class="form-control show-tick" id="searchCase">
+															<option value="sensitive" selected="selected">$tstrings['at_case_sensitive']</option>
+															<option value="insensitive">$tstrings['at_case_insensitive']</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row clearfix">
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label style="float:left;">$tstrings['at_timespan']:&nbsp;</label>
+														<input type="checkbox" class="form-control chk-col-$skinColor" id="timeSpan">
+														<label for="timeSpan">&nbsp;</label>
+													</div>
+												</div>
+											</div>
+											<span id="timeSpanE" style="display:none;">
+												<div class="col-xs-12 col-sm-4">
+													<div class="row clearfix">
+														<div class="col-xs-12">
+															<label>$tstrings['at_timespan_begin']:&nbsp;</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="material-icons">access_time</i>
+																</span>
+																<div class="form-line">
+																	<input type="text" id="from" class="form-control inactive time24" placeholder="06:30">
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-xs-12 col-sm-4">
+													<div class="row clearfix">
+														<div class="col-xs-12">
+															<label>$tstrings['at_timespan_end']:&nbsp;</label>
+															<div class="input-group">
+																<span class="input-group-addon">
+																	<i class="material-icons">access_time</i>
+																</span>
+																<div class="form-line">
+																	<input type="text" id="to" class="form-control inactive time24" placeholder="23:30">
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											<span>
+										</div>
+										<div class="row clearfix">
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label>$tstrings['at_avoid_dup']:&nbsp;</label>
+														<select class="form-control show-tick" id="avoidDuplicateDescription">
+															<option value="0" selected="selected">$tstrings['at_avoid_dup_no']</option>
+															<option value="1">$tstrings['at_avoid_dup_same_service']</option>
+															<option value="2">$tstrings['at_avoid_dup_any_service']</option>
+															<option value="3">$tstrings['at_avoid_dup_any_service_rec']</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label style="float:left;">$tstrings['at_datespan_before']:&nbsp;</label>
+														<input type="checkbox" class="form-control chk-col-$skinColor" id="timeFrame">
+														<label for="timeFrame">&nbsp;</label>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<span id="timeFrameAfterCheckBox" style="display:none;">
+															<label style="float:left;">$tstrings['at_datespan_after']:&nbsp;</label>
+															<input type="checkbox" class="form-control chk-col-$skinColor" id="timeFrameAfter">
+															<label for="timeFrameAfter">&nbsp;</label>
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<span id="timeFrameE" style="display:none;">
+											<div class="row clearfix">
+												<div class="col-xs-12 col-sm-4">
+													<div class="row clearfix">
+														<div class="col-xs-12">
+														</div>
+													</div>
+												</div>
+												<div class="col-xs-12 col-sm-4">
+													<div class="row clearfix">
+														<div class="col-xs-12">
+																<label>$tstrings['at_datespan_before']:&nbsp;</label>
+																<div  class="form-line">
+																	<input type="text" class="form-control inactive" id="after">
+																</div>
+															
+														</div>
+													</div>
+												</div>
+												<div class="col-xs-12 col-sm-4">
+													<div class="row clearfix">
+														<div class="col-xs-12">
+															<span id="beforeE" style="display:none;">
+																<label>$tstrings['at_datespan_after']:&nbsp;</label>
+																<div  class="form-line">
+																	<input type="text" class="form-control inactive" id="before">
+																</div>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</span>
+										<div class="row clearfix">
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label style="float:left;">$tstrings['at_timer_offset']:&nbsp;</label>
+														<input type="checkbox" class="form-control chk-col-$skinColor" id="timerOffset">
+														<label for="timerOffset">&nbsp;</label>
+													</div>
+												</div>
+											</div>
+											<span id="timerOffsetE" style="display:none;">
+												<div class="col-xs-12 col-sm-4">
+													<div class="row clearfix">
+														<div class="col-xs-12">
+															<label>$tstrings['at_timer_offset_before']:&nbsp;</label>
+															<div  class="form-line">
+																<input type="text" class="form-control inactive" id="tbefore" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-xs-12 col-sm-4">
+													<div class="row clearfix">
+														<div class="col-xs-12">
+															<label>$tstrings['at_timer_offset_after']:&nbsp;</label>
+															<div  class="form-line">
+																<input type="text" class="form-control inactive" id="tafter" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
+															</div>
+														</div>
+													</div>
+												</div>
+											</span>
+										</div>
+										<div class="row clearfix">
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label style="float:left;">$tstrings['at_max_duration']:&nbsp;</label>
+														<input type="checkbox" class="form-control chk-col-$skinColor" id="maxDuration">
+														<label for="maxDuration">&nbsp;</label>
+													</div>
+												</div>
+											</div>
+											<span id="maxDurationE" style="display:none;">
+												<div class="col-xs-12 col-sm-4">
+													<div class="row clearfix">
+														<div class="col-xs-12">
+															<label>$tstrings['at_max_duration']</label>
+															<select class="form-control show-tick" id="maxduration">
+															</select>
+														</div>
+													</div>
+												</div>
+											</span>
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label>$tstrings['at_override_alt']:&nbsp;</label>
+														<input type="checkbox" class="form-control chk-col-$skinColor" id="overrideAlternatives" val="">
+														<label for="overrideAlternatives">&nbsp;</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row clearfix">
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label>$tstrings['at_after_event']:&nbsp;</label>
+														<select class="form-control show-tick" id="afterevent" multiple>
+															<option value="" selected="selected">$tstrings['at_after_event_standard']</option>
+															<option value="none" selected>$tstrings['at_after_event_nothing']</option>
+															<option value="standby">$tstrings['at_after_event_standby']</option>
+															<option value="shutdown">$tstrings['at_after_event_deepstandby']</option>
+															<option value="auto">$tstrings['at_after_event_auto']</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label>$tstrings['at_location']:&nbsp;</label>
+														<input type="checkbox" class="form-control chk-col-$skinColor" id="Location" val="">
+													<label for="Location">&nbsp;</label>
+													</div>
+												</div>
+											</div>
+											<span id="LocationE">
+												<div class="col-xs-12 col-sm-4">
+													<div class="row clearfix">
+														<div class="col-xs-12">
+															<label>$tstrings['at_location']</label>
+															<select class="form-control show-tick" id="location">
+															#for $location in $locations
+																<option value="$location">$location</option>
+															#end for
+															</select>
+														</div>
+													</div>
+												</div>
+											</span>
+										</div>
+										<span id="AftereventE" style="display:none;">
+											<div class="row clearfix">
+												<div class="col-xs-12 col-sm-4">
+													<div class="row clearfix">
+														<div class="col-xs-12">
+															<label style="float:left;">$tstrings['at_event_timespan']:&nbsp;</label>
+															<input type="checkbox" class="form-control chk-col-$skinColor" id="timeSpanAE">
+															<label for="timeSpanAE">&nbsp;</label>
+														</div>
+													</div>
+												</div>
+												<span id="timeSpanAEE" style="display:none;">
+													<div class="col-xs-12 col-sm-4">
+														<div class="row clearfix">
+															<div class="col-xs-12">
+																<label>$tstrings['at_event_timespan_begin']</label>
+																<div  class="form-line">
+																	<input type="text" class="form-control inactive" id="aefrom">
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-xs-12 col-sm-4">
+														<div class="row clearfix">
+															<div class="col-xs-12">
+																<label>$tstrings['at_event_timespan_end']</label>
+																<div  class="form-line">
+																	<input type="text" class="form-control inactive" id="aeto">
+																</div>
+															</div>
+														</div>
+													</div>
+												</span>
+											</div>
+										</span>
+										<div class="row clearfix">
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label style="float:left;">$tstrings['at_max_counter']:&nbsp;</label>
+														<select class="form-control show-tick" id="counter"></select>
+													</div>
+												</div>
+											</div>
+											<span id="CounterE" style="display:none;">
+												<div class="col-xs-12 col-sm-4">
+													<div class="row clearfix">
+														<div class="col-xs-12">
+															<label style="float:left;">$tstrings['at_left']:&nbsp;</label>
+															<select class="form-control show-tick" id="left"></select>
+														</div>
+													</div>
+												</div>
+												<div class="col-xs-12 col-sm-4">
+													<div class="row clearfix">
+														<div class="col-xs-12">
+															<label style="float:left;">$tstrings['at_reset_count']:&nbsp;</label>
+															<select class="form-control show-tick" id="counterFormat">
+																<option value="" selected>$tstrings['at_never']</option>
+																<option value="%m">$tstrings['at_monthly']</option>
+																<option value="%U">$tstrings['at_weekly_sun']</option>
+																<option value="%W">$tstrings['at_weekly_mon']</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</span>
+										</div>
+										<div class="row clearfix">
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label style="float:left;">$tstrings['at_bouquets']:&nbsp;</label>
+														<input type="checkbox" class="form-control chk-col-$skinColor" id="Bouquets">
+														<label for="Bouquets">&nbsp;</label>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label style="float:left;">$tstrings['at_channels']:&nbsp;</label>
+														<input type="checkbox" class="form-control chk-col-$skinColor" id="Channels">
+														<label for="Channels">&nbsp;</label>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label style="float:left;">$tstrings['at_tags']:&nbsp;</label>
+														<input type="checkbox" class="form-control chk-col-$skinColor" id="Tags">
+														<label for="Tags">&nbsp;</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row clearfix">
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<span id="BouquetsE" style="display:none" >
+															<label style="float:left;">$tstrings['at_bouquets']:&nbsp;</label>
+															<select id="bouquets"  class="form-control show-tick" multiple="multiple"></select>
+														</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<span id="ChannelsE" style="display:none" >
+															<label style="float:left;">$tstrings['at_channels']:&nbsp;</label>
+															<select id="channels" class="form-control show-tick" multiple="multiple"></select>
+														</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<span id="TagsE" style="display:none" >
+															<label style="float:left;">$tstrings['at_tags']:&nbsp;</label>
+															<select id="tags" class="form-control show-tick" multiple="multiple"></select>
+														<span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row clearfix">
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label style="float:left;">$tstrings['at_filter']:&nbsp;</label>
+														<input type="checkbox" class="form-control chk-col-$skinColor" id="Filter">
+														<label for="Filter">&nbsp;</label>
+														<button type="button" class="btn btn-default waves-effect FilterE" id="AddFilter" >$tstrings['at_add']</button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row clearfix">
+											<div class="col-xs-12">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<div class="table-responsive">
+															<table id="filterlist" class="table table-striped table-hover FilterE">
+															</table>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row clearfix">
+								#if $hasVPS == 1
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label style="float:left;">$tstrings['vps']:&nbsp;</label>
+														<input type="checkbox" class="form-control chk-col-$skinColor" id="vps">
+														<label for="vps">&nbsp;</label>
+													</div>
+												</div>
+											</div>
+														<span id="vpsE">
+												<div class="col-xs-12 col-sm-4">
+													<div class="row clearfix">
+														<div class="col-xs-12">
+															<label style="float:left;">$tstrings['safe_mode']:&nbsp;</label>
+															<input type="checkbox" class="form-control chk-col-$skinColor" id="vpssm">
+															<label for="vpssm">&nbsp;</label>
+												</div>
+											</div>
+										</div>
+											</span>
+								#end if
+								#if $hasSeriesPlugin == 1
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label style="float:left;">$tstrings['at_label_series']:&nbsp;</label>
+														<input type="checkbox" class="form-control chk-col-$skinColor" id="series_labeling">
+														<label for="series_labeling">&nbsp;</label>
+												</div>
+											</div>
+										</div>
+								#end if
+										</div>
+									</div>
+								</fieldset></form>
+							</div>
+						</div>
+					</div>
+					<div class="row clearfix">
+						<div class="col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl">
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="addAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">add</i><span>$tstrings['at_add']</span></button>
+									<button onClick="delAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="reloadAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">autorenew</i><span>$tstrings['at_reload']</span></button>
+									<button onClick="saveAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="parseAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
+									<button onClick="test_simulateAT(true); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerModal" ><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="test_simulateAT(false); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerModal" ><i class="material-icons">extension</i><span>Test</span></button>
+									<button onClick="listTimers(); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerList" ><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="atbtn btn bg-$skinColor waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 hidden-xs hidden-md hidden-lg hidden-xl">
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="addAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">add</i><span>$tstrings['at_add']</span></button>
+									<button onClick="delAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
+									<button onClick="reloadAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">autorenew</i><span>$tstrings['at_reload']</span></button>
+									<button onClick="saveAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="parseAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
+									<button onClick="test_simulateAT(true); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerModal" ><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
+									<button onClick="test_simulateAT(false); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerModal" ><i class="material-icons">extension</i><span>Test</span></button>
+									<button onClick="listTimers(); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerList" ><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="atbtn btn bg-$skinColor waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 hidden-xs hidden-sm hidden-lg hidden-xl">
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="addAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">add</i><span>$tstrings['at_add']</span></button>
+									<button onClick="delAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
+									<button onClick="reloadAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">autorenew</i><span>$tstrings['at_reload']</span></button>
+									<button onClick="saveAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
+									<button onClick="parseAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
+									<button onClick="test_simulateAT(true); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerModal" ><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="test_simulateAT(false); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerModal" ><i class="material-icons">extension</i><span>Test</span></button>
+									<button onClick="listTimers(); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerList" ><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
+									<button onClick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="atbtn btn bg-$skinColor waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 align-center hidden-xs hidden-sm hidden-md">
+							<div class="row">
+								<div class="col-xs-12 align-center">
+									<button onClick="addAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">add</i><span>$tstrings['at_add']</span></button>
+									<button onClick="delAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
+									<button onClick="reloadAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">autorenew</i><span>$tstrings['at_reload']</span></button>
+									<button onClick="saveAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
+									<button onClick="parseAT(); return false;" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
+									<button onClick="test_simulateAT(true); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerModal" ><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
+									<button onClick="test_simulateAT(false); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerModal" ><i class="material-icons">extension</i><span>Test</span></button>
+									<button onClick="listTimers(); return false;" class="atbtn btn bg-$skinColor waves-effect" data-toggle="modal" data-target="#ATTimerList" ><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
+									<button onClick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="atbtn btn bg-$skinColor waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="ATTimerModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">AutoTimer</h4>
+			</div>
+			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
+				<div id="atsimulatemodal"></div>
+					<div style="font-size:smaller;" class="table-responsive">
+						<table id="simt" border="0" class="table table-striped table-hover">
+							<thead>
+								<tr><th>State</th><th>$tstrings['name']</th><th>$tstrings['title']</th><th>$tstrings['channel']</th><th>$tstrings['start']</th><th>$tstrings['end']</th></tr>
+							</thead>
+								<tbody id='simtb'>
+								</tbody>
+						</table>
+					</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn waves-effect btn-default" data-dismiss="modal">$tstrings['close']</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="ATSettings" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">$tstrings['ats_auto_timer_settings']</h4>
+			</div>
+				<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
+					<div id="atsettingdlgcont">
+						<form>
+							<fieldset>
+								<div class="form-group">
+									<input type="checkbox" class="form-control chk-col-$skinColor" id="ats_autopoll" value="" >
+									<label for="ats_autopoll">$tstrings['ats_autopoll']</label>&nbsp;
+									<br />
+									<label for="ats_interval">$tstrings['ats_interval']</label>
+									<div class="form-line inactive">
+										<input type="text" size="5" id="ats_interval" class="form-control">
+									</div>
+									<br />
+									<label for="ats_maxdaysinfuture">$tstrings['ats_maxdaysinfuture']</label>
+									<div class="form-line inactive">
+										<input type="text" size="5" id="ats_maxdaysinfuture" class="form-control">
+									</div>
+									<br>
+									<input type="checkbox" id="ats_try_guessing" value="" class="form-control chk-col-$skinColor" >
+									<label for="ats_try_guessing">$tstrings['ats_try_guessing']</label>
+									<br />
+									<input type="checkbox" id="ats_fastscan" class="form-control chk-col-$skinColor" value="" >
+									<label for="ats_fastscan">$tstrings['ats_fastscan']</label>
+									<br />
+									<input type="checkbox" id="ats_show_in_extensionsmenu" class="form-control chk-col-$skinColor" value="" >
+									<label for="ats_show_in_extensionsmenu">$tstrings['ats_show_in_extensionsmenu']</label>
+									<br>
+									<input type="checkbox" id="ats_disabled_on_conflict" value=""  class="form-control chk-col-$skinColor" >
+									<label for="ats_disabled_on_conflict">$tstrings['ats_disabled_on_conflict']</label>
+									<br />
+									<input type="checkbox" id="ats_addsimilar_on_conflict" value="" class="form-control chk-col-$skinColor" >
+									<label for="ats_addsimilar_on_conflict">$tstrings['ats_addsimilar_on_conflict']</label>
+									<br>
+									<input type="checkbox" id="ats_notifconflict" value="" class="form-control chk-col-$skinColor" >
+									<label for="ats_notifconflict">$tstrings['ats_notifconflict']</label>
+									<br />
+									<input type="checkbox" id="ats_notifsimilar" value="" class="form-control chk-col-$skinColor" >
+									<label for="ats_notifsimilar">$tstrings['ats_notifsimilar']</label>
+									<br>
+									<input type="checkbox" id="ats_add_autotimer_to_tags" value="" class="form-control chk-col-$skinColor" >
+									<label for="ats_add_autotimer_to_tags">$tstrings['ats_add_autotimer_to_tags']</label>
+									<br />
+									<input type="checkbox" id="ats_add_name_to_tags" value="" class="form-control chk-col-$skinColor" >
+									<label for="ats_add_name_to_tags">$tstrings['ats_add_name_to_tags']</label>
+									<br>
+									<label for="ats_refresh">$tstrings['ats_refresh']</label>
+									<select id="ats_refresh" size="1"  class="form-control">
+										<option value="none" selected="selected">$tstrings['ats_refresh_none']</option>
+										<option value="auto" selected="selected">$tstrings['ats_refresh_auto']</option>
+										<option value="all" selected="selected">$tstrings['ats_refresh_all']</option>
+									</select>
+									<br />
+									<label for="ats_editor">$tstrings['ats_editor']</label>
+									<select id="ats_editor" size="1" class="form-control">
+										<option value="plain" selected="selected">$tstrings['ats_editor_plain']</option>
+										<option value="wizzard" selected="selected">$tstrings['ats_editor_wizzard']</option>
+									</select>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			<div class="modal-footer">
+				<button type="button" class="btn waves-effect btn-default" data-dismiss="modal">$tstrings['close']</button>
+				<button type="button" class="btn waves-effect bg-$skinColor" data-dismiss="modal" onClick="setAutoTimerSettings(); return false;">$tstrings['save']</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="ATTimerList" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">AutoTimer</h4>
+			</div>
+			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
+					<div id="timerdlgcont"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn waves-effect bg-red" data-dismiss="modal">$tstrings['close']</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/themes/absb/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
+<script src="/js/at-2.6.min.js"></script>
+<script src="/themes/absb/js/vti-responsive-at.js"></script>
+<script type="text/javascript">
+
+#raw
+$(function() { InitPage();});
+$.AdminBSB.input.activate();
+$.AdminBSB.select.activate();
+var $VTiMaskedATInput = $('.vti-masked-input');
+$VTiMaskedATInput.find('.time24').inputmask('hh:mm', { placeholder: '__:__ _m', alias: 'time24', hourFormat: '24' });
+
+$(function() {
+	if(!timeredit_initialized)
+		$('#editTimerForm').load('ajax/edittimer');
+	$('#atlist').on('change', function (e) {
+		var optionSelected = $("option:selected", this);
+		var valueSelected = this.value;
+		FillAT(valueSelected);
+	});
+});
+$(':text').blur()
+
+#end raw
+
+
+</script>
+#end filter
