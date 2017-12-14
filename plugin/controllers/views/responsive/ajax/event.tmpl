@@ -1,0 +1,80 @@
+#from urllib import quote
+#from json import dumps
+#set $etime = time.localtime($event.begin)
+#set $channel = $event.channel.replace("'", r"\'")
+#set $title = $event.title.replace("'", r"\'")
+#set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
+#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+
+<style>
+#station { cursor:pointer;overflow:hidden;}
+</style>
+
+<div class="row clearfix">
+	<div class="col-xs-12">
+		<h4>
+			<span id="station" onclick="zapChannel('$str($event['sref'])', '$channel')" title="$tstrings['zap']">$event['channel']</span>
+			$channel<br/>
+		</h4>
+	</div>
+</div>
+<div class="row clearfix">
+	<div class="col-xs-12">
+		#if $transcoding
+		<a class="theme-link-color theme-link-col-$skinColor" href="#" onclick="jumper8001('$sref', '$channel');" title="$tstrings['stream']: $channel"><i class="material-icons material-icons-centered">tv</i></a>
+		<a class="theme-link-color theme-link-col-$skinColor" href="#" onclick="jumper8002('$sref', '$channel');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel"><i class="material-icons material-icons-centered">phone_android</i></a>
+		#else
+		<a class="theme-link-color theme-link-col-$skinColor" target="_blank" href='../web/stream.m3u?ref=$sref&name=$channel' title="$tstrings['stream'] $channel"><i class="material-icons material-icons-centered">tv</i></a>
+		#end if
+		
+		<a class="tb theme-link-color theme-link-col-$skinColor" href="#" onclick="addTimerEvent('$sref',$event.id,false,cbAddTimerEvent);return false;" title="$tstrings['add_timer']"><i class="material-icons material-icons-centered">alarm_add</i></a>
+		<a class="tb theme-link-color theme-link-col-$skinColor" href="#addtimer" data-dismiss="modal" data-toggle="modal" data-target="#TimerModal" data-evid="$event.id" data-ref="$sref" title="Timer bearbeiten"><i class="material-icons material-icons-centered">alarm</i></a>
+		<a class="tb theme-link-color theme-link-col-$skinColor" href="#" onclick="addTimerEvent('$sref',$event.id,true,cbAddTimerEvent);return false;" title="$tstrings['add_zaptimer']"><i class="material-icons material-icons-centered">rotate_90_degrees_ccw</i></a>
+		
+		#if $at
+			<a class="tb" href="#" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin_str','$event.end');return false;" title="$tstrings['add_autotimer']">
+				<i class="fa fa-timerat"></i>
+			</a>
+		#end if
+		
+		<a class="d_timer tb" href="#" onclick="delTimerEvent('$sref','$event.id');return false;" title="$tstrings['delete_timer']">
+		
+		#if $kinopoisk
+			<a class="theme-link-color theme-link-col-$skinColor"  target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)"><img src="../images/kinopoisk.png" style="width:12px; height:12px; margin:0px 3px 0px 0px" title="$tstrings['search_kinopoisk']" border="0"></a>
+			#else
+			<a class="theme-link-color theme-link-col-$skinColor" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']">IMDb</a>
+		#end if
+	</div>
+</div>
+<div class="row clearfix">
+	<div class="col-xs-12">
+		<h5>$tstrings[("day_" + ($time.strftime("%w", $etime)))]. $time.strftime("%d", $etime). $tstrings[("month_" + ($time.strftime("%m", $etime)))] $event.begin_str - $event.end&nbsp;&nbsp;($int($event.duration/60) min)</h5>
+	</div>
+</div>
+<div class="row clearfix">
+	<div class="col-xs-12">
+		<h4>$event.title</h4>
+#if $event.title != $event.shortdesc
+		<h5>$event.shortdesc</h5>
+#end if
+	</div>
+</div>
+<div class="row clearfix">
+	<div class="col-xs-12">
+		<p>$(event.longdesc.replace("\n","<br/>").replace(u"\u008a","<br/>"))</p>
+	</div>
+</div>
+
+<script>
+var theevent = $dumps($event);
+if (picons[theevent['channel']])
+	\$('#station').html('<img src="'+picons[theevent['channel']]+'" width="80" />');
+if (typeof channelpicon !== 'undefined') {
+	\$('#station').html('<img src="'+ channelpicon + '" width="80" />');
+} else if (typeof picons !== 'undefined') {
+	if (picons[theevent['channel']]) {
+		\$('#station').html('<img src="'+picons[theevent['channel']]+'" width="80" />');
+	}
+}
+</script>

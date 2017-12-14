@@ -1,0 +1,83 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+
+<div class="table-responsive block-header">
+	<table class="table table-striped table-hover">
+
+#for $channel in $channels
+<tr>
+#if $showchannelpicon and $channel.has_key('picon')
+<td style="vertical-align:middle;width:120px;">
+	<div>
+		<img class="img-fluid" style="max-width:100px;" src="$channel.picon" title="">
+	</div>
+#else
+<td style="vertical-align:middle;width:0px;">
+#end if
+</td>
+<td style="vertical-align:middle;">
+	<div>
+	#set $name =  $channel.name.replace("'", r"\'")
+	<h2>
+			#if $channel.has_key('protection') and $channel.protection <> "0"
+				<a href="#" class="theme-link-color theme-link-col-$skinColor" onclick="return false" title="$tstrings['locked']"><i class="material-icons material-icons-centered">play_circle_outline</i>$channel.name</a>
+			#else
+				<a href="#" class="theme-link-color theme-link-col-$skinColor" onclick="zapChannel('$channel.ref', '$name'); return false" title="$tstrings['zap_to'] $channel.name">$channel.name</a>
+			#end if
+	</h2>
+	</div>
+	<div class="vti-vspace-10"></div>
+	<div>
+	#if $channel.has_key('protection') and $channel.protection <> "0"
+		<a class="theme-link-col-fixed" target="_blank" href='#' title="$tstrings['locked']"><i class="material-icons material-icons-centered">lock</i></a>
+	#else
+		#if $type == "radio"
+			<a class="theme-link-col-fixed" href="#" onclick="addTimer('','$channel.ref','$channel.name',''); return false" title="$tstrings['add_timer']"><i class="material-icons material-icons-centered">access_time</i></a>
+		#end if
+		#if '4097:' in $channel.ref
+			#set $rname = ":" + $channel.name
+			#set $lnk = $channel.ref.replace("4097:0:1:0:0:0:0:0:0:0:", "").replace("%3a", ":").replace($rname, "")
+			<a class="theme-link-col-fixed" target="_blank" href="$lnk" title="$tstrings['stream']: $channel.name"><i class="material-icons material-icons-centered">tv</i></a>
+		#else
+			<a class="theme-link-col-fixed" href="#" onclick="zapChannel('$channel.ref', '$name'); return false" title="$tstrings['zap_to'] $channel.name"><i class="material-icons material-icons-centered">play_circle_outline</i></a>
+			<a class="theme-link-col-fixed" href="#" onclick="open_epg_dialog('$channel.ref','$name')" title="$tstrings['show_epg_for'] $channel.name" data-toggle="modal" data-target="#EPGModal"><i class="material-icons material-icons-centered">today</i></a>
+			<a class="theme-link-col-fixed" href="#" onclick="jumper8001('$channel.ref', '$name');" title="$tstrings['stream']: $channel.name"><i class="material-icons material-icons-centered">tv</i></a>
+			#if $transcoding
+			<a class="theme-link-col-fixed" href="#" onclick="jumper8002('$channel.ref', '$name');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel.name"><i class="material-icons material-icons-centered">phone_android</i></a>
+			#end if
+		#end if
+	#end if
+	</div>
+</td>
+#if $channel.has_key('protection') and $channel.protection == "0" and $channel.has_key('now_title')
+<td style="vertical-align:middle;">
+	<div>
+		<div>
+		<h2><a class="theme-link-color theme-link-col-$skinColor" href='#' data-ref="$channel.ref" data-id="$channel.now_ev_id" data-toggle="modal" data-target="#EventModal" onClick="loadeventepg('$channel.now_ev_id', '$channel.ref', '$channel.picon');return false;" title="$channel.now_title">$channel.now_title</a>&nbsp;(+$channel.now_left min)</h2>
+		</div>
+		<div>$channel.now_begin &mdash; $channel.now_end &nbsp;&nbsp;&nbsp;</div>
+		<div class="progress" style="margin-bottom:0px;width:200px;">
+		<div class="progress-bar bg-$skinColor progress-bar-striped" role="progressbar" aria-valuenow="${channel.progress}" aria-valuemin="0" aria-valuemax="100" style="width:${channel.progress}%">
+		<span>${channel.progress}%</span>
+		</div>
+		</div>
+	</div>
+</td>
+<td style="vertical-align:middle;">
+	<div>
+		<div>
+			<h2><a class="theme-link-color theme-link-col-$skinColor" href='#' data-ref="$channel.ref" data-id="$channel.next_ev_id" data-toggle="modal" data-target="#EventModal" onClick="loadeventepg('$channel.next_ev_id', '$channel.ref', '$channel.picon');return false;" title="$channel.next_title">$channel.next_title</a>&nbsp;($channel.next_duration min)</h2>
+		</div>
+		<div>$channel.next_begin &mdash; $channel.next_end &nbsp;&nbsp;&nbsp;</div>
+	</div>
+</td>
+#else
+<td style="vertical-align:middle;">
+</td>
+<td style="vertical-align:middle;">
+</td>
+#end if
+</tr>
+#end for
+</table
+</div>

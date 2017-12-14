@@ -1,0 +1,208 @@
+#filter WebSafe
+#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div class="card">
+		<div class="header">
+			<div class="row clearfix">
+				<div class="col-xs-12 col-sm-6">
+					<h2 id="configtitle"><i class="material-icons material-icons-centered">refresh</i>EPG Refresh</h2>
+				</div>
+			</div>
+		</div>
+<div class="body" >
+	<div id="content_main">
+		<div class="row clearfix vti-masked-input" id="info">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="epgrefreshcontent">
+				<form>
+<div class="form-group">
+				<div class="row clearfix">
+					<div class="col-xs-12 col-sm-4">
+						<div class="row clearfix">
+							<div class="col-xs-12">
+								<label>$tstrings['er_enabled']:&nbsp;</label>
+								<input type="checkbox" id="er_enabled" class="form-control chk-col-$skinColor" value="">
+								<label for="er_enabled">&nbsp;</label>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<div class="row clearfix">
+							<div class="col-xs-12">
+								<label>$tstrings['er_enable_messages']:&nbsp;</label>
+								<input type="checkbox" id="er_enablemessage" class="form-control chk-col-$skinColor" value="">
+								<label for="er_enablemessage">&nbsp;</label>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<div class="row clearfix">
+							<div class="col-xs-12">
+								<label>$tstrings['er_adapter']:&nbsp;</label>
+								<select id="er_adapter" class="form-control" value="">
+									<option value="main" selected="selected">$tstrings['er_main']</option>
+									<option value="pip">$tstrings['er_pip']</option>
+									<option value="pip_hidden">$tstrings['er_pip_hidden']</option>
+									<option value="record">$tstrings['er_fake_recording']</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row clearfix">
+					<div class="col-xs-12 col-sm-4">
+						<div class="row clearfix">
+							<div class="col-xs-12">
+								<label>$tstrings['er_begin']:&nbsp;</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="material-icons">access_time</i>
+									</span>
+									<div class="form-line">
+										<input type="text" id="er_begin" value="" class="form-control time24" placeholder="06:30">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<div class="row clearfix">
+							<div class="col-xs-12">
+								<label>$tstrings['er_end']:&nbsp;</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="material-icons">access_time</i>
+									</span>
+									<div class="form-line">
+										<input type="text" id="er_end" value="" class="form-control time24" placeholder="06:30">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<div class="row clearfix">
+							<div class="col-xs-12">
+								<label>$tstrings['er_delay_standby']:&nbsp;</label>
+								<div class="form-line">
+									<input type="text" id="er_delay_standby" class="form-control" placeholder="10">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row clearfix">
+					<div class="col-xs-12 col-sm-4">
+						<div class="row clearfix">
+							<div class="col-xs-12">
+								<label>$tstrings['er_interval_sec']:&nbsp;</label>
+								<div class="form-line">
+									<input type="text" id="er_interval" class="form-control" placeholder="10">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<div class="row clearfix">
+							<div class="col-xs-12">
+								<label>$tstrings['er_afterevent']:&nbsp;</label>
+								<input type="checkbox" id="er_afterevent" class="form-control chk-col-$skinColor" value="">
+								<label for="er_afterevent">&nbsp;</label>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<div class="row clearfix">
+							<div class="col-xs-12">
+								<label>$tstrings['er_force']:&nbsp;</label>
+								<input type="checkbox" id="er_force" class="form-control chk-col-$skinColor" value="">
+								<label for="er_force">&nbsp;</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row clearfix">
+					<div class="col-xs-12 col-sm-4">
+						<div class="row clearfix">
+							<div class="col-xs-12">
+								<label>$tstrings['er_wakeup']:&nbsp;</label>
+								<input type="checkbox" id="er_wakeup" class="form-control chk-col-$skinColor" value="">
+								<label for="er_wakeup">&nbsp;</label>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12  col-sm-4">
+						<label>$tstrings['at_bouquets']:&nbsp;</label>
+						<select id="bouquets" class="form-control show-tick" multiple></select>
+					</div>
+					<div class="col-xs-12  col-sm-4">
+						<label>$tstrings['at_channels']:&nbsp;</label>
+						<select id="channels" class="form-control show-tick" multiple data-live-search="true"></select>
+					</div>
+				</div>
+				<span id="er_hasAT">
+					<div class="row clearfix">
+						<div class="col-xs-12 col-sm-4">
+							<div class="row clearfix">
+								<div class="col-xs-12">
+									<label>$tstrings['er_inherit_autotimer']:&nbsp;</label>
+									<input type="checkbox" id="er_inherit_autotimer" class="form-control chk-col-$skinColor" value="">
+									<label for="er_inherit_autotimer">&nbsp;</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<div class="row clearfix">
+								<div class="col-xs-12">
+									<label>$tstrings['er_parse_autotimer']:&nbsp;</label>
+									<input type="checkbox" id="er_parse_autotimer" class="form-control chk-col-$skinColor" value="">
+									<label for="er_parse_autotimer">&nbsp;</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</span>
+			</div>
+		</form>
+	</div>
+</div>
+	<div class="row clearfix">
+		<div class="col-xs-12 align-center">
+			<div id="actions">
+				<button id="epgrbutton0" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">autorenew</i><span>$tstrings['er_reload']</span></button>
+				<button id="epgrbutton1" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">save</i><span>$tstrings['er_save']</span></button>
+				<button id="epgrbutton2" class="atbtn btn bg-$skinColor waves-effect" ><i class="material-icons">refresh</i><span>$tstrings['er_refresh']</span></button>
+			</div>
+		</div>
+	</div>
+
+					
+	<div id="statuscont" style="display:none;margin-top:10px;">
+	<div id="statusbox" class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+		<p>
+			<span id="statusicon" class="ui-icon ui-icon-alert" style="margin-right: .3em;"></span> 
+			<span id="statustext"></span>
+		</p>
+	</div>
+	</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+	</div>
+</div>
+
+<script src="/themes/absb/js/vti-responsive-epgr.js"></script>
+<script src="/themes/absb/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
+<script type="text/javascript">
+#raw
+$.AdminBSB.input.activate();
+$.AdminBSB.select.activate();
+var $VTiMaskedInput = $('.vti-masked-input');
+$VTiMaskedInput.find('.time24').inputmask('hh:mm', { placeholder: '__:__ _m', alias: 'time24', hourFormat: '24' });
+$(':text').blur();
+#end raw
+</script>
+#end filter

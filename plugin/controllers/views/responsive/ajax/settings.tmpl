@@ -1,0 +1,486 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+<style>
+#packagelist {padding:0;}
+#packagelist li.installed {font-weight:bold;}
+#packagelist li {list-style-type:none;margin:4px 0;}
+#packagelist li i {margin:0 10px;}
+#packagelist .g {color:green;}
+#packagelist .r {color:red;}
+#searchpkd {margin:5px 5px; display:inline-block;}
+#packagelist li div {display:inline-table;}
+#packagelist li div span {font-weight:initial;font-size:smaller;}
+#tmpfiles {padding:0;}
+#tmpfiles li {list-style-type:none;margin:4px 0;}
+</style>
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div class="card">
+		<div class="header">
+			<div class="row clearfix">
+				<div class="col-xs-12 col-sm-8 col-md-9">
+					<h2 id="configtitle"><i class="material-icons material-icons-centered">settings</i>$tstrings['settings']</h2>
+				</div>
+				<div class="col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl">
+					<div class="row vti-vspace-20"></div>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-3">
+					<select id="settingselection" class="form-control" value="">
+						<option value="packagemenu">$tstrings['settings']</option>
+				#for $sec in $configsections
+					<option value="$sec["key"]"  >$sec["description"]</option>
+				#end for
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="body" >
+			<div id="content_main">
+				<div id="info">
+					<div id="scontent"></div>
+					<div style="display:none" id="thistitlepackages"><i class='material-icons material-icons-centered'>settings</i>$tstrings['settings'] - $tstrings['packages']</div>
+					<div id='packages' style="display:none;">
+						<div id="content_main2">
+							<div class="row clearfix">
+								<div class="col-xs-12">
+									<ul class="nav nav-tabs" >
+										<li><a data-toggle="tab" href='#tab' class="pkgbtn" id='pkgbtn1' >$tstrings['update']</a></li>
+										<li><a data-toggle="tab" href='#tab' class="pkgbtn" id='pkgbtn2' >$tstrings['installed']</a></li>
+										<li><a data-toggle="tab" href='#tab' class="pkgbtn" id='pkgbtn3' >$tstrings['all']</a></li>
+										<li><a data-toggle="tab" href='#tab' class="pkgbtn" id='pkgbtn4' >$tstrings['more']</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="row clearfix" id="pkgmore">
+								<div class="col-xs-12">
+									<div class="card">
+										<div class="body" >
+											<div class="row clearfix">
+												<div class="col-xs-12">
+													<div class="row clearfix align-center">
+														<div class="col-xs-12 col-sm-6 col-md-4">
+															<button id="updatefeed" type="button" class="btn waves-effect responsivebtn bg-$skinColor">$tstrings['update_feed']</button>
+														</div>
+														<div class="col-xs-12 col-sm-6 col-md-4">
+															<button id="upgrade" type="button" class="btn waves-effect responsivebtn bg-$skinColor">$tstrings['upgrade_packages']</button>
+														</div>
+														<span id="pkguploadOne">
+															<div class="col-xs-12 col-sm-6 col-md-4">
+																<button id="selectfile" type="button" class="btn waves-effect responsivebtn bg-$skinColor">$tstrings['select_ipk_upload']</button>
+															</div>
+														</span>
+													</div>
+													<span id="pkguploadTwo">
+														<div class="row clearfix">
+															<div class="col-xs-12">
+																<i class='material-icons material-icons-centered'>folder_open</i>$tstrings['uploaded_files']:
+															</div>
+														</div>
+														<div class="row clearfix">
+															<div class="col-xs-12">
+																<ul id='tmpfiles'></ul>
+																<form id="uploadpkg" style="display:none" action"uploadpkg"="" method="post" enctype="multipart/form-data" encoding="multipart/form-data">
+																	<input type="file" name="rfile" id="rfile" maxlength="100000">
+																	<input type="hidden" name="filename" id="filename">
+																</form>
+															</div>
+														</div>
+													</span>
+													<div id="resulttext"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row clearfix" id="tblpackages">
+								<div class="col-xs-12">
+									<div class="tab-content">
+										<div class="card">
+											<div class="body" >
+												<div class="tab-pane active" id="tab">
+													<div class="row clearfix form-group">
+														<div class="col-xs-1 align-right">
+															<i class='material-icons material-icons-centered'>search</i>
+														</div>
+														<div class="col-xs-6 col-sm-4 align-left">
+															<div class="form-line">
+																<input type="text"  class="form-control inactive" placeholder="SEARCH ..." id="searchpk" />
+															</div>
+														</div>
+													</div>
+													<div class="row clearfix">
+														<ul id="packagelist">
+															<div class="col-xs-12 align-center">
+																<div class="loader">
+																	<div class="preloader">
+																		<div class="spinner-layer pl-red">
+																			<div class="circle-clipper left">
+																				<div class="circle"></div>
+																			</div>
+																			<div class="circle-clipper right">
+																				<div class="circle"></div>
+																			</div>
+																		</div>
+																	</div>
+																	<p>$tstrings['loading']...</p>
+																</div>
+															</div>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+#raw
+// TODO minimize js
+
+var filteredpkg;
+var filterval='';
+
+var thisspinner = "<div class='col-xs-12 align-center'><div class='loader'><div class='preloader'><div class='spinner-layer pl-red'><div class='circle-clipper left'><div class='circle'></div></div><div class='circle-clipper right'><div class='circle'></div></div></div></div><p>" + tstr_loading + "...</p></div>";
+
+function prepareUpload() {
+	var fn = $(this).val();
+	fn = fn.replace('C:\\fakepath\\','');
+	swal({
+			title: tstrings_upload_package + ' ?',
+			text: fn,
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: tstrings_yes + ' !',
+			cancelButtonText: tstrings_no_cancel + ' !',
+			closeOnConfirm: true,
+			closeOnCancel: true
+		}, function (isConfirm) {
+			if (isConfirm) {
+				var frm = document.forms["uploadpkg"];
+				frm.filename.value = fn;	
+
+				$('form#uploadpkg')
+					.unbind('submit')
+					.submit(function (e) 
+				{
+					var formData = new FormData(this);
+					$.ajax({
+						url: '/ipkg/upload',
+						type: 'POST',
+						data: formData,
+						mimeType:"multipart/form-data",
+						contentType: false,
+						cache: false,
+						processData:false,
+						dataType: 'json',
+						success: function (data, textStatus, jqXHR) {
+							var r = data.Result;
+							if (r[0]!=true) {
+								alert(tstrings_upload_error + ": " + r[1]);
+							}
+							ShowPackages('pkgbtn4');
+						},
+						error: function (jqXHR, textStatus, errorThrown) {
+							alert(tstrings_upload_error + ": " + errorThrown);
+							ShowPackages('pkgbtn4');
+						}
+					});
+					e.preventDefault();
+					try {
+						e.unbind();
+					} catch(e){}
+				});
+				$('form#uploadpkg').submit();
+			} else {
+				swal(tstrings_cancelled, tstrings_upload_package, "error");
+			}
+		});
+}
+function getPkgFilename(){
+	var frm = document.forms["form_uploadpkg"];
+	frm.filename.value = frm.file.value;
+}
+
+function ShowFilterPackages()
+{
+	var row='';
+	$.each( filteredpkg, function( key, val ) {
+		var name = val['name'];
+		var desc = val['d'];
+		if(filterval=== '' || name.toLowerCase().search(filterval.toLowerCase()) !== -1 || desc.toLowerCase().search(filterval.toLowerCase()) !== -1) {
+			var upd = (val['u'] == '0') ? "":val['u'];
+			var i = val['i'];
+			var sel = (i == '1') ? "class='installed' ":"";
+			if(i == '1' && val['u'] != '0')
+				i = '2';
+			var ico = (i == '1') ? "delete_forever":"get_app";
+			if(upd!='') {
+				upd = " -> " + upd;
+				ico = "system_update"
+			}
+			row += "<li "+sel+"data-i='"+i+"' data-n='"+name+"'><a href='#' class='list-group-item list-group-item-action'><i class='material-icons material-icons-centered'>" + ico + "</i><div>" + name +" (" + val['v'] + upd +")<br><span>" + desc + "</span></div></a></li>";
+		}
+	});
+	$("#packagelist").html(row);
+	
+	$('#packagelist > li').click( function () {
+		ask($(this),false);
+	});
+}
+
+function FillPackages(pkgs,mode)
+{
+	var _update = $.grep(pkgs, function(v) {
+		return (v.u != '0');
+	});
+	var _installed = $.grep(pkgs, function(v) {
+		return (v.i == '1');
+	});
+
+	if (mode == 'pkgbtn1')
+		filteredpkg = _update.slice();
+	else if (mode == 'pkgbtn2') {
+		filteredpkg = _installed.slice();
+	} else
+		filteredpkg = pkgs.slice();
+
+	ShowFilterPackages();
+
+}
+
+function ask(obj,man)
+{
+		var pk = $(obj).html();
+	var i = $(obj).data('i');
+	if(!man) {
+		pk = $(obj).data('n');
+	}
+	
+	var cmd = '';
+
+	if(i=='1') {
+		confirm_txt = tstrings_remove_package
+		cmd = 'remove&package=' + pk;
+	} else if (i=='2') {
+		confirm_txt = tstrings_update_package
+			cmd = 'install&package=' + pk;
+	} else {
+		confirm_txt = tstrings_install_package
+		cmd = 'install&package=' + pk;
+	}
+	
+	if(cmd != '')
+	{
+		swal({
+			title: confirm_txt,
+			text: pk,
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: tstrings_yes + ' !',
+			cancelButtonText: tstrings_no_cancel + ' !',
+			closeOnConfirm: true,
+			closeOnCancel: true
+		}, function (isConfirm) {
+			if (isConfirm) {
+				Action('/ipkg?command='+cmd,'true');
+				$("#tblpackages").hide();
+				$("#pkgmore").show();
+				$('#pkgbtn4').prop('checked', true); 
+			} else {
+				swal(tstrings_cancelled, confirm_txt, "error");
+			}
+		});
+	}
+}
+
+function Action(action,rl)
+{
+	$('#pkgbtn4').click();
+	$('#resulttext').html(thisspinner);
+	$.ajax({
+		url: action,
+		success: function ( data ) {
+			var txt = data.replace('<html><body>','').replace('</body></html>','').replace(/<br>/g,'');
+			$('#resulttext').html('<pre>' + txt + '</pre>');
+			if(rl !== undefined) {
+				SetLSValue('pkg-date','');
+			}
+		},
+		error: function ( data ) {
+			var txt = data.replace('<html><body>','').replace('</body></html>','').replace(/<br>/g,'');
+			$('#resulttext').html(data);;
+		}
+	});
+}
+
+function ShowPackages(mode)
+{
+	$("#tblpackages").hide();
+	if (mode == 'pkgbtn4') {
+		$("#pkgmore").show();
+		$('#tmpfiles').empty();
+		$.ajax({
+			url: '/ipkg?command=tmp',
+			dataType: 'json',
+			success: function (data) {
+				var files = '';
+				$.each( data.ipkfiles, function( key, val ) {
+					files += "<li><a href='#' class='list-group-item list-group-item-action'><i class='material-icons material-icons-centered'>get_app</i><span>/tmp/" + val['name'] + "</span></a></li>";
+				});
+				$('#tmpfiles').html(files);
+				$('#tmpfiles > li ').click( function () {
+					ask($(this).parent().find('span'),true);
+				});
+				if ( files === '' ) {
+					$('#pkguploadTwo').hide();
+				} else {
+					$('#pkguploadTwo').show();
+				}
+				
+			}
+		});
+		return;
+	}
+
+	$("#pkgmore").hide();
+	$("#tblpackages").show();
+
+	var date = new Date();
+	date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+date.getHours();
+
+	var cache = GetLSValue('pkg-date','')
+	if(cache === date) {
+		cache = GetLSValue('pkg-data',null);
+		if(cache != null) {
+			var pkgs = JSON.parse(cache);
+			FillPackages(pkgs,mode);
+			return;
+		}
+	}
+
+	$.ajax({
+		url: '/ipkg?command=listall',
+		success: function ( data ) {
+			SetLSValue('pkg-date',date);
+			SetLSValue('pkg-data',data);
+			var pkgs = JSON.parse(data);
+			FillPackages(pkgs,mode);
+		}
+	});
+}
+
+function load_scontent(url) {
+	$("#scontent").html('');
+	$("#osettings").hide();
+	$("#packages").hide();
+	if(url=='owsettings')
+	{
+		$("#osettings").show();
+		$("#selectheme").change(function() {
+			ChangeTheme($(this).val());
+		});
+		return;
+	}
+	if(url=='packages')
+	{
+		$("#packages").show();
+		ShowPackages('pkgbtn1');
+		$("#configtitle").html($('#thistitlepackages').html());
+		document.getElementById("pkgbtn1").click();
+		return;
+	}
+	$("#scontent").load(url , function () {
+		$("#scontent").find("#content_main").attr("id","content_main1");
+	});
+	return false;
+}
+
+$(function() { 
+	$('#settingselection').on('change', function (e) {
+		var optionSelected = $("option:selected", this);
+		var valueSelected = this.value;
+		if(valueSelected == 'packagemenu')
+		{
+			$("#scontent").hide();
+			$("#packages").show();
+			ShowPackages('pkgbtn4');
+			$("#configtitle").html($('#thistitlepackages').html());
+			document.getElementById("pkgbtn4").click();
+		} else {
+			$("#packages").hide();
+			$("#scontent").show();
+			$("#scontent").load('ajax/config?section=' + valueSelected, function () {
+				$("#scontent").find("#content_main").attr("id","content_main1");
+			});
+		}
+	});
+
+	$("#scontent").load('ajax/config?section=usage', function () {
+		$("#scontent").find("#content_main").attr("id","content_main1");
+	});
+
+	$("input[name=zapstream]").click(function(evt) {
+		$('input[name=zapstream]').attr('checked', evt.currentTarget.checked);
+		webapi_execute("/api/zapstream?checked=" + evt.currentTarget.checked);
+	});
+
+	$("input[name=showchannelpicon]").click(function(evt) {
+		$('input[name=showchannelpicon]').attr('checked', evt.currentTarget.checked);
+		webapi_execute("/api/showchannelpicon?checked=" + evt.currentTarget.checked);
+	});
+	
+	$('#tb2').buttonset();
+	$('#tb3').buttonset();
+	$('.pkgbtn').click(function () { ShowPackages($(this).attr('id')); });
+	$('#selectfile').click(function () {$("#rfile").trigger('click'); });
+	$('#rfile').change(prepareUpload);
+	$('#updatefeed').click(function () {
+		Action('/ipkg?command=update',true); });
+	$('#upgrade').click(function () {
+		Action('/ipkg?command=upgrade','true'); });
+	
+	$('#searchpk').focus(function () { 
+		if ($(this).val() === '...') {
+			$(this).val('');
+		}
+	}).keyup(function (){
+		if ($(this).data('val') !== this.value) {
+			filterval=this.value;
+			ShowFilterPackages();
+		}
+		$(this).data('val', this.value);
+	}); /*.blur(function (){
+		filterval='';
+		$(this).data('val', '');
+		if ($(this).val() === '') {
+			$(this).val('...');
+		}
+	});
+	*/
+});
+
+
+	
+$.AdminBSB.input.activate();
+#end raw
+#if $allowipkupload
+var noupload=true;
+#else
+\$(function() { 
+	\$("#pkguploadOne").hide();
+	\$("#pkguploadTwo").hide();
+});
+var noupload=false;
+#end if
+</script>

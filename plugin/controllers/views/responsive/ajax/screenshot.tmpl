@@ -1,0 +1,60 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+
+<div id="responsivespinnerscreenshot"></div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div class="card">
+		<div class="header">
+			<div class="row clearfix">
+				<div class="col-xs-12 col-sm-6">
+					<h2><i class="material-icons material-icons-centered">photo_camera</i>$tstrings['screenshot']</h2>
+				</div>
+			</div>
+			<ul class="header-dropdown m-r--5">
+				<li class="dropdown">
+				<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+					<ul class="dropdown-menu pull-right" id="screenshotbutton">
+						<li><a href="#" id="screenshotbutton0" name="screenshotbutton" >$tstrings['all']</a></li>
+						<li><a href="#" id="screenshotbutton1" name="screenshotbutton" >$tstrings['video']</a></li>
+						<li><a href="#" id="screenshotbutton2" name="screenshotbutton" >$tstrings['osd']</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="body" >
+			<div class="row clearfix">
+				<img id="screenshotimage" class="img-fluid rounded" src="" alt="$tstrings['loading'] ...">
+			</div>
+			<div class="row clearfix">
+				<p></p>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-3 col-md-offset-4 align-right">
+					<div class="switch panel-switch-btn">
+						<label><span class="m-r-10 font-12">$tstrings['high_resolution']</span>
+						<label><input type="checkbox" id="ssr_hd"><span class="lever switch-col-$skinColor"></span></label>
+					</div>
+					<div class="switch panel-switch-btn">
+						<label><span class="m-r-10 font-12">$tstrings['refresh_auto']</label>
+								<input  class="input-field" type="text" size="2" id="ssr_i" value="30"><label>$tstrings['seconds']</label>
+							</span>
+						<label><input type="checkbox" id="ssr_s"><span class="lever switch-col-$skinColor"></span></label>
+					</div>
+				</div>
+			</div>
+			<div class="row clearfix align-center">
+				<button class="btn bg-$skinColor waves-effect" onclick="grabScreenshot('auto'); return false">$tstrings['refresh']</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+#raw
+$(function() {SSHelper.setup()});
+#end raw
+</script>
+
+
+
+

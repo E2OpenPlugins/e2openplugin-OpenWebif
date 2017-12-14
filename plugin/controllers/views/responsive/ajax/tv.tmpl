@@ -1,0 +1,32 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div class="card">
+		<div class="header">
+			<div class="row clearfix">
+				<div class="col-xs-12 col-sm-6">
+					<h2><i class="material-icons material-icons-centered">tv</i>$tstrings['television']</h2>
+				</div>
+			</div>
+			<ul class="header-dropdown m-r--5">
+				<li class="dropdown">
+					<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+					<ul class="dropdown-menu pull-right" id="tvbuttons">
+						<li><a href="#" id="btn0" >$tstrings['current']</a></li>
+						<li><a href="#" id="btn1" >$tstrings['bouquets']</a></li>
+						<li><a href="#" id="btn2" >$tstrings['providers']</a></li>
+						<li><a href="#" id="btn3" >$tstrings['satellites']</a></li>
+						<li><a href="#" id="btn4" >$tstrings['all_channels']</a></li>
+						<li><a href="#" id="btn5epg" onClick="load_maincontent('ajax/myepg?epgmode=tv'); return false;">$tstrings['epg']</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="body">
+			<div id="content_main" class="ui-widget-content"><div id="tvcontentmain"><div id="toolbar-header" class="ui-widget-header">
+			</div><div id="tvcontent"></div></div></div>
+			<script type="text/javascript">
+				\$(function() { InitBouquets(true);});
+			</script>
+		</div>
+	</div>
+</div>

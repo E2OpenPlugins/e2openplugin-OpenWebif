@@ -1,0 +1,189 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
+
+
+<form>
+<div class="form-group">
+	<div class="row clearfix">
+		<div class="col-sm-6">
+			<input type="checkbox" id="enabled" value="1" />
+			<label for="enabled">$tstrings['enabled']:</label>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-sm-6">
+			<input type="checkbox" name="justplay" id="justplay" value="0" />
+			<label for="justplay">$tstrings['just_play']:</label>
+		</div>
+		<div class="col-sm-6">
+			<input type="checkbox" name="always_zap" id="always_zap" value="0" />
+			<label for="always_zap">$tstrings['record_zap']:</label>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-sm-3">
+			<label>$tstrings['name']:</label>
+		</div>
+		<div class="col-sm-9">
+			<div class="form-line">
+				<input type="text"  class="form-control" name="timername" id="timername" placeholder="$tstrings['name']" />
+			</div>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-sm-3">
+			<label>$tstrings['description']:</label>
+		</div>
+		<div class="col-sm-9">
+			<div class="form-line">
+				<textarea rows="1" class="form-control no-resize auto-growth" name="description" id="description" placeholder="$tstrings['description']" />
+			</div>
+		</div>
+	</div>
+	<div class="row clearfix"><p>&nbsp;</p></div>
+	<div class="row clearfix">
+		<div class="col-sm-3">
+			<label>$tstrings['channel']:</label>
+		</div>
+		<div class="col-sm-3">
+			<input id="cbradio" type="checkbox" name="group1[]" />
+			<label for="cbradio">($tstrings['radio'])</label>
+		</div>
+		<div class="col-sm-6">
+			<select class="form-control show-tick no-default-select" id="bouquet_select" name="bouquet_select">
+				<option value="0">$tstrings['nothing']</option>
+			</select>
+		</div>
+	</div>
+	<div class="row clearfix"><p>&nbsp;</p></div>
+	<div class="row clearfix">
+		<div class="col-sm-6">
+			<label>$tstrings['start']:</label>
+			<input type="text" class="form-control" id="timerbegin" placeholder="Please choose a date..." />
+		</div>
+		<div class="col-sm-6">
+			<label>$tstrings['end']:</label>
+			<input type="text" id="timerend" class="form-control" placeholder="Please choose a date..." />
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-sm-12">
+			<label>$tstrings['repeated']:</label>
+		</div>
+	</div>
+	<div class="row clearfix">
+		#set $i=0
+		#for $day in [$tstrings['mo'], $tstrings['tu'], $tstrings['we'], $tstrings['th'], $tstrings['fr'], $tstrings['sa'], $tstrings['su']]
+			#set $value = 2 ** $i
+			<div class="col-sm-1">
+				<input type="checkbox" name="repeated" id="day$i" value="$value" />
+				<label for="day$i">$day</label>
+			</div>
+			#set $i=$i+1
+		#end for
+	</div>
+	<div class="row clearfix">
+		<div class="col-sm-3">
+			<label>$tstrings['location']:</label>
+		</div>
+		<div class="col-sm-9">
+			<select class="form-control show-tick" id="dirname" name="dirname" >
+				<option value="None">$tstrings['default']</option>
+			</select>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-sm-3">
+			<label>$tstrings['after_event']:</label>
+		</div>
+		<div class="col-sm-9">
+			<div class="form-group">
+			<select class="form-control show-tick" id="afterevent" name="afterevent">
+			<option value="0">$tstrings['nothing']</option>
+			<option value="1">$tstrings['standby']</option>
+			<option value="2">$tstrings['shutdown']</option>
+			<option value="3" selected="">$tstrings['auto']</option>
+			</select>
+			</div>
+		</div>
+	</div>
+
+	<span id="has_vpsplugin1">
+		<div class="row clearfix">
+			<div class="col-sm-6">
+				<input type="checkbox" name="vpsplugin_enabled" id="vpsplugin_enabled" value="0" />
+				<label for="vpsplugin_enabled">$tstrings['vps']:</label>
+			</div>
+			<span id="has_vpsplugin2">
+				<div class="col-sm-6">
+					<input type="checkbox" name="vpsplugin_safemode" id="vpsplugin_safemode" value="0" />
+					<label for="vpsplugin_safemode">$tstrings['safe_mode']:</label>
+				</div>
+			</span>
+		</div
+	</span>
+
+	<div class="row clearfix">
+		<div class="col-sm-3">
+			<label>$tstrings['tags']:</label>
+		</div>
+		<div class="col-sm-9">
+			<span id="tagsnew" style="margin:5px"></span>
+		</div>
+	</div>
+</div>
+</form>
+
+<script type="text/javascript">
+
+#raw
+
+initTimerEditBegin();
+
+$('.cbtvr').click(function() {
+	$('input[name="' + this.name + '"]').not(this).prop('checked', false);
+	initTimerBQ($('#cbradio').is(':checked'));
+});
+
+$('#vpsplugin_enabled').click(function() { checkVPS();});
+
+$('#always_zap').click(function() {
+	$('#justplay').prop("disabled",$('#always_zap').is(':checked'));
+});
+
+$('#timerend').datetimepicker({
+	format: "dd.mm.yy hh:ii",
+	autoclose: true,
+	todayHighlight: true,
+	todayBtn: 'linked',
+	minuteStep: 2,
+	language: 'de',
+});
+
+
+$(function() {
+	autosize($('textarea.auto-growth'));
+	$("#bouquet_select").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "100%"});
+
+	$(".chosen-container .chosen-drop").addClass('ui-widget-content');
+	if (theme == 'eggplant' || theme == 'vader')
+	{
+		$(".chosen-container .chosen-drop").css('background-image','none');
+	}
+});
+
+$('#editTimerForm').dialog({
+	autoOpen: false,
+	modal: true,
+	close: function() {
+		return;
+	}
+});
+
+checkVPS();
+
+$.AdminBSB.input.activate();
+$.AdminBSB.select.activate();
+
+#end raw
+</script>
+
