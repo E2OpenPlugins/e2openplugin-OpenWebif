@@ -1,8 +1,12 @@
-## Version 1.2.8
+## Version 1.3.0
 ## (in development)
+* add responsive design from VTi Team
+* RESTful API with OpenAPI specification
+* new config api
+
+## Version 1.2.8
 * new file api
 * new RESTful API with OpenAPI specification
-* new config api
 * allow timers for IPTV / #715
 
 ## Version 1.2.7
