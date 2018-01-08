@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2017-06-08 10:04+0200\n"
-"PO-Revision-Date: 2017-06-08 10:04+0200\n"
-"Last-Translator: neoatomic <neoatomic@users.noreply.github.com>\n"
+"POT-Creation-Date: 2017-11-09 08:54+0300\n"
+"PO-Revision-Date: 2018-01-04 9:20+0200\n"
+"Last-Translator: mickey <mickeyreg@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.2\n"
 
 #: plugin/controllers/BouquetEditor.py:82
 msgid "one two three four unknown command"
@@ -290,15 +290,15 @@ msgstr ""
 
 #: plugin/controllers/ipkg.py:239
 msgid "Error upload File"
-msgstr ""
+msgstr "Błąd przesyłania pliku"
 
 #: plugin/controllers/ipkg.py:242
 msgid "wrong filetype"
-msgstr ""
+msgstr "niewłaściwy typ pliku"
 
 #: plugin/controllers/ipkg.py:256
 msgid "Error writing File"
-msgstr ""
+msgstr "Błąd zapisu pliku"
 
 #: plugin/controllers/models/info.py:57
 msgid "SLAAC"
@@ -307,7 +307,7 @@ msgstr ""
 #: plugin/controllers/models/info.py:64 plugin/controllers/models/info.py:75
 #: plugin/controllers/models/info.py:82
 msgid "static"
-msgstr ""
+msgstr "statyczny"
 
 #: plugin/controllers/models/info.py:66 plugin/controllers/models/info.py:84
 #: plugin/local.py:81
@@ -316,11 +316,11 @@ msgstr "DHCP"
 
 #: plugin/controllers/models/info.py:68 plugin/controllers/models/info.py:86
 msgid "manual/disabled"
-msgstr ""
+msgstr "ręczny/wyłączony"
 
 #: plugin/controllers/models/info.py:94 plugin/controllers/models/info.py:101
 msgid "unknown"
-msgstr ""
+msgstr "nieznany"
 
 #: plugin/controllers/models/info.py:135 plugin/local.py:117
 msgid "IPv4-only kernel"
@@ -342,7 +342,7 @@ msgstr ""
 #: plugin/controllers/models/info.py:290 plugin/controllers/models/info.py:413
 #, python-format
 msgid "%s free / %s total"
-msgstr ""
+msgstr "%s wolne / %s ogółem"
 
 #: plugin/controllers/models/info.py:325 plugin/local.py:65
 msgid "Chipset"
@@ -845,7 +845,7 @@ msgstr "Aktualne wydarzenie"
 
 #: plugin/local.py:72
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #: plugin/local.py:73
 msgid "Deep-Standby"
@@ -885,7 +885,7 @@ msgstr "Wyłącz zadanie planowe"
 
 #: plugin/local.py:83
 msgid "disabled"
-msgstr ""
+msgstr "wyłączony"
 
 #: plugin/local.py:84
 msgid "Distro"
@@ -953,7 +953,7 @@ msgstr "Dołącz opis"
 
 #: plugin/local.py:100
 msgid "Restrict to Bouquets"
-msgstr ""
+msgstr "Ogranicz do bukietów"
 
 #: plugin/local.py:101
 msgid "Error"
@@ -1225,7 +1225,7 @@ msgstr "Satelity"
 
 #: plugin/local.py:172
 msgid "Satfinder"
-msgstr "Miernik sygnału SAT"
+msgstr "Miernik sygnału"
 
 #: plugin/local.py:173 plugin/local.py:319 plugin/local.py:371
 #: plugin/plugin.py:102
@@ -1981,7 +1981,7 @@ msgstr "Dodaj znacznik"
 
 #: plugin/local.py:385
 msgid "Add Spacer"
-msgstr ""
+msgstr "Dodaj separator"
 
 #: plugin/local.py:386
 msgid "Rename"
@@ -1989,7 +1989,7 @@ msgstr "Zmień nazwę"
 
 #: plugin/local.py:387
 msgid "Do you really want to delete the selected item(s)"
-msgstr ""
+msgstr "Czy na pewno chcesz usunąć wybrane elemety"
 
 #: plugin/local.py:388
 msgid "Do you really want to delete the bouquet"
@@ -2021,11 +2021,11 @@ msgstr "Czy na pewno chcesz przywrócić z pliku"
 
 #: plugin/local.py:396
 msgid "via"
-msgstr ""
+msgstr "przez"
 
 #: plugin/local.py:397
 msgid "Record+ZAP"
-msgstr ""
+msgstr "Nagraj i przełącz"
 
 #: plugin/local.py:398
 msgid "Pmtpid"
@@ -2061,39 +2061,39 @@ msgstr ""
 
 #: plugin/local.py:406
 msgid "Orbital Position"
-msgstr ""
+msgstr "Pozycja orbitalna"
 
 #: plugin/local.py:408
 msgid "error! Loading Page"
-msgstr ""
+msgstr "błąd! ładowania strony"
 
 #: plugin/local.py:409
 msgid "Timer Added"
-msgstr ""
+msgstr "Dodano zadanie planowe"
 
 #: plugin/local.py:410
 msgid "Event not found"
-msgstr ""
+msgstr "Zdarzenie nie znalezione"
 
 #: plugin/local.py:411
 msgid "Show Picon in channel list"
-msgstr ""
+msgstr "Pokaż pikonę na liście kanałów"
 
 #: plugin/local.py:413
 msgid "OpenWebif Browser Settings"
-msgstr ""
+msgstr "Ustawienia przeglądarki OpenWebif"
 
 #: plugin/local.py:414
 msgid "OpenWebif Settings"
-msgstr ""
+msgstr "Ustawienia OpenWebif"
 
 #: plugin/local.py:415
 msgid "Theme"
-msgstr ""
+msgstr "Motyw"
 
 #: plugin/local.py:416
 msgid "Show Picons in channel list"
-msgstr ""
+msgstr "Pokaż pikony na liście kanałów"
 
 #: plugin/local.py:417
 msgid "Spinner"
@@ -2101,19 +2101,19 @@ msgstr ""
 
 #: plugin/local.py:418
 msgid "Display duration (s)"
-msgstr ""
+msgstr "Czas wyświetlania (s)"
 
 #: plugin/local.py:420
 msgid "Display Mode"
-msgstr ""
+msgstr "Tryb wyświetlania"
 
 #: plugin/local.py:421
 msgid "TV Guide"
-msgstr ""
+msgstr "Program TV"
 
 #: plugin/local.py:422
 msgid "Timeline"
-msgstr ""
+msgstr "Oś czasu"
 
 #: plugin/local.py:423
 msgid "Web TV"
@@ -2125,15 +2125,15 @@ msgstr ""
 
 #: plugin/local.py:426
 msgid "Link Speed"
-msgstr ""
+msgstr "Szybkość łącza"
 
 #: plugin/local.py:427
 msgid "Network Shares"
-msgstr ""
+msgstr "Udziały sieciowe"
 
 #: plugin/local.py:428
 msgid "using"
-msgstr ""
+msgstr "używając"
 
 #: plugin/plugin.py:103
 msgid "OpenWebif url: http://yourip:port"
@@ -2177,11 +2177,11 @@ msgstr "Zablokuj dostęp dla użytkownika root"
 
 #: plugin/plugin.py:135
 msgid "Without auth only local access is allowed!"
-msgstr ""
+msgstr "Bez autoryzacji dozwolony jest tylko dostęp lokalny!"
 
 #: plugin/plugin.py:136
 msgid "Enable access from VPNs"
-msgstr ""
+msgstr "Włącz dostęp przez VPN"
 
 #: plugin/plugin.py:137
 msgid "Enable Parental Control"
@@ -2199,6 +2199,15 @@ msgstr "Kodowanie znaków dla danych EPG"
 #: plugin/plugin.py:212
 msgid "OpenWebif Configuration"
 msgstr "Konfiguracja OpenWebif"
+
+msgid "Primetimes"
+msgstr "Godziny największej oglądalności"
+
+msgid "Enable/Disable Screenshot on key press or"
+msgstr "Włącz/wyłącz zrzut ekranu po aciśnieciu klawisza lub"
+
+msgid "Use new design"
+msgstr "Używaj nowego interfejsu"
 
 #~ msgid "Delete Channel(s)"
 #~ msgstr "Usuń kanał(y)"
