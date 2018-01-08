@@ -43,9 +43,8 @@ def getAllNetworks():
 				if line.startswith('00000000000000000000000000000001'):
 					continue
 
-				tmpaddr = ""
 				tmp = line.split()
-				tmpaddr=str(ipaddress.ip_address(int(tmp[0], 16)))
+				tmpaddr = str(ipaddress.ip_address(int(tmp[0], 16)))
 				if tmp[2].lower() != "ff":
 					tmpaddr = "%s/%s" % (tmpaddr, int(tmp[2].lower(), 16))
 					tmpaddr = str(ipaddress.IPv6Network(unicode(tmpaddr), strict=False))
@@ -56,7 +55,7 @@ def getAllNetworks():
 	for iface in ifaces:
 		# IPv4 and old fashioned netmask are served as silly arrays
 		crap = iNetwork.getAdapterAttribute(iface, "ip")
-		if crap is None or len(crap) != 4:
+		if not crap or len(crap) != 4:
 			continue
 		ip = '.'.join(str(x) for x in crap)
 		netmask = str(sum([bin(int(x)).count('1') for x in iNetwork.getAdapterAttribute(iface, "netmask")]))
@@ -162,8 +161,7 @@ def HttpdStart(session):
 		port = config.OpenWebif.port.value
 
 		temproot = buildRootTree(session)
-		root = temproot
-		root = AuthResource(session, root)
+		root = AuthResource(session, temproot)
 		site = server.Site(root)
 
 		# start http webserver on configured port
@@ -213,8 +211,7 @@ def HttpdStart(session):
 						)
 					ctx.load_verify_locations(CA_FILE)
 
-				sslroot = temproot
-				sslroot = AuthResource(session, sslroot)
+				sslroot = AuthResource(session, temproot)
 				sslsite = server.Site(sslroot)
 
 				if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
@@ -265,7 +262,7 @@ class AuthResource(resource.Resource):
 		if fileExists('/etc/passwd'):
 			for line in file('/etc/passwd').readlines():
 				line = line.strip()
-				if line.startswith(user + ":") and line.endswith(":/bin/false"):
+				if line.startswith(user + ":") and (line.endswith(":/bin/false") or line.endswith(":/sbin/nologin")):
 					return True
 		return False
 
@@ -295,6 +292,9 @@ class AuthResource(resource.Resource):
 		session = request.getSession().sessionNamespaces
 		host = request.getHost().host
 		peer = request.getClientIP()
+		if request.getHeader("x-forwarded-for"):
+			peer = request.getHeader("x-forwarded-for")
+
 		if peer is None:
 			peer = request.transport.socket.getpeername()[0]
 
@@ -309,7 +309,7 @@ class AuthResource(resource.Resource):
 		# #1: Auth is disabled and access is from local network
 		if (not request.isSecure() and config.OpenWebif.auth.value == False) or (request.isSecure() and config.OpenWebif.https_auth.value == False):
 			networks = getAllNetworks()
-			if networks is not None:
+			if networks:
 				for network in networks:
 					if ipaddress.ip_address(unicode(peer)) in ipaddress.ip_network(unicode(network), strict=False):
 						return self.resource.getChildWithDefault(path, request)
@@ -338,8 +338,7 @@ class AuthResource(resource.Resource):
 		# If we get to here, no exception applied
 		# Either block with forbidden (If auth is disabled) ...
 		if (not request.isSecure() and config.OpenWebif.auth.value == False) or (request.isSecure() and config.OpenWebif.https_auth.value == False):
-			errpage = resource.ErrorPage(http.FORBIDDEN,'Forbidden','403.6 IP address rejected')
-			return errpage
+			return resource.ErrorPage(http.FORBIDDEN,'Forbidden','403.6 IP address rejected')
 
 		# ... or auth
 		if "logged" in session.keys() and session["logged"]:
@@ -347,23 +346,21 @@ class AuthResource(resource.Resource):
 
 		if self.login(request.getUser(), request.getPassword(), peer) == False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
-			errpage = resource.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
-			return errpage
+			return resource.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
 		else:
 			session["logged"] = True
 			session["user"] = request.getUser()
 			session["pwd"] = None
-			noshell = self.noShell(request)
-			if noshell is True:
+			if self.noShell(request):
 				session["pwd"] = request.getPassword()
 			return self.resource.getChildWithDefault(path, request)
 
 	def login(self, user, passwd, peer):
-		if user=="root" and config.OpenWebif.no_root_access.value:
+		if user == "root" and config.OpenWebif.no_root_access.value:
 			# Override "no root" for logins from local/private networks
 			samenet = False
 			networks = getAllNetworks()
-			if networks is not None:
+			if networks:
 				for network in networks:
 					if ipaddress.ip_address(unicode(peer)) in ipaddress.ip_network(unicode(network), strict=False):
 						samenet=True

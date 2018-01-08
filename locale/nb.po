@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2017-06-08 10:04+0200\n"
+"POT-Creation-Date: 2017-11-09 08:54+0300\n"
 "PO-Revision-Date: \n"
-"Last-Translator: neoatomic <neoatomic@users.noreply.github.com>\n"
-"Language-Team: G.Jensen\n"
+"Last-Translator: andy1 <dummy@dummy.com>\n"
+"Language-Team: GeirJ\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -133,7 +133,7 @@ msgstr "Kanalen kan ikke flyttes."
 #: plugin/controllers/BouquetEditor.py:299
 #, python-format
 msgid "Service %s added."
-msgstr "Kanal %s er lagt til"
+msgstr "Kanal %s er lagt til."
 
 #: plugin/controllers/BouquetEditor.py:302
 #, python-format
@@ -229,7 +229,7 @@ msgstr "%s %s er låst."
 #: plugin/controllers/BouquetEditor.py:538
 #, python-format
 msgid "Service %s is unlocked."
-msgstr "Kanalen %s er låst opp"
+msgstr "Kanalen %s er ulåst."
 
 #: plugin/controllers/BouquetEditor.py:540
 #, python-format
@@ -269,7 +269,7 @@ msgstr "LCD4Linux innstilling"
 
 #: plugin/controllers/base.py:287
 msgid "OSCam Webinterface"
-msgstr ""
+msgstr "OSCam Webutseende"
 
 #: plugin/controllers/base.py:291
 msgid "AutoTimer"
@@ -285,28 +285,28 @@ msgstr "Oppdater EPG"
 
 #: plugin/controllers/base.py:318
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: plugin/controllers/ipkg.py:239
 msgid "Error upload File"
-msgstr ""
+msgstr "Feil ved fil opplasting"
 
 #: plugin/controllers/ipkg.py:242
 msgid "wrong filetype"
-msgstr ""
+msgstr "feil filtype"
 
 #: plugin/controllers/ipkg.py:256
 msgid "Error writing File"
-msgstr ""
+msgstr "Feil ved filopprettelse"
 
 #: plugin/controllers/models/info.py:57
 msgid "SLAAC"
-msgstr ""
+msgstr "SLAAC"
 
 #: plugin/controllers/models/info.py:64 plugin/controllers/models/info.py:75
 #: plugin/controllers/models/info.py:82
 msgid "static"
-msgstr ""
+msgstr "statisk"
 
 #: plugin/controllers/models/info.py:66 plugin/controllers/models/info.py:84
 #: plugin/local.py:81
@@ -315,11 +315,11 @@ msgstr "DHCP"
 
 #: plugin/controllers/models/info.py:68 plugin/controllers/models/info.py:86
 msgid "manual/disabled"
-msgstr ""
+msgstr "manuell/frakoblet"
 
 #: plugin/controllers/models/info.py:94 plugin/controllers/models/info.py:101
 msgid "unknown"
-msgstr ""
+msgstr "ukjent"
 
 #: plugin/controllers/models/info.py:135 plugin/local.py:117
 msgid "IPv4-only kernel"
@@ -336,12 +336,12 @@ msgstr "ingen/IPv4 nettverk"
 #: plugin/controllers/models/info.py:286 plugin/controllers/models/info.py:289
 #: plugin/controllers/models/movies.py:250
 msgid "kB"
-msgstr ""
+msgstr "kB"
 
 #: plugin/controllers/models/info.py:290 plugin/controllers/models/info.py:413
 #, python-format
 msgid "%s free / %s total"
-msgstr ""
+msgstr "%s ledig / %s total"
 
 #: plugin/controllers/models/info.py:325 plugin/local.py:65
 msgid "Chipset"
@@ -355,26 +355,26 @@ msgstr "Frontprosessor versjon"
 #: plugin/controllers/models/info.py:405
 #: plugin/controllers/models/movies.py:248
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: plugin/controllers/models/info.py:379 plugin/controllers/models/info.py:385
 #: plugin/controllers/models/info.py:400 plugin/controllers/models/info.py:403
 #: plugin/controllers/models/movies.py:246
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: plugin/controllers/models/info.py:383 plugin/controllers/models/info.py:395
 #: plugin/controllers/models/info.py:397
 msgid "TB"
-msgstr ""
+msgstr "TB"
 
 #: plugin/controllers/models/info.py:442
 msgid "r/w"
-msgstr ""
+msgstr "r/w"
 
 #: plugin/controllers/models/info.py:446
 msgid "r/o"
-msgstr ""
+msgstr "r/o"
 
 #: plugin/controllers/models/message.py:33
 msgid "Message sent successfully!"
@@ -534,8 +534,7 @@ msgstr "Tidtaker feil"
 
 #: plugin/controllers/models/timers.py:701
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr ""
-"FEIL: Kan ikke stille inn vekkerklokken når mottaker er i avslått modus "
+msgstr "FEIL: Kan ikke stille inn tidtaker når mottaker er slått av"
 
 #: plugin/controllers/models/timers.py:706
 #: plugin/controllers/models/timers.py:775
@@ -571,7 +570,7 @@ msgstr "Savner obligatorisk parameter '%s'"
 #: plugin/controllers/web.py:69
 #, python-format
 msgid "The parameter '%s' can't be empty"
-msgstr "Parameter '%s' kan ikke stå tom "
+msgstr "Parameter '%s' kan ikke stå tomt"
 
 #: plugin/controllers/web.py:136
 #, python-format
@@ -770,7 +769,7 @@ msgstr "Tilbake"
 
 #: plugin/local.py:53 plugin/local.py:350
 msgid "Begin"
-msgstr "Begynn"
+msgstr "Starter"
 
 #: plugin/local.py:54
 msgid "BER"
@@ -842,7 +841,7 @@ msgstr "Gjeldende aktivitet"
 
 #: plugin/local.py:72
 msgid "Date"
-msgstr ""
+msgstr "Dato"
 
 #: plugin/local.py:73
 msgid "Deep-Standby"
@@ -882,7 +881,7 @@ msgstr "Slå av tidtaker"
 
 #: plugin/local.py:83
 msgid "disabled"
-msgstr ""
+msgstr "frakoblet"
 
 #: plugin/local.py:84
 msgid "Distro"
@@ -906,7 +905,7 @@ msgstr "Last ned avspillingsliste for"
 
 #: plugin/local.py:89
 msgid "Drivers"
-msgstr "Driver dato"
+msgstr "Drivere"
 
 #: plugin/local.py:90
 msgid "Duration"
@@ -926,7 +925,7 @@ msgstr "Start"
 
 #: plugin/local.py:94 plugin/local.py:351
 msgid "End"
-msgstr "Slutt"
+msgstr "Slutter"
 
 #: plugin/local.py:95 plugin/local.py:250 plugin/local.py:348
 msgid "Enabled"
@@ -950,7 +949,7 @@ msgstr "Inkluder beskrivelse"
 
 #: plugin/local.py:100
 msgid "Restrict to Bouquets"
-msgstr ""
+msgstr "Velg kanallister"
 
 #: plugin/local.py:101
 msgid "Error"
@@ -1034,7 +1033,7 @@ msgstr "Spill nå"
 
 #: plugin/local.py:125
 msgid "Kernel"
-msgstr "Kjerne versjon"
+msgstr "Kjerne"
 
 #: plugin/local.py:126
 msgid "LICENSE"
@@ -1271,7 +1270,7 @@ msgstr "Kanalliste redigerer"
 
 #: plugin/local.py:185
 msgid "(Shift + Click for Long Press)"
-msgstr "(shift + klikk for langt tastetrykk)"
+msgstr "(Shift + Klikk for langt trykk)"
 
 #: plugin/local.py:186
 msgid "Show Full OpenWebif"
@@ -1387,7 +1386,7 @@ msgstr "Tittel"
 
 #: plugin/local.py:214
 msgid "Main Memory"
-msgstr "Tilgjengelig minne"
+msgstr "Hoved minne"
 
 #: plugin/local.py:215
 msgid "transcoded"
@@ -1515,9 +1514,9 @@ msgid ""
 "and/or modify it under the terms of the GNU General Public License version 3 "
 "as published by the Free Software Foundation."
 msgstr ""
-"Alle filer fra denne software er åpen kildekode software; du kan "
-"redistributere dette og/eller modernisere under vilkår av GNU General Public "
-"License versjon 3 som er publisert av Free Software Foundation."
+"Alle filer fra denne software er åpen kildekode; du kan gjengi dette og/"
+"eller modernisere under vilkår av GNU General Public License versjon 3 som "
+"er publisert av Free Software Foundation."
 
 #: plugin/local.py:246
 msgid "Root"
@@ -1557,7 +1556,7 @@ msgstr "samsvarsøk på beskrivelse"
 
 #: plugin/local.py:258
 msgid "title or description match"
-msgstr "samsvarssøk på tittel eller beskrivelse "
+msgstr "samsvarssøk på tittel eller beskrivelse"
 
 #: plugin/local.py:259
 msgid "title or short description match"
@@ -1669,11 +1668,11 @@ msgstr "Utfør \"etter hendelse\" i tdsrommet"
 
 #: plugin/local.py:286
 msgid "Begin of \"after event\" timespan"
-msgstr "Begynnelsen av \"etter hendelse\" tidsrom"
+msgstr "Starten av \"etter program\" tidsrom"
 
 #: plugin/local.py:287
 msgid "End of \"after event\" timespan"
-msgstr "Slutten av \"etter hendelse \" tidsrom"
+msgstr "Slutten av \"etter program \" tidsrom"
 
 #: plugin/local.py:288
 msgid "Record a maximum of x times"
@@ -1805,7 +1804,7 @@ msgstr "Innstilling for autotidtaker"
 
 #: plugin/local.py:328
 msgid "AutoPoll"
-msgstr "Auto overvåking"
+msgstr "Auto overvåk"
 
 #: plugin/local.py:329
 msgid "Interval (in h)"
@@ -1873,7 +1872,7 @@ msgstr "Aktiver beskjeder"
 
 #: plugin/local.py:352
 msgid "Delay Standby"
-msgstr "Utsett 'Slå av'"
+msgstr "Utsett slå av"
 
 #: plugin/local.py:353
 msgid "Interval (min.)"
@@ -1977,7 +1976,7 @@ msgstr "Legg til bokmerke"
 
 #: plugin/local.py:385
 msgid "Add Spacer"
-msgstr ""
+msgstr "Legg til mellomrom"
 
 #: plugin/local.py:386
 msgid "Rename"
@@ -1985,7 +1984,7 @@ msgstr "Gi nytt navn"
 
 #: plugin/local.py:387
 msgid "Do you really want to delete the selected item(s)"
-msgstr ""
+msgstr "Vil du virkelig slette dette"
 
 #: plugin/local.py:388
 msgid "Do you really want to delete the bouquet"
@@ -2017,119 +2016,119 @@ msgstr "Skal det tilbakestilles fra denne filen"
 
 #: plugin/local.py:396
 msgid "via"
-msgstr ""
+msgstr "via"
 
 #: plugin/local.py:397
 msgid "Record+ZAP"
-msgstr ""
+msgstr "Opptak+ZAP"
 
 #: plugin/local.py:398
 msgid "Pmtpid"
-msgstr ""
+msgstr "Pmtpid"
 
 #: plugin/local.py:399
 msgid "Apid"
-msgstr ""
+msgstr "Apid"
 
 #: plugin/local.py:400
 msgid "Vpid"
-msgstr ""
+msgstr "Vpid"
 
 #: plugin/local.py:401
 msgid "Pcrpid"
-msgstr ""
+msgstr "Pcrpid"
 
 #: plugin/local.py:402
 msgid "Tsid"
-msgstr ""
+msgstr "Tsid"
 
 #: plugin/local.py:403
 msgid "Onid"
-msgstr ""
+msgstr "Onid"
 
 #: plugin/local.py:404
 msgid "Sid"
-msgstr ""
+msgstr "Sid"
 
 #: plugin/local.py:405
 msgid "Sref"
-msgstr ""
+msgstr "Sref"
 
 #: plugin/local.py:406
 msgid "Orbital Position"
-msgstr ""
+msgstr "Satellittposisjon"
 
 #: plugin/local.py:408
 msgid "error! Loading Page"
-msgstr ""
+msgstr "feil! Lasting av side"
 
 #: plugin/local.py:409
 msgid "Timer Added"
-msgstr ""
+msgstr "Tidtaker lagt til"
 
 #: plugin/local.py:410
 msgid "Event not found"
-msgstr ""
+msgstr "Kanal ikke funnet"
 
 #: plugin/local.py:411
 msgid "Show Picon in channel list"
-msgstr ""
+msgstr "Vis kanallogo i kanalliste"
 
 #: plugin/local.py:413
 msgid "OpenWebif Browser Settings"
-msgstr ""
+msgstr "OpenWebif nettleser innstilling"
 
 #: plugin/local.py:414
 msgid "OpenWebif Settings"
-msgstr ""
+msgstr "OpenWebif innstilling"
 
 #: plugin/local.py:415
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: plugin/local.py:416
 msgid "Show Picons in channel list"
-msgstr ""
+msgstr "Vis kanallogo i kanalliste"
 
 #: plugin/local.py:417
 msgid "Spinner"
-msgstr ""
+msgstr "Spinner"
 
 #: plugin/local.py:418
 msgid "Display duration (s)"
-msgstr ""
+msgstr "Display varighet (s)"
 
 #: plugin/local.py:420
 msgid "Display Mode"
-msgstr ""
+msgstr "Display modus"
 
 #: plugin/local.py:421
 msgid "TV Guide"
-msgstr ""
+msgstr "TV Guide"
 
 #: plugin/local.py:422
 msgid "Timeline"
-msgstr ""
+msgstr "Tidsliste"
 
 #: plugin/local.py:423
 msgid "Web TV"
-msgstr ""
+msgstr "Web TV"
 
 #: plugin/local.py:424
 msgid "Calendar Week"
-msgstr ""
+msgstr "Uke kallender"
 
 #: plugin/local.py:426
 msgid "Link Speed"
-msgstr ""
+msgstr "Overførings hastighet"
 
 #: plugin/local.py:427
 msgid "Network Shares"
-msgstr ""
+msgstr "Nettverksdelere"
 
 #: plugin/local.py:428
 msgid "using"
-msgstr ""
+msgstr "bruker"
 
 #: plugin/plugin.py:103
 msgid "OpenWebif url: http://yourip:port"
@@ -2169,15 +2168,15 @@ msgstr "Aktiver autentisering for streaming"
 
 #: plugin/plugin.py:133
 msgid "Disable remote access for user root"
-msgstr "Frakoble tilgang for root bruker"
+msgstr "Koble fra fjerntilgang for bruker root"
 
 #: plugin/plugin.py:135
 msgid "Without auth only local access is allowed!"
-msgstr ""
+msgstr "Uten godkj. Bare lokal adgang er tillat!"
 
 #: plugin/plugin.py:136
 msgid "Enable access from VPNs"
-msgstr ""
+msgstr "Gi VPN adgang"
 
 #: plugin/plugin.py:137
 msgid "Enable Parental Control"
@@ -2196,11 +2195,11 @@ msgstr "Tegnkodning for EPG data"
 msgid "OpenWebif Configuration"
 msgstr "OpenWebif innstilling"
 
-#~ msgid "Delete Channel(s)"
-#~ msgstr "Slett kanal(er)"
+msgid "Primetimes"
+msgstr "Bestetider"
 
-#~ msgid "Do you really want to delete the channel(s)"
-#~ msgstr "Skal kanal(er) virkelig slettes"
+msgid "Enable/Disable Screenshot on key press or"
+msgstr "Vis/Fjern skjermbilde ved trykk eller"
 
 #~ msgid "Delete Movie"
 #~ msgstr "Slett filmen"
@@ -2208,8 +2207,23 @@ msgstr "OpenWebif innstilling"
 #~ msgid "Really delete the movie"
 #~ msgstr "Skal filmen slettes"
 
+#~ msgid "All Files of this Software are open source software;"
+#~ msgstr "Alle filer fra denne software er åpen kildekode software;"
+
+#~ msgid "you can redistribute it and/or modify it under the"
+#~ msgstr "du kan redistributere dette og/eller modernisere under "
+
+#~ msgid "terms of the GNU General Public License version 2 as"
+#~ msgstr "vilkår av GNU General Public License versjon 2 som"
+
+#~ msgid "published by the Free Software Foundation."
+#~ msgstr "er publisert av Free Software Foundation."
+
 #~ msgid "Afterevent"
 #~ msgstr "Etter aktivitet"
+
+#~ msgid "Delete Channel(s)"
+#~ msgstr "Slett kanal(er)"
 
 #~ msgid "Smart services renaming for XBMC"
 #~ msgstr "Smart sevice navnedring for XBMC"
