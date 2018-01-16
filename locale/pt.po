@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2017-06-08 10:04+0200\n"
-"PO-Revision-Date: 2017-06-08 10:04+0200\n"
+"PO-Revision-Date: 2018-01-16 21:32+0000\n"
 "Last-Translator: nunigaia\n"
 "Language-Team: BH Team\n"
 "Language: pt_PT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -286,7 +286,7 @@ msgstr "EPGRefresh"
 
 #: plugin/controllers/base.py:318
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal Linux"
 
 #: plugin/controllers/ipkg.py:239
 msgid "Error upload File"
@@ -952,7 +952,7 @@ msgstr "Incluir descrição"
 
 #: plugin/local.py:100
 msgid "Restrict to Bouquets"
-msgstr ""
+msgstr "Restrito aos Bouquets"
 
 #: plugin/local.py:101
 msgid "Error"
@@ -1128,7 +1128,7 @@ msgstr "Interface Web Open Source para receptores Linux"
 
 #: plugin/local.py:148 plugin/plugin.py:119
 msgid "Show box name in header"
-msgstr "Mostrar o nome do receptor no Título"
+msgstr "Nome do receptor no cabeçalho"
 
 #: plugin/local.py:149 plugin/plugin.py:121
 msgid "Use custom box name"
@@ -1979,7 +1979,7 @@ msgstr "Adicionar Marcador"
 
 #: plugin/local.py:385
 msgid "Add Spacer"
-msgstr ""
+msgstr "Adicionar espaçador"
 
 #: plugin/local.py:386
 msgid "Rename"
@@ -1987,7 +1987,7 @@ msgstr "Renomear"
 
 #: plugin/local.py:387
 msgid "Do you really want to delete the selected item(s)"
-msgstr ""
+msgstr "Deseja mesmo apagar o(s) item(s) selecionado(s)?"
 
 #: plugin/local.py:388
 msgid "Do you really want to delete the bouquet"
@@ -2063,7 +2063,7 @@ msgstr "Posição Orbital"
 
 #: plugin/local.py:408
 msgid "error! Loading Page"
-msgstr "erro! A carregar página"
+msgstr "erro! Ao carregar página"
 
 #: plugin/local.py:409
 msgid "Timer Added"
@@ -2119,7 +2119,7 @@ msgstr "Web TV"
 
 #: plugin/local.py:424
 msgid "Calendar Week"
-msgstr ""
+msgstr "Calendário Semanal"
 
 #: plugin/local.py:426
 msgid "Link Speed"
@@ -2197,6 +2197,12 @@ msgstr "Codificação de Carateres para dados EPG"
 #: plugin/plugin.py:212
 msgid "OpenWebif Configuration"
 msgstr "Configuração OpenWebif"
+
+msgid "Use new design"
+msgstr "Usar a nova interface"
+
+msgid "Allow IPK Upload"
+msgstr "Permitir upload de IPK's"
 
 #~ msgid "Delete Channel(s)"
 #~ msgstr "Apagar Canais"
