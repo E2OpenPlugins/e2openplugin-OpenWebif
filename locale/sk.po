@@ -1305,7 +1305,7 @@ msgstr "Pohotovostný režim"
 
 #: plugin/local.py:194
 msgid "Standby Toggle"
-msgstr "Prepnúť z/do pohotov. režimu"
+msgstr "Prepnúť pohotov.režim"
 
 #: plugin/local.py:195
 msgid "Start time is after end time"
