@@ -198,7 +198,6 @@ def getConfigs(key):
 	if key in configfiles.section_config:
 		config_entries = configfiles.section_config[key][1]
 		title = configfiles.section_config[key][0]
-	if config_entries:
 		for entry in config_entries:
 			try:
 				data = getJsonFromConfig(eval(entry.text or ""))  # nosec
