@@ -146,6 +146,12 @@ def getAllInfo():
 				model = procmodel.replace("revo4k", "Revo4K")
 			elif procmodel == "galaxy4k":
 				model = procmodel.replace("galaxy4k", "Galaxy4K")
+		elif (procmodel.startswith("lunix")):
+			brand = "Qviart"
+			if procmodel == "lunix3-4k":
+				model = procmodel.replace("lunix3-4k", "Lunix3-4K")
+			elif procmodel == "lunix":
+				model = procmodel.replace("lunix", "Lunix")
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBox"
 		f = open("/proc/stb/info/model",'r') # To-Do: Check if "model" is really correct ...
@@ -516,6 +522,8 @@ def getAllInfo():
 		remote = procmodel
 	elif procmodel in ("galaxy4k"):
 		remote = procmodel
+	elif procmodel in ("lunix3-4k", "lunix"):
+		remote = "qviart"
 	elif procmodel in ("sh1", "lc"):
 		remote = "sh1"
 	elif procmodel in ("h3", "h4", "h5", "h7"):
