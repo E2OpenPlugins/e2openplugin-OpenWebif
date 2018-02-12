@@ -323,6 +323,9 @@ def getAllInfo():
 		elif procmodel == "vipert2c":
 			brand = "Amiko"
 			model = "ViperT2C"
+		elif procmodel == "vipercombohdd":
+			brand = "Amiko"
+			model = "ViperComboHDD"
 		elif procmodel == "wetekplay":
 			brand = "WeTeK"
 			model = "Play"
@@ -532,6 +535,8 @@ def getAllInfo():
 		remote = "i55"
 	elif procmodel in ("vipercombo", "vipert2c"):
 		remote = "amiko"
+	elif procmodel in ("vipercombohdd"):
+		remote = "amiko1"
 	elif procmodel == "sf4008":
 		remote = "octagon"
 	elif procmodel in ("vs1100", "vs1500"):
