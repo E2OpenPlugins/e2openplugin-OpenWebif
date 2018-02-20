@@ -21,7 +21,7 @@ script:
 
 after_success:
 - bandit -r plugin -f html -o bandit.html
-- python -m flake8 plugin/ --output-file flake8_report.txt
+- python -m flake8 --ignore=W191 plugin/ --output-file flake8_report.txt
 - jshint ./sourcefiles/js/ | tee jshint1_report.txt
 - jshint ./sourcefiles/themes/absb/js/ | tee jshint2_report.txt
 - ./create_ipk.sh

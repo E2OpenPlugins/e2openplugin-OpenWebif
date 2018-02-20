@@ -9,6 +9,12 @@ OpenWebif is an open source web interface for Enigma2 based set-top boxes (STBs)
 ## Latest [Bandit](https://wiki.openstack.org/wiki/Security/Projects/Bandit) Report
 [Link](http://e2openplugins.github.io/e2openplugin-OpenWebif/bandit.html) 
 
+## Latest [JSHint](http://jshint.com/) Reports
+[Link1](http://e2openplugins.github.io/e2openplugin-OpenWebif/jshint1_report.txt)
+[Link2](http://e2openplugins.github.io/e2openplugin-OpenWebif/jshint2_report.txt)
+
+## Latest [Flake8](http://flake8.pycqa.org/) Report
+[Link](http://e2openplugins.github.io/e2openplugin-OpenWebif/flake8_report.txt)
 
 ## License
 Licensed under the GNU General Public License, Version 3. See [LICENSE](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt) for more details.
