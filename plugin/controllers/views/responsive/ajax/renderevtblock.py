@@ -5,6 +5,7 @@ from time import localtime, strftime
 from urllib import quote
 from Plugins.Extensions.OpenWebif.local import tstrings
 
+
 class renderEvtBlock:
 	def __init__(self):
 		self.template = """
@@ -29,10 +30,11 @@ class renderEvtBlock:
 			timerEventSymbol = ''
 		return self.template % (
 			quote(event['ref'], safe=' ~@#$&()*!+=:;,.?/\''),
-		 event['id'],
-		 event['id'],
+			event['id'],
+			event['id'],
 			quote(event['ref'], safe=' ~@#$&()*!+=:;,.?/\''),
 			strftime("%H:%M", localtime(event['begin_timestamp'])),
-		 timerEventSymbol,
-		 event['title'],
-		 shortdesc)
+			timerEventSymbol,
+			event['title'],
+			shortdesc
+		)

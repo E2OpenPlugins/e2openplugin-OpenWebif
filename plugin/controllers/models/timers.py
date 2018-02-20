@@ -569,7 +569,7 @@ def getPowerTimer(session):
 			"autosleepinstandbyonly": str(timer.autosleepinstandbyonly),
 			"autosleepdelay": str(timer.autosleepdelay),
 			"autosleeprepeat": str(timer.autosleeprepeat),
-			"logentries" : list
+			"logentries": list
 			})
 
 		return {
@@ -583,10 +583,11 @@ def getPowerTimer(session):
 			"message": _("PowerTimer feature not available")
 		}
 
+
 def setPowerTimer(session, request):
 
 	timertype = 0
-	if "timertype" in request.args.keys() and request.args["afterevent"][0] in ["0","1","2","3","4","5","6","7","8"]:
+	if "timertype" in request.args.keys() and request.args["afterevent"][0] in ["0", "1", "2", "3", "4", "5", "6", "7", "8"]:
 		cmd = int(request.args["timertype"][0])
 	begin = int(time() + 60)
 	if "begin" in request.args.keys():
@@ -601,7 +602,7 @@ def setPowerTimer(session, request):
 	if "repeated" in request.args.keys():
 		repeated = request.args["repeated"][0] == "1"
 	afterevent = 0
-	if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["0","1","2","3","4"]:
+	if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["0", "1", "2", "3", "4"]:
 		afterevent = int(request.args["afterevent"][0])
 	autosleepinstandbyonly = "no"
 	if "autosleepinstandbyonly" in request.args.keys():
@@ -613,12 +614,11 @@ def setPowerTimer(session, request):
 	if "autosleeprepeat" in request.args.keys():
 		autosleeprepeat = request.args["autosleeprepeat"][0]
 
-
 	# find
 	entry = None
 	timers = []
-	timer_list  = session.nav.PowerTimer.timer_list
-	processed_timers  = session.nav.PowerTimer.processed_timers
+	timer_list = session.nav.PowerTimer.timer_list
+	processed_timers = session.nav.PowerTimer.processed_timers
 	for timer in timer_list + processed_timers:
 		if timer.timerType == timertype:
 			if timer.begin == begin:
@@ -626,13 +626,13 @@ def setPowerTimer(session, request):
 					entry = timer
 
 	# create new Timer
-	if entry == None:
+	if entry is None:
 		entry = PowerTimerEntry(begin, end, disabled, afterevent, timertype)
 		entry.repeated = int(repeated)
 		entry.autosleepinstandbyonly = autosleepinstandbyonly
 		entry.autosleepdelay = int(autosleepdelay)
 		entry.autosleeprepeat = autosleeprepeat
-		print "[PowerTimer]",str(entry)
+		print "[PowerTimer]", str(entry)
 #	timers = []
 #	timer_list  = session.nav.PowerTimer.timer_list
 #	processed_timers  = session.nav.PowerTimer.processed_timers
@@ -658,7 +658,7 @@ def getSleepTimer(session):
 				"action": config.SleepTimer.action.value,
 				"message": _("Sleeptimer is enabled") if session.nav.SleepTimer.isActive() else _("Sleeptimer is disabled")
 			}
-		except Exception, e:
+		except Exception:
 			return {
 				"result": False,
 				"message": _("SleepTimer error")
@@ -670,10 +670,10 @@ def getSleepTimer(session):
 			timer_list = session.nav.PowerTimer.timer_list
 			for timer in timer_list:
 				timertype = str(timer.timerType)
-				if timertype in ["2","3"]:
+				if timertype in ["2", "3"]:
 					action = "standby"
 					if timertype == "3":
-						action="shutdown"
+						action = "shutdown"
 					minutes = str(timer.autosleepdelay)
 					enabled = True
 					if int(timer.disabled) == 1:
@@ -685,11 +685,12 @@ def getSleepTimer(session):
 						"message": _("Sleeptimer is enabled") if enabled else _("Sleeptimer is disabled")
 					}
 					break
-		except Exception, e:
+		except Exception:
 			return {
 				"result": False,
 				"message": _("SleepTimer error")
 			}
+
 
 def setSleepTimer(session, time, action, enabled):
 	if action not in ["shutdown", "standby"]:
@@ -713,7 +714,7 @@ def setSleepTimer(session, time, action, enabled):
 			ret = getSleepTimer(session)
 			ret["message"] = _("Sleeptimer set to %d minutes") % time
 			return ret
-		except Exception, e:
+		except Exception:
 			return {
 				"result": False,
 				"message": _("SleepTimer Error")
@@ -754,7 +755,7 @@ def setSleepTimer(session, time, action, enabled):
 					else:
 						timer.disabled = False
 						timer.autosleepdelay = int(time)
-						timer.timerType=2
+						timer.timerType = 2
 						timer.begin = begin
 						timer.end = end
 					done = True
@@ -765,12 +766,12 @@ def setSleepTimer(session, time, action, enabled):
 					else:
 						timer.disabled = False
 						timer.autosleepdelay = int(time)
-						timer.timerType=3
+						timer.timerType = 3
 						timer.begin = begin
 						timer.end = end
 					done = True
 					break
-			
+
 			if done:
 				return {
 					"result": True,
@@ -794,20 +795,21 @@ def setSleepTimer(session, time, action, enabled):
 					"result": True,
 					"message": _("Sleeptimer has been disabled")
 				}
-		except Exception, e:
+		except Exception:
 			return {
 				"result": False,
 				"message": _("SleepTimer Error")
 			}
 
+
 def getVPSChannels(session):
-	vpsfile="/etc/enigma2/vps.xml"
+	vpsfile = "/etc/enigma2/vps.xml"
 	from Tools.Directories import fileExists
 	if fileExists(vpsfile):
 		try:
-			import xml.etree.cElementTree # nosec
+			import xml.etree.cElementTree  # nosec
 			vpsfile = file(vpsfile, 'r')
-			vpsdom = xml.etree.cElementTree.parse(vpsfile) # nosec
+			vpsdom = xml.etree.cElementTree.parse(vpsfile)  # nosec
 			vpsfile.close()
 			xmldata = vpsdom.getroot()
 			channels = []
@@ -822,15 +824,13 @@ def getVPSChannels(session):
 				"result": True,
 				"channels": channels
 			}
-		except Exception, e:
+		except Exception:
 			return {
 				"result": False,
 				"message": _("Error parsing vps.xml")
 			}
-			
+
 	return {
-			"result": False,
-			"message": _("VPS plugin not found")
+		"result": False,
+		"message": _("VPS plugin not found")
 	}
-	
-	

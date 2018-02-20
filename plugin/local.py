@@ -11,7 +11,8 @@ except NameError:
 except KeyError:
 	AT_unit = "hour"
 
-tstrings = {'mo': _("Mo"),
+tstrings = {
+	'mo': _("Mo"),
 	'tu': _("Tu"),
 	'we': _("We"),
 	'th': _("Th"),
@@ -72,8 +73,8 @@ tstrings = {'mo': _("Mo"),
 	'channel': _("Channel"),
 	'channels': _("Channels"),
 	'chipset': _("Chipset"),
-	'cleanup_timer':_("Cleanup Timers"),
-	'close':_("Close"),
+	'cleanup_timer': _("Cleanup Timers"),
+	'close': _("Close"),
 	'contributors': _("Contributors"),
 	'control': _("Control"),
 	'current': _("Current"),
@@ -407,7 +408,7 @@ tstrings = {'mo': _("Mo"),
 	'record_zap': _("Record+ZAP"),
 	'pmt_pid': _("Pmtpid"),
 	'a_pid': _("Apid"),
-	'v_pid': _("Vpid"), 
+	'v_pid': _("Vpid"),
 	'pcr_pid': _("Pcrpid"),
 	'ts_id': _("Tsid"),
 	'on_id': _("Onid"),
@@ -437,4 +438,4 @@ tstrings = {'mo': _("Mo"),
 	'using': _("using"),
 	'prime_times': _("Primetimes"),
 	'titscreenshot': _("Enable/Disable Screenshot on key press or"),
-	}
+}
