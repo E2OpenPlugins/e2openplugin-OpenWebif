@@ -28,6 +28,9 @@ after_success:
 - mkdir Rel
 - mv "${PKG}" ./Rel
 - mv bandit.html ./Rel
+- mv flake8_report.txt ./Rel
+- mv jshint1_report.txt ./Rel
+- mv jshint2_report.txt ./Rel
 
 deploy:
   provider: pages
