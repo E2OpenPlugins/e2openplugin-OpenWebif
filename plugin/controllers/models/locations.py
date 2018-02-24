@@ -11,11 +11,13 @@
 from Components.config import config
 import os
 
+
 def getLocations():
 	return {
 		"result": True,
 		"locations": config.movielist.videodirs.value
 	}
+
 
 def getCurrentLocation():
 	path = config.movielist.last_videodir.value or "/hdd/movie"
@@ -27,12 +29,13 @@ def getCurrentLocation():
 		"location": path
 	}
 
+
 def addLocation(dirname, create):
 	if not os.path.exists(dirname):
 		if create:
 			try:
 				os.makedirs(dirname)
-			except Exception, e:
+			except Exception:
 				return {
 					"result": False,
 					"message": "Creation of folder '%s' failed" % dirname
@@ -59,7 +62,8 @@ def addLocation(dirname, create):
 		"message": "Location '%s' added succesfully" % dirname
 	}
 
-def removeLocation(dirname,remove):
+
+def removeLocation(dirname, remove):
 	locations = config.movielist.videodirs.value[:] or []
 	res = False
 	msg = "Location '%s' is not defined" % dirname
@@ -72,11 +76,11 @@ def removeLocation(dirname,remove):
 			try:
 				os.rmdir(dirname)
 				msg = "Location and Folder '%s' removed succesfully" % dirname
-			except Exception, e:
+			except Exception:
 				msg = "Location '%s' removed succesfully but the Folder not exists or is not empty" % dirname
 		else:
 			msg = "Location '%s' removed succesfully" % dirname
 	return {
 		"result": res,
-		"message":  msg
+		"message": msg
 	}
