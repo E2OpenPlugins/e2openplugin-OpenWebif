@@ -912,9 +912,17 @@ def getPicon(sname):
 	if pp is not None:
 		# remove URL part
 		if ("://" in sname) or ("%3a//" in sname) or ("%3A//" in sname):
+			cname = unquote(sname.split(":")[-1])
 			sname = unquote(sname)
-			sname = ":".join(sname.split(":")[:10]) + "::" + sname.split(":")[-1]
-	
+			sname = ":".join(sname.split(":")[:10])
+			sname = GetWithAlternative(sname)
+			cname = unicodedata.normalize('NFKD', unicode(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
+			cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').replace(':','').lower())
+			# picon by channel name for URL
+			if len(cname) > 0 and fileExists(pp + cname + ".png"):
+				return "/picon/" + cname + ".png"
+			if len(cname) > 2 and cname.endswith('hd') and fileExists(pp + cname[:-2] + ".png"):
+				return "/picon/" + cname[:-2] + ".png"
 		sname = GetWithAlternative(sname)
 		if sname is not None:
 			pos = sname.rfind(':')
