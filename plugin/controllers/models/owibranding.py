@@ -15,6 +15,7 @@ from Plugins.Extensions.OpenWebif.__init__ import _
 from Components.About import about
 from socket import has_ipv6
 from Tools.Directories import fileExists, pathExists
+from time import time
 import string
 import os, hashlib
 
@@ -40,7 +41,7 @@ def validate_certificate(cert, key):
 def get_random():
 	try:
 		xor = lambda a,b: ''.join(chr(ord(c)^ord(d)) for c,d in zip(a,b*100))
-		random = urandom(8)
+		random = os.urandom(8)
 		x = str(time())[-8:]
 		result = xor(random, x)
 

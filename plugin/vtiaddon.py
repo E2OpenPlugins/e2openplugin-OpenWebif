@@ -3,6 +3,7 @@
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection
 from local import tstrings
+from __init__ import _
 
 tstrings['no_cancel'] = _("No, cancel")
 tstrings['yes_delete'] = _("Yes, delete it")

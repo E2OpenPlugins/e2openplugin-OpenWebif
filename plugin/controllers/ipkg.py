@@ -21,6 +21,8 @@ import cStringIO
 from base import BaseController
 from Components.config import config
 
+from Plugins.Extensions.OpenWebif.__init__ import _
+
 PACKAGES = '/var/lib/opkg/lists'
 INSTALLEDPACKAGES = '/var/lib/opkg/status'
 
@@ -57,8 +59,8 @@ class IpkgController(BaseController):
 					ipks.append({
 						'path': tmpfile,
 						'name' : (tmpfile.split('/')[-1]),
-						'size' : stat(tmpfile).st_size,
-						'date' : stat(tmpfile).st_mtime,
+						'size' : os.stat(tmpfile).st_size,
+						'date' : os.stat(tmpfile).st_mtime,
 					})
 				request.setHeader("content-type", "text/plain")
 				request.write(json.dumps({'ipkfiles' : ipks}, encoding="ISO-8859-1"))
@@ -164,7 +166,7 @@ class IpkgController(BaseController):
 					self.ResultString += name + " - " + map[name][3] + " - " + map[name][0] + "<br>"
 		if self.format == "json":
 			data = []
-			nresult=unicode(nresult, errors='ignore')
+			# nresult = unicode(nresult, errors='ignore')
 			data.append({"result": True,"packages": self.ResultString.split("<br>")})
 			return data
 		return self.ResultString
@@ -293,14 +295,14 @@ class IPKGUpload(resource.Resource):
 				result = [False,_('wrong filetype')]
 			else:
 				FN = "/tmp/" + filename # nosec
-				fileh = open(FN, O_WRONLY|O_CREAT )
+				fileh = os.open(FN, os.O_WRONLY|os.O_CREAT )
 				bytes = 0
 				if fileh:
-					bytes = write(fileh, content)
-					close(fileh)
+					bytes = os.write(fileh, content)
+					os.close(fileh)
 				if bytes <= 0:
 					try:
-						remove(FN)
+						os.remove(FN)
 					except OSError, oe:
 						pass
 					result = [False,_('Error writing File')]

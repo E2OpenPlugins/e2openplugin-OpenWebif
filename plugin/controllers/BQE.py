@@ -331,7 +331,7 @@ class BQEUploadFile(resource.Resource):
 				os.close(fileh)
 			if bytes <= 0:
 				try:
-					os.remove(FN)
+					os.remove(self.FN)
 				except OSError, oe:
 					pass
 				result = [False,'Error writing File']
