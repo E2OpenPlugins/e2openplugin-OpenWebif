@@ -115,8 +115,8 @@ def buildRootTree(session):
 			if not os.path.exists(origwebifpath + "/WebChilds/External"):
 				os.makedirs(origwebifpath + "/WebChilds/External")
 			open(origwebifpath + "/__init__.py", "w").close()
- 			open(origwebifpath + "/WebChilds/__init__.py", "w").close()
- 			open(origwebifpath + "/WebChilds/External/__init__.py", "w").close()
+			open(origwebifpath + "/WebChilds/__init__.py", "w").close()
+			open(origwebifpath + "/WebChilds/External/__init__.py", "w").close()
 
 			os.symlink(hookpath, origwebifpath + "/WebChilds/Toplevel.py")
 
@@ -156,7 +156,7 @@ def buildRootTree(session):
 	return root
 
 def HttpdStart(session):
-	if config.OpenWebif.enabled.value == True:
+	if config.OpenWebif.enabled.value is True:
 		global listener, site
 		port = config.OpenWebif.port.value
 
@@ -177,14 +177,14 @@ def HttpdStart(session):
 		except CannotListenError:
 			print "[OpenWebif] failed to listen on Port %i" % (port)
 
-		if config.OpenWebif.https_clientcert.value == True and not os.path.exists(CA_FILE):
+		if config.OpenWebif.https_clientcert.value is True and not os.path.exists(CA_FILE):
 			# Disable https
 			config.OpenWebif.https_enabled.value = False
 			config.OpenWebif.https_enabled.save()
 			# Inform the user
 			session.open(MessageBox, "Cannot read CA certs for HTTPS access\nHTTPS access is disabled!", MessageBox.TYPE_ERROR)
 
-		if config.OpenWebif.https_enabled.value == True:
+		if config.OpenWebif.https_enabled.value is True:
 			httpsPort = config.OpenWebif.https_port.value
 			installCertificates(session)
 			# start https webserver on port configured port
@@ -203,7 +203,7 @@ def HttpdStart(session):
 					installCertificates(session)
 					context = ssl.DefaultOpenSSLContextFactory(KEY_FILE, CERT_FILE)
 
-				if config.OpenWebif.https_clientcert.value == True:
+				if config.OpenWebif.https_clientcert.value is True:
 					ctx = context.getContext()
 					ctx.set_verify(
 						SSL.VERIFY_PEER | SSL.VERIFY_FAIL_IF_NO_PEER_CERT,
@@ -280,7 +280,7 @@ class AuthResource(resource.Resource):
 
 		if (host == "localhost" or host == "127.0.0.1" or host == "::ffff:127.0.0.1") and not config.OpenWebif.auth_for_streaming.value:
 			return self.resource.render(request)
-		if self.login(request.getUser(), request.getPassword(), peer) == False:
+		if self.login(request.getUser(), request.getPassword(), peer) is False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
 			errpage = resource.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
 			return errpage.render(request)
@@ -307,7 +307,7 @@ class AuthResource(resource.Resource):
 		# Handle all conditions where auth may be skipped/disabled
 
 		# #1: Auth is disabled and access is from local network
-		if (not request.isSecure() and config.OpenWebif.auth.value == False) or (request.isSecure() and config.OpenWebif.https_auth.value == False):
+		if (not request.isSecure() and config.OpenWebif.auth.value is False) or (request.isSecure() and config.OpenWebif.https_auth.value is False):
 			networks = getAllNetworks()
 			if networks:
 				for network in networks:
@@ -315,8 +315,8 @@ class AuthResource(resource.Resource):
 						return self.resource.getChildWithDefault(path, request)
 
 		# #2: Auth is disabled and access is from private address space (Usually VPN) and access for VPNs has been granted
-		if (not request.isSecure() and config.OpenWebif.auth.value == False) or (request.isSecure() and config.OpenWebif.https_auth.value == False):
-			if config.OpenWebif.vpn_access.value == True and ipaddress.ip_address(unicode(peer)).is_private:
+		if (not request.isSecure() and config.OpenWebif.auth.value is False) or (request.isSecure() and config.OpenWebif.https_auth.value is False):
+			if config.OpenWebif.vpn_access.value is True and ipaddress.ip_address(unicode(peer)).is_private:
 				return self.resource.getChildWithDefault(path, request)
 
 		# #3: Access is from localhost and streaming auth is disabled - or - we only want to see our IPv6 (For inadyn-mt)
@@ -337,14 +337,14 @@ class AuthResource(resource.Resource):
 
 		# If we get to here, no exception applied
 		# Either block with forbidden (If auth is disabled) ...
-		if (not request.isSecure() and config.OpenWebif.auth.value == False) or (request.isSecure() and config.OpenWebif.https_auth.value == False):
+		if (not request.isSecure() and config.OpenWebif.auth.value is False) or (request.isSecure() and config.OpenWebif.https_auth.value is False):
 			return resource.ErrorPage(http.FORBIDDEN,'Forbidden','403.6 IP address rejected')
 
 		# ... or auth
 		if "logged" in session.keys() and session["logged"]:
 			return self.resource.getChildWithDefault(path, request)
 
-		if self.login(request.getUser(), request.getPassword(), peer) == False:
+		if self.login(request.getUser(), request.getPassword(), peer) is False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
 			return resource.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
 		else:

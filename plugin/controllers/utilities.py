@@ -6,8 +6,8 @@ MANY_SLASHES_PATTERN = r'[\/]+'
 MANY_SLASHES_REGEX = re.compile(MANY_SLASHES_PATTERN)
 
 PATTERN_ITEM_OR_KEY_ACCESS = r'^(?P<attr_name>[a-zA-Z][\w\d]*)' \
-							 r'\[((?P<index>\d+)|' \
-							 r'[\'\"](?P<key>[\s\w\d]+)[\'\"])\]$'
+							r'\[((?P<index>\d+)|' \
+							r'[\'\"](?P<key>[\s\w\d]+)[\'\"])\]$'
 REGEX_ITEM_OR_KEY_ACCESS = re.compile(PATTERN_ITEM_OR_KEY_ACCESS)
 
 # stolen from enigma2_http_api ...

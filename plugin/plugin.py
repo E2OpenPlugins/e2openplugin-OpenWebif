@@ -171,15 +171,15 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		for x in self["config"].list:
 			x[1].save()
 
-		if not config.OpenWebif.auth.value == True:
+		if not config.OpenWebif.auth.value is True:
 			config.OpenWebif.auth_for_streaming.value = False
 			config.OpenWebif.auth_for_streaming.save()
 
-		if not config.OpenWebif.https_enabled.value == True:
+		if not config.OpenWebif.https_enabled.value is True:
 			config.OpenWebif.https_clientcert.value = False
 			config.OpenWebif.https_clientcert.save()
 
-		if config.OpenWebif.enabled.value == True:
+		if config.OpenWebif.enabled.value is True:
 			HttpdRestart(global_session)
 		else:
 			HttpdStop(global_session)
