@@ -17,7 +17,7 @@ class ERController(resource.Resource):
 		self.session = session
 
 		try:
-			from Plugins.Extensions.EPGRefresh.EPGRefreshResource import EPGRefreshSettingsResource, \   # noqa: F401
+			from Plugins.Extensions.EPGRefresh.EPGRefreshResource import EPGRefreshSettingsResource, \
 			EPGRefreshChangeSettingsResource, \
 			EPGRefreshListServicesResource, EPGRefreshAddRemoveServiceResource, \
 			EPGRefreshStartRefreshResource, API_VERSION
