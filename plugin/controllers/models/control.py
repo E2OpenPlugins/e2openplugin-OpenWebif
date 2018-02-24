@@ -10,7 +10,6 @@
 ##############################################################################
 from Components.config import config
 from enigma import eServiceReference, eActionMap, eServiceCenter
-from urllib import unquote
 from services import getProtection
 from Screens.InfoBar import InfoBar, MoviePlayer
 import NavigationInstance

@@ -3,7 +3,6 @@
 from enigma import eEnv
 from Components.SystemInfo import SystemInfo
 from Components.config import config
-from Tools.Directories import resolveFilename, SCOPE_CURRENT_PLUGIN, fileExists
 from os import path, listdir
 import xml.etree.cElementTree # nosec
 

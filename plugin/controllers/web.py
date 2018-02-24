@@ -14,7 +14,7 @@ from Plugins.Extensions.OpenWebif.__init__ import _
 from Components.config import config
 
 from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStatus
-from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
+from models.services import getCurrentService, getBouquets, getServices, getSubServices, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState, getStandbyState
@@ -29,7 +29,6 @@ from models.mediaplayer import mediaPlayerAdd, mediaPlayerRemove, mediaPlayerPla
 from models.plugins import reloadPlugins
 from Screens.InfoBar import InfoBar
 
-from fcntl import ioctl
 from base import BaseController
 from stream import StreamController
 import re
@@ -1287,4 +1286,4 @@ class ApiController(WebController):
 	def prePageLoad(self, request):
 		self.isJson = True
 
-from Plugins.Extensions.OpenWebif.vtiaddon import expand_basecontroller
+from Plugins.Extensions.OpenWebif.vtiaddon import expand_basecontroller  # noqa: F401

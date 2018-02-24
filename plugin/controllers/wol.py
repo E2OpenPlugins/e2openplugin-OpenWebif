@@ -48,7 +48,7 @@ class WOLSetupController(resource.Resource):
 				wol_standby = str(request.args["wolstandby"][0]).lower()
 				if wol_standby in ('true', '1', 'enabled', 'enable', 'active'):
 					try:
-						from Plugins.SystemPlugins.WOLSetup.plugin import WOLSetup, _deviseWOL, _flagForceEnable, _flagSupportWol, _tryQuitTable, _ethDevice
+						from Plugins.SystemPlugins.WOLSetup.plugin import WOLSetup, _deviseWOL, _flagForceEnable, _flagSupportWol, _tryQuitTable, _ethDevice  # noqa: F401
 						from Screens.Standby import TryQuitMainloop
 					except ImportError:
 						return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>WOLSetup plugin is not installed or your STB does not support WOL</e2statetext></e2simplexmlresult>'

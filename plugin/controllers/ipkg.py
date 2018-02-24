@@ -10,13 +10,11 @@
 ##############################################################################
 
 from enigma import eConsoleAppContainer
-from twisted.web import static, server, resource, http
+from twisted.web import server, resource, http
 #from os import path, popen, remove, stat
 
 import os
 import json
-import gzip
-import cStringIO
 
 from base import BaseController
 from Components.config import config

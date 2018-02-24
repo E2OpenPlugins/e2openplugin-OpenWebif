@@ -8,7 +8,7 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-from twisted.web import static, resource, http, server
+from twisted.web import resource, server
 from Components.Converter.Streaming import Streaming
 from Components.Sources.StreamService import StreamService
 

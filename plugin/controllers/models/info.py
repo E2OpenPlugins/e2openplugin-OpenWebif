@@ -19,7 +19,6 @@ from Components.Network import iNetwork
 from Components.Language import language
 from ServiceReference import ServiceReference
 from RecordTimer import parseEvent
-from Screens.Standby import inStandby
 from timer import TimerEntry
 from Tools.Directories import fileExists, pathExists
 from time import time, localtime, strftime
@@ -40,7 +39,6 @@ import NavigationInstance
 import os
 import sys
 import time
-import string
 
 OPENWEBIFVER = "OWIF 1.3.0"
 
