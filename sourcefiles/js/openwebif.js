@@ -302,8 +302,8 @@ function load_dm_spinner(url,title,w,h,buttons){
 		height:height,
 		buttons:buttons,
 		create: function(event, ui) {
-	        $(event.target).parent().css('position', 'fixed');
-	    },
+			$(event.target).parent().css('position', 'fixed');
+		},
 		close: function(event, ui) { 
 			$(this).dialog('destroy');
 			$("#modaldialog").html('');
@@ -313,8 +313,8 @@ function load_dm_spinner(url,title,w,h,buttons){
 			url: url,
 			success: function(data) {
 				$("#modaldialog").html(data);
-			}
-			,error: function(){
+			},
+			error: function(){
 				$("#modaldialog").html(tstr_error_load_page);
 			}
 		});
@@ -1812,8 +1812,8 @@ var MLHelper;
 						}
 					}
 				});
-			}
-			,SortMovies: function(idx)
+			},
+			SortMovies: function(idx)
 			{
 				var sorted = self._movies.slice(0);
 
@@ -1892,7 +1892,7 @@ var MLHelper;
 				self._movies = mv.slice();
 			}
 		
-		}
+		};
 
 	};
 	
@@ -1922,9 +1922,9 @@ function setHover(obj)
 	var cls=getHoverCls();
 	
 	$(obj).hover(
-		function(){ $(this).addClass(cls) },
-		function(){ $(this).removeClass(cls) }
-	)
+		function(){ $(this).addClass(cls); },
+		function(){ $(this).removeClass(cls); }
+	);
 }
 
 function setTMHover()
@@ -1936,9 +1936,9 @@ function setTMHover()
 	}
 	
 	$('.tm_row').hover(
-		function(){ $(this).addClass(cls) },
-		function(){ $(this).removeClass(cls) }
-	)
+		function(){ $(this).addClass(cls); },
+		function(){ $(this).removeClass(cls); }
+	);
 }
 
 // Localstorage
@@ -1982,13 +1982,13 @@ function FillAllServices(bqs,callback)
 	var boptions = "";
 	var refs = [];
 	$.each( bqs, function( key, val ) {
-		var ref = val['servicereference']
+		var ref = val['servicereference'];
 		var name = val['servicename'];
 		boptions += "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>";
 		var slist = val['subservices'];
 		var items = [];
 		$.each( slist, function( key, val ) {
-			var ref = val['servicereference']
+			var ref = val['servicereference'];
 			if (!isInArray(refs,ref)) {
 				refs.push(ref);
 				if(ref.substring(0, 4) == "1:0:")
@@ -2029,9 +2029,9 @@ function GetAllServices(callback,radio)
 	date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
 
 	// load allservices only once a day
-	var cache = GetLSValue(vd,'')
+	var cache = GetLSValue(vd,'');
 	if(cache === date) {
-		cache = GetLSValue(v,null)
+		cache = GetLSValue(v,null);
 		if(cache != null) {
 			var js = JSON.parse(cache);
 			var bqs = js['services'];
