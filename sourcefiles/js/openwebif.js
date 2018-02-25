@@ -75,7 +75,7 @@ try {
 	});
 	
 	getStatusInfo();
-	setInterval("getStatusInfo()", 15000);
+	setInterval( function() { getStatusInfo(); }, 15000);
 
 	$( "#slider" ).slider({
 		
@@ -169,9 +169,9 @@ function initJsTranslation(strings) {
 	tstr_nothing_play = strings.nothing_play;
 	tstr_now = strings.now;
 	tstr_on = strings.on;
-	tstr_reboot_box = strings.reboot_box
+	tstr_reboot_box = strings.reboot_box;
 	tstr_rec_status = strings.rec_status;
-	tstr_restart_gui = strings.restart_gui
+	tstr_restart_gui = strings.restart_gui;
 	tstr_standby = strings.standby;
 	tstr_start_after_end = strings.start_after_end;
 	tstr_time = strings.time;
@@ -324,7 +324,7 @@ function load_dm_spinner(url,title,w,h,buttons){
 }
 
 function load_dm(url,title,w,h){
-	var buttons = {}
+	var buttons = {};
 	buttons[tstr_close] = function() { $(this).dialog("close");};
 	var width = 'auto',height='auto';
 	if (typeof w !== 'undefined')
@@ -358,7 +358,7 @@ function load_dm(url,title,w,h){
 }
 
 function load_message_dm(url,title){
-	var buttons = {}
+	var buttons = {};
 	buttons[tstr_send_message] = function() { sendMessage();};
 	buttons[tstr_cancel] = function() { $(this).dialog("close");};
 
@@ -434,7 +434,7 @@ function open_epg_dialog(sRef,Name) {
 	var w = $(window).width() -100;
 	var h = $(window).height() -100;
 	
-	var buttons = {}
+	var buttons = {};
 	buttons[tstr_close] = function() { $(this).dialog("close");};
 	buttons[tstr_open_in_new_window] = function() { $(this).dialog("close"); open_epg_pop(sRef);};
 	
@@ -443,15 +443,15 @@ function open_epg_dialog(sRef,Name) {
 
 function open_epg_search_dialog() {
 	var spar = $("#epgSearch").val();
-	var full = GetLSValue('epgsearchtype',false) ? '&full=1' : ''
-	var bouquetsonly = GetLSValue('epgsearchbouquetsonly',false) ? '&bouquetsonly=1' : ''
+	var full = GetLSValue('epgsearchtype',false) ? '&full=1' : '';
+	var bouquetsonly = GetLSValue('epgsearchbouquetsonly',false) ? '&bouquetsonly=1' : '';
 	var url = "ajax/epgdialog?sstr=" + encodeURIComponent(spar) + full + bouquetsonly;
 	$("#epgSearch").val("");
 	
 	var w = $(window).width() -100;
 	var h = $(window).height() -100;
 	
-	var buttons = {}
+	var buttons = {};
 	buttons[tstr_close] = function() { $(this).dialog("close");};
 	buttons[tstr_open_in_new_window] = function() { $(this).dialog("close"); open_epg_search_pop(spar,full);};
 	
@@ -684,7 +684,7 @@ function webapi_execute_movie(url,callback)
 				if (!result.result)
 					alert(result.message);
 				if (typeof callback !== 'undefined') 
-					callback(result.result)
+					callback(result.result);
 			}
 		}
 	});
@@ -976,7 +976,7 @@ function pressMenuRemote(code) {
 	if (grabTimer > 0) {
 		clearTimeout(grabTimer);
 	}
-	grabTimer = setTimeout("callScreenShot()", (code > 1 && code < 12) ? 1500:1000);
+	grabTimer = setTimeout(function() { callScreenShot(); }, (code > 1 && code < 12) ? 1500:1000);
 }
 
 function toggleFullRemote() {
@@ -1026,26 +1026,26 @@ function initTimerBQ(radio, callback) {
 }
 
 function initTimerEdit(radio, callback) {
-	
-	var bottomhalf = function() {
-	$('#dirname').find('option').remove().end();
-	$('#dirname').append($("<option></option>").attr("value", "None").text("Default"));
-	for (var id in _locations) {
-		var loc = _locations[id];
-		$('#dirname').append($("<option></option>").attr("value", loc).text(loc));
-	}
 
-	$('#tagsnew').html('');
-	for (var id in _tags) {
-		var tag = _tags[id];
-		$('#tagsnew').append("<input type='checkbox' name='"+tag+"' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
-	}
-	
-	$("#tagsnew > input").checkboxradio({icon: false});
-	
-	timeredit_initialized = true;
+	var bottomhalf = function() {
+		$('#dirname').find('option').remove().end();
+		$('#dirname').append($("<option></option>").attr("value", "None").text("Default"));
+		for (var id in _locations) {
+			var loc = _locations[id];
+			$('#dirname').append($("<option></option>").attr("value", loc).text(loc));
+		}
+
+		$('#tagsnew').html('');
+		for (var id in _tags) {
+			var tag = _tags[id];
+			$('#tagsnew').append("<input type='checkbox' name='"+tag+"' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
+		}
+
+		$("#tagsnew > input").checkboxradio({icon: false});
+
+		timeredit_initialized = true;
 		callback();
-	}
+	};
 
 	initTimerBQ(radio, bottomhalf);
 }
@@ -1415,7 +1415,7 @@ function ExpandMEPG()
 	$("#refreshmepg2").show();
 	$("#header").hide();
 	$("#leftmenu").hide();
-	$('#content').css('margin-left', '5px')
+	$('#content').css('margin-left', '5px');
 	$('#tvcontentmain > #toolbar-header').hide();
 	$("#tbl1body").height('100%');
 	$("#tvcontent").css('height','100%');
@@ -1432,7 +1432,7 @@ function CompressMEPG()
 	$("#refreshmepg2").hide();
 	$("#header").show();
 	$("#leftmenu").show();
-	$('#content').css('margin-left', '185px')
+	$('#content').css('margin-left', '185px');
 	$('#tvcontentmain > #toolbar-header').show();
 	$("#tvcontent").css('height','730px');
 	$("#tvcontentmain").css('height','800px');
@@ -1807,7 +1807,7 @@ var MLHelper;
 						if (simg) {
 							var img = $( "<span class='sortimg'>").append (
 								$( "<i>", { "class": "fa " + simg })
-								)
+								);
 							$("#moviesort-button .ui-selectmenu-text").prepend(img);
 						}
 					}

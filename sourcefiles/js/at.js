@@ -285,7 +285,7 @@ function InitPage() {
 	});
 	
 	
-	var buttons = {}
+	var buttons = {};
 	buttons["Save"] = function() {setAutoTimerSettings(); $(this).dialog("close");};
 	buttons["Cancel"] = function() {$(this).dialog("close");};
 	
@@ -328,7 +328,7 @@ function isBQ(sref)
 function Parse() {
 	$("#atlist").empty();
 	
-	var atlist = []
+	var atlist = [];
 	
 	var state=$(atxml).find("e2state").first();
 	if (state.text() == 'false') {
@@ -490,7 +490,7 @@ function AutoTimerObj (xml) {
 
 	this.avoidDuplicateDescription="0";
 	if(xml.attr("avoidDuplicateDescription"))
-		this.avoidDuplicateDescription=xml.attr("avoidDuplicateDescription")
+		this.avoidDuplicateDescription=xml.attr("avoidDuplicateDescription");
 
 	this.location=null;
 	if(xml.attr("location")) 
@@ -725,11 +725,11 @@ function addAT(evt)
 	if (typeof evt !== 'undefined') 
 	{
 		xml = '<timers><timer name="'+evt.name+'" match="'+evt.name+'" enabled="yes" id="'+id+'" from="'+evt.from+'" to="'+evt.to+'"';
-		xml += ' searchType="exact" searchCase="sensitive" justplay="0" overrideAlternatives="1" '
+		xml += ' searchType="exact" searchCase="sensitive" justplay="0" overrideAlternatives="1" ';
 		xml += '><e2service><e2servicereference>'+evt.sref+'</e2servicereference><e2servicename>'+evt.sname+'</e2servicename></e2service>';
 		xml += '</timer></timers>';
 	}
-	var xmlDoc = $.parseXML( xml )
+	var xmlDoc = $.parseXML( xml );
 	
 	$(xmlDoc).find("timer").each(function () {
 		$( "#atlist" ).append($('<li></li>').html($(this).attr("name")).data('id',$(this).attr("id")));
@@ -946,7 +946,7 @@ function saveAT()
 
 		if(CurrentAT.Filters && CurrentAT.Filters.length > 0) {
 			$.each( CurrentAT.Filters, function( index, value ){
-				var fr = "&"
+				var fr = "&";
 				if(value.t === "exclude")
 					fr+="!";
 				fr += value.w;
@@ -1025,7 +1025,7 @@ function test_simulateAT(simulate)
 				line += '<td>' + $(this).find('e2name').text() + '</td>';
 				line += '<td>' + $(this).find('e2servicename').text() + '</td>';
 				var s = $(this).find('e2timebegin').text();
-				var d = new Date(Math.round(s) * 1000)
+				var d = new Date(Math.round(s) * 1000);
 				var h = d.getHours();
 				var m = d.getMinutes();
 				var _h = ((h>9) ? '':'0') + h.toString();
@@ -1033,7 +1033,7 @@ function test_simulateAT(simulate)
 				s = (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear() + ' ' + _h + ':' + _m;
 				line += '<td>' + s + '</td>';
 				s = $(this).find('e2timeend').text();
-				d = new Date(Math.round(s) * 1000)
+				d = new Date(Math.round(s) * 1000);
 				h = d.getHours();
 				m = d.getMinutes();
 				var _h = ((h>9) ? '':'0') + h.toString();

@@ -62,7 +62,7 @@
 				$('#provider').empty();
 				$.each(options, function(k,v) {
 					$('#provider').append(v);
-				})
+				});
 				$('#provider').children().first().addClass('ui-selected');
 				self.changeProvider(
 					$('#provider').children().first().data('sref'),
@@ -76,7 +76,7 @@
 				$('#channels').empty();
 				$.each(options, function(k,v) {
 					$('#channels').append(v);
-				})
+				});
 				self.setChannelButtons();
 				self.setHover('#channels');
 			},
@@ -88,7 +88,7 @@
 				$('#bql').empty();
 				$.each(options, function(k,v) {
 					$('#bql').append(v);
-				})
+				});
 				$('#bql').children().first().addClass('ui-selected');
 				self.changeBouquet(
 					$('#bql').children().first().data('sref'),
@@ -102,7 +102,7 @@
 				$('#bqs').empty();
 				$.each(options, function(k,v) {
 					$('#bqs').append(v);
-				})
+				});
 				self.setBouquetChannelButtons();
 				self.setHover('#bqs');
 			},
@@ -206,11 +206,11 @@
 						var options = [];
 						var s = data['services'];
 						$.each( s, function ( key, val ) {
-							var sref = val['servicereference']
-							var name = val['servicename']
+							var sref = val['servicereference'];
+							var name = val['servicename'];
 							options.push( $('<li/>', {
-							    class: "ui-widget-content",
-							    data: { sref: sref }
+								class: "ui-widget-content",
+								data: { sref: sref }
 							}).html(name) );
 						});
 						if (callback) {
@@ -627,7 +627,7 @@
 					return;
 				}
 			
-				var pos = item.index()
+				var pos = item.index();
 				var sname = item.text();
 				var sref = item.data('sref');
 				var bref = $('#bql li.ui-selected').data('sref');
@@ -916,11 +916,11 @@
 			},setHover : function(obj)
 			{
 				$(obj + ' li').hover(
-					function(){ $(this).addClass(self.hovercls) },
-					function(){ $(this).removeClass(self.hovercls) }
-				)
+					function(){ $(this).addClass(self.hovercls); },
+					function(){ $(this).removeClass(self.hovercls); }
+				);
 			}
-		 }
+		 };
 	};
 
 	var bqe = new BQE();
