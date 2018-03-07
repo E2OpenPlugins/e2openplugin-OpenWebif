@@ -309,6 +309,9 @@ def getInfo(session = None, need_fullinfo = False):
 				chipset = "STi7162 @540MHz"
 			else:
 				chipset = "STi7111 @450MHz"
+		elif model == "dm800":
+			chipset = "bcm7401"
+			info['model'] = "DM800 HD PVR"		
 
 	if fileExists("/proc/stb/info/chipset"):
 		f = open("/proc/stb/info/chipset",'r')
