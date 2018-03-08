@@ -413,7 +413,7 @@ def getInfo(session = None, need_fullinfo = False):
 		dev = hdd.findMount()
 		if dev:
 			stat = os.statvfs(dev)
-			free = int((stat.f_bfree/1024) * (stat.f_bsize/1024))
+			free = stat.f_bavail * stat.f_frsize / 1048576.
 		else:
 			free = -1
 		
