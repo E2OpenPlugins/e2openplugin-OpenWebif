@@ -2043,7 +2043,7 @@ function GetAllServices(callback,radio)
 		url: '/api/getallservices?renameserviceforxmbc=1'+ru,
 		dataType: "json",
 		success: function ( data ) {
-			var sdata = JSON.stringify(data)
+			var sdata = JSON.stringify(data);
 			SetLSValue(v,sdata);
 			SetLSValue(vd,date);
 			var bqs = data['services'];
@@ -2108,9 +2108,9 @@ var SSHelperObj = function () {
 
 		},setSInterval: function()
 		{
-			self.screenshotInterval = setInterval("grabScreenshot('auto')", (self.ssr_i+1)*1000);
+			self.screenshotInterval = setInterval( function() { grabScreenshot('auto'); }, (self.ssr_i+1)*1000);
 		}
-	}
+	};
 };
 
 var SSHelper = new SSHelperObj();

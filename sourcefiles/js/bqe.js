@@ -734,7 +734,7 @@
 	
 				$('form#uploadrestore')
 					.unbind('submit')
-					.submit(function (e) 
+					.submit(function (_e) 
 				{
 					var formData = new FormData(this);
 					$.ajax({
@@ -758,10 +758,10 @@
 							self.showError("Upload File Error: " + errorThrown);
 						}
 					});
-					e.preventDefault();
+					_e.preventDefault();
 					try {
-						e.unbind();
-					} catch(e){}
+						_e.unbind();
+					} catch(ex){}
 				});
 				$('form#uploadrestore').submit();
 			},
@@ -828,8 +828,8 @@
 
 				// Setup selection callback function for left pane channels list
 				$('#channels').selectable({
-					stop: self.setChannelButtons
-					,classes: {
+					stop: self.setChannelButtons,
+					classes: {
 						"ui-selected": self.activecls 
 					}
 				});

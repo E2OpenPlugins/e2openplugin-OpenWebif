@@ -105,16 +105,16 @@ function initValues () {
 	});
 	$('.date').each(function(index,element){
 		$('<span style="display: inline-block">').addClass('ui-icon ui-icon-calendar').insertAfter(element).position({
-			of: element
-			,my: 'right top'
-			,at: 'right top+2'
+			of: element,
+			my: 'right top',
+			at: 'right top+2'
 		});
 	});
 	$('.time').each(function(index,element){
 		$('<span style="display: inline-block">').addClass('ui-icon ui-icon-clock').insertAfter(element).position({
-			of: element
-			,my: 'right top'
-			,at: 'right top+2'
+			of: element,
+			my: 'right top',
+			at: 'right top+2'
 		});
 	});
 	$("#bouquets").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "80%"});
