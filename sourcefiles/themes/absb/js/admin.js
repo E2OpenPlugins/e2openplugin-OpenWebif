@@ -40,7 +40,7 @@ $.AdminBSB.options = {
         effectIn: 'fadeIn',
         effectOut: 'fadeOut'
     }
-}
+};
 
 /* Left Sidebar - Function =================================================================================================
 *  You can manage the left sidebar menu options
@@ -124,7 +124,7 @@ $.AdminBSB.leftSideBar = {
 
             //Scroll active menu item when page load, if option set = true
             if ($.AdminBSB.options.leftSideBar.scrollActiveItemWhenPageLoad) {
-                var activeItemOffsetTop = $('.menu .list li.active')[0].offsetTop
+                var activeItemOffsetTop = $('.menu .list li.active')[0].offsetTop;
                 if (activeItemOffsetTop > 150) $el.slimscroll({ scrollTo: activeItemOffsetTop + 'px' });
             }
         }
@@ -176,7 +176,7 @@ $.AdminBSB.slimScrollModal = {
 			});
 		}
 	}
-}
+};
 
 $.AdminBSB.rightSideBar = {
     activate: function () {
@@ -203,7 +203,7 @@ $.AdminBSB.rightSideBar = {
     isOpen: function () {
         return $('.right-sidebar').hasClass('open');
     }
-}
+};
 //==========================================================================================================================
 
 
@@ -241,7 +241,7 @@ $.AdminBSB.navbar = {
 		});
 		
 	}
-}
+};
 //==========================================================================================================================
 
 /* Input - Function ========================================================================================================
@@ -278,7 +278,7 @@ $.AdminBSB.input = {
             }
         });
     }
-}
+};
 //==========================================================================================================================
 
 /* Form - Select - Function ================================================================================================
@@ -289,7 +289,7 @@ $.AdminBSB.select = {
     activate: function () {
         if ($.fn.selectpicker) { $('select:not(.ms, .no-default-select)').selectpicker(); }
     }
-}
+};
 //==========================================================================================================================
 
 /* DropdownMenu - Function =================================================================================================
@@ -367,7 +367,7 @@ $.AdminBSB.dropdownMenu = {
             }
         });
     }
-}
+};
 //==========================================================================================================================
 
 /* Browser - Function ======================================================================================================
@@ -431,7 +431,7 @@ $.AdminBSB.browser = {
             return '';
         }
     }
-}
+};
 //==========================================================================================================================
 
 $(function () {

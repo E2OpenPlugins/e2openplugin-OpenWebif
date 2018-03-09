@@ -73,15 +73,15 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 			}, getAllServices: function () {
 			
 				GetAllServices(function ( options , boptions) {
-					$('#bouquets').hide()
-					$('#channels').hide()
+					$('#bouquets').hide();
+					$('#channels').hide();
 					$("#channels").append( options);
 					$('#channels').selectpicker('refresh');
 					$("#bouquets").append( boptions);
 					$('#bouquets').selectpicker('refresh');
 					self.reloadEPGR();
-					$('#bouquets').show()
-				$('#channels').show()
+					$('#bouquets').show();
+					$('#channels').show();
 				});
 			
 			}, reloadEPGR: function () {
@@ -191,12 +191,12 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 				$.each(Channels, function(index, value) {
 					$('#channels option[value="' + value + '"]').prop("selected", true);
 				});
-				$('#bouquets').hide()
-				$('#channels').hide()
+				$('#bouquets').hide();
+				$('#channels').hide();
 				$('#bouquets').selectpicker('refresh');
 				$('#channels').selectpicker('refresh');
-				$('#bouquets').show()
-				$('#channels').show()
+				$('#bouquets').show();
+				$('#channels').show();
 			
 				self.er_bqchchanged = false;
 				
@@ -337,7 +337,7 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 				}
 				
 			},
-		 }
+		 };
 	};
 
 	var epgr = new EPGR();

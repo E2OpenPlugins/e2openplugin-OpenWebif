@@ -49,7 +49,7 @@ $(function () {
 			}
 		
 		}
-	})
+	});
 
 	$('#TimerModal').on('hidden.bs.modal', function (e) {
 	});
@@ -136,6 +136,7 @@ function toggleFullRemote() {
 
 function SetSpinner()
 {
+	/*jshint multistr: true */
 	loadspinner = " \
 	<div class='page-loader-wrapper'> \
 		<div class='loader'> \
@@ -249,7 +250,7 @@ var SSHelperObj = function () {
 		{
 			self.screenshotInterval = setInterval("grabScreenshot('auto')", (self.ssr_i+1)*1000);
 		}
-	}
+	};
 };
 
 var SSHelper = new SSHelperObj();
@@ -273,7 +274,7 @@ function toggleLeftSideBar() {
 		$("#epgcard").height(($("#leftsidemenu").height() - 30) + "px");
 		$('#topmenuheader,#mainfooter').show();
 		$('#togglefullscreen').html('fullscreen');
-		setTimeout(function(){load_tvcontent('ajax/multiepg?epgmode=tv')}, 500);
+		setTimeout(function(){load_tvcontent('ajax/multiepg?epgmode=tv');}, 500);
 	} else {
 		$body.addClass('ls-closed-manual');
 		$maincontent.removeClass('content');
@@ -281,7 +282,7 @@ function toggleLeftSideBar() {
 		$('#epgcard').height(height + "px");
 		$('#topmenuheader,#mainfooter').hide();
 		$('#togglefullscreen').html('fullscreen_exit');
-		setTimeout(function(){load_tvcontent('ajax/multiepg?epgmode=tv')}, 500);
+		setTimeout(function(){load_tvcontent('ajax/multiepg?epgmode=tv');}, 500);
 	}
 }
 
@@ -330,12 +331,12 @@ function getStatusInfo() {
 		$("#responsive_mute_status").html(responsive_mute_status);
 		
 		setOSD(statusinfo);
-		var responsive_rec_info = ''
-		var responsive_stream_info = ''
+		var responsive_rec_info = '';
+		var responsive_stream_info = '';
 		var status = "";
 		
 		if (statusinfo['isRecording'] == 'true') {
-			var recs = statusinfo['Recording_list']
+			var recs = statusinfo['Recording_list'];
 			var rec_array = recs.split("\n");
 			var reclen = 0;
 			var tmp = '';
@@ -351,7 +352,7 @@ function getStatusInfo() {
 		}
 		
 		if (statusinfo['isStreaming'] == 'true') {
-			var streams = statusinfo['Streaming_list']
+			var streams = statusinfo['Streaming_list'];
 			var stream_array = streams.split("\n");
 			var streamlen = 0;
 			var tmp = '';
@@ -370,15 +371,16 @@ function getStatusInfo() {
 		if (statusinfo['inStandby'] == 'true') {
 			icon = 'lightbulb_outline';
 			if ( (standby_status === 0) || (standby_status === -1) ) {
-				$('.osd-toggle').hide()
+				$('.osd-toggle').hide();
 			}
 			standby_status = 1;
 		} else {
 			if ( (standby_status === 1) || (standby_status === -1) ) {
-				$('.osd-toggle').show()
+				$('.osd-toggle').show();
 			}
 			standby_status = 0;
 		}
+		/*jshint multistr: true */
 		var power_status = " \
 			<a href='#' onClick='toggleStandby();return false'> \
 				<i class='material-icons'>" + icon + "</i> \
