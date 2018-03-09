@@ -40,7 +40,7 @@ deploy:
   skip_cleanup: true
   target_branch: gh-pages
   edge:
-    branch: pages-ivar-set
+    branch: v1.8.47
   on:
     branch: master
     
