@@ -313,7 +313,7 @@ class BaseController(resource.Resource):
 		except ImportError:
 			pass
 
-		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/OpenWebif/controllers/views/ajax/bqe.tmpl")):
+		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/OpenWebif/controllers/views/ajax/bqe.tmpl")) or fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/OpenWebif/controllers/views/ajax/bqe.pyo")):
 			extras.append({ 'key': 'ajax/bqe','description': _('BouquetEditor')})
 
 		try:
