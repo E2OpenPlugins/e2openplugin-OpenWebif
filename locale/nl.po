@@ -626,7 +626,7 @@ msgstr "di"
 
 #: plugin/local.py:16
 msgid "We"
-msgstr "Wij"
+msgstr "wo"
 
 #: plugin/local.py:17
 msgid "Th"

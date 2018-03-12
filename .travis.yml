@@ -39,8 +39,6 @@ deploy:
   github_token: $GITHUB_TOKEN
   skip_cleanup: true
   target_branch: gh-pages
-  edge:
-    branch: pages-ivar-set
   on:
     branch: master
     
