@@ -369,6 +369,9 @@ def getAllInfo():
 		elif procmodel == "sf4008":
 			brand = "Octagon"
 			model = procmodel
+		elif procmodel == "e4hd":
+			brand = "Axas"
+			model = "E4HD"
 	elif fileExists("/proc/stb/info/model"):
 		f = open("/proc/stb/info/model",'r')
 		procmodel = f.readline().strip().lower()
@@ -542,6 +545,8 @@ def getAllInfo():
 		remote = "octagon"
 	elif procmodel in ("vs1100", "vs1500"):
 		remote = "vs1x00"
+	elif procmodel in ("e4hd"):
+		remote = "e4hd"
 
 	info['remote'] = remote
 
