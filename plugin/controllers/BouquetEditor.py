@@ -182,7 +182,8 @@ class BouquetEditor(Source):
 			return (False, _("Bouquet %s removed failed, sevicerefence or mutable list is not valid.") % filename)
 		try:
 			if filename is not None:
-				remove(filename)
+				if not path.exists(filename + '.del'):
+					remove(filename)
 				return (True, _("Bouquet %s deleted.") % bouquetName)
 		except OSError:
 			return (False, _("Error: Bouquet %s could not deleted, OSError.") % filename)
