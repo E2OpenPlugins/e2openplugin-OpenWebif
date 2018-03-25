@@ -335,7 +335,7 @@ msgstr "нема/мережа тільки IPv4"
 #: plugin/controllers/models/info.py:286 plugin/controllers/models/info.py:289
 #: plugin/controllers/models/movies.py:250
 msgid "kB"
-msgstr "кБ"
+msgstr "Кб"
 
 #: plugin/controllers/models/info.py:290 plugin/controllers/models/info.py:413
 #, python-format
@@ -354,18 +354,18 @@ msgstr "Версія фронтпроцесора"
 #: plugin/controllers/models/info.py:405
 #: plugin/controllers/models/movies.py:248
 msgid "MB"
-msgstr "МБ"
+msgstr "Мб"
 
 #: plugin/controllers/models/info.py:379 plugin/controllers/models/info.py:385
 #: plugin/controllers/models/info.py:400 plugin/controllers/models/info.py:403
 #: plugin/controllers/models/movies.py:246
 msgid "GB"
-msgstr "ГБ"
+msgstr "Гб"
 
 #: plugin/controllers/models/info.py:383 plugin/controllers/models/info.py:395
 #: plugin/controllers/models/info.py:397
 msgid "TB"
-msgstr "ТБ"
+msgstr "Тб"
 
 #: plugin/controllers/models/info.py:442
 msgid "r/w"
@@ -385,11 +385,11 @@ msgstr "Немає відповіді довгий час"
 
 #: plugin/controllers/models/message.py:48
 msgid "Answer is YES!"
-msgstr "Відповідь - НІ!"
+msgstr "Відповідь - ТАК!"
 
 #: plugin/controllers/models/message.py:48
 msgid "Answer is NO!"
-msgstr "Відповідь - ТАК!"
+msgstr "Відповідь - НІ!"
 
 #: plugin/controllers/models/services.py:260
 msgid "New"
@@ -816,7 +816,7 @@ msgstr "Канали"
 
 #: plugin/local.py:66
 msgid "Cleanup Timers"
-msgstr "Очистити список таймерів"
+msgstr "Очистити таймери"
 
 #: plugin/local.py:67
 msgid "Close"
@@ -2112,7 +2112,7 @@ msgstr "Часова лінія"
 
 #: plugin/local.py:423
 msgid "Web TV"
-msgstr "Веб TV"
+msgstr "Веб ТБ"
 
 #: plugin/local.py:424
 msgid "Calendar Week"
@@ -2124,7 +2124,7 @@ msgstr "Швидкість з'єднання"
 
 #: plugin/local.py:427
 msgid "Network Shares"
-msgstr "Мережеві Ресурси"
+msgstr "Мережеві ресурси"
 
 #: plugin/local.py:428
 msgid "using"
