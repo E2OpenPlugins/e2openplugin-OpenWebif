@@ -25,8 +25,8 @@ TRASHDIRNAME = "movie_trash"
 MOVIE_LIST_SREF_ROOT = '2:0:1:0:0:0:0:0:0:0:'
 MOVIE_LIST_ROOT_FALLBACK = '/media'
 
-#TODO : optimize move using FileTransferJob if available
-#TODO : add copy api
+# TODO : optimize move using FileTransferJob if available
+# TODO : add copy api
 
 
 def getPosition(cutfile, movie_len):
@@ -410,7 +410,7 @@ def _moveMovie(session, sRef, destpath=None, newname=None):
 			elif os.path.exists(destpath + fullfilename):
 				errText = 'Destination File exist'
 				result = False
-		#rename
+		# rename
 		else:
 			if not os.path.exists(fullpath):
 				result = False

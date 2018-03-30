@@ -193,7 +193,7 @@ def getViewsPath(file = ""):
 
 def getPiconPath():
 
-	#FIXME: check path again after a few hours to detect new paths
+	# FIXME: check path again after a few hours to detect new paths
 
 	global PICONPATH
 
@@ -763,7 +763,7 @@ def getStatusInfo(self):
 		serviceHandlerInfo = None
 
 	if event is not None:
-		#(begin, end, name, description, eit)
+		# (begin, end, name, description, eit)
 		curEvent = parseEvent(event)
 		begin_timestamp = int(curEvent[0]) + (config.recording.margin_before.value * 60)
 		end_timestamp = int(curEvent[1]) - (config.recording.margin_after.value * 60)

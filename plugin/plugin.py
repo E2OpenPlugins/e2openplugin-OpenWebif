@@ -149,9 +149,9 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			if imagedistro in ("VTi-Team Image"):
 				self.list.append(getConfigListEntry(_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))
 			self.list.append(getConfigListEntry(_("Allow IPK Upload"), config.OpenWebif.allow_upload_ipk))
-			#FIXME Submenu			
-			#self.list.append(getConfigListEntry(_("Webinterface jQuery UI Theme"), config.OpenWebif.webcache.theme))
-			#self.list.append(getConfigListEntry(_("Movie List Sort"), config.OpenWebif.webcache.moviesort))
+			# FIXME Submenu			
+			# self.list.append(getConfigListEntry(_("Webinterface jQuery UI Theme"), config.OpenWebif.webcache.theme))
+			# self.list.append(getConfigListEntry(_("Movie List Sort"), config.OpenWebif.webcache.moviesort))
 
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)

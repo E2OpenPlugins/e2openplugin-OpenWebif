@@ -21,7 +21,7 @@ class ATController(resource.Resource):
 			AutoTimerRemoveAutoTimerResource, AutoTimerSettingsResource, \
 			AutoTimerSimulateResource
 		except ImportError:
-			#print "AT plugin not found"
+			# print "AT plugin not found"
 			return
 		self.putChild('parse', AutoTimerDoParseResource())
 		self.putChild('remove', AutoTimerRemoveAutoTimerResource())

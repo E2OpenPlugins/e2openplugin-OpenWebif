@@ -644,10 +644,10 @@ def setPowerTimer(session, request):
 		print "[PowerTimer]", str(entry)
 
 	#change
-#	pos = 0
-#	for timer in timer_list + processed_timers:
-#		pos+=1
-#		if id == str(pos):
+	# pos = 0
+	# for timer in timer_list + processed_timers:
+		# pos+=1
+		# if id == str(pos):
 
 	return {
 		"result": True,

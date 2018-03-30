@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-#LICENCE
+# LICENCE
 #
 # This File is part of the Webbouqueteditor plugin 
 # and licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported 
@@ -559,8 +559,8 @@ class BouquetEditor(Source):
 			files.append(checkfile)
 			files.append("/etc/enigma2/bouquets.tv")
 			files.append("/etc/enigma2/bouquets.radio")
-			#files.append("/etc/enigma2/userbouquet.favourites.tv")
-			#files.append("/etc/enigma2/userbouquet.favourites.radio")
+			# files.append("/etc/enigma2/userbouquet.favourites.tv")
+			# files.append("/etc/enigma2/userbouquet.favourites.radio")
 			files.append("/etc/enigma2/lamedb")
 			for xml in ("/etc/tuxbox/cables.xml", "/etc/tuxbox/terrestrial.xml", "/etc/tuxbox/satellites.xml","/etc/tuxbox/atsc.xml","/etc/enigma2/lamedb5"):
 				if path.exists(xml):

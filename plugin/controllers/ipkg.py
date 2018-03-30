@@ -11,7 +11,7 @@
 
 from enigma import eConsoleAppContainer
 from twisted.web import server, resource, http
-#from os import path, popen, remove, stat
+# from os import path, popen, remove, stat
 
 import os
 import json
@@ -100,7 +100,7 @@ class IpkgController(BaseController):
 						continue
 					if line.startswith('Version:'):
 						version = line.split(":",1)[1].strip()
-					#TDOD : check description
+					# TDOD : check description
 					elif line.startswith('Description:'):
 						description = line.split(":",1)[1].strip()
 					elif description and line.startswith(' '):
@@ -169,7 +169,7 @@ class IpkgController(BaseController):
 			return data
 		return self.ResultString
 
-#TDOD: check encoding
+# TDOD: check encoding
 	def CallOPKList(self, request, action):
 		data = self.getPackages(action)
 		acceptHeaders = request.requestHeaders.getRawHeaders('Accept-Encoding', [])
@@ -217,7 +217,7 @@ class IpkgController(BaseController):
 		if self.IsAlive:
 			nresult=''
 			for a in self.ResultString.split("\n"):
-				#print "%s" % a
+				# print "%s" % a
 				if a.count(" - ") > 0:
 					if nresult[:-1] == "\n":
 						nresult+=a

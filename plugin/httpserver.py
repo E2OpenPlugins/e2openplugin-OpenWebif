@@ -121,7 +121,7 @@ def buildRootTree(session):
 			os.symlink(hookpath, origwebifpath + "/WebChilds/Toplevel.py")
 
 		# import modules
-#		print "[OpenWebif] loading external plugins..."
+		# print "[OpenWebif] loading external plugins..."
 		from Plugins.Extensions.WebInterface.WebChilds.Toplevel import loaded_plugins
 		if len(loaded_plugins) == 0:
 			externals = os.listdir(origwebifpath + "/WebChilds/External")
@@ -150,7 +150,7 @@ def buildRootTree(session):
 		if len(loaded_plugins) > 0:
 			for plugin in loaded_plugins:
 				root.putChild(plugin[0], plugin[1])
-#				print "[OpenWebif] plugin '%s' loaded on path '/%s'" % (plugin[2], plugin[0])
+				# print "[OpenWebif] plugin '%s' loaded on path '/%s'" % (plugin[2], plugin[0])
 		else:
 			print "[OpenWebif] no plugins to load"
 	return root
@@ -230,7 +230,7 @@ def HttpdStart(session):
 				config.OpenWebif.https_enabled.value = False
 				config.OpenWebif.https_enabled.save()
 
-		#Streaming requires listening on 127.0.0.1:80
+		# Streaming requires listening on 127.0.0.1:80
 		if port != 80:
 			try:
 				if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:

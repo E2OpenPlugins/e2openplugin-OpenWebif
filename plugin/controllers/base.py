@@ -139,21 +139,21 @@ class BaseController(resource.Resource):
 
 			data = func(request)
 			if data is None:
-#				if not self.suppresslog:
-#					print "[OpenWebif] page '%s' without content" % request.uri
+				# if not self.suppresslog:
+					# print "[OpenWebif] page '%s' without content" % request.uri
 				self.error404(request)
 			elif self.isCustom:
-#				if not self.suppresslog:
-#					print "[OpenWebif] page '%s' ok (custom)" % request.uri
+				# if not self.suppresslog:
+					# print "[OpenWebif] page '%s' ok (custom)" % request.uri
 				request.write(data)
 				request.finish()
 			elif self.isJson:
-#				if not self.suppresslog:
-#					print "[OpenWebif] page '%s' ok (json)" % request.uri
+				# if not self.suppresslog:
+					# print "[OpenWebif] page '%s' ok (json)" % request.uri
 				supported=[]
 				# FIXME : now we can set this cause of complete remove of parseJSON
 				# BUT we need to test this first
-				#request.setHeader("content-type", "application/json")
+				# request.setHeader("content-type", "application/json")
 				if self.isGZ:
 					acceptHeaders = request.requestHeaders.getRawHeaders('Accept-Encoding', [])
 					supported = ','.join(acceptHeaders).split(',')
@@ -178,13 +178,13 @@ class BaseController(resource.Resource):
 					request.write(json.dumps(data))
 				request.finish()
 			elif type(data) is str:
-#				if not self.suppresslog:
-#					print "[OpenWebif] page '%s' ok (simple string)" % request.uri
+				# if not self.suppresslog:
+					# print "[OpenWebif] page '%s' ok (simple string)" % request.uri
 				request.setHeader("content-type", "text/plain")
 				request.write(data)
 				request.finish()
 			else:
-#				print "[OpenWebif] page '%s' ok (cheetah template)" % request.uri
+				# print "[OpenWebif] page '%s' ok (cheetah template)" % request.uri
 				module = request.path
 				if module[-1] == "/":
 					module += "index"
@@ -206,22 +206,6 @@ class BaseController(resource.Resource):
 						nout = self.loadTemplate("main", "main", args)
 						if nout:
 							out = nout
-# prepare gzip for all templates
-# TODO: speed check with or without gzip on lower speed boxes
-#					supported=[]
-#					acceptHeaders = request.requestHeaders.getRawHeaders('Accept-Encoding', [])
-#					supported = ','.join(acceptHeaders).split(',')
-#					if 'gzip' in supported:
-#						encoding = request.responseHeaders.getRawHeaders('Content-Encoding')
-#						if encoding:
-#							encoding = '%s,gzip' % ','.join(encoding)
-#						else:
-#							encoding = 'gzip'
-#						request.responseHeaders.setRawHeaders('Content-Encoding',[encoding])
-#						compstr = self.compressBuf(out)
-#						request.setHeader('Content-Length', '%d' % len(compstr))
-#						request.write(compstr)
-#					else:
 					request.write(out)
 					request.finish()
 

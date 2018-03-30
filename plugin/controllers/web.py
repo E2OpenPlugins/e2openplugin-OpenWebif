@@ -77,8 +77,8 @@ class WebController(BaseController):
 			success = False
 		return self.P_tstate(request,success)
 
-#	TODO: improve after action / save , save+record , nothing
-#	config.timeshift.favoriteSaveAction .... 
+# TODO: improve after action / save , save+record , nothing
+# config.timeshift.favoriteSaveAction .... 
 	def P_tsstop(self, request):
 		success = True
 		oldcheck = False
@@ -193,7 +193,7 @@ class WebController(BaseController):
 
 	def P_supports_powerup_without_waking_tv(self, request):
 		try:
-			#returns 'True' if the image supports the function "Power on without TV":
+			# returns 'True' if the image supports the function "Power on without TV":
 			f = open("/tmp/powerup_without_waking_tv.txt", "r") # nosec
 			powerupWithoutWakingTv = f.read()
 			f.close()
@@ -207,7 +207,7 @@ class WebController(BaseController):
 	def P_set_powerup_without_waking_tv(self, request):
 		if self.P_supports_powerup_without_waking_tv(request):
 			try:
-				#write "True" to file so that the box will power on ONCE skipping the HDMI-CEC communication:
+				# write "True" to file so that the box will power on ONCE skipping the HDMI-CEC communication:
 				f = open("/tmp/powerup_without_waking_tv.txt", "w") # nosec
 				f.write('True')
 				f.close()
@@ -1275,7 +1275,7 @@ class WebController(BaseController):
 							resultcfgs.append(cfg)
 					return { 'configs' : resultcfgs }
 			except Exception, e:
-				#TODO show exception
+				# TODO show exception
 				pass
 		return {}
 
