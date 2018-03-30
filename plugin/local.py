@@ -6,9 +6,7 @@ from Components.config import config
 
 try:
 	AT_unit = config.plugins.autotimer.unit.value == "hour" and _("hour") or _("minute")
-except NameError:
-	AT_unit = "hour"
-except KeyError:
+except:
 	AT_unit = "hour"
 
 tstrings = {
