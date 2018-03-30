@@ -287,7 +287,7 @@ class BaseController(resource.Resource):
 					try:
 						lcd4linux_port = "http://" + ip + ":" + str(config.plugins.Webinterface.http.port.value) + "/"
 						lcd4linux_key = lcd4linux_port + 'lcd4linux/config'
-					except KeyError:
+					except:
 						lcd4linux_key = None
 				if lcd4linux_key:
 					extras.append({ 'key': lcd4linux_key, 'description': _("LCD4Linux Setup") , 'nw':'1'})
