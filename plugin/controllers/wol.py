@@ -24,7 +24,7 @@ class WOLSetupController(resource.Resource):
 		try:
 			wol_active = config.plugins.wolconfig.activate.value
 			wol_location = config.plugins.wolconfig.location.value
-		except KeyError:
+		except:
 			return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>WOLSetup plugin is not installed or your STB does not support WOL</e2statetext></e2simplexmlresult>'
 
 		if len(request.args):
