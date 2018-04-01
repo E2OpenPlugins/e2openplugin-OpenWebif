@@ -721,7 +721,7 @@ class WebController(BaseController):
 			except ValueError:
 				pass
 		self.isGZ=True
-		return getBouquetEpg(request.args["bRef"][0], begintime)
+		return getBouquetEpg(request.args["bRef"][0], begintime, None, self.isJson)
 
 	def P_epgmulti(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
@@ -742,21 +742,21 @@ class WebController(BaseController):
 			except ValueError:
 				pass
 		self.isGZ=True
-		return getBouquetEpg(request.args["bRef"][0], begintime, endtime)
+		return getBouquetEpg(request.args["bRef"][0], begintime, endtime, self.isJson)
 
 	def P_epgnow(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
 		self.isGZ=True
-		return getBouquetNowNextEpg(request.args["bRef"][0], 0)
+		return getBouquetNowNextEpg(request.args["bRef"][0], 0, self.isJson)
 
 	def P_epgnext(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
 		self.isGZ=True
-		return getBouquetNowNextEpg(request.args["bRef"][0], 1)
+		return getBouquetNowNextEpg(request.args["bRef"][0], 1, self.isJson)
 
 	def P_epgnownext(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
@@ -764,7 +764,7 @@ class WebController(BaseController):
 			return res
 		self.isGZ=True
 		info = getCurrentService(self.session)
-		ret = getBouquetNowNextEpg(request.args["bRef"][0], -1)
+		ret = getBouquetNowNextEpg(request.args["bRef"][0], -1, self.isJson)
 		ret["info"]=info
 		return ret
 
@@ -773,7 +773,7 @@ class WebController(BaseController):
 		if res:
 			return res
 		self.isGZ=True
-		ret = getServicesNowNextEpg(request.args["sList"][0])
+		ret = getServicesNowNextEpg(request.args["sList"][0], self.isJson)
 		return ret
 
 	def P_epgsearch(self, request):
@@ -788,7 +788,7 @@ class WebController(BaseController):
 			fulldesc=False
 			if "full" in request.args.keys():
 				fulldesc=True
-			return getSearchEpg(request.args["search"][0], endtime,fulldesc)
+			return getSearchEpg(request.args["search"][0], endtime,fulldesc, False, self.isJson)
 		else:
 			res = self.testMandatoryArguments(request, ["sref", "eventid"])
 			if res:
@@ -799,7 +799,7 @@ class WebController(BaseController):
 				item_id = int(request.args["eventid"][0])
 			except ValueError:
 				pass
-			return getEvent(service_reference,item_id)
+			return getEvent(service_reference,item_id, self.isJson)
 
 	def P_epgsearchrss(self, request):
 		res = self.testMandatoryArguments(request, ["search"])
@@ -831,19 +831,19 @@ class WebController(BaseController):
 			except ValueError:
 				pass
 		self.isGZ=True
-		return getChannelEpg(request.args["sRef"][0], begintime, endtime)
+		return getChannelEpg(request.args["sRef"][0], begintime, endtime, self.isJson)
 
 	def P_epgservicenow(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-		return getNowNextEpg(request.args["sRef"][0], 0)
+		return getNowNextEpg(request.args["sRef"][0], 0, self.isJson)
 
 	def P_epgservicenext(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-		return getNowNextEpg(request.args["sRef"][0], 1)
+		return getNowNextEpg(request.args["sRef"][0], 1, self.isJson)
 
 	def P_epgsimilar(self, request):
 		res = self.testMandatoryArguments(request, ["sRef", "eventid"])
@@ -858,17 +858,17 @@ class WebController(BaseController):
 				"message": "The parameter 'eventid' must be a number"
 			}
 
-		return getSearchSimilarEpg(request.args["sRef"][0], eventid)
+		return getSearchSimilarEpg(request.args["sRef"][0], eventid, self.isJson)
 
 	def P_event(self, request):
-		event = getEvent(request.args["sref"][0], request.args["idev"][0])
+		event = getEvent(request.args["sref"][0], request.args["idev"][0], self.isJson)
 		event['event']['recording_margin_before'] = config.recording.margin_before.value
 		event['event']['recording_margin_after'] = config.recording.margin_after.value
 		return event
 	
 	def P_getcurrent(self, request):
 		info = getCurrentService(self.session)
-		now = getNowNextEpg(info["ref"], 0)
+		now = getNowNextEpg(info["ref"], 0, self.isJson)
 		if len(now["events"]) > 0:
 			now = now["events"][0]
 			now["provider"] = info["provider"]
@@ -886,7 +886,7 @@ class WebController(BaseController):
 				"remaining": 0,
 				"provider": ""
 			}
-		next = getNowNextEpg(info["ref"], 1)
+		next = getNowNextEpg(info["ref"], 1, self.isJson)
 		if len(next["events"]) > 0:
 			next = next["events"][0]
 			next["provider"] = info["provider"]
