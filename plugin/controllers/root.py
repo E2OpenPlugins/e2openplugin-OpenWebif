@@ -1,13 +1,25 @@
 # -*- coding: utf-8 -*-
 
-##############################################################################
-#                        2011 E2OpenPlugins                                  #
-#                                                                            #
-#  This file is open source software; you can redistribute it and/or modify  #
-#     it under the terms of the GNU General Public License version 2 as      #
-#               published by the Free Software Foundation.                   #
-#                                                                            #
-##############################################################################
+##########################################################################
+# OpenWebif: RootController
+##########################################################################
+# Copyright (C) 2011 - 2018 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
+
 import os
 
 from twisted.web import static, http, proxy
@@ -27,6 +39,7 @@ from BQE import BQEController
 from transcoding import TranscodingController
 from wol import WOLSetupController, WOLClientController
 from file import FileController
+from NET import NetController
 
 
 class RootController(BaseController):
@@ -65,6 +78,7 @@ class RootController(BaseController):
 		self.putChild("wolsetup", WOLSetupController(session))
 		if piconpath:
 			self.putChild("picon", static.File(piconpath))
+		self.putChild("net", NetController(session))
 
 	# this function will be called before a page is loaded
 	def prePageLoad(self, request):

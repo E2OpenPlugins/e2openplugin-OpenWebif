@@ -1,5 +1,9 @@
-## Version 1.3.0
+## Version 1.3.1
 ## (in development)
+* add net api mount manager
+* fix encoding issue #772
+
+## Version 1.3.0
 * add responsive design from VTi Team
 * RESTful API with OpenAPI specification
 * new config api
