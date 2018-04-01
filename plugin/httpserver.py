@@ -14,23 +14,25 @@ from Screens.MessageBox import MessageBox
 from Components.config import config
 from Tools.Directories import fileExists
 from twisted.internet import reactor, ssl
-from twisted.web import server, http, static, resource, error, version
+from twisted.web import server, http, resource, version
+#from twisted.web import server, http, static, resource, error, version
 from twisted.internet.error import CannotListenError
+from twisted.internet.protocol import Factory, Protocol
 
 from controllers.root import RootController
 from sslcertificate import SSLCertificateGenerator, KEY_FILE, CERT_FILE, CA_FILE
-from socket import gethostname, has_ipv6
+from socket import has_ipv6
 from OpenSSL import SSL
-from twisted.internet.protocol import Factory, Protocol
 from Components.Network import iNetwork
 
 import os
 import imp
-import re
+#import re
 import ipaddress
 
 global listener, server_to_stop, site
 listener = []
+
 
 def getAllNetworks():
 	tempaddrs = []
@@ -68,6 +70,7 @@ def getAllNetworks():
 	else:
 		return tempaddrs
 
+
 def verifyCallback(connection, x509, errnum, errdepth, ok):
 	if not ok:
 		print '[OpenWebif] Invalid cert from subject: ', x509.get_subject()
@@ -76,12 +79,14 @@ def verifyCallback(connection, x509, errnum, errdepth, ok):
 		print '[OpenWebif] Successful cert authed as: ', x509.get_subject()
 	return True
 
+
 def isOriginalWebifInstalled():
 	pluginpath = enigma.eEnv.resolve('${libdir}/enigma2/python/Plugins/Extensions/WebInterface/plugin.py')
 	if fileExists(pluginpath) or fileExists(pluginpath + "o") or fileExists(pluginpath + "c"):
 		return True
 
 	return False
+
 
 def buildRootTree(session):
 	root = RootController(session)
@@ -154,6 +159,7 @@ def buildRootTree(session):
 		else:
 			print "[OpenWebif] no plugins to load"
 	return root
+
 
 def HttpdStart(session):
 	if config.OpenWebif.enabled.value is True:
@@ -249,8 +255,10 @@ def HttpdStart(session):
 def HttpdStop(session):
 	StopServer(session).doStop()
 
+
 def HttpdRestart(session):
 	StopServer(session, HttpdStart).doStop()
+
 
 class AuthResource(resource.Resource):
 	def __init__(self, session, root):
