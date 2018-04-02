@@ -16,14 +16,17 @@ import NavigationInstance
 import os
 
 ENABLE_QPIP_PROCPATH = "/proc/stb/video/decodermode"
+
+
 def checkIsQPiP():
 	if os.access(ENABLE_QPIP_PROCPATH, os.F_OK):
-		fd = open(ENABLE_QPIP_PROCPATH,"r")
+		fd = open(ENABLE_QPIP_PROCPATH, "r")
 		data = fd.read()
 		fd.close()
 
 		return data.strip() == "mosaic"
 	return False
+
 
 def getPlayingref(ref):
 	playingref = None
@@ -33,9 +36,11 @@ def getPlayingref(ref):
 		playingref = eServiceReference()
 	return playingref
 
+
 def isPlayableForCur(ref):
 	info = eServiceCenter.getInstance().info(ref)
 	return info and info.isPlayable(ref, getPlayingref(ref))
+
 
 def zapInServiceList(service):
 	InfoBar_Instance = InfoBar.instance
@@ -53,12 +58,12 @@ def zapInServiceList(service):
 			servicelist.setModeTv()
 		bouquets = servicelist.getBouquetList()
 		for bouquet in bouquets:
-			reflist = [ ]
+			reflist = []
 			reflist = eServiceCenter.getInstance().list(bouquet[1])
 			if reflist:
 				while True:
 					new_service = reflist.getNext()
-					if not new_service.valid(): #check if end of list
+					if not new_service.valid():  # check if end of list
 						break
 					if new_service.flags & (eServiceReference.isDirectory | eServiceReference.isMarker):
 						continue
@@ -79,10 +84,11 @@ def zapInServiceList(service):
 	else:
 		servicelist.clearPath()
 		servicelist.enterPath(service)
-	servicelist.setCurrentSelection(service) #select the service in servicelist
+	servicelist.setCurrentSelection(service)  # select the service in servicelist
 	servicelist.zap()
 
-def zapService(session, id, title = "", stream=False):
+
+def zapService(session, id, title="", stream=False):
 	if checkIsQPiP():
 		return {
 			"result": False,
@@ -139,7 +145,8 @@ def zapService(session, id, title = "", stream=False):
 		"message": "Active service is now '%s'" % title
 	}
 
-def remoteControl(key, type = "", rcu = ""):
+
+def remoteControl(key, type="", rcu=""):
 	# TODO: do something better here
 	if rcu == "standard":
 		remotetype = "dreambox remote control (native)"
@@ -156,7 +163,7 @@ def remoteControl(key, type = "", rcu = ""):
 			from Tools.HardwareInfo import HardwareInfo
 			if HardwareInfo().get_device_model() in ("xp1000", "formuler1", "formuler3", "et9000", "et9200", "hd1100", "hd1200"):
 				remotetype = "dreambox advanced remote control (native)"
-		except:
+		except:  # noqa: E722
 			print "[OpenWebIf] wrong hw detection"
 
 	amap = eActionMap.getInstance()
@@ -174,25 +181,26 @@ def remoteControl(key, type = "", rcu = ""):
 		"message": "RC command '%s' has been issued" % str(key)
 	}
 
+
 def setPowerState(session, state):
 	from Screens.Standby import Standby, TryQuitMainloop, inStandby
 	state = int(state)
 
-	if state == 0: # Toggle StandBy
+	if state == 0:  # Toggle StandBy
 		if inStandby is None:
 			session.open(Standby)
 		else:
 			inStandby.Power()
-	elif state == 1: # DeepStandBy
+	elif state == 1:  # DeepStandBy
 		session.open(TryQuitMainloop, state)
-	elif state == 2: # Reboot
+	elif state == 2:  # Reboot
 		session.open(TryQuitMainloop, state)
-	elif state == 3: # Restart Enigma
+	elif state == 3:  # Restart Enigma
 		session.open(TryQuitMainloop, state)
-	elif state == 4: # Wakeup
+	elif state == 4:  # Wakeup
 		if inStandby is not None:
 			inStandby.Power()
-	elif state == 5: # Standby
+	elif state == 5:  # Standby
 		if inStandby is None:
 			session.open(Standby)
 
@@ -203,6 +211,7 @@ def setPowerState(session, state):
 		"result": True,
 		"instandby": inStandby is not None
 	}
+
 
 def getStandbyState(session):
 	from Screens.Standby import inStandby

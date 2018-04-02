@@ -2,10 +2,11 @@
 
 from Tools.ISO639 import LanguageCodes
 
+
 def getAudioTracks(session):
 	service = session.nav.getCurrentService()
 	audio = service and service.audioTracks()
-	ret = { "tracklist": [], "result": False }
+	ret = {"tracklist": [], "result": False}
 	if audio is not None and service is not None:
 		current = audio.getCurrentTrack()
 		for i in range(0, audio.getNumberOfTracks()):
@@ -16,7 +17,7 @@ def getAudioTracks(session):
 				if len(language) > 0:
 					language += " / "
 
-				if LanguageCodes.has_key(lang):
+				if lang in LanguageCodes:
 					language += LanguageCodes[lang][0]
 				else:
 					language += lang
@@ -37,12 +38,13 @@ def getAudioTracks(session):
 
 	return ret
 
+
 def setAudioTrack(session, id):
 	service = session.nav.getCurrentService()
 	audio = service and service.audioTracks()
 	if audio is not None and service is not None:
 		if audio.getNumberOfTracks() > id and id >= 0:
 			audio.selectTrack(id)
-			return { "result": True }
+			return {"result": True}
 
-	return { "result": False }
+	return {"result": False}

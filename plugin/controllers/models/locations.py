@@ -44,7 +44,7 @@ def addLocation(dirname, create):
 			return {
 				"result": False,
 				"message": "Folder '%s' does not exist" % dirname
-				}
+			}
 
 	locations = config.movielist.videodirs.value[:] or []
 	if dirname in locations:

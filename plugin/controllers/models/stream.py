@@ -86,7 +86,7 @@ def getStream(session, request, m3ufile):
 		if "device" in request.args:
 			if request.args["device"][0] == "phone":
 				bitrate = config.plugins.transcodingsetup.bitrate.value
-				framerate = config.plugins.transcodingsetup.framerate.value
+				# framerate = config.plugins.transcodingsetup.framerate.value
 				args = "?bitrate=%s" % (bitrate)
 	elif fileExists("/proc/stb/encoder/0/apply"):
 		transcoder_port = 8001
@@ -95,7 +95,7 @@ def getStream(session, request, m3ufile):
 				bitrate = config.plugins.transcodingsetup.bitrate.value
 				resolution = config.plugins.transcodingsetup.resolution.value
 				(width, height) = tuple(resolution.split('x'))
-				framerate = config.plugins.transcodingsetup.framerate.value
+				# framerate = config.plugins.transcodingsetup.framerate.value
 				aspectratio = config.plugins.transcodingsetup.aspectratio.value
 				interlaced = config.plugins.transcodingsetup.interlaced.value
 				if fileExists("/proc/stb/encoder/0/vcodec"):
@@ -180,7 +180,7 @@ def getTS(self, request):
 				if request.args["device"][0] == "phone":
 					portNumber = config.OpenWebif.streamport.value
 					bitrate = config.plugins.transcodingsetup.bitrate.value
-					framerate = config.plugins.transcodingsetup.framerate.value
+					# framerate = config.plugins.transcodingsetup.framerate.value
 					args = "?bitrate=%s" % (bitrate)
 		elif fileExists("/proc/stb/encoder/0/apply"):
 			if "device" in request.args:
@@ -189,7 +189,7 @@ def getTS(self, request):
 					bitrate = config.plugins.transcodingsetup.bitrate.value
 					resolution = config.plugins.transcodingsetup.resolution.value
 					(width, height) = tuple(resolution.split('x'))
-					framerate = config.plugins.transcodingsetup.framerate.value
+					# framerate = config.plugins.transcodingsetup.framerate.value
 					aspectratio = config.plugins.transcodingsetup.aspectratio.value
 					interlaced = config.plugins.transcodingsetup.interlaced.value
 					if fileExists("/proc/stb/encoder/0/vcodec"):
