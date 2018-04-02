@@ -12,7 +12,6 @@
 from Plugins.Extensions.OpenWebif.__init__ import _
 
 from Components.config import config
-
 from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStatus
 from models.services import getCurrentService, getBouquets, getServices, getSubServices, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
@@ -224,7 +223,6 @@ class WebController(BaseController):
 		return getCurrentLocation()
 
 	def P_getallservices(self, request):
-		self.isGZ=True
 		type = "tv"
 		if "type" in request.args.keys():
 			type = "radio"
@@ -246,7 +244,6 @@ class WebController(BaseController):
 			hidden = request.args["hidden"][0] == "1"
 		else:
 			hidden = False
-		self.isGZ=True
 		return getServices(sRef, True, hidden)
 
 	def P_servicesm3u(self, request):
@@ -283,7 +280,6 @@ class WebController(BaseController):
 		sRefPlaying = ""
 		if "sRefPlaying" in request.args.keys():
 			sRefPlaying = request.args["sRefPlaying"][0]
-		self.isGZ=True
 		return getPlayableServices(sRef, sRefPlaying)
 
 	def P_serviceplayable(self, request):
@@ -345,13 +341,11 @@ class WebController(BaseController):
 		return getMessageAnswer()
 
 	def P_movielist(self, request):
-		self.isGZ=True
 		if self.isJson:
 			request.setHeader("content-type", "application/json; charset=utf-8")
 		return getMovieList(request.args)
 	
 	def P_fullmovielist(self, request):
-		self.isGZ=True
 		return getAllMovies()
 
 	def P_movielisthtml(self, request):
@@ -446,7 +440,6 @@ class WebController(BaseController):
 	def P_timerlist(self, request):
 		ret = getTimers(self.session)
 		ret["locations"] = config.movielist.videodirs.value
-		self.isGZ=True
 		return ret
 
 	def P_timeradd(self, request):
@@ -720,7 +713,6 @@ class WebController(BaseController):
 				begintime = int(request.args["time"][0])
 			except ValueError:
 				pass
-		self.isGZ=True
 		return getBouquetEpg(request.args["bRef"][0], begintime, None, self.isJson)
 
 	def P_epgmulti(self, request):
@@ -741,28 +733,24 @@ class WebController(BaseController):
 				endtime = int(request.args["endTime"][0])
 			except ValueError:
 				pass
-		self.isGZ=True
 		return getBouquetEpg(request.args["bRef"][0], begintime, endtime, self.isJson)
 
 	def P_epgnow(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
-		self.isGZ=True
 		return getBouquetNowNextEpg(request.args["bRef"][0], 0, self.isJson)
 
 	def P_epgnext(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
-		self.isGZ=True
 		return getBouquetNowNextEpg(request.args["bRef"][0], 1, self.isJson)
 
 	def P_epgnownext(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
-		self.isGZ=True
 		info = getCurrentService(self.session)
 		ret = getBouquetNowNextEpg(request.args["bRef"][0], -1, self.isJson)
 		ret["info"]=info
@@ -772,12 +760,10 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["sList"])
 		if res:
 			return res
-		self.isGZ=True
 		ret = getServicesNowNextEpg(request.args["sList"][0], self.isJson)
 		return ret
 
 	def P_epgsearch(self, request):
-		self.isGZ=True
 		if "search" in request.args.keys():
 			endtime = None
 			if "endtime" in request.args.keys():
@@ -830,7 +816,6 @@ class WebController(BaseController):
 				endtime = int(request.args["endTime"][0])
 			except ValueError:
 				pass
-		self.isGZ=True
 		return getChannelEpg(request.args["sRef"][0], begintime, endtime, self.isJson)
 
 	def P_epgservicenow(self, request):
@@ -1285,5 +1270,6 @@ class ApiController(WebController):
 
 	def prePageLoad(self, request):
 		self.isJson = True
+		self.isGZ = True
 
 from Plugins.Extensions.OpenWebif.vtiaddon import expand_basecontroller  # noqa: F401

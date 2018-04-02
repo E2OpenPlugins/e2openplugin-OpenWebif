@@ -25,13 +25,9 @@ import json
 from re import sub as re_sub
 from Plugins.SystemPlugins.NetworkBrowser.AutoMount import iAutoMount
 
-class NetworkDescriptor:
-	def __init__(self, name = "NetworkServer", description = ""):
-		self.name = name
-		self.description = description
 
 class NetController(resource.Resource):
-	def __init__(self, session, path = ""):
+	def __init__(self, session, path=""):
 		resource.Resource.__init__(self)
 		self.path = path
 		self.callback = None
@@ -47,7 +43,7 @@ class NetController(resource.Resource):
 		self.request.setResponseCode(http.OK)
 		self.request.write(json.dumps(self.result))
 		self.request.finish()
-	
+
 	def render(self, request):
 		func = getattr(self, "P_" + self.path, None)
 		self.request = request
@@ -110,7 +106,7 @@ class NetController(resource.Resource):
 			if mounts.has_key(sharename) is False:
 				self.failed("No sharename not exists")
 			else:
-				iAutoMount.removeMount(sharename,self.removeCallback)
+				iAutoMount.removeMount(sharename, self.removeCallback)
 				return
 		self.callback()
 
@@ -131,10 +127,10 @@ class NetController(resource.Resource):
 
 		mounts = iAutoMount.getMountsList()
 
-		if mounts.has_key(newsharename) is True:
+		if newsharename in mounts:
 			return self.failed("newsharename already exists")
 
-		if mounts.has_key(sharename) is True:
+		if sharename in mounts:
 			try:
 				iAutoMount.setMountsAttribute(sharename, "sharename", newsharename)
 				iAutoMount.writeMountsConfig()
@@ -161,7 +157,7 @@ class NetController(resource.Resource):
 		mounttype = param["mounttype"]
 		if mounttype is None:
 			mounttype = "nfs"
-		if mounttype not in ('cifs','nfs'):
+		if mounttype not in ('cifs', 'nfs'):
 			return self.failed("wrong mounttype given!")
 
 		options = param["options"]
@@ -191,9 +187,11 @@ class NetController(resource.Resource):
 		mounts = iAutoMount.getMountsList()
 
 		if addnew is True:
-			if mounts.has_key(sharename) is False:
+			if sharename in mounts:
+				return self.failed("sharename already exists")
+			else:
 				try:
-					data = { 'isMounted': False}
+					data = {'isMounted': False}
 					data['active'] = active
 					data['ip'] = ip
 					data['sharename'] = re_sub("\W", "", sharename)
@@ -201,7 +199,7 @@ class NetController(resource.Resource):
 						data['sharedir'] = sharedir[1:]
 					else:
 						data['sharedir'] = sharedir
-					data['options'] =  options
+					data['options'] = options
 					data['mounttype'] = mounttype
 					data['username'] = username
 					data['password'] = password
@@ -214,10 +212,8 @@ class NetController(resource.Resource):
 				except Exception, error:
 					self.result["message"] = "mount not added"
 					self.result["error"] = error
-			else:
-				return self.failed("sharename already exists")
 		else:
-			if mounts.has_key(sharename) is True:
+			if sharename in mounts:
 				try:
 					iAutoMount.setMountsAttribute(sharename, "active", active)
 					iAutoMount.setMountsAttribute(sharename, "ip", ip)
@@ -236,4 +232,3 @@ class NetController(resource.Resource):
 					self.result["error"] = error
 			else:
 				return self.failed("sharename not exists")
-
