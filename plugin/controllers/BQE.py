@@ -37,12 +37,12 @@ service_types_radio = '1:7:2:0:0:0:0:0:0:0:(type == 2) || (type == 10)'
 
 
 class BQEWebController(BaseController):
-	def __init__(self, session, path = ""):
+	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
 
 	def returnResult(self, req, result):
 		if self.isJson:
-			return { "Result": result }
+			return {"Result": result}
 		else:
 			state = result[0]
 			statetext = result[1]
@@ -55,7 +55,7 @@ class BQEWebController(BaseController):
 	<e2state>%s</e2state>
 	<e2statetext>%s</e2statetext>
 </e2simplexmlresult>""" % ('True' if state else 'False', statetext)
-	
+
 	def buildCommand(self, ids, args):
 		paramlist = ids.split(",")
 		list = {}
@@ -74,7 +74,7 @@ class BQEWebController(BaseController):
 		try:
 			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_BOUQUET)
-			bqe.handleCommand(self.buildCommand('name,mode',request.args))
+			bqe.handleCommand(self.buildCommand('name,mode', request.args))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -84,7 +84,7 @@ class BQEWebController(BaseController):
 		try:
 			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.REMOVE_BOUQUET)
-			bqe.handleCommand(self.buildCommand('sBouquetRef,mode',request.args))
+			bqe.handleCommand(self.buildCommand('sBouquetRef,mode', request.args))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -94,7 +94,7 @@ class BQEWebController(BaseController):
 		try:
 			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.MOVE_BOUQUET)
-			bqe.handleCommand(self.buildCommand('sBouquetRef,mode,position',request.args))
+			bqe.handleCommand(self.buildCommand('sBouquetRef,mode,position', request.args))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -104,7 +104,7 @@ class BQEWebController(BaseController):
 		try:
 			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_MARKER_TO_BOUQUET)
-			bqe.handleCommand(self.buildCommand('sBouquetRef,Name,sRefBefore,SP',request.args))
+			bqe.handleCommand(self.buildCommand('sBouquetRef,Name,sRefBefore,SP', request.args))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -114,7 +114,7 @@ class BQEWebController(BaseController):
 		try:
 			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_SERVICE_TO_BOUQUET)
-			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef,sRefBefore',request.args))
+			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef,sRefBefore', request.args))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -124,7 +124,7 @@ class BQEWebController(BaseController):
 		try:
 			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_PROVIDER_TO_BOUQUETLIST)
-			bqe.handleCommand(self.buildCommand('sProviderRef,mode',request.args))
+			bqe.handleCommand(self.buildCommand('sProviderRef,mode', request.args))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -134,7 +134,7 @@ class BQEWebController(BaseController):
 		try:
 			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_SERVICE_TO_ALTERNATIVE)
-			bqe.handleCommand(self.buildCommand('sBouquetRef,sCurrentRef,sRef,mode',request.args))
+			bqe.handleCommand(self.buildCommand('sBouquetRef,sCurrentRef,sRef,mode', request.args))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -144,7 +144,7 @@ class BQEWebController(BaseController):
 		try:
 			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.MOVE_SERVICE)
-			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef,mode,position',request.args))
+			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef,mode,position', request.args))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -154,7 +154,7 @@ class BQEWebController(BaseController):
 		try:
 			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.REMOVE_SERVICE)
-			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef',request.args))
+			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef', request.args))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -164,7 +164,7 @@ class BQEWebController(BaseController):
 		try:
 			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.RENAME_SERVICE)
-			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef,sRefBefore,newName,mode',request.args))
+			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef,sRefBefore,newName,mode', request.args))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -174,7 +174,7 @@ class BQEWebController(BaseController):
 		try:
 			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.REMOVE_ALTERNATIVE_SERVICES)
-			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef',request.args))
+			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef', request.args))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -184,7 +184,7 @@ class BQEWebController(BaseController):
 		try:
 			from BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.TOGGLE_LOCK)
-			bqe.handleCommand(self.buildCommand('sRef,password',request.args))
+			bqe.handleCommand(self.buildCommand('sRef,password', request.args))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -220,7 +220,7 @@ class BQEWebController(BaseController):
 		serviceHandler = eServiceCenter.getInstance()
 		serviceslist = serviceHandler.list(eServiceReference(bRef))
 		bqlist = serviceslist and serviceslist.getContent("RN", True)
-		pos=0
+		pos = 0
 		services = []
 		for bq in bqlist:
 			bqref = bq[0].toString()
@@ -233,12 +233,12 @@ class BQEWebController(BaseController):
 				sref = item[0].toString()
 				hs = (int(sref.split(":")[1]) & 512)
 				sp = (sref[:7] == '1:832:D')
-				if not hs or sp:	# 512 is hidden service on sifteam image. Doesn't affect other images
-					pos=pos+1
+				if not hs or sp:  # 512 is hidden service on sifteam image. Doesn't affect other images
+					pos = pos + 1
 					if not sp and item[0].flags & eServiceReference.isMarker:
-						pos=pos-1
+						pos = pos - 1
 			services.append(service)
-		return { "services": services }
+		return {"services": services}
 
 	def P_getservices(self, request):
 		if "sRef" in request.args.keys():
@@ -254,13 +254,13 @@ class BQEWebController(BaseController):
 		serviceslist = serviceHandler.list(eServiceReference(sRef))
 		fulllist = serviceslist and serviceslist.getContent("RN", True)
 
-		pos=0;
+		pos = 0
 		for item in fulllist:
 			sref = item[0].toString()
 			hs = (int(sref.split(":")[1]) & 512)
 			sp = (sref[:7] == '1:832:D')
-			if not hs or sp:	# 512 is hidden service on sifteam image. Doesn't affect other images
-				pos=pos+1
+			if not hs or sp:  # 512 is hidden service on sifteam image. Doesn't affect other images
+				pos = pos + 1
 				service = {}
 				service['pos'] = pos
 				service['servicereference'] = sref
@@ -277,7 +277,7 @@ class BQEWebController(BaseController):
 					if item[0].flags & eServiceReference.isMarker:
 						service['ismarker'] = '1'
 						# dont inc the pos for markers
-						pos=pos-1
+						pos = pos - 1
 						service['pos'] = 0
 				if not sp and config.ParentalControl.configured.value and config.ParentalControl.servicepinactive.value:
 					sref = item[0].toCompareString()
@@ -298,7 +298,7 @@ class BQEWebController(BaseController):
 								else:
 									service['isprotected'] = '4'
 				services.append(service)
-		return { "services": services }
+		return {"services": services}
 
 	def P_getprotectionsettings(self, request):
 		configured = config.ParentalControl.configured.value
@@ -319,11 +319,12 @@ class BQEWebController(BaseController):
 		ps['Type'] = type
 		ps['SetupPinActive'] = setuppinactive
 		ps['SetupPin'] = setuppin
-		return { "ps": ps }
+		return {"ps": ps}
 
 
 class BQEUploadFile(resource.Resource):
-	FN = "/tmp/bouquets_backup.tar" # nosec
+	FN = "/tmp/bouquets_backup.tar"  # nosec
+
 	def __init__(self, session):
 		self.session = session
 		resource.Resource.__init__(self)
@@ -334,9 +335,9 @@ class BQEUploadFile(resource.Resource):
 		request.setHeader('charset', 'UTF-8')
 		content = request.args['rfile'][0]
 		if not content:
-			result = [False,'Error upload File']
+			result = [False, 'Error upload File']
 		else:
-			fileh = os.open( self.FN, os.O_WRONLY|os.O_CREAT )
+			fileh = os.open(self.FN, os.O_WRONLY | os.O_CREAT)
 			bytes = 0
 			if fileh:
 				bytes = os.write(fileh, content)
@@ -344,16 +345,16 @@ class BQEUploadFile(resource.Resource):
 			if bytes <= 0:
 				try:
 					os.remove(self.FN)
-				except OSError, oe:
+				except OSError:
 					pass
-				result = [False,'Error writing File']
+				result = [False, 'Error writing File']
 			else:
-				result = [True,self.FN]
-		return json.dumps({"Result": result })
+				result = [True, self.FN]
+		return json.dumps({"Result": result})
 
 
 class BQEApiController(BQEWebController):
-	def __init__(self, session, path = ""):
+	def __init__(self, session, path=""):
 		BQEWebController.__init__(self, session, path)
 
 	def prePageLoad(self, request):
@@ -361,10 +362,9 @@ class BQEApiController(BQEWebController):
 
 
 class BQEController(BaseController):
-	def __init__(self, session, path = ""):
+	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
 		self.putChild("web", BQEWebController(session))
 		self.putChild("api", BQEApiController(session))
-		self.putChild('tmp', static.File('/tmp')) # nosec
+		self.putChild('tmp', static.File('/tmp'))  # nosec
 		self.putChild('uploadrestore', BQEUploadFile(session))
-

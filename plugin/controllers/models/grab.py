@@ -50,14 +50,14 @@ class GrabRequest(object):
 		try:
 			ref = session.nav.getCurrentlyPlayingServiceReference().toString()
 			sref = '_'.join(ref.split(':', 10)[:10])
-		except:
+		except:  # noqa: E722
 			sref = 'screenshot'
 		request.notifyFinish().addErrback(self.requestAborted)
 		request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (sref, fileformat))
-		request.setHeader('Content-Type','image/%s' % fileformat.replace("jpg","jpeg"))
-		request.setHeader('Expires','Sat, 26 Jul 1997 05:00:00 GMT')
-		request.setHeader('Cache-Control','no-store, no-cache, must-revalidate, post-check=0, pre-check=0')
-		request.setHeader('Pragma','no-cache')
+		request.setHeader('Content-Type', 'image/%s' % fileformat.replace("jpg", "jpeg"))
+		request.setHeader('Expires', 'Sat, 26 Jul 1997 05:00:00 GMT')
+		request.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0')
+		request.setHeader('Pragma', 'no-cache')
 
 	def requestAborted(self, err):
 		# Called when client disconnected early, abort the process and
@@ -67,7 +67,7 @@ class GrabRequest(object):
 		del self.request
 		del self.container
 
-	def grabFinished(self, retval = None):
+	def grabFinished(self, retval=None):
 		try:
 			self.request.finish()
 		except RuntimeError, error:
@@ -76,7 +76,7 @@ class GrabRequest(object):
 		del self.request
 
 class grabScreenshot(resource.Resource):
-	def __init__(self, session, path = None):
+	def __init__(self, session, path=None):
 		resource.Resource.__init__(self)
 		self.session = session
 
@@ -85,4 +85,3 @@ class grabScreenshot(resource.Resource):
 		# the object alive at least until the request finishes
 		request.grab_in_progress = GrabRequest(request, self.session)
 		return server.NOT_DONE_YET
-

@@ -115,7 +115,7 @@ class BaseController(resource.Resource):
 
 	def compressBuf(self, buf):
 		zbuf = cStringIO.StringIO()
-		zfile = gzip.GzipFile(mode = 'wb',  fileobj=zbuf, compresslevel=6)
+		zfile = gzip.GzipFile(mode='wb', fileobj=zbuf, compresslevel=6)
 		zfile.write(buf)
 		zfile.close()
 		outstr = zbuf.getvalue()
