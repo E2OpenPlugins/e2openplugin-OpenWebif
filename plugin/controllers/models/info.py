@@ -326,37 +326,26 @@ def getInfo(session=None, need_fullinfo=False):
 				chipset = "STi7111 @450MHz"
 		elif model == "dm800":
 			chipset = "bcm7401"
-			info['model'] = "DM800 HD PVR"
 		elif model == "dm800se":
 			chipset = "bcm7405"
-			info['model'] = "DM800 HD se"
 		elif model == "dm500hd":
 			chipset = "bcm7405"
-			info['model'] = "DM500 HD"
 		elif model == "dm7020hd":
 			chipset = "bcm7405"
-			info['model'] = "DM7020 HD"
 		elif model == "dm8000":
 			chipset = "bcm7400"
-			info['model'] = "DM8000 HD"
 		elif model == "dm820":
 			chipset = "bcm7435"
-			info['model'] = "DM820 HD"
 		elif model == "dm7080":
 			chipset = "bcm7435"
-			info['model'] = "DM7080 HD"
 		elif model == "dm520":
 			chipset = "bcm73625"
-			info['model'] = "DM520 HD"
 		elif model == "dm525":
 			chipset = "bcm73625"
-			info['model'] = "DM525 HD"
 		elif model == "dm900":
 			chipset = "bcm7252S"
-			info['model'] = "DM900 HD"
 		elif model == "dm920":
 			chipset = "bcm7252S"
-			info['model'] = "DM920 HD"
 
 	if fileExists("/proc/stb/info/chipset"):
 		f = open("/proc/stb/info/chipset", 'r')
