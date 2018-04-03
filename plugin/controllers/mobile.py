@@ -18,7 +18,7 @@ from time import localtime, strftime
 
 
 class MobileController(BaseController):
-	def __init__(self, session, path = ""):
+	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session, isMobile=True)
 
 	def P_index(self, request):
@@ -51,7 +51,7 @@ class MobileController(BaseController):
 		channelinfo = {}
 		channelepg = {}
 		if "sref" in request.args.keys():
-			sref=request.args["sref"][0]
+			sref = request.args["sref"][0]
 			channelepg = getChannelEpg(sref)
 			# Detect if sRef contains a stream
 			if ("://" in sref):
@@ -77,10 +77,10 @@ class MobileController(BaseController):
 		# Got EPG information?
 		if len(channelepg['events']) > 1:
 			# Return the EPG
-			return { "channelinfo": channelepg["events"][0], "channelepg": channelepg["events"] }
+			return {"channelinfo": channelepg["events"][0], "channelepg": channelepg["events"]}
 		else:
 			# Make sure at least some basic channel info gets returned when there is no EPG
-			return { "channelinfo": channelinfo, "channelepg": None }
+			return {"channelinfo": channelinfo, "channelepg": None}
 
 	def P_eventview(self, request):
 		event = {}
@@ -108,7 +108,7 @@ class MobileController(BaseController):
 			event['begin'] = strftime("%H:%M", (localtime(event['begin'])))
 			event['end'] = strftime("%H:%M", (localtime(event['end'])))
 
-		return { "event": event }
+		return {"event": event}
 
 	def P_satfinder(self, request):
 		return {}
@@ -120,6 +120,6 @@ class MobileController(BaseController):
 		movies = getMovieList(request.args)
 		movies['transcoding'] = getTranscodingSupport()
 		return movies
-		
+
 	def P_about(self, request):
 		return {}

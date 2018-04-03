@@ -13,6 +13,7 @@ from twisted.web import resource, server
 
 GRAB_PATH = '/usr/bin/grab'
 
+
 class GrabRequest(object):
 	def __init__(self, request, session):
 		self.request = request
@@ -74,6 +75,7 @@ class GrabRequest(object):
 			print "[OpenWebif] grabFinished error: %s" % error
 		# Break the chain of ownership
 		del self.request
+
 
 class grabScreenshot(resource.Resource):
 	def __init__(self, session, path=None):

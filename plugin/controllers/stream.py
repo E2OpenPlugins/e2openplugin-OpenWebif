@@ -15,6 +15,7 @@ from Components.Sources.StreamService import StreamService
 streamList = []
 streamStates = []
 
+
 class StreamAdapter:
 	EV_BEGIN = 0
 	EV_STOP = 1
@@ -39,7 +40,7 @@ class StreamAdapter:
 		for x in streamStates:
 			x(state, self.mystream)
 
-	def close(self, nothandled1 = None, nothandled2 = None):
+	def close(self, nothandled1=None, nothandled2=None):
 		self.mystream.execEnd()
 		self.nav.record_event.remove(self.requestWrite)
 		self.converter = None
@@ -47,14 +48,15 @@ class StreamAdapter:
 			streamList.remove(self.mystream)
 		self.setStatus(StreamAdapter.EV_STOP)
 
-	def requestWrite(self, notused1 = None, notused2 = None):
+	def requestWrite(self, notused1=None, notused2=None):
 		converter_args = []
 		self.converter = Streaming(converter_args)
 		self.converter.source = self
 		self.request.write(self.converter.getText())
 
+
 class StreamController(resource.Resource):
-	def __init__(self, session, path = ""):
+	def __init__(self, session, path=""):
 		resource.Resource.__init__(self)
 		self.session = session
 

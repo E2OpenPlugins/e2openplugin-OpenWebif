@@ -24,14 +24,14 @@ from Plugins.Extensions.OpenWebif.__init__ import _
 PACKAGES = '/var/lib/opkg/lists'
 INSTALLEDPACKAGES = '/var/lib/opkg/status'
 
-class IpkgController(BaseController):
 
-	def __init__(self, session, path = ""):
+class IpkgController(BaseController):
+	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
 		self.putChild('upload', IPKGUpload(self.session))
 
 	def render(self, request):
-		action =''
+		action = ''
 		package = ''
 		self.request = request
 		self.format = "html"
@@ -43,33 +43,33 @@ class IpkgController(BaseController):
 		if "format" in request.args:
 			self.format = request.args["format"][0]
 		if action is not '':
-			if action in ( "update", "upgrade" ):
-				return self.CallOPKG(request,action)
-			elif action in ( "info", "status", "install", "remove" ):
-				return self.CallOPKGP(request,action,package)
-			elif action in ( "listall", "list", "list_installed", "list_upgradable" ):
-				return self.CallOPKList(request,action)
-			elif action in ( "tmp" ):
+			if action in ("update", "upgrade"):
+				return self.CallOPKG(request, action)
+			elif action in ("info", "status", "install", "remove"):
+				return self.CallOPKGP(request, action, package)
+			elif action in ("listall", "list", "list_installed", "list_upgradable"):
+				return self.CallOPKList(request, action)
+			elif action in ("tmp"):
 				import glob
-				tmpfiles = glob.glob('/tmp/*.ipk') # nosec
+				tmpfiles = glob.glob('/tmp/*.ipk')  # nosec
 				ipks = []
 				for tmpfile in tmpfiles:
 					ipks.append({
 						'path': tmpfile,
-						'name' : (tmpfile.split('/')[-1]),
-						'size' : os.stat(tmpfile).st_size,
-						'date' : os.stat(tmpfile).st_mtime,
+						'name': (tmpfile.split('/')[-1]),
+						'size': os.stat(tmpfile).st_size,
+						'date': os.stat(tmpfile).st_mtime,
 					})
 				request.setHeader("content-type", "text/plain")
-				request.write(json.dumps({'ipkfiles' : ipks}, encoding="ISO-8859-1"))
+				request.write(json.dumps({'ipkfiles': ipks}, encoding="ISO-8859-1"))
 				request.finish()
 				return server.NOT_DONE_YET
 			else:
-				return self.ShowError(request,"Unknown command: "+ action)
+				return self.ShowError(request, "Unknown command: " + action)
 		else:
 			return self.ShowHint(request)
 
-		return self.ShowError(request,"Error")
+		return self.ShowError(request, "Error")
 
 	def enumFeeds(self):
 		for fn in os.listdir('/etc/opkg'):
@@ -85,49 +85,49 @@ class IpkgController(BaseController):
 				except IOError:
 					pass
 
-	def getPackages(self,action):
+	def getPackages(self, action):
 		map = {}
 		for feed in self.enumFeeds():
 			package = None
 			try:
 				for line in open(os.path.join(PACKAGES, feed), 'r'):
 					if line.startswith('Package:'):
-						package = line.split(":",1)[1].strip()
+						package = line.split(":", 1)[1].strip()
 						version = ''
 						description = ''
 						continue
 					if package is None:
 						continue
 					if line.startswith('Version:'):
-						version = line.split(":",1)[1].strip()
+						version = line.split(":", 1)[1].strip()
 					# TDOD : check description
 					elif line.startswith('Description:'):
-						description = line.split(":",1)[1].strip()
+						description = line.split(":", 1)[1].strip()
 					elif description and line.startswith(' '):
 						description += line[:-1]
 					elif len(line) <= 1:
-						d = description.split(' ',3)
+						d = description.split(' ', 3)
 						if len(d) > 3:
 							if d[1] == 'version':
 								description = d[3]
 							if description.startswith('gitAUTOINC'):
-								description = description.split(' ',1)[1]
-						map.update( { package : [ version , description.strip(), "0" , "0"] } )		
+								description = description.split(' ', 1)[1]
+						map.update({package: [version, description.strip(), "0", "0"]})
 						package = None
 			except IOError:
 				pass
-	
+
 		for line in open(INSTALLEDPACKAGES, 'r'):
 			if line.startswith('Package:'):
-				package = line.split(":",1)[1].strip()
+				package = line.split(":", 1)[1].strip()
 				version = ''
 				continue
 			if package is None:
 				continue
 			if line.startswith('Version:'):
-				version = line.split(":",1)[1].strip()
+				version = line.split(":", 1)[1].strip()
 			elif len(line) <= 1:
-				if map.has_key(package):
+				if package in map:
 					if map[package][0] == version:
 						map[package][2] = "1"
 					else:
@@ -135,8 +135,8 @@ class IpkgController(BaseController):
 						map[package][0] = version
 						map[package][3] = nv
 				package = None
-	
-		keys=map.keys()
+
+		keys = map.keys()
 		keys.sort()
 		self.ResultString = ""
 		if action == "listall":
@@ -165,7 +165,7 @@ class IpkgController(BaseController):
 		if self.format == "json":
 			data = []
 			# nresult = unicode(nresult, errors='ignore')
-			data.append({"result": True,"packages": self.ResultString.split("<br>")})
+			data.append({"result": True, "packages": self.ResultString.split("<br>")})
 			return data
 		return self.ResultString
 
@@ -180,7 +180,7 @@ class IpkgController(BaseController):
 				encoding = '%s,gzip' % ','.join(encoding)
 			else:
 				encoding = 'gzip'
-			request.responseHeaders.setRawHeaders('Content-Encoding',[encoding])
+			request.responseHeaders.setRawHeaders('Content-Encoding', [encoding])
 			if self.format == "json":
 				compstr = self.compressBuf(json.dumps(data, encoding="ISO-8859-1"))
 			else:
@@ -215,22 +215,22 @@ class IpkgController(BaseController):
 
 	def NoMoredata(self, data):
 		if self.IsAlive:
-			nresult=''
+			nresult = ''
 			for a in self.ResultString.split("\n"):
 				# print "%s" % a
 				if a.count(" - ") > 0:
 					if nresult[:-1] == "\n":
-						nresult+=a
+						nresult += a
 					else:
-						nresult+="\n" + a
+						nresult += "\n" + a
 				else:
-					nresult+=a + "\n"
-			nresult = nresult.replace("\n\n","\n")
-			nresult = nresult.replace("\n "," ")
+					nresult += a + "\n"
+			nresult = nresult.replace("\n\n", "\n")
+			nresult = nresult.replace("\n ", " ")
 			if self.format == "json":
 				data = []
-				nresult=unicode(nresult, errors='ignore')
-				data.append({"result": True,"packages": nresult.split("\n")})
+				nresult = unicode(nresult, errors='ignore')
+				data.append({"result": True, "packages": nresult.split("\n")})
 				self.request.setHeader("content-type", "text/plain")
 				self.request.write(json.dumps(data))
 				self.request.finish()
@@ -244,13 +244,13 @@ class IpkgController(BaseController):
 		if data != self.olddata or self.olddata is None and self.IsAlive:
 			self.ResultString += data
 
-	def CallOPKGP(self, request,action,pack):
+	def CallOPKGP(self, request, action, pack):
 		if pack is not '':
-			return self.CallOPKG(request,action, [pack])
+			return self.CallOPKG(request, action, [pack])
 		else:
 			return self.ShowError(request, "parameter: package is missing")
 
-	def ShowError(self, request,text):
+	def ShowError(self, request, text):
 		request.setResponseCode(http.OK)
 		request.write(text)
 		request.finish()
@@ -275,10 +275,10 @@ class IPKGUpload(resource.Resource):
 		self.session = session
 
 	def mbasename(self, fname):
-		l = fname.split('/')
-		win = l[len(l)-1]
-		l2 = win.split('\\')
-		return l2[len(l2)-1]
+		_fname = fname.split('/')
+		_fname = _fname[len(_fname) - 1]
+		_fname = _fname.split('\\')
+		return _fname[len(_fname) - 1]
 
 	def render_POST(self, request):
 		request.setResponseCode(http.OK)
@@ -287,13 +287,13 @@ class IPKGUpload(resource.Resource):
 		content = request.args['rfile'][0]
 		filename = self.mbasename(request.args['filename'][0])
 		if not content or not config.OpenWebif.allow_upload_ipk.value:
-			result = [False,_('Error upload File')]
+			result = [False, _('Error upload File')]
 		else:
 			if not filename.endswith(".ipk"):
-				result = [False,_('wrong filetype')]
+				result = [False, _('wrong filetype')]
 			else:
-				FN = "/tmp/" + filename # nosec
-				fileh = os.open(FN, os.O_WRONLY|os.O_CREAT )
+				FN = "/tmp/" + filename  # nosec
+				fileh = os.open(FN, os.O_WRONLY | os.O_CREAT)
 				bytes = 0
 				if fileh:
 					bytes = os.write(fileh, content)
@@ -301,9 +301,9 @@ class IPKGUpload(resource.Resource):
 				if bytes <= 0:
 					try:
 						os.remove(FN)
-					except OSError, oe:
+					except OSError:
 						pass
-					result = [False,_('Error writing File')]
+					result = [False, _('Error writing File')]
 				else:
-					result = [True,FN]
-		return json.dumps({"Result": result })
+					result = [True, FN]
+		return json.dumps({"Result": result})

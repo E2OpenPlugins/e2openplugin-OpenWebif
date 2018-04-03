@@ -25,10 +25,11 @@ from utilities import lenient_force_utf_8, sanitise_filename_slashes
 def new_getRequestHostname(self):
 	host = self.getHeader(b'host')
 	if host:
-		if host[0]=='[':
-			return host.split(']',1)[0] + "]"
+		if host[0] == '[':
+			return host.split(']', 1)[0] + "]"
 		return host.split(':', 1)[0].encode('ascii')
 	return self.getHost().host.encode('ascii')
+
 
 http.Request.getRequestHostname = new_getRequestHostname
 
@@ -70,9 +71,9 @@ class FileController(resource.Resource):
 				return "TODO: DELETE FILE: %s" % (filename)
 			elif action == "download":
 				request.setHeader("Content-Disposition", "attachment;filename=\"%s\"" % (filename.split('/')[-1]))
-				rfile = static.File(filename, defaultType = "application/octet-stream")
+				rfile = static.File(filename, defaultType="application/octet-stream")
 				return rfile.render(request)
-			else: 
+			else:
 				return "wrong action parameter"
 
 		if "dir" in request.args:
@@ -88,10 +89,10 @@ class FileController(resource.Resource):
 			request.setHeader("content-type", "application/json; charset=utf-8")
 			if fileExists(path):
 				if path == '/':
-					path=''
+					path = ''
 				try:
-					files = glob.glob(path+'/'+pattern)
-				except:
+					files = glob.glob(path + '/' + pattern)
+				except:  # noqa: E722
 					files = []
 				files.sort()
 				tmpfiles = files[:]
@@ -101,6 +102,6 @@ class FileController(resource.Resource):
 						files.remove(x)
 				if nofiles:
 					files = []
-				return json.dumps({"result": True,"dirs": directories,"files": files}, indent=2)
+				return json.dumps({"result": True, "dirs": directories, "files": files}, indent=2)
 			else:
-				return json.dumps({"result": False,"message": "path %s not exits" % (path)}, indent=2)
+				return json.dumps({"result": False, "message": "path %s not exits" % (path)}, indent=2)

@@ -22,6 +22,7 @@
 
 from twisted.web import resource, http
 
+
 class SRController(resource.Resource):
 	rootApi = None
 
@@ -34,7 +35,7 @@ class SRController(resource.Resource):
 		except ImportError:
 			print "SerienRecorder plugin not found"
 			return
-		
+
 		(root, childs) = addWebInterfaceForOpenWebInterface()
 		SRController.rootApi = root
 		if childs:

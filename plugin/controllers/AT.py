@@ -22,6 +22,7 @@
 
 from twisted.web import resource, http
 
+
 class ATController(resource.Resource):
 	def __init__(self, session):
 		resource.Resource.__init__(self)
@@ -29,9 +30,9 @@ class ATController(resource.Resource):
 
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerDoParseResource, \
-			AutoTimerAddOrEditAutoTimerResource, AutoTimerChangeSettingsResource, \
-			AutoTimerRemoveAutoTimerResource, AutoTimerSettingsResource, \
-			AutoTimerSimulateResource
+				AutoTimerAddOrEditAutoTimerResource, AutoTimerChangeSettingsResource, \
+				AutoTimerRemoveAutoTimerResource, AutoTimerSettingsResource, \
+				AutoTimerSimulateResource
 		except ImportError:
 			# print "AT plugin not found"
 			return

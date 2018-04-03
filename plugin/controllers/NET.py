@@ -103,7 +103,7 @@ class NetController(resource.Resource):
 			self.failed("No sharename given!")
 		else:
 			mounts = iAutoMount.getMountsList()
-			if mounts.has_key(sharename) is False:
+			if sharename not in mounts:
 				self.failed("No sharename not exists")
 			else:
 				iAutoMount.removeMount(sharename, self.removeCallback)

@@ -30,9 +30,8 @@ class ERController(resource.Resource):
 
 		try:
 			from Plugins.Extensions.EPGRefresh.EPGRefreshResource import EPGRefreshSettingsResource, \
-			EPGRefreshChangeSettingsResource, \
-			EPGRefreshListServicesResource, EPGRefreshAddRemoveServiceResource, \
-			EPGRefreshStartRefreshResource, API_VERSION
+				EPGRefreshChangeSettingsResource, EPGRefreshAddRemoveServiceResource, \
+				EPGRefreshStartRefreshResource
 		except ImportError:
 			print "EPG Refresh Plugin not found"
 			return
@@ -55,6 +54,6 @@ class ERController(resource.Resource):
 
 		try:
 			from Plugins.Extensions.EPGRefresh.EPGRefresh import epgrefresh
-			return ''.join(epgrefresh.buildConfiguration(webif = True))
+			return ''.join(epgrefresh.buildConfiguration(webif=True))
 		except ImportError:
 			return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>EPG Refresh Plugin not found</e2statetext></e2simplexmlresult>'

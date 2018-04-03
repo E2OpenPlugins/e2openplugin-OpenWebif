@@ -13,21 +13,21 @@ from twisted.web import resource
 from Components.config import config
 
 
-def get_transcoding_features(encoder = 0):
+def get_transcoding_features(encoder=0):
 	features = {
 		"automode": "automode",
 		"bitrate": "bitrate",
 		"framerate": "framerate",
 		"resolution": "display_format",
 		"aspectratio": "aspectratio",
-		"audiocodec" : "audio_codec",
-		"videocodec" : "video_codec",
-		"gopframeb" : "gop_frameb",
-		"gopframep" :"gop_framep",
-		"level" : "level",
-		"profile" : "profile",
-		"width" : "width", # not in use
-		"height" : "height", # not in use
+		"audiocodec": "audio_codec",
+		"videocodec": "video_codec",
+		"gopframeb": "gop_frameb",
+		"gopframep": "gop_framep",
+		"level": "level",
+		"profile": "profile",
+		"width": "width",  # not in use
+		"height": "height",  # not in use
 	}
 	encoder_features = {}
 	for feature in features:
@@ -35,13 +35,13 @@ def get_transcoding_features(encoder = 0):
 			if hasattr(config.plugins.transcodingsetup, feature):
 				try:
 					encoder_features[feature] = getattr(config.plugins.transcodingsetup, feature)
-				except:
+				except:  # noqa: E722
 					pass
 		else:
 			if hasattr(config.plugins.transcodingsetup, "%s_%s" % (feature, encoder)):
 				try:
 					encoder_features[feature] = getattr(config.plugins.transcodingsetup, "%s_%s" % (feature, encoder))
-				except:
+				except:  # noqa: E722
 					pass
 	return encoder_features
 
@@ -52,7 +52,7 @@ class TranscodingController(resource.Resource):
 		request.setHeader('charset', 'UTF-8')
 		try:
 			port = config.plugins.transcodingsetup.port
-		except:
+		except:  # noqa: E722
 			return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>Transcoding Plugin is not installed or your STB does not support transcoding</e2statetext></e2simplexmlresult>'
 
 		encoders = (0, 1)
@@ -60,7 +60,7 @@ class TranscodingController(resource.Resource):
 			config_changed = False
 			if "port" in request.args:
 				new_port = request.args["port"][0]
-				if not new_port in port.choices:
+				if new_port not in port.choices:
 					new_port = port.value
 				if new_port != config.plugins.transcodingsetup.port.value:
 					config.plugins.transcodingsetup.port.value = new_port
@@ -92,7 +92,7 @@ class TranscodingController(resource.Resource):
 							config_changed = True
 					elif hasattr(attr, "choices"):
 						new_value = request.args[arg][0]
-						if not new_value in attr.choices:
+						if new_value not in attr.choices:
 							return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for %s</e2statetext></e2simplexmlresult>' % arg
 						if new_value != attr.value:
 							attr.value = new_value

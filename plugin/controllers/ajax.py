@@ -11,7 +11,7 @@
 from Tools.Directories import fileExists
 from Components.config import config
 
-from models.services import getCurrentService, getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
+from models.services import getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
 from models.info import getInfo, getPublicPath, getOpenWebifVer, getTranscodingSupport, getLanguage
 from models.movies import getMovieList
 from models.timers import getTimers
@@ -20,16 +20,17 @@ from models.stream import GetSession
 from base import BaseController
 from time import mktime, localtime
 from models.locations import getLocations
-from twisted.web.resource import Resource
+# from twisted.web.resource import Resource
 import os
 
 try:
 	from boxbranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
-except:
-	from models.owibranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
+except:  # noqa: E722
+	from models.owibranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild  # noqa: F401
+
 
 class AjaxController(BaseController):
-	def __init__(self, session, path = ""):
+	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
 
 	def P_current(self, request):
@@ -40,21 +41,21 @@ class AjaxController(BaseController):
 		if "stype" in request.args.keys():
 			stype = request.args["stype"][0]
 		bouq = getBouquets(stype)
-		return { "bouquets": bouq['bouquets'], "stype": stype }
+		return {"bouquets": bouq['bouquets'], "stype": stype}
 
 	def P_providers(self, request):
 		stype = "tv"
 		if "stype" in request.args.keys():
 			stype = request.args["stype"][0]
 		prov = getProviders(stype)
-		return { "providers": prov['providers'], "stype": stype }
+		return {"providers": prov['providers'], "stype": stype}
 
 	def P_satellites(self, request):
 		stype = "tv"
 		if "stype" in request.args.keys():
 			stype = request.args["stype"][0]
 		sat = getSatellites(stype)
-		return { "satellites": sat['satellites'], "stype": stype }
+		return {"satellites": sat['satellites'], "stype": stype}
 
 	def P_channels(self, request):
 		stype = "tv"
@@ -78,7 +79,7 @@ class AjaxController(BaseController):
 		event['event']['recording_margin_after'] = config.recording.margin_after.value
 		at = False
 		try:
-			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
+			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer  # noqa: F401
 			at = True
 		except ImportError:
 			pass
@@ -90,41 +91,41 @@ class AjaxController(BaseController):
 	def P_about(self, request):
 		info = {}
 		info["owiver"] = getOpenWebifVer()
-		return { "info": info }
-	
+		return {"info": info}
+
 	def P_boxinfo(self, request):
-		info = getInfo(self.session, need_fullinfo = True)
+		info = getInfo(self.session, need_fullinfo=True)
 		type = getBoxType()
 
-		if fileExists(getPublicPath("/images/boxes/"+type+".png")):
-			info["boximage"] = type+".png"
-		elif fileExists(getPublicPath("/images/boxes/"+type+".jpg")):
-			info["boximage"] = type+".jpg"
+		if fileExists(getPublicPath("/images/boxes/" + type + ".png")):
+			info["boximage"] = type + ".png"
+		elif fileExists(getPublicPath("/images/boxes/" + type + ".jpg")):
+			info["boximage"] = type + ".jpg"
 		else:
 			info["boximage"] = "unknown.png"
 		return info
 
 	def P_epgpop(self, request):
-		events=[]
-		timers=[]
+		events = []
+		timers = []
 		if "sref" in request.args.keys():
 			ev = getChannelEpg(request.args["sref"][0])
 			events = ev["events"]
 		elif "sstr" in request.args.keys():
 			fulldesc = False
 			if "full" in request.args.keys():
-				fulldesc=True
+				fulldesc = True
 			bouquetsonly = False
 			if "bouquetsonly" in request.args.keys():
 				bouquetsonly = True
-			ev = getSearchEpg(request.args["sstr"][0],None,fulldesc,bouquetsonly)
+			ev = getSearchEpg(request.args["sstr"][0], None, fulldesc, bouquetsonly)
 			events = sorted(ev["events"], key=lambda ev: ev['begin_timestamp'])
 		at = False
-		if len(events) > 0: 
+		if len(events) > 0:
 			t = getTimers(self.session)
 			timers = t["timers"]
 			try:
-				from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
+				from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer  # noqa: F401
 				at = True
 			except ImportError:
 				pass
@@ -132,7 +133,7 @@ class AjaxController(BaseController):
 			theme = config.OpenWebif.webcache.theme.value
 		else:
 			theme = 'original'
-		return { "theme":theme, "events": events , "timers" : timers , "at" : at, "kinopoisk": getLanguage()}
+		return {"theme": theme, "events": events, "timers": timers, "at": at, "kinopoisk": getLanguage()}
 
 	def P_epgdialog(self, request):
 		return self.P_epgpop(request)
@@ -152,7 +153,7 @@ class AjaxController(BaseController):
 			box['brand'] = "techomate"
 		elif fileExists("/proc/stb/info/azmodel"):
 			box['brand'] = "azbox"
-		return { "box": box }
+		return {"box": box}
 
 	def P_powerstate(self, request):
 		return {}
@@ -171,13 +172,13 @@ class AjaxController(BaseController):
 		unsort = movies['movies']
 
 		if sorttype == 'name':
-			movies['movies'] = sorted(unsort, key=lambda k: k['eventname']) 
+			movies['movies'] = sorted(unsort, key=lambda k: k['eventname'])
 		elif sorttype == 'named':
-			movies['movies'] = sorted(unsort, key=lambda k: k['eventname'],reverse=True) 
+			movies['movies'] = sorted(unsort, key=lambda k: k['eventname'], reverse=True)
 		elif sorttype == 'date':
-			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime']) 
+			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime'])
 		elif sorttype == 'dated':
-			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime'],reverse=True) 
+			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime'], reverse=True)
 
 		movies['sort'] = sorttype
 		return movies
@@ -220,7 +221,7 @@ class AjaxController(BaseController):
 			if os.path.exists(getPublicPath('themes')):
 				ret['themes'] = config.OpenWebif.webcache.theme.choices
 			else:
-				ret['themes'] = ['original','clear']
+				ret['themes'] = ['original', 'clear']
 			ret['theme'] = config.OpenWebif.webcache.theme.value
 		else:
 			ret['themes'] = []
@@ -236,7 +237,7 @@ class AjaxController(BaseController):
 			epgmode = request.args["epgmode"][0]
 			if epgmode not in ["tv", "radio"]:
 				epgmode = "tv"
-				
+
 		bouq = getBouquets(epgmode)
 		if "bref" not in request.args.keys():
 			bref = bouq['bouquets'][0][0]
@@ -258,7 +259,7 @@ class AjaxController(BaseController):
 				day = int(request.args["day"][0])
 				if day > 0 or wadd > 0:
 					now = localtime()
-					begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day + wadd, 0, 0, 0, -1, -1, -1) )
+					begintime = mktime((now.tm_year, now.tm_mon, now.tm_mday + day + wadd, 0, 0, 0, -1, -1, -1))
 			except ValueError:
 				pass
 		mode = 1
@@ -288,19 +289,19 @@ class AjaxController(BaseController):
 			pass
 		loc = getLocations()
 		ret['locations'] = loc['locations']
-				
+
 		try:
-			from Plugins.SystemPlugins.vps import Vps
+			from Plugins.SystemPlugins.vps import Vps  # noqa: F401
 			ret['hasVPS'] = 1
-		except ImportError as ie:
+		except ImportError:
 			pass
 		try:
-			from Plugins.Extensions.SeriesPlugin.plugin import Plugins
+			from Plugins.Extensions.SeriesPlugin.plugin import Plugins  # noqa: F401
 			ret['hasSeriesPlugin'] = 1
-		except ImportError as ie:
+		except ImportError:
 			pass
 		try:
-			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerTestResource
+			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerTestResource  # noqa: F401
 			ret['test'] = 1
 		except ImportError:
 			pass
@@ -320,7 +321,7 @@ class AjaxController(BaseController):
 			else:
 				auth = '-sid:' + str(session.GetSID(request)) + "@"
 		else:
-			auth=''
+			auth = ''
 		vxgenabled = False
 		if fileExists(getPublicPath("/vxg/media_player.pexe")):
 			vxgenabled = True
@@ -329,9 +330,8 @@ class AjaxController(BaseController):
 		if transcoding:
 			try:
 				transcoder_port = int(config.plugins.transcodingsetup.port.value)
-				if getMachineBuild() in ('inihdp', 'hd2400', 'et10000', 'et13000', 'sf5008','ew7356','formuler1tc', 'tiviaraplus', '8100s'):
+				if getMachineBuild() in ('inihdp', 'hd2400', 'et10000', 'et13000', 'sf5008', 'ew7356', 'formuler1tc', 'tiviaraplus', '8100s'):
 					transcoder_port = int(config.OpenWebif.streamport.value)
 			except StandardError:
 				transcoder_port = 0
-		return {"transcoder_port" : transcoder_port, "vxgenabled" : vxgenabled, "auth" : auth}
-
+		return {"transcoder_port": transcoder_port, "vxgenabled": vxgenabled, "auth": auth}
