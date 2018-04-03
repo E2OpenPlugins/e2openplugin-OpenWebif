@@ -399,7 +399,28 @@ def getAllInfo():
 				model = "Spark"
 		elif (procmodel.startswith("dm") and not procmodel == "dm8000"):
 			brand = "Dream Multimedia"
-			model = procmodel.replace("dm", "DM", 1)
+			if procmodel == "dm800":
+				model = "DM800 HD PVR"
+			elif procmodel == "dm800se":
+				model = "DM800 HD se"
+			elif procmodel == "dm500hd":
+				model = "DM500 HD"
+			elif procmodel == "dm7020hd":
+				model = "DM7020 HD"
+			elif procmodel == "dm820":
+				model = "DM820 HD"
+			elif procmodel == "dm7080":
+				model = "DM7080 HD"
+			elif procmodel == "dm520":
+				model = "DM520 HD"
+			elif procmodel == "dm525":
+				model = "DM525 HD"
+			elif procmodel == "dm900":
+				model = "DM900 HD"
+			elif procmodel == "dm920":
+				model = "DM920 HD"
+			else:
+				model = procmodel.replace("dm", "DM", 1)
 		# A "dm8000" is only a Dreambox if it passes the tpm verification:
 		elif procmodel == "dm8000" and orgdream:
 			brand = "Dream Multimedia"
