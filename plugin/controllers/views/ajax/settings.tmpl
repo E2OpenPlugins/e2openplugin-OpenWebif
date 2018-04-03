@@ -17,6 +17,7 @@
 				<h3 class="ui-widget-header">$tstrings['settings']</h3>
 				<ol class="sellist" id="slist">
 				<li id='themesbtn' data-id="owsettings" class="ui-selected">$tstrings['tstr_ow_settings']</li>
+				<li id='bookmarksbtn' data-id="bookmarks" class="ui-selected">Bookmarks</li>
 				<li id='pkgbtn' data-id="packages" class="ui-selected">Packages</li>
 				#for $sec in $configsections
 					<li id='$sec["key"]' data-id='ajax/config?section=$sec["key"]'>$sec["description"]</li>
@@ -116,6 +117,18 @@
 				</div>
 			</div>
 		</div>
+		<div id='bookmarks' style="display:none;">
+			<div id="content_main2">
+				<h3 class="ui-widget-header">Bookmarks</h3>
+				<table id="configuration">
+				<tr><td>Bookmark</td><td>&nbsp;</td></tr>
+				#for $location in $locations
+					<tr><td>$location</td><td><a href='#' onClick="deleteBookmark('$location'); return false;" title=""><div><i class="fa fa-trash-o"></i></div></a></td></tr>
+				#end for
+				<tr><td><input type="text" id="addbookmarktext" value=""></td><td><a href='#' onClick="addBookmark(); return false;" title=""><div><i class="fa fa-plus"></i></div></a></td></tr>
+				</table>
+			</div>
+		</div>
 		
 		</div>
 		</div>
@@ -127,6 +140,45 @@
 
 var filteredpkg;
 var filterval='';
+
+
+function deleteBookmark(bm) {
+	if (confirm('Delete bookmark ' + ' ( ' + bm + ') ?') === false) {
+		return;
+	}
+
+	$.ajax({
+		url: "/api/removelocation?dirname=" + bm,
+		dataType: "json",
+		success: function(loc) {
+			if (loc.result)
+				load_maincontent_spin("/ajax/settings");
+			else
+				alert(loc.message);
+		}
+	});
+}
+
+function addBookmark() {
+
+	bm = $("#addbookmarktext").val();
+
+	if(bm.length==0 || bm.includes(" ")) {
+		alert("Path Error");
+		return;
+	}
+
+	$.ajax({
+		url: "/api/addlocation?dirname=" + bm,
+		dataType: "json",
+		success: function(loc) {
+			if (loc.result)
+				load_maincontent_spin("/ajax/settings");
+			else
+				alert(loc.message);
+		}
+	});
+}
 
 function prepareUpload() {
 	var fn = $(this).val();
@@ -331,6 +383,12 @@ function load_scontent(url) {
 	$("#scontent").html('');
 	$("#osettings").hide();
 	$("#packages").hide();
+	$("#bookmarks").hide();
+	if(url=='bookmarks')
+	{
+		$("#bookmarks").show();
+		return;
+	}
 	if(url=='owsettings')
 	{
 		$("#osettings").show();

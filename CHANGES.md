@@ -2,6 +2,7 @@
 ## (in development)
 * add net api mount manager
 * fix encoding issue #772
+* add settings to modify recording locations / bookmarks
 
 ## Version 1.3.0
 * add responsive design from VTi Team

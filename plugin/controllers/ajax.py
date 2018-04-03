@@ -229,6 +229,8 @@ class AjaxController(BaseController):
 		ret['zapstream'] = getZapStream()['zapstream']
 		ret['showchannelpicon'] = getShowChPicon()['showchannelpicon']
 		ret['allowipkupload'] = config.OpenWebif.allow_upload_ipk.value
+		loc = getLocations()
+		ret['locations'] = loc['locations']
 		return ret
 
 	def P_multiepg(self, request):
