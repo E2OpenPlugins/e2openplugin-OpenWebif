@@ -565,6 +565,8 @@ def getAllInfo():
 		remote = "sh1"
 	elif procmodel in ("h3", "h4", "h5", "h7"):
 		remote = "h3"
+	elif procmodel == "h9":
+		remote = "h9"
 	elif procmodel == "i55":
 		remote = "i55"
 	elif procmodel in ("vipercombo", "vipert2c"):
