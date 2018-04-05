@@ -436,4 +436,9 @@ tstrings = {
 	'using': _("using"),
 	'prime_times': _("Primetimes"),
 	'titscreenshot': _("Enable/Disable Screenshot on key press or"),
+	
+	'bookmarks': _("Bookmarks"),
+	'bookmark': _("Bookmark"),
+	
+	'packages': _("Packages")
 }

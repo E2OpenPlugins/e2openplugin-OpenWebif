@@ -17,8 +17,8 @@
 				<h3 class="ui-widget-header">$tstrings['settings']</h3>
 				<ol class="sellist" id="slist">
 				<li id='themesbtn' data-id="owsettings" class="ui-selected">$tstrings['tstr_ow_settings']</li>
-				<li id='bookmarksbtn' data-id="bookmarks" class="ui-selected">Bookmarks</li>
-				<li id='pkgbtn' data-id="packages" class="ui-selected">Packages</li>
+				<li id='bookmarksbtn' data-id="bookmarks" class="ui-selected">$tstrings['bookmarks']</li>
+				<li id='pkgbtn' data-id="packages" class="ui-selected">$tstrings['packages']</li>
 				#for $sec in $configsections
 					<li id='$sec["key"]' data-id='ajax/config?section=$sec["key"]'>$sec["description"]</li>
 				#end for
@@ -84,7 +84,7 @@
 		
 		<div id='packages' style="display:none;">
 			<div id="content_main2">
-				<h3 class="ui-widget-header">Packages</h3>
+				<h3 class="ui-widget-header">$tstrings['packages']</h3>
 				<span id="tb2">
 				<input class="pkgbtn" type="radio" id="pkgbtn1" name="tb2" checked="checked" /><label for="pkgbtn1">Update</label>
 				<input class="pkgbtn" type="radio" id="pkgbtn2" name="tb2" /><label for="pkgbtn2">Installed</label>
@@ -119,9 +119,9 @@
 		</div>
 		<div id='bookmarks' style="display:none;">
 			<div id="content_main2">
-				<h3 class="ui-widget-header">Bookmarks</h3>
+				<h3 class="ui-widget-header">$tstrings['bookmarks']</h3>
 				<table id="configuration">
-				<tr><td>Bookmark</td><td>&nbsp;</td></tr>
+				<tr><td>$tstrings['bookmark']</td><td>&nbsp;</td></tr>
 				#for $location in $locations
 					<tr><td>$location</td><td><a href='#' onClick="deleteBookmark('$location'); return false;" title=""><div><i class="fa fa-trash-o"></i></div></a></td></tr>
 				#end for

@@ -723,7 +723,7 @@ def setSleepTimer(session, time, action, enabled):
 		except Exception:
 			return {
 				"result": False,
-				"message": _("SleepTimer Error")
+				"message": _("SleepTimer error")
 			}
 	else:
 		# use powertimer
@@ -804,7 +804,7 @@ def setSleepTimer(session, time, action, enabled):
 		except Exception:
 			return {
 				"result": False,
-				"message": _("SleepTimer Error")
+				"message": _("SleepTimer error")
 			}
 
 
