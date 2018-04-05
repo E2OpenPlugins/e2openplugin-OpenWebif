@@ -357,6 +357,9 @@ def getAllInfo():
 		elif procmodel == "h5":
 			brand = "Zgemma"
 			model = "H5 series"
+                elif procmodel == "h6":
+                        brand = "Zgemma"
+                        model = "H6 series"
 		elif procmodel == "h7":
 			brand = "Zgemma"
 			model = "H7 series"
@@ -563,7 +566,7 @@ def getAllInfo():
 		remote = "qviart"
 	elif procmodel in ("sh1", "lc"):
 		remote = "sh1"
-	elif procmodel in ("h3", "h4", "h5", "h7"):
+	elif procmodel in ("h3", "h4", "h5", "h6", "h7"):
 		remote = "h3"
 	elif procmodel == "h9":
 		remote = "h9"
