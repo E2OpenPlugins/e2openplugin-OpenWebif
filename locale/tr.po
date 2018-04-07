@@ -2,2194 +2,2337 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-08 10:05+0200\n"
-"PO-Revision-Date: 2018-04-02 13:02+0000\n"
-"Last-Translator: neoatomic <neoatomic@users.noreply.github.com>\n"
+"POT-Creation-Date: 2018-04-07 03:07+0300\n"
+"PO-Revision-Date: 2018-04-08 02:43+0300\n"
+"Last-Translator: t5k6 <t5k6@users.noreply.github.com>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Loco-Source-Locale: en_GB\n"
-"X-Generator: Loco https://localise.biz/\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: .\n"
+"X-Loco-Parser: loco_parse_po\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
-"X-Loco-Parser: loco_parse_po"
 
-#: plugin/controllers/BouquetEditor.py:82
+#: ../plugin/controllers/BouquetEditor.py:82
 msgid "one two three four unknown command"
-msgstr ""
+msgstr "bir iki üç dört bilinmeyen komut"
 
-#: plugin/controllers/BouquetEditor.py:88 
-#: plugin/controllers/BouquetEditor.py:149 
-#: plugin/controllers/BouquetEditor.py:194
+#: ../plugin/controllers/BouquetEditor.py:88 ../plugin/controllers/BouquetEditor.py:149 ../plugin/controllers/BouquetEditor.py:195
 msgid "No bouquet name given!"
-msgstr "Buket adı verilmedi!"
+msgstr "Buket ismi verilmedi!"
 
-#: plugin/controllers/BouquetEditor.py:118
+#: ../plugin/controllers/BouquetEditor.py:118
 #, python-format
 msgid "Bouquet %s created."
-msgstr "'%s' buketi oluşturuldu."
+msgstr "Buket %s oluşturuldu."
 
-#: plugin/controllers/BouquetEditor.py:120
+#: ../plugin/controllers/BouquetEditor.py:120
 msgid "Get mutable list for new created bouquet failed!"
-msgstr ""
+msgstr "Yeni oluşturulan buket için değişken listesi alınamadı!"
 
-#: plugin/controllers/BouquetEditor.py:123
+#: ../plugin/controllers/BouquetEditor.py:123
 #, python-format
 msgid "Bouquet %s already exists."
-msgstr "'%s' buketi zaten mevcut."
+msgstr "Buket %s zaten var."
 
-#: plugin/controllers/BouquetEditor.py:125 
-#: plugin/controllers/BouquetEditor.py:439
+#: ../plugin/controllers/BouquetEditor.py:125 ../plugin/controllers/BouquetEditor.py:440
 msgid "Bouquetlist is not editable!"
-msgstr "Buket listesi değiştirilebilir değil!"
+msgstr "Buket listesi düzenlenemez!"
 
-#: plugin/controllers/BouquetEditor.py:127
+#: ../plugin/controllers/BouquetEditor.py:127
 msgid "Multi-Bouquet is not enabled!"
 msgstr "Çoklu buket etkin değil!"
 
-#: plugin/controllers/BouquetEditor.py:133
+#: ../plugin/controllers/BouquetEditor.py:133
 msgid "No provider given!"
-msgstr ""
+msgstr "Sağlayıcı yok!"
 
-#: plugin/controllers/BouquetEditor.py:180
+#: ../plugin/controllers/BouquetEditor.py:180
 #, python-format
 msgid "Bouquet %s removed failed."
-msgstr "'%s' buketin kaldırılmasında hata."
+msgstr "Buket %s kaldırılılması başarısız oldu."
 
-#: plugin/controllers/BouquetEditor.py:182
+#: ../plugin/controllers/BouquetEditor.py:182
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr ""
+msgstr "Buket %s kaldırılması başarısız, service referansı veya değişebilir liste geçerli değil."
 
-#: plugin/controllers/BouquetEditor.py:186
+#: ../plugin/controllers/BouquetEditor.py:187
 #, python-format
 msgid "Bouquet %s deleted."
-msgstr "'%s' buket silindi."
+msgstr "Buket %s silindi."
 
-#: plugin/controllers/BouquetEditor.py:188
+#: ../plugin/controllers/BouquetEditor.py:189
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
-msgstr ""
+msgstr "Hata: Buket %s silinemedi, OSError."
 
-#: plugin/controllers/BouquetEditor.py:204 
-#: plugin/controllers/BouquetEditor.py:261
+#: ../plugin/controllers/BouquetEditor.py:205 ../plugin/controllers/BouquetEditor.py:262
 msgid "No position given!"
-msgstr ""
+msgstr "Verilen pozisyon yok!"
 
-#: plugin/controllers/BouquetEditor.py:211
+#: ../plugin/controllers/BouquetEditor.py:212
 #, python-format
 msgid "Bouquet %s moved."
-msgstr "'%s' buketi taşındı."
+msgstr "Buket %s taşındı."
 
-#: plugin/controllers/BouquetEditor.py:213
+#: ../plugin/controllers/BouquetEditor.py:214
 #, python-format
 msgid "Bouquet %s can not be moved."
-msgstr "'%s' buketi taşınamıyor."
+msgstr "Buket %s taşınamaz."
 
-#: plugin/controllers/BouquetEditor.py:219 
-#: plugin/controllers/BouquetEditor.py:249 
-#: plugin/controllers/BouquetEditor.py:275 
-#: plugin/controllers/BouquetEditor.py:309 
-#: plugin/controllers/BouquetEditor.py:459
+#: ../plugin/controllers/BouquetEditor.py:220 ../plugin/controllers/BouquetEditor.py:250 ../plugin/controllers/BouquetEditor.py:276 ../plugin/controllers/BouquetEditor.py:310
+#: ../plugin/controllers/BouquetEditor.py:460
 msgid "No bouquet given!"
 msgstr "Buket seçilmedi"
 
-#: plugin/controllers/BouquetEditor.py:225 
-#: plugin/controllers/BouquetEditor.py:255 
-#: plugin/controllers/BouquetEditor.py:281 
-#: plugin/controllers/BouquetEditor.py:343 
-#: plugin/controllers/BouquetEditor.py:401 
-#: plugin/controllers/BouquetEditor.py:465 
-#: plugin/controllers/BouquetEditor.py:502
+#: ../plugin/controllers/BouquetEditor.py:226 ../plugin/controllers/BouquetEditor.py:256 ../plugin/controllers/BouquetEditor.py:282 ../plugin/controllers/BouquetEditor.py:344
+#: ../plugin/controllers/BouquetEditor.py:402 ../plugin/controllers/BouquetEditor.py:466 ../plugin/controllers/BouquetEditor.py:503
 msgid "No service given!"
-msgstr ""
+msgstr "Verilen hizmet yok!"
 
-#: plugin/controllers/BouquetEditor.py:234
+#: ../plugin/controllers/BouquetEditor.py:235
 #, python-format
 msgid "Service %s removed."
-msgstr "'%s' kanalı kaldırıldı"
+msgstr "Kanal %s kaldırıldı."
 
-#: plugin/controllers/BouquetEditor.py:242
+#: ../plugin/controllers/BouquetEditor.py:243
 #, python-format
 msgid "Service %s removed from bouquet %s."
-msgstr "'%s' kanalı '%s' buketinden kaldırıldı"
+msgstr "Kanal %s %s buketinden kaldırıldı."
 
-#: plugin/controllers/BouquetEditor.py:243
+#: ../plugin/controllers/BouquetEditor.py:244
 #, python-format
 msgid "Service %s can not be removed."
-msgstr "'%s' kanalı kaldırılamıyor"
+msgstr "Kanal %s kaldırılamaz."
 
-#: plugin/controllers/BouquetEditor.py:268
+#: ../plugin/controllers/BouquetEditor.py:269
 #, python-format
 msgid "Service %s moved."
-msgstr "'%s' kanalı taşındı"
+msgstr "Kanal %s taşındı."
 
-#: plugin/controllers/BouquetEditor.py:269
+#: ../plugin/controllers/BouquetEditor.py:270
 msgid "Service can not be moved."
-msgstr "kanal taşınamıyor"
+msgstr "Kanal taşınamıyor"
 
-#: plugin/controllers/BouquetEditor.py:299
+#: ../plugin/controllers/BouquetEditor.py:300
 #, python-format
 msgid "Service %s added."
-msgstr "'%s' kanalı eklendi"
+msgstr "Kanal %s eklendi."
 
-#: plugin/controllers/BouquetEditor.py:302
+#: ../plugin/controllers/BouquetEditor.py:303
 #, python-format
 msgid "Service %s already exists in bouquet %s."
-msgstr "'%s' kanalı '%s' buketinde zaten mevcut"
+msgstr "%s  kanalı %s buketinde zaten mevcut"
 
-#: plugin/controllers/BouquetEditor.py:303
+#: ../plugin/controllers/BouquetEditor.py:304
 msgid "This service can not be added."
 msgstr "Bu kanal eklenemiyor"
 
-#: plugin/controllers/BouquetEditor.py:316
+#: ../plugin/controllers/BouquetEditor.py:317
 msgid "No marker-name given!"
-msgstr ""
+msgstr "İşaretçi ismi yok!"
 
-#: plugin/controllers/BouquetEditor.py:333
+#: ../plugin/controllers/BouquetEditor.py:334
 msgid "Marker added."
 msgstr "İşaretçi eklendi"
 
-#: plugin/controllers/BouquetEditor.py:335
+#: ../plugin/controllers/BouquetEditor.py:336
 msgid "Internal error!"
 msgstr "Dahili hata!"
 
-#: plugin/controllers/BouquetEditor.py:349
+#: ../plugin/controllers/BouquetEditor.py:350
 msgid "No new servicename given!"
 msgstr "Yeni kanal adı verilmedi"
 
-#: plugin/controllers/BouquetEditor.py:373
+#: ../plugin/controllers/BouquetEditor.py:374
 msgid "Bouquet renamed successfully."
-msgstr "Buket yeniden adlandırıldı."
+msgstr "Buket başarıyla yeniden adlandırıldı."
 
-#: plugin/controllers/BouquetEditor.py:389
+#: ../plugin/controllers/BouquetEditor.py:390
 msgid "Service renamed successfully."
-msgstr "Kanal yeniden adlandırıldı"
+msgstr "Kanal yeniden adlandırıldı."
 
-#: plugin/controllers/BouquetEditor.py:390
+#: ../plugin/controllers/BouquetEditor.py:391
 msgid "Service can not be renamed."
-msgstr "Kanalın adı değiştirilemiyor"
+msgstr "Kanalın adı değiştirilemiyor."
 
-#: plugin/controllers/BouquetEditor.py:404
+#: ../plugin/controllers/BouquetEditor.py:405
 msgid "No current service given!"
-msgstr ""
+msgstr "Mevcut hizmet yok!"
 
-#: plugin/controllers/BouquetEditor.py:435
+#: ../plugin/controllers/BouquetEditor.py:436
 msgid "Get mutable list for new created alternative failed!"
-msgstr ""
+msgstr "Yeni oluşturulan alternatif için değişken listesi alınamadı!"
 
-#: plugin/controllers/BouquetEditor.py:437
+#: ../plugin/controllers/BouquetEditor.py:438
 #, python-format
 msgid "Alternative %s created failed."
-msgstr ""
+msgstr "Alternatif %s oluşturulamadı."
 
-#: plugin/controllers/BouquetEditor.py:451
+#: ../plugin/controllers/BouquetEditor.py:452
 #, python-format
 msgid "Added %s to alternative service %s."
-msgstr ""
+msgstr "%s %s alternatif hizmetine eklendi."
 
-#: plugin/controllers/BouquetEditor.py:482
+#: ../plugin/controllers/BouquetEditor.py:483
 msgid "Service is not an alternative."
-msgstr ""
+msgstr "Servis alternatif değil."
 
-#: plugin/controllers/BouquetEditor.py:490
+#: ../plugin/controllers/BouquetEditor.py:491
 msgid "All alternative services deleted."
-msgstr ""
+msgstr "Tüm alternatif hizmetler silinmiştir."
 
-#: plugin/controllers/BouquetEditor.py:496
+#: ../plugin/controllers/BouquetEditor.py:497
 msgid "Parent Control is not activated."
-msgstr ""
+msgstr "Ebeveyn Kontrolü aktif değil."
 
-#: plugin/controllers/BouquetEditor.py:509
+#: ../plugin/controllers/BouquetEditor.py:510
 msgid "No Parent Control Setup Pin given!"
-msgstr ""
+msgstr "Üst Ebeveyn Denetim Kurulumu Pimi verilmedi!"
 
-#: plugin/controllers/BouquetEditor.py:513 
-#: plugin/controllers/BouquetEditor.py:515
+#: ../plugin/controllers/BouquetEditor.py:514 ../plugin/controllers/BouquetEditor.py:516
 msgid "Parent Control Setup Pin is wrong!"
-msgstr ""
+msgstr "Ebeveyn Denetim Kurulumu Pin yanlış!"
 
-#: plugin/controllers/BouquetEditor.py:530
+#: ../plugin/controllers/BouquetEditor.py:531
 #, python-format
 msgid "Service %s is locked."
-msgstr "'%s' kanalı kilitli"
+msgstr "%s kanalı kilitli"
 
-#: plugin/controllers/BouquetEditor.py:532
+#: ../plugin/controllers/BouquetEditor.py:533
 #, python-format
 msgid "Bouquet %s is locked."
-msgstr "'%s' buket kilitli."
+msgstr "%s  buketi kilitli."
 
-#: plugin/controllers/BouquetEditor.py:534
+#: ../plugin/controllers/BouquetEditor.py:535
 #, python-format
 msgid "%s %s is locked."
-msgstr "%s %s kilitli"
+msgstr "%s  %s kilitli"
 
-#: plugin/controllers/BouquetEditor.py:538
+#: ../plugin/controllers/BouquetEditor.py:539
 #, python-format
 msgid "Service %s is unlocked."
-msgstr "'%s' kanalın kilidi kaldırıldı"
+msgstr "%s kanalın kilidi kaldırıldı"
 
-#: plugin/controllers/BouquetEditor.py:540
+#: ../plugin/controllers/BouquetEditor.py:541
 #, python-format
 msgid "Bouquet %s is unlocked."
-msgstr "'%s' buketin kilidi kaldırıldı."
+msgstr "%s  buketin kilidi kaldırıldı."
 
-#: plugin/controllers/BouquetEditor.py:577
+#: ../plugin/controllers/BouquetEditor.py:578
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
-msgstr ""
+msgstr "Yedekleme dosyası hazırlanırken hata oluştu, %s mevcut değil."
 
-#: plugin/controllers/BouquetEditor.py:583
+#: ../plugin/controllers/BouquetEditor.py:584
 msgid "Error while preparing backup file."
-msgstr ""
+msgstr "Yedekleme dosyası hazırlanırken hata oluştu."
 
-#: plugin/controllers/BouquetEditor.py:634
+#: ../plugin/controllers/BouquetEditor.py:635
 msgid "Bouquet-settings were restored successfully"
-msgstr "Buket ayarları eksi haline döndürüldü"
+msgstr "Buket ayarları başarıyla geri yüklendi"
 
-#: plugin/controllers/BouquetEditor.py:636
+#: ../plugin/controllers/BouquetEditor.py:637
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
-msgstr ""
+msgstr "Hata, %s WebBouquetEditor ile oluşturulmadı ..."
 
-#: plugin/controllers/BouquetEditor.py:638
+#: ../plugin/controllers/BouquetEditor.py:639
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
-msgstr ""
+msgstr "Hata, %s mevcut değil, geri yükleme mümkün değil ..."
 
-#: plugin/controllers/base.py:256 plugin/local.py:183 plugin/local.py:323
+#: ../plugin/controllers/base.py:262 ../plugin/local.py:191 ../plugin/local.py:332
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: plugin/controllers/base.py:272
+#: ../plugin/controllers/base.py:277
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux Kurulumu"
 
-#: plugin/controllers/base.py:287
+#: ../plugin/controllers/base.py:292
 msgid "OSCam Webinterface"
-msgstr ""
+msgstr "OSCam Web arayüzü"
 
-#: plugin/controllers/base.py:291
+#: ../plugin/controllers/base.py:296
 msgid "AutoTimer"
 msgstr "AutoTimer"
 
-#: plugin/controllers/base.py:296
+#: ../plugin/controllers/base.py:301
 msgid "BouquetEditor"
 msgstr "Buket düzenleyici"
 
-#: plugin/controllers/base.py:300
+#: ../plugin/controllers/base.py:305
 msgid "EPGRefresh"
 msgstr "EPGRefresh"
 
-#: plugin/controllers/base.py:318
+#: ../plugin/controllers/base.py:323
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
-#: plugin/controllers/ipkg.py:239
+#: ../plugin/controllers/ipkg.py:290
 msgid "Error upload File"
-msgstr ""
+msgstr "Dosya yüklenirken hata oluştu"
 
-#: plugin/controllers/ipkg.py:242
+#: ../plugin/controllers/ipkg.py:293
 msgid "wrong filetype"
 msgstr "hatalı dosya türü"
 
-#: plugin/controllers/ipkg.py:256
+#: ../plugin/controllers/ipkg.py:306
 msgid "Error writing File"
-msgstr ""
+msgstr "Dosya yazılırken hata oluştu"
 
-#: plugin/controllers/models/info.py:57
+#: ../plugin/controllers/models/info.py:58
 msgid "SLAAC"
-msgstr ""
+msgstr "SLAAC"
 
-#: plugin/controllers/models/info.py:64 plugin/controllers/models/info.py:75 
-#: plugin/controllers/models/info.py:82
+#: ../plugin/controllers/models/info.py:65 ../plugin/controllers/models/info.py:76 ../plugin/controllers/models/info.py:83
 msgid "static"
-msgstr ""
+msgstr "statik"
 
-#: plugin/controllers/models/info.py:66 plugin/controllers/models/info.py:84 
-#: plugin/local.py:81
+#: ../plugin/controllers/models/info.py:67 ../plugin/controllers/models/info.py:85 ../plugin/local.py:89
 msgid "DHCP"
-msgstr ""
+msgstr "DHCP"
 
-#: plugin/controllers/models/info.py:68 plugin/controllers/models/info.py:86
+#: ../plugin/controllers/models/info.py:69 ../plugin/controllers/models/info.py:87
 msgid "manual/disabled"
-msgstr ""
+msgstr "elle / devre dışı"
 
-#: plugin/controllers/models/info.py:94 plugin/controllers/models/info.py:101
+#: ../plugin/controllers/models/info.py:95 ../plugin/controllers/models/info.py:102
 msgid "unknown"
 msgstr "bilinmiyor"
 
-#: plugin/controllers/models/info.py:135 plugin/local.py:117
+#: ../plugin/controllers/models/info.py:136 ../plugin/local.py:125
 msgid "IPv4-only kernel"
 msgstr "IPv4-only kernel"
 
-#: plugin/controllers/models/info.py:139 plugin/local.py:119
+#: ../plugin/controllers/models/info.py:140 ../plugin/local.py:127
 msgid "IPv4-only Python/Twisted"
-msgstr ""
+msgstr "IPv4 sadece Python / Twisted"
 
-#: plugin/controllers/models/info.py:168 plugin/local.py:118
+#: ../plugin/controllers/models/info.py:169 ../plugin/local.py:126
 msgid "none/IPv4-only network"
-msgstr ""
+msgstr "yok / yalnızca IPv4 ağında"
 
-#: plugin/controllers/models/info.py:286 plugin/controllers/models/info.py:289 
-#: plugin/controllers/models/movies.py:250
+#: ../plugin/controllers/models/info.py:358 ../plugin/controllers/models/info.py:361 ../plugin/controllers/models/movies.py:232
 msgid "kB"
-msgstr ""
+msgstr "kB"
 
-#: plugin/controllers/models/info.py:290 plugin/controllers/models/info.py:413
+#: ../plugin/controllers/models/info.py:362 ../plugin/controllers/models/info.py:488
 #, python-format
 msgid "%s free / %s total"
 msgstr "%s boş / %s toplam"
 
-#: plugin/controllers/models/info.py:325 plugin/local.py:65
+#: ../plugin/controllers/models/info.py:400 ../plugin/local.py:73
 msgid "Chipset"
-msgstr "Çipset"
+msgstr "Yonga seti"
 
-#: plugin/controllers/models/info.py:330 plugin/local.py:106
+#: ../plugin/controllers/models/info.py:405 ../plugin/local.py:114
 msgid "Frontprocessor Version"
-msgstr ""
+msgstr "Ön İşlemci Sürümü"
 
-#: plugin/controllers/models/info.py:376 plugin/controllers/models/info.py:387 
-#: plugin/controllers/models/info.py:405 
-#: plugin/controllers/models/movies.py:248
+#: ../plugin/controllers/models/info.py:451 ../plugin/controllers/models/info.py:462 ../plugin/controllers/models/info.py:480 ../plugin/controllers/models/movies.py:230
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
-#: plugin/controllers/models/info.py:379 plugin/controllers/models/info.py:385 
-#: plugin/controllers/models/info.py:400 plugin/controllers/models/info.py:403 
-#: plugin/controllers/models/movies.py:246
+#: ../plugin/controllers/models/info.py:454 ../plugin/controllers/models/info.py:460 ../plugin/controllers/models/info.py:475 ../plugin/controllers/models/info.py:478
+#: ../plugin/controllers/models/movies.py:228
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
-#: plugin/controllers/models/info.py:383 plugin/controllers/models/info.py:395 
-#: plugin/controllers/models/info.py:397
+#: ../plugin/controllers/models/info.py:458 ../plugin/controllers/models/info.py:470 ../plugin/controllers/models/info.py:472
 msgid "TB"
-msgstr ""
+msgstr "TB"
 
-#: plugin/controllers/models/info.py:442
+#: ../plugin/controllers/models/info.py:517
 msgid "r/w"
-msgstr ""
+msgstr "r / w"
 
-#: plugin/controllers/models/info.py:446
+#: ../plugin/controllers/models/info.py:521
 msgid "r/o"
-msgstr ""
+msgstr "R / O"
 
-#: plugin/controllers/models/message.py:33
+#: ../plugin/controllers/models/message.py:35
 msgid "Message sent successfully!"
 msgstr "Mesaj başarıyla gönderildi!"
 
-#: plugin/controllers/models/message.py:43
+#: ../plugin/controllers/models/message.py:46
 msgid "No answer in time"
 msgstr "Zamanında yanıt verilmedi"
 
-#: plugin/controllers/models/message.py:48
+#: ../plugin/controllers/models/message.py:51
 msgid "Answer is YES!"
 msgstr "Yanıt EVET!"
 
-#: plugin/controllers/models/message.py:48
+#: ../plugin/controllers/models/message.py:51
 msgid "Answer is NO!"
 msgstr "Yanıt HAYIR!"
 
-#: plugin/controllers/models/services.py:260
+#: ../plugin/controllers/models/movies.py:309
+msgid "remove"
+msgstr "Kaldır"
+
+#: ../plugin/controllers/models/movies.py:315
+msgid ""
+"Delete failed, because there is no movie trash !\n"
+"Disable movie trash in configuration to delete this item"
+msgstr ""
+"Film çöpü olmadığından silme başarısız oldu! \n"
+" Bu öğeyi silmek için yapılandırmada film çöpünü devre dışı bırak"
+
+#: ../plugin/controllers/models/services.py:181 ../plugin/local.py:415
+msgid "Orbital Position"
+msgstr "Orbital pozisyonu"
+
+#: ../plugin/controllers/models/services.py:287
 msgid "New"
 msgstr "Yeni"
 
-#: plugin/controllers/models/services.py:262
+#: ../plugin/controllers/models/services.py:289
 msgid "Services"
 msgstr "Kanallar"
 
-#: plugin/controllers/models/services.py:267
+#: ../plugin/controllers/models/services.py:294
 msgid "Cable"
 msgstr "Kablolu"
 
-#: plugin/controllers/models/services.py:269
+#: ../plugin/controllers/models/services.py:296
 msgid "Terrestrial"
 msgstr "Karasal"
 
-#: plugin/controllers/models/services.py:273
+#: ../plugin/controllers/models/services.py:300
 msgid "W"
 msgstr "B"
 
-#: plugin/controllers/models/services.py:275
+#: ../plugin/controllers/models/services.py:302
 msgid "E"
 msgstr "D"
 
-#: plugin/controllers/models/timers.py:178
+#: ../plugin/controllers/models/timers.py:180
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
-msgstr "Uyumsuz zamanlayıcı(lar) tespit edildi '%s'"
+msgstr "Çakışan Zamanlayıcı (lar) tespit edildi! %s"
 
-#: plugin/controllers/models/timers.py:195
+#: ../plugin/controllers/models/timers.py:197
 #, python-format
 msgid "Could not add timer '%s'!"
-msgstr "'%s' zamanlayıcısı eklenemedi!"
+msgstr "' %s ' zamanlayıcı eklenemedi!"
 
-#: plugin/controllers/models/timers.py:200
+#: ../plugin/controllers/models/timers.py:202
 #, python-format
 msgid "Timer '%s' added"
-msgstr "'%s' zamanlayıcı eklendi"
+msgstr "Zamanlayıcı ' %s ' eklendi"
 
-#: plugin/controllers/models/timers.py:208
+#: ../plugin/controllers/models/timers.py:211
 msgid "EventId not found"
-msgstr ""
+msgstr "EventId bulunamadı"
 
-#: plugin/controllers/models/timers.py:279
+#: ../plugin/controllers/models/timers.py:283
 #, python-format
 msgid "Timer '%s' changed"
 msgstr "'%s' zamanlayıcı değiştirildi"
 
-#: plugin/controllers/models/timers.py:298
+#: ../plugin/controllers/models/timers.py:302
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
-msgstr "'%s' uyumsuzluk nedeniyle kaydedilemedi"
+msgstr "%s uyumsuzluk nedeniyle kaydedilemedi"
 
-#: plugin/controllers/models/timers.py:304
+#: ../plugin/controllers/models/timers.py:308
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
-msgstr "'%s' zamanlayıcısı girilen başlangıç ve bitiş zamanlarıyla bulunamadı!"
+msgstr "%s  zamanlayıcısı girilen başlangıç ve bitiş zamanlarıyla bulunamadı!"
 
-#: plugin/controllers/models/timers.py:316
+#: ../plugin/controllers/models/timers.py:321
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
-msgstr "'%s' zamanlayıcısı başarıyla silindi"
+msgstr "%s  zamanlayıcısı başarıyla silindi"
 
-#: plugin/controllers/models/timers.py:321 
-#: plugin/controllers/models/timers.py:365
+#: ../plugin/controllers/models/timers.py:326 ../plugin/controllers/models/timers.py:371
 msgid "No matching Timer found"
-msgstr "Zamanlayıcı eşleşmesi bulunamadı"
+msgstr "Eşleşen Zamanlayıcı bulunamadı"
 
-#: plugin/controllers/models/timers.py:339
+#: ../plugin/controllers/models/timers.py:345
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
-msgstr "'%s' zamanlayıcısı uyumsuzluk nedeniyle etkinleştirilmedi"
+msgstr "%s zamanlayıcısı uyumsuzluk nedeniyle etkinleştirilmedi"
 
-#: plugin/controllers/models/timers.py:345
+#: ../plugin/controllers/models/timers.py:351
 #, python-format
 msgid "Timer '%s' already exists!"
-msgstr "'%s' zamanlayıcısı zaten mevcut"
+msgstr "%s  zamanlayıcısı zaten mevcut"
 
-#: plugin/controllers/models/timers.py:351
+#: ../plugin/controllers/models/timers.py:357
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
-msgstr "'%s' zamanlayıcısı kaydedildi! Etkinsizleştirilmedi! "
+msgstr "' %s ' zamanlayıcısı kaydedildi! Devre dışı değil!"
 
-#: plugin/controllers/models/timers.py:359
+#: ../plugin/controllers/models/timers.py:365
 #, python-format
 msgid "The timer '%s' has been %s successfully"
-msgstr "'%s' zamanlayıcı başarıyla '%s' edildi"
+msgstr "%s  zamanlayıcı başarıyla %s  edildi"
 
-#: plugin/controllers/models/timers.py:372
+#: ../plugin/controllers/models/timers.py:379
 msgid "List of Timers has been cleaned"
-msgstr "Zamanlayıcı listesi temizlendi"
+msgstr "Zamanlayıcıların listesi temizlendi"
 
-#: plugin/controllers/models/timers.py:379
+#: ../plugin/controllers/models/timers.py:387
 msgid "TimerList has been saved"
 msgstr "Zamanlayıcı listesi kaydedildi"
 
-#: plugin/controllers/models/timers.py:394
+#: ../plugin/controllers/models/timers.py:403
 msgid "No event found! Not recording!"
-msgstr ""
+msgstr "Etkinlik bulunamadı! Kayıt yapılmıyor!"
 
-#: plugin/controllers/models/timers.py:400
+#: ../plugin/controllers/models/timers.py:409
 msgid "Instant record for current Event started"
-msgstr ""
+msgstr "Mevcut Etkinlik için anlık kayıt başladı"
 
-#: plugin/controllers/models/timers.py:409
+#: ../plugin/controllers/models/timers.py:418
 msgid "Infinite Instant recording started"
-msgstr ""
+msgstr "Sonsuz Hızlı kayıt başlatıldı"
 
-#: plugin/controllers/models/timers.py:428
+#: ../plugin/controllers/models/timers.py:437
 msgid "Timer conflict detected! Not recording!"
 msgstr "Zamanlayıcı uyumsuzluğu algılandı! Kayıt yapılmıyor!"
 
-#: plugin/controllers/models/timers.py:502
+#: ../plugin/controllers/models/timers.py:510
 msgid "Missing requesteter: sRef"
-msgstr ""
+msgstr "Eksik istekte bulunan: sRef"
 
-#: plugin/controllers/models/timers.py:524
+#: ../plugin/controllers/models/timers.py:532
 #, python-format
 msgid "Unknown command: '%s'"
-msgstr "Bilinmeyen komut: '%s'"
+msgstr "Bilinmeyen komut: %s "
 
-#: plugin/controllers/models/timers.py:581
+#: ../plugin/controllers/models/timers.py:592
 msgid "PowerTimer feature not available"
-msgstr ""
+msgstr "PowerTimer özelliği mevcut değil"
 
-#: plugin/controllers/models/timers.py:657 
-#: plugin/controllers/models/timers.py:683
+#: ../plugin/controllers/models/timers.py:665 ../plugin/controllers/models/timers.py:691
 msgid "Sleeptimer is enabled"
 msgstr "Uyku zamanlayıcısı etkinleştirildi"
 
-#: plugin/controllers/models/timers.py:657 
-#: plugin/controllers/models/timers.py:683
+#: ../plugin/controllers/models/timers.py:665 ../plugin/controllers/models/timers.py:691
 msgid "Sleeptimer is disabled"
 msgstr "Uyku zamanlayıcısı devre dışı"
 
-#: plugin/controllers/models/timers.py:662 
-#: plugin/controllers/models/timers.py:689
+#: ../plugin/controllers/models/timers.py:670 ../plugin/controllers/models/timers.py:697
 msgid "SleepTimer error"
 msgstr "Uyku zamanlayıcısı hata"
 
-#: plugin/controllers/models/timers.py:701
+#: ../plugin/controllers/models/timers.py:710
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr ""
+msgstr "HATA: Cihaz Bekleme Modundayken uyku zamanlayıcısı ayarlanamıyor"
 
-#: plugin/controllers/models/timers.py:706 
-#: plugin/controllers/models/timers.py:775 
-#: plugin/controllers/models/timers.py:793
+#: ../plugin/controllers/models/timers.py:715 ../plugin/controllers/models/timers.py:784 ../plugin/controllers/models/timers.py:802
 msgid "Sleeptimer has been disabled"
 msgstr "Uyku zamanlayıcısı devre dışı bırakıldı"
 
-#: plugin/controllers/models/timers.py:712 
-#: plugin/controllers/models/timers.py:775 
-#: plugin/controllers/models/timers.py:788
+#: ../plugin/controllers/models/timers.py:721 ../plugin/controllers/models/timers.py:784 ../plugin/controllers/models/timers.py:797
 #, python-format
 msgid "Sleeptimer set to %d minutes"
-msgstr ""
+msgstr "Sleeptimer %d dakikaya ayarlandı"
 
-#: plugin/controllers/models/timers.py:717 
-#: plugin/controllers/models/timers.py:798
+#: ../plugin/controllers/models/timers.py:726 ../plugin/controllers/models/timers.py:807
 msgid "SleepTimer Error"
 msgstr "Uyku zamanlayıcısı Hata"
 
-#: plugin/controllers/models/timers.py:826
+#: ../plugin/controllers/models/timers.py:836
 msgid "Error parsing vps.xml"
-msgstr ""
+msgstr "Vps.xml ayrıştırılırken hata oluştu"
 
-#: plugin/controllers/models/timers.py:831
+#: ../plugin/controllers/models/timers.py:841
 msgid "VPS plugin not found"
 msgstr "VPS plugini bulunamadı"
 
-#: plugin/controllers/web.py:63
+#: ../plugin/controllers/web.py:61
 #, python-format
 msgid "Missing mandatory parameter '%s'"
-msgstr ""
+msgstr "Zorunlu \" %s \" parametresi eksik"
 
-#: plugin/controllers/web.py:69
+#: ../plugin/controllers/web.py:67
 #, python-format
 msgid "The parameter '%s' can't be empty"
-msgstr ""
+msgstr "' %s ' parametresi boş bırakılamaz"
 
-#: plugin/controllers/web.py:136
+#: ../plugin/controllers/web.py:134
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr ""
+msgstr "Yanlış parametre formatı 'set = %s '. Set = set15 kullan "
 
-#: plugin/controllers/web.py:141
+#: ../plugin/controllers/web.py:139
 #, python-format
 msgid "Unknown Volume command %s"
-msgstr "%s  Ses komutu bilinmiyor"
+msgstr "Bilinmeyen Ses komutu %s"
 
-#: plugin/controllers/web.py:176
+#: ../plugin/controllers/web.py:174
 msgid "The parameter 'command' must be a number"
-msgstr ""
+msgstr "'Command' parametresi bir sayı olmalıdır"
 
-#: plugin/controllers/web.py:334
+#: ../plugin/controllers/web.py:332
 #, python-format
 msgid "type %s is not a number"
-msgstr ""
+msgstr "%s bir sayı değil"
 
-#: plugin/local.py:5
+#: ../plugin/local.py:8
+msgid "hour"
+msgstr "saat"
+
+#: ../plugin/local.py:8
+#, fuzzy
+#| msgid "Minute"
+msgid "minute"
+msgstr "dakika"
+
+#: ../plugin/local.py:13
 msgid "Mo"
 msgstr "Pzt"
 
-#: plugin/local.py:6
+#: ../plugin/local.py:14
 msgid "Tu"
 msgstr "Sal"
 
-#: plugin/local.py:7
+#: ../plugin/local.py:15
 msgid "We"
 msgstr "Çrş"
 
-#: plugin/local.py:8
+#: ../plugin/local.py:16
 msgid "Th"
 msgstr "Prş"
 
-#: plugin/local.py:9
+#: ../plugin/local.py:17
 msgid "Fr"
 msgstr "Cum"
 
-#: plugin/local.py:10
+#: ../plugin/local.py:18
 msgid "Sa"
 msgstr "Cmt"
 
-#: plugin/local.py:11
+#: ../plugin/local.py:19
 msgid "Su"
 msgstr "Paz"
 
-#: plugin/local.py:13
+#: ../plugin/local.py:21
 msgid "Sun"
 msgstr "Paz"
 
-#: plugin/local.py:14
+#: ../plugin/local.py:22
 msgid "Mon"
 msgstr "Pzt"
 
-#: plugin/local.py:15
+#: ../plugin/local.py:23
 msgid "Tue"
 msgstr "Sal"
 
-#: plugin/local.py:16
+#: ../plugin/local.py:24
 msgid "Wed"
 msgstr "Çrş"
 
-#: plugin/local.py:17
+#: ../plugin/local.py:25
 msgid "Thu"
 msgstr "Prş"
 
-#: plugin/local.py:18
+#: ../plugin/local.py:26
 msgid "Fri"
 msgstr "Cum"
 
-#: plugin/local.py:19
+#: ../plugin/local.py:27
 msgid "Sat"
 msgstr "Cmt"
 
-#: plugin/local.py:21
+#: ../plugin/local.py:29
 msgid "Monday"
 msgstr "Pazartesi"
 
-#: plugin/local.py:22
+#: ../plugin/local.py:30
 msgid "Tuesday"
 msgstr "Salı"
 
-#: plugin/local.py:23
+#: ../plugin/local.py:31
 msgid "Wednesday"
 msgstr "Çarşamba"
 
-#: plugin/local.py:24
+#: ../plugin/local.py:32
 msgid "Thursday"
 msgstr "Perşembe"
 
-#: plugin/local.py:25
+#: ../plugin/local.py:33
 msgid "Friday"
 msgstr "Cuma"
 
-#: plugin/local.py:26
+#: ../plugin/local.py:34
 msgid "Saturday"
 msgstr "Cumartesi"
 
-#: plugin/local.py:27
+#: ../plugin/local.py:35
 msgid "Sunday"
 msgstr "Pazar"
 
-#: plugin/local.py:29
+#: ../plugin/local.py:37
 msgid "January"
 msgstr "Ocak"
 
-#: plugin/local.py:30
+#: ../plugin/local.py:38
 msgid "February"
 msgstr "Şubat"
 
-#: plugin/local.py:31
+#: ../plugin/local.py:39
 msgid "March"
 msgstr "Mart"
 
-#: plugin/local.py:32
+#: ../plugin/local.py:40
 msgid "April"
 msgstr "Nisan"
 
-#: plugin/local.py:33
+#: ../plugin/local.py:41
 msgid "May"
 msgstr "Mayıs"
 
-#: plugin/local.py:34
+#: ../plugin/local.py:42
 msgid "June"
 msgstr "Haziran"
 
-#: plugin/local.py:35
+#: ../plugin/local.py:43
 msgid "July"
 msgstr "Temmuz"
 
-#: plugin/local.py:36
+#: ../plugin/local.py:44
 msgid "August"
-msgstr "Ağuıstos"
+msgstr "Ağustos"
 
-#: plugin/local.py:37
+#: ../plugin/local.py:45
 msgid "September"
 msgstr "Eylül"
 
-#: plugin/local.py:38
+#: ../plugin/local.py:46
 msgid "October"
 msgstr "Ekim"
 
-#: plugin/local.py:39
+#: ../plugin/local.py:47
 msgid "November"
 msgstr "Kasım"
 
-#: plugin/local.py:40
+#: ../plugin/local.py:48
 msgid "December"
 msgstr "Aralık"
 
-#: plugin/local.py:42
+#: ../plugin/local.py:50
 msgid "About"
 msgstr "Hakkında"
 
-#: plugin/local.py:43
+#: ../plugin/local.py:51
 msgid "Add Timer"
 msgstr "Zamanlayıcı ekle"
 
-#: plugin/local.py:44
+#: ../plugin/local.py:52
 msgid "Add AutoTimer"
 msgstr "Otomatik zamanlayıcı ekle"
 
-#: plugin/local.py:45
+#: ../plugin/local.py:53
 msgid "Add Zap Timer"
 msgstr "Yayın açma zamanlayıcısı ekle"
 
-#: plugin/local.py:46 plugin/local.py:355
+#: ../plugin/local.py:54 ../plugin/local.py:364
 msgid "After Event"
 msgstr "Etkinlikten sonra"
 
-#: plugin/local.py:47
+#: ../plugin/local.py:55
 msgid "AGC"
-msgstr ""
+msgstr "AGC"
 
-#: plugin/local.py:48 plugin/local.py:343
+#: ../plugin/local.py:56 ../plugin/local.py:352 ../plugin/vtiaddon.py:23
 msgid "All"
 msgstr "Tümü"
 
-#: plugin/local.py:49
+#: ../plugin/local.py:57
 msgid "All Channels"
 msgstr "Tüm Kanallar"
 
-#: plugin/local.py:50
+#: ../plugin/local.py:58
 msgid "Authors"
 msgstr "Yazarlar"
 
-#: plugin/local.py:51 plugin/local.py:342
+#: ../plugin/local.py:59 ../plugin/local.py:351
 msgid "Auto"
 msgstr "Otomatik"
 
-#: plugin/local.py:52
+#: ../plugin/local.py:60
 msgid "Back"
 msgstr "Geri"
 
-#: plugin/local.py:53 plugin/local.py:350
+#: ../plugin/local.py:61 ../plugin/local.py:359
 msgid "Begin"
-msgstr "Başlama"
+msgstr "Başla"
 
-#: plugin/local.py:54
+#: ../plugin/local.py:62
 msgid "BER"
-msgstr ""
+msgstr "BER"
 
-#: plugin/local.py:55 plugin/local.py:305
+#: ../plugin/local.py:63 ../plugin/local.py:314
 msgid "Bouquets"
 msgstr "Buketler"
 
-#: plugin/local.py:56
+#: ../plugin/local.py:64
 msgid "Box Info"
 msgstr "Alıcı Bilgisi"
 
-#: plugin/local.py:57
+#: ../plugin/local.py:65
 msgid "Box"
 msgstr "Alıcı"
 
-#: plugin/local.py:58
+#: ../plugin/local.py:66
 msgid "Box Control"
 msgstr "Alıcı Kontrol"
 
-#: plugin/local.py:59
+#: ../plugin/local.py:67
 msgid "Box Uptime"
 msgstr "Alıcının açık kalma süresi"
 
-#: plugin/local.py:60
+#: ../plugin/local.py:68
 msgid "Brand"
 msgstr "Marka"
 
-#: plugin/local.py:61 plugin/plugin.py:101
+#: ../plugin/local.py:69 ../plugin/plugin.py:110
 msgid "Cancel"
 msgstr "Vazgeç"
 
-#: plugin/local.py:62
+#: ../plugin/local.py:70
 msgid "Capacity"
 msgstr "Kapasite"
 
-#: plugin/local.py:63
+#: ../plugin/local.py:71
 msgid "Channel"
 msgstr "Kanal"
 
-#: plugin/local.py:64 plugin/local.py:303
+#: ../plugin/local.py:72 ../plugin/local.py:312
 msgid "Channels"
 msgstr "Kanallar"
 
-#: plugin/local.py:66
+#: ../plugin/local.py:74
 msgid "Cleanup Timers"
 msgstr "Zamanlayıcıları temizle"
 
-#: plugin/local.py:67
+#: ../plugin/local.py:75
 msgid "Close"
 msgstr "Kapat"
 
-#: plugin/local.py:68
+#: ../plugin/local.py:76
 msgid "Contributors"
-msgstr "Katkıcılar"
+msgstr "Katkıda bulunanlar"
 
-#: plugin/local.py:69
+#: ../plugin/local.py:77
 msgid "Control"
 msgstr "Kontrol"
 
-#: plugin/local.py:70
+#: ../plugin/local.py:78
 msgid "Current"
 msgstr "Güncel"
 
-#: plugin/local.py:71
+#: ../plugin/local.py:79
 msgid "Current Event"
 msgstr "Güncel Etkinlik"
 
-#: plugin/local.py:72
+#: ../plugin/local.py:80
 msgid "Date"
 msgstr "Tarih"
 
-#: plugin/local.py:73
+#: ../plugin/local.py:81
 msgid "Deep-Standby"
-msgstr "Derin uyku"
+msgstr "Derin Bekleme"
 
-#: plugin/local.py:74
+#: ../plugin/local.py:82
 msgid "Default"
-msgstr "Öntanımlı"
+msgstr "Varsayılan"
 
-#: plugin/local.py:75 plugin/local.py:317
+#: ../plugin/local.py:83 ../plugin/local.py:326
 msgid "Delete"
 msgstr "Sil"
 
-#: plugin/local.py:76
+#: ../plugin/local.py:84
 msgid "Delete Recording"
 msgstr "Kaydı sil"
 
-#: plugin/local.py:77
+#: ../plugin/local.py:85
 msgid "Really delete the recording"
 msgstr "Kaydı gerçekten silecek misin ?"
 
-#: plugin/local.py:78
+#: ../plugin/local.py:86
 msgid "Delete Timer"
-msgstr "Zamanlayıcı Sil"
+msgstr "Zamanlayıcıyı Sil"
 
-#: plugin/local.py:79
+#: ../plugin/local.py:87
 msgid "Really delete the timer"
 msgstr "Zamanlayıcıyı gerçekten silecek misin ?"
 
-#: plugin/local.py:80 plugin/local.py:251
+#: ../plugin/local.py:88 ../plugin/local.py:260
 msgid "Description"
-msgstr "Tanım"
+msgstr "Açıklama"
 
-#: plugin/local.py:82
+#: ../plugin/local.py:90
 msgid "Disable Timer"
-msgstr "Zamanlayıcıyı devredışı bırak"
+msgstr "Zamanlayıcıyı Devre Dışı Bırak"
 
-#: plugin/local.py:83
+#: ../plugin/local.py:91
 msgid "disabled"
-msgstr ""
+msgstr "devre dışı"
 
-#: plugin/local.py:84
+#: ../plugin/local.py:92
 msgid "Distro"
-msgstr ""
+msgstr "Distro"
 
-#: plugin/local.py:85
+#: ../plugin/local.py:93
 msgid "Dolby"
-msgstr ""
+msgstr "Dolby"
 
-#: plugin/local.py:86
+#: ../plugin/local.py:94
 msgid "Done"
-msgstr ""
+msgstr "Tamam"
 
-#: plugin/local.py:87
+#: ../plugin/local.py:95
 msgid "Download"
-msgstr ""
+msgstr "İndir"
 
-#: plugin/local.py:88
+#: ../plugin/local.py:96
 msgid "Download Playlist for"
-msgstr ""
+msgstr "Oynatma listesini indir"
 
-#: plugin/local.py:89
+#: ../plugin/local.py:97
 msgid "Drivers"
-msgstr "Sürücü tarihi"
+msgstr "Sürücüler"
 
-#: plugin/local.py:90
+#: ../plugin/local.py:98
 msgid "Duration"
 msgstr "Süre"
 
-#: plugin/local.py:91
+#: ../plugin/local.py:99
 msgid "Edit Timer"
 msgstr "Zamanlayıcı Düzenle"
 
-#: plugin/local.py:92
+#: ../plugin/local.py:100
 msgid "Enable Timer"
 msgstr "Zamanlayıcı Etkinleştir"
 
-#: plugin/local.py:93
+#: ../plugin/local.py:101
 msgid "Start"
 msgstr "Başlat"
 
-#: plugin/local.py:94 plugin/local.py:351
+#: ../plugin/local.py:102 ../plugin/local.py:360
 msgid "End"
 msgstr "Bitiş"
 
-#: plugin/local.py:95 plugin/local.py:250 plugin/local.py:348
+#: ../plugin/local.py:103 ../plugin/local.py:259 ../plugin/local.py:357
 msgid "Enabled"
 msgstr "Etkin"
 
-#: plugin/local.py:96
+#: ../plugin/local.py:104
 msgid "Encrypted"
 msgstr "Şifreli"
 
-#: plugin/local.py:97
+#: ../plugin/local.py:105
 msgid "EPG"
 msgstr "EPG"
 
-#: plugin/local.py:98
+#: ../plugin/local.py:106
 msgid "Epg Search"
 msgstr "Epg Arama"
 
-#: plugin/local.py:99
+#: ../plugin/local.py:107
 msgid "Include description"
 msgstr "Açıklama ile birlikte"
 
-#: plugin/local.py:100
+#: ../plugin/local.py:108
 msgid "Restrict to Bouquets"
 msgstr "Buketlere sınırla"
 
-#: plugin/local.py:101
+#: ../plugin/local.py:109
 msgid "Error"
 msgstr "Hata"
 
-#: plugin/local.py:102
+#: ../plugin/local.py:110
 msgid "Every"
-msgstr ""
+msgstr "He"
 
-#: plugin/local.py:103
+#: ../plugin/local.py:111
 msgid "Extras"
 msgstr "Ekstralar"
 
-#: plugin/local.py:104
+#: ../plugin/local.py:112
 msgid "finished"
 msgstr "bitti"
 
-#: plugin/local.py:105
+#: ../plugin/local.py:113
 msgid "Firmware version"
-msgstr ""
+msgstr "Firmware sürümü"
 
-#: plugin/local.py:107
+#: ../plugin/local.py:115
 msgid "Free"
 msgstr "Boşta"
 
-#: plugin/local.py:108
+#: ../plugin/local.py:116
 msgid "Free Memory"
 msgstr "Boş Bellek"
 
-#: plugin/local.py:109
+#: ../plugin/local.py:117
 msgid "Gateway"
-msgstr ""
+msgstr "Gateway"
 
-#: plugin/local.py:110
+#: ../plugin/local.py:118
 msgid "Grab Screenshot"
 msgstr "Ekran görüntüsü al"
 
-#: plugin/local.py:111
+#: ../plugin/local.py:119
 msgid "Gui version"
 msgstr "Arayüz sürümü"
 
-#: plugin/local.py:112
+#: ../plugin/local.py:120
 msgid "Hide full remote"
-msgstr ""
+msgstr "Tam kumandayı gizle"
 
-#: plugin/local.py:113
+#: ../plugin/local.py:121
 msgid "High Resolution"
 msgstr "Yüksek Çözünürlük"
 
-#: plugin/local.py:114
+#: ../plugin/local.py:122
 msgid "Hard disk model"
 msgstr "Sabit disk modeli"
 
-#: plugin/local.py:115
+#: ../plugin/local.py:123
 msgid "Hour"
 msgstr "Saat"
 
-#: plugin/local.py:116
+#: ../plugin/local.py:124
 msgid "IPv4 address"
 msgstr "IPv4 adresi"
 
-#: plugin/local.py:120
+#: ../plugin/local.py:128
 msgid "IPv6 address(es)"
 msgstr "IPv6 adres(ler)i"
 
-#: plugin/local.py:121
+#: ../plugin/local.py:129
 msgid "Infos"
 msgstr "Bilgiler"
 
-#: plugin/local.py:122
+#: ../plugin/local.py:130
 msgid "Instant Record"
-msgstr ""
+msgstr "Anında Kayıt"
 
-#: plugin/local.py:123
+#: ../plugin/local.py:131
 msgid "Javascript Libraries"
 msgstr "Javascript Kütüphaneleri"
 
-#: plugin/local.py:124
+#: ../plugin/local.py:132
 msgid "Just play"
-msgstr ""
+msgstr "Sadece oynat"
 
-#: plugin/local.py:125
+#: ../plugin/local.py:133
 msgid "Kernel"
-msgstr "Kernel sürümü"
+msgstr "Çekirdek"
 
-#: plugin/local.py:126
+#: ../plugin/local.py:134
 msgid "LICENSE"
 msgstr "LİSANS"
 
-#: plugin/local.py:127
+#: ../plugin/local.py:135
 msgid "loading"
 msgstr "yükleniyor"
 
-#: plugin/local.py:128
+#: ../plugin/local.py:136
 msgid "Location"
 msgstr "konum"
 
-#: plugin/local.py:129
+#: ../plugin/local.py:137
 msgid "Locked"
 msgstr "Kilitli"
 
-#: plugin/local.py:130
+#: ../plugin/local.py:138
 msgid "MAC address"
 msgstr "MAC adresi"
 
-#: plugin/local.py:131
+#: ../plugin/local.py:139
 msgid "Main"
-msgstr "Asıl"
+msgstr "Ana"
 
-#: plugin/local.py:132
+#: ../plugin/local.py:140
 msgid "Minute"
 msgstr "Dakika"
 
-#: plugin/local.py:133
+#: ../plugin/local.py:141
 msgid "Model"
 msgstr "Model"
 
-#: plugin/local.py:134
+#: ../plugin/local.py:142
 msgid "Movielist"
 msgstr "Film listesi"
 
-#: plugin/local.py:135
+#: ../plugin/local.py:143
 msgid "Movies"
 msgstr "Filmler"
 
-#: plugin/local.py:136
+#: ../plugin/local.py:144
 msgid "MultiEPG"
 msgstr "Çoklu EPG"
 
-#: plugin/local.py:137
+#: ../plugin/local.py:145
 msgid "Name"
 msgstr "İsim"
 
-#: plugin/local.py:138
+#: ../plugin/local.py:146
 msgid "Namespace"
-msgstr ""
+msgstr "Ad alanı"
 
-#: plugin/local.py:139
+#: ../plugin/local.py:147
 msgid "Network Interface"
 msgstr "Ağ Arayüzü"
 
-#: plugin/local.py:140
+#: ../plugin/local.py:148
 msgid "no description available"
 msgstr "açıklama yok"
 
-#: plugin/local.py:141
+#: ../plugin/local.py:149
 msgid "Sorry this page is not yet implemented"
-msgstr ""
+msgstr "Üzgünüz, bu sayfa henüz uygulanmadı"
 
-#: plugin/local.py:142
+#: ../plugin/local.py:150
 msgid "Nothing"
-msgstr ""
+msgstr "Hiçbir şey"
 
-#: plugin/local.py:143
+#: ../plugin/local.py:151
 msgid "Nothing playing."
 msgstr "Yürütülen ortam yok"
 
-#: plugin/local.py:144
+#: ../plugin/local.py:152
 msgid "Now"
 msgstr "Şimdi"
 
-#: plugin/local.py:145
+#: ../plugin/local.py:153
 msgid "System OE"
-msgstr ""
+msgstr "Sistem OE"
 
-#: plugin/local.py:146
+#: ../plugin/local.py:154
 msgid "On"
 msgstr "Açık"
 
-#: plugin/local.py:147
+#: ../plugin/local.py:155
 msgid "Open Source Web Interface for Linux set-top box"
-msgstr ""
+msgstr "Linux set-üstü cihazlar için Açık Kaynak Web Arayüzü"
 
-#: plugin/local.py:148 plugin/plugin.py:119
+#: ../plugin/local.py:156 ../plugin/plugin.py:129
 msgid "Show box name in header"
 msgstr "Alıcı ismini başlıkta göster"
 
-#: plugin/local.py:149 plugin/plugin.py:121
+#: ../plugin/local.py:157 ../plugin/plugin.py:131
 msgid "Use custom box name"
 msgstr "Özel alıcı adı kullan"
 
-#: plugin/local.py:150 plugin/plugin.py:123
+#: ../plugin/local.py:158 ../plugin/plugin.py:133
 msgid "Custom box name"
 msgstr "Özel alıcı adı"
 
-#: plugin/local.py:151
+#: ../plugin/local.py:159
 msgid "OSD"
-msgstr ""
+msgstr "OSD"
 
-#: plugin/local.py:152
+#: ../plugin/local.py:160
 msgid "Open in new window"
 msgstr "Yeni pencerede aç"
 
-#: plugin/local.py:153
+#: ../plugin/local.py:161
 msgid "Playback"
-msgstr ""
+msgstr "Playback"
 
-#: plugin/local.py:154
+#: ../plugin/local.py:162
 msgid "Playlist"
-msgstr ""
+msgstr "Playlist"
 
-#: plugin/local.py:155
+#: ../plugin/local.py:163
 msgid "Power Control"
-msgstr "Güç Kontrol"
+msgstr "Güç kontrolü"
 
-#: plugin/local.py:156
+#: ../plugin/local.py:164
 msgid "Provider"
 msgstr "Sağlayıcı"
 
-#: plugin/local.py:157
+#: ../plugin/local.py:165
 msgid "Providers"
 msgstr "Sağlayıcılar"
 
-#: plugin/local.py:158
+#: ../plugin/local.py:166
 msgid "Radio"
 msgstr "Radyo"
 
-#: plugin/local.py:159
+#: ../plugin/local.py:167
 msgid "Reboot Box"
 msgstr "Alıcıyı Yeniden Başlat"
 
-#: plugin/local.py:160
+#: ../plugin/local.py:168
 msgid "Recording Status"
 msgstr "Kayıt Durumu"
 
-#: plugin/local.py:161 plugin/local.py:340
+#: ../plugin/local.py:169 ../plugin/local.py:349
 msgid "Refresh"
 msgstr "Tazele"
 
-#: plugin/local.py:162
+#: ../plugin/local.py:170
 msgid "Refresh automatically every"
 msgstr "Güncelleme sıklığı"
 
-#: plugin/local.py:163
+#: ../plugin/local.py:171
 msgid "Refresh Timer"
 msgstr "Zamanlayıcıyı Yenile"
 
-#: plugin/local.py:164
+#: ../plugin/local.py:172
 msgid "Remote"
 msgstr "Kumanda"
 
-#: plugin/local.py:165
+#: ../plugin/local.py:173
 msgid "Rename Recording"
 msgstr "Kaydı Yeniden Adlandır"
 
-#: plugin/local.py:166
+#: ../plugin/local.py:174
 msgid "Really rename the recording"
-msgstr ""
+msgstr "Kaydı gerçekten yeniden adlandır"
 
-#: plugin/local.py:167
+#: ../plugin/local.py:175
 msgid "Repeated"
 msgstr "Tekrarlanan"
 
-#: plugin/local.py:168
+#: ../plugin/local.py:176
 msgid "Restart GUI"
 msgstr "Arayüzü yeniden başlat"
 
-#: plugin/local.py:169
+#: ../plugin/local.py:177
 msgid "running"
-msgstr ""
+msgstr "yürütülüyor"
 
-#: plugin/local.py:170
+#: ../plugin/local.py:178
 msgid "Safe mode"
 msgstr "Güvenli mod"
 
-#: plugin/local.py:171
+#: ../plugin/local.py:179
 msgid "Satellites"
 msgstr "Uydular"
 
-#: plugin/local.py:172
+#: ../plugin/local.py:180
 msgid "Satfinder"
 msgstr "Uydu bulucu"
 
-#: plugin/local.py:173 plugin/local.py:319 plugin/local.py:371 
-#: plugin/plugin.py:102
+#: ../plugin/local.py:181 ../plugin/local.py:328 ../plugin/local.py:380 ../plugin/plugin.py:111
 msgid "Save"
 msgstr "Kaydet"
 
-#: plugin/local.py:174
+#: ../plugin/local.py:182
 msgid "Screenshot"
-msgstr "Ekran Görüntüsü      "
+msgstr "Ekran Görüntüsü"
 
-#: plugin/local.py:175 plugin/local.py:377
+#: ../plugin/local.py:183 ../plugin/local.py:386
 msgid "Search"
 msgstr "Arama"
 
-#: plugin/local.py:176
+#: ../plugin/local.py:184
 msgid "Search IMDb"
-msgstr "İMDB arama"
+msgstr "IMDb'de ara"
 
-#: plugin/local.py:177
+#: ../plugin/local.py:185
 msgid "Search KinoPoisk"
-msgstr ""
+msgstr "KinoPoisk'de ara"
 
-#: plugin/local.py:178
+#: ../plugin/local.py:186
 msgid "seconds"
 msgstr "saniye"
 
-#: plugin/local.py:179
+#: ../plugin/local.py:187
 msgid "Send Message"
 msgstr "Mesaj Gönder"
 
-#: plugin/local.py:180
+#: ../plugin/local.py:188
 msgid "Waiting for answer ..."
-msgstr "Yanıt bekleniyor"
+msgstr "Yanıt bekleniyor ..."
 
-#: plugin/local.py:181
+#: ../plugin/local.py:189
 msgid "Send a Message"
 msgstr "Bir mesaj gönder"
 
-#: plugin/local.py:182
+#: ../plugin/local.py:190
 msgid "Service"
 msgstr "kanal"
 
-#: plugin/local.py:184
+#: ../plugin/local.py:192
 msgid "Bouquet Editor"
 msgstr "Buket Düzenleyici"
 
-#: plugin/local.py:185
+#: ../plugin/local.py:193
 msgid "(Shift + Click for Long Press)"
 msgstr "(Uzun basma etkisi için Shift + tıklama)"
 
-#: plugin/local.py:186
+#: ../plugin/local.py:194
 msgid "Show Full OpenWebif"
-msgstr ""
+msgstr "Tam OpenWebif'i Göster"
 
-#: plugin/local.py:187
+#: ../plugin/local.py:195
 msgid "Show full remote"
 msgstr "Tüm kumandayı göster"
 
-#: plugin/local.py:188
+#: ../plugin/local.py:196
 msgid "Show EPG for"
 msgstr "için EPG göster"
 
-#: plugin/local.py:189
+#: ../plugin/local.py:197
 msgid "Shutdown"
 msgstr "Kapat"
 
-#: plugin/local.py:190
+#: ../plugin/local.py:198
 msgid "Site and sources"
-msgstr ""
+msgstr "Site ve kaynaklar"
 
-#: plugin/local.py:191
+#: ../plugin/local.py:199
 msgid "SNR"
-msgstr ""
+msgstr "SNR"
 
-#: plugin/local.py:192
+#: ../plugin/local.py:200
 msgid "Software"
 msgstr "Yazılım"
 
-#: plugin/local.py:193
+#: ../plugin/local.py:201
 msgid "Standby"
 msgstr "Hazırda bekleme"
 
-#: plugin/local.py:194
+#: ../plugin/local.py:202
 msgid "Standby Toggle"
 msgstr "Hazırda beklemeye geçiş"
 
-#: plugin/local.py:195
+#: ../plugin/local.py:203
+#, fuzzy
+#| msgid "Wakeup"
+msgid "Wake Up"
+msgstr "Uyandırma"
+
+#: ../plugin/local.py:204
 msgid "Start time is after end time"
-msgstr ""
+msgstr "Başlangıç ​​zamanı bitiş saatinden sonra"
 
-#: plugin/local.py:196
+#: ../plugin/local.py:205
 msgid "Start Instant Record"
-msgstr ""
+msgstr "Anında Kayıt Başlat"
 
-#: plugin/local.py:197
+#: ../plugin/local.py:206
 msgid "Stream"
-msgstr ""
+msgstr "Akış"
 
-#: plugin/local.py:198
+#: ../plugin/local.py:207
 msgid "Subnet mask"
-msgstr ""
+msgstr "Alt ağ maskesi"
 
-#: plugin/local.py:199
+#: ../plugin/local.py:208
 msgid "Subservices"
-msgstr ""
+msgstr "Subservices"
 
-#: plugin/local.py:200 plugin/local.py:301
+#: ../plugin/local.py:209 ../plugin/local.py:310
 msgid "Tags"
-msgstr ""
+msgstr "Etiketler"
 
-#: plugin/local.py:201
+#: ../plugin/local.py:210
 msgid "Teletext"
 msgstr "Teleteks"
 
-#: plugin/local.py:202
+#: ../plugin/local.py:211
 msgid "Television"
 msgstr "Televizyon"
 
-#: plugin/local.py:203
+#: ../plugin/local.py:212
 msgid "Template Engine"
-msgstr ""
+msgstr "Şablon Motoru"
 
-#: plugin/local.py:204
+#: ../plugin/local.py:213
 msgid "Text"
 msgstr "Metin"
 
-#: plugin/local.py:205
+#: ../plugin/local.py:214
 msgid "Time"
 msgstr "Zaman"
 
-#: plugin/local.py:206
+#: ../plugin/local.py:215
 msgid "Timeout"
 msgstr "Zaman aşımı"
 
-#: plugin/local.py:207
+#: ../plugin/local.py:216
 msgid "Timer added"
 msgstr "Zamanlayıcı eklendi"
 
-#: plugin/local.py:208
+#: ../plugin/local.py:217
 msgid "Timerlist"
 msgstr "Zamanlayıcı listesi"
 
-#: plugin/local.py:209
+#: ../plugin/local.py:218
 msgid "New Name"
 msgstr "Yeni İsim"
 
-#: plugin/local.py:210
+#: ../plugin/local.py:219
 msgid "Autotimer Preview"
 msgstr "Autotimer Önizleme"
 
-#: plugin/local.py:211
+#: ../plugin/local.py:220
 msgid "Timer"
 msgstr "Zamanlayıcı"
 
-#: plugin/local.py:212 plugin/local.py:322
+#: ../plugin/local.py:221 ../plugin/local.py:331
 msgid "Timers"
 msgstr "Zamanlayıcılar"
 
-#: plugin/local.py:213
+#: ../plugin/local.py:222
 msgid "Title"
 msgstr "Başlık"
 
-#: plugin/local.py:214
+#: ../plugin/local.py:223
 msgid "Main Memory"
 msgstr "Dahili/Ana Bellek"
 
-#: plugin/local.py:215
+#: ../plugin/local.py:224
 msgid "transcoded"
-msgstr ""
+msgstr "dönüştürülmüş"
 
-#: plugin/local.py:216
+#: ../plugin/local.py:225
 msgid "Transcode"
-msgstr ""
+msgstr "Kod dönüştürme"
 
-#: plugin/local.py:217
+#: ../plugin/local.py:226
 msgid "Tuner Bit Error Rate BER"
-msgstr ""
+msgstr "Tuner Bit Hata Oranı BER"
 
-#: plugin/local.py:218
+#: ../plugin/local.py:227
 msgid "Tuner Number"
 msgstr "Tuner Numarası"
 
-#: plugin/local.py:219
+#: ../plugin/local.py:228
 msgid "Tuner Signal"
-msgstr "Tuner Sinyal"
+msgstr "Tuner Sinyali"
 
-#: plugin/local.py:220
+#: ../plugin/local.py:229
 msgid "Tuner Signal Quality SNR"
 msgstr "Tuner Sinyal Kalitesi SNR"
 
-#: plugin/local.py:221
+#: ../plugin/local.py:230
 msgid "Tuner Signal Quality SNR_DB"
 msgstr "Tuner Sinyal Kalitesi SNR_DB"
 
-#: plugin/local.py:222
+#: ../plugin/local.py:231
 msgid "Tuner Signal Power AGC"
 msgstr "Tuner Sinyal Gücü AGC"
 
-#: plugin/local.py:223
+#: ../plugin/local.py:232
 msgid "Tuner Type"
 msgstr "Tuner Türü"
 
-#: plugin/local.py:224
+#: ../plugin/local.py:233
 msgid "Tuners"
 msgstr "Tunerler"
 
-#: plugin/local.py:225
+#: ../plugin/local.py:234
 msgid "TV"
 msgstr "TV"
 
-#: plugin/local.py:226
+#: ../plugin/local.py:235
 msgid "TV Multi EPG"
 msgstr "TV Çoklu EPG"
 
-#: plugin/local.py:227
+#: ../plugin/local.py:236
 msgid "Type"
 msgstr "Türü"
 
-#: plugin/local.py:228
+#: ../plugin/local.py:237
 msgid "Upcoming Events"
-msgstr "Sıradaki Etkinlikler"
+msgstr "Yaklaşan Etkinlikler"
 
-#: plugin/local.py:229
+#: ../plugin/local.py:238
 msgid "Version"
 msgstr "Sürüm"
 
-#: plugin/local.py:230
+#: ../plugin/local.py:239
 msgid "Video"
 msgstr "Video"
 
-#: plugin/local.py:231
+#: ../plugin/local.py:240
 msgid "Video Height"
 msgstr "Video Yüksekliği"
 
-#: plugin/local.py:232
+#: ../plugin/local.py:241
 msgid "Video Wide"
 msgstr "Video genişliği"
 
-#: plugin/local.py:233
+#: ../plugin/local.py:242
 msgid "Video Width"
 msgstr "Video Genişliği"
 
-#: plugin/local.py:234
+#: ../plugin/local.py:243
 msgid "VPS"
 msgstr "VPS"
 
-#: plugin/local.py:235
+#: ../plugin/local.py:244
 msgid "Volume"
 msgstr "Ses"
 
-#: plugin/local.py:236
+#: ../plugin/local.py:245
 msgid "Volume Control"
 msgstr "Ses Kontrol"
 
-#: plugin/local.py:237
+#: ../plugin/local.py:246
 msgid "waiting"
 msgstr "bekleniyor"
 
-#: plugin/local.py:238
+#: ../plugin/local.py:247
 msgid "Warning"
 msgstr "Uyarı"
 
-#: plugin/local.py:239
+#: ../plugin/local.py:248
 msgid "Yes/No"
 msgstr "Evet/Hayır"
 
-#: plugin/local.py:240
+#: ../plugin/local.py:249
 msgid "Zap"
-msgstr ""
+msgstr "Zap"
 
-#: plugin/local.py:241
+#: ../plugin/local.py:250
 msgid "zap before Stream"
-msgstr ""
+msgstr "Akıştan önce zap"
 
-#: plugin/local.py:242
+#: ../plugin/local.py:251
 msgid "Zap to"
-msgstr ""
+msgstr "Zap"
 
-#: plugin/local.py:243
+#: ../plugin/local.py:252
 msgid "Zapped to"
-msgstr ""
+msgstr "Zapped"
 
-#: plugin/local.py:244
+#: ../plugin/local.py:253
 msgid "Translation to Spanish"
-msgstr ""
+msgstr "İspanyolca'ya Tercüme"
 
-#: plugin/local.py:245
+#: ../plugin/local.py:254
 msgid ""
-"All Files of this Software are open source software; you can redistribute it "
-"and/or modify it under the terms of the GNU General Public License version 3 "
-"as published by the Free Software Foundation."
-msgstr ""
+"All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
+msgstr "Bu Yazılımın Tüm Dosyaları açık kaynaklı yazılımdır; Özgür Yazılım Vakfı tarafından yayınlanan GNU Genel Kamu Lisansı sürüm 3 şartlarına göre yeniden dağıtabilir ve / veya değiştirebilirsiniz."
 
-#: plugin/local.py:246
+#: ../plugin/local.py:255
 msgid "Root"
-msgstr ""
+msgstr "Kök"
 
-#: plugin/local.py:248
+#: ../plugin/local.py:257
 msgid "AutoTimer List"
-msgstr "Autotimer Liste"
+msgstr "AutoTimer Listesi"
 
-#: plugin/local.py:249
+#: ../plugin/local.py:258
 msgid "AutoTimer Edit"
 msgstr "Autotimer Düzenle"
 
-#: plugin/local.py:252
+#: ../plugin/local.py:261
 msgid "Match title"
-msgstr ""
+msgstr "Başlıkla eşleştir"
 
-#: plugin/local.py:253
+#: ../plugin/local.py:262
 msgid "EPG encoding"
-msgstr ""
+msgstr "EPG kodlaması"
 
-#: plugin/local.py:254
+#: ../plugin/local.py:263
 msgid "Search type"
 msgstr "Arama türü"
 
-#: plugin/local.py:255
+#: ../plugin/local.py:264
 msgid "partial match"
-msgstr ""
+msgstr "kısmi eşleşme"
 
-#: plugin/local.py:256
+#: ../plugin/local.py:265
 msgid "exact match"
-msgstr ""
+msgstr "tam eşleşme"
 
-#: plugin/local.py:257
+#: ../plugin/local.py:266
 msgid "description match"
-msgstr ""
+msgstr "açıklama eşleşmesi"
 
-#: plugin/local.py:258
+#: ../plugin/local.py:267
 msgid "title or description match"
-msgstr ""
+msgstr "başlık veya açıklama eşleşmesi"
 
-#: plugin/local.py:259
+#: ../plugin/local.py:268
 msgid "title or short description match"
-msgstr ""
+msgstr "başlık veya kısa açıklama eşlemesi"
 
-#: plugin/local.py:260
+#: ../plugin/local.py:269
 msgid "short description match"
-msgstr ""
+msgstr "kısa açıklama eşleşmesi"
 
-#: plugin/local.py:261
+#: ../plugin/local.py:270
 msgid "start match"
-msgstr ""
+msgstr "eşleşmeye başla"
 
-#: plugin/local.py:262
+#: ../plugin/local.py:271
 msgid "Search strictness"
-msgstr ""
+msgstr "Arama sıkılığı"
 
-#: plugin/local.py:263
+#: ../plugin/local.py:272
 msgid "case-sensitive search"
-msgstr "harfe duyarlı arama"
+msgstr "büyük / küçük harfe duyarlı arama"
 
-#: plugin/local.py:264
+#: ../plugin/local.py:273
 msgid "case-insensitive search"
-msgstr "harf duyarsız arama"
+msgstr "büyük / küçük harfe duyarlı olmayan arama"
 
-#: plugin/local.py:265
+#: ../plugin/local.py:274
 msgid "Timer type"
 msgstr "Zamanlayıcı türü"
 
-#: plugin/local.py:266
+#: ../plugin/local.py:275
 msgid "record"
 msgstr "kayıt"
 
-#: plugin/local.py:267
+#: ../plugin/local.py:276
 msgid "zap"
-msgstr ""
+msgstr "zap"
 
-#: plugin/local.py:268
+#: ../plugin/local.py:277
 msgid "Override found with alternative service"
-msgstr ""
+msgstr "Alternatif hizmetle geçersiz kılma bulundu"
 
-#: plugin/local.py:269
+#: ../plugin/local.py:278
 msgid "Only match during timespan"
-msgstr ""
+msgstr "Sadece zaman çizelgesi sırasında eşleş"
 
-#: plugin/local.py:270
+#: ../plugin/local.py:279
 msgid "Begin of timespan"
-msgstr ""
+msgstr "Zaman başlangıcı"
 
-#: plugin/local.py:271
+#: ../plugin/local.py:280
 msgid "End of Timespan"
-msgstr ""
+msgstr "Timespanın Sonu"
 
-#: plugin/local.py:272
+#: ../plugin/local.py:281
 msgid "Restrict to events on certain dates"
 msgstr "Belirli tarihlerdeki etkinliklerle sınırla"
 
-#: plugin/local.py:273
+#: ../plugin/local.py:282
 msgid "Not after"
-msgstr ""
+msgstr "Sonra değil"
 
-#: plugin/local.py:274
+#: ../plugin/local.py:283
 msgid "Not before"
-msgstr ""
+msgstr "Önce değil"
 
-#: plugin/local.py:275
+#: ../plugin/local.py:284
 msgid "Custom offset"
-msgstr ""
+msgstr "Özel ofset"
 
-#: plugin/local.py:276
+#: ../plugin/local.py:285
 msgid "Offset before recording (in m)"
-msgstr ""
+msgstr "Kayıttan önce ofset (dk cinsinden)"
 
-#: plugin/local.py:277
+#: ../plugin/local.py:286
 msgid "Offset after recording (in m)"
-msgstr ""
+msgstr "Kayıttan sonra ofset (dk cinsinden)"
 
-#: plugin/local.py:278
+#: ../plugin/local.py:287
 msgid "Set maximum duration"
 msgstr "Maksimum süreyi belirle"
 
-#: plugin/local.py:279
+#: ../plugin/local.py:288
 msgid "After event"
 msgstr "Etkinlikten sonra"
 
-#: plugin/local.py:280
+#: ../plugin/local.py:289
 msgid "standard"
 msgstr "standart"
 
-#: plugin/local.py:281
+#: ../plugin/local.py:290
 msgid "auto"
 msgstr "otomatik"
 
-#: plugin/local.py:282
+#: ../plugin/local.py:291
 msgid "do nothing"
-msgstr "birşey yapma"
+msgstr "hiçbir şey yapma"
 
-#: plugin/local.py:283
+#: ../plugin/local.py:292
 msgid "go to standby"
-msgstr "Hazırda beklemeye git"
+msgstr "bekleme moduna geç"
 
-#: plugin/local.py:284
+#: ../plugin/local.py:293
 msgid "go to deep standby"
-msgstr "derin uykuya git"
+msgstr "derin beklemeye geç"
 
-#: plugin/local.py:285
+#: ../plugin/local.py:294
 msgid "Execute \"after event\" during timespan"
-msgstr ""
+msgstr "Zaman aralığı sırasında \\ \"etkinlikten sonra \" yürüt"
 
-#: plugin/local.py:286
+#: ../plugin/local.py:295
 msgid "Begin of \"after event\" timespan"
-msgstr ""
+msgstr "\\ \"Etkinlikten sonra \" zaman aşımı başlangıcı"
 
-#: plugin/local.py:287
+#: ../plugin/local.py:296
 msgid "End of \"after event\" timespan"
-msgstr ""
+msgstr "\\ \"Etkinlikten sonra \" zaman aralığı"
 
-#: plugin/local.py:288
+#: ../plugin/local.py:297
 msgid "Record a maximum of x times"
-msgstr ""
+msgstr "En fazla x kez kayıt"
 
-#: plugin/local.py:289
+#: ../plugin/local.py:298
 msgid "Amount of recordings left"
 msgstr "Kalan kayıt miktarı"
 
-#: plugin/local.py:290 plugin/local.py:361
+#: ../plugin/local.py:299 ../plugin/local.py:370
 msgid "Never"
 msgstr "Hiçbir zaman"
 
-#: plugin/local.py:291
+#: ../plugin/local.py:300
 msgid "Monthly"
 msgstr "Aylık"
 
-#: plugin/local.py:292
+#: ../plugin/local.py:301
 msgid "Weekly (Sunday)"
 msgstr "Haftalık (Pazar)"
 
-#: plugin/local.py:293
+#: ../plugin/local.py:302
 msgid "Weekly (Monday)"
 msgstr "Haftalık (Pazartesi)"
 
-#: plugin/local.py:294
+#: ../plugin/local.py:303
 msgid "Reset count"
-msgstr "Reset sayacı"
+msgstr "Sayımı sıfırla"
 
-#: plugin/local.py:295
+#: ../plugin/local.py:304
 msgid "Require description to be unique"
-msgstr ""
+msgstr "Benzersiz olması için açıklama iste"
 
-#: plugin/local.py:296
+#: ../plugin/local.py:305
 msgid "No"
 msgstr "Hayır"
 
-#: plugin/local.py:297
+#: ../plugin/local.py:306
 msgid "On same service"
-msgstr ""
+msgstr "Aynı hizmette"
 
-#: plugin/local.py:298
+#: ../plugin/local.py:307
 msgid "On any service"
-msgstr ""
+msgstr "Herhangi bir hizmet"
 
-#: plugin/local.py:299
+#: ../plugin/local.py:308
 msgid "Any service/recording"
-msgstr ""
+msgstr "Herhangi bir hizmet / kayıt"
 
-#: plugin/local.py:300
+#: ../plugin/local.py:309
 msgid "Use a custom location"
-msgstr "özel konum kullan"
+msgstr "Özel bir konum kullan"
 
-#: plugin/local.py:302
+#: ../plugin/local.py:311
 msgid "select Tags"
-msgstr "Etiket Seç"
+msgstr "Etiketler seç"
 
-#: plugin/local.py:304
+#: ../plugin/local.py:313
 msgid "select Channels"
-msgstr "Kanal Seç"
+msgstr "Kanalları seç"
 
-#: plugin/local.py:306
+#: ../plugin/local.py:315
 msgid "select Bouquets"
-msgstr "Buket Seç"
+msgstr "Buketleri seç"
 
-#: plugin/local.py:307
+#: ../plugin/local.py:316
 msgid "Enable Filtering"
-msgstr ""
+msgstr "Filtreyi Etkinleştir"
 
-#: plugin/local.py:308
+#: ../plugin/local.py:317
 msgid "Include"
-msgstr ""
+msgstr "Dahil"
 
-#: plugin/local.py:309
+#: ../plugin/local.py:318
 msgid "Exclude"
-msgstr ""
+msgstr "Hariç"
 
-#: plugin/local.py:310
+#: ../plugin/local.py:319
 msgid "in Title"
-msgstr ""
+msgstr "Başlıkta"
 
-#: plugin/local.py:311
+#: ../plugin/local.py:320
 msgid "in Shortdescription"
-msgstr ""
+msgstr "Kısa Açıklamada"
 
-#: plugin/local.py:312
+#: ../plugin/local.py:321
 msgid "in Description"
-msgstr ""
+msgstr "Açıklamada"
 
-#: plugin/local.py:313
+#: ../plugin/local.py:322
 msgid "on Weekday"
-msgstr ""
+msgstr "hafta içi"
 
-#: plugin/local.py:314
+#: ../plugin/local.py:323
 msgid "Weekend"
 msgstr "Hafta Sonu"
 
-#: plugin/local.py:315
+#: ../plugin/local.py:324
 msgid "Weekday"
-msgstr "İş Günü"
+msgstr "Hafta içi"
 
-#: plugin/local.py:316
+#: ../plugin/local.py:325
 msgid "Add"
 msgstr "Ekle"
 
-#: plugin/local.py:318 plugin/local.py:370 plugin/local.py:378
+#: ../plugin/local.py:327 ../plugin/local.py:379 ../plugin/local.py:387
 msgid "Reload"
 msgstr "Yeniden Yükle"
 
-#: plugin/local.py:320
+#: ../plugin/local.py:329
 msgid "Parse"
 msgstr "Ayrıştırma"
 
-#: plugin/local.py:321
+#: ../plugin/local.py:330
 msgid "Simulate"
-msgstr ""
+msgstr "Benzetmek"
 
-#: plugin/local.py:324
+#: ../plugin/local.py:333
 msgid "Do you really want to delete the AT"
-msgstr ""
+msgstr "AT'yi gerçekten silmek istiyor musun?"
 
-#: plugin/local.py:325
+#: ../plugin/local.py:334
 msgid "Label series"
-msgstr ""
+msgstr "Seriye etiket ver"
 
 # New Autotimer Setting Windows name (not enabled to transfer atm)
-#: plugin/local.py:327
+#: ../plugin/local.py:336
 msgid "AutoTimer Settings"
-msgstr ""
+msgstr "AutoTimer Ayarları"
 
-#: plugin/local.py:328
+#: ../plugin/local.py:337
 msgid "AutoPoll"
-msgstr ""
+msgstr "AutoPoll"
 
-#: plugin/local.py:329
-msgid "Interval (in h)"
-msgstr ""
+#: ../plugin/local.py:338
+#, python-format
+msgid "Interval (in %s)"
+msgstr "Aralık ( %s )"
 
-#: plugin/local.py:330
+#: ../plugin/local.py:339
 msgid "Max Days"
 msgstr "Azami Gün"
 
-#: plugin/local.py:331
+#: ../plugin/local.py:340
 msgid "Try Guessing"
-msgstr ""
+msgstr "Tahmin etmeyi dene"
 
-#: plugin/local.py:332
+#: ../plugin/local.py:341
 msgid "Fastscan"
 msgstr "Hızlı tarama"
 
-#: plugin/local.py:333
+#: ../plugin/local.py:342
 msgid "Show in Extensionsmenu"
-msgstr "Eklentiler menüsünde göster"
+msgstr "Uzantılar menüsünde göster"
 
-#: plugin/local.py:334
+#: ../plugin/local.py:343
 msgid "Disabled on Conflict"
-msgstr ""
+msgstr "Çakışmada Devre Dışı Bırakıldı"
 
-#: plugin/local.py:335
+#: ../plugin/local.py:344
 msgid "Add Similar on Conflict"
 msgstr "Uyuşmazlıkta benzer ekle"
 
-#: plugin/local.py:336
+#: ../plugin/local.py:345
 msgid "Notify if Conflict"
-msgstr ""
+msgstr "Çakışma varsa bildir"
 
-#: plugin/local.py:337
+#: ../plugin/local.py:346
 msgid "Notify if Similar"
-msgstr ""
+msgstr "Benzer olursa bildir"
 
-#: plugin/local.py:338
+#: ../plugin/local.py:347
 msgid "Add Autotimer to Tags"
 msgstr "Etiketlere Autotimer Ekle"
 
-#: plugin/local.py:339
+#: ../plugin/local.py:348
 msgid "Add Name to Tags"
 msgstr "Etiketlere İsim Ekle"
 
-#: plugin/local.py:341
+#: ../plugin/local.py:350
 msgid "None"
 msgstr "Yok"
 
-#: plugin/local.py:344
+#: ../plugin/local.py:353
 msgid "Editor"
 msgstr "Editör"
 
-#: plugin/local.py:345
+#: ../plugin/local.py:354
 msgid "Plain"
-msgstr ""
+msgstr "Sade"
 
-#: plugin/local.py:346
+#: ../plugin/local.py:355
 msgid "Wizzard"
 msgstr "Sihirbaz"
 
-#: plugin/local.py:349
+#: ../plugin/local.py:358
 msgid "Enable Messages"
 msgstr "Mesajları Etkinleştir"
 
-#: plugin/local.py:352
+#: ../plugin/local.py:361
 msgid "Delay Standby"
 msgstr "Hazırda beklemeyi geciktir"
 
-#: plugin/local.py:353
+#: ../plugin/local.py:362
 msgid "Interval (min.)"
-msgstr ""
+msgstr "Aralık (min.)"
 
-#: plugin/local.py:354
+#: ../plugin/local.py:363
 msgid "Interval (sec.)"
-msgstr ""
+msgstr "Aralık (sn.)"
 
-#: plugin/local.py:356
+#: ../plugin/local.py:365
 msgid "Force"
-msgstr ""
+msgstr "Zorla"
 
-#: plugin/local.py:357
+#: ../plugin/local.py:366
 msgid "Wakeup"
-msgstr "Uyandırma"
+msgstr "Uyandır"
 
-#: plugin/local.py:358
+#: ../plugin/local.py:367
 msgid "Inherit Autotimer"
-msgstr ""
+msgstr "Inherit Autotimer"
 
-#: plugin/local.py:359
+#: ../plugin/local.py:368
 msgid "Parse Autotimer"
-msgstr ""
+msgstr "Parse Autotimer"
 
-#: plugin/local.py:360
+#: ../plugin/local.py:369
 msgid "Always"
 msgstr "Daima"
 
-#: plugin/local.py:362
+#: ../plugin/local.py:371
 msgid "Background only"
 msgstr "Sadece arkaplan"
 
-#: plugin/local.py:363
+#: ../plugin/local.py:372
 msgid "Ask, default Yes"
-msgstr ""
+msgstr "Sor, varsayılan Evet"
 
-#: plugin/local.py:364
+#: ../plugin/local.py:373
 msgid "Ask, default No"
-msgstr ""
+msgstr "Sor, varsayılan Hayır"
 
-#: plugin/local.py:365
+#: ../plugin/local.py:374
 msgid "Method"
 msgstr "Yöntem"
 
-#: plugin/local.py:366
+#: ../plugin/local.py:375
 msgid "Visibly"
 msgstr "Görünür"
 
-#: plugin/local.py:367
+#: ../plugin/local.py:376
 msgid "Picture in Picture"
-msgstr ""
+msgstr "Resim içinde resim"
 
-#: plugin/local.py:368
+#: ../plugin/local.py:377
 msgid "Picture in Picture (hidden)"
-msgstr ""
+msgstr "Resim içinde Resim (gizli)"
 
-#: plugin/local.py:369
+#: ../plugin/local.py:378
 msgid "Fake Recording"
-msgstr ""
+msgstr "Sahte Kayıt"
 
-#: plugin/local.py:372
+#: ../plugin/local.py:381
 msgid "Refresh now"
 msgstr "Şimdi tazele"
 
-#: plugin/local.py:374
+#: ../plugin/local.py:383
 msgid "Add Provider as new Bouquet"
-msgstr "Yeni bukete sağlayıcı ekle"
+msgstr "Sağlayıcıyı yeni buket olarak ekle"
 
-#: plugin/local.py:375
+#: ../plugin/local.py:384
 msgid "Add channel(s) to Bouquet"
 msgstr "Bukete kanal(ları) ekle"
 
-#: plugin/local.py:376
+#: ../plugin/local.py:385
 msgid "Add channel(s) as alternate"
 msgstr "Kanal(ları) dönüşümlü olarak ekle"
 
-#: plugin/local.py:379
+#: ../plugin/local.py:388
 msgid "Export"
 msgstr "Dışa Aktar"
 
-#: plugin/local.py:380
+#: ../plugin/local.py:389
 msgid "Import"
 msgstr "İçe Aktar"
 
-#: plugin/local.py:381
+#: ../plugin/local.py:390
 msgid "Add Bouquet"
 msgstr "Buket Ekle"
 
-#: plugin/local.py:382
+#: ../plugin/local.py:391
 msgid "Rename Bouquet"
 msgstr "Buketi Yeniden Adlandır"
 
-#: plugin/local.py:383
+#: ../plugin/local.py:392
 msgid "Delete Bouquet"
 msgstr "Buket Sil"
 
-#: plugin/local.py:384
+#: ../plugin/local.py:393
 msgid "Add Marker"
 msgstr "İşaretleyici Ekle"
 
-#: plugin/local.py:385
+#: ../plugin/local.py:394
 msgid "Add Spacer"
 msgstr "Ayraç ekle"
 
-#: plugin/local.py:386
+#: ../plugin/local.py:395
 msgid "Rename"
 msgstr "Yeniden Adlandır"
 
-#: plugin/local.py:387
+#: ../plugin/local.py:396
 msgid "Do you really want to delete the selected item(s)"
-msgstr ""
+msgstr "Seçilen öğeleri gerçekten silmek istiyor musunuz?"
 
-#: plugin/local.py:388
+#: ../plugin/local.py:397
 msgid "Do you really want to delete the bouquet"
 msgstr "Buket(ler)i silmek istiyor musunuz ?"
 
-#: plugin/local.py:389
+#: ../plugin/local.py:398
 msgid "Name of the Bouquet"
 msgstr "Buket Adı"
 
-#: plugin/local.py:390
+#: ../plugin/local.py:399
 msgid "Name of the Marker"
 msgstr "İşaretleyici Adı"
 
-#: plugin/local.py:391
+#: ../plugin/local.py:400
 msgid "Enter new name for the bouquet"
 msgstr "Buket için yeni bir ad girin"
 
-#: plugin/local.py:392
+#: ../plugin/local.py:401
 msgid "Enter new name for the marker"
 msgstr "İşaretleyici için yeni bir ad girin"
 
-#: plugin/local.py:393
+#: ../plugin/local.py:402
 msgid "Please enter filename"
 msgstr "Lütfen dosya adı girin"
 
-#: plugin/local.py:394
+#: ../plugin/local.py:403
 msgid "Do you really want to restore from file"
-msgstr ""
+msgstr "Gerçekten dosyadan geri yüklemek istiyor musunuz?"
 
-#: plugin/local.py:396
+#: ../plugin/local.py:405
 msgid "via"
-msgstr ""
+msgstr "üzerinden"
 
-#: plugin/local.py:397
+#: ../plugin/local.py:406
 msgid "Record+ZAP"
-msgstr ""
+msgstr "Kayıt + ZAP"
 
-#: plugin/local.py:398
+#: ../plugin/local.py:407
 msgid "Pmtpid"
-msgstr ""
+msgstr "PMTPID"
 
-#: plugin/local.py:399
+#: ../plugin/local.py:408
 msgid "Apid"
-msgstr ""
+msgstr "APID"
 
-#: plugin/local.py:400
+#: ../plugin/local.py:409
 msgid "Vpid"
-msgstr ""
+msgstr "VPID"
 
-#: plugin/local.py:401
+#: ../plugin/local.py:410
 msgid "Pcrpid"
-msgstr ""
+msgstr "Pcrpid"
 
-#: plugin/local.py:402
+#: ../plugin/local.py:411
 msgid "Tsid"
-msgstr ""
+msgstr "tsid"
 
-#: plugin/local.py:403
+#: ../plugin/local.py:412
 msgid "Onid"
-msgstr ""
+msgstr "Onid"
 
-#: plugin/local.py:404
+#: ../plugin/local.py:413
 msgid "Sid"
-msgstr ""
+msgstr "Sid"
 
-#: plugin/local.py:405
+#: ../plugin/local.py:414
 msgid "Sref"
-msgstr ""
+msgstr "Sref"
 
-#: plugin/local.py:406
-msgid "Orbital Position"
-msgstr ""
-
-#: plugin/local.py:408
+#: ../plugin/local.py:417
 msgid "error! Loading Page"
-msgstr ""
+msgstr "hata! Yükleme sayfası"
 
-#: plugin/local.py:409
+#: ../plugin/local.py:418
 msgid "Timer Added"
 msgstr "Zamanlayıcı eklendi"
 
-#: plugin/local.py:410
+#: ../plugin/local.py:419
 msgid "Event not found"
 msgstr "Etkinlik bulunamadı"
 
-#: plugin/local.py:411
+#: ../plugin/local.py:420
 msgid "Show Picon in channel list"
 msgstr "Kanal listesinde pikon göster"
 
-#: plugin/local.py:413
+#: ../plugin/local.py:422
 msgid "OpenWebif Browser Settings"
-msgstr ""
+msgstr "OpenWebif Tarayıcı Ayarları"
 
-#: plugin/local.py:414
+#: ../plugin/local.py:423
 msgid "OpenWebif Settings"
-msgstr ""
+msgstr "OpenWebif Ayarları"
 
-#: plugin/local.py:415
+#: ../plugin/local.py:424
 msgid "Theme"
 msgstr "Tema"
 
-#: plugin/local.py:416
-msgid "Show Picons in channel list"
-msgstr "Kanal listesinde pikonları göster"
-
-#: plugin/local.py:417
+#: ../plugin/local.py:425
 msgid "Spinner"
-msgstr ""
+msgstr "Spinner"
 
-#: plugin/local.py:418
+#: ../plugin/local.py:426
 msgid "Display duration (s)"
 msgstr "Görünüm süresi (s)"
 
-#: plugin/local.py:420
+#: ../plugin/local.py:428
 msgid "Display Mode"
 msgstr "Gösterim modu"
 
-#: plugin/local.py:421
+#: ../plugin/local.py:429
 msgid "TV Guide"
 msgstr "TV Rehberi"
 
-#: plugin/local.py:422
+#: ../plugin/local.py:430
 msgid "Timeline"
-msgstr "Program saatleri"
+msgstr "Zaman çizelgesi"
 
-#: plugin/local.py:423
+#: ../plugin/local.py:431
 msgid "Web TV"
-msgstr ""
+msgstr "Web TV"
 
-#: plugin/local.py:424
+#: ../plugin/local.py:432
 msgid "Calendar Week"
-msgstr ""
+msgstr "Takvim haftası"
 
-#: plugin/local.py:426
+#: ../plugin/local.py:434
 msgid "Link Speed"
-msgstr ""
+msgstr "Bağlantı hızı"
 
-#: plugin/local.py:427
+#: ../plugin/local.py:435
 msgid "Network Shares"
-msgstr ""
+msgstr "Ağ Payları"
 
-#: plugin/local.py:428
+#: ../plugin/local.py:436
 msgid "using"
-msgstr ""
+msgstr "kullanarak"
 
-#: plugin/plugin.py:103
+#: ../plugin/local.py:437
+msgid "Primetimes"
+msgstr "Prime time"
+
+#: ../plugin/local.py:438
+msgid "Enable/Disable Screenshot on key press or"
+msgstr "Tuşa basıldığında Ekran görüntüsü almayı Etkinleştir / Devre Dışı Bırak veya"
+
+#: ../plugin/plugin.py:112
 msgid "OpenWebif url: http://yourip:port"
 msgstr "OpenWebif url: http://yourip:port"
 
-#: plugin/plugin.py:117
+#: ../plugin/plugin.py:126
 msgid "OpenWebInterface Enabled"
 msgstr "OpenWebInterface Etkin"
 
-#: plugin/plugin.py:124
+#: ../plugin/plugin.py:128
+msgid "Use new design"
+msgstr "Yeni tasarım kullanın"
+
+#: ../plugin/plugin.py:134
 msgid "HTTP port"
-msgstr ""
+msgstr "HTTP bağlantı noktası"
 
-#: plugin/plugin.py:125
+#: ../plugin/plugin.py:135
 msgid "Enable HTTP Authentication"
-msgstr ""
+msgstr "HTTP Kimlik Doğrulamasını Etkinleştir"
 
-#: plugin/plugin.py:126
+#: ../plugin/plugin.py:136
 msgid "Enable HTTPS"
-msgstr ""
+msgstr "HTTPS'yi etkinleştir"
 
-#: plugin/plugin.py:128
+#: ../plugin/plugin.py:138
 msgid "HTTPS port"
-msgstr ""
+msgstr "HTTPS bağlantı noktası"
 
-#: plugin/plugin.py:129
+#: ../plugin/plugin.py:139
 msgid "Enable HTTPS Authentication"
-msgstr ""
+msgstr "HTTPS Kimlik Doğrulamasını Etkinleştir"
 
-#: plugin/plugin.py:130
+#: ../plugin/plugin.py:140
 msgid "Require client cert for HTTPS"
-msgstr ""
+msgstr "HTTPS için istemci sertifikası iste"
 
-#: plugin/plugin.py:132
+#: ../plugin/plugin.py:142
 msgid "Enable Authentication for streaming"
-msgstr ""
+msgstr "Akış için Kimlik Doğrulamayı Etkinleştir"
 
-#: plugin/plugin.py:133
+#: ../plugin/plugin.py:143
 msgid "Disable remote access for user root"
-msgstr ""
+msgstr "Root Kullanıcı için uzaktan erişimi devre dışı bırak"
 
-#: plugin/plugin.py:135
+#: ../plugin/plugin.py:145
 msgid "Without auth only local access is allowed!"
-msgstr ""
+msgstr "Yetki olmadan sadece yerel erişim izni verilir!"
 
-#: plugin/plugin.py:136
+#: ../plugin/plugin.py:146
 msgid "Enable access from VPNs"
-msgstr ""
+msgstr "VPN'lerden erişimi etkinleştir"
 
-#: plugin/plugin.py:137
+#: ../plugin/plugin.py:147
 msgid "Enable Parental Control"
 msgstr "Ebeveyn Kontrolünü Etkinleştir"
 
-#: plugin/plugin.py:138
+#: ../plugin/plugin.py:148
 msgid "Add service name to stream information"
-msgstr "Servis adını yayın bilgisine ekle"
+msgstr "Akış bilgilerine servis adı ekle"
 
-#: plugin/plugin.py:140
+#: ../plugin/plugin.py:150
 msgid "Character encoding for EPG data"
-msgstr ""
+msgstr "EPG verileri için karakter kodlaması"
 
-#: plugin/plugin.py:149 plugin/plugin.py:208 plugin/plugin.py:210 
-#: plugin/plugin.py:212
+#: ../plugin/plugin.py:151
+msgid "Allow IPK Upload"
+msgstr "IPK Yükleme'ye İzin Ver"
+
+#: ../plugin/plugin.py:160 ../plugin/plugin.py:224 ../plugin/plugin.py:226 ../plugin/plugin.py:228
 msgid "OpenWebif Configuration"
-msgstr "OpenWebif Yapılandırma"
+msgstr "OpenWebif Yapılandırması"
+
+#: ../plugin/vtiaddon.py:8
+#, fuzzy
+#| msgid "Cancel"
+msgid "No, cancel"
+msgstr "Hayır, iptal et"
+
+#: ../plugin/vtiaddon.py:9
+msgid "Yes, delete it"
+msgstr "Evet, sil"
+
+#: ../plugin/vtiaddon.py:10
+#, fuzzy
+#| msgid "Cancel"
+msgid "Cancelled"
+msgstr "İptal edildi"
+
+#: ../plugin/vtiaddon.py:11
+#, fuzzy
+#| msgid "Delete"
+msgid "Deleted"
+msgstr "Silindi"
+
+#: ../plugin/vtiaddon.py:12
+msgid "You need to write something!"
+msgstr "Bir şeyler yazman gerek!"
+
+#: ../plugin/vtiaddon.py:13
+#, fuzzy
+#| msgid "Settings"
+msgid "Common Settings"
+msgstr "Genel Ayarlar"
+
+#: ../plugin/vtiaddon.py:14
+#, fuzzy
+#| msgid "Movielist"
+msgid "Minimal movie list"
+msgstr "Minimal film listesi"
+
+#: ../plugin/vtiaddon.py:15
+msgid "Minimal timer list"
+msgstr "Minimal zamanlayıcı listesi"
+
+#: ../plugin/vtiaddon.py:16
+msgid "Minimal EPG list"
+msgstr "Minimal EPG listesi"
+
+#: ../plugin/vtiaddon.py:17
+msgid "Remove Package"
+msgstr "Paketi Kaldır"
+
+#: ../plugin/vtiaddon.py:18
+msgid "Update Package"
+msgstr "Paketi Güncelle"
+
+#: ../plugin/vtiaddon.py:19
+msgid "Install Package"
+msgstr "Paketi kur"
+
+#: ../plugin/vtiaddon.py:20
+msgid "Packages"
+msgstr "Paketler"
+
+#: ../plugin/vtiaddon.py:21
+msgid "Update"
+msgstr "Güncelleştirme"
+
+#: ../plugin/vtiaddon.py:22
+msgid "Installed"
+msgstr "Yüklü"
+
+#: ../plugin/vtiaddon.py:24
+msgid "More"
+msgstr "Daha"
+
+#: ../plugin/vtiaddon.py:25
+msgid "Update from Feed"
+msgstr "Feed'den güncelleme"
+
+#: ../plugin/vtiaddon.py:26
+msgid "Upgrade all Packages"
+msgstr "Tüm Paketleri Yükseltme"
+
+#: ../plugin/vtiaddon.py:27
+#, fuzzy
+#| msgid "Yes/No"
+msgid "Yes"
+msgstr "Evet"
+
+#: ../plugin/vtiaddon.py:28
+#, fuzzy
+#| msgid "Include description"
+msgid "Include short description"
+msgstr "Kısa açıklama ekle"
+
+#: ../plugin/vtiaddon.py:29
+#, fuzzy
+#| msgid "Include description"
+msgid "Include extended description"
+msgstr "Genişletilmiş açıklama ekle"
+
+#: ../plugin/vtiaddon.py:30
+#, fuzzy
+#| msgid "Movies"
+msgid "Movie search"
+msgstr "Film araması"
+
+#: ../plugin/vtiaddon.py:31
+msgid "START TYPING"
+msgstr "YAZMAYA BAŞLA"
+
+#: ../plugin/vtiaddon.py:32
+msgid "Select IPK File for Upload"
+msgstr "Yükleme için IPK Dosyası Seç"
+
+#: ../plugin/vtiaddon.py:33
+msgid "Uploaded Files"
+msgstr "Yüklenmiş dosyalar"
+
+#: ../plugin/vtiaddon.py:34
+msgid "Upload package"
+msgstr "Paketi yükle"
+
+#: ../plugin/vtiaddon.py:35
+msgid "Upload File Error"
+msgstr "Dosya Yükleme Hatası"
+
+#: ../plugin/vtiaddon.py:36
+#, fuzzy
+#| msgid "Show full remote"
+msgid "Full remote"
+msgstr "Tüm kumandayı göster"
+
+#~ msgid "Show Picons in channel list"
+#~ msgstr "Kanal listesinde pikonları göster"
