@@ -948,7 +948,8 @@ def getPicon(sname):
 		if ("://" in sname) or ("%3a//" in sname) or ("%3A//" in sname):
 			cname = unquote(sname.split(":")[-1])
 			sname = unquote(sname)
-			sname = ":".join(sname.split(":")[:10])
+			# sname = ":".join(sname.split(":")[:10]) -> old way
+			sname = ":".join(sname.split("://")[:1])
 			sname = GetWithAlternative(sname)
 			cname = unicodedata.normalize('NFKD', unicode(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
 			cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').replace(':', '').lower())
