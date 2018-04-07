@@ -1370,6 +1370,9 @@ msgstr "Потребителско местоположение"
 msgid "Use custom box name"
 msgstr "Използвай потребителско име на приемника"
 
+msgid "Use new design"
+msgstr "Използвай новия дизайн"
+
 msgid "VPS"
 msgstr "VPS"
 
