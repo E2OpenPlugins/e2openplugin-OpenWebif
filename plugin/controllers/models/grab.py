@@ -10,6 +10,7 @@
 ##############################################################################
 from enigma import eConsoleAppContainer
 from twisted.web import resource, server
+import time
 
 GRAB_PATH = '/usr/bin/grab'
 
@@ -53,6 +54,7 @@ class GrabRequest(object):
 			sref = '_'.join(ref.split(':', 10)[:10])
 		except:  # noqa: E722
 			sref = 'screenshot'
+		sref = sref + '_' + time.strftime("%Y%m%d%H%M%S", time.localtime(time.time()))
 		request.notifyFinish().addErrback(self.requestAborted)
 		request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (sref, fileformat))
 		request.setHeader('Content-Type', 'image/%s' % fileformat.replace("jpg", "jpeg"))
