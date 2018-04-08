@@ -42,7 +42,7 @@ from file import FileController
 
 
 class RootController(BaseController):
-	def __init__(self, session, path = ""):
+	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
 		piconpath = getPiconPath()
 
@@ -54,17 +54,12 @@ class RootController(BaseController):
 		if os.path.exists(getPublicPath('mobile')):
 			self.putChild("mobile", MobileController(session))
 			self.putChild("m", static.File(getPublicPath() + "/mobile"))
-		self.putChild("js", static.File(getPublicPath() + "/js"))
-		self.putChild("css", static.File(getPublicPath() + "/css"))
-		self.putChild("static", static.File(getPublicPath() + "/static"))
-		self.putChild("images", static.File(getPublicPath() + "/images"))
-		self.putChild("fonts", static.File(getPublicPath() + "/fonts"))
-		if os.path.exists(getPublicPath('themes')):
-			self.putChild("themes", static.File(getPublicPath() + "/themes"))
-		if os.path.exists(getPublicPath('webtv')):
-			self.putChild("webtv", static.File(getPublicPath() + "/webtv"))
-		if os.path.exists(getPublicPath('vxg')):
-			self.putChild("vxg", static.File(getPublicPath() + "/vxg"))
+		for static_val in ('js', 'css', 'static', 'images', 'fonts'):
+			self.putChild(static_val, static.File(getPublicPath() + '/' + static_val))
+		for static_val in ('themes', 'webtv', 'vxg'):
+			if os.path.exists(getPublicPath(static_val)):
+				self.putChild(static_val, static.File(getPublicPath() + '/' + static_val))
+
 		if os.path.exists('/usr/bin/shellinaboxd'):
 			self.putChild("terminal", proxy.ReverseProxyResource('::1', 4200, '/'))
 		self.putChild("ipkg", IpkgController(session))
