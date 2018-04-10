@@ -181,11 +181,10 @@ $('#editTimerForm').dialog({
 					repeated += parseInt($(this).val());
 				});
 				var tags = "";
-				$('[name="tagsnew"]:checked').each(function() {
+				$('#tagsnew').children("input:checked").each(function() {
 					if(tags!="")
 						tags+=" ";
 					tags += $(this).val();
-					
 				});
 				var urldata = { sRef: $('#bouquet_select').val(),
 					end: Math.round(enddate.getTime() / 1000),
