@@ -346,6 +346,8 @@ def getAllInfo():
 				model = "OS Mega"
 			elif procmodel == "osnino":
 				model = "OS Nino"
+			elif procmodel == "osninoplus":
+				model = "OS Nino+"
 			else:
 				model = procmodel
 		elif procmodel == "h3":
@@ -357,9 +359,9 @@ def getAllInfo():
 		elif procmodel == "h5":
 			brand = "Zgemma"
 			model = "H5 series"
-                elif procmodel == "h6":
-                        brand = "Zgemma"
-                        model = "H6 series"
+		elif procmodel == "h6":
+			brand = "Zgemma"
+			model = "H6 series"
 		elif procmodel == "h7":
 			brand = "Zgemma"
 			model = "H7 series"
@@ -550,6 +552,8 @@ def getAllInfo():
 		remote = procmodel
 	elif procmodel.startswith("osm"):
 		remote = "osmini"
+	elif procmodel.startswith("osninopl"):
+		remote = "edision2"
 	elif procmodel.startswith("osn"):
 		remote = "edision1"
 	elif procmodel in ("fusionhd"):
