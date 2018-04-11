@@ -190,7 +190,28 @@ class AjaxController(BaseController):
 		return {}
 
 	def P_timers(self, request):
-		return getTimers(self.session)
+
+		timers = getTimers(self.session)
+		sorttype = ''
+		unsort = timers['timers']
+
+		if "sort" in request.args.keys():
+			sorttype = request.args["sort"][0]
+		else:
+			return timers
+
+		if sorttype == 'name':
+			timers['timers'] = sorted(unsort, key=lambda k: k['name'])
+		elif sorttype == 'named':
+			timers['timers'] = sorted(unsort, key=lambda k: k['name'], reverse=True)
+		elif sorttype == 'date':
+			timers['timers'] = sorted(unsort, key=lambda k: k['begin'])
+		else:
+			timers['timers'] = sorted(unsort, key=lambda k: k['begin'], reverse=True)
+			sorttype = 'dated'
+
+		timers['sort'] = sorttype
+		return timers
 
 	def P_edittimer(self, request):
 		return {}
