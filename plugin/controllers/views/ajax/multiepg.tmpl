@@ -48,7 +48,9 @@
 <div class="float plus ui-state-default lbl">&nbsp;$tstrings['display_mode']:&nbsp;</div>
 <div class="float plus ui-state-default #if $mode==1 then 'ui-state-active' else '' #" data-day="101">$tstrings['tv_guide']</div>
 <div class="float plus ui-state-default #if $mode==2 then 'ui-state-active' else '' #" data-day="102">$tstrings['timeline']</div>
-
+#if $mode == 1
+<div class="float plus ui-state-default lbl">&nbsp;$tstrings['date']:&nbsp;$time.strftime("%x", time.localtime(time.time()+86400*$day))</div>
+#end if
 <div id="compressmepg" onclick="CompressMEPG();"><i id="compressmepgi" class="fa fa-compress link" aria-hidden="true"></i></div>
 <div id="refreshmepg2" onclick="RefreshMEPG();"><i id="refreshmepgi" class="fa fa-refresh link" aria-hidden="true"></i></div>
 	<br clear="all">
