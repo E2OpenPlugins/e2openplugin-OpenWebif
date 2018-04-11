@@ -8,12 +8,13 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-from twisted.web import static, resource, http
+from twisted.web import resource
 from Components.config import config
+
 
 class WOLSetupController(resource.Resource):
 
-	def __init__(self, session, path = ""):
+	def __init__(self, session):
 		resource.Resource.__init__(self)
 		self.session = session
 
@@ -23,7 +24,7 @@ class WOLSetupController(resource.Resource):
 		try:
 			wol_active = config.plugins.wolconfig.activate.value
 			wol_location = config.plugins.wolconfig.location.value
-		except KeyError:
+		except:  # noqa: E722
 			return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>WOLSetup plugin is not installed or your STB does not support WOL</e2statetext></e2simplexmlresult>'
 
 		if len(request.args):
@@ -38,7 +39,7 @@ class WOLSetupController(resource.Resource):
 					config_changed = True
 			elif "location" in request.args:
 				location = request.args["location"][0]
-				if not location in config.plugins.wolconfig.location.choices:
+				if location not in config.plugins.wolconfig.location.choices:
 					location = wol_location
 				if location != config.plugins.wolconfig.location.value:
 					config.plugins.wolconfig.location.value = location
@@ -47,7 +48,7 @@ class WOLSetupController(resource.Resource):
 				wol_standby = str(request.args["wolstandby"][0]).lower()
 				if wol_standby in ('true', '1', 'enabled', 'enable', 'active'):
 					try:
-						from Plugins.SystemPlugins.WOLSetup.plugin import WOLSetup, _deviseWOL, _flagForceEnable, _flagSupportWol, _tryQuitTable, _ethDevice
+						from Plugins.SystemPlugins.WOLSetup.plugin import WOLSetup, _deviseWOL, _flagForceEnable, _flagSupportWol, _tryQuitTable, _ethDevice  # noqa: F401
 						from Screens.Standby import TryQuitMainloop
 					except ImportError:
 						return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>WOLSetup plugin is not installed or your STB does not support WOL</e2statetext></e2simplexmlresult>'
@@ -72,16 +73,13 @@ class WOLSetupController(resource.Resource):
 						<e2configchoices>%s</e2configchoices>
 						<e2configvalue>%s</e2configvalue>
 					</e2config>
-				</e2configs>""" %      (str(config.plugins.wolconfig.activate.value),
-							locations, str(config.plugins.wolconfig.location.value))
+				</e2configs>""" % (str(config.plugins.wolconfig.activate.value), locations, str(config.plugins.wolconfig.location.value))
+
 
 class WOLClientController(resource.Resource):
-
-	def __init__(self, path = ""):
-		resource.Resource.__init__(self)
-
 	def render(self, request):
-		import struct, socket
+		import struct
+		import socket
 		request.setHeader('Content-type', 'application/xhtml+xml')
 		request.setHeader('charset', 'UTF-8')
 		if len(request.args):
@@ -106,7 +104,7 @@ class WOLClientController(resource.Resource):
 					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>IP address invalid see example: 192.168.2.10</e2statetext></e2simplexmlresult>'
 				try:
 					for digit in ip:
-						is_int = int(digit)
+						is_int = int(digit)  # noqa: F841
 				except ValueError:
 					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>IP address invalid see example: 192.168.2.10</e2statetext></e2simplexmlresult>'
 				ip = ip[0] + "." + ip[1] + "." + ip[2] + ".255"
@@ -114,8 +112,8 @@ class WOLClientController(resource.Resource):
 				mac_struct = struct.pack('BBBBBB', int(mac[0], 16), int(mac[1], 16), int(mac[2], 16), int(mac[3], 16), int(mac[4], 16), int(mac[5], 16))
 				magic = '\xff' * 6 + mac_struct * 16
 				my_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-				my_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST,1)
-				my_socket.sendto(magic,(ip,port))
+				my_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+				my_socket.sendto(magic, (ip, port))
 				my_socket.close()
 				return """<?xml version=\"1.0\" encoding=\"UTF-8\" ?><e2simplexmlresult><e2state>true</e2state><e2statetext>MagicPacket send to IP %s at port %d</e2statetext></e2simplexmlresult> """ % (ip, port)
 			else:

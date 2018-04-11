@@ -1,0 +1,32 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div class="card"  id="epgcard">
+		<div class="header">
+			<div class="row clearfix" id="epgcardheaderI">
+				<div class="col-xs-12 col-sm-6">
+					<h2><i class="material-icons material-icons-centered">today</i>$tstrings['epg']</h2>
+				</div>
+			</div>
+			<ul class="header-dropdown m-r--5" id="epgcardheaderII">
+			<li><a href="javascript:void(0);" onClick="toggleLeftSideBar(); return false;"><i class="material-icons" id="togglefullscreen">fullscreen</i></a></li>
+				<li class="dropdown">
+				<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+					<ul class="dropdown-menu pull-right">
+						<li><a href="#" onclick="load_tvcontent_spin('ajax/multiepg?epgmode=tv'); return false;"  >$tstrings['television']</a></li>
+						<li><a href="#" onclick="load_tvcontent_spin('ajax/multiepg?epgmode=radio'); return false;"  >$tstrings['radio']</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="body" >
+			<div id='tvcontent'></div>
+		</div>
+	</div>
+</div>
+<script>
+\$("#epgcard").height((\$("#leftsidemenu").height() - 30) + "px");
+</script>
+<script type="text/javascript">
+\$(function() { load_tvcontent_spin('ajax/multiepg?epgmode=tv'); return false;});
+</script>

@@ -1,14 +1,34 @@
 #filter WebSafe
 #from urllib import quote
+#from time import localtime, strftime
 #from Plugins.Extensions.OpenWebif.local import tstrings
 <div id="content_main" class="ui-widget-content" style="min-height: 500px;">
 	<div id="tvcontentmain">
 		<div id="toolbar-header" class="ui-widget-header">
+		<div style=display:inline-block;float:left;>
+			<select id="timersort">
+			#set $count = 0
+			#set $da = $tstrings['date']
+			#set $na = $tstrings['name']
+			#set $sortnames = [$na,$na,$da,$da]
+			#set $sorttypes = ['name','named','date','dated']
+			#set $sortimg = ['fa-sort-alpha-asc','fa-sort-alpha-desc','fa-sort-numeric-asc','fa-sort-numeric-desc']
+			#set $sort=$getVar('sort', 'dated')
+			#for $title in $sortnames
+				<option value="$sorttypes[$count]"
+				#if $sorttypes[$count] == $sort
+					selected="selected"
+				#end if
+				 data-class="$sortimg[$count]">$title</option>
+				#set $count += 1
+			#end for
+		</select>
+		</div>
 			<span id="toolbar">
 				<span id="timerbuttons">
 					<button id="timerbutton0" onclick="addTimer(); return false">$tstrings['add_timer']</button>
 					<button id="timerbutton1" onclick="cleanupTimer(); return false">$tstrings['cleanup_timer']</button>
-					<button id="timerbutton2" onclick="lastcontenturl='';load_maincontent('ajax/timers'); return false;">$tstrings['refresh_timer']</button>
+					<button id="timerbutton2" onclick="lastcontenturl='';load_maincontent('ajax/timers?sort=$sort'); return false;">$tstrings['refresh_timer']</button>
 				</span>
 			</span>
 		</div>
@@ -36,6 +56,7 @@
 						<div class="tm_title">
 							$timer.name
 						</div>
+						$tstrings[("day_" + (time.strftime("%w", time.localtime($timer.begin))))]
 						$timer.realbegin - $timer.realend
 						#if $timer.repeated != 0
 							<div>
@@ -86,6 +107,42 @@ $(function() {
 	$('#timerbuttons').buttonset();
 	if(!timeredit_initialized)
 		$('#editTimerForm').load('ajax/edittimer');
+	$('#timers').scroll(function() {
+		SetLSValue('TimerListOffset',$('#timers').scrollTop());
+	});
+	$('#timers').scrollTop(GetLSValue('TimerListOffset',0));
+	
+	$.widget( "custom.iconselectmenu", $.ui.selectmenu, {
+		_renderItem: function( ul, item ) {
+			var li = $( "<li>" ),
+			wrapper = $( "<div>",{ text: item.label } ).prepend (
+			$( "<span class='sortimg'>").append (
+				$( "<i>", { "class": "fa " + item.element.data("class") })
+				)
+			);
+			return li.append( wrapper ).appendTo( ul );
+			}
+		});
+
+		$("#timersort").iconselectmenu({change: function(event, ui) {
+			load_maincontent('ajax/timers?sort=' + ui.item.value);
+		}
+	}).addClass("ui-menu-icons");
+	
+	$("#timersort option").each(function()
+	{
+		var simg='';
+		if( $(this).val() == $( "#timersort" ).val() )
+		{
+			simg=$(this).data("class");
+			if (simg) {
+				var img = $( "<span class='sortimg'>").append (
+					$( "<i>", { "class": "fa " + simg })
+					);
+				$("#timersort-button .ui-selectmenu-text").prepend(img);
+			}
+		}
+	});
 });
 #end raw
 </script>

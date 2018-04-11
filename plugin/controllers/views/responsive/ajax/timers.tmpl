@@ -1,0 +1,170 @@
+#filter WebSafe
+#from urllib import quote
+#from time import localtime, strftime
+#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, MinTimerList
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div class="card">
+		<div class="header">
+			<div class="row clearfix">
+				<div class="col-xs-12 col-sm-6">
+					<h2><i class="material-icons material-icons-centered">alarm</i>$tstrings['timer']</h2>
+				</div>
+			</div>
+			<ul class="header-dropdown m-r--5">
+				<li>
+				<li class="dropdown"><a href="#" onclick="lastcontenturl='';load_maincontent('ajax/timers'); return false;" ><i class="material-icons">autorenew</i></a>
+				<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+					<ul class="dropdown-menu pull-right" id="timerbuttons">
+						<li><a href="#addtimer" data-toggle="modal" data-target="#TimerModal" data-evid="" data-ref="" id="timerbutton0"  ><i class="material-icons material-icons-centered">alarm_add</i>$tstrings['add_timer']</a></li>
+						<li><a href="#" onclick="lastcontenturl='';cleanupTimer(); return false" ><i class="material-icons material-icons-centered">delete</i>$tstrings['cleanup_timer']</a></li>
+						<li><a href="#" ionclick="lastcontenturl='';load_maincontent('ajax/timers'); return false;" ><i class="material-icons material-icons-centered">autorenew</i>$tstrings['refresh_timer']</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="body" >
+			<div id="content_main" >
+				<div id="tvcontentmain">
+
+#if $MinTimerList == 'checked'
+<div class="row clearfix" id="timers">
+	<div class="col-xs-12">
+#else
+<div id="timers">
+#end if
+#for $timer in $timers
+<div #if $MinTimerList == 'checked' then 'class="row row-striped clearfix pad-top-15"' else '' # id="$timer.begin-$timer.end">
+
+#if MinTimerList == 'checked'
+<div class="col-xs-12 col-md-6">
+	<b><i class="material-icons material-icons-centered">alarm</i>$timer.servicename - $timer.name</b>
+	</div>
+	<div class="col-xs-12 col-md-3">
+	<b>$tstrings[("day_" + (time.strftime("%w", time.localtime($timer.begin))))]</b>
+	$timer.realbegin - $timer.realend
+	<b>
+	#if $timer.disabled
+		$tstrings['disabled']
+	#elif $timer.state == 0
+		$tstrings['waiting']
+	#elif $timer.state == 2
+		$tstrings['running']
+	#elif $timer.state == 3
+		$tstrings['finished']
+	#end if
+
+#if $timer.repeated != 0
+	<div>
+	$tstrings['every_timer']
+	#set $flags=$timer.repeated
+	#set $timerDays=[]
+	#for $day in [$tstrings['monday'],$tstrings['tuesday'],$tstrings['wednesday'],$tstrings['thursday'],$tstrings['friday'],$tstrings['saturday'],$tstrings['sunday']]
+		#if $flags&1
+			$timerDays.append($day)
+		#end if
+		#set $flags = $flags >> 1
+	#end for
+	#echo ', '.join($timerDays)
+	</div>
+#end if
+</div>
+<div class="col-xs-12 col-md-3 align-right">
+#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
+#set $tname=quote($timer.name)
+<a class="theme-link-color theme-link-col-$skinColor href="#edittimer" data-toggle="modal" data-target="#TimerModal" data-ref="$sref" data-begin="$timer.begin" data-end="$timer.end" title="$tstrings['edit_timer']"><i class="material-icons material-icons-mg-right">edit</i></a>
+<a class="theme-link-color theme-link-col-$skinColor href="#" onClick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end'); lastcontenturl=''; setTimeout(function(){load_maincontent('ajax/timers')}, 200); return false;"
+#if $timer.disabled
+	title="$tstrings['enable_timer']"><i class="material-icons material-icons-mg-right">alarm_on</i></a>
+#else
+	title="$tstrings['disable_timer']"><i class="material-icons material-icons-mg-right">alarm_off</i></a>
+#end if
+<a class="theme-link-color theme-link-col-$skinColor href="#" onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$tname'); lastcontenturl=''; setTimeout(function(){load_maincontent('ajax/timers')}, 200); return false;" title="$tstrings['delete_timer']" ><i class="material-icons material-icons-mg-right">delete</i></a></div></div>
+
+#else
+<div class="card">
+	<div class="header">
+		<div class="row clearfix" style="margin-bottom:-20px;">
+		<div class="col-xs-6">
+			<h2><i class="material-icons material-icons-centered">alarm</i>$timer.servicename - $timer.name</h2>
+		</div>
+		<div class="col-xs-6">
+		#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
+		#set $tname=quote($timer.name)
+	
+		<ul class="header-dropdown m-r--5">
+			<li><span role="button"><a href="#edittimer" data-toggle="modal" data-target="#TimerModal" data-ref="$sref" data-ref="$sref" data-begin="$timer.begin" data-end="$timer.end" title="$tstrings['edit_timer']"><i class="material-icons material-icons-mg-right">edit</i></a></span></li>
+			<li><span role="button"><a href="#" onClick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end'); lastcontenturl=''; setTimeout(function(){load_maincontent('ajax/timers')}, 200); return false;"
+			#if $timer.disabled
+				title="$tstrings['enable_timer']"><i class="material-icons material-icons-mg-right">alarm_on</i></a></span></li>
+			#else
+				title="$tstrings['disable_timer']"><i class="material-icons material-icons-mg-right">alarm_off</i></a></span></li>
+			#end if
+			<li><span role="button"><a href="#" onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$tname'); lastcontenturl=''; setTimeout(function(){load_maincontent('ajax/timers')}, 200); return false;" title="$tstrings['delete_timer']" ><i class="material-icons material-icons-mg-right">delete</i></a></span></li>
+		</ul>
+		</div>
+	</div>
+</div>
+
+	<div class="body">
+		<div class="row clearfix" style="margin-bottom:-20px;">
+			<div class="col-sm-5">
+				<b>$tstrings[("day_" + (time.strftime("%w", time.localtime($timer.begin))))]</b>
+				$timer.realbegin - $timer.realend
+			#if $timer.repeated != 0
+				<div>
+				$tstrings['every_timer']
+				#set $flags=$timer.repeated
+				#set $timerDays=[]
+				#for $day in [$tstrings['monday'],$tstrings['tuesday'],$tstrings['wednesday'],$tstrings['thursday'],$tstrings['friday'],$tstrings['saturday'],$tstrings['sunday']]
+					#if $flags&1
+						$timerDays.append($day)
+					#end if
+					#set $flags = $flags >> 1
+				#end for
+				#echo ', '.join($timerDays)
+				</div>
+			#end if
+			</div>
+			<div class="col-sm-5">
+				$timer.description
+			</div>
+			<div class="col-sm-2" style="font-weight:bold;">
+			#if $timer.disabled
+				$tstrings['disabled']
+			#elif $timer.state == 0
+				$tstrings['waiting']
+			#elif $timer.state == 2
+				$tstrings['running']
+			#elif $timer.state == 3
+				$tstrings['finished']
+			#end if
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+#end if
+
+#end for
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+var reloadTimers = true;
+#raw
+$(function() {
+	if(!timeredit_initialized)
+		$('#editTimerForm').load('ajax/edittimer');
+});
+#end raw
+</script>
+#end filter
+

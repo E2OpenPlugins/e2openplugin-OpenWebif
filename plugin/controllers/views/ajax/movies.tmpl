@@ -1,4 +1,5 @@
 #from urllib import quote
+#from time import localtime, strftime
 #from Plugins.Extensions.OpenWebif.local import tstrings
 <div id="content_main" class="ui-widget-content" style="min-height: 500px;">
 	<div id="tvcontentmain">
@@ -79,7 +80,8 @@
 				<div class="tm_text">
 					#if $movie.eventname != ""
 						<div>
-							<span class="tm_title">$movie.eventname</span><br /> $movie.servicename  $movie.begintime<br /> $movie.length min.
+							#set $da = $tstrings[("day_" + (time.strftime("%w", time.localtime($movie.recordingtime))))]
+							<span class="tm_title">$movie.eventname</span><br /> $movie.servicename / $da $movie.begintime<br /> $movie.length min. / $movie.filesize_readable
 						</div>
 						<div>
 							<span class="tm_desc" style="font-weight: bold;">$movie.description</span>

@@ -1,21 +1,35 @@
 # -*- coding: utf-8 -*-
 
-##############################################################################
-#                        2011 E2OpenPlugins                                  #
-#                                                                            #
-#  This file is open source software; you can redistribute it and/or modify  #
-#     it under the terms of the GNU General Public License version 2 as      #
-#               published by the Free Software Foundation.                   #
-#                                                                            #
-##############################################################################
+##########################################################################
+# OpenWebif: RootController
+##########################################################################
+# Copyright (C) 2011 - 2018 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
 
-from models.info import getPublicPath, getPiconPath
+import os
+
+from twisted.web import static, http, proxy
+from Components.config import config
+
+from models.info import getPublicPath, getPiconPath, getBasePath
 from models.grab import grabScreenshot
 from base import BaseController
-from web import WebController
+from web import WebController, ApiController
 from ajax import AjaxController
-from api import ApiController
-from file import FileController
 from mobile import MobileController
 from ipkg import IpkgController
 from AT import ATController
@@ -24,34 +38,28 @@ from ER import ERController
 from BQE import BQEController
 from transcoding import TranscodingController
 from wol import WOLSetupController, WOLClientController
-from twisted.web import static, http, proxy
-import os
+from file import FileController
+
 
 class RootController(BaseController):
-	def __init__(self, session, path = ""):
-		BaseController.__init__(self, path)
-		self.session = session
+	def __init__(self, session, path=""):
+		BaseController.__init__(self, path=path, session=session)
 		piconpath = getPiconPath()
 
 		self.putChild("web", WebController(session))
 		self.putChild("api", ApiController(session))
 		self.putChild("ajax", AjaxController(session))
-		self.putChild("file", FileController(session))
+		self.putChild("file", FileController())
 		self.putChild("grab", grabScreenshot(session))
 		if os.path.exists(getPublicPath('mobile')):
 			self.putChild("mobile", MobileController(session))
 			self.putChild("m", static.File(getPublicPath() + "/mobile"))
-		self.putChild("js", static.File(getPublicPath() + "/js"))
-		self.putChild("css", static.File(getPublicPath() + "/css"))
-		self.putChild("static", static.File(getPublicPath() + "/static"))
-		self.putChild("images", static.File(getPublicPath() + "/images"))
-		self.putChild("fonts", static.File(getPublicPath() + "/fonts"))
-		if os.path.exists(getPublicPath('themes')):
-			self.putChild("themes", static.File(getPublicPath() + "/themes"))
-		if os.path.exists(getPublicPath('webtv')):
-			self.putChild("webtv", static.File(getPublicPath() + "/webtv"))
-		if os.path.exists(getPublicPath('vxg')):
-			self.putChild("vxg", static.File(getPublicPath() + "/vxg"))
+		for static_val in ('js', 'css', 'static', 'images', 'fonts'):
+			self.putChild(static_val, static.File(getPublicPath() + '/' + static_val))
+		for static_val in ('themes', 'webtv', 'vxg'):
+			if os.path.exists(getPublicPath(static_val)):
+				self.putChild(static_val, static.File(getPublicPath() + '/' + static_val))
+
 		if os.path.exists('/usr/bin/shellinaboxd'):
 			self.putChild("terminal", proxy.ReverseProxyResource('::1', 4200, '/'))
 		self.putChild("ipkg", IpkgController(session))
@@ -59,11 +67,16 @@ class RootController(BaseController):
 		self.putChild("serienrecorder", SRController(session))
 		self.putChild("epgrefresh", ERController(session))
 		self.putChild("bouqueteditor", BQEController(session))
-		self.putChild("transcoding", TranscodingController(session))
-		self.putChild("wol", WOLClientController(session))
+		self.putChild("transcoding", TranscodingController())
+		self.putChild("wol", WOLClientController())
 		self.putChild("wolsetup", WOLSetupController(session))
 		if piconpath:
 			self.putChild("picon", static.File(piconpath))
+		try:
+			from NET import NetController
+			self.putChild("net", NetController(session))
+		except:
+			pass
 
 	# this function will be called before a page is loaded
 	def prePageLoad(self, request):
@@ -73,6 +86,8 @@ class RootController(BaseController):
 	# the "pages functions" must be called P_pagename
 	# example http://boxip/index => P_index
 	def P_index(self, request):
+		if config.OpenWebif.responsive_enabled.value and os.path.exists(getBasePath() + "/controllers/views/responsive"):
+			return {}
 		mode = ''
 		if "mode" in request.args.keys():
 			mode = request.args["mode"][0]

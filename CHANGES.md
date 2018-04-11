@@ -1,5 +1,55 @@
-## Version 1.2.0
+## Version 1.3.1
 ## (in development)
+* add net api mount manager
+* fix encoding issue #772
+* add settings to modify recording locations / bookmarks
+* add timer sort feature #697
+* fix edit timer tags #732
+
+## Version 1.3.0
+* add responsive design from VTi Team
+* RESTful API with OpenAPI specification
+* new config api
+
+## Version 1.2.8
+* new file api
+* new RESTful API with OpenAPI specification
+* allow timers for IPTV / #715
+
+## Version 1.2.7
+* improve file api
+* use sass for css
+* improve css files
+* improve picon path handling
+
+## Version 1.2.6
+* improve recording move to trash / #633
+* improve edit timer / #631
+* fix some bandit issues
+
+## Version 1.2.5
+* improve remote control / #603
+* app timeshift api / #551
+* show filesize / #493
+* show weekday for timer and recording / #541
+* improve edit timer / #463
+* show date on mobile epg info / #366
+* fix edit timer / #624
+* improve now/next api
+* fix CVE 2017-9807 / #620
+* improve package manager / #608
+
+## Version 1.2.4
+* show boxname in title / #528
+* fix autotimer preview / #589
+* fix autotimer create / #581
+* fix several box pictures and remote controls
+* fix timer epg encoding bug 
+* update locale
+* add removeFolder to removelocations / #593
+* improve bqe channel numbering / #239
+
+## Version 1.2.1
 * fix shift detection on standby button
 * add missing theme images
 

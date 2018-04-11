@@ -1,9 +1,9 @@
 //******************************************************************************
 //* bqe.js: openwebif Bouqueteditor plugin
-//* Version 2.5
+//* Version 2.6
 //******************************************************************************
-//* Copyright (C) 2014-2016 Joerg Bleyel
-//* Copyright (C) 2014-2016 E2OpenPlugins
+//* Copyright (C) 2014-2017 Joerg Bleyel
+//* Copyright (C) 2014-2017 E2OpenPlugins
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //*          Robert Damas <https://github.com/rdamas>
@@ -14,6 +14,7 @@
 //* V 2.3 - fix #198
 //* V 2.4 - improve search fix #419
 //* V 2.5 - prepare support spacers #239
+//* V 2.6 - improve spacers #239
 
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
@@ -44,6 +45,8 @@
 
 		var filterChannelsCache;
 		
+		var bqStartPositions;
+
 		// used for caching.
 		var date;
 
@@ -59,7 +62,7 @@
 				$('#provider').empty();
 				$.each(options, function(k,v) {
 					$('#provider').append(v);
-				})
+				});
 				$('#provider').children().first().addClass('ui-selected');
 				self.changeProvider(
 					$('#provider').children().first().data('sref'),
@@ -73,7 +76,7 @@
 				$('#channels').empty();
 				$.each(options, function(k,v) {
 					$('#channels').append(v);
-				})
+				});
 				self.setChannelButtons();
 				self.setHover('#channels');
 			},
@@ -85,7 +88,7 @@
 				$('#bql').empty();
 				$.each(options, function(k,v) {
 					$('#bql').append(v);
-				})
+				});
 				$('#bql').children().first().addClass('ui-selected');
 				self.changeBouquet(
 					$('#bql').children().first().data('sref'),
@@ -99,7 +102,7 @@
 				$('#bqs').empty();
 				$.each(options, function(k,v) {
 					$('#bqs').append(v);
-				})
+				});
 				self.setBouquetChannelButtons();
 				self.setHover('#bqs');
 			},
@@ -203,11 +206,11 @@
 						var options = [];
 						var s = data['services'];
 						$.each( s, function ( key, val ) {
-							var sref = val['servicereference']
-							var name = val['servicename']
+							var sref = val['servicereference'];
+							var name = val['servicename'];
 							options.push( $('<li/>', {
-							    class: "ui-widget-content",
-							    data: { sref: sref }
+								class: "ui-widget-content",
+								data: { sref: sref }
 							}).html(name) );
 						});
 						if (callback) {
@@ -257,28 +260,43 @@
 			// Callback function for fetching right panel bouquets list.
 			// @param callback function display bouquets list
 			getBouquets: function (callback) {
-				var ref = self.buildRefStr(0);
+				// get Pos
 				$.ajax({
-					url: '/bouqueteditor/api/getservices', 
+					url: '/bouqueteditor/api/calcpos', 
 					dataType: 'json',
 					cache: false,
-					data: { sRef: ref },
+					data: { type: self.Mode },
 					success: function ( data ) {
-						var options = [];
-						var s = data['services'];
-						$.each( s, function ( key, val ) {
-							var sref = val['servicereference'];
-							var name = val['servicename'];
-							options.push( $('<li/>', {
-								class: "ui-widget-content",
-								data: { sref: sref }
-							}).html('<div class="handle"><span class="ui-icon ui-icon-dragndrop"></span></div>'+name+'</li>') );
+						self.bqStartPositions = {};
+						var ps = data['services'];
+						$.each( ps, function ( key, val ) {
+							self.bqStartPositions[val['servicereference']] = val['startpos'];
 						});
-						if (callback) {
-							callback(options);
-						}
+						var ref = self.buildRefStr(0);
+						$.ajax({
+							url: '/bouqueteditor/api/getservices', 
+							dataType: 'json',
+							cache: false,
+							data: { sRef: ref },
+							success: function ( data ) {
+								var options = [];
+								var s = data['services'];
+								$.each( s, function ( key, val ) {
+									var sref = val['servicereference'];
+									var name = val['servicename'];
+									options.push( $('<li/>', {
+										class: "ui-widget-content",
+										data: { sref: sref }
+									}).html('<div class="handle"><span class="ui-icon ui-icon-dragndrop"></span></div>'+name+'</li>') );
+								});
+								if (callback) {
+									callback(options);
+								}
+							}
+						});
 					}
 				});
+				
 			},
 
 			// Callback function for selecting provider in left panel
@@ -301,14 +319,17 @@
 
 			// Callback function for selecting bouquet in right panel
 			// bouquets list.
-			// @param sref string selected bouquet reference string 
+			// @param bref string selected bouquet reference string 
 			// @param callback function display services list
-			changeBouquet: function (sref, callback) {
+			changeBouquet: function (bref, callback) {
+				var spos=0;
+				if(self.bqStartPositions[bref])
+					spos = self.bqStartPositions[bref];
 				$.ajax({
 					url: '/bouqueteditor/api/getservices', 
 					dataType: 'json',
 					cache: false,
-					data: { sRef: sref },
+					data: { sRef: bref },
 					success: function ( data ) {
 						var options = [];
 						var s = data['services'];
@@ -316,7 +337,7 @@
 							var sref = val['servicereference'];
 							var m = (val['ismarker'] == 1) ? '<span style="float:right">(M)</span>' : '';
 							var name=val['servicename'];
-							var pos = val['pos'];
+							var pos = spos + val['pos'];
 							if(val['ismarker'] == 2)
 								m= '<span style="float:right">(S)</span>';
 							name = pos.toString() + ' - ' + name;
@@ -606,7 +627,7 @@
 					return;
 				}
 			
-				var pos = item.index()
+				var pos = item.index();
 				var sname = item.text();
 				var sref = item.data('sref');
 				var bref = $('#bql li.ui-selected').data('sref');
@@ -713,7 +734,7 @@
 	
 				$('form#uploadrestore')
 					.unbind('submit')
-					.submit(function (e) 
+					.submit(function (_e) 
 				{
 					var formData = new FormData(this);
 					$.ajax({
@@ -737,10 +758,10 @@
 							self.showError("Upload File Error: " + errorThrown);
 						}
 					});
-					e.preventDefault();
+					_e.preventDefault();
 					try {
-						e.unbind();
-					} catch(e){}
+						_e.unbind();
+					} catch(ex){}
 				});
 				$('form#uploadrestore').submit();
 			},
@@ -807,8 +828,8 @@
 
 				// Setup selection callback function for left pane channels list
 				$('#channels').selectable({
-					stop: self.setChannelButtons
-					,classes: {
+					stop: self.setChannelButtons,
+					classes: {
 						"ui-selected": self.activecls 
 					}
 				});
@@ -895,11 +916,11 @@
 			},setHover : function(obj)
 			{
 				$(obj + ' li').hover(
-					function(){ $(this).addClass(self.hovercls) },
-					function(){ $(this).removeClass(self.hovercls) }
-				)
+					function(){ $(this).addClass(self.hovercls); },
+					function(){ $(this).removeClass(self.hovercls); }
+				);
 			}
-		 }
+		 };
 	};
 
 	var bqe = new BQE();

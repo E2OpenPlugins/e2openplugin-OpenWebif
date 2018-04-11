@@ -1,0 +1,224 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+<div class="col-xs-12">
+	<div class="card">
+		<div class="header">
+			<div class="row clearfix">
+				<div class="col-xs-12">
+					<h2><i class="material-icons material-icons-centered">info</i>$tstrings['box_info']</h2>
+				</div>
+			</div>
+		</div>
+		<div class="body" style="word-break: break-all">
+			<div class="row clearfix">
+				<div class="col-xs-12">
+					<img src="images/boxes/${boximage}" id="box_image" class="img-responsive center-block" alt="box_info">
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-xs-12">
+					<div class="card">
+					<div class="header vti-colored-card bg-$skinColor">
+							<h2>$tstrings['box']</h2>
+					</div>
+					<div class="body">
+							<div class="row clearfix">
+								<div class="col-xs-12 col-sm-6">
+									<b>$tstrings['brand'] & $tstrings['model']:</b>
+								</div>
+								<div class="col-xs-6">
+									$brand $model
+								</div>
+							</div>
+							<div class="row clearfix">
+								<div class="col-xs-12 col-sm-6">
+									<b>$friendlychipsetdescription:</b>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									$friendlychipsettext
+								</div>
+							</div>
+							<div class="row clearfix">
+								<div class="col-xs-12 col-sm-6">
+									<b>$tstrings['main_memory']:</b>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									$mem3
+								</div>
+							</div>
+							<div class="row clearfix">
+								<div class="col-xs-12 col-sm-6">
+									<b>$tstrings['box_uptime']:</b>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									$uptime
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-xs-12">
+					<div class="card">
+						<div class="header vti-colored-card bg-$skinColor">
+							<h2>$tstrings['software']</h2>
+						</div>
+						<div class="body">
+							<div class="row clearfix">
+								<div class="col-xs-12 col-sm-6">
+									<b>$tstrings['oe_version']:</b>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									$oever
+								</div>
+							</div>
+							<div class="row clearfix">
+								<div class="col-xs-12 col-sm-6">
+									<b>$tstrings['firmware_version']:</b>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									$friendlyimagedistro $imagever ($enigmaver)
+								</div>
+							</div>
+							<div class="row clearfix">
+								<div class="col-xs-12 col-sm-6">
+									<b>$tstrings['kernel_version'] / $tstrings['driver_date']:</b>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									$kernelver / $driverdate
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-xs-12">
+					<div class="card">
+						<div class="header vti-colored-card bg-$skinColor">
+							<h2>$tstrings['tuners']</h2>
+						</div>
+						<div class="body">
+						#for $tuner in $tuners
+								<div class="row clearfix">
+									<div class="col-xs-12 col-sm-6">
+										<b>$tuner.name</b>
+									</div>
+									<div class="col-xs-12 col-sm-6">
+										$tuner.type
+									#if $tuner.live != ''
+										<p><i class="material-icons material-icons-centered">play_circle_outline</i>$tuner.live</p>
+									#end if
+									#if $tuner.rec != ''
+											<p><i class="material-icons material-icons-centered">videocam</i>$tuner.rec</p>
+									#end if
+									</div>
+								</div>
+						#end for
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-xs-12">
+					<div class="card">
+						<div class="header vti-colored-card bg-$skinColor">
+							<h2>HDD</h2>
+						</div>
+						<div class="body">
+							#for $hd in $hdd
+								<div class="row clearfix">
+									<div class="col-xs-12 col-sm-6">
+										<b>$tstrings['hdd_model']:</b>
+									</div>
+									<div class="col-xs-12 col-sm-6">
+										 $hd.model
+									</div>
+								</div>
+							<div class="row clearfix">
+								<div class="col-xs-12 col-sm-6">
+									<b>$tstrings['capacity']:</b>
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									$hd.friendlycapacity ($hd.mount)
+								</div>
+							</div>
+							#end for
+						</div>
+					</div>
+				</div>
+			</div>
+			#if $shares
+			<div class="row clearfix">
+					<div class="col-xs-12">
+						<div class="card">
+							<div class="header vti-colored-card bg-$skinColor">
+								<h2>$tstrings['networkshares']</h2>
+							</div>
+							<div class="body">
+							#for $share in $shares
+									<div class="row clearfix">
+										<div class="col-xs-12 col-sm-6">
+											<b>$share.name:</b>
+										</div>
+										<div class="col-xs-12 col-sm-6">
+											$share.type $tstrings['using'] $share.method: $share.path ($share.friendlyaddress)
+										</div>
+									</div>
+							#end for
+							</div>
+						</div>
+					</div>
+				</div>
+			#end if
+			#for $iface in $ifaces
+			<div class="row clearfix">
+					<div class="col-xs-12">
+						<div class="card">
+							<div class="header vti-colored-card bg-$skinColor">
+								<h2>$tstrings['network_interface']: $iface.name ($iface.friendlynic)</h2>
+							</div>
+							<div class="body">
+								<div class="row clearfix">
+									<div class="col-xs-12 col-sm-6">
+										<b>$tstrings['linkspeed']:</b>
+									</div>
+									<div class="col-xs-12 col-sm-6">
+										$iface.linkspeed
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-xs-12 col-sm-6">
+										<b>$tstrings['mac_address']:</b>
+									</div>
+									<div class="col-xs-12 col-sm-6">
+										$iface.mac
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-xs-12 col-sm-6">
+										<b>$tstrings['ipv6_address']:</b>
+									</div>
+									<div class="col-xs-12 col-sm-6">
+										$iface.ipv6 ($iface.ipmethod)
+									</div>
+								</div>
+						#if $iface.ip != "0.0.0.0"
+									<div class="row clearfix">
+										<div class="col-xs-12 col-sm-6">
+											<b>$tstrings['ipv4_address']:</b>
+										</div>
+										<div class="col-xs-12 col-sm-6">
+											$iface.ip/$iface.v4prefix $tstrings['via'] $iface.gw ($iface.ipv4method)
+										</div>
+									</div>
+						#end if
+							</div>
+						</div>
+					</div>
+				</div>
+				#end for
+		</div>
+	</div>
+</div>

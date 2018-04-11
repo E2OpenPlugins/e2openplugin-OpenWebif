@@ -13,17 +13,22 @@ from enigma import eDVBDB
 from Components.NimManager import nimmanager
 import Components.ParentalControl
 
+
 def reloadLameDB(self):
 	self.eDVBDB.reloadServicelist()
+
 
 def reloadUserBouquets(self):
 	self.eDVBDB.reloadBouquets()
 
+
 def reloadTransponders(self):
 	nimmanager.readTransponders()
 
+
 def reloadParentalControl(self):
 	Components.ParentalControl.parentalControl.open()
+
 
 def reloadServicesLists(self, request):
 	self.eDVBDB = eDVBDB.getInstance()
@@ -58,6 +63,6 @@ def reloadServicesLists(self, request):
 		msg = "reloaded parentalcontrol white-/blacklist"
 
 	return {
-		"result" : res,
-		"message" : msg
+		"result": res,
+		"message": msg
 	}

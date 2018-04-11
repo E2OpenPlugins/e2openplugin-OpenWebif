@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.4
+//* Version 1.2.17
 //******************************************************************************
 //* Copyright (C) 2011-2017 E2OpenPlugins
 //*
@@ -19,6 +19,17 @@
 //* V 1.2.2 - improve epgsearch
 //* V 1.2.3 - fix add at from multiepg
 //* V 1.2.4 - fix screenshot refresh
+//* V 1.2.5 - improve remote control #603
+//* V 1.2.6 - improve full channel list and edit timer
+//* V 1.2.7 - improve movie rename/delete, fix timer channel selection #612
+//* V 1.2.8 - improve save config #620
+//* V 1.2.9 - improve timer #624
+//* V 1.2.10 - improve screenshot refresh #625
+//* V 1.2.11 - improve visual feedback for adding timer in multiepg
+//* V 1.2.12 - improve timer edit
+//* V 1.2.13 - fix repeating timer edit #631
+//* V 1.2.14,15,16 - fix json parse
+//* V 1.2.17 - allow timers for IPTV #715
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -64,7 +75,7 @@ try {
 	});
 	
 	getStatusInfo();
-	setInterval("getStatusInfo()", 15000);
+	setInterval( function() { getStatusInfo(); }, 15000);
 
 	$( "#slider" ).slider({
 		
@@ -158,9 +169,9 @@ function initJsTranslation(strings) {
 	tstr_nothing_play = strings.nothing_play;
 	tstr_now = strings.now;
 	tstr_on = strings.on;
-	tstr_reboot_box = strings.reboot_box
+	tstr_reboot_box = strings.reboot_box;
 	tstr_rec_status = strings.rec_status;
-	tstr_restart_gui = strings.restart_gui
+	tstr_restart_gui = strings.restart_gui;
 	tstr_standby = strings.standby;
 	tstr_start_after_end = strings.start_after_end;
 	tstr_time = strings.time;
@@ -291,8 +302,8 @@ function load_dm_spinner(url,title,w,h,buttons){
 		height:height,
 		buttons:buttons,
 		create: function(event, ui) {
-	        $(event.target).parent().css('position', 'fixed');
-	    },
+			$(event.target).parent().css('position', 'fixed');
+		},
 		close: function(event, ui) { 
 			$(this).dialog('destroy');
 			$("#modaldialog").html('');
@@ -302,8 +313,8 @@ function load_dm_spinner(url,title,w,h,buttons){
 			url: url,
 			success: function(data) {
 				$("#modaldialog").html(data);
-			}
-			,error: function(){
+			},
+			error: function(){
 				$("#modaldialog").html(tstr_error_load_page);
 			}
 		});
@@ -313,7 +324,7 @@ function load_dm_spinner(url,title,w,h,buttons){
 }
 
 function load_dm(url,title,w,h){
-	var buttons = {}
+	var buttons = {};
 	buttons[tstr_close] = function() { $(this).dialog("close");};
 	var width = 'auto',height='auto';
 	if (typeof w !== 'undefined')
@@ -347,7 +358,7 @@ function load_dm(url,title,w,h){
 }
 
 function load_message_dm(url,title){
-	var buttons = {}
+	var buttons = {};
 	buttons[tstr_send_message] = function() { sendMessage();};
 	buttons[tstr_cancel] = function() { $(this).dialog("close");};
 
@@ -423,7 +434,7 @@ function open_epg_dialog(sRef,Name) {
 	var w = $(window).width() -100;
 	var h = $(window).height() -100;
 	
-	var buttons = {}
+	var buttons = {};
 	buttons[tstr_close] = function() { $(this).dialog("close");};
 	buttons[tstr_open_in_new_window] = function() { $(this).dialog("close"); open_epg_pop(sRef);};
 	
@@ -432,15 +443,15 @@ function open_epg_dialog(sRef,Name) {
 
 function open_epg_search_dialog() {
 	var spar = $("#epgSearch").val();
-	var full = GetLSValue('epgsearchtype',false) ? '&full=1' : ''
-	var bouquetsonly = GetLSValue('epgsearchbouquetsonly',false) ? '&bouquetsonly=1' : ''
+	var full = GetLSValue('epgsearchtype',false) ? '&full=1' : '';
+	var bouquetsonly = GetLSValue('epgsearchbouquetsonly',false) ? '&bouquetsonly=1' : '';
 	var url = "ajax/epgdialog?sstr=" + encodeURIComponent(spar) + full + bouquetsonly;
 	$("#epgSearch").val("");
 	
 	var w = $(window).width() -100;
 	var h = $(window).height() -100;
 	
-	var buttons = {}
+	var buttons = {};
 	buttons[tstr_close] = function() { $(this).dialog("close");};
 	buttons[tstr_open_in_new_window] = function() { $(this).dialog("close"); open_epg_search_pop(spar,full);};
 	
@@ -495,8 +506,8 @@ function webapi_execute_result(url, callback) {
 		async: false,
 		url: url,
 		cache : false,
-		success: function(data) {
-			result = $.parseJSON(data);
+		dataType: "json",
+		success: function(result) {
 			if (typeof callback !== 'undefined') {
 				if(result)
 					callback(result.result,result.message,result.conflicts);
@@ -509,8 +520,8 @@ function webapi_execute_result(url, callback) {
 
 function cbAddTimerEvent(state) {
 	if (state.state) {
-		$('.event[data-id='+state.eventId+'] .timer').remove();
-		$('.event[data-id='+state.eventId+'] div:first').append('<div class="timer">'+tstr_timer+'</div>');
+		$('.event[data-id='+state.eventId+'][data-ref="'+state.sRef+'"] .timer').remove();
+		$('.event[data-id='+state.eventId+'][data-ref="'+state.sRef+'"] div:first').append('<div class="timer">'+tstr_timer+'</div>');
 	}
 }
 
@@ -661,19 +672,40 @@ function cleanupTimer() {
 	webapi_execute("/api/timercleanup", function() { load_maincontent('/ajax/timers'); });
 }
 
+function webapi_execute_movie(url,callback)
+{
+	$.ajax({
+		async: false,
+		url: url,
+		cache : false,
+		dataType: "json",
+		success: function(result) {
+			if(result) {
+				if (!result.result)
+					alert(result.message);
+				if (typeof callback !== 'undefined') 
+					callback(result.result);
+			}
+		}
+	});
+}
+
 function renameMovie(sRef, title) {
 	var newname=prompt(tstr_ren_recording, title);
 	if (newname && newname!=title){
-		webapi_execute("/api/movierename?sRef=" + sRef+"&newname="+newname);
-		// TODO: check the api result first
+		webapi_execute_movie("/api/movierename?sRef=" + sRef+"&newname="+newname);
+		// TODO reload if success
 	}
 }
 
 function deleteMovie(sRef, divid, title) {
 	if (confirm(tstr_del_recording + ": " + title) === true) {
-		webapi_execute("/api/moviedelete?sRef=" + sRef);
-		// TODO: check the api result first
-		$('#' + divid).remove();
+		webapi_execute_movie("/api/moviedelete?sRef=" + sRef,
+			function (state) {
+				if(state) 
+					$('#' + divid).remove();
+			}
+		);
 	}
 }
 
@@ -944,7 +976,7 @@ function pressMenuRemote(code) {
 	if (grabTimer > 0) {
 		clearTimeout(grabTimer);
 	}
-	grabTimer = setTimeout("callScreenShot()", 1000);
+	grabTimer = setTimeout(function() { callScreenShot(); }, (code > 1 && code < 12) ? 1500:1000);
 }
 
 function toggleFullRemote() {
@@ -953,11 +985,12 @@ function toggleFullRemote() {
 }
 
 function saveConfig(key, value) {
-	webapi_execute("/api/saveconfig?key=" + escape(key) + "&value=" + escape(value));
-	if (key == "config.usage.setup_level") {
-		// TODO: refresh the menu box with new sections list
-		$("#content_container").load(lastcontenturl);
-	}
+	$.ajax({ url: "/api/saveconfig?key=" + escape(key) + "&value=" + escape(value), cache: false, async: true, type: "POST"}).done(function() { 
+		if (key == "config.usage.setup_level") {
+			// TODO: refresh the menu box with new sections list
+			$("#content_container").load(lastcontenturl);
+		}
+	});
 }
 
 function numberTextboxKeydownFilter(event) {
@@ -977,53 +1010,44 @@ var current_end;
 var timeredit_initialized = false;
 var timeredit_begindestroy = false;
 
-function initTimerBQ(radio) {
+function initTimerBQ(radio, callback) {
 
-	var url="/api/getallservices";
-	if (radio == true) {
-		url += "?type=radio"
-	}
-
-	$.ajax({
-		async: false,
-		url: url,
-		success: function(data) {
-			services = $.parseJSON(data);
-			if (services.result) {
-				$('#bouquet_select').find('option').remove().end();
-				for (var id in services.services) {
-					service = services.services[id];
-					for (var id2 in service.subservices) {
-						subservice = service.subservices[id2];
-						$('#bouquet_select').append($("<option></option>").attr("value", subservice.servicereference).text(subservice.servicename));
-					}
-				}
-			}
+	$('#bouquet_select').find('optgroup').remove().end();
+	$('#bouquet_select').find('option').remove().end();
+	GetAllServices(function ( options , boptions) {
+		$("#bouquet_select").append( options);
+		if(current_ref) {
+			$("#bouquet_select").val( current_ref );
 		}
-	});
+		$('#bouquet_select').trigger("chosen:updated");
+		callback();
+	} , radio);
 
 }
 
-function initTimerEdit(radio) {
-	
-	// FIXME: async
-	initTimerBQ(radio);
-	
-	$('#dirname').find('option').remove().end();
-	$('#dirname').append($("<option></option>").attr("value", "None").text("Default"));
-	for (var id in _locations) {
-		var loc = _locations[id];
-		$('#dirname').append($("<option></option>").attr("value", loc).text(loc));
-	}
+function initTimerEdit(radio, callback) {
 
-	$('#tagsnew').html('');
-	for (var id in _tags) {
-		var tag = _tags[id];
-		$('#tagsnew').append("<input type='checkbox' name='tagsnew' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
-	}
-	$('#tagsnew').buttonset();
-	
-	timeredit_initialized = true;
+	var bottomhalf = function() {
+		$('#dirname').find('option').remove().end();
+		$('#dirname').append($("<option></option>").attr("value", "None").text("Default"));
+		for (var id in _locations) {
+			var loc = _locations[id];
+			$('#dirname').append($("<option></option>").attr("value", loc).text(loc));
+		}
+
+		$('#tagsnew').html('');
+		for (var id in _tags) {
+			var tag = _tags[id];
+			$('#tagsnew').append("<input type='checkbox' name='"+tag+"' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
+		}
+
+		$("#tagsnew > input").checkboxradio({icon: false});
+
+		timeredit_initialized = true;
+		callback();
+	};
+
+	initTimerBQ(radio, bottomhalf);
 }
 
 function loadLocations()
@@ -1031,8 +1055,8 @@ function loadLocations()
 	_locations = [];
 	$.ajax({
 		url: "/api/getlocations",
-		success: function(data) {
-			var loc = $.parseJSON(data);
+		dataType: "json",
+		success: function(loc) {
 			if (loc.result)
 				_locations = loc.locations;
 		}
@@ -1044,8 +1068,8 @@ function loadTags()
 	_tags = [];
 	$.ajax({
 		url: "/api/gettags",
-		success: function(data) {
-			var tag = $.parseJSON(data);
+		dataType: "json",
+		success: function(tag) {
 			if (tag.result)
 				_tags = tag.tags;
 		}
@@ -1106,17 +1130,7 @@ function editTimer(serviceref, begin, end) {
 	$('#cbtv').prop('checked',!radio);
 	$('#cbradio').prop('checked',radio);
 	
-	if (!timeredit_initialized) {
-		initTimerEdit(radio);
-	}
-	else
-	{
-		var _chsref=$("#bouquet_select option:last").val();
-		if(radio && _chsref.substring(0,6) !== '1:0:2:')
-			initTimerEdit(radio);
-		if(!radio && _chsref.substring(0,6) == '1:0:2:')
-			initTimerEdit(radio);
-	}
+	var bottomhalf = function() {
 	
 	if (timeredit_begindestroy) {
 		initTimerEditBegin();
@@ -1125,8 +1139,8 @@ function editTimer(serviceref, begin, end) {
 
 	$.ajax({
 		url: "/api/timerlist",
-		success: function(data) {
-			timers = $.parseJSON(data);
+		dataType: "json",
+		success: function(timers) {
 			if (timers.result) {
 				for (var id in timers.timers) {
 					timer = timers.timers[id];
@@ -1136,6 +1150,7 @@ function editTimer(serviceref, begin, end) {
 							$('#timername').val(timer.name);
 							$('#description').val(timer.description);
 							$('#bouquet_select').val(timer.serviceref);
+							$('#bouquet_select').trigger("chosen:updated");
 							if(timer.serviceref !== $('#bouquet_select').val()) {
 								$('#bouquet_select').append($("<option></option>").attr("value", timer.serviceref).text(timer.servicename));
 								$('#bouquet_select').val(timer.serviceref);
@@ -1152,17 +1167,28 @@ function editTimer(serviceref, begin, end) {
 							$('#errorbox').hide();
 							var flags=timer.repeated;
 							for (var i=0; i<7; i++) {
-								$('#day'+i).attr('checked', ((flags & 1)==1));
+								$('#day'+i).prop('checked', ((flags & 1)==1)).checkboxradio("refresh");
 								flags >>= 1;
 							}
-							$('#repeatdays').buttonset('refresh');
 							
-							$('#tagsnew').find('input').attr('checked',false);
+							$('#tagsnew > input').prop('checked',false).checkboxradio("refresh");
+							
 							var tags = timer.tags.split(' ');
 							for (var j=0; j<tags.length; j++) {
-								$('#tag_'+tags[j]).attr('checked', true);
+								var tag = tags[j].replace(/\(/g,'_').replace(/\)/g,'_').replace(/\'/g,'_');
+								if (tag.length>0)
+								{
+									if($('#tag_'+tag).length)
+									{
+										$('#tag_'+tag).prop('checked', true).checkboxradio("refresh");
+									}
+									else
+									{
+										$('#tagsnew').append("<input type='checkbox' checked='checked' name='"+tag+"' value='"+tag+"' id='tag_"+tag+"'/><label for='tag_"+tag+"'>"+tag+"</label>");
 							}
-							$('#tagsnew').buttonset('refresh');
+								}
+							}
+							$("#tagsnew > input").checkboxradio({icon: false});
 							
 							$('#timerbegin').datetimepicker('setDate', (new Date(Math.round(timer.begin) * 1000)));
 							$('#timerend').datetimepicker('setDate', (new Date(Math.round(timer.end) * 1000)));
@@ -1213,9 +1239,26 @@ function editTimer(serviceref, begin, end) {
 			}
 		}
 	});
+	};
+	
+	if (!timeredit_initialized) {
+		initTimerEdit(radio, bottomhalf);
+	}
+	else
+	{
+		var _chsref=$("#bouquet_select option:last").val();
+		if(radio && _chsref.substring(0,6) !== '1:0:2:') {
+			initTimerEdit(radio, bottomhalf);
+		} else if(!radio && _chsref.substring(0,6) == '1:0:2:') {
+			initTimerEdit(radio, bottomhalf);
+		} else {
+			bottomhalf();
+		} 
+	}
+	
 }
 
-function addTimer(evt,chsref,chname,top) {
+function addTimer(evt,chsref,chname,top,isradio) {
 	current_serviceref = '';
 	current_begin = -1;
 	current_end = -1;
@@ -1240,9 +1283,12 @@ function addTimer(evt,chsref,chname,top) {
 		margin_after = evt.recording_margin_after;
 	}
 
-	var lch=$('#bouquet_select > option').length;
+	var lch=$('#bouquet_select > optgroup').length;
 
 	var radio = false;
+	if (typeof isradio !== 'undefined')
+		radio = true;
+	
 	if (typeof chsref !== 'undefined') {
 		radio = ( chsref.substring(0,6) == '1:0:2:');
 	}
@@ -1250,18 +1296,7 @@ function addTimer(evt,chsref,chname,top) {
 	$('#cbtv').prop('checked',!radio);
 	$('#cbradio').prop('checked',radio);
 
-	if (!timeredit_initialized || lch < 2) {
-		initTimerEdit(radio);
-	}
-	else
-	{
-		var _chsref=$("#bouquet_select option:last").val();
-		if(radio && _chsref.substring(0,6) !== '1:0:2:')
-			initTimerEdit(radio);
-		if(!radio && _chsref.substring(0,6) == '1:0:2:')
-			initTimerEdit(radio);
-	}
-
+	var bottomhalf = function() {
 	if (typeof chsref !== 'undefined' && typeof chname !== 'undefined') {
 		serviceref = chsref;
 		title = chname;
@@ -1279,12 +1314,10 @@ function addTimer(evt,chsref,chname,top) {
 	$('#errorbox').hide();
 
 	for (var i=0; i<7; i++) {
-		$('#day'+i).attr('checked', false);
+		$('#day'+i).prop('checked', false).checkboxradio('refresh');
 	}
-	$('#repeatdays').buttonset('refresh');
 	
-	$('#tagsnew').find('input').attr('checked',false);
-	$('#tagsnew').buttonset('refresh');
+	$('#tagsnew > input').prop('checked',false).checkboxradio("refresh");
 
 	var begindate = begin !== -1 ? new Date( (Math.round(begin) - margin_before*60) * 1000) : new Date();
 	$('#timerbegin').datetimepicker('setDate', begindate);
@@ -1292,12 +1325,34 @@ function addTimer(evt,chsref,chname,top) {
 	$('#timerend').datetimepicker('setDate', enddate);
 
 	$('#bouquet_select').val(serviceref);
-	if (serviceref !== $('#bouquet_select').val() && typeof servicename !== 'undefined' && servicename != '') {
+	$('#bouquet_select').trigger("chosen:updated");
+	
+	// TODO :check if needed
+	/*
+	 if (serviceref !== $('#bouquet_select').val() && typeof servicename !== 'undefined' && servicename != '') {
 		$('#bouquet_select').append($("<option></option>").attr("value", serviceref).text(servicename));
 		$('#bouquet_select').val(serviceref);
 	}
+	*/
 
 	openTimerDlg(tstr_add_timer);
+	};
+	
+	if (!timeredit_initialized || lch < 2) {
+		initTimerEdit(radio, bottomhalf);
+	}
+	else
+	{
+		var _chsref=$("#bouquet_select option:last").val();
+		if(radio && _chsref.substring(0,6) !== '1:0:2:') {
+			initTimerEdit(radio, bottomhalf);
+		} else if(!radio && _chsref.substring(0,6) == '1:0:2:') {
+			initTimerEdit(radio, bottomhalf);
+		} else {
+			bottomhalf();
+		}
+	}
+
 }
 
 function openTimerDlg(title)
@@ -1360,7 +1415,7 @@ function ExpandMEPG()
 	$("#refreshmepg2").show();
 	$("#header").hide();
 	$("#leftmenu").hide();
-	$('#content').css('margin-left', '5px')
+	$('#content').css('margin-left', '5px');
 	$('#tvcontentmain > #toolbar-header').hide();
 	$("#tbl1body").height('100%');
 	$("#tvcontent").css('height','100%');
@@ -1377,7 +1432,7 @@ function CompressMEPG()
 	$("#refreshmepg2").hide();
 	$("#header").show();
 	$("#leftmenu").show();
-	$('#content').css('margin-left', '185px')
+	$('#content').css('margin-left', '185px');
 	$('#tvcontentmain > #toolbar-header').show();
 	$("#tvcontent").css('height','730px');
 	$("#tvcontentmain").css('height','800px');
@@ -1752,13 +1807,13 @@ var MLHelper;
 						if (simg) {
 							var img = $( "<span class='sortimg'>").append (
 								$( "<i>", { "class": "fa " + simg })
-								)
+								);
 							$("#moviesort-button .ui-selectmenu-text").prepend(img);
 						}
 					}
 				});
-			}
-			,SortMovies: function(idx)
+			},
+			SortMovies: function(idx)
 			{
 				var sorted = self._movies.slice(0);
 
@@ -1837,7 +1892,7 @@ var MLHelper;
 				self._movies = mv.slice();
 			}
 		
-		}
+		};
 
 	};
 	
@@ -1867,9 +1922,9 @@ function setHover(obj)
 	var cls=getHoverCls();
 	
 	$(obj).hover(
-		function(){ $(this).addClass(cls) },
-		function(){ $(this).removeClass(cls) }
-	)
+		function(){ $(this).addClass(cls); },
+		function(){ $(this).removeClass(cls); }
+	);
 }
 
 function setTMHover()
@@ -1881,9 +1936,9 @@ function setTMHover()
 	}
 	
 	$('.tm_row').hover(
-		function(){ $(this).addClass(cls) },
-		function(){ $(this).removeClass(cls) }
-	)
+		function(){ $(this).addClass(cls); },
+		function(){ $(this).removeClass(cls); }
+	);
 }
 
 // Localstorage
@@ -1927,16 +1982,18 @@ function FillAllServices(bqs,callback)
 	var boptions = "";
 	var refs = [];
 	$.each( bqs, function( key, val ) {
-		var ref = val['servicereference']
+		var ref = val['servicereference'];
 		var name = val['servicename'];
 		boptions += "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>";
 		var slist = val['subservices'];
 		var items = [];
 		$.each( slist, function( key, val ) {
-			var ref = val['servicereference']
+			var ref = val['servicereference'];
 			if (!isInArray(refs,ref)) {
 				refs.push(ref);
 				if(ref.substring(0, 4) == "1:0:")
+					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
+				if(ref.substring(0, 5) == "4097:")
 					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
 				if(ref.substring(0, 7) == "1:134:1")
 					items.push( "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>" );
@@ -1950,47 +2007,60 @@ function FillAllServices(bqs,callback)
 
 }
 
-function GetAllServices(callback)
+function GetAllServices(callback,radio)
 {
 	if (typeof callback === 'undefined')
 		return;
+	if (typeof radio === 'undefined')
+		radio = false;
+	
+	var v = "gas-date";
+	var vd = "gas-data";
+	var ru = "";
 
+	if (radio)
+	{
+		v += "r";
+		vd += "r";
+		ru = "&type=radio";
+	}
+	
 	var date = new Date();
 	date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
 
 	// load allservices only once a day
-	var cache = GetLSValue('gas-date','')
+	var cache = GetLSValue(vd,'');
 	if(cache === date) {
-		cache = GetLSValue('gas-data',null)
+		cache = GetLSValue(v,null);
 		if(cache != null) {
-			var js = $.parseJSON(cache);
+			var js = JSON.parse(cache);
 			var bqs = js['services'];
 			FillAllServices(bqs,callback);
 			return;
 		}
 	}
 	$.ajax({
-		url: '/api/getallservices?renameserviceforxmbc=1',
+		url: '/api/getallservices?renameserviceforxmbc=1'+ru,
+		dataType: "json",
 		success: function ( data ) {
-			SetLSValue('gas-data',data);
-			SetLSValue('gas-date',date);
-			var js = $.parseJSON(data);
-			var bqs = js['services'];
+			var sdata = JSON.stringify(data);
+			SetLSValue(v,sdata);
+			SetLSValue(vd,date);
+			var bqs = data['services'];
 			FillAllServices(bqs,callback);
 		}
 	});
 }
-
 var SSHelperObj = function () {
 	var self;
 	var screenshotInterval = false;
 	var ssr_i = 30;
 
 	return {
-
 		setup: function()
 		{
 			self = this;
+			clearInterval(self.screenshotInterval);
 			self.ssr_i = parseInt(GetLSValue('ssr_i','30'));
 			
 			$('#screenshotbutton0').click(function(){grabScreenshot('all');});
@@ -2038,7 +2108,9 @@ var SSHelperObj = function () {
 
 		},setSInterval: function()
 		{
-			self.screenshotInterval = setInterval("grabScreenshot('auto')", (self.ssr_i+1)*1000);
+			self.screenshotInterval = setInterval( function() { grabScreenshot('auto'); }, (self.ssr_i+1)*1000);
 		}
-	}
+	};
 };
+
+var SSHelper = new SSHelperObj();

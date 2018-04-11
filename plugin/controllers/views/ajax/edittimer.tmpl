@@ -4,13 +4,14 @@
 .t,.t2,.t3 { display:table;width: 100%; padding-bottom:10px;background-image:none;}
 .t3.ui-widget-content,.t2.ui-widget-content,.t.ui-widget-content { border:none;}
 .t3 > div,.t > div,.t2 > div { display:table-cell;}
-.t div:first-child { width: 150px;vertical-align:top;}
+.t > div:first-child { width: 150px;vertical-align:top;}
 .t2 div{ width: 50%;}
 .t3 div{ width: 33%;}
 #enabled,#justplay,#always_zap,#timerend,#cbradio,#rcb,#sep1,#timerbegin {margin-left:5px;}
 #justplay,#always_zap,#sep1,#timerbegin {margin-right:5px;}
 #repeatdays > label,#tagsnew > label { line-height:.9em;padding-left:10px;padding-right:10px; }
-
+#repeatdays span.ui-icon { display:none! important; }
+#bouquet_select-menu {max-height: 300px;}
 </style>
 <form>
 <div>
@@ -53,7 +54,7 @@
 		#set $i=0
 		#for $day in [$tstrings['mo'], $tstrings['tu'], $tstrings['we'], $tstrings['th'], $tstrings['fr'], $tstrings['sa'], $tstrings['su']]
 			#set $value = 2 ** $i
-			<input type="checkbox" name="repeated" id="day$i" value="$value" /><label for="day$i">$day</label>
+			<label for="day$i">$day</label><input type="checkbox" name="repeated" id="day$i" value="$value" />
 			#set $i=$i+1
 		#end for
 		</span>
@@ -151,6 +152,18 @@ $('#timerend').datetimepicker({
 
 $('#repeatdays').buttonset();
 
+$(function() { 
+	$("#bouquet_select").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "100%"});
+
+	$(".chosen-container .chosen-drop").addClass('ui-widget-content');
+	if (theme == 'eggplant' || theme == 'vader')
+	{
+		$(".chosen-container .chosen-drop").css('background-image','none');
+	}
+
+});
+
+
 var h = ($(window).height() > 700) ? 620:520;
 var w = ($(window).width() > 800) ? 740:650;
 
@@ -168,11 +181,10 @@ $('#editTimerForm').dialog({
 					repeated += parseInt($(this).val());
 				});
 				var tags = "";
-				$('[name="tagsnew"]:checked').each(function() {
+				$('#tagsnew').children("input:checked").each(function() {
 					if(tags!="")
 						tags+=" ";
 					tags += $(this).val();
-					
 				});
 				var urldata = { sRef: $('#bouquet_select').val(),
 					end: Math.round(enddate.getTime() / 1000),
@@ -210,8 +222,8 @@ $('#editTimerForm').dialog({
 						async: false,
 						url: "/api/timeradd?",
 						data: urldata,
-						success: function(data) {
-							result = $.parseJSON(data);
+						dataType: "json",
+						success: function(result) {
 							if (result.result) {
 								canclose = true;
 							}
@@ -239,8 +251,8 @@ $('#editTimerForm').dialog({
 						async: false,
 						url: "api/timerchange?",
 						data: urldata,
-						success: function(data) {
-							result = $.parseJSON(data);
+						dataType: "json",
+						success: function(result) {
 							if (result.result) {
 								canclose = true;
 							}
@@ -282,5 +294,5 @@ $('#editTimerForm').dialog({
 checkVPS();
 
 #end raw
-
 </script>
+<link rel="stylesheet" type="text/css" href="/css/chosen.min.css" />

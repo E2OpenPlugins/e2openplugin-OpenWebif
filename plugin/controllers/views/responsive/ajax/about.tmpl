@@ -1,0 +1,65 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
+<div class="col-xs-12">
+	<div class="card">
+		<div class="header">
+			<div class="row clearfix">
+				<div class="col-xs-12">
+					<h2><i class="material-icons material-icons-centered">announcement</i>$tstrings['about']</h2>
+				</div>
+			</div>
+		</div>
+		<div class="body">
+			<div class="row clearfix">
+				<div class="col-xs-12 align-center">
+					<h2>OpenWebif</h2>
+					<h3>$tstrings['openwebif_header']</h3>
+					<h3>$tstrings['version']: $info.owiver</h3>
+					<h3>$tstrings['site_source']: <a href='https://github.com/E2OpenPlugins/e2openplugin-OpenWebif' target="_blank" >Github</a></h3>
+					<hr/>
+						<img class="img-responsive center-block" src="images/about.jpg" alt="about" style="display:none;" id="ajpg">
+						<img class="img-responsive center-block" src="themes/about.png" alt="about" onerror='\$(this).hide();\$("#ajpg").show();'>
+					<hr/>
+					<h3>$tstrings['authors']</h3>
+					<div class="info">
+					meo aka bacicciosat<br/>
+					skaman<br/>
+					homey-GER<br/>
+					nobody9<br/>
+					rincewind<br/>
+					jbleyel<br/>
+					SpaceRat aka Schimmelreiter<br/>
+					plnick
+					</div>
+					<h3>$tstrings['contributors']</h3>
+					<div class="info">
+					Army (Graphics)<br/>
+					Milo, Cimarast<br/>
+						HSA ($tstrings['translation_spanish'])
+					</div>
+					<hr/>
+					<h3>$tstrings['javalib']</h3>
+					<div class="info">
+						<a href='http://jqueryui.com/' target="_blank" >Jquery UI</a>
+					</div>
+					<hr/>
+					<h3>$tstrings['template_engine']</h3>
+					<div class="info">
+						<a href='http://www.cheetahtemplate.org/' target="_blank" >Cheetah</a>
+					</div>
+					<hr/>
+					<h3>Responsive Design</h3>
+					<div class="info">
+						<a href='https://github.com/gurayyarar/AdminBSBMaterialDesign' target="_blank" >AdminBSB - Material Design</a></br>
+						<a href='https://www.vuplus-support.org' target="_blank" >plnick - VTi</a></br>
+					</div>
+					<hr/>
+					<h3>$tstrings['license']</h3>
+					<code class="info center-block" style="white-space: word-wrap; margin: 0 100px;">
+						$tstrings['license_text']</br>
+						For full source code please download package vti-openwebif-src.ipk
+					</code>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

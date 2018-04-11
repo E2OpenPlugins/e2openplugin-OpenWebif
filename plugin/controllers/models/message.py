@@ -13,9 +13,11 @@ from Screens.MessageBox import MessageBox
 
 lastreply = None
 
+
 def messageReply(reply):
 	global lastreply
 	lastreply = reply
+
 
 def sendMessage(session, message, ttype, timeout):
 	global lastreply
@@ -32,6 +34,7 @@ def sendMessage(session, message, ttype, timeout):
 		"result": True,
 		"message": _('Message sent successfully!')
 	}
+
 
 def getMessageAnswer():
 	global lastreply

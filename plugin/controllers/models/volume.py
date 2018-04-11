@@ -11,6 +11,7 @@
 
 from Components.VolumeControl import VolumeControl
 
+
 def getVolumeStatus():
 	owebif_vctrl = VolumeControl.instance
 	return {
@@ -20,13 +21,15 @@ def getVolumeStatus():
 		"ismute": owebif_vctrl.volctrl.isMuted()
 	}
 
+
 def setVolumeUp():
 	owebif_vctrl = VolumeControl.instance
 	owebif_vctrl.volUp()
 	ret = getVolumeStatus()
 	ret["message"] = "Volume changed"
 	return ret
-	
+
+
 def setVolumeDown():
 	owebif_vctrl = VolumeControl.instance
 	owebif_vctrl.volDown()
@@ -34,12 +37,14 @@ def setVolumeDown():
 	ret["message"] = "Volume changed"
 	return ret
 
+
 def setVolumeMute():
 	owebif_vctrl = VolumeControl.instance
 	owebif_vctrl.volMute()
 	ret = getVolumeStatus()
 	ret["message"] = "Mute toggled"
 	return ret
+
 
 def setVolume(value):
 	owebif_vctrl = VolumeControl.instance

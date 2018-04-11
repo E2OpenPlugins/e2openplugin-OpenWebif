@@ -1,0 +1,1599 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenWebif\n"
+"POT-Creation-Date: 2017-06-08 10:04+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Мартин Петков <marto74bg@yahoo.co.uk>\n"
+"Language-Team: \n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 "
+"&& (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SearchPath-0: ../plugin\n"
+
+msgid "%s %s is locked."
+msgstr "%s %s е заключен."
+
+msgid "%s free / %s total"
+msgstr "%s свободни / %s общо"
+
+msgid "(Shift + Click for Long Press)"
+msgstr "(shift + бутон = Дълго Натискане)"
+
+msgid "AGC"
+msgstr "AGC"
+
+msgid "About"
+msgstr "Относно"
+
+msgid "Add"
+msgstr "Добави"
+
+msgid "Add AutoTimer"
+msgstr "Добави Автотаймер"
+
+msgid "Add Autotimer to Tags"
+msgstr "Добави Автотаймер към Етикети"
+
+msgid "Add Bouquet"
+msgstr "Добави букет"
+
+msgid "Add Marker"
+msgstr "Добави маркер"
+
+msgid "Add Name to Tags"
+msgstr "Добави Име към Етикетите"
+
+msgid "Add Provider as new Bouquet"
+msgstr "Добави провайдера като нов букет"
+
+msgid "Add Similar on Conflict"
+msgstr "Добави аналогичен при конфликт"
+
+msgid "Add Spacer"
+msgstr "Добави празно място"
+
+msgid "Add Timer"
+msgstr "Добави Таймер"
+
+msgid "Add Zap Timer"
+msgstr "Добави таймер за превключване"
+
+msgid "Add channel(s) as alternate"
+msgstr "Добави канал(и) като алтернатива"
+
+msgid "Add channel(s) to Bouquet"
+msgstr "Добави канал(и) в букет"
+
+msgid "Add service name to stream information"
+msgstr "Добави име на канала в информацията за стрийма"
+
+msgid "Added %s to alternative service %s."
+msgstr "Добавен %s към алтернативен канал %s."
+
+msgid "After Event"
+msgstr "След Предаването"
+
+msgid "After event"
+msgstr "След предаването"
+
+msgid "All"
+msgstr "Всички"
+
+msgid "All Channels"
+msgstr "Всички канали"
+
+msgid ""
+"All Files of this Software are open source software; you can redistribute it and/"
+"or modify it under the terms of the GNU General Public License version 3 as "
+"published by the Free Software Foundation."
+msgstr ""
+"Всички файлове от този Софтуер са с отворен изходен код; Вие можете да го "
+"разпространявате и / или изменяте в съответствие с условията на GNU General "
+"Public License версия 3, публикувана от Free Software Foundation."
+
+msgid "All alternative services deleted."
+msgstr "Всички алтернативни канали са изтрити."
+
+msgid "Alternative %s created failed."
+msgstr "Грешка при създаване на %s алтернативи."
+
+msgid "Allow IPK Upload"
+msgstr "Позволи IPK Kачване"
+
+msgid "Always"
+msgstr "Винаги"
+
+msgid "Amount of recordings left"
+msgstr "Количество оставащи записи"
+
+msgid "Answer is NO!"
+msgstr "Отговора е НЕ!"
+
+msgid "Answer is YES!"
+msgstr "Отговора е ДА!"
+
+msgid "Any service/recording"
+msgstr "Който и да е канал/запис"
+
+msgid "Apid"
+msgstr "Apid"
+
+msgid "April"
+msgstr "Април"
+
+msgid "Ask, default No"
+msgstr "Питай, по подразбиране - Не"
+
+msgid "Ask, default Yes"
+msgstr "Питай, по подразбиране - Да"
+
+msgid "August"
+msgstr "Август"
+
+msgid "Authors"
+msgstr "Автори"
+
+msgid "Auto"
+msgstr "Авто"
+
+msgid "AutoPoll"
+msgstr "Авто проверка"
+
+msgid "AutoTimer"
+msgstr "Автотаймер"
+
+msgid "AutoTimer Edit"
+msgstr "Автотаймер Редактор"
+
+msgid "AutoTimer List"
+msgstr "Список с Автотаймери"
+
+msgid "AutoTimer Settings"
+msgstr "Автотаймер - настройки"
+
+msgid "Autotimer Preview"
+msgstr "Преглед на Автотаймерите"
+
+msgid "BER"
+msgstr "BER"
+
+msgid "Back"
+msgstr "Назад"
+
+msgid "Background only"
+msgstr "Само във фон"
+
+msgid "Begin"
+msgstr "Начало"
+
+msgid "Begin of \"after event\" timespan"
+msgstr "Начало \"след предаването\" на промеждутъка от време"
+
+msgid "Begin of timespan"
+msgstr "Начало на промеждутъка от време"
+
+msgid "Bouquet %s already exists."
+msgstr "Букета %s вече съществува."
+
+msgid "Bouquet %s can not be moved."
+msgstr "Букета %s не може да се премести."
+
+msgid "Bouquet %s created."
+msgstr "Букета %s е създаден."
+
+msgid "Bouquet %s deleted."
+msgstr "Букета %s е изтрит."
+
+msgid "Bouquet %s is locked."
+msgstr "Букета %s е заключен."
+
+msgid "Bouquet %s is unlocked."
+msgstr "Букета %s е отключен."
+
+msgid "Bouquet %s moved."
+msgstr "Букета %s е преместен."
+
+msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
+msgstr ""
+"Грешка при изтриване на букета %s, референса или изменяемия списък не е "
+"действителен."
+
+msgid "Bouquet %s removed failed."
+msgstr "Грешка при изтриване на букета %s"
+
+msgid "Bouquet Editor"
+msgstr "Букет Редактор"
+
+msgid "Bouquet renamed successfully."
+msgstr "Букета е преименуван успешно."
+
+msgid "Bouquet-settings were restored successfully"
+msgstr "Настройките за букетите са възстановени успешно"
+
+msgid "BouquetEditor"
+msgstr "Букет Редактор"
+
+msgid "Bouquetlist is not editable!"
+msgstr "Списъка с букети не може да се редактира!"
+
+msgid "Bouquets"
+msgstr "Букети"
+
+msgid "Box"
+msgstr "Приемник"
+
+msgid "Box Control"
+msgstr "Управление на приемника"
+
+msgid "Box Info"
+msgstr "Информация за приемника"
+
+msgid "Box Uptime"
+msgstr "Непрекъсната работа на приемника"
+
+msgid "Brand"
+msgstr "Марка"
+
+msgid "Cable"
+msgstr "Кабелен"
+
+msgid "Calendar Week"
+msgstr "Седмичен Календар"
+
+msgid "Cancel"
+msgstr "Отмяна"
+
+msgid "Capacity"
+msgstr "Обем"
+
+msgid "Channel"
+msgstr "Канал"
+
+msgid "Channels"
+msgstr "Канали"
+
+msgid "Character encoding for EPG data"
+msgstr "Тип кодировка на текста за EPG данни"
+
+msgid "Chipset"
+msgstr "Чипсет"
+
+msgid "Cleanup Timers"
+msgstr "Премахване на завършилите таймери"
+
+msgid "Close"
+msgstr "Затвори"
+
+msgid "Conflicting Timer(s) detected! %s"
+msgstr "Открит е конфликт с таймера(ите)! %s"
+
+msgid "Contributors"
+msgstr "Сътрудници"
+
+msgid "Control"
+msgstr "Управление"
+
+msgid "Could not add timer '%s'!"
+msgstr "Не може да се добави таймер '%s'!"
+
+msgid "Could not find timer '%s' with given start and end time!"
+msgstr "Не може да се намери таймер '%s' със зададените времена за начало и край!"
+
+msgid "Current"
+msgstr "Текущ"
+
+msgid "Current Event"
+msgstr "Текущо Предаване"
+
+msgid "Custom box name"
+msgstr "Потребителско име на приемника"
+
+msgid "Custom offset"
+msgstr "Потребителско преместване"
+
+msgid "DHCP"
+msgstr "DHCP"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "December"
+msgstr "Декември"
+
+msgid "Deep-Standby"
+msgstr "Изключване"
+
+msgid "Default"
+msgstr "По подразбиране"
+
+msgid "Delay Standby"
+msgstr "Задръжка в режим готовност"
+
+msgid "Delete"
+msgstr "Изтрий"
+
+msgid "Delete Bouquet"
+msgstr "Изтрий Букет"
+
+msgid "Delete Recording"
+msgstr "Изтрий Запис"
+
+msgid "Delete Timer"
+msgstr "Изтрий Таймер"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "Disable Timer"
+msgstr "Спри Таймер"
+
+msgid "Disable remote access for user root"
+msgstr "Спри достъпа за потребител root"
+
+msgid "Disabled on Conflict"
+msgstr "Спрян при конфликт"
+
+msgid "Display Mode"
+msgstr "Режим на Дисплея"
+
+msgid "Display duration (s)"
+msgstr "Показване на дисплея (сек)"
+
+msgid "Distro"
+msgstr "Програмно обезпечение"
+
+msgid "Do you really want to delete the AT"
+msgstr "Искате ли да изтриете АТ?"
+
+msgid "Do you really want to delete the bouquet"
+msgstr "Искате ли да изтриете букета?"
+
+msgid "Do you really want to delete the selected item(s)"
+msgstr "Искате ли да изтриете избраните елементи?"
+
+msgid "Do you really want to restore from file"
+msgstr "Искате ли да възстановите от файла?"
+
+msgid "Dolby"
+msgstr "Долби"
+
+msgid "Done"
+msgstr "Готово"
+
+msgid "Download"
+msgstr "Изтегли"
+
+msgid "Download Playlist for"
+msgstr "Изтегли Плейлист за"
+
+msgid "Drivers"
+msgstr "Драйвери"
+
+msgid "Duration"
+msgstr "Продължителност"
+
+msgid "E"
+msgstr "E"
+
+msgid "EPG"
+msgstr "EPG"
+
+msgid "EPG encoding"
+msgstr "EPG Кодировка"
+
+msgid "EPGRefresh"
+msgstr "EPG Обновяване"
+
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr "ГРЕШКА: не може да се настрои таймера за сън, приемника е в режим готовност"
+
+msgid "Edit Timer"
+msgstr "Редактиране на Таймер"
+
+msgid "Editor"
+msgstr "Редактор"
+
+msgid "Enable Authentication for streaming"
+msgstr "Включи Удостоверяване за стрийминга"
+
+msgid "Enable Filtering"
+msgstr "Включи филтриране"
+
+msgid "Enable HTTP Authentication"
+msgstr "Включи HTTP Удостоверяване"
+
+msgid "Enable HTTPS"
+msgstr "Включи HTTPS"
+
+msgid "Enable HTTPS Authentication"
+msgstr "Включи HTTPS Удостоверяване"
+
+msgid "Enable Messages"
+msgstr "Включи Съобщения"
+
+msgid "Enable Parental Control"
+msgstr "Включи Родителски Контрол"
+
+msgid "Enable Timer"
+msgstr "Включи Таймер"
+
+msgid "Enable access from VPNs"
+msgstr "Включи достъп от VPN"
+
+msgid "Enabled"
+msgstr "Включен"
+
+msgid "Encrypted"
+msgstr "Кодиран"
+
+msgid "End"
+msgstr "Край"
+
+msgid "End of \"after event\" timespan"
+msgstr "Край \"след предаването\" на промеждутъка от време"
+
+msgid "End of Timespan"
+msgstr "Край на промеждутъка от време"
+
+msgid "Enter new name for the bouquet"
+msgstr "Въведете ново име на букета"
+
+msgid "Enter new name for the marker"
+msgstr "Въведете ново име на маркера"
+
+msgid "Epg Search"
+msgstr "Търсене в EPG"
+
+msgid "Error"
+msgstr "Грешка"
+
+msgid "Error parsing vps.xml"
+msgstr "Грешка при четене на vps.xml"
+
+msgid "Error upload File"
+msgstr "Грешка при зареждане на файла"
+
+msgid "Error while preparing backup file, %s does not exists."
+msgstr "Грешка при подготовка за създаване на backup файла, %s не съществува."
+
+msgid "Error while preparing backup file."
+msgstr "Грешка при подготовка за създаване на backup файла."
+
+msgid "Error writing File"
+msgstr "Грешка при запис на файла"
+
+msgid "Error, %s does not exists, restore is not possible..."
+msgstr "Грешка, %s не съществува, възстановяването не е възможно..."
+
+msgid "Error, %s was not created with WebBouquetEditor..."
+msgstr "Грешка, %s не е бил създаден с Редактора на букети..."
+
+msgid "Error: Bouquet %s could not deleted, OSError."
+msgstr "Грешка: Букет %s не може да се изтрие, OSError."
+
+msgid "Event not found"
+msgstr "Предаването не е намерено"
+
+msgid "EventId not found"
+msgstr "Id на предаването не е открито"
+
+msgid "Every"
+msgstr "Всеки"
+
+msgid "Exclude"
+msgstr "С изключение на"
+
+msgid "Execute \"after event\" during timespan"
+msgstr "Изпълни \"след предаването\" по време на промеждутъка от време"
+
+msgid "Export"
+msgstr "Експорт"
+
+msgid "Extras"
+msgstr "Допълнително"
+
+msgid "Fake Recording"
+msgstr "Запис Имитация"
+
+msgid "Fastscan"
+msgstr "Бързо търсене"
+
+msgid "February"
+msgstr "Февруари"
+
+msgid "Firmware version"
+msgstr "Имидж версия"
+
+msgid "Force"
+msgstr "Принудително"
+
+msgid "Fr"
+msgstr "Пт"
+
+msgid "Free"
+msgstr "Свободно"
+
+msgid "Free Memory"
+msgstr "Свободна Памет"
+
+msgid "Fri"
+msgstr "Пет"
+
+msgid "Friday"
+msgstr "Петък"
+
+msgid "Frontprocessor Version"
+msgstr "Версия на фронтпроцесора"
+
+msgid "GB"
+msgstr "ГБ"
+
+msgid "Gateway"
+msgstr "Шлюз"
+
+msgid "Get mutable list for new created alternative failed!"
+msgstr "Грешка при получаването на изменяемия списък за ново-създадени алтернативи!"
+
+msgid "Get mutable list for new created bouquet failed!"
+msgstr "Грешка при получаването на изменяемия списък за ново-създадени букет!"
+
+msgid "Grab Screenshot"
+msgstr "Направи Скрийншот"
+
+msgid "Gui version"
+msgstr "GUI Версия"
+
+msgid "HTTP port"
+msgstr "HTTP Порт"
+
+msgid "HTTPS port"
+msgstr "HTTPS Порт"
+
+msgid "Hard disk model"
+msgstr "Модел на твърдия диск"
+
+msgid "Hide full remote"
+msgstr "Скрий пълното дистанционно"
+
+msgid "High Resolution"
+msgstr "Висока Резолюция"
+
+msgid "Hour"
+msgstr "Час"
+
+msgid "IPv4 address"
+msgstr "IPv4 адрес"
+
+msgid "IPv4-only Python/Twisted"
+msgstr "IPv4-само Python/Twisted"
+
+msgid "IPv4-only kernel"
+msgstr "IPv4-само ядро"
+
+msgid "IPv6 address(es)"
+msgstr "IPv6 адрес(а)"
+
+msgid "Import"
+msgstr "Импорт"
+
+msgid "Include"
+msgstr "Включи"
+
+msgid "Include description"
+msgstr "Включи описание"
+
+msgid "Infinite Instant recording started"
+msgstr "Безкраен Незабавен Запис започна"
+
+msgid "Infos"
+msgstr "Информация"
+
+msgid "Inherit Autotimer"
+msgstr "Наследен Автотаймер"
+
+msgid "Instant Record"
+msgstr "Незабавен Запис"
+
+msgid "Instant record for current Event started"
+msgstr "Незабавен запис за текущото предаване започна"
+
+msgid "Internal error!"
+msgstr "Вътрешна грешка!"
+
+msgid "Interval (in h)"
+msgstr "Интервал (в часове)"
+
+msgid "Interval (min.)"
+msgstr "Интервал (мин.)"
+
+msgid "Interval (sec.)"
+msgstr "Интервал (сек.)"
+
+msgid "January"
+msgstr "Януари"
+
+msgid "Javascript Libraries"
+msgstr "Javascript Библиотеки"
+
+msgid "July"
+msgstr "Юли"
+
+msgid "June"
+msgstr "Юни"
+
+msgid "Just play"
+msgstr "Само възпроизведи"
+
+msgid "Kernel"
+msgstr "Ядро"
+
+msgid "LCD4Linux Setup"
+msgstr "LCD4Linux Настройки"
+
+msgid "LICENSE"
+msgstr "ЛИЦЕНЗ"
+
+msgid "Label series"
+msgstr "Серия етикети"
+
+msgid "Link Speed"
+msgstr "Скорост на Връзката"
+
+msgid "List of Timers has been cleaned"
+msgstr "Списъка с Таймерите беше изчистен"
+
+msgid "Location"
+msgstr "Разположение"
+
+msgid "Locked"
+msgstr "Заключен"
+
+msgid "MAC address"
+msgstr "MAC адрес"
+
+msgid "MB"
+msgstr "МБ"
+
+msgid "Main"
+msgstr "Главна"
+
+msgid "Main Memory"
+msgstr "Основна Памет"
+
+msgid "March"
+msgstr "Март"
+
+msgid "Marker added."
+msgstr "Маркер е добавен."
+
+msgid "Match title"
+msgstr "Съвпадение на заглавието"
+
+msgid "Max Days"
+msgstr "Максимум Дни"
+
+msgid "May"
+msgstr "Май"
+
+msgid "Message sent successfully!"
+msgstr "Съобщението беше успешно изпратено!"
+
+msgid "Method"
+msgstr "Метод"
+
+msgid "Minute"
+msgstr "Mинута"
+
+msgid "Missing mandatory parameter '%s'"
+msgstr "Липсва задължителен параметър '%s'"
+
+msgid "Missing requesteter: sRef"
+msgstr "Липсва регистър параметър: sRef"
+
+msgid "Mo"
+msgstr "Пн"
+
+msgid "Model"
+msgstr "Модел"
+
+msgid "Mon"
+msgstr "Пон"
+
+msgid "Monday"
+msgstr "Понеделник"
+
+msgid "Monthly"
+msgstr "Ежемесечно"
+
+msgid "Movielist"
+msgstr "Списък с филми"
+
+msgid "Movies"
+msgstr "Записи"
+
+msgid "Multi-Bouquet is not enabled!"
+msgstr "Мулти-Букет не е включен!"
+
+msgid "MultiEPG"
+msgstr "Мулти EPG"
+
+msgid "Name"
+msgstr "Име"
+
+msgid "Name of the Bouquet"
+msgstr "Име на Букета"
+
+msgid "Name of the Marker"
+msgstr "Име на Маркера"
+
+msgid "Namespace"
+msgstr "Елементи"
+
+msgid "Network Interface"
+msgstr "Мрежов Интерфейс"
+
+msgid "Network Shares"
+msgstr "Мрежови Споделяния"
+
+msgid "Never"
+msgstr "Никога"
+
+msgid "New"
+msgstr "Нов"
+
+msgid "New Name"
+msgstr "Ново Име"
+
+msgid "No"
+msgstr "Не"
+
+msgid "No Parent Control Setup Pin given!"
+msgstr "Не е зададен ПИН за родителския контрол!"
+
+msgid "No answer in time"
+msgstr "Няма отговор навреме"
+
+msgid "No bouquet given!"
+msgstr "Не е зададен букет!"
+
+msgid "No bouquet name given!"
+msgstr "Не е зададено име на букета!"
+
+msgid "No current service given!"
+msgstr "Не е зададен текущ канал!"
+
+msgid "No event found! Not recording!"
+msgstr "Не е открито предаване! Не се записва!"
+
+msgid "No marker-name given!"
+msgstr "Не е зададено име на маркера!"
+
+msgid "No matching Timer found"
+msgstr "Не е открит съответстващ таймер"
+
+msgid "No new servicename given!"
+msgstr "Не е зададено ново име на канала!"
+
+msgid "No position given!"
+msgstr "Не е зададена позиция!"
+
+msgid "No provider given!"
+msgstr "Не е зададен провайдър!"
+
+msgid "No service given!"
+msgstr "Не е зададен канал!"
+
+msgid "None"
+msgstr "Никой"
+
+msgid "Not after"
+msgstr "Не след"
+
+msgid "Not before"
+msgstr "Не преди"
+
+msgid "Nothing"
+msgstr "Нищо"
+
+msgid "Nothing playing."
+msgstr "Нищо не се възпроизвежда."
+
+msgid "Notify if Conflict"
+msgstr "Покажи съобщение при конфилкт"
+
+msgid "Notify if Similar"
+msgstr "Покажи съобщение при аналогичен"
+
+msgid "November"
+msgstr "Ноември"
+
+msgid "Now"
+msgstr "Сега"
+
+msgid "OSCam Webinterface"
+msgstr "OSCam Уеб-интерфейс"
+
+msgid "OSD"
+msgstr "OSD"
+
+msgid "October"
+msgstr "Октомври"
+
+msgid "Offset after recording (in m)"
+msgstr "Обедини след записа ( в мин.)"
+
+msgid "Offset before recording (in m)"
+msgstr "Обедини преди записа (в мин.)"
+
+msgid "On"
+msgstr "Вкл"
+
+msgid "On any service"
+msgstr "За който и да е канал"
+
+msgid "On same service"
+msgstr "За този канал"
+
+msgid "Onid"
+msgstr "Onid"
+
+msgid "Only match during timespan"
+msgstr "Само съвпадение в промеждутъка от време"
+
+msgid "Open Source Web Interface for Linux set-top box"
+msgstr "Уеб Интерфейс с отворен код за линукс-приемник"
+
+msgid "Open in new window"
+msgstr "Отвори в нов прозорец"
+
+msgid "OpenWebInterface Enabled"
+msgstr "OpenWebif е включен"
+
+msgid "OpenWebif Browser Settings"
+msgstr "OpenWebif Браузър Настройки"
+
+msgid "OpenWebif Configuration"
+msgstr "OpenWebif Настройки"
+
+msgid "OpenWebif Settings"
+msgstr "OpenWebif Настройки"
+
+msgid "OpenWebif url: http://yourip:port"
+msgstr "OpenWebif url: http://IP приемник:порт"
+
+msgid "Orbital Position"
+msgstr "Орбитална Позиция"
+
+msgid "Override found with alternative service"
+msgstr "Замени открития в алтернативен канал"
+
+msgid "Parent Control Setup Pin is wrong!"
+msgstr "Грешен ПИН на родителския контрол!"
+
+msgid "Parent Control is not activated."
+msgstr "Родителския контрол не е активиран."
+
+msgid "Parse"
+msgstr "Анализ"
+
+msgid "Parse Autotimer"
+msgstr "Търсене на съвпадащ Автотаймер"
+
+msgid "Pcrpid"
+msgstr "Pcrpid"
+
+msgid "Picture in Picture"
+msgstr "Картина в Картината (PiP)"
+
+msgid "Picture in Picture (hidden)"
+msgstr "PiP (скрит режим)"
+
+msgid "Plain"
+msgstr "Обикновен"
+
+msgid "Playback"
+msgstr "Възпроизведи"
+
+msgid "Playlist"
+msgstr "Плейлист"
+
+msgid "Please enter filename"
+msgstr "Моля въведете име на файла"
+
+msgid "Pmtpid"
+msgstr "Pmtpid"
+
+msgid "Power Control"
+msgstr "Управление на Захранването"
+
+msgid "PowerTimer feature not available"
+msgstr "Функциите на таймера за захранването не са достъпни"
+
+msgid "Provider"
+msgstr "Провайдър"
+
+msgid "Providers"
+msgstr "Провайдъри"
+
+msgid "Radio"
+msgstr "Радио канали"
+
+msgid "Really delete the recording"
+msgstr "Искате ли да изтриете записа?"
+
+msgid "Really delete the timer"
+msgstr "Искате ли да изтриете таймера?"
+
+msgid "Really rename the recording"
+msgstr "Искате ли да преименувате записа?"
+
+msgid "Reboot Box"
+msgstr "Рестарт"
+
+msgid "Record a maximum of x times"
+msgstr "Запиши максимум х пъти"
+
+msgid "Record+ZAP"
+msgstr "Запис+Превключи"
+
+msgid "Recording Status"
+msgstr "Статус на записите"
+
+msgid "Refresh"
+msgstr "Обнови"
+
+msgid "Refresh Timer"
+msgstr "Обнови таймер"
+
+msgid "Refresh automatically every"
+msgstr "Обнови автоматично всеки"
+
+msgid "Refresh now"
+msgstr "Обнови сега"
+
+msgid "Reload"
+msgstr "Презареди"
+
+msgid "Remote"
+msgstr "Дистанционно"
+
+msgid "Rename"
+msgstr "Преименувай"
+
+msgid "Rename Bouquet"
+msgstr "Преименувай букет"
+
+msgid "Rename Recording"
+msgstr "Преименувай запис"
+
+msgid "Repeated"
+msgstr "Повторено"
+
+msgid "Require client cert for HTTPS"
+msgstr "Искане за клиентски сертификат за HTTPS"
+
+msgid "Require description to be unique"
+msgstr "Искане за уникално описание"
+
+msgid "Reset count"
+msgstr "Нулиране на брояча"
+
+msgid "Restart GUI"
+msgstr "Рестарт GUI"
+
+msgid "Restrict to Bouquets"
+msgstr "Ограничение на букети"
+
+msgid "Restrict to events on certain dates"
+msgstr "Ограничение до предаванията на определени дати"
+
+msgid "Root"
+msgstr "Главна"
+
+msgid "SLAAC"
+msgstr "SLAAC"
+
+msgid "SNR"
+msgstr "SNR"
+
+msgid "Sa"
+msgstr "Сб"
+
+msgid "Safe mode"
+msgstr "Безопасен режим"
+
+msgid "Sat"
+msgstr "Съб"
+
+msgid "Satellites"
+msgstr "Сателити"
+
+msgid "Satfinder"
+msgstr "Търсене на сигнал"
+
+msgid "Saturday"
+msgstr "Събота"
+
+msgid "Save"
+msgstr "Запис"
+
+msgid "Screenshot"
+msgstr "Скрийншот"
+
+msgid "Search"
+msgstr "Търсене"
+
+msgid "Search IMDb"
+msgstr "Търсене в IMDb"
+
+msgid "Search KinoPoisk"
+msgstr "Търсене в KinoPoisk"
+
+msgid "Search strictness"
+msgstr "Строгост на търсенето"
+
+msgid "Search type"
+msgstr "Тип на търсенето"
+
+msgid "Send Message"
+msgstr "Изпрати Съобщение"
+
+msgid "Send a Message"
+msgstr "Изпрати Съобщение"
+
+msgid "September"
+msgstr "Септември"
+
+msgid "Service"
+msgstr "Канал"
+
+msgid "Service %s added."
+msgstr "Канал %s е добавен."
+
+msgid "Service %s already exists in bouquet %s."
+msgstr "Канал %s вече съществува в букет %s"
+
+msgid "Service %s can not be removed."
+msgstr "Канал %s не може да се изтрие."
+
+msgid "Service %s is locked."
+msgstr "Канал %s е заключен."
+
+msgid "Service %s is unlocked."
+msgstr "Канал %s е отключен."
+
+msgid "Service %s moved."
+msgstr "Канал %s е преместен."
+
+msgid "Service %s removed from bouquet %s."
+msgstr "Канал %s е изтрит от букет %s."
+
+msgid "Service %s removed."
+msgstr "Канал %s е изтрит."
+
+msgid "Service can not be moved."
+msgstr "Канала не може да се премести."
+
+msgid "Service can not be renamed."
+msgstr "Канала не може да се преименува."
+
+msgid "Service is not an alternative."
+msgstr "Канала не е алтернативен."
+
+msgid "Service renamed successfully."
+msgstr "Канала бе переименуван успешно."
+
+msgid "Services"
+msgstr "Канали"
+
+msgid "Set maximum duration"
+msgstr "Задайте максимална продължителност"
+
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "Show EPG for"
+msgstr "Покажи EPG за"
+
+msgid "Show Full OpenWebif"
+msgstr "Покажи Пълен OpenWebif"
+
+msgid "Show Picon in channel list"
+msgstr "Покажи Пикон в списъка с канали"
+
+msgid "Show Picons in channel list"
+msgstr "Покажи Пикони в списъка с канали"
+
+msgid "Show box name in header"
+msgstr "Покажи името на приемника в заглавието"
+
+msgid "Show full remote"
+msgstr "Покажи пълното дистанционно"
+
+msgid "Show in Extensionsmenu"
+msgstr "Покажи в менюто с разширенията"
+
+msgid "Shutdown"
+msgstr "Изключване"
+
+msgid "Sid"
+msgstr "Sid"
+
+msgid "Simulate"
+msgstr "Симулирай"
+
+msgid "Site and sources"
+msgstr "Сайт и изходен код"
+
+msgid "SleepTimer Error"
+msgstr "Грешка в таймера за сън"
+
+msgid "SleepTimer error"
+msgstr "Грешка в таймера за сън"
+
+msgid "Sleeptimer has been disabled"
+msgstr "Таймера за сън беше спрян"
+
+msgid "Sleeptimer is disabled"
+msgstr "Таймера за сън е спрян"
+
+msgid "Sleeptimer is enabled"
+msgstr "Таймера за сън е включен"
+
+msgid "Sleeptimer set to %d minutes"
+msgstr "Таймера за сън е настроен на %d минути"
+
+msgid "Software"
+msgstr "Софтуер"
+
+msgid "Sorry this page is not yet implemented"
+msgstr "Извинете, тази страница не е достъпна"
+
+msgid "Spinner"
+msgstr "Спинър"
+
+msgid "Sref"
+msgstr "Sref"
+
+msgid "Standby"
+msgstr "Готовност"
+
+msgid "Standby Toggle"
+msgstr "Режим Готовност"
+
+msgid "Start"
+msgstr "Старт"
+
+msgid "Start Instant Record"
+msgstr "Старт на незабавен запис"
+
+msgid "Start time is after end time"
+msgstr "Времето за начало е след времето за край"
+
+msgid "Stream"
+msgstr "Стрийм"
+
+msgid "Su"
+msgstr "Нд"
+
+msgid "Subnet mask"
+msgstr "Маска на подмрежата"
+
+msgid "Subservices"
+msgstr "Подканали"
+
+msgid "Sun"
+msgstr "Нед"
+
+msgid "Sunday"
+msgstr "Неделя"
+
+msgid "System OE"
+msgstr "Система OE"
+
+msgid "TB"
+msgstr "ТБ"
+
+msgid "TV"
+msgstr "ТВ"
+
+msgid "TV Guide"
+msgstr "ТВ гайд"
+
+msgid "TV Multi EPG"
+msgstr "ТВ Мулти EPG"
+
+msgid "Tags"
+msgstr "Етикети"
+
+msgid "Teletext"
+msgstr "Телетекст"
+
+msgid "Television"
+msgstr "Телевизия"
+
+msgid "Template Engine"
+msgstr "Шаблон на Двигателя"
+
+msgid "Terrestrial"
+msgstr "Наземна"
+
+msgid "Text"
+msgstr "Текст"
+
+msgid "Th"
+msgstr "Чт"
+
+msgid "The parameter '%s' can't be empty"
+msgstr "Параметър '%s' не може да бъде празен"
+
+msgid "The parameter 'command' must be a number"
+msgstr "Параметър 'command' трябва да бъде число"
+
+msgid "The timer '%s' has been %s successfully"
+msgstr "Таймер '%s' беше %s успешно"
+
+msgid "The timer '%s' has been deleted successfully"
+msgstr "Таймер '%s' беше успешно изтрит"
+
+msgid "The timer '%s' now recorded! Not disabled!"
+msgstr "Таймер '%s' записва в момента! Не може да се спре!"
+
+msgid "Theme"
+msgstr "Тема"
+
+msgid "This service can not be added."
+msgstr "Този канал не може да се добави."
+
+msgid "Thu"
+msgstr "Чтв"
+
+msgid "Thursday"
+msgstr "Четвъртък"
+
+msgid "Time"
+msgstr "Час"
+
+msgid "Timeline"
+msgstr "График"
+
+msgid "Timeout"
+msgstr "Тайм-аут"
+
+msgid "Timer"
+msgstr "Таймер"
+
+msgid "Timer '%s' added"
+msgstr "Таймер '%s' е добавен"
+
+msgid "Timer '%s' already exists!"
+msgstr "Таймер '%s' вече съществува!"
+
+msgid "Timer '%s' changed"
+msgstr "Таймер '%s' е променен"
+
+msgid "Timer '%s' not enabled while Conflict"
+msgstr "Таймер '%s' не може да се включи поради конфликт"
+
+msgid "Timer '%s' not saved while Conflict"
+msgstr "Таймер '%s' не може да се запише поради конфликт"
+
+msgid "Timer Added"
+msgstr "Таймера е добавен"
+
+msgid "Timer added"
+msgstr "Таймера е добавен"
+
+msgid "Timer conflict detected! Not recording!"
+msgstr "Открит е конфликт с таймера! Не се записва!"
+
+msgid "Timer type"
+msgstr "Тип на таймера"
+
+msgid "TimerList has been saved"
+msgstr "Списъка с таймерите беше запазен"
+
+msgid "Timerlist"
+msgstr "Таймер списък"
+
+msgid "Timers"
+msgstr "Таймери"
+
+msgid "Title"
+msgstr "Име"
+
+msgid "Transcode"
+msgstr "Транскодиране"
+
+msgid "Translation to Spanish"
+msgstr "Перевод на Испански"
+
+msgid "Try Guessing"
+msgstr "Вземете предвид съществуващ таймер"
+
+msgid "Tsid"
+msgstr "Tsid"
+
+msgid "Tu"
+msgstr "Вт"
+
+msgid "Tue"
+msgstr "Вто"
+
+msgid "Tuesday"
+msgstr "Вторник"
+
+msgid "Tuner Bit Error Rate BER"
+msgstr "Честота на битовите грешки на тунера (BER)"
+
+msgid "Tuner Number"
+msgstr "Номер на тунера"
+
+msgid "Tuner Signal"
+msgstr "Тунер Сигнал"
+
+msgid "Tuner Signal Power AGC"
+msgstr "Сила на тунер сигнала (AGC)"
+
+msgid "Tuner Signal Quality SNR"
+msgstr "Качество на тунер сигнала (SNR)"
+
+msgid "Tuner Signal Quality SNR_DB"
+msgstr "Качество на тунер сигнала (SNR_DB)"
+
+msgid "Tuner Type"
+msgstr "Тип на Тунера"
+
+msgid "Tuners"
+msgstr "Тунери"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "Unknown Volume command %s"
+msgstr "Неизвестна команда за сила на звука %s"
+
+msgid "Unknown command: '%s'"
+msgstr "Неизвестна команда: '%s'"
+
+msgid "Upcoming Events"
+msgstr "Предстоящи Предавания"
+
+msgid "Use a custom location"
+msgstr "Потребителско местоположение"
+
+msgid "Use custom box name"
+msgstr "Използвай потребителско име на приемника"
+
+msgid "Use new design"
+msgstr "Използвай новия дизайн"
+
+msgid "VPS"
+msgstr "VPS"
+
+msgid "VPS plugin not found"
+msgstr "VPS плъгина не е открит"
+
+msgid "Version"
+msgstr "Версия"
+
+msgid "Video"
+msgstr "Видео"
+
+msgid "Video Height"
+msgstr "Видео Височина"
+
+msgid "Video Wide"
+msgstr "Широкоекранен формат"
+
+msgid "Video Width"
+msgstr "Видео Ширина"
+
+msgid "Visibly"
+msgstr "Видим (режим ТВ)"
+
+msgid "Volume"
+msgstr "Усилване"
+
+msgid "Volume Control"
+msgstr "Контрол на Усилването"
+
+msgid "Vpid"
+msgstr "Vpid"
+
+msgid "W"
+msgstr "W"
+
+msgid "Waiting for answer ..."
+msgstr "Изчаква се отговор..."
+
+msgid "Wakeup"
+msgstr "Събуждане"
+
+msgid "Warning"
+msgstr "Внимание"
+
+msgid "We"
+msgstr "Ср"
+
+msgid "Web TV"
+msgstr "Уеб ТВ"
+
+msgid "Wed"
+msgstr "Сря"
+
+msgid "Wednesday"
+msgstr "Сряда"
+
+msgid "Weekday"
+msgstr "Делник"
+
+msgid "Weekend"
+msgstr "Уикенд"
+
+msgid "Weekly (Monday)"
+msgstr "Седмично (Понеделник)"
+
+msgid "Weekly (Sunday)"
+msgstr "Седмично (Неделя)"
+
+msgid "Without auth only local access is allowed!"
+msgstr "Без удостоверяване е разрешен само локален достъп!"
+
+msgid "Wizzard"
+msgstr "Помощник"
+
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr "Неправилен формат на параметъра 'set=%s'. Използвайте set=set15 "
+
+msgid "Yes/No"
+msgstr "Да/Не"
+
+msgid "Zap"
+msgstr "Превключи"
+
+msgid "Zap to"
+msgstr "Превключи на"
+
+msgid "Zapped to"
+msgstr "Превключено на"
+
+msgid "auto"
+msgstr "авто"
+
+msgid "case-insensitive search"
+msgstr "търсене без значение на регистъра"
+
+msgid "case-sensitive search"
+msgstr "търсене със значение на регистъра"
+
+msgid "description match"
+msgstr "съвпадение на описанието"
+
+msgid "disabled"
+msgstr "изключен"
+
+msgid "do nothing"
+msgstr "не прави нищо"
+
+msgid "error! Loading Page"
+msgstr "грешка при зареждане на страницата!"
+
+msgid "exact match"
+msgstr "пълно съвпадение"
+
+msgid "finished"
+msgstr "завършен"
+
+msgid "go to deep standby"
+msgstr "изключи"
+
+msgid "go to standby"
+msgstr "към режим готовност"
+
+msgid "in Description"
+msgstr "в Описанието"
+
+msgid "in Shortdescription"
+msgstr "в Краткото описание"
+
+msgid "in Title"
+msgstr "в Името"
+
+msgid "kB"
+msgstr "КБ"
+
+msgid "loading"
+msgstr "зареждане"
+
+msgid "manual/disabled"
+msgstr "ръчно/спрян"
+
+msgid "no description available"
+msgstr "няма достъпно описание"
+
+msgid "none/IPv4-only network"
+msgstr "нищо/IPv4-само мрежа"
+
+msgid "on Weekday"
+msgstr "в Делници"
+
+msgid "one two three four unknown command"
+msgstr "една /две / три / четири неизвестни команди"
+
+msgid "partial match"
+msgstr "частично съвпадение"
+
+msgid "r/o"
+msgstr "r/o"
+
+msgid "r/w"
+msgstr "r/w"
+
+msgid "record"
+msgstr "запис"
+
+msgid "running"
+msgstr "тече"
+
+msgid "seconds"
+msgstr "секунди"
+
+msgid "select Bouquets"
+msgstr "избор на Букети"
+
+msgid "select Channels"
+msgstr "избор на Канали"
+
+msgid "select Tags"
+msgstr "избор на Етикети"
+
+msgid "short description match"
+msgstr "краткото описание съвпада"
+
+msgid "standard"
+msgstr "стандарт"
+
+msgid "start match"
+msgstr "начало на съвпадения"
+
+msgid "static"
+msgstr "статичен"
+
+msgid "title or description match"
+msgstr "името или описанието съвпада"
+
+msgid "title or short description match"
+msgstr "името или краткото описание съвпада"
+
+msgid "transcoded"
+msgstr "транскодиран"
+
+msgid "type %s is not a number"
+msgstr "тип %s не е число"
+
+msgid "unknown"
+msgstr "неизвестно"
+
+msgid "using"
+msgstr "използва"
+
+msgid "via"
+msgstr "via"
+
+msgid "waiting"
+msgstr "изчакайте"
+
+msgid "wrong filetype"
+msgstr "грешен файл тип"
+
+msgid "zap"
+msgstr "превключи"
+
+msgid "zap before Stream"
+msgstr "превключи преди Стрийм"

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ##############################################################################
-#                        2011 E2OpenPlugins                                  #
+#                        2011-2017 E2OpenPlugins                             #
 #                                                                            #
 #  This file is open source software; you can redistribute it and/or modify  #
 #     it under the terms of the GNU General Public License version 2 as      #
@@ -10,47 +10,50 @@
 ##############################################################################
 
 from Plugins.Extensions.OpenWebif.__init__ import _
+import os
+import sys
+import time
+from twisted.web import version
+from socket import has_ipv6, AF_INET6, AF_INET, inet_ntop, inet_pton, getaddrinfo
 
+import NavigationInstance
 from Components.About import about
 from Components.config import config
 from Components.NimManager import nimmanager
 from Components.Harddisk import harddiskmanager
 from Components.Network import iNetwork
 from Components.Language import language
+from ServiceReference import ServiceReference
 from RecordTimer import parseEvent
-from Screens.Standby import inStandby
 from timer import TimerEntry
 from Tools.Directories import fileExists, pathExists
-from time import time, localtime, strftime
 from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference, eEnv
-from twisted.web import version
-from socket import has_ipv6, AF_INET6, AF_INET, inet_ntop, inet_pton, getaddrinfo
-
+from enigma import eEPGCache
 try:
 	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
 	from enigma import getEnigmaVersionString
-except:
+except:  # noqa: E722
 	from owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
+
 	def getEnigmaVersionString():
 		return about.getEnigmaVersionString()
 
-import NavigationInstance
 
-import os
-import sys
-import time
-import string
-
-OPENWEBIFVER = "OWIF 1.2.1"
+OPENWEBIFVER = "OWIF 1.3.1"
 
 STATICBOXINFO = None
+
+PICONPATH = None
+
 
 def getOpenWebifVer():
 	return OPENWEBIFVER
 
+
 def getFriendlyImageDistro():
-	dist = getImageDistro().replace("openatv","OpenATV").replace("openhdf","OpenHDF").replace("openpli","OpenPLi").replace("openvix","OpenViX")
+	dist = getImageDistro().replace("openatv", "OpenATV").replace("openhdf", "OpenHDF").replace("openpli", "OpenPLi").replace("openvix", "OpenViX")
 	return dist
+
 
 def getIPMethod(iface):
 	# iNetwork.getAdapterAttribute is crap and not portable
@@ -70,6 +73,7 @@ def getIPMethod(iface):
 						ipmethod = "6to4"
 	return ipmethod
 
+
 def getIPv4Method(iface):
 	# iNetwork.getAdapterAttribute is crap and not portable
 	ipv4method = _("static")
@@ -86,31 +90,35 @@ def getIPv4Method(iface):
 						ipv4method = _("manual/disabled")
 	return ipv4method
 
+
 def getLinkSpeed(iface):
 	try:
-		with open('/sys/class/net/' + iface + '/speed','r') as f:
+		with open('/sys/class/net/' + iface + '/speed', 'r') as f:
 			speed = f.read().strip()
-	except:
+	except:  # noqa: E722
 		speed = _("unknown")
 	speed = str(speed) + " MBit/s"
-	speed = speed.replace("10000 MBit/s","10 GBit/s")
-	speed = speed.replace("1000 MBit/s","1 GBit/s")
+	speed = speed.replace("10000 MBit/s", "10 GBit/s")
+	speed = speed.replace("1000 MBit/s", "1 GBit/s")
 	return speed
+
 
 def getNICChipSet(iface):
 	nic = _("unknown")
 	try:
 		nic = os.path.realpath('/sys/class/net/' + iface + '/device/driver').split('/')[-1]
 		nic = str(nic)
-	except:
+	except:  # noqa: E722
 		pass
 	return nic
+
 
 def getFriendlyNICChipSet(iface):
 	friendlynic = getNICChipSet(iface)
 	friendlynic = friendlynic.replace("bcmgenet", "Broadcom Gigabit Ethernet")
 	friendlynic = friendlynic.replace("bcmemac", "Broadcom STB 10/100 EMAC")
 	return friendlynic
+
 
 def normalize_ipv6(orig):
 	net = []
@@ -131,10 +139,11 @@ def normalize_ipv6(orig):
 
 	return (addr)
 
+
 def getAdapterIPv6(ifname):
 	addr = _("IPv4-only kernel")
 	firstpublic = None
-	
+
 	if fileExists('/proc/net/if_inet6'):
 		addr = _("IPv4-only Python/Twisted")
 
@@ -148,7 +157,7 @@ def getAdapterIPv6(ifname):
 				tmpaddr = ""
 				tmp = line.split()
 				if ifname == tmp[5]:
-					tmpaddr = ":".join([ tmp[0][i:i+4] for i in range(0,len(tmp[0]),4) ])
+					tmpaddr = ":".join([tmp[0][i:i + 4] for i in range(0, len(tmp[0]), 4)])
 
 					if firstpublic is None and (tmpaddr.startswith('2') or tmpaddr.startswith('3')):
 						firstpublic = normalize_ipv6(tmpaddr)
@@ -167,12 +176,14 @@ def getAdapterIPv6(ifname):
 			elif len(tempaddrs) == 0:
 				addr = _("none/IPv4-only network")
 
-	return {'addr':addr, 'firstpublic':firstpublic }
+	return {'addr': addr, 'firstpublic': firstpublic}
+
 
 def formatIp(ip):
 	if ip is None or len(ip) != 4:
-		return "0.0.0.0"
+		return "0.0.0.0"  # nosec
 	return "%d.%d.%d.%d" % (ip[0], ip[1], ip[2], ip[3])
+
 
 def getBasePath():
 	path = os.path.dirname(sys.modules[__name__].__file__)
@@ -181,17 +192,59 @@ def getBasePath():
 	chunks.pop()
 	return "/".join(chunks)
 
-def getPublicPath(file = ""):
+
+def getPublicPath(file=""):
 	return getBasePath() + "/public/" + file
 
-def getViewsPath(file = ""):
-	return getBasePath() + "/controllers/views/" + file
+
+def getViewsPath(file=""):
+	if config.OpenWebif.responsive_enabled.value and os.path.exists(getBasePath() + "/controllers/views/responsive") and not (file.startswith('web/') or file.startswith('/web/')):
+		return getBasePath() + "/controllers/views/responsive/" + file
+	else:
+		return getBasePath() + "/controllers/views/" + file
+
 
 def getPiconPath():
+
+	# FIXME: check path again after a few hours to detect new paths
+
+	global PICONPATH
+
+	if PICONPATH is not None:
+		return PICONPATH
+
+	# Alternative locations need to come first, as the default location always exists and needs to be the last resort
+	# Sort alternative locations in order of likelyness that they are non-rotational media:
+	# CF/MMC are always memory cards
+	# USB can be memory stick or magnetic hdd or SSD, but stick is most likely
+	# HDD can be magnetic hdd, SSD or even memory stick (if no hdd present) or a NAS
+	pathlist = [
+		"/media/cf/",
+		"/media/mmc/",
+		"/media/usb/",
+		"/media/hdd/",
+		"/usr/share/enigma2/",
+		"/"
+	]
+
+	for p in pathlist:
+		if pathExists(p + "owipicon/"):
+			PICONPATH = p + "owipicon/"
+			return PICONPATH
+		elif pathExists(p + "picon/"):
+			PICONPATH = p + "picon/"
+			return PICONPATH
+
+	return None
+
+
+def _getPiconPath():
 	if pathExists("/media/usb/picon/"):
 		return "/media/usb/picon/"
 	elif pathExists("/media/cf/picon/"):
 		return "/media/cf/picon/"
+	elif pathExists("/media/mmc/picon/"):
+		return "/media/mmc/picon/"
 	elif pathExists("/media/hdd/picon/"):
 		return "/media/hdd/picon/"
 	elif pathExists("/usr/share/enigma2/picon/"):
@@ -201,7 +254,8 @@ def getPiconPath():
 	else:
 		return ""
 
-def getInfo(session = None, need_fullinfo = False):
+
+def getInfo(session=None, need_fullinfo=False):
 	# TODO: get webif versione somewhere!
 	info = {}
 	global STATICBOXINFO
@@ -216,7 +270,7 @@ def getInfo(session = None, need_fullinfo = False):
 
 	chipset = "unknown"
 	if fileExists("/etc/.box"):
-		f = open("/etc/.box",'r')
+		f = open("/etc/.box", 'r')
 		model = f.readline().strip().lower()
 		f.close()
 		if model.startswith("ufs") or model.startswith("ufc"):
@@ -227,7 +281,7 @@ def getInfo(session = None, need_fullinfo = False):
 		elif model in ("topf", "tf7700hdpvr"):
 			chipset = "SH4 @266MHz"
 		elif model.startswith("azbox"):
-			f = open("/proc/stb/info/model",'r')
+			f = open("/proc/stb/info/model", 'r')
 			model = f.readline().strip().lower()
 			f.close()
 			if model == "me":
@@ -242,7 +296,7 @@ def getInfo(session = None, need_fullinfo = False):
 			else:
 				chipset = "SH4 @450MHz"
 	elif fileExists("/proc/stb/info/azmodel"):
-		f = open("/proc/stb/info/model",'r')
+		f = open("/proc/stb/info/model", 'r')
 		model = f.readline().strip().lower()
 		f.close()
 		if model == "me":
@@ -252,7 +306,7 @@ def getInfo(session = None, need_fullinfo = False):
 		else:
 			chipset = "SIGMA 8634"
 	elif fileExists("/proc/stb/info/model"):
-		f = open("/proc/stb/info/model",'r')
+		f = open("/proc/stb/info/model", 'r')
 		model = f.readline().strip().lower()
 		f.close()
 		if model == "tf7700hdpvr":
@@ -270,24 +324,46 @@ def getInfo(session = None, need_fullinfo = False):
 				chipset = "STi7162 @540MHz"
 			else:
 				chipset = "STi7111 @450MHz"
+		elif model == "dm800":
+			chipset = "bcm7401"
+		elif model == "dm800se":
+			chipset = "bcm7405"
+		elif model == "dm500hd":
+			chipset = "bcm7405"
+		elif model == "dm7020hd":
+			chipset = "bcm7405"
+		elif model == "dm8000":
+			chipset = "bcm7400"
+		elif model == "dm820":
+			chipset = "bcm7435"
+		elif model == "dm7080":
+			chipset = "bcm7435"
+		elif model == "dm520":
+			chipset = "bcm73625"
+		elif model == "dm525":
+			chipset = "bcm73625"
+		elif model == "dm900":
+			chipset = "bcm7252S"
+		elif model == "dm920":
+			chipset = "bcm7252S"
 
 	if fileExists("/proc/stb/info/chipset"):
-		f = open("/proc/stb/info/chipset",'r')
+		f = open("/proc/stb/info/chipset", 'r')
 		chipset = f.readline().strip()
 		f.close()
 
 	info['chipset'] = chipset
 
 	memFree = 0
-	for line in open("/proc/meminfo",'r'):
+	for line in open("/proc/meminfo", 'r'):
 		parts = line.split(':')
 		key = parts[0].strip()
 		if key == "MemTotal":
 			info['mem1'] = parts[1].strip().replace("kB", _("kB"))
 		elif key in ("MemFree", "Buffers", "Cached"):
-			memFree += int(parts[1].strip().split(' ',1)[0])
-	info['mem2'] = "%s %s" % (memFree,_("kB"))
-	info['mem3'] = _("%s free / %s total") % (info['mem2'],info['mem1'])
+			memFree += int(parts[1].strip().split(' ', 1)[0])
+	info['mem2'] = "%s %s" % (memFree, _("kB"))
+	info['mem3'] = _("%s free / %s total") % (info['mem2'], info['mem1'])
 
 	try:
 		f = open("/proc/uptime", "rb")
@@ -295,11 +371,11 @@ def getInfo(session = None, need_fullinfo = False):
 		f.close()
 		uptimetext = ''
 		if uptime > 86400:
-			d = uptime/86400
+			d = uptime / 86400
 			uptime = uptime % 86400
 			uptimetext += '%dd ' % d
-		uptimetext += "%d:%.2d" % (uptime/3600, (uptime%3600)/60)
-	except:
+		uptimetext += "%d:%.2d" % (uptime / 3600, (uptime % 3600) / 60)
+	except:  # noqa: E722
 		uptimetext = "?"
 	info['uptime'] = uptimetext
 
@@ -307,7 +383,10 @@ def getInfo(session = None, need_fullinfo = False):
 	info['imagedistro'] = getImageDistro()
 	info['friendlyimagedistro'] = getFriendlyImageDistro()
 	info['oever'] = getOEVersion()
-	info['imagever'] = getImageVersion() + '.' + getImageBuild()
+	info['imagever'] = getImageVersion()
+	ib = getImageBuild()
+	if ib:
+		info['imagever'] = info['imagever'] + "." + ib
 	info['enigmaver'] = getEnigmaVersionString()
 	info['driverdate'] = getDriverDate()
 	info['kernelver'] = about.getKernelVersionString()
@@ -319,24 +398,22 @@ def getInfo(session = None, need_fullinfo = False):
 
 	try:
 		info['fp_version'] = getFPVersion()
-	except:
+	except:  # noqa: E722
 		info['fp_version'] = None
 
 	friendlychipsetdescription = _("Chipset")
-	friendlychipsettext = info['chipset'].replace("bcm","Broadcom ")
+	friendlychipsettext = info['chipset'].replace("bcm", "Broadcom ")
 	if friendlychipsettext in ("7335", "7356", "7362", "73625", "7424", "7425", "7429"):
 		friendlychipsettext = "Broadcom " + friendlychipsettext
 	if not (info['fp_version'] is None or info['fp_version'] == 0):
 		friendlychipsetdescription = friendlychipsetdescription + " (" + _("Frontprocessor Version") + ")"
-		friendlychipsettext = friendlychipsettext +  " (" + str(info['fp_version']) + ")"
+		friendlychipsettext = friendlychipsettext + " (" + str(info['fp_version']) + ")"
 
 	info['friendlychipsetdescription'] = friendlychipsetdescription
 	info['friendlychipsettext'] = friendlychipsettext
-
-
 	info['tuners'] = []
 	for i in range(0, nimmanager.getSlotCount()):
-		print "[OpenWebif] -D- tuner '%d' '%s' '%s'" % (i,nimmanager.getNimName(i),nimmanager.getNim(i).getSlotName())
+		print "[OpenWebif] -D- tuner '%d' '%s' '%s'" % (i, nimmanager.getNimName(i), nimmanager.getNim(i).getSlotName())
 		info['tuners'].append({
 			"name": nimmanager.getNim(i).getSlotName(),
 			"type": nimmanager.getNimName(i) + " (" + nimmanager.getNim(i).getFriendlyType() + ")",
@@ -368,23 +445,23 @@ def getInfo(session = None, need_fullinfo = False):
 		dev = hdd.findMount()
 		if dev:
 			stat = os.statvfs(dev)
-			free = int((stat.f_bfree/1024) * (stat.f_bsize/1024))
+			free = stat.f_bavail * stat.f_frsize / 1048576.
 		else:
 			free = -1
-		
+
 		if free <= 1024:
-			free = "%i %s" % (free,_("MB"))
+			free = "%i %s" % (free, _("MB"))
 		else:
 			free = free / 1024.
-			free = "%.1f %s" % (free,_("GB"))
+			free = "%.1f %s" % (free, _("GB"))
 
 		size = hdd.diskSize() * 1000000 / 1048576.
 		if size > 1048576:
-			size = "%.1f %s" % ((size / 1048576.),_("TB"))
+			size = "%.1f %s" % ((size / 1048576.), _("TB"))
 		elif size > 1024:
-			size = "%.1f %s" % ((size / 1024.),_("GB"))
+			size = "%.1f %s" % ((size / 1024.), _("GB"))
 		else:
-			size = "%d %s" % (size,_("MB"))
+			size = "%d %s" % (size, _("MB"))
 
 		iecsize = hdd.diskSize()
 		# Harddisks > 1000 decimal Gigabytes are labelled in TB
@@ -392,17 +469,17 @@ def getInfo(session = None, need_fullinfo = False):
 			iecsize = (iecsize + 50000) // float(100000) / 10
 			# Omit decimal fraction if it is 0
 			if (iecsize % 1 > 0):
-				iecsize = "%.1f %s" % (iecsize,_("TB"))
+				iecsize = "%.1f %s" % (iecsize, _("TB"))
 			else:
-				iecsize = "%d %s" % (iecsize,_("TB"))
+				iecsize = "%d %s" % (iecsize, _("TB"))
 		# Round harddisk sizes beyond ~300GB to full tens: 320, 500, 640, 750GB
 		elif iecsize > 300000:
-			iecsize = "%d %s" % (((iecsize + 5000) // 10000 * 10),_("GB"))
+			iecsize = "%d %s" % (((iecsize + 5000) // 10000 * 10), _("GB"))
 		# ... be more precise for media < ~300GB (Sticks, SSDs, CF, MMC, ...): 1, 2, 4, 8, 16 ... 256GB
 		elif iecsize > 1000:
-			iecsize = "%d %s" % (((iecsize + 500) // 1000),_("GB"))
+			iecsize = "%d %s" % (((iecsize + 500) // 1000), _("GB"))
 		else:
-			iecsize = "%d %s" % (iecsize,_("MB"))
+			iecsize = "%d %s" % (iecsize, _("MB"))
 
 		info['hdd'].append({
 			"model": hdd.model(),
@@ -410,11 +487,11 @@ def getInfo(session = None, need_fullinfo = False):
 			"labelled_capacity": iecsize,
 			"free": free,
 			"mount": dev,
-			"friendlycapacity": _("%s free / %s total") % (free,size+' ("'+iecsize+'")')
+			"friendlycapacity": _("%s free / %s total") % (free, size + ' ("' + iecsize + '")')
 		})
 
 	info['shares'] = []
-	autofiles = ('/etc/auto.network','/etc/auto.network_vti')
+	autofiles = ('/etc/auto.network', '/etc/auto.network_vti')
 	for autofs in autofiles:
 		if fileExists(autofs):
 			method = "autofs"
@@ -422,7 +499,7 @@ def getInfo(session = None, need_fullinfo = False):
 				if not line.startswith('#'):
 					# Replace escaped spaces that can appear inside credentials with underscores
 					# Not elegant but we wouldn't want to expose credentials on the OWIF anyways
-					tmpline = line.replace("\ ","_")
+					tmpline = line.replace("\ ", "_")
 					tmp = tmpline.split()
 					if not len(tmp) == 3:
 						continue
@@ -454,7 +531,7 @@ def getInfo(session = None, need_fullinfo = False):
 					else:
 						server = parts[0]
 
-					ipaddress  = None
+					ipaddress = None
 					if server:
 						# Will fail on literal IPs
 						try:
@@ -470,12 +547,12 @@ def getInfo(session = None, need_fullinfo = False):
 								tmpaddress = getaddrinfo(server, 0, AF_INET)
 								if tmpaddress:
 									ipaddress = list(tmpaddress)[0][4][0]
-						except:
+						except:  # noqa: E722
 							pass
-						
+
 					friendlyaddress = server
 					if ipaddress is not None and not ipaddress == server:
-						friendlyaddress = server + " ("+ ipaddress + ")"
+						friendlyaddress = server + " (" + ipaddress + ")"
 					info['shares'].append({
 						"name": name,
 						"method": method,
@@ -489,15 +566,18 @@ def getInfo(session = None, need_fullinfo = False):
 	# TODO: fstab
 
 	info['transcoding'] = False
-	if (info['model'] in ("Uno4K", "Ultimo4K", "Solo4K", "Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or info['machinebuild'] in ('inihdp', 'hd2400', 'et10000', 'xpeedlx3', 'ew7356', 'dags7356', 'dags7252', 'formuler1tc')):
+	#: models transcoding feature
+	if fileExists("/proc/stb/encoder/0/bitrate"):
 		if os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TranscodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo')):
 			info['transcoding'] = True
 
 	info['kinopoisk'] = False
 	lang = ['ru', 'uk', 'lv', 'lt', 'et']
+	current_language = language.getLanguage()
 	for l in lang:
-		if l in language.getLanguage():
+		if l in current_language:
 			info['kinopoisk'] = True
+			break
 
 	info['EX'] = ''
 
@@ -508,15 +588,15 @@ def getInfo(session = None, need_fullinfo = False):
 				# only one stream and only TV
 				from Plugins.Extensions.OpenWebif.controllers.stream import streamList
 				s_name = ''
-				s_cip = ''
+				# s_cip = ''
 
 				print "[OpenWebif] -D- streamList count '%d'" % len(streamList)
-				if len(streamList)==1:
+				if len(streamList) == 1:
 					from Screens.ChannelSelection import service_types_tv
-					from enigma import eEPGCache
-					epgcache = eEPGCache.getInstance()
+					# from enigma import eEPGCache
+					# epgcache = eEPGCache.getInstance()
 					serviceHandler = eServiceCenter.getInstance()
-					services = serviceHandler.list(eServiceReference('%s ORDER BY name'%(service_types_tv)))
+					services = serviceHandler.list(eServiceReference('%s ORDER BY name' % (service_types_tv)))
 					channels = services and services.getContent("SN", True)
 					s = streamList[0]
 					srefs = s.ref.toString()
@@ -539,7 +619,7 @@ def getInfo(session = None, need_fullinfo = False):
 				# only one recording
 				if len(timers) == 1:
 					sname = timers[0]
-					
+
 				if sname == '' and s_name != '':
 					sname = s_name
 
@@ -570,6 +650,7 @@ def getInfo(session = None, need_fullinfo = False):
 	STATICBOXINFO = info
 	return info
 
+
 def getOrbitalText(cur_info):
 	if cur_info:
 		tunerType = cur_info.get('tuner_type')
@@ -579,9 +660,10 @@ def getOrbitalText(cur_info):
 			if pos > 1800:
 				pos = 3600 - pos
 				direction = 'W'
-			return "%d.%d° %s" % (pos/10, pos%10, direction)
+			return "%d.%d° %s" % (pos / 10, pos % 10, direction)
 		return tunerType
 	return ''
+
 
 def getFrontendStatus(session):
 	inf = {}
@@ -614,11 +696,12 @@ def getFrontendStatus(session):
 		percent = frontendStatus.get("tuner_signal_power")
 		if percent is not None:
 			inf['agc'] = int(percent * 100 / 65535)
-		percent =  frontendStatus.get("tuner_bit_error_rate")
+		percent = frontendStatus.get("tuner_bit_error_rate")
 		if percent is not None:
 			inf['ber'] = int(percent * 100 / 65535)
 
 	return inf
+
 
 def getCurrentTime():
 	t = time.localtime()
@@ -627,11 +710,13 @@ def getCurrentTime():
 		"time": "%2d:%02d:%02d" % (t.tm_hour, t.tm_min, t.tm_sec)
 	}
 
+
 def getTranscodingSupport():
 	global STATICBOXINFO
 	if STATICBOXINFO is None:
 		getInfo()
 	return STATICBOXINFO['transcoding']
+
 
 def getLanguage():
 	global STATICBOXINFO
@@ -639,19 +724,40 @@ def getLanguage():
 		getInfo()
 	return STATICBOXINFO['kinopoisk']
 
-def getStatusInfo(self):
-	statusinfo = {}
 
+def getStreamServiceName(ref):
+	if isinstance(ref, eServiceReference):
+		servicereference = ServiceReference(ref)
+		if servicereference:
+			return servicereference.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
+	return ""
+
+
+def getStreamEventName(ref):
+	if isinstance(ref, eServiceReference):
+		epg = eEPGCache.getInstance()
+		event = epg and epg.lookupEventTime(ref, -1, 0)
+		if event:
+			return event.getEventName()
+	return ""
+
+
+def getStatusInfo(self):
 	# Get Current Volume and Mute Status
 	vcontrol = eDVBVolumecontrol.getInstance()
-
-	statusinfo['volume'] = vcontrol.getVolume()
-	statusinfo['muted'] = vcontrol.isMuted()
-	statusinfo['transcoding'] = getTranscodingSupport()
+	statusinfo = {
+		'volume': vcontrol.getVolume(),
+		'muted': vcontrol.isMuted(),
+		'transcoding': getTranscodingSupport(),
+		'currservice_filename': "",
+		'currservice_id': -1,
+	}
 
 	# Get currently running Service
 	event = None
 	serviceref = self.session.nav.getCurrentlyPlayingServiceReference()
+	serviceref_string = None
+	currservice_station = None
 	if serviceref is not None:
 		serviceHandler = eServiceCenter.getInstance()
 		serviceHandlerInfo = serviceHandler.info(serviceref)
@@ -659,26 +765,35 @@ def getStatusInfo(self):
 		service = self.session.nav.getCurrentService()
 		serviceinfo = service and service.info()
 		event = serviceinfo and serviceinfo.getEvent(0)
+		serviceref_string = serviceref.toString()
+		currservice_station = serviceHandlerInfo.getName(
+			serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
 	else:
 		event = None
+		serviceHandlerInfo = None
 
-	statusinfo['currservice_filename'] = ""
 	if event is not None:
+		# (begin, end, name, description, eit)
 		curEvent = parseEvent(event)
+		begin_timestamp = int(curEvent[0]) + (config.recording.margin_before.value * 60)
+		end_timestamp = int(curEvent[1]) - (config.recording.margin_after.value * 60)
 		statusinfo['currservice_name'] = curEvent[2].replace('\xc2\x86', '').replace('\xc2\x87', '')
-		statusinfo['currservice_serviceref'] = serviceref.toString()
-		statusinfo['currservice_begin'] = strftime("%H:%M", (localtime(int(curEvent[0])+(config.recording.margin_before.value*60))))
-		statusinfo['currservice_end'] = strftime("%H:%M", (localtime(int(curEvent[1])-(config.recording.margin_after.value*60))))
+		statusinfo['currservice_serviceref'] = serviceref_string
+		statusinfo['currservice_begin'] = time.strftime("%H:%M", (time.localtime(begin_timestamp)))
+		statusinfo['currservice_begin_timestamp'] = begin_timestamp
+		statusinfo['currservice_end'] = time.strftime("%H:%M", (time.localtime(end_timestamp)))
+		statusinfo['currservice_end_timestamp'] = end_timestamp
 		statusinfo['currservice_description'] = curEvent[3]
 		if len(curEvent[3].decode('utf-8')) > 220:
 			statusinfo['currservice_description'] = curEvent[3].decode('utf-8')[0:220].encode('utf-8') + "..."
-		statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
+		statusinfo['currservice_station'] = currservice_station
 		if statusinfo['currservice_serviceref'].startswith('1:0:0'):
-			statusinfo['currservice_filename'] = '/' + '/'.join(serviceref.toString().split("/")[1:])
+			statusinfo['currservice_filename'] = '/' + '/'.join(serviceref_string.split("/")[1:])
 		full_desc = statusinfo['currservice_name'] + '\n'
-		full_desc += statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end']  + '\n\n'
+		full_desc += statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + '\n\n'
 		full_desc += event.getExtendedDescription().replace('\xc2\x86', '').replace('\xc2\x87', '').replace('\xc2\x8a', '\n')
 		statusinfo['currservice_fulldescription'] = full_desc
+		statusinfo['currservice_id'] = curEvent[4]
 	else:
 		statusinfo['currservice_name'] = "N/A"
 		statusinfo['currservice_begin'] = ""
@@ -686,17 +801,21 @@ def getStatusInfo(self):
 		statusinfo['currservice_description'] = ""
 		statusinfo['currservice_fulldescription'] = "N/A"
 		if serviceref:
-			statusinfo['currservice_serviceref'] = serviceref.toString()
+			statusinfo['currservice_serviceref'] = serviceref_string
+			if statusinfo['currservice_serviceref'].startswith('1:0:0') or statusinfo['currservice_serviceref'].startswith('4097:0:0'):
+				this_path = '/' + '/'.join(serviceref_string.split("/")[1:])
+				if os.path.exists(this_path):
+					statusinfo['currservice_filename'] = this_path
 			if serviceHandlerInfo:
-				statusinfo['currservice_station'] = serviceHandlerInfo.getName(serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
-			elif serviceref.toString().find("http") != -1:
-				statusinfo['currservice_station'] = serviceref.toString().replace('%3a', ':')[serviceref.toString().find("http"):]
+				statusinfo['currservice_station'] = currservice_station
+			elif serviceref_string.find("http") != -1:
+				statusinfo['currservice_station'] = serviceref_string.replace('%3a', ':')[serviceref_string.find("http"):]
 			else:
 				statusinfo['currservice_station'] = "N/A"
 
 	# Get Standby State
 	from Screens.Standby import inStandby
-	if inStandby == None:
+	if inStandby is None:
 		statusinfo['inStandby'] = "false"
 	else:
 		statusinfo['inStandby'] = "true"
@@ -710,16 +829,20 @@ def getStatusInfo(self):
 			if timer.state == TimerEntry.StateRunning:
 				if not timer.justplay:
 					statusinfo['Recording_list'] += timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '') + ": " + timer.name + "\n"
+		if statusinfo['Recording_list'] == "\n":
+			statusinfo['isRecording'] = "false"
 	else:
 		statusinfo['isRecording'] = "false"
 
 	return statusinfo
 
+
 def getAlternativeChannels(service):
 	alternativeServices = eServiceCenter.getInstance().list(eServiceReference(service))
 	return alternativeServices and alternativeServices.getContent("S", True)
 
-def GetWithAlternative(service,onlyFirst = True):
+
+def GetWithAlternative(service, onlyFirst=True):
 	if service.startswith('1:134:'):
 		channels = getAlternativeChannels(service)
 		if channels:

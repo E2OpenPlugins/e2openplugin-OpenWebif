@@ -1,0 +1,432 @@
+#from urllib import quote
+#from Plugins.Extensions.OpenWebif.local import tstrings
+#from json import dumps
+#from time import localtime, strftime, mktime
+#from Plugins.Extensions.OpenWebif.controllers.views.responsive.ajax.renderevtblock import renderEvtBlock
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+<style>
+	table { font-size: 13px; }
+	tr { vertical-align: top }
+	.float { float:left }
+	.service { font-weight: bold; font-size: 12px; line-height:30px; padding-right: 4px; white-space: nowrap; overflow: hidden;}
+	.service img { width:50px; height:30px; float:left; margin-right:10px; border: 0;}
+	.serviceheader { padding: 10px; width: 190px }
+	.title { font-weight: bold;}
+	.desc { font-size: 10px; line-height: 1.25em; max-height: 3.75em; overflow: hidden; }
+	.event { cursor: pointer; width: 190px; overflow:hidden; margin-bottom: 0.75em;}
+	.bq { font-size: 11px; font-weight: bold; padding: 2px 4px; line-height: 18px; cursor: pointer; white-space: nowrap; display: inline-block; margin: 1px 1px 0px 0px;}
+	.plusclick { font-size: 14px; }
+	.navtab-active { cursor: pointer; margin-right:8px; font-weight: bold; border-bottom: 2px solid $skinColor; background-color: transparent !important; bottom: 2px;}
+	.navtab-inactive { cursor: pointer; margin-right:8px;  border:None; background-color: transparent !important;  }
+	.timer { font-weight: bold; font-size: 10px; color:red; }
+	#eventdescription { width: 375px; height: auto; position: fixed; top: 205px; left: 350px; z-index: 100; display: none; overflow: auto; }
+	#navepg { margin-bottom: 1px; }
+#if $mode == 2
+	
+#else
+	#tbl1 tbody { width: 100%; height: 100%; overflow-y: auto; display: block; overflow-x: hidden;}
+	#tbl2 tbody { width: 100%; height: 100%; overflow-y: hidden; display: block; overflow-x: hidden;}
+	#fulltbl { width: 100%; height: 100%; overflow-y: hidden; display: block; overflow-x: auto;}
+#end if
+	.notablemargin { margin: 0px;}
+	.ui-widget-content.nobg , .ui-widget-header.nobg{ background-image: none; } 
+	.wrapper { overflow-x: auto; width: 100%; -ms-overflow-style: -ms-autohiding-scrollbar;}
+	td.border { width: 190px; }
+</style>
+
+<div id="navepg">
+<ul class="nav nav-tabs tab-col-$skinColor" style="margin-top: -10px;">
+#for $slot in range(0,7)
+	<li><div class="plusclick navtab-#if $slot==$day then 'active' else 'inactive' #" data-day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div></li>
+#end for
+#if $mode == 2
+<li><div class="plusclick lbl">&nbsp;$tstrings['prime_times']:&nbsp;</div></li>
+<li><div id="pt0" class="plusclick navtab-inactive" data-day="201">06:00</div></li>
+<li><div id="pt1" class="plusclick navtab-inactive" data-day="202">12:00</div></li>
+<li><div id="pt2" class="plusclick navtab-inactive" data-day="203">20:00</div></li>
+#if $day == 0
+		<li><div id="pt3" class="plusclick navtab-inactive">&nbsp;</div>
+<li><div id="pt4" class="plusclick navtab-active" data-day="200">$tstrings['now']</div></li>
+#end if
+
+#else
+<li><div class="plusclick lbl">&nbsp;$tstrings['cw']:&nbsp;</div></li>
+#for $wk in range(0,3)
+	#set $w = $wk + 1000
+	<li><div class="plusclick navtab-#if $wk==$week then 'active' else 'inactive' #" data-day="$(w)">$time.strftime("%V",time.localtime(time.time()+604800*wk))</div></li>
+#end for
+#end if
+<li><div class=" lbl">&nbsp;$tstrings['display_mode']:&nbsp;</div></li>
+<li><div class="plusclick navtab-#if $mode==1 then 'active' else 'inactive' #" data-day="101">$tstrings['tv_guide']</div></li>
+<li><div class="plusclick navtab-#if $mode==2 then 'active' else 'inactive' #" data-day="102">$tstrings['timeline']</div></li>
+</ul>
+
+<div id="compressmepg" onclick="CompressMEPG();"><i id="compressmepgi" class="fa fa-compress link" aria-hidden="true"></i></div>
+<div id="refreshmepg2" onclick="RefreshMEPG();"><i id="refreshmepgi" class="fa fa-refresh link" aria-hidden="true"></i></div>
+	<br clear="all">
+
+<ul class="nav nav-tabs tab-col-$skinColor" style="margin-top: -10px;">
+#for $bq in $bouquets
+	<li><div class="bq navtab-#if $bq[0]==$bref then 'active' else 'inactive' #" data-ref="$quote($bq[0])">$bq[1]</div></li>
+#end for
+</ul>
+<br clear="all">
+</div>
+
+#if $mode == 2
+<style>
+	.picon { display: inline-block; margin:0; max-width: 100px;}
+	.picon > img { max-height: 30px;}
+
+	
+	.timetable { border:none; height: 0px;}
+	.timetable > div { display:table; margin:0px 0px 0px -110px; padding:0;}
+	.timetable-now { position: relative;top: 0;left: 0px;z-index: 1;width: 2px;background-color: #0fb8fb;float:left;}
+		
+	#tbl1 tbody { width: 100%; height: 100%; overflow-y: auto; display: block; overflow-x: hidden;}
+	.eventlist { display: inline-block; list-style-type: none; margin: 0px; padding: 0px 0px; width: calc(100% - 105px); }
+	.event { display: block; position: relative; vertical-align: top; clear: left; border: none; }
+	.event a,.event > span { padding: 0px; height:58px; width:100%; display: block; white-space: normal; overflow: hidden; }
+	.event a:link:hover { text-decoration: none; }
+	.ename { display: block; width: 100%; padding-left:5px; padding-top:10px; float: left; font-weight: 200; line-height: 1,4; font-size: 14px; }
+	.etime,.etimer  { display: inline-block; padding-left: 5px; font-weight: 200; line-height: 1,4; font-size: 12px; }
+	.event { display: inline-block; border:solid; border-width: 0px 0px 0px 1px; padding: 0px 0px 0px 0px!important; margin:0px 0px 0px -3px!important;}
+	.event .ename,.event .etime,.event .etimer { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+	.channel-listing { list-style-type: none;}
+	.curevent { background: #e9e9e9; }
+	.etimesmall, .etime, .ename {
+		color: #000000;
+		text-decoration: none;
+	}
+	.etimesmall, .etime {
+		font-size: 10px;
+	}
+</style>
+
+#set $now = $mktime($localtime())
+
+#if $day == 0
+#set $first = $now - 3600
+#else
+#set $first = $now + ($day * 3600 * 24) 
+#end if
+
+#set $s = $strftime("%S",$localtime($first))
+#set $m = $strftime("%M",$localtime($first))
+#set $offset = $int($m) * 60
+#set $offset = $offset + $int($s)
+
+#if $day > 0
+#set $h = $strftime("%H",$localtime($first))
+#set $offset = $offset + $int($h) * 60 * 60
+#set $offset = $offset + 3600
+#end if
+
+#set $first = $first - $offset
+
+#end if
+
+#if $mode == 1
+#set $renderEventBlock = $renderEvtBlock()
+<div id="fulltbl" class="responsive-table">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id="tbl2">
+		<tbody id="tbl2body">
+			<tr style="background-color:#bababa;">
+#for $sname, $eventlist in $events.iteritems()
+#set $evl = $eventlist[0]
+#set $ref= ""
+#if $evl
+	#set $ev=$evl[0]
+	#set $ref = "data-ref='" + $ev.ref + "'"
+#end if
+<td class="serviceheader"><div class="service event"  data-ref='$ref'><img src="$(picons[$sname])" />$sname</div></td>
+#end for
+</tr>
+<tr>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" id="tbl1" class="table table-striped">
+		<tbody id="tbl1body">
+#set hasEvents = False
+#set even = 0
+#for $slot in range(0,12)
+	#if $even == 0
+		<tr>
+								#set $even = 1
+	#else
+								#set $even = 0
+	<tr style="background-color:#e9e9e9;">
+	#end if
+	#for $sname, $eventlist in $events.iteritems()
+		<td class="border" style="white-space:normal;">
+		#for $event in $eventlist[$slot]
+			$renderEventBlock.render($event)
+			#set hasEvents = True
+		#end for
+	</td>
+	#end for
+</tr>
+#end for
+</tbody>
+				</table>
+			</tr>
+		</tbody>
+	<table>
+</div>
+
+#else
+<div id="fulltbl" class="responsive-table" style="overflow-y:auto;overflow-x:hidden">
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<table >
+						<tbody>
+							<tr>
+								<td>
+#for $sname, $eventlist in $events.iteritems()
+	<div class="row " style="border:solid;border-width:1px 0px 0px 0px;height:60px!important;background-color:#bababa;" >
+	<div style="width:141px!important;margin-left:20px;" class="pull-left">
+	<h2 class="picon" ><img src="$(picons[$sname])" title="$sname" /></h2>
+	</br><label>$sname</label>
+	</div>
+	</div>
+#end for
+</td>
+<tr>
+<tbody>
+</table>
+</td>
+<td>
+<table class="table-striped">
+<tbody>
+<tr>
+<td>
+<div style="overflow:auto" id="tblinner">
+<div class="timetable">
+<div>
+<div class="timetable-now"></div>
+</div>
+</div>
+#for $sname, $eventlist in $events.iteritems()
+<div class="row " style="width:30000px; border:solid;border-width:1px 0px 0px 0px;height:60px!important" >
+<ol class="eventlist" >
+	#set $c=0
+	#set $ref = ''
+	#for $event in $eventlist[0]
+		#set pad = 0
+		#if $c == 0
+			#set $ref = quote(event['ref'], safe=' ~@#$&()*!+=:;,.?/\'')
+			#set pad = 58 + ($event.begin_timestamp - $first) / 6
+															<li class="event" style=;width:${pad}px;border:none;">
+															</li>
+		#end if
+		#set $end = $event.begin_timestamp + $event.duration
+		#set $iscurr = ""
+		#if $event.begin_timestamp < $now and $end > $now
+			#set $iscurr = " curevent"
+		#end if
+														<li class="event" data-ref="$ref" data-id="${event.id}" data-toggle="modal" data-target="#EventModal" onClick="loadeventepg('${event.id}', '$ref');return false;" style="width:${event.duration/6}px;padding:10px;" >
+			<a href="#" class="ui-widget-content ${iscurr}" title="$event['title']">
+															<span class="ename">$event['title']<span class="etimesmall"> ($strftime("%d.%m", $localtime($event['begin_timestamp'])))</span></span>
+															<span class="etime">$strftime("%H:%M", $localtime($event['begin_timestamp'])) - $strftime("%H:%M", $localtime($event['begin_timestamp'] + $event['duration']))</span>
+			#if $event['timerStatus'] != ''
+			<span class="etimer $event['timerStatus']">$tstrings['timer']</span>
+			#end if
+			</a>
+		</li>
+		#set $c = $c + 1
+	#end for
+</ol>
+</div>
+	#end for
+</div>
+								</td>
+							<tr>
+						</tbody>
+					</table>
+					
+				</td>
+			<tr>
+		</tbody>
+	<table>
+</div>
+</div>
+
+</div>
+#end if
+<div id="eventdescription"></div>
+
+<script>
+#if $mode == 2
+var opena = $first;
+var openb = $now;
+var pos = (openb - opena);
+if (pos>0)
+	pos = pos / 6;
+
+#if $day == 0
+
+\$(".timetable-now").css('left',151+pos);
+
+setTimeout(function() {
+	var nowdate = Math.round(+new Date()/1000);
+	var pos = (nowdate - opena);
+	if(pos>0)
+		pos = pos / 6;
+	\$(".timetable-now").css('left',151+pos);
+} ,10000);
+
+\$(".timetable-now").css('height',\$("#tblinner").height());
+#else
+\$(".timetable-now").css('height','0');
+#end if
+
+#end if
+var picons = $dumps($picons);
+var reloadTimers = false;
+function getScrollBarWidth () {
+	var \$outer = \$('<div>').css({visibility: 'hidden', width: 100, overflow: 'scroll'}).appendTo('body'),
+		widthWithScroll = \$('<div>').css({width: '100%'}).appendTo(\$outer).outerWidth();
+	\$outer.remove();
+	return 100 - widthWithScroll;
+}
+var scrollBarWidth=getScrollBarWidth();
+function fixTableHeight() {
+	var addScrollBarWidth = scrollBarWidth;
+	if (\$('#tbl1').width() <= \$("#tvcontent").width()){
+		addScrollBarWidth = 0;
+	}
+	
+#if $mode == 1
+	var new_height = (\$("#epgcard").height() *0.85 - \$("#epgcardheaderI").height() - \$("#epgcardheaderII").height() - \$("#navepg").height() - 2*\$("#tbl1 thead").height() - addScrollBarWidth - 2);
+	\$("#tbl1body").height(new_height + "px");
+	var scrollwidth = (\$("#epgcard").width() -40 ) + "px";
+	var scrollheightI = new_height + 'px';
+	\$('#tbl1body').height(scrollheightI);
+	\$('#fulltbl').width(scrollwidth);
+#else
+	var new_height = (\$("#epgcard").height() *0.90 - \$("#epgcardheaderI").height() - \$("#epgcardheaderII").height() - \$("#navepg").height() - 2*\$("#tbl1 thead").height() - addScrollBarWidth - 2);
+	var scrollheightI = new_height + 'px';
+	var scrollwidth = (\$("#epgcard").width() -40 ) + "px";
+	\$('#fulltbl').height(scrollheightI);
+	\$('#tblinner').width(scrollwidth);
+#end if
+}
+fixTableHeight();
+
+\$(window).resize(function(){ fixTableHeight(); });
+
+\$(".bq").click(function() {
+	var id = \$(this).data("ref");
+	var epgmode = "$epgmode";
+	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref='+id +'&day=$day&epgmode=' + epgmode);
+	SetLSValue("lastmbq_"+epgmode,id);
+});
+
+#if $mode == 1
+\$(".service").click(function() {
+	var ref = \$(this).data("ref");
+	if (ref != undefined) {
+		zapChannel(ref, '');
+	}
+});
+#end if
+\$(".plusclick").click(function() {
+	var day = \$(this).data("day");
+	var epgmode = "$epgmode";
+	if (day != undefined) {
+		if (day > 999)
+		{
+			var w = day - 1000;
+			\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day='+$day+'&epgmode='+epgmode+'&week='+w);
+		}
+		else if (day > 199)
+		{
+			var d = day - 200;
+			var dt = (d==0) ? '' : \$(this).html();
+			var pos = 0;
+			\$('#tblinner').scrollLeft(0);
+			
+			\$("#timescroller li ol .event").each( function (){
+				if (pos == 0) {
+					if (\$(this).data("dt") == dt) {
+						if(\$(this).position() != undefined)
+							pos = \$(this).position().left;
+					}
+				}
+			});
+			
+			if(d=='')
+			{
+				var l = \$(".timetable-now").css('left');
+				pos = parseInt(l.replace('px',''));
+			}
+			
+			if(pos>0)
+			{
+				pos-=200;
+				
+				\$('#tbl1body').animate({scrollLeft: pos}, 500);
+				
+				 
+			}
+		}
+		else if (day > 100)
+		{
+			var mode = day - 100;
+			if (mode != $mode) {
+			
+				$.ajax({
+				url: 'api/setmepgmode?mode=' + mode,
+					success: function(data) {
+						\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day=$day&epgmode='+epgmode+'&week='+$week);
+					}
+				});
+			}
+		}
+		else {
+			\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day='+day+'&epgmode='+epgmode+'&week='+$week);
+		}
+	} else {
+		epgmode = \$(this).data("tvradio");
+		if (epgmode != undefined) {
+			\$("#tvcontent").html(loadspinner).load('ajax/multiepg?day='+day+'&epgmode='+epgmode);
+		}
+	}
+});
+
+if(\$("#header").is(':hidden')) { 
+	\$('#compressmepg').show();\$('#refreshmepg2').show();
+}
+if(mepgdirect==1) {
+	mepgdirect=0;\$("#expandmepg").click();
+}
+\$(".togglescroll").click(function() {
+
+	if(\$('#tblinner').css('overflow-y')=='hidden') {
+		\$('#tblinner').css('overflow-y','');
+		\$('.togglescroll').removeClass('ui-widget-header');
+		SetLSValue('MultiEPGScrollStyle','1');
+	}else{
+		\$('#tblinner').css('overflow-y','hidden');
+		\$('.togglescroll').addClass('ui-widget-header');
+		SetLSValue('MultiEPGScrollStyle','0');
+	}
+});
+
+#if $mode == 2
+\$(function() { 
+	
+	if(GetLSValue('MultiEPGScrollStyle','0')=='0') {
+		\$('#tblinner').css('overflow-y','hidden');
+		\$('.togglescroll').addClass('ui-widget-header');
+	}
+	else
+	{
+		\$('#tblinner').css('overflow-y','');
+		\$('.togglescroll').removeClass('ui-widget-header');
+	}
+
+});
+#end if
+
+</script>

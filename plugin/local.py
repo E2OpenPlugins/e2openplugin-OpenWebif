@@ -2,7 +2,15 @@
 
 from __init__ import _
 
-tstrings = {'mo': _("Mo"),
+from Components.config import config
+
+try:
+	AT_unit = config.plugins.autotimer.unit.value == "hour" and _("hour") or _("minute")
+except:
+	AT_unit = "hour"
+
+tstrings = {
+	'mo': _("Mo"),
 	'tu': _("Tu"),
 	'we': _("We"),
 	'th': _("Th"),
@@ -63,8 +71,8 @@ tstrings = {'mo': _("Mo"),
 	'channel': _("Channel"),
 	'channels': _("Channels"),
 	'chipset': _("Chipset"),
-	'cleanup_timer':_("Cleanup Timers"),
-	'close':_("Close"),
+	'cleanup_timer': _("Cleanup Timers"),
+	'close': _("Close"),
 	'contributors': _("Contributors"),
 	'control': _("Control"),
 	'current': _("Current"),
@@ -192,6 +200,7 @@ tstrings = {'mo': _("Mo"),
 	'software': _("Software"),
 	'standby': _("Standby"),
 	'standby_toggle': _("Standby Toggle"),
+	'wake_up': _("Wake Up"),
 	'start_after_end': _("Start time is after end time"),
 	'start_instant_record': _("Start Instant Record"),
 	'stream': _("Stream"),
@@ -242,11 +251,7 @@ tstrings = {'mo': _("Mo"),
 	'zap_to': _("Zap to"),
 	'zapped_to': _("Zapped to"),
 	'translation_spanish': _('Translation to Spanish'),
-	'license_text_01': _('All Files of this Software are open source software;'),
-	'license_text_02': _('you can redistribute it and/or modify it under the'),
-	'license_text_03': _('terms of the GNU General Public License version 2 as'),
-	'license_text_04': _('published by the Free Software Foundation.'),
-	'license_text_m': _('All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation.'),
+	'license_text': _('All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation.'),
 	'Root': _('Root'),
 
 	'at_list': _("AutoTimer List"),
@@ -330,7 +335,7 @@ tstrings = {'mo': _("Mo"),
 
 	'ats_auto_timer_settings': _("AutoTimer Settings"),
 	'ats_autopoll': _("AutoPoll"),
-	'ats_interval': _("Interval (in h)"),
+	'ats_interval': _("Interval (in %s)") % AT_unit,
 	'ats_maxdaysinfuture': _("Max Days"),
 	'ats_try_guessing': _("Try Guessing"),
 	'ats_fastscan': _("Fastscan"),
@@ -401,7 +406,7 @@ tstrings = {'mo': _("Mo"),
 	'record_zap': _("Record+ZAP"),
 	'pmt_pid': _("Pmtpid"),
 	'a_pid': _("Apid"),
-	'v_pid': _("Vpid"), 
+	'v_pid': _("Vpid"),
 	'pcr_pid': _("Pcrpid"),
 	'ts_id': _("Tsid"),
 	'on_id': _("Onid"),
@@ -417,7 +422,6 @@ tstrings = {'mo': _("Mo"),
 	'tstr_ow_browser_settings': _("OpenWebif Browser Settings"),
 	'tstr_ow_settings': _("OpenWebif Settings"),
 	'tstr_theme': _("Theme"),
-	'tstr_show_picon_in_channel_list': _("Show Picons in channel list"),
 	'tstr_spinner': _("Spinner"),
 	'display_duration_s': _("Display duration (s)"),
 
@@ -425,8 +429,16 @@ tstrings = {'mo': _("Mo"),
 	'tv_guide': _("TV Guide"),
 	'timeline': _("Timeline"),
 	'webtv': _("Web TV"),
+	'cw': _("Calendar Week"),
 
 	'linkspeed': _("Link Speed"),
 	'networkshares': _("Network Shares"),
 	'using': _("using"),
-	}
+	'prime_times': _("Primetimes"),
+	'titscreenshot': _("Enable/Disable Screenshot on key press or"),
+	
+	'bookmarks': _("Bookmarks"),
+	'bookmark': _("Bookmark"),
+	
+	'packages': _("Packages")
+}

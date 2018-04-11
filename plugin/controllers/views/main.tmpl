@@ -4,33 +4,148 @@
 #if $varExists('theme')
 	#set $t=$theme
 #end if
+#def menu($title, $name, $content)
+<div class="some-leftmenu-main">
+	#set $caret="s"
+	#set $style_val="display: initial"
+	#if $name in $collapsed
+		#set $caret="w"
+		#set $style_val="display: none"
+	#end if
+	<div class="some-leftmenu-top ui-widget-header" onclick="toggleMenu('$name');">
+		$title
+		<div id="leftmenu_expander_$name" class="ui-selectmenu-icon ui-icon ui-icon-caret-1-$caret"></div>
+	</div>
+	<div id="leftmenu_container_$name" style="$style_val">
+	$content
+	</div>
+</div>
+#end def
+#def mainMenu
+<ul>
+	<li><a class="lmc" href="ajax/tv">$tstrings['television']</a></li>
+	<li><a class="lmc" href="ajax/radio">$tstrings['radio']</a></li>
+	<li><a class="lmc spin" href="ajax/movies">$tstrings['movies']</a></li>
+	<li><a class="lmc" href="ajax/timers">$tstrings['timers']</a></li>
+	#if $webtv
+	<li><a class="lmc" href="ajax/webtv">$tstrings['webtv']</a></li>
+	#end if
+</ul>
+#end def
+#def searchMenu
+#if $epgsearchcaps
+<ul>
+	<li><input type="checkbox" name="epgsearchtype" />$tstrings['epgsearchextended']</li>
+	<li><input type="checkbox" name="epgsearchbouquetsonly" />$tstrings['epgsearchbouquetsonly']</li>
+</ul>
+#end if
+<form action="" onSubmit="open_epg_search_dialog(); return false;">
+	<div style="width:100%; text-align:center; padding-top:5px;"><input type="text" id="epgSearch" size="14" /></div>
+	<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button>$tstrings['search']</button></div>
+</form>
+#end def
+#def remoteMenu
+<div style="width:100%; text-align:center;">
+		<ul>
+		<li style="margin-bottom:5px;margin-top:5px;">
+		<div class="tbl"><div>
+		<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
+	<!--<div><a class="lmc fbb" href="ajax/screenshot" title=$tstrings['grabscreenshot'].replace(" ","&nbsp;")><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
+		<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
+		<div><a class="fbb" href='#' title=$tstrings['showfullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-expand" aria-hidden="true"></i></a></div>
+		</div></div>
+		</li>
+		</ul>
+		<div class="ui-widget-header" style="border-bottom: none;background: none;margin-left: 5px;margin-right: 5px;"></div>
+	<img src="images/remotes/ow_remote.png" width="135" height="183" usemap="#menuremote" border="0">
+	<map name="menuremote" >
+		<area shape="circle" coords="67,148,13" alt="ok" onclick="pressMenuRemote('352');">
+		<area shape="circle" coords="68,173,9" alt="down" onclick="pressMenuRemote('108');">
+		<area shape="circle" coords="44,151,9" alt="left" onclick="pressMenuRemote('105');">
+		<area shape="circle" coords="92,151,9" alt="right" onclick="pressMenuRemote('106');">
+		<area shape="circle" coords="68,126,9" alt="up" onclick="pressMenuRemote('103');">
+		<area shape="circle" coords="117,167,11" alt="blue" onclick="pressMenuRemote('401');">
+		<area shape="circle" coords="117,137,11" alt="yellow" onclick="pressMenuRemote('400');">
+		<area shape="circle" coords="18,167,11" alt="green" onclick="pressMenuRemote('399');">
+		<area shape="circle" coords="18,137,11" alt="red" onclick="pressMenuRemote('398');">
+		<area shape="rect" coords="2,88,41,111" alt="menu" onclick="pressMenuRemote('139');">
+		<area shape="rect" coords="93,88,133,111" alt="exit" onclick="pressMenuRemote('174');">
+		<area shape="rect" coords="46,88,87,111" alt="0" onclick="pressMenuRemote('11');">
+		<area shape="rect" coords="93,60,133,84" alt="9" onclick="pressMenuRemote('10');">
+		<area shape="rect" coords="46,60,87,84" alt="8" onclick="pressMenuRemote('9');">
+		<area shape="rect" coords="2,60,41,84" alt="7" onclick="pressMenuRemote('8');">
+		<area shape="rect" coords="93,31,133,55" alt="6" onclick="pressMenuRemote('7');">
+		<area shape="rect" coords="46,31,87,55" alt="5" onclick="pressMenuRemote('6');">
+		<area shape="rect" coords="2,31,41,55" alt="4" onclick="pressMenuRemote('5');">
+		<area shape="rect" coords="93,0,133,25" alt="3" onclick="pressMenuRemote('4');">
+		<area shape="rect" coords="46,0,89,25" alt="2" onclick="pressMenuRemote('3');">
+		<area shape="rect" coords="2,0,41,25" alt="1" onclick="pressMenuRemote('2');">
+	</map>
+	<div class="help">
+		$tstrings['shiftforlong']
+	</div>
+	<ul>
+		<li style="margin-bottom:5px;margin-top:5px;">
+			<input type="checkbox" class="remotegrabscreen" name="remotegrabscreen1" /><span style="cursor:pointer;" title="$tstrings['titscreenshot'] $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span>
+		</li>
+	</ul>
+	<div class="volslider" style="display:table-row;margin-bottom:15px">
+		<div style="display:table-cell;vertical-align: middle;"><img style="margin-left:5px;" id="volimage" src="images/volume.png" title="" border="0" width="24" height="24">
+		</div>
+		<div style="vertical-align: middle;display:table-cell;">
+			<div id="slider" style="margin-left:10px;margin-right:10px;width:90px;"></div>
+		</div>
+		<div style="vertical-align: middle;display:table-cell;">
+			<input class="ui-state-active" style="border:none;font-weight:bold;width:22px;" type="text" id="amount"/>
+		</div>
+	</div>
+	<div style="margin-bottom:5px;"></div>
+</div>
+#end def
+#def extrasMenu
+<ul>
+	<li><a class="lmc" href="ajax/boxinfo">$tstrings["box_info"]</a></li>
+	#for $extra in $extras
+		#set $target_url = $extra["key"];
+		#if $extra.has_key('nw')
+			#if $extra["nw"] == "1"
+			<li><a href="$target_url" target='_blank'>$extra["description"]</a></li>
+			#else
+			<li><a class="lmc pop" href="$target_url">$extra["description"]</a></li>
+			#end if
+		#else
+			<li><a class="lmc" href="$target_url">$extra["description"]</a></li>
+		#end if
+	#end for
+</ul>
+#end def
 <!doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<link rel="shortcut icon" href="images/favicon.png">
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="css/jquery-ui.min.css">
-#if $t != "original" and $t != "clear"
-	#set $t = $t + '.css'
-	<link rel="stylesheet" href="themes/$t">
-#end if
-<link type="text/css" href="css/style.min.css" rel="stylesheet"/>
-<link type="text/css" href="web/css" rel="stylesheet"/>
-<script type="text/javascript" src="js/openwebif-1.2.4.min.js"></script>
-<script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
-<script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
-<title>Open Webif</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<link rel="shortcut icon" href="images/favicon.png">
+	<link type="text/css" rel="stylesheet" href="css/jquery-ui.min.css">
+	#if $t not in ["original", "clear"]
+		#set $theme_css = $t + '.css'
+		<link type="text/css" rel="stylesheet" href="themes/$theme_css">
+	#end if
+	<link type="text/css" href="css/style.min.css" rel="stylesheet"/>
+	#if $t == "original"
+		<link type="text/css" href="css/theme_original.css" rel="stylesheet"/>
+	#end if
+	<link type="text/css" href="web/css" rel="stylesheet"/>
+	<title>$boxname - OpenWebif</title>
 </head>
-#if $t == "original"
-<body>
-#elif $t == "excite-bike" or $t == "pepper-grinder"
-<body class="ui-widget-header ui-state-hover">
-#else
-<body class="ui-widget-header">
+#set $body_classes = [$t]
+#if $t not in ["original", "original-small-screen"]
+#set $body_classes += ["ui-widget-header"]
 #end if
+#if $t in ["excite-bike", "pepper-grinder"]
+#set $body_classes += ["ui-state-hover"]
+#end if
+#set $body_css_class = ' '.join($body_classes)
+<body class="$body_css_class">
 	<div id="container">
 		<div id="header">
 			<h1><a href="/">Open<span class="ui-state-active">Webif</span></a></h1>
@@ -44,152 +159,32 @@
 				<div id="osd_bottom"></div>
 			</div>
 		</div>
-		
-		
-		<div id="leftmenu" class="ui-widget-content">
-			#def menu($title, $name, $content)
-			<div id="leftmenu_main">
-				<div id="leftmenu_top" class="ui-widget-header" onclick="toggleMenu('$name');">
-					$title
-					#if $name in $collapsed
-					<div id="leftmenu_expander_$name" class="ui-selectmenu-icon ui-icon ui-icon-caret-1-w"></div>
-					#else
-					<div id="leftmenu_expander_$name" class="ui-selectmenu-icon ui-icon ui-icon-caret-1-s"></div>
-					#end if
-				</div>
-				#if $name in $collapsed
-				<div id="leftmenu_container_$name" style="display: none;">
-				#else
-				<div id="leftmenu_container_$name">
-				#end if
-				$content
-				</div>
-			</div>
-			#end def
-		
-			#def mainMenu
-			<ul>
-				<li><a href='#' onclick="load_maincontent('ajax/tv'); return false;">$tstrings['television']</a></li>
-				<li><a href='#' onclick="load_maincontent('ajax/radio'); return false;">$tstrings['radio']</a></li>
-				<li><a href='#' onclick="load_maincontent_spin('ajax/movies'); return false;">$tstrings['movies']</a></li>
-				<li><a href='#' onclick="load_maincontent('ajax/timers'); return false;">$tstrings['timers']</a></li>
-				#if $webtv
-				<li><a href='#' onclick="load_maincontent('ajax/webtv'); return false;">$tstrings['webtv']</a></li>
-				#end if
-			</ul>
-			#end def
 
-			#def searchMenu
-			#if $epgsearchcaps
-			<ul>
-				<li><input type="checkbox" name="epgsearchtype" />$tstrings['epgsearchextended']</li>
-				<li><input type="checkbox" name="epgsearchbouquetsonly" />$tstrings['epgsearchbouquetsonly']</li>
-			</ul>
-			#end if
-			<form action="" onSubmit="open_epg_search_dialog(); return false;">
-				<div style="width:100%; text-align:center; padding-top:5px;"><input type="text" id="epgSearch" size="14" /></div>
-				<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button>$tstrings['search']</button></div>
-			</form>
-			#end def
-			
-			#def remoteMenu
-			<div style="width:100%; text-align:center;">
-					<ul>
-					<li style="margin-bottom:5px;margin-top:5px;">
-					<div class="tbl"><div>
-					<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
-				<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
-					<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
-					<div><a class="fbb" href='#' title=$tstrings['showfullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-expand" aria-hidden="true"></i></a></div>
-					</div></div>
-					</li>
-					</ul>
-					<div class="ui-widget-header" style="border-bottom: none;background: none;margin-left: 5px;margin-right: 5px;"></div>
-				<img src="images/remotes/ow_remote.png" width="135" height="183" usemap="#menuremote" border="0">
-				<map name="menuremote" >
-					<area shape="circle" coords="67,148,13" alt="ok" onclick="pressMenuRemote('352');">
-					<area shape="circle" coords="68,173,9" alt="down" onclick="pressMenuRemote('108');">
-					<area shape="circle" coords="44,148,9" alt="left" onclick="pressMenuRemote('105');">
-					<area shape="circle" coords="92,147,9" alt="right" onclick="pressMenuRemote('106');">
-					<area shape="circle" coords="68,126,8" alt="up" onclick="pressMenuRemote('103');">
-					<area shape="circle" coords="117,163,10" alt="blue" onclick="pressMenuRemote('401');">
-					<area shape="circle" coords="118,132,11" alt="yellow" onclick="pressMenuRemote('400');">
-					<area shape="circle" coords="18,163,11" alt="green" onclick="pressMenuRemote('399');">
-					<area shape="circle" coords="19,133,10" alt="red" onclick="pressMenuRemote('398');">
-					<area shape="rect" coords="5,89,44,117" alt="menu" onclick="pressMenuRemote('139');">
-					<area shape="rect" coords="90,89,128,117" alt="exit" onclick="pressMenuRemote('174');">
-					<area shape="rect" coords="47,89,87,117" alt="0" onclick="pressMenuRemote('11');">
-					<area shape="rect" coords="90,60,128,86" alt="9" onclick="pressMenuRemote('10');">
-					<area shape="rect" coords="47,60,87,86" alt="8" onclick="pressMenuRemote('9');">
-					<area shape="rect" coords="4,60,44,86" alt="7" onclick="pressMenuRemote('8');">
-					<area shape="rect" coords="90,30,129,57" alt="6" onclick="pressMenuRemote('7');">
-					<area shape="rect" coords="47,30,87,57" alt="5" onclick="pressMenuRemote('6');">
-					<area shape="rect" coords="4,30,44,57" alt="4" onclick="pressMenuRemote('5');">
-					<area shape="rect" coords="90,0,129,27" alt="3" onclick="pressMenuRemote('4');">
-					<area shape="rect" coords="46,0,88,28" alt="2" onclick="pressMenuRemote('3');">
-					<area shape="rect" coords="5,0,45,28" alt="1" onclick="pressMenuRemote('2');">
-				</map>
-				<div id="help">
-					$tstrings['shiftforlong']
-				</div>
-					<ul>
-					<li style="margin-bottom:5px;margin-top:5px;">
-					<input type="checkbox" class="remotegrabscreen" name="remotegrabscreen1" /><span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span>
-					</li>
-					</ul>
-					<div class="volslider" style="display:table-row;margin-bottom:15px">
-						<div style="display:table-cell;vertical-align: middle;"><img style="margin-left:5px;" id="volimage" src="images/volume.png" title="" border="0" width="24" height="24">
-						</div>
-						<div style="vertical-align: middle;display:table-cell;">
-							<div id="slider" style="margin-left:10px;margin-right:10px;width:90px;"></div>
-						</div>
-						<div style="vertical-align: middle;display:table-cell;">
-							<input class="ui-state-active" style="border:none;font-weight:bold;width:22px;" type="text" id="amount"/>
-						</div>
-					</div>
-					<div style="margin-bottom:5px;"></div>
-			</div>
-			#end def
-			
-			#def extrasMenu
-			<ul>
-				<li><a href='#' onclick="load_maincontent('ajax/boxinfo'); return false;">$tstrings["box_info"]</a></li>
-				#for $extra in $extras
-					#if $extra.has_key('nw')
-						#if $extra["nw"] == "1"
-						<li><a href='$extra["key"]' target='_blank'>$extra["description"]</a></li>
-						#else
-						<li><a href='#' onclick="_epg_pop('$extra["key"]'); return false;">$extra["description"]</a></li>
-						#end if
-					#else
-						<li><a href='#' onclick="load_maincontent('$extra["key"]'); return false;">$extra["description"]</a></li>
-					#end if
-				#end for
-			</ul>
-			#end def
+		<div id="leftmenu" class="ui-widget-content">
 			<div id="menucontainer">
 				$menu($tstrings['main'], "main", $mainMenu)
 				$menu($tstrings['remote'], "remote", $remoteMenu)
 				$menu($tstrings['extras'], "extras", $extrasMenu)
 				$menu($tstrings['epgsearch'], "search", $searchMenu)
 			</div>
+
 			<div id="remotecontainer" style="display: none;">
-				<div id="leftmenu_main">
-					<div id="leftmenu_top" class="ui-widget-header">$tstrings['remote']</div>
+				<div class="some-leftmenu-main">
+					<div class="some-leftmenu-top ui-widget-header">$tstrings['remote']</div>
 					<div style="width:100%; text-align:center;">
-					<ul>
-					<li style="margin-bottom:5px;">
-							<div class="tbl"><div>
-							<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
-						<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
-							<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
-							<div><a class="fbb" href='#' title=$tstrings['hidefullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-compress" aria-hidden="true"></i></a></div>
-							</div></div>
+						<ul>
+							<li style="margin-bottom:5px;">
+								<div class="tbl"><div>
+								<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
+							<!--<div><a class="fbb" href='#' title=$tstrings['grabscreenshot'].replace(" ","&nbsp;") onclick="load_maincontent('ajax/screenshot');return false;"><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
+								<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
+								<div><a class="fbb" href='#' title=$tstrings['hidefullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-compress" aria-hidden="true"></i></a></div>
+								</div></div>
 							</li>
-					</ul>
-					
+						</ul>
+
 						<div id="remote_container" style="width:100%; text-align:center;"></div>
-						<div id="help">
+						<div class="help">
 							$tstrings['shiftforlong']
 						</div>
 						<ul>
@@ -200,11 +195,12 @@
 				</div>
 			</div>
 		</div>
+
 		<div id="content">
 			<div id="content_container">
 			$content
 			</div>
-			<div id="footer"><h3>&nbsp;&nbsp;<a href="https://github.com/E2OpenPlugins">E2OpenPlugins</a> | <a href="http://www.opena.tv">openATV</a> | <a href="http://www.vuplus-community.net">Black Hole</a> | <a href="http://www.droidsat.org">OpenDroid</a> | <a href="http://www.egami-image.com">EGAMI</a> | <a href="http://www.hdfreaks.cc">OpenHDF</a> | <a href="http://image.openmips.com">openMips</a> | <a href="http://openpli.org">OpenPli</a> | <a href="http://forum.sifteam.eu">Sif</a> | <a href="http://openspa.info">OpenSpa</a> | <a href="http://www.world-of-satellite.com">OpenViX</a> | <a href="http://www.vuplus-support.org">VTi</a> | <a href="#" onclick="load_maincontent('ajax/about'); return false">$tstrings['about']</a></h3></div>
+			<div id="footer"><h3>&nbsp;&nbsp;<a href="https://github.com/E2OpenPlugins">E2OpenPlugins</a> | <a href="http://www.opena.tv">openATV</a> | <a href="http://www.vuplus-community.net">Black Hole</a> | <a href="http://www.droidsat.org">OpenDroid</a> | <a href="http://www.egami-image.com">EGAMI</a> | <a href="http://www.hdfreaks.cc">OpenHDF</a> | <a href="https://www.nachtfalke.biz">openNFR</a> | <a href="https://openpli.org">OpenPli</a> | <a href="http://forum.sifteam.eu">Sif</a> | <a href="http://openspa.info">OpenSpa</a> | <a href="http://www.teamblue.tech">teamBlue</a> | <a href="http://www.world-of-satellite.com">OpenViX</a> | <a class="lmc" href="ajax/about">$tstrings['about']</a></h3></div>
 		</div>
 	</div>
 	<form name="portForm" action="web/stream.m3u" method="GET" target="_blank">
@@ -221,16 +217,40 @@
 		<p>Sorry, this function is not yet implemented.</p>
 	</div>
 	<div id="editTimerForm" title="$tstrings['edit_timer']"></div>
-<script type="text/javascript">
-var h = window.innerHeight - 210;
-document.write('<style> #tvcontentmain { height: '+h.toString()+'px; } </style>');
-h=h-70;
-document.write('<style> #tvcontent,#movies,#timers { height: '+h.toString()+'px; } </style>');
-\$(document).ready(function() {
-	\$("#remote_container").load("static/remotes/${remote}.html");
-	directlink();
-});
-theme = '$t';
-</script>
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/openwebif-1.2.17.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
+	<script type="text/javascript" src="/js/chosen.1.8.2.min.js"></script>
+	<script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
+	<script type="text/javascript">
+		var h = window.innerHeight - 210;
+		var hh = h-70;
+		var css = document.createElement("style");
+		css.type = "text/css";
+		css.innerHTML = '#tvcontentmain { height: '+h.toString()+'px; } #tvcontent,#movies,#timers { height: '+hh.toString()+'px; }';
+		document.body.appendChild(css);
+
+		\$(document).ready(function() {
+			\$("#remote_container").load("static/remotes/${remote}.html");
+			directlink();
+			\$('a.lmc').on("click", function() {
+				var target_url = \$(this).prop("href");
+				if(\$(this).hasClass("spin")) {
+					load_maincontent_spin(target_url);
+				}
+				else if(\$(this).hasClass("pop")) {
+					_epg_pop(target_url);
+				}
+				else {
+					load_maincontent(target_url);
+				}
+				return false;
+			});
+		});
+		theme = '$t';
+		SetLSValue('TimerListOffset',0);
+	</script>
 </body>
 </html>

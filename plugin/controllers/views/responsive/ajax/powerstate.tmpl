@@ -1,0 +1,15 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
+<div style="height: 300px; width:500px">
+	<div class="powerStateButtons">
+		<ul>
+			<li class="ui-button" onclick="handle_power_state_dialog(new_power_state = 0); return false">$tstrings['standby_toggle']</li>
+			<li class="ui-button" onclick="handle_power_state_dialog(new_power_state = 1); return false">$tstrings['deep_standby']</li>
+			<li class="ui-button" onclick="handle_power_state_dialog(new_power_state = 2); return false">$tstrings['reboot_box']</li> 
+			<li class="ui-button" onclick="handle_power_state_dialog(new_power_state = 3); return false">$tstrings['restart_gui']</li>
+		</ul>
+	</div>
+</div>
+<!-- cache the spinner for the restart gui or reboot stb dialog -->
+<div id="screenshotspinnerl" style="font-size:50px">
+	<div id="screenshotspinner" class='fa fa-spinner fa-spin' style="display: none;"></div>
+</div>

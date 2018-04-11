@@ -336,7 +336,7 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 					$('#statuscont').hide();
 				}
 			}
-		 }
+		 };
 	};
 
 	var epgr = new EPGR();

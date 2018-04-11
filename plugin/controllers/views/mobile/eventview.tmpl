@@ -18,7 +18,7 @@
 								<td width="100%" valign="top">
 								<strong>$event['channel']</strong><br />
 									$event['title']<br />
-									$event['begin'] - $event['end'] ( $event['duration'] min )<br />
+									$tstrings[("day_" + (time.strftime("%w", time.localtime($event['start']))))], $time.strftime("%d.%m.%Y", time.localtime($event['start'])) / $event['begin'] - $event['end'] ( $event['duration'] min )<br />
 								</td>
 							</tr>
 							<tr>
@@ -44,12 +44,15 @@ function addTimerEvent(sRef, eventId) {
 		async: false,
 		url: url,
 		cache : false,
-		success: function(data) {
-			result = \$.parseJSON(data);
-			if (!state && conflicts)
-				alert( "Error Timer Confict" );
-			else
-				alert( result.result ? "$tstrings['tstr_timer_added']" : result.message );
+		dataType: 'json',
+		success: function(result) {
+			if(result) {
+				if(!result.result && result.conflicts)
+					alert( "Error Timer Confict" );
+				else
+					alert( result.result ? "$tstrings['tstr_timer_added']" : result.message );
+			} else
+				alert( "Error Creating Timer" );
 		}
 	});
 }

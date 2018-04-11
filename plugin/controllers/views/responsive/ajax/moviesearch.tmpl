@@ -1,0 +1,227 @@
+#from urllib import quote
+#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, MinMovieList
+
+#if $MinMovieList == 'checked'
+
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="card">
+			<div class="header">
+				<div class="row clearfix">
+					<div class="col-xs-12 col-sm-6">
+						<h2><i class="material-icons material-icons-centered">movie</i>$tstrings['movies']</h2>
+					</div>
+				</div>
+				<ul class="header-dropdown m-r--5">
+					<li>
+						<li class="dropdown"><li class="dropdown"><a href="#" onclick="lastcontenturl = '\'; load_maincontent_spin('ajax/movies'); return false;" ><i class="material-icons">autorenew</i></a>
+						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+						<ul class="dropdown-menu pull-right" id="timerbuttons">
+						<li><a href="#" onclick="changeMoviesortSearch('name'); return false" ><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['name']</a></li>
+						<li><a href="#" onclick="changeMoviesortSearch('named'); return false" ><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['name']</a></li>
+						<li><a href="#" onclick="changeMoviesortSearch('date'); return false" ><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['date']</a></li>
+						<li><a href="#" onclick="changeMoviesortSearch('dated'); return false" ><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['date']</a></li>
+						</ul>
+					</li>
+				</ul>
+				</div>
+				<div class="body">
+				<div id="content_main">
+				<div id="tvcontentmain">
+
+	#set $path = ''
+	<div class="row clearfix">
+		<div class="col-xs-12" id="movies">
+	
+	#set $count = 0
+	#for $movie in $movies
+	
+	<div class="row row-striped clearfix pad-top-15">
+		<div class="col-xs-12 col-md-6">
+	
+	#if $movie.descriptionExtended == ''
+		#if $movie.eventname != ''
+			<b><i class="material-icons material-icons-centered">movie</i>
+			$movie.eventname - $movie.servicename</b>
+			<span data-toggle="collapse" data-target="#eventid$count" aria-expanded="false"aria-controls="collapseExample" style="cursor:pointer;"><b>
+			$movie.description</b><i class="material-icons material-icons-centered">expand_more</i></span>
+		#else
+			<b><i class="material-icons material-icons-centered">movie</i>
+			$movie.filename</b>
+			<span data-toggle="collapse" data-target="#eventid$count" aria-expanded="false"aria-controls="collapseExample" style="cursor:pointer;"><b>
+			$movie.description</b><i class="material-icons material-icons-centered">expand_more</i></span>
+		#end if
+	#elif $movie.eventname != ''
+		<b><i class="material-icons material-icons-centered">movie</i>$movie.eventname - $movie.servicename</b>
+	#else
+		<b><i class="material-icons material-icons-centered">movie</i>$movie.filename</b>
+	#end if
+	</div>
+	<div class="col-xs-12 col-md-3">
+	#if $movie.eventname != ''
+		#set $da = $tstrings[("day_" + (time.strftime("%w", time.localtime($movie.recordingtime))))]
+		<span>$da. $movie.begintime | $movie.length min. / $movie.filesize_readable</span>
+	#end if
+	</div>
+	<div class="col-xs-12 col-md-3 align-right">
+	
+		<a class="theme-link-color theme-link-col-$skinColor" href='#' onClick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><i class="material-icons material-icons-centered">play_circle_outline</i></a>
+		#if $transcoding
+		<a class="theme-link-color theme-link-col-$skinColor" href="#" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream']: $movie.eventname"><i class="material-icons material-icons-centered">tv</i></a>
+		<a class="theme-link-color theme-link-col-$skinColor" href="#" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] ($tstrings['transcoded']): $movie.eventname"><i class="material-icons material-icons-centered">phone_android</i></a>
+		#else
+		<a class="theme-link-color theme-link-col-$skinColor" target="_blank" href='web/ts.m3u?file=$quote($movie.filename)' title="$tstrings['stream'] $movie.eventname"><i class="material-icons material-icons-centered">tv</i></a>
+		#end if
+		
+		#set $eventname_escaped =  $movie.eventname.replace("'", r"\'")
+		<a class="theme-link-color theme-link-col-$skinColor" href='/file?action=download&file=$quote($movie.filename)' title="$tstrings['download'] $movie.eventname"><i class="material-icons material-icons-centered">cloud_download</i></a>
+		<a class="theme-link-color theme-link-col-$skinColor" href='#' onClick="renameMovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['rename_recording']"><i class="material-icons material-icons-centered">edit</i></a>
+		<a class="theme-link-color theme-link-col-$skinColor" href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><i class="material-icons material-icons-centered">delete</i></a>
+	</div>
+	<div class="col-xs-12 collapse" id="eventid$count">
+	<p>$movie.descriptionExtended</p>
+	</div></div>
+	#set $count = $count + 1
+			#end for
+			</div>
+		</div>
+	</div>
+</div>
+
+</div></div></div>
+
+#else
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="card">
+			<div class="header">
+				<div class="row clearfix">
+					<div class="col-xs-12 col-sm-6">
+						<h2><i class="material-icons material-icons-centered">movie</i>$tstrings['movies']</h2>
+					</div>
+				</div>
+				<ul class="header-dropdown m-r--5">
+					<li>
+						<li class="dropdown"><li class="dropdown"><a href="#" onclick="lastcontenturl = '\'; load_maincontent_spin('ajax/movies'); return false;" ><i class="material-icons">autorenew</i></a>
+						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+						<ul class="dropdown-menu pull-right" id="timerbuttons">
+						<li><a href="#" onclick="changeMoviesortSearch('name'); return false" ><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['name']</a></li>
+						<li><a href="#" onclick="changeMoviesortSearch('named'); return false" ><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['name']</a></li>
+						<li><a href="#" onclick="changeMoviesortSearch('date'); return false" ><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['date']</a></li>
+						<li><a href="#" onclick="changeMoviesortSearch('dated'); return false" ><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['date']</a></li>
+						</ul>
+					</li>
+				</ul>
+				</div>
+				<div class="body">
+				<div id="content_main">
+				<div id="tvcontentmain">
+				#set $path = ''
+	<div class="row clearfix">
+		<div class="col-xs-12" id="movies">
+
+	#set $count = 0
+	#for $movie in $movies
+	
+	<div class="card" id="$count">
+	<div class="header">
+	<div class="row clearfix">
+	<div class="col-xs-8">
+	
+	#if $movie.eventname != ''
+		#set $da = $tstrings[("day_" + (time.strftime("%w", time.localtime($movie.recordingtime))))]
+		<span>$da. $movie.begintime | $movie.length min. / $movie.filesize_readable</span>
+	#end if
+	
+	
+	#if $movie.descriptionExtended == ''
+		#if $movie.eventname != ''
+			<b><i class="material-icons material-icons-centered">movie</i>
+			$movie.eventname - $movie.servicename</b>
+			<span data-toggle="collapse" data-target="#eventid$count" aria-expanded="false"aria-controls="collapseExample" style="cursor:pointer;"><b>
+			$movie.description</b><i class="material-icons material-icons-centered">expand_more</i></span>
+		#else
+			<b><i class="material-icons material-icons-centered">movie</i>
+			$movie.filename</b>
+			<span data-toggle="collapse" data-target="#eventid$count" aria-expanded="false"aria-controls="collapseExample" style="cursor:pointer;"><b>
+			$movie.description</b><i class="material-icons material-icons-centered">expand_more</i></span>
+		#end if
+	#elif $movie.eventname != ''
+		<b><i class="material-icons material-icons-centered">movie</i>$movie.eventname - $movie.servicename</b>
+	#else
+		<b><i class="material-icons material-icons-centered">movie</i>$movie.filename</b>
+	#end if
+	</div>
+	<div class="col-xs-12 col-md-3">
+	#if $movie.eventname != ''
+		<h2><i class="material-icons material-icons-centered">movie</i>$movie.eventname - $movie.servicename</h2>
+	#else
+		<h2><i class="material-icons material-icons-centered">movie</i>$movie.filename</h2>
+	#end if
+	</div>
+	<div class="col-xs-4">
+	<ul class="header-dropdown m-r--5">
+		<li><span role="button"><a href='#' onClick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><i class="material-icons material-icons-centered">play_circle_outline</i></a></span></li>
+		#if $transcoding
+		<li><span role="button"><a href="#" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream']: $movie.eventname"><i class="material-icons material-icons-centered">tv</i></a></span></li>
+		<li><span role="button"><a href="#" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] ($tstrings['transcoded']): $movie.eventname"><i class="material-icons material-icons-centered">phone_android</i></a></span></li>
+		#else
+		<li><span role="button"><a target="_blank" href='web/ts.m3u?file=$quote($movie.filename)' title="$tstrings['stream'] $movie.eventname"><i class="material-icons material-icons-centered">tv</i></a></span></li>
+		#end if
+		
+		#set $eventname_escaped =  $movie.eventname.replace("'", r"\'")
+		<li><span role="button"><a href='/file?action=download&file=$quote($movie.filename)' title="$tstrings['download'] $movie.eventname"><i class="material-icons material-icons-centered">cloud_download</i></a></span></li>
+		<li><span role="button"><a href='#' onClick="renameMovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['rename_recording']"><i class="material-icons material-icons-centered">edit</i></a></span></li>
+		<li><span role="button"><a href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><i class="material-icons material-icons-centered">delete</i></a></span></li>
+	</ul>
+	</div></div>
+<div class="row clearfix" style="margin-bottom:-25px;">
+	<div class="col-xs-8">
+			#set $da = $tstrings[("day_" + (time.strftime("%w", time.localtime($movie.recordingtime))))]
+			<span>$da</span>
+				#set $w = $movie.lastseen
+				#set $size = '0'
+				#if $w > 0
+					#set $w = $w * 70 / 100
+					#set $size = str($w)
+					<div class="ui-progressbar ui-corner-all ui-widget ui-widget-content">
+						<div class="ui-progressbar-value ui-corner-left ui-widget-header" style="width: $size;"></div>
+					</div>
+				#end if
+				<div class="progress progress-striped" style="margin-bottom:0px;width:35%;max-width:200px;min-width:100px;height:10px;">
+					<div class="progress-bar bg-$skinColor" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:$size%;"></div>
+				</div>
+				<span>$movie.length min. / $movie.filesize_readable</span>
+	</div>
+	</div>
+
+	</div>
+									<div class="body">
+										<div class="row clearfix" style="margin-bottom:-25px;">
+											<div class="col-xs-12">
+												<span data-toggle="collapse" data-target="#eventid$count" aria-expanded="false"aria-controls="collapseExample" style="cursor:pointer;"><b>$movie.description</b><i class="material-icons material-icons-centered">expand_more</i></span>
+												<div class="collapse" id="eventid$count">
+													<p>$movie.descriptionExtended</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+						</div>
+					</div>
+					
+	#set $count += 1
+			#end for
+			</div>
+		</div>
+	</div>
+</div>
+
+</div></div></div>
+
+#end if
+<script type="text/javascript">
+	\$( function() {
+		MLHelper.Load('$sort');
+		});
+</script>
+

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ##############################################################################
-#                        2011 E2OpenPlugins                                  #
+#                        2011-2017 E2OpenPlugins                             #
 #                                                                            #
 #  This file is open source software; you can redistribute it and/or modify  #
 #     it under the terms of the GNU General Public License version 2 as      #
@@ -12,9 +12,8 @@
 from Plugins.Extensions.OpenWebif.__init__ import _
 
 from Components.config import config
-
-from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStatus
-from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
+from models.info import getInfo, getCurrentTime, getStatusInfo, getFrontendStatus
+from models.services import getCurrentService, getBouquets, getServices, getSubServices, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState, getStandbyState
@@ -22,16 +21,17 @@ from models.locations import getLocations, getCurrentLocation, addLocation, remo
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer, getPowerTimer, setPowerTimer, getVPSChannels
 from models.message import sendMessage, getMessageAnswer
 from models.movies import getMovieList, removeMovie, getMovieTags, moveMovie, renameMovie, getAllMovies
-from models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, setZapStream, saveConfig, getZapStream, setShowChPicon
-from models.stream import getStream, getTS, getStreamSubservices
+from models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, setZapStream, saveConfig, getZapStream, setShowChPicon, getConfigs, getConfigsSections
+from models.stream import getStream, getTS, getStreamSubservices, GetSession
 from models.servicelist import reloadServicesLists
 from models.mediaplayer import mediaPlayerAdd, mediaPlayerRemove, mediaPlayerPlay, mediaPlayerCommand, mediaPlayerCurrent, mediaPlayerList, mediaPlayerLoad, mediaPlayerSave, mediaPlayerFindFile
 from models.plugins import reloadPlugins
+from Screens.InfoBar import InfoBar
 
-from fcntl import ioctl
 from base import BaseController
 from stream import StreamController
 import re
+
 
 def whoami(request):
 	port = config.OpenWebif.port.value
@@ -43,13 +43,12 @@ def whoami(request):
 	m = re.match('.+\:(\d+)$', ourhost)
 	if m is not None:
 		port = m.group(1)
-	return {'proto':proto, 'port':port }
+	return {'proto': proto, 'port': port}
 
 
 class WebController(BaseController):
-	def __init__(self, session, path = ""):
-		BaseController.__init__(self, path)
-		self.session = session
+	def __init__(self, session, path=""):
+		BaseController.__init__(self, path=path, session=session)
 		self.putChild("stream", StreamController(session))
 
 	def prePageLoad(self, request):
@@ -71,9 +70,42 @@ class WebController(BaseController):
 
 		return None
 
+	def P_tsstart(self, request):
+		success = True
+		try:
+			InfoBar.instance.startTimeshift()
+		except Exception:  # noqa: E722
+			success = False
+		return self.P_tstate(request, success)
+
+# TODO: improve after action / save , save+record , nothing
+# config.timeshift.favoriteSaveAction ....
+	def P_tsstop(self, request):
+		success = True
+		oldcheck = False
+		try:
+			if config.usage.check_timeshift.value:
+				oldcheck = config.usage.check_timeshift.value
+				# don't ask but also don't save
+				config.usage.check_timeshift.value = False
+				config.usage.check_timeshift.save()
+			InfoBar.instance.stopTimeshift()
+		except Exception:  # noqa: E722
+			success = False
+		if config.usage.check_timeshift.value:
+			config.usage.check_timeshift.value = oldcheck
+			config.usage.check_timeshift.save()
+		return self.P_tstate(request, success)
+
+	def P_tsstate(self, request, success=True):
+		return {
+			"state": success,
+			"timeshiftEnabled": InfoBar.instance.timeshiftEnabled()
+		}
+
 	def P_about(self, request):
 		return {
-			"info": getInfo(need_fullinfo=True),
+			"info": getInfo(self.session, need_fullinfo=True),
 			"service": getCurrentService(self.session)
 		}
 
@@ -97,11 +129,11 @@ class WebController(BaseController):
 		elif request.args["set"][0][:3] == "set":
 			try:
 				return setVolume(int(request.args["set"][0][3:]))
-			except Exception, e:
+			except Exception:  # noqa: E722
 				res = getVolumeStatus()
 				res["result"] = False
 				res["message"] = _("Wrong parameter format 'set=%s'. Use set=set15 ") % request.args["set"][0]
-				return rets
+				return res
 
 		res = getVolumeStatus()
 		res["result"] = False
@@ -114,7 +146,7 @@ class WebController(BaseController):
 	def P_selectaudiotrack(self, request):
 		try:
 			id = int(request.args["id"][0])
-		except Exception, e:
+		except Exception:  # noqa: E722
 			id = -1
 
 		return setAudioTrack(self.session, id)
@@ -137,7 +169,7 @@ class WebController(BaseController):
 		id = -1
 		try:
 			id = int(request.args["command"][0])
-		except Exception, e:
+		except Exception:  # noqa: E722
 			return {
 				"result": False,
 				"message": _("The parameter 'command' must be a number")
@@ -162,26 +194,26 @@ class WebController(BaseController):
 
 	def P_supports_powerup_without_waking_tv(self, request):
 		try:
-			#returns 'True' if the image supports the function "Power on without TV":
-			f = open("/tmp/powerup_without_waking_tv.txt", "r")
+			# returns 'True' if the image supports the function "Power on without TV":
+			f = open("/tmp/powerup_without_waking_tv.txt", "r")  # nosec
 			powerupWithoutWakingTv = f.read()
 			f.close()
 			if ((powerupWithoutWakingTv == 'True') or (powerupWithoutWakingTv == 'False')):
 				return True
 			else:
 				return False
-		except:
+		except:  # noqa: E722
 			return False
 
 	def P_set_powerup_without_waking_tv(self, request):
 		if self.P_supports_powerup_without_waking_tv(request):
 			try:
-				#write "True" to file so that the box will power on ONCE skipping the HDMI-CEC communication:
-				f = open("/tmp/powerup_without_waking_tv.txt", "w")
+				# write "True" to file so that the box will power on ONCE skipping the HDMI-CEC communication:
+				f = open("/tmp/powerup_without_waking_tv.txt", "w")  # nosec
 				f.write('True')
 				f.close()
 				return True
-			except:
+			except:  # noqa: E722
 				return False
 		else:
 			return False
@@ -193,18 +225,15 @@ class WebController(BaseController):
 		return getCurrentLocation()
 
 	def P_getallservices(self, request):
-		self.isGZ=True
 		type = "tv"
 		if "type" in request.args.keys():
 			type = "radio"
 		bouquets = getAllServices(type)
 		if "renameserviceforxmbc" in request.args.keys():
-			count = 0
 			for bouquet in bouquets["services"]:
 				for service in bouquet["subservices"]:
 					if not int(service["servicereference"].split(":")[1]) & 64:
-						service["servicename"] = "%d - %s" % (count + 1, service["servicename"])
-						count += 1
+						service["servicename"] = "%d - %s" % (service["pos"], service["servicename"])
 			return bouquets
 		return bouquets
 
@@ -217,7 +246,6 @@ class WebController(BaseController):
 			hidden = request.args["hidden"][0] == "1"
 		else:
 			hidden = False
-		self.isGZ=True
 		return getServices(sRef, True, hidden)
 
 	def P_servicesm3u(self, request):
@@ -226,9 +254,18 @@ class WebController(BaseController):
 		else:
 			bRef = ""
 
-		request.setHeader('Content-Type', 'application/text')
-		services = getServices(bRef,False)
+		request.setHeader('Content-Type', 'application/x-mpegurl')
+		services = getServices(bRef, False)
+		if config.OpenWebif.auth_for_streaming.value:
+			session = GetSession()
+			if session.GetAuth(request) is not None:
+				auth = ':'.join(session.GetAuth(request)) + "@"
+			else:
+				auth = '-sid:' + str(session.GetSID(request)) + "@"
+		else:
+			auth = ''
 		services["host"] = "%s:8001" % request.getRequestHostname()
+		services["auth"] = auth
 		return services
 
 	def P_subservices(self, request):
@@ -245,7 +282,6 @@ class WebController(BaseController):
 		sRefPlaying = ""
 		if "sRefPlaying" in request.args.keys():
 			sRefPlaying = request.args["sRefPlaying"][0]
-		self.isGZ=True
 		return getPlayableServices(sRef, sRefPlaying)
 
 	def P_serviceplayable(self, request):
@@ -275,7 +311,11 @@ class WebController(BaseController):
 		if res:
 			return res
 
-		return removeLocation(request.args["dirname"][0])
+		remove = False
+		if "removeFolder" in request.args.keys():
+			remove = request.args["removeFolder"][0] == "1"
+
+		return removeLocation(request.args["dirname"][0], remove)
 
 	def P_message(self, request):
 		res = self.testMandatoryArguments(request, ["text", "type"])
@@ -284,7 +324,7 @@ class WebController(BaseController):
 
 		try:
 			ttype = int(request.args["type"][0])
-		except Exception, e:
+		except ValueError:
 			return {
 				"result": False,
 				"message": _("type %s is not a number") % request.args["type"][0]
@@ -294,7 +334,7 @@ class WebController(BaseController):
 		if "timeout" in request.args.keys():
 			try:
 				timeout = int(request.args["timeout"][0])
-			except Exception, e:
+			except ValueError:
 				pass
 
 		return sendMessage(self.session, request.args["text"][0], ttype, timeout)
@@ -303,11 +343,11 @@ class WebController(BaseController):
 		return getMessageAnswer()
 
 	def P_movielist(self, request):
-		self.isGZ=True
+		if self.isJson:
+			request.setHeader("content-type", "application/json; charset=utf-8")
 		return getMovieList(request.args)
-	
+
 	def P_fullmovielist(self, request):
-		self.isGZ=True
 		return getAllMovies()
 
 	def P_movielisthtml(self, request):
@@ -315,7 +355,7 @@ class WebController(BaseController):
 		return getMovieList(request.args)
 
 	def P_movielistm3u(self, request):
-		request.setHeader('Content-Type', 'application/text')
+		request.setHeader('Content-Type', 'application/x-mpegurl')
 		movielist = getMovieList(request.args)
 		movielist["host"] = "%s://%s:%s" % (whoami(request)['proto'], request.getRequestHostname(), whoami(request)['port'])
 		return movielist
@@ -342,7 +382,7 @@ class WebController(BaseController):
 		if res:
 			return res
 
-		return moveMovie(self.session, request.args["sRef"][0],request.args["dirname"][0])
+		return moveMovie(self.session, request.args["sRef"][0], request.args["dirname"][0])
 
 	def P_movierename(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
@@ -352,7 +392,7 @@ class WebController(BaseController):
 		if res:
 			return res
 
-		return renameMovie(self.session, request.args["sRef"][0],request.args["newname"][0])
+		return renameMovie(self.session, request.args["sRef"][0], request.args["newname"][0])
 
 	def P_movietags(self, request):
 		_add = None
@@ -364,7 +404,7 @@ class WebController(BaseController):
 			_del = request.args["del"][0]
 		if "sref" in request.args.keys():
 			_sref = request.args["sref"][0]
-		return getMovieTags(_sref,_add,_del)
+		return getMovieTags(_sref, _add, _del)
 
 	# a duplicate api ??
 	def P_gettags(self, request):
@@ -393,16 +433,15 @@ class WebController(BaseController):
 			elif "yes" in mode:
 				vpsplugin_enabled = True
 				vpsplugin_overwrite = True
-		return { 
-			"vpsplugin_time":vpsplugin_time,
-			"vpsplugin_overwrite":vpsplugin_overwrite,
-			"vpsplugin_enabled":vpsplugin_enabled
-			}
+		return {
+			"vpsplugin_time": vpsplugin_time,
+			"vpsplugin_overwrite": vpsplugin_overwrite,
+			"vpsplugin_enabled": vpsplugin_enabled
+		}
 
 	def P_timerlist(self, request):
 		ret = getTimers(self.session)
 		ret["locations"] = config.movielist.videodirs.value
-		self.isGZ=True
 		return ret
 
 	def P_timeradd(self, request):
@@ -491,7 +530,7 @@ class WebController(BaseController):
 
 		try:
 			eventid = int(request.args["eventid"][0])
-		except Exception, e:
+		except Exception:  # noqa: E722
 			return {
 				"result": False,
 				"message": "The parameter 'eventid' must be a number"
@@ -547,7 +586,7 @@ class WebController(BaseController):
 
 		try:
 			beginOld = int(request.args["beginOld"][0])
-		except Exception, e:
+		except Exception:  # noqa: E722
 			return {
 				"result": False,
 				"message": "The parameter 'beginOld' must be a number"
@@ -555,7 +594,7 @@ class WebController(BaseController):
 
 		try:
 			endOld = int(request.args["endOld"][0])
-		except Exception, e:
+		except Exception:  # noqa: E722
 			return {
 				"result": False,
 				"message": "The parameter 'endOld' must be a number"
@@ -591,7 +630,7 @@ class WebController(BaseController):
 			return res
 		try:
 			begin = int(request.args["begin"][0])
-		except Exception, e:
+		except Exception:  # noqa: E722
 			return {
 				"result": False,
 				"message": "The parameter 'begin' must be a number"
@@ -599,7 +638,7 @@ class WebController(BaseController):
 
 		try:
 			end = int(request.args["end"][0])
-		except Exception, e:
+		except Exception:  # noqa: E722
 			return {
 				"result": False,
 				"message": "The parameter 'end' must be a number"
@@ -614,7 +653,7 @@ class WebController(BaseController):
 
 		try:
 			begin = int(request.args["begin"][0])
-		except Exception, e:
+		except Exception:  # noqa: E722
 			return {
 				"result": False,
 				"message": "The parameter 'begin' must be a number"
@@ -622,7 +661,7 @@ class WebController(BaseController):
 
 		try:
 			end = int(request.args["end"][0])
-		except Exception, e:
+		except Exception:  # noqa: E722
 			return {
 				"result": False,
 				"message": "The parameter 'end' must be a number"
@@ -649,7 +688,7 @@ class WebController(BaseController):
 		return getCurrentTime()
 
 	def P_deviceinfo(self, request):
-		return getInfo(need_fullinfo=True)
+		return getInfo(session=self.session, need_fullinfo=True)
 
 	def P_getipv6(self, request):
 		request.setHeader("content-type", "text/html")
@@ -674,10 +713,9 @@ class WebController(BaseController):
 		if "time" in request.args.keys():
 			try:
 				begintime = int(request.args["time"][0])
-			except Exception, e:
+			except ValueError:
 				pass
-		self.isGZ=True
-		return getBouquetEpg(request.args["bRef"][0], begintime)
+		return getBouquetEpg(request.args["bRef"][0], begintime, None, self.isJson)
 
 	def P_epgmulti(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
@@ -688,65 +726,68 @@ class WebController(BaseController):
 		if "time" in request.args.keys():
 			try:
 				begintime = int(request.args["time"][0])
-			except Exception, e:
+			except ValueError:
 				pass
 
 		endtime = -1
 		if "endTime" in request.args.keys():
 			try:
 				endtime = int(request.args["endTime"][0])
-			except Exception, e:
+			except ValueError:
 				pass
-		self.isGZ=True
-		return getBouquetEpg(request.args["bRef"][0], begintime, endtime)
+		return getBouquetEpg(request.args["bRef"][0], begintime, endtime, self.isJson)
 
 	def P_epgnow(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
-		self.isGZ=True
-		return getBouquetNowNextEpg(request.args["bRef"][0], 0)
+		return getBouquetNowNextEpg(request.args["bRef"][0], 0, self.isJson)
 
 	def P_epgnext(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
-		self.isGZ=True
-		return getBouquetNowNextEpg(request.args["bRef"][0], 1)
+		return getBouquetNowNextEpg(request.args["bRef"][0], 1, self.isJson)
 
 	def P_epgnownext(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])
 		if res:
 			return res
-		self.isGZ=True
 		info = getCurrentService(self.session)
-		ret = getBouquetNowNextEpg(request.args["bRef"][0], -1)
-		ret["info"]=info
+		ret = getBouquetNowNextEpg(request.args["bRef"][0], -1, self.isJson)
+		ret["info"] = info
 		return ret
 
 	def P_epgservicelistnownext(self, request):
 		res = self.testMandatoryArguments(request, ["sList"])
 		if res:
 			return res
-		self.isGZ=True
-		ret = getServicesNowNextEpg(request.args["sList"][0])
+		ret = getServicesNowNextEpg(request.args["sList"][0], self.isJson)
 		return ret
 
 	def P_epgsearch(self, request):
-		res = self.testMandatoryArguments(request, ["search"])
-		if res:
-			return res
-		endtime = None
-		if "endtime" in request.args.keys():
+		if "search" in request.args.keys():
+			endtime = None
+			if "endtime" in request.args.keys():
+				try:
+					endtime = int(request.args["endtime"][0])
+				except ValueError:
+					pass
+			fulldesc = False
+			if "full" in request.args.keys():
+				fulldesc = True
+			return getSearchEpg(request.args["search"][0], endtime, fulldesc, False, self.isJson)
+		else:
+			res = self.testMandatoryArguments(request, ["sref", "eventid"])
+			if res:
+				return res
+			service_reference = request.args["sref"][0]
+			item_id = 0
 			try:
-				endtime = int(request.args["endtime"][0])
-			except Exception, e:
+				item_id = int(request.args["eventid"][0])
+			except ValueError:
 				pass
-		self.isGZ=True
-		fulldesc=False
-		if "full" in request.args.keys():
-			fulldesc=True
-		return getSearchEpg(request.args["search"][0], endtime,fulldesc)
+			return getEvent(service_reference, item_id, self.isJson)
 
 	def P_epgsearchrss(self, request):
 		res = self.testMandatoryArguments(request, ["search"])
@@ -768,29 +809,28 @@ class WebController(BaseController):
 		if "time" in request.args.keys():
 			try:
 				begintime = int(request.args["time"][0])
-			except Exception, e:
+			except ValueError:
 				pass
 
 		endtime = -1
 		if "endTime" in request.args.keys():
 			try:
 				endtime = int(request.args["endTime"][0])
-			except Exception, e:
+			except ValueError:
 				pass
-		self.isGZ=True
-		return getChannelEpg(request.args["sRef"][0], begintime, endtime)
+		return getChannelEpg(request.args["sRef"][0], begintime, endtime, self.isJson)
 
 	def P_epgservicenow(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-		return getNowNextEpg(request.args["sRef"][0], 0)
+		return getNowNextEpg(request.args["sRef"][0], 0, self.isJson)
 
 	def P_epgservicenext(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-		return getNowNextEpg(request.args["sRef"][0], 1)
+		return getNowNextEpg(request.args["sRef"][0], 1, self.isJson)
 
 	def P_epgsimilar(self, request):
 		res = self.testMandatoryArguments(request, ["sRef", "eventid"])
@@ -799,23 +839,23 @@ class WebController(BaseController):
 
 		try:
 			eventid = int(request.args["eventid"][0])
-		except Exception, e:
+		except ValueError:
 			return {
 				"result": False,
 				"message": "The parameter 'eventid' must be a number"
 			}
 
-		return getSearchSimilarEpg(request.args["sRef"][0], eventid)
+		return getSearchSimilarEpg(request.args["sRef"][0], eventid, self.isJson)
 
 	def P_event(self, request):
-		event = getEvent(request.args["sref"][0], request.args["idev"][0])
+		event = getEvent(request.args["sref"][0], request.args["idev"][0], self.isJson)
 		event['event']['recording_margin_before'] = config.recording.margin_before.value
 		event['event']['recording_margin_after'] = config.recording.margin_after.value
 		return event
-	
+
 	def P_getcurrent(self, request):
 		info = getCurrentService(self.session)
-		now = getNowNextEpg(info["ref"], 0)
+		now = getNowNextEpg(info["ref"], 0, self.isJson)
 		if len(now["events"]) > 0:
 			now = now["events"][0]
 			now["provider"] = info["provider"]
@@ -833,7 +873,7 @@ class WebController(BaseController):
 				"remaining": 0,
 				"provider": ""
 			}
-		next = getNowNextEpg(info["ref"], 1)
+		next = getNowNextEpg(info["ref"], 1, self.isJson)
 		if len(next["events"]) > 0:
 			next = next["events"][0]
 			next["provider"] = info["provider"]
@@ -866,7 +906,7 @@ class WebController(BaseController):
 					mnow["duration_sec"] = movie.getDuration()
 					mnow["remaining"] = movie.getDuration()
 					mnow["id"] = movie.getEventId()
-			except Exception, e:
+			except Exception:  # noqa: E722
 				mnow = now
 		elif mnow["sref"] == '':
 			serviceref = self.session.nav.getCurrentlyPlayingServiceReference()
@@ -882,7 +922,7 @@ class WebController(BaseController):
 						if servicepath and servicepath.startswith("/"):
 							mnow["filename"] = servicepath
 							mnow["sref"] = serviceref.toString()
-				except Exception, e:
+				except Exception:  # nosec
 					pass
 		return {
 			"info": info,
@@ -924,39 +964,43 @@ class WebController(BaseController):
 			return res
 		return setShowChPicon(request.args["checked"][0] == "true")
 
-	def P_streamm3u(self,request):
+	def P_streamm3u(self, request):
 		self.isCustom = True
 		if getZapStream()['zapstream']:
 			if "ref" in request.args:
 				zapService(self.session, request.args["ref"][0], request.args["name"][0], stream=True)
-		return getStream(self.session,request,"stream.m3u")
+		return getStream(self.session, request, "stream.m3u")
 
-	def P_tsm3u(self,request):
+	def P_tsm3u(self, request):
 		self.isCustom = True
-		return getTS(self.session,request)
+		return getTS(self.session, request)
 
-	def P_videom3u(self,request):
+	def P_videom3u(self, request):
 		self.isCustom = True
-		return getStream(self.session,request,"video.m3u")
+		return getStream(self.session, request, "video.m3u")
 
-	def P_streamcurrentm3u(self,request):
+	def P_streamcurrentm3u(self, request):
 		self.isCustom = True
-		return getStream(self.session,request,"streamcurrent.m3u")
+		return getStream(self.session, request, "streamcurrent.m3u")
 
 	def P_streamsubservices(self, request):
-		return getStreamSubservices(self.session,request)
+		return getStreamSubservices(self.session, request)
 
 	def P_servicelistreload(self, request):
-		return reloadServicesLists(self.session,request)
+		return reloadServicesLists(self.session, request)
 
 	def P_tvbrowser(self, request):
 		return tvbrowser(self.session, request)
 
 	def P_saveconfig(self, request):
-		res = self.testMandatoryArguments(request, ["key", "value"])
-		if res:
-			return res
-		return saveConfig(request.args["key"][0], request.args["value"][0])
+		if request.method == b'POST':
+			res = self.testMandatoryArguments(request, ["key", "value"])
+			if res:
+				return res
+			key = request.args["key"][0]
+			value = request.args["value"][0]
+			return saveConfig(key, value)
+		return {"result": False}
 
 	def P_mediaplayeradd(self, request):
 		res = self.testMandatoryArguments(request, ["file"])
@@ -1030,7 +1074,7 @@ class WebController(BaseController):
 
 	def P_powertimer(self, request):
 		if len(request.args):
-			res = self.testMandatoryArguments(request, ["start","end","timertype", "repeated", "afterevent", "disabled"])
+			res = self.testMandatoryArguments(request, ["start", "end", "timertype", "repeated", "afterevent", "disabled"])
 			if res:
 				return res
 			return setPowerTimer(self.session, request)
@@ -1054,7 +1098,7 @@ class WebController(BaseController):
 					time = 999
 				elif time < 0:
 					time = 0
-			except Exception, e:
+			except ValueError:
 				pass
 
 		action = "standby"
@@ -1074,11 +1118,11 @@ class WebController(BaseController):
 			ret["message"] = "ERROR: Obligatory parameter 'cmd' [get,set] has unspecified value '%s'" % cmd
 			return ret
 
-		if time == None and enabled == True:	# it's used only if the timer is enabled
+		if time is None and enabled is True:  # it's used only if the timer is enabled
 			ret["message"] = "ERROR: Obligatory parameter 'time' [0-999] is missing"
 			return ret
 
-		if enabled == None:
+		if enabled is None:
 			ret["message"] = "Obligatory parameter 'enabled' [True,False] is missing"
 			return ret
 
@@ -1090,7 +1134,7 @@ class WebController(BaseController):
 			return {
 				"plugins": loaded_plugins
 			}
-		except Exception, e:
+		except Exception:
 			return {
 				"plugins": []
 			}
@@ -1121,7 +1165,7 @@ class WebController(BaseController):
 
 	def P_getsubtitles(self, request):
 		service = self.session.nav.getCurrentService()
-		ret = { "subtitlelist": [], "result": False }
+		ret = {"subtitlelist": [], "result": False}
 		subtitle = service and service.subtitle()
 		subtitlelist = subtitle and subtitle.getSubtitleList()
 		if subtitlelist:
@@ -1163,12 +1207,73 @@ class WebController(BaseController):
 	def P_setmepgmode(self, request):
 		if "mode" in request.args.keys():
 			try:
-				mode = request.args["mode"][0]
-				config.OpenWebif.webcache.mepgmode.value = int(mode)
+				config.OpenWebif.webcache.mepgmode.value = int(request.args["mode"][0])
 				config.OpenWebif.webcache.mepgmode.save()
-			except Exception, e:
+			except ValueError:
 				pass
 		return {}
-	
+
+	def P_config(self, request):
+
+		def RepresentsInt(s):
+			try:
+				int(s)
+				return True
+			except ValueError:
+				return False
+
+		setcs = getConfigsSections()
+		if request.path == '/api/config':
+			return setcs
+		else:
+			try:
+				sect = request.path.split('/')
+				if len(sect) == 4:
+					cfgs = getConfigs(sect[3])
+					resultcfgs = []
+					for cfg in cfgs['configs']:
+						min = -1
+						kv = []
+						data = cfg['data']
+						if data.has_key('choices'):
+							for ch in data['choices']:
+								if type(ch).__name__ == 'tuple' and len(ch) == 2 and ch[0] == ch[1]:
+									if RepresentsInt(ch[0]):
+										kv.append(int(ch[0]))
+									else:
+										kv = []
+										break
+								else:
+									kv = []
+									break
+
+						if len(kv) > 1:
+							if kv[1] == (kv[0] + 1):
+								min = kv[0]
+								max = kv[len(kv) - 1]
+
+						if min > -1:
+							data['min'] = min
+							data['max'] = max
+							del data['choices']
+							cfg['data'] = data
+							resultcfgs.append(cfg)
+						else:
+							resultcfgs.append(cfg)
+					return {'configs': resultcfgs}
+			except Exception:
+				# TODO show exception
+				pass
+		return {}
 
 
+class ApiController(WebController):
+	def __init__(self, session, path=""):
+		WebController.__init__(self, session, path)
+
+	def prePageLoad(self, request):
+		self.isJson = True
+		self.isGZ = True
+
+
+from Plugins.Extensions.OpenWebif.vtiaddon import expand_basecontroller  # noqa: F401

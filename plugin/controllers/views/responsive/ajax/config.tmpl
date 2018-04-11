@@ -1,0 +1,99 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+
+#def select($config)
+<div class="row clearfix">
+	<div class="col-xs-6 align-right">
+	<label>$config.description</label>
+	</div>
+	<div class="col-xs-6 col-md-3">
+	<select class="form-control show-tick" id="$config.path" onchange="saveConfig('$config.path', this.value);">
+		#for $choice in $config.data.choices
+			#if $config.data.current == $choice[0]
+				<option value="$choice[0]" selected="true">$choice[1]</option>
+			#else
+				<option value="$choice[0]">$choice[1]</option>
+			#end if
+		#end for
+	</select>
+	</div>
+</div>
+#end def
+
+#def checkbox($config)
+<div class="row clearfix">
+	<div class="col-xs-6 align-right">
+	<label>$config.description</label>
+	</div>
+	<div class="col-xs-6">
+			<div class="switch switch-col-indigo">
+		#if $config.data.current
+					<label><input type="checkbox" id="$config.path" checked="true" onclick="saveConfig('$config.path', this.checked);" /><span class='lever switch-col-$skinColor'></span></label>
+		#else
+					<label><input type="checkbox" id="$config.path" onclick="saveConfig('$config.path', this.checked);" /><span class='lever switch-col-$skinColor'></span></label>
+		#end if
+			</div>
+		<label for="$config.path"></label>
+	</div>
+</div>
+#end def
+
+#def multicheckbox($config)
+<div class="row clearfix">
+	<div class="col-xs-6 align-right">
+	<label>$config.description</label>
+	</div>
+	<div class="col-xs-6">
+	#for $choice in $config.data.choices
+		#if $choice in $config.data.current
+					<input type="checkbox" class="form-control chk-col-$skinColor" id="$config.path" checked="true" onclick="saveConfig('$config.path', this.checked);" />
+		#else
+					<input type="checkbox" class="form-control chk-col-$skinColor" id="$config.path" onclick="saveConfig('$config.path', this.checked);" />
+		#end if
+				<label for="$config.path">$choice</label>
+	#end for
+	</div>
+</div>
+#end def
+
+#def number($config, $active)
+<div class="row clearfix">
+	<div class="col-xs-6 align-right">
+	<label>$config.description</label>
+	</div>
+	<div class="col-xs-6 col-md-3">
+	<div class="form-line">
+				<input type="text"  class="form-control inactive" id="${config.path}" placeholder="$config.data.current" onchange="saveConfig('$config.path', this.value);" />
+	</div>
+	</div>
+</div>
+#end def
+
+<div id="content_main">
+	#set $isactive="active"
+	<div style="display:none" id="thistitleconfig"><i class='material-icons material-icons-centered'>settings</i>$tstrings['settings'] - $title</div>
+	<div class="form-group" id="configuration">
+		#for $config in $configs:
+			#if $config.data.type == "select"
+				$select($config)
+			#elif $config.data.type == "checkbox"
+				$checkbox($config)
+			#elif $config.data.type == "multicheckbox"
+				$multicheckbox($config)
+			#elif $config.data.type == "number"
+				$number($config, $isactive)
+				#if $isactive == "active"
+					#set $isactive = ""
+				#end if
+			#end if
+		#end for
+	</div>
+</div>
+
+<script type="text/javascript">
+#raw
+$("#configtitle").html($('#thistitleconfig').html());
+$.AdminBSB.input.activate();
+$.AdminBSB.select.activate();
+#end raw
+</script>

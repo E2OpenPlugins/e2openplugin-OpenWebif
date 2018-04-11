@@ -7,7 +7,7 @@
 	table { font-family: Verdana; font-size: 11px; }
 	tr { vertical-align: top }
 	.float { float:left }
-	.service { font-weight: bold; font-size: 12px; line-height:30px; padding-right: 4px; white-space: nowrap; overflow: hidden; width: 184px}
+	.service { font-weight: bold; font-size: 12px; line-height:30px; padding-right: 4px; white-space: nowrap; overflow: hidden;}
 	.service img { width:50px; height:30px; float:left; margin-right:10px; border: 0;}
 	.title { font-weight: bold;}
 	.desc { font-size: 10px; line-height: 1.25em; max-height: 3.75em; overflow: hidden; }
@@ -30,7 +30,7 @@
 	<div class="float plus ui-state-default #if $slot==$day then 'ui-state-active' else '' #" data-day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div>
 #end for
 #if $mode == 2
-<div class="float plus ui-state-default lbl">&nbsp;Primetimes:&nbsp;</div>
+<div class="float plus ui-state-default lbl">&nbsp;$tstrings['prime_times']:&nbsp;</div>
 <div id="pt0" class="float plus ui-state-default" data-day="201">06:00</div>
 <div id="pt1" class="float plus ui-state-default" data-day="202">12:00</div>
 <div id="pt2" class="float plus ui-state-default" data-day="203">20:00</div>
@@ -38,11 +38,19 @@
 <div id="pt3" class="float">&nbsp;</div>
 <div id="pt4" class="float plus ui-state-default" data-day="200">$tstrings['now']</div>
 #end if
+#else
+<div class="float plus ui-state-default lbl">&nbsp;$tstrings['cw']:&nbsp;</div>
+#for $wk in range(0,3)
+	#set $w = $wk + 1000
+	<div class="float plus ui-state-default #if $wk==$week then 'ui-state-active' else '' #" data-day="$(w)">$time.strftime("%V",time.localtime(time.time()+604800*wk))</div>
+#end for
 #end if
 <div class="float plus ui-state-default lbl">&nbsp;$tstrings['display_mode']:&nbsp;</div>
 <div class="float plus ui-state-default #if $mode==1 then 'ui-state-active' else '' #" data-day="101">$tstrings['tv_guide']</div>
 <div class="float plus ui-state-default #if $mode==2 then 'ui-state-active' else '' #" data-day="102">$tstrings['timeline']</div>
-
+#if $mode == 1
+<div class="float plus ui-state-default lbl">&nbsp;$tstrings['date']:&nbsp;$time.strftime("%x", time.localtime(time.time()+86400*$day))</div>
+#end if
 <div id="compressmepg" onclick="CompressMEPG();"><i id="compressmepgi" class="fa fa-compress link" aria-hidden="true"></i></div>
 <div id="refreshmepg2" onclick="RefreshMEPG();"><i id="refreshmepgi" class="fa fa-refresh link" aria-hidden="true"></i></div>
 	<br clear="all">
@@ -99,7 +107,13 @@
 <thead>
 <tr>
 	#for $sname, $eventlist in $events.iteritems()
-	<td class="border"><div class="service ui-widget-header"><img src="$(picons[$sname])" /> $sname</div></td>
+	#set $evl = $eventlist[0]
+	#set $ref= ""
+	#if $evl
+		#set $ev=$evl[0]
+		#set $ref = "data-ref='" + $ev.ref + "'"
+	#end if
+	<td class="border"><div class="service ui-widget-header" $ref><img src="$(picons[$sname])" /> $sname</div></td>
 	#end for
 </tr>
 </thead>
@@ -275,11 +289,24 @@ fixTableHeight();
 		});
 	}
 });
+#if $mode == 1
+\$(".service").click(function() {
+	var ref = \$(this).data("ref");
+	if (ref != undefined) {
+		zapChannel(ref, '');
+	}
+});
+#end if
 \$(".plus").click(function() {
 	var day = \$(this).data("day");
 	var epgmode = "$epgmode";
 	if (day != undefined) {
-		if (day > 199)
+		if (day > 999)
+		{
+			var w = day - 1000;
+			\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day='+$day+'&epgmode='+epgmode+'&week='+w);
+		}
+		else if (day > 199)
 		{
 			var d = day - 200;
 			var dt = (d==0) ? '' : \$(this).html();
@@ -315,13 +342,13 @@ fixTableHeight();
 				$.ajax({
 				url: 'api/setmepgmode?mode=' + mode,
 					success: function(data) {
-						\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day=$day&epgmode='+epgmode);
+						\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day=$day&epgmode='+epgmode+'&week='+$week);
 					}
 				});
 			}
 		}
 		else {
-			\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day='+day+'&epgmode='+epgmode);
+			\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day='+day+'&epgmode='+epgmode+'&week='+$week);
 		}
 	} else {
 		epgmode = \$(this).data("tvradio");

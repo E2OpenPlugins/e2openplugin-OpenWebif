@@ -3,11 +3,11 @@
 from enigma import eEnv
 from Components.SystemInfo import SystemInfo
 from Components.config import config
-from Tools.Directories import resolveFilename, SCOPE_CURRENT_PLUGIN, fileExists
 from os import path, listdir
-import xml.etree.cElementTree
+import xml.etree.cElementTree  # nosec
 
 from Plugins.Extensions.OpenWebif.__init__ import _
+from Plugins.Extensions.OpenWebif.controllers.utilities import get_config_attribute
 
 def addCollapsedMenu(name):
 	tags = config.OpenWebif.webcache.collapsedmenus.value.split("|")
@@ -16,7 +16,7 @@ def addCollapsedMenu(name):
 
 	config.OpenWebif.webcache.collapsedmenus.value = "|".join(tags).strip("|")
 	config.OpenWebif.webcache.collapsedmenus.save()
-	
+
 	return {
 		"result": True
 	}
@@ -97,7 +97,7 @@ def getJsonFromConfig(cnf):
 			choices = []
 			for choice in cnf.choices.choices:
 				choices.append((choice, _(choice)))
-				
+
 		return {
 			"result": True,
 			"type": "select",
@@ -147,8 +147,16 @@ def getJsonFromConfig(cnf):
 
 def saveConfig(path, value):
 	try:
-		cnf = eval(path)
-		if cnf.__class__.__name__ == "ConfigBoolean" or cnf.__class__.__name__ == "ConfigEnableDisable" or cnf.__class__.__name__ == "ConfigYesNo":
+		cnf = get_config_attribute(path, root_obj=config)
+	except Exception as exc:
+		print "[OpenWebif] ", exc
+		return {
+			"result": False,
+			"message": "I'm sorry Dave, I'm afraid I can't do that"
+		}
+
+	try:
+		if cnf.__class__.__name__ in ("ConfigBoolean", "ConfigEnableDisable", "ConfigYesNo"):
 			cnf.value = value == "true"
 		elif cnf.__class__.__name__ == "ConfigSet":
 			values = cnf.value
@@ -159,7 +167,7 @@ def saveConfig(path, value):
 			cnf.value = values
 		elif cnf.__class__.__name__ == "ConfigNumber":
 			cnf.value = int(value)
-		elif  cnf.__class__.__name__ == "ConfigInteger" or cnf.__class__.__name__ == "TconfigInteger":
+		elif cnf.__class__.__name__ in ("ConfigInteger", "TconfigInteger"):
 			cnf_min = int(cnf.limits[0][0])
 			cnf_max = int(cnf.limits[0][1])
 			cnf_value = int(value)
@@ -192,16 +200,16 @@ def getConfigs(key):
 	if config_entries:
 		for entry in config_entries:
 			try:
-				data = getJsonFromConfig(eval(entry.text or ""))
+				data = getJsonFromConfig(eval(entry.text or ""))  # nosec
 				text = _(entry.get("text", ""))
 				if "limits" in data:
 					text = "%s (%d - %d)" % (text, data["limits"][0], data["limits"][1])
 				configs.append({
-						"description": text,
-						"path": entry.text or "",
-						"data": data
-					})
-			except Exception, e:
+					"description": text,
+					"path": entry.text or "",
+					"data": data
+				})
+			except Exception:
 				pass
 	return {
 		"result": True,
@@ -248,7 +256,7 @@ class ConfigFiles:
 		locations = ('SystemPlugins', 'Extensions')
 		libdir = eEnv.resolve('${libdir}')
 		for location in locations:
-			plugins = listdir(('%s/enigma2/python/Plugins/%s' % (libdir,location)))
+			plugins = listdir(('%s/enigma2/python/Plugins/%s' % (libdir, location)))
 			for plugin in plugins:
 				setupfiles.append(('%s/enigma2/python/Plugins/%s/%s/setup.xml' % (libdir, location, plugin)))
 		for setupfile in setupfiles:
@@ -258,16 +266,16 @@ class ConfigFiles:
 	def parseConfigFiles(self):
 		sections = []
 		for setupfile in self.setupfiles:
-#			print "[OpenWebif] loading configuration file :", setupfile
+			# print "[OpenWebif] loading configuration file :", setupfile
 			setupfile = file(setupfile, 'r')
-			setupdom = xml.etree.cElementTree.parse(setupfile)
+			setupdom = xml.etree.cElementTree.parse(setupfile)  # nosec
 			setupfile.close()
 			xmldata = setupdom.getroot()
 			for section in xmldata.findall("setup"):
 				configs = []
 				requires = section.get("requires")
 				if requires and not SystemInfo.get(requires, False):
-					continue;
+					continue
 				key = section.get("key")
 				if key not in self.allowedsections:
 					showOpenWebIF = section.get("showOpenWebIF")
@@ -275,12 +283,12 @@ class ConfigFiles:
 						self.allowedsections.append(key)
 					else:
 						continue
-#				print "[OpenWebif] loading configuration section :", key
+				# print "[OpenWebif] loading configuration section :", key
 				for entry in section:
 					if entry.tag == "item":
 						requires = entry.get("requires")
 						if requires and not SystemInfo.get(requires, False):
-							continue;
+							continue
 
 						if int(entry.get("level", 0)) > config.usage.setup_level.index:
 							continue
@@ -294,5 +302,6 @@ class ConfigFiles:
 					self.section_config[key] = (title, configs)
 		sections = sorted(sections, key=lambda k: k['description'])
 		self.sections = sections
+
 
 configfiles = ConfigFiles()

@@ -1,0 +1,54 @@
+@import "../theme_original";
+/*
+  simplified 'original' theme  optimised for smaller screens
+*/
+body.original-small-screen {
+  background-image: none;
+
+  #container {
+    margin: 0;
+  }
+
+  #header {
+    height: 6em;
+    padding-right: 0.5em;
+
+    h1, h2, h3 {
+      display: none;
+    }
+  }
+
+  #statusheader {
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0.5em;
+  }
+
+  #content_container {
+    max-width: 95%;
+  }
+
+  #leftmenu,
+  #content_main {
+    margin: 0.5em;
+  }
+
+  #leftmenu {
+    margin-right: 0.25em;
+  }
+
+  #content_main {
+    margin-left: 0;
+  }
+
+  #footer {
+    display: none;
+  }
+
+  span.channel-name {
+    min-width: 30em;
+    display: inline-block;
+  }
+
+  @import "../channel_tags";
+}
