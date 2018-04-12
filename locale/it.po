@@ -1,2195 +1,2412 @@
+# Italian translations for OpenWebif.
+# Signed-off-by: www.vuplus-community.net <insanity@>
+#
+# Updated by: Gringo <openpli@tiscali.it>
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2017-11-09 08:54+0300\n"
+"POT-Creation-Date: 2018-04-05 22:49+0200\n"
 "PO-Revision-Date: \n"
-"Last-Translator: insanity\n"
+"Last-Translator: Gringo <openpli@tiscali.it>\n"
 "Language-Team: www.vuplus-community.net <insanity@>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.5\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: it\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: plugin/controllers/BouquetEditor.py:82
+#: plugin/controllers/BouquetEditor.py:83
 msgid "one two three four unknown command"
-msgstr "uno due tre quattro comando sconosciuto"
+msgstr "Uno due tre quattro comando sconosciuto"
 
-#: plugin/controllers/BouquetEditor.py:88
-#: plugin/controllers/BouquetEditor.py:149
-#: plugin/controllers/BouquetEditor.py:194
+#: plugin/controllers/BouquetEditor.py:89
+#: plugin/controllers/BouquetEditor.py:150
+#: plugin/controllers/BouquetEditor.py:196
 msgid "No bouquet name given!"
 msgstr "Bouquet senza nome!"
 
-#: plugin/controllers/BouquetEditor.py:118
+#: plugin/controllers/BouquetEditor.py:119
 #, python-format
 msgid "Bouquet %s created."
 msgstr "Bouquet %s creato."
 
-#: plugin/controllers/BouquetEditor.py:120
+#: plugin/controllers/BouquetEditor.py:121
 msgid "Get mutable list for new created bouquet failed!"
 msgstr "Fallito il prelevamento lista variabile per la creazione bouquet!"
 
-#: plugin/controllers/BouquetEditor.py:123
+#: plugin/controllers/BouquetEditor.py:124
 #, python-format
 msgid "Bouquet %s already exists."
 msgstr "Bouquet %s già esistente."
 
-#: plugin/controllers/BouquetEditor.py:125
-#: plugin/controllers/BouquetEditor.py:439
+#: plugin/controllers/BouquetEditor.py:126
+#: plugin/controllers/BouquetEditor.py:441
 msgid "Bouquetlist is not editable!"
 msgstr "Lista bouquet non modificabile!"
 
-#: plugin/controllers/BouquetEditor.py:127
+#: plugin/controllers/BouquetEditor.py:128
 msgid "Multi-Bouquet is not enabled!"
 msgstr "Multi Bouquet non è abilitato!"
 
-#: plugin/controllers/BouquetEditor.py:133
+#: plugin/controllers/BouquetEditor.py:134
 msgid "No provider given!"
 msgstr "Nessun provider assegnato!"
 
-#: plugin/controllers/BouquetEditor.py:180
+#: plugin/controllers/BouquetEditor.py:181
 #, python-format
 msgid "Bouquet %s removed failed."
 msgstr "Rimozione bouquet %s fallita."
 
-#: plugin/controllers/BouquetEditor.py:182
+#: plugin/controllers/BouquetEditor.py:183
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Rimozione Bouquet %s non riuscita, service reference o lista variabile non valida."
+msgstr ""
+"Rimozione Bouquet %s non riuscita, service reference o lista variabile non "
+"valida."
 
-#: plugin/controllers/BouquetEditor.py:186
+#: plugin/controllers/BouquetEditor.py:188
 #, python-format
 msgid "Bouquet %s deleted."
 msgstr "Bouquet %s eliminato."
 
-#: plugin/controllers/BouquetEditor.py:188
+#: plugin/controllers/BouquetEditor.py:190
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
 msgstr "Errore di sistema: il bouquet %s non può essere eliminato."
 
-#: plugin/controllers/BouquetEditor.py:204
-#: plugin/controllers/BouquetEditor.py:261
+#: plugin/controllers/BouquetEditor.py:206
+#: plugin/controllers/BouquetEditor.py:263
 msgid "No position given!"
 msgstr "Nessuna posizione specificata!"
 
-#: plugin/controllers/BouquetEditor.py:211
+#: plugin/controllers/BouquetEditor.py:213
 #, python-format
 msgid "Bouquet %s moved."
 msgstr "Bouquet %s spostato."
 
-#: plugin/controllers/BouquetEditor.py:213
+#: plugin/controllers/BouquetEditor.py:215
 #, python-format
 msgid "Bouquet %s can not be moved."
 msgstr "Il bouquet %s non può essere spostato."
 
-#: plugin/controllers/BouquetEditor.py:219
-#: plugin/controllers/BouquetEditor.py:249
-#: plugin/controllers/BouquetEditor.py:275
-#: plugin/controllers/BouquetEditor.py:309
-#: plugin/controllers/BouquetEditor.py:459
+#: plugin/controllers/BouquetEditor.py:221
+#: plugin/controllers/BouquetEditor.py:251
+#: plugin/controllers/BouquetEditor.py:277
+#: plugin/controllers/BouquetEditor.py:311
+#: plugin/controllers/BouquetEditor.py:461
 msgid "No bouquet given!"
 msgstr "Nessun bouquet specificato!"
 
-#: plugin/controllers/BouquetEditor.py:225
-#: plugin/controllers/BouquetEditor.py:255
-#: plugin/controllers/BouquetEditor.py:281
-#: plugin/controllers/BouquetEditor.py:343
-#: plugin/controllers/BouquetEditor.py:401
-#: plugin/controllers/BouquetEditor.py:465
-#: plugin/controllers/BouquetEditor.py:502
+#: plugin/controllers/BouquetEditor.py:227
+#: plugin/controllers/BouquetEditor.py:257
+#: plugin/controllers/BouquetEditor.py:283
+#: plugin/controllers/BouquetEditor.py:345
+#: plugin/controllers/BouquetEditor.py:403
+#: plugin/controllers/BouquetEditor.py:467
+#: plugin/controllers/BouquetEditor.py:504
 msgid "No service given!"
-msgstr "Nessun servizio specificato!"
+msgstr "Nessun canale specificato!"
 
-#: plugin/controllers/BouquetEditor.py:234
+#: plugin/controllers/BouquetEditor.py:236
 #, python-format
 msgid "Service %s removed."
-msgstr "Servizio %s rimosso."
+msgstr "Canale %s rimosso."
 
-#: plugin/controllers/BouquetEditor.py:242
+#: plugin/controllers/BouquetEditor.py:244
 #, python-format
 msgid "Service %s removed from bouquet %s."
-msgstr "Servizio %s rimosso dal bouquet %s."
+msgstr "Canale %s rimosso dal bouquet %s."
 
-#: plugin/controllers/BouquetEditor.py:243
+#: plugin/controllers/BouquetEditor.py:245
 #, python-format
 msgid "Service %s can not be removed."
-msgstr "Servizio %s non può essere rimosso."
+msgstr "Il canale %s non può essere rimosso."
 
-#: plugin/controllers/BouquetEditor.py:268
+#: plugin/controllers/BouquetEditor.py:270
 #, python-format
 msgid "Service %s moved."
-msgstr "Servizio %s spostato."
+msgstr "Canale %s spostato."
 
-#: plugin/controllers/BouquetEditor.py:269
+#: plugin/controllers/BouquetEditor.py:271
 msgid "Service can not be moved."
-msgstr "Il servizio non può essere spostato."
+msgstr "Il canale non può essere spostato."
 
-#: plugin/controllers/BouquetEditor.py:299
+#: plugin/controllers/BouquetEditor.py:301
 #, python-format
 msgid "Service %s added."
-msgstr "Servizio %s aggiunto."
+msgstr "Canale %s aggiunto."
 
-#: plugin/controllers/BouquetEditor.py:302
+#: plugin/controllers/BouquetEditor.py:304
 #, python-format
 msgid "Service %s already exists in bouquet %s."
-msgstr "Servizio %s  già presente nel bouquet %s."
+msgstr "Il canale %s è già presente nel bouquet %s."
 
-#: plugin/controllers/BouquetEditor.py:303
+#: plugin/controllers/BouquetEditor.py:305
 msgid "This service can not be added."
-msgstr "Questo servizio non può essere aggiunto."
+msgstr "Questo canale non può essere aggiunto."
 
-#: plugin/controllers/BouquetEditor.py:316
+#: plugin/controllers/BouquetEditor.py:318
 msgid "No marker-name given!"
 msgstr "Nessun nome marcatore assegnato!"
 
-#: plugin/controllers/BouquetEditor.py:333
+#: plugin/controllers/BouquetEditor.py:335
 msgid "Marker added."
 msgstr "Marcatore aggiunto."
 
-#: plugin/controllers/BouquetEditor.py:335
+#: plugin/controllers/BouquetEditor.py:337
 msgid "Internal error!"
 msgstr "Errore interno!"
 
-#: plugin/controllers/BouquetEditor.py:349
+#: plugin/controllers/BouquetEditor.py:351
 msgid "No new servicename given!"
-msgstr "Nessun nuovo nome di servizio specificato!"
+msgstr "Nessun nuovo nome di canale specificato!"
 
-#: plugin/controllers/BouquetEditor.py:373
+#: plugin/controllers/BouquetEditor.py:375
 msgid "Bouquet renamed successfully."
 msgstr "Bouquet rinominato con successo."
 
-#: plugin/controllers/BouquetEditor.py:389
+#: plugin/controllers/BouquetEditor.py:391
 msgid "Service renamed successfully."
-msgstr "Servizio rinominato con successo."
+msgstr "Canale rinominato con successo."
 
-#: plugin/controllers/BouquetEditor.py:390
+#: plugin/controllers/BouquetEditor.py:392
 msgid "Service can not be renamed."
-msgstr "Impossibile rinominare il servizio."
+msgstr "Il canale non può essere rinominato."
 
-#: plugin/controllers/BouquetEditor.py:404
+#: plugin/controllers/BouquetEditor.py:406
 msgid "No current service given!"
-msgstr "Nessun servizio corrente specificato!"
+msgstr "Nessun canale attuale specificato!"
 
-#: plugin/controllers/BouquetEditor.py:435
+#: plugin/controllers/BouquetEditor.py:437
 msgid "Get mutable list for new created alternative failed!"
 msgstr "Impossibile ottenere una lista variabile per l’alternativa creata!"
 
-#: plugin/controllers/BouquetEditor.py:437
+#: plugin/controllers/BouquetEditor.py:439
 #, python-format
 msgid "Alternative %s created failed."
-msgstr "Creazione alternative fallita  %s ."
+msgstr "Creazione alternativa fallita  %s ."
 
-#: plugin/controllers/BouquetEditor.py:451
+#: plugin/controllers/BouquetEditor.py:453
 #, python-format
 msgid "Added %s to alternative service %s."
-msgstr "Aggiunto %s al servizio alternativo %s."
+msgstr "Aggiunto %s al canale alternativo %s."
 
-#: plugin/controllers/BouquetEditor.py:482
+#: plugin/controllers/BouquetEditor.py:484
 msgid "Service is not an alternative."
-msgstr "Il servizio non è un alternativa."
+msgstr "Il canale non è un'alternativa."
 
-#: plugin/controllers/BouquetEditor.py:490
+#: plugin/controllers/BouquetEditor.py:492
 msgid "All alternative services deleted."
-msgstr "Eliminati tutti i servizi alternativi."
+msgstr "Eliminati tutti i canali alternativi."
 
-#: plugin/controllers/BouquetEditor.py:496
+#: plugin/controllers/BouquetEditor.py:498
 msgid "Parent Control is not activated."
-msgstr "Controllo parentale non attivato."
+msgstr "Controllo Parentale non attivato."
 
-#: plugin/controllers/BouquetEditor.py:509
+#: plugin/controllers/BouquetEditor.py:511
 msgid "No Parent Control Setup Pin given!"
 msgstr "Nessun PIN specificato nelle impostazioni del Controllo Parentale!"
 
-#: plugin/controllers/BouquetEditor.py:513
 #: plugin/controllers/BouquetEditor.py:515
+#: plugin/controllers/BouquetEditor.py:517
 msgid "Parent Control Setup Pin is wrong!"
-msgstr "PIN del controllo parentale sbagliato!"
-
-#: plugin/controllers/BouquetEditor.py:530
-#, python-format
-msgid "Service %s is locked."
-msgstr "Service %s  bloccato."
+msgstr "PIN del Controllo Parentale sbagliato!"
 
 #: plugin/controllers/BouquetEditor.py:532
+#, python-format
+msgid "Service %s is locked."
+msgstr "Canale %s con segnale."
+
+#: plugin/controllers/BouquetEditor.py:534
 #, python-format
 msgid "Bouquet %s is locked."
 msgstr "Bouquet %s  bloccato."
 
-#: plugin/controllers/BouquetEditor.py:534
+#: plugin/controllers/BouquetEditor.py:536
 #, python-format
 msgid "%s %s is locked."
 msgstr "%s %s bloccato."
 
-#: plugin/controllers/BouquetEditor.py:538
+#: plugin/controllers/BouquetEditor.py:540
 #, python-format
 msgid "Service %s is unlocked."
-msgstr "Service %s sbloccato."
+msgstr "Canale %s senza segnale."
 
-#: plugin/controllers/BouquetEditor.py:540
+#: plugin/controllers/BouquetEditor.py:542
 #, python-format
 msgid "Bouquet %s is unlocked."
 msgstr "Bouquet %s sbloccato."
 
-#: plugin/controllers/BouquetEditor.py:577
+#: plugin/controllers/BouquetEditor.py:579
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
 msgstr "Errore nella preparazione del file di backup: %s non esiste."
 
-#: plugin/controllers/BouquetEditor.py:583
+#: plugin/controllers/BouquetEditor.py:585
 msgid "Error while preparing backup file."
 msgstr "Errore nella preparazione del file di backup."
 
-#: plugin/controllers/BouquetEditor.py:634
+#: plugin/controllers/BouquetEditor.py:636
 msgid "Bouquet-settings were restored successfully"
 msgstr "Configurazioni bouquet ripristinate con successo"
 
-#: plugin/controllers/BouquetEditor.py:636
+#: plugin/controllers/BouquetEditor.py:638
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
 msgstr "Errore: %s non è stato creato con WebBouquetEditor..."
 
-#: plugin/controllers/BouquetEditor.py:638
+#: plugin/controllers/BouquetEditor.py:640
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
 msgstr "Errore: %s non esiste, ripristino impossibile..."
 
-#: plugin/controllers/base.py:256 plugin/local.py:183 plugin/local.py:323
+#: plugin/controllers/base.py:278 plugin/local.py:191 plugin/local.py:332
 msgid "Settings"
 msgstr "Configurazioni"
 
-#: plugin/controllers/base.py:272
+#: plugin/controllers/base.py:293
 msgid "LCD4Linux Setup"
 msgstr "Impostazioni LCD4Linux"
 
-#: plugin/controllers/base.py:287
+#: plugin/controllers/base.py:308
 msgid "OSCam Webinterface"
-msgstr "OSCam Webinterface"
+msgstr "Interfaccia OSCam"
 
-#: plugin/controllers/base.py:291
+#: plugin/controllers/base.py:312
 msgid "AutoTimer"
 msgstr "AutoTimer"
 
-#: plugin/controllers/base.py:296
+#: plugin/controllers/base.py:317
 msgid "BouquetEditor"
-msgstr "Editor dei bouquet"
+msgstr "Editor bouquet"
 
-#: plugin/controllers/base.py:300
+#: plugin/controllers/base.py:321
 msgid "EPGRefresh"
 msgstr "EPGRefresh"
 
-#: plugin/controllers/base.py:318
+#: plugin/controllers/base.py:339
 msgid "Terminal"
 msgstr "Terminale"
 
-#: plugin/controllers/ipkg.py:239
+#: plugin/controllers/ipkg.py:290
 msgid "Error upload File"
 msgstr "Errore di caricamento file"
 
-#: plugin/controllers/ipkg.py:242
+#: plugin/controllers/ipkg.py:293
 msgid "wrong filetype"
-msgstr "tipo di file errato"
+msgstr "Tipo di file errato"
 
-#: plugin/controllers/ipkg.py:256
+#: plugin/controllers/ipkg.py:306
 msgid "Error writing File"
 msgstr "Errore in scrittura del file"
 
-#: plugin/controllers/models/info.py:57
+#: plugin/controllers/models/info.py:60
 msgid "SLAAC"
 msgstr "SLAAC"
 
-#: plugin/controllers/models/info.py:64 plugin/controllers/models/info.py:75
-#: plugin/controllers/models/info.py:82
+#: plugin/controllers/models/info.py:67 plugin/controllers/models/info.py:79
+#: plugin/controllers/models/info.py:86
 msgid "static"
-msgstr "statico"
+msgstr "Statico"
 
-#: plugin/controllers/models/info.py:66 plugin/controllers/models/info.py:84
-#: plugin/local.py:81
+#: plugin/controllers/models/info.py:69 plugin/controllers/models/info.py:88
+#: plugin/local.py:89
 msgid "DHCP"
 msgstr "DHCP"
 
-#: plugin/controllers/models/info.py:68 plugin/controllers/models/info.py:86
+#: plugin/controllers/models/info.py:71 plugin/controllers/models/info.py:90
 msgid "manual/disabled"
-msgstr "manuale / disattivato"
+msgstr "Manuale / disabilitato"
 
-#: plugin/controllers/models/info.py:94 plugin/controllers/models/info.py:101
+#: plugin/controllers/models/info.py:99 plugin/controllers/models/info.py:107
 msgid "unknown"
-msgstr "sconosciuto"
+msgstr "Sconosciuto"
 
-#: plugin/controllers/models/info.py:135 plugin/local.py:117
+#: plugin/controllers/models/info.py:144 plugin/local.py:125
 msgid "IPv4-only kernel"
 msgstr "IPv4-solo kernel"
 
-#: plugin/controllers/models/info.py:139 plugin/local.py:119
+#: plugin/controllers/models/info.py:148 plugin/local.py:127
 msgid "IPv4-only Python/Twisted"
 msgstr "IPv4-solo Python/Twisted"
 
-#: plugin/controllers/models/info.py:168 plugin/local.py:118
+#: plugin/controllers/models/info.py:177 plugin/local.py:126
 msgid "none/IPv4-only network"
-msgstr "nessuno / solo rete IPv4"
+msgstr "Nessuno / Solo rete IPv4"
 
-#: plugin/controllers/models/info.py:286 plugin/controllers/models/info.py:289
-#: plugin/controllers/models/movies.py:250
+#: plugin/controllers/models/info.py:362 plugin/controllers/models/info.py:365
+#: plugin/controllers/models/movies.py:232
 msgid "kB"
-msgstr "kB"
+msgstr "KB"
 
-#: plugin/controllers/models/info.py:290 plugin/controllers/models/info.py:413
+#: plugin/controllers/models/info.py:366 plugin/controllers/models/info.py:490
 #, python-format
 msgid "%s free / %s total"
-msgstr "%s libera / %s totale"
+msgstr "%s liberi / %s totale"
 
-#: plugin/controllers/models/info.py:325 plugin/local.py:65
+#: plugin/controllers/models/info.py:404 plugin/local.py:73
 msgid "Chipset"
 msgstr "Chipset"
 
-#: plugin/controllers/models/info.py:330 plugin/local.py:106
+#: plugin/controllers/models/info.py:409 plugin/local.py:114
 msgid "Frontprocessor Version"
 msgstr "Versione del Frontprocessor"
 
-#: plugin/controllers/models/info.py:376 plugin/controllers/models/info.py:387
-#: plugin/controllers/models/info.py:405
-#: plugin/controllers/models/movies.py:248
+#: plugin/controllers/models/info.py:453 plugin/controllers/models/info.py:464
+#: plugin/controllers/models/info.py:482
+#: plugin/controllers/models/movies.py:230
 msgid "MB"
 msgstr "MB"
 
-#: plugin/controllers/models/info.py:379 plugin/controllers/models/info.py:385
-#: plugin/controllers/models/info.py:400 plugin/controllers/models/info.py:403
-#: plugin/controllers/models/movies.py:246
+#: plugin/controllers/models/info.py:456 plugin/controllers/models/info.py:462
+#: plugin/controllers/models/info.py:477 plugin/controllers/models/info.py:480
+#: plugin/controllers/models/movies.py:228
 msgid "GB"
 msgstr "GB"
 
-#: plugin/controllers/models/info.py:383 plugin/controllers/models/info.py:395
-#: plugin/controllers/models/info.py:397
+#: plugin/controllers/models/info.py:460 plugin/controllers/models/info.py:472
+#: plugin/controllers/models/info.py:474
 msgid "TB"
 msgstr "TB"
 
-#: plugin/controllers/models/info.py:442
+#: plugin/controllers/models/info.py:519
 msgid "r/w"
 msgstr "r/w"
 
-#: plugin/controllers/models/info.py:446
+#: plugin/controllers/models/info.py:523
 msgid "r/o"
 msgstr "r/o"
 
-#: plugin/controllers/models/message.py:33
+#: plugin/controllers/models/message.py:35
 msgid "Message sent successfully!"
 msgstr "Messaggio inviato con successo!"
 
-#: plugin/controllers/models/message.py:43
+#: plugin/controllers/models/message.py:46
 msgid "No answer in time"
 msgstr "Nessuna risposta tempestiva"
 
-#: plugin/controllers/models/message.py:48
+#: plugin/controllers/models/message.py:51
 msgid "Answer is YES!"
 msgstr "La risposta è SI!"
 
-#: plugin/controllers/models/message.py:48
+#: plugin/controllers/models/message.py:51
 msgid "Answer is NO!"
 msgstr "La risposta è NO!"
 
-#: plugin/controllers/models/services.py:260
+#: plugin/controllers/models/movies.py:309
+msgid "remove"
+msgstr "Rimuovere"
+
+#: plugin/controllers/models/movies.py:315
+msgid ""
+"Delete failed, because there is no movie trash !\n"
+"Disable movie trash in configuration to delete this item"
+msgstr ""
+"Eliminazione fallita, non esiste un Cestino registrazioni !\n"
+"Disabilitare il Cestino registrazioni nella configurazione per eliminare "
+"questo elemento."
+
+#: plugin/controllers/models/services.py:181 plugin/local.py:415
+msgid "Orbital Position"
+msgstr "Posizione orbitale"
+
+#: plugin/controllers/models/services.py:287
 msgid "New"
 msgstr "Nuovo"
 
-#: plugin/controllers/models/services.py:262
+#: plugin/controllers/models/services.py:289
 msgid "Services"
-msgstr "Servizi"
+msgstr "Canali"
 
-#: plugin/controllers/models/services.py:267
+#: plugin/controllers/models/services.py:294
 msgid "Cable"
 msgstr "Cavo"
 
-#: plugin/controllers/models/services.py:269
+#: plugin/controllers/models/services.py:296
 msgid "Terrestrial"
 msgstr "Terrestre"
 
-#: plugin/controllers/models/services.py:273
+#: plugin/controllers/models/services.py:300
 msgid "W"
-msgstr "W"
+msgstr "O"
 
-#: plugin/controllers/models/services.py:275
+#: plugin/controllers/models/services.py:302
 msgid "E"
 msgstr "E"
 
-#: plugin/controllers/models/timers.py:178
+#: plugin/controllers/models/timers.py:180
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Rilevati conflitti nei Timer! %s"
 
-#: plugin/controllers/models/timers.py:195
+#: plugin/controllers/models/timers.py:197
 #, python-format
 msgid "Could not add timer '%s'!"
-msgstr "Impossibile aggiuntere il timer '%s'!"
+msgstr "Impossibile aggiungere il timer '%s'!"
 
-#: plugin/controllers/models/timers.py:200
+#: plugin/controllers/models/timers.py:202
 #, python-format
 msgid "Timer '%s' added"
 msgstr "Timer '%s' aggiunto"
 
-#: plugin/controllers/models/timers.py:208
+#: plugin/controllers/models/timers.py:211
 msgid "EventId not found"
 msgstr "ID evento non trovato"
 
-#: plugin/controllers/models/timers.py:279
+#: plugin/controllers/models/timers.py:283
 #, python-format
 msgid "Timer '%s' changed"
-msgstr "Il timer '%s' è cambiato"
+msgstr "Timer '%s' modificato"
 
-#: plugin/controllers/models/timers.py:298
+#: plugin/controllers/models/timers.py:302
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "Timer '%s' non salvato a causa del conflitto"
 
-#: plugin/controllers/models/timers.py:304
+#: plugin/controllers/models/timers.py:308
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Impossibile trovare il timer '%s' con data di inizio e ora di fine!"
 
-#: plugin/controllers/models/timers.py:316
+#: plugin/controllers/models/timers.py:321
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Il timer '%s' è stato eliminato con successo"
 
-#: plugin/controllers/models/timers.py:321
-#: plugin/controllers/models/timers.py:365
+#: plugin/controllers/models/timers.py:326
+#: plugin/controllers/models/timers.py:371
 msgid "No matching Timer found"
-msgstr "Nessun timer corrispondente trovato"
+msgstr "Nessun timer corrispondente trovato!"
 
-#: plugin/controllers/models/timers.py:339
+#: plugin/controllers/models/timers.py:345
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "Timer '%s' non abilitato per conflitto"
 
-#: plugin/controllers/models/timers.py:345
+#: plugin/controllers/models/timers.py:351
 #, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Timer '%s' già esistente!"
 
-#: plugin/controllers/models/timers.py:351
+#: plugin/controllers/models/timers.py:357
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "Il timer '%s' è ora registrato! Non disabilitato!"
 
-#: plugin/controllers/models/timers.py:359
+#: plugin/controllers/models/timers.py:365
 #, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "Il timer '%s' è stato %s con successo"
 
-#: plugin/controllers/models/timers.py:372
-msgid "List of Timers has been cleaned"
-msgstr "Lista dei timer ripulita"
-
 #: plugin/controllers/models/timers.py:379
-msgid "TimerList has been saved"
-msgstr "Lista dei timer salvata"
+msgid "List of Timers has been cleaned"
+msgstr "Elenco dei timer ripulito"
 
-#: plugin/controllers/models/timers.py:394
+#: plugin/controllers/models/timers.py:387
+msgid "TimerList has been saved"
+msgstr "Elenco dei timer salvato"
+
+#: plugin/controllers/models/timers.py:403
 msgid "No event found! Not recording!"
 msgstr "Nessun evento trovato! Nessuna registrazione effettuata!"
 
-#: plugin/controllers/models/timers.py:400
+#: plugin/controllers/models/timers.py:409
 msgid "Instant record for current Event started"
 msgstr "Registrazione immediata avviata"
 
-#: plugin/controllers/models/timers.py:409
+#: plugin/controllers/models/timers.py:418
 msgid "Infinite Instant recording started"
 msgstr "Registrazione istantanea illimitata avviata"
 
-#: plugin/controllers/models/timers.py:428
+#: plugin/controllers/models/timers.py:437
 msgid "Timer conflict detected! Not recording!"
 msgstr "Rilevato conflitto nel timer! Nessuna registrazione effettuata!"
 
-#: plugin/controllers/models/timers.py:502
+#: plugin/controllers/models/timers.py:510
 msgid "Missing requesteter: sRef"
 msgstr "Mancanza del richiedente: sRef"
 
-#: plugin/controllers/models/timers.py:524
+#: plugin/controllers/models/timers.py:532
 #, python-format
 msgid "Unknown command: '%s'"
 msgstr "Comando sconosciuto: '%s'"
 
-#: plugin/controllers/models/timers.py:581
+#: plugin/controllers/models/timers.py:592
 msgid "PowerTimer feature not available"
 msgstr "Funzione PowerTimer non disponibile"
 
-#: plugin/controllers/models/timers.py:657
-#: plugin/controllers/models/timers.py:683
+#: plugin/controllers/models/timers.py:665
+#: plugin/controllers/models/timers.py:691
 msgid "Sleeptimer is enabled"
-msgstr "Sleeptimer  abilitato"
+msgstr "Sleeptimer abilitato"
 
-#: plugin/controllers/models/timers.py:657
-#: plugin/controllers/models/timers.py:683
+#: plugin/controllers/models/timers.py:665
+#: plugin/controllers/models/timers.py:691
 msgid "Sleeptimer is disabled"
-msgstr "Sleeptimer disattivato"
+msgstr "Sleeptimer disabilitato"
 
-#: plugin/controllers/models/timers.py:662
-#: plugin/controllers/models/timers.py:689
+#: plugin/controllers/models/timers.py:670
+#: plugin/controllers/models/timers.py:697
+#: plugin/controllers/models/timers.py:726
+#: plugin/controllers/models/timers.py:807
 msgid "SleepTimer error"
 msgstr "Errore SleepTimer"
 
-#: plugin/controllers/models/timers.py:701
+#: plugin/controllers/models/timers.py:710
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "ERRORE: impossibile impostare SleepTimer se il dispositivo è in Standby"
+msgstr ""
+"ERRORE: impossibile impostare SleepTimer se il dispositivo è in sospensione"
 
-#: plugin/controllers/models/timers.py:706
-#: plugin/controllers/models/timers.py:775
-#: plugin/controllers/models/timers.py:793
+#: plugin/controllers/models/timers.py:715
+#: plugin/controllers/models/timers.py:784
+#: plugin/controllers/models/timers.py:802
 msgid "Sleeptimer has been disabled"
 msgstr "Sleeptimer è stato disabilitato"
 
-#: plugin/controllers/models/timers.py:712
-#: plugin/controllers/models/timers.py:775
-#: plugin/controllers/models/timers.py:788
+#: plugin/controllers/models/timers.py:721
+#: plugin/controllers/models/timers.py:784
+#: plugin/controllers/models/timers.py:797
 #, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Sleeptimer impostato a %d minuti"
 
-#: plugin/controllers/models/timers.py:717
-#: plugin/controllers/models/timers.py:798
-msgid "SleepTimer Error"
-msgstr "Errore SleepTimer"
-
-#: plugin/controllers/models/timers.py:826
+#: plugin/controllers/models/timers.py:836
 msgid "Error parsing vps.xml"
 msgstr "Errore analisi vps.xml"
 
-#: plugin/controllers/models/timers.py:831
+#: plugin/controllers/models/timers.py:841
 msgid "VPS plugin not found"
 msgstr "Plugin VPS non trovato"
 
-#: plugin/controllers/web.py:63
+#: plugin/controllers/web.py:62
 #, python-format
 msgid "Missing mandatory parameter '%s'"
 msgstr "Parametro obbligatorio mancante '%s'"
 
-#: plugin/controllers/web.py:69
+#: plugin/controllers/web.py:68
 #, python-format
 msgid "The parameter '%s' can't be empty"
 msgstr "Il parametro '%s' non può essere vuoto"
 
-#: plugin/controllers/web.py:136
+#: plugin/controllers/web.py:135
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Formato del parametro errato: 'set=%s'. utilizzare (set=set15) "
 
-#: plugin/controllers/web.py:141
+#: plugin/controllers/web.py:140
 #, python-format
 msgid "Unknown Volume command %s"
 msgstr "Comando volume sconosciuto %s"
 
-#: plugin/controllers/web.py:176
+#: plugin/controllers/web.py:175
 msgid "The parameter 'command' must be a number"
 msgstr "Il parametro 'command' deve essere un numero"
 
-#: plugin/controllers/web.py:334
+#: plugin/controllers/web.py:330
 #, python-format
 msgid "type %s is not a number"
-msgstr "il tipo %s non è un numero"
+msgstr "Il tipo %s non è un numero"
 
-#: plugin/local.py:5
+#: plugin/local.py:8
+msgid "hour"
+msgstr "Ora"
+
+#: plugin/local.py:8
+msgid "minute"
+msgstr "Minuto"
+
+#: plugin/local.py:13
 msgid "Mo"
 msgstr "Lu"
 
-#: plugin/local.py:6
+#: plugin/local.py:14
 msgid "Tu"
 msgstr "Ma"
 
-#: plugin/local.py:7
+#: plugin/local.py:15
 msgid "We"
 msgstr "Me"
 
-#: plugin/local.py:8
+#: plugin/local.py:16
 msgid "Th"
 msgstr "Gi"
 
-#: plugin/local.py:9
+#: plugin/local.py:17
 msgid "Fr"
 msgstr "Ve"
 
-#: plugin/local.py:10
+#: plugin/local.py:18
 msgid "Sa"
 msgstr "Sa"
 
-#: plugin/local.py:11
+#: plugin/local.py:19
 msgid "Su"
 msgstr "Do"
 
-#: plugin/local.py:13
+#: plugin/local.py:21
 msgid "Sun"
 msgstr "Dom"
 
-#: plugin/local.py:14
+#: plugin/local.py:22
 msgid "Mon"
 msgstr "Lun"
 
-#: plugin/local.py:15
+#: plugin/local.py:23
 msgid "Tue"
 msgstr "Mar"
 
-#: plugin/local.py:16
+#: plugin/local.py:24
 msgid "Wed"
 msgstr "Mer"
 
-#: plugin/local.py:17
+#: plugin/local.py:25
 msgid "Thu"
 msgstr "Gio"
 
-#: plugin/local.py:18
+#: plugin/local.py:26
 msgid "Fri"
 msgstr "Ven"
 
-#: plugin/local.py:19
+#: plugin/local.py:27
 msgid "Sat"
 msgstr "Sab"
 
-#: plugin/local.py:21
+#: plugin/local.py:29
 msgid "Monday"
 msgstr "Lunedì"
 
-#: plugin/local.py:22
+#: plugin/local.py:30
 msgid "Tuesday"
 msgstr "Martedì"
 
-#: plugin/local.py:23
+#: plugin/local.py:31
 msgid "Wednesday"
 msgstr "Mercoledì"
 
-#: plugin/local.py:24
+#: plugin/local.py:32
 msgid "Thursday"
 msgstr "Giovedì"
 
-#: plugin/local.py:25
+#: plugin/local.py:33
 msgid "Friday"
 msgstr "Venerdì"
 
-#: plugin/local.py:26
+#: plugin/local.py:34
 msgid "Saturday"
 msgstr "Sabato"
 
-#: plugin/local.py:27
+#: plugin/local.py:35
 msgid "Sunday"
 msgstr "Domenica"
 
-#: plugin/local.py:29
+#: plugin/local.py:37
 msgid "January"
 msgstr "Gennaio"
 
-#: plugin/local.py:30
+#: plugin/local.py:38
 msgid "February"
 msgstr "Febbraio"
 
-#: plugin/local.py:31
+#: plugin/local.py:39
 msgid "March"
 msgstr "Marzo"
 
-#: plugin/local.py:32
+#: plugin/local.py:40
 msgid "April"
 msgstr "Aprile"
 
-#: plugin/local.py:33
+#: plugin/local.py:41
 msgid "May"
 msgstr "Maggio"
 
-#: plugin/local.py:34
+#: plugin/local.py:42
 msgid "June"
 msgstr "Giugno"
 
-#: plugin/local.py:35
+#: plugin/local.py:43
 msgid "July"
 msgstr "Luglio"
 
-#: plugin/local.py:36
+#: plugin/local.py:44
 msgid "August"
 msgstr "Agosto"
 
-#: plugin/local.py:37
+#: plugin/local.py:45
 msgid "September"
 msgstr "Settembre"
 
-#: plugin/local.py:38
+#: plugin/local.py:46
 msgid "October"
 msgstr "Ottobre"
 
-#: plugin/local.py:39
+#: plugin/local.py:47
 msgid "November"
 msgstr "Novembre"
 
-#: plugin/local.py:40
+#: plugin/local.py:48
 msgid "December"
 msgstr "Dicembre"
 
-#: plugin/local.py:42
+#: plugin/local.py:50
 msgid "About"
 msgstr "Informazioni"
 
-#: plugin/local.py:43
+#: plugin/local.py:51
 msgid "Add Timer"
-msgstr "Agg. timer"
+msgstr "Aggiungere timer"
 
-#: plugin/local.py:44
+#: plugin/local.py:52
 msgid "Add AutoTimer"
-msgstr "Agg. AutoTimer"
+msgstr "Aggiungere AutoTimer"
 
-#: plugin/local.py:45
+#: plugin/local.py:53
 msgid "Add Zap Timer"
-msgstr "Aggiungi timer Zap"
+msgstr "Aggiungere timer 'cambio canale'"
 
-#: plugin/local.py:46 plugin/local.py:355
+#: plugin/local.py:54 plugin/local.py:364
 msgid "After Event"
-msgstr "Dopo l'evento"
+msgstr "Azione fine evento"
 
-#: plugin/local.py:47
+#: plugin/local.py:55
 msgid "AGC"
 msgstr "AGC"
 
-#: plugin/local.py:48 plugin/local.py:343
+#: plugin/local.py:56 plugin/local.py:352 plugin/vtiaddon.py:23
 msgid "All"
 msgstr "Tutti"
 
-#: plugin/local.py:49
+#: plugin/local.py:57
 msgid "All Channels"
 msgstr "Tutti i canali"
 
-#: plugin/local.py:50
+#: plugin/local.py:58
 msgid "Authors"
 msgstr "Autori"
 
-#: plugin/local.py:51 plugin/local.py:342
+#: plugin/local.py:59 plugin/local.py:351
 msgid "Auto"
-msgstr "Automatico"
+msgstr "Automatica"
 
-#: plugin/local.py:52
+#: plugin/local.py:60
 msgid "Back"
 msgstr "Indietro"
 
-#: plugin/local.py:53 plugin/local.py:350
+#: plugin/local.py:61 plugin/local.py:359
 msgid "Begin"
 msgstr "Inizio"
 
-#: plugin/local.py:54
+#: plugin/local.py:62
 msgid "BER"
 msgstr "BER"
 
-#: plugin/local.py:55 plugin/local.py:305
+#: plugin/local.py:63 plugin/local.py:314
 msgid "Bouquets"
-msgstr "Bouquets"
+msgstr "Bouquet"
 
-#: plugin/local.py:56
+#: plugin/local.py:64
 msgid "Box Info"
-msgstr "Info Ricevitore"
+msgstr "Informazioni ricevitore"
 
-#: plugin/local.py:57
+#: plugin/local.py:65
 msgid "Box"
 msgstr "Ricevitore"
 
-#: plugin/local.py:58
+#: plugin/local.py:66
 msgid "Box Control"
 msgstr "Controllo ricevitore"
 
-#: plugin/local.py:59
+#: plugin/local.py:67
 msgid "Box Uptime"
 msgstr "Tempo di attività"
 
-#: plugin/local.py:60
+#: plugin/local.py:68
 msgid "Brand"
 msgstr "Marca"
 
-#: plugin/local.py:61 plugin/plugin.py:101
+#: plugin/local.py:69 plugin/plugin.py:110
 msgid "Cancel"
-msgstr "Annulla"
+msgstr "Annullare"
 
-#: plugin/local.py:62
+#: plugin/local.py:70
 msgid "Capacity"
 msgstr "Capacità"
 
-#: plugin/local.py:63
+#: plugin/local.py:71
 msgid "Channel"
 msgstr "Canale"
 
-#: plugin/local.py:64 plugin/local.py:303
+#: plugin/local.py:72 plugin/local.py:312
 msgid "Channels"
 msgstr "Canali"
 
-#: plugin/local.py:66
+#: plugin/local.py:74
 msgid "Cleanup Timers"
-msgstr "Pulizia dei timer"
+msgstr "Ripulire timer"
 
-#: plugin/local.py:67
+#: plugin/local.py:75
 msgid "Close"
-msgstr "Chiudi"
+msgstr "Chiudere"
 
-#: plugin/local.py:68
+#: plugin/local.py:76
 msgid "Contributors"
 msgstr "Collaboratori"
 
-#: plugin/local.py:69
+#: plugin/local.py:77
 msgid "Control"
 msgstr "Controllo"
 
-#: plugin/local.py:70
+#: plugin/local.py:78
 msgid "Current"
-msgstr "Corrente"
+msgstr "Attuale"
 
-#: plugin/local.py:71
+#: plugin/local.py:79
 msgid "Current Event"
-msgstr "Evento corrente"
+msgstr "Evento attuale"
 
-#: plugin/local.py:72
+#: plugin/local.py:80
 msgid "Date"
 msgstr "Data"
 
-#: plugin/local.py:73
+#: plugin/local.py:81
 msgid "Deep-Standby"
-msgstr "Deep Standby"
+msgstr "Spegnimento"
 
-#: plugin/local.py:74
+#: plugin/local.py:82
 msgid "Default"
 msgstr "Predefinito"
 
-#: plugin/local.py:75 plugin/local.py:317
+#: plugin/local.py:83 plugin/local.py:326
 msgid "Delete"
-msgstr "Elimina"
+msgstr "Eliminare"
 
-#: plugin/local.py:76
+#: plugin/local.py:84
 msgid "Delete Recording"
-msgstr "Elimina registrazione"
+msgstr "Eliminare registrazione"
 
-#: plugin/local.py:77
+#: plugin/local.py:85
 msgid "Really delete the recording"
-msgstr "Confermare l'eliminazione della registrazione"
+msgstr "Confermare eliminazione della registrazione"
 
-#: plugin/local.py:78
+#: plugin/local.py:86
 msgid "Delete Timer"
-msgstr "Elimina timer"
+msgstr "Eliminare il timer"
 
-#: plugin/local.py:79
+#: plugin/local.py:87
 msgid "Really delete the timer"
-msgstr "Confermare l’eliminazione del timer"
+msgstr "Confermare eliminazione del timer"
 
-#: plugin/local.py:80 plugin/local.py:251
+#: plugin/local.py:88 plugin/local.py:260
 msgid "Description"
 msgstr "Descrizione"
 
-#: plugin/local.py:82
+#: plugin/local.py:90
 msgid "Disable Timer"
-msgstr "Disattivare timer"
+msgstr "Disabilitare il timer"
 
-#: plugin/local.py:83
+#: plugin/local.py:91
 msgid "disabled"
-msgstr "disattivato"
+msgstr "Disabilitato"
 
-#: plugin/local.py:84
+#: plugin/local.py:92
 msgid "Distro"
 msgstr "Distribuzione"
 
-#: plugin/local.py:85
+#: plugin/local.py:93
 msgid "Dolby"
 msgstr "Dolby"
 
-#: plugin/local.py:86
+#: plugin/local.py:94
 msgid "Done"
 msgstr "Fatto"
 
-#: plugin/local.py:87
+#: plugin/local.py:95
 msgid "Download"
-msgstr "Download"
+msgstr "Scaricare"
 
-#: plugin/local.py:88
+#: plugin/local.py:96
 msgid "Download Playlist for"
-msgstr "Scarica la playlist per"
+msgstr "Scaricare la playlist per"
 
-#: plugin/local.py:89
+#: plugin/local.py:97
 msgid "Drivers"
 msgstr "Drivers"
 
-#: plugin/local.py:90
+#: plugin/local.py:98
 msgid "Duration"
 msgstr "Durata"
 
-#: plugin/local.py:91
+#: plugin/local.py:99
 msgid "Edit Timer"
-msgstr "Modificare timer"
+msgstr "Modificare il timer"
 
-#: plugin/local.py:92
+#: plugin/local.py:100
 msgid "Enable Timer"
-msgstr "Abilita timer"
+msgstr "Abilitare timer"
 
-#: plugin/local.py:93
+#: plugin/local.py:101
 msgid "Start"
-msgstr "Avvio"
+msgstr "Inizio"
 
-#: plugin/local.py:94 plugin/local.py:351
+#: plugin/local.py:102 plugin/local.py:360
 msgid "End"
 msgstr "Fine"
 
-#: plugin/local.py:95 plugin/local.py:250 plugin/local.py:348
+#: plugin/local.py:103 plugin/local.py:259 plugin/local.py:357
 msgid "Enabled"
 msgstr "Abilitato"
 
-#: plugin/local.py:96
+#: plugin/local.py:104
 msgid "Encrypted"
 msgstr "Criptato"
 
-#: plugin/local.py:97
+#: plugin/local.py:105
 msgid "EPG"
 msgstr "EPG"
 
-#: plugin/local.py:98
+#: plugin/local.py:106
 msgid "Epg Search"
 msgstr "Ricerca EPG"
 
-#: plugin/local.py:99
+#: plugin/local.py:107
 msgid "Include description"
-msgstr "Includi descrizione"
+msgstr "Includere descrizione"
 
-#: plugin/local.py:100
+#: plugin/local.py:108
 msgid "Restrict to Bouquets"
 msgstr "Limitato ai bouquets"
 
-#: plugin/local.py:101
+#: plugin/local.py:109
 msgid "Error"
 msgstr "Errore"
 
-#: plugin/local.py:102
+#: plugin/local.py:110
 msgid "Every"
 msgstr "Ogni"
 
-#: plugin/local.py:103
+#: plugin/local.py:111
 msgid "Extras"
 msgstr "Extra"
 
-#: plugin/local.py:104
+#: plugin/local.py:112
 msgid "finished"
-msgstr "completato"
+msgstr "Completato"
 
-#: plugin/local.py:105
+#: plugin/local.py:113
 msgid "Firmware version"
 msgstr "Versione firmware"
 
-#: plugin/local.py:107
+#: plugin/local.py:115
 msgid "Free"
 msgstr "Disponibile"
 
-#: plugin/local.py:108
+#: plugin/local.py:116
 msgid "Free Memory"
 msgstr "Memoria libera"
 
-#: plugin/local.py:109
+#: plugin/local.py:117
 msgid "Gateway"
 msgstr "Gateway"
 
-#: plugin/local.py:110
+#: plugin/local.py:118
 msgid "Grab Screenshot"
-msgstr "Cattura schermo"
+msgstr "Catturare schermo"
 
-#: plugin/local.py:111
+#: plugin/local.py:119
 msgid "Gui version"
-msgstr "Versione GUI"
+msgstr "Versione interfaccia"
 
-#: plugin/local.py:112
+#: plugin/local.py:120
 msgid "Hide full remote"
-msgstr "Ripristina telecomando"
+msgstr "Nascondere il telecomando"
 
-#: plugin/local.py:113
+#: plugin/local.py:121
 msgid "High Resolution"
 msgstr "Alta risoluzione"
 
-#: plugin/local.py:114
+#: plugin/local.py:122
 msgid "Hard disk model"
-msgstr "Modello hard disk"
+msgstr "Modello disco rigido"
 
-#: plugin/local.py:115
+#: plugin/local.py:123
 msgid "Hour"
 msgstr "Ora"
 
-#: plugin/local.py:116
+#: plugin/local.py:124
 msgid "IPv4 address"
 msgstr "Indirizzo IPv4"
 
-#: plugin/local.py:120
+#: plugin/local.py:128
 msgid "IPv6 address(es)"
 msgstr "Indirizzo IPv6"
 
-#: plugin/local.py:121
+#: plugin/local.py:129
 msgid "Infos"
 msgstr "Informazioni"
 
-#: plugin/local.py:122
+#: plugin/local.py:130
 msgid "Instant Record"
 msgstr "Registrazione immediata"
 
-#: plugin/local.py:123
+#: plugin/local.py:131
 msgid "Javascript Libraries"
 msgstr "Librerie JavaScript"
 
-#: plugin/local.py:124
+#: plugin/local.py:132
 msgid "Just play"
-msgstr "Solo riproduzione"
+msgstr "Cambiare canale"
 
-#: plugin/local.py:125
+#: plugin/local.py:133
 msgid "Kernel"
 msgstr "Kernel"
 
-#: plugin/local.py:126
+#: plugin/local.py:134
 msgid "LICENSE"
 msgstr "LICENZA"
 
-#: plugin/local.py:127
+#: plugin/local.py:135
 msgid "loading"
-msgstr "caricamento"
+msgstr "Caricamento"
 
-#: plugin/local.py:128
+#: plugin/local.py:136
 msgid "Location"
-msgstr "Località"
+msgstr "Percorso"
 
-#: plugin/local.py:129
+#: plugin/local.py:137
 msgid "Locked"
 msgstr "Bloccato"
 
-#: plugin/local.py:130
+#: plugin/local.py:138
 msgid "MAC address"
 msgstr "Indirizzo MAC"
 
-#: plugin/local.py:131
+#: plugin/local.py:139
 msgid "Main"
 msgstr "Menu principale"
 
-#: plugin/local.py:132
+#: plugin/local.py:140
 msgid "Minute"
 msgstr "Minuto"
 
-#: plugin/local.py:133
+#: plugin/local.py:141
 msgid "Model"
 msgstr "Modello"
 
-#: plugin/local.py:134
+#: plugin/local.py:142
 msgid "Movielist"
-msgstr "Lista registrazioni"
+msgstr "Elenco registrazioni"
 
-#: plugin/local.py:135
+#: plugin/local.py:143
 msgid "Movies"
 msgstr "Registrazioni"
 
-#: plugin/local.py:136
+#: plugin/local.py:144
 msgid "MultiEPG"
 msgstr "MultiEPG"
 
-#: plugin/local.py:137
+#: plugin/local.py:145
 msgid "Name"
 msgstr "Nome"
 
-#: plugin/local.py:138
+#: plugin/local.py:146
 msgid "Namespace"
 msgstr "Spazio dei nomi"
 
-#: plugin/local.py:139
+#: plugin/local.py:147
 msgid "Network Interface"
 msgstr "Interfaccia di rete"
 
-#: plugin/local.py:140
+#: plugin/local.py:148
 msgid "no description available"
-msgstr "nessuna descrizione disponibile"
+msgstr "Nessuna descrizione disponibile"
 
-#: plugin/local.py:141
+#: plugin/local.py:149
 msgid "Sorry this page is not yet implemented"
 msgstr "Pagina non ancora implementata"
 
-#: plugin/local.py:142
+#: plugin/local.py:150
 msgid "Nothing"
-msgstr "Nulla"
+msgstr "Nessuna"
 
-#: plugin/local.py:143
+#: plugin/local.py:151
 msgid "Nothing playing."
 msgstr "Niente da riprodurre."
 
-#: plugin/local.py:144
+#: plugin/local.py:152
 msgid "Now"
 msgstr "Adesso"
 
-#: plugin/local.py:145
+#: plugin/local.py:153
 msgid "System OE"
 msgstr "Sistema OE"
 
-#: plugin/local.py:146
+#: plugin/local.py:154
 msgid "On"
 msgstr "ON"
 
-#: plugin/local.py:147
+#: plugin/local.py:155
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Interfaccia Web Open Source per ricevitori Linux"
 
-#: plugin/local.py:148 plugin/plugin.py:119
+#: plugin/local.py:156 plugin/plugin.py:129
 msgid "Show box name in header"
-msgstr "Mostra il nome del ricevitore nell'intestazione"
+msgstr "Mostrare il nome del ricevitore nell'intestazione"
 
-#: plugin/local.py:149 plugin/plugin.py:121
+#: plugin/local.py:157 plugin/plugin.py:131
 msgid "Use custom box name"
-msgstr "Usare nome ricevitore personalizzato"
+msgstr "Usare un nome ricevitore personalizzato"
 
-#: plugin/local.py:150 plugin/plugin.py:123
+#: plugin/local.py:158 plugin/plugin.py:133
 msgid "Custom box name"
 msgstr "Personalizzare nome del ricevitore"
 
-#: plugin/local.py:151
+#: plugin/local.py:159
 msgid "OSD"
 msgstr "OSD"
 
-#: plugin/local.py:152
+#: plugin/local.py:160
 msgid "Open in new window"
-msgstr "Apri in una nuova finestra"
+msgstr "Aprire in una nuova finestra"
 
-#: plugin/local.py:153
+#: plugin/local.py:161
 msgid "Playback"
-msgstr "Riproduzione"
+msgstr "Riprodurre"
 
-#: plugin/local.py:154
+#: plugin/local.py:162
 msgid "Playlist"
 msgstr "Playlist"
 
-#: plugin/local.py:155
+#: plugin/local.py:163
 msgid "Power Control"
-msgstr "Opzioni risparmio energia"
+msgstr "Gestione stato"
 
-#: plugin/local.py:156
+#: plugin/local.py:164
 msgid "Provider"
 msgstr "Provider"
 
-#: plugin/local.py:157
+#: plugin/local.py:165
 msgid "Providers"
 msgstr "Providers"
 
-#: plugin/local.py:158
+#: plugin/local.py:166
 msgid "Radio"
 msgstr "Radio"
 
-#: plugin/local.py:159
+#: plugin/local.py:167
 msgid "Reboot Box"
-msgstr "Riavviare"
+msgstr "Riavvio del ricevitore"
 
-#: plugin/local.py:160
+#: plugin/local.py:168
 msgid "Recording Status"
 msgstr "Stato di registrazione"
 
-#: plugin/local.py:161 plugin/local.py:340
+#: plugin/local.py:169 plugin/local.py:349
 msgid "Refresh"
-msgstr "Aggiorna"
+msgstr "Aggiornare"
 
-#: plugin/local.py:162
+#: plugin/local.py:170
 msgid "Refresh automatically every"
-msgstr "Aggiorna automaticamente ogni"
+msgstr "Aggiornare automaticamente ogni"
 
-#: plugin/local.py:163
+#: plugin/local.py:171
 msgid "Refresh Timer"
-msgstr "Aggiorna il timer"
+msgstr "Aggiornare timer"
 
-#: plugin/local.py:164
+#: plugin/local.py:172
 msgid "Remote"
 msgstr "Telecomando"
 
-#: plugin/local.py:165
+#: plugin/local.py:173
 msgid "Rename Recording"
-msgstr "Rinomina registrazione"
+msgstr "Rinominare registrazione"
 
-#: plugin/local.py:166
+#: plugin/local.py:174
 msgid "Really rename the recording"
-msgstr "Confermare rinomina della registrazione"
+msgstr "Confermare cambio nome alla registrazione"
 
-#: plugin/local.py:167
+#: plugin/local.py:175
 msgid "Repeated"
-msgstr "Ripetuto"
+msgstr "Repliche"
 
-#: plugin/local.py:168
+#: plugin/local.py:176
 msgid "Restart GUI"
-msgstr "Riavviare la GUI"
+msgstr "Riavvio di Enigma2"
 
-#: plugin/local.py:169
+#: plugin/local.py:177
 msgid "running"
-msgstr "in corso"
+msgstr "In corso"
 
-#: plugin/local.py:170
+#: plugin/local.py:178
 msgid "Safe mode"
 msgstr "Modalità provvisoria"
 
-#: plugin/local.py:171
+#: plugin/local.py:179
 msgid "Satellites"
 msgstr "Satelliti"
 
-#: plugin/local.py:172
+#: plugin/local.py:180
 msgid "Satfinder"
 msgstr "SATFINDER"
 
-#: plugin/local.py:173 plugin/local.py:319 plugin/local.py:371
-#: plugin/plugin.py:102
+#: plugin/local.py:181 plugin/local.py:328 plugin/local.py:380
+#: plugin/plugin.py:111
 msgid "Save"
-msgstr "Salva"
+msgstr "Salvare"
 
-#: plugin/local.py:174
+#: plugin/local.py:182
 msgid "Screenshot"
-msgstr "Cattura schermata"
+msgstr "Catturare schermata"
 
-#: plugin/local.py:175 plugin/local.py:377
+#: plugin/local.py:183 plugin/local.py:386
 msgid "Search"
 msgstr "Ricerca"
 
-#: plugin/local.py:176
-msgid "Search IMDb"
-msgstr "Cerca IMDb"
-
-#: plugin/local.py:177
-msgid "Search KinoPoisk"
-msgstr "Cerca KinoPoisk"
-
-#: plugin/local.py:178
-msgid "seconds"
-msgstr "secondi"
-
-#: plugin/local.py:179
-msgid "Send Message"
-msgstr "Invia messaggio"
-
-#: plugin/local.py:180
-msgid "Waiting for answer ..."
-msgstr "Attesa di risposta in corso..."
-
-#: plugin/local.py:181
-msgid "Send a Message"
-msgstr "Invia un messaggio"
-
-#: plugin/local.py:182
-msgid "Service"
-msgstr "Servizio"
-
 #: plugin/local.py:184
-msgid "Bouquet Editor"
-msgstr "Editor di bouquet"
+msgid "Search IMDb"
+msgstr "Cercare IMDb"
 
 #: plugin/local.py:185
-msgid "(Shift + Click for Long Press)"
-msgstr "Pressione prolungata (maiuscola +click)"
+msgid "Search KinoPoisk"
+msgstr "Cercare KinoPoisk"
 
 #: plugin/local.py:186
-msgid "Show Full OpenWebif"
-msgstr "Visualizza OpenWebif intera"
+msgid "seconds"
+msgstr "Secondi"
 
 #: plugin/local.py:187
-msgid "Show full remote"
-msgstr "Massimizza telecomando"
+msgid "Send Message"
+msgstr "Inviare messaggio"
 
 #: plugin/local.py:188
+msgid "Waiting for answer ..."
+msgstr "In attesa di risposta..."
+
+#: plugin/local.py:189
+msgid "Send a Message"
+msgstr "Inviare un messaggio"
+
+#: plugin/local.py:190
+msgid "Service"
+msgstr "Canale"
+
+#: plugin/local.py:192
+msgid "Bouquet Editor"
+msgstr "Editor dei bouquet"
+
+#: plugin/local.py:193
+msgid "(Shift + Click for Long Press)"
+msgstr "Pressione prolungata (maiuscola + click)"
+
+#: plugin/local.py:194
+msgid "Show Full OpenWebif"
+msgstr "Mostrare OpenWebif completa"
+
+#: plugin/local.py:195
+msgid "Show full remote"
+msgstr "Mostrare il telecomando"
+
+#: plugin/local.py:196
 msgid "Show EPG for"
 msgstr "Mostrare EPG per"
 
-#: plugin/local.py:189
+#: plugin/local.py:197
 msgid "Shutdown"
-msgstr "Arresto"
+msgstr "Spegnimento"
 
-#: plugin/local.py:190
+#: plugin/local.py:198
 msgid "Site and sources"
 msgstr "Sito e sorgenti"
 
-#: plugin/local.py:191
+#: plugin/local.py:199
 msgid "SNR"
 msgstr "SNR"
 
-#: plugin/local.py:192
+#: plugin/local.py:200
 msgid "Software"
 msgstr "Software"
 
-#: plugin/local.py:193
+#: plugin/local.py:201
 msgid "Standby"
-msgstr "Standby"
+msgstr "Sospensione"
 
-#: plugin/local.py:194
+#: plugin/local.py:202
 msgid "Standby Toggle"
-msgstr "Standby ON/OFF"
+msgstr "Sospensione"
 
-#: plugin/local.py:195
+#: plugin/local.py:203
+msgid "Wake Up"
+msgstr "Riattivare"
+
+#: plugin/local.py:204
 msgid "Start time is after end time"
-msgstr "L’orario di avvio è successivo all'orario di fine"
+msgstr "L’ora di inizio è successiva all'ora di fine"
 
-#: plugin/local.py:196
+#: plugin/local.py:205
 msgid "Start Instant Record"
 msgstr "Avviare immediatamente la registrazione"
 
-#: plugin/local.py:197
+#: plugin/local.py:206
 msgid "Stream"
-msgstr "Stream"
+msgstr "Trasmettere"
 
-#: plugin/local.py:198
+#: plugin/local.py:207
 msgid "Subnet mask"
 msgstr "Maschera di rete"
 
-#: plugin/local.py:199
+#: plugin/local.py:208
 msgid "Subservices"
-msgstr "Sottoservizi"
+msgstr "Sottocanali"
 
-#: plugin/local.py:200 plugin/local.py:301
+#: plugin/local.py:209 plugin/local.py:310
 msgid "Tags"
-msgstr "Tags"
+msgstr "Etichette"
 
-#: plugin/local.py:201
+#: plugin/local.py:210
 msgid "Teletext"
 msgstr "Televideo"
 
-#: plugin/local.py:202
+#: plugin/local.py:211
 msgid "Television"
 msgstr "Televisione"
 
-#: plugin/local.py:203
+#: plugin/local.py:212
 msgid "Template Engine"
-msgstr "Template Engine"
+msgstr "Modello motore"
 
-#: plugin/local.py:204
+#: plugin/local.py:213
 msgid "Text"
 msgstr "Testo"
 
-#: plugin/local.py:205
+#: plugin/local.py:214
 msgid "Time"
-msgstr "Orario"
+msgstr "Ora"
 
-#: plugin/local.py:206
+#: plugin/local.py:215
 msgid "Timeout"
-msgstr "Timeout"
+msgstr "Scadenza"
 
-#: plugin/local.py:207
+#: plugin/local.py:216
 msgid "Timer added"
 msgstr "Timer aggiunto"
 
-#: plugin/local.py:208
+#: plugin/local.py:217
 msgid "Timerlist"
-msgstr "Lista Timer"
+msgstr "Elenco timer"
 
-#: plugin/local.py:209
+#: plugin/local.py:218
 msgid "New Name"
 msgstr "Nuovo nome"
 
-#: plugin/local.py:210
+#: plugin/local.py:219
 msgid "Autotimer Preview"
 msgstr "Anteprima Autotimer"
 
-#: plugin/local.py:211
+#: plugin/local.py:220
 msgid "Timer"
 msgstr "Timer"
 
-#: plugin/local.py:212 plugin/local.py:322
+#: plugin/local.py:221 plugin/local.py:331
 msgid "Timers"
-msgstr "Timers"
+msgstr "Timer"
 
-#: plugin/local.py:213
+#: plugin/local.py:222
 msgid "Title"
 msgstr "Titolo"
 
-#: plugin/local.py:214
+#: plugin/local.py:223
 msgid "Main Memory"
 msgstr "Memoria principale"
 
-#: plugin/local.py:215
+#: plugin/local.py:224
 msgid "transcoded"
-msgstr "trascodificato"
+msgstr "Trascodificato"
 
-#: plugin/local.py:216
+#: plugin/local.py:225
 msgid "Transcode"
 msgstr "Trascodifica"
 
-#: plugin/local.py:217
+#: plugin/local.py:226
 msgid "Tuner Bit Error Rate BER"
-msgstr "BER (Bit Error Rate) del tuner"
+msgstr "BER (Bit Error Rate) del sintonizzatore"
 
-#: plugin/local.py:218
+#: plugin/local.py:227
 msgid "Tuner Number"
-msgstr "Numero TUNER"
+msgstr "Numero SINTONIZZATORE"
 
-#: plugin/local.py:219
+#: plugin/local.py:228
 msgid "Tuner Signal"
-msgstr "Segnale del tuner"
+msgstr "Segnale del sintonizzatore"
 
-#: plugin/local.py:220
+#: plugin/local.py:229
 msgid "Tuner Signal Quality SNR"
-msgstr "Qualità segnale del tuner (SNR)"
+msgstr "Qualità segnale del sintonizzatore (SNR)"
 
-#: plugin/local.py:221
+#: plugin/local.py:230
 msgid "Tuner Signal Quality SNR_DB"
-msgstr "Qualità segnale del tuner (SNR_ DB)"
+msgstr "Qualità segnale del sintonizzatore (SNR_ DB)"
 
-#: plugin/local.py:222
+#: plugin/local.py:231
 msgid "Tuner Signal Power AGC"
-msgstr "Potenza segnale del tuner (AGC)"
+msgstr "Potenza segnale del sintonizzatore (AGC)"
 
-#: plugin/local.py:223
+#: plugin/local.py:232
 msgid "Tuner Type"
-msgstr "Tipo tuner"
+msgstr "Tipo sintonizzatore"
 
-#: plugin/local.py:224
+#: plugin/local.py:233
 msgid "Tuners"
-msgstr "Tuners"
+msgstr "Sintonizzatori"
 
-#: plugin/local.py:225
+#: plugin/local.py:234
 msgid "TV"
 msgstr "TV"
 
-#: plugin/local.py:226
+#: plugin/local.py:235
 msgid "TV Multi EPG"
 msgstr "TV Multi EPG"
 
-#: plugin/local.py:227
+#: plugin/local.py:236
 msgid "Type"
 msgstr "Tipo"
 
-#: plugin/local.py:228
+#: plugin/local.py:237
 msgid "Upcoming Events"
 msgstr "Prossimi eventi"
 
-#: plugin/local.py:229
+#: plugin/local.py:238
 msgid "Version"
 msgstr "Versione"
 
-#: plugin/local.py:230
+#: plugin/local.py:239
 msgid "Video"
 msgstr "Video"
 
-#: plugin/local.py:231
+#: plugin/local.py:240
 msgid "Video Height"
 msgstr "Altezza video"
 
-#: plugin/local.py:232
+#: plugin/local.py:241
 msgid "Video Wide"
 msgstr "Ampiezza video"
 
-#: plugin/local.py:233
+#: plugin/local.py:242
 msgid "Video Width"
 msgstr "Larghezza video"
 
-#: plugin/local.py:234
+#: plugin/local.py:243
 msgid "VPS"
 msgstr "VPS"
 
-#: plugin/local.py:235
+#: plugin/local.py:244
 msgid "Volume"
 msgstr "Volume"
 
-#: plugin/local.py:236
+#: plugin/local.py:245
 msgid "Volume Control"
 msgstr "Controllo volume"
 
-#: plugin/local.py:237
+#: plugin/local.py:246
 msgid "waiting"
-msgstr "in attesa"
+msgstr "In attesa"
 
-#: plugin/local.py:238
+#: plugin/local.py:247
 msgid "Warning"
 msgstr "Avviso"
 
-#: plugin/local.py:239
+#: plugin/local.py:248
 msgid "Yes/No"
-msgstr "Si/No"
+msgstr "Sì/No"
 
-#: plugin/local.py:240
+#: plugin/local.py:249
 msgid "Zap"
-msgstr "Zap"
+msgstr "Cambiare canale"
 
-#: plugin/local.py:241
+#: plugin/local.py:250
 msgid "zap before Stream"
-msgstr "cambia canale prima dello Stream"
+msgstr "Cambiare canale prima della trasmissione"
 
-#: plugin/local.py:242
+#: plugin/local.py:251
 msgid "Zap to"
-msgstr "Cambia in"
+msgstr "Passare al canale"
 
-#: plugin/local.py:243
+#: plugin/local.py:252
 msgid "Zapped to"
-msgstr "Cambiato in"
+msgstr "Passato al canale"
 
-#: plugin/local.py:244
+#: plugin/local.py:253
 msgid "Translation to Spanish"
 msgstr "Traduzione in spagnolo"
 
-#: plugin/local.py:245
-msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr "Tutti i file di questo software sono open source: potete ridistribuirli o modificarli secondo i termini la licenza GNU versione 3, così come pubblicato dalla Free Software Foundation."
+#: plugin/local.py:254
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 3 "
+"as published by the Free Software Foundation."
+msgstr ""
+"Tutti i file di questo software sono open source: potete ridistribuirli o "
+"modificarli secondo i termini la licenza GNU versione 3, così come "
+"pubblicato dalla Free Software Foundation."
 
-#: plugin/local.py:246
+#: plugin/local.py:255
 msgid "Root"
 msgstr "Root"
 
-#: plugin/local.py:248
+#: plugin/local.py:257
 msgid "AutoTimer List"
-msgstr "Lista autotimer"
+msgstr "Elenco Autotimer"
 
-#: plugin/local.py:249
+#: plugin/local.py:258
 msgid "AutoTimer Edit"
-msgstr "Modifica autotimer"
+msgstr "Modificare Autotimer"
 
-#: plugin/local.py:252
+#: plugin/local.py:261
 msgid "Match title"
 msgstr "Corrispondenza del titolo"
 
-#: plugin/local.py:253
+#: plugin/local.py:262
 msgid "EPG encoding"
 msgstr "Codifica EPG"
 
-#: plugin/local.py:254
+#: plugin/local.py:263
 msgid "Search type"
 msgstr "Tipo di ricerca"
 
-#: plugin/local.py:255
+#: plugin/local.py:264
 msgid "partial match"
 msgstr "corrispondenza parziale"
 
-#: plugin/local.py:256
+#: plugin/local.py:265
 msgid "exact match"
-msgstr "corrispondenza esatta"
+msgstr "Corrispondenza esatta"
 
-#: plugin/local.py:257
+#: plugin/local.py:266
 msgid "description match"
-msgstr "corrispondenza descrizione"
+msgstr "Corrispondenza descrizione"
 
-#: plugin/local.py:258
+#: plugin/local.py:267
 msgid "title or description match"
-msgstr "corrispondenza titolo o descrizione"
+msgstr "Corrispondenza titolo o descrizione"
 
-#: plugin/local.py:259
+#: plugin/local.py:268
 msgid "title or short description match"
-msgstr "corrispondenza titolo o breve descrizione"
+msgstr "Corrispondenza titolo o breve descrizione"
 
-#: plugin/local.py:260
+#: plugin/local.py:269
 msgid "short description match"
-msgstr "corrispondenza descrizione breve"
+msgstr "Corrispondenza descrizione breve"
 
-#: plugin/local.py:261
+#: plugin/local.py:270
 msgid "start match"
-msgstr "avvia ricerca corrispondenza"
+msgstr "Avviare ricerca corrispondenza"
 
-#: plugin/local.py:262
+#: plugin/local.py:271
 msgid "Search strictness"
 msgstr "Precisione nella ricerca"
 
-#: plugin/local.py:263
+#: plugin/local.py:272
 msgid "case-sensitive search"
-msgstr "ricerca con distinzione fra maiuscole e minuscole"
+msgstr "Ricerca con distinzione fra maiuscole e minuscole"
 
-#: plugin/local.py:264
+#: plugin/local.py:273
 msgid "case-insensitive search"
-msgstr "ricerca senza distinzione maiuscole e minuscole"
+msgstr "Ricerca senza distinzione maiuscole e minuscole"
 
-#: plugin/local.py:265
+#: plugin/local.py:274
 msgid "Timer type"
 msgstr "Tipo di timer"
 
-#: plugin/local.py:266
+#: plugin/local.py:275
 msgid "record"
-msgstr "registrazione"
+msgstr "Registrazione"
 
-#: plugin/local.py:267
+#: plugin/local.py:276
 msgid "zap"
-msgstr "cambia a"
+msgstr "Cambiare canale"
 
-#: plugin/local.py:268
+#: plugin/local.py:277
 msgid "Override found with alternative service"
-msgstr "Prevale il servizio trovato rispetto all’alternativa"
+msgstr "Prevale il canale trovato rispetto all’alternativa"
 
-#: plugin/local.py:269
+#: plugin/local.py:278
 msgid "Only match during timespan"
 msgstr "Corrispondenza solo durante il periodo"
 
-#: plugin/local.py:270
+#: plugin/local.py:279
 msgid "Begin of timespan"
 msgstr "Inizio dell'intervallo di tempo"
 
-#: plugin/local.py:271
+#: plugin/local.py:280
 msgid "End of Timespan"
 msgstr "Fine del periodo"
 
-#: plugin/local.py:272
+#: plugin/local.py:281
 msgid "Restrict to events on certain dates"
-msgstr "Limita agli eventi in determinate date"
+msgstr "Limitare agli eventi in determinate date"
 
-#: plugin/local.py:273
+#: plugin/local.py:282
 msgid "Not after"
 msgstr "Non dopo"
 
-#: plugin/local.py:274
+#: plugin/local.py:283
 msgid "Not before"
 msgstr "Non prima"
 
-#: plugin/local.py:275
+#: plugin/local.py:284
 msgid "Custom offset"
 msgstr "Margine personalizzato"
 
-#: plugin/local.py:276
+#: plugin/local.py:285
 msgid "Offset before recording (in m)"
 msgstr "Margine prima della registrazione (in m)"
 
-#: plugin/local.py:277
+#: plugin/local.py:286
 msgid "Offset after recording (in m)"
 msgstr "Margine dopo la registrazione (in m)"
 
-#: plugin/local.py:278
+#: plugin/local.py:287
 msgid "Set maximum duration"
 msgstr "Impostare durata massima"
 
-#: plugin/local.py:279
-msgid "After event"
-msgstr "Dopo l'evento"
-
-#: plugin/local.py:280
-msgid "standard"
-msgstr "standard"
-
-#: plugin/local.py:281
-msgid "auto"
-msgstr "auto"
-
-#: plugin/local.py:282
-msgid "do nothing"
-msgstr "non fare nulla"
-
-#: plugin/local.py:283
-msgid "go to standby"
-msgstr "vai in standby"
-
-#: plugin/local.py:284
-msgid "go to deep standby"
-msgstr "effettua lo spegnimento"
-
-#: plugin/local.py:285
-msgid "Execute \"after event\" during timespan"
-msgstr "Esegui \"dopo un evento\" durante il periodo di tempo"
-
-#: plugin/local.py:286
-msgid "Begin of \"after event\" timespan"
-msgstr "Inizio del periodo \"dopo la registrazione\""
-
-#: plugin/local.py:287
-msgid "End of \"after event\" timespan"
-msgstr "Fine del periodo \"dopo la registrazione\""
-
 #: plugin/local.py:288
-msgid "Record a maximum of x times"
-msgstr "Registra fino a un max di volte"
+msgid "After event"
+msgstr "Azione fine evento"
 
 #: plugin/local.py:289
+msgid "standard"
+msgstr "Standard"
+
+#: plugin/local.py:290
+msgid "auto"
+msgstr "Automatica"
+
+#: plugin/local.py:291
+msgid "do nothing"
+msgstr "Nessuna"
+
+#: plugin/local.py:292
+msgid "go to standby"
+msgstr "Sospensione"
+
+#: plugin/local.py:293
+msgid "go to deep standby"
+msgstr "Spegnimento"
+
+#: plugin/local.py:294
+msgid "Execute \"after event\" during timespan"
+msgstr "Eseguire \"Azione fine evento\" durante il periodo di tempo"
+
+#: plugin/local.py:295
+msgid "Begin of \"after event\" timespan"
+msgstr "Inizio del periodo di tempo \"Azione fine evento\""
+
+#: plugin/local.py:296
+msgid "End of \"after event\" timespan"
+msgstr "Fine del periodo di tempo \"Azione fine evento\""
+
+#: plugin/local.py:297
+msgid "Record a maximum of x times"
+msgstr "Registrare fino a un massimo di volte"
+
+#: plugin/local.py:298
 msgid "Amount of recordings left"
 msgstr "Quantità di registrazioni rimanenti"
 
-#: plugin/local.py:290 plugin/local.py:361
+#: plugin/local.py:299 plugin/local.py:370
 msgid "Never"
 msgstr "Mai"
 
-#: plugin/local.py:291
+#: plugin/local.py:300
 msgid "Monthly"
 msgstr "Mensile"
 
-#: plugin/local.py:292
+#: plugin/local.py:301
 msgid "Weekly (Sunday)"
 msgstr "Settimanale (domenica)"
 
-#: plugin/local.py:293
+#: plugin/local.py:302
 msgid "Weekly (Monday)"
 msgstr "Settimanale (lunedì)"
 
-#: plugin/local.py:294
+#: plugin/local.py:303
 msgid "Reset count"
 msgstr "Azzerare il conteggio"
 
-#: plugin/local.py:295
+#: plugin/local.py:304
 msgid "Require description to be unique"
-msgstr "Richiede descrizione univoca"
+msgstr "Richiedere descrizione univoca"
 
-#: plugin/local.py:296
+#: plugin/local.py:305
 msgid "No"
 msgstr "No"
 
-#: plugin/local.py:297
-msgid "On same service"
-msgstr "Sullo stesso servizio"
-
-#: plugin/local.py:298
-msgid "On any service"
-msgstr "Su qualsiasi servizio"
-
-#: plugin/local.py:299
-msgid "Any service/recording"
-msgstr "Qualsiasi servizio o registrazione"
-
-#: plugin/local.py:300
-msgid "Use a custom location"
-msgstr "Usa una posizione personalizzata"
-
-#: plugin/local.py:302
-msgid "select Tags"
-msgstr "seleziona tags"
-
-#: plugin/local.py:304
-msgid "select Channels"
-msgstr "seleziona canali"
-
 #: plugin/local.py:306
-msgid "select Bouquets"
-msgstr "seleziona bouquets"
+msgid "On same service"
+msgstr "Sullo stesso canale"
 
 #: plugin/local.py:307
+msgid "On any service"
+msgstr "Su qualsiasi canale"
+
+#: plugin/local.py:308
+msgid "Any service/recording"
+msgstr "Qualsiasi canale o registrazione"
+
+#: plugin/local.py:309
+msgid "Use a custom location"
+msgstr "Usare una posizione personalizzata"
+
+#: plugin/local.py:311
+msgid "select Tags"
+msgstr "Selezionare etichette"
+
+#: plugin/local.py:313
+msgid "select Channels"
+msgstr "Selezionare canali"
+
+#: plugin/local.py:315
+msgid "select Bouquets"
+msgstr "Selezionare bouquets"
+
+#: plugin/local.py:316
 msgid "Enable Filtering"
 msgstr "Abilitare filtri"
 
-#: plugin/local.py:308
+#: plugin/local.py:317
 msgid "Include"
-msgstr "Includi"
+msgstr "Includere"
 
-#: plugin/local.py:309
+#: plugin/local.py:318
 msgid "Exclude"
-msgstr "Escludi"
+msgstr "Escludere"
 
-#: plugin/local.py:310
+#: plugin/local.py:319
 msgid "in Title"
-msgstr "nel titolo"
+msgstr "Nel titolo"
 
-#: plugin/local.py:311
+#: plugin/local.py:320
 msgid "in Shortdescription"
-msgstr "nella descrizione breve"
+msgstr "Nella descrizione breve"
 
-#: plugin/local.py:312
+#: plugin/local.py:321
 msgid "in Description"
-msgstr "nella descrizione"
+msgstr "Nella descrizione"
 
-#: plugin/local.py:313
+#: plugin/local.py:322
 msgid "on Weekday"
-msgstr "in un giorno feriale"
+msgstr "In un giorno feriale"
 
-#: plugin/local.py:314
+#: plugin/local.py:323
 msgid "Weekend"
 msgstr "Fine settimana"
 
-#: plugin/local.py:315
+#: plugin/local.py:324
 msgid "Weekday"
 msgstr "Giorni feriali"
 
-#: plugin/local.py:316
+#: plugin/local.py:325
 msgid "Add"
-msgstr "Aggiungi"
+msgstr "Aggiungere"
 
-#: plugin/local.py:318 plugin/local.py:370 plugin/local.py:378
+#: plugin/local.py:327 plugin/local.py:379 plugin/local.py:387
 msgid "Reload"
-msgstr "Ricarica"
+msgstr "Ricaricare"
 
-#: plugin/local.py:320
+#: plugin/local.py:329
 msgid "Parse"
-msgstr "Analizza"
+msgstr "Analizzare"
 
-#: plugin/local.py:321
+#: plugin/local.py:330
 msgid "Simulate"
 msgstr "Simulare"
 
-#: plugin/local.py:324
+#: plugin/local.py:333
 msgid "Do you really want to delete the AT"
-msgstr "Confermi l’eliminazione dell’AT?"
+msgstr "Si desidera veramente eliminare l’AT?"
 
-#: plugin/local.py:325
+#: plugin/local.py:334
 msgid "Label series"
 msgstr "Serie di etichette"
 
-#: plugin/local.py:327
+#: plugin/local.py:336
 msgid "AutoTimer Settings"
 msgstr "Configurazione Autotimer"
 
-#: plugin/local.py:328
+#: plugin/local.py:337
 msgid "AutoPoll"
 msgstr "AutoPoll"
 
-#: plugin/local.py:329
-msgid "Interval (in h)"
-msgstr "Intervallo (in ore)"
+#: plugin/local.py:338
+#, python-format
+msgid "Interval (in %s)"
+msgstr "Intervallo (in %s)"
 
-#: plugin/local.py:330
+#: plugin/local.py:339
 msgid "Max Days"
 msgstr "Giorni max"
 
-#: plugin/local.py:331
+#: plugin/local.py:340
 msgid "Try Guessing"
-msgstr "Prova a indovinare"
+msgstr "Provare a indovinare"
 
-#: plugin/local.py:332
+#: plugin/local.py:341
 msgid "Fastscan"
 msgstr "Scansione veloce"
 
-#: plugin/local.py:333
+#: plugin/local.py:342
 msgid "Show in Extensionsmenu"
-msgstr "Mostra nel menu Estensioni"
+msgstr "Mostrare nel menu Estensioni"
 
-#: plugin/local.py:334
+#: plugin/local.py:343
 msgid "Disabled on Conflict"
 msgstr "Disabilitato se in conflitto"
 
-#: plugin/local.py:335
+#: plugin/local.py:344
 msgid "Add Similar on Conflict"
-msgstr "Aggiungi simile in caso di conflitto"
+msgstr "Aggiungere simile in caso di conflitto"
 
-#: plugin/local.py:336
+#: plugin/local.py:345
 msgid "Notify if Conflict"
 msgstr "Notifica se in conflitto"
 
-#: plugin/local.py:337
+#: plugin/local.py:346
 msgid "Notify if Similar"
-msgstr "Avvisa se simile"
+msgstr "Notifica se simile"
 
-#: plugin/local.py:338
+#: plugin/local.py:347
 msgid "Add Autotimer to Tags"
-msgstr "Aggiungi autotimer ai tag"
+msgstr "Aggiungere Autotimer alle etichette"
 
-#: plugin/local.py:339
+#: plugin/local.py:348
 msgid "Add Name to Tags"
-msgstr "Aggiungi nome ai tag"
+msgstr "Aggiungere nome alle etichette"
 
-#: plugin/local.py:341
+#: plugin/local.py:350
 msgid "None"
 msgstr "Nessuno"
 
-#: plugin/local.py:344
+#: plugin/local.py:353
 msgid "Editor"
 msgstr "Editor"
 
-#: plugin/local.py:345
+#: plugin/local.py:354
 msgid "Plain"
 msgstr "Semplice"
 
-#: plugin/local.py:346
+#: plugin/local.py:355
 msgid "Wizzard"
-msgstr "Wizard"
+msgstr "Procedura guidata"
 
-#: plugin/local.py:349
+#: plugin/local.py:358
 msgid "Enable Messages"
-msgstr "Abilita messaggi"
+msgstr "Abilitare messaggi"
 
-#: plugin/local.py:352
+#: plugin/local.py:361
 msgid "Delay Standby"
-msgstr "Ritardo standby"
+msgstr "Ritardo sospensione"
 
-#: plugin/local.py:353
+#: plugin/local.py:362
 msgid "Interval (min.)"
 msgstr "Intervallo (min.)"
 
-#: plugin/local.py:354
+#: plugin/local.py:363
 msgid "Interval (sec.)"
 msgstr "Intervallo (sec.)"
 
-#: plugin/local.py:356
+#: plugin/local.py:365
 msgid "Force"
 msgstr "Forzare"
 
-#: plugin/local.py:357
+#: plugin/local.py:366
 msgid "Wakeup"
 msgstr "Riattivare"
 
-#: plugin/local.py:358
+#: plugin/local.py:367
 msgid "Inherit Autotimer"
-msgstr "Ereditare autotimer"
+msgstr "Ereditare Autotimer"
 
-#: plugin/local.py:359
+#: plugin/local.py:368
 msgid "Parse Autotimer"
-msgstr "Analizza autotimer"
+msgstr "Analizzare Autotimer"
 
-#: plugin/local.py:360
+#: plugin/local.py:369
 msgid "Always"
 msgstr "Sempre"
 
-#: plugin/local.py:362
+#: plugin/local.py:371
 msgid "Background only"
-msgstr "Solo in background"
+msgstr "Solo in sottofondo"
 
-#: plugin/local.py:363
+#: plugin/local.py:372
 msgid "Ask, default Yes"
-msgstr "Chiedi, predefinito Sì"
+msgstr "Chiedere, predefinito Sì"
 
-#: plugin/local.py:364
+#: plugin/local.py:373
 msgid "Ask, default No"
-msgstr "Chiedi, predefinito No"
+msgstr "Chiedere, predefinito No"
 
-#: plugin/local.py:365
+#: plugin/local.py:374
 msgid "Method"
 msgstr "Metodo"
 
-#: plugin/local.py:366
+#: plugin/local.py:375
 msgid "Visibly"
 msgstr "Visibile"
 
-#: plugin/local.py:367
+#: plugin/local.py:376
 msgid "Picture in Picture"
 msgstr "PIP (Picture in Picture)"
 
-#: plugin/local.py:368
+#: plugin/local.py:377
 msgid "Picture in Picture (hidden)"
 msgstr "Picture in Picture (nascosto)"
 
-#: plugin/local.py:369
+#: plugin/local.py:378
 msgid "Fake Recording"
 msgstr "Registrazione finta"
 
-#: plugin/local.py:372
-msgid "Refresh now"
-msgstr "Aggiorna"
-
-#: plugin/local.py:374
-msgid "Add Provider as new Bouquet"
-msgstr "Aggiungi il provider come nuovo bouquet"
-
-#: plugin/local.py:375
-msgid "Add channel(s) to Bouquet"
-msgstr "Aggiungi canale(li) al bouquet"
-
-#: plugin/local.py:376
-msgid "Add channel(s) as alternate"
-msgstr "Aggiungi canale(li) come alternative"
-
-#: plugin/local.py:379
-msgid "Export"
-msgstr "Esporta"
-
-#: plugin/local.py:380
-msgid "Import"
-msgstr "Importa"
-
 #: plugin/local.py:381
-msgid "Add Bouquet"
-msgstr "Aggiungi bouquet"
-
-#: plugin/local.py:382
-msgid "Rename Bouquet"
-msgstr "Rinomina bouquet"
+msgid "Refresh now"
+msgstr "Aggiornare adesso"
 
 #: plugin/local.py:383
-msgid "Delete Bouquet"
-msgstr "Elimina bouquet"
+msgid "Add Provider as new Bouquet"
+msgstr "Aggiungere il provider come nuovo bouquet"
 
 #: plugin/local.py:384
-msgid "Add Marker"
-msgstr "Aggiungi indicatore"
+msgid "Add channel(s) to Bouquet"
+msgstr "Aggiungere canale(i) al bouquet"
 
 #: plugin/local.py:385
-msgid "Add Spacer"
-msgstr "Aggiungi spaziatore"
-
-#: plugin/local.py:386
-msgid "Rename"
-msgstr "Rinomina"
-
-#: plugin/local.py:387
-msgid "Do you really want to delete the selected item(s)"
-msgstr "Vuoi davvero eliminare gli oggetti selezionati?"
+msgid "Add channel(s) as alternate"
+msgstr "Aggiungere canale(i) come alternativo(i)"
 
 #: plugin/local.py:388
-msgid "Do you really want to delete the bouquet"
-msgstr "Confermi l’eliminazione del bouquet?"
+msgid "Export"
+msgstr "Esportare"
 
 #: plugin/local.py:389
+msgid "Import"
+msgstr "Importare"
+
+#: plugin/local.py:390
+msgid "Add Bouquet"
+msgstr "Aggiungere bouquet"
+
+#: plugin/local.py:391
+msgid "Rename Bouquet"
+msgstr "Rinominare bouquet"
+
+#: plugin/local.py:392
+msgid "Delete Bouquet"
+msgstr "Eliminare bouquet"
+
+#: plugin/local.py:393
+msgid "Add Marker"
+msgstr "Aggiungere marcatore"
+
+#: plugin/local.py:394
+msgid "Add Spacer"
+msgstr "Aggiungere spaziatore"
+
+#: plugin/local.py:395
+msgid "Rename"
+msgstr "Rinominare"
+
+#: plugin/local.py:396
+msgid "Do you really want to delete the selected item(s)"
+msgstr "Si desidera veramente eliminare gli oggetti selezionati?"
+
+#: plugin/local.py:397
+msgid "Do you really want to delete the bouquet"
+msgstr "Si desidera veramente eliminare il bouquet?"
+
+#: plugin/local.py:398
 msgid "Name of the Bouquet"
 msgstr "Nome del bouquet"
 
-#: plugin/local.py:390
+#: plugin/local.py:399
 msgid "Name of the Marker"
-msgstr "Nome dell'indicatore"
+msgstr "Nome del marcatore"
 
-#: plugin/local.py:391
+#: plugin/local.py:400
 msgid "Enter new name for the bouquet"
 msgstr "Inserire un nuovo nome per il bouquet"
 
-#: plugin/local.py:392
+#: plugin/local.py:401
 msgid "Enter new name for the marker"
-msgstr "Inserire nuovo nome per l’indicatore"
+msgstr "Inserire un nuovo nome per il marcatore"
 
-#: plugin/local.py:393
+#: plugin/local.py:402
 msgid "Please enter filename"
 msgstr "Inserire nome del file"
 
-#: plugin/local.py:394
+#: plugin/local.py:403
 msgid "Do you really want to restore from file"
-msgstr "Confermare  ripristino da file"
+msgstr "Confermare ripristino da file"
 
-#: plugin/local.py:396
+#: plugin/local.py:405
 msgid "via"
-msgstr "Tramite"
+msgstr "tramite"
 
-#: plugin/local.py:397
+#: plugin/local.py:406
 msgid "Record+ZAP"
-msgstr "Registrazione+ZAP"
+msgstr "Cambiare canale e registrare"
 
-#: plugin/local.py:398
+#: plugin/local.py:407
 msgid "Pmtpid"
 msgstr "Pmtpid"
 
-#: plugin/local.py:399
+#: plugin/local.py:408
 msgid "Apid"
 msgstr "Apid"
 
-#: plugin/local.py:400
+#: plugin/local.py:409
 msgid "Vpid"
 msgstr "Vpid"
 
-#: plugin/local.py:401
+#: plugin/local.py:410
 msgid "Pcrpid"
 msgstr "Pcrpid"
 
-#: plugin/local.py:402
+#: plugin/local.py:411
 msgid "Tsid"
 msgstr "Tsid"
 
-#: plugin/local.py:403
+#: plugin/local.py:412
 msgid "Onid"
 msgstr "Onid"
 
-#: plugin/local.py:404
+#: plugin/local.py:413
 msgid "Sid"
 msgstr "Sid"
 
-#: plugin/local.py:405
+#: plugin/local.py:414
 msgid "Sref"
 msgstr "Sref"
 
-#: plugin/local.py:406
-msgid "Orbital Position"
-msgstr "Posizione orbitale"
-
-#: plugin/local.py:408
+#: plugin/local.py:417
 msgid "error! Loading Page"
-msgstr "Errore! Carico la pagina."
+msgstr "Errore nel caricamento della pagina!"
 
-#: plugin/local.py:409
+#: plugin/local.py:418
 msgid "Timer Added"
 msgstr "Timer aggiunto"
 
-#: plugin/local.py:410
+#: plugin/local.py:419
 msgid "Event not found"
 msgstr "Evento non trovato"
 
-#: plugin/local.py:411
+#: plugin/local.py:420
 msgid "Show Picon in channel list"
-msgstr "Mostrare picon nella lista canali"
+msgstr "Mostrare i Picon nella lista canali"
 
-#: plugin/local.py:413
+#: plugin/local.py:422
 msgid "OpenWebif Browser Settings"
 msgstr "Impostazioni browser OpenWebif"
 
-#: plugin/local.py:414
+#: plugin/local.py:423
 msgid "OpenWebif Settings"
-msgstr "Impostazioni OpenWebif"
+msgstr "OpenWebif"
 
-#: plugin/local.py:415
+#: plugin/local.py:424
 msgid "Theme"
 msgstr "Tema"
 
-#: plugin/local.py:416
-msgid "Show Picons in channel list"
-msgstr "Mostrare picon nella lista canali"
-
-#: plugin/local.py:417
+#: plugin/local.py:425
 msgid "Spinner"
 msgstr "Spinner"
 
-#: plugin/local.py:418
+#: plugin/local.py:426
 msgid "Display duration (s)"
 msgstr "Mostrare la durata (s)"
 
-#: plugin/local.py:420
+#: plugin/local.py:428
 msgid "Display Mode"
 msgstr "Modalità di visualizzazione"
 
-#: plugin/local.py:421
+#: plugin/local.py:429
 msgid "TV Guide"
 msgstr "Guida TV"
 
-#: plugin/local.py:422
+#: plugin/local.py:430
 msgid "Timeline"
-msgstr "Timeline"
+msgstr "Linea temporale"
 
-#: plugin/local.py:423
+#: plugin/local.py:431
 msgid "Web TV"
 msgstr "Web TV"
 
-#: plugin/local.py:424
+#: plugin/local.py:432
 msgid "Calendar Week"
 msgstr "Calendario settimanale"
 
-#: plugin/local.py:426
+#: plugin/local.py:434
 msgid "Link Speed"
-msgstr "Velocità link"
+msgstr "Velocità connessione"
 
-#: plugin/local.py:427
+#: plugin/local.py:435
 msgid "Network Shares"
 msgstr "Condivisioni di rete"
 
-#: plugin/local.py:428
+#: plugin/local.py:436
 msgid "using"
 msgstr "utilizzando"
 
-#: plugin/plugin.py:103
-msgid "OpenWebif url: http://yourip:port"
-msgstr "Indirizzo OpenWebif:  http://ip_ricevitore:porta"
-
-#: plugin/plugin.py:117
-msgid "OpenWebInterface Enabled"
-msgstr "OpenWebInterface abilitata"
-
-#: plugin/plugin.py:124
-msgid "HTTP port"
-msgstr "Porta HTTP"
-
-#: plugin/plugin.py:125
-msgid "Enable HTTP Authentication"
-msgstr "Abilitare autenticazione HTTP"
-
-#: plugin/plugin.py:126
-msgid "Enable HTTPS"
-msgstr "Abilitare HTTPS"
-
-#: plugin/plugin.py:128
-msgid "HTTPS port"
-msgstr "Porta HTTPS"
-
-#: plugin/plugin.py:129
-msgid "Enable HTTPS Authentication"
-msgstr "Abilitare autenticazione HTTPS"
-
-#: plugin/plugin.py:130
-msgid "Require client cert for HTTPS"
-msgstr "Richiede il certificato cliente per HTTPS"
-
-#: plugin/plugin.py:132
-msgid "Enable Authentication for streaming"
-msgstr "Abilitare l'autentificazione per lo streaming"
-
-#: plugin/plugin.py:133
-msgid "Disable remote access for user root"
-msgstr "Disabilitare l'accesso remoto per utente root"
-
-#: plugin/plugin.py:135
-msgid "Without auth only local access is allowed!"
-msgstr "Senza autorizzazione è consentito solo l'accesso locale!"
-
-#: plugin/plugin.py:136
-msgid "Enable access from VPNs"
-msgstr "Abilitare l'accesso da VPN"
-
-#: plugin/plugin.py:137
-msgid "Enable Parental Control"
-msgstr "Abilitare il controllo parentale"
-
-#: plugin/plugin.py:138
-msgid "Add service name to stream information"
-msgstr "Aggiungi il nome del canale alla stream info"
-
-#: plugin/plugin.py:140
-msgid "Character encoding for EPG data"
-msgstr "Codifica dei caratteri per i dati EPG"
-
-#: plugin/plugin.py:149 plugin/plugin.py:208 plugin/plugin.py:210
-#: plugin/plugin.py:212
-msgid "OpenWebif Configuration"
-msgstr "Configurazione OpenWebif"
-
+#: plugin/local.py:437
 msgid "Primetimes"
 msgstr "Prima serata"
 
+#: plugin/local.py:438
 msgid "Enable/Disable Screenshot on key press or"
-msgstr "Abilita/Disattiva Cattura-schermo alla pressione tasto o"
+msgstr "Abilitare/Disabilitare cattura schermo alla pressione tasto o"
+
+#: plugin/local.py:440
+msgid "Bookmarks"
+msgstr "Percorsi preferiti"
+
+#: plugin/local.py:441
+msgid "Bookmark"
+msgstr "Percorso preferito"
+
+#: plugin/local.py:443 plugin/vtiaddon.py:20
+msgid "Packages"
+msgstr "Pacchetti"
+
+#: plugin/plugin.py:112
+msgid "OpenWebif url: http://yourip:port"
+msgstr "Indirizzo OpenWebif:  http://ip_ricevitore:porta"
+
+#: plugin/plugin.py:126
+msgid "OpenWebInterface Enabled"
+msgstr "OpenWebInterface abilitata"
+
+#: plugin/plugin.py:128
+msgid "Use new design"
+msgstr "Usare nuova interfaccia"
+
+#: plugin/plugin.py:134
+msgid "HTTP port"
+msgstr "Porta HTTP"
+
+#: plugin/plugin.py:135
+msgid "Enable HTTP Authentication"
+msgstr "Abilitare l'autenticazione HTTP"
+
+#: plugin/plugin.py:136
+msgid "Enable HTTPS"
+msgstr "Abilitare il protocollo HTTPS"
+
+#: plugin/plugin.py:138
+msgid "HTTPS port"
+msgstr "Porta HTTPS"
+
+#: plugin/plugin.py:139
+msgid "Enable HTTPS Authentication"
+msgstr "Abilitare l'autenticazione HTTPS"
+
+#: plugin/plugin.py:140
+msgid "Require client cert for HTTPS"
+msgstr "Richiedere il certificato client per HTTPS"
+
+#: plugin/plugin.py:142
+msgid "Enable Authentication for streaming"
+msgstr "Abilitare l'autenticazione per la trasmissione"
+
+#: plugin/plugin.py:143
+msgid "Disable remote access for user root"
+msgstr "Disabilitare l'accesso remoto per l'utente root"
+
+#: plugin/plugin.py:145
+msgid "Without auth only local access is allowed!"
+msgstr "Senza autorizzazione è consentito solo l'accesso locale!"
+
+#: plugin/plugin.py:146
+msgid "Enable access from VPNs"
+msgstr "Abilitare l'accesso da VPN"
+
+#: plugin/plugin.py:147
+msgid "Enable Parental Control"
+msgstr "Abilitare il Controllo genitori"
+
+#: plugin/plugin.py:148
+msgid "Add service name to stream information"
+msgstr "Aggiungere il nome del canale alle informazioni della trasmissione"
+
+#: plugin/plugin.py:150
+msgid "Character encoding for EPG data"
+msgstr "Codifica dei caratteri per i dati EPG"
+
+#: plugin/plugin.py:151
+msgid "Allow IPK Upload"
+msgstr "Consentire il caricamento di file IPK"
+
+#: plugin/plugin.py:160 plugin/plugin.py:224 plugin/plugin.py:226
+#: plugin/plugin.py:228
+msgid "OpenWebif Configuration"
+msgstr "Configurazione OpenWebif"
+
+#: plugin/vtiaddon.py:8
+msgid "No, cancel"
+msgstr "No, annullare"
+
+#: plugin/vtiaddon.py:9
+msgid "Yes, delete it"
+msgstr "Sì, eliminarlo"
+
+#: plugin/vtiaddon.py:10
+msgid "Cancelled"
+msgstr "Annullato"
+
+#: plugin/vtiaddon.py:11
+msgid "Deleted"
+msgstr "Eliminato"
+
+#: plugin/vtiaddon.py:12
+msgid "You need to write something!"
+msgstr "E' necessario scrivere qualcosa!"
+
+#: plugin/vtiaddon.py:13
+msgid "Common Settings"
+msgstr "Configurazione CI"
+
+#: plugin/vtiaddon.py:14
+msgid "Minimal movie list"
+msgstr "Elenco registrazioni minimale"
+
+#: plugin/vtiaddon.py:15
+msgid "Minimal timer list"
+msgstr "Elenco timer minimale"
+
+#: plugin/vtiaddon.py:16
+msgid "Minimal EPG list"
+msgstr "Elenco EPG minimale"
+
+#: plugin/vtiaddon.py:17
+msgid "Remove Package"
+msgstr "Rimuovere pacchetto"
+
+#: plugin/vtiaddon.py:18
+msgid "Update Package"
+msgstr "Aggiornare pacchetto"
+
+#: plugin/vtiaddon.py:19
+msgid "Install Package"
+msgstr "Installare pacchetto"
+
+#: plugin/vtiaddon.py:21
+msgid "Update"
+msgstr "Aggiornamenti"
+
+#: plugin/vtiaddon.py:22
+msgid "Installed"
+msgstr "Installati"
+
+#: plugin/vtiaddon.py:24
+msgid "More"
+msgstr "Altro"
+
+#: plugin/vtiaddon.py:25
+msgid "Update from Feed"
+msgstr "Aggiornare da fonti"
+
+#: plugin/vtiaddon.py:26
+msgid "Upgrade all Packages"
+msgstr "Aggiornare tutti i pacchetti"
+
+#: plugin/vtiaddon.py:27
+msgid "Yes"
+msgstr "Sì"
+
+#: plugin/vtiaddon.py:28
+msgid "Include short description"
+msgstr "Includere descrizione breve"
+
+#: plugin/vtiaddon.py:29
+msgid "Include extended description"
+msgstr "Includere descrizione estesa"
+
+#: plugin/vtiaddon.py:30
+msgid "Movie search"
+msgstr "Ricerca registrazioni"
+
+#: plugin/vtiaddon.py:31
+msgid "START TYPING"
+msgstr "INIZIARE A DIGITARE"
+
+#: plugin/vtiaddon.py:32
+msgid "Select IPK File for Upload"
+msgstr "Selezionare il file IPK da caricare"
+
+#: plugin/vtiaddon.py:33
+msgid "Uploaded Files"
+msgstr "File caricati"
+
+#: plugin/vtiaddon.py:34
+msgid "Upload package"
+msgstr "Caricare pacchetto"
+
+#: plugin/vtiaddon.py:35
+msgid "Upload File Error"
+msgstr "Caricare errore file"
+
+#: plugin/vtiaddon.py:36
+msgid "Full remote"
+msgstr "Mostrare il telecomando"
+
+#~ msgid "SleepTimer Error"
+#~ msgstr "Errore SleepTimer"
+
+#~ msgid "no"
+#~ msgstr "No"
+
+#~ msgid "VPS Overwrite"
+#~ msgstr "Sovrascrivere VPS"
+
+#~ msgid "Ignore DVB namespace sub network"
+#~ msgstr "Ignorare la sottorete del namespace DVB"
+
+#~ msgid "Show Picons in channel list"
+#~ msgstr "Mostrare i Picon nella lista canali"
+
+#~ msgid "Interval (in h)"
+#~ msgstr "Intervallo (ore)"
+
+#~ msgid "Delete Channel(s)"
+#~ msgstr "seleziona canali"
+
+#~ msgid "Do you really want to delete the channel(s)"
+#~ msgstr "Confermi l’eliminazione dell’AT?"
+
+#~ msgid "Delete Movie"
+#~ msgstr "Elimina timer"
+
+#~ msgid "Really delete the movie"
+#~ msgstr "Confermare l’eliminazione del timer"
+
+#~ msgid "Afterevent"
+#~ msgstr "Dopo l'evento"
+
+#~ msgid "Smart services renaming for XBMC"
+#~ msgstr "Servizi smart rinominati per XBMC"
+
+#~ msgid "Driver date"
+#~ msgstr "Drivers"
+
+#~ msgid "Kernel version"
+#~ msgstr "Versione firmware"
+
+#~ msgid "Total Memory"
+#~ msgstr "Memoria principale"
+
+#~ msgid "Multi EPG Mode"
+#~ msgstr "MultiEPG"
+
+#~ msgid "(shift  click for long pressure)"
+#~ msgstr "Pressione prolungata (maiuscola +click)"
+
+#~ msgid "RecordZAP"
+#~ msgstr "Registrazione+ZAP"
