@@ -358,6 +358,7 @@ class WebController(BaseController):
 		.. note::
 
 			Not available in *Enigma2 WebInterface API*.
+
 		Args:
 			request (twisted.web.server.Request): HTTP request object
 		Returns:
@@ -383,6 +384,7 @@ class WebController(BaseController):
 		.. note::
 
 			Not available in *Enigma2 WebInterface API*.
+
 		Args:
 			request (twisted.web.server.Request): HTTP request object
 		Returns:
@@ -1541,7 +1543,9 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 
+
 		.. http:get:: /web/getcurrent
+
 		"""
 		info = getCurrentService(self.session)
 		now = getNowNextEpg(info["ref"], 0, self.isJson)
@@ -1729,7 +1733,9 @@ class WebController(BaseController):
 			request (twisted.web.server.Request): HTTP request object
 		Returns:
 			HTTP response with headers
+
 		.. http:get:: /web/ts.m3u
+
 		"""
 		self.isCustom = True
 		return getTS(self.session, request)
@@ -1750,7 +1756,9 @@ class WebController(BaseController):
 			request (twisted.web.server.Request): HTTP request object
 		Returns:
 			HTTP response with headers
+
 		.. http:get:: /web/streamcurrent.m3u
+
 		"""
 		self.isCustom = True
 		return getStream(self.session, request, "streamcurrent.m3u")

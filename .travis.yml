@@ -9,11 +9,8 @@ before_install:
 - sudo npm install -g jshint
 
 install:
-- pip install cheetah
-- pip install twisted
-- pip install pyopenssl
+- pip install -r requirements.txt
 - pip install bandit
-- pip install flake8
 
 script: 
 - python -m compileall -l . -l plugin -l plugin/backport -l plugin/controllers -l plugin/controllers/models
@@ -33,6 +30,10 @@ after_success:
 - mv flake8_report.txt ./Rel
 - mv jshint1_report.txt ./Rel
 - mv jshint2_report.txt ./Rel
+- cd doc
+- make html
+- cd build
+- mv html ./Rel
 
 deploy:
   provider: pages

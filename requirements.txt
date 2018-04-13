@@ -1,0 +1,9 @@
+Cheetah==2.4.4
+pyOpenSSL>=16.2.0
+Twisted==16.2.0
+flake8==3.5.0
+sphinx-rtd-theme>=0.2.4
+sphinxcontrib-napoleon>=0.6.1
+sphinxcontrib-websupport>=1.0.1
+Sphinx>=1.6.5
+sphinxcontrib-httpdomain>=1.5.0
