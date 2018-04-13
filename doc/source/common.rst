@@ -3,9 +3,9 @@
 Common
 ==========
 
-.. automodule:: httpserver
-    :members:
+HTTP Server
+-----------------
 
-.. automodule:: controllers.utilities
+.. automodule:: httpserver
     :members:
 
