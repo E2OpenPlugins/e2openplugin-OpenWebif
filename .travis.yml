@@ -33,6 +33,7 @@ after_success:
 - cd doc
 - make html
 - cd build/html
+- touch .nojekyll
 - mv * ../../../Rel/
 
 deploy:
