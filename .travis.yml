@@ -5,6 +5,7 @@ python:
 
 before_install:
 - sudo apt-get install -y closure-compiler nodejs npm
+- "npm config set strict-ssl false"
 - sudo npm install -g jshint
 
 install:
