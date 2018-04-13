@@ -25,6 +25,7 @@ after_success:
 - ./create_ipk.sh
 - export PKG=$(ls -1 *.ipk)
 - mkdir Rel
+- touch ./Rel/.nojekyll
 - mv "${PKG}" ./Rel
 - mv bandit.html ./Rel
 - mv flake8_report.txt ./Rel
@@ -33,7 +34,6 @@ after_success:
 - cd doc
 - make html
 - cd build/html
-- touch .nojekyll
 - mv * ../../../Rel/
 
 deploy:
