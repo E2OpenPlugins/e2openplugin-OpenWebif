@@ -32,8 +32,8 @@ after_success:
 - mv jshint2_report.txt ./Rel
 - cd doc
 - make html
-- cd build
-- mv html ./Rel
+- cd build/html
+- mv * ../../../Rel/
 
 deploy:
   provider: pages
