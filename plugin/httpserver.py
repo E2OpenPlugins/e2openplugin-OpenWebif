@@ -162,6 +162,12 @@ def buildRootTree(session):
 
 
 def HttpdStart(session):
+	"""
+	Helper class to start web server
+	
+	Args:
+		session: (?) session object
+	"""
 	if config.OpenWebif.enabled.value is True:
 		global listener, site
 		port = config.OpenWebif.port.value
@@ -391,11 +397,11 @@ class AuthResource(resource.Resource):
 			return crypt(passwd, cpass) == cpass
 		return False
 
-#
-# Helper class to stop running web servers; we use a class here to reduce use
-# of global variables. Resembles code prior found in HttpdStop et. al.
-# 
 class StopServer:
+	"""
+	Helper class to stop running web servers; we use a class here to reduce use
+	of global variables. Resembles code prior found in HttpdStop et. al.
+	"""
 	server_to_stop = 0
 
 	def __init__(self, session, callback=None):
