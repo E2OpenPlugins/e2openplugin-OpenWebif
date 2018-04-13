@@ -9,7 +9,6 @@
 #                                                                            #
 ##############################################################################
 
-from Plugins.Extensions.OpenWebif.__init__ import _
 import os
 import sys
 import time
@@ -29,6 +28,9 @@ from timer import TimerEntry
 from Tools.Directories import fileExists, pathExists
 from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference, eEnv
 from enigma import eEPGCache
+
+from ..i18n import _
+
 try:
 	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
 	from enigma import getEnigmaVersionString
@@ -39,7 +41,7 @@ except:  # noqa: E722
 		return about.getEnigmaVersionString()
 
 
-OPENWEBIFVER = "OWIF 1.3.1"
+OPENWEBIFVER = "OWIF 1.3.2"
 
 STATICBOXINFO = None
 

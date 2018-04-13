@@ -1,11 +1,34 @@
 # -*- coding: utf-8 -*-
+import gettext
 
-from __init__ import _
+from Components.Language import language
+from Components.config import config as comp_config
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 
-from Components.config import config
+PluginLanguageDomain = "OpenWebif"
+PluginLanguagePath = "Extensions/OpenWebif/locale"
+
+def _locale_init():
+	gettext.bindtextdomain(
+		PluginLanguageDomain,
+		resolveFilename(SCOPE_PLUGINS, PluginLanguagePath))
+
+
+def _(txt):
+	try:
+		t = gettext.dgettext(LOCALES_DOMAIN, txt)
+		if t == txt:
+			t = gettext.gettext(txt)
+		return t
+	except Exception:
+		return txt
+
+_locale_init()
+language.addCallback(_locale_init)
+
 
 try:
-	AT_unit = config.plugins.autotimer.unit.value == "hour" and _("hour") or _("minute")
+	AT_unit = comp_config.plugins.autotimer.unit.value == "hour" and _("hour") or _("minute")
 except:
 	AT_unit = "hour"
 

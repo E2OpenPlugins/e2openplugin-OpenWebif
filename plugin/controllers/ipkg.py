@@ -19,7 +19,7 @@ import json
 from base import BaseController
 from Components.config import config
 
-from Plugins.Extensions.OpenWebif.__init__ import _
+from i18n import _
 
 PACKAGES = '/var/lib/opkg/lists'
 INSTALLEDPACKAGES = '/var/lib/opkg/status'

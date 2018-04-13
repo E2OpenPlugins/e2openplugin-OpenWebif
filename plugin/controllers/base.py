@@ -28,7 +28,7 @@ import cStringIO
 
 from twisted.web import server, http, resource
 
-from Plugins.Extensions.OpenWebif.__init__ import _
+from i18n import _
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
 from Cheetah.Template import Template
 from enigma import eEPGCache

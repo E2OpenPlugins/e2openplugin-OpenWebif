@@ -5,7 +5,6 @@ python:
 
 before_install:
 - sudo apt-get install -y closure-compiler nodejs npm
-- "npm config set strict-ssl false"
 - sudo npm install -g jshint
 
 install:
@@ -23,7 +22,6 @@ script:
 after_success:
 - bandit -r plugin -f html -o bandit.html
 - python -m flake8 --ignore=W191,E501,E302 plugin/ --output-file flake8_report.txt
-- python -m flake8 plugin/ --output-file flake8_report.txt
 - jshint ./sourcefiles/js/ | tee jshint1_report.txt
 - jshint ./sourcefiles/themes/absb/js/ | tee jshint2_report.txt
 - ./create_ipk.sh
@@ -34,6 +32,7 @@ after_success:
 - mv flake8_report.txt ./Rel
 - mv jshint1_report.txt ./Rel
 - mv jshint2_report.txt ./Rel
+
 deploy:
   provider: pages
   local_dir: Rel

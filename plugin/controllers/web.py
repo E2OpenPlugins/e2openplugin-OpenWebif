@@ -9,8 +9,6 @@
 #                                                                            #
 ##############################################################################
 
-from Plugins.Extensions.OpenWebif.__init__ import _
-
 from Components.config import config
 from models.info import getInfo, getCurrentTime, getStatusInfo, getFrontendStatus
 from models.services import getCurrentService, getBouquets, getServices, getSubServices, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
@@ -28,6 +26,7 @@ from models.mediaplayer import mediaPlayerAdd, mediaPlayerRemove, mediaPlayerPla
 from models.plugins import reloadPlugins
 from Screens.InfoBar import InfoBar
 
+from i18n import _
 from base import BaseController
 from stream import StreamController
 import re

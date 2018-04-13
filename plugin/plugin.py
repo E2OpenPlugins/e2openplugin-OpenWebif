@@ -28,7 +28,7 @@ from controllers.models.info import getInfo
 
 from httpserver import HttpdStart, HttpdStop, HttpdRestart
 
-from __init__ import _
+from controllers.i18n import _
 
 # not used redmond -> original , trontastic , ui-lightness
 THEMES = [

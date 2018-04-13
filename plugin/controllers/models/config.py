@@ -6,8 +6,8 @@ from Components.config import config
 from os import path, listdir
 import xml.etree.cElementTree  # nosec
 
-from Plugins.Extensions.OpenWebif.__init__ import _
-from Plugins.Extensions.OpenWebif.controllers.utilities import get_config_attribute
+from ..i18n import _
+from ..utilities import get_config_attribute
 
 def addCollapsedMenu(name):
 	tags = config.OpenWebif.webcache.collapsedmenus.value.split("|")

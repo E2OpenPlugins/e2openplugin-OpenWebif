@@ -1,5 +1,8 @@
-## Version 1.3.1
+## Version 1.3.2
 ## (in development)
+* reorg i18n
+
+## Version 1.3.1
 * add net api mount manager
 * fix encoding issue #772
 * add settings to modify recording locations / bookmarks

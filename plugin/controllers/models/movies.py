@@ -17,7 +17,7 @@ from Components.config import config
 from Components.MovieList import MovieList
 from Tools.Directories import fileExists
 from Screens import MovieSelection
-from Plugins.Extensions.OpenWebif.__init__ import _
+from ..i18n import _
 
 MOVIETAGFILE = "/etc/enigma2/movietags"
 TRASHDIRNAME = "movie_trash"

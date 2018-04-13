@@ -22,9 +22,8 @@ from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache
 from info import getPiconPath, GetWithAlternative, getOrbitalText
 from urllib import quote, unquote
-from Plugins.Extensions.OpenWebif.local import tstrings  # using the tstrings dic is faster than translating with _ func from __init__
-from Plugins.Extensions.OpenWebif.controllers.utilities import parse_servicereference, SERVICE_TYPE_LOOKUP, NS_LOOKUP
-from Plugins.Extensions.OpenWebif.__init__ import _
+from ..utilities import parse_servicereference, SERVICE_TYPE_LOOKUP, NS_LOOKUP
+from ..i18n import _, tstrings
 
 try:
 	from collections import OrderedDict
