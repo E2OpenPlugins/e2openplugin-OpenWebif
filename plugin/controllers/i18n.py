@@ -5,13 +5,13 @@ from Components.Language import language
 from Components.config import config as comp_config
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 
-PluginLanguageDomain = "OpenWebif"
-PluginLanguagePath = "Extensions/OpenWebif/locale"
+LOCALES_DOMAIN = "OpenWebif"
+LOCALES_RELPATH = "Extensions/OpenWebif/locale"
 
 def _locale_init():
 	gettext.bindtextdomain(
-		PluginLanguageDomain,
-		resolveFilename(SCOPE_PLUGINS, PluginLanguagePath))
+		LOCALES_DOMAIN,
+		resolveFilename(SCOPE_PLUGINS, LOCALES_RELPATH))
 
 
 def _(txt):
