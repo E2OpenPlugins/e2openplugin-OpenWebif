@@ -463,5 +463,35 @@ tstrings = {
 	'bookmarks': _("Bookmarks"),
 	'bookmark': _("Bookmark"),
 	
-	'packages': _("Packages")
+	'packages': _("Packages"),
+	
+	'no_cancel': _("No, cancel"),
+	'yes_delete': _("Yes, delete it"),
+	'cancelled': _("Cancelled"),
+	'deleted': _("Deleted"),
+	'need_input': _("You need to write something!"),
+	'common_settings': _("Common Settings"),
+	'min_movie_list': _("Minimal movie list"),
+	'min_timer_list': _("Minimal timer list"),
+	'min_epg_list': _("Minimal EPG list"),
+	'remove_package': _("Remove Package"),
+	'update_package': _("Update Package"),
+	'install_package': _("Install Package"),
+	'update': _("Update"),
+	'installed': _("Installed"),
+	'more': _("More"),
+	'update_feed': _("Update from Feed"),
+	'upgrade_packages': _("Upgrade all Packages"),
+	'yes': _("Yes"),
+	'inc_shortdesc': _("Include short description"),
+	'inc_extdesc': _("Include extended description"),
+	'moviesearch': _("Movie search"),
+	'start_typing': _("START TYPING"),
+	'select_ipk_upload': _("Select IPK File for Upload"),
+	'uploaded_files': _("Uploaded Files"),
+	'upload_package': _("Upload package"),
+	'upload_error': _("Upload File Error"),
+	'showfullremoteshort': _("Full remote")	
+
 }
+

@@ -2,38 +2,6 @@
 
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection
-from controllers.i18n import _, tstrings
-
-tstrings['no_cancel'] = _("No, cancel")
-tstrings['yes_delete'] = _("Yes, delete it")
-tstrings['cancelled'] = _("Cancelled")
-tstrings['deleted'] = _("Deleted")
-tstrings['need_input'] = _("You need to write something!")
-tstrings['common_settings'] = _("Common Settings")
-tstrings['min_movie_list'] = _("Minimal movie list")
-tstrings['min_timer_list'] = _("Minimal timer list")
-tstrings['min_epg_list'] = _("Minimal EPG list")
-tstrings['remove_package'] = _("Remove Package")
-tstrings['update_package'] = _("Update Package")
-tstrings['install_package'] = _("Install Package")
-tstrings['packages'] = _("Packages")
-tstrings['update'] = _("Update")
-tstrings['installed'] = _("Installed")
-tstrings['all'] = _("All")
-tstrings['more'] = _("More")
-tstrings['update_feed'] = _("Update from Feed")
-tstrings['upgrade_packages'] = _("Upgrade all Packages")
-tstrings['yes'] = _("Yes")
-tstrings['inc_shortdesc'] = _("Include short description")
-tstrings['inc_extdesc'] = _("Include extended description")
-tstrings['moviesearch'] = _("Movie search")
-tstrings['start_typing'] = _("START TYPING")
-tstrings['select_ipk_upload'] = _("Select IPK File for Upload")
-tstrings['uploaded_files'] = _("Uploaded Files")
-tstrings['upload_package'] = _("Upload package")
-tstrings['upload_error'] = _("Upload File Error")
-tstrings['showfullremoteshort'] = _("Full remote")
-
 
 def skinColor():
 	return config.OpenWebif.responsive_skinColor.value
