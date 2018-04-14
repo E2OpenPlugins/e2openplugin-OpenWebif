@@ -1,13 +1,25 @@
 # -*- coding: utf-8 -*-
 
-##############################################################################
-#                        2011 E2OpenPlugins                                  #
-#                                                                            #
-#  This file is open source software; you can redistribute it and/or modify  #
-#     it under the terms of the GNU General Public License version 2 as      #
-#               published by the Free Software Foundation.                   #
-#                                                                            #
-##############################################################################
+##########################################################################
+# OpenWebif: AjaxController
+##########################################################################
+# Copyright (C) 2011 - 2018 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
+
 from Tools.Directories import fileExists
 from Components.config import config
 
@@ -30,8 +42,17 @@ except:  # noqa: E722
 
 
 class AjaxController(BaseController):
+	"""
+	Ajax Web Controller
+	"""
 	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
+
+	def NoDataRender(self):
+		"""
+		ajax requests with no extra data
+		"""
+		return ['powerstate', 'message', 'myepg', 'radio', 'terminal', 'epgr', 'bqe', 'tv', 'edittimer']
 
 	def P_current(self, request):
 		return getCurrentFullInfo(self.session)
@@ -155,15 +176,6 @@ class AjaxController(BaseController):
 			box['brand'] = "azbox"
 		return {"box": box}
 
-	def P_powerstate(self, request):
-		return {}
-
-	def P_message(self, request):
-		return {}
-
-	def P_myepg(self, request):
-		return {}
-
 	def P_movies(self, request):
 		movies = getMovieList(request.args)
 		movies['transcoding'] = getTranscodingSupport()
@@ -182,12 +194,6 @@ class AjaxController(BaseController):
 
 		movies['sort'] = sorttype
 		return movies
-
-	def P_radio(self, request):
-		return {}
-
-	def P_terminal(self, request):
-		return {}
 
 	def P_timers(self, request):
 
@@ -212,12 +218,6 @@ class AjaxController(BaseController):
 
 		timers['sort'] = sorttype
 		return timers
-
-	def P_edittimer(self, request):
-		return {}
-
-	def P_tv(self, request):
-		return {}
 
 	def P_tvradio(self, request):
 		epgmode = "tv"
@@ -329,12 +329,6 @@ class AjaxController(BaseController):
 		except ImportError:
 			pass
 		return ret
-
-	def P_bqe(self, request):
-		return {}
-
-	def P_epgr(self, request):
-		return {}
 
 	def P_webtv(self, request):
 		if config.OpenWebif.auth_for_streaming.value:

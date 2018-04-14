@@ -67,19 +67,22 @@ except:  # noqa: E722
 
 
 class BaseController(resource.Resource):
+	"""
+	Web Base Controller
+	"""
 	isLeaf = False
 
 	def __init__(self, path="", **kwargs):
 		"""
 
 		Args:
-			path: Base path
-			session: (?) Session instance
-			withMainTemplate: (?)
-			isJson: responses shall be JSON encoded
-			isCustom: (?)
-			isGZ: responses shall be GZIP compressed
-			isMobile: (?) responses shall be optimised for mobile devices
+			* path: Base path
+			* session: (?) Session instance
+			* withMainTemplate: (?)
+			* isJson: responses shall be JSON encoded
+			* isCustom: (?)
+			* isGZ: responses shall be GZIP compressed
+			* isMobile: (?) responses shall be optimised for mobile devices
 		"""
 		resource.Resource.__init__(self)
 
@@ -92,6 +95,13 @@ class BaseController(resource.Resource):
 		self.isMobile = kwargs.get("isMobile", False)
 
 	def error404(self, request):
+		"""
+		Perform HTTP Error 404
+
+		Args:
+			request (twisted.web.server.Request): HTTP request object
+
+		"""
 		request.setHeader("content-type", "text/html")
 		request.setResponseCode(http.NOT_FOUND)
 		request.write("<html><head><title>Open Webif</title></head><body><h1>Error 404: Page not found</h1><br />The requested URL was not found on this server.</body></html>")
@@ -122,6 +132,12 @@ class BaseController(resource.Resource):
 		zbuf.close()
 		return outstr
 
+	def NoDataRender(self):
+		return []
+
+	def noData(self, request):
+		return {}
+
 	def render(self, request):
 		# cache data
 		withMainTemplate = self.withMainTemplate
@@ -142,8 +158,11 @@ class BaseController(resource.Resource):
 		self.path = self.path.replace(".", "")
 		if request.path.startswith('/api/config'):
 			func = getattr(self, "P_config", None)
+		elif self.path in self.NoDataRender():
+			func = getattr(self, "noData", None)
 		else:
 			func = getattr(self, "P_" + self.path, None)
+
 		if callable(func):
 			request.setResponseCode(http.OK)
 
