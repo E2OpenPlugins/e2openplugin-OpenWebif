@@ -42,6 +42,9 @@ from file import FileController
 
 
 class RootController(BaseController):
+	"""
+	Root Web Controller
+	"""
 	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
 		piconpath = getPiconPath()

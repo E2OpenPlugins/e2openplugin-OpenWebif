@@ -52,7 +52,6 @@ class WebController(BaseController):
 	Fork of *Enigma2 WebInterface API* as described in e.g.
 	https://dream.reichholf.net/e2web/.
 	"""
-
 	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
 		self.putChild("stream", StreamController(session))
@@ -279,7 +278,7 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 
-		.. http:get:: /web/services.m3u
+		.. http:get:: /web/zap
 
 			:query string sRef: service reference
 			:query string title: service title
