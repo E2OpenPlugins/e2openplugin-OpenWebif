@@ -24,7 +24,7 @@ from Tools.Directories import fileExists
 from Components.config import config
 
 from models.services import getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
-from models.info import getInfo, getTranscodingSupport, getLanguage
+from models.info import getInfo, getTranscodingSupport
 from models.movies import getMovieList
 from models.timers import getTimers
 from models.config import getConfigs, getConfigsSections
@@ -33,7 +33,7 @@ from base import BaseController
 from time import mktime, localtime
 from models.locations import getLocations
 
-from defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH
+from defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH, KINOPOISK
 
 # from twisted.web.resource import Resource
 import os
@@ -109,7 +109,7 @@ class AjaxController(BaseController):
 			pass
 		event['at'] = at
 		event['transcoding'] = getTranscodingSupport()
-		event['kinopoisk'] = getLanguage()
+		event['kinopoisk'] = KINOPOISK
 		return event
 
 	def P_about(self, request):
@@ -157,7 +157,7 @@ class AjaxController(BaseController):
 			theme = config.OpenWebif.webcache.theme.value
 		else:
 			theme = 'original'
-		return {"theme": theme, "events": events, "timers": timers, "at": at, "kinopoisk": getLanguage()}
+		return {"theme": theme, "events": events, "timers": timers, "at": at, "kinopoisk": KINOPOISK}
 
 	def P_epgdialog(self, request):
 		return self.P_epgpop(request)

@@ -21,7 +21,6 @@ from Components.config import config
 from Components.NimManager import nimmanager
 from Components.Harddisk import harddiskmanager
 from Components.Network import iNetwork
-from Components.Language import language
 from ServiceReference import ServiceReference
 from RecordTimer import parseEvent
 from timer import TimerEntry
@@ -30,7 +29,7 @@ from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference, eEnv
 from enigma import eEPGCache
 
 from ..i18n import _
-from ..defaults import OPENWEBIFVER
+from ..defaults import OPENWEBIFVER, KINOPOISK
 
 try:
 	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
@@ -494,13 +493,7 @@ def getInfo(session=None, need_fullinfo=False):
 		if os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TranscodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo')):
 			info['transcoding'] = True
 
-	info['kinopoisk'] = False
-	lang = ['ru', 'uk', 'lv', 'lt', 'et']
-	current_language = language.getLanguage()
-	for l in lang:
-		if l in current_language:
-			info['kinopoisk'] = True
-			break
+	info['kinopoisk'] = KINOPOISK
 
 	info['EX'] = ''
 
@@ -639,13 +632,6 @@ def getTranscodingSupport():
 	if STATICBOXINFO is None:
 		getInfo()
 	return STATICBOXINFO['transcoding']
-
-
-def getLanguage():
-	global STATICBOXINFO
-	if STATICBOXINFO is None:
-		getInfo()
-	return STATICBOXINFO['kinopoisk']
 
 
 def getStreamServiceName(ref):

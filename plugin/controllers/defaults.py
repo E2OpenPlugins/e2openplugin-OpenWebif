@@ -3,6 +3,7 @@
 import os
 import sys
 
+from Components.Language import language
 from Components.config import config as comp_config
 
 OPENWEBIFVER = "OWIF 1.3.2"
@@ -19,6 +20,15 @@ sys.path.insert(0, PLUGIN_ROOT_PATH)
 
 GLOBALPICONPATH = None
 
+def getKinopoisk():
+	kinopoisk = False
+	lang = ['ru', 'uk', 'lv', 'lt', 'et']
+	current_language = language.getLanguage()
+	for l in lang:
+		if l in current_language:
+			kinopoisk = True
+			break
+	return kinopoisk
 
 def getViewsPath(file=""):
 	if comp_config.OpenWebif.responsive_enabled.value and os.path.exists(VIEWS_PATH + "/responsive") and not (file.startswith('web/') or file.startswith('/web/')):
@@ -71,3 +81,5 @@ def getPiconPath():
 
 #: PICON PATH FIXME: check path again after a few hours to detect new paths
 PICON_PATH = getPiconPath()
+
+KINOPOISK = getKinopoisk()
