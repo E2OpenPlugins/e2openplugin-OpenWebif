@@ -30,6 +30,7 @@ from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference, eEnv
 from enigma import eEPGCache
 
 from ..i18n import _
+from ..defaults import OPENWEBIFVER
 
 try:
 	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
@@ -40,17 +41,7 @@ except:  # noqa: E722
 	def getEnigmaVersionString():
 		return about.getEnigmaVersionString()
 
-
-OPENWEBIFVER = "OWIF 1.3.2"
-
 STATICBOXINFO = None
-
-PICONPATH = None
-
-
-def getOpenWebifVer():
-	return OPENWEBIFVER
-
 
 def getFriendlyImageDistro():
 	dist = getImageDistro().replace("openatv", "OpenATV").replace("openhdf", "OpenHDF").replace("openpli", "OpenPLi").replace("openvix", "OpenViX")
@@ -187,76 +178,6 @@ def formatIp(ip):
 	return "%d.%d.%d.%d" % (ip[0], ip[1], ip[2], ip[3])
 
 
-def getBasePath():
-	path = os.path.dirname(sys.modules[__name__].__file__)
-	chunks = path.split("/")
-	chunks.pop()
-	chunks.pop()
-	return "/".join(chunks)
-
-
-def getPublicPath(file=""):
-	return getBasePath() + "/public/" + file
-
-
-def getViewsPath(file=""):
-	if config.OpenWebif.responsive_enabled.value and os.path.exists(getBasePath() + "/controllers/views/responsive") and not (file.startswith('web/') or file.startswith('/web/')):
-		return getBasePath() + "/controllers/views/responsive/" + file
-	else:
-		return getBasePath() + "/controllers/views/" + file
-
-
-def getPiconPath():
-
-	# FIXME: check path again after a few hours to detect new paths
-
-	global PICONPATH
-
-	if PICONPATH is not None:
-		return PICONPATH
-
-	# Alternative locations need to come first, as the default location always exists and needs to be the last resort
-	# Sort alternative locations in order of likelyness that they are non-rotational media:
-	# CF/MMC are always memory cards
-	# USB can be memory stick or magnetic hdd or SSD, but stick is most likely
-	# HDD can be magnetic hdd, SSD or even memory stick (if no hdd present) or a NAS
-	pathlist = [
-		"/media/cf/",
-		"/media/mmc/",
-		"/media/usb/",
-		"/media/hdd/",
-		"/usr/share/enigma2/",
-		"/"
-	]
-
-	for p in pathlist:
-		if pathExists(p + "owipicon/"):
-			PICONPATH = p + "owipicon/"
-			return PICONPATH
-		elif pathExists(p + "picon/"):
-			PICONPATH = p + "picon/"
-			return PICONPATH
-
-	return None
-
-
-def _getPiconPath():
-	if pathExists("/media/usb/picon/"):
-		return "/media/usb/picon/"
-	elif pathExists("/media/cf/picon/"):
-		return "/media/cf/picon/"
-	elif pathExists("/media/mmc/picon/"):
-		return "/media/mmc/picon/"
-	elif pathExists("/media/hdd/picon/"):
-		return "/media/hdd/picon/"
-	elif pathExists("/usr/share/enigma2/picon/"):
-		return "/usr/share/enigma2/picon/"
-	elif pathExists("/picon/"):
-		return "/picon/"
-	else:
-		return ""
-
-
 def getInfo(session=None, need_fullinfo=False):
 	# TODO: get webif versione somewhere!
 	info = {}
@@ -381,7 +302,7 @@ def getInfo(session=None, need_fullinfo=False):
 		uptimetext = "?"
 	info['uptime'] = uptimetext
 
-	info["webifver"] = getOpenWebifVer()
+	info["webifver"] = OPENWEBIFVER
 	info['imagedistro'] = getImageDistro()
 	info['friendlyimagedistro'] = getFriendlyImageDistro()
 	info['oever'] = getOEVersion()

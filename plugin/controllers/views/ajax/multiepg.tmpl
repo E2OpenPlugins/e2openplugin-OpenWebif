@@ -340,7 +340,7 @@ fixTableHeight();
 			if (mode != $mode) {
 			
 				$.ajax({
-				url: 'api/setmepgmode?mode=' + mode,
+				url: 'api/setwebconfig?mepgmode=' + mode,
 					success: function(data) {
 						\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day=$day&epgmode='+epgmode+'&week='+$week);
 					}

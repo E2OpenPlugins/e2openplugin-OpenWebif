@@ -465,6 +465,7 @@ tstrings = {
 	
 	'packages': _("Packages"),
 	
+	'newdesign': _('Use new design'),
 	'no_cancel': _("No, cancel"),
 	'yes_delete': _("Yes, delete it"),
 	'cancelled': _("Cancelled"),

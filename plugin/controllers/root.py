@@ -25,7 +25,6 @@ import os
 from twisted.web import static, http, proxy
 from Components.config import config
 
-from models.info import getPublicPath, getPiconPath, getBasePath
 from models.grab import grabScreenshot
 from base import BaseController
 from web import WebController, ApiController
@@ -40,6 +39,7 @@ from transcoding import TranscodingController
 from wol import WOLSetupController, WOLClientController
 from file import FileController
 
+from defaults import PICON_PATH, getPublicPath, VIEWS_PATH
 
 class RootController(BaseController):
 	"""
@@ -47,7 +47,6 @@ class RootController(BaseController):
 	"""
 	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
-		piconpath = getPiconPath()
 
 		self.putChild("web", WebController(session))
 		self.putChild("api", ApiController(session))
@@ -73,8 +72,8 @@ class RootController(BaseController):
 		self.putChild("transcoding", TranscodingController())
 		self.putChild("wol", WOLClientController())
 		self.putChild("wolsetup", WOLSetupController(session))
-		if piconpath:
-			self.putChild("picon", static.File(piconpath))
+		if PICON_PATH:
+			self.putChild("picon", static.File(PICON_PATH))
 		try:
 			from NET import NetController
 			self.putChild("net", NetController(session))
@@ -89,7 +88,7 @@ class RootController(BaseController):
 	# the "pages functions" must be called P_pagename
 	# example http://boxip/index => P_index
 	def P_index(self, request):
-		if config.OpenWebif.responsive_enabled.value and os.path.exists(getBasePath() + "/controllers/views/responsive"):
+		if config.OpenWebif.responsive_enabled.value and os.path.exists(VIEWS_PATH + "/responsive"):
 			return {}
 		mode = ''
 		if "mode" in request.args.keys():

@@ -1,5 +1,5 @@
-#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView
+#from controllers.i18n import tstrings
+#from vtiaddon import skinColor, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView
 #from json import dumps
 
 <!DOCTYPE html>
@@ -630,6 +630,12 @@
 										<label><input type="checkbox" id="minepglist" $MinEPGList ><span class="lever switch-col-$skinColor vtiwebconfig"></span></label>
 									</div>
 								</li>
+								<li>
+									<span>Old Design</span>
+									<div class="switch">
+										<label><input type="checkbox" id="noresposive"><span class="lever switch-col-$skinColor vtiwebconfig"></span></label>
+									</div>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -1003,6 +1009,21 @@
 <script src="themes/absb/js/admin.js"></script>
 <script src="themes/absb/js/vti-responsive.js"></script>
 <script type="text/javascript">initJsTranslationAddon($dumps($tstrings))</script>
+
+<script type="text/javascript">
+	\$(document).ready(function() {
+		\$('#noresposive').change(function () {
+			\$.ajax({
+				url: "api/setwebconfig?responsivedesign=false",
+				success: function() {
+					window.location.hash = '';
+					window.location.reload(true);
+				}
+			});
+		});
+	});
+</script>
+
 </body>
 
 </html>

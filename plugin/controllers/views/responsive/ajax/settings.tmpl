@@ -380,32 +380,6 @@ function ShowPackages(mode)
 	});
 }
 
-function load_scontent(url) {
-	$("#scontent").html('');
-	$("#osettings").hide();
-	$("#packages").hide();
-	if(url=='owsettings')
-	{
-		$("#osettings").show();
-		$("#selectheme").change(function() {
-			ChangeTheme($(this).val());
-		});
-		return;
-	}
-	if(url=='packages')
-	{
-		$("#packages").show();
-		ShowPackages('pkgbtn1');
-		$("#configtitle").html($('#thistitlepackages').html());
-		document.getElementById("pkgbtn1").click();
-		return;
-	}
-	$("#scontent").load(url , function () {
-		$("#scontent").find("#content_main").attr("id","content_main1");
-	});
-	return false;
-}
-
 $(function() { 
 	$('#settingselection').on('change', function (e) {
 		var optionSelected = $("option:selected", this);
@@ -428,16 +402,6 @@ $(function() {
 
 	$("#scontent").load('ajax/config?section=usage', function () {
 		$("#scontent").find("#content_main").attr("id","content_main1");
-	});
-
-	$("input[name=zapstream]").click(function(evt) {
-		$('input[name=zapstream]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("/api/zapstream?checked=" + evt.currentTarget.checked);
-	});
-
-	$("input[name=showchannelpicon]").click(function(evt) {
-		$('input[name=showchannelpicon]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("/api/showchannelpicon?checked=" + evt.currentTarget.checked);
 	});
 	
 	$('#tb2').buttonset();

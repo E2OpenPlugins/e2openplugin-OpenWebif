@@ -1,6 +1,8 @@
 ## Version 1.3.2
 ## (in development)
 * reorg i18n
+* move some code to new defaults controller
+* optimize web api for UI settings
 
 ## Version 1.3.1
 * add net api mount manager

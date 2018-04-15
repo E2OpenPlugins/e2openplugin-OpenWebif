@@ -39,32 +39,6 @@ def getCollapsedMenus():
 		"collapsed": config.OpenWebif.webcache.collapsedmenus.value.split("|")
 	}
 
-def setZapStream(value):
-	config.OpenWebif.webcache.zapstream.value = value
-	config.OpenWebif.webcache.zapstream.save()
-	return {
-		"result": True
-	}
-
-def getZapStream():
-	return {
-		"result": True,
-		"zapstream": config.OpenWebif.webcache.zapstream.value
-	}
-
-def setShowChPicon(value):
-	config.OpenWebif.webcache.showchannelpicon.value = value
-	config.OpenWebif.webcache.showchannelpicon.save()
-	return {
-		"result": True
-	}
-
-def getShowChPicon():
-	return {
-		"result": True,
-		"showchannelpicon": config.OpenWebif.webcache.showchannelpicon.value
-	}
-
 def getShowName():
 	return {
 		"result": True,

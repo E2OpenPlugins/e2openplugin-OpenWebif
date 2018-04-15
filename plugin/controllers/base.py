@@ -35,10 +35,11 @@ from enigma import eEPGCache
 from Components.config import config
 from Components.Network import iNetwork
 
-from models.info import getInfo, getPublicPath, getViewsPath
+from models.info import getInfo
 from models.config import getCollapsedMenus, getConfigsSections
 from models.config import getShowName, getCustomName, getBoxName
 
+from defaults import getPublicPath, getViewsPath
 
 def new_getRequestHostname(self):
 	host = self.getHeader(b'host')

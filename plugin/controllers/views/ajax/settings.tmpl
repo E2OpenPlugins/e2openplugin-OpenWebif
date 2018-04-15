@@ -78,6 +78,15 @@
 				</fieldset>
 				</span>
 				</td></tr>
+				#if $getVar("responsivedesign", "") != ""
+					<tr><td>$tstrings['newdesign']</td><td>
+					#if $responsivedesign
+					<input type="checkbox" name="responsivedesign" checked="checked"/>
+					#else
+					<input type="checkbox" name="responsivedesign"/>
+					#end if
+					</td></tr>
+				#end if
 				</table>
 			</div>
 		</div>
@@ -393,7 +402,13 @@ function load_scontent(url) {
 	{
 		$("#osettings").show();
 		$("#selectheme").change(function() {
-			ChangeTheme($(this).val());
+			$.ajax({
+				url: "api/setwebconfig?theme=" + $(this).val(),
+				success: function() {
+					window.location.hash = '#settings';
+					window.location.reload(true);
+				}
+			});
 		});
 		return;
 	}
@@ -438,15 +453,28 @@ $(function() {
 	$("#themesbtn").addClass(getActiveCls());
 
 	$("input[name=zapstream]").click(function(evt) {
-		$('input[name=zapstream]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("/api/zapstream?checked=" + evt.currentTarget.checked);
+		var ch = evt.currentTarget.checked;
+		$('input[name=zapstream]').attr('checked', ch);
+		webapi_execute("/api/setwebconfig?zapstream=" + ch);
 	});
 
 	$("input[name=showchannelpicon]").click(function(evt) {
-		$('input[name=showchannelpicon]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("/api/showchannelpicon?checked=" + evt.currentTarget.checked);
+		var ch = evt.currentTarget.checked;
+		$('input[name=showchannelpicon]').attr('checked', ch);
+		webapi_execute("/api/setwebconfig?showchannelpicon=" + ch);
 	});
-	
+
+	$("input[name=responsivedesign]").click(function(evt) {
+		var ch = evt.currentTarget.checked;
+		$('input[name=responsivedesign]').attr('checked', ch);
+		$.ajax({
+			url: "api/setwebconfig?responsivedesign=" + ch,
+			success: function() {
+				window.location.hash = '';
+				window.location.reload(true);
+			}
+		});
+	});
 	$('#tb2').buttonset();
 	$('#tb3').buttonset();
 	$('.pkgbtn').click(function () { ShowPackages($(this).attr('id')); });

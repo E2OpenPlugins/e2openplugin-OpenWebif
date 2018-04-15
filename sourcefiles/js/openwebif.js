@@ -1674,6 +1674,7 @@ function jumper8001( sref, sname ) {
 
 /* Vu+ Transcoding end*/
 
+// obsolete
 function ChangeTheme(theme)
 {
 	$.ajax({

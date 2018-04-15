@@ -24,14 +24,17 @@ from Tools.Directories import fileExists
 from Components.config import config
 
 from models.services import getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
-from models.info import getInfo, getPublicPath, getOpenWebifVer, getTranscodingSupport, getLanguage
+from models.info import getInfo, getTranscodingSupport, getLanguage
 from models.movies import getMovieList
 from models.timers import getTimers
-from models.config import getConfigs, getConfigsSections, getZapStream, getShowChPicon
+from models.config import getConfigs, getConfigsSections
 from models.stream import GetSession
 from base import BaseController
 from time import mktime, localtime
 from models.locations import getLocations
+
+from defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH
+
 # from twisted.web.resource import Resource
 import os
 
@@ -88,7 +91,7 @@ class AjaxController(BaseController):
 		channels = getChannels(idbouquet, stype)
 		channels['transcoding'] = getTranscodingSupport()
 		channels['type'] = stype
-		channels['showchannelpicon'] = getShowChPicon()['showchannelpicon']
+		channels['showchannelpicon'] = config.OpenWebif.webcache.showchannelpicon.value
 		return channels
 
 	def P_eventdescription(self, request):
@@ -111,7 +114,7 @@ class AjaxController(BaseController):
 
 	def P_about(self, request):
 		info = {}
-		info["owiver"] = getOpenWebifVer()
+		info["owiver"] = OPENWEBIFVER
 		return {"info": info}
 
 	def P_boxinfo(self, request):
@@ -247,11 +250,13 @@ class AjaxController(BaseController):
 		else:
 			ret['themes'] = []
 			ret['theme'] = 'original'
-		ret['zapstream'] = getZapStream()['zapstream']
-		ret['showchannelpicon'] = getShowChPicon()['showchannelpicon']
+		ret['zapstream'] = config.OpenWebif.webcache.zapstream.value
+		ret['showchannelpicon'] = config.OpenWebif.webcache.showchannelpicon.value
 		ret['allowipkupload'] = config.OpenWebif.allow_upload_ipk.value
 		loc = getLocations()
 		ret['locations'] = loc['locations']
+		if os.path.exists(VIEWS_PATH + "/responsive"):
+			ret['responsivedesign'] = config.OpenWebif.responsive_enabled.value
 		return ret
 
 	def P_multiepg(self, request):

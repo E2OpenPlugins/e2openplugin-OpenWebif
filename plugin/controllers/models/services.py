@@ -20,10 +20,11 @@ from Components.NimManager import nimmanager
 from ServiceReference import ServiceReference
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache
-from info import getPiconPath, GetWithAlternative, getOrbitalText
+from info import GetWithAlternative, getOrbitalText
 from urllib import quote, unquote
 from ..utilities import parse_servicereference, SERVICE_TYPE_LOOKUP, NS_LOOKUP
 from ..i18n import _, tstrings
+from ..defaults import PICON_PATH
 
 try:
 	from collections import OrderedDict
@@ -941,7 +942,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 
 def getPicon(sname):
 
-	pp = getPiconPath()
+	pp = PICON_PATH
 	if pp is not None:
 		# remove URL part
 		if ("://" in sname) or ("%3a//" in sname) or ("%3A//" in sname):
