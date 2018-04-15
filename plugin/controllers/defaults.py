@@ -6,6 +6,8 @@ import sys
 from Components.Language import language
 from Components.config import config as comp_config
 
+from enigma import eEnv
+
 OPENWEBIFVER = "OWIF 1.3.2"
 
 PLUGIN_NAME = 'OpenWebif'
@@ -20,6 +22,16 @@ sys.path.insert(0, PLUGIN_ROOT_PATH)
 
 GLOBALPICONPATH = None
 
+#: get transcoding feature
+def getTranscoding():
+	transcoding = False
+	if os.path.isfile("/proc/stb/encoder/0/bitrate"):
+		if os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TranscodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo')):
+			transcoding = True
+
+	return transcoding
+
+#: get kinopoisk feature
 def getKinopoisk():
 	kinopoisk = False
 	lang = ['ru', 'uk', 'lv', 'lt', 'et']
@@ -83,3 +95,5 @@ def getPiconPath():
 PICON_PATH = getPiconPath()
 
 KINOPOISK = getKinopoisk()
+
+TRANSCODING = getTranscoding()

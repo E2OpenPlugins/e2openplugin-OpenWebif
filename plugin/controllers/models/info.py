@@ -25,11 +25,11 @@ from ServiceReference import ServiceReference
 from RecordTimer import parseEvent
 from timer import TimerEntry
 from Tools.Directories import fileExists, pathExists
-from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference, eEnv
+from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
 from enigma import eEPGCache
 
 from ..i18n import _
-from ..defaults import OPENWEBIFVER, KINOPOISK
+from ..defaults import OPENWEBIFVER, KINOPOISK, TRANSCODING
 
 try:
 	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
@@ -487,11 +487,7 @@ def getInfo(session=None, need_fullinfo=False):
 					})
 	# TODO: fstab
 
-	info['transcoding'] = False
-	#: models transcoding feature
-	if fileExists("/proc/stb/encoder/0/bitrate"):
-		if os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TranscodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo')):
-			info['transcoding'] = True
+	info['transcoding'] = TRANSCODING
 
 	info['kinopoisk'] = KINOPOISK
 
@@ -627,13 +623,6 @@ def getCurrentTime():
 	}
 
 
-def getTranscodingSupport():
-	global STATICBOXINFO
-	if STATICBOXINFO is None:
-		getInfo()
-	return STATICBOXINFO['transcoding']
-
-
 def getStreamServiceName(ref):
 	if isinstance(ref, eServiceReference):
 		servicereference = ServiceReference(ref)
@@ -657,7 +646,7 @@ def getStatusInfo(self):
 	statusinfo = {
 		'volume': vcontrol.getVolume(),
 		'muted': vcontrol.isMuted(),
-		'transcoding': getTranscodingSupport(),
+		'transcoding': TRANSCODING,
 		'currservice_filename': "",
 		'currservice_id': -1,
 	}

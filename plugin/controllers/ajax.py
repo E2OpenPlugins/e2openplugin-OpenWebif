@@ -24,7 +24,7 @@ from Tools.Directories import fileExists
 from Components.config import config
 
 from models.services import getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
-from models.info import getInfo, getTranscodingSupport
+from models.info import getInfo
 from models.movies import getMovieList
 from models.timers import getTimers
 from models.config import getConfigs, getConfigsSections
@@ -33,7 +33,7 @@ from base import BaseController
 from time import mktime, localtime
 from models.locations import getLocations
 
-from defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH, KINOPOISK
+from defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH, KINOPOISK, TRANSCODING
 
 # from twisted.web.resource import Resource
 import os
@@ -89,7 +89,7 @@ class AjaxController(BaseController):
 		if "id" in request.args.keys():
 			idbouquet = request.args["id"][0]
 		channels = getChannels(idbouquet, stype)
-		channels['transcoding'] = getTranscodingSupport()
+		channels['transcoding'] = TRANSCODING
 		channels['type'] = stype
 		channels['showchannelpicon'] = config.OpenWebif.webcache.showchannelpicon.value
 		return channels
@@ -108,7 +108,7 @@ class AjaxController(BaseController):
 		except ImportError:
 			pass
 		event['at'] = at
-		event['transcoding'] = getTranscodingSupport()
+		event['transcoding'] = TRANSCODING
 		event['kinopoisk'] = KINOPOISK
 		return event
 
@@ -181,7 +181,7 @@ class AjaxController(BaseController):
 
 	def P_movies(self, request):
 		movies = getMovieList(request.args)
-		movies['transcoding'] = getTranscodingSupport()
+		movies['transcoding'] = TRANSCODING
 
 		sorttype = config.OpenWebif.webcache.moviesort.value
 		unsort = movies['movies']
@@ -347,7 +347,7 @@ class AjaxController(BaseController):
 		vxgenabled = False
 		if fileExists(getPublicPath("/vxg/media_player.pexe")):
 			vxgenabled = True
-		transcoding = getTranscodingSupport()
+		transcoding = TRANSCODING
 		transcoder_port = 0
 		if transcoding:
 			try:
