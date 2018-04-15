@@ -709,8 +709,6 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
-		if self.isJson:
-			request.setHeader("content-type", "application/json; charset=utf-8")
 		return getMovieList(request.args)
 
 	def P_fullmovielist(self, request):
@@ -2206,7 +2204,6 @@ class ApiController(WebController):
 
 	def prePageLoad(self, request):
 		self.isJson = True
-		self.isGZ = True
 
 
 from Plugins.Extensions.OpenWebif.vtiaddon import expand_basecontroller  # noqa: F401

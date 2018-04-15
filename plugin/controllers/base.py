@@ -23,10 +23,10 @@
 import os
 import imp
 import json
-import gzip
-import cStringIO
 
 from twisted.web import server, http, resource
+from twisted.web.resource import EncodingResourceWrapper
+from twisted.web.server import GzipEncoderFactory
 
 from i18n import _
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
@@ -121,17 +121,15 @@ class BaseController(resource.Resource):
 			return str(Template(file=getViewsPath(path + ".tmpl"), searchList=[args]))
 		return None
 
-	def getChild(self, path, request):
-		return self.__class__(self.session, path)
+	def putGZChild(self, path, child):
+		child.isGZ = True
+		self.putChild(path,EncodingResourceWrapper(child, [GzipEncoderFactory()]))
 
-	def compressBuf(self, buf):
-		zbuf = cStringIO.StringIO()
-		zfile = gzip.GzipFile(mode='wb', fileobj=zbuf, compresslevel=6)
-		zfile.write(buf)
-		zfile.close()
-		outstr = zbuf.getvalue()
-		zbuf.close()
-		return outstr
+	def getChild(self, path, request):
+		if self.isGZ:
+			return EncodingResourceWrapper(self.__class__(self.session, path), [GzipEncoderFactory()])
+		else:
+			return self.__class__(self.session, path)
 
 	def NoDataRender(self):
 		return []
@@ -143,9 +141,7 @@ class BaseController(resource.Resource):
 		# cache data
 		withMainTemplate = self.withMainTemplate
 		path = self.path
-		isJson = self.isJson
 		isCustom = self.isCustom
-		isGZ = self.isGZ
 		isMobile = self.isMobile
 
 		if self.path == "":
@@ -183,36 +179,13 @@ class BaseController(resource.Resource):
 				request.write(data)
 				request.finish()
 			elif self.isJson:
-				# if not self.suppresslog:
-					# print "[OpenWebif] page '%s' ok (json)" % request.uri
-				supported = []
-				request.setHeader("content-type", "application/json")
-				outstr = json.dumps(data)
-
-				if self.isGZ:
-					acceptHeaders = request.requestHeaders.getRawHeaders('Accept-Encoding', [])
-					supported = ','.join(acceptHeaders).split(',')
-				if 'gzip' in supported:
-					encoding = request.responseHeaders.getRawHeaders('Content-Encoding')
-					if encoding:
-						encoding = '%s,gzip' % ','.join(encoding)
-					else:
-						encoding = 'gzip'
-					try:
-						outstr = self.compressBuf(json.dumps(data))
-						request.setHeader('Content-Length', '%d' % len(outstr))
-						request.responseHeaders.setRawHeaders('Content-Encoding', [encoding])
-					except Exception as exc:
-						request.setResponseCode(http.INTERNAL_SERVER_ERROR)
-						request.setHeader("content-type", "application/json")
-						outstr = json.dumps({"result": False, "request": request.path, "exception": repr(exc)})
-						pass
-				else:
-					# FIXME : now we can set this cause of complete remove of parseJSON
-					# BUT we need to test this first
-					request.setHeader("content-type", "text/plain")
-				request.write(outstr)
-				request.finish()
+				request.setHeader("content-type", "application/json; charset=utf-8")
+				try:
+					return json.dumps(data, indent=1)
+				except Exception as exc:
+					request.setResponseCode(http.INTERNAL_SERVER_ERROR)
+					return json.dumps({"result": False, "request": request.path, "exception": repr(exc)})
+					pass
 			elif type(data) is str:
 				# if not self.suppresslog:
 					# print "[OpenWebif] page '%s' ok (simple string)" % request.uri
@@ -242,6 +215,8 @@ class BaseController(resource.Resource):
 						nout = self.loadTemplate("main", "main", args)
 						if nout:
 							out = nout
+					elif self.isGZ:
+						return out
 					request.write(out)
 					request.finish()
 
@@ -252,9 +227,7 @@ class BaseController(resource.Resource):
 		# restore cached data
 		self.withMainTemplate = withMainTemplate
 		self.path = path
-		self.isJson = isJson
 		self.isCustom = isCustom
-		self.isGZ = isGZ
 		self.isMobile = isMobile
 
 		return server.NOT_DONE_YET
