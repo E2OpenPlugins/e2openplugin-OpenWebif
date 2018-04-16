@@ -451,11 +451,13 @@ def getAllInfo():
 			procmodel = "vg2000"
 
 	type = procmodel
-	if type in ("et9000", "et9100", "et9200", "et9500"):
+	if type in ("et9x00", "et9000", "et9100", "et9200", "et9500"):
 		type = "et9x00"
-	elif type in ("et5000", "et6000", "et6x00"):
+	elif type in ("et6x00", "et6000"):
+		type = "et6x00"
+	elif type in ("et5x00", "et5000"):
 		type = "et5x00"
-	elif type == "et4000":
+	elif type in ("et4x00", "et4000"):
 		type = "et4x00"
 	elif type == "xp1000":
 		type = "xp1000"
