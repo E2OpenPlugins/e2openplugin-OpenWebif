@@ -64,7 +64,7 @@ class RootController(BaseController):
 
 		if os.path.exists('/usr/bin/shellinaboxd'):
 			self.putChild("terminal", proxy.ReverseProxyResource('::1', 4200, '/'))
-		self.putChild("ipkg", IpkgController(session))
+		self.putGZChild("ipkg", IpkgController(session))
 		self.putChild("autotimer", ATController(session))
 		self.putChild("serienrecorder", SRController(session))
 		self.putChild("epgrefresh", ERController(session))

@@ -262,6 +262,7 @@ function ShowFilterPackages()
 
 function FillPackages(pkgs,mode)
 {
+
 	var _update = $.grep(pkgs, function(v) {
 		return (v.u != '0');
 	});
@@ -379,11 +380,12 @@ function ShowPackages(mode)
 
 	$.ajax({
 		url: '/ipkg?command=listall',
+		dataType: 'json',
 		success: function ( data ) {
+			var sdata = JSON.stringify(data);
 			SetLSValue('pkg-date',date);
-			SetLSValue('pkg-data',data);
-			var pkgs = JSON.parse(data);
-			FillPackages(pkgs,mode);
+			SetLSValue('pkg-data',sdata);
+			FillPackages(data,mode);
 		}
 	});
 }
