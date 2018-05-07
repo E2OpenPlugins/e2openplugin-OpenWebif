@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
@@ -1010,6 +1010,12 @@ msgstr "Модель жесткого диска"
 msgid "Hour"
 msgstr "Час"
 
+msgid "hour"
+msgstr "час"
+
+msgid "minute"
+msgstr "минута"
+
 #: plugin/local.py:116
 msgid "IPv4 address"
 msgstr "IPv4 адрес"
@@ -1064,7 +1070,7 @@ msgstr "Главная"
 
 #: plugin/local.py:132
 msgid "Minute"
-msgstr "Минута"
+msgstr "Mинута"
 
 #: plugin/local.py:133
 msgid "Model"
@@ -2197,3 +2203,130 @@ msgstr "Тип кодировки текста для данных EPG"
 #: plugin/plugin.py:212
 msgid "OpenWebif Configuration"
 msgstr "Настройки OpenWebif"
+
+msgid "remove"
+msgstr "удаление"
+
+msgid ""
+"Delete failed, because there is no movie trash !\n"
+"Disable movie trash in configuration to delete this item"
+msgstr ""
+"Удалить не удалось, потому что нет корзины для удаления !\n"
+"Отключите корзину в конфигурации, чтобы удалить этот элемент"
+
+msgid "Wake Up"
+msgstr "Разбудить"
+
+msgid "Interval (in %s)"
+msgstr "Интервал (в %s)"
+
+msgid "Primetimes"
+msgstr "Прайм-тайм"
+
+msgid "Enable/Disable Screenshot on key press or"
+msgstr "Включить/отключить скриншот по нажатию кнопки или"
+
+msgid "Bookmarks"
+msgstr "Закладки"
+
+msgid "Bookmark"
+msgstr "Закладка"
+
+msgid "Packages"
+msgstr "Пакеты"
+
+msgid "Use new design"
+msgstr "Использование нового дизайна"
+
+msgid "Allow IPK Upload"
+msgstr "Разрешить загрузку IPK"
+
+msgid "No, cancel"
+msgstr "Нет, отмена"
+
+msgid "Yes, delete it"
+msgstr "Да, удалить это"
+
+msgid "Cancelled"
+msgstr "Отменено"
+
+msgid "Deleted"
+msgstr "Удален"
+
+msgid "You need to write something!"
+msgstr "Вам нужно что-то написать!"
+
+msgid "Common Settings"
+msgstr "Общие настройки"
+
+msgid "Minimal movie list"
+msgstr "Минимальный список видео"
+
+msgid "Minimal timer list"
+msgstr "Минимальный список таймеров"
+
+msgid "Minimal EPG list"
+msgstr "Минимальный список EPG"
+
+msgid "Remove Package"
+msgstr "Удалить пакет"
+
+msgid "Update Package"
+msgstr "Обновить пакет"
+
+msgid "Install Package"
+msgstr "Установить пакет"
+
+msgid "Update"
+msgstr "Обновить"
+
+msgid "Installed"
+msgstr "Установленные"
+
+msgid "More"
+msgstr "Больше"
+
+msgid "Update from Feed"
+msgstr "Обновление с фида"
+
+msgid "Upgrade all Packages"
+msgstr "Обновление всех пакетов"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "Include short description"
+msgstr "Включить краткое описание"
+
+msgid "Include extended description"
+msgstr "Включить расширенное описание"
+
+msgid "Movie search"
+msgstr "Поиск видео"
+
+msgid "START TYPING"
+msgstr "ТИП СТАРТА"
+
+msgid "Select IPK File for Upload"
+msgstr "Выбор IPK файла для загрузки"
+
+msgid "Uploaded Files"
+msgstr "Загруженные файлы"
+
+msgid "Upload package"
+msgstr "Загрузить пакет"
+
+msgid "Upload File Error"
+msgstr "Ошибка загрузки файла"
+
+msgid "Full remote"
+msgstr "Весь пульт"
+
+msgid "Transcoding Setup"
+msgstr "Настройки транскодирования"
+
+msgid "Bitrate"
+msgstr "Битрейт"
+
+msgid "Port (1024 - 65535)"
+msgstr "Порт (1024 - 65535)"
