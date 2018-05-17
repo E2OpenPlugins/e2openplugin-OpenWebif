@@ -854,7 +854,11 @@ function grabScreenshot(mode) {
 	} else {
 		$('#screenshotimage').attr("src",'/grab?format=jpg&r=720&mode=' + mode + '#' + timestamp);
 	}
-	$('#screenshotimage').attr("width",720);
+	if (mode == "lcd") {
+		$('#screenshotimage').attr("width", 'auto');
+	} else {
+		$('#screenshotimage').attr("width",720);
+	}
 }
 
 function getMessageAnswer() {
@@ -2067,6 +2071,7 @@ var SSHelperObj = function () {
 			$('#screenshotbutton0').click(function(){grabScreenshot('all');});
 			$('#screenshotbutton1').click(function(){grabScreenshot('video');});
 			$('#screenshotbutton2').click(function(){grabScreenshot('osd');});
+			$('#screenshotbutton3').click(function(){grabScreenshot('lcd');});
 			
 			$('#screenshotbutton').buttonset();
 			$('#screenshotrefreshbutton').buttonset();

@@ -154,6 +154,7 @@ tstrings = {
 	'javalib': _("Javascript Libraries"),
 	'just_play': _("Just play"),
 	'kernel_version': _("Kernel"),
+	'lcd': _("LCD"),
 	'license': _("LICENSE"),
 	'loading': _("loading"),
 	'location': _("Location"),

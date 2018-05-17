@@ -10,10 +10,10 @@
 ##############################################################################
 from enigma import eConsoleAppContainer
 from twisted.web import resource, server
+from enigma import eDBoxLCD
 import time
 
 GRAB_PATH = '/usr/bin/grab'
-
 
 class GrabRequest(object):
 	def __init__(self, request, session):
@@ -44,16 +44,26 @@ class GrabRequest(object):
 				graboptions.append("-o")
 			elif mode == "video":
 				graboptions.append("-v")
+			elif mode == "lcd":
+				eDBoxLCD.getInstance().dumpLCD()
+				fileformat = "png"
+				command = "cat /tmp/lcdshot.%s" % fileformat
+
 		self.container = eConsoleAppContainer()
 		self.container.appClosed.append(self.grabFinished)
 		self.container.stdoutAvail.append(request.write)
 		self.container.setBufferSize(32768)
-		self.container.execute(GRAB_PATH, *graboptions)
-		try:
-			ref = session.nav.getCurrentlyPlayingServiceReference().toString()
-			sref = '_'.join(ref.split(':', 10)[:10])
-		except:  # noqa: E722
-			sref = 'screenshot'
+		if mode == "lcd":
+			if self.container.execute(command):
+				raise Exception, "failed to execute: ", command
+			sref = 'lcdshot'
+		else:
+			self.container.execute(GRAB_PATH, *graboptions)
+			try:
+				ref = session.nav.getCurrentlyPlayingServiceReference().toString()
+				sref = '_'.join(ref.split(':', 10)[:10])
+			except:  # noqa: E722
+				sref = 'screenshot'
 		sref = sref + '_' + time.strftime("%Y%m%d%H%M%S", time.localtime(time.time()))
 		request.notifyFinish().addErrback(self.requestAborted)
 		request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (sref, fileformat))

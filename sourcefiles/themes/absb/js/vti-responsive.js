@@ -215,6 +215,7 @@ var SSHelperObj = function () {
 			$('#screenshotbutton0').click(function(){grabScreenshot('all');});
 			$('#screenshotbutton1').click(function(){grabScreenshot('video');});
 			$('#screenshotbutton2').click(function(){grabScreenshot('osd');});
+			$('#screenshotbutton3').click(function(){grabScreenshot('lcd');});
 			$('#ssr_i').val(self.ssr_i);
 			$('#ssr_s').prop('checked',GetLSValue('ssr_s',false));
 			$('#ssr_hd').prop('checked',GetLSValue('ssr_hd',false));
@@ -302,7 +303,12 @@ function grabScreenshot(mode) {
 		$('#screenshotimage').attr("src",'/grab?format=jpg&r=720&mode=' + mode + '#' + timestamp);
 	}
 	$('#screenshotimage').attr("style",'max-height:60vh;');
-	$('#screenshotimage').attr("class",'img-responsive img-rounded center-block');
+	if (mode == "lcd") {
+		$('#screenshotimage').attr("class",'img-responsive center-block');
+	}
+	else{
+		$('#screenshotimage').attr("class",'img-responsive img-rounded center-block');
+	}
 }
 
 function getStatusInfo() {

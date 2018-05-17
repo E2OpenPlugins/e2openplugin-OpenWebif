@@ -1,4 +1,5 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
+#from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
 <div id="content_main" style="min-height: 533px;">
 	<div id="info">
 		<h3 class="ui-widget-header">$tstrings['screenshot']</h3>
@@ -8,6 +9,7 @@
 					<input type="radio" id="screenshotbutton0" name="screenshotbutton" checked="checked" /><label for="screenshotbutton0">$tstrings['screenshot'] ($tstrings['all'])</label>
 					<input type="radio" id="screenshotbutton1" name="screenshotbutton" /><label for="screenshotbutton1">$tstrings['screenshot'] ($tstrings['video'])</label>
 					<input type="radio" id="screenshotbutton2" name="screenshotbutton" /><label for="screenshotbutton2">$tstrings['screenshot'] ($tstrings['osd'])</label>
+					<input type="radio" id="screenshotbutton3" name="screenshotbutton" style="display: none;"/><label for="screenshotbutton3" style="display: none;">$tstrings['lcd']</label>
 				</span>
 			</span>
 		</div>
@@ -31,7 +33,17 @@
 </div>
 
 <script type="text/javascript">
+var lcd = "$getInfo['lcd']";
 #raw
 $(function() {SSHelper.setup()});
+$(document).ready(function(){
+	if(lcd>0){
+		$("label[for=screenshotbutton2]").css("border-radius", "0 0 0 0");
+		$("label[for=screenshotbutton3]").css("border-radius", "0 5px 5px 0");
+		$("#screenshotbutton3, label[for=screenshotbutton3]").show();
+	}else{
+		$("#screenshotbutton3, label[for=screenshotbutton3]").hide();
+	}
+});
 #end raw
 </script>

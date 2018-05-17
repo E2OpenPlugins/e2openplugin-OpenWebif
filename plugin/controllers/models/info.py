@@ -35,7 +35,7 @@ try:
 	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
 	from enigma import getEnigmaVersionString
 except:  # noqa: E722
-	from owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
+	from owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate, getLcd
 
 	def getEnigmaVersionString():
 		return about.getEnigmaVersionString()
@@ -189,6 +189,10 @@ def getInfo(session=None, need_fullinfo=False):
 	info['model'] = getMachineName()
 	info['boxtype'] = getBoxType()
 	info['machinebuild'] = getMachineBuild()
+	try:
+		info['lcd'] = getLcd()
+	except: # temporary due OE-A
+		info['lcd'] = 0
 
 	chipset = "unknown"
 	if fileExists("/etc/.box"):
