@@ -182,6 +182,7 @@ tstrings = {
 	'custom_boxname': _("Custom box name"),
 	'osd': _("OSD"),
 	'open_in_new_window': _("Open in new window"),
+	'pip': _("PiP"),
 	'playback': _("Playback"),
 	'playlist': _("Playlist"),
 	'powercontrol': _("Power Control"),

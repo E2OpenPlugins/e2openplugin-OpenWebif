@@ -2071,6 +2071,7 @@ var SSHelperObj = function () {
 			$('#screenshotbutton0').click(function(){grabScreenshot('all');});
 			$('#screenshotbutton1').click(function(){grabScreenshot('video');});
 			$('#screenshotbutton2').click(function(){grabScreenshot('osd');});
+			$('#screenshotbutton4').click(function(){grabScreenshot('pip');});
 			$('#screenshotbutton3').click(function(){grabScreenshot('lcd');});
 			
 			$('#screenshotbutton').buttonset();

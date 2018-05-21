@@ -9,6 +9,7 @@
 #                                                                            #
 ##############################################################################
 from enigma import eConsoleAppContainer
+from Screens.InfoBar import InfoBar
 from twisted.web import resource, server
 from enigma import eDBoxLCD
 import time
@@ -44,6 +45,10 @@ class GrabRequest(object):
 				graboptions.append("-o")
 			elif mode == "video":
 				graboptions.append("-v")
+			elif mode == "pip":
+				graboptions.append("-v")
+				if InfoBar.instance.session.pipshown:
+					graboptions.append("-i 1")
 			elif mode == "lcd":
 				eDBoxLCD.getInstance().dumpLCD()
 				fileformat = "png"
@@ -60,7 +65,10 @@ class GrabRequest(object):
 		else:
 			self.container.execute(GRAB_PATH, *graboptions)
 			try:
-				ref = session.nav.getCurrentlyPlayingServiceReference().toString()
+				if mode == "pip" and InfoBar.instance.session.pipshown:
+					ref = InfoBar.instance.session.pip.getCurrentService().toString()
+				else:
+					ref = session.nav.getCurrentlyPlayingServiceReference().toString()
 				sref = '_'.join(ref.split(':', 10)[:10])
 			except:  # noqa: E722
 				sref = 'screenshot'

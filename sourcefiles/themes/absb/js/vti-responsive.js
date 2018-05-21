@@ -216,6 +216,8 @@ var SSHelperObj = function () {
 			$('#screenshotbutton1').click(function(){grabScreenshot('video');});
 			$('#screenshotbutton2').click(function(){grabScreenshot('osd');});
 			$('#screenshotbutton3').click(function(){grabScreenshot('lcd');});
+			$('#screenshotbutton4').click(function(){grabScreenshot('pip');});
+
 			$('#ssr_i').val(self.ssr_i);
 			$('#ssr_s').prop('checked',GetLSValue('ssr_s',false));
 			$('#ssr_hd').prop('checked',GetLSValue('ssr_hd',false));

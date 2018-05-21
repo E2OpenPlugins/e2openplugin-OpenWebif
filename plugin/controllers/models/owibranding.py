@@ -127,6 +127,7 @@ def getAllInfo():
 	brand = "unknown"
 	model = "unknown"
 	procmodel = "unknown"
+	grabpip = 0
 	lcd = 0
 	orgdream = 0
 	if tpmloaded:
@@ -297,6 +298,7 @@ def getAllInfo():
 		elif procmodel == "hd51":
 			brand = "Mut@nt"
 			model = "HD51"
+			grabpip = 1
 		elif procmodel == "hd11":
 			brand = "Mut@nt"
 			model = "HD11"
@@ -368,6 +370,7 @@ def getAllInfo():
 		elif procmodel == "h7":
 			brand = "Zgemma"
 			model = "H7 series"
+			grabpip = 1
 		elif procmodel == "h9":
 			brand = "Zgemma"
 			model = "H9 series"
@@ -383,6 +386,7 @@ def getAllInfo():
 		elif procmodel == "vs1500":
 			brand = "Vimastec"
 			model = "vs1500"
+			grabpip = 1
 		elif procmodel == "sf4008":
 			brand = "Octagon"
 			model = procmodel
@@ -390,6 +394,7 @@ def getAllInfo():
 			brand = "Axas"
 			model = "E4HD"
 			lcd = 1
+			grabpip = 1
 	elif fileExists("/proc/stb/info/model"):
 		f = open("/proc/stb/info/model", 'r')
 		procmodel = f.readline().strip().lower()
@@ -700,6 +705,7 @@ def getAllInfo():
 	info['imagebuild'] = imagebuild
 	info['driverdate'] = driverdate
 	info['lcd'] = distro in ("openpli",) and lcd or 0
+	info['grabpip'] = distro in ("openpli",) and grabpip or 0
 	return info
 
 
@@ -747,6 +753,9 @@ def getImageDistro():
 
 def getLcd():
 	return STATIC_INFO_DIC['lcd']
+
+def getGrabPip():
+	return STATIC_INFO_DIC['grabpip']
 
 class rc_model:
 	def getRcFolder(self):

@@ -24,9 +24,11 @@ from Components.Network import iNetwork
 from ServiceReference import ServiceReference
 from RecordTimer import parseEvent
 from timer import TimerEntry
+from Screens.InfoBar import InfoBar
 from Tools.Directories import fileExists, pathExists
 from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
 from enigma import eEPGCache
+
 
 from ..i18n import _
 from ..defaults import OPENWEBIFVER, KINOPOISK, TRANSCODING
@@ -35,7 +37,7 @@ try:
 	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
 	from enigma import getEnigmaVersionString
 except:  # noqa: E722
-	from owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate, getLcd
+	from owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate, getLcd, getGrabPip
 
 	def getEnigmaVersionString():
 		return about.getEnigmaVersionString()
@@ -193,6 +195,10 @@ def getInfo(session=None, need_fullinfo=False):
 		info['lcd'] = getLcd()
 	except: # temporary due OE-A
 		info['lcd'] = 0
+	try:
+		info['grabpip'] = getGrabPip()
+	except: # temporary due OE-A
+		info['grabpip'] = 0
 
 	chipset = "unknown"
 	if fileExists("/etc/.box"):
@@ -756,3 +762,6 @@ def GetWithAlternative(service, onlyFirst=True):
 		return service
 	else:
 		return None
+
+def getPipStatus():
+	return int(getInfo()['grabpip'] and InfoBar.instance.session.pipshown)
