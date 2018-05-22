@@ -20,6 +20,7 @@ class GrabRequest(object):
 	def __init__(self, request, session):
 		self.request = request
 
+		mode = None
 		graboptions = [GRAB_PATH, '-q', '-s']
 
 		if "format" in request.args:
