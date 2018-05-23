@@ -40,25 +40,28 @@ var pip = "$getPipStatus()";
 $(function() {SSHelper.setup()});
 
 function buttonsSwitcher(pipval){
-	if(parseInt(lcd)){
-		$("label[for=screenshotbutton2]").css("border-radius", "0 0 0 0");
-		$("label[for=screenshotbutton3]").css("border-radius", "0 5px 5px 0");
-		$("#screenshotbutton3, label[for=screenshotbutton3]").show();
-	}else{
-		$("#screenshotbutton3, label[for=screenshotbutton3]").hide();
-	}
 	if(parseInt(pipval)){
 		if(parseInt(lcd)){
 			$("label[for=screenshotbutton2]").css("border-radius", "0 0 0 0");
 			$("label[for=screenshotbutton4]").css("border-radius", "0 0 0 0");
 			$("label[for=screenshotbutton3]").css("border-radius", "0 5px 5px 0");
+			$("#screenshotbutton3, label[for=screenshotbutton3]").show();
 		}
 		else{
 			$("label[for=screenshotbutton2]").css("border-radius", "0 0 0 0");
 			$("label[for=screenshotbutton4]").css("border-radius", "0 5px 5px 0");
+			$("#screenshotbutton3, label[for=screenshotbutton3]").hide();
 		}
 		$("#screenshotbutton4, label[for=screenshotbutton4]").show(250);
 	}else{
+		if(parseInt(lcd)){
+			$("label[for=screenshotbutton2]").css("border-radius", "0 0 0 0");
+			$("label[for=screenshotbutton3]").css("border-radius", "0 5px 5px 0");
+			$("#screenshotbutton3, label[for=screenshotbutton3]").show();
+		}else{
+			$("label[for=screenshotbutton2]").css("border-radius", "0 5px 5px 0");
+			$("#screenshotbutton3, label[for=screenshotbutton3]").hide();
+		}
 		$("#screenshotbutton4, label[for=screenshotbutton4]").hide(250);
 	}
 }
