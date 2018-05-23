@@ -231,8 +231,8 @@ var SSHelperObj = function () {
 			$('#screenshotbutton0').click(function(){testPipStatus(); grabScreenshot('all');});
 			$('#screenshotbutton1').click(function(){testPipStatus(); grabScreenshot('video');});
 			$('#screenshotbutton2').click(function(){testPipStatus(); grabScreenshot('osd');});
-			$('#screenshotbutton3').click(function(){testPipStatus(); grabScreenshot('lcd');});
-			$('#screenshotbutton4').click(function(){testPipStatus(); grabScreenshot('pip');});
+			$('#screenshotbutton3').click(function(){testPipStatus(); grabScreenshot('pip');});
+			$('#screenshotbutton4').click(function(){testPipStatus(); grabScreenshot('lcd');});
 			$("button").click(function() {testPipStatus();});
 
 			$('#ssr_i').val(self.ssr_i);

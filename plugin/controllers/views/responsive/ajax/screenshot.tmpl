@@ -18,8 +18,8 @@
 						<li><a href="#" id="screenshotbutton0" name="screenshotbutton" >$tstrings['all']</a></li>
 						<li><a href="#" id="screenshotbutton1" name="screenshotbutton" >$tstrings['video']</a></li>
 						<li><a href="#" id="screenshotbutton2" name="screenshotbutton" >$tstrings['osd']</a></li>
-						<li><a href="#" id="screenshotbutton4" name="screenshotbutton" style="display: none;" >$tstrings['pip']</a></li>
-						<li><a href="#" id="screenshotbutton3" name="screenshotbutton" style="display: none;" >$tstrings['lcd']</a></li>
+						<li><a href="#" id="screenshotbutton3" name="screenshotbutton" style="display: none;" >$tstrings['pip']</a></li>
+						<li><a href="#" id="screenshotbutton4" name="screenshotbutton" style="display: none;" >$tstrings['lcd']</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -60,14 +60,14 @@ $(function() {SSHelper.setup()});
 
 function buttonsSwitcher(pipval){
 	if(parseInt(lcd)){
-		$("#screenshotbutton3, label[for=screenshotbutton3]").show();
-	}else{
-		$("#screenshotbutton3, label[for=screenshotbutton3]").hide();
-	}
-	if(parseInt(pipval)){
 		$("#screenshotbutton4, label[for=screenshotbutton4]").show();
 	}else{
 		$("#screenshotbutton4, label[for=screenshotbutton4]").hide();
+	}
+	if(parseInt(pipval)){
+		$("#screenshotbutton3, label[for=screenshotbutton3]").show();
+	}else{
+		$("#screenshotbutton3, label[for=screenshotbutton3]").hide();
 	}
 }
 

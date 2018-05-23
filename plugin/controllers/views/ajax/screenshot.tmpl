@@ -9,8 +9,8 @@
 					<input type="radio" id="screenshotbutton0" name="screenshotbutton" checked="checked" /><label for="screenshotbutton0">$tstrings['screenshot'] ($tstrings['all'])</label>
 					<input type="radio" id="screenshotbutton1" name="screenshotbutton" /><label for="screenshotbutton1">$tstrings['screenshot'] ($tstrings['video'])</label>
 					<input type="radio" id="screenshotbutton2" name="screenshotbutton" /><label for="screenshotbutton2">$tstrings['screenshot'] ($tstrings['osd'])</label>
-					<input type="radio" id="screenshotbutton4" name="screenshotbutton" style="display: none;"/><label for="screenshotbutton4" style="display: none;">$tstrings['pip']</label>
-					<input type="radio" id="screenshotbutton3" name="screenshotbutton" style="display: none;"/><label for="screenshotbutton3" style="display: none;">$tstrings['lcd']</label>
+					<input type="radio" id="screenshotbutton3" name="screenshotbutton" style="display: none;"/><label for="screenshotbutton3" style="display: none;">$tstrings['pip']</label>
+					<input type="radio" id="screenshotbutton4" name="screenshotbutton" style="display: none;"/><label for="screenshotbutton4" style="display: none;">$tstrings['lcd']</label>
 				</span>
 			</span>
 		</div>
@@ -43,26 +43,26 @@ function buttonsSwitcher(pipval){
 	if(parseInt(pipval)){
 		if(parseInt(lcd)){
 			$("label[for=screenshotbutton2]").css("border-radius", "0 0 0 0");
-			$("label[for=screenshotbutton4]").css("border-radius", "0 0 0 0");
-			$("label[for=screenshotbutton3]").css("border-radius", "0 5px 5px 0");
-			$("#screenshotbutton3, label[for=screenshotbutton3]").show();
+			$("label[for=screenshotbutton3]").css("border-radius", "0 0 0 0");
+			$("label[for=screenshotbutton4]").css("border-radius", "0 5px 5px 0");
+			$("#screenshotbutton4, label[for=screenshotbutton4]").show();
 		}
 		else{
 			$("label[for=screenshotbutton2]").css("border-radius", "0 0 0 0");
-			$("label[for=screenshotbutton4]").css("border-radius", "0 5px 5px 0");
-			$("#screenshotbutton3, label[for=screenshotbutton3]").hide();
+			$("label[for=screenshotbutton3]").css("border-radius", "0 5px 5px 0");
+			$("#screenshotbutton4, label[for=screenshotbutton4]").hide();
 		}
-		$("#screenshotbutton4, label[for=screenshotbutton4]").show(250);
+		$("#screenshotbutton3, label[for=screenshotbutton3]").show(250);
 	}else{
 		if(parseInt(lcd)){
 			$("label[for=screenshotbutton2]").css("border-radius", "0 0 0 0");
-			$("label[for=screenshotbutton3]").css("border-radius", "0 5px 5px 0");
-			$("#screenshotbutton3, label[for=screenshotbutton3]").show();
+			$("label[for=screenshotbutton4]").css("border-radius", "0 5px 5px 0");
+			$("#screenshotbutton4, label[for=screenshotbutton4]").show();
 		}else{
 			$("label[for=screenshotbutton2]").css("border-radius", "0 5px 5px 0");
-			$("#screenshotbutton3, label[for=screenshotbutton3]").hide();
+			$("#screenshotbutton4, label[for=screenshotbutton4]").hide();
 		}
-		$("#screenshotbutton4, label[for=screenshotbutton4]").hide(250);
+		$("#screenshotbutton3, label[for=screenshotbutton3]").hide(250);
 	}
 }
 
