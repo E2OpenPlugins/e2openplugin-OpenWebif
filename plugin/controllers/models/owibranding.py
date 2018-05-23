@@ -431,8 +431,10 @@ def getAllInfo():
 				model = "DM525 HD"
 			elif procmodel == "dm900":
 				model = "DM900 HD"
+				grabpip = 1
 			elif procmodel == "dm920":
 				model = "DM920 HD"
+				grabpip = 1
 			else:
 				model = procmodel.replace("dm", "DM", 1)
 		# A "dm8000" is only a Dreambox if it passes the tpm verification:
