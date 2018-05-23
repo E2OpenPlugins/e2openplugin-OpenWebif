@@ -29,7 +29,7 @@
 //* V 1.2.12 - improve timer edit
 //* V 1.2.13 - fix repeating timer edit #631
 //* V 1.2.14,15,16 - fix json parse
-//* V 1.2.17 - allow timers for IPTV #715
+//* V 1.2.17 - allow timers for IPTV #715, added LCD, PiP into screenshots
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -961,7 +961,7 @@ $(window).keydown(function(evt) {
 });
 
 function callScreenShot(){
-
+	testPipStatus();
 	if(GetLSValue('remotegrabscreen',true))
 	{
 		if (lastcontenturl == 'ajax/screenshot') {
@@ -2056,6 +2056,21 @@ function GetAllServices(callback,radio)
 		}
 	});
 }
+
+function testPipStatus() {
+	$.ajax({
+		url: "api/pipinfo",
+		dataType: "json",
+		cache: false,
+		success: function(pipinfo) {
+			if(pipinfo.pip != pip){
+				pip = pipinfo.pip;
+                                buttonsSwitcher(pipinfo.pip);
+			}
+		}
+	})
+}
+
 var SSHelperObj = function () {
 	var self;
 	var screenshotInterval = false;
@@ -2068,12 +2083,13 @@ var SSHelperObj = function () {
 			clearInterval(self.screenshotInterval);
 			self.ssr_i = parseInt(GetLSValue('ssr_i','30'));
 			
-			$('#screenshotbutton0').click(function(){grabScreenshot('all');});
-			$('#screenshotbutton1').click(function(){grabScreenshot('video');});
-			$('#screenshotbutton2').click(function(){grabScreenshot('osd');});
-			$('#screenshotbutton4').click(function(){grabScreenshot('pip');});
-			$('#screenshotbutton3').click(function(){grabScreenshot('lcd');});
-			
+			$('#screenshotbutton0').click(function(){testPipStatus(); grabScreenshot('all');});
+			$('#screenshotbutton1').click(function(){testPipStatus(); grabScreenshot('video');});
+			$('#screenshotbutton2').click(function(){testPipStatus(); grabScreenshot('osd');});
+			$('#screenshotbutton4').click(function(){testPipStatus(); grabScreenshot('pip');});
+			$('#screenshotbutton3').click(function(){testPipStatus(); grabScreenshot('lcd');});
+			$("#screenshotrefreshbutton").click(function(){testPipStatus();});
+
 			$('#screenshotbutton').buttonset();
 			$('#screenshotrefreshbutton').buttonset();
 			$('#ssr_i').val(self.ssr_i);
@@ -2082,11 +2098,13 @@ var SSHelperObj = function () {
 			$('#screenshotspinner').addClass(GetLSValue('spinner','fa-spinner'));
 
 			$('#ssr_hd').change(function() {
+				testPipStatus();
 				SetLSValue('ssr_hd',$('#ssr_hd').is(':checked'));
 				grabScreenshot('auto');
 			});
 		
 			$('#ssr_i').change(function() {
+				testPipStatus();
 				var t = $('#ssr_i').val();
 				SetLSValue('ssr_i',t);
 				self.ssr_i = parseInt(t);
@@ -2098,6 +2116,7 @@ var SSHelperObj = function () {
 			});
 			
 			$('#ssr_s').change(function() {
+				testPipStatus();
 				var v = $('#ssr_s').is(':checked');
 				if (v) {
 					self.setSInterval();
@@ -2115,7 +2134,7 @@ var SSHelperObj = function () {
 
 		},setSInterval: function()
 		{
-			self.screenshotInterval = setInterval( function() { grabScreenshot('auto'); }, (self.ssr_i+1)*1000);
+			self.screenshotInterval = setInterval( function() { testPipStatus(); grabScreenshot('auto'); }, (self.ssr_i+1)*1000);
 		}
 	};
 };

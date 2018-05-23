@@ -38,7 +38,8 @@ var lcd = "$getInfo['lcd']";
 var pip = "$getPipStatus()";
 #raw
 $(function() {SSHelper.setup()});
-$(document).ready(function(){
+
+function buttonsSwitcher(pipval){
 	if(parseInt(lcd)){
 		$("label[for=screenshotbutton2]").css("border-radius", "0 0 0 0");
 		$("label[for=screenshotbutton3]").css("border-radius", "0 5px 5px 0");
@@ -46,7 +47,7 @@ $(document).ready(function(){
 	}else{
 		$("#screenshotbutton3, label[for=screenshotbutton3]").hide();
 	}
-	if(parseInt(pip)){
+	if(parseInt(pipval)){
 		if(parseInt(lcd)){
 			$("label[for=screenshotbutton2]").css("border-radius", "0 0 0 0");
 			$("label[for=screenshotbutton4]").css("border-radius", "0 0 0 0");
@@ -56,10 +57,15 @@ $(document).ready(function(){
 			$("label[for=screenshotbutton2]").css("border-radius", "0 0 0 0");
 			$("label[for=screenshotbutton4]").css("border-radius", "0 5px 5px 0");
 		}
-		$("#screenshotbutton4, label[for=screenshotbutton4]").show();
+		$("#screenshotbutton4, label[for=screenshotbutton4]").show(250);
 	}else{
-		$("#screenshotbutton4, label[for=screenshotbutton4]").hide();
+		$("#screenshotbutton4, label[for=screenshotbutton4]").hide(250);
 	}
+}
+
+$(document).ready(function(){
+	buttonsSwitcher(pip);
 });
+
 #end raw
 </script>

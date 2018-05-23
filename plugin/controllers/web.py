@@ -10,7 +10,7 @@
 ##############################################################################
 
 from Components.config import config as comp_config
-from models.info import getInfo, getCurrentTime, getStatusInfo, getFrontendStatus
+from models.info import getInfo, getCurrentTime, getStatusInfo, getFrontendStatus, testPipStatus
 from models.services import getCurrentService, getBouquets, getServices, getSubServices, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
@@ -170,6 +170,9 @@ class WebController(BaseController):
 		# we don't need to fill logs with this api (it's called too many times)
 		self.suppresslog = True
 		return getStatusInfo(self)
+
+	def P_pipinfo(self, request):
+		return testPipStatus(self)
 
 	def P_tunersignal(self, request):
 		"""

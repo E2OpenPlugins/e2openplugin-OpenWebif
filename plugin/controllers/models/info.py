@@ -765,3 +765,9 @@ def GetWithAlternative(service, onlyFirst=True):
 
 def getPipStatus():
 	return int(getInfo()['grabpip'] and InfoBar.instance.session.pipshown)
+
+def testPipStatus(self):
+	pipinfo = {
+		'pip': getPipStatus(),
+	}
+	return pipinfo

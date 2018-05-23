@@ -13,7 +13,7 @@
 			</div>
 			<ul class="header-dropdown m-r--5">
 				<li class="dropdown">
-				<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+				<a href="javascript:void(0);" id="dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 					<ul class="dropdown-menu pull-right" id="screenshotbutton">
 						<li><a href="#" id="screenshotbutton0" name="screenshotbutton" >$tstrings['all']</a></li>
 						<li><a href="#" id="screenshotbutton1" name="screenshotbutton" >$tstrings['video']</a></li>
@@ -51,22 +51,28 @@
 		</div>
 	</div>
 </div>
+
 <script type="text/javascript">
 var lcd = "$getInfo['lcd']";
 var pip = "$getPipStatus()";
 #raw
 $(function() {SSHelper.setup()});
-$(document).ready(function(){
+
+function buttonsSwitcher(pipval){
 	if(parseInt(lcd)){
 		$("#screenshotbutton3, label[for=screenshotbutton3]").show();
 	}else{
 		$("#screenshotbutton3, label[for=screenshotbutton3]").hide();
 	}
-	if(parseInt(pip)){
+	if(parseInt(pipval)){
 		$("#screenshotbutton4, label[for=screenshotbutton4]").show();
 	}else{
 		$("#screenshotbutton4, label[for=screenshotbutton4]").hide();
 	}
+}
+
+$(document).ready(function(){
+	buttonsSwitcher(pip);
 });
 #end raw
 </script>
