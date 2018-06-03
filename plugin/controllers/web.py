@@ -19,7 +19,7 @@ from models.locations import getLocations, getCurrentLocation, addLocation, remo
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer, getPowerTimer, setPowerTimer, getVPSChannels
 from models.message import sendMessage, getMessageAnswer
 from models.movies import getMovieList, removeMovie, getMovieTags, moveMovie, renameMovie, getAllMovies
-from models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, saveConfig, getConfigs, getConfigsSections
+from models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, saveConfig, getConfigs, getConfigsSections, getUtcOffset
 from models.stream import getStream, getTS, getStreamSubservices, GetSession
 from models.servicelist import reloadServicesLists
 from models.mediaplayer import mediaPlayerAdd, mediaPlayerRemove, mediaPlayerPlay, mediaPlayerCommand, mediaPlayerCurrent, mediaPlayerList, mediaPlayerLoad, mediaPlayerSave, mediaPlayerFindFile
@@ -1395,6 +1395,31 @@ class WebController(BaseController):
 			except ValueError:
 				pass
 		return getBouquetEpg(request.args["bRef"][0], begintime, endtime, self.isJson)
+	
+	def P_epgxmltv(self, request):
+		"""
+		Request handler for the `epgxmltv` endpoint.
+	
+		.. note::
+	
+			Not available in *Enigma2 WebInterface API*.
+	
+		Args:
+			request (twisted.web.server.Request): HTTP request object
+			bRef: mandatory, method uses epgmulti
+			lang: mandatory, needed for xmltv and Enigma2 has no parameter for epg language			
+		Returns:
+			HTTP response with headers
+		"""
+		res = self.testMandatoryArguments(request, ["bRef", "lang"])
+		if res:
+			return res
+		ret = self.P_epgmulti(request)
+		bRef = request.args["bRef"][0]
+		ret["services"] = getServices(bRef, True, False)["services"]
+		ret["lang"] = request.args["lang"][0]
+		ret["offset"] = getUtcOffset()
+		return ret
 
 	def P_epgnow(self, request):
 		res = self.testMandatoryArguments(request, ["bRef"])

@@ -8,6 +8,8 @@ import xml.etree.cElementTree  # nosec
 
 from ..i18n import _
 from ..utilities import get_config_attribute
+from datetime import datetime
+import time
 
 def addCollapsedMenu(name):
 	tags = config.OpenWebif.webcache.collapsedmenus.value.split("|")
@@ -215,6 +217,18 @@ def getSettings():
 	return {
 		"result": True,
 		"settings": configkeyval
+	}
+	
+def getUtcOffset():
+	now = time.time()
+	offset = (datetime.fromtimestamp(now) - 
+			datetime.utcfromtimestamp(now)).total_seconds()			
+	hours = round(offset / 3600)
+	minutes = (offset - (hours * 3600))
+	return {
+		"result": True,
+		#round minutes to next quarter hour
+		"utcoffset": "{:+05}".format(int(hours * 100 + (round(minutes / 900) * 900 / 60)))
 	}
 
 class ConfigFiles:
