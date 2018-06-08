@@ -2340,3 +2340,15 @@ msgstr ""
 #: plugin/plugin.py:228
 msgid "OpenWebif Configuration"
 msgstr ""
+
+msgid "Movie database for EPG"
+msgstr ""
+
+msgid "PiP"
+msgstr ""
+
+msgid "LCD"
+msgstr ""
+
+msgid "Search CSFD"
+msgstr ""
