@@ -341,5 +341,11 @@ class BaseController(resource.Resource):
 				config.OpenWebif.webcache.theme.value = theme
 				config.OpenWebif.webcache.theme.save()
 		ret['theme'] = theme
+
+		moviedb = config.OpenWebif.webcache.moviedb.value if config.OpenWebif.webcache.moviedb.value else 'IMDb'
+		config.OpenWebif.webcache.moviedb.value = moviedb
+		config.OpenWebif.webcache.moviedb.save()
+		ret['moviedb'] = moviedb
+
 		ret['webtv'] = os.path.exists(getPublicPath('webtv'))
 		return ret

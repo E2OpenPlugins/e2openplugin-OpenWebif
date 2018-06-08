@@ -31,7 +31,7 @@ from enigma import eEPGCache
 
 
 from ..i18n import _
-from ..defaults import OPENWEBIFVER, KINOPOISK, TRANSCODING
+from ..defaults import OPENWEBIFVER, TRANSCODING
 
 try:
 	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
@@ -498,8 +498,6 @@ def getInfo(session=None, need_fullinfo=False):
 	# TODO: fstab
 
 	info['transcoding'] = TRANSCODING
-
-	info['kinopoisk'] = KINOPOISK
 
 	info['EX'] = ''
 

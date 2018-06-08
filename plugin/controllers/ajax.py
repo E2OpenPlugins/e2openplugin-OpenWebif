@@ -33,7 +33,7 @@ from base import BaseController
 from time import mktime, localtime
 from models.locations import getLocations
 
-from defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH, KINOPOISK, TRANSCODING
+from defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH, TRANSCODING
 
 # from twisted.web.resource import Resource
 import os
@@ -109,7 +109,10 @@ class AjaxController(BaseController):
 			pass
 		event['at'] = at
 		event['transcoding'] = TRANSCODING
-		event['kinopoisk'] = KINOPOISK
+		if config.OpenWebif.webcache.moviedb.value:
+			event['moviedb'] = config.OpenWebif.webcache.moviedb.value
+		else:
+			event['moviedb'] = 'IMDb'
 		return event
 
 	def P_about(self, request):
@@ -157,7 +160,9 @@ class AjaxController(BaseController):
 			theme = config.OpenWebif.webcache.theme.value
 		else:
 			theme = 'original'
-		return {"theme": theme, "events": events, "timers": timers, "at": at, "kinopoisk": KINOPOISK}
+		moviedb = config.OpenWebif.webcache.moviedb.value if config.OpenWebif.webcache.moviedb.value else 'IMDb'
+
+		return {"theme": theme, "events": events, "timers": timers, "at": at, "moviedb": moviedb}
 
 	def P_epgdialog(self, request):
 		return self.P_epgpop(request)
@@ -250,6 +255,12 @@ class AjaxController(BaseController):
 		else:
 			ret['themes'] = []
 			ret['theme'] = 'original'
+		if config.OpenWebif.webcache.moviedb.value:
+			ret['moviedbs'] = config.OpenWebif.webcache.moviedb.choices
+			ret['moviedb'] = config.OpenWebif.webcache.moviedb.value
+		else:
+			ret['moviedbs'] = []
+			ret['moviedb'] = 'IMDb'
 		ret['zapstream'] = config.OpenWebif.webcache.zapstream.value
 		ret['showchannelpicon'] = config.OpenWebif.webcache.showchannelpicon.value
 		ret['allowipkupload'] = config.OpenWebif.allow_upload_ipk.value

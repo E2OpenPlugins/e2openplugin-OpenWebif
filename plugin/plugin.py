@@ -25,6 +25,7 @@ from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection
 from enigma import getDesktop
 from controllers.models.info import getInfo
+from controllers.defaults import getKinopoisk
 
 from httpserver import HttpdStart, HttpdStop, HttpdRestart
 
@@ -55,6 +56,7 @@ config.OpenWebif.webcache.zapstream = ConfigYesNo(default=False)
 config.OpenWebif.webcache.theme = ConfigSelection(default='original', choices=THEMES)
 config.OpenWebif.webcache.moviesort = ConfigSelection(default='name', choices=['name', 'named', 'date', 'dated'])
 config.OpenWebif.webcache.showchannelpicon = ConfigYesNo(default=True)
+config.OpenWebif.webcache.moviedb = ConfigSelection(default='IMDb' if not getKinopoisk() else 'Kinopoisk', choices=['IMDb', 'CSFD', 'Kinopoisk'])
 config.OpenWebif.webcache.mepgmode = ConfigInteger(default=1, limits=(1, 2))
 # HTTPS
 config.OpenWebif.https_enabled = ConfigYesNo(default=False)

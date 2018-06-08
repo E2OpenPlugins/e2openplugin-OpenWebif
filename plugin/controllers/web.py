@@ -2141,6 +2141,8 @@ class WebController(BaseController):
 		if comp_config.OpenWebif.webcache.theme.value:
 			theme = comp_config.OpenWebif.webcache.theme.value
 		ret['theme'] = theme
+		moviedb = comp_config.OpenWebif.webcache.moviedb.value if comp_config.OpenWebif.webcache.moviedb.value else 'IMDb'
+		ret['moviedb'] = moviedb
 		return ret
 
 	def P_config(self, request):
@@ -2201,6 +2203,12 @@ class WebController(BaseController):
 			val = (request.args["responsivedesign"][0] == 'true')
 			comp_config.OpenWebif.responsive_enabled.value = val
 			comp_config.OpenWebif.responsive_enabled.save()
+		elif "moviedb" in request.args.keys():
+			try:
+				comp_config.OpenWebif.webcache.moviedb.value = request.args["moviedb"][0]
+				comp_config.OpenWebif.webcache.moviedb.save()
+			except Exception:
+				pass
 		elif "showchannelpicon" in request.args.keys():
 			val = (request.args["showchannelpicon"][0] == 'true')
 			comp_config.OpenWebif.webcache.showchannelpicon.value = val

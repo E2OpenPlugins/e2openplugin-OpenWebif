@@ -58,6 +58,17 @@
 				<input type="checkbox" name="showchannelpicon"/>
 				#end if
 				</td></tr>
+				<tr><td>$tstrings['tstr_moviedb']</td><td>
+				<select name="selectmoviedb" id="selectmoviedb" style="min-width: 150px;margin: 5px;border:none;font-size: 1em;">
+				#for $smoviedb in $moviedbs
+					#if $smoviedb == $moviedb
+						<option selected="selected">$smoviedb</option>
+					#else
+						<option>$smoviedb</option>
+					#end if
+				#end for
+				</select>
+				</td></tr>
 				<tr><td>$tstrings['tstr_spinner']</td><td>
 				<span class="spinner">
 				<fieldset style="border:none;" id="fsspinner">
@@ -410,6 +421,11 @@ function load_scontent(url) {
 					window.location.hash = '#settings';
 					window.location.reload(true);
 				}
+			});
+		});
+		$("#selectmoviedb").change(function() {
+			$.ajax({
+				url: "api/setwebconfig?moviedb=" + $(this).val(),
 			});
 		});
 		return;

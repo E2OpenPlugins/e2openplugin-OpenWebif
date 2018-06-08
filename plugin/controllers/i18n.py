@@ -206,6 +206,7 @@ tstrings = {
 	'save': _("Save"),
 	'screenshot': _("Screenshot"),
 	'search': _("Search"),
+	'search_csfd': _("Search CSFD"),
 	'search_imdb': _("Search IMDb"),
 	'search_kinopoisk': _("Search KinoPoisk"),
 	'seconds': _("seconds"),
@@ -443,6 +444,7 @@ tstrings = {
 	'tstr_timer_added': _("Timer Added"),
 	'tstr_event_not_found': _("Event not found"),
 	'tstr_show_picon_in_channel_list': _("Show Picon in channel list"),
+	'tstr_moviedb': _("Movie database for EPG"),
 
 	'tstr_ow_browser_settings': _("OpenWebif Browser Settings"),
 	'tstr_ow_settings': _("OpenWebif Settings"),
