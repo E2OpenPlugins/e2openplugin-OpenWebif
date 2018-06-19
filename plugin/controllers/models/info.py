@@ -762,7 +762,7 @@ def GetWithAlternative(service, onlyFirst=True):
 		return None
 
 def getPipStatus():
-	return int(getInfo()['grabpip'] and InfoBar.instance.session.pipshown)
+	return int(getInfo()['grabpip'] and hasattr(InfoBar.instance, 'session') and InfoBar.instance.session.pipshown)
 
 def testPipStatus(self):
 	pipinfo = {
