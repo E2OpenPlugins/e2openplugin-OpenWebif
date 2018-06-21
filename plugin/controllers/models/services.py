@@ -49,7 +49,7 @@ def filterName(name, encode=True):
 def convertDesc(val, encode=True):
 	if val is not None:
 		if encode is True:
-			return html_escape(unicode(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore'), quote=True)
+			return html_escape(unicode(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore'), quote=True).replace(u'\x8a', '\n')
 		else:
 			return unicode(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 	return val
