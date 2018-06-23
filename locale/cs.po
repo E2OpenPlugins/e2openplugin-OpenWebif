@@ -1009,7 +1009,7 @@ msgstr "zobrazit plný OpenWebif"
 
 #: plugin/controllers/i18n.py:218
 msgid "Show full remote"
-msgstr "úplný ovladač"
+msgstr "Úplný ovladač"
 
 #: plugin/controllers/i18n.py:219
 msgid "Show EPG for"
@@ -1834,7 +1834,7 @@ msgstr "Doba zobrazení (s)"
 
 #: plugin/controllers/i18n.py:451
 msgid "Display Mode"
-msgstr "Způsob zobrazení"
+msgstr "Zobrazení"
 
 #: plugin/controllers/i18n.py:452
 msgid "TV Guide"
@@ -1850,7 +1850,7 @@ msgstr ""
 
 #: plugin/controllers/i18n.py:455
 msgid "Calendar Week"
-msgstr ""
+msgstr "Týden"
 
 #: plugin/controllers/i18n.py:457
 msgid "Link Speed"
@@ -1870,7 +1870,7 @@ msgstr ""
 
 #: plugin/controllers/i18n.py:461
 msgid "Enable/Disable Screenshot on key press or"
-msgstr ""
+msgstr "Povolit/zakázat snímek obrazovky při stisku tlačítka nebo"
 
 #: plugin/controllers/i18n.py:463
 msgid "Bookmarks"
