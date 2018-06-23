@@ -33,14 +33,9 @@ def getTranscoding():
 
 #: get kinopoisk feature
 def getKinopoisk():
-	kinopoisk = False
-	lang = ['ru', 'uk', 'lv', 'lt', 'et']
-	current_language = language.getLanguage()
-	for l in lang:
-		if l in current_language:
-			kinopoisk = True
-			break
-	return kinopoisk
+	if language.getLanguage()[0:2] in ['ru', 'uk', 'lv', 'lt', 'et']:
+		return True
+	return False
 
 def getViewsPath(file=""):
 	if comp_config.OpenWebif.responsive_enabled.value and os.path.exists(VIEWS_PATH + "/responsive") and not (file.startswith('web/') or file.startswith('/web/')):
