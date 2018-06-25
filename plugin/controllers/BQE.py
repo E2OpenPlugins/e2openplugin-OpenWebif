@@ -252,7 +252,9 @@ class BQEWebController(BaseController):
 		if sRef == "":
 			sRef = '%s FROM BOUQUET "bouquets.tv" ORDER BY bouquet' % (service_types_tv)
 			CalcPos = True
-		elif "bouquets.radio" in sRef:
+		elif ' "bouquets.radio" ' in sRef:
+			CalcPos = True
+		elif ' "bouquets.tv" ' in sRef:
 			CalcPos = True
 
 		serviceHandler = eServiceCenter.getInstance()
