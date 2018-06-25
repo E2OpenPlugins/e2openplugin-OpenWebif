@@ -1,9 +1,9 @@
 //******************************************************************************
 //* bqe.js: openwebif Bouqueteditor plugin
-//* Version 2.6
+//* Version 2.7
 //******************************************************************************
-//* Copyright (C) 2014-2017 Joerg Bleyel
-//* Copyright (C) 2014-2017 E2OpenPlugins
+//* Copyright (C) 2014-2018 Joerg Bleyel
+//* Copyright (C) 2014-2018 E2OpenPlugins
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //*          Robert Damas <https://github.com/rdamas>
@@ -15,6 +15,7 @@
 //* V 2.4 - improve search fix #419
 //* V 2.5 - prepare support spacers #239
 //* V 2.6 - improve spacers #239
+//* V 2.7 - improve channel numbers
 
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
@@ -257,42 +258,29 @@
 			// Callback function for fetching right panel bouquets list.
 			// @param callback function display bouquets list
 			getBouquets: function (callback) {
-				// get Pos
+				self.bqStartPositions = {};
+				var ref = self.buildRefStr(0);
 				$.ajax({
-					url: '/bouqueteditor/api/calcpos', 
+					url: '/bouqueteditor/api/getservices', 
 					dataType: 'json',
 					cache: false,
-					data: { type: self.Mode },
+					data: { sRef: ref },
 					success: function ( data ) {
-						self.bqStartPositions = {};
-						var ps = data['services'];
-						$.each( ps, function ( key, val ) {
+						var options = [];
+						var s = data['services'];
+						$.each( s, function ( key, val ) {
+							var sref = val['servicereference'];
+							var name = val['servicename'];
 							self.bqStartPositions[val['servicereference']] = val['startpos'];
+							options.push( $('<li/>', {
+								data: { sref: sref }
+							}).html('<span class="handle dd-icon"><i class="material-icons material-icons-centered">list</i>&nbsp;</span>'+name+'<span class="dd-icon-selected pull-right"><i class="material-icons material-icons-centered">done</i></span></li>') );
 						});
-						var ref = self.buildRefStr(0);
-						$.ajax({
-							url: '/bouqueteditor/api/getservices', 
-							dataType: 'json',
-							cache: false,
-							data: { sRef: ref },
-							success: function ( data ) {
-								var options = [];
-								var s = data['services'];
-								$.each( s, function ( key, val ) {
-									var sref = val['servicereference'];
-									var name = val['servicename'];
-									options.push( $('<li/>', {
-										data: { sref: sref }
-									}).html('<span class="handle dd-icon"><i class="material-icons material-icons-centered">list</i>&nbsp;</span>'+name+'<span class="dd-icon-selected pull-right"><i class="material-icons material-icons-centered">done</i></span></li>') );
-								});
-								if (callback) {
-									callback(options);
-								}
-							}
-						});
+						if (callback) {
+							callback(options);
+						}
 					}
 				});
-				
 			},
 
 			// Callback function for selecting provider in left panel

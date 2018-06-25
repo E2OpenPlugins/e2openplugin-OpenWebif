@@ -1,5 +1,9 @@
-## Version 1.3.2
+## Version 1.3.3
 ## (in development)
+* get group members of alternative group in servicelist of bqe
+* improve channel numbering for bqe
+
+## Version 1.3.2
 * reorg i18n
 * move some code to new defaults controller
 * optimize web api for UI settings

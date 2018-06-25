@@ -209,36 +209,36 @@ class BQEWebController(BaseController):
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
 
-	def P_calcpos(self, request):
-		type = 0
-		if "type" in request.args.keys():
-			type = request.args["type"][0]
-		bRef = '%s FROM BOUQUET "bouquets.tv" ORDER BY bouquet' % (service_types_tv)
-		if type == 1:
-			bRef = '%s FROM BOUQUET "bouquets.radio" ORDER BY bouquet' % (service_types_radio)
-
-		serviceHandler = eServiceCenter.getInstance()
-		serviceslist = serviceHandler.list(eServiceReference(bRef))
-		bqlist = serviceslist and serviceslist.getContent("RN", True)
-		pos = 0
-		services = []
-		for bq in bqlist:
-			bqref = bq[0].toString()
-			service = {}
-			service['servicereference'] = bqref
-			service['startpos'] = pos
-			serviceslist = serviceHandler.list(eServiceReference(bqref))
-			fulllist = serviceslist and serviceslist.getContent("RN", True)
-			for item in fulllist:
-				sref = item[0].toString()
-				hs = (int(sref.split(":")[1]) & 512)
-				sp = (sref[:7] == '1:832:D')
-				if not hs or sp:  # 512 is hidden service on sifteam image. Doesn't affect other images
-					pos = pos + 1
-					if not sp and item[0].flags & eServiceReference.isMarker:
-						pos = pos - 1
-			services.append(service)
-		return {"services": services}
+#	def P_calcpos(self, request):
+#		type = 0
+#		if "type" in request.args.keys():
+#			type = request.args["type"][0]
+#		bRef = '%s FROM BOUQUET "bouquets.tv" ORDER BY bouquet' % (service_types_tv)
+#		if type == 1:
+#			bRef = '%s FROM BOUQUET "bouquets.radio" ORDER BY bouquet' % (service_types_radio)
+#
+#		serviceHandler = eServiceCenter.getInstance()
+#		serviceslist = serviceHandler.list(eServiceReference(bRef))
+#		bqlist = serviceslist and serviceslist.getContent("RN", True)
+#		pos = 0
+#		services = []
+#		for bq in bqlist:
+#			bqref = bq[0].toString()
+#			service = {}
+#			service['servicereference'] = bqref
+#			service['startpos'] = pos
+#			serviceslist = serviceHandler.list(eServiceReference(bqref))
+#			fulllist = serviceslist and serviceslist.getContent("RN", True)
+#			for item in fulllist:
+#				sref = item[0].toString()
+#				hs = (int(sref.split(":")[1]) & 512)
+#				sp = (sref[:7] == '1:832:D')
+#				if not hs or sp:  # 512 is hidden service on sifteam image. Doesn't affect other images
+#					pos = pos + 1
+#					if not sp and item[0].flags & eServiceReference.isMarker:
+#						pos = pos - 1
+#			services.append(service)
+#		return {"services": services}
 
 	def P_getservices(self, request):
 		if "sRef" in request.args.keys():
@@ -247,21 +247,43 @@ class BQEWebController(BaseController):
 			sRef = ""
 		services = []
 
+		CalcPos = False
+
 		if sRef == "":
 			sRef = '%s FROM BOUQUET "bouquets.tv" ORDER BY bouquet' % (service_types_tv)
+			CalcPos = True
+		elif "bouquets.radio" in sRef:
+			CalcPos = True
 
 		serviceHandler = eServiceCenter.getInstance()
 		serviceslist = serviceHandler.list(eServiceReference(sRef))
 		fulllist = serviceslist and serviceslist.getContent("RN", True)
 
 		pos = 0
+		oPos = 0
 		for item in fulllist:
+			
+			oldoPos = oPos
+			if CalcPos:
+				sref = item[0].toString()
+				serviceslist = serviceHandler.list(eServiceReference(sref))
+				sfulllist = serviceslist and serviceslist.getContent("RN", True)
+				for sitem in sfulllist:
+					sref = sitem[0].toString()
+					hs = (int(sref.split(":")[1]) & 512)
+					sp = (sref[:7] == '1:832:D')
+					if not hs or sp:  # 512 is hidden service on sifteam image. Doesn't affect other images
+						oPos = oPos + 1
+						if not sp and sitem[0].flags & eServiceReference.isMarker:
+							oPos = oPos - 1
 			sref = item[0].toString()
 			hs = (int(sref.split(":")[1]) & 512)
 			sp = (sref[:7] == '1:832:D')
 			if not hs or sp:  # 512 is hidden service on sifteam image. Doesn't affect other images
 				pos = pos + 1
 				service = {}
+				if CalcPos:
+					service['startpos'] = oldoPos
 				service['pos'] = pos
 				service['servicereference'] = sref
 				service['isgroup'] = '0'
@@ -273,7 +295,18 @@ class BQEWebController(BaseController):
 				else:
 					service['servicename'] = item[1]
 					if item[0].flags & eServiceReference.isGroup:
+						gservices = []
 						service['isgroup'] = '1'
+						#get members of group
+						gserviceslist = serviceHandler.list(eServiceReference(sref))
+						gfulllist = gserviceslist and gserviceslist.getContent("RN", True)
+						for gitem in gfulllist:
+							gservice = {}
+							gservice['servicereference'] = gitem[0].toString()
+							gservice['servicename'] = gitem[1]
+							gservices.append(gservice)
+						service['members'] = gservices
+
 					if item[0].flags & eServiceReference.isMarker:
 						service['ismarker'] = '1'
 						# dont inc the pos for markers
