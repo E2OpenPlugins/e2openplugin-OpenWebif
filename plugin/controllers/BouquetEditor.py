@@ -279,12 +279,19 @@ class BouquetEditor(Source):
 		if "sRef" in param:
 			if param["sRef"] is not None:
 				sRef = param["sRef"]
-		if sRef is None:
-			return (False, _("No service given!"))
+		sRefUrl = False
 		sName = None
 		if "Name" in param:
 			if param["Name"] is not None:
 				sName = param["Name"]
+		if sRef is None:
+			# check IPTV
+			if "sRefUrl" in param:
+				if param["sRefUrl"] is not None and sName is not None:
+					sRef = param["sRefUrl"]
+					sRefUrl = True
+		if sRef is None:
+			return (False, _("No service given!"))
 		sRefBefore = eServiceReference()
 		if "sRefBefore" in param:
 			if param["sRefBefore"] is not None:
@@ -292,7 +299,10 @@ class BouquetEditor(Source):
 		bouquetRef = eServiceReference(sBouquetRef)
 		mutableBouquetList = self.getMutableList(bouquetRef)
 		if mutableBouquetList is not None:
-			ref = eServiceReference(sRef)
+			if sRefUrl:
+				ref = eServiceReference(4097,0,sRef + ':' + sName)
+			else:
+				ref = eServiceReference(sRef)
 			if sName:
 				ref.setName(sName)
 			if not mutableBouquetList.addService(ref, sRefBefore):
