@@ -708,7 +708,7 @@ def setSleepTimer(session, time, action, enabled):
 			if inStandby is not None:
 				ret["message"] = _("ERROR: Cannot set SleepTimer while device is in Standby-Mode")
 				return ret
-			if enabled is not False:
+			if enabled is False:
 				session.nav.SleepTimer.clear()
 				ret = getSleepTimer(session)
 				ret["message"] = _("Sleeptimer has been disabled")
