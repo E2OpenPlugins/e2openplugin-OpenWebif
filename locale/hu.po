@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "POT-Creation-Date: 2018-04-21 10:03+0200\n"
 "PO-Revision-Date: \n"
-"Last-Translator: chipcard <chipcard.github.com>\n"
+"Last-Translator: chipcard <github.com/chipcard>\n"
 "Language-Team: cpteam\n"
 "Language: hu_HU\n"
 "MIME-Version: 1.0\n"
@@ -2344,3 +2344,15 @@ msgstr "IPK feltöltés engedélyezése"
 #: plugin/plugin.py:228
 msgid "OpenWebif Configuration"
 msgstr "OpenWebif konfiguráció"
+
+msgid "Movie database for EPG"
+msgstr "EPG filmes adatbázis"
+
+msgid "PiP"
+msgstr "PiP"
+
+msgid "LCD"
+msgstr "LCD"
+
+msgid "Search CSFD"
+msgstr "Keresés CSFD"
