@@ -496,7 +496,7 @@ tstrings = {
 	'uploaded_files': _("Uploaded Files"),
 	'upload_package': _("Upload package"),
 	'upload_error': _("Upload File Error"),
-	'showfullremoteshort': _("Full remote")	
-
+	'showfullremoteshort': _("Full remote"),
+	'showdetails': _("Show details")
 }
 
