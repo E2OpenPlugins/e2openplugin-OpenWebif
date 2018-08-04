@@ -1707,7 +1707,10 @@ class WebController(BaseController):
 		self.isCustom = True
 		if comp_config.OpenWebif.webcache.zapstream.value:
 			if "ref" in request.args:
-				zapService(self.session, request.args["ref"][0], request.args["name"][0], stream=True)
+				name = ""
+				if "name" in request.args:
+					name = request.args["name"][0]
+				zapService(self.session, request.args["ref"][0], name, stream=True)
 		return getStream(self.session, request, "stream.m3u")
 
 	def P_tsm3u(self, request):
