@@ -118,15 +118,16 @@
 </tr>
 </thead>
 <tbody id="tbl1body">
-	#set hasEvents = False
 	#for $slot in range(0,12)
 	<tr class="$(slot%2 and 'ui-widget-content' or 'ui-widget-content ui-state-hover') nobg">
 		#for $sname, $eventlist in $events.iteritems()
 		<td class="border">
 			#for $event in $eventlist[$slot]
 				$renderEventBlock.render($event)
-				#set hasEvents = True
 			#end for
+			#if len($eventlist[$slot]) == 0
+			<div class="event"></div>
+			#end if
 		</td>
 		#end for
 	</tr>
