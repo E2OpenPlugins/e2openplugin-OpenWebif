@@ -835,9 +835,4 @@ i.fa-mobile {font-size: 22px;}
 	display:none !important;
 }
 
-body:not(.original-small-screen)
-{
-	span.channel-tag {
-		display: none;
-	}
-}
+@import "channel_tags";
