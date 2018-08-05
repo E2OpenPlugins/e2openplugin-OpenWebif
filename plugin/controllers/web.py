@@ -2146,6 +2146,7 @@ class WebController(BaseController):
 		ret['theme'] = theme
 		moviedb = comp_config.OpenWebif.webcache.moviedb.value if comp_config.OpenWebif.webcache.moviedb.value else 'IMDb'
 		ret['moviedb'] = moviedb
+		ret['showchanneldetails'] = comp_config.OpenWebif.webcache.showchanneldetails.value
 		return ret
 
 	def P_config(self, request):
@@ -2216,6 +2217,10 @@ class WebController(BaseController):
 			val = (request.args["showchannelpicon"][0] == 'true')
 			comp_config.OpenWebif.webcache.showchannelpicon.value = val
 			comp_config.OpenWebif.webcache.showchannelpicon.save()
+		elif "showchanneldetails" in request.args.keys():
+			val = (request.args["showchanneldetails"][0] == 'true')
+			comp_config.OpenWebif.webcache.showchanneldetails.value = val
+			comp_config.OpenWebif.webcache.showchanneldetails.save()
 		elif "zapstream" in request.args.keys():
 			val = (request.args["zapstream"][0] == 'true')
 			comp_config.OpenWebif.webcache.zapstream.value = val

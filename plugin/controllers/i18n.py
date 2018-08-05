@@ -497,6 +497,7 @@ tstrings = {
 	'upload_package': _("Upload package"),
 	'upload_error': _("Upload File Error"),
 	'showfullremoteshort': _("Full remote"),
-	'showdetails': _("Show details")
+	'showdetails': _("Show details"),
+	'show_details_in_channel_list': _("Show Service type in channel list")
 }
 

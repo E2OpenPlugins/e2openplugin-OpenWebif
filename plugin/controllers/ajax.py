@@ -263,6 +263,7 @@ class AjaxController(BaseController):
 			ret['moviedb'] = 'IMDb'
 		ret['zapstream'] = config.OpenWebif.webcache.zapstream.value
 		ret['showchannelpicon'] = config.OpenWebif.webcache.showchannelpicon.value
+		ret['showchanneldetails'] = config.OpenWebif.webcache.showchanneldetails.value
 		ret['allowipkupload'] = config.OpenWebif.allow_upload_ipk.value
 		loc = getLocations()
 		ret['locations'] = loc['locations']

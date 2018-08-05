@@ -58,6 +58,13 @@
 				<input type="checkbox" name="showchannelpicon"/>
 				#end if
 				</td></tr>
+				<tr><td>$tstrings['show_details_in_channel_list']</td><td>
+				#if $showchanneldetails
+				<input type="checkbox" name="showchanneldetails" checked="checked"/>
+				#else
+				<input type="checkbox" name="showchanneldetails"/>
+				#end if
+				</td></tr>
 				<tr><td>$tstrings['tstr_moviedb']</td><td>
 				<select name="selectmoviedb" id="selectmoviedb" style="min-width: 150px;margin: 5px;border:none;font-size: 1em;">
 				#for $smoviedb in $moviedbs
@@ -489,6 +496,12 @@ $(function() {
 		var ch = evt.currentTarget.checked;
 		$('input[name=showchannelpicon]').attr('checked', ch);
 		webapi_execute("/api/setwebconfig?showchannelpicon=" + ch);
+	});
+
+	$("input[name=showchanneldetails]").click(function(evt) {
+		var ch = evt.currentTarget.checked;
+		$('input[name=showchanneldetails]').attr('checked', ch);
+		webapi_execute("/api/setwebconfig?showchanneldetails=" + ch);
 	});
 
 	$("input[name=responsivedesign]").click(function(evt) {

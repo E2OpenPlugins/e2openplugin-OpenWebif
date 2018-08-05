@@ -58,6 +58,7 @@ config.OpenWebif.webcache.moviesort = ConfigSelection(default='name', choices=['
 config.OpenWebif.webcache.showchannelpicon = ConfigYesNo(default=True)
 config.OpenWebif.webcache.moviedb = ConfigSelection(default='IMDb' if not getKinopoisk() else 'Kinopoisk', choices=['IMDb', 'CSFD', 'Kinopoisk'])
 config.OpenWebif.webcache.mepgmode = ConfigInteger(default=1, limits=(1, 2))
+config.OpenWebif.webcache.showchanneldetails = ConfigYesNo(default=False)
 # HTTPS
 config.OpenWebif.https_enabled = ConfigYesNo(default=False)
 config.OpenWebif.https_port = ConfigInteger(default=443, limits=(1, 65535))
