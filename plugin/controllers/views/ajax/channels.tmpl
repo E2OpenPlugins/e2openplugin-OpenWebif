@@ -40,7 +40,9 @@
 				$channel.name
 			#end if
 			</span>
-			#if $channel.has_key('ns')
+			#if '4097:' in $channel.ref
+				<span class="channel-tag ST-IPTV">IPTV</span>
+			#elif $channel.has_key('ns')
 				<span class="channel-tag ST-$channel.service_type">$channel.service_type</span><span class="channel-tag NS-$channel.ns">$channel.ns</span>
 			#end if
 		</div>
