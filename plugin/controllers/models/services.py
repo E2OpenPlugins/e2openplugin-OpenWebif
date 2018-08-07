@@ -356,6 +356,13 @@ def getProtection(sref):
 						isProtected = '4'
 	return isProtected
 
+def getOrb(namespace):
+	pos = namespace >> 16 & 0xFFF
+	direction = 'E'
+	if pos > 1800:
+		pos = 3600 - pos
+		direction = 'W'
+	return "%d.%d° %s" % (pos / 10, pos % 10, direction)
 
 def getChannels(idbouquet, stype):
 	ret = []
@@ -379,7 +386,12 @@ def getChannels(idbouquet, stype):
 		if not int(channel[0].split(":")[1]) & 64:
 			psref = parse_servicereference(channel[0])
 			chan['service_type'] = SERVICE_TYPE_LOOKUP.get(psref.get('service_type'), "UNKNOWN")
-			chan['ns'] = NS_LOOKUP.get(psref.get('ns'), "DVB-S")
+			nsi = psref.get('ns')
+			ns = NS_LOOKUP.get(nsi, "DVB-S")
+			if ns == "DVB-S":
+				chan['ns'] = getOrb(nsi)
+			else:
+				chan['ns'] = ns
 			chan['picon'] = getPicon(chan['ref'])
 			if config.OpenWebif.parentalenabled.value and config.ParentalControl.configured.value and config.ParentalControl.servicepinactive.value:
 				chan['protection'] = getProtection(channel[0])
