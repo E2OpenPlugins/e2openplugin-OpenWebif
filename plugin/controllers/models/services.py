@@ -20,7 +20,7 @@ from Components.NimManager import nimmanager
 from ServiceReference import ServiceReference
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache
-from info import GetWithAlternative, getOrbitalText
+from info import GetWithAlternative, getOrbitalText, getOrb
 from urllib import quote, unquote
 from ..utilities import parse_servicereference, SERVICE_TYPE_LOOKUP, NS_LOOKUP
 from ..i18n import _, tstrings
@@ -295,12 +295,7 @@ def getSatellites(stype):
 				elif unsigned_orbpos == 0xEEEE:  # Terrestrial
 					service_name = _("Terrestrial")
 				else:
-					if orbpos > 1800:  # west
-						orbpos = 3600 - orbpos
-						h = _("W")
-					else:
-						h = _("E")
-					service_name = ("%d.%d" + h) % (orbpos / 10, orbpos % 10)
+					service_name = getOrb(orbpos)
 			service.setName("%s - %s" % (service_name, service_type))
 			ret.append({
 				"service": service.toString(),
@@ -356,14 +351,6 @@ def getProtection(sref):
 						isProtected = '4'
 	return isProtected
 
-def getOrb(namespace):
-	pos = namespace >> 16 & 0xFFF
-	direction = 'E'
-	if pos > 1800:
-		pos = 3600 - pos
-		direction = 'W'
-	return "%d.%d° %s" % (pos / 10, pos % 10, direction)
-
 def getChannels(idbouquet, stype):
 	ret = []
 	idp = 0
@@ -389,7 +376,7 @@ def getChannels(idbouquet, stype):
 			nsi = psref.get('ns')
 			ns = NS_LOOKUP.get(nsi, "DVB-S")
 			if ns == "DVB-S":
-				chan['ns'] = getOrb(nsi)
+				chan['ns'] = getOrb(nsi >> 16 & 0xFFF)
 			else:
 				chan['ns'] = ns
 			chan['picon'] = getPicon(chan['ref'])

@@ -576,13 +576,16 @@ def getOrbitalText(cur_info):
 		tunerType = cur_info.get('tuner_type')
 		if tunerType == "DVB-S":
 			pos = int(cur_info.get('orbital_position'))
-			direction = 'E'
-			if pos > 1800:
-				pos = 3600 - pos
-				direction = 'W'
-			return "%d.%d° %s" % (pos / 10, pos % 10, direction)
+			return getOrb(pos)
 		return tunerType
 	return ''
+
+def getOrb(pos):
+	direction = _("E")
+	if pos > 1800:
+		pos = 3600 - pos
+		direction = _("W")
+	return "%d.%d° %s" % (pos / 10, pos % 10, direction)
 
 
 def getFrontendStatus(session):
