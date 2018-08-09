@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-29 10:50+0200\n"
+"POT-Creation-Date: 2018-08-09 18:46+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Pr2\n"
 "Language-Team: \n"
@@ -89,7 +89,7 @@ msgstr "Ajouter la/les chaîne(s) comme alternatif"
 msgid "Add channel(s) to Bouquet"
 msgstr "Ajouter la/les chaîne(s) au Bouquet"
 
-#: ../plugin/plugin.py:150
+#: ../plugin/plugin.py:151
 msgid "Add service name to stream information"
 msgstr "Ajouter le nom du service dans les informations du stream"
 
@@ -122,7 +122,7 @@ msgstr "Tous les fichiers de ce logiciel sont open source; vous pouvez le redist
 msgid "All alternative services deleted."
 msgstr "Un service alternatif effacé."
 
-#: ../plugin/plugin.py:153
+#: ../plugin/plugin.py:154
 msgid "Allow IPK Upload"
 msgstr "Autoriser le chargement d’IPK"
 
@@ -334,7 +334,7 @@ msgstr "Câble"
 msgid "Calendar Week"
 msgstr "Calendrier de la semaine"
 
-#: ../plugin/controllers/i18n.py:92 ../plugin/plugin.py:112
+#: ../plugin/controllers/i18n.py:92 ../plugin/plugin.py:113
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -354,7 +354,7 @@ msgstr "Chaîne"
 msgid "Channels"
 msgstr "Chaînes"
 
-#: ../plugin/plugin.py:152
+#: ../plugin/plugin.py:153
 msgid "Character encoding for EPG data"
 msgstr "Caractère d'encodage pour les données EPG"
 
@@ -405,7 +405,7 @@ msgstr "En cours"
 msgid "Current Event"
 msgstr "Évènement en cours"
 
-#: ../plugin/controllers/i18n.py:182 ../plugin/plugin.py:135
+#: ../plugin/controllers/i18n.py:182 ../plugin/plugin.py:136
 msgid "Custom box name"
 msgstr "Nom personnalisé"
 
@@ -474,7 +474,7 @@ msgstr "Description"
 msgid "Disable Timer"
 msgstr "Désactiver Timer"
 
-#: ../plugin/plugin.py:145
+#: ../plugin/plugin.py:146
 msgid "Disable remote access for user root"
 msgstr "Désactiver l'accès pour l'utilisateur root"
 
@@ -534,7 +534,7 @@ msgstr "Pilotes"
 msgid "Duration"
 msgstr "Longueur"
 
-#: ../plugin/controllers/models/services.py:302
+#: ../plugin/controllers/models/info.py:584
 msgid "E"
 msgstr "E"
 
@@ -562,7 +562,7 @@ msgstr "Éditer Timer"
 msgid "Editor"
 msgstr "Editeur"
 
-#: ../plugin/plugin.py:144
+#: ../plugin/plugin.py:145
 msgid "Enable Authentication for streaming"
 msgstr "Activer l'authentification pour le streaming"
 
@@ -570,15 +570,15 @@ msgstr "Activer l'authentification pour le streaming"
 msgid "Enable Filtering"
 msgstr "Activer le filtrage"
 
-#: ../plugin/plugin.py:137
+#: ../plugin/plugin.py:138
 msgid "Enable HTTP Authentication"
 msgstr "Activer l'authentification HTTP"
 
-#: ../plugin/plugin.py:138
+#: ../plugin/plugin.py:139
 msgid "Enable HTTPS"
 msgstr "Activer HTTPS"
 
-#: ../plugin/plugin.py:141
+#: ../plugin/plugin.py:142
 msgid "Enable HTTPS Authentication"
 msgstr "Activer l'authentification HTTPS"
 
@@ -586,7 +586,7 @@ msgstr "Activer l'authentification HTTPS"
 msgid "Enable Messages"
 msgstr "Activer les messages"
 
-#: ../plugin/plugin.py:149
+#: ../plugin/plugin.py:150
 msgid "Enable Parental Control"
 msgstr "Activer le contrôle parental"
 
@@ -594,7 +594,7 @@ msgstr "Activer le contrôle parental"
 msgid "Enable Timer"
 msgstr "Activer Timer"
 
-#: ../plugin/plugin.py:148
+#: ../plugin/plugin.py:149
 msgid "Enable access from VPNs"
 msgstr "Activer l'accès depuis les VPNs"
 
@@ -779,11 +779,11 @@ msgstr "Capturer écran"
 msgid "Gui version"
 msgstr "Version IGU"
 
-#: ../plugin/plugin.py:136
+#: ../plugin/plugin.py:137
 msgid "HTTP port"
 msgstr "Port HTTP"
 
-#: ../plugin/plugin.py:140
+#: ../plugin/plugin.py:141
 msgid "HTTPS port"
 msgstr "Port HTTPS"
 
@@ -1250,7 +1250,7 @@ msgstr "Open Source Web Interface pour récepteur Linux"
 msgid "Open in new window"
 msgstr "Ouvrir dans une nouvelle fenêtre"
 
-#: ../plugin/plugin.py:128
+#: ../plugin/plugin.py:129
 msgid "OpenWebInterface Enabled"
 msgstr "OpenWebInterface activé"
 
@@ -1258,8 +1258,8 @@ msgstr "OpenWebInterface activé"
 msgid "OpenWebif Browser Settings"
 msgstr "Paramètres du navigateur OpenWebif"
 
-#: ../plugin/plugin.py:162 ../plugin/plugin.py:226 ../plugin/plugin.py:228
-#: ../plugin/plugin.py:230
+#: ../plugin/plugin.py:163 ../plugin/plugin.py:227 ../plugin/plugin.py:229
+#: ../plugin/plugin.py:231
 msgid "OpenWebif Configuration"
 msgstr "Configuration OpenWebif"
 
@@ -1267,7 +1267,7 @@ msgstr "Configuration OpenWebif"
 msgid "OpenWebif Settings"
 msgstr "Paramètres OpenWebif"
 
-#: ../plugin/plugin.py:114
+#: ../plugin/plugin.py:115
 msgid "OpenWebif url: http://yourip:port"
 msgstr "OpenWebif url: http://yourip:port"
 
@@ -1434,7 +1434,7 @@ msgstr "Renommer l'enregistrement"
 msgid "Repeated"
 msgstr "Répété"
 
-#: ../plugin/plugin.py:142
+#: ../plugin/plugin.py:143
 msgid "Require client cert for HTTPS"
 msgstr "Exiger certificat client pour HTTPS"
 
@@ -1499,7 +1499,7 @@ msgid "Saturday"
 msgstr "Samedi"
 
 #: ../plugin/controllers/i18n.py:206 ../plugin/controllers/i18n.py:354
-#: ../plugin/controllers/i18n.py:406 ../plugin/plugin.py:113
+#: ../plugin/controllers/i18n.py:406 ../plugin/plugin.py:114
 msgid "Save"
 msgstr "Sauvegarder"
 
@@ -1632,9 +1632,17 @@ msgstr "Afficher l'OpenWebif Complet"
 msgid "Show Picon in channel list"
 msgstr "Afficher les picons dans la liste des chaînes"
 
-#: ../plugin/controllers/i18n.py:180 ../plugin/plugin.py:131
+#: ../plugin/controllers/i18n.py:501
+msgid "Show Service type in channel list"
+msgstr "Afficher le type de service dans la liste des chaînes"
+
+#: ../plugin/controllers/i18n.py:180 ../plugin/plugin.py:132
 msgid "Show box name in header"
 msgstr "Afficher le nom du récepteur dans l'entête"
+
+#: ../plugin/controllers/i18n.py:500
+msgid "Show details"
+msgstr "Afficher les détails"
 
 #: ../plugin/controllers/i18n.py:221
 msgid "Show full remote"
@@ -2027,11 +2035,11 @@ msgstr "Fichiers chargés"
 msgid "Use a custom location"
 msgstr "Utiliser une localisation personnalisée"
 
-#: ../plugin/controllers/i18n.py:181 ../plugin/plugin.py:133
+#: ../plugin/controllers/i18n.py:181 ../plugin/plugin.py:134
 msgid "Use custom box name"
 msgstr "Utiliser un nom personnalisé"
 
-#: ../plugin/controllers/i18n.py:472 ../plugin/plugin.py:130
+#: ../plugin/controllers/i18n.py:472 ../plugin/plugin.py:131
 msgid "Use new design"
 msgstr "Utiliser le nouveau design"
 
@@ -2079,7 +2087,7 @@ msgstr "Ctrl Volume"
 msgid "Vpid"
 msgstr "Vpid"
 
-#: ../plugin/controllers/models/services.py:300
+#: ../plugin/controllers/models/info.py:587
 msgid "W"
 msgstr "O"
 
@@ -2131,7 +2139,7 @@ msgstr "Hebdomadaire (Lundi)"
 msgid "Weekly (Sunday)"
 msgstr "Hebdomadaire (Dimanche)"
 
-#: ../plugin/plugin.py:147
+#: ../plugin/plugin.py:148
 msgid "Without auth only local access is allowed!"
 msgstr "Sans authentification seul l'accès local est autorisé!"
 
