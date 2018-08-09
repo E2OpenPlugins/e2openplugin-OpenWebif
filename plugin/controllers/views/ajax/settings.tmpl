@@ -113,37 +113,39 @@
 			<div id="content_main2">
 				<h3 class="ui-widget-header">$tstrings['packages']</h3>
 				<div>
-				<span id="tb2">
-				<input class="pkgbtn" type="radio" id="pkgbtn1" name="tb2" checked="checked" /><label for="pkgbtn1">$tstrings['update']</label>
-				<input class="pkgbtn" type="radio" id="pkgbtn2" name="tb2" /><label for="pkgbtn2">$tstrings['installed']</label>
-				<input class="pkgbtn" type="radio" id="pkgbtn3" name="tb2" /><label for="pkgbtn3">$tstrings['all']</label>
-				<input class="pkgbtn" type="radio" id="pkgbtn4" name="tb2" /><label for="pkgbtn4">$tstrings['more']</label>
-				</span>
-				<div id="searchpkd"><label for="searchpk">Search:</label><input id="searchpk" value="..." class='ui-widget ui-widget-content ui-corner-all'></div>
-				<input type="checkbox" name="showdetails" checked="checked"/><label for="showdetails">$tstrings['showdetails']</label
-				<div>
-				<div id="pkgmore">
-				<br><br>
-				<button id="updatefeed">$tstrings['update_feed']</button>
-				<br><br>
-				<button id="upgrade">$tstrings['upgrade_packages']</button>
-				<br><br>
-				<div id="pkgupload">
-				<button id="selectfile">$tstrings['select_ipk_upload']</button>
-				<br><br>
-				$tstrings['uploaded_files']:<br>
-				<ul id='tmpfiles'></ul>
-				<br><br>
-				<form id="uploadpkg" style="display:none" action"uploadpkg"="" method="post" enctype="multipart/form-data" encoding="multipart/form-data">
-				<input type="file" name="rfile" id="rfile" maxlength="100000">
-				<input type="hidden" name="filename" id="filename">
-				</form>
+					<span id="tb2">
+					<input class="pkgbtn" type="radio" id="pkgbtn1" name="tb2" checked="checked" /><label for="pkgbtn1">$tstrings['update']</label>
+					<input class="pkgbtn" type="radio" id="pkgbtn2" name="tb2" /><label for="pkgbtn2">$tstrings['installed']</label>
+					<input class="pkgbtn" type="radio" id="pkgbtn3" name="tb2" /><label for="pkgbtn3">$tstrings['all']</label>
+					<input class="pkgbtn" type="radio" id="pkgbtn4" name="tb2" /><label for="pkgbtn4">$tstrings['more']</label>
+					</span>
+					<div id="searchpkd"><label for="searchpk">Search:</label><input id="searchpk" value="..." class='ui-widget ui-widget-content ui-corner-all'>
+					<label for="showdetails">$tstrings['showdetails']</label>
+					<input type="checkbox" name="showdetails" checked="checked"/>
+					</div>
 				</div>
-				<textarea id="resulttext" style='height:300px;width:100%'>
-				</textarea>
+				<div id="pkgmore">
+					<br><br>
+					<button id="updatefeed">$tstrings['update_feed']</button>
+					<br><br>
+					<button id="upgrade">$tstrings['upgrade_packages']</button>
+					<br><br>
+					<div id="pkgupload">
+						<button id="selectfile">$tstrings['select_ipk_upload']</button>
+						<br><br>
+						$tstrings['uploaded_files']:<br>
+						<ul id='tmpfiles'></ul>
+						<br><br>
+						<form id="uploadpkg" style="display:none" action"uploadpkg"="" method="post" enctype="multipart/form-data" encoding="multipart/form-data">
+						<input type="file" name="rfile" id="rfile" maxlength="100000">
+						<input type="hidden" name="filename" id="filename">
+						</form>
+					</div>
+					<textarea id="resulttext" style='height:300px;width:100%'>
+					</textarea>
 				</div>
 				<div id="tblpackages">
-				<ul id="packagelist"><div id='spinner'><div class='fa fa-spinner fa-spin'></div></div></ul>
+					<ul id="packagelist"><div id='spinner'><div class='fa fa-spinner fa-spin'></div></div></ul>
 				</div>
 			</div>
 		</div>
