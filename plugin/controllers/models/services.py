@@ -67,6 +67,11 @@ def getServiceInfoString(info, what):
 def getCurrentService(session):
 	try:
 		info = session.nav.getCurrentService().info()
+		ref = str(getServiceInfoString(info, iServiceInformation.sServiceref))
+		if len(ref) < 10:
+			serviceref = session.nav.getCurrentlyPlayingServiceReference()
+			if serviceref is not None:
+				ref = serviceref.toString()
 		return {
 			"result": True,
 			"name": filterName(info.getName()),
@@ -83,10 +88,11 @@ def getCurrentService(session):
 			"tsid": getServiceInfoString(info, iServiceInformation.sTSID),
 			"onid": getServiceInfoString(info, iServiceInformation.sONID),
 			"sid": getServiceInfoString(info, iServiceInformation.sSID),
-			"ref": quote(getServiceInfoString(info, iServiceInformation.sServiceref), safe=' ~@#$&()*!+=:;,.?/\''),
+			"ref": quote(ref, safe=' ~@#$&()*!+=:;,.?/\''),
 			"iswidescreen": info.getInfo(iServiceInformation.sAspect) in (3, 4, 7, 8, 0xB, 0xC, 0xF, 0x10)
 		}
-	except Exception:
+	except Exception, e:
+		print str(e)
 		return {
 			"result": False,
 			"name": "",
