@@ -510,6 +510,8 @@ class WebController(BaseController):
 			bRef = ""
 
 		request.setHeader('Content-Type', 'application/x-mpegurl')
+		if "bName" in request.args.keys():
+			request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (request.args["bName"][0], 'm3u8'))
 		services = getServices(bRef, False)
 		if comp_config.OpenWebif.auth_for_streaming.value:
 			session = GetSession()

@@ -1,8 +1,8 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.17
+//* Version 1.2.18
 //******************************************************************************
-//* Copyright (C) 2011-2017 E2OpenPlugins
+//* Copyright (C) 2011-2018 E2OpenPlugins
 //*
 //* V 1.0   - Initial Version
 //* V 1.1   - add movie move and rename
@@ -30,6 +30,7 @@
 //* V 1.2.13 - fix repeating timer edit #631
 //* V 1.2.14,15,16 - fix json parse
 //* V 1.2.17 - allow timers for IPTV #715, added LCD, PiP into screenshots
+//* V 1.2.18 - rename stream.m3u8 to <channelname>.m3u8
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -755,12 +756,12 @@ function setOSD( statusinfo )
 				stream += "<a href='#' onclick=\"jumper8001('" + sref + "', '" + station + "')\"; title='" + streamtitle;
 				stream += "<a href='#' onclick=\"jumper8002('" + sref + "', '" + station + "')\"; title='" + streamtitletrans;
 			} else {
-				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "' title='" + streamtitle;
+				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "&fname=" + station + "' title='" + streamtitle;
 			}
 			stream +="</div>";
 			$("#osd").html(stream + "<a href='#' onClick='load_maincontent(\"ajax/tv\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 		} else if ((sref.indexOf("1:0:2") !== -1) || (sref.indexOf("1:134:2") !== -1)) {
-			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "' title='" + streamtitle;
+			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "&fname=" + station + "' title='" + streamtitle;
 			stream +="</div>";
 			$("#osd").html(stream + "<a href='#' onClick='load_maincontent(\"ajax/radio\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 		} else if (sref.indexOf("1:0:0") !== -1) {
@@ -1672,6 +1673,7 @@ function jumper8001( sref, sname ) {
 	var deviceType = getDeviceType();
 	document.portForm.ref.value = sref;
 	document.portForm.name.value = sname;
+	document.portForm.fname.value = sname;
 	document.portForm.device.value = "etc";
 	document.portForm.submit();
 }

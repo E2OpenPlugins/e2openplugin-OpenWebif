@@ -65,7 +65,7 @@ _(Dependencies should be handled by using ipkg/opkg packages)_
 
 ### Compiling JavaScript Files
 
-The javascipt source files inside of /sourcefiles/js needs to compress via UglifyJS2 on http://refresh-sf.com/.
+The javascipt source files inside of /sourcefiles/js needs to compress via UglifyJS3 on https://skalman.github.io/UglifyJS-online/.
 You need to increase the version and write down your modification description inside of the source file.
 The compressed file have the following syntax : xx-<version>.min.js
 

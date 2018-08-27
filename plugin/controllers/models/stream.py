@@ -119,6 +119,9 @@ def getStream(session, request, m3ufile):
 
 	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s%s:%s/%s%s\n" % (progopt, auth, request.getRequestHostname(), portNumber, sRef, args)
 	request.setHeader('Content-Type', 'application/x-mpegurl')
+	# Note: do not rename the m3u file all the time
+	if "fname" in request.args:
+		request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (request.args["fname"][0], 'm3u8'))
 	return response
 
 
