@@ -52,7 +52,7 @@
 		</div>
 	</div>
 
-	#if $channel.has_key('protection') and $channel.has_key('now_title') and $channel.protection == "0"
+	#if $channel.has_key('protection') and $channel.protection == "0"
 	<div>
 		#if $showchannelpicon
 			<div class="channel-picon">
@@ -62,6 +62,7 @@
 			<div style="display:none;"></div>
 		#end if
 		<div class="channel-info">
+		#if $channel.has_key('now_title')
 			<div class="tt">
 				<div class="a">
 					$channel.now_begin &mdash; $channel.now_end &nbsp;&nbsp;&nbsp;
@@ -95,6 +96,7 @@
 					<div class="tcld ui-state-default" id="$channel.next_idp">$tstrings['no_description_available']</div>
 				</div>
 			</div>
+		#end if
 		</div>
 	</div>
 	#end if
