@@ -52,7 +52,14 @@
 		</div>
 	</div>
 
-	#if $channel.has_key('protection') and $channel.protection == "0"
+	#set $picon = True
+	#if $showchannelpicon and not $channel.has_key('now_title')
+		#if $channel.has_key('picon') and $channel.picon == "/images/default_picon.png"
+			#set $picon = False
+		#end if
+	#end if
+
+	#if $channel.has_key('protection') and $channel.protection == "0" and $picon
 	<div>
 		#if $showchannelpicon
 			<div class="channel-picon">
