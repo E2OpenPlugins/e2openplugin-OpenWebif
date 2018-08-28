@@ -963,6 +963,10 @@ def getPicon(sname):
 				return "/picon/" + cname + ".png"
 			if len(cname) > 2 and cname.endswith('hd') and fileExists(pp + cname[:-2] + ".png"):
 				return "/picon/" + cname[:-2] + ".png"
+			if len(cname) > 5:
+				series = re.sub(r's[0-9]*e[0-9]*$', '', cname)
+				if fileExists(pp + series + ".png"):
+					return "/picon/" + series + ".png"
 
 		sname = GetWithAlternative(sname)
 		if sname is not None:
