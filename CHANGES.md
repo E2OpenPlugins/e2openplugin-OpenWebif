@@ -1,6 +1,6 @@
 ## Version 1.3.4
 ## (in development)
-* Autotimer restore
+* Autotimer backup/restore
 
 ## Version 1.3.3
 * get group members of alternative group in servicelist of bqe

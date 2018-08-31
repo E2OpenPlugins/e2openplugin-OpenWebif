@@ -20,11 +20,12 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
 ##########################################################################
 
-from twisted.web import resource, http
+from twisted.web import static, resource, http
 import os
 
+ATFN = "/tmp/autotimer_backup.tar"  # nosec
+
 class ATUploadFile(resource.Resource):
-	FN = "/tmp/autotimer_backup.xml"  # nosec
 
 	def __init__(self, session):
 		self.session = session
@@ -38,67 +39,93 @@ class ATUploadFile(resource.Resource):
 		if not content:
 			result = [False, 'Error upload File']
 		else:
-			fileh = os.open(self.FN, os.O_WRONLY | os.O_CREAT)
+			fileh = os.open(ATFN, os.O_WRONLY | os.O_CREAT)
 			bytes = 0
 			if fileh:
 				bytes = os.write(fileh, content)
 				os.close(fileh)
 			if bytes <= 0:
 				try:
-					os.remove(self.FN)
+					os.remove(ATFN)
 				except OSError:
 					pass
 				result = [False, 'Error writing File']
 			else:
-				result = [True, self.FN]
+				result = [True, ATFN]
 		return json.dumps({"Result": result})
+
+class AutoTimerDoBackupResource(resource.Resource):
+	def render(self, request):
+		request.setResponseCode(http.OK)
+		request.setHeader('Content-type', 'application/xhtml+xml')
+		request.setHeader('charset', 'UTF-8')
+		state, statetext = self.backupFiles()
+
+	def backupFiles(self):
+		if path.exists(ATFN):
+			remove(ATFN)
+		checkfile = '/tmp/.autotimeredit'
+		f = open(checkfile, 'w')
+		if f:
+			files = []
+			f.write('created with AutoTimerWebEditor')
+			f.close()
+			files.append(checkfile)
+			files.append("/etc/enigma2/autotimer.xml")
+			tarFiles = ""
+			for arg in files:
+				if not path.exists(arg):
+					return (False, "Error while preparing backup file, %s does not exists." % arg)
+				tarFiles += "%s " % arg
+			lines = popen("tar cvf %s %s" % (ATFN,tarFiles)).readlines()
+			remove(checkfile)
+			return (True, ATFN)
+		else:
+			return (False, "Error while preparing backup file.")
 
 class AutoTimerDoRestoreResource(resource.Resource):
 	def render(self, request):
 		request.setResponseCode(http.OK)
 		request.setHeader('Content-type', 'application/xhtml+xml')
 		request.setHeader('charset', 'UTF-8')
-
-		BFN = "/tmp/autotimer_backup.xml"  # nosec
-		OFN = "/etc/enigma2/autotimer.xml"  # nosec
-		OBFN = OFN + '.BAK'
-
-		state = False
-		statetext = "No Backup File found"
-
-		if os.path.exists(BFN):
-			if os.path.exists(OBFN):
-				os.remove(OBFN)
-
-			try:
-				os.rename(OFN, OBFN)
-			except OSError:
-				# TODO: proper error handling
-				pass
-
-			try:
-				os.rename(BFN, OFN)
-			except OSError:
-				# TODO: proper error handling
-				pass
-
-			from Plugins.Extensions.AutoTimer.plugin import autotimer
-			if autotimer is not None:
-				try:
-					autotimer.configMtime = -1
-					autotimer.readXml()
-				except Exception:
-				# TODO: proper error handling
-					pass
-
-			state = True
-			statetext = ""
+		
+		state, statetext = self.restoreFiles()
 		
 		return """<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
 <e2simplexmlresult>
 	<e2state>%s</e2state>
 	<e2statetext>%s</e2statetext>
 </e2simplexmlresult>""" % ('True' if state else 'False', statetext)
+
+	def restoreFiles(self):
+		if path.exists(ATFN):
+			check_tar = False
+			lines = popen('tar -tf %s' % ATFN).readlines()
+			for line in lines:
+				pos = line.find('tmp/.autotimeredit')
+				if pos != -1:
+					check_tar = True
+					break
+			if check_tar:
+				lines = popen('tar xvf %s -C /' % ATFN).readlines()
+
+				from Plugins.Extensions.AutoTimer.plugin import autotimer
+				if autotimer is not None:
+					try:
+						# Force config reload
+						autotimer.configMtime = -1
+						autotimer.readXml()
+					except Exception:
+						# TODO: proper error handling
+						pass
+				
+				remove(ATFN)
+				return (True, "AutoTimer-settings were restored successfully")
+			else:
+				return (False, "Error, %s was not created with AutoTimerWebEditor..." % ATFN)
+		else:
+			return (False, "Error, %s does not exists, restore is not possible..." % ATFN)
+
 
 class ATController(resource.Resource):
 	def __init__(self, session):
@@ -127,6 +154,8 @@ class ATController(resource.Resource):
 			pass
 		self.putChild('uploadrestore', ATUploadFile(session))
 		self.putChild('restore', AutoTimerDoRestoreResource())
+		self.putChild('backup', AutoTimerDoBackupResource())
+		self.putChild('tmp', static.File('/tmp'))  # nosec
 
 	def render(self, request):
 		request.setResponseCode(http.OK)
