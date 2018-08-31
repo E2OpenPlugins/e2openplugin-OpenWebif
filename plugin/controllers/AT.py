@@ -21,7 +21,84 @@
 ##########################################################################
 
 from twisted.web import resource, http
+import os
 
+class ATUploadFile(resource.Resource):
+	FN = "/tmp/autotimer_backup.xml"  # nosec
+
+	def __init__(self, session):
+		self.session = session
+		resource.Resource.__init__(self)
+
+	def render_POST(self, request):
+		request.setResponseCode(http.OK)
+		request.setHeader('content-type', 'text/plain')
+		request.setHeader('charset', 'UTF-8')
+		content = request.args['rfile'][0]
+		if not content:
+			result = [False, 'Error upload File']
+		else:
+			fileh = os.open(self.FN, os.O_WRONLY | os.O_CREAT)
+			bytes = 0
+			if fileh:
+				bytes = os.write(fileh, content)
+				os.close(fileh)
+			if bytes <= 0:
+				try:
+					os.remove(self.FN)
+				except OSError:
+					pass
+				result = [False, 'Error writing File']
+			else:
+				result = [True, self.FN]
+		return json.dumps({"Result": result})
+
+class AutoTimerDoRestoreResource(resource.Resource):
+	def render(self, request):
+		request.setResponseCode(http.OK)
+		request.setHeader('Content-type', 'application/xhtml+xml')
+		request.setHeader('charset', 'UTF-8')
+
+		BFN = "/tmp/autotimer_backup.xml"  # nosec
+		OFN = "/etc/enigma2/autotimer.xml"  # nosec
+		OBFN = OFN + '.BAK'
+
+		state = False
+		statetext = "No Backup File found"
+
+		if os.path.exists(BFN):
+			if os.path.exists(OBFN):
+				os.remove(OBFN)
+
+			try:
+				os.rename(OFN, OBFN)
+			except OSError:
+				# TODO: proper error handling
+				pass
+
+			try:
+				os.rename(BFN, OFN)
+			except OSError:
+				# TODO: proper error handling
+				pass
+
+			from Plugins.Extensions.AutoTimer.plugin import autotimer
+			if autotimer is not None:
+				try:
+					autotimer.configMtime = -1
+					autotimer.readXml()
+				except Exception:
+				# TODO: proper error handling
+					pass
+
+			state = True
+			statetext = ""
+		
+		return """<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
+<e2simplexmlresult>
+	<e2state>%s</e2state>
+	<e2statetext>%s</e2statetext>
+</e2simplexmlresult>""" % ('True' if state else 'False', statetext)
 
 class ATController(resource.Resource):
 	def __init__(self, session):
@@ -48,6 +125,8 @@ class ATController(resource.Resource):
 		except ImportError:
 			# this is not an error
 			pass
+		self.putChild('uploadrestore', ATUploadFile(session))
+		self.putChild('restore', AutoTimerDoRestoreResource())
 
 	def render(self, request):
 		request.setResponseCode(http.OK)
