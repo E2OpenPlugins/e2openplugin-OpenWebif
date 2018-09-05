@@ -1052,6 +1052,10 @@ msgstr "Gesperrt"
 msgid "MAC address"
 msgstr "MAC-Adresse"
 
+#: plugin.py:131
+msgid "Use new design"
+msgstr "Nutze neues Design"
+
 #: plugin/local.py:131
 msgid "Main"
 msgstr "Hauptmenü"
