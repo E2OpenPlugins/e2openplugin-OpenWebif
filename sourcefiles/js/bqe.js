@@ -1,6 +1,6 @@
 //******************************************************************************
 //* bqe.js: openwebif Bouqueteditor plugin
-//* Version 2.7
+//* Version 2.8
 //******************************************************************************
 //* Copyright (C) 2014-2018 Joerg Bleyel
 //* Copyright (C) 2014-2018 E2OpenPlugins
@@ -16,6 +16,7 @@
 //* V 2.5 - prepare support spacers #239
 //* V 2.6 - improve spacers #239
 //* V 2.7 - improve channel numbers
+//* V 2.8 - show ns text #840
 
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
@@ -247,7 +248,9 @@
 					var sref = val['servicereference'];
 					var name = val['servicename'];
 					var stype = sref.split(':')[2];
-					var m = '<span class="marker">' + (self.sType[stype] || '') + '</span>';
+					var ns = sref.split(':')[6];
+					var _ns = self.getNS(ns);
+					var m = '<span class="marker">' + _ns + ' ' + (self.sType[stype] || '') + '</span>';
 					options.push( $('<li/>', {
 						class: "ui-widget-content",
 						data: { stype: stype, sref: sref }
@@ -907,7 +910,28 @@
 					function(){ $(this).addClass(self.hovercls); },
 					function(){ $(this).removeClass(self.hovercls); }
 				);
+			},getNS : function(ns)
+			{
+				var _ns = ns.toLowerCase();
+				if (ns.startsWith("ffff",0))
+				{
+					return "DVB-C";
+				}
+				if (ns.startsWith("eeee",0))
+				{
+					return "DVB-T";
+				}
+				
+				var __ns = parseInt(_ns,16) >> 16 & 0xFFF;
+				var d = " E";
+				if(__ns > 1800)
+				{
+					d = " W";
+					__ns = 3600 - _ns;
+				}
+				return (__ns / 10).toString() + "." + (__ns % 10).toString() + d;
 			}
+			
 		 };
 	};
 
