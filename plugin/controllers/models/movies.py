@@ -1,20 +1,32 @@
 # -*- coding: utf-8 -*-
 
-##############################################################################
-#                        2011 E2OpenPlugins                                  #
-#                                                                            #
-#  This file is open source software; you can redistribute it and/or modify  #
-#     it under the terms of the GNU General Public License version 2 as      #
-#               published by the Free Software Foundation.                   #
-#                                                                            #
-##############################################################################
+##########################################################################
+# OpenWebif: BaseController
+##########################################################################
+# Copyright (C) 2011 - 2018 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
+
 import os
 
 from enigma import eServiceReference, iServiceInformation, eServiceCenter
 from ServiceReference import ServiceReference
 from Tools.FuzzyDate import FuzzyTime
 from Components.config import config
-from Components.MovieList import MovieList
+from Components.MovieList import MovieList, moviePlayState
 from Tools.Directories import fileExists
 from Screens import MovieSelection
 from ..i18n import _
@@ -27,42 +39,6 @@ MOVIE_LIST_ROOT_FALLBACK = '/media'
 
 # TODO : optimize move using FileTransferJob if available
 # TODO : add copy api
-
-
-def getPosition(cutfile, movie_len):
-	cut_list = []
-	if movie_len is not None and fileExists(cutfile):
-		try:
-			import struct
-			with open(cutfile) as f:
-				data = f.read()
-			while len(data) > 0:
-				packedCue = data[:12]
-				data = data[12:]
-				cue = struct.unpack('>QI', packedCue)
-				cut_list.append(cue)
-		except Exception:
-			return 0
-	else:
-		return 0
-	last_end_point = None
-	if len(cut_list):
-		for (pts, what) in cut_list:
-			if what == 3:
-				last_end_point = pts / 90000  # in seconds
-	else:
-		return 0
-	try:
-		movie_len = int(movie_len)
-	except ValueError:
-		return 0
-	if movie_len > 0 and last_end_point is not None:
-		play_progress = (last_end_point * 100) / movie_len
-		if play_progress > 100:
-			play_progress = 100
-	else:
-		play_progress = 0
-	return play_progress
 
 
 def checkParentalProtection(directory):
@@ -151,12 +127,12 @@ def getMovieList(rargs=None, locations=None):
 		dir_is_protected = False
 
 	if not dir_is_protected:
+		movielist = MovieList(None)
 		for root in folders:
-			movielist = MovieList(None)
-			movielist.load(root, None)
-
 			if tag is not None:
-				movielist.reload(root=root, filter_tags=[tag])
+				movielist.load(root=root, filter_tags=[tag])
+			else:
+				movielist.load(root=root, filter_tags=None)
 
 			for (serviceref, info, begin, unknown) in movielist.list:
 				if serviceref.flags & eServiceReference.mustDescent:
@@ -201,7 +177,7 @@ def getMovieList(rargs=None, locations=None):
 				if length_minutes:
 					movie['length'] = "%d:%02d" % (length_minutes / 60, length_minutes % 60)
 					if fields is None or 'pos' in fields:
-						movie['lastseen'] = getPosition(filename + '.cuts', length_minutes)
+						movie['lastseen'] = moviePlayState(filename + '.cuts', serviceref, length_minutes) or 0
 
 				if fields is None or 'desc' in fields:
 					txtfile = name + '.txt'
@@ -237,6 +213,7 @@ def getMovieList(rargs=None, locations=None):
 					movie['filesize_readable'] = sz
 
 				movieliste.append(movie)
+		del movielist
 
 	if locations is None:
 		return {
