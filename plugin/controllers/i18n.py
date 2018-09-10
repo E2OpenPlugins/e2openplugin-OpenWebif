@@ -411,8 +411,6 @@ tstrings = {
 	'bqe_add_alternative': _("Add channel(s) as alternate"),
 	'bqe_search': _("Search"),
 	'bqe_reload': _("Reload"),
-	'bqe_export': _("Export"),
-	'bqe_import': _("Import"),
 	'bqe_add_bq': _("Add Bouquet"),
 	'bqe_rename_bq': _("Rename Bouquet"),
 	'bqe_delete_bq': _("Delete Bouquet"),
@@ -498,6 +496,9 @@ tstrings = {
 	'upload_error': _("Upload File Error"),
 	'showfullremoteshort': _("Full remote"),
 	'showdetails': _("Show details"),
-	'show_details_in_channel_list': _("Show Service type in channel list")
+	'show_details_in_channel_list': _("Show Service type in channel list"),
+	'export': _("Export"),
+	'import': _("Import")
+
 }
 

@@ -220,6 +220,8 @@ input#to,input#from,.text.number {width:60px;}
 						<button id="atbutton6">Test</button>
 						<button id="atbutton7">$tstrings['at_timers']</button>
 						<button id="atbutton8" data-title="$tstrings['ats_auto_timer_settings']">$tstrings['at_settings']</button>
+						<button id="atbutton9">$tstrings['export']</button>
+						<button id="atbutton10">$tstrings['import']</button>
 						</div>
 					</div>
 					<div id="statuscont" style="display:none">
@@ -298,8 +300,10 @@ input#to,input#from,.text.number {width:60px;}
 </form>
 </div>
 <div>
-
-<script type="text/javascript" src="/js/at-2.6.min.js"></script>
+<form id="uploadrestore" style="display:none" action"uploadrestore"="" method="post" enctype="multipart/form-data" encoding="multipart/form-data">
+	<input type="file" name="rfile" id="rfile">
+</form>
+<script type="text/javascript" src="/js/at-2.7.min.js"></script>
 <script type="text/javascript">
 #raw
 $(function() { InitPage();});

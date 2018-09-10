@@ -1,9 +1,9 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 2.6
+//* Version 2.7
 //******************************************************************************
-//* Copyright (C) 2014-2017 Joerg Bleyel
-//* Copyright (C) 2014-2017 E2OpenPlugins
+//* Copyright (C) 2014-2018 Joerg Bleyel
+//* Copyright (C) 2014-2018 E2OpenPlugins
 //*
 //* V 1.0 - Initial Version
 //* V 1.1 - Support translation, small ui fixes
@@ -22,6 +22,7 @@
 //* V 2.4 - fix simulate
 //* V 2.5 - add test api / fix counter
 //* V 2.6 - add rec+zap timer support
+//* V 2.7 - backup / restore
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -31,7 +32,7 @@
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
 //*******************************************************************************
 
-// TODO: backup/restore at, some error handler
+// TODO: some error handler
 
 function toUnixDate(date){
 	var datea = date.split('.');
@@ -266,6 +267,9 @@ function InitPage() {
 	$("#atbutton8").click(function () { getAutoTimerSettings(); });
 	// TODO: icons
 
+	$("#atbutton9").click(function () { exportAT(); });
+	$("#atbutton10").click(function () { importAT(); });
+
 	$('#statuscont').hide();
 	$("#simdlg").dialog({
 		modal : true, 
@@ -314,6 +318,11 @@ function InitPage() {
 			nf.find(".FI").show();
 		}
 	});
+	
+	$("#rfile").change(function() {
+		prepareRestore($(this));
+	});
+
 }
 
 var atxml;
@@ -1193,4 +1202,86 @@ function showError(txt,st)
 	}
 	
 }
+
+function importAT () {
+	$("#rfile").trigger('click');
+}
+
+function prepareRestore (ff) {
+	var fn = ff.val()
+	fn = fn.replace('C:\\fakepath\\','');
+	if (confirm(tstr_bqe_restore_question + ' ( ' + fn + ') ?') === false) {
+		return;
+	}
+
+	$('form#uploadrestore')
+		.unbind('submit')
+		.submit(function (_e) 
+	{
+		var formData = new FormData(this);
+		$.ajax({
+			url: '/autotimer/uploadrestore',
+			type: 'POST',
+			data:  formData,
+			mimeType:"multipart/form-data",
+			contentType: false,
+			cache: false,
+			processData:false,
+			dataType: 'json',
+			success: function (data, textStatus, jqXHR) {
+				var r = data.Result;
+				if (r[0]) {
+					doRestore(r[1]);
+				} else {
+					showError("Upload File: " + textStatus);
+				}
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				showError("Upload File Error: " + errorThrown);
+			}
+		});
+		_e.preventDefault();
+		try {
+			_e.unbind();
+		} catch(ex){}
+	});
+	$('form#uploadrestore').submit();
+}
+
+function doRestore (fn) {
+	if (fn) {
+		$.ajax({
+			url: '/autotimer/restore',
+			dataType: 'xml',
+			cache: false,
+			success: function ( xml ) {
+				var state=$(xml).find("e2state").first();
+				var txt=$(xml).find("e2statetext").first();
+				showError(txt.text(),state.text());
+			}
+		});
+	}
+}
+
+function exportAT () {
+	if (confirm('export AT ?') === false) {
+		return;
+	}
+	$.ajax({
+		url: '/autotimer/backup',
+		dataType: 'xml',
+		cache: false,
+		data: { }, 
+		success: function ( xml ) {
+			var state=$(xml).find("e2state").first();
+			if (state.text() == 'false') {
+				showError($(xml).find("e2statetext").first().text());
+			} else {
+				var url = "/autotimer/tmp/autotimer_backup.tar";
+				window.open(url,'Download');
+			}
+		}
+	});
+}
+
 //# sourceURL=js/at.js

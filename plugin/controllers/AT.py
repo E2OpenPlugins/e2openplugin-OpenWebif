@@ -22,6 +22,7 @@
 
 from twisted.web import static, resource, http
 import os
+import json
 
 ATFN = "/tmp/autotimer_backup.tar"  # nosec
 
@@ -60,25 +61,30 @@ class AutoTimerDoBackupResource(resource.Resource):
 		request.setHeader('Content-type', 'application/xhtml+xml')
 		request.setHeader('charset', 'UTF-8')
 		state, statetext = self.backupFiles()
+		return """<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
+<e2simplexmlresult>
+	<e2state>%s</e2state>
+	<e2statetext>%s</e2statetext>
+</e2simplexmlresult>""" % ('True' if state else 'False', statetext)
 
 	def backupFiles(self):
-		if path.exists(ATFN):
-			remove(ATFN)
+		if os.path.exists(ATFN):
+			os.remove(ATFN)
 		checkfile = '/tmp/.autotimeredit'
-		f = open(checkfile, 'w')
+		f = os.open(checkfile, os.O_WRONLY | os.O_CREAT)
 		if f:
 			files = []
-			f.write('created with AutoTimerWebEditor')
-			f.close()
+			os.write(f, 'created with AutoTimerWebEditor')
+			os.close(f)
 			files.append(checkfile)
 			files.append("/etc/enigma2/autotimer.xml")
 			tarFiles = ""
 			for arg in files:
-				if not path.exists(arg):
+				if not os.path.exists(arg):
 					return (False, "Error while preparing backup file, %s does not exists." % arg)
 				tarFiles += "%s " % arg
-			lines = popen("tar cvf %s %s" % (ATFN,tarFiles)).readlines()
-			remove(checkfile)
+			lines = os.popen("tar cvf %s %s" % (ATFN,tarFiles)).readlines()
+			os.remove(checkfile)
 			return (True, ATFN)
 		else:
 			return (False, "Error while preparing backup file.")
@@ -98,16 +104,16 @@ class AutoTimerDoRestoreResource(resource.Resource):
 </e2simplexmlresult>""" % ('True' if state else 'False', statetext)
 
 	def restoreFiles(self):
-		if path.exists(ATFN):
+		if os.path.exists(ATFN):
 			check_tar = False
-			lines = popen('tar -tf %s' % ATFN).readlines()
+			lines = os.popen('tar -tf %s' % ATFN).readlines()
 			for line in lines:
 				pos = line.find('tmp/.autotimeredit')
 				if pos != -1:
 					check_tar = True
 					break
 			if check_tar:
-				lines = popen('tar xvf %s -C /' % ATFN).readlines()
+				lines = os.popen('tar xvf %s -C /' % ATFN).readlines()
 
 				from Plugins.Extensions.AutoTimer.plugin import autotimer
 				if autotimer is not None:
@@ -119,7 +125,7 @@ class AutoTimerDoRestoreResource(resource.Resource):
 						# TODO: proper error handling
 						pass
 				
-				remove(ATFN)
+				os.remove(ATFN)
 				return (True, "AutoTimer-settings were restored successfully")
 			else:
 				return (False, "Error, %s was not created with AutoTimerWebEditor..." % ATFN)
