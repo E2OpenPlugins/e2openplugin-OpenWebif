@@ -158,10 +158,17 @@ class ATController(resource.Resource):
 		except ImportError:
 			# this is not an error
 			pass
-		self.putChild('uploadrestore', ATUploadFile(session))
+		self.putChild('uploadfile', ATUploadFile(session))
 		self.putChild('restore', AutoTimerDoRestoreResource())
 		self.putChild('backup', AutoTimerDoBackupResource())
 		self.putChild('tmp', static.File('/tmp'))  # nosec
+		try:
+			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerUploadXMLConfigurationAutoTimerResource, AutoTimerAddXMLAutoTimerResource
+			self.putChild('upload_xmlconfiguration', AutoTimerUploadXMLConfigurationAutoTimerResource())
+			self.putChild('add_xmltimer', AutoTimerAddXMLAutoTimerResource())
+		except ImportError:
+			# this is not an error
+			pass
 
 	def render(self, request):
 		request.setResponseCode(http.OK)
