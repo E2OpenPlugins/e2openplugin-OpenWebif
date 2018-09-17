@@ -1,6 +1,6 @@
 //******************************************************************************
 //* bqe.js: openwebif Bouqueteditor plugin
-//* Version 2.8
+//* Version 2.9
 //******************************************************************************
 //* Copyright (C) 2014-2018 Joerg Bleyel
 //* Copyright (C) 2014-2018 E2OpenPlugins
@@ -17,6 +17,7 @@
 //* V 2.6 - improve spacers #239
 //* V 2.7 - improve channel numbers
 //* V 2.8 - show ns text #840
+//* V 2.9 - fix ns text, show provider as tooltip #840
 
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
@@ -229,10 +230,10 @@
 				self.cType = 2;
 				var ref = self.buildRefStr(3);
 				$.ajax({
-					url: '/api/getservices?sRef=' + ref, 
+					url: '/api/getservices?sRef=' + ref + "&provider=1", 
 					dataType: 'json',
 					cache: true,
-					data: { sRef: ref, date: self.date },
+					data: { date: self.date },
 					success: function ( data ) {
 						self.allChannelsCache = data['services'];
 						self.filterChannelsCache = data['services'];
@@ -247,10 +248,11 @@
 				$.each( self.filterChannelsCache, function ( key, val ) {
 					var sref = val['servicereference'];
 					var name = val['servicename'];
+					var prov = val['provider'];
 					var stype = sref.split(':')[2];
 					var ns = sref.split(':')[6];
 					var _ns = self.getNS(ns);
-					var m = '<span class="marker">' + _ns + ' ' + (self.sType[stype] || '') + '</span>';
+					var m = '<span title="'+prov+'" class="marker">' + _ns + ' ' + (self.sType[stype] || '') + '</span>';
 					options.push( $('<li/>', {
 						class: "ui-widget-content",
 						data: { stype: stype, sref: sref }
@@ -299,7 +301,7 @@
 					url: '/api/getservices', 
 					dataType: 'json',
 					cache: true,
-					data: { sRef: sref, date: self.date },
+					data: { sRef: sref, date: self.date, provider:"1"},
 					success: function ( data ) {
 						self.allChannelsCache = data['services'];
 						self.filterChannelsCache = data['services'];
@@ -653,7 +655,8 @@
 					if (name.toLowerCase().indexOf(t) !== -1)
 						self.filterChannelsCache.push({
 							servicename: val['servicename'],
-							servicereference:val['servicereference']
+							servicereference:val['servicereference'],
+							provider:val['provider']
 						});
 				});
 				
@@ -913,23 +916,22 @@
 			},getNS : function(ns)
 			{
 				var _ns = ns.toLowerCase();
-				if (ns.startsWith("ffff",0))
+				if (_ns.startsWith("ffff",0))
 				{
 					return "DVB-C";
 				}
-				if (ns.startsWith("eeee",0))
+				if (_ns.startsWith("eeee",0))
 				{
 					return "DVB-T";
 				}
-				
 				var __ns = parseInt(_ns,16) >> 16 & 0xFFF;
 				var d = " E";
 				if(__ns > 1800)
 				{
 					d = " W";
-					__ns = 3600 - _ns;
+					__ns = 3600 - __ns;
 				}
-				return (__ns / 10).toString() + "." + (__ns % 10).toString() + d;
+				return (__ns/10).toFixed(1).toString() + d;
 			}
 			
 		 };

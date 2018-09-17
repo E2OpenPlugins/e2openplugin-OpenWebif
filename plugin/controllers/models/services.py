@@ -425,11 +425,27 @@ def getChannels(idbouquet, stype):
 	return {"channels": ret}
 
 
-def getServices(sRef, showAll=True, showHidden=False, pos=0):
+def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False):
 	services = []
+	allproviders = {}
 
 	if sRef == "":
 		sRef = '%s FROM BOUQUET "bouquets.tv" ORDER BY bouquet' % (service_types_tv)
+
+	if provider:
+		s_type = service_types_tv
+		if "radio" in sRef:
+			s_type = service_types_radio
+		pserviceHandler = eServiceCenter.getInstance()
+		pservices = pserviceHandler.list(eServiceReference('%s FROM PROVIDERS ORDER BY name' % (s_type)))
+		providers = pservices and pservices.getContent("SN", True)
+
+		if provider:
+			for provider in providers:
+				servicelist = ServiceList(eServiceReference(provider[0]))
+				slist = servicelist.getServicesAsList()
+				for sitem in slist:
+					allproviders[sitem[0]] = provider[1]
 
 	servicelist = ServiceList(eServiceReference(sRef))
 	slist = servicelist.getServicesAsList()
@@ -445,6 +461,11 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0):
 				service['servicereference'] = unicode(sitem[0], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 				service['program'] = int(service['servicereference'].split(':')[3], 16)
 				service['servicename'] = unicode(sitem[1], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+				if provider:
+					if sitem[0] in allproviders:
+						service['provider'] = allproviders[sitem[0]]
+					else:
+						service['provider'] = ""
 				services.append(service)
 
 	return {"services": services, "pos": pos}

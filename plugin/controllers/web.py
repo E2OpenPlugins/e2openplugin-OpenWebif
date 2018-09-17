@@ -484,7 +484,11 @@ class WebController(BaseController):
 			hidden = request.args["hidden"][0] == "1"
 		else:
 			hidden = False
-		return getServices(sRef, True, hidden)
+		if "provider" in request.args.keys():
+			provider = request.args["provider"][0] == "1"
+		else:
+			provider = False
+		return getServices(sRef=sRef, showAll=True, showHidden=hidden, provider=provider)
 
 	def P_servicesm3u(self, request):
 		"""
