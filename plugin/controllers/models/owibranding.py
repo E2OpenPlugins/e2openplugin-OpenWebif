@@ -308,6 +308,9 @@ def getAllInfo():
 		elif procmodel == "hd530c":
 			brand = "Mut@nt"
 			model = "HD530c"
+		elif porcmodel =="hd60":
+			brand ="Mut@nt"
+			model = "HD60"
 		elif procmodel == "arivalink200":
 			brand = "Ferguson"
 			model = "Ariva @Link 200"
@@ -553,6 +556,8 @@ def getAllInfo():
 		remote = "hd1x00"
 	elif procmodel == "hd2400":
 		remote = "hd2400"
+	elif procmodel == "hd60":
+		remote = "hd60"
 	elif procmodel in ("spycat", "spycatmini", "spycatminiplus", "spycat4kmini"):
 		remote = "spycat"
 	elif procmodel.startswith("ixuss"):
