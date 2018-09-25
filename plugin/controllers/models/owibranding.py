@@ -308,7 +308,7 @@ def getAllInfo():
 		elif procmodel == "hd530c":
 			brand = "Mut@nt"
 			model = "HD530c"
-		elif porcmodel =="hd60":
+		elif procmodel =="hd60":
 			brand ="Mut@nt"
 			model = "HD60"
 		elif procmodel == "arivalink200":
