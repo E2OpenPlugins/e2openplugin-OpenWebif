@@ -26,8 +26,10 @@ from ..utilities import parse_servicereference, SERVICE_TYPE_LOOKUP, NS_LOOKUP
 from ..i18n import _, tstrings
 from ..defaults import PICON_PATH
 
-# TODO: check if this exists on all images
-from Components.Converter.genre import getGenreStringSub
+try:
+	from Components.Converter.genre import getGenreStringSub
+except ImportError:
+	from ..utilities import getGenreStringSub
 
 try:
 	from collections import OrderedDict
@@ -38,15 +40,6 @@ except ImportError:
 # html-escaped, so do it there.
 #
 from cgi import escape as html_escape
-
-
-def convertGenre(val):
-# TODO: check if this works on all images
-	if val is not None and len(val) > 0:
-		val = val[0]
-		if len(val) > 1:
-			return str(getGenreStringSub(val[0], val[1])).strip()
-	return ""
 
 def filterName(name, encode=True):
 	if name is not None:
@@ -64,6 +57,16 @@ def convertDesc(val, encode=True):
 		else:
 			return unicode(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 	return val
+
+
+def convertGenre(val):
+# TODO define usage of getGenreStringSub or getGenreStringLong
+# TODO use genre id instead of string
+	if val is not None and len(val) > 0:
+		val = val[0]
+		if len(val) > 1:
+			return str(getGenreStringSub(val[0], val[1])).strip()
+	return ""
 
 
 def getServiceInfoString(info, what):

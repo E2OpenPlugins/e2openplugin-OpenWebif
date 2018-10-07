@@ -259,6 +259,9 @@ def create_servicereference(*args, **kwargs):
 		oid,
 		ns)
 
+# Fallback genre
+def getGenreStringSub(hn, ln):
+	return ""
 
 if __name__ == '__main__':
 	import doctest
