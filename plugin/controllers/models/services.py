@@ -572,7 +572,7 @@ def getEventDesc(ref, idev):
 
 def getEvent(ref, idev, encode=True):
 	epgcache = eEPGCache.getInstance()
-	events = epgcache.lookupEvent(['IBDTSENRX', (ref, 2, int(idev))])
+	events = epgcache.lookupEvent(['IBDTSENRWX', (ref, 2, int(idev))])
 	info = {}
 	for event in events:
 		info['id'] = event[0]
@@ -585,6 +585,7 @@ def getEvent(ref, idev, encode=True):
 		info['longdesc'] = convertDesc(event[5], encode)
 		info['channel'] = filterName(event[6], encode)
 		info['sref'] = event[7]
+		info['genre'] = event[8]
 		break
 	return {'event': info}
 
@@ -602,7 +603,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 
 		picon = getPicon(ref)
 		epgcache = eEPGCache.getInstance()
-		events = epgcache.lookupEvent(['IBDTSENC', (ref, 0, begintime, endtime)])
+		events = epgcache.lookupEvent(['IBDTSENCW', (ref, 0, begintime, endtime)])
 		if events is not None:
 			for event in events:
 				ev = {}
@@ -626,6 +627,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 					else:
 						ev['progress'] = int(((event[7] - event[1]) * 100 / event[2]) * 4)
 					ev['now_timestamp'] = event[7]
+					ev['genre'] = event[8]
 					ret.append(ev)
 				else:
 					use_empty_ev = True
@@ -648,6 +650,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 		ev['tleft'] = 0
 		ev['progress'] = 0
 		ev['now_timestamp'] = 0
+		ev['genre'] = ""
 		ret.append(ev)
 
 	return {"events": ret, "result": True}
@@ -660,7 +663,7 @@ def getBouquetEpg(ref, begintime=-1, endtime=None, encode=False):
 	if not services:
 		return {"events": ret, "result": False}
 
-	search = ['IBDCTSERN']
+	search = ['IBDCTSERNW']
 	for service in services.getContent('S'):
 		if endtime:
 			search.append((service, 0, begintime, endtime))
@@ -681,6 +684,7 @@ def getBouquetEpg(ref, begintime=-1, endtime=None, encode=False):
 			ev['sref'] = event[7]
 			ev['sname'] = filterName(event[8], encode)
 			ev['now_timestamp'] = event[3]
+			ev['genre'] = event[9]
 			ret.append(ev)
 
 	return {"events": ret, "result": True}
@@ -727,7 +731,7 @@ def getBouquetNowNextEpg(ref, servicetype, encode=False):
 	if not services:
 		return {"events": ret, "result": False}
 
-	search = ['IBDCTSERNX']
+	search = ['IBDCTSERNWX']
 	if servicetype == -1:
 		for service in services.getContent('S'):
 			search.append((service, 0, -1))
@@ -754,6 +758,7 @@ def getBouquetNowNextEpg(ref, servicetype, encode=False):
 			ev['sref'] = event[7]
 			ev['sname'] = filterName(event[8], encode)
 			ev['now_timestamp'] = event[3]
+			ev['genre'] = event[9]
 			ret.append(ev)
 
 	return {"events": ret, "result": True}
@@ -763,7 +768,7 @@ def getNowNextEpg(ref, servicetype, encode=False):
 	ref = unquote(ref)
 	ret = []
 	epgcache = eEPGCache.getInstance()
-	events = epgcache.lookupEvent(['IBDCTSERNX', (ref, servicetype, -1)])
+	events = epgcache.lookupEvent(['IBDCTSERNWX', (ref, servicetype, -1)])
 	if events is not None:
 		for event in events:
 			ev = {}
@@ -778,6 +783,7 @@ def getNowNextEpg(ref, servicetype, encode=False):
 				ev['sname'] = filterName(event[8], encode)
 				ev['now_timestamp'] = event[3]
 				ev['remaining'] = (event[1] + event[2]) - event[3]
+				ev['genre'] = event[9]
 			else:
 				ev['begin_timestamp'] = 0
 				ev['duration_sec'] = 0
@@ -788,6 +794,7 @@ def getNowNextEpg(ref, servicetype, encode=False):
 				ev['sname'] = filterName(event[8])
 				ev['now_timestamp'] = 0
 				ev['remaining'] = 0
+				ev['genre'] = ""
 
 			ret.append(ev)
 
@@ -807,7 +814,7 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 	if fulldesc:
 		if hasattr(eEPGCache, 'FULL_DESCRIPTION_SEARCH'):
 			search_type = eEPGCache.FULL_DESCRIPTION_SEARCH
-	events = epgcache.search(('IBDTSENR', 128, search_type, sstr, 1))
+	events = epgcache.search(('IBDTSENRW', 128, search_type, sstr, 1))
 	if events is not None:
 		# TODO : discuss #677
 		# events.sort(key = lambda x: (x[1],x[6])) # sort by date,sname
@@ -839,6 +846,7 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 			ev['sname'] = filterName(event[6], encode)
 			ev['picon'] = getPicon(event[7])
 			ev['now_timestamp'] = None
+			ev['genre'] = event[8]
 			if endtime:
 				# don't show events if begin after endtime
 				if event[1] <= endtime:
@@ -854,7 +862,7 @@ def getSearchSimilarEpg(ref, eventid, encode=False):
 	ret = []
 	ev = {}
 	epgcache = eEPGCache.getInstance()
-	events = epgcache.search(('IBDTSENR', 128, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, ref, eventid))
+	events = epgcache.search(('IBDTSENRW', 128, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, ref, eventid))
 	if events is not None:
 		# TODO : discuss #677
 		# events.sort(key = lambda x: (x[1],x[6])) # sort by date,sname
@@ -875,6 +883,7 @@ def getSearchSimilarEpg(ref, eventid, encode=False):
 			ev['sname'] = filterName(event[6], encode)
 			ev['picon'] = getPicon(event[7])
 			ev['now_timestamp'] = None
+			ev['genre'] = event[8]
 			ret.append(ev)
 
 	return {"events": ret, "result": True}
