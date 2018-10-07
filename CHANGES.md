@@ -1,5 +1,8 @@
-## Version 1.3.4
+## Version 1.3.5
 ## (in development)
+* add picon value to getservices request #849
+
+## Version 1.3.4
 * Autotimer backup/restore
 
 ## Version 1.3.3

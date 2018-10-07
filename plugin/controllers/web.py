@@ -488,7 +488,11 @@ class WebController(BaseController):
 			provider = request.args["provider"][0] == "1"
 		else:
 			provider = False
-		return getServices(sRef=sRef, showAll=True, showHidden=hidden, provider=provider)
+		if "picon" in request.args.keys():
+			picon = request.args["picon"][0] == "1"
+		else:
+			picon = False
+		return getServices(sRef=sRef, showAll=True, showHidden=hidden, provider=provider, picon=picon)
 
 	def P_servicesm3u(self, request):
 		"""

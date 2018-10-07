@@ -425,7 +425,7 @@ def getChannels(idbouquet, stype):
 	return {"channels": ret}
 
 
-def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False):
+def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, picon=False):
 	services = []
 	allproviders = {}
 
@@ -458,7 +458,10 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False):
 			if showAll or st == 0:
 				service = {}
 				service['pos'] = 0 if (st & 64) else pos
-				service['servicereference'] = unicode(sitem[0], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+				sr = unicode(sitem[0], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+				if picon:
+					service['picon'] = getPicon(sr)
+				service['servicereference'] = sr
 				service['program'] = int(service['servicereference'].split(':')[3], 16)
 				service['servicename'] = unicode(sitem[1], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 				if provider:
