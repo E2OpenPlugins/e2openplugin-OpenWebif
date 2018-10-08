@@ -260,7 +260,7 @@ def create_servicereference(*args, **kwargs):
 		ns)
 
 # Fallback genre
-def getGenreStringSub(hn, ln):
+def getGenreStringLong(hn, ln):
 	return ""
 
 if __name__ == '__main__':

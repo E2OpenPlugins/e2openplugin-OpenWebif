@@ -27,9 +27,9 @@ from ..i18n import _, tstrings
 from ..defaults import PICON_PATH
 
 try:
-	from Components.Converter.genre import getGenreStringSub
+	from Components.Converter.genre import getGenreStringLong
 except ImportError:
-	from ..utilities import getGenreStringSub
+	from ..utilities import getGenreStringLong
 
 try:
 	from collections import OrderedDict
@@ -60,12 +60,10 @@ def convertDesc(val, encode=True):
 
 
 def convertGenre(val):
-# TODO define usage of getGenreStringSub or getGenreStringLong
-# TODO use genre id instead of string
 	if val is not None and len(val) > 0:
 		val = val[0]
 		if len(val) > 1:
-			return str(getGenreStringSub(val[0], val[1])).strip()
+			return str(getGenreStringLong(val[0], val[1])).strip()
 	return ""
 
 
