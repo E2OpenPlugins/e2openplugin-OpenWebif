@@ -63,8 +63,10 @@ def convertGenre(val):
 	if val is not None and len(val) > 0:
 		val = val[0]
 		if len(val) > 1:
-			return str(getGenreStringLong(val[0], val[1])).strip()
-	return ""
+			if val[0] > 0:
+				gid = val[0]*16 + val[1]
+				return str(getGenreStringLong(val[0], val[1])).strip() , gid
+	return "",0
 
 
 def getServiceInfoString(info, what):
@@ -597,7 +599,7 @@ def getEvent(ref, idev, encode=True):
 		info['longdesc'] = convertDesc(event[5], encode)
 		info['channel'] = filterName(event[6], encode)
 		info['sref'] = event[7]
-		info['genre'] = convertGenre(event[8])
+		info['genre'],ev['genreid'] = convertGenre(event[8])
 		break
 	return {'event': info}
 
@@ -639,7 +641,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 					else:
 						ev['progress'] = int(((event[7] - event[1]) * 100 / event[2]) * 4)
 					ev['now_timestamp'] = event[7]
-					ev['genre'] = convertGenre(event[8])
+					ev['genre'],ev['genreid'] = convertGenre(event[8])
 					ret.append(ev)
 				else:
 					use_empty_ev = True
@@ -663,6 +665,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 		ev['progress'] = 0
 		ev['now_timestamp'] = 0
 		ev['genre'] = ""
+		ev['genreid'] = 0
 		ret.append(ev)
 
 	return {"events": ret, "result": True}
@@ -696,7 +699,7 @@ def getBouquetEpg(ref, begintime=-1, endtime=None, encode=False):
 			ev['sref'] = event[7]
 			ev['sname'] = filterName(event[8], encode)
 			ev['now_timestamp'] = event[3]
-			ev['genre'] = convertGenre(event[9])
+			ev['genre'],ev['genreid'] = convertGenre(event[9])
 			ret.append(ev)
 
 	return {"events": ret, "result": True}
@@ -770,7 +773,7 @@ def getBouquetNowNextEpg(ref, servicetype, encode=False):
 			ev['sref'] = event[7]
 			ev['sname'] = filterName(event[8], encode)
 			ev['now_timestamp'] = event[3]
-			ev['genre'] = convertGenre(event[9])
+			ev['genre'],ev['genreid'] = convertGenre(event[9])
 			ret.append(ev)
 
 	return {"events": ret, "result": True}
@@ -795,7 +798,7 @@ def getNowNextEpg(ref, servicetype, encode=False):
 				ev['sname'] = filterName(event[8], encode)
 				ev['now_timestamp'] = event[3]
 				ev['remaining'] = (event[1] + event[2]) - event[3]
-				ev['genre'] = convertGenre(event[9])
+				ev['genre'],ev['genreid'] = convertGenre(event[9])
 			else:
 				ev['begin_timestamp'] = 0
 				ev['duration_sec'] = 0
@@ -807,6 +810,7 @@ def getNowNextEpg(ref, servicetype, encode=False):
 				ev['now_timestamp'] = 0
 				ev['remaining'] = 0
 				ev['genre'] = ""
+				ev['genreid'] = 0
 
 			ret.append(ev)
 
@@ -858,7 +862,7 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 			ev['sname'] = filterName(event[6], encode)
 			ev['picon'] = getPicon(event[7])
 			ev['now_timestamp'] = None
-			ev['genre'] = convertGenre(event[8])
+			ev['genre'],ev['genreid'] = convertGenre(event[8])
 			if endtime:
 				# don't show events if begin after endtime
 				if event[1] <= endtime:
@@ -895,7 +899,7 @@ def getSearchSimilarEpg(ref, eventid, encode=False):
 			ev['sname'] = filterName(event[6], encode)
 			ev['picon'] = getPicon(event[7])
 			ev['now_timestamp'] = None
-			ev['genre'] = convertGenre(event[8])
+			ev['genre'],ev['genreid'] = convertGenre(event[8])
 			ret.append(ev)
 
 	return {"events": ret, "result": True}

@@ -1599,7 +1599,9 @@ class WebController(BaseController):
 				"sname": "",
 				"now_timestamp": 0,
 				"remaining": 0,
-				"provider": ""
+				"provider": "",
+				"genre": "",
+				"genreid": 0
 			}
 		next = getNowNextEpg(info["ref"], 1, self.isJson)
 		if len(next["events"]) > 0:
@@ -1617,7 +1619,9 @@ class WebController(BaseController):
 				"sname": "",
 				"now_timestamp": 0,
 				"remaining": 0,
-				"provider": ""
+				"provider": "",
+				"genre": "",
+				"genreid": 0
 			}
 		# replace EPG NOW with Movie info
 		mnow = now
