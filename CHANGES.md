@@ -2,6 +2,7 @@
 ## (in development)
 * add picon value to getservices request #849
 * add genre to epg result #847
+* add mount info for xml results #850
 
 ## Version 1.3.4
 * Autotimer backup/restore
