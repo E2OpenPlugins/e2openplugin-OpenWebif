@@ -599,7 +599,7 @@ def getEvent(ref, idev, encode=True):
 		info['longdesc'] = convertDesc(event[5], encode)
 		info['channel'] = filterName(event[6], encode)
 		info['sref'] = event[7]
-		info['genre'],ev['genreid'] = convertGenre(event[8])
+		info['genre'],info['genreid'] = convertGenre(event[8])
 		break
 	return {'event': info}
 
