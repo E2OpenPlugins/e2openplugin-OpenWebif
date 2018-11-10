@@ -604,7 +604,7 @@ def getAllInfo():
 		remote = "sh1"
 	elif procmodel in ("h3", "h4", "h5", "h6", "h7"):
 		remote = "h3"
-	elif procmodel in "(h9", "i55plus"):
+	elif procmodel in (h9", "i55plus"):
 		remote = "h9"
 	elif procmodel == "i55":
 		remote = "i55"
