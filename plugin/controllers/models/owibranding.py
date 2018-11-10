@@ -576,7 +576,7 @@ def getAllInfo():
 		remote = "xcombo"
 	elif procmodel == "dm8000" and orgdream:
 		remote = "dmm1"
-	elif procmodel in ("dm7080", "dm7020hd", "dm7020hdv2", "dm800sev2", "dm500hdv2", "dm520", "dm820", "dm900"):
+	elif procmodel in ("dm7080", "dm7020hd", "dm7020hdv2", "dm800sev2", "dm500hdv2", "dm520", "dm820", "dm900", "dm920"):
 		remote = "dmm2"
 	elif procmodel == "wetekplay":
 		remote = procmodel
@@ -604,7 +604,7 @@ def getAllInfo():
 		remote = "sh1"
 	elif procmodel in ("h3", "h4", "h5", "h6", "h7"):
 		remote = "h3"
-	elif procmodel == "(h9", "i55plus"):
+	elif procmodel in "(h9", "i55plus"):
 		remote = "h9"
 	elif procmodel == "i55":
 		remote = "i55"
