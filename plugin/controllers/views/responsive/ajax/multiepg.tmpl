@@ -139,7 +139,7 @@
 	#set $ev=$evl[0]
 	#set $ref = "data-ref='" + $ev.ref + "'"
 #end if
-<td class="serviceheader"><div class="service event"  data-ref='$ref'><img src="$(picons[$sname])" />$sname</div></td>
+<td class="serviceheader"><div class="service event" $ref><img src="$(picons[$sname])" />$sname</div></td>
 #end for
 </tr>
 <tr>
