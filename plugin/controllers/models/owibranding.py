@@ -679,7 +679,7 @@ def getAllInfo():
 			except:  # nosec  # noqa: E722
 				pass
 
-		if distro == "openpli":
+		if distro in ("openpli", "satdreamgr"):
 			oever = "PLi-OE"
 			try:
 				imagelist = open("/etc/issue").readlines()[-2].split()[1].split('.')
@@ -728,8 +728,8 @@ def getAllInfo():
 	info['imagever'] = imagever
 	info['imagebuild'] = imagebuild
 	info['driverdate'] = driverdate
-	info['lcd'] = distro in ("openpli",) and lcd or 0
-	info['grabpip'] = distro in ("openpli",) and grabpip or 0
+	info['lcd'] = distro in ("openpli", "satdreamgr",) and lcd or 0
+	info['grabpip'] = distro in ("openpli", "satdreamgr",) and grabpip or 0
 	return info
 
 
