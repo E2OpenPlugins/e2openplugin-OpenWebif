@@ -605,10 +605,10 @@ def getAllInfo():
 		remote = "qviart"
 	elif procmodel in ("sh1", "lc"):
 		remote = "sh1"
-	elif procmodel in ("h3", "h4", "h5", "h6", "h7"):
+	elif procmodel in ("h3", "h4", "h5", "h6", "h7", "h9", "i55plus"):
 		remote = "h3"
-	elif procmodel in ("h9", "i55plus"):
-		remote = "h9"
+	elif procmodel in ():
+		remote = "h3"
 	elif procmodel == "i55":
 		remote = "i55"
 	elif procmodel in ("vipercombo", "vipert2c"):
