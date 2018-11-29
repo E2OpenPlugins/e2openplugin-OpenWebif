@@ -89,7 +89,7 @@ def getCurrentService(session):
 		return {
 			"result": True,
 			"name": filterName(info.getName()),
-			"namespace": getServiceInfoString(info, iServiceInformation.sNamespace),
+			"namespace": 0xffffffff & getServiceInfoString(info, iServiceInformation.sNamespace),
 			"aspect": getServiceInfoString(info, iServiceInformation.sAspect),
 			"provider": getServiceInfoString(info, iServiceInformation.sProvider),
 			"width": getServiceInfoString(info, iServiceInformation.sVideoWidth),
@@ -192,7 +192,7 @@ def getCurrentFullInfo(session):
 		cur_info = feinfo.getTransponderData(True)
 		inf['tunertype'] = frontendData.get("tuner_type", "UNKNOWN")
 		if frontendData.get("system", -1) == 1:
-			inf['tunertype'] = "DVB-S2"
+			inf['tunertype'] += "2"
 		inf['tunernumber'] = frontendData.get("tuner_number")
 		orb = getOrbitalText(cur_info)
 		inf['orbital_position'] = orb
