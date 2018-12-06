@@ -2149,6 +2149,10 @@ msgstr "Autenticació enllaç HTTPS"
 msgid "Require client cert for HTTPS"
 msgstr "Requereix certificat client per a HTTPS"
 
+#: plugin.py:131
+msgid "Use new design"
+msgstr "Utilitzar nou diseny"
+
 #: plugin/plugin.py:132
 msgid "Enable Authentication for streaming"
 msgstr "Habilitar autenticació per a streaming"
