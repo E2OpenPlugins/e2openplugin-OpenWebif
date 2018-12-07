@@ -116,8 +116,8 @@ def expand_BaseController():
 expand_basecontroller = expand_BaseController()
 
 def expandConfig():
-	config.OpenWebif.responsive_enabled = ConfigYesNo(default = False)
-	config.OpenWebif.responsive_skinColor = ConfigText(default = "indigo")
+	config.OpenWebif.responsive_enabled = ConfigYesNo(default=False)
+	config.OpenWebif.responsive_skinColor = ConfigText(default="indigo")
 	config.OpenWebif.responsive_epgsearch_only_bq = ConfigYesNo(default=True)
 	config.OpenWebif.responsive_epgsearch_full = ConfigYesNo(default=False)
 	config.OpenWebif.responsive_rcu_screenshot = ConfigYesNo(default=True)

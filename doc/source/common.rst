@@ -8,4 +8,3 @@ HTTP Server
 
 .. automodule:: httpserver
     :members:
-

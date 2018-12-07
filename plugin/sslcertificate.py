@@ -63,4 +63,3 @@ class SSLCertificateGenerator:
 		certificate.set_pubkey(keypair)
 		certificate.sign(keypair, self.digest)
 		return certificate
-

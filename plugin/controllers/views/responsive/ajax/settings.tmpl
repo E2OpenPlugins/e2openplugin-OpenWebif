@@ -167,7 +167,7 @@ function prepareUpload() {
 		}, function (isConfirm) {
 			if (isConfirm) {
 				var frm = document.forms["uploadpkg"];
-				frm.filename.value = fn;	
+				frm.filename.value = fn;
 
 				$('form#uploadpkg')
 					.unbind('submit')
@@ -381,7 +381,7 @@ function ShowPackages(mode)
 	});
 }
 
-$(function() { 
+$(function() {
 	$('#settingselection').on('change', function (e) {
 		var optionSelected = $("option:selected", this);
 		var valueSelected = this.value;
@@ -404,7 +404,7 @@ $(function() {
 	$("#scontent").load('ajax/config?section=usage', function () {
 		$("#scontent").find("#content_main").attr("id","content_main1");
 	});
-	
+
 	$('#tb2').buttonset();
 	$('#tb3').buttonset();
 	$('.pkgbtn').click(function () { ShowPackages($(this).attr('id')); });
@@ -435,14 +435,12 @@ $(function() {
 	*/
 });
 
-
-	
 $.AdminBSB.input.activate();
 #end raw
 #if $allowipkupload
 var noupload=true;
 #else
-\$(function() { 
+\$(function() {
 	\$("#pkguploadOne").hide();
 	\$("#pkguploadTwo").hide();
 });

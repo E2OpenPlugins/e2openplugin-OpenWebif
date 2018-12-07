@@ -29,4 +29,3 @@ Web Controllers
 .. automodule:: controllers.mobile
     :members:
     :show-inheritance:
-

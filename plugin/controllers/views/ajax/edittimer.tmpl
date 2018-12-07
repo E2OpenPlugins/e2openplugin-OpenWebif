@@ -101,7 +101,7 @@
 	
 	<div id="errorbox" class="timerlist_row" style="color: red;">
 		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
-			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
 			<span id="error"></span>
 		</div>
 	</div>
@@ -126,7 +126,6 @@ $('#always_zap').click(function() {
 });
 
 $('#timerend').datetimepicker({
-	
 	timeText: tstr_time,
 	hourText: tstr_hour,
 	minuteText: tstr_minute,
@@ -139,7 +138,7 @@ $('#timerend').datetimepicker({
 	dateFormat: 'dd.mm.yy',
 	timeFormat: 'HH:mm',
 	onClose: function(dateText, inst) {
-		if (!timeredit_begindestroy && $('#timerbegin').val() != '' &&	
+		if (!timeredit_begindestroy && $('#timerbegin').val() != '' && 
 			$('#timerbegin').datetimepicker('getDate') > $(this).datetimepicker('getDate')) {
 				$('#error').text(tstr_start_after_end);
 				$('#errorbox').show();
@@ -151,7 +150,7 @@ $('#timerend').datetimepicker({
 
 $('#repeatdays').buttonset();
 
-$(function() { 
+$(function() {
 	$("#bouquet_select").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "100%"});
 
 	$(".chosen-container .chosen-drop").addClass('ui-widget-content');
@@ -200,7 +199,7 @@ $('#editTimerForm').dialog({
 				}
 				else
 					urldata["justplay"] = $('#justplay').is(':checked')?"1":"0";
-				
+
 				if ($('#dirname').val() != 'None')
 					urldata["dirname"] = $('#dirname').val();
 				if (!$('#has_vpsplugin1').is(':hidden'))
@@ -214,7 +213,7 @@ $('#editTimerForm').dialog({
 				}
 				else
 					urldata["begin"] = Math.round(current_begin);
-				
+
 				var canclose = false;
 				if (current_serviceref == "") {
 					$.ajax({
@@ -271,7 +270,7 @@ $('#editTimerForm').dialog({
 						}
 					});
 				}
-				
+
 				if (canclose) {
 					if (reloadTimers) load_maincontent("ajax/timers");
 					$(this).dialog("close");
