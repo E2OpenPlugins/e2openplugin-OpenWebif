@@ -829,7 +829,7 @@ msgstr "Zamknij"
 
 #: plugin/local.py:68
 msgid "Contributors"
-msgstr "Współpracownicy"
+msgstr "Współtwórcy"
 
 #: plugin/local.py:69
 msgid "Control"
@@ -1752,7 +1752,7 @@ msgstr "Dołącz"
 
 #: plugin/local.py:309
 msgid "Exclude"
-msgstr "Wyłącz"
+msgstr "Wyklucz"
 
 #: plugin/local.py:310
 msgid "in Title"
@@ -1796,7 +1796,7 @@ msgstr "Symuluj"
 
 #: plugin/local.py:324
 msgid "Do you really want to delete the AT"
-msgstr "Czy na pewno chcesz usunąć zadanie"
+msgstr "Czy na pewno chcesz usunąć zadanie AT"
 
 #: plugin/local.py:325
 msgid "Label series"
@@ -1881,7 +1881,7 @@ msgstr "Opóźnienie czuwania"
 
 #: plugin/local.py:353
 msgid "Interval (min.)"
-msgstr "Przetwa (min.)"
+msgstr "Przerwa (min.)"
 
 #: plugin/local.py:354
 msgid "Interval (sec.)"
@@ -2065,7 +2065,7 @@ msgstr "Pozycja orbitalna"
 
 #: plugin/local.py:408
 msgid "error! Loading Page"
-msgstr "błąd! ładowania strony"
+msgstr "błąd! Ładowanie strony"
 
 #: plugin/local.py:409
 msgid "Timer Added"
@@ -2121,7 +2121,7 @@ msgstr ""
 
 #: plugin/local.py:424
 msgid "Calendar Week"
-msgstr ""
+msgstr "Kalendarz tygodniowy"
 
 #: plugin/local.py:426
 msgid "Link Speed"
@@ -2137,7 +2137,7 @@ msgstr "używając"
 
 #: plugin/plugin.py:103
 msgid "OpenWebif url: http://yourip:port"
-msgstr "Adres OpenWebif:  http://ip_tunera:port"
+msgstr "Adres OpenWebif: http://ip_tunera:port"
 
 #: plugin/plugin.py:117
 msgid "OpenWebInterface Enabled"
@@ -2204,7 +2204,7 @@ msgid "Primetimes"
 msgstr "Godziny największej oglądalności"
 
 msgid "Enable/Disable Screenshot on key press or"
-msgstr "Włącz/wyłącz zrzut ekranu po aciśnieciu klawisza lub"
+msgstr "Włącz/wyłącz zrzut ekranu po naciśnięciu przycisku lub"
 
 msgid "Use new design"
 msgstr "Używaj nowego interfejsu"
