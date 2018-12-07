@@ -108,7 +108,6 @@
 				</table>
 			</div>
 		</div>
-		
 		<div id='packages' style="display:none;">
 			<div id="content_main2">
 				<h3 class="ui-widget-header">$tstrings['packages']</h3>
@@ -161,7 +160,6 @@
 				</table>
 			</div>
 		</div>
-		
 		</div>
 		</div>
 	</div>
@@ -192,7 +190,6 @@ function deleteBookmark(bm) {
 }
 
 function addBookmark() {
-
 	bm = $("#addbookmarktext").val();
 
 	if(bm.length==0 || bm.includes(" ")) {
@@ -220,7 +217,7 @@ function prepareUpload() {
 	}
 
 	var frm = document.forms["uploadpkg"];
-	frm.filename.value = fn;	
+	frm.filename.value = fn;
 
 	$('form#uploadpkg')
 		.unbind('submit')
@@ -255,6 +252,7 @@ function prepareUpload() {
 	});
 	$('form#uploadpkg').submit();
 }
+
 function getPkgFilename(){
 	var frm = document.forms["form_uploadpkg"];
 	frm.filename.value = frm.file.value;
@@ -286,11 +284,10 @@ function ShowFilterPackages()
 		}
 	});
 	$("#packagelist").html(row);
-	
+
 	$('#packagelist > li').click( function () {
 		ask($(this),false);
 	});
-	
 
 }
 
@@ -324,9 +321,9 @@ function ask(obj,man)
 	if(!man) {
 		pk = $(obj).data('n');
 	}
-	
+
 	var cmd = '';
-	
+
 	if(i=='1') {
 		if (confirm('Remove Package' + ' ( ' + pk + ') ?') === true) {
 			cmd = 'remove&' + pk;
@@ -340,15 +337,14 @@ function ask(obj,man)
 			cmd = 'install&package=' + pk;
 		}
 	}
-	
+
 	if(cmd != '')
 	{
 		Action('/ipkg?command='+cmd,'true');
 		$("#tblpackages").hide();
 		$("#pkgmore").show();
-		$('#pkgbtn4').prop('checked', true); 
+		$('#pkgbtn4').prop('checked', true);
 	}
-	
 }
 
 function Action(action,rl)
@@ -459,7 +455,8 @@ function load_scontent(url) {
 	});
 	return false;
 }
-$(function() { 
+
+$(function() {
 	$( "#slist" ).selectable({
 		selected: function( event, ui ) {
 			var ids = $('#slist .ui-selected').map(function() {
@@ -473,7 +470,7 @@ $(function() {
 		}
 	});
 	load_scontent('owsettings');
-	
+
 	$(".spinner input[type='radio']").checkboxradio({ icon: false });
 	$(".spinner fieldset").controlgroup();
 	var spin = GetLSValue('spinner','fa-spinner');
@@ -521,7 +518,7 @@ $(function() {
 	$("input[name=showdetails]").click(function(evt) {
 		ShowFilterPackages();
 	});
-	
+
 	$('#tb2').buttonset();
 	$('#tb3').buttonset();
 	$('.pkgbtn').click(function () { ShowPackages($(this).attr('id')); });
@@ -553,7 +550,7 @@ $(function() {
 #if $allowipkupload
 var noupload=true;
 #else
-\$(function() { 
+\$(function() {
 	\$("#pkgupload").remove();
 });
 var noupload=false;

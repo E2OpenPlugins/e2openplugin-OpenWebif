@@ -82,7 +82,7 @@
 #if $day == 0
 #set $first = $now - 3600
 #else
-#set $first = $now + ($day * 3600 * 24) 
+#set $first = $now + ($day * 3600 * 24)
 #end if
 
 #set $s = $strftime("%S",$localtime($first))
@@ -267,7 +267,7 @@ function fixTableHeight() {
 #else
 	\$("#tbl1body").height( (\$("#tvcontent").height() - \$("#navepg").height() - 20 - addScrollBarWidth - 2) + "px");
 #end if
-	if (!\$('#toolbar-header').is(':visible')) { 
+	if (!\$('#toolbar-header').is(':visible')) {
 		var dh = \$(window).height();
 		\$("#tvcontentmain").height(dh-80);
 		\$("#tbl1body").height(dh-215);
@@ -285,7 +285,7 @@ fixTableHeight();
 	var id = \$(this).data("id");
 	if (id != undefined) {
 		var ref = \$(this).data("ref");
-		\$("#eventdescription").load('ajax/event?idev='+id+'&sref='+escape(ref), function() { 
+		\$("#eventdescription").load('ajax/event?idev='+id+'&sref='+escape(ref), function() {
 			\$("#eventdescription").show(200).draggable( { handle: ".handle" } );
 		});
 	}
@@ -380,8 +380,8 @@ if(mepgdirect==1) {
 	}
 });
 #if $mode == 2
-\$(function() { 
-	
+\$(function() {
+
 	if(GetLSValue('MultiEPGScrollStyle','0')=='0') {
 		\$('#tblinner').css('overflow-y','hidden');
 		\$('.togglescroll').addClass('ui-widget-header');

@@ -91,7 +91,7 @@
 		<div class="col-xs-6">
 		#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
 		#set $tname=quote($timer.name)
-	
+
 		<ul class="header-dropdown m-r--5">
 			<li><span role="button"><a href="#edittimer" data-toggle="modal" data-target="#TimerModal" data-ref="$sref" data-ref="$sref" data-begin="$timer.begin" data-end="$timer.end" title="$tstrings['edit_timer']"><i class="material-icons material-icons-mg-right">edit</i></a></span></li>
 			<li><span role="button"><a href="#" onClick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end'); lastcontenturl=''; setTimeout(function(){load_maincontent('ajax/timers')}, 200); return false;"
@@ -167,4 +167,3 @@ $(function() {
 #end raw
 </script>
 #end filter
-

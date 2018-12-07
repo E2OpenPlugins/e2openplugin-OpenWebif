@@ -222,7 +222,7 @@ def getSettings():
 def getUtcOffset():
 	now = time.time()
 	offset = (datetime.fromtimestamp(now) - 
-			datetime.utcfromtimestamp(now)).total_seconds()			
+			datetime.utcfromtimestamp(now)).total_seconds()
 	hours = round(offset / 3600)
 	minutes = (offset - (hours * 3600))
 	return {

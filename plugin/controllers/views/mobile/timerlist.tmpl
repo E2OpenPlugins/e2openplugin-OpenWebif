@@ -1,7 +1,7 @@
 #from urllib import quote
 #from json import dumps
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-<body> 
+<body>
 	#import datetime
 	<div data-role="page">
 		<div id="header">
@@ -55,7 +55,7 @@
 	function deleteTimer(sRef, begin, end, title) {
 		var t = decodeURIComponent(title);
 		if (confirm("$tstrings['delete_timer_question']" + ": " + t) === true) {
-			\$.ajax({ url: "/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end, cache: false, async: false}).done(function() { 
+			\$.ajax({ url: "/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end, cache: false, async: false}).done(function() {
 				location.reload(true);
 			});
 		}

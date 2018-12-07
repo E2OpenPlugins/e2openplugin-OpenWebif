@@ -461,12 +461,12 @@ tstrings = {
 	'using': _("using"),
 	'prime_times': _("Primetimes"),
 	'titscreenshot': _("Enable/Disable Screenshot on key press or"),
-	
+
 	'bookmarks': _("Bookmarks"),
 	'bookmark': _("Bookmark"),
 	
 	'packages': _("Packages"),
-	
+
 	'newdesign': _('Use new design'),
 	'no_cancel': _("No, cancel"),
 	'yes_delete': _("Yes, delete it"),
@@ -499,6 +499,4 @@ tstrings = {
 	'show_details_in_channel_list': _("Show Service type in channel list"),
 	'export': _("Export"),
 	'import': _("Import")
-
 }
-
