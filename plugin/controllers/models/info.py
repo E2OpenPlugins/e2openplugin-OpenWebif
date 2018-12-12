@@ -577,6 +577,8 @@ def getOrbitalText(cur_info):
 		if tunerType == "DVB-S":
 			pos = int(cur_info.get('orbital_position'))
 			return getOrb(pos)
+		if cur_info.get("system", -1) == 1:
+			tunerType += "2"
 		return tunerType
 	return ''
 
