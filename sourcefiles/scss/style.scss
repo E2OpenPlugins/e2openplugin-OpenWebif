@@ -51,10 +51,8 @@ FIXME : complete reorg header
 
 #header
 {
-	/* Lower space
-	height:145px;
-	*/
-	height:150px;
+/* Force height to be such as required */
+	height:auto !important;
 	overflow:hidden;
 	border:none;
 	background: none no-repeat;
