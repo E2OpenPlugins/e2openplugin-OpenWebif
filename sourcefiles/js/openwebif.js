@@ -1665,6 +1665,7 @@ function jumper8002( sref, sname ) {
 	var deviceType = getDeviceType();
 	document.portForm.ref.value = sref;
 	document.portForm.name.value = sname;
+	document.portForm.fname.value = sname;
 	document.portForm.device.value = "phone";
 	document.portForm.submit();
 }
