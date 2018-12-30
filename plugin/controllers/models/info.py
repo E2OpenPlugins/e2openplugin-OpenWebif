@@ -503,9 +503,35 @@ def getInfo(session=None, need_fullinfo=False):
 
 	if session:
 		try:
+# gets all current stream clients for images using eStreamServer
+# TODO: merge eStreamServer and streamList
+# TODO: get tuner info for streams
+# TODO: get recoding/timer info if more than one
+
+			info['streams'] = []
+			try:
+				streams = []
+				from enigma import eStreamServer
+				streamServer = eStreamServer.getInstance()
+				if streamServer is not None:
+					for x in streamServer.getConnectedClients():
+						servicename = ServiceReference(x[1]).getServiceName() or "(unknown service)"
+						if int(x[2]) == 0:
+							strtype = "S"
+						else:
+							strtype = "T"
+						info['streams'].append({
+							"ref": x[1],
+							"name": servicename,
+							"ip": x[0],
+							"type": strtype
+						})
+			except Exception, error:
+				print "[OpenWebif] -D- no eStreamServer %s" % error
+			
 			recs = NavigationInstance.instance.getRecordings()
 			if recs:
-				# only one stream and only TV
+# only one stream and only TV
 				from Plugins.Extensions.OpenWebif.controllers.stream import streamList
 				s_name = ''
 				# s_cip = ''
@@ -526,6 +552,7 @@ def getInfo(session=None, need_fullinfo=False):
 							break
 				print "[OpenWebif] -D- s_name '%s'" % s_name
 
+# only for debug
 				for stream in streamList:
 					srefs = stream.ref.toString()
 					print "[OpenWebif] -D- srefs '%s'" % srefs
@@ -536,7 +563,7 @@ def getInfo(session=None, need_fullinfo=False):
 					if timer.isRunning() and not timer.justplay:
 						timers.append(timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''))
 						print "[OpenWebif] -D- timer '%s'" % timer.service_ref.getServiceName()
-				# only one recording
+# TODO: more than one recording
 				if len(timers) == 1:
 					sname = timers[0]
 
