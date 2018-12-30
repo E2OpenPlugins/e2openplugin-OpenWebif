@@ -233,10 +233,12 @@ def getAllInfo():
 			model = procmodel.replace(" ", "")
 		elif procmodel == "formuler4turbo":
 			brand = "Formuler"
-			model = "4 Turbo"
+			model = "F4 Turbo"
 		elif procmodel.startswith("formuler"):
 			brand = "Formuler"
 			model = procmodel.replace("formuler", "")
+			if model.isdigit():
+				model = 'F' + model
 		elif procmodel.startswith("mbtwinplus"):
 			brand = "Miraclebox"
 			model = "Premium Twin+"
