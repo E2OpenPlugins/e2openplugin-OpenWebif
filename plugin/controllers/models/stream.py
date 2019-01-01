@@ -194,17 +194,24 @@ def getTS(self, request):
 			if "device" in request.args:
 				if request.args["device"][0] == "phone":
 					portNumber = config.OpenWebif.streamport.value
-					bitrate = config.plugins.transcodingsetup.bitrate.value
-					resolution = config.plugins.transcodingsetup.resolution.value
-					(width, height) = tuple(resolution.split('x'))
-					# framerate = config.plugins.transcodingsetup.framerate.value
-					aspectratio = config.plugins.transcodingsetup.aspectratio.value
-					interlaced = config.plugins.transcodingsetup.interlaced.value
-					if fileExists("/proc/stb/encoder/0/vcodec"):
-						vcodec = config.plugins.transcodingsetup.vcodec.value
-						args = "?bitrate=%s?width=%s?height=%s?vcodec=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
-					else:
-						args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+
+		if fileExists("/proc/stb/encoder/0/apply"):
+			if "device" in request.args:
+				if request.args["device"][0] == "phone":
+					try:
+						bitrate = config.plugins.transcodingsetup.bitrate.value
+						resolution = config.plugins.transcodingsetup.resolution.value
+						(width, height) = tuple(resolution.split('x'))
+						# framerate = config.plugins.transcodingsetup.framerate.value
+						aspectratio = config.plugins.transcodingsetup.aspectratio.value
+						interlaced = config.plugins.transcodingsetup.interlaced.value
+						if fileExists("/proc/stb/encoder/0/vcodec"):
+							vcodec = config.plugins.transcodingsetup.vcodec.value
+							args = "?bitrate=%s?width=%s?height=%s?vcodec=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
+						else:
+							args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+					except Exception:
+						pass
 
 		# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
 		if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != transcoder_port:
