@@ -1625,7 +1625,7 @@ class WebController(BaseController):
 			}
 		# replace EPG NOW with Movie info
 		mnow = now
-		if mnow["sref"].startswith('1:0:0:0:0:0:0:0:0:0:/'):
+		if mnow["sref"].startswith('1:0:0:0:0:0:0:0:0:0:/') or mnow["sref"].startswith('4097:0:0:0:0:0:0:0:0:0:/'):
 			try:
 				service = self.session.nav.getCurrentService()
 				minfo = service and service.info()

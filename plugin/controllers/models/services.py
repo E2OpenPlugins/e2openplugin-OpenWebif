@@ -86,10 +86,17 @@ def getCurrentService(session):
 			serviceref = session.nav.getCurrentlyPlayingServiceReference()
 			if serviceref is not None:
 				ref = serviceref.toString()
+		
+		ns = getServiceInfoString(info, iServiceInformation.sNamespace)
+		try:
+			ns = int(ns)
+		except ValueError:
+			ns = 0
+
 		return {
 			"result": True,
 			"name": filterName(info.getName()),
-			"namespace": 0xffffffff & getServiceInfoString(info, iServiceInformation.sNamespace),
+			"namespace" : 0xffffffff & ns,
 			"aspect": getServiceInfoString(info, iServiceInformation.sAspect),
 			"provider": getServiceInfoString(info, iServiceInformation.sProvider),
 			"width": getServiceInfoString(info, iServiceInformation.sVideoWidth),
