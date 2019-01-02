@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.18
+//* Version 1.2.19
 //******************************************************************************
 //* Copyright (C) 2011-2018 E2OpenPlugins
 //*
@@ -31,6 +31,7 @@
 //* V 1.2.14,15,16 - fix json parse
 //* V 1.2.17 - allow timers for IPTV #715, added LCD, PiP into screenshots
 //* V 1.2.18 - rename stream.m3u8 to <channelname>.m3u8
+//* V 1.2.19 - fixed missing <channelname> when requesting a transcoding stream m3u8
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
