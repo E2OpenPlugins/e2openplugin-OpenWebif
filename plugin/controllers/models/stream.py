@@ -68,7 +68,8 @@ def getStream(session, request, m3ufile):
 	machinebuild = info["machinebuild"]
 	transcoder_port = None
 	args = ""
-	if model in ("Duo4K", "Uno4K", "Uno4K SE", "Ultimo4K", "Solo4K", "Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus", "UHD Quad 4k", "UHD UE 4k") or machinebuild in ('dags7356', 'dags7252', 'gb7252', 'gb7356'):
+
+	if fileExists("/dev/bcm_enc0"):
 		try:
 			transcoder_port = int(config.plugins.transcodingsetup.port.value)
 		except StandardError:
@@ -79,19 +80,10 @@ def getStream(session, request, m3ufile):
 				portNumber = transcoder_port
 		if "port" in request.args:
 			portNumber = request.args["port"][0]
+	elif fileExists("/dev/encoder0") or fileExists("/proc/stb/encoder/0/apply"):
+		transcoder_port = portNumber
 
-	# INI use dynamic encoder allocation, and each stream can have diffrent parameters
-	elif machinebuild in ('ew7356', 'formuler1tc', 'tiviaraplus'):
-		transcoder_port = 8001
-		if "device" in request.args:
-			if request.args["device"][0] == "phone":
-				bitrate = config.plugins.transcodingsetup.bitrate.value
-				# framerate = config.plugins.transcodingsetup.framerate.value
-				args = "?bitrate=%s" % (bitrate)
-	elif fileExists("/proc/stb/encoder/0/apply"):
-		transcoder_port = 8001
-
-	if fileExists("/proc/stb/encoder/0/apply"):
+	if fileExists("/dev/bcm_enc0") or fileExists("/dev/encoder0") or fileExists("/proc/stb/encoder/0/apply"):
 		if "device" in request.args:
 			if request.args["device"][0] == "phone":
 				try:
@@ -103,9 +95,9 @@ def getStream(session, request, m3ufile):
 					interlaced = config.plugins.transcodingsetup.interlaced.value
 					if fileExists("/proc/stb/encoder/0/vcodec"):
 						vcodec = config.plugins.transcodingsetup.vcodec.value
-						args = "?bitrate=%s?width=%s?height=%s?vcodec=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
+						args = "?bitrate=%s&width=%s&height=%s&vcodec=%s&aspectratio=%s&interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
 					else:
-						args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+						args = "?bitrate=%s&width=%s&height=%s&aspectratio=%s&interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
 				except Exception:
 					pass
 
@@ -170,7 +162,8 @@ def getTS(self, request):
 		machinebuild = info["machinebuild"]
 		transcoder_port = None
 		args = ""
-		if model in ("Duo4K", "Uno4K", "Uno4K SE", "Ultimo4K", "Solo4K", "Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or machinebuild in ('gb7252', 'gb7356'):
+		
+		if fileExists("/dev/bcm_enc0"):
 			try:
 				transcoder_port = int(config.plugins.transcodingsetup.port.value)
 			except StandardError:
@@ -181,21 +174,10 @@ def getTS(self, request):
 					portNumber = transcoder_port
 			if "port" in request.args:
 				portNumber = request.args["port"][0]
+		elif fileExists("/dev/encoder0") or fileExists("/proc/stb/encoder/0/apply"):
+			portNumber = config.OpenWebif.streamport.value
 
-		# INI use dynamic encoder allocation, and each stream can have diffrent parameters
-		elif machinebuild in ('ew7356', 'formuler1tc', 'tiviaraplus'):
-			if "device" in request.args:
-				if request.args["device"][0] == "phone":
-					portNumber = config.OpenWebif.streamport.value
-					bitrate = config.plugins.transcodingsetup.bitrate.value
-					# framerate = config.plugins.transcodingsetup.framerate.value
-					args = "?bitrate=%s" % (bitrate)
-		elif fileExists("/proc/stb/encoder/0/apply"):
-			if "device" in request.args:
-				if request.args["device"][0] == "phone":
-					portNumber = config.OpenWebif.streamport.value
-
-		if fileExists("/proc/stb/encoder/0/apply"):
+		if fileExists("/dev/bcm_enc0") or fileExists("/dev/encoder0") or fileExists("/proc/stb/encoder/0/apply"):
 			if "device" in request.args:
 				if request.args["device"][0] == "phone":
 					try:
@@ -207,9 +189,9 @@ def getTS(self, request):
 						interlaced = config.plugins.transcodingsetup.interlaced.value
 						if fileExists("/proc/stb/encoder/0/vcodec"):
 							vcodec = config.plugins.transcodingsetup.vcodec.value
-							args = "?bitrate=%s?width=%s?height=%s?vcodec=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
+							args = "?bitrate=%s&width=%s&height=%s&vcodec=%s&aspectratio=%s&interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
 						else:
-							args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+							args = "?bitrate=%s&width=%s&height=%s&aspectratio=%s&interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
 					except Exception:
 						pass
 
