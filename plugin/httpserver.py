@@ -349,12 +349,6 @@ class AuthResource(resource.Resource):
 			except: # nosec
 				pass
 
-		# #5: Access is from localhost and requesting stream?StreamService
-                # This is required by external applications (e.g. streamproxy) that require enigma2 to setup a service (tuner/demux).
-                # The URL in itself does not allow streaming so it is safe to always allow it to localhost.
-		if (host == "localhost" or host == "127.0.0.1" or host == "::ffff:127.0.0.1" or host == "::1") and request.uri.startswith("/web/stream?StreamService="):
-			return self.resource.getChildWithDefault(path, request)
-
 		# If we get to here, no exception applied
 		# Either block with forbidden (If auth is disabled) ...
 		if (not request.isSecure() and config.OpenWebif.auth.value is False) or (request.isSecure() and config.OpenWebif.https_auth.value is False):
