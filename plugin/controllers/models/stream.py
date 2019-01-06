@@ -66,6 +66,9 @@ def getStream(session, request, m3ufile):
 	info = getInfo()
 	model = info["model"]
 	machinebuild = info["machinebuild"]
+	urlparam = '?'
+	if info["imagedistro"] in ('openpli'):
+		urlparam = '&'
 	transcoder_port = None
 	args = ""
 
@@ -95,9 +98,10 @@ def getStream(session, request, m3ufile):
 					interlaced = config.plugins.transcodingsetup.interlaced.value
 					if fileExists("/proc/stb/encoder/0/vcodec"):
 						vcodec = config.plugins.transcodingsetup.vcodec.value
-						args = "?bitrate=%s&width=%s&height=%s&vcodec=%s&aspectratio=%s&interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
+						args = "?bitrate=%s__width=%s__height=%s__vcodec=%s__aspectratio=%s__interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
 					else:
-						args = "?bitrate=%s&width=%s&height=%s&aspectratio=%s&interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+						args = "?bitrate=%s__width=%s__height=%s__aspectratio=%s__interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+					args = args.replace('__', urlparam)
 				except Exception:
 					pass
 
@@ -162,6 +166,9 @@ def getTS(self, request):
 		machinebuild = info["machinebuild"]
 		transcoder_port = None
 		args = ""
+		urlparam = '?'
+		if info["imagedistro"] in ('openpli'):
+			urlparam = '&'
 		
 		if fileExists("/dev/bcm_enc0"):
 			try:
@@ -189,9 +196,10 @@ def getTS(self, request):
 						interlaced = config.plugins.transcodingsetup.interlaced.value
 						if fileExists("/proc/stb/encoder/0/vcodec"):
 							vcodec = config.plugins.transcodingsetup.vcodec.value
-							args = "?bitrate=%s&width=%s&height=%s&vcodec=%s&aspectratio=%s&interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
+							args = "?bitrate=%s__width=%s__height=%s__vcodec=%s__aspectratio=%s__interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
 						else:
-							args = "?bitrate=%s&width=%s&height=%s&aspectratio=%s&interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+							args = "?bitrate=%s__width=%s__height=%s__aspectratio=%s__interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+						args = args.replace('__', urlparam)
 					except Exception:
 						pass
 
