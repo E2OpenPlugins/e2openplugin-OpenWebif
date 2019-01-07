@@ -67,7 +67,7 @@ def getStream(session, request, m3ufile):
 	model = info["model"]
 	machinebuild = info["machinebuild"]
 	urlparam = '?'
-	if info["imagedistro"] in ('openpli'):
+	if info["imagedistro"] in ('openpli', 'satdreamgr'):
 		urlparam = '&'
 	transcoder_port = None
 	args = ""
