@@ -217,7 +217,16 @@ def getTS(self, request):
 			if m is not None:
 				portNumber = m.group(1)
 
-		response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%s%s://%s:%s/file?file=%s%s\n" % ((progopt, proto, request.getRequestHostname(), portNumber, quote(filename), args))
+		if config.OpenWebif.auth_for_streaming.value:
+			asession = GetSession()
+			if asession.GetAuth(request) is not None:
+				auth = ':'.join(asession.GetAuth(request)) + "@"
+			else:
+				auth = '-sid:' + str(asession.GetSID(request)) + "@"
+		else:
+			auth = ''
+
+		response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%s%s://%s%s:%s/file?file=%s%s\n" % ((progopt, proto, auth, request.getRequestHostname(), portNumber, quote(filename), args))
 		request.setHeader('Content-Type', 'application/x-mpegurl')
 		return response
 	else:
