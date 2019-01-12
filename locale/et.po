@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-30 12:03+0100\n"
-"PO-Revision-Date: 2018-04-27 15:04+0300\n"
-"Last-Translator: rimas <rimas@mail.com>\n"
+"PO-Revision-Date: 2019-01-12 10:46+0200\n"
+"Last-Translator: rimas <rimas@domeen.ee>\n"
 "Language-Team: Estonian\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../plugin/controllers/BouquetEditor.py:546
@@ -114,8 +114,14 @@ msgid "All Channels"
 msgstr "Kõik kanalid"
 
 #: ../plugin/controllers/i18n.py:280
-msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr "Kõik selle tarkvara failid vaba lähtekoodiga; neid võib levitada ja/või muuta vastavalt GNU Üldise Avaliku Litsentsi v.3 tingimustele, avaldajaks Free Software Foundation."
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 3 "
+"as published by the Free Software Foundation."
+msgstr ""
+"Kõik selle tarkvara failid vaba lähtekoodiga; neid võib levitada ja/või "
+"muuta vastavalt GNU Üldise Avaliku Litsentsi v.3 tingimustele, avaldajaks "
+"Free Software Foundation."
 
 #: ../plugin/controllers/BouquetEditor.py:502
 msgid "All alternative services deleted."
@@ -272,7 +278,9 @@ msgstr "Lemmiknimekiri %s liigutatud."
 #: ../plugin/controllers/BouquetEditor.py:183
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Lemmiknimekirja %s eemaldamine nurjus, viitenumber või muutuv nimekiri ei ole kehtivad."
+msgstr ""
+"Lemmiknimekirja %s eemaldamine nurjus, viitenumber või muutuv nimekiri ei "
+"ole kehtivad."
 
 #: ../plugin/controllers/BouquetEditor.py:181
 #, python-format
@@ -908,7 +916,7 @@ msgstr "Kernel"
 
 #: ../plugin/controllers/i18n.py:157
 msgid "LCD"
-msgstr ""
+msgstr "LCD"
 
 #: ../plugin/controllers/base.py:286
 msgid "LCD4Linux Setup"
@@ -1036,7 +1044,7 @@ msgstr "Veel"
 
 #: ../plugin/controllers/i18n.py:445
 msgid "Movie database for EPG"
-msgstr ""
+msgstr "Filmi andmebaas EPG tarbeks"
 
 #: ../plugin/controllers/i18n.py:491
 msgid "Movie search"
@@ -1305,7 +1313,7 @@ msgstr "Pcrpid"
 
 #: ../plugin/controllers/i18n.py:185
 msgid "PiP"
-msgstr ""
+msgstr "PiP"
 
 #: ../plugin/controllers/i18n.py:402
 msgid "Picture in Picture"
@@ -1510,9 +1518,8 @@ msgid "Search"
 msgstr "Otsi"
 
 #: ../plugin/controllers/i18n.py:209
-#, fuzzy
 msgid "Search CSFD"
-msgstr "IMDb otsing"
+msgstr "CSFD otsing"
 
 #: ../plugin/controllers/i18n.py:210
 msgid "Search IMDb"
@@ -1632,9 +1639,8 @@ msgid "Show Picon in channel list"
 msgstr "Kuva kanalinimekirjas pikonid"
 
 #: ../plugin/controllers/i18n.py:499
-#, fuzzy
 msgid "Show Service type in channel list"
-msgstr "Kuva kanalinimekirjas pikonid"
+msgstr "Kuva edastusmoodus kanalinimekirjas"
 
 #: ../plugin/controllers/i18n.py:180 ../plugin/plugin.py:132
 msgid "Show box name in header"
@@ -1642,7 +1648,7 @@ msgstr "Kuva päises vastuvõtja nimi"
 
 #: ../plugin/controllers/i18n.py:498
 msgid "Show details"
-msgstr ""
+msgstr "Kuva üksikasjad"
 
 #: ../plugin/controllers/i18n.py:221
 msgid "Show full remote"
@@ -2378,3 +2384,54 @@ msgstr "kanalivahetus"
 #: ../plugin/controllers/i18n.py:276
 msgid "zap before Stream"
 msgstr "Kanalivahetus enne voogesitust"
+
+#~ msgid "IP address"
+#~ msgstr "IP aadress"
+
+#~ msgid "(shift + click for long pressure)"
+#~ msgstr "(shift + klõps = pikk nupuvajutus)"
+
+#~ msgid "SleepTimer Error"
+#~ msgstr "Unetaimeri viga"
+
+#~ msgid "Show Picons in channel list"
+#~ msgstr "Kuva pikonid kanalinimekirjas"
+
+#~ msgid "Delete Channel(s)"
+#~ msgstr "Kustuta kanal(id)"
+
+#~ msgid "Do you really want to delete the channel(s)"
+#~ msgstr "Kas kustutad kanal(id)"
+
+#~ msgid "Delete Movie"
+#~ msgstr "Kustuta salvestis"
+
+#~ msgid "Really delete the movie"
+#~ msgstr "Kas kustutada salvestis"
+
+#~ msgid "Driver date"
+#~ msgstr "Ajurite väljalase"
+
+#~ msgid "Kernel version"
+#~ msgstr "Kerneli versioon"
+
+#~ msgid "Total Memory"
+#~ msgstr "Mälu kokku"
+
+#~ msgid "Afterevent"
+#~ msgstr "Pärast saadet"
+
+#~ msgid "Smart services renaming for XBMC"
+#~ msgstr "Kanalinimede muutmine XBMC tarbeks"
+
+#~ msgid "VPS Overwrite"
+#~ msgstr "VPS ülekirjutamine"
+
+#~ msgid "Multi EPG Mode"
+#~ msgstr "Multi EPG laad"
+
+#~ msgid "(shift  click for long pressure)"
+#~ msgstr "(shift  klõps = pikk nupuvajutus)"
+
+#~ msgid "RecordZAP"
+#~ msgstr "Salvestuskanalivahetus"
