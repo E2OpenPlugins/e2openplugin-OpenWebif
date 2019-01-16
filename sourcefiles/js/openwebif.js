@@ -852,9 +852,9 @@ function grabScreenshot(mode) {
 	}
 	timestamp = new Date().getTime();
 	if (GetLSValue('ssr_hd',false)){
-		$('#screenshotimage').attr("src",'/grab?format=jpg&mode=' + mode + '#' + timestamp);
+		$('#screenshotimage').attr("src",'/grab?format=jpg&mode=' + mode + '&t=' + timestamp);
 	} else {
-		$('#screenshotimage').attr("src",'/grab?format=jpg&r=720&mode=' + mode + '#' + timestamp);
+		$('#screenshotimage').attr("src",'/grab?format=jpg&r=720&mode=' + mode + '&t=' + timestamp);
 	}
 	if (mode == "lcd") {
 		$('#screenshotimage').attr("width", 'auto');
