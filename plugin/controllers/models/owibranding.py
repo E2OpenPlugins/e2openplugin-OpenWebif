@@ -681,7 +681,7 @@ def getAllInfo():
 			except:  # nosec  # noqa: E722
 				pass
 
-		if distro in ("openpli", "satdreamgr"):
+		if distro in ("openpli", "satdreamgr", "openvision"):
 			oever = "PLi-OE"
 			try:
 				imagelist = open("/etc/issue").readlines()[-2].split()[1].split('.')
