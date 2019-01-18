@@ -156,6 +156,8 @@
 </div>
 
 <script type="text/javascript">
+var str_db = "$tstrings['delete_bookmark']";
+
 #raw
 // TODO minimize js
 
@@ -455,7 +457,7 @@ $(function() {
 });
 
 function deleteBookmark(bm) {
-	if (confirm('Delete bookmark ' + ' ( ' + bm + ') ?') === false) {
+	if (confirm(str_db + ' ( ' + bm + ') ?') === false) {
 		return;
 	}
 

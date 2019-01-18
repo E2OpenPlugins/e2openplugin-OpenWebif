@@ -165,6 +165,12 @@
 	</div>
 </div>
 <script type="text/javascript">
+var str_db = "$tstrings['delete_bookmark']";
+var str_upl = "$tstrings['upload_package']";
+var str_rmp = "$tstrings['remove_package']";
+var str_up = "$tstrings['update_package']";
+var str_ip = "$tstrings['install_package']";
+
 #raw
 // TODO minimize js
 
@@ -173,7 +179,7 @@ var filterval='';
 
 
 function deleteBookmark(bm) {
-	if (confirm('Delete bookmark ' + ' ( ' + bm + ') ?') === false) {
+	if (confirm(str_db + ' ( ' + bm + ') ?') === false) {
 		return;
 	}
 
@@ -212,7 +218,7 @@ function addBookmark() {
 function prepareUpload() {
 	var fn = $(this).val();
 	fn = fn.replace('C:\\fakepath\\','');
-	if (confirm('Upload Package' + ' ( ' + fn + ') ?') === false) {
+	if (confirm(str_upl + ' ( ' + fn + ') ?') === false) {
 		return;
 	}
 
@@ -325,15 +331,15 @@ function ask(obj,man)
 	var cmd = '';
 
 	if(i=='1') {
-		if (confirm('Remove Package' + ' ( ' + pk + ') ?') === true) {
+		if (confirm(str_rmp + ' ( ' + pk + ') ?') === true) {
 			cmd = 'remove&' + pk;
 		}
 	} else if (i=='2') {
-		if (confirm('Update Package' + ' ( ' + pk + ') ?') === true) {
+		if (confirm(str_up + ' ( ' + pk + ') ?') === true) {
 			cmd = 'install&package=' + pk;
 		}
 	} else {
-		if (confirm('Install Package' + ' ( ' + pk + ') ?') === true) {
+		if (confirm(str_ip + ' ( ' + pk + ') ?') === true) {
 			cmd = 'install&package=' + pk;
 		}
 	}

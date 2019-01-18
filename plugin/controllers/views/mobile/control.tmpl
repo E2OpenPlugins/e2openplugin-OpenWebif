@@ -58,7 +58,7 @@
 		return false;
 	}
 	function startInstantRecord(vol) {
-		check = confirm("Really start instant record now?");
+		check = confirm("$tstrings['ask_instant_record']");
 		if (check == true) {
 			jQuery.ajax('/api/recordnow');
 		}

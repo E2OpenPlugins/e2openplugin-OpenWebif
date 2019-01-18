@@ -151,6 +151,7 @@ tstrings = {
 	'ipv6_address': _("IPv6 address(es)"),
 	'info': _("Infos"),
 	'instant_record': _("Instant Record"),
+	'ask_instant_record' :_("Really start instant record now?"),
 	'javalib': _("Javascript Libraries"),
 	'just_play': _("Just play"),
 	'kernel_version': _("Kernel"),
@@ -464,7 +465,8 @@ tstrings = {
 
 	'bookmarks': _("Bookmarks"),
 	'bookmark': _("Bookmark"),
-	
+	'delete_bookmark': _("Delete Bookmark"),
+
 	'packages': _("Packages"),
 
 	'newdesign': _('Use new design'),
