@@ -910,7 +910,7 @@ msgstr "Ядро линукса"
 
 #: ../plugin/controllers/i18n.py:157
 msgid "LCD"
-msgstr ""
+msgstr "LCD"
 
 #: ../plugin/controllers/base.py:286
 msgid "LCD4Linux Setup"
@@ -1038,7 +1038,7 @@ msgstr "Больше"
 
 #: ../plugin/controllers/i18n.py:445
 msgid "Movie database for EPG"
-msgstr ""
+msgstr "База данных видео EPG"
 
 #: ../plugin/controllers/i18n.py:491
 msgid "Movie search"
@@ -1307,7 +1307,7 @@ msgstr "Pcrpid"
 
 #: ../plugin/controllers/i18n.py:185
 msgid "PiP"
-msgstr ""
+msgstr "PiP"
 
 #: ../plugin/controllers/i18n.py:402
 msgid "Picture in Picture"
@@ -1512,9 +1512,8 @@ msgid "Search"
 msgstr "Поиск"
 
 #: ../plugin/controllers/i18n.py:209
-#, fuzzy
 msgid "Search CSFD"
-msgstr "Поиск в IMDb"
+msgstr "Поиск в CSFD"
 
 #: ../plugin/controllers/i18n.py:210
 msgid "Search IMDb"
@@ -1522,7 +1521,7 @@ msgstr "Поиск в IMDb"
 
 #: ../plugin/controllers/i18n.py:211
 msgid "Search KinoPoisk"
-msgstr "Искать в Кинопоиске"
+msgstr "Искать в КиноПоиск"
 
 #: ../plugin/controllers/i18n.py:297
 msgid "Search strictness"
@@ -1636,7 +1635,7 @@ msgstr "Показать пикон в списке каналов"
 #: ../plugin/controllers/i18n.py:499
 #, fuzzy
 msgid "Show Service type in channel list"
-msgstr "Показать пикон в списке каналов"
+msgstr "Показать тип сервиса в списке каналов"
 
 #: ../plugin/controllers/i18n.py:180 ../plugin/plugin.py:132
 msgid "Show box name in header"
@@ -1644,7 +1643,7 @@ msgstr "Показывать имя ресивера в заголовке"
 
 #: ../plugin/controllers/i18n.py:498
 msgid "Show details"
-msgstr ""
+msgstr "Показать детали"
 
 #: ../plugin/controllers/i18n.py:221
 msgid "Show full remote"
@@ -1800,7 +1799,7 @@ msgstr "Шаблон движка"
 
 #: ../plugin/controllers/base.py:332
 msgid "Terminal"
-msgstr ""
+msgstr "Терминал"
 
 #: ../plugin/controllers/models/services.py:316
 msgid "Terrestrial"
@@ -2380,3 +2379,7 @@ msgstr "перейти"
 #: ../plugin/controllers/i18n.py:276
 msgid "zap before Stream"
 msgstr "перейти перед стримом"
+
+msgid "Transcoding Setup"
+msgstr "Настройки транскодирования"
+
