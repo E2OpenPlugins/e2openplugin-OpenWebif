@@ -16,7 +16,7 @@
 			<div class="body">
 				<div class="row clearfix">
 					<div class="col-xs-12 col-md-3">
-						<img border='0' width="100px" height="60px" src='$getVar("info.picon", "images/default_picon.png")' onclick="open_epg_dialog('$info.ref','$info.name');" href="#" title="$tstrings['show_epg_for'] $info.name" border="0" alt='' />
+						<img border='0' width="100px" height="60px" src='$getVar("info.picon", "images/default_picon.png")' onclick="open_epg_dialog('$info.ref','$info.name');" style="cursor:pointer;" data-toggle="modal" data-target="#EPGModal" title="$tstrings['show_epg_for'] $info.name" border="0" alt='' />
 					</div>
 					<div class="col-xs-12 col-md-6">
 						<div class="row clearfix" >
@@ -57,9 +57,9 @@
 #set $tnum = 0
 #for $tuner in $info.tuners
 	#if $info.tunernumber == $tnum
-											<span style="color:green;"><b>$tuner</b></span>
+									<span style="color:green;"><b>$tuner</b></span>
 	#else
-		<span>$tuner</span>
+									<span>$tuner</span>
 	#end if
 	#set $tnum = $tnum + 1
 #end for
@@ -85,7 +85,7 @@
 				<div class="row clearfix">
 					<div class="col-xs-12" style="margin-bottom:0px;margin-top:0px;">
 						<span>
-								<b>$tstrings['description']:</b>  $getVar("now.shortdesc", " ")<br/>$getVar("now.longdesc", " ").replace("\n","<br/>").replace(u"\u008a","<br/>")
+							<b>$tstrings['description']:</b> $getVar("now.shortdesc", " ")<br/>$getVar("now.longdesc", " ").replace("\n","<br/>").replace(u"\u008a","<br/>")
 						</span>
 					</div>
 				</div>
@@ -99,8 +99,8 @@
 			<div class="body">
 				<div class="row clearfix">
 					<div class="col-xs-12">
-						<p><b>$tstrings['tuner_type']:</b>$getVar("info.tunertype", "N/A")</p>
-						<p><b>$tstrings['tuner_number']:</b>$getVar("info.tunernumber", "N/A")</p>
+						<p><b>$tstrings['tuner_type']:</b> $getVar("info.tunertype", "N/A")</p>
+						<p><b>$tstrings['tuner_number']:</b> $getVar("info.tunernumber", "N/A")</p>
 					</div>
 				</div>
 			</div>
@@ -111,8 +111,8 @@
 			<div class="body">
 				<div class="row clearfix">
 					<div class="col-xs-6">
-						<p><b>$tstrings['tuner_signal_snr']:</b>  $getVar("info.snr", "N/A")%</p>
-						<p><b>$tstrings['tuner_signal_agc']:</b>  $getVar("info.agc", "N/A")%</p>
+						<p><b>$tstrings['tuner_signal_snr']:</b> $getVar("info.snr", "N/A")%</p>
+						<p><b>$tstrings['tuner_signal_agc']:</b> $getVar("info.agc", "N/A")%</p>
 					</div>
 					<div class="col-xs-6">
 						#set $snr =  $getVar("info.snr", "0")
@@ -133,8 +133,8 @@
 			<div class="body">
 				<div class="row clearfix">
 					<div class="col-xs-12">
-						<p><b>$tstrings['tuner_signal_snr_db']:</b>$getVar("info.snr_db", "N/A")</p>
-						<p><b>$tstrings['tuner_ber']:</b>$getVar("info.ber", "N/A")</p>
+						<p><b>$tstrings['tuner_signal_snr_db']:</b> $getVar("info.snr_db", "N/A")</p>
+						<p><b>$tstrings['tuner_ber']:</b> $getVar("info.ber", "N/A")</p>
 					</div>
 				</div>
 			</div>
@@ -149,12 +149,12 @@
 			<div class="body">
 				<div class="row clearfix">
 					<div class="col-xs-12">
-						<p><b>$tstrings['name']:</b>$info.name</p>
-						<p><b>$tstrings['video_width']:</b>$info.width</p>
-						<p><b>$tstrings['encrypted']:</b>$info.crypt</p>
-						<p><b>$tstrings['teletext']:</b>$info.txtpid</p>
-						<p><b>$tstrings['a_pid']:</b>$info.apid</p>
-						<p><b>$tstrings['ts_id']:</b>$info.tsid</p>
+						<p><b>$tstrings['name']:</b> $info.name</p>
+						<p><b>$tstrings['video_width']:</b> $info.width</p>
+						<p><b>$tstrings['encrypted']:</b> $info.crypt</p>
+						<p><b>$tstrings['teletext']:</b> $info.txtpid</p>
+						<p><b>$tstrings['a_pid']:</b> $info.apid</p>
+						<p><b>$tstrings['ts_id']:</b> $info.tsid</p>
 						<p><b>$tstrings['s_ref']:</b> $info.sref</p>
 					</div>
 				</div>
@@ -167,11 +167,11 @@
 				<div class="row clearfix">
 					<div class="col-xs-12">
 						<p><b>$tstrings['provider']:</b> $info.provider</p>
-						<p><b>$tstrings['video_height']:</b>$info.height</p>
-						<p><b>$tstrings['dolby']:</b>$info.dolby</p>
-						<p><b>$tstrings['rec_status']:</b>$info.rec_state</p>
-						<p><b>$tstrings['v_pid']:</b>$info.vpid</p>
-						<p><b>$tstrings['on_id']:</b>$info.onid</p>
+						<p><b>$tstrings['video_height']:</b> $info.height</p>
+						<p><b>$tstrings['dolby']:</b> $info.dolby</p>
+						<p><b>$tstrings['rec_status']:</b> $info.rec_state</p>
+						<p><b>$tstrings['v_pid']:</b> $info.vpid</p>
+						<p><b>$tstrings['on_id']:</b> $info.onid</p>
 						<p>$getVar("info.srefv2", "")</p>
 					</div>
 				</div>
@@ -183,12 +183,12 @@
 			<div class="body">
 				<div class="row clearfix">
 					<div class="col-xs-12">
-						<p><b>$tstrings['namespace']:</b>$info.namespace</p>
-						<p><b>$tstrings['video_wide']:</b>$info.wide</p>
-						<p><b>$tstrings['subservices']:</b>$info.subs</p>
-						<p><b>$tstrings['pmt_pid']:</b>$info.pmtpid</p>
-						<p><b>$tstrings['pcr_pid']:</b>$info.pcrpid</p>
-						<p><b>$tstrings['s_id']:</b>$info.sid</p>
+						<p><b>$tstrings['namespace']:</b> $info.namespace</p>
+						<p><b>$tstrings['video_wide']:</b> $info.wide</p>
+						<p><b>$tstrings['subservices']:</b> $info.subs</p>
+						<p><b>$tstrings['pmt_pid']:</b> $info.pmtpid</p>
+						<p><b>$tstrings['pcr_pid']:</b> $info.pcrpid</p>
+						<p><b>$tstrings['s_id']:</b> $info.sid</p>
 						<p><b>$tstrings['s_orb']:</b> $getVar("info.orbital_position", "N/A")</p>
 					</div>
 				</div>
