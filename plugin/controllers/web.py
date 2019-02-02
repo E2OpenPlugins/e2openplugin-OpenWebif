@@ -18,7 +18,7 @@ from models.control import zapService, remoteControl, setPowerState, getStandbyS
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer, getPowerTimer, setPowerTimer, getVPSChannels
 from models.message import sendMessage, getMessageAnswer
-from models.movies import getMovieList, removeMovie, getMovieTags, moveMovie, renameMovie, getAllMovies
+from models.movies import getMovieList, removeMovie, getMovieInfo, moveMovie, renameMovie, getAllMovies
 from models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, saveConfig, getConfigs, getConfigsSections, getUtcOffset
 from models.stream import getStream, getTS, getStreamSubservices, GetSession
 from models.servicelist import reloadServicesLists
@@ -845,6 +845,7 @@ class WebController(BaseController):
 
 		return renameMovie(self.session, request.args["sRef"][0], request.args["newname"][0])
 
+	# DEPRECATED use movieinfo
 	def P_movietags(self, request):
 		"""
 		Request handler for the `movietags` endpoint.
@@ -867,7 +868,37 @@ class WebController(BaseController):
 			_del = request.args["del"][0]
 		if "sref" in request.args.keys():
 			_sref = request.args["sref"][0]
-		return getMovieTags(_sref, _add, _del)
+		return getMovieInfo(_sref, _add, _del)
+
+	def P_movieinfo(self, request):
+		"""
+		Request handler for the `movie` endpoint.
+		Add/Remove tags to movie file.
+		Remame title of movie.
+		Get/set movie cuts.
+
+		Args:
+			request (twisted.web.server.Request): HTTP request object
+		Returns:
+			HTTP response with headers
+		"""
+		if "sref" in request.args.keys():
+			_sref = request.args["sref"][0]
+			_addtag = None
+			_deltag = None
+			_title = None
+			_cuts = None
+			if "addtag" in request.args.keys():
+				_addtag = request.args["addtag"][0]
+			if "deltag" in request.args.keys():
+				_deltag = request.args["deltag"][0]
+			if "title" in request.args.keys():
+				_title = request.args["title"][0]
+			if "cuts" in request.args.keys():
+				_cuts = request.args["cuts"][0]
+			return getMovieInfo(_sref, _addtag, _deltag, _title, _cuts, True)
+		else:
+			return getMovieInfo()
 
 	# a duplicate api ??
 	def P_gettags(self, request):
@@ -883,7 +914,7 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
-		return getMovieTags()
+		return getMovieInfo()
 
 # VPS Plugin
 	def vpsparams(self, request):

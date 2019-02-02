@@ -21,6 +21,7 @@
 ##########################################################################
 
 import os
+import struct
 
 from enigma import eServiceReference, iServiceInformation, eServiceCenter
 from ServiceReference import ServiceReference
@@ -40,6 +41,7 @@ MOVIE_LIST_ROOT_FALLBACK = '/media'
 # TODO : optimize move using FileTransferJob if available
 # TODO : add copy api
 
+cutsParser = struct.Struct('>QI') # big-endian, 64-bit PTS and 32-bit type
 
 def checkParentalProtection(directory):
 	if hasattr(config.ParentalControl, 'moviepinactive'):
@@ -426,12 +428,14 @@ def moveMovie(session, sRef, destpath):
 def renameMovie(session, sRef, newname):
 	return _moveMovie(session, sRef, newname=newname)
 
-
-def getMovieTags(sRef=None, addtag=None, deltag=None):
+def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, NewFormat=False):
 
 	if sRef is not None:
 		result = False
 		service = ServiceReference(sRef)
+		newtags = []
+		newtitle = ''
+		newcuts = []
 		if service is not None:
 			fullpath = service.ref.getPath()
 			filename = '/'.join(fullpath.split("/")[1:])
@@ -446,6 +450,7 @@ def getMovieTags(sRef=None, addtag=None, deltag=None):
 					le = len(lines)
 					meta[0:le] = lines[0:le]
 					oldtags = meta[4].split(' ')
+					newtitle = meta[1]
 
 					if addtag is not None:
 						addtag = addtag.replace(' ', '_')
@@ -457,21 +462,65 @@ def getMovieTags(sRef=None, addtag=None, deltag=None):
 						deltag = deltag.replace(' ', '_')
 					else:
 						deltag = 'dummy'
-					newtags = []
 					for tag in oldtags:
 						if tag != deltag:
 							newtags.append(tag)
 
 					lines[4] = ' '.join(newtags)
 
+					if title is not None and len(title) > 0:
+						lines[1] = title
+						newtitle = title
+
 					with open(metafilename, 'w') as f:
 						f.write('\n'.join(lines))
 
-					result = True
-					return {
-						"result": result,
-						"tags": newtags
-					}
+					if not NewFormat:
+						return {
+							"result": result,
+							"tags": newtags
+						}
+
+				cutsFileName = '/' + filename + '.cuts'
+				if fileExists(cutsFileName):
+					try:
+						f = open(cutsFileName, 'rb')
+						while 1:
+							data = f.read(cutsParser.size)
+							if len(data) < cutsParser.size:
+								break
+							_pos, _type = cutsParser.unpack(data)
+							newcuts.append({
+								"type": _type,
+								"pos": _pos
+								}
+							)
+						f.close()
+					except:
+						print 'Error'
+						pass
+
+					if cuts is not None:
+						newcuts = []
+						cutsFileName = '/' + filename + '.cuts'
+						f = open(cutsFileName, 'wb')
+						for cut in cuts.split(','):
+							item = cut.split(':')
+							f.write(cutsParser.pack(int(item[1]),int(item[0])))
+							newcuts.append({
+								"type": item[0],
+								"pos": item[1]
+								}
+							)
+						f.close()
+
+				result = True
+				return {
+					"result": result,
+					"tags": newtags,
+					"title": newtitle,
+					"cuts": newcuts
+				}
 
 		return {
 			"result": result,

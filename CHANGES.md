@@ -1,5 +1,9 @@
-## Version 1.3.5
+## Version 1.3.6
 ## (in development)
+* add new movieinfo api to modify recording info (tags, title, cuts)
+* deprecate movietag api
+
+## Version 1.3.5
 * add picon value to getservices request #849
 * add genre to epg result #847
 * add mount info for xml results #850
