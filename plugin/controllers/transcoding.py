@@ -60,8 +60,9 @@ class TranscodingController(resource.Resource):
 			config_changed = False
 			if "port" in request.args:
 				new_port = request.args["port"][0]
-				if new_port not in port.choices:
-					new_port = port.value
+				if hasattr(port, "choices"):
+					if new_port not in port.choices:
+						new_port = port.value
 				if new_port != config.plugins.transcodingsetup.port.value:
 					config.plugins.transcodingsetup.port.value = new_port
 					config_changed = True
@@ -126,8 +127,9 @@ class TranscodingController(resource.Resource):
 		attr, arg = port, "port"
 		value = str(attr.value)
 		choices = ""
-		for choice in attr.choices:
-			choices += choice + ", "
+		if hasattr(attr, "choices"):
+			for choice in attr.choices:
+				choices += choice + ", "
 		choices = choices.rstrip(', ')
 		str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configchoices>%s</e2configchoices>\n<e2configvalue>%s</e2configvalue>\n</e2config>\n</e2configs>\n" % (arg, choices, value)
 		return str_result
