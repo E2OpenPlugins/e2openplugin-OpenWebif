@@ -80,9 +80,9 @@ class TranscodingController(resource.Resource):
 					attr = encoder_features[arg]
 					new_value = request.args[arg][0]
 					if self.setcheck(attr, new_value):
-							config_changed = True
+						config_changed = True
 					else:
-							return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for %s</e2statetext></e2simplexmlresult>' % arg
+						return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for %s</e2statetext></e2simplexmlresult>' % arg
 				elif arg not in ("encoder", "port"):
 					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>choosen feature %s is not available</e2statetext></e2simplexmlresult>' % arg
 
