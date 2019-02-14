@@ -60,12 +60,10 @@ class TranscodingController(resource.Resource):
 			config_changed = False
 			if "port" in request.args:
 				new_port = request.args["port"][0]
-				if hasattr(port, "choices"):
-					if new_port not in port.choices:
-						new_port = port.value
-				if new_port != config.plugins.transcodingsetup.port.value:
-					config.plugins.transcodingsetup.port.value = new_port
+				if self.setcheck(config.plugins.transcodingsetup.port, new_port):
 					config_changed = True
+				else:
+					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for port</e2statetext></e2simplexmlresult>' 
 			encoder = 0
 			if "encoder" in request.args:
 				try:
@@ -76,30 +74,18 @@ class TranscodingController(resource.Resource):
 			if not len(encoder_features):
 				return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>choosen encoder is not available</e2statetext></e2simplexmlresult>'
 
+
 			for arg in request.args:
 				if arg in encoder_features:
 					attr = encoder_features[arg]
-					if hasattr(attr, "limits"):
-						try:
-							new_value = int(request.args[arg][0])
-						except ValueError:
-							return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for %s</e2statetext></e2simplexmlresult>' % arg
-						if new_value < int(attr.limits[0][0]):
-							new_value = int(attr.limits[0][0])
-						elif new_value > int(attr.limits[0][1]):
-							new_value = int(attr.limits[0][1])
-						if new_value != attr.value:
-							attr.value = new_value
-							config_changed = True
-					elif hasattr(attr, "choices"):
-						new_value = request.args[arg][0]
-						if new_value not in attr.choices:
-							return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for %s</e2statetext></e2simplexmlresult>' % arg
-						if new_value != attr.value:
-							attr.value = new_value
-							config_changed = True
+					new_value = request.args[arg][0]
+					if self.setcheck(attr, new_value):
+						config_changed = True
+					else:
+						return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for %s</e2statetext></e2simplexmlresult>' % arg
 				elif arg not in ("encoder", "port"):
 					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>choosen feature %s is not available</e2statetext></e2simplexmlresult>' % arg
+
 			if config_changed:
 				config.plugins.transcodingsetup.save()
 
@@ -111,25 +97,47 @@ class TranscodingController(resource.Resource):
 				str_result += "<encoder number=\"%s\">\n" % str(encoder)
 			for arg in encoder_features:
 				attr = encoder_features[arg]
-				value = str(attr.value)
-				if hasattr(attr, "limits"):
-					attr_min = str(attr.limits[0][0])
-					attr_max = str(attr.limits[0][1])
-					str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configlimits>%s-%s</e2configlimits>\n<e2configvalue>%s</e2configvalue>\n</e2config>\n" % (arg, attr_min, attr_max, value)
-				elif hasattr(attr, "choices"):
-					choices = ""
-					for choice in attr.choices:
-						choices += choice + ", "
-					choices = choices.rstrip(', ')
-					str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configchoices>%s</e2configchoices>\n<e2configvalue>%s</e2configvalue>\n</e2config>\n" % (arg, choices, value)
+				str_result += self.getparam(attr, arg)
 			if len(encoder_features):
 				str_result += "</encoder>\n"
 		attr, arg = port, "port"
+		str_result += self.getparam(attr, arg)
+
+		str_result += "</e2configs>\n" 
+		return str_result
+
+
+# check methode for setting parameter
+	def setcheck(self, attr, new_value):
+		if hasattr(attr, "limits"):
+			try:
+				new_value = int(new_value)
+			except ValueError:
+				return False
+			if new_value < int(attr.limits[0][0]):
+				new_value = int(attr.limits[0][0])
+			elif new_value > int(attr.limits[0][1]):
+				new_value = int(attr.limits[0][1])
+		elif hasattr(attr, "choices"):
+			if new_value not in attr.choices:
+				return False
+		attr.value = new_value
+		return True
+
+
+# build parameter value and limit or choices
+	def getparam(self, attr, arg):
 		value = str(attr.value)
-		choices = ""
-		if hasattr(attr, "choices"):
+		str_result = "<e2config>\n<e2configname>%s</e2configname>\n" % arg
+		if hasattr(attr, "limits"):
+			attr_min = str(attr.limits[0][0])
+			attr_max = str(attr.limits[0][1])
+			str_result += "<e2configlimits>%s-%s</e2configlimits>\n" % (attr_min, attr_max)
+		elif hasattr(attr, "choices"):
+			choices = ""
 			for choice in attr.choices:
 				choices += choice + ", "
-		choices = choices.rstrip(', ')
-		str_result += "<e2config>\n<e2configname>%s</e2configname>\n<e2configchoices>%s</e2configchoices>\n<e2configvalue>%s</e2configvalue>\n</e2config>\n</e2configs>\n" % (arg, choices, value)
+			choices = choices.rstrip(', ')
+			str_result += "<e2configchoices>%s</e2configchoices>\n" % choices
+		str_result += "<e2configvalue>%s</e2configvalue>\n</e2config>\n" % value
 		return str_result
