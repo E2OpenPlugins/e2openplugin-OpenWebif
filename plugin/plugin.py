@@ -22,7 +22,7 @@ from Plugins.Plugin import PluginDescriptor
 from Components.ActionMap import ActionMap
 from Components.Label import Label
 from Components.ConfigList import ConfigListScreen
-from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection
+from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection, configfile
 from enigma import getDesktop
 from controllers.models.info import getInfo
 from controllers.defaults import getKinopoisk
@@ -186,6 +186,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			HttpdRestart(global_session)
 		else:
 			HttpdStop(global_session)
+		configfile.save()
 		self.close()
 
 	def keyCancel(self):
