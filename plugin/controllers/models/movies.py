@@ -27,10 +27,16 @@ from enigma import eServiceReference, iServiceInformation, eServiceCenter
 from ServiceReference import ServiceReference
 from Tools.FuzzyDate import FuzzyTime
 from Components.config import config
-from Components.MovieList import MovieList, moviePlayState
+from Components.MovieList import MovieList
 from Tools.Directories import fileExists
 from Screens import MovieSelection
 from ..i18n import _
+
+try:
+	from Components.MovieList import moviePlayState as _moviePlayState
+except ImportError:
+	from ..utilities import _moviePlayState
+	pass
 
 MOVIETAGFILE = "/etc/enigma2/movietags"
 TRASHDIRNAME = "movie_trash"
@@ -179,7 +185,7 @@ def getMovieList(rargs=None, locations=None):
 				if length_minutes:
 					movie['length'] = "%d:%02d" % (length_minutes / 60, length_minutes % 60)
 					if fields is None or 'pos' in fields:
-						movie['lastseen'] = moviePlayState(filename + '.cuts', serviceref, length_minutes) or 0
+						movie['lastseen'] = _moviePlayState(filename + '.cuts', serviceref, length_minutes) or 0
 
 				if fields is None or 'desc' in fields:
 					txtfile = name + '.txt'

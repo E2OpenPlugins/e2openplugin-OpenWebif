@@ -263,6 +263,10 @@ def create_servicereference(*args, **kwargs):
 def getGenreStringLong(hn, ln):
 	return ""
 
+# Fallback moviePlayState
+def _moviePlayState(cutsFileName, ref, length):
+	return 0
+
 if __name__ == '__main__':
 	import doctest
 
