@@ -19,6 +19,7 @@ from Components.config import config
 from Components.NimManager import nimmanager
 from ServiceReference import ServiceReference
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
+from Screens.InfoBar import InfoBar
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache
 from info import GetWithAlternative, getOrbitalText, getOrb
 from urllib import quote, unquote
@@ -93,6 +94,18 @@ def getCurrentService(session):
 		except ValueError:
 			ns = 0
 
+		bqname = ""
+		bqref = ""
+
+		try:
+			servicelist = InfoBar.instance.servicelist
+			epg_bouquet = servicelist and servicelist.getRoot()
+			if epg_bouquet:
+				bqname = ServiceReference(epg_bouquet).getServiceName()
+				bqref = ServiceReference(epg_bouquet).ref.toString()
+		except:
+			pass
+
 		return {
 			"result": True,
 			"name": filterName(info.getName()),
@@ -110,7 +123,9 @@ def getCurrentService(session):
 			"onid": getServiceInfoString(info, iServiceInformation.sONID),
 			"sid": getServiceInfoString(info, iServiceInformation.sSID),
 			"ref": quote(ref, safe=' ~@#$&()*!+=:;,.?/\''),
-			"iswidescreen": info.getInfo(iServiceInformation.sAspect) in (3, 4, 7, 8, 0xB, 0xC, 0xF, 0x10)
+			"iswidescreen": info.getInfo(iServiceInformation.sAspect) in (3, 4, 7, 8, 0xB, 0xC, 0xF, 0x10),
+			"bqref": quote(bqref, safe=' ~@#$&()*!+=:;,.?/\''),
+			"bqname": bqname
 		}
 	except Exception, e:
 		print str(e)
@@ -131,7 +146,9 @@ def getCurrentService(session):
 			"onid": 0,
 			"sid": 0,
 			"ref": "",
-			"iswidescreen": False
+			"iswidescreen": False,
+			"bqref": "",
+			"bqname": ""
 		}
 
 
