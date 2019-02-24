@@ -1869,12 +1869,13 @@ class WebController(BaseController):
 			:query string value: configuration value
 		"""
 		if request.method == b'POST':
-			res = self.testMandatoryArguments(request, ["key", "value"])
+			res = self.testMandatoryArguments(request, ["key"])
 			if res:
 				return res
-			key = request.args["key"][0]
-			value = request.args["value"][0]
-			return saveConfig(key, value)
+			if "value" in request.args.keys():
+				key = request.args["key"][0]
+				value = request.args["value"][0]
+				return saveConfig(key, value)
 		return {"result": False}
 
 	def P_mediaplayeradd(self, request):
