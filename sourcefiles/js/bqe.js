@@ -700,7 +700,7 @@
 						success: function ( data ) {
 							var r = data.Result;
 							if (r[0] === false) {
-								showError(r[1],r[0]);
+								self.showError(r[1],r[0]);
 							} else {
 								var url =  "/bouqueteditor/tmp/" + r[1];
 								window.open(url,'Download');
