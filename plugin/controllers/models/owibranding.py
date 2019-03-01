@@ -609,8 +609,6 @@ def getAllInfo():
 		remote = "sh1"
 	elif procmodel in ("h3", "h4", "h5", "h6", "h7", "h9", "i55plus"):
 		remote = "h3"
-	elif procmodel in ():
-		remote = "h3"
 	elif procmodel == "i55":
 		remote = "i55"
 	elif procmodel in ("vipercombo", "vipert2c"):
@@ -681,7 +679,7 @@ def getAllInfo():
 			except:  # nosec  # noqa: E722
 				pass
 
-		if distro in ("openpli", "satdreamgr", "openvision"):
+		if distro in ("openpli", "satdreamgr", "openvision", "openrsi"):
 			oever = "PLi-OE"
 			try:
 				imagelist = open("/etc/issue").readlines()[-2].split()[1].split('.')
@@ -695,8 +693,6 @@ def getAllInfo():
 			except:  # nosec  # noqa: E722
 				# just in case
 				pass
-		elif distro == "openrsi":
-			oever = "PLi-OE"
 		else:
 			try:
 				imagever = about.getImageVersionString()
@@ -730,8 +726,8 @@ def getAllInfo():
 	info['imagever'] = imagever
 	info['imagebuild'] = imagebuild
 	info['driverdate'] = driverdate
-	info['lcd'] = distro in ("openpli", "satdreamgr",) and lcd or 0
-	info['grabpip'] = distro in ("openpli", "satdreamgr",) and grabpip or 0
+	info['lcd'] = distro in ("openpli", "satdreamgr", "openvision", "openrsi") and lcd or 0
+	info['grabpip'] = distro in ("openpli", "satdreamgr", "openvision", "openrsi") and grabpip or 0
 	return info
 
 
