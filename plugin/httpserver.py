@@ -30,7 +30,7 @@ import imp
 #import re
 import ipaddress
 
-global listener, server_to_stop, site
+global listener, server_to_stop, site, sslsite
 listener = []
 
 
@@ -169,7 +169,7 @@ def HttpdStart(session):
 		session: (?) session object
 	"""
 	if config.OpenWebif.enabled.value is True:
-		global listener, site
+		global listener, site, sslsite
 		port = config.OpenWebif.port.value
 
 		temproot = buildRootTree(session)
@@ -300,7 +300,7 @@ class AuthResource(resource.Resource):
 			return self.resource.render(request)
 
 	def getChildWithDefault(self, path, request):
-		global site
+		global site, sslsite
 		session = request.getSession().sessionNamespaces
 		host = request.getHost().host
 		peer = request.getClientIP()
@@ -340,6 +340,15 @@ class AuthResource(resource.Resource):
 			sid = str(request.getPassword())
 			try:
 				oldsession = site.getSession(sid).sessionNamespaces
+				if "logged" in oldsession.keys() and oldsession["logged"]:
+					session = request.getSession().sessionNamespaces
+					session["logged"] = True
+					return self.resource.getChildWithDefault(path, request)
+			except: # nosec
+				pass
+
+			try:
+				oldsession = sslsite.getSession(sid).sessionNamespaces
 				if "logged" in oldsession.keys() and oldsession["logged"]:
 					session = request.getSession().sessionNamespaces
 					session["logged"] = True
