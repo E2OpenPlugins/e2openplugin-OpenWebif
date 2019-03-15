@@ -457,20 +457,21 @@ def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, New
 					meta[0:le] = lines[0:le]
 					oldtags = meta[4].split(' ')
 					newtitle = meta[1]
+					deltags = []
 
 					if addtag is not None:
-						addtag = addtag.replace(' ', '_')
-						try:
-							oldtags.index(addtag)
-						except ValueError:
-							oldtags.append(addtag)
+						for _add in addtag.split(','):
+							__add = _add.replace(' ', '_')
+							if __add not in oldtags:
+								oldtags.append(__add)
 					if deltag is not None:
-						deltag = deltag.replace(' ', '_')
-					else:
-						deltag = 'dummy'
-					for tag in oldtags:
-						if tag != deltag:
-							newtags.append(tag)
+						for _del in deltag.split(','):
+							__del = _del.replace(' ', '_')
+							deltags.append(__del)
+
+					for _add in oldtags:
+						if _add not in deltags:
+							newtags.append(_add)
 
 					lines[4] = ' '.join(newtags)
 

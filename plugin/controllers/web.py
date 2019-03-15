@@ -873,7 +873,7 @@ class WebController(BaseController):
 	def P_movieinfo(self, request):
 		"""
 		Request handler for the `movie` endpoint.
-		Add/Remove tags to movie file.
+		Add/Remove tags to movie file. Multiple tags needs to separate by ,
 		Remame title of movie.
 		Get/set movie cuts.
 
