@@ -1,7 +1,7 @@
 # Italian translations for OpenWebif.
 # Signed-off-by: www.vuplus-community.net <insanity@>
 #
-# Updated by: Gringo <openpli@tiscali.it>
+# Updated by: William <ghenessior@gmail.com
 #
 msgid ""
 msgstr ""
@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.3\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -1680,7 +1680,7 @@ msgid "standard"
 msgstr "Standard"
 
 msgid "start match"
-msgstr "Avviare ricerca corrispondenza"
+msgstr "Il titolo inizia per"
 
 msgid "static"
 msgstr "Statico"
@@ -1717,3 +1717,4 @@ msgstr "Cambiare canale"
 
 msgid "zap before Stream"
 msgstr "Cambiare canale prima della trasmissione"
+
