@@ -211,6 +211,11 @@ def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vps
 		}
 
 	(begin, end, name, description, eit) = parseEvent(event)
+
+	if justplay:
+		begin += config.recording.margin_before.value * 60
+		end = begin + 1
+
 	return addTimer(
 		session,
 		serviceref,
