@@ -52,7 +52,10 @@ class StreamAdapter:
 		converter_args = []
 		self.converter = Streaming(converter_args)
 		self.converter.source = self
-		self.request.write(self.converter.getText())
+		try:
+			self.request.write(self.converter.getText())
+		except:
+			pass
 
 
 class StreamController(resource.Resource):
