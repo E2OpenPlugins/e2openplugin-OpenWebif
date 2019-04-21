@@ -319,6 +319,9 @@ def getAllInfo():
 		elif procmodel =="hd60":
 			brand ="Mut@nt"
 			model = "HD60"
+		elif procmodel =="multibox":
+			brand ="MaXytec"
+			model = "Multibox"
 		elif procmodel == "arivalink200":
 			brand = "Ferguson"
 			model = "Ariva @Link 200"
@@ -576,6 +579,8 @@ def getAllInfo():
 		remote = "hd2400"
 	elif procmodel == "hd60":
 		remote = "hd60"
+	elif procmodel == "multibox":
+		remote = "multibox"	
 	elif procmodel in ("spycat", "spycatmini", "spycatminiplus", "spycat4kmini"):
 		remote = "spycat"
 	elif procmodel.startswith("ixuss"):
