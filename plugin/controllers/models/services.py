@@ -467,8 +467,15 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, pic
 	services = []
 	allproviders = {}
 
+	CalcPos = False
+
 	if sRef == "":
 		sRef = '%s FROM BOUQUET "bouquets.tv" ORDER BY bouquet' % (service_types_tv)
+		CalcPos = True
+	elif ' "bouquets.radio" ' in sRef:
+		CalcPos = True
+	elif ' "bouquets.tv" ' in sRef:
+		CalcPos = True
 
 	if provider:
 		s_type = service_types_tv
@@ -487,8 +494,25 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, pic
 
 	servicelist = ServiceList(eServiceReference(sRef))
 	slist = servicelist.getServicesAsList()
+	serviceHandler = eServiceCenter.getInstance()
 
+	oPos = 0
 	for sitem in slist:
+		
+		oldoPos = oPos
+		if CalcPos:
+			sref = sitem[0]
+			serviceslist = serviceHandler.list(eServiceReference(sref))
+			sfulllist = serviceslist and serviceslist.getContent("RN", True)
+			for citem in sfulllist:
+				sref = citem[0].toString()
+				hs = (int(sref.split(":")[1]) & 512)
+				sp = (sref[:7] == '1:832:D')
+				if not hs or sp:  # 512 is hidden service on sifteam image. Doesn't affect other images
+					oPos = oPos + 1
+					if not sp and citem[0].flags & eServiceReference.isMarker:
+						oPos = oPos - 1
+
 		st = int(sitem[0].split(":")[1])
 		if (sitem[0][:7] == '1:832:D') or (not (st & 512) and not (st & 64)):
 			pos = pos + 1
@@ -497,6 +521,8 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, pic
 				service = {}
 				service['pos'] = 0 if (st & 64) else pos
 				sr = unicode(sitem[0], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+				if CalcPos:
+					service['startpos'] = oldoPos
 				if picon:
 					service['picon'] = getPicon(sr)
 				service['servicereference'] = sr
