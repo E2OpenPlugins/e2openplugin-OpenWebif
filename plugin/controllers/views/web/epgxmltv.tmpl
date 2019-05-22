@@ -8,7 +8,7 @@
 	</channel>
 	#end for
 	#for $event in $events
-	<programme start="$datetime.utcfromtimestamp($event.begin_timestamp).strftime('%Y%m%d%H%M%S') $offset.utcoffset" stop="$datetime.utcfromtimestamp($event.begin_timestamp + $event.duration_sec).strftime('%Y%m%d%H%M%S') $offset.utcoffset" channel="$event.sref">
+	<programme start="$datetime.fromtimestamp($event.begin_timestamp).strftime('%Y%m%d%H%M%S') $offset.utcoffset" stop="$datetime.fromtimestamp($event.begin_timestamp + $event.duration_sec).strftime('%Y%m%d%H%M%S') $offset.utcoffset" channel="$event.sref">
 		<title lang="$lang">$str($event.title)</title>
 		<sub-title lang="$lang">$str($event.shortdesc)</sub-title>
 		<desc lang="$lang">$str($event.longdesc)</desc>
