@@ -1,8 +1,15 @@
+#from Plugins.Extensions.OpenWebif.controllers.models.services import getPicon
 #EXTM3U 
 #EXTVLCOPT--http-reconnect=true
+#set $_url = "http://"+$auth+$host.split(u":")[0]
 #for $service in $services
-#EXTINF:-1,$service.servicename
-#set $_sref=$service.servicereference
+#set $_sref=":".join($service.servicereference.split(":", 10)[:-1])+":"
+#try
+#set $_piconurl=$_url+getPicon($_sref)
+#except
+#set $_piconurl=""
+#end try
+#EXTINF:-1 tvg-chno="$service.program" tvg-logo="$_piconurl" tvg-id="$_sref" tvg-name="$service.servicename",$service.servicename
 #if _sref and u"//127.0.0.1%3" in _sref
 #set $_sref=_sref.split(u":")[10].split(u"//127.0.0.1%3")[-1]
 #echo u"http://"+$auth+$host.split(u":")[0]+u":"+_sref[1:]
