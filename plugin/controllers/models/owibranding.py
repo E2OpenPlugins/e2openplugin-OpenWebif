@@ -322,6 +322,7 @@ def getAllInfo():
 		elif procmodel =="multibox":
 			brand ="MaXytec"
 			model = "Multibox"
+			grabpip = 1
 		elif procmodel == "arivalink200":
 			brand = "Ferguson"
 			model = "Ariva @Link 200"
