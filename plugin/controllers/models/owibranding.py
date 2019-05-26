@@ -373,6 +373,9 @@ def getAllInfo():
 			elif procmodel == "osmio4k":
 				model = "OS Mio 4K"
 				grabpip = 1
+			elif procmodel == "osmio4kplus":
+				model = "OS Mio 4K+"
+				grabpip = 1
 			else:
 				model = procmodel
 		elif procmodel == "h3":
