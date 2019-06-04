@@ -228,7 +228,7 @@ def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vps
 		AFTEREVENT.AUTO,
 		dirname,
 		tags,
-		False,
+		0,
 		vpsinfo,
 		None,
 		eit,
