@@ -500,8 +500,8 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, pic
 	for sitem in slist:
 		
 		oldoPos = oPos
-		if CalcPos:
-			sref = sitem[0]
+		sref = sitem[0]
+		if CalcPos and 'userbouquet' in sref:
 			serviceslist = serviceHandler.list(eServiceReference(sref))
 			sfulllist = serviceslist and serviceslist.getContent("RN", True)
 			for citem in sfulllist:
