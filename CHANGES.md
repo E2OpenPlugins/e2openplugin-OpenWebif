@@ -1,5 +1,13 @@
-## Version 1.3.6
+## Version 1.3.8
 ## (in development)
+* BQE: import bouquets from json
+
+## Version 1.3.7
+* fix channel numbering #939
+* fix timer addTimerByEventId #946
+* improve iptv support
+
+## Version 1.3.6
 * add new movieinfo api to modify recording info (tags, title, cuts)
 * deprecate movietag api
 
