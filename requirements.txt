@@ -1,6 +1,6 @@
 Cheetah==2.4.4
 pyOpenSSL>=16.2.0
-Twisted==16.2.0
+twisted>=19.2.1
 flake8==3.5.0
 sphinx-rtd-theme>=0.2.4
 sphinxcontrib-napoleon>=0.6.1
