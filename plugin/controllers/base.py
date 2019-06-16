@@ -237,17 +237,20 @@ class BaseController(resource.Resource):
 		opath = None
 		owebif = None
 		oport = None
-		if fileExists("/tmp/.oscam/oscam.version"):  # nosec
-			data = open("/tmp/.oscam/oscam.version", "r").readlines()  # nosec
-			for i in data:
-				if "configdir:" in i.lower():
-					opath = i.split(":")[1].strip() + "/oscam.conf"
-				elif "web interface support:" in i.lower():
-					owebif = i.split(":")[1].strip()
-				elif "webifport:" in i.lower():
-					oport = i.split(":")[1].strip()
-				else:
-					continue
+		variant = None
+		for file in ["/tmp/.ncam/ncam.version", "/tmp/.oscam/oscam.version"]:
+			if fileExists(file):  # nosec
+				conffile = file.split('/')[-1].replace("version","conf")
+				data = open(file, "r").readlines()  # nosec
+				for i in data:
+					if "configdir:" in i.lower():
+						opath = i.split(":")[1].strip() + "/" + conffile
+					elif "web interface support:" in i.lower():
+						owebif = i.split(":")[1].strip()
+					elif "webifport:" in i.lower():
+						oport = i.split(":")[1].strip()
+					else:
+						continue
 		if owebif == "yes" and oport is not "0" and opath is not None:
 			if fileExists(opath):
 				return opath
@@ -298,7 +301,10 @@ class BaseController(resource.Resource):
 						port = port[1:]
 			if port is not None:
 				url = "%s://%s:%s" % (proto, request.getRequestHostname(), port)
-				extras.append({'key': url, 'description': _("OSCam Webinterface"), 'nw': '1'})
+				if self.oscamconf.endswith("oscam.conf"):
+					extras.append({'key': url, 'description': _("OSCam Webinterface"), 'nw': '1'})
+				elif self.oscamconf.endswith("ncam.conf"):
+					extras.append({'key': url, 'description': _("NCam Webinterface"), 'nw': '1'})
 
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer  # noqa: F401
