@@ -40,7 +40,7 @@
 				$channel.name
 			#end if
 			</span>
-			#if '4097:' in $channel.ref
+			#if '4097:' in $channel.ref or '5002:' in $channel.ref or 'http%3a' in $channel.ref or 'https%3a' in $channel.ref
 				<span class="channel-tag ST-IPTV">IPTV</span>
 			#elif $channel.has_key('ns')
 				#set $ns="DVB-S"
