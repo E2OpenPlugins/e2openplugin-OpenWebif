@@ -8,7 +8,7 @@ from Components.config import config as comp_config
 
 from enigma import eEnv
 
-OPENWEBIFVER = "OWIF 1.3.7"
+OPENWEBIFVER = "OWIF 1.3.8"
 
 PLUGIN_NAME = 'OpenWebif'
 PLUGIN_DESCRIPTION = "OpenWebif Configuration"

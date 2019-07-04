@@ -1,6 +1,6 @@
 ## Version 1.3.8
 ## (in development)
-* BQE: import bouquets from json
+* BQE: import bouquets via json
 
 ## Version 1.3.7
 * fix channel numbering #939

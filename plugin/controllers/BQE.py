@@ -387,6 +387,26 @@ class BQEUploadFile(resource.Resource):
 				result = [True, self.FN]
 		return json.dumps({"Result": result})
 
+class BQEImport(resource.Resource):
+	def __init__(self, session):
+		self.session = session
+		resource.Resource.__init__(self)
+
+	def render_POST(self, request):
+		request.setResponseCode(http.OK)
+		request.setHeader('content-type', 'text/plain')
+		request.setHeader('charset', 'UTF-8')
+		result = [False, 'Error upload File']
+		if "json" in request.args.keys():
+			try:
+				from BouquetEditor import BouquetEditor
+				bqe = BouquetEditor(self.session, func=BouquetEditor.IMPORT_BOUQUET)
+				bqe.handleCommand(request.args)
+				result = bqe.result
+			except ImportError:
+				result = [False, 'BouquetEditor plugin not found']
+
+		return json.dumps({"Result": result})
 
 class BQEApiController(BQEWebController):
 	def __init__(self, session, path=""):
@@ -403,3 +423,4 @@ class BQEController(BaseController):
 		self.putChild("api", BQEApiController(session))
 		self.putChild('tmp', static.File('/tmp'))  # nosec
 		self.putChild('uploadrestore', BQEUploadFile(session))
+		self.putChild('import', BQEImport(session))

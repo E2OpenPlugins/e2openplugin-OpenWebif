@@ -37,6 +37,7 @@ class BouquetEditor(Source):
 	RESTORE = 11
 	RENAME_SERVICE = 12
 	ADD_MARKER_TO_BOUQUET = 13
+	IMPORT_BOUQUET = 14
 
 	BACKUP_PATH = "/tmp"  # nosec
 	BACKUP_FILENAME = "webbouqueteditor_backup.tar"
@@ -79,6 +80,8 @@ class BouquetEditor(Source):
 			self.result = self.renameService(cmd)
 		elif self.func is self.ADD_MARKER_TO_BOUQUET:
 			self.result = self.addMarkerToBouquet(cmd)
+		elif self.func is self.IMPORT_BOUQUET:
+			self.result = self.importBouquet(cmd)
 		else:
 			self.result = (False, _("one two three four unknown command"))
 
@@ -704,3 +707,51 @@ class BouquetEditor(Source):
 		else:
 			name = ""
 		return name
+
+	def importBouquet(self, param):
+		if config.usage.multibouquet.value:
+			import json
+			ret = [False, 'json format error']
+			mode = MODE_TV
+			try:
+				bqimport = json.loads(param["json"][0])
+				filename = bqimport["filename"]
+				_mode = bqimport["mode"]
+				overwrite = bqimport["overwrite"]
+				lines = bqimport["lines"]
+			except (ValueError, KeyError):
+				return ret
+
+			if _mode == 1:
+				mode = MODE_RADIO
+
+			fullfilename = '/etc/enigma2/' + filename
+
+			if mode == MODE_TV:
+				sref = '1:7:1:0:0:0:0:0:0:0:FROM BOUQUET \"%s\" ORDER BY bouquet' % (filename)
+			else:
+				sref = '1:7:2:0:0:0:0:0:0:0:FROM BOUQUET \"%s\" ORDER BY bouquet' % (filename)
+
+			if not path.exists(fullfilename):
+				new_bouquet_ref = eServiceReference(str(sref))
+				mutableBouquetList = self.getMutableBouquetList(mode)
+				mutableBouquetList.addService(new_bouquet_ref)
+				mutableBouquetList.flushChanges()
+
+			if overwrite == 1:
+				f = open(fullfilename, 'w')
+			else:
+				f = open(fullfilename, 'a')
+			if f:
+				for line in lines:
+					f.write(line)
+					f.write("\n")
+				f.close()
+			else:
+				return [False, 'error creating bouquet file']
+
+			eDVBDB.getInstance().reloadBouquets()
+			return [True, 'bouquet added']
+		else:
+			return [False, _("Multi-Bouquet is not enabled!")]
+
