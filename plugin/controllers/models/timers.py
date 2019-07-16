@@ -13,7 +13,7 @@ from enigma import eEPGCache, eServiceReference
 from Components.UsageConfig import preferredTimerPath, preferredInstantRecordPath
 from Components.config import config
 from Components.TimerSanityCheck import TimerSanityCheck
-from RecordTimer import RecordTimerEntry, RecordTimer, parseEvent, AFTEREVENT
+from RecordTimer import RecordTimerEntry, RecordTimer, parseEvent
 from ServiceReference import ServiceReference
 from time import time, strftime, localtime, mktime
 from urllib import unquote
@@ -202,7 +202,7 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 	}
 
 
-def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vpsinfo, always_zap):
+def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vpsinfo, always_zap, afterevent):
 	event = eEPGCache.getInstance().lookupEventId(eServiceReference(serviceref), eventid)
 	if event is None:
 		return {
@@ -225,7 +225,7 @@ def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vps
 		description,
 		False,
 		justplay,
-		AFTEREVENT.AUTO,
+		afterevent,
 		dirname,
 		tags,
 		0,

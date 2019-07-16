@@ -1013,7 +1013,7 @@ class WebController(BaseController):
 			justplay = request.args["justplay"][0] == "1"
 
 		afterevent = 3
-		if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["1", "2", "3"]:
+		if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["0", "1", "2", "3"]:
 			afterevent = int(request.args["afterevent"][0])
 
 		dirname = None
@@ -1087,6 +1087,7 @@ class WebController(BaseController):
 			:query string dirname: target path(?)
 			:query string tags: tags to add(?)
 			:query int always_zap: always zap first(?)
+			:query int afterevent: afterevent state
 		"""
 		res = self.testMandatoryArguments(request, ["sRef", "eventid"])
 		if res:
@@ -1116,6 +1117,10 @@ class WebController(BaseController):
 		if "always_zap" in request.args.keys():
 			always_zap = int(request.args["always_zap"][0])
 
+		afterevent = 3
+		if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["0", "1", "2", "3"]:
+			afterevent = int(request.args["afterevent"][0])
+
 		return addTimerByEventId(
 			self.session,
 			eventid,
@@ -1124,7 +1129,8 @@ class WebController(BaseController):
 			dirname,
 			tags,
 			self.vpsparams(request),
-			always_zap
+			always_zap,
+			afterevent
 		)
 
 	def P_timerchange(self, request):
