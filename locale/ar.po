@@ -1,0 +1,1728 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenWebif\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-09 18:46+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: mosad - مساعد الجعيد <abo-mishal@hotmail.com>\n"
+"Language-Team: mosad - مساعد الجعيد\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Poedit-SearchPath-0: ../plugin\n"
+
+msgid "%s %s is locked."
+msgstr "%s %s تم إغلاقه."
+
+msgid "%s free / %s total"
+msgstr "إجمالي %s متوفر/ %s"
+
+msgid "(Shift + Click for Long Press)"
+msgstr "(شفت + أضغط مرتين ضغطه مطوله)"
+
+msgid "AGC"
+msgstr "قوة الإشارة"
+
+msgid "About"
+msgstr "حول"
+
+msgid "Add"
+msgstr "إضافة"
+
+msgid "Add AutoTimer"
+msgstr "إضافة مؤقت تلقائي"
+
+msgid "Add Autotimer to Tags"
+msgstr "إضافة المؤقت التلقائي في الدلائل"
+
+msgid "Add Bouquet"
+msgstr "إضافة الى الباقة"
+
+msgid "Add Marker"
+msgstr "إضافة علامة"
+
+msgid "Add Name to Tags"
+msgstr "أضافه اسم إلى العلامات"
+
+msgid "Add Provider as new Bouquet"
+msgstr "أضافه مزود قنوات كباقة جديدة"
+
+msgid "Add Similar on Conflict"
+msgstr "أضف مماثل على المتعارض"
+
+msgid "Add Spacer"
+msgstr "أضف مسافة"
+
+msgid "Add Timer"
+msgstr "إضافة مؤقت"
+
+msgid "Add Zap Timer"
+msgstr "إنتقل لإضافة مؤقت"
+
+msgid "Add channel(s) as alternate"
+msgstr "إضافة قناة (قنوات) كبديل"
+
+msgid "Add channel(s) to Bouquet"
+msgstr "إضافة قناة (قنوات) إلى الباقة"
+
+msgid "Add service name to stream information"
+msgstr "إضافة اسم الخدمة إلى معلومات قنوات البث"
+
+msgid "Added %s to alternative service %s."
+msgstr "تم إضافة %s القناة البديلة %s."
+
+msgid "After Event"
+msgstr "بعد الحدث"
+
+msgid "After event"
+msgstr "بعد الحدث"
+
+msgid "All"
+msgstr "الكل"
+
+msgid "All Channels"
+msgstr "كل القنوات"
+
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 3 "
+"as published by the Free Software Foundation."
+msgstr ""
+"جميع ملفات هذا البرنامج هي برامج مفتوحة المصدر ؛ يمكنك إعادة توزيعه و / أو "
+"تعديله بموجب شروط رخصة جنو العمومية العامة الإصدار 3 كما نشرتها مؤسسة "
+"البرمجيات الحرة."
+
+msgid "All alternative services deleted."
+msgstr "تم حذف كافة القنوات البديلة."
+
+msgid "Allow IPK Upload"
+msgstr "السماح برفع الملفات المحمية"
+
+msgid "Alternative %s created failed."
+msgstr "فشل إنشاء %s البديل."
+
+msgid "Always"
+msgstr "دائما"
+
+msgid "Amount of recordings left"
+msgstr "ربط التسجيلات على اليسار"
+
+msgid "Answer is NO!"
+msgstr "الإجابة هي لا!"
+
+msgid "Answer is YES!"
+msgstr "الإجابة هي نعم!"
+
+msgid "Any service/recording"
+msgstr "أي خدمة / التسجيل"
+
+msgid "Apid"
+msgstr "معرف مزود الخدمة"
+
+msgid "April"
+msgstr "ابريل"
+
+msgid "Ask, default No"
+msgstr "السؤال ، الافتراضي لا"
+
+msgid "Ask, default Yes"
+msgstr "السؤال ، الافتراضي نعم"
+
+msgid "August"
+msgstr "أغسطس"
+
+msgid "Authors"
+msgstr "الكاتب"
+
+msgid "Auto"
+msgstr "تلقائي"
+
+msgid "AutoPoll"
+msgstr "الاستطلاع التلقائي"
+
+msgid "AutoTimer"
+msgstr "المؤقت التلقائي"
+
+msgid "AutoTimer Edit"
+msgstr "تعديل المؤقت التلقائي"
+
+msgid "AutoTimer List"
+msgstr "قائمه المؤقت التلقائي"
+
+msgid "AutoTimer Settings"
+msgstr "إعدادات المؤقت الالى"
+
+msgid "Autotimer Preview"
+msgstr "معاينه المؤقت التلقائي"
+
+msgid "BER"
+msgstr "معدل خطاء الإشارة"
+
+msgid "Back"
+msgstr "خلف"
+
+msgid "Background only"
+msgstr "الخلفية فقط"
+
+msgid "Begin"
+msgstr "تبدا"
+
+msgid "Begin of \"after event\" timespan"
+msgstr "تبدء من\"بعد الحدث\" المدة الزمنية"
+
+msgid "Begin of timespan"
+msgstr "بداية المدى الزمنى"
+
+msgid "Bookmark"
+msgstr "علامة مرجعية"
+
+msgid "Bookmarks"
+msgstr "الاشارات المرجعيه"
+
+msgid "Bouquet %s already exists."
+msgstr "الباقة %s موجودة بالفعل."
+
+msgid "Bouquet %s can not be moved."
+msgstr "الباقة %s لا يمكن نقلها."
+
+msgid "Bouquet %s created."
+msgstr "الباقة %s تم إنشاءها."
+
+msgid "Bouquet %s deleted."
+msgstr "الباقة %s تم حذفها."
+
+msgid "Bouquet %s is locked."
+msgstr "الباقة %s تم إغلاقها."
+
+msgid "Bouquet %s is unlocked."
+msgstr "الباقة %s غير مغلقة."
+
+msgid "Bouquet %s moved."
+msgstr "الباقة %s تم نقلها."
+
+msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
+msgstr "الباقة %s فشل حذفها, تفضيل القناة أو قائمة الجدول غير صالحه."
+
+msgid "Bouquet %s removed failed."
+msgstr "الباقة %s فشل حذفها."
+
+msgid "Bouquet Editor"
+msgstr "محرر الباقة"
+
+msgid "Bouquet renamed successfully."
+msgstr "تمت أعاده تسمية الباقة بنجاح."
+
+msgid "Bouquet-settings were restored successfully"
+msgstr "تمت استعاده إعدادات الباقة بنجاح"
+
+msgid "BouquetEditor"
+msgstr "محرر الباقة"
+
+msgid "Bouquetlist is not editable!"
+msgstr "قائمة الباقة غير قابلة للتعديل!"
+
+msgid "Bouquets"
+msgstr "الباقات"
+
+msgid "Box"
+msgstr "صندوق"
+
+msgid "Box Control"
+msgstr "التحكم بالجهاز"
+
+msgid "Box Info"
+msgstr "معلومات الجهاز"
+
+msgid "Box Uptime"
+msgstr "مدة تشغيل الجهاز"
+
+msgid "Brand"
+msgstr "علامة تجارية"
+
+msgid "Cable"
+msgstr "كيبل"
+
+msgid "Calendar Week"
+msgstr "تقويم الاسبوع"
+
+msgid "Cancel"
+msgstr "إلغاء"
+
+msgid "Cancelled"
+msgstr "ملغى"
+
+msgid "Capacity"
+msgstr "سعة"
+
+msgid "Channel"
+msgstr "قناة"
+
+msgid "Channels"
+msgstr "قنوات"
+
+msgid "Character encoding for EPG data"
+msgstr "ترميز الأحرف الأبجدية لبيانات دليل البرامج الإلكترونية"
+
+msgid "Chipset"
+msgstr "المعالج"
+
+msgid "Cleanup Timers"
+msgstr "تنظيف المؤقتات"
+
+msgid "Close"
+msgstr "إغلاق"
+
+msgid "Common Settings"
+msgstr "الإعدادات العامة"
+
+msgid "Conflicting Timer(s) detected! %s"
+msgstr "الكشف عن المؤقت (المؤقتات) المتعارضة! %s"
+
+msgid "Contributors"
+msgstr "المساهمون"
+
+msgid "Control"
+msgstr "التحكم"
+
+msgid "Could not add timer '%s'!"
+msgstr "لا يمكن إضافة المؤقت '%s'!"
+
+msgid "Could not find timer '%s' with given start and end time!"
+msgstr "تعذر العثور على المؤقت '%s' مع وقت البدء والانتهاء المعينين!"
+
+msgid "Current"
+msgstr "جاری"
+
+msgid "Current Event"
+msgstr "الحدث الحالي"
+
+msgid "Custom box name"
+msgstr "أسم الجهاز المخصص"
+
+msgid "Custom offset"
+msgstr "العوض العادي"
+
+msgid "DHCP"
+msgstr "برتوكول تكوين المضيف آليا"
+
+msgid "Date"
+msgstr "تاريخ"
+
+msgid "December"
+msgstr "ديسمبر"
+
+msgid "Deep-Standby"
+msgstr "الاستعداد العميق"
+
+msgid "Default"
+msgstr "الإفتراضي"
+
+msgid "Delay Standby"
+msgstr "تاخير الاستعداد"
+
+msgid "Delete"
+msgstr "حذف"
+
+msgid "Delete Bouquet"
+msgstr "حدف الباقة"
+
+msgid "Delete Recording"
+msgstr "حذف التسجيل"
+
+msgid "Delete Timer"
+msgstr "حذف المؤقت"
+
+msgid ""
+"Delete failed, because there is no movie trash !\n"
+"Disable movie trash in configuration to delete this item"
+msgstr ""
+"فشل حذف ، لأنه لا يوجد سلة مهملات للفيلم!\n"
+"تعطيل سلة المهملات الفيلم في التشكيل لحذف هذا العنصر"
+
+msgid "Deleted"
+msgstr "تم الحذف"
+
+msgid "Description"
+msgstr "الوصـف"
+
+msgid "Disable Timer"
+msgstr "تعطيل المؤقت"
+
+msgid "Disable remote access for user root"
+msgstr "تعطيل الوصول البعيد لجذر المستخدم"
+
+msgid "Disabled on Conflict"
+msgstr "التعارضمعطل"
+
+msgid "Display Mode"
+msgstr "وضع العرض"
+
+msgid "Display duration (s)"
+msgstr "مده العرض (العروض)"
+
+msgid "Distro"
+msgstr "تصنيف"
+
+msgid "Do you really want to delete the AT"
+msgstr "هل تريد حقا حذف AT"
+
+msgid "Do you really want to delete the bouquet"
+msgstr "هل تريد حقا حذف الباقة"
+
+msgid "Do you really want to delete the selected item(s)"
+msgstr "هل تريد حقا حذف العنصر (العناصر) المحدد"
+
+msgid "Do you really want to restore from file"
+msgstr "هل تريد حقا استعادة من الملف"
+
+msgid "Dolby"
+msgstr "الصوت الدولبي"
+
+msgid "Done"
+msgstr "إنتهى"
+
+msgid "Download"
+msgstr "تحميل"
+
+msgid "Download Playlist for"
+msgstr "تحميل قائمة التشغيل"
+
+msgid "Drivers"
+msgstr "التعاريف"
+
+msgid "Duration"
+msgstr "المدة"
+
+msgid "E"
+msgstr "E"
+
+msgid "EPG"
+msgstr "دليل البرامج الإلكترونية"
+
+msgid "EPG encoding"
+msgstr "ترميز دليل البرامج اليومي"
+
+msgid "EPGRefresh"
+msgstr "تحديث دليل البرامج الإلكترونية"
+
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr "خطا: لا يمكن ضبط مؤقت النوم أثناء الجهاز في وضع الاستعداد"
+
+msgid "Edit Timer"
+msgstr "تعديل المؤقت"
+
+msgid "Editor"
+msgstr "المحرر"
+
+msgid "Enable Authentication for streaming"
+msgstr "تمكين مصادقة للتدفق"
+
+msgid "Enable Filtering"
+msgstr "تفعيل الفلاتر"
+
+msgid "Enable HTTP Authentication"
+msgstr "تفعيل توثيق بروتوكول نقل النصوص"
+
+msgid "Enable HTTPS"
+msgstr "تمكين بروتوكول نقل الروابط المحمية"
+
+msgid "Enable HTTPS Authentication"
+msgstr "تفعيل توثيق بروتوكول نقل النصوص المحمي"
+
+msgid "Enable Messages"
+msgstr "تمكين الرسائل"
+
+msgid "Enable Parental Control"
+msgstr "تمكين الرقابة الابوية"
+
+msgid "Enable Timer"
+msgstr "تفعيل المؤقت"
+
+msgid "Enable access from VPNs"
+msgstr "تمكين الدخول من الشبكة الخاصة"
+
+msgid "Enable/Disable Screenshot on key press or"
+msgstr "تمكين/تعطيل تصوير الشاشة على أضغط مفتاح أو"
+
+msgid "Enabled"
+msgstr "تم التفعيل"
+
+msgid "Encrypted"
+msgstr "المشفرة"
+
+msgid "End"
+msgstr "النهاية"
+
+msgid "End of \"after event\" timespan"
+msgstr "النهاية \"بعد الحدث\" المدة الزمنية"
+
+msgid "End of Timespan"
+msgstr "نهاية المدة الزمنية"
+
+msgid "Enter new name for the bouquet"
+msgstr "ادخل اسم جديد للباقة"
+
+msgid "Enter new name for the marker"
+msgstr "ادخل اسم جديد للعلامة"
+
+msgid "Epg Search"
+msgstr "بحث في دليل البرامج"
+
+msgid "Error"
+msgstr "خطأ"
+
+msgid "Error parsing vps.xml"
+msgstr "خطا في تحليل الvps. xml"
+
+msgid "Error upload File"
+msgstr "خطا في رفع الملف"
+
+msgid "Error while preparing backup file, %s does not exists."
+msgstr "خطا اثناء تحضير ملف النسخ الاحتياطي ، %s غير موجود."
+
+msgid "Error while preparing backup file."
+msgstr "خطا اثناء تحضير ملف النسخ الاحتياطي."
+
+msgid "Error writing File"
+msgstr "خطاء في كتابة الملف"
+
+msgid "Error, %s does not exists, restore is not possible..."
+msgstr "الخطاء ، %s غير موجود ، الاستعادة غير ممكنة..."
+
+msgid "Error, %s was not created with WebBouquetEditor..."
+msgstr "خطاء ، لم يتم إنشاء %s باستخدام معدل الباقات عبر الموقع..."
+
+msgid "Error: Bouquet %s could not deleted, OSError."
+msgstr "خطاء: تعذر حذف الباقة %s ,خطاء."
+
+msgid "Event not found"
+msgstr "لم يتم العثور علي الحدث"
+
+msgid "EventId not found"
+msgstr "لم يتم العثور علي الحدث"
+
+msgid "Every"
+msgstr "كل"
+
+msgid "Exclude"
+msgstr "إستبعاد"
+
+msgid "Execute \"after event\" during timespan"
+msgstr "تنفيذ \"بعد الحدث\" أثناء المدة الزمنية"
+
+msgid "Export"
+msgstr "تصدير"
+
+msgid "Extras"
+msgstr "زوائد"
+
+msgid "Fake Recording"
+msgstr "تسجيل وهمي"
+
+msgid "Fastscan"
+msgstr "بحث سريع"
+
+msgid "February"
+msgstr "فبراير"
+
+msgid "Firmware version"
+msgstr "إصدار النظام"
+
+msgid "Force"
+msgstr "ضغط"
+
+msgid "Fr"
+msgstr "الجمعة"
+
+msgid "Free"
+msgstr "مجاني"
+
+msgid "Free Memory"
+msgstr "ذاكرة متوفرة"
+
+msgid "Fri"
+msgstr "الجمعة"
+
+msgid "Friday"
+msgstr "الجمعة"
+
+msgid "Frontprocessor Version"
+msgstr "إصدار المعالج الامامي"
+
+msgid "Full remote"
+msgstr "جهاز تحكم عن بعد كامل"
+
+msgid "GB"
+msgstr "جيجابايت"
+
+msgid "Gateway"
+msgstr "المدخل"
+
+msgid "Get mutable list for new created alternative failed!"
+msgstr "فشل الحصول على قائمة قابلة للتغيير للبديل الجديد الذي تم إنشاؤه!"
+
+msgid "Get mutable list for new created bouquet failed!"
+msgstr "فشل الحصول على قائمة قابلة للتغيير للباقات الجديدة التي تم إنشاؤها!"
+
+msgid "Grab Screenshot"
+msgstr "تصوير لقطة الشاشة"
+
+msgid "Gui version"
+msgstr "إصدار تشغيل الواجهة"
+
+msgid "HTTP port"
+msgstr "منفذ (بروتوكول محمي التشفير)"
+
+msgid "HTTPS port"
+msgstr "منفذ بروتوكول نقل النصوص المحمي"
+
+msgid "Hard disk model"
+msgstr "موديل القرص الصلب"
+
+msgid "Hide full remote"
+msgstr "إخفاء كامل لجهاز التحكم عن بعد"
+
+msgid "High Resolution"
+msgstr "عالي الدقة"
+
+msgid "Hour"
+msgstr "ساعة"
+
+msgid "IPv4 address"
+msgstr "عنوان IPv4"
+
+msgid "IPv4-only Python/Twisted"
+msgstr "IPv4 فقط بيثون/ملتوية"
+
+msgid "IPv4-only kernel"
+msgstr "نواه IPv4 فقط"
+
+msgid "IPv6 address(es)"
+msgstr "عنوان IPv6 (es)"
+
+msgid "Import"
+msgstr "استيراد"
+
+msgid "Include"
+msgstr "يشمل"
+
+msgid "Include description"
+msgstr "يشمل الوصف"
+
+msgid "Include extended description"
+msgstr "يشمل الوصف الموسع"
+
+msgid "Include short description"
+msgstr "يشمل وصف مختصر"
+
+msgid "Infinite Instant recording started"
+msgstr "بدأ التسجيل الفوري بلا حدود"
+
+msgid "Infos"
+msgstr "المعلومات"
+
+msgid "Inherit Autotimer"
+msgstr "تركة المؤقت التلقائي"
+
+msgid "Install Package"
+msgstr "تثبيت الحزمة"
+
+msgid "Installed"
+msgstr "تنصيب"
+
+msgid "Instant Record"
+msgstr "تسجيل سريع"
+
+msgid "Instant record for current Event started"
+msgstr "بدء تشغيل التسجل الفوري للحدث الحالي"
+
+msgid "Internal error!"
+msgstr "خطا داخلي!"
+
+msgid "Interval (in %s)"
+msgstr "الفاصل الزمني (في %s)"
+
+msgid "Interval (min.)"
+msgstr "الفاصل الزمني (دقيقه)"
+
+msgid "Interval (sec.)"
+msgstr "الفاصل الزمني (ثانيه)"
+
+msgid "January"
+msgstr "يناير"
+
+msgid "Javascript Libraries"
+msgstr "مكتبات جافا سكريبت"
+
+msgid "July"
+msgstr "يوليو"
+
+msgid "June"
+msgstr "يونيو"
+
+msgid "Just play"
+msgstr "مجرد تشغيل"
+
+msgid "Kernel"
+msgstr "وحدة النواة"
+
+msgid "LCD"
+msgstr "شاشة العرض المصغرة"
+
+msgid "LCD4Linux Setup"
+msgstr "ضبط شاشة عرض لينكس"
+
+msgid "LICENSE"
+msgstr "الترخيص"
+
+msgid "Label series"
+msgstr "سلسله التسمية"
+
+msgid "Link Speed"
+msgstr "سرعه الرابط"
+
+msgid "List of Timers has been cleaned"
+msgstr "قائمة الموقتات تم تنظيفها"
+
+msgid "Location"
+msgstr "مكان"
+
+msgid "Locked"
+msgstr "مقفل"
+
+msgid "MAC address"
+msgstr "إعدادات شبكة تحكم وصول الوسائط"
+
+msgid "MB"
+msgstr "ميجابايت"
+
+msgid "Main"
+msgstr "الرئيسية"
+
+msgid "Main Memory"
+msgstr "الذاكرة الرئيسية"
+
+msgid "March"
+msgstr "مارس"
+
+msgid "Marker added."
+msgstr "العلامة مضافة."
+
+msgid "Match title"
+msgstr "مطابقة العنوان"
+
+msgid "Max Days"
+msgstr "اقصي مدي  للأيام"
+
+msgid "May"
+msgstr "مايو"
+
+msgid "Message sent successfully!"
+msgstr "تم إرسال الرسالة بنجاح!"
+
+msgid "Method"
+msgstr "طريقة"
+
+msgid "Minimal EPG list"
+msgstr "الحد الأدنى من قائمة دليل البرامج الإلكترونية"
+
+msgid "Minimal movie list"
+msgstr "الحد الأدنى من قائمة الأفلام"
+
+msgid "Minimal timer list"
+msgstr "الحد الأدنى لقائمة المؤقتات"
+
+msgid "Minute"
+msgstr "دقيقة"
+
+msgid "Missing mandatory parameter '%s'"
+msgstr "العلامة الإلزامية مفقودة '%s'"
+
+msgid "Missing requesteter: sRef"
+msgstr "الطلب مفقود: الرقم التعريفي"
+
+msgid "Mo"
+msgstr "الإثنين"
+
+msgid "Model"
+msgstr "نموذج"
+
+msgid "Mon"
+msgstr "الاثنين"
+
+msgid "Monday"
+msgstr "الاثنين"
+
+msgid "Monthly"
+msgstr "شهرى"
+
+msgid "More"
+msgstr "المزيد"
+
+msgid "Movie database for EPG"
+msgstr "قاعدة بيانات من دليل البرامج الإلكترونية"
+
+msgid "Movie search"
+msgstr "البحث عن الأفلام"
+
+msgid "Movielist"
+msgstr "قائمة الأفلام"
+
+msgid "Movies"
+msgstr "الأفلام"
+
+msgid "Multi-Bouquet is not enabled!"
+msgstr "لم يتم تمكين الباقة المتعددة!"
+
+msgid "MultiEPG"
+msgstr "دليل البرامج الإلكتروينة المتعدد"
+
+msgid "Name"
+msgstr "الاسم"
+
+msgid "Name of the Bouquet"
+msgstr "اسم الباقة"
+
+msgid "Name of the Marker"
+msgstr "اسم العلامة"
+
+msgid "Namespace"
+msgstr "مسافة للاسم"
+
+msgid "Network Interface"
+msgstr "واجهه الشبكة"
+
+msgid "Network Shares"
+msgstr "مشاركات الشبكة"
+
+msgid "Never"
+msgstr "مطلقا"
+
+msgid "New"
+msgstr "جديد"
+
+msgid "New Name"
+msgstr "اسم جديد"
+
+msgid "No"
+msgstr "لا"
+
+msgid "No Parent Control Setup Pin given!"
+msgstr "لا يوجد تحكم على الرقابة الأبوية وضبط كلمة مرور معينة!"
+
+msgid "No answer in time"
+msgstr "لا جواب في الوقت المناسب"
+
+msgid "No bouquet given!"
+msgstr "لا يوجد باقة!"
+
+msgid "No bouquet name given!"
+msgstr "لا يوجد أسم باقة!"
+
+msgid "No current service given!"
+msgstr "لا يوجد قناة حالية متاحة!"
+
+msgid "No event found! Not recording!"
+msgstr "لم يتم العثور على الحدث! لا يوجد تسجيل!"
+
+msgid "No marker-name given!"
+msgstr "لا يوجد أسم علامة معينة!"
+
+msgid "No matching Timer found"
+msgstr "لم يتم العثور على مؤقت متطابق"
+
+msgid "No new servicename given!"
+msgstr "لم يتم ذكر أسم القناة الجديد!"
+
+msgid "No position given!"
+msgstr "لا يوجد موقع معين!"
+
+msgid "No provider given!"
+msgstr "لا يوجد مزود قناة!"
+
+msgid "No service given!"
+msgstr "لا توجد قناة معينة!"
+
+msgid "No, cancel"
+msgstr "لا ، الغ"
+
+msgid "None"
+msgstr "لاشيئ"
+
+msgid "Not after"
+msgstr "ليس بعد"
+
+msgid "Not before"
+msgstr "ليس قبل"
+
+msgid "Nothing"
+msgstr "لا شئ"
+
+msgid "Nothing playing."
+msgstr "لا شيء مشغل."
+
+msgid "Notify if Conflict"
+msgstr "أبلغ عن التعارض"
+
+msgid "Notify if Similar"
+msgstr "أبلغ عن المماثل"
+
+msgid "November"
+msgstr "نوفمبر"
+
+msgid "Now"
+msgstr "الان"
+
+msgid "OSCam Webinterface"
+msgstr "واجهة إنترنت الاوسكام"
+
+msgid "OSD"
+msgstr "شاشة العرض"
+
+msgid "October"
+msgstr "أكتوبر"
+
+msgid "Offset after recording (in m)"
+msgstr "تعطيل بعد التسجيل (في دقيقة)"
+
+msgid "Offset before recording (in m)"
+msgstr "تعطيل قبل التسجيل (في دقيقة)"
+
+msgid "On"
+msgstr "تشغيل"
+
+msgid "On any service"
+msgstr "على أى خدمة"
+
+msgid "On same service"
+msgstr "على نفس الخدمة"
+
+msgid "Onid"
+msgstr "معرف الشبكة الاصلي"
+
+msgid "Only match during timespan"
+msgstr "تطابق اثناء المدى الزمني فقط"
+
+msgid "Open Source Web Interface for Linux set-top box"
+msgstr "واجهة الانترنت بمصدر مفتوح لضبط جهاز اللينكس"
+
+msgid "Open in new window"
+msgstr "فتح في نافذة جديد"
+
+msgid "OpenWebInterface Enabled"
+msgstr "تميكن فتح واجهة المستخدم"
+
+msgid "OpenWebif Browser Settings"
+msgstr "إعدادات متصفح الإنترنت المفتوح"
+
+msgid "OpenWebif Configuration"
+msgstr "تكوين فتح واجهة إستخدام الويب"
+
+msgid "OpenWebif Settings"
+msgstr "إعدادات الإنترنت المفتوح"
+
+msgid "OpenWebif url: http://yourip:port"
+msgstr "رابط الإنترنت المفتوح: http://yourip:port"
+
+msgid "Orbital Position"
+msgstr "الموقع المداري"
+
+msgid "Override found with alternative service"
+msgstr "وجود تجاوز مع الخدمة بديلة"
+
+msgid "Packages"
+msgstr "الباقات"
+
+msgid "Parent Control Setup Pin is wrong!"
+msgstr "ضبط كلمة المرور للرقابة الأبوية غير صحيح!"
+
+msgid "Parent Control is not activated."
+msgstr "لم يتم تنشيط الرقابة الأبوية."
+
+msgid "Parse"
+msgstr "تحليل"
+
+msgid "Parse Autotimer"
+msgstr "تحليل المؤقت التلقائي"
+
+msgid "Pcrpid"
+msgstr "معرف البي سي ار"
+
+msgid "PiP"
+msgstr "خاصية قناة داخل قناة"
+
+msgid "Picture in Picture"
+msgstr "صورة داخل صورة"
+
+msgid "Picture in Picture (hidden)"
+msgstr "قناة داخل داخل (مخفي)"
+
+msgid "Plain"
+msgstr "واضح"
+
+msgid "Playback"
+msgstr "تشغيل"
+
+msgid "Playlist"
+msgstr "قائمة التشغيل"
+
+msgid "Please enter filename"
+msgstr "الرجاء إدخال اسم الملف"
+
+msgid "Pmtpid"
+msgstr "معرف البي أم تي"
+
+msgid "Power Control"
+msgstr "التحكم في الطاقة"
+
+msgid "PowerTimer feature not available"
+msgstr "ميزة مؤقت الأغلاق غير متوفرة"
+
+msgid "Primetimes"
+msgstr "الأوقات الرئيسية"
+
+msgid "Provider"
+msgstr "مزود"
+
+msgid "Providers"
+msgstr "مزودي القنوات"
+
+msgid "Radio"
+msgstr "القنوات الاذاعية"
+
+msgid "Really delete the recording"
+msgstr "حقا حذف التسجيل"
+
+msgid "Really delete the timer"
+msgstr "حقا تريد حذف المؤقت"
+
+msgid "Really rename the recording"
+msgstr "حقا تريد إعادة تسمية التسجيل"
+
+msgid "Reboot Box"
+msgstr "إعادة تشغيل الجهاز"
+
+msgid "Record a maximum of x times"
+msgstr "تسجيل كحد أقصى من المرات"
+
+msgid "Record+ZAP"
+msgstr "سجل+أنتقل"
+
+msgid "Recording Status"
+msgstr "حاله التسجيل"
+
+msgid "Refresh"
+msgstr "تحديث"
+
+msgid "Refresh Timer"
+msgstr "تحديث المؤقت"
+
+msgid "Refresh automatically every"
+msgstr "تحديث الكل تلقائي"
+
+msgid "Refresh now"
+msgstr "التحديث الآن"
+
+msgid "Reload"
+msgstr "إعادة تحميل"
+
+msgid "Remote"
+msgstr "ريموت التحكم عن بعد"
+
+msgid "Remove Package"
+msgstr "بسته را حذف کنید"
+
+msgid "Rename"
+msgstr "إعادة التسميه"
+
+msgid "Rename Bouquet"
+msgstr "أعاده تسمية الباقة"
+
+msgid "Rename Recording"
+msgstr "أعاده تسمية التسجيل"
+
+msgid "Repeated"
+msgstr "مكرر"
+
+msgid "Require client cert for HTTPS"
+msgstr "يتطلب شهادة العميل لصيغة تشفير الصفحة المحمية"
+
+msgid "Require description to be unique"
+msgstr "يحتاج وصف ليكون فريدا من نوعه"
+
+msgid "Reset count"
+msgstr "إعادة تعيين العد"
+
+msgid "Restart GUI"
+msgstr "إعادة تشغيل الاينجما"
+
+msgid "Restrict to Bouquets"
+msgstr "حصر الباقات"
+
+msgid "Restrict to events on certain dates"
+msgstr "تقييد للأحداث في تواريخ معينة"
+
+msgid "Root"
+msgstr "الجذر"
+
+msgid "SLAAC"
+msgstr "SLAAC"
+
+msgid "SNR"
+msgstr "جودة الإشارة"
+
+msgid "START TYPING"
+msgstr "أبدا الكتابة"
+
+msgid "Sa"
+msgstr "سبت"
+
+msgid "Safe mode"
+msgstr "الوضع الأمن"
+
+msgid "Sat"
+msgstr "السبت"
+
+msgid "Satellites"
+msgstr "أقمار صناعية"
+
+msgid "Satfinder"
+msgstr "الباحث عن الأقمار"
+
+msgid "Saturday"
+msgstr "السبت"
+
+msgid "Save"
+msgstr "Save"
+
+msgid "Screenshot"
+msgstr "لقطة الشاشة"
+
+msgid "Search"
+msgstr "بحث"
+
+msgid "Search CSFD"
+msgstr "البحث في بيانات الأفلام التشيكية والسلوفاكية"
+
+msgid "Search IMDb"
+msgstr "البحث في قاعدة بيانات معلومات الأفلام على الإنترنت"
+
+msgid "Search KinoPoisk"
+msgstr "البحث عن كينو بويسك"
+
+msgid "Search strictness"
+msgstr "دقة البحث"
+
+msgid "Search type"
+msgstr "نوع البحث"
+
+msgid "Select IPK File for Upload"
+msgstr "أختار ملف النظام المحمي لرفعه"
+
+msgid "Send Message"
+msgstr "إرسال رسالة"
+
+msgid "Send a Message"
+msgstr "إرسال رسالة"
+
+msgid "September"
+msgstr "سبتمبر"
+
+msgid "Service"
+msgstr "قنوات"
+
+msgid "Service %s added."
+msgstr "القناة %s تم إضافتها."
+
+msgid "Service %s already exists in bouquet %s."
+msgstr "القناة %s موجودة بالفعل في الباقة %s."
+
+msgid "Service %s can not be removed."
+msgstr "القناة %s لا يمكن حذفها."
+
+msgid "Service %s is locked."
+msgstr "القناة %s تم إقفالها."
+
+msgid "Service %s is unlocked."
+msgstr "القناة %s غير مقفلة."
+
+msgid "Service %s moved."
+msgstr "القناة %s تم تقلها."
+
+msgid "Service %s removed from bouquet %s."
+msgstr "القناة %s تم حذفها من الباقة %s."
+
+msgid "Service %s removed."
+msgstr "القناة %s تم حذفها."
+
+msgid "Service can not be moved."
+msgstr "لا يمكن نقل الخدمة."
+
+msgid "Service can not be renamed."
+msgstr "لا يمكن أعاده تسمية القناة."
+
+msgid "Service is not an alternative."
+msgstr "القناة ليس لها بديل."
+
+msgid "Service renamed successfully."
+msgstr "تمت أعاده تسميه القناة بنجاح."
+
+msgid "Services"
+msgstr "القنوات"
+
+msgid "Set maximum duration"
+msgstr "حدد أقصى مده"
+
+msgid "Settings"
+msgstr "إعدادات"
+
+msgid "Show EPG for"
+msgstr "عرض دليل البرامج الإلكترونية"
+
+msgid "Show Full OpenWebif"
+msgstr "عرض كامل لصفحة واجهة الانترنت مفتوحة"
+
+msgid "Show Picon in channel list"
+msgstr "عرض الايقونة في قائمة القنوات"
+
+msgid "Show Service type in channel list"
+msgstr "عرض نوع القناة في قائمة القنوات"
+
+msgid "Show box name in header"
+msgstr "عرض أسم الجهاز في العنوان الرئيسي"
+
+msgid "Show details"
+msgstr "مشاهدة التفاصيل"
+
+msgid "Show full remote"
+msgstr "عرض وحدة التحكم عن بعد بشكل كامل"
+
+msgid "Show in Extensionsmenu"
+msgstr "عرض في قائمة الملحقات"
+
+msgid "Shutdown"
+msgstr "إغلاق"
+
+msgid "Sid"
+msgstr "معرف القناة"
+
+msgid "Simulate"
+msgstr "يتظاهر"
+
+msgid "Site and sources"
+msgstr "الموقع والمصادر"
+
+msgid "SleepTimer error"
+msgstr "خطاء مؤقت النوم"
+
+msgid "Sleeptimer has been disabled"
+msgstr "تم تعطيل مؤقت النوم"
+
+msgid "Sleeptimer is disabled"
+msgstr "تم تعطيل مؤقت النوم"
+
+msgid "Sleeptimer is enabled"
+msgstr "تم تفعيل مؤقت النوم"
+
+msgid "Sleeptimer set to %d minutes"
+msgstr "ضبط مؤقت النوم %d بالدقائق"
+
+msgid "Software"
+msgstr "البرامج"
+
+msgid "Sorry this page is not yet implemented"
+msgstr "عذرا لم يتم تنفيذ هذه الصفحة بعد"
+
+msgid "Spinner"
+msgstr "الغزال"
+
+msgid "Sref"
+msgstr "مرجع القناة"
+
+msgid "Standby"
+msgstr "وضع الإستعداد"
+
+msgid "Standby Toggle"
+msgstr "تبديل الاستعداد"
+
+msgid "Start"
+msgstr "تشغيل"
+
+msgid "Start Instant Record"
+msgstr "تشغيل التسجل الفوري"
+
+msgid "Start time is after end time"
+msgstr "تشغيل الوقت هو بعد انتهاء الوقت"
+
+msgid "Stream"
+msgstr "‫Stream"
+
+msgid "Su"
+msgstr "الأحد"
+
+msgid "Subnet mask"
+msgstr "قناع الشبكة الفرعية"
+
+msgid "Subservices"
+msgstr "القنوات الفرعية"
+
+msgid "Sun"
+msgstr "الاحد"
+
+msgid "Sunday"
+msgstr "الاحد"
+
+msgid "System OE"
+msgstr "نظام OE"
+
+msgid "TB"
+msgstr "تيرابايت"
+
+msgid "TV"
+msgstr "التلفزيون"
+
+msgid "TV Guide"
+msgstr "دليل التلفزيون"
+
+msgid "TV Multi EPG"
+msgstr "دليل البرامج الإلكترونية المتعدد"
+
+msgid "Tags"
+msgstr "علامات"
+
+msgid "Teletext"
+msgstr "النص التليفزيوني"
+
+msgid "Television"
+msgstr "التلفزيون"
+
+msgid "Template Engine"
+msgstr "قالب الانجما"
+
+msgid "Terminal"
+msgstr "محطة"
+
+msgid "Terrestrial"
+msgstr "أرضي"
+
+msgid "Text"
+msgstr "النصوص"
+
+msgid "Th"
+msgstr "خميس"
+
+msgid "The parameter '%s' can't be empty"
+msgstr "المؤشر '%s' لا يمكن أن يكون فارغا"
+
+msgid "The parameter 'command' must be a number"
+msgstr "مؤشر 'الأمر' يجب أن يكون رقما"
+
+msgid "The timer '%s' has been %s successfully"
+msgstr "إكتمال '%s' المؤقت %s بنجاح"
+
+msgid "The timer '%s' has been deleted successfully"
+msgstr "تم حذف المؤقت' %s ' بنجاح"
+
+msgid "The timer '%s' now recorded! Not disabled!"
+msgstr "المؤقت '%s' الأن يسجل! ليس معطلا!"
+
+msgid "Theme"
+msgstr "سمة"
+
+msgid "This service can not be added."
+msgstr "لا يمكن إضافة هذه القناة."
+
+msgid "Thu"
+msgstr "الخميس"
+
+msgid "Thursday"
+msgstr "الخميس"
+
+msgid "Time"
+msgstr "الوقت"
+
+msgid "Timeline"
+msgstr "الجدول الزمني"
+
+msgid "Timeout"
+msgstr "نفذ الوقت"
+
+msgid "Timer"
+msgstr "المؤقت"
+
+msgid "Timer '%s' added"
+msgstr "تمت إضافة '%s' المؤقت"
+
+msgid "Timer '%s' already exists!"
+msgstr "المؤقت ' %s ' موجود بالفعل!"
+
+msgid "Timer '%s' changed"
+msgstr "تم تغيير '%s' المؤقت"
+
+msgid "Timer '%s' not enabled while Conflict"
+msgstr "لم يتم تمكين المؤقت ' %s ' اثناء التعارض"
+
+msgid "Timer '%s' not saved while Conflict"
+msgstr "لم يتم حفظ المؤقت ' %s ' اثناء التعارض"
+
+msgid "Timer Added"
+msgstr "وأضاف المؤقت"
+
+msgid "Timer added"
+msgstr "وأضاف المؤقت"
+
+msgid "Timer conflict detected! Not recording!"
+msgstr "الكشف عن المؤقت المتعارض! بدون تسجيل!"
+
+msgid "Timer type"
+msgstr "نوع المؤقت"
+
+msgid "TimerList has been saved"
+msgstr "تم حفظ قائمة المؤقت"
+
+msgid "Timerlist"
+msgstr "قائمة المؤقت"
+
+msgid "Timers"
+msgstr "المؤقتات"
+
+msgid "Title"
+msgstr "عنوان"
+
+msgid "Transcode"
+msgstr "تحويل الترميز"
+
+msgid "Translation to Spanish"
+msgstr "الترجمة إلى الاسبانية"
+
+msgid "Try Guessing"
+msgstr "محاولة التخمين"
+
+msgid "Tsid"
+msgstr "إرسال معرف المحطة"
+
+msgid "Tu"
+msgstr "الثلاثاء"
+
+msgid "Tue"
+msgstr "الثلاثاء"
+
+msgid "Tuesday"
+msgstr "الثلاثاء"
+
+msgid "Tuner Bit Error Rate BER"
+msgstr "معدل خطاء المؤالف بالبت"
+
+msgid "Tuner Number"
+msgstr "رقم المؤالف"
+
+msgid "Tuner Signal"
+msgstr "إشارة المؤالف"
+
+msgid "Tuner Signal Power AGC"
+msgstr "مؤالف قوة الاشارة"
+
+msgid "Tuner Signal Quality SNR"
+msgstr "مؤالف جودة الإشارة"
+
+msgid "Tuner Signal Quality SNR_DB"
+msgstr "مؤالف جودة الإشارة بالديسيبل"
+
+msgid "Tuner Type"
+msgstr "نوع المؤالف"
+
+msgid "Tuners"
+msgstr "مؤالفات"
+
+msgid "Type"
+msgstr "النوع"
+
+msgid "Unknown Volume command %s"
+msgstr "أمر الصوت مجهول %s"
+
+msgid "Unknown command: '%s'"
+msgstr "أمر مجهول: ' %s '"
+
+msgid "Upcoming Events"
+msgstr "الأحداث القادمة"
+
+msgid "Update"
+msgstr "التحديث"
+
+msgid "Update Package"
+msgstr "تحديث الباقة"
+
+msgid "Update from Feed"
+msgstr "تحديث من الفييد"
+
+msgid "Upgrade all Packages"
+msgstr "قم بترقية جميع الحزم"
+
+msgid "Upload File Error"
+msgstr "خطاء رفع الملف"
+
+msgid "Upload package"
+msgstr "آپلود بسته"
+
+msgid "Uploaded Files"
+msgstr "الملفات التي تم رفعها"
+
+msgid "Use a custom location"
+msgstr "استخدام موقع مخصص"
+
+msgid "Use custom box name"
+msgstr "إستخدام مخصص لإسم الجهاز"
+
+msgid "Use new design"
+msgstr "استخدام التصميم الجديد"
+
+msgid "VPS"
+msgstr "الخادم الإفتراضي الخاص"
+
+msgid "VPS plugin not found"
+msgstr "لم يتم العثور على بلج أنز الخادم الإفتراضي الخاص"
+
+msgid "Version"
+msgstr "الإصدار"
+
+msgid "Video"
+msgstr "الفديو"
+
+msgid "Video Height"
+msgstr "ارتفاع الفيديو"
+
+msgid "Video Wide"
+msgstr "فديو واسع"
+
+msgid "Video Width"
+msgstr "فيديو عريض"
+
+msgid "Visibly"
+msgstr "واضح"
+
+msgid "Volume"
+msgstr "درجه الصوت"
+
+msgid "Volume Control"
+msgstr "التحكم في مستوي الصوت"
+
+msgid "Vpid"
+msgstr "معرف الفديو"
+
+msgid "W"
+msgstr "W"
+
+msgid "Waiting for answer ..."
+msgstr "في انتظار الاجابه..."
+
+msgid "Wake Up"
+msgstr "استيقظ"
+
+msgid "Wakeup"
+msgstr "إستيقظ"
+
+msgid "Warning"
+msgstr "تحذير"
+
+msgid "We"
+msgstr "الأربعاء"
+
+msgid "Web TV"
+msgstr "التلفزيون عبر الانترنت"
+
+msgid "Wed"
+msgstr "الاربعاء"
+
+msgid "Wednesday"
+msgstr "الاربعاء"
+
+msgid "Weekday"
+msgstr "ايام الاسبوع"
+
+msgid "Weekend"
+msgstr "نهاية الاسبوع"
+
+msgid "Weekly (Monday)"
+msgstr "اسبوعيا (الاثنين)"
+
+msgid "Weekly (Sunday)"
+msgstr "اسبوعيا (الاحد)"
+
+msgid "Without auth only local access is allowed!"
+msgstr "دون المصادقة يسمح فقط الوصول المحلي!"
+
+msgid "Wizzard"
+msgstr "النافذة"
+
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr "تنسيق المعلمة الخاطئ ' ضبط = %s '. استخدام مجموعه = ضبط15 "
+
+msgid "Yes"
+msgstr "نعم"
+
+msgid "Yes, delete it"
+msgstr "نعم، أحذفه"
+
+msgid "Yes/No"
+msgstr "نعم/لا"
+
+msgid "You need to write something!"
+msgstr "يجب ان تكتب شيئا"
+
+msgid "Zap"
+msgstr "التنقل"
+
+msgid "Zap to"
+msgstr "إنتقل إلى"
+
+msgid "Zapped to"
+msgstr "الانتقال إلى"
+
+msgid "auto"
+msgstr "تلقائي"
+
+msgid "case-insensitive search"
+msgstr "البحث عن طريق الحروف الأبجدية"
+
+msgid "case-sensitive search"
+msgstr "البحث عن طريق الحروف الأبجدية"
+
+msgid "description match"
+msgstr "تطابق الوصف"
+
+msgid "disabled"
+msgstr "تم التعطيل"
+
+msgid "do nothing"
+msgstr "لا تفعل شيئ"
+
+msgid "error! Loading Page"
+msgstr "الخطا! تحميل الصفحة"
+
+msgid "exact match"
+msgstr "تطابق كامل"
+
+msgid "finished"
+msgstr "استُكمِلت"
+
+msgid "go to deep standby"
+msgstr "الذهاب الى وضع الاستعداد العميق"
+
+msgid "go to standby"
+msgstr "الذهاب لوضع الاستعداد"
+
+msgid "hour"
+msgstr "ساعه"
+
+msgid "in Description"
+msgstr "فى الوصف"
+
+msgid "in Shortdescription"
+msgstr "فى وصف مختصر"
+
+msgid "in Title"
+msgstr "فى عنوان"
+
+msgid "kB"
+msgstr "كيلوبايت"
+
+msgid "loading"
+msgstr "تحميل"
+
+msgid "manual/disabled"
+msgstr "يدوي/معطل"
+
+msgid "minute"
+msgstr "دقيقة"
+
+msgid "no description available"
+msgstr "لايوجد وصف متوفر."
+
+msgid "none/IPv4-only network"
+msgstr "شبكه لا شيء/IPv4 فقط"
+
+msgid "on Weekday"
+msgstr "يوم في الاسبوع"
+
+msgid "one two three four unknown command"
+msgstr "1 2 3 4 أمر غير معروف"
+
+msgid "partial match"
+msgstr "تطابق جزئي"
+
+msgid "r/o"
+msgstr "r/o"
+
+msgid "r/w"
+msgstr "r/w"
+
+msgid "record"
+msgstr "x تسجيل"
+
+msgid "remove"
+msgstr "حذف"
+
+msgid "running"
+msgstr "تشغيل"
+
+msgid "seconds"
+msgstr "ثواني"
+
+msgid "select Bouquets"
+msgstr "حدد الباقات"
+
+msgid "select Channels"
+msgstr "حدد القنوات"
+
+msgid "select Tags"
+msgstr "حدد العلامات"
+
+msgid "short description match"
+msgstr "تطابق وصف مختصر"
+
+msgid "standard"
+msgstr "قياسي"
+
+msgid "start match"
+msgstr "بدء التطابق"
+
+msgid "static"
+msgstr "ثابت"
+
+msgid "title or description match"
+msgstr "العنوان أو تطابق الوصف"
+
+msgid "title or short description match"
+msgstr "عنوان أو تطابق وصف مختصر"
+
+msgid "transcoded"
+msgstr "المحولة"
+
+msgid "type %s is not a number"
+msgstr "النوع %s ليس رقما"
+
+msgid "unknown"
+msgstr "غير معروف"
+
+msgid "using"
+msgstr "استخدام"
+
+msgid "via"
+msgstr "بواسطة"
+
+msgid "waiting"
+msgstr "فى الانتظار"
+
+msgid "wrong filetype"
+msgstr "نوع الملف خطاء"
+
+msgid "zap"
+msgstr "الانتقال"
+
+msgid "zap before Stream"
+msgstr "أنتقل قبل التدفق"
