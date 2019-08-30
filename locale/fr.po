@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-24 22:22+0200\n"
+"POT-Creation-Date: 2019-08-30 20:44+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Pr2\n"
 "Language-Team: \n"
@@ -183,7 +183,7 @@ msgstr "Auto"
 msgid "AutoPoll"
 msgstr "AutoPoll"
 
-#: ../plugin/controllers/base.py:311
+#: ../plugin/controllers/base.py:312
 msgid "AutoTimer"
 msgstr "AutoTimer"
 
@@ -293,7 +293,7 @@ msgstr "Bouquet renommé avec succès."
 msgid "Bouquet-settings were restored successfully"
 msgstr "Les paramètres du bouquet restauré avec succès"
 
-#: ../plugin/controllers/base.py:316
+#: ../plugin/controllers/base.py:317
 msgid "BouquetEditor"
 msgstr "Éditeur de bouquet"
 
@@ -334,7 +334,7 @@ msgstr "Câble"
 msgid "Calendar Week"
 msgstr "Calendrier de la semaine"
 
-#: ../plugin/controllers/i18n.py:92 ../plugin/plugin.py:113
+#: ../plugin/plugin.py:113 ../plugin/controllers/i18n.py:92
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -405,7 +405,7 @@ msgstr "En cours"
 msgid "Current Event"
 msgstr "Évènement en cours"
 
-#: ../plugin/controllers/i18n.py:183 ../plugin/plugin.py:136
+#: ../plugin/plugin.py:136 ../plugin/controllers/i18n.py:183
 msgid "Custom box name"
 msgstr "Nom personnalisé"
 
@@ -550,7 +550,7 @@ msgstr "EPG"
 msgid "EPG encoding"
 msgstr "Encodage EPG"
 
-#: ../plugin/controllers/base.py:320
+#: ../plugin/controllers/base.py:321
 msgid "EPGRefresh"
 msgstr "Rafraîchir EPG"
 
@@ -755,11 +755,11 @@ msgstr "Version du frontprocesseur"
 msgid "Full remote"
 msgstr "Télécommande complète"
 
+#: ../plugin/controllers/models/movies.py:212
 #: ../plugin/controllers/models/info.py:388
 #: ../plugin/controllers/models/info.py:394
 #: ../plugin/controllers/models/info.py:409
 #: ../plugin/controllers/models/info.py:412
-#: ../plugin/controllers/models/movies.py:212
 msgid "GB"
 msgstr "Go"
 
@@ -916,7 +916,7 @@ msgstr "Version du noyau"
 msgid "LCD"
 msgstr "LCD"
 
-#: ../plugin/controllers/base.py:289
+#: ../plugin/controllers/base.py:290
 msgid "LCD4Linux Setup"
 msgstr "Configuration de LCD4Linux"
 
@@ -948,10 +948,10 @@ msgstr "Vérouillé"
 msgid "MAC address"
 msgstr "Adresse MAC"
 
+#: ../plugin/controllers/models/movies.py:214
 #: ../plugin/controllers/models/info.py:385
 #: ../plugin/controllers/models/info.py:396
 #: ../plugin/controllers/models/info.py:414
-#: ../plugin/controllers/models/movies.py:214
 msgid "MB"
 msgstr "Mo"
 
@@ -1065,7 +1065,7 @@ msgstr "L'option Multi-bouquet n'est pas activée!"
 msgid "MultiEPG"
 msgstr "MultiEPG"
 
-#: ../plugin/controllers/base.py:307
+#: ../plugin/controllers/base.py:308
 msgid "NCam Webinterface"
 msgstr "Interface Web de NCam"
 
@@ -1211,7 +1211,7 @@ msgstr "Novembre"
 msgid "Now"
 msgstr "Maintenant"
 
-#: ../plugin/controllers/base.py:305
+#: ../plugin/controllers/base.py:306
 msgid "OSCam Webinterface"
 msgstr "Interface Web d'OScam"
 
@@ -1511,8 +1511,8 @@ msgstr "Pointeur de sat"
 msgid "Saturday"
 msgstr "Samedi"
 
-#: ../plugin/controllers/i18n.py:207 ../plugin/controllers/i18n.py:355
-#: ../plugin/controllers/i18n.py:407 ../plugin/plugin.py:114
+#: ../plugin/plugin.py:114 ../plugin/controllers/i18n.py:207
+#: ../plugin/controllers/i18n.py:355 ../plugin/controllers/i18n.py:407
 msgid "Save"
 msgstr "Sauvegarder"
 
@@ -1649,7 +1649,7 @@ msgstr "Afficher les picons dans la liste des chaînes"
 msgid "Show Service type in channel list"
 msgstr "Afficher le type de service dans la liste des chaînes"
 
-#: ../plugin/controllers/i18n.py:181 ../plugin/plugin.py:132
+#: ../plugin/plugin.py:132 ../plugin/controllers/i18n.py:181
 msgid "Show box name in header"
 msgstr "Afficher le nom du récepteur dans l'entête"
 
@@ -1809,7 +1809,7 @@ msgstr "Télévision"
 msgid "Template Engine"
 msgstr "Template Engine"
 
-#: ../plugin/controllers/base.py:338
+#: ../plugin/controllers/base.py:339
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -2048,11 +2048,11 @@ msgstr "Fichiers chargés"
 msgid "Use a custom location"
 msgstr "Utiliser une localisation personnalisée"
 
-#: ../plugin/controllers/i18n.py:182 ../plugin/plugin.py:134
+#: ../plugin/plugin.py:134 ../plugin/controllers/i18n.py:182
 msgid "Use custom box name"
 msgstr "Utiliser un nom personnalisé"
 
-#: ../plugin/controllers/i18n.py:472 ../plugin/plugin.py:131
+#: ../plugin/plugin.py:131 ../plugin/controllers/i18n.py:472
 msgid "Use new design"
 msgstr "Utiliser le nouveau design"
 
@@ -2253,9 +2253,9 @@ msgstr "dans la description courte"
 msgid "in Title"
 msgstr "dans titre"
 
+#: ../plugin/controllers/models/movies.py:216
 #: ../plugin/controllers/models/info.py:294
 #: ../plugin/controllers/models/info.py:297
-#: ../plugin/controllers/models/movies.py:216
 msgid "kB"
 msgstr "ko"
 
