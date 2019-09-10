@@ -205,7 +205,7 @@ def HttpdStart(session):
 				try:
 					key = crypto.load_privatekey(crypto.FILETYPE_PEM, open(KEY_FILE, 'rt').read())
 					cert = crypto.load_certificate(crypto.FILETYPE_PEM, open(CERT_FILE, 'rt').read())
-					vtilog("[OpenWebif] CHAIN_FILE = %s" % CHAIN_FILE)
+					print "[OpenWebif] CHAIN_FILE = %s" % CHAIN_FILE
 					chain = None
 					if os.path.exists(CHAIN_FILE):
 						chain = [crypto.load_certificate(crypto.FILETYPE_PEM, open(CHAIN_FILE, 'rt').read())]
