@@ -20,9 +20,10 @@ from twisted.internet.error import CannotListenError
 from twisted.internet.protocol import Factory, Protocol
 
 from controllers.root import RootController
-from sslcertificate import SSLCertificateGenerator, KEY_FILE, CERT_FILE, CA_FILE
+from sslcertificate import SSLCertificateGenerator, KEY_FILE, CERT_FILE, CA_FILE, CHAIN_FILE
 from socket import has_ipv6
 from OpenSSL import SSL
+from OpenSSL import crypto
 from Components.Network import iNetwork
 
 import os
@@ -202,7 +203,14 @@ def HttpdStart(session):
 			# start https webserver on port configured port
 			try:
 				try:
-					context = ssl.DefaultOpenSSLContextFactory(KEY_FILE, CERT_FILE)
+					key = crypto.load_privatekey(crypto.FILETYPE_PEM, open(KEY_FILE, 'rt').read())
+					cert = crypto.load_certificate(crypto.FILETYPE_PEM, open(CERT_FILE, 'rt').read())
+					print "[OpenWebif] CHAIN_FILE = %s" % CHAIN_FILE
+					chain = None
+					if os.path.exists(CHAIN_FILE):
+						chain = [crypto.load_certificate(crypto.FILETYPE_PEM, open(CHAIN_FILE, 'rt').read())]
+						print "[OpenWebif] ssl chain file found - loading"
+					context = ssl.CertificateOptions(privateKey=key, certificate=cert, extraCertChain=chain)
 				except:
 					# THIS EXCEPTION IS ONLY CATCHED WHEN CERT FILES ARE BAD (look below for error)
 					print "[OpenWebif] failed to get valid cert files. (It could occure bad file save or format, removing...)"

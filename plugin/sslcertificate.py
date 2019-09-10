@@ -20,6 +20,7 @@ import os
 CA_FILE = resolveFilename(SCOPE_CONFIG, "ca.pem")
 KEY_FILE = resolveFilename(SCOPE_CONFIG, "key.pem")
 CERT_FILE = resolveFilename(SCOPE_CONFIG, "cert.pem")
+CHAIN_FILE = resolveFilename(SCOPE_CONFIG, "chain.pem")
 
 class SSLCertificateGenerator:
 
