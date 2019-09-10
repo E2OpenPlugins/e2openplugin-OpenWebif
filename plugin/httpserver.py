@@ -209,7 +209,7 @@ def HttpdStart(session):
 					chain = None
 					if os.path.exists(CHAIN_FILE):
 						chain = [crypto.load_certificate(crypto.FILETYPE_PEM, open(CHAIN_FILE, 'rt').read())]
-						vtilog("[OpenWebif] ssl chain file found - loading")
+						print "[OpenWebif] ssl chain file found - loading"
 					context = ssl.CertificateOptions(privateKey=key, certificate=cert, extraCertChain=chain)
 				except:
 					# THIS EXCEPTION IS ONLY CATCHED WHEN CERT FILES ARE BAD (look below for error)
