@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-30 20:44+0430\n"
-"PO-Revision-Date: 2019-01-06 14:20+0100\n"
+"PO-Revision-Date: 2019-09-11 12:00+0200\n"
 "Last-Translator: mickey <mickeyreg@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pl\n"
@@ -151,7 +151,7 @@ msgstr "Dowolny kanał/nagranie"
 
 #: ../plugin/controllers/i18n.py:433
 msgid "Apid"
-msgstr ""
+msgstr "Apid"
 
 #: ../plugin/controllers/i18n.py:63
 msgid "April"
@@ -445,7 +445,7 @@ msgstr "Usuń"
 #: ../plugin/controllers/i18n.py:468
 #, fuzzy
 msgid "Delete Bookmark"
-msgstr "Zakładka"
+msgstr "Usuń zakładkę"
 
 #: ../plugin/controllers/i18n.py:417
 msgid "Delete Bouquet"
@@ -780,7 +780,7 @@ msgstr "Uzyskanie listy wyboru dla nowo utworzonego bukietu zakończone niepowod
 
 #: ../plugin/controllers/i18n.py:141
 msgid "Grab Screenshot"
-msgstr "Zrób zrzut ekranu"
+msgstr "Wykonaj zrzut ekranu"
 
 #: ../plugin/controllers/i18n.py:142
 msgid "Gui version"
@@ -858,7 +858,7 @@ msgstr "Informacje"
 
 #: ../plugin/controllers/i18n.py:394
 msgid "Inherit Autotimer"
-msgstr "Dziedzić zadanie AutoTimer"
+msgstr "Dziedzicz zadanie AutoTimer"
 
 #: ../plugin/controllers/i18n.py:484
 msgid "Install Package"
@@ -979,7 +979,7 @@ msgstr "Dodano znacznik."
 
 #: ../plugin/controllers/i18n.py:288
 msgid "Match title"
-msgstr "Zgodność tytułu"
+msgstr "Dopasowanie tytułu"
 
 #: ../plugin/controllers/i18n.py:366
 msgid "Max Days"
@@ -1076,7 +1076,7 @@ msgstr "MultiEPG"
 #: ../plugin/controllers/base.py:308
 #, fuzzy
 msgid "NCam Webinterface"
-msgstr "Interfejs WWW OSCam"
+msgstr "Interfejs WWW NCam"
 
 #: ../plugin/controllers/i18n.py:170
 msgid "Name"
@@ -1120,7 +1120,7 @@ msgstr "Nie"
 
 #: ../plugin/controllers/BouquetEditor.py:524
 msgid "No Parent Control Setup Pin given!"
-msgstr "Nie podano kodu PIN dla kontroli rodzicielskiej!"
+msgstr "Nie podano kodu PIN dla ustawień kontroli rodzicielskiej!"
 
 #: ../plugin/controllers/models/message.py:46
 msgid "No answer in time"
@@ -1155,7 +1155,7 @@ msgstr "Nie podano nazwy znacznika!"
 #: ../plugin/controllers/models/timers.py:330
 #: ../plugin/controllers/models/timers.py:375
 msgid "No matching Timer found"
-msgstr "Nie znaleziono zgodnych zadań planowych"
+msgstr "Nie znaleziono pasującego zadania planowego"
 
 #: ../plugin/controllers/BouquetEditor.py:364
 msgid "No new servicename given!"
@@ -1259,7 +1259,7 @@ msgstr "Onid"
 
 #: ../plugin/controllers/i18n.py:305
 msgid "Only match during timespan"
-msgstr "Zgodność tylko w przedziale czasowym"
+msgstr "Dopasuj tylko w przedziale czasowym"
 
 #: ../plugin/controllers/i18n.py:180
 msgid "Open Source Web Interface for Linux set-top box"
@@ -1395,7 +1395,7 @@ msgstr "Czy na pewno zmienić nazwę nagrania"
 #: ../plugin/controllers/i18n.py:154
 #, fuzzy
 msgid "Really start instant record now?"
-msgstr "Rozpocznij natychmiast nagranie"
+msgstr "Rozpocząć natychmiastowe nagrywanie?"
 
 #: ../plugin/controllers/i18n.py:193
 msgid "Reboot Box"
@@ -2178,7 +2178,7 @@ msgstr "Kreator"
 #: ../plugin/controllers/web.py:223
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr "Zły format parametru 'set=%s'. Użyj set=set15"
+msgstr "Zły format parametru 'set=%s'. Użyj set=set15 "
 
 #: ../plugin/controllers/i18n.py:490
 #, fuzzy
@@ -2223,7 +2223,7 @@ msgstr "z uwzględnianiem wielkości liter"
 
 #: ../plugin/controllers/i18n.py:293
 msgid "description match"
-msgstr "zgodność z opisem"
+msgstr "dopasowanie z opisem"
 
 #: ../plugin/controllers/i18n.py:114
 msgid "disabled"
@@ -2239,7 +2239,7 @@ msgstr "Błąd! Ładowanie strony"
 
 #: ../plugin/controllers/i18n.py:292
 msgid "exact match"
-msgstr "dokładna zgodność"
+msgstr "dokładne dopasowanie"
 
 #: ../plugin/controllers/i18n.py:135
 msgid "finished"
@@ -2307,7 +2307,7 @@ msgstr "raz dwa trzy cztery, nieznane polecenie"
 
 #: ../plugin/controllers/i18n.py:291
 msgid "partial match"
-msgstr "częściowa zgodność"
+msgstr "częściowe dopasowanie"
 
 #: ../plugin/controllers/models/info.py:455
 msgid "r/o"
@@ -2347,7 +2347,7 @@ msgstr "wybierz znaczniki"
 
 #: ../plugin/controllers/i18n.py:296
 msgid "short description match"
-msgstr "zgodność z krótkim opisem"
+msgstr "dopasowanie z krótkim opisem"
 
 #: ../plugin/controllers/i18n.py:316
 msgid "standard"
@@ -2355,7 +2355,7 @@ msgstr "zwykły"
 
 #: ../plugin/controllers/i18n.py:297
 msgid "start match"
-msgstr "zgodność z początkiem"
+msgstr "dopasowanie z początkiem"
 
 #: ../plugin/controllers/models/info.py:61
 #: ../plugin/controllers/models/info.py:73
@@ -2365,11 +2365,11 @@ msgstr "statyczny"
 
 #: ../plugin/controllers/i18n.py:294
 msgid "title or description match"
-msgstr "zgodność z tytułem lub opisem"
+msgstr "dopasowanie z tytułem lub opisem"
 
 #: ../plugin/controllers/i18n.py:295
 msgid "title or short description match"
-msgstr "zgodność z tytułem lub krótkim opisem"
+msgstr "dopasowanie z tytułem lub krótkim opisem"
 
 #: ../plugin/controllers/i18n.py:251
 msgid "transcoded"
