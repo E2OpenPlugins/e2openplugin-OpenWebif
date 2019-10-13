@@ -25,10 +25,10 @@ CHAIN_FILE = resolveFilename(SCOPE_CONFIG, "chain.pem")
 class SSLCertificateGenerator:
 
 	def __init__(self):
-		# define some defaults 
+		# define some defaults
 		self.type = crypto.TYPE_RSA
-		self.bits = 1024
-		self.digest = 'sha1'
+		self.bits = 2048
+		self.digest = 'sha256'
 		self.certSubjectOptions = {
 			'O': 'Home',
 			'OU': gethostname(),
