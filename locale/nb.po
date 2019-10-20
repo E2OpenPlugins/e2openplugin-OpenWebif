@@ -10,7 +10,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.5\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -45,11 +45,11 @@ msgstr "Legg til"
 
 #: ../plugin/controllers/i18n.py:75
 msgid "Add AutoTimer"
-msgstr "Legg til autotidtaker"
+msgstr "Legg til auto timer"
 
 #: ../plugin/controllers/i18n.py:374
 msgid "Add Autotimer to Tags"
-msgstr "Legg til autotidtaker som merke"
+msgstr "Legg til auto timer i merker"
 
 #: ../plugin/controllers/i18n.py:415
 msgid "Add Bouquet"
@@ -77,11 +77,11 @@ msgstr "Legg til mellomrom"
 
 #: ../plugin/controllers/i18n.py:74
 msgid "Add Timer"
-msgstr "Legg til tidtaker"
+msgstr "Legg til timer"
 
 #: ../plugin/controllers/i18n.py:76
 msgid "Add Zap Timer"
-msgstr "Legg til zaptidtaker"
+msgstr "Legg til zap timer"
 
 #: ../plugin/controllers/i18n.py:412
 msgid "Add channel(s) as alternate"
@@ -93,7 +93,7 @@ msgstr "Legg til kanal(er) i kanalliste"
 
 #: ../plugin/plugin.py:151
 msgid "Add service name to stream information"
-msgstr "Legg til leverandørnavn i streaminformasjon"
+msgstr "Legg til leverandørnavn i stream informasjon"
 
 #: ../plugin/controllers/BouquetEditor.py:466
 #, python-format
@@ -102,7 +102,7 @@ msgstr "Lagt til %s til alternativ kanal %s."
 
 #: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
 msgid "After Event"
-msgstr "Etter aktiviteten"
+msgstr "Etter hendelse"
 
 #: ../plugin/controllers/i18n.py:315
 msgid "After event"
@@ -126,7 +126,7 @@ msgstr "Alle alternative kanaler er slettet."
 
 #: ../plugin/plugin.py:154
 msgid "Allow IPK Upload"
-msgstr ""
+msgstr "Tillat last opp IPK"
 
 #: ../plugin/controllers/BouquetEditor.py:452
 #, python-format
@@ -187,23 +187,23 @@ msgstr "Auto overvåk"
 
 #: ../plugin/controllers/base.py:312
 msgid "AutoTimer"
-msgstr "Autotidtaker"
+msgstr "Auto timer"
 
 #: ../plugin/controllers/i18n.py:285
 msgid "AutoTimer Edit"
-msgstr "Rediger Auto tidtaker"
+msgstr "Auto timer-redigering"
 
 #: ../plugin/controllers/i18n.py:284
 msgid "AutoTimer List"
-msgstr "Auto tidtaker liste"
+msgstr "Auto timer-liste"
 
 #: ../plugin/controllers/i18n.py:363
 msgid "AutoTimer Settings"
-msgstr "Innstilling for autotidtaker"
+msgstr "Auto timer-innstillinger"
 
 #: ../plugin/controllers/i18n.py:246
 msgid "Autotimer Preview"
-msgstr "Auto tidtaker forhåndsvisning"
+msgstr "Auto timer-forhåndsvisning"
 
 #: ../plugin/controllers/i18n.py:85
 msgid "BER"
@@ -231,11 +231,11 @@ msgstr "Starten på tidsrom"
 
 #: ../plugin/controllers/i18n.py:467
 msgid "Bookmark"
-msgstr ""
+msgstr "Bokmerke"
 
 #: ../plugin/controllers/i18n.py:466
 msgid "Bookmarks"
-msgstr ""
+msgstr "Bokmerker"
 
 #: ../plugin/controllers/BouquetEditor.py:127
 #, python-format
@@ -340,9 +340,8 @@ msgid "Cancel"
 msgstr "Avbryt"
 
 #: ../plugin/controllers/i18n.py:475
-#, fuzzy
 msgid "Cancelled"
-msgstr "Avbryt"
+msgstr "Avbrutt"
 
 #: ../plugin/controllers/i18n.py:93
 msgid "Capacity"
@@ -366,21 +365,20 @@ msgstr "Brikkesett"
 
 #: ../plugin/controllers/i18n.py:97
 msgid "Cleanup Timers"
-msgstr "Slett tidtakere"
+msgstr "Slett timere"
 
 #: ../plugin/controllers/i18n.py:98
 msgid "Close"
 msgstr "Lukk"
 
 #: ../plugin/controllers/i18n.py:478
-#, fuzzy
 msgid "Common Settings"
-msgstr "Innstillinger"
+msgstr "Vanlige innstillinger"
 
 #: ../plugin/controllers/models/timers.py:179
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
-msgstr "Tidtakerkonflikt(er) oppdaget %s"
+msgstr "Timer konflikt(er) oppdaget %s"
 
 #: ../plugin/controllers/i18n.py:99
 msgid "Contributors"
@@ -393,12 +391,12 @@ msgstr "Kontroll"
 #: ../plugin/controllers/models/timers.py:196
 #, python-format
 msgid "Could not add timer '%s'!"
-msgstr "Kunne ikke legge til tidtaker '%s'!"
+msgstr "Kunne ikke legge til timer '%s'!"
 
 #: ../plugin/controllers/models/timers.py:312
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
-msgstr "Kunne ikke finne tidtaker '%s' med gitt start og stopptid!"
+msgstr "Finner ikke timer '%s' med angitt start og sluttids tidspunkt!"
 
 #: ../plugin/controllers/i18n.py:101
 msgid "Current"
@@ -446,9 +444,8 @@ msgid "Delete"
 msgstr "Slett"
 
 #: ../plugin/controllers/i18n.py:468
-#, fuzzy
 msgid "Delete Bookmark"
-msgstr "Slett tidtaker"
+msgstr "Slett bokmerke"
 
 #: ../plugin/controllers/i18n.py:417
 msgid "Delete Bouquet"
@@ -460,18 +457,19 @@ msgstr "Slett opptaket"
 
 #: ../plugin/controllers/i18n.py:109
 msgid "Delete Timer"
-msgstr "Slett tidtaker"
+msgstr "Slett timer"
 
 #: ../plugin/controllers/models/movies.py:300
 msgid ""
 "Delete failed, because there is no movie trash !\n"
 "Disable movie trash in configuration to delete this item"
 msgstr ""
+"Slett mislyktes, fordi det ikke er film i papirkurven!\n"
+"Deaktiver film i søppel i konfigurasjonen for å slette dette elementet"
 
 #: ../plugin/controllers/i18n.py:476
-#, fuzzy
 msgid "Deleted"
-msgstr "Slett"
+msgstr "Slettet"
 
 #: ../plugin/controllers/i18n.py:111 ../plugin/controllers/i18n.py:287
 msgid "Description"
@@ -479,7 +477,7 @@ msgstr "Beskrivelse"
 
 #: ../plugin/controllers/i18n.py:113
 msgid "Disable Timer"
-msgstr "Slå av tidtaker"
+msgstr "Deaktiver timer"
 
 #: ../plugin/plugin.py:146
 msgid "Disable remote access for user root"
@@ -507,15 +505,15 @@ msgstr "Skal denne AT virkelig tas bort"
 
 #: ../plugin/controllers/i18n.py:422
 msgid "Do you really want to delete the bouquet"
-msgstr "Skal kanallisten virkelig slettes"
+msgstr "Vil du virkelig slette kanallisten"
 
 #: ../plugin/controllers/i18n.py:421
 msgid "Do you really want to delete the selected item(s)"
-msgstr "Vil du virkelig slette dette"
+msgstr "Vil du virkelig slette valgt (e) element (er)"
 
 #: ../plugin/controllers/i18n.py:428
 msgid "Do you really want to restore from file"
-msgstr "Skal det tilbakestilles fra denne filen"
+msgstr "Vil du virkelig gjenopprette fra fil"
 
 #: ../plugin/controllers/i18n.py:116
 msgid "Dolby"
@@ -559,11 +557,11 @@ msgstr "Oppdater EPG"
 
 #: ../plugin/controllers/models/timers.py:714
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "FEIL: Kan ikke stille inn tidtaker når mottaker er slått av"
+msgstr "FEIL: kan ikke angi Tidsinnstilt avslag mens enheten er i standby-modus"
 
 #: ../plugin/controllers/i18n.py:122
 msgid "Edit Timer"
-msgstr "Rediger tidtaker"
+msgstr "Rediger timer"
 
 #: ../plugin/controllers/i18n.py:380
 msgid "Editor"
@@ -599,11 +597,11 @@ msgstr "Aktiver foreldrekontroll"
 
 #: ../plugin/controllers/i18n.py:123
 msgid "Enable Timer"
-msgstr "Aktiver tidtaker"
+msgstr "Aktiver timer"
 
 #: ../plugin/plugin.py:149
 msgid "Enable access from VPNs"
-msgstr "Gi VPN adgang"
+msgstr "Aktiver tilgang fra VPN"
 
 #: ../plugin/controllers/i18n.py:464
 msgid "Enable/Disable Screenshot on key press or"
@@ -632,11 +630,11 @@ msgstr "Slutten på tidsrom"
 
 #: ../plugin/controllers/i18n.py:425
 msgid "Enter new name for the bouquet"
-msgstr "Gi nytt navn på kanallisten"
+msgstr "Skriv inn nytt navn på kanallisten"
 
 #: ../plugin/controllers/i18n.py:426
 msgid "Enter new name for the marker"
-msgstr "Gi nytt navn på bokmerket"
+msgstr "Skriv inn nytt navn på bokmerket"
 
 #: ../plugin/controllers/i18n.py:129
 msgid "Epg Search"
@@ -688,7 +686,7 @@ msgstr "Kanal ikke funnet"
 
 #: ../plugin/controllers/models/timers.py:210
 msgid "EventId not found"
-msgstr "Aktivitets Id ikke funnet"
+msgstr "Finner ikke Event Id"
 
 #: ../plugin/controllers/i18n.py:133
 msgid "Every"
@@ -755,9 +753,8 @@ msgid "Frontprocessor Version"
 msgstr "Frontprosessor versjon"
 
 #: ../plugin/controllers/i18n.py:499
-#, fuzzy
 msgid "Full remote"
-msgstr "Skjul full fjernkontroll"
+msgstr "Full fjernkontroll"
 
 #: ../plugin/controllers/models/movies.py:212
 #: ../plugin/controllers/models/info.py:388
@@ -840,14 +837,12 @@ msgid "Include description"
 msgstr "Inkluder beskrivelse"
 
 #: ../plugin/controllers/i18n.py:492
-#, fuzzy
 msgid "Include extended description"
-msgstr "Inkluder beskrivelse"
+msgstr "Inkluder utvidet beskrivelse"
 
 #: ../plugin/controllers/i18n.py:491
-#, fuzzy
 msgid "Include short description"
-msgstr "Inkluder beskrivelse"
+msgstr "Inkluder kort beskrivelse"
 
 #: ../plugin/controllers/models/timers.py:422
 msgid "Infinite Instant recording started"
@@ -859,16 +854,15 @@ msgstr "Info"
 
 #: ../plugin/controllers/i18n.py:394
 msgid "Inherit Autotimer"
-msgstr "Overfør autotidtaker"
+msgstr "Overfør auto timer"
 
 #: ../plugin/controllers/i18n.py:484
 msgid "Install Package"
-msgstr ""
+msgstr "Installer pakke"
 
 #: ../plugin/controllers/i18n.py:486
-#, fuzzy
 msgid "Installed"
-msgstr "Direkteinnspilling"
+msgstr "Installert"
 
 #: ../plugin/controllers/i18n.py:153
 msgid "Instant Record"
@@ -883,9 +877,9 @@ msgid "Internal error!"
 msgstr "Intern feil!"
 
 #: ../plugin/controllers/i18n.py:365
-#, fuzzy, python-format
+#, python-format
 msgid "Interval (in %s)"
-msgstr "Intervall (i timer)"
+msgstr "Intervall (i %s)"
 
 #: ../plugin/controllers/i18n.py:389
 msgid "Interval (min.)"
@@ -921,7 +915,7 @@ msgstr "Kjerne"
 
 #: ../plugin/controllers/i18n.py:158
 msgid "LCD"
-msgstr ""
+msgstr "LCD"
 
 #: ../plugin/controllers/base.py:290
 msgid "LCD4Linux Setup"
@@ -941,7 +935,7 @@ msgstr "Overførings hastighet"
 
 #: ../plugin/controllers/models/timers.py:383
 msgid "List of Timers has been cleaned"
-msgstr "Tidtakerlisten har blitt ryddet opp i"
+msgstr "Timerliste har blitt ryddet"
 
 #: ../plugin/controllers/i18n.py:161
 msgid "Location"
@@ -1000,16 +994,15 @@ msgstr "Metode"
 
 #: ../plugin/controllers/i18n.py:481
 msgid "Minimal EPG list"
-msgstr ""
+msgstr "Minimert EPG-liste"
 
 #: ../plugin/controllers/i18n.py:479
-#, fuzzy
 msgid "Minimal movie list"
-msgstr "Opptaksliste"
+msgstr "Minimal filmliste"
 
 #: ../plugin/controllers/i18n.py:480
 msgid "Minimal timer list"
-msgstr ""
+msgstr "Minimert timer-liste"
 
 #: ../plugin/controllers/i18n.py:165
 msgid "Minute"
@@ -1046,16 +1039,15 @@ msgstr "Månedlig"
 
 #: ../plugin/controllers/i18n.py:487
 msgid "More"
-msgstr ""
+msgstr "Mer"
 
 #: ../plugin/controllers/i18n.py:446
 msgid "Movie database for EPG"
-msgstr ""
+msgstr "Film database for EPG"
 
 #: ../plugin/controllers/i18n.py:493
-#, fuzzy
 msgid "Movie search"
-msgstr "Filmer"
+msgstr "Film søk"
 
 #: ../plugin/controllers/i18n.py:167
 msgid "Movielist"
@@ -1075,9 +1067,8 @@ msgid "MultiEPG"
 msgstr "MultiEPG"
 
 #: ../plugin/controllers/base.py:308
-#, fuzzy
 msgid "NCam Webinterface"
-msgstr "OSCam Webutseende"
+msgstr "NCam webinterface"
 
 #: ../plugin/controllers/i18n.py:170
 msgid "Name"
@@ -1101,7 +1092,7 @@ msgstr "Nettverkskort"
 
 #: ../plugin/controllers/i18n.py:461
 msgid "Network Shares"
-msgstr "Nettverksdelere"
+msgstr "Delte nettverksressurser"
 
 #: ../plugin/controllers/i18n.py:326 ../plugin/controllers/i18n.py:397
 msgid "Never"
@@ -1125,7 +1116,7 @@ msgstr "Ingen PIN kode til forleldrekontroll er valgt!"
 
 #: ../plugin/controllers/models/message.py:46
 msgid "No answer in time"
-msgstr "Svaret kom for sent"
+msgstr "Ingen svar i tide"
 
 #: ../plugin/controllers/BouquetEditor.py:224
 #: ../plugin/controllers/BouquetEditor.py:254
@@ -1156,7 +1147,7 @@ msgstr "Ikke noe markør-navn er valgt!"
 #: ../plugin/controllers/models/timers.py:330
 #: ../plugin/controllers/models/timers.py:375
 msgid "No matching Timer found"
-msgstr "Kunne ikke finne passende tidtaker"
+msgstr "Finner ingen samsvarende timer"
 
 #: ../plugin/controllers/BouquetEditor.py:364
 msgid "No new servicename given!"
@@ -1182,9 +1173,8 @@ msgid "No service given!"
 msgstr "Ingen kanal er opprettet!"
 
 #: ../plugin/controllers/i18n.py:473
-#, fuzzy
 msgid "No, cancel"
-msgstr "Avbryt"
+msgstr "Nei, avbryt"
 
 #: ../plugin/controllers/i18n.py:377
 msgid "None"
@@ -1302,7 +1292,7 @@ msgstr "Overstyr funnet med alternativ leverandør"
 
 #: ../plugin/controllers/i18n.py:470
 msgid "Packages"
-msgstr ""
+msgstr "Pakker"
 
 #: ../plugin/controllers/BouquetEditor.py:528
 #: ../plugin/controllers/BouquetEditor.py:530
@@ -1319,7 +1309,7 @@ msgstr "Analyser"
 
 #: ../plugin/controllers/i18n.py:395
 msgid "Parse Autotimer"
-msgstr "Analyser autotidtaker"
+msgstr "Analyser auto timer"
 
 #: ../plugin/controllers/i18n.py:435
 msgid "Pcrpid"
@@ -1327,7 +1317,7 @@ msgstr "Pcrpid"
 
 #: ../plugin/controllers/i18n.py:186
 msgid "PiP"
-msgstr ""
+msgstr "PiP-bilde i bilde"
 
 #: ../plugin/controllers/i18n.py:403
 msgid "Picture in Picture"
@@ -1351,7 +1341,7 @@ msgstr "Opptaksliste"
 
 #: ../plugin/controllers/i18n.py:427
 msgid "Please enter filename"
-msgstr "Angi et filnavn"
+msgstr "Vennligst angi et filnavn"
 
 #: ../plugin/controllers/i18n.py:432
 msgid "Pmtpid"
@@ -1363,7 +1353,7 @@ msgstr "Strømstyring"
 
 #: ../plugin/controllers/models/timers.py:596
 msgid "PowerTimer feature not available"
-msgstr "Strømtidtaker er ikke tilgjengelig"
+msgstr "PowerTimer-funksjonen er ikke tilgjengelig"
 
 #: ../plugin/controllers/i18n.py:463
 msgid "Primetimes"
@@ -1383,20 +1373,19 @@ msgstr "Radio"
 
 #: ../plugin/controllers/i18n.py:108
 msgid "Really delete the recording"
-msgstr "Skal opptaket slettes"
+msgstr "Virkelig slette opptaket"
 
 #: ../plugin/controllers/i18n.py:110
 msgid "Really delete the timer"
-msgstr "Skal tidtaker slettes"
+msgstr "Virkelig slette timer"
 
 #: ../plugin/controllers/i18n.py:200
 msgid "Really rename the recording"
 msgstr "Skal opptaket gis nytt navn"
 
 #: ../plugin/controllers/i18n.py:154
-#, fuzzy
 msgid "Really start instant record now?"
-msgstr "Start direkteinnspilling"
+msgstr "Start direkteinnspilling nå?"
 
 #: ../plugin/controllers/i18n.py:193
 msgid "Reboot Box"
@@ -1420,7 +1409,7 @@ msgstr "Oppdater"
 
 #: ../plugin/controllers/i18n.py:197
 msgid "Refresh Timer"
-msgstr "Oppdater tidtaker"
+msgstr "Oppdater timer"
 
 #: ../plugin/controllers/i18n.py:196
 msgid "Refresh automatically every"
@@ -1441,11 +1430,11 @@ msgstr "Fjernkontroll"
 
 #: ../plugin/controllers/i18n.py:482
 msgid "Remove Package"
-msgstr ""
+msgstr "Fjern pakke"
 
 #: ../plugin/controllers/i18n.py:420
 msgid "Rename"
-msgstr "Gi nytt navn"
+msgstr "Endre navn"
 
 #: ../plugin/controllers/i18n.py:416
 msgid "Rename Bouquet"
@@ -1497,7 +1486,7 @@ msgstr "SNR"
 
 #: ../plugin/controllers/i18n.py:494
 msgid "START TYPING"
-msgstr ""
+msgstr "BEGYNN Å SKRIVE"
 
 #: ../plugin/controllers/i18n.py:41
 msgid "Sa"
@@ -1537,9 +1526,8 @@ msgid "Search"
 msgstr "Søk"
 
 #: ../plugin/controllers/i18n.py:210
-#, fuzzy
 msgid "Search CSFD"
-msgstr "Søk i IMDb"
+msgstr "Søk CSFD"
 
 #: ../plugin/controllers/i18n.py:211
 msgid "Search IMDb"
@@ -1559,7 +1547,7 @@ msgstr "Søketype"
 
 #: ../plugin/controllers/i18n.py:495
 msgid "Select IPK File for Upload"
-msgstr ""
+msgstr "Velg IPK-fil for opplasting"
 
 #: ../plugin/controllers/i18n.py:214
 msgid "Send Message"
@@ -1575,7 +1563,7 @@ msgstr "September"
 
 #: ../plugin/controllers/i18n.py:217
 msgid "Service"
-msgstr "Leverandør"
+msgstr "Kanal"
 
 #: ../plugin/controllers/BouquetEditor.py:314
 #, python-format
@@ -1652,16 +1640,15 @@ msgstr "Vis EPG for"
 
 #: ../plugin/controllers/i18n.py:221
 msgid "Show Full OpenWebif"
-msgstr "Vis hele OpenWebif"
+msgstr "Vis full OpenWebif"
 
 #: ../plugin/controllers/i18n.py:445
 msgid "Show Picon in channel list"
 msgstr "Vis kanallogo i kanalliste"
 
 #: ../plugin/controllers/i18n.py:501
-#, fuzzy
 msgid "Show Service type in channel list"
-msgstr "Vis kanallogo i kanalliste"
+msgstr "Vis tjenestetype i kanalliste"
 
 #: ../plugin/plugin.py:132 ../plugin/controllers/i18n.py:181
 msgid "Show box name in header"
@@ -1669,7 +1656,7 @@ msgstr "Vis mottakernavn i overskrift"
 
 #: ../plugin/controllers/i18n.py:500
 msgid "Show details"
-msgstr ""
+msgstr "Vis detaljer"
 
 #: ../plugin/controllers/i18n.py:222
 msgid "Show full remote"
@@ -1681,7 +1668,7 @@ msgstr "Vis i tilleggsmeny"
 
 #: ../plugin/controllers/i18n.py:224
 msgid "Shutdown"
-msgstr "Slå av"
+msgstr "Avslutning"
 
 #: ../plugin/controllers/i18n.py:438
 msgid "Sid"
@@ -1693,14 +1680,14 @@ msgstr "Simuler"
 
 #: ../plugin/controllers/i18n.py:225
 msgid "Site and sources"
-msgstr "Side og kilder"
+msgstr "Nettsted og kilder"
 
 #: ../plugin/controllers/models/timers.py:674
 #: ../plugin/controllers/models/timers.py:701
 #: ../plugin/controllers/models/timers.py:730
 #: ../plugin/controllers/models/timers.py:811
 msgid "SleepTimer error"
-msgstr "Tidtaker feil"
+msgstr "Feil ved Tidsinnstilt avslag"
 
 #: ../plugin/controllers/models/timers.py:719
 #: ../plugin/controllers/models/timers.py:788
@@ -1711,12 +1698,12 @@ msgstr "Vekkerklokke har blitt frakoblet"
 #: ../plugin/controllers/models/timers.py:669
 #: ../plugin/controllers/models/timers.py:695
 msgid "Sleeptimer is disabled"
-msgstr "Vekkerklokken er deaktivert"
+msgstr "Tidsinnstilt avslag er deaktivert"
 
 #: ../plugin/controllers/models/timers.py:669
 #: ../plugin/controllers/models/timers.py:695
 msgid "Sleeptimer is enabled"
-msgstr "Vekkerklokken er aktivert"
+msgstr "Tidsinnstilt avslag er aktivert"
 
 #: ../plugin/controllers/models/timers.py:725
 #: ../plugin/controllers/models/timers.py:788
@@ -1743,7 +1730,7 @@ msgstr "Sref"
 
 #: ../plugin/controllers/i18n.py:228
 msgid "Standby"
-msgstr "Avslått"
+msgstr "Standby"
 
 #: ../plugin/controllers/i18n.py:229
 msgid "Standby Toggle"
@@ -1759,7 +1746,7 @@ msgstr "Start direkteinnspilling"
 
 #: ../plugin/controllers/i18n.py:231
 msgid "Start time is after end time"
-msgstr "Starttiden er senere enn sluttiden"
+msgstr "Start tiden er etter sluttid"
 
 #: ../plugin/controllers/i18n.py:233
 msgid "Stream"
@@ -1821,7 +1808,7 @@ msgstr "TV"
 
 #: ../plugin/controllers/i18n.py:239
 msgid "Template Engine"
-msgstr "Webutviklingsverktøy"
+msgstr "Mal"
 
 #: ../plugin/controllers/base.py:339
 msgid "Terminal"
@@ -1851,17 +1838,17 @@ msgstr "Parameter 'kommando' må være et tall"
 #: ../plugin/controllers/models/timers.py:369
 #, python-format
 msgid "The timer '%s' has been %s successfully"
-msgstr "Tidtakeren '%s' har blitt %s vellykket"
+msgstr "Timer '%s' har blitt %s vellykket"
 
 #: ../plugin/controllers/models/timers.py:325
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
-msgstr "Tidtakeren '%s' har blitt slettet"
+msgstr "Timeren '%s' er slettet"
 
 #: ../plugin/controllers/models/timers.py:361
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
-msgstr "Tidtakeren '%s' tatt opp! Ikke frakoblet!"
+msgstr "Timeren '%s' er nå registrert! Ikke deaktivert!"
 
 #: ../plugin/controllers/i18n.py:450
 msgid "Theme"
@@ -1885,7 +1872,7 @@ msgstr "Tid"
 
 #: ../plugin/controllers/i18n.py:456
 msgid "Timeline"
-msgstr "Tidsliste"
+msgstr "Tidslinje"
 
 #: ../plugin/controllers/i18n.py:242
 msgid "Timeout"
@@ -1893,60 +1880,60 @@ msgstr "Timeout"
 
 #: ../plugin/controllers/i18n.py:247
 msgid "Timer"
-msgstr "Tidtaker"
+msgstr "Timer"
 
 #: ../plugin/controllers/models/timers.py:201
 #, python-format
 msgid "Timer '%s' added"
-msgstr "Tidtaker '%s' lagt til"
+msgstr "Timer '%s' lagt til"
 
 #: ../plugin/controllers/models/timers.py:355
 #, python-format
 msgid "Timer '%s' already exists!"
-msgstr "Tidtaker '%s' finnes allerede!"
+msgstr "Timeren '%s' finnes allerede!"
 
 #: ../plugin/controllers/models/timers.py:287
 #, python-format
 msgid "Timer '%s' changed"
-msgstr "Tidtaker '%s' ble endret"
+msgstr "Timer '%s' ble endret"
 
 #: ../plugin/controllers/models/timers.py:349
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
-msgstr "Tidtaker '%s' ble ikke opprettet på grunn av en konflikt"
+msgstr "Timer '%s' er ikke aktivert på grunn av en konflikt"
 
 #: ../plugin/controllers/models/timers.py:306
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
-msgstr "Tidtaker '%s' ble ikke lagret pga. en konflikt"
+msgstr "Timer '%s' ble ikke lagret pga. en konflikt"
 
 #: ../plugin/controllers/i18n.py:443
 msgid "Timer Added"
-msgstr "Tidtaker lagt til"
+msgstr "Timer lagt til"
 
 #: ../plugin/controllers/i18n.py:243
 msgid "Timer added"
-msgstr "Tidtaker lagt til"
+msgstr "Timer lagt til"
 
 #: ../plugin/controllers/models/timers.py:441
 msgid "Timer conflict detected! Not recording!"
-msgstr "En tidtakerkonflikt er oppdaget! Spiller ikke inn!"
+msgstr "En timer konflikt er oppdaget! Spiller ikke inn!"
 
 #: ../plugin/controllers/i18n.py:301
 msgid "Timer type"
-msgstr "Tidtakertype"
+msgstr "Timer type"
 
 #: ../plugin/controllers/models/timers.py:391
 msgid "TimerList has been saved"
-msgstr "Tidtakerlisten har blitt lagret"
+msgstr "Timerliste har blitt lagret"
 
 #: ../plugin/controllers/i18n.py:244
 msgid "Timerlist"
-msgstr "Tidtakerliste"
+msgstr "Timerliste"
 
 #: ../plugin/controllers/i18n.py:248 ../plugin/controllers/i18n.py:358
 msgid "Timers"
-msgstr "Tidtakere"
+msgstr "Timere"
 
 #: ../plugin/controllers/i18n.py:249
 msgid "Title"
@@ -2032,32 +2019,31 @@ msgstr "Kommende aktiviteter"
 
 #: ../plugin/controllers/i18n.py:485
 msgid "Update"
-msgstr ""
+msgstr "Oppdater"
 
 #: ../plugin/controllers/i18n.py:483
 msgid "Update Package"
-msgstr ""
+msgstr "Oppdater pakke"
 
 #: ../plugin/controllers/i18n.py:488
 msgid "Update from Feed"
-msgstr ""
+msgstr "Oppdater fra kilde"
 
 #: ../plugin/controllers/i18n.py:489
 msgid "Upgrade all Packages"
-msgstr ""
+msgstr "Oppdater alle pakker"
 
 #: ../plugin/controllers/i18n.py:498
 msgid "Upload File Error"
-msgstr ""
+msgstr "Feil ved opplasting av fil"
 
 #: ../plugin/controllers/i18n.py:497
 msgid "Upload package"
-msgstr ""
+msgstr "Last opp pakke"
 
 #: ../plugin/controllers/i18n.py:496
-#, fuzzy
 msgid "Uploaded Files"
-msgstr "Feil ved fil opplasting"
+msgstr "Opplastede filer"
 
 #: ../plugin/controllers/i18n.py:336
 msgid "Use a custom location"
@@ -2069,7 +2055,7 @@ msgstr "Bruk egendefinert mottakernavn"
 
 #: ../plugin/plugin.py:131 ../plugin/controllers/i18n.py:472
 msgid "Use new design"
-msgstr ""
+msgstr "Bruk ny utforming"
 
 #: ../plugin/controllers/i18n.py:270
 msgid "VPS"
@@ -2085,19 +2071,19 @@ msgstr "Versjon"
 
 #: ../plugin/controllers/i18n.py:266
 msgid "Video"
-msgstr "Bilde"
+msgstr "Video"
 
 #: ../plugin/controllers/i18n.py:267
 msgid "Video Height"
-msgstr "Bildehøyde"
+msgstr "Video høyde"
 
 #: ../plugin/controllers/i18n.py:268
 msgid "Video Wide"
-msgstr "Bildebredde"
+msgstr "Video bredde"
 
 #: ../plugin/controllers/i18n.py:269
 msgid "Video Width"
-msgstr "Bildebredde"
+msgstr "Video bredde"
 
 #: ../plugin/controllers/i18n.py:402
 msgid "Visibly"
@@ -2124,9 +2110,8 @@ msgid "Waiting for answer ..."
 msgstr "Venter på svar..."
 
 #: ../plugin/controllers/i18n.py:230
-#, fuzzy
 msgid "Wake Up"
-msgstr "Våkne opp"
+msgstr "Våkne"
 
 #: ../plugin/controllers/i18n.py:393
 msgid "Wakeup"
@@ -2170,7 +2155,7 @@ msgstr "Ukentlig (Søndag)"
 
 #: ../plugin/plugin.py:148
 msgid "Without auth only local access is allowed!"
-msgstr "Uten godkj. Bare lokal adgang er tillat!"
+msgstr "Kun lokal adgang er tillat uten godkjenning!"
 
 #: ../plugin/controllers/i18n.py:382
 msgid "Wizzard"
@@ -2182,13 +2167,12 @@ msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Feil parameter format 'set=%s'. Bruk set=set15 "
 
 #: ../plugin/controllers/i18n.py:490
-#, fuzzy
 msgid "Yes"
-msgstr "Ja/Nei"
+msgstr "Ja"
 
 #: ../plugin/controllers/i18n.py:474
 msgid "Yes, delete it"
-msgstr ""
+msgstr "Ja, slett det"
 
 #: ../plugin/controllers/i18n.py:275
 msgid "Yes/No"
@@ -2196,7 +2180,7 @@ msgstr "Ja/Nei"
 
 #: ../plugin/controllers/i18n.py:477
 msgid "You need to write something!"
-msgstr ""
+msgstr "Du må skrive noe!"
 
 #: ../plugin/controllers/i18n.py:276
 msgid "Zap"
@@ -2256,7 +2240,7 @@ msgstr "gå til avslått"
 
 #: ../plugin/controllers/i18n.py:31
 msgid "hour"
-msgstr ""
+msgstr "time"
 
 #: ../plugin/controllers/i18n.py:348
 msgid "in Description"
@@ -2286,9 +2270,8 @@ msgid "manual/disabled"
 msgstr "manuell/frakoblet"
 
 #: ../plugin/controllers/i18n.py:31
-#, fuzzy
 msgid "minute"
-msgstr "Minutt"
+msgstr "minutt"
 
 #: ../plugin/controllers/i18n.py:173
 msgid "no description available"
@@ -2324,7 +2307,7 @@ msgstr "spill inn"
 
 #: ../plugin/controllers/models/movies.py:294
 msgid "remove"
-msgstr ""
+msgstr "fjern"
 
 #: ../plugin/controllers/i18n.py:203
 msgid "running"
@@ -2409,3 +2392,42 @@ msgstr "gå til"
 #: ../plugin/controllers/i18n.py:277
 msgid "zap before Stream"
 msgstr "zap før stream"
+
+#~ msgid "SleepTimer Error"
+#~ msgstr "Feil ved Tidsinnstilt avslag"
+
+#~ msgid "Show Picons in channel list"
+#~ msgstr "Vis kanallogo i kanalliste"
+
+#~ msgid "Delete Movie"
+#~ msgstr "Slett filmen"
+
+#~ msgid "Really delete the movie"
+#~ msgstr "Skal filmen slettes"
+
+#~ msgid "All Files of this Software are open source software;"
+#~ msgstr "Alle filer fra denne software er åpen kildekode software;"
+
+#~ msgid "you can redistribute it and/or modify it under the"
+#~ msgstr "du kan redistributere dette og/eller modernisere under "
+
+#~ msgid "terms of the GNU General Public License version 2 as"
+#~ msgstr "vilkår av GNU General Public License versjon 2 som"
+
+#~ msgid "published by the Free Software Foundation."
+#~ msgstr "er publisert av Free Software Foundation."
+
+#~ msgid "Afterevent"
+#~ msgstr "Etter aktivitet"
+
+#~ msgid "Delete Channel(s)"
+#~ msgstr "Slett kanal(er)"
+
+#~ msgid "Smart services renaming for XBMC"
+#~ msgstr "Smart sevice navnedring for XBMC"
+
+#~ msgid "VPS Overwrite"
+#~ msgstr "Overskriv VPS"
+
+#~ msgid "SleepTimer feature not available"
+#~ msgstr "Vekkerklokke funksjonen er ikke tilgjengelig"
