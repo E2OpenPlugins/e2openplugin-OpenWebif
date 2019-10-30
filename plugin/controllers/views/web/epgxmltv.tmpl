@@ -12,6 +12,9 @@
 		<title lang="$lang">$str($event.title)</title>
 		<sub-title lang="$lang">$str($event.shortdesc)</sub-title>
 		<desc lang="$lang">$str($event.longdesc)</desc>
+		#if $event.genreid != 0
+		<category lang="$lang" id="$event.genreid">$event.genre</category>
+		#end if
 	</programme>
 	#end for
 </tv>
