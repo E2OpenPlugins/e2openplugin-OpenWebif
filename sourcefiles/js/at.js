@@ -1,9 +1,9 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 2.7
+//* Version 2.8
 //******************************************************************************
-//* Copyright (C) 2014-2018 Joerg Bleyel
-//* Copyright (C) 2014-2018 E2OpenPlugins
+//* Copyright (C) 2014-2019 Joerg Bleyel
+//* Copyright (C) 2014-2019 E2OpenPlugins
 //*
 //* V 1.0 - Initial Version
 //* V 1.1 - Support translation, small ui fixes
@@ -23,6 +23,7 @@
 //* V 2.5 - add test api / fix counter
 //* V 2.6 - add rec+zap timer support
 //* V 2.7 - backup / restore
+//* V 2.8 - fix #960
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -1158,10 +1159,10 @@ function setAutoTimerSettings()
 	reqs += "&notifsimilar=";
 	reqs += $('#ats_notifsimilar').is(':checked') ? "true":"";
 	reqs += "&maxdaysinfuture=" + $('#ats_maxdaysinfuture').val();
-	reqs += $('#ats_add_autotimer_to_tags').is(':checked') ? "true":"";
-	reqs += "&add_autotimer_to_tags=" + $('#ats_add_autotimer_to_tags').val();
-	reqs += $('#ats_add_name_to_tags').is(':checked') ? "true":"";
-	reqs += "&add_name_to_tags=" + $('#ats_add_name_to_tags').val();
+	var v = $('#ats_add_autotimer_to_tags').is(':checked') ? "true":"";
+	reqs += "&add_autotimer_to_tags=" + v;
+	v = $('#ats_add_name_to_tags').is(':checked') ? "true":"";
+	reqs += "&add_name_to_tags=" + v
 	
 	reqs += "&refresh=" + $('#ats_refresh').val();
 	reqs += "&editor=" + $('#ats_editor').val();
