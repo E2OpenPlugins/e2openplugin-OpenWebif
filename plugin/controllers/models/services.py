@@ -509,14 +509,15 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, pic
 			for citem in sfulllist:
 				sref = citem[0].toString()
 				hs = (int(sref.split(":")[1]) & 512)
-				sp = (sref[:7] == '1:832:D')
+				sp = (sref[:7] == '1:832:D') or (sref[:7] == '1:832:1') or (sref[:6] == '1:320:')
 				if not hs or sp:  # 512 is hidden service on sifteam image. Doesn't affect other images
 					oPos = oPos + 1
 					if not sp and citem[0].flags & eServiceReference.isMarker:
 						oPos = oPos - 1
 
 		st = int(sitem[0].split(":")[1])
-		if (sitem[0][:7] == '1:832:D') or (not (st & 512) and not (st & 64)):
+		sp = (sitem[0][:7] == '1:832:D') or (sitem[0][:7] == '1:832:1') or (sitem[0][:6] == '1:320:')
+		if sp or (not (st & 512) and not (st & 64)):
 			pos = pos + 1
 		if not st & 512 or showHidden:
 			if showAll or st == 0:
