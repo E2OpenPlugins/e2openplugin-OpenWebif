@@ -96,7 +96,7 @@ msgstr "Servicenamen zu den Streaminformationen hinzufügen"
 #: ../plugin/controllers/BouquetEditor.py:466
 #, python-format
 msgid "Added %s to alternative service %s."
-msgstr ""
+msgstr "%s zu Alternativen Service %s hinzugefügt."
 
 #: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
 msgid "After Event"
@@ -556,7 +556,7 @@ msgstr "Zeichensatz des EPG"
 
 #: ../plugin/controllers/base.py:321
 msgid "EPGRefresh"
-msgstr ""
+msgstr "EPG Aktualisierungszeitraum"
 
 #: ../plugin/controllers/models/timers.py:714
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
@@ -774,11 +774,11 @@ msgstr "Gateway"
 
 #: ../plugin/controllers/BouquetEditor.py:450
 msgid "Get mutable list for new created alternative failed!"
-msgstr ""
+msgstr "Das Erhalten der Variablen Liste für die neu erstellte Alternative fehlgeschlagen!"
 
 #: ../plugin/controllers/BouquetEditor.py:124
 msgid "Get mutable list for new created bouquet failed!"
-msgstr ""
+msgstr "Das Erhalten der Variablen Liste für das neu erstellte Bouquet fehlgeschlagen!"
 
 #: ../plugin/controllers/i18n.py:141
 msgid "Grab Screenshot"
@@ -1866,7 +1866,7 @@ msgstr "Der Timer '%s' ist aufgezeichnet! Nicht deaktiviert!"
 
 #: ../plugin/controllers/i18n.py:450
 msgid "Theme"
-msgstr "Theme"
+msgstr "Design-Thema"
 
 #: ../plugin/controllers/BouquetEditor.py:318
 msgid "This service can not be added."
