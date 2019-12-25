@@ -1303,16 +1303,16 @@ msgstr "Sendung durch Alternative ersetzen"
 
 #: ../plugin/controllers/i18n.py:470
 msgid "Packages"
-msgstr ""
+msgstr "Pakete"
 
 #: ../plugin/controllers/BouquetEditor.py:528
 #: ../plugin/controllers/BouquetEditor.py:530
 msgid "Parent Control Setup Pin is wrong!"
-msgstr ""
+msgstr "Jugendschutz PIN ist falsch!"
 
 #: ../plugin/controllers/BouquetEditor.py:511
 msgid "Parent Control is not activated."
-msgstr ""
+msgstr "Jugendschutz ist nicht aktiviert."
 
 #: ../plugin/controllers/i18n.py:356
 msgid "Parse"
@@ -2188,7 +2188,7 @@ msgstr "Ja/Nein"
 
 #: ../plugin/controllers/i18n.py:474
 msgid "Yes, delete it"
-msgstr ""
+msgstr "Ja, löschen"
 
 #: ../plugin/controllers/i18n.py:275
 msgid "Yes/No"
