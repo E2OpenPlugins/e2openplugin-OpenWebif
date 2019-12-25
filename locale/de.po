@@ -1736,7 +1736,7 @@ msgstr "Entschuldigung, diese Seite existiert noch nicht"
 
 #: ../plugin/controllers/i18n.py:451
 msgid "Spinner"
-msgstr "Spinner"
+msgstr "'IN-ARBEIT Symbol"
 
 #: ../plugin/controllers/i18n.py:439
 msgid "Sref"
