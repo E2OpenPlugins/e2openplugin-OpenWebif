@@ -556,7 +556,7 @@ msgstr "Zeichensatz des EPG"
 
 #: ../plugin/controllers/base.py:321
 msgid "EPGRefresh"
-msgstr "EPG Aktualisierungszeitraum"
+msgstr "EPG-Refresh"
 
 #: ../plugin/controllers/models/timers.py:714
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
@@ -756,9 +756,8 @@ msgid "Frontprocessor Version"
 msgstr "Frontprozessor-Version"
 
 #: ../plugin/controllers/i18n.py:499
-#, fuzzy
 msgid "Full remote"
-msgstr "Vollständige Fernbedienung ausblenden"
+msgstr "Vollständige Fernbedienung"
 
 #: ../plugin/controllers/models/movies.py:212
 #: ../plugin/controllers/models/info.py:388
