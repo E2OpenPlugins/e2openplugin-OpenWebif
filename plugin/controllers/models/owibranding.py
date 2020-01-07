@@ -379,6 +379,9 @@ def getAllInfo():
 			elif procmodel == "osmio4kplus":
 				model = "OS Mio 4K+"
 				grabpip = 1
+			elif procmodel == "osmini4k":
+				model = "OS Mini 4K"
+				grabpip = 1
 			else:
 				model = procmodel
 		elif procmodel == "h3":
@@ -600,7 +603,7 @@ def getAllInfo():
 		remote = "dmm2"
 	elif procmodel == "wetekplay":
 		remote = procmodel
-	elif procmodel.startswith("osmio"):
+	elif procmodel.startswith("osm") and "4k" in procmodel:
 		remote = "edision4"
 	elif procmodel.startswith("osm"):
 		remote = "osmini"
