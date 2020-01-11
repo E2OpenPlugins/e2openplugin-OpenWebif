@@ -90,6 +90,13 @@ def getTimers(session):
 				always_zap = 1
 			else:
 				always_zap = 0
+		
+		isAutoTimer = -1
+		if hasattr(timer, "isAutoTimer"):
+			if timer.isAutoTimer:
+				isAutoTimer = 1
+			else:
+				isAutoTimer = 0
 
 		timers.append({
 			"serviceref": str(timer.service_ref),
@@ -124,7 +131,8 @@ def getTimers(session):
 			"vpsplugin_enabled": vpsplugin_enabled,
 			"vpsplugin_overwrite": vpsplugin_overwrite,
 			"vpsplugin_time": vpsplugin_time,
-			"always_zap": always_zap
+			"always_zap": always_zap,
+			"isAutoTimer": isAutoTimer
 		})
 
 	return {
