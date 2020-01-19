@@ -15,5 +15,10 @@
 			<e2filesize>$movie.filesize</e2filesize>
 		</e2movie>
 	#end for
+	<e2locations>
+	#for $bookmark in $bookmarks
+	<e2location>$bookmark</e2location>
+	#end for
+	</e2locations>
 </e2movielist>
 #end filter
