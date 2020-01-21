@@ -12,7 +12,7 @@
 import os
 import sys
 import time
-from twisted.web import version
+from twisted import version
 from socket import has_ipv6, AF_INET6, AF_INET, inet_ntop, inet_pton, getaddrinfo
 
 import NavigationInstance
