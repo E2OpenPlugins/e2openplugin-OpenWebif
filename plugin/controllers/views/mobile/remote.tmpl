@@ -1,0 +1,40 @@
+#from Plugins.Extensions.OpenWebif.local import tstrings
+<body>
+	<div data-role="page" id="mainPage">
+		<div id="header">
+			<div class="button" onClick="history.back()">$tstrings['back']</div>
+			<h1><a style="color:#FFF;text-decoration:none;" href='/mobile'>OpenWebif</a></h1>
+		</div>
+		<div id="contentContainer">
+			<ul data-role="listview" data-inset="true" data-theme="d">
+				<li data-role="list-divider" role="heading" data-theme="b">$tstrings['remote']</li>
+				<li><div id="remote_container" style="width:100%; text-align:center"></div></li>
+			</ul>
+		</div>
+
+		<div id="footer">
+			<p>OpenWebif Mobile</p>
+			<a onclick="document.location.href='/index?mode=fullpage';return false;" href="#">$tstrings['show_full_openwebif']</a>
+		</div>
+	<script>
+	var shiftbutton = false;
+	function pressMenuRemote(code) {
+		var url = "/api/remotecontrol?" + ((shiftbutton) ? "type=long&" : "") + "command=" + code;
+		jQuery.ajax({ url: url, cache: false, async: false});
+	}
+	jQuery('#mainPage').on('pageinit', function(event) {
+		jQuery(window).keydown(function(evt) {
+			if (evt.which == 16) {
+				shiftbutton = true;
+			}
+		}).keyup(function(evt) {
+			if (evt.which == 16) {
+				shiftbutton = false;
+			}
+		});
+		jQuery("#remote_container").load("/static/remotes/${remote}.html");
+	});
+	</script>
+	</div>
+</body>
+</html>
