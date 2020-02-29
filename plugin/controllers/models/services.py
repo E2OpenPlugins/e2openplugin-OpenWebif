@@ -923,6 +923,15 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 			else:
 				ret.append(ev)
 
+			psref = parse_servicereference(event[7])
+			ev['service_type'] = SERVICE_TYPE_LOOKUP.get(psref.get('service_type'), "UNKNOWN")
+			nsi = psref.get('ns')
+			ns = NS_LOOKUP.get(nsi, "DVB-S")
+			if ns == "DVB-S":
+				ev['ns'] = getOrb(nsi >> 16 & 0xFFF)
+			else:
+				ev['ns'] = ns
+
 	return {"events": ret, "result": True}
 
 

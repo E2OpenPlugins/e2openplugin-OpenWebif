@@ -77,6 +77,16 @@
 					<div class="col-xs-12 col-md-2" style="margin-bottom:-10px;">
 						<img src="$event.picon" title="" class="img-responsive" style="width:100px;">
 						<label>$event.sname</label>
+						#if $event.has_key('ns')
+							<br />
+							<span>
+							#if '4097:' in $event.sref or '5002:' in $event.sref or 'http%3a' in $event.sref or 'https%3a' in $event.sref
+								IPTV
+							#else
+								$event.service_type / $event.ns
+							#end if
+							</span>
+						#end if
 						</div>
 						<div class="col-xs-12 col-md-6" style="word-break: break-all">
 						<h2><i class="material-icons material-icons-centered">event</i><b>$event.title</b></h2>
