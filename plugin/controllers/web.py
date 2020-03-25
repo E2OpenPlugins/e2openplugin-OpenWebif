@@ -18,7 +18,7 @@ from models.control import zapService, remoteControl, setPowerState, getStandbyS
 from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
 from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer, getPowerTimer, setPowerTimer, getVPSChannels
 from models.message import sendMessage, getMessageAnswer
-from models.movies import getMovieList, removeMovie, getMovieInfo, moveMovie, renameMovie, getAllMovies
+from models.movies import getMovieList, removeMovie, getMovieInfo, moveMovie, renameMovie, getAllMovies, getMovieDetails
 from models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, saveConfig, getConfigs, getConfigsSections, getUtcOffset
 from models.stream import getStream, getTS, getStreamSubservices, GetSession
 from models.servicelist import reloadServicesLists
@@ -901,6 +901,23 @@ class WebController(BaseController):
 			return getMovieInfo(_sref, _addtag, _deltag, _title, _cuts, True)
 		else:
 			return getMovieInfo()
+
+	def P_moviedetails(self, request):
+		"""
+		Request handler for the `movie` endpoint.
+
+		Args:
+			request (twisted.web.server.Request): HTTP request object
+		Returns:
+			HTTP response with headers
+		"""
+		if "sref" in request.args.keys():
+			_sref = request.args["sref"][0]
+			return getMovieDetails(_sref)
+		else:
+			return {
+				"result": False
+			}
 
 	# a duplicate api ??
 	def P_gettags(self, request):

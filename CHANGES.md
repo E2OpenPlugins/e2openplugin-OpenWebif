@@ -1,6 +1,11 @@
-## Version 1.3.8
+## Version 1.3.9
 ## (in development)
+
+## Version 1.3.8
 * BQE: import bouquets via json
+* moviedetails api
+* epgsearch orbital info #994
+* fix #967,#980
 
 ## Version 1.3.7
 * fix channel numbering #939

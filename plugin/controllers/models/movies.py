@@ -555,3 +555,92 @@ def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, New
 		"result": True,
 		"tags": tags
 	}
+
+def getMovieDetails(sRef=None):
+
+	service = ServiceReference(sRef)
+	if service is not None:
+		
+		serviceref = service.ref
+		length_minutes = 0
+		txtdesc = ""
+		fullpath = serviceref.getPath()
+		filename = '/'.join(fullpath.split("/")[1:])
+		name, ext = os.path.splitext(filename)
+	
+		serviceHandler = eServiceCenter.getInstance()
+		info = serviceHandler.info(serviceref)
+	
+		sourceRef = ServiceReference(
+			info.getInfoString(
+				serviceref, iServiceInformation.sServiceref))
+		rtime = info.getInfo(
+			serviceref, iServiceInformation.sTimeCreate)
+	
+		movie = {
+			'filename': filename,
+			'filename_stripped': filename.split("/")[-1],
+			'serviceref': serviceref.toString(),
+			'length': "?:??",
+			'lastseen': 0,
+			'filesize_readable': '',
+			'recordingtime': rtime,
+			'begintime': 'undefined',
+			'eventname': service.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
+			'servicename': sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
+			'tags': info.getInfoString(serviceref, iServiceInformation.sTags),
+			'fullname': serviceref.toString(),
+		}
+	
+		if rtime > 0:
+			fuzzy_rtime = FuzzyTime(rtime)
+			movie['begintime'] = fuzzy_rtime[0] + ", " + fuzzy_rtime[1]
+	
+		try:
+			length_minutes = info.getLength(serviceref)
+		except:  # noqa: E722
+			pass
+	
+		if length_minutes:
+			movie['length'] = "%d:%02d" % (length_minutes / 60, length_minutes % 60)
+			movie['lastseen'] = _moviePlayState(filename + '.cuts', serviceref, length_minutes) or 0
+	
+		txtfile = name + '.txt'
+		if ext.lower() != '.ts' and os.path.isfile(txtfile):
+			with open(txtfile, "rb") as handle:
+				txtdesc = ''.join(handle.readlines())
+	
+		event = info.getEvent(serviceref)
+		extended_description = event and event.getExtendedDescription() or ""
+		if extended_description == '' and txtdesc != '':
+			extended_description = txtdesc
+		movie['descriptionExtended'] = unicode(extended_description, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+	
+		desc = info.getInfoString(serviceref, iServiceInformation.sDescription)
+		movie['description'] = unicode(desc, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+	
+		size = 0
+		sz = ''
+	
+		try:
+			size = os.stat(filename).st_size
+			if size > 1073741824:
+				sz = "%.2f %s" % ((size / 1073741824.), _("GB"))
+			elif size > 1048576:
+				sz = "%.2f %s" % ((size / 1048576.), _("MB"))
+			elif size > 1024:
+				sz = "%.2f %s" % ((size / 1024.), _("kB"))
+		except:  # noqa: E722
+			pass
+	
+		movie['filesize'] = size
+		movie['filesize_readable'] = sz
+	
+		return {
+			"result": False,
+			"movie" : movie
+		}
+	else:
+		return {
+			"result": False,
+		}
