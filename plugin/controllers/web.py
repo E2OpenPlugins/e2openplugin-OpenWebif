@@ -494,6 +494,44 @@ class WebController(BaseController):
 			picon = False
 		return getServices(sRef=sRef, showAll=True, showHidden=hidden, provider=provider, picon=picon)
 
+	def P_servicesxspf(self, request):
+		"""
+		Request handler for the `servicesxspf` endpoint.
+		Retrieve list of bouquets(?) in XSPF format.
+
+		Args:
+			request (twisted.web.server.Request): HTTP request object
+		Returns:
+			HTTP response with headers
+
+		.. http:get:: /web/services.xspf
+
+			:query string bRef: bouquet reference
+		"""
+		if "bRef" in request.args.keys():
+			bRef = request.args["bRef"][0]
+		else:
+			bRef = ""
+
+		request.setHeader('Content-Type', 'application/xspf+xml')
+		if "bName" in request.args.keys():
+			bname = request.args["bName"][0]
+			bname = bname.replace(",","_").replace(";","_")
+			request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (bname, 'xspf'))
+		services = getServices(bRef, False)
+		if comp_config.OpenWebif.auth_for_streaming.value:
+			session = GetSession()
+			if session.GetAuth(request) is not None:
+				auth = ':'.join(session.GetAuth(request)) + "@"
+			else:
+				auth = '-sid:' + str(session.GetSID(request)) + "@"
+		else:
+			auth = ''
+		services["host"] = "%s:8001" % request.getRequestHostname()
+		services["auth"] = auth
+		return services
+
+	
 	def P_servicesm3u(self, request):
 		"""
 		Request handler for the `servicesm3u` endpoint.
