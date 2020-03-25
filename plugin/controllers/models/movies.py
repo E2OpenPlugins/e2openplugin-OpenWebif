@@ -638,7 +638,7 @@ def getMovieDetails(sRef=None):
 		movie['filesize_readable'] = sz
 	
 		return {
-			"result": False,
+			"result": True,
 			"movie" : movie
 		}
 	else:
