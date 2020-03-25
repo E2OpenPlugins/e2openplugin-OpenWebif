@@ -566,6 +566,7 @@ def getMovieDetails(sRef=None):
 		txtdesc = ""
 		fullpath = serviceref.getPath()
 		filename = '/'.join(fullpath.split("/")[1:])
+		filename = '/' + filename
 		name, ext = os.path.splitext(filename)
 	
 		serviceHandler = eServiceCenter.getInstance()
