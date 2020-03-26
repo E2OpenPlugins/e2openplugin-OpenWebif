@@ -2,12 +2,16 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 <script>
 \$(function() { InitAccordeon("#accordion");});
+function pl(bq,bn) {
+var plf = GetLSValue('pl','m3u');
+window.open('web/services.'+ plf +'?bRef=' + bq + '&bName='+ bn,'_blank');
+}
 </script>
 <div id="accordion">
 #for $bouquet in $bouquets
 <h1>
 <div style="display:inline-block">
-<span onclick="window.open('web/services.m3u?bRef=$quote($bouquet[0])&bName=$quote($bouquet[1])','_blank');return false;" style="margin-left:10px;margin-right:10px;" title="$tstrings['download_playlist'] $bouquet[1]" ><i class="fa fa-desktop"></i></span>
+<span onclick="pl('$quote($bouquet[0])','$quote($bouquet[1])');return false;" style="margin-left:10px;margin-right:10px;" title="$tstrings['download_playlist'] $bouquet[1]" ><i class="fa fa-desktop"></i></span>
 <a style="display: inline-block;" href="#" id="ajax/channels?id=$quote($bouquet[0])&stype=$stype">$bouquet[1]</a>
 </div></h1><div>$tstrings["loading"] ...</div>
 #end for

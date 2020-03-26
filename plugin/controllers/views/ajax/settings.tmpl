@@ -96,6 +96,16 @@
 				</fieldset>
 				</span>
 				</td></tr>
+				<tr><td>Playlist Format</td><td>
+				<span class="pl">
+				<fieldset style="border:none;" id="fspl">
+				<label for="m3u">M3U</label>
+				<input type="radio" name="PL" id="m3u">
+				<label for="xspf">XSPF</label>
+				<input type="radio" name="PL" id="xspf">
+				</fieldset>
+				</span>
+				</td></tr>
 				#if $getVar("responsivedesign", "") != ""
 					<tr><td>$tstrings['newdesign']</td><td>
 					#if $responsivedesign
@@ -484,6 +494,14 @@ $(function() {
 	$(".spinner input:radio").change(function() {
 		SetLSValue('spinner',$(this).attr('id'));
 		SetSpinner();
+	});
+
+	$(".pl input[type='radio']").checkboxradio({ icon: false });
+	$(".pl fieldset").controlgroup();
+	var pl = GetLSValue('pl','m3u');
+	$('#'+pl).attr('checked', true).checkboxradio("refresh");
+	$(".pl input:radio").change(function() {
+		SetLSValue('pl',$(this).attr('id'));
 	});
 
 	setHover('#slist li');
