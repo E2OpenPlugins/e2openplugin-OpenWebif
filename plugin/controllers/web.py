@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ##############################################################################
-#                        2011-2017 E2OpenPlugins                             #
+#                        2011-2020 E2OpenPlugins                             #
 #                                                                            #
 #  This file is open source software; you can redistribute it and/or modify  #
 #     it under the terms of the GNU General Public License version 2 as      #
@@ -1104,6 +1104,10 @@ class WebController(BaseController):
 		always_zap = -1
 		if "always_zap" in request.args.keys():
 			always_zap = int(request.args["always_zap"][0])
+			
+		pipzap = -1
+		if "pipzap" in request.args.keys():
+			pipzap = int(request.args["pipzap"][0])
 
 		return addTimer(
 			self.session,
@@ -1121,7 +1125,8 @@ class WebController(BaseController):
 			self.vpsparams(request),
 			None,
 			eit,
-			always_zap
+			always_zap,
+			pipzap
 		)
 
 	def P_timeraddbyeventid(self, request):
@@ -1179,6 +1184,10 @@ class WebController(BaseController):
 		if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["0", "1", "2", "3"]:
 			afterevent = int(request.args["afterevent"][0])
 
+		pipzap = -1
+		if "pipzap" in request.args.keys():
+			pipzap = int(request.args["pipzap"][0])
+
 		return addTimerByEventId(
 			self.session,
 			eventid,
@@ -1188,7 +1197,8 @@ class WebController(BaseController):
 			tags,
 			self.vpsparams(request),
 			always_zap,
-			afterevent
+			afterevent,
+			pipzap
 		)
 
 	def P_timerchange(self, request):
@@ -1274,6 +1284,10 @@ class WebController(BaseController):
 		if "always_zap" in request.args.keys():
 			always_zap = int(request.args["always_zap"][0])
 
+		pipzap = -1
+		if "pipzap" in request.args.keys():
+			pipzap = int(request.args["pipzap"][0])
+
 		return editTimer(
 			self.session,
 			request.args["sRef"][0],
@@ -1291,7 +1305,8 @@ class WebController(BaseController):
 			beginOld,
 			endOld,
 			self.vpsparams(request),
-			always_zap
+			always_zap,
+			pipzap
 		)
 
 	def P_timertogglestatus(self, request):

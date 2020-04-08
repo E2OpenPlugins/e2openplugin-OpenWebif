@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ##############################################################################
-#                        2011 - 2017 E2OpenPlugin                            #
+#                        2011 - 2020 E2OpenPlugin                            #
 #                                                                            #
 #  This file is open source software; you can redistribute it and/or modify  #
 #     it under the terms of the GNU General Public License version 2 as      #
@@ -90,7 +90,14 @@ def getTimers(session):
 				always_zap = 1
 			else:
 				always_zap = 0
-		
+
+		pipzap = -1
+		if hasattr(timer, "pipzap"):
+			if timer.pipzap:
+				pipzap = 1
+			else:
+				pipzap = 0
+
 		isAutoTimer = -1
 		if hasattr(timer, "isAutoTimer"):
 			if timer.isAutoTimer:
@@ -132,6 +139,7 @@ def getTimers(session):
 			"vpsplugin_overwrite": vpsplugin_overwrite,
 			"vpsplugin_time": vpsplugin_time,
 			"always_zap": always_zap,
+			"pipzap": pipzap,
 			"isAutoTimer": isAutoTimer
 		})
 
@@ -141,7 +149,7 @@ def getTimers(session):
 	}
 
 
-def addTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname, tags, repeated, vpsinfo=None, logentries=None, eit=0, always_zap=-1):
+def addTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname, tags, repeated, vpsinfo=None, logentries=None, eit=0, always_zap=-1, pipzap=-1):
 	rt = session.nav.RecordTimer
 
 	if not dirname:
@@ -197,6 +205,10 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 			if hasattr(timer, "always_zap"):
 				timer.always_zap = always_zap == 1
 
+		if pipzap != -1:
+			if hasattr(timer, "pipzap"):
+				timer.pipzap = pipzap == 1
+
 	except Exception, e:
 		print e
 		return {
@@ -210,7 +222,7 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 	}
 
 
-def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vpsinfo, always_zap, afterevent):
+def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vpsinfo, always_zap, afterevent, pipzap):
 	event = eEPGCache.getInstance().lookupEventId(eServiceReference(serviceref), eventid)
 	if event is None:
 		return {
@@ -240,14 +252,15 @@ def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vps
 		vpsinfo,
 		None,
 		eit,
-		always_zap
+		always_zap,
+		pipzap
 	)
 
 
 # NEW editTimer function to prevent delete + add on change
 # !!! This new function must be tested !!!!
 # TODO: exception handling
-def editTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterEvent, dirname, tags, repeated, channelOld, beginOld, endOld, vpsinfo, always_zap):
+def editTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterEvent, dirname, tags, repeated, channelOld, beginOld, endOld, vpsinfo, always_zap, pipzap):
 	channelOld_str = ':'.join(str(channelOld).split(':')[:11])
 	rt = session.nav.RecordTimer
 	for timer in rt.timer_list + rt.processed_timers:
@@ -276,6 +289,10 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 			if always_zap != -1:
 				if hasattr(timer, "always_zap"):
 					timer.always_zap = always_zap == 1
+
+			if pipzap != -1:
+				if hasattr(timer, "pipzap"):
+					timer.pipzap = pipzap == 1
 
 			# TODO: multi tuner test
 			sanity = TimerSanityCheck(rt.timer_list, timer)
