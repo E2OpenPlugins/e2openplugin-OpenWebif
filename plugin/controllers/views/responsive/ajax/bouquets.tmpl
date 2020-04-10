@@ -13,7 +13,7 @@
 	#set $f="id='firstBq'"
 	#for $bouquet in $bouquets
 		<li><a data-toggle="tab" href='#tab' $f onclick="load_subcontent('ajax/channels?id=$quote($bouquet[0])&stype=$stype'); return false;" >
-		<i onclick="window.open('web/services.m3u?bRef=$quote($bouquet[0])','_blank');return false;" class="material-icons material-icons-bouquets">tv</i>$bouquet[1]</a></li>
+		<i onclick="pl('$quote($bouquet[0])','$quote($bouquet[1])');return false;" class="material-icons material-icons-bouquets">tv</i>$bouquet[1]</a></li>
 		#set $f="class='align-middle'"
 	#end for
 	</ul>
@@ -33,6 +33,10 @@ $(function () {
 		load_subcontent($(this).val())
 	});
 });
+function pl(bq,bn) {
+var plf = GetLSValue('pl','m3u');
+window.open('web/services.'+ plf +'?bRef=' + bq + '&bName='+ bn,'_blank');
+}
 #end raw
 
 </script>

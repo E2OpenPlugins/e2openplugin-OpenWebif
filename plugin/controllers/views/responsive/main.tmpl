@@ -631,6 +631,12 @@
 									</div>
 								</li>
 								<li>
+									<span>XSPF Playlist</span>
+									<div class="switch">
+										<label><input type="checkbox" id="plformat"><span class="lever switch-col-$skinColor vtiwebconfig"></span></label>
+									</div>
+								</li>
+								<li>
 									<span>Old Design</span>
 									<div class="switch">
 										<label><input type="checkbox" id="noresposive"><span class="lever switch-col-$skinColor vtiwebconfig"></span></label>
@@ -1021,6 +1027,12 @@
 					window.location.reload(true);
 				}
 			});
+		});
+		var pl = GetLSValue('pl','m3u');
+		\$('#plformat').prop('checked',( pl != 'm3u'));
+		\$("#plformat").change(function() {
+			var val = \$(this).is(":checked") ? 'xspf' : 'm3u'
+			SetLSValue('pl',val);
 		});
 	});
 </script>
