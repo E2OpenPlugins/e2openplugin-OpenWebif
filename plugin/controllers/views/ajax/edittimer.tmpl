@@ -17,7 +17,8 @@
 	<div class="t ui-widget-content">
 		<div>$tstrings['enabled']:<input type="checkbox" name="enabled" id="enabled" value="0" /></div>
 		<div>$tstrings['just_play']:<input type="checkbox" name="justplay" id="justplay" value="0" /><span id="sep1">/</span>
-		$tstrings['record_zap']:<input type="checkbox" name="always_zap" id="always_zap" value="0" /></div>
+		$tstrings['record_zap']:<input type="checkbox" name="always_zap" id="always_zap" value="0" /><br>
+		Use as PiP if possible: <input type="checkbox" name="pipzap" id="pipzap" value="0" /></div>
 	</div>
 
 	<div class="t ui-widget-content">
@@ -197,8 +198,12 @@ $('#editTimerForm').dialog({
 					urldata["always_zap"] = "1";
 					urldata["justplay"] = "0";
 				}
-				else
+				else {
 					urldata["justplay"] = $('#justplay').is(':checked')?"1":"0";
+					if($('#justplay').is(':checked')) {
+						urldata["pipzap"] = $('#pipzap').is(':checked')?"1":"0";
+					}
+				}
 
 				if ($('#dirname').val() != 'None')
 					urldata["dirname"] = $('#dirname').val();
