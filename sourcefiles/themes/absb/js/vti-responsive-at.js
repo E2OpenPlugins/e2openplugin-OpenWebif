@@ -340,6 +340,19 @@ function AutoTimerObj (xml) {
 	if(xml.attr("series_labeling") === "yes") {
 		this.series_labeling = true;
 	}
+	
+	this.autoadjust = false;
+	if(xml.attr("autoadjust") === "1") {
+		this.autoadjust = true;
+	}
+	this.allow_duplicate = true;
+	if(xml.attr("allow_duplicate") === "0") {
+		this.allow_duplicate = false;
+	}
+	this.avoidDuplicateMovies = false;
+	if(xml.attr("avoidDuplicateMovies") === "1") {
+		this.avoidDuplicateMovies = true;
+	}
 }
 
 AutoTimerObj.prototype.UpdateUI = function(){
@@ -348,7 +361,9 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	$('#name').val(this.name);
 	$('#match').val(this.match);
 	$('#searchType').val(this.searchType);
+	$('#searchType').selectpicker('refresh');
 	$('#searchCase').val(this.searchCase);
+	$('#searchCase').selectpicker('refresh');
 	$('#justplay').val(this.justplay);
 	$('#overrideAlternatives').prop('checked', this.overrideAlternatives); 
 	$('#timeSpan').prop('checked',this.timeSpan);
@@ -382,6 +397,7 @@ AutoTimerObj.prototype.UpdateUI = function(){
 		}
 	}
 	$("#avoidDuplicateDescription").val(this.avoidDuplicateDescription);
+	$('#avoidDuplicateDescription').selectpicker('refresh');
 	
 	if(this.location) {
 		$('#location').val(this.location);
@@ -390,6 +406,7 @@ AutoTimerObj.prototype.UpdateUI = function(){
 			$('#location').append(current_location);
 			$('#location').val(this.location);
 		}
+		$('#location').selectpicker('refresh');
 		$('#Location').prop('checked',true);
 	}
 	else
@@ -410,6 +427,7 @@ AutoTimerObj.prototype.UpdateUI = function(){
 			$('#timeSpanAE').prop('checked',true);
 		}
 	}
+	$('#afterevent').selectpicker('refresh');
 	$('#channels').val(null);
 	$('#bouquets').val(null);
 	$.each(this.Bouquets, function(index, value) {
@@ -446,6 +464,9 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	$('#vps').prop('checked',this.vps);
 	$('#vpssm').prop('checked',!this.vpso);
 	$('#series_labeling').prop('checked',this.series_labeling);
+	$('#autoadjust').prop('checked',this.autoadjust);
+	$('#allow_duplicate').prop('checked',this.allow_duplicate);
+	$('#avoidDuplicateMovies').prop('checked', this.avoidDuplicateMovies);
 	checkValues();
 };
 
@@ -532,6 +553,9 @@ function saveAT()
 		CurrentAT.vps = $('#vps').is(':checked');
 		CurrentAT.vpso = !$('#vpssm').is(':checked');
 		CurrentAT.series_labeling = $('#series_labeling').is(':checked');
+		CurrentAT.allow_duplicate = $('#allow_duplicate').is(':checked');
+		CurrentAT.autoadjust = $('#autoadjust').is(':checked');
+		CurrentAT.avoidDuplicateMovies = $('#avoidDuplicateMovies').is(':checked');
 		reqs += "match=" + encodeURIComponent(CurrentAT.match);
 		reqs += "&name=" + encodeURIComponent(CurrentAT.name);
 		reqs += "&enabled=";
@@ -619,6 +643,13 @@ function saveAT()
 			});
 		}
 
+		reqs += "&autoadjust=";
+		reqs += (CurrentAT.autoadjust) ? "1" : "0";
+		reqs += "&allow_duplicate=";
+		reqs += (CurrentAT.allow_duplicate) ? "1" : "0";
+		reqs += "&avoidDuplicateMovies=";
+		reqs += (CurrentAT.avoidDuplicateMovies) ? "1" : "0";
+		
 		if(!CurrentAT.vps)
 			CurrentAT.vpo=false;
 

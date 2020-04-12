@@ -1109,6 +1109,14 @@ class WebController(BaseController):
 		if "pipzap" in request.args.keys():
 			pipzap = int(request.args["pipzap"][0])
 
+		allow_duplicate = True
+		if "allow_duplicate" in request.args.keys():
+			allow_duplicate = request.args["allow_duplicate"][0] == "1"
+
+		autoadjust = config.recording.adjust_time_to_event.value
+		if "autoadjust" in request.args.keys():
+			autoadjust = request.args["autoadjust"][0] == "1"
+
 		return addTimer(
 			self.session,
 			request.args["sRef"][0],
@@ -1126,7 +1134,9 @@ class WebController(BaseController):
 			None,
 			eit,
 			always_zap,
-			pipzap
+			pipzap,
+			allow_duplicate,
+			autoadjust
 		)
 
 	def P_timeraddbyeventid(self, request):
@@ -1188,6 +1198,14 @@ class WebController(BaseController):
 		if "pipzap" in request.args.keys():
 			pipzap = int(request.args["pipzap"][0])
 
+		allow_duplicate = True
+		if "allow_duplicate" in request.args.keys():
+			allow_duplicate = request.args["allow_duplicate"][0] == "1"
+
+		autoadjust = config.recording.adjust_time_to_event.value
+		if "autoadjust" in request.args.keys():
+			autoadjust = request.args["autoadjust"][0] == "1"
+
 		return addTimerByEventId(
 			self.session,
 			eventid,
@@ -1198,7 +1216,9 @@ class WebController(BaseController):
 			self.vpsparams(request),
 			always_zap,
 			afterevent,
-			pipzap
+			pipzap,
+			allow_duplicate,
+			autoadjust
 		)
 
 	def P_timerchange(self, request):
@@ -1288,6 +1308,14 @@ class WebController(BaseController):
 		if "pipzap" in request.args.keys():
 			pipzap = int(request.args["pipzap"][0])
 
+		allow_duplicate = True
+		if "allow_duplicate" in request.args.keys():
+			allow_duplicate = request.args["allow_duplicate"][0] == "1"
+
+		autoadjust = config.recording.adjust_time_to_event.value
+		if "autoadjust" in request.args.keys():
+			autoadjust = request.args["autoadjust"][0] == "1"
+
 		return editTimer(
 			self.session,
 			request.args["sRef"][0],
@@ -1306,7 +1334,9 @@ class WebController(BaseController):
 			endOld,
 			self.vpsparams(request),
 			always_zap,
-			pipzap
+			pipzap,
+			allow_duplicate,
+			autoadjust
 		)
 
 	def P_timertogglestatus(self, request):

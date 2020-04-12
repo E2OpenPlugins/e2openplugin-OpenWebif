@@ -25,7 +25,7 @@ from Components.config import config
 
 from models.services import getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
 from models.info import getInfo
-from models.movies import getMovieList
+from models.movies import getMovieList, getMovieSearchList
 from models.timers import getTimers
 from models.config import getConfigs, getConfigsSections
 from models.stream import GetSession
@@ -199,6 +199,25 @@ class AjaxController(BaseController):
 			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime'])
 		elif sorttype == 'dated':
 			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime'], reverse=True)
+
+		movies['sort'] = sorttype
+		return movies
+
+	def P_moviesearch(self, request):
+		movies = getMovieSearchList(request.args)
+		movies['transcoding'] = TRANSCODING
+
+		sorttype = config.OpenWebif.webcache.moviesort.value
+		unsort = movies['movies']
+
+		if sorttype == 'name':
+			movies['movies'] = sorted(unsort, key=lambda k: k['eventname']) 
+		elif sorttype == 'named':
+			movies['movies'] = sorted(unsort, key=lambda k: k['eventname'],reverse=True) 
+		elif sorttype == 'date':
+			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime']) 
+		elif sorttype == 'dated':
+			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime'],reverse=True) 
 
 		movies['sort'] = sorttype
 		return movies

@@ -637,6 +637,8 @@ function addTimer(evt,chsref,chname,top) {
 	$('#description').val(desc);
 	$('#dirname').val("None");
 	$('#enabled').prop("checked", true);
+	$('#allow_duplicate').prop("checked", true);
+	$('#autoadjust').prop("checked", false);
 	$('#justplay').prop("checked", false);
 	$('#afterevent').val(3);
 
@@ -728,6 +730,8 @@ function editTimer(serviceref, begin, end) {
 								$('#dirname').val(timer.dirname);
 							}
 							$('#enabled').prop("checked", timer.disabled == 0);
+							$('#allow_duplicate').prop("checked", timer.allow_duplicate);
+							$('#autoadjust').prop("checked", timer.autoadjust);
 							$('#justplay').prop("checked", timer.justplay);
 							$('#afterevent').val(timer.afterevent);
 							var flags=timer.repeated;
@@ -1057,6 +1061,8 @@ function btn_saveTimer() {
 					name: $('#timername').val(),
 					description: $('#description').val(),
 					disabled: ($('#enabled').is(':checked')?"0":"1"),
+					allow_duplicate: ($('#allow_duplicate').is(':checked')?"1":"0"),
+					autoadjust: ($('#autoadjust').is(':checked')?"1":"0"),
 					afterevent: $('#afterevent').val(),
 					tags: tags,
 					repeated: repeated };
