@@ -156,9 +156,9 @@ def getTimers(session):
 			"vpsplugin_time": vpsplugin_time,
 			"always_zap": always_zap,
 			"pipzap": pipzap,
-			"isAutoTimer": isAutoTimer
-			"allow_duplicate":allow_duplicate,
-			"autoadjust":autoadjust,
+			"isAutoTimer": isAutoTimer,
+			"allow_duplicate": allow_duplicate,
+			"autoadjust": autoadjust
 		})
 
 	return {
