@@ -503,5 +503,8 @@ tstrings = {
 	'import': _("Import"),
 	
 	'playlistformat':_("Playlist Format"),
-	'pipifposible':_("Use as PiP if possible")
+	'pipifposible':_("Use as PiP if possible"),
+	'allow_duplicate': _("Allow duplicates"),
+	'autoadjust': _("Adjust recording time to real event time")
+
 }

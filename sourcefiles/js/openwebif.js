@@ -1247,6 +1247,16 @@ function editTimer(serviceref, begin, end) {
 								$('#pipzap').prop("disabled",true);
 							}
 
+							if (typeof timer.allow_duplicate !== 'undefined')
+							{
+								$('#allow_duplicate').prop("checked", timer.allow_duplicate==1);
+								autoadjust: ($('#autoadjust').is(':checked')?"1":"0"),
+							}
+							if (typeof timer.autoadjust !== 'undefined')
+							{
+								$('#autoadjust').prop("checked", timer.autoadjust==1);
+							}
+
 							openTimerDlg(tstr_edit_timer + " - " + timer.name);
 							
 							break;
@@ -1326,6 +1336,8 @@ function addTimer(evt,chsref,chname,top,isradio) {
 	$('#dirname').val("None");
 	$('#enabled').prop("checked", true);
 	$('#justplay').prop("checked", false);
+	$('#allow_duplicate').prop("checked", true);
+	$('#autoadjust').prop("checked", false);
 	$('#afterevent').val(3);
 	$('#errorbox').hide();
 
