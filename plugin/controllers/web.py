@@ -1075,17 +1075,24 @@ class WebController(BaseController):
 			description = request.args["description"][0]
 
 		eit = 0
-		if "eventid" in request.args.keys():
-			eventid = request.args["eventid"][0]
+		if mode == 1:
+			try:
+				eventid = int(request.args["eventid"][0])
+			except Exception:  # noqa: E722
+				return {
+					"result": False,
+					"message": "The parameter 'eventid' must be a number"
+				}
 		elif "eit" in request.args.keys() and type(request.args["eit"][0]) is int:
-			eventid = request.args["eit"][0]
+			eit = int(request.args["eit"][0])
 		else:
+			# TODO : move this code to timers.py
 			from enigma import eEPGCache, eServiceReference
 			queryTime = int(request.args["begin"][0]) + (int(request.args["end"][0]) - int(request.args["begin"][0])) / 2
 			event = eEPGCache.getInstance().lookupEventTime(eServiceReference(request.args["sRef"][0]), queryTime)
 			eventid = event and event.getEventId()
-		if eventid is not None:
-			eit = int(eventid)
+			if eventid is not None:
+				eit = int(eventid)
 
 		always_zap = -1
 		if "always_zap" in request.args.keys():
@@ -1226,14 +1233,6 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["sRef", "eventid"])
 		if res:
 			return res
-
-		try:
-			eventid = int(request.args["eventid"][0])
-		except Exception:  # noqa: E722
-			return {
-				"result": False,
-				"message": "The parameter 'eventid' must be a number"
-			}
 
 		return self._AddEditTimer(request, 1)
 
