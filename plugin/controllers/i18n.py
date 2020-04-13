@@ -500,5 +500,8 @@ tstrings = {
 	'showdetails': _("Show details"),
 	'show_details_in_channel_list': _("Show Service type in channel list"),
 	'export': _("Export"),
-	'import': _("Import")
+	'import': _("Import"),
+	
+	'playlistformat':_("Playlist Format"),
+	'pipifposible':"Use as PiP if possible")
 }
