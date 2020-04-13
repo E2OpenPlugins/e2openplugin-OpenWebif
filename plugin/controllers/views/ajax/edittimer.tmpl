@@ -92,6 +92,14 @@
 			<input type="checkbox" name="vpsplugin_safemode" id="vpsplugin_safemode" value="0" />
 		</span>
 	</div>
+
+	<div class="t ui-widget-content">
+		<div>VTi Extras:</div>
+		<div>
+			$tstrings['autoadjust']: <input type="checkbox" id="autoadjust" value="1" />
+			$tstrings['allow_duplicate']: <input type="checkbox" id="allow_duplicate" value="1" />
+		</div>
+	</div>
 	
 	<div class="timerlist_row">
 		<span class="timerlist_row_l">$tstrings['tags']:</span>
@@ -191,6 +199,8 @@ $('#editTimerForm').dialog({
 					description: $('#description').val(),
 					disabled: ($('#enabled').is(':checked')?"0":"1"),
 					afterevent: $('#afterevent').val(),
+					allow_duplicate: ($('#allow_duplicate').is(':checked')?"1":"0"),
+					autoadjust: ($('#autoadjust').is(':checked')?"1":"0"),
 					tags: tags,
 					repeated: repeated };
 				
