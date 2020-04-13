@@ -1114,7 +1114,7 @@ class WebController(BaseController):
 		if mode == 1:
 			return addTimerByEventId(
 				self.session,
-				eit,
+				eventid,
 				request.args["sRef"][0],
 				justplay,
 				dirname,
