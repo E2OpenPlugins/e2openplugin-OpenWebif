@@ -503,5 +503,5 @@ tstrings = {
 	'import': _("Import"),
 	
 	'playlistformat':_("Playlist Format"),
-	'pipifposible':"Use as PiP if possible")
+	'pipifposible':_("Use as PiP if possible")
 }
