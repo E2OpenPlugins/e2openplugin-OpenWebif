@@ -49,6 +49,7 @@
 			<i class="material-icons">close</i>
 		</div>
 	</div>
+	#if $vti == "1"
 	<div class="search-bar search-bar-movie">
 		<div class="search-icon">
 			<div class="start-search">
@@ -63,6 +64,7 @@
 			<i class="material-icons">close</i>
 		</div>
 	</div>
+	#end if
 	<span id="topmenuheader">
 		<nav class="navbar">
 			<div class="container-fluid">
@@ -82,7 +84,9 @@
 						<li class="osd-toggle" id="responsive_vol_value"><a><div class="dropdown-toggle" id="volumevalue"><b><span class="curvolume"></span></b></div></a></li>
 						<!-- Call Search -->
 						<li><a href="javascript:void(0);" class="js-search-epg" data-close="true" title="$tstrings['epgsearch']" ><i class="material-icons">search</i></a></li>
+						#if $vti == "1"
 						<li><a href="javascript:void(0);" class="js-search-movie" data-close="true" title="$tstrings['moviesearch']"><i class="material-icons">youtube_searched_for</i></a></li>
+						#end if
 						<!-- #END# Call Search -->
 						<li class="dropdown" id="responsive_rec_info"></li>
 						<li class="dropdown" id="responsive_stream_info"></li>
