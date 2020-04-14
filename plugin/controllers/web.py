@@ -1106,7 +1106,7 @@ class WebController(BaseController):
 		if "allow_duplicate" in request.args.keys():
 			allow_duplicate = request.args["allow_duplicate"][0] == "1"
 
-		autoadjust = comp_config.recording.adjust_time_to_event.value
+		autoadjust = -1
 		if "autoadjust" in request.args.keys():
 			autoadjust = request.args["autoadjust"][0] == "1"
 		

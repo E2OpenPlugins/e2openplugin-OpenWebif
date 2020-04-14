@@ -61,9 +61,10 @@ def getTimers(session):
 		else:
 			allow_duplicate = 1
 
+		autoadjust = -1
 		if hasattr(timer, "autoadjust"):
 			autoadjust = timer.autoadjust and 1 or 0
-		else:
+		elif hasattr(config.recording, "adjust_time_to_event"):
 			autoadjust = config.recording.adjust_time_to_event.value and 1 or 0
 
 		if timer.dirname:
@@ -326,6 +327,8 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 				timer.allow_duplicate = allow_duplicate
 
 			if hasattr(timer, "autoadjust"):
+				if autoadjust == -1:
+					autoadjust = config.recording.adjust_time_to_event.value and 1 or 0
 				timer.autoadjust = autoadjust
 
 			# TODO: multi tuner test
