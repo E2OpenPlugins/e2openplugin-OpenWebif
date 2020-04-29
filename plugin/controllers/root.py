@@ -32,7 +32,6 @@ from ajax import AjaxController
 from mobile import MobileController
 from ipkg import IpkgController
 from AT import ATController
-from SR import SRController
 from ER import ERController
 from BQE import BQEController
 from transcoding import TranscodingController
@@ -66,7 +65,6 @@ class RootController(BaseController):
 			self.putChild("terminal", proxy.ReverseProxyResource('::1', 4200, '/'))
 		self.putGZChild("ipkg", IpkgController(session))
 		self.putChild("autotimer", ATController(session))
-		self.putChild("serienrecorder", SRController(session))
 		self.putChild("epgrefresh", ERController(session))
 		self.putChild("bouqueteditor", BQEController(session))
 		self.putChild("transcoding", TranscodingController())
