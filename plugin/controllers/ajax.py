@@ -55,7 +55,13 @@ class AjaxController(BaseController):
 		"""
 		ajax requests with no extra data
 		"""
-		return ['powerstate', 'message', 'myepg', 'radio', 'terminal', 'epgr', 'bqe', 'tv', 'edittimer']
+		return ['powerstate', 'message', 'myepg', 'radio', 'terminal', 'epgr', 'bqe', 'tv']
+
+	def P_edittimer(self, request):
+		imagedistro = getInfo()['imagedistro']
+		vti = imagedistro in ("VTi-Team Image") and 1 or 0
+		pipzap = imagedistro in ("openpli", "satdreamgr", "openvision", "openrsi") and 1 or 0
+		return {"vti": vti , "pipzap" : pipzap}
 
 	def P_current(self, request):
 		return getCurrentFullInfo(self.session)

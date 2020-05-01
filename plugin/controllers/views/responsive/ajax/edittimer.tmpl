@@ -6,10 +6,6 @@
 			<input type="checkbox" id="enabled" value="1" />
 			<label for="enabled">$tstrings['enabled']:</label>
 		</div>
-		<div class="col-sm-6">
-			<input type="checkbox" id="allow_duplicate" value="1" />
-			<label for="allow_duplicate">$tstrings['allow_duplicate']:</label>
-		</div>
 	</div>
 	<div class="row clearfix">
 		<div class="col-sm-6">
@@ -20,13 +16,30 @@
 			<input type="checkbox" name="always_zap" id="always_zap" value="0" />
 			<label for="always_zap">$tstrings['record_zap']:</label>
 		</div>
+		#if $pipzap == "1"
+		<div class="col-sm-6">
+			<input type="checkbox" name="pipzap" id="pipzap" value="0" />
+			<label for="pipzap">$tstrings['pipifposible']:</label>
+		</div>
+		#else
+		<input type="checkbox" name="pipzap" id="pipzap" value="0" style="display:none"/>
+		#end if
 	</div>
+	#if $vti == "1"
 	<div class="row clearfix">
-		<div class="col-sm-12">
+		<div class="col-sm-6">
 			<input type="checkbox" id="autoadjust" value="1" />
 			<label for="autoadjust">$tstrings['autoadjust']</label>
 		</div>
+		<div class="col-sm-6">
+			<input type="checkbox" id="allow_duplicate" value="1" />
+			<label for="allow_duplicate">$tstrings['allow_duplicate']:</label>
+		</div>
 	</div>
+	#else
+	<input type="checkbox" id="autoadjust" value="0" style="display:none"/>
+	<input type="checkbox" id="allow_duplicate" value="0" style="display:none"/>
+	#end if
 	<div class="row clearfix">
 		<div class="col-sm-3">
 			<label>$tstrings['name']:</label>

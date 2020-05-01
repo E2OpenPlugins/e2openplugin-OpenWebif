@@ -342,7 +342,7 @@ class BaseController(resource.Resource):
 			# TODO: test if webinterface AND openwebif installed
 			from Plugins.Extensions.WebInterface.WebChilds.Toplevel import loaded_plugins
 			for plugins in loaded_plugins:
-				if plugins[0] in ["fancontrol", "iptvplayer"]:
+				if plugins[0] in ["fancontrol", "iptvplayer", "serienrecorderui"]:
 					try:
 						extras.append({'key': plugins[0], 'description': plugins[2], 'nw': '2'})
 					except KeyError:
@@ -368,6 +368,7 @@ class BaseController(resource.Resource):
 		config.OpenWebif.webcache.moviedb.value = moviedb
 		config.OpenWebif.webcache.moviedb.save()
 		ret['moviedb'] = moviedb
-
+		imagedistro = getInfo()['imagedistro']
+		ret['vti'] = imagedistro in ("VTi-Team Image") and 1 or 0
 		ret['webtv'] = os.path.exists(getPublicPath('webtv'))
 		return ret
