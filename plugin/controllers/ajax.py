@@ -55,7 +55,7 @@ class AjaxController(BaseController):
 		"""
 		ajax requests with no extra data
 		"""
-		return ['powerstate', 'message', 'myepg', 'radio', 'terminal', 'epgr', 'bqe', 'tv']
+		return ['powerstate', 'message', 'myepg', 'radio', 'terminal', 'epgr', 'bqe', 'tv', 'satfinder' ]
 
 	def P_edittimer(self, request):
 		imagedistro = getInfo()['imagedistro']
