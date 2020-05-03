@@ -16,7 +16,7 @@
 			<input type="checkbox" name="always_zap" id="always_zap" value="0" />
 			<label for="always_zap">$tstrings['record_zap']:</label>
 		</div>
-		#if $pipzap == "1"
+		#if $pipzap
 		<div class="col-sm-6">
 			<input type="checkbox" name="pipzap" id="pipzap" value="0" />
 			<label for="pipzap">$tstrings['pipifposible']:</label>
@@ -25,7 +25,7 @@
 		<input type="checkbox" name="pipzap" id="pipzap" value="0" style="display:none"/>
 		#end if
 	</div>
-	#if $vti == "1"
+	#if $autoadjust
 	<div class="row clearfix">
 		<div class="col-sm-6">
 			<input type="checkbox" id="autoadjust" value="1" />

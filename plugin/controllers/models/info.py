@@ -22,7 +22,7 @@ from Components.NimManager import nimmanager
 from Components.Harddisk import harddiskmanager
 from Components.Network import iNetwork
 from ServiceReference import ServiceReference
-from RecordTimer import parseEvent
+from RecordTimer import parseEvent, RecordTimerEntry
 from timer import TimerEntry
 from Screens.InfoBar import InfoBar
 from Tools.Directories import fileExists, pathExists
@@ -593,6 +593,18 @@ def getInfo(session=None, need_fullinfo=False):
 						info['tuners'][nr]['live'] = getOrbitalText(cur_info) + ' / ' + sname
 		except Exception, error:
 			info['EX'] = error
+
+	info['timerpipzap'] = True
+	info['timerautoadjust'] = True
+	
+	try:
+		timer = RecordTimerEntry('',0,0,'','',0)
+		if hasattr(timer, "pipzap"):
+			info['timerpipzap'] = True
+		if hasattr(timer, "autoadjust"):
+			info['timerautoadjust'] = True
+	except Exception, error:
+		print "[OpenWebif] -D- RecordTimerEntry check %s" % error
 
 	STATICBOXINFO = info
 	return info

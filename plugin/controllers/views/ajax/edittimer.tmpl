@@ -18,7 +18,7 @@
 		<div>$tstrings['enabled']:<input type="checkbox" name="enabled" id="enabled" value="0" /></div>
 		<div>$tstrings['just_play']:<input type="checkbox" name="justplay" id="justplay" value="0" /><span id="sep1">/</span>
 		$tstrings['record_zap']:<input type="checkbox" name="always_zap" id="always_zap" value="0" />
-		#if $pipzap == "1"
+		#if $pipzap
 		<br>
 		$tstrings['pipifposible']: <input type="checkbox" name="pipzap" id="pipzap" value="0" />
 		#else
@@ -99,7 +99,7 @@
 		</span>
 	</div>
 
-	#if $vti == "1"
+	#if $autoadjust
 	<div class="t ui-widget-content">
 		<div>VTi Extras:</div>
 		<div>
