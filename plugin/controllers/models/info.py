@@ -594,8 +594,8 @@ def getInfo(session=None, need_fullinfo=False):
 		except Exception, error:
 			info['EX'] = error
 
-	info['timerpipzap'] = True
-	info['timerautoadjust'] = True
+	info['timerpipzap'] = False
+	info['timerautoadjust'] = False
 	
 	try:
 		timer = RecordTimerEntry('',0,0,'','',0)
