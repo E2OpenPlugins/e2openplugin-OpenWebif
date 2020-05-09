@@ -220,6 +220,7 @@ $('#editTimerForm').dialog({
 					urldata["justplay"] = "0";
 				}
 				else {
+					urldata["always_zap"] = "0";
 					urldata["justplay"] = $('#justplay').is(':checked')?"1":"0";
 					if($('#justplay').is(':checked')) {
 						urldata["pipzap"] = $('#pipzap').is(':checked')?"1":"0";
