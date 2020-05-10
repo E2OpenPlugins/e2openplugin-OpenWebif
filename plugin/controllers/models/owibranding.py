@@ -16,6 +16,7 @@ from Tools.Directories import fileExists
 from time import time
 import os
 import hashlib
+import re
 
 try:
 	from Components.About import about
@@ -758,6 +759,9 @@ def getAllInfo():
 				driverdate = os.popen('/usr/bin/opkg -V0 list_installed *kernel-core-default-gos*').readline().split( )[2]  # nosec
 			except:  # nosec # noqa: E722
 				pass
+	re_search = re.search('([0-9]{8})', driverdate)
+	if re_search is not None:
+		driverdate = re_search.group(1)
 
 	info['oever'] = oever
 	info['distro'] = distro
