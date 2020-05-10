@@ -192,6 +192,8 @@ def getAllInfo():
 		procmodel = f.readline().strip()
 		f.close()
 		model = procmodel.title().replace("olose", "olo SE").replace("olo2se", "olo2 SE").replace("2", "²").replace("4Kse", "4K SE")
+		if not procmodel.startswith("vu"):
+			procmodel = "vu%s" % procmodel
 	elif fileExists("/proc/boxtype"):
 		f = open("/proc/boxtype", 'r')
 		procmodel = f.readline().strip().lower()
@@ -537,13 +539,13 @@ def getAllInfo():
 	info['type'] = type
 
 	remote = "dmm1"
-	if procmodel in ("solo", "duo", "uno", "solo2", "solose", "zero", "solo4k", "uno4k", "ultimo4k"):
+	if procmodel in ("vusolo", "vuduo", "vuuno", "vusolo2", "vusolose", "vuzero", "vusolo4k", "vuuno4k", "vuultimo4k"):
 		remote = "vu_normal"
-	elif procmodel == "duo2":
+	elif procmodel == "vuduo2":
 		remote = "vu_duo2"
-	elif procmodel == "ultimo":
+	elif procmodel == "vuultimo":
 		remote = "vu_ultimo"
-	elif procmodel in ("uno4kse", "zero4k", "duo4k"):
+	elif procmodel in ("vuuno4kse", "vuzero4k", "vuduo4k"):
 		remote = "vu_normal_02"
 	elif procmodel == "e3hd":
 		remote = "e3hd"
