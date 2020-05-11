@@ -667,6 +667,8 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 		# When quering EPG we dont need URL, also getPicon doesn't like URL
 		if "://" in ref:
 			_ref = ":".join(ref.split(":")[:10]) + "::" + ref.split(":")[-1]
+		else:
+			_ref = ref
 
 		picon = getPicon(_ref)
 		epgcache = eEPGCache.getInstance()
