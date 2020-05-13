@@ -9,6 +9,7 @@
 					<a href="#" onclick="addTimer('','$channel.ref','$channel.name','')" title="$tstrings['add_timer']"><i class="fa fa-clock-o"></i></a>
 				#end if
 				#if '4097:' in $channel.ref
+					<a href="#" onclick="open_epg_dialog('$channel.ref','$channel.name')" title="$tstrings['show_epg_for'] $channel.name"><i class="fa fa-list-alt"></i></a>
 					#set $rname = ":" + $channel.name
 					#set $lnk = $channel.ref.replace("4097:0:1:0:0:0:0:0:0:0:", "").replace("%3a", ":").replace($rname, "")
 					<a target="_blank" href='$lnk' title="$tstrings['stream'] $channel.name"><i class="fa fa-desktop"></i></a>

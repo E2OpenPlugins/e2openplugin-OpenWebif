@@ -16,6 +16,7 @@ from Tools.Directories import fileExists
 from time import time
 import os
 import hashlib
+import re
 
 try:
 	from Components.About import about
@@ -184,14 +185,16 @@ def getAllInfo():
 			model = procmodel.replace("gbue4k", "UHD UE 4k")
 		elif procmodel == "ue4k":
 			model = procmodel.replace("ue4k", "UHD UE 4k")
-                elif procmodel == "gbtrio4k":
-                        model = procmodel.replace("gbtrio4k", "UHD Trio 4k")
+		elif procmodel == "gbtrio4k":
+			model = procmodel.replace("gbtrio4k", "UHD Trio 4k")
 	elif fileExists("/proc/stb/info/vumodel") and not fileExists("/proc/stb/info/boxtype"):
 		brand = "Vu+"
 		f = open("/proc/stb/info/vumodel", 'r')
 		procmodel = f.readline().strip()
 		f.close()
 		model = procmodel.title().replace("olose", "olo SE").replace("olo2se", "olo2 SE").replace("2", "²").replace("4Kse", "4K SE")
+		if not procmodel.startswith("vu"):
+			procmodel = "vu%s" % procmodel
 	elif fileExists("/proc/boxtype"):
 		f = open("/proc/boxtype", 'r')
 		procmodel = f.readline().strip().lower()
@@ -355,9 +358,9 @@ def getAllInfo():
 		elif procmodel == "vipercombohdd":
 			brand = "Amiko"
 			model = "ViperComboHDD"
-                elif procmodel == "viperslim":
-                        brand = "Amiko"
-                        model = "Viper Slim"
+		elif procmodel == "viperslim":
+			brand = "Amiko"
+			model = "Viper Slim"
 		elif procmodel == "wetekplay":
 			brand = "WeTeK"
 			model = "Play"
@@ -427,7 +430,19 @@ def getAllInfo():
 			grabpip = 1
 		elif procmodel.startswith("sf"):
 			brand = "Octagon"
-			model = procmodel
+			if procmodel.startswith("sf8008"): 
+				sf8008type = open("/proc/stb/info/type").read()
+				if sf8008type.startswith("11"):
+					procmodel = "sf8008t"
+					model = "SF8008 4K Twin"
+				elif sf8008type.startswith("12"):
+					procmodel = "sf8008c"
+					model = "SF8008 4K Combo"
+				else: # sf8008type.startswith("10")
+					procmodel = "sf8008s"
+					model = "SF8008 4K Single"
+			else:
+				model = procmodel.upper()
 		elif procmodel == "e4hd":
 			brand = "Axas"
 			model = "E4HD"
@@ -525,13 +540,13 @@ def getAllInfo():
 	info['type'] = type
 
 	remote = "dmm1"
-	if procmodel in ("solo", "duo", "uno", "solo2", "solose", "zero", "solo4k", "uno4k", "ultimo4k"):
+	if procmodel in ("vusolo", "vuduo", "vuuno", "vusolo2", "vusolose", "vuzero", "vusolo4k", "vuuno4k", "vuultimo4k"):
 		remote = "vu_normal"
-	elif procmodel == "duo2":
+	elif procmodel == "vuduo2":
 		remote = "vu_duo2"
-	elif procmodel == "ultimo":
+	elif procmodel == "vuultimo":
 		remote = "vu_ultimo"
-	elif procmodel in ("uno4kse", "zero4k", "duo4k"):
+	elif procmodel in ("vuuno4kse", "vuzero4k", "vuduo4k"):
 		remote = "vu_normal_02"
 	elif procmodel == "e3hd":
 		remote = "e3hd"
@@ -639,9 +654,9 @@ def getAllInfo():
 		remote = "amiko"
 	elif procmodel in ("vipercombohdd"):
 		remote = "amiko1"
-        elif procmodel == "viperslim":
-                remote = "viperslim"
-        elif procmodel.startswith("sf"):
+	elif procmodel == "viperslim":
+		remote = "viperslim"
+	elif procmodel.startswith("sf"):
 		remote = "octagon"
 	elif procmodel in ("vs1100", "vs1500"):
 		remote = "vs1x00"
@@ -746,6 +761,9 @@ def getAllInfo():
 				driverdate = os.popen('/usr/bin/opkg -V0 list_installed *kernel-core-default-gos*').readline().split( )[2]  # nosec
 			except:  # nosec # noqa: E722
 				pass
+	re_search = re.search('([0-9]{8})', driverdate)
+	if re_search is not None:
+		driverdate = re_search.group(1)
 
 	info['oever'] = oever
 	info['distro'] = distro

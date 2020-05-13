@@ -174,6 +174,9 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 	if not dirname:
 		dirname = preferredTimerPath()
 
+	# IPTV Fix
+	serviceref = serviceref.replace('%253a','%3a')
+
 	try:
 		timer = RecordTimerEntry(
 			ServiceReference(serviceref),

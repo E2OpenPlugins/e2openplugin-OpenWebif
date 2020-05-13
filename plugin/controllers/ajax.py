@@ -58,10 +58,9 @@ class AjaxController(BaseController):
 		return ['powerstate', 'message', 'myepg', 'radio', 'terminal', 'epgr', 'bqe', 'tv', 'satfinder' ]
 
 	def P_edittimer(self, request):
-		imagedistro = getInfo()['imagedistro']
-		vti = imagedistro in ("VTi-Team Image") and 1 or 0
-		pipzap = imagedistro in ("openpli", "satdreamgr", "openvision", "openrsi") and 1 or 0
-		return {"vti": vti , "pipzap" : pipzap}
+		pipzap = getInfo()['timerpipzap']
+		autoadjust = getInfo()['timerautoadjust']
+		return {"autoadjust": autoadjust , "pipzap" : pipzap}
 
 	def P_current(self, request):
 		return getCurrentFullInfo(self.session)
