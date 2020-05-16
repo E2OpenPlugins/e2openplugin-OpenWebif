@@ -209,6 +209,7 @@ def IfUpIfDown(reason, **kwargs):
 def startSession(reason, session):
 	global global_session
 	global_session = session
+	HttpdStart(global_session)
 
 
 def main_menu(menuid, **kwargs):
