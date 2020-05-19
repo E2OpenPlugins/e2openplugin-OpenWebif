@@ -665,7 +665,13 @@ def getAllInfo():
 
 	info['remote'] = remote
 
-	kernel = about.getKernelVersionString()[0]
+	try:
+		kernel = int(about.getKernelVersionString()[0])
+	except NameError: # when "about" is not available
+		try:
+			kernel = int(open("/proc/version","r").read().split(' ', 4)[2].split('.',2)[0])
+		except: # set a default
+			kernel = 2
 
 	distro = "unknown"
 	imagever = "unknown"
