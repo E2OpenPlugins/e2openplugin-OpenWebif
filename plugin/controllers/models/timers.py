@@ -672,7 +672,7 @@ def getPowerTimer(session):
 def setPowerTimer(session, request):
 
 	id = 0
-	if "id" in request.args.keys()
+	if "id" in request.args.keys():
 		id = int(request.args["id"][0])
 	timertype = 0
 	if "timertype" in request.args.keys() and request.args["timertype"][0] in ["0", "1", "2", "3", "4", "5", "6", "7", "8"]:
