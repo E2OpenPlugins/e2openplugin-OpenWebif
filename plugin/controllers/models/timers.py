@@ -606,20 +606,27 @@ def getPowerTimer(session):
 
 	try:
 		from PowerTimer import TIMERTYPE, AFTEREVENT
+		logs = False
+		if "logs" in request.args.keys():
+			logs = True
 
 		timers = []
 		timer_list = session.nav.PowerTimer.timer_list
 		processed_timers = session.nav.PowerTimer.processed_timers
 
+		pos = 0
 		for timer in timer_list + processed_timers:
 			list = []
-			for _time, code, msg in timer.log_entries:
-				list.append({
-					"code": str(code),
-					"time": str(_time),
-					"msg": str(msg)
-				})
+			pos += 1
+			if logs:
+				for _time, code, msg in timer.log_entries:
+					list.append({
+						"code": str(code),
+						"time": str(_time),
+						"msg": str(msg)
+					})
 			timers.append({
+				"id": str(pos),
 				"timertype": str(timer.timerType),
 				"timertypename": str({
 					TIMERTYPE.NONE: "nothing",
@@ -664,6 +671,9 @@ def getPowerTimer(session):
 
 def setPowerTimer(session, request):
 
+	id = 0
+	if "id" in request.args.keys()
+		id = int(request.args["id"][0])
 	timertype = 0
 	if "timertype" in request.args.keys() and request.args["timertype"][0] in ["0", "1", "2", "3", "4", "5", "6", "7", "8"]:
 		timertype = int(request.args["timertype"][0])
@@ -687,36 +697,40 @@ def setPowerTimer(session, request):
 		autosleepinstandbyonly = request.args["autosleepinstandbyonly"][0]
 	autosleepdelay = "0"
 	if "autosleepdelay" in request.args.keys():
-		autosleepdelay = request.args["autosleepdelay"][0]
+		autosleepdelay = int(request.args["autosleepdelay"][0])
 	autosleeprepeat = "once"
 	if "autosleeprepeat" in request.args.keys():
 		autosleeprepeat = request.args["autosleeprepeat"][0]
 
 	# find
 	entry = None
-	timers = []
-	timer_list = session.nav.PowerTimer.timer_list
-	processed_timers = session.nav.PowerTimer.processed_timers
-	for timer in timer_list + processed_timers:
-		if timer.timerType == timertype:
-			if timer.begin == begin:
-				if timer.end == end:
-					entry = timer
+	pos = 0
+	if id > 0:
+		timer_list = session.nav.PowerTimer.timer_list
+		processed_timers = session.nav.PowerTimer.processed_timers
+		for timer in timer_list + processed_timers:
+			pos += 1
+			if pos == 1:
+				entry = timer
 
 	# create new Timer
 	if entry is None:
 		entry = PowerTimerEntry(begin, end, disabled, afterevent, timertype)
-		entry.repeated = int(repeated)
-		entry.autosleepinstandbyonly = autosleepinstandbyonly
-		entry.autosleepdelay = int(autosleepdelay)
-		entry.autosleeprepeat = autosleeprepeat
-		print "[PowerTimer]", str(entry)
+	else:
+		entry.begin = begin
+		entry.end = end
+		entry.timertype = timertype
+		entry.afterevent = afterevent
+		entry.disabled = disabled
+		
+	# TODO: repeated
+	entry.repeated = int(repeated)
+	entry.autosleepinstandbyonly = autosleepinstandbyonly
+	entry.autosleepdelay = autosleepdelay
+	entry.autosleeprepeat = autosleeprepeat
 
-	#change
-	# pos = 0
-	# for timer in timer_list + processed_timers:
-		# pos+=1
-		# if id == str(pos):
+
+	# TODO: Test !!!
 
 	return {
 		"result": True,
