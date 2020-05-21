@@ -733,6 +733,10 @@ def getBouquetEpg(ref, begintime=-1, endtime=None, encode=False):
 	if not services:
 		return {"events": ret, "result": False}
 
+	# prevent crash
+	if endtime and endtime > 100000:
+		endtime = None
+
 	search = ['IBDCTSERNW']
 	for service in services.getContent('S'):
 		if endtime:

@@ -1446,7 +1446,15 @@ class WebController(BaseController):
 				begintime = int(request.args["time"][0])
 			except ValueError:
 				pass
-		return getBouquetEpg(request.args["bRef"][0], begintime, None, self.isJson)
+
+		endtime = None
+		if "endTime" in request.args.keys():
+			try:
+				endtime = int(request.args["endTime"][0])
+			except ValueError:
+				pass
+
+		return getBouquetEpg(request.args["bRef"][0], begintime, endtime, self.isJson)
 
 	def P_epgmulti(self, request):
 		"""
@@ -1472,7 +1480,7 @@ class WebController(BaseController):
 			except ValueError:
 				pass
 
-		endtime = -1
+		endtime = None
 		if "endTime" in request.args.keys():
 			try:
 				endtime = int(request.args["endTime"][0])
