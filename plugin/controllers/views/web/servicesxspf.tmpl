@@ -7,6 +7,7 @@
 	<title>$bname</title>
 	#for $service in $services
 		<track>
+		<title>$service.servicename</title>
 		#set $_sref=":".join($service.servicereference.split(":", 10)[:-1])+":"
 		#try
 			#set $_piconurl=$_url+getPicon($_sref)
