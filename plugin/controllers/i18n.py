@@ -505,6 +505,7 @@ tstrings = {
 	'playlistformat':_("Playlist Format"),
 	'pipifposible':_("Use as PiP if possible"),
 	'allow_duplicate': _("Allow duplicates"),
-	'autoadjust': _("Adjust recording time to real event time")
+	'autoadjust': _("Adjust recording time to real event time"),
 
+	'streamclients': _("Stream Clients")
 }
