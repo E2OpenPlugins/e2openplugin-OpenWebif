@@ -527,7 +527,8 @@ class WebController(BaseController):
 				auth = '-sid:' + str(session.GetSID(request)) + "@"
 		else:
 			auth = ''
-		services["host"] = "%s:8001" % request.getRequestHostname()
+		portNumber = comp_config.OpenWebif.streamport.value
+		services["host"] = "%s:%s" % (request.getRequestHostname(), portNumber)
 		services["auth"] = auth
 		services["bname"] = bname
 		return services
@@ -570,7 +571,8 @@ class WebController(BaseController):
 				auth = '-sid:' + str(session.GetSID(request)) + "@"
 		else:
 			auth = ''
-		services["host"] = "%s:8001" % request.getRequestHostname()
+		portNumber = comp_config.OpenWebif.streamport.value
+		services["host"] = "%s:%s" % (request.getRequestHostname(), portNumber)
 		services["auth"] = auth
 		return services
 
