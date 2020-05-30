@@ -124,6 +124,31 @@
 				<div class="col-xs-12">
 					<div class="card">
 						<div class="header vti-colored-card bg-$skinColor">
+							<h2>$tstrings['streamclients']</h2>
+						</div>
+						<div class="body">
+							#for $stream in $streams
+								<div class="row clearfix">
+									<div class="col-xs-12 col-sm-6">
+										<b>$stream.ip:</b>
+									</div>
+									<div class="col-xs-12 col-sm-6">
+										#if $stream.type == 'T'
+											$stream.name / ($tstrings['transcoded'])
+										#else
+											$stream.name
+										#end if
+									</div>
+								</div>
+							#end for
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-xs-12">
+					<div class="card">
+						<div class="header vti-colored-card bg-$skinColor">
 							<h2>HDD</h2>
 						</div>
 						<div class="body">
