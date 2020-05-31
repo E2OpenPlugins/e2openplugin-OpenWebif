@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-30 20:44+0430\n"
+"POT-Creation-Date: 2020-05-31 19:08+0200\n"
 "PO-Revision-Date: 2017-06-08 10:05+0200\n"
 "Last-Translator: Svevrstt <svevrstt@gmail.com>\n"
 "Language-Team: \n"
@@ -100,6 +100,10 @@ msgstr "Lägg till distributörens namn till strömningsinformationen"
 msgid "Added %s to alternative service %s."
 msgstr "Lade till %s som alternativ distributör %s."
 
+#: ../plugin/controllers/i18n.py:508
+msgid "Adjust recording time to real event time"
+msgstr ""
+
 #: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
 msgid "After Event"
 msgstr "Efter aktiviteten"
@@ -126,6 +130,10 @@ msgstr "Alla alternativa distributörer togs bort."
 
 #: ../plugin/plugin.py:154
 msgid "Allow IPK Upload"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:507
+msgid "Allow duplicates"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:452
@@ -186,7 +194,7 @@ msgstr "Automatiskt"
 msgid "AutoPoll"
 msgstr "Automatiskt bevakning"
 
-#: ../plugin/controllers/base.py:312
+#: ../plugin/controllers/base.py:327
 msgid "AutoTimer"
 msgstr "AutoTimer"
 
@@ -295,7 +303,7 @@ msgstr "Namnet på favoritlistan ändrades."
 msgid "Bouquet-settings were restored successfully"
 msgstr "Favoritlistans inställningar återskapades."
 
-#: ../plugin/controllers/base.py:317
+#: ../plugin/controllers/base.py:332
 msgid "BouquetEditor"
 msgstr "Redigera favoritlistor"
 
@@ -336,7 +344,7 @@ msgstr "Kabel-TV"
 msgid "Calendar Week"
 msgstr ""
 
-#: ../plugin/plugin.py:113 ../plugin/controllers/i18n.py:92
+#: ../plugin/controllers/i18n.py:92 ../plugin/plugin.py:113
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -379,7 +387,7 @@ msgstr "Stäng"
 msgid "Common Settings"
 msgstr "Inställningar"
 
-#: ../plugin/controllers/models/timers.py:179
+#: ../plugin/controllers/models/timers.py:217
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Timerkonflikt(er) upptäckta %s"
@@ -392,12 +400,12 @@ msgstr "Andra som har bidragit"
 msgid "Control"
 msgstr "Kontroll"
 
-#: ../plugin/controllers/models/timers.py:196
+#: ../plugin/controllers/models/timers.py:246
 #, python-format
 msgid "Could not add timer '%s'!"
 msgstr "Kunde inte lägga till timer '%s'!"
 
-#: ../plugin/controllers/models/timers.py:312
+#: ../plugin/controllers/models/timers.py:377
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Kunde inte hitta någon timer '%s' med angiven start-och stopptid"
@@ -410,7 +418,7 @@ msgstr "Pågående"
 msgid "Current Event"
 msgstr "Pågående aktivitet"
 
-#: ../plugin/plugin.py:136 ../plugin/controllers/i18n.py:183
+#: ../plugin/controllers/i18n.py:183 ../plugin/plugin.py:136
 msgid "Custom box name"
 msgstr "Anpassat boxnamn"
 
@@ -464,7 +472,7 @@ msgstr "Ta bort inspelningen"
 msgid "Delete Timer"
 msgstr "Ta bort timern"
 
-#: ../plugin/controllers/models/movies.py:300
+#: ../plugin/controllers/models/movies.py:423
 msgid ""
 "Delete failed, because there is no movie trash !\n"
 "Disable movie trash in configuration to delete this item"
@@ -543,7 +551,7 @@ msgstr "Version av drivrutinerna"
 msgid "Duration"
 msgstr "Varaktighet (i min)"
 
-#: ../plugin/controllers/models/info.py:613
+#: ../plugin/controllers/models/info.py:625
 msgid "E"
 msgstr "Ö"
 
@@ -555,11 +563,11 @@ msgstr "EPG"
 msgid "EPG encoding"
 msgstr "EPG teckenkodning"
 
-#: ../plugin/controllers/base.py:321
+#: ../plugin/controllers/base.py:336
 msgid "EPGRefresh"
 msgstr "EPGRefresh"
 
-#: ../plugin/controllers/models/timers.py:714
+#: ../plugin/controllers/models/timers.py:793
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr "FEL: Kan inte ställa in insomningstimer medan enheten är i viloläge"
 
@@ -648,7 +656,7 @@ msgstr "Sökning i EPG"
 msgid "Error"
 msgstr "Fel"
 
-#: ../plugin/controllers/models/timers.py:840
+#: ../plugin/controllers/models/timers.py:919
 msgid "Error parsing vps.xml"
 msgstr "vps.xml feltolkas"
 
@@ -688,7 +696,7 @@ msgstr "Fel: Favoritlistan %s kunde inte tas bort, OSError."
 msgid "Event not found"
 msgstr "Aktiviteten hittades inte"
 
-#: ../plugin/controllers/models/timers.py:210
+#: ../plugin/controllers/models/timers.py:260
 msgid "EventId not found"
 msgstr "Aktivitetens ID kunde inte hittas"
 
@@ -761,7 +769,9 @@ msgstr "Frontprocessorversion"
 msgid "Full remote"
 msgstr "Dölj stor fjärrkontroll"
 
-#: ../plugin/controllers/models/movies.py:212
+#: ../plugin/controllers/models/movies.py:219
+#: ../plugin/controllers/models/movies.py:343
+#: ../plugin/controllers/models/movies.py:752
 #: ../plugin/controllers/models/info.py:388
 #: ../plugin/controllers/models/info.py:394
 #: ../plugin/controllers/models/info.py:409
@@ -851,7 +861,7 @@ msgstr "Inkludera beskrivningen"
 msgid "Include short description"
 msgstr "Inkludera beskrivningen"
 
-#: ../plugin/controllers/models/timers.py:422
+#: ../plugin/controllers/models/timers.py:487
 msgid "Infinite Instant recording started"
 msgstr "En direktinspelning utan tidsgräns startades"
 
@@ -876,7 +886,7 @@ msgstr "Direktinspelning"
 msgid "Instant Record"
 msgstr "Direktinspelning"
 
-#: ../plugin/controllers/models/timers.py:413
+#: ../plugin/controllers/models/timers.py:478
 msgid "Instant record for current Event started"
 msgstr "En direktinspelning av aktuellt program startades"
 
@@ -925,7 +935,7 @@ msgstr "Kernel"
 msgid "LCD"
 msgstr ""
 
-#: ../plugin/controllers/base.py:290
+#: ../plugin/controllers/base.py:299
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux inställning"
 
@@ -941,7 +951,7 @@ msgstr "Lägg till avsnittsinformation för TV-serier"
 msgid "Link Speed"
 msgstr "Länkhastighet"
 
-#: ../plugin/controllers/models/timers.py:383
+#: ../plugin/controllers/models/timers.py:448
 msgid "List of Timers has been cleaned"
 msgstr "Timerlistan har rensats"
 
@@ -957,7 +967,9 @@ msgstr "Låst"
 msgid "MAC address"
 msgstr "MAC-adress"
 
-#: ../plugin/controllers/models/movies.py:214
+#: ../plugin/controllers/models/movies.py:221
+#: ../plugin/controllers/models/movies.py:345
+#: ../plugin/controllers/models/movies.py:754
 #: ../plugin/controllers/models/info.py:385
 #: ../plugin/controllers/models/info.py:396
 #: ../plugin/controllers/models/info.py:414
@@ -1022,7 +1034,7 @@ msgstr "Minut"
 msgid "Missing mandatory parameter '%s'"
 msgstr "Saknar den obligatoriska parametern '%s'"
 
-#: ../plugin/controllers/models/timers.py:514
+#: ../plugin/controllers/models/timers.py:579
 msgid "Missing requesteter: sRef"
 msgstr "Begäran saknas: sRef"
 
@@ -1076,7 +1088,7 @@ msgstr "Multi-favoritlista är inte aktiverad!"
 msgid "MultiEPG"
 msgstr "MultiEPG"
 
-#: ../plugin/controllers/base.py:308
+#: ../plugin/controllers/base.py:323
 #, fuzzy
 msgid "NCam Webinterface"
 msgstr "Webbgränssnitt för OSCam "
@@ -1147,7 +1159,7 @@ msgstr "Namn saknas för favoritlistan!"
 msgid "No current service given!"
 msgstr "Ingen aktuell distributör angiven!"
 
-#: ../plugin/controllers/models/timers.py:407
+#: ../plugin/controllers/models/timers.py:472
 msgid "No event found! Not recording!"
 msgstr "Ingen aktivitet hittades. Spelar inte in!"
 
@@ -1155,8 +1167,8 @@ msgstr "Ingen aktivitet hittades. Spelar inte in!"
 msgid "No marker-name given!"
 msgstr "Bokmärkesnamnet angavs inte!"
 
-#: ../plugin/controllers/models/timers.py:330
-#: ../plugin/controllers/models/timers.py:375
+#: ../plugin/controllers/models/timers.py:395
+#: ../plugin/controllers/models/timers.py:440
 msgid "No matching Timer found"
 msgstr "Kunde inte hitta någon passande timer"
 
@@ -1224,7 +1236,7 @@ msgstr "November"
 msgid "Now"
 msgstr "Nu"
 
-#: ../plugin/controllers/base.py:306
+#: ../plugin/controllers/base.py:321
 msgid "OSCam Webinterface"
 msgstr "Webbgränssnitt för OSCam "
 
@@ -1282,8 +1294,8 @@ msgstr "OpenWebif är aktiverad"
 msgid "OpenWebif Browser Settings"
 msgstr "OpenWebifs inställningar för webbläsare"
 
-#: ../plugin/plugin.py:163 ../plugin/plugin.py:228 ../plugin/plugin.py:230
-#: ../plugin/plugin.py:232
+#: ../plugin/plugin.py:163 ../plugin/plugin.py:229 ../plugin/plugin.py:231
+#: ../plugin/plugin.py:233
 msgid "OpenWebif Configuration"
 msgstr "Inställningar för OpenWebif"
 
@@ -1355,6 +1367,11 @@ msgstr "Uppspelning"
 msgid "Playlist"
 msgstr "Spellista"
 
+#: ../plugin/controllers/i18n.py:505
+#, fuzzy
+msgid "Playlist Format"
+msgstr "Spellista"
+
 #: ../plugin/controllers/i18n.py:427
 msgid "Please enter filename"
 msgstr "Vänligen ange ett filnamn"
@@ -1368,7 +1385,7 @@ msgstr ""
 msgid "Power Control"
 msgstr "Strömbrytare"
 
-#: ../plugin/controllers/models/timers.py:596
+#: ../plugin/controllers/models/timers.py:668
 msgid "PowerTimer feature not available"
 msgstr "Funktionen för att hantera PowerTimer saknas"
 
@@ -1531,8 +1548,8 @@ msgstr "Satfinder"
 msgid "Saturday"
 msgstr "Lördag"
 
-#: ../plugin/plugin.py:114 ../plugin/controllers/i18n.py:207
-#: ../plugin/controllers/i18n.py:355 ../plugin/controllers/i18n.py:407
+#: ../plugin/controllers/i18n.py:207 ../plugin/controllers/i18n.py:355
+#: ../plugin/controllers/i18n.py:407 ../plugin/plugin.py:114
 msgid "Save"
 msgstr "Spara"
 
@@ -1650,8 +1667,8 @@ msgstr "Tjänster"
 msgid "Set maximum duration"
 msgstr "Ställ in maximal varaktighet (i min)"
 
-#: ../plugin/controllers/base.py:274 ../plugin/controllers/i18n.py:218
-#: ../plugin/controllers/i18n.py:359
+#: ../plugin/controllers/i18n.py:218 ../plugin/controllers/i18n.py:359
+#: ../plugin/controllers/base.py:283
 msgid "Settings"
 msgstr "Inställningar"
 
@@ -1672,7 +1689,7 @@ msgstr "Visa programikon i kanallistan"
 msgid "Show Service type in channel list"
 msgstr "Visa programikon i kanallistan"
 
-#: ../plugin/plugin.py:132 ../plugin/controllers/i18n.py:181
+#: ../plugin/controllers/i18n.py:181 ../plugin/plugin.py:132
 msgid "Show box name in header"
 msgstr "Visa digitalboxens namn i rubriken"
 
@@ -1705,32 +1722,32 @@ msgstr "Simulera"
 msgid "Site and sources"
 msgstr "Webbplats och källor"
 
-#: ../plugin/controllers/models/timers.py:674
-#: ../plugin/controllers/models/timers.py:701
-#: ../plugin/controllers/models/timers.py:730
-#: ../plugin/controllers/models/timers.py:811
+#: ../plugin/controllers/models/timers.py:753
+#: ../plugin/controllers/models/timers.py:780
+#: ../plugin/controllers/models/timers.py:809
+#: ../plugin/controllers/models/timers.py:890
 msgid "SleepTimer error"
 msgstr "Fel på insomningstimern"
 
-#: ../plugin/controllers/models/timers.py:719
-#: ../plugin/controllers/models/timers.py:788
-#: ../plugin/controllers/models/timers.py:806
+#: ../plugin/controllers/models/timers.py:798
+#: ../plugin/controllers/models/timers.py:867
+#: ../plugin/controllers/models/timers.py:885
 msgid "Sleeptimer has been disabled"
 msgstr "Insomningstimer har avaktiverats"
 
-#: ../plugin/controllers/models/timers.py:669
-#: ../plugin/controllers/models/timers.py:695
+#: ../plugin/controllers/models/timers.py:748
+#: ../plugin/controllers/models/timers.py:774
 msgid "Sleeptimer is disabled"
 msgstr "Insomningstimer är avaktiverad"
 
-#: ../plugin/controllers/models/timers.py:669
-#: ../plugin/controllers/models/timers.py:695
+#: ../plugin/controllers/models/timers.py:748
+#: ../plugin/controllers/models/timers.py:774
 msgid "Sleeptimer is enabled"
 msgstr "Insommningstimer är aktiverad"
 
-#: ../plugin/controllers/models/timers.py:725
-#: ../plugin/controllers/models/timers.py:788
-#: ../plugin/controllers/models/timers.py:801
+#: ../plugin/controllers/models/timers.py:804
+#: ../plugin/controllers/models/timers.py:867
+#: ../plugin/controllers/models/timers.py:880
 #, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Insomningstimer är ställd på %d minuter"
@@ -1774,6 +1791,11 @@ msgstr "Starttiden är senare än sluttiden"
 
 #: ../plugin/controllers/i18n.py:233
 msgid "Stream"
+msgstr "Strömma"
+
+#: ../plugin/controllers/i18n.py:510
+#, fuzzy
+msgid "Stream Clients"
 msgstr "Strömma"
 
 #: ../plugin/controllers/i18n.py:42
@@ -1834,7 +1856,7 @@ msgstr "Television"
 msgid "Template Engine"
 msgstr "Webbutvecklingsverktyg"
 
-#: ../plugin/controllers/base.py:339
+#: ../plugin/controllers/base.py:354
 msgid "Terminal"
 msgstr ""
 
@@ -1860,17 +1882,17 @@ msgid "The parameter 'command' must be a number"
 msgstr "Parametern 'command' måste vara numerisk"
 
 # The word "framgångsrikt" to get a string to end the sentence.
-#: ../plugin/controllers/models/timers.py:369
+#: ../plugin/controllers/models/timers.py:434
 #, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "Timern '%s' har %s framgångsrikt"
 
-#: ../plugin/controllers/models/timers.py:325
+#: ../plugin/controllers/models/timers.py:390
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Timern '%s' togs bort"
 
-#: ../plugin/controllers/models/timers.py:361
+#: ../plugin/controllers/models/timers.py:426
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "Timern '%s' har registrerats! Inte avaktiverad!"
@@ -1907,27 +1929,27 @@ msgstr "Timeout"
 msgid "Timer"
 msgstr "Timer"
 
-#: ../plugin/controllers/models/timers.py:201
+#: ../plugin/controllers/models/timers.py:251
 #, python-format
 msgid "Timer '%s' added"
 msgstr "Timer '%s' lades till"
 
-#: ../plugin/controllers/models/timers.py:355
+#: ../plugin/controllers/models/timers.py:420
 #, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Timern '%s' finns redan!"
 
-#: ../plugin/controllers/models/timers.py:287
+#: ../plugin/controllers/models/timers.py:352
 #, python-format
 msgid "Timer '%s' changed"
 msgstr "Timer '%s' ändrades"
 
-#: ../plugin/controllers/models/timers.py:349
+#: ../plugin/controllers/models/timers.py:414
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "Timern '%s' kan inte aktiveras p.g.a. en konflikt"
 
-#: ../plugin/controllers/models/timers.py:306
+#: ../plugin/controllers/models/timers.py:371
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "Timer '%s' sparades inte på grund av en konflikt"
@@ -1940,7 +1962,7 @@ msgstr "Timer tillagd"
 msgid "Timer added"
 msgstr "Timmer lades till"
 
-#: ../plugin/controllers/models/timers.py:441
+#: ../plugin/controllers/models/timers.py:506
 msgid "Timer conflict detected! Not recording!"
 msgstr "En timerkonflikt har upptäckts. Spelar inte in!"
 
@@ -1948,7 +1970,7 @@ msgstr "En timerkonflikt har upptäckts. Spelar inte in!"
 msgid "Timer type"
 msgstr "Timertyp"
 
-#: ../plugin/controllers/models/timers.py:391
+#: ../plugin/controllers/models/timers.py:456
 msgid "TimerList has been saved"
 msgstr "Timerlistan har sparats"
 
@@ -2035,7 +2057,7 @@ msgstr "Typ"
 msgid "Unknown Volume command %s"
 msgstr "Okänd volyminstruktion %s"
 
-#: ../plugin/controllers/models/timers.py:536
+#: ../plugin/controllers/models/timers.py:601
 #, python-format
 msgid "Unknown command: '%s'"
 msgstr "Odefinierad instruktion: '%s'"
@@ -2077,11 +2099,15 @@ msgstr "Fel vid uppladdning av fil"
 msgid "Use a custom location"
 msgstr "Använd en anpassad lagringsplats"
 
-#: ../plugin/plugin.py:134 ../plugin/controllers/i18n.py:182
+#: ../plugin/controllers/i18n.py:506
+msgid "Use as PiP if possible"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:182 ../plugin/plugin.py:134
 msgid "Use custom box name"
 msgstr "Använd anpassat boxnamn"
 
-#: ../plugin/plugin.py:131 ../plugin/controllers/i18n.py:472
+#: ../plugin/controllers/i18n.py:472 ../plugin/plugin.py:131
 msgid "Use new design"
 msgstr ""
 
@@ -2089,7 +2115,7 @@ msgstr ""
 msgid "VPS"
 msgstr "VPS"
 
-#: ../plugin/controllers/models/timers.py:845
+#: ../plugin/controllers/models/timers.py:924
 msgid "VPS plugin not found"
 msgstr "Insticksprogrammet för VPS kunde inte hittas"
 
@@ -2130,7 +2156,7 @@ msgstr "Volymkontroll"
 msgid "Vpid"
 msgstr ""
 
-#: ../plugin/controllers/models/info.py:616
+#: ../plugin/controllers/models/info.py:628
 msgid "W"
 msgstr "V"
 
@@ -2285,7 +2311,9 @@ msgstr "i kortfattade beskrivningen"
 msgid "in Title"
 msgstr "i titeln"
 
-#: ../plugin/controllers/models/movies.py:216
+#: ../plugin/controllers/models/movies.py:223
+#: ../plugin/controllers/models/movies.py:347
+#: ../plugin/controllers/models/movies.py:756
 #: ../plugin/controllers/models/info.py:294
 #: ../plugin/controllers/models/info.py:297
 msgid "kB"
@@ -2340,7 +2368,7 @@ msgstr ""
 msgid "record"
 msgstr "spela in"
 
-#: ../plugin/controllers/models/movies.py:294
+#: ../plugin/controllers/models/movies.py:417
 msgid "remove"
 msgstr ""
 
@@ -2394,7 +2422,7 @@ msgstr "titeln eller kortfattade beskrivningen matchar"
 msgid "transcoded"
 msgstr "omkodad"
 
-#: ../plugin/controllers/web.py:684
+#: ../plugin/controllers/web.py:727
 #, python-format
 msgid "type %s is not a number"
 msgstr "typ %s är inte en siffra"

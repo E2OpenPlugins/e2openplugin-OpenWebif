@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-30 20:44+0430\n"
+"POT-Creation-Date: 2020-05-31 19:08+0200\n"
 "PO-Revision-Date: 2018-03-30 13:04+0200\n"
 "Last-Translator: kvinto <badsystem@ukr.net>\n"
 "Language-Team: \n"
@@ -99,6 +99,10 @@ msgstr "Додати назву сервісу в інформацію пото�
 msgid "Added %s to alternative service %s."
 msgstr "%s додано в альтернативні канали %s."
 
+#: ../plugin/controllers/i18n.py:508
+msgid "Adjust recording time to real event time"
+msgstr ""
+
 #: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
 msgid "After Event"
 msgstr "Після події"
@@ -126,6 +130,10 @@ msgstr "Всі альтернативні сервіси видалено."
 #: ../plugin/plugin.py:154
 msgid "Allow IPK Upload"
 msgstr "Дозволити завантаження IPK"
+
+#: ../plugin/controllers/i18n.py:507
+msgid "Allow duplicates"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:452
 #, python-format
@@ -184,7 +192,7 @@ msgstr "Авто"
 msgid "AutoPoll"
 msgstr "Автоопитування"
 
-#: ../plugin/controllers/base.py:312
+#: ../plugin/controllers/base.py:327
 msgid "AutoTimer"
 msgstr "Автотаймер"
 
@@ -294,7 +302,7 @@ msgstr "Фаворит успішно перейменовано."
 msgid "Bouquet-settings were restored successfully"
 msgstr "Налаштування фаворитів успішно відновлено"
 
-#: ../plugin/controllers/base.py:317
+#: ../plugin/controllers/base.py:332
 msgid "BouquetEditor"
 msgstr "Редактор Фаворитів"
 
@@ -335,7 +343,7 @@ msgstr "Кабельний"
 msgid "Calendar Week"
 msgstr "Календарний тиждень"
 
-#: ../plugin/plugin.py:113 ../plugin/controllers/i18n.py:92
+#: ../plugin/controllers/i18n.py:92 ../plugin/plugin.py:113
 msgid "Cancel"
 msgstr "Скасування"
 
@@ -377,7 +385,7 @@ msgstr "Закрити"
 msgid "Common Settings"
 msgstr "Загальні налаштування"
 
-#: ../plugin/controllers/models/timers.py:179
+#: ../plugin/controllers/models/timers.py:217
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Виявлено конфлікт таймера(ів)! %s"
@@ -390,12 +398,12 @@ msgstr "Приймали участь"
 msgid "Control"
 msgstr "Управління"
 
-#: ../plugin/controllers/models/timers.py:196
+#: ../plugin/controllers/models/timers.py:246
 #, python-format
 msgid "Could not add timer '%s'!"
 msgstr "Не вдалося додати таймер '%s'!"
 
-#: ../plugin/controllers/models/timers.py:312
+#: ../plugin/controllers/models/timers.py:377
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Не вдалося знайти таймер '%s' з вказаним часом початку та закінчення!"
@@ -408,7 +416,7 @@ msgstr "Поточний"
 msgid "Current Event"
 msgstr "Поточна подія"
 
-#: ../plugin/plugin.py:136 ../plugin/controllers/i18n.py:183
+#: ../plugin/controllers/i18n.py:183 ../plugin/plugin.py:136
 msgid "Custom box name"
 msgstr "Альтернативне ім'я ресивера"
 
@@ -462,7 +470,7 @@ msgstr "Видалити запис"
 msgid "Delete Timer"
 msgstr "Видалити таймер"
 
-#: ../plugin/controllers/models/movies.py:300
+#: ../plugin/controllers/models/movies.py:423
 msgid ""
 "Delete failed, because there is no movie trash !\n"
 "Disable movie trash in configuration to delete this item"
@@ -542,7 +550,7 @@ msgstr "Драйвери"
 msgid "Duration"
 msgstr "Тривалість"
 
-#: ../plugin/controllers/models/info.py:613
+#: ../plugin/controllers/models/info.py:625
 msgid "E"
 msgstr "E"
 
@@ -554,11 +562,11 @@ msgstr "EPG"
 msgid "EPG encoding"
 msgstr "Декодування EPG"
 
-#: ../plugin/controllers/base.py:321
+#: ../plugin/controllers/base.py:336
 msgid "EPGRefresh"
 msgstr "Оновлення EPG"
 
-#: ../plugin/controllers/models/timers.py:714
+#: ../plugin/controllers/models/timers.py:793
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr "ПОМИЛКА: Не вдається встановити таймер сну поки пристрій в режимі очікування"
 
@@ -647,7 +655,7 @@ msgstr "Пошук EPG"
 msgid "Error"
 msgstr "Помилка"
 
-#: ../plugin/controllers/models/timers.py:840
+#: ../plugin/controllers/models/timers.py:919
 msgid "Error parsing vps.xml"
 msgstr "Помилка зчитування vps.xml"
 
@@ -687,7 +695,7 @@ msgstr "Помилка: Букет %s не може бути видалений,
 msgid "Event not found"
 msgstr "Подію не знайдено"
 
-#: ../plugin/controllers/models/timers.py:210
+#: ../plugin/controllers/models/timers.py:260
 msgid "EventId not found"
 msgstr "Id події не знайден"
 
@@ -759,7 +767,9 @@ msgstr "Версія фронтпроцесора"
 msgid "Full remote"
 msgstr "Повний пульт"
 
-#: ../plugin/controllers/models/movies.py:212
+#: ../plugin/controllers/models/movies.py:219
+#: ../plugin/controllers/models/movies.py:343
+#: ../plugin/controllers/models/movies.py:752
 #: ../plugin/controllers/models/info.py:388
 #: ../plugin/controllers/models/info.py:394
 #: ../plugin/controllers/models/info.py:409
@@ -847,7 +857,7 @@ msgstr "Включити розширений опис"
 msgid "Include short description"
 msgstr "Включити короткий опис"
 
-#: ../plugin/controllers/models/timers.py:422
+#: ../plugin/controllers/models/timers.py:487
 msgid "Infinite Instant recording started"
 msgstr "Запис без певного часу закінчення розпочато"
 
@@ -871,7 +881,7 @@ msgstr "Встановлено"
 msgid "Instant Record"
 msgstr "Негайний запис"
 
-#: ../plugin/controllers/models/timers.py:413
+#: ../plugin/controllers/models/timers.py:478
 msgid "Instant record for current Event started"
 msgstr "Миттєвий запис для поточної події розпочато"
 
@@ -920,7 +930,7 @@ msgstr "Ядро"
 msgid "LCD"
 msgstr ""
 
-#: ../plugin/controllers/base.py:290
+#: ../plugin/controllers/base.py:299
 msgid "LCD4Linux Setup"
 msgstr "Налаштування LCD4Linux"
 
@@ -936,7 +946,7 @@ msgstr "Відзначити групу"
 msgid "Link Speed"
 msgstr "Швидкість з'єднання"
 
-#: ../plugin/controllers/models/timers.py:383
+#: ../plugin/controllers/models/timers.py:448
 msgid "List of Timers has been cleaned"
 msgstr "Список таймерів очищенно"
 
@@ -952,7 +962,9 @@ msgstr "Заблоковано"
 msgid "MAC address"
 msgstr "MAC адреса"
 
-#: ../plugin/controllers/models/movies.py:214
+#: ../plugin/controllers/models/movies.py:221
+#: ../plugin/controllers/models/movies.py:345
+#: ../plugin/controllers/models/movies.py:754
 #: ../plugin/controllers/models/info.py:385
 #: ../plugin/controllers/models/info.py:396
 #: ../plugin/controllers/models/info.py:414
@@ -1016,7 +1028,7 @@ msgstr "Хвилина"
 msgid "Missing mandatory parameter '%s'"
 msgstr "Відсутній обов'язковий параметр '%s'"
 
-#: ../plugin/controllers/models/timers.py:514
+#: ../plugin/controllers/models/timers.py:579
 msgid "Missing requesteter: sRef"
 msgstr "Відсутній параметр регістра: sRef"
 
@@ -1069,7 +1081,7 @@ msgstr "Мульти-фаворит не ввімкнено!"
 msgid "MultiEPG"
 msgstr "Мульти EPG"
 
-#: ../plugin/controllers/base.py:308
+#: ../plugin/controllers/base.py:323
 #, fuzzy
 msgid "NCam Webinterface"
 msgstr "Веб-інтерфейс OSCam"
@@ -1140,7 +1152,7 @@ msgstr "Не задана назва фавориту!"
 msgid "No current service given!"
 msgstr "Не задано поточний канал!"
 
-#: ../plugin/controllers/models/timers.py:407
+#: ../plugin/controllers/models/timers.py:472
 msgid "No event found! Not recording!"
 msgstr "Подію не знайдено! Запис зупинено!"
 
@@ -1148,8 +1160,8 @@ msgstr "Подію не знайдено! Запис зупинено!"
 msgid "No marker-name given!"
 msgstr "Не задано ім'я маркера!"
 
-#: ../plugin/controllers/models/timers.py:330
-#: ../plugin/controllers/models/timers.py:375
+#: ../plugin/controllers/models/timers.py:395
+#: ../plugin/controllers/models/timers.py:440
 msgid "No matching Timer found"
 msgstr "Не знайден відповідний таймер"
 
@@ -1216,7 +1228,7 @@ msgstr "Листопад"
 msgid "Now"
 msgstr "Зараз"
 
-#: ../plugin/controllers/base.py:306
+#: ../plugin/controllers/base.py:321
 msgid "OSCam Webinterface"
 msgstr "Веб-інтерфейс OSCam"
 
@@ -1272,8 +1284,8 @@ msgstr "Веб-інтерфейс ввімкнено"
 msgid "OpenWebif Browser Settings"
 msgstr "Налаштування браузера веб-інтерфейса"
 
-#: ../plugin/plugin.py:163 ../plugin/plugin.py:228 ../plugin/plugin.py:230
-#: ../plugin/plugin.py:232
+#: ../plugin/plugin.py:163 ../plugin/plugin.py:229 ../plugin/plugin.py:231
+#: ../plugin/plugin.py:233
 msgid "OpenWebif Configuration"
 msgstr "Налаштування OpenWebif"
 
@@ -1343,6 +1355,11 @@ msgstr "Відтворити"
 msgid "Playlist"
 msgstr "Плейлист"
 
+#: ../plugin/controllers/i18n.py:505
+#, fuzzy
+msgid "Playlist Format"
+msgstr "Плейлист"
+
 #: ../plugin/controllers/i18n.py:427
 msgid "Please enter filename"
 msgstr "Будь ласка, введіть назву файлу"
@@ -1355,7 +1372,7 @@ msgstr ""
 msgid "Power Control"
 msgstr "Керування живленням"
 
-#: ../plugin/controllers/models/timers.py:596
+#: ../plugin/controllers/models/timers.py:668
 msgid "PowerTimer feature not available"
 msgstr "Функції тамера живлення не доступні"
 
@@ -1517,8 +1534,8 @@ msgstr "Пошук супутника"
 msgid "Saturday"
 msgstr "Субота"
 
-#: ../plugin/plugin.py:114 ../plugin/controllers/i18n.py:207
-#: ../plugin/controllers/i18n.py:355 ../plugin/controllers/i18n.py:407
+#: ../plugin/controllers/i18n.py:207 ../plugin/controllers/i18n.py:355
+#: ../plugin/controllers/i18n.py:407 ../plugin/plugin.py:114
 msgid "Save"
 msgstr "Зберегти"
 
@@ -1634,8 +1651,8 @@ msgstr "Канали"
 msgid "Set maximum duration"
 msgstr "Встановіть максимальну тривалість"
 
-#: ../plugin/controllers/base.py:274 ../plugin/controllers/i18n.py:218
-#: ../plugin/controllers/i18n.py:359
+#: ../plugin/controllers/i18n.py:218 ../plugin/controllers/i18n.py:359
+#: ../plugin/controllers/base.py:283
 msgid "Settings"
 msgstr "Налаштування"
 
@@ -1655,7 +1672,7 @@ msgstr "Показати пікони в списку каналів"
 msgid "Show Service type in channel list"
 msgstr "Показати тип каналу в списку каналів"
 
-#: ../plugin/plugin.py:132 ../plugin/controllers/i18n.py:181
+#: ../plugin/controllers/i18n.py:181 ../plugin/plugin.py:132
 msgid "Show box name in header"
 msgstr "Показувати назву ресивера в заголовку"
 
@@ -1687,32 +1704,32 @@ msgstr "Імітувати"
 msgid "Site and sources"
 msgstr "Сайт та вихідний код"
 
-#: ../plugin/controllers/models/timers.py:674
-#: ../plugin/controllers/models/timers.py:701
-#: ../plugin/controllers/models/timers.py:730
-#: ../plugin/controllers/models/timers.py:811
+#: ../plugin/controllers/models/timers.py:753
+#: ../plugin/controllers/models/timers.py:780
+#: ../plugin/controllers/models/timers.py:809
+#: ../plugin/controllers/models/timers.py:890
 msgid "SleepTimer error"
 msgstr "Помилки таймера сну"
 
-#: ../plugin/controllers/models/timers.py:719
-#: ../plugin/controllers/models/timers.py:788
-#: ../plugin/controllers/models/timers.py:806
+#: ../plugin/controllers/models/timers.py:798
+#: ../plugin/controllers/models/timers.py:867
+#: ../plugin/controllers/models/timers.py:885
 msgid "Sleeptimer has been disabled"
 msgstr "Таймер сну відключено"
 
-#: ../plugin/controllers/models/timers.py:669
-#: ../plugin/controllers/models/timers.py:695
+#: ../plugin/controllers/models/timers.py:748
+#: ../plugin/controllers/models/timers.py:774
 msgid "Sleeptimer is disabled"
 msgstr "Таймер сну відключений"
 
-#: ../plugin/controllers/models/timers.py:669
-#: ../plugin/controllers/models/timers.py:695
+#: ../plugin/controllers/models/timers.py:748
+#: ../plugin/controllers/models/timers.py:774
 msgid "Sleeptimer is enabled"
 msgstr "Таймер сну включений"
 
-#: ../plugin/controllers/models/timers.py:725
-#: ../plugin/controllers/models/timers.py:788
-#: ../plugin/controllers/models/timers.py:801
+#: ../plugin/controllers/models/timers.py:804
+#: ../plugin/controllers/models/timers.py:867
+#: ../plugin/controllers/models/timers.py:880
 #, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Таймер сну встановлений на %d хвилин"
@@ -1755,6 +1772,11 @@ msgstr "Час початку після часу закінчення"
 
 #: ../plugin/controllers/i18n.py:233
 msgid "Stream"
+msgstr "Стрім"
+
+#: ../plugin/controllers/i18n.py:510
+#, fuzzy
+msgid "Stream Clients"
 msgstr "Стрім"
 
 #: ../plugin/controllers/i18n.py:42
@@ -1815,7 +1837,7 @@ msgstr "ТВ канали"
 msgid "Template Engine"
 msgstr "Шаблон"
 
-#: ../plugin/controllers/base.py:339
+#: ../plugin/controllers/base.py:354
 msgid "Terminal"
 msgstr "Термінал"
 
@@ -1840,17 +1862,17 @@ msgstr "Параметр '%s' не може бути порожнім"
 msgid "The parameter 'command' must be a number"
 msgstr "Параметр 'command' повинен бути чисельним"
 
-#: ../plugin/controllers/models/timers.py:369
+#: ../plugin/controllers/models/timers.py:434
 #, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "Таймер '%s' був %s успішно виконаний"
 
-#: ../plugin/controllers/models/timers.py:325
+#: ../plugin/controllers/models/timers.py:390
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Не вдалося знайти таймер '%s' з заданим часом початку та закінчення!"
 
-#: ../plugin/controllers/models/timers.py:361
+#: ../plugin/controllers/models/timers.py:426
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "Таймер '%s' зараз записується! ННе вимкнено!"
@@ -1887,27 +1909,27 @@ msgstr "Тайм-аут"
 msgid "Timer"
 msgstr "Таймер"
 
-#: ../plugin/controllers/models/timers.py:201
+#: ../plugin/controllers/models/timers.py:251
 #, python-format
 msgid "Timer '%s' added"
 msgstr "Таймер '%s' доданий"
 
-#: ../plugin/controllers/models/timers.py:355
+#: ../plugin/controllers/models/timers.py:420
 #, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Таймер '%s' вже існує!"
 
-#: ../plugin/controllers/models/timers.py:287
+#: ../plugin/controllers/models/timers.py:352
 #, python-format
 msgid "Timer '%s' changed"
 msgstr "Таймер '%s' змінено"
 
-#: ../plugin/controllers/models/timers.py:349
+#: ../plugin/controllers/models/timers.py:414
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "Таймер '%s' не ввімкнено через конфлікт"
 
-#: ../plugin/controllers/models/timers.py:306
+#: ../plugin/controllers/models/timers.py:371
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "Таймер '%s' не збережено через конфлікт"
@@ -1920,7 +1942,7 @@ msgstr "Таймер додано"
 msgid "Timer added"
 msgstr "Таймер додано"
 
-#: ../plugin/controllers/models/timers.py:441
+#: ../plugin/controllers/models/timers.py:506
 msgid "Timer conflict detected! Not recording!"
 msgstr "Виявлено конфлікт таймеру! Запис зупинено!"
 
@@ -1928,7 +1950,7 @@ msgstr "Виявлено конфлікт таймеру! Запис зупин�
 msgid "Timer type"
 msgstr "Тип таймеру"
 
-#: ../plugin/controllers/models/timers.py:391
+#: ../plugin/controllers/models/timers.py:456
 msgid "TimerList has been saved"
 msgstr "Список таймерів збережено"
 
@@ -2013,7 +2035,7 @@ msgstr "Тип"
 msgid "Unknown Volume command %s"
 msgstr "Невідома команда гучності %s"
 
-#: ../plugin/controllers/models/timers.py:536
+#: ../plugin/controllers/models/timers.py:601
 #, python-format
 msgid "Unknown command: '%s'"
 msgstr "Невідома команда: '%s'"
@@ -2054,11 +2076,15 @@ msgstr "Завантажені файли"
 msgid "Use a custom location"
 msgstr "Використовуйте інше розташування"
 
-#: ../plugin/plugin.py:134 ../plugin/controllers/i18n.py:182
+#: ../plugin/controllers/i18n.py:506
+msgid "Use as PiP if possible"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:182 ../plugin/plugin.py:134
 msgid "Use custom box name"
 msgstr "Використовувати альтернативне ім'я ресивера"
 
-#: ../plugin/plugin.py:131 ../plugin/controllers/i18n.py:472
+#: ../plugin/controllers/i18n.py:472 ../plugin/plugin.py:131
 msgid "Use new design"
 msgstr "Використовуйте новий дизайн"
 
@@ -2066,7 +2092,7 @@ msgstr "Використовуйте новий дизайн"
 msgid "VPS"
 msgstr "VPS"
 
-#: ../plugin/controllers/models/timers.py:845
+#: ../plugin/controllers/models/timers.py:924
 msgid "VPS plugin not found"
 msgstr "VPS плагін не знайдено"
 
@@ -2106,7 +2132,7 @@ msgstr "Контроль гучності"
 msgid "Vpid"
 msgstr ""
 
-#: ../plugin/controllers/models/info.py:616
+#: ../plugin/controllers/models/info.py:628
 msgid "W"
 msgstr "W"
 
@@ -2259,7 +2285,9 @@ msgstr "в короткому описі"
 msgid "in Title"
 msgstr "в заголовку"
 
-#: ../plugin/controllers/models/movies.py:216
+#: ../plugin/controllers/models/movies.py:223
+#: ../plugin/controllers/models/movies.py:347
+#: ../plugin/controllers/models/movies.py:756
 #: ../plugin/controllers/models/info.py:294
 #: ../plugin/controllers/models/info.py:297
 msgid "kB"
@@ -2310,7 +2338,7 @@ msgstr ""
 msgid "record"
 msgstr "запис"
 
-#: ../plugin/controllers/models/movies.py:294
+#: ../plugin/controllers/models/movies.py:417
 msgid "remove"
 msgstr "видалити"
 
@@ -2364,7 +2392,7 @@ msgstr "збіг назви або короткого опису"
 msgid "transcoded"
 msgstr "транскодування"
 
-#: ../plugin/controllers/web.py:684
+#: ../plugin/controllers/web.py:727
 #, python-format
 msgid "type %s is not a number"
 msgstr "тип %s не чисельний"

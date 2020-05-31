@@ -3,16 +3,39 @@
 #  
 # Pre-requisite:
 # The following tools must be installed on your system and accessible from path
-# gawk, find, xgettext, gsed, python, msguniq, msgmerge, msgattrib, msgfmt, msginit
+# gawk, find, xgettext, (g)sed, python, msguniq, msgmerge, msgattrib, msgfmt, msginit
 #
 # Run this script from within the locale folder.
 #
 # Author: Pr2
-# Version: 1.0
+# Version: 1.1
 #
+#
+# On Mac OSX find option are specific
+#
+findoptions=""
+if [[ "$OSTYPE" == "darwin"* ]]
+	then
+		# Mac OSX
+		printf "Script running on Mac OSX [%s]\n" "$OSTYPE"
+    	findoptions="-s -X"
+fi
+#
+# sed detection
+#
+localgsed="sed"
+gsed --version 2> /dev/null | grep -q "GNU"
+if [ $? -eq 0 ]; then
+        localgsed="gsed"
+else
+        "$localgsed" --version | grep -q "GNU"
+        if [ $? -eq 0 ]; then
+                printf "GNU sed found: [%s]\n" $localgsed
+        fi
+fi
 Plugin=OpenWebif
 printf "Po files update/creation from script starting.\n"
-languages=($(ls *.po | tr "\n" " " | gsed 's/.po//g'))
+languages=($(ls *.po | tr "\n" " " | $localgsed 's/.po//g'))
 
 #
 # Arguments to generate the pot and po files are not retrieved from the Makefile.
@@ -20,10 +43,10 @@ languages=($(ls *.po | tr "\n" " " | gsed 's/.po//g'))
 #
 
 printf "Creating temporary file $Plugin-py.pot\n"
-find -s -X .. -name "*.py" -exec xgettext --no-wrap -L Python --from-code=UTF-8 -kpgettext:1c,2 --add-comments="TRANSLATORS:" -d $Plugin -s -o $Plugin-py.pot {} \+
-gsed --in-place $Plugin-py.pot --expression=s/CHARSET/UTF-8/
+find $findoptions .. -name "*.py" -exec xgettext --no-wrap -L Python --from-code=UTF-8 -kpgettext:1c,2 --add-comments="TRANSLATORS:" -d $Plugin -s -o $Plugin-py.pot {} \+
+$localgsed --in-place $Plugin-py.pot --expression=s/CHARSET/UTF-8/
 printf "Creating temporary file $Plugin-xml.pot\n"
-find -s -X .. -name "*.xml" -exec python xml2po.py {} \+ > $Plugin-xml.pot
+find $findoptions .. -name "*.xml" -exec python xml2po.py {} \+ > $Plugin-xml.pot
 printf "Merging pot files to create: $Plugin.pot\n"
 cat $Plugin-py.pot $Plugin-xml.pot | msguniq --no-wrap -o $Plugin.pot -
 OLDIFS=$IFS

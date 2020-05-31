@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-30 20:44+0430\n"
+"POT-Creation-Date: 2020-05-31 19:08+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: andy1 <dummy@dummy.com>\n"
 "Language-Team: GeirJ\n"
@@ -100,6 +100,10 @@ msgstr "Legg til leverandørnavn i stream informasjon"
 msgid "Added %s to alternative service %s."
 msgstr "Lagt til %s til alternativ kanal %s."
 
+#: ../plugin/controllers/i18n.py:508
+msgid "Adjust recording time to real event time"
+msgstr ""
+
 #: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
 msgid "After Event"
 msgstr "Etter hendelse"
@@ -127,6 +131,10 @@ msgstr "Alle alternative kanaler er slettet."
 #: ../plugin/plugin.py:154
 msgid "Allow IPK Upload"
 msgstr "Tillat last opp IPK"
+
+#: ../plugin/controllers/i18n.py:507
+msgid "Allow duplicates"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:452
 #, python-format
@@ -185,7 +193,7 @@ msgstr "Auto"
 msgid "AutoPoll"
 msgstr "Auto overvåk"
 
-#: ../plugin/controllers/base.py:312
+#: ../plugin/controllers/base.py:327
 msgid "AutoTimer"
 msgstr "Auto timer"
 
@@ -294,7 +302,7 @@ msgstr "Kanallisten er navngitt på nytt."
 msgid "Bouquet-settings were restored successfully"
 msgstr "Kanalliste-valgene ble gjenopprettet"
 
-#: ../plugin/controllers/base.py:317
+#: ../plugin/controllers/base.py:332
 msgid "BouquetEditor"
 msgstr "Kanalliste redigerer"
 
@@ -335,7 +343,7 @@ msgstr "Kabel-TV"
 msgid "Calendar Week"
 msgstr "Uke kallender"
 
-#: ../plugin/plugin.py:113 ../plugin/controllers/i18n.py:92
+#: ../plugin/controllers/i18n.py:92 ../plugin/plugin.py:113
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -375,7 +383,7 @@ msgstr "Lukk"
 msgid "Common Settings"
 msgstr "Vanlige innstillinger"
 
-#: ../plugin/controllers/models/timers.py:179
+#: ../plugin/controllers/models/timers.py:217
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Timer konflikt(er) oppdaget %s"
@@ -388,12 +396,12 @@ msgstr "Bidragsytere"
 msgid "Control"
 msgstr "Kontroll"
 
-#: ../plugin/controllers/models/timers.py:196
+#: ../plugin/controllers/models/timers.py:246
 #, python-format
 msgid "Could not add timer '%s'!"
 msgstr "Kunne ikke legge til timer '%s'!"
 
-#: ../plugin/controllers/models/timers.py:312
+#: ../plugin/controllers/models/timers.py:377
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Finner ikke timer '%s' med angitt start og sluttids tidspunkt!"
@@ -406,7 +414,7 @@ msgstr "Gjeldende"
 msgid "Current Event"
 msgstr "Gjeldende aktivitet"
 
-#: ../plugin/plugin.py:136 ../plugin/controllers/i18n.py:183
+#: ../plugin/controllers/i18n.py:183 ../plugin/plugin.py:136
 msgid "Custom box name"
 msgstr "Egendefinert mottakernavn"
 
@@ -459,7 +467,7 @@ msgstr "Slett opptaket"
 msgid "Delete Timer"
 msgstr "Slett timer"
 
-#: ../plugin/controllers/models/movies.py:300
+#: ../plugin/controllers/models/movies.py:423
 msgid ""
 "Delete failed, because there is no movie trash !\n"
 "Disable movie trash in configuration to delete this item"
@@ -539,7 +547,7 @@ msgstr "Drivere"
 msgid "Duration"
 msgstr "Varighet"
 
-#: ../plugin/controllers/models/info.py:613
+#: ../plugin/controllers/models/info.py:625
 msgid "E"
 msgstr "Ø"
 
@@ -551,11 +559,11 @@ msgstr "EPG"
 msgid "EPG encoding"
 msgstr "EPG koding"
 
-#: ../plugin/controllers/base.py:321
+#: ../plugin/controllers/base.py:336
 msgid "EPGRefresh"
 msgstr "Oppdater EPG"
 
-#: ../plugin/controllers/models/timers.py:714
+#: ../plugin/controllers/models/timers.py:793
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr "FEIL: kan ikke angi Tidsinnstilt avslag mens enheten er i standby-modus"
 
@@ -644,7 +652,7 @@ msgstr "EPG søk"
 msgid "Error"
 msgstr "Feil"
 
-#: ../plugin/controllers/models/timers.py:840
+#: ../plugin/controllers/models/timers.py:919
 msgid "Error parsing vps.xml"
 msgstr "Feil ved tolking av vps.xml"
 
@@ -684,7 +692,7 @@ msgstr "Feil: Kanalliste %s kan ikke slettes, OS feil."
 msgid "Event not found"
 msgstr "Kanal ikke funnet"
 
-#: ../plugin/controllers/models/timers.py:210
+#: ../plugin/controllers/models/timers.py:260
 msgid "EventId not found"
 msgstr "Finner ikke Event Id"
 
@@ -756,7 +764,9 @@ msgstr "Frontprosessor versjon"
 msgid "Full remote"
 msgstr "Full fjernkontroll"
 
-#: ../plugin/controllers/models/movies.py:212
+#: ../plugin/controllers/models/movies.py:219
+#: ../plugin/controllers/models/movies.py:343
+#: ../plugin/controllers/models/movies.py:752
 #: ../plugin/controllers/models/info.py:388
 #: ../plugin/controllers/models/info.py:394
 #: ../plugin/controllers/models/info.py:409
@@ -844,7 +854,7 @@ msgstr "Inkluder utvidet beskrivelse"
 msgid "Include short description"
 msgstr "Inkluder kort beskrivelse"
 
-#: ../plugin/controllers/models/timers.py:422
+#: ../plugin/controllers/models/timers.py:487
 msgid "Infinite Instant recording started"
 msgstr "En ubegrenset direkeinnspilling startet"
 
@@ -868,7 +878,7 @@ msgstr "Installert"
 msgid "Instant Record"
 msgstr "Direkteinnspilling"
 
-#: ../plugin/controllers/models/timers.py:413
+#: ../plugin/controllers/models/timers.py:478
 msgid "Instant record for current Event started"
 msgstr "En direkeinnspilling av aktuellt program startet"
 
@@ -917,7 +927,7 @@ msgstr "Kjerne"
 msgid "LCD"
 msgstr "LCD"
 
-#: ../plugin/controllers/base.py:290
+#: ../plugin/controllers/base.py:299
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux innstilling"
 
@@ -933,7 +943,7 @@ msgstr "Legg til avsnittsinformasjon"
 msgid "Link Speed"
 msgstr "Overførings hastighet"
 
-#: ../plugin/controllers/models/timers.py:383
+#: ../plugin/controllers/models/timers.py:448
 msgid "List of Timers has been cleaned"
 msgstr "Timerliste har blitt ryddet"
 
@@ -949,7 +959,9 @@ msgstr "Låst"
 msgid "MAC address"
 msgstr "MAC adresse"
 
-#: ../plugin/controllers/models/movies.py:214
+#: ../plugin/controllers/models/movies.py:221
+#: ../plugin/controllers/models/movies.py:345
+#: ../plugin/controllers/models/movies.py:754
 #: ../plugin/controllers/models/info.py:385
 #: ../plugin/controllers/models/info.py:396
 #: ../plugin/controllers/models/info.py:414
@@ -1013,7 +1025,7 @@ msgstr "Minutt"
 msgid "Missing mandatory parameter '%s'"
 msgstr "Savner obligatorisk parameter '%s'"
 
-#: ../plugin/controllers/models/timers.py:514
+#: ../plugin/controllers/models/timers.py:579
 msgid "Missing requesteter: sRef"
 msgstr "Tapt anmoding: sRef"
 
@@ -1066,7 +1078,7 @@ msgstr "Multi-Kanalliste er ikke aktivert!"
 msgid "MultiEPG"
 msgstr "MultiEPG"
 
-#: ../plugin/controllers/base.py:308
+#: ../plugin/controllers/base.py:323
 msgid "NCam Webinterface"
 msgstr "NCam webinterface"
 
@@ -1136,7 +1148,7 @@ msgstr "Det mangler navn på kanallisten!"
 msgid "No current service given!"
 msgstr "Ingen kanal er valgt!"
 
-#: ../plugin/controllers/models/timers.py:407
+#: ../plugin/controllers/models/timers.py:472
 msgid "No event found! Not recording!"
 msgstr "Programmet ble ikke funnet! Spiller ikke inn!"
 
@@ -1144,8 +1156,8 @@ msgstr "Programmet ble ikke funnet! Spiller ikke inn!"
 msgid "No marker-name given!"
 msgstr "Ikke noe markør-navn er valgt!"
 
-#: ../plugin/controllers/models/timers.py:330
-#: ../plugin/controllers/models/timers.py:375
+#: ../plugin/controllers/models/timers.py:395
+#: ../plugin/controllers/models/timers.py:440
 msgid "No matching Timer found"
 msgstr "Finner ingen samsvarende timer"
 
@@ -1212,7 +1224,7 @@ msgstr "November"
 msgid "Now"
 msgstr "Nå"
 
-#: ../plugin/controllers/base.py:306
+#: ../plugin/controllers/base.py:321
 msgid "OSCam Webinterface"
 msgstr "OSCam Webutseende"
 
@@ -1268,8 +1280,8 @@ msgstr "OpenWebInterface er aktivert"
 msgid "OpenWebif Browser Settings"
 msgstr "OpenWebif nettleser innstilling"
 
-#: ../plugin/plugin.py:163 ../plugin/plugin.py:228 ../plugin/plugin.py:230
-#: ../plugin/plugin.py:232
+#: ../plugin/plugin.py:163 ../plugin/plugin.py:229 ../plugin/plugin.py:231
+#: ../plugin/plugin.py:233
 msgid "OpenWebif Configuration"
 msgstr "OpenWebif innstilling"
 
@@ -1339,6 +1351,11 @@ msgstr "Avspilling"
 msgid "Playlist"
 msgstr "Opptaksliste"
 
+#: ../plugin/controllers/i18n.py:505
+#, fuzzy
+msgid "Playlist Format"
+msgstr "Opptaksliste"
+
 #: ../plugin/controllers/i18n.py:427
 msgid "Please enter filename"
 msgstr "Vennligst angi et filnavn"
@@ -1351,7 +1368,7 @@ msgstr "Pmtpid"
 msgid "Power Control"
 msgstr "Strømstyring"
 
-#: ../plugin/controllers/models/timers.py:596
+#: ../plugin/controllers/models/timers.py:668
 msgid "PowerTimer feature not available"
 msgstr "PowerTimer-funksjonen er ikke tilgjengelig"
 
@@ -1512,8 +1529,8 @@ msgstr "Satellittsøker"
 msgid "Saturday"
 msgstr "Lørdag"
 
-#: ../plugin/plugin.py:114 ../plugin/controllers/i18n.py:207
-#: ../plugin/controllers/i18n.py:355 ../plugin/controllers/i18n.py:407
+#: ../plugin/controllers/i18n.py:207 ../plugin/controllers/i18n.py:355
+#: ../plugin/controllers/i18n.py:407 ../plugin/plugin.py:114
 msgid "Save"
 msgstr "Lagre"
 
@@ -1629,8 +1646,8 @@ msgstr "Kanaler"
 msgid "Set maximum duration"
 msgstr "Still inn maksimal varighet (i min)"
 
-#: ../plugin/controllers/base.py:274 ../plugin/controllers/i18n.py:218
-#: ../plugin/controllers/i18n.py:359
+#: ../plugin/controllers/i18n.py:218 ../plugin/controllers/i18n.py:359
+#: ../plugin/controllers/base.py:283
 msgid "Settings"
 msgstr "Innstillinger"
 
@@ -1650,7 +1667,7 @@ msgstr "Vis kanallogo i kanalliste"
 msgid "Show Service type in channel list"
 msgstr "Vis tjenestetype i kanalliste"
 
-#: ../plugin/plugin.py:132 ../plugin/controllers/i18n.py:181
+#: ../plugin/controllers/i18n.py:181 ../plugin/plugin.py:132
 msgid "Show box name in header"
 msgstr "Vis mottakernavn i overskrift"
 
@@ -1682,32 +1699,32 @@ msgstr "Simuler"
 msgid "Site and sources"
 msgstr "Nettsted og kilder"
 
-#: ../plugin/controllers/models/timers.py:674
-#: ../plugin/controllers/models/timers.py:701
-#: ../plugin/controllers/models/timers.py:730
-#: ../plugin/controllers/models/timers.py:811
+#: ../plugin/controllers/models/timers.py:753
+#: ../plugin/controllers/models/timers.py:780
+#: ../plugin/controllers/models/timers.py:809
+#: ../plugin/controllers/models/timers.py:890
 msgid "SleepTimer error"
 msgstr "Feil ved Tidsinnstilt avslag"
 
-#: ../plugin/controllers/models/timers.py:719
-#: ../plugin/controllers/models/timers.py:788
-#: ../plugin/controllers/models/timers.py:806
+#: ../plugin/controllers/models/timers.py:798
+#: ../plugin/controllers/models/timers.py:867
+#: ../plugin/controllers/models/timers.py:885
 msgid "Sleeptimer has been disabled"
 msgstr "Vekkerklokke har blitt frakoblet"
 
-#: ../plugin/controllers/models/timers.py:669
-#: ../plugin/controllers/models/timers.py:695
+#: ../plugin/controllers/models/timers.py:748
+#: ../plugin/controllers/models/timers.py:774
 msgid "Sleeptimer is disabled"
 msgstr "Tidsinnstilt avslag er deaktivert"
 
-#: ../plugin/controllers/models/timers.py:669
-#: ../plugin/controllers/models/timers.py:695
+#: ../plugin/controllers/models/timers.py:748
+#: ../plugin/controllers/models/timers.py:774
 msgid "Sleeptimer is enabled"
 msgstr "Tidsinnstilt avslag er aktivert"
 
-#: ../plugin/controllers/models/timers.py:725
-#: ../plugin/controllers/models/timers.py:788
-#: ../plugin/controllers/models/timers.py:801
+#: ../plugin/controllers/models/timers.py:804
+#: ../plugin/controllers/models/timers.py:867
+#: ../plugin/controllers/models/timers.py:880
 #, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Vekkerklokke er stilt på %d minutter"
@@ -1750,6 +1767,11 @@ msgstr "Start tiden er etter sluttid"
 
 #: ../plugin/controllers/i18n.py:233
 msgid "Stream"
+msgstr "Stream"
+
+#: ../plugin/controllers/i18n.py:510
+#, fuzzy
+msgid "Stream Clients"
 msgstr "Stream"
 
 #: ../plugin/controllers/i18n.py:42
@@ -1810,7 +1832,7 @@ msgstr "TV"
 msgid "Template Engine"
 msgstr "Mal"
 
-#: ../plugin/controllers/base.py:339
+#: ../plugin/controllers/base.py:354
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -1835,17 +1857,17 @@ msgstr "Parameter '%s' kan ikke stå tomt"
 msgid "The parameter 'command' must be a number"
 msgstr "Parameter 'kommando' må være et tall"
 
-#: ../plugin/controllers/models/timers.py:369
+#: ../plugin/controllers/models/timers.py:434
 #, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "Timer '%s' har blitt %s vellykket"
 
-#: ../plugin/controllers/models/timers.py:325
+#: ../plugin/controllers/models/timers.py:390
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Timeren '%s' er slettet"
 
-#: ../plugin/controllers/models/timers.py:361
+#: ../plugin/controllers/models/timers.py:426
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "Timeren '%s' er nå registrert! Ikke deaktivert!"
@@ -1882,27 +1904,27 @@ msgstr "Timeout"
 msgid "Timer"
 msgstr "Timer"
 
-#: ../plugin/controllers/models/timers.py:201
+#: ../plugin/controllers/models/timers.py:251
 #, python-format
 msgid "Timer '%s' added"
 msgstr "Timer '%s' lagt til"
 
-#: ../plugin/controllers/models/timers.py:355
+#: ../plugin/controllers/models/timers.py:420
 #, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Timeren '%s' finnes allerede!"
 
-#: ../plugin/controllers/models/timers.py:287
+#: ../plugin/controllers/models/timers.py:352
 #, python-format
 msgid "Timer '%s' changed"
 msgstr "Timer '%s' ble endret"
 
-#: ../plugin/controllers/models/timers.py:349
+#: ../plugin/controllers/models/timers.py:414
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "Timer '%s' er ikke aktivert på grunn av en konflikt"
 
-#: ../plugin/controllers/models/timers.py:306
+#: ../plugin/controllers/models/timers.py:371
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "Timer '%s' ble ikke lagret pga. en konflikt"
@@ -1915,7 +1937,7 @@ msgstr "Timer lagt til"
 msgid "Timer added"
 msgstr "Timer lagt til"
 
-#: ../plugin/controllers/models/timers.py:441
+#: ../plugin/controllers/models/timers.py:506
 msgid "Timer conflict detected! Not recording!"
 msgstr "En timer konflikt er oppdaget! Spiller ikke inn!"
 
@@ -1923,7 +1945,7 @@ msgstr "En timer konflikt er oppdaget! Spiller ikke inn!"
 msgid "Timer type"
 msgstr "Timer type"
 
-#: ../plugin/controllers/models/timers.py:391
+#: ../plugin/controllers/models/timers.py:456
 msgid "TimerList has been saved"
 msgstr "Timerliste har blitt lagret"
 
@@ -2008,7 +2030,7 @@ msgstr "Type"
 msgid "Unknown Volume command %s"
 msgstr "Ukjent volum instruktion %s"
 
-#: ../plugin/controllers/models/timers.py:536
+#: ../plugin/controllers/models/timers.py:601
 #, python-format
 msgid "Unknown command: '%s'"
 msgstr "Ukjent kommando: '%s'"
@@ -2049,11 +2071,15 @@ msgstr "Opplastede filer"
 msgid "Use a custom location"
 msgstr "Bruk en egendefinert lagringsplass"
 
-#: ../plugin/plugin.py:134 ../plugin/controllers/i18n.py:182
+#: ../plugin/controllers/i18n.py:506
+msgid "Use as PiP if possible"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:182 ../plugin/plugin.py:134
 msgid "Use custom box name"
 msgstr "Bruk egendefinert mottakernavn"
 
-#: ../plugin/plugin.py:131 ../plugin/controllers/i18n.py:472
+#: ../plugin/controllers/i18n.py:472 ../plugin/plugin.py:131
 msgid "Use new design"
 msgstr "Bruk ny utforming"
 
@@ -2061,7 +2087,7 @@ msgstr "Bruk ny utforming"
 msgid "VPS"
 msgstr "VPS"
 
-#: ../plugin/controllers/models/timers.py:845
+#: ../plugin/controllers/models/timers.py:924
 msgid "VPS plugin not found"
 msgstr "VPS tillegg ikke funnet"
 
@@ -2101,7 +2127,7 @@ msgstr "Volumkontroll"
 msgid "Vpid"
 msgstr "Vpid"
 
-#: ../plugin/controllers/models/info.py:616
+#: ../plugin/controllers/models/info.py:628
 msgid "W"
 msgstr "V"
 
@@ -2254,7 +2280,9 @@ msgstr "i kortforklaringen"
 msgid "in Title"
 msgstr "i tittel"
 
-#: ../plugin/controllers/models/movies.py:216
+#: ../plugin/controllers/models/movies.py:223
+#: ../plugin/controllers/models/movies.py:347
+#: ../plugin/controllers/models/movies.py:756
 #: ../plugin/controllers/models/info.py:294
 #: ../plugin/controllers/models/info.py:297
 msgid "kB"
@@ -2305,7 +2333,7 @@ msgstr "r/w"
 msgid "record"
 msgstr "spill inn"
 
-#: ../plugin/controllers/models/movies.py:294
+#: ../plugin/controllers/models/movies.py:417
 msgid "remove"
 msgstr "fjern"
 
@@ -2359,7 +2387,7 @@ msgstr "samsvarssøk på tittel eller kort beskrivelse"
 msgid "transcoded"
 msgstr "nedskalert"
 
-#: ../plugin/controllers/web.py:684
+#: ../plugin/controllers/web.py:727
 #, python-format
 msgid "type %s is not a number"
 msgstr "type %s er ikke et tall"
@@ -2392,42 +2420,3 @@ msgstr "gå til"
 #: ../plugin/controllers/i18n.py:277
 msgid "zap before Stream"
 msgstr "zap før stream"
-
-#~ msgid "SleepTimer Error"
-#~ msgstr "Feil ved Tidsinnstilt avslag"
-
-#~ msgid "Show Picons in channel list"
-#~ msgstr "Vis kanallogo i kanalliste"
-
-#~ msgid "Delete Movie"
-#~ msgstr "Slett filmen"
-
-#~ msgid "Really delete the movie"
-#~ msgstr "Skal filmen slettes"
-
-#~ msgid "All Files of this Software are open source software;"
-#~ msgstr "Alle filer fra denne software er åpen kildekode software;"
-
-#~ msgid "you can redistribute it and/or modify it under the"
-#~ msgstr "du kan redistributere dette og/eller modernisere under "
-
-#~ msgid "terms of the GNU General Public License version 2 as"
-#~ msgstr "vilkår av GNU General Public License versjon 2 som"
-
-#~ msgid "published by the Free Software Foundation."
-#~ msgstr "er publisert av Free Software Foundation."
-
-#~ msgid "Afterevent"
-#~ msgstr "Etter aktivitet"
-
-#~ msgid "Delete Channel(s)"
-#~ msgstr "Slett kanal(er)"
-
-#~ msgid "Smart services renaming for XBMC"
-#~ msgstr "Smart sevice navnedring for XBMC"
-
-#~ msgid "VPS Overwrite"
-#~ msgstr "Overskriv VPS"
-
-#~ msgid "SleepTimer feature not available"
-#~ msgstr "Vekkerklokke funksjonen er ikke tilgjengelig"
