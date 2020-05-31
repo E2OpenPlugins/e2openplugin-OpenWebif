@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-30 20:44+0430\n"
+"POT-Creation-Date: 2020-05-31 19:08+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: mcfly82 <https://github.com/mcfly822>\n"
 "Language-Team: mcfly82\n"
@@ -98,6 +98,10 @@ msgstr "Adja hozzá a szolgáltatás nevét az adatfolyam információihoz"
 msgid "Added %s to alternative service %s."
 msgstr "A %s hozzáadva az %s alternatív szolgáltatáshoz."
 
+#: ../plugin/controllers/i18n.py:508
+msgid "Adjust recording time to real event time"
+msgstr ""
+
 #: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
 msgid "After Event"
 msgstr "Esemény után"
@@ -125,6 +129,10 @@ msgstr "Minden alternatív szolgáltatás törölve."
 #: ../plugin/plugin.py:154
 msgid "Allow IPK Upload"
 msgstr "IPK feltöltés engedélyezése"
+
+#: ../plugin/controllers/i18n.py:507
+msgid "Allow duplicates"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:452
 #, python-format
@@ -183,7 +191,7 @@ msgstr "Auto"
 msgid "AutoPoll"
 msgstr "Automatikus szavazás"
 
-#: ../plugin/controllers/base.py:312
+#: ../plugin/controllers/base.py:327
 msgid "AutoTimer"
 msgstr "Automatikus időzítő"
 
@@ -292,7 +300,7 @@ msgstr "Bouquet sikeresen átnevezve."
 msgid "Bouquet-settings were restored successfully"
 msgstr "A Bouquet-beállítások sikeresen helyreálltak"
 
-#: ../plugin/controllers/base.py:317
+#: ../plugin/controllers/base.py:332
 msgid "BouquetEditor"
 msgstr "Bouquet szerkesztő"
 
@@ -333,7 +341,7 @@ msgstr "Kábel"
 msgid "Calendar Week"
 msgstr "Naptári hét"
 
-#: ../plugin/plugin.py:113 ../plugin/controllers/i18n.py:92
+#: ../plugin/controllers/i18n.py:92 ../plugin/plugin.py:113
 msgid "Cancel"
 msgstr "Töröl"
 
@@ -373,7 +381,7 @@ msgstr "Bezár"
 msgid "Common Settings"
 msgstr "Közös beállítások"
 
-#: ../plugin/controllers/models/timers.py:179
+#: ../plugin/controllers/models/timers.py:217
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Időzítő(k) ütközése észlelve! %s"
@@ -386,12 +394,12 @@ msgstr "Közreműködők"
 msgid "Control"
 msgstr "Ellenőrzés"
 
-#: ../plugin/controllers/models/timers.py:196
+#: ../plugin/controllers/models/timers.py:246
 #, python-format
 msgid "Could not add timer '%s'!"
 msgstr "Nem lehet hozzáadni az '%s' időzítőt!"
 
-#: ../plugin/controllers/models/timers.py:312
+#: ../plugin/controllers/models/timers.py:377
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Az '%s' időzítő nem található az adott kezdő és befejező időpontban!"
@@ -404,7 +412,7 @@ msgstr "Jelenlegi"
 msgid "Current Event"
 msgstr "Aktuális esemény"
 
-#: ../plugin/plugin.py:136 ../plugin/controllers/i18n.py:183
+#: ../plugin/controllers/i18n.py:183 ../plugin/plugin.py:136
 msgid "Custom box name"
 msgstr "Egyéni box név"
 
@@ -458,7 +466,7 @@ msgstr "Felvétel törlése"
 msgid "Delete Timer"
 msgstr "Időzítő törlése"
 
-#: ../plugin/controllers/models/movies.py:300
+#: ../plugin/controllers/models/movies.py:423
 msgid ""
 "Delete failed, because there is no movie trash !\n"
 "Disable movie trash in configuration to delete this item"
@@ -538,7 +546,7 @@ msgstr "Driverek"
 msgid "Duration"
 msgstr "Időtartam"
 
-#: ../plugin/controllers/models/info.py:613
+#: ../plugin/controllers/models/info.py:625
 msgid "E"
 msgstr "E"
 
@@ -550,11 +558,11 @@ msgstr "EPG"
 msgid "EPG encoding"
 msgstr "EPG kódolás"
 
-#: ../plugin/controllers/base.py:321
+#: ../plugin/controllers/base.py:336
 msgid "EPGRefresh"
 msgstr "EPG frissítés"
 
-#: ../plugin/controllers/models/timers.py:714
+#: ../plugin/controllers/models/timers.py:793
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr "HIBA: Nem állítható be az elalvás időzítő, amíg az eszköz készenléti állapotban van"
 
@@ -643,7 +651,7 @@ msgstr "Epg keresés"
 msgid "Error"
 msgstr "Hiba"
 
-#: ../plugin/controllers/models/timers.py:840
+#: ../plugin/controllers/models/timers.py:919
 msgid "Error parsing vps.xml"
 msgstr "Hiba történt a vps.xml elemzésében"
 
@@ -683,7 +691,7 @@ msgstr "Hiba: %s lista nem törölhető, OSError."
 msgid "Event not found"
 msgstr "Esemény nem található"
 
-#: ../plugin/controllers/models/timers.py:210
+#: ../plugin/controllers/models/timers.py:260
 msgid "EventId not found"
 msgstr "Esemény Id nem található"
 
@@ -755,7 +763,9 @@ msgstr "Frontprocesszor verzió"
 msgid "Full remote"
 msgstr "Teljes távvezérlő"
 
-#: ../plugin/controllers/models/movies.py:212
+#: ../plugin/controllers/models/movies.py:219
+#: ../plugin/controllers/models/movies.py:343
+#: ../plugin/controllers/models/movies.py:752
 #: ../plugin/controllers/models/info.py:388
 #: ../plugin/controllers/models/info.py:394
 #: ../plugin/controllers/models/info.py:409
@@ -843,7 +853,7 @@ msgstr "Bővített leírással"
 msgid "Include short description"
 msgstr "Rövid leírással"
 
-#: ../plugin/controllers/models/timers.py:422
+#: ../plugin/controllers/models/timers.py:487
 msgid "Infinite Instant recording started"
 msgstr "Végtelen azonnali felvétel elkezdődött"
 
@@ -867,7 +877,7 @@ msgstr "Telepített"
 msgid "Instant Record"
 msgstr "Azonnali felvétel"
 
-#: ../plugin/controllers/models/timers.py:413
+#: ../plugin/controllers/models/timers.py:478
 msgid "Instant record for current Event started"
 msgstr "Az aktuális esemény azonnali felvétele megkezdődött"
 
@@ -916,7 +926,7 @@ msgstr "Kernel"
 msgid "LCD"
 msgstr "LCD"
 
-#: ../plugin/controllers/base.py:290
+#: ../plugin/controllers/base.py:299
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux Beállítás"
 
@@ -932,7 +942,7 @@ msgstr "Címke sorozat"
 msgid "Link Speed"
 msgstr "Link sebesség"
 
-#: ../plugin/controllers/models/timers.py:383
+#: ../plugin/controllers/models/timers.py:448
 msgid "List of Timers has been cleaned"
 msgstr "Az időzítők listája kiürítve"
 
@@ -948,7 +958,9 @@ msgstr "Zárolt"
 msgid "MAC address"
 msgstr "MAC cím"
 
-#: ../plugin/controllers/models/movies.py:214
+#: ../plugin/controllers/models/movies.py:221
+#: ../plugin/controllers/models/movies.py:345
+#: ../plugin/controllers/models/movies.py:754
 #: ../plugin/controllers/models/info.py:385
 #: ../plugin/controllers/models/info.py:396
 #: ../plugin/controllers/models/info.py:414
@@ -1012,7 +1024,7 @@ msgstr "Perc"
 msgid "Missing mandatory parameter '%s'"
 msgstr "Hiányzó kötelező paraméter '%s'"
 
-#: ../plugin/controllers/models/timers.py:514
+#: ../plugin/controllers/models/timers.py:579
 msgid "Missing requesteter: sRef"
 msgstr "Hiányzó kérelem: sRef"
 
@@ -1065,7 +1077,7 @@ msgstr "Multi-lista nem engedélyezett!"
 msgid "MultiEPG"
 msgstr "MultiEPG"
 
-#: ../plugin/controllers/base.py:308
+#: ../plugin/controllers/base.py:323
 #, fuzzy
 msgid "NCam Webinterface"
 msgstr "OSCam Webinterface"
@@ -1136,7 +1148,7 @@ msgstr "Nem adott nevet a listának!"
 msgid "No current service given!"
 msgstr "Nincs aktuális szolgáltatás!"
 
-#: ../plugin/controllers/models/timers.py:407
+#: ../plugin/controllers/models/timers.py:472
 msgid "No event found! Not recording!"
 msgstr "Esemény nem található! Nincs felvétel!"
 
@@ -1144,8 +1156,8 @@ msgstr "Esemény nem található! Nincs felvétel!"
 msgid "No marker-name given!"
 msgstr "Nincs megadva marker-név!"
 
-#: ../plugin/controllers/models/timers.py:330
-#: ../plugin/controllers/models/timers.py:375
+#: ../plugin/controllers/models/timers.py:395
+#: ../plugin/controllers/models/timers.py:440
 msgid "No matching Timer found"
 msgstr "Nincs megfelelő időzítő"
 
@@ -1212,7 +1224,7 @@ msgstr "November"
 msgid "Now"
 msgstr "Most"
 
-#: ../plugin/controllers/base.py:306
+#: ../plugin/controllers/base.py:321
 msgid "OSCam Webinterface"
 msgstr "OSCam Webinterface"
 
@@ -1268,8 +1280,8 @@ msgstr "OpenWebInterface engedélyezve"
 msgid "OpenWebif Browser Settings"
 msgstr "OpenWebif Böngésző beállítások"
 
-#: ../plugin/plugin.py:163 ../plugin/plugin.py:228 ../plugin/plugin.py:230
-#: ../plugin/plugin.py:232
+#: ../plugin/plugin.py:163 ../plugin/plugin.py:229 ../plugin/plugin.py:231
+#: ../plugin/plugin.py:233
 msgid "OpenWebif Configuration"
 msgstr "OpenWebif konfiguráció"
 
@@ -1339,6 +1351,11 @@ msgstr "Visszajátszás"
 msgid "Playlist"
 msgstr "Lejátszási lista"
 
+#: ../plugin/controllers/i18n.py:505
+#, fuzzy
+msgid "Playlist Format"
+msgstr "Lejátszási lista"
+
 #: ../plugin/controllers/i18n.py:427
 msgid "Please enter filename"
 msgstr "Adja meg a fájlnevet"
@@ -1351,7 +1368,7 @@ msgstr "Pmtpid"
 msgid "Power Control"
 msgstr "Kikapcsolás"
 
-#: ../plugin/controllers/models/timers.py:596
+#: ../plugin/controllers/models/timers.py:668
 msgid "PowerTimer feature not available"
 msgstr "PowerTimer funkció nem áll rendelkezésre"
 
@@ -1513,8 +1530,8 @@ msgstr "Műholdkereső"
 msgid "Saturday"
 msgstr "Szombat"
 
-#: ../plugin/plugin.py:114 ../plugin/controllers/i18n.py:207
-#: ../plugin/controllers/i18n.py:355 ../plugin/controllers/i18n.py:407
+#: ../plugin/controllers/i18n.py:207 ../plugin/controllers/i18n.py:355
+#: ../plugin/controllers/i18n.py:407 ../plugin/plugin.py:114
 msgid "Save"
 msgstr "Mentés"
 
@@ -1630,8 +1647,8 @@ msgstr "Szolgáltatások"
 msgid "Set maximum duration"
 msgstr "Állítsa be a maximális időt"
 
-#: ../plugin/controllers/base.py:274 ../plugin/controllers/i18n.py:218
-#: ../plugin/controllers/i18n.py:359
+#: ../plugin/controllers/i18n.py:218 ../plugin/controllers/i18n.py:359
+#: ../plugin/controllers/base.py:283
 msgid "Settings"
 msgstr "Beállítások"
 
@@ -1651,7 +1668,7 @@ msgstr "A Picon megjelenítése a csatorna listában"
 msgid "Show Service type in channel list"
 msgstr "A csatorna típus megjelenítése a csatornalistában"
 
-#: ../plugin/plugin.py:132 ../plugin/controllers/i18n.py:181
+#: ../plugin/controllers/i18n.py:181 ../plugin/plugin.py:132
 msgid "Show box name in header"
 msgstr "A box nevének mutatása a fejlécben"
 
@@ -1683,32 +1700,32 @@ msgstr "Szimulálás"
 msgid "Site and sources"
 msgstr "Webhely és források"
 
-#: ../plugin/controllers/models/timers.py:674
-#: ../plugin/controllers/models/timers.py:701
-#: ../plugin/controllers/models/timers.py:730
-#: ../plugin/controllers/models/timers.py:811
+#: ../plugin/controllers/models/timers.py:753
+#: ../plugin/controllers/models/timers.py:780
+#: ../plugin/controllers/models/timers.py:809
+#: ../plugin/controllers/models/timers.py:890
 msgid "SleepTimer error"
 msgstr "Elalvás időzítő hiba"
 
-#: ../plugin/controllers/models/timers.py:719
-#: ../plugin/controllers/models/timers.py:788
-#: ../plugin/controllers/models/timers.py:806
+#: ../plugin/controllers/models/timers.py:798
+#: ../plugin/controllers/models/timers.py:867
+#: ../plugin/controllers/models/timers.py:885
 msgid "Sleeptimer has been disabled"
 msgstr "Az elalvás időzítő le lett tiltva"
 
-#: ../plugin/controllers/models/timers.py:669
-#: ../plugin/controllers/models/timers.py:695
+#: ../plugin/controllers/models/timers.py:748
+#: ../plugin/controllers/models/timers.py:774
 msgid "Sleeptimer is disabled"
 msgstr "Az elalvás időzítő le van tiltva"
 
-#: ../plugin/controllers/models/timers.py:669
-#: ../plugin/controllers/models/timers.py:695
+#: ../plugin/controllers/models/timers.py:748
+#: ../plugin/controllers/models/timers.py:774
 msgid "Sleeptimer is enabled"
 msgstr "Az elalvás időzítő engedélyezve van"
 
-#: ../plugin/controllers/models/timers.py:725
-#: ../plugin/controllers/models/timers.py:788
-#: ../plugin/controllers/models/timers.py:801
+#: ../plugin/controllers/models/timers.py:804
+#: ../plugin/controllers/models/timers.py:867
+#: ../plugin/controllers/models/timers.py:880
 #, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Az elalvás időzítő beállítása %d percben"
@@ -1751,6 +1768,11 @@ msgstr "A kezdési idő a befejező idő után van"
 
 #: ../plugin/controllers/i18n.py:233
 msgid "Stream"
+msgstr "Stream"
+
+#: ../plugin/controllers/i18n.py:510
+#, fuzzy
+msgid "Stream Clients"
 msgstr "Stream"
 
 #: ../plugin/controllers/i18n.py:42
@@ -1811,7 +1833,7 @@ msgstr "Televízió"
 msgid "Template Engine"
 msgstr "Sablon motor"
 
-#: ../plugin/controllers/base.py:339
+#: ../plugin/controllers/base.py:354
 msgid "Terminal"
 msgstr "Terminál"
 
@@ -1836,17 +1858,17 @@ msgstr "A paraméter '%s' nem lehet üres"
 msgid "The parameter 'command' must be a number"
 msgstr "A 'parancs' paraméternek számnak kell lennie"
 
-#: ../plugin/controllers/models/timers.py:369
+#: ../plugin/controllers/models/timers.py:434
 #, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "Az időzítő '%s' sikeres %s volt"
 
-#: ../plugin/controllers/models/timers.py:325
+#: ../plugin/controllers/models/timers.py:390
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Az '%s' időzítő sikeresen törölve lett"
 
-#: ../plugin/controllers/models/timers.py:361
+#: ../plugin/controllers/models/timers.py:426
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "Az '%s' időzítő éppen felvételt készít! Nem lehet tiltani!"
@@ -1883,27 +1905,27 @@ msgstr "Időtúllépés"
 msgid "Timer"
 msgstr "Időzítő"
 
-#: ../plugin/controllers/models/timers.py:201
+#: ../plugin/controllers/models/timers.py:251
 #, python-format
 msgid "Timer '%s' added"
 msgstr "Időzítő '%s' hozzáadva"
 
-#: ../plugin/controllers/models/timers.py:355
+#: ../plugin/controllers/models/timers.py:420
 #, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Az időzítő '%s' már létezik!"
 
-#: ../plugin/controllers/models/timers.py:287
+#: ../plugin/controllers/models/timers.py:352
 #, python-format
 msgid "Timer '%s' changed"
 msgstr "Időzítő '%s' megváltozott"
 
-#: ../plugin/controllers/models/timers.py:349
+#: ../plugin/controllers/models/timers.py:414
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "A '%s' időzítő nem engedélyezett ütközés miatt"
 
-#: ../plugin/controllers/models/timers.py:306
+#: ../plugin/controllers/models/timers.py:371
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "Az '%s' időzítő nem menthető ütközés miatt"
@@ -1916,7 +1938,7 @@ msgstr "Időzítés hozzáadva"
 msgid "Timer added"
 msgstr "Időzítés hozzáadva"
 
-#: ../plugin/controllers/models/timers.py:441
+#: ../plugin/controllers/models/timers.py:506
 msgid "Timer conflict detected! Not recording!"
 msgstr "Időzítő ütközés észlelhető! Nem lesz felvétel!"
 
@@ -1924,7 +1946,7 @@ msgstr "Időzítő ütközés észlelhető! Nem lesz felvétel!"
 msgid "Timer type"
 msgstr "Időzítő típusa"
 
-#: ../plugin/controllers/models/timers.py:391
+#: ../plugin/controllers/models/timers.py:456
 msgid "TimerList has been saved"
 msgstr "Az időzítő lista mentésre került"
 
@@ -2009,7 +2031,7 @@ msgstr "Típus"
 msgid "Unknown Volume command %s"
 msgstr "Ismeretlen Hangerő parancs %s"
 
-#: ../plugin/controllers/models/timers.py:536
+#: ../plugin/controllers/models/timers.py:601
 #, python-format
 msgid "Unknown command: '%s'"
 msgstr "Ismeretlen parancs: '%s'"
@@ -2050,11 +2072,15 @@ msgstr "Feltöltött fájlok"
 msgid "Use a custom location"
 msgstr "Használjon egyedi helyet"
 
-#: ../plugin/plugin.py:134 ../plugin/controllers/i18n.py:182
+#: ../plugin/controllers/i18n.py:506
+msgid "Use as PiP if possible"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:182 ../plugin/plugin.py:134
 msgid "Use custom box name"
 msgstr "Használjon egyedi box nevet"
 
-#: ../plugin/plugin.py:131 ../plugin/controllers/i18n.py:472
+#: ../plugin/controllers/i18n.py:472 ../plugin/plugin.py:131
 msgid "Use new design"
 msgstr "Az új kinézet használata"
 
@@ -2062,7 +2088,7 @@ msgstr "Az új kinézet használata"
 msgid "VPS"
 msgstr "VPS"
 
-#: ../plugin/controllers/models/timers.py:845
+#: ../plugin/controllers/models/timers.py:924
 msgid "VPS plugin not found"
 msgstr "A VPS bővítmény nem található"
 
@@ -2102,7 +2128,7 @@ msgstr "Hangerőszabályozó"
 msgid "Vpid"
 msgstr "Vpid"
 
-#: ../plugin/controllers/models/info.py:616
+#: ../plugin/controllers/models/info.py:628
 msgid "W"
 msgstr "W"
 
@@ -2255,7 +2281,9 @@ msgstr "a rövid leírásban"
 msgid "in Title"
 msgstr "a címben"
 
-#: ../plugin/controllers/models/movies.py:216
+#: ../plugin/controllers/models/movies.py:223
+#: ../plugin/controllers/models/movies.py:347
+#: ../plugin/controllers/models/movies.py:756
 #: ../plugin/controllers/models/info.py:294
 #: ../plugin/controllers/models/info.py:297
 msgid "kB"
@@ -2306,7 +2334,7 @@ msgstr "r/w"
 msgid "record"
 msgstr "felvétel"
 
-#: ../plugin/controllers/models/movies.py:294
+#: ../plugin/controllers/models/movies.py:417
 msgid "remove"
 msgstr "eltávolít"
 
@@ -2360,7 +2388,7 @@ msgstr "cím vagy rövid leírás egyezés"
 msgid "transcoded"
 msgstr "átkódolt"
 
-#: ../plugin/controllers/web.py:684
+#: ../plugin/controllers/web.py:727
 #, python-format
 msgid "type %s is not a number"
 msgstr "a %s típus nem számjegy"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-30 20:44+0430\n"
+"POT-Creation-Date: 2020-05-31 19:08+0200\n"
 "PO-Revision-Date: 2017-11-10 22:14+0100\n"
 "Last-Translator: JR <openspateam@gmail.com>\n"
 "Language-Team: OpenSPA\n"
@@ -101,6 +101,10 @@ msgstr "Afegir nom de servei a la informació de stream"
 msgid "Added %s to alternative service %s."
 msgstr "%s afegit al servei alternatiu %s."
 
+#: ../plugin/controllers/i18n.py:508
+msgid "Adjust recording time to real event time"
+msgstr ""
+
 #: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
 msgid "After Event"
 msgstr "Després del Programa"
@@ -127,6 +131,10 @@ msgstr "Tots els serveis alternatius esborrats."
 
 #: ../plugin/plugin.py:154
 msgid "Allow IPK Upload"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:507
+msgid "Allow duplicates"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:452
@@ -186,7 +194,7 @@ msgstr "Automàtic"
 msgid "AutoPoll"
 msgstr ""
 
-#: ../plugin/controllers/base.py:312
+#: ../plugin/controllers/base.py:327
 msgid "AutoTimer"
 msgstr "AutoProgramació"
 
@@ -296,7 +304,7 @@ msgstr "Llista renombrada correctament."
 msgid "Bouquet-settings were restored successfully"
 msgstr "Configuració de llistes s'ha restaurat amb èxit"
 
-#: ../plugin/controllers/base.py:317
+#: ../plugin/controllers/base.py:332
 msgid "BouquetEditor"
 msgstr "Editor de llistes"
 
@@ -337,7 +345,7 @@ msgstr "Cable"
 msgid "Calendar Week"
 msgstr "Calendari setmanal"
 
-#: ../plugin/plugin.py:113 ../plugin/controllers/i18n.py:92
+#: ../plugin/controllers/i18n.py:92 ../plugin/plugin.py:113
 msgid "Cancel"
 msgstr "Cancel·lar"
 
@@ -379,7 +387,7 @@ msgstr "Tancar"
 msgid "Common Settings"
 msgstr "Configuració"
 
-#: ../plugin/controllers/models/timers.py:179
+#: ../plugin/controllers/models/timers.py:217
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Temporitzador(s) conflictiu(s) detectat(s)! %s"
@@ -392,12 +400,12 @@ msgstr "Col·laboradors"
 msgid "Control"
 msgstr "Control"
 
-#: ../plugin/controllers/models/timers.py:196
+#: ../plugin/controllers/models/timers.py:246
 #, python-format
 msgid "Could not add timer '%s'!"
 msgstr "No es pot afegir el temporitzador '%s'!"
 
-#: ../plugin/controllers/models/timers.py:312
+#: ../plugin/controllers/models/timers.py:377
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "No s'ha trobat el temporitzador '%s' amb aquests temps d'inici i fi."
@@ -410,7 +418,7 @@ msgstr "Actual"
 msgid "Current Event"
 msgstr "Programa Actual"
 
-#: ../plugin/plugin.py:136 ../plugin/controllers/i18n.py:183
+#: ../plugin/controllers/i18n.py:183 ../plugin/plugin.py:136
 msgid "Custom box name"
 msgstr "Nom personalitzat del deco"
 
@@ -464,7 +472,7 @@ msgstr "Esborrar Pel·lícula"
 msgid "Delete Timer"
 msgstr "Esborrar Gravació"
 
-#: ../plugin/controllers/models/movies.py:300
+#: ../plugin/controllers/models/movies.py:423
 msgid ""
 "Delete failed, because there is no movie trash !\n"
 "Disable movie trash in configuration to delete this item"
@@ -543,7 +551,7 @@ msgstr "Data de driver"
 msgid "Duration"
 msgstr "Duració"
 
-#: ../plugin/controllers/models/info.py:613
+#: ../plugin/controllers/models/info.py:625
 msgid "E"
 msgstr "E"
 
@@ -555,11 +563,11 @@ msgstr "EPG"
 msgid "EPG encoding"
 msgstr "Codificació EPG"
 
-#: ../plugin/controllers/base.py:321
+#: ../plugin/controllers/base.py:336
 msgid "EPGRefresh"
 msgstr ""
 
-#: ../plugin/controllers/models/timers.py:714
+#: ../plugin/controllers/models/timers.py:793
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr "ERROR: No es pot configurar un temporitzador d'apagat si el dispositiu està en mode d'espera"
 
@@ -648,7 +656,7 @@ msgstr "Buscar EPG"
 msgid "Error"
 msgstr "Error"
 
-#: ../plugin/controllers/models/timers.py:840
+#: ../plugin/controllers/models/timers.py:919
 msgid "Error parsing vps.xml"
 msgstr ""
 
@@ -688,7 +696,7 @@ msgstr "Error: Llista %s no es pot esborrar, OSError."
 msgid "Event not found"
 msgstr "Event no trobat"
 
-#: ../plugin/controllers/models/timers.py:210
+#: ../plugin/controllers/models/timers.py:260
 msgid "EventId not found"
 msgstr "ID de programa no trobat"
 
@@ -761,7 +769,9 @@ msgstr "Versió Frontprocessor"
 msgid "Full remote"
 msgstr "Ocultar comandament completo"
 
-#: ../plugin/controllers/models/movies.py:212
+#: ../plugin/controllers/models/movies.py:219
+#: ../plugin/controllers/models/movies.py:343
+#: ../plugin/controllers/models/movies.py:752
 #: ../plugin/controllers/models/info.py:388
 #: ../plugin/controllers/models/info.py:394
 #: ../plugin/controllers/models/info.py:409
@@ -851,7 +861,7 @@ msgstr "Incloure descripció"
 msgid "Include short description"
 msgstr "Incloure descripció"
 
-#: ../plugin/controllers/models/timers.py:422
+#: ../plugin/controllers/models/timers.py:487
 msgid "Infinite Instant recording started"
 msgstr "Gravació instantània infinita iniciada"
 
@@ -876,7 +886,7 @@ msgstr "Gravació instantània"
 msgid "Instant Record"
 msgstr "Gravació instantània"
 
-#: ../plugin/controllers/models/timers.py:413
+#: ../plugin/controllers/models/timers.py:478
 msgid "Instant record for current Event started"
 msgstr "Gravació instantània iniciada per al programa actual"
 
@@ -925,7 +935,7 @@ msgstr "Versió Kernel"
 msgid "LCD"
 msgstr ""
 
-#: ../plugin/controllers/base.py:290
+#: ../plugin/controllers/base.py:299
 msgid "LCD4Linux Setup"
 msgstr "Configurar LCD4Linux"
 
@@ -941,7 +951,7 @@ msgstr "Sèrie d'etiquetes"
 msgid "Link Speed"
 msgstr ""
 
-#: ../plugin/controllers/models/timers.py:383
+#: ../plugin/controllers/models/timers.py:448
 msgid "List of Timers has been cleaned"
 msgstr "La llista de temporitzadors s'ha netejat"
 
@@ -957,7 +967,9 @@ msgstr "Bloquejat"
 msgid "MAC address"
 msgstr "Direcció MAC"
 
-#: ../plugin/controllers/models/movies.py:214
+#: ../plugin/controllers/models/movies.py:221
+#: ../plugin/controllers/models/movies.py:345
+#: ../plugin/controllers/models/movies.py:754
 #: ../plugin/controllers/models/info.py:385
 #: ../plugin/controllers/models/info.py:396
 #: ../plugin/controllers/models/info.py:414
@@ -1022,7 +1034,7 @@ msgstr "Minut"
 msgid "Missing mandatory parameter '%s'"
 msgstr "Falta paràmetre obligatori '%s'"
 
-#: ../plugin/controllers/models/timers.py:514
+#: ../plugin/controllers/models/timers.py:579
 msgid "Missing requesteter: sRef"
 msgstr ""
 
@@ -1076,7 +1088,7 @@ msgstr "Multi-llistes no està habilitat!"
 msgid "MultiEPG"
 msgstr "MultiEPG"
 
-#: ../plugin/controllers/base.py:308
+#: ../plugin/controllers/base.py:323
 msgid "NCam Webinterface"
 msgstr ""
 
@@ -1146,7 +1158,7 @@ msgstr "Cap nom de llista introduït!"
 msgid "No current service given!"
 msgstr "Cap servei actual introduït!"
 
-#: ../plugin/controllers/models/timers.py:407
+#: ../plugin/controllers/models/timers.py:472
 msgid "No event found! Not recording!"
 msgstr "No s'ha trobat programa! No s'està gravant!"
 
@@ -1154,8 +1166,8 @@ msgstr "No s'ha trobat programa! No s'està gravant!"
 msgid "No marker-name given!"
 msgstr "Cap nom de marcador introduït!"
 
-#: ../plugin/controllers/models/timers.py:330
-#: ../plugin/controllers/models/timers.py:375
+#: ../plugin/controllers/models/timers.py:395
+#: ../plugin/controllers/models/timers.py:440
 msgid "No matching Timer found"
 msgstr "No s'ha trobat coincidència als temporitzadors"
 
@@ -1223,7 +1235,7 @@ msgstr "Novembre"
 msgid "Now"
 msgstr "Ara"
 
-#: ../plugin/controllers/base.py:306
+#: ../plugin/controllers/base.py:321
 msgid "OSCam Webinterface"
 msgstr ""
 
@@ -1279,8 +1291,8 @@ msgstr "Enllaç OpenWebInterface"
 msgid "OpenWebif Browser Settings"
 msgstr "Configuració navegador OpenWebif"
 
-#: ../plugin/plugin.py:163 ../plugin/plugin.py:228 ../plugin/plugin.py:230
-#: ../plugin/plugin.py:232
+#: ../plugin/plugin.py:163 ../plugin/plugin.py:229 ../plugin/plugin.py:231
+#: ../plugin/plugin.py:233
 msgid "OpenWebif Configuration"
 msgstr "Configuració OpenWebif"
 
@@ -1350,6 +1362,11 @@ msgstr "Reproducció"
 msgid "Playlist"
 msgstr "Llista de reproducció"
 
+#: ../plugin/controllers/i18n.py:505
+#, fuzzy
+msgid "Playlist Format"
+msgstr "Llista de reproducció"
+
 #: ../plugin/controllers/i18n.py:427
 msgid "Please enter filename"
 msgstr "Si us plau, introdueix el nom de l'arxiu"
@@ -1362,7 +1379,7 @@ msgstr ""
 msgid "Power Control"
 msgstr "Control d'encesa"
 
-#: ../plugin/controllers/models/timers.py:596
+#: ../plugin/controllers/models/timers.py:668
 msgid "PowerTimer feature not available"
 msgstr "La característica temporitzador d'alimentació no està disponible."
 
@@ -1524,8 +1541,8 @@ msgstr "Buscador de satèl·lit"
 msgid "Saturday"
 msgstr "Dissabte"
 
-#: ../plugin/plugin.py:114 ../plugin/controllers/i18n.py:207
-#: ../plugin/controllers/i18n.py:355 ../plugin/controllers/i18n.py:407
+#: ../plugin/controllers/i18n.py:207 ../plugin/controllers/i18n.py:355
+#: ../plugin/controllers/i18n.py:407 ../plugin/plugin.py:114
 msgid "Save"
 msgstr "Guardar"
 
@@ -1642,8 +1659,8 @@ msgstr "Serveis"
 msgid "Set maximum duration"
 msgstr "Configurar duració màxima"
 
-#: ../plugin/controllers/base.py:274 ../plugin/controllers/i18n.py:218
-#: ../plugin/controllers/i18n.py:359
+#: ../plugin/controllers/i18n.py:218 ../plugin/controllers/i18n.py:359
+#: ../plugin/controllers/base.py:283
 msgid "Settings"
 msgstr "Configuració"
 
@@ -1664,7 +1681,7 @@ msgstr "Mostar Picon en llista de canals"
 msgid "Show Service type in channel list"
 msgstr "Mostar Picon en llista de canals"
 
-#: ../plugin/plugin.py:132 ../plugin/controllers/i18n.py:181
+#: ../plugin/controllers/i18n.py:181 ../plugin/plugin.py:132
 msgid "Show box name in header"
 msgstr "Mostrar nom del deco a la capçalera"
 
@@ -1696,32 +1713,32 @@ msgstr "Simular"
 msgid "Site and sources"
 msgstr "Lloc i fonts"
 
-#: ../plugin/controllers/models/timers.py:674
-#: ../plugin/controllers/models/timers.py:701
-#: ../plugin/controllers/models/timers.py:730
-#: ../plugin/controllers/models/timers.py:811
+#: ../plugin/controllers/models/timers.py:753
+#: ../plugin/controllers/models/timers.py:780
+#: ../plugin/controllers/models/timers.py:809
+#: ../plugin/controllers/models/timers.py:890
 msgid "SleepTimer error"
 msgstr "Error temporitzador d'apagat"
 
-#: ../plugin/controllers/models/timers.py:719
-#: ../plugin/controllers/models/timers.py:788
-#: ../plugin/controllers/models/timers.py:806
+#: ../plugin/controllers/models/timers.py:798
+#: ../plugin/controllers/models/timers.py:867
+#: ../plugin/controllers/models/timers.py:885
 msgid "Sleeptimer has been disabled"
 msgstr "El temporitzador d'apagat s'ha desactivat"
 
-#: ../plugin/controllers/models/timers.py:669
-#: ../plugin/controllers/models/timers.py:695
+#: ../plugin/controllers/models/timers.py:748
+#: ../plugin/controllers/models/timers.py:774
 msgid "Sleeptimer is disabled"
 msgstr "Temporitzador d'apagat desactivat"
 
-#: ../plugin/controllers/models/timers.py:669
-#: ../plugin/controllers/models/timers.py:695
+#: ../plugin/controllers/models/timers.py:748
+#: ../plugin/controllers/models/timers.py:774
 msgid "Sleeptimer is enabled"
 msgstr "Temporitzador d'apagat activat"
 
-#: ../plugin/controllers/models/timers.py:725
-#: ../plugin/controllers/models/timers.py:788
-#: ../plugin/controllers/models/timers.py:801
+#: ../plugin/controllers/models/timers.py:804
+#: ../plugin/controllers/models/timers.py:867
+#: ../plugin/controllers/models/timers.py:880
 #, fuzzy, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Temporitzador d'apagat configurat a %d minuts"
@@ -1764,6 +1781,11 @@ msgstr "L'hora d'inici és després de l'hora de finalització"
 
 #: ../plugin/controllers/i18n.py:233
 msgid "Stream"
+msgstr "Stream"
+
+#: ../plugin/controllers/i18n.py:510
+#, fuzzy
+msgid "Stream Clients"
 msgstr "Stream"
 
 #: ../plugin/controllers/i18n.py:42
@@ -1824,7 +1846,7 @@ msgstr "Televisió"
 msgid "Template Engine"
 msgstr "Motor de la Plantilla"
 
-#: ../plugin/controllers/base.py:339
+#: ../plugin/controllers/base.py:354
 msgid "Terminal"
 msgstr ""
 
@@ -1849,17 +1871,17 @@ msgstr "El paràmetre '%s' no pot estar buit"
 msgid "The parameter 'command' must be a number"
 msgstr "El paràmetre 'ordre' ha de ser un número"
 
-#: ../plugin/controllers/models/timers.py:369
+#: ../plugin/controllers/models/timers.py:434
 #, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "El temporitzador '%s' ha sigut %s satisfactòriament"
 
-#: ../plugin/controllers/models/timers.py:325
+#: ../plugin/controllers/models/timers.py:390
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "El tmeporitzador '%s' s'ha eliminat satisfactòriament"
 
-#: ../plugin/controllers/models/timers.py:361
+#: ../plugin/controllers/models/timers.py:426
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "Temporitzador '%s' s'ha gravat! No està deshabilitat!"
@@ -1896,27 +1918,27 @@ msgstr "Temps d'espera"
 msgid "Timer"
 msgstr "Gravació"
 
-#: ../plugin/controllers/models/timers.py:201
+#: ../plugin/controllers/models/timers.py:251
 #, python-format
 msgid "Timer '%s' added"
 msgstr "Temporitzador '%s' afegit"
 
-#: ../plugin/controllers/models/timers.py:355
+#: ../plugin/controllers/models/timers.py:420
 #, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Temporitzador '%s' ja existeix!"
 
-#: ../plugin/controllers/models/timers.py:287
+#: ../plugin/controllers/models/timers.py:352
 #, python-format
 msgid "Timer '%s' changed"
 msgstr "Temporitzador '%s' canviat"
 
-#: ../plugin/controllers/models/timers.py:349
+#: ../plugin/controllers/models/timers.py:414
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "Temporitzador %s no habilitat durant el conflicte"
 
-#: ../plugin/controllers/models/timers.py:306
+#: ../plugin/controllers/models/timers.py:371
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "El temporitzador '%s' no s'ha guardat per un conflicte"
@@ -1929,7 +1951,7 @@ msgstr "Temporitzador afegit"
 msgid "Timer added"
 msgstr "Afegir gravació"
 
-#: ../plugin/controllers/models/timers.py:441
+#: ../plugin/controllers/models/timers.py:506
 msgid "Timer conflict detected! Not recording!"
 msgstr "Detectat conflicte entre temporitzadors. No s'està gravant."
 
@@ -1937,7 +1959,7 @@ msgstr "Detectat conflicte entre temporitzadors. No s'està gravant."
 msgid "Timer type"
 msgstr "Tipus gravació"
 
-#: ../plugin/controllers/models/timers.py:391
+#: ../plugin/controllers/models/timers.py:456
 msgid "TimerList has been saved"
 msgstr "La llista de temporitzadors s'ha guardat"
 
@@ -2022,7 +2044,7 @@ msgstr "Tipus"
 msgid "Unknown Volume command %s"
 msgstr "Ordre %s de Volum Desconeguda"
 
-#: ../plugin/controllers/models/timers.py:536
+#: ../plugin/controllers/models/timers.py:601
 #, python-format
 msgid "Unknown command: '%s'"
 msgstr "Ordre desconeguda: '%s'"
@@ -2064,11 +2086,15 @@ msgstr "Error pujant arxiu"
 msgid "Use a custom location"
 msgstr "Utilitzar una ubicació personalitzada"
 
-#: ../plugin/plugin.py:134 ../plugin/controllers/i18n.py:182
+#: ../plugin/controllers/i18n.py:506
+msgid "Use as PiP if possible"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:182 ../plugin/plugin.py:134
 msgid "Use custom box name"
 msgstr "Utilitzar nom personalitzat per al deco"
 
-#: ../plugin/plugin.py:131 ../plugin/controllers/i18n.py:472
+#: ../plugin/controllers/i18n.py:472 ../plugin/plugin.py:131
 msgid "Use new design"
 msgstr "Utilitzar nou diseny"
 
@@ -2076,7 +2102,7 @@ msgstr "Utilitzar nou diseny"
 msgid "VPS"
 msgstr "VPS"
 
-#: ../plugin/controllers/models/timers.py:845
+#: ../plugin/controllers/models/timers.py:924
 msgid "VPS plugin not found"
 msgstr "Plugin VPS no trobat"
 
@@ -2116,7 +2142,7 @@ msgstr "Control de volum"
 msgid "Vpid"
 msgstr ""
 
-#: ../plugin/controllers/models/info.py:616
+#: ../plugin/controllers/models/info.py:628
 msgid "W"
 msgstr "W"
 
@@ -2271,7 +2297,9 @@ msgstr "a la descripció curta"
 msgid "in Title"
 msgstr "al Títul"
 
-#: ../plugin/controllers/models/movies.py:216
+#: ../plugin/controllers/models/movies.py:223
+#: ../plugin/controllers/models/movies.py:347
+#: ../plugin/controllers/models/movies.py:756
 #: ../plugin/controllers/models/info.py:294
 #: ../plugin/controllers/models/info.py:297
 msgid "kB"
@@ -2323,7 +2351,7 @@ msgstr ""
 msgid "record"
 msgstr "gravar"
 
-#: ../plugin/controllers/models/movies.py:294
+#: ../plugin/controllers/models/movies.py:417
 msgid "remove"
 msgstr ""
 
@@ -2377,7 +2405,7 @@ msgstr "coincidència en títul o descripció curta"
 msgid "transcoded"
 msgstr "transcodificat"
 
-#: ../plugin/controllers/web.py:684
+#: ../plugin/controllers/web.py:727
 #, python-format
 msgid "type %s is not a number"
 msgstr "El tipus %s no és un número"
