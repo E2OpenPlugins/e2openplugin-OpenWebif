@@ -13,7 +13,7 @@ install:
 - pip install bandit
 
 script: 
-- python -m compileall -l . -l plugin -l plugin/backport -l plugin/controllers -l plugin/controllers/models
+- python -m compileall -l . -r 10 -q
 - cheetah compile -R plugin
 - python testsuite/evil_eval.py
 
