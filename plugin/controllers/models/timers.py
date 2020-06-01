@@ -21,6 +21,7 @@
 ##########################################################################
 
 from __future__ import print_function
+import six
 from enigma import eEPGCache, eServiceReference
 from Components.UsageConfig import preferredTimerPath, preferredInstantRecordPath
 from Components.config import config
@@ -139,7 +140,7 @@ def getTimers(session):
 			"eit": timer.eit,
 			"name": timer.name,
 			"description": timer.description,
-			"descriptionextended": unicode(descriptionextended, 'utf_8', errors='ignore').encode('utf_8', 'ignore'),
+			"descriptionextended": six.text_type(descriptionextended, 'utf_8', errors='ignore').encode('utf_8', 'ignore'),
 			"disabled": disabled,
 			"begin": timer.begin,
 			"end": timer.end,

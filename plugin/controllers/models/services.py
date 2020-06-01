@@ -23,6 +23,7 @@
 from __future__ import print_function
 import re
 import unicodedata
+import six
 from time import time, localtime, strftime, mktime
 
 from Tools.Directories import fileExists
@@ -67,9 +68,9 @@ def filterName(name, encode=True):
 def convertDesc(val, encode=True):
 	if val is not None:
 		if encode is True:
-			return html_escape(unicode(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore'), quote=True).replace(u'\x8a', '\n')
+			return html_escape(six.text_type(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore'), quote=True).replace(u'\x8a', '\n')
 		else:
-			return unicode(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore').replace(u'\x1a', '')
+			return six.text_type(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore').replace(u'\x1a', '')
 	return val
 
 
@@ -535,14 +536,14 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, pic
 			if showAll or st == 0:
 				service = {}
 				service['pos'] = 0 if (st & 64) else pos
-				sr = unicode(sitem[0], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+				sr = six.text_type(sitem[0], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 				if CalcPos:
 					service['startpos'] = oldoPos
 				if picon:
 					service['picon'] = getPicon(sr)
 				service['servicereference'] = sr
 				service['program'] = int(service['servicereference'].split(':')[3], 16)
-				service['servicename'] = unicode(sitem[1], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+				service['servicename'] = six.text_type(sitem[1], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 				if provider:
 					if sitem[0] in allproviders:
 						service['provider'] = allproviders[sitem[0]]
@@ -1085,7 +1086,7 @@ def getPicon(sname):
 			# sname = ":".join(sname.split(":")[:10]) -> old way
 			sname = ":".join(sname.split("://")[:1])
 			sname = GetWithAlternative(sname)
-			cname = unicodedata.normalize('NFKD', unicode(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
+			cname = unicodedata.normalize('NFKD', six.text_type(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
 			cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').replace(':', '').lower())
 			# picon by channel name for URL
 			if len(cname) > 0 and fileExists(pp + cname + ".png"):
@@ -1135,7 +1136,7 @@ def getPicon(sname):
 			cname1 = cname.replace('\xc2\x86', '').replace('\xc2\x87', '').replace('/', '_').encode('utf-8', 'ignore')
 			if fileExists(pp + cname1 + ".png"):
 				return "/picon/" + cname1 + ".png"
-			cname = unicodedata.normalize('NFKD', unicode(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
+			cname = unicodedata.normalize('NFKD', six.text_type(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
 			cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').lower())
 			if len(cname) > 0:
 				filename = pp + cname + ".png"

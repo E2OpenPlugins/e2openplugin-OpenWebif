@@ -23,6 +23,7 @@
 from __future__ import print_function
 import os
 import struct
+import six
 
 from enigma import eServiceReference, iServiceInformation, eServiceCenter
 from ServiceReference import ServiceReference
@@ -204,10 +205,10 @@ def getMovieList(rargs=None, locations=None):
 					extended_description = event and event.getExtendedDescription() or ""
 					if extended_description == '' and txtdesc != '':
 						extended_description = txtdesc
-					movie['descriptionExtended'] = unicode(extended_description, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+					movie['descriptionExtended'] = six.text_type(extended_description, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 
 					desc = info.getInfoString(serviceref, iServiceInformation.sDescription)
-					movie['description'] = unicode(desc, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+					movie['description'] = six.text_type(desc, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 
 				if fields is None or 'size' in fields:
 					size = 0
@@ -328,10 +329,10 @@ def getMovieSearchList(rargs=None, locations=None):
 			extended_description = event and event.getExtendedDescription() or ""
 			if extended_description == '' and txtdesc != '':
 				extended_description = txtdesc
-			movie['descriptionExtended'] = unicode(extended_description, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+			movie['descriptionExtended'] = six.text_type(extended_description, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 
 			desc = info.getInfoString(serviceref, iServiceInformation.sDescription)
-			movie['description'] = unicode(desc, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+			movie['description'] = six.text_type(desc, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 
 		if fields is None or 'size' in fields:
 			size = 0
@@ -738,10 +739,10 @@ def getMovieDetails(sRef=None):
 		extended_description = event and event.getExtendedDescription() or ""
 		if extended_description == '' and txtdesc != '':
 			extended_description = txtdesc
-		movie['descriptionExtended'] = unicode(extended_description, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+		movie['descriptionExtended'] = six.text_type(extended_description, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 
 		desc = info.getInfoString(serviceref, iServiceInformation.sDescription)
-		movie['description'] = unicode(desc, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+		movie['description'] = six.text_type(desc, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 
 		size = 0
 		sz = ''
