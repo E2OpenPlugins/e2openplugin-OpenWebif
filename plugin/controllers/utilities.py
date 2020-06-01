@@ -43,7 +43,7 @@ SERVICE_TYPE = {
 	SERVICE_TYPE_OPT: 'OPT',
 }
 
-SERVICE_TYPE_LOOKUP = {k: v for k, v in SERVICE_TYPE.iteritems()}
+SERVICE_TYPE_LOOKUP = {k: v for k, v in SERVICE_TYPE.items()}
 
 #: Namespace - DVB-C services
 NS_DVB_C = 0xffff0000
@@ -62,7 +62,7 @@ NS = {
 }
 
 #: Namespace:Label lookup map
-NS_LOOKUP = {v: k for k, v in NS.iteritems()}
+NS_LOOKUP = {v: k for k, v in NS.items()}
 
 
 def lenient_decode(value, encoding=None):
