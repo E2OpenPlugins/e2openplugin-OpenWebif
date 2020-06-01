@@ -55,12 +55,12 @@ class AjaxController(BaseController):
 		"""
 		ajax requests with no extra data
 		"""
-		return ['powerstate', 'message', 'myepg', 'radio', 'terminal', 'epgr', 'bqe', 'tv', 'satfinder' ]
+		return ['powerstate', 'message', 'myepg', 'radio', 'terminal', 'epgr', 'bqe', 'tv', 'satfinder']
 
 	def P_edittimer(self, request):
 		pipzap = getInfo()['timerpipzap']
 		autoadjust = getInfo()['timerautoadjust']
-		return {"autoadjust": autoadjust , "pipzap" : pipzap}
+		return {"autoadjust": autoadjust, "pipzap": pipzap}
 
 	def P_current(self, request):
 		return getCurrentFullInfo(self.session)
@@ -216,13 +216,13 @@ class AjaxController(BaseController):
 		unsort = movies['movies']
 
 		if sorttype == 'name':
-			movies['movies'] = sorted(unsort, key=lambda k: k['eventname']) 
+			movies['movies'] = sorted(unsort, key=lambda k: k['eventname'])
 		elif sorttype == 'named':
-			movies['movies'] = sorted(unsort, key=lambda k: k['eventname'],reverse=True) 
+			movies['movies'] = sorted(unsort, key=lambda k: k['eventname'], reverse=True)
 		elif sorttype == 'date':
-			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime']) 
+			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime'])
 		elif sorttype == 'dated':
-			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime'],reverse=True) 
+			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime'], reverse=True)
 
 		movies['sort'] = sorttype
 		return movies

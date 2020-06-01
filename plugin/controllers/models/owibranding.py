@@ -331,11 +331,11 @@ def getAllInfo():
 		elif procmodel == "hd530c":
 			brand = "Mut@nt"
 			model = "HD530c"
-		elif procmodel =="hd60":
-			brand ="Mut@nt"
+		elif procmodel == "hd60":
+			brand = "Mut@nt"
 			model = "HD60"
-		elif procmodel =="multibox":
-			brand ="MaXytec"
+		elif procmodel == "multibox":
+			brand = "MaXytec"
 			model = "Multibox"
 			grabpip = 1
 		elif procmodel == "arivalink200":
@@ -440,7 +440,7 @@ def getAllInfo():
 			grabpip = 1
 		elif procmodel.startswith("sf"):
 			brand = "Octagon"
-			if procmodel.startswith("sf8008"): 
+			if procmodel.startswith("sf8008"):
 				sf8008type = open("/proc/stb/info/type").read()
 				if sf8008type.startswith("11"):
 					procmodel = "sf8008t"
@@ -448,7 +448,7 @@ def getAllInfo():
 				elif sf8008type.startswith("12"):
 					procmodel = "sf8008c"
 					model = "SF8008 4K Combo"
-				else: # sf8008type.startswith("10")
+				else:  # sf8008type.startswith("10")
 					procmodel = "sf8008s"
 					model = "SF8008 4K Single"
 			else:
@@ -617,7 +617,7 @@ def getAllInfo():
 	elif procmodel == "hd60":
 		remote = "hd60"
 	elif procmodel == "multibox":
-		remote = "multibox"	
+		remote = "multibox"
 	elif procmodel in ("spycat", "spycatmini", "spycatminiplus", "spycat4kmini"):
 		remote = "spycat"
 	elif procmodel.startswith("ixuss"):
@@ -677,10 +677,10 @@ def getAllInfo():
 
 	try:
 		kernel = int(about.getKernelVersionString()[0])
-	except NameError: # when "about" is not available
+	except NameError:  # when "about" is not available
 		try:
-			kernel = int(open("/proc/version","r").read().split(' ', 4)[2].split('.',2)[0])
-		except: # set a default
+			kernel = int(open("/proc/version", "r").read().split(' ', 4)[2].split('.', 2)[0])
+		except:  # nosec  # noqa: E722  # set a default
 			kernel = 2
 
 	distro = "unknown"

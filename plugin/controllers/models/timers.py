@@ -25,7 +25,7 @@ from enigma import eEPGCache, eServiceReference
 from Components.UsageConfig import preferredTimerPath, preferredInstantRecordPath
 from Components.config import config
 from Components.TimerSanityCheck import TimerSanityCheck
-from RecordTimer import RecordTimerEntry, RecordTimer, parseEvent
+from RecordTimer import RecordTimerEntry, parseEvent
 from ServiceReference import ServiceReference
 from time import time, strftime, localtime, mktime
 from urllib import unquote
@@ -36,7 +36,6 @@ def getTimers(session):
 	rt = session.nav.RecordTimer
 	timers = []
 	for timer in rt.timer_list + rt.processed_timers:
-		
 		if hasattr(timer, "wakeup_t"):
 			energytimer = timer.wakeup_t or timer.standby_t or timer.shutdown_t or timer.fnc_t != "off" or 0
 			if energytimer:
@@ -186,8 +185,8 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 	if not dirname:
 		dirname = preferredTimerPath()
 
-	# IPTV Fix
-	serviceref = serviceref.replace('%253a','%3a')
+	#  IPTV Fix
+	serviceref = serviceref.replace('%253a', '%3a')
 
 	try:
 		timer = RecordTimerEntry(
@@ -245,7 +244,7 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 			autoadjust = autoadjust
 
 		if hasattr(timer, "allow_duplicate"):
-			allow_duplicate=allow_duplicate
+			allow_duplicate = allow_duplicate
 
 		if pipzap != -1:
 			if hasattr(timer, "pipzap"):
@@ -614,7 +613,7 @@ def tvbrowser(session, request):
 		}
 
 
-def getPowerTimer(session):
+def getPowerTimer(session, request):
 
 	try:
 		from PowerTimer import TIMERTYPE, AFTEREVENT
@@ -682,7 +681,6 @@ def getPowerTimer(session):
 
 
 def setPowerTimer(session, request):
-
 	id = 0
 	if "id" in request.args.keys():
 		id = int(request.args["id"][0])
@@ -727,6 +725,7 @@ def setPowerTimer(session, request):
 
 	# create new Timer
 	if entry is None:
+		from PowerTimer import PowerTimerEntry
 		entry = PowerTimerEntry(begin, end, disabled, afterevent, timertype)
 	else:
 		entry.begin = begin
@@ -734,15 +733,14 @@ def setPowerTimer(session, request):
 		entry.timertype = timertype
 		entry.afterevent = afterevent
 		entry.disabled = disabled
-		
-	# TODO: repeated
+
+	#  TODO: repeated
 	entry.repeated = int(repeated)
 	entry.autosleepinstandbyonly = autosleepinstandbyonly
 	entry.autosleepdelay = autosleepdelay
 	entry.autosleeprepeat = autosleeprepeat
 
-
-	# TODO: Test !!!
+	#  TODO: Test !!!
 
 	return {
 		"result": True,
@@ -884,6 +882,7 @@ def setSleepTimer(session, time, action, enabled):
 				timertype = 2
 				if action == "shutdown":
 					timertype = 3
+				from PowerTimer import PowerTimerEntry
 				entry = PowerTimerEntry(begin, end, False, 0, timertype)
 				entry.repeated = 0
 				entry.autosleepdelay = time

@@ -37,7 +37,7 @@ from ServiceReference import ServiceReference
 from RecordTimer import parseEvent, RecordTimerEntry
 from timer import TimerEntry
 from Screens.InfoBar import InfoBar
-from Tools.Directories import fileExists, pathExists
+from Tools.Directories import fileExists
 from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
 from enigma import eEPGCache
 
@@ -203,13 +203,13 @@ def getInfo(session=None, need_fullinfo=False):
 	info['model'] = getMachineName()
 	info['boxtype'] = getBoxType()
 	info['machinebuild'] = getMachineBuild()
-	try:
+	try:  # temporary due OE-A
 		info['lcd'] = getLcd()
-	except: # temporary due OE-A
+	except:  # noqa: E722
 		info['lcd'] = 0
-	try:
+	try:  # temporary due OE-A
 		info['grabpip'] = getGrabPip()
-	except: # temporary due OE-A
+	except:  # noqa: E722
 		info['grabpip'] = 0
 
 	chipset = "unknown"
@@ -515,14 +515,12 @@ def getInfo(session=None, need_fullinfo=False):
 
 	if session:
 		try:
-# gets all current stream clients for images using eStreamServer
-# TODO: merge eStreamServer and streamList
-# TODO: get tuner info for streams
-# TODO: get recoding/timer info if more than one
-
+			#  gets all current stream clients for images using eStreamServer
+			#  TODO: merge eStreamServer and streamList
+			#  TODO: get tuner info for streams
+			#  TODO: get recoding/timer info if more than one
 			info['streams'] = []
 			try:
-				streams = []
 				from enigma import eStreamServer
 				streamServer = eStreamServer.getInstance()
 				if streamServer is not None:
@@ -540,13 +538,13 @@ def getInfo(session=None, need_fullinfo=False):
 						})
 			except Exception as error:
 				print("[OpenWebif] -D- no eStreamServer %s" % error)
-			
+
 			recs = NavigationInstance.instance.getRecordings()
 			if recs:
-# only one stream and only TV
+				#  only one stream and only TV
 				from Plugins.Extensions.OpenWebif.controllers.stream import streamList
 				s_name = ''
-				# s_cip = ''
+				#  s_cip = ''
 
 				print("[OpenWebif] -D- streamList count '%d'" % len(streamList))
 				if len(streamList) == 1:
@@ -608,9 +606,9 @@ def getInfo(session=None, need_fullinfo=False):
 
 	info['timerpipzap'] = False
 	info['timerautoadjust'] = False
-	
+
 	try:
-		timer = RecordTimerEntry('',0,0,'','',0)
+		timer = RecordTimerEntry('', 0, 0, '', '', 0)
 		if hasattr(timer, "pipzap"):
 			info['timerpipzap'] = True
 		if hasattr(timer, "autoadjust"):

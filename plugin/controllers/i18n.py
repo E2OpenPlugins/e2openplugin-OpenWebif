@@ -23,13 +23,14 @@ def _(txt):
 	except Exception:
 		return txt
 
+
 _locale_init()
 language.addCallback(_locale_init)
 
 
 try:
 	AT_unit = comp_config.plugins.autotimer.unit.value == "hour" and _("hour") or _("minute")
-except:
+except:  # noqa: E722
 	AT_unit = "hour"
 
 tstrings = {
@@ -151,7 +152,7 @@ tstrings = {
 	'ipv6_address': _("IPv6 address(es)"),
 	'info': _("Infos"),
 	'instant_record': _("Instant Record"),
-	'ask_instant_record' :_("Really start instant record now?"),
+	'ask_instant_record': _("Really start instant record now?"),
 	'javalib': _("Javascript Libraries"),
 	'just_play': _("Just play"),
 	'kernel_version': _("Kernel"),
@@ -501,9 +502,9 @@ tstrings = {
 	'show_details_in_channel_list': _("Show Service type in channel list"),
 	'export': _("Export"),
 	'import': _("Import"),
-	
-	'playlistformat':_("Playlist Format"),
-	'pipifposible':_("Use as PiP if possible"),
+
+	'playlistformat': _("Playlist Format"),
+	'pipifposible': _("Use as PiP if possible"),
 	'allow_duplicate': _("Allow duplicates"),
 	'autoadjust': _("Adjust recording time to real event time"),
 

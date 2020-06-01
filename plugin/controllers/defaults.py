@@ -87,6 +87,7 @@ def getPiconPath():
 
 	return None
 
+
 #: PICON PATH FIXME: check path again after a few hours to detect new paths
 PICON_PATH = getPiconPath()
 

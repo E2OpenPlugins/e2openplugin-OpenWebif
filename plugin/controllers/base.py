@@ -124,7 +124,7 @@ class BaseController(resource.Resource):
 
 	def putGZChild(self, path, child):
 		child.isGZ = True
-		self.putChild(path,EncodingResourceWrapper(child, [GzipEncoderFactory()]))
+		self.putChild(path, EncodingResourceWrapper(child, [GzipEncoderFactory()]))
 
 	def getChild(self, path, request):
 		if self.isGZ:
@@ -246,7 +246,7 @@ class BaseController(resource.Resource):
 				else:
 					variant = "oscam"
 
-				conffile = file.split('/')[-1].replace("version","conf")
+				conffile = file.split('/')[-1].replace("version", "conf")
 
 				data = open(file, "r").readlines()  # nosec
 				for i in data:

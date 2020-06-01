@@ -3,7 +3,7 @@
 ##########################################################################
 # OpenWebif: RootController
 ##########################################################################
-# Copyright (C) 2011 - 2018 E2OpenPlugins
+# Copyright (C) 2011 - 2020 E2OpenPlugins
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -75,7 +75,7 @@ class RootController(BaseController):
 		try:
 			from NET import NetController
 			self.putChild("net", NetController(session))
-		except:
+		except:  # noqa: E722
 			pass
 
 	# this function will be called before a page is loaded

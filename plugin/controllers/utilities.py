@@ -34,13 +34,13 @@ SERVICE_TYPE_RADIOA = 0x0a
 
 
 SERVICE_TYPE = {
-	SERVICE_TYPE_TV : 'TV',
-	SERVICE_TYPE_HDTV : 'HDTV',
-	SERVICE_TYPE_RADIO : 'RADIO',
-	SERVICE_TYPE_RADIOA : 'RADIO',
-	SERVICE_TYPE_UHD : 'UHD',
-	SERVICE_TYPE_SD4 : 'SD4',
-	SERVICE_TYPE_OPT : 'OPT',
+	SERVICE_TYPE_TV: 'TV',
+	SERVICE_TYPE_HDTV: 'HDTV',
+	SERVICE_TYPE_RADIO: 'RADIO',
+	SERVICE_TYPE_RADIOA: 'RADIO',
+	SERVICE_TYPE_UHD: 'UHD',
+	SERVICE_TYPE_SD4: 'SD4',
+	SERVICE_TYPE_OPT: 'OPT',
 }
 
 SERVICE_TYPE_LOOKUP = {k: v for k, v in SERVICE_TYPE.iteritems()}
@@ -268,6 +268,7 @@ def getGenreStringLong(hn, ln):
 # Fallback moviePlayState
 def _moviePlayState(cutsFileName, ref, length):
 	return 0
+
 
 if __name__ == '__main__':
 	import doctest

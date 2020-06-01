@@ -2032,7 +2032,7 @@ class WebController(BaseController):
 				return res
 			return setPowerTimer(self.session, request)
 		else:
-			return getPowerTimer(self.session)
+			return getPowerTimer(self.session, request)
 
 	def P_sleeptimer(self, request):
 		"""

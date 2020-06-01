@@ -78,9 +78,9 @@ def convertGenre(val):
 		val = val[0]
 		if len(val) > 1:
 			if val[0] > 0:
-				gid = val[0]*16 + val[1]
-				return str(getGenreStringLong(val[0], val[1])).strip() , gid
-	return "",0
+				gid = val[0] * 16 + val[1]
+				return str(getGenreStringLong(val[0], val[1])).strip(), gid
+	return "", 0
 
 
 def getServiceInfoString(info, what):
@@ -100,7 +100,7 @@ def getCurrentService(session):
 			serviceref = session.nav.getCurrentlyPlayingServiceReference()
 			if serviceref is not None:
 				ref = serviceref.toString()
-		
+
 		ns = getServiceInfoString(info, iServiceInformation.sNamespace)
 		try:
 			ns = int(ns)
@@ -116,13 +116,13 @@ def getCurrentService(session):
 			if epg_bouquet:
 				bqname = ServiceReference(epg_bouquet).getServiceName()
 				bqref = ServiceReference(epg_bouquet).ref.toString()
-		except:
+		except:  # noqa: E722
 			pass
 
 		return {
 			"result": True,
 			"name": filterName(info.getName()),
-			"namespace" : 0xffffffff & ns,
+			"namespace": 0xffffffff & ns,
 			"aspect": getServiceInfoString(info, iServiceInformation.sAspect),
 			"provider": getServiceInfoString(info, iServiceInformation.sProvider),
 			"width": getServiceInfoString(info, iServiceInformation.sVideoWidth),
@@ -392,7 +392,7 @@ def getProtection(sref):
 		protection = parentalControl.getProtectionLevel(sref)
 		if protection != -1:
 			if config.ParentalControl.type.value == "blacklist":
-				if parentalControl.blacklist.has_key(sref):
+				if sref in parentalControl.blacklist:
 					if "SERVICE" in parentalControl.blacklist[sref]:
 						isProtected = '1'
 					elif "BOUQUET" in parentalControl.blacklist[sref]:
@@ -400,7 +400,7 @@ def getProtection(sref):
 					else:
 						isProtected = '3'
 			elif config.ParentalControl.type.value == "whitelist":
-				if not parentalControl.whitelist.has_key(sref):
+				if sref not in parentalControl.whitelist:
 					service = eServiceReference(sref)
 					if service.flags & eServiceReference.isGroup:
 						isprotected = '5'
@@ -513,7 +513,6 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, pic
 
 	oPos = 0
 	for sitem in slist:
-		
 		oldoPos = oPos
 		sref = sitem[0]
 		if CalcPos and 'userbouquet' in sref:
@@ -665,7 +664,7 @@ def getEvent(ref, idev, encode=True):
 		info['longdesc'] = convertDesc(event[5], encode)
 		info['channel'] = filterName(event[6], encode)
 		info['sref'] = event[7]
-		info['genre'],info['genreid'] = convertGenre(event[8])
+		info['genre'], info['genreid'] = convertGenre(event[8])
 		break
 	return {'event': info}
 
@@ -709,7 +708,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 					else:
 						ev['progress'] = int(((event[7] - event[1]) * 100 / event[2]) * 4)
 					ev['now_timestamp'] = event[7]
-					ev['genre'],ev['genreid'] = convertGenre(event[8])
+					ev['genre'], ev['genreid'] = convertGenre(event[8])
 					ret.append(ev)
 				else:
 					use_empty_ev = True
@@ -771,7 +770,7 @@ def getBouquetEpg(ref, begintime=-1, endtime=None, encode=False):
 			ev['sref'] = event[7]
 			ev['sname'] = filterName(event[8], encode)
 			ev['now_timestamp'] = event[3]
-			ev['genre'],ev['genreid'] = convertGenre(event[9])
+			ev['genre'], ev['genreid'] = convertGenre(event[9])
 			ret.append(ev)
 
 	return {"events": ret, "result": True}
@@ -845,7 +844,7 @@ def getBouquetNowNextEpg(ref, servicetype, encode=False):
 			ev['sref'] = event[7]
 			ev['sname'] = filterName(event[8], encode)
 			ev['now_timestamp'] = event[3]
-			ev['genre'],ev['genreid'] = convertGenre(event[9])
+			ev['genre'], ev['genreid'] = convertGenre(event[9])
 			ret.append(ev)
 
 	return {"events": ret, "result": True}
@@ -870,7 +869,7 @@ def getNowNextEpg(ref, servicetype, encode=False):
 				ev['sname'] = filterName(event[8], encode)
 				ev['now_timestamp'] = event[3]
 				ev['remaining'] = (event[1] + event[2]) - event[3]
-				ev['genre'],ev['genreid'] = convertGenre(event[9])
+				ev['genre'], ev['genreid'] = convertGenre(event[9])
 			else:
 				ev['begin_timestamp'] = 0
 				ev['duration_sec'] = 0
@@ -934,7 +933,7 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 			ev['sname'] = filterName(event[6], encode)
 			ev['picon'] = getPicon(event[7])
 			ev['now_timestamp'] = None
-			ev['genre'],ev['genreid'] = convertGenre(event[8])
+			ev['genre'], ev['genreid'] = convertGenre(event[8])
 			if endtime:
 				# don't show events if begin after endtime
 				if event[1] <= endtime:
@@ -980,7 +979,7 @@ def getSearchSimilarEpg(ref, eventid, encode=False):
 			ev['sname'] = filterName(event[6], encode)
 			ev['picon'] = getPicon(event[7])
 			ev['now_timestamp'] = None
-			ev['genre'],ev['genreid'] = convertGenre(event[8])
+			ev['genre'], ev['genreid'] = convertGenre(event[8])
 			ret.append(ev)
 
 	return {"events": ret, "result": True}
@@ -994,7 +993,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 		startTime = event[1]
 		endTime = event[1] + event[6] - 120
 		serviceref = event[4]
-		if not timerlist.has_key(serviceref):
+		if serviceref not in timerlist:
 			return ''
 		for timer in timerlist[serviceref]:
 			if timer.begin <= startTime and timer.end >= endTime:
@@ -1029,7 +1028,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 		# service reference. Partition is generated here.
 		timerlist = {}
 		for timer in self.session.nav.RecordTimer.timer_list + self.session.nav.RecordTimer.processed_timers:
-			if not timerlist.has_key(str(timer.service_ref)):
+			if str(timer.service_ref) not in timerlist:
 				timerlist[str(timer.service_ref)] = []
 			timerlist[str(timer.service_ref)].append(timer)
 
@@ -1057,7 +1056,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 				ev['duration'] = event[6]
 
 			channel = filterName(event[5])
-			if not ret.has_key(channel):
+			if channel not in ret:
 				if Mode == 1:
 					ret[channel] = [[], [], [], [], [], [], [], [], [], [], [], []]
 				else:

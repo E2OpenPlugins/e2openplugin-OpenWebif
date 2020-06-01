@@ -264,7 +264,6 @@ class BQEWebController(BaseController):
 		pos = 0
 		oPos = 0
 		for item in fulllist:
-			
 			oldoPos = oPos
 			if CalcPos:
 				sref = item[0].toString()
@@ -299,7 +298,7 @@ class BQEWebController(BaseController):
 					if item[0].flags & eServiceReference.isGroup:
 						gservices = []
 						service['isgroup'] = '1'
-						#get members of group
+						# get members of group
 						gserviceslist = serviceHandler.list(eServiceReference(sref))
 						gfulllist = gserviceslist and gserviceslist.getContent("RN", True)
 						for gitem in gfulllist:
@@ -319,7 +318,7 @@ class BQEWebController(BaseController):
 					protection = parentalControl.getProtectionLevel(sref)
 					if protection != -1:
 						if config.ParentalControl.type.value == "blacklist":
-							if parentalControl.blacklist.has_key(sref):
+							if sref in parentalControl.blacklist:
 								if "SERVICE" in parentalControl.blacklist[sref]:
 									service['isprotected'] = '1'
 								elif "BOUQUET" in parentalControl.blacklist[sref]:
@@ -327,7 +326,7 @@ class BQEWebController(BaseController):
 								else:
 									service['isprotected'] = '3'
 						elif config.ParentalControl.type.value == "whitelist":
-							if not parentalControl.whitelist.has_key(sref):
+							if sref not in parentalControl.whitelist:
 								if item[0].flags & eServiceReference.isGroup:
 									service['isprotected'] = '5'
 								else:
