@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 import os
 import sys
 
@@ -75,7 +76,7 @@ def getPiconPath():
 			for folder in PICON_FOLDERS:
 				current = prefix + folder + '/'
 				if os.path.isdir(current):
-					print "Current Picon Path : %s" % current
+					print("Current Picon Path : %s" % current)
 					GLOBALPICONPATH = current
 					return GLOBALPICONPATH
 #: TODO discuss

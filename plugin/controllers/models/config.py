@@ -1,5 +1,26 @@
 # -*- coding: utf-8 -*-
 
+##########################################################################
+# OpenWebif: config
+##########################################################################
+# Copyright (C) 2011 - 2020 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
+
+from __future__ import print_function
 from enigma import eEnv
 from Components.SystemInfo import SystemInfo
 from Components.config import config
@@ -125,7 +146,7 @@ def getJsonFromConfig(cnf):
 	elif cnf.__class__.__name__ == "ConfigNothing":
 		return None
 
-	print "[OpenWebif] Unknown class ", cnf.__class__.__name__
+	print("[OpenWebif] Unknown class ", cnf.__class__.__name__)
 	return {
 		"result": False,
 		"type": "unknown"
@@ -135,7 +156,7 @@ def saveConfig(path, value):
 	try:
 		cnf = get_config_attribute(path, root_obj=config)
 	except Exception as exc:
-		print "[OpenWebif] ", exc
+		print("[OpenWebif] ", exc)
 		return {
 			"result": False,
 			"message": "I'm sorry Dave, I'm afraid I can't do that"
@@ -174,8 +195,8 @@ def saveConfig(path, value):
 		else:
 			cnf.value = value
 		cnf.save()
-	except Exception, e:
-		print "[OpenWebif] ", e
+	except Exception as e:
+		print("[OpenWebif] ", e)
 		return {
 			"result": False
 		}
@@ -198,7 +219,7 @@ def getConfigs(key):
 				data = getJsonFromConfig(eval(entry.text or ""))  # nosec
 				if data is None:
 					continue
-				# print "[OpenWebif] -D- config entry: ", entry.text
+				# print("[OpenWebif] -D- config entry: ", entry.text)
 				text = _(entry.get("text", ""))
 				if "limits" in data:
 					text = "%s (%d - %d)" % (text, data["limits"][0], data["limits"][1])
@@ -276,7 +297,7 @@ class ConfigFiles:
 	def parseConfigFiles(self):
 		sections = []
 		for setupfile in self.setupfiles:
-			# print "[OpenWebif] loading configuration file :", setupfile
+			# print("[OpenWebif] loading configuration file :", setupfile)
 			setupfile = file(setupfile, 'r')
 			setupdom = xml.etree.cElementTree.parse(setupfile)  # nosec
 			setupfile.close()
@@ -293,7 +314,7 @@ class ConfigFiles:
 						self.allowedsections.append(key)
 					else:
 						continue
-				# print "[OpenWebif] loading configuration section :", key
+				# print("[OpenWebif] loading configuration section :", key)
 				for entry in section:
 					if entry.tag == "item":
 						requires = entry.get("requires")

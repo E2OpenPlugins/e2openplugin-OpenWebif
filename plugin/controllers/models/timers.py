@@ -1,14 +1,26 @@
 # -*- coding: utf-8 -*-
 
-##############################################################################
-#                        2011 - 2020 E2OpenPlugin                            #
-#                                                                            #
-#  This file is open source software; you can redistribute it and/or modify  #
-#     it under the terms of the GNU General Public License version 2 as      #
-#               published by the Free Software Foundation.                   #
-#                                                                            #
-##############################################################################
+##########################################################################
+# OpenWebif: timers
+##########################################################################
+# Copyright (C) 2011 - 2020 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
 
+from __future__ import print_function
 from enigma import eEPGCache, eServiceReference
 from Components.UsageConfig import preferredTimerPath, preferredInstantRecordPath
 from Components.config import config
@@ -239,8 +251,8 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 			if hasattr(timer, "pipzap"):
 				timer.pipzap = pipzap == 1
 
-	except Exception, e:
-		print e
+	except Exception as e:
+		print(str(e))
 		return {
 			"result": False,
 			"message": _("Could not add timer '%s'!") % name
@@ -661,8 +673,8 @@ def getPowerTimer(session):
 			"result": True,
 			"timers": timers
 		}
-	except Exception, e:
-		print e
+	except Exception as e:
+		print(str(e))
 		return {
 			"result": False,
 			"message": _("PowerTimer feature not available")

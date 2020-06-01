@@ -1,13 +1,26 @@
 # -*- coding: utf-8 -*-
 
-##############################################################################
-#                        2011 E2OpenPlugins                                  #
-#                                                                            #
-#  This file is open source software; you can redistribute it and/or modify  #
-#     it under the terms of the GNU General Public License version 2 as      #
-#               published by the Free Software Foundation.                   #
-#                                                                            #
-##############################################################################
+##########################################################################
+# OpenWebif: grab
+##########################################################################
+# Copyright (C) 2011 - 2020 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
+
+from __future__ import print_function
 from enigma import eConsoleAppContainer
 from Screens.InfoBar import InfoBar
 from twisted.web import resource, server
@@ -61,7 +74,7 @@ class GrabRequest(object):
 		self.container.setBufferSize(32768)
 		if mode == "lcd":
 			if self.container.execute(command):
-				raise Exception, "failed to execute: ", command
+				raise Exception("failed to execute: ", command)
 			sref = 'lcdshot'
 		else:
 			self.container.execute(GRAB_PATH, *graboptions)
@@ -92,8 +105,8 @@ class GrabRequest(object):
 	def grabFinished(self, retval=None):
 		try:
 			self.request.finish()
-		except RuntimeError, error:
-			print "[OpenWebif] grabFinished error: %s" % error
+		except RuntimeError as error:
+			print("[OpenWebif] grabFinished error: %s" % error)
 		# Break the chain of ownership
 		del self.request
 

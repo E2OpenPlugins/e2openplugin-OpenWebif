@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 ##########################################################################
-# OpenWebif: BaseController
+# OpenWebif: movies
 ##########################################################################
-# Copyright (C) 2011 - 2018 E2OpenPlugins
+# Copyright (C) 2011 - 2020 E2OpenPlugins
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
 ##########################################################################
 
+from __future__ import print_function
 import os
 import struct
 
@@ -396,9 +397,9 @@ def removeMovie(session, sRef, Force=False):
 				except ImportError:
 					message = "trashcan exception"
 					pass
-				except Exception, e:
-					print "Failed to move to .Trash folder:", e
+				except Exception as e:
 					message = "Failed to move to .Trash folder: %s" + str(e)
+					print(message)
 				deleted = True
 		elif hasattr(config.usage, 'movielist_use_trash_dir'):
 			fullpath = service.ref.getPath()
@@ -424,9 +425,9 @@ def removeMovie(session, sRef, Force=False):
 				except ImportError:
 					message = "trashdir exception"
 					pass
-				except Exception, e:
-					print "Failed to move to trashdir:", e
+				except Exception as e:
 					message = "Failed to move to trashdir: %s" + str(e)
+					print(message)
 				deleted = True
 		if not deleted:
 			if not offline.deleteFromDisk(0):
@@ -497,7 +498,7 @@ def _moveMovie(session, sRef, destpath=None, newname=None):
 								move(src, srcpath + newname + suffix)
 						else:
 							move(src, destpath + fileName + suffix)
-					except IOError, e:
+					except IOError as e:
 						errorlist.append("I/O error({0})".format(e))
 						break
 					except OSError as ose:
@@ -627,7 +628,7 @@ def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, New
 							)
 						f.close()
 					except:
-						print 'Error'
+						print('Error')
 						pass
 
 					if cuts is not None:

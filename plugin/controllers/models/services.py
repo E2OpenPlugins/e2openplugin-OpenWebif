@@ -1,13 +1,26 @@
 # -*- coding: utf-8 -*-
 
-##############################################################################
-#                        2011 E2OpenPlugins                                  #
-#                                                                            #
-#  This file is open source software; you can redistribute it and/or modify  #
-#     it under the terms of the GNU General Public License version 2 as      #
-#               published by the Free Software Foundation.                   #
-#                                                                            #
-##############################################################################
+##########################################################################
+# OpenWebif: services
+##########################################################################
+# Copyright (C) 2011 - 2020 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
+
+from __future__ import print_function
 import re
 import unicodedata
 from time import time, localtime, strftime, mktime
@@ -56,7 +69,7 @@ def convertDesc(val, encode=True):
 		if encode is True:
 			return html_escape(unicode(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore'), quote=True).replace(u'\x8a', '\n')
 		else:
-			return unicode(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+			return unicode(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore').replace(u'\x1a', '')
 	return val
 
 
@@ -127,8 +140,8 @@ def getCurrentService(session):
 			"bqref": quote(bqref, safe=' ~@#$&()*!+=:;,.?/\''),
 			"bqname": bqname
 		}
-	except Exception, e:
-		print str(e)
+	except Exception as e:
+		print(str(e))
 		return {
 			"result": False,
 			"name": "",
@@ -607,7 +620,7 @@ def getSubServices(session):
 		})
 		subservices = service.subServices()
 		if subservices and subservices.getNumberOfSubservices() > 0:
-			print subservices.getNumberOfSubservices()
+			print(subservices.getNumberOfSubservices())
 			for i in range(subservices.getNumberOfSubservices()):
 				sub = subservices.getSubservice(i)
 				services.append({

@@ -3,7 +3,7 @@
 ##########################################################################
 # OpenWebif: BaseController
 ##########################################################################
-# Copyright (C) 2011 - 2018 E2OpenPlugins
+# Copyright (C) 2011 - 2020 E2OpenPlugins
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
 ##########################################################################
 
+from __future__ import print_function
 import os
 import imp
 import json
@@ -203,7 +204,7 @@ class BaseController(resource.Resource):
 				module = module.replace(".", "")
 				out = self.loadTemplate(module, self.path, data)
 				if out is None:
-					print "[OpenWebif] ERROR! Template not found for page '%s'" % request.uri
+					print("[OpenWebif] ERROR! Template not found for page '%s'" % request.uri)
 					self.error404(request)
 				else:
 					if self.isMobile:
@@ -221,7 +222,7 @@ class BaseController(resource.Resource):
 					request.finish()
 
 		else:
-			print "[OpenWebif] page '%s' not found" % request.uri
+			print("[OpenWebif] page '%s' not found" % request.uri)
 			self.error404(request)
 
 		# restore cached data
