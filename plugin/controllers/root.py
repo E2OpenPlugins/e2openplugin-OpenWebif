@@ -3,7 +3,7 @@
 ##########################################################################
 # OpenWebif: RootController
 ##########################################################################
-# Copyright (C) 2011 - 2018 E2OpenPlugins
+# Copyright (C) 2011 - 2020 E2OpenPlugins
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -25,7 +25,6 @@ import os
 from twisted.web import static, http, proxy
 from Components.config import config
 
-from models.info import getPublicPath, getPiconPath, getBasePath
 from models.grab import grabScreenshot
 from base import BaseController
 from web import WebController, ApiController
@@ -33,22 +32,24 @@ from ajax import AjaxController
 from mobile import MobileController
 from ipkg import IpkgController
 from AT import ATController
-from SR import SRController
 from ER import ERController
 from BQE import BQEController
 from transcoding import TranscodingController
 from wol import WOLSetupController, WOLClientController
 from file import FileController
 
+from defaults import PICON_PATH, getPublicPath, VIEWS_PATH
 
 class RootController(BaseController):
+	"""
+	Root Web Controller
+	"""
 	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
-		piconpath = getPiconPath()
 
 		self.putChild("web", WebController(session))
-		self.putChild("api", ApiController(session))
-		self.putChild("ajax", AjaxController(session))
+		self.putGZChild("api", ApiController(session))
+		self.putGZChild("ajax", AjaxController(session))
 		self.putChild("file", FileController())
 		self.putChild("grab", grabScreenshot(session))
 		if os.path.exists(getPublicPath('mobile')):
@@ -62,20 +63,19 @@ class RootController(BaseController):
 
 		if os.path.exists('/usr/bin/shellinaboxd'):
 			self.putChild("terminal", proxy.ReverseProxyResource('::1', 4200, '/'))
-		self.putChild("ipkg", IpkgController(session))
+		self.putGZChild("ipkg", IpkgController(session))
 		self.putChild("autotimer", ATController(session))
-		self.putChild("serienrecorder", SRController(session))
 		self.putChild("epgrefresh", ERController(session))
 		self.putChild("bouqueteditor", BQEController(session))
 		self.putChild("transcoding", TranscodingController())
 		self.putChild("wol", WOLClientController())
 		self.putChild("wolsetup", WOLSetupController(session))
-		if piconpath:
-			self.putChild("picon", static.File(piconpath))
+		if PICON_PATH:
+			self.putChild("picon", static.File(PICON_PATH))
 		try:
 			from NET import NetController
 			self.putChild("net", NetController(session))
-		except:
+		except:  # noqa: E722
 			pass
 
 	# this function will be called before a page is loaded
@@ -86,7 +86,7 @@ class RootController(BaseController):
 	# the "pages functions" must be called P_pagename
 	# example http://boxip/index => P_index
 	def P_index(self, request):
-		if config.OpenWebif.responsive_enabled.value and os.path.exists(getBasePath() + "/controllers/views/responsive"):
+		if config.OpenWebif.responsive_enabled.value and os.path.exists(VIEWS_PATH + "/responsive"):
 			return {}
 		mode = ''
 		if "mode" in request.args.keys():

@@ -1,4 +1,4 @@
-#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 <div class="col-xs-12">
 	<div class="card">
@@ -120,6 +120,33 @@
 					</div>
 				</div>
 			</div>
+			#if $len($streams) > 0
+			<div class="row clearfix">
+				<div class="col-xs-12">
+					<div class="card">
+						<div class="header vti-colored-card bg-$skinColor">
+							<h2>$tstrings['streamclients']</h2>
+						</div>
+						<div class="body">
+							#for $stream in $streams
+								<div class="row clearfix">
+									<div class="col-xs-12 col-sm-6">
+										<b>$stream.ip:</b>
+									</div>
+									<div class="col-xs-12 col-sm-6">
+										#if $stream.type == 'T'
+											$stream.name / ($tstrings['transcoded'])
+										#else
+											$stream.name
+										#end if
+									</div>
+								</div>
+							#end for
+						</div>
+					</div>
+				</div>
+			</div>
+			#end if
 			<div class="row clearfix">
 				<div class="col-xs-12">
 					<div class="card">

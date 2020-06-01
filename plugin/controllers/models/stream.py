@@ -66,9 +66,13 @@ def getStream(session, request, m3ufile):
 	info = getInfo()
 	model = info["model"]
 	machinebuild = info["machinebuild"]
+	urlparam = '?'
+	if info["imagedistro"] in ('openpli', 'satdreamgr', 'openvision'):
+		urlparam = '&'
 	transcoder_port = None
 	args = ""
-	if model in ("Uno4K", "Uno4K SE", "Ultimo4K", "Solo4K", "Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus", "UHD Quad 4k") or machinebuild in ('dags7356', 'dags7252', 'gb7252', 'gb7356'):
+
+	if fileExists("/dev/bcm_enc0"):
 		try:
 			transcoder_port = int(config.plugins.transcodingsetup.port.value)
 		except StandardError:
@@ -79,30 +83,27 @@ def getStream(session, request, m3ufile):
 				portNumber = transcoder_port
 		if "port" in request.args:
 			portNumber = request.args["port"][0]
+	elif fileExists("/dev/encoder0") or fileExists("/proc/stb/encoder/0/apply"):
+		transcoder_port = portNumber
 
-	# INI use dynamic encoder allocation, and each stream can have diffrent parameters
-	elif machinebuild in ('ew7356', 'formuler1tc', 'tiviaraplus'):
-		transcoder_port = 8001
+	if fileExists("/dev/bcm_enc0") or fileExists("/dev/encoder0") or fileExists("/proc/stb/encoder/0/apply"):
 		if "device" in request.args:
 			if request.args["device"][0] == "phone":
-				bitrate = config.plugins.transcodingsetup.bitrate.value
-				# framerate = config.plugins.transcodingsetup.framerate.value
-				args = "?bitrate=%s" % (bitrate)
-	elif fileExists("/proc/stb/encoder/0/apply"):
-		transcoder_port = 8001
-		if "device" in request.args:
-			if request.args["device"][0] == "phone":
-				bitrate = config.plugins.transcodingsetup.bitrate.value
-				resolution = config.plugins.transcodingsetup.resolution.value
-				(width, height) = tuple(resolution.split('x'))
-				# framerate = config.plugins.transcodingsetup.framerate.value
-				aspectratio = config.plugins.transcodingsetup.aspectratio.value
-				interlaced = config.plugins.transcodingsetup.interlaced.value
-				if fileExists("/proc/stb/encoder/0/vcodec"):
-					vcodec = config.plugins.transcodingsetup.vcodec.value
-					args = "?bitrate=%s?width=%s?height=%s?vcodec=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
-				else:
-					args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+				try:
+					bitrate = config.plugins.transcodingsetup.bitrate.value
+					resolution = config.plugins.transcodingsetup.resolution.value
+					(width, height) = tuple(resolution.split('x'))
+					# framerate = config.plugins.transcodingsetup.framerate.value
+					aspectratio = config.plugins.transcodingsetup.aspectratio.value
+					interlaced = config.plugins.transcodingsetup.interlaced.value
+					if fileExists("/proc/stb/encoder/0/vcodec"):
+						vcodec = config.plugins.transcodingsetup.vcodec.value
+						args = "?bitrate=%s__width=%s__height=%s__vcodec=%s__aspectratio=%s__interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
+					else:
+						args = "?bitrate=%s__width=%s__height=%s__aspectratio=%s__interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+					args = args.replace('__', urlparam)
+				except Exception:
+					pass
 
 	# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
 	if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != transcoder_port:
@@ -119,6 +120,9 @@ def getStream(session, request, m3ufile):
 
 	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s%s:%s/%s%s\n" % (progopt, auth, request.getRequestHostname(), portNumber, sRef, args)
 	request.setHeader('Content-Type', 'application/x-mpegurl')
+	# Note: do not rename the m3u file all the time
+	if "fname" in request.args:
+		request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (request.args["fname"][0], 'm3u8'))
 	return response
 
 
@@ -162,7 +166,11 @@ def getTS(self, request):
 		machinebuild = info["machinebuild"]
 		transcoder_port = None
 		args = ""
-		if model in ("Uno4K", "Uno4K SE", "Ultimo4K", "Solo4K", "Solo²", "Duo²", "Solo SE", "Quad", "Quad Plus") or machinebuild in ('gb7252', 'gb7356'):
+		urlparam = '?'
+		if info["imagedistro"] in ('openpli', 'satdreamgr', 'openvision'):
+			urlparam = '&'
+		
+		if fileExists("/dev/bcm_enc0") or fileExists("/dev/encoder0") or fileExists("/proc/stb/encoder/0/apply"):
 			try:
 				transcoder_port = int(config.plugins.transcodingsetup.port.value)
 			except StandardError:
@@ -174,29 +182,24 @@ def getTS(self, request):
 			if "port" in request.args:
 				portNumber = request.args["port"][0]
 
-		# INI use dynamic encoder allocation, and each stream can have diffrent parameters
-		elif machinebuild in ('ew7356', 'formuler1tc', 'tiviaraplus'):
+		if fileExists("/dev/bcm_enc0") or fileExists("/dev/encoder0") or fileExists("/proc/stb/encoder/0/apply"):
 			if "device" in request.args:
 				if request.args["device"][0] == "phone":
-					portNumber = config.OpenWebif.streamport.value
-					bitrate = config.plugins.transcodingsetup.bitrate.value
-					# framerate = config.plugins.transcodingsetup.framerate.value
-					args = "?bitrate=%s" % (bitrate)
-		elif fileExists("/proc/stb/encoder/0/apply"):
-			if "device" in request.args:
-				if request.args["device"][0] == "phone":
-					portNumber = config.OpenWebif.streamport.value
-					bitrate = config.plugins.transcodingsetup.bitrate.value
-					resolution = config.plugins.transcodingsetup.resolution.value
-					(width, height) = tuple(resolution.split('x'))
-					# framerate = config.plugins.transcodingsetup.framerate.value
-					aspectratio = config.plugins.transcodingsetup.aspectratio.value
-					interlaced = config.plugins.transcodingsetup.interlaced.value
-					if fileExists("/proc/stb/encoder/0/vcodec"):
-						vcodec = config.plugins.transcodingsetup.vcodec.value
-						args = "?bitrate=%s?width=%s?height=%s?vcodec=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
-					else:
-						args = "?bitrate=%s?width=%s?height=%s?aspectratio=%s?interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+					try:
+						bitrate = config.plugins.transcodingsetup.bitrate.value
+						resolution = config.plugins.transcodingsetup.resolution.value
+						(width, height) = tuple(resolution.split('x'))
+						# framerate = config.plugins.transcodingsetup.framerate.value
+						aspectratio = config.plugins.transcodingsetup.aspectratio.value
+						interlaced = config.plugins.transcodingsetup.interlaced.value
+						if fileExists("/proc/stb/encoder/0/vcodec"):
+							vcodec = config.plugins.transcodingsetup.vcodec.value
+							args = "?bitrate=%s__width=%s__height=%s__vcodec=%s__aspectratio=%s__interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
+						else:
+							args = "?bitrate=%s__width=%s__height=%s__aspectratio=%s__interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+						args = args.replace('__', urlparam)
+					except Exception:
+						pass
 
 		# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
 		if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != transcoder_port:
@@ -212,7 +215,16 @@ def getTS(self, request):
 			if m is not None:
 				portNumber = m.group(1)
 
-		response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%s%s://%s:%s/file?file=%s%s\n" % ((progopt, proto, request.getRequestHostname(), portNumber, quote(filename), args))
+		if config.OpenWebif.auth_for_streaming.value:
+			asession = GetSession()
+			if asession.GetAuth(request) is not None:
+				auth = ':'.join(asession.GetAuth(request)) + "@"
+			else:
+				auth = '-sid:' + str(asession.GetSID(request)) + "@"
+		else:
+			auth = ''
+
+		response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%s%s://%s%s:%s/file?file=%s%s\n" % ((progopt, proto, auth, request.getRequestHostname(), portNumber, quote(filename), args))
 		request.setHeader('Content-Type', 'application/x-mpegurl')
 		return response
 	else:

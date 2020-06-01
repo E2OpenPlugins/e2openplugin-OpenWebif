@@ -1,5 +1,39 @@
-## Version 1.3.1
+## Version 1.3.9
 ## (in development)
+
+## Version 1.3.8
+* BQE: import bouquets via json
+* moviedetails api
+* epgsearch orbital info #994
+* fix #967,#980
+
+## Version 1.3.7
+* fix channel numbering #939
+* fix timer addTimerByEventId #946
+* improve iptv support
+
+## Version 1.3.6
+* add new movieinfo api to modify recording info (tags, title, cuts)
+* deprecate movietag api
+
+## Version 1.3.5
+* add picon value to getservices request #849
+* add genre to epg result #847
+* add mount info for xml results #850
+
+## Version 1.3.4
+* Autotimer backup/restore
+
+## Version 1.3.3
+* get group members of alternative group in servicelist of bqe
+* improve channel numbering for bqe
+
+## Version 1.3.2
+* reorg i18n
+* move some code to new defaults controller
+* optimize web api for UI settings
+
+## Version 1.3.1
 * add net api mount manager
 * fix encoding issue #772
 * add settings to modify recording locations / bookmarks

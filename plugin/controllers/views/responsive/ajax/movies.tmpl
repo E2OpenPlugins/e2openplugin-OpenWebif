@@ -1,6 +1,6 @@
 #from urllib import quote
 #from time import localtime, strftime
-#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, MinMovieList
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -28,14 +28,12 @@
 			<div id="content_main">
 				<div id="tvcontentmain">
 					<div class="row clearfix">
-					
-					
 					<div class="col-lg-6 align-right">
 							<div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
 							#set $path=''
 							#for $dir in $directory[0:-1].split("/")[1:-1]
 							#set $path += '/' + $dir
-								<button class="btn btn-default waves-effect" onclick="load_maincontent_spin('ajax/movies?dirname='+escape('/media'));">$dir</button>
+								<button class="btn btn-default waves-effect" onclick="load_maincontent_spin('ajax/movies?dirname='+escape('$path'));">$dir</button>
 							#end for
 							#if $directory != '/'
 									<button class="btn waves-effect bg-$skinColor" id="moviedirbtn"><span style="font-weight: bold;">
@@ -130,4 +128,14 @@
 \$( function() {
 	MLHelper.Load('name');
 });
+
+#if $len($bookmarks)
+
+\$(function () {
+	\$('#directory').change(function() {
+		load_maincontent_spin('ajax/movies?dirname='+escape(\$(this).val()));
+	});
+});
+
+#end if
 </script>

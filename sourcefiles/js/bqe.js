@@ -1,9 +1,9 @@
 //******************************************************************************
 //* bqe.js: openwebif Bouqueteditor plugin
-//* Version 2.6
+//* Version 2.9
 //******************************************************************************
-//* Copyright (C) 2014-2017 Joerg Bleyel
-//* Copyright (C) 2014-2017 E2OpenPlugins
+//* Copyright (C) 2014-2018 Joerg Bleyel
+//* Copyright (C) 2014-2018 E2OpenPlugins
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //*          Robert Damas <https://github.com/rdamas>
@@ -15,6 +15,9 @@
 //* V 2.4 - improve search fix #419
 //* V 2.5 - prepare support spacers #239
 //* V 2.6 - improve spacers #239
+//* V 2.7 - improve channel numbers
+//* V 2.8 - show ns text #840
+//* V 2.9 - fix ns text, show provider as tooltip #840
 
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
@@ -227,10 +230,10 @@
 				self.cType = 2;
 				var ref = self.buildRefStr(3);
 				$.ajax({
-					url: '/api/getservices?sRef=' + ref, 
+					url: '/api/getservices?sRef=' + ref + "&provider=1", 
 					dataType: 'json',
 					cache: true,
-					data: { sRef: ref, date: self.date },
+					data: { date: self.date },
 					success: function ( data ) {
 						self.allChannelsCache = data['services'];
 						self.filterChannelsCache = data['services'];
@@ -245,8 +248,11 @@
 				$.each( self.filterChannelsCache, function ( key, val ) {
 					var sref = val['servicereference'];
 					var name = val['servicename'];
+					var prov = val['provider'];
 					var stype = sref.split(':')[2];
-					var m = '<span class="marker">' + (self.sType[stype] || '') + '</span>';
+					var ns = sref.split(':')[6];
+					var _ns = self.getNS(ns);
+					var m = '<span title="'+prov+'" class="marker">' + _ns + ' ' + (self.sType[stype] || '') + '</span>';
 					options.push( $('<li/>', {
 						class: "ui-widget-content",
 						data: { stype: stype, sref: sref }
@@ -260,43 +266,30 @@
 			// Callback function for fetching right panel bouquets list.
 			// @param callback function display bouquets list
 			getBouquets: function (callback) {
-				// get Pos
+				self.bqStartPositions = {};
+				var ref = self.buildRefStr(0);
 				$.ajax({
-					url: '/bouqueteditor/api/calcpos', 
+					url: '/bouqueteditor/api/getservices', 
 					dataType: 'json',
 					cache: false,
-					data: { type: self.Mode },
+					data: { sRef: ref },
 					success: function ( data ) {
-						self.bqStartPositions = {};
-						var ps = data['services'];
-						$.each( ps, function ( key, val ) {
+						var options = [];
+						var s = data['services'];
+						$.each( s, function ( key, val ) {
 							self.bqStartPositions[val['servicereference']] = val['startpos'];
+							var sref = val['servicereference'];
+							var name = val['servicename'];
+							options.push( $('<li/>', {
+								class: "ui-widget-content",
+								data: { sref: sref }
+							}).html('<div class="handle"><span class="ui-icon ui-icon-dragndrop"></span></div>'+name+'</li>') );
 						});
-						var ref = self.buildRefStr(0);
-						$.ajax({
-							url: '/bouqueteditor/api/getservices', 
-							dataType: 'json',
-							cache: false,
-							data: { sRef: ref },
-							success: function ( data ) {
-								var options = [];
-								var s = data['services'];
-								$.each( s, function ( key, val ) {
-									var sref = val['servicereference'];
-									var name = val['servicename'];
-									options.push( $('<li/>', {
-										class: "ui-widget-content",
-										data: { sref: sref }
-									}).html('<div class="handle"><span class="ui-icon ui-icon-dragndrop"></span></div>'+name+'</li>') );
-								});
-								if (callback) {
-									callback(options);
-								}
-							}
-						});
+						if (callback) {
+							callback(options);
+						}
 					}
 				});
-				
 			},
 
 			// Callback function for selecting provider in left panel
@@ -308,7 +301,7 @@
 					url: '/api/getservices', 
 					dataType: 'json',
 					cache: true,
-					data: { sRef: sref, date: self.date },
+					data: { sRef: sref, date: self.date, provider:"1"},
 					success: function ( data ) {
 						self.allChannelsCache = data['services'];
 						self.filterChannelsCache = data['services'];
@@ -662,7 +655,8 @@
 					if (name.toLowerCase().indexOf(t) !== -1)
 						self.filterChannelsCache.push({
 							servicename: val['servicename'],
-							servicereference:val['servicereference']
+							servicereference:val['servicereference'],
+							provider:val['provider']
 						});
 				});
 				
@@ -706,7 +700,7 @@
 						success: function ( data ) {
 							var r = data.Result;
 							if (r[0] === false) {
-								showError(r[1],r[0]);
+								self.showError(r[1],r[0]);
 							} else {
 								var url =  "/bouqueteditor/tmp/" + r[1];
 								window.open(url,'Download');
@@ -919,7 +913,27 @@
 					function(){ $(this).addClass(self.hovercls); },
 					function(){ $(this).removeClass(self.hovercls); }
 				);
+			},getNS : function(ns)
+			{
+				var _ns = ns.toLowerCase();
+				if (_ns.startsWith("ffff",0))
+				{
+					return "DVB-C";
+				}
+				if (_ns.startsWith("eeee",0))
+				{
+					return "DVB-T";
+				}
+				var __ns = parseInt(_ns,16) >> 16 & 0xFFF;
+				var d = " E";
+				if(__ns > 1800)
+				{
+					d = " W";
+					__ns = 3600 - __ns;
+				}
+				return (__ns/10).toFixed(1).toString() + d;
 			}
+			
 		 };
 	};
 

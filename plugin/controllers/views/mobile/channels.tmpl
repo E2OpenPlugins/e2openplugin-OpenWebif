@@ -1,5 +1,5 @@
-#from Plugins.Extensions.OpenWebif.local import tstrings
-<body> 
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
+<body>
 	<div data-role="page" id="chpage">
 		<div id="header">
 			<div class="button" onClick="history.back()">$tstrings['back']</div>
@@ -63,7 +63,7 @@ function dlg(a,b)
 {
 	sref = a;
 	sname = b;
-	$("#stream").popup("open"); 
+	$("#stream").popup("open");
 }
 </script>
 #end raw

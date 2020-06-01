@@ -1,6 +1,6 @@
 from time import localtime, strftime
 from urllib import quote
-from Plugins.Extensions.OpenWebif.local import tstrings
+from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 
 
 class renderEvtBlock:

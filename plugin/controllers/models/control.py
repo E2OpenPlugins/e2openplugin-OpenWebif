@@ -1,13 +1,26 @@
 # -*- coding: utf-8 -*-
 
-##############################################################################
-#                        2011 E2OpenPlugins                                  #
-#                                                                            #
-#  This file is open source software; you can redistribute it and/or modify  #
-#     it under the terms of the GNU General Public License version 2 as      #
-#               published by the Free Software Foundation.                   #
-#                                                                            #
-##############################################################################
+##########################################################################
+# OpenWebif: control
+##########################################################################
+# Copyright (C) 2011 - 2020 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
+
+from __future__ import print_function
 from Components.config import config
 from enigma import eServiceReference, eActionMap, eServiceCenter
 from services import getProtection
@@ -164,7 +177,7 @@ def remoteControl(key, type="", rcu=""):
 			if HardwareInfo().get_device_model() in ("xp1000", "formuler1", "formuler3", "et9000", "et9200", "hd1100", "hd1200"):
 				remotetype = "dreambox advanced remote control (native)"
 		except:  # noqa: E722
-			print "[OpenWebIf] wrong hw detection"
+			print("[OpenWebIf] wrong hw detection")
 
 	amap = eActionMap.getInstance()
 	if type == "long":
@@ -205,7 +218,7 @@ def setPowerState(session, state):
 			session.open(Standby)
 
 	elif state == 6:
-		print "HAHA"
+		print("HAHA")
 
 	return {
 		"result": True,

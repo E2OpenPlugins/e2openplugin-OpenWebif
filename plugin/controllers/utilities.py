@@ -16,10 +16,11 @@ REGEX_ITEM_OR_KEY_ACCESS = re.compile(PATTERN_ITEM_OR_KEY_ACCESS)
 
 SERVICE_TYPE_TV = 0x01
 SERVICE_TYPE_RADIO = 0x02
-SERVICE_TYPE_SD4 = 0x10
+SERVICE_TYPE_SD4 = 0x16
 SERVICE_TYPE_HDTV = 0x19
 SERVICE_TYPE_UHD = 0x1f
 SERVICE_TYPE_OPT = 0xd3
+SERVICE_TYPE_RADIOA = 0x0a
 
 # type 1 = digital television service
 # type 2 = digital radio sound service
@@ -33,15 +34,16 @@ SERVICE_TYPE_OPT = 0xd3
 
 
 SERVICE_TYPE = {
-	'TV': SERVICE_TYPE_TV,
-	'HDTV': SERVICE_TYPE_HDTV,
-	'RADIO': SERVICE_TYPE_RADIO,
-	'UHD': SERVICE_TYPE_UHD,
-	'SD4': SERVICE_TYPE_SD4,
-	'OPT': SERVICE_TYPE_OPT,
+	SERVICE_TYPE_TV: 'TV',
+	SERVICE_TYPE_HDTV: 'HDTV',
+	SERVICE_TYPE_RADIO: 'RADIO',
+	SERVICE_TYPE_RADIOA: 'RADIO',
+	SERVICE_TYPE_UHD: 'UHD',
+	SERVICE_TYPE_SD4: 'SD4',
+	SERVICE_TYPE_OPT: 'OPT',
 }
 
-SERVICE_TYPE_LOOKUP = {v: k for k, v in SERVICE_TYPE.iteritems()}
+SERVICE_TYPE_LOOKUP = {k: v for k, v in SERVICE_TYPE.iteritems()}
 
 #: Namespace - DVB-C services
 NS_DVB_C = 0xffff0000
@@ -258,6 +260,14 @@ def create_servicereference(*args, **kwargs):
 		tsid,
 		oid,
 		ns)
+
+# Fallback genre
+def getGenreStringLong(hn, ln):
+	return ""
+
+# Fallback moviePlayState
+def _moviePlayState(cutsFileName, ref, length):
+	return 0
 
 
 if __name__ == '__main__':

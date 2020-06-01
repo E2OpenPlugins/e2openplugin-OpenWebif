@@ -1,5 +1,5 @@
 #filter WebSafe
-#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 <style>
 .select { width: 100%; }
 .sortable { list-style-type: none; margin: 0; padding: 0; width: 200px; }
@@ -52,8 +52,8 @@
 		<div id="toolbar-header" class="ui-widget-header">
 			<span id="tb3">
 				<button id="toolbar-bouquets-reload">$tstrings['bqe_reload']</button>
-				<button id="toolbar-bouquets-export">$tstrings['bqe_export']</button>
-				<button id="toolbar-bouquets-import">$tstrings['bqe_import']</button>
+				<button id="toolbar-bouquets-export">$tstrings['export']</button>
+				<button id="toolbar-bouquets-import">$tstrings['import']</button>
 			</span>
 		</div>
 		<div style="padding:5px;">
@@ -92,5 +92,5 @@
 	<input type="file" name="rfile" id="rfile">
 	</form>
 </div>
-<script src="js/bqe-2.6.min.js"></script>
+<script src="js/bqe-2.9.min.js"></script>
 #end filter

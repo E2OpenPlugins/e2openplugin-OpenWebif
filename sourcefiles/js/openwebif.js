@@ -1,8 +1,8 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.17
+//* Version 1.2.20
 //******************************************************************************
-//* Copyright (C) 2011-2017 E2OpenPlugins
+//* Copyright (C) 2011-2020 E2OpenPlugins
 //*
 //* V 1.0   - Initial Version
 //* V 1.1   - add movie move and rename
@@ -29,7 +29,10 @@
 //* V 1.2.12 - improve timer edit
 //* V 1.2.13 - fix repeating timer edit #631
 //* V 1.2.14,15,16 - fix json parse
-//* V 1.2.17 - allow timers for IPTV #715
+//* V 1.2.17 - allow timers for IPTV #715, added LCD, PiP into screenshots
+//* V 1.2.18 - rename stream.m3u8 to <channelname>.m3u8
+//* V 1.2.19 - fixed missing <channelname> when requesting a transcoding stream m3u8
+//* V 1.2.20 - timer pipzap option
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -755,12 +758,12 @@ function setOSD( statusinfo )
 				stream += "<a href='#' onclick=\"jumper8001('" + sref + "', '" + station + "')\"; title='" + streamtitle;
 				stream += "<a href='#' onclick=\"jumper8002('" + sref + "', '" + station + "')\"; title='" + streamtitletrans;
 			} else {
-				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "' title='" + streamtitle;
+				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "&fname=" + station + "' title='" + streamtitle;
 			}
 			stream +="</div>";
 			$("#osd").html(stream + "<a href='#' onClick='load_maincontent(\"ajax/tv\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 		} else if ((sref.indexOf("1:0:2") !== -1) || (sref.indexOf("1:134:2") !== -1)) {
-			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "' title='" + streamtitle;
+			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "&fname=" + station + "' title='" + streamtitle;
 			stream +="</div>";
 			$("#osd").html(stream + "<a href='#' onClick='load_maincontent(\"ajax/radio\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 		} else if (sref.indexOf("1:0:0") !== -1) {
@@ -850,11 +853,15 @@ function grabScreenshot(mode) {
 	}
 	timestamp = new Date().getTime();
 	if (GetLSValue('ssr_hd',false)){
-		$('#screenshotimage').attr("src",'/grab?format=jpg&mode=' + mode + '#' + timestamp);
+		$('#screenshotimage').attr("src",'/grab?format=jpg&mode=' + mode + '&t=' + timestamp);
 	} else {
-		$('#screenshotimage').attr("src",'/grab?format=jpg&r=720&mode=' + mode + '#' + timestamp);
+		$('#screenshotimage').attr("src",'/grab?format=jpg&r=720&mode=' + mode + '&t=' + timestamp);
 	}
-	$('#screenshotimage').attr("width",720);
+	if (mode == "lcd") {
+		$('#screenshotimage').attr("width", 'auto');
+	} else {
+		$('#screenshotimage').attr("width",720);
+	}
 }
 
 function getMessageAnswer() {
@@ -957,7 +964,7 @@ $(window).keydown(function(evt) {
 });
 
 function callScreenShot(){
-
+	testPipStatus();
 	if(GetLSValue('remotegrabscreen',true))
 	{
 		if (lastcontenturl == 'ajax/screenshot') {
@@ -1224,13 +1231,32 @@ function editTimer(serviceref, begin, end) {
 							
 							if (typeof timer.always_zap !== 'undefined')
 							{
-								$('#always_zap1').show();
+								//$('#always_zap1').show();
 								$('#always_zap').prop("checked", timer.always_zap==1);
 								$('#justplay').prop("disabled",timer.always_zap==1);
 							} else {
-								$('#always_zap1').hide();
+								//$('#always_zap1').hide();
+								$('#always_zap').prop("disabled", true);
 							}
-							
+
+							if (typeof timer.pipzap !== 'undefined')
+							{
+								$('#pipzap').prop("disabled",false);
+								$('#pipzap').prop("checked", timer.pipzap==1);
+							} else {
+								$('#pipzap').prop("disabled",true);
+							}
+
+							if (typeof timer.allow_duplicate !== 'undefined')
+							{
+								$('#allow_duplicate').prop("checked", timer.allow_duplicate==1);
+								autoadjust: ($('#autoadjust').is(':checked')?"1":"0"),
+							}
+							if (typeof timer.autoadjust !== 'undefined')
+							{
+								$('#autoadjust').prop("checked", timer.autoadjust==1);
+							}
+
 							openTimerDlg(tstr_edit_timer + " - " + timer.name);
 							
 							break;
@@ -1310,6 +1336,8 @@ function addTimer(evt,chsref,chname,top,isradio) {
 	$('#dirname').val("None");
 	$('#enabled').prop("checked", true);
 	$('#justplay').prop("checked", false);
+	$('#allow_duplicate').prop("checked", true);
+	$('#autoadjust').prop("checked", false);
 	$('#afterevent').val(3);
 	$('#errorbox').hide();
 
@@ -1660,6 +1688,7 @@ function jumper8002( sref, sname ) {
 	var deviceType = getDeviceType();
 	document.portForm.ref.value = sref;
 	document.portForm.name.value = sname;
+	document.portForm.fname.value = sname;
 	document.portForm.device.value = "phone";
 	document.portForm.submit();
 }
@@ -1668,12 +1697,14 @@ function jumper8001( sref, sname ) {
 	var deviceType = getDeviceType();
 	document.portForm.ref.value = sref;
 	document.portForm.name.value = sname;
+	document.portForm.fname.value = sname;
 	document.portForm.device.value = "etc";
 	document.portForm.submit();
 }
 
 /* Vu+ Transcoding end*/
 
+// obsolete
 function ChangeTheme(theme)
 {
 	$.ajax({
@@ -2051,6 +2082,21 @@ function GetAllServices(callback,radio)
 		}
 	});
 }
+
+function testPipStatus() {
+	$.ajax({
+		url: "api/pipinfo",
+		dataType: "json",
+		cache: false,
+		success: function(pipinfo) {
+			if(pipinfo.pip != pip){
+				pip = pipinfo.pip;
+                                buttonsSwitcher(pipinfo.pip);
+			}
+		}
+	})
+}
+
 var SSHelperObj = function () {
 	var self;
 	var screenshotInterval = false;
@@ -2063,10 +2109,13 @@ var SSHelperObj = function () {
 			clearInterval(self.screenshotInterval);
 			self.ssr_i = parseInt(GetLSValue('ssr_i','30'));
 			
-			$('#screenshotbutton0').click(function(){grabScreenshot('all');});
-			$('#screenshotbutton1').click(function(){grabScreenshot('video');});
-			$('#screenshotbutton2').click(function(){grabScreenshot('osd');});
-			
+			$('#screenshotbutton0').click(function(){testPipStatus(); grabScreenshot('all');});
+			$('#screenshotbutton1').click(function(){testPipStatus(); grabScreenshot('video');});
+			$('#screenshotbutton2').click(function(){testPipStatus(); grabScreenshot('osd');});
+			$('#screenshotbutton3').click(function(){testPipStatus(); grabScreenshot('pip');});
+			$('#screenshotbutton4').click(function(){testPipStatus(); grabScreenshot('lcd');});
+			$("#screenshotrefreshbutton").click(function(){testPipStatus();});
+
 			$('#screenshotbutton').buttonset();
 			$('#screenshotrefreshbutton').buttonset();
 			$('#ssr_i').val(self.ssr_i);
@@ -2075,11 +2124,13 @@ var SSHelperObj = function () {
 			$('#screenshotspinner').addClass(GetLSValue('spinner','fa-spinner'));
 
 			$('#ssr_hd').change(function() {
+				testPipStatus();
 				SetLSValue('ssr_hd',$('#ssr_hd').is(':checked'));
 				grabScreenshot('auto');
 			});
 		
 			$('#ssr_i').change(function() {
+				testPipStatus();
 				var t = $('#ssr_i').val();
 				SetLSValue('ssr_i',t);
 				self.ssr_i = parseInt(t);
@@ -2091,6 +2142,7 @@ var SSHelperObj = function () {
 			});
 			
 			$('#ssr_s').change(function() {
+				testPipStatus();
 				var v = $('#ssr_s').is(':checked');
 				if (v) {
 					self.setSInterval();
@@ -2108,7 +2160,7 @@ var SSHelperObj = function () {
 
 		},setSInterval: function()
 		{
-			self.screenshotInterval = setInterval( function() { grabScreenshot('auto'); }, (self.ssr_i+1)*1000);
+			self.screenshotInterval = setInterval( function() { testPipStatus(); grabScreenshot('auto'); }, (self.ssr_i+1)*1000);
 		}
 	};
 };

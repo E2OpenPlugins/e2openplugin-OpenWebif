@@ -1,5 +1,5 @@
 #filter WebSafe
-#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -282,7 +282,6 @@
 																<div  class="form-line">
 																	<input type="text" class="form-control inactive" id="after">
 																</div>
-															
 														</div>
 													</div>
 												</div>
@@ -332,6 +331,35 @@
 													</div>
 												</div>
 											</span>
+										</div>
+										<div class="row clearfix">
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label style="float:left;">$tstrings['autoadjust']:&nbsp;</label>
+														<input type="checkbox" class="form-control chk-col-$skinColor" id="autoadjust">
+														<label for="autoadjust">&nbsp;</label>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label style="float:left;">$tstrings['avoidDuplicateMovies']:&nbsp;</label>
+														<input type="checkbox" class="form-control chk-col-$skinColor" id="avoidDuplicateMovies">
+														<label for="avoidDuplicateMovies">&nbsp;</label>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-4">
+												<div class="row clearfix">
+													<div class="col-xs-12">
+														<label style="float:left;">$tstrings['allow_duplicate']:&nbsp;</label>
+														<input type="checkbox" class="form-control chk-col-$skinColor" id="allow_duplicate">
+														<label for="allow_duplicate">&nbsp;</label>
+													</div>
+												</div>
+											</div>
 										</div>
 										<div class="row clearfix">
 											<div class="col-xs-12 col-sm-4">
@@ -813,8 +841,8 @@
 </div>
 
 <script src="/themes/absb/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
-<script src="/js/at-2.6.min.js"></script>
-<script src="/themes/absb/js/vti-responsive-at.js"></script>
+<script src="/js/at-2.8.min.js"></script>
+<script src="/themes/absb/js/vti-responsive-at-2.8.js"></script>
 <script type="text/javascript">
 
 #raw
@@ -836,7 +864,6 @@ $(function() {
 $(':text').blur()
 
 #end raw
-
 
 </script>
 #end filter

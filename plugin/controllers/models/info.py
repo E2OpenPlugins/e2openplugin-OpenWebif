@@ -1,19 +1,30 @@
 # -*- coding: utf-8 -*-
 
-##############################################################################
-#                        2011-2017 E2OpenPlugins                             #
-#                                                                            #
-#  This file is open source software; you can redistribute it and/or modify  #
-#     it under the terms of the GNU General Public License version 2 as      #
-#               published by the Free Software Foundation.                   #
-#                                                                            #
-##############################################################################
+##########################################################################
+# OpenWebif: info
+##########################################################################
+# Copyright (C) 2011 - 2020 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
 
-from Plugins.Extensions.OpenWebif.__init__ import _
+from __future__ import print_function
 import os
 import sys
 import time
-from twisted.web import version
+from twisted import version
 from socket import has_ipv6, AF_INET6, AF_INET, inet_ntop, inet_pton, getaddrinfo
 
 import NavigationInstance
@@ -22,33 +33,28 @@ from Components.config import config
 from Components.NimManager import nimmanager
 from Components.Harddisk import harddiskmanager
 from Components.Network import iNetwork
-from Components.Language import language
 from ServiceReference import ServiceReference
-from RecordTimer import parseEvent
+from RecordTimer import parseEvent, RecordTimerEntry
 from timer import TimerEntry
-from Tools.Directories import fileExists, pathExists
-from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference, eEnv
+from Screens.InfoBar import InfoBar
+from Tools.Directories import fileExists
+from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
 from enigma import eEPGCache
+
+
+from ..i18n import _
+from ..defaults import OPENWEBIFVER, TRANSCODING
+
 try:
 	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
 	from enigma import getEnigmaVersionString
 except:  # noqa: E722
-	from owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
+	from owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate, getLcd, getGrabPip
 
 	def getEnigmaVersionString():
 		return about.getEnigmaVersionString()
 
-
-OPENWEBIFVER = "OWIF 1.3.1"
-
 STATICBOXINFO = None
-
-PICONPATH = None
-
-
-def getOpenWebifVer():
-	return OPENWEBIFVER
-
 
 def getFriendlyImageDistro():
 	dist = getImageDistro().replace("openatv", "OpenATV").replace("openhdf", "OpenHDF").replace("openpli", "OpenPLi").replace("openvix", "OpenViX")
@@ -185,76 +191,6 @@ def formatIp(ip):
 	return "%d.%d.%d.%d" % (ip[0], ip[1], ip[2], ip[3])
 
 
-def getBasePath():
-	path = os.path.dirname(sys.modules[__name__].__file__)
-	chunks = path.split("/")
-	chunks.pop()
-	chunks.pop()
-	return "/".join(chunks)
-
-
-def getPublicPath(file=""):
-	return getBasePath() + "/public/" + file
-
-
-def getViewsPath(file=""):
-	if config.OpenWebif.responsive_enabled.value and os.path.exists(getBasePath() + "/controllers/views/responsive") and not (file.startswith('web/') or file.startswith('/web/')):
-		return getBasePath() + "/controllers/views/responsive/" + file
-	else:
-		return getBasePath() + "/controllers/views/" + file
-
-
-def getPiconPath():
-
-	# FIXME: check path again after a few hours to detect new paths
-
-	global PICONPATH
-
-	if PICONPATH is not None:
-		return PICONPATH
-
-	# Alternative locations need to come first, as the default location always exists and needs to be the last resort
-	# Sort alternative locations in order of likelyness that they are non-rotational media:
-	# CF/MMC are always memory cards
-	# USB can be memory stick or magnetic hdd or SSD, but stick is most likely
-	# HDD can be magnetic hdd, SSD or even memory stick (if no hdd present) or a NAS
-	pathlist = [
-		"/media/cf/",
-		"/media/mmc/",
-		"/media/usb/",
-		"/media/hdd/",
-		"/usr/share/enigma2/",
-		"/"
-	]
-
-	for p in pathlist:
-		if pathExists(p + "owipicon/"):
-			PICONPATH = p + "owipicon/"
-			return PICONPATH
-		elif pathExists(p + "picon/"):
-			PICONPATH = p + "picon/"
-			return PICONPATH
-
-	return None
-
-
-def _getPiconPath():
-	if pathExists("/media/usb/picon/"):
-		return "/media/usb/picon/"
-	elif pathExists("/media/cf/picon/"):
-		return "/media/cf/picon/"
-	elif pathExists("/media/mmc/picon/"):
-		return "/media/mmc/picon/"
-	elif pathExists("/media/hdd/picon/"):
-		return "/media/hdd/picon/"
-	elif pathExists("/usr/share/enigma2/picon/"):
-		return "/usr/share/enigma2/picon/"
-	elif pathExists("/picon/"):
-		return "/picon/"
-	else:
-		return ""
-
-
 def getInfo(session=None, need_fullinfo=False):
 	# TODO: get webif versione somewhere!
 	info = {}
@@ -267,6 +203,14 @@ def getInfo(session=None, need_fullinfo=False):
 	info['model'] = getMachineName()
 	info['boxtype'] = getBoxType()
 	info['machinebuild'] = getMachineBuild()
+	try:  # temporary due OE-A
+		info['lcd'] = getLcd()
+	except:  # noqa: E722
+		info['lcd'] = 0
+	try:  # temporary due OE-A
+		info['grabpip'] = getGrabPip()
+	except:  # noqa: E722
+		info['grabpip'] = 0
 
 	chipset = "unknown"
 	if fileExists("/etc/.box"):
@@ -379,7 +323,7 @@ def getInfo(session=None, need_fullinfo=False):
 		uptimetext = "?"
 	info['uptime'] = uptimetext
 
-	info["webifver"] = getOpenWebifVer()
+	info["webifver"] = OPENWEBIFVER
 	info['imagedistro'] = getImageDistro()
 	info['friendlyimagedistro'] = getFriendlyImageDistro()
 	info['oever'] = getOEVersion()
@@ -413,7 +357,7 @@ def getInfo(session=None, need_fullinfo=False):
 	info['friendlychipsettext'] = friendlychipsettext
 	info['tuners'] = []
 	for i in range(0, nimmanager.getSlotCount()):
-		print "[OpenWebif] -D- tuner '%d' '%s' '%s'" % (i, nimmanager.getNimName(i), nimmanager.getNim(i).getSlotName())
+		print("[OpenWebif] -D- tuner '%d' '%s' '%s'" % (i, nimmanager.getNimName(i), nimmanager.getNim(i).getSlotName()))
 		info['tuners'].append({
 			"name": nimmanager.getNim(i).getSlotName(),
 			"type": nimmanager.getNimName(i) + " (" + nimmanager.getNim(i).getFriendlyType() + ")",
@@ -565,32 +509,44 @@ def getInfo(session=None, need_fullinfo=False):
 					})
 	# TODO: fstab
 
-	info['transcoding'] = False
-	#: models transcoding feature
-	if fileExists("/proc/stb/encoder/0/bitrate"):
-		if os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TranscodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo')):
-			info['transcoding'] = True
-
-	info['kinopoisk'] = False
-	lang = ['ru', 'uk', 'lv', 'lt', 'et']
-	current_language = language.getLanguage()
-	for l in lang:
-		if l in current_language:
-			info['kinopoisk'] = True
-			break
+	info['transcoding'] = TRANSCODING
 
 	info['EX'] = ''
 
 	if session:
 		try:
+			#  gets all current stream clients for images using eStreamServer
+			#  TODO: merge eStreamServer and streamList
+			#  TODO: get tuner info for streams
+			#  TODO: get recoding/timer info if more than one
+			info['streams'] = []
+			try:
+				from enigma import eStreamServer
+				streamServer = eStreamServer.getInstance()
+				if streamServer is not None:
+					for x in streamServer.getConnectedClients():
+						servicename = ServiceReference(x[1]).getServiceName() or "(unknown service)"
+						if int(x[2]) == 0:
+							strtype = "S"
+						else:
+							strtype = "T"
+						info['streams'].append({
+							"ref": x[1],
+							"name": servicename,
+							"ip": x[0],
+							"type": strtype
+						})
+			except Exception as error:
+				print("[OpenWebif] -D- no eStreamServer %s" % error)
+
 			recs = NavigationInstance.instance.getRecordings()
 			if recs:
-				# only one stream and only TV
+				#  only one stream and only TV
 				from Plugins.Extensions.OpenWebif.controllers.stream import streamList
 				s_name = ''
-				# s_cip = ''
+				#  s_cip = ''
 
-				print "[OpenWebif] -D- streamList count '%d'" % len(streamList)
+				print("[OpenWebif] -D- streamList count '%d'" % len(streamList))
 				if len(streamList) == 1:
 					from Screens.ChannelSelection import service_types_tv
 					# from enigma import eEPGCache
@@ -604,26 +560,27 @@ def getInfo(session=None, need_fullinfo=False):
 						if srefs == channel[0]:
 							s_name = channel[1] + ' (' + s.clientIP + ')'
 							break
-				print "[OpenWebif] -D- s_name '%s'" % s_name
+				print("[OpenWebif] -D- s_name '%s'" % s_name)
 
+# only for debug
 				for stream in streamList:
 					srefs = stream.ref.toString()
-					print "[OpenWebif] -D- srefs '%s'" % srefs
+					print("[OpenWebif] -D- srefs '%s'" % srefs)
 
 				sname = ''
 				timers = []
 				for timer in NavigationInstance.instance.RecordTimer.timer_list:
 					if timer.isRunning() and not timer.justplay:
 						timers.append(timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''))
-						print "[OpenWebif] -D- timer '%s'" % timer.service_ref.getServiceName()
-				# only one recording
+						print("[OpenWebif] -D- timer '%s'" % timer.service_ref.getServiceName())
+# TODO: more than one recording
 				if len(timers) == 1:
 					sname = timers[0]
 
 				if sname == '' and s_name != '':
 					sname = s_name
 
-				print "[OpenWebif] -D- recs count '%d'" % len(recs)
+				print("[OpenWebif] -D- recs count '%d'" % len(recs))
 
 				for rec in recs:
 					feinfo = rec.frontendInfo()
@@ -644,8 +601,20 @@ def getInfo(session=None, need_fullinfo=False):
 					if cur_info:
 						nr = frontendData['tuner_number']
 						info['tuners'][nr]['live'] = getOrbitalText(cur_info) + ' / ' + sname
-		except Exception, error:
+		except Exception as error:
 			info['EX'] = error
+
+	info['timerpipzap'] = False
+	info['timerautoadjust'] = False
+
+	try:
+		timer = RecordTimerEntry('', 0, 0, '', '', 0)
+		if hasattr(timer, "pipzap"):
+			info['timerpipzap'] = True
+		if hasattr(timer, "autoadjust"):
+			info['timerautoadjust'] = True
+	except Exception as error:
+		print("[OpenWebif] -D- RecordTimerEntry check %s" % error)
 
 	STATICBOXINFO = info
 	return info
@@ -656,13 +625,18 @@ def getOrbitalText(cur_info):
 		tunerType = cur_info.get('tuner_type')
 		if tunerType == "DVB-S":
 			pos = int(cur_info.get('orbital_position'))
-			direction = 'E'
-			if pos > 1800:
-				pos = 3600 - pos
-				direction = 'W'
-			return "%d.%d° %s" % (pos / 10, pos % 10, direction)
+			return getOrb(pos)
+		if cur_info.get("system", -1) == 1:
+			tunerType += "2"
 		return tunerType
 	return ''
+
+def getOrb(pos):
+	direction = _("E")
+	if pos > 1800:
+		pos = 3600 - pos
+		direction = _("W")
+	return "%d.%d° %s" % (pos / 10, pos % 10, direction)
 
 
 def getFrontendStatus(session):
@@ -711,20 +685,6 @@ def getCurrentTime():
 	}
 
 
-def getTranscodingSupport():
-	global STATICBOXINFO
-	if STATICBOXINFO is None:
-		getInfo()
-	return STATICBOXINFO['transcoding']
-
-
-def getLanguage():
-	global STATICBOXINFO
-	if STATICBOXINFO is None:
-		getInfo()
-	return STATICBOXINFO['kinopoisk']
-
-
 def getStreamServiceName(ref):
 	if isinstance(ref, eServiceReference):
 		servicereference = ServiceReference(ref)
@@ -748,7 +708,7 @@ def getStatusInfo(self):
 	statusinfo = {
 		'volume': vcontrol.getVolume(),
 		'muted': vcontrol.isMuted(),
-		'transcoding': getTranscodingSupport(),
+		'transcoding': TRANSCODING,
 		'currservice_filename': "",
 		'currservice_id': -1,
 	}
@@ -854,3 +814,12 @@ def GetWithAlternative(service, onlyFirst=True):
 		return service
 	else:
 		return None
+
+def getPipStatus():
+	return int(getInfo()['grabpip'] and hasattr(InfoBar.instance, 'session') and InfoBar.instance.session.pipshown)
+
+def testPipStatus(self):
+	pipinfo = {
+		'pip': getPipStatus(),
+	}
+	return pipinfo

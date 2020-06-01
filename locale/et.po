@@ -1,400 +1,471 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2018-01-04 23:15+0100\n"
-"PO-Revision-Date: 2018-03-12 14:58+0200\n"
-"Last-Translator: rimas <rimas@meil.com>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-31 19:08+0200\n"
+"PO-Revision-Date: 2019-01-12 10:46+0200\n"
+"Last-Translator: rimas <rimas@domeen.ee>\n"
 "Language-Team: Estonian\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: plugin/controllers/BouquetEditor.py:82
-msgid "one two three four unknown command"
-msgstr "üks kaks kolm neli tundmatu käsk"
-
-#: plugin/controllers/BouquetEditor.py:88
-#: plugin/controllers/BouquetEditor.py:149
-#: plugin/controllers/BouquetEditor.py:194
-msgid "No bouquet name given!"
-msgstr "Lemmiknimekirjal puudub nimi!"
-
-#: plugin/controllers/BouquetEditor.py:118
-#, python-format
-msgid "Bouquet %s created."
-msgstr "Lemmiknimekiri %s loodud."
-
-#: plugin/controllers/BouquetEditor.py:120
-msgid "Get mutable list for new created bouquet failed!"
-msgstr "Uue lemmiknimekirja jaoks muudetava nimekirja hankimine nurjus!"
-
-#: plugin/controllers/BouquetEditor.py:123
-#, python-format
-msgid "Bouquet %s already exists."
-msgstr "Lemmiknimekiri %s on juba olemas."
-
-#: plugin/controllers/BouquetEditor.py:125
-#: plugin/controllers/BouquetEditor.py:439
-msgid "Bouquetlist is not editable!"
-msgstr "Lemmiknimekirjade loend ei ole muudetav!"
-
-#: plugin/controllers/BouquetEditor.py:127
-msgid "Multi-Bouquet is not enabled!"
-msgstr "Luba mitme nimekirja kasutus!"
-
-#: plugin/controllers/BouquetEditor.py:133
-msgid "No provider given!"
-msgstr "Levitaja nimi puudub!"
-
-#: plugin/controllers/BouquetEditor.py:180
-#, python-format
-msgid "Bouquet %s removed failed."
-msgstr "Lemmiknimekirja %s eemaldamine nurjus."
-
-#: plugin/controllers/BouquetEditor.py:182
-#, python-format
-msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr ""
-"Lemmiknimekirja %s eemaldamine nurjus, viitenumber või muutuv nimekiri ei "
-"ole kehtivad."
-
-#: plugin/controllers/BouquetEditor.py:186
-#, python-format
-msgid "Bouquet %s deleted."
-msgstr "Lemmiknimekiri %s kustutatud."
-
-#: plugin/controllers/BouquetEditor.py:188
-#, python-format
-msgid "Error: Bouquet %s could not deleted, OSError."
-msgstr "Viga: Lemmiknimekirja %s eemaldamine nurjus, OS viga."
-
-#: plugin/controllers/BouquetEditor.py:204
-#: plugin/controllers/BouquetEditor.py:261
-msgid "No position given!"
-msgstr "Asukoht andmata!"
-
-#: plugin/controllers/BouquetEditor.py:211
-#, python-format
-msgid "Bouquet %s moved."
-msgstr "Lemmiknimekiri %s liigutatud."
-
-#: plugin/controllers/BouquetEditor.py:213
-#, python-format
-msgid "Bouquet %s can not be moved."
-msgstr "Lemmiknimekirja %s ei saa liigutada."
-
-#: plugin/controllers/BouquetEditor.py:219
-#: plugin/controllers/BouquetEditor.py:249
-#: plugin/controllers/BouquetEditor.py:275
-#: plugin/controllers/BouquetEditor.py:309
-#: plugin/controllers/BouquetEditor.py:459
-msgid "No bouquet given!"
-msgstr "Lemmiknimekiri andmata!"
-
-#: plugin/controllers/BouquetEditor.py:225
-#: plugin/controllers/BouquetEditor.py:255
-#: plugin/controllers/BouquetEditor.py:281
-#: plugin/controllers/BouquetEditor.py:343
-#: plugin/controllers/BouquetEditor.py:401
-#: plugin/controllers/BouquetEditor.py:465
-#: plugin/controllers/BouquetEditor.py:502
-msgid "No service given!"
-msgstr "Kanal andmata!"
-
-#: plugin/controllers/BouquetEditor.py:234
-#, python-format
-msgid "Service %s removed."
-msgstr "Kanal %s eemaldatud."
-
-#: plugin/controllers/BouquetEditor.py:242
-#, python-format
-msgid "Service %s removed from bouquet %s."
-msgstr "Kanal %s eemaldati lemmiknimekirjast %s."
-
-#: plugin/controllers/BouquetEditor.py:243
-#, python-format
-msgid "Service %s can not be removed."
-msgstr "Kanalit %s ei saa eemaldada."
-
-#: plugin/controllers/BouquetEditor.py:268
-#, python-format
-msgid "Service %s moved."
-msgstr "Kanal %s liigutatud."
-
-#: plugin/controllers/BouquetEditor.py:269
-msgid "Service can not be moved."
-msgstr "Kanalit ei saa liigutada."
-
-#: plugin/controllers/BouquetEditor.py:299
-#, python-format
-msgid "Service %s added."
-msgstr "Kanal '%s' lisatud."
-
-#: plugin/controllers/BouquetEditor.py:302
-#, python-format
-msgid "Service %s already exists in bouquet %s."
-msgstr "Kanal %s on lemmiknimekirjas %s juba olemas."
-
-#: plugin/controllers/BouquetEditor.py:303
-msgid "This service can not be added."
-msgstr "Seda kanalit ei saa lisada."
-
-#: plugin/controllers/BouquetEditor.py:316
-msgid "No marker-name given!"
-msgstr "Märgise nimi andmata!"
-
-#: plugin/controllers/BouquetEditor.py:333
-msgid "Marker added."
-msgstr "Märgis lisatud."
-
-#: plugin/controllers/BouquetEditor.py:335
-msgid "Internal error!"
-msgstr "Sisemine viga!"
-
-#: plugin/controllers/BouquetEditor.py:349
-msgid "No new servicename given!"
-msgstr "Uue kanali nimi andmata!"
-
-#: plugin/controllers/BouquetEditor.py:373
-msgid "Bouquet renamed successfully."
-msgstr "Lemmiknimekiri nimetati ümber."
-
-#: plugin/controllers/BouquetEditor.py:389
-msgid "Service renamed successfully."
-msgstr "Kanal nimetati ümber."
-
-#: plugin/controllers/BouquetEditor.py:390
-msgid "Service can not be renamed."
-msgstr "Kanalit ei saa ümber nimetada."
-
-#: plugin/controllers/BouquetEditor.py:404
-msgid "No current service given!"
-msgstr "Aktiivne kanal andmata!"
-
-#: plugin/controllers/BouquetEditor.py:435
-msgid "Get mutable list for new created alternative failed!"
-msgstr "Uue asenduskanali jaoks muutuva nimekirja hankimine nurjus!"
-
-#: plugin/controllers/BouquetEditor.py:437
-#, python-format
-msgid "Alternative %s created failed."
-msgstr "Asenduskanali %s loomine nurjus."
-
-#: plugin/controllers/BouquetEditor.py:451
-#, python-format
-msgid "Added %s to alternative service %s."
-msgstr "%s lisati asenduskanalile %s."
-
-#: plugin/controllers/BouquetEditor.py:482
-msgid "Service is not an alternative."
-msgstr "See ei ole asenduskanal."
-
-#: plugin/controllers/BouquetEditor.py:490
-msgid "All alternative services deleted."
-msgstr "Kõik asenduskanalid on kustutatud."
-
-#: plugin/controllers/BouquetEditor.py:496
-msgid "Parent Control is not activated."
-msgstr "Lapselukk ei ole sees."
-
-#: plugin/controllers/BouquetEditor.py:509
-msgid "No Parent Control Setup Pin given!"
-msgstr "Lapseluku PIN sisestamata!"
-
-#: plugin/controllers/BouquetEditor.py:513
-#: plugin/controllers/BouquetEditor.py:515
-msgid "Parent Control Setup Pin is wrong!"
-msgstr "Lapseluku PIN on vale!"
-
-#: plugin/controllers/BouquetEditor.py:530
-#, python-format
-msgid "Service %s is locked."
-msgstr "Kanal %s on lukustatud."
-
-#: plugin/controllers/BouquetEditor.py:532
-#, python-format
-msgid "Bouquet %s is locked."
-msgstr "Lemmiknimekiri %s on lukustatud."
-
-#: plugin/controllers/BouquetEditor.py:534
+#: ../plugin/controllers/BouquetEditor.py:549
 #, python-format
 msgid "%s %s is locked."
 msgstr "%s %s is locked."
 
-#: plugin/controllers/BouquetEditor.py:538
-#, python-format
-msgid "Service %s is unlocked."
-msgstr "Kanali %s lukustus maas."
-
-#: plugin/controllers/BouquetEditor.py:540
-#, python-format
-msgid "Bouquet %s is unlocked."
-msgstr "Lemmiknimekirja %s lukustus maas."
-
-#: plugin/controllers/BouquetEditor.py:577
-#, python-format
-msgid "Error while preparing backup file, %s does not exists."
-msgstr "Viga varukoopia loomisel, %s pole olemas."
-
-#: plugin/controllers/BouquetEditor.py:583
-msgid "Error while preparing backup file."
-msgstr "Viga varukoopia loomisel."
-
-#: plugin/controllers/BouquetEditor.py:634
-msgid "Bouquet-settings were restored successfully"
-msgstr "Lemmiknimekirjad taastati edukalt"
-
-#: plugin/controllers/BouquetEditor.py:636
-#, python-format
-msgid "Error, %s was not created with WebBouquetEditor..."
-msgstr "Viga: %s ei ole loodud WebBouquetEditor laiendusega."
-
-#: plugin/controllers/BouquetEditor.py:638
-#, python-format
-msgid "Error, %s does not exists, restore is not possible..."
-msgstr "Viga, %s pole olemas, taastamine ei ole võimalik..."
-
-#: plugin/controllers/base.py:278 plugin/local.py:192 plugin/local.py:332
-msgid "Settings"
-msgstr "Seaded"
-
-#: plugin/controllers/base.py:293
-msgid "LCD4Linux Setup"
-msgstr "LCD4Linux seaded"
-
-#: plugin/controllers/base.py:308
-msgid "OSCam Webinterface"
-msgstr "OSCam veebiliides"
-
-#: plugin/controllers/base.py:312
-msgid "AutoTimer"
-msgstr "Autotaimer"
-
-#: plugin/controllers/base.py:317
-msgid "BouquetEditor"
-msgstr "Lemmiknimekirjad"
-
-#: plugin/controllers/base.py:321
-msgid "EPGRefresh"
-msgstr "EPG värskendus"
-
-#: plugin/controllers/base.py:339
-msgid "Terminal"
-msgstr "Terminal"
-
-#: plugin/controllers/ipkg.py:290
-msgid "Error upload File"
-msgstr "Viga faili üleslaadimisel"
-
-#: plugin/controllers/ipkg.py:293
-msgid "wrong filetype"
-msgstr "vale failitüüp"
-
-#: plugin/controllers/ipkg.py:306
-msgid "Error writing File"
-msgstr "Viga faili kirjutamisel"
-
-#: plugin/controllers/models/info.py:59
-msgid "SLAAC"
-msgstr "SLAAC"
-
-#: plugin/controllers/models/info.py:66 plugin/controllers/models/info.py:77
-#: plugin/controllers/models/info.py:84
-msgid "static"
-msgstr "staatiline"
-
-#: plugin/controllers/models/info.py:68 plugin/controllers/models/info.py:86
-#: plugin/local.py:90
-msgid "DHCP"
-msgstr "DHCP"
-
-#: plugin/controllers/models/info.py:70 plugin/controllers/models/info.py:88
-msgid "manual/disabled"
-msgstr "käsitsi/keelatud"
-
-#: plugin/controllers/models/info.py:96 plugin/controllers/models/info.py:103
-msgid "unknown"
-msgstr "tundmatu"
-
-#: plugin/controllers/models/info.py:137 plugin/local.py:126
-msgid "IPv4-only kernel"
-msgstr "IPv4-ainult kernel"
-
-#: plugin/controllers/models/info.py:141 plugin/local.py:128
-msgid "IPv4-only Python/Twisted"
-msgstr "IPv4-ainult Python/Twisted"
-
-#: plugin/controllers/models/info.py:170 plugin/local.py:127
-msgid "none/IPv4-only network"
-msgstr "pole/IPv4-ainult võrk"
-
-#: plugin/controllers/models/info.py:323 plugin/controllers/models/info.py:326
-#: plugin/controllers/models/movies.py:231
-msgid "kB"
-msgstr "kB"
-
-#: plugin/controllers/models/info.py:327 plugin/controllers/models/info.py:453
+#: ../plugin/controllers/models/info.py:298
+#: ../plugin/controllers/models/info.py:422
 #, python-format
 msgid "%s free / %s total"
 msgstr "Vaba %s / kokku %s"
 
-#: plugin/controllers/models/info.py:365 plugin/local.py:74
-msgid "Chipset"
-msgstr "Kiip"
+#: ../plugin/controllers/i18n.py:220
+msgid "(Shift + Click for Long Press)"
+msgstr "(shift + klõps = pikk nupuvajutus)"
 
-#: plugin/controllers/models/info.py:370 plugin/local.py:115
-msgid "Frontprocessor Version"
-msgstr "Esiprotsessori versioon"
+#: ../plugin/controllers/i18n.py:78
+msgid "AGC"
+msgstr "AGC"
 
-#: plugin/controllers/models/info.py:416 plugin/controllers/models/info.py:427
-#: plugin/controllers/models/info.py:445
-#: plugin/controllers/models/movies.py:229
-msgid "MB"
-msgstr "MB"
+#: ../plugin/controllers/i18n.py:73
+msgid "About"
+msgstr "Programmist"
 
-#: plugin/controllers/models/info.py:419 plugin/controllers/models/info.py:425
-#: plugin/controllers/models/info.py:440 plugin/controllers/models/info.py:443
-#: plugin/controllers/models/movies.py:227
-msgid "GB"
-msgstr "GB"
+#: ../plugin/controllers/i18n.py:352
+msgid "Add"
+msgstr "Lisa"
 
-#: plugin/controllers/models/info.py:423 plugin/controllers/models/info.py:435
-#: plugin/controllers/models/info.py:437
-msgid "TB"
-msgstr "TB"
+#: ../plugin/controllers/i18n.py:75
+msgid "Add AutoTimer"
+msgstr "Lisa autotaimer"
 
-#: plugin/controllers/models/info.py:482
-msgid "r/w"
-msgstr "r/w"
+#: ../plugin/controllers/i18n.py:374
+msgid "Add Autotimer to Tags"
+msgstr "Lisa siltidele 'autotaimer'"
 
-#: plugin/controllers/models/info.py:486
-msgid "r/o"
-msgstr "r/o"
+#: ../plugin/controllers/i18n.py:415
+msgid "Add Bouquet"
+msgstr "Lisa lemmiknimekiri"
 
-#: plugin/controllers/models/message.py:33
-msgid "Message sent successfully!"
-msgstr "Teade edukalt saadetud!"
+#: ../plugin/controllers/i18n.py:418
+msgid "Add Marker"
+msgstr "Lisa märgis"
 
-#: plugin/controllers/models/message.py:43
-msgid "No answer in time"
-msgstr "Ajavaru piires vastus puudub"
+#: ../plugin/controllers/i18n.py:375
+msgid "Add Name to Tags"
+msgstr "Lisa siltidele nimi"
 
-#: plugin/controllers/models/message.py:48
-msgid "Answer is YES!"
-msgstr "Vastus - JAH!"
+#: ../plugin/controllers/i18n.py:410
+msgid "Add Provider as new Bouquet"
+msgstr "Lisa levitaja uue lemmiknimekirjana"
 
-#: plugin/controllers/models/message.py:48
+#: ../plugin/controllers/i18n.py:371
+msgid "Add Similar on Conflict"
+msgstr "Vastuolu puhul lisa asendustaimer"
+
+#: ../plugin/controllers/i18n.py:419
+msgid "Add Spacer"
+msgstr "Lisa eraldaja"
+
+#: ../plugin/controllers/i18n.py:74
+msgid "Add Timer"
+msgstr "Lisa taimer"
+
+#: ../plugin/controllers/i18n.py:76
+msgid "Add Zap Timer"
+msgstr "Lisa kanalivahetustaimer"
+
+#: ../plugin/controllers/i18n.py:412
+msgid "Add channel(s) as alternate"
+msgstr "Lisa asenduskanalina"
+
+#: ../plugin/controllers/i18n.py:411
+msgid "Add channel(s) to Bouquet"
+msgstr "Lisa lemmiknimekirja"
+
+#: ../plugin/plugin.py:151
+msgid "Add service name to stream information"
+msgstr "Lisa kanali nimi voo infosse"
+
+#: ../plugin/controllers/BouquetEditor.py:466
+#, python-format
+msgid "Added %s to alternative service %s."
+msgstr "%s lisati asenduskanalile %s."
+
+#: ../plugin/controllers/i18n.py:508
+msgid "Adjust recording time to real event time"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
+msgid "After Event"
+msgstr "Pärast sündmust"
+
+#: ../plugin/controllers/i18n.py:315
+msgid "After event"
+msgstr "Pärast sündmust"
+
+#: ../plugin/controllers/i18n.py:79 ../plugin/controllers/i18n.py:379
+msgid "All"
+msgstr "Kõik"
+
+#: ../plugin/controllers/i18n.py:80
+msgid "All Channels"
+msgstr "Kõik kanalid"
+
+#: ../plugin/controllers/i18n.py:281
+msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
+msgstr "Kõik selle tarkvara failid vaba lähtekoodiga; neid võib levitada ja/või muuta vastavalt GNU Üldise Avaliku Litsentsi v.3 tingimustele, avaldajaks Free Software Foundation."
+
+#: ../plugin/controllers/BouquetEditor.py:505
+msgid "All alternative services deleted."
+msgstr "Kõik asenduskanalid on kustutatud."
+
+#: ../plugin/plugin.py:154
+msgid "Allow IPK Upload"
+msgstr "Luba IPK üleslaadimine"
+
+#: ../plugin/controllers/i18n.py:507
+msgid "Allow duplicates"
+msgstr ""
+
+#: ../plugin/controllers/BouquetEditor.py:452
+#, python-format
+msgid "Alternative %s created failed."
+msgstr "Asenduskanali %s loomine nurjus."
+
+#: ../plugin/controllers/i18n.py:396
+msgid "Always"
+msgstr "Alati"
+
+#: ../plugin/controllers/i18n.py:325
+msgid "Amount of recordings left"
+msgstr "Järelejäänud salvestuste arv"
+
+#: ../plugin/controllers/models/message.py:51
 msgid "Answer is NO!"
 msgstr "Vastus - EI!"
 
-#: plugin/controllers/models/movies.py:308
-msgid "remove"
-msgstr "eemalda"
+#: ../plugin/controllers/models/message.py:51
+msgid "Answer is YES!"
+msgstr "Vastus - JAH!"
 
-#: plugin/controllers/models/movies.py:314
+#: ../plugin/controllers/i18n.py:335
+msgid "Any service/recording"
+msgstr "Iga kanal/salvestus"
+
+#: ../plugin/controllers/i18n.py:433
+msgid "Apid"
+msgstr "Apid"
+
+#: ../plugin/controllers/i18n.py:63
+msgid "April"
+msgstr "Aprill"
+
+#: ../plugin/controllers/i18n.py:400
+msgid "Ask, default No"
+msgstr "Küsitakse (vaikimisi 'ei')"
+
+#: ../plugin/controllers/i18n.py:399
+msgid "Ask, default Yes"
+msgstr "Küsitakse (vaikimisi 'jah')"
+
+#: ../plugin/controllers/i18n.py:67
+msgid "August"
+msgstr "August"
+
+#: ../plugin/controllers/i18n.py:81
+msgid "Authors"
+msgstr "Autorid"
+
+#: ../plugin/controllers/i18n.py:82 ../plugin/controllers/i18n.py:378
+msgid "Auto"
+msgstr "Auto"
+
+#: ../plugin/controllers/i18n.py:364
+msgid "AutoPoll"
+msgstr "Automaatne päring"
+
+#: ../plugin/controllers/base.py:327
+msgid "AutoTimer"
+msgstr "Autotaimer"
+
+#: ../plugin/controllers/i18n.py:285
+msgid "AutoTimer Edit"
+msgstr "Autotaimeri muutmine"
+
+#: ../plugin/controllers/i18n.py:284
+msgid "AutoTimer List"
+msgstr "Autotaimerite nimekiri"
+
+#: ../plugin/controllers/i18n.py:363
+msgid "AutoTimer Settings"
+msgstr "Autotaimeri sätted"
+
+#: ../plugin/controllers/i18n.py:246
+msgid "Autotimer Preview"
+msgstr "Autotaimeri eelvaatus"
+
+#: ../plugin/controllers/i18n.py:85
+msgid "BER"
+msgstr "BER"
+
+#: ../plugin/controllers/i18n.py:83
+msgid "Back"
+msgstr "Tagasi"
+
+#: ../plugin/controllers/i18n.py:398
+msgid "Background only"
+msgstr "Ainult taust"
+
+#: ../plugin/controllers/i18n.py:84 ../plugin/controllers/i18n.py:386
+msgid "Begin"
+msgstr "Algus"
+
+#: ../plugin/controllers/i18n.py:322
+msgid "Begin of \"after event\" timespan"
+msgstr "\"pärast sündmust\" ajaakna algus"
+
+#: ../plugin/controllers/i18n.py:306
+msgid "Begin of timespan"
+msgstr "Ajaakna algus"
+
+#: ../plugin/controllers/i18n.py:467
+msgid "Bookmark"
+msgstr "Järjehoidja"
+
+#: ../plugin/controllers/i18n.py:466
+msgid "Bookmarks"
+msgstr "Järjehoidjad"
+
+#: ../plugin/controllers/BouquetEditor.py:127
+#, python-format
+msgid "Bouquet %s already exists."
+msgstr "Lemmiknimekiri %s on juba olemas."
+
+#: ../plugin/controllers/BouquetEditor.py:218
+#, python-format
+msgid "Bouquet %s can not be moved."
+msgstr "Lemmiknimekirja %s ei saa liigutada."
+
+#: ../plugin/controllers/BouquetEditor.py:122
+#, python-format
+msgid "Bouquet %s created."
+msgstr "Lemmiknimekiri %s loodud."
+
+#: ../plugin/controllers/BouquetEditor.py:191
+#, python-format
+msgid "Bouquet %s deleted."
+msgstr "Lemmiknimekiri %s kustutatud."
+
+#: ../plugin/controllers/BouquetEditor.py:547
+#, python-format
+msgid "Bouquet %s is locked."
+msgstr "Lemmiknimekiri %s on lukustatud."
+
+#: ../plugin/controllers/BouquetEditor.py:555
+#, python-format
+msgid "Bouquet %s is unlocked."
+msgstr "Lemmiknimekirja %s lukustus maas."
+
+#: ../plugin/controllers/BouquetEditor.py:216
+#, python-format
+msgid "Bouquet %s moved."
+msgstr "Lemmiknimekiri %s liigutatud."
+
+#: ../plugin/controllers/BouquetEditor.py:186
+#, python-format
+msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
+msgstr "Lemmiknimekirja %s eemaldamine nurjus, viitenumber või muutuv nimekiri ei ole kehtivad."
+
+#: ../plugin/controllers/BouquetEditor.py:184
+#, python-format
+msgid "Bouquet %s removed failed."
+msgstr "Lemmiknimekirja %s eemaldamine nurjus."
+
+#: ../plugin/controllers/i18n.py:219
+msgid "Bouquet Editor"
+msgstr "Lemmiknimekirjad"
+
+#: ../plugin/controllers/BouquetEditor.py:388
+msgid "Bouquet renamed successfully."
+msgstr "Lemmiknimekiri nimetati ümber."
+
+#: ../plugin/controllers/BouquetEditor.py:649
+msgid "Bouquet-settings were restored successfully"
+msgstr "Lemmiknimekirjad taastati edukalt"
+
+#: ../plugin/controllers/base.py:332
+msgid "BouquetEditor"
+msgstr "Lemmiknimekirjad"
+
+#: ../plugin/controllers/BouquetEditor.py:129
+#: ../plugin/controllers/BouquetEditor.py:454
+msgid "Bouquetlist is not editable!"
+msgstr "Lemmiknimekirjade loend ei ole muudetav!"
+
+#: ../plugin/controllers/i18n.py:86 ../plugin/controllers/i18n.py:341
+msgid "Bouquets"
+msgstr "Lemmiknimekirjad"
+
+#: ../plugin/controllers/i18n.py:88
+msgid "Box"
+msgstr "Vastuvõtja"
+
+#: ../plugin/controllers/i18n.py:89
+msgid "Box Control"
+msgstr "Vastuvõtja juhtimine"
+
+#: ../plugin/controllers/i18n.py:87
+msgid "Box Info"
+msgstr "Vastuvõtja andmed"
+
+#: ../plugin/controllers/i18n.py:90
+msgid "Box Uptime"
+msgstr "Vastuvõtja tööaeg"
+
+#: ../plugin/controllers/i18n.py:91
+msgid "Brand"
+msgstr "Mark"
+
+#: ../plugin/controllers/models/services.py:338
+msgid "Cable"
+msgstr "Kaabel"
+
+#: ../plugin/controllers/i18n.py:458
+msgid "Calendar Week"
+msgstr "Kalendrinädal"
+
+#: ../plugin/controllers/i18n.py:92 ../plugin/plugin.py:113
+msgid "Cancel"
+msgstr "Tühista"
+
+#: ../plugin/controllers/i18n.py:475
+msgid "Cancelled"
+msgstr "Tühistatud"
+
+#: ../plugin/controllers/i18n.py:93
+msgid "Capacity"
+msgstr "Maht"
+
+#: ../plugin/controllers/i18n.py:94
+msgid "Channel"
+msgstr "Kanal"
+
+#: ../plugin/controllers/i18n.py:95 ../plugin/controllers/i18n.py:339
+msgid "Channels"
+msgstr "Kanalid"
+
+#: ../plugin/plugin.py:153
+msgid "Character encoding for EPG data"
+msgstr "EPG andmete tähemärgistik"
+
+#: ../plugin/controllers/i18n.py:96 ../plugin/controllers/models/info.py:336
+msgid "Chipset"
+msgstr "Kiip"
+
+#: ../plugin/controllers/i18n.py:97
+msgid "Cleanup Timers"
+msgstr "Kustuta vanad"
+
+#: ../plugin/controllers/i18n.py:98
+msgid "Close"
+msgstr "Sulge"
+
+#: ../plugin/controllers/i18n.py:478
+msgid "Common Settings"
+msgstr "Üldseaded"
+
+#: ../plugin/controllers/models/timers.py:217
+#, python-format
+msgid "Conflicting Timer(s) detected! %s"
+msgstr "Vastuolus taimerid!  %s"
+
+#: ../plugin/controllers/i18n.py:99
+msgid "Contributors"
+msgstr "Kaasautorid"
+
+#: ../plugin/controllers/i18n.py:100
+msgid "Control"
+msgstr "Juhtimine"
+
+#: ../plugin/controllers/models/timers.py:246
+#, python-format
+msgid "Could not add timer '%s'!"
+msgstr "Taimeri '%s' lisamine nurjus!"
+
+#: ../plugin/controllers/models/timers.py:377
+#, python-format
+msgid "Could not find timer '%s' with given start and end time!"
+msgstr "Antud algus- ja lõpuajaga taimerit '%s' ei leitud!"
+
+#: ../plugin/controllers/i18n.py:101
+msgid "Current"
+msgstr "Hetkel"
+
+#: ../plugin/controllers/i18n.py:102
+msgid "Current Event"
+msgstr "Käesolev saade"
+
+#: ../plugin/controllers/i18n.py:183 ../plugin/plugin.py:136
+msgid "Custom box name"
+msgstr "Kohandatud vastuvõtja nimi"
+
+#: ../plugin/controllers/i18n.py:311
+msgid "Custom offset"
+msgstr "Kohandatud nihe"
+
+#: ../plugin/controllers/i18n.py:112 ../plugin/controllers/models/info.py:63
+#: ../plugin/controllers/models/info.py:82
+msgid "DHCP"
+msgstr "DHCP"
+
+#: ../plugin/controllers/i18n.py:103
+msgid "Date"
+msgstr "Kuupäev"
+
+#: ../plugin/controllers/i18n.py:71
+msgid "December"
+msgstr "Detsember"
+
+#: ../plugin/controllers/i18n.py:104
+msgid "Deep-Standby"
+msgstr "Puhkeseisund"
+
+#: ../plugin/controllers/i18n.py:105
+msgid "Default"
+msgstr "Vaikimisi"
+
+#: ../plugin/controllers/i18n.py:388
+msgid "Delay Standby"
+msgstr "Ooteseisundi viiteaeg"
+
+#: ../plugin/controllers/i18n.py:106 ../plugin/controllers/i18n.py:353
+msgid "Delete"
+msgstr "Kustuta"
+
+#: ../plugin/controllers/i18n.py:468
+#, fuzzy
+msgid "Delete Bookmark"
+msgstr "Järjehoidja"
+
+#: ../plugin/controllers/i18n.py:417
+msgid "Delete Bouquet"
+msgstr "Kustuta lemmiknimekiri"
+
+#: ../plugin/controllers/i18n.py:107
+msgid "Delete Recording"
+msgstr "Kustuta salvestis"
+
+#: ../plugin/controllers/i18n.py:109
+msgid "Delete Timer"
+msgstr "Kustuta taimer"
+
+#: ../plugin/controllers/models/movies.py:423
 msgid ""
 "Delete failed, because there is no movie trash !\n"
 "Disable movie trash in configuration to delete this item"
@@ -402,1867 +473,1950 @@ msgstr ""
 "Kustutamine nurjus, kuna prügikasti ei ole!\n"
 "Selle elemendi kustutamiseks keela seadistustes prügikasti kasutamine"
 
-#: plugin/controllers/models/services.py:169 plugin/local.py:415
-msgid "Orbital Position"
-msgstr "Orbitaalpositsioon"
-
-#: plugin/controllers/models/services.py:271
-msgid "New"
-msgstr "Uus"
-
-#: plugin/controllers/models/services.py:273
-msgid "Services"
-msgstr "Kanalid"
-
-#: plugin/controllers/models/services.py:278
-msgid "Cable"
-msgstr "Kaabel"
-
-#: plugin/controllers/models/services.py:280
-msgid "Terrestrial"
-msgstr "Maapealne"
-
-#: plugin/controllers/models/services.py:284
-msgid "W"
-msgstr "W"
-
-#: plugin/controllers/models/services.py:286
-msgid "E"
-msgstr "E"
-
-#: plugin/controllers/models/timers.py:178
-#, python-format
-msgid "Conflicting Timer(s) detected! %s"
-msgstr "Vastuolus taimerid!  %s"
-
-#: plugin/controllers/models/timers.py:195
-#, python-format
-msgid "Could not add timer '%s'!"
-msgstr "Taimeri '%s' lisamine nurjus!"
-
-#: plugin/controllers/models/timers.py:200
-#, python-format
-msgid "Timer '%s' added"
-msgstr "Taimer '%s' lisatud"
-
-#: plugin/controllers/models/timers.py:208
-msgid "EventId not found"
-msgstr "Saate tunnust ei leitud"
-
-#: plugin/controllers/models/timers.py:279
-#, python-format
-msgid "Timer '%s' changed"
-msgstr "Taimerit '%s' muudeti"
-
-#: plugin/controllers/models/timers.py:298
-#, python-format
-msgid "Timer '%s' not saved while Conflict"
-msgstr "Taimerit '%s' ei salvestatud vastuolu tõttu"
-
-#: plugin/controllers/models/timers.py:304
-#, python-format
-msgid "Could not find timer '%s' with given start and end time!"
-msgstr "Antud algus- ja lõpuajaga taimerit '%s' ei leitud!"
-
-#: plugin/controllers/models/timers.py:316
-#, python-format
-msgid "The timer '%s' has been deleted successfully"
-msgstr "Taimer '%s' kustutati edukalt"
-
-#: plugin/controllers/models/timers.py:321
-#: plugin/controllers/models/timers.py:365
-msgid "No matching Timer found"
-msgstr "Taimeri vastet ei leitud"
-
-#: plugin/controllers/models/timers.py:339
-#, python-format
-msgid "Timer '%s' not enabled while Conflict"
-msgstr "Taimerit '%s' ei lubatud vastuolu tõttu"
-
-#: plugin/controllers/models/timers.py:345
-#, python-format
-msgid "Timer '%s' already exists!"
-msgstr "Taimer '%s' on juba olemas!"
-
-#: plugin/controllers/models/timers.py:351
-#, python-format
-msgid "The timer '%s' now recorded! Not disabled!"
-msgstr "Taimer '%s' on nüüd salvestav! Mitte keelatud!"
-
-#: plugin/controllers/models/timers.py:359
-#, python-format
-msgid "The timer '%s' has been %s successfully"
-msgstr "Taimer '%s' on edukalt %s"
-
-#: plugin/controllers/models/timers.py:372
-msgid "List of Timers has been cleaned"
-msgstr "Taimerinimekiri tühjendati"
-
-#: plugin/controllers/models/timers.py:379
-msgid "TimerList has been saved"
-msgstr "Taimerinimekiri salvestati"
-
-#: plugin/controllers/models/timers.py:394
-msgid "No event found! Not recording!"
-msgstr "Saadet ei leitud! Ei salvestata!"
-
-#: plugin/controllers/models/timers.py:400
-msgid "Instant record for current Event started"
-msgstr "Algas käesoleva saate salvestamine"
-
-#: plugin/controllers/models/timers.py:409
-msgid "Infinite Instant recording started"
-msgstr "Algas kohene salvestus"
-
-#: plugin/controllers/models/timers.py:428
-msgid "Timer conflict detected! Not recording!"
-msgstr "Taimerite ajad kattuvad! Ei salvestata!"
-
-#: plugin/controllers/models/timers.py:502
-msgid "Missing requesteter: sRef"
-msgstr "Puudub registri parameeter: sRef"
-
-#: plugin/controllers/models/timers.py:524
-#, python-format
-msgid "Unknown command: '%s'"
-msgstr "Tundmatu käsk: '%s'"
-
-#: plugin/controllers/models/timers.py:583
-msgid "PowerTimer feature not available"
-msgstr "Toitetaimeri võimalus puudub"
-
-#: plugin/controllers/models/timers.py:659
-#: plugin/controllers/models/timers.py:685
-msgid "Sleeptimer is enabled"
-msgstr "Unetaimer lubati"
-
-#: plugin/controllers/models/timers.py:659
-#: plugin/controllers/models/timers.py:685
-msgid "Sleeptimer is disabled"
-msgstr "Unetaimer keelati"
-
-#: plugin/controllers/models/timers.py:664
-#: plugin/controllers/models/timers.py:691
-msgid "SleepTimer error"
-msgstr "Unetaimeri viga"
-
-#: plugin/controllers/models/timers.py:703
-msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "VIGA: Unetaimerit ei saa määrata kui vastuvõtja on ooteseisundis"
-
-#: plugin/controllers/models/timers.py:708
-#: plugin/controllers/models/timers.py:777
-#: plugin/controllers/models/timers.py:795
-msgid "Sleeptimer has been disabled"
-msgstr "Unetaimer keelati"
-
-#: plugin/controllers/models/timers.py:714
-#: plugin/controllers/models/timers.py:777
-#: plugin/controllers/models/timers.py:790
-#, python-format
-msgid "Sleeptimer set to %d minutes"
-msgstr "Unetaimer määratud %d minutile"
-
-#: plugin/controllers/models/timers.py:719
-#: plugin/controllers/models/timers.py:800
-msgid "SleepTimer Error"
-msgstr "Unetaimeri viga"
-
-#: plugin/controllers/models/timers.py:828
-msgid "Error parsing vps.xml"
-msgstr "Viga vps.xml faili parsimisel"
-
-#: plugin/controllers/models/timers.py:833
-msgid "VPS plugin not found"
-msgstr "VPS pluginat ei leitud"
-
-#: plugin/controllers/web.py:62
-#, python-format
-msgid "Missing mandatory parameter '%s'"
-msgstr "Puudub kohustuslik parameeter '%s'"
-
-#: plugin/controllers/web.py:68
-#, python-format
-msgid "The parameter '%s' can't be empty"
-msgstr "Parameeter '%s' ei tohi olla tühi"
-
-#: plugin/controllers/web.py:135
-#, python-format
-msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr "Vale parameetri vorming 'set=%s'. Kasuta set=set15 "
-
-#: plugin/controllers/web.py:140
-#, python-format
-msgid "Unknown Volume command %s"
-msgstr "Tundmatu helitugevuse käsk %s"
-
-#: plugin/controllers/web.py:175
-msgid "The parameter 'command' must be a number"
-msgstr "Parameeter 'käsk' peab olema number"
-
-#: plugin/controllers/web.py:333
-#, python-format
-msgid "type %s is not a number"
-msgstr "tüüp %s ei ole number"
-
-#: plugin/local.py:8
-msgid "hour"
-msgstr "tund"
-
-#: plugin/local.py:8
-msgid "minute"
-msgstr "minut"
-
-#: plugin/local.py:14
-msgid "Mo"
-msgstr "E"
-
-#: plugin/local.py:15
-msgid "Tu"
-msgstr "T"
-
-#: plugin/local.py:16
-msgid "We"
-msgstr "K"
-
-#: plugin/local.py:17
-msgid "Th"
-msgstr "N"
-
-#: plugin/local.py:18
-msgid "Fr"
-msgstr "R"
-
-#: plugin/local.py:19
-msgid "Sa"
-msgstr "L"
-
-#: plugin/local.py:20
-msgid "Su"
-msgstr "P"
-
-#: plugin/local.py:22
-msgid "Sun"
-msgstr "P"
-
-#: plugin/local.py:23
-msgid "Mon"
-msgstr "E"
-
-#: plugin/local.py:24
-msgid "Tue"
-msgstr "T"
-
-#: plugin/local.py:25
-msgid "Wed"
-msgstr "K"
-
-#: plugin/local.py:26
-msgid "Thu"
-msgstr "N"
-
-#: plugin/local.py:27
-msgid "Fri"
-msgstr "R"
-
-#: plugin/local.py:28
-msgid "Sat"
-msgstr "L"
-
-#: plugin/local.py:30
-msgid "Monday"
-msgstr "Esmaspäev"
-
-#: plugin/local.py:31
-msgid "Tuesday"
-msgstr "Teisipäev"
-
-#: plugin/local.py:32
-msgid "Wednesday"
-msgstr "Kolmapäev"
-
-#: plugin/local.py:33
-msgid "Thursday"
-msgstr "Neljapäev"
-
-#: plugin/local.py:34
-msgid "Friday"
-msgstr "Reede"
-
-#: plugin/local.py:35
-msgid "Saturday"
-msgstr "Laupäev"
-
-#: plugin/local.py:36
-msgid "Sunday"
-msgstr "Pühapäev"
-
-#: plugin/local.py:38
-msgid "January"
-msgstr "Jaanuar"
-
-#: plugin/local.py:39
-msgid "February"
-msgstr "Veebruar"
-
-#: plugin/local.py:40
-msgid "March"
-msgstr "Märts"
-
-#: plugin/local.py:41
-msgid "April"
-msgstr "Aprill"
-
-#: plugin/local.py:42
-msgid "May"
-msgstr "Mai"
-
-#: plugin/local.py:43
-msgid "June"
-msgstr "Juuni"
-
-#: plugin/local.py:44
-msgid "July"
-msgstr "Juuli"
-
-#: plugin/local.py:45
-msgid "August"
-msgstr "August"
-
-#: plugin/local.py:46
-msgid "September"
-msgstr "September"
-
-#: plugin/local.py:47
-msgid "October"
-msgstr "Oktoober"
-
-#: plugin/local.py:48
-msgid "November"
-msgstr "November"
-
-#: plugin/local.py:49
-msgid "December"
-msgstr "Detsember"
-
-#: plugin/local.py:51
-msgid "About"
-msgstr "Programmist"
-
-#: plugin/local.py:52
-msgid "Add Timer"
-msgstr "Lisa taimer"
-
-#: plugin/local.py:53
-msgid "Add AutoTimer"
-msgstr "Lisa autotaimer"
-
-#: plugin/local.py:54
-msgid "Add Zap Timer"
-msgstr "Lisa kanalivahetustaimer"
-
-#: plugin/local.py:55 plugin/local.py:364
-msgid "After Event"
-msgstr "Pärast sündmust"
-
-#: plugin/local.py:56
-msgid "AGC"
-msgstr "AGC"
-
-#: plugin/local.py:57 plugin/local.py:352
-msgid "All"
-msgstr "Kõik"
-
-#: plugin/local.py:58
-msgid "All Channels"
-msgstr "Kõik kanalid"
-
-#: plugin/local.py:59
-msgid "Authors"
-msgstr "Autorid"
-
-#: plugin/local.py:60 plugin/local.py:351
-msgid "Auto"
-msgstr "Auto."
-
-#: plugin/local.py:61
-msgid "Back"
-msgstr "Tagasi"
-
-#: plugin/local.py:62 plugin/local.py:359
-msgid "Begin"
-msgstr "Algus"
-
-#: plugin/local.py:63
-msgid "BER"
-msgstr "BER"
-
-#: plugin/local.py:64 plugin/local.py:314
-msgid "Bouquets"
-msgstr "Lemmiknimekirjad"
-
-#: plugin/local.py:65
-msgid "Box Info"
-msgstr "Vastuvõtja andmed"
-
-#: plugin/local.py:66
-msgid "Box"
-msgstr "Vastuvõtja"
-
-#: plugin/local.py:67
-msgid "Box Control"
-msgstr "Vastuvõtja juhtimine"
-
-#: plugin/local.py:68
-msgid "Box Uptime"
-msgstr "Vastuvõtja tööaeg"
-
-#: plugin/local.py:69
-msgid "Brand"
-msgstr "Mark"
-
-#: plugin/local.py:70 plugin/plugin.py:108
-msgid "Cancel"
-msgstr "Tühista"
-
-#: plugin/local.py:71
-msgid "Capacity"
-msgstr "Maht"
-
-#: plugin/local.py:72
-msgid "Channel"
-msgstr "Kanal"
-
-#: plugin/local.py:73 plugin/local.py:312
-msgid "Channels"
-msgstr "Kanalid"
-
-#: plugin/local.py:75
-msgid "Cleanup Timers"
-msgstr "Kustuta vanad taimerid"
-
-#: plugin/local.py:76
-msgid "Close"
-msgstr "Sulge"
-
-#: plugin/local.py:77
-msgid "Contributors"
-msgstr "Kaasautorid"
-
-#: plugin/local.py:78
-msgid "Control"
-msgstr "Juhtimine"
-
-#: plugin/local.py:79
-msgid "Current"
-msgstr "Hetkel"
-
-#: plugin/local.py:80
-msgid "Current Event"
-msgstr "Käesolev saade"
-
-#: plugin/local.py:81
-msgid "Date"
-msgstr "Kuupäev"
-
-#: plugin/local.py:82
-msgid "Deep-Standby"
-msgstr "Puhkeseisund"
-
-#: plugin/local.py:83
-msgid "Default"
-msgstr "Vaikimisi"
-
-#: plugin/local.py:84 plugin/local.py:326
-msgid "Delete"
-msgstr "Kustuta"
-
-#: plugin/local.py:85
-msgid "Delete Recording"
-msgstr "Kustuta salvestis"
-
-#: plugin/local.py:86
-msgid "Really delete the recording"
-msgstr "Kas kustutada salvestis"
-
-#: plugin/local.py:87
-msgid "Delete Timer"
-msgstr "Kustuta taimer"
-
-#: plugin/local.py:88
-msgid "Really delete the timer"
-msgstr "Kas kustutada taimer"
-
-#: plugin/local.py:89 plugin/local.py:260
+#: ../plugin/controllers/i18n.py:476
+msgid "Deleted"
+msgstr "Kustutatud"
+
+#: ../plugin/controllers/i18n.py:111 ../plugin/controllers/i18n.py:287
 msgid "Description"
 msgstr "Sisututvustus"
 
-#: plugin/local.py:91
+#: ../plugin/controllers/i18n.py:113
 msgid "Disable Timer"
 msgstr "Keela taimer"
 
-#: plugin/local.py:92
-msgid "disabled"
-msgstr "keelatud"
+#: ../plugin/plugin.py:146
+msgid "Disable remote access for user root"
+msgstr "Keela kaugligipääs kasutaja juurkataloogile"
 
-#: plugin/local.py:93
+#: ../plugin/controllers/i18n.py:370
+msgid "Disabled on Conflict"
+msgstr "Vastuolu korral keelatud"
+
+#: ../plugin/controllers/i18n.py:454
+msgid "Display Mode"
+msgstr "Kava laad"
+
+#: ../plugin/controllers/i18n.py:452
+msgid "Display duration (s)"
+msgstr "Kuva kestus"
+
+#: ../plugin/controllers/i18n.py:115
 msgid "Distro"
 msgstr "Distro"
 
-#: plugin/local.py:94
-msgid "Dolby"
-msgstr "Dolby"
-
-#: plugin/local.py:95
-msgid "Done"
-msgstr "Tehtud"
-
-#: plugin/local.py:96
-msgid "Download"
-msgstr "Allalaadimine"
-
-#: plugin/local.py:97
-msgid "Download Playlist for"
-msgstr "Hangi mängukava"
-
-#: plugin/local.py:98
-msgid "Drivers"
-msgstr "Ajurid"
-
-#: plugin/local.py:99
-msgid "Duration"
-msgstr "Kestus"
-
-#: plugin/local.py:100
-msgid "Edit Timer"
-msgstr "Muuda taimerit"
-
-#: plugin/local.py:101
-msgid "Enable Timer"
-msgstr "Luba taimer"
-
-#: plugin/local.py:102
-msgid "Start"
-msgstr "Käivita"
-
-#: plugin/local.py:103 plugin/local.py:360
-msgid "End"
-msgstr "Lõpp"
-
-#: plugin/local.py:104 plugin/local.py:259 plugin/local.py:357
-msgid "Enabled"
-msgstr "Lubatud"
-
-#: plugin/local.py:105
-msgid "Encrypted"
-msgstr "Kodeeritud"
-
-#: plugin/local.py:106
-msgid "EPG"
-msgstr "EPG"
-
-#: plugin/local.py:107
-msgid "Epg Search"
-msgstr "Epg otsing"
-
-#: plugin/local.py:108
-msgid "Include description"
-msgstr "Hõlma sisututvustus"
-
-#: plugin/local.py:109
-msgid "Restrict to Bouquets"
-msgstr "Ainult kindlas nimekirjas"
-
-#: plugin/local.py:110
-msgid "Error"
-msgstr "Viga"
-
-#: plugin/local.py:111
-msgid "Every"
-msgstr "Iga"
-
-#: plugin/local.py:112
-msgid "Extras"
-msgstr "Lisad"
-
-#: plugin/local.py:113
-msgid "finished"
-msgstr "lõpetatud"
-
-#: plugin/local.py:114
-msgid "Firmware version"
-msgstr "Püsivara versioon"
-
-#: plugin/local.py:116
-msgid "Free"
-msgstr "Vaba"
-
-#: plugin/local.py:117
-msgid "Free Memory"
-msgstr "Vaba mälu"
-
-#: plugin/local.py:118
-msgid "Gateway"
-msgstr "Lüüs"
-
-#: plugin/local.py:119
-msgid "Grab Screenshot"
-msgstr "Loo ekraanipilt"
-
-#: plugin/local.py:120
-msgid "Gui version"
-msgstr "E2 versioon"
-
-#: plugin/local.py:121
-msgid "Hide full remote"
-msgstr "Peida täielik pult"
-
-#: plugin/local.py:122
-msgid "High Resolution"
-msgstr "Kõrglahutus"
-
-#: plugin/local.py:123
-msgid "Hard disk model"
-msgstr "Kõvaketas"
-
-#: plugin/local.py:124
-msgid "Hour"
-msgstr "Tund"
-
-#: plugin/local.py:125
-msgid "IPv4 address"
-msgstr "IPv4 aadress"
-
-#: plugin/local.py:129
-msgid "IPv6 address(es)"
-msgstr "IPv6 aadress(id)"
-
-#: plugin/local.py:130
-msgid "Infos"
-msgstr "Andmed"
-
-#: plugin/local.py:131
-msgid "Instant Record"
-msgstr "Kohene salvestus"
-
-#: plugin/local.py:132
-msgid "Javascript Libraries"
-msgstr "Javascript teegid"
-
-#: plugin/local.py:133
-msgid "Just play"
-msgstr "Esita"
-
-#: plugin/local.py:134
-msgid "Kernel"
-msgstr "Kernel"
-
-#: plugin/local.py:135
-msgid "LICENSE"
-msgstr "LITSENTS"
-
-#: plugin/local.py:136
-msgid "loading"
-msgstr "laadimine"
-
-#: plugin/local.py:137
-msgid "Location"
-msgstr "Asukoht"
-
-#: plugin/local.py:138
-msgid "Locked"
-msgstr "Lukustatud"
-
-#: plugin/local.py:139
-msgid "MAC address"
-msgstr "MAC aadress"
-
-#: plugin/local.py:140
-msgid "Main"
-msgstr "Peamenüü"
-
-#: plugin/local.py:141
-msgid "Minute"
-msgstr "Minut"
-
-#: plugin/local.py:142
-msgid "Model"
-msgstr "Mudel"
-
-#: plugin/local.py:143
-msgid "Movielist"
-msgstr "Filmilist"
-
-#: plugin/local.py:144
-msgid "Movies"
-msgstr "Salvestised"
-
-#: plugin/local.py:145
-msgid "MultiEPG"
-msgstr "MultiEPG"
-
-#: plugin/local.py:146
-msgid "Name"
-msgstr "Nimi"
-
-#: plugin/local.py:147
-msgid "Namespace"
-msgstr "Nimeruum"
-
-#: plugin/local.py:148
-msgid "Network Interface"
-msgstr "Võrguliides"
-
-#: plugin/local.py:149
-msgid "no description available"
-msgstr "sisututvustus puudub"
-
-#: plugin/local.py:150
-msgid "Sorry this page is not yet implemented"
-msgstr "See leht ei ole veel kasutuses"
-
-#: plugin/local.py:151
-msgid "Nothing"
-msgstr "Mitte midagi"
-
-#: plugin/local.py:152
-msgid "Nothing playing."
-msgstr "Midagi ei esitata."
-
-#: plugin/local.py:153
-msgid "Now"
-msgstr "Hetkel"
-
-#: plugin/local.py:154
-msgid "System OE"
-msgstr "Süsteemi OE"
-
-#: plugin/local.py:155
-msgid "On"
-msgstr "Sees"
-
-#: plugin/local.py:156
-msgid "Open Source Web Interface for Linux set-top box"
-msgstr "Veebiliides linux vastuvõtjale"
-
-#: plugin/local.py:157 plugin/plugin.py:126
-msgid "Show box name in header"
-msgstr "Kuva päises vastuvõtja nimi"
-
-#: plugin/local.py:158 plugin/plugin.py:128
-msgid "Use custom box name"
-msgstr "Kasuta kohandatud vastuvõtja nime"
-
-#: plugin/local.py:159 plugin/plugin.py:130
-msgid "Custom box name"
-msgstr "Kohandatud vastuvõtja nimi"
-
-#: plugin/local.py:160
-msgid "OSD"
-msgstr "OSD"
-
-#: plugin/local.py:161
-msgid "Open in new window"
-msgstr "Ava uues aknas"
-
-#: plugin/local.py:162
-msgid "Playback"
-msgstr "Taasesitus"
-
-#: plugin/local.py:163
-msgid "Playlist"
-msgstr "Pleilist"
-
-#: plugin/local.py:164
-msgid "Power Control"
-msgstr "Seiskamine"
-
-#: plugin/local.py:165
-msgid "Provider"
-msgstr "Levitaja"
-
-#: plugin/local.py:166
-msgid "Providers"
-msgstr "Levitajad"
-
-#: plugin/local.py:167
-msgid "Radio"
-msgstr "Raadio"
-
-#: plugin/local.py:168
-msgid "Reboot Box"
-msgstr "Taaskäivitus"
-
-#: plugin/local.py:169
-msgid "Recording Status"
-msgstr "Salvestamine"
-
-#: plugin/local.py:170 plugin/local.py:349
-msgid "Refresh"
-msgstr "Värskenda"
-
-#: plugin/local.py:171
-msgid "Refresh automatically every"
-msgstr "Automaatne värskendamine iga"
-
-#: plugin/local.py:172
-msgid "Refresh Timer"
-msgstr "Värskenda taimer"
-
-#: plugin/local.py:173
-msgid "Remote"
-msgstr "Pult"
-
-#: plugin/local.py:174
-msgid "Rename Recording"
-msgstr "Nimeta salvestis ümber"
-
-#: plugin/local.py:175
-msgid "Really rename the recording"
-msgstr "Kas nimetada salvestis ümber"
-
-#: plugin/local.py:176
-msgid "Repeated"
-msgstr "Korduv"
-
-#: plugin/local.py:177
-msgid "Restart GUI"
-msgstr "E2 taaskäivitus"
-
-#: plugin/local.py:178
-msgid "running"
-msgstr "töös"
-
-#: plugin/local.py:179
-msgid "Safe mode"
-msgstr "Turberežiim"
-
-#: plugin/local.py:180
-msgid "Satellites"
-msgstr "Satelliidid"
-
-#: plugin/local.py:181
-msgid "Satfinder"
-msgstr "Signaalimõõdik"
-
-#: plugin/local.py:182 plugin/local.py:328 plugin/local.py:380
-#: plugin/plugin.py:109
-msgid "Save"
-msgstr "Salvesta"
-
-#: plugin/local.py:183
-msgid "Screenshot"
-msgstr "Ekraanipilt"
-
-#: plugin/local.py:184 plugin/local.py:386
-msgid "Search"
-msgstr "Otsi"
-
-#: plugin/local.py:185
-msgid "Search IMDb"
-msgstr "IMDb otsing"
-
-#: plugin/local.py:186
-msgid "Search KinoPoisk"
-msgstr "KinoPoisk otsing"
-
-#: plugin/local.py:187
-msgid "seconds"
-msgstr "sekundit"
-
-#: plugin/local.py:188
-msgid "Send Message"
-msgstr "Saada sõnum"
-
-#: plugin/local.py:189
-msgid "Waiting for answer ..."
-msgstr "Vastuse ootel..."
-
-#: plugin/local.py:190
-msgid "Send a Message"
-msgstr "Saada sõnum"
-
-#: plugin/local.py:191
-msgid "Service"
-msgstr "Kanal"
-
-#: plugin/local.py:193
-msgid "Bouquet Editor"
-msgstr "Lemmiknimekirjad"
-
-#: plugin/local.py:194
-msgid "(Shift + Click for Long Press)"
-msgstr "(shift + klõps = pikk nupuvajutus)"
-
-#: plugin/local.py:195
-msgid "Show Full OpenWebif"
-msgstr "Kuva täielik OpenWebif"
-
-#: plugin/local.py:196
-msgid "Show full remote"
-msgstr "Kuva  täielik pult"
-
-#: plugin/local.py:197
-msgid "Show EPG for"
-msgstr "EPG kanalile"
-
-#: plugin/local.py:198
-msgid "Shutdown"
-msgstr "Seiska"
-
-#: plugin/local.py:199
-msgid "Site and sources"
-msgstr "Lähtekood"
-
-#: plugin/local.py:200
-msgid "SNR"
-msgstr "SNR"
-
-#: plugin/local.py:201
-msgid "Software"
-msgstr "Tarkvara"
-
-#: plugin/local.py:202
-msgid "Standby"
-msgstr "Ooteseisund"
-
-#: plugin/local.py:203
-msgid "Standby Toggle"
-msgstr "Toitelüliti"
-
-#: plugin/local.py:204
-msgid "Start time is after end time"
-msgstr "Algusaeg on lõpuajast hilisem"
-
-#: plugin/local.py:205
-msgid "Start Instant Record"
-msgstr "Salvesta kohe"
-
-#: plugin/local.py:206
-msgid "Stream"
-msgstr "Voogesitus"
-
-#: plugin/local.py:207
-msgid "Subnet mask"
-msgstr "Alamvõrgu mask"
-
-#: plugin/local.py:208
-msgid "Subservices"
-msgstr "Alamkanalid"
-
-#: plugin/local.py:209 plugin/local.py:310
-msgid "Tags"
-msgstr "Sildid"
-
-#: plugin/local.py:210
-msgid "Teletext"
-msgstr "Teletekst"
-
-#: plugin/local.py:211
-msgid "Television"
-msgstr "Televisioon"
-
-#: plugin/local.py:212
-msgid "Template Engine"
-msgstr "Malli mootor"
-
-#: plugin/local.py:213
-msgid "Text"
-msgstr "Tekst"
-
-#: plugin/local.py:214
-msgid "Time"
-msgstr "Aeg"
-
-#: plugin/local.py:215
-msgid "Timeout"
-msgstr "Ajapiirang"
-
-#: plugin/local.py:216
-msgid "Timer added"
-msgstr "Taimer lisatud"
-
-#: plugin/local.py:217
-msgid "Timerlist"
-msgstr "Taimeriloend"
-
-#: plugin/local.py:218
-msgid "New Name"
-msgstr "Uus nimi"
-
-#: plugin/local.py:219
-msgid "Autotimer Preview"
-msgstr "Autotaimeri eelvaatus"
-
-#: plugin/local.py:220
-msgid "Timer"
-msgstr "Taimer"
-
-#: plugin/local.py:221 plugin/local.py:331
-msgid "Timers"
-msgstr "Taimerid"
-
-#: plugin/local.py:222
-msgid "Title"
-msgstr "Nimi"
-
-#: plugin/local.py:223
-msgid "Main Memory"
-msgstr "Põhimälu"
-
-#: plugin/local.py:224
-msgid "transcoded"
-msgstr "transkodeeritud"
-
-#: plugin/local.py:225
-msgid "Transcode"
-msgstr "Transkodeeri"
-
-#: plugin/local.py:226
-msgid "Tuner Bit Error Rate BER"
-msgstr "Signaali bitiveategur BER"
-
-#: plugin/local.py:227
-msgid "Tuner Number"
-msgstr "Tuuneri number"
-
-#: plugin/local.py:228
-msgid "Tuner Signal"
-msgstr "Tuuneri signaal"
-
-#: plugin/local.py:229
-msgid "Tuner Signal Quality SNR"
-msgstr "Signaali kvaliteet SNR"
-
-#: plugin/local.py:230
-msgid "Tuner Signal Quality SNR_DB"
-msgstr "Signaali kvaliteet SNR_DB"
-
-#: plugin/local.py:231
-msgid "Tuner Signal Power AGC"
-msgstr "Signaali tugevus AGC"
-
-#: plugin/local.py:232
-msgid "Tuner Type"
-msgstr "Tuuneri tüüp"
-
-#: plugin/local.py:233
-msgid "Tuners"
-msgstr "Tuunerid"
-
-#: plugin/local.py:234
-msgid "TV"
-msgstr "TV"
-
-#: plugin/local.py:235
-msgid "TV Multi EPG"
-msgstr "TV Multi EPG"
-
-#: plugin/local.py:236
-msgid "Type"
-msgstr "Tüüp"
-
-#: plugin/local.py:237
-msgid "Upcoming Events"
-msgstr "Algavad saated"
-
-#: plugin/local.py:238
-msgid "Version"
-msgstr "Versioon"
-
-#: plugin/local.py:239
-msgid "Video"
-msgstr "Video"
-
-#: plugin/local.py:240
-msgid "Video Height"
-msgstr "Pildi kõrgus"
-
-#: plugin/local.py:241
-msgid "Video Wide"
-msgstr "Pildi suurus"
-
-#: plugin/local.py:242
-msgid "Video Width"
-msgstr "Pildi laius"
-
-#: plugin/local.py:243
-msgid "VPS"
-msgstr "VPS"
-
-#: plugin/local.py:244
-msgid "Volume"
-msgstr "Helitugevus"
-
-#: plugin/local.py:245
-msgid "Volume Control"
-msgstr "Helitugevus"
-
-#: plugin/local.py:246
-msgid "waiting"
-msgstr "ootel"
-
-#: plugin/local.py:247
-msgid "Warning"
-msgstr "Hoiatus"
-
-#: plugin/local.py:248
-msgid "Yes/No"
-msgstr "Jah/Ei"
-
-#: plugin/local.py:249
-msgid "Zap"
-msgstr "Kanalivahetus"
-
-#: plugin/local.py:250
-msgid "zap before Stream"
-msgstr "Kanalivahetus enne voogesitust"
-
-#: plugin/local.py:251
-msgid "Zap to"
-msgstr "Kanalile"
-
-#: plugin/local.py:252
-msgid "Zapped to"
-msgstr "Vahetatud kanalile"
-
-#: plugin/local.py:253
-msgid "Translation to Spanish"
-msgstr "Hispaaniakeelne tõlge"
-
-#: plugin/local.py:254
-msgid ""
-"All Files of this Software are open source software; you can redistribute it "
-"and/or modify it under the terms of the GNU General Public License version 3 "
-"as published by the Free Software Foundation."
-msgstr ""
-"Kõik selle tarkvara failid vaba lähtekoodiga; neid võib levitada ja/või "
-"muuta vastavalt GNU Üldise Avaliku Litsentsi v.3 tingimustele, avaldajaks "
-"Free Software Foundation."
-
-#: plugin/local.py:255
-msgid "Root"
-msgstr "Juur"
-
-#: plugin/local.py:257
-msgid "AutoTimer List"
-msgstr "Autotaimerite nimekiri"
-
-#: plugin/local.py:258
-msgid "AutoTimer Edit"
-msgstr "Autotaimeri muutmine"
-
-#: plugin/local.py:261
-msgid "Match title"
-msgstr "Vastab pealkirjale"
-
-#: plugin/local.py:262
-msgid "EPG encoding"
-msgstr "EPG tähemärgistik"
-
-#: plugin/local.py:263
-msgid "Search type"
-msgstr "Otsingu tüüp"
-
-#: plugin/local.py:264
-msgid "partial match"
-msgstr "osaline vaste"
-
-#: plugin/local.py:265
-msgid "exact match"
-msgstr "täpne vaste"
-
-#: plugin/local.py:266
-msgid "description match"
-msgstr "sisututvustuse vaste"
-
-#: plugin/local.py:267
-msgid "title or description match"
-msgstr "nime või sisututvustuse vaste"
-
-#: plugin/local.py:268
-msgid "title or short description match"
-msgstr "nime või lühitutvustuse vaste"
-
-#: plugin/local.py:269
-msgid "short description match"
-msgstr "lühitutvustuse vaste"
-
-#: plugin/local.py:270
-msgid "start match"
-msgstr "vaste algus"
-
-#: plugin/local.py:271
-msgid "Search strictness"
-msgstr "Otsingu rangus"
-
-#: plugin/local.py:272
-msgid "case-sensitive search"
-msgstr "tõusutundlik otsing"
-
-#: plugin/local.py:273
-msgid "case-insensitive search"
-msgstr "tõusutundetu otsing"
-
-#: plugin/local.py:274
-msgid "Timer type"
-msgstr "Taimeri tüüp"
-
-#: plugin/local.py:275
-msgid "record"
-msgstr "salvestus"
-
-#: plugin/local.py:276
-msgid "zap"
-msgstr "kanalivahetus"
-
-#: plugin/local.py:277
-msgid "Override found with alternative service"
-msgstr "Eelista asenduskanalit"
-
-#: plugin/local.py:278
-msgid "Only match during timespan"
-msgstr "Vaste ainult ajaaknas"
-
-#: plugin/local.py:279
-msgid "Begin of timespan"
-msgstr "Ajaakna algus"
-
-#: plugin/local.py:280
-msgid "End of Timespan"
-msgstr "Ajaakna lõpp"
-
-#: plugin/local.py:281
-msgid "Restrict to events on certain dates"
-msgstr "Ainult kindlal kuupäeval"
-
-#: plugin/local.py:282
-msgid "Not after"
-msgstr "Mitte pärast"
-
-#: plugin/local.py:283
-msgid "Not before"
-msgstr "Mitte enne"
-
-#: plugin/local.py:284
-msgid "Custom offset"
-msgstr "Kohandatud nihe"
-
-#: plugin/local.py:285
-msgid "Offset before recording (in m)"
-msgstr "Salvestuse algusesse lisatakse (min)"
-
-#: plugin/local.py:286
-msgid "Offset after recording (in m)"
-msgstr "Salvestuse lõppu lisatakse (min)"
-
-#: plugin/local.py:287
-msgid "Set maximum duration"
-msgstr "Määra suurim kestus"
-
-#: plugin/local.py:288
-msgid "After event"
-msgstr "Pärast sündmust"
-
-#: plugin/local.py:289
-msgid "standard"
-msgstr "tavaline"
-
-#: plugin/local.py:290
-msgid "auto"
-msgstr "auto."
-
-#: plugin/local.py:291
-msgid "do nothing"
-msgstr "ära tee midagi"
-
-#: plugin/local.py:292
-msgid "go to standby"
-msgstr "mine ooteseisundisse"
-
-#: plugin/local.py:293
-msgid "go to deep standby"
-msgstr "mine puhkeseisundisse"
-
-#: plugin/local.py:294
-msgid "Execute \"after event\" during timespan"
-msgstr "Teosta \"pärast sündmust\" ajaakna sees"
-
-#: plugin/local.py:295
-msgid "Begin of \"after event\" timespan"
-msgstr "\"pärast sündmust\" ajaakna algus"
-
-#: plugin/local.py:296
-msgid "End of \"after event\" timespan"
-msgstr "\"pärast sündmust\" ajaakna lõpp"
-
-#: plugin/local.py:297
-msgid "Record a maximum of x times"
-msgstr "Salvesta maksimaalselt x korda"
-
-#: plugin/local.py:298
-msgid "Amount of recordings left"
-msgstr "Järelejäänud salvestuste arv"
-
-#: plugin/local.py:299 plugin/local.py:370
-msgid "Never"
-msgstr "Mitte kunagi"
-
-#: plugin/local.py:300
-msgid "Monthly"
-msgstr "Kord kuus"
-
-#: plugin/local.py:301
-msgid "Weekly (Sunday)"
-msgstr "Kord nädalas (pühapäev)"
-
-#: plugin/local.py:302
-msgid "Weekly (Monday)"
-msgstr "Kord nädalas (esmaspäev)"
-
-#: plugin/local.py:303
-msgid "Reset count"
-msgstr "Lähtesta arvestus"
-
-#: plugin/local.py:304
-msgid "Require description to be unique"
-msgstr "Nõua täpselt vastavat sisukirjeldust"
-
-#: plugin/local.py:305
-msgid "No"
-msgstr "Ei"
-
-#: plugin/local.py:306
-msgid "On same service"
-msgstr "Samal kanalil"
-
-#: plugin/local.py:307
-msgid "On any service"
-msgstr "Igal kanalil"
-
-#: plugin/local.py:308
-msgid "Any service/recording"
-msgstr "Iga kanal/salvestus"
-
-#: plugin/local.py:309
-msgid "Use a custom location"
-msgstr "Kasuta kohandatud asukohta"
-
-#: plugin/local.py:311
-msgid "select Tags"
-msgstr "Vali sildid"
-
-#: plugin/local.py:313
-msgid "select Channels"
-msgstr "Vali kanalid"
-
-#: plugin/local.py:315
-msgid "select Bouquets"
-msgstr "Vali lemmiknimekirjad"
-
-#: plugin/local.py:316
-msgid "Enable Filtering"
-msgstr "Luba filtrid"
-
-#: plugin/local.py:317
-msgid "Include"
-msgstr "Kaasa"
-
-#: plugin/local.py:318
-msgid "Exclude"
-msgstr "Jäta välja"
-
-#: plugin/local.py:319
-msgid "in Title"
-msgstr "nimest"
-
-#: plugin/local.py:320
-msgid "in Shortdescription"
-msgstr "lühitutvustusest"
-
-#: plugin/local.py:321
-msgid "in Description"
-msgstr "sisututvustuses"
-
-#: plugin/local.py:322
-msgid "on Weekday"
-msgstr "tööpäeval"
-
-#: plugin/local.py:323
-msgid "Weekend"
-msgstr "Nädalavahetus"
-
-#: plugin/local.py:324
-msgid "Weekday"
-msgstr "Tööpäev"
-
-#: plugin/local.py:325
-msgid "Add"
-msgstr "Lisa"
-
-#: plugin/local.py:327 plugin/local.py:379 plugin/local.py:387
-msgid "Reload"
-msgstr "Värskenda"
-
-#: plugin/local.py:329
-msgid "Parse"
-msgstr "Analüüs"
-
-#: plugin/local.py:330
-msgid "Simulate"
-msgstr "Matki"
-
-#: plugin/local.py:333
+#: ../plugin/controllers/i18n.py:360
 msgid "Do you really want to delete the AT"
 msgstr "Kas kustutada autotaimer"
 
-#: plugin/local.py:334
-msgid "Label series"
-msgstr "Seriaalide pealdis"
+#: ../plugin/controllers/i18n.py:422
+msgid "Do you really want to delete the bouquet"
+msgstr "Kas kustutada lemmiknimekiri"
 
-#: plugin/local.py:336
-msgid "AutoTimer Settings"
-msgstr "Autotaimeri sätted"
+#: ../plugin/controllers/i18n.py:421
+msgid "Do you really want to delete the selected item(s)"
+msgstr "Kas kustutad valitud elemendid"
 
-#: plugin/local.py:337
-msgid "AutoPoll"
-msgstr "Automaatne päring"
+#: ../plugin/controllers/i18n.py:428
+msgid "Do you really want to restore from file"
+msgstr "Kas taastad failist"
 
-#: plugin/local.py:338
+#: ../plugin/controllers/i18n.py:116
+msgid "Dolby"
+msgstr "Dolby"
+
+#: ../plugin/controllers/i18n.py:117
+msgid "Done"
+msgstr "Tehtud"
+
+#: ../plugin/controllers/i18n.py:118
+msgid "Download"
+msgstr "Allalaadimine"
+
+#: ../plugin/controllers/i18n.py:119
+msgid "Download Playlist for"
+msgstr "Hangi mängukava"
+
+#: ../plugin/controllers/i18n.py:120
+msgid "Drivers"
+msgstr "ajurid"
+
+#: ../plugin/controllers/i18n.py:121
+msgid "Duration"
+msgstr "Kestus"
+
+#: ../plugin/controllers/models/info.py:625
+msgid "E"
+msgstr "E"
+
+#: ../plugin/controllers/i18n.py:128
+msgid "EPG"
+msgstr "EPG"
+
+#: ../plugin/controllers/i18n.py:289
+msgid "EPG encoding"
+msgstr "EPG tähemärgistik"
+
+#: ../plugin/controllers/base.py:336
+msgid "EPGRefresh"
+msgstr "EPG värskendus"
+
+#: ../plugin/controllers/models/timers.py:793
+msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
+msgstr "VIGA: Unetaimerit ei saa määrata kui vastuvõtja on ooteseisundis"
+
+#: ../plugin/controllers/i18n.py:122
+msgid "Edit Timer"
+msgstr "Muuda taimerit"
+
+#: ../plugin/controllers/i18n.py:380
+msgid "Editor"
+msgstr "Redaktor"
+
+#: ../plugin/plugin.py:145
+msgid "Enable Authentication for streaming"
+msgstr "Voogesituse autentimine"
+
+#: ../plugin/controllers/i18n.py:343
+msgid "Enable Filtering"
+msgstr "Luba filtrid"
+
+#: ../plugin/plugin.py:138
+msgid "Enable HTTP Authentication"
+msgstr "HTTP autentimine"
+
+#: ../plugin/plugin.py:139
+msgid "Enable HTTPS"
+msgstr "Luba HTTPS"
+
+#: ../plugin/plugin.py:142
+msgid "Enable HTTPS Authentication"
+msgstr "HTTPS autentimine"
+
+#: ../plugin/controllers/i18n.py:385
+msgid "Enable Messages"
+msgstr "Luba teavitused"
+
+#: ../plugin/plugin.py:150
+msgid "Enable Parental Control"
+msgstr "Luba lapselukk"
+
+#: ../plugin/controllers/i18n.py:123
+msgid "Enable Timer"
+msgstr "Luba taimer"
+
+#: ../plugin/plugin.py:149
+msgid "Enable access from VPNs"
+msgstr "Luba ligipääs VPN võrgust"
+
+#: ../plugin/controllers/i18n.py:464
+msgid "Enable/Disable Screenshot on key press or"
+msgstr "Luba/keela ekraanipilt nupuvajutusel või"
+
+#: ../plugin/controllers/i18n.py:126 ../plugin/controllers/i18n.py:286
+#: ../plugin/controllers/i18n.py:384
+msgid "Enabled"
+msgstr "Lubatud"
+
+#: ../plugin/controllers/i18n.py:127
+msgid "Encrypted"
+msgstr "Kodeeritud"
+
+#: ../plugin/controllers/i18n.py:125 ../plugin/controllers/i18n.py:387
+msgid "End"
+msgstr "Lõpp"
+
+#: ../plugin/controllers/i18n.py:323
+msgid "End of \"after event\" timespan"
+msgstr "\"pärast sündmust\" ajaakna lõpp"
+
+#: ../plugin/controllers/i18n.py:307
+msgid "End of Timespan"
+msgstr "Ajaakna lõpp"
+
+#: ../plugin/controllers/i18n.py:425
+msgid "Enter new name for the bouquet"
+msgstr "Sisesta lemmiknimekirja uus nimi"
+
+#: ../plugin/controllers/i18n.py:426
+msgid "Enter new name for the marker"
+msgstr "Sisesta märgise uus nimi"
+
+#: ../plugin/controllers/i18n.py:129
+msgid "Epg Search"
+msgstr "Epg otsing"
+
+#: ../plugin/controllers/i18n.py:132
+msgid "Error"
+msgstr "Viga"
+
+#: ../plugin/controllers/models/timers.py:919
+msgid "Error parsing vps.xml"
+msgstr "Viga vps.xml faili parsimisel"
+
+#: ../plugin/controllers/ipkg.py:281
+msgid "Error upload File"
+msgstr "Viga faili üleslaadimisel"
+
+#: ../plugin/controllers/BouquetEditor.py:592
+#, python-format
+msgid "Error while preparing backup file, %s does not exists."
+msgstr "Viga varukoopia loomisel, %s pole olemas."
+
+#: ../plugin/controllers/BouquetEditor.py:598
+msgid "Error while preparing backup file."
+msgstr "Viga varukoopia loomisel."
+
+#: ../plugin/controllers/ipkg.py:297
+msgid "Error writing File"
+msgstr "Viga faili kirjutamisel"
+
+#: ../plugin/controllers/BouquetEditor.py:653
+#, python-format
+msgid "Error, %s does not exists, restore is not possible..."
+msgstr "Viga, %s pole olemas, taastamine ei ole võimalik..."
+
+#: ../plugin/controllers/BouquetEditor.py:651
+#, python-format
+msgid "Error, %s was not created with WebBouquetEditor..."
+msgstr "Viga: %s ei ole loodud WebBouquetEditor laiendusega."
+
+#: ../plugin/controllers/BouquetEditor.py:193
+#, python-format
+msgid "Error: Bouquet %s could not deleted, OSError."
+msgstr "Viga: Lemmiknimekirja %s eemaldamine nurjus, OS viga."
+
+#: ../plugin/controllers/i18n.py:444
+msgid "Event not found"
+msgstr "Saadet ei leitud"
+
+#: ../plugin/controllers/models/timers.py:260
+msgid "EventId not found"
+msgstr "Saate tunnust ei leitud"
+
+#: ../plugin/controllers/i18n.py:133
+msgid "Every"
+msgstr "Iga"
+
+#: ../plugin/controllers/i18n.py:345
+msgid "Exclude"
+msgstr "Jäta välja"
+
+#: ../plugin/controllers/i18n.py:321
+msgid "Execute \"after event\" during timespan"
+msgstr "Teosta \"pärast sündmust\" ajaakna sees"
+
+#: ../plugin/controllers/i18n.py:502
+msgid "Export"
+msgstr "Ekspordi"
+
+#: ../plugin/controllers/i18n.py:134
+msgid "Extras"
+msgstr "Lisad"
+
+#: ../plugin/controllers/i18n.py:405
+msgid "Fake Recording"
+msgstr "Võltssalvestus"
+
+#: ../plugin/controllers/i18n.py:368
+msgid "Fastscan"
+msgstr "Kiirotsing"
+
+#: ../plugin/controllers/i18n.py:61
+msgid "February"
+msgstr "Veebruar"
+
+#: ../plugin/controllers/i18n.py:136
+msgid "Firmware version"
+msgstr "Püsivara versioon"
+
+#: ../plugin/controllers/i18n.py:392
+msgid "Force"
+msgstr "Sunnitud"
+
+#: ../plugin/controllers/i18n.py:40
+msgid "Fr"
+msgstr "R"
+
+#: ../plugin/controllers/i18n.py:138
+msgid "Free"
+msgstr "Vaba"
+
+#: ../plugin/controllers/i18n.py:139
+msgid "Free Memory"
+msgstr "Vaba mälu"
+
+#: ../plugin/controllers/i18n.py:49
+msgid "Fri"
+msgstr "R"
+
+#: ../plugin/controllers/i18n.py:56
+msgid "Friday"
+msgstr "Reede"
+
+#: ../plugin/controllers/i18n.py:137 ../plugin/controllers/models/info.py:341
+msgid "Frontprocessor Version"
+msgstr "Esiprotsessori versioon"
+
+#: ../plugin/controllers/i18n.py:499
+msgid "Full remote"
+msgstr "Täielik pult"
+
+#: ../plugin/controllers/models/movies.py:219
+#: ../plugin/controllers/models/movies.py:343
+#: ../plugin/controllers/models/movies.py:752
+#: ../plugin/controllers/models/info.py:388
+#: ../plugin/controllers/models/info.py:394
+#: ../plugin/controllers/models/info.py:409
+#: ../plugin/controllers/models/info.py:412
+msgid "GB"
+msgstr "GB"
+
+#: ../plugin/controllers/i18n.py:140
+msgid "Gateway"
+msgstr "Lüüs"
+
+#: ../plugin/controllers/BouquetEditor.py:450
+msgid "Get mutable list for new created alternative failed!"
+msgstr "Uue asenduskanali jaoks muutuva nimekirja hankimine nurjus!"
+
+#: ../plugin/controllers/BouquetEditor.py:124
+msgid "Get mutable list for new created bouquet failed!"
+msgstr "Uue lemmiknimekirja jaoks muudetava nimekirja hankimine nurjus!"
+
+#: ../plugin/controllers/i18n.py:141
+msgid "Grab Screenshot"
+msgstr "Loo ekraanipilt"
+
+#: ../plugin/controllers/i18n.py:142
+msgid "Gui version"
+msgstr "E2 versioon"
+
+#: ../plugin/plugin.py:137
+msgid "HTTP port"
+msgstr "HTTP port"
+
+#: ../plugin/plugin.py:141
+msgid "HTTPS port"
+msgstr "HTTPS port"
+
+#: ../plugin/controllers/i18n.py:145
+msgid "Hard disk model"
+msgstr "Salvesti"
+
+#: ../plugin/controllers/i18n.py:143
+msgid "Hide full remote"
+msgstr "Peida täielik pult"
+
+#: ../plugin/controllers/i18n.py:144
+msgid "High Resolution"
+msgstr "Kõrglahutus"
+
+#: ../plugin/controllers/i18n.py:146
+msgid "Hour"
+msgstr "Tund"
+
+#: ../plugin/controllers/i18n.py:147
+msgid "IPv4 address"
+msgstr "IPv4 aadress"
+
+#: ../plugin/controllers/i18n.py:150 ../plugin/controllers/models/info.py:142
+msgid "IPv4-only Python/Twisted"
+msgstr "IPv4-ainult Python/Twisted"
+
+#: ../plugin/controllers/i18n.py:148 ../plugin/controllers/models/info.py:138
+msgid "IPv4-only kernel"
+msgstr "IPv4-ainult kernel"
+
+#: ../plugin/controllers/i18n.py:151
+msgid "IPv6 address(es)"
+msgstr "IPv6 aadress(id)"
+
+#: ../plugin/controllers/i18n.py:503
+msgid "Import"
+msgstr "Impordi"
+
+#: ../plugin/controllers/i18n.py:344
+msgid "Include"
+msgstr "Kaasa"
+
+#: ../plugin/controllers/i18n.py:130
+msgid "Include description"
+msgstr "Hõlma sisututvustus"
+
+#: ../plugin/controllers/i18n.py:492
+msgid "Include extended description"
+msgstr "Hõlma täpsem sisututvustus"
+
+#: ../plugin/controllers/i18n.py:491
+msgid "Include short description"
+msgstr "Hõlma lühitutvustus"
+
+#: ../plugin/controllers/models/timers.py:487
+msgid "Infinite Instant recording started"
+msgstr "Algas kohene salvestus"
+
+#: ../plugin/controllers/i18n.py:152
+msgid "Infos"
+msgstr "Andmed"
+
+#: ../plugin/controllers/i18n.py:394
+msgid "Inherit Autotimer"
+msgstr "Päring Autotaimerist"
+
+#: ../plugin/controllers/i18n.py:484
+msgid "Install Package"
+msgstr "Paigalda pakett"
+
+#: ../plugin/controllers/i18n.py:486
+msgid "Installed"
+msgstr "Paigaldatud"
+
+#: ../plugin/controllers/i18n.py:153
+msgid "Instant Record"
+msgstr "Kohene salvestus"
+
+#: ../plugin/controllers/models/timers.py:478
+msgid "Instant record for current Event started"
+msgstr "Algas käesoleva saate salvestamine"
+
+#: ../plugin/controllers/BouquetEditor.py:350
+msgid "Internal error!"
+msgstr "Sisemine viga!"
+
+#: ../plugin/controllers/i18n.py:365
 #, python-format
 msgid "Interval (in %s)"
 msgstr "Ajavahemik (%s)"
 
-#: plugin/local.py:339
-msgid "Max Days"
-msgstr "Suurim lubatud päevade arv"
-
-#: plugin/local.py:340
-msgid "Try Guessing"
-msgstr "Ürita pakkuda"
-
-#: plugin/local.py:341
-msgid "Fastscan"
-msgstr "Kiirotsing"
-
-#: plugin/local.py:342
-msgid "Show in Extensionsmenu"
-msgstr "Näita laienduste menüüs"
-
-#: plugin/local.py:343
-msgid "Disabled on Conflict"
-msgstr "Vastuolu korral keelatud"
-
-#: plugin/local.py:344
-msgid "Add Similar on Conflict"
-msgstr "Vastuolu puhul lisa asendustaimer"
-
-#: plugin/local.py:345
-msgid "Notify if Conflict"
-msgstr "Vastuolu korral teavitamine"
-
-#: plugin/local.py:346
-msgid "Notify if Similar"
-msgstr "Sarnastest teavitamine"
-
-#: plugin/local.py:347
-msgid "Add Autotimer to Tags"
-msgstr "Lisa siltidele 'autotaimer'"
-
-#: plugin/local.py:348
-msgid "Add Name to Tags"
-msgstr "Lisa siltidele nimi"
-
-#: plugin/local.py:350
-msgid "None"
-msgstr "Pole"
-
-#: plugin/local.py:353
-msgid "Editor"
-msgstr "Redaktor"
-
-#: plugin/local.py:354
-msgid "Plain"
-msgstr "Tavaline"
-
-#: plugin/local.py:355
-msgid "Wizzard"
-msgstr "Abiline"
-
-#: plugin/local.py:358
-msgid "Enable Messages"
-msgstr "Luba teavitused"
-
-#: plugin/local.py:361
-msgid "Delay Standby"
-msgstr "Ooteseisundi viiteaeg"
-
-#: plugin/local.py:362
+#: ../plugin/controllers/i18n.py:389
 msgid "Interval (min.)"
 msgstr "Ajavahemik (min.)"
 
-#: plugin/local.py:363
+#: ../plugin/controllers/i18n.py:390
 msgid "Interval (sec.)"
 msgstr "Ajavahemik (sek.)"
 
-#: plugin/local.py:365
-msgid "Force"
-msgstr "Sunnitud"
+#: ../plugin/controllers/i18n.py:60
+msgid "January"
+msgstr "Jaanuar"
 
-#: plugin/local.py:366
-msgid "Wakeup"
-msgstr "Käivitus"
+#: ../plugin/controllers/i18n.py:155
+msgid "Javascript Libraries"
+msgstr "Javascript teegid"
 
-#: plugin/local.py:367
-msgid "Inherit Autotimer"
-msgstr "Päring Autotaimerist"
+#: ../plugin/controllers/i18n.py:66
+msgid "July"
+msgstr "Juuli"
 
-#: plugin/local.py:368
-msgid "Parse Autotimer"
-msgstr "Otsi vasteid Autotaimerist"
+#: ../plugin/controllers/i18n.py:65
+msgid "June"
+msgstr "Juuni"
 
-#: plugin/local.py:369
-msgid "Always"
-msgstr "Alati"
+#: ../plugin/controllers/i18n.py:156
+msgid "Just play"
+msgstr "Esita"
 
-#: plugin/local.py:371
-msgid "Background only"
-msgstr "Ainult taust"
+#: ../plugin/controllers/i18n.py:157
+msgid "Kernel"
+msgstr "Kernel"
 
-#: plugin/local.py:372
-msgid "Ask, default Yes"
-msgstr "Küsitakse (vaikimisi 'jah')"
+#: ../plugin/controllers/i18n.py:158
+msgid "LCD"
+msgstr "LCD"
 
-#: plugin/local.py:373
-msgid "Ask, default No"
-msgstr "Küsitakse (vaikimisi 'ei')"
+#: ../plugin/controllers/base.py:299
+msgid "LCD4Linux Setup"
+msgstr "LCD4Linux seaded"
 
-#: plugin/local.py:374
+#: ../plugin/controllers/i18n.py:159
+msgid "LICENSE"
+msgstr "LITSENTS"
+
+#: ../plugin/controllers/i18n.py:361
+msgid "Label series"
+msgstr "Seriaalide pealdis"
+
+#: ../plugin/controllers/i18n.py:460
+msgid "Link Speed"
+msgstr "Ühenduse kiirus"
+
+#: ../plugin/controllers/models/timers.py:448
+msgid "List of Timers has been cleaned"
+msgstr "Taimerinimekiri tühjendati"
+
+#: ../plugin/controllers/i18n.py:161
+msgid "Location"
+msgstr "Asukoht"
+
+#: ../plugin/controllers/i18n.py:162
+msgid "Locked"
+msgstr "Lukustatud"
+
+#: ../plugin/controllers/i18n.py:163
+msgid "MAC address"
+msgstr "MAC aadress"
+
+#: ../plugin/controllers/models/movies.py:221
+#: ../plugin/controllers/models/movies.py:345
+#: ../plugin/controllers/models/movies.py:754
+#: ../plugin/controllers/models/info.py:385
+#: ../plugin/controllers/models/info.py:396
+#: ../plugin/controllers/models/info.py:414
+msgid "MB"
+msgstr "MB"
+
+#: ../plugin/controllers/i18n.py:164
+msgid "Main"
+msgstr "Peamenüü"
+
+#: ../plugin/controllers/i18n.py:250
+msgid "Main Memory"
+msgstr "Põhimälu"
+
+#: ../plugin/controllers/i18n.py:62
+msgid "March"
+msgstr "Märts"
+
+#: ../plugin/controllers/BouquetEditor.py:348
+msgid "Marker added."
+msgstr "Märgis lisatud."
+
+#: ../plugin/controllers/i18n.py:288
+msgid "Match title"
+msgstr "Vastab pealkirjale"
+
+#: ../plugin/controllers/i18n.py:366
+msgid "Max Days"
+msgstr "Suurim lubatud päevade arv"
+
+#: ../plugin/controllers/i18n.py:64
+msgid "May"
+msgstr "Mai"
+
+#: ../plugin/controllers/models/message.py:35
+msgid "Message sent successfully!"
+msgstr "Teade edukalt saadetud!"
+
+#: ../plugin/controllers/i18n.py:401
 msgid "Method"
 msgstr "Meetod"
 
-#: plugin/local.py:375
-msgid "Visibly"
-msgstr "Nähtavalt"
+#: ../plugin/controllers/i18n.py:481
+msgid "Minimal EPG list"
+msgstr "Tihe EPG loend"
 
-#: plugin/local.py:376
-msgid "Picture in Picture"
-msgstr "Pilt pildis"
+#: ../plugin/controllers/i18n.py:479
+msgid "Minimal movie list"
+msgstr "Tihe salvestiste loend"
 
-#: plugin/local.py:377
-msgid "Picture in Picture (hidden)"
-msgstr "PiP (varjatud)"
+#: ../plugin/controllers/i18n.py:480
+msgid "Minimal timer list"
+msgstr "Tihe taimeriloend"
 
-#: plugin/local.py:378
-msgid "Fake Recording"
-msgstr "Võltssalvestus"
+#: ../plugin/controllers/i18n.py:165
+msgid "Minute"
+msgstr "Minut"
 
-#: plugin/local.py:381
-msgid "Refresh now"
-msgstr "Värskenda kohe"
+#: ../plugin/controllers/web.py:67
+#, python-format
+msgid "Missing mandatory parameter '%s'"
+msgstr "Puudub kohustuslik parameeter '%s'"
 
-#: plugin/local.py:383
-msgid "Add Provider as new Bouquet"
-msgstr "Lisa levitaja uue lemmiknimekirjana"
+#: ../plugin/controllers/models/timers.py:579
+msgid "Missing requesteter: sRef"
+msgstr "Puudub registri parameeter: sRef"
 
-#: plugin/local.py:384
-msgid "Add channel(s) to Bouquet"
-msgstr "Lisa lemmiknimekirja"
+#: ../plugin/controllers/i18n.py:36
+msgid "Mo"
+msgstr "E"
 
-#: plugin/local.py:385
-msgid "Add channel(s) as alternate"
-msgstr "Lisa asenduskanalina"
+#: ../plugin/controllers/i18n.py:166
+msgid "Model"
+msgstr "mudel"
 
-#: plugin/local.py:388
-msgid "Export"
-msgstr "Ekspordi"
+#: ../plugin/controllers/i18n.py:45
+msgid "Mon"
+msgstr "E"
 
-#: plugin/local.py:389
-msgid "Import"
-msgstr "Impordi"
+#: ../plugin/controllers/i18n.py:52
+msgid "Monday"
+msgstr "Esmaspäev"
 
-#: plugin/local.py:390
-msgid "Add Bouquet"
-msgstr "Lisa lemmiknimekiri"
+#: ../plugin/controllers/i18n.py:327
+msgid "Monthly"
+msgstr "Kord kuus"
 
-#: plugin/local.py:391
-msgid "Rename Bouquet"
-msgstr "Nimeta lemmiknimekiri ümber"
+#: ../plugin/controllers/i18n.py:487
+msgid "More"
+msgstr "Veel"
 
-#: plugin/local.py:392
-msgid "Delete Bouquet"
-msgstr "Kustuta lemmiknimekiri"
+#: ../plugin/controllers/i18n.py:446
+msgid "Movie database for EPG"
+msgstr "Filmi andmebaas EPG tarbeks"
 
-#: plugin/local.py:393
-msgid "Add Marker"
-msgstr "Lisa märgis"
+#: ../plugin/controllers/i18n.py:493
+msgid "Movie search"
+msgstr "Filmi otsing"
 
-#: plugin/local.py:394
-msgid "Add Spacer"
-msgstr "Lisa eraldaja"
+#: ../plugin/controllers/i18n.py:167
+msgid "Movielist"
+msgstr "Filmilist"
 
-#: plugin/local.py:395
-msgid "Rename"
-msgstr "Nimeta ümber"
+#: ../plugin/controllers/i18n.py:168
+msgid "Movies"
+msgstr "Salvestised"
 
-#: plugin/local.py:396
-msgid "Do you really want to delete the selected item(s)"
-msgstr "Kas kustutad valitud elemendid"
+#: ../plugin/controllers/BouquetEditor.py:131
+#: ../plugin/controllers/BouquetEditor.py:756
+msgid "Multi-Bouquet is not enabled!"
+msgstr "Luba mitme nimekirja kasutus!"
 
-#: plugin/local.py:397
-msgid "Do you really want to delete the bouquet"
-msgstr "Kas kustutada lemmiknimekiri"
+#: ../plugin/controllers/i18n.py:169
+msgid "MultiEPG"
+msgstr "MultiEPG"
 
-#: plugin/local.py:398
+#: ../plugin/controllers/base.py:323
+#, fuzzy
+msgid "NCam Webinterface"
+msgstr "OSCam veebiliides"
+
+#: ../plugin/controllers/i18n.py:170
+msgid "Name"
+msgstr "Nimi"
+
+#: ../plugin/controllers/i18n.py:423
 msgid "Name of the Bouquet"
 msgstr "Lemmiknimekirja nimi"
 
-#: plugin/local.py:399
+#: ../plugin/controllers/i18n.py:424
 msgid "Name of the Marker"
 msgstr "Märgise nimi"
 
-#: plugin/local.py:400
-msgid "Enter new name for the bouquet"
-msgstr "Sisesta lemmiknimekirja uus nimi"
+#: ../plugin/controllers/i18n.py:171
+msgid "Namespace"
+msgstr "Nimeruum"
 
-#: plugin/local.py:401
-msgid "Enter new name for the marker"
-msgstr "Sisesta märgise uus nimi"
+#: ../plugin/controllers/i18n.py:172
+msgid "Network Interface"
+msgstr "Võrguliides"
 
-#: plugin/local.py:402
-msgid "Please enter filename"
-msgstr "Sisesta failinimi"
-
-#: plugin/local.py:403
-msgid "Do you really want to restore from file"
-msgstr "Kas taastad failist"
-
-#: plugin/local.py:405
-msgid "via"
-msgstr "üle"
-
-#: plugin/local.py:406
-msgid "Record+ZAP"
-msgstr "Salvestus+kanalivahetus"
-
-#: plugin/local.py:407
-msgid "Pmtpid"
-msgstr "Pmtpid"
-
-#: plugin/local.py:408
-msgid "Apid"
-msgstr "Apid"
-
-#: plugin/local.py:409
-msgid "Vpid"
-msgstr "Vpid"
-
-#: plugin/local.py:410
-msgid "Pcrpid"
-msgstr "Pcrpid"
-
-#: plugin/local.py:411
-msgid "Tsid"
-msgstr "Tsid"
-
-#: plugin/local.py:412
-msgid "Onid"
-msgstr "Onid"
-
-#: plugin/local.py:413
-msgid "Sid"
-msgstr "Sid"
-
-#: plugin/local.py:414
-msgid "Sref"
-msgstr "Sref"
-
-#: plugin/local.py:417
-msgid "error! Loading Page"
-msgstr "Tõrge lehe laadimisel"
-
-#: plugin/local.py:418
-msgid "Timer Added"
-msgstr "Taimer lisatud"
-
-#: plugin/local.py:419
-msgid "Event not found"
-msgstr "Saadet ei leitud"
-
-#: plugin/local.py:420
-msgid "Show Picon in channel list"
-msgstr "Kuva kanalinimekirjas pikonid"
-
-#: plugin/local.py:422
-msgid "OpenWebif Browser Settings"
-msgstr "OpenWebif brauseri seaded"
-
-#: plugin/local.py:423
-msgid "OpenWebif Settings"
-msgstr "OpenWebif seaded"
-
-#: plugin/local.py:424
-msgid "Theme"
-msgstr "Kujundus"
-
-#: plugin/local.py:425
-msgid "Spinner"
-msgstr "Spinner"
-
-#: plugin/local.py:426
-msgid "Display duration (s)"
-msgstr "Kuva kestus"
-
-#: plugin/local.py:428
-msgid "Display Mode"
-msgstr "Kava laad"
-
-#: plugin/local.py:429
-msgid "TV Guide"
-msgstr "Telekava"
-
-#: plugin/local.py:430
-msgid "Timeline"
-msgstr "Ajakava"
-
-#: plugin/local.py:431
-msgid "Web TV"
-msgstr "Veebi TV"
-
-#: plugin/local.py:432
-msgid "Calendar Week"
-msgstr "Kalendrinädal"
-
-#: plugin/local.py:434
-msgid "Link Speed"
-msgstr "Lingi kiirus"
-
-#: plugin/local.py:435
+#: ../plugin/controllers/i18n.py:461
 msgid "Network Shares"
 msgstr "Võrgujaod"
 
-#: plugin/local.py:436
-msgid "using"
-msgstr "kasutades"
+#: ../plugin/controllers/i18n.py:326 ../plugin/controllers/i18n.py:397
+msgid "Never"
+msgstr "Mitte kunagi"
 
-#: plugin/local.py:437
-msgid "Primetimes"
-msgstr "Tippajad"
+#: ../plugin/controllers/models/services.py:331
+msgid "New"
+msgstr "Uus"
 
-#: plugin/local.py:438
-msgid "Enable/Disable Screenshot on key press or"
-msgstr "Luba/keela ekraanipilt nupuvajutusel või"
+#: ../plugin/controllers/i18n.py:245
+msgid "New Name"
+msgstr "Uus nimi"
 
-#: plugin/plugin.py:110
-msgid "OpenWebif url: http://yourip:port"
-msgstr "OpenWebif url: http://sinu_ip:port"
+#: ../plugin/controllers/i18n.py:332
+msgid "No"
+msgstr "Ei"
 
-#: plugin/plugin.py:124
+#: ../plugin/controllers/BouquetEditor.py:524
+msgid "No Parent Control Setup Pin given!"
+msgstr "Lapseluku PIN sisestamata!"
+
+#: ../plugin/controllers/models/message.py:46
+msgid "No answer in time"
+msgstr "Ajavaru piires vastus puudub"
+
+#: ../plugin/controllers/BouquetEditor.py:224
+#: ../plugin/controllers/BouquetEditor.py:254
+#: ../plugin/controllers/BouquetEditor.py:280
+#: ../plugin/controllers/BouquetEditor.py:324
+#: ../plugin/controllers/BouquetEditor.py:474
+msgid "No bouquet given!"
+msgstr "Lemmiknimekiri andmata!"
+
+#: ../plugin/controllers/BouquetEditor.py:92
+#: ../plugin/controllers/BouquetEditor.py:153
+#: ../plugin/controllers/BouquetEditor.py:199
+msgid "No bouquet name given!"
+msgstr "Lemmiknimekirjal puudub nimi!"
+
+#: ../plugin/controllers/BouquetEditor.py:419
+msgid "No current service given!"
+msgstr "Aktiivne kanal andmata!"
+
+#: ../plugin/controllers/models/timers.py:472
+msgid "No event found! Not recording!"
+msgstr "Saadet ei leitud! Ei salvestata!"
+
+#: ../plugin/controllers/BouquetEditor.py:331
+msgid "No marker-name given!"
+msgstr "Märgise nimi andmata!"
+
+#: ../plugin/controllers/models/timers.py:395
+#: ../plugin/controllers/models/timers.py:440
+msgid "No matching Timer found"
+msgstr "Taimeri vastet ei leitud"
+
+#: ../plugin/controllers/BouquetEditor.py:364
+msgid "No new servicename given!"
+msgstr "Uue kanali nimi andmata!"
+
+#: ../plugin/controllers/BouquetEditor.py:209
+#: ../plugin/controllers/BouquetEditor.py:266
+msgid "No position given!"
+msgstr "Asukoht andmata!"
+
+#: ../plugin/controllers/BouquetEditor.py:137
+msgid "No provider given!"
+msgstr "Levitaja nimi puudub!"
+
+#: ../plugin/controllers/BouquetEditor.py:230
+#: ../plugin/controllers/BouquetEditor.py:260
+#: ../plugin/controllers/BouquetEditor.py:297
+#: ../plugin/controllers/BouquetEditor.py:358
+#: ../plugin/controllers/BouquetEditor.py:416
+#: ../plugin/controllers/BouquetEditor.py:480
+#: ../plugin/controllers/BouquetEditor.py:517
+msgid "No service given!"
+msgstr "Kanal andmata!"
+
+#: ../plugin/controllers/i18n.py:473
+msgid "No, cancel"
+msgstr "Ei, katkesta"
+
+#: ../plugin/controllers/i18n.py:377
+msgid "None"
+msgstr "Pole"
+
+#: ../plugin/controllers/i18n.py:309
+msgid "Not after"
+msgstr "Mitte pärast"
+
+#: ../plugin/controllers/i18n.py:310
+msgid "Not before"
+msgstr "Mitte enne"
+
+#: ../plugin/controllers/i18n.py:175
+msgid "Nothing"
+msgstr "Mitte midagi"
+
+#: ../plugin/controllers/i18n.py:176
+msgid "Nothing playing."
+msgstr "Midagi ei esitata."
+
+#: ../plugin/controllers/i18n.py:372
+msgid "Notify if Conflict"
+msgstr "Vastuolu korral teavitamine"
+
+#: ../plugin/controllers/i18n.py:373
+msgid "Notify if Similar"
+msgstr "Sarnastest teavitamine"
+
+#: ../plugin/controllers/i18n.py:70
+msgid "November"
+msgstr "November"
+
+#: ../plugin/controllers/i18n.py:177
+msgid "Now"
+msgstr "Hetkel"
+
+#: ../plugin/controllers/base.py:321
+msgid "OSCam Webinterface"
+msgstr "OSCam veebiliides"
+
+#: ../plugin/controllers/i18n.py:184
+msgid "OSD"
+msgstr "OSD"
+
+#: ../plugin/controllers/i18n.py:69
+msgid "October"
+msgstr "Oktoober"
+
+#: ../plugin/controllers/i18n.py:313
+msgid "Offset after recording (in m)"
+msgstr "Salvestuse lõppu lisatakse (min)"
+
+#: ../plugin/controllers/i18n.py:312
+msgid "Offset before recording (in m)"
+msgstr "Salvestuse algusesse lisatakse (min)"
+
+#: ../plugin/controllers/i18n.py:179
+msgid "On"
+msgstr "Sees"
+
+#: ../plugin/controllers/i18n.py:334
+msgid "On any service"
+msgstr "Igal kanalil"
+
+#: ../plugin/controllers/i18n.py:333
+msgid "On same service"
+msgstr "Samal kanalil"
+
+#: ../plugin/controllers/i18n.py:437
+msgid "Onid"
+msgstr "Onid"
+
+#: ../plugin/controllers/i18n.py:305
+msgid "Only match during timespan"
+msgstr "Vaste ainult ajaaknas"
+
+#: ../plugin/controllers/i18n.py:180
+msgid "Open Source Web Interface for Linux set-top box"
+msgstr "Veebiliides linux vastuvõtjale"
+
+#: ../plugin/controllers/i18n.py:185
+msgid "Open in new window"
+msgstr "Ava uues aknas"
+
+#: ../plugin/plugin.py:129
 msgid "OpenWebInterface Enabled"
 msgstr "Luba OpenWebIf"
 
-#: plugin/plugin.py:131
-msgid "HTTP port"
-msgstr "HTTP port"
+#: ../plugin/controllers/i18n.py:448
+msgid "OpenWebif Browser Settings"
+msgstr "OpenWebif brauseri seaded"
 
-#: plugin/plugin.py:132
-msgid "Enable HTTP Authentication"
-msgstr "HTTP autentimine"
+#: ../plugin/plugin.py:163 ../plugin/plugin.py:229 ../plugin/plugin.py:231
+#: ../plugin/plugin.py:233
+msgid "OpenWebif Configuration"
+msgstr "Veebiliidese seaded"
 
-#: plugin/plugin.py:133
-msgid "Enable HTTPS"
-msgstr "Luba HTTPS"
+#: ../plugin/controllers/i18n.py:449
+msgid "OpenWebif Settings"
+msgstr "OpenWebif seaded"
 
-#: plugin/plugin.py:135
-msgid "HTTPS port"
-msgstr "HTTPS port"
+#: ../plugin/plugin.py:115
+msgid "OpenWebif url: http://yourip:port"
+msgstr "OpenWebif url: http://sinu_ip:port"
 
-#: plugin/plugin.py:136
-msgid "Enable HTTPS Authentication"
-msgstr "HTTPS autentimine"
+#: ../plugin/controllers/i18n.py:440
+#: ../plugin/controllers/models/services.py:225
+msgid "Orbital Position"
+msgstr "Orbitaalpositsioon"
 
-#: plugin/plugin.py:137
+#: ../plugin/controllers/i18n.py:304
+msgid "Override found with alternative service"
+msgstr "Eelista asenduskanalit"
+
+#: ../plugin/controllers/i18n.py:470
+msgid "Packages"
+msgstr "Paketid"
+
+#: ../plugin/controllers/BouquetEditor.py:528
+#: ../plugin/controllers/BouquetEditor.py:530
+msgid "Parent Control Setup Pin is wrong!"
+msgstr "Lapseluku PIN on vale!"
+
+#: ../plugin/controllers/BouquetEditor.py:511
+msgid "Parent Control is not activated."
+msgstr "Lapselukk ei ole sees."
+
+#: ../plugin/controllers/i18n.py:356
+msgid "Parse"
+msgstr "Analüüs"
+
+#: ../plugin/controllers/i18n.py:395
+msgid "Parse Autotimer"
+msgstr "Otsi vasteid Autotaimerist"
+
+#: ../plugin/controllers/i18n.py:435
+msgid "Pcrpid"
+msgstr "Pcrpid"
+
+#: ../plugin/controllers/i18n.py:186
+msgid "PiP"
+msgstr "PiP"
+
+#: ../plugin/controllers/i18n.py:403
+msgid "Picture in Picture"
+msgstr "Pilt pildis"
+
+#: ../plugin/controllers/i18n.py:404
+msgid "Picture in Picture (hidden)"
+msgstr "PiP (varjatud)"
+
+#: ../plugin/controllers/i18n.py:381
+msgid "Plain"
+msgstr "Tavaline"
+
+#: ../plugin/controllers/i18n.py:187
+msgid "Playback"
+msgstr "Taasesitus"
+
+#: ../plugin/controllers/i18n.py:188
+msgid "Playlist"
+msgstr "Pleilist"
+
+#: ../plugin/controllers/i18n.py:505
+#, fuzzy
+msgid "Playlist Format"
+msgstr "Pleilist"
+
+#: ../plugin/controllers/i18n.py:427
+msgid "Please enter filename"
+msgstr "Sisesta failinimi"
+
+#: ../plugin/controllers/i18n.py:432
+msgid "Pmtpid"
+msgstr "Pmtpid"
+
+#: ../plugin/controllers/i18n.py:189
+msgid "Power Control"
+msgstr "Seiskamine"
+
+#: ../plugin/controllers/models/timers.py:668
+msgid "PowerTimer feature not available"
+msgstr "Toitetaimeri võimalus puudub"
+
+#: ../plugin/controllers/i18n.py:463
+msgid "Primetimes"
+msgstr "Tippajad"
+
+#: ../plugin/controllers/i18n.py:190
+msgid "Provider"
+msgstr "Levitaja"
+
+#: ../plugin/controllers/i18n.py:191
+msgid "Providers"
+msgstr "Levitajad"
+
+#: ../plugin/controllers/i18n.py:192
+msgid "Radio"
+msgstr "Raadio"
+
+#: ../plugin/controllers/i18n.py:108
+msgid "Really delete the recording"
+msgstr "Kas kustutada salvestis"
+
+#: ../plugin/controllers/i18n.py:110
+msgid "Really delete the timer"
+msgstr "Kas kustutada taimer"
+
+#: ../plugin/controllers/i18n.py:200
+msgid "Really rename the recording"
+msgstr "Kas nimetada salvestis ümber"
+
+#: ../plugin/controllers/i18n.py:154
+#, fuzzy
+msgid "Really start instant record now?"
+msgstr "Salvesta kohe"
+
+#: ../plugin/controllers/i18n.py:193
+msgid "Reboot Box"
+msgstr "Taaskäivitus"
+
+#: ../plugin/controllers/i18n.py:324
+msgid "Record a maximum of x times"
+msgstr "Salvesta maksimaalselt x korda"
+
+#: ../plugin/controllers/i18n.py:431
+msgid "Record+ZAP"
+msgstr "Salvestus+kanalivahetus"
+
+#: ../plugin/controllers/i18n.py:194
+msgid "Recording Status"
+msgstr "Salvestamine"
+
+#: ../plugin/controllers/i18n.py:195 ../plugin/controllers/i18n.py:376
+msgid "Refresh"
+msgstr "Värskenda"
+
+#: ../plugin/controllers/i18n.py:197
+msgid "Refresh Timer"
+msgstr "Värskenda taimer"
+
+#: ../plugin/controllers/i18n.py:196
+msgid "Refresh automatically every"
+msgstr "Automaatne värskendus iga"
+
+#: ../plugin/controllers/i18n.py:408
+msgid "Refresh now"
+msgstr "Värskenda kohe"
+
+#: ../plugin/controllers/i18n.py:354 ../plugin/controllers/i18n.py:406
+#: ../plugin/controllers/i18n.py:414
+msgid "Reload"
+msgstr "Värskenda"
+
+#: ../plugin/controllers/i18n.py:198
+msgid "Remote"
+msgstr "Pult"
+
+#: ../plugin/controllers/i18n.py:482
+msgid "Remove Package"
+msgstr "Eemalda pakett"
+
+#: ../plugin/controllers/i18n.py:420
+msgid "Rename"
+msgstr "Nimeta ümber"
+
+#: ../plugin/controllers/i18n.py:416
+msgid "Rename Bouquet"
+msgstr "Nimeta lemmiknimekiri ümber"
+
+#: ../plugin/controllers/i18n.py:199
+msgid "Rename Recording"
+msgstr "Nimeta salvestis ümber"
+
+#: ../plugin/controllers/i18n.py:201
+msgid "Repeated"
+msgstr "Korduv"
+
+#: ../plugin/plugin.py:143
 msgid "Require client cert for HTTPS"
 msgstr "HTTPS nõuab kliendi serti"
 
-#: plugin/plugin.py:139
-msgid "Enable Authentication for streaming"
-msgstr "Voogesituse autentimine"
+#: ../plugin/controllers/i18n.py:331
+msgid "Require description to be unique"
+msgstr "Nõua täpselt vastavat sisukirjeldust"
 
-#: plugin/plugin.py:140
-msgid "Disable remote access for user root"
-msgstr "Keela kaugligipääs kasutaja juurkataloogile"
+#: ../plugin/controllers/i18n.py:330
+msgid "Reset count"
+msgstr "Lähtesta arvestus"
 
-#: plugin/plugin.py:142
-msgid "Without auth only local access is allowed!"
-msgstr "Autentimata on lubatud ainult kohalik aadress!"
+#: ../plugin/controllers/i18n.py:202
+msgid "Restart GUI"
+msgstr "E2 taaskäivitus"
 
-#: plugin/plugin.py:143
-msgid "Enable access from VPNs"
-msgstr "Luba ligipääs VPN võrgust"
+#: ../plugin/controllers/i18n.py:131
+msgid "Restrict to Bouquets"
+msgstr "Ainult kindlas nimekirjas"
 
-#: plugin/plugin.py:144
-msgid "Enable Parental Control"
-msgstr "Luba lapselukk"
+#: ../plugin/controllers/i18n.py:308
+msgid "Restrict to events on certain dates"
+msgstr "Ainult kindlal kuupäeval"
 
-#: plugin/plugin.py:145
-msgid "Add service name to stream information"
-msgstr "Lisa kanali nimi voo infosse"
+#: ../plugin/controllers/i18n.py:282
+msgid "Root"
+msgstr "Juur"
 
-#: plugin/plugin.py:147
-msgid "Character encoding for EPG data"
-msgstr "EPG andmete tähemärgistik"
+#: ../plugin/controllers/models/info.py:54
+msgid "SLAAC"
+msgstr "SLAAC"
 
-#: plugin/plugin.py:148
-msgid "Allow IPK Upload"
-msgstr "Luba IPK üleslaadimine"
+#: ../plugin/controllers/i18n.py:226
+msgid "SNR"
+msgstr "SNR"
 
-#: plugin/plugin.py:157 plugin/plugin.py:216 plugin/plugin.py:218
-#: plugin/plugin.py:220
-msgid "OpenWebif Configuration"
-msgstr "OpenWebif seaded"
+#: ../plugin/controllers/i18n.py:494
+msgid "START TYPING"
+msgstr "KIRJUTA SIIA"
 
+#: ../plugin/controllers/i18n.py:41
+msgid "Sa"
+msgstr "L"
+
+#: ../plugin/controllers/i18n.py:204
+msgid "Safe mode"
+msgstr "Turberežiim"
+
+#: ../plugin/controllers/i18n.py:50
+msgid "Sat"
+msgstr "L"
+
+#: ../plugin/controllers/i18n.py:205
+msgid "Satellites"
+msgstr "Satelliidid"
+
+#: ../plugin/controllers/i18n.py:206
+msgid "Satfinder"
+msgstr "Signaalimõõdik"
+
+#: ../plugin/controllers/i18n.py:57
+msgid "Saturday"
+msgstr "Laupäev"
+
+#: ../plugin/controllers/i18n.py:207 ../plugin/controllers/i18n.py:355
+#: ../plugin/controllers/i18n.py:407 ../plugin/plugin.py:114
+msgid "Save"
+msgstr "Salvesta"
+
+#: ../plugin/controllers/i18n.py:208
+msgid "Screenshot"
+msgstr "Ekraanipilt"
+
+#: ../plugin/controllers/i18n.py:209 ../plugin/controllers/i18n.py:413
+msgid "Search"
+msgstr "Otsi"
+
+#: ../plugin/controllers/i18n.py:210
+msgid "Search CSFD"
+msgstr "CSFD otsing"
+
+#: ../plugin/controllers/i18n.py:211
+msgid "Search IMDb"
+msgstr "IMDb otsing"
+
+#: ../plugin/controllers/i18n.py:212
+msgid "Search KinoPoisk"
+msgstr "KinoPoisk otsing"
+
+#: ../plugin/controllers/i18n.py:298
+msgid "Search strictness"
+msgstr "Otsingu rangus"
+
+#: ../plugin/controllers/i18n.py:290
+msgid "Search type"
+msgstr "Otsingu tüüp"
+
+#: ../plugin/controllers/i18n.py:495
+msgid "Select IPK File for Upload"
+msgstr "Üleslaaditav IPK fail"
+
+#: ../plugin/controllers/i18n.py:214
+msgid "Send Message"
+msgstr "Saada sõnum"
+
+#: ../plugin/controllers/i18n.py:216
+msgid "Send a Message"
+msgstr "Saada sõnum"
+
+#: ../plugin/controllers/i18n.py:68
+msgid "September"
+msgstr "September"
+
+#: ../plugin/controllers/i18n.py:217
+msgid "Service"
+msgstr "Kanal"
+
+#: ../plugin/controllers/BouquetEditor.py:314
+#, python-format
+msgid "Service %s added."
+msgstr "Kanal '%s' lisatud."
+
+#: ../plugin/controllers/BouquetEditor.py:317
+#, python-format
+msgid "Service %s already exists in bouquet %s."
+msgstr "Kanal %s on lemmiknimekirjas %s juba olemas."
+
+#: ../plugin/controllers/BouquetEditor.py:248
+#, python-format
+msgid "Service %s can not be removed."
+msgstr "Kanalit %s ei saa eemaldada."
+
+#: ../plugin/controllers/BouquetEditor.py:545
+#, python-format
+msgid "Service %s is locked."
+msgstr "Kanal %s on lukustatud."
+
+#: ../plugin/controllers/BouquetEditor.py:553
+#, python-format
+msgid "Service %s is unlocked."
+msgstr "Kanali %s lukustus maas."
+
+#: ../plugin/controllers/BouquetEditor.py:273
+#, python-format
+msgid "Service %s moved."
+msgstr "Kanal %s liigutatud."
+
+#: ../plugin/controllers/BouquetEditor.py:247
+#, python-format
+msgid "Service %s removed from bouquet %s."
+msgstr "Kanal %s eemaldati lemmiknimekirjast %s."
+
+#: ../plugin/controllers/BouquetEditor.py:239
+#, python-format
+msgid "Service %s removed."
+msgstr "Kanal %s eemaldatud."
+
+#: ../plugin/controllers/BouquetEditor.py:274
+msgid "Service can not be moved."
+msgstr "Kanalit ei saa liigutada."
+
+#: ../plugin/controllers/BouquetEditor.py:405
+msgid "Service can not be renamed."
+msgstr "Kanalit ei saa ümber nimetada."
+
+#: ../plugin/controllers/BouquetEditor.py:497
+msgid "Service is not an alternative."
+msgstr "See ei ole asenduskanal."
+
+#: ../plugin/controllers/BouquetEditor.py:404
+msgid "Service renamed successfully."
+msgstr "Kanal nimetati ümber."
+
+#: ../plugin/controllers/models/services.py:333
+msgid "Services"
+msgstr "Kanalid"
+
+#: ../plugin/controllers/i18n.py:314
+msgid "Set maximum duration"
+msgstr "Määra suurim kestus"
+
+#: ../plugin/controllers/i18n.py:218 ../plugin/controllers/i18n.py:359
+#: ../plugin/controllers/base.py:283
+msgid "Settings"
+msgstr "Seaded"
+
+#: ../plugin/controllers/i18n.py:223
+msgid "Show EPG for"
+msgstr "EPG kanalile"
+
+#: ../plugin/controllers/i18n.py:221
+msgid "Show Full OpenWebif"
+msgstr "Kuva täielik OpenWebif"
+
+#: ../plugin/controllers/i18n.py:445
+msgid "Show Picon in channel list"
+msgstr "Kuva kanalinimekirjas pikonid"
+
+#: ../plugin/controllers/i18n.py:501
+msgid "Show Service type in channel list"
+msgstr "Kuva edastusmoodus kanalinimekirjas"
+
+#: ../plugin/controllers/i18n.py:181 ../plugin/plugin.py:132
+msgid "Show box name in header"
+msgstr "Kuva päises vastuvõtja nimi"
+
+#: ../plugin/controllers/i18n.py:500
+msgid "Show details"
+msgstr "Kuva üksikasjad"
+
+#: ../plugin/controllers/i18n.py:222
+msgid "Show full remote"
+msgstr "Kuva  täielik pult"
+
+#: ../plugin/controllers/i18n.py:369
+msgid "Show in Extensionsmenu"
+msgstr "Kuva laienduste menüüs"
+
+#: ../plugin/controllers/i18n.py:224
+msgid "Shutdown"
+msgstr "Seiska"
+
+#: ../plugin/controllers/i18n.py:438
+msgid "Sid"
+msgstr "Sid"
+
+#: ../plugin/controllers/i18n.py:357
+msgid "Simulate"
+msgstr "Matki"
+
+#: ../plugin/controllers/i18n.py:225
+msgid "Site and sources"
+msgstr "Lähtekood"
+
+#: ../plugin/controllers/models/timers.py:753
+#: ../plugin/controllers/models/timers.py:780
+#: ../plugin/controllers/models/timers.py:809
+#: ../plugin/controllers/models/timers.py:890
+msgid "SleepTimer error"
+msgstr "Unetaimeri viga"
+
+#: ../plugin/controllers/models/timers.py:798
+#: ../plugin/controllers/models/timers.py:867
+#: ../plugin/controllers/models/timers.py:885
+msgid "Sleeptimer has been disabled"
+msgstr "Unetaimer keelati"
+
+#: ../plugin/controllers/models/timers.py:748
+#: ../plugin/controllers/models/timers.py:774
+msgid "Sleeptimer is disabled"
+msgstr "Unetaimer keelati"
+
+#: ../plugin/controllers/models/timers.py:748
+#: ../plugin/controllers/models/timers.py:774
+msgid "Sleeptimer is enabled"
+msgstr "Unetaimer lubati"
+
+#: ../plugin/controllers/models/timers.py:804
+#: ../plugin/controllers/models/timers.py:867
+#: ../plugin/controllers/models/timers.py:880
+#, python-format
+msgid "Sleeptimer set to %d minutes"
+msgstr "Unetaimer määratud %d minutile"
+
+#: ../plugin/controllers/i18n.py:227
+msgid "Software"
+msgstr "Tarkvara"
+
+#: ../plugin/controllers/i18n.py:174
+msgid "Sorry this page is not yet implemented"
+msgstr "See leht ei ole veel kasutuses"
+
+#: ../plugin/controllers/i18n.py:451
+msgid "Spinner"
+msgstr "Spinner"
+
+#: ../plugin/controllers/i18n.py:439
+msgid "Sref"
+msgstr "Sref"
+
+#: ../plugin/controllers/i18n.py:228
+msgid "Standby"
+msgstr "Ooteseisund"
+
+#: ../plugin/controllers/i18n.py:229
+msgid "Standby Toggle"
+msgstr "Toitelüliti"
+
+#: ../plugin/controllers/i18n.py:124
+msgid "Start"
+msgstr "Käivita"
+
+#: ../plugin/controllers/i18n.py:232
+msgid "Start Instant Record"
+msgstr "Salvesta kohe"
+
+#: ../plugin/controllers/i18n.py:231
+msgid "Start time is after end time"
+msgstr "Algusaeg on lõpuajast hilisem"
+
+#: ../plugin/controllers/i18n.py:233
+msgid "Stream"
+msgstr "Voogesitus"
+
+#: ../plugin/controllers/i18n.py:510
+#, fuzzy
+msgid "Stream Clients"
+msgstr "Voogesitus"
+
+#: ../plugin/controllers/i18n.py:42
+msgid "Su"
+msgstr "P"
+
+#: ../plugin/controllers/i18n.py:234
+msgid "Subnet mask"
+msgstr "Alamvõrgu mask"
+
+#: ../plugin/controllers/i18n.py:235
+msgid "Subservices"
+msgstr "Alamkanalid"
+
+#: ../plugin/controllers/i18n.py:44
+msgid "Sun"
+msgstr "P"
+
+#: ../plugin/controllers/i18n.py:58
+msgid "Sunday"
+msgstr "Pühapäev"
+
+#: ../plugin/controllers/i18n.py:178
+msgid "System OE"
+msgstr "Süsteemi OE"
+
+#: ../plugin/controllers/models/info.py:392
+#: ../plugin/controllers/models/info.py:404
+#: ../plugin/controllers/models/info.py:406
+msgid "TB"
+msgstr "TB"
+
+#: ../plugin/controllers/i18n.py:261
+msgid "TV"
+msgstr "TV"
+
+#: ../plugin/controllers/i18n.py:455
+msgid "TV Guide"
+msgstr "Telekava"
+
+#: ../plugin/controllers/i18n.py:262
+msgid "TV Multi EPG"
+msgstr "TV Multi EPG"
+
+#: ../plugin/controllers/i18n.py:236 ../plugin/controllers/i18n.py:337
+msgid "Tags"
+msgstr "Sildid"
+
+#: ../plugin/controllers/i18n.py:237
+msgid "Teletext"
+msgstr "Teletekst"
+
+#: ../plugin/controllers/i18n.py:238
+msgid "Television"
+msgstr "Televisioon"
+
+#: ../plugin/controllers/i18n.py:239
+msgid "Template Engine"
+msgstr "Malli mootor"
+
+#: ../plugin/controllers/base.py:354
+msgid "Terminal"
+msgstr "Terminal"
+
+#: ../plugin/controllers/models/services.py:340
+msgid "Terrestrial"
+msgstr "Maapealne"
+
+#: ../plugin/controllers/i18n.py:240
+msgid "Text"
+msgstr "Tekst"
+
+#: ../plugin/controllers/i18n.py:39
+msgid "Th"
+msgstr "N"
+
+#: ../plugin/controllers/web.py:73
+#, python-format
+msgid "The parameter '%s' can't be empty"
+msgstr "Parameeter '%s' ei tohi olla tühi"
+
+#: ../plugin/controllers/web.py:322
+msgid "The parameter 'command' must be a number"
+msgstr "Parameeter 'käsk' peab olema number"
+
+#: ../plugin/controllers/models/timers.py:434
+#, python-format
+msgid "The timer '%s' has been %s successfully"
+msgstr "Taimer '%s' on edukalt %s"
+
+#: ../plugin/controllers/models/timers.py:390
+#, python-format
+msgid "The timer '%s' has been deleted successfully"
+msgstr "Taimer '%s' kustutati edukalt"
+
+#: ../plugin/controllers/models/timers.py:426
+#, python-format
+msgid "The timer '%s' now recorded! Not disabled!"
+msgstr "Taimer '%s' on nüüd salvestav! Mitte keelatud!"
+
+#: ../plugin/controllers/i18n.py:450
+msgid "Theme"
+msgstr "Kujundus"
+
+#: ../plugin/controllers/BouquetEditor.py:318
+msgid "This service can not be added."
+msgstr "Seda kanalit ei saa lisada."
+
+#: ../plugin/controllers/i18n.py:48
+msgid "Thu"
+msgstr "N"
+
+#: ../plugin/controllers/i18n.py:55
+msgid "Thursday"
+msgstr "Neljapäev"
+
+#: ../plugin/controllers/i18n.py:241
+msgid "Time"
+msgstr "Aeg"
+
+#: ../plugin/controllers/i18n.py:456
+msgid "Timeline"
+msgstr "Ajakava"
+
+#: ../plugin/controllers/i18n.py:242
+msgid "Timeout"
+msgstr "Ajapiirang"
+
+#: ../plugin/controllers/i18n.py:247
+msgid "Timer"
+msgstr "Taimer"
+
+#: ../plugin/controllers/models/timers.py:251
+#, python-format
+msgid "Timer '%s' added"
+msgstr "Taimer '%s' lisatud"
+
+#: ../plugin/controllers/models/timers.py:420
+#, python-format
+msgid "Timer '%s' already exists!"
+msgstr "Taimer '%s' on juba olemas!"
+
+#: ../plugin/controllers/models/timers.py:352
+#, python-format
+msgid "Timer '%s' changed"
+msgstr "Taimerit '%s' muudeti"
+
+#: ../plugin/controllers/models/timers.py:414
+#, python-format
+msgid "Timer '%s' not enabled while Conflict"
+msgstr "Taimerit '%s' ei lubatud vastuolu tõttu"
+
+#: ../plugin/controllers/models/timers.py:371
+#, python-format
+msgid "Timer '%s' not saved while Conflict"
+msgstr "Taimerit '%s' ei salvestatud vastuolu tõttu"
+
+#: ../plugin/controllers/i18n.py:443
+msgid "Timer Added"
+msgstr "Taimer lisatud"
+
+#: ../plugin/controllers/i18n.py:243
+msgid "Timer added"
+msgstr "Taimer lisatud"
+
+#: ../plugin/controllers/models/timers.py:506
+msgid "Timer conflict detected! Not recording!"
+msgstr "Taimerite ajad kattuvad! Ei salvestata!"
+
+#: ../plugin/controllers/i18n.py:301
+msgid "Timer type"
+msgstr "Taimeri tüüp"
+
+#: ../plugin/controllers/models/timers.py:456
+msgid "TimerList has been saved"
+msgstr "Taimerinimekiri salvestati"
+
+#: ../plugin/controllers/i18n.py:244
+msgid "Timerlist"
+msgstr "Taimeriloend"
+
+#: ../plugin/controllers/i18n.py:248 ../plugin/controllers/i18n.py:358
+msgid "Timers"
+msgstr "Taimerid"
+
+#: ../plugin/controllers/i18n.py:249
+msgid "Title"
+msgstr "Nimi"
+
+#: ../plugin/controllers/i18n.py:252
+msgid "Transcode"
+msgstr "Transkodeeri"
+
+#: ../plugin/controllers/i18n.py:280
+msgid "Translation to Spanish"
+msgstr "Hispaaniakeelne tõlge"
+
+#: ../plugin/controllers/i18n.py:367
+msgid "Try Guessing"
+msgstr "Ürita pakkuda"
+
+#: ../plugin/controllers/i18n.py:436
+msgid "Tsid"
+msgstr "Tsid"
+
+#: ../plugin/controllers/i18n.py:37
+msgid "Tu"
+msgstr "T"
+
+#: ../plugin/controllers/i18n.py:46
+msgid "Tue"
+msgstr "T"
+
+#: ../plugin/controllers/i18n.py:53
+msgid "Tuesday"
+msgstr "Teisipäev"
+
+#: ../plugin/controllers/i18n.py:253
+msgid "Tuner Bit Error Rate BER"
+msgstr "Signaali bitiveategur BER"
+
+#: ../plugin/controllers/i18n.py:254
+msgid "Tuner Number"
+msgstr "Tuuneri number"
+
+#: ../plugin/controllers/i18n.py:255
+msgid "Tuner Signal"
+msgstr "Tuuneri signaal"
+
+#: ../plugin/controllers/i18n.py:258
+msgid "Tuner Signal Power AGC"
+msgstr "Signaali tugevus AGC"
+
+#: ../plugin/controllers/i18n.py:256
+msgid "Tuner Signal Quality SNR"
+msgstr "Signaali kvaliteet SNR"
+
+#: ../plugin/controllers/i18n.py:257
+msgid "Tuner Signal Quality SNR_DB"
+msgstr "Signaali kvaliteet SNR_DB"
+
+#: ../plugin/controllers/i18n.py:259
+msgid "Tuner Type"
+msgstr "Tuuneri tüüp"
+
+#: ../plugin/controllers/i18n.py:260
+msgid "Tuners"
+msgstr "Tuunerid"
+
+#: ../plugin/controllers/i18n.py:263
+msgid "Type"
+msgstr "Tüüp"
+
+#: ../plugin/controllers/web.py:228
+#, python-format
+msgid "Unknown Volume command %s"
+msgstr "Tundmatu helitugevuse käsk %s"
+
+#: ../plugin/controllers/models/timers.py:601
+#, python-format
+msgid "Unknown command: '%s'"
+msgstr "Tundmatu käsk: '%s'"
+
+#: ../plugin/controllers/i18n.py:264
+msgid "Upcoming Events"
+msgstr "Algavad saated"
+
+#: ../plugin/controllers/i18n.py:485
+msgid "Update"
+msgstr "Uuendus"
+
+#: ../plugin/controllers/i18n.py:483
+msgid "Update Package"
+msgstr "Uuenda pakett"
+
+#: ../plugin/controllers/i18n.py:488
+msgid "Update from Feed"
+msgstr "Uuendus hoidlast"
+
+#: ../plugin/controllers/i18n.py:489
+msgid "Upgrade all Packages"
+msgstr "Uuenda kõik paketid"
+
+#: ../plugin/controllers/i18n.py:498
+msgid "Upload File Error"
+msgstr "Viga faili üleslaadimisel"
+
+#: ../plugin/controllers/i18n.py:497
+msgid "Upload package"
+msgstr "Paketi üleslaadimine"
+
+#: ../plugin/controllers/i18n.py:496
+msgid "Uploaded Files"
+msgstr "Üleslaetud failid"
+
+#: ../plugin/controllers/i18n.py:336
+msgid "Use a custom location"
+msgstr "Kasuta kohandatud asukohta"
+
+#: ../plugin/controllers/i18n.py:506
+msgid "Use as PiP if possible"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:182 ../plugin/plugin.py:134
+msgid "Use custom box name"
+msgstr "Kasuta kohandatud vastuvõtja nime"
+
+#: ../plugin/controllers/i18n.py:472 ../plugin/plugin.py:131
 msgid "Use new design"
 msgstr "Kasuta uut disaini"
 
-msgid "VPS Overwrite"
-msgstr "VPS ülekirjutamine"
+#: ../plugin/controllers/i18n.py:270
+msgid "VPS"
+msgstr "VPS"
 
-#~ msgid "Show Picons in channel list"
-#~ msgstr "Kuva pikonid kanalinimekirjas"
+#: ../plugin/controllers/models/timers.py:924
+msgid "VPS plugin not found"
+msgstr "VPS pluginat ei leitud"
 
-#~ msgid "Delete Channel(s)"
-#~ msgstr "Kustuta kanal(id)"
+#: ../plugin/controllers/i18n.py:265
+msgid "Version"
+msgstr "Versioon"
 
-#~ msgid "Do you really want to delete the channel(s)"
-#~ msgstr "Kas kustutad kanal(id)"
+#: ../plugin/controllers/i18n.py:266
+msgid "Video"
+msgstr "Video"
 
-#~ msgid "Delete Movie"
-#~ msgstr "Kustuta salvestis"
+#: ../plugin/controllers/i18n.py:267
+msgid "Video Height"
+msgstr "Pildi kõrgus"
 
-#~ msgid "Really delete the movie"
-#~ msgstr "Kas kustutada salvestis"
+#: ../plugin/controllers/i18n.py:268
+msgid "Video Wide"
+msgstr "Pildi suurus"
 
-#~ msgid "Afterevent"
-#~ msgstr "Pärast saadet"
+#: ../plugin/controllers/i18n.py:269
+msgid "Video Width"
+msgstr "Pildi laius"
 
-#~ msgid "Smart services renaming for XBMC"
-#~ msgstr "Kanalinimede muutmine XBMC tarbeks"
+#: ../plugin/controllers/i18n.py:402
+msgid "Visibly"
+msgstr "Nähtavalt"
 
-#~ msgid "Driver date"
-#~ msgstr "Ajurite väljalase"
+#: ../plugin/controllers/i18n.py:271
+msgid "Volume"
+msgstr "Helitugevus"
 
-#~ msgid "Kernel version"
-#~ msgstr "Kerneli versioon"
+#: ../plugin/controllers/i18n.py:272
+msgid "Volume Control"
+msgstr "Helitugevus"
 
-#~ msgid "Total Memory"
-#~ msgstr "Mälu kokku"
+#: ../plugin/controllers/i18n.py:434
+msgid "Vpid"
+msgstr "Vpid"
 
-#~ msgid "Multi EPG Mode"
-#~ msgstr "Multi EPG laad"
+#: ../plugin/controllers/models/info.py:628
+msgid "W"
+msgstr "W"
 
-#~ msgid "(shift  click for long pressure)"
-#~ msgstr "(shift  klõps = pikk nupuvajutus)"
+#: ../plugin/controllers/i18n.py:215
+msgid "Waiting for answer ..."
+msgstr "Vastuse ootel..."
 
-#~ msgid "RecordZAP"
-#~ msgstr "Salvestuskanalivahetus"
+#: ../plugin/controllers/i18n.py:230
+msgid "Wake Up"
+msgstr "Käivitus"
+
+#: ../plugin/controllers/i18n.py:393
+msgid "Wakeup"
+msgstr "Käivitus"
+
+#: ../plugin/controllers/i18n.py:274
+msgid "Warning"
+msgstr "Hoiatus"
+
+#: ../plugin/controllers/i18n.py:38
+msgid "We"
+msgstr "K"
+
+#: ../plugin/controllers/i18n.py:457
+msgid "Web TV"
+msgstr "Veebi TV"
+
+#: ../plugin/controllers/i18n.py:47
+msgid "Wed"
+msgstr "K"
+
+#: ../plugin/controllers/i18n.py:54
+msgid "Wednesday"
+msgstr "Kolmapäev"
+
+#: ../plugin/controllers/i18n.py:351
+msgid "Weekday"
+msgstr "Tööpäev"
+
+#: ../plugin/controllers/i18n.py:350
+msgid "Weekend"
+msgstr "Nädalavahetus"
+
+#: ../plugin/controllers/i18n.py:329
+msgid "Weekly (Monday)"
+msgstr "Kord nädalas (esmaspäev)"
+
+#: ../plugin/controllers/i18n.py:328
+msgid "Weekly (Sunday)"
+msgstr "Kord nädalas (pühapäev)"
+
+#: ../plugin/plugin.py:148
+msgid "Without auth only local access is allowed!"
+msgstr "Autentimata on lubatud ainult kohalik aadress!"
+
+#: ../plugin/controllers/i18n.py:382
+msgid "Wizzard"
+msgstr "Abiline"
+
+#: ../plugin/controllers/web.py:223
+#, python-format
+msgid "Wrong parameter format 'set=%s'. Use set=set15 "
+msgstr "Vale parameetri vorming 'set=%s'. Kasuta set=set15 "
+
+#: ../plugin/controllers/i18n.py:490
+msgid "Yes"
+msgstr "Jah"
+
+#: ../plugin/controllers/i18n.py:474
+msgid "Yes, delete it"
+msgstr "Jah, kustuta see"
+
+#: ../plugin/controllers/i18n.py:275
+msgid "Yes/No"
+msgstr "Jah/Ei"
+
+#: ../plugin/controllers/i18n.py:477
+msgid "You need to write something!"
+msgstr "Midagi tuleb kirjutada!"
+
+#: ../plugin/controllers/i18n.py:276
+msgid "Zap"
+msgstr "Kanalivahetus"
+
+#: ../plugin/controllers/i18n.py:278
+msgid "Zap to"
+msgstr "Kanalile"
+
+#: ../plugin/controllers/i18n.py:279
+msgid "Zapped to"
+msgstr "Vahetatud kanalile"
+
+#: ../plugin/controllers/i18n.py:317
+msgid "auto"
+msgstr "auto"
+
+#: ../plugin/controllers/i18n.py:300
+msgid "case-insensitive search"
+msgstr "tõusutundetu otsing"
+
+#: ../plugin/controllers/i18n.py:299
+msgid "case-sensitive search"
+msgstr "tõusutundlik otsing"
+
+#: ../plugin/controllers/i18n.py:293
+msgid "description match"
+msgstr "sisututvustuse vaste"
+
+#: ../plugin/controllers/i18n.py:114
+msgid "disabled"
+msgstr "keelatud"
+
+#: ../plugin/controllers/i18n.py:318
+msgid "do nothing"
+msgstr "ära tee midagi"
+
+#: ../plugin/controllers/i18n.py:442
+msgid "error! Loading Page"
+msgstr "Tõrge lehe laadimisel"
+
+#: ../plugin/controllers/i18n.py:292
+msgid "exact match"
+msgstr "täpne vaste"
+
+#: ../plugin/controllers/i18n.py:135
+msgid "finished"
+msgstr "lõpetatud"
+
+#: ../plugin/controllers/i18n.py:320
+msgid "go to deep standby"
+msgstr "mine puhkeseisundisse"
+
+#: ../plugin/controllers/i18n.py:319
+msgid "go to standby"
+msgstr "mine ooteseisundisse"
+
+#: ../plugin/controllers/i18n.py:31
+msgid "hour"
+msgstr "tund"
+
+#: ../plugin/controllers/i18n.py:348
+msgid "in Description"
+msgstr "sisututvustuses"
+
+#: ../plugin/controllers/i18n.py:347
+msgid "in Shortdescription"
+msgstr "lühitutvustusest"
+
+#: ../plugin/controllers/i18n.py:346
+msgid "in Title"
+msgstr "nimest"
+
+#: ../plugin/controllers/models/movies.py:223
+#: ../plugin/controllers/models/movies.py:347
+#: ../plugin/controllers/models/movies.py:756
+#: ../plugin/controllers/models/info.py:294
+#: ../plugin/controllers/models/info.py:297
+msgid "kB"
+msgstr "kB"
+
+#: ../plugin/controllers/i18n.py:160
+msgid "loading"
+msgstr "laadimine"
+
+#: ../plugin/controllers/models/info.py:65
+#: ../plugin/controllers/models/info.py:84
+msgid "manual/disabled"
+msgstr "käsitsi/keelatud"
+
+#: ../plugin/controllers/i18n.py:31
+msgid "minute"
+msgstr "minut"
+
+#: ../plugin/controllers/i18n.py:173
+msgid "no description available"
+msgstr "sisututvustus puudub"
+
+#: ../plugin/controllers/i18n.py:149 ../plugin/controllers/models/info.py:171
+msgid "none/IPv4-only network"
+msgstr "Pole/ainult IPv4 võrk"
+
+#: ../plugin/controllers/i18n.py:349
+msgid "on Weekday"
+msgstr "tööpäeval"
+
+#: ../plugin/controllers/BouquetEditor.py:86
+msgid "one two three four unknown command"
+msgstr "üks kaks kolm neli tundmatu käsk"
+
+#: ../plugin/controllers/i18n.py:291
+msgid "partial match"
+msgstr "osaline vaste"
+
+#: ../plugin/controllers/models/info.py:455
+msgid "r/o"
+msgstr "r/o"
+
+#: ../plugin/controllers/models/info.py:451
+msgid "r/w"
+msgstr "r/w"
+
+#: ../plugin/controllers/i18n.py:302
+msgid "record"
+msgstr "salvestus"
+
+#: ../plugin/controllers/models/movies.py:417
+msgid "remove"
+msgstr "eemalda"
+
+#: ../plugin/controllers/i18n.py:203
+msgid "running"
+msgstr "töös"
+
+#: ../plugin/controllers/i18n.py:213
+msgid "seconds"
+msgstr "sekundit"
+
+#: ../plugin/controllers/i18n.py:342
+msgid "select Bouquets"
+msgstr "Vali lemmiknimekirjad"
+
+#: ../plugin/controllers/i18n.py:340
+msgid "select Channels"
+msgstr "Vali kanalid"
+
+#: ../plugin/controllers/i18n.py:338
+msgid "select Tags"
+msgstr "Vali sildid"
+
+#: ../plugin/controllers/i18n.py:296
+msgid "short description match"
+msgstr "lühitutvustuse vaste"
+
+#: ../plugin/controllers/i18n.py:316
+msgid "standard"
+msgstr "tavaline"
+
+#: ../plugin/controllers/i18n.py:297
+msgid "start match"
+msgstr "vaste algus"
+
+#: ../plugin/controllers/models/info.py:61
+#: ../plugin/controllers/models/info.py:73
+#: ../plugin/controllers/models/info.py:80
+msgid "static"
+msgstr "staatiline"
+
+#: ../plugin/controllers/i18n.py:294
+msgid "title or description match"
+msgstr "nime või sisututvustuse vaste"
+
+#: ../plugin/controllers/i18n.py:295
+msgid "title or short description match"
+msgstr "nime või lühitutvustuse vaste"
+
+#: ../plugin/controllers/i18n.py:251
+msgid "transcoded"
+msgstr "transkodeeritud"
+
+#: ../plugin/controllers/web.py:727
+#, python-format
+msgid "type %s is not a number"
+msgstr "tüüp %s ei ole number"
+
+#: ../plugin/controllers/models/info.py:93
+#: ../plugin/controllers/models/info.py:101
+msgid "unknown"
+msgstr "tundmatu"
+
+#: ../plugin/controllers/i18n.py:462
+msgid "using"
+msgstr "kasutades"
+
+#: ../plugin/controllers/i18n.py:430
+msgid "via"
+msgstr ">"
+
+#: ../plugin/controllers/i18n.py:273
+msgid "waiting"
+msgstr "ootel"
+
+#: ../plugin/controllers/ipkg.py:284
+msgid "wrong filetype"
+msgstr "vale failitüüp"
+
+#: ../plugin/controllers/i18n.py:303
+msgid "zap"
+msgstr "kanalivahetus"
+
+#: ../plugin/controllers/i18n.py:277
+msgid "zap before Stream"
+msgstr "Kanalivahetus enne voogesitust"

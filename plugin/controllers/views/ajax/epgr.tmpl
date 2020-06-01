@@ -1,5 +1,5 @@
 #filter WebSafe
-#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 <style>
 optgroup {font-weight: bolder;}
 #epgrefreshcontent label
@@ -75,7 +75,6 @@ optgroup {font-weight: bolder;}
 		<input type="checkbox" id="er_wakeup" value="">
 			</div>
 		</div>
-		
 		<div class="t2 ui-widget-content">
 			<div>
 		<span id="er_hasAT"><label for="er_inherit_autotimer">$tstrings['er_inherit_autotimer']:</label>
@@ -92,7 +91,6 @@ optgroup {font-weight: bolder;}
 		</select>
 			</div>
 		</div>
-		
 		<br>
 		<label for="bouquets">$tstrings['at_bouquets']:</label>
 		<br>
@@ -113,16 +111,15 @@ optgroup {font-weight: bolder;}
 	<button id="epgrbutton1">$tstrings['er_save']</button>
 	<button id="epgrbutton2">$tstrings['er_refresh']</button>
 	</div></div>
-	
+
 	<div id="statuscont" style="display:none;margin-top:10px;">
 	<div id="statusbox" class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
 		<p>
-			<span id="statusicon" class="ui-icon ui-icon-alert" style="margin-right: .3em;"></span> 
+			<span id="statusicon" class="ui-icon ui-icon-alert" style="margin-right: .3em;"></span>
 			<span id="statustext"></span>
 		</p>
 	</div>
 	</div>
-	
 </div>
 </div>
 </div>

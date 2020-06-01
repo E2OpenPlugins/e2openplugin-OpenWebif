@@ -9,11 +9,8 @@ before_install:
 - sudo npm install -g jshint
 
 install:
-- pip install cheetah
-- pip install twisted
-- pip install pyopenssl
+- pip install -r requirements.txt
 - pip install bandit
-- pip install flake8
 
 script: 
 - python -m compileall -l . -l plugin -l plugin/backport -l plugin/controllers -l plugin/controllers/models
@@ -23,17 +20,22 @@ script:
 after_success:
 - bandit -r plugin -f html -o bandit.html
 - python -m flake8 --ignore=W191,E501,E302 plugin/ --output-file flake8_report.txt
-- python -m flake8 plugin/ --output-file flake8_report.txt
 - jshint ./sourcefiles/js/ | tee jshint1_report.txt
 - jshint ./sourcefiles/themes/absb/js/ | tee jshint2_report.txt
 - ./create_ipk.sh
 - export PKG=$(ls -1 *.ipk)
 - mkdir Rel
+- touch ./Rel/.nojekyll
 - mv "${PKG}" ./Rel
 - mv bandit.html ./Rel
 - mv flake8_report.txt ./Rel
 - mv jshint1_report.txt ./Rel
 - mv jshint2_report.txt ./Rel
+- cd doc
+- make html
+- cd build/html
+- mv * ../../../Rel/
+
 deploy:
   provider: pages
   local_dir: Rel

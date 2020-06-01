@@ -8,8 +8,8 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-from Plugins.Extensions.OpenWebif.__init__ import _
 from Screens.MessageBox import MessageBox
+from ..i18n import _
 
 lastreply = None
 

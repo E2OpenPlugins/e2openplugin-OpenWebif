@@ -1,4 +1,4 @@
-#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 <body>
 	<div data-role="page" id="mainPage">
 		<div id="header">
@@ -22,9 +22,7 @@
 				<li data-role="list-divider" role="heading" data-theme="b">$tstrings['instant_record']</li>
 				<li><a href="#" onClick="startInstantRecord()">$tstrings['start_instant_record']</a></li>
 			</ul>
-			
 			<br><br>
-			
 			<ul data-role="listview" data-inset="true" data-theme="d">
 				<li data-role="list-divider" role="heading" data-theme="b">$tstrings['powercontrol']</li>
 				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=0'); return false">$tstrings['standby_toggle']</a></li>
@@ -35,7 +33,6 @@
 				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=5'); return false">$tstrings['standby']</a></li>
 			</ul>
 		</div>
-		
 		<div id="footer">
 			<p>OpenWebif Mobile</p>
 			<a onclick="document.location.href='/index?mode=fullpage';return false;" href="#">$tstrings['show_full_openwebif']</a>
@@ -61,7 +58,7 @@
 		return false;
 	}
 	function startInstantRecord(vol) {
-		check = confirm("Really start instant record now?");
+		check = confirm("$tstrings['ask_instant_record']");
 		if (check == true) {
 			jQuery.ajax('/api/recordnow');
 		}
@@ -73,7 +70,6 @@
 			clearTimeout(volupdate);
 			volupdate = setTimeout("jQuery.ajax('/web/vol?set=set" + jQuery('#slider').val() + "')",1000);
 		});
-		
 		var mutestatus = 0;
 		jQuery('#volimage').click(function(){
 			if (mutestatus == 0) {

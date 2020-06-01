@@ -1,5 +1,5 @@
 #filter WebSafe
-#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #raw
 <style>
 optgroup{font-weight:bolder;}
@@ -17,7 +17,7 @@ input#to,input#from,.text.number {width:60px;}
 				<div style="overflow:auto;max-height:600px;">
 				<ol class="sellist" id="atlist">
 				</ol>
-				</div>
+			</div>
 			</div>
 			<div class="ui-widget-header" style="display:table-cell;background: none;border-bottom:none;border-top:none;border-left:none;width:1px;"></div>
 			<div style="display:table-cell;">
@@ -37,6 +37,9 @@ input#to,input#from,.text.number {width:60px;}
 								<option value="partial" selected="selected">$tstrings['at_partial_match']</option>
 								<option value="exact">$tstrings['at_exact_match']</option>
 								<option value="description">$tstrings['at_description_match']</option>
+								<option value="full">$tstrings['at_title_or_description_match']</option>
+								<option value="shortdesc">$tstrings['at_short_description_match']</option>
+								<option value="title_shortdesc">$tstrings['at_title_or_short_description_match']</option>
 								#if $types.has_key('start')
 									<option value="start">$tstrings['at_start_match']</option>
 								#end if
@@ -220,6 +223,8 @@ input#to,input#from,.text.number {width:60px;}
 						<button id="atbutton6">Test</button>
 						<button id="atbutton7">$tstrings['at_timers']</button>
 						<button id="atbutton8" data-title="$tstrings['ats_auto_timer_settings']">$tstrings['at_settings']</button>
+						<button id="atbutton9">$tstrings['export']</button>
+						<button id="atbutton10">$tstrings['import']</button>
 						</div>
 					</div>
 					<div id="statuscont" style="display:none">
@@ -298,8 +303,10 @@ input#to,input#from,.text.number {width:60px;}
 </form>
 </div>
 <div>
-
-<script type="text/javascript" src="/js/at-2.6.min.js"></script>
+<form id="uploadrestore" style="display:none" action"uploadrestore"="" method="post" enctype="multipart/form-data" encoding="multipart/form-data">
+	<input type="file" name="rfile" id="rfile">
+</form>
+<script type="text/javascript" src="/js/at-2.8.min.js"></script>
 <script type="text/javascript">
 #raw
 $(function() { InitPage();});

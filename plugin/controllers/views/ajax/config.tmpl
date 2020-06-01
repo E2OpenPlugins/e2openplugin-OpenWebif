@@ -53,6 +53,15 @@
 </tr>
 #end def
 
+#def text($config)
+<tr>
+<td>$config.description</td>
+<td>
+	<input type="text" id="${config.path}" value="$config.data.current" onchange="saveConfig('$config.path', this.value);">
+</td>
+</tr>
+#end def
+
 <div id="content_main">
 	<h3 class="ui-widget-header">$title</h3>
 	<table id="configuration">
@@ -64,6 +73,10 @@
 			#elif $config.data.type == "multicheckbox"
 				$multicheckbox($config)
 			#elif $config.data.type == "number"
+				$number($config)
+			#elif $config.data.type == "text"
+				$text($config)
+			#elif $config.data.type == "slider"
 				$number($config)
 			#end if
 		#end for

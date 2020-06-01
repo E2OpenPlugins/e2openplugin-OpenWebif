@@ -1,5 +1,4 @@
-#from Plugins.Extensions.OpenWebif.local import tstrings
-
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 <style>
 .t,.t2,.t3 { display:table;width: 100%; padding-bottom:10px;background-image:none;}
 .t3.ui-widget-content,.t2.ui-widget-content,.t.ui-widget-content { border:none;}
@@ -18,7 +17,14 @@
 	<div class="t ui-widget-content">
 		<div>$tstrings['enabled']:<input type="checkbox" name="enabled" id="enabled" value="0" /></div>
 		<div>$tstrings['just_play']:<input type="checkbox" name="justplay" id="justplay" value="0" /><span id="sep1">/</span>
-		$tstrings['record_zap']:<input type="checkbox" name="always_zap" id="always_zap" value="0" /></div>
+		$tstrings['record_zap']:<input type="checkbox" name="always_zap" id="always_zap" value="0" />
+		#if $pipzap
+		<br>
+		$tstrings['pipifposible']: <input type="checkbox" name="pipzap" id="pipzap" value="0" />
+		#else
+		<input type="checkbox" name="pipzap" id="pipzap" value="0" style="display:none"/>
+		#end if
+		</div>
 	</div>
 
 	<div class="t ui-widget-content">
@@ -92,6 +98,19 @@
 			<input type="checkbox" name="vpsplugin_safemode" id="vpsplugin_safemode" value="0" />
 		</span>
 	</div>
+
+	#if $autoadjust
+	<div class="t ui-widget-content">
+		<div>VTi Extras:</div>
+		<div>
+			$tstrings['autoadjust']: <input type="checkbox" id="autoadjust" value="1" />
+			$tstrings['allow_duplicate']: <input type="checkbox" id="allow_duplicate" value="1" />
+		</div>
+	</div>
+	#else
+	<input type="checkbox" name="autoadjust" id="autoadjust" value="0" style="display:none" />
+	<input type="checkbox" name="allow_duplicate" id="allow_duplicate" value="0" style="display:none" />
+	#end if
 	
 	<div class="timerlist_row">
 		<span class="timerlist_row_l">$tstrings['tags']:</span>
@@ -102,7 +121,7 @@
 	
 	<div id="errorbox" class="timerlist_row" style="color: red;">
 		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
-			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
 			<span id="error"></span>
 		</div>
 	</div>
@@ -127,7 +146,6 @@ $('#always_zap').click(function() {
 });
 
 $('#timerend').datetimepicker({
-	
 	timeText: tstr_time,
 	hourText: tstr_hour,
 	minuteText: tstr_minute,
@@ -140,7 +158,7 @@ $('#timerend').datetimepicker({
 	dateFormat: 'dd.mm.yy',
 	timeFormat: 'HH:mm',
 	onClose: function(dateText, inst) {
-		if (!timeredit_begindestroy && $('#timerbegin').val() != '' &&	
+		if (!timeredit_begindestroy && $('#timerbegin').val() != '' && 
 			$('#timerbegin').datetimepicker('getDate') > $(this).datetimepicker('getDate')) {
 				$('#error').text(tstr_start_after_end);
 				$('#errorbox').show();
@@ -152,7 +170,7 @@ $('#timerend').datetimepicker({
 
 $('#repeatdays').buttonset();
 
-$(function() { 
+$(function() {
 	$("#bouquet_select").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "100%"});
 
 	$(".chosen-container .chosen-drop").addClass('ui-widget-content');
@@ -192,6 +210,8 @@ $('#editTimerForm').dialog({
 					description: $('#description').val(),
 					disabled: ($('#enabled').is(':checked')?"0":"1"),
 					afterevent: $('#afterevent').val(),
+					allow_duplicate: ($('#allow_duplicate').is(':checked')?"1":"0"),
+					autoadjust: ($('#autoadjust').is(':checked')?"1":"0"),
 					tags: tags,
 					repeated: repeated };
 				
@@ -199,9 +219,14 @@ $('#editTimerForm').dialog({
 					urldata["always_zap"] = "1";
 					urldata["justplay"] = "0";
 				}
-				else
+				else {
+					urldata["always_zap"] = "0";
 					urldata["justplay"] = $('#justplay').is(':checked')?"1":"0";
-				
+					if($('#justplay').is(':checked')) {
+						urldata["pipzap"] = $('#pipzap').is(':checked')?"1":"0";
+					}
+				}
+
 				if ($('#dirname').val() != 'None')
 					urldata["dirname"] = $('#dirname').val();
 				if (!$('#has_vpsplugin1').is(':hidden'))
@@ -215,7 +240,7 @@ $('#editTimerForm').dialog({
 				}
 				else
 					urldata["begin"] = Math.round(current_begin);
-				
+
 				var canclose = false;
 				if (current_serviceref == "") {
 					$.ajax({
@@ -272,7 +297,7 @@ $('#editTimerForm').dialog({
 						}
 					});
 				}
-				
+
 				if (canclose) {
 					if (reloadTimers) load_maincontent("ajax/timers");
 					$(this).dialog("close");

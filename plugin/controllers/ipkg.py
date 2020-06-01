@@ -1,25 +1,36 @@
 # -*- coding: utf-8 -*-
 
-##############################################################################
-#                        2011 E2OpenPlugins                                  #
-#                                                                            #
-#  This file is open source software; you can redistribute it and/or modify  #
-#     it under the terms of the GNU General Public License version 2 as      #
-#               published by the Free Software Foundation.                   #
-#                                                                            #
-##############################################################################
+##########################################################################
+# OpenWebif: ipkg
+##########################################################################
+# Copyright (C) 2011 - 2020 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
 
 from enigma import eConsoleAppContainer
 from twisted.web import server, resource, http
-# from os import path, popen, remove, stat
 
 import os
 import json
+import six
 
 from base import BaseController
 from Components.config import config
 
-from Plugins.Extensions.OpenWebif.__init__ import _
+from i18n import _
 
 PACKAGES = '/var/lib/opkg/lists'
 INSTALLEDPACKAGES = '/var/lib/opkg/status'
@@ -34,14 +45,15 @@ class IpkgController(BaseController):
 		action = ''
 		package = ''
 		self.request = request
-		self.format = "html"
+		self.json = False
 		self.container = None
 		if "command" in request.args:
 			action = request.args["command"][0]
 		if "package" in request.args:
 			package = request.args["package"][0]
 		if "format" in request.args:
-			self.format = request.args["format"][0]
+			if request.args["format"][0] == "json":
+				self.json = True
 		if action is not '':
 			if action in ("update", "upgrade"):
 				return self.CallOPKG(request, action)
@@ -140,7 +152,7 @@ class IpkgController(BaseController):
 		keys.sort()
 		self.ResultString = ""
 		if action == "listall":
-			self.format = "json"
+			self.json = True
 			ret = []
 			for name in keys:
 				ret.append({
@@ -162,9 +174,8 @@ class IpkgController(BaseController):
 			for name in keys:
 				if len(map[name][3]) > 1:
 					self.ResultString += name + " - " + map[name][3] + " - " + map[name][0] + "<br>"
-		if self.format == "json":
+		if self.json:
 			data = []
-			# nresult = unicode(nresult, errors='ignore')
 			data.append({"result": True, "packages": self.ResultString.split("<br>")})
 			return data
 		return self.ResultString
@@ -172,28 +183,18 @@ class IpkgController(BaseController):
 # TDOD: check encoding
 	def CallOPKList(self, request, action):
 		data = self.getPackages(action)
-		acceptHeaders = request.requestHeaders.getRawHeaders('Accept-Encoding', [])
-		supported = ','.join(acceptHeaders).split(',')
-		if 'gzip' in supported:
-			encoding = request.responseHeaders.getRawHeaders('Content-Encoding')
-			if encoding:
-				encoding = '%s,gzip' % ','.join(encoding)
-			else:
-				encoding = 'gzip'
-			request.responseHeaders.setRawHeaders('Content-Encoding', [encoding])
-			if self.format == "json":
-				compstr = self.compressBuf(json.dumps(data, encoding="ISO-8859-1"))
-			else:
-				compstr = self.compressBuf("<html><body><br>" + data + "</body></html>")
-			request.setHeader('Content-Length', '%d' % len(compstr))
-			request.write(compstr)
+		if self.json:
+			request.setHeader("content-type", "application/json; charset=utf-8")
+			try:
+				return json.dumps(data, indent=1)
+			except Exception as exc:
+				request.setResponseCode(http.INTERNAL_SERVER_ERROR)
+				return json.dumps({"result": False, "request": request.path, "exception": repr(exc)})
+				pass
 		else:
 			request.setHeader("content-type", "text/plain")
-			if self.format == "json":
-				request.write(json.dumps(data, encoding="ISO-8859-1"))
-			else:
-				request.write("<html><body><br>" + data + "</body></html>")
-		request.finish()
+			request.write("<html><body><br>" + data + "</body></html>")
+			request.finish()
 		return server.NOT_DONE_YET
 
 	def CallOPKG(self, request, action, parms=[]):
@@ -227,9 +228,9 @@ class IpkgController(BaseController):
 					nresult += a + "\n"
 			nresult = nresult.replace("\n\n", "\n")
 			nresult = nresult.replace("\n ", " ")
-			if self.format == "json":
+			if self.json:
 				data = []
-				nresult = unicode(nresult, errors='ignore')
+				nresult = six.text_type(nresult, errors='ignore')
 				data.append({"result": True, "packages": nresult.split("\n")})
 				self.request.setHeader("content-type", "text/plain")
 				self.request.write(json.dumps(data))
@@ -258,7 +259,7 @@ class IpkgController(BaseController):
 
 	def ShowHint(self, request):
 		html = "<html><body><h1>OpenWebif Interface for OPKG</h1>"
-		html += "Usage : ?command=<cmd>&package=packagename<&format=json><br>"
+		html += "Usage : ?command=<cmd>&package=packagename<&format=format><br>"
 		html += "Valid Commands:<br>list,listall,list_installed,list_upgradable<br>"
 		html += "Valid Package Commands:<br>info,status,install,remove<br>"
 		html += "Valid Formats:<br>json,html(default)<br>"

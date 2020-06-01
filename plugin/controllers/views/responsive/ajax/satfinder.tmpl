@@ -1,0 +1,77 @@
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div class="card">
+		<div class="header">
+			<div class="row clearfix">
+				<div class="col-xs-12 col-sm-6">
+					<h2>$tstrings['satfinder']</h2>
+				</div>
+			</div>
+		</div>
+		<div class="body">
+			<div class="row clearfix">
+				<div class="col-xs-12">
+					<div class="card">
+						<div class="header vti-colored-card bg-$skinColor">
+							<h2>$tstrings['snr']</h2>
+						</div>
+						<div class="body">
+							<div class="row clearfix">
+								<div class="col-xs-12" style="margin-bottom:-20px;margin-top:-15px;">
+									<div class="progress progress-striped" style="height:22px;">
+										<div id="snrslider" class="progress-bar bg-$skinColor" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0;margin:0px"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="header vti-colored-card bg-$skinColor">
+							<h2>$tstrings['agc']</h2>
+						</div>
+						<div class="body">
+							<div class="row clearfix">
+							<div class="row clearfix">
+								<div class="col-xs-12" style="margin-bottom:-20px;margin-top:-15px;">
+									<div class="progress progress-striped" style="height:22px;">
+										<div id="agcslider" class="progress-bar bg-$skinColor" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0;margin:0px"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="header vti-colored-card bg-$skinColor">
+							<h2>$tstrings['ber']</h2>
+						</div>
+						<div class="body">
+							<div class="row clearfix">
+								<div class="col-xs-12" style="margin-bottom:-20px;margin-top:-15px;">
+									<div class="progress progress-striped" style="height:22px;">
+										<div id="berslider" class="progress-bar bg-$skinColor" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:100%;margin:0px"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	function getFrontendStatus() {
+		jQuery.getJSON('/api/signal')
+		.success(function(statusinfo) {
+			 jQuery('#snrslider').css('width', statusinfo['snr']+'%').html(statusinfo['snr']+'%');
+			 jQuery('#agcslider').css('width', statusinfo['agc']+'%').html(statusinfo['agc']+'%');
+			 jQuery('#berslider').css('width', '100%').html(statusinfo['ber']);
+			 setTimeout("getFrontendStatus()", 1000);
+		});
+		return true;
+	}
+	getFrontendStatus();
+</script>

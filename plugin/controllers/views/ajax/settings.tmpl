@@ -1,4 +1,4 @@
-#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 <style>
 #packagelist {padding:0;}
 #packagelist li.installed {font-weight:bold;}
@@ -58,6 +58,24 @@
 				<input type="checkbox" name="showchannelpicon"/>
 				#end if
 				</td></tr>
+				<tr><td>$tstrings['show_details_in_channel_list']</td><td>
+				#if $showchanneldetails
+				<input type="checkbox" name="showchanneldetails" checked="checked"/>
+				#else
+				<input type="checkbox" name="showchanneldetails"/>
+				#end if
+				</td></tr>
+				<tr><td>$tstrings['tstr_moviedb']</td><td>
+				<select name="selectmoviedb" id="selectmoviedb" style="min-width: 150px;margin: 5px;border:none;font-size: 1em;">
+				#for $smoviedb in $moviedbs
+					#if $smoviedb == $moviedb
+						<option selected="selected">$smoviedb</option>
+					#else
+						<option>$smoviedb</option>
+					#end if
+				#end for
+				</select>
+				</td></tr>
 				<tr><td>$tstrings['tstr_spinner']</td><td>
 				<span class="spinner">
 				<fieldset style="border:none;" id="fsspinner">
@@ -78,42 +96,65 @@
 				</fieldset>
 				</span>
 				</td></tr>
+				<tr><td>$tstrings['playlistformat']</td><td>
+				<span class="pl">
+				<fieldset style="border:none;" id="fspl">
+				<label for="m3u">M3U</label>
+				<input type="radio" name="PL" id="m3u">
+				<label for="xspf">XSPF</label>
+				<input type="radio" name="PL" id="xspf">
+				</fieldset>
+				</span>
+				</td></tr>
+				#if $getVar("responsivedesign", "") != ""
+					<tr><td>$tstrings['newdesign']</td><td>
+					#if $responsivedesign
+					<input type="checkbox" name="responsivedesign" checked="checked"/>
+					#else
+					<input type="checkbox" name="responsivedesign"/>
+					#end if
+					</td></tr>
+				#end if
 				</table>
 			</div>
 		</div>
-		
 		<div id='packages' style="display:none;">
 			<div id="content_main2">
 				<h3 class="ui-widget-header">$tstrings['packages']</h3>
-				<span id="tb2">
-				<input class="pkgbtn" type="radio" id="pkgbtn1" name="tb2" checked="checked" /><label for="pkgbtn1">Update</label>
-				<input class="pkgbtn" type="radio" id="pkgbtn2" name="tb2" /><label for="pkgbtn2">Installed</label>
-				<input class="pkgbtn" type="radio" id="pkgbtn3" name="tb2" /><label for="pkgbtn3">All</label>
-				<input class="pkgbtn" type="radio" id="pkgbtn4" name="tb2" /><label for="pkgbtn4">More..</label>
-				<div id="searchpkd"><label for="searchpk">Search:</label><input id="searchpk" value="..." class='ui-widget ui-widget-content ui-corner-all'></div>
-				</span>
-				<div id="pkgmore">
-				<br><br>
-				<button id="updatefeed">Update from Feed</button>
-				<br><br>
-				<button id="upgrade">Upgrade all Packages</button>
-				<br><br>
-				<div id="pkgupload">
-				<button id="selectfile">Select IPK File for Upload</button>
-				<br><br>
-				Uploaded Files:<br>
-				<ul id='tmpfiles'></ul>
-				<br><br>
-				<form id="uploadpkg" style="display:none" action"uploadpkg"="" method="post" enctype="multipart/form-data" encoding="multipart/form-data">
-				<input type="file" name="rfile" id="rfile" maxlength="100000">
-				<input type="hidden" name="filename" id="filename">
-				</form>
+				<div>
+					<span id="tb2">
+					<input class="pkgbtn" type="radio" id="pkgbtn1" name="tb2" checked="checked" /><label for="pkgbtn1">$tstrings['update']</label>
+					<input class="pkgbtn" type="radio" id="pkgbtn2" name="tb2" /><label for="pkgbtn2">$tstrings['installed']</label>
+					<input class="pkgbtn" type="radio" id="pkgbtn3" name="tb2" /><label for="pkgbtn3">$tstrings['all']</label>
+					<input class="pkgbtn" type="radio" id="pkgbtn4" name="tb2" /><label for="pkgbtn4">$tstrings['more']</label>
+					</span>
+					<div id="searchpkd"><label for="searchpk">Search:</label><input id="searchpk" value="..." class='ui-widget ui-widget-content ui-corner-all'>
+					<label for="showdetails">$tstrings['showdetails']</label>
+					<input type="checkbox" name="showdetails" checked="checked"/>
+					</div>
 				</div>
-				<textarea id="resulttext" style='height:300px;width:100%'>
-				</textarea>
+				<div id="pkgmore">
+					<br><br>
+					<button id="updatefeed">$tstrings['update_feed']</button>
+					<br><br>
+					<button id="upgrade">$tstrings['upgrade_packages']</button>
+					<br><br>
+					<div id="pkgupload">
+						<button id="selectfile">$tstrings['select_ipk_upload']</button>
+						<br><br>
+						$tstrings['uploaded_files']:<br>
+						<ul id='tmpfiles'></ul>
+						<br><br>
+						<form id="uploadpkg" style="display:none" action"uploadpkg"="" method="post" enctype="multipart/form-data" encoding="multipart/form-data">
+						<input type="file" name="rfile" id="rfile" maxlength="100000">
+						<input type="hidden" name="filename" id="filename">
+						</form>
+					</div>
+					<textarea id="resulttext" style='height:300px;width:100%'>
+					</textarea>
 				</div>
 				<div id="tblpackages">
-				<ul id="packagelist"><div id='spinner'><div class='fa fa-spinner fa-spin'></div></div></ul>
+					<ul id="packagelist"><div id='spinner'><div class='fa fa-spinner fa-spin'></div></div></ul>
 				</div>
 			</div>
 		</div>
@@ -129,12 +170,17 @@
 				</table>
 			</div>
 		</div>
-		
 		</div>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
+var str_db = "$tstrings['delete_bookmark']";
+var str_upl = "$tstrings['upload_package']";
+var str_rmp = "$tstrings['remove_package']";
+var str_up = "$tstrings['update_package']";
+var str_ip = "$tstrings['install_package']";
+
 #raw
 // TODO minimize js
 
@@ -143,7 +189,7 @@ var filterval='';
 
 
 function deleteBookmark(bm) {
-	if (confirm('Delete bookmark ' + ' ( ' + bm + ') ?') === false) {
+	if (confirm(str_db + ' ( ' + bm + ') ?') === false) {
 		return;
 	}
 
@@ -160,7 +206,6 @@ function deleteBookmark(bm) {
 }
 
 function addBookmark() {
-
 	bm = $("#addbookmarktext").val();
 
 	if(bm.length==0 || bm.includes(" ")) {
@@ -183,12 +228,12 @@ function addBookmark() {
 function prepareUpload() {
 	var fn = $(this).val();
 	fn = fn.replace('C:\\fakepath\\','');
-	if (confirm('Upload Package' + ' ( ' + fn + ') ?') === false) {
+	if (confirm(str_upl + ' ( ' + fn + ') ?') === false) {
 		return;
 	}
 
 	var frm = document.forms["uploadpkg"];
-	frm.filename.value = fn;	
+	frm.filename.value = fn;
 
 	$('form#uploadpkg')
 		.unbind('submit')
@@ -223,6 +268,7 @@ function prepareUpload() {
 	});
 	$('form#uploadpkg').submit();
 }
+
 function getPkgFilename(){
 	var frm = document.forms["form_uploadpkg"];
 	frm.filename.value = frm.file.value;
@@ -231,6 +277,7 @@ function getPkgFilename(){
 function ShowFilterPackages()
 {
 	var row='';
+	var showdesc = $("input[name=showdetails]").is(':checked');
 	$.each( filteredpkg, function( key, val ) {
 		var name = val['name'];
 		var desc = val['d'];
@@ -244,15 +291,25 @@ function ShowFilterPackages()
 			if(upd!='') {
 				upd = " -> " + upd;
 			}
-			row += "<li "+sel+"data-i='"+i+"' data-n='"+name+"'>"+ "<i class='fa "+ico+"'></i><div>" + name +" (" + val['v'] + upd +")<br><span>" + desc + "</span></div></li>";
+			row += "<li "+sel+"data-i='"+i+"' data-n='"+name+"'>"+ "<i class='fa "+ico+"'></i><div>" + name +" (" + val['v'] + upd +")";
+			if(showdesc)
+			{
+				row += "<br><span>" + desc + "</span>";
+			}
+			row += "</div></li>";
 		}
 	});
 	$("#packagelist").html(row);
+
+	$('#packagelist > li').click( function () {
+		ask($(this),false);
+	});
 
 }
 
 function FillPackages(pkgs,mode)
 {
+
 	var _update = $.grep(pkgs, function(v) {
 		return (v.u != '0');
 	});
@@ -271,11 +328,6 @@ function FillPackages(pkgs,mode)
 
 	ShowFilterPackages();
 
-	$('#packagelist > li').click( function () {
-		ask($(this),false);
-	});
-
-
 }
 
 function ask(obj,man)
@@ -285,31 +337,30 @@ function ask(obj,man)
 	if(!man) {
 		pk = $(obj).data('n');
 	}
-	
+
 	var cmd = '';
-	
+
 	if(i=='1') {
-		if (confirm('Remove Package' + ' ( ' + pk + ') ?') === true) {
+		if (confirm(str_rmp + ' ( ' + pk + ') ?') === true) {
 			cmd = 'remove&' + pk;
 		}
 	} else if (i=='2') {
-		if (confirm('Update Package' + ' ( ' + pk + ') ?') === true) {
+		if (confirm(str_up + ' ( ' + pk + ') ?') === true) {
 			cmd = 'install&package=' + pk;
 		}
 	} else {
-		if (confirm('Install Package' + ' ( ' + pk + ') ?') === true) {
+		if (confirm(str_ip + ' ( ' + pk + ') ?') === true) {
 			cmd = 'install&package=' + pk;
 		}
 	}
-	
+
 	if(cmd != '')
 	{
 		Action('/ipkg?command='+cmd,'true');
 		$("#tblpackages").hide();
 		$("#pkgmore").show();
-		$('#pkgbtn4').prop('checked', true); 
+		$('#pkgbtn4').prop('checked', true);
 	}
-	
 }
 
 function Action(action,rl)
@@ -370,11 +421,12 @@ function ShowPackages(mode)
 
 	$.ajax({
 		url: '/ipkg?command=listall',
+		dataType: 'json',
 		success: function ( data ) {
+			var sdata = JSON.stringify(data);
 			SetLSValue('pkg-date',date);
-			SetLSValue('pkg-data',data);
-			var pkgs = JSON.parse(data);
-			FillPackages(pkgs,mode);
+			SetLSValue('pkg-data',sdata);
+			FillPackages(data,mode);
 		}
 	});
 }
@@ -393,7 +445,18 @@ function load_scontent(url) {
 	{
 		$("#osettings").show();
 		$("#selectheme").change(function() {
-			ChangeTheme($(this).val());
+			$.ajax({
+				url: "api/setwebconfig?theme=" + $(this).val(),
+				success: function() {
+					window.location.hash = '#settings';
+					window.location.reload(true);
+				}
+			});
+		});
+		$("#selectmoviedb").change(function() {
+			$.ajax({
+				url: "api/setwebconfig?moviedb=" + $(this).val(),
+			});
 		});
 		return;
 	}
@@ -408,7 +471,8 @@ function load_scontent(url) {
 	});
 	return false;
 }
-$(function() { 
+
+$(function() {
 	$( "#slist" ).selectable({
 		selected: function( event, ui ) {
 			var ids = $('#slist .ui-selected').map(function() {
@@ -422,7 +486,7 @@ $(function() {
 		}
 	});
 	load_scontent('owsettings');
-	
+
 	$(".spinner input[type='radio']").checkboxradio({ icon: false });
 	$(".spinner fieldset").controlgroup();
 	var spin = GetLSValue('spinner','fa-spinner');
@@ -432,21 +496,53 @@ $(function() {
 		SetSpinner();
 	});
 
+	$(".pl input[type='radio']").checkboxradio({ icon: false });
+	$(".pl fieldset").controlgroup();
+	var pl = GetLSValue('pl','m3u');
+	$('#'+pl).attr('checked', true).checkboxradio("refresh");
+	$(".pl input:radio").change(function() {
+		SetLSValue('pl',$(this).attr('id'));
+	});
+
 	setHover('#slist li');
 	$('#fsspinner > label').css('padding-left','10px');
 	$('#fsspinner > label').css('padding-right','10px');
 	$("#themesbtn").addClass(getActiveCls());
 
 	$("input[name=zapstream]").click(function(evt) {
-		$('input[name=zapstream]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("/api/zapstream?checked=" + evt.currentTarget.checked);
+		var ch = evt.currentTarget.checked;
+		$('input[name=zapstream]').attr('checked', ch);
+		webapi_execute("/api/setwebconfig?zapstream=" + ch);
 	});
 
 	$("input[name=showchannelpicon]").click(function(evt) {
-		$('input[name=showchannelpicon]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("/api/showchannelpicon?checked=" + evt.currentTarget.checked);
+		var ch = evt.currentTarget.checked;
+		$('input[name=showchannelpicon]').attr('checked', ch);
+		webapi_execute("/api/setwebconfig?showchannelpicon=" + ch);
+	});
+
+	$("input[name=showchanneldetails]").click(function(evt) {
+		var ch = evt.currentTarget.checked;
+		$('input[name=showchanneldetails]').attr('checked', ch);
+		webapi_execute("/api/setwebconfig?showchanneldetails=" + ch);
+	});
+
+	$("input[name=responsivedesign]").click(function(evt) {
+		var ch = evt.currentTarget.checked;
+		$('input[name=responsivedesign]').attr('checked', ch);
+		$.ajax({
+			url: "api/setwebconfig?responsivedesign=" + ch,
+			success: function() {
+				window.location.hash = '';
+				window.location.reload(true);
+			}
+		});
 	});
 	
+	$("input[name=showdetails]").click(function(evt) {
+		ShowFilterPackages();
+	});
+
 	$('#tb2').buttonset();
 	$('#tb3').buttonset();
 	$('.pkgbtn').click(function () { ShowPackages($(this).attr('id')); });
@@ -478,7 +574,7 @@ $(function() {
 #if $allowipkupload
 var noupload=true;
 #else
-\$(function() { 
+\$(function() {
 	\$("#pkgupload").remove();
 });
 var noupload=false;

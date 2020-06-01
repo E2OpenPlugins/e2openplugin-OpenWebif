@@ -1,12 +1,36 @@
 # -*- coding: utf-8 -*-
+import gettext
 
-from __init__ import _
+from Components.Language import language
+from Components.config import config as comp_config
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 
-from Components.config import config
+LOCALES_DOMAIN = "OpenWebif"
+LOCALES_RELPATH = "Extensions/OpenWebif/locale"
+
+def _locale_init():
+	gettext.bindtextdomain(
+		LOCALES_DOMAIN,
+		resolveFilename(SCOPE_PLUGINS, LOCALES_RELPATH))
+
+
+def _(txt):
+	try:
+		t = gettext.dgettext(LOCALES_DOMAIN, txt)
+		if t == txt:
+			t = gettext.gettext(txt)
+		return t
+	except Exception:
+		return txt
+
+
+_locale_init()
+language.addCallback(_locale_init)
+
 
 try:
-	AT_unit = config.plugins.autotimer.unit.value == "hour" and _("hour") or _("minute")
-except:
+	AT_unit = comp_config.plugins.autotimer.unit.value == "hour" and _("hour") or _("minute")
+except:  # noqa: E722
 	AT_unit = "hour"
 
 tstrings = {
@@ -128,9 +152,11 @@ tstrings = {
 	'ipv6_address': _("IPv6 address(es)"),
 	'info': _("Infos"),
 	'instant_record': _("Instant Record"),
+	'ask_instant_record': _("Really start instant record now?"),
 	'javalib': _("Javascript Libraries"),
 	'just_play': _("Just play"),
 	'kernel_version': _("Kernel"),
+	'lcd': _("LCD"),
 	'license': _("LICENSE"),
 	'loading': _("loading"),
 	'location': _("Location"),
@@ -158,6 +184,7 @@ tstrings = {
 	'custom_boxname': _("Custom box name"),
 	'osd': _("OSD"),
 	'open_in_new_window': _("Open in new window"),
+	'pip': _("PiP"),
 	'playback': _("Playback"),
 	'playlist': _("Playlist"),
 	'powercontrol': _("Power Control"),
@@ -181,6 +208,7 @@ tstrings = {
 	'save': _("Save"),
 	'screenshot': _("Screenshot"),
 	'search': _("Search"),
+	'search_csfd': _("Search CSFD"),
 	'search_imdb': _("Search IMDb"),
 	'search_kinopoisk': _("Search KinoPoisk"),
 	'seconds': _("seconds"),
@@ -385,8 +413,6 @@ tstrings = {
 	'bqe_add_alternative': _("Add channel(s) as alternate"),
 	'bqe_search': _("Search"),
 	'bqe_reload': _("Reload"),
-	'bqe_export': _("Export"),
-	'bqe_import': _("Import"),
 	'bqe_add_bq': _("Add Bouquet"),
 	'bqe_rename_bq': _("Rename Bouquet"),
 	'bqe_delete_bq': _("Delete Bouquet"),
@@ -418,6 +444,7 @@ tstrings = {
 	'tstr_timer_added': _("Timer Added"),
 	'tstr_event_not_found': _("Event not found"),
 	'tstr_show_picon_in_channel_list': _("Show Picon in channel list"),
+	'tstr_moviedb': _("Movie database for EPG"),
 
 	'tstr_ow_browser_settings': _("OpenWebif Browser Settings"),
 	'tstr_ow_settings': _("OpenWebif Settings"),
@@ -436,9 +463,50 @@ tstrings = {
 	'using': _("using"),
 	'prime_times': _("Primetimes"),
 	'titscreenshot': _("Enable/Disable Screenshot on key press or"),
-	
+
 	'bookmarks': _("Bookmarks"),
 	'bookmark': _("Bookmark"),
-	
-	'packages': _("Packages")
+	'delete_bookmark': _("Delete Bookmark"),
+
+	'packages': _("Packages"),
+
+	'newdesign': _('Use new design'),
+	'no_cancel': _("No, cancel"),
+	'yes_delete': _("Yes, delete it"),
+	'cancelled': _("Cancelled"),
+	'deleted': _("Deleted"),
+	'need_input': _("You need to write something!"),
+	'common_settings': _("Common Settings"),
+	'min_movie_list': _("Minimal movie list"),
+	'min_timer_list': _("Minimal timer list"),
+	'min_epg_list': _("Minimal EPG list"),
+	'remove_package': _("Remove Package"),
+	'update_package': _("Update Package"),
+	'install_package': _("Install Package"),
+	'update': _("Update"),
+	'installed': _("Installed"),
+	'more': _("More"),
+	'update_feed': _("Update from Feed"),
+	'upgrade_packages': _("Upgrade all Packages"),
+	'yes': _("Yes"),
+	'inc_shortdesc': _("Include short description"),
+	'inc_extdesc': _("Include extended description"),
+	'moviesearch': _("Movie search"),
+	'start_typing': _("START TYPING"),
+	'select_ipk_upload': _("Select IPK File for Upload"),
+	'uploaded_files': _("Uploaded Files"),
+	'upload_package': _("Upload package"),
+	'upload_error': _("Upload File Error"),
+	'showfullremoteshort': _("Full remote"),
+	'showdetails': _("Show details"),
+	'show_details_in_channel_list': _("Show Service type in channel list"),
+	'export': _("Export"),
+	'import': _("Import"),
+
+	'playlistformat': _("Playlist Format"),
+	'pipifposible': _("Use as PiP if possible"),
+	'allow_duplicate': _("Allow duplicates"),
+	'autoadjust': _("Adjust recording time to real event time"),
+
+	'streamclients': _("Stream Clients")
 }

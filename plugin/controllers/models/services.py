@@ -1,15 +1,29 @@
 # -*- coding: utf-8 -*-
 
-##############################################################################
-#                        2011 E2OpenPlugins                                  #
-#                                                                            #
-#  This file is open source software; you can redistribute it and/or modify  #
-#     it under the terms of the GNU General Public License version 2 as      #
-#               published by the Free Software Foundation.                   #
-#                                                                            #
-##############################################################################
+##########################################################################
+# OpenWebif: services
+##########################################################################
+# Copyright (C) 2011 - 2020 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
+
+from __future__ import print_function
 import re
 import unicodedata
+import six
 from time import time, localtime, strftime, mktime
 
 from Tools.Directories import fileExists
@@ -19,12 +33,18 @@ from Components.config import config
 from Components.NimManager import nimmanager
 from ServiceReference import ServiceReference
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
+from Screens.InfoBar import InfoBar
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache
-from info import getPiconPath, GetWithAlternative, getOrbitalText
+from info import GetWithAlternative, getOrbitalText, getOrb
 from urllib import quote, unquote
-from Plugins.Extensions.OpenWebif.local import tstrings  # using the tstrings dic is faster than translating with _ func from __init__
-from Plugins.Extensions.OpenWebif.controllers.utilities import parse_servicereference, SERVICE_TYPE_LOOKUP, NS_LOOKUP
-from Plugins.Extensions.OpenWebif.__init__ import _
+from ..utilities import parse_servicereference, SERVICE_TYPE_LOOKUP, NS_LOOKUP
+from ..i18n import _, tstrings
+from ..defaults import PICON_PATH
+
+try:
+	from Components.Converter.genre import getGenreStringLong
+except ImportError:
+	from ..utilities import getGenreStringLong
 
 try:
 	from collections import OrderedDict
@@ -35,7 +55,6 @@ except ImportError:
 # html-escaped, so do it there.
 #
 from cgi import escape as html_escape
-
 
 def filterName(name, encode=True):
 	if name is not None:
@@ -49,10 +68,20 @@ def filterName(name, encode=True):
 def convertDesc(val, encode=True):
 	if val is not None:
 		if encode is True:
-			return html_escape(unicode(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore'), quote=True)
+			return html_escape(six.text_type(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore'), quote=True).replace(u'\x8a', '\n')
 		else:
-			return unicode(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+			return six.text_type(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore').replace(u'\x1a', '')
 	return val
+
+
+def convertGenre(val):
+	if val is not None and len(val) > 0:
+		val = val[0]
+		if len(val) > 1:
+			if val[0] > 0:
+				gid = val[0] * 16 + val[1]
+				return str(getGenreStringLong(val[0], val[1])).strip(), gid
+	return "", 0
 
 
 def getServiceInfoString(info, what):
@@ -67,10 +96,34 @@ def getServiceInfoString(info, what):
 def getCurrentService(session):
 	try:
 		info = session.nav.getCurrentService().info()
+		ref = str(getServiceInfoString(info, iServiceInformation.sServiceref))
+		if len(ref) < 10:
+			serviceref = session.nav.getCurrentlyPlayingServiceReference()
+			if serviceref is not None:
+				ref = serviceref.toString()
+
+		ns = getServiceInfoString(info, iServiceInformation.sNamespace)
+		try:
+			ns = int(ns)
+		except ValueError:
+			ns = 0
+
+		bqname = ""
+		bqref = ""
+
+		try:
+			servicelist = InfoBar.instance.servicelist
+			epg_bouquet = servicelist and servicelist.getRoot()
+			if epg_bouquet:
+				bqname = ServiceReference(epg_bouquet).getServiceName()
+				bqref = ServiceReference(epg_bouquet).ref.toString()
+		except:  # noqa: E722
+			pass
+
 		return {
 			"result": True,
 			"name": filterName(info.getName()),
-			"namespace": getServiceInfoString(info, iServiceInformation.sNamespace),
+			"namespace": 0xffffffff & ns,
 			"aspect": getServiceInfoString(info, iServiceInformation.sAspect),
 			"provider": getServiceInfoString(info, iServiceInformation.sProvider),
 			"width": getServiceInfoString(info, iServiceInformation.sVideoWidth),
@@ -83,10 +136,13 @@ def getCurrentService(session):
 			"tsid": getServiceInfoString(info, iServiceInformation.sTSID),
 			"onid": getServiceInfoString(info, iServiceInformation.sONID),
 			"sid": getServiceInfoString(info, iServiceInformation.sSID),
-			"ref": quote(getServiceInfoString(info, iServiceInformation.sServiceref), safe=' ~@#$&()*!+=:;,.?/\''),
-			"iswidescreen": info.getInfo(iServiceInformation.sAspect) in (3, 4, 7, 8, 0xB, 0xC, 0xF, 0x10)
+			"ref": quote(ref, safe=' ~@#$&()*!+=:;,.?/\''),
+			"iswidescreen": info.getInfo(iServiceInformation.sAspect) in (3, 4, 7, 8, 0xB, 0xC, 0xF, 0x10),
+			"bqref": quote(bqref, safe=' ~@#$&()*!+=:;,.?/\''),
+			"bqname": bqname
 		}
-	except Exception:
+	except Exception as e:
+		print(str(e))
 		return {
 			"result": False,
 			"name": "",
@@ -104,7 +160,9 @@ def getCurrentService(session):
 			"onid": 0,
 			"sid": 0,
 			"ref": "",
-			"iswidescreen": False
+			"iswidescreen": False,
+			"bqref": "",
+			"bqname": ""
 		}
 
 
@@ -172,7 +230,7 @@ def getCurrentFullInfo(session):
 		cur_info = feinfo.getTransponderData(True)
 		inf['tunertype'] = frontendData.get("tuner_type", "UNKNOWN")
 		if frontendData.get("system", -1) == 1:
-			inf['tunertype'] = "DVB-S2"
+			inf['tunertype'] += "2"
 		inf['tunernumber'] = frontendData.get("tuner_number")
 		orb = getOrbitalText(cur_info)
 		inf['orbital_position'] = orb
@@ -295,12 +353,7 @@ def getSatellites(stype):
 				elif unsigned_orbpos == 0xEEEE:  # Terrestrial
 					service_name = _("Terrestrial")
 				else:
-					if orbpos > 1800:  # west
-						orbpos = 3600 - orbpos
-						h = _("W")
-					else:
-						h = _("E")
-					service_name = ("%d.%d" + h) % (orbpos / 10, orbpos % 10)
+					service_name = getOrb(orbpos)
 			service.setName("%s - %s" % (service_name, service_type))
 			ret.append({
 				"service": service.toString(),
@@ -340,7 +393,7 @@ def getProtection(sref):
 		protection = parentalControl.getProtectionLevel(sref)
 		if protection != -1:
 			if config.ParentalControl.type.value == "blacklist":
-				if parentalControl.blacklist.has_key(sref):
+				if sref in parentalControl.blacklist:
 					if "SERVICE" in parentalControl.blacklist[sref]:
 						isProtected = '1'
 					elif "BOUQUET" in parentalControl.blacklist[sref]:
@@ -348,14 +401,13 @@ def getProtection(sref):
 					else:
 						isProtected = '3'
 			elif config.ParentalControl.type.value == "whitelist":
-				if not parentalControl.whitelist.has_key(sref):
+				if sref not in parentalControl.whitelist:
 					service = eServiceReference(sref)
 					if service.flags & eServiceReference.isGroup:
 						isprotected = '5'
 					else:
 						isProtected = '4'
 	return isProtected
-
 
 def getChannels(idbouquet, stype):
 	ret = []
@@ -376,10 +428,17 @@ def getChannels(idbouquet, stype):
 		if chan['ref'].split(":")[1] == '320':  # Hide hidden number markers
 			continue
 		chan['name'] = filterName(channel[1])
+		if chan['ref'].split(":")[0] == '5002':  # BAD fix !!! this needs to fix in enigma2 !!!
+			chan['name'] = chan['ref'].split(":")[-1]
 		if not int(channel[0].split(":")[1]) & 64:
 			psref = parse_servicereference(channel[0])
 			chan['service_type'] = SERVICE_TYPE_LOOKUP.get(psref.get('service_type'), "UNKNOWN")
-			chan['ns'] = NS_LOOKUP.get(psref.get('ns'), "DVB-S")
+			nsi = psref.get('ns')
+			ns = NS_LOOKUP.get(nsi, "DVB-S")
+			if ns == "DVB-S":
+				chan['ns'] = getOrb(nsi >> 16 & 0xFFF)
+			else:
+				chan['ns'] = ns
 			chan['picon'] = getPicon(chan['ref'])
 			if config.OpenWebif.parentalenabled.value and config.ParentalControl.configured.value and config.ParentalControl.servicepinactive.value:
 				chan['protection'] = getProtection(channel[0])
@@ -420,26 +479,76 @@ def getChannels(idbouquet, stype):
 	return {"channels": ret}
 
 
-def getServices(sRef, showAll=True, showHidden=False, pos=0):
+def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, picon=False):
 	services = []
+	allproviders = {}
+
+	CalcPos = False
 
 	if sRef == "":
 		sRef = '%s FROM BOUQUET "bouquets.tv" ORDER BY bouquet' % (service_types_tv)
+		CalcPos = True
+	elif ' "bouquets.radio" ' in sRef:
+		CalcPos = True
+	elif ' "bouquets.tv" ' in sRef:
+		CalcPos = True
+
+	if provider:
+		s_type = service_types_tv
+		if "radio" in sRef:
+			s_type = service_types_radio
+		pserviceHandler = eServiceCenter.getInstance()
+		pservices = pserviceHandler.list(eServiceReference('%s FROM PROVIDERS ORDER BY name' % (s_type)))
+		providers = pservices and pservices.getContent("SN", True)
+
+		if provider:
+			for provider in providers:
+				servicelist = ServiceList(eServiceReference(provider[0]))
+				slist = servicelist.getServicesAsList()
+				for sitem in slist:
+					allproviders[sitem[0]] = provider[1]
 
 	servicelist = ServiceList(eServiceReference(sRef))
 	slist = servicelist.getServicesAsList()
+	serviceHandler = eServiceCenter.getInstance()
 
+	oPos = 0
 	for sitem in slist:
+		oldoPos = oPos
+		sref = sitem[0]
+		if CalcPos and 'userbouquet' in sref:
+			serviceslist = serviceHandler.list(eServiceReference(sref))
+			sfulllist = serviceslist and serviceslist.getContent("RN", True)
+			for citem in sfulllist:
+				sref = citem[0].toString()
+				hs = (int(sref.split(":")[1]) & 512)
+				sp = (sref[:7] == '1:832:D') or (sref[:7] == '1:832:1') or (sref[:6] == '1:320:')
+				if not hs or sp:  # 512 is hidden service on sifteam image. Doesn't affect other images
+					oPos = oPos + 1
+					if not sp and citem[0].flags & eServiceReference.isMarker:
+						oPos = oPos - 1
+
 		st = int(sitem[0].split(":")[1])
-		if (sitem[0][:7] == '1:832:D') or (not (st & 512) and not (st & 64)):
+		sp = (sitem[0][:7] == '1:832:D') or (sitem[0][:7] == '1:832:1') or (sitem[0][:6] == '1:320:')
+		if sp or (not (st & 512) and not (st & 64)):
 			pos = pos + 1
 		if not st & 512 or showHidden:
 			if showAll or st == 0:
 				service = {}
 				service['pos'] = 0 if (st & 64) else pos
-				service['servicereference'] = unicode(sitem[0], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+				sr = six.text_type(sitem[0], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+				if CalcPos:
+					service['startpos'] = oldoPos
+				if picon:
+					service['picon'] = getPicon(sr)
+				service['servicereference'] = sr
 				service['program'] = int(service['servicereference'].split(':')[3], 16)
-				service['servicename'] = unicode(sitem[1], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+				service['servicename'] = six.text_type(sitem[1], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+				if provider:
+					if sitem[0] in allproviders:
+						service['provider'] = allproviders[sitem[0]]
+					else:
+						service['provider'] = ""
 				services.append(service)
 
 	return {"services": services, "pos": pos}
@@ -511,7 +620,7 @@ def getSubServices(session):
 		})
 		subservices = service.subServices()
 		if subservices and subservices.getNumberOfSubservices() > 0:
-			print subservices.getNumberOfSubservices()
+			print(subservices.getNumberOfSubservices())
 			for i in range(subservices.getNumberOfSubservices()):
 				sub = subservices.getSubservice(i)
 				services.append({
@@ -543,7 +652,7 @@ def getEventDesc(ref, idev):
 
 def getEvent(ref, idev, encode=True):
 	epgcache = eEPGCache.getInstance()
-	events = epgcache.lookupEvent(['IBDTSENRX', (ref, 2, int(idev))])
+	events = epgcache.lookupEvent(['IBDTSENRWX', (ref, 2, int(idev))])
 	info = {}
 	for event in events:
 		info['id'] = event[0]
@@ -556,6 +665,7 @@ def getEvent(ref, idev, encode=True):
 		info['longdesc'] = convertDesc(event[5], encode)
 		info['channel'] = filterName(event[6], encode)
 		info['sref'] = event[7]
+		info['genre'], info['genreid'] = convertGenre(event[8])
 		break
 	return {'event': info}
 
@@ -569,11 +679,13 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 
 		# When quering EPG we dont need URL, also getPicon doesn't like URL
 		if "://" in ref:
-			ref = ":".join(ref.split(":")[:10]) + "::" + ref.split(":")[-1]
+			_ref = ":".join(ref.split(":")[:10]) + "::" + ref.split(":")[-1]
+		else:
+			_ref = ref
 
-		picon = getPicon(ref)
+		picon = getPicon(_ref)
 		epgcache = eEPGCache.getInstance()
-		events = epgcache.lookupEvent(['IBDTSENC', (ref, 0, begintime, endtime)])
+		events = epgcache.lookupEvent(['IBDTSENCW', (_ref, 0, begintime, endtime)])
 		if events is not None:
 			for event in events:
 				ev = {}
@@ -597,6 +709,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 					else:
 						ev['progress'] = int(((event[7] - event[1]) * 100 / event[2]) * 4)
 					ev['now_timestamp'] = event[7]
+					ev['genre'], ev['genreid'] = convertGenre(event[8])
 					ret.append(ev)
 				else:
 					use_empty_ev = True
@@ -619,6 +732,8 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 		ev['tleft'] = 0
 		ev['progress'] = 0
 		ev['now_timestamp'] = 0
+		ev['genre'] = ""
+		ev['genreid'] = 0
 		ret.append(ev)
 
 	return {"events": ret, "result": True}
@@ -631,7 +746,11 @@ def getBouquetEpg(ref, begintime=-1, endtime=None, encode=False):
 	if not services:
 		return {"events": ret, "result": False}
 
-	search = ['IBDCTSERN']
+	# prevent crash
+	if endtime and endtime > 100000:
+		endtime = None
+
+	search = ['IBDCTSERNW']
 	for service in services.getContent('S'):
 		if endtime:
 			search.append((service, 0, begintime, endtime))
@@ -652,6 +771,7 @@ def getBouquetEpg(ref, begintime=-1, endtime=None, encode=False):
 			ev['sref'] = event[7]
 			ev['sname'] = filterName(event[8], encode)
 			ev['now_timestamp'] = event[3]
+			ev['genre'], ev['genreid'] = convertGenre(event[9])
 			ret.append(ev)
 
 	return {"events": ret, "result": True}
@@ -698,7 +818,7 @@ def getBouquetNowNextEpg(ref, servicetype, encode=False):
 	if not services:
 		return {"events": ret, "result": False}
 
-	search = ['IBDCTSERNX']
+	search = ['IBDCTSERNWX']
 	if servicetype == -1:
 		for service in services.getContent('S'):
 			search.append((service, 0, -1))
@@ -725,6 +845,7 @@ def getBouquetNowNextEpg(ref, servicetype, encode=False):
 			ev['sref'] = event[7]
 			ev['sname'] = filterName(event[8], encode)
 			ev['now_timestamp'] = event[3]
+			ev['genre'], ev['genreid'] = convertGenre(event[9])
 			ret.append(ev)
 
 	return {"events": ret, "result": True}
@@ -734,7 +855,7 @@ def getNowNextEpg(ref, servicetype, encode=False):
 	ref = unquote(ref)
 	ret = []
 	epgcache = eEPGCache.getInstance()
-	events = epgcache.lookupEvent(['IBDCTSERNX', (ref, servicetype, -1)])
+	events = epgcache.lookupEvent(['IBDCTSERNWX', (ref, servicetype, -1)])
 	if events is not None:
 		for event in events:
 			ev = {}
@@ -749,6 +870,7 @@ def getNowNextEpg(ref, servicetype, encode=False):
 				ev['sname'] = filterName(event[8], encode)
 				ev['now_timestamp'] = event[3]
 				ev['remaining'] = (event[1] + event[2]) - event[3]
+				ev['genre'], ev['genreid'] = convertGenre(event[9])
 			else:
 				ev['begin_timestamp'] = 0
 				ev['duration_sec'] = 0
@@ -759,6 +881,8 @@ def getNowNextEpg(ref, servicetype, encode=False):
 				ev['sname'] = filterName(event[8])
 				ev['now_timestamp'] = 0
 				ev['remaining'] = 0
+				ev['genre'] = ""
+				ev['genreid'] = 0
 
 			ret.append(ev)
 
@@ -778,7 +902,7 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 	if fulldesc:
 		if hasattr(eEPGCache, 'FULL_DESCRIPTION_SEARCH'):
 			search_type = eEPGCache.FULL_DESCRIPTION_SEARCH
-	events = epgcache.search(('IBDTSENR', 128, search_type, sstr, 1))
+	events = epgcache.search(('IBDTSENRW', 128, search_type, sstr, 1))
 	if events is not None:
 		# TODO : discuss #677
 		# events.sort(key = lambda x: (x[1],x[6])) # sort by date,sname
@@ -810,12 +934,22 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 			ev['sname'] = filterName(event[6], encode)
 			ev['picon'] = getPicon(event[7])
 			ev['now_timestamp'] = None
+			ev['genre'], ev['genreid'] = convertGenre(event[8])
 			if endtime:
 				# don't show events if begin after endtime
 				if event[1] <= endtime:
 					ret.append(ev)
 			else:
 				ret.append(ev)
+
+			psref = parse_servicereference(event[7])
+			ev['service_type'] = SERVICE_TYPE_LOOKUP.get(psref.get('service_type'), "UNKNOWN")
+			nsi = psref.get('ns')
+			ns = NS_LOOKUP.get(nsi, "DVB-S")
+			if ns == "DVB-S":
+				ev['ns'] = getOrb(nsi >> 16 & 0xFFF)
+			else:
+				ev['ns'] = ns
 
 	return {"events": ret, "result": True}
 
@@ -825,7 +959,7 @@ def getSearchSimilarEpg(ref, eventid, encode=False):
 	ret = []
 	ev = {}
 	epgcache = eEPGCache.getInstance()
-	events = epgcache.search(('IBDTSENR', 128, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, ref, eventid))
+	events = epgcache.search(('IBDTSENRW', 128, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, ref, eventid))
 	if events is not None:
 		# TODO : discuss #677
 		# events.sort(key = lambda x: (x[1],x[6])) # sort by date,sname
@@ -846,6 +980,7 @@ def getSearchSimilarEpg(ref, eventid, encode=False):
 			ev['sname'] = filterName(event[6], encode)
 			ev['picon'] = getPicon(event[7])
 			ev['now_timestamp'] = None
+			ev['genre'], ev['genreid'] = convertGenre(event[8])
 			ret.append(ev)
 
 	return {"events": ret, "result": True}
@@ -859,7 +994,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 		startTime = event[1]
 		endTime = event[1] + event[6] - 120
 		serviceref = event[4]
-		if not timerlist.has_key(serviceref):
+		if serviceref not in timerlist:
 			return ''
 		for timer in timerlist[serviceref]:
 			if timer.begin <= startTime and timer.end >= endTime:
@@ -894,7 +1029,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 		# service reference. Partition is generated here.
 		timerlist = {}
 		for timer in self.session.nav.RecordTimer.timer_list + self.session.nav.RecordTimer.processed_timers:
-			if not timerlist.has_key(str(timer.service_ref)):
+			if str(timer.service_ref) not in timerlist:
 				timerlist[str(timer.service_ref)] = []
 			timerlist[str(timer.service_ref)].append(timer)
 
@@ -922,7 +1057,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 				ev['duration'] = event[6]
 
 			channel = filterName(event[5])
-			if not ret.has_key(channel):
+			if channel not in ret:
 				if Mode == 1:
 					ret[channel] = [[], [], [], [], [], [], [], [], [], [], [], []]
 				else:
@@ -942,7 +1077,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 
 def getPicon(sname):
 
-	pp = getPiconPath()
+	pp = PICON_PATH
 	if pp is not None:
 		# remove URL part
 		if ("://" in sname) or ("%3a//" in sname) or ("%3A//" in sname):
@@ -951,13 +1086,17 @@ def getPicon(sname):
 			# sname = ":".join(sname.split(":")[:10]) -> old way
 			sname = ":".join(sname.split("://")[:1])
 			sname = GetWithAlternative(sname)
-			cname = unicodedata.normalize('NFKD', unicode(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
+			cname = unicodedata.normalize('NFKD', six.text_type(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
 			cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').replace(':', '').lower())
 			# picon by channel name for URL
 			if len(cname) > 0 and fileExists(pp + cname + ".png"):
 				return "/picon/" + cname + ".png"
 			if len(cname) > 2 and cname.endswith('hd') and fileExists(pp + cname[:-2] + ".png"):
 				return "/picon/" + cname[:-2] + ".png"
+			if len(cname) > 5:
+				series = re.sub(r's[0-9]*e[0-9]*$', '', cname)
+				if fileExists(pp + series + ".png"):
+					return "/picon/" + series + ".png"
 
 		sname = GetWithAlternative(sname)
 		if sname is not None:
@@ -997,7 +1136,7 @@ def getPicon(sname):
 			cname1 = cname.replace('\xc2\x86', '').replace('\xc2\x87', '').replace('/', '_').encode('utf-8', 'ignore')
 			if fileExists(pp + cname1 + ".png"):
 				return "/picon/" + cname1 + ".png"
-			cname = unicodedata.normalize('NFKD', unicode(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
+			cname = unicodedata.normalize('NFKD', six.text_type(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
 			cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').lower())
 			if len(cname) > 0:
 				filename = pp + cname + ".png"

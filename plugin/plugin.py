@@ -22,13 +22,14 @@ from Plugins.Plugin import PluginDescriptor
 from Components.ActionMap import ActionMap
 from Components.Label import Label
 from Components.ConfigList import ConfigListScreen
-from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection
+from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection, configfile
 from enigma import getDesktop
 from controllers.models.info import getInfo
+from controllers.defaults import getKinopoisk
 
 from httpserver import HttpdStart, HttpdStop, HttpdRestart
 
-from __init__ import _
+from controllers.i18n import _
 
 # not used redmond -> original , trontastic , ui-lightness
 THEMES = [
@@ -55,7 +56,9 @@ config.OpenWebif.webcache.zapstream = ConfigYesNo(default=False)
 config.OpenWebif.webcache.theme = ConfigSelection(default='original', choices=THEMES)
 config.OpenWebif.webcache.moviesort = ConfigSelection(default='name', choices=['name', 'named', 'date', 'dated'])
 config.OpenWebif.webcache.showchannelpicon = ConfigYesNo(default=True)
+config.OpenWebif.webcache.moviedb = ConfigSelection(default='IMDb' if not getKinopoisk() else 'Kinopoisk', choices=['IMDb', 'CSFD', 'Kinopoisk'])
 config.OpenWebif.webcache.mepgmode = ConfigInteger(default=1, limits=(1, 2))
+config.OpenWebif.webcache.showchanneldetails = ConfigYesNo(default=False)
 # HTTPS
 config.OpenWebif.https_enabled = ConfigYesNo(default=False)
 config.OpenWebif.https_port = ConfigInteger(default=443, limits=(1, 65535))
@@ -183,6 +186,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			HttpdRestart(global_session)
 		else:
 			HttpdStop(global_session)
+		configfile.save()
 		self.close()
 
 	def keyCancel(self):
@@ -205,6 +209,7 @@ def IfUpIfDown(reason, **kwargs):
 def startSession(reason, session):
 	global global_session
 	global_session = session
+	HttpdStart(global_session)
 
 
 def main_menu(menuid, **kwargs):

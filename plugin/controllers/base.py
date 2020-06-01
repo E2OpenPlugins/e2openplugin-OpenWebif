@@ -3,7 +3,7 @@
 ##########################################################################
 # OpenWebif: BaseController
 ##########################################################################
-# Copyright (C) 2011 - 2018 E2OpenPlugins
+# Copyright (C) 2011 - 2020 E2OpenPlugins
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -20,25 +20,27 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
 ##########################################################################
 
+from __future__ import print_function
 import os
 import imp
 import json
-import gzip
-import cStringIO
 
 from twisted.web import server, http, resource
+from twisted.web.resource import EncodingResourceWrapper
+from twisted.web.server import GzipEncoderFactory
 
-from Plugins.Extensions.OpenWebif.__init__ import _
+from i18n import _
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
 from Cheetah.Template import Template
 from enigma import eEPGCache
 from Components.config import config
 from Components.Network import iNetwork
 
-from models.info import getInfo, getPublicPath, getViewsPath
+from models.info import getInfo
 from models.config import getCollapsedMenus, getConfigsSections
 from models.config import getShowName, getCustomName, getBoxName
 
+from defaults import getPublicPath, getViewsPath
 
 def new_getRequestHostname(self):
 	host = self.getHeader(b'host')
@@ -67,19 +69,22 @@ except:  # noqa: E722
 
 
 class BaseController(resource.Resource):
+	"""
+	Web Base Controller
+	"""
 	isLeaf = False
 
 	def __init__(self, path="", **kwargs):
 		"""
 
 		Args:
-			path: Base path
-			session: (?) Session instance
-			withMainTemplate: (?)
-			isJson: responses shall be JSON encoded
-			isCustom: (?)
-			isGZ: responses shall be GZIP compressed
-			isMobile: (?) responses shall be optimised for mobile devices
+			* path: Base path
+			* session: (?) Session instance
+			* withMainTemplate: (?)
+			* isJson: responses shall be JSON encoded
+			* isCustom: (?)
+			* isGZ: responses shall be GZIP compressed
+			* isMobile: (?) responses shall be optimised for mobile devices
 		"""
 		resource.Resource.__init__(self)
 
@@ -92,6 +97,13 @@ class BaseController(resource.Resource):
 		self.isMobile = kwargs.get("isMobile", False)
 
 	def error404(self, request):
+		"""
+		Perform HTTP Error 404
+
+		Args:
+			request (twisted.web.server.Request): HTTP request object
+
+		"""
 		request.setHeader("content-type", "text/html")
 		request.setResponseCode(http.NOT_FOUND)
 		request.write("<html><head><title>Open Webif</title></head><body><h1>Error 404: Page not found</h1><br />The requested URL was not found on this server.</body></html>")
@@ -110,25 +122,27 @@ class BaseController(resource.Resource):
 			return str(Template(file=getViewsPath(path + ".tmpl"), searchList=[args]))
 		return None
 
-	def getChild(self, path, request):
-		return self.__class__(self.session, path)
+	def putGZChild(self, path, child):
+		child.isGZ = True
+		self.putChild(path, EncodingResourceWrapper(child, [GzipEncoderFactory()]))
 
-	def compressBuf(self, buf):
-		zbuf = cStringIO.StringIO()
-		zfile = gzip.GzipFile(mode='wb', fileobj=zbuf, compresslevel=6)
-		zfile.write(buf)
-		zfile.close()
-		outstr = zbuf.getvalue()
-		zbuf.close()
-		return outstr
+	def getChild(self, path, request):
+		if self.isGZ:
+			return EncodingResourceWrapper(self.__class__(self.session, path), [GzipEncoderFactory()])
+		else:
+			return self.__class__(self.session, path)
+
+	def NoDataRender(self):
+		return []
+
+	def noData(self, request):
+		return {}
 
 	def render(self, request):
 		# cache data
 		withMainTemplate = self.withMainTemplate
 		path = self.path
-		isJson = self.isJson
 		isCustom = self.isCustom
-		isGZ = self.isGZ
 		isMobile = self.isMobile
 
 		if self.path == "":
@@ -142,8 +156,11 @@ class BaseController(resource.Resource):
 		self.path = self.path.replace(".", "")
 		if request.path.startswith('/api/config'):
 			func = getattr(self, "P_config", None)
+		elif self.path in self.NoDataRender():
+			func = getattr(self, "noData", None)
 		else:
 			func = getattr(self, "P_" + self.path, None)
+
 		if callable(func):
 			request.setResponseCode(http.OK)
 
@@ -163,36 +180,13 @@ class BaseController(resource.Resource):
 				request.write(data)
 				request.finish()
 			elif self.isJson:
-				# if not self.suppresslog:
-					# print "[OpenWebif] page '%s' ok (json)" % request.uri
-				supported = []
-				request.setHeader("content-type", "application/json")
-				outstr = json.dumps(data)
-
-				if self.isGZ:
-					acceptHeaders = request.requestHeaders.getRawHeaders('Accept-Encoding', [])
-					supported = ','.join(acceptHeaders).split(',')
-				if 'gzip' in supported:
-					encoding = request.responseHeaders.getRawHeaders('Content-Encoding')
-					if encoding:
-						encoding = '%s,gzip' % ','.join(encoding)
-					else:
-						encoding = 'gzip'
-					try:
-						outstr = self.compressBuf(json.dumps(data))
-						request.setHeader('Content-Length', '%d' % len(outstr))
-						request.responseHeaders.setRawHeaders('Content-Encoding', [encoding])
-					except Exception as exc:
-						request.setResponseCode(http.INTERNAL_SERVER_ERROR)
-						request.setHeader("content-type", "application/json")
-						outstr = json.dumps({"result": False, "request": request.path, "exception": repr(exc)})
-						pass
-				else:
-					# FIXME : now we can set this cause of complete remove of parseJSON
-					# BUT we need to test this first
-					request.setHeader("content-type", "text/plain")
-				request.write(outstr)
-				request.finish()
+				request.setHeader("content-type", "application/json; charset=utf-8")
+				try:
+					return json.dumps(data, indent=1)
+				except Exception as exc:
+					request.setResponseCode(http.INTERNAL_SERVER_ERROR)
+					return json.dumps({"result": False, "request": request.path, "exception": repr(exc)})
+					pass
 			elif type(data) is str:
 				# if not self.suppresslog:
 					# print "[OpenWebif] page '%s' ok (simple string)" % request.uri
@@ -210,7 +204,7 @@ class BaseController(resource.Resource):
 				module = module.replace(".", "")
 				out = self.loadTemplate(module, self.path, data)
 				if out is None:
-					print "[OpenWebif] ERROR! Template not found for page '%s'" % request.uri
+					print("[OpenWebif] ERROR! Template not found for page '%s'" % request.uri)
 					self.error404(request)
 				else:
 					if self.isMobile:
@@ -222,19 +216,19 @@ class BaseController(resource.Resource):
 						nout = self.loadTemplate("main", "main", args)
 						if nout:
 							out = nout
+					elif self.isGZ:
+						return out
 					request.write(out)
 					request.finish()
 
 		else:
-			print "[OpenWebif] page '%s' not found" % request.uri
+			print("[OpenWebif] page '%s' not found" % request.uri)
 			self.error404(request)
 
 		# restore cached data
 		self.withMainTemplate = withMainTemplate
 		self.path = path
-		self.isJson = isJson
 		self.isCustom = isCustom
-		self.isGZ = isGZ
 		self.isMobile = isMobile
 
 		return server.NOT_DONE_YET
@@ -242,23 +236,35 @@ class BaseController(resource.Resource):
 	def oscamconfPath(self):
 		# Find and parse running oscam
 		opath = None
-		owebif = None
+		owebif = False
 		oport = None
-		if fileExists("/tmp/.oscam/oscam.version"):  # nosec
-			data = open("/tmp/.oscam/oscam.version", "r").readlines()  # nosec
-			for i in data:
-				if "configdir:" in i.lower():
-					opath = i.split(":")[1].strip() + "/oscam.conf"
-				elif "web interface support:" in i.lower():
-					owebif = i.split(":")[1].strip()
-				elif "webifport:" in i.lower():
-					oport = i.split(":")[1].strip()
+		variant = "oscam"
+		for file in ["/tmp/.ncam/ncam.version", "/tmp/.oscam/oscam.version"]:
+			if fileExists(file):  # nosec
+				if "ncam" in file:
+					variant = "ncam"
 				else:
-					continue
-		if owebif == "yes" and oport is not "0" and opath is not None:
-			if fileExists(opath):
-				return opath
-		return None
+					variant = "oscam"
+
+				conffile = file.split('/')[-1].replace("version", "conf")
+
+				data = open(file, "r").readlines()  # nosec
+				for i in data:
+					if "configdir:" in i.lower():
+						opath = i.split(":")[1].strip() + "/" + conffile
+						if not fileExists(opath):
+							opath = None
+					elif "web interface support:" in i.lower():
+						owebif = i.split(":")[1].strip()
+						if owebif == "yes":
+							owebif = True
+					elif "webifport:" in i.lower():
+						oport = i.split(":")[1].strip()
+						if oport == "0":
+							oport = None
+					else:
+						continue
+		return owebif, oport, opath, variant
 
 	def prepareMainTemplate(self, request):
 		# here will be generated the dictionary for the main template
@@ -279,33 +285,43 @@ class BaseController(resource.Resource):
 		ifaces = iNetwork.getConfiguredAdapters()
 		if len(ifaces):
 			ip_list = iNetwork.getAdapterAttribute(ifaces[0], "ip")  # use only the first configured interface
-			ip = "%d.%d.%d.%d" % (ip_list[0], ip_list[1], ip_list[2], ip_list[3])
+			if ip_list:
+				ip = "%d.%d.%d.%d" % (ip_list[0], ip_list[1], ip_list[2], ip_list[3])
 
-			if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/LCD4linux/WebSite.pyo")):
-				lcd4linux_key = "lcd4linux/config"
-				if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/WebInterface/plugin.pyo")):
-					try:
-						lcd4linux_port = "http://" + ip + ":" + str(config.plugins.Webinterface.http.port.value) + "/"
-						lcd4linux_key = lcd4linux_port + 'lcd4linux/config'
-					except:  # noqa: E722
-						lcd4linux_key = None
-				if lcd4linux_key:
-					extras.append({'key': lcd4linux_key, 'description': _("LCD4Linux Setup"), 'nw': '1'})
+				if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/LCD4linux/WebSite.pyo")):
+					lcd4linux_key = "lcd4linux/config"
+					if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/WebInterface/plugin.pyo")):
+						try:
+							lcd4linux_port = "http://" + ip + ":" + str(config.plugins.Webinterface.http.port.value) + "/"
+							lcd4linux_key = lcd4linux_port + 'lcd4linux/config'
+						except:  # noqa: E722
+							lcd4linux_key = None
+					if lcd4linux_key:
+						extras.append({'key': lcd4linux_key, 'description': _("LCD4Linux Setup"), 'nw': '1'})
 
-		self.oscamconf = self.oscamconfPath()
-		if self.oscamconf is not None:
-			data = open(self.oscamconf, "r").readlines()
-			proto = "http"
+		oscamwebif, port, oscamconf, variant = self.oscamconfPath()
+
+		# Assume http until we know better ...
+		proto = "http"
+
+		# config file exists
+		if oscamwebif and oscamconf is not None:
+			# oscam defaults to NOT to start the web interface unless a section for it exists, so reset port to None until we find one
 			port = None
+			data = open(oscamconf, "r").readlines()
 			for i in data:
 				if "httpport" in i.lower():
 					port = i.split("=")[1].strip()
 					if port[0] == '+':
 						proto = "https"
 						port = port[1:]
-			if port is not None:
-				url = "%s://%s:%s" % (proto, request.getRequestHostname(), port)
+
+		if oscamwebif and port is not None:
+			url = "%s://%s:%s" % (proto, request.getRequestHostname(), port)
+			if variant == "oscam":
 				extras.append({'key': url, 'description': _("OSCam Webinterface"), 'nw': '1'})
+			elif variant == "ncam":
+				extras.append({'key': url, 'description': _("NCam Webinterface"), 'nw': '1'})
 
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer  # noqa: F401
@@ -327,7 +343,7 @@ class BaseController(resource.Resource):
 			# TODO: test if webinterface AND openwebif installed
 			from Plugins.Extensions.WebInterface.WebChilds.Toplevel import loaded_plugins
 			for plugins in loaded_plugins:
-				if plugins[0] in ["fancontrol", "iptvplayer"]:
+				if plugins[0] in ["fancontrol", "iptvplayer", "serienrecorderui"]:
 					try:
 						extras.append({'key': plugins[0], 'description': plugins[2], 'nw': '2'})
 					except KeyError:
@@ -348,5 +364,12 @@ class BaseController(resource.Resource):
 				config.OpenWebif.webcache.theme.value = theme
 				config.OpenWebif.webcache.theme.save()
 		ret['theme'] = theme
+
+		moviedb = config.OpenWebif.webcache.moviedb.value if config.OpenWebif.webcache.moviedb.value else 'IMDb'
+		config.OpenWebif.webcache.moviedb.value = moviedb
+		config.OpenWebif.webcache.moviedb.save()
+		ret['moviedb'] = moviedb
+		imagedistro = getInfo()['imagedistro']
+		ret['vti'] = imagedistro in ("VTi-Team Image") and 1 or 0
 		ret['webtv'] = os.path.exists(getPublicPath('webtv'))
 		return ret

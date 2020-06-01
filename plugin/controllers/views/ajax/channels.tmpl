@@ -1,4 +1,4 @@
-#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #for $channel in $channels
 <div class="cht">
 	<div class="fr">
@@ -9,6 +9,7 @@
 					<a href="#" onclick="addTimer('','$channel.ref','$channel.name','')" title="$tstrings['add_timer']"><i class="fa fa-clock-o"></i></a>
 				#end if
 				#if '4097:' in $channel.ref
+					<a href="#" onclick="open_epg_dialog('$channel.ref','$channel.name')" title="$tstrings['show_epg_for'] $channel.name"><i class="fa fa-list-alt"></i></a>
 					#set $rname = ":" + $channel.name
 					#set $lnk = $channel.ref.replace("4097:0:1:0:0:0:0:0:0:0:", "").replace("%3a", ":").replace($rname, "")
 					<a target="_blank" href='$lnk' title="$tstrings['stream'] $channel.name"><i class="fa fa-desktop"></i></a>
@@ -18,7 +19,7 @@
 						<a href="#" onclick="jumper8001('$channel.ref', '$channel.name');" title="$tstrings['stream']: $channel.name"><i class="fa fa-desktop"></i></a>
 						<a href="#" onclick="jumper8002('$channel.ref', '$channel.name');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel.name"><i class="fa fa-mobile"></i></a>
 					#else
-						<a target="_blank" href='web/stream.m3u?ref=$channel.ref&name=$channel.name' title="$tstrings['stream'] $channel.name"><i class="fa fa-desktop"></i></a>
+						<a target="_blank" href='web/stream.m3u?ref=$channel.ref&name=$channel.name&fname=$channel.name' title="$tstrings['stream'] $channel.name"><i class="fa fa-desktop"></i></a>
 					#end if
 				#end if
 			#else
@@ -40,13 +41,26 @@
 				$channel.name
 			#end if
 			</span>
-			#if $channel.has_key('ns')
-				<span class="channel-tag ST-$channel.service_type">$channel.service_type</span><span class="channel-tag NS-$channel.ns">$channel.ns</span>
+			#if '4097:' in $channel.ref or '5002:' in $channel.ref or 'http%3a' in $channel.ref or 'https%3a' in $channel.ref
+				<span class="channel-tag ST-IPTV">IPTV</span>
+			#elif $channel.has_key('ns')
+				#set $ns="DVB-S"
+				#if 'DVB' in $channel.ns
+					#set $ns=$channel.ns
+				#end if
+				<span class="channel-tag ST-$channel.service_type">$channel.service_type</span><span class="channel-tag NS-$ns">$channel.ns</span>
 			#end if
 		</div>
 	</div>
 
-	#if $channel.has_key('protection') and $channel.has_key('now_title') and $channel.protection == "0"
+	#set $picon = True
+	#if $showchannelpicon and not $channel.has_key('now_title')
+		#if $channel.has_key('picon') and $channel.picon == "/images/default_picon.png"
+			#set $picon = False
+		#end if
+	#end if
+
+	#if $channel.has_key('protection') and $channel.protection == "0" and $picon
 	<div>
 		#if $showchannelpicon
 			<div class="channel-picon">
@@ -56,6 +70,7 @@
 			<div style="display:none;"></div>
 		#end if
 		<div class="channel-info">
+		#if $channel.has_key('now_title')
 			<div class="tt">
 				<div class="a">
 					$channel.now_begin &mdash; $channel.now_end &nbsp;&nbsp;&nbsp;
@@ -89,6 +104,7 @@
 					<div class="tcld ui-state-default" id="$channel.next_idp">$tstrings['no_description_available']</div>
 				</div>
 			</div>
+		#end if
 		</div>
 	</div>
 	#end if

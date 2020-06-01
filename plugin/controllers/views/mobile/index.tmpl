@@ -1,6 +1,6 @@
 #from urllib import quote
-#from Plugins.Extensions.OpenWebif.local import tstrings
-<body> 
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
+<body>
 	<div data-role="page">
 		<div id="header">
 			<h1>OpenWebif</h1>
@@ -9,6 +9,7 @@
 			<ul data-role="listview" data-inset="true" data-theme="d">
 				<li data-role="list-divider" role="heading" data-theme="b">Index</li>
 				<li><a href="/mobile/control">$tstrings['control']</a></li>
+				<li><a href="/mobile/remote">$tstrings['remote']</a></li>
 				<li><a href="/mobile/bouquets">$tstrings['bouquets'] ($tstrings['tv'])</a></li>
 				<li><a href="/mobile/bouquets?stype=radio">$tstrings['bouquets'] ($tstrings['radio'])</a></li>
 				<li><a href="/mobile/timerlist">$tstrings['timer_list']</a></li>

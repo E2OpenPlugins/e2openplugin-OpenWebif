@@ -4,7 +4,7 @@
 #set $channel = $event.channel.replace("'", r"\'")
 #set $title = $event.title.replace("'", r"\'")
 #set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
-#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 
 <style>
 .tb { padding:0; margin:0 0 0 0; background:none;width:40px}
@@ -22,104 +22,89 @@
 		<div id="leftmenu_expander_main" class="ui-selectmenu-icon ui-icon ui-icon-closethick" onclick="\$('#eventdescription').hide(200)" style="cursor:pointer"></div>
 	</div>
 	<div id="leftmenu_container_main" class="ui-widget ui-widget-content" style="padding:6px">
-		
 		<table class="eventt" style="width: 100%;">
 		<tbody>
 		<tr style="height: 160px;">
 		<td style="width: 80px;" colspan="2">
-		
 			<div class="ui-widget-header" id="station" onclick="zapChannel('$str($event['sref'])', '$channel')" title="$tstrings['zap']">$event['channel']</div>
 		
 			<div class="ui-widget-header" style="padding:3px;margin-top:2px">
 				<div style="font-size:1.7em;text-align:center">$event.begin_str</div>
 				<div style="text-align:center">$int($event.duration/60) min</div>
 			</div>
-
 			<div class="ui-widget-header" style="padding:3px;margin-top:2px">
 				<div style="font-size:1.7em; text-align:center">$tstrings[("day_" + ($time.strftime("%w", $etime)))]</div>
 				<div style="color:#A9D1FA; text-align:center">$time.strftime("%d", $etime) $tstrings[("month_" + ($time.strftime("%m", $etime)))]</div>
 			</div>
-		
-		
 		</td>
 		<td style="width: 100%;text-align:left;" rowspan="6">
-		
 			<div style="font-size:1.4em; font-weight: bold">$event.title</div>
 #if $event.title != $event.shortdesc
 			<div style="font-size:1.2em; font-weight:bold;margin-top:0.2em">$event.shortdesc</div>
 #end if
 			<div style="font-size:1.1em;max-height:300px;overflow:auto;margin-top:0.4em"><p>$(event.longdesc.replace("\n","<br/>").replace(u"\u008a","<br/>"))</p></div>
-		
 		</td>
 		</tr>
 		<tr>
-		
-					#if $transcoding
-					<td><a href="#" onclick="jumper8001('$sref', '$channel');" title="$tstrings['stream']: $channel"><i class="fa fa-desktop" style="font-size:22px;"></i></a></td>
-					<td><a href="#" onclick="jumper8002('$sref', '$channel');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel"><i class="fa fa-mobile" style="font-size:26px;margin-top:-3px;"></i></a></td>
-					#else
-					<td><a target="_blank" href='../web/stream.m3u?ref=$sref&name=$channel' title="$tstrings['stream'] $channel"><i class="fa fa-desktop" style="font-size:22px;"></i></a></td>
-					<td></td>
-					#end if
-		
+			#if $transcoding
+			<td><a href="#" onclick="jumper8001('$sref', '$channel');" title="$tstrings['stream']: $channel"><i class="fa fa-desktop" style="font-size:22px;"></i></a></td>
+			<td><a href="#" onclick="jumper8002('$sref', '$channel');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel"><i class="fa fa-mobile" style="font-size:26px;margin-top:-3px;"></i></a></td>
+			#else
+			<td><a target="_blank" href='../web/stream.m3u?ref=$sref&name=$channel' title="$tstrings['stream'] $channel"><i class="fa fa-desktop" style="font-size:22px;"></i></a></td>
+			<td></td>
+			#end if
 		</tr>
 		<tr>
-		
 			<td>
-					<a class="tb" href="#" onclick="addTimerEvent('$sref',$event.id,false,cbAddTimerEvent);return false;" title="$tstrings['add_timer']">
-					<i class="fa fa-timerplus"></i>
-					</a>
-					</td>
-					<td>
-					<a class="tb" href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']">
-					<i class="fa fa-timeredit"></i>
-					</a>
-					</td>
-		
+				<a class="tb" href="#" onclick="addTimerEvent('$sref',$event.id,false,cbAddTimerEvent);return false;" title="$tstrings['add_timer']">
+				<i class="fa fa-timerplus"></i>
+				</a>
+				</td>
+				<td>
+				<a class="tb" href="#" onclick="addEditTimerEvent('$sref',$event.id);return false;" title="$tstrings['edit_timer']">
+				<i class="fa fa-timeredit"></i>
+				</a>
+			</td>
 		</tr>
 		<tr>
-		
-		<td>
-					<a class="tb" href="#" onclick="addTimerEvent('$sref',$event.id,true,cbAddTimerEvent);return false;" title="$tstrings['add_zaptimer']">
-					<i class="fa fa-timerplay"></i>
-					</a>
-					</td>
-					<td>
-					#if $at
-					<a class="tb" href="#" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin_str','$event.end');return false;" title="$tstrings['add_autotimer']">
-					<i class="fa fa-timerat"></i>
-					</a>
-					#end if
-					</td>
-		
+			<td>
+				<a class="tb" href="#" onclick="addTimerEvent('$sref',$event.id,true,cbAddTimerEvent);return false;" title="$tstrings['add_zaptimer']">
+				<i class="fa fa-timerplay"></i>
+				</a>
+			</td>
+			<td>
+				#if $at
+				<a class="tb" href="#" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin_str','$event.end');return false;" title="$tstrings['add_autotimer']">
+				<i class="fa fa-timerat"></i>
+				</a>
+				#end if
+			</td>
 		</tr>
 		<tr>
-		
-					<td>
-					<a class="d_timer tb" href="#" onclick="delTimerEvent('$sref','$event.id');return false;" title="$tstrings['delete_timer']">
-					<i class="fa fa-timertrash"></i>
-					</a>
-					</td>
-					<td>
-					</td>
+			<td>
+				<a class="d_timer tb" href="#" onclick="delTimerEvent('$sref','$event.id');return false;" title="$tstrings['delete_timer']">
+				<i class="fa fa-timertrash"></i>
+				</a>
+			</td>
+			<td>
+			</td>
 		</tr>
 		<tr>
-		
-					<td>
-					#if $kinopoisk
+			<td>
+				#if $moviedb == "Kinopoisk"
 					<a class="tb" target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)"><img src="../images/kinopoisk.png" style="width:24px; height:24px; margin:0px 3px 0px 0px" title="$tstrings['search_kinopoisk']" border="0"></a>
-					#else
+				#elif $moviedb == "CSFD"
+					<a class="tb im" target="_blank" href="https://www.csfd.cz/hledat/?q=$event.title" title="$tstrings['search_csfd']">csfd</a>
+				#else
 					<a class="tb im" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']">IMDb</a>
-					#end if
-					</td>
-					<td>
-					</td>
-				</div>
-		
+				#end if
+			</td>
+			<td>
+			</td>
+			</div>
 		</tr>
 		</tbody>
 		</table>
-		
 	</div>
 </div>
 <script>

@@ -1,5 +1,5 @@
 #from urllib import quote
-#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from json import dumps
 #from time import localtime, strftime, mktime
 #from Plugins.Extensions.OpenWebif.controllers.views.ajax.renderevtblock import renderEvtBlock
@@ -49,7 +49,7 @@
 <div class="float plus ui-state-default #if $mode==1 then 'ui-state-active' else '' #" data-day="101">$tstrings['tv_guide']</div>
 <div class="float plus ui-state-default #if $mode==2 then 'ui-state-active' else '' #" data-day="102">$tstrings['timeline']</div>
 #if $mode == 1
-<div class="float plus ui-state-default lbl">&nbsp;$tstrings['date']:&nbsp;$time.strftime("%x", time.localtime(time.time()+86400*$day))</div>
+<div class="float plus ui-state-default lbl">&nbsp;$tstrings['date']:&nbsp;$time.strftime("%x", time.localtime(time.time()+86400*$day+604800*$week))</div>
 #end if
 <div id="compressmepg" onclick="CompressMEPG();"><i id="compressmepgi" class="fa fa-compress link" aria-hidden="true"></i></div>
 <div id="refreshmepg2" onclick="RefreshMEPG();"><i id="refreshmepgi" class="fa fa-refresh link" aria-hidden="true"></i></div>
@@ -82,7 +82,7 @@
 #if $day == 0
 #set $first = $now - 3600
 #else
-#set $first = $now + ($day * 3600 * 24) 
+#set $first = $now + ($day * 3600 * 24)
 #end if
 
 #set $s = $strftime("%S",$localtime($first))
@@ -118,15 +118,16 @@
 </tr>
 </thead>
 <tbody id="tbl1body">
-	#set hasEvents = False
 	#for $slot in range(0,12)
 	<tr class="$(slot%2 and 'ui-widget-content' or 'ui-widget-content ui-state-hover') nobg">
 		#for $sname, $eventlist in $events.iteritems()
 		<td class="border">
 			#for $event in $eventlist[$slot]
 				$renderEventBlock.render($event)
-				#set hasEvents = True
 			#end for
+			#if len($eventlist[$slot]) == 0
+			<div class="event"></div>
+			#end if
 		</td>
 		#end for
 	</tr>
@@ -266,7 +267,7 @@ function fixTableHeight() {
 #else
 	\$("#tbl1body").height( (\$("#tvcontent").height() - \$("#navepg").height() - 20 - addScrollBarWidth - 2) + "px");
 #end if
-	if (!\$('#toolbar-header').is(':visible')) { 
+	if (!\$('#toolbar-header').is(':visible')) {
 		var dh = \$(window).height();
 		\$("#tvcontentmain").height(dh-80);
 		\$("#tbl1body").height(dh-215);
@@ -284,7 +285,7 @@ fixTableHeight();
 	var id = \$(this).data("id");
 	if (id != undefined) {
 		var ref = \$(this).data("ref");
-		\$("#eventdescription").load('ajax/event?idev='+id+'&sref='+escape(ref), function() { 
+		\$("#eventdescription").load('ajax/event?idev='+id+'&sref='+escape(ref), function() {
 			\$("#eventdescription").show(200).draggable( { handle: ".handle" } );
 		});
 	}
@@ -340,7 +341,7 @@ fixTableHeight();
 			if (mode != $mode) {
 			
 				$.ajax({
-				url: 'api/setmepgmode?mode=' + mode,
+				url: 'api/setwebconfig?mepgmode=' + mode,
 					success: function(data) {
 						\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day=$day&epgmode='+epgmode+'&week='+$week);
 					}
@@ -379,8 +380,8 @@ if(mepgdirect==1) {
 	}
 });
 #if $mode == 2
-\$(function() { 
-	
+\$(function() {
+
 	if(GetLSValue('MultiEPGScrollStyle','0')=='0') {
 		\$('#tblinner').css('overflow-y','hidden');
 		\$('.togglescroll').addClass('ui-widget-header');

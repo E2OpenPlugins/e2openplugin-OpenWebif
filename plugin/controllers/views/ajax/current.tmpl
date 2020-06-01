@@ -1,4 +1,4 @@
-#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 <!-- OSD -->
 <style>
 .ib,.id{float:left;position:relative;margin:0 0 3px 3px;height:26px;}
@@ -18,7 +18,7 @@
 			<div style="position:relative;top:10px;left:18px;font-size:13px;font-weight:bold;">$info.date</div>
 		</div>
 		<div class='d120' style="height:60px;">
-			<div style="position:relative;top:0px;left:15px;"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "images/default_picon.png")' onclick="open_epg_dialog('$info.ref','$info.name');" href="#" title="$tstrings['show_epg_for'] $info.name" border="0" alt='' /></div>
+			<div style="position:relative;top:0px;left:15px;"><img border='0' width="100px" height="60px" src='$getVar("info.picon", "images/default_picon.png")' onclick="open_epg_dialog('$info.ref','$info.name');" style="cursor:pointer;" title="$tstrings['show_epg_for'] $info.name" border="0" alt='' /></div>
  		</div>
 		<div class='d120' style="height:40px;">
 			<div style="position:relative;top:8px;left:0px;text-align:center;font-size:11px;font-weight:bold;">$info.provider</div>

@@ -201,6 +201,20 @@ function load_maincontent_spin_force(url) {
 	return false;
 }
 
+function testPipStatus() {
+	$.ajax({
+		url: "api/pipinfo",
+		dataType: "json",
+		cache: false,
+		success: function(pipinfo) {
+			if(pipinfo.pip != pip){
+				pip = pipinfo.pip;
+                                buttonsSwitcher(pipinfo.pip);
+			}
+		}
+	})
+}
+
 var SSHelperObj = function () {
 	var self;
 	var screenshotInterval = false;
@@ -212,18 +226,26 @@ var SSHelperObj = function () {
 			self = this;
 			clearInterval(self.screenshotInterval);
 			self.ssr_i = parseInt(GetLSValue('ssr_i','30'));
-			$('#screenshotbutton0').click(function(){grabScreenshot('all');});
-			$('#screenshotbutton1').click(function(){grabScreenshot('video');});
-			$('#screenshotbutton2').click(function(){grabScreenshot('osd');});
+
+			$("#dropdown").click(function() {testPipStatus();});
+			$('#screenshotbutton0').click(function(){testPipStatus(); grabScreenshot('all');});
+			$('#screenshotbutton1').click(function(){testPipStatus(); grabScreenshot('video');});
+			$('#screenshotbutton2').click(function(){testPipStatus(); grabScreenshot('osd');});
+			$('#screenshotbutton3').click(function(){testPipStatus(); grabScreenshot('pip');});
+			$('#screenshotbutton4').click(function(){testPipStatus(); grabScreenshot('lcd');});
+			$("button").click(function() {testPipStatus();});
+
 			$('#ssr_i').val(self.ssr_i);
 			$('#ssr_s').prop('checked',GetLSValue('ssr_s',false));
 			$('#ssr_hd').prop('checked',GetLSValue('ssr_hd',false));
 			$('#screenshotspinner').addClass(GetLSValue('spinner','fa-spinner'));
 			$('#ssr_hd').change(function() {
+				testPipStatus();
 				SetLSValue('ssr_hd',$('#ssr_hd').is(':checked'));
 				grabScreenshot('auto');
 			});
 			$('#ssr_i').change(function() {
+				testPipStatus();
 				var t = $('#ssr_i').val();
 				SetLSValue('ssr_i',t);
 				self.ssr_i = parseInt(t);
@@ -234,6 +256,7 @@ var SSHelperObj = function () {
 				}
 			});
 			$('#ssr_s').change(function() {
+				testPipStatus();
 				var v = $('#ssr_s').is(':checked');
 				if (v) {
 					self.setSInterval();
@@ -248,7 +271,7 @@ var SSHelperObj = function () {
 				self.setSInterval();
 		},setSInterval: function()
 		{
-			self.screenshotInterval = setInterval("grabScreenshot('auto')", (self.ssr_i+1)*1000);
+			self.screenshotInterval = setInterval( function() {testPipStatus(); grabScreenshot('auto');}, (self.ssr_i+1)*1000);
 		}
 	};
 };
@@ -297,12 +320,17 @@ function grabScreenshot(mode) {
 	}
 	timestamp = new Date().getTime();
 	if ($("#ssr_hd").is(":checked")){
-		$('#screenshotimage').attr("src",'/grab?format=jpg&mode=' + mode + '#' + timestamp);
+		$('#screenshotimage').attr("src",'/grab?format=jpg&mode=' + mode + '&t=' + timestamp);
 	} else {
-		$('#screenshotimage').attr("src",'/grab?format=jpg&r=720&mode=' + mode + '#' + timestamp);
+		$('#screenshotimage').attr("src",'/grab?format=jpg&r=720&mode=' + mode + '&t=' + timestamp);
 	}
 	$('#screenshotimage').attr("style",'max-height:60vh;');
-	$('#screenshotimage').attr("class",'img-responsive img-rounded center-block');
+	if (mode == "lcd") {
+		$('#screenshotimage').attr("class",'img-responsive center-block');
+	}
+	else{
+		$('#screenshotimage').attr("class",'img-responsive img-rounded center-block');
+	}
 }
 
 function getStatusInfo() {
@@ -609,6 +637,8 @@ function addTimer(evt,chsref,chname,top) {
 	$('#description').val(desc);
 	$('#dirname').val("None");
 	$('#enabled').prop("checked", true);
+	$('#allow_duplicate').prop("checked", true);
+	$('#autoadjust').prop("checked", false);
 	$('#justplay').prop("checked", false);
 	$('#afterevent').val(3);
 
@@ -700,6 +730,8 @@ function editTimer(serviceref, begin, end) {
 								$('#dirname').val(timer.dirname);
 							}
 							$('#enabled').prop("checked", timer.disabled == 0);
+							$('#allow_duplicate').prop("checked", timer.allow_duplicate);
+							$('#autoadjust').prop("checked", timer.autoadjust);
 							$('#justplay').prop("checked", timer.justplay);
 							$('#afterevent').val(timer.afterevent);
 							var flags=timer.repeated;
@@ -1029,6 +1061,8 @@ function btn_saveTimer() {
 					name: $('#timername').val(),
 					description: $('#description').val(),
 					disabled: ($('#enabled').is(':checked')?"0":"1"),
+					allow_duplicate: ($('#allow_duplicate').is(':checked')?"1":"0"),
+					autoadjust: ($('#autoadjust').is(':checked')?"1":"0"),
 					afterevent: $('#afterevent').val(),
 					tags: tags,
 					repeated: repeated };

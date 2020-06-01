@@ -1,24 +1,39 @@
 # -*- coding: utf-8 -*-
 
-##############################################################################
-#                        2011 E2OpenPlugins                                  #
-#                                                                            #
-#  This file is open source software; you can redistribute it and/or modify  #
-#     it under the terms of the GNU General Public License version 2 as      #
-#               published by the Free Software Foundation.                   #
-#                                                                            #
-##############################################################################
+##########################################################################
+# OpenWebif: grab
+##########################################################################
+# Copyright (C) 2011 - 2020 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
+
+from __future__ import print_function
 from enigma import eConsoleAppContainer
+from Screens.InfoBar import InfoBar
 from twisted.web import resource, server
+from enigma import eDBoxLCD
 import time
 
 GRAB_PATH = '/usr/bin/grab'
-
 
 class GrabRequest(object):
 	def __init__(self, request, session):
 		self.request = request
 
+		mode = None
 		graboptions = [GRAB_PATH, '-q', '-s']
 
 		if "format" in request.args:
@@ -44,23 +59,40 @@ class GrabRequest(object):
 				graboptions.append("-o")
 			elif mode == "video":
 				graboptions.append("-v")
+			elif mode == "pip":
+				graboptions.append("-v")
+				if InfoBar.instance.session.pipshown:
+					graboptions.append("-i 1")
+			elif mode == "lcd":
+				eDBoxLCD.getInstance().dumpLCD()
+				fileformat = "png"
+				command = "cat /tmp/lcdshot.%s" % fileformat
+
 		self.container = eConsoleAppContainer()
 		self.container.appClosed.append(self.grabFinished)
 		self.container.stdoutAvail.append(request.write)
 		self.container.setBufferSize(32768)
-		self.container.execute(GRAB_PATH, *graboptions)
-		try:
-			ref = session.nav.getCurrentlyPlayingServiceReference().toString()
-			sref = '_'.join(ref.split(':', 10)[:10])
-		except:  # noqa: E722
-			sref = 'screenshot'
+		if mode == "lcd":
+			if self.container.execute(command):
+				raise Exception("failed to execute: ", command)
+			sref = 'lcdshot'
+		else:
+			self.container.execute(GRAB_PATH, *graboptions)
+			try:
+				if mode == "pip" and InfoBar.instance.session.pipshown:
+					ref = InfoBar.instance.session.pip.getCurrentService().toString()
+				else:
+					ref = session.nav.getCurrentlyPlayingServiceReference().toString()
+				sref = '_'.join(ref.split(':', 10)[:10])
+			except:  # noqa: E722
+				sref = 'screenshot'
 		sref = sref + '_' + time.strftime("%Y%m%d%H%M%S", time.localtime(time.time()))
 		request.notifyFinish().addErrback(self.requestAborted)
 		request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (sref, fileformat))
 		request.setHeader('Content-Type', 'image/%s' % fileformat.replace("jpg", "jpeg"))
-		request.setHeader('Expires', 'Sat, 26 Jul 1997 05:00:00 GMT')
-		request.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0')
-		request.setHeader('Pragma', 'no-cache')
+		# request.setHeader('Expires', 'Sat, 26 Jul 1997 05:00:00 GMT')
+		# request.setHeader('Cache-Control', 'no-store, must-revalidate, post-check=0, pre-check=0')
+		# request.setHeader('Pragma', 'no-cache')
 
 	def requestAborted(self, err):
 		# Called when client disconnected early, abort the process and
@@ -73,8 +105,8 @@ class GrabRequest(object):
 	def grabFinished(self, retval=None):
 		try:
 			self.request.finish()
-		except RuntimeError, error:
-			print "[OpenWebif] grabFinished error: %s" % error
+		except RuntimeError as error:
+			print("[OpenWebif] grabFinished error: %s" % error)
 		# Break the chain of ownership
 		del self.request
 

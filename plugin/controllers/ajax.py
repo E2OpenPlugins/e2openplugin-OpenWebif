@@ -1,25 +1,40 @@
 # -*- coding: utf-8 -*-
 
-##############################################################################
-#                        2011 E2OpenPlugins                                  #
-#                                                                            #
-#  This file is open source software; you can redistribute it and/or modify  #
-#     it under the terms of the GNU General Public License version 2 as      #
-#               published by the Free Software Foundation.                   #
-#                                                                            #
-##############################################################################
+##########################################################################
+# OpenWebif: AjaxController
+##########################################################################
+# Copyright (C) 2011 - 2020 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
+
 from Tools.Directories import fileExists
 from Components.config import config
 
 from models.services import getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
-from models.info import getInfo, getPublicPath, getOpenWebifVer, getTranscodingSupport, getLanguage
-from models.movies import getMovieList
+from models.info import getInfo
+from models.movies import getMovieList, getMovieSearchList
 from models.timers import getTimers
-from models.config import getConfigs, getConfigsSections, getZapStream, getShowChPicon
+from models.config import getConfigs, getConfigsSections
 from models.stream import GetSession
 from base import BaseController
 from time import mktime, localtime
 from models.locations import getLocations
+
+from defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH, TRANSCODING
+
 # from twisted.web.resource import Resource
 import os
 
@@ -30,8 +45,22 @@ except:  # noqa: E722
 
 
 class AjaxController(BaseController):
+	"""
+	Ajax Web Controller
+	"""
 	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
+
+	def NoDataRender(self):
+		"""
+		ajax requests with no extra data
+		"""
+		return ['powerstate', 'message', 'myepg', 'radio', 'terminal', 'epgr', 'bqe', 'tv', 'satfinder']
+
+	def P_edittimer(self, request):
+		pipzap = getInfo()['timerpipzap']
+		autoadjust = getInfo()['timerautoadjust']
+		return {"autoadjust": autoadjust, "pipzap": pipzap}
 
 	def P_current(self, request):
 		return getCurrentFullInfo(self.session)
@@ -65,9 +94,9 @@ class AjaxController(BaseController):
 		if "id" in request.args.keys():
 			idbouquet = request.args["id"][0]
 		channels = getChannels(idbouquet, stype)
-		channels['transcoding'] = getTranscodingSupport()
+		channels['transcoding'] = TRANSCODING
 		channels['type'] = stype
-		channels['showchannelpicon'] = getShowChPicon()['showchannelpicon']
+		channels['showchannelpicon'] = config.OpenWebif.webcache.showchannelpicon.value
 		return channels
 
 	def P_eventdescription(self, request):
@@ -84,13 +113,16 @@ class AjaxController(BaseController):
 		except ImportError:
 			pass
 		event['at'] = at
-		event['transcoding'] = getTranscodingSupport()
-		event['kinopoisk'] = getLanguage()
+		event['transcoding'] = TRANSCODING
+		if config.OpenWebif.webcache.moviedb.value:
+			event['moviedb'] = config.OpenWebif.webcache.moviedb.value
+		else:
+			event['moviedb'] = 'IMDb'
 		return event
 
 	def P_about(self, request):
 		info = {}
-		info["owiver"] = getOpenWebifVer()
+		info["owiver"] = OPENWEBIFVER
 		return {"info": info}
 
 	def P_boxinfo(self, request):
@@ -133,7 +165,9 @@ class AjaxController(BaseController):
 			theme = config.OpenWebif.webcache.theme.value
 		else:
 			theme = 'original'
-		return {"theme": theme, "events": events, "timers": timers, "at": at, "kinopoisk": getLanguage()}
+		moviedb = config.OpenWebif.webcache.moviedb.value if config.OpenWebif.webcache.moviedb.value else 'IMDb'
+
+		return {"theme": theme, "events": events, "timers": timers, "at": at, "moviedb": moviedb}
 
 	def P_epgdialog(self, request):
 		return self.P_epgpop(request)
@@ -155,18 +189,9 @@ class AjaxController(BaseController):
 			box['brand'] = "azbox"
 		return {"box": box}
 
-	def P_powerstate(self, request):
-		return {}
-
-	def P_message(self, request):
-		return {}
-
-	def P_myepg(self, request):
-		return {}
-
 	def P_movies(self, request):
 		movies = getMovieList(request.args)
-		movies['transcoding'] = getTranscodingSupport()
+		movies['transcoding'] = TRANSCODING
 
 		sorttype = config.OpenWebif.webcache.moviesort.value
 		unsort = movies['movies']
@@ -183,11 +208,24 @@ class AjaxController(BaseController):
 		movies['sort'] = sorttype
 		return movies
 
-	def P_radio(self, request):
-		return {}
+	def P_moviesearch(self, request):
+		movies = getMovieSearchList(request.args)
+		movies['transcoding'] = TRANSCODING
 
-	def P_terminal(self, request):
-		return {}
+		sorttype = config.OpenWebif.webcache.moviesort.value
+		unsort = movies['movies']
+
+		if sorttype == 'name':
+			movies['movies'] = sorted(unsort, key=lambda k: k['eventname'])
+		elif sorttype == 'named':
+			movies['movies'] = sorted(unsort, key=lambda k: k['eventname'], reverse=True)
+		elif sorttype == 'date':
+			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime'])
+		elif sorttype == 'dated':
+			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime'], reverse=True)
+
+		movies['sort'] = sorttype
+		return movies
 
 	def P_timers(self, request):
 
@@ -212,12 +250,6 @@ class AjaxController(BaseController):
 
 		timers['sort'] = sorttype
 		return timers
-
-	def P_edittimer(self, request):
-		return {}
-
-	def P_tv(self, request):
-		return {}
 
 	def P_tvradio(self, request):
 		epgmode = "tv"
@@ -247,11 +279,20 @@ class AjaxController(BaseController):
 		else:
 			ret['themes'] = []
 			ret['theme'] = 'original'
-		ret['zapstream'] = getZapStream()['zapstream']
-		ret['showchannelpicon'] = getShowChPicon()['showchannelpicon']
+		if config.OpenWebif.webcache.moviedb.value:
+			ret['moviedbs'] = config.OpenWebif.webcache.moviedb.choices
+			ret['moviedb'] = config.OpenWebif.webcache.moviedb.value
+		else:
+			ret['moviedbs'] = []
+			ret['moviedb'] = 'IMDb'
+		ret['zapstream'] = config.OpenWebif.webcache.zapstream.value
+		ret['showchannelpicon'] = config.OpenWebif.webcache.showchannelpicon.value
+		ret['showchanneldetails'] = config.OpenWebif.webcache.showchanneldetails.value
 		ret['allowipkupload'] = config.OpenWebif.allow_upload_ipk.value
 		loc = getLocations()
 		ret['locations'] = loc['locations']
+		if os.path.exists(VIEWS_PATH + "/responsive"):
+			ret['responsivedesign'] = config.OpenWebif.responsive_enabled.value
 		return ret
 
 	def P_multiepg(self, request):
@@ -330,12 +371,6 @@ class AjaxController(BaseController):
 			pass
 		return ret
 
-	def P_bqe(self, request):
-		return {}
-
-	def P_epgr(self, request):
-		return {}
-
 	def P_webtv(self, request):
 		if config.OpenWebif.auth_for_streaming.value:
 			session = GetSession()
@@ -348,7 +383,7 @@ class AjaxController(BaseController):
 		vxgenabled = False
 		if fileExists(getPublicPath("/vxg/media_player.pexe")):
 			vxgenabled = True
-		transcoding = getTranscodingSupport()
+		transcoding = TRANSCODING
 		transcoder_port = 0
 		if transcoding:
 			try:

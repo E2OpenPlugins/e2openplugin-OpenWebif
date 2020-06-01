@@ -4,7 +4,7 @@
 #set $channel = $event.channel.replace("'", r"\'")
 #set $title = $event.title.replace("'", r"\'")
 #set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
-#from Plugins.Extensions.OpenWebif.local import tstrings
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 
 <style>
@@ -40,9 +40,11 @@
 		
 		<a class="d_timer tb" href="#" onclick="delTimerEvent('$sref','$event.id');return false;" title="$tstrings['delete_timer']">
 		
-		#if $kinopoisk
+		#if $moviedb == "Kinopoisk"
 			<a class="theme-link-color theme-link-col-$skinColor"  target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)"><img src="../images/kinopoisk.png" style="width:12px; height:12px; margin:0px 3px 0px 0px" title="$tstrings['search_kinopoisk']" border="0"></a>
-			#else
+		#elif $moviedb == "CSFD"
+			<a class="theme-link-color theme-link-col-$skinColor" target="_blank" href="https://www.csfd.cz/hledat/?q=$event.title" title="$tstrings['search_csfd']">csfd</a>
+		#else
 			<a class="theme-link-color theme-link-col-$skinColor" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']">IMDb</a>
 		#end if
 	</div>

@@ -1,4 +1,4 @@
-#from Plugins.Extensions.OpenWebif.local import tstrings
+#from controllers.i18n import tstrings
 #from json import dumps
 #set $t="original"
 #if $varExists('theme')
@@ -96,7 +96,7 @@
 			<div id="slider" style="margin-left:10px;margin-right:10px;width:90px;"></div>
 		</div>
 		<div style="vertical-align: middle;display:table-cell;">
-			<input class="ui-state-active" style="border:none;font-weight:bold;width:22px;" type="text" id="amount"/>
+			<input readonly class="ui-state-active" style="border:none;font-weight:bold;width:22px;user-select: none;" type="text" id="amount"/>
 		</div>
 	</div>
 	<div style="margin-bottom:5px;"></div>
@@ -207,6 +207,7 @@
 		<input type="hidden" name="ref">
 		<input type="hidden" name="name">
 		<input type="hidden" name="device">
+		<input type="hidden" name="fname">
 	</form>
 	<form name="portFormTs" action="web/ts.m3u" method="GET" target="_blank">
 		<input type="hidden" name="file">
@@ -220,7 +221,7 @@
 
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/openwebif-1.2.17.min.js"></script>
+	<script type="text/javascript" src="js/openwebif-1.2.20.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
 	<script type="text/javascript" src="/js/chosen.1.8.2.min.js"></script>
 	<script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
