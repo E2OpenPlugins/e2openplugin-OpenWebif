@@ -2270,7 +2270,7 @@ class WebController(BaseController):
 						min = -1
 						kv = []
 						data = cfg['data']
-						if data.has_key('choices'):
+						if 'choices' in data:
 							for ch in data['choices']:
 								if type(ch).__name__ == 'tuple' and len(ch) == 2 and ch[0] == ch[1]:
 									if RepresentsInt(ch[0]):
