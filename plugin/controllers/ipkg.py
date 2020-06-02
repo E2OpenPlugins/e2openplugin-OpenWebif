@@ -148,7 +148,7 @@ class IpkgController(BaseController):
 						map[package][3] = nv
 				package = None
 
-		keys = map.keys()
+		keys = list(map.keys())
 		keys.sort()
 		self.ResultString = ""
 		if action == "listall":

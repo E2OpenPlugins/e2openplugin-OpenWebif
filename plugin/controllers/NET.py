@@ -81,7 +81,7 @@ class NetController(resource.Resource):
 	def P_listmounts(self):
 		list = []
 		mounts = iAutoMount.getMountsList()
-		for sharename in mounts.keys():
+		for sharename in list(mounts.keys()):
 			mountentry = iAutoMount.automounts[sharename]
 			list.append(mountentry)
 		self.result["result"] = True

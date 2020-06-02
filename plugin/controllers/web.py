@@ -61,7 +61,7 @@ class WebController(BaseController):
 
 	def testMandatoryArguments(self, request, keys):
 		for key in keys:
-			if key not in request.args.keys():
+			if key not in list(request.args.keys()):
 				return {
 					"result": False,
 					"message": _("Missing mandatory parameter '%s'") % key
@@ -206,7 +206,7 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
-		if "set" not in request.args.keys() or request.args["set"][0] == "state":
+		if "set" not in list(request.args.keys()) or request.args["set"][0] == "state":
 			return getVolumeStatus()
 		elif request.args["set"][0] == "up":
 			return setVolumeUp()
@@ -290,7 +290,7 @@ class WebController(BaseController):
 		if res:
 			return res
 
-		if "title" in request.args.keys():
+		if "title" in list(request.args.keys()):
 			return zapService(self.session, request.args["sRef"][0], request.args["title"][0])
 
 		return zapService(self.session, request.args["sRef"][0])
@@ -324,10 +324,10 @@ class WebController(BaseController):
 
 		type = ""
 		rcu = ""
-		if "type" in request.args.keys():
+		if "type" in list(request.args.keys()):
 			type = request.args["type"][0]
 
-		if "rcu" in request.args.keys():
+		if "rcu" in list(request.args.keys()):
 			rcu = request.args["rcu"][0]
 
 		return remoteControl(id, type, rcu)
@@ -346,9 +346,9 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
-		if "shift" in request.args.keys():
+		if "shift" in list(request.args.keys()):
 			self.P_set_powerup_without_waking_tv(request)
-		if "newstate" in request.args.keys():
+		if "newstate" in list(request.args.keys()):
 			return setPowerState(self.session, request.args["newstate"][0])
 		return getStandbyState(self.session)
 
@@ -451,10 +451,10 @@ class WebController(BaseController):
 			HTTP response with headers
 		"""
 		type = "tv"
-		if "type" in request.args.keys():
+		if "type" in list(request.args.keys()):
 			type = "radio"
 		bouquets = getAllServices(type)
-		if "renameserviceforxmbc" in request.args.keys():
+		if "renameserviceforxmbc" in list(request.args.keys()):
 			for bouquet in bouquets["services"]:
 				for service in bouquet["subservices"]:
 					if not int(service["servicereference"].split(":")[1]) & 64:
@@ -476,19 +476,19 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
-		if "sRef" in request.args.keys():
+		if "sRef" in list(request.args.keys()):
 			sRef = request.args["sRef"][0]
 		else:
 			sRef = ""
-		if "hidden" in request.args.keys():
+		if "hidden" in list(request.args.keys()):
 			hidden = request.args["hidden"][0] == "1"
 		else:
 			hidden = False
-		if "provider" in request.args.keys():
+		if "provider" in list(request.args.keys()):
 			provider = request.args["provider"][0] == "1"
 		else:
 			provider = False
-		if "picon" in request.args.keys():
+		if "picon" in list(request.args.keys()):
 			picon = request.args["picon"][0] == "1"
 		else:
 			picon = False
@@ -508,13 +508,13 @@ class WebController(BaseController):
 
 			:query string bRef: bouquet reference
 		"""
-		if "bRef" in request.args.keys():
+		if "bRef" in list(request.args.keys()):
 			bRef = request.args["bRef"][0]
 		else:
 			bRef = ""
 
 		request.setHeader('Content-Type', 'application/xspf+xml')
-		if "bName" in request.args.keys():
+		if "bName" in list(request.args.keys()):
 			bname = request.args["bName"][0]
 			bname = bname.replace(",", "_").replace(";", "_")
 			request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (bname, 'xspf'))
@@ -552,13 +552,13 @@ class WebController(BaseController):
 
 			:query string bRef: bouquet reference
 		"""
-		if "bRef" in request.args.keys():
+		if "bRef" in list(request.args.keys()):
 			bRef = request.args["bRef"][0]
 		else:
 			bRef = ""
 
 		request.setHeader('Content-Type', 'application/x-mpegurl')
-		if "bName" in request.args.keys():
+		if "bName" in list(request.args.keys()):
 			bname = request.args["bName"][0]
 			bname = bname.replace(",", "_").replace(";", "_")
 			request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (bname, 'm3u8'))
@@ -621,11 +621,11 @@ class WebController(BaseController):
 			HTTP response with headers
 		"""
 		sRef = ""
-		if "sRef" in request.args.keys():
+		if "sRef" in list(request.args.keys()):
 			sRef = request.args["sRef"][0]
 
 		sRefPlaying = ""
-		if "sRefPlaying" in request.args.keys():
+		if "sRefPlaying" in list(request.args.keys()):
 			sRefPlaying = request.args["sRefPlaying"][0]
 		return getPlayableServices(sRef, sRefPlaying)
 
@@ -644,11 +644,11 @@ class WebController(BaseController):
 			HTTP response with headers
 		"""
 		sRef = ""
-		if "sRef" in request.args.keys():
+		if "sRef" in list(request.args.keys()):
 			sRef = request.args["sRef"][0]
 
 		sRefPlaying = ""
-		if "sRefPlaying" in request.args.keys():
+		if "sRefPlaying" in list(request.args.keys()):
 			sRefPlaying = request.args["sRefPlaying"][0]
 
 		return getPlayableService(sRef, sRefPlaying)
@@ -672,7 +672,7 @@ class WebController(BaseController):
 			return res
 
 		create = False
-		if "createFolder" in request.args.keys():
+		if "createFolder" in list(request.args.keys()):
 			create = request.args["createFolder"][0] == "1"
 
 		return addLocation(request.args["dirname"][0], create)
@@ -696,7 +696,7 @@ class WebController(BaseController):
 			return res
 
 		remove = False
-		if "removeFolder" in request.args.keys():
+		if "removeFolder" in list(request.args.keys()):
 			remove = request.args["removeFolder"][0] == "1"
 
 		return removeLocation(request.args["dirname"][0], remove)
@@ -728,7 +728,7 @@ class WebController(BaseController):
 			}
 
 		timeout = -1
-		if "timeout" in request.args.keys():
+		if "timeout" in list(request.args.keys()):
 			try:
 				timeout = int(request.args["timeout"][0])
 			except ValueError:
@@ -840,7 +840,7 @@ class WebController(BaseController):
 		if res:
 			return res
 		force = False
-		if "force" in request.args.keys():
+		if "force" in list(request.args.keys()):
 			force = True
 		return removeMovie(self.session, request.args["sRef"][0], force)
 
@@ -905,11 +905,11 @@ class WebController(BaseController):
 		_add = None
 		_del = None
 		_sref = None
-		if "add" in request.args.keys():
+		if "add" in list(request.args.keys()):
 			_add = request.args["add"][0]
-		if "del" in request.args.keys():
+		if "del" in list(request.args.keys()):
 			_del = request.args["del"][0]
-		if "sref" in request.args.keys():
+		if "sref" in list(request.args.keys()):
 			_sref = request.args["sref"][0]
 		return getMovieInfo(_sref, _add, _del)
 
@@ -925,19 +925,19 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
-		if "sref" in request.args.keys():
+		if "sref" in list(request.args.keys()):
 			_sref = request.args["sref"][0]
 			_addtag = None
 			_deltag = None
 			_title = None
 			_cuts = None
-			if "addtag" in request.args.keys():
+			if "addtag" in list(request.args.keys()):
 				_addtag = request.args["addtag"][0]
-			if "deltag" in request.args.keys():
+			if "deltag" in list(request.args.keys()):
 				_deltag = request.args["deltag"][0]
-			if "title" in request.args.keys():
+			if "title" in list(request.args.keys()):
 				_title = request.args["title"][0]
-			if "cuts" in request.args.keys():
+			if "cuts" in list(request.args.keys()):
 				_cuts = request.args["cuts"][0]
 			return getMovieInfo(_sref, _addtag, _deltag, _title, _cuts, True)
 		else:
@@ -952,7 +952,7 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
-		if "sref" in request.args.keys():
+		if "sref" in list(request.args.keys()):
 			_sref = request.args["sref"][0]
 			return getMovieDetails(_sref)
 		else:
@@ -1049,31 +1049,31 @@ class WebController(BaseController):
 	def _AddEditTimer(self, request, mode):
 
 		disabled = False
-		if "disabled" in request.args.keys():
+		if "disabled" in list(request.args.keys()):
 			disabled = request.args["disabled"][0] == "1"
 
 		justplay = False
-		if "justplay" in request.args.keys():
+		if "justplay" in list(request.args.keys()):
 			justplay = request.args["justplay"][0] == "1"
 
 		afterevent = 3
-		if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["0", "1", "2", "3"]:
+		if "afterevent" in list(request.args.keys()) and request.args["afterevent"][0] in ["0", "1", "2", "3"]:
 			afterevent = int(request.args["afterevent"][0])
 
 		dirname = None
-		if "dirname" in request.args.keys() and len(request.args["dirname"][0]) > 0:
+		if "dirname" in list(request.args.keys()) and len(request.args["dirname"][0]) > 0:
 			dirname = request.args["dirname"][0]
 
 		tags = []
-		if "tags" in request.args.keys():
+		if "tags" in list(request.args.keys()):
 			tags = request.args["tags"][0].split(' ')
 
 		repeated = 0
-		if "repeated" in request.args.keys():
+		if "repeated" in list(request.args.keys()):
 			repeated = int(request.args["repeated"][0])
 
 		description = ""
-		if "description" in request.args.keys():
+		if "description" in list(request.args.keys()):
 			description = request.args["description"][0]
 
 		eit = 0
@@ -1085,7 +1085,7 @@ class WebController(BaseController):
 					"result": False,
 					"message": "The parameter 'eventid' must be a number"
 				}
-		elif "eit" in request.args.keys() and type(request.args["eit"][0]) is int:
+		elif "eit" in list(request.args.keys()) and type(request.args["eit"][0]) is int:
 			eit = int(request.args["eit"][0])
 		else:
 			# TODO : move this code to timers.py
@@ -1097,19 +1097,19 @@ class WebController(BaseController):
 				eit = int(eventid)
 
 		always_zap = -1
-		if "always_zap" in request.args.keys():
+		if "always_zap" in list(request.args.keys()):
 			always_zap = int(request.args["always_zap"][0])
 			
 		pipzap = -1
-		if "pipzap" in request.args.keys():
+		if "pipzap" in list(request.args.keys()):
 			pipzap = int(request.args["pipzap"][0])
 
 		allow_duplicate = True
-		if "allow_duplicate" in request.args.keys():
+		if "allow_duplicate" in list(request.args.keys()):
 			allow_duplicate = request.args["allow_duplicate"][0] == "1"
 
 		autoadjust = -1
-		if "autoadjust" in request.args.keys():
+		if "autoadjust" in list(request.args.keys()):
 			autoadjust = request.args["autoadjust"][0] == "1"
 		
 		# TODO: merge function addTimer+editTimer+addTimerByEventId in timers.py
@@ -1389,7 +1389,7 @@ class WebController(BaseController):
 			HTTP response with headers
 		"""
 		infinite = False
-		if "undefinitely" in request.args.keys() or "infinite" in request.args.keys():
+		if "undefinitely" in list(request.args.keys()) or "infinite" in list(request.args.keys()):
 			infinite = True
 		return recordNow(self.session, infinite)
 
@@ -1443,14 +1443,14 @@ class WebController(BaseController):
 			return res
 
 		begintime = -1
-		if "time" in request.args.keys():
+		if "time" in list(request.args.keys()):
 			try:
 				begintime = int(request.args["time"][0])
 			except ValueError:
 				pass
 
 		endtime = None
-		if "endTime" in request.args.keys():
+		if "endTime" in list(request.args.keys()):
 			try:
 				endtime = int(request.args["endTime"][0])
 			except ValueError:
@@ -1476,14 +1476,14 @@ class WebController(BaseController):
 			return res
 
 		begintime = -1
-		if "time" in request.args.keys():
+		if "time" in list(request.args.keys()):
 			try:
 				begintime = int(request.args["time"][0])
 			except ValueError:
 				pass
 
 		endtime = None
-		if "endTime" in request.args.keys():
+		if "endTime" in list(request.args.keys()):
 			try:
 				endtime = int(request.args["endTime"][0])
 			except ValueError:
@@ -1562,15 +1562,15 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
-		if "search" in request.args.keys():
+		if "search" in list(request.args.keys()):
 			endtime = None
-			if "endtime" in request.args.keys():
+			if "endtime" in list(request.args.keys()):
 				try:
 					endtime = int(request.args["endtime"][0])
 				except ValueError:
 					pass
 			fulldesc = False
-			if "full" in request.args.keys():
+			if "full" in list(request.args.keys()):
 				fulldesc = True
 			return getSearchEpg(request.args["search"][0], endtime, fulldesc, False, self.isJson)
 		else:
@@ -1602,14 +1602,14 @@ class WebController(BaseController):
 			return res
 
 		begintime = -1
-		if "time" in request.args.keys():
+		if "time" in list(request.args.keys()):
 			try:
 				begintime = int(request.args["time"][0])
 			except ValueError:
 				pass
 
 		endtime = -1
-		if "endTime" in request.args.keys():
+		if "endTime" in list(request.args.keys()):
 			try:
 				endtime = int(request.args["endTime"][0])
 			except ValueError:
@@ -1925,7 +1925,7 @@ class WebController(BaseController):
 			res = self.testMandatoryArguments(request, ["key"])
 			if res:
 				return res
-			if "value" in request.args.keys():
+			if "value" in list(request.args.keys()):
 				key = request.args["key"][0]
 				value = request.args["value"][0]
 				return saveConfig(key, value)
@@ -1942,7 +1942,7 @@ class WebController(BaseController):
 		if res:
 			return res
 		root = ""
-		if "root" in request.args.keys():
+		if "root" in list(request.args.keys()):
 			root = request.args["root"][0]
 		return mediaPlayerPlay(self.session, request.args["file"][0], root)
 
@@ -1957,20 +1957,20 @@ class WebController(BaseController):
 
 	def P_mediaplayerfindfile(self, request):
 		path = "/media/"
-		if "path" in request.args.keys():
+		if "path" in list(request.args.keys()):
 			path = request.args["path"][0]
 		pattern = "*.*"
-		if "pattern" in request.args.keys():
+		if "pattern" in list(request.args.keys()):
 			pattern = request.args["pattern"][0]
 		return mediaPlayerFindFile(self.session, path, pattern)
 
 	def P_mediaplayerlist(self, request):
 		path = ""
-		if "path" in request.args.keys():
+		if "path" in list(request.args.keys()):
 			path = request.args["path"][0]
 
 		types = ""
-		if "types" in request.args.keys():
+		if "types" in list(request.args.keys()):
 			types = request.args["types"][0]
 
 		return mediaPlayerList(self.session, path, types)
@@ -2056,14 +2056,14 @@ class WebController(BaseController):
 			:query string confirmed: confirmed (supported?)
 		"""
 		cmd = "get"
-		if "cmd" in request.args.keys():
+		if "cmd" in list(request.args.keys()):
 			cmd = request.args["cmd"][0]
 
 		if cmd == "get":
 			return getSleepTimer(self.session)
 
 		time = None
-		if "time" in request.args.keys():
+		if "time" in list(request.args.keys()):
 			ttime = request.args["time"][0]
 			try:
 				time = int(ttime)
@@ -2075,11 +2075,11 @@ class WebController(BaseController):
 				pass
 
 		action = "standby"
-		if "action" in request.args.keys():
+		if "action" in list(request.args.keys()):
 			action = request.args["action"][0]
 
 		enabled = None
-		if "enabled" in request.args.keys():
+		if "enabled" in list(request.args.keys()):
 			if request.args["enabled"][0] == "True":
 				enabled = True
 			elif request.args["enabled"][0] == "False":
@@ -2156,7 +2156,7 @@ class WebController(BaseController):
 			HTTP response with headers
 		"""
 		stype = "tv"
-		if "stype" in request.args.keys():
+		if "stype" in list(request.args.keys()):
 			stype = request.args["stype"][0]
 		return getBouquets(stype)
 
@@ -2165,7 +2165,7 @@ class WebController(BaseController):
 
 	def P_getsatellites(self, request):
 		stype = "tv"
-		if "stype" in request.args.keys():
+		if "stype" in list(request.args.keys()):
 			stype = request.args["stype"][0]
 		return getSatellites(stype)
 
@@ -2230,7 +2230,7 @@ class WebController(BaseController):
 		return ret
 
 	def P_setmoviesort(self, request):
-		if "nsort" in request.args.keys():
+		if "nsort" in list(request.args.keys()):
 			nsort = request.args["nsort"][0]
 			comp_config.OpenWebif.webcache.moviesort.value = nsort
 			comp_config.OpenWebif.webcache.moviesort.save()
@@ -2302,35 +2302,35 @@ class WebController(BaseController):
 		return {}
 
 	def P_setwebconfig(self, request):
-		if "responsivedesign" in request.args.keys():
+		if "responsivedesign" in list(request.args.keys()):
 			val = (request.args["responsivedesign"][0] == 'true')
 			comp_config.OpenWebif.responsive_enabled.value = val
 			comp_config.OpenWebif.responsive_enabled.save()
-		elif "moviedb" in request.args.keys():
+		elif "moviedb" in list(request.args.keys()):
 			try:
 				comp_config.OpenWebif.webcache.moviedb.value = request.args["moviedb"][0]
 				comp_config.OpenWebif.webcache.moviedb.save()
 			except Exception:
 				pass
-		elif "showchannelpicon" in request.args.keys():
+		elif "showchannelpicon" in list(request.args.keys()):
 			val = (request.args["showchannelpicon"][0] == 'true')
 			comp_config.OpenWebif.webcache.showchannelpicon.value = val
 			comp_config.OpenWebif.webcache.showchannelpicon.save()
-		elif "showchanneldetails" in request.args.keys():
+		elif "showchanneldetails" in list(request.args.keys()):
 			val = (request.args["showchanneldetails"][0] == 'true')
 			comp_config.OpenWebif.webcache.showchanneldetails.value = val
 			comp_config.OpenWebif.webcache.showchanneldetails.save()
-		elif "zapstream" in request.args.keys():
+		elif "zapstream" in list(request.args.keys()):
 			val = (request.args["zapstream"][0] == 'true')
 			comp_config.OpenWebif.webcache.zapstream.value = val
 			comp_config.OpenWebif.webcache.zapstream.save()
-		elif "theme" in request.args.keys():
+		elif "theme" in list(request.args.keys()):
 			try:
 				comp_config.OpenWebif.webcache.theme.value = request.args["theme"][0]
 				comp_config.OpenWebif.webcache.theme.save()
 			except Exception:
 				pass
-		elif "mepgmode" in request.args.keys():
+		elif "mepgmode" in list(request.args.keys()):
 			try:
 				comp_config.OpenWebif.webcache.mepgmode.value = int(request.args["mepgmode"][0])
 				comp_config.OpenWebif.webcache.mepgmode.save()

@@ -619,7 +619,7 @@ def getPowerTimer(session, request):
 	try:
 		from PowerTimer import TIMERTYPE, AFTEREVENT
 		logs = False
-		if "logs" in request.args.keys():
+		if "logs" in list(request.args.keys()):
 			logs = True
 
 		timers = []
@@ -683,34 +683,34 @@ def getPowerTimer(session, request):
 
 def setPowerTimer(session, request):
 	id = 0
-	if "id" in request.args.keys():
+	if "id" in list(request.args.keys()):
 		id = int(request.args["id"][0])
 	timertype = 0
-	if "timertype" in request.args.keys() and request.args["timertype"][0] in ["0", "1", "2", "3", "4", "5", "6", "7", "8"]:
+	if "timertype" in list(request.args.keys()) and request.args["timertype"][0] in ["0", "1", "2", "3", "4", "5", "6", "7", "8"]:
 		timertype = int(request.args["timertype"][0])
 	begin = int(time() + 60)
-	if "begin" in request.args.keys():
+	if "begin" in list(request.args.keys()):
 		begin = int(request.args["begin"][0])
 	end = int(time() + 120)
-	if "end" in request.args.keys():
+	if "end" in list(request.args.keys()):
 		end = int(request.args["end"][0])
 	disabled = 0
-	if "disabled" in request.args.keys():
+	if "disabled" in list(request.args.keys()):
 		disabled = long(request.args["disabled"][0])
 	repeated = False
-	if "repeated" in request.args.keys():
+	if "repeated" in list(request.args.keys()):
 		repeated = request.args["repeated"][0] == "1"
 	afterevent = 0
-	if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["0", "1", "2", "3", "4"]:
+	if "afterevent" in list(request.args.keys()) and request.args["afterevent"][0] in ["0", "1", "2", "3", "4"]:
 		afterevent = int(request.args["afterevent"][0])
 	autosleepinstandbyonly = "no"
-	if "autosleepinstandbyonly" in request.args.keys():
+	if "autosleepinstandbyonly" in list(request.args.keys()):
 		autosleepinstandbyonly = request.args["autosleepinstandbyonly"][0]
 	autosleepdelay = "0"
-	if "autosleepdelay" in request.args.keys():
+	if "autosleepdelay" in list(request.args.keys()):
 		autosleepdelay = int(request.args["autosleepdelay"][0])
 	autosleeprepeat = "once"
-	if "autosleeprepeat" in request.args.keys():
+	if "autosleeprepeat" in list(request.args.keys()):
 		autosleeprepeat = request.args["autosleeprepeat"][0]
 
 	# find

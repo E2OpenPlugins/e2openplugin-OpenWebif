@@ -78,13 +78,13 @@ def getMovieList(rargs=None, locations=None):
 	fields = None
 	bookmarklist = []
 
-	if rargs and "tag" in rargs.keys():
+	if rargs and "tag" in list(rargs.keys()):
 		tag = rargs["tag"][0]
 
-	if rargs and "dirname" in rargs.keys():
+	if rargs and "dirname" in list(rargs.keys()):
 		directory = rargs["dirname"][0]
 
-	if rargs and "fields" in rargs.keys():
+	if rargs and "fields" in list(rargs.keys()):
 		fields = rargs["fields"][0]
 
 	if directory is None:
@@ -120,7 +120,7 @@ def getMovieList(rargs=None, locations=None):
 			bookmarklist.append(item)
 
 	folders = [root]
-	if rargs and "recursive" in rargs.keys():
+	if rargs and "recursive" in list(rargs.keys()):
 		for f in bookmarklist:
 			if f[-1] != "/":
 				f += "/"
@@ -252,13 +252,13 @@ def getMovieSearchList(rargs=None, locations=None):
 	extended = None
 	searchstr = None
 
-	if rargs and "find" in rargs.keys():
+	if rargs and "find" in list(rargs.keys()):
 		searchstr = rargs["find"][0]
 
-	if rargs and "short" in rargs.keys():
+	if rargs and "short" in list(rargs.keys()):
 		short = rargs["short"][0]
 
-	if rargs and "extended" in rargs.keys():
+	if rargs and "extended" in list(rargs.keys()):
 		extended = rargs["extended"][0]
 
 	s = {'title': str(searchstr)}

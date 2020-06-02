@@ -516,7 +516,7 @@ class BouquetEditor(Source):
 				sRef = param["sRef"]
 		if sRef is None:
 			return (False, _("No service given!"))
-		if "setuppinactive" in config.ParentalControl.dict().keys() and config.ParentalControl.setuppinactive.value:
+		if "setuppinactive" in list(config.ParentalControl.dict().keys()) and config.ParentalControl.setuppinactive.value:
 			password = None
 			if "password" in param:
 				if param["password"] is not None:

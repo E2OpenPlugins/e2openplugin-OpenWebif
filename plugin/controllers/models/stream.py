@@ -26,7 +26,7 @@ class GetSession(Resource):
 
 	def GetAuth(self, request):
 		session = request.getSession().sessionNamespaces
-		if "pwd" in session.keys() and session["pwd"] is not None:
+		if "pwd" in list(session.keys()) and session["pwd"] is not None:
 			return (session["user"], session["pwd"])
 		else:
 			return None

@@ -28,6 +28,7 @@ from time import time
 from Tools.Directories import resolveFilename, SCOPE_CONFIG
 
 import os
+import six
 
 CA_FILE = resolveFilename(SCOPE_CONFIG, "ca.pem")
 KEY_FILE = resolveFilename(SCOPE_CONFIG, "key.pem")
@@ -67,7 +68,7 @@ class SSLCertificateGenerator:
 	def __genCertificate(self, keypair):
 		certificate = crypto.X509()
 		subject = certificate.get_subject()
-		for key, val in self.certSubjectOptions.iteritems():
+		for key, val in six.iteritems(self.certSubjectOptions):
 			setattr(subject, key, val)
 		certificate.set_serial_number( int(time()) )
 		certificate.gmtime_adj_notBefore( 0 )

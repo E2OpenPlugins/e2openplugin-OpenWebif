@@ -89,7 +89,7 @@ class RootController(BaseController):
 		if config.OpenWebif.responsive_enabled.value and os.path.exists(VIEWS_PATH + "/responsive"):
 			return {}
 		mode = ''
-		if "mode" in request.args.keys():
+		if "mode" in list(request.args.keys()):
 			mode = request.args["mode"][0]
 		uagent = request.getHeader('User-Agent')
 		if uagent and mode != 'fullpage' and os.path.exists(getPublicPath('mobile')):

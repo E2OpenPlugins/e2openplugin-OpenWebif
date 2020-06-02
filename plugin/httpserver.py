@@ -360,7 +360,7 @@ class AuthResource(resource.Resource):
 			sid = str(request.getPassword())
 			try:
 				oldsession = site.getSession(sid).sessionNamespaces
-				if "logged" in oldsession.keys() and oldsession["logged"]:
+				if "logged" in list(oldsession.keys()) and oldsession["logged"]:
 					session = request.getSession().sessionNamespaces
 					session["logged"] = True
 					return self.resource.getChildWithDefault(path, request)
@@ -369,7 +369,7 @@ class AuthResource(resource.Resource):
 
 			try:
 				oldsession = sslsite.getSession(sid).sessionNamespaces
-				if "logged" in oldsession.keys() and oldsession["logged"]:
+				if "logged" in list(oldsession.keys()) and oldsession["logged"]:
 					session = request.getSession().sessionNamespaces
 					session["logged"] = True
 					return self.resource.getChildWithDefault(path, request)
@@ -382,7 +382,7 @@ class AuthResource(resource.Resource):
 			return resource.ErrorPage(http.FORBIDDEN, 'Forbidden', '403.6 IP address rejected')
 
 		# ... or auth
-		if "logged" in session.keys() and session["logged"]:
+		if "logged" in list(session.keys()) and session["logged"]:
 			return self.resource.getChildWithDefault(path, request)
 
 		if self.login(request.getUser(), request.getPassword(), peer) is False:

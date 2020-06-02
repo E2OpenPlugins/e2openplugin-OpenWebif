@@ -241,7 +241,7 @@ class BQEWebController(BaseController):
 #		return {"services": services}
 
 	def P_getservices(self, request):
-		if "sRef" in request.args.keys():
+		if "sRef" in list(request.args.keys()):
 			sRef = request.args["sRef"][0]
 		else:
 			sRef = ""
@@ -341,8 +341,8 @@ class BQEWebController(BaseController):
 				type = "0"
 			else:
 				type = "1"
-			setuppin = "setuppin" in config.ParentalControl.dict().keys() and config.ParentalControl.setuppin.value or -1
-			setuppinactive = "setuppin" in config.ParentalControl.dict().keys() and config.ParentalControl.setuppinactive.value
+			setuppin = "setuppin" in list(config.ParentalControl.dict().keys()) and config.ParentalControl.setuppin.value or -1
+			setuppinactive = "setuppin" in list(config.ParentalControl.dict().keys()) and config.ParentalControl.setuppinactive.value
 		else:
 			type = ""
 			setuppin = ""
@@ -396,7 +396,7 @@ class BQEImport(resource.Resource):
 		request.setHeader('content-type', 'text/plain')
 		request.setHeader('charset', 'UTF-8')
 		result = [False, 'Error upload File']
-		if "json" in request.args.keys():
+		if "json" in list(request.args.keys()):
 			try:
 				from BouquetEditor import BouquetEditor
 				bqe = BouquetEditor(self.session, func=BouquetEditor.IMPORT_BOUQUET)

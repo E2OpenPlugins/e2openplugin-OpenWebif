@@ -245,7 +245,7 @@ def getConfigsSections():
 	}
 
 def privSettingValues(prefix, top, result):
-	for (key, val) in top.items():
+	for (key, val) in list(top.items()):
 		name = prefix + "." + key
 		if isinstance(val, dict):
 			privSettingValues(name, val, result)
