@@ -21,8 +21,10 @@ script:
 - python testsuite/evil_eval.py
 
 after_success:
-- if [[ $TRAVIS_PYTHON_VERSION == 2.7.15 ]]; then futurize -stage1 . > futurize_stage1.txt; fi
-- if [[ $TRAVIS_PYTHON_VERSION == 2.7.15 ]]; then 2to3 -f all . > 2to3.txt; fi
+#- if [[ $TRAVIS_PYTHON_VERSION == 2.7.15 ]]; then futurize -stage1 . > futurize_stage1.txt; fi
+#- if [[ $TRAVIS_PYTHON_VERSION == 2.7.15 ]]; then 2to3 -f all . > 2to3.txt; fi
+- if [[ $TRAVIS_PYTHON_VERSION == 2.7.15 ]]; then futurize -stage1 .; fi
+- if [[ $TRAVIS_PYTHON_VERSION == 2.7.15 ]]; then 2to3 -f all .; fi
 - bandit -r plugin -f html -o bandit.html
 - python -m flake8 --ignore=W191,E501,E302 plugin/ --output-file flake8_report.txt
 - jshint ./sourcefiles/js/ | tee jshint1_report.txt
@@ -42,7 +44,7 @@ after_success:
 - make html
 - cd build/html
 - mv * ../../../Rel/
-
+    
 deploy:
   provider: pages
   local_dir: Rel
