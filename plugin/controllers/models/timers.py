@@ -30,7 +30,7 @@ from RecordTimer import RecordTimerEntry, parseEvent
 from ServiceReference import ServiceReference
 from time import time, strftime, localtime, mktime
 from six.moves.urllib.parse import unquote
-from info import GetWithAlternative
+from .info import GetWithAlternative
 from ..i18n import _
 
 def getTimers(session):

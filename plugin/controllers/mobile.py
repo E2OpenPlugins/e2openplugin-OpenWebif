@@ -20,14 +20,14 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
 ##########################################################################
 
-from base import BaseController
-from models.movies import getMovieList
-from models.timers import getTimers
-from models.services import getBouquets, getChannels, getChannelEpg, getEvent, getPicon
+from .base import BaseController
+from .models.movies import getMovieList
+from .models.timers import getTimers
+from .models.services import getBouquets, getChannels, getChannelEpg, getEvent, getPicon
 from six.moves.urllib.parse import quote
 from time import localtime, strftime
 
-from defaults import TRANSCODING
+from .defaults import TRANSCODING
 
 
 class MobileController(BaseController):
@@ -136,6 +136,6 @@ class MobileController(BaseController):
 			from Components.RcModel import rc_model
 			REMOTE = rc_model.getRcFolder() + "/remote"
 		except:
-			from models.owibranding import rc_model
+			from .models.owibranding import rc_model
 			REMOTE = rc_model().getRcFolder()
 		return { "remote": REMOTE }

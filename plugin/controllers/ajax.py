@@ -23,17 +23,17 @@
 from Tools.Directories import fileExists
 from Components.config import config
 
-from models.services import getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
-from models.info import getInfo
-from models.movies import getMovieList, getMovieSearchList
-from models.timers import getTimers
-from models.config import getConfigs, getConfigsSections
-from models.stream import GetSession
-from base import BaseController
+from .models.services import getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
+from .models.info import getInfo
+from .models.movies import getMovieList, getMovieSearchList
+from .models.timers import getTimers
+from .models.config import getConfigs, getConfigsSections
+from .models.stream import GetSession
+from .base import BaseController
 from time import mktime, localtime
-from models.locations import getLocations
+from .models.locations import getLocations
 
-from defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH, TRANSCODING
+from .defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH, TRANSCODING
 
 # from twisted.web.resource import Resource
 import os
@@ -41,7 +41,7 @@ import os
 try:
 	from boxbranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
 except:  # noqa: E722
-	from models.owibranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild  # noqa: F401
+	from .models.owibranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild  # noqa: F401
 
 
 class AjaxController(BaseController):

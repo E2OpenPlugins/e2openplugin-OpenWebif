@@ -10,25 +10,25 @@
 ##############################################################################
 
 from Components.config import config as comp_config
-from models.info import getInfo, getCurrentTime, getStatusInfo, getFrontendStatus, testPipStatus
-from models.services import getCurrentService, getBouquets, getServices, getSubServices, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
-from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
-from models.audiotrack import getAudioTracks, setAudioTrack
-from models.control import zapService, remoteControl, setPowerState, getStandbyState
-from models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
-from models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer, getPowerTimer, setPowerTimer, getVPSChannels
-from models.message import sendMessage, getMessageAnswer
-from models.movies import getMovieList, removeMovie, getMovieInfo, moveMovie, renameMovie, getAllMovies, getMovieDetails
-from models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, saveConfig, getConfigs, getConfigsSections, getUtcOffset
-from models.stream import getStream, getTS, getStreamSubservices, GetSession
-from models.servicelist import reloadServicesLists
-from models.mediaplayer import mediaPlayerAdd, mediaPlayerRemove, mediaPlayerPlay, mediaPlayerCommand, mediaPlayerCurrent, mediaPlayerList, mediaPlayerLoad, mediaPlayerSave, mediaPlayerFindFile
-from models.plugins import reloadPlugins
+from .models.info import getInfo, getCurrentTime, getStatusInfo, getFrontendStatus, testPipStatus
+from .models.services import getCurrentService, getBouquets, getServices, getSubServices, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
+from .models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
+from .models.audiotrack import getAudioTracks, setAudioTrack
+from .models.control import zapService, remoteControl, setPowerState, getStandbyState
+from .models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
+from .models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer, getPowerTimer, setPowerTimer, getVPSChannels
+from .models.message import sendMessage, getMessageAnswer
+from .models.movies import getMovieList, removeMovie, getMovieInfo, moveMovie, renameMovie, getAllMovies, getMovieDetails
+from .models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, saveConfig, getConfigs, getConfigsSections, getUtcOffset
+from .models.stream import getStream, getTS, getStreamSubservices, GetSession
+from .models.servicelist import reloadServicesLists
+from .models.mediaplayer import mediaPlayerAdd, mediaPlayerRemove, mediaPlayerPlay, mediaPlayerCommand, mediaPlayerCurrent, mediaPlayerList, mediaPlayerLoad, mediaPlayerSave, mediaPlayerFindFile
+from .models.plugins import reloadPlugins
 from Screens.InfoBar import InfoBar
 
-from i18n import _
-from base import BaseController
-from stream import StreamController
+from .i18n import _
+from .base import BaseController
+from .stream import StreamController
 import re
 
 

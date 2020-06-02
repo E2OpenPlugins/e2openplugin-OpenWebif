@@ -24,12 +24,12 @@ from Components.Label import Label
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection, configfile
 from enigma import getDesktop
-from controllers.models.info import getInfo
-from controllers.defaults import getKinopoisk
+from .controllers.models.info import getInfo
+from .controllers.defaults import getKinopoisk
 
-from httpserver import HttpdStart, HttpdStop, HttpdRestart
+from .httpserver import HttpdStart, HttpdStop, HttpdRestart
 
-from controllers.i18n import _
+from .controllers.i18n import _
 
 # not used redmond -> original , trontastic , ui-lightness
 THEMES = [
@@ -88,7 +88,7 @@ config.OpenWebif.epg_encoding = ConfigSelection(default='utf-8', choices=['utf-8
 										'iso-8859-10',
 										'iso-8859-16'])
 
-import vtiaddon
+from . import vtiaddon
 vtiaddon.expandConfig()
 
 imagedistro = getInfo()['imagedistro']

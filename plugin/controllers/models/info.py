@@ -49,7 +49,7 @@ try:
 	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
 	from enigma import getEnigmaVersionString
 except:  # noqa: E722
-	from owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate, getLcd, getGrabPip
+	from .owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate, getLcd, getGrabPip
 
 	def getEnigmaVersionString():
 		return about.getEnigmaVersionString()
@@ -542,7 +542,7 @@ def getInfo(session=None, need_fullinfo=False):
 			recs = NavigationInstance.instance.getRecordings()
 			if recs:
 				#  only one stream and only TV
-				from Plugins.Extensions.OpenWebif.controllers.stream import streamList
+				from .Plugins.Extensions.OpenWebif.controllers.stream import streamList
 				s_name = ''
 				#  s_cip = ''
 

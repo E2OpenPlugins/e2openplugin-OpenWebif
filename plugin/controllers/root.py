@@ -25,20 +25,20 @@ import os
 from twisted.web import static, http, proxy
 from Components.config import config
 
-from models.grab import grabScreenshot
-from base import BaseController
-from web import WebController, ApiController
-from ajax import AjaxController
-from mobile import MobileController
-from ipkg import IpkgController
-from AT import ATController
-from ER import ERController
-from BQE import BQEController
-from transcoding import TranscodingController
-from wol import WOLSetupController, WOLClientController
-from file import FileController
+from .models.grab import grabScreenshot
+from .base import BaseController
+from .web import WebController, ApiController
+from .ajax import AjaxController
+from .mobile import MobileController
+from .ipkg import IpkgController
+from .AT import ATController
+from .ER import ERController
+from .BQE import BQEController
+from .transcoding import TranscodingController
+from .wol import WOLSetupController, WOLClientController
+from .file import FileController
 
-from defaults import PICON_PATH, getPublicPath, VIEWS_PATH
+from .defaults import PICON_PATH, getPublicPath, VIEWS_PATH
 
 class RootController(BaseController):
 	"""
@@ -73,7 +73,7 @@ class RootController(BaseController):
 		if PICON_PATH:
 			self.putChild("picon", static.File(PICON_PATH))
 		try:
-			from NET import NetController
+			from .NET import NetController
 			self.putChild("net", NetController(session))
 		except:  # noqa: E722
 			pass

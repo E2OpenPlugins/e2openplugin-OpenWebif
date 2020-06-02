@@ -19,7 +19,7 @@ from twisted.web import static, resource, http
 
 from Components.config import config
 from Tools.Directories import fileExists
-from utilities import lenient_force_utf_8, sanitise_filename_slashes
+from .utilities import lenient_force_utf_8, sanitise_filename_slashes
 
 
 def new_getRequestHostname(self):

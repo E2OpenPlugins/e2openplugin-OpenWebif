@@ -10,7 +10,7 @@
 ##############################################################################
 from enigma import eServiceReference, getBestPlayableServiceReference
 from ServiceReference import ServiceReference
-from info import getInfo
+from .info import getInfo
 from six.moves.urllib.parse import unquote, quote
 import os
 import re
