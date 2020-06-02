@@ -3,7 +3,7 @@
 
 from time import localtime, strftime
 from six.moves.urllib.parse import quote
-from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
+from .Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 
 
 class renderEvtBlock:
