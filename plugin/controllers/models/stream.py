@@ -75,7 +75,7 @@ def getStream(session, request, m3ufile):
 	if fileExists("/dev/bcm_enc0"):
 		try:
 			transcoder_port = int(config.plugins.transcodingsetup.port.value)
-		except StandardError:
+		except Exception:
 			# Transcoding Plugin is not installed or your STB does not support transcoding
 			transcoder_port = None
 		if "device" in request.args:
@@ -173,7 +173,7 @@ def getTS(self, request):
 		if fileExists("/dev/bcm_enc0") or fileExists("/dev/encoder0") or fileExists("/proc/stb/encoder/0/apply"):
 			try:
 				transcoder_port = int(config.plugins.transcodingsetup.port.value)
-			except StandardError:
+			except Exception:
 				# Transcoding Plugin is not installed or your STB does not support transcoding
 				transcoder_port = None
 			if "device" in request.args:
