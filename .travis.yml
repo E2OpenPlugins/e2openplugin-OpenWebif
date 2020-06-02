@@ -2,7 +2,7 @@ language: python
 
 python:
 - "2.7"
-- "3.8"
+#- "3.8"
 
 before_install:
 - sudo apt-get install -y closure-compiler nodejs npm
@@ -19,13 +19,15 @@ script:
 - python -m compileall -l . -r 10 -q
 - cheetah compile -R plugin
 - python testsuite/evil_eval.py
+- futurize -stage1 .
+- 2to3 -f all .
 
 after_success:
 #- if [[ $TRAVIS_PYTHON_VERSION == 2.7.15 ]]; then futurize -stage1 . > futurize_stage1.txt; fi
 #- if [[ $TRAVIS_PYTHON_VERSION == 2.7.15 ]]; then 2to3 -f all . > 2to3.txt; fi
-- if [[ $TRAVIS_PYTHON_VERSION == 2.7.15 ]]; then futurize -stage1 .; fi
-- if [[ $TRAVIS_PYTHON_VERSION == 2.7.15 ]]; then 2to3 -f all .; fi
-- bandit -r plugin -f html -o bandit.html
+#- if [[ $TRAVIS_PYTHON_VERSION == 2.7.15 ]]; then futurize -stage1 .; fi
+#- if [[ $TRAVIS_PYTHON_VERSION == 2.7.15 ]]; then 2to3 -f all .; fi
+#- bandit -r plugin -f html -o bandit.html
 - python -m flake8 --ignore=W191,E501,E302 plugin/ --output-file flake8_report.txt
 - jshint ./sourcefiles/js/ | tee jshint1_report.txt
 - jshint ./sourcefiles/themes/absb/js/ | tee jshint2_report.txt
