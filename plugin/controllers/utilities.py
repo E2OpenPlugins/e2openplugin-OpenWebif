@@ -275,4 +275,4 @@ if __name__ == '__main__':
 	import doctest
 
 	(FAILED, SUCCEEDED) = doctest.testmod()
-	print("[doctest] SUCCEEDED/FAILED: {:d}/{:d}".format(SUCCEEDED, FAILED))
+	print(("[doctest] SUCCEEDED/FAILED: {:d}/{:d}".format(SUCCEEDED, FAILED)))
