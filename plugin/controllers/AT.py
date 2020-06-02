@@ -83,7 +83,7 @@ class AutoTimerDoBackupResource(resource.Resource):
 				if not os.path.exists(arg):
 					return (False, "Error while preparing backup file, %s does not exists." % arg)
 				tarFiles += "%s " % arg
-			lines = os.popen("tar cvf %s %s" % (ATFN,tarFiles)).readlines()
+			lines = os.popen("tar cvf %s %s" % (ATFN, tarFiles)).readlines()
 			os.remove(checkfile)
 			return (True, ATFN)
 		else:

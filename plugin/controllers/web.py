@@ -516,7 +516,7 @@ class WebController(BaseController):
 		request.setHeader('Content-Type', 'application/xspf+xml')
 		if "bName" in request.args.keys():
 			bname = request.args["bName"][0]
-			bname = bname.replace(",","_").replace(";","_")
+			bname = bname.replace(",", "_").replace(";", "_")
 			request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (bname, 'xspf'))
 		services = getServices(bRef, False)
 		if comp_config.OpenWebif.auth_for_streaming.value:
@@ -560,7 +560,7 @@ class WebController(BaseController):
 		request.setHeader('Content-Type', 'application/x-mpegurl')
 		if "bName" in request.args.keys():
 			bname = request.args["bName"][0]
-			bname = bname.replace(",","_").replace(";","_")
+			bname = bname.replace(",", "_").replace(";", "_")
 			request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (bname, 'm3u8'))
 		services = getServices(bRef, False)
 		if comp_config.OpenWebif.auth_for_streaming.value:

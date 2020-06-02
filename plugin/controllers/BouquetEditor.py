@@ -304,7 +304,7 @@ class BouquetEditor(Source):
 		mutableBouquetList = self.getMutableList(bouquetRef)
 		if mutableBouquetList is not None:
 			if sRefUrl:
-				ref = eServiceReference(4097,0,sRef + ':' + sName)
+				ref = eServiceReference(4097, 0, sRef + ':' + sName)
 			else:
 				ref = eServiceReference(sRef)
 			if sName:

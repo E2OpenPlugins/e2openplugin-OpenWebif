@@ -198,7 +198,7 @@ def HttpdStart(session):
 				# ipv4 only
 				listener.append( reactor.listenTCP(port, site) )
 			print("[OpenWebif] started on %i"% (port))
-			BJregisterService('http',port)
+			BJregisterService('http', port)
 		except CannotListenError:
 			print("[OpenWebif] failed to listen on Port %i" % (port))
 
@@ -253,7 +253,7 @@ def HttpdStart(session):
 					# ipv4 only
 					listener.append( reactor.listenSSL(httpsPort, sslsite, context) )
 				print("[OpenWebif] started on", httpsPort)
-				BJregisterService('https',httpsPort)
+				BJregisterService('https', httpsPort)
 			except CannotListenError:
 				print("[OpenWebif] failed to listen on Port", httpsPort)
 			except:
@@ -307,14 +307,14 @@ class AuthResource(resource.Resource):
 			peer = request.transport.socket.getpeername()[0]
 
 		if peer.startswith("::ffff:"):
-			peer = peer.replace("::ffff:","")
+			peer = peer.replace("::ffff:", "")
 
 		if peer.startswith("fe80::") and "%" in peer:
 			peer = peer.split ("%")[0]
 
 		if self.login(request.getUser(), request.getPassword(), peer) is False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
-			errpage = resource.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
+			errpage = resource.ErrorPage(http.UNAUTHORIZED, "Unauthorized", "401 Authentication required")
 			return errpage.render(request)
 		else:
 			return self.resource.render(request)
@@ -331,7 +331,7 @@ class AuthResource(resource.Resource):
 			peer = request.transport.socket.getpeername()[0]
 
 		if peer.startswith("::ffff:"):
-			peer = peer.replace("::ffff:","")
+			peer = peer.replace("::ffff:", "")
 
 		if peer.startswith("fe80::") and "%" in peer:
 			peer = peer.split ("%")[0]
@@ -379,7 +379,7 @@ class AuthResource(resource.Resource):
 		# If we get to here, no exception applied
 		# Either block with forbidden (If auth is disabled) ...
 		if (not request.isSecure() and config.OpenWebif.auth.value is False) or (request.isSecure() and config.OpenWebif.https_auth.value is False):
-			return resource.ErrorPage(http.FORBIDDEN,'Forbidden','403.6 IP address rejected')
+			return resource.ErrorPage(http.FORBIDDEN, 'Forbidden', '403.6 IP address rejected')
 
 		# ... or auth
 		if "logged" in session.keys() and session["logged"]:
@@ -387,7 +387,7 @@ class AuthResource(resource.Resource):
 
 		if self.login(request.getUser(), request.getPassword(), peer) is False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
-			return resource.ErrorPage(http.UNAUTHORIZED,"Unauthorized","401 Authentication required")
+			return resource.ErrorPage(http.UNAUTHORIZED, "Unauthorized", "401 Authentication required")
 		else:
 			session["logged"] = True
 			session["user"] = request.getUser()
