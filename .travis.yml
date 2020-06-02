@@ -10,8 +10,8 @@ before_install:
 - sudo npm install -g jshint
 
 install:
-- if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then pip install Cheetah; fi
-- if [[ $TRAVIS_PYTHON_VERSION >= 3 ]]; then pip install Cheetah3; fi
+- if [[ $TRAVIS_PYTHON_VERSION == 2.7.15 ]]; then pip install Cheetah; fi
+- if [[ $TRAVIS_PYTHON_VERSION == 3.8.0 ]]; then pip install Cheetah3; fi
 - pip install -r requirements.txt
 - pip install bandit
 
