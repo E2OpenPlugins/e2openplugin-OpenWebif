@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import re
+import six
 
 MANY_SLASHES_PATTERN = r'[\/]+'
 MANY_SLASHES_REGEX = re.compile(MANY_SLASHES_PATTERN)
@@ -43,7 +44,7 @@ SERVICE_TYPE = {
 	SERVICE_TYPE_OPT: 'OPT',
 }
 
-SERVICE_TYPE_LOOKUP = {k: v for k, v in SERVICE_TYPE.items()}
+SERVICE_TYPE_LOOKUP = {k: v for k, v in six.iteritems(SERVICE_TYPE)}
 
 #: Namespace - DVB-C services
 NS_DVB_C = 0xffff0000
@@ -62,7 +63,7 @@ NS = {
 }
 
 #: Namespace:Label lookup map
-NS_LOOKUP = {v: k for k, v in NS.items()}
+NS_LOOKUP = {v: k for k, v in six.iteritems(NS)}
 
 
 def lenient_decode(value, encoding=None):
