@@ -11,7 +11,7 @@
 from enigma import eServiceReference, getBestPlayableServiceReference
 from ServiceReference import ServiceReference
 from info import getInfo
-from urllib import unquote, quote
+from six.moves.urllib.parse import unquote, quote
 import os
 import re
 from Components.config import config

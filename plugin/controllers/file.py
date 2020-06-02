@@ -12,7 +12,7 @@
 import os
 import re
 import glob
-from urllib import quote
+from six.moves.urllib.parse import quote
 import json
 
 from twisted.web import static, resource, http

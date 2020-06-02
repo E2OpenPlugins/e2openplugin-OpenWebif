@@ -8,7 +8,7 @@
 		<div id="contentContainer">
 			<ul data-role="listview" data-inset="true" data-theme="d">
 				<li data-role="list-divider" role="heading" data-theme="b">$tstrings['bouquets']</li>
-				#from urllib import quote
+				#from six.moves.urllib.parse import quote
 				#for $bouquet in $bouquets
 				<li><a href="/mobile/channels?id=$quote($bouquet[0])">$bouquet[1]</a></li>
 				#end for

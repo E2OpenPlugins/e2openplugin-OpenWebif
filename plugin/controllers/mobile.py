@@ -24,7 +24,7 @@ from base import BaseController
 from models.movies import getMovieList
 from models.timers import getTimers
 from models.services import getBouquets, getChannels, getChannelEpg, getEvent, getPicon
-from urllib import quote
+from six.moves.urllib.parse import quote
 from time import localtime, strftime
 
 from defaults import TRANSCODING

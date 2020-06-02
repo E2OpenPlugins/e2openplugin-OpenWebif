@@ -29,7 +29,7 @@ from Components.TimerSanityCheck import TimerSanityCheck
 from RecordTimer import RecordTimerEntry, parseEvent
 from ServiceReference import ServiceReference
 from time import time, strftime, localtime, mktime
-from urllib import unquote
+from six.moves.urllib.parse import unquote
 from info import GetWithAlternative
 from ..i18n import _
 

@@ -36,7 +36,7 @@ from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG
 from Screens.InfoBar import InfoBar
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache
 from info import GetWithAlternative, getOrbitalText, getOrb
-from urllib import quote, unquote
+from six.moves.urllib.parse import quote, unquote
 from ..utilities import parse_servicereference, SERVICE_TYPE_LOOKUP, NS_LOOKUP
 from ..i18n import _, tstrings
 from ..defaults import PICON_PATH
