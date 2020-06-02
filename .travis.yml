@@ -19,8 +19,9 @@ script:
 - python -m compileall -l . -r 10 -q
 - cheetah compile -R plugin
 - python testsuite/evil_eval.py
-- futurize -stage1 .
-- 2to3 -f all .
+- futurize --stage1 **/*.py
+- futurize --stage2 **/*.py
+#- 2to3 -f all .
 
 after_success:
 #- if [[ $TRAVIS_PYTHON_VERSION == 2.7.15 ]]; then futurize -stage1 . > futurize_stage1.txt; fi
