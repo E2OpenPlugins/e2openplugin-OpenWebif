@@ -10,3 +10,6 @@
 .vscode/
 *.css.map
 /doc/build/
+.settings/
+.project
+.pydevproject

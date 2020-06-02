@@ -1,5 +1,9 @@
-## Version 1.3.9
+## Version 1.4.0
 ## (in development)
+* support python 3
+
+## Version 1.3.9
+* fix #1016,#1017
 
 ## Version 1.3.8
 * BQE: import bouquets via json
