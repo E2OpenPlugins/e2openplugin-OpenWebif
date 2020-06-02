@@ -1,6 +1,7 @@
 language: python
 
 python:
+- "2.7"
 - "3.8"
 
 before_install:
@@ -9,6 +10,8 @@ before_install:
 - sudo npm install -g jshint
 
 install:
+- if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then pip install Cheetah; fi
+- if [[ $TRAVIS_PYTHON_VERSION >= 3 ]]; then pip install Cheetah3; fi
 - pip install -r requirements.txt
 - pip install bandit
 
