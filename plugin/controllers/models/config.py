@@ -298,7 +298,7 @@ class ConfigFiles:
 		sections = []
 		for setupfile in self.setupfiles:
 			# print("[OpenWebif] loading configuration file :", setupfile)
-			setupfile = file(setupfile, 'r')
+			setupfile = open(setupfile, 'r')
 			setupdom = xml.etree.cElementTree.parse(setupfile)  # nosec
 			setupfile.close()
 			xmldata = setupdom.getroot()

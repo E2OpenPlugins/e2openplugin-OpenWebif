@@ -65,7 +65,7 @@ def getIPMethod(iface):
 	ipmethod = _("SLAAC")
 	if fileExists('/etc/network/interfaces'):
 		ifaces = '/etc/network/interfaces'
-		for line in file(ifaces).readlines():
+		for line in open(ifaces).readlines():
 			if not line.startswith('#'):
 				if line.startswith('iface') and "inet6" in line and iface in line:
 					if "static" in line:
@@ -84,7 +84,7 @@ def getIPv4Method(iface):
 	ipv4method = _("static")
 	if fileExists('/etc/network/interfaces'):
 		ifaces = '/etc/network/interfaces'
-		for line in file(ifaces).readlines():
+		for line in open(ifaces).readlines():
 			if not line.startswith('#'):
 				if line.startswith('iface') and "inet " in line and iface in line:
 					if "static" in line:
@@ -155,7 +155,7 @@ def getAdapterIPv6(ifname):
 		if has_ipv6 and version.major >= 12:
 			proc = '/proc/net/if_inet6'
 			tempaddrs = []
-			for line in file(proc).readlines():
+			for line in open(proc).readlines():
 				if line.startswith('fe80'):
 					continue
 
@@ -438,7 +438,7 @@ def getInfo(session=None, need_fullinfo=False):
 	for autofs in autofiles:
 		if fileExists(autofs):
 			method = "autofs"
-			for line in file(autofs).readlines():
+			for line in open(autofs).readlines():
 				if not line.startswith('#'):
 					# Replace escaped spaces that can appear inside credentials with underscores
 					# Not elegant but we wouldn't want to expose credentials on the OWIF anyways
