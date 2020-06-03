@@ -12,7 +12,7 @@
 				<li>
 				<a href="/mobile/channelinfo?sref=$channel.ref" style="padding: 3px;">
 				<h3>$channel.name</h3>
-				#if $channel.has_key('now_title')
+				#if 'now_title' in $channel
 				<p>$channel.now_title</p>
 				#end if	
 				</a>

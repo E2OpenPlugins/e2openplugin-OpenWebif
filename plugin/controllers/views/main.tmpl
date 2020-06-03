@@ -107,7 +107,7 @@
 	<li><a class="lmc" href="ajax/boxinfo">$tstrings["box_info"]</a></li>
 	#for $extra in $extras
 		#set $target_url = $extra["key"];
-		#if $extra.has_key('nw')
+		#if 'nw' in $extra
 			#if $extra["nw"] == "1"
 			<li><a href="$target_url" target='_blank'>$extra["description"]</a></li>
 			#else

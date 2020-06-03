@@ -3,7 +3,7 @@
 <div class="cht">
 	<div class="fr">
 		<div class="a">
-		#if $channel.has_key('protection')
+		#if 'protection' in $channel
 			#if $channel.protection == "0"
 				#if $type == "radio"
 					<a href="#" onclick="addTimer('','$channel.ref','$channel.name','')" title="$tstrings['add_timer']"><i class="fa fa-clock-o"></i></a>
@@ -31,7 +31,7 @@
 		<div class="b">
 			#set $name =  $channel.name.replace("'", r"\'")
 			<span class="channel-name">
-			#if $channel.has_key('protection')
+			#if 'protection' in $channel
 				#if $channel.protection == "0"
 					<a href="#" onclick="zapChannel('$channel.ref', '$name'); return false" title="$tstrings['zap_to'] $channel.name">$channel.name</a>
 				#else
@@ -43,7 +43,7 @@
 			</span>
 			#if '4097:' in $channel.ref or '5002:' in $channel.ref or 'http%3a' in $channel.ref or 'https%3a' in $channel.ref
 				<span class="channel-tag ST-IPTV">IPTV</span>
-			#elif $channel.has_key('ns')
+			#elif 'ns' in $channel
 				#set $ns="DVB-S"
 				#if 'DVB' in $channel.ns
 					#set $ns=$channel.ns
@@ -54,13 +54,13 @@
 	</div>
 
 	#set $picon = True
-	#if $showchannelpicon and not $channel.has_key('now_title')
-		#if $channel.has_key('picon') and $channel.picon == "/images/default_picon.png"
+	#if $showchannelpicon and 'now_title' not in $channel
+		#if 'picon' in $channel and $channel.picon == "/images/default_picon.png"
 			#set $picon = False
 		#end if
 	#end if
 
-	#if $channel.has_key('protection') and $channel.protection == "0" and $picon
+	#if 'protection' in $channel and $channel.protection == "0" and $picon
 	<div>
 		#if $showchannelpicon
 			<div class="channel-picon">
@@ -70,7 +70,7 @@
 			<div style="display:none;"></div>
 		#end if
 		<div class="channel-info">
-		#if $channel.has_key('now_title')
+		#if 'now_title' in $channel
 			<div class="tt">
 				<div class="a">
 					$channel.now_begin &mdash; $channel.now_end &nbsp;&nbsp;&nbsp;

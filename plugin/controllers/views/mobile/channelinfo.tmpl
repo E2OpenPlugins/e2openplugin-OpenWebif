@@ -26,12 +26,12 @@
 						<tr>
 							<th colspan="2" class="ui-btn-up-b" style="text-align: left;">$tstrings['current_event']</th>
 						</tr>
-						#if $channelinfo.has_key('shortdesc')
+						#if 'shortdesc' in $channelinfo
 						<tr style="background-color:  #f0f7fc;">
 							<td colspan="2">$channelinfo.shortdesc</td>
 						</tr>
 						#end if
-						#if $channelinfo.has_key('longdesc')
+						#if 'longdesc' in $channelinfo
 						<tr style="background-color:  #f0f7fc;">
 							<td colspan="2">$channelinfo.longdesc</td>
 						</tr>

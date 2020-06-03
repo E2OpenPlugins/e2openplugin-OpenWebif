@@ -40,7 +40,7 @@ input#to,input#from,.text.number {width:60px;}
 								<option value="full">$tstrings['at_title_or_description_match']</option>
 								<option value="shortdesc">$tstrings['at_short_description_match']</option>
 								<option value="title_shortdesc">$tstrings['at_title_or_short_description_match']</option>
-								#if $types.has_key('start')
+								#if 'start' in $types
 									<option value="start">$tstrings['at_start_match']</option>
 								#end if
 								</select>
