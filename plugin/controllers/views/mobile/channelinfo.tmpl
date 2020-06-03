@@ -44,7 +44,7 @@
 				<li data-role="list-divider" role="heading" data-theme="b">$tstrings['upcoming_events']</li>
 				#set $date=""
 				#for $event in $channelepg
-					#if $date <> $event.date
+					#if $date != $event.date
 						<li data-role="list-divider" role="heading" data-theme="b">$event.date</li>
 						#set $date = $event.date
 					#end if

@@ -19,7 +19,7 @@
 	<div>
 	#set $name =  $channel.name.replace("'", r"\'")
 	<h2>
-			#if $channel.has_key('protection') and $channel.protection <> "0"
+			#if $channel.has_key('protection') and $channel.protection != "0"
 				<a href="#" class="theme-link-color theme-link-col-$skinColor" onclick="return false" title="$tstrings['locked']"><i class="material-icons material-icons-centered">play_circle_outline</i>$channel.name</a>
 			#else
 				<a href="#" class="theme-link-color theme-link-col-$skinColor" onclick="zapChannel('$channel.ref', '$name'); return false" title="$tstrings['zap_to'] $channel.name">$channel.name</a>
@@ -28,7 +28,7 @@
 	</div>
 	<div class="vti-vspace-10"></div>
 	<div>
-	#if $channel.has_key('protection') and $channel.protection <> "0"
+	#if $channel.has_key('protection') and $channel.protection != "0"
 		<a class="theme-link-col-fixed" target="_blank" href='#' title="$tstrings['locked']"><i class="material-icons material-icons-centered">lock</i></a>
 	#else
 		#if $type == "radio"

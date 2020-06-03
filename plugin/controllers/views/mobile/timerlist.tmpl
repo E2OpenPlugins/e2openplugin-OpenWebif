@@ -20,8 +20,8 @@
 				#set $starttime = datetime.datetime.fromtimestamp($timer.begin).strftime("%H:%M")
 				#set $startdate = datetime.datetime.fromtimestamp($timer.begin).strftime("%d.%m.%Y")
 				#set $endtime = datetime.datetime.fromtimestamp($timer.end).strftime("%H:%M")
-				#if $startdate <> $oldstartdate
-				#if $oldstartdate <> ""
+				#if $startdate != $oldstartdate
+				#if $oldstartdate != ""
 					</ul>
 				</div>
 				<div data-role="collapsible">

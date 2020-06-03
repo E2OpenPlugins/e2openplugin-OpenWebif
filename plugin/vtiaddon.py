@@ -1,6 +1,7 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
-
 from __future__ import print_function
+
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection
 
@@ -116,9 +117,13 @@ def expand_BaseController():
 
 expand_basecontroller = expand_BaseController()
 
+COLORS = [
+	'red', 'pink', 'purple', 'deep-purple', 'indigo', 'blue', 'light-blue', 'cyan', 'teal', 'green', 'light-green', 'lime', 'yellow', 'amber', 'orange', 'deep-orange', 'brown', 'grey', 'blue-grey', 'black', 'white'
+]
+
 def expandConfig():
 	config.OpenWebif.responsive_enabled = ConfigYesNo(default=False)
-	config.OpenWebif.responsive_skinColor = ConfigText(default="indigo")
+	config.OpenWebif.responsive_skinColor = ConfigSelection(default="black", choices=COLORS)
 	config.OpenWebif.responsive_epgsearch_only_bq = ConfigYesNo(default=True)
 	config.OpenWebif.responsive_epgsearch_full = ConfigYesNo(default=False)
 	config.OpenWebif.responsive_rcu_screenshot = ConfigYesNo(default=True)
