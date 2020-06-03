@@ -55,7 +55,11 @@ except ImportError:
 # The fields fetched by filterName() and convertDesc() all need to be
 # html-escaped, so do it there.
 #
-from cgi import escape as html_escape
+
+try:
+	from cgi import escape as html_escape
+except ImportError:
+	from html import escape as html_escape
 
 def filterName(name, encode=True):
 	if name is not None:
