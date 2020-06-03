@@ -31,8 +31,8 @@ from twisted.web import server, http, resource
 from twisted.internet.error import CannotListenError
 from twisted.internet.protocol import Factory, Protocol
 
-from .controllers.root import RootController
-from .sslcertificate import SSLCertificateGenerator, KEY_FILE, CERT_FILE, CA_FILE, CHAIN_FILE
+from Plugins.Extensions.OpenWebif.controllers.root import RootController
+from Plugins.Extensions.OpenWebif.sslcertificate import SSLCertificateGenerator, KEY_FILE, CERT_FILE, CA_FILE, CHAIN_FILE
 from socket import has_ipv6
 from OpenSSL import SSL
 from OpenSSL import crypto

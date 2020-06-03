@@ -27,8 +27,8 @@ from Components.config import config
 from os import path, listdir
 import xml.etree.cElementTree  # nosec
 
-from ..i18n import _
-from ..utilities import get_config_attribute
+from Plugins.Extensions.OpenWebif.controllers.i18n import _
+from Plugins.Extensions.OpenWebif.controllers.utilities import get_config_attribute
 from datetime import datetime
 import time
 

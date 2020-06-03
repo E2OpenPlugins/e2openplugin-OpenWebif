@@ -10,25 +10,25 @@
 ##############################################################################
 
 from Components.config import config as comp_config
-from .models.info import getInfo, getCurrentTime, getStatusInfo, getFrontendStatus, testPipStatus
-from .models.services import getCurrentService, getBouquets, getServices, getSubServices, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
-from .models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
-from .models.audiotrack import getAudioTracks, setAudioTrack
-from .models.control import zapService, remoteControl, setPowerState, getStandbyState
-from .models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
-from .models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer, getPowerTimer, setPowerTimer, getVPSChannels
-from .models.message import sendMessage, getMessageAnswer
-from .models.movies import getMovieList, removeMovie, getMovieInfo, moveMovie, renameMovie, getAllMovies, getMovieDetails
-from .models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, saveConfig, getConfigs, getConfigsSections, getUtcOffset
-from .models.stream import getStream, getTS, getStreamSubservices, GetSession
-from .models.servicelist import reloadServicesLists
-from .models.mediaplayer import mediaPlayerAdd, mediaPlayerRemove, mediaPlayerPlay, mediaPlayerCommand, mediaPlayerCurrent, mediaPlayerList, mediaPlayerLoad, mediaPlayerSave, mediaPlayerFindFile
-from .models.plugins import reloadPlugins
+from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo, getCurrentTime, getStatusInfo, getFrontendStatus, testPipStatus
+from Plugins.Extensions.OpenWebif.controllers.models.services import getCurrentService, getBouquets, getServices, getSubServices, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
+from Plugins.Extensions.OpenWebif.controllers.models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
+from Plugins.Extensions.OpenWebif.controllers.models.audiotrack import getAudioTracks, setAudioTrack
+from Plugins.Extensions.OpenWebif.controllers.models.control import zapService, remoteControl, setPowerState, getStandbyState
+from Plugins.Extensions.OpenWebif.controllers.models.locations import getLocations, getCurrentLocation, addLocation, removeLocation
+from Plugins.Extensions.OpenWebif.controllers.models.timers import getTimers, addTimer, addTimerByEventId, editTimer, removeTimer, toggleTimerStatus, cleanupTimer, writeTimerList, recordNow, tvbrowser, getSleepTimer, setSleepTimer, getPowerTimer, setPowerTimer, getVPSChannels
+from Plugins.Extensions.OpenWebif.controllers.models.message import sendMessage, getMessageAnswer
+from Plugins.Extensions.OpenWebif.controllers.models.movies import getMovieList, removeMovie, getMovieInfo, moveMovie, renameMovie, getAllMovies, getMovieDetails
+from Plugins.Extensions.OpenWebif.controllers.models.config import getSettings, addCollapsedMenu, removeCollapsedMenu, saveConfig, getConfigs, getConfigsSections, getUtcOffset
+from Plugins.Extensions.OpenWebif.controllers.models.stream import getStream, getTS, getStreamSubservices, GetSession
+from Plugins.Extensions.OpenWebif.controllers.models.servicelist import reloadServicesLists
+from Plugins.Extensions.OpenWebif.controllers.models.mediaplayer import mediaPlayerAdd, mediaPlayerRemove, mediaPlayerPlay, mediaPlayerCommand, mediaPlayerCurrent, mediaPlayerList, mediaPlayerLoad, mediaPlayerSave, mediaPlayerFindFile
+from Plugins.Extensions.OpenWebif.controllers.models.plugins import reloadPlugins
 from Screens.InfoBar import InfoBar
 
-from .i18n import _
-from .base import BaseController
-from .stream import StreamController
+from Plugins.Extensions.OpenWebif.controllers.i18n import _
+from Plugins.Extensions.OpenWebif.controllers.base import BaseController
+from Plugins.Extensions.OpenWebif.controllers.stream import StreamController
 import re
 
 
@@ -2021,7 +2021,7 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
-		from ..httpserver import HttpdRestart
+		from Plugins.Extensions.OpenWebif.httpserver import HttpdRestart
 		HttpdRestart(self.session)
 		return ""
 

@@ -9,7 +9,7 @@ import fnmatch
 
 def getMpInstance(session):
 	try:
-		from .Plugins.Extensions.MediaPlayer.plugin import MediaPlayer, MyPlayList  # noqa: F401
+		from Plugins.Extensions.MediaPlayer.plugin import MediaPlayer, MyPlayList  # noqa: F401
 	except ImportError:
 		return None
 
@@ -22,7 +22,7 @@ def getMpInstance(session):
 
 def getOrCreateMpInstance(session):
 	try:
-		from .Plugins.Extensions.MediaPlayer.plugin import MediaPlayer, MyPlayList  # noqa: F401
+		from Plugins.Extensions.MediaPlayer.plugin import MediaPlayer, MyPlayList  # noqa: F401
 	except ImportError:
 		return None
 

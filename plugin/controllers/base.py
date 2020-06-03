@@ -29,18 +29,16 @@ from twisted.web import server, http, resource
 from twisted.web.resource import EncodingResourceWrapper
 from twisted.web.server import GzipEncoderFactory
 
-from .i18n import _
+from Plugins.Extensions.OpenWebif.controllers.i18n import _
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
 from Cheetah.Template import Template
 from enigma import eEPGCache
 from Components.config import config
 from Components.Network import iNetwork
 
-from .models.info import getInfo
-from .models.config import getCollapsedMenus, getConfigsSections
-from .models.config import getShowName, getCustomName, getBoxName
-
-from .defaults import getPublicPath, getViewsPath
+from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
+from Plugins.Extensions.OpenWebif.controllers.models.config import getCollapsedMenus, getConfigsSections, getShowName, getCustomName, getBoxName
+from Plugins.Extensions.OpenWebif.controllers.defaults import getPublicPath, getViewsPath
 
 def new_getRequestHostname(self):
 	host = self.getHeader(b'host')
@@ -58,13 +56,13 @@ REMOTE = ''
 try:
 	from boxbranding import getBoxType, getMachineName
 except:  # noqa: E722
-	from .models.owibranding import getBoxType, getMachineName  # noqa: F401
+	from Plugins.Extensions.OpenWebif.controllers.models.owibranding import getBoxType, getMachineName  # noqa: F401
 
 try:
 	from Components.RcModel import rc_model
 	REMOTE = rc_model.getRcFolder() + "/remote"
 except:  # noqa: E722
-	from .models.owibranding import rc_model
+	from Plugins.Extensions.OpenWebif.controllers.models.owibranding import rc_model
 	REMOTE = rc_model().getRcFolder()
 
 

@@ -18,18 +18,15 @@
 
 from Screens.Screen import Screen
 from Plugins.Plugin import PluginDescriptor
-#from Screens.MessageBox import MessageBox
 from Components.ActionMap import ActionMap
 from Components.Label import Label
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection, configfile
 from enigma import getDesktop
-from .controllers.models.info import getInfo
-from .controllers.defaults import getKinopoisk
-
-from .httpserver import HttpdStart, HttpdStop, HttpdRestart
-
-from .controllers.i18n import _
+from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
+from Plugins.Extensions.OpenWebif.controllers.defaults import getKinopoisk
+from Plugins.Extensions.OpenWebif.httpserver import HttpdStart, HttpdStop, HttpdRestart
+from Plugins.Extensions.OpenWebif.controllers.i18n import _
 
 # not used redmond -> original , trontastic , ui-lightness
 THEMES = [
@@ -88,7 +85,7 @@ config.OpenWebif.epg_encoding = ConfigSelection(default='utf-8', choices=['utf-8
 										'iso-8859-10',
 										'iso-8859-16'])
 
-from . import vtiaddon
+import Plugins.Extensions.OpenWebif.vtiaddon
 vtiaddon.expandConfig()
 
 imagedistro = getInfo()['imagedistro']

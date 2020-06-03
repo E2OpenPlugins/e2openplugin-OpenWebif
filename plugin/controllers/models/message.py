@@ -9,7 +9,7 @@
 #                                                                            #
 ##############################################################################
 from Screens.MessageBox import MessageBox
-from ..i18n import _
+from Plugins.Extensions.OpenWebif.controllers.i18n import _
 
 lastreply = None
 

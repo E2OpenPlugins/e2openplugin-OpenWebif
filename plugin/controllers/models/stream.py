@@ -10,13 +10,13 @@
 ##############################################################################
 from enigma import eServiceReference, getBestPlayableServiceReference
 from ServiceReference import ServiceReference
-from .info import getInfo
 from six.moves.urllib.parse import unquote, quote
 import os
 import re
 from Components.config import config
 from twisted.web.resource import Resource
 from Tools.Directories import fileExists
+from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
 
 
 class GetSession(Resource):

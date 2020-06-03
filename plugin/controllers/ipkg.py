@@ -27,10 +27,9 @@ import os
 import json
 import six
 
-from .base import BaseController
 from Components.config import config
-
-from .i18n import _
+from Plugins.Extensions.OpenWebif.controllers.base import BaseController
+from Plugins.Extensions.OpenWebif.controllers.i18n import _
 
 PACKAGES = '/var/lib/opkg/lists'
 INSTALLEDPACKAGES = '/var/lib/opkg/status'

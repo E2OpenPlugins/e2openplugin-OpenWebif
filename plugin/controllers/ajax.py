@@ -22,26 +22,24 @@
 
 from Tools.Directories import fileExists
 from Components.config import config
-
-from .models.services import getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
-from .models.info import getInfo
-from .models.movies import getMovieList, getMovieSearchList
-from .models.timers import getTimers
-from .models.config import getConfigs, getConfigsSections
-from .models.stream import GetSession
-from .base import BaseController
 from time import mktime, localtime
-from .models.locations import getLocations
-
-from .defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH, TRANSCODING
-
-# from twisted.web.resource import Resource
 import os
+
+from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
+from Plugins.Extensions.OpenWebif.controllers.models.services import getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
+from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
+from Plugins.Extensions.OpenWebif.controllers.models.movies import getMovieList, getMovieSearchList
+from Plugins.Extensions.OpenWebif.controllers.models.timers import getTimers
+from Plugins.Extensions.OpenWebif.controllers.models.config import getConfigs, getConfigsSections
+from Plugins.Extensions.OpenWebif.controllers.models.stream import GetSession
+from Plugins.Extensions.OpenWebif.controllers.base import BaseController
+from Plugins.Extensions.OpenWebif.controllers.models.locations import getLocations
+from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH, TRANSCODING
 
 try:
 	from boxbranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
 except:  # noqa: E722
-	from .models.owibranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild  # noqa: F401
+	from Plugins.Extensions.OpenWebif.controllers.models.owibranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild  # noqa: F401
 
 
 class AjaxController(BaseController):

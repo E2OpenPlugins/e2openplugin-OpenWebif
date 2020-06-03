@@ -25,20 +25,19 @@ import os
 from twisted.web import static, http, proxy
 from Components.config import config
 
-from .models.grab import grabScreenshot
-from .base import BaseController
-from .web import WebController, ApiController
-from .ajax import AjaxController
-from .mobile import MobileController
-from .ipkg import IpkgController
-from .AT import ATController
-from .ER import ERController
-from .BQE import BQEController
-from .transcoding import TranscodingController
-from .wol import WOLSetupController, WOLClientController
-from .file import FileController
-
-from .defaults import PICON_PATH, getPublicPath, VIEWS_PATH
+from Plugins.Extensions.OpenWebif.controllers.models.grab import grabScreenshot
+from Plugins.Extensions.OpenWebif.controllers.base import BaseController
+from Plugins.Extensions.OpenWebif.controllers.web import WebController, ApiController
+from Plugins.Extensions.OpenWebif.controllers.ajax import AjaxController
+from Plugins.Extensions.OpenWebif.controllers.mobile import MobileController
+from Plugins.Extensions.OpenWebif.controllers.ipkg import IpkgController
+from Plugins.Extensions.OpenWebif.controllers.AT import ATController
+from Plugins.Extensions.OpenWebif.controllers.ER import ERController
+from Plugins.Extensions.OpenWebif.controllers.BQE import BQEController
+from Plugins.Extensions.OpenWebif.controllers.transcoding import TranscodingController
+from Plugins.Extensions.OpenWebif.controllers.wol import WOLSetupController, WOLClientController
+from Plugins.Extensions.OpenWebif.controllers.file import FileController
+from Plugins.Extensions.OpenWebif.controllers.defaults import PICON_PATH, getPublicPath, VIEWS_PATH
 
 class RootController(BaseController):
 	"""
@@ -73,7 +72,7 @@ class RootController(BaseController):
 		if PICON_PATH:
 			self.putChild("picon", static.File(PICON_PATH))
 		try:
-			from .NET import NetController
+			from Plugins.Extensions.OpenWebif.controllers.NET import NetController
 			self.putChild("net", NetController(session))
 		except:  # noqa: E722
 			pass

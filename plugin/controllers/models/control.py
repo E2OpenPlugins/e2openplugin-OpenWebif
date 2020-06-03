@@ -23,7 +23,7 @@
 from __future__ import print_function
 from Components.config import config
 from enigma import eServiceReference, eActionMap, eServiceCenter
-from .services import getProtection
+from Plugins.Extensions.OpenWebif.controllers.models.services import getProtection
 from Screens.InfoBar import InfoBar, MoviePlayer
 import NavigationInstance
 import os

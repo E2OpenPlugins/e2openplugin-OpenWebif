@@ -38,18 +38,16 @@ from RecordTimer import parseEvent, RecordTimerEntry
 from timer import TimerEntry
 from Screens.InfoBar import InfoBar
 from Tools.Directories import fileExists
-from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
-from enigma import eEPGCache
+from enigma import eEPGCache, eDVBVolumecontrol, eServiceCenter, eServiceReference
 
-
-from ..i18n import _
-from ..defaults import OPENWEBIFVER, TRANSCODING
+from Plugins.Extensions.OpenWebif.controllers.i18n import _
+from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, TRANSCODING
 
 try:
 	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
 	from enigma import getEnigmaVersionString
 except:  # noqa: E722
-	from .owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate, getLcd, getGrabPip
+	from Plugins.Extensions.OpenWebif.controllers.models.owibranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate, getLcd, getGrabPip
 
 	def getEnigmaVersionString():
 		return about.getEnigmaVersionString()
@@ -542,7 +540,7 @@ def getInfo(session=None, need_fullinfo=False):
 			recs = NavigationInstance.instance.getRecordings()
 			if recs:
 				#  only one stream and only TV
-				from .Plugins.Extensions.OpenWebif.controllers.stream import streamList
+				from Plugins.Extensions.OpenWebif.controllers.stream import streamList
 				s_name = ''
 				#  s_cip = ''
 

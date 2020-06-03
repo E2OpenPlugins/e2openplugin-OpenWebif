@@ -32,12 +32,12 @@ from Components.config import config
 from Components.MovieList import MovieList
 from Tools.Directories import fileExists
 from Screens import MovieSelection
-from ..i18n import _
+from Plugins.Extensions.OpenWebif.controllers.i18n import _
 
 try:
 	from Components.MovieList import moviePlayState as _moviePlayState
 except ImportError:
-	from ..utilities import _moviePlayState
+	from Plugins.Extensions.OpenWebif.controllers.utilities import _moviePlayState
 	pass
 
 try:
