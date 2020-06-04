@@ -25,6 +25,7 @@ from __future__ import print_function
 import re
 import unicodedata
 import six
+import sys
 from time import time, localtime, strftime, mktime
 
 from Tools.Directories import fileExists
@@ -56,10 +57,10 @@ except ImportError:
 # html-escaped, so do it there.
 #
 
-try:
-	from cgi import escape as html_escape
-except ImportError:
+if sys.version_info[0] >= 3:
 	from html import escape as html_escape
+else:
+	from cgi import escape as html_escape
 
 def filterName(name, encode=True):
 	if name is not None:
