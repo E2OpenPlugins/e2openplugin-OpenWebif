@@ -189,6 +189,7 @@ def HttpdStart(session):
 		temproot = buildRootTree(session)
 		root = AuthResource(session, temproot)
 		site = server.Site(root)
+		site.displayTracebacks = config.OpenWebif.displayTracebacks.value
 
 		# start http webserver on configured port
 		try:
