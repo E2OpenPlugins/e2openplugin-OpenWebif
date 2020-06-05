@@ -57,4 +57,4 @@ deploy:
   target_branch: gh-pages
   on:
     branch: master
-    condition: $TRAVIS_PYTHON_VERSION = 2.7.15
+    condition: $TRAVIS_PYTHON_VERSION == "2.7"*
