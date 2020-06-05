@@ -1,9 +1,5 @@
 language: python
 
-python:
-- "2.7"
-- "3.8"
-
 matrix:
   include:      
     - name: "Python 2.7"
