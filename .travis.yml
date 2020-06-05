@@ -34,7 +34,7 @@ matrix:
         - mv jshint2_report.txt ./Rel
         - mv 2to3.txt ./Rel
         - mv futurize_stage1.txt ./Rel
-        - mv futurize_stage1.txt ./Rel
+        - mv futurize_stage2.txt ./Rel
         - cd doc
         - make html
         - cd build/html
