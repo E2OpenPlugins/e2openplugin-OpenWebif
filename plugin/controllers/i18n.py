@@ -507,6 +507,7 @@ tstrings = {
 	'pipifposible': _("Use as PiP if possible"),
 	'allow_duplicate': _("Allow duplicates"),
 	'autoadjust': _("Adjust recording time to real event time"),
+	'avoidDuplicateMovies': _("Don't create timer when movie exists in database"),
 
 	'streamclients': _("Stream Clients")
 }

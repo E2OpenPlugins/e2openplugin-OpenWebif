@@ -344,6 +344,8 @@ class AjaxController(BaseController):
 		ret['hasVPS'] = 0
 		ret['hasSeriesPlugin'] = 0
 		ret['test'] = 0
+		ret['autoadjust'] = getInfo()['timerautoadjust']
+
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimer import typeMap
 			ret['types'] = typeMap
