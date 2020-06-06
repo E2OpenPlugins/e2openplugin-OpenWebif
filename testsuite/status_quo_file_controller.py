@@ -28,7 +28,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 			"file": "/etc/passwd"
 		}
 		req = requests.get(self.file_url, params=params)
-		print(("Tried to fetch {!r}".format(req.url)))
+		print("Tried to fetch {!r}".format(req.url))
 		self.assertTrue(len(req.text) > 20)
 		self.assertEqual(200, req.status_code)  # should this be allowed at all?
 
@@ -38,7 +38,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 			"action": "stream",
 		}
 		req = requests.get(self.file_url, params=params)
-		print(("Tried to fetch {!r}".format(req.url)))
+		print("Tried to fetch {!r}".format(req.url))
 		# print(req.text)
 		expected_body = '#EXTM3U\n#EXTVLCOPT--http-reconnect=true\n#EXTINF:-1,stream\nhttp://{netloc}:80/file?action=download&file=/etc/passwd'.format(netloc=self.enigma2_host)
 		self.assertEqual(expected_body, req.text)
@@ -50,7 +50,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 			"action": "download",
 		}
 		req = requests.get(self.file_url, params=params)
-		print(("Tried to fetch {!r}".format(req.url)))
+		print("Tried to fetch {!r}".format(req.url))
 		self.assertTrue(len(req.text) > 20)
 		self.assertEqual(200, req.status_code)
 
@@ -60,7 +60,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 			"action": "invalid",
 		}
 		req = requests.get(self.file_url, params=params)
-		print(("Tried to fetch {!r}".format(req.url)))
+		print("Tried to fetch {!r}".format(req.url))
 		self.assertEqual("wrong action parameter", req.text)
 		self.assertEqual(200, req.status_code)
 
@@ -70,7 +70,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 			"file": randy
 		}
 		req = requests.get(self.file_url, params=params)
-		print(("Tried to fetch {!r}".format(req.url)))
+		print("Tried to fetch {!r}".format(req.url))
 		self.assertEqual("File '/home/root/{:s}' not found".format(randy),
 						  req.text)
 		self.assertEqual(200, req.status_code)
@@ -81,7 +81,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 			"dir": randy
 		}
 		req = requests.get(self.file_url, params=params)
-		print(("Tried to fetch {!r}".format(req.url)))
+		print("Tried to fetch {!r}".format(req.url))
 		minimal_expectation = {"message": "path {:s} not exits".format(randy),
 							   "result": False}
 		result = req.json()
@@ -96,7 +96,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 			"pattern": randy
 		}
 		req = requests.get(self.file_url, params=params)
-		print(("Tried to fetch {!r}".format(req.url)))
+		print("Tried to fetch {!r}".format(req.url))
 		minimal_expectation = {"dirs": [], "result": True}
 		result = req.json()
 		for key in minimal_expectation:
@@ -109,7 +109,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 			"pattern": 'opkg*'
 		}
 		req = requests.get(self.file_url, params=params)
-		print(("Tried to fetch {!r}".format(req.url)))
+		print("Tried to fetch {!r}".format(req.url))
 		minimal_expectation = {"dirs": ['/etc/opkg/'], "result": True,
 							   "files": []}
 		result = req.json()
