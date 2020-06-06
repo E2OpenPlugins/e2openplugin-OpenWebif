@@ -53,7 +53,7 @@ class IpkgController(BaseController):
 		if "format" in request.args:
 			if request.args["format"][0] == "json":
 				self.json = True
-		if action is not '':
+		if action != '':
 			if action in ("update", "upgrade"):
 				return self.CallOPKG(request, action)
 			elif action in ("info", "status", "install", "remove"):
@@ -245,7 +245,7 @@ class IpkgController(BaseController):
 			self.ResultString += data
 
 	def CallOPKGP(self, request, action, pack):
-		if pack is not '':
+		if pack != '':
 			return self.CallOPKG(request, action, [pack])
 		else:
 			return self.ShowError(request, "parameter: package is missing")
