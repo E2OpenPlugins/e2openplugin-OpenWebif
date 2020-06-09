@@ -697,7 +697,7 @@ def setPowerTimer(session, request):
 		end = int(request.args["end"][0])
 	disabled = 0
 	if "disabled" in list(request.args.keys()):
-		disabled = long(request.args["disabled"][0])
+		disabled = int(request.args["disabled"][0])
 	repeated = False
 	if "repeated" in list(request.args.keys()):
 		repeated = request.args["repeated"][0] == "1"

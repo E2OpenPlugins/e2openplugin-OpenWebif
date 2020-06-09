@@ -54,7 +54,7 @@ def getAllNetworks():
 	if fileExists('/proc/net/if_inet6'):
 		if has_ipv6 and version.major >= 12:
 			proc = '/proc/net/if_inet6'
-			for line in file(proc).readlines():
+			for line in open(proc).readlines():
 				# Skip localhost
 				if line.startswith('00000000000000000000000000000001'):
 					continue
@@ -296,7 +296,7 @@ class AuthResource(resource.Resource):
 	def noShell(self, request):
 		user = request.getUser()
 		if fileExists('/etc/passwd'):
-			for line in file('/etc/passwd').readlines():
+			for line in open('/etc/passwd').readlines():
 				line = line.strip()
 				if line.startswith(user + ":") and (line.endswith(":/bin/false") or line.endswith(":/sbin/nologin")):
 					return True
