@@ -1,3 +1,4 @@
+#import six
 #from six.moves.urllib.parse import quote
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from json import dumps
@@ -106,7 +107,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%" id="tbl1">
 <thead>
 <tr>
-	#for $sname, $eventlist in $events.iteritems()
+	#for $sname, $eventlist in six.iteritems($events)
 	#set $evl = $eventlist[0]
 	#set $ref= ""
 	#if $evl
@@ -120,7 +121,7 @@
 <tbody id="tbl1body">
 	#for $slot in range(0,12)
 	<tr class="$(slot%2 and 'ui-widget-content' or 'ui-widget-content ui-state-hover') nobg">
-		#for $sname, $eventlist in $events.iteritems()
+		#for $sname, $eventlist in six.iteritems($events)
 		<td class="border">
 			#for $event in $eventlist[$slot]
 				$renderEventBlock.render($event)
@@ -135,7 +136,7 @@
 </tbody>
 <tfoot>
 <tr>
-	#for $sname, $eventlist in $events.iteritems()
+	#for $sname, $eventlist in six.iteritems($events)
 	<td class="border"><div class="service ui-widget-header"><img src="$(picons[$sname])" /> $sname</div></td>
 	#end for
 </tr>
@@ -176,7 +177,7 @@
 		</li>
 	</ol>
 
-	#for $sname, $eventlist in $events.iteritems()
+	#for $sname, $eventlist in six.iteritems($events)
 		<ol class="channel-listing">
 			<li>
 				<span class="ui-widget-header">
