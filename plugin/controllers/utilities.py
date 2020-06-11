@@ -3,6 +3,9 @@
 from __future__ import print_function
 import re
 import six
+import sys
+
+PY3 = sys.version_info[0] == 3
 
 MANY_SLASHES_PATTERN = r'[\/]+'
 MANY_SLASHES_REGEX = re.compile(MANY_SLASHES_PATTERN)
@@ -84,7 +87,7 @@ def lenient_decode(value, encoding=None):
 	>>> lenient_decode("HällöÜ")
 	u'H\\xe4ll\\xf6\\xdc'
 	"""
-	if isinstance(value, unicode):
+	if isinstance(value, six.text_type):
 		return value
 
 	if encoding is None:
@@ -271,6 +274,26 @@ def getGenreStringLong(hn, ln):
 def _moviePlayState(cutsFileName, ref, length):
 	return 0
 
+
+def getUrlArg(request, key, default=None):
+	if PY3:
+		k = six.ensure_binary(key)
+		if k in list(request.args.keys()):
+			return six.ensure_str(request.args[k][0])
+	else:
+		if key in request.args.keys():
+			return request.args[key][0]
+	return default
+
+def getUrlArg2(args, key, default=None):
+	if PY3:
+		k = six.ensure_binary(key)
+		if k in list(args.keys()):
+			return six.ensure_str(args[k][0])
+	else:
+		if key in args.keys():
+			return args[key][0]
+	return default
 
 if __name__ == '__main__':
 	import doctest
