@@ -762,16 +762,16 @@ def getBouquetEpg(ref, begintime=-1, endtime=None, encode=False):
 	if not services:
 		return {"events": ret, "result": False}
 
+	if endtime == None:
+		endtime = -1
+
 	# prevent crash
-	if endtime and endtime > 100000:
-		endtime = None
+	if endtime > 100000:
+		endtime = -1
 
 	search = ['IBDCTSERNW']
 	for service in services.getContent('S'):
-		if endtime:
-			search.append((service, 0, begintime, endtime))
-		else:
-			search.append((service, 0, begintime))
+		search.append((service, 0, begintime, endtime))
 
 	epgcache = eEPGCache.getInstance()
 	events = epgcache.lookupEvent(search)
