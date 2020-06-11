@@ -4,13 +4,14 @@ from __future__ import print_function
 
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
 def skinColor():
 	return config.OpenWebif.responsive_skinColor.value
 
 def setSkinColor(self, request):
-	if "skincolor" in list(request.args.keys()):
-		skincolor = request.args["skincolor"][0]
+	skincolor = getUrlArg(request, "skincolor")
+	if skincolor != None:
 		print("save color:", skincolor)
 		config.OpenWebif.responsive_skinColor.value = skincolor
 		config.OpenWebif.responsive_skinColor.save()
@@ -62,48 +63,48 @@ def RemoteControlView():
 	return ''
 
 def setVTiWebConfig(self, request):
-	if "moviesearchextended" in list(request.args.keys()):
-		val = int(request.args["moviesearchextended"][0])
+	if b"moviesearchextended" in list(request.args.keys()):
+		val = int(getUrlArg(request, "moviesearchextended"))
 		print("save moviesearchextended:", val)
 		config.OpenWebif.responsive_moviesearch_extended.value = val == 1 and True or False
 		config.OpenWebif.responsive_moviesearch_extended.save()
-	if "moviesearchshort" in list(request.args.keys()):
-		val = int(request.args["moviesearchshort"][0])
+	if b"moviesearchshort" in list(request.args.keys()):
+		val = int(getUrlArg(request, "moviesearchshort"))
 		print("save moviesearchshort:", val)
 		config.OpenWebif.responsive_moviesearch_short.value = val == 1 and True or False
 		config.OpenWebif.responsive_moviesearch_short.save()
-	if "fullsearch" in list(request.args.keys()):
-		val = int(request.args["fullsearch"][0])
+	if b"fullsearch" in list(request.args.keys()):
+		val = int(getUrlArg(request, "fullsearch"))
 		print("save fullsearch:", val)
 		config.OpenWebif.responsive_epgsearch_full.value = val == 1 and True or False
 		config.OpenWebif.responsive_epgsearch_full.save()
-	if "bqonly" in list(request.args.keys()):
-		val = int(request.args["bqonly"][0])
+	if b"bqonly" in list(request.args.keys()):
+		val = int(getUrlArg(request, "bqonly"))
 		print("save bqonly:", val)
 		config.OpenWebif.responsive_epgsearch_only_bq.value = val == 1 and True or False
 		config.OpenWebif.responsive_epgsearch_only_bq.save()
-	if "rcugrabscreen" in list(request.args.keys()):
-		val = int(request.args["rcugrabscreen"][0])
+	if b"rcugrabscreen" in list(request.args.keys()):
+		val = int(getUrlArg(request, "rcugrabscreen"))
 		print("save rcugrabscreen:", val)
 		config.OpenWebif.responsive_rcu_screenshot.value = val == 1 and True or False
 		config.OpenWebif.responsive_rcu_screenshot.save()
-	if "minmovielist" in list(request.args.keys()):
-		val = int(request.args["minmovielist"][0])
+	if b"minmovielist" in list(request.args.keys()):
+		val = int(getUrlArg(request, "minmovielist"))
 		print("save minmovielist:", val)
 		config.OpenWebif.responsive_min_movielist.value = val == 1 and True or False
 		config.OpenWebif.responsive_min_movielist.save()
-	if "mintimerlist" in list(request.args.keys()):
-		val = int(request.args["mintimerlist"][0])
+	if b"mintimerlist" in list(request.args.keys()):
+		val = int(getUrlArg(request, "mintimerlist"))
 		print("save mintimerlist:", val)
 		config.OpenWebif.responsive_min_timerlist.value = val == 1 and True or False
 		config.OpenWebif.responsive_min_timerlist.save()
-	if "minepglist" in list(request.args.keys()):
-		val = int(request.args["minepglist"][0])
+	if b"minepglist" in list(request.args.keys()):
+		val = int(getUrlArg(request, "minepglist"))
 		print("save minepglist:", val)
 		config.OpenWebif.responsive_min_epglist.value = val == 1 and True or False
 		config.OpenWebif.responsive_min_epglist.save()
-	if "remotecontrolview" in list(request.args.keys()):
-		val = int(request.args["remotecontrolview"][0])
+	if b"remotecontrolview" in list(request.args.keys()):
+		val = int(getUrlArg(request, "remotecontrolview"))
 		print("save remotecontrolview:", val)
 		config.OpenWebif.responsive_rcu_full_view.value = val == 1 and True or False
 		config.OpenWebif.responsive_rcu_full_view.save()

@@ -26,6 +26,8 @@ from Screens.InfoBar import InfoBar
 from twisted.web import resource, server
 from enigma import eDBoxLCD
 import time
+import six
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
 GRAB_PATH = '/usr/bin/grab'
 
@@ -35,11 +37,8 @@ class GrabRequest(object):
 
 		mode = None
 		graboptions = [GRAB_PATH, '-q', '-s']
-
-		if "format" in request.args:
-			fileformat = request.args["format"][0]
-		else:
-			fileformat = "jpg"
+		
+		fileformat = getUrlArg(request, "format", "jpg")
 		if fileformat == "jpg":
 			graboptions.append("-j")
 			graboptions.append("95")
@@ -48,13 +47,13 @@ class GrabRequest(object):
 		elif fileformat != "bmp":
 			fileformat = "bmp"
 
-		if "r" in request.args:
-			size = request.args["r"][0]
+		size = getUrlArg(request, "f")
+		if size != None:
 			graboptions.append("-r")
 			graboptions.append("%d" % int(size))
 
-		if "mode" in request.args:
-			mode = request.args["mode"][0]
+		mode = getUrlArg(request, "mode")
+		if mode != None:
 			if mode == "osd":
 				graboptions.append("-o")
 			elif mode == "video":

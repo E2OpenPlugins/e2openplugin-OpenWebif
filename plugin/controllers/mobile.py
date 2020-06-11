@@ -28,6 +28,7 @@ from Plugins.Extensions.OpenWebif.controllers.models.movies import getMovieList
 from Plugins.Extensions.OpenWebif.controllers.models.timers import getTimers
 from Plugins.Extensions.OpenWebif.controllers.models.services import getBouquets, getChannels, getChannelEpg, getEvent, getPicon
 from Plugins.Extensions.OpenWebif.controllers.defaults import TRANSCODING
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
 class MobileController(BaseController):
 	"""
@@ -43,18 +44,12 @@ class MobileController(BaseController):
 		return ['index', 'control', 'screenshot', 'satfinder', 'about']
 
 	def P_bouquets(self, request):
-		stype = "tv"
-		if "stype" in list(request.args.keys()):
-			stype = request.args["stype"][0]
+		stype = getUrlArg(request, "stype", "tv")
 		return getBouquets(stype)
 
 	def P_channels(self, request):
-		stype = "tv"
-		idbouquet = "ALL"
-		if "stype" in list(request.args.keys()):
-			stype = request.args["stype"][0]
-		if "id" in list(request.args.keys()):
-			idbouquet = request.args["id"][0]
+		stype = getUrlArg(request, "stype", "tv")
+		idbouquet = getUrlArg(request, "id", "ALL")
 		channels = getChannels(idbouquet, stype)
 		channels['transcoding'] = TRANSCODING
 		return channels
@@ -62,8 +57,8 @@ class MobileController(BaseController):
 	def P_channelinfo(self, request):
 		channelinfo = {}
 		channelepg = {}
-		if "sref" in list(request.args.keys()):
-			sref = request.args["sref"][0]
+		sref = getUrlArg(request, "sref")
+		if sref != None:
 			channelepg = getChannelEpg(sref)
 			# Detect if sRef contains a stream
 			if ("://" in sref):
@@ -106,10 +101,8 @@ class MobileController(BaseController):
 		event['duration'] = 0
 		event['channel'] = ""
 
-		if "eventid" in list(request.args.keys()):
-			eventid = request.args["eventid"][0]
-		if "eventref" in list(request.args.keys()):
-			ref = request.args["eventref"][0]
+		eventid = getUrlArg(request, "eventid")
+		ref = getUrlArg(request, "eventref")
 		if ref and eventid:
 			event = getEvent(ref, eventid)['event']
 			event['id'] = eventid

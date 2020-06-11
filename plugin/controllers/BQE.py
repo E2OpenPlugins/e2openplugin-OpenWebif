@@ -25,8 +25,10 @@ from enigma import eServiceCenter, eServiceReference, iServiceInformation
 from Plugins.Extensions.OpenWebif.controllers.base import BaseController
 from Components.config import config
 from Components.ParentalControl import parentalControl
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 import os
 import json
+import six
 
 # FIXME:
 # remove #from Screens.ChannelSelection import service_types_tv
@@ -61,7 +63,8 @@ class BQEWebController(BaseController):
 		list = {}
 		for key in paramlist:
 			if key in args:
-				list[key] = args[key][0]
+				k = six.ensure_binary(key)
+				list[key] = six.ensure_text(args[k][0])
 			else:
 				list[key] = None
 		return list
@@ -194,7 +197,7 @@ class BQEWebController(BaseController):
 		try:
 			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.BACKUP)
-			bqe.handleCommand(request.args['Filename'][0])
+			bqe.handleCommand(request.args[b'Filename'][0])
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -204,7 +207,7 @@ class BQEWebController(BaseController):
 		try:
 			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.RESTORE)
-			bqe.handleCommand(request.args['Filename'][0])
+			bqe.handleCommand(request.args[b'Filename'][0])
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -241,10 +244,7 @@ class BQEWebController(BaseController):
 #		return {"services": services}
 
 	def P_getservices(self, request):
-		if "sRef" in list(request.args.keys()):
-			sRef = request.args["sRef"][0]
-		else:
-			sRef = ""
+		sRef = getUrlArg(request, "sRef", "")
 		services = []
 
 		CalcPos = False
@@ -367,7 +367,7 @@ class BQEUploadFile(resource.Resource):
 		request.setResponseCode(http.OK)
 		request.setHeader('content-type', 'text/plain')
 		request.setHeader('charset', 'UTF-8')
-		content = request.args['rfile'][0]
+		content = request.args[b'rfile'][0]
 		if not content:
 			result = [False, 'Error upload File']
 		else:
@@ -396,7 +396,7 @@ class BQEImport(resource.Resource):
 		request.setHeader('content-type', 'text/plain')
 		request.setHeader('charset', 'UTF-8')
 		result = [False, 'Error upload File']
-		if "json" in list(request.args.keys()):
+		if getUrlArg(request, "json") != None:
 			try:
 				from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 				bqe = BouquetEditor(self.session, func=BouquetEditor.IMPORT_BOUQUET)
@@ -418,8 +418,8 @@ class BQEApiController(BQEWebController):
 class BQEController(BaseController):
 	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
-		self.putChild("web", BQEWebController(session))
-		self.putChild("api", BQEApiController(session))
-		self.putChild('tmp', static.File('/tmp'))  # nosec
-		self.putChild('uploadrestore', BQEUploadFile(session))
-		self.putChild('import', BQEImport(session))
+		self.putChild(b"web", BQEWebController(session))
+		self.putChild(b"api", BQEApiController(session))
+		self.putChild(b"tmp", static.File(b"/tmp"))  # nosec
+		self.putChild(b"uploadrestore", BQEUploadFile(session))
+		self.putChild(b"import", BQEImport(session))

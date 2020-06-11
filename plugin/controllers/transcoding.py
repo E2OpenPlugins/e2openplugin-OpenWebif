@@ -8,9 +8,10 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
+import six
 from twisted.web import resource
-
 from Components.config import config
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
 
 def get_transcoding_features(encoder=0):
@@ -58,16 +59,17 @@ class TranscodingController(resource.Resource):
 		encoders = (0, 1)
 		if len(request.args):
 			config_changed = False
-			if "port" in request.args:
-				new_port = request.args["port"][0]
+			new_port = getUrlArg(request, "port")
+			if new_port:
 				if self.setcheck(config.plugins.transcodingsetup.port, new_port):
 					config_changed = True
 				else:
 					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for port</e2statetext></e2simplexmlresult>' 
 			encoder = 0
-			if "encoder" in request.args:
+			_encoder = getUrlArg(request, "encoder")
+			if _encoder:
 				try:
-					encoder = int(request.args["encoder"][0])
+					encoder = int(_encoder)
 				except ValueError:
 					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for encoder</e2statetext></e2simplexmlresult>'
 			encoder_features = get_transcoding_features(encoder)
@@ -76,9 +78,11 @@ class TranscodingController(resource.Resource):
 
 
 			for arg in request.args:
-				if arg in encoder_features:
+				a = six.ensure_text(arg)
+				if a in encoder_features:
 					attr = encoder_features[arg]
-					new_value = request.args[arg][0]
+					aa = six.ensure_binary(arg)
+					new_value = six.ensure_text(request.args[aa][0])
 					if self.setcheck(attr, new_value):
 						config_changed = True
 					else:

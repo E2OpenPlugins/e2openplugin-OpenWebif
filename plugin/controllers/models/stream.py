@@ -18,6 +18,7 @@ from Components.config import config
 from twisted.web.resource import Resource
 from Tools.Directories import fileExists
 from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg, PY3
 
 
 class GetSession(Resource):
@@ -34,8 +35,12 @@ class GetSession(Resource):
 
 
 def getStream(session, request, m3ufile):
-	if "ref" in request.args:
-		sRef = unquote(unquote(request.args["ref"][0]).decode('utf-8', 'ignore')).encode('utf-8')
+	sRef = getUrlArg(request, "ref")
+	if sRef != None:
+		if PY3:
+			sRef = unquote(unquote(sRef))
+		else:
+			sRef = unquote(unquote(request.args["ref"][0]).decode('utf-8', 'ignore')).encode('utf-8')
 	else:
 		sRef = ""
 
@@ -55,14 +60,14 @@ def getStream(session, request, m3ufile):
 		else:
 			sRef = ref.toString()
 
-	name = "stream"
 	# #EXTINF:-1,%s\n adding back to show service name in programs like VLC
 	progopt = ''
-	if "name" in request.args:
-		name = request.args["name"][0]
+	name = getUrlArg(request, "name")
+	if name != None:
 		if config.OpenWebif.service_name_for_stream.value:
 			progopt = "#EXTINF:-1,%s\n" % name
 
+	name = "stream"
 	portNumber = config.OpenWebif.streamport.value
 	info = getInfo()
 	model = info["model"]
@@ -73,38 +78,39 @@ def getStream(session, request, m3ufile):
 	transcoder_port = None
 	args = ""
 
+	device = getUrlArg(request, "device")
+
 	if fileExists("/dev/bcm_enc0"):
 		try:
 			transcoder_port = int(config.plugins.transcodingsetup.port.value)
 		except Exception:
 			# Transcoding Plugin is not installed or your STB does not support transcoding
 			transcoder_port = None
-		if "device" in request.args:
-			if request.args["device"][0] == "phone":
-				portNumber = transcoder_port
-		if "port" in request.args:
-			portNumber = request.args["port"][0]
+		if device == "phone":
+			portNumber = transcoder_port
+		_port = getUrlArg(request, "port")
+		if _port != None:
+			portNumber = _port
 	elif fileExists("/dev/encoder0") or fileExists("/proc/stb/encoder/0/apply"):
 		transcoder_port = portNumber
 
 	if fileExists("/dev/bcm_enc0") or fileExists("/dev/encoder0") or fileExists("/proc/stb/encoder/0/apply"):
-		if "device" in request.args:
-			if request.args["device"][0] == "phone":
-				try:
-					bitrate = config.plugins.transcodingsetup.bitrate.value
-					resolution = config.plugins.transcodingsetup.resolution.value
-					(width, height) = tuple(resolution.split('x'))
-					# framerate = config.plugins.transcodingsetup.framerate.value
-					aspectratio = config.plugins.transcodingsetup.aspectratio.value
-					interlaced = config.plugins.transcodingsetup.interlaced.value
-					if fileExists("/proc/stb/encoder/0/vcodec"):
-						vcodec = config.plugins.transcodingsetup.vcodec.value
-						args = "?bitrate=%s__width=%s__height=%s__vcodec=%s__aspectratio=%s__interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
-					else:
-						args = "?bitrate=%s__width=%s__height=%s__aspectratio=%s__interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
-					args = args.replace('__', urlparam)
-				except Exception:
-					pass
+		if device == "phone":
+			try:
+				bitrate = config.plugins.transcodingsetup.bitrate.value
+				resolution = config.plugins.transcodingsetup.resolution.value
+				(width, height) = tuple(resolution.split('x'))
+				# framerate = config.plugins.transcodingsetup.framerate.value
+				aspectratio = config.plugins.transcodingsetup.aspectratio.value
+				interlaced = config.plugins.transcodingsetup.interlaced.value
+				if fileExists("/proc/stb/encoder/0/vcodec"):
+					vcodec = config.plugins.transcodingsetup.vcodec.value
+					args = "?bitrate=%s__width=%s__height=%s__vcodec=%s__aspectratio=%s__interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
+				else:
+					args = "?bitrate=%s__width=%s__height=%s__aspectratio=%s__interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+				args = args.replace('__', urlparam)
+			except Exception:
+				pass
 
 	# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
 	if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != transcoder_port:
@@ -122,14 +128,19 @@ def getStream(session, request, m3ufile):
 	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s%s:%s/%s%s\n" % (progopt, auth, request.getRequestHostname(), portNumber, sRef, args)
 	request.setHeader('Content-Type', 'application/x-mpegurl')
 	# Note: do not rename the m3u file all the time
-	if "fname" in request.args:
-		request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (request.args["fname"][0], 'm3u8'))
+	fname = getUrlArg(request, "fname")
+	if fname != None:
+		request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (fname, 'm3u8'))
 	return response
 
 
 def getTS(self, request):
-	if "file" in request.args:
-		filename = unquote(request.args["file"][0]).decode('utf-8', 'ignore').encode('utf-8')
+	file = getUrlArg(request, "file")
+	if file != None:
+		if PY3:
+			filename = unquote(file)
+		else:
+			filename = unquote(file).decode('utf-8', 'ignore').encode('utf-8')
 		if not os.path.exists(filename):
 			return "File '%s' not found" % (filename)
 
@@ -170,6 +181,8 @@ def getTS(self, request):
 		urlparam = '?'
 		if info["imagedistro"] in ('openpli', 'satdreamgr', 'openvision'):
 			urlparam = '&'
+
+		device = getUrlArg(request, "device")
 		
 		if fileExists("/dev/bcm_enc0") or fileExists("/dev/encoder0") or fileExists("/proc/stb/encoder/0/apply"):
 			try:
@@ -177,30 +190,29 @@ def getTS(self, request):
 			except Exception:
 				# Transcoding Plugin is not installed or your STB does not support transcoding
 				transcoder_port = None
-			if "device" in request.args:
-				if request.args["device"][0] == "phone":
-					portNumber = transcoder_port
-			if "port" in request.args:
-				portNumber = request.args["port"][0]
+			if device == "phone":
+				portNumber = transcoder_port
+			_port = getUrlArg(request, "port")
+			if _port != None:
+				portNumber = _port
 
 		if fileExists("/dev/bcm_enc0") or fileExists("/dev/encoder0") or fileExists("/proc/stb/encoder/0/apply"):
-			if "device" in request.args:
-				if request.args["device"][0] == "phone":
-					try:
-						bitrate = config.plugins.transcodingsetup.bitrate.value
-						resolution = config.plugins.transcodingsetup.resolution.value
-						(width, height) = tuple(resolution.split('x'))
-						# framerate = config.plugins.transcodingsetup.framerate.value
-						aspectratio = config.plugins.transcodingsetup.aspectratio.value
-						interlaced = config.plugins.transcodingsetup.interlaced.value
-						if fileExists("/proc/stb/encoder/0/vcodec"):
-							vcodec = config.plugins.transcodingsetup.vcodec.value
-							args = "?bitrate=%s__width=%s__height=%s__vcodec=%s__aspectratio=%s__interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
-						else:
-							args = "?bitrate=%s__width=%s__height=%s__aspectratio=%s__interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
-						args = args.replace('__', urlparam)
-					except Exception:
-						pass
+			if device == "phone":
+				try:
+					bitrate = config.plugins.transcodingsetup.bitrate.value
+					resolution = config.plugins.transcodingsetup.resolution.value
+					(width, height) = tuple(resolution.split('x'))
+					# framerate = config.plugins.transcodingsetup.framerate.value
+					aspectratio = config.plugins.transcodingsetup.aspectratio.value
+					interlaced = config.plugins.transcodingsetup.interlaced.value
+					if fileExists("/proc/stb/encoder/0/vcodec"):
+						vcodec = config.plugins.transcodingsetup.vcodec.value
+						args = "?bitrate=%s__width=%s__height=%s__vcodec=%s__aspectratio=%s__interlaced=%s" % (bitrate, width, height, vcodec, aspectratio, interlaced)
+					else:
+						args = "?bitrate=%s__width=%s__height=%s__aspectratio=%s__interlaced=%s" % (bitrate, width, height, aspectratio, interlaced)
+					args = args.replace('__', urlparam)
+				except Exception:
+					pass
 
 		# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
 		if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != transcoder_port:
@@ -240,8 +252,9 @@ def getStreamSubservices(session, request):
 	# the DMM webif can also show subservices for other channels like the current
 	# ideas are welcome
 
-	if "sRef" in request.args:
-		currentServiceRef = eServiceReference(request.args["sRef"][0])
+	sRef = getUrlArg(request, "sRef")
+	if sRef != None:
+		currentServiceRef = eServiceReference(sRef)
 
 	if currentServiceRef is not None:
 		currentService = session.nav.getCurrentService()
