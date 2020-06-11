@@ -25,7 +25,6 @@ from __future__ import print_function
 import re
 import unicodedata
 import six
-import sys
 from time import time, localtime, strftime, mktime
 
 from Tools.Directories import fileExists
@@ -39,7 +38,7 @@ from Screens.InfoBar import InfoBar
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache
 from six.moves.urllib.parse import quote, unquote
 from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternative, getOrbitalText, getOrb
-from Plugins.Extensions.OpenWebif.controllers.utilities import parse_servicereference, SERVICE_TYPE_LOOKUP, NS_LOOKUP
+from Plugins.Extensions.OpenWebif.controllers.utilities import parse_servicereference, SERVICE_TYPE_LOOKUP, NS_LOOKUP, PY3
 from Plugins.Extensions.OpenWebif.controllers.i18n import _, tstrings
 from Plugins.Extensions.OpenWebif.controllers.defaults import PICON_PATH
 
@@ -57,7 +56,7 @@ except ImportError:
 # html-escaped, so do it there.
 #
 
-if sys.version_info[0] >= 3:
+if PY3:
 	from html import escape as html_escape
 else:
 	from cgi import escape as html_escape
@@ -70,13 +69,24 @@ def filterName(name, encode=True):
 			name = name.replace('\xc2\x86', '').replace('\xc2\x87', '')
 	return name
 
+def convertUnicode(val):
+	if PY3:
+		return val
+	else:
+		return six.text_type(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 
 def convertDesc(val, encode=True):
 	if val is not None:
 		if encode is True:
-			return html_escape(six.text_type(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore'), quote=True).replace(u'\x8a', '\n')
+			if PY3:
+				return html_escape(val, quote=True).replace(u'\x8a', '\n')
+			else:
+				return html_escape(six.text_type(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore'), quote=True).replace(u'\x8a', '\n')
 		else:
-			return six.text_type(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore').replace(u'\x1a', '')
+			if PY3:
+				return val.replace(u'\x1a', '')
+			else:
+				return six.text_type(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore').replace(u'\x1a', '')
 	return val
 
 
@@ -542,14 +552,14 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, pic
 			if showAll or st == 0:
 				service = {}
 				service['pos'] = 0 if (st & 64) else pos
-				sr = six.text_type(sitem[0], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+				sr = convertUnicode(sitem[0])
 				if CalcPos:
 					service['startpos'] = oldoPos
 				if picon:
 					service['picon'] = getPicon(sr)
 				service['servicereference'] = sr
 				service['program'] = int(service['servicereference'].split(':')[3], 16)
-				service['servicename'] = six.text_type(sitem[1], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+				service['servicename'] = convertUnicode(sitem[1])
 				if provider:
 					if sitem[0] in allproviders:
 						service['provider'] = allproviders[sitem[0]]

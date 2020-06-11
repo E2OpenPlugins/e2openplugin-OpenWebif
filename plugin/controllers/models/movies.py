@@ -34,6 +34,7 @@ from Components.MovieList import MovieList
 from Tools.Directories import fileExists
 from Screens import MovieSelection
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg2, PY3
 
 try:
 	from Components.MovieList import moviePlayState as _moviePlayState
@@ -71,6 +72,11 @@ def checkParentalProtection(directory):
 				return True
 	return False
 
+def ConvertDesc(desc):
+	if PY3:
+		return desc
+	else:
+		return six.text_type(desc, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 
 def getMovieList(rargs=None, locations=None):
 	movieliste = []
@@ -79,19 +85,15 @@ def getMovieList(rargs=None, locations=None):
 	fields = None
 	bookmarklist = []
 
-	if rargs and "tag" in list(rargs.keys()):
-		tag = rargs["tag"][0]
-
-	if rargs and "dirname" in list(rargs.keys()):
-		directory = rargs["dirname"][0]
-
-	if rargs and "fields" in list(rargs.keys()):
-		fields = rargs["fields"][0]
+	if rargs:
+		tag = getUrlArg2(rargs, "tag")
+		directory = getUrlArg2(rargs, "dirname")
+		fields = getUrlArg2(rargs, "fields")
 
 	if directory is None:
 		directory = MovieSelection.defaultMoviePath()
 	else:
-		try:
+		try: #FIXME PY3
 			directory.decode('utf-8')
 		except UnicodeDecodeError:
 			try:
@@ -121,7 +123,7 @@ def getMovieList(rargs=None, locations=None):
 			bookmarklist.append(item)
 
 	folders = [root]
-	if rargs and "recursive" in list(rargs.keys()):
+	if rargs and b"recursive" in list(rargs.keys()):
 		for f in bookmarklist:
 			if f[-1] != "/":
 				f += "/"
@@ -206,10 +208,10 @@ def getMovieList(rargs=None, locations=None):
 					extended_description = event and event.getExtendedDescription() or ""
 					if extended_description == '' and txtdesc != '':
 						extended_description = txtdesc
-					movie['descriptionExtended'] = six.text_type(extended_description, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+					movie['descriptionExtended'] = ConvertDesc(extended_description)
 
 					desc = info.getInfoString(serviceref, iServiceInformation.sDescription)
-					movie['description'] = six.text_type(desc, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+					movie['description'] = ConvertDesc(desc)
 
 				if fields is None or 'size' in fields:
 					size = 0
@@ -253,14 +255,10 @@ def getMovieSearchList(rargs=None, locations=None):
 	extended = None
 	searchstr = None
 
-	if rargs and "find" in list(rargs.keys()):
-		searchstr = rargs["find"][0]
-
-	if rargs and "short" in list(rargs.keys()):
-		short = rargs["short"][0]
-
-	if rargs and "extended" in list(rargs.keys()):
-		extended = rargs["extended"][0]
+	if rargs:
+		searchstr = getUrlArg2(rargs, "find")
+		short = getUrlArg2(rargs, "short")
+		extended = getUrlArg2(rargs, "extended")
 
 	s = {'title': str(searchstr)}
 	if short is not None:
@@ -330,10 +328,9 @@ def getMovieSearchList(rargs=None, locations=None):
 			extended_description = event and event.getExtendedDescription() or ""
 			if extended_description == '' and txtdesc != '':
 				extended_description = txtdesc
-			movie['descriptionExtended'] = six.text_type(extended_description, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
-
+			movie['descriptionExtended'] = ConvertDesc(extended_description)
 			desc = info.getInfoString(serviceref, iServiceInformation.sDescription)
-			movie['description'] = six.text_type(desc, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+			movie['description'] = ConvertDesc(desc)
 
 		if fields is None or 'size' in fields:
 			size = 0
@@ -740,10 +737,9 @@ def getMovieDetails(sRef=None):
 		extended_description = event and event.getExtendedDescription() or ""
 		if extended_description == '' and txtdesc != '':
 			extended_description = txtdesc
-		movie['descriptionExtended'] = six.text_type(extended_description, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
-
+		movie['descriptionExtended'] = ConvertDesc(extended_description)
 		desc = info.getInfoString(serviceref, iServiceInformation.sDescription)
-		movie['description'] = six.text_type(desc, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+		movie['description'] = ConvertDesc(desc)
 
 		size = 0
 		sz = ''
