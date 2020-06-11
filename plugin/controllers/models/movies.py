@@ -93,13 +93,14 @@ def getMovieList(rargs=None, locations=None):
 	if directory is None:
 		directory = MovieSelection.defaultMoviePath()
 	else:
-		try: #FIXME PY3
-			directory.decode('utf-8')
-		except UnicodeDecodeError:
+		if not PY3:
 			try:
-				directory = directory.decode("cp1252").encode("utf-8")
+				directory.decode('utf-8')
 			except UnicodeDecodeError:
-				directory = directory.decode("iso-8859-1").encode("utf-8")
+				try:
+					directory = directory.decode("cp1252").encode("utf-8")
+				except UnicodeDecodeError:
+					directory = directory.decode("iso-8859-1").encode("utf-8")
 
 	if not directory:
 		directory = MOVIE_LIST_ROOT_FALLBACK

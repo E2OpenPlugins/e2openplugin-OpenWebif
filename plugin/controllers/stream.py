@@ -1,16 +1,29 @@
 # -*- coding: utf-8 -*-
 
-##############################################################################
-#                        2011 E2OpenPlugins                                  #
-#                                                                            #
-#  This file is open source software; you can redistribute it and/or modify  #
-#     it under the terms of the GNU General Public License version 2 as      #
-#               published by the Free Software Foundation.                   #
-#                                                                            #
-##############################################################################
+##########################################################################
+# OpenWebif: StreamAdapter, StreamController
+##########################################################################
+# Copyright (C) 2011 - 2020 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
+
 from twisted.web import resource, server
 from Components.Converter.Streaming import Streaming
 from Components.Sources.StreamService import StreamService
+from Plugins.Extensions.OpenWebif.controllers.utilities import PY3
 
 streamList = []
 streamStates = []
@@ -24,7 +37,10 @@ class StreamAdapter:
 		self.nav = session.nav
 		self.request = request
 		self.mystream = StreamService(self.nav)
-		self.mystream.handleCommand(request.args["StreamService"][0]) #FIXME PY3
+		if PY3:
+			self.mystream.handleCommand(request.args[b"StreamService"][0].decode(encoding='utf-8', errors='strict'))
+		else:
+			self.mystream.handleCommand(request.args["StreamService"][0])
 		self.mystream.execBegin()
 		self.service = self.mystream.getService()
 		self.nav.record_event.append(self.requestWrite)
