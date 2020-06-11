@@ -119,8 +119,8 @@ class SimpleRootController(resource.Resource):
 
     def __init__(self):
         resource.Resource.__init__(self)
-        self.putChild("demo", RESTControllerSkeleton())
-        self.putChild("", RESTControllerSkeleton())
+        self.putChild(b"demo", RESTControllerSkeleton())
+        self.putChild(b"", RESTControllerSkeleton())
 
 if __name__ == '__main__':
     from twisted.web.server import Site
