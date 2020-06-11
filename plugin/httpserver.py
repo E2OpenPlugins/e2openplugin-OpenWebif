@@ -168,7 +168,7 @@ def buildRootTree(session):
 
 		if len(loaded_plugins) > 0:
 			for plugin in loaded_plugins:
-				root.putChild(plugin[0], plugin[1])
+				root.putChild2(plugin[0], plugin[1])
 				# print("[OpenWebif] plugin '%s' loaded on path '/%s'" % (plugin[2], plugin[0]))
 		else:
 			print("[OpenWebif] no plugins to load")

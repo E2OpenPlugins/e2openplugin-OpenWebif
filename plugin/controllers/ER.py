@@ -22,6 +22,7 @@
 
 from __future__ import print_function
 from twisted.web import resource, http
+import six
 
 class ERController(resource.Resource):
 	def __init__(self, session):
@@ -33,19 +34,19 @@ class ERController(resource.Resource):
 				EPGRefreshChangeSettingsResource, EPGRefreshAddRemoveServiceResource, \
 				EPGRefreshStartRefreshResource
 		except ImportError:
-			print("EPG Refresh Plugin not found")
+			#  print("EPG Refresh Plugin not found")
 			return
-		self.putChild('get', EPGRefreshSettingsResource())
-		self.putChild('set', EPGRefreshChangeSettingsResource())
-		self.putChild('refresh', EPGRefreshStartRefreshResource())
-		self.putChild('add', EPGRefreshAddRemoveServiceResource(EPGRefreshAddRemoveServiceResource.TYPE_ADD))
-		self.putChild('del', EPGRefreshAddRemoveServiceResource(EPGRefreshAddRemoveServiceResource.TYPE_DEL))
+		self.putChild(b'get', EPGRefreshSettingsResource())
+		self.putChild(b'set', EPGRefreshChangeSettingsResource())
+		self.putChild(b'refresh', EPGRefreshStartRefreshResource())
+		self.putChild(b'add', EPGRefreshAddRemoveServiceResource(EPGRefreshAddRemoveServiceResource.TYPE_ADD))
+		self.putChild(b'del', EPGRefreshAddRemoveServiceResource(EPGRefreshAddRemoveServiceResource.TYPE_DEL))
 		try:
 			from Plugins.Extensions.EPGRefresh.EPGRefreshResource import EPGRefreshPreviewServicesResource
 		except ImportError:
 			pass
 		else:
-			self.putChild('preview', EPGRefreshPreviewServicesResource())
+			self.putChild(b'preview', EPGRefreshPreviewServicesResource())
 
 	def render(self, request):
 		request.setResponseCode(http.OK)
@@ -54,6 +55,6 @@ class ERController(resource.Resource):
 
 		try:
 			from Plugins.Extensions.EPGRefresh.EPGRefresh import epgrefresh
-			return ''.join(epgrefresh.buildConfiguration(webif=True))
+			return six.ensure_binary(''.join(epgrefresh.buildConfiguration(webif=True)))
 		except ImportError:
-			return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>EPG Refresh Plugin not found</e2statetext></e2simplexmlresult>'
+			return b'<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>EPG Refresh Plugin not found</e2statetext></e2simplexmlresult>'

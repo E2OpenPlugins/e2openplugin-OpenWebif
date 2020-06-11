@@ -22,6 +22,7 @@
 
 from twisted.web import server, http, resource
 import json
+import six
 from re import sub as re_sub
 from Plugins.SystemPlugins.NetworkBrowser.AutoMount import iAutoMount
 
@@ -29,7 +30,7 @@ from Plugins.SystemPlugins.NetworkBrowser.AutoMount import iAutoMount
 class NetController(resource.Resource):
 	def __init__(self, session, path=""):
 		resource.Resource.__init__(self)
-		self.path = path
+		self.path = six.ensure_text(path)
 		self.callback = None
 		self.session = session
 		self.result = {}
@@ -70,7 +71,8 @@ class NetController(resource.Resource):
 		list = {}
 		for key in paramlist:
 			if key in args:
-				list[key] = args[key][0]
+				k = six.ensure_binary(key)
+				list[key] = six.ensure_text(args[k][0])
 			else:
 				list[key] = None
 		return list

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ##########################################################################
-# OpenWebif: ipkg
+# OpenWebif: IpkgController
 ##########################################################################
 # Copyright (C) 2011 - 2020 E2OpenPlugins
 #
@@ -30,6 +30,7 @@ import six
 from Components.config import config
 from Plugins.Extensions.OpenWebif.controllers.base import BaseController
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg, PY3
 
 PACKAGES = '/var/lib/opkg/lists'
 INSTALLEDPACKAGES = '/var/lib/opkg/status'
@@ -38,21 +39,15 @@ INSTALLEDPACKAGES = '/var/lib/opkg/status'
 class IpkgController(BaseController):
 	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
-		self.putChild('upload', IPKGUpload(self.session))
+		self.putChild(b'upload', IPKGUpload(self.session))
 
 	def render(self, request):
-		action = ''
-		package = ''
 		self.request = request
 		self.json = False
 		self.container = None
-		if "command" in request.args:
-			action = request.args["command"][0]
-		if "package" in request.args:
-			package = request.args["package"][0]
-		if "format" in request.args:
-			if request.args["format"][0] == "json":
-				self.json = True
+		action = getUrlArg(request, "command", "")
+		package = getUrlArg(request, "package", "")
+		self.json = getUrlArg(request, "format") == "json"
 		if action != '':
 			if action in ("update", "upgrade"):
 				return self.CallOPKG(request, action)
@@ -72,7 +67,10 @@ class IpkgController(BaseController):
 						'date': os.stat(tmpfile).st_mtime,
 					})
 				request.setHeader("content-type", "text/plain")
-				request.write(json.dumps({'ipkfiles': ipks}, encoding="ISO-8859-1"))
+				if PY3:
+					request.write(json.dumps({'ipkfiles': ipks}).encode("ISO-8859-1"))
+				else:
+					request.write(json.dumps({'ipkfiles': ipks}, encoding="ISO-8859-1"))
 				request.finish()
 				return server.NOT_DONE_YET
 			else:
@@ -185,14 +183,14 @@ class IpkgController(BaseController):
 		if self.json:
 			request.setHeader("content-type", "application/json; charset=utf-8")
 			try:
-				return json.dumps(data, indent=1)
+				return six.ensure_binary(json.dumps(data, indent=1))
 			except Exception as exc:
 				request.setResponseCode(http.INTERNAL_SERVER_ERROR)
-				return json.dumps({"result": False, "request": request.path, "exception": repr(exc)})
+				return json.dumps(six.ensure_binary({"result": False, "request": request.path, "exception": repr(exc)}))
 				pass
 		else:
 			request.setHeader("content-type", "text/plain")
-			request.write("<html><body><br>" + data + "</body></html>")
+			request.write(b"<html><body><br>" + six.ensure_binary(data) + b"</body></html>")
 			request.finish()
 		return server.NOT_DONE_YET
 
@@ -232,12 +230,13 @@ class IpkgController(BaseController):
 				nresult = six.text_type(nresult, errors='ignore')
 				data.append({"result": True, "packages": nresult.split("\n")})
 				self.request.setHeader("content-type", "text/plain")
-				self.request.write(json.dumps(data))
+				self.request.write(six.ensure_binary(json.dumps(data)))
 				self.request.finish()
 			else:
-				self.request.write("<html><body>\n")
-				self.request.write(nresult.replace("\n", "<br>\n"))
-				self.request.write("</body></html>\n")
+				nresult = six.ensure_binary(nresult)
+				self.request.write(b"<html><body>\n")
+				self.request.write(nresult.replace(b"\n", b"<br>\n"))
+				self.request.write(b"</body></html>\n")
 				self.request.finish()
 
 	def Moredata(self, data):
@@ -252,7 +251,7 @@ class IpkgController(BaseController):
 
 	def ShowError(self, request, text):
 		request.setResponseCode(http.OK)
-		request.write(text)
+		request.write(six.ensure_binary(text))
 		request.finish()
 		return server.NOT_DONE_YET
 
@@ -264,7 +263,7 @@ class IpkgController(BaseController):
 		html += "Valid Formats:<br>json,html(default)<br>"
 		html += "</body></html>"
 		request.setResponseCode(http.OK)
-		request.write(html)
+		request.write(six.ensure_binary(html))
 		request.finish()
 		return server.NOT_DONE_YET
 
@@ -284,8 +283,8 @@ class IPKGUpload(resource.Resource):
 		request.setResponseCode(http.OK)
 		request.setHeader('content-type', 'text/plain')
 		request.setHeader('charset', 'UTF-8')
-		content = request.args['rfile'][0]
-		filename = self.mbasename(request.args['filename'][0])
+		content = request.args[b'rfile'][0]
+		filename = self.mbasename(getUrlArg(request, "filename"))
 		if not content or not config.OpenWebif.allow_upload_ipk.value:
 			result = [False, _('Error upload File')]
 		else:
@@ -306,4 +305,4 @@ class IPKGUpload(resource.Resource):
 					result = [False, _('Error writing File')]
 				else:
 					result = [True, FN]
-		return json.dumps({"Result": result})
+		return six.ensure_binary(json.dumps({"Result": result}))

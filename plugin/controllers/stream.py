@@ -24,7 +24,7 @@ class StreamAdapter:
 		self.nav = session.nav
 		self.request = request
 		self.mystream = StreamService(self.nav)
-		self.mystream.handleCommand(request.args["StreamService"][0])
+		self.mystream.handleCommand(request.args["StreamService"][0]) #FIXME PY3
 		self.mystream.execBegin()
 		self.service = self.mystream.getService()
 		self.nav.record_event.append(self.requestWrite)

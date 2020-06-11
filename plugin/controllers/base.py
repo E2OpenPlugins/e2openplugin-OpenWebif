@@ -24,6 +24,7 @@ from __future__ import print_function
 import os
 import imp
 import json
+import six
 
 from twisted.web import server, http, resource
 from twisted.web.resource import EncodingResourceWrapper
@@ -43,10 +44,14 @@ from Plugins.Extensions.OpenWebif.controllers.defaults import getPublicPath, get
 def new_getRequestHostname(self):
 	host = self.getHeader(b'host')
 	if host:
-		if host[0] == '[':
-			return host.split(']', 1)[0] + "]"
-		return host.split(':', 1)[0].encode('ascii')
-	return self.getHost().host.encode('ascii')
+		if host[0] == b'[':
+			host = host.split(b']', 1)[0] + b"]"
+		else:
+			host = host.split(b':', 1)[0]
+	else:
+		host = self.getHost().host
+	host = six.ensure_str(host).encode('ascii')
+	return six.ensure_str(host)
 
 
 http.Request.getRequestHostname = new_getRequestHostname
@@ -86,7 +91,7 @@ class BaseController(resource.Resource):
 		"""
 		resource.Resource.__init__(self)
 
-		self.path = path
+		self.path = six.ensure_str(path)
 		self.session = kwargs.get("session")
 		self.withMainTemplate = kwargs.get("withMainTemplate", False)
 		self.isJson = kwargs.get("isJson", False)
@@ -104,7 +109,7 @@ class BaseController(resource.Resource):
 		"""
 		request.setHeader("content-type", "text/html")
 		request.setResponseCode(http.NOT_FOUND)
-		request.write("<html><head><title>Open Webif</title></head><body><h1>Error 404: Page not found</h1><br />The requested URL was not found on this server.</body></html>")
+		request.write(b"<html><head><title>Open Webif</title></head><body><h1>Error 404: Page not found</h1><br />The requested URL was not found on this server.</body></html>")
 		request.finish()
 
 	def loadTemplate(self, path, module, args):
@@ -120,9 +125,12 @@ class BaseController(resource.Resource):
 			return str(Template(file=getViewsPath(path + ".tmpl"), searchList=[args]))
 		return None
 
+	def putChild2(self, path, child):
+		self.putChild(six.ensure_binary(path), child)
+
 	def putGZChild(self, path, child):
 		child.isGZ = True
-		self.putChild(path, EncodingResourceWrapper(child, [GzipEncoderFactory()]))
+		self.putChild(six.ensure_binary(path), EncodingResourceWrapper(child, [GzipEncoderFactory()]))
 
 	def getChild(self, path, request):
 		if self.isGZ:
@@ -147,12 +155,12 @@ class BaseController(resource.Resource):
 			self.path = "index"
 		elif self.path == "signal":
 			self.path = "tunersignal"
-			request.uri = request.uri.replace('signal', 'tunersignal')
-			request.path = request.path.replace('signal', 'tunersignal')
+			request.uri = request.uri.replace(b'signal', b'tunersignal')
+			request.path = request.path.replace(b'signal', b'tunersignal')
 
 		self.suppresslog = False
 		self.path = self.path.replace(".", "")
-		if request.path.startswith('/api/config'):
+		if request.path.startswith(b'/api/config'):
 			func = getattr(self, "P_config", None)
 		elif self.path in self.NoDataRender():
 			func = getattr(self, "noData", None)
@@ -175,15 +183,15 @@ class BaseController(resource.Resource):
 			elif self.isCustom:
 				# if not self.suppresslog:
 					# print "[OpenWebif] page '%s' ok (custom)" % request.uri
-				request.write(data)
+				request.write(six.ensure_binary(data))
 				request.finish()
 			elif self.isJson:
 				request.setHeader("content-type", "application/json; charset=utf-8")
 				try:
-					return json.dumps(data, indent=1)
+					return six.ensure_binary(json.dumps(data, indent=1))
 				except Exception as exc:
 					request.setResponseCode(http.INTERNAL_SERVER_ERROR)
-					return json.dumps({"result": False, "request": request.path, "exception": repr(exc)})
+					return six.ensure_binary(json.dumps({"result": False, "request": request.path, "exception": repr(exc)}))
 					pass
 			elif type(data) is str:
 				# if not self.suppresslog:
@@ -193,8 +201,8 @@ class BaseController(resource.Resource):
 				request.finish()
 			else:
 				# print "[OpenWebif] page '%s' ok (cheetah template)" % request.uri
-				module = request.path
-				if module[-1] == "/":
+				module = six.ensure_text(request.path)
+				if module[-1:] == "/":
 					module += "index"
 				elif module[-5:] != "index" and self.path == "index":
 					module += "/index"
@@ -216,7 +224,7 @@ class BaseController(resource.Resource):
 							out = nout
 					elif self.isGZ:
 						return out
-					request.write(out)
+					request.write(six.ensure_binary(out))
 					request.finish()
 
 		else:

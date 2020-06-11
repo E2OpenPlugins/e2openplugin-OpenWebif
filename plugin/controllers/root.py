@@ -21,6 +21,7 @@
 ##########################################################################
 
 import os
+import six
 
 from twisted.web import static, http, proxy
 from Components.config import config
@@ -38,6 +39,7 @@ from Plugins.Extensions.OpenWebif.controllers.transcoding import TranscodingCont
 from Plugins.Extensions.OpenWebif.controllers.wol import WOLSetupController, WOLClientController
 from Plugins.Extensions.OpenWebif.controllers.file import FileController
 from Plugins.Extensions.OpenWebif.controllers.defaults import PICON_PATH, getPublicPath, VIEWS_PATH
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
 class RootController(BaseController):
 	"""
@@ -46,34 +48,34 @@ class RootController(BaseController):
 	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
 
-		self.putChild("web", WebController(session))
+		self.putChild2("web", WebController(session))
 		self.putGZChild("api", ApiController(session))
 		self.putGZChild("ajax", AjaxController(session))
-		self.putChild("file", FileController())
-		self.putChild("grab", grabScreenshot(session))
+		self.putChild2("file", FileController())
+		self.putChild2("grab", grabScreenshot(session))
 		if os.path.exists(getPublicPath('mobile')):
-			self.putChild("mobile", MobileController(session))
-			self.putChild("m", static.File(getPublicPath() + "/mobile"))
+			self.putChild2("mobile", MobileController(session))
+			self.putChild2("m", static.File(getPublicPath() + "/mobile"))
 		for static_val in ('js', 'css', 'static', 'images', 'fonts'):
-			self.putChild(static_val, static.File(getPublicPath() + '/' + static_val))
+			self.putChild2(static_val, static.File(six.ensure_binary(getPublicPath() + '/' + static_val)))
 		for static_val in ('themes', 'webtv', 'vxg'):
 			if os.path.exists(getPublicPath(static_val)):
-				self.putChild(static_val, static.File(getPublicPath() + '/' + static_val))
+				self.putChild2(static_val, static.File(six.ensure_binary(getPublicPath() + '/' + static_val)))
 
 		if os.path.exists('/usr/bin/shellinaboxd'):
-			self.putChild("terminal", proxy.ReverseProxyResource('::1', 4200, '/'))
+			self.putChild2("terminal", proxy.ReverseProxyResource(b'::1', 4200, b'/'))
 		self.putGZChild("ipkg", IpkgController(session))
-		self.putChild("autotimer", ATController(session))
-		self.putChild("epgrefresh", ERController(session))
-		self.putChild("bouqueteditor", BQEController(session))
-		self.putChild("transcoding", TranscodingController())
-		self.putChild("wol", WOLClientController())
-		self.putChild("wolsetup", WOLSetupController(session))
+		self.putChild2("autotimer", ATController(session))
+		self.putChild2("epgrefresh", ERController(session))
+		self.putChild2("bouqueteditor", BQEController(session))
+		self.putChild2("transcoding", TranscodingController())
+		self.putChild2("wol", WOLClientController())
+		self.putChild2("wolsetup", WOLSetupController(session))
 		if PICON_PATH:
-			self.putChild("picon", static.File(PICON_PATH))
+			self.putChild2("picon", static.File(six.ensure_binary(PICON_PATH)))
 		try:
 			from Plugins.Extensions.OpenWebif.controllers.NET import NetController
-			self.putChild("net", NetController(session))
+			self.putChild2("net", NetController(session))
 		except:  # noqa: E722
 			pass
 
@@ -87,9 +89,7 @@ class RootController(BaseController):
 	def P_index(self, request):
 		if config.OpenWebif.responsive_enabled.value and os.path.exists(VIEWS_PATH + "/responsive"):
 			return {}
-		mode = ''
-		if "mode" in list(request.args.keys()):
-			mode = request.args["mode"][0]
+		mode = getUrlArg(request, "mode", "")
 		uagent = request.getHeader('User-Agent')
 		if uagent and mode != 'fullpage' and os.path.exists(getPublicPath('mobile')):
 			if uagent.lower().find("iphone") != -1 or uagent.lower().find("ipod") != -1 or uagent.lower().find("blackberry") != -1 or uagent.lower().find("mobile") != -1:
