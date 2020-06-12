@@ -27,7 +27,7 @@ from twisted.web import resource, server
 from enigma import eDBoxLCD
 import time
 import six
-from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg, PY3
 
 GRAB_PATH = '/usr/bin/grab'
 
@@ -37,6 +37,8 @@ class GrabRequest(object):
 
 		mode = None
 		graboptions = [GRAB_PATH, '-q', '-s']
+		if PY3:
+			graboptions = [GRAB_PATH, '-q']
 		
 		fileformat = getUrlArg(request, "format", "jpg")
 		if fileformat == "jpg":
@@ -67,10 +69,12 @@ class GrabRequest(object):
 				fileformat = "png"
 				command = "cat /tmp/lcdshot.%s" % fileformat
 
+		self.filepath = "/tmp/screenshot." + fileformat
 		self.container = eConsoleAppContainer()
 		self.container.appClosed.append(self.grabFinished)
-		self.container.stdoutAvail.append(request.write)
-		self.container.setBufferSize(32768)
+		if not PY3:
+			self.container.stdoutAvail.append(request.write)
+			self.container.setBufferSize(32768)
 		if mode == "lcd":
 			if self.container.execute(command):
 				raise Exception("failed to execute: ", command)
@@ -102,6 +106,15 @@ class GrabRequest(object):
 		del self.container
 
 	def grabFinished(self, retval=None):
+
+		if PY3:
+			import os
+			fd = open(self.filepath, "rb")
+			data = fd.read()
+			fd.close()
+			self.request.setHeader('Content-Length', '%i' % os.path.getsize(self.filepath))
+			self.request.write(data)			
+
 		try:
 			self.request.finish()
 		except RuntimeError as error:
