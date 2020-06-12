@@ -203,7 +203,7 @@ def getMovieList(rargs=None, locations=None):
 					txtfile = name + '.txt'
 					if ext.lower() != '.ts' and os.path.isfile(txtfile):
 						with open(txtfile, "rb") as handle:
-							txtdesc = ''.join(handle.readlines())
+							txtdesc = six.ensure_str(b''.join(handle.readlines()))
 
 					event = info.getEvent(serviceref)
 					extended_description = event and event.getExtendedDescription() or ""
@@ -323,7 +323,7 @@ def getMovieSearchList(rargs=None, locations=None):
 			txtfile = name + '.txt'
 			if ext.lower() != '.ts' and os.path.isfile(txtfile):
 				with open(txtfile, "rb") as handle:
-					txtdesc = ''.join(handle.readlines())
+					txtdesc = six.ensure_str(b''.join(handle.readlines()))
 
 			event = info.getEvent(serviceref)
 			extended_description = event and event.getExtendedDescription() or ""
@@ -732,7 +732,7 @@ def getMovieDetails(sRef=None):
 		txtfile = name + '.txt'
 		if ext.lower() != '.ts' and os.path.isfile(txtfile):
 			with open(txtfile, "rb") as handle:
-				txtdesc = ''.join(handle.readlines())
+				txtdesc = six.ensure_str(b''.join(handle.readlines()))
 
 		event = info.getEvent(serviceref)
 		extended_description = event and event.getExtendedDescription() or ""

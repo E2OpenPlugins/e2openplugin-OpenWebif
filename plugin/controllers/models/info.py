@@ -310,7 +310,7 @@ def getInfo(session=None, need_fullinfo=False):
 
 	try:
 		f = open("/proc/uptime", "rb")
-		uptime = int(float(f.readline().split(' ', 2)[0].strip()))
+		uptime = int(float(six.ensure_str(f.readline()).split(' ', 2)[0].strip()))
 		f.close()
 		uptimetext = ''
 		if uptime > 86400:
@@ -468,7 +468,7 @@ def getInfo(session=None, need_fullinfo=False):
 					uri = tmp[2]
 					parts = []
 					parts = tmp[2].split(':')
-					if parts[0] is "":
+					if parts[0] == "":
 						server = uri.split('/')[2]
 						uri = uri.strip()[1:]
 					else:
