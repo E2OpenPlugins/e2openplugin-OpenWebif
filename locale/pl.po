@@ -89,7 +89,7 @@ msgstr "Dodaj kanał(y) do bukietu"
 
 #: ../plugin/plugin.py:151
 msgid "Add service name to stream information"
-msgstr "Dodaj nazwę kanału do info strumienia"
+msgstr "Dodaj nazwę kanału do strumienia"
 
 #: ../plugin/controllers/BouquetEditor.py:466
 #, python-format
@@ -98,7 +98,7 @@ msgstr "Dodano alternatywę %s do kanału %s."
 
 #: ../plugin/controllers/i18n.py:508
 msgid "Adjust recording time to real event time"
-msgstr ""
+msgstr "Dostosuj czas nagrywania do realnego czasu wydarzenia"
 
 #: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
 msgid "After Event"
@@ -130,7 +130,7 @@ msgstr "Zezwalaj na wysyłanie plików IPK"
 
 #: ../plugin/controllers/i18n.py:507
 msgid "Allow duplicates"
-msgstr ""
+msgstr "Zezwalaj na duplikaty"
 
 #: ../plugin/controllers/BouquetEditor.py:452
 #, python-format
@@ -1784,7 +1784,7 @@ msgstr "Strumieniuj"
 #: ../plugin/controllers/i18n.py:510
 #, fuzzy
 msgid "Stream Clients"
-msgstr "Strumieniuj"
+msgstr "Klienci strumieniowania"
 
 #: ../plugin/controllers/i18n.py:42
 msgid "Su"
@@ -2086,7 +2086,7 @@ msgstr "Użyj własnej lokalizacji"
 
 #: ../plugin/controllers/i18n.py:506
 msgid "Use as PiP if possible"
-msgstr ""
+msgstr "Użyj jako PiP jeśli to możliwe"
 
 #: ../plugin/controllers/i18n.py:182 ../plugin/plugin.py:134
 msgid "Use custom box name"
@@ -2151,11 +2151,11 @@ msgstr "Oczekiwanie na odpowiedź ..."
 #: ../plugin/controllers/i18n.py:230
 #, fuzzy
 msgid "Wake Up"
-msgstr "Obudź"
+msgstr "Wzbudź"
 
 #: ../plugin/controllers/i18n.py:393
 msgid "Wakeup"
-msgstr "Obudź"
+msgstr "Wzbudź"
 
 #: ../plugin/controllers/i18n.py:274
 msgid "Warning"
@@ -2315,7 +2315,7 @@ msgstr "ręczny/wyłączony"
 #: ../plugin/controllers/i18n.py:31
 #, fuzzy
 msgid "minute"
-msgstr "Minuta"
+msgstr "minuta"
 
 #: ../plugin/controllers/i18n.py:173
 msgid "no description available"
