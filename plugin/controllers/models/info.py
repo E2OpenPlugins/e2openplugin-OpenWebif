@@ -162,7 +162,7 @@ def getAdapterIPv6(ifname):
 				tmpaddr = ""
 				tmp = line.split()
 				if ifname == tmp[5]:
-					tmpaddr = ":".join([tmp[0][i:i + 4] for i in list(range(0, len(tmp[0]), 4)]))
+					tmpaddr = ":".join([tmp[0][i:i + 4] for i in list(range(0, len(tmp[0]), 4))])
 
 					if firstpublic is None and (tmpaddr.startswith('2') or tmpaddr.startswith('3')):
 						firstpublic = normalize_ipv6(tmpaddr)
