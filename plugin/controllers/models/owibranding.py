@@ -68,7 +68,7 @@ def bin2long(s):
 
 def long2bin(l):
 	res = ""
-	for byte in range(128):
+	for byte in list(range(128)):
 		res += chr((l >> (1024 - (byte + 1) * 8)) & 0xff)
 	return res
 

@@ -185,7 +185,7 @@ def getCurrentService(session):
 def getCurrentFullInfo(session):
 	now = next = {}
 	inf = getCurrentService(session)
-	inf['tuners'] = list(map(chr, range(65, 65 + nimmanager.getSlotCount())))
+	inf['tuners'] = list(map(chr, list(range(65, 65 + nimmanager.getSlotCount()))))
 
 	try:
 		info = session.nav.getCurrentService().info()
@@ -637,7 +637,7 @@ def getSubServices(session):
 		subservices = service.subServices()
 		if subservices and subservices.getNumberOfSubservices() > 0:
 			print(subservices.getNumberOfSubservices())
-			for i in range(subservices.getNumberOfSubservices()):
+			for i in list(range(subservices.getNumberOfSubservices())):
 				sub = subservices.getSubservice(i)
 				services.append({
 					"servicereference": sub.toString(),

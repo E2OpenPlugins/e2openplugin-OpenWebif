@@ -36,7 +36,7 @@
 
 <div id="navepg">
 <ul class="nav nav-tabs tab-col-$skinColor" style="margin-top: -10px;">
-#for $slot in range(0,7)
+#for $slot in list(range(0,7))
 	<li><div class="plusclick navtab-#if $slot==$day then 'active' else 'inactive' #" data-day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div></li>
 #end for
 #if $mode == 2
@@ -51,7 +51,7 @@
 
 #else
 <li><div class="plusclick lbl">&nbsp;$tstrings['cw']:&nbsp;</div></li>
-#for $wk in range(0,3)
+#for $wk in list(range(0,3))
 	#set $w = $wk + 1000
 	<li><div class="plusclick navtab-#if $wk==$week then 'active' else 'inactive' #" data-day="$(w)">$time.strftime("%V",time.localtime(time.time()+604800*wk))</div></li>
 #end for
@@ -143,7 +143,7 @@
 	<table border="0" cellpadding="0" cellspacing="0" width="100%" id="tbl1" class="table table-striped">
 		<tbody id="tbl1body">
 #set even = 0
-#for $slot in range(0,12)
+#for $slot in list(range(0,12))
 	#if $even == 0
 		<tr>
 		#set $even = 1

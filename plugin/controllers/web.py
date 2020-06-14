@@ -2142,7 +2142,7 @@ class WebController(BaseController):
 		subtitle = service and service.subtitle()
 		subtitlelist = subtitle and subtitle.getSubtitleList()
 		if subtitlelist:
-			for i in range(0, len(subtitlelist)):
+			for i in list(range(0, len(subtitlelist))):
 				ret["result"] = True
 				subt = subtitlelist[i]
 				ret["subtitlelist"].append({

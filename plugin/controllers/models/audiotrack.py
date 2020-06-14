@@ -9,7 +9,7 @@ def getAudioTracks(session):
 	ret = {"tracklist": [], "result": False}
 	if audio is not None and service is not None:
 		current = audio.getCurrentTrack()
-		for i in range(0, audio.getNumberOfTracks()):
+		for i in list(range(0, audio.getNumberOfTracks())):
 			track = audio.getTrackInfo(i)
 			languages = track.getLanguage().split('/')
 			language = ""
