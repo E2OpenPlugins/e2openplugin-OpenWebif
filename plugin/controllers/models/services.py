@@ -63,11 +63,13 @@ else:
 
 def filterName(name, encode=True):
 	if name is not None:
+		name = six.ensure_str(removeBadChars(six.ensure_binary(name)))
 		if encode is True:
-			name = html_escape(name.replace('\xc2\x86', '').replace('\xc2\x87', ''), quote=True)
-		else:
-			name = name.replace('\xc2\x86', '').replace('\xc2\x87', '')
+			return html_escape(name, quote=True)
 	return name
+
+def removeBadChars(val):
+	return val.replace(b'\x1a', b'').replace(b'\xc2\x86', b'').replace(b'\xc2\x87', b'').replace(b'\xc2\x87', b'').replace(b'\xc2\x8a', b'')
 
 def convertUnicode(val):
 	if PY3:
@@ -83,10 +85,12 @@ def convertDesc(val, encode=True):
 			else:
 				return html_escape(six.text_type(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore'), quote=True).replace(u'\x8a', '\n')
 		else:
+			# remove control chars
+			val = removeBadChars(six.ensure_binary(val))
 			if PY3:
-				return val.replace(u'\x1a', '')
+				return val.decode('utf_8', errors='ignore')
 			else:
-				return six.text_type(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore').replace(u'\x1a', '')
+				return six.text_type(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 	return val
 
 
@@ -462,7 +466,7 @@ def getChannels(idbouquet, stype):
 				chan['protection'] = "0"
 			nowevent = epgcache.lookupEvent(['TBDCIX', (channel[0], 0, -1)])
 			if len(nowevent) > 0 and nowevent[0][0] is not None:
-				chan['now_title'] = filterName(nowevent[0][0])
+				chan['now_title'] = convertDesc(nowevent[0][0])
 				chan['now_begin'] = strftime("%H:%M", (localtime(nowevent[0][1])))
 				chan['now_end'] = strftime("%H:%M", (localtime(nowevent[0][1] + nowevent[0][2])))
 				chan['now_left'] = int(((nowevent[0][1] + nowevent[0][2]) - nowevent[0][3]) / 60)
@@ -476,14 +480,14 @@ def getChannels(idbouquet, stype):
 						nextevent[0][1] = time()
 					if nextevent[0][2] is None:
 						nextevent[0][2] = 0
-					chan['next_title'] = filterName(nextevent[0][0])
+					chan['next_title'] = convertDesc(nextevent[0][0])
 					chan['next_begin'] = strftime("%H:%M", (localtime(nextevent[0][1])))
 					chan['next_end'] = strftime("%H:%M", (localtime(nextevent[0][1] + nextevent[0][2])))
 					chan['next_duration'] = int(nextevent[0][2] / 60)
 					chan['next_ev_id'] = nextevent[0][3]
 					chan['next_idp'] = "nextd" + str(idp)
 				else:   # Have to fudge one in, as rest of OWI code expects it...
-					chan['next_title'] = filterName("<<absent>>")
+					chan['next_title'] = "<<absent>>"
 					chan['next_begin'] = chan['now_end']
 					chan['next_end'] = chan['now_end']
 					chan['next_duration'] = 0
@@ -657,9 +661,9 @@ def getEventDesc(ref, idev):
 	epgcache = eEPGCache.getInstance()
 	event = epgcache.lookupEvent(['ESX', (ref, 2, int(idev))])
 	if len(event[0][0]) > 1:
-		description = event[0][0].replace('\xc2\x86', '').replace('\xc2\x87', '').replace('\xc2\x8a', '')
+		description = convertDesc(event[0][0], encode)
 	elif len(event[0][1]) > 1:
-		description = event[0][1].replace('\xc2\x86', '').replace('\xc2\x87', '').replace('\xc2\x8a', '')
+		description = convertDesc(event[0][1], encode)
 	else:
 		description = "No description available"
 
@@ -676,7 +680,7 @@ def getEvent(ref, idev, encode=True):
 		info['begin'] = event[1]
 		info['end'] = strftime("%H:%M", (localtime(event[1] + event[2])))
 		info['duration'] = event[2]
-		info['title'] = filterName(event[3], encode)
+		info['title'] = convertDesc(event[3], encode)
 		info['shortdesc'] = convertDesc(event[4], encode)
 		info['longdesc'] = convertDesc(event[5], encode)
 		info['channel'] = filterName(event[6], encode)
@@ -714,7 +718,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 					ev['duration'] = int(event[2] / 60)
 					ev['duration_sec'] = event[2]
 					ev['end'] = strftime("%H:%M", (localtime(event[1] + event[2])))
-					ev['title'] = filterName(event[3], encode)
+					ev['title'] = convertDesc(event[3], encode)
 					ev['shortdesc'] = convertDesc(event[4], encode)
 					ev['longdesc'] = convertDesc(event[5], encode)
 					ev['sref'] = ref
@@ -781,7 +785,7 @@ def getBouquetEpg(ref, begintime=-1, endtime=None, encode=False):
 			ev['id'] = event[0]
 			ev['begin_timestamp'] = event[1]
 			ev['duration_sec'] = event[2]
-			ev['title'] = filterName(event[4], encode)
+			ev['title'] = convertDesc(event[4], encode)
 			ev['shortdesc'] = convertDesc(event[5], encode)
 			ev['longdesc'] = convertDesc(event[6], encode)
 			ev['sref'] = event[7]
@@ -812,7 +816,7 @@ def getServicesNowNextEpg(sList, encode=False):
 			ev['id'] = event[0]
 			ev['begin_timestamp'] = event[1]
 			ev['duration_sec'] = event[2]
-			ev['title'] = filterName(event[4], encode)
+			ev['title'] = convertDesc(event[4], encode)
 			ev['shortdesc'] = convertDesc(event[5], encode)
 			ev['longdesc'] = convertDesc(event[6], encode)
 			# if event[7] is not None:
@@ -851,7 +855,7 @@ def getBouquetNowNextEpg(ref, servicetype, encode=False):
 			ev['id'] = event[0]
 			ev['begin_timestamp'] = event[1]
 			ev['duration_sec'] = event[2]
-			ev['title'] = filterName(event[4], encode)
+			ev['title'] = convertDesc(event[4], encode)
 			ev['shortdesc'] = convertDesc(event[5], encode)
 			ev['longdesc'] = convertDesc(event[6], encode)
 			if event[7] is not None:
@@ -879,7 +883,7 @@ def getNowNextEpg(ref, servicetype, encode=False):
 			if event[1]:
 				ev['begin_timestamp'] = event[1]
 				ev['duration_sec'] = event[2]
-				ev['title'] = filterName(event[4], encode)
+				ev['title'] = convertDesc(event[4], encode)
 				ev['shortdesc'] = convertDesc(event[5], encode)
 				ev['longdesc'] = convertDesc(event[6], encode)
 				ev['sref'] = event[7]
@@ -943,7 +947,7 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 			ev['duration_sec'] = event[2]
 			ev['duration'] = int(event[2] / 60)
 			ev['end'] = strftime("%H:%M", (localtime(event[1] + event[2])))
-			ev['title'] = filterName(event[3], encode)
+			ev['title'] = convertDesc(event[3], encode)
 			ev['shortdesc'] = convertDesc(event[4], encode)
 			ev['longdesc'] = convertDesc(event[5], encode)
 			ev['sref'] = event[7]
@@ -989,7 +993,7 @@ def getSearchSimilarEpg(ref, eventid, encode=False):
 			ev['duration_sec'] = event[2]
 			ev['duration'] = int(event[2] / 60)
 			ev['end'] = strftime("%H:%M", (localtime(event[1] + event[2])))
-			ev['title'] = filterName(event[3], encode)
+			ev['title'] = convertDesc(event[3], encode)
 			ev['shortdesc'] = convertDesc(event[4], encode)
 			ev['longdesc'] = convertDesc(event[5], encode)
 			ev['sref'] = event[7]
