@@ -8,7 +8,7 @@ pushd ${D} &> /dev/null
 VER=$(head -n 1 CHANGES.md | grep -i '## Version' | sed 's/^## Version \([[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+\)/\1/')
 # '%cd': committer date (format respects --date= option); '%t': abbreviated tree hash
 GITVER=e2openpluginsgit$(git log -1 --format="%cd" --date="format:%Y%m%d")
-PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_all.ipk
+PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-latest_all.ipk
 popd &> /dev/null
 
 mkdir -p ${P}
@@ -24,7 +24,7 @@ Section: extra
 Priority: optional
 Maintainer: E2OpenPlugins members
 Homepage: https://github.com/E2OpenPlugins/e2openplugin-OpenWebif
-Depends: python-json, python-cheetah, python-pyopenssl, python-unixadmin, python-misc, python-twisted-web, python-pprint, python-compression, python-ipaddress
+Depends: python-json, python-cheetah, python-pyopenssl, python-unixadmin, python-misc, python-twisted-web, python-pprint, python-compression, python-ipaddress, python-six (>= 1.15)
 Source: https://github.com/E2OpenPlugins/e2openplugin-OpenWebif
 EOF
 
