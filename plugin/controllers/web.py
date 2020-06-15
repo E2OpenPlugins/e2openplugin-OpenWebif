@@ -307,7 +307,7 @@ class WebController(BaseController):
 
 		title = getUrlArg(request, "title")
 		sRef = getUrlArg(request, "sRef")
-		return zapService(self.session, sref, title)
+		return zapService(self.session, sRef, title)
 
 	def P_remotecontrol(self, request):
 		"""
@@ -882,8 +882,10 @@ class WebController(BaseController):
 		"""
 		_add = getUrlArg(request, "add")
 		_del = getUrlArg(request, "del")
-		_sref = getUrlArg(request, "sref")
-		return getMovieInfo(_sref, _add, _del)
+		_sRef = getUrlArg(request, "sRef")
+		if _sRef == None:
+			_sRef = getUrlArg(request, "sref")
+		return getMovieInfo(_sRef, _add, _del)
 
 	def P_movieinfo(self, request):
 		"""
@@ -897,13 +899,15 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
-		_sref = getUrlArg(request, "sref")
-		if _sref != None:
+		_sRef = getUrlArg(request, "sRef")
+		if _sRef == None:
+			_sRef = getUrlArg(request, "sref")
+		if _sRef != None:
 			_addtag = getUrlArg(request, "addtag")
 			_deltag = getUrlArg(request, "deltag")
 			_title = getUrlArg(request, "title")
 			_cuts = getUrlArg(request, "cuts")
-			return getMovieInfo(_sref, _addtag, _deltag, _title, _cuts, True)
+			return getMovieInfo(_sRef, _addtag, _deltag, _title, _cuts, True)
 		else:
 			return getMovieInfo()
 
@@ -916,9 +920,11 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
-		_sref = getUrlArg(request, "sref")
-		if _sref != None:
-			return getMovieDetails(_sref)
+		_sRef = getUrlArg(request, "sRef")
+		if _sRef == None:
+			_sRef = getUrlArg(request, "sref")
+		if _sRef != None:
+			return getMovieDetails(_sRef)
 		else:
 			return {
 				"result": False
@@ -1520,10 +1526,10 @@ class WebController(BaseController):
 				fulldesc = True
 			return getSearchEpg(search, endtime, fulldesc, False, self.isJson)
 		else:
-			res = self.testMandatoryArguments(request, ["sref", "eventid"])
+			res = self.testMandatoryArguments(request, ["sRef", "eventid"])
 			if res:
 				return res
-			service_reference = getUrlArg(request, "sref")
+			service_reference = getUrlArg(request, "sRef")
 			item_id = 0
 			try:
 				item_id = int(request.args[b"eventid"][0])
