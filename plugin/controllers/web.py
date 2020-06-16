@@ -305,7 +305,7 @@ class WebController(BaseController):
 		if res:
 			return res
 
-		title = getUrlArg(request, "title")
+		title = getUrlArg(request, "title", "")
 		sRef = getUrlArg(request, "sRef")
 		return zapService(self.session, sRef, title)
 
