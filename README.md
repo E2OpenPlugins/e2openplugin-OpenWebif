@@ -60,7 +60,7 @@ The following additional packages need to be installed:
     python-pyopenssl
     python-compression
     python-ipaddress
-	python-six (>= 1.15)
+	python-six (>= 1.14)
 
 _(Dependencies should be handled by using ipkg/opkg packages)_
 
