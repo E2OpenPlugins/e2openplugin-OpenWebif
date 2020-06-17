@@ -37,7 +37,7 @@ cd /tmp
 init 4                        # graceful enigma2 shutdown
 # fetching -- wget '<URL of .ipk file>'
 # example:
-wget 'https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/gh-pages/enigma2-plugin-extensions-openwebif_1.4.0-latest_all.ipk'
+wget 'https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/raw/gh-pages/enigma2-plugin-extensions-openwebif_1.4.0-latest_all.ipk'
 # installing -- opkg install <.ipk file>
 # example:
 opkg install ./enigma2-plugin-extensions-openwebif_1.4.0-latest_all.ipk
