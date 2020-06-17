@@ -101,7 +101,7 @@ msgstr "Добавлен %s в альтернативный сервис %s."
 
 #: ../plugin/controllers/i18n.py:508
 msgid "Adjust recording time to real event time"
-msgstr ""
+msgstr "Настройте время записи на реальное время события"
 
 #: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
 msgid "After Event"
@@ -133,7 +133,7 @@ msgstr "Разрешить загрузку IPK"
 
 #: ../plugin/controllers/i18n.py:507
 msgid "Allow duplicates"
-msgstr ""
+msgstr "Разрешить дубликаты"
 
 #: ../plugin/controllers/BouquetEditor.py:452
 #, python-format
@@ -451,9 +451,8 @@ msgid "Delete"
 msgstr "Удалить"
 
 #: ../plugin/controllers/i18n.py:468
-#, fuzzy
 msgid "Delete Bookmark"
-msgstr "Закладка"
+msgstr "Удалить закладку"
 
 #: ../plugin/controllers/i18n.py:417
 msgid "Delete Bouquet"
@@ -1079,9 +1078,8 @@ msgid "MultiEPG"
 msgstr "Мульти EPG"
 
 #: ../plugin/controllers/base.py:323
-#, fuzzy
 msgid "NCam Webinterface"
-msgstr "Веб-интерфейс OSCam"
+msgstr "Веб-интерфейс NCam"
 
 #: ../plugin/controllers/i18n.py:170
 msgid "Name"
@@ -1353,9 +1351,8 @@ msgid "Playlist"
 msgstr "Плейлист"
 
 #: ../plugin/controllers/i18n.py:505
-#, fuzzy
 msgid "Playlist Format"
-msgstr "Плейлист"
+msgstr "Формат плейлиста"
 
 #: ../plugin/controllers/i18n.py:427
 msgid "Please enter filename"
@@ -1402,9 +1399,8 @@ msgid "Really rename the recording"
 msgstr "Действительно переименовать запись?"
 
 #: ../plugin/controllers/i18n.py:154
-#, fuzzy
 msgid "Really start instant record now?"
-msgstr "Старт немедленной записи"
+msgstr "Старт немедленной записи сечас?"
 
 #: ../plugin/controllers/i18n.py:193
 msgid "Reboot Box"
@@ -1666,7 +1662,6 @@ msgid "Show Picon in channel list"
 msgstr "Показать пикон в списке каналов"
 
 #: ../plugin/controllers/i18n.py:501
-#, fuzzy
 msgid "Show Service type in channel list"
 msgstr "Показать тип сервиса в списке каналов"
 
@@ -1773,9 +1768,8 @@ msgid "Stream"
 msgstr "Стрим"
 
 #: ../plugin/controllers/i18n.py:510
-#, fuzzy
 msgid "Stream Clients"
-msgstr "Стрим"
+msgstr "Стрим клиенты"
 
 #: ../plugin/controllers/i18n.py:42
 msgid "Su"
@@ -2076,7 +2070,7 @@ msgstr "Пользовательское расположение"
 
 #: ../plugin/controllers/i18n.py:506
 msgid "Use as PiP if possible"
-msgstr ""
+msgstr "Использовать как PiP при возможности"
 
 #: ../plugin/controllers/i18n.py:182 ../plugin/plugin.py:134
 msgid "Use custom box name"
