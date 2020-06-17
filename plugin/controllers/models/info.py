@@ -23,6 +23,7 @@
 
 from __future__ import print_function
 import os
+import six
 import sys
 import time
 from twisted import version
@@ -310,7 +311,7 @@ def getInfo(session=None, need_fullinfo=False):
 
 	try:
 		f = open("/proc/uptime", "rb")
-		uptime = int(float(six.ensure_str(f.readline()).split(' ', 2)[0].strip()))
+		uptime = int(float(six.ensure_str(f.readline().split(' ', 2)[0].strip())))
 		f.close()
 		uptimetext = ''
 		if uptime > 86400:
