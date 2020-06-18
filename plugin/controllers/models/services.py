@@ -656,7 +656,7 @@ def getSubServices(session):
 	return {"services": services}
 
 
-def getEventDesc(ref, idev):
+def getEventDesc(ref, idev, encode=True):
 	ref = unquote(ref)
 	epgcache = eEPGCache.getInstance()
 	event = epgcache.lookupEvent(['ESX', (ref, 2, int(idev))])
