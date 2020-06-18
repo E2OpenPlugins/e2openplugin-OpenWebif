@@ -43,7 +43,7 @@ msgstr "Toevoegen"
 
 #: ../plugin/controllers/i18n.py:75
 msgid "Add AutoTimer"
-msgstr "Voeg autotimer toe"
+msgstr "Autotimer toevoegen"
 
 #: ../plugin/controllers/i18n.py:374
 msgid "Add Autotimer to Tags"
@@ -100,7 +100,7 @@ msgstr "%s toegevoegd aan alternatieve zender %s."
 
 #: ../plugin/controllers/i18n.py:508
 msgid "Adjust recording time to real event time"
-msgstr ""
+msgstr "Opname tijd aanpassen aan werkelijke programma tijd"
 
 #: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
 msgid "After Event"
@@ -119,8 +119,14 @@ msgid "All Channels"
 msgstr "Alle zenders"
 
 #: ../plugin/controllers/i18n.py:281
-msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr "Alle bestanden van deze software zijn Open Source; u kunt deze herdistribueren en modificeren volgens de regels van de GNU General Public License versie 3 zoals gepubliceerd door de 'Free Software Foundation'."
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 3 "
+"as published by the Free Software Foundation."
+msgstr ""
+"Alle bestanden van deze software zijn Open Source; u kunt deze "
+"herdistribueren en modificeren volgens de regels van de GNU General Public "
+"License versie 3 zoals gepubliceerd door de 'Free Software Foundation'."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "All alternative services deleted."
@@ -132,7 +138,7 @@ msgstr "IPK upload toestaan"
 
 #: ../plugin/controllers/i18n.py:507
 msgid "Allow duplicates"
-msgstr ""
+msgstr "Duplicaten toestaan"
 
 #: ../plugin/controllers/BouquetEditor.py:452
 #, python-format
@@ -282,7 +288,9 @@ msgstr "Het bouquet %s is verplaatst."
 #: ../plugin/controllers/BouquetEditor.py:186
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Het verwijderen van het bouquet %s is mislukt, zenderreferentie of veranderde lijst is niet geldig."
+msgstr ""
+"Het verwijderen van het bouquet %s is mislukt, zenderreferentie of "
+"veranderde lijst is niet geldig."
 
 #: ../plugin/controllers/BouquetEditor.py:184
 #, python-format
@@ -451,9 +459,8 @@ msgid "Delete"
 msgstr "Verwijder"
 
 #: ../plugin/controllers/i18n.py:468
-#, fuzzy
 msgid "Delete Bookmark"
-msgstr "Markering"
+msgstr "Markering verwijderen"
 
 #: ../plugin/controllers/i18n.py:417
 msgid "Delete Bouquet"
@@ -565,7 +572,9 @@ msgstr "EPGRefresh"
 
 #: ../plugin/controllers/models/timers.py:793
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "FOUT: Kan geen SleepTimer instellen terwijl het apparaat zich in de Standby-modus bevind"
+msgstr ""
+"FOUT: Kan geen SleepTimer instellen terwijl het apparaat zich in de Standby-"
+"modus bevind"
 
 #: ../plugin/controllers/i18n.py:122
 msgid "Edit Timer"
@@ -1079,9 +1088,8 @@ msgid "MultiEPG"
 msgstr "Multi-EPG"
 
 #: ../plugin/controllers/base.py:323
-#, fuzzy
 msgid "NCam Webinterface"
-msgstr "OSCam Webinterface"
+msgstr "NCam Webinterface"
 
 #: ../plugin/controllers/i18n.py:170
 msgid "Name"
@@ -1353,9 +1361,8 @@ msgid "Playlist"
 msgstr "Afspeellijst"
 
 #: ../plugin/controllers/i18n.py:505
-#, fuzzy
 msgid "Playlist Format"
-msgstr "Afspeellijst"
+msgstr "Afspeellijst formaat"
 
 #: ../plugin/controllers/i18n.py:427
 msgid "Please enter filename"
@@ -1402,9 +1409,8 @@ msgid "Really rename the recording"
 msgstr "Werkelijk de opname hernoemen"
 
 #: ../plugin/controllers/i18n.py:154
-#, fuzzy
 msgid "Really start instant record now?"
-msgstr "Start opname onmiddellijk"
+msgstr "Start opname onmiddellijk?"
 
 #: ../plugin/controllers/i18n.py:193
 msgid "Reboot Box"
@@ -1772,9 +1778,8 @@ msgid "Stream"
 msgstr "Stream"
 
 #: ../plugin/controllers/i18n.py:510
-#, fuzzy
 msgid "Stream Clients"
-msgstr "Stream"
+msgstr "Stream clients"
 
 #: ../plugin/controllers/i18n.py:42
 msgid "Su"
@@ -2075,7 +2080,7 @@ msgstr "Gebruik een aangepaste locatie"
 
 #: ../plugin/controllers/i18n.py:506
 msgid "Use as PiP if possible"
-msgstr ""
+msgstr "Gebruik indien mogelijk als PIP"
 
 #: ../plugin/controllers/i18n.py:182 ../plugin/plugin.py:134
 msgid "Use custom box name"
