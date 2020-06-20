@@ -241,6 +241,7 @@ class IpkgController(BaseController):
 
 	def Moredata(self, data):
 		if data != self.olddata or self.olddata is None and self.IsAlive:
+			data = six.ensure_str(data)
 			self.ResultString += data
 
 	def CallOPKGP(self, request, action, pack):
