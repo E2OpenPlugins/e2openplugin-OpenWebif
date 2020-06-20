@@ -56,6 +56,25 @@ except:  # noqa: E722
 
 STATICBOXINFO = None
 
+
+def removeBad(self, val):
+	if val is not None:
+		if six.PY3:
+			return val.replace('\x86', '').replace('\x87', '')
+		else:
+			return val.replace('\xc2\x86', '').replace('\xc2\x87', '')
+	return val
+
+
+def removeBad2(self, val):
+	if val is not None:
+		if six.PY3:
+			return val.replace('\x86', '').replace('\x87', '').replace('\xc2\x8a','\n')
+		else:
+			return val.replace('\xc2\x86', '').replace('\xc2\x87', '').replace('\xc2\x8a','\n')
+	return val
+
+
 def getFriendlyImageDistro():
 	dist = getImageDistro().replace("openatv", "OpenATV").replace("openhdf", "OpenHDF").replace("openpli", "OpenPLi").replace("openvix", "OpenViX")
 	return dist
@@ -571,7 +590,7 @@ def getInfo(session=None, need_fullinfo=False):
 				timers = []
 				for timer in NavigationInstance.instance.RecordTimer.timer_list:
 					if timer.isRunning() and not timer.justplay:
-						timers.append(timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''))
+						timers.append(self.removeBad(timer.service_ref.getServiceName()))
 						print("[OpenWebif] -D- timer '%s'" % timer.service_ref.getServiceName())
 # TODO: more than one recording
 				if len(timers) == 1:
@@ -689,7 +708,7 @@ def getStreamServiceName(ref):
 	if isinstance(ref, eServiceReference):
 		servicereference = ServiceReference(ref)
 		if servicereference:
-			return servicereference.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '')
+			return self.removeBad(servicereference.getServiceName())
 	return ""
 
 
@@ -700,7 +719,6 @@ def getStreamEventName(ref):
 		if event:
 			return event.getEventName()
 	return ""
-
 
 def getStatusInfo(self):
 	# Get Current Volume and Mute Status
@@ -726,8 +744,7 @@ def getStatusInfo(self):
 		serviceinfo = service and service.info()
 		event = serviceinfo and serviceinfo.getEvent(0)
 		serviceref_string = serviceref.toString()
-		currservice_station = serviceHandlerInfo.getName(
-			serviceref).replace('\xc2\x86', '').replace('\xc2\x87', '')
+		currservice_station = self.removeBad(serviceHandlerInfo.getName(serviceref))
 	else:
 		event = None
 		serviceHandlerInfo = None
@@ -737,21 +754,26 @@ def getStatusInfo(self):
 		curEvent = parseEvent(event)
 		begin_timestamp = int(curEvent[0]) + (config.recording.margin_before.value * 60)
 		end_timestamp = int(curEvent[1]) - (config.recording.margin_after.value * 60)
-		statusinfo['currservice_name'] = curEvent[2].replace('\xc2\x86', '').replace('\xc2\x87', '')
+		statusinfo['currservice_name'] = self.removeBad(curEvent[2])
 		statusinfo['currservice_serviceref'] = serviceref_string
 		statusinfo['currservice_begin'] = time.strftime("%H:%M", (time.localtime(begin_timestamp)))
 		statusinfo['currservice_begin_timestamp'] = begin_timestamp
 		statusinfo['currservice_end'] = time.strftime("%H:%M", (time.localtime(end_timestamp)))
 		statusinfo['currservice_end_timestamp'] = end_timestamp
-		statusinfo['currservice_description'] = curEvent[3]
-		if len(curEvent[3].decode('utf-8')) > 220:
-			statusinfo['currservice_description'] = curEvent[3].decode('utf-8')[0:220].encode('utf-8') + "..."
+		desc = curEvent[3]
+		if six.PY2:
+			desc = desc.decode('utf-8')
+		if len(desc) > 220:
+			desc = desc + u"..."
+		if six.PY2:
+			desc = desc.encode('utf-8')
+		statusinfo['currservice_description'] = dec
 		statusinfo['currservice_station'] = currservice_station
 		if statusinfo['currservice_serviceref'].startswith('1:0:0'):
 			statusinfo['currservice_filename'] = '/' + '/'.join(serviceref_string.split("/")[1:])
 		full_desc = statusinfo['currservice_name'] + '\n'
 		full_desc += statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + '\n\n'
-		full_desc += event.getExtendedDescription().replace('\xc2\x86', '').replace('\xc2\x87', '').replace('\xc2\x8a', '\n')
+		full_desc += self.removeBad2(event.getExtendedDescription())
 		statusinfo['currservice_fulldescription'] = full_desc
 		statusinfo['currservice_id'] = curEvent[4]
 	else:
@@ -788,7 +810,7 @@ def getStatusInfo(self):
 		for timer in NavigationInstance.instance.RecordTimer.timer_list:
 			if timer.state == TimerEntry.StateRunning:
 				if not timer.justplay:
-					statusinfo['Recording_list'] += timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', '') + ": " + timer.name + "\n"
+					statusinfo['Recording_list'] += self.removeBad(timer.service_ref.getServiceName()) + ": " + timer.name + "\n"
 		if statusinfo['Recording_list'] == "\n":
 			statusinfo['isRecording'] = "false"
 	else:

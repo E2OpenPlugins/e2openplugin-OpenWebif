@@ -69,7 +69,7 @@ def filterName(name, encode=True):
 	return name
 
 def removeBadChars(val):
-	return val.replace(b'\x1a', b'').replace(b'\xc2\x86', b'').replace(b'\xc2\x87', b'').replace(b'\xc2\x87', b'').replace(b'\xc2\x8a', b'')
+	return val.replace(b'\x1a', b'').replace(b'\xc2\x86', b'').replace(b'\xc2\x87', b'').replace(b'\xc2\x8a', b'')
 
 def convertUnicode(val):
 	if PY3:
