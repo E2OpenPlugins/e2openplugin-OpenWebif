@@ -33,6 +33,8 @@ from time import time, strftime, localtime, mktime
 from six.moves.urllib.parse import unquote
 from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternative
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
+from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad
+
 
 def getTimers(session):
 	rt = session.nav.RecordTimer
@@ -135,13 +137,16 @@ def getTimers(session):
 			else:
 				isAutoTimer = 0
 
+		if six.PY2:
+			descriptionextended = six.text_type(descriptionextended, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+
 		timers.append({
 			"serviceref": str(timer.service_ref),
-			"servicename": timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
+			"servicename": removeBad(timer.service_ref.getServiceName()),
 			"eit": timer.eit,
 			"name": timer.name,
 			"description": timer.description,
-			"descriptionextended": six.text_type(descriptionextended, 'utf_8', errors='ignore').encode('utf_8', 'ignore'),
+			"descriptionextended": descriptionextended,
 			"disabled": disabled,
 			"begin": timer.begin,
 			"end": timer.end,
@@ -371,7 +376,7 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 					errors.append(conflict.name)
 					conflictinfo.append({
 						"serviceref": str(conflict.service_ref),
-						"servicename": conflict.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
+						"servicename": removeBad(conflict.service_ref.getServiceName()),
 						"name": conflict.name,
 						"begin": conflict.begin,
 						"end": conflict.end,
@@ -520,7 +525,7 @@ def recordNow(session, infinite):
 		}
 	nt = {
 		"serviceref": str(timer.service_ref),
-		"servicename": timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
+		"servicename": removeBad(timer.service_ref.getServiceName()),
 		"eit": timer.eit,
 		"name": timer.name,
 		"begin": timer.begin,
