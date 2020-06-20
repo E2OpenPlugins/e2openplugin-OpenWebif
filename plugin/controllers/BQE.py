@@ -64,7 +64,7 @@ class BQEWebController(BaseController):
 		for key in paramlist:
 			if key in args:
 				k = six.ensure_binary(key)
-				list[key] = six.ensure_text(args[k][0])
+				list[key] = six.ensure_str(args[k][0])
 			else:
 				list[key] = None
 		return list
@@ -197,7 +197,7 @@ class BQEWebController(BaseController):
 		try:
 			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.BACKUP)
-			bqe.handleCommand(request.args[b'Filename'][0])
+			bqe.handleCommand(six.ensure_str(request.args[b'Filename'][0]))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -207,7 +207,7 @@ class BQEWebController(BaseController):
 		try:
 			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.RESTORE)
-			bqe.handleCommand(request.args[b'Filename'][0])
+			bqe.handleCommand(six.ensure_str(request.args[b'Filename'][0]))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -384,7 +384,7 @@ class BQEUploadFile(resource.Resource):
 				result = [False, 'Error writing File']
 			else:
 				result = [True, self.FN]
-		return json.dumps({"Result": result})
+		return six.ensure_binary(json.dumps({"Result": result}))
 
 class BQEImport(resource.Resource):
 	def __init__(self, session):
