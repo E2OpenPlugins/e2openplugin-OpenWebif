@@ -767,7 +767,7 @@ def getStatusInfo(self):
 			desc = desc + u"..."
 		if six.PY2:
 			desc = desc.encode('utf-8')
-		statusinfo['currservice_description'] = dec
+		statusinfo['currservice_description'] = desc
 		statusinfo['currservice_station'] = currservice_station
 		if statusinfo['currservice_serviceref'].startswith('1:0:0'):
 			statusinfo['currservice_filename'] = '/' + '/'.join(serviceref_string.split("/")[1:])
