@@ -44,6 +44,7 @@ from enigma import eEPGCache, eDVBVolumecontrol, eServiceCenter, eServiceReferen
 
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, TRANSCODING
+from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad, removeBad2
 
 try:
 	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
@@ -55,24 +56,6 @@ except:  # noqa: E722
 		return about.getEnigmaVersionString()
 
 STATICBOXINFO = None
-
-
-def removeBad(self, val):
-	if val is not None:
-		if six.PY3:
-			return val.replace('\x86', '').replace('\x87', '')
-		else:
-			return val.replace('\xc2\x86', '').replace('\xc2\x87', '')
-	return val
-
-
-def removeBad2(self, val):
-	if val is not None:
-		if six.PY3:
-			return val.replace('\x86', '').replace('\x87', '').replace('\xc2\x8a','\n')
-		else:
-			return val.replace('\xc2\x86', '').replace('\xc2\x87', '').replace('\xc2\x8a','\n')
-	return val
 
 
 def getFriendlyImageDistro():
@@ -590,7 +573,7 @@ def getInfo(session=None, need_fullinfo=False):
 				timers = []
 				for timer in NavigationInstance.instance.RecordTimer.timer_list:
 					if timer.isRunning() and not timer.justplay:
-						timers.append(self.removeBad(timer.service_ref.getServiceName()))
+						timers.append(removeBad(timer.service_ref.getServiceName()))
 						print("[OpenWebif] -D- timer '%s'" % timer.service_ref.getServiceName())
 # TODO: more than one recording
 				if len(timers) == 1:
@@ -708,7 +691,7 @@ def getStreamServiceName(ref):
 	if isinstance(ref, eServiceReference):
 		servicereference = ServiceReference(ref)
 		if servicereference:
-			return self.removeBad(servicereference.getServiceName())
+			return removeBad(servicereference.getServiceName())
 	return ""
 
 
@@ -744,7 +727,7 @@ def getStatusInfo(self):
 		serviceinfo = service and service.info()
 		event = serviceinfo and serviceinfo.getEvent(0)
 		serviceref_string = serviceref.toString()
-		currservice_station = self.removeBad(serviceHandlerInfo.getName(serviceref))
+		currservice_station = removeBad(serviceHandlerInfo.getName(serviceref))
 	else:
 		event = None
 		serviceHandlerInfo = None
@@ -754,7 +737,7 @@ def getStatusInfo(self):
 		curEvent = parseEvent(event)
 		begin_timestamp = int(curEvent[0]) + (config.recording.margin_before.value * 60)
 		end_timestamp = int(curEvent[1]) - (config.recording.margin_after.value * 60)
-		statusinfo['currservice_name'] = self.removeBad(curEvent[2])
+		statusinfo['currservice_name'] = removeBad(curEvent[2])
 		statusinfo['currservice_serviceref'] = serviceref_string
 		statusinfo['currservice_begin'] = time.strftime("%H:%M", (time.localtime(begin_timestamp)))
 		statusinfo['currservice_begin_timestamp'] = begin_timestamp
@@ -773,7 +756,7 @@ def getStatusInfo(self):
 			statusinfo['currservice_filename'] = '/' + '/'.join(serviceref_string.split("/")[1:])
 		full_desc = statusinfo['currservice_name'] + '\n'
 		full_desc += statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + '\n\n'
-		full_desc += self.removeBad2(event.getExtendedDescription())
+		full_desc += removeBad2(event.getExtendedDescription())
 		statusinfo['currservice_fulldescription'] = full_desc
 		statusinfo['currservice_id'] = curEvent[4]
 	else:
@@ -810,7 +793,7 @@ def getStatusInfo(self):
 		for timer in NavigationInstance.instance.RecordTimer.timer_list:
 			if timer.state == TimerEntry.StateRunning:
 				if not timer.justplay:
-					statusinfo['Recording_list'] += self.removeBad(timer.service_ref.getServiceName()) + ": " + timer.name + "\n"
+					statusinfo['Recording_list'] += removeBad(timer.service_ref.getServiceName()) + ": " + timer.name + "\n"
 		if statusinfo['Recording_list'] == "\n":
 			statusinfo['isRecording'] = "false"
 	else:

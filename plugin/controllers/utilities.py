@@ -295,6 +295,25 @@ def getUrlArg2(args, key, default=None):
 			return args[key][0]
 	return default
 
+
+def removeBad(self, val):
+	if val is not None:
+		if PY3:
+			return val.replace('\x86', '').replace('\x87', '')
+		else:
+			return val.replace('\xc2\x86', '').replace('\xc2\x87', '')
+	return val
+
+
+def removeBad2(self, val):
+	if val is not None:
+		if PY3:
+			return val.replace('\x86', '').replace('\x87', '').replace('\xc2\x8a','\n')
+		else:
+			return val.replace('\xc2\x86', '').replace('\xc2\x87', '').replace('\xc2\x8a','\n')
+	return val
+
+
 if __name__ == '__main__':
 	import doctest
 
