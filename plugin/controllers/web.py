@@ -1035,6 +1035,8 @@ class WebController(BaseController):
 
 		description = getUrlArg(request, "description", "")
 
+		sRef = getUrlArg(request, "sRef")
+
 		eit = 0
 		if mode == 1:
 			try:
@@ -1050,7 +1052,7 @@ class WebController(BaseController):
 			# TODO : move this code to timers.py
 			from enigma import eEPGCache, eServiceReference
 			queryTime = int(request.args[b"begin"][0]) + (int(request.args[b"end"][0]) - int(request.args[b"begin"][0])) / 2
-			event = eEPGCache.getInstance().lookupEventTime(eServiceReference(request.args[b"sRef"][0]), queryTime)
+			event = eEPGCache.getInstance().lookupEventTime(eServiceReference(sRef), queryTime)
 			eventid = event and event.getEventId()
 			if eventid is not None:
 				eit = int(eventid)
@@ -1068,7 +1070,7 @@ class WebController(BaseController):
 			return addTimerByEventId(
 				self.session,
 				eventid,
-				getUrlArg(request, "sRef"),
+				sRef,
 				justplay,
 				dirname,
 				tags,
@@ -1097,7 +1099,7 @@ class WebController(BaseController):
 				}
 			return editTimer(
 				self.session,
-				getUrlArg(request, "sRef"),
+				sRef,
 				getUrlArg(request, "begin"),
 				getUrlArg(request, "end"),
 				getUrlArg(request, "name"),
@@ -1120,7 +1122,7 @@ class WebController(BaseController):
 		else:
 			return addTimer(
 				self.session,
-				getUrlArg(request, "sRef"),
+				sRef,
 				getUrlArg(request, "begin"),
 				getUrlArg(request, "end"),
 				getUrlArg(request, "name"),
@@ -1526,16 +1528,23 @@ class WebController(BaseController):
 				fulldesc = True
 			return getSearchEpg(search, endtime, fulldesc, False, self.isJson)
 		else:
-			res = self.testMandatoryArguments(request, ["sRef", "eventid"])
+			res = self.testMandatoryArguments(request, ["eventid"])
 			if res:
 				return res
-			service_reference = getUrlArg(request, "sRef")
+			sRef = getUrlArg(request, "sRef")
+			if sRef == None:
+				sRef = getUrlArg(request, "sref")
+			if sRef == None:
+				return {
+					"result": False,
+					"message": _("The parameter '%s' can't be empty") % "sRef,sref"
+				}
 			item_id = 0
 			try:
 				item_id = int(request.args[b"eventid"][0])
 			except ValueError:
 				pass
-			return getEvent(service_reference, item_id, self.isJson)
+			return getEvent(sRef, item_id, self.isJson)
 
 	def P_epgsearchrss(self, request):
 		res = self.testMandatoryArguments(request, ["search"])
@@ -1597,7 +1606,10 @@ class WebController(BaseController):
 		return getSearchSimilarEpg(getUrlArg(request, "sRef"), eventid, self.isJson)
 
 	def P_event(self, request):
-		event = getEvent(getUrlArg(request, "sRef"), request.args[b"idev"][0], self.isJson)
+		sRef = getUrlArg(request, "sRef")
+		if sRef == None:
+			sRef = getUrlArg(request, "sref")
+		event = getEvent(sRef, request.args[b"idev"][0], self.isJson)
 		event['event']['recording_margin_before'] = comp_config.recording.margin_before.value
 		event['event']['recording_margin_after'] = comp_config.recording.margin_after.value
 		return event

@@ -567,7 +567,7 @@ function addTimerEventPlay(sRef, eventId) {
 */
 
 function addEditTimerEvent(sRef, eventId) {
-	var url="/api/event?sref=" + sRef + "&idev=" + eventId;
+	var url="/api/event?sRef=" + sRef + "&idev=" + eventId;
 	$.ajax({
 		url: url,
 		dataType: "json",
@@ -616,7 +616,7 @@ function addAutoTimerEvent(sRef, sname, title ,begin, end) {
 
 function delTimerEvent(sRef,eventId) {
 
-	var url="/api/event?sref=" + sRef + "&idev=" + eventId;
+	var url="/api/event?sRef=" + sRef + "&idev=" + eventId;
 	$.ajax({
 		url: url,
 		dataType: "json",
