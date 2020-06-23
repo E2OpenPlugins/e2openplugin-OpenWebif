@@ -312,8 +312,8 @@ def getInfo(session=None, need_fullinfo=False):
 	info['mem3'] = _("%s free / %s total") % (info['mem2'], info['mem1'])
 
 	try:
-		f = open("/proc/uptime", "rb")
-		uptime = int(float(six.ensure_str(f.readline().split(' ', 2)[0].strip())))
+		f = open("/proc/uptime", "r")
+		uptime = int(float(f.readline().split(' ', 2)[0].strip()))
 		f.close()
 		uptimetext = ''
 		if uptime > 86400:
