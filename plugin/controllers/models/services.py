@@ -922,6 +922,8 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 	if fulldesc:
 		if hasattr(eEPGCache, 'FULL_DESCRIPTION_SEARCH'):
 			search_type = eEPGCache.FULL_DESCRIPTION_SEARCH
+		elif hasattr(eEPGCache, 'PARTIAL_DESCRIPTION_SEARCH'):
+			search_type = eEPGCache.PARTIAL_DESCRIPTION_SEARCH
 	events = epgcache.search(('IBDTSENRW', 128, search_type, sstr, 1))
 	if events is not None:
 		# TODO : discuss #677
