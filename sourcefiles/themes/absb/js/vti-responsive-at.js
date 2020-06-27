@@ -587,6 +587,8 @@ function saveAT()
 			reqs += "&counter=" + CurrentAT.counter;
 			reqs += "&counterFormat=" + CurrentAT.counterFormat;
 		}
+		else
+			reqs += "&counter=0";
 		
 		if(CurrentAT.timerOffset) {
 			if(CurrentAT.timerOffsetAfter > -1 && CurrentAT.timerOffsetBefore > -1)

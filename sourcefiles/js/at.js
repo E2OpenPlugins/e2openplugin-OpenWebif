@@ -1,9 +1,9 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 2.8
+//* Version 2.9
 //******************************************************************************
-//* Copyright (C) 2014-2019 Joerg Bleyel
-//* Copyright (C) 2014-2019 E2OpenPlugins
+//* Copyright (C) 2014-2020 Joerg Bleyel
+//* Copyright (C) 2014-2020 E2OpenPlugins
 //*
 //* V 1.0 - Initial Version
 //* V 1.1 - Support translation, small ui fixes
@@ -24,6 +24,7 @@
 //* V 2.6 - add rec+zap timer support
 //* V 2.7 - backup / restore
 //* V 2.8 - fix #960
+//* V 2.9 - fix #1028
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -913,6 +914,8 @@ function saveAT()
 			reqs += "&counter=" + CurrentAT.counter;
 			reqs += "&counterFormat=" + CurrentAT.counterFormat;
 		}
+		else
+			reqs += "&counter=0";
 		
 		if(CurrentAT.timerOffset) {
 			if(CurrentAT.timerOffsetAfter > -1 && CurrentAT.timerOffsetBefore > -1)
