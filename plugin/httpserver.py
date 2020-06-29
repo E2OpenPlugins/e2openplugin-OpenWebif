@@ -354,7 +354,7 @@ class AuthResource(resource.Resource):
 				return self.resource.getChildWithDefault(path, request)
 
 		# #3: Access is from localhost and streaming auth is disabled - or - we only want to see our IPv6 (For inadyn-mt)
-		if ((host == "localhost" or host == "127.0.0.1" or host == "::ffff:127.0.0.1" or host == "::1") and not (request.uri.startswith("/web/stream?StreamService=") and config.OpenWebif.auth_for_streaming.value) or request.uri == "/web/getipv6"):
+		if ((host == "localhost" or host == "127.0.0.1" or host == "::ffff:127.0.0.1" or host == "::1") and not (request.uri.startswith(b"/web/stream?StreamService=") and config.OpenWebif.auth_for_streaming.value) or request.uri == b"/web/getipv6"):
 			return self.resource.getChildWithDefault(path, request)
 
 		# #4: Web TV is accessing streams and "auths" by parent session id
