@@ -197,7 +197,7 @@ class BaseController(resource.Resource):
 				# if not self.suppresslog:
 					# print "[OpenWebif] page '%s' ok (simple string)" % request.uri
 				request.setHeader("content-type", "text/plain")
-				request.write(data)
+				request.write(six.ensure_binary(data))
 				request.finish()
 			else:
 				# print "[OpenWebif] page '%s' ok (cheetah template)" % request.uri
