@@ -111,6 +111,8 @@ def lenient_force_utf_8(value):
 	>>> lenient_force_utf_8("HällöÜ")
 	'H\\xc3\\xa4ll\\xc3\\xb6\\xc3\\x9c'
 	"""
+	if isinstance(value, six.text_type):
+		return value
 	return lenient_decode(value).encode('utf_8')
 
 

@@ -25,6 +25,7 @@ import re
 import glob
 from six.moves.urllib.parse import quote
 import json
+import six
 
 from twisted.web import static, resource, http
 
@@ -78,7 +79,7 @@ class FileController(resource.Resource):
 				return "TODO: DELETE FILE: %s" % (filename)
 			elif action == "download":
 				request.setHeader("Content-Disposition", "attachment;filename=\"%s\"" % (filename.split('/')[-1]))
-				rfile = static.File(filename, defaultType="application/octet-stream")
+				rfile = static.File(six.ensure_binary(filename), defaultType="application/octet-stream")
 				return rfile.render(request)
 			else:
 				return "wrong action parameter"
