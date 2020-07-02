@@ -25,12 +25,12 @@ GLOBALPICONPATH = None
 
 #: get transcoding feature
 def getTranscoding():
-	transcoding = False
 	if os.path.isfile("/proc/stb/encoder/0/bitrate"):
-		if os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TranscodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo')):
-			transcoding = True
-
-	return transcoding
+		lp = eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/')
+		for p in ['TranscodingSetup', 'TransCodingSetup', 'MultiTransCodingSetup']:
+			if os.path.exists(lp + p + '/plugin.py') or os.path.exists(lp + p + '/plugin.pyo'):
+				return True
+	return False
 
 #: get kinopoisk feature
 def getKinopoisk():

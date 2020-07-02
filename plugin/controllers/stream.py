@@ -69,7 +69,7 @@ class StreamAdapter:
 		self.converter = Streaming(converter_args)
 		self.converter.source = self
 		if PY3:
-			self.request.write(self.converter.getText().decode(encoding='utf-8', errors='strict'))
+			self.request.write(self.converter.getText().encode(encoding='utf-8', errors='strict'))
 		else:
 			self.request.write(self.converter.getText())
 
