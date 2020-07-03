@@ -62,8 +62,8 @@ class BQEWebController(BaseController):
 		paramlist = ids.split(",")
 		list = {}
 		for key in paramlist:
-			if key in args:
-				k = six.ensure_binary(key)
+			k = six.ensure_binary(key)
+			if k in args:
 				list[key] = six.ensure_str(args[k][0])
 			else:
 				list[key] = None
