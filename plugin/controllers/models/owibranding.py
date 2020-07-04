@@ -439,6 +439,9 @@ def getAllInfo():
 			brand = "Vimastec"
 			model = "vs1500"
 			grabpip = 1
+		elif procmodel == "sf8008m":
+			brand = "Octagon"
+			model = "SF8008 4K Mini"
 		elif procmodel.startswith("sf"):
 			brand = "Octagon"
 			if procmodel.startswith("sf8008"):
