@@ -462,6 +462,9 @@ def getAllInfo():
 			model = "E4HD"
 			lcd = 1
 			grabpip = 1
+		elif procmodel == "ustym4kpro":
+			brand = "uClan"
+			model = "Ustym 4K Pro"
 	elif fileExists("/proc/stb/info/model"):
 		f = open("/proc/stb/info/model", 'r')
 		procmodel = f.readline().strip().lower()
@@ -676,6 +679,8 @@ def getAllInfo():
 		remote = "vs1x00"
 	elif procmodel in ("e4hd"):
 		remote = "e4hd"
+	elif procmodel in ("ustym4kpro"):
+		remote = "uclan"
 
 	info['remote'] = remote
 
