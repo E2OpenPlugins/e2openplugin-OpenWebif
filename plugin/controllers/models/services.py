@@ -1108,7 +1108,10 @@ def getPicon(sname):
 			# sname = ":".join(sname.split(":")[:10]) -> old way
 			sname = ":".join(sname.split("://")[:1])
 			sname = GetWithAlternative(sname)
-			cname = unicodedata.normalize('NFKD', six.text_type(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
+			if PY3:
+				cname = unicodedata.normalize('NFKD', cname)
+			else:
+				cname = unicodedata.normalize('NFKD', six.text_type(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
 			cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').replace(':', '').lower())
 			# picon by channel name for URL
 			if len(cname) > 0 and fileExists(pp + cname + ".png"):
@@ -1155,10 +1158,16 @@ def getPicon(sname):
 			if fileExists(filename):
 				return "/picon/" + sname
 		if cname is not None:  # picon by channel name
-			cname1 = cname.replace('\xc2\x86', '').replace('\xc2\x87', '').replace('/', '_').encode('utf-8', 'ignore')
+			cname1 = filterName(cname).replace('/', '_')
+			if not PY3:
+				cname1 = cname1.encode('utf-8', 'ignore')
+			
 			if fileExists(pp + cname1 + ".png"):
 				return "/picon/" + cname1 + ".png"
-			cname = unicodedata.normalize('NFKD', six.text_type(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
+			if PY3:
+				cname = unicodedata.normalize('NFKD', cname)
+			else:
+				cname = unicodedata.normalize('NFKD', six.text_type(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
 			cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').lower())
 			if len(cname) > 0:
 				filename = pp + cname + ".png"
