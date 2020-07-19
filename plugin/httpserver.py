@@ -293,8 +293,7 @@ class AuthResource(resource.Resource):
 		resource.Resource.__init__(self)
 		self.resource = root
 
-	def noShell(self, request):
-		user = request.getUser()
+	def noShell(self, user):
 		if fileExists('/etc/passwd'):
 			for line in open('/etc/passwd').readlines():
 				line = line.strip()
@@ -398,7 +397,7 @@ class AuthResource(resource.Resource):
 			session["logged"] = True
 			session["user"] = ruser
 			session["pwd"] = None
-			if self.noShell(request):
+			if self.noShell(ruser):
 				session["pwd"] = rpw
 			return self.resource.getChildWithDefault(path, request)
 
