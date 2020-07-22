@@ -420,6 +420,7 @@ def getAllInfo():
 			brand = "Zgemma"
 			model = "H9Combo"
 		elif procmodel.startswith("h9"):
+			procmodel = "h9"
 			brand = "Zgemma"
 			model = "H9 series"
 			grabpip = 1
