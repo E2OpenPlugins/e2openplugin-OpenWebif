@@ -505,6 +505,9 @@ def getAllInfo():
 		elif procmodel == "ustym4kpro":
 			brand = "uClan"
 			model = "Ustym 4K Pro"
+		else:
+			model = procmodel
+
 	elif fileExists("/proc/stb/info/model"):
 		f = open("/proc/stb/info/model", 'r')
 		procmodel = f.readline().strip().lower()
