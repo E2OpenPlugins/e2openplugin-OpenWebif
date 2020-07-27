@@ -416,16 +416,10 @@ def getAllInfo():
 			brand = "Zgemma"
 			model = "H7 series"
 			grabpip = 1
-		elif procmodel == "h9 combo":
-			procmodel = "h9combo"
+		elif procmodel == "h8":
 			brand = "Zgemma"
-			model = "H9 Combo"
-		elif procmodel == "h9 twin":
-			procmodel = "h9twin"
-			brand = "Zgemma"
-			model = "H9 Twin"
-		elif procmodel.startswith("h9"):
-			procmodel = "h9"
+			model = "H8 series"
+		elif procmodel == "h9":
 			brand = "Zgemma"
 			model = "H9 series"
 			grabpip = 1
@@ -441,6 +435,37 @@ def getAllInfo():
 		elif procmodel == "i55plus":
 			brand = "Zgemma"
 			model = "i55Plus"
+			grabpip = 1
+		elif procmodel == "hzero":
+			brand = "Zgemma"
+			model = "Hzero"
+		elif procmodel == "h8.2h":
+			brand = "Zgemma"
+			model = "H8.2H"
+		elif procmodel == "h9.s":
+			brand = "Zgemma"
+			model = "H9.S"
+			grabpip = 1
+		elif procmodel == "h9.t":
+			brand = "Zgemma"
+			model = "H9.T"
+			grabpip = 1
+		elif procmodel == "h9.2h":
+			brand = "Zgemma"
+			model = "H9.2H"
+			grabpip = 1
+		elif procmodel == "h9.2s":
+			brand = "Zgemma"
+			model = "H9.2S"
+			grabpip = 1
+		elif procmodel == "h9combo":
+			brand = "Zgemma"
+			model = "H9 Combo"
+			grabpip = 1
+		elif procmodel == "h9twin":
+			brand = "Zgemma"
+			model = "H9 Twin"
+			grabpip = 1
 		elif procmodel == "vs1500":
 			brand = "Vimastec"
 			model = "vs1500"
@@ -471,6 +496,9 @@ def getAllInfo():
 		elif procmodel == "ustym4kpro":
 			brand = "uClan"
 			model = "Ustym 4K Pro"
+		else:
+			model = procmodel
+
 	elif fileExists("/proc/stb/info/model"):
 		f = open("/proc/stb/info/model", 'r')
 		procmodel = f.readline().strip().lower()
@@ -669,7 +697,7 @@ def getAllInfo():
 		remote = "lunix4k"
 	elif procmodel in ("sh1", "lc"):
 		remote = "sh1"
-	elif procmodel in ("h3", "h4", "h5", "h6", "h7", "h9", "i55plus", "h9combo", "h9twin"):
+	elif procmodel in ("hzero", "h3", "h4", "h5", "h6", "h7", "h8", "h9", "i55plus", "h8.2h", "h9.s", "h9.t", "h9.2h", "h9.2s", "h9combo", "h9twin"):
 		remote = "h3"
 	elif procmodel == "i55":
 		remote = "i55"
