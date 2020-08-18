@@ -725,6 +725,8 @@ def getAllInfo():
 			kernel = int(open("/proc/version", "r").read().split(' ', 4)[2].split('.', 2)[0])
 		except:  # nosec  # noqa: E722  # set a default
 			kernel = 2
+	except ValueError: # getKernelVersionString is not a number
+		kernel = 2
 
 	distro = "unknown"
 	imagever = "unknown"
