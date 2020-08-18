@@ -94,6 +94,7 @@ config.OpenWebif.epg_encoding = ConfigSelection(default='utf-8', choices=['utf-8
 										'iso-8859-16'])
 
 config.OpenWebif.displayTracebacks = ConfigYesNo(default=False)
+config.OpenWebif.playiptvdirect = ConfigYesNo(default=True)
 
 from Plugins.Extensions.OpenWebif import vtiaddon
 vtiaddon.expandConfig()
@@ -161,6 +162,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			if imagedistro in ("VTi-Team Image"):
 				self.list.append(getConfigListEntry(_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))
 			self.list.append(getConfigListEntry(_("Allow IPK Upload"), config.OpenWebif.allow_upload_ipk))
+			self.list.append(getConfigListEntry(_("Playback IPTV Streams in browser"), config.OpenWebif.playiptvdirect))
 			self.list.append(getConfigListEntry(_("Debug - Display Tracebacks in browser"), config.OpenWebif.displayTracebacks))
 			# FIXME Submenu			
 			# self.list.append(getConfigListEntry(_("Webinterface jQuery UI Theme"), config.OpenWebif.webcache.theme))
