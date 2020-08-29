@@ -217,6 +217,10 @@ def getTS(self, request):
 					args = args.replace('__', urlparam)
 				except Exception:
 					pass
+			# Add position parameter to m3u link
+			position = getUrlArg(request, "position")
+			if position != None:
+				args = args + "&position=" + position
 
 		# When you use EXTVLCOPT:program in a transcoded stream, VLC does not play stream
 		if config.OpenWebif.service_name_for_stream.value and sRef != '' and portNumber != transcoder_port:
