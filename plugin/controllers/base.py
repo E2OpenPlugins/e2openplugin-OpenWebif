@@ -347,6 +347,15 @@ class BaseController(resource.Resource):
 		try:
 			# this will currenly only works if NO Webiterface plugin installed
 			# TODO: test if webinterface AND openwebif installed
+
+			# 'nw'='1' -> target _blank
+			# 'nw'='2' -> target popup
+			# 'nw'=None -> target _self
+		
+			# syntax
+			# addExternalChild( (Link, Resource, Name, Version, HasGUI, WebTarget) )
+			# example addExternalChild( ("webadmin", root, "WebAdmin", 1, True, "_self") )
+
 			from Plugins.Extensions.WebInterface.WebChilds.Toplevel import loaded_plugins
 			for plugins in loaded_plugins:
 				if plugins[0] in ["fancontrol", "iptvplayer", "serienrecorderui"]:
@@ -354,6 +363,16 @@ class BaseController(resource.Resource):
 						extras.append({'key': plugins[0], 'description': plugins[2], 'nw': '2'})
 					except KeyError:
 						pass
+				elif len(plugins) > 4:
+					if plugins[4] == True:
+						try:
+							if len(plugins) > 5 and plugins[5] == "_self":
+								extras.append({'key': plugins[0], 'description': plugins[2]})
+							else:
+								extras.append({'key': plugins[0], 'description': plugins[2], 'nw': '1'})
+						except KeyError:
+							pass
+
 		except ImportError:
 			pass
 
