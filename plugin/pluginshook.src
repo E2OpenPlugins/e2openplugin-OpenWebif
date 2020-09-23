@@ -4,7 +4,7 @@ loaded_plugins = []
 def addExternalChild(plugin_args):
 	if len(plugin_args) > 2:
 		# ignore internal extensions
-		if plugins[0] not in ["autotimer", "autotimereditor", "vpsplugin", "epgrefresh", "bouqueteditor"]:
+		if plugin_args[0] not in ["autotimer", "autotimereditor", "vpsplugin", "epgrefresh", "bouqueteditor"]:
 			for plugin in loaded_plugins:
 				if plugin[0] == plugin_args[0]:
 					print("[OpenWebif] error: path '%s' already registered" % plugin[0])
