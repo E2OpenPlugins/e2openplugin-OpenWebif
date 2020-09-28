@@ -100,11 +100,16 @@ def getIPv4Method(iface):
 
 
 def getLinkSpeed(iface):
+	speed = _("unknown")
 	try:
 		with open('/sys/class/net/' + iface + '/speed', 'r') as f:
 			speed = f.read().strip()
 	except:  # noqa: E722
-		speed = _("unknown")
+		if os.path.isdir('/sys/class/net/' + iface + '/wireless'):
+			try:
+				speed = os.popen('iwconfig ' + iface + ' | grep "Bit Rate"').read().split(':')[1].split(' ')[0]
+			except:
+				pass 
 	speed = str(speed) + " MBit/s"
 	speed = speed.replace("10000 MBit/s", "10 GBit/s")
 	speed = speed.replace("1000 MBit/s", "1 GBit/s")
