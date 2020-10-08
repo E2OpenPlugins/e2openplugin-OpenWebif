@@ -21,9 +21,7 @@
 	.timer { font-weight: bold; font-size: 10px; color:red; }
 	#eventdescription { width: 375px; height: auto; position: fixed; top: 205px; left: 350px; z-index: 100; display: none; overflow: auto; }
 	#navepg { margin-bottom: 1px; }
-#if $mode == 2
-
-#else
+#if $mode != 2
 	#tbl1 tbody { width: 100%; height: 100%; overflow-y: auto; display: block; overflow-x: hidden;}
 	#tbl2 tbody { width: 100%; height: 100%; overflow-y: hidden; display: block; overflow-x: hidden;}
 	#fulltbl { width: 100%; height: 100%; overflow-y: hidden; display: block; overflow-x: auto;}
@@ -32,6 +30,13 @@
 	.ui-widget-content.nobg , .ui-widget-header.nobg{ background-image: none; } 
 	.wrapper { overflow-x: auto; width: 100%; -ms-overflow-style: -ms-autohiding-scrollbar;}
 	td.border { width: 190px; }
+
+	.epg__event { display: flex; flex-wrap: wrap; padding: 0 0.2em 1em; }
+	.epg__time--start { flex: 0 1 2.8em }
+	.epg__title { font-weight: bold; margin-bottom: 0.2ex; flex: 1 0 0; display: block; }
+	.epg__desc { cursor: pointer; width: 190px; overflow:hidden; max-height: 3.75em; overflow: hidden; line-height: 1.25em; font-size: 12px; text-align: justify; padding-right: 1em; }
+	@supports (-webkit-line-clamp: 4) { .epg__desc { max-height: none; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; } }
+	img[src*="default_picon"] { filter: grayscale(1) opacity(0.5); }
 </style>
 
 <div id="navepg">
@@ -126,7 +131,7 @@
 #if $mode == 1
 #set $renderEventBlock = $renderEvtBlock()
 <div id="fulltbl" class="responsive-table">
-<table border="0" cellpadding="0" cellspacing="0" width="100%" id="tbl2">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" id="tbl2">
 		<tbody id="tbl2body">
 			<tr style="background-color:#bababa;">
 #for $sname, $eventlist in $events.iteritems()
@@ -136,35 +141,37 @@
 	#set $ev=$evl[0]
 	#set $ref = "data-ref='" + $ev.ref + "'"
 #end if
-<td class="serviceheader"><div class="service event" $ref><img src="$(picons[$sname])" />$sname</div></td>
+				<td class="serviceheader">
+					<div class="service event" $ref><img src="$(picons[$sname])" />$sname</div>
+				</td>
 #end for
-</tr>
-<tr>
-	<table border="0" cellpadding="0" cellspacing="0" width="100%" id="tbl1" class="table table-striped">
-		<tbody id="tbl1body">
+			</tr>
+			<tr>
+					<table border="0" cellpadding="0" cellspacing="0" width="100%" id="tbl1" class="table table-striped">
+						<tbody id="tbl1body">
 #set even = 0
 #for $slot in list(range(0,12))
 	#if $even == 0
-		<tr>
+							<tr>
 		#set $even = 1
 	#else
 		#set $even = 0
-	<tr style="background-color:#e9e9e9;">
+							<tr style="background-color:#e9e9e9;">
 	#end if
 	#for $sname, $eventlist in $events.iteritems()
-		<td class="border" style="white-space:normal;">
+								<td class="border" style="white-space:normal;">
 		#for $event in $eventlist[$slot]
 			$renderEventBlock.render($event)
 		#end for
 		#if len($eventlist[$slot]) == 0
-		<div class="event"></div>
+									<article class="epg__event event"></article>
 		#end if
-	</td>
+								</td>
 	#end for
-</tr>
+							</tr>
 #end for
-</tbody>
-				</table>
+						</tbody>
+					</table>
 			</tr>
 		</tbody>
 	<table>
@@ -176,37 +183,37 @@
 		<tbody>
 			<tr>
 				<td>
-					<table >
+					<table>
 						<tbody>
 							<tr>
 								<td>
 #for $sname, $eventlist in $events.iteritems()
-	<div class="row " style="border:solid;border-width:1px 0px 0px 0px;height:60px!important;background-color:#bababa;" >
-	<div style="width:141px!important;margin-left:20px;" class="pull-left">
-	<h2 class="picon" ><img src="$(picons[$sname])" title="$sname" /></h2>
-	</br><label>$sname</label>
-	</div>
-	</div>
+									<div class="row" style="border:solid;border-width:1px 0px 0px 0px;height:60px!important;background-color:#bababa;box-shadow:inset -20px 40px 60px #fff;">
+										<div style="width:141px!important;margin-left:20px;" class="pull-left">
+											<h2 class="picon"><img src="$(picons[$sname])" title="$sname" /></h2>
+											</br><label>$sname</label>
+										</div>
+									</div>
 #end for
-</td>
-<tr>
-<tbody>
-</table>
-</td>
-<td>
-<table class="table-striped">
-<tbody>
-<tr>
-<td>
-<div style="overflow:auto" id="tblinner">
-<div class="timetable">
-<div>
-<div class="timetable-now"></div>
-</div>
-</div>
+								</td>
+							<tr>
+						<tbody>
+					</table>
+				</td>
+				<td>
+					<table class="table-striped">
+						<tbody>
+							<tr>
+								<td>
+									<div style="overflow:auto" id="tblinner">
+										<div class="timetable">
+											<div>
+												<div class="timetable-now"></div>
+											</div>
+										</div>
 #for $sname, $eventlist in $events.iteritems()
-<div class="row " style="width:30000px; border:solid;border-width:1px 0px 0px 0px;height:60px!important" >
-<ol class="eventlist" >
+										<div class="row" style="width:30000px;border:solid;border-width:1px 0px 0px 0px;height:60px !important;">
+											<ol class="eventlist">
 	#set $c=0
 	#set $ref = ''
 	#for $event in $eventlist[0]
@@ -214,29 +221,29 @@
 		#if $c == 0
 			#set $ref = quote(event['ref'], safe=' ~@#$&()*!+=:;,.?/\'')
 			#set pad = 58 + ($event.begin_timestamp - $first) / 6
-															<li class="event" style=;width:${pad}px;border:none;">
-															</li>
+												<li class="event" style="width:${pad}px;border:none;">
+												</li>
 		#end if
 		#set $end = $event.begin_timestamp + $event.duration
 		#set $iscurr = ""
 		#if $event.begin_timestamp < $now and $end > $now
 			#set $iscurr = " curevent"
 		#end if
-														<li class="event" data-ref="$ref" data-id="${event.id}" data-toggle="modal" data-target="#EventModal" onClick="loadeventepg('${event.id}', '$ref');return false;" style="width:${event.duration/6}px;padding:10px;" >
-			<a href="#" class="ui-widget-content ${iscurr}" title="$event['title']">
-															<span class="ename">$event['title']<span class="etimesmall"> ($strftime("%d.%m", $localtime($event['begin_timestamp'])))</span></span>
-															<span class="etime">$strftime("%H:%M", $localtime($event['begin_timestamp'])) - $strftime("%H:%M", $localtime($event['begin_timestamp'] + $event['duration']))</span>
+												<li class="event" data-ref="$ref" data-id="${event.id}" data-toggle="modal" data-target="#EventModal" onClick="loadeventepg('${event.id}', '$ref');return false;" style="width:${event.duration/6}px;padding:10px;">
+													<a href="#" class="ui-widget-content ${iscurr}" title="$event['title']">
+														<span class="ename">$event['title']<span class="etimesmall"> ($strftime("%d.%m", $localtime($event['begin_timestamp'])))</span></span>
+														<span class="etime">$strftime("%H:%M", $localtime($event['begin_timestamp'])) - $strftime("%H:%M", $localtime($event['begin_timestamp'] + $event['duration']))</span>
 			#if $event['timerStatus'] != ''
-			<span class="etimer $event['timerStatus']">$tstrings['timer']</span>
+														<span class="etimer $event['timerStatus']">$tstrings['timer']</span>
 			#end if
-			</a>
-		</li>
+													</a>
+												</li>
 		#set $c = $c + 1
 	#end for
-</ol>
-</div>
+											</ol>
+										</div>
 #end for
-</div>
+									</div>
 								</td>
 							<tr>
 						</tbody>
