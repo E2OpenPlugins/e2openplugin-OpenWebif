@@ -198,27 +198,26 @@
 				self.cType = 1;
 				var ref = self.buildRefStr(1);
 				$.ajax({
-          url: '/api/getservices',
-          dataType: 'json',
-          cache: true,
-          data: { sRef: ref, date: self.date },
-          success: function (data) {
-            var options = [];
-            var s = data['services'];
-            $.each(s, function (key, val) {
-              var sref = val['servicereference'];
-              var name = val['servicename'];
-              options.push(
-                $('<li/>', {
-                  data: { sref: sref },
-                }).html('<span class="icon"><i class="material-icons material-icons-centered">folder_open</i></span>' + name)
-              );
-            });
-            if (callback) {
-              callback(options);
-            }
-          },
-        });
+					url: '/api/getservices',
+					dataType: 'json',
+					cache: true,
+					data: { sRef: ref, date: self.date },
+					success: function (data) {
+						var options = [];
+						var s = data['services'];
+						$.each(s, function (key, val) {
+							var sref = val['servicereference'];
+							var name = val['servicename'];
+							options.push( $('<li/>', {
+									data: { sref: sref },
+								}).html('<span class="icon"><i class="material-icons material-icons-centered">folder_open</i></span>' + name)
+						);
+						});
+						if (callback) {
+							callback(options);
+						}
+					},
+				});
 			},
 		
 			// Callback function for left pane "channels" button.
@@ -228,16 +227,16 @@
 				self.cType = 2;
 				var ref = self.buildRefStr(3);
 				$.ajax({
-          url: '/api/getservices?picon=1&sRef=' + ref,
-          dataType: 'json',
-          cache: true,
-          data: { sRef: ref, date: self.date },
-          success: function (data) {
-            self.allChannelsCache = data['services'];
-            self.filterChannelsCache = data['services'];
-            self.fillChannels(callback);
-          },
-        });
+					url: '/api/getservices?picon=1&sRef=' + ref,
+					dataType: 'json',
+					cache: true,
+					data: { sRef: ref, date: self.date },
+					success: function (data) {
+						self.allChannelsCache = data['services'];
+						self.filterChannelsCache = data['services'];
+						self.fillChannels(callback);
+					},
+				});
 			},
 			
 			fillChannels: function (callback)
@@ -246,8 +245,8 @@
 				$.each( self.filterChannelsCache, function ( key, val ) {
 					var sref = val['servicereference'];
 					var name = val['servicename'];
-          var stype = sref.split(':')[2];
-          var picon = val['picon'];
+					var stype = sref.split(':')[2];
+					var picon = val['picon'];
 					var m = '<span class="bqe__picon"><img src="' + picon + '"></span>' + name + '<span class="pull-right">' + (self.sType[stype] || '') + '&nbsp;<span class="dd-icon-selected pull-left"><i class="material-icons material-icons-centered">done</i></span></span>';
 					options.push( $('<li/>', {
 						data: { stype: stype, sref: sref }
@@ -264,32 +263,26 @@
 				self.bqStartPositions = {};
 				var ref = self.buildRefStr(0);
 				$.ajax({
-          url: '/bouqueteditor/api/getservices?picon=1',
-          dataType: 'json',
-          cache: false,
-          data: { sRef: ref },
-          success: function (data) {
-            var options = [];
-            var s = data['services'];
-            $.each(s, function (key, val) {
-              var sref = val['servicereference'];
-              var name = val['servicename'];
-              self.bqStartPositions[val['servicereference']] = val['startpos'];
-              options.push(
-                $('<li/>', {
-                  data: { sref: sref },
-                }).html(
-                  '<span class="handle dd-icon"><i class="material-icons material-icons-centered">list</i>&nbsp;</span>' +
-                    name +
-                    '<span class="dd-icon-selected pull-right"><i class="material-icons material-icons-centered">done</i></span></li>'
-                )
-              );
-            });
-            if (callback) {
-              callback(options);
-            }
-          },
-        });
+					url: '/bouqueteditor/api/getservices?picon=1',
+					dataType: 'json',
+					cache: false,
+					data: { sRef: ref },
+					success: function (data) {
+						var options = [];
+						var s = data['services'];
+						$.each(s, function (key, val) {
+							var sref = val['servicereference'];
+							var name = val['servicename'];
+							self.bqStartPositions[val['servicereference']] = val['startpos'];
+							options.push( $('<li/>', {
+								data: { sref: sref },
+							}).html('<span class="handle dd-icon"><i class="material-icons material-icons-centered">list</i>&nbsp;</span>' + name + '<span class="dd-icon-selected pull-right"><i class="material-icons material-icons-centered">done</i></span></li>') );
+						});
+						if (callback) {
+							callback(options);
+						}
+					},
+				});
 			},
 
 			// Callback function for selecting provider in left panel
@@ -298,16 +291,16 @@
 			// @param callback function display services list
 			changeProvider: function (sref, callback) {
 				$.ajax({
-          url: '/api/getservices?picon=1',
-          dataType: 'json',
-          cache: true,
-          data: { sRef: sref, date: self.date },
-          success: function (data) {
-            self.allChannelsCache = data['services'];
-            self.filterChannelsCache = data['services'];
-            self.fillChannels(callback);
-          },
-        });
+					url: '/api/getservices?picon=1',
+					dataType: 'json',
+					cache: true,
+					data: { sRef: sref, date: self.date },
+					success: function (data) {
+						self.allChannelsCache = data['services'];
+						self.filterChannelsCache = data['services'];
+						self.fillChannels(callback);
+					},
+				});
 			},
 
 			// Callback function for selecting bouquet in right panel
@@ -330,8 +323,8 @@
 							var sref = val['servicereference'];
 							var m = (val['ismarker'] == 1) ? '<span style="float:right">(M)</span>' : '';
 							var name = val['servicename'];
-              var pos = spos + val['pos'];
-              var picon = val['picon'];
+							var pos = spos + val['pos'];
+							var picon = val['picon'];
 							if (val['ismarker'] == 2)
 								m = '<span style="float:right">(S)</span>';
 							name = pos.toString() + ' - ' + name;
