@@ -182,7 +182,7 @@
 							var name = val['name'];
 							options.push( $("<li/>", {
 								data: { sref: sref }
-							}).html(name));
+							}).html('<span class="icon"><i class="material-icons material-icons-centered">bubble_chart</i></span>' + name));
 						});
 						if (callback) {
 							callback(options);
@@ -198,25 +198,27 @@
 				self.cType = 1;
 				var ref = self.buildRefStr(1);
 				$.ajax({
-					url: '/api/getservices', 
-					dataType: 'json',
-					cache: true,
-					data: { sRef: ref, date: self.date },
-					success: function ( data ) {
-						var options = [];
-						var s = data['services'];
-						$.each( s, function ( key, val ) {
-							var sref = val['servicereference'];
-							var name = val['servicename'];
-							options.push( $('<li/>', {
-							    data: { sref: sref }
-							}).html(name) );
-						});
-						if (callback) {
-							callback(options);
-						}
-					}
-				});
+          url: '/api/getservices',
+          dataType: 'json',
+          cache: true,
+          data: { sRef: ref, date: self.date },
+          success: function (data) {
+            var options = [];
+            var s = data['services'];
+            $.each(s, function (key, val) {
+              var sref = val['servicereference'];
+              var name = val['servicename'];
+              options.push(
+                $('<li/>', {
+                  data: { sref: sref },
+                }).html('<span class="icon"><i class="material-icons material-icons-centered">folder_open</i></span>' + name)
+              );
+            });
+            if (callback) {
+              callback(options);
+            }
+          },
+        });
 			},
 		
 			// Callback function for left pane "channels" button.
@@ -226,16 +228,16 @@
 				self.cType = 2;
 				var ref = self.buildRefStr(3);
 				$.ajax({
-					url: '/api/getservices?sRef=' + ref, 
-					dataType: 'json',
-					cache: true,
-					data: { sRef: ref, date: self.date },
-					success: function ( data ) {
-						self.allChannelsCache = data['services'];
-						self.filterChannelsCache = data['services'];
-						self.fillChannels(callback);
-					}
-				});
+          url: '/api/getservices?picon=1&sRef=' + ref,
+          dataType: 'json',
+          cache: true,
+          data: { sRef: ref, date: self.date },
+          success: function (data) {
+            self.allChannelsCache = data['services'];
+            self.filterChannelsCache = data['services'];
+            self.fillChannels(callback);
+          },
+        });
 			},
 			
 			fillChannels: function (callback)
@@ -244,8 +246,9 @@
 				$.each( self.filterChannelsCache, function ( key, val ) {
 					var sref = val['servicereference'];
 					var name = val['servicename'];
-					var stype = sref.split(':')[2];
-					var m = name + '<span class="pull-right">' + (self.sType[stype] || '') + '&nbsp;<span class="dd-icon-selected pull-left"><i class="material-icons material-icons-centered">done</i></span></span>';
+          var stype = sref.split(':')[2];
+          var picon = val['picon'];
+					var m = '<span class="bqe__picon"><img src="' + picon + '"></span>' + name + '<span class="pull-right">' + (self.sType[stype] || '') + '&nbsp;<span class="dd-icon-selected pull-left"><i class="material-icons material-icons-centered">done</i></span></span>';
 					options.push( $('<li/>', {
 						data: { stype: stype, sref: sref }
 					}).html(m) );
@@ -261,26 +264,32 @@
 				self.bqStartPositions = {};
 				var ref = self.buildRefStr(0);
 				$.ajax({
-					url: '/bouqueteditor/api/getservices', 
-					dataType: 'json',
-					cache: false,
-					data: { sRef: ref },
-					success: function ( data ) {
-						var options = [];
-						var s = data['services'];
-						$.each( s, function ( key, val ) {
-							var sref = val['servicereference'];
-							var name = val['servicename'];
-							self.bqStartPositions[val['servicereference']] = val['startpos'];
-							options.push( $('<li/>', {
-								data: { sref: sref }
-							}).html('<span class="handle dd-icon"><i class="material-icons material-icons-centered">list</i>&nbsp;</span>'+name+'<span class="dd-icon-selected pull-right"><i class="material-icons material-icons-centered">done</i></span></li>') );
-						});
-						if (callback) {
-							callback(options);
-						}
-					}
-				});
+          url: '/bouqueteditor/api/getservices?picon=1',
+          dataType: 'json',
+          cache: false,
+          data: { sRef: ref },
+          success: function (data) {
+            var options = [];
+            var s = data['services'];
+            $.each(s, function (key, val) {
+              var sref = val['servicereference'];
+              var name = val['servicename'];
+              self.bqStartPositions[val['servicereference']] = val['startpos'];
+              options.push(
+                $('<li/>', {
+                  data: { sref: sref },
+                }).html(
+                  '<span class="handle dd-icon"><i class="material-icons material-icons-centered">list</i>&nbsp;</span>' +
+                    name +
+                    '<span class="dd-icon-selected pull-right"><i class="material-icons material-icons-centered">done</i></span></li>'
+                )
+              );
+            });
+            if (callback) {
+              callback(options);
+            }
+          },
+        });
 			},
 
 			// Callback function for selecting provider in left panel
@@ -289,16 +298,16 @@
 			// @param callback function display services list
 			changeProvider: function (sref, callback) {
 				$.ajax({
-					url: '/api/getservices', 
-					dataType: 'json',
-					cache: true,
-					data: { sRef: sref, date: self.date },
-					success: function ( data ) {
-						self.allChannelsCache = data['services'];
-						self.filterChannelsCache = data['services'];
-						self.fillChannels(callback);
-					}
-				});
+          url: '/api/getservices?picon=1',
+          dataType: 'json',
+          cache: true,
+          data: { sRef: sref, date: self.date },
+          success: function (data) {
+            self.allChannelsCache = data['services'];
+            self.filterChannelsCache = data['services'];
+            self.fillChannels(callback);
+          },
+        });
 			},
 
 			// Callback function for selecting bouquet in right panel
@@ -310,7 +319,7 @@
 				if(self.bqStartPositions[bref])
 					spos = self.bqStartPositions[bref];
 				$.ajax({
-					url: '/bouqueteditor/api/getservices', 
+					url: '/bouqueteditor/api/getservices?picon=1', 
 					dataType: 'json',
 					cache: false,
 					data: { sRef: bref },
@@ -320,18 +329,19 @@
 						$.each( s, function ( key, val ) {
 							var sref = val['servicereference'];
 							var m = (val['ismarker'] == 1) ? '<span style="float:right">(M)</span>' : '';
-							var name=val['servicename'];
-							var pos = spos + val['pos'];
-							if(val['ismarker'] == 2)
-								m= '<span style="float:right">(S)</span>';
+							var name = val['servicename'];
+              var pos = spos + val['pos'];
+              var picon = val['picon'];
+							if (val['ismarker'] == 2)
+								m = '<span style="float:right">(S)</span>';
 							name = pos.toString() + ' - ' + name;
-							if(name!='')
+							if (name != '')
 								options.push( $('<li/>', {
 									data: { 
 										ismarker: val['ismarker'],
 										sref: sref
 									}
-								}).html('<span class="handle dd-icon"><i class="material-icons material-icons-centered">list</i>&nbsp;</span>'+name+m+'<span class="dd-icon-selected pull-right"><i class="material-icons material-icons-centered">done</i></span></li>') );
+								}).html('<span class="handle dd-icon"><i class="material-icons material-icons-centered">list</i>&nbsp;</span><span class="bqe__picon"><img src="'+picon+'"></span>'+name+m+'<span class="dd-icon-selected pull-right"><i class="material-icons material-icons-centered">done</i></span></li>') );
 						});
 						if (callback) {
 							callback(options);
@@ -946,21 +956,12 @@
 				$('#toolbar-bouquets-export').click(self.exportBouquets);
 				$('#toolbar-bouquets-import').click(self.importBouquets);
 
-				// Setup callback function for left pane search box
-				$('#searchch').focus(function () { 
-					if ($(this).val() === '...') {
-						$(this).val('');
-					}
-				}).keyup(function (){
+				// Setup callback function for search box
+				$('#searchch').keyup(function (){
 					if ($(this).data('val') !== this.value) {
 						self.searchChannel(this.value);
 					}
 					$(this).data('val', this.value);
-				}).blur(function (){
-					$(this).data('val', '');
-					if ($(this).val() === '') {
-						$(this).val('...');
-					}
 				});
 
 				// Setup callback function hidden file upload button

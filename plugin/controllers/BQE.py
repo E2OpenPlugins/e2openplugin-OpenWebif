@@ -26,6 +26,7 @@ from Plugins.Extensions.OpenWebif.controllers.base import BaseController
 from Components.config import config
 from Components.ParentalControl import parentalControl
 from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
+from Plugins.Extensions.OpenWebif.controllers.models.services import getPicon
 import os
 import json
 import six
@@ -245,6 +246,7 @@ class BQEWebController(BaseController):
 
 	def P_getservices(self, request):
 		sRef = getUrlArg(request, "sRef", "")
+		includePicon = (getUrlArg(request, "picon", "") == '1')
 		services = []
 
 		CalcPos = False
@@ -290,6 +292,11 @@ class BQEWebController(BaseController):
 				service['isgroup'] = '0'
 				service['ismarker'] = '0'
 				service['isprotected'] = '0'
+				if includePicon:
+					try:
+						service['picon'] = getPicon(sref)
+					except:
+						service['picon'] = ''
 				if sp:
 					service['ismarker'] = '2'
 					service['servicename'] = ''
