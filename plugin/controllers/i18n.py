@@ -87,6 +87,7 @@ tstrings = {
 	'bouquets': _("Bouquets"),
 	'box_info': _("Box Info"),
 	'box': _("Box"),
+	'bouquets': _("Bouquets"),
 	'boxcontrol': _("Box Control"),
 	'box_uptime': _("Box Uptime"),
 	'brand': _("Brand"),
