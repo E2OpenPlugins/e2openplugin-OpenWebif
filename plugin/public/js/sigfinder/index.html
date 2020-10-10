@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)https://www.chartjs.org/samples/latest/charts/line/basic.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Line Chart</title>
+	<script src="/js/sigfinder/Chart.min.js"></script>
+	<script src="/js/sigfinder/utils.js"></script>
+	<style>
+	canvas{
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	body{background-color:#000;}
+	</style>
+<style type="text/css">/* Chart.js */
+@keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}</style><script data-dapp-detection="">
+(function() {
+  let alreadyInsertedMetaTag = false
+
+  function __insertDappDetected() {
+    if (!alreadyInsertedMetaTag) {
+      const meta = document.createElement('meta')
+      meta.name = 'dapp-detected'
+      document.head.appendChild(meta)
+      alreadyInsertedMetaTag = true
+    }
+  }
+
+  if (window.hasOwnProperty('web3')) {
+    // Note a closure can't be used for this var because some sites like
+    // www.wnyc.org do a second script execution via eval for some reason.
+    window.__disableDappDetectionInsertion = true
+    // Likely oldWeb3 is undefined and it has a property only because
+    // we defined it. Some sites like wnyc.org are evaling all scripts
+    // that exist again, so this is protection against multiple calls.
+    if (window.web3 === undefined) {
+      return
+    }
+    __insertDappDetected()
+  } else {
+    var oldWeb3 = window.web3
+    Object.defineProperty(window, 'web3', {
+      configurable: true,
+      set: function (val) {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        oldWeb3 = val
+      },
+      get: function () {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        return oldWeb3
+      }
+    })
+  }
+})()</script></head>
+
+<body>
+	<div><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+		<canvas id="canvas" style="display: block; height: 603px; width: 1206px;" width="2412" height="1206" class="chartjs-render-monitor"></canvas>
+	</div>
+	<script>
+		var context = new AudioContext();
+		var o = null
+		var g = null
+
+		var config = {
+			type: 'line',
+			data: {
+				labels: [''],
+				datasets: [{
+					label: 'SNR',
+					backgroundColor: window.chartColors.orange,
+					// borderColor: window.chartColors.orange,
+					data: [],
+					fill: true,
+					type: 'line',
+					//pointRadius: 0,
+					lineTension: 0,
+				}, {
+					label: 'AGC',
+					backgroundColor: window.chartColors.yellow,
+					borderColor: window.chartColors.yellow,
+					// borderDash: [5, 5],
+					data: [],
+					fill: false,
+					type: 'line',
+					pointRadius: 0,
+					lineTension: 0,
+				}]
+			},
+			options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Signal Finder'
+				},
+				tooltips: {
+					enabled: false,
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Time'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Value'
+						},
+						ticks: {
+							beginAtZero: true,
+							min: 0,
+							max: 100 
+						}
+					}]
+				}
+			}
+		};
+
+		const loadPhoto = (url, responseType) =>
+				new Promise(resolve => {
+					const xhr = new XMLHttpRequest();
+					xhr.responseType = responseType;
+					xhr.open('GET', url, true);
+
+					xhr.onload = function () {
+						if (xhr.status != 200) { // analyze HTTP status of the response
+							console.log(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
+						} else { // show the result
+							resolve(xhr.response); // response is the server
+						}
+					};
+
+					xhr.onprogress = function (event) {
+						if (event.lengthComputable) {
+							console.log(`Received ${event.loaded} of ${event.total} bytes`);
+						} else {
+							console.log(`Received ${event.loaded} bytes`); // no Content-Length
+						}
+
+					};
+
+					xhr.onerror = function () {
+						console.log("Request failed");
+					};
+
+					xhr.send(null);
+				});
+
+								const example4 = (frequency, type) => {
+										o = context.createOscillator()
+										g = context.createGain()
+										o.type = type
+										o.connect(g)
+										o.frequency.value = frequency
+										g.connect(context.destination)
+										o.start(0)
+										g.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 0.3)
+									}
+				
+
+			const boop = (successMessage) => {
+				example4((successMessage.snr * 12.5), 'triangle');
+				window.document.title = "SNR: " + successMessage.snr + "%" + " - Signal Finder";
+				
+				window.myLine.options.title = {
+					display: true,
+					fontColor: '#ccc',
+					fontSize: 40,
+						text: "Signal Finder [SNR: " + successMessage.snr + "%]",
+				}
+
+					if (config.data.datasets.length > 0) {
+
+						console.log(successMessage.snr || "NO ACCESS")
+
+						config.data.datasets.forEach(function (dataset) {
+							if (config.data.labels.length >= 100) {
+								config.data.labels.shift();
+								dataset.data.shift();
+							}
+						});
+
+						if (successMessage.snr < 50) {
+							config.data.datasets[0].backgroundColor = window.chartColors.red;
+						} else if (successMessage.snr < 70) {
+							config.data.datasets[0].backgroundColor = window.chartColors.green;
+						} else {
+							config.data.datasets[0].backgroundColor = window.chartColors.blue;
+						}
+
+						//config.data.datasets[0].generateLegend();//.legend.label.value = 'SNR: ' + successMessage.snr;
+
+						config.data.labels.push(new Date().toLocaleTimeString());
+						config.data.datasets[0].data.push(successMessage.snr);
+						config.data.datasets[1].data.push(successMessage.agc);
+
+console.log(window.myLine.generateLegend());
+						window.myLine.update();
+			}
+		}
+
+					setInterval(function () {
+						loadPhoto('/api/signal', 'json')
+							.then((res) => {
+
+								boop(res);
+							})
+							.catch(console.error);
+			}, 750);
+
+		window.onload = function() {
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myLine = new Chart(ctx, config);
+		};
+	</script>
+
+
+
+</body></html>
