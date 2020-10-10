@@ -6286,7 +6286,7 @@ fieldset[disabled] .form-control {
 /* Page Loader ================================= */
 .page-loader-wrapper {
   z-index: 99999999;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
