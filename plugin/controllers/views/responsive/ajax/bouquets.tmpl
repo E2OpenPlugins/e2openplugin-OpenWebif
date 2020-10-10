@@ -1,6 +1,12 @@
 #from six.moves.urllib.parse import quote
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+
+#set $tabIcon = 'tv'
+#if $stype == 'radio'
+	#set $tabIcon = 'radio'
+#end if
+
 <div class="form-group hidden-md hidden-lg hidden-xl">
 	<select class="form-control show-tick" id="bqselector">
 	#for $bouquet in $bouquets
@@ -12,8 +18,11 @@
 	<ul class="nav nav-tabs tab-col-$skinColor">
 	#set $f="id='firstBq'"
 	#for $bouquet in $bouquets
-		<li><a data-toggle="tab" href='#tab' $f onclick="load_subcontent('ajax/channels?id=$quote($bouquet[0])&stype=$stype'); return false;" >
-		<i onclick="pl('$quote($bouquet[0])','$quote($bouquet[1])');return false;" class="material-icons material-icons-bouquets">tv</i>$bouquet[1]</a></li>
+		<li>
+			<a href='#tab' onclick="load_subcontent('ajax/channels?id=$quote($bouquet[0])&stype=$stype'); return false;" data-toggle="tab" $f>
+				<i class="material-icons material-icons-bouquets">$tabIcon</i>$bouquet[1]
+			</a>
+		</li>
 		#set $f="class='align-middle'"
 	#end for
 	</ul>
