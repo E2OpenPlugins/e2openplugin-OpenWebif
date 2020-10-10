@@ -87,6 +87,7 @@ class AjaxController(BaseController):
 		channels['transcoding'] = TRANSCODING
 		channels['type'] = stype
 		channels['showchannelpicon'] = config.OpenWebif.webcache.showchannelpicon.value
+		channels['showpiconbackground'] = config.OpenWebif.responsive_show_picon_background.value
 		return channels
 
 	def P_eventdescription(self, request):
