@@ -62,6 +62,16 @@ def RemoteControlView():
 		return 'checked'
 	return ''
 
+def showPicons():
+	if config.OpenWebif.responsive_show_picons.value:
+		return 'checked'
+	return ''
+
+def showPiconBackground():
+	if config.OpenWebif.responsive_show_picon_background.value:
+		return 'checked'
+	return ''
+
 def setVTiWebConfig(self, request):
 	if b"moviesearchextended" in list(request.args.keys()):
 		val = int(getUrlArg(request, "moviesearchextended"))
@@ -108,6 +118,16 @@ def setVTiWebConfig(self, request):
 		print("save remotecontrolview:", val)
 		config.OpenWebif.responsive_rcu_full_view.value = val == 1 and True or False
 		config.OpenWebif.responsive_rcu_full_view.save()
+	if b"showpicons" in list(request.args.keys()):
+		val = int(getUrlArg(request, "showpicons"))
+		print("save showpicons:", val)
+		config.OpenWebif.responsive_show_picons.value = val == 1 and True or False
+		config.OpenWebif.responsive_show_picons.save()
+	if b"showpiconbackground" in list(request.args.keys()):
+		val = int(getUrlArg(request, "showpiconbackground"))
+		print("save showpiconbackground:", val)
+		config.OpenWebif.responsive_show_picon_background.value = val == 1 and True or False
+		config.OpenWebif.responsive_show_picon_background.save()
 	return ''
 
 def expand_BaseController():
@@ -134,3 +154,5 @@ def expandConfig():
 	config.OpenWebif.responsive_moviesearch_extended = ConfigYesNo(default=False)
 	config.OpenWebif.responsive_moviesearch_short = ConfigYesNo(default=False)
 	config.OpenWebif.responsive_rcu_full_view = ConfigYesNo(default=False)
+	config.OpenWebif.responsive_show_picons = ConfigYesNo(default=True)
+	config.OpenWebif.responsive_show_picon_background = ConfigYesNo(default=False)

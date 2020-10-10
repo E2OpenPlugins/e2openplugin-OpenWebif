@@ -504,6 +504,8 @@ tstrings = {
 	'showfullremoteshort': _("Full remote"),
 	'showdetails': _("Show details"),
 	'show_details_in_channel_list': _("Show Service type in channel list"),
+	'show_picons': _("Show picons"),
+	'show_picon_background': _("Show picon background"),
 	'export': _("Export"),
 	'import': _("Import"),
 

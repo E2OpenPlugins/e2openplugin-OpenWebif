@@ -1,6 +1,6 @@
 #filter WebSafe
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, showPicons, showPiconBackground
 <style>
 .select { width: 100%; }
 .sortable { list-style-type: none; margin: 0; padding: 0; width: 200px; }
@@ -15,10 +15,25 @@
 		-webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 	}
 	.bqe__list { height: 250px; overflow-y: scroll; margin-bottom: 5px; box-shadow: 0 7px 9px -7px rgba(0,0,0,.12) }
-	.bqe__picon { display: inline-block; width: 42px; text-align: center; margin-right: 1rem; background-color: #bababa; box-shadow: inset -8px 16px 26px #fff; }
+	.bqe__picon { display: inline-block; width: 42px; text-align: center; margin-right: 1rem; }
+	.bqe__picon.picon--with-background { background-color: #bababa; box-shadow: inset -8px 16px 26px #fff; }
 	.bqe__picon img { max-width: 100%; }
 	.bqe__button { margin: 0 0.5em; }
 	img[src*="default_picon"] { filter: grayscale(1) opacity(0.2); }
+</style>
+
+#set $piconCssClass = ''
+
+<style>
+#if $showPicons
+	#if $showPiconBackground
+		#set $piconCssClass = 'picon--with-background'
+		/* dirty workaround for jQuery-populated lists */
+		.bqe__picon { background-color: #bababa; box-shadow: inset -8px 16px 26px #fff; }
+	#end if
+#else
+		.bqe__picon { display:none; }
+#end if
 </style>
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

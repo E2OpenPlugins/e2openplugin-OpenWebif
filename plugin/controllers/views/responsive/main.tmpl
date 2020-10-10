@@ -1,5 +1,5 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground
 #from json import dumps
 
 <!DOCTYPE html>
@@ -650,6 +650,22 @@
 									<span>Old Design</span>
 									<div class="switch">
 										<label><input type="checkbox" id="noresposive"><span class="lever switch-col-$skinColor vtiwebconfig"></span></label>
+									</div>
+								</li>
+							</ul>
+							
+							<p>$tstrings['channels']</p>
+							<ul class="setting-list">
+								<li>
+									<span>$tstrings['show_picons']</span>
+									<div class="switch">
+										<label><input type="checkbox" id="showpicons" $showPicons><span class="lever switch-col-$skinColor vtiwebconfig"></span></label>
+									</div>
+								</li>
+								<li>
+									<span>$tstrings['show_picon_background']</span>
+									<div class="switch">
+										<label><input type="checkbox" id="showpiconbackground" $showPiconBackground><span class="lever switch-col-$skinColor vtiwebconfig"></span></label>
 									</div>
 								</li>
 							</ul>

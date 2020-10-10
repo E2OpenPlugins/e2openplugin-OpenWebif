@@ -1,11 +1,12 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, showPicons, showPiconBackground
 
 <style>
 	a:focus { outline-offset: 2px; }
 	.now-next__grid td { vertical-align: middle; }
 	.now-next__header { padding-left: 0; padding-right: 0; }
-	.now-next__picon { vertical-align: middle !important; width:120px; background-color: #bababa; box-shadow: inset -20px 40px 60px #fff; }
+	.now-next__picon { vertical-align: middle !important; width:120px; }
+	.now-next__picon.picon--with-background { background-color: #bababa; box-shadow: inset -20px 40px 60px #fff; }
 	.now-next__picon a { display: block; }
 	.now-next__picon .img-fluid { max-width: 100%; }
 	.now-next__channel-name { margin: 0 0 10px !important; }
@@ -23,6 +24,11 @@
 	img[src*="default_picon"] { filter: grayscale(1) opacity(0.2); }
 </style>
 
+#set $piconCssClass = ''
+#if $showPiconBackground
+	#set $piconCssClass = 'picon--with-background'
+#end if
+
 <div class="table-responsive block-header">
 	<table class="now-next__grid table table-striped table-hover">
 
@@ -36,9 +42,9 @@
 				<h2>$channelName</h2>
 			</td>
 	#else
-#if $showchannelpicon and 'picon' in $channel
+#if $showPicons and 'picon' in $channel
 	#set $piconHTML = '<img class="img-fluid" src="%s" alt="Channel logo">' % $channel.picon
-			<td class="now-next__picon">
+			<td class="now-next__picon $piconCssClass">
 				<div>
 			#if $isProtected
 					$piconHTML

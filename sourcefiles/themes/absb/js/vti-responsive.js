@@ -1240,6 +1240,15 @@ function VTiWebConfig() {
 		var val = $(this).is(":checked") ? '1' : '0'
 		$.get('api/setvtiwebconfig?minepglist=' + val);
 	});
+	$('#showpicons').change(function () {
+		var val = $(this).is(":checked") ? '1' : '0'
+		$.get('api/setvtiwebconfig?showpicons=' + val);
+		$('#showpiconbackground').prop('disabled', !val);
+	});
+	$('#showpiconbackground').change(function () {
+		var val = $(this).is(":checked") ? '1' : '0'
+		$.get('api/setvtiwebconfig?showpiconbackground=' + val);
+	});
 }
 
 //Skin tab content set height and show scroll
