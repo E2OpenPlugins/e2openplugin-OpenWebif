@@ -32,7 +32,20 @@
 	<link href="themes/absb/css/vti-responsive.css" rel="stylesheet">
 
 	<style>
-		.rcu-table .icon:hover { cursor: pointer; }
+		.remote__group { margin: 0 auto; display: flex; justify-content: center; max-width: 156px; flex-wrap: wrap; }
+		.remote__group.collapse { display: none; }
+		.remote__group.collapse.in { display: flex; }
+		.remote__button { border: none; flex: 0 0 23%; height: 38px; margin: 1px; box-shadow: 0 0 10px rgba(0,0,0,.2); display: block; background-color: #fff; overflow: hidden; cursor: pointer; }
+		.remote__group--numerical .remote__button, 
+		.remote__group--directional .remote__button { flex: 0 0 31%; height: 50px; }
+		.remote__group--numerical .remote__button i, 
+		.remote__group--directional .remote__button i { margin-top: 0 !important; font-size: 34px; line-height: 48px; }
+		.remote__button--power i { margin-left: -1px; padding: 2px; background-color: #F44336; color: #fff !important; border-radius: 50%; }
+		.remote__button--arrow { background-color: rgba(0,0,0,.12); }
+		.remote__button--colour { background-color: #707070; }
+		.remote__button i:hover { transition: all 0.2s ease; }
+		.remote__button i:hover { transform: scale(1.2); }
+		.remote__group .material-icons { color: #707070; }
 	</style>
 </head>
 
@@ -134,374 +147,62 @@
 									<li class="align-center" style="margin-top:-30px;">
 										<span data-toggle="collapse" data-target="#rcunumbers" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer;" title="Show more buttons"><i class="material-icons material-icons-centered">arrow_drop_up</i></span>
 									</li>
-									<li class="collapse" id="rcunumbers">
-										<table class="rcu-table">
-											<tr>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('2');" title="1">
-															<i class="material-icons">filter_1</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('3');" title="2">
-															<i class="material-icons">filter_2</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('4');" title="3">
-															<i class="material-icons">filter_3</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('5');" title="4">
-															<i class="material-icons">filter_4</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('6');" title="5">
-															<i class="material-icons">filter_5</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('7');" title="6">
-															<i class="material-icons">filter_6</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('8');" title="7">
-															<i class="material-icons">filter_7</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('9');" title="8">
-															<i class="material-icons md-dark">filter_8</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('10');" title="9">
-															<i class="material-icons">filter_9</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('412');" title="<">
-															<i class="material-icons">navigate_before</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('11');" title="0">
-															<i class="material-icons">exposure_zero</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('407');" title=">">
-															<i class="material-icons">navigate_next</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</table>
-									</li>
 									<li>
-										<table class="rcu-table">
-											<tr>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="toggleMute(); return false;" title="Mute">
-															<i class="material-icons">volume_off</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('114');" title="Vol-">
-															<i class="material-icons">volume_down</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('115');" title="Vol+">
-															<i class="material-icons">volume_up</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="toggleStandby(); return false;" title="Power">
-															<i class="material-icons" style="color: #F44336;">power_settings_new</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</table>
-									</li>
-									<li>
-										<table class="rcu-table">
-											<tr>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('377');" title="TV">
-															<i class="material-icons">tv</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('385');" title="Radio">
-															<i class="material-icons">radio</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('393');" title="List">
-															<i class="material-icons">movie</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('102');" title="Home">
-															<i class="material-icons">home</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</table>
-									</li>
-									<li>
-										<table class="rcu-table">
-											<tr>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('139');" title="Menu">
-															<i class="material-icons">menu</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-light-grey" onclick="pressMenuRemote('103');" title="Up">
-															<i class="material-icons">keyboard_arrow_up</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('358');" title="Info">
-															<i class="material-icons">info_outline</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-light-grey" onclick="pressMenuRemote('105');" title="Left">
-															<i class="material-icons">keyboard_arrow_left</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-light-grey" onclick="pressMenuRemote('352');" title="OK">
-															<i class="material-icons">thumb_up_alt</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-light-grey" onclick="pressMenuRemote('106');" title="Right">
-															<i class="material-icons">keyboard_arrow_right</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('158');" title="Back">
-															<i class="material-icons">keyboard_return</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-light-grey" onclick="pressMenuRemote('108');" title="Down">
-															<i class="material-icons">keyboard_arrow_down</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('174');" title="Exit">
-															<i class="material-icons">clear</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</table>
-									</li>
-									<li>
-										<table class="rcu-table">
-											<tr>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('365');" title="EPG">
-															<i class="material-icons">view_list</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('627');" title="VOD">
-															<i class="material-icons">ondemand_video</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('403');" title="CH-">
-															<i class="material-icons">remove</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('402');" title="CH+">
-															<i class="material-icons">add</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</table>
-									</li>
-									<li>
-										<table class="rcu-table">
-											<tr>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon" style="background-color: #707070;" onclick="pressMenuRemote('398');" title="Red">
-															<i class="material-icons" style="color: #F44336;">call_to_action</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon" style="background-color: #707070;" onclick="pressMenuRemote('399');" title="Green">
-															<i class="material-icons" style="color: #4CAF50;">call_to_action</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon" style="background-color: #707070;" onclick="pressMenuRemote('400');" title="Yellow">
-															<i class="material-icons" style="color: #ffe821;">call_to_action</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon" style="background-color: #707070;" onclick="pressMenuRemote('401');" title="Blue">
-															<i class="material-icons" style="color: #2196F3;">call_to_action</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</table>
-									</li>
-									<li class="collapse" id="rcuplayerkeys">
-										<table class="rcu-table">
-											<tr>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('168');" title="FastRewind">
-															<i class="material-icons">fast_rewind</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('207');" title="Play">
-															<i class="material-icons">play_arrow</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('119');" title="Pause">
-															<i class="material-icons">pause</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('208');" title="FastForward">
-															<i class="material-icons">fast_forward</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('370');" title="Subtitle">
-															<i class="material-icons">subtitles</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('167');" title="Record">
-															<i class="material-icons" style="color: #F44336;">fiber_manual_record</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('128');" title="Stop">
-															<i class="material-icons">stop</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('392');" title="Audio">
-															<i class="material-icons">audiotrack</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</table>
+										<section class="remote__group remote__group--numerical collapse" id="rcunumbers">
+											<button type="button" onclick="pressMenuRemote('2');" title="1" class="remote__button icon"><i class="material-icons">filter_1</i></button>
+											<button type="button" onclick="pressMenuRemote('3');" title="2" class="remote__button icon"><i class="material-icons">filter_2</i></button>
+											<button type="button" onclick="pressMenuRemote('4');" title="3" class="remote__button icon"><i class="material-icons">filter_3</i></button>
+											<button type="button" onclick="pressMenuRemote('5');" title="4" class="remote__button icon"><i class="material-icons">filter_4</i></button>
+											<button type="button" onclick="pressMenuRemote('6');" title="5" class="remote__button icon"><i class="material-icons">filter_5</i></button>
+											<button type="button" onclick="pressMenuRemote('7');" title="6" class="remote__button icon"><i class="material-icons">filter_6</i></button>
+											<button type="button" onclick="pressMenuRemote('8');" title="7" class="remote__button icon"><i class="material-icons">filter_7</i></button>
+											<button type="button" onclick="pressMenuRemote('9');" title="8" class="remote__button icon"><i class="material-icons">filter_8</i></button>
+											<button type="button" onclick="pressMenuRemote('10');" title="9" class="remote__button icon"><i class="material-icons">filter_9</i></button>
+											<button type="button" onclick="pressMenuRemote('412');" title="&lt;" class="remote__button icon"><i class="material-icons">navigate_before</i></button>
+											<button type="button" onclick="pressMenuRemote('11');" title="0" class="remote__button icon"><i class="material-icons">exposure_zero</i></button>
+											<button type="button" onclick="pressMenuRemote('407');" title="&gt;" class="remote__button icon"><i class="material-icons">navigate_next</i></button>
+										</section>
+										<section class="remote__group">
+											<button type="button" onclick="toggleMute(); return false;" title="Mute" class="remote__button icon"><i class="material-icons">volume_off</i></button>
+											<button type="button" onclick="pressMenuRemote('114');" title="Vol-" class="remote__button icon"><i class="material-icons">volume_down</i></button>
+											<button type="button" onclick="pressMenuRemote('115');" title="Vol+" class="remote__button icon"><i class="material-icons">volume_up</i></button>
+											<button type="button" onclick="toggleStandby(); return false;" title="Power" class="remote__button remote__button--power icon"><i class="material-icons">power_settings_new</i></button>
+											<button type="button" onclick="pressMenuRemote('377');" title="TV" class="remote__button icon"><i class="material-icons">tv</i></button>
+											<button type="button" onclick="pressMenuRemote('385');" title="Radio" class="remote__button icon"><i class="material-icons">radio</i></button>
+											<button type="button" onclick="pressMenuRemote('393');" title="List" class="remote__button icon"><i class="material-icons">movie</i></button>
+											<button type="button" onclick="pressMenuRemote('102');" title="Home" class="remote__button icon"><i class="material-icons">home</i></button>
+										</section>
+										<section class="remote__group remote__group--directional">
+											<button type="button" onclick="pressMenuRemote('139');" title="Menu" class="remote__button icon"><i class="material-icons">menu</i></button>
+											<button type="button" onclick="pressMenuRemote('103');" title="Up" class="remote__button icon remote__button--arrow"><i class="material-icons">keyboard_arrow_up</i></button>
+											<button type="button" onclick="pressMenuRemote('358');" title="Info" class="remote__button icon"><i class="material-icons">info_outline</i></button>
+											<button type="button" onclick="pressMenuRemote('105');" title="Left" class="remote__button icon remote__button--arrow"><i class="material-icons">keyboard_arrow_left</i></button>
+											<button type="button" onclick="pressMenuRemote('352');" title="OK" class="remote__button icon remote__button--arrow"><i class="material-icons">thumb_up_alt</i></button>
+											<button type="button" onclick="pressMenuRemote('106');" title="Right" class="remote__button icon remote__button--arrow"><i class="material-icons">keyboard_arrow_right</i></button>
+											<button type="button" onclick="pressMenuRemote('158');" title="Back" class="remote__button icon"><i class="material-icons">keyboard_return</i></button>
+											<button type="button" onclick="pressMenuRemote('108');" title="Down" class="remote__button icon remote__button--arrow"><i class="material-icons">keyboard_arrow_down</i></button>
+											<button type="button" onclick="pressMenuRemote('174');" title="Exit" class="remote__button icon"><i class="material-icons">clear</i></button>
+										</section>
+										<section class="remote__group">
+											<button type="button" onclick="pressMenuRemote('365');" title="EPG" class="remote__button icon"><i class="material-icons">view_list</i></button>
+											<button type="button" onclick="pressMenuRemote('627');" title="VOD" class="remote__button icon"><i class="material-icons">ondemand_video</i></button>
+											<button type="button" onclick="pressMenuRemote('403');" title="CH-" class="remote__button icon"><i class="material-icons">remove</i></button>
+											<button type="button" onclick="pressMenuRemote('402');" title="CH+" class="remote__button icon"><i class="material-icons">add</i></button>
+											<button type="button" onclick="pressMenuRemote('398');" title="Red" class="remote__button icon remote__button--colour"><i class="material-icons" style="color: #F44336;">call_to_action</i></button>
+											<button type="button" onclick="pressMenuRemote('399');" title="Green" class="remote__button icon remote__button--colour"><i class="material-icons" style="color: #4CAF50;">call_to_action</i></button>
+											<button type="button" onclick="pressMenuRemote('400');" title="Yellow" class="remote__button icon remote__button--colour"><i class="material-icons" style="color: #ffe821;">call_to_action</i></button>
+											<button type="button" onclick="pressMenuRemote('401');" title="Blue" class="remote__button icon remote__button--colour"><i class="material-icons" style="color: #2196F3;">call_to_action</i></button>
+										</section>
+										<section class="remote__group collapse" id="rcuplayerkeys">
+											<button type="button" onclick="pressMenuRemote('168');" title="FastRewind" class="remote__button icon"><i class="material-icons">fast_rewind</i></button>
+											<button type="button" onclick="pressMenuRemote('207');" title="Play" class="remote__button icon"><i class="material-icons">play_arrow</i></button>
+											<button type="button" onclick="pressMenuRemote('119');" title="Pause" class="remote__button icon"><i class="material-icons">pause</i></button>
+											<button type="button" onclick="pressMenuRemote('208');" title="FastForward" class="remote__button icon"><i class="material-icons">fast_forward</i></button>
+											<button type="button" onclick="pressMenuRemote('370');" title="Subtitle" class="remote__button icon"><i class="material-icons">subtitles</i></button>
+											<button type="button" onclick="pressMenuRemote('167');" title="Record" class="remote__button icon bg-white" style="color: #F44336;"><i class="material-icons">fiber_manual_record</i></button>
+											<button type="button" onclick="pressMenuRemote('128');" title="Stop" class="remote__button icon"><i class="material-icons">stop</i></button>
+											<button type="button" onclick="pressMenuRemote('392');" title="Audio" class="remote__button icon"><i class="material-icons">audiotrack</i></button>
+										</section>
 									</li>
 									<li class="align-center">
 										<span data-toggle="collapse" data-target="#rcuplayerkeys" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer;" title="Show more buttons"><i class="material-icons material-icons-centered">arrow_drop_down</i></span>
@@ -517,7 +218,7 @@
 									<li>
 								#end if
 								<li>
-									<table class="rcu-table">
+									<table style="margin: 0 auto;">
 										<tr>
 											<td colspan="2">
 												<h6>$tstrings['shiftforlong']</h6>
