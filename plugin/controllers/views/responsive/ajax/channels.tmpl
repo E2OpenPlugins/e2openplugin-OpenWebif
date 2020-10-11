@@ -21,6 +21,7 @@
 	.now-next__external-link { margin-left: 4px; }
 	.now-next__progress__percent { text-shadow: 0px 0px 2px black; }
 	.now-next__no-data { vertical-align: middle !important; }
+	.channel--active { background-color: rgba(0, 0, 0, 0.2) !important; }
 	img[src*="default_picon"] { filter: grayscale(1) opacity(0.2); }
 </style>
 
@@ -36,7 +37,7 @@
 	#set $channelName = $channel.name.replace("'", r"\'")
 	#set $isProtected = 'protection' in $channel and $channel.protection != "0"
 
-		<tr>
+		<tr id="sref-$channel.ref.replace(':', '_')" class="channel-list__channel">
 	#if '1:64:' in $channel.ref
 			<td colspan="100%" class="now-next__header header bg-$skinColor">
 				<h2>$channelName</h2>

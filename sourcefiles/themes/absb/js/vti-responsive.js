@@ -393,8 +393,7 @@ function getStatusInfo() {
 			$("#streammodalcontent").html(tmp);
 			responsive_stream_info = "<a href='javascript:void(0);' data-toggle='modal' data-target='#StreamModal' class='dropdown-toggle' role='button'><i class='material-icons'>wifi_tethering</i><span class='label-count'>" + streamlen + "</span></a>";
 		}
-		
-		
+
 		var icon = 'power_settings_new';
 		if (statusinfo['inStandby'] == 'true') {
 			icon = 'lightbulb_outline';
@@ -463,6 +462,10 @@ function setOSD( statusinfo )
 	$("#responsive_osd_stream").html(responsive_osd_stream);
 	$("#responsive_osd_current").html(responsive_osd_current);
 	$("#responsive_osd_cur_event").html(responsive_osd_cur_event);
+	try {
+		$('.channel-list__channel').removeClass('channel--active');
+		$('#sref-' + sref.replace(/:/g, '_')).addClass('channel--active');
+	} catch(e){}
 }
 
 
