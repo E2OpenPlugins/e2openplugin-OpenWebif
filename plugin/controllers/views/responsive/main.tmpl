@@ -30,6 +30,10 @@
 	<link href="themes/absb/css/vti-bootstrap-chosen.css" rel="stylesheet">
 	<link href="themes/absb/css/vti-timepicker.css" rel="stylesheet">
 	<link href="themes/absb/css/vti-responsive.css" rel="stylesheet">
+
+	<style>
+		.rcu-table .icon:hover { cursor: pointer; }
+	</style>
 </head>
 
 <body class="theme-$skinColor">
@@ -127,8 +131,8 @@
 									#else
 									<span id="symbolRemoteView">
 									#end if
-									<li class="align-right" style="margin-top:-30px;">
-										<span data-toggle="collapse" data-target="#rcunumbers" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer;"><i class="material-icons material-icons-centered">expand_more</i></span>
+									<li class="align-center" style="margin-top:-30px;">
+										<span data-toggle="collapse" data-target="#rcunumbers" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer;" title="Show more buttons"><i class="material-icons material-icons-centered">arrow_drop_up</i></span>
 									</li>
 									<li class="collapse" id="rcunumbers">
 										<table class="rcu-table">
@@ -231,29 +235,29 @@
 											<tr>
 												<td>
 													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-red" onclick="pressMenuRemote('398');" title="Red">
-															<i class="material-icons">panorama_fish_eye</i>
+														<div class="icon bg-white" onclick="toggleMute(); return false;" title="Mute">
+															<i class="material-icons">volume_off</i>
 														</div>
 													</div>
 												</td>
 												<td>
 													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-green" onclick="pressMenuRemote('399');" title="Green">
-															<i class="material-icons">panorama_fish_eye</i>
+														<div class="icon bg-white" onclick="pressMenuRemote('114');" title="Vol-">
+															<i class="material-icons">volume_down</i>
 														</div>
 													</div>
 												</td>
 												<td>
 													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-yellow" onclick="pressMenuRemote('400');" title="Yellow">
-															<i class="material-icons">panorama_fish_eye</i>
+														<div class="icon bg-white" onclick="pressMenuRemote('115');" title="Vol+">
+															<i class="material-icons">volume_up</i>
 														</div>
 													</div>
 												</td>
 												<td>
 													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-blue" onclick="pressMenuRemote('401');" title="Blue">
-															<i class="material-icons">panorama_fish_eye</i>
+														<div class="icon bg-white" onclick="toggleStandby(); return false;" title="Power">
+															<i class="material-icons" style="color: #F44336;">power_settings_new</i>
 														</div>
 													</div>
 												</td>
@@ -296,10 +300,9 @@
 												<td>
 													<div class="info-box-rcu hover-zoom-effect">
 														<div class="icon bg-light-grey" onclick="pressMenuRemote('352');" title="OK">
-															<i class="material-icons">check</i>
+															<i class="material-icons">thumb_up_alt</i>
 														</div>
 													</div>
-													
 												</td>
 												<td>
 													<div class="info-box-rcu hover-zoom-effect">
@@ -354,14 +357,48 @@
 												<td>
 													<div class="info-box-rcu-4 hover-zoom-effect">
 														<div class="icon bg-white" onclick="pressMenuRemote('403');" title="CH-">
-															<i class="material-icons">remove_circle_outline</i>
+															<i class="material-icons">remove</i>
 														</div>
 													</div>
 												</td>
 												<td>
 													<div class="info-box-rcu-4 hover-zoom-effect">
 														<div class="icon bg-white" onclick="pressMenuRemote('402');" title="CH+">
-															<i class="material-icons">add_circle_outline</i>
+															<i class="material-icons">add</i>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</table>
+									</li>
+									<li>
+										<table class="rcu-table">
+											<tr>
+												<td>
+													<div class="info-box-rcu-4 hover-zoom-effect">
+														<div class="icon" style="background-color: #707070;" onclick="pressMenuRemote('398');" title="Red">
+															<i class="material-icons" style="color: #F44336;">call_to_action</i>
+														</div>
+													</div>
+												</td>
+												<td>
+													<div class="info-box-rcu-4 hover-zoom-effect">
+														<div class="icon" style="background-color: #707070;" onclick="pressMenuRemote('399');" title="Green">
+															<i class="material-icons" style="color: #4CAF50;">call_to_action</i>
+														</div>
+													</div>
+												</td>
+												<td>
+													<div class="info-box-rcu-4 hover-zoom-effect">
+														<div class="icon" style="background-color: #707070;" onclick="pressMenuRemote('400');" title="Yellow">
+															<i class="material-icons" style="color: #ffe821;">call_to_action</i>
+														</div>
+													</div>
+												</td>
+												<td>
+													<div class="info-box-rcu-4 hover-zoom-effect">
+														<div class="icon" style="background-color: #707070;" onclick="pressMenuRemote('401');" title="Blue">
+															<i class="material-icons" style="color: #2196F3;">call_to_action</i>
 														</div>
 													</div>
 												</td>
@@ -411,7 +448,7 @@
 												<td>
 													<div class="info-box-rcu-4 hover-zoom-effect">
 														<div class="icon bg-white" onclick="pressMenuRemote('167');" title="Record">
-															<i class="material-icons">fiber_manual_record</i>
+															<i class="material-icons" style="color: #F44336;">fiber_manual_record</i>
 														</div>
 													</div>
 												</td>
@@ -432,8 +469,8 @@
 											</tr>
 										</table>
 									</li>
-									<li class="align-right">
-										<span data-toggle="collapse" data-target="#rcuplayerkeys" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer;"><i class="material-icons material-icons-centered">keyboard_arrow_up</i></span>
+									<li class="align-center">
+										<span data-toggle="collapse" data-target="#rcuplayerkeys" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer;" title="Show more buttons"><i class="material-icons material-icons-centered">arrow_drop_down</i></span>
 									</li>
 								</span>
 								#if $RemoteControlView == 'checked'
@@ -761,10 +798,10 @@
 		</section>
 	</span>
 
-<section class="content"  id="fullmaincontent">
+<section class="content" id="fullmaincontent">
 		<div class="container-fluid">
 			<div class="row clearfix">
-				<div id="content_container">$content</div>
+				<div id="content_container" style="position: relative; min-height: 90vh">$content</div>
 			</div>
 			<span id="mainfooter">
 				<div class="row clearfix">
