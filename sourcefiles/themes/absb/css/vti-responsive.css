@@ -57,18 +57,17 @@
 }
 
 .info-box-rcu.hover-zoom-effect .icon i {
-	-moz-transition: all 0.3s ease;
-	-o-transition: all 0.3s ease;
-	-webkit-transition: all 0.3s ease;
-	transition: all 0.3s ease; }
+	-moz-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease; }
 
 .info-box-rcu.hover-zoom-effect:hover .icon i {
-	opacity: 0.4;
-	-moz-transform: rotate(-32deg) scale(1.4);
-	-ms-transform: rotate(-32deg) scale(1.4);
-	-o-transform: rotate(-32deg) scale(1.4);
-	-webkit-transform: rotate(-32deg) scale(1.4);
-	transform: rotate(-32deg) scale(1.4); }
+	-moz-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	-o-transform: scale(1.2);
+	-webkit-transform: scale(1.2);
+	transform: scale(1.2); }
 
 .info-box-rcu-4 {
 	box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
@@ -101,18 +100,17 @@
 }
 
 .info-box-rcu-4.hover-zoom-effect .icon i {
-	-moz-transition: all 0.3s ease;
-	-o-transition: all 0.3s ease;
-	-webkit-transition: all 0.3s ease;
-	transition: all 0.3s ease; }
+	-moz-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease; }
 
 .info-box-rcu-4.hover-zoom-effect:hover .icon i {
-	opacity: 0.4;
-	-moz-transform: rotate(-32deg) scale(1.4);
-	-ms-transform: rotate(-32deg) scale(1.4);
-	-o-transform: rotate(-32deg) scale(1.4);
-	-webkit-transform: rotate(-32deg) scale(1.4);
-	transform: rotate(-32deg) scale(1.4); }
+	-moz-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	-o-transform: scale(1.2);
+	-webkit-transform: scale(1.2);
+	transform: scale(1.2); }
 
 .page-loader-wrapper {
   background: #ccc;

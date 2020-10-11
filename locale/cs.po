@@ -27,7 +27,7 @@ msgid "%s free / %s total"
 msgstr "%s volné / %s celkem"
 
 #: ../plugin/controllers/i18n.py:220
-msgid "(Shift + Click for Long Press)"
+msgid "(Press 'shift' and click to 'hold')"
 msgstr "(dlouhý stisk = shift + klik)"
 
 #: ../plugin/controllers/i18n.py:78
@@ -785,7 +785,7 @@ msgid "Get mutable list for new created bouquet failed!"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:141
-msgid "Grab Screenshot"
+msgid "Capture screenshot"
 msgstr "Snímek obrazovky"
 
 #: ../plugin/controllers/i18n.py:142
