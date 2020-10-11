@@ -26,7 +26,7 @@ msgid "%s free / %s total"
 msgstr "%s vapaana / %s kaikkiaan"
 
 #: ../plugin/controllers/i18n.py:220
-msgid "(Shift + Click for Long Press)"
+msgid "(Press 'shift' and click to 'hold')"
 msgstr "(Vaihto + pitkä painallus)"
 
 #: ../plugin/controllers/i18n.py:78
@@ -789,7 +789,7 @@ msgid "Get mutable list for new created bouquet failed!"
 msgstr "Listanmuutos uudelle suosikkilistalle epäonnistui!"
 
 #: ../plugin/controllers/i18n.py:141
-msgid "Grab Screenshot"
+msgid "Capture screenshot"
 msgstr "Ota kuvankaappaus"
 
 #: ../plugin/controllers/i18n.py:142

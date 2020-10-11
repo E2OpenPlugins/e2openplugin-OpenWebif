@@ -28,7 +28,7 @@ msgid "%s free / %s total"
 msgstr "%s laisvų / %s iš viso"
 
 #: ../plugin/controllers/i18n.py:221
-msgid "(Shift + Click for Long Press)"
+msgid "(Press 'shift' and click to 'hold')"
 msgstr "(Shift+click pele ilgam nuspaudimui)"
 
 #: ../plugin/controllers/i18n.py:79
@@ -805,7 +805,7 @@ msgid "Get mutable list for new created bouquet failed!"
 msgstr "Naujai sukurtas bukietas neįkeltas į kintamą sąrašą!"
 
 #: ../plugin/controllers/i18n.py:142
-msgid "Grab Screenshot"
+msgid "Capture screenshot"
 msgstr "Ekrano nuotrauka"
 
 #: ../plugin/controllers/i18n.py:143

@@ -24,7 +24,7 @@ msgstr "%s %s kilitlendi."
 msgid "%s free / %s total"
 msgstr "%s boş / %s toplam"
 
-msgid "(Shift + Click for Long Press)"
+msgid "(Press 'shift' and click to 'hold')"
 msgstr "(Shift + Uzun Basmak İçin Tıklayın)"
 
 msgid "AGC"
@@ -580,7 +580,7 @@ msgstr "Yeni oluşturulan alternatif için değişken liste alınamadı!"
 msgid "Get mutable list for new created bouquet failed!"
 msgstr "Yeni oluşturulan buket için değişken liste alınamadı!"
 
-msgid "Grab Screenshot"
+msgid "Capture screenshot"
 msgstr "Ekran Görüntüsü Al"
 
 msgid "Gui version"

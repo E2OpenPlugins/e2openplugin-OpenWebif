@@ -26,7 +26,7 @@ msgid "%s free / %s total"
 msgstr "%s szabad /%s összesen"
 
 #: ../plugin/controllers/i18n.py:221
-msgid "(Shift + Click for Long Press)"
+msgid "(Press 'shift' and click to 'hold')"
 msgstr "(Shift + Nyomja meg a Long Press gombot)"
 
 #: ../plugin/controllers/i18n.py:79
@@ -785,7 +785,7 @@ msgid "Get mutable list for new created bouquet failed!"
 msgstr "A változás lista létrehozása az új bouquethez nem sikerült!"
 
 #: ../plugin/controllers/i18n.py:142
-msgid "Grab Screenshot"
+msgid "Capture screenshot"
 msgstr "Pillanatkép rögzítése"
 
 #: ../plugin/controllers/i18n.py:143

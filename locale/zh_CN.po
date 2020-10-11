@@ -28,7 +28,7 @@ msgid "%s free / %s total"
 msgstr "%s 可用 / %s 总容量"
 
 #: ../plugin/controllers/i18n.py:220
-msgid "(Shift + Click for Long Press)"
+msgid "(Press 'shift' and click to 'hold')"
 msgstr "(长按Shift +点击)"
 
 msgid "(shift + click for long pressure)"
@@ -825,7 +825,7 @@ msgid "Get mutable list for new created bouquet failed!"
 msgstr "创建新的自定义组失败！"
 
 #: ../plugin/controllers/i18n.py:141
-msgid "Grab Screenshot"
+msgid "Capture screenshot"
 msgstr "截屏"
 
 #: ../plugin/controllers/i18n.py:142
