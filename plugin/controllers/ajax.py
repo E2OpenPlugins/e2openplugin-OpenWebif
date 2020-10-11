@@ -86,7 +86,7 @@ class AjaxController(BaseController):
 		channels = getChannels(idbouquet, stype)
 		channels['transcoding'] = TRANSCODING
 		channels['type'] = stype
-		channels['showchannelpicon'] = config.OpenWebif.webcache.showchannelpicon.value
+		channels['showpicons'] = config.OpenWebif.webcache.showpicons.value
 		channels['showpiconbackground'] = config.OpenWebif.responsive_show_picon_background.value
 		return channels
 
@@ -273,7 +273,7 @@ class AjaxController(BaseController):
 			ret['moviedbs'] = []
 			ret['moviedb'] = 'IMDb'
 		ret['zapstream'] = config.OpenWebif.webcache.zapstream.value
-		ret['showchannelpicon'] = config.OpenWebif.webcache.showchannelpicon.value
+		ret['showpicons'] = config.OpenWebif.webcache.showpicons.value
 		ret['showchanneldetails'] = config.OpenWebif.webcache.showchanneldetails.value
 		ret['allowipkupload'] = config.OpenWebif.allow_upload_ipk.value
 		loc = getLocations()

@@ -60,7 +60,7 @@ config.OpenWebif.webcache.collapsedmenus = ConfigText(default="", fixed_size=Fal
 config.OpenWebif.webcache.zapstream = ConfigYesNo(default=False)
 config.OpenWebif.webcache.theme = ConfigSelection(default='original', choices=THEMES)
 config.OpenWebif.webcache.moviesort = ConfigSelection(default='name', choices=['name', 'named', 'date', 'dated'])
-config.OpenWebif.webcache.showchannelpicon = ConfigYesNo(default=True)
+config.OpenWebif.webcache.showpicons = ConfigYesNo(default=True)
 config.OpenWebif.webcache.moviedb = ConfigSelection(default='IMDb' if not getKinopoisk() else 'Kinopoisk', choices=['IMDb', 'CSFD', 'Kinopoisk'])
 config.OpenWebif.webcache.mepgmode = ConfigInteger(default=1, limits=(1, 2))
 config.OpenWebif.webcache.showchanneldetails = ConfigYesNo(default=False)

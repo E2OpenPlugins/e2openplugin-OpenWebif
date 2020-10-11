@@ -63,7 +63,7 @@ def RemoteControlView():
 	return ''
 
 def showPicons():
-	if config.OpenWebif.responsive_show_picons.value:
+	if config.OpenWebif.webcache.showpicons.value:
 		return 'checked'
 	return ''
 
@@ -121,8 +121,8 @@ def setVTiWebConfig(self, request):
 	if b"showpicons" in list(request.args.keys()):
 		val = int(getUrlArg(request, "showpicons"))
 		print("save showpicons:", val)
-		config.OpenWebif.responsive_show_picons.value = val == 1 and True or False
-		config.OpenWebif.responsive_show_picons.save()
+		config.OpenWebif.webcache.showpicons.value = val == 1 and True or False
+		config.OpenWebif.webcache.showpicons.save()
 	if b"showpiconbackground" in list(request.args.keys()):
 		val = int(getUrlArg(request, "showpiconbackground"))
 		print("save showpiconbackground:", val)
@@ -154,5 +154,4 @@ def expandConfig():
 	config.OpenWebif.responsive_moviesearch_extended = ConfigYesNo(default=False)
 	config.OpenWebif.responsive_moviesearch_short = ConfigYesNo(default=False)
 	config.OpenWebif.responsive_rcu_full_view = ConfigYesNo(default=False)
-	config.OpenWebif.responsive_show_picons = ConfigYesNo(default=True)
 	config.OpenWebif.responsive_show_picon_background = ConfigYesNo(default=False)

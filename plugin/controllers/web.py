@@ -2256,10 +2256,10 @@ class WebController(BaseController):
 				comp_config.OpenWebif.webcache.moviedb.save()
 			except Exception:
 				pass
-		elif b"showchannelpicon" in list(request.args.keys()):
-			val = (getUrlArg(request, "showchannelpicon") == 'true')
-			comp_config.OpenWebif.webcache.showchannelpicon.value = val
-			comp_config.OpenWebif.webcache.showchannelpicon.save()
+		elif b"showpicons" in list(request.args.keys()):
+			val = (getUrlArg(request, "showpicons") == 'true')
+			comp_config.OpenWebif.webcache.showpicons.value = val
+			comp_config.OpenWebif.webcache.showpicons.save()
 		elif "showchanneldetails" in list(request.args.keys()):
 			val = (getUrlArg(request, "showchanneldetails") == 'true')
 			comp_config.OpenWebif.webcache.showchanneldetails.value = val
