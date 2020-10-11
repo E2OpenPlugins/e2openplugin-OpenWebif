@@ -235,6 +235,40 @@
 											<tr>
 												<td>
 													<div class="info-box-rcu-4 hover-zoom-effect">
+														<div class="icon bg-white" onclick="pressMenuRemote('377');" title="TV">
+															<i class="material-icons">tv</i>
+														</div>
+													</div>
+												</td>
+												<td>
+													<div class="info-box-rcu-4 hover-zoom-effect">
+														<div class="icon bg-white" onclick="pressMenuRemote('385');" title="Radio">
+															<i class="material-icons">radio</i>
+														</div>
+													</div>
+												</td>
+												<td>
+													<div class="info-box-rcu-4 hover-zoom-effect">
+														<div class="icon bg-white" onclick="pressMenuRemote('393');" title="List">
+															<i class="material-icons">movie</i>
+														</div>
+													</div>
+												</td>
+												<td>
+													<div class="info-box-rcu-4 hover-zoom-effect">
+														<div class="icon bg-white" onclick="toggleStandby(); return false;" title="Power">
+															<i class="material-icons" style="color: #F44336;">power_settings_new</i>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</table>
+									</li>
+									<li>
+										<table class="rcu-table">
+											<tr>
+												<td>
+													<div class="info-box-rcu-4 hover-zoom-effect">
 														<div class="icon bg-white" onclick="toggleMute(); return false;" title="Mute">
 															<i class="material-icons">volume_off</i>
 														</div>
@@ -256,8 +290,8 @@
 												</td>
 												<td>
 													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="toggleStandby(); return false;" title="Power">
-															<i class="material-icons" style="color: #F44336;">power_settings_new</i>
+														<div class="icon bg-white" onclick="pressMenuRemote('102');" title="Home">
+															<i class="material-icons">home</i>
 														</div>
 													</div>
 												</td>
@@ -269,8 +303,8 @@
 											<tr>
 												<td>
 													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('393');" title="PVR">
-															<i class="material-icons">movie</i>
+														<div class="icon bg-white" onclick="pressMenuRemote('139');" title="Menu">
+															<i class="material-icons">menu</i>
 														</div>
 													</div>
 												</td>
@@ -283,8 +317,8 @@
 												</td>
 												<td>
 													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('139');" title="Menu">
-															<i class="material-icons">menu</i>
+														<div class="icon bg-white" onclick="pressMenuRemote('358');" title="Info">
+															<i class="material-icons">info_outline</i>
 														</div>
 													</div>
 												</td>
@@ -315,8 +349,8 @@
 											<tr>
 												<td>
 													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('358');" title="EPG">
-															<i class="material-icons">today</i>
+														<div class="icon bg-white" onclick="pressMenuRemote('158');" title="Back">
+															<i class="material-icons">keyboard_return</i>
 														</div>
 													</div>
 												</td>
@@ -342,15 +376,15 @@
 											<tr>
 												<td>
 													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('377');" title="TV">
-															<i class="material-icons">tv</i>
+														<div class="icon bg-white" onclick="pressMenuRemote('358');" title="EPG">
+															<i class="material-icons">view_list</i>
 														</div>
 													</div>
 												</td>
 												<td>
 													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('385');" title="Radio">
-															<i class="material-icons">radio</i>
+														<div class="icon bg-white" onclick="pressMenuRemote('627');" title="VOD">
+															<i class="material-icons">ondemand_video</i>
 														</div>
 													</div>
 												</td>
@@ -522,7 +556,7 @@
 						</li>
 						<li>
 							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/myepg?epgmode=tv'); return false;" >
-								<i class="material-icons">today</i>
+								<i class="material-icons">view_list</i>
 								<span>$tstrings['epg']</span>
 							</a>
 						</li>
