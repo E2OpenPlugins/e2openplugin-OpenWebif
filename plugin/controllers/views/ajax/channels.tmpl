@@ -54,7 +54,7 @@
 	</div>
 
 	#set $picon = True
-	#if $showchannelpicon and 'now_title' not in $channel
+	#if $showpicons and 'now_title' not in $channel
 		#if 'picon' in $channel and $channel.picon == "/images/default_picon.png"
 			#set $picon = False
 		#end if
@@ -62,7 +62,7 @@
 
 	#if 'protection' in $channel and $channel.protection == "0" and $picon
 	<div>
-		#if $showchannelpicon
+		#if $showpicons
 			<div class="channel-picon">
 				<img class="pic" src="$channel.picon" title="">
 			</div>
