@@ -1250,7 +1250,7 @@ function editTimer(serviceref, begin, end) {
 							if (typeof timer.allow_duplicate !== 'undefined')
 							{
 								$('#allow_duplicate').prop("checked", timer.allow_duplicate==1);
-								autoadjust: ($('#autoadjust').is(':checked')?"1":"0"),
+								//autoadjust: ($('#autoadjust').is(':checked')?"1":"0"),
 							}
 							if (typeof timer.autoadjust !== 'undefined')
 							{
@@ -1529,7 +1529,6 @@ function InitTVRadio(epgmode)
 
 	if (tv===true) {
 		var parts=window.location.href.toLowerCase().split("#");
-		window.location.hash="";
 		if (parts[1] == 'tv') {
 			if(parts[2] == 'mepg' || parts[2] == 'mepgfull')
 			{
@@ -1611,7 +1610,6 @@ function InitBouquets(tv)
 
 	if (tv===true) {
 		var parts=window.location.href.toLowerCase().split("#");
-		window.location.hash="";
 		if (parts[1] == 'tv') {
 			if(parts[2] == 'mepg' || parts[2] == 'mepgfull')
 			{
@@ -1718,7 +1716,7 @@ function ChangeTheme(theme)
 
 function directlink()
 {
-	var parts=window.location.href.toLowerCase().split("#");
+	var parts=window.location.hash;
 	var lnk='ajax/tv';
 	var p = parts[1];
 
@@ -1731,11 +1729,13 @@ function directlink()
 		case 'at':
 		case 'bqe':
 		case 'epgr':
+		case 'myepg':
+		case 'timers':
+		case 'satfinder':
+		case 'boxinfo':
+		case 'webtv':
 			lnk='ajax/' + p;
 			break;
-	}
-	if(p != 'tv') {
-		window.location.hash="";
 	}
 	
 	load_maincontent(lnk);

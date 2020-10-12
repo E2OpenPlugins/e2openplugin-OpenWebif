@@ -244,31 +244,31 @@
 							</ul>
 						</li>
 						<li>
-							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/tv'); return false;" >
+							<a href="#tv" data-close="true">
 								<i class="material-icons">tv</i>
 								<span>$tstrings['television']</span>
 							</a>
 						</li>
 						<li>
-							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/radio'); return false;" >
+							<a href="#radio" data-close="true">
 								<i class="material-icons">radio</i>
 								<span>$tstrings['radio']</span>
 							</a>
 						</li>
 						<li>
-							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/myepg?epgmode=tv'); return false;" >
+							<a href="#myepg&epgmode=tv" data-close="true">
 								<i class="material-icons">view_list</i>
 								<span>$tstrings['epg']</span>
 							</a>
 						</li>
 						<li>
-							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/movies'); return false;" >
+							<a href="#movies" data-close="true">
 								<i class="material-icons">movie</i>
 								<span>$tstrings['movies']</span>
 							</a>
 						</li>
 						<li>
-							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/timers'); return false;" >
+							<a href="#timers" data-close="true">
 								<i class="material-icons">alarm</i>
 								<span>$tstrings['timers']</span>
 							</a>
@@ -276,7 +276,7 @@
 						#for $extra in $extras
 							#if $extra["key"] in ("ajax/at",)
 								<li>
-									<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/at'); return false;" >
+									<a href="#at" data-close="true">
 										<i class="material-icons">history</i>
 										<span>$extra["description"]</span>
 									</a>
@@ -284,25 +284,25 @@
 							#end if
 						#end for
 						<li>
-							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/settings'); return false;" >
+							<a href="#settings" data-close="true">
 								<i class="material-icons">settings</i>
 								<span>$tstrings['settings']</span>
 							</a>
 						</li>
 						<li>
-							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/bqe'); return false;" >
+							<a href="#bqe" data-close="true">
 								<i class="material-icons">view_list</i>
 								<span>$tstrings['Bouquet_Editor']</span>
 							</a>
 						</li>
 						<li>
-							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/satfinder'); return false;" >
+							<a href="#satfinder" data-close="true">
 								<i class="material-icons">wifi</i>
 								<span>$tstrings['satfinder']</span>
 							</a>
 						</li>
 						<li>
-							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/boxinfo'); return false;" >
+							<a href="#boxinfo" data-close="true">
 								<i class="material-icons">info</i>
 								<span>$tstrings['box_info']</span>
 							</a>
@@ -314,7 +314,7 @@
 							</a>
 							<ul class="ml-menu">
 							#if $webtv
-								<li><a href='#' data-close="true" onclick="load_maincontent('ajax/webtv'); return false;">$tstrings['webtv']</a></li>
+								<li><a href="#webtv" data-close="true">$tstrings['webtv']</a></li>
 							#end if
 							#for $extra in $extras
 								#set $target_url = $extra["key"];
@@ -323,7 +323,7 @@
 										#if $extra["nw"] == "1"
 										<li><a href="$target_url" target='_blank'>$extra["description"]</a></li>
 										#else
-										<li><a class="lmc pop" href="$target_url">$extra["description"]</a></li>
+										<li><a href="$target_url" class="lmc pop">$extra["description"]</a></li>
 										#end if
 									#else
 										<li><a href='javascript:void(0);' data-close="true" onclick="load_maincontent('$target_url'); return false;" >$extra["description"]</a></li>
@@ -816,6 +816,13 @@
 <script type="text/javascript">initJsTranslationAddon($dumps($tstrings))</script>
 
 <script type="text/javascript">
+	function locationHashChanged(e) { 
+		//console.log(e.target.location.hash);
+		directlink(); 
+	} 
+
+	window.onhashchange = locationHashChanged;
+
 	\$(document).ready(function() {
 		\$('#noresposive').change(function () {
 			\$.ajax({
