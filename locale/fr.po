@@ -652,7 +652,7 @@ msgid "Enter new name for the marker"
 msgstr "Ajouter un nouveau nom pour le marqueur"
 
 #: ../plugin/controllers/i18n.py:130
-msgid "Epg Search"
+msgid "EPG Search"
 msgstr "Recherche EPG"
 
 #: ../plugin/controllers/i18n.py:133
