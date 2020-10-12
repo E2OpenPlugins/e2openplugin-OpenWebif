@@ -109,21 +109,24 @@
 							<h2><i class="material-icons material-icons-centered">tune</i>$tstrings['tuners']</h2>
 						</div>
 						<div class="body">
+						#set $divider = ''
 						#for $tuner in $tuners
-								<div class="row clearfix">
-									<div class="col-xs-12 col-sm-6">
-										<b>$tuner.name</b>
-									</div>
-									<div class="col-xs-12 col-sm-6">
-										$tuner.type
-									#if $tuner.live != ''
-										<p><i class="material-icons material-icons-centered">play_circle_outline</i>$tuner.live</p>
-									#end if
-									#if $tuner.rec != ''
-											<p><i class="material-icons material-icons-centered">videocam</i>$tuner.rec</p>
-									#end if
-									</div>
+							$divider
+							<div class="row clearfix">
+								<div class="col-xs-12 col-sm-6">
+									<b>$tuner.name</b>
 								</div>
+								<div class="col-xs-12 col-sm-6">
+									$tuner.type
+								#if $tuner.live != ''
+									<p><i class="material-icons material-icons-centered">play_circle_outline</i>$tuner.live</p>
+								#end if
+								#if $tuner.rec != ''
+										<p><i class="material-icons material-icons-centered">videocam</i>$tuner.rec</p>
+								#end if
+								</div>
+							</div>
+							#set $divider = '<hr style="margin:0 0 30px;">'
 						#end for
 						</div>
 					</div>
@@ -137,7 +140,9 @@
 							<h2><i class="material-icons material-icons-centered">settings_system_daydream</i>$tstrings['streamclients']</h2>
 						</div>
 						<div class="body">
+							#set $divider = ''
 							#for $stream in $streams
+								$divider
 								<div class="row clearfix">
 									<div class="col-xs-12 col-sm-6">
 										<b>$stream.ip:</b>
@@ -150,6 +155,7 @@
 										#end if
 									</div>
 								</div>
+								#set $divider = '<hr style="margin:0 0 30px;">'
 							#end for
 						</div>
 					</div>
@@ -163,7 +169,9 @@
 							<h2><i class="material-icons material-icons-centered">storage</i>HDD</h2>
 						</div>
 						<div class="body">
+							#set $divider = ''
 							#for $hd in $hdd
+								$divider
 								<div class="row clearfix">
 									<div class="col-xs-12 col-sm-6">
 										<b>$tstrings['hdd_model']:</b>
@@ -172,14 +180,15 @@
 										 $hd.model
 									</div>
 								</div>
-							<div class="row clearfix">
-								<div class="col-xs-12 col-sm-6">
-									<b>$tstrings['capacity']:</b>
+								<div class="row clearfix">
+									<div class="col-xs-12 col-sm-6">
+										<b>$tstrings['capacity']:</b>
+									</div>
+									<div class="col-xs-12 col-sm-6">
+										$hd.friendlycapacity ($hd.mount)
+									</div>
 								</div>
-								<div class="col-xs-12 col-sm-6">
-									$hd.friendlycapacity ($hd.mount)
-								</div>
-							</div>
+								#set $divider = '<hr style="margin:0 0 30px;">'
 							#end for
 						</div>
 					</div>
@@ -193,15 +202,18 @@
 								<h2><i class="material-icons material-icons-centered">settings_ethernet</i>$tstrings['networkshares']</h2>
 							</div>
 							<div class="body">
+							#set $divider = ''
 							#for $share in $shares
-									<div class="row clearfix">
-										<div class="col-xs-12 col-sm-6">
-											<b>$share.name:</b>
-										</div>
-										<div class="col-xs-12 col-sm-6">
-											$share.type $tstrings['using'] $share.method: $share.path ($share.friendlyaddress)
-										</div>
+								$divider
+								<div class="row clearfix">
+									<div class="col-xs-12 col-sm-6">
+										<b>$share.name:</b>
 									</div>
+									<div class="col-xs-12 col-sm-6">
+										$share.type $tstrings['using'] $share.method: $share.path ($share.friendlyaddress)
+									</div>
+								</div>
+								#set $divider = '<hr style="margin:0 0 30px;">'
 							#end for
 							</div>
 						</div>
