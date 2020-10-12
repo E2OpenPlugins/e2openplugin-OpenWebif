@@ -1716,11 +1716,10 @@ function ChangeTheme(theme)
 
 function directlink()
 {
-	var parts=window.location.hash;
-	var lnk='ajax/tv';
-	var p = parts[1];
+	var hash = window.location.hash.replace('#','');
+	var lnk = 'ajax/tv';
 
-	switch (p)
+	switch (hash)
 	{
 		case 'radio':
 		case 'movies':

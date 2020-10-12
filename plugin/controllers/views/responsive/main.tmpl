@@ -817,8 +817,9 @@
 
 <script type="text/javascript">
 	function locationHashChanged(e) { 
-		//console.log(e.target.location.hash);
-		directlink(); 
+		var hash = e.target.location.hash.replace('#', '');
+		console.log('ajax/' + hash);
+		hash && load_maincontent('ajax/' + hash);
 	} 
 
 	window.onhashchange = locationHashChanged;
