@@ -646,7 +646,7 @@ msgid "Enter new name for the marker"
 msgstr "Syötä uusi nimi väliotsikolle"
 
 #: ../plugin/controllers/i18n.py:129
-msgid "Epg Search"
+msgid "EPG Search"
 msgstr "Ohjelmaopashaku"
 
 #: ../plugin/controllers/i18n.py:132

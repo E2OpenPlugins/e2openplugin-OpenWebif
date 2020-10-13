@@ -481,7 +481,7 @@ msgstr "Buket için yeni ad girin"
 msgid "Enter new name for the marker"
 msgstr "İşaretçi için yeni ad girin"
 
-msgid "Epg Search"
+msgid "EPG Search"
 msgstr "Epg Araması"
 
 msgid "Error"
