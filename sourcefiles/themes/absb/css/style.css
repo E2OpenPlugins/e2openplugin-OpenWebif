@@ -2012,6 +2012,13 @@
   .bg-blue-grey .content .number {
     color: #fff !important; }
 
+.bg-grey-darken-4  {
+  background-color: #212121 !important;
+  color: #f1f1f1; }
+  .bg-grey-darken-4  .content .text,
+  .bg-grey-darken-4  .content .number {
+    color: #f1f1f1 !important; }
+
 .bg-black {
   background-color: #000000 !important;
   color: #fff; }
@@ -2347,6 +2354,8 @@
     background-color: #9E9E9E; }
   .demo-choose-skin .blue-grey {
     background-color: #607D8B; }
+  .demo-choose-skin .grey-darken-4 {
+    background-color:#212121; }
   .demo-choose-skin .black {
     background-color: #000000; }
   .demo-choose-skin .white {
@@ -2900,6 +2909,7 @@ section.content {
   .card .bg-brown,
   .card .bg-grey,
   .card .bg-blue-grey,
+  .card .bg-grey-darken-4,
   .card .bg-black {
     border-bottom: none !important;
     color: #fff !important; }
@@ -2958,6 +2968,9 @@ section.content {
     .card .bg-blue-grey h2,
     .card .bg-blue-grey small,
     .card .bg-blue-grey .material-icons,
+    .card .bg-grey-darken-4 h2,
+    .card .bg-grey-darken-4 small,
+    .card .bg-grey-darken-4 .material-icons,
     .card .bg-black h2,
     .card .bg-black small,
     .card .bg-black .material-icons {
@@ -2981,6 +2994,7 @@ section.content {
     .card .bg-brown .badge,
     .card .bg-grey .badge,
     .card .bg-blue-grey .badge,
+    .card .bg-grey-darken-4 .badge,
     .card .bg-black .badge {
       background-color: #fff;
       color: #555; }
@@ -4018,6 +4032,10 @@ section.content {
     background-color: rgba(96, 125, 139, 0.5); }
     .switch label input[type=checkbox]:checked + .lever.switch-col-blue-grey:after {
       background-color: #607D8B; }
+  .switch label input[type=checkbox]:checked + .lever.switch-col-grey-darken-4 {
+    background-color: rgba(21, 21, 21, 0.5); }
+    .switch label input[type=checkbox]:checked + .lever.switch-col-grey-darken-4:after {
+      background-color: #212121; }
   .switch label input[type=checkbox]:checked:not(:disabled) ~ .lever.switch-col-black:active:after {
     box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(0, 0, 0, 0.1); }
   .switch label input[type=checkbox]:checked + .lever.switch-col-black {
@@ -4245,6 +4263,9 @@ section.content {
   border-bottom: 2px solid #9E9E9E; }
 
 .nav-tabs.tab-col-blue-grey > li > a:before {
+  border-bottom: 2px solid #607D8B; }
+
+.nav-tabs.tab-col-grey-darken-4 > li > a:before {
   border-bottom: 2px solid #607D8B; }
 
 .nav-tabs.tab-col-black > li > a:before {

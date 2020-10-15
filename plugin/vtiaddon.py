@@ -139,7 +139,7 @@ def expand_BaseController():
 expand_basecontroller = expand_BaseController()
 
 COLORS = [
-	'red', 'pink', 'purple', 'deep-purple', 'indigo', 'blue', 'light-blue', 'cyan', 'teal', 'green', 'light-green', 'lime', 'yellow', 'amber', 'orange', 'deep-orange', 'brown', 'grey', 'blue-grey', 'black', 'white'
+	'black', 'grey-darken-4', 'blue-grey', 'grey', 'red', 'pink', 'purple', 'deep-purple', 'indigo', 'blue', 'light-blue', 'cyan', 'teal', 'green', 'light-green', 'lime', 'yellow', 'amber', 'orange', 'deep-orange', 'brown'
 ]
 
 def expandConfig():
