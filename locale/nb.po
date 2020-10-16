@@ -64,7 +64,7 @@ msgid "Add Name to Tags"
 msgstr "Legg til navn som merke"
 
 #: ../plugin/controllers/i18n.py:410
-msgid "Add Provider as new Bouquet"
+msgid "Create bouquet from selection"
 msgstr "Legg til distributør i ny kanalliste"
 
 #: ../plugin/controllers/i18n.py:371

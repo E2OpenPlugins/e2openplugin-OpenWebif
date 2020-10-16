@@ -413,7 +413,7 @@ tstrings = {
 	'er_save': _("Save"),
 	'er_refresh': _("Refresh now"),
 
-	'bqe_add_provider_as_bouquet': _("Add Provider as new Bouquet"),
+	'bqe_add_provider_as_bouquet': _("Create bouquet from selection"),
 	'bqe_add_channel': _("Add channel(s) to Bouquet"),
 	'bqe_add_alternative': _("Add channel(s) as alternate"),
 	'bqe_search': _("Search"),

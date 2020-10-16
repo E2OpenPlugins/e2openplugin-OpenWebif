@@ -62,7 +62,7 @@ msgid "Add Name to Tags"
 msgstr "Lisää nimi merkeille"
 
 #: ../plugin/controllers/i18n.py:410
-msgid "Add Provider as new Bouquet"
+msgid "Create bouquet from selection"
 msgstr "Lisää palveluntarjoaja uudeksi suosikkilistaksi"
 
 #: ../plugin/controllers/i18n.py:371

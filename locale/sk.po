@@ -61,7 +61,7 @@ msgid "Add Name to Tags"
 msgstr "Pridať názov do označení"
 
 #: ../plugin/controllers/i18n.py:410
-msgid "Add Provider as new Bouquet"
+msgid "Create bouquet from selection"
 msgstr "Pridať poskytovateľa ako nový prehľad"
 
 #: ../plugin/controllers/i18n.py:371

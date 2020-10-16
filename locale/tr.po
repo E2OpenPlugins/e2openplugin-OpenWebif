@@ -51,7 +51,7 @@ msgstr "İşaretçi Ekle"
 msgid "Add Name to Tags"
 msgstr "Etiketlere Ad Ekle"
 
-msgid "Add Provider as new Bouquet"
+msgid "Create bouquet from selection"
 msgstr "Sağlayıcıyı yeni Buket olarak Ekle"
 
 msgid "Add Similar on Conflict"

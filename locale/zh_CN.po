@@ -67,7 +67,7 @@ msgid "Add Name to Tags"
 msgstr "添加名称到标签"
 
 #: ../plugin/controllers/i18n.py:410
-msgid "Add Provider as new Bouquet"
+msgid "Create bouquet from selection"
 msgstr "添加供应商为节目分组"
 
 #: ../plugin/controllers/i18n.py:371

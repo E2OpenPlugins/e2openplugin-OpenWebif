@@ -62,7 +62,7 @@ msgid "Add Name to Tags"
 msgstr "Naam aan Tags toevoegen"
 
 #: ../plugin/controllers/i18n.py:410
-msgid "Add Provider as new Bouquet"
+msgid "Create bouquet from selection"
 msgstr "Provider toevoegen als nieuw Bouquet"
 
 #: ../plugin/controllers/i18n.py:371

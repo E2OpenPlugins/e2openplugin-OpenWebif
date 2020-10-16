@@ -61,7 +61,7 @@ msgid "Add Name to Tags"
 msgstr "Lisa siltidele nimi"
 
 #: ../plugin/controllers/i18n.py:410
-msgid "Add Provider as new Bouquet"
+msgid "Create bouquet from selection"
 msgstr "Lisa levitaja uue lemmiknimekirjana"
 
 #: ../plugin/controllers/i18n.py:371
