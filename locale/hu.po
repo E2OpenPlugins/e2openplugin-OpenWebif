@@ -86,7 +86,7 @@ msgid "Add channel(s) as alternate"
 msgstr "Csatornák hozzáadása alternatívákhoz"
 
 #: ../plugin/controllers/i18n.py:412
-msgid "Add selection to Bouquet"
+msgid "Add selection to bouquet"
 msgstr "Csatornák hozzáadása listához"
 
 #: ../plugin/plugin.py:151

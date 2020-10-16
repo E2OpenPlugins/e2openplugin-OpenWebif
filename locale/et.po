@@ -85,7 +85,7 @@ msgid "Add channel(s) as alternate"
 msgstr "Lisa asenduskanalina"
 
 #: ../plugin/controllers/i18n.py:411
-msgid "Add selection to Bouquet"
+msgid "Add selection to bouquet"
 msgstr "Lisa lemmiknimekirja"
 
 #: ../plugin/plugin.py:151

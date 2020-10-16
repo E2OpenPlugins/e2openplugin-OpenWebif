@@ -86,7 +86,7 @@ msgid "Add channel(s) as alternate"
 msgstr "Sender als Alternative(n) hinzufügen"
 
 #: ../plugin/controllers/i18n.py:411
-msgid "Add selection to Bouquet"
+msgid "Add selection to bouquet"
 msgstr "Sender zum Bouquet hinzufügen"
 
 #: ../plugin/plugin.py:151

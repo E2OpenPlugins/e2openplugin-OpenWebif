@@ -69,7 +69,7 @@ msgstr "Yayın açma zamanlayıcısı Ekle"
 msgid "Add channel(s) as alternate"
 msgstr "Kanalları alternatif olarak ekle"
 
-msgid "Add selection to Bouquet"
+msgid "Add selection to bouquet"
 msgstr "Bukete kanal ekle"
 
 msgid "Add service name to stream information"

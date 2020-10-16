@@ -86,7 +86,7 @@ msgid "Add channel(s) as alternate"
 msgstr "Lisää vaihtoehtoisia kanavia"
 
 #: ../plugin/controllers/i18n.py:411
-msgid "Add selection to Bouquet"
+msgid "Add selection to bouquet"
 msgstr "Lisää kanavia suosikkilistaan"
 
 #: ../plugin/plugin.py:151
