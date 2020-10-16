@@ -3,10 +3,10 @@
 
 #def select($config)
 <div class="row clearfix">
-	<div class="col-xs-6 align-right">
+	<div class="col-xs-5 align-right">
 	<label>$config.description</label>
 	</div>
-	<div class="col-xs-6 col-md-3">
+	<div class="col-xs-7 col-md-3">
 	<select class="form-control show-tick" id="$config.path" onchange="saveConfig('$config.path', this.value);">
 		#for $choice in $config.data.choices
 			#if $config.data.current == $choice[0]
@@ -22,10 +22,10 @@
 
 #def checkbox($config)
 <div class="row clearfix">
-	<div class="col-xs-6 align-right">
+	<div class="col-xs-5 align-right">
 	<label>$config.description</label>
 	</div>
-	<div class="col-xs-6">
+	<div class="col-xs-7">
 			<div class="switch switch-col-indigo">
 		#if $config.data.current
 					<label><input type="checkbox" id="$config.path" checked="true" onclick="saveConfig('$config.path', this.checked);" /><span class='lever switch-col-$skinColor'></span></label>
@@ -40,10 +40,10 @@
 
 #def multicheckbox($config)
 <div class="row clearfix">
-	<div class="col-xs-6 align-right">
+	<div class="col-xs-5 align-right">
 	<label>$config.description</label>
 	</div>
-	<div class="col-xs-6">
+	<div class="col-xs-7">
 	#for $choice in $config.data.choices
 		#if $choice in $config.data.current
 					<input type="checkbox" class="form-control chk-col-$skinColor" id="$config.path" checked="true" onclick="saveConfig('$config.path', this.checked);" />
@@ -58,10 +58,10 @@
 
 #def number($config, $active)
 <div class="row clearfix">
-	<div class="col-xs-6 align-right">
+	<div class="col-xs-5 align-right">
 	<label>$config.description</label>
 	</div>
-	<div class="col-xs-6 col-md-3">
+	<div class="col-xs-7 col-md-3">
 	<div class="form-line">
 				<input type="text"  class="form-control inactive" id="${config.path}" placeholder="$config.data.current" onchange="saveConfig('$config.path', this.value);" />
 	</div>
