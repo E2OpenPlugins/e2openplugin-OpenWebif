@@ -91,7 +91,7 @@ msgid "Add channel(s) as alternate"
 msgstr "添加频道作为替代"
 
 #: ../plugin/controllers/i18n.py:411
-msgid "Add channel(s) to Bouquet"
+msgid "Add selection to Bouquet"
 msgstr "添加频道到节目分组"
 
 #: ../plugin/plugin.py:151

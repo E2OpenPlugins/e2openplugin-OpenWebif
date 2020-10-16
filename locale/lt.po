@@ -88,7 +88,7 @@ msgid "Add channel(s) as alternate"
 msgstr "Įtraukti kanalą(us), kaip atsarginį"
 
 #: ../plugin/controllers/i18n.py:412
-msgid "Add channel(s) to Bouquet"
+msgid "Add selection to Bouquet"
 msgstr "Įtraukti kanalą(us) į bukietą"
 
 #: ../plugin/plugin.py:160
