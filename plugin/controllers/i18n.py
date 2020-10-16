@@ -267,6 +267,7 @@ tstrings = {
 	'tv': _("TV"),
 	'tv_multi_epg': _("TV Multi EPG"),
 	'type': _("Type"),
+	'gui_theme_mode': _("Theme mode"),
 	'upcoming_events': _("Upcoming Events"),
 	'version': _("Version"),
 	'video': _("Video"),
