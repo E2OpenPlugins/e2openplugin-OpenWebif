@@ -1,6 +1,7 @@
 ## Version 1.4.0
 ## (in development)
 * support python 3
+* huge update for the responsive UI by wedebe
 
 ## Version 1.3.9
 * fix #1016,#1017
