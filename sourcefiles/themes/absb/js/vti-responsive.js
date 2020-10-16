@@ -1252,6 +1252,19 @@ function VTiWebConfig() {
 		var val = $(this).is(":checked") ? '1' : '0'
 		$.get('api/setvtiwebconfig?showpiconbackground=' + val);
 	});
+
+	$('#thememodebtn').change(function () {
+		var themeMode = $(this).is(":checked") ? $(this).val() : 'supabright';
+		$('body').removeClass(function (index, className) {
+			return (className.match(/(^|\s)themed--\S+/g) || []).join(' ');
+		});
+		if ($(this).is(":checked")) {
+			$('body').addClass('themed--' + themeMode);
+		} else {
+			$('body').addClass('themed--' + 'supabright');
+		}
+		$.get('api/setthememode?themeMode=' + themeMode);
+	});
 }
 
 //Skin tab content set height and show scroll

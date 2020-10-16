@@ -2237,15 +2237,15 @@
   font-weight: bold;
   text-align: center; }
 
-.right-sidebar #settings .setting-list {
+.right-sidebar .setting-list {
   list-style: none;
   padding-left: 0;
   margin-bottom: 20px; }
-  .right-sidebar #settings .setting-list li {
+  .right-sidebar .setting-list li {
     padding: 15px;
     position: relative;
     border-top: 1px solid #eee; }
-    .right-sidebar #settings .setting-list li .switch {
+    .right-sidebar .setting-list li .switch {
       position: absolute;
       top: 15px;
       right: 5px; }
@@ -8060,3 +8060,330 @@ html.ie11 .dropdown-menu ul.menu li a {
 html.ie11 .bs-searchbox .form-control {
   width: 90%; }
 
+body.themed--city-lights  {
+	color: #b2b2b2;
+	background-color: #313443;
+}
+
+.themed--city-lights section.content {
+	background-color: transparent;
+}
+
+.themed--city-lights .search-bar input[type=text] {
+  background-color: #282c37;
+}
+
+.themed--city-lights .card {
+	background: #282c37;
+	/* box-shadow: 0 2px 10px rgba(255,255,255,.2); */
+}
+
+.themed--city-lights .card .header {
+  color: inherit;
+  border-bottom-color: #343847;
+}
+
+.themed--city-lights .card .header h2 {
+	color: #f1f1f1;
+}
+
+.themed--city-lights .card .header .header-dropdown i {
+  color: #b2b2b2;
+}
+
+.themed--city-lights .card .header .header-dropdown i:hover {
+	color: #f1f1f1;
+}
+
+.themed--city-lights .card .body {
+	color: #b2b2b2;
+}
+
+.themed--city-lights .close {
+  color: #b2b2b2;
+}
+
+.themed--city-lights .close:focus, .close:hover {
+  color: #f1f1f1;
+}
+
+.themed--city-lights .table-striped>tbody>tr:nth-of-type(odd) {
+	background-color: #313443;
+}
+
+.themed--city-lights .table-striped>tbody>tr:hover {
+	background-color: #343847;
+}
+
+.themed--city-lights .table tbody tr td, .table tbody tr th {
+	border-top: 1px solid rgba(11,11,11,.1);
+  border-bottom: 1px solid rgba(11,11,11,.1);
+}
+
+.themed--city-lights #bqemain .selectable li {
+	color: #b2b2b2;
+  border-color: rgba(11,11,11,.1);
+  background: #282c37;
+}
+
+.themed--city-lights #bqemain .selectable .ui-selecting,
+.themed--city-lights bqemain .selectable li:hover {
+	background: #343847;
+	color: #f1f1f1;
+  font-weight: 400;
+}
+
+.themed--city-lights #bqemain .selectable .ui-selected {
+	background: #313443;
+	color: #f1f1f1;
+  font-weight: 700 !important;
+}
+
+.themed--city-lights .bqe__picon,
+.themed--city-lights .picon--with-background {
+	background-color: #313443 !important;
+	box-shadow: inset -20px 40px 60px #282c37 !important;
+}
+
+.themed--city-lights .sidebar {
+	background: #282c37;
+	/*box-shadow: 2px 2px 5px rgba(255,255,255,.1);*/
+}
+
+.themed--city-lights .sidebar .legal {
+	background-color: #313443 !important;
+  border-top-color: rgba(11,11,11,.1);
+}
+
+.themed--city-lights .theme-link-col-black {
+	color: #f1f1f1;
+}
+
+.themed--city-lights .sidebar .legal .copyright a,
+.themed--city-lights .theme-black .sidebar .legal .copyright a {
+  color: #b2b2b2 !important;
+}
+
+.themed--city-lights .sidebar .menu .list a {
+	color: #747474;
+}
+
+.themed--city-lights .sidebar .menu .list a:hover {
+  background-color: #343847;
+}
+
+.themed--city-lights .sidebar .menu .list a span {
+	color: #f1f1f1;
+	font-weight: normal;
+}
+
+.themed--city-lights .sidebar .menu .list .header,
+.themed--city-lights theme-black .sidebar .menu .list .header {
+  background: #313443;
+}
+
+.themed--city-lights .right-sidebar {
+  background: #282c37;
+}
+
+.themed--city-lights .modal-content {
+	background-color: #282c37;
+}
+
+.themed--city-lights .modal .modal-content .modal-body {
+	color: #777777;
+}
+
+.themed--city-lights .form-control {
+	color: #eee;
+	background-color: transparent;
+}
+
+.themed--city-lights .form-group .form-line:after {
+  border-bottom: 2px solid #f1f1f1; /* should be theme colour */
+}
+
+.themed--city-lights label {
+	font-weight: 400;
+	color: #f1f1f1;
+}
+
+[themed--city-lights type=checkbox]+label:before, [type=checkbox]:not(.filled-in)+label:after {
+	border: 2px solid #5a5a5a;
+	transition: none;
+  border-color: #b2b2b2;
+}
+
+[themed--city-lights type=checkbox]:checked.chk-col-black+label:before {
+	border-right: 2px solid #b2b2b2;
+	border-bottom: 2px solid #b2b2b2;
+}
+
+[themed--city-lights type=radio]:not(:checked)+label:before, [type=radio]:not(:checked)+label:after {
+  border-color: #b2b2b2;
+}
+
+.themed--city-lights .btn-default {
+  color: #b2b2b2;
+}
+
+.themed--city-lights .btn-default:hover {
+  color: #f1f1f1;
+}
+
+.themed--city-lights .btn-default, .btn-default:hover, .btn-default:active, .btn-default:focus {
+  background: transparent !important;
+}
+
+.themed--city-lights .btn-default.focus, .btn-default:focus {
+  color: #b2b2b2;
+}
+
+.themed--city-lights .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+  color: #f1f1f1;
+}
+
+.themed--city-lights .remote__group .material-icons {
+  color: #707070;
+}
+
+.themed--city-lights .remote__button {
+	box-shadow: 0 0px 3px rgba(255,255,255,.4);
+	background-color: #707070;
+}
+
+.themed--city-lights .remote__button .material-icons {
+  color: #f1f1f1;
+}
+
+.themed--city-lights .remote__button--arrow {
+	background-color: rgba(255,255,255,.12);
+}
+
+.themed--city-lights .progress {
+  background-color: rgba(11,11,11,.1);
+}
+
+.themed--city-lights .theme-black .nav>li>a {
+  color: #282c37;
+}
+
+.themed--city-lights .nav-tabs {
+  border-bottom: 2px solid #343847;
+}
+
+.themed--city-lights .nav-tabs>li>a {
+	color: #999999 !important;
+}
+
+.themed--city-lights .nav-tabs li.active a {
+	color: #f1f1f1 !important;
+}
+
+.themed--city-lights .demo-choose-skin li.active {
+  background-color: #313443;
+}
+
+.themed--city-lights .demo-choose-skin li:hover {
+  background-color: #343847;
+}
+
+.themed--city-lights .demo-choose-skin li {
+  border-bottom-color: rgba(11,11,11,.1);;
+}
+
+.themed--city-lights .nav-tabs>li>a {
+  color: #b2b2b2 !important;
+}
+
+.themed--city-lights .nav-tabs>li.active>a {
+	color: #f1f1f1;
+	background-color: #313443;
+}
+
+.themed--city-lights .nav-tabs>li>a:focus,
+.themed--city-lights .nav-tabs>li>a:hover,
+.themed--city-lights .nav-tabs>li.active>a:hover{
+  background-color: #343847 !important;
+}
+
+.themed--city-lights .nav-tabs li.active a {
+	color: #f1f1f1 !important;
+}
+
+.themed--city-lights .right-sidebar .nav-tabs {
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.themed--city-lights .right-sidebar .nav-tabs .active {
+  font-weight: 600;
+}
+
+.themed--city-lights .right-sidebar #settings .setting-list li {
+  border-top-color: rgba(11,11,11,.1);
+}
+
+.themed--city-lights .demo-choose-skin li {
+  border-top-color: rgba(11,11,11,.1);
+}
+
+.themed--city-lights .dropdown-menu {
+  background-color: #313443;
+}
+
+.themed--city-lights .dropdown-menu>li>a {
+  color: #b2b2b2;
+}
+
+.themed--city-lights .bootstrap-select .dropdown-menu li.selected a {
+	background-color: #282c37 !important;
+	color: #f1f1f1!important;
+}
+
+.themed--city-lights .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+	color: #b2b2b2;
+	background-color: #343847;
+}
+
+.themed--city-lights .noUi-background {
+  background-color: #b2b2b2;
+}
+
+.themed--city-lights .leftnav>li:nth-child(7n-4)>a .material-icons {
+  color: #f44236;
+}
+.themed--city-lights .leftnav>li:nth-child(7n-3)>a .material-icons {
+  color: #45289f;
+}
+.themed--city-lights .leftnav>li:nth-child(7n-2)>a .material-icons {
+  color: #ff6d00;
+}
+.themed--city-lights .leftnav>li:nth-child(7n-1)>a .material-icons {
+  color: #8cc24a;
+}
+.themed--city-lights .leftnav>li:nth-child(7n)>a .material-icons {
+  color: #00bcd5;
+}
+.themed--city-lights .leftnav>li:nth-child(7n-6)>a .material-icons {
+  color: #d81a60;
+}
+.themed--city-lights .leftnav>li:nth-child(7n-5)>a .material-icons {
+  color: #ffbe00;
+}
+
+.themed--city-lights .now-next__channel__actions button {
+  color: #f1f1f1;
+  border: 1px solid #b2b2b2;
+  background-color: #707070;
+  border-radius: 2px;
+}
+
+.theme-link-col-grey-darken-4 {
+  color: #f1f1f1;
+}
+
+.theme-link-col-grey-darken-4:focus,
+.theme-link-col-grey-darken-4:hover {
+  color: #b2b2b2;
+}

@@ -1,5 +1,5 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground
 #from json import dumps
 
 <!DOCTYPE html>
@@ -49,7 +49,7 @@
 	</style>
 </head>
 
-<body class="theme-$skinColor">
+<body class="themed--$themeMode theme-$skinColor"  data-thememode="$themeMode" data-skincolor="$skinColor">
 	<!-- Overlay For Sidebars -->
 	<div class="overlay"></div>
 	<div class="search-bar search-bar-epg">
@@ -444,6 +444,17 @@
 						</div>
 					</div>
 					<div role="tabpanel" class="tab-pane fade" id="skins">
+						<ul class="setting-list" style="margin-bottom: 0;">
+							<li>
+								<span>$tstrings['gui_theme_mode'] - City Lights</span>
+								<div class="switch">
+									<label>
+										<input type="checkbox" name="themeMode" value="city-lights" id="thememodebtn" checked="$(themeMode != 'supabright')">
+										<span class="lever switch-col-$skinColor vtiwebconfig"></span>
+									</label>
+								</div>
+							</li>
+						</ul>
 						<ul class="demo-choose-skin">
 							<li data-theme="black">
 								<div class="black"></div>

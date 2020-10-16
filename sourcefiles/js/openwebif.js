@@ -941,15 +941,25 @@ $(function() {
 	} else {
 		SetLSValue('epgsearchtype',false);
 	}
-	
-	$('input[name=epgsearchbouquetsonly]').click(function(evt) {
+
+	$('input[name=epgsearchbouquetsonly]').click(function (evt) {
 		$('input[name=epgsearchbouquetsonly]').prop('checked', evt.currentTarget.checked);
-		SetLSValue('epgsearchbouquetsonly',evt.currentTarget.checked);
+		SetLSValue('epgsearchbouquetsonly', evt.currentTarget.checked);
 	});
 	if (typeof $('input[name=epgsearchbouquetsonly]') !== 'undefined') {
-		$('input[name=epgsearchbouquetsonly]').prop('checked',GetLSValue('epgsearchbouquetsonly',false));
+		$('input[name=epgsearchbouquetsonly]').prop('checked', GetLSValue('epgsearchbouquetsonly', false));
 	} else {
-		SetLSValue('epgsearchbouquetsonly',false);
+		SetLSValue('epgsearchbouquetsonly', false);
+	}
+
+	$('input[name=themeMode]').click(function (evt) {
+		$('input[name=themeMode]').prop('checked', evt.currentTarget.checked);
+		SetLSValue('themeMode', evt.currentTarget.checked);
+	});
+	if (typeof $('input[name=themeMode]') !== 'undefined') {
+		$('input[name=themeMode]').prop('checked', GetLSValue('themeMode', false));
+	} else {
+		SetLSValue('themeMode', false);
 	}
 });
 
