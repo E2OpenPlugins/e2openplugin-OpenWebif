@@ -8120,20 +8120,20 @@ body.themed--city-lights  {
   border-bottom: 1px solid rgba(11,11,11,.1);
 }
 
-#themed--city-lights #bqemain .selectable li {
+.themed--city-lights #bqemain .selectable li {
 	color: #b2b2b2;
   border-color: rgba(11,11,11,.1);
   background: #282c37;
 }
 
-#themed--city-lights #bqemain .selectable .ui-selecting,
-#themed--city-lights bqemain .selectable li:hover {
+.themed--city-lights #bqemain .selectable .ui-selecting,
+.themed--city-lights bqemain .selectable li:hover {
 	background: #343847;
 	color: #f1f1f1;
   font-weight: 400;
 }
 
-#themed--city-lights #bqemain .selectable .ui-selected {
+.themed--city-lights #bqemain .selectable .ui-selected {
 	background: #313443;
 	color: #f1f1f1;
   font-weight: 700 !important;
