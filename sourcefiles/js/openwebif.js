@@ -1743,6 +1743,8 @@ function directlink()
 		case 'satfinder':
 		case 'boxinfo':
 		case 'webtv':
+		case 'about':
+		case 'screenshot':
 			lnk='ajax/' + p;
 			break;
 	}

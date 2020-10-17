@@ -8127,7 +8127,7 @@ body.themed--city-lights  {
 }
 
 .themed--city-lights #bqemain .selectable .ui-selecting,
-.themed--city-lights bqemain .selectable li:hover {
+.themed--city-lights #bqemain .selectable li:hover {
 	background: #343847;
 	color: #f1f1f1;
   font-weight: 400;
@@ -8311,11 +8311,6 @@ body.themed--city-lights  {
 	color: #f1f1f1 !important;
 }
 
-.themed--city-lights .right-sidebar .nav-tabs {
-  font-weight: normal;
-  text-transform: uppercase;
-}
-
 .themed--city-lights .right-sidebar .nav-tabs .active {
   font-weight: 600;
 }
@@ -8386,4 +8381,9 @@ body.themed--city-lights  {
 .theme-link-col-grey-darken-4:focus,
 .theme-link-col-grey-darken-4:hover {
   color: #b2b2b2;
+}
+
+.right-sidebar .nav-tabs {
+  font-weight: normal;
+  text-transform: uppercase;
 }

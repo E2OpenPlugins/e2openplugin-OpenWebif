@@ -108,7 +108,7 @@
 						<li class="dropdown" id="responsive_rec_info"></li>
 						<li class="dropdown" id="responsive_stream_info"></li>
 						<li class="dropdown"><a href='javascript:void(0);' data-toggle="modal" data-target="#SendMessageModal" title="$tstrings['sendamessage']"><i class="material-icons">message</i></a></li>
-						<li class="dropdown"><a href='#' onclick="load_maincontent('ajax/screenshot');return false;" title="$tstrings['grabscreenshot']"><i class="material-icons">photo_camera</i></a></li>
+						<li class="dropdown"><a href="#screenshot" title="$tstrings['grabscreenshot']"><i class="material-icons">photo_camera</i></a></li>
 						<!-- #END# Notifications -->
 						<li id="osd_power_status"></li>
 						<li class="dropdown"><a href='javascript:void(0);' data-toggle="modal" data-target="#PowerModal" title="$tstrings['powercontrol'].replace(' ','&nbsp;')"><i class="material-icons">settings_power</i></a></li>
@@ -199,7 +199,7 @@
 											<button type="button" onclick="pressMenuRemote('119');" title="Pause" class="remote__button icon"><i class="material-icons">pause</i></button>
 											<button type="button" onclick="pressMenuRemote('208');" title="FastForward" class="remote__button icon"><i class="material-icons">fast_forward</i></button>
 											<button type="button" onclick="pressMenuRemote('370');" title="Subtitle" class="remote__button icon"><i class="material-icons">subtitles</i></button>
-											<button type="button" onclick="pressMenuRemote('167');" title="Record" class="remote__button icon bg-white" style="color: #F44336;"><i class="material-icons">fiber_manual_record</i></button>
+											<button type="button" onclick="pressMenuRemote('167');" title="Record" class="remote__button icon bg-white"><i class="material-icons" style="color: #F44336;">fiber_manual_record</i></button>
 											<button type="button" onclick="pressMenuRemote('128');" title="Stop" class="remote__button icon"><i class="material-icons">stop</i></button>
 											<button type="button" onclick="pressMenuRemote('392');" title="Audio" class="remote__button icon"><i class="material-icons">audiotrack</i></button>
 										</section>
@@ -340,7 +340,7 @@
 				<!-- it is not allowed to remove this copyright and link when using the materialize (aka responsive) design for openwebif -->
 				<div class="legal" id="leftfooter">
 					<div class="copyright">
-						Materialize design - <b>Version: </b> 1.2.0</br>&copy; 2017 <a href="https://www.vuplus-support.org" target="_blank">VTi - vuplus-support.org</a>.
+						Materialize design - <b>Version: </b> 1.2.0</br>&copy; <a href="https://www.vuplus-support.org" target="_blank">VTi - vuplus-support.org</a>
 					</div>
 				</div>
 <!-- END COPYRIGHT -->
@@ -558,7 +558,21 @@
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="card">
 							<div class="body text-center">
-								<div id="footer"><a class="theme-link-color theme-link-col-$skinColor" href="https://github.com/E2OpenPlugins">E2OpenPlugins</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://www.opena.tv">openATV</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://www.vuplus-community.net">Black Hole</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://www.droidsat.org">OpenDroid</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://www.egami-image.com">EGAMI</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://www.hdfreaks.cc">OpenHDF</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://images.teamblue.tech">teamBlue</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://openpli.org">OpenPli</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://forum.sifteam.eu">Sif</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://openspa.info">OpenSpa</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://www.world-of-satellite.com">OpenViX</a> | <b><a class="theme-link-color theme-link-col-$skinColor" href="http://www.vuplus-support.org">VTi</a></b> | <a class="theme-link-color theme-link-col-$skinColor" href="#" onclick="load_maincontent('ajax/about'); return false">$tstrings['about']</a></div>
+								<div id="footer">
+									<a href="https://github.com/E2OpenPlugins" target="_blank" class="theme-link-color theme-link-col-$skinColor">E2OpenPlugins</a> | 
+									<a href="http://www.opena.tv" target="_blank" class="theme-link-color theme-link-col-$skinColor">openATV</a> | 
+									<a href="http://www.vuplus-community.net" target="_blank" class="theme-link-color theme-link-col-$skinColor">Black Hole</a> | 
+									<a href="http://www.droidsat.org" target="_blank" class="theme-link-color theme-link-col-$skinColor">OpenDroid</a> | 
+									<a href="http://www.egami-image.com" target="_blank" class="theme-link-color theme-link-col-$skinColor">EGAMI</a> | 
+									<a href="http://www.hdfreaks.cc" target="_blank" class="theme-link-color theme-link-col-$skinColor">OpenHDF</a> | 
+									<a href="http://images.teamblue.tech" target="_blank" class="theme-link-color theme-link-col-$skinColor">teamBlue</a> | 
+									<a href="http://openpli.org" target="_blank" class="theme-link-color theme-link-col-$skinColor">OpenPli</a> | 
+									<a href="http://forum.sifteam.eu" target="_blank" class="theme-link-color theme-link-col-$skinColor">Sif</a> | 
+									<a href="http://openspa.info" target="_blank" class="theme-link-color theme-link-col-$skinColor">OpenSpa</a> | 
+									<a href="http://www.world-of-satellite.com" target="_blank" class="theme-link-color theme-link-col-$skinColor">OpenViX</a> | 
+									<b><a href="http://www.vuplus-support.org" target="_blank" class="theme-link-color theme-link-col-$skinColor">VTi</a></b> | 
+									<a class="theme-link-color theme-link-col-$skinColor" href="#about">$tstrings['about']</a>
+								</div>
 							</div>
 						</div>
 					</div>

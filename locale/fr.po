@@ -62,7 +62,7 @@ msgid "Add Name to Tags"
 msgstr "Ajouter nom aux étiquettes"
 
 #: ../plugin/controllers/i18n.py:411
-msgid "Add Provider as new Bouquet"
+msgid "Create bouquet from selection"
 msgstr "Ajouter Provider comme un nouveau Bouquet"
 
 #: ../plugin/controllers/i18n.py:372
@@ -86,7 +86,7 @@ msgid "Add channel(s) as alternate"
 msgstr "Ajouter la/les chaîne(s) comme alternatif"
 
 #: ../plugin/controllers/i18n.py:412
-msgid "Add channel(s) to Bouquet"
+msgid "Add selection to bouquet"
 msgstr "Ajouter la/les chaîne(s) au Bouquet"
 
 #: ../plugin/plugin.py:160

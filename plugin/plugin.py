@@ -138,8 +138,8 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		if config.OpenWebif.enabled.value:
 			self.list.append(getConfigListEntry(_("Use new design"), config.OpenWebif.responsive_enabled))
 			if config.OpenWebif.responsive_enabled.value:
-				self.list.append(getConfigListEntry(_("Use custom Color"), config.OpenWebif.responsive_skinColor))
 				self.list.append(getConfigListEntry(_("Theme mode"), config.OpenWebif.responsive_themeMode))
+				self.list.append(getConfigListEntry(_("Use custom Color"), config.OpenWebif.responsive_skinColor))
 			self.list.append(getConfigListEntry(_("Show box name in header"), config.OpenWebif.identifier))
 			if config.OpenWebif.identifier.value:
 				self.list.append(getConfigListEntry(_("Use custom box name"), config.OpenWebif.identifier_custom))

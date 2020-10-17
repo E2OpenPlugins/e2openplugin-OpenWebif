@@ -51,7 +51,7 @@ msgstr "İşaretçi Ekle"
 msgid "Add Name to Tags"
 msgstr "Etiketlere Ad Ekle"
 
-msgid "Add Provider as new Bouquet"
+msgid "Create bouquet from selection"
 msgstr "Sağlayıcıyı yeni Buket olarak Ekle"
 
 msgid "Add Similar on Conflict"
@@ -69,7 +69,7 @@ msgstr "Yayın açma zamanlayıcısı Ekle"
 msgid "Add channel(s) as alternate"
 msgstr "Kanalları alternatif olarak ekle"
 
-msgid "Add channel(s) to Bouquet"
+msgid "Add selection to bouquet"
 msgstr "Bukete kanal ekle"
 
 msgid "Add service name to stream information"
