@@ -808,6 +808,10 @@ msgstr "Nie udało się uzyskać listy zmiennych dla nowo utworzonego bukietu!"
 msgid "Grab Screenshot"
 msgstr "Zrób zrzut ekranu"
 
+#: ../plugin/controllers/i18n.py:142
+msgid "Capture screenshot"
+msgstr "Zrób Zrzut Ekranu"
+
 #: ../plugin/controllers/i18n.py:143
 msgid "Gui version"
 msgstr "Wersja Gui"
