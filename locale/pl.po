@@ -64,7 +64,7 @@ msgstr "Dodaj Nazwę do Tagu"
 
 #: ../plugin/controllers/i18n.py:411
 msgid "Create bouquet from selection"
-msgstr "Dodaj Dostawcę jako nowy Bukiet"
+msgstr "Stwórz bukiet z selekcji"
 
 #: ../plugin/controllers/i18n.py:372
 msgid "Add Similar on Conflict"
@@ -88,7 +88,7 @@ msgstr "Dodaj kanały jako alternatywne"
 
 #: ../plugin/controllers/i18n.py:412
 msgid "Add selection to bouquet"
-msgstr "Dodaj kanały do Bukietu"
+msgstr "Dodaj wybór do bukietu"
 
 #: ../plugin/plugin.py:160
 msgid "Add service name to stream information"
@@ -808,6 +808,10 @@ msgstr "Nie udało się uzyskać listy zmiennych dla nowo utworzonego bukietu!"
 msgid "Grab Screenshot"
 msgstr "Zrób zrzut ekranu"
 
+#: ../plugin/controllers/i18n.py:142
+msgid "Capture screenshot"
+msgstr "Zrób Zrzut Ekranu"
+
 #: ../plugin/controllers/i18n.py:143
 msgid "Gui version"
 msgstr "Wersja Gui"
@@ -1383,7 +1387,7 @@ msgstr ""
 
 #: ../plugin/controllers/i18n.py:190
 msgid "Power Control"
-msgstr "Regulacja mocy"
+msgstr "Opcje Zasilania"
 
 #: ../plugin/controllers/models/timers.py:686
 msgid "PowerTimer feature not available"
@@ -1553,7 +1557,7 @@ msgstr "Zapisz"
 
 #: ../plugin/controllers/i18n.py:209
 msgid "Screenshot"
-msgstr ""
+msgstr "Zrzut ekranu"
 
 #: ../plugin/controllers/i18n.py:210 ../plugin/controllers/i18n.py:414
 msgid "Search"
