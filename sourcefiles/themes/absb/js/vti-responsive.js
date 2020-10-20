@@ -423,7 +423,7 @@ function setOSD( statusinfo )
 {
 	var sref = current_ref = statusinfo['currservice_serviceref'];
 	var station = current_name = statusinfo['currservice_station'];
-	var streamtitle = tstr_stream + ": " + station + "'><i class='material-icons'>tv</i></a>";
+	var streamtitle = tstr_stream + ": " + station + "'><i class='material-icons'>ondemand_video</i></a>";
 	var streamtitletrans = tstr_stream + " (" + tstr_transcoded + "): " + station + "'><i class='material-icons'>phone_android</i></a>";
 	var _beginend = statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'];
 	var responsive_osd_transcoding = '';
@@ -439,7 +439,7 @@ function setOSD( statusinfo )
 				streamtitle = tstr_stream + ": " + station + "'><i class='material-icons'>radio</i></a>";
 				responsive_osd_current = "<a href='#' onClick='load_maincontent(\"ajax/radio\");return false;'><b>" + station + "&nbsp;&nbsp;</b>" + _beginend + "</a>";
 			} else {
-				streamtitle = tstr_stream + ": " + station + "'><i class='material-icons'>tv</i></a>";
+				streamtitle = tstr_stream + ": " + station + "'><i class='material-icons'>ondemand_video</i></a>";
 				responsive_osd_current = "<a href='#' onClick='load_maincontent(\"ajax/tv\");return false;'><b>" + station + "&nbsp;&nbsp;</b>" + _beginend + "</a>";
 			}
 			responsive_osd_stream = "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "' title='" + streamtitle;
