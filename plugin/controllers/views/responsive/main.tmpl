@@ -2,34 +2,29 @@
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground
 #from json import dumps
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/openwebif-1.2.20.min.js"></script>
-	<script type="text/javascript" src="/js/chosen.1.8.2.min.js"></script>
-	<script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
 	<title>$boxname - OpenWebif</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="shortcut icon" href="images/favicon.png">
-	<link href="themes/absb/plugins/vti/vti-fonts.css" rel="stylesheet" type="text/css">
-	<link href="themes/absb/plugins/vti/vti-material-icons.css" rel="stylesheet" type="text/css">
-	<link href="themes/absb/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="themes/absb/plugins/node-waves/waves.min.css" rel="stylesheet" />
-	<link href="themes/absb/plugins/animate-css/animate.min.css" rel="stylesheet" />
-	<link href="themes/absb/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" />
-	<link href="themes/absb/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
-	<link rel="stylesheet" href="themes/absb/css/style-min.css">
-	<link rel="stylesheet" href="themes/absb/css/themes/all-themes-min.css">
-	<link rel="stylesheet" href="themes/absb/css/vti-bootstrap-chosen-min.css">
-	<link rel="stylesheet" href="themes/absb/css/vti-timepicker-min.css">
-	<link rel="stylesheet" href="themes/absb/css/vti-responsive-min.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/plugins/vti/vti-fonts.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/plugins/vti/vti-material-icons.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/plugins/node-waves/waves.min.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/plugins/animate-css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/plugins/bootstrap-select/css/bootstrap-select.min.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/plugins/sweetalert/sweetalert.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/css/style-min.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/css/themes/all-themes-min.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/css/vti-bootstrap-chosen-min.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/css/vti-timepicker-min.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/css/vti-responsive-min.css">
 
 	<style>
 		.remote__group { margin: 0 auto; display: flex; justify-content: center; max-width: 156px; flex-wrap: wrap; }
@@ -47,6 +42,12 @@
 		.remote__button i:hover { transform: scale(1.2); }
 		.remote__group .material-icons { color: #707070; }
 	</style>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/openwebif-1.2.20.min.js"></script>
+	<script src="/js/chosen.1.8.2.min.js"></script>
+	<script>initJsTranslation($dumps($tstrings))</script>
 </head>
 
 <body class="themed--$themeMode theme-$skinColor"  data-thememode="$themeMode" data-skincolor="$skinColor">
@@ -823,7 +824,7 @@
 	<input type="hidden" name="device">
 </form>
 
-<script type="text/javascript">
+<script>
 	\$(document).ready(function() {
 		\$("#remote_container").load("static/remotes/${remote}.html");
 		directlink();
@@ -844,9 +845,9 @@
 <script src="themes/absb/js/vti-bootstrap-date-timepicker.js"></script>
 <script src="themes/absb/js/admin.js"></script>
 <script src="themes/absb/js/vti-responsive.js"></script>
-<script type="text/javascript">initJsTranslationAddon($dumps($tstrings))</script>
+<script>initJsTranslationAddon($dumps($tstrings))</script>
 
-<script type="text/javascript">
+<script>
 	function locationHashChanged(e) { 
 		var hash = e.target.location.hash.replace('#', '').replace('&', '?');
 		hash && load_maincontent('ajax/' + hash);
