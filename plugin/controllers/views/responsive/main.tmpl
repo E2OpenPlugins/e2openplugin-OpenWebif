@@ -84,7 +84,7 @@
 	#end if
 	<span id="topmenuheader">
 		<nav class="navbar">
-			<div class="container-fluid">
+			<div class="container-fluid" ondblclick="owif.gui.fullscreen();">
 				<div class="navbar-header">
 					<a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
 					<a href="javascript:void(0);" class="bars" id="leftsidebarin"></a>
@@ -559,19 +559,19 @@
 						<div class="card">
 							<div class="body text-center">
 								<div id="footer">
-									<a href="https://github.com/E2OpenPlugins" target="_blank" class="theme-link-color theme-link-col-$skinColor">E2OpenPlugins</a> | 
-									<a href="http://www.opena.tv" target="_blank" class="theme-link-color theme-link-col-$skinColor">openATV</a> | 
-									<a href="http://www.vuplus-community.net" target="_blank" class="theme-link-color theme-link-col-$skinColor">Black Hole</a> | 
-									<a href="http://www.droidsat.org" target="_blank" class="theme-link-color theme-link-col-$skinColor">OpenDroid</a> | 
-									<a href="http://www.egami-image.com" target="_blank" class="theme-link-color theme-link-col-$skinColor">EGAMI</a> | 
-									<a href="http://www.hdfreaks.cc" target="_blank" class="theme-link-color theme-link-col-$skinColor">OpenHDF</a> | 
-									<a href="http://images.teamblue.tech" target="_blank" class="theme-link-color theme-link-col-$skinColor">teamBlue</a> | 
-									<a href="http://openpli.org" target="_blank" class="theme-link-color theme-link-col-$skinColor">OpenPli</a> | 
-									<a href="http://forum.sifteam.eu" target="_blank" class="theme-link-color theme-link-col-$skinColor">Sif</a> | 
-									<a href="http://openspa.info" target="_blank" class="theme-link-color theme-link-col-$skinColor">OpenSpa</a> | 
-									<a href="http://www.world-of-satellite.com" target="_blank" class="theme-link-color theme-link-col-$skinColor">OpenViX</a> | 
-									<b><a href="http://www.vuplus-support.org" target="_blank" class="theme-link-color theme-link-col-$skinColor">VTi</a></b> | 
-									<a class="theme-link-color theme-link-col-$skinColor" href="#about">$tstrings['about']</a>
+									<a href="https://github.com/E2OpenPlugins" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">E2OpenPlugins</a> | 
+									<a href="https://www.opena.tv" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">openATV</a> | 
+									<a href="https://www.vuplus-community.net" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">Black Hole</a> | 
+									<a href="http://www.droidsat.org" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">OpenDroid</a> | 
+									<a href="https://www.egami-image.com" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">EGAMI</a> | 
+									<a href="https://www.hdfreaks.cc" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">OpenHDF</a> | 
+									<a href="https://images.teamblue.tech" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">teamBlue</a> | 
+									<a href="https://openpli.org" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">OpenPli</a> | 
+									<a href="https://forum.sifteam.eu" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">Sif</a> | 
+									<a href="https://openspa.info" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">OpenSpa</a> | 
+									<a href="https://www.openvix.co.uk" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">OpenViX</a> | 
+									<b><a href="https://www.vuplus-support.org" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">VTi</a></b> | 
+									<a href="#about" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">$tstrings['about']</a>
 								</div>
 							</div>
 						</div>
@@ -839,6 +839,8 @@
 <script src="themes/absb/plugins/nouislider/nouislider.min.js"></script>
 <script src="themes/absb/plugins/sweetalert/sweetalert.min.js"></script>
 <script src="themes/absb/plugins/momentjs/moment.js"></script>
+<script src="themes/absb/plugins/screenfull.min.js"></script>
+<script src="/themes/absb/js/owif.min.js"></script>
 <script src="themes/absb/js/vti-bootstrap-date-timepicker.js"></script>
 <script src="themes/absb/js/admin.js"></script>
 <script src="themes/absb/js/vti-responsive.js"></script>
@@ -846,8 +848,7 @@
 
 <script type="text/javascript">
 	function locationHashChanged(e) { 
-		var hash = e.target.location.hash.replace('#', '');
-		console.log('ajax/' + hash);
+		var hash = e.target.location.hash.replace('#', '').replace('&', '?');
 		hash && load_maincontent('ajax/' + hash);
 	} 
 
