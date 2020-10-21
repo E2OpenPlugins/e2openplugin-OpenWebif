@@ -1,0 +1,29 @@
+{
+  "name": "openwebif-assets",
+  "version": "0.0.1",
+  "description": "Static assets for OpenWebif interface",
+  "main": "index.js",
+  "dependencies": {
+    "screenfull": "^5.0.2"
+  },
+  "devDependencies": {
+    "clean-css": "^4.2.3",
+    "clean-css-cli": "^4.3.0",
+    "commander": "^6.1.0",
+    "mkdirp": "^0.5.5"
+  },
+  "scripts": {
+    "resp-css": "node ./_utils/mincss.js -o '../plugin/public/' './themes/absb/css/**/*.css'",
+    "orig-css": "node ./_utils/mincss.js -o '../plugin/public/' './css/**/*.css'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/E2OpenPlugins/e2openplugin-OpenWebif.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/issues"
+  },
+  "homepage": "https://github.com/E2OpenPlugins/e2openplugin-OpenWebif#readme"
+}
