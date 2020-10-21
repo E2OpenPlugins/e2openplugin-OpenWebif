@@ -10850,6 +10850,7 @@
    vertical-align: middle;
    width: 100%;
    padding: 10px 13px;
+   transition: 0.2s;
  }
  
  .sidebar .menu .list a:hover,

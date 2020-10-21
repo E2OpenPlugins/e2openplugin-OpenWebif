@@ -55,19 +55,19 @@
 						<span>$event.date - $event.begin&nbsp;-&nbsp;$event.end&nbsp;($event.duration min.)</span>
 					</div>
 					<div class="col-xs-12 col-md-3 align-right">
-						<a class="theme-link-color theme-link-col-$skinColor" href="#" onclick="addTimerEvent('$sref',$event.id,false);return false;" title="$tstrings['add_timer']"><i class="material-icons material-icons-centered">alarm_add</i></a>
-						<a class="deltimer theme-link-color theme-link-col-$skinColor" href="#" onclick="delTimerEvent('$sref',$event.id);return false;" title="$tstrings['delete_timer']"></a>
-						<a href="#" class="theme-link-color theme-link-col-$skinColor" data-dismiss="modal" data-toggle="modal" data-target="#TimerModal" data-evid="$event.id" data-ref="$sref" title="$tstrings['edit_timer']"><i class="material-icons material-icons-centered">alarm</i></a>
-						<a href="#" class="theme-link-color theme-link-col-$skinColor" onclick="addTimerEvent('$sref',$event.id,true);return false;" title="$tstrings['add_zaptimer']"><i class="material-icons material-icons-centered">rotate_90_degrees_ccw</i></a>
+						<a class="theme-link-color" href="#" onclick="addTimerEvent('$sref',$event.id,false);return false;" title="$tstrings['add_timer']"><i class="material-icons material-icons-centered">alarm_add</i></a>
+						<a class="deltimer theme-link-color" href="#" onclick="delTimerEvent('$sref',$event.id);return false;" title="$tstrings['delete_timer']"></a>
+						<a href="#" class="theme-link-color" data-dismiss="modal" data-toggle="modal" data-target="#TimerModal" data-evid="$event.id" data-ref="$sref" title="$tstrings['edit_timer']"><i class="material-icons material-icons-centered">alarm</i></a>
+						<a href="#" class="theme-link-color" onclick="addTimerEvent('$sref',$event.id,true);return false;" title="$tstrings['add_zaptimer']"><i class="material-icons material-icons-centered">rotate_90_degrees_ccw</i></a>
 					#if $at
-						<a href="#" class="theme-link-color theme-link-col-$skinColor" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin','$event.end');return false;" title="$tstrings['add_autotimer']"><i class="material-icons material-icons-centered">history</i></a>
+						<a href="#" class="theme-link-color" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin','$event.end');return false;" title="$tstrings['add_autotimer']"><i class="material-icons material-icons-centered">history</i></a>
 					#end if
 					#if $moviedb == "Kinopoisk"
-						<a href="#" class="theme-link-color theme-link-col-$skinColor" target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)" title="$tstrings['search_kinopoisk']"></a>
+						<a href="#" class="theme-link-color" target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)" title="$tstrings['search_kinopoisk']"></a>
 					#elif $moviedb == "CSFD"
-						<a href="#" class="theme-link-color theme-link-col-$skinColor" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']"><b>IMDb</b></a>
+						<a href="#" class="theme-link-color" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']"><b>IMDb</b></a>
 					#else
-						<a href="#" class="theme-link-color theme-link-col-$skinColor" target="_blank" href="https://www.csfd.cz/hledat/?q=$event.title" title="$tstrings['search_imdb']"><b>csfd</b></a>
+						<a href="#" class="theme-link-color" target="_blank" href="https://www.csfd.cz/hledat/?q=$event.title" title="$tstrings['search_imdb']"><b>csfd</b></a>
 					#end if
 					</div>
 					<div class="col-xs-12 collapse" id="evenid$dataid">
@@ -104,19 +104,19 @@
 								<div class="col-xs-12 col-md-6" style="word-break: break-all">
 								<h2>$event.title</h2>
 								<div>
-								<a class="theme-link-color theme-link-col-$skinColor" href="#" onclick="addTimerEvent('$sref',$event.id,false);return false;" title="$tstrings['add_timer']"><i class="material-icons material-icons-centered">alarm_add</i></a>
-								<a class="deltimer theme-link-color theme-link-col-$skinColor" href="#" onclick="delTimerEvent('$sref',$event.id);return false;" title="$tstrings['delete_timer']"></a>
-								<a href="#" class="theme-link-color theme-link-col-$skinColor" data-dismiss="modal" data-toggle="modal" data-target="#TimerModal" data-evid="$event.id" data-ref="$sref" title="$tstrings['edit_timer']"><i class="material-icons material-icons-centered">alarm</i></a>
-								<a href="#" class="theme-link-color theme-link-col-$skinColor" onclick="addTimerEvent('$sref',$event.id,true);return false;" title="$tstrings['add_zaptimer']"><i class="material-icons material-icons-centered">rotate_90_degrees_ccw</i></a>
+								<a class="theme-link-color" href="#" onclick="addTimerEvent('$sref',$event.id,false);return false;" title="$tstrings['add_timer']"><i class="material-icons material-icons-centered">alarm_add</i></a>
+								<a class="deltimer theme-link-color" href="#" onclick="delTimerEvent('$sref',$event.id);return false;" title="$tstrings['delete_timer']"></a>
+								<a href="#" class="theme-link-color" data-dismiss="modal" data-toggle="modal" data-target="#TimerModal" data-evid="$event.id" data-ref="$sref" title="$tstrings['edit_timer']"><i class="material-icons material-icons-centered">alarm</i></a>
+								<a href="#" class="theme-link-color" onclick="addTimerEvent('$sref',$event.id,true);return false;" title="$tstrings['add_zaptimer']"><i class="material-icons material-icons-centered">rotate_90_degrees_ccw</i></a>
 							#if $at
-								<a href="#" class="theme-link-color theme-link-col-$skinColor" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin','$event.end');return false;" title="$tstrings['add_autotimer']"><i class="material-icons material-icons-centered">history</i></a>
+								<a href="#" class="theme-link-color" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin','$event.end');return false;" title="$tstrings['add_autotimer']"><i class="material-icons material-icons-centered">history</i></a>
 							#end if
 							#if $moviedb == "Kinopoisk"
-								<a href="#" class="theme-link-color theme-link-col-$skinColor" target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)" title="$tstrings['search_kinopoisk']"></a>
+								<a href="#" class="theme-link-color" target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)" title="$tstrings['search_kinopoisk']"></a>
 							#elif $moviedb == "CSFD"
-								<a href="#" class="theme-link-color theme-link-col-$skinColor" target="_blank" href="https://www.csfd.cz/hledat/?q=$event.title" title="$tstrings['search_csfd']"><b>csfd</b></a>
+								<a href="#" class="theme-link-color" target="_blank" href="https://www.csfd.cz/hledat/?q=$event.title" title="$tstrings['search_csfd']"><b>csfd</b></a>
 							#else
-								<a href="#" class="theme-link-color theme-link-col-$skinColor" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']"><b>IMDb</b></a>
+								<a href="#" class="theme-link-color" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']"><b>IMDb</b></a>
 							#end if
 							</div>
 						</div>
