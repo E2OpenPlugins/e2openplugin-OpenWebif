@@ -163,7 +163,7 @@
    border: 2px solid #5a5a5a;
    border-radius: 1px;
    margin-top: 2px;
-   transition: 0.2s;
+   transition: none;
  }
  
  [type='checkbox']:not(.filled-in) + label:after {

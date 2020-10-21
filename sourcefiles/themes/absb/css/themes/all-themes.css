@@ -1830,7 +1830,7 @@ body.themed--city-lights {
   transition: ease-out 0.4s;
 }
 
-.themed--city-lights .remote__button:active {
+.remote__button:active {
   background-color: #222;
 }
 
@@ -1919,7 +1919,7 @@ body.themed--city-lights {
 }
 
 .themed--city-lights .dropdown-menu > li > a:focus,
-.dropdown-menu > li > a:hover {
+.themed--city-lights .dropdown-menu > li > a:hover {
   color: #b2b2b2;
   background-color: #343847;
 }
