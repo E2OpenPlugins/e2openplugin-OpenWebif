@@ -2,34 +2,29 @@
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground
 #from json import dumps
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/openwebif-1.2.20.min.js"></script>
-	<script type="text/javascript" src="/js/chosen.1.8.2.min.js"></script>
-	<script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
 	<title>$boxname - OpenWebif</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="shortcut icon" href="images/favicon.png">
-	<link href="themes/absb/plugins/vti/vti-fonts.css" rel="stylesheet" type="text/css">
-	<link href="themes/absb/plugins/vti/vti-material-icons.css" rel="stylesheet" type="text/css">
-	<link href="themes/absb/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="themes/absb/plugins/node-waves/waves.min.css" rel="stylesheet" />
-	<link href="themes/absb/plugins/animate-css/animate.min.css" rel="stylesheet" />
-	<link href="themes/absb/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" />
-	<link href="themes/absb/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
-	<link href="themes/absb/css/style.css" rel="stylesheet">
-	<link href="themes/absb/css/themes/all-themes.css" rel="stylesheet" />
-	<link href="themes/absb/css/vti-bootstrap-chosen.css" rel="stylesheet">
-	<link href="themes/absb/css/vti-timepicker.css" rel="stylesheet">
-	<link href="themes/absb/css/vti-responsive.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="themes/absb/plugins/vti/vti-fonts.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/plugins/vti/vti-material-icons.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/plugins/node-waves/waves.min.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/plugins/animate-css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/plugins/bootstrap-select/css/bootstrap-select.min.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/plugins/sweetalert/sweetalert.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/css/style.min.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/css/themes/all-themes.min.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/css/vti-bootstrap-chosen.min.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/css/vti-timepicker.min.css">
+	<link rel="stylesheet" type="text/css" href="themes/absb/css/vti-responsive.min.css">
 
 	<style>
 		.remote__group { margin: 0 auto; display: flex; justify-content: center; max-width: 156px; flex-wrap: wrap; }
@@ -45,8 +40,14 @@
 		.remote__button--colour { background-color: #707070; }
 		.remote__button i:hover { transition: all 0.2s ease; }
 		.remote__button i:hover { transform: scale(1.2); }
-		.remote__group .material-icons { color: #707070; }
+		.remote__group .material-icons { color: #707070; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); }
 	</style>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/openwebif-1.2.20.min.js"></script>
+	<script src="/js/chosen.1.8.2.min.js"></script>
+	<script>initJsTranslation($dumps($tstrings))</script>
 </head>
 
 <body class="themed--$themeMode theme-$skinColor"  data-thememode="$themeMode" data-skincolor="$skinColor">
@@ -199,7 +200,7 @@
 											<button type="button" onclick="pressMenuRemote('119');" title="Pause" class="remote__button icon"><i class="material-icons">pause</i></button>
 											<button type="button" onclick="pressMenuRemote('208');" title="FastForward" class="remote__button icon"><i class="material-icons">fast_forward</i></button>
 											<button type="button" onclick="pressMenuRemote('370');" title="Subtitle" class="remote__button icon"><i class="material-icons">subtitles</i></button>
-											<button type="button" onclick="pressMenuRemote('167');" title="Record" class="remote__button icon bg-white"><i class="material-icons" style="color: #F44336;">fiber_manual_record</i></button>
+											<button type="button" onclick="pressMenuRemote('167');" title="Record" class="remote__button icon"><i class="material-icons" style="color: #F44336;">fiber_manual_record</i></button>
 											<button type="button" onclick="pressMenuRemote('128');" title="Stop" class="remote__button icon"><i class="material-icons">stop</i></button>
 											<button type="button" onclick="pressMenuRemote('392');" title="Audio" class="remote__button icon"><i class="material-icons">audiotrack</i></button>
 										</section>
@@ -695,7 +696,7 @@
 				<hr/>
 				<div class="row clearfix">
 					<div class="col-xs-12 align-center">
-						<button type="button" class="btn waves-effect responsivebtn responsivebtnpower bg-$skinColor" class="theme-link-color theme-link-col-$skinColor" data-dismiss="modal" href="#" onclick="handle_power_state_dialog(new_power_state = 0); return false">
+						<button type="button" class="btn waves-effect responsivebtn responsivebtnpower bg-$skinColor" class="theme-link-color" data-dismiss="modal" href="#" onclick="handle_power_state_dialog(new_power_state = 0); return false">
 							<h4>
 								<i class="material-icons">power_settings_new</i>
 								<span>$tstrings['standby_toggle']</span>
@@ -706,7 +707,7 @@
 				<hr/>
 				<div class="row clearfix">
 					<div class="col-xs-12 align-center">
-						<button type="button" class="btn waves-effect responsivebtn responsivebtnpower bg-$skinColor" class="theme-link-color theme-link-col-$skinColor" data-dismiss="modal" href="#" onclick="handle_power_state_dialog(new_power_state = 1); return false">
+						<button type="button" class="btn waves-effect responsivebtn responsivebtnpower bg-$skinColor" class="theme-link-color" data-dismiss="modal" href="#" onclick="handle_power_state_dialog(new_power_state = 1); return false">
 							<h4>
 								<i class="material-icons">vertical_align_bottom</i>
 								<span>$tstrings['deep_standby']</span>
@@ -728,7 +729,7 @@
 				<hr/>
 				<div class="row clearfix">
 					<div class="col-xs-12 align-center">
-						<button type="button" class="btn waves-effect responsivebtn responsivebtnpower bg-$skinColor" class="theme-link-color theme-link-col-$skinColor" data-dismiss="modal" href="#" onclick="handle_power_state_dialog(new_power_state = 3); return false">
+						<button type="button" class="btn waves-effect responsivebtn responsivebtnpower bg-$skinColor" class="theme-link-color" data-dismiss="modal" href="#" onclick="handle_power_state_dialog(new_power_state = 3); return false">
 							<h4>
 								<i class="material-icons">settings_backup_restore</i>
 								<span>$tstrings['restart_gui']</span>
@@ -823,7 +824,7 @@
 	<input type="hidden" name="device">
 </form>
 
-<script type="text/javascript">
+<script>
 	\$(document).ready(function() {
 		\$("#remote_container").load("static/remotes/${remote}.html");
 		directlink();
@@ -844,9 +845,9 @@
 <script src="themes/absb/js/vti-bootstrap-date-timepicker.js"></script>
 <script src="themes/absb/js/admin.js"></script>
 <script src="themes/absb/js/vti-responsive.js"></script>
-<script type="text/javascript">initJsTranslationAddon($dumps($tstrings))</script>
+<script>initJsTranslationAddon($dumps($tstrings))</script>
 
-<script type="text/javascript">
+<script>
 	function locationHashChanged(e) { 
 		var hash = e.target.location.hash.replace('#', '').replace('&', '?');
 		hash && load_maincontent('ajax/' + hash);

@@ -15,7 +15,7 @@ glob(srcFiles, (err, files) => {
     let outDirPath = path.resolve(outputDir, srcFile.dir);
 
     mkdirp(outDirPath, (error) => {
-      process.argv[3] = outDirPath + path.sep + `${srcFile.name}-min${srcFile.ext}`;
+      process.argv[3] = outDirPath + path.sep + `${srcFile.name}.min${srcFile.ext}`;
       process.argv[4] = file;
       cleanCssCli(process, function beforeMinify(cleanCss) {
         cleanCss.options.inline = ['none'];

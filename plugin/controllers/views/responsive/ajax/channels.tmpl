@@ -60,9 +60,9 @@
 			<td class="now-next__channel">
 				<h2 class="now-next__channel-name">
 			#if $isProtected
-					<span class="theme-link-color theme-link-col-$skinColor" title="$tstrings['locked']">$channel.name</span>
+					<span class="theme-link-color" title="$tstrings['locked']">$channel.name</span>
 			#else
-					<a href="javascript:zapChannel('$channel.ref', '$channelName');" class="theme-link-color theme-link-col-$skinColor" title="$tstrings['zap_to'] $channel.name">$channel.name</a>
+					<a href="javascript:zapChannel('$channel.ref', '$channelName');" class="theme-link-color" title="$tstrings['zap_to'] $channel.name">$channel.name</a>
 			#end if
 				</h2>
 				<div class="now-next__channel__actions">
@@ -98,7 +98,7 @@
 			<td>
 				<div>
 					<h2 class="now-next__title">
-						<a href="javascript:void(0);" onclick="loadeventepg('$channel.now_ev_id', '$channel.ref', '$channel.picon');" class="theme-link-color theme-link-col-$skinColor" data-ref="$channel.ref" data-id="$channel.now_ev_id" data-toggle="modal" data-target="#EventModal" title="$tstrings['more_details']">$channel.now_title</a>
+						<a href="javascript:void(0);" onclick="loadeventepg('$channel.now_ev_id', '$channel.ref', '$channel.picon');" class="theme-link-color" data-ref="$channel.ref" data-id="$channel.now_ev_id" data-toggle="modal" data-target="#EventModal" title="$tstrings['more_details']">$channel.now_title</a>
 						<span class="now-next__elapsed">(+$channel.now_left $tstrings['mins'])</span>
 					</h2>
 					<div class="now-next__time">
@@ -118,7 +118,7 @@
 			<td>
 				<div>
 					<h2 class="now-next__title">
-						<a href="javascript:void(0);" onclick="loadeventepg('$channel.next_ev_id', '$channel.ref', '$channel.picon');" class="theme-link-color theme-link-col-$skinColor" data-ref="$channel.ref" data-id="$channel.next_ev_id" data-toggle="modal" data-target="#EventModal" title="$tstrings['more_details']">$channel.next_title</a>
+						<a href="javascript:void(0);" onclick="loadeventepg('$channel.next_ev_id', '$channel.ref', '$channel.picon');" class="theme-link-color" data-ref="$channel.ref" data-id="$channel.next_ev_id" data-toggle="modal" data-target="#EventModal" title="$tstrings['more_details']">$channel.next_title</a>
 						<span class="now-next__elapsed">($channel.next_duration $tstrings['mins'])</span>
 					</h2>
 					<div class="now-next__time"><time>$channel.next_begin</time> &mdash; <time>$channel.next_end</time></div>

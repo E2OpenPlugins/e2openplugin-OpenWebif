@@ -72,14 +72,14 @@
 <div class="col-xs-12 col-md-3 align-right">
 #set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
 #set $tname=quote($timer.name)
-<a class="theme-link-color theme-link-col-$skinColor href="#edittimer" data-toggle="modal" data-target="#TimerModal" data-ref="$sref" data-begin="$timer.begin" data-end="$timer.end" title="$tstrings['edit_timer']"><i class="material-icons material-icons-mg-right">edit</i></a>
-<a class="theme-link-color theme-link-col-$skinColor href="#" onClick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end'); lastcontenturl=''; setTimeout(function(){load_maincontent('ajax/timers')}, 200); return false;"
+<a class="theme-link-color href="#edittimer" data-toggle="modal" data-target="#TimerModal" data-ref="$sref" data-begin="$timer.begin" data-end="$timer.end" title="$tstrings['edit_timer']"><i class="material-icons material-icons-mg-right">edit</i></a>
+<a class="theme-link-color href="#" onClick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end'); lastcontenturl=''; setTimeout(function(){load_maincontent('ajax/timers')}, 200); return false;"
 #if $timer.disabled
 	title="$tstrings['enable_timer']"><i class="material-icons material-icons-mg-right">alarm_on</i></a>
 #else
 	title="$tstrings['disable_timer']"><i class="material-icons material-icons-mg-right">alarm_off</i></a>
 #end if
-<a class="theme-link-color theme-link-col-$skinColor href="#" onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$tname'); lastcontenturl=''; setTimeout(function(){load_maincontent('ajax/timers')}, 200); return false;" title="$tstrings['delete_timer']" ><i class="material-icons material-icons-mg-right">delete</i></a></div></div>
+<a class="theme-link-color href="#" onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$tname'); lastcontenturl=''; setTimeout(function(){load_maincontent('ajax/timers')}, 200); return false;" title="$tstrings['delete_timer']" ><i class="material-icons material-icons-mg-right">delete</i></a></div></div>
 
 #else
 <div class="card">

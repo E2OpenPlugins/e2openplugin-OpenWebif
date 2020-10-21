@@ -71,6 +71,10 @@
   color: #f44336 !important;
 }
 
+.theme-red .theme-link-color {
+  color: #f44336;
+}
+
 .theme-pink .navbar {
   background-color: #e91e63;
 }
@@ -142,6 +146,10 @@
 
 .theme-pink .sidebar .legal .copyright a {
   color: #e91e63 !important;
+}
+
+.theme-pink .theme-link-color {
+  color: #e91e63;
 }
 
 .theme-purple .navbar {
@@ -290,6 +298,10 @@
   color: #673ab7 !important;
 }
 
+.theme-deep-purple .theme-link-color {
+  color: #673ab7;
+}
+
 .theme-indigo .navbar {
   background-color: #3f51b5;
 }
@@ -361,6 +373,10 @@
 
 .theme-indigo .sidebar .legal .copyright a {
   color: #3f51b5 !important;
+}
+
+.theme-indigo .theme-link-color {
+  color: #3f51b5;
 }
 
 .theme-blue .navbar {
@@ -436,6 +452,10 @@
   color: #2196f3 !important;
 }
 
+.theme-blue .theme-link-color {
+  color: #2196f3;
+}
+
 .theme-light-blue .navbar {
   background-color: #03a9f4;
 }
@@ -507,6 +527,10 @@
 
 .theme-light-blue .sidebar .legal .copyright a {
   color: #03a9f4 !important;
+}
+
+.theme-light-blue .theme-link-color {
+  color: #03a9f4;
 }
 
 .theme-cyan .navbar {
@@ -582,6 +606,10 @@
   color: #00bcd4 !important;
 }
 
+.theme-cyan .theme-link-color {
+  color: #00bcd4;
+}
+
 .theme-teal .navbar {
   background-color: #009688;
 }
@@ -653,6 +681,10 @@
 
 .theme-teal .sidebar .legal .copyright a {
   color: #009688 !important;
+}
+
+.theme-teal .theme-link-color {
+  color: #009688;
 }
 
 .theme-green .navbar {
@@ -728,6 +760,10 @@
   color: #4caf50 !important;
 }
 
+.theme-green .theme-link-color {
+  color: #4caf50;
+}
+
 .theme-light-green .navbar {
   background-color: #8bc34a;
 }
@@ -799,6 +835,10 @@
 
 .theme-light-green .sidebar .legal .copyright a {
   color: #8bc34a !important;
+}
+
+.theme-light-green .theme-link-color {
+  color: #8bc34a;
 }
 
 .theme-lime .navbar {
@@ -874,6 +914,11 @@
   color: #cddc39 !important;
 }
 
+.theme-lime .theme-link-color {
+  color: #cddc39;
+  text-decoration: none !important;
+}
+
 .theme-yellow .navbar {
   background-color: #ffeb3b;
 }
@@ -945,6 +990,10 @@
 
 .theme-yellow .sidebar .legal .copyright a {
   color: #ffeb3b !important;
+}
+
+.theme-yellow .theme-link-color {
+  color: #ffe821;
 }
 
 .theme-amber .navbar {
@@ -1020,6 +1069,10 @@
   color: #ffc107 !important;
 }
 
+.theme-amber .theme-link-color {
+  color: #ffc107;
+}
+
 .theme-orange .navbar {
   background-color: #ff9800;
 }
@@ -1091,6 +1144,10 @@
 
 .theme-orange .sidebar .legal .copyright a {
   color: #ff9800 !important;
+}
+
+.theme-orange .theme-link-color {
+  color: #ff9800;
 }
 
 .theme-deep-orange .navbar {
@@ -1166,6 +1223,10 @@
   color: #ff5722 !important;
 }
 
+.theme-deep-orange .theme-link-color {
+  color: #ff5722;
+}
+
 .theme-brown .navbar {
   background-color: #795548;
 }
@@ -1237,6 +1298,10 @@
 
 .theme-brown .sidebar .legal .copyright a {
   color: #795548 !important;
+}
+
+.theme-brown .theme-link-color {
+  color: #795548;
 }
 
 .theme-grey .navbar {
@@ -1312,6 +1377,10 @@
   color: #9e9e9e !important;
 }
 
+.theme-grey .theme-link-color {
+  color: #9e9e9e;
+}
+
 .theme-blue-grey .navbar {
   background-color: #607d8b;
 }
@@ -1383,6 +1452,10 @@
 
 .theme-blue-grey .sidebar .legal .copyright a {
   color: #607d8b !important;
+}
+
+.theme-blue-grey .theme-link-color {
+  color: #607d8b;
 }
 
 .theme-grey-darken-4 .navbar {
@@ -1458,6 +1531,15 @@
   color: #f1f1f1 !important;
 }
 
+.theme-grey-darken-4 .theme-link-color {
+  color: #f1f1f1;
+}
+
+.theme-link-col-grey-darken-4:focus,
+.theme-grey-darken-4:hover .theme-link-color {
+  color: #b2b2b2;
+}
+
 .theme-black .navbar {
   background-color: #000;
 }
@@ -1529,6 +1611,14 @@
 
 .theme-black .sidebar .legal .copyright a {
   color: #000 !important;
+}
+
+.theme-black .theme-link-color {
+  color: #000;
+}
+
+.theme-white .theme-link-color {
+  color: #fff;
 }
 
 body.themed--city-lights {
@@ -1737,6 +1827,11 @@ body.themed--city-lights {
 .themed--city-lights .remote__button {
   box-shadow: 0 0 3px rgba(255, 255, 255, 0.4);
   background-color: #707070;
+  transition: ease-out 0.4s;
+}
+
+.remote__button:active {
+  background-color: #222;
 }
 
 .themed--city-lights .remote__button .material-icons {
@@ -1824,7 +1919,7 @@ body.themed--city-lights {
 }
 
 .themed--city-lights .dropdown-menu > li > a:focus,
-.dropdown-menu > li > a:hover {
+.themed--city-lights .dropdown-menu > li > a:hover {
   color: #b2b2b2;
   background-color: #343847;
 }
