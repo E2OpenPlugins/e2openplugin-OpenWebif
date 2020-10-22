@@ -3390,96 +3390,9 @@
    position: relative;
    bottom: 7px;
    left: 5px;
+   user-select: none;
  }
- 
- .demo-choose-skin .red {
-   background-color: #f44336;
- }
- 
- .demo-choose-skin .pink {
-   background-color: #e91e63;
- }
- 
- .demo-choose-skin .purple {
-   background-color: #9c27b0;
- }
- 
- .demo-choose-skin .deep-purple {
-   background-color: #673ab7;
- }
- 
- .demo-choose-skin .indigo {
-   background-color: #3f51b5;
- }
- 
- .demo-choose-skin .blue {
-   background-color: #2196f3;
- }
- 
- .demo-choose-skin .light-blue {
-   background-color: #03a9f4;
- }
- 
- .demo-choose-skin .cyan {
-   background-color: #00bcd4;
- }
- 
- .demo-choose-skin .teal {
-   background-color: #009688;
- }
- 
- .demo-choose-skin .green {
-   background-color: #4caf50;
- }
- 
- .demo-choose-skin .light-green {
-   background-color: #8bc34a;
- }
- 
- .demo-choose-skin .lime {
-   background-color: #cddc39;
- }
- 
- .demo-choose-skin .yellow {
-   background-color: #ffe821;
- }
- 
- .demo-choose-skin .amber {
-   background-color: #ffc107;
- }
- 
- .demo-choose-skin .orange {
-   background-color: #ff9800;
- }
- 
- .demo-choose-skin .deep-orange {
-   background-color: #ff5722;
- }
- 
- .demo-choose-skin .brown {
-   background-color: #795548;
- }
- 
- .demo-choose-skin .grey {
-   background-color: #9e9e9e;
- }
- 
- .demo-choose-skin .blue-grey {
-   background-color: #607d8b;
- }
- 
- .demo-choose-skin .grey-darken-4 {
-   background-color: #212121;
- }
- 
- .demo-choose-skin .black {
-   background-color: #000;
- }
- 
- .demo-choose-skin .white {
-   background-color: #fff;
- }
- 
+
  /* Materialize Css | Taken from www.materializecss.com */
  /* Media ======================================= */
  @media (max-width: 767px) {
@@ -5921,7 +5834,7 @@
  .nav-tabs > li > a:hover,
  .nav-tabs > li > a:active,
  .nav-tabs > li > a:focus {
-   background-color: transparent !important;
+   background-color: #eee !important;
  }
  
  .nav-tabs > li > a:before {
@@ -10858,6 +10771,7 @@
  .sidebar .menu .list a:active,
  .sidebar .menu .list a:focus {
    text-decoration: none !important;
+   background-color: #eee;
  }
  
  .sidebar .menu .list a small {
