@@ -1,6 +1,6 @@
 //******************************************************************************
 //* bqe.js: openwebif Bouqueteditor plugin
-//* Version 2.7
+//* Version 2.9.1
 //******************************************************************************
 //* Copyright (C) 2014-2018 Joerg Bleyel
 //* Copyright (C) 2014-2018 E2OpenPlugins
@@ -16,6 +16,10 @@
 //* V 2.5 - prepare support spacers #239
 //* V 2.6 - improve spacers #239
 //* V 2.7 - improve channel numbers
+//* V 2.7.1 - added category icons, added channel picons
+//* V 2.8.1 - show ns text #840
+//* V 2.9.1 - fix ns text, show provider as tooltip #840
+//* V 2.9.2 - search by servicetype (sd/hd/uhd/radio/...) or orbital
 
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
@@ -169,6 +173,8 @@
 				self.cType = 0;
 				var ref = self.buildRefStr(2);
 				var stype = (self.Mode === 0) ? 'tv' : 'radio';
+				$('#searchch').val('');
+				$('#channels').addClass('loading');
 				$.ajax({
 					url: '/api/getsatellites',
 					dataType: 'json',
@@ -180,9 +186,10 @@
 						$.each( s, function ( key, val ) {
 							var sref = val['service'];
 							var name = val['name'];
+							name = '<span class="icon"><i class="material-icons material-icons-centered">bubble_chart</i></span>' + name;
 							options.push( $("<li/>", {
 								data: { sref: sref }
-							}).html('<span class="icon"><i class="material-icons material-icons-centered">bubble_chart</i></span>' + name));
+							}).html(name));
 						});
 						if (callback) {
 							callback(options);
@@ -197,26 +204,28 @@
 			getProviders: function (callback) {
 				self.cType = 1;
 				var ref = self.buildRefStr(1);
+				$('#searchch').val('');
+				$('#channels').addClass('loading');
 				$.ajax({
 					url: '/api/getservices',
 					dataType: 'json',
 					cache: true,
 					data: { sRef: ref, date: self.date },
-					success: function (data) {
+					success: function ( data ) {
 						var options = [];
 						var s = data['services'];
-						$.each(s, function (key, val) {
+						$.each( s, function ( key, val ) {
 							var sref = val['servicereference'];
 							var name = val['servicename'];
+							name = '<span class="icon"><i class="material-icons material-icons-centered">folder_open</i></span>' + name;
 							options.push( $('<li/>', {
-									data: { sref: sref },
-								}).html('<span class="icon"><i class="material-icons material-icons-centered">folder_open</i></span>' + name)
-						);
+								data: { sref: sref }
+							}).html(name) );
 						});
 						if (callback) {
 							callback(options);
 						}
-					},
+					}
 				});
 			},
 		
@@ -226,16 +235,18 @@
 			getChannels: function (callback) {
 				self.cType = 2;
 				var ref = self.buildRefStr(3);
+				$('#searchch').val('');
+				$('#channels').addClass('loading');
 				$.ajax({
-					url: '/api/getservices?picon=1&sRef=' + ref,
+					url: '/api/getservices?sRef=' + ref + "&provider=1", 
 					dataType: 'json',
 					cache: true,
-					data: { sRef: ref, date: self.date },
-					success: function (data) {
+					data: { date: self.date, picon: 1 },
+					success: function ( data ) {
 						self.allChannelsCache = data['services'];
 						self.filterChannelsCache = data['services'];
 						self.fillChannels(callback);
-					},
+					}
 				});
 			},
 			
@@ -245,13 +256,18 @@
 				$.each( self.filterChannelsCache, function ( key, val ) {
 					var sref = val['servicereference'];
 					var name = val['servicename'];
+					var prov = val['provider'];
 					var stype = sref.split(':')[2];
+					var ns = sref.split(':')[6];
+					var _ns = self.getNS(ns);
 					var picon = val['picon'];
-					var m = '<span class="bqe__picon"><img src="' + picon + '"></span>' + name + '<span class="pull-right">' + (self.sType[stype] || '') + '&nbsp;<span class="dd-icon-selected pull-left"><i class="material-icons material-icons-centered">done</i></span></span>';
+					name = '<span class="bqe__picon"><img src="' + picon + '"></span>' + name;
+					var m = '<span class="pull-right"><span title="' + prov + '">' + ' ' + (self.sType[stype] || '') + ' &bull; ' + _ns + '</span>&nbsp;<span class="dd-icon-selected pull-left"><i class="material-icons material-icons-centered">done</i></span></span>';
 					options.push( $('<li/>', {
 						data: { stype: stype, sref: sref }
-					}).html(m) );
+					}).html(name+m) );
 				});
+				$('#channels').removeClass('loading');
 				if (callback) {
 					callback(options);
 				}
@@ -263,25 +279,25 @@
 				self.bqStartPositions = {};
 				var ref = self.buildRefStr(0);
 				$.ajax({
-					url: '/bouqueteditor/api/getservices?picon=1',
+					url: '/bouqueteditor/api/getservices',
 					dataType: 'json',
 					cache: false,
 					data: { sRef: ref },
-					success: function (data) {
+					success: function ( data ) {
 						var options = [];
 						var s = data['services'];
-						$.each(s, function (key, val) {
+						$.each( s, function ( key, val ) {
+							self.bqStartPositions[val['servicereference']] = val['startpos'];
 							var sref = val['servicereference'];
 							var name = val['servicename'];
-							self.bqStartPositions[val['servicereference']] = val['startpos'];
 							options.push( $('<li/>', {
-								data: { sref: sref },
+								data: { sref: sref }
 							}).html('<span class="handle dd-icon"><i class="material-icons material-icons-centered">list</i>&nbsp;</span>' + name + '<span class="dd-icon-selected pull-right"><i class="material-icons material-icons-centered">done</i></span></li>') );
 						});
 						if (callback) {
 							callback(options);
 						}
-					},
+					}
 				});
 			},
 
@@ -290,16 +306,17 @@
 			// @param sref string selected provider reference string 
 			// @param callback function display services list
 			changeProvider: function (sref, callback) {
+				$('#channels').addClass('loading');
 				$.ajax({
-					url: '/api/getservices?picon=1',
+					url: '/api/getservices', 
 					dataType: 'json',
 					cache: true,
-					data: { sRef: sref, date: self.date },
-					success: function (data) {
+					data: { sRef: sref, date: self.date, provider:"1", picon: 1},
+					success: function ( data ) {
 						self.allChannelsCache = data['services'];
 						self.filterChannelsCache = data['services'];
 						self.fillChannels(callback);
-					},
+					}
 				});
 			},
 
@@ -308,27 +325,28 @@
 			// @param bref string selected bouquet reference string 
 			// @param callback function display services list
 			changeBouquet: function (bref, callback) {
+				$('#channels').addClass('loading');
 				var spos=0;
 				if(self.bqStartPositions[bref])
 					spos = self.bqStartPositions[bref];
 				$.ajax({
-					url: '/bouqueteditor/api/getservices?picon=1', 
+					url: '/bouqueteditor/api/getservices', 
 					dataType: 'json',
 					cache: false,
-					data: { sRef: bref },
+					data: { sRef: bref, picon: 1 },
 					success: function ( data ) {
 						var options = [];
 						var s = data['services'];
 						$.each( s, function ( key, val ) {
 							var sref = val['servicereference'];
 							var m = (val['ismarker'] == 1) ? '<span style="float:right">(M)</span>' : '';
-							var name = val['servicename'];
+							var name=val['servicename'];
 							var pos = spos + val['pos'];
 							var picon = val['picon'];
-							if (val['ismarker'] == 2)
-								m = '<span style="float:right">(S)</span>';
+							if(val['ismarker'] == 2)
+								m= '<span style="float:right">(S)</span>';
 							name = pos.toString() + ' - ' + name;
-							if (name != '')
+							if(name!='')
 								options.push( $('<li/>', {
 									data: { 
 										ismarker: val['ismarker'],
@@ -604,6 +622,7 @@
 								success: function (){} 
 							}));
 						});
+
 						if (reqjobs.length !== 0) {
 							$.when.apply($, reqjobs).then(function () {
 								self.changeBouquet(bref, self.showBouquetChannels);
@@ -717,11 +736,21 @@
 				self.filterChannelsCache = [];
 				$.each( self.allChannelsCache, function ( key, val ) {
 					var name = val['servicename'];
-					if (name.toLowerCase().indexOf(t) !== -1)
+					var sref = val['servicereference'];
+					var stype = sref.split(':')[2];
+					var prov = val['provider'];
+					console.log(self.sType[stype].indexOf(t));
+					if (name.toLowerCase().indexOf(t) >= 0 
+							|| prov.toLowerCase().indexOf(t) >= 0 
+							|| self.sType[stype].toLowerCase().indexOf(t) >= 0
+						) {
 						self.filterChannelsCache.push({
 							servicename: val['servicename'],
-							servicereference:val['servicereference']
+							servicereference:val['servicereference'],
+							provider:val['provider'],
+							picon: val['picon'],
 						});
+					}
 				});
 				
 				self.fillChannels(self.showChannels);
@@ -819,7 +848,7 @@
 					e.preventDefault();
 					try {
 						e.unbind();
-					} catch(e){}
+					} catch(ex){}
 				});
 				$('form#uploadrestore').submit();
 			},
@@ -849,7 +878,7 @@
 				self = this;
 				self.Mode = 0;
 				self.cType = 1;
-				self.sType = { '1': '[SD]', '16': '[SD4]', '19': '[HD]', '1F': '[UHD]', 'D3': '[OPT]' };
+				self.sType = { '1': 'SD', '2': 'Radio', '16': 'SD4', '19': 'HD', '1F': 'UHD', 'D3': 'OPT' };
 				self.hovercls = getHoverCls();
 				self.activecls = getActiveCls();
 
@@ -886,8 +915,8 @@
 
 				// Setup selection callback function for left pane channels list
 				$('#channels').selectable({
-					stop: self.setChannelButtons
-					,classes: {
+					stop: self.setChannelButtons,
+					classes: {
 						"ui-selected": self.activecls 
 					}
 				});
@@ -950,7 +979,7 @@
 				$('#toolbar-bouquets-import').click(self.importBouquets);
 
 				// Setup callback function for search box
-				$('#searchch').keyup(function (){
+				$('#searchch').keyup(function () {
 					if ($(this).data('val') !== this.value) {
 						self.searchChannel(this.value);
 					}
@@ -967,8 +996,28 @@
 				$(obj + ' li').hover(
 					function(){ $(this).addClass(self.hovercls); },
 					function(){ $(this).removeClass(self.hovercls); }
-				)
+				);
+			},getNS : function(ns)
+			{
+				var _ns = ns.toLowerCase();
+				if (_ns.startsWith("ffff",0))
+				{
+					return "DVB-C";
+				}
+				if (_ns.startsWith("eeee",0))
+				{
+					return "DVB-T";
+				}
+				var __ns = parseInt(_ns,16) >> 16 & 0xFFF;
+				var d = " E";
+				if(__ns > 1800)
+				{
+					d = " W";
+					__ns = 3600 - __ns;
+				}
+				return (__ns/10).toFixed(1).toString() + d;
 			}
+			
 		 };
 	};
 

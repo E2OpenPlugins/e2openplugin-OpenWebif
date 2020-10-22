@@ -134,9 +134,6 @@
    opacity: 0;
  }
  
- [type='checkbox'] {
- }
- 
  [type='checkbox'] + label {
    position: relative;
    padding-left: 35px;
@@ -449,6 +446,7 @@
    z-index: 12;
    width: 100%;
    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+   user-select: none;
  }
  
  .navbar .navbar-brand {
