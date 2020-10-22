@@ -12,7 +12,7 @@
 			<div class="header-dropdown m-r--5">
 				<ul>
 					<li><a href="/js/sigfinder" target="sigfinder" title="Enhanced version (beta)"><i class="material-icons">timeline</i></a></li>
-					<li><a href="javascript:void(0);" onClick="toggleLeftSideBar(); return false;"><i class="material-icons" id="togglefullscreen">fullscreen</i></a></li>
+					<li><a href="javascript:void(0);" onclick="toggleLeftSideBar(); return false;"><i class="material-icons" id="togglefullscreen">fullscreen</i></a></li>
 				</ul>
 			</div>
 		</div>
@@ -70,12 +70,12 @@
 <script>
 	function getFrontendStatus() {
 		jQuery.getJSON('/api/signal')
-		.success(function(statusinfo) {
-			 jQuery('#snrslider').css('width', statusinfo['snr']+'%').html(statusinfo['snr']+'%');
-			 jQuery('#agcslider').css('width', statusinfo['agc']+'%').html(statusinfo['agc']+'%');
-			 jQuery('#berslider').css('width', '100%').html(statusinfo['ber']);
-			 setTimeout("getFrontendStatus()", 1000);
-		});
+			.success(function(statusinfo) {
+				jQuery('#snrslider').css('width', statusinfo['snr']+'%').html(statusinfo['snr']+'%');
+				jQuery('#agcslider').css('width', statusinfo['agc']+'%').html(statusinfo['agc']+'%');
+				jQuery('#berslider').css('width', '100%').html(statusinfo['ber']);
+				setTimeout("getFrontendStatus()", 1000);
+			});
 		return true;
 	}
 	getFrontendStatus();

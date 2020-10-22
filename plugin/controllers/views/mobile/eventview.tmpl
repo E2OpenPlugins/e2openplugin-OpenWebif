@@ -3,7 +3,7 @@
 <body>
 	<div data-role="page">
 		<div id="header">
-		<div class="button" onClick="history.back()">$tstrings['back']</div>
+		<div class="button" onclick="history.back()">$tstrings['back']</div>
 		<h1><a style="color:#FFF;text-decoration:none;" href='/mobile'>OpenWebif</a></h1>
 		#set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
 		<div class="button" style="right:5px;left:auto;" onclick="addTimerEvent('$sref',$event.id);return false;">$tstrings['add_timer']</div>
@@ -31,7 +31,7 @@
 								<td colspan="2">$event['longdesc']</td>
 							</tr>
 				</table>
-				<button onClick="location='/mobile/timerlist'">$tstrings['timer_list']</button>
+				<button onclick="location='/mobile/timerlist'">$tstrings['timer_list']</button>
 		</div>
 		<div id="footer">
 		<p>OpenWebif Mobile</p>

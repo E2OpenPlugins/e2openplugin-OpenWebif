@@ -8,7 +8,7 @@
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 
 <style>
-#station { cursor:pointer;overflow:hidden;}
+	#station { cursor:pointer;overflow:hidden;}
 </style>
 
 <div class="row clearfix">
@@ -69,14 +69,15 @@
 </div>
 
 <script>
-var theevent = $dumps($event);
-if (picons[theevent['channel']])
-	\$('#station').html('<img src="'+picons[theevent['channel']]+'" width="80" />');
-if (typeof channelpicon !== 'undefined') {
-	\$('#station').html('<img src="'+ channelpicon + '" width="80" />');
-} else if (typeof picons !== 'undefined') {
-	if (picons[theevent['channel']]) {
-		\$('#station').html('<img src="'+picons[theevent['channel']]+'" width="80" />');
+	var theevent = $dumps($event);
+
+	if (picons[theevent['channel']])
+		jQuery('#station').html('<img src="' + picons[theevent['channel']] + '" width="80">');
+	if (typeof channelpicon !== 'undefined') {
+		jQuery('#station').html('<img src="'+ channelpicon + '" width="80">');
+	} else if (typeof picons !== 'undefined') {
+		if (picons[theevent['channel']]) {
+			jQuery('#station').html('<img src="' + picons[theevent['channel']] + '" width="80">');
+		}
 	}
-}
 </script>

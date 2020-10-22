@@ -2,19 +2,19 @@
 <body>
 	<div data-role="page">
 		<div id="header">
-			<div class="button" onClick="history.back()">$tstrings['back']</div>
+			<div class="button" onclick="history.back()">$tstrings['back']</div>
 			<h1><a style="color:#FFF;text-decoration:none;" href='/mobile'>OpenWebif</a></h1>
 		</div>
 		<div>
 			<fieldset data-type="horizontal" data-role="controlgroup" style="width: 275px; margin: auto; margin-top: 15px;">
-				<div onClick="jQuery('#screenshot').attr('src','/grab?r=275&mode=all#' + new Date().getTime()); return false;"><input type="radio" id="radio-view-a" name="radio-view"><label for="radio-view-a" data-theme="c">$tstrings['all']</label></div>
-				<div onClick="jQuery('#screenshot').attr('src','/grab?r=275&mode=video#' + new Date().getTime()); return false;"><input type="radio" id="radio-view-b" name="radio-view"><label for="radio-view-b" data-theme="c">$tstrings['video']</label></div>
-				<div onClick="jQuery('#screenshot').attr('src','/grab?r=275&mode=osd#' + new Date().getTime()); return false;"><input type="radio" id="radio-view-c" name="radio-view"><label for="radio-view-c" data-theme="c">$tstrings['osd']</label></div>
+				<div onclick="jQuery('#screenshot').attr('src','/grab?r=275&mode=all#' + new Date().getTime()); return false;"><input type="radio" id="radio-view-a" name="radio-view"><label for="radio-view-a" data-theme="c">$tstrings['all']</label></div>
+				<div onclick="jQuery('#screenshot').attr('src','/grab?r=275&mode=video#' + new Date().getTime()); return false;"><input type="radio" id="radio-view-b" name="radio-view"><label for="radio-view-b" data-theme="c">$tstrings['video']</label></div>
+				<div onclick="jQuery('#screenshot').attr('src','/grab?r=275&mode=osd#' + new Date().getTime()); return false;"><input type="radio" id="radio-view-c" name="radio-view"><label for="radio-view-c" data-theme="c">$tstrings['osd']</label></div>
 			</fieldset>
 			<div id="mainContent">
 				<img id="screenshot" src="/grab?r=275&mode=all" width="275" height="154" alt="$tstrings['screenshot']">
 			</div>
-			<a href="#" onClick="location.reload(true)" data-role="button">$tstrings['refresh']</a>
+			<a href="#" onclick="location.reload(true)" data-role="button">$tstrings['refresh']</a>
 			<div id="footer">
 				<p>OpenWebif Mobile</p>
 				<a onclick="document.location.href='/index?mode=fullpage';return false;" href="#">$tstrings['show_full_openwebif']</a>

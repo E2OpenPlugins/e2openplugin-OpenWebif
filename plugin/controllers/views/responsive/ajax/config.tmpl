@@ -2,6 +2,7 @@
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 
 #def select($config)
+
 <div class="row clearfix">
 	<div class="col-xs-5 align-right">
 	<label>$config.description</label>
@@ -90,10 +91,8 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-#raw
-$("#configtitle").html($('#thistitleconfig').html());
-$.AdminBSB.input.activate();
-$.AdminBSB.select.activate();
-#end raw
+<script>
+	jQuery("#configtitle").html(jQuery('#thistitleconfig').html());
+	jQuery.AdminBSB.input.activate();
+	jQuery.AdminBSB.select.activate();
 </script>
