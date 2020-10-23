@@ -1,13 +1,15 @@
 #from six.moves.urllib.parse import quote
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+
 #set $i=0
+
 <ul class="nav nav-tabs tab-col-$skinColor" >
 #for $satellite in $satellites
 		#if $i == 0
-	<li><a data-toggle="tab" href='#tab' onclick="load_subcontent('ajax/channels?id=$quote($satellite.service)&stype=$stype'); return false;" >$satellite.name</a></li>
+	<li><a href="#tab" data-toggle="tab" onclick="load_subcontent('ajax/channels?id=$quote($satellite.service)&stype=$stype'); return false;">$satellite.name</a></li>
 		#else
-			<li><a href='#tab' data-toggle="tab" onclick="load_subcontent('ajax/channels?id=$quote($satellite.service)&stype=$stype'); return false;" >$satellite.name</a></li>
+			<li><a href="#tab" data-toggle="tab" onclick="load_subcontent('ajax/channels?id=$quote($satellite.service)&stype=$stype'); return false;">$satellite.name</a></li>
 		#end if
 		#set $i = $i + 1
 #end for

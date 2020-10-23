@@ -3,10 +3,10 @@
 <body>
 	<div data-role="page">
 		<div id="header">
-			<div class="button" onClick="history.back()">$tstrings['back']</div>
+			<div class="button" onclick="history.back()">$tstrings['back']</div>
 			<h1><a style="color:#FFF;text-decoration:none;" href='/mobile'>OpenWebif</a></h1>
 			#set $link=quote($channelinfo.sref, safe=' ~@#$&()*!+=:;,.?/\'')
-			<div class="button" style="right:5px;left:auto;" onClick="zapChannel('$link');return false;">$tstrings['zap']</div>
+			<div class="button" style="right:5px;left:auto;" onclick="zapChannel('$link');return false;">$tstrings['zap']</div>
 		</div>
 		<div id="mainContent" class="ui-corner-all">
 			<table width="100%" border="0" cellspacing="1" cellpadding="5">

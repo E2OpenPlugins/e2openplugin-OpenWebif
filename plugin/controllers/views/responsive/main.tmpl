@@ -680,7 +680,7 @@
 				</div>
 			<div class="modal-footer">
 				<button type="button" class="btn waves-effect btn-default" data-dismiss="modal">$tstrings['close']</button>
-				<button type="button" class="btn waves-effect responsivebtn bg-$skinColor" data-dismiss="modal" onClick="btn_saveTimer(); return false;">$tstrings['save']</button>
+				<button type="button" class="btn waves-effect responsivebtn bg-$skinColor" data-dismiss="modal" onclick="btn_saveTimer(); return false;">$tstrings['save']</button>
 			</div>
 		</div>
 	</div>
@@ -739,7 +739,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default waves-effect" data-dismiss="modal" onClick="closeMessageModal(); return false;">$tstrings['close']</button>
+				<button type="button" class="btn btn-default waves-effect" data-dismiss="modal" onclick="closeMessageModal(); return false;">$tstrings['close']</button>
 			</div>
 		</div>
 	</div>
@@ -748,7 +748,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" onClick="closeMessageModal(); return false;" data-dismiss="modal">&times;</button>
+				<button type="button" class="close" onclick="closeMessageModal(); return false;" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -806,8 +806,8 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default waves-effect" data-dismiss="modal" onClick="closeMessageModal(); return false;">$tstrings['close']</button>
-				<button type="button" class="btn waves-effect responsivebtn bg-$skinColor"  onClick="sendModalMessage(); return false;">$tstrings['sendamessage'].replace(" ","&nbsp;")</button>
+				<button type="button" class="btn btn-default waves-effect" data-dismiss="modal" onclick="closeMessageModal(); return false;">$tstrings['close']</button>
+				<button type="button" class="btn waves-effect responsivebtn bg-$skinColor"  onclick="sendModalMessage(); return false;">$tstrings['sendamessage'].replace(" ","&nbsp;")</button>
 			</div>
 		</div>
 	</div>

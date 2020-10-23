@@ -164,9 +164,9 @@
 				<table id="configuration">
 				<tr><td>$tstrings['bookmark']</td><td>&nbsp;</td></tr>
 				#for $location in $locations
-					<tr><td>$location</td><td><a href='#' onClick="deleteBookmark('$location'); return false;" title=""><div><i class="fa fa-trash-o"></i></div></a></td></tr>
+					<tr><td>$location</td><td><a href='#' onclick="deleteBookmark('$location'); return false;" title=""><div><i class="fa fa-trash-o"></i></div></a></td></tr>
 				#end for
-				<tr><td><input type="text" id="addbookmarktext" value=""></td><td><a href='#' onClick="addBookmark(); return false;" title=""><div><i class="fa fa-plus"></i></div></a></td></tr>
+				<tr><td><input type="text" id="addbookmarktext" value=""></td><td><a href='#' onclick="addBookmark(); return false;" title=""><div><i class="fa fa-plus"></i></div></a></td></tr>
 				</table>
 			</div>
 		</div>
