@@ -23,8 +23,8 @@
   "scripts": {
     "resp-css": "node ./_utils/mincss.js -o '../plugin/public/' './themes/absb/css/**/*.css'",
     "orig-css": "node ./_utils/mincss.js -o '../plugin/public/' './css/**/*.css'",
-    "resp-js": "babel ./themes/absb/js/**/*.js --out-dir ./tmp/ --presets=@babel/env && glob-uglifyjs",
-    "test": "echo 'Error: no test specified' && exit 1"
+    "resp-js": "babel ./themes/absb/js/**/*.js --out-dir ./tmp/ --presets=@babel/env; glob-uglifyjs",
+    "test": "echo 'Error: no test specified!' && exit 1"
   },
   "repository": {
     "type": "git",

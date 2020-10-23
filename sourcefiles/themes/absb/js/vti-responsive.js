@@ -473,7 +473,7 @@ function loadeventepg(id, ref, picon) {
 	if (typeof picon !== 'undefined') {
 		channelpicon = picon;
 	} else {
-		delete channelpicon;
+		channelpicon = null;
 	}
 	var url = 'ajax/event?idev=' + id + '&sRef=' + escape(ref);
 	$("#eventdescriptionII").load(url);
