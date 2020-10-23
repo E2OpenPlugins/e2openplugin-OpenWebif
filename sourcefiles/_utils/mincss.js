@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const glob = require('glob');
 const path = require('path');
 const mkdirp = require('mkdirp');

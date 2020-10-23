@@ -1,0 +1,11 @@
+{
+    "pattern": "**/*.js",
+    "options": {
+        "UseMinExt": true,
+        "MinifyOptions": {},
+        "OutDir": "../plugin/public/themes/absb/js/",
+        "RootDir": "./tmp",
+        "RemoveSource": true,
+        "Debug": false
+    }
+}
