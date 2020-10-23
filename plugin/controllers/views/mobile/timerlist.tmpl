@@ -5,7 +5,7 @@
 	#import datetime
 	<div data-role="page">
 		<div id="header">
-			<div class="button" onClick="history.back()">$tstrings['back']</div>
+			<div class="button" onclick="history.back()">$tstrings['back']</div>
 			<!-- <div class="button-bold">+</div> -->
 			<h1><a style="color:#FFF;text-decoration:none;" href='/mobile'>OpenWebif</a></h1>
 		</div>
@@ -40,12 +40,12 @@
 							<p><strong>$timer.servicename - $starttime - $endtime ($duration min)</strong></p>
 							<p>$timer.description</p>
 						</a>
-						<a href="#" onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$name');" aria-expanded="false" class="ui-btn ui-btn-icon-notext ui-icon-delete ui-btn-a" title="delete"></a>
+						<a href="#" onclick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$name');" aria-expanded="false" class="ui-btn ui-btn-icon-notext ui-icon-delete ui-btn-a" title="delete"></a>
 					</li>
 				#end for
 				</ul>
 			</div>
-			<button onClick="document.location.reload(true)">$tstrings['refresh']</button>
+			<button onclick="document.location.reload(true)">$tstrings['refresh']</button>
 		</div>
 		<div id="footer">
 			<p>OpenWebif Mobile</p>

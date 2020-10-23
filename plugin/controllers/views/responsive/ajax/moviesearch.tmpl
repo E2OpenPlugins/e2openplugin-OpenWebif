@@ -65,7 +65,7 @@
 	</div>
 	<div class="col-xs-12 col-md-3 align-right">
 	
-		<a class="theme-link-color" href='#' onClick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><i class="material-icons material-icons-centered">play_circle_outline</i></a>
+		<a class="theme-link-color" href='#' onclick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><i class="material-icons material-icons-centered">play_circle_outline</i></a>
 		#if $transcoding
 		<a class="theme-link-color" href="#" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream']: $movie.eventname"><i class="material-icons material-icons-centered">tv</i></a>
 		<a class="theme-link-color" href="#" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] ($tstrings['transcoded']): $movie.eventname"><i class="material-icons material-icons-centered">phone_android</i></a>
@@ -75,8 +75,8 @@
 		
 		#set $eventname_escaped =  $movie.eventname.replace("'", r"\'")
 		<a class="theme-link-color" href='/file?action=download&file=$quote($movie.filename)' title="$tstrings['download'] $movie.eventname"><i class="material-icons material-icons-centered">cloud_download</i></a>
-		<a class="theme-link-color" href='#' onClick="renameMovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['rename_recording']"><i class="material-icons material-icons-centered">edit</i></a>
-		<a class="theme-link-color" href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><i class="material-icons material-icons-centered">delete</i></a>
+		<a class="theme-link-color" href='#' onclick="renameMovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['rename_recording']"><i class="material-icons material-icons-centered">edit</i></a>
+		<a class="theme-link-color" href='#' onclick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><i class="material-icons material-icons-centered">delete</i></a>
 	</div>
 	<div class="col-xs-12 collapse" id="eventid$count">
 	<p>$movie.descriptionExtended</p>
@@ -159,7 +159,7 @@
 	</div>
 	<div class="col-xs-4">
 	<ul class="header-dropdown m-r--5">
-		<li><span role="button"><a href='#' onClick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><i class="material-icons material-icons-centered">play_circle_outline</i></a></span></li>
+		<li><span role="button"><a href='#' onclick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><i class="material-icons material-icons-centered">play_circle_outline</i></a></span></li>
 		#if $transcoding
 		<li><span role="button"><a href="#" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream']: $movie.eventname"><i class="material-icons material-icons-centered">tv</i></a></span></li>
 		<li><span role="button"><a href="#" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] ($tstrings['transcoded']): $movie.eventname"><i class="material-icons material-icons-centered">phone_android</i></a></span></li>
@@ -169,8 +169,8 @@
 
 		#set $eventname_escaped =  $movie.eventname.replace("'", r"\'")
 		<li><span role="button"><a href='/file?action=download&file=$quote($movie.filename)' title="$tstrings['download'] $movie.eventname"><i class="material-icons material-icons-centered">cloud_download</i></a></span></li>
-		<li><span role="button"><a href='#' onClick="renameMovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['rename_recording']"><i class="material-icons material-icons-centered">edit</i></a></span></li>
-		<li><span role="button"><a href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><i class="material-icons material-icons-centered">delete</i></a></span></li>
+		<li><span role="button"><a href='#' onclick="renameMovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['rename_recording']"><i class="material-icons material-icons-centered">edit</i></a></span></li>
+		<li><span role="button"><a href='#' onclick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><i class="material-icons material-icons-centered">delete</i></a></span></li>
 	</ul>
 	</div></div>
 <div class="row clearfix" style="margin-bottom:-25px;">
@@ -218,8 +218,9 @@
 </div></div></div>
 
 #end if
-<script type="text/javascript">
-	\$( function() {
+
+<script>
+	jQuery(function() {
 		MLHelper.Load('$sort');
-		});
+	});
 </script>

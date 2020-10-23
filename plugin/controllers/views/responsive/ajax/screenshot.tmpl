@@ -1,6 +1,7 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 #from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo, getPipStatus
+
 <div id="responsivespinnerscreenshot"></div>
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -53,27 +54,28 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-var lcd = "$getInfo['lcd']";
-var pip = "$getPipStatus()";
-#raw
-$(function() {SSHelper.setup()});
+<script>
+	var lcd = "$getInfo['lcd']";
+	var pip = "$getPipStatus()";
 
-function buttonsSwitcher(pipval){
-	if(parseInt(lcd)){
-		$("#screenshotbutton4, label[for=screenshotbutton4]").show();
-	}else{
-		$("#screenshotbutton4, label[for=screenshotbutton4]").hide();
-	}
-	if(parseInt(pipval)){
-		$("#screenshotbutton3, label[for=screenshotbutton3]").show();
-	}else{
-		$("#screenshotbutton3, label[for=screenshotbutton3]").hide();
-	}
-}
+	jQuery(function() {
+		SSHelper.setup();
+	});
 
-$(document).ready(function(){
-	buttonsSwitcher(pip);
-});
-#end raw
+	function buttonsSwitcher(pipval) {
+		if (parseInt(lcd)) {
+			jQuery("#screenshotbutton4, label[for=screenshotbutton4]").show();
+		} else {
+			jQuery("#screenshotbutton4, label[for=screenshotbutton4]").hide();
+		}
+		if (parseInt(pipval)) {
+			jQuery("#screenshotbutton3, label[for=screenshotbutton3]").show();
+		} else {
+			jQuery("#screenshotbutton3, label[for=screenshotbutton3]").hide();
+		}
+	}
+
+	jQuery(document).ready(function(){
+		buttonsSwitcher(pip);
+	});
 </script>

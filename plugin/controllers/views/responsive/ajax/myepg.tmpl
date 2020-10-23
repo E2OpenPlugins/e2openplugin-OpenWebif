@@ -1,4 +1,5 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
+
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	<div class="card"  id="epgcard">
 		<div class="header">
@@ -8,7 +9,7 @@
 				</div>
 			</div>
 			<ul class="header-dropdown m-r--5" id="epgcardheaderII">
-			<li><a href="javascript:void(0);" onClick="toggleLeftSideBar(); return false;"><i class="material-icons" id="togglefullscreen">fullscreen</i></a></li>
+			<li><a href="javascript:void(0);" onclick="toggleLeftSideBar(); return false;"><i class="material-icons" id="togglefullscreen">fullscreen</i></a></li>
 				<li class="dropdown">
 				<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 					<ul class="dropdown-menu pull-right">
@@ -23,9 +24,12 @@
 		</div>
 	</div>
 </div>
+
 <script>
-\$("#epgcard").height((\$("#leftsidemenu").height() - 30) + "px");
-</script>
-<script type="text/javascript">
-\$(function() { load_tvcontent_spin('ajax/multiepg?epgmode=tv'); return false;});
+	jQuery("#epgcard").height((jQuery("#leftsidemenu").height() - 30) + "px");
+
+	jQuery(function() {
+		load_tvcontent_spin('ajax/multiepg?epgmode=tv');
+		return false;
+	});
 </script>

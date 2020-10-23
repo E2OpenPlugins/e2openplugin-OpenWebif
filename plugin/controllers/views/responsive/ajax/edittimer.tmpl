@@ -1,4 +1,5 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
+
 <form>
 <div class="form-group">
 	<div class="row clearfix">
@@ -154,56 +155,52 @@
 </div>
 </form>
 
-<script type="text/javascript">
+<script>
+	initTimerEditBegin();
 
-#raw
+	jQuery('.cbtvr').click(function() {
+		jQuery('input[name="' + this.name + '"]').not(this).prop('checked', false);
+		initTimerBQ(jQuery('#cbradio').is(':checked'));
+	});
 
-initTimerEditBegin();
+	jQuery('#vpsplugin_enabled').click(function() {
+		checkVPS();
+	});
 
-$('.cbtvr').click(function() {
-	$('input[name="' + this.name + '"]').not(this).prop('checked', false);
-	initTimerBQ($('#cbradio').is(':checked'));
-});
+	jQuery('#always_zap').click(function() {
+		jQuery('#justplay').prop("disabled", jQuery('#always_zap').is(':checked'));
+	});
 
-$('#vpsplugin_enabled').click(function() { checkVPS();});
-
-$('#always_zap').click(function() {
-	$('#justplay').prop("disabled",$('#always_zap').is(':checked'));
-});
-
-$('#timerend').datetimepicker({
-	format: "dd.mm.yy hh:ii",
-	autoclose: true,
-	todayHighlight: true,
-	todayBtn: 'linked',
-	minuteStep: 2,
-	language: 'de',
-});
+	jQuery('#timerend').datetimepicker({
+		format: "dd.mm.yy hh:ii",
+		autoclose: true,
+		todayHighlight: true,
+		todayBtn: 'linked',
+		minuteStep: 2,
+		language: 'de',
+	});
 
 
-$(function() {
-	autosize($('textarea.auto-growth'));
-	$("#bouquet_select").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "100%"});
+	jQuery(function() {
+		autosize(jQuery('textarea.auto-growth'));
+		jQuery("#bouquet_select").chosen({disable_search_threshold: 10,no_results_text: "Oops, nothing found!",width: "100%"});
 
-	$(".chosen-container .chosen-drop").addClass('ui-widget-content');
-	if (theme == 'eggplant' || theme == 'vader')
-	{
-		$(".chosen-container .chosen-drop").css('background-image','none');
-	}
-});
+		jQuery(".chosen-container .chosen-drop").addClass('ui-widget-content');
+		if (theme == 'eggplant' || theme == 'vader') {
+			jQuery(".chosen-container .chosen-drop").css('background-image','none');
+		}
+	});
 
-$('#editTimerForm').dialog({
-	autoOpen: false,
-	modal: true,
-	close: function() {
-		return;
-	}
-});
+	jQuery('#editTimerForm').dialog({
+		autoOpen: false,
+		modal: true,
+		close: function() {
+			return;
+		}
+	});
 
-checkVPS();
+	checkVPS();
 
-$.AdminBSB.input.activate();
-$.AdminBSB.select.activate();
-
-#end raw
+	jQuery.AdminBSB.input.activate();
+	jQuery.AdminBSB.select.activate();
 </script>

@@ -194,13 +194,12 @@
 
 <script src="/themes/absb/js/vti-responsive-epgr.js"></script>
 <script src="/themes/absb/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
-<script type="text/javascript">
-#raw
-$.AdminBSB.input.activate();
-$.AdminBSB.select.activate();
-var $VTiMaskedInput = $('.vti-masked-input');
-$VTiMaskedInput.find('.time24').inputmask('hh:mm', { placeholder: '__:__ _m', alias: 'time24', hourFormat: '24' });
-$(':text').blur();
-#end raw
+<script>
+	jQuery.AdminBSB.input.activate();
+	jQuery.AdminBSB.select.activate();
+	var VTiMaskedInput = jQuery('.vti-masked-input');
+	VTiMaskedInput.find('.time24').inputmask('hh:mm', { placeholder: '__:__ _m', alias: 'time24', hourFormat: '24' });
+	jQuery(':text').blur();
 </script>
+
 #end filter
