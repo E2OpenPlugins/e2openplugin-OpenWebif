@@ -32,20 +32,18 @@
 		<div id='sub_content_container'></div>
 	</div>
 </div>
-<script type="text/javascript">
-var firstBq = document.getElementById("firstBq");
-firstBq.click();
-#raw
-$.AdminBSB.select.activate();
-$(function () {
-	$('#bqselector').change(function() {
-		load_subcontent($(this).val())
-	});
-});
-function pl(bq,bn) {
-var plf = GetLSValue('pl','m3u');
-window.open('web/services.'+ plf +'?bRef=' + bq + '&bName='+ bn,'_blank');
-}
-#end raw
 
+<script>
+	var firstBq = document.getElementById("firstBq");
+	firstBq.click();
+	jQuery.AdminBSB.select.activate();
+	jQuery(function() {
+		jQuery('#bqselector').change(function() {
+			load_subcontent(jQuery(this).val());
+		});
+	});
+	function pl(bq,bn) {
+		var plf = GetLSValue('pl','m3u');
+		window.open('web/services.' + plf + '?bRef=' + bq + '&bName=' + bn, '_blank');
+	}
 </script>

@@ -325,7 +325,6 @@
 			// @param bref string selected bouquet reference string 
 			// @param callback function display services list
 			changeBouquet: function (bref, callback) {
-				$('#channels').addClass('loading');
 				var spos=0;
 				if(self.bqStartPositions[bref])
 					spos = self.bqStartPositions[bref];

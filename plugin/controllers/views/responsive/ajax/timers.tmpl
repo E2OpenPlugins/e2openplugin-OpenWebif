@@ -162,12 +162,11 @@
 </div>
 
 <script>
-#raw
 	var reloadTimers = true;
-	$(function() {
-		if(!timeredit_initialized)
-			$('#editTimerForm').load('ajax/edittimer');
+	jQuery(function() {
+		if (!timeredit_initialized) {
+			jQuery('#editTimerForm').load('ajax/edittimer');
+		}
 	});
-#end raw
 </script>
 #end filter

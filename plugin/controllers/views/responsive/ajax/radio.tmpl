@@ -1,4 +1,5 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
+
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	<div class="card">
 		<div class="header">
@@ -28,9 +29,12 @@
 					<div id="tvcontent"></div>
 				</div>
 			</div>
-			<script type="text/javascript">
-				\$(function() { InitBouquets(false);});
-			</script>
 		</div>
 	</div>
 </div>
+
+<script>
+	jQuery(function() {
+		InitBouquets(false);
+	});
+</script>

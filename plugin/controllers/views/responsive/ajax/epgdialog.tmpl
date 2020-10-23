@@ -151,23 +151,22 @@
 	#set $dataid=$dataid+1
 	#end for
 
-<script type="text/javascript">
-var t = [
+<script>
+	var t = [
 #for $timer in $timers
-	{'begin':$timer.begin,'end':$timer.end,'sref':'$timer.serviceref'},
+		{'begin':$timer.begin,'end':$timer.end,'sref':'$timer.serviceref'},
 #end for
-];
-#raw
-var reloadTimers = true;
-$(function() {
-	$('#editTimerForm').load('ajax/edittimer');
-	if (t.length > 0) {
-		var x = $( ".ETV tbody" );
-		if (x != undefined)
-			ShowTimers(t);
-	}
-});
-#end raw
+	];
+
+	var reloadTimers = true;
+	jQuery(function() {
+		jQuery('#editTimerForm').load('ajax/edittimer');
+		if (t.length > 0) {
+			var x = jQuery( ".ETV tbody" );
+			if (x != undefined)
+				ShowTimers(t);
+		}
+	});
 </script>
 
 #end if
