@@ -3,9 +3,7 @@
   "version": "0.0.1",
   "description": "Static assets for OpenWebif interface",
   "main": "index.js",
-  "dependencies": {
-    "screenfull": "^5.0.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
@@ -23,7 +21,7 @@
   "scripts": {
     "resp-css": "node ./_utils/mincss.js -o '../plugin/public/' './themes/absb/css/**/*.css'",
     "orig-css": "node ./_utils/mincss.js -o '../plugin/public/' './css/**/*.css'",
-    "resp-js": "babel ./themes/absb/js/**/*.js --out-dir ./tmp/ --presets=@babel/env; glob-uglifyjs",
+    "resp-js": "glob-uglifyjs",
     "test": "echo 'Error: no test specified!' && exit 1"
   },
   "repository": {

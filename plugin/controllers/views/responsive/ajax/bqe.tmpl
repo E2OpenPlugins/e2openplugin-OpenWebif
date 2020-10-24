@@ -19,7 +19,7 @@
 	.bqe__picon { display: inline-block; width: 42px; text-align: center; margin-right: 1rem; }
 	.bqe__picon.picon--with-background { background-color: #bababa; box-shadow: inset -8px 16px 26px #fff; }
 	.bqe__picon img { max-width: 100%; }
-	.bqe__button { margin: 0 0.5em; }
+	.bqe__button { margin: 0 0.4ex; }
 	img[src*="default_picon"] { filter: grayscale(1) opacity(0.2); }
 </style>
 
@@ -45,7 +45,7 @@
 					<h2><i class="material-icons material-icons-centered">view_list</i>$tstrings['Bouquet_Editor']</h2>
 				</div>
 			</div>
-			<ul class="header-dropdown m-r--5">
+			<ul class="header-dropdown">
 				<li>
 				<li class="dropdown"><a href="javascript:void(0);" id="toolbar-bouquets-reload" title="$tstrings['bqe_reload']"><i class="material-icons">autorenew</i></a>
 				<li><a href="javascript:void(0);" onclick="toggleLeftSideBar(); return false;" class="m-l-5"><i class="material-icons" id="togglefullscreen">fullscreen</i></a></li>
@@ -70,7 +70,7 @@
 			</div>
 			<div class="row clearfix">
 				<section class="col-xs-12 col-md-6">
-					<header>$tstrings['satellites']/$tstrings['providers']</header>
+					<header>$tstrings['satellites']/$tstrings['providers'] <span id="count-sat-prov"></span></header>
 					<div class="bqe__list row clearfix">
 						<div class="col-xs-12 p-r-5">
 							<ol id="provider" class="selectable"></ol>
@@ -85,12 +85,12 @@
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 m-t-10 align-right">
-							<button class="bqe__button waves-effect" id="btn-provider-add">$tstrings['bqe_add_provider_as_bouquet']</button>
+							<button class="bqe__button btn btn-themed waves-effect" id="btn-provider-add">$tstrings['bqe_add_provider_as_bouquet']</button>
 						</div>
 					</div>
 				</section>
 				<section class="col-xs-12 col-md-6">
-					<header>$tstrings['channels']</header>
+					<header>$tstrings['channels'] <span id="count-sat-prov-channels"></span></header>
 					<div class="bqe__list row clearfix">
 						<div class="col-xs-12 p-r-5">
 							<ol id="channels" class="selectable"></ol>
@@ -98,17 +98,15 @@
 					</div>
 					<div class="row clearfix align-center">
 						<div class="col-xs-12 m-t-10 align-right">
-							<div class="btn-group" role="group">
-								<button class="bqe__button waves-effect" id="btn-channel-add">$tstrings['bqe_add_channel']</button>
-								<!-- button class="bqe__button waves-effect" id="btn-alternative-add">$tstrings['bqe_add_alternative']</button -->
-							</div>
+							<button class="bqe__button btn btn-themed waves-effect" id="btn-channel-add">$tstrings['bqe_add_channel']</button>
+							<!-- button class="bqe__button btn btn-themed waves-effect" id="btn-alternative-add">$tstrings['bqe_add_alternative']</button -->
 						</div>
 					</div>
 				</section>
 			</div>
 			<div class="row clearfix">
 				<section class="col-xs-12 col-md-6">
-					<header>$tstrings['bouquets']</header>
+					<header>$tstrings['bouquets'] <span id="count-bouquets"></span></header>
 					<div class="bqe__list row clearfix">
 						<div class="col-xs-12 p-r-5">
 							<ol id="bql" class="selectable"></ol>
@@ -116,16 +114,14 @@
 					</div>
 					<div class="row clearfix align-center">
 						<div class="col-xs-12 m-t-10">
-							<div class="btn-group" role="group">
-								<button class="bqe__button waves-effect" id="btn-bouquet-add">$tstrings['bqe_add_bq']</button>
-								<button class="bqe__button waves-effect" id="btn-bouquet-rename">$tstrings['bqe_rename_bq']</button>
-								<button class="bqe__button waves-effect" id="btn-bouquet-delete">$tstrings['bqe_delete_bq']</button>
-							</div>
+								<button class="bqe__button btn btn-themed waves-effect" id="btn-bouquet-add">$tstrings['bqe_add_bq']</button>
+								<button class="bqe__button btn btn-themed waves-effect" id="btn-bouquet-rename">$tstrings['bqe_rename_bq']</button>
+								<button class="bqe__button btn btn-themed waves-effect" id="btn-bouquet-delete">$tstrings['bqe_delete_bq']</button>
 						</div>
 					</div>
 				</section>
 				<section class="col-xs-12 col-md-6">
-					<header>$tstrings['channels']</header>
+					<header>$tstrings['channels'] <span id="count-bouquet-channels"></span></header>
 					<div class="bqe__list row clearfix">
 						<div class="col-xs-12 p-r-5">
 							<ol id="bqs" class="selectable"></ol>
@@ -133,12 +129,10 @@
 					</div>
 					<div class="row clearfix align-center">
 						<div class="col-xs-12 m-t-10">
-							<div class="btn-group" role="group">
-								<button class="bqe__button waves-effect" id="btn-channel-delete">$tstrings['delete']</button>
-								<button class="bqe__button waves-effect" id="btn-marker-add">$tstrings['bqe_add_marker']</button>
-								<!-- <button class="bqe__button waves-effect" id="btn-spacer-add">$tstrings['bqe_add_spacer']</button> -->
-								<button class="bqe__button waves-effect" id="btn-marker-group-rename">$tstrings['bqe_rename']</button>
-							</div>
+								<button class="bqe__button btn btn-themed waves-effect" id="btn-channel-delete">$tstrings['delete']</button>
+								<button class="bqe__button btn btn-themed waves-effect" id="btn-marker-add">$tstrings['bqe_add_marker']</button>
+								<!-- <button class="bqe__button btn btn-themed waves-effect" id="btn-spacer-add">$tstrings['bqe_add_spacer']</button> -->
+								<button class="bqe__button btn btn-themed waves-effect" id="btn-marker-group-rename">$tstrings['bqe_rename']</button>
 						</div>
 					</div>
 				</section>

@@ -98,7 +98,7 @@
 						<li class="osd-toggle" id="responsive_osd_stream"></li>
 						<li class="osd-toggle" id="responsive_osd_transcoding"></li>
 						<li class="osd-toggle" id="responsive_mute_status"></li>
-						<li class="osd-toggle" id="responsive_vol_slider"><a href="#"><div id="volslider" style="width:100px;margin-top:2px;"></div></a></li>
+						<li class="osd-toggle" id="responsive_vol_slider"><a href="javascript:void(0);"><div id="volslider" style="width:100px;margin-top:2px;"></div></a></li>
 						<li class="osd-toggle" id="responsive_vol_value"><a><div class="dropdown-toggle" id="volumevalue"><b><span class="curvolume"></span></b></div></a></li>
 						<!-- Call Search -->
 						<li><a href="javascript:void(0);" class="js-search-epg" data-close="true" title="$tstrings['epgsearch']" ><i class="material-icons">search</i></a></li>
@@ -331,6 +331,7 @@
 									#end if
 								#end if
 							#end for
+								<li><a href="#current">Channel Info</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -680,7 +681,7 @@
 				</div>
 			<div class="modal-footer">
 				<button type="button" class="btn waves-effect btn-default" data-dismiss="modal">$tstrings['close']</button>
-				<button type="button" class="btn waves-effect responsivebtn bg-$skinColor" data-dismiss="modal" onclick="btn_saveTimer(); return false;">$tstrings['save']</button>
+				<button type="button" class="btn waves-effect responsivebtn btn-themed" data-dismiss="modal" onclick="btn_saveTimer(); return false;">$tstrings['save']</button>
 			</div>
 		</div>
 	</div>
@@ -696,7 +697,7 @@
 				<hr/>
 				<div class="row clearfix">
 					<div class="col-xs-12 align-center">
-						<button type="button" class="btn waves-effect responsivebtn responsivebtnpower bg-$skinColor" class="theme-link-color" data-dismiss="modal" href="#" onclick="handle_power_state_dialog(new_power_state = 0); return false">
+						<button type="button" onclick="handle_power_state_dialog(new_power_state = 0); return false;" class="btn waves-effect responsivebtn responsivebtnpower btn-themed" data-dismiss="modal">
 							<h4>
 								<i class="material-icons">power_settings_new</i>
 								<span>$tstrings['standby_toggle']</span>
@@ -707,7 +708,7 @@
 				<hr/>
 				<div class="row clearfix">
 					<div class="col-xs-12 align-center">
-						<button type="button" class="btn waves-effect responsivebtn responsivebtnpower bg-$skinColor" class="theme-link-color" data-dismiss="modal" href="#" onclick="handle_power_state_dialog(new_power_state = 1); return false">
+						<button type="button" onclick="handle_power_state_dialog(new_power_state = 1); return false;" class="btn waves-effect responsivebtn responsivebtnpower btn-themed" data-dismiss="modal">
 							<h4>
 								<i class="material-icons">vertical_align_bottom</i>
 								<span>$tstrings['deep_standby']</span>
@@ -718,7 +719,7 @@
 				<hr/>
 				<div class="row clearfix">
 					<div class="col-xs-12 align-center">
-						<button type="button" class="btn waves-effect responsivebtn responsivebtnpower bg-$skinColor" data-dismiss="modal" href="#" onclick="handle_power_state_dialog(new_power_state = 2); return false">
+						<button type="button" onclick="handle_power_state_dialog(new_power_state = 2); return false;" class="btn waves-effect responsivebtn responsivebtnpower btn-themed" data-dismiss="modal">
 							<h4>
 								<i class="material-icons">loop</i>
 								<span>$tstrings['reboot_box']</span>
@@ -729,7 +730,7 @@
 				<hr/>
 				<div class="row clearfix">
 					<div class="col-xs-12 align-center">
-						<button type="button" class="btn waves-effect responsivebtn responsivebtnpower bg-$skinColor" class="theme-link-color" data-dismiss="modal" href="#" onclick="handle_power_state_dialog(new_power_state = 3); return false">
+						<button type="button" onclick="handle_power_state_dialog(new_power_state = 3); return false" class="btn waves-effect responsivebtn responsivebtnpower btn-themed" class="theme-link-color" data-dismiss="modal">
 							<h4>
 								<i class="material-icons">settings_backup_restore</i>
 								<span>$tstrings['restart_gui']</span>
@@ -739,7 +740,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default waves-effect" data-dismiss="modal" onclick="closeMessageModal(); return false;">$tstrings['close']</button>
+				<button type="button" onclick="closeMessageModal(); return false;" class="btn btn-default waves-effect" data-dismiss="modal">$tstrings['close']</button>
 			</div>
 		</div>
 	</div>
@@ -748,7 +749,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" onclick="closeMessageModal(); return false;" data-dismiss="modal">&times;</button>
+				<button type="button" onclick="closeMessageModal(); return false;" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -806,8 +807,8 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default waves-effect" data-dismiss="modal" onclick="closeMessageModal(); return false;">$tstrings['close']</button>
-				<button type="button" class="btn waves-effect responsivebtn bg-$skinColor"  onclick="sendModalMessage(); return false;">$tstrings['sendamessage'].replace(" ","&nbsp;")</button>
+				<button type="button" onclick="closeMessageModal(); return false;" class="btn btn-default waves-effect" data-dismiss="modal">$tstrings['close']</button>
+				<button type="button" onclick="sendModalMessage(); return false;" class="btn waves-effect responsivebtn btn-themed">$tstrings['sendamessage'].replace(" ","&nbsp;")</button>
 			</div>
 		</div>
 	</div>

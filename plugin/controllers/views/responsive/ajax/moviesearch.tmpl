@@ -12,15 +12,15 @@
 						<h2><i class="material-icons material-icons-centered">movie</i>$tstrings['movies']</h2>
 					</div>
 				</div>
-				<ul class="header-dropdown m-r--5">
+				<ul class="header-dropdown">
 					<li>
-						<li class="dropdown"><li class="dropdown"><a href="#" onclick="lastcontenturl = '\'; load_maincontent_spin('ajax/movies'); return false;" ><i class="material-icons">autorenew</i></a>
+						<li class="dropdown"><li class="dropdown"><a href="javascript:void(0);" onclick="lastcontenturl = '\'; load_maincontent_spin('ajax/movies'); return false;" ><i class="material-icons">autorenew</i></a>
 						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 						<ul class="dropdown-menu pull-right" id="timerbuttons">
-						<li><a href="#" onclick="changeMoviesortSearch('name'); return false" ><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['name']</a></li>
-						<li><a href="#" onclick="changeMoviesortSearch('named'); return false" ><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['name']</a></li>
-						<li><a href="#" onclick="changeMoviesortSearch('date'); return false" ><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['date']</a></li>
-						<li><a href="#" onclick="changeMoviesortSearch('dated'); return false" ><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['date']</a></li>
+						<li><a href="javascript:void(0);" onclick="changeMoviesortSearch('name'); return false" ><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['name']</a></li>
+						<li><a href="javascript:void(0);" onclick="changeMoviesortSearch('named'); return false" ><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['name']</a></li>
+						<li><a href="javascript:void(0);" onclick="changeMoviesortSearch('date'); return false" ><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['date']</a></li>
+						<li><a href="javascript:void(0);" onclick="changeMoviesortSearch('dated'); return false" ><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['date']</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -65,18 +65,18 @@
 	</div>
 	<div class="col-xs-12 col-md-3 align-right">
 	
-		<a class="theme-link-color" href='#' onclick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><i class="material-icons material-icons-centered">play_circle_outline</i></a>
+		<a href="javascript:void(0);" class="theme-link-color" onclick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><i class="material-icons material-icons-centered">play_circle_outline</i></a>
 		#if $transcoding
-		<a class="theme-link-color" href="#" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream']: $movie.eventname"><i class="material-icons material-icons-centered">tv</i></a>
-		<a class="theme-link-color" href="#" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] ($tstrings['transcoded']): $movie.eventname"><i class="material-icons material-icons-centered">phone_android</i></a>
+		<a href="javascript:void(0);" class="theme-link-color" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream']: $movie.eventname"><i class="material-icons material-icons-centered">tv</i></a>
+		<a href="javascript:void(0);" class="theme-link-color" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] ($tstrings['transcoded']): $movie.eventname"><i class="material-icons material-icons-centered">phone_android</i></a>
 		#else
-		<a class="theme-link-color" target="_blank" href='web/ts.m3u?file=$quote($movie.filename)' title="$tstrings['stream'] $movie.eventname"><i class="material-icons material-icons-centered">tv</i></a>
+		<a href="web/ts.m3u?file=$quote($movie.filename)" class="theme-link-color" title="$tstrings['stream'] $movie.eventname" target="_blank"><i class="material-icons material-icons-centered">tv</i></a>
 		#end if
 		
 		#set $eventname_escaped =  $movie.eventname.replace("'", r"\'")
-		<a class="theme-link-color" href='/file?action=download&file=$quote($movie.filename)' title="$tstrings['download'] $movie.eventname"><i class="material-icons material-icons-centered">cloud_download</i></a>
-		<a class="theme-link-color" href='#' onclick="renameMovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['rename_recording']"><i class="material-icons material-icons-centered">edit</i></a>
-		<a class="theme-link-color" href='#' onclick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><i class="material-icons material-icons-centered">delete</i></a>
+		<a href="/file?action=download&file=$quote($movie.filename)" class="theme-link-color" title="$tstrings['download'] $movie.eventname"><i class="material-icons material-icons-centered">cloud_download</i></a>
+		<a href="javascript:void(0);" class="theme-link-color" onclick="renameMovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['rename_recording']"><i class="material-icons material-icons-centered">edit</i></a>
+		<a href="javascript:void(0);" class="theme-link-color" onclick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><i class="material-icons material-icons-centered">delete</i></a>
 	</div>
 	<div class="col-xs-12 collapse" id="eventid$count">
 	<p>$movie.descriptionExtended</p>
@@ -99,15 +99,15 @@
 						<h2><i class="material-icons material-icons-centered">movie</i>$tstrings['movies']</h2>
 					</div>
 				</div>
-				<ul class="header-dropdown m-r--5">
+				<ul class="header-dropdown">
 					<li>
-						<li class="dropdown"><li class="dropdown"><a href="#" onclick="lastcontenturl = '\'; load_maincontent_spin('ajax/movies'); return false;" ><i class="material-icons">autorenew</i></a>
+						<li class="dropdown"><li class="dropdown"><a href="javascript:void(0);" onclick="lastcontenturl = '\'; load_maincontent_spin('ajax/movies'); return false;" ><i class="material-icons">autorenew</i></a>
 						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 						<ul class="dropdown-menu pull-right" id="timerbuttons">
-						<li><a href="#" onclick="changeMoviesortSearch('name'); return false" ><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['name']</a></li>
-						<li><a href="#" onclick="changeMoviesortSearch('named'); return false" ><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['name']</a></li>
-						<li><a href="#" onclick="changeMoviesortSearch('date'); return false" ><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['date']</a></li>
-						<li><a href="#" onclick="changeMoviesortSearch('dated'); return false" ><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['date']</a></li>
+						<li><a href="javascript:void(0);" onclick="changeMoviesortSearch('name'); return false" ><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['name']</a></li>
+						<li><a href="javascript:void(0);" onclick="changeMoviesortSearch('named'); return false" ><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['name']</a></li>
+						<li><a href="javascript:void(0);" onclick="changeMoviesortSearch('date'); return false" ><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['date']</a></li>
+						<li><a href="javascript:void(0);" onclick="changeMoviesortSearch('dated'); return false" ><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['date']</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -158,11 +158,11 @@
 	#end if
 	</div>
 	<div class="col-xs-4">
-	<ul class="header-dropdown m-r--5">
+	<ul class="header-dropdown">
 		<li><span role="button"><a href='#' onclick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><i class="material-icons material-icons-centered">play_circle_outline</i></a></span></li>
 		#if $transcoding
-		<li><span role="button"><a href="#" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream']: $movie.eventname"><i class="material-icons material-icons-centered">tv</i></a></span></li>
-		<li><span role="button"><a href="#" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] ($tstrings['transcoded']): $movie.eventname"><i class="material-icons material-icons-centered">phone_android</i></a></span></li>
+		<li><span role="button"><a href="javascript:void(0);" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream']: $movie.eventname"><i class="material-icons material-icons-centered">tv</i></a></span></li>
+		<li><span role="button"><a href="javascript:void(0);" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] ($tstrings['transcoded']): $movie.eventname"><i class="material-icons material-icons-centered">phone_android</i></a></span></li>
 		#else
 		<li><span role="button"><a target="_blank" href='web/ts.m3u?file=$quote($movie.filename)' title="$tstrings['stream'] $movie.eventname"><i class="material-icons material-icons-centered">tv</i></a></span></li>
 		#end if

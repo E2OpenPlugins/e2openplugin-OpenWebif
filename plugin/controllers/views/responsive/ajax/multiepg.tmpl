@@ -231,7 +231,7 @@
 			#set $iscurr = " curevent"
 		#end if
 												<li class="event" data-ref="$ref" data-id="${event.id}" data-toggle="modal" data-target="#EventModal" onclick="loadeventepg('${event.id}', '$ref');return false;" style="width:${event.duration/6}px;padding:10px;">
-													<a href="#" class="ui-widget-content ${iscurr}" title="$event['title']">
+													<a href="javascript:void(0);" class="ui-widget-content ${iscurr}" title="$event['title']">
 														<span class="ename">$event['title']<span class="etimesmall"> ($strftime("%d.%m", $localtime($event['begin_timestamp'])))</span></span>
 														<span class="etime">$strftime("%H:%M", $localtime($event['begin_timestamp'])) - $strftime("%H:%M", $localtime($event['begin_timestamp'] + $event['duration']))</span>
 			#if $event['timerStatus'] != ''

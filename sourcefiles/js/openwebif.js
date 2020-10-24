@@ -761,11 +761,11 @@ function setOSD( statusinfo )
 				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "&fname=" + station + "' title='" + streamtitle;
 			}
 			stream +="</div>";
-			$("#osd").html(stream + "<a href='#' onClick='load_maincontent(\"ajax/tv\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
+			$("#osd").html(stream + "<a href='#' onclick='load_maincontent(\"ajax/tv\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 		} else if ((sref.indexOf("1:0:2") !== -1) || (sref.indexOf("1:134:2") !== -1)) {
 			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "&fname=" + station + "' title='" + streamtitle;
 			stream +="</div>";
-			$("#osd").html(stream + "<a href='#' onClick='load_maincontent(\"ajax/radio\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
+			$("#osd").html(stream + "<a href='#' onclick='load_maincontent(\"ajax/radio\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 		} else if (sref.indexOf("1:0:0") !== -1) {
 			if (statusinfo['transcoding']) {
 				stream += "<a href='#' onclick=\"jumper80('" + statusinfo['currservice_filename'] + "')\"; title='" + streamtitle;
@@ -819,12 +819,12 @@ function getStatusInfo() {
 
 		var status = "";
 		if (statusinfo['isRecording'] == 'true') {
-			status = "<a href='#' onClick='load_maincontent(\"ajax/timers\"); return false;'><div title='" + tstr_rec_status + statusinfo['Recording_list'] + "' class='led-box'><div class='led-red'></div></div></a>";
+			status = "<a href='#' onclick='load_maincontent(\"ajax/timers\"); return false;'><div title='" + tstr_rec_status + statusinfo['Recording_list'] + "' class='led-box'><div class='led-red'></div></div></a>";
 		}
 		
 		//status += "<div class='pwrbtncontout'><div class='pwrbtncont' title='" + tit + "'><label class='label pwrbtn'><input type='checkbox' "+sb+" id='pwrbtn' onchange='toggleStandby();return true;' /><div class='pwrbtn-control'></div></label></div></div>";
 		
-		status += "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_";
+		status += "<a href='#' onclick='toggleStandby();return false'><img src='../images/ico_";
 		if (statusinfo['inStandby'] == 'true') {
 			status += "standby.png' title='" + tstr_on + "' alt='" + tstr_standby;
 		} else {

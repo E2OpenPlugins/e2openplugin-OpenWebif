@@ -1171,8 +1171,8 @@ function skinChanger() {
 
 		$body.addClass('theme-' + $this.data('theme'));
 		
-		$('.progress-bar, #moviedirbtn, .atbtn, .responsivebtn, .vti-colored-card').removeClass('bg-' + existTheme);
-		$('.progress-bar, #moviedirbtn, .atbtn, .responsivebtn, .vti-colored-card').addClass('bg-' + $this.data('theme'));
+		$('.progress-bar, #moviedirbtn, .responsivebtn, .vti-colored-card').removeClass('bg-' + existTheme);
+		$('.progress-bar, #moviedirbtn, .responsivebtn, .vti-colored-card').addClass('bg-' + $this.data('theme'));
 		$('.lever').removeClass('switch-col-' + existTheme);
 		$('.lever').addClass('switch-col-' + $this.data('theme'));
 		$('.radio-vti').removeClass('radio-col-' + existTheme);
