@@ -3233,24 +3233,24 @@
    right: 5px;
  }
  
- .demo-choose-skin {
+ .skin-switcher {
    list-style: none;
    padding-left: 0;
    overflow-y: hidden;
  }
  
- .demo-choose-skin li {
+ .skin-switcher li {
    border-bottom: 1px solid #eee;
-   padding: 10px 10px 4px;
+   padding: 10px;
    position: relative;
    cursor: pointer;
  }
  
- .demo-choose-skin li.active {
+ .skin-switcher li.active {
    background-color: #eee;
  }
  
- .demo-choose-skin li.active:after {
+ .skin-switcher li.active:after {
    font-family: 'Material Icons';
    position: absolute;
    top: 10px;
@@ -3260,25 +3260,28 @@
    font-weight: bold;
  }
  
- .demo-choose-skin li:hover {
+ .skin-switcher li:hover {
    background-color: #eee;
  }
  
- .demo-choose-skin li div {
+ .skin-switcher .color-swatch {
    width: 24px;
    height: 24px;
+   margin-right: 0.8ex;
    display: inline-block;
    -webkit-border-radius: 3px;
    -moz-border-radius: 3px;
    -ms-border-radius: 3px;
    border-radius: 3px;
+   vertical-align: middle;
  }
  
- .demo-choose-skin li span {
-   position: relative;
-   bottom: 7px;
-   left: 5px;
+ .skin-switcher label {
+   margin-bottom: 0;
+   color: inherit !important;
+   vertical-align: middle;
    user-select: none;
+   font-weight: normal;
  }
 
  /* Materialize Css | Taken from www.materializecss.com */
