@@ -30,7 +30,7 @@
 		.remote__group { margin: 0 auto; display: flex; justify-content: center; max-width: 156px; flex-wrap: wrap; }
 		.remote__group.collapse { display: none; }
 		.remote__group.collapse.in { display: flex; }
-		.remote__button { border: none; flex: 0 0 23%; height: 38px; margin: 1px; box-shadow: 0 0 10px rgba(0,0,0,.2); display: block; background-color: #fff; overflow: hidden; cursor: pointer; }
+		.remote__button { outline: none; border: none; flex: 0 0 23%; height: 38px; margin: 1px; box-shadow: 0 0 10px rgba(0,0,0,.2); display: block; background-color: #fff; overflow: hidden; cursor: pointer; transition: all 0.2s ease; }
 		.remote__group--numerical .remote__button, 
 		.remote__group--directional .remote__button { flex: 0 0 31%; height: 48px; }
 		.remote__group--numerical .remote__button i, 
@@ -38,8 +38,7 @@
 		.remote__button--power i { margin-left: -1px; padding: 2px; background-color: #F44336; color: #fff !important; border-radius: 50%; }
 		.remote__button--arrow { background-color: rgba(0,0,0,.12); }
 		.remote__button--colour { background-color: #707070; }
-		.remote__button i:hover { transition: all 0.2s ease; }
-		.remote__button i:hover { transform: scale(1.2); }
+		.remote__button:focus i, .remote__button:hover i { transform: scale(1.2); }
 		.remote__group .material-icons { color: #707070; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); }
 	</style>
 
@@ -589,7 +588,7 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header bg-red">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<button type="button" class="close" data-dismiss="modal"><i class="material-icons material-icons-centered">close</i></button>
 				<h4 class="modal-title"><i class="material-icons material-icons-centered">error</i><span>Timer conflict</span></h4>
 			</div>
 				<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
@@ -605,7 +604,7 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header vti-colored-card bg-$skinColor">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<button type="button" class="close" data-dismiss="modal"><i class="material-icons material-icons-centered">close</i></button>
 				<span class="modal-title"><i class="material-icons material-icons-centered">wifi_tethering</i>&nbsp;Streams</span>
 			</div>
 				<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
@@ -623,7 +622,7 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header vti-colored-card bg-$skinColor">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<button type="button" class="close" data-dismiss="modal"><i class="material-icons material-icons-centered">close</i></button>
 				<h4 class="modal-title"><i class="material-icons material-icons-centered">alarm</i><span>$tstrings['timers']</span></h4>
 			</div>
 				<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
@@ -642,7 +641,7 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<button type="button" class="close" data-dismiss="modal"><i class="material-icons material-icons-centered">close</i></button>
 				<h4 class="modal-title"><i class="material-icons material-icons-centered">view_list</i><span>$tstrings['epg']</span></h4>
 			</div>
 			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
@@ -658,7 +657,7 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<button type="button" class="close" data-dismiss="modal"><i class="material-icons material-icons-centered">close</i></button>
 			</div>
 				<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
 					<div id="eventdescriptionII"></div>
@@ -673,7 +672,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<button type="button" class="close" data-dismiss="modal"><i class="material-icons material-icons-centered">close</i></button>
 				<h4 class="modal-title" id="timerEditTitle"></h4>
 			</div>
 				<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
@@ -690,7 +689,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<button type="button" class="close" data-dismiss="modal"><i class="material-icons material-icons-centered">close</i></button>
 				<h4 class="modal-title"><i class="material-icons material-icons-centered">settings_power</i><span>$tstrings['powercontrol'].replace(" ","&nbsp;")</span></h4>
 			</div>
 			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
@@ -749,7 +748,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" onclick="closeMessageModal(); return false;" class="close" data-dismiss="modal">&times;</button>
+				<button type="button" onclick="closeMessageModal(); return false;" class="close" data-dismiss="modal"><i class="material-icons material-icons-centered">close</i></button>
 			</div>
 			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
