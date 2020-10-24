@@ -4,8 +4,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-02 11:40+0200\n"
 "PO-Revision-Date: \n"
-"Last-Translator: mcfly82 <https://github.com/mcfly822>\n"
-"Language-Team: mcfly82\n"
+"Last-Translator: cp-teamhun <https://github.com/cp-teamhun>\n"
+"Language-Team: cp-teamhun\n"
 "Language: hu_HU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,7 +63,7 @@ msgstr "Név hozzáadása címkékhez"
 
 #: ../plugin/controllers/i18n.py:411
 msgid "Create bouquet from selection"
-msgstr "A Szolgáltató hozzáadása új listaként"
+msgstr "Bouquet létrehozása a kijelölésből"
 
 #: ../plugin/controllers/i18n.py:372
 msgid "Add Similar on Conflict"
@@ -87,7 +87,7 @@ msgstr "Csatornák hozzáadása alternatívákhoz"
 
 #: ../plugin/controllers/i18n.py:412
 msgid "Add selection to bouquet"
-msgstr "Csatornák hozzáadása listához"
+msgstr "Kijelölés hozzáadása bouquethez "
 
 #: ../plugin/plugin.py:151
 msgid "Add service name to stream information"
