@@ -1,8 +1,13 @@
 #from six.moves.urllib.parse import quote
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 
-<ul class="nav nav-tabs tab-col-green" >
+<style>
+	.nav-tabs>li>a .material-icons { top: 0; margin-bottom: 3px; margin-right: 6px; }
+</style>
+
+<ul class="nav nav-tabs tab-col-$skinColor">
 #for $provider in $providers
-	<li><a data-toggle="tab" href='#tab' onclick="load_subcontent('ajax/channels?id=$quote($provider[0])&stype=$stype'); return false;" >$provider[1]</a></li>
+	<li><a href="#tab" data-toggle="tab" onclick="load_subcontent('ajax/channels?id=$quote($provider[0])&stype=$stype'); return false;"><i class="material-icons material-icons-centered">folder_open</i>$provider[1]</a></li>
 #end for
 </ul>
 <div class="tab-content">

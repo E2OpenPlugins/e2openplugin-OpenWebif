@@ -509,6 +509,11 @@ tstrings = {
 	'show_picon_background': _("Show picon background"),
 	'export': _("Export"),
 	'import': _("Import"),
+	'sort': _("Sort"),
+	'name_asc': _("Name (a-z)"),
+	'name_desc': _("Name (z-a)"),
+	'date_asc': _("Date (oldest)"),
+	'date_desc': _("Date (newest)"),
 
 	'playlistformat': _("Playlist Format"),
 	'pipifposible': _("Use as PiP if possible"),
