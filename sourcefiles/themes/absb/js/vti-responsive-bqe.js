@@ -328,6 +328,7 @@
 				var spos=0;
 				if(self.bqStartPositions[bref])
 					spos = self.bqStartPositions[bref];
+				$('#bqs').addClass('loading');
 				$.ajax({
 					url: '/bouqueteditor/api/getservices', 
 					dataType: 'json',

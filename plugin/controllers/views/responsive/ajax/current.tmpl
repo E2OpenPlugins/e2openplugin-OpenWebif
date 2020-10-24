@@ -1,13 +1,21 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 
+<style>
+	img[src*="default_picon"] { filter: grayscale(1) opacity(0.2); }
+</style>
+
 <div class="row clearfix">
 	<div class="col-xs-12">
 		<div class="card">
 			<div class="header">
 				<div class="row clearfix">
 					<div class="col-xs-7">
-						<h2><a class="theme-link-color" target="_blank" title="$tstrings['stream'] $getVar('now.title', '') from $info.name" href='web/stream.m3u?ref=$info.ref&name=$info.name'><i class="material-icons material-icons-centered">tv</i>$info.name</a></h2>
+						<h2>
+							<i class="material-icons material-icons-centered">info_outline</i>$info.name 
+							<a href="web/stream.m3u?ref=$info.ref&name=$info.name" class="theme-link-color m-l-5" title="$tstrings['stream'] $getVar('now.title', '') from $info.name"><i class="material-icons material-icons-centered">ondemand_video</i></a>
+							<a href="javascript:void(0);" onclick="open_epg_dialog('$info.ref','$info.name');" class="theme-link-color" data-toggle="modal" data-target="#EPGModal" title="$tstrings['show_epg_for'] $info.name"><i class="material-icons material-icons-centered">view_list</i></a>
+						</h2>
 					</div>
 					<div class="col-xs-5 align-right">
 						<h2>$info.date</h2>
@@ -17,7 +25,7 @@
 			<div class="body">
 				<div class="row clearfix">
 					<div class="col-xs-12 col-md-3">
-						<img border='0' width="100px" height="60px" src='$getVar("info.picon", "images/default_picon.png")' onclick="open_epg_dialog('$info.ref','$info.name');" style="cursor:pointer;" data-toggle="modal" data-target="#EPGModal" title="$tstrings['show_epg_for'] $info.name" border="0" alt='' />
+						<img width="100px" height="60px" src='$getVar("info.picon", "images/default_picon.png")'>
 					</div>
 					<div class="col-xs-12 col-md-6">
 						<div class="row clearfix" >
