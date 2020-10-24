@@ -3280,8 +3280,9 @@
    margin-bottom: 0;
    color: inherit !important;
    vertical-align: middle;
-   user-select: none;
    font-weight: normal;
+   cursor: pointer;
+   user-select: none;
  }
 
  /* Materialize Css | Taken from www.materializecss.com */
@@ -3373,7 +3374,7 @@
  input,
  select,
  a {
-   outline: none !important;
+   /* outline: none !important; */
  }
  
  .no-animate {
@@ -3438,12 +3439,12 @@
  
  /* Buttons ===================================== */
  .btn:focus {
-   outline: none !important;
+   /* outline: none !important; */
  }
  
  .btn-circle {
    border: none;
-   outline: none !important;
+   /* outline: none !important; */
    overflow: hidden;
    width: 40px;
    height: 40px;
@@ -3482,7 +3483,7 @@
  
  .btn-circle-lg {
    border: none;
-   outline: none !important;
+   /* outline: none !important; */
    overflow: hidden;
    width: 50px;
    height: 50px;
@@ -3507,11 +3508,11 @@
    border-radius: 2px;
    border: none;
    font-size: 14px;
-   outline: none;
+   /* outline: none; */
  }
  
  .btn:not(.btn-link):not(.btn-circle):hover {
-   outline: none;
+   /* outline: none; */
  }
  
  .btn:not(.btn-link):not(.btn-circle) i {
@@ -3524,7 +3525,6 @@
    position: relative;
    top: -2px;
    margin-left: 3px;
-   padding-right: 3px;
  }
  
  .btn-warning,
@@ -3587,6 +3587,7 @@
  .btn-group-vertical .btn .caret {
    position: relative;
    bottom: 1px;
+   border-width: 6px 6px 0 6px;
  }
  
  .btn-group .btn-group,
@@ -3599,6 +3600,14 @@
    border-left: 1px solid rgba(0, 0, 0, 0.08) !important;
  }
  
+.bootstrap-select.btn-group .dropdown-toggle {
+  padding-left: 0;
+}
+
+.bootstrap-select.btn-group .dropdown-toggle .filter-option {
+  margin-left: 0;
+}
+
  /* Bootstrap Tags Input ======================== */
  .bootstrap-tagsinput {
    -webkit-box-shadow: none !important;
@@ -4099,7 +4108,7 @@
  }
  
  .card .header .header-dropdown i {
-   font-size: 22px;
+   font-size: 28px;
    color: #999;
    -moz-transition: all 0.5s;
    -o-transition: all 0.5s;
@@ -5885,8 +5894,17 @@
  /* Modals ====================================== */
  .modal .modal-header {
    border: none;
-   padding: 25px 25px 5px;
+   padding: 20px 25px 5px;
  }
+
+.modal-header .close {
+  margin-top: 0;
+  transition: 0.2s;
+}
+
+ .modal-header .close .material-icons {
+  margin-right: 0;
+}
  
  .modal .modal-header .modal-title {
    font-weight: bold;
@@ -7173,6 +7191,10 @@
    -ms-border-radius: 0;
    border-radius: 0;
    padding-left: 0;
+ }
+
+ .form-group .form-control {
+   padding-left: 12px;
  }
  
  .form-group .help-info {

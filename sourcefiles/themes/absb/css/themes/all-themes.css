@@ -1753,23 +1753,23 @@
 }
 
 .theme-yellow .navbar-brand {
-  color: #fff;
+  color: #333;
 }
 
 .theme-yellow .navbar-brand:hover {
-  color: #fff;
+  color: #333;
 }
 
 .theme-yellow .navbar-brand:active {
-  color: #fff;
+  color: #333;
 }
 
 .theme-yellow .navbar-brand:focus {
-  color: #fff;
+  color: #333;
 }
 
 .theme-yellow .nav > li > a {
-  color: #fff;
+  color: #333;
 }
 
 .theme-yellow .nav > li > a:hover {
@@ -1793,7 +1793,7 @@
 }
 
 .theme-yellow .bars {
-  color: #fff;
+  color: #333;
 }
 
 .theme-yellow .sidebar .menu .list li.active {
@@ -1825,7 +1825,7 @@
 [data-theme=yellow] .color-swatch,
 .theme-yellow .btn-themed {
   background-color: #ffe821 !important;
-  color: #fff;
+  color: #333;
 }
 
 .theme-yellow .theme-link-color {
