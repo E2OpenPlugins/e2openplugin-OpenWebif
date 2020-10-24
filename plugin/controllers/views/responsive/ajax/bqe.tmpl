@@ -15,7 +15,8 @@
 		background-color: rgba(0, 0, 0, 0.5);
 		-webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 	}
-	.bqe__list { height: 250px; overflow-y: scroll; margin-bottom: 5px; box-shadow: 0 7px 9px -7px rgba(0,0,0,.12) }
+	.bqe__list { height: 250px; overflow-y: scroll; margin-bottom: 5px; box-shadow: 0 7px 9px -7px rgba(0,0,0,.12); }
+	.bqe__option { display: inline-block; margin: 0 1ex; }
 	.bqe__picon { display: inline-block; width: 42px; text-align: center; margin-right: 1rem; }
 	.bqe__picon.picon--with-background { background-color: #bababa; box-shadow: inset -8px 16px 26px #fff; }
 	.bqe__picon img { max-width: 100%; }
@@ -59,13 +60,29 @@
 		</div>
 		<div class="body" id="bqemain">
 			<div class="row clearfix">
-				<div class="col-xs-12 align-center">
-					<input type="radio" name="tb2" class="radio-vti radio-col-$skinColor" id="toolbar-choose-satellites"><label for="toolbar-choose-satellites">$tstrings['satellites']</label>
-					<input type="radio" name="tb2" class="radio-vti radio-col-$skinColor" id="toolbar-choose-providers" checked="checked"><label for="toolbar-choose-providers">$tstrings['providers']</label>
-					<input type="radio" name="tb2" class="radio-vti radio-col-$skinColor" id="toolbar-choose-channels"><label for="toolbar-choose-channels">$tstrings['all_channels']</label>
-					<span class="p-r-40"></span>
-					<input type="radio" name="tb1" class="radio-vti radio-col-$skinColor" id="toolbar-choose-tv" checked="checked"><label for="toolbar-choose-tv">$tstrings['television']</label>
-					<input type="radio" name="tb1" class="radio-vti radio-col-$skinColor" id="toolbar-choose-radio"><label for="toolbar-choose-radio">$tstrings['radio']</label>
+				<div class="col-xs-6 align-center">
+					<span class="bqe__option">
+						<input type="radio" name="tb2" class="radio-vti radio-col-$skinColor" id="toolbar-choose-channels" checked="checked">
+						<label for="toolbar-choose-channels">$tstrings['all_channels']</label>
+					</span>
+					<span class="bqe__option">
+						<input type="radio" name="tb2" class="radio-vti radio-col-$skinColor" id="toolbar-choose-satellites">
+						<label for="toolbar-choose-satellites">$tstrings['satellites']</label>
+					</span>
+					<span class="bqe__option">
+						<input type="radio" name="tb2" class="radio-vti radio-col-$skinColor" id="toolbar-choose-providers">
+						<label for="toolbar-choose-providers">$tstrings['providers']</label>
+					</span>
+				</div>
+				<div class="col-xs-6 align-center">
+					<span class="bqe__option">
+						<input type="radio" name="tb1" class="radio-vti radio-col-$skinColor" id="toolbar-choose-tv" checked="checked">
+						<label for="toolbar-choose-tv">$tstrings['television']</label>
+					</span>
+					<span class="bqe__option">
+						<input type="radio" name="tb1" class="radio-vti radio-col-$skinColor" id="toolbar-choose-radio">
+						<label for="toolbar-choose-radio">$tstrings['radio']</label>
+					</span>
 				</div>
 			</div>
 			<div class="row clearfix">
@@ -73,18 +90,18 @@
 					<header>$tstrings['satellites']/$tstrings['providers'] <span id="count-sat-prov"></span></header>
 					<div class="bqe__list row clearfix">
 						<div class="col-xs-12 p-r-5">
-							<ol id="provider" class="selectable"></ol>
+							<ol id="provider" class="selectable">
+								<li>
+									<span class="bqe__picon">
+										<img src="/images/default_picon.png">
+									</span>
+									$tstrings['bqe_loading']
+								</li>
+							</ol>
 						</div>
 					</div>
 					<div class="row clearfix">
-						<div class="col-xs-12 col-sm-6 m-t-10">
-							<div class="form-group">
-								<div class="form-line">
-									<input type="text" class="form-control" id="searchch" placeholder="$tstrings['bqe_search'] $tstrings['channels']">
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 m-t-10 align-right">
+						<div class="col-xs-12 m-t-10 align-right">
 							<button class="bqe__button btn btn-themed waves-effect" id="btn-provider-add">$tstrings['bqe_add_provider_as_bouquet']</button>
 						</div>
 					</div>
@@ -93,11 +110,25 @@
 					<header>$tstrings['channels'] <span id="count-sat-prov-channels"></span></header>
 					<div class="bqe__list row clearfix">
 						<div class="col-xs-12 p-r-5">
-							<ol id="channels" class="selectable"></ol>
+							<ol id="channels" class="selectable">
+								<li>
+									<span class="bqe__picon">
+										<img src="/images/default_picon.png">
+									</span>
+									$tstrings['bqe_loading']
+								</li>
+							</ol>
 						</div>
 					</div>
 					<div class="row clearfix align-center">
-						<div class="col-xs-12 m-t-10 align-right">
+						<div class="col-xs-12 col-sm-6 m-t-10">
+							<div class="form-group">
+								<div class="form-line m-l-10">
+									<input type="search" class="form-control" id="searchch" placeholder="$tstrings['bqe_search_enhanced']">
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 m-t-10 align-right">
 							<button class="bqe__button btn btn-themed waves-effect" id="btn-channel-add">$tstrings['bqe_add_channel']</button>
 							<!-- button class="bqe__button btn btn-themed waves-effect" id="btn-alternative-add">$tstrings['bqe_add_alternative']</button -->
 						</div>
@@ -109,7 +140,14 @@
 					<header>$tstrings['bouquets'] <span id="count-bouquets"></span></header>
 					<div class="bqe__list row clearfix">
 						<div class="col-xs-12 p-r-5">
-							<ol id="bql" class="selectable"></ol>
+							<ol id="bql" class="selectable">
+								<li>
+									<span class="bqe__picon">
+										<img src="/images/default_picon.png">
+									</span>
+									$tstrings['bqe_loading']
+								</li>
+							</ol>
 						</div>
 					</div>
 					<div class="row clearfix align-center">
@@ -124,7 +162,14 @@
 					<header>$tstrings['channels'] <span id="count-bouquet-channels"></span></header>
 					<div class="bqe__list row clearfix">
 						<div class="col-xs-12 p-r-5">
-							<ol id="bqs" class="selectable"></ol>
+							<ol id="bqs" class="selectable">
+								<li>
+									<span class="bqe__picon">
+										<img src="/images/default_picon.png">
+									</span>
+									$tstrings['bqe_loading']
+								</li>
+							</ol>
 						</div>
 					</div>
 					<div class="row clearfix align-center">

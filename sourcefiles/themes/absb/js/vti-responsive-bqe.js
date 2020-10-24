@@ -20,6 +20,7 @@
 //* V 2.8.1 - show ns text #840
 //* V 2.9.1 - fix ns text, show provider as tooltip #840
 //* V 2.9.2 - search by servicetype (sd/hd/uhd/radio/...) or orbital
+//* V 2.9.2 - added list counts, added `Loading...`, adjusted layout
 
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
@@ -56,6 +57,10 @@
 		var date;
 
 		return {
+      getTextWithIcon: function (iconName, text) {
+        return '<span class="icon"><i class="material-icons material-icons-centered">' + iconName + '</i></span>' + text;
+      },
+
 			// Callback for display left panel providers list
 			// Triggers fetching and displaying dependent services list
 			// for selected provider
@@ -65,20 +70,18 @@
 					.show()
 					.prop( 'disabled', (self.cType !==1 ) );
 				$('#provider').empty();
+        $('#count-sat-prov').html('(' + options.length + ')');
 				$.each(options, function(k,v) {
-					$('#provider').append(v);
-				});
-				$('#provider').children().first().addClass('ui-selected');
-				self.changeProvider(
-					$('#provider').children().first().data('sref'),
-					self.showChannels
-				);
+          $('#provider').append(v);
+        });
+        self.getChannels(self.showChannels);
 				self.setHover('#provider');
 			},
 		
 			// Callback for display left panel services list
 			showChannels: function (options) {
 				$('#channels').empty();
+        $('#count-sat-prov-channels').html('(' + options.length + ')');
 				$.each(options, function(k,v) {
 					$('#channels').append(v);
 				});
@@ -91,6 +94,7 @@
 			// for selected bouquet
 			showBouquets: function (options) {
 				$('#bql').empty();
+        $('#count-bouquets').html('(' + options.length + ')');
 				$.each(options, function(k,v) {
 					$('#bql').append(v);
 				});
@@ -105,6 +109,7 @@
 			// Callback for display right panel services list
 			showBouquetChannels: function (options) {
 				$('#bqs').empty();
+        $('#count-bouquet-channels').html('(' + options.length + ')');
 				$.each(options, function(k,v) {
 					$('#bqs').append(v);
 				});
@@ -157,7 +162,7 @@
 				} else if (self.cType === 1) {
 					self.getProviders(self.showProviders);
 				} else if (self.cType === 2) {
-					$('#sel0').hide();
+          $('#sel0').hide();
 					self.getChannels(self.showChannels);
 				}
 			
@@ -182,11 +187,11 @@
 					data: { sRef: ref, stype: stype, date: self.date },
 					success: function ( data ) {
 						var options = [];
-						var s = data['satellites'];
+						var s = data['satellites'] || [];
 						$.each( s, function ( key, val ) {
 							var sref = val['service'];
 							var name = val['name'];
-							name = '<span class="icon"><i class="material-icons material-icons-centered">bubble_chart</i></span>' + name;
+							name = self.getTextWithIcon('bubble_chart', name);
 							options.push( $("<li/>", {
 								data: { sref: sref }
 							}).html(name));
@@ -213,11 +218,11 @@
 					data: { sRef: ref, date: self.date },
 					success: function ( data ) {
 						var options = [];
-						var s = data['services'];
+						var s = data['services'] || [];
 						$.each( s, function ( key, val ) {
 							var sref = val['servicereference'];
-							var name = val['servicename'];
-							name = '<span class="icon"><i class="material-icons material-icons-centered">folder_open</i></span>' + name;
+							var name = val['servicename'].replace('\u00c2\u00b0', '\u00b0');
+							name = self.getTextWithIcon('folder_open', name);
 							options.push( $('<li/>', {
 								data: { sref: sref }
 							}).html(name) );
@@ -243,24 +248,30 @@
 					cache: true,
 					data: { date: self.date, picon: 1 },
 					success: function ( data ) {
-						self.allChannelsCache = data['services'];
-						self.filterChannelsCache = data['services'];
+            var s = data['services'] || [];
+            var services = s.map(function(val) {
+              var sref = val['servicereference'];
+              var ns = sref.split(':')[6];
+              val['_ns'] = self.getNS(ns);
+              return val;
+            });
+
+						self.allChannelsCache = services;
+						self.filterChannelsCache = services;
 						self.fillChannels(callback);
 					}
 				});
 			},
 			
-			fillChannels: function (callback)
-			{
+			fillChannels: function (callback) {
 				var options = [];
 				$.each( self.filterChannelsCache, function ( key, val ) {
 					var sref = val['servicereference'];
 					var name = val['servicename'];
 					var prov = val['provider'];
 					var stype = sref.split(':')[2];
-					var ns = sref.split(':')[6];
-					var _ns = self.getNS(ns);
-					var picon = val['picon'];
+					var _ns = val['_ns'];
+          var picon = val['picon'];
 					name = '<span class="bqe__picon"><img src="' + picon + '"></span>' + name;
 					var m = '<span class="pull-right"><span title="' + prov + '">' + ' ' + (self.sType[stype] || '') + ' &bull; ' + _ns + '</span>&nbsp;<span class="dd-icon-selected pull-left"><i class="material-icons material-icons-centered">done</i></span></span>';
 					options.push( $('<li/>', {
@@ -313,8 +324,16 @@
 					cache: true,
 					data: { sRef: sref, date: self.date, provider:"1", picon: 1},
 					success: function ( data ) {
-						self.allChannelsCache = data['services'];
-						self.filterChannelsCache = data['services'];
+            var s = data['services'] || [];
+            var services = s.map(function(val) {
+              var sref = val['servicereference'];
+              var ns = sref.split(':')[6];
+              val['_ns'] = self.getNS(ns);
+              return val;
+            });
+
+						self.allChannelsCache = services;
+						self.filterChannelsCache = services;
 						self.fillChannels(callback);
 					}
 				});
@@ -336,7 +355,9 @@
 					data: { sRef: bref, picon: 1 },
 					success: function ( data ) {
 						var options = [];
-						var s = data['services'];
+            var s = data['services'] || [];
+
+						$('#count-bouquet-channels').html('(' + s.length + ')');
 						$.each( s, function ( key, val ) {
 							var sref = val['servicereference'];
 							var m = (val['ismarker'] == 1) ? '<span style="float:right">(M)</span>' : '';
@@ -354,6 +375,7 @@
 									}
 								}).html('<span class="handle dd-icon"><i class="material-icons material-icons-centered">list</i>&nbsp;</span><span class="bqe__picon"><img src="'+picon+'"></span>'+name+m+'<span class="dd-icon-selected pull-right"><i class="material-icons material-icons-centered">done</i></span></li>') );
 						});
+						$('#bqs').removeClass('loading');
 						if (callback) {
 							callback(options);
 						}
@@ -739,16 +761,16 @@
 					var sref = val['servicereference'];
 					var stype = sref.split(':')[2];
 					var prov = val['provider'];
-					console.log(self.sType[stype].indexOf(t));
 					if (name.toLowerCase().indexOf(t) >= 0 
 							|| prov.toLowerCase().indexOf(t) >= 0 
 							|| self.sType[stype].toLowerCase().indexOf(t) >= 0
 						) {
 						self.filterChannelsCache.push({
 							servicename: val['servicename'],
-							servicereference:val['servicereference'],
-							provider:val['provider'],
+							servicereference: val['servicereference'],
+							provider: val['provider'],
 							picon: val['picon'],
+							_ns: val['_ns'],
 						});
 					}
 				});
@@ -969,8 +991,9 @@
 				$('#toolbar-choose-providers').click(function () { self.getProviders(self.showProviders); });
 				$('#toolbar-choose-channels').click(function () { 
 					$('#sel0').hide();
-					$('#btn-provider-add').hide();
-					self.getChannels(self.showChannels); 
+          $('#btn-provider-add').hide();
+					self.getChannels(self.showChannels);
+          $('#provider .ui-selected').removeClass('ui-selected');
 				});
 
 				// Setup callback functions for right pane toolbar buttons

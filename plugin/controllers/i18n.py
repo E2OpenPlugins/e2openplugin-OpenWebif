@@ -417,6 +417,7 @@ tstrings = {
 	'bqe_add_channel': _("Add selection to bouquet"),
 	'bqe_add_alternative': _("Add channel(s) as alternate"),
 	'bqe_search': _("Search"),
+	'bqe_search_enhanced': _("Search by name, sd / hd / uhd, or provider"),
 	'bqe_reload': _("Reload"),
 	'bqe_add_bq': _("Add Bouquet"),
 	'bqe_rename_bq': _("Rename Bouquet"),
@@ -432,6 +433,7 @@ tstrings = {
 	'bqe_rename_marker': _("Enter new name for the marker"),
 	'bqe_filename': _("Please enter filename"),
 	'bqe_restore_question': _("Do you really want to restore from file"),
+	'bqe_loading': _("Loading..."),
 
 	'via': _("via"),
 	'record_zap': _("Record+ZAP"),
