@@ -3608,6 +3608,10 @@
   margin-left: 0;
 }
 
+.bootstrap-select > .dropdown-toggle {
+  padding-right: 0;
+}
+
  /* Bootstrap Tags Input ======================== */
  .bootstrap-tagsinput {
    -webkit-box-shadow: none !important;

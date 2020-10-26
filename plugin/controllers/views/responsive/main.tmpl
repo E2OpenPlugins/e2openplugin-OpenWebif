@@ -96,22 +96,22 @@
 						<li class="osd-toggle" id="responsive_osd_cur_event"></li>
 						<li class="osd-toggle" id="responsive_osd_stream"></li>
 						<li class="osd-toggle" id="responsive_osd_transcoding"></li>
-						<li class="osd-toggle" id="responsive_mute_status"></li>
+						<li class="osd-toggle" id="responsive_mute_status" accesskey="x" title="Mute/Unmute - Shortcut: x"></li>
 						<li class="osd-toggle" id="responsive_vol_slider"><a href="javascript:void(0);"><div id="volslider" style="width:100px;margin-top:2px;"></div></a></li>
 						<li class="osd-toggle" id="responsive_vol_value"><a><div class="dropdown-toggle" id="volumevalue"><b><span class="curvolume"></span></b></div></a></li>
 						<!-- Call Search -->
-						<li><a href="javascript:void(0);" class="js-search-epg" data-close="true" title="$tstrings['epgsearch']" ><i class="material-icons">search</i></a></li>
+						<li><a href="javascript:void(0);" class="js-search-epg" data-close="true" title="$tstrings['epgsearch'] - Shortcut: f" accesskey="f"><i class="material-icons">search</i></a></li>
 						#if $vti == "1"
 						<li><a href="javascript:void(0);" class="js-search-movie" data-close="true" title="$tstrings['moviesearch']"><i class="material-icons">youtube_searched_for</i></a></li>
 						#end if
 						<!-- #END# Call Search -->
 						<li class="dropdown" id="responsive_rec_info"></li>
 						<li class="dropdown" id="responsive_stream_info"></li>
-						<li class="dropdown"><a href='javascript:void(0);' data-toggle="modal" data-target="#SendMessageModal" title="$tstrings['sendamessage']"><i class="material-icons">message</i></a></li>
-						<li class="dropdown"><a href="#screenshot" title="$tstrings['grabscreenshot']"><i class="material-icons">photo_camera</i></a></li>
+						<li class="dropdown"><a href='javascript:void(0);' data-toggle="modal" data-target="#SendMessageModal" title="$tstrings['sendamessage'] - Shortcut: n" accesskey="n"><i class="material-icons">message</i></a></li>
+						<li class="dropdown"><a href="#screenshot" title="$tstrings['grabscreenshot'] - Shortcut: s" accesskey="s"><i class="material-icons">photo_camera</i></a></li>
 						<!-- #END# Notifications -->
 						<li id="osd_power_status"></li>
-						<li class="dropdown"><a href='javascript:void(0);' data-toggle="modal" data-target="#PowerModal" title="$tstrings['powercontrol'].replace(' ','&nbsp;')"><i class="material-icons">settings_power</i></a></li>
+						<li class="dropdown"><a href='javascript:void(0);' data-toggle="modal" data-target="#PowerModal" title="$tstrings['powercontrol'].replace(' ','&nbsp;') - Shortcut: p" accesskey="p"><i class="material-icons">settings_power</i></a></li>
 						<!-- #END# Tasks -->
 						<li><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">settings</i></a></li>
 					</ul>
@@ -244,31 +244,31 @@
 							</ul>
 						</li>
 						<li>
-							<a href="#tv" data-close="true">
+							<a href="#tv" data-close="true" accesskey="v" title="Shortcut: v">
 								<i class="material-icons">tv</i>
 								<span>$tstrings['television']</span>
 							</a>
 						</li>
 						<li>
-							<a href="#radio" data-close="true">
+							<a href="#radio" data-close="true" accesskey="r" title="Shortcut: r">
 								<i class="material-icons">radio</i>
 								<span>$tstrings['radio']</span>
 							</a>
 						</li>
 						<li>
-							<a href="#myepg&epgmode=tv" data-close="true">
+							<a href="#myepg&epgmode=tv" data-close="true" accesskey="e" title="Shortcut: e">
 								<i class="material-icons">view_list</i>
 								<span>$tstrings['epg']</span>
 							</a>
 						</li>
 						<li>
-							<a href="#movies" data-close="true">
+							<a href="#movies" data-close="true" accesskey="m" title="Shortcut: m">
 								<i class="material-icons">movie</i>
 								<span>$tstrings['movies']</span>
 							</a>
 						</li>
 						<li>
-							<a href="#timers" data-close="true">
+							<a href="#timers" data-close="true" accesskey="t" title="Shortcut: t">
 								<i class="material-icons">alarm</i>
 								<span>$tstrings['timers']</span>
 							</a>
@@ -276,7 +276,7 @@
 						#for $extra in $extras
 							#if $extra["key"] in ("ajax/at",)
 								<li>
-									<a href="#at" data-close="true">
+									<a href="#at" data-close="true" accesskey="a" title="Shortcut: a">
 										<i class="material-icons">history</i>
 										<span>$extra["description"]</span>
 									</a>
@@ -284,25 +284,25 @@
 							#end if
 						#end for
 						<li>
-							<a href="#settings" data-close="true">
+							<a href="#settings" data-close="true" accesskey="c" title="Shortcut: c">
 								<i class="material-icons">settings</i>
 								<span>$tstrings['settings']</span>
 							</a>
 						</li>
 						<li>
-							<a href="#bqe" data-close="true">
+							<a href="#bqe" data-close="true" accesskey="b" title="Shortcut: b">
 								<i class="material-icons">view_list</i>
 								<span>$tstrings['Bouquet_Editor']</span>
 							</a>
 						</li>
 						<li>
-							<a href="#satfinder" data-close="true">
+							<a href="#satfinder" data-close="true" accesskey="o" title="Shortcut: o">
 								<i class="material-icons">wifi</i>
 								<span>$tstrings['satfinder']</span>
 							</a>
 						</li>
 						<li>
-							<a href="#boxinfo" data-close="true">
+							<a href="#boxinfo" data-close="true" accesskey="i" title="Shortcut: i">
 								<i class="material-icons">info</i>
 								<span>$tstrings['box_info']</span>
 							</a>
@@ -314,7 +314,7 @@
 							</a>
 							<ul class="ml-menu">
 							#if $webtv
-								<li><a href="#webtv" data-close="true">$tstrings['webtv']</a></li>
+								<li><a href="#webtv" data-close="true" accesskey="w" title="Shortcut: w">$tstrings['webtv']</a></li>
 							#end if
 							#for $extra in $extras
 								#set $target_url = $extra["key"];
