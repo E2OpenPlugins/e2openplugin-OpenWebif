@@ -9,9 +9,10 @@
     "@babel/core": "^7.12.3",
     "@babel/node": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
+    "babel-plugin-uglify": "^1.0.2",
     "clean-css": "^4.2.3",
     "clean-css-cli": "^4.3.0",
-    "commander": "^6.1.0",
+    "commander": "^6.2.0",
     "glob-uglifyjs": "^2.0.0",
     "mkdirp": "^0.5.5"
   },
@@ -19,9 +20,8 @@
     "defaults"
   ],
   "scripts": {
-    "resp-css": "node ./_utils/mincss.js -o '../plugin/public/' './themes/absb/css/**/*.css'",
-    "orig-css": "node ./_utils/mincss.js -o '../plugin/public/' './css/**/*.css'",
-    "resp-js": "glob-uglifyjs",
+    "build-css": "npx ./_utils/mincss.js -o '../plugin/public/' './themes/absb/css/**/*.css'",
+    "build-js": "npx ./_utils/prepareJs.js && npx babel ./themes/absb/js/owif.js --watch --out-dir ./tmp/ && glob-uglifyjs",
     "test": "echo 'Error: no test specified!' && exit 1"
   },
   "repository": {
