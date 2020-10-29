@@ -366,6 +366,8 @@ tstrings = {
 	'at_delete_autotimer_question': _("Do you really want to delete the AT"),
 	'at_label_series': _("Label series"),
 	'at_new': _("New"),
+	'at_name_hint': _("Enter a name for this AutoTimer"),
+	'at_text_hint': _("Enter the text to find in the EPG"),
 
 	'ats_auto_timer_settings': _("AutoTimer Settings"),
 	'ats_autopoll': _("AutoPoll"),
