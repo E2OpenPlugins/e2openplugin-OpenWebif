@@ -375,10 +375,8 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	$('#enabled').prop('checked', this.enabled); 
 	$('#name').val(this.name);
 	$('#match').val(this.match);
-	$('#searchType').val(this.searchType);
-	$('#searchType').selectpicker('refresh');
-	$('#searchCase').val(this.searchCase);
-	$('#searchCase').selectpicker('refresh');
+	$('#searchType').val(this.searchType).selectpicker('refresh');
+	$('#searchCase').val(this.searchCase).selectpicker('refresh');
 	$('#justplay').val(this.justplay);
 	$('#overrideAlternatives').prop('checked', this.overrideAlternatives); 
 	$('#timeSpan').prop('checked',this.timeSpan);
@@ -411,8 +409,7 @@ AutoTimerObj.prototype.UpdateUI = function(){
 			$('#beforeE').hide();
 		}
 	}
-	$("#avoidDuplicateDescription").val(this.avoidDuplicateDescription);
-	$('#avoidDuplicateDescription').selectpicker('refresh');
+	$("#avoidDuplicateDescription").val(this.avoidDuplicateDescription).selectpicker('refresh');
 	
 	if(this.location) {
 		$('#location').val(this.location);
@@ -880,7 +877,6 @@ function test_simulateAT(simulate)
 }
 
 function InitPage() {
-
 	$('#timeSpan').click(function() { checkValues();});
 	$('#timeSpanAE').click(function() { checkValues();});
 	$('#timeFrame').click(function() { checkValues();});
@@ -898,7 +894,7 @@ function InitPage() {
 	$('#vps').change(function () {checkValues();});
 	initValues ();
 	checkValues();
-	getData();
+  getData();
 
 	$( ".FM" ).change(function() {
 	
@@ -980,10 +976,8 @@ function addAT(evt)
 		xml += '</timer></timers>';
 	}
 	var xmlDoc = $.parseXML( xml );
-	
 	$(xmlDoc).find("timer").each(function () {
-		$( "#atlist" ).append($("<option data-id='" + $(this).attr("id") + "' value='" + $(this).attr("id") + "' selected >" + $(this).attr("name") + "</option>"));
-		$('#atlist').selectpicker('refresh');
+		$('#atlist').append($("<option data-id='" + $(this).attr("id") + "' value='" + $(this).attr("id") + "' data-x-selected >" + $(this).attr("name") + "</option>")).selectpicker('refresh');
 		CurrentAT = new AutoTimerObj($(this));
 		CurrentAT.isNew = true;
 		CurrentAT.MustSave = true;
@@ -1036,18 +1030,15 @@ function Parse(keepSelection) {
 		return a1> b1? 1: -1;
 	});
 	
-	var selectoptions = "";
-	var i = 0;
+	var selectoptions = "<option selected disabled>Select an AutoTimer</option>";
 	$(atlist).each(function () {
 		var selected = ''
-		if ( ( i === 0 && keepSelection === -1) || ( keepSelection.toString() === $(this).attr("id").toString() ) ) {
+		if ( ( (keepSelection || "").toString() === $(this).attr("id").toString() ) ) {
 			selected = 'selected'
 		}
 		selectoptions += "<option data-id='" + $(this).attr("id") + "' value='" + $(this).attr("id") + "' " + selected + " >" + $(this).attr("name") + "</option>"
-		i++;
 	});
-	$("#atlist").html(selectoptions);
-	$("#atlist").selectpicker('refresh');
+	$("#atlist").html(selectoptions).selectpicker('refresh');
 
 	if(at2add)
 	{
@@ -1059,7 +1050,10 @@ function Parse(keepSelection) {
 		var item = $("#atlist").val();
 		if(item) {
 			FillAT(item);
-		}
+		} else {
+      // init with new entry
+      addAT();
+    }
 	}
 	if(atlist.length>0) {
 		$("#atbutton5").show();
