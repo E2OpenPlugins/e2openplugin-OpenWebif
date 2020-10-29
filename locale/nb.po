@@ -2184,7 +2184,7 @@ msgid "Without auth only local access is allowed!"
 msgstr "Kun lokal adgang er tillat uten godkjenning!"
 
 #: ../plugin/controllers/i18n.py:382
-msgid "Wizzard"
+msgid "Wizard"
 msgstr "Veiviser"
 
 #: ../plugin/controllers/web.py:223

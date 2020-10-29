@@ -2186,7 +2186,7 @@ msgid "Without auth only local access is allowed!"
 msgstr "دون المصادقة يسمح فقط الوصول المحلي!"
 
 #: ../plugin/controllers/i18n.py:382
-msgid "Wizzard"
+msgid "Wizard"
 msgstr "النافذة"
 
 #: ../plugin/controllers/web.py:223

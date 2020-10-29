@@ -2193,7 +2193,7 @@ msgid "Without auth only local access is allowed!"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:383
-msgid "Wizzard"
+msgid "Wizard"
 msgstr ""
 
 #: ../plugin/controllers/web.py:239

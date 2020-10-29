@@ -3,7 +3,7 @@
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 
 <style>
-	.btn-themed { margin: 0 0.4ex; }
+	.btn-themed { margin: 0.4ex; }
 	
 	.atform__details__title label { min-height: 2em; font-size: inherit; font-weight: normal; }
 
@@ -23,7 +23,7 @@
 		<div class="header">
 			<div class="row clearfix">
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<h2 id="configtitle"><i class="material-icons material-icons-centered">history</i>$tstrings['at_at_edit']<span id='at_name'></span></h2>
+					<h2 id="configtitle"><i class="material-icons material-icons-centered">history</i>$tstrings['at_at_edit'] <span id='at_name'></span></h2>
 				</div>
 				<div class="col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl">
 					<div class="row vti-vspace-20"></div>
@@ -36,97 +36,15 @@
 <div class="body" >
 			<div id="content_main">
 				<div id="info">
-					<div class="row clearfix">
-						<div class="col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl">
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="addAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">add</i><span>$tstrings['at_add']</span></button>
-									<button onclick="delAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="reloadAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">autorenew</i><span>$tstrings['at_reload']</span></button>
-									<button onclick="saveAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="parseAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
-									<button onclick="test_simulateAT(true); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="test_simulateAT(false); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">extension</i><span>Test</span></button>
-									<button onclick="listTimers(); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerList"><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="btn btn-themed waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 hidden-xs hidden-md hidden-lg hidden-xl">
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="addAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">add</i><span>$tstrings['at_add']</span></button>
-									<button onclick="delAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
-									<button onclick="reloadAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">autorenew</i><span>$tstrings['at_reload']</span></button>
-									<button onclick="saveAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="parseAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
-									<button onclick="test_simulateAT(true); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
-									<button onclick="test_simulateAT(false); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">extension</i><span>Test</span></button>
-									<button onclick="listTimers(); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerList"><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="btn btn-themed waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 hidden-xs hidden-sm hidden-lg hidden-xl">
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="addAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">add</i><span>$tstrings['at_add']</span></button>
-									<button onclick="delAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
-									<button onclick="reloadAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">autorenew</i><span>$tstrings['at_reload']</span></button>
-									<button onclick="saveAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
-									<button onclick="parseAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
-									<button onclick="test_simulateAT(true); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="test_simulateAT(false); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">extension</i><span>Test</span></button>
-									<button onclick="listTimers(); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerList"><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
-									<button onclick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="btn btn-themed waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 align-center hidden-xs hidden-sm hidden-md">
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="addAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">add</i><span>$tstrings['at_add']</span></button>
-									<button onclick="delAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
-									<button onclick="reloadAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">autorenew</i><span>$tstrings['at_reload']</span></button>
-									<button onclick="saveAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
-									<button onclick="parseAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
-									<button onclick="test_simulateAT(true); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
-									<button onclick="test_simulateAT(false); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">extension</i><span>Test</span></button>
-									<button onclick="listTimers(); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerList"><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
-									<button onclick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="btn btn-themed waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
-								</div>
-							</div>
-						</div>
+					<div class="row align-center clearfix">
+						<button onclick="addAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></button>
+						<button onclick="delAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
+						<button onclick="parseAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
+						<button onclick="test_simulateAT(true); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
+						<button onclick="test_simulateAT(false); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">extension</i><span>Test</span></button>
+						<button onclick="listTimers(); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerList"><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
+						<button onclick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="btn btn-themed waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
 					</div>
-
 
 					<div class="row clearfix vti-masked-input">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -549,10 +467,8 @@
 											</div>
 
 											<div class="atform__fields-container">
-												<div class="table-responsive">
-													<table id="filterlist" class="table table-striped table-hover FilterE">
-													</table>
-												</div>
+												<table id="filterlist" class="table table-striped table-hover FilterE">
+												</table>
 											</div>
 
 #if $hasVPS == 1
@@ -586,99 +502,14 @@
 											</div>
 #end if
 										</div>
+
+										<div class="row align-right clearfix">
+											<button onclick="reloadAT(); return false;" class="btn btn-default waves-effect"><i class="material-icons">restore</i><span>$tstrings['at_reset']</span></button>
+											<button onclick="saveAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
+										</div>
+
 									</fieldset>
 								</form>
-							</div>
-						</div>
-					</div>
-
-					<div class="row clearfix">
-						<div class="col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl">
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="addAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">add</i><span>$tstrings['at_add']</span></button>
-									<button onclick="delAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="reloadAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">autorenew</i><span>$tstrings['at_reload']</span></button>
-									<button onclick="saveAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="parseAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
-									<button onclick="test_simulateAT(true); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="test_simulateAT(false); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">extension</i><span>Test</span></button>
-									<button onclick="listTimers(); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerList"><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="btn btn-themed waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 hidden-xs hidden-md hidden-lg hidden-xl">
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="addAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">add</i><span>$tstrings['at_add']</span></button>
-									<button onclick="delAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
-									<button onclick="reloadAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">autorenew</i><span>$tstrings['at_reload']</span></button>
-									<button onclick="saveAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="parseAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
-									<button onclick="test_simulateAT(true); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
-									<button onclick="test_simulateAT(false); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">extension</i><span>Test</span></button>
-									<button onclick="listTimers(); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerList"><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="btn btn-themed waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 hidden-xs hidden-sm hidden-lg hidden-xl">
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="addAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">add</i><span>$tstrings['at_add']</span></button>
-									<button onclick="delAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
-									<button onclick="reloadAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">autorenew</i><span>$tstrings['at_reload']</span></button>
-									<button onclick="saveAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
-									<button onclick="parseAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
-									<button onclick="test_simulateAT(true); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="test_simulateAT(false); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">extension</i><span>Test</span></button>
-									<button onclick="listTimers(); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerList"><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
-									<button onclick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="btn btn-themed waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 align-center hidden-xs hidden-sm hidden-md">
-							<div class="row">
-								<div class="col-xs-12 align-center">
-									<button onclick="addAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">add</i><span>$tstrings['at_add']</span></button>
-									<button onclick="delAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
-									<button onclick="reloadAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">autorenew</i><span>$tstrings['at_reload']</span></button>
-									<button onclick="saveAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
-									<button onclick="parseAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
-									<button onclick="test_simulateAT(true); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
-									<button onclick="test_simulateAT(false); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">extension</i><span>Test</span></button>
-									<button onclick="listTimers(); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerList"><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
-									<button onclick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="btn btn-themed waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -776,7 +607,7 @@
 									<label for="ats_editor">$tstrings['ats_editor']</label>
 									<select id="ats_editor" size="1" class="form-control">
 										<option value="plain" selected="selected">$tstrings['ats_editor_plain']</option>
-										<option value="wizzard" selected="selected">$tstrings['ats_editor_wizzard']</option>
+										<option value="wizzard" selected="selected">$tstrings['ats_editor_wizard']</option>
 									</select>
 								</div>
 							</fieldset>
@@ -784,7 +615,7 @@
 					</div>
 				</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-themed waves-effect" data-dismiss="modal">$tstrings['close']</button>
+				<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">$tstrings['close']</button>
 				<button type="button" class="btn btn-themed waves-effect" data-dismiss="modal" onclick="setAutoTimerSettings(); return false;">$tstrings['save']</button>
 			</div>
 		</div>
@@ -802,7 +633,7 @@
 					<div id="timerdlgcont"></div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-themed waves-effect" data-dismiss="modal">$tstrings['close']</button>
+				<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">$tstrings['close']</button>
 			</div>
 		</div>
 	</div>

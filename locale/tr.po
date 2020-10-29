@@ -1585,7 +1585,7 @@ msgstr "Haftalık (Pazar)"
 msgid "Without auth only local access is allowed!"
 msgstr "Yetkilendirme olmadan yalnızca yerel erişime izin verilir!"
 
-msgid "Wizzard"
+msgid "Wizard"
 msgstr "Sihirbaz"
 
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "

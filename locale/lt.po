@@ -2204,7 +2204,7 @@ msgid "Without auth only local access is allowed!"
 msgstr "Be autentikacijos leidžiamas tik vietinis prisijungimas!"
 
 #: ../plugin/controllers/i18n.py:383
-msgid "Wizzard"
+msgid "Wizard"
 msgstr "Vedlys"
 
 #: ../plugin/controllers/web.py:239

@@ -2267,7 +2267,7 @@ msgid "Without auth only local access is allowed!"
 msgstr "没有认证只有本地访问是允许的！"
 
 #: ../plugin/controllers/i18n.py:382
-msgid "Wizzard"
+msgid "Wizard"
 msgstr "向导"
 
 #: ../plugin/controllers/web.py:223

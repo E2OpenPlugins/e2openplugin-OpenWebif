@@ -2180,7 +2180,7 @@ msgid "Without auth only local access is allowed!"
 msgstr "Bez ověřování je povolen pouze lokální přístup"
 
 #: ../plugin/controllers/i18n.py:382
-msgid "Wizzard"
+msgid "Wizard"
 msgstr "Průvodce"
 
 #: ../plugin/controllers/web.py:223

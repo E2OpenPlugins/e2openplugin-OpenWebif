@@ -2197,7 +2197,7 @@ msgid "Without auth only local access is allowed!"
 msgstr "Bez autorizácie je povolený iba lokálny prístup!"
 
 #: ../plugin/controllers/i18n.py:382
-msgid "Wizzard"
+msgid "Wizard"
 msgstr "Sprievodca"
 
 #: ../plugin/controllers/web.py:223
