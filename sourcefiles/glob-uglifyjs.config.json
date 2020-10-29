@@ -4,8 +4,8 @@
         "UseMinExt": true,
         "MinifyOptions": {},
         "OutDir": "../plugin/public/themes/absb/js/",
-        "RootDir": "./themes/absb/js/",
+        "RootDir": "./tmp/",
         "RemoveSource": false,
-        "Debug": false
+        "Debug": true
     }
 }
