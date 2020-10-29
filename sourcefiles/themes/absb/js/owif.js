@@ -1,5 +1,11 @@
 'use strict';
 
+const debugTagStyle = 'color: #fff; font-weight: bold; background-color: #333; padding: 2px 4px 1px; border-radius: 2px;';
+
+const debugMsg = (msg) => {
+  console.info('%cOWIF', debugTagStyle, msg);
+}
+
 class STB { 
   constructor() {}
 }
@@ -14,15 +20,15 @@ class GUI {
   fullscreen(state, el) {
     if (state === true) {
       screenfull.request(el).then(() => {
-        console.log('GUI:fullscreen activated');
+        debugMsg('GUI:fullscreen activated');
       });
     } else if (state === false) {
       screenfull.exit().then(() => {
-        console.log('GUI:fullscreen deactivated');
+        debugMsg('GUI:fullscreen deactivated');
       });
     } else {
       screenfull.toggle(el).then(() => {
-        console.log('GUI:fullscreen toggled');
+        debugMsg('GUI:fullscreen toggled');
       });
     }
   } 

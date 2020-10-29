@@ -2198,7 +2198,7 @@ msgid "Without auth only local access is allowed!"
 msgstr "Vain lähiverkko-osoitteet sallittu!"
 
 #: ../plugin/controllers/i18n.py:382
-msgid "Wizzard"
+msgid "Wizard"
 msgstr "Avustaja"
 
 #: ../plugin/controllers/web.py:223

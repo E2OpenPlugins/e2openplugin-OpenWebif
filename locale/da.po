@@ -2227,7 +2227,7 @@ msgid "Without auth only local access is allowed!"
 msgstr "Kun lokal adgang tillades uden godkendelse!"
 
 #: ../plugin/controllers/i18n.py:382
-msgid "Wizzard"
+msgid "Wizard"
 msgstr "Anvend assistent"
 
 #: ../plugin/controllers/web.py:223

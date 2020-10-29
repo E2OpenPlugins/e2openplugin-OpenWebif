@@ -2188,7 +2188,7 @@ msgid "Without auth only local access is allowed!"
 msgstr "Χωρίς πιστοποίηση, μόνο τοπική πρόσβαση επιτρεπτή!"
 
 #: ../plugin/controllers/i18n.py:382
-msgid "Wizzard"
+msgid "Wizard"
 msgstr "Οδηγός"
 
 #: ../plugin/controllers/web.py:223

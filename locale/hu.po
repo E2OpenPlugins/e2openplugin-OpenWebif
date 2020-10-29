@@ -2180,7 +2180,7 @@ msgid "Without auth only local access is allowed!"
 msgstr "Hitelesítés nélkül csak helyi hozzáférés engedélyezett!"
 
 #: ../plugin/controllers/i18n.py:383
-msgid "Wizzard"
+msgid "Wizard"
 msgstr "Varázsló"
 
 #: ../plugin/controllers/web.py:223

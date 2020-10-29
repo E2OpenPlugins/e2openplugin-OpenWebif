@@ -2179,7 +2179,7 @@ msgid "Without auth only local access is allowed!"
 msgstr "Autentimata on lubatud ainult kohalik aadress!"
 
 #: ../plugin/controllers/i18n.py:382
-msgid "Wizzard"
+msgid "Wizard"
 msgstr "Abiline"
 
 #: ../plugin/controllers/web.py:223

@@ -2191,8 +2191,8 @@ msgid "Without auth only local access is allowed!"
 msgstr "Zonder authentificatie is alléén lokale toegang mogelijk!"
 
 #: ../plugin/controllers/i18n.py:382
-msgid "Wizzard"
-msgstr "Wizzard"
+msgid "Wizard"
+msgstr "Wizard"
 
 #: ../plugin/controllers/web.py:223
 #, python-format
