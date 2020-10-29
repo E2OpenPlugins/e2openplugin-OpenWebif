@@ -766,7 +766,8 @@
 
 .bg-red,
 [data-theme=red] .color-swatch,
-.theme-red .btn-themed {
+.theme-red .btn-themed,
+.theme-red .choices__list--multiple .choices__item {
   background-color: #f44336 !important;
   color: #fff;
 }
@@ -854,7 +855,8 @@
 
 .bg-pink,
 [data-theme=pink] .color-swatch,
-.theme-pink .btn-themed {
+.theme-pink .btn-themed,
+.theme-pink .choices__list--multiple .choices__item {
   background-color: #e91e63 !important;
   color: #fff;
 }
@@ -942,7 +944,8 @@
 
 .bg-purple,
 [data-theme=purple] .color-swatch,
-.theme-purple .btn-themed {
+.theme-purple .btn-themed,
+.theme-purple .choices__list--multiple .choices__item {
   background-color: #9c27b0 !important;
   color: #fff;
 }
@@ -1030,7 +1033,8 @@
 
 .bg-deep-purple,
 [data-theme=deep-purple] .color-swatch,
-.theme-deep-purple .btn-themed {
+.theme-deep-purple .btn-themed,
+.theme-deep-purple .choices__list--multiple .choices__item {
   background-color: #673ab7 !important;
   color: #fff;
 }
@@ -1118,7 +1122,8 @@
 
 .bg-indigo,
 [data-theme=indigo] .color-swatch,
-.theme-indigo .btn-themed {
+.theme-indigo .btn-themed,
+.theme-indigo .choices__list--multiple .choices__item {
   background-color: #3f51b5 !important;
   color: #fff;
 }
@@ -1206,7 +1211,8 @@
 
 .bg-blue,
 [data-theme=blue] .color-swatch,
-.theme-blue .btn-themed {
+.theme-blue .btn-themed,
+.theme-blue .choices__list--multiple .choices__item {
   background-color: #2196f3 !important;
   color: #fff;
 }
@@ -1294,7 +1300,8 @@
 
 .bg-light-blue,
 [data-theme=light-blue] .color-swatch,
-.theme-light-blue .btn-themed {
+.theme-light-blue .btn-themed,
+.theme-light-blue .choices__list--multiple .choices__item {
   background-color: #03a9f4 !important;
   color: #fff;
 }
@@ -1382,7 +1389,8 @@
 
 .bg-cyan,
 [data-theme=cyan] .color-swatch,
-.theme-cyan .btn-themed {
+.theme-cyan .btn-themed,
+.theme-cyan .choices__list--multiple .choices__item {
   background-color: #00bcd4 !important;
   color: #fff;
 }
@@ -1470,7 +1478,8 @@
 
 .bg-teal,
 [data-theme=teal] .color-swatch,
-.theme-teal .btn-themed {
+.theme-teal .btn-themed,
+.theme-teal .choices__list--multiple .choices__item {
   background-color: #009688 !important;
   color: #fff;
 }
@@ -1558,7 +1567,8 @@
 
 .bg-green,
 [data-theme=green] .color-swatch,
-.theme-green .btn-themed {
+.theme-green,
+.choices__list--multiple .choices__item {
   background-color: #4caf50 !important;
   color: #fff;
 }
@@ -1646,7 +1656,8 @@
 
 .bg-light-green,
 [data-theme=light-green] .color-swatch,
-.theme-light-green .btn-themed {
+.theme-light-green .btn-themed,
+.theme-light-green .choices__list--multiple .choices__item {
   background-color: #8bc34a !important;
   color: #fff;
 }
@@ -1734,7 +1745,8 @@
 
 .bg-lime,
 [data-theme=lime] .color-swatch,
-.theme-lime .btn-themed {
+.theme-lime .btn-themed,
+.theme-lime .choices__list--multiple .choices__item {
   background-color: #cddc39 !important;
   color: #fff;
 }
@@ -1823,7 +1835,8 @@
 
 .bg-yellow,
 [data-theme=yellow] .color-swatch,
-.theme-yellow .btn-themed {
+.theme-yellow .btn-themed,
+.theme-yellow .choices__list--multiple .choices__item {
   background-color: #ffe821 !important;
   color: #333;
 }
@@ -1911,7 +1924,8 @@
 
 .bg-amber,
 [data-theme=amber] .color-swatch,
-.theme-amber .btn-themed {
+.theme-amber .btn-themed,
+.theme-amber .choices__list--multiple .choices__item {
   background-color: #ffc107 !important;
   color: #fff;
 }
@@ -1999,7 +2013,8 @@
 
 .bg-orange,
 [data-theme=orange] .color-swatch,
-.theme-orange .btn-themed {
+.theme-orange .btn-themed,
+.theme-orange .choices__list--multiple .choices__item {
   background-color: #ff9800 !important;
   color: #fff;
 }
@@ -2087,7 +2102,8 @@
 
 .bg-deep-orange,
 [data-theme=deep-orange] .color-swatch,
-.theme-deep-orange .btn-themed {
+.theme-deep-orange .btn-themed,
+.theme-deep-orange .choices__list--multiple .choices__item {
   background-color: #ff5722 !important;
   color: #fff;
 }
@@ -2175,7 +2191,8 @@
 
 .bg-brown,
 [data-theme=brown] .color-swatch,
-.theme-brown .btn-themed {
+.theme-brown .btn-themed,
+.theme-brown .choices__list--multiple .choices__item {
   background-color: #795548 !important;
   color: #fff;
 }
@@ -2263,7 +2280,8 @@
 
 .bg-grey,
 [data-theme=grey] .color-swatch,
-.theme-grey .btn-themed {
+.theme-grey .btn-themed,
+.theme-grey .choices__list--multiple .choices__item {
   background-color: #9e9e9e !important;
   color: #fff;
 }
@@ -2351,7 +2369,8 @@
 
 .bg-blue-grey,
 [data-theme=blue-grey] .color-swatch,
-.theme-blue-grey .btn-themed {
+.theme-blue-grey .btn-themed,
+.theme-blue-grey .choices__list--multiple .choices__item {
   background-color: #607d8b !important;
   color: #fff;
 }
@@ -2439,7 +2458,8 @@
 
 .bg-grey-darken-4,
 [data-theme=grey-darken-4] .color-swatch,
-.theme-grey-darken-4 .btn-themed {
+.theme-grey-darken-4 .btn-themed,
+.theme-grey-darken-4 .choices__list--multiple .choices__item {
   background-color: #212121 !important;
   color: #f1f1f1;
 }
@@ -2532,7 +2552,8 @@
 
 .bg-black,
 [data-theme=black] .color-swatch,
-.theme-black .btn-themed {
+.theme-black .btn-themed,
+.theme-black .choices__list--multiple .choices__item {
   background-color: #000 !important;
   color: #fff;
 }

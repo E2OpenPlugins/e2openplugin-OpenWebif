@@ -1,3 +1,18 @@
+var choicesConfig = {
+  removeItemButton: true,
+  duplicateItemsAllowed: false,
+  resetScrollPosition: false,
+  shouldSort: false,
+  placeholder: true,
+  placeholderValue: 'placeholderValue',
+  searchPlaceholderValue: 'searchPlaceholderValue',
+  renderSelectedChoices: 'always',
+  loadingText: 'Loading...',
+  noResultsText: 'No results found',
+  noChoicesText: 'No choices to choose from',
+  itemSelectText: '',
+};
+
 function toUnixDate(date){
 	var d = moment(date, "DD.MM.YY").unix();
 	return d;
@@ -134,7 +149,7 @@ function initValues () {
 			} else
 				showError('');
 	});
-	$('#before').val(moment(_datea).format('DD.MM.YY'));
+  $('#before').val(moment(_datea).format('DD.MM.YY'));
 }
 
 
@@ -436,15 +451,15 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	$.each(this.Channels, function(index, value) {
 		$('#channels option[value="' + value + '"]').prop("selected", true);
 	});
-	$('#bouquets').selectpicker('refresh');
-	$('#channels').selectpicker('refresh');
+	// $('#bouquets').selectpicker('refresh');
+  // $('#channels').selectpicker('refresh');
 	$('#Bouquets').prop('checked',(this.Bouquets.length>0));
 	$('#Channels').prop('checked',(this.Channels.length>0));
 	$('#tags').val(null);
 	$.each(this.Tags, function(index, value) {
 		$('#tags option[value="' + value + '"]').prop("selected", true);
 	});
-	$('#tags').selectpicker('refresh');
+	// $('#tags').selectpicker('refresh');
 	var rc = $('#filterlist tr').length;
 	if(rc>1)
 	{
@@ -456,7 +471,8 @@ AutoTimerObj.prototype.UpdateUI = function(){
 		c++;
 		AddFilter(value.t,value.w,value.v);
 	});
-	$.AdminBSB.select.activate();
+  $.AdminBSB.select.activate();
+
 	$('#Filter').prop('checked',(c>0));
 	$('#counter').val(this.counter);
 	$('#left').val(this.left);
@@ -728,18 +744,28 @@ function checkValues () {
 		$('#LocationE').hide();
 	if ($('#Bouquets').is(':checked') === true)
 		$('#BouquetsE').show();
-	else
-		$('#BouquetsE').hide();
+	else {
+    $('#BouquetsE').hide();
+    try {
+      choicesB.removeActiveItems();
+    } catch(e){}
+  }
 	if ($('#Channels').is(':checked') === true)
 		$('#ChannelsE').show();
-	else
-		$('#ChannelsE').hide();
-
+	else {
+    $('#ChannelsE').hide();
+    try {
+      choicesC.removeActiveItems();
+    } catch(e){}
+  }
 	if ($('#Tags').is(':checked') === true) {
 		$('#TagsE').show();
 	}
 	else {
-		$('#TagsE').hide();
+    $('#TagsE').hide();
+    try {
+      choicesT.removeActiveItems();
+    } catch(e){}
 	}
 
 	if ($('#Filter').is(':checked') === true) {
@@ -853,7 +879,6 @@ function test_simulateAT(simulate)
 	});
 }
 
-
 function InitPage() {
 
 	$('#timeSpan').click(function() { checkValues();});
@@ -887,7 +912,11 @@ function InitPage() {
 			nf.find(".FS").hide();
 			nf.find(".FI").show();
 		}
-	});
+  });
+  
+  var choicesT = new Choices('#tags', choicesConfig);
+  var choicesC = new Choices('#channels', choicesConfig);
+  var choicesB = new Choices('#bouquets', choicesConfig);
 }
 
 function delAT()

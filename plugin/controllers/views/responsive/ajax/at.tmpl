@@ -503,8 +503,8 @@
 													<label for="Tags">$tstrings['at_tags']</label>
 												</div>
 												<div class="atform__details__element">
-													<div id="TagsE" class="dropdown atform__details__dropdown" style="display:none">
-														<select name="tags" id="tags" class="form-control show-tick" multiple="multiple"></select>
+													<div id="TagsE" class="dropdown atform__details__dropdown form-line" style="display:none">
+														<select name="tags" id="tags" class="form-control no-default-select" multiple="multiple" data-select-choices></select>
 													</div>
 												</div>
 											</div>
@@ -516,8 +516,8 @@
 													<label for="Channels">$tstrings['at_channels']</label>
 												</div>
 												<div class="atform__details__element">
-													<div id="ChannelsE" class="dropdown atform__details__dropdown" style="display:none">
-														<select name="channels" id="channels" class="form-control show-tick" multiple="multiple"></select>
+													<div id="ChannelsE" class="dropdown atform__details__dropdown form-line" style="display:none">
+														<select name="channels" id="channels" class="form-control no-default-select" multiple="multiple" data-select-choices></select>
 													</div>
 												</div>
 											</div>
@@ -529,8 +529,8 @@
 													<label for="Bouquets">$tstrings['bouquets']</label>
 												</div>
 												<div class="atform__details__element">
-													<div id="BouquetsE" class="dropdown atform__details__dropdown" style="display:none">
-														<select name="bouquets" id="bouquets" class="form-control show-tick" multiple="multiple"></select>
+													<div id="BouquetsE" class="dropdown atform__details__dropdown form-line" style="display:none">
+														<select name="bouquets" id="bouquets" class="form-control no-default-select" multiple="multiple" data-select-choices></select>
 													</div>
 												</div>
 											</div>
@@ -808,6 +808,7 @@
 	</div>
 </div>
 
+<script src="/themes/absb/plugins/choices/choices.min.js"></script>
 <script src="/themes/absb/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
 <script src="/js/at-2.9.min.js"></script>
 <script src="/themes/absb/js/vti-responsive-at.min.js"></script>
