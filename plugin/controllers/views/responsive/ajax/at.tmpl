@@ -29,7 +29,7 @@
 					<div class="row vti-vspace-20"></div>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-3">
-					<select id="atlist" class="form-control"></select>
+					<select id="atlist" class="form-control no-default-select"></select>
 				</div>
 			</div>
 		</div>
@@ -37,13 +37,13 @@
 			<div id="content_main">
 				<div id="info">
 					<div class="row align-center clearfix">
-						<button onclick="addAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></button>
-						<button onclick="delAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
-						<button onclick="parseAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
-						<button onclick="test_simulateAT(true); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
-						<button onclick="test_simulateAT(false); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">extension</i><span>Test</span></button>
-						<button onclick="listTimers(); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerList"><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
-						<button onclick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="btn btn-themed waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
+						<button type="button" onclick="addAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></button>
+						<button type="button" onclick="delAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
+						<button type="button" onclick="parseAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
+						<button type="button" onclick="test_simulateAT(true); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
+						<button type="button" onclick="test_simulateAT(false); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">extension</i><span>Test</span></button>
+						<button type="button" onclick="listTimers(); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerList"><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
+						<button type="button" onclick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="btn btn-themed waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
 					</div>
 
 					<div class="row clearfix vti-masked-input">
@@ -55,7 +55,7 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="enabled" id="enabled" placeholder="" required class="form-control chk-col-$skinColor">
+													<input type="checkbox" name="enabled" id="enabled" required class="form-control chk-col-$skinColor">
 													<label for="enabled">$tstrings['at_enabled']</label>
 												</div>
 												<div class="atform__details__element"></div>
@@ -67,7 +67,7 @@
 													<label>$tstrings['at_description']:</label>
 												</div>
 												<div class="atform__details__element form-line">
-													<input type="text" name="name" id="name" placeholder="" required class="form-control inactive">
+													<input type="text" name="name" id="name" placeholder="$tstrings['at_name_hint']" required class="form-control inactive">
 												</div>
 											</div>
 
@@ -77,7 +77,7 @@
 													<label>$tstrings['at_title_match']:</label>
 												</div>
 												<div class="atform__details__element form-line">
-													<input type="text" name="match" id="match" required class="form-control inactive">
+													<input type="text" name="match" id="match" placeholder="$tstrings['at_text_hint']" required class="form-control inactive">
 												</div>
 											</div>
 
@@ -435,7 +435,7 @@
 												</div>
 												<div class="atform__details__element">
 													<div id="ChannelsE" class="dropdown atform__details__dropdown form-line" style="display:none">
-														<select name="channels" id="channels" class="form-control no-default-select" multiple="multiple" data-select-choices></select>
+														<select name="channels" id="channels" class="form-control no-default-select" data-select-choices></select>
 													</div>
 												</div>
 											</div>
@@ -504,8 +504,8 @@
 										</div>
 
 										<div class="row align-right clearfix">
-											<button onclick="reloadAT(); return false;" class="btn btn-default waves-effect"><i class="material-icons">restore</i><span>$tstrings['at_reset']</span></button>
-											<button onclick="saveAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
+											<button type="button" onclick="reloadAT(); return false;" class="btn btn-default waves-effect"><i class="material-icons">restore</i><span>$tstrings['at_reset']</span></button>
+											<button type="submit" onclick="saveAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
 										</div>
 
 									</fieldset>
