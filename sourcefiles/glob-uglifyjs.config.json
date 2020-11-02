@@ -4,7 +4,8 @@
         "UseMinExt": true,
         "MinifyOptions": {},
         "OutDir": "../plugin/public/themes/absb/js/",
-        "RootDir": "./tmp/",
+        "RootDir": "./themes/absb/js/",
+        "Exclude": ["**/*.min.js", "**/owif.js"],
         "RemoveSource": false,
         "Debug": true
     }
