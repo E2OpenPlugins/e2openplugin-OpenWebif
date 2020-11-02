@@ -1,4 +1,12 @@
 {
-  "presets": ["@babel/preset-env"],
-  "sourceMaps": true
+  "presets": [
+    ["@babel/preset-env", {
+      "corejs": 2,
+      "targets": "last 2 versions, not dead",
+      "useBuiltIns": "usage",
+      "forceAllTransforms": true
+    }],
+    ["minify"]
+  ],
+  "sourceMaps": false
 }
