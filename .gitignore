@@ -9,6 +9,7 @@
 .sass-cache/
 .vscode/
 *.css.map
+*.js.map
 /doc/build/
 .settings/
 .project
