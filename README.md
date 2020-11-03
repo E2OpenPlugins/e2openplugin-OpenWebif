@@ -1,10 +1,39 @@
 [![Build Status](https://travis-ci.org/E2OpenPlugins/e2openplugin-OpenWebif.svg?branch=master)](https://travis-ci.org/E2OpenPlugins/e2openplugin-OpenWebif)
 
 # OpenWebif
-OpenWebif is an open source web interface for Enigma2 based set-top boxes (STBs).
+OpenWebif is an open source web interface for Enigma2-based set-top boxes (STBs).
 
 ## Documentation
-[Link](http://e2openplugins.github.io/e2openplugin-OpenWebif/)
+[Link](https://e2openplugins.github.io/e2openplugin-OpenWebif/)
+
+## Found a Problem / Issue / Bug / Missing Feature?
+See if it's already been [logged](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/issues)
+Otherwise, feel free to log a new issue or request.
+
+Please provide as much information as possible!
+
+You'll need to enable `Debug - Display Tracebacks in browser` either
+- from `OpenWebif configuration`, which can be found in your receiver's `Plugins` page.
+or 
+- by adding `config.OpenWebif.displayTracebacks=true` to `/etc/enigma2/settings`
+
+Along with the steps you took that lead to the issue, the following are useful:
+- Your OS or device (macOS / Win / Android / Apple ...)
+- OS or device version (High Sierra / Win10 / Android 11 / iOS12 ...)
+- Browser (Brave / Chrome / Firefox / Safari / Edge ...)
+
+*Remember - the more ~money we get~ info we have, the quicker we'll be able to troubleshoot!*
+
+We don't have every variation of setup at our disposable, so...
+
+If possible, even more useful to include are:
+- Whether the problem is constant or intermittent
+- Whether the issue happens on just one or several browsers
+- Screenshots - A picture really is worth a thousand words!!
+
+## Want to Help Translate?
+Feel free to update an existing [language file](locale/) or create a new one by using
+the [template](locale/OpenWebif.pot)
 
 ## API Wiki
 [Link](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/wiki/OpenWebif-API-documentation)
@@ -13,21 +42,21 @@ OpenWebif is an open source web interface for Enigma2 based set-top boxes (STBs)
 [Link](screenshots/SCREENSHOTS.md)
 
 ## Latest [Bandit](https://wiki.openstack.org/wiki/Security/Projects/Bandit) Report
-[Link](http://e2openplugins.github.io/e2openplugin-OpenWebif/bandit.html) 
+[Link](https://e2openplugins.github.io/e2openplugin-OpenWebif/bandit.html) 
 
 ## Latest [JSHint](http://jshint.com/) Reports
-[Link1](http://e2openplugins.github.io/e2openplugin-OpenWebif/jshint1_report.txt)
-[Link2](http://e2openplugins.github.io/e2openplugin-OpenWebif/jshint2_report.txt)
+[Link1](https://e2openplugins.github.io/e2openplugin-OpenWebif/jshint1_report.txt)
+[Link2](https://e2openplugins.github.io/e2openplugin-OpenWebif/jshint2_report.txt)
 
 ## Latest [Flake8](http://flake8.pycqa.org/) Report
-[Link](http://e2openplugins.github.io/e2openplugin-OpenWebif/flake8_report.txt)
+[Link](https://e2openplugins.github.io/e2openplugin-OpenWebif/flake8_report.txt)
 
 ## License
-Licensed under the GNU General Public License, Version 3. See [LICENSE](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt) for more details.
+Licensed under the GNU General Public License, Version 3. See [LICENSE](LICENSE.txt) for more details.
 
 ## Latest Package
 
-The most recent package may be downloaded [here](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/tree/gh-pages) (ipk package).
+Download the most recent [OpenWebif ipk package](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/tree/gh-pages)
 
 ### Installation
 
@@ -64,13 +93,22 @@ The following additional packages need to be installed:
 
 _(Dependencies should be handled by using ipkg/opkg packages)_
 
+(TODO: add responsive workflow guide here - npm install)
+
 ### Compiling JavaScript Files
 
-The javascipt source files inside of /sourcefiles/js needs to compress via UglifyJS3 on https://skalman.github.io/UglifyJS-online/.
-You need to increase the version and write down your modification description inside of the source file.
-The compressed file have the following syntax : xx-<version>.min.js
+(TODO: add responsive workflow guide here - `npm run build-js`)
+
+The Javascript source files inside /sourcefiles/js need to be compressed 
+via [UglifyJS3](https://skalman.github.io/UglifyJS-online/)
+
+You need to increase the version number and write down your modification 
+description inside of the source file.
+The compressed files have the following syntax : xx-<version>.min.js
 
 ### Compiling CSS Files
+
+(TODO: add responsive workflow guide here - `npm run build-css`)
 
 The script `contrib/inotify_watcher.py` is used for compiling CSS files on
 the developers host using [Sass](http://sass-lang.com/) . On linux you need to
@@ -82,7 +120,7 @@ Mac and Windows do not have inotify support thus the automatic compiling will
 not work (yet). But if you installed Sass (see http://sass-lang.com/install) and
 the `scss` binary/script is in your `PATH` calling
 `contrib/inotify_watcher.py --force-update` should work.
-Alternatively you may define environment variable `SCSS` in order to point to
+Alternatively, you may define environment variable `SCSS` in order to point to
 the location of the scss binary/script.
 
 Base command is
