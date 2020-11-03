@@ -1,18 +1,3 @@
-var choicesConfig = {
-  removeItemButton: true,
-  duplicateItemsAllowed: false,
-  resetScrollPosition: false,
-  shouldSort: false,
-  placeholder: true,
-  placeholderValue: 'placeholderValue',
-  searchPlaceholderValue: 'searchPlaceholderValue',
-  renderSelectedChoices: 'always',
-  loadingText: 'Loading...',
-  noResultsText: 'No results found',
-  noChoicesText: 'No choices to choose from',
-  itemSelectText: '',
-};
-
 function toUnixDate(date){
 	var d = moment(date, "DD.MM.YY").unix();
 	return d;
@@ -440,23 +425,36 @@ AutoTimerObj.prototype.UpdateUI = function(){
 		}
 	}
 	$('#afterevent').selectpicker('refresh');
-	$('#channels').val(null);
-	$('#bouquets').val(null);
-	$.each(this.Bouquets, function(index, value) {
-		$('#bouquets option[value="' + value + '"]').prop("selected", true);
-	});
-	$.each(this.Channels, function(index, value) {
-		$('#channels option[value="' + value + '"]').prop("selected", true);
-	});
-	// $('#bouquets').selectpicker('refresh');
-  // $('#channels').selectpicker('refresh');
-	$('#Bouquets').prop('checked',(this.Bouquets.length>0));
+
+	console.log('c', this.Channels);
+	console.log('b', this.Bouquets);
+	console.log('t', this.Tags);
+
+	autoTimerOptions['channels'].highlightAll()
+															.removeHighlightedItems()
+															.setChoiceByValue(this.Channels);
+	autoTimerOptions['bouquets'].highlightAll()
+															.removeHighlightedItems()
+															.setChoiceByValue(this.Bouquets);
+	autoTimerOptions['tags'].highlightAll()
+													.removeHighlightedItems()
+													.setChoices(
+														(this.Tags[0] || '').split('%20').map(function(tag){
+															return {
+																value: tag,
+																label: tag,
+																selected: true
+															}
+														}),
+														'value',
+														'label',
+														true
+													);
+
 	$('#Channels').prop('checked',(this.Channels.length>0));
-	$('#tags').val(null);
-	$.each(this.Tags, function(index, value) {
-		$('#tags option[value="' + value + '"]').prop("selected", true);
-	});
-	// $('#tags').selectpicker('refresh');
+	$('#Bouquets').prop('checked',(this.Bouquets.length>0));
+	$('#Tags').prop('checked',(this.Tags.length>0));
+
 	var rc = $('#filterlist tr').length;
 	if(rc>1)
 	{
@@ -744,7 +742,7 @@ function checkValues () {
 	else {
     $('#BouquetsE').hide();
     try {
-      choicesB.removeActiveItems();
+      bouquetChoices.removeActiveItems();
     } catch(e){}
   }
 	if ($('#Channels').is(':checked') === true)
@@ -752,7 +750,7 @@ function checkValues () {
 	else {
     $('#ChannelsE').hide();
     try {
-      choicesC.removeActiveItems();
+      channelChoices.removeActiveItems();
     } catch(e){}
   }
 	if ($('#Tags').is(':checked') === true) {
@@ -761,7 +759,7 @@ function checkValues () {
 	else {
     $('#TagsE').hide();
     try {
-      choicesT.removeActiveItems();
+      tagChoices.removeActiveItems();
     } catch(e){}
 	}
 
@@ -876,6 +874,7 @@ function test_simulateAT(simulate)
 	});
 }
 
+var autoTimerOptions;
 function InitPage() {
 	$('#timeSpan').click(function() { checkValues();});
 	$('#timeSpanAE').click(function() { checkValues();});
@@ -894,10 +893,13 @@ function InitPage() {
 	$('#vps').change(function () {checkValues();});
 	initValues ();
 	checkValues();
-  getData();
+	reloadAT();
 
-	$( ".FM" ).change(function() {
+	autoTimerOptions = owif.gui.populateAutoTimerOptions();
+	// window.autoTimerOptions['channels'].setChoiceByValue(['1:0:19:1B1F:802:2:11A0000:0:0:0:', 'BBC One NI HD']);
 	
+	$( ".FM" ).change(function() {
+
 		var nf = $(this).parent().parent();
 		if($(this).val()=="dayofweek") {
 			nf.find(".FS").show();
@@ -909,10 +911,6 @@ function InitPage() {
 			nf.find(".FI").show();
 		}
   });
-  
-  var choicesT = new Choices('#tags', choicesConfig);
-  var choicesC = new Choices('#channels', choicesConfig);
-  var choicesB = new Choices('#bouquets', choicesConfig);
 }
 
 function delAT()
