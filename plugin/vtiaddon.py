@@ -169,3 +169,4 @@ def expandConfig():
 	config.OpenWebif.responsive_moviesearch_short = ConfigYesNo(default=False)
 	config.OpenWebif.responsive_rcu_full_view = ConfigYesNo(default=False)
 	config.OpenWebif.responsive_show_picon_background = ConfigYesNo(default=False)
+	config.OpenWebif.autotimer_regex_searchtype = ConfigYesNo(default=False)

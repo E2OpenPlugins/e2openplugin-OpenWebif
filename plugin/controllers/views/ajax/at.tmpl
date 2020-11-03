@@ -40,7 +40,7 @@ input#to,input#from,.text.number {width:60px;}
 								<option value="full">$tstrings['at_title_or_description_match']</option>
 								<option value="shortdesc">$tstrings['at_short_description_match']</option>
 								<option value="title_shortdesc">$tstrings['at_title_or_short_description_match']</option>
-								#if 'start' in $types
+								#if 'start' in $searchTypes
 									<option value="start">$tstrings['at_start_match']</option>
 								#end if
 								</select>
@@ -216,7 +216,7 @@ input#to,input#from,.text.number {width:60px;}
 						<div id="actions">
 						<button id="atbutton0">$tstrings['at_add']</button>
 						<button id="atbutton1">$tstrings['at_del']</button>
-						<button id="atbutton2">$tstrings['at_reload']</button>
+						<button id="atbutton2">$tstrings['at_reset']</button>
 						<button id="atbutton3">$tstrings['at_save']</button>
 						<button id="atbutton4">$tstrings['at_parse']</button>
 						<button id="atbutton5">$tstrings['at_simulate']</button>
@@ -296,7 +296,7 @@ input#to,input#from,.text.number {width:60px;}
 <label for="ats_editor">$tstrings['ats_editor']</label>
 <select id="ats_editor" size="1">
 	<option value="plain" selected="selected">$tstrings['ats_editor_plain']</option>
-	<option value="wizzard" selected="selected">$tstrings['ats_editor_wizzard']</option>
+	<option value="wizzard" selected="selected">$tstrings['ats_editor_wizard']</option>
 </select>
 
 </fieldset>
