@@ -6,8 +6,9 @@ OpenWebif is an open source web interface for Enigma2-based set-top boxes (STBs)
 ## Documentation
 [Link](https://e2openplugins.github.io/e2openplugin-OpenWebif/)
 
-## Found a Problem?
-[Log an issue](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/issues)
+## Found a Problem / Issue / Bug / Missing Feature?
+See if it's already been [logged](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/issues)
+Otherwise, feel free to log a new issue or request.
 
 Please provide as much information as possible!
 
@@ -21,7 +22,7 @@ Along with the steps you took that lead to the issue, the following are useful:
 - OS or device version (High Sierra / Win10 / Android 11 / iOS12 ...)
 - Browser (Brave / Chrome / Firefox / Safari / Edge ...)
 
-*Remember - the more info we have, the quicker we'll be able to troubleshoot!*
+*Remember - the more ~money we get~ info we have, the quicker we'll be able to troubleshoot!*
 
 We don't have every variation of setup at our disposable, so...
 
