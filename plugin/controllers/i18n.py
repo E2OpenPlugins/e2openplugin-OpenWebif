@@ -302,6 +302,7 @@ tstrings = {
 	'at_title_or_short_description_match': _("title or short description match"),
 	'at_short_description_match': _("short description match"),
 	'at_start_match': _("start match"),
+	'at_regex_match': _("regex match (experimental)"),
 	'at_search_strictness': _("Search strictness"),
 	'at_case_sensitive': _("case-sensitive search"),
 	'at_case_insensitive': _("case-insensitive search"),

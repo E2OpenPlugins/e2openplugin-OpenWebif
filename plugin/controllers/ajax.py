@@ -333,12 +333,16 @@ class AjaxController(BaseController):
 		ret['hasSeriesPlugin'] = 0
 		ret['test'] = 0
 		ret['autoadjust'] = getInfo()['timerautoadjust']
-
+		ret['searchTypes'] = {}
+		
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimer import typeMap
-			ret['types'] = typeMap
+			ret['searchTypes'] = typeMap
 		except ImportError:
 			pass
+		if config.OpenWebif.autotimer_regex_searchtype.value:
+			ret['searchTypes']['regex'] = 0
+
 		loc = getLocations()
 		ret['locations'] = loc['locations']
 
