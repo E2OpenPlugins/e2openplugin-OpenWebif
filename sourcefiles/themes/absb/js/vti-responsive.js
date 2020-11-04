@@ -475,12 +475,12 @@ function loadeventepg(id, ref, picon) {
 	} else {
 		channelpicon = null;
 	}
-	var url = 'ajax/event?idev=' + id + '&sref=' + escape(ref);
+	var url = 'ajax/event?idev=' + id + '&sRef=' + escape(ref);
 	$("#eventdescriptionII").load(url);
 }
 
 function loadtimeredit(id, ref) {
-	var url = 'ajax/event?idev=' + id + '&sref=' + escape(ref);
+	var url = 'ajax/event?idev=' + id + '&sRef=' + escape(ref);
 	$("#eventdescriptionII").load(url);
 }
 
