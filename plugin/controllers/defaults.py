@@ -32,11 +32,18 @@ def getTranscoding():
 				return True
 	return False
 
-#: get kinopoisk feature
-def getKinopoisk():
-	if language.getLanguage()[0:2] in ['ru', 'uk', 'lv', 'lt', 'et']:
-		return True
-	return False
+def getExtEventInfoProvider():
+	# none
+	lang = language.getLanguage()
+	if lang[0:2] in ['ru', 'uk', 'lv', 'lt', 'et']:
+		defaultValue = 'Kinopoisk'
+	elif lang[0:2] in ['cz', 'sk']:
+		defaultValue = 'CSFD'
+	elif lang[0:5] in ['en_GB']:
+		defaultValue = 'TVguideUK'
+	else:
+		defaultValue = 'IMDb'
+	return defaultValue
 
 def getViewsPath(file=""):
 	if comp_config.OpenWebif.responsive_enabled.value and os.path.exists(VIEWS_PATH + "/responsive") and not (file.startswith('web/') or file.startswith('/web/')):
@@ -91,6 +98,6 @@ def getPiconPath():
 #: PICON PATH FIXME: check path again after a few hours to detect new paths
 PICON_PATH = getPiconPath()
 
-KINOPOISK = getKinopoisk()
+EXT_EVENT_INFO_SOURCE = getExtEventInfoProvider()
 
 TRANSCODING = getTranscoding()

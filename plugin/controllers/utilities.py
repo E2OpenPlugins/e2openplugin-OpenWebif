@@ -316,6 +316,37 @@ def removeBad2(val):
 	return val
 
 
+def getEventInfoProvider(moviedb):
+	extEventInfoProviders = {
+		'kinopoisk': {
+			'id': 'kinopoisk',
+			'name': 'KinoPoisk', # КиноПоиск 
+			'url': 'https://www.kinopoisk.ru/index.php?kp_query='
+		},
+		'csfd': {
+			'name': 'CSfd', # Česko-Slovenská filmová databáze
+			'url': 'https://www.csfd.cz/hledat/?q=' 
+		},
+		'tvguideuk': {
+			'name': 'TV Guide UK', 
+			'url': 'https://www.tvguide.co.uk/search.asp?title='
+		},
+		'imdb': { 
+			'name': 'IMDb', 
+			'url': 'https://www.imdb.com/find?s=tt&q=' 
+		}
+	}
+	providerData = None
+	try:
+		providerId = moviedb.lower()
+		providerData = extEventInfoProviders[providerId]
+		providerData['id'] = providerId
+		return providerData
+	except KeyError:
+		pass
+	return providerData
+
+
 if __name__ == '__main__':
 	import doctest
 

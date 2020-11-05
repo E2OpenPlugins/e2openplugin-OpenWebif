@@ -35,8 +35,8 @@ from Plugins.Extensions.OpenWebif.controllers.models.config import getConfigs, g
 from Plugins.Extensions.OpenWebif.controllers.models.stream import GetSession
 from Plugins.Extensions.OpenWebif.controllers.base import BaseController
 from Plugins.Extensions.OpenWebif.controllers.models.locations import getLocations
-from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH, TRANSCODING
-from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
+from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH, TRANSCODING, EXT_EVENT_INFO_SOURCE
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg, getEventInfoProvider
 
 try:
 	from boxbranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
@@ -105,10 +105,8 @@ class AjaxController(BaseController):
 			pass
 		event['at'] = at
 		event['transcoding'] = TRANSCODING
-		if config.OpenWebif.webcache.moviedb.value:
-			event['moviedb'] = config.OpenWebif.webcache.moviedb.value
-		else:
-			event['moviedb'] = 'IMDb'
+		event['moviedb'] = config.OpenWebif.webcache.moviedb.value if config.OpenWebif.webcache.moviedb.value else EXT_EVENT_INFO_SOURCE
+		event['extEventInfoProvider'] = extEventInfoProvider = getEventInfoProvider(event['moviedb'])
 		return event
 
 	def P_about(self, request):
@@ -158,9 +156,10 @@ class AjaxController(BaseController):
 			theme = config.OpenWebif.webcache.theme.value
 		else:
 			theme = 'original'
-		moviedb = config.OpenWebif.webcache.moviedb.value if config.OpenWebif.webcache.moviedb.value else 'IMDb'
+		moviedb = config.OpenWebif.webcache.moviedb.value if config.OpenWebif.webcache.moviedb.value else EXT_EVENT_INFO_SOURCE
+		extEventInfoProvider = getEventInfoProvider(moviedb)
 
-		return {"theme": theme, "events": events, "timers": timers, "at": at, "moviedb": moviedb}
+		return {"theme": theme, "events": events, "timers": timers, "at": at, "extEventInfoProvider": extEventInfoProvider}
 
 	def P_epgdialog(self, request):
 		return self.P_epgpop(request)
@@ -271,7 +270,7 @@ class AjaxController(BaseController):
 			ret['moviedb'] = config.OpenWebif.webcache.moviedb.value
 		else:
 			ret['moviedbs'] = []
-			ret['moviedb'] = 'IMDb'
+			ret['moviedb'] = EXT_EVENT_INFO_SOURCE
 		ret['zapstream'] = config.OpenWebif.webcache.zapstream.value
 		ret['showpicons'] = config.OpenWebif.webcache.showpicons.value
 		ret['showchanneldetails'] = config.OpenWebif.webcache.showchanneldetails.value
