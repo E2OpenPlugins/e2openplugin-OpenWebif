@@ -2089,7 +2089,7 @@ msgid "Use custom box name"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:473 ../plugin/plugin.py:138
-msgid "Use new design"
+msgid "Use modern interface"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:271

@@ -527,5 +527,9 @@ tstrings = {
 	'autoadjust': _("Adjust recording time to real event time"),
 	'avoidDuplicateMovies': _("Don't create timer when movie exists in database"),
 
-	'streamclients': _("Stream Clients")
+	'streamclients': _("Stream Clients"),
+	'config': _("Config"),
+	'skins': _("Skins"),
+	'use_classic_design': _("Use classic interface"),
+	'use_modern_design': _("Use modern interface")
 }

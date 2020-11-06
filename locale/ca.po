@@ -2095,7 +2095,7 @@ msgid "Use custom box name"
 msgstr "Utilitzar nom personalitzat per al deco"
 
 #: ../plugin/controllers/i18n.py:472 ../plugin/plugin.py:131
-msgid "Use new design"
+msgid "Use modern interface"
 msgstr "Utilitzar nou diseny"
 
 #: ../plugin/controllers/i18n.py:270
