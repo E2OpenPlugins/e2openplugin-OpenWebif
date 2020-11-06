@@ -2,12 +2,6 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, MinEPGList, showPicons, showPiconBackground
 
-<style>
-	.epg__picon { display: inline-block; }
-	.epg__picon.picon--with-background { background-color: #bababa; box-shadow: inset -20px 40px 60px #fff; }
-	img[src*="default_picon"] { filter: grayscale(1) opacity(0.2); }
-</style>
-
 #set $piconCssClass = ''
 #if $showPiconBackground
 	#set $piconCssClass = 'picon--with-background'

@@ -1,30 +1,6 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, showPicons, showPiconBackground
 
-<style>
-	a:focus { outline-offset: 2px; }
-	.now-next__grid td { vertical-align: middle; }
-	.now-next__header { padding-left: 0; padding-right: 0; }
-	.now-next__picon { vertical-align: middle !important; width:120px; }
-	.now-next__picon.picon--with-background { background-color: #bababa; box-shadow: inset -20px 40px 60px #fff; }
-	.now-next__picon a { display: block; }
-	.now-next__picon .img-fluid { max-width: 100%; }
-	.now-next__channel-name { margin: 0 0 10px !important; }
-	.now-next__title { padding-bottom: 0.8ex; }
-	.now-next__time { margin-right: 2em; }
-	.now-next__elapsed { font-size: 1.2rem; vertical-align: middle; white-space: nowrap; }
-	.now-next__progress { margin-bottom: 0px; width: 200px; }
-	.now-next__channel { display: block; min-height: 90px; border-bottom: none !important; }
-	.now-next__channel__actions { margin-top: 1.2rem; }
-	.now-next__channel__actions button { margin: 4px 2px 0 0; user-select: none; }
-	.now-next__channel__actions .icon { font-size: 20px; margin: 2px; }
-	.now-next__external-link { margin-left: 4px; }
-	.now-next__progress__percent { text-shadow: 0px 0px 2px black; }
-	.now-next__no-data { vertical-align: middle !important; }
-	.channel--active { background-color: rgba(0, 0, 0, 0.2) !important; }
-	img[src*="default_picon"] { filter: grayscale(1) opacity(0.2); }
-</style>
-
 #set $piconCssClass = ''
 #if $showPiconBackground
 	#set $piconCssClass = 'picon--with-background'

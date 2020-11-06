@@ -2,11 +2,12 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 
+<!-- TODO: move style to css file -->
 <style>
 	.nav-tabs>li>a .material-icons { top: 0; margin-bottom: 3px; margin-right: 6px; }
 </style>
 
-<ul class="nav nav-tabs tab-col-$skinColor" >
+<ul class="nav nav-tabs theme-tab-col tab-col-$skinColor" >
 #for $satellite in $satellites
 	<li><a href="#tab" data-toggle="tab" onclick="load_subcontent('ajax/channels?id=$quote($satellite.service)&stype=$stype'); return false;"><i class="material-icons material-icons-centered">bubble_chart</i>$satellite.name</a></li>
 #end for

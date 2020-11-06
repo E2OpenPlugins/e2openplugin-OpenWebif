@@ -27,22 +27,6 @@
 	<link rel="stylesheet" type="text/css" href="/themes/absb/css/vti-timepicker.min.css">
 	<link rel="stylesheet" type="text/css" href="/themes/absb/css/vti-responsive.min.css">
 
-	<style>
-		.remote__group { margin: 0 auto; display: flex; justify-content: center; max-width: 156px; flex-wrap: wrap; }
-		.remote__group.collapse { display: none; }
-		.remote__group.collapse.in { display: flex; }
-		.remote__button { outline: none; border: none; flex: 0 0 23%; height: 38px; margin: 1px; box-shadow: 0 0 10px rgba(0,0,0,.2); display: block; background-color: #fff; overflow: hidden; cursor: pointer; transition: all 0.2s ease; }
-		.remote__group--numerical .remote__button, 
-		.remote__group--directional .remote__button { flex: 0 0 31%; height: 48px; }
-		.remote__group--numerical .remote__button i, 
-		.remote__group--directional .remote__button i { margin-top: 0 !important; font-size: 34px; line-height: 48px; }
-		.remote__button--power i { margin-left: -1px; padding: 2px; background-color: #F44336; color: #fff !important; border-radius: 50%; }
-		.remote__button--arrow { background-color: rgba(0,0,0,.12); }
-		.remote__button--colour { background-color: #707070; }
-		.remote__button:focus i, .remote__button:hover i { transform: scale(1.2); }
-		.remote__group .material-icons { color: #707070; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); }
-	</style>
-
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/jquery-ui.min.js"></script>
 	<script src="/js/openwebif-1.2.20.min.js"></script>
@@ -232,7 +216,7 @@
 											<td>
 												<div class='switch'>
 													<span class='m-r-10 font-12'></span>
-													<label><input $ScreenshotOnRCU type='checkbox' class="remotegrabscreen" id='remotegrabscreen1' name="remotegrabscreen1" ><span class='lever switch-col-$skinColor'></span></label>
+													<label><input $ScreenshotOnRCU type='checkbox' class="remotegrabscreen" id='remotegrabscreen1' name="remotegrabscreen1" ><span class='lever theme-switch-col switch-col-$skinColor'></span></label>
 												</div>
 											</td>
 										</tr>
@@ -351,7 +335,7 @@
 			</aside>
 			<!-- #END# Left Sidebar -->
 			<aside id="rightsidebar" class="right-sidebar">
-				<ul class="nav nav-tabs tab-nav-right tab-col-$skinColor" role="tablist">
+				<ul class="nav nav-tabs tab-nav-right theme-tab-col tab-col-$skinColor" role="tablist">
 					<li role="presentation" class="active">
 						<a href="#settings" data-toggle="tab">$tstrings['config']</a>
 					</li>
@@ -369,7 +353,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" id="myepgbtn0" $EPGSearchFull>
-											<span class="lever switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -378,7 +362,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" id="myepgbtn1" $EPGSearchBQonly>
-											<span class="lever switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -390,7 +374,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" id="mymoviesearchbtn0" $MovieSearchShort>
-											<span class="lever switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -399,7 +383,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" id="mymoviesearchbtn1" $MovieSearchExtended>
-											<span class="lever switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -412,7 +396,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" id="remotecontrolview" $RemoteControlView>
-											<span class="lever switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -421,7 +405,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" id="minmovielist" $MinMovieList>
-											<span class="lever switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -430,14 +414,14 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" id="mintimerlist" $MinTimerList>
-											<span class="lever switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
 								<li>
 									<span>$tstrings['min_epg_list']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="minepglist" $MinEPGList ><span class="lever switch-col-$skinColor vtiwebconfig"></span></label>
+										<label><input type="checkbox" id="minepglist" $MinEPGList ><span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span></label>
 									</div>
 								</li>
 								<li>
@@ -445,7 +429,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" id="plformat">
-											<span class="lever switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -454,7 +438,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" id="noresposive">
-											<span class="lever switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -467,7 +451,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" id="showpicons" $showPicons>
-											<span class="lever switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -476,7 +460,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" id="showpiconbackground" $showPiconBackground>
-											<span class="lever switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -490,7 +474,7 @@
 								<div class="switch">
 									<label>
 										<input type="checkbox" name="themeMode" value="city-lights" id="thememodebtn" checked="$(themeMode != 'supabright')">
-										<span class="lever switch-col-$skinColor vtiwebconfig"></span>
+										<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
 									</label>
 								</div>
 							</li>

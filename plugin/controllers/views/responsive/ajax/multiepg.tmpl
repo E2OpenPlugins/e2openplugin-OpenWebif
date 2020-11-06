@@ -6,6 +6,7 @@
 #from Plugins.Extensions.OpenWebif.controllers.views.responsive.ajax.renderevtblock import renderEvtBlock
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 
+<!-- TODO: move style to css file -->
 <style>
 	table { font-size: 13px; }
 	tr { vertical-align: top }
@@ -42,7 +43,7 @@
 </style>
 
 <div id="navepg">
-<ul class="nav nav-tabs tab-col-$skinColor" style="margin-top: -10px;">
+<ul class="nav nav-tabs theme-tab-col tab-col-$skinColor" style="margin-top: -10px;">
 #for $slot in list(range(0,7))
 	<li><div class="plusclick navtab-#if $slot==$day then 'active' else 'inactive' #" data-day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div></li>
 #end for
@@ -72,7 +73,7 @@
 <div id="refreshmepg2" onclick="RefreshMEPG();"><i id="refreshmepgi" class="fa fa-refresh link" aria-hidden="true"></i></div>
 	<br clear="all">
 
-<ul class="nav nav-tabs tab-col-$skinColor" style="margin-top: -10px;">
+<ul class="nav nav-tabs theme-tab-col tab-col-$skinColor" style="margin-top: -10px;">
 #for $bq in $bouquets
 	<li><div class="bq navtab-#if $bq[0]==$bref then 'active' else 'inactive' #" data-ref="$quote($bq[0])">$bq[1]</div></li>
 #end for
