@@ -1,3 +1,5 @@
+var tagList = [];
+
 function toUnixDate(date){
 	var d = moment(date, "DD.MM.YY").unix();
 	return d;
@@ -426,9 +428,27 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	}
 	$('#afterevent').selectpicker('refresh');
 
-	console.log('c', this.Channels);
-	console.log('b', this.Bouquets);
-	console.log('t', this.Tags);
+	var tagOpts = [];
+	try {
+		tagOpts = tagList.map(function (tag) {
+			return {
+				value: tag,
+				label: tag,
+			}
+		});
+		tagOpts.push(this.Tags);
+	} catch(e) {
+		console.debug('Failed to process tag options');
+	}
+	autoTimerOptions['tags'].highlightAll()
+													.removeHighlightedItems()
+													.setChoices(
+														tagOpts,
+														'value',
+														'label',
+														false
+													)
+													.setChoiceByValue(this.Tags);
 
 	autoTimerOptions['channels'].highlightAll()
 															.removeHighlightedItems()
@@ -436,24 +456,10 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	autoTimerOptions['bouquets'].highlightAll()
 															.removeHighlightedItems()
 															.setChoiceByValue(this.Bouquets);
-	autoTimerOptions['tags'].highlightAll()
-													.removeHighlightedItems()
-													.setChoices(
-														(this.Tags[0] || '').split('%20').map(function(tag){
-															return {
-																value: tag,
-																label: tag,
-																selected: true
-															}
-														}),
-														'value',
-														'label',
-														true
-													);
 
+	$('#Tags').prop('checked',(this.Tags.length>0));
 	$('#Channels').prop('checked',(this.Channels.length>0));
 	$('#Bouquets').prop('checked',(this.Bouquets.length>0));
-	$('#Tags').prop('checked',(this.Tags.length>0));
 
 	var rc = $('#filterlist tr').length;
 	if(rc>1)
@@ -1012,6 +1018,7 @@ function Parse(keepSelection) {
 	$('#filterlist').empty();
 	
 	var atlist = []
+	tagList = [];
 	
 	var state=$(atxml).find("e2state").first();
 	if (state.text() == 'false') {
@@ -1020,6 +1027,16 @@ function Parse(keepSelection) {
 
 	$(atxml).find("timer").each(function () {
 		atlist.push($(this));
+
+		$(this).find("e2tags").each(function () {
+			var tag = $(this).text();
+			// var tags = $(this).text().split(' ');
+			// tags.forEach(function (tag, index) {
+				if (tagList.indexOf(tag) < 0) {
+					tagList.push(tag);
+				}
+			// });
+		});
 	});
 
 	atlist.sort(function(a, b){
