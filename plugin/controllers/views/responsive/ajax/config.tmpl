@@ -29,9 +29,9 @@
 	<div class="col-xs-7">
 			<div class="switch switch-col-indigo">
 		#if $config.data.current
-				<label><input type="checkbox" id="$config.path" checked="true" onclick="saveConfig('$config.path', this.checked);" /><span class='lever switch-col-$skinColor'></span></label>
+				<label><input type="checkbox" id="$config.path" checked="true" onclick="saveConfig('$config.path', this.checked);" /><span class='lever theme-switch-col switch-col-$skinColor'></span></label>
 		#else
-				<label><input type="checkbox" id="$config.path" onclick="saveConfig('$config.path', this.checked);" /><span class='lever switch-col-$skinColor'></span></label>
+				<label><input type="checkbox" id="$config.path" onclick="saveConfig('$config.path', this.checked);" /><span class='lever theme-switch-col switch-col-$skinColor'></span></label>
 		#end if
 			</div>
 		<label for="$config.path"></label>
@@ -47,9 +47,9 @@
 	<div class="col-xs-7">
 	#for $choice in $config.data.choices
 		#if $choice in $config.data.current
-			<input type="checkbox" class="form-control chk-col-$skinColor" id="$config.path" checked="true" onclick="saveConfig('$config.path', this.checked);" />
+			<input type="checkbox" class="form-control theme-chk-col chk-col-$skinColor" id="$config.path" checked="true" onclick="saveConfig('$config.path', this.checked);" />
 		#else
-			<input type="checkbox" class="form-control chk-col-$skinColor" id="$config.path" onclick="saveConfig('$config.path', this.checked);" />
+			<input type="checkbox" class="form-control theme-chk-col chk-col-$skinColor" id="$config.path" onclick="saveConfig('$config.path', this.checked);" />
 		#end if
 			<label for="$config.path">$choice</label>
 	#end for

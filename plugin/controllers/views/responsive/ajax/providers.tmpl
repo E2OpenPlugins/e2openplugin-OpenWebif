@@ -6,7 +6,7 @@
 	.nav-tabs>li>a .material-icons { top: 0; margin-bottom: 3px; margin-right: 6px; }
 </style>
 
-<ul class="nav nav-tabs tab-col-$skinColor">
+<ul class="nav nav-tabs theme-tab-col tab-col-$skinColor">
 #for $provider in $providers
 	<li><a href="#tab" data-toggle="tab" onclick="load_subcontent('ajax/channels?id=$quote($provider[0])&stype=$stype'); return false;"><i class="material-icons material-icons-centered">folder_open</i>$provider[1]</a></li>
 #end for
