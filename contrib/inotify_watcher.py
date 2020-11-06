@@ -24,7 +24,7 @@ SCSS_ARGS = [
 
 SCSS_ROOT = os.path.join(PROJECT_ROOT, 'sourcefiles/scss')
 
-CSS_ROOT = os.path.join(PROJECT_ROOT, 'plugin/public/css')
+CSS_ROOT = os.path.join(PROJECT_ROOT, 'plugin/public/classic/css')
 
 #: source (SCSS) -> target (CSS) locations
 SCSS_MAP = [

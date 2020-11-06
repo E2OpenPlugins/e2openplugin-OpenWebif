@@ -57,7 +57,7 @@
 		</li>
 		</ul>
 		<div class="ui-widget-header" style="border-bottom: none;background: none;margin-left: 5px;margin-right: 5px;"></div>
-	<img src="images/remotes/ow_remote.png" width="135" height="183" usemap="#menuremote" border="0">
+	<img src="/classic/images/remotes/ow_remote.png" width="135" height="183" usemap="#menuremote" border="0">
 	<map name="menuremote" >
 		<area shape="circle" coords="67,148,13" alt="ok" onclick="pressMenuRemote('352');">
 		<area shape="circle" coords="68,173,9" alt="down" onclick="pressMenuRemote('108');">
@@ -90,7 +90,7 @@
 		</li>
 	</ul>
 	<div class="volslider" style="display:table-row;margin-bottom:15px">
-		<div style="display:table-cell;vertical-align: middle;"><img style="margin-left:5px;" id="volimage" src="images/volume.png" title="" border="0" width="24" height="24">
+		<div style="display:table-cell;vertical-align: middle;"><img style="margin-left:5px;" id="volimage" src="/classic/images/volume.png" title="" border="0" width="24" height="24">
 		</div>
 		<div style="vertical-align: middle;display:table-cell;">
 			<div id="slider" style="margin-left:10px;margin-right:10px;width:90px;"></div>
@@ -124,15 +124,15 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-	<link rel="shortcut icon" href="images/favicon.png">
-	<link type="text/css" rel="stylesheet" href="css/jquery-ui.min.css">
+	<link rel="shortcut icon" href="/classic/images/favicon.png">
+	<link type="text/css" rel="stylesheet" href="classic/css/jquery-ui.min.css">
 	#if $t not in ["original", "clear"]
 		#set $theme_css = $t + '.css'
 		<link type="text/css" rel="stylesheet" href="themes/$theme_css">
 	#end if
-	<link type="text/css" href="css/style.min.css" rel="stylesheet"/>
+	<link type="text/css" href="/classic/css/style.min.css" rel="stylesheet"/>
 	#if $t == "original"
-		<link type="text/css" href="css/theme_original.css" rel="stylesheet"/>
+		<link type="text/css" href="/classic/css/theme_original.css" rel="stylesheet"/>
 	#end if
 	<link type="text/css" href="web/css" rel="stylesheet"/>
 	<title>$boxname - OpenWebif</title>
@@ -219,13 +219,13 @@
 	</div>
 	<div id="editTimerForm" title="$tstrings['edit_timer']"></div>
 
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/openwebif-1.2.20.min.js"></script>
-	<script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
-	<script type="text/javascript" src="/js/chosen.1.8.2.min.js"></script>
-	<script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
-	<script type="text/javascript">
+	<script src="/shared/js/jquery.min.js"></script>
+	<script src="/shared/js/jquery-ui.min.js"></script>
+	<script src="/shared/js/openwebif-1.2.20.min.js"></script>
+	<script src="/classic/js/jquery-ui-timepicker-addon.min.js"></script>
+	<script src="/shared/js/chosen.1.8.2.min.js"></script>
+	<script>initJsTranslation($dumps($tstrings))</script>
+	<script>
 		var h = window.innerHeight - 210;
 		var hh = h-70;
 		var css = document.createElement("style");

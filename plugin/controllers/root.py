@@ -56,9 +56,9 @@ class RootController(BaseController):
 		if os.path.exists(getPublicPath('mobile')):
 			self.putChild2("mobile", MobileController(session))
 			self.putChild2("m", static.File(getPublicPath() + "/mobile"))
-		for static_val in ('classic', 'shared', 'static', 'images'):
+		for static_val in ('static', 'images'):
 			self.putChild2(static_val, static.File(six.ensure_binary(getPublicPath() + '/' + static_val)))
-		for static_val in ('modern', 'webtv', 'vxg'):
+		for static_val in ('shared', 'classic', 'modern', 'webtv', 'vxg'):
 			if os.path.exists(getPublicPath(static_val)):
 				self.putChild2(static_val, static.File(six.ensure_binary(getPublicPath() + '/' + static_val)))
 

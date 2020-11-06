@@ -23,19 +23,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="images/favicon.png">
-<script src="../js/jquery.min.js"></script>
-<script src="../js/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="../css/jquery-ui.min.css">
+<script src="/shared/js/jquery.min.js"></script>
+<script src="/shared/js/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="/classic/css/jquery-ui.min.css">
 #if $t != "original" and $t != "clear"
 	#set $t = $t + '.css'
 	<link rel="stylesheet" href="../themes/$t">
 #end if
-<link type="text/css" href="../css/style.min.css" rel="stylesheet"/>
+<link type="text/css" href="/classic/css/style.min.css" rel="stylesheet"/>
 <link type="text/css" href="../web/css" rel="stylesheet"/>
-<script type="text/javascript" src="../js/openwebif-1.2.20.min.js"></script>
-<script type="text/javascript" src="../js/jquery-ui-timepicker-addon.min.js"></script>
-<script type="text/javascript" src="../js/chosen.1.8.2.min.js"></script>
-<script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
+<script src="/shared/js/openwebif-1.2.20.min.js"></script>
+<script src="/classic/js/jquery-ui-timepicker-addon.min.js"></script>
+<script src="/shared/js/chosen.1.8.2.min.js"></script>
+<script>initJsTranslation($dumps($tstrings))</script>
 <style>
 
 a {text-decoration:none;color:#000;}
@@ -138,7 +138,7 @@ table { font-size:12px; font-family: Verdana,Arial,sans-serif;}
 </div>
 <div id="editTimerForm" title="$tstrings['edit_timer']"></div>
 </body>
-<script type="text/javascript">
+<script>
 var t = [
 #for $timer in $timers
 	{'begin':$timer.begin,'end':$timer.end,'sref':'$timer.serviceref'},
