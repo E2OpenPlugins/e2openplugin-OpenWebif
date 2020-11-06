@@ -46,7 +46,7 @@ class GrabRequest(object):
 		elif fileformat != "bmp":
 			fileformat = "bmp"
 
-		size = getUrlArg(request, "f")
+		size = getUrlArg(request, "r")
 		if size != None:
 			graboptions.append("-r")
 			graboptions.append("%d" % int(size))

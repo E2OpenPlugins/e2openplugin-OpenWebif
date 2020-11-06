@@ -97,10 +97,14 @@ _(Dependencies should be handled by using ipkg/opkg packages)_
 
 ### Compiling JavaScript Files
 
-(TODO: add responsive workflow guide here - `npm run build-js`)
+(TODO: add responsive workflow setup guide here)
+If you've already got npm installed:
+`(cd sourcefiles/ && npm run build-js)`
 
-The Javascript source files inside /sourcefiles/js need to be compressed 
-via [UglifyJS3](https://skalman.github.io/UglifyJS-online/)
+---
+
+For the classic/old interface, javascript source files inside 
+/sourcefiles/js need to be compressed via [UglifyJS3](https://skalman.github.io/UglifyJS-online/)
 
 You need to increase the version number and write down your modification 
 description inside of the source file.
@@ -108,17 +112,22 @@ The compressed files have the following syntax : xx-<version>.min.js
 
 ### Compiling CSS Files
 
-(TODO: add responsive workflow guide here - `npm run build-css`)
+(TODO: add responsive workflow setup guide here)
 
-The script `contrib/inotify_watcher.py` is used for compiling CSS files on
+If you've already got npm installed:
+`(cd sourcefiles/ && npm run build-css)`
+
+---
+
+For the classic/old interface, the script `contrib/inotify_watcher.py` is used for compiling CSS files on
 the developers host using [Sass](http://sass-lang.com/) . On linux you need to
 have installed a package providing  `inotifywait` and a version that actually
 supports inotify if one wants automatic compiling of CSS files on source
 directory changes (For debian based distributions this would be `inotify-tools`).
 
-Mac and Windows do not have inotify support thus the automatic compiling will
+macOS and Windows do not have inotify support thus the automatic compiling will
 not work (yet). But if you installed Sass (see http://sass-lang.com/install) and
-the `scss` binary/script is in your `PATH` calling
+the `scss` binary/script is in your `PATH`, calling
 `contrib/inotify_watcher.py --force-update` should work.
 Alternatively, you may define environment variable `SCSS` in order to point to
 the location of the scss binary/script.

@@ -18,7 +18,8 @@ class API {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     } else {
-      return await response.json();
+      const jsonResponse = await response.json();
+      return await jsonResponse['tags'];
     }
   }
 
@@ -109,11 +110,28 @@ class GUI {
     const api = new API();
 
     selectChoicesElements.forEach((el) => {
+      if (el.getAttribute(`${selectChoicesAttr}`) === 'tags') {
+        // this.choicesConfig.addItems = true;
+        // this.choicesConfig.editItems = true;
+        this.choicesConfig.shouldSort = true;
+      }
       populatedChoices[el.getAttribute(`${selectChoicesAttr}`)] = new Choices(el, this.choicesConfig);
     });
 
     api.getTags().then((result) => {
-      populatedChoices['tags'].setChoices([]);
+      result.sort();
+      const opts = result.map((tag) => {
+        return {
+          value: tag,
+          label: tag,
+        }
+      });
+      populatedChoices['tags'].setChoices(
+        opts,
+        'value',
+        'label',
+        false,
+      );
     }).catch(e => console.warn(e));
     
     api.getAllServices().then((result) => {
