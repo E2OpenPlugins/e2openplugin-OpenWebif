@@ -215,6 +215,7 @@ tstrings = {
 	'search_csfd': _("Search CSFD"),
 	'search_imdb': _("Search IMDb"),
 	'search_kinopoisk': _("Search KinoPoisk"),
+	'search_tvguideuk': _("Search TV Guide UK"),
 	'seconds': _("seconds"),
 	'send_message': _("Send Message"),
 	'sent_wait': _('Waiting for answer ...'),
