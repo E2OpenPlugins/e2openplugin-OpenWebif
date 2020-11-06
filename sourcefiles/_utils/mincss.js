@@ -7,7 +7,7 @@ const cleanCssCli = require('clean-css-cli');
 
 // test for -o
 
-// -o '../plugin/public2/' './themes/absb/css/**/*.css'"
+// -o '../plugin/public/' './modern/css/**/*.css'"
 const outputDir = process.argv.slice(0, 4)[3];
 const srcFiles = process.argv.slice(4).join();
 
