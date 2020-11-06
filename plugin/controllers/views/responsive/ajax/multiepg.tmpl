@@ -1,3 +1,4 @@
+#import six
 #from six.moves.urllib.parse import quote
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from json import dumps
@@ -135,7 +136,7 @@
 	<table border="0" cellpadding="0" cellspacing="0" width="100%" id="tbl2">
 		<tbody id="tbl2body">
 			<tr style="background-color:#bababa;">
-#for $sname, $eventlist in $events.iteritems()
+#for $sname, $eventlist in six.iteritems($events)
 #set $evl = $eventlist[0]
 #set $ref= ""
 #if $evl
@@ -159,7 +160,7 @@
 		#set $even = 0
 							<tr style="background-color:#e9e9e9;">
 	#end if
-	#for $sname, $eventlist in $events.iteritems()
+	#for $sname, $eventlist in six.iteritems($events)
 								<td class="border" style="white-space:normal;">
 		#for $event in $eventlist[$slot]
 			$renderEventBlock.render($event)
@@ -188,7 +189,7 @@
 						<tbody>
 							<tr>
 								<td>
-#for $sname, $eventlist in $events.iteritems()
+#for $sname, $eventlist in six.iteritems($events)
 									<div class="row" style="border:solid;border-width:1px 0px 0px 0px;height:60px!important;background-color:#bababa;box-shadow:inset -20px 40px 60px #fff;">
 										<div style="width:141px!important;margin-left:20px;" class="pull-left">
 											<h2 class="picon"><img src="$(picons[$sname])" title="$sname" /></h2>
@@ -212,7 +213,7 @@
 												<div class="timetable-now"></div>
 											</div>
 										</div>
-#for $sname, $eventlist in $events.iteritems()
+#for $sname, $eventlist in six.iteritems($events)
 										<div class="row" style="width:30000px;border:solid;border-width:1px 0px 0px 0px;height:60px !important;">
 											<ol class="eventlist">
 	#set $c=0
