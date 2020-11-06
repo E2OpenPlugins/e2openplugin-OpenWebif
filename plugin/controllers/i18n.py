@@ -215,6 +215,7 @@ tstrings = {
 	'search_csfd': _("Search CSFD"),
 	'search_imdb': _("Search IMDb"),
 	'search_kinopoisk': _("Search KinoPoisk"),
+	'search_tvguideuk': _("Search TV Guide UK"),
 	'seconds': _("seconds"),
 	'send_message': _("Send Message"),
 	'sent_wait': _('Waiting for answer ...'),
@@ -527,5 +528,9 @@ tstrings = {
 	'autoadjust': _("Adjust recording time to real event time"),
 	'avoidDuplicateMovies': _("Don't create timer when movie exists in database"),
 
-	'streamclients': _("Stream Clients")
+	'streamclients': _("Stream Clients"),
+	'config': _("Config"),
+	'skins': _("Skins"),
+	'use_classic_design': _("Use classic interface"),
+	'use_modern_design': _("Use modern interface")
 }

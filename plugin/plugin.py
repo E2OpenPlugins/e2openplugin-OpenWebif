@@ -32,7 +32,7 @@ from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection, configfile
 from enigma import getDesktop
 from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
-from Plugins.Extensions.OpenWebif.controllers.defaults import getKinopoisk
+from Plugins.Extensions.OpenWebif.controllers.defaults import EXT_EVENT_INFO_SOURCE
 from Plugins.Extensions.OpenWebif.httpserver import HttpdStart, HttpdStop, HttpdRestart
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 
@@ -61,7 +61,7 @@ config.OpenWebif.webcache.zapstream = ConfigYesNo(default=False)
 config.OpenWebif.webcache.theme = ConfigSelection(default='original', choices=THEMES)
 config.OpenWebif.webcache.moviesort = ConfigSelection(default='name', choices=['name', 'named', 'date', 'dated'])
 config.OpenWebif.webcache.showpicons = ConfigYesNo(default=True)
-config.OpenWebif.webcache.moviedb = ConfigSelection(default='IMDb' if not getKinopoisk() else 'Kinopoisk', choices=['IMDb', 'CSFD', 'Kinopoisk'])
+config.OpenWebif.webcache.moviedb = ConfigSelection(default=EXT_EVENT_INFO_SOURCE, choices=['-', 'Kinopoisk', 'CSFD', 'TVguideUK', 'IMDb'])
 config.OpenWebif.webcache.mepgmode = ConfigInteger(default=1, limits=(1, 2))
 config.OpenWebif.webcache.showchanneldetails = ConfigYesNo(default=False)
 # HTTPS
@@ -136,7 +136,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		self.list = []
 		self.list.append(getConfigListEntry(_("OpenWebInterface Enabled"), config.OpenWebif.enabled))
 		if config.OpenWebif.enabled.value:
-			self.list.append(getConfigListEntry(_("Use new design"), config.OpenWebif.responsive_enabled))
+			self.list.append(getConfigListEntry(_("Use modern interface"), config.OpenWebif.responsive_enabled))
 			if config.OpenWebif.responsive_enabled.value:
 				self.list.append(getConfigListEntry(_("Theme mode"), config.OpenWebif.responsive_themeMode))
 				self.list.append(getConfigListEntry(_("Use custom Color"), config.OpenWebif.responsive_skinColor))

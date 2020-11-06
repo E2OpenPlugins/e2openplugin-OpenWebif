@@ -2076,7 +2076,7 @@ msgid "Use custom box name"
 msgstr "Használjon egyedi box nevet"
 
 #: ../plugin/controllers/i18n.py:473 ../plugin/plugin.py:131
-msgid "Use new design"
+msgid "Use modern interface"
 msgstr "Az új kinézet használata"
 
 #: ../plugin/controllers/i18n.py:271

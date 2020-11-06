@@ -35,14 +35,12 @@
 		#end if
 		
 		<a href="javascript:void(0);" class="d_timer tb" onclick="delTimerEvent('$sref','$event.id');return false;" title="$tstrings['delete_timer']">
+			<i class="material-icons">delete</i>
+		</a>
 		
-		#if $moviedb == "Kinopoisk"
-			<a href="https://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)" class="theme-link-color" target="extdb"><img src="../images/kinopoisk.png" style="width:12px; height:12px; margin:0px 3px 0px 0px" title="$tstrings['search_kinopoisk']" border="0"></a>
-		#elif $moviedb == "CSFD"
-			<a href="https://www.csfd.cz/hledat/?q=$event.title" class="theme-link-color" title="$tstrings['search_csfd']" target="extdb">csfd</a>
-		#else
-			<a href="https://www.imdb.com/find?s=all&amp;q=$quote($event.title)" class="theme-link-color" title="$tstrings['search_imdb']" target="extdb">IMDb</a>
-		#end if
+#if $event.extEventInfoProvider
+		<a href="$extEventInfoProvider['url']$quote($event.title)" class="theme-link-color" title="$tstrings['search_'+$extEventInfoProvider['id']]" target="extdb">$extEventInfoProvider['name']</a>
+#end if
 	</div>
 </div>
 <div class="row clearfix">

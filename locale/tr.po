@@ -1507,7 +1507,7 @@ msgstr "Özel Renk Kullan"
 msgid "Use custom box name"
 msgstr "Özel kutu adı kullan"
 
-msgid "Use new design"
+msgid "Use modern interface"
 msgstr "Yeni tasarım kullan"
 
 msgid "VPS"

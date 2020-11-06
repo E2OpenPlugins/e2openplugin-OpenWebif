@@ -56,12 +56,8 @@
 					#if $at
 						<a href="javascript:void(0);" class="theme-link-color" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin','$event.end');return false;" title="$tstrings['add_autotimer']"><i class="material-icons material-icons-centered">history</i></a>
 					#end if
-					#if $moviedb == "Kinopoisk"
-						<a href="https://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)" class="theme-link-color" title="$tstrings['search_kinopoisk']" target="extdb"></a>
-					#elif $moviedb == "CSFD"
-						<a href="https://www.imdb.com/find?s=all&amp;q=$quote($event.title)" class="theme-link-color" title="$tstrings['search_imdb']" target="extdb"><b>IMDb</b></a>
-					#else
-						<a href="https://www.csfd.cz/hledat/?q=$event.title" class="theme-link-color" title="$tstrings['search_imdb']" target="extdb"><b>csfd</b></a>
+					#if $extEventInfoProvider
+						<a href="$extEventInfoProvider['url']$quote($event.title)" class="theme-link-color" title="$tstrings['search_'+$extEventInfoProvider['id']]" target="extdb">[$extEventInfoProvider['name']]</a>
 					#end if
 					</div>
 					<div class="col-xs-12 collapse" id="evenid$dataid">
@@ -105,12 +101,8 @@
 							#if $at
 								<a href="javascript:void(0);" class="theme-link-color" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin','$event.end');return false;" title="$tstrings['add_autotimer']"><i class="material-icons material-icons-centered">history</i></a>
 							#end if
-							#if $moviedb == "Kinopoisk"
-								<a href="javascript:void(0);" class="theme-link-color" target="_blank" href="https://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)" title="$tstrings['search_kinopoisk']"></a>
-							#elif $moviedb == "CSFD"
-								<a href="javascript:void(0);" class="theme-link-color" target="_blank" href="https://www.csfd.cz/hledat/?q=$event.title" title="$tstrings['search_csfd']"><b>csfd</b></a>
-							#else
-								<a href="javascript:void(0);" class="theme-link-color" target="_blank" href="https://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']"><b>IMDb</b></a>
+							#if $extEventInfoProvider
+								<a href="$extEventInfoProvider['url']$quote($event.title)" class="theme-link-color" title="$tstrings['search_'+$extEventInfoProvider['id']]" target="extdb">$extEventInfoProvider['name']</a>
 							#end if
 							</div>
 						</div>

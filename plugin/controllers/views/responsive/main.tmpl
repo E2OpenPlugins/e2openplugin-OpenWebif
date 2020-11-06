@@ -116,7 +116,7 @@
 						<li class="header" id="leftsidemenuheader">$boxname</li>
 						<li class="active" style="display:none;"></li>
 						<li>
-							<a href="javascript:void(0);" class="menu-toggle">
+							<a href="#remote" class="menu-toggle">
 								<i class="material-icons">dialpad</i>
 								<span>$tstrings['remote']</span>
 							</a>
@@ -326,7 +326,8 @@
 				<!-- it is not allowed to remove this copyright and link when using the materialize (aka responsive) design for openwebif -->
 				<div class="legal" id="leftfooter">
 					<div class="copyright">
-						Materialize design - <b>Version: </b> 1.2.0</br>&copy; <a href="https://www.vuplus-support.org" target="_blank">VTi - vuplus-support.org</a>
+						Materialize design - <b>Version: </b> 1.2.0</br>
+						&copy; <a href="https://www.vuplus-support.org" target="_blank">VTi - vuplus-support.org</a>
 					</div>
 				</div>
 <!-- END COPYRIGHT -->
@@ -335,8 +336,12 @@
 			<!-- #END# Left Sidebar -->
 			<aside id="rightsidebar" class="right-sidebar">
 				<ul class="nav nav-tabs tab-nav-right theme-tab-col tab-col-$skinColor" role="tablist">
-					<li role="presentation" class="active"><a href="#settings" data-toggle="tab">$tstrings['settings']</a></li>
-					<li role="presentation"><a href="#skins" data-toggle="tab">SKINS</a></li>
+					<li role="presentation" class="active">
+						<a href="#settings" data-toggle="tab">$tstrings['config']</a>
+					</li>
+					<li role="presentation">
+						<a href="#skins" data-toggle="tab">$tstrings['skins']</a>
+					</li>
 				</ul>
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane fade in active in active" id="settings">
@@ -346,13 +351,19 @@
 								<li>
 									<span>$tstrings['epgsearchextended']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="myepgbtn0" $EPGSearchFull><span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" id="myepgbtn0" $EPGSearchFull>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+										</label>
 									</div>
 								</li>
 								<li>
 									<span>$tstrings['epgsearchbouquetsonly']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="myepgbtn1" $EPGSearchBQonly><span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" id="myepgbtn1" $EPGSearchBQonly>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+										</label>
 									</div>
 								</li>
 							</ul>
@@ -361,13 +372,19 @@
 								<li>
 									<span>$tstrings['inc_shortdesc']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="mymoviesearchbtn0" $MovieSearchShort><span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" id="mymoviesearchbtn0" $MovieSearchShort>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+										</label>
 									</div>
 								</li>
 								<li>
 									<span>$tstrings['inc_extdesc']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="mymoviesearchbtn1" $MovieSearchExtended><span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" id="mymoviesearchbtn1" $MovieSearchExtended>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+										</label>
 									</div>
 								</li>
 							</ul>
@@ -377,19 +394,28 @@
 								<li>
 									<span>$tstrings['showfullremoteshort']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="remotecontrolview" $RemoteControlView ><span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" id="remotecontrolview" $RemoteControlView>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+										</label>
 									</div>
 								</li>
 								<li>
 									<span>$tstrings['min_movie_list']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="minmovielist" $MinMovieList><span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" id="minmovielist" $MinMovieList>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+										</label>
 									</div>
 								</li>
 								<li>
 									<span>$tstrings['min_timer_list']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="mintimerlist" $MinTimerList><span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" id="mintimerlist" $MinTimerList>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+										</label>
 									</div>
 								</li>
 								<li>
@@ -399,15 +425,21 @@
 									</div>
 								</li>
 								<li>
-									<span>XSPF Playlist</span>
+									<span>XSPF $tstrings['playlistformat']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="plformat"><span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" id="plformat">
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+										</label>
 									</div>
 								</li>
 								<li>
-									<span>Old Design</span>
+									<span>$tstrings['use_classic_design']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="noresposive"><span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" id="noresposive">
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+										</label>
 									</div>
 								</li>
 							</ul>
@@ -417,13 +449,19 @@
 								<li>
 									<span>$tstrings['show_picons']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="showpicons" $showPicons><span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" id="showpicons" $showPicons>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+										</label>
 									</div>
 								</li>
 								<li>
 									<span>$tstrings['show_picon_background']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="showpiconbackground" $showPiconBackground><span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" id="showpiconbackground" $showPiconBackground>
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+										</label>
 									</div>
 								</li>
 							</ul>
