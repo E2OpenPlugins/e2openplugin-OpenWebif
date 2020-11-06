@@ -2100,7 +2100,7 @@ msgid "Use custom box name"
 msgstr "Naudoti savą aparato pavadinimą"
 
 #: ../plugin/controllers/i18n.py:473 ../plugin/plugin.py:138
-msgid "Use new design"
+msgid "Use modern interface"
 msgstr "Naudoti naują išvaizdą"
 
 #: ../plugin/controllers/i18n.py:271

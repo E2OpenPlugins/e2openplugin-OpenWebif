@@ -136,7 +136,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		self.list = []
 		self.list.append(getConfigListEntry(_("OpenWebInterface Enabled"), config.OpenWebif.enabled))
 		if config.OpenWebif.enabled.value:
-			self.list.append(getConfigListEntry(_("Use new design"), config.OpenWebif.responsive_enabled))
+			self.list.append(getConfigListEntry(_("Use modern interface"), config.OpenWebif.responsive_enabled))
 			if config.OpenWebif.responsive_enabled.value:
 				self.list.append(getConfigListEntry(_("Theme mode"), config.OpenWebif.responsive_themeMode))
 				self.list.append(getConfigListEntry(_("Use custom Color"), config.OpenWebif.responsive_skinColor))

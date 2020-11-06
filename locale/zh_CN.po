@@ -2159,7 +2159,7 @@ msgid "Use custom box name"
 msgstr "使用自定义名称"
 
 #: ../plugin/controllers/i18n.py:472 ../plugin/plugin.py:131
-msgid "Use new design"
+msgid "Use modern interface"
 msgstr "使用新的设计"
 
 msgid "Use custom Color"

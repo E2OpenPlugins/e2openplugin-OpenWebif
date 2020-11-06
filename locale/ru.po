@@ -2077,7 +2077,7 @@ msgid "Use custom box name"
 msgstr "Использовать пользовательское имя ресивера"
 
 #: ../plugin/controllers/i18n.py:472 ../plugin/plugin.py:131
-msgid "Use new design"
+msgid "Use modern interface"
 msgstr "Использование нового дизайна"
 
 #: ../plugin/controllers/i18n.py:270
