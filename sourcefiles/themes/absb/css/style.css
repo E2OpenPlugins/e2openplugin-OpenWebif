@@ -10273,3 +10273,336 @@
 .themed--city-lights .choices[data-type*=text] .choices__button {
   border-left-color: #343847;
 }
+
+.remote__group {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  max-width: 156px;
+  flex-wrap: wrap;
+}
+
+.remote__group.collapse {
+  display: none;
+}
+
+.remote__group.collapse.in {
+  display: flex;
+}
+
+.remote__button {
+  outline: none; 
+  border: none; 
+  flex: 0 0 23%; 
+  height: 38px; 
+  margin: 1px; 
+  box-shadow: 0 0 10px rgba(0,0,0,.2); 
+  display: block; 
+  background-color: #fff; 
+  overflow: hidden; 
+  cursor: pointer; 
+  transition: all 0.2s ease; 
+}
+
+.remote__group--numerical .remote__button, 
+.remote__group--directional .remote__button { 
+  flex: 0 0 31%; 
+  height: 48px; 
+}
+
+.remote__group--numerical .remote__button i, 
+.remote__group--directional .remote__button i { 
+  margin-top: 0 !important; 
+  font-size: 34px; 
+  line-height: 48px; 
+}
+
+.remote__button--power i { 
+  margin-left: -1px; 
+  padding: 2px; 
+  background-color: #F44336; 
+  color: #fff !important; 
+  border-radius: 50%; 
+}
+
+.remote__button--arrow { 
+  background-color: rgba(0,0,0,.12); 
+}
+
+.remote__button--colour { 
+  background-color: #707070; 
+}
+
+.remote__button:focus i, .remote__button:hover i { transform: scale(1.2); }
+
+.remote__group .material-icons { 
+  color: #707070; 
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4); 
+}
+
+.atbody .btn-themed {
+  margin: 0.4ex;
+}
+	
+.atform__details__title label {
+  min-height: 2em;
+  font-size: inherit;
+  font-weight: normal;
+}
+
+@media (min-width: 600px) {
+  .atform__body {
+    padding: 0 100px;
+  }
+
+  .atform__details__element {
+    width: 56% !important;
+  }
+}
+
+.box-info__unknown-box .material-icons { 
+  font-size: 14em; 
+}
+
+#bqemain .select { 
+  width: 100%; 
+}
+
+#bqemain .sortable { 
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0; 
+  width: 200px; 
+}
+
+#bqemain .sortable li { 
+  margin: 0 1px 1px 2px; 
+  padding-left: 1.5em; 
+  font-size: .8em; 
+  height:20px;
+}
+
+#bqemain .sortable li span { 
+  margin: 0 0 0 -1.5em; 
+  display: inline-block;
+}
+
+#bqemain ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+#bqemain ::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+.bqe__list { 
+  height: 250px; 
+  overflow-y: scroll; 
+  margin-bottom: 5px; 
+  box-shadow: 0 7px 9px -7px rgba(0,0,0,.12); 
+}
+
+.bqe__option { 
+  display: inline-block; 
+  margin: 0 1ex; 
+}
+
+.bqe__picon { 
+  display: inline-block; 
+  width: 42px; 
+  text-align: center; 
+  margin-right: 1rem; 
+}
+
+.bqe__picon.picon--with-background { 
+  background-color: #bababa; 
+  box-shadow: inset -8px 16px 26px #fff; 
+}
+
+.bqe__picon img { 
+  max-width: 100%; 
+}
+
+.bqe__button { 
+  margin: 0 0.4ex; 
+}
+
+a:focus { 
+  outline-offset: 2px; 
+}
+
+.now-next__grid td {
+  vertical-align: middle;
+}
+
+.now-next__header { 
+  padding-left: 0; 
+  padding-right: 0; 
+}
+
+.now-next__picon { 
+  vertical-align: middle !important; 
+  width:120px; 
+}
+
+.now-next__picon.picon--with-background { 
+  background-color: #bababa; 
+  box-shadow: inset -20px 40px 60px #fff; 
+}
+
+.now-next__picon a { 
+  display: block; 
+}
+
+.now-next__picon .img-fluid { 
+  max-width: 100%; 
+}
+
+.now-next__channel-name { 
+  margin: 0 0 10px !important; 
+}
+
+.now-next__title { 
+  padding-bottom: 0.8ex; 
+}
+
+.now-next__time { 
+  margin-right: 2em; 
+}
+
+.now-next__elapsed { 
+  font-size: 1.2rem; 
+  vertical-align: middle; 
+  white-space: nowrap; 
+}
+
+.now-next__progress { 
+  margin-bottom: 0px; 
+  width: 200px; 
+}
+
+.now-next__channel { 
+  display: block; 
+  min-height: 90px; 
+  border-bottom: none !important; 
+}
+
+.now-next__channel__actions { 
+  margin-top: 1.2rem; 
+}
+
+.now-next__channel__actions button {
+  margin: 4px 2px 0 0; user-select: none;
+}
+
+.now-next__channel__actions .icon { 
+  font-size: 20px; 
+  margin: 2px; 
+}
+
+.now-next__external-link { 
+  margin-left: 4px; 
+}
+
+.now-next__progress__percent { 
+  text-shadow: 0px 0px 2px black; 
+}
+
+.now-next__no-data { 
+  vertical-align: middle !important; 
+}
+
+.channel--active { 
+  background-color: rgba(0, 0, 0, 0.2) !important; 
+}
+
+img[src*="default_picon"] { 
+  filter: grayscale(1) opacity(0.2); 
+}
+
+.epg__picon { 
+  display: inline-block; 
+}
+
+.epg__picon.picon--with-background { 
+  background-color: #bababa; 
+  box-shadow: inset -20px 40px 60px #fff; 
+}
+
+#station { 
+  cursor: pointer;
+  overflow: hidden;
+}
+
+#packagelist {
+  padding: 0;
+}
+
+#packagelist li.installed {
+  font-weight: bold;
+}
+
+#packagelist li {
+  list-style-type: none;
+  margin: 4px 0;
+}
+
+#packagelist li i {
+  margin: 0 10px;
+}
+
+#packagelist .g {
+  color: green;
+}
+
+#packagelist .r {
+  color: red;
+}
+
+#searchpkd {
+  margin: 5px 5px;
+  display: inline-block;
+}
+#packagelist li div {
+  display: inline-table;
+}
+
+#packagelist li div span {
+  font-weight: initial;
+  font-size: smaller;
+}
+
+#tmpfiles {
+  padding: 0;
+}
+
+#tmpfiles li {
+  list-style-type: none;
+  margin: 4px 0;
+}
+
+#shell p {
+  font-size: 1.1em;
+}
+
+#shell,
+#output {
+  width: 95%;
+  height: 90%;
+  margin: 20px 10px;
+}
+
+#output {
+  overflow: scroll;
+  border: 2px solid #999;
+}
+
+#streamchannels-menu {
+  max-height: 300px;
+}
+
+.vxgplayer-error {
+  margin-left: 0px;
+}

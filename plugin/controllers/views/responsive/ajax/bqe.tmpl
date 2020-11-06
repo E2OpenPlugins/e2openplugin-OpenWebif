@@ -2,28 +2,6 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, showPicons, showPiconBackground
 
-<style>
-	.select { width: 100%; }
-	.sortable { list-style-type: none; margin: 0; padding: 0; width: 200px; }
-	.sortable li { margin: 0 1px 1px 2px; padding-left: 1.5em; font-size: .8em;  height:20px;}
-	.sortable li span { margin: 0 0 0 -1.5em; display: inline-block; }
-	#bqemain ::-webkit-scrollbar {
-		-webkit-appearance: none;
-		width: 7px;
-	}
-	#bqemain ::-webkit-scrollbar-thumb {
-		background-color: rgba(0, 0, 0, 0.5);
-		-webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
-	}
-	.bqe__list { height: 250px; overflow-y: scroll; margin-bottom: 5px; box-shadow: 0 7px 9px -7px rgba(0,0,0,.12); }
-	.bqe__option { display: inline-block; margin: 0 1ex; }
-	.bqe__picon { display: inline-block; width: 42px; text-align: center; margin-right: 1rem; }
-	.bqe__picon.picon--with-background { background-color: #bababa; box-shadow: inset -8px 16px 26px #fff; }
-	.bqe__picon img { max-width: 100%; }
-	.bqe__button { margin: 0 0.4ex; }
-	img[src*="default_picon"] { filter: grayscale(1) opacity(0.2); }
-</style>
-
 #set $piconCssClass = ''
 
 <style>
