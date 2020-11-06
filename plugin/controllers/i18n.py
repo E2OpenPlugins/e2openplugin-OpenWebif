@@ -288,6 +288,7 @@ tstrings = {
 	'translation_spanish': _('Translation to Spanish'),
 	'license_text': _('All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation.'),
 	'Root': _('Root'),
+	'reload': _("Reload"),
 
 	'at_list': _("AutoTimer List"),
 	'at_at_edit': _("AutoTimer Edit"),
@@ -361,7 +362,6 @@ tstrings = {
 	'at_filter_weekday': _("Weekday"),
 	'at_add': _("Add"),
 	'at_del': _("Delete"),
-	'at_reset': _("Reset"),
 	'at_save': _("Save"),
 	'at_parse': _("Parse"),
 	'at_simulate': _("Simulate"),
@@ -416,7 +416,6 @@ tstrings = {
 	'er_pip': _("Picture in Picture"),
 	'er_pip_hidden': _("Picture in Picture (hidden)"),
 	'er_fake_recording': _("Fake Recording"),
-	'er_reload': _("Reload"),
 	'er_save': _("Save"),
 	'er_refresh': _("Refresh now"),
 
@@ -425,7 +424,6 @@ tstrings = {
 	'bqe_add_alternative': _("Add channel(s) as alternate"),
 	'bqe_search': _("Search"),
 	'bqe_search_enhanced': _("Search by name, sd / hd / uhd, or provider"),
-	'bqe_reload': _("Reload"),
 	'bqe_add_bq': _("Add Bouquet"),
 	'bqe_rename_bq': _("Rename Bouquet"),
 	'bqe_delete_bq': _("Delete Bouquet"),
