@@ -159,7 +159,7 @@ class AjaxController(BaseController):
 		moviedb = config.OpenWebif.webcache.moviedb.value if config.OpenWebif.webcache.moviedb.value else EXT_EVENT_INFO_SOURCE
 		extEventInfoProvider = getEventInfoProvider(moviedb)
 
-		return {"theme": theme, "events": events, "timers": timers, "at": at, "extEventInfoProvider": extEventInfoProvider}
+		return {"theme": theme, "events": events, "timers": timers, "at": at, "moviedb": moviedb, "extEventInfoProvider": extEventInfoProvider}
 
 	def P_epgdialog(self, request):
 		return self.P_epgpop(request)
