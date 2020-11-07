@@ -23,6 +23,8 @@ sys.path.insert(0, PLUGIN_ROOT_PATH)
 
 GLOBALPICONPATH = None
 
+STB_LANG = language.getLanguage()
+
 #: get transcoding feature
 def getTranscoding():
 	if os.path.isfile("/proc/stb/encoder/0/bitrate"):
@@ -33,13 +35,11 @@ def getTranscoding():
 	return False
 
 def getExtEventInfoProvider():
-	# none
-	lang = language.getLanguage()
-	if lang[0:2] in ['ru', 'uk', 'lv', 'lt', 'et']:
+	if STB_LANG[0:2] in ['ru', 'uk', 'lv', 'lt', 'et']:
 		defaultValue = 'Kinopoisk'
-	elif lang[0:2] in ['cz', 'sk']:
+	elif STB_LANG[0:2] in ['cz', 'sk']:
 		defaultValue = 'CSFD'
-	elif lang[0:5] in ['en_GB']:
+	elif STB_LANG[0:5] in ['en_GB']:
 		defaultValue = 'TVguideUK'
 	else:
 		defaultValue = 'IMDb'
