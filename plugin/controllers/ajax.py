@@ -118,9 +118,9 @@ class AjaxController(BaseController):
 		info = getInfo(self.session, need_fullinfo=True)
 		type = getBoxType()
 
-		if fileExists(getPublicPath("/images/boxes/" + type + ".png")):
+		if fileExists(getPublicPath("/shared/images/boxes/" + type + ".png")):
 			info["boximage"] = type + ".png"
-		elif fileExists(getPublicPath("/images/boxes/" + type + ".jpg")):
+		elif fileExists(getPublicPath("/shared/images/boxes/" + type + ".jpg")):
 			info["boximage"] = type + ".jpg"
 		else:
 			info["boximage"] = "unknown.png"

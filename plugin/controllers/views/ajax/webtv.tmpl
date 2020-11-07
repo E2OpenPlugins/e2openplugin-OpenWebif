@@ -76,13 +76,13 @@
 			</div>
 		</div>
 #if $vxgenabled
-<script type="text/javascript" src="/vxg/vxgplayer-1.8.51.min.js"></script>
+<script src="/vxg/vxgplayer-1.8.51.min.js"></script>
 #end if
-<script type="text/javascript" src="/webtv/webtv.js"></script>
-<script type="text/javascript">
+<script src="/webtv/webtv.js"></script>
+<script>
 \$(function() { var playerObj=new PlayerObj(); playerObj.setup(('$vxgenabled' === 'True'),'$auth')});
 </script>
-<link rel="stylesheet" type="text/css" href="/css/chosen.min.css" />
+<link rel="stylesheet" type="text/css" href="/classic/css/chosen.min.css" />
 #if $vxgenabled
 <link rel="stylesheet" type="text/css" href="/vxg/vxgplayer-1.8.51.min.css" />
 <style>
