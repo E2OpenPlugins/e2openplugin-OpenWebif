@@ -419,10 +419,10 @@ AutoTimerObj.prototype.UpdateUI = function(){
 
 	var tagOpts = [];
 	try {
-		tagOpts = tagList.map(function (tag) {
+		tagOpts = tagList.map(function (item) {
 			return {
-				value: tag,
-				label: tag,
+				value: item,
+				label: item,
 			}
 		});
 		tagOpts.push(this.Tags);
@@ -439,12 +439,42 @@ AutoTimerObj.prototype.UpdateUI = function(){
 													)
 													.setChoiceByValue(this.Tags);
 
+  var channelsSelected = this.Channels.map(function (item) {
+    return {
+      value: item,
+      label: item
+    }
+  });
 	autoTimerOptions['channels'].highlightAll()
-															.removeHighlightedItems()
-															.setChoiceByValue(this.Channels);
-	autoTimerOptions['bouquets'].highlightAll()
-															.removeHighlightedItems()
-															.setChoiceByValue(this.Bouquets);
+                              .removeHighlightedItems().setChoices(
+                                channelsSelected,
+                                'value',
+                                'label',
+                                false
+                              )
+                              .setChoiceByValue(this.Channels);
+
+                              var channelsSelected = this.Channels.map(function (item) {
+                                return {
+                                  value: item,
+                                  label: item,
+                                }
+                              });
+
+  var bouquetsSelected = this.Bouquets.map(function (item) {
+    return {
+      value: item,
+      label: item
+    }
+  });
+  autoTimerOptions['bouquets'].highlightAll()
+                              .removeHighlightedItems().setChoices(
+                                bouquetsSelected,
+                                'value',
+                                'label',
+                                false
+                              )
+                              .setChoiceByValue(this.Bouquets);
 
 	$('#Tags').prop('checked',(this.Tags.length>0));
 	$('#Channels').prop('checked',(this.Channels.length>0));
