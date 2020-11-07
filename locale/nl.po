@@ -2256,7 +2256,7 @@ msgid "error! Loading Page"
 msgstr "fout! Laden Pagina"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact match"
+msgid "exact title match"
 msgstr "exacte overeenkomst"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2325,7 +2325,7 @@ msgid "one two three four unknown command"
 msgstr "één twee drie vier onbekende commando's"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial match"
+msgid "partial title match"
 msgstr "gedeeltelijke overeenkomst"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2373,7 +2373,7 @@ msgid "standard"
 msgstr "standaard"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "start match"
+msgid "title starts with"
 msgstr "aanvangen met vergelijken"
 
 #: ../plugin/controllers/models/info.py:61

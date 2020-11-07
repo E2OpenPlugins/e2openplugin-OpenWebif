@@ -2245,7 +2245,7 @@ msgid "error! Loading Page"
 msgstr "hiba! Oldal betöltése"
 
 #: ../plugin/controllers/i18n.py:293
-msgid "exact match"
+msgid "exact title match"
 msgstr "pontos egyezés"
 
 #: ../plugin/controllers/i18n.py:136
@@ -2314,7 +2314,7 @@ msgid "one two three four unknown command"
 msgstr "egy kettő három négy ismeretlen parancs"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "partial match"
+msgid "partial title match"
 msgstr "részleges egyezés"
 
 #: ../plugin/controllers/models/info.py:467
@@ -2362,7 +2362,7 @@ msgid "standard"
 msgstr "alapértelmezett"
 
 #: ../plugin/controllers/i18n.py:298
-msgid "start match"
+msgid "title starts with"
 msgstr "start egyezés"
 
 #: ../plugin/controllers/models/info.py:73

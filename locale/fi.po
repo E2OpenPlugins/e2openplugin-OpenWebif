@@ -2264,7 +2264,7 @@ msgid "error! Loading Page"
 msgstr "Virhe sivun latauksessa!"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact match"
+msgid "exact title match"
 msgstr "Täysi vastaavuus"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2334,7 +2334,7 @@ msgid "one two three four unknown command"
 msgstr "yksi, kaksi, kolme, tuntematon komento"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial match"
+msgid "partial title match"
 msgstr "Osittainen vastaavuus"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2382,7 +2382,7 @@ msgid "standard"
 msgstr "Vakio"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "start match"
+msgid "title starts with"
 msgstr "hae alku"
 
 #: ../plugin/controllers/models/info.py:61

@@ -2244,7 +2244,7 @@ msgid "error! Loading Page"
 msgstr "Tõrge lehe laadimisel"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact match"
+msgid "exact title match"
 msgstr "täpne vaste"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2313,7 +2313,7 @@ msgid "one two three four unknown command"
 msgstr "üks kaks kolm neli tundmatu käsk"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial match"
+msgid "partial title match"
 msgstr "osaline vaste"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2361,7 +2361,7 @@ msgid "standard"
 msgstr "tavaline"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "start match"
+msgid "title starts with"
 msgstr "vaste algus"
 
 #: ../plugin/controllers/models/info.py:61

@@ -2336,7 +2336,7 @@ msgid "error! Loading Page"
 msgstr "错误!正在载入页面"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact match"
+msgid "exact title match"
 msgstr "精准匹配"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2409,7 +2409,7 @@ msgid "one two three four unknown command"
 msgstr "1 2 3 4 未知的命令"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial match"
+msgid "partial title match"
 msgstr "部分匹配"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2457,7 +2457,7 @@ msgid "standard"
 msgstr "标准"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "start match"
+msgid "title starts with"
 msgstr "开始匹配"
 
 #: ../plugin/controllers/models/info.py:61

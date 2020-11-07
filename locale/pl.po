@@ -2273,7 +2273,7 @@ msgid "error! Loading Page"
 msgstr "błąd! Ładowanie strony"
 
 #: ../plugin/controllers/i18n.py:293
-msgid "exact match"
+msgid "exact title match"
 msgstr "dokładne dopasowanie"
 
 #: ../plugin/controllers/i18n.py:136
@@ -2342,7 +2342,7 @@ msgid "one two three four unknown command"
 msgstr "jeden dwa trzy cztery nieznane polecenie"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "partial match"
+msgid "partial title match"
 msgstr "częściowe dopasowanie"
 
 #: ../plugin/controllers/models/info.py:469
@@ -2390,7 +2390,7 @@ msgid "standard"
 msgstr "standardowe"
 
 #: ../plugin/controllers/i18n.py:298
-msgid "start match"
+msgid "title starts with"
 msgstr "rozpocząć dopasowanie"
 
 #: ../plugin/controllers/models/info.py:75

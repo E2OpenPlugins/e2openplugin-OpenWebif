@@ -2265,7 +2265,7 @@ msgid "error! Loading Page"
 msgstr "erro! Ao carregar página"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact match"
+msgid "exact title match"
 msgstr "correspondência exata"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2335,7 +2335,7 @@ msgid "one two three four unknown command"
 msgstr "um dois três quatro comandos desconhecidos"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial match"
+msgid "partial title match"
 msgstr "correspondência parcial"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2383,7 +2383,7 @@ msgid "standard"
 msgstr "normal"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "start match"
+msgid "title starts with"
 msgstr "iniciar correspondência"
 
 #: ../plugin/controllers/models/info.py:61

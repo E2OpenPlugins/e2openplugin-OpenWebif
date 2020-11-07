@@ -2251,7 +2251,7 @@ msgid "error! Loading Page"
 msgstr "الخطا! تحميل الصفحة"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact match"
+msgid "exact title match"
 msgstr "تطابق كامل"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2320,7 +2320,7 @@ msgid "one two three four unknown command"
 msgstr "1 2 3 4 أمر غير معروف"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial match"
+msgid "partial title match"
 msgstr "تطابق جزئي"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2368,7 +2368,7 @@ msgid "standard"
 msgstr "قياسي"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "start match"
+msgid "title starts with"
 msgstr "بدء التطابق"
 
 #: ../plugin/controllers/models/info.py:61
