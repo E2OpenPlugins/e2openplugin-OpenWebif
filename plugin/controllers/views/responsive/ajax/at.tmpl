@@ -152,54 +152,34 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="timeFrame" id="timeFrame" class="form-control theme-chk-col chk-col-$skinColor">
+													<input type="checkbox" name="timeFrame" class="form-control theme-chk-col chk-col-$skinColor" id="timeFrame">
 													<!-- Restrict to events on certain dates -->
 													<label for="timeFrame">$tstrings['at_datespan_before']</label>
 												</div>
-												<div class="atform__details__element" style="min-height: 8ex;">
-													<div class="select-related-container">
-														<div id="timeFrameAfterCheckBox" class="atform__details__dropdown" style="display:none;">
-															<input type="checkbox" class="form-control theme-chk-col chk-col-$skinColor" id="timeFrameAfter">
-															<!-- ?? -->
-															<label for="timeFrameAfter">$tstrings['at_datespan_after']</label>
-														</div>
-														<div id="timeFrameE" class=" atform__details__dropdown" style="display:none;">
-															<div class="row clearfix">
-																<div class="col-xs-12 col-sm-4">
-																	<div class="row clearfix">
-																		<div class="col-xs-12">
-																		</div>
-																	</div>
-																</div>
-																<div class="col-xs-12 col-sm-4">
-																	<div class="row clearfix">
-																		<div class="col-xs-12">
-																			<!-- Not before -->
-																				<label>$tstrings['at_datespan_before']:&nbsp;</label>
-																				<div class="form-line">
-																					<input type="date" class="form-control inactive" id="after">
-																				</div>
-																		</div>
-																	</div>
-																</div>
-																<div class="col-xs-12 col-sm-4">
-																	<div class="row clearfix">
-																		<div class="col-xs-12">
-																			<span id="beforeE" style="display:none;">
-																				<!-- Not after -->
-																				<label>$tstrings['at_datespan_after']:&nbsp;</label>
-																				<div class="form-line">
-																					<input type="date" class="form-control inactive" id="before">
-																				</div>
-																			</span>
-																		</div>
-																	</div>
-																</div>
-															</div>
+												<div class="atform__details__element">
+													<div class="atform__details__dropdown">
+														<div class="form-line" id="timeFrameE" style="display:none;">
+															<input type="date" class="form-control inactive" id="before">
 														</div>
 													</div>
 												</div>
 											</div>
+
+											<div class="atform__fields-container" id="timeFrameAfterCheckBox">
+												<div class="atform__details__title">
+													<input type="checkbox" class="form-control theme-chk-col chk-col-$skinColor" id="timeFrameAfter">
+													<!-- Restrict to events on certain dates -->
+													<label for="timeFrameAfter">$tstrings['at_datespan_after']</label>
+												</div>
+												<div class="atform__details__element">
+													<div class=" atform__details__dropdown">
+														<div class="form-line" id="beforeE" style="display:none;">
+															<input type="date" class="form-control inactive" id="after">
+														</div>
+													</div>
+												</div>
+											</div>
+
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
 													<input type="checkbox" class="form-control theme-chk-col chk-col-$skinColor" id="timerOffset">
