@@ -993,7 +993,7 @@ msgid "Marker added."
 msgstr "Marcador añadido."
 
 #: ../plugin/controllers/i18n.py:288
-msgid "Match title"
+msgid "Match text"
 msgstr "Coincidencia de Título"
 
 #: ../plugin/controllers/i18n.py:366

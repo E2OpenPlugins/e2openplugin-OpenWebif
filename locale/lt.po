@@ -1003,7 +1003,7 @@ msgid "Marker added."
 msgstr "Žymeklis įtrauktas."
 
 #: ../plugin/controllers/i18n.py:289
-msgid "Match title"
+msgid "Match text"
 msgstr "Pavadinimas atitiks"
 
 #: ../plugin/controllers/i18n.py:367

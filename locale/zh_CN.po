@@ -1026,7 +1026,7 @@ msgid "Marker added."
 msgstr "标记已添加."
 
 #: ../plugin/controllers/i18n.py:288
-msgid "Match title"
+msgid "Match text"
 msgstr "匹配标题"
 
 #: ../plugin/controllers/i18n.py:366

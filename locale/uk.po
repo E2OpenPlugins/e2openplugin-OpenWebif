@@ -988,7 +988,7 @@ msgid "Marker added."
 msgstr "Маркер додано."
 
 #: ../plugin/controllers/i18n.py:288
-msgid "Match title"
+msgid "Match text"
 msgstr "Збіг назви"
 
 #: ../plugin/controllers/i18n.py:366

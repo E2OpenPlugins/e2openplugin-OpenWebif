@@ -985,7 +985,7 @@ msgid "Marker added."
 msgstr "العلامة مضافة."
 
 #: ../plugin/controllers/i18n.py:288
-msgid "Match title"
+msgid "Match text"
 msgstr "مطابقة العنوان"
 
 #: ../plugin/controllers/i18n.py:366

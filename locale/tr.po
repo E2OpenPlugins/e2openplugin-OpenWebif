@@ -724,7 +724,7 @@ msgstr "Mart"
 msgid "Marker added."
 msgstr "İşaretçi eklendi."
 
-msgid "Match title"
+msgid "Match text"
 msgstr "Başlığı eşleştir"
 
 msgid "Max Days"

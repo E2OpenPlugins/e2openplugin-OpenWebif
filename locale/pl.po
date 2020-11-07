@@ -1007,7 +1007,7 @@ msgid "Marker added."
 msgstr "Dodano znacznik."
 
 #: ../plugin/controllers/i18n.py:289
-msgid "Match title"
+msgid "Match text"
 msgstr "Dopasuj tytuł"
 
 #: ../plugin/controllers/i18n.py:367

@@ -992,7 +992,7 @@ msgid "Marker added."
 msgstr "Marqueur ajouté."
 
 #: ../plugin/controllers/i18n.py:289
-msgid "Match title"
+msgid "Match text"
 msgstr "Titre correspond"
 
 #: ../plugin/controllers/i18n.py:367

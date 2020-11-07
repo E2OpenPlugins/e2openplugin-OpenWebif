@@ -989,7 +989,7 @@ msgid "Marker added."
 msgstr "Značka pridaná."
 
 #: ../plugin/controllers/i18n.py:288
-msgid "Match title"
+msgid "Match text"
 msgstr "Zhoda v názve"
 
 #: ../plugin/controllers/i18n.py:366

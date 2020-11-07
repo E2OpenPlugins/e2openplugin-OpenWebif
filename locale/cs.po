@@ -983,7 +983,7 @@ msgid "Marker added."
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:288
-msgid "Match title"
+msgid "Match text"
 msgstr "Hledat v názvu"
 
 #: ../plugin/controllers/i18n.py:366

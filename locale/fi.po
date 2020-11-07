@@ -990,7 +990,7 @@ msgid "Marker added."
 msgstr "Väliotsikko lisätty."
 
 #: ../plugin/controllers/i18n.py:288
-msgid "Match title"
+msgid "Match text"
 msgstr "Hae ohjelmannimi"
 
 #: ../plugin/controllers/i18n.py:366
