@@ -136,14 +136,14 @@
 															<!-- Begin of timespan -->
 															<label>$tstrings['at_timespan_begin']:&nbsp;</label>
 															<div class="form-line">
-																<input type="time" id="from" class="form-control inactive time24" placeholder="06:30">
+																<input type="time" name="from" id="from" class="form-control inactive time24" placeholder="06:30">
 															</div>
 														</div>
 														<div class="atform__details__dropdown">
 															<!-- End of timespan -->
 															<label>$tstrings['at_timespan_end']:&nbsp;</label>
 															<div class="form-line">
-																<input type="time" id="to" class="form-control inactive time24" placeholder="23:30">
+																<input type="time" name="to" id="to" class="form-control inactive time24" placeholder="23:30">
 															</div>
 														</div>
 													</div>
@@ -167,7 +167,7 @@
 
 											<div class="atform__fields-container" id="timeFrameAfterCheckBox">
 												<div class="atform__details__title">
-													<input type="checkbox" class="form-control theme-chk-col chk-col-$skinColor" id="timeFrameAfter">
+													<input type="checkbox" name="timeFrameAfter" class="form-control theme-chk-col chk-col-$skinColor" id="timeFrameAfter">
 													<!-- Restrict to events on certain dates -->
 													<label for="timeFrameAfter">$tstrings['at_datespan_after']</label>
 												</div>
@@ -182,7 +182,7 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" class="form-control theme-chk-col chk-col-$skinColor" id="timerOffset">
+													<input type="checkbox" name="timerOffset" class="form-control theme-chk-col chk-col-$skinColor" id="timerOffset">
 													<!-- Custom offset -->
 													<label for="timerOffset">$tstrings['at_timer_offset']</label>
 												</div>
@@ -432,7 +432,7 @@
 #if $hasVPS == 1
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" class="form-control theme-chk-col chk-col-$skinColor" id="vps">
+													<input type="checkbox" name="vps" class="form-control theme-chk-col chk-col-$skinColor" id="vps">
 													<label for="vps">$tstrings['vps']</label>
 												</div>
 												<div class="atform__details__element">
