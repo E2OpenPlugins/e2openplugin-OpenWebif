@@ -985,7 +985,7 @@ msgid "Marker added."
 msgstr "Ο Σημειωτής προστέθηκε."
 
 #: ../plugin/controllers/i18n.py:288
-msgid "Match title"
+msgid "Match text"
 msgstr "Συσχέτιση τίτλου"
 
 #: ../plugin/controllers/i18n.py:366
@@ -2253,7 +2253,7 @@ msgid "error! Loading Page"
 msgstr "σφάλμα! Φόρτωση Σελίδας"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact match"
+msgid "exact title match"
 msgstr "ακριβής συσχέτιση"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2322,7 +2322,7 @@ msgid "one two three four unknown command"
 msgstr "ένα δύο τρία τέσσερα άγνωστη εντολή"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial match"
+msgid "partial title match"
 msgstr "μερική συσχέτιση"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2370,7 +2370,7 @@ msgid "standard"
 msgstr "στάνταρ"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "start match"
+msgid "title starts with"
 msgstr "εκκίνηση συσχέτισης"
 
 #: ../plugin/controllers/models/info.py:61

@@ -985,7 +985,7 @@ msgid "Marker added."
 msgstr "Merke er lagt til."
 
 #: ../plugin/controllers/i18n.py:288
-msgid "Match title"
+msgid "Match text"
 msgstr "Treff"
 
 #: ../plugin/controllers/i18n.py:366
@@ -2249,7 +2249,7 @@ msgid "error! Loading Page"
 msgstr "feil! Lasting av side"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact match"
+msgid "exact title match"
 msgstr "eksakt samsvarssøk"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2318,7 +2318,7 @@ msgid "one two three four unknown command"
 msgstr "en to tre fire ukjent kommando"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial match"
+msgid "partial title match"
 msgstr "delvis samsvarssøk"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2366,7 +2366,7 @@ msgid "standard"
 msgstr "standard"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "start match"
+msgid "title starts with"
 msgstr "start samsvarssøk"
 
 #: ../plugin/controllers/models/info.py:61

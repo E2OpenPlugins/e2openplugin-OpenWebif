@@ -983,7 +983,7 @@ msgid "Marker added."
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:288
-msgid "Match title"
+msgid "Match text"
 msgstr "Hledat v názvu"
 
 #: ../plugin/controllers/i18n.py:366
@@ -2245,7 +2245,7 @@ msgid "error! Loading Page"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact match"
+msgid "exact title match"
 msgstr "přesně odpovídá"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2314,7 +2314,7 @@ msgid "one two three four unknown command"
 msgstr "jeden dva tři čtyři neznámé příkazy"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial match"
+msgid "partial title match"
 msgstr "částečná shoda"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2362,7 +2362,7 @@ msgid "standard"
 msgstr "standardní"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "start match"
+msgid "title starts with"
 msgstr "začátek odpovídá"
 
 #: ../plugin/controllers/models/info.py:61
