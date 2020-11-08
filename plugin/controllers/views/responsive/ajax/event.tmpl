@@ -38,7 +38,7 @@
 			<i class="material-icons">delete</i>
 		</a>
 		
-#if $event.extEventInfoProvider
+#if $extEventInfoProvider
 		<a href="$extEventInfoProvider['url']$quote($event.title)" class="theme-link-color" title="$tstrings['search_'+$extEventInfoProvider['id']]" target="extdb">$extEventInfoProvider['name']</a>
 #end if
 	</div>
