@@ -13,6 +13,16 @@ class STB {
 class API { 
   constructor() {}
 
+  async getStatusInfo() {
+    let response = await fetch('/api/statusinfo');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    } else {
+      const jsonResponse = await response.json();
+      return await jsonResponse;
+    }
+  }
+
   async getTags() {
     let response = await fetch('/api/gettags');
     if (!response.ok) {

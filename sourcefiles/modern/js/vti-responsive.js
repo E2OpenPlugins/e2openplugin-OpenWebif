@@ -85,8 +85,9 @@ $(function () {
 	
 	initSkin();
 	
-	VTiWebConfig();
-
+  VTiWebConfig();
+  
+	setInterval(function () { getStatusInfo(); }, 3000);
 });
 
 function getNoUISliderValue(slider, percentage) {
@@ -333,13 +334,10 @@ function grabScreenshot(mode) {
 	}
 }
 
-function getStatusInfo() {
+getStatusInfo = function(){
+  // redefine classic version of same function
 
-	$.ajax({
-		url: '/api/statusinfo',
-		dataType: "json",
-		cache: false,
-		success: function(statusinfo) { 
+  navigator.onLine && owif.api.getStatusInfo().then(function(statusinfo) { 
 
 		if (cur_vol === -1) {
 			vol_slider.noUiSlider.set(statusinfo['volume']);
@@ -415,7 +413,6 @@ function getStatusInfo() {
 		$("#osd_power_status").html(power_status);
 		$("#responsive_rec_info").html(responsive_rec_info);
 		$("#responsive_stream_info").html(responsive_stream_info);
-	}
 	});
 }
 

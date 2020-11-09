@@ -1,0 +1,15 @@
+{
+    "pattern": "**/*.js",
+    "options": {
+        "UseMinExt": true,
+        "MinifyOptions": {},
+        "OutDir": "../../plugin/public/modern/js/",
+        "RootDir": "./js/",
+        "Exclude": [
+            "**/*.min.js",
+            "**/owif.js"
+        ],
+        "RemoveSource": false,
+        "Debug": true
+    }
+}
