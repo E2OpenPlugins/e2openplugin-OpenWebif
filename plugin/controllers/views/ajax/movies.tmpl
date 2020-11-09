@@ -80,8 +80,7 @@
 				<div class="tm_text">
 					#if $movie.eventname != ""
 						<div>
-							#set $da = $tstrings[("day_" + (time.strftime("%w", time.localtime($movie.recordingtime))))]
-							<span class="tm_title">$movie.eventname</span><br /> $movie.servicename / $da $movie.begintime<br /> $movie.length min. / $movie.filesize_readable
+							<span class="tm_title">$movie.eventname</span><br /> $movie.servicename / $movie.begintime<br /> $movie.length min. / $movie.filesize_readable
 						</div>
 						<div>
 							<span class="tm_desc" style="font-weight: bold;">$movie.description</span>
