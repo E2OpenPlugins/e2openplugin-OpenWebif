@@ -4,7 +4,7 @@
 OpenWebif is an open source web interface for Enigma2-based set-top boxes (STBs).
 
 ## Documentation
-[Link](https://e2openplugins.github.io/e2openplugin-OpenWebif/)
+[e2openplugin-OpenWebif’s documentation](https://e2openplugins.github.io/e2openplugin-OpenWebif/)
 
 ## Found a Problem / Issue / Bug / Missing Feature?
 See if it's already been [logged](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/issues)
