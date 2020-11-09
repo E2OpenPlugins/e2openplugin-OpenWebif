@@ -1,7 +1,7 @@
 var tagList = [];
 
 function toUnixDate(date){
-	var d = moment(date, "DD.MM.YY").unix();
+	var d = moment(date, "YYYY-MM-DD").unix();
 	return d;
 }
 
@@ -99,22 +99,17 @@ function initValues () {
 	$('#tafter').val('5');
 	$('#tbefore').val('5');
 	$('#maxduration').val('70');
-	$('#after').datetimepicker({
-		format: 'dd.mm.yy',
-		initialDate: _dateb,
-		autoclose: true,
-		minView: 2,
-    });
-	$('#after').datetimepicker().on('changeDate', function(ev){
-		var before = moment($('#before').val(), "DD.MM.YY").unix();
-		var after = moment($('#after').val(), "DD.MM.YY").unix();
+
+	$('#after').on('changeDate', function(ev){
+		var before = moment($('#before').val(), "YYYY-MM-DD").unix();
+		var after = moment($('#after').val(), "YYYY-MM-DD").unix();
 		if (before < after) {
 				showError('AFTER:' + tstr_start_after_end);
 			} else
 				showError('');
 	});
 	var _dateb = new Date();
-	$('#after').val(moment(_dateb).format('DD.MM.YY'));
+	$('#after').val(moment(_dateb).format('YYYY-MM-DD'));
 	
 	var _datea = new Date();
 	_datea.setDate(_dateb.getDate()+7);
@@ -122,38 +117,32 @@ function initValues () {
 	$('#to').val('23:15');
 	$('#aefrom').val('20:15');
 	$('#aeto').val('23:15');
-	$('#before').datetimepicker({
-		format: 'dd.mm.yy',
-		initialDate: _dateb,
-		autoclose: true,
-		minView: 2,
-	});
-	$('#before').datetimepicker().on('changeDate', function(ev){
-		var before = moment($('#before').val(), "DD.MM.YY").unix();
-		var after = moment($('#after').val(), "DD.MM.YY").unix();
+	$('#before').on('changeDate', function(ev){
+		var before = moment($('#before').val(), "YYYY-MM-DD").unix();
+		var after = moment($('#after').val(), "YYYY-MM-DD").unix();
 		if (before < after) {
 				showError('BEFORE:' + tstr_start_after_end);
 			} else
 				showError('');
 	});
-  $('#before').val(moment(_datea).format('DD.MM.YY'));
+  $('#before').val(moment(_datea).format('YYYY-MM-DD'));
 }
 
 
 function timeFrameAfterCheck() {
 
 	if ($('#timeFrameAfter').is(':checked') === true) {
-		var _da = moment($('#after').val(), "DD.MM.YY").toDate();
+		var _da = moment($('#after').val(), "YYYY-MM-DD").toDate();
 		var _datea = new Date(_da);
 		var _dateb = new Date();
 		_dateb.setDate(_datea.getDate()+7);
-		_da =  moment(_dateb).format('DD.MM.YY');
+		_da =  moment(_dateb).format('YYYY-MM-DD');
 		$('#before').val(_da);
 		$('#beforeE').show();
 	}
 	else {
 		var _datea = new Date(2038,0,1);
-		var _da = moment(_datea).format('DD.MM.YY');
+		var _da = moment(_datea).format('YYYY-MM-DD');
 		$('#before').val(_da);
 		$('#beforeE').hide();
 	}
@@ -217,11 +206,11 @@ function AutoTimerObj (xml) {
 	{
 		var _i = parseInt(xml.attr("after"));
 		var _date = new Date(_i*1000);
-		this.after = moment(_date).format('DD.MM.YY');
+		this.after = moment(_date).format('YYYY-MM-DD');
 
 		_i=parseInt(xml.attr("before"));
 		_date = new Date(_i*1000);
-		this.before = moment(_date).format('DD.MM.YY');
+		this.before = moment(_date).format('YYYY-MM-DD');
 		this.timeFrame=true;
 	}
 	else
@@ -385,7 +374,7 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	{
 		$('#after').val(this.after);
 		$('#before').val(this.before);
-		var _dateb = moment($('#before').val(), "DD.MM.YY").toDate();
+		var _dateb = moment($('#before').val(), "YYYY-MM-DD").toDate();
 		var _maxd = new Date(2038,0,1);
 		if (_dateb < _maxd) {
 			$('#timeFrameAfter').prop('checked',true);
@@ -430,10 +419,10 @@ AutoTimerObj.prototype.UpdateUI = function(){
 
 	var tagOpts = [];
 	try {
-		tagOpts = tagList.map(function (tag) {
+		tagOpts = tagList.map(function (item) {
 			return {
-				value: tag,
-				label: tag,
+				value: item,
+				label: item,
 			}
 		});
 		tagOpts.push(this.Tags);
@@ -450,12 +439,42 @@ AutoTimerObj.prototype.UpdateUI = function(){
 													)
 													.setChoiceByValue(this.Tags);
 
+  var channelsSelected = this.Channels.map(function (item) {
+    return {
+      value: item,
+      label: item
+    }
+  });
 	autoTimerOptions['channels'].highlightAll()
-															.removeHighlightedItems()
-															.setChoiceByValue(this.Channels);
-	autoTimerOptions['bouquets'].highlightAll()
-															.removeHighlightedItems()
-															.setChoiceByValue(this.Bouquets);
+                              .removeHighlightedItems().setChoices(
+                                channelsSelected,
+                                'value',
+                                'label',
+                                false
+                              )
+                              .setChoiceByValue(this.Channels);
+
+                              var channelsSelected = this.Channels.map(function (item) {
+                                return {
+                                  value: item,
+                                  label: item,
+                                }
+                              });
+
+  var bouquetsSelected = this.Bouquets.map(function (item) {
+    return {
+      value: item,
+      label: item
+    }
+  });
+  autoTimerOptions['bouquets'].highlightAll()
+                              .removeHighlightedItems().setChoices(
+                                bouquetsSelected,
+                                'value',
+                                'label',
+                                false
+                              )
+                              .setChoiceByValue(this.Bouquets);
 
 	$('#Tags').prop('checked',(this.Tags.length>0));
 	$('#Channels').prop('checked',(this.Channels.length>0));

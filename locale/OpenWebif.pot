@@ -992,7 +992,7 @@ msgid "Marker added."
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:289
-msgid "Match title"
+msgid "Match text"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:367
@@ -2258,7 +2258,7 @@ msgid "error! Loading Page"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:293
-msgid "exact match"
+msgid "exact title match"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:136
@@ -2327,7 +2327,7 @@ msgid "one two three four unknown command"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:292
-msgid "partial match"
+msgid "partial title match"
 msgstr ""
 
 #: ../plugin/controllers/models/info.py:469
@@ -2375,7 +2375,7 @@ msgid "standard"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:298
-msgid "start match"
+msgid "title starts with"
 msgstr ""
 
 #: ../plugin/controllers/models/info.py:75

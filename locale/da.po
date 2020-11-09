@@ -1002,7 +1002,7 @@ msgid "Marker added."
 msgstr "Mærke tilføjet."
 
 #: ../plugin/controllers/i18n.py:288
-msgid "Match title"
+msgid "Match text"
 msgstr "Sammenlign titel"
 
 #: ../plugin/controllers/i18n.py:366
@@ -2294,7 +2294,7 @@ msgid "error! Loading Page"
 msgstr "fejl! Henter side"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact match"
+msgid "exact title match"
 msgstr "Helt identisk"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2365,7 +2365,7 @@ msgid "one two three four unknown command"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial match"
+msgid "partial title match"
 msgstr "Delvis identisk"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2413,7 +2413,7 @@ msgid "standard"
 msgstr "standard"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "start match"
+msgid "title starts with"
 msgstr "Sammenlign begyndelse"
 
 #: ../plugin/controllers/models/info.py:61

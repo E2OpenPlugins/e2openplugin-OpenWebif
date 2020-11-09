@@ -989,7 +989,7 @@ msgid "Marker added."
 msgstr "Značka pridaná."
 
 #: ../plugin/controllers/i18n.py:288
-msgid "Match title"
+msgid "Match text"
 msgstr "Zhoda v názve"
 
 #: ../plugin/controllers/i18n.py:366
@@ -2263,7 +2263,7 @@ msgid "error! Loading Page"
 msgstr "chyba! Načítavám stránku"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact match"
+msgid "exact title match"
 msgstr "presná zhoda"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2333,7 +2333,7 @@ msgid "one two three four unknown command"
 msgstr "jeden dva tri štyri neznámy príkaz"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial match"
+msgid "partial title match"
 msgstr "čiastočná zhoda"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2381,7 +2381,7 @@ msgid "standard"
 msgstr "štandardné"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "start match"
+msgid "title starts with"
 msgstr "zhoda v čase začiatku"
 
 #: ../plugin/controllers/models/info.py:61
