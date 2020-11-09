@@ -99,7 +99,7 @@ _(Dependencies should be handled by using ipkg/opkg packages)_
 
 (TODO: add responsive workflow setup guide here)
 If you've already got npm installed:
-`(cd sourcefiles/ && npm run build-js)`
+`(cd sourcefiles/modern/ && npm run build-js)`
 
 ---
 
@@ -115,7 +115,7 @@ The compressed files have the following syntax : xx-<version>.min.js
 (TODO: add responsive workflow setup guide here)
 
 If you've already got npm installed:
-`(cd sourcefiles/ && npm run build-css)`
+`(cd sourcefiles/modern/ && npm run build-css)`
 
 ---
 
