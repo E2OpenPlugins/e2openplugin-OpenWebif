@@ -991,7 +991,7 @@ msgid "Marker added."
 msgstr "Marker hinzugefügt."
 
 #: ../plugin/controllers/i18n.py:288
-msgid "Match title"
+msgid "Match text"
 msgstr "Finde in Titel"
 
 #: ../plugin/controllers/i18n.py:366
@@ -2264,7 +2264,7 @@ msgid "error! Loading Page"
 msgstr "Fehler! beim Laden der Seite"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact match"
+msgid "exact title match"
 msgstr "gesamter Titel"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2334,7 +2334,7 @@ msgid "one two three four unknown command"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial match"
+msgid "partial title match"
 msgstr "Teil des Titels"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2382,7 +2382,7 @@ msgid "standard"
 msgstr "Standard"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "start match"
+msgid "title starts with"
 msgstr "Beginnt mit..."
 
 #: ../plugin/controllers/models/info.py:61

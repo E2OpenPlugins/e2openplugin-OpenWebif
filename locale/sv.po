@@ -993,7 +993,7 @@ msgid "Marker added."
 msgstr "Bokmärket lades till."
 
 #: ../plugin/controllers/i18n.py:288
-msgid "Match title"
+msgid "Match text"
 msgstr "Matcha titeln"
 
 #: ../plugin/controllers/i18n.py:366
@@ -2280,7 +2280,7 @@ msgid "error! Loading Page"
 msgstr "Fel! Laddar sidan"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact match"
+msgid "exact title match"
 msgstr "exakt matchning"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2351,7 +2351,7 @@ msgid "one two three four unknown command"
 msgstr "ett två tre fyra okänt kommando"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial match"
+msgid "partial title match"
 msgstr "ofullständig matchning"
 
 # Lämnas oöversatt t.v. eftersom begreppen kan vara mer kända på engelska än svenska. Står för behörigheten: Enbart läsbehörighet
@@ -2401,7 +2401,7 @@ msgid "standard"
 msgstr "standard"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "start match"
+msgid "title starts with"
 msgstr "titelns inledning matchar"
 
 #: ../plugin/controllers/models/info.py:61

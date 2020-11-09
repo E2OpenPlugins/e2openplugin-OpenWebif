@@ -53,6 +53,8 @@ class API {
           return {
             name: name,
             sRef: sRef,
+            bouquetName: bouquet['servicename'],
+            extendedName: name + '<small>' + bouquet['servicename'] + '</small>',
             disabled: isMarker,
           }
         });
@@ -84,6 +86,7 @@ class GUI {
     duplicateItemsAllowed: false,
     resetScrollPosition: false,
     shouldSort: false,
+    searchResultLimit: 100,
     placeholder: true,
     renderSelectedChoices: 'always',
     itemSelectText: '',
@@ -125,6 +128,8 @@ class GUI {
         // this.choicesConfig.editItems = true;
         this.choicesConfig.shouldSort = true;
       }
+      // this.choicesConfig.addItems = true;
+      // this.choicesConfig.editItems = true;
       populatedChoices[el.getAttribute(`${selectChoicesAttr}`)] = new Choices(el, this.choicesConfig);
     });
 
@@ -160,7 +165,7 @@ class GUI {
       populatedChoices['channels'].setChoices(
         opts,
         'sRef',
-        'name',
+        'extendedName', //'name',
         false,
       );
     }).catch(e => console.warn(e));

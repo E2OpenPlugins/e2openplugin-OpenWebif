@@ -988,7 +988,7 @@ msgid "Marker added."
 msgstr "Добавен е Маркер."
 
 #: ../plugin/controllers/i18n.py:288
-msgid "Match title"
+msgid "Match text"
 msgstr "Съвпадение на заглавието"
 
 #: ../plugin/controllers/i18n.py:366
@@ -2254,7 +2254,7 @@ msgid "error! Loading Page"
 msgstr "грешка при зареждане на страницата!"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact match"
+msgid "exact title match"
 msgstr "пълно съвпадение"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2323,7 +2323,7 @@ msgid "one two three four unknown command"
 msgstr "една /две / три / четири неизвестни команди"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial match"
+msgid "partial title match"
 msgstr "частично съвпадение"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2371,7 +2371,7 @@ msgid "standard"
 msgstr "стандарт"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "start match"
+msgid "title starts with"
 msgstr "начало на съвпадения"
 
 #: ../plugin/controllers/models/info.py:61
