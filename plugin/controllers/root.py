@@ -58,7 +58,7 @@ class RootController(BaseController):
 			self.putChild2("m", static.File(getPublicPath() + "/mobile"))
 		for static_val in ('js', 'css', 'static', 'images', 'fonts'):
 			self.putChild2(static_val, static.File(six.ensure_binary(getPublicPath() + '/' + static_val)))
-		for static_val in ('themes', 'webtv', 'vxg'):
+		for static_val in ('modern', 'themes', 'webtv', 'vxg'):
 			if os.path.exists(getPublicPath(static_val)):
 				self.putChild2(static_val, static.File(six.ensure_binary(getPublicPath() + '/' + static_val)))
 
