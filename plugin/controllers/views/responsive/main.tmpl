@@ -877,7 +877,7 @@
 <script>
 	function locationHashChanged(e) { 
 		var hash = e.target.location.hash.replace('#', '').replace('&', '?');
-		hash && load_maincontent('ajax/' + hash);
+		hash && load_maincontent_spin('ajax/' + hash);
 	} 
 
 	window.onhashchange = locationHashChanged;
