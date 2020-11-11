@@ -27,6 +27,7 @@ import unicodedata
 import six
 from time import time, localtime, strftime, mktime
 
+import NavigationInstance
 from Tools.Directories import fileExists
 from Components.Sources.ServiceList import ServiceList
 from Components.ParentalControl import parentalControl
@@ -670,9 +671,35 @@ def getEventDesc(ref, idev, encode=True):
 	return {"description": description}
 
 
+def getTimerEventStatus(event, eventLookupTable):
+	#ValueError
+	startTime = event[eventLookupTable.index('B')]
+	endTime = event[eventLookupTable.index('B')] + event[eventLookupTable.index('D')] - 120
+	serviceref = event[eventLookupTable.index('R')]
+	timerlist = {}
+	for timer in NavigationInstance.instance.RecordTimer.timer_list:
+		if str(timer.service_ref) not in timerlist:
+			timerlist[str(timer.service_ref)] = []
+		timerlist[str(timer.service_ref)].append(timer)
+	if serviceref in timerlist:
+		for timer in timerlist[serviceref]:
+			if timer.begin <= startTime and timer.end >= endTime:
+				if timer.disabled:
+					return { 
+						'isEnabled': 0 
+					}
+				else:
+					return { 
+						'isEnabled': 1, 
+						'isZapOnly': int(timer.justplay)
+					}
+	return None
+
+
 def getEvent(ref, idev, encode=True):
 	epgcache = eEPGCache.getInstance()
-	events = epgcache.lookupEvent(['IBDTSENRWX', (ref, 2, int(idev))])
+	eventLookupTable = 'IBDTSENRWX'
+	events = epgcache.lookupEvent([eventLookupTable, (ref, 2, int(idev))]) #IBTSRND
 	info = {}
 	for event in events:
 		info['id'] = event[0]
@@ -686,6 +713,8 @@ def getEvent(ref, idev, encode=True):
 		info['channel'] = filterName(event[6], encode)
 		info['sref'] = event[7]
 		info['genre'], info['genreid'] = convertGenre(event[8])
+		info['picon'] = getPicon(event[7])
+		info['timer'] = getTimerEventStatus(event, eventLookupTable)
 		break
 	return {'event': info}
 
