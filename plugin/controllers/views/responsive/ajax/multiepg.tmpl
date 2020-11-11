@@ -40,6 +40,38 @@
 	.epg__desc { cursor: pointer; width: 190px; overflow:hidden; max-height: 3.75em; overflow: hidden; line-height: 1.25em; font-size: 12px; text-align: justify; padding-right: 1em; }
 	@supports (-webkit-line-clamp: 4) { .epg__desc { max-height: none; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; } }
 	img[src*="default_picon"] { filter: grayscale(1) opacity(0.5); }
+
+	#fulltbl .table-striped>tbody>tr:hover,
+	#fulltbl .table-striped>tbody>tr:nth-of-type(odd):hover,
+	#fulltbl .themed--city-lights .table-striped>tbody>tr:hover,
+	#fulltbl .themed--city-lights .table-striped>tbody>tr:nth-of-type(odd):hover { 
+    background-color: initial;
+	}
+	.epg__event:hover {
+		filter: brightness(1.2);
+	}
+	.epg__event:hover .epg__title {
+			text-decoration: underline;
+	}
+	.epg__event.event--has-timer {
+    position: relative;
+    overflow: visible;
+	}
+	.epg__event.event--has-timer::after {
+		content: '';
+    display: block;
+    border-radius: 50%;
+    top: -25%;
+    right: -5%;
+    bottom: -10%;
+    left: -10%;
+    position: absolute;
+    border: 2px solid $skinColor;
+  }
+	.epg__timer-status i {
+		font-size: 1.1em;
+    margin: 0 0 0.1ex 0.4ex;
+	}
 </style>
 
 <div id="navepg">
@@ -145,7 +177,7 @@
 	#set $ref = "data-ref='" + $ev.ref + "'"
 #end if
 				<td class="serviceheader">
-					<div class="service event" $ref><img src="$(picons[$sname])" />$sname</div>
+					<div class="service event" $ref><img src="$(picons[$sname])">$sname</div>
 				</td>
 #end for
 			</tr>
@@ -154,13 +186,7 @@
 						<tbody id="tbl1body">
 #set even = 0
 #for $slot in list(range(0,12))
-	#if $even == 0
 							<tr>
-		#set $even = 1
-	#else
-		#set $even = 0
-							<tr style="background-color:#e9e9e9;">
-	#end if
 	#for $sname, $eventlist in six.iteritems($events)
 								<td class="border" style="white-space:normal;">
 		#for $event in $eventlist[$slot]
@@ -193,7 +219,7 @@
 #for $sname, $eventlist in six.iteritems($events)
 									<div class="row" style="border:solid;border-width:1px 0px 0px 0px;height:60px!important;background-color:#bababa;box-shadow:inset -20px 40px 60px #fff;">
 										<div style="width:141px!important;margin-left:20px;" class="pull-left">
-											<h2 class="picon"><img src="$(picons[$sname])" title="$sname" /></h2>
+											<h2 class="picon"><img src="$(picons[$sname])" title="$sname"></h2>
 											</br><label>$sname</label>
 										</div>
 									</div>

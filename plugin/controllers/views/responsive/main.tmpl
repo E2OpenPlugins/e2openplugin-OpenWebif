@@ -27,6 +27,10 @@
 	<link rel="stylesheet" type="text/css" href="/modern/css/vti-timepicker.min.css">
 	<link rel="stylesheet" type="text/css" href="/modern/css/vti-responsive.min.css">
 
+	<style>
+		.page-loader-wrapper { background: rgba(156,156,156, 0.2); }
+	</style>
+
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/jquery-ui.min.js"></script>
 	<script src="/js/openwebif-1.2.20.min.js"></script>
@@ -262,7 +266,7 @@
 							#if $extra["key"] in ("ajax/at",)
 								<li>
 									<a href="#at" data-close="true" accesskey="a" title="Shortcut: a">
-										<i class="material-icons">av_timer</i>
+										<i class="material-icons">history</i>
 										<span>$extra["description"]</span>
 									</a>
 								</li>

@@ -86,8 +86,8 @@
 										</div>
 											<div class="row clearfix" style="margin-bottom:-25px;">
 												<div class="col-xs-8">
-														#set $da = $tstrings[("day_" + (time.strftime("%w", time.localtime($movie.recordingtime))))]
-														<span>$da</span>
+														#set $dateRecorded = time.strftime("%c", time.localtime($movie.recordingtime))
+														<span>$dateRecorded</span>
 															#set $w = $movie.lastseen
 															#set $size = '0'
 															#if $w > 0
