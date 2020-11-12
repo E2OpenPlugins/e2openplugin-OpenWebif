@@ -27,6 +27,10 @@
 	<link rel="stylesheet" type="text/css" href="/modern/css/vti-timepicker.min.css">
 	<link rel="stylesheet" type="text/css" href="/modern/css/vti-responsive.min.css">
 
+	<style>
+		.page-loader-wrapper { background: rgba(156,156,156, 0.2); }
+	</style>
+
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/jquery-ui.min.js"></script>
 	<script src="/js/openwebif-1.2.20.min.js"></script>
@@ -873,7 +877,7 @@
 <script>
 	function locationHashChanged(e) { 
 		var hash = e.target.location.hash.replace('#', '').replace('&', '?');
-		hash && load_maincontent('ajax/' + hash);
+		hash && load_maincontent_spin('ajax/' + hash);
 	} 
 
 	window.onhashchange = locationHashChanged;

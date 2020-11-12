@@ -9,34 +9,47 @@ from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 class renderEvtBlock:
 	def __init__(self):
 		self.template = """
-		<article class="epg__event event" data-ref="%s" data-id="%s" data-toggle="modal" data-target="#EventModal" onclick="loadeventepg('%s', '%s'); return false;">
-			<time class="epg__time--start">%s%s</time>
-			<span class="epg__title title">%s</span>
+		<article onclick="loadeventepg('%s', '%s'); return false;" class="epg__event event %s" data-ref="%s" data-id="%s" data-toggle="modal" data-target="#EventModal">
+			<time class="epg__time--start">%s</time>
+			<span class="epg__title title">
+				%s
+			</span>
 			%s
 		</article>
 		"""
 
 	def render(self, event):
+		eventCssClass = ''
+
+		timer = event['timer']
+		if timer:
+			eventCssClass = eventCssClass + ' event--has-timer'
+			if timer['isEnabled']:
+				timerEventSymbol = '<i class="material-icons material-icons-centered">alarm_on</i>'
+			else:
+				timerEventSymbol = '<i class="material-icons material-icons-centered">alarm_off</i>'
+			if timer['isAutoTimer']:
+				timerEventSymbol = timerEventSymbol + '<i class="material-icons material-icons-centered">av_timer</i>'
+		else:
+			timerEventSymbol = ''
+
 		if event['title'] != event['shortdesc']:
-			shortdesc = '<summary class="epg__desc desc">%s</summary>' % (
+			shortdesc = '<summary class="epg__desc desc"><span class="epg__timer-status">%s</span>%s</summary>' % (
+				timerEventSymbol,
 				event['shortdesc']
 			)
 		else:
 			shortdesc = ''
 
-		if event['timerStatus'] != '':
-			timerEventSymbol = '<span class="epg__timer %s">%s</span>' % (
-				event['timerStatus'], tstrings['timer']
-			)
-		else:
-			timerEventSymbol = ''
+		sRef = quote(event['ref'], safe=' ~@#$&()*!+=:;,.?/\'')
+
 		return self.template % (
-			quote(event['ref'], safe=' ~@#$&()*!+=:;,.?/\''),
 			event['id'],
+			sRef,
+			eventCssClass,
+			sRef,
 			event['id'],
-			quote(event['ref'], safe=' ~@#$&()*!+=:;,.?/\''),
 			strftime("%H:%M", localtime(event['begin_timestamp'])),
-			timerEventSymbol,
 			event['title'],
 			shortdesc
 		)

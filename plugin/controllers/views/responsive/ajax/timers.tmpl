@@ -42,7 +42,14 @@
 
 #if MinTimerList == 'checked'
 <div class="col-xs-12 col-md-6">
-	<b><i class="material-icons material-icons-centered">alarm</i>$timer.servicename - $timer.name</b>
+	<b>
+	#if $timer.disabled
+		<i class="material-icons material-icons-centered">alarm_off</i>
+	#else
+		<i class="material-icons material-icons-centered">alarm_on</i>
+	#end if
+		$timer.name - $timer.servicename
+	</b>
 	</div>
 	<div class="col-xs-12 col-md-3">
 	<b>$tstrings[("day_" + (time.strftime("%w", time.localtime($timer.begin))))]</b>
@@ -90,7 +97,14 @@
 	<div class="header">
 		<div class="row clearfix" style="margin-bottom:-20px;">
 		<div class="col-xs-6">
-			<h2><i class="material-icons material-icons-centered">alarm</i>$timer.servicename - $timer.name</h2>
+			<h2>
+	#if $timer.disabled
+				<i class="material-icons material-icons-centered">alarm_off</i>
+	#else
+				<i class="material-icons material-icons-centered">alarm_on</i>
+	#end if
+				$timer.name - $timer.servicename
+			</h2>
 		</div>
 		<div class="col-xs-6">
 		#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')

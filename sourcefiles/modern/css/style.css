@@ -485,7 +485,7 @@
  }
  
  .ls-closed section.content {
-   margin-left: 15px;
+   margin-left: 0;
  }
  
  .ls-closed .bars:after,
@@ -2573,6 +2573,12 @@
    }
  
  }
+
+@media (min-width: 1170px) {
+  section.content {
+    margin-right: 15px !important;
+  }
+}
  
  /* General ===================================== */
  body {
@@ -2619,7 +2625,7 @@
  }
  
  section.content {
-   margin: 100px 15px 0 315px;
+   margin: 100px 0 0 315px;
    -moz-transition: 0.5s;
    -o-transition: 0.5s;
    -webkit-transition: 0.5s;
