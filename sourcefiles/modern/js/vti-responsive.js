@@ -1350,17 +1350,13 @@ function deleteTimer(sRef, begin, end, title) {
 		type: "warning",
 		showCancelButton: true,
 		confirmButtonColor: "#DD6B55",
-		confirmButtonText: tstrings_yes_delete + ' !',
-		cancelButtonText: tstrings_no_cancel + ' !',
-		closeOnConfirm: false,
-		closeOnCancel: false
+		confirmButtonText: tstrings_yes_delete,
+		cancelButtonText: tstrings_no_cancel,
+		animation: "none"
 	}, function (isConfirm) {
 		if (isConfirm) {
 			webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end, 
 			function() { $('#'+begin+'-'+end).remove(); });
-			swal(tstrings_deleted, t, "success");
-		} else {
-			swal(tstrings_cancelled, t, "error");
 		}
 	});
 }
@@ -1373,10 +1369,10 @@ function deleteMovie(sRef, divid, title) {
 		type: "warning",
 		showCancelButton: true,
 		confirmButtonColor: "#DD6B55",
-		confirmButtonText: tstrings_yes_delete + ' !',
-		cancelButtonText: tstrings_no_cancel + ' !',
+		confirmButtonText: tstrings_yes_delete,
+		cancelButtonText: tstrings_no_cancel,
 		closeOnConfirm: false,
-		closeOnCancel: false
+		animation: "none"
 	}, function (isConfirm) {
 		if (isConfirm) {
 			webapi_execute_movie("/api/moviedelete?sRef=" + sRef,
@@ -1387,8 +1383,6 @@ function deleteMovie(sRef, divid, title) {
 					}
 				}
 			);
-		} else {
-			swal(tstrings_cancelled, title, "error");
 		}
 	});
 }
@@ -1400,10 +1394,10 @@ function renameMovie(sRef, title) {
 		type: "input",
 		showCancelButton: true,
 		closeOnConfirm: false,
-		animation: "slide-from-top",
+		animation: "none",
 		inputPlaceholder: title,
 		inputValue: title,
-		input: "text",
+		input: "text"
 	}, function (newname) {
 		if ( (newname === false) || (newname === title) ) return false;
 		if (newname === "") {

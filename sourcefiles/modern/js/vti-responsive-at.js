@@ -943,13 +943,13 @@ function delAT()
 	if(CurrentAT && !CurrentAT.isNew)
 	{
 		swal({
-			title: tstr_del_autotimer + " ?",
+			title: tstr_del_autotimer,
 			text: CurrentAT.name,
 			type: "warning",
 			showCancelButton: true,
 			confirmButtonColor: "#DD6B55",
-			confirmButtonText: tstrings_yes_delete + ' !',
-			cancelButtonText: tstrings_no_cancel + ' !',
+			confirmButtonText: tstrings_yes_delete,
+			cancelButtonText: tstrings_no_cancel,
 			closeOnConfirm: false,
 			closeOnCancel: false
 		}, function (isConfirm) {

@@ -357,7 +357,7 @@ def getInfo(session=None, need_fullinfo=False):
 	if friendlychipsettext in ("7335", "7356", "7362", "73625", "7424", "7425", "7429"):
 		friendlychipsettext = "Broadcom " + friendlychipsettext
 	if not (info['fp_version'] is None or info['fp_version'] == 0):
-		friendlychipsetdescription = friendlychipsetdescription + " (" + _("Frontprocessor Version") + ")"
+		friendlychipsetdescription = friendlychipsetdescription + " (" + _("Front processor version") + ")"
 		friendlychipsettext = friendlychipsettext + " (" + str(info['fp_version']) + ")"
 
 	info['friendlychipsetdescription'] = friendlychipsetdescription
