@@ -28,34 +28,37 @@
 		<div class="body">
 			<div id="content_main">
 				<div id="tvcontentmain">
-					<div class="row clearfix">
-					<div class="col-lg-6 align-right">
-							<div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
-							#set $path=''
-							#for $dir in $directory[0:-1].split("/")[1:-1]
-							#set $path += '/' + $dir
-								<button class="btn btn-default waves-effect" onclick="load_maincontent_spin('ajax/movies?dirname='+escape('$path'));">$dir</button>
-							#end for
-							#if $directory != '/'
-									<button class="btn waves-effect btn-themed" id="moviedirbtn"><span style="font-weight: bold;">
-									#echo $directory[0:-1].split("/")[-1]
-									</button>
-							#end if
-							</div>
-						</div>
-						#if $len($bookmarks)
-						<div class="col-lg-2 align-left">
-							<div class="form-group">
-								<select class="form-control" id="directory">
-								<option>Subdirs:</option>
-								#for $bookmark in $bookmarks
+					<div class="row clearfix m-l-20 m-b-20">
+							<nav>
+#set $path=''
+#for $dir in $directory[0:-1].split("/")[1:-1]
+	#set $path += '/' + $dir
+								<a href="javascript:void(0);" class="theme-link-color p-r-10" onclick="load_maincontent_spin('ajax/movies?dirname='+escape('$path'));">
+									<i class="material-icons material-icons-centered">folder_open</i>$dir
+								</a>
+								<i class="material-icons material-icons-centered">chevron_right</i>
+#end for
+#if $len($bookmarks)
+							<span class="form-group" style="width: auto;">
+								<select class="form-control" id="directory" style="display: inline-block; padding-left: 0; width: auto;">
+									<option>&rdsh; $tstrings['subdirectories']</option>
+	#for $bookmark in $bookmarks
 									<option value="$directory$bookmark">$bookmark</option>
-								#end for
-							</select>
-							</div>
-						</div>
-						#end if
-					
+	#end for
+								</select>
+							</span>
+#else
+	#if $directory != '/'
+	#set $lastDir = $directory[0:-1].split("/")[-1]
+	#set $movieCountText = _("%d movies") % len($movies)
+								<span class="p-r-10 p-l-0" id="moviedirbtn">
+									<i class="material-icons material-icons-centered">folder_open</i>$lastDir
+								</span>
+								[ $movieCountText ]
+	#end if
+#end if
+
+</nav>
 					</div>
 					#set $count = 0
 					#for $movie in $movies
