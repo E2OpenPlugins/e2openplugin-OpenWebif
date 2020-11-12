@@ -520,6 +520,7 @@ tstrings = {
 	'name_desc': _("Name (z-a)"),
 	'date_asc': _("Date (oldest)"),
 	'date_desc': _("Date (newest)"),
+	'subdirectories': _("Subdirectories"),
 
 	'playlistformat': _("Playlist Format"),
 	'pipifposible': _("Use as PiP if possible"),
