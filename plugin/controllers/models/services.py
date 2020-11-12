@@ -687,18 +687,25 @@ def getTimerEventStatus(event, eventLookupTable):
 		timerlist[str(timer.service_ref)].append(timer)
 	if serviceref in timerlist:
 		for timer in timerlist[serviceref]:
+			timerDetails = {}
 			if timer.begin <= startTime and timer.end >= endTime:
 				if timer.disabled:
-					return { 
+					timerDetails = { 
 						'isEnabled': 0,
 						'basicStatus': 'timer disabled'
 					}
 				else:
-					return { 
+					timerDetails = { 
 						'isEnabled': 1, 
 						'isZapOnly': int(timer.justplay),
 						'basicStatus': 'timer'
 					}
+				try:
+					timerDetails['isAutoTimer'] = timer.isAutoTimer
+				except AttributeError:
+					timerDetails['isAutoTimer'] = 0
+				return timerDetails
+				
 	return None
 
 

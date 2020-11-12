@@ -13,7 +13,6 @@ class renderEvtBlock:
 			<time class="epg__time--start">%s</time>
 			<span class="epg__title title">
 				%s
-				<span class="epg__timer-status">%s</span>
 			</span>
 			%s
 		</article>
@@ -22,13 +21,6 @@ class renderEvtBlock:
 	def render(self, event):
 		eventCssClass = ''
 
-		if event['title'] != event['shortdesc']:
-			shortdesc = '<summary class="epg__desc desc">%s</summary>' % (
-				event['shortdesc']
-			)
-		else:
-			shortdesc = ''
-
 		timer = event['timer']
 		if timer:
 			eventCssClass = eventCssClass + ' event--has-timer'
@@ -36,8 +28,18 @@ class renderEvtBlock:
 				timerEventSymbol = '<i class="material-icons material-icons-centered">alarm_on</i>'
 			else:
 				timerEventSymbol = '<i class="material-icons material-icons-centered">alarm_off</i>'
+			if timer['isAutoTimer']:
+				timerEventSymbol = timerEventSymbol + '<i class="material-icons material-icons-centered">av_timer</i>'
 		else:
 			timerEventSymbol = ''
+
+		if event['title'] != event['shortdesc']:
+			shortdesc = '<summary class="epg__desc desc"><span class="epg__timer-status">%s</span>%s</summary>' % (
+				timerEventSymbol,
+				event['shortdesc']
+			)
+		else:
+			shortdesc = ''
 
 		sRef = quote(event['ref'], safe=' ~@#$&()*!+=:;,.?/\'')
 
@@ -49,6 +51,5 @@ class renderEvtBlock:
 			event['id'],
 			strftime("%H:%M", localtime(event['begin_timestamp'])),
 			event['title'],
-			timerEventSymbol,
 			shortdesc
 		)
