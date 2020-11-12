@@ -423,7 +423,6 @@
 						type: "input",
 						showCancelButton: true,
 						closeOnConfirm: true,
-						animation: "slide-from-top",
 						inputValue: '',
 						input: "text",
 					}, function (newname) {
