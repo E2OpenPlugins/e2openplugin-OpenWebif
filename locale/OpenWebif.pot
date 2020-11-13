@@ -105,10 +105,6 @@ msgstr ""
 msgid "Adjust recording time to real event time"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:78 ../plugin/controllers/i18n.py:392
-msgid "After event"
-msgstr ""
-
 #: ../plugin/controllers/i18n.py:316
 msgid "After event"
 msgstr ""
@@ -2202,10 +2198,6 @@ msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:491
-msgid "Yes"
-msgstr ""
-
-#: ../plugin/controllers/i18n.py:475
 msgid "Yes"
 msgstr ""
 
