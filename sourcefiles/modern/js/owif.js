@@ -5,6 +5,43 @@ const debugTagStyle = 'color: #fff; font-weight: bold; background-color: #333; p
 const debugMsg = (msg) => {
   console.info('%cOWIF', debugTagStyle, msg);
 }
+class Utils { 
+  constructor() {}
+
+  getStrftime(epoch = new Date()) {
+    const theDate = new Date(Math.round(epoch) * 1000);
+    let theTime = strftime('%X', theDate);
+    // strip seconds without affecting localised am/pm
+    theTime = theTime.match(/\d{2}:\d{2}|[^:\d]+/g).join(' ');
+    return strftime('%a %x', theDate) + ' ' + theTime;
+  }
+
+  getToTimeText(beginTime, endTime) {
+    const oneDayInMs = 86400000;
+    const msDifference = (endTime - beginTime);
+    const fullDaysDifference = Math.floor(msDifference / oneDayInMs);
+
+    const fromDay = new Date(Math.round(beginTime) * 1000).getDay();
+    const toDay = new Date(Math.round(endTime) * 1000).getDay();
+
+    let diffString = '';
+    if (msDifference === 0) {
+      diffString = '-'; // eg. zap timer
+    } else {
+      endTime = strftime('%X', new Date(Math.round(endTime) * 1000));
+      endTime = endTime.match(/\d{2}:\d{2}|[^:\d]+/g).join(' ');
+      if (fullDaysDifference < 1 && (fromDay - toDay === 0)) {
+        diffString = 'same day - ' + endTime;
+      } else if (fullDaysDifference < 2 && ((fromDay - toDay === 1))) {
+        diffString = 'next day - ' + endTime;
+      } else {
+        diffString = this.getStrftime(endTime);
+      }
+    }
+
+    return diffString;
+  }
+}
 
 class STB { 
   constructor() {}
@@ -176,6 +213,7 @@ class GUI {
 
 class OWIF { 
   constructor() {
+    this.utils = new Utils();
     this.stb = new STB();
     this.api = new API();
     this.gui = new GUI();
