@@ -21,19 +21,19 @@ class Utils {
     const msDifference = (endTime - beginTime);
     const fullDaysDifference = Math.floor(msDifference / oneDayInMs);
 
-    const fromDay = new Date(Math.round(beginTime) * 1000).getDay();
-    const toDay = new Date(Math.round(endTime) * 1000).getDay();
+    const beginDay = new Date(Math.round(beginTime) * 1000).getDay();
+    const endDay = new Date(Math.round(endTime) * 1000).getDay();
 
     let diffString = '';
     if (msDifference === 0) {
       diffString = '-'; // eg. zap timer
     } else {
-      endTime = strftime('%X', new Date(Math.round(endTime) * 1000));
-      endTime = endTime.match(/\d{2}:\d{2}|[^:\d]+/g).join(' ');
-      if (fullDaysDifference < 1 && (fromDay - toDay === 0)) {
-        diffString = 'same day - ' + endTime;
-      } else if (fullDaysDifference < 2 && ((fromDay - toDay === 1))) {
-        diffString = 'next day - ' + endTime;
+      let endTimeOnly = strftime('%X', new Date(Math.round(endTime) * 1000));
+      endTimeOnly = endTimeOnly.match(/\d{2}:\d{2}|[^:\d]+/g).join(' ');
+      if (fullDaysDifference < 1 && (endDay - beginDay === 0)) {
+        diffString = 'same day - ' + endTimeOnly;
+      } else if (fullDaysDifference < 2 && (endDay - beginDay === 1)) {
+        diffString = 'next day - ' + endTimeOnly;
       } else {
         diffString = this.getStrftime(endTime);
       }
