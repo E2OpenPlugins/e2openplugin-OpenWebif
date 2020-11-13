@@ -423,7 +423,6 @@
 						type: "input",
 						showCancelButton: true,
 						closeOnConfirm: true,
-						animation: "slide-from-top",
 						inputValue: '',
 						input: "text",
 					}, function (newname) {
@@ -502,8 +501,8 @@
 					type: "warning",
 					showCancelButton: true,
 					confirmButtonColor: "#DD6B55",
-					confirmButtonText: tstrings_yes_delete + ' !',
-					cancelButtonText: tstrings_no_cancel + ' !',
+					confirmButtonText: tstrings_yes_delete,
+					cancelButtonText: tstrings_no_cancel,
 					closeOnConfirm: true,
 					closeOnCancel: true
 				}, function (isConfirm) {
@@ -624,12 +623,12 @@
 				
 				swal({
 					title: tstr_bqe_del_channel_question,
-					text: csnames.join(', ') + ' ?',
+					text: csnames.join(', '),
 					type: "warning",
 					showCancelButton: true,
 					confirmButtonColor: "#DD6B55",
-					confirmButtonText: tstrings_yes_delete + ' !',
-					cancelButtonText: tstrings_no_cancel + ' !',
+					confirmButtonText: tstrings_yes_delete,
+					cancelButtonText: tstrings_no_cancel,
 					closeOnConfirm: true,
 					closeOnCancel: true
 				}, function (isConfirm) {

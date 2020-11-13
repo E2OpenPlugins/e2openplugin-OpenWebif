@@ -95,6 +95,16 @@ _(Dependencies should be handled by using ipkg/opkg packages)_
 
 (TODO: add responsive workflow guide here - npm install)
 
+### File Paths ###
+OpenWebif files are located at `/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif`
+
+On non-dev builds, `.tmpl` files will need to be generated to .py 
+- connect to the stb (eg. `ssh root@boxip`)
+- manually delete the .pyc/.pyo file(s) associated with the 
+  template(s) you've modified (enigma2 will regenerate them)
+`cheetah compile --nobackup --iext=.tmpl -R /usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/controllers/views/`
+- restart enigma2 `init 4 && init 3`
+
 ### Compiling JavaScript Files
 
 (TODO: add responsive workflow setup guide here)

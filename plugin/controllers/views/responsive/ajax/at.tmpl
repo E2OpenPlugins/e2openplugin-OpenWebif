@@ -28,7 +28,7 @@
 					<div class="row align-center clearfix">
 						<button type="button" onclick="addAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></button>
 						<button type="button" onclick="delAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
-						<button type="button" onclick="parseAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">code</i><span>$tstrings['at_parse']</span></span></button>
+						<button type="button" onclick="parseAT(); return false;" class="btn btn-themed waves-effect"><i class="material-icons">code</i><span>$tstrings['at_process']</span></span></button>
 						<button type="button" onclick="test_simulateAT(true); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
 						<button type="button" onclick="test_simulateAT(false); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">extension</i><span>Test</span></button>
 						<button type="button" onclick="listTimers(); return false;" class="btn btn-themed waves-effect" data-toggle="modal" data-target="#ATTimerList"><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
@@ -194,14 +194,14 @@
 												<div class="atform__details__element" style="min-height: 8ex;">
 													<div id="timerOffsetE" class="select-related-container" style="display:none;">
 														<div class="atform__details__dropdown">
-															<!-- Offset before recording (in m)-->
+															<!-- Offset before recording (mins)-->
 															<label>$tstrings['at_timer_offset_before']:&nbsp;</label>
 															<div class="form-line">
 																<input type="number" class="form-control inactive" id="tbefore" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
 															</div>
 														</div>
 														<div class="atform__details__dropdown">
-															<!-- Offset after recording (in m)-->
+															<!-- Offset after recording (mins)-->
 															<label>$tstrings['at_timer_offset_after']:&nbsp;</label>
 															<div class="form-line">
 																<input type="number" class="form-control inactive" id="tafter" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
@@ -246,21 +246,21 @@
 											<div id="AftereventE" class="atform__fields-container" style="display:none;">
 												<div class="atform__details__title">
 													<input type="checkbox" name="timeSpanAE" id="timeSpanAE" class="form-control theme-chk-col chk-col-$skinColor">
-													<!-- Execute "after event" during timespan -->
+													<!-- Execute "After event" during timespan -->
 													<label for="timeSpanAE">$tstrings['at_event_timespan']</label>
 												</div>
 												<div class="atform__details__element" style="min-height: 8ex;">
 
 													<div id="timeSpanAEE" class="select-related-container" style="display:none;">
 														<div class="atform__details__dropdown">
-															<!-- Begin of "after event" timespan -->
+															<!-- Begin of "After event" timespan -->
 															<label>$tstrings['at_event_timespan_begin']</label>
 															<div class="form-line">
 																<input type="time" name="aefrom" id="aefrom" class="form-control inactive">
 															</div>
 														</div>
 														<div class="atform__details__dropdown">
-															<!-- End of "after event" timespan -->
+															<!-- End of "After event" timespan -->
 															<label>$tstrings['at_event_timespan_end']</label>
 															<div class="form-line">
 																<input type="time" name="aeto" id="aeto" class="form-control inactive">
@@ -483,7 +483,7 @@
 </div>
 
 <div id="ATTimerModal" class="modal fade" role="dialog">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"><i class="material-icons material-icons-centered">close</i></button>

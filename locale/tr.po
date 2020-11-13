@@ -36,10 +36,10 @@ msgstr "Hakkında"
 msgid "Add"
 msgstr "Ekle"
 
-msgid "Add AutoTimer"
+msgid "Add an AutoTimer"
 msgstr "Otomatik Zamanlayıcı Ekle"
 
-msgid "Add Autotimer to Tags"
+msgid "Add  AutoTimer  to tags"
 msgstr "Etiketlere Otomatik Zamanlayıcı Ekle"
 
 msgid "Add Bouquet"
@@ -48,22 +48,22 @@ msgstr "Buket Ekle"
 msgid "Add Marker"
 msgstr "İşaretçi Ekle"
 
-msgid "Add Name to Tags"
+msgid "Add AutoTimer name to tags"
 msgstr "Etiketlere Ad Ekle"
 
 msgid "Create bouquet from selection"
 msgstr "Sağlayıcıyı yeni Buket olarak Ekle"
 
-msgid "Add Similar on Conflict"
+msgid "Add similar on conflict"
 msgstr "Çakışmada Benzer Ekle"
 
 msgid "Add Spacer"
 msgstr "Boşluk Ekle"
 
-msgid "Add Timer"
+msgid "Add a timer"
 msgstr "Zamanlayıcı Ekle"
 
-msgid "Add Zap Timer"
+msgid "Add a zap timer"
 msgstr "Yayın açma zamanlayıcısı Ekle"
 
 msgid "Add channel(s) as alternate"
@@ -81,7 +81,7 @@ msgstr "%s alternatif hizmetine %s eklendi."
 msgid "Adjust recording time to real event time"
 msgstr "Kayıt süresini gerçek olay zamanına ayarla"
 
-msgid "After Event"
+msgid "After event"
 msgstr "Olaydan Sonra"
 
 msgid "After event"
@@ -111,7 +111,7 @@ msgstr "Alternatif %s oluşturulamadı."
 msgid "Always"
 msgstr "Her zaman"
 
-msgid "Amount of recordings left"
+msgid "Number of recordings remaining"
 msgstr "Kalan kayıt miktarı"
 
 msgid "Answer is NO!"
@@ -153,7 +153,7 @@ msgstr "Otomatik Zamanlayıcı"
 msgid "AutoTimer Edit"
 msgstr "Otomatik Zamanlayıcı Düzenleme"
 
-msgid "AutoTimer List"
+msgid "AutoTimers"
 msgstr "Otomatik Zamanlayıcı Listesi"
 
 msgid "AutoTimer Settings"
@@ -177,7 +177,7 @@ msgstr "Başla"
 msgid "Begin of \"after event\" timespan"
 msgstr "Başlangıç ​​\"olayından sonra\" zaman aralığı"
 
-msgid "Begin of timespan"
+msgid "Beginning of timespan"
 msgstr "Zaman aralığının başlangıcı"
 
 msgid "Bookmark"
@@ -321,7 +321,7 @@ msgstr "Debug - Tracebacks'i tarayıcıda görüntüle"
 msgid "December"
 msgstr "Aralık"
 
-msgid "Deep-Standby"
+msgid "Deep Standby"
 msgstr "Derin Bekleme"
 
 msgid "Default"
@@ -364,7 +364,7 @@ msgstr "Zamanlayıcıyı Devre Dışı Bırak"
 msgid "Disable remote access for user root"
 msgstr "Kullanıcı root için uzaktan erişimi devre dışı bırak"
 
-msgid "Disabled on Conflict"
+msgid "Disabled on conflict"
 msgstr "Çakışmada Devre Dışı Bırakıldı"
 
 msgid "Display Mode"
@@ -379,13 +379,13 @@ msgstr "Distro"
 msgid "Do you really want to delete the AT"
 msgstr "AT'yi gerçekten silmek istiyor musunuz?"
 
-msgid "Do you really want to delete the bouquet"
+msgid "Are you sure you want to delete the selected bouquet?"
 msgstr "Buketi gerçekten silmek istiyor musunuz?"
 
-msgid "Do you really want to delete the selected item(s)"
+msgid "Are you sure you want to delete the selected item(s)?"
 msgstr "Seçili öğeleri gerçekten silmek istiyor musunuz?"
 
-msgid "Do you really want to restore from file"
+msgid "Are you sure you want to restore from file?"
 msgstr "Dosyadan gerçekten geri yüklemek istiyor musunuz?"
 
 msgid "Dolby"
@@ -400,7 +400,7 @@ msgstr "Bitti"
 msgid "Download"
 msgstr "İndir"
 
-msgid "Download Playlist for"
+msgid "Download playlist for"
 msgstr "Oynatma listesini indir"
 
 msgid "Drivers"
@@ -433,7 +433,7 @@ msgstr "Düzenleyici"
 msgid "Enable Authentication for streaming"
 msgstr "Akış için Kimlik Doğrulamayı Etkinleştir"
 
-msgid "Enable Filtering"
+msgid "Enable filtering"
 msgstr "Filtrelemeyi Etkinleştir"
 
 msgid "Enable HTTP Authentication"
@@ -472,13 +472,13 @@ msgstr "Bitiş"
 msgid "End of \"after event\" timespan"
 msgstr "Zaman aralığı \"olayından sonra\" sonu"
 
-msgid "End of Timespan"
+msgid "End of timespan"
 msgstr "Zaman aralığının Sonu"
 
-msgid "Enter new name for the bouquet"
+msgid "Enter a name for the new bouquet"
 msgstr "Buket için yeni ad girin"
 
-msgid "Enter new name for the marker"
+msgid "Enter a name for the new marker"
 msgstr "İşaretçi için yeni ad girin"
 
 msgid "EPG Search"
@@ -562,8 +562,8 @@ msgstr "Cum"
 msgid "Friday"
 msgstr "Cuma"
 
-msgid "Frontprocessor Version"
-msgstr "Frontprocessor Version"
+msgid "Front processor version"
+msgstr "Front processor version"
 
 msgid "Full remote"
 msgstr "Tam uzak"
@@ -583,7 +583,7 @@ msgstr "Yeni oluşturulan buket için değişken liste alınamadı!"
 msgid "Capture screenshot"
 msgstr "Ekran Görüntüsü Al"
 
-msgid "Gui version"
+msgid "GUI version"
 msgstr "Gui sürümü"
 
 msgid "HTTP port"
@@ -634,10 +634,10 @@ msgstr "Kısa açıklamayı dahil et"
 msgid "Infinite Instant recording started"
 msgstr "Sonsuz Anında kayıt başladı"
 
-msgid "Infos"
+msgid "Info"
 msgstr "Bilgi"
 
-msgid "Inherit Autotimer"
+msgid "Inherit AutoTimer"
 msgstr "Otomatik Zamanlayıcıyı Devral"
 
 msgid "Install Package"
@@ -799,10 +799,10 @@ msgstr "NCam Webinterface"
 msgid "Name"
 msgstr "Ad"
 
-msgid "Name of the Bouquet"
+msgid "Bouquet name"
 msgstr "Buketin Adı"
 
-msgid "Name of the Marker"
+msgid "Marker name"
 msgstr "İşaretleyicinin Adı"
 
 msgid "Namespace"
@@ -901,10 +901,10 @@ msgstr "OSD"
 msgid "October"
 msgstr "Ekim"
 
-msgid "Offset after recording (in m)"
+msgid "Offset after recording (mins)"
 msgstr "Kayıttan sonra ofset (m cinsinden)"
 
-msgid "Offset before recording (in m)"
+msgid "Offset before recording (mins)"
 msgstr "Kayıttan önce ofset (m cinsinden)"
 
 msgid "On"
@@ -958,10 +958,10 @@ msgstr "Ebeveyn Denetimi Kurulum PIN'i yanlış!"
 msgid "Parent Control is not activated."
 msgstr "Ebeveyn Kontrolü etkinleştirilmedi."
 
-msgid "Parse"
+msgid "Process"
 msgstr "Ayrıştırma"
 
-msgid "Parse Autotimer"
+msgid "Parse AutoTimer"
 msgstr "Otomatik zamanlayıcıyı ayrıştır"
 
 msgid "Pcrpid"
@@ -985,10 +985,10 @@ msgstr "Oynatma"
 msgid "Playlist"
 msgstr "Oynatma Listesi"
 
-msgid "Playlist Format"
+msgid "Playlist format"
 msgstr "Oynatma Listesi Biçimi"
 
-msgid "Please enter filename"
+msgid "A filename is required"
 msgstr "Lütfen dosya adını girin"
 
 msgid "Pmtpid"
@@ -1012,25 +1012,25 @@ msgstr "Sağlayıcılar"
 msgid "Radio"
 msgstr "Radyo"
 
-msgid "Really delete the recording"
+msgid "Are you sure you want to delete this recording?"
 msgstr "Kaydı gerçekten sil"
 
-msgid "Really delete the timer"
+msgid "Are you sure you want to delete this timer?"
 msgstr "Zamanlayıcıyı gerçekten sil"
 
-msgid "Really rename the recording"
+msgid "Are you sure you want to rename this recording?"
 msgstr "Kaydı gerçekten yeniden adlandırın"
 
-msgid "Really start instant record now?"
+msgid "Are you sure you want to start recording instantly?"
 msgstr "Gerçekten anında kayıt başlatılsın mı?"
 
 msgid "Reboot Box"
 msgstr "Yeniden Başlatma Kutusu"
 
-msgid "Record a maximum of x times"
+msgid "Record a maximum of # times"
 msgstr "En fazla x kez kaydedin"
 
-msgid "Record+ZAP"
+msgid "Zap & Record"
 msgstr "Record + ZAP"
 
 msgid "Recording Status"
@@ -1081,7 +1081,7 @@ msgstr "Sayımı sıfırla"
 msgid "Restart GUI"
 msgstr "GUI'yi yeniden başlat"
 
-msgid "Restrict to Bouquets"
+msgid "Restrict to bouquets"
 msgstr "Buketlerle Sınırla"
 
 msgid "Restrict to events on certain dates"
@@ -1096,7 +1096,7 @@ msgstr "SLAAC"
 msgid "SNR"
 msgstr "SNR"
 
-msgid "START TYPING"
+msgid "Start typing..."
 msgstr "YAZMAYI BAŞLAT"
 
 msgid "Sa"
@@ -1141,7 +1141,7 @@ msgstr "Arama katılığı"
 msgid "Search type"
 msgstr "Arama türü"
 
-msgid "Select IPK File for Upload"
+msgid "Select IPK file for upload"
 msgstr "Yükleme için IPK Dosyasını Seçin"
 
 msgid "Send Message"
@@ -1207,10 +1207,10 @@ msgstr "Şunun için EPG'yi Göster"
 msgid "Show Full OpenWebif"
 msgstr "Tam OpenWebif'i Göster"
 
-msgid "Show Picon in channel list"
+msgid "Show picons in channel list"
 msgstr "Picon'u kanal listesinde göster"
 
-msgid "Show Service type in channel list"
+msgid "Show service type in channel list"
 msgstr "Kanal listesinde Hizmet türünü göster"
 
 msgid "Show box name in header"
@@ -1222,7 +1222,7 @@ msgstr "Ayrıntıları göster"
 msgid "Show full remote"
 msgstr "Tam uzaktan kumandayı göster"
 
-msgid "Show in Extensionsmenu"
+msgid "Show in Extensions menu"
 msgstr "Uzantı menüsünde göster"
 
 msgid "Shutdown"
@@ -1423,7 +1423,7 @@ msgstr "Kod dönüştürme"
 msgid "Translation to Spanish"
 msgstr "İspanyolcaya Çeviri"
 
-msgid "Try Guessing"
+msgid "Try guessing"
 msgstr "Tahmin Etmeyi Deneyin"
 
 msgid "Tsid"
@@ -1480,10 +1480,10 @@ msgstr "Güncelle"
 msgid "Update Package"
 msgstr "Paketi Güncelle"
 
-msgid "Update from Feed"
+msgid "Update from feed"
 msgstr "Beslemeden Güncelle"
 
-msgid "Upgrade all Packages"
+msgid "Upgrade all packages"
 msgstr "Tüm Paketleri Yükselt"
 
 msgid "Upload File Error"
@@ -1570,10 +1570,10 @@ msgstr "Çar"
 msgid "Wednesday"
 msgstr "Çarşamba"
 
-msgid "Weekday"
+msgid "weekday"
 msgstr "Hafta içi"
 
-msgid "Weekend"
+msgid "weekend"
 msgstr "Hafta sonu"
 
 msgid "Weekly (Monday)"
@@ -1594,13 +1594,13 @@ msgstr "Yanlış parametre biçimi 'set =%s'. set = set15 kullanın "
 msgid "Yes"
 msgstr "Evet"
 
-msgid "Yes, delete it"
+msgid "Yes"
 msgstr "Evet, sil"
 
 msgid "Yes/No"
 msgstr "Evet/Hayır"
 
-msgid "You need to write something!"
+msgid "A value is required"
 msgstr "Bir şeyler yazmanız gerekiyor!"
 
 msgid "Zap"
@@ -1615,10 +1615,10 @@ msgstr "Zapped to"
 msgid "auto"
 msgstr "otomatik"
 
-msgid "case-insensitive search"
+msgid "case-insensitive"
 msgstr "büyük/küçük harfe duyarlı olmayan arama"
 
-msgid "case-sensitive search"
+msgid "case-sensitive"
 msgstr "büyük/küçük harfe duyarlı arama"
 
 msgid "description match"
@@ -1648,13 +1648,13 @@ msgstr "beklemeye git"
 msgid "hour"
 msgstr "saat"
 
-msgid "in Description"
+msgid "in description"
 msgstr "Açıklamada"
 
-msgid "in Shortdescription"
+msgid "in short description"
 msgstr "Kısa Açıklama"
 
-msgid "in Title"
+msgid "in title"
 msgstr "Başlıkta"
 
 msgid "kB"
@@ -1675,7 +1675,7 @@ msgstr "açıklama yok"
 msgid "none/IPv4-only network"
 msgstr "yok/yalnızca IPv4 ağ"
 
-msgid "on Weekday"
+msgid "on weekday"
 msgstr "Hafta içi"
 
 msgid "one two three four unknown command"
@@ -1702,13 +1702,13 @@ msgstr "çalışıyor"
 msgid "seconds"
 msgstr "saniye"
 
-msgid "select Bouquets"
+msgid "select bouquets"
 msgstr "Buketleri seçin"
 
-msgid "select Channels"
+msgid "select channels"
 msgstr "Kanalları seçin"
 
-msgid "select Tags"
+msgid "select tags"
 msgstr "Etiketleri seçin"
 
 msgid "short description match"
@@ -1753,5 +1753,5 @@ msgstr "yanlış dosya türü"
 msgid "zap"
 msgstr "zap"
 
-msgid "zap before Stream"
+msgid "zap before streaming"
 msgstr "Akıştan önce zap"
