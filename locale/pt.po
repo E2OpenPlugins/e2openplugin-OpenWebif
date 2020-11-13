@@ -44,11 +44,11 @@ msgid "Add"
 msgstr "Adicionar"
 
 #: ../plugin/controllers/i18n.py:75
-msgid "Add AutoTimer"
+msgid "Add an AutoTimer"
 msgstr "Adic. AutoTimer"
 
 #: ../plugin/controllers/i18n.py:374
-msgid "Add Autotimer to Tags"
+msgid "Add  AutoTimer  to tags"
 msgstr "Adicionar Autotimer nas Marcações"
 
 #: ../plugin/controllers/i18n.py:415
@@ -60,7 +60,7 @@ msgid "Add Marker"
 msgstr "Adicionar Marcador"
 
 #: ../plugin/controllers/i18n.py:375
-msgid "Add Name to Tags"
+msgid "Add AutoTimer name to tags"
 msgstr "Adicionar nome nas Marcações"
 
 #: ../plugin/controllers/i18n.py:410
@@ -68,7 +68,7 @@ msgid "Create bouquet from selection"
 msgstr "Adicionar Operador como novo Bouquet"
 
 #: ../plugin/controllers/i18n.py:371
-msgid "Add Similar on Conflict"
+msgid "Add similar on conflict"
 msgstr "Adicionar um timer similar em conflito"
 
 #: ../plugin/controllers/i18n.py:419
@@ -76,11 +76,11 @@ msgid "Add Spacer"
 msgstr "Adicionar espaçador"
 
 #: ../plugin/controllers/i18n.py:74
-msgid "Add Timer"
+msgid "Add a timer"
 msgstr "Adicionar Timer"
 
 #: ../plugin/controllers/i18n.py:76
-msgid "Add Zap Timer"
+msgid "Add a zap timer"
 msgstr "Adcionar ZAP Timer"
 
 #: ../plugin/controllers/i18n.py:412
@@ -105,7 +105,7 @@ msgid "Adjust recording time to real event time"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
-msgid "After Event"
+msgid "After event"
 msgstr "Após evento"
 
 #: ../plugin/controllers/i18n.py:315
@@ -146,7 +146,7 @@ msgid "Always"
 msgstr "Sempre"
 
 #: ../plugin/controllers/i18n.py:325
-msgid "Amount of recordings left"
+msgid "Number of recordings remaining"
 msgstr "Espaço para gravações possível"
 
 #: ../plugin/controllers/models/message.py:51
@@ -202,7 +202,7 @@ msgid "AutoTimer Edit"
 msgstr "Editar AutoTimer"
 
 #: ../plugin/controllers/i18n.py:284
-msgid "AutoTimer List"
+msgid "AutoTimers"
 msgstr "Lista de AutoTimers"
 
 #: ../plugin/controllers/i18n.py:363
@@ -234,7 +234,7 @@ msgid "Begin of \"after event\" timespan"
 msgstr "Intervalo de Início de (depois do evento) "
 
 #: ../plugin/controllers/i18n.py:306
-msgid "Begin of timespan"
+msgid "Beginning of timespan"
 msgstr "Início do intervalo de tempo"
 
 #: ../plugin/controllers/i18n.py:467
@@ -438,7 +438,7 @@ msgid "December"
 msgstr "Dezembro"
 
 #: ../plugin/controllers/i18n.py:104
-msgid "Deep-Standby"
+msgid "Deep Standby"
 msgstr "Suspensão"
 
 #: ../plugin/controllers/i18n.py:105
@@ -494,7 +494,7 @@ msgid "Disable remote access for user root"
 msgstr "Desativar acesso remoto ao utilizador root"
 
 #: ../plugin/controllers/i18n.py:370
-msgid "Disabled on Conflict"
+msgid "Disabled on conflict"
 msgstr "Inativar em Conflito"
 
 #: ../plugin/controllers/i18n.py:454
@@ -514,15 +514,15 @@ msgid "Do you really want to delete the AT"
 msgstr "Deseja mesmo apagar o AutoTimer?"
 
 #: ../plugin/controllers/i18n.py:422
-msgid "Do you really want to delete the bouquet"
+msgid "Are you sure you want to delete the selected bouquet?"
 msgstr "Deseja mesmo apagar o bouquet?"
 
 #: ../plugin/controllers/i18n.py:421
-msgid "Do you really want to delete the selected item(s)"
+msgid "Are you sure you want to delete the selected item(s)?"
 msgstr "Deseja mesmo apagar o(s) item(s) selecionado(s)?"
 
 #: ../plugin/controllers/i18n.py:428
-msgid "Do you really want to restore from file"
+msgid "Are you sure you want to restore from file?"
 msgstr "Pretende mesmo restaurar do ficheiro "
 
 #: ../plugin/controllers/i18n.py:116
@@ -538,7 +538,7 @@ msgid "Download"
 msgstr "Descarregar"
 
 #: ../plugin/controllers/i18n.py:119
-msgid "Download Playlist for"
+msgid "Download playlist for"
 msgstr "Descarregar lista de reprodução para"
 
 #: ../plugin/controllers/i18n.py:120
@@ -582,7 +582,7 @@ msgid "Enable Authentication for streaming"
 msgstr "Ativar Autenticação nas transmissões"
 
 #: ../plugin/controllers/i18n.py:343
-msgid "Enable Filtering"
+msgid "Enable filtering"
 msgstr "Ativar a filtragem"
 
 #: ../plugin/plugin.py:138
@@ -635,15 +635,15 @@ msgid "End of \"after event\" timespan"
 msgstr "Fim \"depois do evento\" intervalo de tempo "
 
 #: ../plugin/controllers/i18n.py:307
-msgid "End of Timespan"
+msgid "End of timespan"
 msgstr "Fim do intervalo de tempo"
 
 #: ../plugin/controllers/i18n.py:425
-msgid "Enter new name for the bouquet"
+msgid "Enter a name for the new bouquet"
 msgstr "Escreva o nome do novo Bouquet"
 
 #: ../plugin/controllers/i18n.py:426
-msgid "Enter new name for the marker"
+msgid "Enter a name for the new marker"
 msgstr "Escreva o novo nome do marcador"
 
 #: ../plugin/controllers/i18n.py:129
@@ -759,7 +759,7 @@ msgid "Friday"
 msgstr "Sexta-Feira"
 
 #: ../plugin/controllers/i18n.py:137 ../plugin/controllers/models/info.py:341
-msgid "Frontprocessor Version"
+msgid "Front processor version"
 msgstr "Versão do Processador"
 
 #: ../plugin/controllers/i18n.py:499
@@ -794,7 +794,7 @@ msgid "Capture screenshot"
 msgstr "Gravar Captura do Ecrã"
 
 #: ../plugin/controllers/i18n.py:142
-msgid "Gui version"
+msgid "GUI version"
 msgstr "Versão Gui"
 
 #: ../plugin/plugin.py:137
@@ -864,11 +864,11 @@ msgid "Infinite Instant recording started"
 msgstr "Iniciada gravação instantânea infinita"
 
 #: ../plugin/controllers/i18n.py:152
-msgid "Infos"
+msgid "Info"
 msgstr "Informações"
 
 #: ../plugin/controllers/i18n.py:394
-msgid "Inherit Autotimer"
+msgid "Inherit AutoTimer"
 msgstr "Herdar serviços de AutoTimer"
 
 #: ../plugin/controllers/i18n.py:484
@@ -1096,11 +1096,11 @@ msgid "Name"
 msgstr "Nome"
 
 #: ../plugin/controllers/i18n.py:423
-msgid "Name of the Bouquet"
+msgid "Bouquet name"
 msgstr "Nome do Bouquet"
 
 #: ../plugin/controllers/i18n.py:424
-msgid "Name of the Marker"
+msgid "Marker name"
 msgstr "Nome do Marcador"
 
 #: ../plugin/controllers/i18n.py:171
@@ -1247,11 +1247,11 @@ msgid "October"
 msgstr "Outubro"
 
 #: ../plugin/controllers/i18n.py:313
-msgid "Offset after recording (in m)"
+msgid "Offset after recording (mins)"
 msgstr "Margem após a gravação (minutos)"
 
 #: ../plugin/controllers/i18n.py:312
-msgid "Offset before recording (in m)"
+msgid "Offset before recording (mins)"
 msgstr "Margem antes da gravação (minutos)"
 
 #: ../plugin/controllers/i18n.py:179
@@ -1326,11 +1326,11 @@ msgid "Parent Control is not activated."
 msgstr "Controlo paternal não está ativo."
 
 #: ../plugin/controllers/i18n.py:356
-msgid "Parse"
+msgid "Process"
 msgstr "Analisar"
 
 #: ../plugin/controllers/i18n.py:395
-msgid "Parse Autotimer"
+msgid "Parse AutoTimer"
 msgstr "Analisar Autotimer"
 
 #: ../plugin/controllers/i18n.py:435
@@ -1363,11 +1363,11 @@ msgstr "Lista de Reprodução"
 
 #: ../plugin/controllers/i18n.py:505
 #, fuzzy
-msgid "Playlist Format"
+msgid "Playlist format"
 msgstr "Lista de Reprodução"
 
 #: ../plugin/controllers/i18n.py:427
-msgid "Please enter filename"
+msgid "A filename is required"
 msgstr "Por favor introduza o nome do ficheiro"
 
 #: ../plugin/controllers/i18n.py:432
@@ -1399,20 +1399,20 @@ msgid "Radio"
 msgstr "Rádio"
 
 #: ../plugin/controllers/i18n.py:108
-msgid "Really delete the recording"
+msgid "Are you sure you want to delete this recording?"
 msgstr "Deseja apagar as gravações?"
 
 #: ../plugin/controllers/i18n.py:110
-msgid "Really delete the timer"
+msgid "Are you sure you want to delete this timer?"
 msgstr "Deseja mesmo apagar o Timer?"
 
 #: ../plugin/controllers/i18n.py:200
-msgid "Really rename the recording"
+msgid "Are you sure you want to rename this recording?"
 msgstr "Deseja renomear as gravações?"
 
 #: ../plugin/controllers/i18n.py:154
 #, fuzzy
-msgid "Really start instant record now?"
+msgid "Are you sure you want to start recording instantly?"
 msgstr "Iniciar Gravação instantânea"
 
 #: ../plugin/controllers/i18n.py:193
@@ -1420,11 +1420,11 @@ msgid "Reboot Box"
 msgstr "Reiniciar STB"
 
 #: ../plugin/controllers/i18n.py:324
-msgid "Record a maximum of x times"
+msgid "Record a maximum of # times"
 msgstr "Gravar um máximo de x vezes"
 
 #: ../plugin/controllers/i18n.py:431
-msgid "Record+ZAP"
+msgid "Zap & Record"
 msgstr "Gravar+ZAP"
 
 #: ../plugin/controllers/i18n.py:194
@@ -1493,7 +1493,7 @@ msgid "Restart GUI"
 msgstr "Reiniciar GUI"
 
 #: ../plugin/controllers/i18n.py:131
-msgid "Restrict to Bouquets"
+msgid "Restrict to bouquets"
 msgstr "Restrito aos Bouquets"
 
 #: ../plugin/controllers/i18n.py:308
@@ -1513,7 +1513,7 @@ msgid "SNR"
 msgstr "SNR"
 
 #: ../plugin/controllers/i18n.py:494
-msgid "START TYPING"
+msgid "Start typing..."
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:41
@@ -1575,7 +1575,7 @@ msgid "Search type"
 msgstr "Tipo de procura"
 
 #: ../plugin/controllers/i18n.py:495
-msgid "Select IPK File for Upload"
+msgid "Select IPK file for upload"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:214
@@ -1672,12 +1672,12 @@ msgid "Show Full OpenWebif"
 msgstr "Mostrar o OpenWebif completo"
 
 #: ../plugin/controllers/i18n.py:445
-msgid "Show Picon in channel list"
+msgid "Show picons in channel list"
 msgstr "Mostrar Picon na Lista de Canais"
 
 #: ../plugin/controllers/i18n.py:501
 #, fuzzy
-msgid "Show Service type in channel list"
+msgid "Show service type in channel list"
 msgstr "Mostrar Picon na Lista de Canais"
 
 #: ../plugin/controllers/i18n.py:181 ../plugin/plugin.py:132
@@ -1693,7 +1693,7 @@ msgid "Show full remote"
 msgstr "Mostrar o comando completo"
 
 #: ../plugin/controllers/i18n.py:369
-msgid "Show in Extensionsmenu"
+msgid "Show in Extensions menu"
 msgstr "Mostrar no menu de extensões"
 
 #: ../plugin/controllers/i18n.py:224
@@ -1983,7 +1983,7 @@ msgid "Translation to Spanish"
 msgstr "Tradução para Espanhol"
 
 #: ../plugin/controllers/i18n.py:367
-msgid "Try Guessing"
+msgid "Try guessing"
 msgstr "Tentar adivinhar"
 
 #: ../plugin/controllers/i18n.py:436
@@ -2061,11 +2061,11 @@ msgid "Update Package"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:488
-msgid "Update from Feed"
+msgid "Update from feed"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:489
-msgid "Upgrade all Packages"
+msgid "Upgrade all packages"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:498
@@ -2179,11 +2179,11 @@ msgid "Wednesday"
 msgstr "Quarta-Feira"
 
 #: ../plugin/controllers/i18n.py:351
-msgid "Weekday"
+msgid "weekday"
 msgstr "Dia da Semana"
 
 #: ../plugin/controllers/i18n.py:350
-msgid "Weekend"
+msgid "weekend"
 msgstr "Fins de Semana"
 
 #: ../plugin/controllers/i18n.py:329
@@ -2213,7 +2213,7 @@ msgid "Yes"
 msgstr "Sim/Não"
 
 #: ../plugin/controllers/i18n.py:474
-msgid "Yes, delete it"
+msgid "Yes"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:275
@@ -2221,7 +2221,7 @@ msgid "Yes/No"
 msgstr "Sim/Não"
 
 #: ../plugin/controllers/i18n.py:477
-msgid "You need to write something!"
+msgid "A value is required"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:276
@@ -2241,11 +2241,11 @@ msgid "auto"
 msgstr "auto"
 
 #: ../plugin/controllers/i18n.py:300
-msgid "case-insensitive search"
+msgid "case-insensitive"
 msgstr "pesquisa não diferencia maiusculas de minúsculas"
 
 #: ../plugin/controllers/i18n.py:299
-msgid "case-sensitive search"
+msgid "case-sensitive"
 msgstr "pesquisa diferencia maiúsculas de minúsculas"
 
 #: ../plugin/controllers/i18n.py:293
@@ -2285,15 +2285,15 @@ msgid "hour"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:348
-msgid "in Description"
+msgid "in description"
 msgstr "na Descrição"
 
 #: ../plugin/controllers/i18n.py:347
-msgid "in Shortdescription"
+msgid "in short description"
 msgstr "na Descrição curta"
 
 #: ../plugin/controllers/i18n.py:346
-msgid "in Title"
+msgid "in title"
 msgstr "no Título"
 
 #: ../plugin/controllers/models/movies.py:223
@@ -2327,7 +2327,7 @@ msgid "none/IPv4-only network"
 msgstr "nenhum/IPv4-só rede"
 
 #: ../plugin/controllers/i18n.py:349
-msgid "on Weekday"
+msgid "on weekday"
 msgstr "em Dia da Semana"
 
 #: ../plugin/controllers/BouquetEditor.py:86
@@ -2363,15 +2363,15 @@ msgid "seconds"
 msgstr "segundos"
 
 #: ../plugin/controllers/i18n.py:342
-msgid "select Bouquets"
+msgid "select bouquets"
 msgstr "selecionar Bouquets"
 
 #: ../plugin/controllers/i18n.py:340
-msgid "select Channels"
+msgid "select channels"
 msgstr "selecionar Canais"
 
 #: ../plugin/controllers/i18n.py:338
-msgid "select Tags"
+msgid "select tags"
 msgstr "selecionar Etiquetas"
 
 #: ../plugin/controllers/i18n.py:296
@@ -2435,5 +2435,5 @@ msgid "zap"
 msgstr "zap"
 
 #: ../plugin/controllers/i18n.py:277
-msgid "zap before Stream"
+msgid "zap before streaming"
 msgstr "zap antes de Transmitir"
