@@ -494,7 +494,14 @@
 					<div style="font-size:smaller;" class="table-responsive">
 						<table id="simt" border="0" class="table table-striped table-hover">
 							<thead>
-								<tr><th>State</th><th>$tstrings['name']</th><th>$tstrings['title']</th><th>$tstrings['channel']</th><th>$tstrings['start']</th><th>$tstrings['end']</th></tr>
+								<tr>
+									<th>State</th>
+									<th>$tstrings['name']</th>
+									<th>$tstrings['title']</th>
+									<th>$tstrings['channel']</th>
+									<th style="text-align: right;">$tstrings['start']</th>
+									<th style="text-align: right;">$tstrings['end']</th>
+								</tr>
 							</thead>
 								<tbody id='simtb'>
 								</tbody>
@@ -602,6 +609,7 @@
 	</div>
 </div>
 
+<script src="/modern/plugins/strftime/strftime.js"></script>
 <script src="/modern/plugins/choices/choices.min.js"></script>
 <script src="/modern/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"></script>
 <script src="/js/at-2.9.min.js"></script>
