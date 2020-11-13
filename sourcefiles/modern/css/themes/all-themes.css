@@ -2701,6 +2701,13 @@ body.themed--city-lights {
   background-color: #282c37;
 }
 
+
+.sweet-alert .sa-icon::after,
+.sweet-alert .sa-icon::before,
+.sweet-alert .sa-icon .sa-fix {
+  background-color: transparent !important;
+}
+
 .themed--city-lights .sweet-alert h2 {
   color: #f1f1f1;
 }
