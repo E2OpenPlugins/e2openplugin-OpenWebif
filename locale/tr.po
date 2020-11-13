@@ -82,9 +82,6 @@ msgid "Adjust recording time to real event time"
 msgstr "Kayıt süresini gerçek olay zamanına ayarla"
 
 msgid "After event"
-msgstr "Olaydan Sonra"
-
-msgid "After event"
 msgstr "Olaydan sonra"
 
 msgid "All"
@@ -1593,9 +1590,6 @@ msgstr "Yanlış parametre biçimi 'set =%s'. set = set15 kullanın "
 
 msgid "Yes"
 msgstr "Evet"
-
-msgid "Yes"
-msgstr "Evet, sil"
 
 msgid "Yes/No"
 msgstr "Evet/Hayır"

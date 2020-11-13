@@ -103,10 +103,6 @@ msgstr "Dodano %s do usługi alternatywnej %s."
 msgid "Adjust recording time to real event time"
 msgstr "Dostosuj czas nagrywania do rzeczywistego czasu zdarzenia"
 
-#: ../plugin/controllers/i18n.py:78 ../plugin/controllers/i18n.py:392
-msgid "After event"
-msgstr "Po Wydarzeniu"
-
 #: ../plugin/controllers/i18n.py:316
 msgid "After event"
 msgstr "Po wydarzeniu"
@@ -2219,10 +2215,6 @@ msgstr "Niewłaściwy format parametru 'set=%s'. Użyj set=set15 "
 #: ../plugin/controllers/i18n.py:491
 msgid "Yes"
 msgstr "Tak"
-
-#: ../plugin/controllers/i18n.py:475
-msgid "Yes"
-msgstr "Tak, usuń "
 
 #: ../plugin/controllers/i18n.py:276
 msgid "Yes/No"

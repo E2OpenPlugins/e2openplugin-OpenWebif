@@ -103,10 +103,6 @@ msgstr ""
 msgid "Adjust recording time to real event time"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
-msgid "After event"
-msgstr "Po skončení"
-
 #: ../plugin/controllers/i18n.py:315
 msgid "After event"
 msgstr "Po skončení"
@@ -2191,10 +2187,6 @@ msgstr "Špatný formát parametru 'set=%s'. Použijte set=set15 "
 #: ../plugin/controllers/i18n.py:490
 msgid "Yes"
 msgstr "Ano"
-
-#: ../plugin/controllers/i18n.py:474
-msgid "Yes"
-msgstr "Ano, smazat"
 
 #: ../plugin/controllers/i18n.py:275
 msgid "Yes/No"

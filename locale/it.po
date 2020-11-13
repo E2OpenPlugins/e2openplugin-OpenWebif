@@ -109,10 +109,6 @@ msgstr "Aggiunto %s al canale alternativo %s."
 msgid "Adjust recording time to real event time"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
-msgid "After event"
-msgstr "Azione fine evento"
-
 #: ../plugin/controllers/i18n.py:315
 msgid "After event"
 msgstr "Azione fine evento"
@@ -2205,10 +2201,6 @@ msgstr "Formato del parametro errato: 'set=%s'. utilizzare (set=set15) "
 #: ../plugin/controllers/i18n.py:490
 msgid "Yes"
 msgstr "Sì"
-
-#: ../plugin/controllers/i18n.py:474
-msgid "Yes"
-msgstr "Sì: eliminarlo"
 
 #: ../plugin/controllers/i18n.py:275
 msgid "Yes/No"

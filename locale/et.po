@@ -101,10 +101,6 @@ msgstr "%s lisati asenduskanalile %s."
 msgid "Adjust recording time to real event time"
 msgstr "Kohanda salvestuse aeg saate tõelise ajaga"
 
-#: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
-msgid "After event"
-msgstr "Pärast sündmust"
-
 #: ../plugin/controllers/i18n.py:315
 msgid "After event"
 msgstr "Pärast sündmust"
@@ -2190,10 +2186,6 @@ msgstr "Vale parameetri vorming 'set=%s'. Kasuta set=set15 "
 #: ../plugin/controllers/i18n.py:490
 msgid "Yes"
 msgstr "Jah"
-
-#: ../plugin/controllers/i18n.py:474
-msgid "Yes"
-msgstr "Jah, kustuta see"
 
 #: ../plugin/controllers/i18n.py:275
 msgid "Yes/No"

@@ -103,10 +103,6 @@ msgstr "Добавен %s към алтернативен канал %s."
 msgid "Adjust recording time to real event time"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
-msgid "After event"
-msgstr "След Предаването"
-
 #: ../plugin/controllers/i18n.py:315
 msgid "After event"
 msgstr "След предаването"
@@ -2200,10 +2196,6 @@ msgstr "Неправилен формат на параметъра 'set=%s'. И
 #: ../plugin/controllers/i18n.py:490
 msgid "Yes"
 msgstr "Да"
-
-#: ../plugin/controllers/i18n.py:474
-msgid "Yes"
-msgstr "Да, изтрий го"
 
 #: ../plugin/controllers/i18n.py:275
 msgid "Yes/No"

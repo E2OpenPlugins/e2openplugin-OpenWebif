@@ -103,10 +103,6 @@ msgstr "Tilføjede %s til alternativ kanal %s."
 msgid "Adjust recording time to real event time"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
-msgid "After event"
-msgstr "Efter begivenhed"
-
 #: ../plugin/controllers/i18n.py:315
 msgid "After event"
 msgstr "Efter begivenhed"
@@ -2236,14 +2232,8 @@ msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Forkert parameterformat 'set=%s'. Anvend set=set15 "
 
 #: ../plugin/controllers/i18n.py:490
-#, fuzzy
-#| msgid "Yes/No"
 msgid "Yes"
-msgstr "Ja/Nej"
-
-#: ../plugin/controllers/i18n.py:474
-msgid "Yes"
-msgstr "Ja, slet det"
+msgstr "Ja"
 
 #: ../plugin/controllers/i18n.py:275
 msgid "Yes/No"

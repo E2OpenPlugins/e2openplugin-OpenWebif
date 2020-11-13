@@ -104,10 +104,6 @@ msgstr "Įtraukta %s į alternatyvų kanalą %s ."
 msgid "Adjust recording time to real event time"
 msgstr "Įrašymo laiką koreguoti pagal realų įvykio laiką"
 
-#: ../plugin/controllers/i18n.py:78 ../plugin/controllers/i18n.py:392
-msgid "After event"
-msgstr "Po įvykio"
-
 #: ../plugin/controllers/i18n.py:316
 msgid "After event"
 msgstr "Po įvykio"
@@ -2215,10 +2211,6 @@ msgstr "Neteisingas parametro formatas 'set=%s'. Naudokite set=set15 "
 #: ../plugin/controllers/i18n.py:491
 msgid "Yes"
 msgstr "Taip"
-
-#: ../plugin/controllers/i18n.py:475
-msgid "Yes"
-msgstr "Taip, ištrinti"
 
 #: ../plugin/controllers/i18n.py:276
 msgid "Yes/No"

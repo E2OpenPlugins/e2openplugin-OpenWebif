@@ -102,10 +102,6 @@ msgstr "Το %s προστέθηκε στην εναλλακτική υπηρε�
 msgid "Adjust recording time to real event time"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
-msgid "After event"
-msgstr "Μετά το πρόγραμμα"
-
 #: ../plugin/controllers/i18n.py:315
 msgid "After event"
 msgstr "Μετά την εκπομπή"
@@ -2199,10 +2195,6 @@ msgstr "Λανθασμένη μορφή παραμέτρου 'set=%s'. Χρήσ�
 #: ../plugin/controllers/i18n.py:490
 msgid "Yes"
 msgstr "Ναι"
-
-#: ../plugin/controllers/i18n.py:474
-msgid "Yes"
-msgstr "Ναι, να διαγραφεί"
 
 #: ../plugin/controllers/i18n.py:275
 msgid "Yes/No"

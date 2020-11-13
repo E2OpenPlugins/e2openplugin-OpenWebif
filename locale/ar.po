@@ -103,10 +103,6 @@ msgstr "تم إضافة %s القناة البديلة %s."
 msgid "Adjust recording time to real event time"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
-msgid "After event"
-msgstr "بعد الحدث"
-
 #: ../plugin/controllers/i18n.py:315
 msgid "After event"
 msgstr "بعد الحدث"
@@ -2197,10 +2193,6 @@ msgstr "تنسيق المعلمة الخاطئ ' ضبط = %s '. استخدام �
 #: ../plugin/controllers/i18n.py:490
 msgid "Yes"
 msgstr "نعم"
-
-#: ../plugin/controllers/i18n.py:474
-msgid "Yes"
-msgstr "نعم، أحذفه"
 
 #: ../plugin/controllers/i18n.py:275
 msgid "Yes/No"

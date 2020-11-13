@@ -107,10 +107,6 @@ msgstr "添加 %s 到替代频道 %s."
 msgid "Adjust recording time to real event time"
 msgstr "将录制时间调整为实际事件时间"
 
-#: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
-msgid "After event"
-msgstr "事件后"
-
 #: ../plugin/controllers/i18n.py:315
 msgid "After event"
 msgstr "事件之后"
@@ -2279,10 +2275,6 @@ msgstr "错误的参数格式设置'set=%s', 使用 set=set15"
 #, fuzzy
 msgid "Yes"
 msgstr "是"
-
-#: ../plugin/controllers/i18n.py:474
-msgid "Yes"
-msgstr "是的,删除它"
 
 #: ../plugin/controllers/i18n.py:275
 msgid "Yes/No"

@@ -101,10 +101,6 @@ msgstr "%s pridaná k alternatívam stanice %s."
 msgid "Adjust recording time to real event time"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
-msgid "After event"
-msgstr "Po udalosti"
-
 #: ../plugin/controllers/i18n.py:315
 msgid "After event"
 msgstr "Po udalosti"
@@ -2206,13 +2202,8 @@ msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Chybný formát parametra 'set=%s'. Použite set=set15 "
 
 #: ../plugin/controllers/i18n.py:490
-#, fuzzy
 msgid "Yes"
-msgstr "Áno/Nie"
-
-#: ../plugin/controllers/i18n.py:474
-msgid "Yes"
-msgstr "Áno, vymazať"
+msgstr "Áno"
 
 #: ../plugin/controllers/i18n.py:275
 msgid "Yes/No"

@@ -102,10 +102,6 @@ msgstr "%s toegevoegd aan alternatieve zender %s."
 msgid "Adjust recording time to real event time"
 msgstr "Opname tijd aanpassen aan werkelijke programma tijd"
 
-#: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
-msgid "After event"
-msgstr "Na afloop"
-
 #: ../plugin/controllers/i18n.py:315
 msgid "After event"
 msgstr "Na afloop"
@@ -2202,10 +2198,6 @@ msgstr "Verkeerd parameterformaat 'set=%s'. Gebruik set=set15 "
 #: ../plugin/controllers/i18n.py:490
 msgid "Yes"
 msgstr "Ja"
-
-#: ../plugin/controllers/i18n.py:474
-msgid "Yes"
-msgstr "Ja, verwijder deze"
 
 #: ../plugin/controllers/i18n.py:275
 msgid "Yes/No"

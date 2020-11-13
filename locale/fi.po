@@ -102,10 +102,6 @@ msgstr "Lisätty %s vaihtoehdoksi kanavalle %s."
 msgid "Adjust recording time to real event time"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
-msgid "After event"
-msgstr "Ajastuksen jälkeen"
-
 #: ../plugin/controllers/i18n.py:315
 msgid "After event"
 msgstr "Ajastuksen jälkeen"
@@ -2207,13 +2203,8 @@ msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Väärä asetusmuoto 'set=%s'. Käytä set=set15 "
 
 #: ../plugin/controllers/i18n.py:490
-#, fuzzy
 msgid "Yes"
-msgstr "Kyllä/Ei"
-
-#: ../plugin/controllers/i18n.py:474
-msgid "Yes"
-msgstr ""
+msgstr "Kyllä"
 
 #: ../plugin/controllers/i18n.py:275
 msgid "Yes/No"

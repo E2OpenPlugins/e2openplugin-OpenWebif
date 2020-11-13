@@ -102,10 +102,6 @@ msgstr "A %s hozzáadva az %s alternatív szolgáltatáshoz."
 msgid "Adjust recording time to real event time"
 msgstr "A felvétel idejének az esemény valós idejéhez igazítása"
 
-#: ../plugin/controllers/i18n.py:78 ../plugin/controllers/i18n.py:392
-msgid "After event"
-msgstr "Esemény után"
-
 #: ../plugin/controllers/i18n.py:316
 msgid "After event"
 msgstr "Esemény után"
@@ -2191,10 +2187,6 @@ msgstr "Helytelen paraméter formátum 'set=%s'. Use set=set15 "
 #: ../plugin/controllers/i18n.py:491
 msgid "Yes"
 msgstr "Igen"
-
-#: ../plugin/controllers/i18n.py:475
-msgid "Yes"
-msgstr "Igen, törölje"
 
 #: ../plugin/controllers/i18n.py:276
 msgid "Yes/No"

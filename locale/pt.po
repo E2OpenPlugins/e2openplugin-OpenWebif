@@ -104,10 +104,6 @@ msgstr "Adicionado %s ao serviço alternativo %s."
 msgid "Adjust recording time to real event time"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
-msgid "After event"
-msgstr "Após evento"
-
 #: ../plugin/controllers/i18n.py:315
 msgid "After event"
 msgstr "Após evento"
@@ -2208,13 +2204,8 @@ msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Formato de parâmetro errado, set=%s'. Usar set=set15 "
 
 #: ../plugin/controllers/i18n.py:490
-#, fuzzy
 msgid "Yes"
-msgstr "Sim/Não"
-
-#: ../plugin/controllers/i18n.py:474
-msgid "Yes"
-msgstr ""
+msgstr "Sim"
 
 #: ../plugin/controllers/i18n.py:275
 msgid "Yes/No"
