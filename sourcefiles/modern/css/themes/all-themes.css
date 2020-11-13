@@ -2696,8 +2696,17 @@ body.themed--city-lights {
   background: #282c37;
 }
 
-.themed--city-lights .modal-content {
+.themed--city-lights .modal-content,
+.themed--city-lights .sweet-alert {
   background-color: #282c37;
+}
+
+.themed--city-lights .sweet-alert h2 {
+  color: #f1f1f1;
+}
+
+.themed--city-lights .sweet-alert p {
+  color: #b2b2b2;
 }
 
 .themed--city-lights .modal .modal-content .modal-body {
