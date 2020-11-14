@@ -38,7 +38,7 @@
 	<script>initJsTranslation($dumps($tstrings))</script>
 </head>
 
-<body class="themed--$themeMode theme-$skinColor"  data-thememode="$themeMode" data-skincolor="$skinColor">
+<body class="themed--$themeMode theme-$skinColor" data-thememode="$themeMode" data-skincolor="$skinColor">
 	<!-- Overlay For Sidebars -->
 	<div class="overlay"></div>
 	<div class="search-bar search-bar-epg">
@@ -47,7 +47,10 @@
 				<i class="material-icons">search</i>
 			</div>
 		</div>
-		<input type="text" name="epgsearchtext" id="epgsearchtext" placeholder="$tstrings['start_typing'] ( $tstrings['epgsearch'] ) ...">
+		<form action="#ajax/srch" method="get" onsubmit="window.location='#epgdialog?sstr=click&bouquetsonly=1';return false;">
+		<input type="text" name="sstr" id="xepgsearchtext" placeholder="$tstrings['start_typing'] ( $tstrings['epgsearch'] ) ...">
+<button type=submit">go</button>
+		</form>
 		<div class="close-search">
 			<span class="start-search">
 				<i class="material-icons">search</i>
@@ -249,7 +252,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="#myepg&epgmode=tv" data-close="true" accesskey="e" title="Shortcut: e">
+							<a href="#myepg?epgmode=tv" data-close="true" accesskey="e" title="Shortcut: e">
 								<i class="material-icons">view_list</i>
 								<span>$tstrings['epg']</span>
 							</a>
@@ -882,9 +885,14 @@
 <script>initJsTranslationAddon($dumps($tstrings))</script>
 
 <script>
+	var re = /#(.*)\??(.*)/gi;
+	var str = 'x';
+	var newstr = str.replace(re, '\/ajax/$1?');
+
 	function locationHashChanged(e) { 
-		var hash = e.target.location.hash.replace('#', '').replace('&', '?');
-		hash && load_maincontent_spin('ajax/' + hash);
+		var re = new RegExp(/#(.*)\??(.*)/gi);
+		var hash = e.target.location.hash.replace(re, '\/ajax/$1');
+		hash && load_maincontent_spin(hash);
 	} 
 
 	window.onhashchange = locationHashChanged;

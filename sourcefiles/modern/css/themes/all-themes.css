@@ -2614,6 +2614,7 @@ body.themed--city-lights {
   color: #f1f1f1;
 }
 
+.themed--city-lights .row-striped:nth-of-type(odd),
 .themed--city-lights .table-striped > tbody > tr:nth-of-type(odd) {
   background-color: #313443;
 }
