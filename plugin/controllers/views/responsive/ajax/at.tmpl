@@ -423,15 +423,15 @@
 													<input type="checkbox" name="Filter" id="Filter" class="form-control theme-chk-col chk-col-$skinColor">
 													<!-- Use other filters -->
 													<label for="Filter">$tstrings['at_filter']</label>
-													<button type="button" class="btn btn-default waves-effect FilterE" id="AddFilter" >$tstrings['add']</button>
 												</div>
 												<div class="atform__details__element">
 												</div>
 											</div>
 
-											<div class="atform__fields-container">
+											<div class="atform__fields-container" style="margin-top: 0;">
 												<table id="filterlist" class="table table-striped table-hover FilterE">
 												</table>
+												<button type="button" id="AddFilter" class="btn btn-default waves-effect FilterE">$tstrings['add']</button>
 											</div>
 
 #if $hasVPS == 1
