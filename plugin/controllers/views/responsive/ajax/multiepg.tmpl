@@ -181,7 +181,7 @@
 	#set $ref = "data-ref='" + $ev.ref + "'"
 #end if
 				<td class="serviceheader">
-					<div class="service event" $ref><img src="$(picons[$sname])">$sname</div>
+					<div class="service event" $ref><img src="$(picons[$sname])" loading="lazy">$sname</div>
 				</td>
 #end for
 			</tr>
@@ -223,7 +223,7 @@
 #for $sname, $eventlist in six.iteritems($events)
 									<div class="row" style="border:solid;border-width:1px 0px 0px 0px;height:60px!important;background-color:#bababa;box-shadow:inset -20px 40px 60px #fff;">
 										<div style="width:141px!important;margin-left:20px;" class="pull-left">
-											<h2 class="picon"><img src="$(picons[$sname])" title="$sname"></h2>
+											<h2 class="picon"><img src="$(picons[$sname])" title="$sname" loading="lazy"></h2>
 											</br><label>$sname</label>
 										</div>
 									</div>

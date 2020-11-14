@@ -78,6 +78,7 @@
 
 <div class="row clearfix">
 	<div class="col-xs-12 event-detail__actions">
+
 #if $transcoding
 		<button onclick="jumper8001('$sref', '$channel');" class="theme-link-col-fixed" title="$tstrings['stream']: $channel">
 			<i class="material-icons material-icons-centered">tv</i>
@@ -91,14 +92,17 @@
 				<i class="material-icons material-icons-centered">ondemand_video</i>
 			</a>
 		</button>
-#end if
+#end if	
+
+#set $endTime = $int($event.begin + $event.duration)
 #if $event.timer
-		<button class="theme-link-col-fixed" data-dismiss="modal" data-toggle="modal" data-target="#TimerModal" data-evid="$event.id" data-ref="$sref" title="$tstrings['edit_timer']">
-#if $event.timer.isEnabled
+		<button class="theme-link-col-fixed" data-target="#TimerModal" data-toggle="modal" data-dismiss="modal" data-ref="$sref" data-begin="$event.begin" data-end="$endTime" title="$tstrings['edit_timer']">
+	#if $event.timer.isEnabled
 			<i class="material-icons material-icons-centered">alarm_on</i>
-#else
+	#else
 			<i class="material-icons material-icons-centered">alarm_off</i>
-#end if
+	#end if
+			<i class="material-icons material-icons-centered">edit</i>
 		</button>
 		<button onclick="delTimerEvent('$sref', '$event.id'); return false;" class="theme-link-col-fixed" title="$tstrings['delete_timer']">
 			<i class="material-icons material-icons-centered">delete</i>
@@ -107,15 +111,21 @@
 		<button onclick="addTimerEvent('$sref', $event.id, false); return false;" class="theme-link-col-fixed" title="$tstrings['add_timer']">
 			<i class="material-icons material-icons-centered">alarm_add</i>
 		</button>
+		<button class="theme-link-col-fixed" data-target="#TimerModal" data-toggle="modal" data-dismiss="modal" data-evid="$event.id" data-ref="$sref" title="$tstrings['add'] & $tstrings['edit_timer']">
+			<i class="material-icons material-icons-centered">alarm_add</i>
+			<i class="material-icons material-icons-centered">edit</i>
+		</button>
 		<button onclick="addTimerEvent('$sref', $event.id, true); return false;" class="theme-link-col-fixed" title="$tstrings['add_zaptimer']">
 			<i class="material-icons material-icons-centered">add_alert</i>
 		</button>
 #end if
+
 #if $at
 		<button onclick="addAutoTimerEvent('$sref', '$channel', '$title', '$event.begin', '$event.end'); return false;" class="theme-link-col-fixed" data-dismiss="modal" title="$tstrings['add_autotimer']">
 			<i class="material-icons material-icons-centered">av_timer</i>
 		</button>
 #end if
+
 #if $extEventInfoProvider
 		<a href="$extEventInfoProvider['url']$quote($event.title)" class="theme-link-col-fixed" title="$tstrings['search_'+$extEventInfoProvider['id']]" target="extdb">
 			$extEventInfoProvider['name']

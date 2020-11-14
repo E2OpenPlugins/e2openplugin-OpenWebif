@@ -289,6 +289,7 @@ tstrings = {
 	'license_text': _('All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation.'),
 	'Root': _('Root'),
 	'reload': _("Reload"),
+	'add': _("Add"),
 
 	'at_list': _("AutoTimers"),
 	'at_at_edit': _("AutoTimer Edit"),
@@ -359,7 +360,6 @@ tstrings = {
 	'at_filter_day': _("on weekday"),
 	'at_filter_weekend': _("weekend"),
 	'at_filter_weekday': _("weekday"),
-	'at_add': _("Add"),
 	'at_del': _("Delete"),
 	'at_save': _("Save"),
 	'at_process': _("Process"),
