@@ -164,6 +164,8 @@ class GUI {
         // this.choicesConfig.addItems = true;
         // this.choicesConfig.editItems = true;
         this.choicesConfig.shouldSort = true;
+      } else {
+        this.choicesConfig.shouldSort = false;
       }
       // this.choicesConfig.addItems = true;
       // this.choicesConfig.editItems = true;
