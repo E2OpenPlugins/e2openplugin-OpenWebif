@@ -20,7 +20,7 @@
 			</td>
 	#else
 #if $showPicons and 'picon' in $channel
-	#set $piconHTML = '<img class="img-fluid" src="%s" alt="Channel logo">' % $channel.picon
+	#set $piconHTML = '<img class="img-fluid" src="%s" alt="Channel logo" loading="lazy">' % $channel.picon
 			<td class="now-next__picon $piconCssClass">
 				<div>
 			#if $isProtected
