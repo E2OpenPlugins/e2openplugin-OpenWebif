@@ -157,14 +157,14 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="timeFrame" class="form-control theme-chk-col chk-col-$skinColor" id="timeFrame">
+													<input type="checkbox" name="timeFrame" id="timeFrame" class="form-control theme-chk-col chk-col-$skinColor">
 													<!-- Restrict to events on certain dates -->
 													<label for="timeFrame">$tstrings['at_datespan_before']</label>
 												</div>
 												<div class="atform__details__element">
 													<div class="atform__details__dropdown">
 														<div class="form-line" id="timeFrameE" style="display:none;">
-															<input type="date" name="after" class="form-control inactive" id="after">
+															<input type="date" name="after" id="after" class="form-control inactive">
 														</div>
 													</div>
 												</div>
@@ -172,14 +172,14 @@
 
 											<div class="atform__fields-container" id="timeFrameAfterCheckBox">
 												<div class="atform__details__title">
-													<input type="checkbox" name="timeFrameAfter" class="form-control theme-chk-col chk-col-$skinColor" id="timeFrameAfter">
+													<input type="checkbox" name="timeFrameAfter" id="timeFrameAfter" class="form-control theme-chk-col chk-col-$skinColor">
 													<!-- Restrict to events on certain dates -->
 													<label for="timeFrameAfter">$tstrings['at_datespan_after']</label>
 												</div>
 												<div class="atform__details__element">
 													<div class=" atform__details__dropdown">
 														<div class="form-line" id="beforeE" style="display:none;">
-															<input type="date" name="before" class="form-control inactive" id="before">
+															<input type="date" name="before" id="before" class="form-control inactive">
 														</div>
 													</div>
 												</div>
@@ -187,7 +187,7 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="timerOffset" class="form-control theme-chk-col chk-col-$skinColor" id="timerOffset">
+													<input type="checkbox" name="timerOffset" id="timerOffset" class="form-control theme-chk-col chk-col-$skinColor">
 													<!-- Custom offset -->
 													<label for="timerOffset">$tstrings['at_timer_offset']</label>
 												</div>
@@ -197,14 +197,14 @@
 															<!-- Offset before recording (mins)-->
 															<label>$tstrings['at_timer_offset_before']:&nbsp;</label>
 															<div class="form-line">
-																<input type="number" class="form-control inactive" id="tbefore" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
+																<input type="number" id="tbefore" name="tbefore" class="form-control inactive" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
 															</div>
 														</div>
 														<div class="atform__details__dropdown">
 															<!-- Offset after recording (mins)-->
 															<label>$tstrings['at_timer_offset_after']:&nbsp;</label>
 															<div class="form-line">
-																<input type="number" class="form-control inactive" id="tafter" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
+																<input type="number" name="tafter" id="tafter" class="form-control inactive" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
 															</div>
 														</div>
 												</div>
@@ -437,7 +437,7 @@
 #if $hasVPS == 1
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="vps" class="form-control theme-chk-col chk-col-$skinColor" id="vps">
+													<input type="checkbox" name="vps" id="vps" class="form-control theme-chk-col chk-col-$skinColor">
 													<label for="vps">$tstrings['vps']</label>
 												</div>
 												<div class="atform__details__element">

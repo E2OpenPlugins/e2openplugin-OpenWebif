@@ -4,42 +4,42 @@
 <div class="form-group">
 	<div class="row clearfix">
 		<div class="col-sm-6">
-			<input type="checkbox" id="enabled" value="1" />
+			<input type="checkbox" name="enabled" id="enabled" value="1">
 			<label for="enabled">$tstrings['enabled']</label>
 		</div>
 	</div>
 	<div class="row clearfix">
 		<div class="col-sm-6">
-			<input type="checkbox" name="justplay" id="justplay" value="0" />
+			<input type="checkbox" name="justplay" id="justplay" value="0">
 			<label for="justplay">$tstrings['just_play']</label>
 		</div>
 		<div class="col-sm-6">
-			<input type="checkbox" name="always_zap" id="always_zap" value="0" />
+			<input type="checkbox" name="always_zap" id="always_zap" value="0">
 			<label for="always_zap">$tstrings['zap_record']</label>
 		</div>
 		#if $pipzap
 		<div class="col-sm-6">
-			<input type="checkbox" name="pipzap" id="pipzap" value="0" />
+			<input type="checkbox" name="pipzap" id="pipzap" value="0">
 			<label for="pipzap">$tstrings['pipifposible']</label>
 		</div>
 		#else
-		<input type="checkbox" name="pipzap" id="pipzap" value="0" style="display:none"/>
+		<input type="checkbox" name="pipzap" id="pipzap" value="0" style="display:none">
 		#end if
 	</div>
 	#if $autoadjust
 	<div class="row clearfix">
 		<div class="col-sm-6">
-			<input type="checkbox" id="autoadjust" value="1" />
+			<input type="checkbox" name="autoadjust" id="autoadjust" value="1">
 			<label for="autoadjust">$tstrings['autoadjust']</label>
 		</div>
 		<div class="col-sm-6">
-			<input type="checkbox" id="allow_duplicate" value="1" />
+			<input type="checkbox" name="allow_duplicate" id="allow_duplicate" value="1">
 			<label for="allow_duplicate">$tstrings['allow_duplicate']:</label>
 		</div>
 	</div>
 	#else
-	<input type="checkbox" id="autoadjust" value="0" style="display:none"/>
-	<input type="checkbox" id="allow_duplicate" value="0" style="display:none"/>
+	<input type="checkbox" name="autoadjust" id="autoadjust" value="0" style="display:none">
+	<input type="checkbox" name="allow_duplicate" id="allow_duplicate" value="0" style="display:none">
 	#end if
 	<div class="row clearfix">
 		<div class="col-sm-3">
@@ -47,7 +47,7 @@
 		</div>
 		<div class="col-sm-9">
 			<div class="form-line">
-				<input type="text"  class="form-control" name="timername" id="timername" placeholder="$tstrings['name']" />
+				<input type="text" name="timername" id="timername" class="form-control" placeholder="$tstrings['name']">
 			</div>
 		</div>
 	</div>
@@ -67,7 +67,7 @@
 			<label>$tstrings['channel']:</label>
 		</div>
 		<div class="col-sm-3">
-			<input id="cbradio" type="checkbox" name="group1[]" />
+			<input type="checkbox" name="group1[]" id="cbradio">
 			<label for="cbradio">($tstrings['radio'])</label>
 		</div>
 		<div class="col-sm-6">
@@ -79,12 +79,12 @@
 	<div class="row clearfix"><p>&nbsp;</p></div>
 	<div class="row clearfix">
 		<div class="col-sm-6">
-			<label>$tstrings['start']:</label>
-			<input type="text" class="form-control" id="timerbegin" placeholder="Please choose a date..." />
+			<label>$tstrings['start']:</label><!-- TODO: i10n -->
+			<input type="text" name="timerbegin" id="timerbegin" class="form-control" placeholder="Please select a date...">
 		</div>
 		<div class="col-sm-6">
-			<label>$tstrings['end']:</label>
-			<input type="text" id="timerend" class="form-control" placeholder="Please choose a date..." />
+			<label>$tstrings['end']:</label><!-- TODO: i10n -->
+			<input type="text" name="timerend" id="timerend" class="form-control" placeholder="Please select a date...">
 		</div>
 	</div>
 	<div class="row clearfix">
@@ -97,7 +97,7 @@
 		#for $day in [$tstrings['mo'], $tstrings['tu'], $tstrings['we'], $tstrings['th'], $tstrings['fr'], $tstrings['sa'], $tstrings['su']]
 			#set $value = 2 ** $i
 			<div class="col-sm-1">
-				<input type="checkbox" name="repeated" id="day$i" value="$value" />
+				<input type="checkbox" name="repeated" id="day$i" value="$value">
 				<label for="day$i">$day</label>
 			</div>
 			#set $i=$i+1
@@ -132,12 +132,12 @@
 	<span id="has_vpsplugin1">
 		<div class="row clearfix">
 			<div class="col-sm-6">
-				<input type="checkbox" name="vpsplugin_enabled" id="vpsplugin_enabled" value="0" />
+				<input type="checkbox" name="vpsplugin_enabled" id="vpsplugin_enabled" value="0">
 				<label for="vpsplugin_enabled">$tstrings['vps']:</label>
 			</div>
 			<span id="has_vpsplugin2">
 				<div class="col-sm-6">
-					<input type="checkbox" name="vpsplugin_safemode" id="vpsplugin_safemode" value="0" />
+					<input type="checkbox" name="vpsplugin_safemode" id="vpsplugin_safemode" value="0">
 					<label for="vpsplugin_safemode">$tstrings['safe_mode']:</label>
 				</div>
 			</span>
