@@ -17,7 +17,7 @@ function AddFilter(a,b,c)
 		</select> \
 	</td> \
 	<td class='nopadding'> \
-		<select class='FM form-control' id='fm" + i.toString() + "' > \
+		<select class='FM form-control' id='fm" + i + "' > \
 			<option value='title' selected=''>" + tstr_at_filter_title + "</option> \
 			<option value='shortdescription'>" + tstr_at_filter_short_desc + "</option> \
 			<option value='description'>" + tstr_at_filter_desc + "</option> \
@@ -29,7 +29,7 @@ function AddFilter(a,b,c)
 			<input type='text' class='FI form-control' size='20' value='' style='display: block;' id='fi" + i + "'> \
 		</div> \
 		<div id='fsline" + i +"'> \
-			<select class='FS' style='display: none;' id='fs" + i + "' > \
+			<select class='FS' id='fs" + i + "' > \
 				<option value='0' selected=''>" + tstr_monday + "</option> \
 				<option value='1'>" + tstr_tuesday + "</option> \
 				<option value='2'>" + tstr_wednesday + "</option> \
@@ -47,6 +47,8 @@ function AddFilter(a,b,c)
 		<label for='fr" + i + "'>" + tstr_at_del + "</label> \
 	</td> \
 </tr>");
+
+	$('#fsline' + i).hide();
 
 	if(a!="")
 		$('#ft' + i).val(a);
@@ -73,6 +75,16 @@ function AddFilter(a,b,c)
 	if ( a === "" && b === "")
 		$.AdminBSB.select.activate();
 	$('#f' + i).show();
+
+	$('#fm' + i).change(function() {
+		if ($(this).val()=="dayofweek") {
+			$('#fsline' + i).show();
+			$('#filine' + i).hide();
+		} else {
+			$('#fsline' + i).hide();
+			$('#filine' + i).show();
+		}
+  });
 }
 
 
@@ -910,20 +922,6 @@ function InitPage() {
 
 	autoTimerOptions = owif.gui.populateAutoTimerOptions();
 	// window.autoTimerOptions['channels'].setChoiceByValue(['1:0:19:1B1F:802:2:11A0000:0:0:0:', 'BBC One NI HD']);
-	
-	$( ".FM" ).change(function() {
-
-		var nf = $(this).parent().parent();
-		if($(this).val()=="dayofweek") {
-			nf.find(".FS").show();
-			nf.find(".FI").hide();
-		}
-		else
-		{
-			nf.find(".FS").hide();
-			nf.find(".FI").show();
-		}
-  });
 }
 
 function delAT()
