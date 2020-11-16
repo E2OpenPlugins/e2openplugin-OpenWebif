@@ -730,9 +730,8 @@
 				<h4 class="modal-title"><i class="material-icons material-icons-centered">settings_power</i><span>$tstrings['powercontrol'].replace(" ","&nbsp;")</span></h4>
 			</div>
 			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
-				<hr/>
-				<div class="row clearfix">
-					<div class="col-xs-12 align-center">
+				<div class="row clearfix m-t-20">
+					<div class="col-xs-6 align-right">
 						<button type="button" onclick="handle_power_state_dialog(new_power_state = 0); return false;" class="btn waves-effect responsivebtn responsivebtnpower btn-themed" data-dismiss="modal">
 							<h4>
 								<i class="material-icons">power_settings_new</i>
@@ -740,10 +739,7 @@
 							</h4>
 						</button>
 					</div>
-				</div>
-				<hr/>
-				<div class="row clearfix">
-					<div class="col-xs-12 align-center">
+					<div class="col-xs-6 align-left">
 						<button type="button" onclick="handle_power_state_dialog(new_power_state = 1); return false;" class="btn waves-effect responsivebtn responsivebtnpower btn-themed" data-dismiss="modal">
 							<h4>
 								<i class="material-icons">vertical_align_bottom</i>
@@ -754,7 +750,7 @@
 				</div>
 				<hr/>
 				<div class="row clearfix">
-					<div class="col-xs-12 align-center">
+					<div class="col-xs-6 align-right">
 						<button type="button" onclick="handle_power_state_dialog(new_power_state = 2); return false;" class="btn waves-effect responsivebtn responsivebtnpower btn-themed" data-dismiss="modal">
 							<h4>
 								<i class="material-icons">loop</i>
@@ -762,10 +758,7 @@
 							</h4>
 						</button>
 					</div>
-				</div>
-				<hr/>
-				<div class="row clearfix">
-					<div class="col-xs-12 align-center">
+					<div class="col-xs-6 align-left">
 						<button type="button" onclick="handle_power_state_dialog(new_power_state = 3); return false" class="btn waves-effect responsivebtn responsivebtnpower btn-themed" class="theme-link-color" data-dismiss="modal">
 							<h4>
 								<i class="material-icons">settings_backup_restore</i>
@@ -773,6 +766,8 @@
 							</h4>
 						</button>
 					</div>
+				</div>
+				<div class="row clearfix">
 				</div>
 			</div>
 			<div class="modal-footer">
