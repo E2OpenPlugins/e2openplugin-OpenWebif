@@ -110,7 +110,7 @@
 		#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
 		#set $tname=quote($timer.name)
 
-		<ul class="header-dropdown">
+		<ul class="header-dropdown" style="top: 0; right: 5px;">
 			<li><span role="button"><a href="#edittimer" data-toggle="modal" data-target="#TimerModal" data-ref="$sref" data-ref="$sref" data-begin="$timer.begin" data-end="$timer.end" title="$tstrings['edit_timer']"><i class="material-icons material-icons-mg-right">edit</i></a></span></li>
 			<li><span role="button"><a href="javascript:void(0);" onclick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end'); lastcontenturl=''; setTimeout(function(){load_maincontent('ajax/timers')}, 200); return false;"
 			#if $timer.disabled
@@ -126,9 +126,11 @@
 
 	<div class="body">
 		<div class="row clearfix" style="margin-bottom:-20px;">
-			<div class="col-sm-5">
+			<div class="col-sm-4">
 				<b>$tstrings[("day_" + (time.strftime("%w", time.localtime($timer.begin))))]</b>
-				$timer.realbegin - $timer.realend
+				<span style="white-space: nowrap;">$timer.realbegin</span>
+				-
+				<span style="white-space: nowrap;">$timer.realend</span>
 			#if $timer.repeated != 0
 				<div>
 				$tstrings['every_timer']
@@ -143,20 +145,21 @@
 				#echo ', '.join($timerDays)
 				</div>
 			#end if
+
+				<div style="font-weight:bold;">
+				#if $timer.disabled
+					$tstrings['disabled']
+				#elif $timer.state == 0
+					$tstrings['waiting']
+				#elif $timer.state == 2
+					$tstrings['running']
+				#elif $timer.state == 3
+					$tstrings['finished']
+				#end if
+				</div>
 			</div>
-			<div class="col-sm-5">
+			<div class="col-sm-7">
 				$timer.description
-			</div>
-			<div class="col-sm-2" style="font-weight:bold;">
-			#if $timer.disabled
-				$tstrings['disabled']
-			#elif $timer.state == 0
-				$tstrings['waiting']
-			#elif $timer.state == 2
-				$tstrings['running']
-			#elif $timer.state == 3
-				$tstrings['finished']
-			#end if
 			</div>
 			</div>
 		</div>
