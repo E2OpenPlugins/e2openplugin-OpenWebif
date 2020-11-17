@@ -4,6 +4,7 @@ from __future__ import print_function
 import re
 import six
 import sys
+from time import localtime, strftime
 
 PY3 = sys.version_info[0] == 3
 
@@ -345,6 +346,29 @@ def getEventInfoProvider(moviedb):
 	except KeyError:
 		pass
 	return providerData
+
+
+def getFormattedDateTime(timestamp):
+	t = re.match(r'^(.*?\d{1,2}[^\d]\d{1,2})[^\d]\d{1,2}(.*?)$', strftime("%X", localtime(timestamp)))
+	t = ''.join(unicode(group) for group in t.groups())
+	return strftime("%a %x " + t, localtime(timestamp))
+
+
+def getFormattedEndTime(beginTimestamp, endTimestamp, sameDayText):
+	if (endTimestamp == beginTimestamp):
+		# same date and time
+		formattedEndTime = ''
+	elif (strftime('%x', localtime(endTimestamp)) == strftime('%x', localtime(beginTimestamp))):
+		# same date
+		withoutSeconds = re.match(r'^(.*?\d{1,2}[^\d]\d{1,2})[^\d]\d{1,2}(.*?)$', strftime('%X', localtime(endTimestamp)))
+		formattedEndTime = ''.join(unicode(group) for group in withoutSeconds.groups())
+	else:
+		formattedEndTime = getFormattedDateTime(endTimestamp)
+	return formattedEndTime
+
+
+def getFormattedDuration(seconds, appendText):
+	return unicode(int(seconds / 60)) + ' ' + appendText
 
 
 if __name__ == '__main__':

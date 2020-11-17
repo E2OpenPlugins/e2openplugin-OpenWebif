@@ -33,7 +33,7 @@ from time import time, strftime, localtime, mktime
 from six.moves.urllib.parse import unquote
 from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternative
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
-from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad
+from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad, getFormattedDateTime, getFormattedEndTime, getFormattedDuration
 
 
 def getTimers(session):
@@ -177,7 +177,12 @@ def getTimers(session):
 			"pipzap": pipzap,
 			"isAutoTimer": isAutoTimer,
 			"allow_duplicate": allow_duplicate,
-			"autoadjust": autoadjust
+			"autoadjust": autoadjust,
+			"formattedstrings": {
+				"begin": getFormattedDateTime(timer.begin),
+				"end": getFormattedEndTime(timer.begin, timer.end, ""),
+				"duration": getFormattedDuration((timer.end - timer.begin), _("mins"))
+			}
 		})
 
 	return {
@@ -227,7 +232,12 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 					"begin": conflict.begin,
 					"end": conflict.end,
 					"realbegin": strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.begin)))),
-					"realend": strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.end))))
+					"realend": strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.end)))),
+					"formattedstrings": {
+						"begin": getFormattedDateTime(conflict.begin),
+						"end": getFormattedEndTime(conflict.begin, conflict.end, ""),
+						"duration": getFormattedDuration((conflict.end - conflict.begin), _("mins"))
+					}
 				})
 
 			return {
@@ -381,7 +391,12 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 						"begin": conflict.begin,
 						"end": conflict.end,
 						"realbegin": strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.begin)))),
-						"realend": strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.end))))
+						"realend": strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.end)))),
+						"formattedstrings": {
+							"begin": getFormattedDateTime(conflict.begin),
+							"end": getFormattedEndTime(conflict.begin, conflict.end, ""),
+							"duration": getFormattedDuration((conflict.end - conflict.begin), tstrings["mins"])
+						}
 					})
 
 				return {

@@ -534,7 +534,7 @@ function TimerConflict(conflicts,sRef, eventId, justplay)
 				<div class='header'> \
 					<div class='row clearfix'> \
 						<div class='col-xs-12 col-sm-6'> \
-							<h2><i class='material-icons material-icons-centered'>alarm</i>" +  entry.name + "</h2> \
+							<h2><i class='material-icons material-icons-centered'>alarm</i>" + entry.name + "</h2> \
 						</div> \
 					</div> \
 				</div> \
@@ -542,7 +542,11 @@ function TimerConflict(conflicts,sRef, eventId, justplay)
 						<div class='row clearfix'> \
 							<div class='col-xs-12'> \
 								<p>" + entry.servicename + "</p> \
-								<p>" + entry.realbegin + " - " + entry.realend + "</p> \
+								<p> \
+									<time>" + entry.formattedstrings.begin + "</time> \
+									- <time>" + entry.formattedstrings.end + "</time> \
+									(" + entry.formattedstrings.duration + ") \
+								</p> \
 							</div> \
 						</div> \
 					</div> \
