@@ -7,6 +7,23 @@
 	#set $tabIcon = 'radio'
 #end if
 
+<style>
+	.sticky-top {
+    position: sticky;
+    top: 70px;
+	}
+
+	.sticky-top {
+    background: #fff;
+    box-shadow: 0px 0px 10px 10px #fff;
+	}
+
+	.themed--city-lights .sticky-top {
+    background: #282c37;
+    box-shadow: 0px 0px 10px 10px #282c37;
+	}
+</style>
+
 <div class="form-group hidden-md hidden-lg hidden-xl">
 	<select class="form-control show-tick" id="bqselector">
 	#for $bouquet in $bouquets
@@ -14,7 +31,7 @@
 	#end for
 	</select>
 </div>
-<div class="hidden-sm hidden-xs">
+<div class="hidden-sm hidden-xs sticky-top">
 	<ul class="nav nav-tabs theme-tab-col tab-col-$skinColor">
 	#set $f="id='firstBq'"
 	#for $bouquet in $bouquets
