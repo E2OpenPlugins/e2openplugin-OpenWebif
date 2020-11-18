@@ -5923,6 +5923,10 @@
    font-weight: bold;
    color: #444;
  }
+
+ .themed--city-lights .page-loader-wrapper p {
+   color: #f1f1f1
+ }
  
  .page-loader-wrapper .loader {
    position: relative;
