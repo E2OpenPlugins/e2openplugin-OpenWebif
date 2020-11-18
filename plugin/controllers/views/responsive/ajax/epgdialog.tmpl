@@ -46,11 +46,7 @@
 						</div>
 					</div>
 					<div class="col-xs-12 col-md-3">
-						<span>
-							<time>$event.formattedstrings.begin</time>
-						 - <time>$event.formattedstrings.end</time>
-							<span class="event__duration">($event.formattedstrings.duration)</span>
-						 </span>
+						<span>$event.date - $event.begin&nbsp;-&nbsp;$event.end&nbsp;($event.duration min.)</span>
 					</div>
 					<div class="col-xs-12 col-md-3 align-right">
 						<a href="javascript:void(0);" class="theme-link-color" onclick="addTimerEvent('$sref',$event.id,false);return false;" title="$tstrings['add_timer']"><i class="material-icons material-icons-centered">alarm_add</i></a>
@@ -111,11 +107,8 @@
 							</div>
 						</div>
 						<div class="col-xs-12 col-md-4 align-right" style="word-break: break-all">
-							<h2><time>$event.formattedstrings.begin</time></h2>
-							<span>
-								- <time>$event.formattedstrings.end</time> 
-								<span class="event__duration">($event.formattedstrings.duration)</span>
-							</span>
+						<h2>$event.date</h2>
+						<span>$event.begin&nbsp;-&nbsp;$event.end&nbsp;($event.duration min.)</span>
 						</div>
 					</div>
 				</div>

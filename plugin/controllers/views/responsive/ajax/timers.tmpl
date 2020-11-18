@@ -52,11 +52,8 @@
 	</b>
 	</div>
 	<div class="col-xs-12 col-md-3">
-	<time>$timer.formattedstrings.begin</time>
-	#if not $timer.justplay
-		- <time>$timer.formattedstrings.end</time>
-		<span class="event__duration">($timer.formattedstrings.duration)</span>
-	#end if
+	<b>$tstrings[("day_" + (time.strftime("%w", time.localtime($timer.begin))))]</b>
+	$timer.realbegin - $timer.realend
 	<b>
 	#if $timer.disabled
 		$tstrings['disabled']
@@ -67,7 +64,7 @@
 	#elif $timer.state == 3
 		$tstrings['finished']
 	#end if
-	</b>
+
 #if $timer.repeated != 0
 	<div>
 	$tstrings['every_timer']
@@ -130,11 +127,12 @@
 	<div class="body">
 		<div class="row clearfix" style="margin-bottom:-20px;">
 			<div class="col-sm-5">
-				<time>$timer.formattedstrings.begin</time>
-			#if not $timer.justplay
-				- <time>$timer.formattedstrings.end</time>
-				<span class="event__duration">($timer.formattedstrings.duration)</span>
-			#end if
+				<b>$tstrings[("day_" + (time.strftime("%w", time.localtime($timer.begin))))]</b>
+				<span style="white-space: nowrap;">$timer.realbegin</span>
+				-
+				<span style="white-space: nowrap;">$timer.realend</span>
+				#set $xt = time.strftime("%c", time.localtime($timer.begin))
+				$xt
 			#if $timer.repeated != 0
 				<div>
 				$tstrings['every_timer']

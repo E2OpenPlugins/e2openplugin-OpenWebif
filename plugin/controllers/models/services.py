@@ -39,7 +39,7 @@ from Screens.InfoBar import InfoBar
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache
 from six.moves.urllib.parse import quote, unquote
 from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternative, getOrbitalText, getOrb
-from Plugins.Extensions.OpenWebif.controllers.utilities import parse_servicereference, SERVICE_TYPE_LOOKUP, NS_LOOKUP, PY3, getFormattedDateTime, getFormattedEndTime, getFormattedDuration
+from Plugins.Extensions.OpenWebif.controllers.utilities import parse_servicereference, SERVICE_TYPE_LOOKUP, NS_LOOKUP, PY3
 from Plugins.Extensions.OpenWebif.controllers.i18n import _, tstrings
 from Plugins.Extensions.OpenWebif.controllers.defaults import PICON_PATH
 
@@ -728,11 +728,6 @@ def getEvent(ref, idev, encode=True):
 		info['genre'], info['genreid'] = convertGenre(event[8])
 		info['picon'] = getPicon(event[7])
 		info['timer'] = getTimerEventStatus(event, eventLookupTable)
-		info['formattedstrings'] = {
-			'begin': getFormattedDateTime(event[1]),
-			'end': getFormattedEndTime(event[1], event[1] + event[2], ''),
-			'duration': getFormattedDuration(event[2], tstrings['mins'])
-		}
 		break
 	return {'event': info}
 
@@ -1004,11 +999,6 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 			ev['picon'] = getPicon(event[7])
 			ev['now_timestamp'] = None
 			ev['genre'], ev['genreid'] = convertGenre(event[8])
-			ev['formattedstrings'] = {
-				'begin': getFormattedDateTime(event[1]),
-				'end': getFormattedEndTime(event[1], event[1] + event[2], ''),
-				'duration': getFormattedDuration(event[2], tstrings['mins'])
-			}
 			if endtime:
 				# don't show events if begin after endtime
 				if event[1] <= endtime:
