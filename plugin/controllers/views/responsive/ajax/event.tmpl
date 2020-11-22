@@ -23,9 +23,16 @@
 	.event-detail__picon.picon--with-background {
     background-color: #bababa;
     box-shadow: inset -20px 40px 60px #fff;
-}
+	}
 	.event-detail__picon .img-fluid {
 		width: 100%;
+	}
+	.themed--city-lights .event-detail__title {
+		color: #f1f1f1;
+	}
+	.themed--city-lights .event-detail__time,
+	.themed--city-lights .event-detail__description {
+		color: #b2b2b2;
 	}
 	.themed--city-lights .event-detail__actions button {
     color: #f1f1f1;
@@ -63,22 +70,34 @@
 
 <div class="row clearfix pull-left">
 	<div class="col-xs-12">
-		<h4>$event.title</h4>
-		<h5>$tstrings[("day_" + ($time.strftime("%w", $etime)))]. $time.strftime("%d", $etime). $tstrings[("month_" + ($time.strftime("%m", $etime)))] $event.begin_str - $event.end&nbsp;&nbsp;($int($event.duration/60) min)</h5>
+		<h4 class="event-detail__title">$event.title</h4>
+		<h5 class="event-detail__time">$tstrings[("day_" + ($time.strftime("%w", $etime)))]. $time.strftime("%d", $etime). $tstrings[("month_" + ($time.strftime("%m", $etime)))] $event.begin_str - $event.end&nbsp;&nbsp;($int($event.duration/60) min)</h5>
 	</div>
 </div>
 <div class="row clearfix">
 	<div class="col-xs-12">
 #if $event.title != $event.shortdesc
-		<p>$event.shortdesc</p>
+		<p class="event-detail__description">$event.shortdesc</p>
 #end if
 	</div>
 </div>
 <div class="row clearfix">
-	<div class="col-xs-12">
-		<p>$(event.longdesc.replace("\n","<br/>").replace(u"\u008a","<br/>"))</p>
+	<div class="col-xs-12 m-t-10">
+		<p class="event-detail__description">
+			$(event.longdesc.replace("\n","<br/>").replace(u"\u008a","<br/>"))
+		</p>
 	</div>
 </div>
+#if $extEventInfoProvider
+<div class="row clearfix">
+	<div class="col-xs-12 m-b-10">
+		<a href="$extEventInfoProvider['url']$quote($event.title)" class="theme-link-color" title="$tstrings['search_'+$extEventInfoProvider['id']]" target="extdb">
+			<i class="material-icons material-icons-centered" style="margin-right: 0;">open_in_new</i>
+			$extEventInfoProvider['name']
+		</a>
+	</div>
+</div>
+#end if
 
 <div class="row clearfix">
 	<div class="col-xs-12 event-detail__actions">
@@ -131,13 +150,6 @@
 		<button onclick="addAutoTimerEvent('$sref', '$channel', '$title', '$event.begin', '$event.end');" class="theme-link-col-fixed" data-dismiss="modal" title="$tstrings['add_autotimer']">
 			<i class="material-icons material-icons-centered">av_timer</i>
 		</button>
-#end if
-
-#if $extEventInfoProvider
-		<a href="$extEventInfoProvider['url']$quote($event.title)" class="theme-link-col-fixed" title="$tstrings['search_'+$extEventInfoProvider['id']]" target="extdb">
-			$extEventInfoProvider['name']
-			<i class="material-icons material-icons-centered">open_in_new</i>
-		</a>
 #end if
 	</div>
 </div>
