@@ -21,14 +21,18 @@
     "mkdirp": "^1.0.4",
     "parcel-bundler": "^1.12.4"
   },
+  "resolutions": {
+    "node-forge": "0.10.0"
+  },
   "browserslist": [
     "defaults"
   ],
   "scripts": {
-    "build-css": "npx ./_utils/mincss.js -o '../../plugin/public/modern/' './css/**/*.css'",
+    "preinstall": "npx npm-force-resolutions",
     "uglify": "npx glob-uglifyjs",
     "build-entry": "npx parcel build ./entry-app.js --out-dir ../../plugin/public/modern/js/",
     "build-js": "npm run-script uglify && npm run-script build-entry",
+    "build-css": "npx ./_utils/mincss.js -o '../../plugin/public/modern/' './css/**/*.css'",
     "test": "echo 'Error: no test specified!' && exit 1"
   },
   "repository": {
