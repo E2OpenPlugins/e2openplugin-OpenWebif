@@ -29,21 +29,26 @@ $(function () {
 		$('#navbar-collapse').addAttr('style', 'width:100%');
 	});
 
+  // $('#TimerModal').modal('show')
+
 	$('#TimerModal').on('show.bs.modal', function (e) {
-
 		if (!$("#TimerModal").data('bs.modal').isShown){
-
 			if (timerFormInitiated !== 1) {
 				initTimerEditForm();
-			}
-			var evid = $(e.relatedTarget).attr('data-evid');
-			var ref = $(e.relatedTarget).attr('data-ref');
-			var begin = $(e.relatedTarget).attr('data-begin');
-			var end = $(e.relatedTarget).attr('data-end');
-			if ( (ref !== '' && typeof ref != 'undefined' ) && (evid !== '' && typeof evid != 'undefined') ) {
-				addEditTimerEvent(ref,evid);
-			} else if ( (ref !== '' && typeof ref != 'undefined' ) && (begin !== '' && typeof begin != 'undefined' ) && (end !== '' && typeof end != 'undefined' ) ) {
-				editTimer(ref, begin, end);
+      }
+      var epgEvent;
+      try {
+        var dataAttr = 'metadata';
+        epgEvent = JSON.parse(e.relatedTarget.closest('[data-' + dataAttr + ']').dataset[dataAttr]);
+      } catch (ex) {
+        epgEvent = {};
+      }
+      console.log(epgEvent, !!epgEvent.sref, !!epgEvent.begin, !!epgEvent.end);
+			if (!!epgEvent.sref && !!epgEvent.id) {
+				addEditTimerEvent(epgEvent.sref, epgEvent.id);
+			} else if (!!epgEvent.sref && !!epgEvent.begin && !!epgEvent.end) {
+        console.log('ed');
+				editTimer(epgEvent.sref, epgEvent.begin, epgEvent.end);
 			} else {
 				addTimer();
 			}
@@ -168,7 +173,7 @@ function set_epg_modal_content(data) {
 
 function open_epg_dialog(sRef,Name) {
 	$("#epgmodalcontent").html(loadspinner);
-	var url = "ajax/epgdialog?sref=" + escape(sRef);
+	var url = "ajax/epgdialog?sref=" + encodeURIComponent(sRef);
 	$.get(url, set_epg_modal_content);
 }
 
@@ -472,12 +477,12 @@ function loadeventepg(id, ref, picon) {
 	} else {
 		channelpicon = null;
 	}
-	var url = 'ajax/event?idev=' + id + '&sref=' + escape(ref);
+	var url = 'ajax/event?idev=' + id + '&sref=' + encodeURIComponent(ref);
 	$("#eventdescriptionII").load(url);
 }
 
 function loadtimeredit(id, ref) {
-	var url = 'ajax/event?idev=' + id + '&sref=' + escape(ref);
+	var url = 'ajax/event?idev=' + id + '&sref=' + encodeURIComponent(ref);
 	$("#eventdescriptionII").load(url);
 }
 
@@ -515,7 +520,7 @@ function initTimerEditBegin()
 		todayHighlight: true,
 		todayBtn: 'linked',
 		minuteStep: 2,
-		language: 'de',
+		language: 'de', // TODO: fix date
 	});
 	$('#timerbegin').datetimepicker().on('changeDate', function(dateText, inst){
 		if ($('#timerend').val() != '' &&
@@ -685,7 +690,8 @@ function addTimer(evt,chsref,chname,top) {
 }
 
 function editTimer(serviceref, begin, end) {
-	serviceref=decodeURI(serviceref);
+	serviceref = decodeURIComponent(serviceref);
+	console.log(serviceref);
 	current_serviceref = serviceref;
 	current_begin = begin;
 	current_end = end;
