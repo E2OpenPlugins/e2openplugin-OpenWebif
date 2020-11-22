@@ -16,10 +16,10 @@
 	.serviceheader { padding: 10px; width: 190px; text-align: center; background-color: #bababa; box-shadow: inset -20px 40px 60px #fff; }
 	.themed--city-lights .serviceheader { background-color: #313443; box-shadow: inset -20px 40px 60px #282c37; }
 	.event { cursor: pointer; width: 190px; overflow:hidden; }
-	.bq { font-size: 11px; font-weight: bold; padding: 2px 4px; line-height: 18px; cursor: pointer; white-space: nowrap; display: inline-block; margin: 1px 1px 0px 0px;}
+	.bq { font-size: 12px; padding: 2px 4px; line-height: 18px; cursor: pointer; white-space: nowrap; display: inline-block; margin: 1px 1px 0px 0px;}
 	.plusclick { font-size: 14px; }
-	.navtab-active { cursor: pointer; margin-right:8px; font-weight: bold; border-bottom: 2px solid $skinColor; background-color: transparent !important; bottom: 2px;}
-	.navtab-inactive { cursor: pointer; margin-right:8px;  border:None; background-color: transparent !important;  }
+	.navtab-active { cursor: pointer; margin-right:8px; font-weight: bold; border-bottom-width: 2px; border-bottom-style: solid; background-color: transparent !important; bottom: 2px;}
+	.navtab-inactive { cursor: pointer; margin-right:8px; border:None; background-color: transparent !important;  }
 	.timer { font-weight: bold; font-size: 10px; color:red; }
 	#eventdescription { width: 375px; height: auto; position: fixed; top: 205px; left: 350px; z-index: 100; display: none; overflow: auto; }
 	#navepg { margin-bottom: 1px; }
@@ -65,7 +65,8 @@
     bottom: -10%;
     left: -10%;
     position: absolute;
-    border: 2px solid $skinColor;
+    border-width: 2px;
+		border-style: solid;
   }
 	.epg__timer-status .material-icons {
 		font-size: 1.2em;
@@ -140,6 +141,21 @@
 	}
 	.etimesmall, .etime {
 		font-size: 10px;
+	}
+	.themed--city-lights .event a {
+		color: inherit;
+	}
+	.themed--city-lights .event a:hover {
+		color: inherit;
+	}
+	.themed--city-lights .curevent {
+		color: #f1f1f1;
+		background: #313443;
+	}
+	.themed--city-lights .ename,
+	.themed--city-lights .etimesmall, 
+	.themed--city-lights .etime { 
+		color: inherit;
 	}
 </style>
 
@@ -220,7 +236,7 @@
 							<tr>
 								<td>
 #for $sname, $eventlist in six.iteritems($events)
-									<div class="row" style="border:solid;border-width:1px 0px 0px 0px;height:60px!important;background-color:#bababa;box-shadow:inset -20px 40px 60px #fff;">
+									<div class="row" style="border:solid;border-width:1px 0px 0px 0px;height:60px!important;">
 										<div style="width:141px!important;margin-left:20px;" class="pull-left">
 											<h2 class="picon"><img src="$(picons[$sname])" title="$sname" loading="lazy"></h2>
 											</br><label>$sname</label>
@@ -235,7 +251,7 @@
 				<td>
 					<table class="table-striped">
 						<tbody>
-							<tr>
+							<tr style="background-color: initial;">
 								<td>
 									<div style="overflow:auto" id="tblinner">
 										<div class="timetable">
