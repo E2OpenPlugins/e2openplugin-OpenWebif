@@ -671,7 +671,7 @@ def getEventDesc(ref, idev, encode=True):
 	return {"description": description}
 
 
-def getTimerEventStatus(event, eventLookupTable):
+def getTimerEventStatus(event, eventLookupTable, timers=None):
 	# Check if an event has an associated timer. Unfortunately
 	# we cannot simply check against timer.eit, because a timer
 	# does not necessarily have one belonging to an epg event id.
@@ -681,7 +681,9 @@ def getTimerEventStatus(event, eventLookupTable):
 	endTime = event[eventLookupTable.index('B')] + event[eventLookupTable.index('D')] - 120
 	serviceref = event[eventLookupTable.index('R')]
 	timerlist = {}
-	for timer in NavigationInstance.instance.RecordTimer.timer_list:
+	if not timers:
+		timers = NavigationInstance.instance.RecordTimer.timer_list
+	for timer in timers:
 		if str(timer.service_ref) not in timerlist:
 			timerlist[str(timer.service_ref)] = []
 		timerlist[str(timer.service_ref)].append(timer)
@@ -727,7 +729,7 @@ def getEvent(ref, idev, encode=True):
 		info['sref'] = event[7]
 		info['genre'], info['genreid'] = convertGenre(event[8])
 		info['picon'] = getPicon(event[7])
-		info['timer'] = getTimerEventStatus(event, eventLookupTable)
+		info['timer'] = getTimerEventStatus(event, eventLookupTable, None)
 		break
 	return {'event': info}
 
@@ -1076,7 +1078,8 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 		# have to check the part of the timers that belong to that specific
 		# service reference. Partition is generated here.
 		timerlist = {}
-		for timer in self.session.nav.RecordTimer.timer_list + self.session.nav.RecordTimer.processed_timers:
+		timers = self.session.nav.RecordTimer.timer_list + self.session.nav.RecordTimer.processed_timers
+		for timer in timers:
 			if str(timer.service_ref) not in timerlist:
 				timerlist[str(timer.service_ref)] = []
 			timerlist[str(timer.service_ref)].append(timer)
@@ -1094,7 +1097,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 			lastevent = offset + 86399
 
 		for event in events:
-			timer = getTimerEventStatus(event, eventLookupTable)
+			timer = getTimerEventStatus(event, eventLookupTable, timers)
 			# timerStatus is kept for backwards compatibility
 			basicStatus = ''
 			if timer:
