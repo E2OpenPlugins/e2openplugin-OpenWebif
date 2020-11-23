@@ -1053,6 +1053,34 @@ def getSearchSimilarEpg(ref, eventid, encode=False):
 
 
 def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
+	# Check if an event has an associated timer. Unfortunately
+	# we cannot simply check against timer.eit, because a timer
+	# does not necessarily have one belonging to an epg event id.
+	def getTimerEventStatus(event, eventLookupTable):	
+		startTime = event[eventLookupTable.index('B')]
+		endTime = event[eventLookupTable.index('B')] + event[eventLookupTable.index('D')] - 120
+		serviceref = event[eventLookupTable.index('R')]
+		if serviceref not in timerlist:	
+			return None
+		for timer in timerlist[serviceref]:	
+			if timer.begin <= startTime and timer.end >= endTime:
+				basicStatus = 'timer'
+				isEnabled = 1
+				isAutoTimer = -1
+				if hasattr(timer, "isAutoTimer"):
+					isAutoTimer = timer.isAutoTimer
+				if timer.disabled:	
+					basicStatus = 'timer disabled'
+					isEnabled = 0
+				timerDetails = {
+						'isEnabled': isEnabled,
+						'isZapOnly': int(timer.justplay),
+						'basicStatus': basicStatus,
+						'isAutoTimer': isAutoTimer
+					}
+				return timerDetails
+		
+		return None
 	ret = OrderedDict()
 	services = eServiceCenter.getInstance().list(eServiceReference(ref))
 	if not services:
@@ -1097,7 +1125,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 			lastevent = offset + 86399
 
 		for event in events:
-			timer = getTimerEventStatus(event, eventLookupTable, timers)
+			timer = getTimerEventStatus(event, eventLookupTable)
 			# timerStatus is kept for backwards compatibility
 			basicStatus = ''
 			if timer:
