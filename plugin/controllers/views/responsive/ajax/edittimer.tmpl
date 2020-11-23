@@ -1,5 +1,7 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 
+#set $dayNamesShort = [$tstrings['mo'], $tstrings['tu'], $tstrings['we'], $tstrings['th'], $tstrings['fr'], $tstrings['sa'], $tstrings['su']]
+
 <form>
 <div class="form-group">
 	<div class="row clearfix">
@@ -66,11 +68,11 @@
 		<div class="col-sm-3">
 			<label>$tstrings['channel']:</label>
 		</div>
-		<div class="col-sm-3">
+		<!-- div class="col-sm-3">
 			<input type="checkbox" name="group1[]" id="cbradio">
 			<label for="cbradio">($tstrings['radio'])</label>
-		</div>
-		<div class="col-sm-6">
+		</div -->
+		<div class="col-sm-9">
 			<select class="form-control show-tick no-default-select" id="bouquet_select" name="bouquet_select">
 				<option value="0">$tstrings['nothing']</option>
 			</select>
@@ -93,15 +95,17 @@
 		</div>
 	</div>
 	<div class="row clearfix">
+		<div class="col-sm-12" style="display: flex; justify-content: space-around;">
 		#set $i=0
-		#for $day in [$tstrings['mo'], $tstrings['tu'], $tstrings['we'], $tstrings['th'], $tstrings['fr'], $tstrings['sa'], $tstrings['su']]
+		#for $day in $dayNamesShort
 			#set $value = 2 ** $i
-			<div class="col-sm-1">
-				<input type="checkbox" name="repeated" id="day$i" value="$value">
+			<span>
+				<input type="checkbox" name="repeated" value="$value" id="day$i">
 				<label for="day$i">$day</label>
-			</div>
+			</span>
 			#set $i=$i+1
 		#end for
+		</div>
 	</div>
 	<div class="row clearfix">
 		<div class="col-sm-3">
@@ -111,6 +115,11 @@
 			<select class="form-control show-tick" id="dirname" name="dirname" >
 				<option value="None">$tstrings['default']</option>
 			</select>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-sm-9 m-t-5 m-b-5 pull-right">
+			<p>* Add a new location in the <strong>Bookmarks</strong> section of <a href="/#settings" target="settings">Settings</a></p><!-- TODO: i10n -->
 		</div>
 	</div>
 	<div class="row clearfix">
