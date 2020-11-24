@@ -15,56 +15,57 @@
 	#set $piconCssClass = 'picon--with-background'
 #end if
 
-<style>
-	.event-detail__picon {
-		vertical-align: middle !important;
-    width: 100px;
-	}
-	.event-detail__picon.picon--with-background {
-    background-color: #bababa;
-    box-shadow: inset -20px 40px 60px #fff;
-	}
-	.event-detail__picon .img-fluid {
-		width: 100%;
-	}
-	.themed--city-lights .event-detail__title {
-		color: #f1f1f1;
-	}
-	.themed--city-lights .event-detail__time,
-	.themed--city-lights .event-detail__description {
-		color: #b2b2b2;
-	}
-	.themed--city-lights .event-detail__actions button {
-    color: #f1f1f1;
-    border: 1px solid #b2b2b2;
-    background-color: #707070;
-    border-radius: 2px;
-	}
-	.themed--city-lights .event-detail__actions a {
-		color: #f1f1f1;
-	}
-	.event-detail__actions button, 
-	.event-detail__actions a {
-		margin: 4px 2px 0 0;
-		user-select: none;
-	}
-	.event-detail__actions .material-icons-centered {
-		font-size: 20px;
-		margin: 2px;
-	}
-</style>
-
 <div data-metadata='$metadata'>
 <div class="row clearfix pull-right">
 	<div class="col-xs-12">
+
 #if $showPicons and 'picon' in $event
 	#set $piconHTML = '<img class="img-fluid" src="%s" alt="Channel logo">' % $event.picon
-		<div class="event-detail__picon $piconCssClass">
+		<div class="event-detail__picon $piconCssClass" style="margin: 0 auto;">
 			<a href="javascript:zapChannel('$sref', '$channel');" title="$tstrings['zap_to'] $channel">$piconHTML</a>
 		</div>
 #else
 		<h4>$channel</h4>
 #end if
+
+		<div class="event-detail__actions m-b-10">
+	## #if $isProtected
+	## 		<span class="theme-link-col-fixed" target="_blank" title="$tstrings['locked']"><i class="material-icons material-icons-centered">lock_outline</i></span>
+	## #else
+		#if $type == "radio"
+			<!-- button type="button" onclick="addTimer('', '$sref', '$channel', '');" class="theme-link-col-fixed" title="$tstrings['add_timer']"><i class="icon material-icons material-icons-centered">alarm_add</i></button -->
+		#end if
+
+			<button type="button" onclick="zapChannel('$sref', '$channel');" class="theme-link-col-fixed" title="$tstrings['zap_to'] $channel"><i class="icon material-icons material-icons-centered">settings_remote</i></button>
+
+		#if '4097:' in '$sref'
+			#set $rname = ":" + $channel
+			#set $lnk = '$sref'.replace("4097:0:1:0:0:0:0:0:0:0:", "")
+			#set $lnk = $lnk[:$lnk.rindex(':')].replace("%3a", ":").replace("%3A", ":")
+			<a href="$lnk" class="now-next__external-link theme-link-col-fixed" target="extlink" title="$tstrings['open_in_new_window']"><i class="material-icons material-icons-centered">phonelink</i></a>
+		#else
+			<button type="button" onclick="open_epg_dialog('$sref', '$channel');" class="theme-link-col-fixed" title="$tstrings['show_epg_for'] $channel" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons material-icons-centered">view_list</i></button>
+			<button type="button" onclick="jumper8001('$sref', '$channel');" class="theme-link-col-fixed" title="$tstrings['stream'] $channel"><i class="icon material-icons material-icons-centered">ondemand_video</i></button>
+			#if $transcoding
+			<button type="button" onclick="jumper8002('$sref', '$channel');" class="theme-link-col-fixed" title="$tstrings['stream'] ($tstrings['transcoded']) $channel"><i class="icon material-icons material-icons-centered">smartphone</i></button>
+			#end if
+## #if $transcoding
+## <button onclick="jumper8001('$sref', '$channel');" class="theme-link-col-fixed" title="$tstrings['stream']: $channel">
+## <i class="material-icons material-icons-centered">tv</i>
+## </button>
+## <button onclick="jumper8002('$sref', '$channel');" class="theme-link-col-fixed" title="$tstrings['stream'] ($tstrings['transcoded']): $channel">
+## <i class="material-icons material-icons-centered">phone_android</i>
+## </button>
+## #else
+## <button class="theme-link-col-fixed">
+## <a href="/web/stream.m3u?ref=$sref&name=$channel" class="theme-link-col-fixed" target="stream" title="$tstrings['stream'] $channel">
+## <i class="material-icons material-icons-centered">ondemand_video</i>
+## </a>
+## </button>
+## #end if	
+		#end if
+	## #end if
+		</div>
 	</div>
 </div>
 
@@ -101,21 +102,6 @@
 
 <div class="row clearfix">
 	<div class="col-xs-12 event-detail__actions">
-
-#if $transcoding
-		<button onclick="jumper8001('$sref', '$channel');" class="theme-link-col-fixed" title="$tstrings['stream']: $channel">
-			<i class="material-icons material-icons-centered">tv</i>
-		</button>
-		<button onclick="jumper8002('$sref', '$channel');" class="theme-link-col-fixed" title="$tstrings['stream'] ($tstrings['transcoded']): $channel">
-			<i class="material-icons material-icons-centered">phone_android</i>
-		</button>
-#else
-		<button class="theme-link-col-fixed">
-			<a href="/web/stream.m3u?ref=$sref&name=$channel" class="theme-link-col-fixed" target="stream" title="$tstrings['stream'] $channel">
-				<i class="material-icons material-icons-centered">ondemand_video</i>
-			</a>
-		</button>
-#end if	
 
 #if $event.timer
 	#if $event.timer.isEnabled
