@@ -7255,6 +7255,15 @@ a:focus {
 
 .now-next__channel__actions button {
   margin: 4px 2px 0 0; user-select: none;
+  transition-duration: 0.2s;
+}
+
+.themed--city-lights .now-next__channel__actions button:hover { 
+  background-color: rgba(241,241,241,.3);
+}
+
+.themed--city-lights .now-next__channel__actions button:active { 
+  background-color: rgba(241,241,241,.1);
 }
 
 .now-next__channel__actions .icon { 
@@ -7276,6 +7285,60 @@ a:focus {
 
 .channel--active { 
   background-color: rgba(0, 0, 0, 0.2) !important; 
+}
+
+.event-detail__picon {
+  vertical-align: middle !important;
+  width: 100px;
+}
+
+.event-detail__picon.picon--with-background {
+  background-color: #bababa;
+  box-shadow: inset -20px 40px 60px #fff;
+}
+
+.event-detail__picon .img-fluid {
+  width: 100%;
+}
+
+.themed--city-lights .event-detail__title {
+  color: #f1f1f1;
+}
+
+.themed--city-lights .event-detail__time,
+.themed--city-lights .event-detail__description {
+  color: #b2b2b2;
+}
+
+.themed--city-lights .event-detail__actions button {
+  color: #f1f1f1;
+  border: 1px solid rgba(241, 241, 241, 0.2);
+  background-color: rgba(241, 241, 241, 0.2);
+  border-radius: 2px;
+}
+
+.themed--city-lights .event-detail__actions button:hover { 
+  background-color: rgba(241,241,241,.3);
+}
+
+.themed--city-lights .event-detail__actions button:active { 
+  background-color: rgba(241,241,241,.1);
+}
+
+.themed--city-lights .event-detail__actions a {
+  color: #f1f1f1;
+}
+
+.event-detail__actions button, 
+.event-detail__actions a {
+  margin: 4px 2px 0 0;
+  user-select: none;
+  transition-duration: 0.2s;
+}
+
+.event-detail__actions .material-icons-centered {
+  font-size: 20px;
+  margin: 2px;
 }
 
 img[src*="default_picon"] { 

@@ -2928,8 +2928,8 @@ body.themed--city-lights {
 
 .themed--city-lights .now-next__channel__actions button {
   color: #f1f1f1;
-  border: 1px solid #b2b2b2;
-  background-color: #707070;
+  border: 1px solid rgba(241, 241, 241, 0.2);
+  background-color: rgba(241, 241, 241, 0.2);
   border-radius: 2px;
 }
 
