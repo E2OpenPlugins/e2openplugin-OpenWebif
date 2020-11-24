@@ -3,7 +3,7 @@
 #from six.moves.urllib.parse import quote
 #from time import localtime, strftime
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, MinTimerList
+#from Plugins.Extensions.OpenWebif.vtiaddon import MinTimerList
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	<div class="card">
@@ -13,11 +13,21 @@
 					<h2><i class="material-icons material-icons-centered">alarm</i>$tstrings['timers']</h2>
 				</div>
 			</div>
-			<ul class="header-dropdown">
+			<ul class="header-dropdown m-r-5">
+				<li class="dropdown">
+					<a href="javascript:void(0);" class="dropdown-toggle m-l-5 m-r-5" title="$tstrings['sort']" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">sort</i></a>
+					<ul class="dropdown-menu pull-right">
+						<li><a href="javascript:void(0);" onclick="lastcontenturl='';load_maincontent('ajax/timers'); return false;"><i class="material-icons material-icons-centered">vertical_align_center</i>$tstrings['default']</a></li>
+						<li><a href="javascript:void(0);" onclick="lastcontenturl='';load_maincontent('ajax/timers?sort=name'); return false;"><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['name']</a></li>
+						<li><a href="javascript:void(0);" onclick="lastcontenturl='';load_maincontent('ajax/timers?sort=named'); return false;"><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['name']</a></li>
+						<li><a href="javascript:void(0);" onclick="lastcontenturl='';load_maincontent('ajax/timers?sort=date'); return false;"><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['date']</a></li>
+						<li><a href="javascript:void(0);" onclick="lastcontenturl='';load_maincontent('ajax/timers?sort=dated'); return false;"><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['date']</a></li>
+					</ul>
+				</li>
 				<li>
-				<li class="dropdown"><a href="javascript:void(0);" onclick="lastcontenturl='';load_maincontent('ajax/timers'); return false;"><i class="material-icons">autorenew</i></a>
-				<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+					<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 					<ul class="dropdown-menu pull-right" id="timerbuttons">
+						<li class="dropdown"><a href="javascript:void(0);" onclick="lastcontenturl='';load_maincontent('ajax/timers'); return false;"><i class="material-icons">autorenew</i>$tstrings['reload']</a>
 						<li><a href="#addtimer" data-toggle="modal" data-target="#TimerModal" id="timerbutton0"><i class="material-icons material-icons-centered">alarm_add</i>$tstrings['add_timer']</a></li>
 						<li><a href="javascript:void(0);" onclick="lastcontenturl='';cleanupTimer(); return false"><i class="material-icons material-icons-centered">delete_forever</i>$tstrings['cleanup_timer']</a></li>
 						<li><a href="javascript:void(0);" onclick="lastcontenturl='';load_maincontent('ajax/timers'); return false;"><i class="material-icons material-icons-centered">autorenew</i>$tstrings['refresh_timer']</a></li>
@@ -71,7 +81,7 @@
 	#elif $timer.state == 3
 		$tstrings['finished']
 	#end if
-
+	</b>
 #if $timer.repeated != 0
 	<div>
 	$tstrings['every_timer']
@@ -89,11 +99,14 @@
 </div>
 <div class="col-xs-12 col-md-3 align-right">
 <a href="#edittimer" class="theme-link-color" data-toggle="modal" data-target="#TimerModal" data-ref="$sref" data-begin="$timer.begin" data-end="$timer.end" title="$tstrings['edit_timer']"><i class="material-icons material-icons-mg-right">edit</i></a>
-<a href="javascript:void(0);" class="theme-link-color" onclick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end'); lastcontenturl=''; setTimeout(function(){load_maincontent('ajax/timers')}, 200); return false;"
 #if $timer.disabled
-	title="$tstrings['enable_timer']"><i class="material-icons material-icons-mg-right">alarm_on</i></a>
+	<a href="javascript:void(0);" class="theme-link-color" onclick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end'); lastcontenturl=''; setTimeout(function(){load_maincontent('ajax/timers')}, 200); return false;" title="$tstrings['enable_timer']">
+		<i class="material-icons material-icons-mg-right">alarm_on</i>
+	</a>
 #else
-	title="$tstrings['disable_timer']"><i class="material-icons material-icons-mg-right">alarm_off</i></a>
+	<a href="javascript:void(0);" class="theme-link-color" onclick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end'); lastcontenturl=''; setTimeout(function(){load_maincontent('ajax/timers')}, 200); return false;" title="$tstrings['disable_timer']">
+		<i class="material-icons material-icons-mg-right">alarm_off</i>
+	</a>
 #end if
 <a href="javascript:void(0);" class="theme-link-color" onclick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$tname'); lastcontenturl=''; setTimeout(function(){load_maincontent('ajax/timers')}, 200); return false;" title="$tstrings['delete_timer']"><i class="material-icons material-icons-mg-right">delete</i></a></div></div>
 
@@ -102,11 +115,15 @@
 	<div class="header">
 		<div class="row clearfix" style="margin-bottom:-20px;">
 		<div class="col-xs-6">
-			<h2>
+			<h2 style="line-height: 1.4;">
 	#if $timer.disabled
 				<i class="material-icons material-icons-centered">alarm_off</i>
-	#else
+	#elif $timer.state == 0
 				<i class="material-icons material-icons-centered">alarm_on</i>
+	#elif $timer.state == 2
+				<i class="material-icons material-icons-centered">update</i>
+	#elif $timer.state == 3
+				<i class="material-icons material-icons-centered">done</i>
 	#end if
 				$timer.name - $timer.servicename
 			</h2>
