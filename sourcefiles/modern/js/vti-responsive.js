@@ -554,7 +554,7 @@ function TimerConflict(conflicts, sRef, eventId, justplay)
 				</div> \
 				<div class='body'> \
 						<div class='row clearfix'> \
-							<div class='col-xs-12' style='margin-bottom: 0;'> \
+							<div class='col-xs-12' style='margin: 10px 0 0;'> \
                 <p>" + entry.realbegin + " - " + entry.realend + "</p> \
               </div> \
 						</div> \
