@@ -2430,5 +2430,5 @@ msgid "zap"
 msgstr "perjungti"
 
 #: ../plugin/controllers/i18n.py:278
-msgid "zap before streaming"
+msgid "Zap before streaming"
 msgstr "perjungti prieš transliaciją"

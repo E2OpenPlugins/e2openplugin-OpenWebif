@@ -2427,5 +2427,5 @@ msgid "zap"
 msgstr "canviar"
 
 #: ../plugin/controllers/i18n.py:277
-msgid "zap before streaming"
+msgid "Zap before streaming"
 msgstr "canviar abans del stream"

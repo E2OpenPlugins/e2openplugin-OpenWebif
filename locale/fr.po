@@ -2419,5 +2419,5 @@ msgid "zap"
 msgstr "zap"
 
 #: ../plugin/controllers/i18n.py:278
-msgid "zap before streaming"
+msgid "Zap before streaming"
 msgstr "zapper avant de streamer"

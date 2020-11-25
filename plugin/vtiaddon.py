@@ -74,6 +74,11 @@ def RemoteControlView():
 		return 'checked'
 	return ''
 
+def ZapStream():
+	if config.OpenWebif.webcache.zapstream.value:
+		return 'checked'
+	return ''
+
 def showPicons():
 	if config.OpenWebif.webcache.showpicons.value:
 		return 'checked'
@@ -130,6 +135,11 @@ def setVTiWebConfig(self, request):
 		print("save remotecontrolview:", val)
 		config.OpenWebif.responsive_rcu_full_view.value = val == 1 and True or False
 		config.OpenWebif.responsive_rcu_full_view.save()
+	if b"zapstream" in list(request.args.keys()):
+		val = int(getUrlArg(request, "zapstream"))
+		print("save zapstream:", val)
+		config.OpenWebif.webcache.zapstream.value = val == 1 and True or False
+		config.OpenWebif.webcache.zapstream.save()
 	if b"showpicons" in list(request.args.keys()):
 		val = int(getUrlArg(request, "showpicons"))
 		print("save showpicons:", val)

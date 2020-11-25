@@ -2415,5 +2415,5 @@ msgid "zap"
 msgstr "переключити"
 
 #: ../plugin/controllers/i18n.py:277
-msgid "zap before streaming"
+msgid "Zap before streaming"
 msgstr "перемикати перед стримом"

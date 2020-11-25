@@ -2445,5 +2445,5 @@ msgid "zap"
 msgstr "zappa"
 
 #: ../plugin/controllers/i18n.py:277
-msgid "zap before streaming"
+msgid "Zap before streaming"
 msgstr "zappa före strömning"
