@@ -1,5 +1,5 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground, ZapStream
 #from json import dumps
 
 <!doctype html>
@@ -443,6 +443,15 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="plformat" id="plformat">
+											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+										</label>
+									</div>
+								</li>
+								<li>
+									<span>$tstrings['zapbeforestream']</span>
+									<div class="switch">
+										<label>
+											<input type="checkbox" name="zapstream" id="zapstream" $ZapStream>
 											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
 										</label>
 									</div>

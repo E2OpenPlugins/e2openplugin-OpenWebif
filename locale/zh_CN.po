@@ -2504,5 +2504,5 @@ msgid "zap"
 msgstr "切换频道"
 
 #: ../plugin/controllers/i18n.py:277
-msgid "zap before streaming"
+msgid "Zap before streaming"
 msgstr "串流之前切换频道"

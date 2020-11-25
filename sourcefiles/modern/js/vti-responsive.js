@@ -1246,6 +1246,10 @@ function VTiWebConfig() {
 		var val = $(this).is(":checked") ? '1' : '0'
 		$.get('api/setvtiwebconfig?minepglist=' + val);
 	});
+	$('#zapstream').change(function () {
+		var val = $(this).is(":checked") ? '1' : '0'
+		$.get('api/setvtiwebconfig?zapstream=' + val);
+	});
 	$('#showpicons').change(function () {
 		var val = $(this).is(":checked") ? '1' : '0'
 		$.get('api/setvtiwebconfig?showpicons=' + val);
