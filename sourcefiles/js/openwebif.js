@@ -1726,10 +1726,13 @@ function ChangeTheme(theme)
 
 function directlink()
 {
-	var hash = window.location.hash.replace('#','');
+	// #myepg?epgmode=tv
+	var hashParts = window.location.hash.match(/^#((.*?[^\?]*)(\?.*)*)/) || [null, '', '']
+	var page = hashParts[2]; // myepg
+	var hash = hashParts[1]; // myepg?epgmode=tv
 	var lnk = 'ajax/tv';
-
-	switch (hash)
+	
+	switch (page)
 	{
 		case 'radio':
 		case 'movies':
@@ -1739,13 +1742,15 @@ function directlink()
 		case 'bqe':
 		case 'epgr':
 		case 'myepg':
+		case 'epgdialog':
 		case 'timers':
 		case 'satfinder':
 		case 'boxinfo':
 		case 'webtv':
 		case 'about':
 		case 'screenshot':
-			lnk='ajax/' + p;
+		case 'current':
+			lnk = 'ajax/' + hash;
 			break;
 	}
 	
