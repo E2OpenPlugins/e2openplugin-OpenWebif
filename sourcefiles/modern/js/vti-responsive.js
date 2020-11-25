@@ -43,11 +43,9 @@ $(function () {
       } catch (ex) {
         epgEvent = {};
       }
-      console.log(epgEvent, !!epgEvent.sref, !!epgEvent.begin, !!epgEvent.end);
 			if (!!epgEvent.sref && !!epgEvent.id) {
 				addEditTimerEvent(epgEvent.sref, epgEvent.id);
 			} else if (!!epgEvent.sref && !!epgEvent.begin && !!epgEvent.end) {
-        console.log('ed');
 				editTimer(epgEvent.sref, epgEvent.begin, epgEvent.end);
 			} else {
 				addTimer();
@@ -530,25 +528,35 @@ function initTimerEditBegin()
 	});
 }
 
-function TimerConflict(conflicts,sRef, eventId, justplay)
+function TimerConflict(conflicts, sRef, eventId, justplay)
 {
-	var SplitText = ""
-	conflicts.forEach(function(entry) {
-		SplitText += "<div class='row clearfix'><div class='col-xs-12'> \
+  var SplitText = '';
+  conflicts.sort( function(a, b) {
+    return (a.begin - b.begin);
+  });
+  conflicts.forEach(function(entry) {
+		SplitText += "<div class='row clearfix conflicting-timer'><div class='col-xs-12'> \
 			<div class='card'> \
-				<div class='header'> \
+				<div class='header' style='padding: 10px 20px;'> \
 					<div class='row clearfix'> \
-						<div class='col-xs-12 col-sm-6'> \
-							<h2><i class='material-icons material-icons-centered'>alarm</i>" +  entry.name + "</h2> \
+						<div class='col-xs-12'> \
+              <h2> \
+                <span role='button'> \
+                  <a href='javascript:void(0);' onclick='toggleTimerStatus(\"" + entry.serviceref + "\", \"" + entry.begin + "\", \"" + entry.end + "\"); this.closest(\".conflicting-timer\").classList.add(\"fade\");' title='Disable Timer'> \
+                    <i class='material-icons material-icons-centered material-icons-mg-right'>alarm_off</i> \
+                  </a> \
+                </span> \
+							  " +  entry.name + " \
+                <span style='opacity: 0.4;'> - " + entry.servicename + "</span> \
+              </h2> \
 						</div> \
 					</div> \
 				</div> \
 				<div class='body'> \
 						<div class='row clearfix'> \
-							<div class='col-xs-12'> \
-								<p>" + entry.servicename + "</p> \
-								<p>" + entry.realbegin + " - " + entry.realend + "</p> \
-							</div> \
+							<div class='col-xs-12' style='margin-bottom: 0;'> \
+                <p>" + entry.realbegin + " - " + entry.realend + "</p> \
+              </div> \
 						</div> \
 					</div> \
 				</div> \
@@ -691,7 +699,6 @@ function addTimer(evt,chsref,chname,top) {
 
 function editTimer(serviceref, begin, end) {
 	serviceref = decodeURIComponent(serviceref);
-	console.log(serviceref);
 	current_serviceref = serviceref;
 	current_begin = begin;
 	current_end = end;
