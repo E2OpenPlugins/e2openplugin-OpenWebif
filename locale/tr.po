@@ -1747,5 +1747,5 @@ msgstr "yanlış dosya türü"
 msgid "zap"
 msgstr "zap"
 
-msgid "zap before streaming"
+msgid "Zap before streaming"
 msgstr "Akıştan önce zap"

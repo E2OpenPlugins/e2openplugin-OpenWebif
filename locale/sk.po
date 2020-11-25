@@ -2424,5 +2424,5 @@ msgid "zap"
 msgstr "prepnúť"
 
 #: ../plugin/controllers/i18n.py:277
-msgid "zap before streaming"
+msgid "Zap before streaming"
 msgstr "prepnúť pred streamovaním"

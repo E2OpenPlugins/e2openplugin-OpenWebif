@@ -2420,5 +2420,5 @@ msgid "zap"
 msgstr "Cambiare canale"
 
 #: ../plugin/controllers/i18n.py:277
-msgid "zap before streaming"
+msgid "Zap before streaming"
 msgstr "Cambiare canale prima della trasmissione"

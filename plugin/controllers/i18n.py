@@ -282,7 +282,7 @@ tstrings = {
 	'warning': _("Warning"),
 	'yes_no': _("Yes/No"),
 	'zap': _("Zap"),
-	'zapbeforestream': _("zap before streaming"),
+	'zapbeforestream': _("Zap before streaming"),
 	'zap_to': _("Zap to"),
 	'zapped_to': _("Zapped to"),
 	'translation_spanish': _('Translation to Spanish'),

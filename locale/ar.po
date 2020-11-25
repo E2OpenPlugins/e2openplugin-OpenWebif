@@ -2412,5 +2412,5 @@ msgid "zap"
 msgstr "الانتقال"
 
 #: ../plugin/controllers/i18n.py:277
-msgid "zap before streaming"
+msgid "Zap before streaming"
 msgstr "أنتقل قبل التدفق"

@@ -2405,5 +2405,5 @@ msgid "zap"
 msgstr "kanalivahetus"
 
 #: ../plugin/controllers/i18n.py:277
-msgid "zap before streaming"
+msgid "Zap before streaming"
 msgstr "Kanalivahetus enne voogesitust"
