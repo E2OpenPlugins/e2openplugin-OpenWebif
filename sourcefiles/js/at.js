@@ -1224,7 +1224,7 @@ function prepareRestore (ff) {
 	{
 		var formData = new FormData(this);
 		$.ajax({
-			url: '/autotimer/uploadrestore',
+			url: '/autotimer/uploadfile',
 			type: 'POST',
 			data:  formData,
 			mimeType:"multipart/form-data",
