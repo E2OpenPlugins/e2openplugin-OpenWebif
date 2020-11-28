@@ -22,7 +22,8 @@
     "parcel-bundler": "^1.12.4"
   },
   "resolutions": {
-    "node-forge": "0.10.0"
+    "node-forge": "0.10.0",
+    "yargs-parser": "20.2.4"
   },
   "browserslist": [
     "defaults"
