@@ -6,7 +6,7 @@
 //* Copyright (C) 2014-2018 E2OpenPlugins
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
-//*					Robert Damas <https://github.com/rdamas>
+//*          Robert Damas <https://github.com/rdamas>
 
 //* V 2.0 - complete refactored
 //* V 2.1 - theme support
