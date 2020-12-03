@@ -131,6 +131,8 @@ function initJsTranslationAddon(strings) {
 	tstrings_update_package = strings.update_package;
 	tstrings_upload_package = strings.upload_package;
 	tstrings_upload_error = strings.upload_error;
+	tstr_bqe_add_url = strings.bqe_add_url;
+	tstr_bqe_name_url = strings.bqe_name_url;
 }
 
 function toggleFullRemote() {

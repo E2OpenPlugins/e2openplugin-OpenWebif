@@ -53,7 +53,7 @@
 
 		#if '4097:' in $channel.ref
 			#set $rname = ":" + $channel.name
-			#set $lnk = $channel.ref.replace("4097:0:1:0:0:0:0:0:0:0:", "")
+			#set $lnk = $channel.ref.replace("4097:0:0:0:0:0:0:0:0:0:", "").replace("4097:0:1:0:0:0:0:0:0:0:", "")
 			#set $lnk = $lnk[:$lnk.rindex(':')].replace("%3a", ":").replace("%3A", ":")
 					<a href="$lnk" class="now-next__external-link theme-link-col-fixed" target="extlink" title="$tstrings['open_in_new_window']"><i class="material-icons material-icons-centered">phonelink</i></a>
 		#else

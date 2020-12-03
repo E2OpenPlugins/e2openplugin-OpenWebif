@@ -465,7 +465,6 @@
 						type: "input",
 						showCancelButton: true,
 						closeOnConfirm: true,
-						animation: "slide-from-top",
 						inputValue: cleanname,
 						input: "text",
 					}, function (newname) {
@@ -654,6 +653,10 @@
 				});
 
 			},
+			
+			addUrl: function () {
+				self._addUrl();
+			},
 
 			addMarker: function () {
 				self._addMarker(false);
@@ -663,6 +666,53 @@
 				self._addMarker(true);
 			},
 
+			// Callback function for bouquet channels pane `add iptv/url` button
+			// Prompts for url and name, to be added before the selected channel
+			_addUrl: function () {
+				var newUrl = '';
+				var newName = '';
+				swal({
+					title: tstr_bqe_add_url,
+					text: '',
+					type: "input",
+					showCancelButton: true,
+					closeOnConfirm: false,
+					animation: "fade",
+					inputValue: '',
+					input: "text",
+				}, function (newUrl) {
+					if (!newUrl) return false;
+					swal({
+							title: tstr_bqe_name_url,
+							text: '',
+							type: "input",
+							showCancelButton: true,
+							closeOnConfirm: true,
+							inputValue: '',
+							input: "text",
+						}, function (newName) {
+							if (!newUrl) return false;
+							var bref = $('#bql li.ui-selected').data('sref');
+							var dstref = $('#bqs li.ui-selected').data('sref') || '';
+							var params = { sBouquetRef: bref, Name: newName, sRefBefore: dstref, sRefUrl: newUrl };
+							$.ajax({
+								url: '/bouqueteditor/api/addservicetobouquet',
+								dataType: 'json',
+								cache: false,
+								data: params, 
+								success: function ( data ) {
+									var r = data.Result;
+									if (r.length == 2) {
+										self.showError(r[1],r[0]);
+									}
+									self.changeBouquet(bref, self.showBouquetChannels);
+								}
+							});
+						});
+					}
+				);
+			},
+			
 			// Callback function for right pane add marker button
 			// Prompts for marker name, marker will be added before selected service
 			_addMarker: function (sp) {
@@ -674,7 +724,6 @@
 							type: "input",
 							showCancelButton: true,
 							closeOnConfirm: true,
-							animation: "slide-from-top",
 							inputValue: '',
 							input: "text",
 						}, function (newname) {
@@ -729,7 +778,6 @@
 						type: "input",
 						showCancelButton: true,
 						closeOnConfirm: true,
-						animation: "slide-from-top",
 						inputValue: '',
 						input: "text",
 					}, function (newname) {
@@ -923,6 +971,7 @@
 				$('#btn-bouquet-delete').click(self.deleteBouquet);
 
 				$('#btn-channel-delete').click(self.deleteChannel);
+				$('#btn-url-add').click(self.addUrl);
 				$('#btn-marker-add').click(self.addMarker);
 				$('#btn-spacer-add').click(self.addSpacer);
 				$('#btn-marker-group-rename').click(self.renameMarkerGroup);
