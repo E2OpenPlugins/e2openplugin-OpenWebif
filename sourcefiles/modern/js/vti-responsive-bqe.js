@@ -666,8 +666,8 @@
 				self._addMarker(true);
 			},
 
-			// Callback function for right pane add marker button
-			// Prompts for marker name, marker will be added before selected service
+			// Callback function for bouquet channels pane `add iptv/url` button
+			// Prompts for url and name, to be added before the selected channel
 			_addUrl: function () {
 				var newUrl = '';
 				var newName = '';
