@@ -272,7 +272,7 @@
 					var stype = sref.split(':')[2];
 					var _ns = val['_ns'];
 					var picon = val['picon'];
-					name = '<span class="bqe__picon"><img src="' + picon + '"></span>' + name;
+					name = '<span class="bqe__picon"><img src="' + picon + '" loading="lazy"></span>' + name;
 					var m = '<span class="pull-right"><span title="' + prov + '">' + ' ' + (self.sType[stype] || '') + ' &bull; ' + _ns + '</span>&nbsp;<span class="dd-icon-selected pull-left"><i class="material-icons material-icons-centered">done</i></span></span>';
 					options.push( $('<li/>', {
 						onDblClick: 'zapChannel("' + sref + '", "' + val['servicename'] + '"); return false;',
@@ -375,7 +375,7 @@
 										ismarker: val['ismarker'],
 										sref: sref
 									}
-								}).html('<span class="handle dd-icon"><i class="material-icons material-icons-centered">list</i>&nbsp;</span><span class="bqe__picon"><img src="'+picon+'"></span>'+name+m+'<span class="dd-icon-selected pull-right"><i class="material-icons material-icons-centered">done</i></span></li>') );
+								}).html('<span class="handle dd-icon"><i class="material-icons material-icons-centered">list</i>&nbsp;</span><span class="bqe__picon"><img src="'+picon+'" loading="lazy"></span>'+name+m+'<span class="dd-icon-selected pull-right"><i class="material-icons material-icons-centered">done</i></span></li>') );
 						});
 						$('#bqs').removeClass('loading');
 						if (callback) {
