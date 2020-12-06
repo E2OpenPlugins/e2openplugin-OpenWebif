@@ -691,7 +691,8 @@
   background-color: rgba(0, 0, 0, 0.08);
 }
 
-.theme-red .navbar {
+.theme-red .navbar,
+.theme-red .timetable-now {
   background-color: #f44336;
 }
 
@@ -782,7 +783,8 @@
   border-color: #f44336;
 }
 
-.theme-pink .navbar {
+.theme-pink .navbar,
+.theme-pink .timetable-now {
   background-color: #e91e63;
 }
 
@@ -873,7 +875,8 @@
   border-color: #e91e63;
 }
 
-.theme-purple .navbar {
+.theme-purple .navbar,
+.theme-purple .timetable-now {
   background-color: #9c27b0;
 }
 
@@ -964,7 +967,8 @@
   border-color: #9c27b0;
 }
 
-.theme-deep-purple .navbar {
+.theme-deep-purple .navbar,
+.theme-deep-purple .timetable-now {
   background-color: #673ab7;
 }
 
@@ -1055,7 +1059,8 @@
   border-color: #673ab7;
 }
 
-.theme-indigo .navbar {
+.theme-indigo .navbar,
+.theme-indigo .timetable-now {
   background-color: #3f51b5;
 }
 
@@ -1146,7 +1151,8 @@
   border-color: #3f51b5;
 }
 
-.theme-blue .navbar {
+.theme-blue .navbar,
+.theme-blue .timetable-now {
   background-color: #2196f3;
 }
 
@@ -1237,7 +1243,8 @@
   border-color: #2196f3;
 }
 
-.theme-light-blue .navbar {
+.theme-light-blue .navbar,
+.theme-light-blue .timetable-now {
   background-color: #03a9f4;
 }
 
@@ -1328,7 +1335,8 @@
   border-color: #03a9f4;
 }
 
-.theme-cyan .navbar {
+.theme-cyan .navbar,
+.theme-cyan .timetable-now {
   background-color: #00bcd4;
 }
 
@@ -1419,7 +1427,8 @@
   border-color: #00bcd4;
 }
 
-.theme-teal .navbar {
+.theme-teal .navbar,
+.theme-teal .timetable-now {
   background-color: #009688;
 }
 
@@ -1510,7 +1519,8 @@
   border-color: #009688;
 }
 
-.theme-green .navbar {
+.theme-green .navbar,
+.theme-green .timetable-now {
   background-color: #4caf50;
 }
 
@@ -1601,7 +1611,8 @@
   border-color: #4caf50;
 }
 
-.theme-light-green .navbar {
+.theme-light-green .navbar,
+.theme-light-green .timetable-now {
   background-color: #8bc34a;
 }
 
@@ -1692,7 +1703,8 @@
   border-color: #8bc34a;
 }
 
-.theme-lime .navbar {
+.theme-lime .navbar,
+.theme-lime .timetable-now {
   background-color: #cddc39;
 }
 
@@ -1784,7 +1796,8 @@
   border-color: #cddc39;
 }
 
-.theme-yellow .navbar {
+.theme-yellow .navbar,
+.theme-yellow .timetable-now {
   background-color: #ffeb3b;
 }
 
@@ -1875,7 +1888,8 @@
   border-color: #ffe821;
 }
 
-.theme-amber .navbar {
+.theme-amber .navbar,
+.theme-amber .timetable-now {
   background-color: #ffc107;
 }
 
@@ -1966,7 +1980,8 @@
   border-color: #ffc107;
 }
 
-.theme-orange .navbar {
+.theme-orange .navbar,
+.theme-orange .timetable-now {
   background-color: #ff9800;
 }
 
@@ -2057,7 +2072,8 @@
   border-color: #ff9800;
 }
 
-.theme-deep-orange .navbar {
+.theme-deep-orange .navbar,
+.theme-deep-orange .timetable-now {
   background-color: #ff5722;
 }
 
@@ -2148,7 +2164,8 @@
   border-color: #ff5722;
 }
 
-.theme-brown .navbar {
+.theme-brown .navbar,
+.theme-brown .timetable-now {
   background-color: #795548;
 }
 
@@ -2239,7 +2256,8 @@
   border-color: #795548;
 }
 
-.theme-grey .navbar {
+.theme-grey .navbar,
+.theme-grey .timetable-now {
   background-color: #9e9e9e;
 }
 
@@ -2330,7 +2348,8 @@
   border-color: #9e9e9e;
 }
 
-.theme-blue-grey .navbar {
+.theme-blue-grey .navbar,
+.theme-blue-grey .timetable-now {
   background-color: #607d8b;
 }
 
@@ -2421,7 +2440,8 @@
   border-color: #607d8b;
 }
 
-.theme-grey-darken-4 .navbar {
+.theme-grey-darken-4 .navbar,
+.theme-grey-darken-4 .timetable-now {
   background-color: #212121;
 }
 
@@ -2517,7 +2537,8 @@
   border-color: #b2b2b2;
 }
 
-.theme-black .navbar {
+.theme-black .navbar,
+.theme-black .timetable-now {
   background-color: #000;
 }
 
