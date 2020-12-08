@@ -26,15 +26,12 @@
 				</li>
 			</ul>
 		</div>
-		<div class="body" >
+		<div class="body">
 			<div class="row clearfix">
-				<img id="screenshotimage" class="img-fluid rounded" src="" alt="$tstrings['loading'] ...">
+				<img src="" id="screenshotimage" class="img-fluid rounded" alt="$tstrings['loading'] ...">
 			</div>
-			<div class="row clearfix">
-				<p></p>
-			</div>
-			<div class="row clearfix">
-				<div class="col-md-3 col-md-offset-4 align-right">
+			<div class="row clearfix m-t-20">
+				<div class="col-xs-12 col-sm-7 align-right">
 					<div class="switch panel-switch-btn">
 						<label>
 							<span class="m-r-10 font-12">$tstrings['high_resolution']</span>
@@ -44,21 +41,24 @@
 							<span class="lever theme-switch-col switch-col-$skinColor"></span>
 						</label>
 					</div>
-					<div class="switch panel-switch-btn">
-						<label>
-							<span class="m-r-10 font-12">$tstrings['refresh_auto']
-								<input type="text" name="ssr_i" value="30" id="ssr_i" class="input-field" size="2">
-								<label>$tstrings['seconds']</label>
-							</span>
-						<label>
+					<div class="switch panel-switch-btn m-t-10">
+						<label class="m-r-10 font-12" style="vertical-align: middle;">
+							$tstrings['refresh_auto']
+							<input type="number" name="ssr_i" id="ssr_i" value="30" placeholder="30" size="2" class="form-control inactive align-right">
+							$tstrings['seconds']
+						</label>
+						<label style="vertical-align: middle;">
 							<input type="checkbox" name="ssr_s" id="ssr_s">
 							<span class="lever theme-switch-col switch-col-$skinColor"></span>
 						</label>
 					</div>
 				</div>
-			</div>
-			<div class="row clearfix align-center">
-				<button class="btn btn-themed waves-effect" onclick="grabScreenshot('auto'); return false">$tstrings['refresh']</button>
+				<div class="col-xs-12 col-sm-5 align-left">
+					<button class="btn btn-themed waves-effect" onclick="grabScreenshot('auto'); return false;">
+						<i class="material-icons" style="top: -1px; vertical-align: middle; left: -1px;">autorenew</i>
+						$tstrings['refresh']
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
