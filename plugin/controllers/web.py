@@ -1297,7 +1297,12 @@ class WebController(BaseController):
 				"message": "The parameter 'end' must be a number"
 			}
 
-		return removeTimer(self.session, getUrlArg(request, "sRef"), begin, end)
+		try:
+			eit = int(request.args[b"eit"][0])
+		except Exception:  # noqa: E722
+			eit = None
+
+		return removeTimer(self.session, getUrlArg(request, "sRef"), begin, end, eit)
 
 	def P_timercleanup(self, request):
 		"""

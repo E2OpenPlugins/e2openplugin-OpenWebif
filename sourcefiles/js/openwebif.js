@@ -627,7 +627,7 @@ function delTimerEvent(sRef,eventId) {
 				var end = result.event.begin + result.event.duration + 60 * result.event.recording_margin_after;
 				var t = decodeURIComponent(result.event.title);
 				if (confirm(tstr_del_timer + ": " + t) === true) {
-					webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end, 
+					webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end + "&eit=" + eventId, 
 						function() { $('.event[data-id='+eventId+'] .timer').remove(); } 
 					);
 				}

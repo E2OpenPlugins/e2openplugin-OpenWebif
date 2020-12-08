@@ -396,11 +396,17 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 	}
 
 
-def removeTimer(session, serviceref, begin, end):
+def removeTimer(session, serviceref, begin, end, eit):
 	serviceref_str = ':'.join(str(serviceref).split(':')[:11])
 	rt = session.nav.RecordTimer
 	for timer in rt.timer_list + rt.processed_timers:
 		needed_ref = ':'.join(timer.service_ref.ref.toString().split(':')[:11]) == serviceref_str
+		if needed_ref and timer.eit and eit and timer.eit == eit:
+			rt.removeEntry(timer)
+			return {
+				"result": True,
+				"message": _("The timer '%s' has been deleted successfully") % timer.name
+			}
 		if needed_ref and int(timer.begin) == begin and int(timer.end) == end:
 			rt.removeEntry(timer)
 			return {
@@ -609,7 +615,7 @@ def tvbrowser(session, request):
 		return addTimer(session, sRef, begin, end, name, description, disabled, justplay, afterevent, location, tags, repeated)
 	elif request.args['command'][0] == "del":
 		del request.args['command'][0]
-		return removeTimer(session, sRef, begin, end)
+		return removeTimer(session, sRef, begin, end, eit=None)
 	elif request.args['command'][0] == "change":
 		del request.args['command'][0]
 		return editTimer(session, sRef, begin, end, name, description, disabled, justplay, afterevent, location, tags, repeated, begin, end, serviceref)
