@@ -57,7 +57,7 @@ config.OpenWebif.xbmcservices = ConfigYesNo(default=False)
 config.OpenWebif.webcache = ConfigSubsection()
 # FIXME: anything better than a ConfigText?
 config.OpenWebif.webcache.collapsedmenus = ConfigText(default="", fixed_size=False)
-config.OpenWebif.webcache.zapstream = ConfigYesNo(default=False)
+config.OpenWebif.webcache.zapstream = ConfigYesNo(default=True)
 config.OpenWebif.webcache.theme = ConfigSelection(default='original', choices=THEMES)
 config.OpenWebif.webcache.moviesort = ConfigSelection(default='name', choices=['name', 'named', 'date', 'dated'])
 config.OpenWebif.webcache.showpicons = ConfigYesNo(default=True)
