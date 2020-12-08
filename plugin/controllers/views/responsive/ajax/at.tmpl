@@ -3,8 +3,28 @@
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 
 <style>
-.choices__list--dropdown .choices__item {display:flex;justify-content:space-between;}
-.choices__list--dropdown .choices__item--selectable {padding-right: 10px;}
+.choices__list--dropdown .choices__item {
+	display: flex;
+	justify-content: space-between;
+}
+
+.choices__list--dropdown .choices__item--selectable {
+	padding-right: 10px;
+}
+
+.choices__list--multiple .choices__item.choices__item--selectable {
+	display: inline-flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: flex-start;
+	align-items: flex-start;
+}
+
+.choices__list--multiple .choices__item.choices__item--selectable small {
+	order: 3;
+	flex: 0 0 100%;
+}
 </style>
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
