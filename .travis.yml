@@ -10,7 +10,7 @@ matrix:
         - sudo npm install -g jshint
         - pip install Cheetah
         - pip install -r requirements.txt
-        - pip install bandit
+        - pip install bandit==1.6.2
       script:
         - python -m compileall -l . -l plugin -l plugin/backport -l plugin/controllers -l plugin/controllers/models
         - cheetah compile -R plugin
