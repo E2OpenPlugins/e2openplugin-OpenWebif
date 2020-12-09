@@ -73,7 +73,7 @@
 					</div>
 					<div id="bookmarks" class="m-t--20" style="display:none;">
 						<div id="content_main2">
-							<table id="configuration" class="table table-striped table-hover" style="width: auto;">
+							<table id="configuration" class="table table-striped table-hover form-group" style="width: auto;">
 								<tr>
 									<th colspan="100%">$tstrings['bookmarks']</th>
 								</tr>
@@ -101,7 +101,9 @@
 								</tr>
 								<tr>
 									<td><!-- TODO: i10n -->
-										<input type="text" name="addbookmarktext" value="" id="addbookmarktext" placeholder="Enter path" required class="form-control inactive">
+										<div class=form-line>
+											<input type="text" name="addbookmarktext" value="" id="addbookmarktext" placeholder="$tstrings['bookmark_path']" required class="form-control inactive">
+										</div>
 									</td>
 									<td>
 										<a href="#" onclick="addBookmark(); return false;">

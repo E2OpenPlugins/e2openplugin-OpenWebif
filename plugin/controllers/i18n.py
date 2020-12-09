@@ -479,7 +479,9 @@ tstrings = {
 
 	'bookmarks': _("Bookmarks"),
 	'bookmark': _("Bookmark"),
+	'new_bookmark': _("New Bookmark:"),
 	'delete_bookmark': _("Delete Bookmark"),
+	'bookmark_path': _("Enter path"),
 
 	'packages': _("Packages"),
 
