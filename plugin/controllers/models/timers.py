@@ -122,6 +122,11 @@ def getTimers(session):
 				always_zap = 1
 			else:
 				always_zap = 0
+		if hasattr(timer, "zapbeforerecord"):
+			if timer.zapbeforerecord:
+				always_zap = 1
+			else:
+				always_zap = 0
 
 		pipzap = -1
 		if hasattr(timer, "pipzap"):
@@ -244,6 +249,8 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 		if always_zap != -1:
 			if hasattr(timer, "always_zap"):
 				timer.always_zap = always_zap == 1
+			if hasattr(timer, "zapbeforerecord"):
+				timer.zapbeforerecord = always_zap == 1
 
 		if hasattr(timer, "autoadjust"):
 			if autoadjust == -1:
@@ -339,6 +346,8 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 			if always_zap != -1:
 				if hasattr(timer, "always_zap"):
 					timer.always_zap = always_zap == 1
+				if hasattr(timer, "zapbeforerecord"):
+					timer.zapbeforerecord = always_zap == 1
 
 			if pipzap != -1:
 				if hasattr(timer, "pipzap"):
