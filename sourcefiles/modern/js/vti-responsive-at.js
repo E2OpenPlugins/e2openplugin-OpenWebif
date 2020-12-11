@@ -278,7 +278,7 @@ function AutoTimerObj (xml) {
 	xml.find("e2service").each(function () {
 		var ref = $(this).find("e2servicereference").text();
 		if (isBQ(ref))
-			_b.push(encodeURIComponent(ref));
+			_b.push(ref);
 		else
 			_c.push(ref);
 	});
