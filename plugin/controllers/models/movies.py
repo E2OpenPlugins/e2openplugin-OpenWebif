@@ -233,7 +233,7 @@ def getMovieList(rargs=None, locations=None):
 					movie['filesize_readable'] = sz
 
 				movieliste.append(movie)
-		del movielist
+#		del movielist
 
 	if locations is None:
 		return {
