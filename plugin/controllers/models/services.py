@@ -1284,3 +1284,47 @@ def saveEpg():
 		"result": True,
 		"message": ""
 	}
+
+
+def getServiceRef(name, searchinBouquetsOnly=False, bRef=None):
+	# TODO Radio
+	# TODO bRef
+
+	sfulllist = []
+	serviceHandler = eServiceCenter.getInstance()
+	if searchinBouquetsOnly:
+		s_type = service_types_tv
+		s_type2 = "bouquets.tv"
+	#		if stype == "radio":
+	#			s_type = service_types_radio
+	#			s_type2 = "bouquets.radio"
+		if bRef is None:
+			services = serviceHandler.list(eServiceReference('%s FROM BOUQUET "%s" ORDER BY bouquet' % (s_type, s_type2)))
+			bouquets = services and services.getContent("SN", True)
+			bouquets = removeHiddenBouquets(bouquets)
+
+		for bouquet in bouquets:
+			serviceslist = serviceHandler.list(eServiceReference(bouquet[0]))
+			sfulllist = serviceslist and serviceslist.getContent("SN", True)
+			for sv in sfulllist:
+				if sv[1] == name:
+					return {
+						"result": True,
+						"sRef": sv[0]
+					}
+
+	else:
+		refstr = '%s ORDER BY name'%(service_types_tv)
+		serviceslist = serviceHandler.list(eServiceReference(refstr))
+		sfulllist = serviceslist and serviceslist.getContent("SN", True)
+		for sv in sfulllist:
+			if sv[1] == name:
+				return {
+					"result": True,
+					"sRef": sv[0]
+				}
+
+	return {
+		"result": True,
+		"sRef": ""
+	}

@@ -24,7 +24,7 @@
 from __future__ import absolute_import, division
 from Components.config import config as comp_config
 from .models.info import getInfo, getCurrentTime, getStatusInfo, getFrontendStatus, testPipStatus
-from .models.services import getCurrentService, getBouquets, getServices, getSubServices, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
+from .models.services import getCurrentService, getBouquets, getServices, getSubServices, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg, getServiceRef
 from .models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from .models.audiotrack import getAudioTracks, setAudioTrack
 from .models.control import zapService, remoteControl, setPowerState, getStandbyState
@@ -2289,6 +2289,29 @@ class WebController(BaseController):
 			return {"result": False}
 		return {"result": True}
 
+	def P_getserviceref(self, request):
+		"""
+		Get the serviceref from name.
+
+
+		.. http:get:: /api/getserviceref
+
+			:query string name: service name to find
+			:query string searchinBouquetsOnly: must be 'true'
+			:query string bRef: define only one single bouquet where to find
+
+		Args:
+			request (twisted.web.server.Request): HTTP request object
+		Returns:
+			HTTP response with headers
+		"""
+		res = self.testMandatoryArguments(request, ["name"])
+		if res:
+			return res
+		name = getUrlArg(request, "name")
+		bRef = getUrlArg(request, "bRef")
+		searchinBouquetsOnly = (getUrlArg(request, "searchinBouquetsOnly") == 'true')
+		return getServiceRef(name, searchinBouquetsOnly, bRef)
 
 class ApiController(WebController):
 	def __init__(self, session, path=""):
