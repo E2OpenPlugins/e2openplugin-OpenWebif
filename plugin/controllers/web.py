@@ -24,7 +24,7 @@
 from __future__ import absolute_import, division
 from Components.config import config as comp_config
 from .models.info import getInfo, getCurrentTime, getStatusInfo, getFrontendStatus, testPipStatus
-from .models.services import getCurrentService, getBouquets, getServices, getSubServices, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg, getServiceRef
+from .models.services import getCurrentService, getBouquets, getServices, getSubServices, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg, getServiceRef, getPicon
 from .models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from .models.audiotrack import getAudioTracks, setAudioTrack
 from .models.control import zapService, remoteControl, setPowerState, getStandbyState
@@ -2312,6 +2312,19 @@ class WebController(BaseController):
 		bRef = getUrlArg(request, "bRef")
 		searchinBouquetsOnly = (getUrlArg(request, "searchinBouquetsOnly") == 'true')
 		return getServiceRef(name, searchinBouquetsOnly, bRef)
+
+	def P_getpicon(self, request):
+		res = self.testMandatoryArguments(request, ["sRef"])
+		if res:
+			return res
+		path = getUrlArg(request, "path")
+		sRef = getUrlArg(request, "sRef")
+		pp = getPicon(sRef, path, False)
+		if pp:
+			return {"result": True, "picon" : pp}
+		else:
+			return {"result": False}
+
 
 class ApiController(WebController):
 	def __init__(self, session, path=""):

@@ -1161,9 +1161,10 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 	return {"events": ret, "result": True, "picons": picons}
 
 
-def getPicon(sname):
+def getPicon(sname, ppath=None, defaultpicon=True):
 
-	pp = PICON_PATH
+	if ppath is None:
+		pp = PICON_PATH
 	if pp is not None:
 		# remove URL part
 		if ("://" in sname) or ("%3a//" in sname) or ("%3A//" in sname):
@@ -1239,7 +1240,10 @@ def getPicon(sname):
 				return "/picon/" + cname + ".png"
 			if len(cname) > 2 and cname.endswith('hd') and fileExists(pp + cname[:-2] + ".png"):
 				return "/picon/" + cname[:-2] + ".png"
-	return "/images/default_picon.png"
+	if defaultpicon:
+		return "/images/default_picon.png"
+	else:
+		return None
 
 
 def getParentalControlList():

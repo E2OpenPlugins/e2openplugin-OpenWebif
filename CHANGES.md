@@ -1,5 +1,8 @@
-## Version 1.4.1
+## Version 1.4.2
 ## (in development)
+* add new api getpicon
+
+## Version 1.4.1
 * add new api getserviceref
 
 ## Version 1.4.0
