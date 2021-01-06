@@ -29,6 +29,8 @@ import six
 from twisted.web import server, http, resource
 from twisted.web.resource import EncodingResourceWrapper
 from twisted.web.server import GzipEncoderFactory
+from twisted.internet import defer
+from twisted.protocols.basic import FileSender
 
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
@@ -88,6 +90,7 @@ class BaseController(resource.Resource):
 			* isCustom: (?)
 			* isGZ: responses shall be GZIP compressed
 			* isMobile: (?) responses shall be optimised for mobile devices
+			* isImage: (?) responses shall image
 		"""
 		resource.Resource.__init__(self)
 
@@ -98,6 +101,7 @@ class BaseController(resource.Resource):
 		self.isCustom = kwargs.get("isCustom", False)
 		self.isGZ = kwargs.get("isGZ", False)
 		self.isMobile = kwargs.get("isMobile", False)
+		self.isImage = kwargs.get("isImage", False)
 
 	def error404(self, request):
 		"""
@@ -145,11 +149,34 @@ class BaseController(resource.Resource):
 		return {}
 
 	def render(self, request):
+
+		@defer.inlineCallbacks
+		def _showImage(data):
+
+			@defer.inlineCallbacks
+			def _setContentDispositionAndSend(file_path):
+				filename = os.path.basename(file_path)
+				request.setHeader('content-disposition', 'filename="%s"' % filename)
+				request.setHeader('content-type', "image/png")
+				f = open(file_path, "rb")
+				yield FileSender().beginFileTransfer(f, request)
+				f.close()
+				defer.returnValue(0)
+
+			if os.path.exists(data):
+				yield _setContentDispositionAndSend(data)
+			else:
+				request.setResponseCode(http.NOT_FOUND)
+
+			request.finish()
+			defer.returnValue(0)
+
 		# cache data
 		withMainTemplate = self.withMainTemplate
 		path = self.path
 		isCustom = self.isCustom
 		isMobile = self.isMobile
+		isImage = self.isImage
 
 		if self.path == "":
 			self.path = "index"
@@ -185,6 +212,8 @@ class BaseController(resource.Resource):
 					# print "[OpenWebif] page '%s' ok (custom)" % request.uri
 				request.write(six.ensure_binary(data))
 				request.finish()
+			elif self.isImage:
+				_showImage(data)
 			elif self.isJson:
 				request.setHeader("content-type", "application/json; charset=utf-8")
 				try:
@@ -236,6 +265,7 @@ class BaseController(resource.Resource):
 		self.path = path
 		self.isCustom = isCustom
 		self.isMobile = isMobile
+		self.isImage = isImage
 
 		return server.NOT_DONE_YET
 

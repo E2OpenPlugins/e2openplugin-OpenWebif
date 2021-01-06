@@ -43,6 +43,7 @@ from .i18n import _
 from .base import BaseController
 from .stream import StreamController
 from .utilities import getUrlArg
+from .defaults import PICON_PATH
 import re
 import six
 
@@ -2319,12 +2320,21 @@ class WebController(BaseController):
 			return res
 		path = getUrlArg(request, "path")
 		sRef = getUrlArg(request, "sRef")
+		json = getUrlArg(request, "json")
 		pp = getPicon(sRef, path, False)
-		if pp:
-			return {"result": True, "picon" : pp}
+		if pp is not None:
+			if path is None:
+				path = PICON_PATH
+			link = pp
+			pp = pp.replace("/picon/", path)
+		if json == 'true':
+			if pp:
+				return {"result": True, "path" : pp, "link" : link}
+			else:
+				return {"result": False}
 		else:
-			return {"result": False}
-
+			self.isImage = True
+			return pp
 
 class ApiController(WebController):
 	def __init__(self, session, path=""):
