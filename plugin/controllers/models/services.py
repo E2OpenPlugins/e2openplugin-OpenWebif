@@ -1161,9 +1161,9 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 	return {"events": ret, "result": True, "picons": picons}
 
 
-def getPicon(sname, ppath=None, defaultpicon=True):
+def getPicon(sname, pp=None, defaultpicon=True):
 
-	if ppath is None:
+	if pp is None:
 		pp = PICON_PATH
 	if pp is not None:
 		# remove URL part
