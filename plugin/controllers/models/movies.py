@@ -440,6 +440,8 @@ def removeMovie(session, sRef, Force=False):
 			"message": "Could not delete Movie '%s' / %s" % (name, message)
 		}
 	else:
+		# EMC reload
+		config.EMC.needsreload.value = True
 		return {
 			"result": True,
 			"message": "The movie '%s' has been deleted successfully" % name
@@ -544,6 +546,8 @@ def _moveMovie(session, sRef, destpath=None, newname=None):
 			"message": "Could not %s recording '%s' Err: '%s'" % (etxt, name, errText)
 		}
 	else:
+		# EMC reload
+		config.EMC.needsreload.value = True
 		return {
 			"result": True,
 			"message": "The recording '%s' has been %sd successfully" % (name, etxt)
