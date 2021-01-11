@@ -2729,12 +2729,10 @@
    top: 6px !important;
  }
  
+ .sweet-alert button,
  .btn:not(.btn-link):not(.btn-circle) {
-   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
-   -webkit-border-radius: 2px;
-   -moz-border-radius: 2px;
-   -ms-border-radius: 2px;
-   border-radius: 2px;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12) !important;
+   border-radius: 2px !important;
    border: none;
    font-size: 14px;
    /* outline: none; */
@@ -3963,11 +3961,8 @@
  }
  
  .sweet-alert button {
+   color: #333;
    font-size: 15px !important;
-   -webkit-border-radius: 0 !important;
-   -moz-border-radius: 0 !important;
-   -ms-border-radius: 0 !important;
-   border-radius: 0 !important;
    padding: 5px 20px !important;
  }
  

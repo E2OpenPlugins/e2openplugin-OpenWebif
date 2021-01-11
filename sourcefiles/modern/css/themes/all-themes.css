@@ -767,6 +767,7 @@
 
 .bg-red,
 [data-theme=red] .color-swatch,
+.theme-red .sweet-alert button.confirm,
 .theme-red .btn-themed,
 .theme-red .choices__list--multiple .choices__item {
   background-color: #f44336 !important;
@@ -859,6 +860,7 @@
 
 .bg-pink,
 [data-theme=pink] .color-swatch,
+.theme-pink .sweet-alert button.confirm,
 .theme-pink .btn-themed,
 .theme-pink .choices__list--multiple .choices__item {
   background-color: #e91e63 !important;
@@ -951,6 +953,7 @@
 
 .bg-purple,
 [data-theme=purple] .color-swatch,
+.theme-purple .sweet-alert button.confirm,
 .theme-purple .btn-themed,
 .theme-purple .choices__list--multiple .choices__item {
   background-color: #9c27b0 !important;
@@ -1043,6 +1046,7 @@
 
 .bg-deep-purple,
 [data-theme=deep-purple] .color-swatch,
+.theme-deep-purple .sweet-alert button.confirm,
 .theme-deep-purple .btn-themed,
 .theme-deep-purple .choices__list--multiple .choices__item {
   background-color: #673ab7 !important;
@@ -1135,6 +1139,7 @@
 
 .bg-indigo,
 [data-theme=indigo] .color-swatch,
+.theme-indigo .sweet-alert button.confirm,
 .theme-indigo .btn-themed,
 .theme-indigo .choices__list--multiple .choices__item {
   background-color: #3f51b5 !important;
@@ -1227,6 +1232,7 @@
 
 .bg-blue,
 [data-theme=blue] .color-swatch,
+.theme-blue .sweet-alert button.confirm,
 .theme-blue .btn-themed,
 .theme-blue .choices__list--multiple .choices__item {
   background-color: #2196f3 !important;
@@ -1319,6 +1325,7 @@
 
 .bg-light-blue,
 [data-theme=light-blue] .color-swatch,
+.theme-light-blue .sweet-alert button.confirm,
 .theme-light-blue .btn-themed,
 .theme-light-blue .choices__list--multiple .choices__item {
   background-color: #03a9f4 !important;
@@ -1411,6 +1418,7 @@
 
 .bg-cyan,
 [data-theme=cyan] .color-swatch,
+.theme-cyan .sweet-alert button.confirm,
 .theme-cyan .btn-themed,
 .theme-cyan .choices__list--multiple .choices__item {
   background-color: #00bcd4 !important;
@@ -1503,6 +1511,7 @@
 
 .bg-teal,
 [data-theme=teal] .color-swatch,
+.theme-teal .sweet-alert button.confirm,
 .theme-teal .btn-themed,
 .theme-teal .choices__list--multiple .choices__item {
   background-color: #009688 !important;
@@ -1687,6 +1696,7 @@
 
 .bg-light-green,
 [data-theme=light-green] .color-swatch,
+.theme-light-green .sweet-alert button.confirm,
 .theme-light-green .btn-themed,
 .theme-light-green .choices__list--multiple .choices__item {
   background-color: #8bc34a !important;
@@ -1779,6 +1789,7 @@
 
 .bg-lime,
 [data-theme=lime] .color-swatch,
+.theme-lime .sweet-alert button.confirm,
 .theme-lime .btn-themed,
 .theme-lime .choices__list--multiple .choices__item {
   background-color: #cddc39 !important;
@@ -1872,6 +1883,7 @@
 
 .bg-yellow,
 [data-theme=yellow] .color-swatch,
+.theme-yellow .sweet-alert button.confirm,
 .theme-yellow .btn-themed,
 .theme-yellow .choices__list--multiple .choices__item {
   background-color: #ffe821 !important;
@@ -1964,6 +1976,7 @@
 
 .bg-amber,
 [data-theme=amber] .color-swatch,
+.theme-amber .sweet-alert button.confirm,
 .theme-amber .btn-themed,
 .theme-amber .choices__list--multiple .choices__item {
   background-color: #ffc107 !important;
@@ -2056,6 +2069,7 @@
 
 .bg-orange,
 [data-theme=orange] .color-swatch,
+.theme-orange .sweet-alert button.confirm,
 .theme-orange .btn-themed,
 .theme-orange .choices__list--multiple .choices__item {
   background-color: #ff9800 !important;
@@ -2148,6 +2162,7 @@
 
 .bg-deep-orange,
 [data-theme=deep-orange] .color-swatch,
+.theme-deep-orange .sweet-alert button.confirm,
 .theme-deep-orange .btn-themed,
 .theme-deep-orange .choices__list--multiple .choices__item {
   background-color: #ff5722 !important;
@@ -2240,6 +2255,7 @@
 
 .bg-brown,
 [data-theme=brown] .color-swatch,
+.theme-brown .sweet-alert button.confirm,
 .theme-brown .btn-themed,
 .theme-brown .choices__list--multiple .choices__item {
   background-color: #795548 !important;
@@ -2332,6 +2348,7 @@
 
 .bg-grey,
 [data-theme=grey] .color-swatch,
+.theme-grey .sweet-alert button.confirm,
 .theme-grey .btn-themed,
 .theme-grey .choices__list--multiple .choices__item {
   background-color: #9e9e9e !important;
@@ -2424,6 +2441,7 @@
 
 .bg-blue-grey,
 [data-theme=blue-grey] .color-swatch,
+.theme-blue-grey .sweet-alert button.confirm,
 .theme-blue-grey .btn-themed,
 .theme-blue-grey .choices__list--multiple .choices__item {
   background-color: #607d8b !important;
@@ -2516,6 +2534,7 @@
 
 .bg-grey-darken-4,
 [data-theme=grey-darken-4] .color-swatch,
+.theme-grey-darken-4 .sweet-alert button.confirm,
 .theme-grey-darken-4 .btn-themed,
 .theme-grey-darken-4 .choices__list--multiple .choices__item {
   background-color: #212121 !important;
@@ -2613,6 +2632,7 @@
 
 .bg-black,
 [data-theme=black] .color-swatch,
+.theme-black .sweet-alert button.confirm,
 .theme-black .btn-themed,
 .theme-black .choices__list--multiple .choices__item {
   background-color: #000 !important;
@@ -2811,14 +2831,17 @@ body.themed--city-lights {
   border-color: #b2b2b2;
 }
 
+.themed--city-lights .sweet-alert button.cancel,
 .themed--city-lights .btn-default {
   color: #b2b2b2;
 }
 
+.themed--city-lights .sweet-alert button.cancel:hover,
 .themed--city-lights .btn-default:hover {
   color: #f1f1f1;
 }
 
+.sweet-alert button.cancel,
 .themed--city-lights .btn-default,
 .btn-default:hover,
 .btn-default:active,
@@ -2826,6 +2849,7 @@ body.themed--city-lights {
   background: transparent !important;
 }
 
+.themed--city-lights .sweet-alert button.cancel.focus,
 .themed--city-lights .btn-default.focus,
 .btn-default:focus {
   color: #b2b2b2;
