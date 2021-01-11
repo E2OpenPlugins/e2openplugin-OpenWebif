@@ -5,16 +5,112 @@
 #set $piconCssClass = ''
 
 <style>
-#if $showPicons
-	#if $showPiconBackground
-		#set $piconCssClass = 'picon--with-background'
-		/* dirty workaround for jQuery-populated lists */
-		.bqe__picon { background-color: #bababa; box-shadow: inset -8px 16px 26px #fff; }
-	#end if
-#else
-		.bqe__picon { display:none; }
+#if $showPiconBackground
+	#set $piconCssClass = 'picon--with-background'
+	/* dirty workaround for jQuery-populated lists */
+	.bqe__picon { background-color: #bababa; box-shadow: inset -8px 16px 26px #fff; }
 #end if
+
+	button.theme-link-col-fixed.pull-right {
+		margin: 0 0 0 2px;
+		padding: 0px 2px;
+		background: transparent;
+		border: none;
+		color: inherit;
+	}
+
+	#channels .material-icons,
+	#bqs .material-icons {
+		font-size: 20px;
+	}
+
+	.item--is-marker {
+		filter: brightness(0.7);
+	}
+
+	.item--is-marker .bqe__picon {
+		display: none;
+	}
+
+	[data-satprov="satellite"] .icon--satellite,
+	[data-satprov="provider"] .icon--provider {
+		display: inherit !important;
+	}
 </style>
+
+<template id="provider-item-template">
+	<li>
+		<span class="icon">
+			<i class="hidden icon--satellite material-icons material-icons-centered">bubble_chart</i>
+			<i class="hidden icon--provider material-icons material-icons-centered">folder_open</i>
+		</span>
+		<slot name="provider-name"></slot>
+	</li>
+</template>
+
+<template id="channels-item-template">
+	<li>
+#if $showPicons
+		<span class="bqe__picon">
+			<img loading="lazy">
+		</span>
+#end if
+		<slot name="channel-name"></slot>
+		<!-- css floating reverses the following elements' order -->
+		<button type="button" name="zap" class="theme-link-col-fixed pull-right" title="$tstrings['zap']">
+			<i class="icon material-icons material-icons-centered">settings_remote</i>
+		</button>
+		<span class="pull-right">
+			<span class="item__metadata m-r-5"></span>
+			<span class="dd-icon-selected pull-left">
+				<i class="material-icons material-icons-centered">done</i>
+			</span>
+		</span>
+	</li>
+</template>
+
+<template id="bql-item-template">
+	<li>
+		<span class="handle dd-icon" title="Hold to drag"><!-- TODO: i10n -->
+			<i class="material-icons material-icons-centered">drag_indicator</i>
+		</span>
+		<slot name="bouquet-name"></slot>
+		<a href="#playlistUrl" class="pull-right link__playlist" style="color: inherit" target="playlist">
+			<i class="material-icons material-icons-centered">playlist_play</i>
+		</a>
+	</li>
+</template>
+
+<template id="bqs-item-template">
+	<li class="bqe__item">
+		<span class="handle dd-icon" title="Hold to drag"><!-- TODO: i10n -->
+			<i class="material-icons material-icons-centered">drag_indicator</i>
+		</span>
+#if $showPicons
+		<span class="bqe__picon">
+			<img loading="lazy">
+		</span>
+#end if
+		<slot name="channel-name"></slot>
+		<!-- css floating reverses the following elements' order -->
+		<span class="item__marker hidden m-l-40 m-r-10 pull-right"></span>
+		<button type="button" name="stream" class="hidden theme-link-col-fixed pull-right" title="$tstrings['stream']">
+			<i class="icon material-icons material-icons-centered">ondemand_video</i>
+		</button>
+		<a href="#iptvUrl" class="hidden link__iptv-url theme-link-col-fixed pull-right" target="extlink">
+			<i class="material-icons material-icons-centered">phonelink</i>
+		</a>
+		<button type="button" name="zap" class="hidden theme-link-col-fixed pull-right" title="$tstrings['zap']">
+			<i class="icon material-icons material-icons-centered">settings_remote</i>
+		</button>
+		<span class="hidden item__protection pull-right" title="$tstrings['channel_is_protected']">
+			<i class="material-icons material-icons-centered">lock_outline</i>
+		</span>
+		<span class="dd-icon-selected pull-right">
+			<i class="material-icons material-icons-centered">done</i>
+		</span>
+	</li>
+</template>
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	<div class="card">
@@ -38,34 +134,43 @@
 		</div>
 		<div class="body" id="bqemain">
 			<div class="row clearfix">
+			 <form name="listTypeSelector">
 				<div class="col-xs-6 align-center">
 					<span class="bqe__option">
-						<input type="radio" name="tb2" id="toolbar-choose-channels" class="radio-vti theme-radio-col radio-col-$skinColor" checked="checked">
-						<label for="toolbar-choose-channels">$tstrings['all_channels']</label>
-					</span>
-					<span class="bqe__option">
-						<input type="radio" name="tb2" id="toolbar-choose-satellites" class="radio-vti theme-radio-col radio-col-$skinColor">
+						<input type="radio" name="cType" value="2" id="toolbar-choose-satellites" class="radio-vti theme-radio-col radio-col-$skinColor" checked>
 						<label for="toolbar-choose-satellites">$tstrings['satellites']</label>
 					</span>
 					<span class="bqe__option">
-						<input type="radio" name="tb2" id="toolbar-choose-providers" class="radio-vti theme-radio-col radio-col-$skinColor">
+						<input type="radio" name="cType" value="1" id="toolbar-choose-providers" class="radio-vti theme-radio-col radio-col-$skinColor">
 						<label for="toolbar-choose-providers">$tstrings['providers']</label>
+					</span>
+					<span class="bqe__option">
+						<input type="radio" name="cType" value="3" id="toolbar-choose-channels" class="radio-vti theme-radio-col radio-col-$skinColor">
+						<label for="toolbar-choose-channels">$tstrings['all_channels']</label>
 					</span>
 				</div>
 				<div class="col-xs-6 align-center">
 					<span class="bqe__option">
-						<input type="radio" name="tb1" id="toolbar-choose-tv" class="radio-vti theme-radio-col radio-col-$skinColor" checked="checked">
+						<input type="radio" name="tvRadioMode" value="0" id="toolbar-choose-tv" class="radio-vti theme-radio-col radio-col-$skinColor" checked>
 						<label for="toolbar-choose-tv">$tstrings['television']</label>
 					</span>
 					<span class="bqe__option">
-						<input type="radio" name="tb1" id="toolbar-choose-radio" class="radio-vti theme-radio-col radio-col-$skinColor">
+						<input type="radio" name="tvRadioMode" value="1" id="toolbar-choose-radio" class="radio-vti theme-radio-col radio-col-$skinColor">
 						<label for="toolbar-choose-radio">$tstrings['radio']</label>
 					</span>
+					<span class="bqe__option">
+						<input type="radio" name="tvRadioMode" value="-1" id="toolbar-choose-any" class="radio-vti theme-radio-col radio-col-$skinColor">
+						<label for="toolbar-choose-any">Any</label><!-- TODO: i10n -->
+					</span>
 				</div>
+			 </form>
 			</div>
 			<div class="row clearfix">
 				<section class="col-xs-12 col-md-6">
-					<header>$tstrings['satellites']/$tstrings['providers'] <span id="count-sat-prov"></span></header>
+					<header>
+						$tstrings['satellites']/$tstrings['providers']
+						<span id="provider__count"></span>
+					</header>
 					<div class="bqe__list row clearfix">
 						<div class="col-xs-12 p-r-5">
 							<ol id="provider" class="selectable">
@@ -80,12 +185,15 @@
 					</div>
 					<div class="row clearfix">
 						<div class="col-xs-12 m-t-10 align-right">
-							<button class="bqe__button btn btn-themed waves-effect" id="btn-provider-add">$tstrings['bqe_add_provider_as_bouquet']</button>
+							<button type="button" name="createBqFromProvider" class="bqe__button btn btn-themed waves-effect" disabled>$tstrings['bqe_add_provider_as_bouquet']</button>
 						</div>
 					</div>
 				</section>
 				<section class="col-xs-12 col-md-6">
-					<header>$tstrings['channels'] <span id="count-sat-prov-channels"></span></header>
+					<header>
+						$tstrings['channels']
+						<span id="channels__count"></span>
+					</header>
 					<div class="bqe__list row clearfix">
 						<div class="col-xs-12 p-r-5">
 							<ol id="channels" class="selectable">
@@ -102,20 +210,23 @@
 						<div class="col-xs-12 col-sm-6 m-t-10">
 							<div class="form-group">
 								<div class="form-line m-l-10">
-									<input type="search" name="searchch" id="searchch" class="form-control" placeholder="$tstrings['bqe_search_enhanced']">
+									<input type="search" name="searchChannelsQuery" class="form-control" placeholder="$tstrings['bqe_search_enhanced']">
 								</div>
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 m-t-10 align-right">
-							<button class="bqe__button btn btn-themed waves-effect" id="btn-channel-add">$tstrings['bqe_add_channel']</button>
-							<!-- button class="bqe__button btn btn-themed waves-effect" id="btn-alternative-add">$tstrings['bqe_add_alternative']</button -->
+							<button type="button" name="addChannelToBq" class="bqe__button btn btn-themed waves-effect" disabled>$tstrings['bqe_add_channel']</button>
+							<!-- button type="button" name="addAlternative" class="bqe__button btn btn-themed waves-effect">$tstrings['bqe_add_alternative']</button -->
 						</div>
 					</div>
 				</section>
 			</div>
 			<div class="row clearfix">
 				<section class="col-xs-12 col-md-6">
-					<header>$tstrings['bouquets'] <span id="count-bouquets"></span></header>
+					<header>
+						$tstrings['bouquets']
+						<span id="bql__count"></span>
+					</header>
 					<div class="bqe__list row clearfix">
 						<div class="col-xs-12 p-r-5">
 							<ol id="bql" class="selectable">
@@ -130,14 +241,17 @@
 					</div>
 					<div class="row clearfix align-center">
 						<div class="col-xs-12 m-t-10">
-								<button class="bqe__button btn btn-themed waves-effect" id="btn-bouquet-add">$tstrings['bqe_add_bq']</button>
-								<button class="bqe__button btn btn-themed waves-effect" id="btn-bouquet-rename">$tstrings['bqe_rename_bq']</button>
-								<button class="bqe__button btn btn-themed waves-effect" id="btn-bouquet-delete">$tstrings['bqe_delete_bq']</button>
+							<button type="button" name="newBq" class="bqe__button btn btn-themed waves-effect">$tstrings['bqe_add_bq']</button>
+							<button type="button" name="renameBq" class="bqe__button btn btn-themed waves-effect">$tstrings['bqe_rename_bq']</button>
+							<button type="button" name="deleteBq" class="bqe__button btn btn-themed waves-effect">$tstrings['bqe_delete_bq']</button>
 						</div>
 					</div>
 				</section>
 				<section class="col-xs-12 col-md-6">
-					<header>$tstrings['channels'] <span id="count-bouquet-channels"></span></header>
+					<header>
+						$tstrings['channels']
+						<span id="bqs__count"></span>
+					</header>
 					<div class="bqe__list row clearfix">
 						<div class="col-xs-12 p-r-5">
 							<ol id="bqs" class="selectable">
@@ -152,11 +266,11 @@
 					</div>
 					<div class="row clearfix align-center">
 						<div class="col-xs-12 m-t-10">
-								<button class="bqe__button btn btn-themed waves-effect" id="btn-url-add">$tstrings['bqe_add_url']</button>
-								<button class="bqe__button btn btn-themed waves-effect" id="btn-marker-add">$tstrings['bqe_add_marker']</button>
-								<!-- <button class="bqe__button btn btn-themed waves-effect" id="btn-spacer-add">$tstrings['bqe_add_spacer']</button> -->
-								<button class="bqe__button btn btn-themed waves-effect" id="btn-marker-group-rename">$tstrings['bqe_rename']</button>
-								<button class="bqe__button btn btn-themed waves-effect" id="btn-channel-delete">$tstrings['delete']</button>
+							<button type="button" name="addUrl" class="bqe__button btn btn-themed waves-effect">$tstrings['bqe_add_url']</button>
+							<button type="button" name="addMarker" class="bqe__button btn btn-themed waves-effect">$tstrings['bqe_add_marker']</button>
+							<button type="button" name="addSpacer" class="bqe__button btn btn-themed waves-effect">$tstrings['bqe_add_spacer']</button>
+							<button type="button" name="renameService" class="bqe__button btn btn-themed waves-effect" disabled>$tstrings['bqe_rename']</button>
+							<button type="button" name="removeService" class="bqe__button btn btn-themed waves-effect" disabled>$tstrings['delete']</button>
 						</div>
 					</div>
 				</section>
@@ -165,22 +279,22 @@
 	</div>
 </div>
 
-		<!-- <div id="statuscont" style="display:none">
-			<div id="statusbox" class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
-				<p>
-					<span id="statusicon" class="ui-icon ui-icon-alert" style="margin-right: .3em;"></span> 
-					<span id="statustext"></span>
-				</p>
-			</div>
-		</div> -->
-		<form id="uploadrestore" style="display:none" action"uploadrestore"="" method="post" enctype="multipart/form-data" encoding="multipart/form-data">
-			<input type="file" name="rfile" id="rfile">
-		</form>
+<!-- div id="statuscont" style="display:none">
+	<div id="statusbox" class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+		<p>
+			<span id="statusicon" class="ui-icon ui-icon-alert" style="margin-right: .3em;"></span> 
+			<span id="statustext"></span>
+		</p>
+	</div>
+</div -->
 
-<script src="/modern/js/bqe-app.min.js"></script>
+<form name="uploadrestore" action="/bouqueteditor/uploadrestore" method="post" class="hidden" enctype="multipart/form-data" encoding="multipart/form-data">
+	<input type="file" name="rfile" id="rfile">
+</form>
+
+<script src="/modern/js/bqe-app.js"></script>
 <script>
 	jQuery.AdminBSB.input.activate();
-	jQuery.AdminBSB.select.activate();
 </script>
 
 #end filter

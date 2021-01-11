@@ -32,7 +32,8 @@
     "preinstall": "npx npm-force-resolutions",
     "uglify": "npx glob-uglifyjs",
     "build-entry": "npx parcel build ./entry-app.js --out-dir ../../plugin/public/modern/js/",
-    "build-js": "npm run-script uglify && npm run-script build-entry",
+    "build-bqe": "npx parcel build ./bqe-app.js --out-dir ../../plugin/public/modern/js/",
+    "build-js": "npm run-script uglify; npm run-script build-entry; npm run-script build-bqe",
     "build-css": "npx ./_utils/mincss.js -o '../../plugin/public/modern/' './css/**/*.css'",
     "test": "echo 'Error: no test specified!' && exit 1"
   },
