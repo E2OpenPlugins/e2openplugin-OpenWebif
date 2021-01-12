@@ -591,6 +591,7 @@
             closeOnConfirm: true,
             inputValue: '',
             input: 'text',
+            animation: 'none',
           },
           (newName) => {
             if (!newName || !newName.length) {
@@ -625,6 +626,7 @@
             closeOnConfirm: true,
             inputValue: sName,
             input: 'text',
+            animation: 'none',
           },
           (newName) => {
             if (!newName || !newName.length || newName === sName) {
@@ -661,6 +663,7 @@
             cancelButtonText: tstrings_no_cancel,
             closeOnConfirm: true,
             closeOnCancel: true,
+            animation: 'none',
           },
           (userConfirmed) => {
             if (userConfirmed) {
@@ -780,6 +783,7 @@
             cancelButtonText: tstrings_no_cancel,
             closeOnConfirm: true,
             closeOnCancel: true,
+            animation: 'none',
           },
           (userConfirmed) => {
             if (userConfirmed) {
@@ -812,6 +816,7 @@
             animation: 'fade',
             inputValue: '',
             input: 'text',
+            animation: 'none',
           },
           (newUrl) => {
             if (!newUrl) {
@@ -823,8 +828,9 @@
                 type: 'input',
                 showCancelButton: true,
                 closeOnConfirm: true,
-                inputValue: '',
+                inputValue: newUrl,
                 input: 'text',
+                animation: 'none',
               },
               (newName) => {
                 if (!newUrl) {
@@ -885,6 +891,7 @@
             closeOnConfirm: true,
             inputValue: '',
             input: 'text',
+            animation: 'none',
           },
           (newName) => {
             if (!newName || !newName.length) {
@@ -938,6 +945,7 @@
             closeOnConfirm: true,
             inputValue: sName,
             input: 'text',
+            animation: 'none',
           },
           (newName) => {
             if (!newName || newName == sName) {
@@ -1016,6 +1024,7 @@
             closeOnConfirm: true,
             inputValue: 'bouquets_backup',
             input: 'text',
+            animation: 'none',
           },
           (fileName) => {
             if (!fileName) {
@@ -1057,6 +1066,7 @@
             cancelButtonText: tstrings_no_cancel,
             closeOnConfirm: true,
             closeOnCancel: true,
+            animation: 'none',
           },
           (userConfirmed) => {
             if (userConfirmed) {
