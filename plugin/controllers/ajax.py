@@ -363,6 +363,7 @@ class AjaxController(BaseController):
 		return ret
 
 	def P_webtv(self, request):
+		streaming_port = int(config.OpenWebif.streamport.value)
 		if config.OpenWebif.auth_for_streaming.value:
 			session = GetSession()
 			if session.GetAuth(request) is not None:
@@ -383,4 +384,4 @@ class AjaxController(BaseController):
 					transcoder_port = int(config.OpenWebif.streamport.value)
 			except Exception:
 				transcoder_port = 0
-		return {"transcoder_port": transcoder_port, "vxgenabled": vxgenabled, "auth": auth}
+		return {"transcoder_port": transcoder_port, "vxgenabled": vxgenabled, "auth": auth, "streaming_port": streaming_port}
