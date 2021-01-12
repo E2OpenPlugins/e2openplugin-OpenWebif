@@ -57,7 +57,7 @@ config.OpenWebif.xbmcservices = ConfigYesNo(default=False)
 config.OpenWebif.webcache = ConfigSubsection()
 # FIXME: anything better than a ConfigText?
 config.OpenWebif.webcache.collapsedmenus = ConfigText(default="", fixed_size=False)
-config.OpenWebif.webcache.zapstream = ConfigYesNo(default=False)
+config.OpenWebif.webcache.zapstream = ConfigYesNo(default=True)
 config.OpenWebif.webcache.theme = ConfigSelection(default='original', choices=THEMES)
 config.OpenWebif.webcache.moviesort = ConfigSelection(default='name', choices=['name', 'named', 'date', 'dated'])
 config.OpenWebif.webcache.showpicons = ConfigYesNo(default=True)
@@ -159,6 +159,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 				self.list.append(getConfigListEntry(_("Without auth only local access is allowed!"), config.OpenWebif.local_access_only))
 				self.list.append(getConfigListEntry(_("Enable access from VPNs"), config.OpenWebif.vpn_access))
 			self.list.append(getConfigListEntry(_("Enable Parental Control"), config.OpenWebif.parentalenabled))
+			self.list.append(getConfigListEntry(_("Streaming port"), config.OpenWebif.streamport))
 			self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
 			if imagedistro in ("VTi-Team Image"):
 				self.list.append(getConfigListEntry(_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))

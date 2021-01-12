@@ -18,7 +18,7 @@ var PlayerObj = function () {
 	var hasvlc=false;
 	var hasvxg=false;
 	return {
-		setup: function (vxg,auth) {
+		setup: function (vxg,auth,streamingport) {
 			self = this;
 			self.auth = auth;
 			self.hasvlc = self.hasvxg = false;
@@ -342,7 +342,7 @@ var PlayerObj = function () {
 				else
 				{
 					if (live) {
-						url = 'http://' + self.auth + window.location.hostname + ':8001/' + sref;
+						url = 'http://' + self.auth + window.location.hostname + ':' + streamingport + '/' + sref;
 					} else {
 						baseurl = window.location.protocol + '//' + self.auth + window.location.hostname;
 						if (window.location.port != "")

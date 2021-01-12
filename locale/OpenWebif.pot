@@ -1775,6 +1775,10 @@ msgstr ""
 msgid "Stream Clients"
 msgstr ""
 
+#: ../plugin/plugin.py:162
+msgid "Streaming port"
+msgstr ""
+
 #: ../plugin/controllers/i18n.py:43
 msgid "Su"
 msgstr ""
