@@ -432,7 +432,14 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	var tagOpts = [];
 	try {
 		tagOpts = tagList.map(function (item) {
-			return {
+			var allTags = autoTimerOptions['tags']['_currentState']['choices'];
+			var isFound = false;
+			allTags.forEach(function (tg) {
+				if (item === tg.value) {
+					isFound = true;
+				}
+			});
+			return (isFound) ? false : {
 				value: item,
 				label: item,
 			}
@@ -458,7 +465,8 @@ AutoTimerObj.prototype.UpdateUI = function(){
     }
   });
 	autoTimerOptions['channels'].highlightAll()
-                              .removeHighlightedItems().setChoices(
+                              .removeHighlightedItems()
+                              .setChoices(
                                 channelsSelected,
                                 'value',
                                 'label',
@@ -474,13 +482,22 @@ AutoTimerObj.prototype.UpdateUI = function(){
                               });
 
   var bouquetsSelected = this.Bouquets.map(function (item) {
-    return {
+    var allBouquets = autoTimerOptions['bouquets']['_currentState']['choices'];
+    var isFound = false;
+    allBouquets.forEach(function (bq) {
+      if (item === bq.value) {
+        isFound = true;
+      }
+    });
+    return (isFound) ? false : {
       value: item,
       label: item
-    }
+    };
   });
+
   autoTimerOptions['bouquets'].highlightAll()
-                              .removeHighlightedItems().setChoices(
+                              .removeHighlightedItems()
+                              .setChoices(
                                 bouquetsSelected,
                                 'value',
                                 'label',
@@ -558,7 +575,7 @@ function saveAT()
 		CurrentAT.afterevent = $('#afterevent').val();
 		CurrentAT.aftereventfrom = $('#aefrom').val();
 		CurrentAT.aftereventto = $('#aeto').val();
-		CurrentAT.Bouquets = $("#bouquets").val();
+    CurrentAT.Bouquets = $("#bouquets").val();
 		CurrentAT.Channels = $("#channels").val();
 		var _f = [];
 		for (i = 0; i < $('#filterlist tr').length; i++) {
