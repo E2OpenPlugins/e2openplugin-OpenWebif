@@ -32,7 +32,7 @@ from Tools.FuzzyDate import FuzzyTime
 from Components.config import config
 from Components.MovieList import MovieList
 from Tools.Directories import fileExists
-from Screens import MovieSelection
+from Screens.MovieSelection import defaultMoviePath, moveServiceFiles
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg2, PY3
 
@@ -91,7 +91,7 @@ def getMovieList(rargs=None, locations=None):
 		fields = getUrlArg2(rargs, "fields")
 
 	if directory is None:
-		directory = MovieSelection.defaultMoviePath()
+		directory = defaultMoviePath()
 	else:
 		if not PY3:
 			try:
@@ -390,7 +390,7 @@ def removeMovie(session, sRef, Force=False):
 				try:
 					import Tools.Trashcan
 					trash = Tools.Trashcan.createTrashFolder(srcpath)
-					MovieSelection.moveServiceFiles(service.ref, trash)
+					moveServiceFiles(service.ref, trash)
 					result = True
 					message = "The recording '%s' has been successfully moved to trashcan" % name
 				except ImportError:
