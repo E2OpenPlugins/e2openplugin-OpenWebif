@@ -30,6 +30,7 @@ from enigma import eServiceReference, iServiceInformation, eServiceCenter
 from ServiceReference import ServiceReference
 from Tools.FuzzyDate import FuzzyTime
 from Components.config import config
+#from .OWFMovieList import MovieList
 from Components.MovieList import MovieList
 from Tools.Directories import fileExists
 from Screens.MovieSelection import defaultMoviePath, moveServiceFiles
