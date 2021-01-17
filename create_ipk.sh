@@ -9,6 +9,7 @@ VER=$(head -n 1 CHANGES.md | grep -i '## Version' | sed 's/^## Version \([[:digi
 # '%cd': committer date (format respects --date= option); '%t': abbreviated tree hash
 GITVER=e2openpluginsgit$(git log -1 --format="%cd" --date="format:%Y%m%d")
 PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-latest_all.ipk
+PKGNOVXG=${D}/enigma2-plugin-extensions-openwebif_${VER}-latest_all_novxg.ipk
 popd &> /dev/null
 
 mkdir -p ${P}
@@ -44,6 +45,19 @@ echo "2.0" > ${B}/debian-binary
 cd ${B}
 ls -la
 ar -r ${PKG} ./debian-binary ./data.tar.gz ./control.tar.gz 
+
+rm -rf ${B}
+mkdir -p ${B}
+
+rm -rf ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/vxg/
+
+tar -C ${P} -czf ${B}/data.tar.gz . --exclude=CONTROL
+tar -C ${P}/CONTROL -czf ${B}/control.tar.gz .
+echo "2.0" > ${B}/debian-binary
+
+cd ${B}
+ls -la
+ar -r ${PKGNOVXG} ./debian-binary ./data.tar.gz ./control.tar.gz 
 cd -
 
 rm -rf ${P}
