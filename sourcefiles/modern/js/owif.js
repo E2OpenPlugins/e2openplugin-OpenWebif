@@ -115,7 +115,9 @@ class API {
 }
 
 class GUI { 
-  constructor() {}
+  constructor() {
+    this.initEventHandlers();
+  }
 
   /* TODO: i10n */
   choicesConfig = {
@@ -136,6 +138,16 @@ class GUI {
       callbackOnInit: null,
     */
   };
+
+  initEventHandlers() {
+    const self = this;
+
+    document.querySelectorAll('input[name="skinpref"]').forEach((input) => {
+      input.onchange = () => {
+        self.skinPref = event.target.value;
+      }
+    });
+  }
   
   fullscreen(state, el) {
     if (state === true) {
@@ -151,7 +163,23 @@ class GUI {
         debugMsg('GUI:fullscreen toggled');
       });
     }
-  } 
+  }
+
+  get skinPref() {
+    console.log(document.body.dataset.skinpref);
+    return document.body.dataset.skinpref || '';
+  }
+
+  set skinPref(newValue) {
+    const self = this;
+    const cssClassPrefix = 'skin--';
+    const oldValue = self.skinPref;
+console.log(oldValue, newValue);
+    fetch(`/api/setskincolor?skincolor=${newValue}`);
+
+    document.body.classList.replace(`${cssClassPrefix}${oldValue}`, `${cssClassPrefix}${newValue}`);
+    document.body.dataset.skinpref = newValue;
+  }
 
   populateAutoTimerOptions() {
     const populatedChoices = {};

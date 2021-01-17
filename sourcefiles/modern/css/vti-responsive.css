@@ -126,12 +126,8 @@ a:hover {
   user-select: none;
 }
 
-.theme-link-col-fixed {
+.link--not-skinned {
   color: #777;
-}
-
-.vti-vspace-10 {
-  height: 10px;
 }
 
 .vti-vspace-20 {

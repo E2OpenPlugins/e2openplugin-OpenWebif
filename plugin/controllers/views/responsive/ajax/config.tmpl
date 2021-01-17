@@ -1,5 +1,4 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 
 #def select($config)
 
@@ -31,12 +30,12 @@
 		#if $config.data.current
 				<label>
 					<input type="checkbox" name="$config.path" id="$config.path" checked="checked" onclick="saveConfig('$config.path', this.checked);">
-					<span class='lever theme-switch-col switch-col-$skinColor'></span>
+					<span class='lever switch--skinned'></span>
 				</label>
 		#else
 				<label>
 					<input type="checkbox" name="$config.path" id="$config.path" onclick="saveConfig('$config.path', this.checked);">
-					<span class='lever theme-switch-col switch-col-$skinColor'></span>
+					<span class='lever switch--skinned'></span>
 				</label>
 		#end if
 			</div>
@@ -53,9 +52,9 @@
 	<div class="col-xs-7">
 	#for $choice in $config.data.choices
 		#if $choice in $config.data.current
-			<input type="checkbox" name="$config.path" id="$config.path" class="form-control theme-chk-col chk-col-$skinColor" onclick="saveConfig('$config.path', this.checked);" checked="checked">
+			<input type="checkbox" name="$config.path" id="$config.path" class="form-control chk--skinned" onclick="saveConfig('$config.path', this.checked);" checked="checked">
 		#else
-			<input type="checkbox" name="$config.path" id="$config.path" class="form-control theme-chk-col chk-col-$skinColor" onclick="saveConfig('$config.path', this.checked);">
+			<input type="checkbox" name="$config.path" id="$config.path" class="form-control chk--skinned" onclick="saveConfig('$config.path', this.checked);">
 		#end if
 			<label for="$config.path">$choice</label>
 	#end for

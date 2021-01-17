@@ -1,5 +1,4 @@
 #from six.moves.urllib.parse import quote
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 
 <!-- TODO: move style to css file -->
 <style>
@@ -15,7 +14,7 @@
 	}
 </style>
 
-<ul class="nav nav-tabs theme-tab-col tab-col-$skinColor">
+<ul class="nav nav-tabs tab--skinned">
 #for $provider in $providers
 	<li><a href="#tab" data-toggle="tab" onclick="load_subcontent('ajax/channels?id=$quote($provider[0])&stype=$stype'); return false;"><i class="material-icons material-icons-centered">folder_open</i>$provider[1]</a></li>
 #end for

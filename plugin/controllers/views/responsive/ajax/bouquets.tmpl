@@ -1,12 +1,12 @@
 #from six.moves.urllib.parse import quote
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 
 #set $tabIcon = 'tv'
 #if $stype == 'radio'
 	#set $tabIcon = 'radio'
 #end if
 
+<!-- TODO: move styles to css file -->
 <style>
 	.sticky-top {
     position: sticky;
@@ -16,7 +16,7 @@
     box-shadow: 0px 0px 10px 10px #fff;
 	}
 
-	.themed--city-lights .sticky-top {
+	.theme--city-lights .sticky-top {
     background: #282c37;
     box-shadow: 0px 0px 10px 10px #282c37;
 	}
@@ -30,7 +30,7 @@
 	</select>
 </div>
 <div class="hidden-sm hidden-xs sticky-top">
-	<ul class="nav nav-tabs theme-tab-col tab-col-$skinColor">
+	<ul class="nav nav-tabs tab--skinned">
 	#set $f="id='firstBq'"
 	#for $bouquet in $bouquets
 		<li>

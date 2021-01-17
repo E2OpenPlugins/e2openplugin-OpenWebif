@@ -1,7 +1,7 @@
 #from six.moves.urllib.parse import quote
 #from time import localtime, strftime
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, MinMovieList
+#from Plugins.Extensions.OpenWebif.vtiaddon import MinMovieList
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	<div class="card">
@@ -38,7 +38,7 @@
 #for $dir in $dirs
 	#set $path += '/' + $dir
 	#if $index != $dirDepth
-								<a href="javascript:void(0);" class="theme-link-color p-r-10" onclick="load_maincontent_spin('ajax/movies?dirname='+escape('$path'));">
+								<a href="javascript:void(0);" class="link--skinned p-r-10" onclick="load_maincontent_spin('ajax/movies?dirname='+escape('$path'));">
 									<i class="material-icons material-icons-centered">folder_open</i>
 									$dir
 								</a>
@@ -108,7 +108,7 @@
 																</div>
 															#end if
 															<div class="progress progress-striped" style="margin-bottom:0px;width:35%;max-width:200px;min-width:100px;height:10px;">
-																<div class="progress-bar bg-$skinColor" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:$size%;"></div>
+																<div class="progress-bar bg--skinned" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:$size%;"></div>
 															</div>
 															<span>$movie.length min. / $movie.filesize_readable</span>
 												</div>

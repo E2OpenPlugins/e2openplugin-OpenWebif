@@ -30,35 +30,35 @@
 
 		<div class="event-detail__actions m-b-10">
 	## #if $isProtected
-	## 		<span class="theme-link-col-fixed" target="_blank" title="$tstrings['locked']"><i class="material-icons material-icons-centered">lock_outline</i></span>
+	## 		<span class="link--not-skinned" target="_blank" title="$tstrings['locked']"><i class="material-icons material-icons-centered">lock_outline</i></span>
 	## #else
 		#if $type == "radio"
-			<!-- button type="button" onclick="addTimer('', '$sref', '$channel', '');" class="theme-link-col-fixed" title="$tstrings['add_timer']"><i class="icon material-icons material-icons-centered">alarm_add</i></button -->
+			<!-- button type="button" onclick="addTimer('', '$sref', '$channel', '');" class="link--not-skinned" title="$tstrings['add_timer']"><i class="icon material-icons material-icons-centered">alarm_add</i></button -->
 		#end if
 
-			<button type="button" onclick="zapChannel('$sref', '$channel');" class="theme-link-col-fixed" title="$tstrings['zap_to'] $channel"><i class="icon material-icons material-icons-centered">settings_remote</i></button>
+			<button type="button" onclick="zapChannel('$sref', '$channel');" class="link--not-skinned" title="$tstrings['zap_to'] $channel"><i class="icon material-icons material-icons-centered">settings_remote</i></button>
 
 		#if '4097:' in '$sref'
 			#set $rname = ":" + $channel
 			#set $lnk = '$sref'.replace("4097:0:1:0:0:0:0:0:0:0:", "")
 			#set $lnk = $lnk[:$lnk.rindex(':')].replace("%3a", ":").replace("%3A", ":")
-			<a href="$lnk" class="now-next__external-link theme-link-col-fixed" target="extlink" title="$tstrings['open_in_new_window']"><i class="material-icons material-icons-centered">phonelink</i></a>
+			<a href="$lnk" class="now-next__external-link link--not-skinned" target="extlink" title="$tstrings['open_in_new_window']"><i class="material-icons material-icons-centered">phonelink</i></a>
 		#else
-			<button type="button" onclick="open_epg_dialog('$sref', '$channel');" class="theme-link-col-fixed" title="$tstrings['show_epg_for'] $channel" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons material-icons-centered">view_list</i></button>
-			<button type="button" onclick="jumper8001('$sref', '$channel');" class="theme-link-col-fixed" title="$tstrings['stream'] $channel"><i class="icon material-icons material-icons-centered">ondemand_video</i></button>
+			<button type="button" onclick="open_epg_dialog('$sref', '$channel');" class="link--not-skinned" title="$tstrings['show_epg_for'] $channel" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons material-icons-centered">view_list</i></button>
+			<button type="button" onclick="jumper8001('$sref', '$channel');" class="link--not-skinned" title="$tstrings['stream'] $channel"><i class="icon material-icons material-icons-centered">ondemand_video</i></button>
 			#if $transcoding
-			<button type="button" onclick="jumper8002('$sref', '$channel');" class="theme-link-col-fixed" title="$tstrings['stream'] ($tstrings['transcoded']) $channel"><i class="icon material-icons material-icons-centered">smartphone</i></button>
+			<button type="button" onclick="jumper8002('$sref', '$channel');" class="link--not-skinned" title="$tstrings['stream'] ($tstrings['transcoded']) $channel"><i class="icon material-icons material-icons-centered">smartphone</i></button>
 			#end if
 ## #if $transcoding
-## <button onclick="jumper8001('$sref', '$channel');" class="theme-link-col-fixed" title="$tstrings['stream']: $channel">
+## <button onclick="jumper8001('$sref', '$channel');" class="link--not-skinned" title="$tstrings['stream']: $channel">
 ## <i class="material-icons material-icons-centered">tv</i>
 ## </button>
-## <button onclick="jumper8002('$sref', '$channel');" class="theme-link-col-fixed" title="$tstrings['stream'] ($tstrings['transcoded']): $channel">
+## <button onclick="jumper8002('$sref', '$channel');" class="link--not-skinned" title="$tstrings['stream'] ($tstrings['transcoded']): $channel">
 ## <i class="material-icons material-icons-centered">phone_android</i>
 ## </button>
 ## #else
-## <button class="theme-link-col-fixed">
-## <a href="/web/stream.m3u?ref=$sref&name=$channel" class="theme-link-col-fixed" target="stream" title="$tstrings['stream'] $channel">
+## <button class="link--not-skinned">
+## <a href="/web/stream.m3u?ref=$sref&name=$channel" class="link--not-skinned" target="stream" title="$tstrings['stream'] $channel">
 ## <i class="material-icons material-icons-centered">ondemand_video</i>
 ## </a>
 ## </button>
@@ -92,7 +92,7 @@
 #if $extEventInfoProvider
 <div class="row clearfix">
 	<div class="col-xs-12 m-b-10">
-		<a href="$extEventInfoProvider['url']$quote($event.title)" class="theme-link-color" title="$tstrings['search_'+$extEventInfoProvider['id']]" target="extdb">
+		<a href="$extEventInfoProvider['url']$quote($event.title)" class="link--skinned" title="$tstrings['search_'+$extEventInfoProvider['id']]" target="extdb">
 			<i class="material-icons material-icons-centered" style="margin-right: 0;">open_in_new</i>
 			$extEventInfoProvider['name']
 		</a>
@@ -105,35 +105,35 @@
 
 #if $event.timer
 	#if $event.timer.isEnabled
-		<button onclick="toggleTimerStatus('$sref', '$event.begin', '$event.end');" class="theme-link-col-fixed" title="$tstrings['disable_timer']">
+		<button onclick="toggleTimerStatus('$sref', '$event.begin', '$event.end');" class="link--not-skinned" title="$tstrings['disable_timer']">
 			<i class="material-icons material-icons-centered">alarm_off</i>
 		</button>
 	#else
-		<button onclick="toggleTimerStatus('$sref', '$event.begin', '$event.end');" class="theme-link-col-fixed" title="$tstrings['enable_timer']">
+		<button onclick="toggleTimerStatus('$sref', '$event.begin', '$event.end');" class="link--not-skinned" title="$tstrings['enable_timer']">
 			<i class="material-icons material-icons-centered">alarm_on</i>
 		</button>
 	#end if
-		<button class="theme-link-col-fixed" data-target="#TimerModal" data-toggle="modal" data-dismiss="modal" title="$tstrings['edit_timer']">
+		<button class="link--not-skinned" data-target="#TimerModal" data-toggle="modal" data-dismiss="modal" title="$tstrings['edit_timer']">
 			<i class="material-icons material-icons-centered">edit</i>
 		</button>
-		<button onclick="delTimerEvent('$sref', '$event.id');" class="theme-link-col-fixed" title="$tstrings['delete_timer']">
+		<button onclick="delTimerEvent('$sref', '$event.id');" class="link--not-skinned" title="$tstrings['delete_timer']">
 			<i class="material-icons material-icons-centered">delete</i>
 		</button>
 #else
-		<button onclick="addTimerEvent('$sref', '$event.id', false);" class="theme-link-col-fixed" title="$tstrings['add_timer']">
+		<button onclick="addTimerEvent('$sref', '$event.id', false);" class="link--not-skinned" title="$tstrings['add_timer']">
 			<i class="material-icons material-icons-centered">alarm_add</i>
 		</button>
-		<button class="theme-link-col-fixed" data-target="#TimerModal" data-toggle="modal" data-dismiss="modal" title="$tstrings['add'] & $tstrings['edit_timer']">
+		<button class="link--not-skinned" data-target="#TimerModal" data-toggle="modal" data-dismiss="modal" title="$tstrings['add'] & $tstrings['edit_timer']">
 			<i class="material-icons material-icons-centered">alarm_add</i>
 			<i class="material-icons material-icons-centered">edit</i>
 		</button>
-		<button onclick="addTimerEvent('$sref', '$event.id', true);" class="theme-link-col-fixed" title="$tstrings['add_zaptimer']">
+		<button onclick="addTimerEvent('$sref', '$event.id', true);" class="link--not-skinned" title="$tstrings['add_zaptimer']">
 			<i class="material-icons material-icons-centered">add_alert</i>
 		</button>
 #end if
 
 #if $at
-		<button onclick="addAutoTimerEvent('$sref', '$channel', '$title', '$event.begin', '$event.end');" class="theme-link-col-fixed" data-dismiss="modal" title="$tstrings['add_autotimer']">
+		<button onclick="addAutoTimerEvent('$sref', '$channel', '$title', '$event.begin', '$event.end');" class="link--not-skinned" data-dismiss="modal" title="$tstrings['add_autotimer']">
 			<i class="material-icons material-icons-centered">av_timer</i>
 		</button>
 #end if
