@@ -1,23 +1,23 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 
+<!-- TODO: move styles to css file -->
 <style>
-.themed--city-lights #bookmarks button {
+.theme--city-lights #bookmarks button {
   color: #f1f1f1;
   border: 1px solid rgba(241, 241, 241, 0.2);
   background-color: rgba(241, 241, 241, 0.2);
   border-radius: 2px;
 }
 
-.themed--city-lights #bookmarks button:hover { 
+.theme--city-lights #bookmarks button:hover { 
   background-color: rgba(241,241,241,.3);
 }
 
-.themed--city-lights #bookmarks button:active { 
+.theme--city-lights #bookmarks button:active { 
   background-color: rgba(241,241,241,.1);
 }
 
-.themed--city-lights #bookmarks a {
+.theme--city-lights #bookmarks a {
   color: #f1f1f1;
 }
 
@@ -137,14 +137,14 @@
 												<div class="col-xs-12">
 													<div class="row clearfix align-center">
 														<div class="col-xs-12 col-sm-6 col-md-4">
-															<button id="updatefeed" type="button" class="btn waves-effect responsivebtn btn-themed">$tstrings['update_feed']</button>
+															<button id="updatefeed" type="button" class="btn waves-effect responsivebtn btn--skinned">$tstrings['update_feed']</button>
 														</div>
 														<div class="col-xs-12 col-sm-6 col-md-4">
-															<button id="upgrade" type="button" class="btn waves-effect responsivebtn btn-themed">$tstrings['upgrade_packages']</button>
+															<button id="upgrade" type="button" class="btn waves-effect responsivebtn btn--skinned">$tstrings['upgrade_packages']</button>
 														</div>
 														<span id="pkguploadOne">
 															<div class="col-xs-12 col-sm-6 col-md-4">
-																<button id="selectfile" type="button" class="btn waves-effect responsivebtn btn-themed">$tstrings['select_ipk_upload']</button>
+																<button id="selectfile" type="button" class="btn waves-effect responsivebtn btn--skinned">$tstrings['select_ipk_upload']</button>
 															</div>
 														</span>
 													</div>
@@ -193,7 +193,7 @@
 															<div class="col-xs-12 align-center">
 																<div class="loader">
 																	<div class="preloader">
-																		<div class="spinner-layer theme-spinner-col pl-red">
+																		<div class="spinner-layer spinner--skinned pl--skinned">
 																			<div class="circle-clipper left">
 																				<div class="circle"></div>
 																			</div>
@@ -229,7 +229,7 @@
 	var filteredpkg;
 	var filterval = '';
 
-	var thisspinner = "<div class='col-xs-12 align-center'><div class='loader'><div class='preloader'><div class='spinner-layer pl-red'><div class='circle-clipper left'><div class='circle'></div></div><div class='circle-clipper right'><div class='circle'></div></div></div></div><p>" + tstr_loading + "...</p></div>";
+	var thisspinner = "<div class='col-xs-12 align-center'><div class='loader'><div class='preloader'><div class='spinner-layer pl'><div--skinned class='circle-clipper left'><div class='circle'></div></div><div class='circle-clipper right'><div class='circle'></div></div></div></div><p>" + tstr_loading + "...</p></div>";
 
 	function prepareUpload() {
 		var fn = jQuery(this).val();

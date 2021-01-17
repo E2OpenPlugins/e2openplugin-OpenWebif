@@ -1,5 +1,4 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 #from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo, getPipStatus
 
 <div id="responsivespinnerscreenshot"></div>
@@ -38,7 +37,7 @@
 						</label>
 						<label>
 							<input type="checkbox" name="ssr_hd" id="ssr_hd">
-							<span class="lever theme-switch-col switch-col-$skinColor"></span>
+							<span class="lever switch--skinned"></span>
 						</label>
 					</div>
 					<div class="switch panel-switch-btn m-t-10">
@@ -49,12 +48,12 @@
 						</label>
 						<label style="vertical-align: middle;">
 							<input type="checkbox" name="ssr_s" id="ssr_s">
-							<span class="lever theme-switch-col switch-col-$skinColor"></span>
+							<span class="lever switch--skinned"></span>
 						</label>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-5 align-left">
-					<button class="btn btn-themed waves-effect" onclick="grabScreenshot('auto'); return false;">
+					<button class="btn btn--skinned waves-effect" onclick="grabScreenshot('auto'); return false;">
 						<i class="material-icons" style="top: -1px; vertical-align: middle; left: -1px;">autorenew</i>
 						$tstrings['refresh']
 					</button>

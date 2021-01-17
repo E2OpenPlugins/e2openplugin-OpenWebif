@@ -1,9 +1,10 @@
 #filter WebSafe
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, showPicons, showPiconBackground
+#from Plugins.Extensions.OpenWebif.vtiaddon import showPicons, showPiconBackground
 
 #set $piconCssClass = ''
 
+<!-- TODO: move styles to css file -->
 <style>
 #if $showPiconBackground
 	#set $piconCssClass = 'picon--with-background'
@@ -11,7 +12,7 @@
 	.bqe__picon { background-color: #bababa; box-shadow: inset -8px 16px 26px #fff; }
 #end if
 
-	button.theme-link-col-fixed.pull-right {
+	button.link--not-skinned.pull-right {
 		margin: 0 0 0 2px;
 		padding: 0px 2px;
 		background: transparent;
@@ -57,7 +58,7 @@
 #end if
 		<slot name="channel-name"></slot>
 		<!-- css floating reverses the following elements' order -->
-		<button type="button" name="zap" class="theme-link-col-fixed pull-right" title="$tstrings['zap']">
+		<button type="button" name="zap" class="link--not-skinned pull-right" title="$tstrings['zap']">
 			<i class="icon material-icons material-icons-centered">settings_remote</i>
 		</button>
 		<span class="pull-right">
@@ -94,13 +95,13 @@
 		<slot name="channel-name"></slot>
 		<!-- css floating reverses the following elements' order -->
 		<span class="item__marker hidden m-l-40 m-r-10 pull-right"></span>
-		<button type="button" name="stream" class="hidden theme-link-col-fixed pull-right" title="$tstrings['stream']">
+		<button type="button" name="stream" class="hidden link--not-skinned pull-right" title="$tstrings['stream']">
 			<i class="icon material-icons material-icons-centered">ondemand_video</i>
 		</button>
-		<a href="#iptvUrl" class="hidden link__iptv-url theme-link-col-fixed pull-right" target="extlink">
+		<a href="#iptvUrl" class="hidden link__iptv-url link--not-skinned pull-right" target="extlink">
 			<i class="material-icons material-icons-centered">phonelink</i>
 		</a>
-		<button type="button" name="zap" class="hidden theme-link-col-fixed pull-right" title="$tstrings['zap']">
+		<button type="button" name="zap" class="hidden link--not-skinned pull-right" title="$tstrings['zap']">
 			<i class="icon material-icons material-icons-centered">settings_remote</i>
 		</button>
 		<span class="hidden item__protection pull-right" title="$tstrings['channel_is_protected']">
@@ -137,29 +138,29 @@
 			 <form name="listTypeSelector">
 				<div class="col-xs-6 align-center">
 					<span class="bqe__option">
-						<input type="radio" name="cType" value="2" id="toolbar-choose-satellites" class="radio-vti theme-radio-col radio-col-$skinColor" checked>
+						<input type="radio" name="cType" value="2" id="toolbar-choose-satellites" class="radio-vti radio--skinned" checked>
 						<label for="toolbar-choose-satellites">$tstrings['satellites']</label>
 					</span>
 					<span class="bqe__option">
-						<input type="radio" name="cType" value="1" id="toolbar-choose-providers" class="radio-vti theme-radio-col radio-col-$skinColor">
+						<input type="radio" name="cType" value="1" id="toolbar-choose-providers" class="radio-vti radio--skinned">
 						<label for="toolbar-choose-providers">$tstrings['providers']</label>
 					</span>
 					<span class="bqe__option">
-						<input type="radio" name="cType" value="3" id="toolbar-choose-channels" class="radio-vti theme-radio-col radio-col-$skinColor">
+						<input type="radio" name="cType" value="3" id="toolbar-choose-channels" class="radio-vti radio--skinned">
 						<label for="toolbar-choose-channels">$tstrings['all_channels']</label>
 					</span>
 				</div>
 				<div class="col-xs-6 align-center">
 					<span class="bqe__option">
-						<input type="radio" name="tvRadioMode" value="0" id="toolbar-choose-tv" class="radio-vti theme-radio-col radio-col-$skinColor" checked>
+						<input type="radio" name="tvRadioMode" value="0" id="toolbar-choose-tv" class="radio-vti radio--skinned" checked>
 						<label for="toolbar-choose-tv">$tstrings['television']</label>
 					</span>
 					<span class="bqe__option">
-						<input type="radio" name="tvRadioMode" value="1" id="toolbar-choose-radio" class="radio-vti theme-radio-col radio-col-$skinColor">
+						<input type="radio" name="tvRadioMode" value="1" id="toolbar-choose-radio" class="radio-vti radio--skinned">
 						<label for="toolbar-choose-radio">$tstrings['radio']</label>
 					</span>
 					<span class="bqe__option">
-						<input type="radio" name="tvRadioMode" value="-1" id="toolbar-choose-any" class="radio-vti theme-radio-col radio-col-$skinColor">
+						<input type="radio" name="tvRadioMode" value="-1" id="toolbar-choose-any" class="radio-vti radio--skinned">
 						<label for="toolbar-choose-any">Any</label><!-- TODO: i10n -->
 					</span>
 				</div>
@@ -185,7 +186,7 @@
 					</div>
 					<div class="row clearfix">
 						<div class="col-xs-12 m-t-10 align-right">
-							<button type="button" name="createBqFromProvider" class="bqe__button btn btn-themed waves-effect" disabled>$tstrings['bqe_add_provider_as_bouquet']</button>
+							<button type="button" name="createBqFromProvider" class="bqe__button btn btn--skinned waves-effect" disabled>$tstrings['bqe_add_provider_as_bouquet']</button>
 						</div>
 					</div>
 				</section>
@@ -215,8 +216,8 @@
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 m-t-10 align-right">
-							<button type="button" name="addChannelToBq" class="bqe__button btn btn-themed waves-effect" disabled>$tstrings['bqe_add_channel']</button>
-							<!-- button type="button" name="addAlternative" class="bqe__button btn btn-themed waves-effect">$tstrings['bqe_add_alternative']</button -->
+							<button type="button" name="addChannelToBq" class="bqe__button btn btn--skinned waves-effect" disabled>$tstrings['bqe_add_channel']</button>
+							<!-- button type="button" name="addAlternative" class="bqe__button btn btn--skinned waves-effect">$tstrings['bqe_add_alternative']</button -->
 						</div>
 					</div>
 				</section>
@@ -241,9 +242,9 @@
 					</div>
 					<div class="row clearfix align-center">
 						<div class="col-xs-12 m-t-10">
-							<button type="button" name="newBq" class="bqe__button btn btn-themed waves-effect">$tstrings['bqe_add_bq']</button>
-							<button type="button" name="renameBq" class="bqe__button btn btn-themed waves-effect">$tstrings['bqe_rename_bq']</button>
-							<button type="button" name="deleteBq" class="bqe__button btn btn-themed waves-effect">$tstrings['bqe_delete_bq']</button>
+							<button type="button" name="newBq" class="bqe__button btn btn--skinned waves-effect">$tstrings['bqe_add_bq']</button>
+							<button type="button" name="renameBq" class="bqe__button btn btn--skinned waves-effect">$tstrings['bqe_rename_bq']</button>
+							<button type="button" name="deleteBq" class="bqe__button btn btn--skinned waves-effect">$tstrings['bqe_delete_bq']</button>
 						</div>
 					</div>
 				</section>
@@ -266,11 +267,11 @@
 					</div>
 					<div class="row clearfix align-center">
 						<div class="col-xs-12 m-t-10">
-							<button type="button" name="addUrl" class="bqe__button btn btn-themed waves-effect">$tstrings['bqe_add_url']</button>
-							<button type="button" name="addMarker" class="bqe__button btn btn-themed waves-effect">$tstrings['bqe_add_marker']</button>
-							<button type="button" name="addSpacer" class="bqe__button btn btn-themed waves-effect">$tstrings['bqe_add_spacer']</button>
-							<button type="button" name="renameService" class="bqe__button btn btn-themed waves-effect" disabled>$tstrings['bqe_rename']</button>
-							<button type="button" name="removeService" class="bqe__button btn btn-themed waves-effect" disabled>$tstrings['delete']</button>
+							<button type="button" name="addUrl" class="bqe__button btn btn--skinned waves-effect">$tstrings['bqe_add_url']</button>
+							<button type="button" name="addMarker" class="bqe__button btn btn--skinned waves-effect">$tstrings['bqe_add_marker']</button>
+							<button type="button" name="addSpacer" class="bqe__button btn btn--skinned waves-effect">$tstrings['bqe_add_spacer']</button>
+							<button type="button" name="renameService" class="bqe__button btn btn--skinned waves-effect" disabled>$tstrings['bqe_rename']</button>
+							<button type="button" name="removeService" class="bqe__button btn btn--skinned waves-effect" disabled>$tstrings['delete']</button>
 						</div>
 					</div>
 				</section>

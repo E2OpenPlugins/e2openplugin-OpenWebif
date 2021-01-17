@@ -77,7 +77,6 @@ $(function () {
 		
 	});
 
-	skinChanger();
 	activateNotificationAndTasksScroll();
 	setSkinListHeightAndScroll(true);
 	setSettingListHeightAndScroll(true);
@@ -85,8 +84,6 @@ $(function () {
 		setSkinListHeightAndScroll(false);
 		setSettingListHeightAndScroll(false);
 	});
-	
-	initSkin();
 	
   VTiWebConfig();
   
@@ -147,7 +144,7 @@ function SetSpinner()
 	<div class='page-loader-wrapper'> \
 		<div class='loader'> \
 			<div class='preloader'> \
-				<div class='spinner-layer pl-red'> \
+				<div class='spinner-layer pl--skinned'> \
 					<div class='circle-clipper left'> \
 						<div class='circle'></div> \
 					</div> \
@@ -544,7 +541,7 @@ function TimerConflict(conflicts, sRef, eventId, justplay)
 						<div class='col-xs-12'> \
               <h2> \
                 <span role='button'> \
-                  <a href='javascript:void(0);' onclick='toggleTimerStatus(\"" + entry.serviceref + "\", \"" + entry.begin + "\", \"" + entry.end + "\"); this.closest(\".conflicting-timer\").classList.add(\"fade\");' title='Disable Timer'> \
+                  <a href='javascript:void(0);' onclick='toggleTimerStatus(\"" + entry.serviceref + "\", \"" + entry.begin + "\", \"" + entry.end + "\"); this.closest(\".conflicting-timer\").classList.add(\"fade\");' class=\"link--skinned\" title='Disable Timer'> \
                     <i class='material-icons material-icons-centered material-icons-mg-right'>alarm_off</i> \
                   </a> \
                 </span> \
@@ -1170,40 +1167,6 @@ function btn_saveTimer() {
 				}
 			}
 
-//Skin changer
-function skinChanger() {
-	$('.right-sidebar .skin-switcher li').on('click', function () {
-		var $body = $('body');
-		var $this = $(this);
-
-		var existTheme = $('.right-sidebar .skin-switcher li.active').data('theme');
-		$('.right-sidebar .skin-switcher li').removeClass('active');
-		$body.removeClass('theme-' + existTheme);
-		$this.addClass('active');
-
-		$body.addClass('theme-' + $this.data('theme'));
-		
-		$('.progress-bar, #moviedirbtn, .responsivebtn, .vti-colored-card').removeClass('bg-' + existTheme);
-		$('.progress-bar, #moviedirbtn, .responsivebtn, .vti-colored-card').addClass('bg-' + $this.data('theme'));
-		$('.lever').removeClass('switch-col-' + existTheme);
-		$('.lever').addClass('switch-col-' + $this.data('theme'));
-		$('.radio-vti').removeClass('radio-col-' + existTheme);
-		$('.radio-vti').addClass('radio-col-' + $this.data('theme'));
-		$('.theme-link-color').removeClass('theme-link-col-' + existTheme);
-		$('.theme-link-color').addClass('theme-link-col-' + $this.data('theme'));
-		$('.nav-tabs').removeClass('tab-col-' + existTheme);
-		$('.nav-tabs').addClass('tab-col-' + $this.data('theme'));
-		$('.navtab-active').css('border-bottom', '2px solid ' + $this.data('theme'));
-		
-		$(":checkbox").removeClass('chk-col-' + existTheme);
-		$(":checkbox").addClass('chk-col-' + $this.data('theme'));
-		$.get('api/setskincolor?skincolor=' + $this.data('theme'));
-		
-		$('a').addClass('link-col-black');
-		
-		});
-}
-
 function VTiWebConfig() {
 	$('#mymoviesearchbtn0').change(function () {
 		var res = $("#mymoviesearchbtn0").is(":checked") ? '1' : '0'
@@ -1272,12 +1235,12 @@ function VTiWebConfig() {
 	$('#thememodebtn').change(function () {
 		var themeMode = $(this).is(":checked") ? $(this).val() : 'supabright';
 		$('body').removeClass(function (index, className) {
-			return (className.match(/(^|\s)themed--\S+/g) || []).join(' ');
+			return (className.match(/(^|\s)theme--\S+/g) || []).join(' ');
 		});
 		if ($(this).is(":checked")) {
-			$('body').addClass('themed--' + themeMode);
+			$('body').addClass('theme--' + themeMode);
 		} else {
-			$('body').addClass('themed--' + 'supabright');
+			$('body').addClass('theme--' + 'supabright');
 		}
 		$.get('api/setthememode?themeMode=' + themeMode);
 	});
@@ -1301,16 +1264,6 @@ function setSkinListHeightAndScroll(isFirstTime) {
 		borderRadius: '0',
 		railBorderRadius: '0'
 	});
-}
-
-function initSkin() {
-		var $body = $('body');
-		var existTheme = $body.attr('class');
-		existTheme = existTheme.replace('theme-', '');
-		$('.right-sidebar .skin-switcher li').removeClass('active');
-		$body.removeClass('theme-' + existTheme);
-		$('.right-sidebar .skin-switcher li[data-theme="' + existTheme + '"]').addClass('active');
-		$body.addClass('theme-' +  existTheme);
 }
 
 //Setting tab content set height and show scroll

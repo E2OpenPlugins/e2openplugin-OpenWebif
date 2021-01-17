@@ -1,6 +1,6 @@
 #from six.moves.urllib.parse import quote
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, MinMovieList
+#from Plugins.Extensions.OpenWebif.vtiaddon import MinMovieList
 
 #if $MinMovieList == 'checked'
 
@@ -65,18 +65,18 @@
 	</div>
 	<div class="col-xs-12 col-md-3 align-right">
 	
-		<a href="javascript:void(0);" class="theme-link-color" onclick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><i class="material-icons material-icons-centered">play_circle_outline</i></a>
+		<a href="javascript:void(0);" class="link--skinned" onclick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><i class="material-icons material-icons-centered">play_circle_outline</i></a>
 		#if $transcoding
-		<a href="javascript:void(0);" class="theme-link-color" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream']: $movie.eventname"><i class="material-icons material-icons-centered">tv</i></a>
-		<a href="javascript:void(0);" class="theme-link-color" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] ($tstrings['transcoded']): $movie.eventname"><i class="material-icons material-icons-centered">phone_android</i></a>
+		<a href="javascript:void(0);" class="link--skinned" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream']: $movie.eventname"><i class="material-icons material-icons-centered">tv</i></a>
+		<a href="javascript:void(0);" class="link--skinned" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] ($tstrings['transcoded']): $movie.eventname"><i class="material-icons material-icons-centered">phone_android</i></a>
 		#else
-		<a href="web/ts.m3u?file=$quote($movie.filename)" class="theme-link-color" title="$tstrings['stream'] $movie.eventname" target="_blank"><i class="material-icons material-icons-centered">tv</i></a>
+		<a href="web/ts.m3u?file=$quote($movie.filename)" class="link--skinned" title="$tstrings['stream'] $movie.eventname" target="_blank"><i class="material-icons material-icons-centered">tv</i></a>
 		#end if
 		
 		#set $eventname_escaped =  $movie.eventname.replace("'", r"\'")
-		<a href="/file?action=download&file=$quote($movie.filename)" class="theme-link-color" title="$tstrings['download'] $movie.eventname"><i class="material-icons material-icons-centered">cloud_download</i></a>
-		<a href="javascript:void(0);" class="theme-link-color" onclick="renameMovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['rename_recording']"><i class="material-icons material-icons-centered">edit</i></a>
-		<a href="javascript:void(0);" class="theme-link-color" onclick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><i class="material-icons material-icons-centered">delete</i></a>
+		<a href="/file?action=download&file=$quote($movie.filename)" class="link--skinned" title="$tstrings['download'] $movie.eventname"><i class="material-icons material-icons-centered">cloud_download</i></a>
+		<a href="javascript:void(0);" class="link--skinned" onclick="renameMovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['rename_recording']"><i class="material-icons material-icons-centered">edit</i></a>
+		<a href="javascript:void(0);" class="link--skinned" onclick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><i class="material-icons material-icons-centered">delete</i></a>
 	</div>
 	<div class="col-xs-12 collapse" id="eventid$count">
 	<p>$movie.descriptionExtended</p>
@@ -187,7 +187,7 @@
 					</div>
 				#end if
 				<div class="progress progress-striped" style="margin-bottom:0px;width:35%;max-width:200px;min-width:100px;height:10px;">
-					<div class="progress-bar bg-$skinColor" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:$size%;"></div>
+					<div class="progress-bar bg--skinned" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:$size%;"></div>
 				</div>
 				<span>$movie.length min. / $movie.filesize_readable</span>
 	</div>

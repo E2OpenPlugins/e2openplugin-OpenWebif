@@ -2,6 +2,30 @@
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground, ZapStream
 #from json import dumps
 
+#set $skinPrefOptions = [
+	{'value': 'black', 'label': 'Black'}, 
+	{'value': 'grey-darken-4', 'label': 'Dark Grey'}, 
+	{'value': 'blue-grey', 'label': 'Blue Grey'}, 
+	{'value': 'grey', 'label': 'Grey'}, 
+	{'value': 'red', 'label': 'Red'}, 
+	{'value': 'pink', 'label': 'Pink'}, 
+	{'value': 'purple', 'label': 'Purple'}, 
+	{'value': 'deep-purple', 'label': 'Deep Purple'}, 
+	{'value': 'indigo', 'label': 'Indigo'}, 
+	{'value': 'blue', 'label': 'Blue'}, 
+	{'value': 'light-blue', 'label': 'Light Blue'}, 
+	{'value': 'cyan', 'label': 'Cyan'}, 
+	{'value': 'teal', 'label': 'Teal'}, 
+	{'value': 'green', 'label': 'Green'}, 
+	{'value': 'light-green', 'label': 'Light Green'}, 
+	{'value': 'lime', 'label': 'Lime'}, 
+	{'value': 'yellow', 'label': 'Yellow'}, 
+	{'value': 'amber', 'label': 'Amber'}, 
+	{'value': 'orange', 'label': 'Orange'}, 
+	{'value': 'deep-orange', 'label': 'Deep Orange'}, 
+	{'value': 'brown', 'label': 'Brown'}
+]
+
 <!doctype html>
 <html lang="$stbLang">
 <head>
@@ -38,7 +62,7 @@
 	<script>initJsTranslation($dumps($tstrings))</script>
 </head>
 
-<body class="themed--$themeMode theme-$skinColor" data-thememode="$themeMode" data-skincolor="$skinColor">
+<body class="theme--$themeMode skin--$skinColor" data-thememode="$themeMode" data-skinpref="$skinColor">p
 	<!-- Overlay For Sidebars -->
 	<div class="overlay"></div>
 	<div class="search-bar search-bar-epg">
@@ -87,7 +111,7 @@
 						<li class="osd-toggle" id="responsive_osd_cur_event"></li>
 						<li class="osd-toggle" id="responsive_osd_stream"></li>
 						<li class="osd-toggle" id="responsive_osd_transcoding"></li>
-						<li class="osd-toggle" id="responsive_mute_status" accesskey="x" title="Mute/Unmute - Shortcut: x"></li>
+						<li class="osd-toggle" id="responsive_mute_status" accesskey="x" title="Mute/Unmute - Shortcut: x"></li><!-- TODO: i10n -->
 						<li class="osd-toggle" id="responsive_vol_slider"><a href="javascript:void(0);"><div id="volslider" style="width:100px;margin-top:2px;"></div></a></li>
 						<li class="osd-toggle" id="responsive_vol_value"><a><div class="dropdown-toggle" id="volumevalue"><b><span class="curvolume"></span></b></div></a></li>
 						<!-- Call Search -->
@@ -224,7 +248,7 @@
 													<span class="m-r-10 font-12"></span>
 													<label>
 														<input type="checkbox" name="remotegrabscreen1" id="remotegrabscreen1" $ScreenshotOnRCU class="remotegrabscreen">
-														<span class="lever theme-switch-col switch-col-$skinColor"></span>
+														<span class="lever switch--skinned"></span>
 													</label>
 												</div>
 											</td>
@@ -345,7 +369,7 @@
 			</aside>
 			<!-- #END# Left Sidebar -->
 			<aside id="rightsidebar" class="right-sidebar">
-				<ul class="nav nav-tabs tab-nav-right theme-tab-col tab-col-$skinColor" role="tablist">
+				<ul class="nav nav-tabs tab-nav-right tab--skinned" role="tablist">
 					<li role="presentation" class="active">
 						<a href="#settings" data-toggle="tab">$tstrings['config']</a>
 					</li>
@@ -363,7 +387,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="myepgbtn0" id="myepgbtn0" $EPGSearchFull>
-											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever switch--skinned vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -372,7 +396,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="myepgbtn1" id="myepgbtn1" $EPGSearchBQonly>
-											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever switch--skinned vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -384,7 +408,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="mymoviesearchbtn0" id="mymoviesearchbtn0" $MovieSearchShort>
-											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever switch--skinned vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -393,7 +417,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="mymoviesearchbtn1" id="mymoviesearchbtn1" $MovieSearchExtended>
-											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever switch--skinned vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -406,7 +430,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="remotecontrolview" id="remotecontrolview" $RemoteControlView>
-											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever switch--skinned vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -415,7 +439,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="minmovielist" id="minmovielist" $MinMovieList>
-											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever switch--skinned vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -424,7 +448,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="mintimerlist" id="mintimerlist" $MinTimerList>
-											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever switch--skinned vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -433,7 +457,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="minepglist" id="minepglist" $MinEPGList>
-											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever switch--skinned vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -442,7 +466,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="plformat" id="plformat">
-											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever switch--skinned vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -451,7 +475,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="zapstream" id="zapstream" $ZapStream>
-											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever switch--skinned vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -460,7 +484,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="noresposive" id="noresposive">
-											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever switch--skinned vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -473,7 +497,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="showpicons" id="showpicons" $showPicons>
-											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever switch--skinned vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -482,7 +506,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="showpiconbackground" id="showpiconbackground" $showPiconBackground>
-											<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+											<span class="lever switch--skinned vtiwebconfig"></span>
 										</label>
 									</div>
 								</li>
@@ -496,96 +520,25 @@
 								<div class="switch">
 									<label>
 										<input type="checkbox" name="themeMode" id="thememodebtn" value="city-lights" checked="$(themeMode != 'supabright')">
-										<span class="lever theme-switch-col switch-col-$skinColor vtiwebconfig"></span>
+										<span class="lever switch--skinned vtiwebconfig"></span>
 									</label>
 								</div>
 							</li>
 						</ul>
 						<ul class="skin-switcher">
-							<li data-theme="black">
-								<span class="color-swatch"></span>
-								<label>Black</label>
+#for $skinPrefOption in $skinPrefOptions
+	#set $isChecked = ''
+	#if $skinPrefOption['value'] == $skinColor
+		#set $isChecked = 'checked'
+	#end if
+							<li>
+								<label>
+									<input type="radio" name="skinpref" value="$skinPrefOption['value']" $isChecked>
+									<span class="color-swatch swatch--$skinPrefOption['value']"></span>
+									$skinPrefOption['label']
+								</label>
 							</li>
-							<li data-theme="grey-darken-4">
-								<span class="color-swatch"></span>
-								<label>Dark Grey</label>
-							</li>
-							<li data-theme="blue-grey">
-								<span class="color-swatch"></span>
-								<label>Blue Grey</label>
-							</li>
-							<li data-theme="grey">
-								<span class="color-swatch"></span>
-								<label>Grey</label>
-							</li>
-							<li data-theme="red" class="active">
-								<span class="color-swatch"></span>
-								<label>Red</label>
-							</li>
-							<li data-theme="pink">
-								<span class="color-swatch"></span>
-								<label>Pink</label>
-							</li>
-							<li data-theme="purple">
-								<span class="color-swatch"></span>
-								<label>Purple</label>
-							</li>
-							<li data-theme="deep-purple">
-								<span class="color-swatch"></span>
-								<label>Deep Purple</label>
-							</li>
-							<li data-theme="indigo">
-								<span class="color-swatch"></span>
-								<label>Indigo</label>
-							</li>
-							<li data-theme="blue">
-								<span class="color-swatch"></span>
-								<label>Blue</label>
-							</li>
-							<li data-theme="light-blue">
-								<span class="color-swatch"></span>
-								<label>Light Blue</label>
-							</li>
-							<li data-theme="cyan">
-								<span class="color-swatch"></span>
-								<label>Cyan</label>
-							</li>
-							<li data-theme="teal">
-								<span class="color-swatch"></span>
-								<label>Teal</label>
-							</li>
-							<li data-theme="green">
-								<span class="color-swatch"></span>
-								<label>Green</label>
-							</li>
-							<li data-theme="light-green">
-								<span class="color-swatch"></span>
-								<label>Light Green</label>
-							</li>
-							<li data-theme="lime">
-								<span class="color-swatch"></span>
-								<label>Lime</label>
-							</li>
-							<li data-theme="yellow">
-								<span class="color-swatch"></span>
-								<label>Yellow</label>
-							</li>
-							<li data-theme="amber">
-								<span class="color-swatch"></span>
-								<label>Amber</label>
-							</li>
-							<li data-theme="orange">
-								<span class="color-swatch"></span>
-								<label>Orange</label>
-							</li>
-							<li data-theme="deep-orange">
-								<span class="color-swatch"></span>
-								<label>Deep Orange</label>
-							</li>
-							<li data-theme="brown">
-								<span class="color-swatch"></span>
-								<label>Brown</label>
-							</li>
+#end for
 						</ul>
 					</div>
 				</div>
@@ -605,19 +558,19 @@
 						<div class="card">
 							<div class="body text-center">
 								<div id="footer">
-									<a href="https://github.com/E2OpenPlugins" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">E2OpenPlugins</a> | 
-									<a href="https://www.opena.tv" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">openATV</a> | 
-									<a href="https://www.vuplus-community.net" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">Black Hole</a> | 
-									<a href="http://www.droidsat.org" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">OpenDroid</a> | 
-									<a href="https://www.egami-image.com" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">EGAMI</a> | 
-									<a href="https://www.hdfreaks.cc" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">OpenHDF</a> | 
-									<a href="https://images.teamblue.tech" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">teamBlue</a> | 
-									<a href="https://openpli.org" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">OpenPli</a> | 
-									<a href="https://forum.sifteam.eu" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">Sif</a> | 
-									<a href="https://openspa.info" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">OpenSpa</a> | 
-									<a href="https://www.openvix.co.uk" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">OpenViX</a> | 
-									<b><a href="https://www.vuplus-support.org" target="_blank" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">VTi</a></b> | 
-									<a href="#about" class="theme-link-color theme-link-col-$skinColor" rel="noreferrer noopener">$tstrings['about']</a>
+									<a href="https://github.com/E2OpenPlugins" target="_blank" class="link--skinned" rel="noreferrer noopener">E2OpenPlugins</a> | 
+									<a href="https://www.opena.tv" target="_blank" class="link--skinned" rel="noreferrer noopener">openATV</a> | 
+									<a href="https://www.vuplus-community.net" target="_blank" class="link--skinned" rel="noreferrer noopener">Black Hole</a> | 
+									<a href="http://www.droidsat.org" target="_blank" class="link--skinned" rel="noreferrer noopener">OpenDroid</a> | 
+									<a href="https://www.egami-image.com" target="_blank" class="link--skinned" rel="noreferrer noopener">EGAMI</a> | 
+									<a href="https://www.hdfreaks.cc" target="_blank" class="link--skinned" rel="noreferrer noopener">OpenHDF</a> | 
+									<a href="https://images.teamblue.tech" target="_blank" class="link--skinned" rel="noreferrer noopener">teamBlue</a> | 
+									<a href="https://openpli.org" target="_blank" class="link--skinned" rel="noreferrer noopener">OpenPli</a> | 
+									<a href="https://forum.sifteam.eu" target="_blank" class="link--skinned" rel="noreferrer noopener">Sif</a> | 
+									<a href="https://openspa.info" target="_blank" class="link--skinned" rel="noreferrer noopener">OpenSpa</a> | 
+									<a href="https://www.openvix.co.uk" target="_blank" class="link--skinned" rel="noreferrer noopener">OpenViX</a> | 
+									<b><a href="https://www.vuplus-support.org" target="_blank" class="link--skinned" rel="noreferrer noopener">VTi</a></b> | 
+									<a href="#about" class="link--skinned" rel="noreferrer noopener">$tstrings['about']</a>
 								</div>
 							</div>
 						</div>
@@ -653,7 +606,7 @@
 <div id="StreamModal" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-header vti-colored-card bg-$skinColor">
+			<div class="modal-header vti-colored-card bg--skinned">
 				<button type="button" class="close" data-dismiss="modal">
 					<i class="material-icons material-icons-centered">close</i>
 				</button>
@@ -673,7 +626,7 @@
 <div id="RecModal" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-header vti-colored-card bg-$skinColor">
+			<div class="modal-header vti-colored-card bg--skinned">
 				<button type="button" class="close" data-dismiss="modal">
 					<i class="material-icons material-icons-centered">close</i>
 				</button>
@@ -740,7 +693,7 @@
 				</div>
 			<div class="modal-footer">
 				<button type="button" class="btn waves-effect btn-default" data-dismiss="modal">$tstrings['close']</button>
-				<button type="button" class="btn waves-effect responsivebtn btn-themed" data-dismiss="modal" onclick="btn_saveTimer(); return false;">$tstrings['save']</button>
+				<button type="button" class="btn waves-effect responsivebtn btn--skinned" data-dismiss="modal" onclick="btn_saveTimer(); return false;">$tstrings['save']</button>
 			</div>
 		</div>
 	</div>
@@ -757,7 +710,7 @@
 			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
 				<div class="row clearfix m-t-20">
 					<div class="col-xs-6 align-right">
-						<button type="button" onclick="handle_power_state_dialog(new_power_state = 0); return false;" class="btn waves-effect responsivebtn responsivebtnpower btn-themed" data-dismiss="modal">
+						<button type="button" onclick="handle_power_state_dialog(new_power_state = 0); return false;" class="btn waves-effect responsivebtn responsivebtnpower btn--skinned" data-dismiss="modal">
 							<h4>
 								<i class="material-icons">power_settings_new</i>
 								<span>$tstrings['standby_toggle']</span>
@@ -765,7 +718,7 @@
 						</button>
 					</div>
 					<div class="col-xs-6 align-left">
-						<button type="button" onclick="handle_power_state_dialog(new_power_state = 1); return false;" class="btn waves-effect responsivebtn responsivebtnpower btn-themed" data-dismiss="modal">
+						<button type="button" onclick="handle_power_state_dialog(new_power_state = 1); return false;" class="btn waves-effect responsivebtn responsivebtnpower btn--skinned" data-dismiss="modal">
 							<h4>
 								<i class="material-icons">vertical_align_bottom</i>
 								<span>$tstrings['deep_standby']</span>
@@ -776,7 +729,7 @@
 				<hr/>
 				<div class="row clearfix">
 					<div class="col-xs-6 align-right">
-						<button type="button" onclick="handle_power_state_dialog(new_power_state = 2); return false;" class="btn waves-effect responsivebtn responsivebtnpower btn-themed" data-dismiss="modal">
+						<button type="button" onclick="handle_power_state_dialog(new_power_state = 2); return false;" class="btn waves-effect responsivebtn responsivebtnpower btn--skinned" data-dismiss="modal">
 							<h4>
 								<i class="material-icons">loop</i>
 								<span>$tstrings['reboot_box']</span>
@@ -784,7 +737,7 @@
 						</button>
 					</div>
 					<div class="col-xs-6 align-left">
-						<button type="button" onclick="handle_power_state_dialog(new_power_state = 3); return false" class="btn waves-effect responsivebtn responsivebtnpower btn-themed" class="theme-link-color" data-dismiss="modal">
+						<button type="button" onclick="handle_power_state_dialog(new_power_state = 3); return false" class="btn waves-effect responsivebtn responsivebtnpower btn--skinned" class="link--skinned" data-dismiss="modal">
 							<h4>
 								<i class="material-icons">settings_backup_restore</i>
 								<span>$tstrings['restart_gui']</span>
@@ -866,7 +819,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" onclick="closeMessageModal(); return false;" class="btn btn-default waves-effect" data-dismiss="modal">$tstrings['close']</button>
-				<button type="button" onclick="sendModalMessage(); return false;" class="btn waves-effect responsivebtn btn-themed">$tstrings['sendamessage'].replace(" ","&nbsp;")</button>
+				<button type="button" onclick="sendModalMessage(); return false;" class="btn waves-effect responsivebtn btn--skinned">$tstrings['sendamessage'].replace(" ","&nbsp;")</button>
 			</div>
 		</div>
 	</div>
