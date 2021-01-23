@@ -442,7 +442,10 @@ def removeMovie(session, sRef, Force=False):
 		}
 	else:
 		# EMC reload
-		config.EMC.needsreload.value = True
+		try:
+			config.EMC.needsreload.value = True
+		except AttributeError:
+			pass
 		return {
 			"result": True,
 			"message": "The movie '%s' has been deleted successfully" % name
@@ -548,7 +551,10 @@ def _moveMovie(session, sRef, destpath=None, newname=None):
 		}
 	else:
 		# EMC reload
-		config.EMC.needsreload.value = True
+		try:
+			config.EMC.needsreload.value = True
+		except AttributeError:
+			pass
 		return {
 			"result": True,
 			"message": "The recording '%s' has been %sd successfully" % (name, etxt)
