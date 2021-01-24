@@ -126,7 +126,8 @@ class BaseController(resource.Resource):
 			if callable(mod):
 				return str(mod(searchList=args))
 		elif fileExists(getViewsPath(path + ".tmpl")):
-			return str(Template(file=getViewsPath(path + ".tmpl"), searchList=[args]))
+			vp = str(getViewsPath(path + ".tmpl"))
+			return str(Template(file=vp, searchList=[args]))
 		return None
 
 	def putChild2(self, path, child):
