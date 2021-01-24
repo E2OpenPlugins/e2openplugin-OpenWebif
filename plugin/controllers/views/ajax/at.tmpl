@@ -34,6 +34,10 @@ input#to,input#from,.text.number {width:60px;}
 								<input type="text" id="match">
 								<!-- <label for="searchType">$tstrings['at_search_type']:</label> -->
 								<select id="searchType">
+								#for $searchType in $searchTypes
+									<option value="$searchType">$tstrings['at_'+$searchType+'_match']</option>
+								#end for
+								<!--
 								<option value="partial" selected="selected">$tstrings['at_partial_match']</option>
 								<option value="exact">$tstrings['at_exact_match']</option>
 								<option value="description">$tstrings['at_description_match']</option>
@@ -43,6 +47,7 @@ input#to,input#from,.text.number {width:60px;}
 								#if 'start' in $searchTypes
 									<option value="start">$tstrings['at_start_match']</option>
 								#end if
+								-->
 								</select>
 								<!-- <br><label for="searchCase">$tstrings['at_search_strictness']:</label> -->
 								<select id="searchCase">
