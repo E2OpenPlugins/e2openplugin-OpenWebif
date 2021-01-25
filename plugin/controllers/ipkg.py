@@ -94,9 +94,12 @@ class IpkgController(BaseController):
 				except IOError:
 					pass
 
+	def enumFeedsFiles(self):
+		return os.listdir(PACKAGES)
+
 	def getPackages(self, action):
 		map = {}
-		for feed in self.enumFeeds():
+		for feed in self.enumFeedsFiles():
 			package = None
 			try:
 				for line in open(os.path.join(PACKAGES, feed), 'r'):
