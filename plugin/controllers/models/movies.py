@@ -33,7 +33,7 @@ from Components.config import config
 #from .OWFMovieList import MovieList
 from Components.MovieList import MovieList
 from Tools.Directories import fileExists
-from Screens.MovieSelection import defaultMoviePath, moveServiceFiles
+from Screens.MovieSelection import defaultMoviePath
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg2, PY3
 
@@ -390,6 +390,7 @@ def removeMovie(session, sRef, Force=False):
 				message = "trashcan"
 				try:
 					import Tools.Trashcan
+					from Screens.MovieSelection import moveServiceFiles
 					trash = Tools.Trashcan.createTrashFolder(srcpath)
 					moveServiceFiles(service.ref, trash)
 					result = True
