@@ -143,7 +143,7 @@
 #if $len($bookmarks)
 	jQuery(function() {
 		jQuery('#directory').change(function() {
-			load_maincontent_spin('ajax/movies?dirname=' + escape(jQuery(this).val()));
+			load_maincontent_spin('ajax/movies?dirname=' + escape(jQuery(this).val()).replace('+','%2B'));
 		});
 	});
 #end if

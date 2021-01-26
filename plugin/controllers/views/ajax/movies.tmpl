@@ -111,7 +111,7 @@
 
 #if $len($bookmarks)
 \$("#directory").selectmenu({change: function(event, ui) {
-	load_maincontent_spin('ajax/movies?dirname='+escape(ui.item.value))
+	load_maincontent_spin('ajax/movies?dirname='+escape(ui.item.value).replace('+','%2B'))
 }
 });
 
