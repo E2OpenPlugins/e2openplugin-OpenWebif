@@ -1,5 +1,8 @@
-## Version 1.4.2
+## Version 1.4.3
 ## (in development)
+* improve ipkg
+
+## Version 1.4.2
 * add new api getpicon
 
 ## Version 1.4.1

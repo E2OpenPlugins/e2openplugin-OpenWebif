@@ -32,9 +32,6 @@ from Plugins.Extensions.OpenWebif.controllers.base import BaseController
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg, PY3
 
-PACKAGES = '/var/lib/opkg/lists'
-INSTALLEDPACKAGES = '/var/lib/opkg/status'
-
 
 class IpkgController(BaseController):
 	def __init__(self, session, path=""):
@@ -45,17 +42,20 @@ class IpkgController(BaseController):
 		self.request = request
 		self.json = False
 		self.container = None
-		action = getUrlArg(request, "command", "")
-		package = getUrlArg(request, "package", "")
+		self.action = getUrlArg(request, "command", "")
+		package = getUrlArg(request, "package")
 		self.json = getUrlArg(request, "format") == "json"
-		if action != '':
-			if action in ("update", "upgrade"):
-				return self.CallOPKG(request, action)
-			elif action in ("info", "status", "install", "remove"):
-				return self.CallOPKGP(request, action, package)
-			elif action in ("listall", "list", "list_installed", "list_upgradable"):
-				return self.CallOPKList(request, action)
-			elif action in ("tmp"):
+		if self.action != '':
+			if self.action in ("update", "upgrade"):
+				return self.CallOPKG(request)
+			elif self.action in ("info", "status", "install", "remove", "forceremove"):
+				if package != None:
+					return self.CallOPKG(request, package)
+				else:
+					return self.ShowError(request, "parameter: package is missing")
+			elif self.action in ("full", "listall", "list", "list_installed", "list_upgradable"):
+				return self.CallOPKList(request)
+			elif self.action in ("tmp"):
 				import glob
 				tmpfiles = glob.glob('/tmp/*.ipk')  # nosec
 				ipks = []
@@ -74,131 +74,105 @@ class IpkgController(BaseController):
 				request.finish()
 				return server.NOT_DONE_YET
 			else:
-				return self.ShowError(request, "Unknown command: " + action)
+				return self.ShowError(request, "Unknown command: " + self.action)
 		else:
 			return self.ShowHint(request)
 
 		return self.ShowError(request, "Error")
 
-	def enumFeeds(self):
-		for fn in os.listdir('/etc/opkg'):
-			if fn.endswith('-feed.conf'):
-				file = open(os.path.join('/etc/opkg', fn))
-				feedfile = file.readlines()
-				file.close()
-				try:
-					for feed in feedfile:
-						yield feed.split()[1]
-				except IndexError:
-					pass
-				except IOError:
-					pass
-
-	def enumFeedsFiles(self):
-		return os.listdir(PACKAGES)
-
-	def getPackages(self, action):
+	def parseAll(self):
 		map = {}
-		for feed in self.enumFeedsFiles():
-			package = None
-			try:
-				for line in open(os.path.join(PACKAGES, feed), 'r'):
-					if line.startswith('Package:'):
-						package = line.split(":", 1)[1].strip()
-						version = ''
-						description = ''
-						continue
-					if package is None:
-						continue
-					if line.startswith('Version:'):
-						version = line.split(":", 1)[1].strip()
-					# TDOD : check description
-					elif line.startswith('Description:'):
-						description = line.split(":", 1)[1].strip()
-					elif description and line.startswith(' '):
-						description += line[:-1]
-					elif len(line) <= 1:
-						d = description.split(' ', 3)
-						if len(d) > 3:
-							if d[1] == 'version':
-								description = d[3]
-							if description.startswith('gitAUTOINC'):
-								description = description.split(' ', 1)[1]
-						map.update({package: [version, description.strip(), "0", "0"]})
-						package = None
-			except IOError:
-				pass
-
-		for line in open(INSTALLEDPACKAGES, 'r'):
-			if line.startswith('Package:'):
-				package = line.split(":", 1)[1].strip()
-				version = ''
-				continue
-			if package is None:
-				continue
-			if line.startswith('Version:'):
-				version = line.split(":", 1)[1].strip()
-			elif len(line) <= 1:
-				if package in map:
-					if map[package][0] == version:
+		try:
+			for line in open("/tmp/opkg.tmp", 'r'):
+				if line.startswith('Package:'):
+					package = line.split(":", 1)[1].strip()
+					description = ''
+					status = ''
+					section = ''
+					installed = "0"
+					continue
+				if package is None:
+					continue
+				if line.startswith('Status:'):
+					status = line.split(":", 1)[1].strip()
+					if ' installed' in status.lower():
+						installed = "1"
+				elif line.startswith('Section:'):
+					section = line.split(":", 1)[1].strip()
+				elif line.startswith('Version:'):
+					version = line.split(":", 1)[1].strip()
+				# TDOD : check description
+				elif line.startswith('Description:'):
+					description = line.split(":", 1)[1].strip()
+				elif description and line.startswith(' '):
+					description += line[:-1]
+				elif len(line) <= 1:
+					d = description.split(' ', 3)
+					if len(d) > 3:
+						if d[1] == 'version':
+							description = d[3]
+						# TDOD : check this
+						if description.startswith('gitAUTOINC'):
+							description = description.split(' ', 1)[1]
+					if package in map:
+						v = map[package][0]
+						map[package][3] = v
 						map[package][2] = "1"
-					else:
-						nv = map[package][0]
 						map[package][0] = version
-						map[package][3] = nv
-				package = None
+					else:
+						map.update({package: [version, description.strip(), installed, "0", section]})
+					package = None
+		except IOError:
+			pass
 
 		keys = list(map.keys())
 		keys.sort()
 		self.ResultString = ""
-		if action == "listall":
-			self.json = True
-			ret = []
-			for name in keys:
-				ret.append({
-					"name": name,
-					"v": map[name][0],
-					"d": map[name][1],
-					"i": map[name][2],
-					"u": map[name][3]
-				})
-			return ret
-		elif action == "list":
-			for name in keys:
-				self.ResultString += name + " - " + map[name][0] + " - " + map[name][1] + "<br>"
-		elif action == "list_installed":
-			for name in keys:
-				if map[name][2] == "1":
-					self.ResultString += name + " - " + map[name][0] + "<br>"
-		elif action == "list_upgradable":
-			for name in keys:
-				if len(map[name][3]) > 1:
-					self.ResultString += name + " - " + map[name][3] + " - " + map[name][0] + "<br>"
-		if self.json:
-			data = []
-			data.append({"result": True, "packages": self.ResultString.split("<br>")})
-			return data
-		return self.ResultString
+
+		ret = []
+		for name in keys:
+			ret.append({
+				"name": name,
+				"v": map[name][0],
+				"d": map[name][1],
+				"i": map[name][2],
+				"u": map[name][3],
+				"s": map[name][4]
+			})
+		return ret
+
+	def Runcmd(self, cmd):
+		print("Call /usr/bin/opkg " + cmd)
+		self.container.execute("/usr/bin/opkg " + cmd)
 
 # TDOD: check encoding
-	def CallOPKList(self, request, action):
-		data = self.getPackages(action)
-		if self.json:
-			request.setHeader("content-type", "application/json; charset=utf-8")
-			try:
-				return six.ensure_binary(json.dumps(data, indent=1))
-			except Exception as exc:
-				request.setResponseCode(http.INTERNAL_SERVER_ERROR)
-				return json.dumps(six.ensure_binary({"result": False, "request": request.path, "exception": repr(exc)}))
-				pass
+	def CallOPKList(self, request):
+		request.setResponseCode(http.OK)
+		self.ResultString = ''
+		if hasattr(self.request, 'notifyFinish'):
+			self.request.notifyFinish().addErrback(self.connectionError)
+		self.container = eConsoleAppContainer()
+		self.container.appClosed.append(self.NoMoredata)
+		self.IsAlive = True
+		self.olddata = None
+		if self.action in ("full", "listall"):
+			self.Runcmd("info > /tmp/opkg.tmp")
 		else:
-			request.setHeader("content-type", "text/plain")
-			request.write(b"<html><body><br>" + six.ensure_binary(data) + b"</body></html>")
-			request.finish()
+			self.container.dataAvail.append(self.Moredata)
+			self.Runcmd(self.action)
 		return server.NOT_DONE_YET
 
-	def CallOPKG(self, request, action, parms=[]):
-		cmd = ["/usr/bin/opkg", "ipkg", action] + parms
+	def CallOPKG(self, request, package=None):
+		cmd = ''
+		if package != None:
+			if self.action == 'forceremove':
+				cmd = 'remove ' + package + ' --force-remove --force-depends'
+			elif self.action == 'install':
+				cmd = '--force-overwrite install ' + package
+			else:
+				cmd = self.action + ' ' + package
+		else:
+			cmd = self.action
 		request.setResponseCode(http.OK)
 		self.ResultString = ''
 		if hasattr(self.request, 'notifyFinish'):
@@ -208,7 +182,8 @@ class IpkgController(BaseController):
 		self.container.appClosed.append(self.NoMoredata)
 		self.IsAlive = True
 		self.olddata = None
-		self.container.execute(*cmd)
+		self.action
+		self.Runcmd(cmd)
 		return server.NOT_DONE_YET
 
 	def connectionError(self, err):
@@ -216,42 +191,56 @@ class IpkgController(BaseController):
 
 	def NoMoredata(self, data):
 		if self.IsAlive:
-			nresult = ''
-			for a in self.ResultString.split("\n"):
-				# print "%s" % a
-				if a.count(" - ") > 0:
-					if nresult[:-1] == "\n":
-						nresult += a
-					else:
-						nresult += "\n" + a
-				else:
-					nresult += a + "\n"
-			nresult = nresult.replace("\n\n", "\n")
-			nresult = nresult.replace("\n ", " ")
-			if self.json:
-				data = []
-				nresult = six.text_type(nresult, errors='ignore')
-				data.append({"result": True, "packages": nresult.split("\n")})
-				self.request.setHeader("content-type", "text/plain")
-				self.request.write(six.ensure_binary(json.dumps(data)))
-				self.request.finish()
+			if self.action == "listall":
+				self.request.setHeader("content-type", "application/json; charset=utf-8")
+				try:
+					data = self.parseAll()
+					self.request.write(six.ensure_binary(json.dumps(data)))
+				except Exception as exc:
+					self.request.setResponseCode(http.INTERNAL_SERVER_ERROR)
+					self.request.write(six.ensure_binary(json.dumps({"result": False, "request": self.request.path, "exception": repr(exc)})))
+			elif self.action == "full":
+				try:
+					data = open("/tmp/opkg.tmp", 'r').read()
+					self.request.write(six.ensure_binary(data))
+				except Exception as exc:
+					self.request.setResponseCode(http.INTERNAL_SERVER_ERROR)
+					self.request.write(six.ensure_binary(repr(exc)))
 			else:
-				nresult = six.ensure_binary(nresult)
-				self.request.write(b"<html><body>\n")
-				self.request.write(nresult.replace(b"\n", b"<br>\n"))
-				self.request.write(b"</body></html>\n")
-				self.request.finish()
+				nresult = ""
+				if self.action == "list":
+					for a in self.ResultString.split("\n"):
+						if a.count(" - ") > 0:
+							nresult += a + "\n"
+				else:
+					for a in self.ResultString.split("\n"):
+						if a.count(" - ") > 0:
+							if nresult[:-1] == "\n":
+								nresult += a
+							else:
+								nresult += "\n" + a
+						else:
+							nresult += a + "\n"
+				nresult = nresult.replace("\n\n", "\n")
+				nresult = nresult.replace("\n ", " ")
+				if self.json:
+					data = []
+					nresult = six.text_type(nresult, errors='ignore')
+					data.append({"result": True, "packages": nresult.split("\n")})
+					self.request.setHeader("content-type", "application/json; charset=utf-8")
+					self.request.write(six.ensure_binary(json.dumps(data)))
+				else:
+					nresult = six.ensure_binary(nresult)
+					self.request.write(b"<html><body>\n")
+					self.request.write(nresult.replace(b"\n", b"<br>\n"))
+					self.request.write(b"</body></html>\n")
+			self.request.finish()
+		return server.NOT_DONE_YET
 
 	def Moredata(self, data):
 		if data != self.olddata or self.olddata is None and self.IsAlive:
 			data = six.ensure_str(data)
 			self.ResultString += data
-
-	def CallOPKGP(self, request, action, pack):
-		if pack != '':
-			return self.CallOPKG(request, action, [pack])
-		else:
-			return self.ShowError(request, "parameter: package is missing")
 
 	def ShowError(self, request, text):
 		request.setResponseCode(http.OK)
@@ -262,8 +251,8 @@ class IpkgController(BaseController):
 	def ShowHint(self, request):
 		html = "<html><body><h1>OpenWebif Interface for OPKG</h1>"
 		html += "Usage : ?command=<cmd>&package=packagename<&format=format><br>"
-		html += "Valid Commands:<br>list,listall,list_installed,list_upgradable<br>"
-		html += "Valid Package Commands:<br>info,status,install,remove<br>"
+		html += "Valid Commands:<br>list,listall,list_installed,list_upgradable,full<br>"
+		html += "Valid Package Commands:<br>info,status,install,remove,forceremove<br>"
 		html += "Valid Formats:<br>json,html(default)<br>"
 		html += "</body></html>"
 		request.setResponseCode(http.OK)
