@@ -48,7 +48,7 @@ class IpkgController(BaseController):
 		if self.action != '':
 			if self.action in ("update", "upgrade"):
 				return self.CallOPKG(request)
-			elif self.action in ("info", "status", "install", "remove", "forceremove"):
+			elif self.action in ("info", "status", "install", "forceinstall", "remove", "forceremove"):
 				if package != None:
 					return self.CallOPKG(request, package)
 				else:
@@ -167,7 +167,7 @@ class IpkgController(BaseController):
 		if package != None:
 			if self.action == 'forceremove':
 				cmd = 'remove ' + package + ' --force-remove --force-depends'
-			elif self.action == 'install':
+			elif self.action == 'forceinstall':
 				cmd = '--force-overwrite install ' + package
 			else:
 				cmd = self.action + ' ' + package
@@ -252,7 +252,7 @@ class IpkgController(BaseController):
 		html = "<html><body><h1>OpenWebif Interface for OPKG</h1>"
 		html += "Usage : ?command=<cmd>&package=packagename<&format=format><br>"
 		html += "Valid Commands:<br>list,listall,list_installed,list_upgradable,full<br>"
-		html += "Valid Package Commands:<br>info,status,install,remove,forceremove<br>"
+		html += "Valid Package Commands:<br>info,status,install,remove,forceremove,forceinstall<br>"
 		html += "Valid Formats:<br>json,html(default)<br>"
 		html += "</body></html>"
 		request.setResponseCode(http.OK)
