@@ -615,7 +615,7 @@ def getInfo(session=None, need_fullinfo=False):
 	info['timerautoadjust'] = False
 
 	try:
-		timer = RecordTimerEntry('', 0, 0, '', '', 0)
+		timer = RecordTimerEntry(ServiceReference("1:0:1:0:0:0:0:0:0:0"), 0, 0, '', '', 0)
 		if hasattr(timer, "pipzap"):
 			info['timerpipzap'] = True
 		if hasattr(timer, "autoadjust"):
