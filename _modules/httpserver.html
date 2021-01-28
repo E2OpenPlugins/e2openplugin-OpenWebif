@@ -1,0 +1,700 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>httpserver &mdash; e2openplugin-OpenWebif 1.3.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> e2openplugin-OpenWebif
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.3.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common.html">Common</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controller.html">Controller</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">e2openplugin-OpenWebif</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>httpserver</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for httpserver</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="c1">##########################################################################</span>
+<span class="c1"># OpenWebif: httpserver</span>
+<span class="c1">##########################################################################</span>
+<span class="c1"># Copyright (C) 2011 - 2020 E2OpenPlugins</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
+<span class="c1"># under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation; either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with this program; if not, write to the Free Software Foundation,</span>
+<span class="c1"># Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.</span>
+<span class="c1">##########################################################################</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">enigma</span>
+<span class="kn">from</span> <span class="nn">Screens.MessageBox</span> <span class="kn">import</span> <span class="n">MessageBox</span>
+<span class="kn">from</span> <span class="nn">Components.config</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">Tools.Directories</span> <span class="kn">import</span> <span class="n">fileExists</span>
+<span class="kn">from</span> <span class="nn">twisted</span> <span class="kn">import</span> <span class="n">version</span>
+<span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactor</span><span class="p">,</span> <span class="n">ssl</span>
+<span class="kn">from</span> <span class="nn">twisted.web</span> <span class="kn">import</span> <span class="n">server</span><span class="p">,</span> <span class="n">http</span><span class="p">,</span> <span class="n">resource</span>
+<span class="kn">from</span> <span class="nn">twisted.internet.error</span> <span class="kn">import</span> <span class="n">CannotListenError</span>
+<span class="kn">from</span> <span class="nn">twisted.internet.protocol</span> <span class="kn">import</span> <span class="n">Factory</span><span class="p">,</span> <span class="n">Protocol</span>
+
+<span class="kn">from</span> <span class="nn">Plugins.Extensions.OpenWebif.controllers.root</span> <span class="kn">import</span> <span class="n">RootController</span>
+<span class="kn">from</span> <span class="nn">Plugins.Extensions.OpenWebif.sslcertificate</span> <span class="kn">import</span> <span class="n">SSLCertificateGenerator</span><span class="p">,</span> <span class="n">KEY_FILE</span><span class="p">,</span> <span class="n">CERT_FILE</span><span class="p">,</span> <span class="n">CA_FILE</span><span class="p">,</span> <span class="n">CHAIN_FILE</span>
+<span class="kn">from</span> <span class="nn">socket</span> <span class="kn">import</span> <span class="n">has_ipv6</span>
+<span class="kn">from</span> <span class="nn">OpenSSL</span> <span class="kn">import</span> <span class="n">SSL</span>
+<span class="kn">from</span> <span class="nn">OpenSSL</span> <span class="kn">import</span> <span class="n">crypto</span>
+<span class="kn">from</span> <span class="nn">Components.Network</span> <span class="kn">import</span> <span class="n">iNetwork</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">imp</span>
+<span class="kn">import</span> <span class="nn">ipaddress</span>
+<span class="kn">import</span> <span class="nn">six</span>
+
+<span class="k">global</span> <span class="n">listener</span><span class="p">,</span> <span class="n">server_to_stop</span><span class="p">,</span> <span class="n">site</span><span class="p">,</span> <span class="n">sslsite</span>
+<span class="n">listener</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">def</span> <span class="nf">getAllNetworks</span><span class="p">():</span>
+	<span class="n">tempaddrs</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="c1"># Get all IP networks</span>
+	<span class="k">if</span> <span class="n">fileExists</span><span class="p">(</span><span class="s1">&#39;/proc/net/if_inet6&#39;</span><span class="p">):</span>
+		<span class="k">if</span> <span class="n">has_ipv6</span> <span class="ow">and</span> <span class="n">version</span><span class="o">.</span><span class="n">major</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
+			<span class="n">proc</span> <span class="o">=</span> <span class="s1">&#39;/proc/net/if_inet6&#39;</span>
+			<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">proc</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+				<span class="c1"># Skip localhost</span>
+				<span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;00000000000000000000000000000001&#39;</span><span class="p">):</span>
+					<span class="k">continue</span>
+
+				<span class="n">tmp</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+				<span class="n">tmpaddr</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">ipaddress</span><span class="o">.</span><span class="n">ip_address</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">16</span><span class="p">)))</span>
+				<span class="k">if</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;ff&quot;</span><span class="p">:</span>
+					<span class="n">tmpaddr</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">tmpaddr</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">tmp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="mi">16</span><span class="p">))</span>
+					<span class="n">tmpaddr</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">ipaddress</span><span class="o">.</span><span class="n">IPv6Network</span><span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">(</span><span class="n">tmpaddr</span><span class="p">),</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+				<span class="n">tempaddrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmpaddr</span><span class="p">)</span>
+	<span class="c1"># Crappy legacy IPv4 has no proc entry with clean addresses</span>
+	<span class="n">ifaces</span> <span class="o">=</span> <span class="n">iNetwork</span><span class="o">.</span><span class="n">getConfiguredAdapters</span><span class="p">()</span>
+	<span class="k">for</span> <span class="n">iface</span> <span class="ow">in</span> <span class="n">ifaces</span><span class="p">:</span>
+		<span class="c1"># IPv4 and old fashioned netmask are served as silly arrays</span>
+		<span class="n">crap</span> <span class="o">=</span> <span class="n">iNetwork</span><span class="o">.</span><span class="n">getAdapterAttribute</span><span class="p">(</span><span class="n">iface</span><span class="p">,</span> <span class="s2">&quot;ip&quot;</span><span class="p">)</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="n">crap</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">crap</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
+			<span class="k">continue</span>
+		<span class="n">ip</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">crap</span><span class="p">)</span>
+		<span class="n">netmask</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="nb">bin</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">iNetwork</span><span class="o">.</span><span class="n">getAdapterAttribute</span><span class="p">(</span><span class="n">iface</span><span class="p">,</span> <span class="s2">&quot;netmask&quot;</span><span class="p">)]))</span>
+		<span class="n">ip</span> <span class="o">=</span> <span class="n">ip</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">netmask</span>
+		<span class="n">tmpaddr</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">ipaddress</span><span class="o">.</span><span class="n">IPv4Network</span><span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">(</span><span class="n">ip</span><span class="p">),</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+		<span class="n">tempaddrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmpaddr</span><span class="p">)</span>
+
+	<span class="k">if</span> <span class="n">tempaddrs</span> <span class="o">==</span> <span class="p">[]:</span>
+		<span class="k">return</span> <span class="kc">None</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">return</span> <span class="n">tempaddrs</span>
+
+
+<span class="k">def</span> <span class="nf">verifyCallback</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">x509</span><span class="p">,</span> <span class="n">errnum</span><span class="p">,</span> <span class="n">errdepth</span><span class="p">,</span> <span class="n">ok</span><span class="p">):</span>
+	<span class="k">if</span> <span class="ow">not</span> <span class="n">ok</span><span class="p">:</span>
+		<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[OpenWebif] Invalid cert from subject: &#39;</span><span class="p">,</span> <span class="n">x509</span><span class="o">.</span><span class="n">get_subject</span><span class="p">())</span>
+		<span class="k">return</span> <span class="kc">False</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[OpenWebif] Successful cert authed as: &#39;</span><span class="p">,</span> <span class="n">x509</span><span class="o">.</span><span class="n">get_subject</span><span class="p">())</span>
+	<span class="k">return</span> <span class="kc">True</span>
+
+
+<span class="k">def</span> <span class="nf">isOriginalWebifInstalled</span><span class="p">():</span>
+	<span class="n">pluginpath</span> <span class="o">=</span> <span class="n">enigma</span><span class="o">.</span><span class="n">eEnv</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="s1">&#39;$</span><span class="si">{libdir}</span><span class="s1">/enigma2/python/Plugins/Extensions/WebInterface/plugin.py&#39;</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">fileExists</span><span class="p">(</span><span class="n">pluginpath</span><span class="p">)</span> <span class="ow">or</span> <span class="n">fileExists</span><span class="p">(</span><span class="n">pluginpath</span> <span class="o">+</span> <span class="s2">&quot;o&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">fileExists</span><span class="p">(</span><span class="n">pluginpath</span> <span class="o">+</span> <span class="s2">&quot;c&quot;</span><span class="p">):</span>
+		<span class="k">return</span> <span class="kc">True</span>
+
+	<span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span> <span class="nf">buildRootTree</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+	<span class="n">root</span> <span class="o">=</span> <span class="n">RootController</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
+
+	<span class="k">if</span> <span class="ow">not</span> <span class="n">isOriginalWebifInstalled</span><span class="p">():</span>
+		<span class="c1"># this is an hack! any better idea?</span>
+		<span class="n">origwebifpath</span> <span class="o">=</span> <span class="n">enigma</span><span class="o">.</span><span class="n">eEnv</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="s1">&#39;$</span><span class="si">{libdir}</span><span class="s1">/enigma2/python/Plugins/Extensions/WebInterface&#39;</span><span class="p">)</span>
+		<span class="n">hookpath</span> <span class="o">=</span> <span class="n">enigma</span><span class="o">.</span><span class="n">eEnv</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="s1">&#39;$</span><span class="si">{libdir}</span><span class="s1">/enigma2/python/Plugins/Extensions/OpenWebif/pluginshook.src&#39;</span><span class="p">)</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">islink</span><span class="p">(</span><span class="n">origwebifpath</span> <span class="o">+</span> <span class="s2">&quot;/WebChilds/Toplevel.py&quot;</span><span class="p">):</span>
+			<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] hooking original webif plugins&quot;</span><span class="p">)</span>
+
+			<span class="n">cleanuplist</span> <span class="o">=</span> <span class="p">[</span>
+				<span class="s2">&quot;/__init__.py&quot;</span><span class="p">,</span>
+				<span class="s2">&quot;/__init__.pyo&quot;</span><span class="p">,</span>
+				<span class="s2">&quot;/__init__.pyc&quot;</span><span class="p">,</span>
+				<span class="s2">&quot;/WebChilds/__init__.py&quot;</span><span class="p">,</span>
+				<span class="s2">&quot;/WebChilds/__init__.pyo&quot;</span><span class="p">,</span>
+				<span class="s2">&quot;/WebChilds/__init__.pyc&quot;</span><span class="p">,</span>
+				<span class="s2">&quot;/WebChilds/External/__init__.py&quot;</span><span class="p">,</span>
+				<span class="s2">&quot;/WebChilds/External/__init__.pyo&quot;</span><span class="p">,</span>
+				<span class="s2">&quot;/WebChilds/External/__init__.pyc&quot;</span><span class="p">,</span>
+				<span class="s2">&quot;/WebChilds/Toplevel.py&quot;</span><span class="p">,</span>
+				<span class="s2">&quot;/WebChilds/Toplevel.pyo&quot;</span>
+				<span class="s2">&quot;/WebChilds/Toplevel.pyc&quot;</span>
+			<span class="p">]</span>
+
+			<span class="k">for</span> <span class="n">cleanupfile</span> <span class="ow">in</span> <span class="n">cleanuplist</span><span class="p">:</span>
+				<span class="k">if</span> <span class="n">fileExists</span><span class="p">(</span><span class="n">origwebifpath</span> <span class="o">+</span> <span class="n">cleanupfile</span><span class="p">):</span>
+					<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">origwebifpath</span> <span class="o">+</span> <span class="n">cleanupfile</span><span class="p">)</span>
+
+			<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">origwebifpath</span> <span class="o">+</span> <span class="s2">&quot;/WebChilds/External&quot;</span><span class="p">):</span>
+				<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">origwebifpath</span> <span class="o">+</span> <span class="s2">&quot;/WebChilds/External&quot;</span><span class="p">)</span>
+			<span class="nb">open</span><span class="p">(</span><span class="n">origwebifpath</span> <span class="o">+</span> <span class="s2">&quot;/__init__.py&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+			<span class="nb">open</span><span class="p">(</span><span class="n">origwebifpath</span> <span class="o">+</span> <span class="s2">&quot;/WebChilds/__init__.py&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+			<span class="nb">open</span><span class="p">(</span><span class="n">origwebifpath</span> <span class="o">+</span> <span class="s2">&quot;/WebChilds/External/__init__.py&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+			<span class="n">os</span><span class="o">.</span><span class="n">symlink</span><span class="p">(</span><span class="n">hookpath</span><span class="p">,</span> <span class="n">origwebifpath</span> <span class="o">+</span> <span class="s2">&quot;/WebChilds/Toplevel.py&quot;</span><span class="p">)</span>
+
+		<span class="c1"># import modules</span>
+		<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] loading external plugins...&quot;</span><span class="p">)</span>
+		<span class="kn">from</span> <span class="nn">Plugins.Extensions.WebInterface.WebChilds.Toplevel</span> <span class="kn">import</span> <span class="n">loaded_plugins</span>
+		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">loaded_plugins</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+			<span class="n">externals</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">origwebifpath</span> <span class="o">+</span> <span class="s2">&quot;/WebChilds/External&quot;</span><span class="p">)</span>
+			<span class="n">loaded</span> <span class="o">=</span> <span class="p">[]</span>
+			<span class="k">for</span> <span class="n">external</span> <span class="ow">in</span> <span class="n">externals</span><span class="p">:</span>
+				<span class="k">if</span> <span class="n">external</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;.py&quot;</span><span class="p">:</span>
+					<span class="n">modulename</span> <span class="o">=</span> <span class="n">external</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+				<span class="k">elif</span> <span class="n">external</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;.pyo&quot;</span> <span class="ow">or</span> <span class="n">external</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;.pyc&quot;</span><span class="p">:</span>
+					<span class="n">modulename</span> <span class="o">=</span> <span class="n">external</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+				<span class="k">else</span><span class="p">:</span>
+					<span class="k">continue</span>
+
+				<span class="k">if</span> <span class="n">modulename</span> <span class="o">==</span> <span class="s2">&quot;__init__&quot;</span><span class="p">:</span>
+					<span class="k">continue</span>
+
+				<span class="k">if</span> <span class="n">modulename</span> <span class="ow">in</span> <span class="n">loaded</span><span class="p">:</span>
+					<span class="k">continue</span>
+
+				<span class="n">loaded</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">modulename</span><span class="p">)</span>
+				<span class="k">try</span><span class="p">:</span>
+					<span class="n">imp</span><span class="o">.</span><span class="n">load_source</span><span class="p">(</span><span class="n">modulename</span><span class="p">,</span> <span class="n">origwebifpath</span> <span class="o">+</span> <span class="s2">&quot;/WebChilds/External/&quot;</span> <span class="o">+</span> <span class="n">modulename</span> <span class="o">+</span> <span class="s2">&quot;.py&quot;</span><span class="p">)</span>
+				<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+					<span class="c1"># maybe there&#39;s only the compiled version</span>
+					<span class="n">imp</span><span class="o">.</span><span class="n">load_compiled</span><span class="p">(</span><span class="n">modulename</span><span class="p">,</span> <span class="n">origwebifpath</span> <span class="o">+</span> <span class="s2">&quot;/WebChilds/External/&quot;</span> <span class="o">+</span> <span class="n">external</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">loaded_plugins</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+			<span class="k">for</span> <span class="n">plugin</span> <span class="ow">in</span> <span class="n">loaded_plugins</span><span class="p">:</span>
+				<span class="n">root</span><span class="o">.</span><span class="n">putChild2</span><span class="p">(</span><span class="n">plugin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">plugin</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+				<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] plugin &#39;</span><span class="si">%s</span><span class="s2">&#39; loaded on path &#39;/</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">plugin</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">plugin</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] no plugins to load&quot;</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">root</span>
+
+
+<div class="viewcode-block" id="HttpdStart"><a class="viewcode-back" href="../common.html#httpserver.HttpdStart">[docs]</a><span class="k">def</span> <span class="nf">HttpdStart</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Helper class to start web server</span>
+<span class="sd">	</span>
+<span class="sd">	Args:</span>
+<span class="sd">		session: (?) session object</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">enabled</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+		<span class="k">global</span> <span class="n">listener</span><span class="p">,</span> <span class="n">site</span><span class="p">,</span> <span class="n">sslsite</span>
+		<span class="n">port</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">port</span><span class="o">.</span><span class="n">value</span>
+		<span class="k">if</span> <span class="n">listener</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">listener</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] httpserver already started&quot;</span><span class="p">)</span>
+			<span class="k">return</span>
+
+		<span class="n">temproot</span> <span class="o">=</span> <span class="n">buildRootTree</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
+		<span class="n">root</span> <span class="o">=</span> <span class="n">AuthResource</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">temproot</span><span class="p">)</span>
+		<span class="n">site</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">Site</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+		<span class="n">site</span><span class="o">.</span><span class="n">displayTracebacks</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">displayTracebacks</span><span class="o">.</span><span class="n">value</span>
+
+		<span class="c1"># start http webserver on configured port</span>
+		<span class="k">try</span><span class="p">:</span>
+			<span class="k">if</span> <span class="n">has_ipv6</span> <span class="ow">and</span> <span class="n">fileExists</span><span class="p">(</span><span class="s1">&#39;/proc/net/if_inet6&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">version</span><span class="o">.</span><span class="n">major</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
+				<span class="c1"># use ipv6</span>
+				<span class="n">listener</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">reactor</span><span class="o">.</span><span class="n">listenTCP</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">site</span><span class="p">,</span> <span class="n">interface</span><span class="o">=</span><span class="s1">&#39;::&#39;</span><span class="p">)</span> <span class="p">)</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="c1"># ipv4 only</span>
+				<span class="n">listener</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">reactor</span><span class="o">.</span><span class="n">listenTCP</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">site</span><span class="p">)</span> <span class="p">)</span>
+			<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] started on </span><span class="si">%i</span><span class="s2">&quot;</span><span class="o">%</span> <span class="p">(</span><span class="n">port</span><span class="p">))</span>
+			<span class="n">BJregisterService</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+		<span class="k">except</span> <span class="n">CannotListenError</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] failed to listen on Port </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">port</span><span class="p">))</span>
+
+		<span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">https_clientcert</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">CA_FILE</span><span class="p">):</span>
+			<span class="c1"># Disable https</span>
+			<span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">https_enabled</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="kc">False</span>
+			<span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">https_enabled</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+			<span class="c1"># Inform the user</span>
+			<span class="n">session</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">MessageBox</span><span class="p">,</span> <span class="s2">&quot;Cannot read CA certs for HTTPS access</span><span class="se">\n</span><span class="s2">HTTPS access is disabled!&quot;</span><span class="p">,</span> <span class="n">MessageBox</span><span class="o">.</span><span class="n">TYPE_ERROR</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">https_enabled</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+			<span class="n">httpsPort</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">https_port</span><span class="o">.</span><span class="n">value</span>
+			<span class="n">installCertificates</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
+			<span class="c1"># start https webserver on port configured port</span>
+			<span class="k">try</span><span class="p">:</span>
+				<span class="k">try</span><span class="p">:</span>
+					<span class="n">key</span> <span class="o">=</span> <span class="n">crypto</span><span class="o">.</span><span class="n">load_privatekey</span><span class="p">(</span><span class="n">crypto</span><span class="o">.</span><span class="n">FILETYPE_PEM</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">KEY_FILE</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+					<span class="n">cert</span> <span class="o">=</span> <span class="n">crypto</span><span class="o">.</span><span class="n">load_certificate</span><span class="p">(</span><span class="n">crypto</span><span class="o">.</span><span class="n">FILETYPE_PEM</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">CERT_FILE</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+					<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] CHAIN_FILE = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">CHAIN_FILE</span><span class="p">)</span>
+					<span class="n">chain</span> <span class="o">=</span> <span class="kc">None</span>
+					<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">CHAIN_FILE</span><span class="p">):</span>
+						<span class="n">chain</span> <span class="o">=</span> <span class="p">[</span><span class="n">crypto</span><span class="o">.</span><span class="n">load_certificate</span><span class="p">(</span><span class="n">crypto</span><span class="o">.</span><span class="n">FILETYPE_PEM</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">CHAIN_FILE</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())]</span>
+						<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] ssl chain file found - loading&quot;</span><span class="p">)</span>
+					<span class="n">context</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">CertificateOptions</span><span class="p">(</span><span class="n">privateKey</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">certificate</span><span class="o">=</span><span class="n">cert</span><span class="p">,</span> <span class="n">extraCertChain</span><span class="o">=</span><span class="n">chain</span><span class="p">)</span>
+				<span class="k">except</span><span class="p">:</span>
+					<span class="c1"># THIS EXCEPTION IS ONLY CATCHED WHEN CERT FILES ARE BAD (look below for error)</span>
+					<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] failed to get valid cert files. (It could occure bad file save or format, removing...)&quot;</span><span class="p">)</span>
+					<span class="c1"># removing bad files</span>
+					<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">KEY_FILE</span><span class="p">):</span>
+						<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">KEY_FILE</span><span class="p">)</span>
+					<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">CERT_FILE</span><span class="p">):</span>
+						<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">CERT_FILE</span><span class="p">)</span>
+					<span class="c1"># regenerate new ones</span>
+					<span class="n">installCertificates</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
+					<span class="n">context</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">DefaultOpenSSLContextFactory</span><span class="p">(</span><span class="n">KEY_FILE</span><span class="p">,</span> <span class="n">CERT_FILE</span><span class="p">)</span>
+
+				<span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">https_clientcert</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+					<span class="n">ctx</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">getContext</span><span class="p">()</span>
+					<span class="n">ctx</span><span class="o">.</span><span class="n">set_verify</span><span class="p">(</span>
+						<span class="n">SSL</span><span class="o">.</span><span class="n">VERIFY_PEER</span> <span class="o">|</span> <span class="n">SSL</span><span class="o">.</span><span class="n">VERIFY_FAIL_IF_NO_PEER_CERT</span><span class="p">,</span>
+						<span class="n">verifyCallback</span>
+						<span class="p">)</span>
+					<span class="n">ctx</span><span class="o">.</span><span class="n">load_verify_locations</span><span class="p">(</span><span class="n">CA_FILE</span><span class="p">)</span>
+
+				<span class="n">sslroot</span> <span class="o">=</span> <span class="n">AuthResource</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">temproot</span><span class="p">)</span>
+				<span class="n">sslsite</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">Site</span><span class="p">(</span><span class="n">sslroot</span><span class="p">)</span>
+
+				<span class="k">if</span> <span class="n">has_ipv6</span> <span class="ow">and</span> <span class="n">fileExists</span><span class="p">(</span><span class="s1">&#39;/proc/net/if_inet6&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">version</span><span class="o">.</span><span class="n">major</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
+					<span class="c1"># use ipv6</span>
+					<span class="n">listener</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">reactor</span><span class="o">.</span><span class="n">listenSSL</span><span class="p">(</span><span class="n">httpsPort</span><span class="p">,</span> <span class="n">sslsite</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">interface</span><span class="o">=</span><span class="s1">&#39;::&#39;</span><span class="p">)</span> <span class="p">)</span>
+				<span class="k">else</span><span class="p">:</span>
+					<span class="c1"># ipv4 only</span>
+					<span class="n">listener</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">reactor</span><span class="o">.</span><span class="n">listenSSL</span><span class="p">(</span><span class="n">httpsPort</span><span class="p">,</span> <span class="n">sslsite</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="p">)</span>
+				<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] started on&quot;</span><span class="p">,</span> <span class="n">httpsPort</span><span class="p">)</span>
+				<span class="n">BJregisterService</span><span class="p">(</span><span class="s1">&#39;https&#39;</span><span class="p">,</span> <span class="n">httpsPort</span><span class="p">)</span>
+			<span class="k">except</span> <span class="n">CannotListenError</span><span class="p">:</span>
+				<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] failed to listen on Port&quot;</span><span class="p">,</span> <span class="n">httpsPort</span><span class="p">)</span>
+			<span class="k">except</span><span class="p">:</span>
+				<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] failed to start https, disabling...&quot;</span><span class="p">)</span>
+				<span class="c1"># Disable https</span>
+				<span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">https_enabled</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="kc">False</span>
+				<span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">https_enabled</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+		<span class="c1"># Streaming requires listening on 127.0.0.1:80</span>
+		<span class="k">if</span> <span class="n">port</span> <span class="o">!=</span> <span class="mi">80</span><span class="p">:</span>
+			<span class="k">try</span><span class="p">:</span>
+				<span class="k">if</span> <span class="n">has_ipv6</span> <span class="ow">and</span> <span class="n">fileExists</span><span class="p">(</span><span class="s1">&#39;/proc/net/if_inet6&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">version</span><span class="o">.</span><span class="n">major</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
+					<span class="c1"># use ipv6</span>
+					<span class="c1"># Dear Twisted devs: Learning English, lesson 1 - interface != address</span>
+					<span class="n">listener</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">reactor</span><span class="o">.</span><span class="n">listenTCP</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="n">site</span><span class="p">,</span> <span class="n">interface</span><span class="o">=</span><span class="s1">&#39;::1&#39;</span><span class="p">)</span> <span class="p">)</span>
+					<span class="n">listener</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">reactor</span><span class="o">.</span><span class="n">listenTCP</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="n">site</span><span class="p">,</span> <span class="n">interface</span><span class="o">=</span><span class="s1">&#39;::ffff:127.0.0.1&#39;</span><span class="p">)</span> <span class="p">)</span>
+				<span class="k">else</span><span class="p">:</span>
+					<span class="c1"># ipv4 only</span>
+					<span class="n">listener</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">reactor</span><span class="o">.</span><span class="n">listenTCP</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="n">site</span><span class="p">,</span> <span class="n">interface</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">)</span> <span class="p">)</span>
+				<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] started stream listening on port 80&quot;</span><span class="p">)</span>
+			<span class="k">except</span> <span class="n">CannotListenError</span><span class="p">:</span>
+				<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] port 80 busy&quot;</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">HttpdStop</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+	<span class="n">StopServer</span><span class="p">(</span><span class="n">session</span><span class="p">)</span><span class="o">.</span><span class="n">doStop</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">HttpdRestart</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+	<span class="n">StopServer</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">HttpdStart</span><span class="p">)</span><span class="o">.</span><span class="n">doStop</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">AuthResource</span><span class="p">(</span><span class="n">resource</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
+		<span class="n">resource</span><span class="o">.</span><span class="n">Resource</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">resource</span> <span class="o">=</span> <span class="n">root</span>
+
+	<span class="k">def</span> <span class="nf">noShell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user</span><span class="p">):</span>
+		<span class="k">if</span> <span class="n">fileExists</span><span class="p">(</span><span class="s1">&#39;/etc/passwd&#39;</span><span class="p">):</span>
+			<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/etc/passwd&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+				<span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+				<span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">user</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;:/bin/false&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">line</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;:/sbin/nologin&quot;</span><span class="p">)):</span>
+					<span class="k">return</span> <span class="kc">True</span>
+		<span class="k">return</span> <span class="kc">False</span>
+
+	<span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+		<span class="n">host</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getHost</span><span class="p">()</span><span class="o">.</span><span class="n">host</span>
+		<span class="n">peer</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getClientIP</span><span class="p">()</span>
+		<span class="k">if</span> <span class="n">peer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="n">peer</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">socket</span><span class="o">.</span><span class="n">getpeername</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+		<span class="k">if</span> <span class="n">peer</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;::ffff:&quot;</span><span class="p">):</span>
+			<span class="n">peer</span> <span class="o">=</span> <span class="n">peer</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;::ffff:&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="n">peer</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;fe80::&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;%&quot;</span> <span class="ow">in</span> <span class="n">peer</span><span class="p">:</span>
+			<span class="n">peer</span> <span class="o">=</span> <span class="n">peer</span><span class="o">.</span><span class="n">split</span> <span class="p">(</span><span class="s2">&quot;%&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">getUser</span><span class="p">(),</span> <span class="n">request</span><span class="o">.</span><span class="n">getPassword</span><span class="p">(),</span> <span class="n">peer</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+			<span class="n">request</span><span class="o">.</span><span class="n">setHeader</span><span class="p">(</span><span class="s1">&#39;WWW-authenticate&#39;</span><span class="p">,</span> <span class="s1">&#39;Basic realm=&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s2">&quot;OpenWebif&quot;</span><span class="p">))</span>
+			<span class="n">errpage</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">ErrorPage</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">UNAUTHORIZED</span><span class="p">,</span> <span class="s2">&quot;Unauthorized&quot;</span><span class="p">,</span> <span class="s2">&quot;401 Authentication required&quot;</span><span class="p">)</span>
+			<span class="k">return</span> <span class="n">errpage</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">resource</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">getChildWithDefault</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+		<span class="k">global</span> <span class="n">site</span><span class="p">,</span> <span class="n">sslsite</span>
+		<span class="n">session</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getSession</span><span class="p">()</span><span class="o">.</span><span class="n">sessionNamespaces</span>
+		<span class="n">host</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getHost</span><span class="p">()</span><span class="o">.</span><span class="n">host</span>
+		<span class="n">peer</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getClientIP</span><span class="p">()</span>
+		<span class="n">host</span> <span class="o">=</span> <span class="n">six</span><span class="o">.</span><span class="n">ensure_str</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">getHeader</span><span class="p">(</span><span class="s2">&quot;x-forwarded-for&quot;</span><span class="p">):</span>
+			<span class="n">peer</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getHeader</span><span class="p">(</span><span class="s2">&quot;x-forwarded-for&quot;</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="n">peer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="n">peer</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">socket</span><span class="o">.</span><span class="n">getpeername</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+		<span class="n">peer</span> <span class="o">=</span> <span class="n">six</span><span class="o">.</span><span class="n">ensure_str</span><span class="p">(</span><span class="n">peer</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">peer</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;::ffff:&quot;</span><span class="p">):</span>
+			<span class="n">peer</span> <span class="o">=</span> <span class="n">peer</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;::ffff:&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="n">peer</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;fe80::&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;%&quot;</span> <span class="ow">in</span> <span class="n">peer</span><span class="p">:</span>
+			<span class="n">peer</span> <span class="o">=</span> <span class="n">peer</span><span class="o">.</span><span class="n">split</span> <span class="p">(</span><span class="s2">&quot;%&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+		<span class="c1"># Handle all conditions where auth may be skipped/disabled</span>
+
+		<span class="c1"># #1: Auth is disabled and access is from local network</span>
+		<span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">isSecure</span><span class="p">()</span> <span class="ow">and</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">isSecure</span><span class="p">()</span> <span class="ow">and</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">https_auth</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">):</span>
+			<span class="n">networks</span> <span class="o">=</span> <span class="n">getAllNetworks</span><span class="p">()</span>
+			<span class="k">if</span> <span class="n">networks</span><span class="p">:</span>
+				<span class="k">for</span> <span class="n">network</span> <span class="ow">in</span> <span class="n">networks</span><span class="p">:</span>
+					<span class="k">if</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">ip_address</span><span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">(</span><span class="n">peer</span><span class="p">))</span> <span class="ow">in</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">ip_network</span><span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">(</span><span class="n">network</span><span class="p">),</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+						<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">resource</span><span class="o">.</span><span class="n">getChildWithDefault</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+
+		<span class="c1"># #2: Auth is disabled and access is from private address space (Usually VPN) and access for VPNs has been granted</span>
+		<span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">isSecure</span><span class="p">()</span> <span class="ow">and</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">isSecure</span><span class="p">()</span> <span class="ow">and</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">https_auth</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">):</span>
+			<span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">vpn_access</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">ip_address</span><span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">(</span><span class="n">peer</span><span class="p">))</span><span class="o">.</span><span class="n">is_private</span><span class="p">:</span>
+				<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">resource</span><span class="o">.</span><span class="n">getChildWithDefault</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+
+		<span class="c1"># #3: Access is from localhost and streaming auth is disabled - or - we only want to see our IPv6 (For inadyn-mt)</span>
+		<span class="k">if</span> <span class="p">((</span><span class="n">host</span> <span class="o">==</span> <span class="s2">&quot;localhost&quot;</span> <span class="ow">or</span> <span class="n">host</span> <span class="o">==</span> <span class="s2">&quot;127.0.0.1&quot;</span> <span class="ow">or</span> <span class="n">host</span> <span class="o">==</span> <span class="s2">&quot;::ffff:127.0.0.1&quot;</span> <span class="ow">or</span> <span class="n">host</span> <span class="o">==</span> <span class="s2">&quot;::1&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;/web/stream?StreamService=&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">auth_for_streaming</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="ow">or</span> <span class="n">request</span><span class="o">.</span><span class="n">uri</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;/web/getipv6&quot;</span><span class="p">):</span>
+			<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">resource</span><span class="o">.</span><span class="n">getChildWithDefault</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+
+		<span class="c1"># #4: Web TV is accessing streams and &quot;auths&quot; by parent session id</span>
+		<span class="n">ruser</span> <span class="o">=</span> <span class="n">six</span><span class="o">.</span><span class="n">ensure_str</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">getUser</span><span class="p">())</span>
+		<span class="n">rpw</span> <span class="o">=</span> <span class="n">six</span><span class="o">.</span><span class="n">ensure_str</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">getPassword</span><span class="p">())</span>
+		<span class="k">if</span> <span class="n">ruser</span> <span class="o">==</span> <span class="s2">&quot;-sid&quot;</span><span class="p">:</span>
+			<span class="n">sid</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">rpw</span><span class="p">)</span>
+			<span class="k">try</span><span class="p">:</span>
+				<span class="n">oldsession</span> <span class="o">=</span> <span class="n">site</span><span class="o">.</span><span class="n">getSession</span><span class="p">(</span><span class="n">sid</span><span class="p">)</span><span class="o">.</span><span class="n">sessionNamespaces</span>
+				<span class="k">if</span> <span class="s2">&quot;logged&quot;</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">oldsession</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="ow">and</span> <span class="n">oldsession</span><span class="p">[</span><span class="s2">&quot;logged&quot;</span><span class="p">]:</span>
+					<span class="n">session</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getSession</span><span class="p">()</span><span class="o">.</span><span class="n">sessionNamespaces</span>
+					<span class="n">session</span><span class="p">[</span><span class="s2">&quot;logged&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+					<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">resource</span><span class="o">.</span><span class="n">getChildWithDefault</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+			<span class="k">except</span><span class="p">:</span> <span class="c1"># nosec</span>
+				<span class="k">pass</span>
+
+			<span class="k">try</span><span class="p">:</span>
+				<span class="n">oldsession</span> <span class="o">=</span> <span class="n">sslsite</span><span class="o">.</span><span class="n">getSession</span><span class="p">(</span><span class="n">sid</span><span class="p">)</span><span class="o">.</span><span class="n">sessionNamespaces</span>
+				<span class="k">if</span> <span class="s2">&quot;logged&quot;</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">oldsession</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="ow">and</span> <span class="n">oldsession</span><span class="p">[</span><span class="s2">&quot;logged&quot;</span><span class="p">]:</span>
+					<span class="n">session</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">getSession</span><span class="p">()</span><span class="o">.</span><span class="n">sessionNamespaces</span>
+					<span class="n">session</span><span class="p">[</span><span class="s2">&quot;logged&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+					<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">resource</span><span class="o">.</span><span class="n">getChildWithDefault</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+			<span class="k">except</span><span class="p">:</span> <span class="c1"># nosec</span>
+				<span class="k">pass</span>
+
+		<span class="c1"># If we get to here, no exception applied</span>
+		<span class="c1"># Either block with forbidden (If auth is disabled) ...</span>
+		<span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">isSecure</span><span class="p">()</span> <span class="ow">and</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">isSecure</span><span class="p">()</span> <span class="ow">and</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">https_auth</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">):</span>
+			<span class="k">return</span> <span class="n">resource</span><span class="o">.</span><span class="n">ErrorPage</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">FORBIDDEN</span><span class="p">,</span> <span class="s1">&#39;Forbidden&#39;</span><span class="p">,</span> <span class="s1">&#39;403.6 IP address rejected&#39;</span><span class="p">)</span>
+
+		<span class="c1"># ... or auth</span>
+		<span class="k">if</span> <span class="s2">&quot;logged&quot;</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="ow">and</span> <span class="n">session</span><span class="p">[</span><span class="s2">&quot;logged&quot;</span><span class="p">]:</span>
+			<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">resource</span><span class="o">.</span><span class="n">getChildWithDefault</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">ruser</span><span class="p">,</span> <span class="n">rpw</span><span class="p">,</span> <span class="n">peer</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+			<span class="n">request</span><span class="o">.</span><span class="n">setHeader</span><span class="p">(</span><span class="s1">&#39;WWW-authenticate&#39;</span><span class="p">,</span> <span class="s1">&#39;Basic realm=&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s2">&quot;OpenWebif&quot;</span><span class="p">))</span>
+			<span class="k">return</span> <span class="n">resource</span><span class="o">.</span><span class="n">ErrorPage</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">UNAUTHORIZED</span><span class="p">,</span> <span class="s2">&quot;Unauthorized&quot;</span><span class="p">,</span> <span class="s2">&quot;401 Authentication required&quot;</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">session</span><span class="p">[</span><span class="s2">&quot;logged&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+			<span class="n">session</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ruser</span>
+			<span class="n">session</span><span class="p">[</span><span class="s2">&quot;pwd&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">noShell</span><span class="p">(</span><span class="n">ruser</span><span class="p">):</span>
+				<span class="n">session</span><span class="p">[</span><span class="s2">&quot;pwd&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rpw</span>
+			<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">resource</span><span class="o">.</span><span class="n">getChildWithDefault</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">passwd</span><span class="p">,</span> <span class="n">peer</span><span class="p">):</span>
+		<span class="k">if</span> <span class="n">user</span> <span class="o">==</span> <span class="s2">&quot;root&quot;</span> <span class="ow">and</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">no_root_access</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+			<span class="c1"># Override &quot;no root&quot; for logins from local/private networks</span>
+			<span class="n">samenet</span> <span class="o">=</span> <span class="kc">False</span>
+			<span class="n">networks</span> <span class="o">=</span> <span class="n">getAllNetworks</span><span class="p">()</span>
+			<span class="k">if</span> <span class="n">networks</span><span class="p">:</span>
+				<span class="k">for</span> <span class="n">network</span> <span class="ow">in</span> <span class="n">networks</span><span class="p">:</span>
+					<span class="k">if</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">ip_address</span><span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">(</span><span class="n">peer</span><span class="p">))</span> <span class="ow">in</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">ip_network</span><span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">(</span><span class="n">network</span><span class="p">),</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+						<span class="n">samenet</span><span class="o">=</span><span class="kc">True</span>
+			<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">ipaddress</span><span class="o">.</span><span class="n">ip_address</span><span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">text_type</span><span class="p">(</span><span class="n">peer</span><span class="p">))</span><span class="o">.</span><span class="n">is_private</span> <span class="ow">or</span> <span class="n">samenet</span><span class="p">):</span>
+				<span class="k">return</span> <span class="kc">False</span>
+		<span class="kn">from</span> <span class="nn">crypt</span> <span class="kn">import</span> <span class="n">crypt</span>
+		<span class="kn">from</span> <span class="nn">pwd</span> <span class="kn">import</span> <span class="n">getpwnam</span>
+		<span class="kn">from</span> <span class="nn">spwd</span> <span class="kn">import</span> <span class="n">getspnam</span>
+		<span class="n">cpass</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="k">try</span><span class="p">:</span>
+			<span class="n">cpass</span> <span class="o">=</span> <span class="n">getpwnam</span><span class="p">(</span><span class="n">user</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+		<span class="k">except</span><span class="p">:</span>
+			<span class="k">return</span> <span class="kc">False</span>
+		<span class="k">if</span> <span class="n">cpass</span><span class="p">:</span>
+			<span class="k">if</span> <span class="n">cpass</span> <span class="o">==</span> <span class="s1">&#39;x&#39;</span> <span class="ow">or</span> <span class="n">cpass</span> <span class="o">==</span> <span class="s1">&#39;*&#39;</span><span class="p">:</span>
+				<span class="k">try</span><span class="p">:</span>
+					<span class="n">cpass</span> <span class="o">=</span> <span class="n">getspnam</span><span class="p">(</span><span class="n">user</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+				<span class="k">except</span><span class="p">:</span>
+					<span class="k">return</span> <span class="kc">False</span>
+			<span class="k">return</span> <span class="n">crypt</span><span class="p">(</span><span class="n">passwd</span><span class="p">,</span> <span class="n">cpass</span><span class="p">)</span> <span class="o">==</span> <span class="n">cpass</span>
+		<span class="k">return</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="StopServer"><a class="viewcode-back" href="../common.html#httpserver.StopServer">[docs]</a><span class="k">class</span> <span class="nc">StopServer</span><span class="p">:</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Helper class to stop running web servers; we use a class here to reduce use</span>
+<span class="sd">	of global variables. Resembles code prior found in HttpdStop et. al.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">server_to_stop</span> <span class="o">=</span> <span class="mi">0</span>
+
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="n">session</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">callback</span> <span class="o">=</span> <span class="n">callback</span>
+
+	<span class="k">def</span> <span class="nf">doStop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">global</span> <span class="n">listener</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">server_to_stop</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="k">for</span> <span class="n">interface</span> <span class="ow">in</span> <span class="n">listener</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] Stopping server on port&quot;</span><span class="p">,</span> <span class="n">interface</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+			<span class="n">deferred</span> <span class="o">=</span> <span class="n">interface</span><span class="o">.</span><span class="n">stopListening</span><span class="p">()</span>
+			<span class="k">try</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">server_to_stop</span> <span class="o">+=</span> <span class="mi">1</span>
+				<span class="n">deferred</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callbackStopped</span><span class="p">)</span>
+			<span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+				<span class="k">pass</span>
+		<span class="n">listener</span> <span class="o">=</span> <span class="p">[]</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">server_to_stop</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">doCallback</span><span class="p">()</span>
+
+	<span class="k">def</span> <span class="nf">callbackStopped</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reason</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">server_to_stop</span> <span class="o">-=</span> <span class="mi">1</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">server_to_stop</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">doCallback</span><span class="p">()</span>
+
+	<span class="k">def</span> <span class="nf">doCallback</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">)</span></div>
+
+<span class="c1">#</span>
+<span class="c1"># create a self signed SSL certificate if necessary</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">installCertificates</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+	<span class="n">certGenerator</span> <span class="o">=</span> <span class="n">SSLCertificateGenerator</span><span class="p">()</span>
+	<span class="k">try</span><span class="p">:</span>
+		<span class="n">certGenerator</span><span class="o">.</span><span class="n">installCertificates</span><span class="p">()</span>
+	<span class="k">except</span> <span class="ne">IOError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+		<span class="c1"># Disable https</span>
+		<span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">https_enabled</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="kc">False</span>
+		<span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">https_enabled</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+		<span class="c1"># Inform the user</span>
+		<span class="n">session</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">MessageBox</span><span class="p">,</span> <span class="s2">&quot;Cannot install generated SSL-Certifactes for https access</span><span class="se">\n</span><span class="s2">Https access is disabled!&quot;</span><span class="p">,</span> <span class="n">MessageBox</span><span class="o">.</span><span class="n">TYPE_ERROR</span><span class="p">)</span>
+<span class="c1"># BJ</span>
+<span class="k">def</span> <span class="nf">BJregisterService</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
+	<span class="k">try</span><span class="p">:</span>
+		<span class="kn">from</span> <span class="nn">Plugins.Extensions.Bonjour.Bonjour</span> <span class="kn">import</span> <span class="n">bonjour</span>
+		<span class="n">service</span> <span class="o">=</span> <span class="n">bonjour</span><span class="o">.</span><span class="n">buildService</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="s1">&#39;OpenWebif&#39;</span><span class="p">)</span>
+		<span class="n">bonjour</span><span class="o">.</span><span class="n">registerService</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+	<span class="k">except</span><span class="p">:</span> <span class="c1"># nosec</span>
+		<span class="k">pass</span>
+	<span class="k">try</span><span class="p">:</span>
+		<span class="n">servicetype</span> <span class="o">=</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">protocol</span> <span class="o">+</span> <span class="s1">&#39;._tcp&#39;</span>
+		<span class="n">enigma</span><span class="o">.</span><span class="n">e2avahi_announce</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">servicetype</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+	<span class="k">except</span><span class="p">:</span> <span class="c1"># nosec</span>
+		<span class="k">pass</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2018, E2OpenPlugins.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

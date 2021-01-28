@@ -1,0 +1,636 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>controllers.base &mdash; e2openplugin-OpenWebif 1.3.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> e2openplugin-OpenWebif
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.3.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../common.html">Common</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controller.html">Controller</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">e2openplugin-OpenWebif</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>controllers.base</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for controllers.base</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="c1">##########################################################################</span>
+<span class="c1"># OpenWebif: BaseController</span>
+<span class="c1">##########################################################################</span>
+<span class="c1"># Copyright (C) 2011 - 2020 E2OpenPlugins</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software; you can redistribute it and/or modify it</span>
+<span class="c1"># under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation; either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with this program; if not, write to the Free Software Foundation,</span>
+<span class="c1"># Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.</span>
+<span class="c1">##########################################################################</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">imp</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">six</span>
+
+<span class="kn">from</span> <span class="nn">twisted.web</span> <span class="kn">import</span> <span class="n">server</span><span class="p">,</span> <span class="n">http</span><span class="p">,</span> <span class="n">resource</span>
+<span class="kn">from</span> <span class="nn">twisted.web.resource</span> <span class="kn">import</span> <span class="n">EncodingResourceWrapper</span>
+<span class="kn">from</span> <span class="nn">twisted.web.server</span> <span class="kn">import</span> <span class="n">GzipEncoderFactory</span>
+<span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">defer</span>
+<span class="kn">from</span> <span class="nn">twisted.protocols.basic</span> <span class="kn">import</span> <span class="n">FileSender</span>
+
+<span class="kn">from</span> <span class="nn">Plugins.Extensions.OpenWebif.controllers.i18n</span> <span class="kn">import</span> <span class="n">_</span>
+<span class="kn">from</span> <span class="nn">Tools.Directories</span> <span class="kn">import</span> <span class="n">fileExists</span><span class="p">,</span> <span class="n">resolveFilename</span><span class="p">,</span> <span class="n">SCOPE_PLUGINS</span>
+<span class="kn">from</span> <span class="nn">Cheetah.Template</span> <span class="kn">import</span> <span class="n">Template</span>
+<span class="kn">from</span> <span class="nn">enigma</span> <span class="kn">import</span> <span class="n">eEPGCache</span>
+<span class="kn">from</span> <span class="nn">Components.config</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">Components.Network</span> <span class="kn">import</span> <span class="n">iNetwork</span>
+
+<span class="kn">from</span> <span class="nn">Plugins.Extensions.OpenWebif.controllers.models.info</span> <span class="kn">import</span> <span class="n">getInfo</span>
+<span class="kn">from</span> <span class="nn">Plugins.Extensions.OpenWebif.controllers.models.config</span> <span class="kn">import</span> <span class="n">getCollapsedMenus</span><span class="p">,</span> <span class="n">getConfigsSections</span><span class="p">,</span> <span class="n">getShowName</span><span class="p">,</span> <span class="n">getCustomName</span><span class="p">,</span> <span class="n">getBoxName</span>
+<span class="kn">from</span> <span class="nn">Plugins.Extensions.OpenWebif.controllers.defaults</span> <span class="kn">import</span> <span class="n">getPublicPath</span><span class="p">,</span> <span class="n">getViewsPath</span><span class="p">,</span> <span class="n">EXT_EVENT_INFO_SOURCE</span><span class="p">,</span> <span class="n">STB_LANG</span>
+
+<span class="k">def</span> <span class="nf">new_getRequestHostname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="n">host</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getHeader</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;host&#39;</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">host</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">host</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;[&#39;</span><span class="p">:</span>
+			<span class="n">host</span> <span class="o">=</span> <span class="n">host</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;]&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;]&quot;</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">host</span> <span class="o">=</span> <span class="n">host</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">host</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getHost</span><span class="p">()</span><span class="o">.</span><span class="n">host</span>
+	<span class="n">host</span> <span class="o">=</span> <span class="n">six</span><span class="o">.</span><span class="n">ensure_str</span><span class="p">(</span><span class="n">host</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">six</span><span class="o">.</span><span class="n">ensure_str</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+
+
+<span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="o">.</span><span class="n">getRequestHostname</span> <span class="o">=</span> <span class="n">new_getRequestHostname</span>
+
+<span class="n">REMOTE</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+<span class="k">try</span><span class="p">:</span>
+	<span class="kn">from</span> <span class="nn">boxbranding</span> <span class="kn">import</span> <span class="n">getBoxType</span><span class="p">,</span> <span class="n">getMachineName</span>
+<span class="k">except</span><span class="p">:</span>  <span class="c1"># noqa: E722</span>
+	<span class="kn">from</span> <span class="nn">Plugins.Extensions.OpenWebif.controllers.models.owibranding</span> <span class="kn">import</span> <span class="n">getBoxType</span><span class="p">,</span> <span class="n">getMachineName</span>  <span class="c1"># noqa: F401</span>
+
+<span class="k">try</span><span class="p">:</span>
+	<span class="kn">from</span> <span class="nn">Components.RcModel</span> <span class="kn">import</span> <span class="n">rc_model</span>
+	<span class="n">REMOTE</span> <span class="o">=</span> <span class="n">rc_model</span><span class="o">.</span><span class="n">getRcFolder</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;/remote&quot;</span>
+<span class="k">except</span><span class="p">:</span>  <span class="c1"># noqa: E722</span>
+	<span class="kn">from</span> <span class="nn">Plugins.Extensions.OpenWebif.controllers.models.owibranding</span> <span class="kn">import</span> <span class="n">rc_model</span>
+	<span class="n">REMOTE</span> <span class="o">=</span> <span class="n">rc_model</span><span class="p">()</span><span class="o">.</span><span class="n">getRcFolder</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="BaseController"><a class="viewcode-back" href="../../controller.html#controllers.base.BaseController">[docs]</a><span class="k">class</span> <span class="nc">BaseController</span><span class="p">(</span><span class="n">resource</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">	Web Base Controller</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">isLeaf</span> <span class="o">=</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="BaseController.__init__"><a class="viewcode-back" href="../../controller.html#controllers.base.BaseController.__init__">[docs]</a>	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">			* path: Base path</span>
+<span class="sd">			* session: (?) Session instance</span>
+<span class="sd">			* withMainTemplate: (?)</span>
+<span class="sd">			* isJson: responses shall be JSON encoded</span>
+<span class="sd">			* isCustom: (?)</span>
+<span class="sd">			* isGZ: responses shall be GZIP compressed</span>
+<span class="sd">			* isMobile: (?) responses shall be optimised for mobile devices</span>
+<span class="sd">			* isImage: (?) responses shall image</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">resource</span><span class="o">.</span><span class="n">Resource</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">six</span><span class="o">.</span><span class="n">ensure_str</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;session&quot;</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">withMainTemplate</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;withMainTemplate&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">isJson</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;isJson&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">isCustom</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;isCustom&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">isGZ</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;isGZ&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">isMobile</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;isMobile&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">isImage</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;isImage&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseController.error404"><a class="viewcode-back" href="../../controller.html#controllers.base.BaseController.error404">[docs]</a>	<span class="k">def</span> <span class="nf">error404</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Perform HTTP Error 404</span>
+
+<span class="sd">		Args:</span>
+<span class="sd">			request (twisted.web.server.Request): HTTP request object</span>
+
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">request</span><span class="o">.</span><span class="n">setHeader</span><span class="p">(</span><span class="s2">&quot;content-type&quot;</span><span class="p">,</span> <span class="s2">&quot;text/html&quot;</span><span class="p">)</span>
+		<span class="n">request</span><span class="o">.</span><span class="n">setResponseCode</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">NOT_FOUND</span><span class="p">)</span>
+		<span class="n">request</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Open Webif&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Error 404: Page not found&lt;/h1&gt;&lt;br /&gt;The requested URL was not found on this server.&lt;/body&gt;&lt;/html&gt;&quot;</span><span class="p">)</span>
+		<span class="n">request</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span></div>
+
+	<span class="k">def</span> <span class="nf">loadTemplate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+		<span class="k">if</span> <span class="n">fileExists</span><span class="p">(</span><span class="n">getViewsPath</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;.py&quot;</span><span class="p">))</span> <span class="ow">or</span> <span class="n">fileExists</span><span class="p">(</span><span class="n">getViewsPath</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;.pyo&quot;</span><span class="p">)):</span>
+			<span class="k">if</span> <span class="n">fileExists</span><span class="p">(</span><span class="n">getViewsPath</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;.pyo&quot;</span><span class="p">)):</span>
+				<span class="n">template</span> <span class="o">=</span> <span class="n">imp</span><span class="o">.</span><span class="n">load_compiled</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">getViewsPath</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;.pyo&quot;</span><span class="p">))</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="n">template</span> <span class="o">=</span> <span class="n">imp</span><span class="o">.</span><span class="n">load_source</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">getViewsPath</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;.py&quot;</span><span class="p">))</span>
+			<span class="n">mod</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+			<span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">mod</span><span class="p">):</span>
+				<span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">mod</span><span class="p">(</span><span class="n">searchList</span><span class="o">=</span><span class="n">args</span><span class="p">))</span>
+		<span class="k">elif</span> <span class="n">fileExists</span><span class="p">(</span><span class="n">getViewsPath</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;.tmpl&quot;</span><span class="p">)):</span>
+			<span class="n">vp</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">getViewsPath</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;.tmpl&quot;</span><span class="p">))</span>
+			<span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">Template</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">vp</span><span class="p">,</span> <span class="n">searchList</span><span class="o">=</span><span class="p">[</span><span class="n">args</span><span class="p">]))</span>
+		<span class="k">return</span> <span class="kc">None</span>
+
+	<span class="k">def</span> <span class="nf">putChild2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">putChild</span><span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">ensure_binary</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">child</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">putGZChild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
+		<span class="n">child</span><span class="o">.</span><span class="n">isGZ</span> <span class="o">=</span> <span class="kc">True</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">putChild</span><span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">ensure_binary</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">EncodingResourceWrapper</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="p">[</span><span class="n">GzipEncoderFactory</span><span class="p">()]))</span>
+
+	<span class="k">def</span> <span class="nf">getChild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isGZ</span><span class="p">:</span>
+			<span class="k">return</span> <span class="n">EncodingResourceWrapper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">path</span><span class="p">),</span> <span class="p">[</span><span class="n">GzipEncoderFactory</span><span class="p">()])</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+
+	<span class="k">def</span> <span class="nf">NoDataRender</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="p">[]</span>
+
+	<span class="k">def</span> <span class="nf">noData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+		<span class="k">return</span> <span class="p">{}</span>
+
+	<span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+
+		<span class="nd">@defer</span><span class="o">.</span><span class="n">inlineCallbacks</span>
+		<span class="k">def</span> <span class="nf">_showImage</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+
+			<span class="nd">@defer</span><span class="o">.</span><span class="n">inlineCallbacks</span>
+			<span class="k">def</span> <span class="nf">_setContentDispositionAndSend</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+				<span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+				<span class="n">request</span><span class="o">.</span><span class="n">setHeader</span><span class="p">(</span><span class="s1">&#39;content-disposition&#39;</span><span class="p">,</span> <span class="s1">&#39;filename=&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">)</span>
+				<span class="n">request</span><span class="o">.</span><span class="n">setHeader</span><span class="p">(</span><span class="s1">&#39;content-type&#39;</span><span class="p">,</span> <span class="s2">&quot;image/png&quot;</span><span class="p">)</span>
+				<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+				<span class="k">yield</span> <span class="n">FileSender</span><span class="p">()</span><span class="o">.</span><span class="n">beginFileTransfer</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+				<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+				<span class="n">defer</span><span class="o">.</span><span class="n">returnValue</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+			<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+				<span class="k">yield</span> <span class="n">_setContentDispositionAndSend</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="n">request</span><span class="o">.</span><span class="n">setResponseCode</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">NOT_FOUND</span><span class="p">)</span>
+
+			<span class="n">request</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+			<span class="n">defer</span><span class="o">.</span><span class="n">returnValue</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+		<span class="c1"># cache data</span>
+		<span class="n">withMainTemplate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">withMainTemplate</span>
+		<span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span>
+		<span class="n">isCustom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">isCustom</span>
+		<span class="n">isMobile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">isMobile</span>
+		<span class="n">isImage</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">isImage</span>
+
+		<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;index&quot;</span>
+		<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">==</span> <span class="s2">&quot;signal&quot;</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;tunersignal&quot;</span>
+			<span class="n">request</span><span class="o">.</span><span class="n">uri</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;signal&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;tunersignal&#39;</span><span class="p">)</span>
+			<span class="n">request</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;signal&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;tunersignal&#39;</span><span class="p">)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">suppresslog</span> <span class="o">=</span> <span class="kc">False</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;/api/config&#39;</span><span class="p">):</span>
+			<span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;P_config&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+		<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">NoDataRender</span><span class="p">():</span>
+			<span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;noData&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;P_&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+		<span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+			<span class="n">request</span><span class="o">.</span><span class="n">setResponseCode</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">OK</span><span class="p">)</span>
+
+			<span class="c1"># call prePageLoad function if exist</span>
+			<span class="n">plfunc</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;prePageLoad&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+			<span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">plfunc</span><span class="p">):</span>
+				<span class="n">plfunc</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+			<span class="n">data</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+			<span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+				<span class="c1"># if not self.suppresslog:</span>
+					<span class="c1"># print &quot;[OpenWebif] page &#39;%s&#39; without content&quot; % request.uri</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">error404</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+			<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">isCustom</span><span class="p">:</span>
+				<span class="c1"># if not self.suppresslog:</span>
+					<span class="c1"># print &quot;[OpenWebif] page &#39;%s&#39; ok (custom)&quot; % request.uri</span>
+				<span class="n">request</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">ensure_binary</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+				<span class="n">request</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+			<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">isImage</span><span class="p">:</span>
+				<span class="n">_showImage</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+			<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">isJson</span><span class="p">:</span>
+				<span class="n">request</span><span class="o">.</span><span class="n">setHeader</span><span class="p">(</span><span class="s2">&quot;content-type&quot;</span><span class="p">,</span> <span class="s2">&quot;application/json; charset=utf-8&quot;</span><span class="p">)</span>
+				<span class="k">try</span><span class="p">:</span>
+					<span class="k">return</span> <span class="n">six</span><span class="o">.</span><span class="n">ensure_binary</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+				<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+					<span class="n">request</span><span class="o">.</span><span class="n">setResponseCode</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">INTERNAL_SERVER_ERROR</span><span class="p">)</span>
+					<span class="k">return</span> <span class="n">six</span><span class="o">.</span><span class="n">ensure_binary</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;request&quot;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;exception&quot;</span><span class="p">:</span> <span class="nb">repr</span><span class="p">(</span><span class="n">exc</span><span class="p">)}))</span>
+					<span class="k">pass</span>
+			<span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
+				<span class="c1"># if not self.suppresslog:</span>
+					<span class="c1"># print &quot;[OpenWebif] page &#39;%s&#39; ok (simple string)&quot; % request.uri</span>
+				<span class="n">request</span><span class="o">.</span><span class="n">setHeader</span><span class="p">(</span><span class="s2">&quot;content-type&quot;</span><span class="p">,</span> <span class="s2">&quot;text/plain&quot;</span><span class="p">)</span>
+				<span class="n">request</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">ensure_binary</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+				<span class="n">request</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="c1"># print &quot;[OpenWebif] page &#39;%s&#39; ok (cheetah template)&quot; % request.uri</span>
+				<span class="n">module</span> <span class="o">=</span> <span class="n">six</span><span class="o">.</span><span class="n">ensure_text</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+				<span class="k">if</span> <span class="n">module</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
+					<span class="n">module</span> <span class="o">+=</span> <span class="s2">&quot;index&quot;</span>
+				<span class="k">elif</span> <span class="n">module</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span> <span class="o">!=</span> <span class="s2">&quot;index&quot;</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">==</span> <span class="s2">&quot;index&quot;</span><span class="p">:</span>
+					<span class="n">module</span> <span class="o">+=</span> <span class="s2">&quot;/index&quot;</span>
+				<span class="n">module</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+				<span class="n">module</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+				<span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loadTemplate</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+				<span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+					<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] ERROR! Template not found for page &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">error404</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+				<span class="k">else</span><span class="p">:</span>
+					<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isMobile</span><span class="p">:</span>
+						<span class="n">head</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loadTemplate</span><span class="p">(</span><span class="s1">&#39;mobile/head&#39;</span><span class="p">,</span> <span class="s1">&#39;head&#39;</span><span class="p">,</span> <span class="p">[])</span>
+						<span class="n">out</span> <span class="o">=</span> <span class="n">head</span> <span class="o">+</span> <span class="n">out</span>
+					<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">withMainTemplate</span><span class="p">:</span>
+						<span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prepareMainTemplate</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+						<span class="n">args</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span>
+						<span class="n">nout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loadTemplate</span><span class="p">(</span><span class="s2">&quot;main&quot;</span><span class="p">,</span> <span class="s2">&quot;main&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+						<span class="k">if</span> <span class="n">nout</span><span class="p">:</span>
+							<span class="n">out</span> <span class="o">=</span> <span class="n">nout</span>
+					<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">isGZ</span><span class="p">:</span>
+						<span class="k">return</span> <span class="n">out</span>
+					<span class="n">request</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">six</span><span class="o">.</span><span class="n">ensure_binary</span><span class="p">(</span><span class="n">out</span><span class="p">))</span>
+					<span class="n">request</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+
+		<span class="k">else</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[OpenWebif] page &#39;</span><span class="si">%s</span><span class="s2">&#39; not found&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">error404</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+		<span class="c1"># restore cached data</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">withMainTemplate</span> <span class="o">=</span> <span class="n">withMainTemplate</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">isCustom</span> <span class="o">=</span> <span class="n">isCustom</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">isMobile</span> <span class="o">=</span> <span class="n">isMobile</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">isImage</span> <span class="o">=</span> <span class="n">isImage</span>
+
+		<span class="k">return</span> <span class="n">server</span><span class="o">.</span><span class="n">NOT_DONE_YET</span>
+
+	<span class="k">def</span> <span class="nf">oscamconfPath</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="c1"># Find and parse running oscam</span>
+		<span class="n">opath</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="n">owebif</span> <span class="o">=</span> <span class="kc">False</span>
+		<span class="n">oport</span> <span class="o">=</span> <span class="kc">None</span>
+		<span class="n">variant</span> <span class="o">=</span> <span class="s2">&quot;oscam&quot;</span>
+		<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;/tmp/.ncam/ncam.version&quot;</span><span class="p">,</span> <span class="s2">&quot;/tmp/.oscam/oscam.version&quot;</span><span class="p">]:</span>
+			<span class="k">if</span> <span class="n">fileExists</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>  <span class="c1"># nosec</span>
+				<span class="k">if</span> <span class="s2">&quot;ncam&quot;</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+					<span class="n">variant</span> <span class="o">=</span> <span class="s2">&quot;ncam&quot;</span>
+				<span class="k">else</span><span class="p">:</span>
+					<span class="n">variant</span> <span class="o">=</span> <span class="s2">&quot;oscam&quot;</span>
+
+				<span class="n">conffile</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;version&quot;</span><span class="p">,</span> <span class="s2">&quot;conf&quot;</span><span class="p">)</span>
+
+				<span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>  <span class="c1"># nosec</span>
+				<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+					<span class="k">if</span> <span class="s2">&quot;configdir:&quot;</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+						<span class="n">opath</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">conffile</span>
+						<span class="k">if</span> <span class="ow">not</span> <span class="n">fileExists</span><span class="p">(</span><span class="n">opath</span><span class="p">):</span>
+							<span class="n">opath</span> <span class="o">=</span> <span class="kc">None</span>
+					<span class="k">elif</span> <span class="s2">&quot;web interface support:&quot;</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+						<span class="n">owebif</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+						<span class="k">if</span> <span class="n">owebif</span> <span class="o">==</span> <span class="s2">&quot;yes&quot;</span><span class="p">:</span>
+							<span class="n">owebif</span> <span class="o">=</span> <span class="kc">True</span>
+					<span class="k">elif</span> <span class="s2">&quot;webifport:&quot;</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+						<span class="n">oport</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+						<span class="k">if</span> <span class="n">oport</span> <span class="o">==</span> <span class="s2">&quot;0&quot;</span><span class="p">:</span>
+							<span class="n">oport</span> <span class="o">=</span> <span class="kc">None</span>
+					<span class="k">else</span><span class="p">:</span>
+						<span class="k">continue</span>
+		<span class="k">return</span> <span class="n">owebif</span><span class="p">,</span> <span class="n">oport</span><span class="p">,</span> <span class="n">opath</span><span class="p">,</span> <span class="n">variant</span>
+
+	<span class="k">def</span> <span class="nf">prepareMainTemplate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+		<span class="c1"># here will be generated the dictionary for the main template</span>
+		<span class="n">ret</span> <span class="o">=</span> <span class="n">getCollapsedMenus</span><span class="p">()</span>
+		<span class="n">ret</span><span class="p">[</span><span class="s1">&#39;configsections&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">getConfigsSections</span><span class="p">()[</span><span class="s1">&#39;sections&#39;</span><span class="p">]</span>
+		<span class="n">ret</span><span class="p">[</span><span class="s1">&#39;showname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">getShowName</span><span class="p">()[</span><span class="s1">&#39;showname&#39;</span><span class="p">]</span>
+		<span class="n">ret</span><span class="p">[</span><span class="s1">&#39;customname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">getCustomName</span><span class="p">()[</span><span class="s1">&#39;customname&#39;</span><span class="p">]</span>
+		<span class="n">ret</span><span class="p">[</span><span class="s1">&#39;boxname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">getBoxName</span><span class="p">()[</span><span class="s1">&#39;boxname&#39;</span><span class="p">]</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">[</span><span class="s1">&#39;boxname&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">[</span><span class="s1">&#39;customname&#39;</span><span class="p">]:</span>
+			<span class="n">ret</span><span class="p">[</span><span class="s1">&#39;boxname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">getInfo</span><span class="p">()[</span><span class="s1">&#39;brand&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">getInfo</span><span class="p">()[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span>
+		<span class="n">ret</span><span class="p">[</span><span class="s1">&#39;box&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">getBoxType</span><span class="p">()</span>
+		<span class="n">ret</span><span class="p">[</span><span class="s2">&quot;remote&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">REMOTE</span>
+		<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">eEPGCache</span><span class="p">,</span> <span class="s1">&#39;FULL_DESCRIPTION_SEARCH&#39;</span><span class="p">):</span>
+			<span class="n">ret</span><span class="p">[</span><span class="s1">&#39;epgsearchcaps&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">ret</span><span class="p">[</span><span class="s1">&#39;epgsearchcaps&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+		<span class="n">extras</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;ajax/settings&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;Settings&quot;</span><span class="p">)}]</span>
+		<span class="n">ifaces</span> <span class="o">=</span> <span class="n">iNetwork</span><span class="o">.</span><span class="n">getConfiguredAdapters</span><span class="p">()</span>
+		<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ifaces</span><span class="p">):</span>
+			<span class="n">ip_list</span> <span class="o">=</span> <span class="n">iNetwork</span><span class="o">.</span><span class="n">getAdapterAttribute</span><span class="p">(</span><span class="n">ifaces</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;ip&quot;</span><span class="p">)</span>  <span class="c1"># use only the first configured interface</span>
+			<span class="k">if</span> <span class="n">ip_list</span><span class="p">:</span>
+				<span class="n">ip</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">.</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ip_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ip_list</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ip_list</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">ip_list</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+
+				<span class="k">if</span> <span class="n">fileExists</span><span class="p">(</span><span class="n">resolveFilename</span><span class="p">(</span><span class="n">SCOPE_PLUGINS</span><span class="p">,</span> <span class="s2">&quot;Extensions/LCD4linux/WebSite.pyo&quot;</span><span class="p">))</span> <span class="ow">or</span> <span class="n">fileExists</span><span class="p">(</span><span class="n">resolveFilename</span><span class="p">(</span><span class="n">SCOPE_PLUGINS</span><span class="p">,</span> <span class="s2">&quot;Extensions/LCD4linux/WebSite.py&quot;</span><span class="p">)):</span>
+					<span class="n">lcd4linux_key</span> <span class="o">=</span> <span class="s2">&quot;lcd4linux/config&quot;</span>
+					<span class="k">if</span> <span class="n">fileExists</span><span class="p">(</span><span class="n">resolveFilename</span><span class="p">(</span><span class="n">SCOPE_PLUGINS</span><span class="p">,</span> <span class="s2">&quot;Extensions/WebInterface/plugin.pyo&quot;</span><span class="p">))</span> <span class="ow">or</span> <span class="n">fileExists</span><span class="p">(</span><span class="n">resolveFilename</span><span class="p">(</span><span class="n">SCOPE_PLUGINS</span><span class="p">,</span> <span class="s2">&quot;Extensions/WebInterface/plugin.py&quot;</span><span class="p">)):</span>
+						<span class="k">try</span><span class="p">:</span>
+							<span class="n">lcd4linux_port</span> <span class="o">=</span> <span class="s2">&quot;http://&quot;</span> <span class="o">+</span> <span class="n">ip</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">plugins</span><span class="o">.</span><span class="n">Webinterface</span><span class="o">.</span><span class="n">http</span><span class="o">.</span><span class="n">port</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+							<span class="n">lcd4linux_key</span> <span class="o">=</span> <span class="n">lcd4linux_port</span> <span class="o">+</span> <span class="s1">&#39;lcd4linux/config&#39;</span>
+						<span class="k">except</span><span class="p">:</span>  <span class="c1"># noqa: E722</span>
+							<span class="n">lcd4linux_key</span> <span class="o">=</span> <span class="kc">None</span>
+					<span class="k">if</span> <span class="n">lcd4linux_key</span><span class="p">:</span>
+						<span class="n">extras</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">lcd4linux_key</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;LCD4Linux Setup&quot;</span><span class="p">),</span> <span class="s1">&#39;nw&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">})</span>
+
+		<span class="n">oscamwebif</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">oscamconf</span><span class="p">,</span> <span class="n">variant</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">oscamconfPath</span><span class="p">()</span>
+
+		<span class="c1"># Assume http until we know better ...</span>
+		<span class="n">proto</span> <span class="o">=</span> <span class="s2">&quot;http&quot;</span>
+
+		<span class="c1"># config file exists</span>
+		<span class="k">if</span> <span class="n">oscamwebif</span> <span class="ow">and</span> <span class="n">oscamconf</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="c1"># oscam defaults to NOT to start the web interface unless a section for it exists, so reset port to None until we find one</span>
+			<span class="n">port</span> <span class="o">=</span> <span class="kc">None</span>
+			<span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">oscamconf</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+			<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+				<span class="k">if</span> <span class="s2">&quot;httpport&quot;</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+					<span class="n">port</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+					<span class="k">if</span> <span class="n">port</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;+&#39;</span><span class="p">:</span>
+						<span class="n">proto</span> <span class="o">=</span> <span class="s2">&quot;https&quot;</span>
+						<span class="n">port</span> <span class="o">=</span> <span class="n">port</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+		<span class="k">if</span> <span class="n">oscamwebif</span> <span class="ow">and</span> <span class="n">port</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+			<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">://</span><span class="si">%s</span><span class="s2">:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">proto</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">getRequestHostname</span><span class="p">(),</span> <span class="n">port</span><span class="p">)</span>
+			<span class="k">if</span> <span class="n">variant</span> <span class="o">==</span> <span class="s2">&quot;oscam&quot;</span><span class="p">:</span>
+				<span class="n">extras</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;OSCam Webinterface&quot;</span><span class="p">),</span> <span class="s1">&#39;nw&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">})</span>
+			<span class="k">elif</span> <span class="n">variant</span> <span class="o">==</span> <span class="s2">&quot;ncam&quot;</span><span class="p">:</span>
+				<span class="n">extras</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;NCam Webinterface&quot;</span><span class="p">),</span> <span class="s1">&#39;nw&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">})</span>
+
+		<span class="k">try</span><span class="p">:</span>
+			<span class="kn">from</span> <span class="nn">Plugins.Extensions.AutoTimer.AutoTimer</span> <span class="kn">import</span> <span class="n">AutoTimer</span>  <span class="c1"># noqa: F401</span>
+			<span class="n">extras</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;ajax/at&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;AutoTimer&#39;</span><span class="p">)})</span>
+		<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+			<span class="k">pass</span>
+
+		<span class="k">if</span> <span class="n">fileExists</span><span class="p">(</span><span class="n">resolveFilename</span><span class="p">(</span><span class="n">SCOPE_PLUGINS</span><span class="p">,</span> <span class="s2">&quot;Extensions/OpenWebif/controllers/views/ajax/bqe.tmpl&quot;</span><span class="p">))</span> <span class="ow">or</span> <span class="n">fileExists</span><span class="p">(</span><span class="n">resolveFilename</span><span class="p">(</span><span class="n">SCOPE_PLUGINS</span><span class="p">,</span> <span class="s2">&quot;Extensions/OpenWebif/controllers/views/ajax/bqe.pyo&quot;</span><span class="p">)):</span>
+			<span class="n">extras</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;ajax/bqe&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;BouquetEditor&#39;</span><span class="p">)})</span>
+
+		<span class="k">try</span><span class="p">:</span>
+			<span class="kn">from</span> <span class="nn">Plugins.Extensions.EPGRefresh.EPGRefresh</span> <span class="kn">import</span> <span class="n">epgrefresh</span>  <span class="c1"># noqa: F401</span>
+			<span class="n">extras</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;ajax/epgr&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;EPGRefresh&#39;</span><span class="p">)})</span>
+		<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+			<span class="k">pass</span>
+
+		<span class="k">try</span><span class="p">:</span>
+			<span class="c1"># this will currenly only works if NO Webiterface plugin installed</span>
+			<span class="c1"># TODO: test if webinterface AND openwebif installed</span>
+
+			<span class="c1"># &#39;nw&#39;=&#39;1&#39; -&gt; target _blank</span>
+			<span class="c1"># &#39;nw&#39;=&#39;2&#39; -&gt; target popup</span>
+			<span class="c1"># &#39;nw&#39;=None -&gt; target _self</span>
+		
+			<span class="c1"># syntax</span>
+			<span class="c1"># addExternalChild( (Link, Resource, Name, Version, HasGUI, WebTarget) )</span>
+			<span class="c1"># example addExternalChild( (&quot;webadmin&quot;, root, &quot;WebAdmin&quot;, 1, True, &quot;_self&quot;) )</span>
+
+			<span class="kn">from</span> <span class="nn">Plugins.Extensions.WebInterface.WebChilds.Toplevel</span> <span class="kn">import</span> <span class="n">loaded_plugins</span>
+			<span class="k">for</span> <span class="n">plugins</span> <span class="ow">in</span> <span class="n">loaded_plugins</span><span class="p">:</span>
+				<span class="k">if</span> <span class="n">plugins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;fancontrol&quot;</span><span class="p">,</span> <span class="s2">&quot;iptvplayer&quot;</span><span class="p">,</span> <span class="s2">&quot;serienrecorderui&quot;</span><span class="p">]:</span>
+					<span class="k">try</span><span class="p">:</span>
+						<span class="n">extras</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">plugins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">plugins</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;nw&#39;</span><span class="p">:</span> <span class="s1">&#39;2&#39;</span><span class="p">})</span>
+					<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+						<span class="k">pass</span>
+				<span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">plugins</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
+					<span class="k">if</span> <span class="n">plugins</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+						<span class="k">try</span><span class="p">:</span>
+							<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">plugins</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">plugins</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;_self&quot;</span><span class="p">:</span>
+								<span class="n">extras</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">plugins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">plugins</span><span class="p">[</span><span class="mi">2</span><span class="p">]})</span>
+							<span class="k">else</span><span class="p">:</span>
+								<span class="n">extras</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">plugins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">plugins</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;nw&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">})</span>
+						<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+							<span class="k">pass</span>
+
+		<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+			<span class="k">pass</span>
+
+		<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;/usr/bin/shellinaboxd&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">fileExists</span><span class="p">(</span><span class="n">resolveFilename</span><span class="p">(</span><span class="n">SCOPE_PLUGINS</span><span class="p">,</span> <span class="s2">&quot;Extensions/OpenWebif/controllers/views/ajax/terminal.tmpl&quot;</span><span class="p">))</span> <span class="ow">or</span> <span class="n">fileExists</span><span class="p">(</span><span class="n">resolveFilename</span><span class="p">(</span><span class="n">SCOPE_PLUGINS</span><span class="p">,</span> <span class="s2">&quot;Extensions/OpenWebif/controllers/views/ajax/terminal.pyo&quot;</span><span class="p">))):</span>
+			<span class="n">extras</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;ajax/terminal&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">&#39;Terminal&#39;</span><span class="p">)})</span>
+
+		<span class="n">ret</span><span class="p">[</span><span class="s1">&#39;extras&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">extras</span>
+		<span class="n">theme</span> <span class="o">=</span> <span class="s1">&#39;original&#39;</span>
+		<span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">webcache</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+			<span class="n">theme</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">webcache</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">value</span>
+		<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">getPublicPath</span><span class="p">(</span><span class="s1">&#39;themes&#39;</span><span class="p">)):</span>
+			<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">theme</span> <span class="o">==</span> <span class="s1">&#39;original&#39;</span> <span class="ow">or</span> <span class="n">theme</span> <span class="o">==</span> <span class="s1">&#39;clear&#39;</span><span class="p">):</span>
+				<span class="n">theme</span> <span class="o">=</span> <span class="s1">&#39;original&#39;</span>
+				<span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">webcache</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">theme</span>
+				<span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">webcache</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+		<span class="n">ret</span><span class="p">[</span><span class="s1">&#39;theme&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">theme</span>
+		<span class="n">moviedb</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">webcache</span><span class="o">.</span><span class="n">moviedb</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">webcache</span><span class="o">.</span><span class="n">moviedb</span><span class="o">.</span><span class="n">value</span> <span class="k">else</span> <span class="n">EXT_EVENT_INFO_SOURCE</span>
+		<span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">webcache</span><span class="o">.</span><span class="n">moviedb</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">moviedb</span>
+		<span class="n">config</span><span class="o">.</span><span class="n">OpenWebif</span><span class="o">.</span><span class="n">webcache</span><span class="o">.</span><span class="n">moviedb</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+		<span class="n">ret</span><span class="p">[</span><span class="s1">&#39;moviedb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">moviedb</span>
+		<span class="n">imagedistro</span> <span class="o">=</span> <span class="n">getInfo</span><span class="p">()[</span><span class="s1">&#39;imagedistro&#39;</span><span class="p">]</span>
+		<span class="n">ret</span><span class="p">[</span><span class="s1">&#39;vti&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">imagedistro</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;VTi-Team Image&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">1</span> <span class="ow">or</span> <span class="mi">0</span>
+		<span class="n">ret</span><span class="p">[</span><span class="s1">&#39;webtv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">getPublicPath</span><span class="p">(</span><span class="s1">&#39;webtv&#39;</span><span class="p">))</span>
+		<span class="n">ret</span><span class="p">[</span><span class="s1">&#39;stbLang&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">STB_LANG</span>
+		<span class="k">return</span> <span class="n">ret</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2018, E2OpenPlugins.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

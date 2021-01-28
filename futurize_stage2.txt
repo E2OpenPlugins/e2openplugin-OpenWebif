@@ -1,0 +1,70 @@
+--- locale/xml2po.py	(original)
++++ locale/xml2po.py	(refactored)
+@@ -1,6 +1,8 @@
+ #!/usr/bin/python
+ # -*- coding: utf-8 -*-
+ from __future__ import print_function
++from builtins import str
++from builtins import object
+ import sys
+ import os
+ import string
+@@ -11,7 +13,7 @@
+ 	from _xmlplus.sax.saxlib import LexicalHandler
+ 	no_comments = False
+ except ImportError:
+-	class LexicalHandler:
++	class LexicalHandler(object):
+ 		pass
+ 	no_comments = True
+ 
+--- plugin/httpserver.py	(original)
++++ plugin/httpserver.py	(refactored)
+@@ -22,6 +22,8 @@
+ ##########################################################################
+ 
+ from __future__ import print_function
++from builtins import str
++from builtins import object
+ import enigma
+ from Screens.MessageBox import MessageBox
+ from Components.config import config
+@@ -432,7 +434,7 @@
+ 			return crypt(passwd, cpass) == cpass
+ 		return False
+ 
+-class StopServer:
++class StopServer(object):
+ 	"""
+ 	Helper class to stop running web servers; we use a class here to reduce use
+ 	of global variables. Resembles code prior found in HttpdStop et. al.
+--- plugin/sslcertificate.py	(original)
++++ plugin/sslcertificate.py	(refactored)
+@@ -21,6 +21,7 @@
+ ##########################################################################
+ 
+ from __future__ import print_function
++from builtins import object
+ from OpenSSL import crypto
+ from socket import gethostname
+ from time import time
+@@ -35,7 +36,7 @@
+ CERT_FILE = resolveFilename(SCOPE_CONFIG, "cert.pem")
+ CHAIN_FILE = resolveFilename(SCOPE_CONFIG, "chain.pem")
+ 
+-class SSLCertificateGenerator:
++class SSLCertificateGenerator(object):
+ 
+ 	def __init__(self):
+ 		# define some defaults
+--- testsuite/evil_eval.py	(original)
++++ testsuite/evil_eval.py	(refactored)
+@@ -1,6 +1,8 @@
+ #!/usr/bin/python
+ # -*- coding: utf-8 -*-
+ from __future__ import print_function
++from builtins import str
++from builtins import object
+ """
+ Unit Test for Code Trying to Mitigate a Remote Code Execution Vulnerability
+ (CVE-2017-9807).

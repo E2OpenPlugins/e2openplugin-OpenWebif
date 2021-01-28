@@ -1,0 +1,874 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+    Bandit Report
+</title>
+
+<style>
+
+html * {
+    font-family: "Arial", sans-serif;
+}
+
+pre {
+    font-family: "Monaco", monospace;
+}
+
+.bordered-box {
+    border: 1px solid black;
+    padding-top:.5em;
+    padding-bottom:.5em;
+    padding-left:1em;
+}
+
+.metrics-box {
+    font-size: 1.1em;
+    line-height: 130%;
+}
+
+.metrics-title {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: .25em;
+}
+
+.issue-description {
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.candidate-issues {
+    margin-left: 2em;
+    border-left: solid 1px; LightGray;
+    padding-left: 5%;
+    margin-top: .2em;
+    margin-bottom: .2em;
+}
+
+.issue-block {
+    border: 1px solid LightGray;
+    padding-left: .5em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    margin-bottom: .5em;
+}
+
+.issue-sev-high {
+    background-color: Pink;
+}
+
+.issue-sev-medium {
+    background-color: NavajoWhite;
+}
+
+.issue-sev-low {
+    background-color: LightCyan;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="metrics">
+    <div class="metrics-box bordered-box">
+        <div class="metrics-title">
+            Metrics:<br>
+        </div>
+        Total lines of code: <span id="loc">42472</span><br>
+        Total lines skipped (#nosec): <span id="nosec">33</span>
+    </div>
+</div>
+
+
+
+
+<br>
+<div id="results">
+    
+<div id="issue-0">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>File: </b><a href="plugin/controllers/AT.py" target="_blank">plugin/controllers/AT.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+73				os.remove(ATFN)
+74			checkfile = '/tmp/.autotimeredit'
+75			f = os.open(checkfile, os.O_WRONLY | os.O_CREAT)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-1">
+<div class="issue-block issue-sev-high">
+    <b>start_process_with_a_shell: </b> Starting a process with a shell, possible injection detected, security issue.<br>
+    <b>Test ID:</b> B605<br>
+    <b>Severity: </b>HIGH<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/AT.py" target="_blank">plugin/controllers/AT.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b605_start_process_with_a_shell.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b605_start_process_with_a_shell.html</a><br>
+
+<div class="code">
+<pre>
+86					tarFiles += "%s " % arg
+87				lines = os.popen("tar cvf %s %s" % (ATFN, tarFiles)).readlines()
+88				os.remove(checkfile)
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-2">
+<div class="issue-block issue-sev-high">
+    <b>start_process_with_a_shell: </b> Starting a process with a shell, possible injection detected, security issue.<br>
+    <b>Test ID:</b> B605<br>
+    <b>Severity: </b>HIGH<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/AT.py" target="_blank">plugin/controllers/AT.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b605_start_process_with_a_shell.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b605_start_process_with_a_shell.html</a><br>
+
+<div class="code">
+<pre>
+109				check_tar = False
+110				lines = os.popen('tar -tf %s' % ATFN).readlines()
+111				for line in lines:
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-3">
+<div class="issue-block issue-sev-high">
+    <b>start_process_with_a_shell: </b> Starting a process with a shell, possible injection detected, security issue.<br>
+    <b>Test ID:</b> B605<br>
+    <b>Severity: </b>HIGH<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/AT.py" target="_blank">plugin/controllers/AT.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b605_start_process_with_a_shell.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b605_start_process_with_a_shell.html</a><br>
+
+<div class="code">
+<pre>
+116				if check_tar:
+117					lines = os.popen('tar xvf %s -C /' % ATFN).readlines()
+118	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-4">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/AT.py" target="_blank">plugin/controllers/AT.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+124							autotimer.readXml()
+125						except Exception:
+126							# TODO: proper error handling
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-5">
+<div class="issue-block issue-sev-low">
+    <b>hardcoded_password_string: </b> Possible hardcoded password: ''<br>
+    <b>Test ID:</b> B105<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>File: </b><a href="plugin/controllers/NET.py" target="_blank">plugin/controllers/NET.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b105_hardcoded_password_string.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b105_hardcoded_password_string.html</a><br>
+
+<div class="code">
+<pre>
+186			if password is None:
+187				password = ""
+188	
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-6">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>File: </b><a href="plugin/controllers/base.py" target="_blank">plugin/controllers/base.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+278			variant = "oscam"
+279			for file in ["/tmp/.ncam/ncam.version", "/tmp/.oscam/oscam.version"]:
+280				if fileExists(file):  # nosec
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-7">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>File: </b><a href="plugin/controllers/base.py" target="_blank">plugin/controllers/base.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+278			variant = "oscam"
+279			for file in ["/tmp/.ncam/ncam.version", "/tmp/.oscam/oscam.version"]:
+280				if fileExists(file):  # nosec
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-8">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>File: </b><a href="plugin/controllers/ipkg.py" target="_blank">plugin/controllers/ipkg.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+85			try:
+86				for line in open("/tmp/opkg.tmp", 'r'):
+87					if line.startswith('Package:'):
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-9">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>File: </b><a href="plugin/controllers/ipkg.py" target="_blank">plugin/controllers/ipkg.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+203					try:
+204						data = open("/tmp/opkg.tmp", 'r').read()
+205						self.request.write(six.ensure_binary(data))
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-10">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/OWFMovieList.py" target="_blank">plugin/controllers/models/OWFMovieList.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+41					return serviceref.getPath()
+42			except:
+43				pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-11">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/config.py" target="_blank">plugin/controllers/models/config.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+231					})
+232				except Exception:
+233					pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-12">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_tmp_directory: </b> Probable insecure usage of temp file/directory.<br>
+    <b>Test ID:</b> B108<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>File: </b><a href="plugin/controllers/models/grab.py" target="_blank">plugin/controllers/models/grab.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b108_hardcoded_tmp_directory.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b108_hardcoded_tmp_directory.html</a><br>
+
+<div class="code">
+<pre>
+68	
+69			self.filepath = "/tmp/screenshot." + fileformat
+70			self.container = eConsoleAppContainer()
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-13">
+<div class="issue-block issue-sev-high">
+    <b>start_process_with_a_shell: </b> Starting a process with a shell, possible injection detected, security issue.<br>
+    <b>Test ID:</b> B605<br>
+    <b>Severity: </b>HIGH<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/info.py" target="_blank">plugin/controllers/models/info.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b605_start_process_with_a_shell.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b605_start_process_with_a_shell.html</a><br>
+
+<div class="code">
+<pre>
+109				try:
+110					speed = os.popen('iwconfig ' + iface + ' | grep "Bit Rate"').read().split(':')[1].split(' ')[0]
+111				except:
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-14">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/info.py" target="_blank">plugin/controllers/models/info.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+110					speed = os.popen('iwconfig ' + iface + ' | grep "Bit Rate"').read().split(':')[1].split(' ')[0]
+111				except:
+112					pass 
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-15">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/info.py" target="_blank">plugin/controllers/models/info.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+123			nic = str(nic)
+124		except:  # noqa: E722
+125			pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-16">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/info.py" target="_blank">plugin/controllers/models/info.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+500										ipaddress = list(tmpaddress)[0][4][0]
+501							except:  # noqa: E722
+502								pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-17">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/movies.py" target="_blank">plugin/controllers/models/movies.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+213						length_minutes = info.getLength(serviceref)
+214					except:  # noqa: E722
+215						pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-18">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/movies.py" target="_blank">plugin/controllers/models/movies.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+248								sz = "%.2f %s" % ((size / 1024.), _("kB"))
+249						except:  # noqa: E722
+250							pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-19">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/movies.py" target="_blank">plugin/controllers/models/movies.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+332				length_minutes = info.getLength(serviceref)
+333			except:  # noqa: E722
+334				pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-20">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/movies.py" target="_blank">plugin/controllers/models/movies.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+366						sz = "%.2f %s" % ((size / 1024.), _("kB"))
+367				except:  # noqa: E722
+368					pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-21">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/movies.py" target="_blank">plugin/controllers/models/movies.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+753				length_minutes = info.getLength(serviceref)
+754			except:  # noqa: E722
+755				pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-22">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/movies.py" target="_blank">plugin/controllers/models/movies.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+784					sz = "%.2f %s" % ((size / 1024.), _("kB"))
+785			except:  # noqa: E722
+786				pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-23">
+<div class="issue-block issue-sev-medium">
+    <b>blacklist: </b> Use of insecure MD2, MD4, MD5, or SHA1 hash function.<br>
+    <b>Test ID:</b> B303<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/owibranding.py" target="_blank">plugin/controllers/models/owibranding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b303-md5" target="_blank">https://bandit.readthedocs.io/en/latest/blacklists/blacklist_calls.html#b303-md5</a><br>
+
+<div class="code">
+<pre>
+83		dest = rsa_pub1024(src[:128], mod)
+84		hash = hashlib.sha1(dest[1:107])
+85		if len(src) == 202:
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-24">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/services.py" target="_blank">plugin/controllers/models/services.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+140					bqref = ServiceReference(epg_bouquet).ref.toString()
+141			except:  # noqa: E722
+142				pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-25">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/stream.py" target="_blank">plugin/controllers/models/stream.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+111					args = args.replace('__', urlparam)
+112				except Exception:
+113					pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-26">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/stream.py" target="_blank">plugin/controllers/models/stream.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+217						args = args.replace('__', urlparam)
+218					except Exception:
+219						pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-27">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/timers.py" target="_blank">plugin/controllers/models/timers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+57				filename = timer.Filename
+58			except Exception:
+59				pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-28">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/models/timers.py" target="_blank">plugin/controllers/models/timers.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+62				nextactivation = timer.next_activation
+63			except Exception:
+64				pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-29">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/root.py" target="_blank">plugin/controllers/root.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+78				self.putChild2("net", NetController(session))
+79			except:  # noqa: E722
+80				pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-30">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/transcoding.py" target="_blank">plugin/controllers/transcoding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+38						encoder_features[feature] = getattr(config.plugins.transcodingsetup, feature)
+39					except:  # noqa: E722
+40						pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-31">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/transcoding.py" target="_blank">plugin/controllers/transcoding.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+44						encoder_features[feature] = getattr(config.plugins.transcodingsetup, "%s_%s" % (feature, encoder))
+45					except:  # noqa: E722
+46						pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-32">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_bind_all_interfaces: </b> Possible binding to all interfaces.<br>
+    <b>Test ID:</b> B104<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>File: </b><a href="plugin/controllers/views/ajax/boxinfo.py" target="_blank">plugin/controllers/views/ajax/boxinfo.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b104_hardcoded_bind_all_interfaces.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b104_hardcoded_bind_all_interfaces.html</a><br>
+
+<div class="code">
+<pre>
+427	''')
+428	            if VFFSL(SL,"iface.ip",True) != "0.0.0.0": # generated from line 165, col 7
+429	                write(u'''\t\t\t\t\t\t\t&lt;tr&gt;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-33">
+<div class="issue-block issue-sev-medium">
+    <b>hardcoded_bind_all_interfaces: </b> Possible binding to all interfaces.<br>
+    <b>Test ID:</b> B104<br>
+    <b>Severity: </b>MEDIUM<br>
+    <b>Confidence: </b>MEDIUM<br>
+    <b>File: </b><a href="plugin/controllers/views/responsive/ajax/boxinfo.py" target="_blank">plugin/controllers/views/responsive/ajax/boxinfo.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b104_hardcoded_bind_all_interfaces.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b104_hardcoded_bind_all_interfaces.html</a><br>
+
+<div class="code">
+<pre>
+525	''')
+526	            if VFFSL(SL,"iface.ip",True) != "0.0.0.0": # generated from line 250, col 7
+527	                write(u'''\t\t\t\t\t\t\t\t\t&lt;div class="row clearfix"&gt;
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-34">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/web.py" target="_blank">plugin/controllers/web.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+2248						return {'configs': resultcfgs}
+2249				except Exception:
+2250					# TODO show exception
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-35">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/web.py" target="_blank">plugin/controllers/web.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+2262					comp_config.OpenWebif.webcache.moviedb.save()
+2263				except Exception:
+2264					pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+<div id="issue-36">
+<div class="issue-block issue-sev-low">
+    <b>try_except_pass: </b> Try, Except, Pass detected.<br>
+    <b>Test ID:</b> B110<br>
+    <b>Severity: </b>LOW<br>
+    <b>Confidence: </b>HIGH<br>
+    <b>File: </b><a href="plugin/controllers/web.py" target="_blank">plugin/controllers/web.py</a> <br>
+    <b>More info: </b><a href="https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html" target="_blank">https://bandit.readthedocs.io/en/latest/plugins/b110_try_except_pass.html</a><br>
+
+<div class="code">
+<pre>
+2280					comp_config.OpenWebif.webcache.theme.save()
+2281				except Exception:
+2282					pass
+</pre>
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
