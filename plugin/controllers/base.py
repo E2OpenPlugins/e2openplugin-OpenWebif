@@ -425,7 +425,7 @@ class BaseController(resource.Resource):
 		config.OpenWebif.webcache.moviedb.save()
 		ret['moviedb'] = moviedb
 		imagedistro = getInfo()['imagedistro']
-		ret['vti'] = imagedistro in ("VTi-Team Image") and 1 or 0
+		ret['vti'] = "1" if imagedistro in ("VTi-Team Image") else "0"
 		ret['webtv'] = os.path.exists(getPublicPath('webtv'))
 		ret['stbLang'] = STB_LANG
 		return ret
