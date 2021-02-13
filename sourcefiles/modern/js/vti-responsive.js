@@ -61,6 +61,8 @@ $(function () {
 
 	$.VTiTools.epgsearch.activate();
 	$.VTiTools.moviesearch.activate();
+	// do we need this keydown?
+	// see main.tmpl accesskey="..."
 	$(document).keydown(function(e) {
 		if ((e.ctrlKey || e.cmdKey) &&  e.keyCode === 70)  {
 			e.preventDefault();
