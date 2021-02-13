@@ -2749,13 +2749,15 @@
    position: relative;
    top: 3px;
  }
- 
+
+ /* WHY 
  .btn:not(.btn-link):not(.btn-circle) span {
    position: relative;
    top: -2px;
    margin-left: 3px;
  }
- 
+ */
+
  .btn-warning,
  .btn-warning:hover,
  .btn-warning:active,
@@ -2828,6 +2830,8 @@
  .btn-group-vertical .btn + .dropdown-toggle {
    border-left: 1px solid rgba(0, 0, 0, 0.08) !important;
  }
+
+ /* WHY
  
 .bootstrap-select.btn-group .dropdown-toggle {
   padding-left: 0;
@@ -2840,6 +2844,7 @@
 .bootstrap-select > .dropdown-toggle {
   padding-right: 0;
 }
+*/
 
  /* Bootstrap Tags Input ======================== */
  .bootstrap-tagsinput {
@@ -5212,11 +5217,12 @@
    border-radius: 0;
    padding-left: 0;
  }
-
+/* WHY
  .form-group .form-control {
    padding-left: 12px;
  }
- 
+ */
+
  .form-group .help-info {
    float: right;
    font-size: 12px;
