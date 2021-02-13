@@ -25,6 +25,7 @@ import six
 
 from twisted.web import static, http, proxy
 from Components.config import config
+from Components.Harddisk import harddiskmanager
 
 from Plugins.Extensions.OpenWebif.controllers.models.grab import grabScreenshot
 from Plugins.Extensions.OpenWebif.controllers.base import BaseController
@@ -38,7 +39,7 @@ from Plugins.Extensions.OpenWebif.controllers.BQE import BQEController
 from Plugins.Extensions.OpenWebif.controllers.transcoding import TranscodingController
 from Plugins.Extensions.OpenWebif.controllers.wol import WOLSetupController, WOLClientController
 from Plugins.Extensions.OpenWebif.controllers.file import FileController
-from Plugins.Extensions.OpenWebif.controllers.defaults import PICON_PATH, getPublicPath, VIEWS_PATH
+from Plugins.Extensions.OpenWebif.controllers.defaults import PICON_PATH, getPublicPath, VIEWS_PATH, setMobile, refreshPiconPath
 from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
 class RootController(BaseController):
@@ -72,12 +73,25 @@ class RootController(BaseController):
 		self.putChild2("wol", WOLClientController())
 		self.putChild2("wolsetup", WOLSetupController(session))
 		if PICON_PATH:
-			self.putChild2("picon", static.File(six.ensure_binary(PICON_PATH)))
+			self.setPiconChild(PICON_PATH)
 		try:
 			from Plugins.Extensions.OpenWebif.controllers.NET import NetController
 			self.putChild2("net", NetController(session))
 		except:  # noqa: E722
 			pass
+		try:
+			harddiskmanager.on_partition_list_change.append(self.onPartitionChange)
+		except:  # noqa: E722
+			pass
+
+# TODO : test !!
+	def onPartitionChange(self, why, part):
+		refreshPiconPath()
+		if PICON_PATH:
+			self.setPiconChild(PICON_PATH)
+
+	def setPiconChild(self, pp):
+		self.putChild2("picon", static.File(six.ensure_binary(pp)))
 
 	# this function will be called before a page is loaded
 	def prePageLoad(self, request):
@@ -89,8 +103,17 @@ class RootController(BaseController):
 	def P_index(self, request):
 		if config.OpenWebif.responsive_enabled.value and os.path.exists(VIEWS_PATH + "/responsive"):
 			return {}
+		# TODO: enable this if modern UI is finished for mobile
+		# setMobile()
 		mode = getUrlArg(request, "mode", "")
 		uagent = request.getHeader('User-Agent')
+		# TODO: enable this if modern UI is finished for mobile
+		#if os.path.exists(VIEWS_PATH + "/responsive"):
+		#	if uagent.lower().find("iphone") != -1 or uagent.lower().find("ipod") != -1 or uagent.lower().find("blackberry") != -1 or uagent.lower().find("mobile") != -1:
+		#		setMobile(True)
+		#		return {}
+
+		# TODO: remove this if mobile parts removed
 		if uagent and mode != 'fullpage' and os.path.exists(getPublicPath('mobile')):
 			if uagent.lower().find("iphone") != -1 or uagent.lower().find("ipod") != -1 or uagent.lower().find("blackberry") != -1 or uagent.lower().find("mobile") != -1:
 				request.setHeader("Location", "/mobile/")

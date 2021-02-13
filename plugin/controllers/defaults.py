@@ -25,6 +25,8 @@ GLOBALPICONPATH = None
 
 STB_LANG = language.getLanguage()
 
+MOBILEDEVICE = False
+
 #: get transcoding feature
 def getTranscoding():
 	if os.path.isfile("/proc/stb/encoder/0/bitrate"):
@@ -45,8 +47,14 @@ def getExtEventInfoProvider():
 		defaultValue = 'IMDb'
 	return defaultValue
 
+def setMobile(isMobile=False):
+# TODO: do we need this?
+	global MOBILEDEVICE
+	MOBILEDEVICE = isMobile
+
 def getViewsPath(file=""):
-	if comp_config.OpenWebif.responsive_enabled.value and os.path.exists(VIEWS_PATH + "/responsive") and not (file.startswith('web/') or file.startswith('/web/')):
+	global MOBILEDEVICE
+	if ( comp_config.OpenWebif.responsive_enabled.value or MOBILEDEVICE ) and os.path.exists(VIEWS_PATH + "/responsive") and not (file.startswith('web/') or file.startswith('/web/')):
 		return VIEWS_PATH + "/responsive/" + file
 	else:
 		return VIEWS_PATH + "/" + file
@@ -94,10 +102,14 @@ def getPiconPath():
 
 	return None
 
+# TODO : test !!
+def refreshPiconPath():
+	PICON_PATH = getPiconPath()
 
-#: PICON PATH FIXME: check path again after a few hours to detect new paths
 PICON_PATH = getPiconPath()
 
 EXT_EVENT_INFO_SOURCE = getExtEventInfoProvider()
 
 TRANSCODING = getTranscoding()
+
+# TODO: improve PICON_PATH, GLOBALPICONPATH

@@ -1,6 +1,7 @@
 ## Version 1.4.3
 ## (in development)
 * improve ipkg
+* use responsive UI for mobile devices
 
 ## Version 1.4.2
 * add new api getpicon
