@@ -10,11 +10,11 @@ VER=$(head -n 1 CHANGES.md | grep -i '## Version' | sed 's/^## Version \([[:digi
 GITVER=git$(git log -1 --format="%cd" --date="format:%Y%m%d")
 
 PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_all.ipk
-if $1 == "novxg"
+if [ "$1" == "novxg" ]; then
 	PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_novxg.ipk
 fi
 
-if $1 == "vti"
+if [ "$1" == "vti" ]; then
 	PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_vti.ipk
 fi
 
@@ -45,7 +45,7 @@ for f in $(find ./locale -name *.po ); do
 	msgfmt -o ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/locale/${l%}/LC_MESSAGES/OpenWebif.mo ./locale/$l.po
 done
 
-if $1 == "vti"
+if [ "$1" == "vti" ]; then
 
 	# Nur die Vu+ und OW-Remotes ins IPK kopieren.
 	pushd ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/images/remotes
@@ -78,7 +78,7 @@ fi
 cheetah-compile -R ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
 python -O -m compileall ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
 
-if $1 == "novxg"
+if [ "$1" == "novxg" ]; then
 	rm -rf ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/vxg/
 fi
 
