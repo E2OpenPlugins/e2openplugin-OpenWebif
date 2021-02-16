@@ -25,12 +25,16 @@ matrix:
         - jshint ./sourcefiles/js/ | tee jshint1_report.txt
         - jshint ./sourcefiles/modern/js/ | tee jshint2_report.txt
         - ./create_ipk.sh
-        - export PKG1=$(ls -1 *_all_novxg.ipk)
+        - ./create_ipk.sh novxg
+        - ./create_ipk.sh vti
+        - export PKG1=$(ls -1 *_novxg.ipk)
         - export PKG2=$(ls -1 *_all.ipk)
+        - export PKG3=$(ls -1 *_vti.ipk)
         - mkdir Rel
         - touch ./Rel/.nojekyll
         - mv "${PKG1}" ./Rel
         - mv "${PKG2}" ./Rel
+        - mv "${PKG3}" ./Rel
         - mv bandit.html ./Rel
         - mv flake8_report.txt ./Rel
         - mv jshint1_report.txt ./Rel

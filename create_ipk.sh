@@ -7,9 +7,17 @@ B=${D}/ipkg.build.$$
 pushd ${D} &> /dev/null
 VER=$(head -n 1 CHANGES.md | grep -i '## Version' | sed 's/^## Version \([[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+\)/\1/')
 # '%cd': committer date (format respects --date= option); '%t': abbreviated tree hash
-GITVER=e2openpluginsgit$(git log -1 --format="%cd" --date="format:%Y%m%d")
-PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-latest_all.ipk
-PKGNOVXG=${D}/enigma2-plugin-extensions-openwebif_${VER}-latest_all_novxg.ipk
+GITVER=git$(git log -1 --format="%cd" --date="format:%Y%m%d")
+
+PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_all.ipk
+if $1 == "novxg"
+	PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_novxg.ipk
+fi
+
+if $1 == "vti"
+	PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_vti.ipk
+fi
+
 popd &> /dev/null
 
 mkdir -p ${P}
@@ -37,6 +45,43 @@ for f in $(find ./locale -name *.po ); do
 	msgfmt -o ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/locale/${l%}/LC_MESSAGES/OpenWebif.mo ./locale/$l.po
 done
 
+if $1 == "vti"
+
+	# Nur die Vu+ und OW-Remotes ins IPK kopieren.
+	pushd ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/images/remotes
+	mkdir x
+	mv ow_remote.png vu* x/
+	rm -f *.*
+	mv x/* .
+	rm -fr x
+
+	# Nur die Vu+ box images ins IPK kopieren.
+	cd ../boxes
+	mkdir x
+	mv vu* x/
+	rm -f *.*
+	mv x/* .
+	rm -fr x
+
+	# Nur die Templates für Vu+ Remotes ins IPK kopieren
+	cd ../../static/remotes
+	mkdir x
+	mv vu_* x/
+	rm -f *.*
+	mv x/* .
+	rm -fr x
+
+	popd
+
+fi
+
+cheetah-compile -R ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
+python -O -m compileall ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
+
+if $1 == "novxg"
+	rm -rf ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/vxg/
+fi
+
 tar -C ${P} -czf ${B}/data.tar.gz . --exclude=CONTROL
 tar -C ${P}/CONTROL -czf ${B}/control.tar.gz .
 
@@ -46,18 +91,6 @@ cd ${B}
 ls -la
 ar -r ${PKG} ./debian-binary ./data.tar.gz ./control.tar.gz 
 
-rm -rf ${B}
-mkdir -p ${B}
-
-rm -rf ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/vxg/
-
-tar -C ${P} -czf ${B}/data.tar.gz . --exclude=CONTROL
-tar -C ${P}/CONTROL -czf ${B}/control.tar.gz .
-echo "2.0" > ${B}/debian-binary
-
-cd ${B}
-ls -la
-ar -r ${PKGNOVXG} ./debian-binary ./data.tar.gz ./control.tar.gz 
 cd -
 
 rm -rf ${P}
