@@ -99,7 +99,7 @@ class MovieList():
 				self.list.append((ref, None, 0, -1))
 				numberOfDirs += 1
 
-		while 1:
+		while True:
 			serviceref = reflist.getNext()
 			if not serviceref.valid():
 				break
@@ -123,12 +123,12 @@ class MovieList():
 
 			if this_tags == ['']:
 				# No tags? Auto tag!
-				this_tags = name.replace(',',' ').replace('.',' ').replace('_',' ').replace(':',' ').split()
+				this_tags = name.replace(',', ' ').replace('.', ' ').replace('_', ' ').replace(':', ' ').split()
 			else:
 				realtags.update(this_tags)
 			for tag in this_tags:
 				if len(tag) >= 4:
-					if tags.has_key(tag):
+					if tag in tags:
 						tags[tag].append(name)
 					else:
 						tags[tag] = [name]
@@ -178,14 +178,14 @@ class MovieList():
 
 		# reverse the dictionary to see which unique movie each tag now references
 		rtags = {}
-		for tag, movies in tags.items():
+		for tag, movies in list(tags.items()):
 			if (len(movies) > 1) or (tag in realtags):
 				movies = tuple(movies) # a tuple can be hashed, but a list not
 				item = rtags.get(movies, [])
 				if not item: rtags[movies] = item
 				item.append(tag)
 		self.tags = {}
-		for movies, tags in rtags.items():
+		for movies, tags in list(rtags.items()):
 			movie = movies[0]
 			# format the tag lists so that they are in 'original' order
 			tags.sort(key = movie.find)
