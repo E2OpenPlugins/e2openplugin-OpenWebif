@@ -1,8 +1,40 @@
+/* BEGIN legacy AutoTimer.js */
+function isBQ(sref) {
+	return ((sref.indexOf('FROM BOUQUET') > -1) && (sref.indexOf('1:134:1') != 0));
+}
+
+function FillAT(autotimerid){
+	var def = $(atxml).find('defaults');
+	$(atxml).find('timer').each(function () {
+		if($(this).attr('id') == autotimerid) {
+			CurrentAT = new AutoTimerObj($(this));
+			CurrentAT.UpdateUI();
+		}
+	});
+}
+
+function reloadAT() {
+	showError('');
+	readAT();
+	$('#atlist').selectable({
+		selected: function( event, ui ) {
+			var ids = $('#atlist .ui-selected').map(function() {
+				FillAT($(this).data('id'));
+			});
+		},
+		classes: {
+			'ui-selected': 'ui-state-active',
+		}
+	});
+}
+/* END legacy AutoTimer.js */
+
+
 var tagList = [];
 
-function toUnixDate(date){
-	var d = moment(date, "YYYY-MM-DD").unix();
-	return d;
+function toUnixDate(date) {
+	var d = (Date.parse(date + 'Z')) / 1000;
+  return d;
 }
 
 function AddFilter(a,b,c)
@@ -108,57 +140,9 @@ function initValues () {
 			sx='0'+sx;
 		_sel3.append($('<option></option>').val(x).html(sx));
 	}
-	$('#tafter').val('5');
-	$('#tbefore').val('5');
-	$('#maxduration').val('70');
 
-	$('#after').on('changeDate', function(ev){
-		var before = moment($('#before').val(), "YYYY-MM-DD").unix();
-		var after = moment($('#after').val(), "YYYY-MM-DD").unix();
-		if (before < after) {
-				showError('AFTER:' + tstr_start_after_end);
-			} else
-				showError('');
-	});
-	var _dateb = new Date();
-	$('#after').val(moment(_dateb).format('YYYY-MM-DD'));
-	
-	var _datea = new Date();
-	_datea.setDate(_dateb.getDate()+7);
-	$('#from').val('20:15');
-	$('#to').val('23:15');
-	$('#aefrom').val('20:15');
-	$('#aeto').val('23:15');
-	$('#before').on('changeDate', function(ev){
-		var before = moment($('#before').val(), "YYYY-MM-DD").unix();
-		var after = moment($('#after').val(), "YYYY-MM-DD").unix();
-		if (before < after) {
-				showError('BEFORE:' + tstr_start_after_end);
-			} else
-				showError('');
-	});
-  $('#before').val(moment(_datea).format('YYYY-MM-DD'));
-}
-
-
-function timeFrameAfterCheck() {
-
-	if ($('#timeFrameAfter').is(':checked') === true) {
-		var _da = moment($('#after').val(), "YYYY-MM-DD").toDate();
-		var _datea = new Date(_da);
-		var _dateb = new Date();
-		_dateb.setDate(_datea.getDate()+7);
-		_da =  moment(_dateb).format('YYYY-MM-DD');
-		$('#before').val(_da);
-		$('#beforeE').show();
-	}
-	else {
-		var _datea = new Date(2038,0,1);
-		var _da = moment(_datea).format('YYYY-MM-DD');
-		$('#before').val(_da);
-		$('#beforeE').hide();
-	}
-
+		// if (before < after) {
+		// 		showError('AFTER:' + tstr_start_after_end);
 }
 
 function AutoTimerObj (xml) {
@@ -205,8 +189,8 @@ function AutoTimerObj (xml) {
 	this.timeSpan = false;
 	if(xml.attr("from") && xml.attr("to"))
 	{
-		this.from = xml.attr("from");
-		this.to = xml.attr("to");
+		this.timespanFrom = xml.attr("from");
+		this.timespanTo = xml.attr("to");
 		this.timeSpan = true;
 	}
 
@@ -263,13 +247,13 @@ function AutoTimerObj (xml) {
 		this.afterevent=_ae.text();
 		if(_ae.attr("from") && _ae.attr("to"))
 		{
-			this.aftereventfrom = _ae.attr("from");
-			this.aftereventto = _ae.attr("to");
+			this.aftereventFrom = _ae.attr("from");
+			this.aftereventTo = _ae.attr("to");
 		}
 		else
 		{
-			this.aftereventfrom=null;
-			this.aftereventto=null;
+			this.aftereventFrom = null;
+			this.aftereventTo = null;
 		}
 	}
 
@@ -359,75 +343,12 @@ function AutoTimerObj (xml) {
 }
 
 AutoTimerObj.prototype.UpdateUI = function(){
-	$('#filterlist').empty();
-	$('#enabled').prop('checked', this.enabled); 
-	$('#name').val(this.name);
-	$('#match').val(this.match);
-	$('#searchType').val(this.searchType).selectpicker('refresh');
-	$('#searchCase').val(this.searchCase).selectpicker('refresh');
-	$('#justplay').val(this.justplay);
-	$('#overrideAlternatives').prop('checked', this.overrideAlternatives); 
-	$('#timeSpan').prop('checked',this.timeSpan);
-	$('#at_name').html("(" + this.name +")");
-	if(this.timeSpan)
-	{
-		$('#from').val(this.from);
-		$('#to').val(this.to);
-	}
-	if(this.maxduration)
-	{
-		$('#maxDuration').prop('checked',true);
-		$('#maxduration').val(this.maxduration);
-	}
-	else
-		$('#maxDuration').prop('checked',false);
-	$('#timeFrame').prop('checked',this.timeFrame);
-	if(this.timeFrame)
-	{
-		$('#after').val(this.after);
-		$('#before').val(this.before);
-		var _dateb = moment($('#before').val(), "YYYY-MM-DD").toDate();
-		var _maxd = new Date(2038,0,1);
-		if (_dateb < _maxd) {
-			$('#timeFrameAfter').prop('checked',true);
-			$('#beforeE').show();
-		}
-		else {
-			$('#timeFrameAfter').prop('checked',false);
-			$('#beforeE').hide();
-		}
-	}
-	$("#avoidDuplicateDescription").val(this.avoidDuplicateDescription).selectpicker('refresh');
-	
-	if(this.location) {
-		$('#location').val(this.location);
-		if(this.location !== $('#location').val()) {
-			current_location = "<option value='" + this.location + "'>" + this.location + "</option>";
-			$('#location').append(current_location);
-			$('#location').val(this.location);
-		}
-		$('#location').selectpicker('refresh');
-		$('#Location').prop('checked',true);
-	}
-	else
-		$('#Location').prop('checked',false);
-	$('#timerOffset').prop('checked',this.timerOffset);
-	if(this.timerOffset)
-	{
-		$('#tafter').val(this.timerOffsetAfter);
-		$('#tbefore').val(this.timerOffsetBefore);
-	}
-	$('#timeSpanAE').prop('checked',false);
-	$('#afterevent').val("");
-	if(this.afterevent) {
-		$('#afterevent').val(this.afterevent);
-		if(this.aftereventfrom && this.aftereventto) {
-			$('#aefrom').val(this.aftereventfrom);
-			$('#aeto').val(this.aftereventto);
-			$('#timeSpanAE').prop('checked',true);
-		}
-	}
-	$('#afterevent').selectpicker('refresh');
+	console.log('ui', this);
+
+	var allBouquets = autoTimerOptions['bouquets']['_currentState']['choices'];
+	var allChannels = autoTimerOptions['channels']['_currentState']['choices'];
+
+	window.autoTimers.populateForm(this);
 
 	var tagOpts = [];
 	try {
@@ -448,67 +369,22 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	} catch(e) {
 		console.debug('Failed to process tag options');
 	}
-	autoTimerOptions['tags'].highlightAll()
-													.removeHighlightedItems()
-													.setChoices(
-														tagOpts,
-														'value',
-														'label',
-														false
-													)
-													.setChoiceByValue(this.Tags);
+	autoTimerOptions['tags']
+		.setChoices(tagOpts, 'value', 'label', false)
+		.removeActiveItems()
+		.setChoiceByValue(this.Tags);
 
-  var channelsSelected = this.Channels.map(function (item) {
-    return {
-      value: item,
-      label: item
-    }
-  });
-	autoTimerOptions['channels'].highlightAll()
-                              .removeHighlightedItems()
-                              .setChoices(
-                                channelsSelected,
-                                'value',
-                                'label',
-                                false
-                              )
-                              .setChoiceByValue(this.Channels);
+	autoTimerOptions['channels']
+		.setChoices(allChannels, 'value', 'label', false)
+		.removeActiveItems()
+		.setChoiceByValue(this.Channels);
 
-                              var channelsSelected = this.Channels.map(function (item) {
-                                return {
-                                  value: item,
-                                  label: item,
-                                }
-                              });
+  autoTimerOptions['bouquets']
+		.setChoices(allBouquets, 'value', 'label', false)
+		.removeActiveItems()
+		.setChoiceByValue(this.Bouquets);
 
-  var bouquetsSelected = this.Bouquets.map(function (item) {
-    var allBouquets = autoTimerOptions['bouquets']['_currentState']['choices'];
-    var isFound = false;
-    allBouquets.forEach(function (bq) {
-      if (item === bq.value) {
-        isFound = true;
-      }
-    });
-    return (isFound) ? false : {
-      value: item,
-      label: item
-    };
-  });
-
-  autoTimerOptions['bouquets'].highlightAll()
-                              .removeHighlightedItems()
-                              .setChoices(
-                                bouquetsSelected,
-                                'value',
-                                'label',
-                                false
-                              )
-                              .setChoiceByValue(this.Bouquets);
-
-	$('#Tags').prop('checked',(this.Tags.length>0));
-	$('#Channels').prop('checked',(this.Channels.length>0));
-	$('#Bouquets').prop('checked',(this.Bouquets.length>0));
-
+	$('#filterlist').empty();
 	var rc = $('#filterlist tr').length;
 	if(rc>1)
 	{
@@ -520,19 +396,43 @@ AutoTimerObj.prototype.UpdateUI = function(){
 		c++;
 		AddFilter(value.t,value.w,value.v);
 	});
-  $.AdminBSB.select.activate();
+	$('#_filters').prop('checked',(c>0));
 
-	$('#Filter').prop('checked',(c>0));
-	$('#counter').val(this.counter);
-	$('#left').val(this.left);
-	$('#counterFormat').val(this.counterFormat);
-	$('#vps').prop('checked',this.vps);
-	$('#vpssm').prop('checked',!this.vpso);
-	$('#series_labeling').prop('checked',this.series_labeling);
-	$('#autoadjust').prop('checked',this.autoadjust);
-	$('#allow_duplicate').prop('checked',this.allow_duplicate);
-	$('#avoidDuplicateMovies').prop('checked', this.avoidDuplicateMovies);
-	checkValues();
+	$.AdminBSB.select.activate();
+	$('select', '#atform').not('.choices__input').selectpicker('refresh');
+
+	// $('#at_name').html("(" + this.name +")");
+	
+	// if(this.location) {
+	// 	$('#location').val(this.location);
+	// 	if(this.location !== $('#location').val()) {
+	// 		current_location = "<option value='" + this.location + "'>" + this.location + "</option>";
+	// 		$('#location').append(current_location);
+	// 		$('#location').val(this.location);
+	// 	}
+	// 	$('#_location').prop('checked', true);
+	// }
+	// else
+	// 	$('#_location').prop('checked', false);
+	// $('#_timerOffset').prop('checked', this.timerOffset);
+
+	// if(this.timerOffset)
+	// {
+	// 	$('#tafter').val(this.timerOffsetAfter);
+	// 	$('#tbefore').val(this.timerOffsetBefore);
+	// }
+
+	// if(this.afterevent) {
+	// 	$('#afterevent').val(this.afterevent);
+	// 	if (this.aftereventFrom && this.aftereventTo) {
+	// 		$('#aftereventFrom').val(this.aftereventFrom);
+	// 		$('#aftereventTo').val(this.aftereventTo);
+	// 		$('#timeSpanAE').prop('checked',true);
+	// 	}
+	// }
+
+	// $('#vps').prop('checked',this.vps);
+	// $('#vpssm').prop('checked',!this.vpso);
 };
 
 function saveAT()
@@ -541,42 +441,19 @@ function saveAT()
 	if(CurrentAT) // && CurrentAT.MustSave)
 	{
 
-		var reqs = "/autotimer/edit?";
-		CurrentAT.enabled = $('#enabled').is(':checked');
-		CurrentAT.name = $('#name').val();
-		CurrentAT.match = $('#match').val();
-		CurrentAT.searchType = $('#searchType').val();
-		CurrentAT.searchCase = $('#searchCase').val();
+		var reqs = '';
 		CurrentAT.justplay = $('#justplay').val();
-		CurrentAT.overrideAlternatives = $('#overrideAlternatives').is(':checked');
-		CurrentAT.timeSpan = $('#timeSpan').is(':checked');
-		CurrentAT.avoidDuplicateDescription = $('#avoidDuplicateDescription').val();
-		CurrentAT.timeSpan = $('#timeSpan').is(':checked');
-		CurrentAT.from = $('#from').val();
-		CurrentAT.to = $('#to').val();
-		CurrentAT.timerOffset = $('#timerOffset').is(':checked');
+		CurrentAT.timeSpan = $('#_timespan').is(':checked');
+		CurrentAT.timerOffset = $('#_timerOffset').is(':checked');
 		CurrentAT.before = $('#before').val();
 		CurrentAT.after = $('#after').val();
-
-		if($('#maxDuration').is(':checked')) {
-			CurrentAT.maxduration = $('#maxduration').val();
-		}
-		else
-			CurrentAT.maxduration = null;
-
-		if($('#Location').is(':checked'))
-			CurrentAT.location = $('#location').val();
-		else
-			CurrentAT.location = null;
-
-		CurrentAT.timeFrame = $('#timeFrame').is(':checked');
-		CurrentAT.timerOffsetBefore = $('#tbefore').val();
-		CurrentAT.timerOffsetAfter = $('#tafter').val();
+		CurrentAT.timeFrame = $('#_after').is(':checked');
+		CurrentAT.timerOffsetBefore = $('#timerOffsetBefore').val();
+		CurrentAT.timerOffsetAfter = $('#timerOffsetAfter').val();
 		CurrentAT.afterevent = $('#afterevent').val();
-		CurrentAT.aftereventfrom = $('#aefrom').val();
-		CurrentAT.aftereventto = $('#aeto').val();
-    CurrentAT.Bouquets = $("#bouquets").val();
-		CurrentAT.Channels = $("#channels").val();
+		CurrentAT.aftereventFrom = $('#aftereventFrom').val();
+		CurrentAT.aftereventTo = $('#aftereventTo').val();
+
 		var _f = [];
 		for (i = 0; i < $('#filterlist tr').length; i++) {
 			var FT = $("#ft" + i.toString()).val();
@@ -611,49 +488,14 @@ function saveAT()
 			}
 		}
 		CurrentAT.Filters = _f.slice();
-		CurrentAT.Tags = $("#tags").val();
-		CurrentAT.counter = $('#counter').val();
-		CurrentAT.left = $('#left').val();
-		CurrentAT.counterFormat = $('#counterFormat').val();
 		CurrentAT.vps = $('#vps').is(':checked');
 		CurrentAT.vpso = !$('#vpssm').is(':checked');
-		CurrentAT.series_labeling = $('#series_labeling').is(':checked');
-		CurrentAT.allow_duplicate = $('#allow_duplicate').is(':checked');
-		CurrentAT.autoadjust = $('#autoadjust').is(':checked');
-		CurrentAT.avoidDuplicateMovies = $('#avoidDuplicateMovies').is(':checked');
-		reqs += "match=" + encodeURIComponent(CurrentAT.match);
-		reqs += "&name=" + encodeURIComponent(CurrentAT.name);
-		reqs += "&enabled=";
-		reqs += (CurrentAT.enabled) ? "1" : "0";
 		if(CurrentAT.justplay=="2")
 		{
 			reqs += "&justplay=0&always_zap=1";
 		}
 		else
 			reqs += "&justplay=" + CurrentAT.justplay;
-
-		reqs += "&setEndtime=";
-		reqs += (CurrentAT.setEndtime) ? "1" : "0";
-		reqs += "&searchCase=" + CurrentAT.searchCase;
-		reqs += "&overrideAlternatives=";
-		reqs += (CurrentAT.overrideAlternatives) ? "1" : "0";
-		reqs += "&avoidDuplicateDescription=" + CurrentAT.avoidDuplicateDescription;
-		// TODO:
-		//	reqs += "&searchForDuplicateDescription=" + CurrentAT.searchForDuplicateDescription;
-		if(CurrentAT.location)
-			reqs += "&location=" + encodeURIComponent(CurrentAT.location);
-		reqs += "&searchType=" + CurrentAT.searchType;
-		reqs += "&maxduration=";
-		if(CurrentAT.maxduration && CurrentAT.maxduration > -1)
-			reqs += CurrentAT.maxduration;
-
-		if(CurrentAT.counter!='0')
-		{
-			reqs += "&counter=" + CurrentAT.counter;
-			reqs += "&counterFormat=" + CurrentAT.counterFormat;
-		}
-		else
-			reqs += "&counter=0";
 		
 		if(CurrentAT.timerOffset) {
 			if(CurrentAT.timerOffsetAfter > -1 && CurrentAT.timerOffsetBefore > -1)
@@ -665,7 +507,7 @@ function saveAT()
 			reqs += "&offset=";
 
 		if(CurrentAT.timeSpan)
-			reqs += "&timespanFrom=" + CurrentAT.from + "&timespanTo=" + CurrentAT.to;
+			reqs += "&timespanFrom=" + CurrentAT.timespanFrom + "&timespanTo=" + CurrentAT.timespanTo;
 		else
 			reqs += "&timespanFrom=&timespanTo=";
 
@@ -674,27 +516,7 @@ function saveAT()
 		else
 			reqs += "&before=&after=";
 
-		if(CurrentAT.Tags && CurrentAT.Tags.length > 0) {
-			$.each( CurrentAT.Tags, function( index, value ){
-				reqs += "&tag=" + value;
-			});
-		} else
-			reqs += "&tag=";
-
-		reqs += "&services=";
-		if(CurrentAT.Channels && CurrentAT.Channels.length > 0) {
-			var _s = [];
-			$.each( CurrentAT.Channels, function( index, value ){
-				_s.push(encodeURIComponent(value));
-			});
-			reqs += _s.join(',');
-		}
-
-		reqs += "&bouquets=";
-		if(CurrentAT.Bouquets && CurrentAT.Bouquets.length > 0) {
-			reqs += CurrentAT.Bouquets.join(',');
-		}
-
+		var xyz = '';
 		if(CurrentAT.Filters && CurrentAT.Filters.length > 0) {
 			$.each( CurrentAT.Filters, function( index, value ){
 				var fr = "&";
@@ -707,15 +529,9 @@ function saveAT()
 				else
 					fr += encodeURIComponent(value.v);
 				reqs += fr;
+				xyz += fr;
 			});
 		}
-
-		reqs += "&autoadjust=";
-		reqs += (CurrentAT.autoadjust) ? "1" : "0";
-		reqs += "&allow_duplicate=";
-		reqs += (CurrentAT.allow_duplicate) ? "1" : "0";
-		reqs += "&avoidDuplicateMovies=";
-		reqs += (CurrentAT.avoidDuplicateMovies) ? "1" : "0";
 		
 		if(!CurrentAT.vps)
 			CurrentAT.vpo=false;
@@ -724,8 +540,6 @@ function saveAT()
 		reqs += (CurrentAT.vps) ? "1" : "0";
 		reqs += "&vps_overwrite=";
 		reqs += (CurrentAT.vpso) ? "1" : "0";
-		reqs += "&series_labeling=";
-		reqs += (CurrentAT.series_labeling) ? "1" : "0";
 		var _ae = CurrentAT.afterevent;
 		if (_ae == "") {
 			_ae = "default";
@@ -736,105 +550,16 @@ function saveAT()
 		}
 		reqs += "&afterevent=" + _ae;
 		if (_ae !== "default") {
-			reqs += "&aftereventFrom=" + CurrentAT.aftereventfrom;
-			reqs += "&aftereventTo=" + CurrentAT.aftereventto;
+			reqs += "&aftereventFrom=" + CurrentAT.aftereventFrom;
+			reqs += "&aftereventTo=" + CurrentAT.aftereventTo;
 		}
 
-		if(!CurrentAT.isNew) {
-			reqs += "&id=" + CurrentAT.id;
-		}
+		console.log('reqs', reqs);
 
-		$.ajax({
-			type: "GET", url: reqs,
-			dataType: "xml",
-			success: function (xml)
-			{
-				var state=$(xml).find("e2state").first();
-				var txt=$(xml).find("e2statetext").first();
-				showError(txt.text(),state.text());
-				readAT($('#atlist').val());
-			},
-			error: function (request, status, error) {
-				showError(request.responseText);
-			}
-		});
+		window.autoTimers.saveEntry();
+
 		$('#filterlist').empty();
 	}
-}
-
-function checkValues () {
-	if ($('#timeSpan').is(':checked') === true)
-		$('#timeSpanE').show();
-	else
-		$('#timeSpanE').hide();
-	if ($('#timeSpanAE').is(':checked') === true)
-		$('#timeSpanAEE').show();
-	else
-		$('#timeSpanAEE').hide();
-	if ($('#timeFrame').is(':checked') === true) {
-		$('#timeFrameE').show();
-		$('#timeFrameAfterCheckBox').show();
-	}
-	else {
-		$('#timeFrameE').hide();
-		$('#timeFrameAfterCheckBox').hide();
-	}
-	if ($('#timerOffset').is(':checked') === true)
-		$('#timerOffsetE').show();
-	else
-		$('#timerOffsetE').hide();
-	if ($('#maxDuration').is(':checked') === true)
-		$('#maxDurationE').show();
-	else
-		$('#maxDurationE').hide();
-	if ($('#Location').is(':checked') === true)
-		$('#LocationE').show();
-	else
-		$('#LocationE').hide();
-	if ($('#Bouquets').is(':checked') === true)
-		$('#BouquetsE').show();
-	else {
-    $('#BouquetsE').hide();
-    try {
-      bouquetChoices.removeActiveItems();
-    } catch(e){}
-  }
-	if ($('#Channels').is(':checked') === true)
-		$('#ChannelsE').show();
-	else {
-    $('#ChannelsE').hide();
-    try {
-      channelChoices.removeActiveItems();
-    } catch(e){}
-  }
-	if ($('#Tags').is(':checked') === true) {
-		$('#TagsE').show();
-	}
-	else {
-    $('#TagsE').hide();
-    try {
-      tagChoices.removeActiveItems();
-    } catch(e){}
-	}
-
-	if ($('#Filter').is(':checked') === true) {
-		$('.FilterE').show();
-	}
-	else {
-		$('.FilterE').hide();
-	}
-	if ($('#afterevent').val() != "")
-		$('#AftereventE').show();
-	else
-		$('#AftereventE').hide();
-	if ($('#counter').val() != "0")
-		$('#CounterE').show();
-	else
-		$('#CounterE').hide();
-	if ($('#vps').is(':checked') === true)
-		$('#vpsE').show();
-	else
-		$('#vpsE').hide();
 }
 
 function getAutoTimerSettings()
@@ -918,27 +643,22 @@ function test_simulateAT(simulate)
 
 var autoTimerOptions;
 function InitPage() {
-	$('#timeSpan').click(function() { checkValues();});
-	$('#timeSpanAE').click(function() { checkValues();});
-	$('#timeFrame').click(function() { checkValues();});
-	$('#timeFrameAfter').click(function() { timeFrameAfterCheck();});
-	$('#timerOffset').click(function() { checkValues();});
-	$('#maxDuration').click(function() { checkValues();});
-	$('#Location').click(function() { checkValues();});
-	$('#Bouquets').click(function() { checkValues();});
-	$('#Channels').click(function() { checkValues();});
-	$('#Filter').click(function() { checkValues();});
-	$('#Tags').click(function() { checkValues();});
-	$("#AddFilter").click(function(){AddFilter("","","");});
-	$('#afterevent').change(function () {checkValues();});
-	$('#counter').change(function () {checkValues();});
-	$('#vps').change(function () {checkValues();});
-	initValues ();
-	checkValues();
+	initValues();
 	reloadAT();
 
 	autoTimerOptions = owif.gui.populateAutoTimerOptions();
-	// window.autoTimerOptions['channels'].setChoiceByValue(['1:0:19:1B1F:802:2:11A0000:0:0:0:', 'BBC One NI HD']);
+
+	$.AdminBSB.input.activate();
+	$.AdminBSB.select.activate();
+
+	if(!timeredit_initialized) {
+		$('#editTimerForm').load('ajax/edittimer');
+	}
+	$('#atlist').on('change', function (e) {
+		// var optionSelected = jQuery("option:selected", this);
+		var valueSelected = this.value;
+		FillAT(valueSelected);
+	});
 }
 
 function delAT()
@@ -978,25 +698,20 @@ function delAT()
 	}
 }
 
-function addAT(evt)
+function newEntry(evt)
 {
 	if(CurrentAT && CurrentAT.isNew)
 	{
 		showError("please save the current autotimer first");
 		return;
 	}
-	var _id=1;
-	$(atxml).find("timer").each(function () {
-		var li = parseInt($(this).attr("id"));
-		if(li>=_id)
-			_id=li+1;
-	});
-	var name = tstr_timernewname;
-	var id = _id.toString();
+
+	var name = '';
+	var id = '';
 	var xml = '<timers><timer name="'+name+'" match="'+name+'" enabled="yes" id="'+id+'" justplay="0" overrideAlternatives="1"></timer></timers>';
 	if (typeof evt !== 'undefined') 
 	{
-		xml = '<timers><timer name="'+evt.name+'" match="'+evt.name+'" enabled="yes" id="'+id+'" from="'+evt.from+'" to="'+evt.to+'"';
+		xml = '<timers><timer name="'+evt.name+'" match="'+evt.name+'" enabled="yes" id="'+id+'" from="'+evt.timespanFrom+'" to="'+evt.timespanTo+'"';
 		xml += ' searchType="exact" searchCase="sensitive" justplay="0" overrideAlternatives="1" ';
 		xml += '><e2service><e2servicereference>'+evt.sref+'</e2servicereference><e2servicename>'+evt.sname+'</e2servicename></e2service>';
 		xml += '</timer></timers>';
@@ -1091,13 +806,7 @@ function Parse(keepSelection) {
       // init with new entry
       addAT();
     }
-	}
-	if(atlist.length>0) {
-		$("#atbutton5").show();
-		$("#atbutton6").show();
-	} else {
-		$("#atbutton5").hide();
-		$("#atbutton6").hide();
+    }
 	}
 }
 
@@ -1116,3 +825,5 @@ function showError(txt,st)
 	}
 	
 }
+
+InitPage();
