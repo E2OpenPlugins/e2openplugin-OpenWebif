@@ -426,20 +426,13 @@ function saveAT()
 		else
 			reqs += "&justplay=" + CurrentAT.justplay;
 
-		CurrentAT.afterevent = $('#afterevent').val();
-		var _ae = CurrentAT.afterevent;
-		if (_ae == "") {
-			_ae = "default";
-		} else if (_ae == "none") {
-			_ae = "nothing";
-		} else if (_ae == "shutdown") {
-			_ae = "deepstandby";
-		}
-		reqs += "&afterevent=" + _ae;
-		if (_ae !== "default") {
-			reqs += "&aftereventFrom=" + CurrentAT.aftereventFrom;
-			reqs += "&aftereventTo=" + CurrentAT.aftereventTo;
-		}
+		// keep logic
+		// CurrentAT.afterevent = $('#afterevent').val();
+		// var _ae = CurrentAT.afterevent;
+		// if (_ae !== "default") {
+		// 	reqs += "&aftereventFrom=" + CurrentAT.aftereventFrom;
+		// 	reqs += "&aftereventTo=" + CurrentAT.aftereventTo;
+		// }
 
 		CurrentAT.vps = $('#vps').is(':checked');
 		if(!CurrentAT.vps)
