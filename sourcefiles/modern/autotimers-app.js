@@ -47,7 +47,6 @@
         data['_after'] = !!data.after;
         data['_before'] = !!data.before;
         data['_timerOffset'] = !!data.timerOffsetAfter || !!data.timerOffsetAfter;
-        data['_maxduration'] = !!data.maxduration;
         data['_location'] = !!data.location;
         data['_tags'] = !!data.Tags.length;
         data['_channels'] = !!data.Channels.length;
@@ -120,9 +119,6 @@
         };
         (document.getElementById('_timerOffset') || nullEl).onchange = (input) => {
           document.getElementById('timerOffsetE').classList.toggle('dependent-section', !input.target.checked);
-        };
-        (document.getElementById('_maxduration') || nullEl).onchange = (input) => {
-          document.getElementById('maxDurationE').classList.toggle('dependent-section', !input.target.checked);
         };
         (document.getElementById('timeSpanAE') || nullEl).onchange = (input) => {
           document.getElementById('timeSpanAEE').classList.toggle('dependent-section', !input.target.checked);

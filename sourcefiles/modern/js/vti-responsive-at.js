@@ -119,32 +119,6 @@ function AddFilter(a,b,c)
   });
 }
 
-
-function initValues () {
-
-	var _sel3 = $('#maxduration');
-	var _sel4 = $('#counter');
-	var _sel5 = $('#left');
-	for (var x=0;x<100;x++)
-	{
-		var sx=x.toString();
-		if(x<10)
-			sx='0'+sx;
-		_sel4.append($('<option></option>').val(x).html(sx));
-		_sel5.append($('<option></option>').val(x).html(sx));
-	}
-	for (var x=0;x<1000;x++)
-	{
-		var sx=x.toString();
-		if(x<10)
-			sx='0'+sx;
-		_sel3.append($('<option></option>').val(x).html(sx));
-	}
-
-		// if (before < after) {
-		// 		showError('AFTER:' + tstr_start_after_end);
-}
-
 function AutoTimerObj (xml) {
 
 	this.isNew = false;
@@ -414,6 +388,7 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	// }
 	// else
 	// 	$('#_location').prop('checked', false);
+
 	// $('#_timerOffset').prop('checked', this.timerOffset);
 
 	// if(this.timerOffset)
@@ -643,7 +618,6 @@ function test_simulateAT(simulate)
 
 var autoTimerOptions;
 function InitPage() {
-	initValues();
 	reloadAT();
 
 	autoTimerOptions = owif.gui.populateAutoTimerOptions();
@@ -698,7 +672,7 @@ function delAT()
 	}
 }
 
-function newEntry(evt)
+function addAT(evt)
 {
 	if(CurrentAT && CurrentAT.isNew)
 	{
@@ -805,7 +779,6 @@ function Parse(keepSelection) {
 		} else {
       // init with new entry
       addAT();
-    }
     }
 	}
 }

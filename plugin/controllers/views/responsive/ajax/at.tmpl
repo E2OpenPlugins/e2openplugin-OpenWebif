@@ -1,5 +1,5 @@
-#filter WebSafe
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
+#filter WebSafe
 
 <!-- TODO: move styles to css file -->
 <style>
@@ -249,14 +249,15 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" id="_maxduration" class="form-control chk--skinned">
 													<!-- Set maximum duration -->
-													<label for="_maxduration">$tstrings['at_max_duration']</label>
+													<label>$tstrings['at_max_duration']</label>
 												</div>
 												<div class="atform__details__element">
-													<div id="maxDurationE" class="dropdown atform__details__dropdown dependent-section">
-														<!-- Maximum duration (in m) -->
-														<select name="maxduration" id="maxduration" class="form-control show-tick"></select>
+													<div class=" atform__details__dropdown">
+														<div class="form-line">
+															<!-- Maximum duration (in m) -->
+															<input type="number" name="maxduration" min="0" placeholder="(in minutes)" class="form-control"><!-- TODO: i10n -->
+														</div>
 													</div>
 												</div>
 											</div>
@@ -311,8 +312,10 @@
 													<label>$tstrings['at_max_counter']:</label>
 												</div>
 												<div class="atform__details__element">
-													<div class="dropdown atform__details__dropdown">
-														<select name="counter" id="counter" class="form-control show-tick"></select>
+													<div class="atform__details__dropdown">
+														<div class="form-line">
+															<input type="number" name="counter" min="0" class="form-control">
+														</div>
 													</div>
 												</div>
 											</div>
@@ -323,8 +326,10 @@
 													<label>$tstrings['at_left']:</label>
 												</div>
 												<div class="atform__details__element">
-													<div class="dropdown atform__details__dropdown">
-														<select name="left" id="left" class="form-control show-tick"></select>
+													<div class="atform__details__dropdown">
+														<div class="form-line">
+															<input type="number" name="left" min="0" class="form-control">
+														</div>
 													</div>
 												</div>
 											</div>
