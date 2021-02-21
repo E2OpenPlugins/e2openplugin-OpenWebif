@@ -94,7 +94,7 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="enabled" value="1" id="enabled" class="form-control chk--skinned" checked>
+													<input type="checkbox" name="enabled" value="1" class="form-control chk--skinned" checked>
 													<label for="enabled">$tstrings['at_enabled']</label>
 												</div>
 												<div class="atform__details__element"></div>
@@ -105,7 +105,7 @@
 													<label>$tstrings['name']:</label>
 												</div>
 												<div class="atform__details__element form-line">
-													<input type="text" name="name" id="name" required placeholder="$tstrings['at_name_hint']" class="form-control">
+													<input type="text" name="name" required placeholder="$tstrings['at_name_hint']" class="form-control">
 												</div>
 											</div>
 
@@ -114,7 +114,7 @@
 													<label>$tstrings['at_text_match']:</label>
 												</div>
 												<div class="atform__details__element form-line">
-													<input type="text" name="match" id="match" required placeholder="$tstrings['at_text_hint']" class="form-control">
+													<input type="text" name="match" required placeholder="$tstrings['at_text_hint']" class="form-control">
 												</div>
 											</div>
 
@@ -126,7 +126,7 @@
 												</div>
 												<div class="atform__details__element">
 													<div class="dropdown atform__details__dropdown">
-														<select name="searchType" id="searchType" class="form-control show-tick">
+														<select name="searchType" class="form-control show-tick">
 #for $searchType in $searchTypes
 															<option value="$searchType">$tstrings['at_' + $searchType + '_match']</option>
 #end for
@@ -141,7 +141,7 @@
 												</div>
 												<div class="atform__details__element">
 													<div class="dropdown atform__details__dropdown">
-														<select name="searchCase" id="searchCase" class="form-control show-tick">
+														<select name="searchCase" class="form-control show-tick">
 															<option value="sensitive">$tstrings['at_case_sensitive']</option>
 															<option value="insensitive" selected>$tstrings['at_case_insensitive']</option>
 														</select>
@@ -155,7 +155,7 @@
 												</div>
 												<div class="atform__details__element">
 													<div class="dropdown atform__details__dropdown">
-														<select name="justplay" id="justplay" class="form-control show-tick">
+														<select name="justplay" class="form-control show-tick">
 															<option value="0" selected>$tstrings['at_record']</option>
 															<option value="1">$tstrings['at_zap']</option>
 															<option value="2">$tstrings['at_record'] + $tstrings['at_zap']</option>
@@ -166,7 +166,7 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="overrideAlternatives" value="1" id="overrideAlternatives" class="form-control chk--skinned">
+													<input type="checkbox" name="overrideAlternatives" value="1" class="form-control chk--skinned">
 													<!-- Use automatic selection of alternates. -->
 													<label for="overrideAlternatives">$tstrings['at_override_alt']</label>
 												</div>
@@ -184,13 +184,13 @@
 														<div class="atform__details__dropdown">
 															<label>$tstrings['at_timespan_begin']:&nbsp;</label>
 															<div class="form-line">
-																<input type="time" name="timespanFrom" id="timespanFrom" class="form-control" placeholder="06:30">
+																<input type="time" name="timespanFrom" class="form-control" placeholder="06:30">
 															</div>
 														</div>
 														<div class="atform__details__dropdown">
 															<label>$tstrings['at_timespan_end']:&nbsp;</label>
 															<div class="form-line">
-																<input type="time" name="timespanTo" id="timespanTo" class="form-control" placeholder="23:30">
+																<input type="time" name="timespanTo" class="form-control" placeholder="23:30">
 															</div>
 														</div>
 													</div>
@@ -206,13 +206,13 @@
 												<div class="atform__details__element">
 													<div class="atform__details__dropdown">
 														<div id="timeFrameE" class="form-line dependent-section">
-															<input type="date" name="after" id="after" class="form-control">
+															<input type="date" name="after" class="form-control">
 														</div>
 													</div>
 												</div>
 											</div>
 
-											<div class="atform__fields-container" id="timeFrameAfterCheckBox">
+											<div class="atform__fields-container">
 												<div class="atform__details__title">
 													<input type="checkbox" id="_before" class="form-control chk--skinned">
 													<!-- Restrict to events on certain dates -->
@@ -221,7 +221,7 @@
 												<div class="atform__details__element">
 													<div class=" atform__details__dropdown">
 														<div id="beforeE" class="form-line dependent-section">
-															<input type="date" name="before" id="before" class="form-control">
+															<input type="date" name="before" class="form-control">
 														</div>
 													</div>
 												</div>
@@ -239,14 +239,14 @@
 															<!-- Offset before recording (mins)-->
 															<label>$tstrings['at_timer_offset_before']:&nbsp;</label>
 															<div class="form-line">
-																<input type="number" name="offset" value="0" min="0" id="timerOffsetBefore" class="form-control">
+																<input type="number" name="offset" min="0" class="form-control">
 															</div>
 														</div>
 														<div class="atform__details__dropdown">
 															<!-- Offset after recording (mins)-->
 															<label>$tstrings['at_timer_offset_after']:&nbsp;</label>
 															<div class="form-line">
-																<input type="number" name="offset" value="0" min="0" id="timerOffsetAfter" class="form-control">
+																<input type="number" name="offset" min="0" class="form-control">
 															</div>
 														</div>
 												</div>
@@ -274,7 +274,7 @@
 												</div>
 												<div class="atform__details__element">
 													<div class="dropdown atform__details__dropdown">
-														<select name="afterevent" id="afterevent" class="form-control show-tick">
+														<select name="afterevent" class="form-control show-tick">
 															<option value="" selected>$tstrings['at_after_event_standard']</option>
 															<option value="none" selected>$tstrings['at_after_event_nothing']</option>
 															<option value="standby">$tstrings['at_after_event_standby']</option>
@@ -297,14 +297,14 @@
 															<!-- Begin of "After event" timespan -->
 															<label>$tstrings['at_event_timespan_begin']</label>
 															<div class="form-line">
-																<input type="time" name="aftereventFrom" id="aftereventFrom" class="form-control">
+																<input type="time" name="aftereventFrom" class="form-control">
 															</div>
 														</div>
 														<div class="atform__details__dropdown">
 															<!-- End of "After event" timespan -->
 															<label>$tstrings['at_event_timespan_end']</label>
 															<div class="form-line">
-																<input type="time" name="aftereventTo" id="aftereventTo" class="form-control">
+																<input type="time" name="aftereventTo" class="form-control">
 															</div>
 														</div>
 													</div>
@@ -346,7 +346,7 @@
 												</div>
 												<div class="atform__details__element">
 													<div class="dropdown atform__details__dropdown">
-														<select name="counterFormat" id="counterFormat" class="form-control show-tick">
+														<select name="counterFormat" class="form-control show-tick">
 															<option value="" selected>$tstrings['at_never']</option>
 															<option value="%m">$tstrings['at_monthly']</option>
 															<option value="%U">$tstrings['at_weekly_sun']</option>
@@ -363,7 +363,7 @@
 												</div>
 												<div class="atform__details__element">
 													<div class="dropdown atform__details__dropdown">
-														<select name="avoidDuplicateDescription" id="avoidDuplicateDescription" class="form-control show-tick">
+														<select name="avoidDuplicateDescription" class="form-control show-tick">
 															<option value="0" selected>$tstrings['at_avoid_dup_no']</option>
 															<option value="1">$tstrings['at_avoid_dup_same_service']</option>
 															<option value="2">$tstrings['at_avoid_dup_any_service']</option>
@@ -378,7 +378,7 @@
 #if $autoadjust == 1
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="autoadjust" value="1" id="autoadjust" class="form-control chk--skinned">
+													<input type="checkbox" name="autoadjust" value="1" class="form-control chk--skinned">
 													<label for="autoadjust">$tstrings['autoadjust']</label>
 												</div>
 												<div class="atform__details__element"></div>
@@ -386,7 +386,7 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="avoidDuplicateMovies" value="1" id="avoidDuplicateMovies" class="form-control chk--skinned">
+													<input type="checkbox" name="avoidDuplicateMovies" value="1" class="form-control chk--skinned">
 													<label for="avoidDuplicateMovies">$tstrings['avoidDuplicateMovies']</label>
 												</div>
 												<div class="atform__details__element"></div>
@@ -394,7 +394,7 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="allow_duplicate" value="1" id="allow_duplicate" class="form-control chk--skinned">
+													<input type="checkbox" name="allow_duplicate" value="1" class="form-control chk--skinned">
 													<label for="allow_duplicate">$tstrings['allow_duplicate']</label>
 												</div>
 												<div class="atform__details__element"></div>
@@ -410,7 +410,7 @@
 												<div class="atform__details__element">
 													<div id="LocationE" class="dropdown atform__details__dropdown dependent-section">
 														<!-- Custom location -->
-														<select name="location" id="location" class="form-control show-tick">
+														<select name="location" class="form-control show-tick">
 														#for $location in $locations
 															<option value="$location">$location</option>
 														#end for
@@ -426,7 +426,7 @@
 												</div>
 												<div class="atform__details__element">
 													<div id="TagsE" class="dropdown atform__details__dropdown form-line dependent-section">
-														<select name="tag" id="tags" class="form-control no-default-select" multiple="multiple" data-select-choices="tags">
+														<select name="tag" class="form-control no-default-select" multiple="multiple" data-select-choices="tags">
 															<!-- option value="" disabled>Add tags</option --><!-- TODO: i10n -->
 														</select>
 													</div>
@@ -441,7 +441,7 @@
 												</div>
 												<div class="atform__details__element">
 													<div id="ChannelsE" class="dropdown atform__details__dropdown form-line dependent-section">
-														<select name="services" id="channels" class="form-control no-default-select" multiple="multiple" data-select-choices="channels">
+														<select name="services" class="form-control no-default-select" multiple="multiple" data-select-choices="channels">
 															<!-- option value="" disabled>Restrict to channels</option --><!-- TODO: i10n -->
 														</select>
 													</div>
@@ -456,7 +456,7 @@
 												</div>
 												<div class="atform__details__element">
 													<div id="BouquetsE" class="dropdown atform__details__dropdown form-line dependent-section">
-														<select name="bouquets" id="bouquets" class="form-control no-default-select" multiple="multiple" data-select-choices="bouquets">
+														<select name="bouquets" class="form-control no-default-select" multiple="multiple" data-select-choices="bouquets">
 															<!-- option value="" disabled>Restrict to bouquets</option --><!-- TODO: i10n -->
 														</select>
 													</div>
@@ -483,7 +483,7 @@
 #if $hasVPS == 1
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="vps" value="1" id="vps" class="form-control chk--skinned">
+													<input type="checkbox" name="vps" value="1" class="form-control chk--skinned">
 													<label for="vps">$tstrings['vps']</label>
 												</div>
 												<div class="atform__details__element">
@@ -491,7 +491,7 @@
 														<div class="col-xs-12 col-sm-4">
 															<div class="row clearfix">
 																<div class="col-xs-12">
-																	<input type="checkbox" name="vpssm" id="vpssm" class="form-control chk--skinned">
+																	<input type="checkbox" name="vpssm" class="form-control chk--skinned">
 																	<label for="vpssm">$tstrings['safe_mode']</label>
 																</div>
 															</div>
@@ -503,7 +503,7 @@
 #if $hasSeriesPlugin == 1
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="series_labeling" value="1" id="series_labeling" class="form-control chk--skinned">
+													<input type="checkbox" name="series_labeling" value="1" class="form-control chk--skinned">
 													<label for="series_labeling">$tstrings['at_label_series']</label>
 												</div>
 												<div class="atform__details__element">

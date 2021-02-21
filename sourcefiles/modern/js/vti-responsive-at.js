@@ -417,17 +417,39 @@ function saveAT()
 	{
 
 		var reqs = '';
+
 		CurrentAT.justplay = $('#justplay').val();
-		CurrentAT.timeSpan = $('#_timespan').is(':checked');
-		CurrentAT.timerOffset = $('#_timerOffset').is(':checked');
-		CurrentAT.before = $('#before').val();
-		CurrentAT.after = $('#after').val();
-		CurrentAT.timeFrame = $('#_after').is(':checked');
-		CurrentAT.timerOffsetBefore = $('#timerOffsetBefore').val();
-		CurrentAT.timerOffsetAfter = $('#timerOffsetAfter').val();
+		if(CurrentAT.justplay=="2")
+		{
+			reqs += "&justplay=0&always_zap=1";
+		}
+		else
+			reqs += "&justplay=" + CurrentAT.justplay;
+
 		CurrentAT.afterevent = $('#afterevent').val();
-		CurrentAT.aftereventFrom = $('#aftereventFrom').val();
-		CurrentAT.aftereventTo = $('#aftereventTo').val();
+		var _ae = CurrentAT.afterevent;
+		if (_ae == "") {
+			_ae = "default";
+		} else if (_ae == "none") {
+			_ae = "nothing";
+		} else if (_ae == "shutdown") {
+			_ae = "deepstandby";
+		}
+		reqs += "&afterevent=" + _ae;
+		if (_ae !== "default") {
+			reqs += "&aftereventFrom=" + CurrentAT.aftereventFrom;
+			reqs += "&aftereventTo=" + CurrentAT.aftereventTo;
+		}
+
+		CurrentAT.vps = $('#vps').is(':checked');
+		if(!CurrentAT.vps)
+			CurrentAT.vpo=false;
+		reqs += (CurrentAT.vps) ? "1" : "0";
+
+		reqs += "&vps_overwrite=";
+
+		CurrentAT.vpso = !$('#vpssm').is(':checked');
+		reqs += (CurrentAT.vpso) ? "1" : "0";
 
 		var _f = [];
 		for (i = 0; i < $('#filterlist tr').length; i++) {
@@ -462,36 +484,9 @@ function saveAT()
 						); 
 			}
 		}
-		CurrentAT.Filters = _f.slice();
-		CurrentAT.vps = $('#vps').is(':checked');
-		CurrentAT.vpso = !$('#vpssm').is(':checked');
-		if(CurrentAT.justplay=="2")
-		{
-			reqs += "&justplay=0&always_zap=1";
-		}
-		else
-			reqs += "&justplay=" + CurrentAT.justplay;
-		
-		if(CurrentAT.timerOffset) {
-			if(CurrentAT.timerOffsetAfter > -1 && CurrentAT.timerOffsetBefore > -1)
-				reqs += "&offset=" + CurrentAT.timerOffsetBefore + "," + CurrentAT.timerOffsetAfter;
-			else
-				reqs += "&offset=";
-		}
-		else
-			reqs += "&offset=";
-
-		if(CurrentAT.timeSpan)
-			reqs += "&timespanFrom=" + CurrentAT.timespanFrom + "&timespanTo=" + CurrentAT.timespanTo;
-		else
-			reqs += "&timespanFrom=&timespanTo=";
-
-		if(CurrentAT.timeFrame)
-			reqs += "&before=" + toUnixDate(CurrentAT.before) + "&after=" + toUnixDate(CurrentAT.after);
-		else
-			reqs += "&before=&after=";
 
 		var xyz = '';
+		CurrentAT.Filters = _f.slice();
 		if(CurrentAT.Filters && CurrentAT.Filters.length > 0) {
 			$.each( CurrentAT.Filters, function( index, value ){
 				var fr = "&";
@@ -506,27 +501,6 @@ function saveAT()
 				reqs += fr;
 				xyz += fr;
 			});
-		}
-		
-		if(!CurrentAT.vps)
-			CurrentAT.vpo=false;
-
-		reqs += "&vps_enabled=";
-		reqs += (CurrentAT.vps) ? "1" : "0";
-		reqs += "&vps_overwrite=";
-		reqs += (CurrentAT.vpso) ? "1" : "0";
-		var _ae = CurrentAT.afterevent;
-		if (_ae == "") {
-			_ae = "default";
-		} else if (_ae == "none") {
-			_ae = "nothing";
-		} else if (_ae == "shutdown") {
-			_ae = "deepstandby";
-		}
-		reqs += "&afterevent=" + _ae;
-		if (_ae !== "default") {
-			reqs += "&aftereventFrom=" + CurrentAT.aftereventFrom;
-			reqs += "&aftereventTo=" + CurrentAT.aftereventTo;
 		}
 
 		console.log('reqs', reqs);
