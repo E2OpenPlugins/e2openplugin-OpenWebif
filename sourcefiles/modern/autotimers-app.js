@@ -15,27 +15,21 @@
 (function () {
   const regexDateFormat = new RegExp(/\d{4}-\d{2}-\d{2}/);
 
-  // https://www.devextent.com/fetch-api-post-formdata-object/
-  const apiRequest = (url, method = 'get', payload) => {
-    return fetch(url, {
-      method: method,
-      body: payload, //new URLSearchParams([...payload]),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json().then((data, res = data.Result) => {
-            if (res) {
-              console.debug(res[1], res[0]);
-              return res;
-            } else {
-              return data;
-            }
-          });
-        }
-      })
-      .catch((error) => {
-        console.debug(`apiRequest error: ${error}`);
+  const apiRequest = async (url, method = 'get', payload) => {
+    try {
+      const response = await fetch(url, {
+        method: method,
+        body: payload, //new URLSearchParams([...payload]),
       });
+
+      if (response.ok) {
+        return response;
+      } else {
+        throw new Error(response.statusText || response.status);
+      }
+    } catch (ex) {
+      throw new Error(ex);
+    }
   };
 
   const AutoTimers = function () {
@@ -82,6 +76,30 @@
             console.log('%c[N/A]', 'color: red', key, value);
           }
         }
+        var tagOpts = [];
+        try {
+          tagOpts = window.tagList.map(function (item) {
+            let allTags = autoTimerOptions['tags']['_currentState']['choices'];
+            let isFound = false;
+            allTags.forEach(function (tg) {
+              if (item === tg.value) {
+                isFound = true;
+              }
+            });
+            return (isFound) ? false : {
+              value: item,
+              label: item,
+            }
+          });
+          tagOpts.push(data.Tags);
+        } catch(e) {
+          console.debug('Failed to process tag options');
+        }
+
+        autoTimerOptions['tags']
+          .setChoices(tagOpts, 'value', 'label', false)
+          .removeActiveItems()
+          .setChoiceByValue(data.Tags);
       
         autoTimerOptions['channels']
           .setChoices(allChannels, 'value', 'label', false)
@@ -94,7 +112,9 @@
           .setChoiceByValue(data.Bouquets);
       },
 
-      saveEntry: () => {
+      // .then(response => response.formData())
+
+      saveEntry: (extraParams = '') => {
         const formData = new FormData(atForm);
         const formDataObj = Object.fromEntries(formData);
 
@@ -104,7 +124,7 @@
             // remove empty value (empty id causes server error, but missing id does not)
             formData.delete(name);
           } else if (regexDateFormat.test(value)) {
-            // format html date input format (yyyy-mm-dd) to serial
+            // convert html date input format (yyyy-mm-dd) to serial
             formData.set(name, Date.parse(`${value}Z`) / 1000); // Z is intentional
           } else if (name !== 'tag') {
             // join multiple param= values into an array
@@ -112,10 +132,34 @@
           }
         });
 
-        // const x = new URLSearchParams(formData).toString();
+        apiRequest(`/autotimer/edit?${extraParams}`, 'post', formData)
+          .then(response => response.text())
+          .then(responseText => {
+            const responseXml = new DOMParser().parseFromString(responseText, 'application/xml');
+            const status = responseXml.getElementsByTagName('e2state')[0].textContent || '';
+            const message = responseXml.getElementsByTagName('e2statetext')[0].textContent || '';
 
-        // ${additionalParams}
-        apiRequest('/autotimer/edit', 'post', formData);
+            if (status === true || status.toString().toLowerCase() === 'true') {
+              swal({
+                title: message,
+                text: '',
+                type: 'success',
+                animation: 'none',
+              });
+            } else {
+              throw new Error(message);
+            }
+          })
+          .catch((ex) => {
+            let message = ex.message;
+            message = message.charAt(0).toUpperCase() + message.slice(1);
+            swal({
+              title: message,
+              text: '',
+              type: 'error',
+              animation: 'none',
+            });
+          });
       },
 
       initEventHandlers: () => {

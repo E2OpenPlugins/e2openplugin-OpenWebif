@@ -30,8 +30,6 @@ function reloadAT() {
 /* END legacy AutoTimer.js */
 
 
-var tagList = [];
-
 function toUnixDate(date) {
 	var d = (Date.parse(date + 'Z')) / 1000;
   return d;
@@ -320,30 +318,6 @@ AutoTimerObj.prototype.UpdateUI = function(){
 
 	window.autoTimers.populateForm(this);
 
-	var tagOpts = [];
-	try {
-		tagOpts = tagList.map(function (item) {
-			var allTags = autoTimerOptions['tags']['_currentState']['choices'];
-			var isFound = false;
-			allTags.forEach(function (tg) {
-				if (item === tg.value) {
-					isFound = true;
-				}
-			});
-			return (isFound) ? false : {
-				value: item,
-				label: item,
-			}
-		});
-		tagOpts.push(this.Tags);
-	} catch(e) {
-		console.debug('Failed to process tag options');
-	}
-	autoTimerOptions['tags']
-		.setChoices(tagOpts, 'value', 'label', false)
-		.removeActiveItems()
-		.setChoiceByValue(this.Tags);
-
 	$('#filterlist').empty();
 	var rc = $('#filterlist tr').length;
 	if(rc>1)
@@ -464,7 +438,7 @@ function saveAT()
 			}
 		}
 
-		var xyz = '';
+		var filtersParam = '';
 		CurrentAT.Filters = _f.slice();
 		if(CurrentAT.Filters && CurrentAT.Filters.length > 0) {
 			$.each( CurrentAT.Filters, function( index, value ){
@@ -477,14 +451,13 @@ function saveAT()
 					fr += value.v;
 				else
 					fr += encodeURIComponent(value.v);
-				reqs += fr;
-				xyz += fr;
+				filtersParam += fr;
 			});
 		}
 
 		console.log('reqs', reqs);
 
-		window.autoTimers.saveEntry();
+		window.autoTimers.saveEntry(filtersParam);
 
 		$('#filterlist').empty();
 	}
@@ -682,7 +655,7 @@ function Parse(keepSelection) {
 	$('#filterlist').empty();
 	
 	var atlist = []
-	tagList = [];
+	window.tagList = [];
 	
 	var state=$(atxml).find("e2state").first();
 	if (state.text() == 'false') {
@@ -696,8 +669,8 @@ function Parse(keepSelection) {
 			var tag = $(this).text();
 			// var tags = $(this).text().split(' ');
 			// tags.forEach(function (tag, index) {
-				if (tagList.indexOf(tag) < 0) {
-					tagList.push(tag);
+				if (window.tagList.indexOf(tag) < 0) {
+					window.tagList.push(tag);
 				}
 			// });
 		});
