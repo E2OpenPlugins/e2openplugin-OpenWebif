@@ -1,5 +1,8 @@
-## Version 1.4.3
+## Version 1.4.4
 ## (in development)
+* improve api movielist recursive #1241
+
+## Version 1.4.3
 * improve ipkg
 * use responsive UI for mobile devices
 
