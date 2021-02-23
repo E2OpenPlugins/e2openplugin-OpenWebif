@@ -317,10 +317,6 @@ function AutoTimerObj (xml) {
 }
 
 AutoTimerObj.prototype.UpdateUI = function(){
-	console.log('ui', this);
-
-	var allBouquets = autoTimerOptions['bouquets']['_currentState']['choices'];
-	var allChannels = autoTimerOptions['channels']['_currentState']['choices'];
 
 	window.autoTimers.populateForm(this);
 
@@ -347,16 +343,6 @@ AutoTimerObj.prototype.UpdateUI = function(){
 		.setChoices(tagOpts, 'value', 'label', false)
 		.removeActiveItems()
 		.setChoiceByValue(this.Tags);
-
-	autoTimerOptions['channels']
-		.setChoices(allChannels, 'value', 'label', false)
-		.removeActiveItems()
-		.setChoiceByValue(this.Channels);
-
-  autoTimerOptions['bouquets']
-		.setChoices(allBouquets, 'value', 'label', false)
-		.removeActiveItems()
-		.setChoiceByValue(this.Bouquets);
 
 	$('#filterlist').empty();
 	var rc = $('#filterlist tr').length;

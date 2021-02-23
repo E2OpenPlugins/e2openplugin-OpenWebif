@@ -19,7 +19,7 @@
   const apiRequest = (url, method = 'get', payload) => {
     return fetch(url, {
       method: method,
-      body: new URLSearchParams([...payload]),
+      body: payload, //new URLSearchParams([...payload]),
     })
       .then((response) => {
         if (response.ok) {
@@ -39,14 +39,14 @@
   };
 
   const AutoTimers = function () {
-    const formElement = document.getElementById('atform');
+    const atForm = document.getElementById('atform');
 
-    const addRelatedInputs = (data = {Tags:[], Channels: [], Bouquets: [], ...{}}) => {
+    const addDependentSectionTogglers = (data = {Tags:[], Channels: [], Bouquets: [], ...{}}) => {
         // set up show/hide checkboxes
         data['_timespan'] = !!data.timespanFrom || !!data.timespanTo;
         data['_after'] = !!data.after;
         data['_before'] = !!data.before;
-        data['_timerOffset'] = !!data.timerOffsetAfter || !!data.timerOffsetAfter;
+        data['_timerOffset'] = !!data.timerOffsetAfter || !!data.timerOffsetBefore;
         data['_location'] = !!data.location;
         data['_tags'] = !!data.Tags.length;
         data['_channels'] = !!data.Channels.length;
@@ -57,10 +57,13 @@
 
     return {
       populateForm: (data) => {
-        const { elements } = formElement;
-        formElement.reset();
+        const allChannels = autoTimerOptions['channels']['_currentState']['choices'];
+        const allBouquets = autoTimerOptions['bouquets']['_currentState']['choices'];
 
-        data = addRelatedInputs(data);
+        const { elements } = atForm;
+        atForm.reset();
+
+        data = addDependentSectionTogglers(data);
 
         for (const [key, value] of Object.entries(data)) {
           let field = elements.namedItem(key);
@@ -79,10 +82,20 @@
             console.log('%c[N/A]', 'color: red', key, value);
           }
         }
+      
+        autoTimerOptions['channels']
+          .setChoices(allChannels, 'value', 'label', false)
+          .removeActiveItems()
+          .setChoiceByValue(data.Channels);
+      
+        autoTimerOptions['bouquets']
+          .setChoices(allBouquets, 'value', 'label', false)
+          .removeActiveItems()
+          .setChoiceByValue(data.Bouquets);
       },
 
       saveEntry: () => {
-        const formData = new FormData(formElement);
+        const formData = new FormData(atForm);
         const formDataObj = Object.fromEntries(formData);
 
         Object.entries(formDataObj).forEach(([name, value]) => {
@@ -93,11 +106,13 @@
           } else if (regexDateFormat.test(value)) {
             // format html date input format (yyyy-mm-dd) to serial
             formData.set(name, Date.parse(`${value}Z`) / 1000); // Z is intentional
-          } else {
+          } else if (name !== 'tag') {
             // join multiple param= values into an array
             formData.set(name, formData.getAll(name));
           }
         });
+
+        // const x = new URLSearchParams(formData).toString();
 
         // ${additionalParams}
         apiRequest('/autotimer/edit', 'post', formData);
@@ -112,7 +127,7 @@
         };
         (document.getElementById('_after') || nullEl).onchange = (input) => {
           document.getElementById('timeFrameE').classList.toggle('dependent-section', !input.target.checked);
-          document.getElementById('timeFrameAfterCheckBox').classList.toggle('dependent-section', !input.target.checked);
+          // document.getElementById('timeFrameAfterCheckBox').classList.toggle('dependent-section', !input.target.checked);
         };
         (document.getElementById('_before') || nullEl).onchange = (input) => {
           document.getElementById('beforeE').classList.toggle('dependent-section', !input.target.checked);
