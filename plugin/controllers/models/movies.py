@@ -71,7 +71,7 @@ def FuzzyTime(t):
 		day = _("Yesterday")
 	else:
 		day = dayOfWeek[d[6]]
-	
+
 	if d[0] == n[0]:
 		date = _("%s %02d.%02d.") % (day, d[2], d[1])
 	else:
@@ -139,10 +139,11 @@ def getMovieList(rargs=None, locations=None):
 
 	root = eServiceReference(MOVIE_LIST_SREF_ROOT + directory)
 
-	for item in sorted(os.listdir(directory)):
-		abs_p = os.path.join(directory, item)
-		if os.path.isdir(abs_p):
-			bookmarklist.append(item)
+	subdirs = []
+	for subdirpath in [x[0] for x in os.walk(directory)]:
+		subdirpath = subdirpath[len(directory):]
+		if len(subdirpath) != 0:
+			bookmarklist.append(subdirpath)
 
 	folders = [root]
 	if rargs and b"recursive" in list(rargs.keys()):
