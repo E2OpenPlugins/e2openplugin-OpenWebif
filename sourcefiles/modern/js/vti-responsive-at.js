@@ -30,11 +30,6 @@ function reloadAT() {
 /* END legacy AutoTimer.js */
 
 
-function toUnixDate(date) {
-	var d = (Date.parse(date + 'Z')) / 1000;
-  return d;
-}
-
 function AddFilter(a,b,c)
 {
 	var i = ($('#filterlist tbody tr').length).toString();
