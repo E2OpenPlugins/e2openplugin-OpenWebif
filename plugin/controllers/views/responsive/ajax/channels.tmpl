@@ -132,6 +132,9 @@
 			<td class="now-next__no-data">$tstrings['no_epg_data']</td>
 #end if
 #if (not $isProtected) and 'next_title' in $channel
+		#if $channel.next_title == "<<absent>>"
+			<td colspan="2" class="now-next__no-data">...</td>
+		#else
 			<td>
 				<div>
 					<h2 class="now-next__title">
@@ -142,6 +145,7 @@
 					<div>&nbsp;</div>
 				</div>
 			</td>
+		#end if
 #else
 			<td colspan="2" class="now-next__no-data">$tstrings['no_epg_data']</td>
 #end if
