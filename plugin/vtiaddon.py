@@ -158,8 +158,8 @@ def setVTiWebConfig(self, request):
 	if b"showiptvchannelsinselection" in list(request.args.keys()):
 		val = int(getUrlArg(request, "showiptvchannelsinselection"))
 		print("save showiptvchannelsinselection:", val)
-		config.OpenWebif.showiptvchannelsinselection.value = val == 1 and True or False
-		config.OpenWebif.showiptvchannelsinselection.save()
+		config.OpenWebif.webcache.showiptvchannelsinselection.value = val == 1 and True or False
+		config.OpenWebif.webcache.showiptvchannelsinselection.save()
 	return ''
 
 def expand_BaseController():
