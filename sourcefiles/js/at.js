@@ -425,7 +425,7 @@ function ATGetAllServices(callback,radio)
 	}
 	
 	$.ajax({
-		url: '/api/getallservices?nolastcanned=1'+ ru + niptv,
+		url: '/api/getallservices?nolastscanned=1'+ ru + niptv,
 		dataType: "json",
 		success: function ( data ) {
 			var sdata = JSON.stringify(data);
