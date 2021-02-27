@@ -1231,6 +1231,10 @@ function VTiWebConfig() {
 		var val = $(this).is(":checked") ? '1' : '0'
 		$.get('api/setvtiwebconfig?showpiconbackground=' + val);
 	});
+	$('#showiptvchannelsinselection').change(function () {
+		var val = $(this).is(":checked") ? '1' : '0'
+		$.get('api/setvtiwebconfig?showiptvchannelsinselection=' + val);
+	});
 
 	$('#thememodebtn').change(function () {
 		var themeMode = $(this).is(":checked") ? $(this).val() : 'supabright';

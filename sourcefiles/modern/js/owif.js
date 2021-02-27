@@ -71,8 +71,8 @@ class API {
   }
 
   async getAllServices(noiptv) {
-    let niptv = (noiptv==true) ? "?noiptv=1" : "";
-    let response = await fetch('/api/getallservices' + niptv);
+    let niptv = (noiptv==true) ? "&noiptv=1" : "";
+    let response = await fetch('/api/getallservices?nolastscanned=1' + niptv);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     } else {

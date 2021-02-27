@@ -639,9 +639,9 @@
 
 <script type="text/javascript">
 #if $showiptvchannelsinselection
-var showiptvchannelsinselection=true;
+var noiptv=false;
 #else
-var showiptvchannelsinselection=false;
+var noiptv=true;
 #end if
 </script>
 
@@ -652,7 +652,7 @@ var showiptvchannelsinselection=false;
 <script src="/modern/js/vti-responsive-at.min.js"></script>
 <script>
 	jQuery(function() {
-		InitPage(showiptvchannelsinselection);
+		InitPage(noiptv);
 	});
 	jQuery.AdminBSB.input.activate();
 	jQuery.AdminBSB.select.activate();
