@@ -33,7 +33,6 @@
     "build-classic-js": "npx glob-uglifyjs -c ./classic-glob-uglifyjs.config",
     "uglifymodern": "npx glob-uglifyjs -c ./modern-glob-uglifyjs.config",
     "build-entry": "npx parcel build ./modern/entry-app.js --out-dir ../plugin/public/modern/js/",
-    "build-at": "npx parcel build ./js/at.js --out-dir ../plugin/public/js/",
     "build-bqe": "npx parcel build ./modern/bqe-app.js --out-dir ../plugin/public/modern/js/",
     "build-js": "npm run-script uglifymodern; npm run-script build-entry; npm run-script build-bqe",
     "build-css": "npx ./_utils/mincss.js -o '../plugin/public/' './modern/css/**/*.css'",
