@@ -65,6 +65,13 @@
 				<input type="checkbox" name="showchanneldetails"/>
 				#end if
 				</td></tr>
+				<tr><td>$tstrings['show_iptv_channels_in_selection']</td><td>
+				#if $showiptvchannelsinselection
+				<input type="checkbox" name="showiptvchannelsinselection" checked="checked"/>
+				#else
+				<input type="checkbox" name="showiptvchannelsinselection"/>
+				#end if
+				</td></tr>
 				<tr><td>$tstrings['tstr_moviedb']</td><td>
 				<select name="selectmoviedb" id="selectmoviedb" style="min-width: 150px;margin: 5px;border:none;font-size: 1em;">
 				#for $smoviedb in $moviedbs
@@ -527,6 +534,12 @@ $(function() {
 		webapi_execute("/api/setwebconfig?showchanneldetails=" + ch);
 	});
 
+	$("input[name=showiptvchannelsinselection]").click(function(evt) {
+		var ch = evt.currentTarget.checked;
+		$('input[name=showiptvchannelsinselection]').attr('checked', ch);
+		webapi_execute("/api/setwebconfig?showiptvchannelsinselection=" + ch);
+	});
+	
 	$("input[name=responsivedesign]").click(function(evt) {
 		var ch = evt.currentTarget.checked;
 		$('input[name=responsivedesign]').attr('checked', ch);

@@ -1,5 +1,5 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground, ZapStream
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground, ZapStream, showIPTVChannelsInSelection
 #from json import dumps
 
 #set $skinPrefOptions = [
@@ -475,6 +475,15 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="zapstream" id="zapstream" $ZapStream>
+											<span class="lever switch--skinned vtiwebconfig"></span>
+										</label>
+									</div>
+								</li>
+								<li>
+									<span>$tstrings['show_iptv_channels_in_selection']</span>
+									<div class="switch">
+										<label>
+											<input type="checkbox" name="showiptvchannelsinselection" id="showiptvchannelsinselection" $showIPTVChannelsInSelection>
 											<span class="lever switch--skinned vtiwebconfig"></span>
 										</label>
 									</div>

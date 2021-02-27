@@ -313,6 +313,11 @@ input#to,input#from,.text.number {width:60px;}
 </form>
 <script type="text/javascript" src="/js/at-2.9.min.js"></script>
 <script type="text/javascript">
+#if $showiptvchannelsinselection
+var showiptvchannelsinselection=true;
+#else
+var showiptvchannelsinselection=false;
+#endif
 #raw
 $(function() { InitPage();});
 #end raw

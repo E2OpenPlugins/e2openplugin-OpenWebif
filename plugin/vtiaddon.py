@@ -89,6 +89,11 @@ def showPiconBackground():
 		return 'checked'
 	return ''
 
+def showIPTVChannelsInSelection():
+	if config.OpenWebif.webcache.showiptvchannelsinselection.value:
+		return 'checked'
+	return ''
+
 def setVTiWebConfig(self, request):
 	if b"moviesearchextended" in list(request.args.keys()):
 		val = int(getUrlArg(request, "moviesearchextended"))
@@ -150,6 +155,11 @@ def setVTiWebConfig(self, request):
 		print("save showpiconbackground:", val)
 		config.OpenWebif.responsive_show_picon_background.value = val == 1 and True or False
 		config.OpenWebif.responsive_show_picon_background.save()
+	if b"showiptvchannelsinselection" in list(request.args.keys()):
+		val = int(getUrlArg(request, "showiptvchannelsinselection"))
+		print("save showiptvchannelsinselection:", val)
+		config.OpenWebif.showiptvchannelsinselection.value = val == 1 and True or False
+		config.OpenWebif.showiptvchannelsinselection.save()
 	return ''
 
 def expand_BaseController():
