@@ -1,0 +1,14 @@
+{
+    "pattern": "**/*.js",
+    "options": {
+        "UseMinExt": true,
+        "MinifyOptions": {},
+        "OutDir": "../plugin/public/js/",
+        "RootDir": "./js/",
+        "Exclude": [
+            "**/*.min.js"
+        ],
+        "RemoveSource": false,
+        "Debug": true
+    }
+}
