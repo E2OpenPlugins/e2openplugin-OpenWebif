@@ -917,7 +917,7 @@ function test_simulateAT(simulate)
 }
 
 var autoTimerOptions;
-function InitPage() {
+function InitPage(noiptv) {
 	$('#timeSpan').click(function() { checkValues();});
 	$('#timeSpanAE').click(function() { checkValues();});
 	$('#timeFrame').click(function() { checkValues();});
@@ -937,7 +937,7 @@ function InitPage() {
 	checkValues();
 	reloadAT();
 
-	autoTimerOptions = owif.gui.populateAutoTimerOptions();
+	autoTimerOptions = owif.gui.populateAutoTimerOptions(noiptv);
 	// window.autoTimerOptions['channels'].setChoiceByValue(['1:0:19:1B1F:802:2:11A0000:0:0:0:', 'BBC One NI HD']);
 }
 
