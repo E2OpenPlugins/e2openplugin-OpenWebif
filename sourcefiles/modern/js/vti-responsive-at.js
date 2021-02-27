@@ -460,12 +460,8 @@ function saveAT()
 
 function getAutoTimerSettings()
 {
-	$.ajax({
-		type: "GET", url: "/autotimer/get",
-		dataType: "xml",
-		success: function (xml)
-		{
-			var settings = [];
+	window.autoTimers.getSettings()
+		.then(xml => {
 			$(xml).find("e2setting").each(function () {
 				var name = $(this).find("e2settingname").text();
 				var val = $(this).find("e2settingvalue").text();
@@ -480,61 +476,7 @@ function getAutoTimerSettings()
 						$('#ats_'+name).val(val);
 				}
 			});
-		},error: function (request, status, error) {
-			showError(request.responseText);
-		}
-	});
-}
-
-
-function test_simulateAT(simulate)
-{
-
-	$("#simtb").append("<tr><td COLSPAN=6>"+loadspinner+"</td></tr>");
-
-	var link = simulate ? "simulate":"test";
-	var tag = simulate ? "e2simulatedtimer":"e2testtimer";
-	
-	if ( (link === 'test') && (!CurrentAT.isNew) ) {
-		link += "?id=" + CurrentAT.id;
-	} else {
-		link = 'simulate';
-		tag = 'e2simulatedtimer';
-	}
-	console.debug('LINK', link, tag);
-	$.ajax({
-		type: "GET", url: "/autotimer/" +link,
-		dataType: "xml",
-		success: function (xml)
-		{
-			console.debug(xml);
-			var lines= [];
-			$(xml).find(tag).each(function () {
-				var line = '<tr>';
-				line += '<td>' + $(this).find('e2state').text() + '</td>';
-				line += '<td>' + $(this).find('e2autotimername').text() + '</td>';
-				line += '<td>' + $(this).find('e2name').text() + '</td>';
-				line += '<td>' + $(this).find('e2servicename').text() + '</td>';
-				var startTime = $(this).find('e2timebegin').text();
-				line += '<td style="text-align: right">' + owif.utils.getStrftime(startTime) + '</td>';
-        var endTime = $(this).find('e2timeend').text();
-				line += '<td style="text-align: right">' + owif.utils.getToTimeText(startTime, endTime) + '</td>';
-				line += '</tr>';
-				console.debug(line);
-				lines.push(line);
-			});
-			
-			$("#simtb").empty();
-			$(lines).each(function(idx,val) {
-				$("#simtb").append(val);
-			});
-			if(lines.length===0)
-				$("#simtb").append("<tr><td COLSPAN=6>NO Timer found</td></tr>");
-		},
-		error: function (request, status, error) {
-			showError(request.responseText);
-		}
-	});
+		})
 }
 
 var autoTimerOptions;
@@ -572,20 +514,13 @@ function delAT()
 			closeOnCancel: false
 		}, function (isConfirm) {
 			if (isConfirm) {
-				$.ajax({
-				type: "GET", url: "/autotimer/remove?id=" + CurrentAT.id,
-				dataType: "xml",
-				success: function (xml)
-				{
+				window.autoTimers.deleteEntry(CurrentAT.id)
+				.then(xml => {
 					var state=$(xml).find("e2state").first();
 					var txt=$(xml).find("e2statetext").first();
 					showError(txt.text(),state.text());
 					readAT();
-				},
-				error: function (request, status, error) {
-					showError(request.responseText);
-				}
-			});
+				})
 			} else {
 				swal(tstrings_cancelled, CurrentAT.name, "error");
 			}
@@ -630,17 +565,11 @@ function addAT(evt)
 function readAT(keepSelection)
 {
 	CurrentAT = null;
-	$.ajax({
-		type: "GET", url: "/autotimer",
-		dataType: "xml",
-		success: function (xml)
-		{
-			atxml=xml;
+	window.autoTimers.getAll()
+		.then(xml => {
+			atxml = xml;
 			Parse(keepSelection);
-		},error: function (request, status, error) {
-			showError(request.responseText);
-		}
-	});
+		})
 }
 
 // parse and create AT List

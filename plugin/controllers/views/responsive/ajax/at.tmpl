@@ -1,5 +1,5 @@
-#filter WebSafe
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
+#filter WebSafe
 
 <!-- TODO: move styles to css file -->
 <style>
@@ -64,23 +64,15 @@
 				<div id="foo">
 					<div class="row align-center clearfix">
 						<button type="button" onclick="addAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></button>
-						##<button type="button" onclick="delAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
 						<button type="button" onclick="parseAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">code</i><span>$tstrings['at_process']</span></span></button>
-						<button type="button" onclick="test_simulateAT(true); return false;" class="btn btn--skinned waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
-						##<button type="button" onclick="test_simulateAT(false); return false;" class="btn btn--skinned waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
+						<button type="button" name="preview" class="btn btn--skinned waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_preview']</span></button>
 						<button type="button" onclick="listTimers(); return false;" class="btn btn--skinned waves-effect" data-toggle="modal" data-target="#ATTimerList"><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
 						<button type="button" onclick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="btn btn--skinned waves-effect" data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
 					</div>
 				</div>
 				<div id="info" x-style="display:none;">
 					<div class="row align-center clearfix">
-						##<button type="button" onclick="addAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></button>
 						<button type="button" onclick="delAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
-						##<button type="button" onclick="parseAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">code</i><span>$tstrings['at_process']</span></span></button>
-						##<button type="button" onclick="test_simulateAT(true); return false;" class="btn btn--skinned waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
-						<button type="button" onclick="test_simulateAT(false); return false;" class="btn btn--skinned waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
-						##<button type="button" onclick="listTimers(); return false;" class="btn btn--skinned waves-effect" data-toggle="modal" data-target="#ATTimerList"><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
-						##<button type="button" onclick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="btn btn--skinned waves-effect" data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
 					</div>
 
 					<div class="row clearfix">
