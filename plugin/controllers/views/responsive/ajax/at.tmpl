@@ -38,6 +38,10 @@
 .dependent-section {
 	display: none;
 }
+
+.atform__details__dropdown .btn.btn { /* this specificity is intentional */ 
+	box-shadow: none !important;
+}
 </style>
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -64,6 +68,7 @@
 				<div id="foo">
 					<div class="row align-center clearfix">
 						<button type="button" onclick="addAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></button>
+						<button type="button" onclick="delAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
 						<button type="button" onclick="parseAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">code</i><span>$tstrings['at_process']</span></span></button>
 						<button type="button" name="preview" class="btn btn--skinned waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_preview']</span></button>
 						<button type="button" onclick="listTimers(); return false;" class="btn btn--skinned waves-effect" data-toggle="modal" data-target="#ATTimerList"><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
@@ -71,10 +76,6 @@
 					</div>
 				</div>
 				<div id="info" x-style="display:none;">
-					<div class="row align-center clearfix">
-						<button type="button" onclick="delAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
-					</div>
-
 					<div class="row clearfix">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 							<div id="ateditcontent">
@@ -457,21 +458,6 @@
 
 											<!-- Restrict to days -->
 
-											<div class="atform__fields-container">
-												<div class="atform__details__title">
-													<input type="checkbox" id="_filters" class="form-control chk--skinned">
-													<!-- Use other filters -->
-													<label for="_filters">$tstrings['at_filter']</label>
-												</div>
-												<div class="atform__details__element">
-												</div>
-											</div>
-
-											<div class="atform__fields-container" style="margin-top: 0;">
-												<table id="filterlist" class="table table-striped table-hover FilterE"></table>
-												<button type="button" id="AddFilter" class="btn btn-default waves-effect FilterE">$tstrings['add']</button>
-											</div>
-
 #if $hasVPS == 1
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
@@ -502,6 +488,10 @@
 												</div>
 											</div>
 #end if
+											<div class="atform__fields-container m-t-0">
+												<table id="filterlist" class="table table-striped table-hover m-t-40"></table>
+												<button type="button" id="AddFilter" class="btn btn-default waves-effect">$tstrings['at_add_filters']</button>
+											</div>
 										</div>
 
 										<div class="row align-right clearfix">

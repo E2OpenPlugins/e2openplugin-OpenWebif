@@ -374,6 +374,7 @@ tstrings = {
 	'at_new': _("New"),
 	'at_name_hint': _("Enter a name for this AutoTimer"),
 	'at_text_hint': _("Enter the text to find in the EPG"),
+	'at_add_filters': _("Add filters"),
 	'at_preview': _("Preview"),
 
 	'ats_auto_timer_settings': _("AutoTimer Settings"),

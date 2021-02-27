@@ -300,9 +300,6 @@ document.getElementById('simtb').innerHTML = tableRef.cloneNode(true).innerHTML;
         (document.getElementById('vps') || nullEl).onchange = (input) => {
           document.getElementById('vpsE').classList.toggle('dependent-section', !input.target.checked);
         };
-        (document.getElementById('_filters') || nullEl).onclick = (input) => {
-          $('.FilterE').toggle('dependent-section', !input.target.checked);
-        };
         (document.getElementById('AddFilter') || nullEl).onclick = () => {
           AddFilter('', '', '');
         };
