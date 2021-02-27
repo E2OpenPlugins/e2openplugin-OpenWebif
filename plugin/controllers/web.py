@@ -468,7 +468,10 @@ class WebController(BaseController):
 		noiptv = False
 		if b"noiptv" in list(request.args.keys()):
 			noiptv = True
-		bouquets = getAllServices(type, noiptv)
+		nolastscanned = False
+		if b"nolastscanned" in list(request.args.keys()):
+			nolastscanned = True
+		bouquets = getAllServices(type, noiptv, nolastscanned)
 		if b"renameserviceforxmbc" in list(request.args.keys()):
 			for bouquet in bouquets["services"]:
 				for service in bouquet["subservices"]:

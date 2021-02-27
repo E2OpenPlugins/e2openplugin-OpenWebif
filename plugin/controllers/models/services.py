@@ -551,7 +551,7 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, pic
 		showiptv = True
 		if noiptv:
 			if '4097:' in sref or '5002:' in sref or 'http%3a' in sref or 'https%3a' in sref:
-				showiptv = True
+				showiptv = False
 
 		st = int(sitem[0].split(":")[1])
 		sp = (sitem[0][:7] == '1:832:D') or (sitem[0][:7] == '1:832:1') or (sitem[0][:6] == '1:320:')
@@ -579,13 +579,15 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, pic
 	return {"services": services, "pos": pos}
 
 
-def getAllServices(type, noiptv=False):
+def getAllServices(type, noiptv=False, nolastscanned=False):
 	services = []
 	if type is None:
 		type = "tv"
 	bouquets = getBouquets(type)["bouquets"]
 	pos = 0
 	for bouquet in bouquets:
+		if nolastscanned and 'LastScanned' in bouquet[0]:
+			continue
 		sv = getServices(sRef=bouquet[0], showAll=True, showHidden=False, pos=pos, noiptv=noiptv)
 		services.append({
 			"servicereference": bouquet[0],
