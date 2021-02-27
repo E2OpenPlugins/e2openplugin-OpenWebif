@@ -1,14 +1,15 @@
 //******************************************************************************
 //* epgr.js: openwebif EPGRefresh plugin
-//* Version 1.3
+//* Version 1.4
 //******************************************************************************
-//* Copyright (C) 2016 Joerg Bleyel
-//* Copyright (C) 2016 E2OpenPlugins
+//* Copyright (C) 2016-2021 Joerg Bleyel
+//* Copyright (C) 2016-2021 E2OpenPlugins
 //*
 //* V 1.0 - Initial Version
 //* V 1.1 - Theme Support
 //* V 1.2 - Refactor
 //* V 1.3 - use public getallservices
+//* V 1.4 - iptv, lastscanned filter
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //*
@@ -72,12 +73,51 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 
 			}, getAllServices: function () {
 			
-				GetAllServices(function ( options , boptions) {
-					$("#channels").append( options);
-					$('#channels').trigger("chosen:updated");
-					$("#bouquets").append( boptions);
-					$('#bouquets').trigger("chosen:updated");
-					self.reloadEPGR();
+				niptv = "";
+				if(EPGRnoiptv)
+				{
+					ru = "&noiptv=1";
+				}
+				
+				$.ajax({
+					url: '/api/getallservices?nolastscanned=1'+ ru + niptv,
+					dataType: "json",
+					success: function ( data ) {
+						var sdata = JSON.stringify(data);
+						var bqs = data['services'];
+
+						var options = "";
+						var boptions = "";
+						var refs = [];
+						$.each( bqs, function( key, val ) {
+							var ref = val['servicereference'];
+							var name = val['servicename'];
+							boptions += "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>";
+							var slist = val['subservices'];
+							var items = [];
+							$.each( slist, function( key, val ) {
+								var ref = val['servicereference'];
+								if (!isInArray(refs,ref)) {
+									refs.push(ref);
+									if(ref.substring(0, 4) == "1:0:")
+										items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
+									if(ref.substring(0, 5) == "4097:")
+										items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
+									if(ref.substring(0, 7) == "1:134:1")
+										items.push( "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>" );
+								}
+							});
+							if (items.length>0) {
+								options += "<optgroup label='" + name + "'>" + items.join("") + "</optgroup>";
+							}
+						});
+
+						$("#channels").append( options);
+						$('#channels').trigger("chosen:updated");
+						$("#bouquets").append( boptions);
+						$('#bouquets').trigger("chosen:updated");
+						self.reloadEPGR();
+					}
 				});
 			
 			}, reloadEPGR: function () {
