@@ -1,6 +1,6 @@
 //******************************************************************************
 //* epgr.js: openwebif EPGRefresh plugin
-//* Version 1.4
+//* Version 1.5
 //******************************************************************************
 //* Copyright (C) 2016-2021 Joerg Bleyel
 //* Copyright (C) 2016-2021 E2OpenPlugins
@@ -10,6 +10,7 @@
 //* V 1.2 - Refactor
 //* V 1.3 - use public getallservices
 //* V 1.4 - iptv, lastscanned filter
+//* V 1.5 - improve getallservices
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //*
@@ -86,37 +87,14 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 						var sdata = JSON.stringify(data);
 						var bqs = data['services'];
 
-						var options = "";
-						var boptions = "";
-						var refs = [];
-						$.each( bqs, function( key, val ) {
-							var ref = val['servicereference'];
-							var name = val['servicename'];
-							boptions += "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>";
-							var slist = val['subservices'];
-							var items = [];
-							$.each( slist, function( key, val ) {
-								var ref = val['servicereference'];
-								if (!isInArray(refs,ref)) {
-									refs.push(ref);
-									if(ref.substring(0, 4) == "1:0:")
-										items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
-									if(ref.substring(0, 5) == "4097:")
-										items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
-									if(ref.substring(0, 7) == "1:134:1")
-										items.push( "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>" );
-								}
-							});
-							if (items.length>0) {
-								options += "<optgroup label='" + name + "'>" + items.join("") + "</optgroup>";
-							}
+						FillAllServices(bqs, function ( options , boptions) {
+							$("#channels").append( options);
+							$('#channels').trigger("chosen:updated");
+							$("#bouquets").append( boptions);
+							$('#bouquets').trigger("chosen:updated");
+							self.reloadEPGR();
 						});
 
-						$("#channels").append( options);
-						$('#channels').trigger("chosen:updated");
-						$("#bouquets").append( boptions);
-						$('#bouquets').trigger("chosen:updated");
-						self.reloadEPGR();
 					}
 				});
 			

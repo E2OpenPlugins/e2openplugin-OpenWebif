@@ -1,6 +1,6 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 2.10
+//* Version 2.11
 //******************************************************************************
 //* Copyright (C) 2014-2021 Joerg Bleyel
 //* Copyright (C) 2014-2021 E2OpenPlugins
@@ -26,6 +26,7 @@
 //* V 2.8 - fix #960
 //* V 2.9 - fix #1028
 //* V 2.10 - iptv, lastscanned filter
+//* V 2.11 - improve getallservices
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -430,42 +431,10 @@ function ATGetAllServices(callback,radio)
 		success: function ( data ) {
 			var sdata = JSON.stringify(data);
 			var bqs = data['services'];
-			ATFillAllServices(bqs,callback);
+			FillAllServices(bqs,callback);
 		}
 	});
 }
-
-function ATFillAllServices(bqs,callback)
-{
-	var options = "";
-	var boptions = "";
-	var refs = [];
-	$.each( bqs, function( key, val ) {
-		var ref = val['servicereference'];
-		var name = val['servicename'];
-		boptions += "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>";
-		var slist = val['subservices'];
-		var items = [];
-		$.each( slist, function( key, val ) {
-			var ref = val['servicereference'];
-			if (!isInArray(refs,ref)) {
-				refs.push(ref);
-				if(ref.substring(0, 4) == "1:0:")
-					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
-				if(ref.substring(0, 5) == "4097:")
-					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
-				if(ref.substring(0, 7) == "1:134:1")
-					items.push( "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>" );
-			}
-		});
-		if (items.length>0) {
-			options += "<optgroup label='" + name + "'>" + items.join("") + "</optgroup>";
-		}
-	});
-	callback(options,boptions);
-
-}
-
 
 function getAllServices()
 {

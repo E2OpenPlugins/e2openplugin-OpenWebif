@@ -1,6 +1,6 @@
 //******************************************************************************
 //* epgr.js: openwebif EPGRefresh plugin
-//* Version 1.3
+//* Version 1.5
 //******************************************************************************
 //* Copyright (C) 2016 Joerg Bleyel
 //* Copyright (C) 2016 E2OpenPlugins
@@ -9,6 +9,8 @@
 //* V 1.1 - Theme Support
 //* V 1.2 - Refactor
 //* V 1.3 - use public getallservices
+//* V 1.4 - iptv, lastscanned filter
+//* V 1.5 - improve getallservices
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //*
@@ -17,16 +19,6 @@
 //*******************************************************************************
 
 //var epgxml;
-
-/*function toUnixDate(date){
-	var datea = date.split(':');
-	var d = new Date();
-	d.setFullYear(datea[2],datea[1]-1,datea[0]);
-	d.setHours( 0 );
-	d.setMinutes( 0 );
-	d.setSeconds( 0 );
-	return Math.floor(d.getTime() / 1000);
-}*/
 
 function toUnixDate(date){
 	var datea = date.split(':');
@@ -72,16 +64,32 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 
 			}, getAllServices: function () {
 			
-				GetAllServices(function ( options , boptions) {
-					$('#bouquets').hide();
-					$('#channels').hide();
-					$("#channels").append( options);
-					$('#channels').selectpicker('refresh');
-					$("#bouquets").append( boptions);
-					$('#bouquets').selectpicker('refresh');
-					self.reloadEPGR();
-					$('#bouquets').show();
-					$('#channels').show();
+				niptv = "";
+				if(EPGRnoiptv)
+				{
+					ru = "&noiptv=1";
+				}
+				
+				$.ajax({
+					url: '/api/getallservices?nolastscanned=1'+ ru + niptv,
+					dataType: "json",
+					success: function ( data ) {
+						var sdata = JSON.stringify(data);
+						var bqs = data['services'];
+
+						FillAllServices(bqs, function ( options , boptions) {
+							$('#bouquets').hide();
+							$('#channels').hide();
+							$("#channels").append( options);
+							$('#channels').selectpicker('refresh');
+							$("#bouquets").append( boptions);
+							$('#bouquets').selectpicker('refresh');
+							self.reloadEPGR();
+							$('#bouquets').show();
+							$('#channels').show();
+						});
+
+					}
 				});
 			
 			}, reloadEPGR: function () {
