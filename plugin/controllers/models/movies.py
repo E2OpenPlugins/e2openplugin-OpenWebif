@@ -145,22 +145,40 @@ def getMovieList(rargs=None, locations=None):
 			bookmarklist.append(item)
 
 	folders = [root]
+	brecursive = False
 	if rargs and b"recursive" in list(rargs.keys()):
-		for f in bookmarklist:
-			if f[-1] != "/":
-				f += "/"
-			ff = eServiceReference(MOVIE_LIST_SREF_ROOT + directory + f)
-			folders.append(ff)
+		brecursive = True
+		dirs = []
+		locations = []
+		if PY3:
+			from glob import glob
+			for subdirpath in glob(directory + "**/", recursive=True):
+				locations.append(subdirpath)
+				subdirpath = subdirpath[len(directory):]
+				dirs.append(subdirpath)
+		else:
+			# FIXME SLOW!!!
+			for subdirpath in [x[0] for x in os.walk(directory)]:
+				locations.append(subdirpath)
+				subdirpath = subdirpath[len(directory):]
+				dirs.append(subdirpath)
 
-	# get all locations
-	if locations is not None:
-		folders = []
+		for f in sorted(dirs):
+			if f != '':
+				if f[-1] != "/":
+					f += "/"
+				ff = eServiceReference(MOVIE_LIST_SREF_ROOT + directory + f)
+				folders.append(ff)
+	else:
+		# get all locations
+		if locations is not None:
+			folders = []
 
-		for f in locations:
-			if f[-1] != "/":
-				f += "/"
-			ff = eServiceReference(MOVIE_LIST_SREF_ROOT + f)
-			folders.append(ff)
+			for f in locations:
+				if f[-1] != "/":
+					f += "/"
+				ff = eServiceReference(MOVIE_LIST_SREF_ROOT + f)
+				folders.append(ff)
 
 	if config.OpenWebif.parentalenabled.value:
 		dir_is_protected = checkParentalProtection(directory)
@@ -259,13 +277,24 @@ def getMovieList(rargs=None, locations=None):
 		return {
 			"movies": movieliste,
 			"bookmarks": bookmarklist,
-			"directory": directory
+			"directory": directory,
+			"recursive" : brecursive
 		}
 
-	return {
-		"movies": movieliste,
-		"locations": locations
-	}
+	if brecursive:
+		return {
+			"movies": movieliste,
+			"locations": locations,
+			"directory": directory,
+			"bookmarks": bookmarklist,
+			"recursive" : brecursive
+		}
+	else:
+		return {
+			"movies": movieliste,
+			"locations": locations,
+			"recursive" : brecursive
+		}
 
 def getMovieSearchList(rargs=None, locations=None):
 	movieliste = []
@@ -463,7 +492,7 @@ def removeMovie(session, sRef, Force=False):
 		# EMC reload
 		try:
 			config.EMC.needsreload.value = True
-		except AttributeError:
+		except (AttributeError, KeyError):
 			pass
 		return {
 			"result": True,
@@ -572,7 +601,7 @@ def _moveMovie(session, sRef, destpath=None, newname=None):
 		# EMC reload
 		try:
 			config.EMC.needsreload.value = True
-		except AttributeError:
+		except (AttributeError, KeyError):
 			pass
 		return {
 			"result": True,
