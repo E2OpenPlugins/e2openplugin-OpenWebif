@@ -94,39 +94,34 @@ function xml2json(xmlStr){return xml2jsonRecurse(xmlStr=cleanXML(xmlStr),0)} fun
 
     return {
       getAll: async () => {
-        return apiRequest('/autotimer')
-          .then(responseText => responseText)
+        return await apiRequest('/autotimer');
       },
 
       getSettings: async () => {
-        return apiRequest('/autotimer/get')
-          .then(responseText => responseText)
+        return await apiRequest('/autotimer/get');
       },
 
       deleteEntry: async (atId) => {
-        return apiRequest(`/autotimer/remove?id=${atId}`)
-          .then(responseText => responseText)
+        return await apiRequest(`/autotimer/remove?id=${atId}`);
       },
 
-      preview: () => {
-
-const sm = document.getElementById('simtb');
-
-        return apiRequest('/autotimer/test')
-        .then(responseText => {
-          const x2j = xml2json(responseText);
-
-let tableRef = document.createElement('tbody'); //getElementById(tableID);
-
-x2j['e2autotimertest']['e2testtimer'].forEach((selection) => {
-  addRow(tableRef, selection);
-});
-// $("#simtb").append("<tr><td COLSPAN=6>NO Timer found</td></tr>");
-
-document.getElementById('simtb').innerHTML = tableRef.cloneNode(true).innerHTML;
-
-          return responseText;
-        })
+      preview: async () => {
+        document.getElementById('at-preview__progress').classList.toggle('hidden', false);
+        document.getElementById('at-preview__no-results').classList.toggle('hidden', true);
+        const responseContent = await apiRequest('/autotimer/test');
+        const data = xml2json(responseContent)['e2autotimertest'];
+        const autotimers = data['e2testtimer'] || [];
+        const previewTbodyEl = document.getElementById('at-preview__list');
+        const newNode = document.createElement('tbody');
+        document.getElementById('at-preview__progress').classList.toggle('hidden', true);
+        autotimers.forEach((autotimer) => {
+          addRow(newNode, autotimer);
+        });
+        if (autotimers.length) {
+          previewTbodyEl.innerHTML = newNode.cloneNode(true).innerHTML;
+        } else {
+          document.getElementById('at-preview__no-results').classList.toggle('hidden', false);
+        }
       },
 
       populateForm: (data) => {
