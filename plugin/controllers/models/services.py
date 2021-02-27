@@ -500,7 +500,7 @@ def getChannels(idbouquet, stype):
 	return {"channels": ret}
 
 
-def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, picon=False):
+def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, picon=False, noiptv=False):
 	services = []
 	allproviders = {}
 
@@ -548,12 +548,16 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, pic
 					oPos = oPos + 1
 					if not sp and citem[0].flags & eServiceReference.isMarker:
 						oPos = oPos - 1
+		showiptv = True
+		if noiptv:
+			if '4097:' in sref or '5002:' in sref or 'http%3a' in sref or 'https%3a' in sref:
+				showiptv = True
 
 		st = int(sitem[0].split(":")[1])
 		sp = (sitem[0][:7] == '1:832:D') or (sitem[0][:7] == '1:832:1') or (sitem[0][:6] == '1:320:')
 		if sp or (not (st & 512) and not (st & 64)):
 			pos = pos + 1
-		if not st & 512 or showHidden:
+		if showiptv and (not st & 512 or showHidden):
 			if showAll or st == 0:
 				service = {}
 				service['pos'] = 0 if (st & 64) else pos
@@ -575,14 +579,14 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, pic
 	return {"services": services, "pos": pos}
 
 
-def getAllServices(type):
+def getAllServices(type, noiptv=False):
 	services = []
 	if type is None:
 		type = "tv"
 	bouquets = getBouquets(type)["bouquets"]
 	pos = 0
 	for bouquet in bouquets:
-		sv = getServices(bouquet[0], True, False, pos)
+		sv = getServices(sRef=bouquet[0], showAll=True, showHidden=False, pos=pos, noiptv=noiptv)
 		services.append({
 			"servicereference": bouquet[0],
 			"servicename": bouquet[1],
