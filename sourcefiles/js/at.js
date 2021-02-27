@@ -1,9 +1,9 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 2.9
+//* Version 2.10
 //******************************************************************************
-//* Copyright (C) 2014-2020 Joerg Bleyel
-//* Copyright (C) 2014-2020 E2OpenPlugins
+//* Copyright (C) 2014-2021 Joerg Bleyel
+//* Copyright (C) 2014-2021 E2OpenPlugins
 //*
 //* V 1.0 - Initial Version
 //* V 1.1 - Support translation, small ui fixes
@@ -25,6 +25,7 @@
 //* V 2.7 - backup / restore
 //* V 2.8 - fix #960
 //* V 2.9 - fix #1028
+//* V 2.10 - iptv, lastscanned filter
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -234,8 +235,11 @@ function checkValues () {
 		$('#vpsE').hide();
 }
 
-function InitPage() {
+var ATnoiptv = false;
 
+function InitPage(noiptv) {
+
+	ATnoiptv = noiptv;
 	$('#timeSpan').click(function() { checkValues();});
 	$('#timeSpanAE').click(function() { checkValues();});
 	$('#timeFrame').click(function() { checkValues();});
@@ -398,9 +402,74 @@ function getTags()
 	});
 }
 
+
+function ATGetAllServices(callback,radio)
+{
+	if (typeof callback === 'undefined')
+		return;
+	if (typeof radio === 'undefined')
+		radio = false;
+	
+	ru = "";
+	if (radio)
+	{
+		v += "r";
+		vd += "r";
+		ru = "&type=radio";
+	}
+
+	niptv = "";
+	if(ATnoiptv)
+	{
+		ru = "&noiptv=1";
+	}
+	
+	$.ajax({
+		url: '/api/getallservices?nolastcanned=1'+ ru + niptv,
+		dataType: "json",
+		success: function ( data ) {
+			var sdata = JSON.stringify(data);
+			var bqs = data['services'];
+			ATFillAllServices(bqs,callback);
+		}
+	});
+}
+
+function ATFillAllServices(bqs,callback)
+{
+	var options = "";
+	var boptions = "";
+	var refs = [];
+	$.each( bqs, function( key, val ) {
+		var ref = val['servicereference'];
+		var name = val['servicename'];
+		boptions += "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>";
+		var slist = val['subservices'];
+		var items = [];
+		$.each( slist, function( key, val ) {
+			var ref = val['servicereference'];
+			if (!isInArray(refs,ref)) {
+				refs.push(ref);
+				if(ref.substring(0, 4) == "1:0:")
+					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
+				if(ref.substring(0, 5) == "4097:")
+					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
+				if(ref.substring(0, 7) == "1:134:1")
+					items.push( "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>" );
+			}
+		});
+		if (items.length>0) {
+			options += "<optgroup label='" + name + "'>" + items.join("") + "</optgroup>";
+		}
+	});
+	callback(options,boptions);
+
+}
+
+
 function getAllServices()
 {
-	GetAllServices(function ( options , boptions) {
+	ATGetAllServices(function ( options , boptions) {
 		$("#channels").append( options);
 		$('#channels').trigger("chosen:updated");
 		$("#bouquets").append( boptions);
