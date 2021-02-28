@@ -13,15 +13,19 @@
 function xml2json(xmlStr){return xml2jsonRecurse(xmlStr=cleanXML(xmlStr),0)} function xml2jsonRecurse(xmlStr){for(var obj={},tagName,indexClosingTag,inner_substring,tempVal,openingTag;xmlStr.match(/<[^\/][^>]*>/);)tagName=(openingTag=xmlStr.match(/<[^\/][^>]*>/)[0]).substring(1,openingTag.length-1),-1==(indexClosingTag=xmlStr.indexOf(openingTag.replace("<","</")))&&(tagName=openingTag.match(/[^<][\w+$]*/)[0],-1==(indexClosingTag=xmlStr.indexOf("</"+tagName))&&(indexClosingTag=xmlStr.indexOf("<\\/"+tagName))),tempVal=(inner_substring=xmlStr.substring(openingTag.length,indexClosingTag)).match(/<[^\/][^>]*>/)?xml2json(inner_substring):inner_substring,void 0===obj[tagName]?obj[tagName]=tempVal:Array.isArray(obj[tagName])?obj[tagName].push(tempVal):obj[tagName]=[obj[tagName],tempVal],xmlStr=xmlStr.substring(2*openingTag.length+1+inner_substring.length);return obj} function cleanXML(xmlStr){return xmlStr=replaceAttributes(xmlStr=replaceAloneValues(xmlStr=replaceSelfClosingTags(xmlStr=(xmlStr=(xmlStr=(xmlStr=(xmlStr=xmlStr.replace(/<!--[\s\S]*?-->/g,"")).replace(/\n|\t|\r/g,"")).replace(/ {1,}<|\t{1,}</g,"<")).replace(/> {1,}|>\t{1,}/g,">")).replace(/<\?[^>]*\?>/g,""))))} function replaceSelfClosingTags(xmlStr){var selfClosingTags=xmlStr.match(/<[^/][^>]*\/>/g);if(selfClosingTags)for(var i=0;i<selfClosingTags.length;i++){var oldTag=selfClosingTags[i],tempTag=oldTag.substring(0,oldTag.length-2);tempTag+=">";var tagName=oldTag.match(/[^<][\w+$]*/)[0],closingTag="</"+tagName+">",newTag="<"+tagName+">",attrs=tempTag.match(/(\S+)=["']?((?:.(?!["']?\s+(?:\S+)=|[>"']))+.)["']?/g);if(attrs)for(var j=0;j<attrs.length;j++){var attr=attrs[j],attrName=attr.substring(0,attr.indexOf("=")),attrValue;newTag+="<"+attrName+">"+attr.substring(attr.indexOf('"')+1,attr.lastIndexOf('"'))+"</"+attrName+">"}newTag+=closingTag,xmlStr=xmlStr.replace(oldTag,newTag)}return xmlStr} function replaceAloneValues(xmlStr){var tagsWithAttributesAndValue=xmlStr.match(/<[^\/][^>][^<]+\s+.[^<]+[=][^<]+>{1}([^<]+)/g);if(tagsWithAttributesAndValue)for(var i=0;i<tagsWithAttributesAndValue.length;i++){var oldTag=tagsWithAttributesAndValue[i],oldTagName,oldTagValue,newTag=oldTag.substring(0,oldTag.indexOf(">")+1)+"<_@ttribute>"+oldTag.substring(oldTag.indexOf(">")+1)+"</_@ttribute>";xmlStr=xmlStr.replace(oldTag,newTag)}return xmlStr} function replaceAttributes(xmlStr){var tagsWithAttributes=xmlStr.match(/<[^\/][^>][^<]+\s+.[^<]+[=][^<]+>/g);if(tagsWithAttributes)for(var i=0;i<tagsWithAttributes.length;i++){var oldTag=tagsWithAttributes[i],tagName,newTag="<"+oldTag.match(/[^<][\w+$]*/)[0]+">",attrs=oldTag.match(/(\S+)=["']?((?:.(?!["']?\s+(?:\S+)=|[>"']))+.)["']?/g);if(attrs)for(var j=0;j<attrs.length;j++){var attr=attrs[j],attrName=attr.substring(0,attr.indexOf("=")),attrValue;newTag+="<"+attrName+">"+attr.substring(attr.indexOf('"')+1,attr.lastIndexOf('"'))+"</"+attrName+">"}xmlStr=xmlStr.replace(oldTag,newTag)}return xmlStr}
 
 (function () {
+  // TODO: move to owif.js utils
 	const regexDateFormat = new RegExp(/\d{4}-\d{2}-\d{2}/);
 	
+  // TODO: move to owif.js utils
 	const debugLog = (...args) => {
     console.debug(...args);
 	};
 
+  // TODO: move to owif.js utils
   // convert html date input format (yyyy-mm-dd) to serial
-	const toUnixDate = (date) => (Date.parse(date + 'Z')) / 1000; // Z is intentional
+	const toUnixDate = (date) => (Date.parse(`${date}Z`)) / 1000; // Z is intentional
 
+  // TODO: move to owif.js utils
   const apiRequest = async (url, options = { method: 'get', ...{} }) => {
     try {
       const response = await fetch(url, options);
@@ -43,8 +47,12 @@ function xml2json(xmlStr){return xml2jsonRecurse(xmlStr=cleanXML(xmlStr),0)} fun
       }
     } catch (ex) {
       throw new Error(ex);
-    }
-  };
+    };
+};
+
+  // TODO: move to owif.js utils
+  // 1:134:1 is bouquetroot
+  const isBouquet = (sref) => (!sref.startsWith('1:134:1') && sref.includes('FROM BOUQUET'));
 
   const AutoTimers = function () {
     // keep reference to object.
@@ -52,19 +60,30 @@ function xml2json(xmlStr){return xml2jsonRecurse(xmlStr=cleanXML(xmlStr),0)} fun
 
     const atForm = document.getElementById('atform');
 
-    const addDependentSectionTogglers = (data = { Tags:[], Channels: [], Bouquets: [], ...{} }) => {
+    const addDependentSectionTogglers = (data = {}) => {
       // set up show/hide checkboxes
       data['_timespan'] = !!data.timespanFrom || !!data.timespanTo;
       data['_after'] = !!data.after;
       data['_before'] = !!data.before;
       data['_timerOffset'] = !!data.timerOffsetAfter || !!data.timerOffsetBefore;
+      data['timeSpanAE'] = !!data.afterevent;
       data['_location'] = !!data.location;
-      data['_tags'] = !!data.Tags.length;
-      data['_channels'] = !!data.Channels.length;
-      data['_bouquets'] = !!data.Bouquets.length;
+      data['_tags'] = !!(data.Tags && data.Tags.length);
+      data['_channels'] = !!(data.Channels && data.Channels.length);
+      data['_bouquets'] = !!(data.Bouquets && data.Bouquets.length);
 
       return data;
     };
+
+    // const transformInputs = (data) => {
+    //   CurrentAT.justplay = $('#justplay').val();
+    //   if(CurrentAT.justplay=="2")
+    //   {
+    //     reqs += "&justplay=0&always_zap=1";
+    //   }
+    //   else
+    //     reqs += "&justplay=" + CurrentAT.justplay;
+    // };
 
     const addCell = (rowRef, content ='') => {
       const newCell = rowRef.insertCell();
@@ -94,7 +113,59 @@ function xml2json(xmlStr){return xml2jsonRecurse(xmlStr=cleanXML(xmlStr),0)} fun
 
     return {
       getAll: async () => {
-        return await apiRequest('/autotimer');
+        const responseContent = await apiRequest('/autotimer');
+        const data = xml2json(responseContent)['autotimer'];
+
+console.log('response: ', data);
+// console.log('defaults: ', data['default']);
+// console.log('timer: ', data['timer']);
+window.atList = data['timer'] || [];
+if (!Array.isArray(window.atList)) {
+  window.atList = [data['timer']];
+}
+/*
+			"none": AFTEREVENT.NONE,
+			"deepstandby": AFTEREVENT.DEEPSTANDBY,
+			"shutdown": AFTEREVENT.DEEPSTANDBY,
+			"standby": AFTEREVENT.STANDBY,
+			"auto": AFTEREVENT.AUTO
+*/
+
+        window.atList.map((ati) => {
+          if (ati['from']) {
+            ati['timespanFrom'] = ati['from'];
+          }
+          if (ati['to']) {
+            ati['timespanTo'] = ati['to'];
+          }
+          if (ati['after']) {
+            const afterDate = new Date(parseInt(ati['after']) * 1000);
+            ati['after'] = afterDate.toISOString().split('T')[0];
+          }
+          if (ati['before']) {
+            const beforeDate = new Date(parseInt(ati['before']) * 1000);
+            ati['before'] = beforeDate.toISOString().split('T')[0];
+          }
+          // if (!!ati['offset']) {
+          //   ati['offset'].split(',');
+          // }
+          if (!!ati['afterevent']) {
+            ati['aftereventFrom'] = ati['afterevent']['from'] || '';
+            ati['aftereventTo'] = ati['afterevent']['to'] || '';
+            ati['afterevent'] = ati['afterevent']['_@ttribute'];
+          }
+          if (ati['e2service'] && ati['e2service'].length) {
+            ati['Bouquets'] = [];
+            ati['Channels'] = [];
+            (ati['e2service'] || []).forEach(function (service, index) {
+              const bouquetsOrChannels = (isBouquet(service['e2servicereference'])) ? 'Bouquets' : 'Channels';
+              ati[bouquetsOrChannels].push(service['e2servicereference']);
+            });
+          }
+          return ati;
+        });
+
+        return responseContent;
       },
 
       getSettings: async () => {
@@ -131,6 +202,17 @@ function xml2json(xmlStr){return xml2jsonRecurse(xmlStr=cleanXML(xmlStr),0)} fun
         const { elements } = atForm;
         atForm.reset();
 
+        /**
+e2tags -> tags
+e2service{
+  e2servicename
+  e2servicereference
+}
+always_zap
+from
+to
+         **/
+
         data = addDependentSectionTogglers(data);
 
         for (let [key, value] of Object.entries(data)) {
@@ -145,7 +227,11 @@ function xml2json(xmlStr){return xml2jsonRecurse(xmlStr=cleanXML(xmlStr),0)} fun
                 field.value = value;
                 break;
             }
-            field.dispatchEvent(new Event('change'));
+            try {
+              field.dispatchEvent(new Event('change'));
+            } catch(ex) {
+console.log(field, ex);
+            }
           } else {
             debugLog('%c[N/A]', 'color: red', key, value);
           }
@@ -170,10 +256,10 @@ function xml2json(xmlStr){return xml2jsonRecurse(xmlStr=cleanXML(xmlStr),0)} fun
           console.debug('Failed to process tag options');
         }
 
-        autoTimerOptions['tags']
-          .setChoices(tagOpts, 'value', 'label', false)
-          .removeActiveItems()
-          .setChoiceByValue(data.Tags);
+        // autoTimerOptions['tags']
+        //   .setChoices(tagOpts, 'value', 'label', false)
+        //   .removeActiveItems()
+        //   .setChoiceByValue(data.Tags);
       
         autoTimerOptions['channels']
           .setChoices(allChannels, 'value', 'label', false)
@@ -196,7 +282,7 @@ function xml2json(xmlStr){return xml2jsonRecurse(xmlStr=cleanXML(xmlStr),0)} fun
           debugLog(name, value);
           if (name === 'id' && value === '') {
             // remove empty value (empty id causes server error, but missing id does not)
-            formData.delete(name);
+            formData.delete(name); // TODO: check iOS compatibility
           } else if (regexDateFormat.test(value)) {
             formData.set(name, toUnixDate(value));
           } else if (name !== 'tag') {
@@ -238,6 +324,14 @@ function xml2json(xmlStr){return xml2jsonRecurse(xmlStr=cleanXML(xmlStr),0)} fun
         // create a failsafe element to assign event handlers to
         let nullEl = document.createElement('input');
 
+        (document.getElementById('atlist') || nullEl).onchange = (selection) => {
+          const atId = selection.target.value;
+console.log(atId);
+const a = window.atList.find(autotimer => autotimer['id'] == atId);
+console.log(a);
+          self.populateForm(a);
+        };
+
         (document.querySelector('button[name="preview"]') || nullEl).onclick = self.preview;
 
         (document.getElementById('_timespan') || nullEl).onchange = (input) => {
@@ -252,6 +346,9 @@ function xml2json(xmlStr){return xml2jsonRecurse(xmlStr=cleanXML(xmlStr),0)} fun
         };
         (document.getElementById('_timerOffset') || nullEl).onchange = (input) => {
           document.getElementById('timerOffsetE').classList.toggle('dependent-section', !input.target.checked);
+        };
+        (document.querySelector('[name="afterevent"]') || nullEl).onchange = (input) => {
+          document.getElementById('AftereventE').classList.toggle('dependent-section', input.target.value !== 'standard');
         };
         (document.getElementById('timeSpanAE') || nullEl).onchange = (input) => {
           document.getElementById('timeSpanAEE').classList.toggle('dependent-section', !input.target.checked);

@@ -1,8 +1,4 @@
 /* BEGIN legacy AutoTimer.js */
-function isBQ(sref) {
-	return ((sref.indexOf('FROM BOUQUET') > -1) && (sref.indexOf('1:134:1') != 0));
-}
-
 function FillAT(autotimerid){
 	var def = $(atxml).find('defaults');
 	$(atxml).find('timer').each(function () {
@@ -116,24 +112,6 @@ function AutoTimerObj (xml) {
 
 	this.isNew = false;
 	this.MustSave = false;
-	this.id = xml.attr("id");
-	this.enabled = (xml.attr("enabled") == "yes");
-
-	this.name = xml.attr("name");
-	if(!this.name)
-		this.name='';
-
-	this.match = xml.attr("match");
-	if(!this.match)
-		this.match='';
-
-	this.searchType = "partial";
-	if(xml.attr("searchType"))
-		this.searchType=xml.attr("searchType");
-
-	this.searchCase = "insensitive";
-	if(xml.attr("searchCase"))
-		this.searchCase=xml.attr("searchCase");
 
 
 	// justplay 0 = record
@@ -151,46 +129,6 @@ function AutoTimerObj (xml) {
 			this.justplay = "2";
 	}
 
-	this.overrideAlternatives = (xml.attr("overrideAlternatives") == "1");
-
-	this.timeSpan = false;
-	if(xml.attr("from") && xml.attr("to"))
-	{
-		this.timespanFrom = xml.attr("from");
-		this.timespanTo = xml.attr("to");
-		this.timeSpan = true;
-	}
-
-	this.maxduration=null;
-	if(xml.attr("maxduration")) 
-		this.maxduration=xml.attr("maxduration");
-	
-	if(xml.attr("after") && xml.attr("before"))
-	{
-		var _i = parseInt(xml.attr("after"));
-		var _date = new Date(_i*1000);
-		this.after = moment(_date).format('YYYY-MM-DD');
-
-		_i=parseInt(xml.attr("before"));
-		_date = new Date(_i*1000);
-		this.before = moment(_date).format('YYYY-MM-DD');
-		this.timeFrame=true;
-	}
-	else
-	{
-		this.before=null;
-		this.after=null;
-		this.timeFrame=false;
-	}
-
-	this.avoidDuplicateDescription="0";
-	if(xml.attr("avoidDuplicateDescription"))
-		this.avoidDuplicateDescription=xml.attr("avoidDuplicateDescription")
-
-	this.location=null;
-	if(xml.attr("location")) 
-		this.location = xml.attr("location");
-
 	this.timerOffset=false;
 	if(xml.attr("offset"))
 	{
@@ -206,36 +144,6 @@ function AutoTimerObj (xml) {
 		}
 		this.timerOffset=true;
 	}
-	
-	var _ae = xml.find('afterevent');
-	this.afterevent=null;
-	if(_ae.text())
-	{
-		this.afterevent=_ae.text();
-		if(_ae.attr("from") && _ae.attr("to"))
-		{
-			this.aftereventFrom = _ae.attr("from");
-			this.aftereventTo = _ae.attr("to");
-		}
-		else
-		{
-			this.aftereventFrom = null;
-			this.aftereventTo = null;
-		}
-	}
-
-	var _c = [];
-	var _b = [];
-	xml.find("e2service").each(function () {
-		var ref = $(this).find("e2servicereference").text();
-		if (isBQ(ref))
-			_b.push(ref);
-		else
-			_c.push(ref);
-	});
-	
-	this.Channels = _c.slice();
-	this.Bouquets = _b.slice();
 
 	// Tags
 	_b = [];
@@ -269,18 +177,6 @@ function AutoTimerObj (xml) {
 
 	this.Filters = _f.slice();
 
-	this.counter = xml.attr("counter");
-	if(!this.counter)
-		this.counter='0';
-
-	this.left = xml.attr("left");
-	if(!this.left)
-		this.left='0';
-
-	this.counterFormat = xml.attr("counterFormat");
-	if(!this.counterFormat)
-		this.counterFormat='';
-
 	this.vps = false;
 	this.vpso = false;
 	if(xml.attr("vps_enabled") === "yes") {
@@ -311,7 +207,7 @@ function AutoTimerObj (xml) {
 
 AutoTimerObj.prototype.UpdateUI = function(){
 
-	window.autoTimers.populateForm(this);
+	// window.autoTimers.populateForm(this);
 
 	$('#filterlist').empty();
 	var rc = $('#filterlist tr').length;
@@ -330,8 +226,6 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	$.AdminBSB.select.activate();
 	$('select', '#atform').not('.choices__input').selectpicker('refresh');
 
-	// $('#at_name').html("(" + this.name +")");
-	
 	// if(this.location) {
 	// 	$('#location').val(this.location);
 	// 	if(this.location !== $('#location').val()) {
@@ -343,23 +237,6 @@ AutoTimerObj.prototype.UpdateUI = function(){
 	// }
 	// else
 	// 	$('#_location').prop('checked', false);
-
-	// $('#_timerOffset').prop('checked', this.timerOffset);
-
-	// if(this.timerOffset)
-	// {
-	// 	$('#tafter').val(this.timerOffsetAfter);
-	// 	$('#tbefore').val(this.timerOffsetBefore);
-	// }
-
-	// if(this.afterevent) {
-	// 	$('#afterevent').val(this.afterevent);
-	// 	if (this.aftereventFrom && this.aftereventTo) {
-	// 		$('#aftereventFrom').val(this.aftereventFrom);
-	// 		$('#aftereventTo').val(this.aftereventTo);
-	// 		$('#timeSpanAE').prop('checked',true);
-	// 	}
-	// }
 
 	// $('#vps').prop('checked',this.vps);
 	// $('#vpssm').prop('checked',!this.vpso);
@@ -380,14 +257,6 @@ function saveAT()
 		}
 		else
 			reqs += "&justplay=" + CurrentAT.justplay;
-
-		// keep logic
-		// CurrentAT.afterevent = $('#afterevent').val();
-		// var _ae = CurrentAT.afterevent;
-		// if (_ae !== "default") {
-		// 	reqs += "&aftereventFrom=" + CurrentAT.aftereventFrom;
-		// 	reqs += "&aftereventTo=" + CurrentAT.aftereventTo;
-		// }
 
 		CurrentAT.vps = $('#vps').is(':checked');
 		if(!CurrentAT.vps)
@@ -536,6 +405,8 @@ function addAT(evt)
 		return;
 	}
 
+	document.getElementById('atform').reset();
+
 	var name = '';
 	var id = '';
 	var xml = '<timers><timer name="'+name+'" match="'+name+'" enabled="yes" id="'+id+'" justplay="0" overrideAlternatives="1"></timer></timers>';
@@ -568,12 +439,12 @@ function readAT(keepSelection)
 	window.autoTimers.getAll()
 		.then(xml => {
 			atxml = xml;
-			Parse(keepSelection);
+			parseAT(keepSelection);
 		})
 }
 
 // parse and create AT List
-function Parse(keepSelection) {
+function parseAT(keepSelection) {
 	keepSelection = typeof keepSelection !== 'undefined' ? keepSelection : -1;
 	$("#atlist").empty();
 	$('#filterlist').empty();
