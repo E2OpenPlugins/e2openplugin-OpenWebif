@@ -123,13 +123,10 @@ window.atList = data['timer'] || [];
 if (!Array.isArray(window.atList)) {
   window.atList = [data['timer']];
 }
-/*
-			"none": AFTEREVENT.NONE,
-			"deepstandby": AFTEREVENT.DEEPSTANDBY,
-			"shutdown": AFTEREVENT.DEEPSTANDBY,
-			"standby": AFTEREVENT.STANDBY,
-			"auto": AFTEREVENT.AUTO
-*/
+
+aem = {
+  'shutdown': 'deepstandby',
+}
 
         window.atList.map((ati) => {
           if (ati['from']) {
@@ -150,9 +147,9 @@ if (!Array.isArray(window.atList)) {
           //   ati['offset'].split(',');
           // }
           if (!!ati['afterevent']) {
-            ati['aftereventFrom'] = ati['afterevent']['from'] || '';
-            ati['aftereventTo'] = ati['afterevent']['to'] || '';
-            ati['afterevent'] = ati['afterevent']['_@ttribute'];
+            ati['afterevent']['from'] && (ati['aftereventFrom'] = ati['afterevent']['from']);
+            ati['afterevent']['to'] && (ati['aftereventTo'] = ati['afterevent']['to']);
+            ati['afterevent'] = aem[ati['afterevent']['_@ttribute']] || ati['afterevent']['_@ttribute'] || aem[ati['afterevent']] || ati['afterevent'];
           }
           if (ati['e2service'] && ati['e2service'].length) {
             ati['Bouquets'] = [];
@@ -170,6 +167,10 @@ if (!Array.isArray(window.atList)) {
 
       getSettings: async () => {
         return await apiRequest('/autotimer/get');
+      },
+
+      saveSettings: async (params) => {
+        return await apiRequest(`/autotimer/set?${params}`);
       },
 
       deleteEntry: async (atId) => {
@@ -332,7 +333,19 @@ console.log(a);
           self.populateForm(a);
         };
 
+        (document.getElementById('atform') || nullEl).onsubmit = () => {
+          window.saveAT();
+          return false;
+        }
+        (document.querySelector('button[name="cancel"]') || nullEl).onclick = () => window.addAT();
+        (document.querySelector('button[name="create"]') || nullEl).onclick = () => window.addAT();
+        (document.querySelector('button[name="delete"]') || nullEl).onclick = () => window.delAT();
+        (document.querySelector('button[name="reload"]') || nullEl).onclick = () => window.reloadAT();
+        (document.querySelector('button[name="process"]') || nullEl).onclick = () => window.parseAT();
         (document.querySelector('button[name="preview"]') || nullEl).onclick = self.preview;
+        (document.querySelector('button[name="timers"]') || nullEl).onclick = () => window.listTimers();
+        (document.querySelector('button[name="settings"]') || nullEl).onclick = () => window.getAutoTimerSettings();
+        (document.querySelector('button[name="addFilter"]') || nullEl).onclick = () => window.AddFilter('', '', '');
 
         (document.getElementById('_timespan') || nullEl).onchange = (input) => {
           document.getElementById('timeSpanE').classList.toggle('dependent-section', !input.target.checked);
@@ -348,7 +361,7 @@ console.log(a);
           document.getElementById('timerOffsetE').classList.toggle('dependent-section', !input.target.checked);
         };
         (document.querySelector('[name="afterevent"]') || nullEl).onchange = (input) => {
-          document.getElementById('AftereventE').classList.toggle('dependent-section', input.target.value !== 'standard');
+          document.getElementById('AftereventE').classList.toggle('dependent-section', !input.target.value);
         };
         (document.getElementById('timeSpanAE') || nullEl).onchange = (input) => {
           document.getElementById('timeSpanAEE').classList.toggle('dependent-section', !input.target.checked);
@@ -391,9 +404,6 @@ console.log(a);
         };
         (document.getElementById('vps') || nullEl).onchange = (input) => {
           document.getElementById('vpsE').classList.toggle('dependent-section', !input.target.checked);
-        };
-        (document.getElementById('AddFilter') || nullEl).onclick = () => {
-          AddFilter('', '', '');
         };
 
         nullEl = null;

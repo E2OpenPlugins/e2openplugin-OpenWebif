@@ -73,12 +73,13 @@
 
 				<div id="foo">
 					<div class="row align-center clearfix">
-						<button type="button" onclick="addAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></button>
-						<button type="button" onclick="delAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
-						<button type="button" onclick="parseAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">code</i><span>$tstrings['at_process']</span></span></button>
-						<button type="button" name="preview" class="btn btn--skinned waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_preview']</span></button>
-						<button type="button" onclick="listTimers(); return false;" class="btn btn--skinned waves-effect" data-toggle="modal" data-target="#ATTimerList"><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
-						<button type="button" onclick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="btn btn--skinned waves-effect" data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
+						<button type="button" name="create" class="btn btn--skinned waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></button>
+						<button type="button" name="delete" class="btn btn--skinned waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
+						<button type="button" name="reload" class="btn btn--skinned waves-effect"><i class="material-icons">refresh</i><span>$tstrings['reload']</span></button>
+						<button type="button" name="process" class="btn btn--skinned waves-effect"><i class="material-icons">code</i><span>$tstrings['at_process']</span></span></button>
+						<button type="button" name="preview" data-toggle="modal" data-target="#ATTimerModal" class="btn btn--skinned waves-effect"><i class="material-icons">view_list</i><span>$tstrings['at_preview']</span></button>
+						<button type="button" name="timers" data-toggle="modal" data-target="#ATTimerList" class="btn btn--skinned waves-effect"><i class="material-icons" class="btn btn--skinned waves-effect">alarm</i><span>$tstrings['at_timers']</span></button>
+						<button type="button" name="settings" data-toggle="modal" data-target="#ATSettings" class="btn btn--skinned waves-effect" data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
 					</div>
 				</div>
 				<div id="info" x-style="display:none;">
@@ -277,8 +278,8 @@
 												<div class="atform__details__element">
 													<div class="dropdown atform__details__dropdown">
 														<select name="afterevent" class="form-control show-tick">
-															<option value="default" selected>$tstrings['at_after_event_standard']</option>
-															<option value="nothing" selected>$tstrings['at_after_event_nothing']</option>
+															<option value="" selected>$tstrings['at_after_event_standard']</option>
+															<option value="none" selected>$tstrings['at_after_event_nothing']</option>
 															<option value="standby">$tstrings['at_after_event_standby']</option>
 															<option value="deepstandby">$tstrings['at_after_event_deepstandby']</option>
 															<option value="auto">$tstrings['at_after_event_auto']</option>
@@ -499,13 +500,14 @@
 #end if
 											<div class="atform__fields-container m-t-0">
 												<table id="filterlist" class="table table-striped table-hover m-t-40"></table>
-												<button type="button" id="AddFilter" class="btn btn-default waves-effect">$tstrings['at_add_filters']</button>
+												<button type="button" name="addFilter" class="btn btn-default waves-effect">$tstrings['at_add_filters']</button>
 											</div>
 										</div>
 
 										<div class="row align-right clearfix">
-											<button type="button" onclick="reloadAT(); return false;" class="btn btn-default waves-effect"><i class="material-icons">restore</i><span>$tstrings['reload']</span></button>
-											<button type="submit" onclick="saveAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
+											<button type="button" name="cancel" class="btn btn-default waves-effect"><i class="material-icons">close</i><span>$tstrings['cancel']</span></button>
+											<button type="reset" class="btn btn-default waves-effect"><i class="material-icons">undo</i><span>Reset</span></button><!-- TODO: i10n -->
+											<button type="submit" class="btn btn--skinned waves-effect"><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
 										</div>
 
 									</fieldset>
@@ -652,7 +654,7 @@
 </div>
 
 <div id="ATTimerList" class="modal fade" role="dialog">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"><i class="material-icons material-icons-centered">close</i></button>

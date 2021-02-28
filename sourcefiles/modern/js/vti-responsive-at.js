@@ -23,6 +23,41 @@ function reloadAT() {
 		}
 	});
 }
+
+function setAutoTimerSettings() {
+	var reqs = "";
+	reqs += "autopoll=" + $('#ats_autopoll').is(':checked') ? "true":"";
+	reqs += "&interval=" + $('#ats_interval').val();
+	reqs += "&try_guessing=";
+	reqs += $('#ats_try_guessing').is(':checked') ? "true":"";
+	reqs += "&disabled_on_conflict=";
+	reqs += $('#ats_disabled_on_conflict').is(':checked') ? "true":"";
+	reqs += "&addsimilar_on_conflict=";
+	reqs += $('#ats_addsimilar_on_conflict').is(':checked') ? "true":"";
+	reqs += "&show_in_extensionsmenu=";
+	reqs += $('#ats_show_in_extensionsmenu').is(':checked') ? "true":"";
+	reqs += "&fastscan=";
+	reqs += $('#ats_fastscan').is(':checked') ? "true":"";
+	reqs += "&notifconflict=";
+	reqs += $('#ats_notifconflict').is(':checked') ? "true":"";
+	reqs += "&notifsimilar=";
+	reqs += $('#ats_notifsimilar').is(':checked') ? "true":"";
+	reqs += "&maxdaysinfuture=" + $('#ats_maxdaysinfuture').val();
+	var v = $('#ats_add_autotimer_to_tags').is(':checked') ? "true":"";
+	reqs += "&add_autotimer_to_tags=" + v;
+	v = $('#ats_add_name_to_tags').is(':checked') ? "true":"";
+	reqs += "&add_name_to_tags=" + v
+	
+	reqs += "&refresh=" + $('#ats_refresh').val();
+	reqs += "&editor=" + $('#ats_editor').val();
+	
+	window.autoTimers.saveSettings(reqs)
+		.then(xml => {
+			var state=$(xml).find("e2state").first();
+			var txt=$(xml).find("e2statetext").first();
+			showError(txt.text(),state.text());
+		});
+}
 /* END legacy AutoTimer.js */
 
 
