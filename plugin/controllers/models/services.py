@@ -465,7 +465,7 @@ def getChannels(idbouquet, stype):
 				chan['protection'] = getProtection(channel[0])
 			else:
 				chan['protection'] = "0"
-			nowevent = epgcache.lookupEvent(['TBDCIX', (channel[0], 0, -1)])
+			nowevent = epgcache.lookupEvent(['TBDCIXS', (channel[0], 0, -1)])
 			if len(nowevent) > 0 and nowevent[0][0] is not None:
 				chan['now_title'] = filterName(nowevent[0][0])
 				chan['now_begin'] = strftime("%H:%M", (localtime(nowevent[0][1])))
@@ -474,7 +474,8 @@ def getChannels(idbouquet, stype):
 				chan['progress'] = int(((nowevent[0][3] - nowevent[0][1]) * 100 / nowevent[0][2]))
 				chan['now_ev_id'] = nowevent[0][4]
 				chan['now_idp'] = "nowd" + str(idp)
-				nextevent = epgcache.lookupEvent(['TBDIX', (channel[0], +1, -1)])
+				chan['now_shortdesc'] = nowevent[0][5].strip()
+				nextevent = epgcache.lookupEvent(['TBDIXS', (channel[0], +1, -1)])
 # Some fields have been seen to be missing from the next event...
 				if len(nextevent) > 0 and nextevent[0][0] is not None:
 					if nextevent[0][1] is None:
@@ -487,6 +488,7 @@ def getChannels(idbouquet, stype):
 					chan['next_duration'] = int(nextevent[0][2] / 60)
 					chan['next_ev_id'] = nextevent[0][3]
 					chan['next_idp'] = "nextd" + str(idp)
+					chan['next_shortdesc'] = nextevent[0][4].strip()
 				else:   # Have to fudge one in, as rest of OWI code expects it...
 					chan['next_title'] = "<<absent>>"
 					chan['next_begin'] = chan['now_end']
@@ -494,6 +496,7 @@ def getChannels(idbouquet, stype):
 					chan['next_duration'] = 0
 					chan['next_ev_id'] = chan['now_ev_id']
 					chan['next_idp'] = chan['now_idp']
+					chan['next_shortdesc'] = ""
 				idp += 1
 		if int(channel[0].split(":")[1]) != 832:
 			ret.append(chan)
