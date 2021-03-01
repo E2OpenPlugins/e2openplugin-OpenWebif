@@ -45,6 +45,28 @@
     top: 0;
 		margin: 0 5px 8px;
 	}
+
+	.channel-list__channel {
+		display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+	}
+
+	.now-next__channel {
+    flex: 1;
+    min-width: 200px;
+	}
+
+	.now-next__info {
+		flex: 4;
+		min-width: 320px;
+	}
+
+	.now-next__details--now {
+    border-bottom: 1px solid grey; /* TODO: theme */
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+	}
 </style>
 
 <div class="table-responsive block-header">
@@ -111,9 +133,9 @@
 	#end if
 				</div>
 			</td>
+			<td class="now-next__info">
 #if (not $isProtected) and 'now_title' in $channel
-			<td>
-				<div>
+				<div class="now-next__details now-next__details--now">
 					<h2 class="now-next__title">
 						<a href="javascript:void(0);" onclick="loadeventepg('$channel.now_ev_id', '$channel.ref', '$channel.picon');" class="link--skinned" data-ref="$channel.ref" data-id="$channel.now_ev_id" data-toggle="modal" data-target="#EventModal" title="$tstrings['more_details']">$channel.now_title</a>
 						<span class="now-next__elapsed">(+$channel.now_left $tstrings['mins'])</span>
@@ -127,29 +149,29 @@
 						</div>
 					</div>
 				</div>
-			</td>
 #else
-			<td class="now-next__no-data">$tstrings['no_epg_data']</td>
+				<div class="now-next__no-data">$tstrings['no_epg_data']</div>
 #end if
 #if (not $isProtected) and 'next_title' in $channel
 		#if $channel.next_title == "<<absent>>"
-			<td colspan="2" class="now-next__no-data">...</td>
+				<div class="now-next__no-data">...</td>
 		#else
-			<td>
-				<div>
-					<h2 class="now-next__title">
-						<a href="javascript:void(0);" onclick="loadeventepg('$channel.next_ev_id', '$channel.ref', '$channel.picon');" class="link--skinned" data-ref="$channel.ref" data-id="$channel.next_ev_id" data-toggle="modal" data-target="#EventModal" title="$tstrings['more_details']">$channel.next_title</a>
-						<span class="now-next__elapsed">($channel.next_duration $tstrings['mins'])</span>
-					</h2>
-					<div class="now-next__time"><time>$channel.next_begin</time> &mdash; <time>$channel.next_end</time></div>
-					<div>&nbsp;</div>
+				<div class="now-next__details now-next__details--next">
+					<div>
+						<h2 class="now-next__title">
+							<a href="javascript:void(0);" onclick="loadeventepg('$channel.next_ev_id', '$channel.ref', '$channel.picon');" class="link--skinned" data-ref="$channel.ref" data-id="$channel.next_ev_id" data-toggle="modal" data-target="#EventModal" title="$tstrings['more_details']">$channel.next_title</a>
+							<span class="now-next__elapsed">($channel.next_duration $tstrings['mins'])</span>
+						</h2>
+						<div class="now-next__time"><time>$channel.next_begin</time> &mdash; <time>$channel.next_end</time></div>
+						<div>&nbsp;</div>
+					</div>
 				</div>
-			</td>
 		#end if
-#else
-			<td colspan="2" class="now-next__no-data">$tstrings['no_epg_data']</td>
+## #else
+				## <div class="now-next__info now-next__no-data">$tstrings['no_epg_data']</div>
 #end if
 	#end if
+			</td>
 		</tr>
 #end for
 	</table>
