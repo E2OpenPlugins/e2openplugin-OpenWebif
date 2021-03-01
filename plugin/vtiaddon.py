@@ -171,13 +171,21 @@ def expand_BaseController():
 
 expand_basecontroller = expand_BaseController()
 
+THEMES = [
+	'supabright', ('city-lights', 'city lights')
+	# ('blackout-neon', 'blackout neon')
+]
+
 COLORS = [
-	'black', 'grey-darken-4', 'blue-grey', 'grey', 'red', 'pink', 'purple', 'deep-purple', 'indigo', 'blue', 'light-blue', 'cyan', 'teal', 'green', 'light-green', 'lime', 'yellow', 'amber', 'orange', 'deep-orange', 'brown'
+	'black', ('grey-darken-4', 'dark grey'), 'blue-grey', 'grey', 'red', 'pink', 'purple', 
+	('deep-purple', 'deep purple'), 'indigo', 'blue', ('light-blue', 'light blue'), 'cyan', 
+	'teal', 'green', ('light-green', 'light green'), 'lime', 'yellow', 'amber', 'orange', 
+	('deep-orange', 'deep orange'), 'brown'
 ]
 
 def expandConfig():
 	config.OpenWebif.responsive_enabled = ConfigYesNo(default=False)
-	config.OpenWebif.responsive_themeMode = ConfigSelection(default="supabright", choices=['supabright', 'city-lights'])
+	config.OpenWebif.responsive_themeMode = ConfigSelection(default="supabright", choices=THEMES)
 	config.OpenWebif.responsive_skinColor = ConfigSelection(default="black", choices=COLORS)
 	config.OpenWebif.responsive_epgsearch_only_bq = ConfigYesNo(default=True)
 	config.OpenWebif.responsive_epgsearch_full = ConfigYesNo(default=False)
