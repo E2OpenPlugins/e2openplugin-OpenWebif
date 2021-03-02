@@ -75,6 +75,22 @@
     /* line-height: 1.2; */
     float: left;
 	}
+	.epg__row {
+    border: solid;
+    border-width: 1px 0px 0px 0px;
+    height: 60px !important;
+    margin: 0;
+    box-shadow: 5px 0px 2px -3px rgba(0, 0, 0, 0.2);
+	}
+	.epg__channel {
+    width: 125px !important;
+    margin-left: 15px;
+    padding-right: 18px;
+	}
+	.epg__channel label {
+    font-size: 11px;
+    line-height: 1;
+	}
 </style>
 
 <div id="navepg">
@@ -235,8 +251,8 @@
 							<tr>
 								<td>
 #for $sname, $eventlist in six.iteritems($events)
-									<div class="row" style="border:solid;border-width:1px 0px 0px 0px;height:60px!important;">
-										<div style="width:141px!important;margin-left:20px;" class="pull-left">
+									<div class="row epg__row">
+										<div class="epg__channel pull-left">
 											<h2 class="picon"><img src="$(picons[$sname])" title="$sname" loading="lazy"></h2>
 											</br><label>$sname</label>
 										</div>
