@@ -172,8 +172,8 @@ def getTimers(session):
 			"toggledisabledimg": toggledisabledimg,
 			"filename": filename,
 			"nextactivation": nextactivation,
-			"realbegin": strftime("%d.%m.%Y %H:%M", (localtime(float(timer.begin)))),
-			"realend": strftime("%d.%m.%Y %H:%M", (localtime(float(timer.end)))),
+			"realbegin": strftime(_("%d.%m.%Y %H:%M"), (localtime(float(timer.begin)))),
+			"realend": strftime(_("%d.%m.%Y %H:%M"), (localtime(float(timer.end)))),
 			"asrefs": asrefs,
 			"vpsplugin_enabled": vpsplugin_enabled,
 			"vpsplugin_overwrite": vpsplugin_overwrite,
@@ -231,8 +231,8 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 					"name": conflict.name,
 					"begin": conflict.begin,
 					"end": conflict.end,
-					"realbegin": strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.begin)))),
-					"realend": strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.end))))
+					"realbegin": strftime(_("%d.%m.%Y %H:%M"), (localtime(float(conflict.begin)))),
+					"realend": strftime(_("%d.%m.%Y %H:%M"), (localtime(float(conflict.end))))
 				})
 
 			return {
@@ -389,8 +389,8 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 						"name": conflict.name,
 						"begin": conflict.begin,
 						"end": conflict.end,
-						"realbegin": strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.begin)))),
-						"realend": strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.end))))
+						"realbegin": strftime(_("%d.%m.%Y %H:%M"), (localtime(float(conflict.begin)))),
+						"realend": strftime(_("%d.%m.%Y %H:%M"), (localtime(float(conflict.end))))
 					})
 
 				return {
