@@ -2459,6 +2459,11 @@
    user-select: none;
  }
 
+ .container-fluid {
+  padding-right: 0;
+  padding-left: 0;
+ }
+
  /* Materialize Css | Taken from www.materializecss.com */
  /* Media ======================================= */
  @media (max-width: 767px) {
@@ -5789,6 +5794,8 @@
    width: 100%;
    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
    user-select: none;
+   padding-right: 15px;
+   padding-left: 15px;
  }
  
  .navbar .navbar-brand {
