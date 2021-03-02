@@ -228,7 +228,7 @@ def getCurrentFullInfo(session):
 		inf['crypt'] = None
 		inf['subs'] = None
 
-	inf['date'] = strftime("%d.%m.%Y", (localtime()))
+	inf['date'] = strftime(_("%d.%m.%Y"), (localtime()))
 	inf['dolby'] = False
 
 	if audio:
@@ -765,7 +765,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 				ev['picon'] = picon
 				ev['id'] = event[0]
 				if event[1]:
-					ev['date'] = "%s %s" % (tstrings[("day_" + strftime("%w", (localtime(event[1]))))], strftime("%d.%m.%Y", (localtime(event[1]))))
+					ev['date'] = "%s %s" % (tstrings[("day_" + strftime("%w", (localtime(event[1]))))], strftime(_("%d.%m.%Y"), (localtime(event[1]))))
 					ev['begin'] = strftime("%H:%M", (localtime(event[1])))
 					ev['begin_timestamp'] = event[1]
 					ev['duration'] = int(event[2] / 60)
@@ -996,7 +996,7 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 				continue
 			ev = {}
 			ev['id'] = event[0]
-			ev['date'] = "%s %s" % (tstrings[("day_" + strftime("%w", (localtime(event[1]))))], strftime("%d.%m.%Y", (localtime(event[1]))))
+			ev['date'] = "%s %s" % (tstrings[("day_" + strftime("%w", (localtime(event[1]))))], strftime(_("%d.%m.%Y"), (localtime(event[1]))))
 			ev['begin_timestamp'] = event[1]
 			ev['begin'] = strftime("%H:%M", (localtime(event[1])))
 			ev['duration_sec'] = event[2]
@@ -1042,7 +1042,7 @@ def getSearchSimilarEpg(ref, eventid, encode=False):
 		for event in events:
 			ev = {}
 			ev['id'] = event[0]
-			ev['date'] = "%s %s" % (tstrings[("day_" + strftime("%w", (localtime(event[1]))))], strftime("%d.%m.%Y", (localtime(event[1]))))
+			ev['date'] = "%s %s" % (tstrings[("day_" + strftime("%w", (localtime(event[1]))))], strftime(_("%d.%m.%Y"), (localtime(event[1]))))
 			ev['begin_timestamp'] = event[1]
 			ev['begin'] = strftime("%H:%M", (localtime(event[1])))
 			ev['duration_sec'] = event[2]
