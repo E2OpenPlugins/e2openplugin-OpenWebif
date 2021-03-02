@@ -77,6 +77,7 @@ $(function () {
 		
 	});
 
+	/*
 	activateNotificationAndTasksScroll();
 	setSkinListHeightAndScroll(true);
 	setSettingListHeightAndScroll(true);
@@ -84,8 +85,8 @@ $(function () {
 		setSkinListHeightAndScroll(false);
 		setSettingListHeightAndScroll(false);
 	});
-	
-  VTiWebConfig();
+	*/
+	VTiWebConfig();
   
 	setInterval(function () { getStatusInfo(); }, 3000);
 });
@@ -1249,7 +1250,7 @@ function VTiWebConfig() {
 		$.get('api/setthememode?themeMode=' + themeMode);
 	});
 }
-
+/*
 //Skin tab content set height and show scroll
 function setSkinListHeightAndScroll(isFirstTime) {
 	var height = $(window).height() - ($('.navbar').innerHeight() + $('.right-sidebar .nav-tabs').outerHeight());
@@ -1301,7 +1302,7 @@ function activateNotificationAndTasksScroll() {
 		railBorderRadius: '0'
 	});
 }
-
+*/
 function showErrorMain(txt,st)
 {
 	st = typeof st !== 'undefined' ? st : "False";
