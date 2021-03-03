@@ -70,7 +70,7 @@
 	</div>
 	<div class="col-xs-12 col-md-3">
 	<b>$tstrings[("day_" + (time.strftime("%w", time.localtime($timer.begin))))]</b>
-	$timer.realbegin - $timer.realend
+	<time>$timer.realbegin</time> - <time>$timer.realend</time>
 	<b>
 	#if $timer.disabled
 		$tstrings['disabled']
@@ -98,7 +98,9 @@
 #end if
 </div>
 <div class="col-xs-12 col-md-3 align-right">
-<a href="#edittimer" class="link--skinned" data-toggle="modal" data-target="#TimerModal" data-ref="$sref" data-begin="$timer.begin" data-end="$timer.end" title="$tstrings['edit_timer']"><i class="material-icons material-icons-mg-right">edit</i></a>
+	<a href="#edittimer" class="link--skinned" data-toggle="modal" data-target="#TimerModal" data-ref="$sref" data-begin="$timer.begin" data-end="$timer.end" title="$tstrings['edit_timer']">
+		<i class="material-icons material-icons-mg-right">edit</i>
+	</a>
 #if $timer.disabled
 	<a href="javascript:void(0);" class="link--skinned" onclick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end'); lastcontenturl=''; setTimeout(function(){load_maincontent('ajax/timers')}, 200); return false;" title="$tstrings['enable_timer']">
 		<i class="material-icons material-icons-mg-right">alarm_on</i>
@@ -108,18 +110,25 @@
 		<i class="material-icons material-icons-mg-right">alarm_off</i>
 	</a>
 #end if
-<a href="javascript:void(0);" class="link--skinned" onclick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$tname'); lastcontenturl=''; setTimeout(function(){load_maincontent('ajax/timers')}, 200); return false;" title="$tstrings['delete_timer']"><i class="material-icons material-icons-mg-right">delete</i></a></div></div>
+	<a href="javascript:void(0);" class="link--skinned" onclick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$tname'); lastcontenturl=''; setTimeout(function(){load_maincontent('ajax/timers')}, 200); return false;" title="$tstrings['delete_timer']">
+		<i class="material-icons material-icons-mg-right">delete</i>
+	</a>
+</div></div>
 
 #else
 <div class="card">
 	<div class="header">
-		<div class="row clearfix" style="margin-bottom:-20px;">
+		<div class="row clearfix m-b--20">
 		<div class="col-xs-6">
 			<h2 style="line-height: 1.4;">
 	#if $timer.disabled
 				<i class="material-icons material-icons-centered">alarm_off</i>
 	#elif $timer.state == 0
-				<i class="material-icons material-icons-centered">alarm_on</i>
+		#if $timer.justplay == 1
+				<i class="material-icons material-icons-centered">settings_remote</i>
+		#else
+				<i class="material-icons material-icons-centered">alarm</i>
+		#end if
 	#elif $timer.state == 2
 				<i class="material-icons material-icons-centered">update</i>
 	#elif $timer.state == 3
@@ -148,12 +157,12 @@
 </div>
 
 	<div class="body">
-		<div class="row clearfix" style="margin-bottom:-20px;">
-			<div class="col-sm-5">
-				<b>$tstrings[("day_" + (time.strftime("%w", time.localtime($timer.begin))))]</b>
-				<span style="white-space: nowrap;">$timer.realbegin</span>
-				-
-				<span style="white-space: nowrap;">$timer.realend</span>
+		<div class="row clearfix m-b--20">
+			<div class="col-sm-4">
+				<time style="white-space: nowrap;">$timer.realbegin</time>
+			#if $timer.justplay != 1:
+				 - <time style="white-space: nowrap;">$timer.realend</time>
+			#end if
 			#if $timer.repeated != 0
 				<div>
 				$tstrings['every_timer']
@@ -169,7 +178,7 @@
 				</div>
 			#end if
 
-				<div style="font-weight:bold;">
+				<div class="m-t-10" style="font-weight: bold;">
 				#if $timer.disabled
 					$tstrings['disabled']
 				#elif $timer.state == 0
@@ -181,7 +190,7 @@
 				#end if
 				</div>
 			</div>
-			<div class="col-sm-7">
+			<div class="col-sm-8">
 				$timer.description
 			</div>
 			</div>
