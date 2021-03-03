@@ -465,7 +465,13 @@ class WebController(BaseController):
 		type = "tv"
 		if b"type" in list(request.args.keys()):
 			type = "radio"
-		bouquets = getAllServices(type)
+		noiptv = False
+		if b"noiptv" in list(request.args.keys()):
+			noiptv = True
+		nolastscanned = False
+		if b"nolastscanned" in list(request.args.keys()):
+			nolastscanned = True
+		bouquets = getAllServices(type, noiptv, nolastscanned)
 		if b"renameserviceforxmbc" in list(request.args.keys()):
 			for bouquet in bouquets["services"]:
 				for service in bouquet["subservices"]:
@@ -2270,6 +2276,10 @@ class WebController(BaseController):
 			val = (getUrlArg(request, "showchanneldetails") == 'true')
 			comp_config.OpenWebif.webcache.showchanneldetails.value = val
 			comp_config.OpenWebif.webcache.showchanneldetails.save()
+		elif "showiptvchannelsinselection" in list(request.args.keys()):
+			val = (getUrlArg(request, "showiptvchannelsinselection") == 'true')
+			comp_config.OpenWebif.webcache.showiptvchannelsinselection.value = val
+			comp_config.OpenWebif.webcache.showiptvchannelsinselection.save()
 		elif "zapstream" in list(request.args.keys()):
 			val = (getUrlArg(request, "zapstream") == 'true')
 			comp_config.OpenWebif.webcache.zapstream.value = val

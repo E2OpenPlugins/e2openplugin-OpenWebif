@@ -1,13 +1,8 @@
-#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #filter WebSafe
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 
 <!-- TODO: move styles to css file -->
 <style>
-.choices__inner .choices__input {
-	min-width: 1ch;
-	width: 1ch;
-}
-
 .choices__list--dropdown {
 	z-index:10;
 }
@@ -35,18 +30,8 @@
 	flex: 0 0 100%;
 }
 
-.dependent-section {
-	display: none;
-}
-
 .atform__details__dropdown .btn.btn { /* this specificity is intentional */ 
 	box-shadow: none !important;
-}
-
-.at-preview__progress,
-.at-preview__no-results {
-	text-align: center;
-	padding-top: 40px !important;
 }
 </style>
 
@@ -55,13 +40,10 @@
 		<div class="header">
 			<div class="row clearfix">
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<h2 id="configtitle">
-						<i class="material-icons material-icons-centered">av_timer</i>
-						$tstrings['at_list']
-					</h2>
+					<h2 id="configtitle"><i class="material-icons material-icons-centered">av_timer</i>$tstrings['at_at_edit'] <span id='at_name'></span></h2>
 				</div>
 				<div class="col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl">
-					<div class="row vti-vspace-20"></div>
+					<div class="row"></div>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-3">
 					<select id="atlist" class="form-control no-default-select"></select>
@@ -70,34 +52,27 @@
 		</div>
 		<div class="body atbody">
 			<div id="content_main">
-
-				<div id="foo">
+				<div id="info">
 					<div class="row align-center clearfix">
-						<button type="button" name="create" class="btn btn--skinned waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></button>
-						<button type="button" name="delete" class="btn btn--skinned waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
-						<button type="button" name="reload" class="btn btn--skinned waves-effect"><i class="material-icons">refresh</i><span>$tstrings['reload']</span></button>
-						<button type="button" name="process" class="btn btn--skinned waves-effect"><i class="material-icons">code</i><span>$tstrings['at_process']</span></span></button>
-						<button type="button" name="preview" data-toggle="modal" data-target="#ATTimerModal" class="btn btn--skinned waves-effect"><i class="material-icons">view_list</i><span>$tstrings['at_preview']</span></button>
-						<button type="button" name="timers" data-toggle="modal" data-target="#ATTimerList" class="btn btn--skinned waves-effect"><i class="material-icons" class="btn btn--skinned waves-effect">alarm</i><span>$tstrings['at_timers']</span></button>
-						<button type="button" name="settings" data-toggle="modal" data-target="#ATSettings" class="btn btn--skinned waves-effect" data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
+						<button type="button" onclick="addAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></button>
+						<button type="button" onclick="delAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">delete</i><span>$tstrings['at_del']</span></button>
+						<button type="button" onclick="parseAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">code</i><span>$tstrings['at_process']</span></span></button>
+						<button type="button" onclick="test_simulateAT(true); return false;" class="btn btn--skinned waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">view_list</i><span>$tstrings['at_simulate']</span></button>
+						<button type="button" onclick="test_simulateAT(false); return false;" class="btn btn--skinned waves-effect" data-toggle="modal" data-target="#ATTimerModal"><i class="material-icons">extension</i><span>Test</span></button>
+						<button type="button" onclick="listTimers(); return false;" class="btn btn--skinned waves-effect" data-toggle="modal" data-target="#ATTimerList"><i class="material-icons">alarm</i><span>$tstrings['at_timers']</span></button>
+						<button type="button" onclick="getAutoTimerSettings(); return false;" data-toggle="modal" data-target="#ATSettings" class="btn btn--skinned waves-effect"  data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
 					</div>
-				</div>
-				<div id="info" x-style="display:none;">
+
 					<div class="row clearfix">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 							<div id="ateditcontent">
-								<form name="atform" method="GET" action="/autotimer/edit" id="atform">
-									<input type="hidden" name="id" id="id">
-									<input type="hidden" name="encoding">
-									<input type="hidden" name="always_zap">
-									<input type="hidden" name="lastBegin">
-													
-									<fieldset style="border: none" class="atform__body">
+								<form>
+									<fieldset style="border:none" class="atform__body">
 										<div class="form-group">
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="enabled" value="1" class="form-control chk--skinned" checked>
+													<input type="checkbox" name="enabled" id="enabled" required class="form-control chk--skinned">
 													<label for="enabled">$tstrings['at_enabled']</label>
 												</div>
 												<div class="atform__details__element"></div>
@@ -105,19 +80,21 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
+													<!-- Name -->
 													<label>$tstrings['name']:</label>
 												</div>
 												<div class="atform__details__element form-line">
-													<input type="text" name="name" required placeholder="$tstrings['at_name_hint']" class="form-control">
+													<input type="text" name="name" id="name" placeholder="$tstrings['at_name_hint']" required class="form-control inactive">
 												</div>
 											</div>
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
+													<!-- Match text -->
 													<label>$tstrings['at_text_match']:</label>
 												</div>
 												<div class="atform__details__element form-line">
-													<input type="text" name="match" required placeholder="$tstrings['at_text_hint']" class="form-control">
+													<input type="text" name="match" id="match" placeholder="$tstrings['at_text_hint']" required class="form-control inactive">
 												</div>
 											</div>
 
@@ -125,13 +102,14 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
+													<!-- Search type -->
 													<label>$tstrings['at_search_type']:</label>
 												</div>
 												<div class="atform__details__element">
 													<div class="dropdown atform__details__dropdown">
-														<select name="searchType" class="form-control show-tick">
+														<select name="searchType" id="searchType" class="form-control show-tick">
 #for $searchType in $searchTypes
-															<option value="$searchType">$tstrings['at_' + $searchType + '_match']</option>
+															<option value="$searchType">$tstrings['at_'+$searchType+'_match']</option>
 #end for
 														</select>
 													</div>
@@ -140,11 +118,12 @@
 												
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
+													<!-- Search strictness -->
 													<label>$tstrings['at_search_strictness']:</label>
 												</div>
 												<div class="atform__details__element">
 													<div class="dropdown atform__details__dropdown">
-														<select name="searchCase" class="form-control show-tick">
+														<select name="searchCase" id="searchCase" class="form-control show-tick">
 															<option value="sensitive">$tstrings['at_case_sensitive']</option>
 															<option value="insensitive" selected>$tstrings['at_case_insensitive']</option>
 														</select>
@@ -154,12 +133,13 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
+													<!-- Timer type -->
 													<label>$tstrings['at_timer_type']:</label>
 												</div>
 												<div class="atform__details__element">
 													<div class="dropdown atform__details__dropdown">
-														<select name="justplay" class="form-control show-tick">
-															<option value="0" selected>$tstrings['at_record']</option>
+														<select name="justplay" id="justplay" class="form-control show-tick">
+															<option value="0" selected="selected">$tstrings['at_record']</option>
 															<option value="1">$tstrings['at_zap']</option>
 															<option value="2">$tstrings['at_record'] + $tstrings['at_zap']</option>
 														</select>
@@ -169,31 +149,34 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="overrideAlternatives" value="1" class="form-control chk--skinned">
+													<input type="checkbox" name="overrideAlternatives" id="overrideAlternatives" class="form-control chk--skinned">
 													<!-- Use automatic selection of alternates. -->
 													<label for="overrideAlternatives">$tstrings['at_override_alt']</label>
 												</div>
-												<div class="atform__details__element"></div>
+												<div class="atform__details__element">
+												</div>
 											</div>
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" id="_timespan" class="form-control chk--skinned">
+													<input type="checkbox" name="timeSpan" id="timeSpan" class="form-control chk--skinned">
 													<!-- Only match during timespan -->
-													<label for="_timespan">$tstrings['at_timespan']</label>
+													<label for="timeSpan">$tstrings['at_timespan']</label>
 												</div>
 												<div class="atform__details__element" style="min-height: 8ex;">
-													<div id="timeSpanE" class="select-related-container dependent-section">
+													<div id="timeSpanE" class="select-related-container" style="display:none;">
 														<div class="atform__details__dropdown">
+															<!-- Begin of timespan -->
 															<label>$tstrings['at_timespan_begin']:&nbsp;</label>
 															<div class="form-line">
-																<input type="time" name="timespanFrom" class="form-control" placeholder="06:30">
+																<input type="time" name="from" id="from" class="form-control inactive time24" placeholder="06:30">
 															</div>
 														</div>
 														<div class="atform__details__dropdown">
+															<!-- End of timespan -->
 															<label>$tstrings['at_timespan_end']:&nbsp;</label>
 															<div class="form-line">
-																<input type="time" name="timespanTo" class="form-control" placeholder="23:30">
+																<input type="time" name="to" id="to" class="form-control inactive time24" placeholder="23:30">
 															</div>
 														</div>
 													</div>
@@ -202,29 +185,29 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" id="_after" class="form-control chk--skinned">
+													<input type="checkbox" name="timeFrame" id="timeFrame" class="form-control chk--skinned">
 													<!-- Restrict to events on certain dates -->
-													<label for="_after">$tstrings['at_datespan_before']</label>
+													<label for="timeFrame">$tstrings['at_datespan_before']</label>
 												</div>
 												<div class="atform__details__element">
 													<div class="atform__details__dropdown">
-														<div id="timeFrameE" class="form-line dependent-section">
-															<input type="date" name="after" class="form-control">
+														<div class="form-line" id="timeFrameE" style="display:none;">
+															<input type="date" name="after" id="after" class="form-control inactive">
 														</div>
 													</div>
 												</div>
 											</div>
 
-											<div class="atform__fields-container">
+											<div class="atform__fields-container" id="timeFrameAfterCheckBox">
 												<div class="atform__details__title">
-													<input type="checkbox" id="_before" class="form-control chk--skinned">
+													<input type="checkbox" name="timeFrameAfter" id="timeFrameAfter" class="form-control chk--skinned">
 													<!-- Restrict to events on certain dates -->
-													<label for="_before">$tstrings['at_datespan_after']</label>
+													<label for="timeFrameAfter">$tstrings['at_datespan_after']</label>
 												</div>
 												<div class="atform__details__element">
 													<div class=" atform__details__dropdown">
-														<div id="beforeE" class="form-line dependent-section">
-															<input type="date" name="before" class="form-control">
+														<div class="form-line" id="beforeE" style="display:none;">
+															<input type="date" name="before" id="before" class="form-control inactive">
 														</div>
 													</div>
 												</div>
@@ -232,24 +215,24 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" id="_timerOffset" class="form-control chk--skinned">
+													<input type="checkbox" name="timerOffset" id="timerOffset" class="form-control chk--skinned">
 													<!-- Custom offset -->
-													<label for="_timerOffset">$tstrings['at_timer_offset']</label>
+													<label for="timerOffset">$tstrings['at_timer_offset']</label>
 												</div>
 												<div class="atform__details__element" style="min-height: 8ex;">
-													<div id="timerOffsetE" class="select-related-container dependent-section">
+													<div id="timerOffsetE" class="select-related-container" style="display:none;">
 														<div class="atform__details__dropdown">
 															<!-- Offset before recording (mins)-->
 															<label>$tstrings['at_timer_offset_before']:&nbsp;</label>
 															<div class="form-line">
-																<input type="number" name="offset" min="0" class="form-control">
+																<input type="number" id="tbefore" name="tbefore" class="form-control inactive" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
 															</div>
 														</div>
 														<div class="atform__details__dropdown">
 															<!-- Offset after recording (mins)-->
 															<label>$tstrings['at_timer_offset_after']:&nbsp;</label>
 															<div class="form-line">
-																<input type="number" name="offset" min="0" class="form-control">
+																<input type="number" name="tafter" id="tafter" class="form-control inactive" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
 															</div>
 														</div>
 												</div>
@@ -257,15 +240,15 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
+													<input type="checkbox" name="maxDuration" id="maxDuration" class="form-control chk--skinned">
 													<!-- Set maximum duration -->
-													<label>$tstrings['at_max_duration']</label>
+													<label for="maxDuration">$tstrings['at_max_duration']</label>
 												</div>
 												<div class="atform__details__element">
-													<div class=" atform__details__dropdown">
-														<div class="form-line">
-															<!-- Maximum duration (in m) -->
-															<input type="number" name="maxduration" min="0" placeholder="(in minutes)" class="form-control"><!-- TODO: i10n -->
-														</div>
+													<div id="maxDurationE" class="dropdown atform__details__dropdown" style="display:none;">
+														<!-- Maximum duration (in m) -->
+														<select name="maxduration" id="maxduration" class="form-control show-tick">
+														</select>
 													</div>
 												</div>
 											</div>
@@ -277,40 +260,42 @@
 												</div>
 												<div class="atform__details__element">
 													<div class="dropdown atform__details__dropdown">
-														<select name="afterevent" class="form-control show-tick">
-															<option value="" selected>$tstrings['at_after_event_standard']</option>
+														<select name="afterevent" id="afterevent" class="form-control show-tick">
+															<option value="" selected="selected">$tstrings['at_after_event_standard']</option>
 															<option value="none" selected>$tstrings['at_after_event_nothing']</option>
 															<option value="standby">$tstrings['at_after_event_standby']</option>
-															<option value="deepstandby">$tstrings['at_after_event_deepstandby']</option>
+															<option value="shutdown">$tstrings['at_after_event_deepstandby']</option>
 															<option value="auto">$tstrings['at_after_event_auto']</option>
 														</select>
 													</div>
 												</div>
 											</div>
 
-											<div id="AftereventE" class="atform__fields-container dependent-section">
+											<div id="AftereventE" class="atform__fields-container" style="display:none;">
 												<div class="atform__details__title">
-													<input type="checkbox" id="timeSpanAE" class="form-control chk--skinned">
+													<input type="checkbox" name="timeSpanAE" id="timeSpanAE" class="form-control chk--skinned">
 													<!-- Execute "After event" during timespan -->
 													<label for="timeSpanAE">$tstrings['at_event_timespan']</label>
 												</div>
 												<div class="atform__details__element" style="min-height: 8ex;">
-													<div id="timeSpanAEE" class="select-related-container dependent-section">
+
+													<div id="timeSpanAEE" class="select-related-container" style="display:none;">
 														<div class="atform__details__dropdown">
 															<!-- Begin of "After event" timespan -->
 															<label>$tstrings['at_event_timespan_begin']</label>
 															<div class="form-line">
-																<input type="time" name="aftereventFrom" class="form-control">
+																<input type="time" name="aefrom" id="aefrom" class="form-control inactive">
 															</div>
 														</div>
 														<div class="atform__details__dropdown">
 															<!-- End of "After event" timespan -->
 															<label>$tstrings['at_event_timespan_end']</label>
 															<div class="form-line">
-																<input type="time" name="aftereventTo" class="form-control">
+																<input type="time" name="aeto" id="aeto" class="form-control inactive">
 															</div>
 														</div>
 													</div>
+
 												</div>
 											</div>
 													
@@ -320,10 +305,8 @@
 													<label>$tstrings['at_max_counter']:</label>
 												</div>
 												<div class="atform__details__element">
-													<div class="atform__details__dropdown">
-														<div class="form-line">
-															<input type="number" name="counter" min="0" class="form-control">
-														</div>
+													<div class="dropdown atform__details__dropdown">
+														<select name="counter" id="counter" class="form-control show-tick"></select>
 													</div>
 												</div>
 											</div>
@@ -334,10 +317,8 @@
 													<label>$tstrings['at_left']:</label>
 												</div>
 												<div class="atform__details__element">
-													<div class="atform__details__dropdown">
-														<div class="form-line">
-															<input type="number" name="left" min="0" class="form-control">
-														</div>
+													<div class="dropdown atform__details__dropdown">
+														<select name="left" id="left" class="form-control show-tick"></select>
 													</div>
 												</div>
 											</div>
@@ -349,7 +330,7 @@
 												</div>
 												<div class="atform__details__element">
 													<div class="dropdown atform__details__dropdown">
-														<select name="counterFormat" class="form-control show-tick">
+														<select name="counterFormat" id="counterFormat" class="form-control show-tick">
 															<option value="" selected>$tstrings['at_never']</option>
 															<option value="%m">$tstrings['at_monthly']</option>
 															<option value="%U">$tstrings['at_weekly_sun']</option>
@@ -366,8 +347,8 @@
 												</div>
 												<div class="atform__details__element">
 													<div class="dropdown atform__details__dropdown">
-														<select name="avoidDuplicateDescription" class="form-control show-tick">
-															<option value="0" selected>$tstrings['at_avoid_dup_no']</option>
+														<select name="avoidDuplicateDescription" id="avoidDuplicateDescription" class="form-control show-tick">
+															<option value="0" selected="selected">$tstrings['at_avoid_dup_no']</option>
 															<option value="1">$tstrings['at_avoid_dup_same_service']</option>
 															<option value="2">$tstrings['at_avoid_dup_any_service']</option>
 															<option value="3">$tstrings['at_avoid_dup_any_service_rec']</option>
@@ -381,39 +362,41 @@
 #if $autoadjust == 1
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="autoadjust" value="1" class="form-control chk--skinned">
+													<input type="checkbox" name="autoadjust" id="autoadjust" class="form-control chk--skinned">
 													<label for="autoadjust">$tstrings['autoadjust']</label>
 												</div>
-												<div class="atform__details__element"></div>
+												<div class="atform__details__element">
+												</div>
 											</div>
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="avoidDuplicateMovies" value="1" class="form-control chk--skinned">
+													<input type="checkbox" name="avoidDuplicateMovies" id="avoidDuplicateMovies" class="form-control chk--skinned">
 													<label for="avoidDuplicateMovies">$tstrings['avoidDuplicateMovies']</label>
 												</div>
-												<div class="atform__details__element"></div>
+												<div class="atform__details__element">
+												</div>
 											</div>
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="allow_duplicate" value="1" class="form-control chk--skinned">
+													<input type="checkbox" name="allow_duplicate" id="allow_duplicate" class="form-control chk--skinned">
 													<label for="allow_duplicate">$tstrings['allow_duplicate']</label>
 												</div>
-												<div class="atform__details__element"></div>
+												<div class="atform__details__element">
+												</div>
 											</div>
 #end if
-
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" id="_location" class="form-control chk--skinned">
+													<input type="checkbox" name="Location" id="Location" class="form-control chk--skinned">
 													<!-- Use a custom location -->
-													<label for="_location">$tstrings['at_location']</label>
+													<label for="Location">$tstrings['at_location']</label>
 												</div>
 												<div class="atform__details__element">
-													<div id="LocationE" class="dropdown atform__details__dropdown dependent-section">
+													<div id="LocationE" class="dropdown atform__details__dropdown" style="display:none;">
 														<!-- Custom location -->
-														<select name="location" class="form-control show-tick">
+														<select name="location" id="location" class="form-control show-tick">
 														#for $location in $locations
 															<option value="$location">$location</option>
 														#end for
@@ -424,54 +407,65 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" id="_tags" class="form-control chk--skinned">
-													<label for="_tags">$tstrings['at_tags']</label>
+													<input type="checkbox" name="Tags" id="Tags" class="form-control chk--skinned">
+													<!-- Tags -->
+													<label for="Tags">$tstrings['at_tags']</label>
 												</div>
 												<div class="atform__details__element">
-													<div id="TagsE" class="dropdown atform__details__dropdown form-line dependent-section">
-														<select name="tag" class="form-control no-default-select" multiple="multiple" data-select-choices="tags">
-															<!-- option value="" disabled>Add tags</option --><!-- TODO: i10n -->
-														</select>
+													<div id="TagsE" class="dropdown atform__details__dropdown form-line" style="display:none">
+														<select name="tags" id="tags" class="form-control no-default-select" multiple="multiple" data-select-choices="tags"></select>
 													</div>
 												</div>
 											</div>
 		
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" id="_channels" class="form-control chk--skinned">
+													<input type="checkbox" name="Channels" id="Channels" class="form-control chk--skinned">
 													<!-- Restrict to specific services -->
-													<label for="_channels">$tstrings['at_channels']</label>
+													<label for="Channels">$tstrings['at_channels']</label>
 												</div>
 												<div class="atform__details__element">
-													<div id="ChannelsE" class="dropdown atform__details__dropdown form-line dependent-section">
-														<select name="services" class="form-control no-default-select" multiple="multiple" data-select-choices="channels">
-															<!-- option value="" disabled>Restrict to channels</option --><!-- TODO: i10n -->
-														</select>
+													<div id="ChannelsE" class="dropdown atform__details__dropdown form-line" style="display:none">
+														<select name="channels" id="channels" class="form-control no-default-select" multiple="multiple" data-select-choices="channels"></select>
 													</div>
 												</div>
 											</div>
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" id="_bouquets" class="form-control chk--skinned">
+													<input type="checkbox" name="Bouquets" id="Bouquets" class="form-control chk--skinned">
 													<!-- Restrict to specific bouquets -->
-													<label for="_bouquets">$tstrings['bouquets']</label>
+													<label for="Bouquets">$tstrings['bouquets']</label>
 												</div>
 												<div class="atform__details__element">
-													<div id="BouquetsE" class="dropdown atform__details__dropdown form-line dependent-section">
-														<select name="bouquets" class="form-control no-default-select" multiple="multiple" data-select-choices="bouquets">
-															<!-- option value="" disabled>Restrict to bouquets</option --><!-- TODO: i10n -->
-														</select>
+													<div id="BouquetsE" class="dropdown atform__details__dropdown form-line" style="display:none">
+														<select name="bouquets" id="bouquets" class="form-control no-default-select" multiple="multiple" data-select-choices="bouquets"></select>
 													</div>
 												</div>
 											</div>
 
 											<!-- Restrict to days -->
 
+											<div class="atform__fields-container">
+												<div class="atform__details__title">
+													<input type="checkbox" name="Filter" id="Filter" class="form-control chk--skinned">
+													<!-- Use other filters -->
+													<label for="Filter">$tstrings['at_filter']</label>
+												</div>
+												<div class="atform__details__element">
+												</div>
+											</div>
+
+											<div class="atform__fields-container" style="margin-top: 0;">
+												<table id="filterlist" class="table table-striped table-hover FilterE">
+												</table>
+												<button type="button" id="AddFilter" class="btn btn-default waves-effect FilterE">$tstrings['add']</button>
+											</div>
+
 #if $hasVPS == 1
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="vps" value="1" class="form-control chk--skinned">
+													<input type="checkbox" name="vps" id="vps" class="form-control chk--skinned">
 													<label for="vps">$tstrings['vps']</label>
 												</div>
 												<div class="atform__details__element">
@@ -479,7 +473,7 @@
 														<div class="col-xs-12 col-sm-4">
 															<div class="row clearfix">
 																<div class="col-xs-12">
-																	<input type="checkbox" name="vpssm" class="form-control chk--skinned">
+																	<input type="checkbox" name="vpssm" id="vpssm" class="form-control chk--skinned">
 																	<label for="vpssm">$tstrings['safe_mode']</label>
 																</div>
 															</div>
@@ -491,23 +485,18 @@
 #if $hasSeriesPlugin == 1
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="series_labeling" value="1" class="form-control chk--skinned">
+													<input type="checkbox" name="series_labeling" id="series_labeling" class="form-control chk--skinned">
 													<label for="series_labeling">$tstrings['at_label_series']</label>
 												</div>
 												<div class="atform__details__element">
 												</div>
 											</div>
 #end if
-											<div class="atform__fields-container m-t-0">
-												<table id="filterlist" class="table table-striped table-hover m-t-40"></table>
-												<button type="button" name="addFilter" class="btn btn-default waves-effect">$tstrings['at_add_filters']</button>
-											</div>
 										</div>
 
 										<div class="row align-right clearfix">
-											<button type="button" name="cancel" class="btn btn-default waves-effect"><i class="material-icons">close</i><span>$tstrings['cancel']</span></button>
-											<button type="reset" class="btn btn-default waves-effect"><i class="material-icons">undo</i><span>Reset</span></button><!-- TODO: i10n -->
-											<button type="submit" class="btn btn--skinned waves-effect"><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
+											<button type="button" onclick="reloadAT(); return false;" class="btn btn-default waves-effect"><i class="material-icons">restore</i><span>$tstrings['reload']</span></button>
+											<button type="submit" onclick="saveAT(); return false;" class="btn btn--skinned waves-effect"><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
 										</div>
 
 									</fieldset>
@@ -526,46 +515,24 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"><i class="material-icons material-icons-centered">close</i></button>
-				<h4 class="modal-title">$tstrings['timer_preview']</h4>
+				<h4 class="modal-title">AutoTimer</h4>
 			</div>
 			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
 				<div id="atsimulatemodal"></div>
 					<div style="font-size:smaller;" class="table-responsive">
-						<table id="at-preview__table" class="table table-striped table-hover">
+						<table id="simt" border="0" class="table table-striped table-hover">
 							<thead>
 								<tr>
-									<th>State</th><!-- TODO: i10n -->
+									<th>State</th>
 									<th>$tstrings['name']</th>
 									<th>$tstrings['at_text_match']</th>
 									<th>$tstrings['channel']</th>
 									<th style="text-align: right;">$tstrings['start']</th>
 									<th style="text-align: right;">$tstrings['end']</th>
 								</tr>
-								<tr style="background-color: transparent;">
-									<td id="at-preview__progress" class="at-preview__progress" colspan="100%">
-										<div class="loader">
-											<div class="preloader">
-												<div class="spinner-layer pl--skinned">
-													<div class="circle-clipper left">
-														<div class="circle"></div>
-													</div>
-													<div class="circle-clipper right">
-														<div class="circle"></div>
-													</div>
-												</div>
-											</div>
-											<p>$tstrings['bqe_loading']</p>
-										</div>
-									</td>
-								</tr>
-								<tr style="background-color: transparent;">
-									<td id="at-preview__no-results" class="at-preview__no-results" colspan="100%">
-										<h5>No matches were found in the EPG</h5><!-- TODO: i10n -->
-									</td>
-								</tr>
 							</thead>
-							<tbody id="at-preview__list">
-							</tbody>
+								<tbody id='simtb'>
+								</tbody>
 						</table>
 					</div>
 			</div>
@@ -579,86 +546,86 @@
 <div id="ATSettings" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form name="atsettings" action="/autotimer/set" method="get">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"><i class="material-icons material-icons-centered">close</i></button>
-					<h4 class="modal-title">$tstrings['ats_auto_timer_settings']</h4>
-				</div>
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><i class="material-icons material-icons-centered">close</i></button>
+				<h4 class="modal-title">$tstrings['ats_auto_timer_settings']</h4>
+			</div>
 				<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
 					<div id="atsettingdlgcont">
-						<fieldset>
-							<div class="form-group">
-								<input type="checkbox" class="form-control chk--skinned" id="ats_autopoll" value="">
-								<label for="ats_autopoll">$tstrings['ats_autopoll']</label>&nbsp;
-								<br>
-								<label for="ats_interval">$tstrings['ats_interval']</label>
-								<div class="form-line">
-									<input type="number" size="5" id="ats_interval" class="form-control">
+						<form>
+							<fieldset>
+								<div class="form-group">
+									<input type="checkbox" class="form-control chk--skinned" id="ats_autopoll" value="" >
+									<label for="ats_autopoll">$tstrings['ats_autopoll']</label>&nbsp;
+									<br />
+									<label for="ats_interval">$tstrings['ats_interval']</label>
+									<div class="form-line inactive">
+										<input type="text" size="5" id="ats_interval" class="form-control">
+									</div>
+									<br />
+									<label for="ats_maxdaysinfuture">$tstrings['ats_maxdaysinfuture']</label>
+									<div class="form-line inactive">
+										<input type="text" size="5" id="ats_maxdaysinfuture" class="form-control">
+									</div>
+									<br>
+									<input type="checkbox" id="ats_try_guessing" value="" class="form-control chk--skinned" >
+									<label for="ats_try_guessing">$tstrings['ats_try_guessing']</label>
+									<br />
+									<input type="checkbox" id="ats_fastscan" class="form-control chk--skinned" value="" >
+									<label for="ats_fastscan">$tstrings['ats_fastscan']</label>
+									<br />
+									<input type="checkbox" id="ats_show_in_extensionsmenu" class="form-control chk--skinned" value="" >
+									<label for="ats_show_in_extensionsmenu">$tstrings['ats_show_in_extensionsmenu']</label>
+									<br>
+									<input type="checkbox" id="ats_disabled_on_conflict" value=""  class="form-control chk--skinned" >
+									<label for="ats_disabled_on_conflict">$tstrings['ats_disabled_on_conflict']</label>
+									<br />
+									<input type="checkbox" id="ats_addsimilar_on_conflict" value="" class="form-control chk--skinned" >
+									<label for="ats_addsimilar_on_conflict">$tstrings['ats_addsimilar_on_conflict']</label>
+									<br>
+									<input type="checkbox" id="ats_notifconflict" value="" class="form-control chk--skinned" >
+									<label for="ats_notifconflict">$tstrings['ats_notifconflict']</label>
+									<br />
+									<input type="checkbox" id="ats_notifsimilar" value="" class="form-control chk--skinned" >
+									<label for="ats_notifsimilar">$tstrings['ats_notifsimilar']</label>
+									<br>
+									<input type="checkbox" id="ats_add_autotimer_to_tags" value="" class="form-control chk--skinned" >
+									<label for="ats_add_autotimer_to_tags">$tstrings['ats_add_autotimer_to_tags']</label>
+									<br />
+									<input type="checkbox" id="ats_add_name_to_tags" value="" class="form-control chk--skinned" >
+									<label for="ats_add_name_to_tags">$tstrings['ats_add_name_to_tags']</label>
+									<br>
+									<label for="ats_refresh">$tstrings['ats_refresh']</label>
+									<select id="ats_refresh" size="1"  class="form-control">
+										<option value="none" selected="selected">$tstrings['ats_refresh_none']</option>
+										<option value="auto" selected="selected">$tstrings['ats_refresh_auto']</option>
+										<option value="all" selected="selected">$tstrings['ats_refresh_all']</option>
+									</select>
+									<br />
+									<label for="ats_editor">$tstrings['ats_editor']</label>
+									<select id="ats_editor" size="1" class="form-control">
+										<option value="plain" selected="selected">$tstrings['ats_editor_plain']</option>
+										<option value="wizzard" selected="selected">$tstrings['ats_editor_wizard']</option>
+									</select>
 								</div>
-								<br>
-								<label for="ats_maxdaysinfuture">$tstrings['ats_maxdaysinfuture']</label>
-								<div class="form-line">
-									<input type="number" size="5" id="ats_maxdaysinfuture" class="form-control">
-								</div>
-								<br>
-								<input type="checkbox" id="ats_try_guessing" value="" class="form-control chk--skinned">
-								<label for="ats_try_guessing">$tstrings['ats_try_guessing']</label>
-								<br>
-								<input type="checkbox" id="ats_fastscan" class="form-control chk--skinned" value="">
-								<label for="ats_fastscan">$tstrings['ats_fastscan']</label>
-								<br>
-								<input type="checkbox" id="ats_show_in_extensionsmenu" class="form-control chk--skinned" value="">
-								<label for="ats_show_in_extensionsmenu">$tstrings['ats_show_in_extensionsmenu']</label>
-								<br>
-								<input type="checkbox" id="ats_disabled_on_conflict" value="" class="form-control chk--skinned">
-								<label for="ats_disabled_on_conflict">$tstrings['ats_disabled_on_conflict']</label>
-								<br>
-								<input type="checkbox" id="ats_addsimilar_on_conflict" value="" class="form-control chk--skinned">
-								<label for="ats_addsimilar_on_conflict">$tstrings['ats_addsimilar_on_conflict']</label>
-								<br>
-								<input type="checkbox" id="ats_notifconflict" value="" class="form-control chk--skinned">
-								<label for="ats_notifconflict">$tstrings['ats_notifconflict']</label>
-								<br>
-								<input type="checkbox" id="ats_notifsimilar" value="" class="form-control chk--skinned">
-								<label for="ats_notifsimilar">$tstrings['ats_notifsimilar']</label>
-								<br>
-								<input type="checkbox" id="ats_add_autotimer_to_tags" value="" class="form-control chk--skinned">
-								<label for="ats_add_autotimer_to_tags">$tstrings['ats_add_autotimer_to_tags']</label>
-								<br>
-								<input type="checkbox" id="ats_add_name_to_tags" value="" class="form-control chk--skinned">
-								<label for="ats_add_name_to_tags">$tstrings['ats_add_name_to_tags']</label>
-								<br>
-								<label for="ats_refresh">$tstrings['ats_refresh']</label>
-								<select id="ats_refresh" size="1" class="form-control">
-									<option value="none" selected>$tstrings['ats_refresh_none']</option>
-									<option value="auto" selected>$tstrings['ats_refresh_auto']</option>
-									<option value="all" selected>$tstrings['ats_refresh_all']</option>
-								</select>
-								<br>
-								<label for="ats_editor">$tstrings['ats_editor']</label>
-								<select id="ats_editor" size="1" class="form-control">
-									<option value="plain" selected>$tstrings['ats_editor_plain']</option>
-									<option value="wizzard" selected>$tstrings['ats_editor_wizard']</option>
-								</select>
-							</div>
-						</fieldset>
+							</fieldset>
+						</form>
 					</div>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">$tstrings['close']</button>
-					<button type="button" class="btn btn--skinned waves-effect" data-dismiss="modal" onclick="setAutoTimerSettings(); return false;">$tstrings['save']</button>
-				</div>
-			</form>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">$tstrings['close']</button>
+				<button type="button" class="btn btn--skinned waves-effect" data-dismiss="modal" onclick="setAutoTimerSettings(); return false;">$tstrings['save']</button>
+			</div>
 		</div>
 	</div>
 </div>
 
 <div id="ATTimerList" class="modal fade" role="dialog">
-	<div class="modal-dialog modal-lg">
+	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"><i class="material-icons material-icons-centered">close</i></button>
-				<h4 class="modal-title">$tstrings['timers']</h4>
+				<h4 class="modal-title">AutoTimer</h4>
 			</div>
 			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
 					<div id="timerdlgcont"></div>
@@ -669,6 +636,14 @@
 		</div>
 	</div>
 </div>
+
+<script>
+#if $showiptvchannelsinselection
+	var noiptv = false;
+#else
+	var noiptv = true;
+#end if
+</script>
 
 <script src="/modern/plugins/strftime/strftime.js"></script>
 <script src="/modern/plugins/choices/choices.min.js"></script>

@@ -3,8 +3,8 @@
     "options": {
         "UseMinExt": true,
         "MinifyOptions": {},
-        "OutDir": "../../plugin/public/modern/js/",
-        "RootDir": "./js/",
+        "OutDir": "../plugin/public/modern/js/",
+        "RootDir": "./modern/js/",
         "Exclude": [
             "**/*.min.js",
             "**/owif.js",

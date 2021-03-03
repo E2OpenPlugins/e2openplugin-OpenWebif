@@ -384,10 +384,10 @@ function getAutoTimerSettings()
 }
 
 var autoTimerOptions;
-function InitPage() {
+function InitPage(noiptv) {
 	reloadAT();
 
-	autoTimerOptions = owif.gui.populateAutoTimerOptions();
+	autoTimerOptions = owif.gui.populateAutoTimerOptions(noiptv);
 
 	$.AdminBSB.input.activate();
 	$.AdminBSB.select.activate();
@@ -555,4 +555,4 @@ function showError(txt,st)
 	
 }
 
-InitPage();
+InitPage(window.noiptv);

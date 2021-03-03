@@ -1,8 +1,8 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.20
+//* Version 1.2.21
 //******************************************************************************
-//* Copyright (C) 2011-2020 E2OpenPlugins
+//* Copyright (C) 2011-2021 E2OpenPlugins
 //*
 //* V 1.0   - Initial Version
 //* V 1.1   - add movie move and rename
@@ -33,6 +33,7 @@
 //* V 1.2.18 - rename stream.m3u8 to <channelname>.m3u8
 //* V 1.2.19 - fixed missing <channelname> when requesting a transcoding stream m3u8
 //* V 1.2.20 - timer pipzap option
+//* V 1.2.21 - improve getallservices
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -2087,7 +2088,7 @@ function GetAllServices(callback,radio)
 		}
 	}
 	$.ajax({
-		url: '/api/getallservices?renameserviceforxmbc=1'+ru,
+		url: '/api/getallservices?renameserviceforxmbc=1&nolastscanned=1'+ru,
 		dataType: "json",
 		success: function ( data ) {
 			var sdata = JSON.stringify(data);

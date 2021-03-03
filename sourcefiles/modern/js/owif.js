@@ -70,8 +70,9 @@ class API {
     }
   }
 
-  async getAllServices() {
-    let response = await fetch('/api/getallservices');
+  async getAllServices(noiptv) {
+    let niptv = (noiptv==true) ? "&noiptv=1" : "";
+    let response = await fetch('/api/getallservices?nolastscanned=1' + niptv);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     } else {
@@ -181,7 +182,7 @@ console.log(oldValue, newValue);
     document.body.dataset.skinpref = newValue;
   }
 
-  populateAutoTimerOptions() {
+  populateAutoTimerOptions(noiptv) {
     const populatedChoices = {};
     const selectChoicesAttr = 'data-select-choices';
     const selectChoicesElements = document.querySelectorAll(`[${selectChoicesAttr}]`);
@@ -216,7 +217,7 @@ console.log(oldValue, newValue);
       );
     }).catch(e => console.warn(e));
     
-    api.getAllServices().then((result) => {
+    api.getAllServices(noiptv).then((result) => {
       const opts = result['bouquets'].map((bouquet) => {
         return {
           label: bouquet.name,

@@ -1,9 +1,9 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 2.9
+//* Version 2.11
 //******************************************************************************
-//* Copyright (C) 2014-2020 Joerg Bleyel
-//* Copyright (C) 2014-2020 E2OpenPlugins
+//* Copyright (C) 2014-2021 Joerg Bleyel
+//* Copyright (C) 2014-2021 E2OpenPlugins
 //*
 //* V 1.0 - Initial Version
 //* V 1.1 - Support translation, small ui fixes
@@ -25,6 +25,8 @@
 //* V 2.7 - backup / restore
 //* V 2.8 - fix #960
 //* V 2.9 - fix #1028
+//* V 2.10 - iptv, lastscanned filter
+//* V 2.11 - improve getallservices
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -234,8 +236,11 @@ function checkValues () {
 		$('#vpsE').hide();
 }
 
-function InitPage() {
+var ATnoiptv = false;
 
+function InitPage(noiptv) {
+
+	ATnoiptv = noiptv;
 	$('#timeSpan').click(function() { checkValues();});
 	$('#timeSpanAE').click(function() { checkValues();});
 	$('#timeFrame').click(function() { checkValues();});
@@ -398,9 +403,42 @@ function getTags()
 	});
 }
 
+
+function ATGetAllServices(callback,radio)
+{
+	if (typeof callback === 'undefined')
+		return;
+	if (typeof radio === 'undefined')
+		radio = false;
+	
+	ru = "";
+	if (radio)
+	{
+		v += "r";
+		vd += "r";
+		ru = "&type=radio";
+	}
+
+	niptv = "";
+	if(ATnoiptv)
+	{
+		ru = "&noiptv=1";
+	}
+	
+	$.ajax({
+		url: '/api/getallservices?nolastscanned=1'+ ru + niptv,
+		dataType: "json",
+		success: function ( data ) {
+			var sdata = JSON.stringify(data);
+			var bqs = data['services'];
+			FillAllServices(bqs,callback);
+		}
+	});
+}
+
 function getAllServices()
 {
-	GetAllServices(function ( options , boptions) {
+	ATGetAllServices(function ( options , boptions) {
 		$("#channels").append( options);
 		$('#channels').trigger("chosen:updated");
 		$("#bouquets").append( boptions);

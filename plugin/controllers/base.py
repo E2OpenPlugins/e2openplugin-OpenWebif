@@ -362,7 +362,7 @@ class BaseController(resource.Resource):
 
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer  # noqa: F401
-			extras.append({'key': 'ajax/at', 'description': _('AutoTimer')})
+			extras.append({'key': 'ajax/at', 'description': _('AutoTimers')})
 		except ImportError:
 			pass
 

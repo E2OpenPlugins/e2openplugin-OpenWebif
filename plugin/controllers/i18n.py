@@ -520,6 +520,7 @@ tstrings = {
 	'showfullremoteshort': _("Full remote"),
 	'showdetails': _("Show details"),
 	'show_details_in_channel_list': _("Show service type in channel list"),
+	'show_iptv_channels_in_selection': _("Show IPTV channels in selection (eg. Autotimer)"),
 	'show_picons': _("Show picons"),
 	'show_picon_background': _("Show picon background"),
 	'export': _("Export"),

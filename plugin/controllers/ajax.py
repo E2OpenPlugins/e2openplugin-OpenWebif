@@ -55,7 +55,7 @@ class AjaxController(BaseController):
 		"""
 		ajax requests with no extra data
 		"""
-		return ['powerstate', 'message', 'myepg', 'radio', 'terminal', 'epgr', 'bqe', 'tv', 'satfinder']
+		return ['powerstate', 'message', 'myepg', 'radio', 'terminal', 'bqe', 'tv', 'satfinder']
 
 	def P_edittimer(self, request):
 		pipzap = getInfo()['timerpipzap']
@@ -274,6 +274,7 @@ class AjaxController(BaseController):
 		ret['zapstream'] = config.OpenWebif.webcache.zapstream.value
 		ret['showpicons'] = config.OpenWebif.webcache.showpicons.value
 		ret['showchanneldetails'] = config.OpenWebif.webcache.showchanneldetails.value
+		ret['showiptvchannelsinselection'] = config.OpenWebif.webcache.showiptvchannelsinselection.value
 		ret['allowipkupload'] = config.OpenWebif.allow_upload_ipk.value
 		loc = getLocations()
 		ret['locations'] = loc['locations']
@@ -326,6 +327,11 @@ class AjaxController(BaseController):
 		epg['epgmode'] = epgmode
 		return epg
 
+	def P_epgr(self, request):
+		ret = {}
+		ret['showiptvchannelsinselection'] = config.OpenWebif.webcache.showiptvchannelsinselection.value
+		return ret
+
 	def P_at(self, request):
 		ret = {}
 		ret['hasVPS'] = 0
@@ -360,6 +366,8 @@ class AjaxController(BaseController):
 			ret['test'] = 1
 		except ImportError:
 			pass
+		ret['showiptvchannelsinselection'] = config.OpenWebif.webcache.showiptvchannelsinselection.value
+
 		return ret
 
 	def P_webtv(self, request):

@@ -2836,6 +2836,10 @@ body.theme--city-lights {
   border-top-color: rgba(11, 11, 11, 0.1);
 }
 
+.theme--city-lights.skin--grey-darken-4 .link--skinned {
+  color: #f1f1f1;
+}
+
 .theme--city-lights.skin--black .link--skinned {
   color: #f1f1f1;
 }
