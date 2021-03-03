@@ -162,6 +162,7 @@
 				<time style="white-space: nowrap;">$timer.realbegin</time>
 			#if $timer.justplay != 1:
 				 - <time style="white-space: nowrap;">$timer.realend</time>
+				 <span class="event__duration" style="opacity: 0.4; margin-left: 0.4ch;">($int($timer.duration / 60) $tstrings['mins'])</span>
 			#end if
 			#if $timer.repeated != 0
 				<div>
