@@ -6628,8 +6628,8 @@ a:focus {
 }
 
 .now-next__picon.picon--with-background { 
-  background-color: #bababa; 
-  box-shadow: inset -20px 40px 60px #fff; 
+  background-color: #fff; 
+  box-shadow: inset -20px 40px 60px #e8e8e8; 
 }
 
 .now-next__picon a { 
