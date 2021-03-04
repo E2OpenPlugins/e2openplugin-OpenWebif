@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <!-- saved from url=(0061)https://www.chartjs.org/samples/latest/charts/line/basic.html -->
+<!-- https://www.chartjs.org/docs/latest/configuration/ -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Line Chart</title>
 	<script src="/js/sigfinder/Chart.min.js"></script>
@@ -60,6 +61,7 @@
 		<canvas id="canvas" style="display: block; height: 603px; width: 1206px;" width="2412" height="1206" class="chartjs-render-monitor"></canvas>
 	</div>
 	<script>
+		var maxSnr = 0;
 		var context = new AudioContext();
 		var o = null
 		var g = null
@@ -70,7 +72,7 @@
 				labels: [''],
 				datasets: [{
 					label: 'SNR',
-					backgroundColor: window.chartColors.orange,
+					backgroundColor: window.chartColors.white,
 					// borderColor: window.chartColors.orange,
 					data: [],
 					fill: true,
@@ -81,7 +83,25 @@
 					label: 'AGC',
 					backgroundColor: window.chartColors.yellow,
 					borderColor: window.chartColors.yellow,
-					// borderDash: [5, 5],
+					data: [],
+					fill: false,
+					type: 'line',
+					pointRadius: 0,
+					lineTension: 0,
+				},  {
+					label: 'BER',
+					backgroundColor: window.chartColors.orange,
+					borderColor: window.chartColors.orange,
+					data: [],
+					fill: false,
+					type: 'line',
+					pointRadius: 0,
+					lineTension: 0,
+				}, {
+					label: 'Max SNR',
+					backgroundColor: window.chartColors.purple,
+					borderColor: window.chartColors.purple,
+					borderDash: [5, 5],
 					data: [],
 					fill: false,
 					type: 'line',
@@ -91,6 +111,14 @@
 			},
 			options: {
 				responsive: true,
+				layout: {
+					padding: {
+						left: 50,
+						right: 50,
+						top: 0,
+						bottom: 0
+					}
+        },
 				title: {
 					display: true,
 					text: 'Signal Finder'
@@ -98,13 +126,24 @@
 				tooltips: {
 					enabled: false,
 				},
-				hover: {
-					mode: 'nearest',
-					intersect: true
-				},
+				events: [], //don't listen for any events
+				// hover: {
+				// 	mode: 'nearest',
+				// 	intersect: true
+				// },
+				animation: {
+					duration: 0 // general animation time
+        },
+        hover: {
+            animationDuration: 0 // duration of animations when hovering an item
+        },
 				scales: {
 					xAxes: [{
 						display: true,
+						gridLines: {
+							color: 'rgba(255,255,255,0.2)', 
+							z: 10
+						},
 						scaleLabel: {
 							display: true,
 							labelString: 'Time'
@@ -190,6 +229,7 @@
 							}
 						});
 
+						maxSnr = Math.max(successMessage.snr, maxSnr);
 						if (successMessage.snr < 50) {
 							config.data.datasets[0].backgroundColor = window.chartColors.red;
 						} else if (successMessage.snr < 70) {
@@ -203,6 +243,8 @@
 						config.data.labels.push(new Date().toLocaleTimeString());
 						config.data.datasets[0].data.push(successMessage.snr);
 						config.data.datasets[1].data.push(successMessage.agc);
+						config.data.datasets[2].data.push(successMessage.ber);
+						config.data.datasets[3].data.push(maxSnr);
 
 console.log(window.myLine.generateLegend());
 						window.myLine.update();
@@ -210,7 +252,7 @@ console.log(window.myLine.generateLegend());
 		}
 
 					setInterval(function () {
-						loadPhoto('/api/signal', 'json')
+						navigator.onLine && document.hasFocus() && loadPhoto('/api/signal', 'json')
 							.then((res) => {
 
 								boop(res);
