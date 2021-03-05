@@ -39,6 +39,7 @@ from ServiceReference import ServiceReference
 from RecordTimer import parseEvent, RecordTimerEntry
 from timer import TimerEntry
 from Screens.InfoBar import InfoBar
+from Screens.Standby import inStandby
 from Tools.Directories import fileExists
 from enigma import eEPGCache, eDVBVolumecontrol, eServiceCenter, eServiceReference
 
@@ -655,6 +656,11 @@ def getFrontendStatus(session):
 	inf['agc'] = ""
 	inf['ber'] = ""
 
+	if inStandby is None:
+		inf['inStandby'] = "false"
+	else:
+		inf['inStandby'] = "true"
+
 	service = session.nav.getCurrentService()
 	if service is None:
 		return inf
@@ -784,7 +790,6 @@ def getStatusInfo(self):
 				statusinfo['currservice_station'] = "N/A"
 
 	# Get Standby State
-	from Screens.Standby import inStandby
 	if inStandby is None:
 		statusinfo['inStandby'] = "false"
 	else:
