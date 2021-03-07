@@ -24,7 +24,6 @@
 from __future__ import print_function
 import six
 from enigma import eEPGCache, eServiceReference
-from Tools.FuzzyDate import FuzzyTime
 from Components.UsageConfig import preferredTimerPath, preferredInstantRecordPath
 from Components.config import config
 from Components.TimerSanityCheck import TimerSanityCheck
@@ -34,7 +33,7 @@ from time import time, strftime, localtime, mktime
 from six.moves.urllib.parse import unquote
 from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternative
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
-from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad
+from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad, FuzzyTime
 
 
 def getTimers(session):
