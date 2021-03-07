@@ -145,12 +145,16 @@ def getTimers(session):
 		if six.PY2:
 			descriptionextended = six.text_type(descriptionextended, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 
-		fuzzyBegin = ' '.join(str(i) for i in FuzzyTime(timer.begin, inPast = True)[1:])
-		fuzzyEnd = ""
-		if strftime("%Y%m%d", localtime(timer.begin)) == strftime("%Y%m%d", localtime(timer.end)):
-			fuzzyEnd = FuzzyTime(timer.end)[1]
-		else:
-			fuzzyEnd = ' '.join(str(i) for i in FuzzyTime(timer.end, inPast = True))
+		# switch back to old way.
+		#fuzzyBegin = ' '.join(str(i) for i in FuzzyTime(timer.begin, inPast = True)[1:])
+		#fuzzyEnd = ""
+		#if strftime("%Y%m%d", localtime(timer.begin)) == strftime("%Y%m%d", localtime(timer.end)):
+		#	fuzzyEnd = FuzzyTime(timer.end)[1]
+		#else:
+		#	fuzzyEnd = ' '.join(str(i) for i in FuzzyTime(timer.end, inPast = True))
+
+		fuzzyBegin = strftime(_("%d.%m.%Y %H:%M"), (localtime(float(timer.begin))))
+		fuzzyEnd = strftime(_("%d.%m.%Y %H:%M"), (localtime(float(timer.end))))
 
 		timers.append({
 			"serviceref": str(timer.service_ref),
