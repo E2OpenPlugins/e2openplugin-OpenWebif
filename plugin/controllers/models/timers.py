@@ -145,7 +145,7 @@ def getTimers(session):
 		if six.PY2:
 			descriptionextended = six.text_type(descriptionextended, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 
-		fuzzyBegin = ' '.join(str(i) for i in FuzzyTime(timer.begin, inPast = True))
+		fuzzyBegin = ' '.join(str(i) for i in FuzzyTime(timer.begin, inPast = True)[1:])
 		fuzzyEnd = ""
 		if strftime("%Y%m%d", localtime(timer.begin)) == strftime("%Y%m%d", localtime(timer.end)):
 			fuzzyEnd = FuzzyTime(timer.end)[1]

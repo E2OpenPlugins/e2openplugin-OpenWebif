@@ -4,7 +4,7 @@ from __future__ import print_function
 import re
 import six
 import sys
-from time import localtime
+from time import localtime, time
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 
 PY3 = sys.version_info[0] == 3
@@ -348,7 +348,36 @@ def getEventInfoProvider(moviedb):
 		pass
 	return providerData
 
-def FuzzyTime(t, inPast=False):
+def FuzzyTime(t, inPast = False):
+	d = localtime(t)
+	nt = time()
+	n = localtime()
+	dayOfWeek = (_("Mon"), _("Tue"), _("Wed"), _("Thu"), _("Fri"), _("Sat"), _("Sun"))
+
+	if d[:3] == n[:3]:
+		# same day
+		date = _("Today")
+	elif d[0] == n[0] and d[7] == n[7] - 1 and inPast:
+		# won't work on New Year's day
+		date = _("Yesterday")
+	elif ((t - nt) < 7*86400) and (nt < t) and not inPast:
+		# same week (must be future)
+		date = dayOfWeek[d[6]]
+	elif d[0] == n[0]:
+		# same year
+		if inPast:
+			# I want the day in the movielist
+			date = _("%s %02d.%02d.") % (dayOfWeek[d[6]], d[2], d[1])
+		else:
+			date = _("%02d.%02d.") % (d[2], d[1])
+	else:
+		date = _("%02d.%02d.%d") % (d[2], d[1], d[0])
+
+	timeres = _("%02d:%02d") % (d[3], d[4])
+
+	return date, timeres
+
+def FuzzyTime2(t):
 	d = localtime(t)
 	n = localtime()
 	dayOfWeek = (_("Mon"), _("Tue"), _("Wed"), _("Thu"), _("Fri"), _("Sat"), _("Sun"))
@@ -362,10 +391,7 @@ def FuzzyTime(t, inPast=False):
 	
 	if d[0] == n[0]:
 		# same year
-		if inPast:
-			date = _("%s %02d.%02d.") % (day, d[2], d[1])
-		else:
-			date = _("%02d.%02d.") % (d[2], d[1])
+		date = _("%s %02d.%02d.") % (day, d[2], d[1])
 	else:
 		date = _("%s %02d.%02d.%d") % (day, d[2], d[1], d[0])
 

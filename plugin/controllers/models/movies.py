@@ -35,7 +35,7 @@ from Components.MovieList import MovieList
 from Tools.Directories import fileExists
 from Screens.MovieSelection import defaultMoviePath
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
-from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg2, PY3, FuzzyTime
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg2, PY3, FuzzyTime2
 
 try:
 	from Components.MovieList import moviePlayState as _moviePlayState
@@ -205,7 +205,7 @@ def getMovieList(rargs=None, locations=None):
 				}
 
 				if rtime > 0:
-					movie['begintime'] = FuzzyTime(rtime)
+					movie['begintime'] = FuzzyTime2(rtime)
 
 				try:
 					length_minutes = info.getLength(serviceref)
