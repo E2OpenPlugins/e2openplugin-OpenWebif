@@ -547,6 +547,12 @@ $(function() {
 		webapi_execute("/api/setwebconfig?showiptvchannelsinselection=" + ch);
 	});
 	
+	$("input[name=screenshotchannelname]").click(function(evt) {
+		var ch = evt.currentTarget.checked;
+		$('input[name=screenshotchannelname]').attr('checked', ch);
+		webapi_execute("/api/setwebconfig?screenshotchannelname=" + ch);
+	});
+
 	$("input[name=responsivedesign]").click(function(evt) {
 		var ch = evt.currentTarget.checked;
 		$('input[name=responsivedesign]').attr('checked', ch);
