@@ -1,6 +1,6 @@
 //******************************************************************************
 //* epgr.js: openwebif EPGRefresh plugin
-//* Version 1.5
+//* Version 1.6
 //******************************************************************************
 //* Copyright (C) 2016-2021 Joerg Bleyel
 //* Copyright (C) 2016-2021 E2OpenPlugins
@@ -11,6 +11,7 @@
 //* V 1.3 - use public getallservices
 //* V 1.4 - iptv, lastscanned filter
 //* V 1.5 - improve getallservices
+//* V 1.6 - improve getallservices
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //*
@@ -74,14 +75,9 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 
 			}, getAllServices: function () {
 			
-				niptv = "";
-				if(EPGRnoiptv)
-				{
-					ru = "&noiptv=1";
-				}
-				
+				niptv = (EPGRnoiptv) ? "&noiptv=1" : "";
 				$.ajax({
-					url: '/api/getallservices?nolastscanned=1'+ ru + niptv,
+					url: '/api/getallservices?nolastscanned=1' + niptv,
 					dataType: "json",
 					success: function ( data ) {
 						var sdata = JSON.stringify(data);

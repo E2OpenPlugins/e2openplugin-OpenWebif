@@ -65,6 +65,7 @@ config.OpenWebif.webcache.moviedb = ConfigSelection(default=EXT_EVENT_INFO_SOURC
 config.OpenWebif.webcache.mepgmode = ConfigInteger(default=1, limits=(1, 2))
 config.OpenWebif.webcache.showchanneldetails = ConfigYesNo(default=False)
 config.OpenWebif.webcache.showiptvchannelsinselection = ConfigYesNo(default=True)
+config.OpenWebif.webcache.screenshotchannelname = ConfigYesNo(default=False)
 
 # HTTPS
 config.OpenWebif.https_enabled = ConfigYesNo(default=False)

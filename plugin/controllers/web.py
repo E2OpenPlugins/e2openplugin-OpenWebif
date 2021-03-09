@@ -2280,6 +2280,10 @@ class WebController(BaseController):
 			val = (getUrlArg(request, "showiptvchannelsinselection") == 'true')
 			comp_config.OpenWebif.webcache.showiptvchannelsinselection.value = val
 			comp_config.OpenWebif.webcache.showiptvchannelsinselection.save()
+		elif "screenshotchannelname" in list(request.args.keys()):
+			val = (getUrlArg(request, "screenshotchannelname") == 'true')
+			comp_config.OpenWebif.webcache.screenshotchannelname.value = val
+			comp_config.OpenWebif.webcache.screenshotchannelname.save()
 		elif "zapstream" in list(request.args.keys()):
 			val = (getUrlArg(request, "zapstream") == 'true')
 			comp_config.OpenWebif.webcache.zapstream.value = val

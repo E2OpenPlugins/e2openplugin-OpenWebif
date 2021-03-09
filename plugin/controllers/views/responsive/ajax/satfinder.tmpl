@@ -68,7 +68,7 @@
 
 <script>
 	function getFrontendStatus() {
-		jQuery.getJSON('/api/signal')
+		navigator.onLine && document.hasFocus() && jQuery.getJSON('/api/signal')
 			.success(function(statusinfo) {
 				jQuery('#snrslider').css('width', statusinfo['snr']+'%').html(statusinfo['snr']+'%');
 				jQuery('#agcslider').css('width', statusinfo['agc']+'%').html(statusinfo['agc']+'%');

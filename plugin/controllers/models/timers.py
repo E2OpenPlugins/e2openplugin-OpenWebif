@@ -33,7 +33,7 @@ from time import time, strftime, localtime, mktime
 from six.moves.urllib.parse import unquote
 from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternative
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
-from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad
+from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad, FuzzyTime
 
 
 def getTimers(session):
@@ -145,6 +145,17 @@ def getTimers(session):
 		if six.PY2:
 			descriptionextended = six.text_type(descriptionextended, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 
+		# switch back to old way.
+		#fuzzyBegin = ' '.join(str(i) for i in FuzzyTime(timer.begin, inPast = True)[1:])
+		#fuzzyEnd = ""
+		#if strftime("%Y%m%d", localtime(timer.begin)) == strftime("%Y%m%d", localtime(timer.end)):
+		#	fuzzyEnd = FuzzyTime(timer.end)[1]
+		#else:
+		#	fuzzyEnd = ' '.join(str(i) for i in FuzzyTime(timer.end, inPast = True))
+
+		fuzzyBegin = strftime(_("%d.%m.%Y %H:%M"), (localtime(float(timer.begin))))
+		fuzzyEnd = strftime(_("%d.%m.%Y %H:%M"), (localtime(float(timer.end))))
+
 		timers.append({
 			"serviceref": str(timer.service_ref),
 			"servicename": removeBad(timer.service_ref.getServiceName()),
@@ -172,8 +183,8 @@ def getTimers(session):
 			"toggledisabledimg": toggledisabledimg,
 			"filename": filename,
 			"nextactivation": nextactivation,
-			"realbegin": strftime(_("%d.%m.%Y %H:%M"), (localtime(float(timer.begin)))),
-			"realend": strftime(_("%d.%m.%Y %H:%M"), (localtime(float(timer.end)))),
+			"realbegin": fuzzyBegin,
+			"realend": fuzzyEnd,
 			"asrefs": asrefs,
 			"vpsplugin_enabled": vpsplugin_enabled,
 			"vpsplugin_overwrite": vpsplugin_overwrite,

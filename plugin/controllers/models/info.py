@@ -655,6 +655,12 @@ def getFrontendStatus(session):
 	inf['agc'] = ""
 	inf['ber'] = ""
 
+	from Screens.Standby import inStandby
+	if inStandby is None:
+		inf['inStandby'] = "false"
+	else:
+		inf['inStandby'] = "true"
+
 	service = session.nav.getCurrentService()
 	if service is None:
 		return inf

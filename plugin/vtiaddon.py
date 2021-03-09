@@ -94,6 +94,11 @@ def showIPTVChannelsInSelection():
 		return 'checked'
 	return ''
 
+def useSreenshotChannelName():
+	if config.OpenWebif.webcache.screenshotchannelname.value:
+		return 'checked'
+	return ''
+
 def setVTiWebConfig(self, request):
 	if b"moviesearchextended" in list(request.args.keys()):
 		val = int(getUrlArg(request, "moviesearchextended"))
@@ -160,6 +165,11 @@ def setVTiWebConfig(self, request):
 		print("save showiptvchannelsinselection:", val)
 		config.OpenWebif.webcache.showiptvchannelsinselection.value = val == 1 and True or False
 		config.OpenWebif.webcache.showiptvchannelsinselection.save()
+	if b"screenshotchannelname" in list(request.args.keys()):
+		val = int(getUrlArg(request, "screenshotchannelname"))
+		print("save screenshotchannelname:", val)
+		config.OpenWebif.webcache.screenshotchannelname.value = val == 1 and True or False
+		config.OpenWebif.webcache.screenshotchannelname.save()
 	return ''
 
 def expand_BaseController():
