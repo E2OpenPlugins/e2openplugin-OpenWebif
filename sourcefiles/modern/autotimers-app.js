@@ -1,3 +1,6 @@
+/*x-eslint-env x-browser*/
+/*x-global x-swal*/
+
 //******************************************************************************
 //* at.js: openwebif AutoTimer plugin
 //* Version 3.0
@@ -15,7 +18,7 @@ function xml2json(xmlStr){return xml2jsonRecurse(xmlStr=cleanXML(xmlStr),0)} fun
 (function () {
   // TODO: move to owif.js utils
 	const regexDateFormat = new RegExp(/\d{4}-\d{2}-\d{2}/);
-	
+
   // TODO: move to owif.js utils
 	const debugLog = (...args) => {
     console.debug(...args);
@@ -162,7 +165,27 @@ aem = {
           return ati;
         });
 
-        return responseContent;
+        return window.atList;
+      },
+
+      populateList: function () {
+        document.getElementById('at__edit').classList.toggle('hidden', true);
+        const listEl = document.getElementById('at__list');
+        listEl.classList.toggle('hidden', false);
+        const templateEl = document.getElementById('autotimer-item-template');
+        self.getAll()
+          .then(jsonResponse => {
+            jsonResponse.forEach((atItem, index) => {
+              const newNode = templateEl.content.firstElementChild.cloneNode(true);
+              newNode.dataset['atId'] = `${atItem['id']}`;
+              newNode.querySelector('slot[name="autotimer-name"]').innerHTML = atItem['name'];
+              newNode.querySelector('button[name="edit"]').onclick = (i) => self.editEntry(atItem['id']);
+              // newNode.querySelector('button[name="disable"]').onclick = () => self.disableEntry(atItem['id']);
+              newNode.querySelector('button[name="delete"]').onclick = () => self.deleteEntry(atItem['id']);
+
+              listEl.appendChild(newNode);
+            });
+          });
       },
 
       getSettings: async () => {
@@ -171,10 +194,6 @@ aem = {
 
       saveSettings: async (params) => {
         return await apiRequest(`/autotimer/set?${params}`);
-      },
-
-      deleteEntry: async (atId) => {
-        return await apiRequest(`/autotimer/remove?id=${atId}`);
       },
 
       preview: async () => {
@@ -202,6 +221,8 @@ aem = {
 
         const { elements } = atForm;
         atForm.reset();
+        document.getElementById('at__list').classList.toggle('hidden', true);
+        document.getElementById('at__edit').classList.toggle('hidden', false);
 
         /**
 e2tags -> tags
@@ -261,12 +282,12 @@ console.log(field, ex);
         //   .setChoices(tagOpts, 'value', 'label', false)
         //   .removeActiveItems()
         //   .setChoiceByValue(data.Tags);
-      
+
         autoTimerOptions['channels']
           .setChoices(allChannels, 'value', 'label', false)
           .removeActiveItems()
           .setChoiceByValue(data.Channels);
-      
+
         autoTimerOptions['bouquets']
           .setChoices(allBouquets, 'value', 'label', false)
           .removeActiveItems()
@@ -274,6 +295,42 @@ console.log(field, ex);
       },
 
       // .then(response => response.formData())
+
+      deleteEntry: async (atId = -1) => {
+        (atId !== -1) && swal({
+          title: tstr_del_autotimer,
+          text: atId + 'CurrentAT.name',
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#DD6B55',
+          confirmButtonText: tstrings_yes_delete,
+          cancelButtonText: tstrings_no_cancel,
+          closeOnConfirm: false,
+          closeOnCancel: false
+        }, async (userConfirmed) => {
+          if (userConfirmed) {
+            const xml = await apiRequest(`/autotimer/remove?id=${atId}`)
+              // .then(xml => {
+                var state=$(xml).find("e2state").first();
+                var txt=$(xml).find("e2statetext").first();
+
+                swal(state.text(), txt.text(), 'error');
+// TODO: remove (hide) from list on success
+              // })
+          } else {
+            swal(tstrings_cancelled, 'CurrentAT.name', 'error');
+          }
+        });
+      },
+
+      disableEntry: async (atId = -1) => {
+        console.log(`Disable AT with ID ${atId}`);
+      },
+
+      editEntry: async (atId = -1) => {
+        const entry = window.atList.find(autotimer => autotimer['id'] == atId);
+        self.populateForm(entry);
+      },
 
       saveEntry: (extraParams = '') => {
         const formData = new FormData(atForm);
@@ -325,21 +382,12 @@ console.log(field, ex);
         // create a failsafe element to assign event handlers to
         let nullEl = document.createElement('input');
 
-        (document.getElementById('atlist') || nullEl).onchange = (selection) => {
-          const atId = selection.target.value;
-console.log(atId);
-const a = window.atList.find(autotimer => autotimer['id'] == atId);
-console.log(a);
-          self.populateForm(a);
-        };
-
         (document.getElementById('atform') || nullEl).onsubmit = () => {
           window.saveAT();
           return false;
         }
         (document.querySelector('button[name="cancel"]') || nullEl).onclick = () => window.addAT();
         (document.querySelector('button[name="create"]') || nullEl).onclick = () => window.addAT();
-        (document.querySelector('button[name="delete"]') || nullEl).onclick = () => window.delAT();
         (document.querySelector('button[name="reload"]') || nullEl).onclick = () => window.reloadAT();
         (document.querySelector('button[name="process"]') || nullEl).onclick = () => window.parseAT();
         (document.querySelector('button[name="preview"]') || nullEl).onclick = self.preview;
@@ -411,6 +459,8 @@ console.log(a);
 
       init: function () {
         self = this;
+
+        self.populateList(); //check if we've got data to add a new AT with
         self.initEventHandlers(self);
       },
     };

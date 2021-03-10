@@ -1,25 +1,9 @@
 /* BEGIN legacy AutoTimer.js */
 function FillAT(autotimerid){
-	var def = $(atxml).find('defaults');
 	$(atxml).find('timer').each(function () {
 		if($(this).attr('id') == autotimerid) {
 			CurrentAT = new AutoTimerObj($(this));
 			CurrentAT.UpdateUI();
-		}
-	});
-}
-
-function reloadAT() {
-	showError('');
-	readAT();
-	$('#atlist').selectable({
-		selected: function( event, ui ) {
-			var ids = $('#atlist .ui-selected').map(function() {
-				FillAT($(this).data('id'));
-			});
-		},
-		classes: {
-			'ui-selected': 'ui-state-active',
 		}
 	});
 }
@@ -384,10 +368,8 @@ function getAutoTimerSettings()
 }
 
 var autoTimerOptions;
-function InitPage(noiptv) {
-	reloadAT();
-
-	autoTimerOptions = owif.gui.populateAutoTimerOptions(noiptv);
+function InitPage() {
+	autoTimerOptions = owif.gui.populateAutoTimerOptions(true);
 
 	$.AdminBSB.input.activate();
 	$.AdminBSB.select.activate();
@@ -471,11 +453,11 @@ function addAT(evt)
 function readAT(keepSelection)
 {
 	CurrentAT = null;
-	window.autoTimers.getAll()
-		.then(xml => {
-			atxml = xml;
-			parseAT(keepSelection);
-		})
+	// window.autoTimers.getAll()
+	// 	.then(xml => {
+	// 		atxml = xml;
+	// 		parseAT(keepSelection);
+	// 	})
 }
 
 // parse and create AT List
@@ -555,4 +537,4 @@ function showError(txt,st)
 	
 }
 
-InitPage(window.noiptv);
+InitPage();

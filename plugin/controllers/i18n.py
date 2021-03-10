@@ -363,6 +363,8 @@ tstrings = {
 	'at_filter_day': _("on weekday"),
 	'at_filter_weekend': _("weekend"),
 	'at_filter_weekday': _("weekday"),
+	'at_edit': _("Edit"),
+	'at_disable': _("Disable"),
 	'at_del': _("Delete"),
 	'at_save': _("Save"),
 	'at_process': _("Process"),
