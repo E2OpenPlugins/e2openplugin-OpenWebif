@@ -377,50 +377,16 @@ function InitPage() {
 	if(!timeredit_initialized) {
 		$('#editTimerForm').load('ajax/edittimer');
 	}
-	$('#atlist').on('change', function (e) {
-		// var optionSelected = jQuery("option:selected", this);
-		var valueSelected = this.value;
-		FillAT(valueSelected);
-	});
-}
-
-function delAT()
-{
-	if(CurrentAT && !CurrentAT.isNew)
-	{
-		swal({
-			title: tstr_del_autotimer,
-			text: CurrentAT.name,
-			type: "warning",
-			showCancelButton: true,
-			confirmButtonColor: "#DD6B55",
-			confirmButtonText: tstrings_yes_delete,
-			cancelButtonText: tstrings_no_cancel,
-			closeOnConfirm: false,
-			closeOnCancel: false
-		}, function (isConfirm) {
-			if (isConfirm) {
-				window.autoTimers.deleteEntry(CurrentAT.id)
-				.then(xml => {
-					var state=$(xml).find("e2state").first();
-					var txt=$(xml).find("e2statetext").first();
-					showError(txt.text(),state.text());
-					readAT();
-				})
-			} else {
-				swal(tstrings_cancelled, CurrentAT.name, "error");
-			}
-		});
-	}
 }
 
 function addAT(evt)
 {
-	if(CurrentAT && CurrentAT.isNew)
+	if(false && CurrentAT && CurrentAT.isNew)
 	{
 		showError("please save the current autotimer first");
 		return;
 	}
+	console.log('addAT');
 
 	document.getElementById('atform').reset();
 

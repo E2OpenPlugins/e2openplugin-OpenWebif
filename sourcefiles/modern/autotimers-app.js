@@ -168,20 +168,25 @@ aem = {
         return window.atList;
       },
 
-      populateList: function () {
+      populateList: () => {
         document.getElementById('at__edit').classList.toggle('hidden', true);
+        window.scroll({top: 0, left: 0, behavior: 'smooth'});
         const listEl = document.getElementById('at__list');
-        listEl.classList.toggle('hidden', false);
+        document.getElementById('at__foo').classList.toggle('hidden', false);
         const templateEl = document.getElementById('autotimer-item-template');
         self.getAll()
           .then(jsonResponse => {
             jsonResponse.forEach((atItem, index) => {
+              const searchType = valueLabelMap.autoTimers.searchType[atItem['searchType']] || '';
               const newNode = templateEl.content.firstElementChild.cloneNode(true);
               newNode.dataset['atId'] = `${atItem['id']}`;
-              newNode.querySelector('slot[name="autotimer-name"]').innerHTML = atItem['name'];
-              newNode.querySelector('button[name="edit"]').onclick = (i) => self.editEntry(atItem['id']);
+              // newNode.onclick = () => self.editEntry(atItem['id']); // prevent bubble on delete
+              newNode.querySelector('button[name="edit"]').onclick = () => self.editEntry(atItem['id']);
               // newNode.querySelector('button[name="disable"]').onclick = () => self.disableEntry(atItem['id']);
               newNode.querySelector('button[name="delete"]').onclick = () => self.deleteEntry(atItem['id']);
+              newNode.querySelector('slot[name="autotimer-name"]').innerHTML = atItem['name'];
+              newNode.querySelector('slot[name="autotimer-searchType"]').innerHTML = (searchType) ? `${searchType}:` : '';
+              newNode.querySelector('slot[name="autotimer-match"]').innerHTML = atItem['match'];
 
               listEl.appendChild(newNode);
             });
@@ -220,8 +225,9 @@ aem = {
         const allBouquets = autoTimerOptions['bouquets']['_currentState']['choices'];
 
         const { elements } = atForm;
+        document.getElementById('at__foo').classList.toggle('hidden', true);
         atForm.reset();
-        document.getElementById('at__list').classList.toggle('hidden', true);
+        window.scroll({top: 0, left: 0, behavior: 'smooth'});
         document.getElementById('at__edit').classList.toggle('hidden', false);
 
         /**
@@ -299,14 +305,15 @@ console.log(field, ex);
       deleteEntry: async (atId = -1) => {
         (atId !== -1) && swal({
           title: tstr_del_autotimer,
-          text: atId + 'CurrentAT.name',
+          text: 'CurrentAT.name',
           type: 'warning',
           showCancelButton: true,
-          confirmButtonColor: '#DD6B55',
+          confirmButtonColor: '#dd6b55',
           confirmButtonText: tstrings_yes_delete,
           cancelButtonText: tstrings_no_cancel,
-          closeOnConfirm: false,
-          closeOnCancel: false
+          closeOnConfirm: true,
+          closeOnCancel: true,
+          animation: 'none',
         }, async (userConfirmed) => {
           if (userConfirmed) {
             const xml = await apiRequest(`/autotimer/remove?id=${atId}`)
@@ -386,9 +393,9 @@ console.log(field, ex);
           window.saveAT();
           return false;
         }
-        (document.querySelector('button[name="cancel"]') || nullEl).onclick = () => window.addAT();
+        (document.querySelector('button[name="cancel"]') || nullEl).onclick = self.populateList;
         (document.querySelector('button[name="create"]') || nullEl).onclick = () => window.addAT();
-        (document.querySelector('button[name="reload"]') || nullEl).onclick = () => window.reloadAT();
+        (document.querySelector('button[name="reload"]') || nullEl).onclick = self.populateList;
         (document.querySelector('button[name="process"]') || nullEl).onclick = () => window.parseAT();
         (document.querySelector('button[name="preview"]') || nullEl).onclick = self.preview;
         (document.querySelector('button[name="timers"]') || nullEl).onclick = () => window.listTimers();
