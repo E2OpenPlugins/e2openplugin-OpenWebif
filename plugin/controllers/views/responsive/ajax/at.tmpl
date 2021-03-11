@@ -50,6 +50,16 @@
 	text-align: center;
 	padding-top: 40px !important;
 }
+
+.at__item {
+	cursor: pointer;
+}
+
+.at__item button {
+	border: none;
+	background: none;
+	padding: 0;
+}
 </style>
 
 <template id="autotimer-item-template">
@@ -64,9 +74,9 @@
 				</div>
 				<div class="col-xs-8">
 					<ul class="header-dropdown" style="top: 0; right: 5px;">
-						<li><button type="button" name="edit" title="$tstrings['at_edit']" class="m-0" style="border: none; background: none;"><i class="material-icons material-icons-mg-right">edit</i></button></li>
+						<li><a href="#at/edit/{{id}}" title="$tstrings['at_edit']"><i class="material-icons material-icons-mg-right">edit</i></a> 
 						## <li><button type="button" name="disable" title="$tstrings['at_disable']" class="m-0" style="border: none; background: none;"><i class="material-icons material-icons-mg-right">alarm_off</i></button></li>
-						<li><button type="button" name="delete" title="$tstrings['at_del']" class="m-0" style="border: none; background: none;"><i class="material-icons material-icons-mg-right">delete</i></button></li>
+						<li><button type="button" name="delete" title="$tstrings['at_del']"><i class="material-icons material-icons-mg-right">delete</i></button></li>
 					</ul>
 				</div>
 			</div>
@@ -99,7 +109,7 @@
 					<div class="row align-center clearfix">
 						<button type="button" name="create" class="btn btn--skinned waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></button>
 						<button type="button" name="reload" class="btn btn--skinned waves-effect"><i class="material-icons">refresh</i><span>$tstrings['reload']</span></button>
-						<button type="button" name="process" class="btn btn--skinned waves-effect"><i class="material-icons">code</i><span>$tstrings['at_process']</span></span></button>
+						<button type="button" name="process" disabled class="btn btn--skinned waves-effect"><i class="material-icons">code</i><span>$tstrings['at_process']</span></span></button>
 						<button type="button" name="preview" data-toggle="modal" data-target="#ATTimerModal" class="btn btn--skinned waves-effect"><i class="material-icons">view_list</i><span>$tstrings['at_preview']</span></button>
 						<button type="button" name="timers" data-toggle="modal" data-target="#ATTimerList" class="btn btn--skinned waves-effect"><i class="material-icons" class="btn btn--skinned waves-effect">alarm</i><span>$tstrings['at_timers']</span></button>
 						<button type="button" name="settings" data-toggle="modal" data-target="#ATSettings" class="btn btn--skinned waves-effect" data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>

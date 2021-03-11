@@ -172,6 +172,7 @@ aem = {
         document.getElementById('at__edit').classList.toggle('hidden', true);
         window.scroll({top: 0, left: 0, behavior: 'smooth'});
         const listEl = document.getElementById('at__list');
+        listEl.innerHTML = "";
         document.getElementById('at__foo').classList.toggle('hidden', false);
         const templateEl = document.getElementById('autotimer-item-template');
         self.getAll()
@@ -179,11 +180,19 @@ aem = {
             jsonResponse.forEach((atItem, index) => {
               const searchType = valueLabelMap.autoTimers.searchType[atItem['searchType']] || '';
               const newNode = templateEl.content.firstElementChild.cloneNode(true);
+              const editEl = newNode.querySelector('a[href="#at/edit/{{id}}"]');
               newNode.dataset['atId'] = `${atItem['id']}`;
-              // newNode.onclick = () => self.editEntry(atItem['id']); // prevent bubble on delete
-              newNode.querySelector('button[name="edit"]').onclick = () => self.editEntry(atItem['id']);
-              // newNode.querySelector('button[name="disable"]').onclick = () => self.disableEntry(atItem['id']);
-              newNode.querySelector('button[name="delete"]').onclick = () => self.deleteEntry(atItem['id']);
+              // newNode.onclick = (evt) => {
+              //   (evt || window.event).stopPropogation();
+              //   self.editEntry(atItem['id']);
+              // }
+              editEl.href = editEl.href.replace('{{id}}', atItem['id']);
+              editEl.onclick = (evt) => {
+                self.editEntry(atItem['id']);
+                return false;
+              }
+              // newNode.querySelector('button[name="disable"]').onclick = (evt) => self.disableEntry(atItem['id']);
+              newNode.querySelector('button[name="delete"]').onclick = (evt) => self.deleteEntry(atItem['id']);
               newNode.querySelector('slot[name="autotimer-name"]').innerHTML = atItem['name'];
               newNode.querySelector('slot[name="autotimer-searchType"]').innerHTML = (searchType) ? `${searchType}:` : '';
               newNode.querySelector('slot[name="autotimer-match"]').innerHTML = atItem['match'];
@@ -316,14 +325,14 @@ console.log(field, ex);
           animation: 'none',
         }, async (userConfirmed) => {
           if (userConfirmed) {
+            // TODO: parse response
             const xml = await apiRequest(`/autotimer/remove?id=${atId}`)
-              // .then(xml => {
-                var state=$(xml).find("e2state").first();
-                var txt=$(xml).find("e2statetext").first();
+            var state=$(xml).find("e2state").first();
+            var txt=$(xml).find("e2statetext").first();
 
-                swal(state.text(), txt.text(), 'error');
-// TODO: remove (hide) from list on success
-              // })
+            swal(state.text(), txt.text(), 'error');
+
+            self.populateList();
           } else {
             swal(tstrings_cancelled, 'CurrentAT.name', 'error');
           }
