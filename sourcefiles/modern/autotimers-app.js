@@ -130,7 +130,8 @@ if (!Array.isArray(window.atList)) {
 aem = {
   'shutdown': 'deepstandby',
 }
-
+// TRANSFORMRESPONSE
+//atListCache
         window.atList.map((ati) => {
           if (ati['from']) {
             ati['timespanFrom'] = ati['from'];
@@ -177,10 +178,33 @@ aem = {
         const templateEl = document.getElementById('autotimer-item-template');
         self.getAll()
           .then(jsonResponse => {
+            // sort by name
+            // build found tags
+            // build found locations
             jsonResponse.forEach((atItem, index) => {
               const searchType = valueLabelMap.autoTimers.searchType[atItem['searchType']] || '';
               const newNode = templateEl.content.firstElementChild.cloneNode(true);
               const editEl = newNode.querySelector('a[href="#at/edit/{{id}}"]');
+
+let cn = [];
+if (Array.isArray(atItem['e2service'])) {
+  cn = atItem['e2service'].filter( (x, index, arr) => {
+    return !isBouquet(x['e2servicereference'])
+  });
+  cn = Array.from(cn, x => x['e2servicename']);
+} else if (atItem['e2service']) {
+  isBouquet(atItem['e2service']['e2servicereference']) && cn.push(atItem['e2service']['e2servicename']);
+}
+let bq = [];
+if (Array.isArray(atItem['e2service'])) {
+  bq = atItem['e2service'].filter( (x, index, arr) => {
+    return isBouquet(x['e2servicereference'])
+  });
+  bq = Array.from(bq, x => x['e2servicename']);
+} else if (atItem['e2service']) {
+  !isBouquet(atItem['e2service']['e2servicereference']) && bq.push(atItem['e2service']['e2servicename']);
+}
+
               newNode.dataset['atId'] = `${atItem['id']}`;
               // newNode.onclick = (evt) => {
               //   (evt || window.event).stopPropogation();
@@ -195,8 +219,12 @@ aem = {
               newNode.querySelector('button[name="delete"]').onclick = (evt) => self.deleteEntry(atItem['id']);
               newNode.querySelector('slot[name="autotimer-name"]').innerHTML = atItem['name'];
               newNode.querySelector('slot[name="autotimer-searchType"]').innerHTML = (searchType) ? `${searchType}:` : '';
-              newNode.querySelector('slot[name="autotimer-match"]').innerHTML = atItem['match'];
-
+              atItem['timespanFrom'] && (newNode.querySelector('slot[name="autotimer-timespan"]').innerHTML = `~ ${atItem['timespanFrom'] || ''} - ${atItem['timespanTo'] || ''}`);
+              newNode.querySelector('slot[name="autotimer-e2service"]').innerHTML = `
+                ${cn.join(', ')} <br> ${bq.join(', ')}
+              `;
+              newNode.querySelector('slot[name="autotimer-match"]').innerHTML = `"${atItem['match']}"`;
+console.log(atItem);
               listEl.appendChild(newNode);
             });
           });
