@@ -26,33 +26,33 @@ function setAutoTimerSettings() {
 	reqs += "&editor=" + $('#ats_editor').val();
 	
 	window.autoTimers.saveSettings(reqs)
-		.then(xml => {
-			var state=$(xml).find("e2state").first();
-			var txt=$(xml).find("e2statetext").first();
-			showError(txt.text(),state.text());
-		});
+		// .then(xml => {
+		// 	var state=$(xml).find("e2state").first();
+		// 	var txt=$(xml).find("e2statetext").first();
+		// 	showError(txt.text(),state.text());
+		// });
 }
 /* END legacy AutoTimer.js */
 
 function getAutoTimerSettings()
 {
 	window.autoTimers.getSettings()
-		.then(xml => {
-			$(xml).find("e2setting").each(function () {
-				var name = $(this).find("e2settingname").text();
-				var val = $(this).find("e2settingvalue").text();
-				if(name.indexOf("config.plugins.autotimer.") === 0)
-				{
-					name = name.substring(25);
-					if(val === "True")
-						$('#ats_'+name).prop('checked',true);
-					else if(val === "False")
-						$('#ats_'+name).prop('checked',false);
-					else
-						$('#ats_'+name).val(val);
-				}
-			});
-		})
+		// .then(xml => {
+		// 	$(xml).find("e2setting").each(function () {
+		// 		var name = $(this).find("e2settingname").text();
+		// 		var val = $(this).find("e2settingvalue").text();
+		// 		if(name.indexOf("config.plugins.autotimer.") === 0)
+		// 		{
+		// 			name = name.substring(25);
+		// 			if(val === "True")
+		// 				$('#ats_'+name).prop('checked',true);
+		// 			else if(val === "False")
+		// 				$('#ats_'+name).prop('checked',false);
+		// 			else
+		// 				$('#ats_'+name).val(val);
+		// 		}
+		// 	});
+		// })
 }
 
 function AutoTimerObj (xml) {
