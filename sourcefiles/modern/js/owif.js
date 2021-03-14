@@ -6,7 +6,50 @@ const debugMsg = (msg) => {
   console.info('%cOWIF', debugTagStyle, msg);
 }
 class Utils { 
-  constructor() {}
+  constructor() {
+    self = this;
+  }
+
+  // TODO: honour owif log setting
+	debugLog = (...args) => console.debug(...args);
+
+	regexDateFormat = new RegExp(/\d{4}-\d{2}-\d{2}/);
+
+  // convert html date input format (yyyy-mm-dd) to serial
+  // JSDoc
+  // /**
+  //  * Convert a string containing two comma-separated numbers into a point.
+  //  * @param {string} str - The string containing two comma-separated numbers.
+  //  * @return {Point} A Point object.
+  //  */
+	toUnixDate = (date) => (Date.parse(`${date}Z`)) / 1000; // `Z` is UTC designator
+
+  // 1:134:1 is bouquetroot
+  isBouquet = (sref) => (!sref.startsWith('1:134:1') && sref.includes('FROM BOUQUET'));
+
+  fetchData = async (url, options = { method: 'get', ...{} }) => {
+    try {
+      const response = await fetch(url, options);
+
+      if (response.ok) {
+        const contentType = response.headers.get('content-type');
+        self.debugLog(contentType);
+        if (!!contentType && contentType.includes('application/json')) {
+          const responseJson = await response.json();
+          return responseJson;
+        } else {
+          // eg. application/xhtml+xml
+          const responseText = await response.text();
+          return responseText;
+        }
+
+      } else {
+        throw new Error(response.statusText || response.status);
+      }
+    } catch (ex) {
+      throw new Error(ex);
+    };
+  }
 
   getStrftime(epoch = new Date()) {
     const theDate = new Date(Math.round(epoch) * 1000);

@@ -1,6 +1,31 @@
 /*x-eslint-env x-browser*/
 /*x-global x-swal*/
 
+/**
+ * --------------------------------------------------------------------------
+ * AutoTimers plugin for OpenWebif
+ * @version 3.0
+ * @license GPL-3
+ * https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
+ * 
+ * @see https://github.com/oe-alliance/enigma2-plugins/tree/master/autotimer
+ * --------------------------------------------------------------------------
+ * 
+ * @author Web Dev Ben <https://github.com/wedebe>; 2020, 2021
+ * @contributors 
+ * 
+ * 3.0 - complete overhaul
+ * 
+ * @todo fix tag population
+ * @todo fix offset population
+ * @todo write filtering
+ * @todo write get/set settings
+ * @todo fix zap/rec/zaprec
+ * @todo fix vps etc.
+ * @todo JSDoc https://jsdoc.app/index.html
+ * --------------------------------------------------------------------------
+ */
+
 //******************************************************************************
 //* at.js: openwebif AutoTimer plugin
 //* Version 3.0
@@ -11,49 +36,18 @@
 //*
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
+//*
+//* TODO:
+//* - fix tag population
+//* - fix offset population
+//* - move fn to utils
+//* - write filtering
+//* - write get/set settings
+//* - fix zap/rec/zaprec
+//* - fix vps etc.
 //*******************************************************************************
 
 (function () {
-  // TODO: move to owif.js utils
-	const regexDateFormat = new RegExp(/\d{4}-\d{2}-\d{2}/);
-
-  // TODO: move to owif.js utils
-	const debugLog = (...args) => {
-    console.debug(...args);
-	};
-
-  // TODO: move to owif.js utils
-  // convert html date input format (yyyy-mm-dd) to serial
-	const toUnixDate = (date) => (Date.parse(`${date}Z`)) / 1000; // `Z` is UTC designator
-
-  // TODO: move to owif.js utils
-  const apiRequest = async (url, options = { method: 'get', ...{} }) => {
-    try {
-      const response = await fetch(url, options);
-
-      if (response.ok) {
-        const contentType = response.headers.get('content-type');
-        debugLog(contentType);
-        if (!!contentType && contentType.includes('application/json')) {
-          const responseJson = await response.json();
-          return responseJson;
-        } else {
-          // eg. application/xhtml+xml
-          const responseText = await response.text();
-          return responseText;
-        }
-
-      } else {
-        throw new Error(response.statusText || response.status);
-      }
-    } catch (ex) {
-      throw new Error(ex);
-    };
-  };
-
-  // TODO: move to owif.js utils
-  // 1:134:1 is bouquetroot
-  const isBouquet = (sref) => (!sref.startsWith('1:134:1') && sref.includes('FROM BOUQUET'));
 
   class AutoTimer {
     constructor (autoTimerObj) {
@@ -100,7 +94,7 @@
           self['e2service'] = [self['e2service']];
         }
         self['e2service'].forEach((service, index) => {
-          const bouquetsOrChannels = (isBouquet(service['e2servicereference'])) ? 'bouquets' : 'services';
+          const bouquetsOrChannels = (owif.utils.isBouquet(service['e2servicereference'])) ? 'bouquets' : 'services';
           self[bouquetsOrChannels].push({
             'sRef': service['e2servicereference'],
             'name': service['e2servicename'],
@@ -194,7 +188,7 @@
 
     return {
       getAll: async () => {
-        const responseContent = await apiRequest('/autotimer');
+        const responseContent = await owif.utils.fetchData('/autotimer');
         const data = xml2json(responseContent)['autotimer'];
 
 // console.log('response: ', data);
@@ -259,17 +253,17 @@ aem = {
       },
 
       getSettings: async () => {
-        return await apiRequest('/autotimer/get');
+        return await owif.utils.fetchData('/autotimer/get');
       },
 
       saveSettings: async (params) => {
-        return await apiRequest(`/autotimer/set?${params}`);
+        return await owif.utils.fetchData(`/autotimer/set?${params}`);
       },
 
       preview: async () => {
         document.getElementById('at-preview__progress').classList.toggle('hidden', false);
         document.getElementById('at-preview__no-results').classList.toggle('hidden', true);
-        const responseContent = await apiRequest('/autotimer/test');
+        const responseContent = await owif.utils.fetchData('/autotimer/test');
         const data = xml2json(responseContent)['e2autotimertest'];
         const autotimers = data['e2testtimer'] || [];
         const previewTbodyEl = document.getElementById('at-preview__list');
@@ -312,7 +306,7 @@ to
         for (let [key, value] of Object.entries(data)) {
           const field = elements.namedItem(key);
           if (field) {
-            debugLog(`[${field.type}]`, key, value);
+            owif.utils.debugLog(`[${field.type}]`, key, value);
             switch (field.type) {
               case 'checkbox':
                 field.checked = value;
@@ -335,7 +329,7 @@ to
             }
           } else {
             //TODO add hidden
-            debugLog('%c[N/A]', 'color: red', key, value);
+            owif.utils.debugLog('%c[N/A]', 'color: red', key, value);
           }
         }
         let tagOpts = [];
@@ -376,7 +370,7 @@ to
         }, async (userConfirmed) => {
           if (userConfirmed) {
             // TODO: parse response
-            const xml = await apiRequest(`/autotimer/remove?id=${atId}`)
+            const xml = await owif.utils.fetchData(`/autotimer/remove?id=${atId}`)
             var state=$(xml).find("e2state").first();
             var txt=$(xml).find("e2statetext").first();
 
@@ -406,12 +400,12 @@ to
         const formDataObj = Object.fromEntries(formData);
 
         Object.entries(formDataObj).forEach(([name, value]) => {
-          debugLog(name, value);
+          owif.utils.debugLog(name, value);
           if (value === '') {
             // remove empty value (eg. empty `id` value causes server error, but missing `id` param does not)
             formData.delete(name); // TODO: check iOS compatibility
-          } else if (regexDateFormat.test(value)) {
-            formData.set(name, toUnixDate(value));
+          } else if (owif.utils.regexDateFormat.test(value)) {
+            formData.set(name, owif.utils.toUnixDate(value));
           } else if (name !== 'tag') {
             // join multiple param= values into an array
             formData.set(name, formData.getAll(name));
@@ -425,7 +419,7 @@ to
           formData.set('bouquets', '');
         }
 
-        apiRequest(`/autotimer/edit?${extraParams}`, { method: 'post', body: formData })
+        owif.utils.fetchData(`/autotimer/edit?${extraParams}`, { method: 'post', body: formData })
           .then(responseText => {
             // TODO: jsonify
             const responseXml = new DOMParser().parseFromString(responseText, 'application/xml');
