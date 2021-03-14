@@ -22,7 +22,6 @@ function setAutoTimerSettings() {
 	reqs += "&add_autotimer_to_tags=" + v;
 	v = $('#ats_add_name_to_tags').is(':checked') ? "true":"";
 	reqs += "&add_name_to_tags=" + v
-	
 	reqs += "&refresh=" + $('#ats_refresh').val();
 	reqs += "&editor=" + $('#ats_editor').val();
 	
@@ -35,15 +34,41 @@ function setAutoTimerSettings() {
 }
 /* END legacy AutoTimer.js */
 
+function getAutoTimerSettings()
+{
+	window.autoTimers.getSettings()
+		.then(xml => {
+			$(xml).find("e2setting").each(function () {
+				var name = $(this).find("e2settingname").text();
+				var val = $(this).find("e2settingvalue").text();
+				if(name.indexOf("config.plugins.autotimer.") === 0)
+				{
+					name = name.substring(25);
+					if(val === "True")
+						$('#ats_'+name).prop('checked',true);
+					else if(val === "False")
+						$('#ats_'+name).prop('checked',false);
+					else
+						$('#ats_'+name).val(val);
+				}
+			});
+		})
+}
 
 function AutoTimerObj (xml) {
-	this.isNew = false;
-	this.MustSave = false;
+
+	// Tags
+	_b = [];
+	xml.find("e2tags").each(function () {
+		var tag = $(this).text();
+		_b.push(encodeURIComponent(tag));
+	});
+
+	this.Tags = _b.slice();
 
 	// justplay 0 = record
 	// justplay 1 = zap
 	// justplay 2 = reord+zap
-	
 	this.justplay = "0";
 	if(xml.attr("justplay"))
 		this.justplay=xml.attr("justplay");
@@ -70,17 +95,6 @@ function AutoTimerObj (xml) {
 		}
 		this.timerOffset=true;
 	}
-
-
-	// Tags
-	_b = [];
-	xml.find("e2tags").each(function () {
-		var tag = $(this).text();
-		_b.push(encodeURIComponent(tag));
-	});
-
-	this.Tags = _b.slice();
-	
 
 	this.vps = false;
 	this.vpso = false;
@@ -110,25 +124,12 @@ function AutoTimerObj (xml) {
 	}
 }
 
-AutoTimerObj.prototype.UpdateUI = function(){
-
-	$('select', '#atform').not('.choices__input').selectpicker('refresh');
-
-	// if(this.location) {
-	// 	$('#location').val(this.location);
-	// 	if(this.location !== $('#location').val()) {
-	// 		current_location = "<option value='" + this.location + "'>" + this.location + "</option>";
-	// 		$('#location').append(current_location);
-	// 		$('#location').val(this.location);
-	// 	}
-	// 	$('#_location').prop('checked', true);
-	// }
-	// else
-	// 	$('#_location').prop('checked', false);
+// AutoTimerObj.prototype.UpdateUI = function(){
+	// $('select', '#atform').not('.choices__input').selectpicker('refresh');
 
 	// $('#vps').prop('checked',this.vps);
 	// $('#vpssm').prop('checked',!this.vpso);
-};
+// };
 
 function saveAT()
 {
@@ -136,54 +137,22 @@ function saveAT()
 		var CurrentAT = {};
 
 		CurrentAT.justplay = $('#justplay').val();
-		if(CurrentAT.justplay=="2")
-		{
+		if(CurrentAT.justplay=="2") {
 			reqs += "&justplay=0&always_zap=1";
-		}
-		else
+		} else {
 			reqs += "&justplay=" + CurrentAT.justplay;
+		}
 
 		CurrentAT.vps = $('#vps').is(':checked');
-		if(!CurrentAT.vps)
+		if (!CurrentAT.vps) {
 			CurrentAT.vpo=false;
+		}
 		reqs += (CurrentAT.vps) ? "1" : "0";
 
 		reqs += "&vps_overwrite=";
 
 		CurrentAT.vpso = !$('#vpssm').is(':checked');
 		reqs += (CurrentAT.vpso) ? "1" : "0";
-
-		console.log('reqs', reqs);
-}
-
-function getAutoTimerSettings()
-{
-	window.autoTimers.getSettings()
-		.then(xml => {
-			$(xml).find("e2setting").each(function () {
-				var name = $(this).find("e2settingname").text();
-				var val = $(this).find("e2settingvalue").text();
-				if(name.indexOf("config.plugins.autotimer.") === 0)
-				{
-					name = name.substring(25);
-					if(val === "True")
-						$('#ats_'+name).prop('checked',true);
-					else if(val === "False")
-						$('#ats_'+name).prop('checked',false);
-					else
-						$('#ats_'+name).val(val);
-				}
-			});
-		})
-}
-
-// var autoTimerOptions;
-function InitPage() {
-	// autoTimerOptions = owif.gui.populateAutoTimerOptions(true);
-
-	if(!timeredit_initialized) {
-		$('#editTimerForm').load('ajax/edittimer');
-	}
 }
 
 function showError(txt,st)
