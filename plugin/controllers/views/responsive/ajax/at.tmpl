@@ -106,7 +106,7 @@
 					<ul class="header-dropdown" style="top: 0; right: 5px;">
 						<li><a href="#at/edit/{{id}}" title="$tstrings['at_edit']"><i class="material-icons material-icons-mg-right">edit</i></a> 
 						## <li><button type="button" name="disable" title="$tstrings['at_disable']" class="m-0" style="border: none; background: none;"><i class="material-icons material-icons-mg-right">alarm_off</i></button></li>
-						<li><button type="button" name="delete" title="$tstrings['at_del']"><i class="material-icons material-icons-mg-right">delete</i></button></li>
+						<li><button type="button" name="delete" title="$tstrings['at_del']"><i class="material-icons material-icons-mg-right">delete_outline</i></button></li>
 					</ul>
 				</div>
 			</div>
@@ -132,7 +132,7 @@
 
 <template id="autotimer-filter-template">
 	<fieldset class="at__filter__line m-b-20">
-		<button type="button" name="removeFilter" title="Remove filter"><i class="material-icons">clear</i></button><!-- TODO: i10n -->
+		<button type="button" name="removeFilter" title="Remove filter"><i class="material-icons">delete_outline</i></button><!-- TODO: i10n -->
 		<div class="filter__container">
 			<select name="filter['incexc']">
 				<option value="i" selected>$tstrings['at_filter_include']</option>
@@ -181,7 +181,7 @@
 
 				<div id="at__page--list">
 					<div class="row align-center clearfix">
-						<button type="button" name="create" class="btn btn--skinned waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></button>
+						<a href="#at/new" class="btn btn--skinned waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></a>
 						<button type="button" name="reload" class="btn btn--skinned waves-effect"><i class="material-icons">refresh</i><span>$tstrings['reload']</span></button>
 						<button type="button" name="process" disabled class="btn btn--skinned waves-effect"><i class="material-icons">code</i><span>$tstrings['at_process']</span></span></button>
 						<button type="button" name="preview" data-toggle="modal" data-target="#ATTimerModal" class="btn btn--skinned waves-effect"><i class="material-icons">view_list</i><span>$tstrings['at_preview']</span></button>
@@ -528,55 +528,46 @@
 													<div id="LocationE" class="dropdown atform__details__dropdown dependent-section">
 														<!-- Custom location -->
 														<select name="location" class="form-control show-tick">
-														#for $location in $locations
+#for $location in $locations
 															<option value="$location">$location</option>
-														#end for
+#end for
 														</select>
 													</div>
 												</div>
 											</div>
 
 											<div class="atform__fields-container">
-												<div class="atform__details__title">
-													<input type="checkbox" id="_tags" class="form-control chk--skinned">
-													<label for="_tags">$tstrings['at_tags']</label>
-												</div>
-												<div class="atform__details__element">
-													<div id="TagsE" class="dropdown atform__details__dropdown form-line dependent-section">
-														<select name="tag" class="form-control no-default-select" multiple="multiple" data-select-choices="tags">
-															<!-- option value="" disabled>Add tags</option --><!-- TODO: i10n -->
-														</select>
-													</div>
+												## <input type="hidden" name="Tags">
+												<label class="m-b-0" style="font-size: 16px;">Add tags to recording:</label><!-- TODO: i10n -->
+												<div class="dropdown atform__details__dropdown form-line">
+													<select name="tag" class="form-control no-default-select" multiple="multiple"
+																	data-choices-select="tags" data-choices-config='{"shouldSort": true}'><!-- this quoting style is required -->
+														<!-- option value="" disabled>Add tags</option -->
+													</select>
 												</div>
 											</div>
 		
 											<div class="atform__fields-container">
-												<div class="atform__details__title">
-													<input type="checkbox" id="_channels" class="form-control chk--skinned">
-													<!-- Restrict to specific services -->
-													<label for="_channels">$tstrings['at_channels']</label>
-												</div>
-												<div class="atform__details__element">
-													<div id="ChannelsE" class="dropdown atform__details__dropdown form-line dependent-section">
-														<select name="services" class="form-control no-default-select" multiple="multiple" data-select-choices="channels">
-															<!-- option value="" disabled>Restrict to channels</option --><!-- TODO: i10n -->
-														</select>
-													</div>
+												<!-- Restrict to specific services -->
+												## <input type="hidden" name="Channels">
+												<label class="m-b-0" style="font-size: 16px;">Restrict to channels:</label><!-- TODO: i10n -->
+												<div class="dropdown atform__details__dropdown form-line">
+													<select name="services" class="form-control no-default-select" multiple="multiple"
+																	data-choices-select="services">
+														<!-- option value="" disabled>Restrict to channels</option -->
+													</select>
 												</div>
 											</div>
 
 											<div class="atform__fields-container">
-												<div class="atform__details__title">
-													<input type="checkbox" id="_bouquets" class="form-control chk--skinned">
-													<!-- Restrict to specific bouquets -->
-													<label for="_bouquets">$tstrings['bouquets']</label>
-												</div>
-												<div class="atform__details__element">
-													<div id="BouquetsE" class="dropdown atform__details__dropdown form-line dependent-section">
-														<select name="bouquets" class="form-control no-default-select" multiple="multiple" data-select-choices="bouquets">
-															<!-- option value="" disabled>Restrict to bouquets</option --><!-- TODO: i10n -->
-														</select>
-													</div>
+												<!-- Restrict to specific bouquets -->
+												## <input type="hidden" name="Bouquets">
+												<label class="m-b-0" style="font-size: 16px;">Restrict to bouquets:</label><!-- TODO: i10n -->
+												<div class="dropdown atform__details__dropdown form-line">
+													<select name="bouquets" class="form-control no-default-select" multiple="multiple"
+																	data-choices-select="bouquets" data-choices-config='{"shouldSort": true}'>
+														<!-- option value="" disabled>Restrict to bouquets</option -->
+													</select>
 												</div>
 											</div>
 
@@ -602,6 +593,7 @@
 												</div>
 											</div>
 #end if
+
 #if $hasSeriesPlugin == 1
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
@@ -612,6 +604,7 @@
 												</div>
 											</div>
 #end if
+
 											<div class="atform__fields-container m-t-0">
 												<div id="foo" class="m-t-40 m-b-20"></div>
 												## <table id="filterlist" class="table table-striped table-hover m-t-40"></table>
@@ -805,6 +798,7 @@
 	};
 </script>
 
+<script src="/modern/plugins/xml2json/xml2json.min.js"></script>
 <script src="/modern/plugins/strftime/strftime.js"></script>
 <script src="/modern/plugins/choices/choices.min.js"></script>
 <script src="/modern/js/autotimers-app.js"></script>

@@ -132,10 +132,6 @@ AutoTimerObj.prototype.UpdateUI = function(){
 
 function saveAT()
 {
-	// TODO: set mustsave
-	if(true || CurrentAT) // && CurrentAT.MustSave)
-	{
-
 		var reqs = '';
 		var CurrentAT = {};
 
@@ -158,7 +154,6 @@ function saveAT()
 		reqs += (CurrentAT.vpso) ? "1" : "0";
 
 		console.log('reqs', reqs);
-	}
 }
 
 function getAutoTimerSettings()
@@ -182,7 +177,10 @@ function getAutoTimerSettings()
 		})
 }
 
+// var autoTimerOptions;
 function InitPage() {
+	// autoTimerOptions = owif.gui.populateAutoTimerOptions(true);
+
 	if(!timeredit_initialized) {
 		$('#editTimerForm').load('ajax/edittimer');
 	}

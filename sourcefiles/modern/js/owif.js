@@ -167,7 +167,6 @@ class GUI {
   }
 
   get skinPref() {
-    console.log(document.body.dataset.skinpref);
     return document.body.dataset.skinpref || '';
   }
 
@@ -175,68 +174,25 @@ class GUI {
     const self = this;
     const cssClassPrefix = 'skin--';
     const oldValue = self.skinPref;
-console.log(oldValue, newValue);
+
+    // TODO: success/failure message
     fetch(`/api/setskincolor?skincolor=${newValue}`);
 
     document.body.classList.replace(`${cssClassPrefix}${oldValue}`, `${cssClassPrefix}${newValue}`);
     document.body.dataset.skinpref = newValue;
   }
 
-  populateAutoTimerOptions(noiptv) {
+  preparedChoices() {
     const populatedChoices = {};
-    const selectChoicesAttr = 'data-select-choices';
+    const selectChoicesAttr = 'data-choices-select';
     const selectChoicesElements = document.querySelectorAll(`[${selectChoicesAttr}]`);
-    const api = new API();
 
     selectChoicesElements.forEach((el) => {
-      if (el.getAttribute(`${selectChoicesAttr}`) === 'tags') {
-        // this.choicesConfig.addItems = true;
-        // this.choicesConfig.editItems = true;
-        this.choicesConfig.shouldSort = true;
-      } else {
-        this.choicesConfig.shouldSort = false;
-      }
-      // this.choicesConfig.addItems = true;
-      // this.choicesConfig.editItems = true;
-      populatedChoices[el.getAttribute(`${selectChoicesAttr}`)] = new Choices(el, this.choicesConfig);
+      let elConfig = el.dataset['choicesConfig'] || '{}';
+      elConfig = (elConfig) ? JSON.parse(elConfig) : {};
+      elConfig = Object.assign({}, this.choicesConfig, elConfig);
+      populatedChoices[el.getAttribute(`${selectChoicesAttr}`)] = new Choices(el, elConfig);
     });
-
-    api.getTags().then((result) => {
-      result.sort();
-      const opts = result.map((tag) => {
-        return {
-          value: tag,
-          label: tag,
-        }
-      });
-      populatedChoices['tags'].setChoices(
-        opts,
-        'value',
-        'label',
-        false,
-      );
-    }).catch(e => console.warn(e));
-    
-    api.getAllServices(noiptv).then((result) => {
-      const opts = result['bouquets'].map((bouquet) => {
-        return {
-          label: bouquet.name,
-          choices: bouquet.channels,
-        }
-      });
-      populatedChoices['bouquets'].setChoices(
-        result['bouquets'],
-        'sRef',
-        'name',
-        false,
-      );
-      populatedChoices['channels'].setChoices(
-        opts,
-        'sRef',
-        'extendedName', //'name',
-        false,
-      );
-    }).catch(e => console.warn(e));
 
     return populatedChoices;
   }
