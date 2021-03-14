@@ -35,7 +35,7 @@ from Components.MovieList import MovieList
 from Tools.Directories import fileExists
 from Screens.MovieSelection import defaultMoviePath
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
-from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg2, PY3, FuzzyTime2
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg2, PY3
 
 try:
 	from Components.MovieList import moviePlayState as _moviePlayState
@@ -47,6 +47,28 @@ try:
 	from Components.DataBaseAPI import moviedb
 except ImportError:
 	pass
+
+
+def FuzzyTime2(t):
+	d = localtime(t)
+	n = localtime()
+	dayOfWeek = (_("Mon"), _("Tue"), _("Wed"), _("Thu"), _("Fri"), _("Sat"), _("Sun"))
+
+	if d[:3] == n[:3]:
+		day = _("Today")
+	elif d[0] == n[0] and d[7] == n[7] - 1:
+		day = _("Yesterday")
+	else:
+		day = dayOfWeek[d[6]]
+	
+	if d[0] == n[0]:
+		# same year
+		date = _("%s %02d.%02d.") % (day, d[2], d[1])
+	else:
+		date = _("%s %02d.%02d.%d") % (day, d[2], d[1], d[0])
+
+	timeres = _("%02d:%02d") % (d[3], d[4])
+	return date + ", " + timeres
 
 
 MOVIETAGFILE = "/etc/enigma2/movietags"
@@ -335,7 +357,7 @@ def getMovieSearchList(rargs=None, locations=None):
 		}
 
 		if rtime > 0:
-			movie['begintime'] = FuzzyTime(rtime)
+			movie['begintime'] = FuzzyTime2(rtime)
 
 		try:
 			length_minutes = info.getLength(serviceref)
@@ -756,7 +778,7 @@ def getMovieDetails(sRef=None):
 		}
 
 		if rtime > 0:
-			movie['begintime'] = FuzzyTime(rtime)
+			movie['begintime'] = FuzzyTime2(rtime)
 
 		try:
 			length_minutes = info.getLength(serviceref)
