@@ -24,17 +24,28 @@
  * @todo fix &amp;&amp; issue on save
  * @todo handle defaults
  * @todo sort by name/date added/enabled etc
+ * @todo select open colour
+ * .btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default { color: #555; }
  * @todo JSDoc https://jsdoc.app/index.html
  * --------------------------------------------------------------------------
  */
 
 
 (function () {
+  function decodeHtml(html = '') {
+    const txt = document.createElement('textarea');
+    txt.innerHTML = html;
+    return txt.value;
+  }
 
   class AutoTimer {
     constructor (autoTimerObj) {
       const self = this;
       Object.assign(self, autoTimerObj);
+
+      self['name'] = decodeHtml(self['name']);
+      self['match'] = decodeHtml(self['match']);
+      // TODO: apply to filters too
 
       self['tag'] = [];
       self['bouquets'] = [];
@@ -101,7 +112,7 @@
         delete self['e2tag'];
       }
 
-      // fallback
+      // fallback to (incorrectly) space-separated values
       if (self['e2tags']) {
         self['tag'] = self['e2tags'].split(' ');
         delete self['e2tags'];
@@ -193,7 +204,7 @@
 
     return {
       getAll: async () => {
-        const responseContent = await owif.utils.fetchData('/autotimer');
+        let responseContent = await owif.utils.fetchData('/autotimer');
         const data = xml2json(responseContent)['autotimer'];
 
 // console.log('response: ', data);
@@ -383,7 +394,7 @@ to
       deleteEntry: async (atId = -1) => {
         (atId !== -1) && swal({
           title: tstr_del_autotimer,
-          text: 'CurrentAT.name',
+          // text: 'CurrentAT.name',
           type: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#dd6b55',
@@ -394,33 +405,55 @@ to
           animation: 'none',
         }, async (userConfirmed) => {
           if (userConfirmed) {
-            // TODO: parse response
-            const xml = await owif.utils.fetchData(`/autotimer/remove?id=${atId}`)
-            var state=$(xml).find("e2state").first();
-            var txt=$(xml).find("e2statetext").first();
+            const responseContent = await owif.utils.fetchData(`/autotimer/remove?id=${atId}`);
+            const responseAsJson = xml2json(responseContent)['e2simplexmlresult'];
+            const status = responseAsJson['e2state'];
+            let message = responseAsJson['e2statetext'];
+            message = `${message.charAt(0).toUpperCase()}${message.slice(1)}`;
 
-            swal(state.text(), txt.text(), 'error');
+            if (status === true || status.toString().toLowerCase() === 'true') {
+              swal({
+                title: tstrings_deleted, 
+                text: message,
+                type: 'success',
+                animation: 'none',
+              });
+            } else {
+              // throw new Error(message);
+              swal({
+                title: 'Oops...', // TODO: i10n
+                text: message,
+                type: 'error',
+                animation: 'none',
+              });
+            }
 
             self.populateList();
           } else {
-            swal(tstrings_cancelled, 'CurrentAT.name', 'error');
+            swal({
+              title: tstrings_cancelled, 
+              // text: 'CurrentAT.name',
+              type: 'error',
+              animation: 'none',
+            });
           }
         });
       },
 
+      // not implemented
       disableEntry: async (atId = -1) => {
-        console.log(`Disable AT with ID ${atId}`);
+        owif.utils.debugLog(`disableEntry: id ${entry}`);
       },
 
       createEntry: () => self.populateForm(),
 
       editEntry: async (atId = -1) => {
         const entry = window.atList.find(autotimer => autotimer['id'] == atId);
-        console.log(entry);
+        owif.utils.debugLog(`editEntry: ${entry}`);
         self.populateForm(entry);
       },
 
-      saveEntry: (extraParams = '') => {
+      saveEntry: async (extraParams = '') => {
         const formData = new FormData(atFormEl);
         const formDataObj = Object.fromEntries(formData);
 
@@ -432,11 +465,11 @@ to
           } else if (owif.utils.regexDateFormat.test(value)) {
             formData.set(name, owif.utils.toUnixDate(value));
           } else if (name !== 'tag') {
-            // join multiple param= values into an array
+            // join multiple param=a&param=b values into one param=[a,b]
             formData.set(name, formData.getAll(name));
           }
         });
-        // AutoTimer doesn't remove some values unless they're set to empty
+        // AutoTimer doesn't remove some values unless they're sent as empty
         if (!formData.has('services')) {
           formData.set('services', '');
         }
@@ -444,29 +477,42 @@ to
           formData.set('bouquets', '');
         }
 
-        owif.utils.fetchData(`/autotimer/edit?${extraParams}`, { method: 'post', body: formData })
-          .then(responseText => {
-            // TODO: jsonify
-            const responseXml = new DOMParser().parseFromString(responseText, 'application/xml');
-            const status = responseXml.getElementsByTagName('e2state')[0].textContent || '';
-            const message = responseXml.getElementsByTagName('e2statetext')[0].textContent || '';
+        const responseContent = await owif.utils.fetchData(`/autotimer/edit?${extraParams}`, { method: 'post', body: formData });
+        const responseAsJson = xml2json(responseContent)['e2simplexmlresult'];
+        const status = responseAsJson['e2state'];
+        let message = responseAsJson['e2statetext'];
+        message = `${message.charAt(0).toUpperCase()}${message.slice(1)}`;
 
-            if (status === true || status.toString().toLowerCase() === 'true') {
-              self.populateList();
-            } else {
-              throw new Error(message);
-            }
-          })
-          .catch((ex) => {
-            let message = ex.message;
-            message = `${message.charAt(0).toUpperCase()}${message.slice(1)}`;
-            swal({
-              title: message,
-              text: '',
-              type: 'error',
-              animation: 'none',
-            });
+        if (status === true || status.toString().toLowerCase() === 'true') {
+          self.populateList();
+        } else {
+          // throw new Error(message);
+          swal({
+            title: 'Oops...', // TODO: i10n
+            text: message,
+            type: 'error',
+            animation: 'none',
           });
+        }
+      },
+
+      cancelEntry: () => {
+        swal({
+          title: 'Are you sure you want to discard your changes?',
+          // text: '',
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#dd6b55',
+          confirmButtonText: tstrings_yes_delete,
+          cancelButtonText: tstrings_no_cancel,
+          closeOnConfirm: true,
+          closeOnCancel: true,
+          animation: 'none',
+        }, async (userConfirmed) => {
+          if (userConfirmed) {
+            self.populateList();
+          }
+        });
       },
 
       addFilter: () => {
@@ -512,7 +558,7 @@ to
         (document.querySelector('button[name="timers"]') || nullEl).onclick = () => window.listTimers();
         (document.querySelector('button[name="settings"]') || nullEl).onclick = () => window.getAutoTimerSettings();
         (document.querySelector('button[name="addFilter"]') || nullEl).onclick = self.addFilter;
-        (document.querySelector('button[name="cancel"]') || nullEl).onclick = self.populateList; // TODO: prompt first
+        (document.querySelector('button[name="cancel"]') || nullEl).onclick = self.cancelEntry;
 
         (document.getElementById('_timespan') || nullEl).onchange = (input) => {
           document.getElementById('timeSpanE').classList.toggle('dependent-section', !input.target.checked);
