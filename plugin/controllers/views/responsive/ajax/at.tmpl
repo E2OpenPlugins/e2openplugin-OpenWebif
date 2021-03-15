@@ -528,11 +528,18 @@
 													<div id="LocationE" class="dropdown atform__details__dropdown dependent-section">
 														<!-- Custom location -->
 														<select name="location" class="form-control show-tick">
+															<optgroup label="$tstrings['bookmarks']">
 #for $location in $locations
-															<option value="$location">$location</option>
+																<option value="$location">$location</option>
 #end for
+															</optgroup>
+															<optgroup name="more" label="$tstrings['more']">
+															</optgroup>
 														</select>
 													</div>
+													## <div>
+													## 	<p>* Add a new location in the <strong>Bookmarks</strong> section of <a href="/#settings" target="settings">Settings</a></p><!-- TODO: i10n -->
+													## </div>
 												</div>
 											</div>
 
@@ -541,7 +548,7 @@
 												<label class="m-b-0" style="font-size: 16px;">Add tags to recording:</label><!-- TODO: i10n -->
 												<div class="dropdown atform__details__dropdown form-line">
 													<select name="tag" class="form-control no-default-select" multiple="multiple"
-																	data-choices-select="tags" data-choices-config='{"shouldSort": true}'><!-- this quoting style is required -->
+																	data-choices-select="tag" data-choices-config='{"shouldSort": true}'><!-- this quoting style is required -->
 														<!-- option value="" disabled>Add tags</option -->
 													</select>
 												</div>

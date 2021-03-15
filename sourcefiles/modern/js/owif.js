@@ -171,7 +171,7 @@ class GUI {
     shouldSort: false,
     searchResultLimit: 100,
     placeholder: true,
-    renderSelectedChoices: 'always',
+    // renderSelectedChoices: 'always',
     itemSelectText: '',
     /*
       loadingText: 'Loading...',

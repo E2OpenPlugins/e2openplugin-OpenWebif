@@ -57,15 +57,6 @@ function getAutoTimerSettings()
 
 function AutoTimerObj (xml) {
 
-	// Tags
-	_b = [];
-	xml.find("e2tags").each(function () {
-		var tag = $(this).text();
-		_b.push(encodeURIComponent(tag));
-	});
-
-	this.Tags = _b.slice();
-
 	// justplay 0 = record
 	// justplay 1 = zap
 	// justplay 2 = reord+zap
@@ -170,5 +161,3 @@ function showError(txt,st)
 	}
 	
 }
-
-InitPage();

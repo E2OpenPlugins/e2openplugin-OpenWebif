@@ -16,36 +16,18 @@
  * 
  * 3.0 - complete overhaul
  * 
- * @todo fix tag population
  * @todo fix offset population
  * @todo write filtering
  * @todo write get/set settings
- * @todo fix zap/rec/zaprec
- * @todo fix vps etc.
+ * @todo fix zap/rec/zaprec params
+ * @todo fix vps etc. params
+ * @todo fix &amp;&amp; issue on save
+ * @todo handle defaults
+ * @todo sort by name/date added/enabled etc
  * @todo JSDoc https://jsdoc.app/index.html
  * --------------------------------------------------------------------------
  */
 
-//******************************************************************************
-//* at.js: openwebif AutoTimer plugin
-//* Version 3.0
-//******************************************************************************
-//* Authors: Web Dev Ben <https://github.com/wedebe>
-//*
-//* V 3.0 - complete overhaul
-//*
-//* License GPL V2
-//* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
-//*
-//* TODO:
-//* - fix tag population
-//* - fix offset population
-//* - move fn to utils
-//* - write filtering
-//* - write get/set settings
-//* - fix zap/rec/zaprec
-//* - fix vps etc.
-//*******************************************************************************
 
 (function () {
 
@@ -54,9 +36,12 @@
       const self = this;
       Object.assign(self, autoTimerObj);
 
+      self['tag'] = [];
       self['bouquets'] = [];
       self['services'] = [];
       self['filters'] = {};
+
+      self['enabled'] = (self['enabled'] === 'yes') ? 1 : 0;
 
       if (self['from']) {
         self['timespanFrom'] = self['from'];
@@ -93,6 +78,7 @@
           // we expect an array
           self['e2service'] = [self['e2service']];
         }
+        let hasMismatchedService = false;
         self['e2service'].forEach((service, index) => {
           const bouquetsOrChannels = (owif.utils.isBouquet(service['e2servicereference'])) ? 'bouquets' : 'services';
           self[bouquetsOrChannels].push({
@@ -100,8 +86,25 @@
             'name': service['e2servicename'],
             'selected': true,
           });
+          hasMismatchedService = !service['e2servicename'];
         });
+        self['hasMismatchedService'] = hasMismatchedService;
         delete self['e2service'];
+      }
+
+      if (self['e2tag']) {
+        if (!Array.isArray(self['e2tag'])) {
+          // we expect an array
+          self['e2tag'] = [self['e2tag']];
+        }
+        self['tag'] = self['e2tag'];
+        delete self['e2tag'];
+      }
+
+      // fallback
+      if (self['e2tags']) {
+        self['tag'] = self['e2tags'].split(' ');
+        delete self['e2tags'];
       }
 
       if (self['include']) {
@@ -113,6 +116,8 @@
         self['filters']['exclude'] = self['exclude'];
         delete self['exclude'];
       }
+
+      // maybe try utilise response.formData()
     };
 
     get bouquetSRefs() {
@@ -133,7 +138,7 @@
   };
 
   const AutoTimers = function () {
-    // keep reference to object.
+    // keep reference to object
     let self;
 
     const atFormEl = document.getElementById('atform');
@@ -207,8 +212,9 @@ aem = {
 
         window.atList.map((itm) => {
           itm = new AutoTimer(itm);
+          console.log(itm);
         });
-// console.log('wat', window.atList[358]);
+
         return window.atList;
       },
 
@@ -219,14 +225,22 @@ aem = {
         listEl.innerHTML = "";
         document.getElementById('at__page--list').classList.toggle('hidden', false);
         const templateEl = document.getElementById('autotimer-list-item-template');
+        // reset collections
+        let collatedLocations = [];
+        let collatedTags = [];
+
         self.getAll()
           .then(jsonResponse => {
             // TODO:
             // sort by name
-            // build found tags
             // build found locations
             jsonResponse.forEach((atItem, index) => {
               atItem = new AutoTimer(atItem);
+
+              // collect values
+              atItem.location && (collatedLocations.push(atItem.location));
+              collatedTags = collatedTags.concat(atItem.tag);
+
               const searchType = valueLabelMap.autoTimers.searchType[atItem['searchType']] || '';
               const newNode = templateEl.content.firstElementChild.cloneNode(true);
 
@@ -246,9 +260,18 @@ aem = {
               newNode.querySelector('slot[name="autotimer-channels"]').innerHTML = atItem.channelNames.join(', ');
               atItem.bouquetNames.length && (newNode.querySelector('slot[name="autotimer-bouquets"]').innerHTML = `<br> ${atItem.bouquetNames.join(', ')}`);
               newNode.querySelector('slot[name="autotimer-match"]').innerHTML = `"${atItem.match}"`;
-// console.log(atItem);
+
+              // future use (filter AutoTimer entries with no matching service in lamedb)
+              // atItem['hasMismatchedService'] && listEl.appendChild(newNode);
+              // future use (filter by state)
+              // !atItem['enabled'] && listEl.appendChild(newNode);
               listEl.appendChild(newNode);
             });
+
+            // unique values only
+            // https://dev.to/clairecodes/how-to-create-an-array-of-unique-values-in-javascript-using-sets-5dg6
+            self.allLocations = [...new Set(self.availableLocations.concat(collatedLocations))].sort() || [];
+            self.allTags = [...new Set(self.availableTags.concat(collatedTags))].sort() || [];
           });
       },
 
@@ -279,6 +302,19 @@ aem = {
         }
       },
 
+      prepareChoices: () => {
+        self.allTags = self.allTags.map((tag) => {
+          return {
+            value: tag,
+            label: tag,
+          }
+        });
+
+        self.autoTimerChoices['tag'].setChoices(self.allTags, 'value', 'label', true);
+        self.autoTimerChoices['bouquets'].setChoices(self.availableServices['bouquets'], 'sRef', 'name', true);
+        self.autoTimerChoices['services'].setChoices(self.availableServices['channels'], 'sRef', 'extendedName', true);
+      },
+
       populateForm: async (data = {}) => {
         const { elements } = atFormEl;
 
@@ -290,18 +326,22 @@ aem = {
         data = new AutoTimer(data);
         data = addDependentSectionTogglers(data);
 
-        self.autoTimerChoices['bouquets'].setChoices(self.availableServices['bouquets'], 'sRef', 'name', false);
-        self.autoTimerChoices['services'].setChoices(self.availableServices['channels'], 'sRef', 'extendedName', true);
+        self.prepareChoices();
+    
+        for (let loc of self.allLocations) {
+          const newItem = document.createElement('option');
+
+          newItem.appendChild(document.createTextNode(loc));
+          newItem.value = loc;
+          document.querySelector('select[name="location"] optgroup[name="more"').appendChild(newItem);
+          jQuery('select[name=location]').selectpicker('refresh');
+        }
 
         /**
-e2tags -> tags
-
 always_zap
 from
 to
          **/
-
-// console.log('sac', self.availableServices['channels']);
 
         for (let [key, value] of Object.entries(data)) {
           const field = elements.namedItem(key);
@@ -312,11 +352,17 @@ to
                 field.checked = value;
                 break;
               case 'select-multiple':
+                try {
                 const valuesOnly = value.map(entry => entry['sRef']);
                 self.autoTimerChoices[key]
                   .setChoices(value, 'sRef', 'name', false)
+                  .setChoices(value, 'label', 'value', false)
                   .removeActiveItems()
+                  .setChoiceByValue(value)
                   .setChoiceByValue(valuesOnly);
+                } catch (ex) {
+                  owif.utils.debugLog(key, value, ex);
+                }
                 break;
               default:
                 field.value = value;
@@ -325,35 +371,14 @@ to
             try {
               field.dispatchEvent(new Event('change'));
             } catch(ex) {
-// console.log(field, ex);
+              owif.utils.debugLog(key, value, ex);
             }
           } else {
             //TODO add hidden
             owif.utils.debugLog('%c[N/A]', 'color: red', key, value);
           }
         }
-        let tagOpts = [];
-        try {
-          tagOpts = window.tagList.map(function (item) {
-            let allTags = autoTimerChoices['tags']['_currentState']['choices'];
-            let isFound = false;
-            allTags.forEach(function (tg) {
-              if (item === tg.value) {
-                isFound = true;
-              }
-            });
-            return (isFound) ? false : {
-              value: item,
-              label: item,
-            }
-          });
-          tagOpts.push(data.Tags);
-        } catch(e) {
-          console.debug('Failed to process tag options');
-        }
       },
-
-      // .then(response => response.formData())
 
       deleteEntry: async (atId = -1) => {
         (atId !== -1) && swal({
@@ -532,6 +557,8 @@ to
 
         const excludeIptv = true;
         self.availableServices = await owif.api.getAllServices(excludeIptv);
+        self.availableLocations = []; // these are already server-rendered
+        self.availableTags = await owif.api.getTags();
         self.autoTimerChoices = owif.gui.preparedChoices();
 
         self.populateList(); //check if we've got data to add a new AT with
