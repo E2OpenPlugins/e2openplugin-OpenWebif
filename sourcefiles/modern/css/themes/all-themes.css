@@ -2953,6 +2953,12 @@ body.theme--city-lights {
   color: #b2b2b2;
 }
 
+.theme--city-lights .btn-default:active,
+.theme--city-lights .btn-default.active,
+.theme--city-lights .open > .dropdown-toggle.btn-default {
+  color: #888;
+}
+
 .theme--city-lights .btn-default.active.focus,
 .btn-default.active:focus,
 .btn-default.active:hover,
