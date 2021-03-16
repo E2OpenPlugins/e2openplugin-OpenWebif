@@ -12,7 +12,7 @@
  * --------------------------------------------------------------------------
  * 
  * @author Web Dev Ben <https://github.com/wedebe>; 2020, 2021
- * @contributors 
+ * @contributors ...
  * 
  * 3.0 - complete overhaul
  * 
@@ -21,22 +21,37 @@
  * @todo write get/set settings
  * @todo fix zap/rec/zaprec params
  * @todo fix vps etc. params
- * @todo fix &amp;&amp; issue on save
+ * @todo fix alternatives checkbox click 
  * @todo handle defaults
  * @todo sort by name/date added/enabled etc
- * @todo select open colour
- * .btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default { color: #555; }
  * @todo JSDoc https://jsdoc.app/index.html
  * --------------------------------------------------------------------------
  */
 
 
 (function () {
+  // handle `'`, `&` etc
   function decodeHtml(html = '') {
     const txt = document.createElement('textarea');
     txt.innerHTML = html;
     return txt.value;
   }
+
+  /*
+  class AutoTimerList {
+    constructor () {};
+
+    add = ((autotimer) => {});
+
+    delete = ((atId) => {});
+
+    render = ((targetElement) => {});
+
+    sort = (() => {});
+
+    filter = (() => {});
+  }
+  */
 
   class AutoTimer {
     constructor (autoTimerObj) {
@@ -129,26 +144,26 @@
       }
 
       // maybe try utilise response.formData()
-    };
+    }
 
     get bouquetSRefs() {
       return this['bouquets'].map(entry => entry['sRef']);
-    };
+    }
 
     get bouquetNames() {
       return this['bouquets'].map(entry => entry['name']);
-    };
+    }
 
     get channelSRefs() {
       return this['services'].map(entry => entry['sRef']);
-    };
+    }
 
     get channelNames() {
       return this['services'].map(entry => entry['name']);
-    };
-  };
+    }
+  }
 
-  const AutoTimers = function () {
+  const AutoTimersApp = function () {
     // keep reference to object
     let self;
 
@@ -159,7 +174,7 @@
       data['_timespan'] = !!data.timespanFrom || !!data.timespanTo;
       data['_after'] = !!data.after;
       data['_before'] = !!data.before;
-      data['_timerOffset'] = !!data.timerOffsetAfter || !!data.timerOffsetBefore;
+      data['_timerOffset'] = !!data.offset;
       data['timeSpanAE'] = !!data.afterevent;
       data['_location'] = !!data.location;
 
@@ -221,10 +236,7 @@ aem = {
 // TRANSFORMRESPONSE
 //atListCache
 
-        window.atList.map((itm) => {
-          itm = new AutoTimer(itm);
-          console.log(itm);
-        });
+        window.atList.map((itm) => new AutoTimer(itm));
 
         return window.atList;
       },
@@ -357,32 +369,44 @@ to
         for (let [key, value] of Object.entries(data)) {
           const field = elements.namedItem(key);
           if (field) {
-            owif.utils.debugLog(`[${field.type}]`, key, value);
-            switch (field.type) {
-              case 'checkbox':
-                field.checked = value;
-                break;
-              case 'select-multiple':
+            owif.utils.debugLog(`[${field.type}]`, field, key, value);
+            if (field instanceof RadioNodeList) {
+              const csv = value.split(',');
+              for (const [index, node] of field.entries()) {
+                node.value = csv[index] || '';
                 try {
-                const valuesOnly = value.map(entry => entry['sRef']);
-                self.autoTimerChoices[key]
-                  .setChoices(value, 'sRef', 'name', false)
-                  .setChoices(value, 'label', 'value', false)
-                  .removeActiveItems()
-                  .setChoiceByValue(value)
-                  .setChoiceByValue(valuesOnly);
-                } catch (ex) {
+                  node.dispatchEvent(new Event('change'));
+                } catch(ex) {
                   owif.utils.debugLog(key, value, ex);
                 }
-                break;
-              default:
-                field.value = value;
-                break;
-            }
-            try {
-              field.dispatchEvent(new Event('change'));
-            } catch(ex) {
-              owif.utils.debugLog(key, value, ex);
+              }
+            } else {
+              switch (field.type) {
+                case 'checkbox':
+                  field.checked = value;
+                  break;
+                case 'select-multiple':
+                  try {
+                  const valuesOnly = value.map(entry => entry['sRef']);
+                  self.autoTimerChoices[key]
+                    .setChoices(value, 'sRef', 'name', false)
+                    .setChoices(value, 'label', 'value', false)
+                    .removeActiveItems()
+                    .setChoiceByValue(value)
+                    .setChoiceByValue(valuesOnly);
+                  } catch (ex) {
+                    owif.utils.debugLog(key, value, ex);
+                  }
+                  break;
+                default:
+                  field.value = value;
+                  break;
+              }
+              try {
+                field.dispatchEvent(new Event('change'));
+              } catch(ex) {
+                owif.utils.debugLog(key, value, ex);
+              }
             }
           } else {
             //TODO add hidden
@@ -459,23 +483,25 @@ to
 
         Object.entries(formDataObj).forEach(([name, value]) => {
           owif.utils.debugLog(name, value);
-          if (value === '') {
-            // remove empty value (eg. empty `id` value causes server error, but missing `id` param does not)
+          if (['tag'].indexOf(name) === -1) {
+            // join multiple param=a&param=b values into one param=[a,b]
+            // this should not be applied to `tags`
+            formData.set(name, formData.getAll(name));
+          }
+          if (value === '' || value === ',') {
+            // remove empty value (eg. empty `id` value causes server error, 
+            // whereas missing `id` param does not (treated as a new autotimer))
             formData.delete(name); // TODO: check iOS compatibility
           } else if (owif.utils.regexDateFormat.test(value)) {
             formData.set(name, owif.utils.toUnixDate(value));
-          } else if (name !== 'tag') {
-            // join multiple param=a&param=b values into one param=[a,b]
-            formData.set(name, formData.getAll(name));
           }
         });
-        // AutoTimer doesn't remove some values unless they're sent as empty
-        if (!formData.has('services')) {
-          formData.set('services', '');
-        }
-        if (!formData.has('bouquets')) {
-          formData.set('bouquets', '');
-        }
+        // AutoTimer doesn't remove some timer values unless they're sent as empty
+        ['offset', 'services', 'bouquets'].forEach((param) => {
+          if (!formData.has(param)) {
+            formData.set(param, '');
+          }
+        });
 
         const responseContent = await owif.utils.fetchData(`/autotimer/edit?${extraParams}`, { method: 'post', body: formData });
         const responseAsJson = xml2json(responseContent)['e2simplexmlresult'];
@@ -611,8 +637,8 @@ to
         self.initEventHandlers(self);
       },
     };
-  };
+  }
 
-  window.autoTimers = new AutoTimers();
-  window.autoTimers.init();
+  const autoTimersApp = new AutoTimersApp();
+  autoTimersApp.init();
 })();
