@@ -86,7 +86,8 @@
 	padding-right: 1em;
 }
 
-.filter-value--text {
+.filter-value--text,
+.filter-value--dayofweek {
 	flex: 3;
   min-width: 50%;
 }
@@ -284,9 +285,9 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="overrideAlternatives" value="1" class="form-control chk--skinned">
+													<input type="checkbox" name="overrideAlternatives" id="checkbox--overrideAlternatives" value="1" class="form-control chk--skinned">
 													<!-- Use automatic selection of alternates. -->
-													<label for="overrideAlternatives">$tstrings['at_override_alt']</label>
+													<label for="checkbox--overrideAlternatives">$tstrings['at_override_alt']</label>
 												</div>
 												<div class="atform__details__element"></div>
 											</div>
@@ -560,7 +561,7 @@
 												## <input type="hidden" name="Channels">
 												<label class="m-b-0" style="font-size: 16px;">Restrict to channels:</label><!-- TODO: i10n -->
 												<div class="dropdown atform__details__dropdown form-line">
-													<select name="services" class="form-control no-default-select"
+													<select name="services" class="form-control no-default-select" multiple
 																	data-choices-select="services">
 														<!-- option value="" disabled>Restrict to channels</option -->
 													</select>
@@ -572,7 +573,7 @@
 												## <input type="hidden" name="Bouquets">
 												<label class="m-b-0" style="font-size: 16px;">Restrict to bouquets:</label><!-- TODO: i10n -->
 												<div class="dropdown atform__details__dropdown form-line">
-													<select name="bouquets" class="form-control no-default-select"
+													<select name="bouquets" class="form-control no-default-select" multiple
 																	data-choices-select="bouquets" data-choices-config='{"shouldSort": true}'>
 														<!-- option value="" disabled>Restrict to bouquets</option -->
 													</select>
