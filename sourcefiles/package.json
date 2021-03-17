@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "core-js": "^2.6.11"
+    "core-js": "^2.6.11",
+    "sass": "^1.32.8"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
