@@ -4,23 +4,23 @@
   "description": "Static assets for OpenWebif interface",
   "main": "index.js",
   "dependencies": {
-    "@babel/runtime": "^7.12.5",
-    "core-js": "^2.6.11",
+    "@babel/runtime": "^7.13.10",
+    "core-js": "^2.6.12",
     "sass": "^1.32.8"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.0.0-0",
-    "@babel/node": "^7.12.6",
-    "@babel/plugin-transform-runtime": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/node": "^7.13.10",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
     "babel-preset-minify": "^0.5.1",
     "clean-css": "^4.2.3",
     "clean-css-cli": "^4.3.0",
-    "commander": "^6.2.0",
+    "commander": "^6.2.1",
     "glob-uglifyjs": "^2.0.0",
     "mkdirp": "^1.0.4",
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.5"
   },
   "resolutions": {
     "node-forge": "0.10.0",
