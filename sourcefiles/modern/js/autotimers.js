@@ -16,13 +16,15 @@
  * 
  * 3.0 - complete overhaul
  * 
- * @todo fix offset population
+ * @todo don't send unticked values (custom offset etc)
  * @todo write filtering
  * @todo fix zap/rec/zaprec params
  * @todo fix vps etc. params
- * @todo fix alternatives checkbox click 
  * @todo handle defaults
+ * @todo map afterevent values
+ * @todo handle non-form data -> hidden inputs?
  * @todo sort by name/date added/enabled etc
+ * @toto better handle `tstr_` and `tstrings_`
  * @todo JSDoc https://jsdoc.app/index.html
  * --------------------------------------------------------------------------
  */
@@ -137,15 +139,18 @@
         self['before'] = beforeDate.toISOString().split('T')[0];
       }
 
-      // if (!!ati['offset']) {
-      //   ati['offset'].split(',');
-      // }
+      if (!!self['afterevent']) {
+        const aeValueMap = {
+          'shutdown': 'deepstandby',
+        }
+        const aeFrom = self['afterevent']['from'];
+        const aeTo = self['afterevent']['to'];
+        const aeAction = self['afterevent']['_@ttribute'];
 
-      // if (!!ati['afterevent']) {
-      //   ati['afterevent']['from'] && (ati['aftereventFrom'] = ati['afterevent']['from']);
-      //   ati['afterevent']['to'] && (ati['aftereventTo'] = ati['afterevent']['to']);
-      //   ati['afterevent'] = aem[ati['afterevent']['_@ttribute']] || ati['afterevent']['_@ttribute'] || aem[ati['afterevent']] || ati['afterevent'];
-      // }
+        aeFrom && (self['aftereventFrom'] = aeFrom);
+        aeTo && (self['aftereventTo'] = aeTo);
+        aeAction && (self['afterevent'] = aeValueMap[aeAction] || aeAction);
+      }
 
       if (self['e2service']) {
         if (!Array.isArray(self['e2service'])) {
@@ -279,9 +284,6 @@ if (!Array.isArray(window.atList)) {
   window.atList = [data['timer']];
 }
 
-aem = {
-  'shutdown': 'deepstandby',
-}
 // TRANSFORMRESPONSE
 //atListCache
 
