@@ -18,6 +18,10 @@ if [ "$1" == "vti" ]; then
 	PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_vti.ipk
 fi
 
+if [ "$1" == "deb" ]; then
+	PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_all.deb
+fi
+
 popd &> /dev/null
 
 mkdir -p ${P}
@@ -93,16 +97,19 @@ ar -r ${PKG} ./debian-binary ./data.tar.gz ./control.tar.gz
 
 cd -
 
-rm -rf ${B}
-mkdir -p ${B}
-mkdir -p ${B}/OpenWebif
-mv ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/ ${B}/OpenWebif/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/ 
-mkdir -p ${B}/OpenWebif/DEBIAN
-${P}/CONTROL/control ${B}/OpenWebif/DEBIAN/control
-cd ${B}
-ls -la
-dpkg-deb --build OpenWebif
-ls -la
+if [ "$1" == "deb" ]; then
+	rm -rf ${PKG}
+	rm -rf ${B}
+	mkdir -p ${B}/OpenWebif/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
+	mv ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/ ${B}/OpenWebif/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/ 
+	mkdir -p ${B}/OpenWebif/DEBIAN
+	${P}/CONTROL/control ${B}/OpenWebif/DEBIAN/control
+	cd ${B}
+	ls -la
+	dpkg-deb --build OpenWebif
+	ls -la
+	mv OpenWebif.deb ${PKG}
+fi
 
 rm -rf ${P}
 rm -rf ${B}
