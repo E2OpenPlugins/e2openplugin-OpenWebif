@@ -51,9 +51,11 @@
 	padding-top: 40px !important;
 }
 
+/*
 .at__item {
 	cursor: pointer;
 }
+*/
 
 .at__item button {
 	border: none;
@@ -91,10 +93,14 @@
 	flex: 3;
   min-width: 50%;
 }
+
+.row-striped:nth-of-type(even) {
+	background-color: transparent;
+}
 </style>
 
 <template id="autotimer-list-item-template">
-	<li class="card at__item">
+	<li class="card at__item row-striped">
 		<div class="header">
 			<div class="row clearfix m-b--20">
 				<div class="col-xs-4">
@@ -186,9 +192,9 @@
 						<a href="#at/new" class="btn btn--skinned waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></a>
 						<button type="button" name="reload" class="btn btn--skinned waves-effect"><i class="material-icons">refresh</i><span>$tstrings['reload']</span></button>
 						<button type="button" name="process" disabled class="btn btn--skinned waves-effect"><i class="material-icons">code</i><span>$tstrings['at_process']</span></span></button>
-						<button type="button" name="preview" data-toggle="modal" data-target="#ATTimerModal" class="btn btn--skinned waves-effect"><i class="material-icons">view_list</i><span>$tstrings['at_preview']</span></button>
-						<button type="button" name="timers" data-toggle="modal" data-target="#ATTimerList" class="btn btn--skinned waves-effect"><i class="material-icons" class="btn btn--skinned waves-effect">alarm</i><span>$tstrings['at_timers']</span></button>
-						<button type="button" name="settings" data-toggle="modal" data-target="#ATSettings" class="btn btn--skinned waves-effect" data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
+						<button type="button" name="preview" data-toggle="modal" data-target="#ATPreviewModal" class="btn btn--skinned waves-effect"><i class="material-icons">view_list</i><span>$tstrings['at_preview']</span></button>
+						<button type="button" name="timers" data-toggle="modal" data-target="#ATTimerListModal" class="btn btn--skinned waves-effect"><i class="material-icons" class="btn btn--skinned waves-effect">alarm</i><span>$tstrings['at_timers']</span></button>
+						<button type="button" name="settings" data-toggle="modal" data-target="#ATSettingsModal" class="btn btn--skinned waves-effect" data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
 					</div>
 
 					<div id="at__bar" class="m-t-40">
@@ -201,7 +207,7 @@
 					<div class="row clearfix">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 							<div id="ateditcontent">
-								<form name="atform" method="GET" action="/autotimer/edit" id="atform">
+								<form name="atedit" method="GET" action="/autotimer/edit" id="ateditform">
 									<input type="hidden" name="id" id="id">
 									<input type="hidden" name="encoding">
 									<input type="hidden" name="always_zap">
@@ -641,7 +647,7 @@
 	</div>
 </div>
 
-<div id="ATTimerModal" class="modal fade" role="dialog">
+<div id="ATPreviewModal" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -696,10 +702,10 @@
 	</div>
 </div>
 
-<div id="ATSettings" class="modal fade" role="dialog">
+<div id="ATSettingsModal" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form name="atsettings" action="/autotimer/set" method="get">
+			<form name="atsettings" action="/autotimer/set" method="get" id="atsettingsform">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"><i class="material-icons material-icons-centered">close</i></button>
 					<h4 class="modal-title">$tstrings['ats_auto_timer_settings']</h4>
@@ -708,55 +714,55 @@
 					<div id="atsettingdlgcont">
 						<fieldset>
 							<div class="form-group">
-								<input type="checkbox" class="form-control chk--skinned" id="ats_autopoll" value="">
+								<input type="checkbox" name="autopoll" value="true" id="ats_autopoll" class="form-control chk--skinned">
 								<label for="ats_autopoll">$tstrings['ats_autopoll']</label>&nbsp;
 								<br>
 								<label for="ats_interval">$tstrings['ats_interval']</label>
 								<div class="form-line">
-									<input type="number" size="5" id="ats_interval" class="form-control">
+									<input type="number" name="interval" value="" id="ats_interval" class="form-control">
 								</div>
 								<br>
 								<label for="ats_maxdaysinfuture">$tstrings['ats_maxdaysinfuture']</label>
 								<div class="form-line">
-									<input type="number" size="5" id="ats_maxdaysinfuture" class="form-control">
+									<input type="number" name="maxdaysinfuture" value="" id="ats_maxdaysinfuture" class="form-control">
 								</div>
 								<br>
-								<input type="checkbox" id="ats_try_guessing" value="" class="form-control chk--skinned">
+								<input type="checkbox" name="try_guessing" value="true" id="ats_try_guessing" class="form-control chk--skinned">
 								<label for="ats_try_guessing">$tstrings['ats_try_guessing']</label>
 								<br>
-								<input type="checkbox" id="ats_fastscan" class="form-control chk--skinned" value="">
+								<input type="checkbox" name="fastscan" value="true" id="ats_fastscan" class="form-control chk--skinned">
 								<label for="ats_fastscan">$tstrings['ats_fastscan']</label>
 								<br>
-								<input type="checkbox" id="ats_show_in_extensionsmenu" class="form-control chk--skinned" value="">
+								<input type="checkbox" name="show_in_extensionsmenu" value="true" id="ats_show_in_extensionsmenu" class="form-control chk--skinned">
 								<label for="ats_show_in_extensionsmenu">$tstrings['ats_show_in_extensionsmenu']</label>
 								<br>
-								<input type="checkbox" id="ats_disabled_on_conflict" value="" class="form-control chk--skinned">
+								<input type="checkbox" name="disabled_on_conflict" value="true" id="ats_disabled_on_conflict" class="form-control chk--skinned">
 								<label for="ats_disabled_on_conflict">$tstrings['ats_disabled_on_conflict']</label>
 								<br>
-								<input type="checkbox" id="ats_addsimilar_on_conflict" value="" class="form-control chk--skinned">
+								<input type="checkbox" name="addsimilar_on_conflict" value="true" id="ats_addsimilar_on_conflict" class="form-control chk--skinned">
 								<label for="ats_addsimilar_on_conflict">$tstrings['ats_addsimilar_on_conflict']</label>
 								<br>
-								<input type="checkbox" id="ats_notifconflict" value="" class="form-control chk--skinned">
+								<input type="checkbox" name="notifconflict" value="true" id="ats_notifconflict" class="form-control chk--skinned">
 								<label for="ats_notifconflict">$tstrings['ats_notifconflict']</label>
 								<br>
-								<input type="checkbox" id="ats_notifsimilar" value="" class="form-control chk--skinned">
+								<input type="checkbox" name="notifsimilar" value="true" id="ats_notifsimilar" class="form-control chk--skinned">
 								<label for="ats_notifsimilar">$tstrings['ats_notifsimilar']</label>
 								<br>
-								<input type="checkbox" id="ats_add_autotimer_to_tags" value="" class="form-control chk--skinned">
+								<input type="checkbox" name="add_autotimer_to_tags" value="true" id="ats_add_autotimer_to_tags" class="form-control chk--skinned">
 								<label for="ats_add_autotimer_to_tags">$tstrings['ats_add_autotimer_to_tags']</label>
 								<br>
-								<input type="checkbox" id="ats_add_name_to_tags" value="" class="form-control chk--skinned">
+								<input type="checkbox" name="add_name_to_tags" value="true" id="ats_add_name_to_tags" class="form-control chk--skinned">
 								<label for="ats_add_name_to_tags">$tstrings['ats_add_name_to_tags']</label>
 								<br>
 								<label for="ats_refresh">$tstrings['ats_refresh']</label>
-								<select id="ats_refresh" size="1" class="form-control">
+								<select name="refresh" size="1" id="ats_refresh" class="form-control">
 									<option value="none" selected>$tstrings['ats_refresh_none']</option>
 									<option value="auto" selected>$tstrings['ats_refresh_auto']</option>
 									<option value="all" selected>$tstrings['ats_refresh_all']</option>
 								</select>
 								<br>
 								<label for="ats_editor">$tstrings['ats_editor']</label>
-								<select id="ats_editor" size="1" class="form-control">
+								<select name="editor" size="1" id="ats_editor" class="form-control">
 									<option value="plain" selected>$tstrings['ats_editor_plain']</option>
 									<option value="wizzard" selected>$tstrings['ats_editor_wizard']</option>
 								</select>
@@ -766,14 +772,14 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">$tstrings['close']</button>
-					<button type="button" class="btn btn--skinned waves-effect" data-dismiss="modal" onclick="setAutoTimerSettings(); return false;">$tstrings['save']</button>
+					<button type="submit" name="saveSettings" class="btn btn--skinned waves-effect" data-dismiss="modal">$tstrings['save']</button>
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
 
-<div id="ATTimerList" class="modal fade" role="dialog">
+<div id="ATTimerListModal" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">

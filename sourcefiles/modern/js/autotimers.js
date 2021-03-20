@@ -18,7 +18,6 @@
  * 
  * @todo fix offset population
  * @todo write filtering
- * @todo write get/set settings
  * @todo fix zap/rec/zaprec params
  * @todo fix vps etc. params
  * @todo fix alternatives checkbox click 
@@ -35,6 +34,55 @@
     const txt = document.createElement('textarea');
     txt.innerHTML = html;
     return txt.value;
+  }
+
+  function populateFormControl(self, formControls, name, value) {
+    const field = formControls.namedItem(name);
+    if (field) {
+      owif.utils.debugLog(`[${field.type}]`, field, name, value);
+      if (field instanceof RadioNodeList) {
+        const csv = value.split(',');
+        for (const [index, node] of field.entries()) {
+          node.value = csv[index] || '';
+          try {
+            node.dispatchEvent(new Event('change'));
+          } catch(ex) {
+            owif.utils.debugLog(name, value, ex);
+          }
+        }
+      } else {
+        switch (field.type) {
+          case 'checkbox':
+            value = (value === true) || (value === 'True') || (value.toString() === field.value);
+            field.checked = value;
+            break;
+          case 'select-multiple':
+            try {
+              const valuesOnly = value.map(entry => entry['sRef']);
+              self.autoTimerChoices[name]
+                .setChoices(value, 'sRef', 'name', false)
+                .setChoices(value, 'label', 'value', false)
+                .removeActiveItems()
+                .setChoiceByValue(value)
+                .setChoiceByValue(valuesOnly);
+            } catch (ex) {
+              owif.utils.debugLog(name, value, ex);
+            }
+            break;
+          default:
+            field.value = value;
+            break;
+        }
+        try {
+          field.dispatchEvent(new Event('change'));
+        } catch(ex) {
+          owif.utils.debugLog(name, value, ex);
+        }
+      }
+    } else {
+      //TODO add hidden
+      owif.utils.debugLog('%c[N/A]', 'color: red', name, value);
+    }
   }
 
   /*
@@ -167,7 +215,8 @@
     // keep reference to object
     let self;
 
-    const atFormEl = document.getElementById('atform');
+    const atEditForm = document.querySelector('form[name="atedit"]');
+    const atSettingsForm = document.querySelector('form[name="atsettings"]');
 
     const addDependentSectionTogglers = (data = {}) => {
       // set up show/hide checkboxes
@@ -299,11 +348,56 @@ aem = {
       },
 
       getSettings: async () => {
-        return await owif.utils.fetchData('/autotimer/get');
+        const settingsNamespace = 'config.plugins.autotimer.';
+        const responseContent = await owif.utils.fetchData('/autotimer/get');
+        let settings = xml2json(responseContent)['e2settings']['e2setting'];
+        const { elements } = atSettingsForm;
+
+        settings = settings.filter(setting => setting['e2settingname'].startsWith(settingsNamespace))
+          .map((setting) => {
+            for (const [key, value] of Object.entries(setting)) {
+              setting[key.replace('e2setting', '')] = value;
+              delete setting[key];
+            }
+            setting['name'] = setting['name'].replace(settingsNamespace, '');
+            return setting;
+          });
+
+        for (let entry of Object.values(settings)) {
+          populateFormControl(self, elements, entry.name, entry.value);
+        }
       },
 
-      saveSettings: async (params) => {
-        return await owif.utils.fetchData(`/autotimer/set?${params}`);
+      saveSettings: async () => {
+        const formData = new FormData(atSettingsForm);
+
+        // add unchecked checkboxes to payload
+        for (const [index, formControl] of Object.entries(atSettingsForm)) {
+          if (formControl.type === 'checkbox' && !formData.has(formControl.name)) {
+            formData.set(formControl.name, '');
+          }
+        };
+        
+        try {
+          const responseContent = await owif.utils.fetchData(`/autotimer/set`, { method: 'post', body: formData });
+          const responseAsJson = xml2json(responseContent)['e2simplexmlresult'];
+          const status = responseAsJson['e2state'];
+          let message = responseAsJson['e2statetext'];
+          message = `${message.charAt(0).toUpperCase()}${message.slice(1)}`;
+
+          if (status === true || status.toString().toLowerCase() === 'true') {
+            // ok
+          } else {
+            throw new Error(message);
+          }
+        } catch (ex) {
+          swal({
+            title: 'Oops...', // TODO: i10n
+            text: ex,
+            type: 'error',
+            animation: 'none',
+          });
+        }
       },
 
       preview: async () => {
@@ -339,10 +433,10 @@ aem = {
       },
 
       populateForm: async (data = {}) => {
-        const { elements } = atFormEl;
+        const { elements } = atEditForm;
 
         document.getElementById('at__page--list').classList.toggle('hidden', true);
-        atFormEl.reset();
+        atEditForm.reset();
         window.scroll({top: 0, left: 0, behavior: 'smooth'});
         document.getElementById('at__page--edit').classList.toggle('hidden', false);
 
@@ -360,58 +454,8 @@ aem = {
           jQuery('select[name=location]').selectpicker('refresh');
         }
 
-        /**
-always_zap
-from
-to
-         **/
-
-        for (let [key, value] of Object.entries(data)) {
-          const field = elements.namedItem(key);
-          if (field) {
-            owif.utils.debugLog(`[${field.type}]`, field, key, value);
-            if (field instanceof RadioNodeList) {
-              const csv = value.split(',');
-              for (const [index, node] of field.entries()) {
-                node.value = csv[index] || '';
-                try {
-                  node.dispatchEvent(new Event('change'));
-                } catch(ex) {
-                  owif.utils.debugLog(key, value, ex);
-                }
-              }
-            } else {
-              switch (field.type) {
-                case 'checkbox':
-                  field.checked = value;
-                  break;
-                case 'select-multiple':
-                  try {
-                  const valuesOnly = value.map(entry => entry['sRef']);
-                  self.autoTimerChoices[key]
-                    .setChoices(value, 'sRef', 'name', false)
-                    .setChoices(value, 'label', 'value', false)
-                    .removeActiveItems()
-                    .setChoiceByValue(value)
-                    .setChoiceByValue(valuesOnly);
-                  } catch (ex) {
-                    owif.utils.debugLog(key, value, ex);
-                  }
-                  break;
-                default:
-                  field.value = value;
-                  break;
-              }
-              try {
-                field.dispatchEvent(new Event('change'));
-              } catch(ex) {
-                owif.utils.debugLog(key, value, ex);
-              }
-            }
-          } else {
-            //TODO add hidden
-            owif.utils.debugLog('%c[N/A]', 'color: red', key, value);
-          }
+        for (let [name, value] of Object.entries(data)) {
+          populateFormControl(self, elements, name, value);
         }
       },
 
@@ -478,7 +522,7 @@ to
       },
 
       saveEntry: async (extraParams = '') => {
-        const formData = new FormData(atFormEl);
+        const formData = new FormData(atEditForm);
         const formDataObj = Object.fromEntries(formData);
 
         Object.entries(formDataObj).forEach(([name, value]) => {
@@ -569,7 +613,7 @@ to
         // create a failsafe element to assign event handlers to
         let nullEl = document.createElement('input');
 
-        (document.getElementById('atform') || nullEl).onsubmit = (evt) => {
+        (document.querySelector('form[name="atedit"]') || nullEl).onsubmit = (evt) => {
           evt.preventDefault();
           self.saveEntry();
         }
@@ -582,7 +626,8 @@ to
         (document.querySelector('button[name="process"]') || nullEl).onclick = () => window.parseAT();
         (document.querySelector('button[name="preview"]') || nullEl).onclick = self.preview;
         (document.querySelector('button[name="timers"]') || nullEl).onclick = () => window.listTimers();
-        (document.querySelector('button[name="settings"]') || nullEl).onclick = () => window.getAutoTimerSettings();
+        (document.querySelector('button[name="settings"]') || nullEl).onclick = self.getSettings;
+        (document.querySelector('button[name="saveSettings"]') || nullEl).onclick = self.saveSettings;
         (document.querySelector('button[name="addFilter"]') || nullEl).onclick = self.addFilter;
         (document.querySelector('button[name="cancel"]') || nullEl).onclick = self.cancelEntry;
 
