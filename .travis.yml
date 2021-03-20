@@ -1,6 +1,5 @@
 language: python
 
-
 matrix:
   include:
     - name: "Python 2.7"

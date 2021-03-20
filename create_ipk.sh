@@ -93,5 +93,16 @@ ar -r ${PKG} ./debian-binary ./data.tar.gz ./control.tar.gz
 
 cd -
 
+rm -rf ${B}
+mkdir -p ${B}
+mkdir -p ${B}/OpenWebif
+mv ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/ ${B}/OpenWebif/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/ 
+mkdir -p ${B}/OpenWebif/DEBIAN
+${P}/CONTROL/control ${B}/OpenWebif/DEBIAN/control
+cd ${B}
+ls -la
+dpkg-deb --build OpenWebif
+ls -la
+
 rm -rf ${P}
 rm -rf ${B}
