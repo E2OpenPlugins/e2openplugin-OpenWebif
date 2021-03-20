@@ -132,8 +132,8 @@ if [ "$1" == "deb" ]; then
 	rm -rf ${PKG}
 	rm -rf ${B}
 	mkdir -p ${B}/OpenWebif/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
-	cp -rp ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/* ${B}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
-	pushd ${B}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
+	cp -rp ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/* ${B}/OpenWebif/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
+	pushd ${B}/OpenWebif/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
 	find . -name '*.bak' -exec rm -r {} \;
 	find . -name '*.pyc' -exec rm -r {} \;
 	find . -name '*.py' -exec rm -r {} \;
