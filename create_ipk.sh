@@ -103,7 +103,7 @@ if [ "$1" == "deb" ]; then
 	mkdir -p ${B}/OpenWebif/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
 	mv ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/ ${B}/OpenWebif/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/ 
 	mkdir -p ${B}/OpenWebif/DEBIAN
-	${P}/CONTROL/control ${B}/OpenWebif/DEBIAN/control
+	cp ${P}/CONTROL/control ${B}/OpenWebif/DEBIAN/control
 	cd ${B}
 	ls -la
 	dpkg-deb --build OpenWebif
