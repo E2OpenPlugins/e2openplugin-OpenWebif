@@ -79,6 +79,37 @@ if [ "$1" == "vti" ]; then
 
 fi
 
+if [ "$1" == "deb" ]; then
+
+	# Nur die DMM und OW-Remotes ins IPK kopieren.
+	pushd ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/images/remotes
+	mkdir x
+	mv ow_remote.png dm* x/
+	rm -f *.*
+	mv x/* .
+	rm -fr x
+
+	# Nur die DMM box images ins IPK kopieren.
+	cd ../boxes
+	mkdir x
+	mv dm* x/
+	rm -f *.*
+	mv x/* .
+	rm -fr x
+
+	# Nur die Templates für DMM  Remotes ins IPK kopieren
+	cd ../../static/remotes
+	mkdir x
+	mv dmm* x/
+	rm -f *.*
+	mv x/* .
+	rm -fr x
+
+	popd
+
+fi
+
+
 cheetah-compile -R ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
 python -O -m compileall ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
 
@@ -101,7 +132,12 @@ if [ "$1" == "deb" ]; then
 	rm -rf ${PKG}
 	rm -rf ${B}
 	mkdir -p ${B}/OpenWebif/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
-	mv ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/ ${B}/OpenWebif/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/ 
+	cp -rp ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/* ${B}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
+	pushd ${B}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
+	find . -name '*.bak' -exec rm -r {} \;
+	find . -name '*.pyc' -exec rm -r {} \;
+	find . -name '*.py' -exec rm -r {} \;
+	popd
 	mkdir -p ${B}/OpenWebif/DEBIAN
 	cp ${P}/CONTROL/control ${B}/OpenWebif/DEBIAN/control
 	cd ${B}
