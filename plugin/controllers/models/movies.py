@@ -199,9 +199,11 @@ def getMovieList(rargs=None, locations=None):
 				if serviceref.flags & eServiceReference.mustDescent:
 					continue
 
+				# BAD fix
+				_serviceref = serviceref.toString().replace('%25', '%')
 				length_minutes = 0
 				txtdesc = ""
-				filename = '/'.join(serviceref.toString().split("/")[1:])
+				filename = '/'.join(_serviceref.split("/")[1:])
 				filename = '/' + filename
 				name, ext = os.path.splitext(filename)
 
@@ -214,7 +216,7 @@ def getMovieList(rargs=None, locations=None):
 				movie = {
 					'filename': filename,
 					'filename_stripped': filename.split("/")[-1],
-					'serviceref': serviceref.toString(),
+					'serviceref': _serviceref,
 					'length': "?:??",
 					'lastseen': 0,
 					'filesize_readable': '',
@@ -223,7 +225,7 @@ def getMovieList(rargs=None, locations=None):
 					'eventname': ServiceReference(serviceref).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
 					'servicename': sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
 					'tags': info.getInfoString(serviceref, iServiceInformation.sTags),
-					'fullname': serviceref.toString(),
+					'fullname': _serviceref,
 				}
 
 				if rtime > 0:
