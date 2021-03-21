@@ -547,6 +547,20 @@ if (!Array.isArray(window.atList)) {
         const formData = new FormData(atEditForm);
         const formDataObj = Object.fromEntries(formData);
 
+        if (window.disableFilterEditing) {
+          [
+            // filters currently can't be modified reliably
+            'title', 'shortdescription', 'description', 'dayofweek', 
+            '!title', '!shortdescription', '!description', '!dayofweek',
+          ].forEach((param) => {
+            formData.delete(param);
+          });
+        }
+
+        ['_filterpredicate', '_filterwhere'].forEach((param) => {
+          formData.delete(param);
+        });
+
         Object.entries(formDataObj).forEach(([name, value]) => {
           owif.utils.debugLog(name, value);
           if (['offset', 'services', 'bouquets'].includes(name)) {
@@ -564,24 +578,10 @@ if (!Array.isArray(window.atList)) {
         });
         // AutoTimer doesn't remove some timer values unless they're sent as empty
         // TODO: tags?
-        [
-          'offset', 'services', 'bouquets', 
-          // filters currently can't be modified reliably
-          // 'title', 'shortdescription', 'description', 'dayofweek', 
-          // '!title', '!shortdescription', '!description', '!dayofweek',
-        ].forEach((param) => {
+        ['offset', 'services', 'bouquets'].forEach((param) => {
           if (!formData.has(param)) {
             formData.set(param, '');
           }
-        });
-
-        [
-          '_filterpredicate', '_filterwhere',
-          // filters currently can't be modified reliably
-          'title', 'shortdescription', 'description', 'dayofweek', 
-          '!title', '!shortdescription', '!description', '!dayofweek',
-        ].forEach((param) => {
-          formData.delete(param);
         });
 
         const responseContent = await owif.utils.fetchData(`/autotimer/edit?${extraParams}`, { method: 'post', body: formData });

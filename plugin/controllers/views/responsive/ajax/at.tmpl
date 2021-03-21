@@ -1,24 +1,36 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #filter WebSafe
 
+#set $disableFilterEditing = False
+#if $disableFilterEditing
+	<script>
+		window.disableFilterEditing = true;
+	</script>
+
+	<style>
+		.atform__body{
+			cursor: not-allowed;
+		}
+
+		.prevent-user-interaction { 
+			pointer-events: none;
+			opacity: 0.4;
+			user-select: none;
+		}
+
+		.prevent-user-interaction:hover {
+		}
+
+		.prevent-user-interaction *:focus {
+			outline: 0;
+		}
+	</style>
+#end if
+
 <!-- TODO: crossfade divs -->
 
 <!-- TODO: move styles to css file -->
 <style>
-.prevent-user-interaction { 
-  pointer-events: none;
-	opacity: 0.4;
-  user-select: none;
-}
-
-.prevent-user-interaction:hover {
-	cursor: not-allowed;
-}
-
-.prevent-user-interaction *:focus {
-	outline: 0;
-}
-
 .choices__inner .choices__input {
 	min-width: 1ch;
 	width: 1ch;
@@ -636,7 +648,7 @@
 										</div>
 									</fieldset>
 
-									<div class="atform__body" style="cursor: not-allowed">
+									<div class="atform__body">
 										<div class="form-group prevent-user-interaction">
 											<div class="atform__fields-container m-t-0">
 												<div id="foo" class="m-t-40 m-b-20"></div>
