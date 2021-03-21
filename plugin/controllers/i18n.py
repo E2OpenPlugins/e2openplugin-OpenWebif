@@ -361,7 +361,7 @@ tstrings = {
 	'at_filter_short_desc': _("in short description"),
 	'at_filter_desc': _("in description"),
 	'at_filter_day': _("on weekday"),
-	'at_filter_days': _("on days"),
+	'at_filter_single_day': _("on day"),
 	'at_filter_weekend': _("weekend"),
 	'at_filter_weekday': _("weekday"),
 	'at_edit': _("Edit"),

@@ -38,6 +38,12 @@
     return txt.value;
   }
 
+  function removeNodesBySelector(selector) {
+    document.querySelectorAll(selector).forEach((node) =>{
+      node.remove()
+    });
+  }
+
   function populateFormControl(self, formControls, name, value) {
     const field = formControls.namedItem(name);
     if (field) {
@@ -115,7 +121,10 @@
       self['tag'] = [];
       self['bouquets'] = [];
       self['services'] = [];
-      self['filters'] = {};
+      self['filters'] = {
+        'include': [],
+        'exclude': [],
+      };
 
       self['enabled'] = (self['enabled'] === 'yes') ? 1 : 0;
 
@@ -181,17 +190,25 @@
       }
 
       // fallback to (incorrectly) space-separated values
-      if (self['e2tags']) {
+      if (!self['tag'] && self['e2tags']) {
         self['tag'] = self['e2tags'].split(' ');
         delete self['e2tags'];
       }
 
       if (self['include']) {
+        if (!Array.isArray(self['include'])) {
+          // we expect an array
+          self['include'] = [self['include']];
+        }
         self['filters']['include'] = self['include'];
         delete self['include'];
       }
 
       if (self['exclude']) {
+        if (!Array.isArray(self['exclude'])) {
+          // we expect an array
+          self['exclude'] = [self['exclude']];
+        }
         self['filters']['exclude'] = self['exclude'];
         delete self['exclude'];
       }
@@ -293,10 +310,10 @@ if (!Array.isArray(window.atList)) {
       },
 
       populateList: () => {
+        const listEl = document.getElementById('at__list');
+        removeNodesBySelector('.at__item');
         document.getElementById('at__page--edit').classList.toggle('hidden', true);
         window.scroll({top: 0, left: 0, behavior: 'smooth'});
-        const listEl = document.getElementById('at__list');
-        listEl.innerHTML = "";
         document.getElementById('at__page--list').classList.toggle('hidden', false);
         const templateEl = document.getElementById('autotimer-list-item-template');
         // reset collections
@@ -437,8 +454,9 @@ if (!Array.isArray(window.atList)) {
       populateForm: async (data = {}) => {
         const { elements } = atEditForm;
 
-        document.getElementById('at__page--list').classList.toggle('hidden', true);
         atEditForm.reset();
+        removeNodesBySelector('.at__filter__line');
+        document.getElementById('at__page--list').classList.toggle('hidden', true);
         window.scroll({top: 0, left: 0, behavior: 'smooth'});
         document.getElementById('at__page--edit').classList.toggle('hidden', false);
 
@@ -459,6 +477,8 @@ if (!Array.isArray(window.atList)) {
         for (let [name, value] of Object.entries(data)) {
           populateFormControl(self, elements, name, value);
         }
+
+        self.populateFilters(data.filters);
       },
 
       deleteEntry: async (atId = -1) => {
@@ -529,7 +549,7 @@ if (!Array.isArray(window.atList)) {
 
         Object.entries(formDataObj).forEach(([name, value]) => {
           owif.utils.debugLog(name, value);
-          if (['tag'].indexOf(name) === -1) {
+          if (['offset', 'services', 'bouquets'].includes(name)) {
             // join multiple param=a&param=b values into one param=[a,b]
             // this should not be applied to `tags`
             formData.set(name, formData.getAll(name));
@@ -543,10 +563,25 @@ if (!Array.isArray(window.atList)) {
           }
         });
         // AutoTimer doesn't remove some timer values unless they're sent as empty
-        ['offset', 'services', 'bouquets'].forEach((param) => {
+        // TODO: tags?
+        [
+          'offset', 'services', 'bouquets', 
+          // filters currently can't be modified reliably
+          // 'title', 'shortdescription', 'description', 'dayofweek', 
+          // '!title', '!shortdescription', '!description', '!dayofweek',
+        ].forEach((param) => {
           if (!formData.has(param)) {
             formData.set(param, '');
           }
+        });
+
+        [
+          '_filterpredicate', '_filterwhere',
+          // filters currently can't be modified reliably
+          'title', 'shortdescription', 'description', 'dayofweek', 
+          '!title', '!shortdescription', '!description', '!dayofweek',
+        ].forEach((param) => {
+          formData.delete(param);
         });
 
         const responseContent = await owif.utils.fetchData(`/autotimer/edit?${extraParams}`, { method: 'post', body: formData });
@@ -569,7 +604,7 @@ if (!Array.isArray(window.atList)) {
       },
 
       cancelEntry: () => {
-        swal({
+        swal({ // TODO: change to 'want to save?'
           title: 'Are you sure you want to discard your changes?',
           // text: '',
           type: 'warning',
@@ -587,28 +622,85 @@ if (!Array.isArray(window.atList)) {
         });
       },
 
-      addFilter: () => {
+      populateFilters: (filters) => {
+        filters['exclude'].forEach((f) => {
+          f['predicate'] = '!';
+          f['value'] = f['_@ttribute'];
+          delete f['_@ttribute'];
+          self.addFilter(f);
+        });
+
+        filters['include'].forEach((f) => {
+          f['predicate'] = '';
+          f['value'] = f['_@ttribute'];
+          delete f['_@ttribute'];
+          self.addFilter(f);
+        });
+      },
+
+      addFilter: (filter = {predicate: '', where: 'title', value: ''}) => {
         const templateEl = document.getElementById('autotimer-filter-template');
         const newNode = templateEl.content.firstElementChild.cloneNode(true);
         const filterListEl = document.getElementById('foo');
 
-        newNode.querySelector('button[name="removeFilter"]').onclick = self.removeFilter;
-        newNode.querySelector('select[name="filter[\'name\']"]').onchange = (evt) => {
-          const filterNameEl = evt.target;
-          const fieldSetEl = filterNameEl.closest('fieldset');
-          const isDayOfWeekFilter = (filterNameEl.value === 'dayofweek');
+        const filterPredicate = newNode.querySelector('select[name="_filterpredicate"]');
+        const filterWhere = newNode.querySelector('select[name="_filterwhere"]');
+        const filterText = newNode.querySelector('input[type="text"]');
+        const filterDayOfWeek = newNode.querySelector('select[name="dayofweek"]');
 
-          fieldSetEl.querySelector('.filter-value--dayofweek').classList.toggle('hidden', !isDayOfWeekFilter);
-          fieldSetEl.querySelector('.filter-value--text').classList.toggle('hidden', isDayOfWeekFilter);
+        const updateValueFields = () => {
+          const isDayOfWeekSelected = (filterWhere.value === 'dayofweek');
+
+          if (isDayOfWeekSelected) {
+            filterDayOfWeek.name = `${filterPredicate.value}${filterWhere.value}`;
+            filterText.value = '';
+          } else {
+            filterText.name = `${filterPredicate.value}${filterWhere.value}`;
+            filterDayOfWeek.value = ''
+          }
         };
+
+        newNode.querySelector('button[name="removeFilter"]').onclick = self.removeFilter;
+
+        filterPredicate.onchange = (evt) => {
+          updateValueFields();
+        };
+        
+        filterWhere.onchange = (evt) => {
+          const formControl = evt.target;
+          const container = formControl.closest('fieldset');
+          const isDayOfWeekFilter = (formControl.value === 'dayofweek');
+
+          container.querySelector('.filter-value--dayofweek').classList.toggle('hidden', !isDayOfWeekFilter);
+          container.querySelector('.filter-value--text').classList.toggle('hidden', isDayOfWeekFilter);
+          updateValueFields();
+        };
+
+        filterPredicate.value = filter['predicate'];
+        filterWhere.value = filter['where'];
+        if (filter['where'] === 'dayofweek') {
+          selectedOptions = filter['value'].split(',');
+          for (option of filterDayOfWeek) {
+            option.selected = selectedOptions.includes(option.value);
+          }
+          filterWhere.dispatchEvent(new Event('change'));
+        } else {
+          filterText.value = filter['value'];
+        }
+
+        updateValueFields();
         filterListEl.appendChild(newNode);
 
         jQuery.AdminBSB.select.activate();
-      },
+      }, 
 
       removeFilter: () => {
-        const fieldSetEl = event.target.closest('fieldset.at__filter__line');
-        fieldSetEl.remove();
+        const target = event.target;
+        const container = target.closest('fieldset.at__filter__line');
+        // container.querySelector('input[type="text"]').value = '{{_REMOVE_}}';
+        // container.querySelector('select[name="dayofweek"]').value = '{{_REMOVE_}}';
+        // container.classList.add('hidden'); 
+        container.remove();
       },
 
       initEventHandlers: () => {
@@ -630,7 +722,7 @@ if (!Array.isArray(window.atList)) {
         (document.querySelector('button[name="timers"]') || nullEl).onclick = () => window.listTimers();
         (document.querySelector('button[name="settings"]') || nullEl).onclick = self.getSettings;
         (document.querySelector('button[name="saveSettings"]') || nullEl).onclick = self.saveSettings;
-        (document.querySelector('button[name="addFilter"]') || nullEl).onclick = self.addFilter;
+        (document.querySelector('button[name="addFilter"]') || nullEl).onclick = () => self.addFilter();
         (document.querySelector('button[name="cancel"]') || nullEl).onclick = self.cancelEntry;
 
         (document.getElementById('_timespan') || nullEl).onchange = (input) => {

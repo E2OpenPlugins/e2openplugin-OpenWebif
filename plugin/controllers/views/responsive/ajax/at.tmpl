@@ -5,6 +5,20 @@
 
 <!-- TODO: move styles to css file -->
 <style>
+.prevent-user-interaction { 
+  pointer-events: none;
+	opacity: 0.4;
+  user-select: none;
+}
+
+.prevent-user-interaction:hover {
+	cursor: not-allowed;
+}
+
+.prevent-user-interaction *:focus {
+	outline: 0;
+}
+
 .choices__inner .choices__input {
 	min-width: 1ch;
 	width: 1ch;
@@ -141,34 +155,33 @@
 	<fieldset class="at__filter__line m-b-20">
 		<button type="button" name="removeFilter" title="Remove filter"><i class="material-icons">delete_outline</i></button><!-- TODO: i10n -->
 		<div class="filter__container">
-			<select name="filter['incexc']">
-				<option value="i" selected>$tstrings['at_filter_include']</option>
-				<option value="e">$tstrings['at_filter_exclude']</option>
+			<select name="_filterpredicate" class="form-control">
+				<option value="" selected>$tstrings['at_filter_include']</option>
+				<option value="!">$tstrings['at_filter_exclude']</option>
 			</select>
 		</div>
 		<div class="filter__container">
-			<select name="filter['name']">
+			<select name="_filterwhere" class="form-control">
 				<option value="title" selected>$tstrings['at_filter_title']</option>
 				<option value="shortdescription">$tstrings['at_filter_short_desc']</option>
 				<option value="description">$tstrings['at_filter_desc']</option>
-				<option value="dayofweek">$tstrings['at_filter_days']</option>
+				<option value="dayofweek">$tstrings['at_filter_single_day']</option>
 			</select>
 		</div>
 		<div class="filter__container filter-value--text form-line">
-			<input type="text" name="filter['text']" value="" placeholder="$tstrings['at_text_hint']" class="form-control">
+			<input type="text" name="{{_filterpredicate+_filterwhere}}" value="" placeholder="$tstrings['at_text_hint']" class="form-control">
 		</div>
 		<div class="filter__container filter-value--dayofweek hidden">
-			<select name="filter['dayofweek']" multiple>
-				## <option value="" disabled></option>
-				<option value="1">$tstrings['monday']</option>
-				<option value="2">$tstrings['tuesday']</option>
-				<option value="3">$tstrings['wednesday']</option>
-				<option value="4">$tstrings['thursday']</option>
-				<option value="5">$tstrings['friday']</option>
-				<option value="6">$tstrings['saturday']</option>
-				<option value="0">$tstrings['sunday']</option>
-				## <option value="1,2,3,4,5">$tstrings['day_1'] - $tstrings['day_5']</option>
-				## <option value="6,0">$tstrings['day_6'] - $tstrings['day_0']</option>
+			<select name="dayofweek" class="form-control">
+				<option value=""></option>
+				<option value="0">$tstrings['monday']</option>
+				<option value="1">$tstrings['tuesday']</option>
+				<option value="2">$tstrings['wednesday']</option>
+				<option value="3">$tstrings['thursday']</option>
+				<option value="4">$tstrings['friday']</option>
+				<option value="5">$tstrings['saturday']</option>
+				<option value="6">$tstrings['sunday']</option>
+				<option value="{{_REMOVE_}}" x-class="hidden">[ REMOVE ]</option>
 			</select>
 		</div>
 	</fieldset>
@@ -213,7 +226,7 @@
 									<input type="hidden" name="always_zap">
 									<input type="hidden" name="lastBegin">
 									<!-- dyn add all unmatched values as hidden -->
-													
+
 									<fieldset style="border: none" class="atform__body">
 										<div class="form-group">
 
@@ -259,7 +272,7 @@
 													</div>
 												</div>
 											</div>
-												
+
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
 													<label>$tstrings['at_search_strictness']:</label>
@@ -391,7 +404,7 @@
 													</div>
 												</div>
 											</div>
-												
+
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
 													<!-- After event -->
@@ -435,7 +448,7 @@
 													</div>
 												</div>
 											</div>
-													
+
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
 													<!-- Record a maximum of x times -->
@@ -449,7 +462,7 @@
 													</div>
 												</div>
 											</div>
-											
+
 											<div id="CounterE" class="atform__fields-container">
 												<div class="atform__details__title">
 													<!-- ?? -->
@@ -463,7 +476,7 @@
 													</div>
 												</div>
 											</div>
-												
+
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
 													<!-- ?? -->
@@ -480,7 +493,7 @@
 													</div>
 												</div>
 											</div>
-												
+
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
 													<!-- Require description to be unique -->
@@ -561,7 +574,7 @@
 													</select>
 												</div>
 											</div>
-		
+
 											<div class="atform__fields-container">
 												<!-- Restrict to specific services -->
 												## <input type="hidden" name="Channels">
@@ -620,23 +633,29 @@
 											</div>
 #end if
 
+										</div>
+									</fieldset>
+
+									<div class="atform__body" style="cursor: not-allowed">
+										<div class="form-group prevent-user-interaction">
 											<div class="atform__fields-container m-t-0">
 												<div id="foo" class="m-t-40 m-b-20"></div>
-												## <table id="filterlist" class="table table-striped table-hover m-t-40"></table>
 												<button type="button" name="addFilter" class="btn btn-default waves-effect">$tstrings['at_add_filters']</button>
 												<p class="m-t-10">
-													<sup>* Filter functionality is not yet complete
+													<sup>* Filters currently can't be modified
 												</p>
 											</div>
 										</div>
+									</div>
 
-										<div class="row align-right clearfix">
+									<div class="atform__body">
+										<div class="form-group row align-right clearfix">
 											<button type="button" name="cancel" class="btn btn-default waves-effect"><i class="material-icons">close</i><span>$tstrings['cancel']</span></button>
 											## <button type="reset" class="btn btn-default waves-effect"><i class="material-icons">undo</i><span>Reset</span></button><!-- TODO: i10n -->
 											<button type="submit" class="btn btn--skinned waves-effect"><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
 										</div>
+									</div>
 
-									</fieldset>
 								</form>
 							</div>
 						</div>
