@@ -1,8 +1,8 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
+#from Plugins.Extensions.OpenWebif.controllers.utilities import PY3
 #filter WebSafe
 
-#set $disableFilterEditing = False
-#if $disableFilterEditing
+#if False #$PY3
 	<script>
 		window.disableFilterEditing = true;
 	</script>
@@ -233,12 +233,6 @@
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 							<div id="ateditcontent">
 								<form name="atedit" method="GET" action="/autotimer/edit" id="ateditform">
-									<input type="hidden" name="id" id="id">
-									<input type="hidden" name="encoding">
-									<input type="hidden" name="always_zap">
-									<input type="hidden" name="lastBegin">
-									<!-- dyn add all unmatched values as hidden -->
-
 									<fieldset style="border: none" class="atform__body">
 										<div class="form-group">
 
@@ -828,11 +822,7 @@
 </div>
 
 <script>
-#if $showiptvchannelsinselection
-	var noiptv = false;
-#else
-	var noiptv = true;
-#end if
+
 </script>
 
 <script>

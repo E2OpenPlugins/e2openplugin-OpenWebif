@@ -16,15 +16,12 @@
  * 
  * 3.0 - complete overhaul
  * 
- * @todo don't send unticked values (custom offset etc)
- * @todo write filtering
+ * @todo don't send/empty out unticked values (custom offset etc.)
  * @todo fix zap/rec/zaprec params
  * @todo fix vps etc. params
  * @todo handle defaults
- * @todo map afterevent values
- * @todo handle non-form data -> hidden inputs?
- * @todo sort by name/date added/enabled etc
- * @toto better handle `tstr_` and `tstrings_`
+ * @todo sort list by name/date added/enabled etc
+ * @toto better handle `tstr_` and `tstrings_` (global change)
  * @todo JSDoc https://jsdoc.app/index.html
  * --------------------------------------------------------------------------
  */
@@ -88,8 +85,17 @@
         }
       }
     } else {
-      //TODO add hidden
+      // we haven't found a formControl to populate
       owif.utils.debugLog('%c[N/A]', 'color: red', name, value);
+      // filters are handled differently
+      if (name !== 'filters') {
+        const hiddenFormControl = document.createElement('input');
+        hiddenFormControl.type = 'hidden';
+        hiddenFormControl.name = name;
+        hiddenFormControl.value = value;
+        hiddenFormControl.dataset['valueType'] = (typeof value);
+        formControls[0].form.prepend(hiddenFormControl);
+      }
     }
   }
 
@@ -190,8 +196,10 @@
       }
 
       // fallback to (incorrectly) space-separated values
-      if (!self['tag'] && self['e2tags']) {
-        self['tag'] = self['e2tags'].split(' ');
+      if (self['e2tags']) {
+        if (!self['tag']) {
+          self['tag'] = self['e2tags'].split(' ');
+        }
         delete self['e2tags'];
       }
 
