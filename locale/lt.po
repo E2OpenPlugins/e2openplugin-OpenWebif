@@ -1303,9 +1303,9 @@ msgstr "OpenWebif konfigūravimas"
 msgid "OpenWebif Settings"
 msgstr "OpenWebif nuostatos"
 
-#: ../plugin/plugin.py:122
-msgid "OpenWebif url: http://yourip:port"
-msgstr "OpenWebif nuoroda: http://imtuvo_IP:prievadas"
+#: ../plugin/plugin.py:138
+msgid "OpenWebif URL:"
+msgstr "OpenWebif nuoroda:"
 
 #: ../plugin/controllers/i18n.py:441
 #: ../plugin/controllers/models/services.py:259

@@ -1292,9 +1292,9 @@ msgstr "Configuration OpenWebif"
 msgid "OpenWebif Settings"
 msgstr "Paramètres OpenWebif"
 
-#: ../plugin/plugin.py:122
-msgid "OpenWebif url: http://yourip:port"
-msgstr "OpenWebif url: http://yourip:port"
+#: ../plugin/plugin.py:138
+msgid "OpenWebif URL:"
+msgstr "OpenWebif URL:"
 
 #: ../plugin/controllers/i18n.py:441
 #: ../plugin/controllers/models/services.py:259
