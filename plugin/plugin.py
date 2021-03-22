@@ -30,10 +30,9 @@ from Components.ActionMap import ActionMap
 from Components.Label import Label
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection, configfile
-from Components.Network import iNetwork
 from enigma import getDesktop
 from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
-from Plugins.Extensions.OpenWebif.controllers.defaults import EXT_EVENT_INFO_SOURCE
+from Plugins.Extensions.OpenWebif.controllers.defaults import EXT_EVENT_INFO_SOURCE, getIP
 from Plugins.Extensions.OpenWebif.httpserver import HttpdStart, HttpdStop, HttpdRestart
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 
@@ -127,13 +126,9 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 
 		owif_protocol = "https" if config.OpenWebif.https_enabled.value else "http"
 		owif_port = config.OpenWebif.https_port.value if config.OpenWebif.https_enabled.value else config.OpenWebif.port.value
-		ifaces = iNetwork.getConfiguredAdapters()
-		if len(ifaces):
-			ip_list = iNetwork.getAdapterAttribute(ifaces[0], "ip")  # use only the first configured interface
-			if ip_list:
-				ip = "%d.%d.%d.%d" % (ip_list[0], ip_list[1], ip_list[2], ip_list[3])
-			else:
-				ip = _("box_ip")
+		ip = getIP()
+		if ip == None:
+			ip = _("box_ip")
 
 		self["lab1"] = Label("%s\n%s://%s:%d" % (_("OpenWebif url:"), owif_protocol, ip, owif_port))
 
