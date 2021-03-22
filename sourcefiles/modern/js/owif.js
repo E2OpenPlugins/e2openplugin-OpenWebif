@@ -40,7 +40,7 @@ class Utils {
         } else {
           // eg. application/xhtml+xml
           const responseText = await response.text();
-          return responseText;
+          return xml2json(responseText);
         }
 
       } else {

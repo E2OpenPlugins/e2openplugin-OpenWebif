@@ -20,6 +20,7 @@
  * @todo fix zap/rec/zaprec params
  * @todo fix vps etc. params
  * @todo handle defaults
+ * @todo consolidate e2simplexmlresult handling
  * @todo sort list by name/date added/enabled etc
  * @toto better handle `tstr_` and `tstrings_` (global change)
  * @todo JSDoc https://jsdoc.app/index.html
@@ -299,7 +300,7 @@
     return {
       getAll: async () => {
         let responseContent = await owif.utils.fetchData('/autotimer');
-        const data = xml2json(responseContent)['autotimer'];
+        const data = responseContent['autotimer'];
 
 // console.log('response: ', data);
 // console.log('defaults: ', data['default']);
@@ -377,7 +378,7 @@ if (!Array.isArray(window.atList)) {
       getSettings: async () => {
         const settingsNamespace = 'config.plugins.autotimer.';
         const responseContent = await owif.utils.fetchData('/autotimer/get');
-        let settings = xml2json(responseContent)['e2settings']['e2setting'];
+        let settings = responseContent['e2settings']['e2setting'];
         const { elements } = atSettingsForm;
 
         settings = settings.filter(setting => setting['e2settingname'].startsWith(settingsNamespace))
@@ -407,9 +408,9 @@ if (!Array.isArray(window.atList)) {
         
         try {
           const responseContent = await owif.utils.fetchData(`/autotimer/set`, { method: 'post', body: formData });
-          const responseAsJson = xml2json(responseContent)['e2simplexmlresult'];
-          const status = responseAsJson['e2state'];
-          let message = responseAsJson['e2statetext'];
+          const data = responseContent['e2simplexmlresult'];
+          const status = data['e2state'];
+          let message = data['e2statetext'];
           message = `${message.charAt(0).toUpperCase()}${message.slice(1)}`;
 
           if (status === true || status.toString().toLowerCase() === 'true') {
@@ -431,7 +432,7 @@ if (!Array.isArray(window.atList)) {
         document.getElementById('at-preview__progress').classList.toggle('hidden', false);
         document.getElementById('at-preview__no-results').classList.toggle('hidden', true);
         const responseContent = await owif.utils.fetchData('/autotimer/test');
-        const data = xml2json(responseContent)['e2autotimertest'];
+        const data = responseContent['e2autotimertest'];
         const autotimers = data['e2testtimer'] || [];
         const previewTbodyEl = document.getElementById('at-preview__list');
         const newNode = document.createElement('tbody');
@@ -504,9 +505,9 @@ if (!Array.isArray(window.atList)) {
         }, async (userConfirmed) => {
           if (userConfirmed) {
             const responseContent = await owif.utils.fetchData(`/autotimer/remove?id=${atId}`);
-            const responseAsJson = xml2json(responseContent)['e2simplexmlresult'];
-            const status = responseAsJson['e2state'];
-            let message = responseAsJson['e2statetext'];
+            const data = responseContent['e2simplexmlresult'];
+            const status = data['e2state'];
+            let message = data['e2statetext'];
             message = `${message.charAt(0).toUpperCase()}${message.slice(1)}`;
 
             if (status === true || status.toString().toLowerCase() === 'true') {
@@ -576,7 +577,7 @@ if (!Array.isArray(window.atList)) {
             // this should not be applied to `tags`
             formData.set(name, formData.getAll(name));
           }
-          if (value === '' || value === ',') {
+          if (value === '' || value === ',') { // TODO: this may no longer be needed
             // remove empty value (eg. empty `id` value causes server error, 
             // whereas missing `id` param does not (treated as a new autotimer))
             formData.delete(name); // TODO: check iOS compatibility
@@ -593,9 +594,9 @@ if (!Array.isArray(window.atList)) {
         });
 
         const responseContent = await owif.utils.fetchData(`/autotimer/edit?${extraParams}`, { method: 'post', body: formData });
-        const responseAsJson = xml2json(responseContent)['e2simplexmlresult'];
-        const status = responseAsJson['e2state'];
-        let message = responseAsJson['e2statetext'];
+        const data = responseContent['e2simplexmlresult'];
+        const status = data['e2state'];
+        let message = data['e2statetext'];
         message = `${message.charAt(0).toUpperCase()}${message.slice(1)}`;
 
         if (status === true || status.toString().toLowerCase() === 'true') {
