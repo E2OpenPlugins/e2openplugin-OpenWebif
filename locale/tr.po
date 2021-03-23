@@ -937,8 +937,8 @@ msgstr "OpenWebif Yapılandırması"
 msgid "OpenWebif Settings"
 msgstr "OpenWebif Ayarları"
 
-msgid "OpenWebif url: http://yourip:port"
-msgstr "OpenWebif url: http://yourip:port"
+msgid "OpenWebif URL:"
+msgstr "OpenWebif URL:"
 
 msgid "Orbital Position"
 msgstr "Yörünge Konumu"

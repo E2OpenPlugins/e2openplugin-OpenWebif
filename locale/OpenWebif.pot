@@ -1292,8 +1292,8 @@ msgstr ""
 msgid "OpenWebif Settings"
 msgstr ""
 
-#: ../plugin/plugin.py:122
-msgid "OpenWebif url: http://yourip:port"
+#: ../plugin/plugin.py:138
+msgid "OpenWebif URL:"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:441
