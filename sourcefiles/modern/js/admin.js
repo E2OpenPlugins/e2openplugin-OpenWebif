@@ -96,10 +96,8 @@ $.AdminBSB.leftSideBar = {
         });
 
         //Set menu height
-        _this.setMenuHeight();
         _this.checkStatuForResize(true);
         $(window).resize(function () {
-            _this.setMenuHeight();
             _this.checkStatuForResize(false);
         });
 
