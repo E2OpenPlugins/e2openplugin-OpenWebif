@@ -87,7 +87,11 @@ table .tcurrent {
   border: 2px solid #176093;
 }
 
-.cht .fr, .tcurrent tr, #leftmenu, .tm_row {
+.cht .fr {
+  background-color: #79b7e755;  
+}
+
+.tcurrent tr, #leftmenu, .tm_row {
   background-color: #F0F7FC;
 }
 

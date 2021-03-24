@@ -277,25 +277,15 @@ def getInfo(session=None, need_fullinfo=False):
 				chipset = "STi7111 @450MHz"
 		elif model == "dm800":
 			chipset = "bcm7401"
-		elif model == "dm800se":
-			chipset = "bcm7405"
-		elif model == "dm500hd":
-			chipset = "bcm7405"
-		elif model == "dm7020hd":
+		elif model in ("dm800se", "dm500hd", "dm7020hd", "dm800sev2", "dm500hdv2", "dm7020hdv2"):
 			chipset = "bcm7405"
 		elif model == "dm8000":
 			chipset = "bcm7400"
-		elif model == "dm820":
+		elif model in ("dm820", "dm7080"):
 			chipset = "bcm7435"
-		elif model == "dm7080":
-			chipset = "bcm7435"
-		elif model == "dm520":
+		elif model in ("dm520", "dm525"):
 			chipset = "bcm73625"
-		elif model == "dm525":
-			chipset = "bcm73625"
-		elif model == "dm900":
-			chipset = "bcm7252S"
-		elif model == "dm920":
+		elif model in ("dm900", "dm920"):
 			chipset = "bcm7252S"
 
 	if fileExists("/proc/stb/info/chipset"):
@@ -654,6 +644,12 @@ def getFrontendStatus(session):
 	inf['snr_db'] = ""
 	inf['agc'] = ""
 	inf['ber'] = ""
+
+	from Screens.Standby import inStandby
+	if inStandby is None:
+		inf['inStandby'] = "false"
+	else:
+		inf['inStandby'] = "true"
 
 	service = session.nav.getCurrentService()
 	if service is None:

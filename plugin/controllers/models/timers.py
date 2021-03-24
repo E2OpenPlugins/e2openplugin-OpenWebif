@@ -35,6 +35,35 @@ from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternat
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad
 
+def FuzzyTime(t, inPast = False):
+	d = localtime(t)
+	nt = time()
+	n = localtime()
+	dayOfWeek = (_("Mon"), _("Tue"), _("Wed"), _("Thu"), _("Fri"), _("Sat"), _("Sun"))
+
+	if d[:3] == n[:3]:
+		# same day
+		date = _("Today")
+	elif d[0] == n[0] and d[7] == n[7] - 1 and inPast:
+		# won't work on New Year's day
+		date = _("Yesterday")
+	elif ((t - nt) < 7*86400) and (nt < t) and not inPast:
+		# same week (must be future)
+		date = dayOfWeek[d[6]]
+	elif d[0] == n[0]:
+		# same year
+		if inPast:
+			# I want the day in the movielist
+			date = _("%s %02d.%02d.") % (dayOfWeek[d[6]], d[2], d[1])
+		else:
+			date = _("%02d.%02d.") % (d[2], d[1])
+	else:
+		date = _("%02d.%02d.%d") % (d[2], d[1], d[0])
+
+	timeres = _("%02d:%02d") % (d[3], d[4])
+
+	return date, timeres
+
 
 def getTimers(session):
 	rt = session.nav.RecordTimer
@@ -145,6 +174,17 @@ def getTimers(session):
 		if six.PY2:
 			descriptionextended = six.text_type(descriptionextended, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 
+		# switch back to old way.
+		#fuzzyBegin = ' '.join(str(i) for i in FuzzyTime(timer.begin, inPast = True)[1:])
+		#fuzzyEnd = ""
+		#if strftime("%Y%m%d", localtime(timer.begin)) == strftime("%Y%m%d", localtime(timer.end)):
+		#	fuzzyEnd = FuzzyTime(timer.end)[1]
+		#else:
+		#	fuzzyEnd = ' '.join(str(i) for i in FuzzyTime(timer.end, inPast = True))
+
+		fuzzyBegin = strftime(_("%d.%m.%Y %H:%M"), (localtime(float(timer.begin))))
+		fuzzyEnd = strftime(_("%d.%m.%Y %H:%M"), (localtime(float(timer.end))))
+
 		timers.append({
 			"serviceref": str(timer.service_ref),
 			"servicename": removeBad(timer.service_ref.getServiceName()),
@@ -172,8 +212,8 @@ def getTimers(session):
 			"toggledisabledimg": toggledisabledimg,
 			"filename": filename,
 			"nextactivation": nextactivation,
-			"realbegin": strftime(_("%d.%m.%Y %H:%M"), (localtime(float(timer.begin)))),
-			"realend": strftime(_("%d.%m.%Y %H:%M"), (localtime(float(timer.end)))),
+			"realbegin": fuzzyBegin,
+			"realend": fuzzyEnd,
 			"asrefs": asrefs,
 			"vpsplugin_enabled": vpsplugin_enabled,
 			"vpsplugin_overwrite": vpsplugin_overwrite,
