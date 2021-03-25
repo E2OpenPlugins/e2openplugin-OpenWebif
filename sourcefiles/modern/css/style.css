@@ -6347,54 +6347,6 @@
    border: none;
  }
  
- /* For Internet Explorer 10 ===================== */
- html.ie10 .sidebar .menu .list li {
-   line-height: 30px;
- }
- 
- html.ie10 .sidebar .menu .list .ml-menu li.active a:not(.menu-toggle).toggled:before {
-   top: 6px !important;
-   line-height: 20px !important;
- }
- 
- html.ie10 .sidebar .user-info .info-container {
-   top: 15px;
- }
- 
- html.ie10 .search-bar input[type='text'] {
-   padding: 26px 60px 26px 56px;
- }
- 
- html.ie10 .dropdown-menu ul.menu li a {
-   margin-top: -22px;
- }
- 
- html.ie10 .bs-searchbox .form-control {
-   width: 90%;
- }
- 
- /* For Internet Explorer 11 ===================== */
- html.ie11 .sidebar .menu .list .ml-menu li.active a:not(.menu-toggle).toggled:before {
-   top: 6px !important;
-   line-height: 20px !important;
- }
- 
- html.ie11 .sidebar .user-info .info-container {
-   top: 15px;
- }
- 
- html.ie11 .search-bar input[type='text'] {
-   padding: 26px 60px 26px 56px;
- }
- 
- html.ie11 .dropdown-menu ul.menu li a {
-   margin-top: -22px;
- }
- 
- html.ie11 .bs-searchbox .form-control {
-   width: 90%;
- }
- 
  .right-sidebar .nav-tabs {
    font-weight: normal;
    text-transform: uppercase;
