@@ -181,7 +181,7 @@
 			</select>
 		</div>
 		<div class="filter__container filter-value--text form-line">
-			<input type="text" name="{{_filterpredicate+_filterwhere}}" value="" placeholder="$tstrings['at_text_hint']" class="form-control">
+			<input type="text" name="{{_filterpredicate+_filterwhere}}" value="" autocomplete="off" placeholder="$tstrings['at_text_hint']" class="form-control">
 		</div>
 		<div class="filter__container filter-value--dayofweek hidden">
 			<select name="dayofweek" class="form-control">
@@ -249,7 +249,7 @@
 													<label>$tstrings['name']:</label>
 												</div>
 												<div class="atform__details__element form-line">
-													<input type="text" name="name" required autocapitalize="on" placeholder="$tstrings['at_name_hint']" class="form-control">
+													<input type="text" name="name" required autocomplete="off" autocapitalize="on" placeholder="$tstrings['at_name_hint']" class="form-control">
 												</div>
 											</div>
 
@@ -258,7 +258,7 @@
 													<label>$tstrings['at_text_match']:</label>
 												</div>
 												<div class="atform__details__element form-line">
-													<input type="text" name="match" required autocapitalize="off" placeholder="$tstrings['at_text_hint']" class="form-control">
+													<input type="text" name="match" required autocomplete="off" autocapitalize="off" placeholder="$tstrings['at_text_hint']" class="form-control">
 												</div>
 											</div>
 
