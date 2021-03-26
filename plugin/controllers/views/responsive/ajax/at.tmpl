@@ -298,13 +298,11 @@
 													<label>$tstrings['at_timer_type']:</label>
 												</div>
 												<div class="atform__details__element">
-													<div class="dropdown atform__details__dropdown">
-														<select name="justplay" class="form-control show-tick">
-															<option value="0" selected>$tstrings['at_record']</option>
-															<option value="1">$tstrings['at_zap']</option>
-															<option value="2">$tstrings['at_record'] + $tstrings['at_zap']</option>
-														</select>
-													</div>
+													<input type="checkbox" name="justplay" id="checkbox--justplay" value="1" class="form-control chk--skinned">
+													<label for="checkbox--justplay" class="m-r-30">$tstrings['at_zap']</label>
+
+													<input type="checkbox" name="always_zap" id="checkbox--always_zap" value="1" checked class="form-control chk--skinned">
+													<label for="checkbox--always_zap" class="m-r-30">$tstrings['at_record']</label>
 												</div>
 											</div>
 
@@ -343,29 +341,23 @@
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" id="_after" class="form-control chk--skinned">
-													<!-- Restrict to events on certain dates -->
-													<label for="_after">$tstrings['at_datespan_before']</label>
+													<input type="checkbox" id="_datespan" class="form-control chk--skinned">
+													<!-- Only match during timespan -->
+													<label for="_datespan">$tstrings['at_datespan']</label>
 												</div>
-												<div class="atform__details__element">
-													<div class="atform__details__dropdown">
-														<div id="timeFrameE" class="form-line dependent-section">
-															<input type="date" name="after" placeholder="YYYY-MM-DD" class="form-control"><!-- TODO: i10n -->
+												<div class="atform__details__element" style="min-height: 8ex;">
+													<div id="dateSpanE" class="select-related-container dependent-section">
+														<div class="atform__details__dropdown">
+															<label>$tstrings['at_datespan_from']:&nbsp;</label>
+															<div class="form-line">
+																<input type="date" name="after" placeholder="YYYY-MM-DD" class="form-control"><!-- TODO: i10n -->
+															</div>
 														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="atform__fields-container">
-												<div class="atform__details__title">
-													<input type="checkbox" id="_before" class="form-control chk--skinned">
-													<!-- Restrict to events on certain dates -->
-													<label for="_before">$tstrings['at_datespan_after']</label>
-												</div>
-												<div class="atform__details__element">
-													<div class=" atform__details__dropdown">
-														<div id="beforeE" class="form-line dependent-section">
-															<input type="date" name="before" placeholder="YYYY-MM-DD" class="form-control"><!-- TODO: i10n -->
+														<div class="atform__details__dropdown">
+															<label>$tstrings['at_datespan_to']:&nbsp;</label>
+															<div class="form-line">
+																<input type="date" name="before" placeholder="YYYY-MM-DD" class="form-control"><!-- TODO: i10n -->
+															</div>
 														</div>
 													</div>
 												</div>

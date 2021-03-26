@@ -16,12 +16,15 @@
  * 
  * 3.0 - complete overhaul
  * 
- * @todo don't send/empty out unticked values (custom offset etc.)
- * @todo fix zap/rec/zaprec params
+ * @todo fix dropdown styling
+ * @todo handle autotimer creation from event
  * @todo fix vps etc. params
- * @todo handle defaults
+ * @todo consolidate !Array.isArray
+ * @todo check/fix iptv exclusion
+ * @todo apply decodeHtml to filters
+ * @todo handle defaults (maybe show as [value])
  * @todo consolidate e2simplexmlresult handling
- * @todo sort list by name/date added/enabled etc
+ * @todo sort atlist by name/date added/enabled etc
  * @toto better handle `tstr_` and `tstrings_` (global change)
  * @todo JSDoc https://jsdoc.app/index.html
  * --------------------------------------------------------------------------
@@ -37,7 +40,7 @@
   }
 
   function removeNodesBySelector(selector) {
-    document.querySelectorAll(selector).forEach((node) =>{
+    document.querySelectorAll(selector).forEach((node) => {
       node.remove()
     });
   }
@@ -123,7 +126,6 @@
 
       self['name'] = decodeHtml(self['name']);
       self['match'] = decodeHtml(self['match']);
-      // TODO: apply to filters too
 
       self['tag'] = [];
       self['bouquets'] = [];
@@ -183,7 +185,7 @@
           });
           hasMismatchedService = !service['e2servicename'];
         });
-        self['hasMismatchedService'] = hasMismatchedService;
+        self['hasMismatchedService'] = hasMismatchedService; // use this to find services no longer in lamedb
         delete self['e2service'];
       }
 
@@ -252,6 +254,7 @@
     const addDependentSectionTogglers = (data = {}) => {
       // set up show/hide checkboxes
       data['_timespan'] = !!data.timespanFrom || !!data.timespanTo;
+      data['_datespan'] = !!data.after || !!data.before;
       data['_after'] = !!data.after;
       data['_before'] = !!data.before;
       data['_timerOffset'] = !!data.offset;
@@ -260,16 +263,6 @@
 
       return data;
     };
-
-    // const transformInputs = (data) => {
-    //   CurrentAT.justplay = $('#justplay').val();
-    //   if(CurrentAT.justplay=="2")
-    //   {
-    //     reqs += "&justplay=0&always_zap=1";
-    //   }
-    //   else
-    //     reqs += "&justplay=" + CurrentAT.justplay;
-    // };
 
     const addCell = (rowRef, content ='') => {
       const newCell = rowRef.insertCell();
@@ -302,7 +295,7 @@
         let responseContent = await owif.utils.fetchData('/autotimer');
         const data = responseContent['autotimer'];
 
-// console.log('response: ', data);
+console.log('response: ', data);
 // console.log('defaults: ', data['default']);
 // console.log('timer: ', data['timer']);
 window.atList = data['timer'] || [];
@@ -405,7 +398,7 @@ if (!Array.isArray(window.atList)) {
             formData.set(formControl.name, '');
           }
         };
-        
+
         try {
           const responseContent = await owif.utils.fetchData(`/autotimer/set`, { method: 'post', body: formData });
           const data = responseContent['e2simplexmlresult'];
@@ -473,7 +466,7 @@ if (!Array.isArray(window.atList)) {
         data = addDependentSectionTogglers(data);
 
         self.prepareChoices();
-    
+
         for (let loc of self.allLocations) {
           const newItem = document.createElement('option');
 
@@ -552,27 +545,27 @@ if (!Array.isArray(window.atList)) {
         self.populateForm(entry);
       },
 
-      saveEntry: async (extraParams = '') => {
+      transformFormData: () => {
         const formData = new FormData(atEditForm);
         const formDataObj = Object.fromEntries(formData);
+        const paramsNotToSend = ['_type', '_filterpredicate', '_filterwhere'];
+        const filteringParamNames = [
+          'title', 'shortdescription', 'description', 'dayofweek', 
+          '!title', '!shortdescription', '!description', '!dayofweek',
+        ];
+        // TODO: tags?
+        const paramsToSendIfEmpty = filteringParamNames.concat(['offset', 'services', 'bouquets']);
+        const paramsToConsolidate = ['offset', 'services', 'bouquets'];
 
         if (window.disableFilterEditing) {
-          [
-            // filters currently can't be modified reliably
-            'title', 'shortdescription', 'description', 'dayofweek', 
-            '!title', '!shortdescription', '!description', '!dayofweek',
-          ].forEach((param) => {
-            formData.delete(param);
-          });
+          filteringParamNames.forEach((param) => formData.delete(param));
         }
 
-        ['_filterpredicate', '_filterwhere'].forEach((param) => {
-          formData.delete(param);
-        });
+        paramsNotToSend.forEach((param) => formData.delete(param));
 
         Object.entries(formDataObj).forEach(([name, value]) => {
           owif.utils.debugLog(name, value);
-          if (['offset', 'services', 'bouquets'].includes(name)) {
+          if (paramsToConsolidate.includes(name)) {
             // join multiple param=a&param=b values into one param=[a,b]
             // this should not be applied to `tags`
             formData.set(name, formData.getAll(name));
@@ -586,14 +579,24 @@ if (!Array.isArray(window.atList)) {
           }
         });
         // AutoTimer doesn't remove some timer values unless they're sent as empty
-        // TODO: tags?
-        ['offset', 'services', 'bouquets'].forEach((param) => {
+        paramsToSendIfEmpty.forEach((param) => {
           if (!formData.has(param)) {
             formData.set(param, '');
           }
         });
 
-        const responseContent = await owif.utils.fetchData(`/autotimer/edit?${extraParams}`, { method: 'post', body: formData });
+        return formData;
+      },
+
+      saveEntry: async (extraParams = '') => {
+        const responseContent = await owif.utils.fetchData(
+          `/autotimer/edit?${extraParams}`,
+          { 
+            method: 'post',
+            body: self.transformFormData(),
+          }
+        );
+
         const data = responseContent['e2simplexmlresult'];
         const status = data['e2state'];
         let message = data['e2statetext'];
@@ -674,7 +677,7 @@ if (!Array.isArray(window.atList)) {
         filterPredicate.onchange = (evt) => {
           updateValueFields();
         };
-        
+
         filterWhere.onchange = (evt) => {
           const formControl = evt.target;
           const container = formControl.closest('fieldset');
@@ -706,44 +709,50 @@ if (!Array.isArray(window.atList)) {
       removeFilter: () => {
         const target = event.target;
         const container = target.closest('fieldset.at__filter__line');
-        // container.querySelector('input[type="text"]').value = '{{_REMOVE_}}';
-        // container.querySelector('select[name="dayofweek"]').value = '{{_REMOVE_}}';
-        // container.classList.add('hidden'); 
         container.remove();
       },
 
       initEventHandlers: () => {
         // create a failsafe element to assign event handlers to
-        let nullEl = document.createElement('input');
-
-        (document.querySelector('form[name="atedit"]') || nullEl).onsubmit = (evt) => {
-          evt.preventDefault();
-          self.saveEntry();
-        }
-        (document.querySelector('button[name="create"]') || nullEl).onclick = self.createEntry;
-        (document.querySelector('a[href="#at/new"]') || nullEl).onclick = (evt) => {
-          evt.preventDefault();
-          self.createEntry();
-        }
+				let nullEl = document.createElement('input');
+				
+				/* autotimer list */
+        // (document.querySelector('button[name="create"]') || nullEl).onclick = self.createEntry;
         (document.querySelector('button[name="reload"]') || nullEl).onclick = self.populateList;
         (document.querySelector('button[name="process"]') || nullEl).onclick = () => window.parseAT();
         (document.querySelector('button[name="preview"]') || nullEl).onclick = self.preview;
         (document.querySelector('button[name="timers"]') || nullEl).onclick = () => window.listTimers();
         (document.querySelector('button[name="settings"]') || nullEl).onclick = self.getSettings;
         (document.querySelector('button[name="saveSettings"]') || nullEl).onclick = self.saveSettings;
+        (document.querySelector('a[href="#at/new"]') || nullEl).onclick = (evt) => {
+          evt.preventDefault();
+          self.createEntry();
+        }
+				
+				/* autotimer edit - buttons */
         (document.querySelector('button[name="addFilter"]') || nullEl).onclick = () => self.addFilter();
-        (document.querySelector('button[name="cancel"]') || nullEl).onclick = self.cancelEntry;
+				(document.querySelector('button[name="cancel"]') || nullEl).onclick = self.cancelEntry;
 
+				/* autotimer edit - inputs */
+        (document.querySelector('form[name="atedit"]') || nullEl).onsubmit = (evt) => {
+          evt.preventDefault();
+          self.saveEntry();
+        }
+				// at least one option must be checked
+				(document.querySelectorAll('input[name="justplay"], input[name="always_zap"]') || nullEl).forEach((node) => {
+					node.onchange = (input) => {
+						const checkedInputs = document.querySelectorAll('input[name="justplay"]:checked, input[name="always_zap"]:checked');
+						(checkedInputs.length < 1) && (event.target.checked = !event.target.checked);
+					};
+				});
+
+				/* autotimer edit - show/hide */
         (document.getElementById('_timespan') || nullEl).onchange = (input) => {
           document.getElementById('timeSpanE').classList.toggle('dependent-section', !input.target.checked);
         };
-        (document.getElementById('_after') || nullEl).onchange = (input) => {
-          document.getElementById('timeFrameE').classList.toggle('dependent-section', !input.target.checked);
-          // document.getElementById('timeFrameAfterCheckBox').classList.toggle('dependent-section', !input.target.checked);
-        };
-        (document.getElementById('_before') || nullEl).onchange = (input) => {
-          document.getElementById('beforeE').classList.toggle('dependent-section', !input.target.checked);
-        };
+        (document.getElementById('_datespan') || nullEl).onchange = (input) => {
+          document.getElementById('dateSpanE').classList.toggle('dependent-section', !input.target.checked);
+				};
         (document.getElementById('_timerOffset') || nullEl).onchange = (input) => {
           document.getElementById('timerOffsetE').classList.toggle('dependent-section', !input.target.checked);
         };
@@ -759,17 +768,9 @@ if (!Array.isArray(window.atList)) {
         (document.getElementById('beforeevent') || nullEl).onchange = (input) => {
           document.getElementById('BeforeeventE').toggle(!!input.target.value);
         };
-        (document.getElementById('afterevent') || nullEl).onchange = (input) => {
-          // document.getElementById('AftereventE').toggle(!!input.target.value);
-        };
-        (document.getElementById('counter') || nullEl).onchange = (input) => {
-          //document.getElementById('CounterE').toggle(!!input.target.value);
-        };
         (document.getElementById('vps') || nullEl).onchange = (input) => {
           document.getElementById('vpsE').classList.toggle('dependent-section', !input.target.checked);
         };
-
-        nullEl = null;
       },
 
       init: async function () {
