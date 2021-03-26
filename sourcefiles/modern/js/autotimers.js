@@ -653,7 +653,7 @@ if (!Array.isArray(window.atList)) {
       addFilter: (filter = {predicate: '', where: 'title', value: ''}) => {
         const templateEl = document.getElementById('autotimer-filter-template');
         const newNode = templateEl.content.firstElementChild.cloneNode(true);
-        const filterListEl = document.getElementById('foo');
+        const filterListEl = document.getElementById('atform__filters-container');
 
         const filterPredicate = newNode.querySelector('select[name="_filterpredicate"]');
         const filterWhere = newNode.querySelector('select[name="_filterwhere"]');
