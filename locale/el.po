@@ -697,7 +697,7 @@ msgid "Every"
 msgstr "Κάθε"
 
 #: ../plugin/controllers/i18n.py:345
-msgid "Exclude"
+msgid "Exclude when"
 msgstr "Εξαίρεση"
 
 #: ../plugin/controllers/i18n.py:321
@@ -835,7 +835,7 @@ msgid "Import"
 msgstr "Εισαγωγή"
 
 #: ../plugin/controllers/i18n.py:344
-msgid "Include"
+msgid "Include when"
 msgstr "Συμπερίληψη"
 
 #: ../plugin/controllers/i18n.py:130
@@ -1190,11 +1190,11 @@ msgid "None"
 msgstr "Κανένα"
 
 #: ../plugin/controllers/i18n.py:309
-msgid "Not after"
+msgid "From date"
 msgstr "Όχι έπειτα από"
 
 #: ../plugin/controllers/i18n.py:310
-msgid "Not before"
+msgid "To date"
 msgstr "Όχι πριν από"
 
 #: ../plugin/controllers/i18n.py:175
@@ -1484,7 +1484,7 @@ msgid "Restrict to bouquets"
 msgstr "Περιορισμός στα Μπουκέτα"
 
 #: ../plugin/controllers/i18n.py:308
-msgid "Restrict to events on certain dates"
+msgid "Only match between dates"
 msgstr "Περιορισμός σε προγράμματα συγκεκριμένων ημερομηνιών"
 
 #: ../plugin/controllers/i18n.py:282
@@ -1554,11 +1554,11 @@ msgid "Search KinoPoisk"
 msgstr "Αναζήτηση στο KinoPoisk"
 
 #: ../plugin/controllers/i18n.py:298
-msgid "Search strictness"
+msgid "Case sensitivity"
 msgstr "Αυστηρότητα αναζήτησης"
 
 #: ../plugin/controllers/i18n.py:290
-msgid "Search type"
+msgid "Match when found"
 msgstr "Τύπος αναζήτησης"
 
 #: ../plugin/controllers/i18n.py:495
@@ -2221,15 +2221,15 @@ msgid "auto"
 msgstr "αυτόματο"
 
 #: ../plugin/controllers/i18n.py:300
-msgid "case-insensitive"
+msgid "ignore upper/lower case differences"
 msgstr "αναζήτηση χωρίς διάκριση μικρών-κεφαλαίων"
 
 #: ../plugin/controllers/i18n.py:299
-msgid "case-sensitive"
+msgid "match upper/lower case exactly"
 msgstr "αναζήτηση με διάκριση μικρών-κεφαλαίων"
 
 #: ../plugin/controllers/i18n.py:293
-msgid "description match"
+msgid "in description"
 msgstr "συσχέτιση περιγραφής"
 
 #: ../plugin/controllers/i18n.py:114
@@ -2245,7 +2245,7 @@ msgid "error! Loading Page"
 msgstr "σφάλμα! Φόρτωση Σελίδας"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact title match"
+msgid "as full title"
 msgstr "ακριβής συσχέτιση"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2265,15 +2265,15 @@ msgid "hour"
 msgstr "ώρα"
 
 #: ../plugin/controllers/i18n.py:348
-msgid "in description"
+msgid "description contains"
 msgstr "σε Περιγραφή"
 
 #: ../plugin/controllers/i18n.py:347
-msgid "in short description"
+msgid "short description contains"
 msgstr "σε Σύντομη περιγραφή"
 
 #: ../plugin/controllers/i18n.py:346
-msgid "in title"
+msgid "title contains"
 msgstr "σε Τίτλο"
 
 #: ../plugin/controllers/models/movies.py:223
@@ -2314,7 +2314,7 @@ msgid "one two three four unknown command"
 msgstr "ένα δύο τρία τέσσερα άγνωστη εντολή"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial title match"
+msgid "in any part of title"
 msgstr "μερική συσχέτιση"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2354,7 +2354,7 @@ msgid "select tags"
 msgstr "επιλογή Ετικετών"
 
 #: ../plugin/controllers/i18n.py:296
-msgid "short description match"
+msgid "in short description"
 msgstr "συσχέτιση σύντομης περιγραφής"
 
 #: ../plugin/controllers/i18n.py:316
@@ -2362,7 +2362,7 @@ msgid "standard"
 msgstr "στάνταρ"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "title starts with"
+msgid "at beginning of title"
 msgstr "εκκίνηση συσχέτισης"
 
 #: ../plugin/controllers/models/info.py:61
@@ -2372,11 +2372,11 @@ msgid "static"
 msgstr "στατική"
 
 #: ../plugin/controllers/i18n.py:294
-msgid "title or description match"
+msgid "in title or description"
 msgstr "συσχέτιση τίτλου ή περιγραφής"
 
 #: ../plugin/controllers/i18n.py:295
-msgid "title or short description match"
+msgid "in title or short description"
 msgstr "συσχέτιση τίτλου ή σύντομης περιγραφής"
 
 #: ../plugin/controllers/i18n.py:251

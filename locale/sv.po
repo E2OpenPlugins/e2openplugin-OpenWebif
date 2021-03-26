@@ -701,7 +701,7 @@ msgid "Every"
 msgstr "Varje"
 
 #: ../plugin/controllers/i18n.py:345
-msgid "Exclude"
+msgid "Exclude when"
 msgstr "Undanta"
 
 #: ../plugin/controllers/i18n.py:321
@@ -840,7 +840,7 @@ msgid "Import"
 msgstr "Importera"
 
 #: ../plugin/controllers/i18n.py:344
-msgid "Include"
+msgid "Include when"
 msgstr "Inkludera"
 
 #: ../plugin/controllers/i18n.py:130
@@ -1201,11 +1201,11 @@ msgid "None"
 msgstr "Inga"
 
 #: ../plugin/controllers/i18n.py:309
-msgid "Not after"
+msgid "From date"
 msgstr "Inte efter"
 
 #: ../plugin/controllers/i18n.py:310
-msgid "Not before"
+msgid "To date"
 msgstr "Inte före"
 
 #: ../plugin/controllers/i18n.py:175
@@ -1501,7 +1501,7 @@ msgid "Restrict to bouquets"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:308
-msgid "Restrict to events on certain dates"
+msgid "Only match between dates"
 msgstr "Tider skall bokas endast vissa datum"
 
 #: ../plugin/controllers/i18n.py:282
@@ -1571,11 +1571,11 @@ msgid "Search KinoPoisk"
 msgstr "Sök i KinoPoisk"
 
 #: ../plugin/controllers/i18n.py:298
-msgid "Search strictness"
+msgid "Case sensitivity"
 msgstr "Söknoggrannhet"
 
 #: ../plugin/controllers/i18n.py:290
-msgid "Search type"
+msgid "Match when found"
 msgstr "Typ av sökning"
 
 #: ../plugin/controllers/i18n.py:495
@@ -2247,15 +2247,15 @@ msgid "auto"
 msgstr "automatisk"
 
 #: ../plugin/controllers/i18n.py:300
-msgid "case-insensitive"
+msgid "ignore upper/lower case differences"
 msgstr "Sökning som inte gör skillnad på gemener/VERSALER"
 
 #: ../plugin/controllers/i18n.py:299
-msgid "case-sensitive"
+msgid "match upper/lower case exactly"
 msgstr "Sökning som gör skillnad på gemener/VERSALER"
 
 #: ../plugin/controllers/i18n.py:293
-msgid "description match"
+msgid "in description"
 msgstr "beskrivningen matchar"
 
 #: ../plugin/controllers/i18n.py:114
@@ -2271,7 +2271,7 @@ msgid "error! Loading Page"
 msgstr "Fel! Laddar sidan"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact title match"
+msgid "as full title"
 msgstr "exakt matchning"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2291,15 +2291,15 @@ msgid "hour"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:348
-msgid "in description"
+msgid "description contains"
 msgstr "i beskrivningen"
 
 #: ../plugin/controllers/i18n.py:347
-msgid "in short description"
+msgid "short description contains"
 msgstr "i kortfattade beskrivningen"
 
 #: ../plugin/controllers/i18n.py:346
-msgid "in title"
+msgid "title contains"
 msgstr "i titeln"
 
 #: ../plugin/controllers/models/movies.py:223
@@ -2342,7 +2342,7 @@ msgid "one two three four unknown command"
 msgstr "ett två tre fyra okänt kommando"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial title match"
+msgid "in any part of title"
 msgstr "ofullständig matchning"
 
 # Lämnas oöversatt t.v. eftersom begreppen kan vara mer kända på engelska än svenska. Står för behörigheten: Enbart läsbehörighet
@@ -2384,7 +2384,7 @@ msgid "select tags"
 msgstr "Välj etiketter"
 
 #: ../plugin/controllers/i18n.py:296
-msgid "short description match"
+msgid "in short description"
 msgstr "kortfattade beskrivningen matchar"
 
 #: ../plugin/controllers/i18n.py:316
@@ -2392,7 +2392,7 @@ msgid "standard"
 msgstr "standard"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "title starts with"
+msgid "at beginning of title"
 msgstr "titelns inledning matchar"
 
 #: ../plugin/controllers/models/info.py:61
@@ -2402,11 +2402,11 @@ msgid "static"
 msgstr "statisk"
 
 #: ../plugin/controllers/i18n.py:294
-msgid "title or description match"
+msgid "in title or description"
 msgstr "titeln eller beskrivningen  matchar"
 
 #: ../plugin/controllers/i18n.py:295
-msgid "title or short description match"
+msgid "in title or short description"
 msgstr "titeln eller kortfattade beskrivningen matchar"
 
 #: ../plugin/controllers/i18n.py:251

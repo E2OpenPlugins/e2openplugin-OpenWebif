@@ -517,7 +517,7 @@ msgstr "EventId bulunamadı"
 msgid "Every"
 msgstr "Her"
 
-msgid "Exclude"
+msgid "Exclude when"
 msgstr "Hariç"
 
 msgid "Execute \"after event\" during timespan"
@@ -616,7 +616,7 @@ msgstr "IPv6 adresleri"
 msgid "Import"
 msgstr "İçe Aktar"
 
-msgid "Include"
+msgid "Include when"
 msgstr "Dahil"
 
 msgid "Include description"
@@ -865,10 +865,10 @@ msgstr "Hayır, iptal et"
 msgid "None"
 msgstr "Yok"
 
-msgid "Not after"
+msgid "From date"
 msgstr "Sonra değil"
 
-msgid "Not before"
+msgid "To date"
 msgstr "Daha önce değil"
 
 msgid "Nothing"
@@ -1081,7 +1081,7 @@ msgstr "GUI'yi yeniden başlat"
 msgid "Restrict to bouquets"
 msgstr "Buketlerle Sınırla"
 
-msgid "Restrict to events on certain dates"
+msgid "Only match between dates"
 msgstr "Belirli tarihlerdeki etkinliklerle kısıtla"
 
 msgid "Root"
@@ -1132,10 +1132,10 @@ msgstr "IMDb'de Ara"
 msgid "Search KinoPoisk"
 msgstr "KinoPoisk'te Ara"
 
-msgid "Search strictness"
+msgid "Case sensitivity"
 msgstr "Arama katılığı"
 
-msgid "Search type"
+msgid "Match when found"
 msgstr "Arama türü"
 
 msgid "Select IPK file for upload"
@@ -1609,13 +1609,13 @@ msgstr "Zapped to"
 msgid "auto"
 msgstr "otomatik"
 
-msgid "case-insensitive"
+msgid "ignore upper/lower case differences"
 msgstr "büyük/küçük harfe duyarlı olmayan arama"
 
-msgid "case-sensitive"
+msgid "match upper/lower case exactly"
 msgstr "büyük/küçük harfe duyarlı arama"
 
-msgid "description match"
+msgid "in description"
 msgstr "açıklama eşleşmesi"
 
 msgid "disabled"
@@ -1627,7 +1627,7 @@ msgstr "hiçbir şey yapma"
 msgid "error! Loading Page"
 msgstr "hata! Sayfa yükleniyor"
 
-msgid "exact title match"
+msgid "as full title"
 msgstr "tam eşleme"
 
 msgid "finished"
@@ -1642,13 +1642,13 @@ msgstr "beklemeye git"
 msgid "hour"
 msgstr "saat"
 
-msgid "in description"
+msgid "description contains"
 msgstr "Açıklamada"
 
-msgid "in short description"
+msgid "short description contains"
 msgstr "Kısa Açıklama"
 
-msgid "in title"
+msgid "title contains"
 msgstr "Başlıkta"
 
 msgid "kB"
@@ -1675,7 +1675,7 @@ msgstr "Hafta içi"
 msgid "one two three four unknown command"
 msgstr "bir, iki, üç, dört bilinmeyen komut"
 
-msgid "partial title match"
+msgid "in any part of title"
 msgstr "kısmi eşleşme"
 
 msgid "r/o"
@@ -1705,22 +1705,22 @@ msgstr "Kanalları seçin"
 msgid "select tags"
 msgstr "Etiketleri seçin"
 
-msgid "short description match"
+msgid "in short description"
 msgstr "kısa açıklama eşleşmesi"
 
 msgid "standard"
 msgstr "standart"
 
-msgid "title starts with"
+msgid "at beginning of title"
 msgstr "eşleşmeye başla"
 
 msgid "static"
 msgstr "statik"
 
-msgid "title or description match"
+msgid "in title or description"
 msgstr "başlık veya açıklama eşleşmesi"
 
-msgid "title or short description match"
+msgid "in title or short description"
 msgstr "başlık veya kısa açıklama eşleşmesi"
 
 msgid "transcoded"

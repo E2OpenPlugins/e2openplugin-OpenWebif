@@ -697,7 +697,7 @@ msgid "Every"
 msgstr "كل"
 
 #: ../plugin/controllers/i18n.py:345
-msgid "Exclude"
+msgid "Exclude when"
 msgstr "إستبعاد"
 
 #: ../plugin/controllers/i18n.py:321
@@ -835,7 +835,7 @@ msgid "Import"
 msgstr "استيراد"
 
 #: ../plugin/controllers/i18n.py:344
-msgid "Include"
+msgid "Include when"
 msgstr "يشمل"
 
 #: ../plugin/controllers/i18n.py:130
@@ -1190,11 +1190,11 @@ msgid "None"
 msgstr "لاشيئ"
 
 #: ../plugin/controllers/i18n.py:309
-msgid "Not after"
+msgid "From date"
 msgstr "ليس بعد"
 
 #: ../plugin/controllers/i18n.py:310
-msgid "Not before"
+msgid "To date"
 msgstr "ليس قبل"
 
 #: ../plugin/controllers/i18n.py:175
@@ -1484,7 +1484,7 @@ msgid "Restrict to bouquets"
 msgstr "حصر الباقات"
 
 #: ../plugin/controllers/i18n.py:308
-msgid "Restrict to events on certain dates"
+msgid "Only match between dates"
 msgstr "تقييد للأحداث في تواريخ معينة"
 
 #: ../plugin/controllers/i18n.py:282
@@ -1553,11 +1553,11 @@ msgid "Search KinoPoisk"
 msgstr "البحث عن كينو بويسك"
 
 #: ../plugin/controllers/i18n.py:298
-msgid "Search strictness"
+msgid "Case sensitivity"
 msgstr "دقة البحث"
 
 #: ../plugin/controllers/i18n.py:290
-msgid "Search type"
+msgid "Match when found"
 msgstr "نوع البحث"
 
 #: ../plugin/controllers/i18n.py:495
@@ -2219,15 +2219,15 @@ msgid "auto"
 msgstr "تلقائي"
 
 #: ../plugin/controllers/i18n.py:300
-msgid "case-insensitive"
+msgid "ignore upper/lower case differences"
 msgstr "البحث عن طريق الحروف الأبجدية"
 
 #: ../plugin/controllers/i18n.py:299
-msgid "case-sensitive"
+msgid "match upper/lower case exactly"
 msgstr "البحث عن طريق الحروف الأبجدية"
 
 #: ../plugin/controllers/i18n.py:293
-msgid "description match"
+msgid "in description"
 msgstr "تطابق الوصف"
 
 #: ../plugin/controllers/i18n.py:114
@@ -2243,7 +2243,7 @@ msgid "error! Loading Page"
 msgstr "الخطا! تحميل الصفحة"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact title match"
+msgid "as full title"
 msgstr "تطابق كامل"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2263,15 +2263,15 @@ msgid "hour"
 msgstr "ساعه"
 
 #: ../plugin/controllers/i18n.py:348
-msgid "in description"
+msgid "description contains"
 msgstr "فى الوصف"
 
 #: ../plugin/controllers/i18n.py:347
-msgid "in short description"
+msgid "short description contains"
 msgstr "فى وصف مختصر"
 
 #: ../plugin/controllers/i18n.py:346
-msgid "in title"
+msgid "title contains"
 msgstr "فى عنوان"
 
 #: ../plugin/controllers/models/movies.py:223
@@ -2312,7 +2312,7 @@ msgid "one two three four unknown command"
 msgstr "1 2 3 4 أمر غير معروف"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial title match"
+msgid "in any part of title"
 msgstr "تطابق جزئي"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2352,7 +2352,7 @@ msgid "select tags"
 msgstr "حدد العلامات"
 
 #: ../plugin/controllers/i18n.py:296
-msgid "short description match"
+msgid "in short description"
 msgstr "تطابق وصف مختصر"
 
 #: ../plugin/controllers/i18n.py:316
@@ -2360,7 +2360,7 @@ msgid "standard"
 msgstr "قياسي"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "title starts with"
+msgid "at beginning of title"
 msgstr "بدء التطابق"
 
 #: ../plugin/controllers/models/info.py:61
@@ -2370,11 +2370,11 @@ msgid "static"
 msgstr "ثابت"
 
 #: ../plugin/controllers/i18n.py:294
-msgid "title or description match"
+msgid "in title or description"
 msgstr "العنوان أو تطابق الوصف"
 
 #: ../plugin/controllers/i18n.py:295
-msgid "title or short description match"
+msgid "in title or short description"
 msgstr "عنوان أو تطابق وصف مختصر"
 
 #: ../plugin/controllers/i18n.py:251

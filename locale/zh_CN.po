@@ -734,7 +734,7 @@ msgid "Every"
 msgstr "每天"
 
 #: ../plugin/controllers/i18n.py:345
-msgid "Exclude"
+msgid "Exclude when"
 msgstr "排除"
 
 #: ../plugin/controllers/i18n.py:321
@@ -873,7 +873,7 @@ msgid "Import"
 msgstr "导入"
 
 #: ../plugin/controllers/i18n.py:344
-msgid "Include"
+msgid "Include when"
 msgstr "包含"
 
 #: ../plugin/controllers/i18n.py:130
@@ -1233,11 +1233,11 @@ msgid "None"
 msgstr "无"
 
 #: ../plugin/controllers/i18n.py:309
-msgid "Not after"
+msgid "From date"
 msgstr "不在这之后"
 
 #: ../plugin/controllers/i18n.py:310
-msgid "Not before"
+msgid "To date"
 msgstr "不在这之前"
 
 #: ../plugin/controllers/i18n.py:175
@@ -1536,7 +1536,7 @@ msgid "Restrict to bouquets"
 msgstr "仅限分组"
 
 #: ../plugin/controllers/i18n.py:308
-msgid "Restrict to events on certain dates"
+msgid "Only match between dates"
 msgstr "限制在特定日期的事件"
 
 #: ../plugin/controllers/i18n.py:282
@@ -1609,11 +1609,11 @@ msgid "Search KinoPoisk"
 msgstr "搜索 KinoPoisk"
 
 #: ../plugin/controllers/i18n.py:298
-msgid "Search strictness"
+msgid "Case sensitivity"
 msgstr "搜索（严格）"
 
 #: ../plugin/controllers/i18n.py:290
-msgid "Search type"
+msgid "Match when found"
 msgstr "搜索类型"
 
 #: ../plugin/controllers/i18n.py:495
@@ -2304,15 +2304,15 @@ msgid "base"
 msgstr "基础"
 
 #: ../plugin/controllers/i18n.py:300
-msgid "case-insensitive"
+msgid "ignore upper/lower case differences"
 msgstr "搜索（不区分大小写）"
 
 #: ../plugin/controllers/i18n.py:299
-msgid "case-sensitive"
+msgid "match upper/lower case exactly"
 msgstr "搜索（区分大小写）"
 
 #: ../plugin/controllers/i18n.py:293
-msgid "description match"
+msgid "in description"
 msgstr "描述匹配"
 
 #: ../plugin/controllers/i18n.py:114
@@ -2328,7 +2328,7 @@ msgid "error! Loading Page"
 msgstr "错误!正在载入页面"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact title match"
+msgid "as full title"
 msgstr "精准匹配"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2348,15 +2348,15 @@ msgid "hour"
 msgstr "小时"
 
 #: ../plugin/controllers/i18n.py:348
-msgid "in description"
+msgid "description contains"
 msgstr "从描述"
 
 #: ../plugin/controllers/i18n.py:347
-msgid "in short description"
+msgid "short description contains"
 msgstr "从简介"
 
 #: ../plugin/controllers/i18n.py:346
-msgid "in title"
+msgid "title contains"
 msgstr "从标题"
 
 #: ../plugin/controllers/models/movies.py:223
@@ -2401,7 +2401,7 @@ msgid "one two three four unknown command"
 msgstr "1 2 3 4 未知的命令"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial title match"
+msgid "in any part of title"
 msgstr "部分匹配"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2441,7 +2441,7 @@ msgid "select tags"
 msgstr "选择标签"
 
 #: ../plugin/controllers/i18n.py:296
-msgid "short description match"
+msgid "in short description"
 msgstr "简介匹配"
 
 #: ../plugin/controllers/i18n.py:316
@@ -2449,7 +2449,7 @@ msgid "standard"
 msgstr "标准"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "title starts with"
+msgid "at beginning of title"
 msgstr "开始匹配"
 
 #: ../plugin/controllers/models/info.py:61
@@ -2459,11 +2459,11 @@ msgid "static"
 msgstr "静态"
 
 #: ../plugin/controllers/i18n.py:294
-msgid "title or description match"
+msgid "in title or description"
 msgstr "标题或描述匹配"
 
 #: ../plugin/controllers/i18n.py:295
-msgid "title or short description match"
+msgid "in title or short description"
 msgstr "标题或简介匹配"
 
 #: ../plugin/controllers/i18n.py:251
