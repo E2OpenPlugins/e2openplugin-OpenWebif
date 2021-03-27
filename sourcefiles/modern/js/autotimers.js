@@ -768,8 +768,8 @@ if (!Array.isArray(window.atList)) {
         (document.getElementById('beforeevent') || nullEl).onchange = (input) => {
           document.getElementById('BeforeeventE').toggle(!!input.target.value);
         };
-        (document.getElementById('vps') || nullEl).onchange = (input) => {
-          document.getElementById('vpsE').classList.toggle('dependent-section', !input.target.checked);
+        (document.querySelector('[name="vps_enabled"]') || nullEl).onchange = (input) => {
+          document.getElementById('vps_overwriteE').classList.toggle('dependent-section', !input.target.checked);
         };
       },
 

@@ -147,7 +147,7 @@
 		<div class="body">
 			<div class="row clearfix m-b--20">
 				<div class="col-sm-4">
-					<slot name="autotimer-timespan" style="white-space: nowrap;">Any time</slot><!-- TODO: i10n -->
+					<slot name="autotimer-timespan" style="white-space: nowrap;">$tstrings['at_any_time']</slot>
 					## <span class="event__duration" style="opacity: 0.4; margin-left: 0.4ch;">(65 mins)</span>
 					<div class="m-t-10" style="font-weight: bold;">
 						<slot name="autotimer-channels"></slot>
@@ -165,7 +165,7 @@
 
 <template id="autotimer-filter-template">
 	<fieldset class="at__filter__line m-b-20">
-		<button type="button" name="removeFilter" title="Remove filter"><i class="material-icons">delete_outline</i></button><!-- TODO: i10n -->
+		<button type="button" name="removeFilter" title="$tstrings['at_remove_filter']"><i class="material-icons">delete_outline</i></button>
 		<div class="filter__container">
 			<select name="_filterpredicate" class="form-control">
 				<option value="" selected>$tstrings['at_filter_include']</option>
@@ -181,11 +181,12 @@
 			</select>
 		</div>
 		<div class="filter__container filter-value--text form-line">
-			<input type="text" name="{{_filterpredicate+_filterwhere}}" value="" autocomplete="off" placeholder="$tstrings['at_text_hint']" class="form-control">
+			<input type="text" name="{{_filterpredicate+_filterwhere}}" value="" autocomplete="off" 
+						 placeholder="$tstrings['at_text_hint']" class="form-control">
 		</div>
 		<div class="filter__container filter-value--dayofweek hidden">
 			<select name="dayofweek" class="form-control">
-				<option value="" disabled>Select...</option><!-- TODO: i10n -->
+				<option value="" disabled>$tstrings['form_select']</option>
 				<option value="0">$tstrings['monday']</option>
 				<option value="1">$tstrings['tuesday']</option>
 				<option value="2">$tstrings['wednesday']</option>
@@ -325,13 +326,13 @@
 														<div class="atform__details__dropdown">
 															<label>$tstrings['at_timespan_begin']:&nbsp;</label>
 															<div class="form-line">
-																<input type="time" name="timespanFrom" placeholder="HH:MM" class="form-control"><!-- TODO: i10n -->
+																<input type="time" name="timespanFrom" placeholder="$tstrings['HH_MM']" class="form-control">
 															</div>
 														</div>
 														<div class="atform__details__dropdown">
 															<label>$tstrings['at_timespan_end']:&nbsp;</label>
 															<div class="form-line">
-																<input type="time" name="timespanTo" placeholder="HH:MM" class="form-control"><!-- TODO: i10n -->
+																<input type="time" name="timespanTo" placeholder="$tstrings['HH_MM']" class="form-control">
 															</div>
 														</div>
 													</div>
@@ -349,13 +350,13 @@
 														<div class="atform__details__dropdown">
 															<label>$tstrings['at_datespan_from']:&nbsp;</label>
 															<div class="form-line">
-																<input type="date" name="after" placeholder="YYYY-MM-DD" class="form-control"><!-- TODO: i10n -->
+																<input type="date" name="after" placeholder="$tstrings['YYYY_MM_DD']" class="form-control">
 															</div>
 														</div>
 														<div class="atform__details__dropdown">
 															<label>$tstrings['at_datespan_to']:&nbsp;</label>
 															<div class="form-line">
-																<input type="date" name="before" placeholder="YYYY-MM-DD" class="form-control"><!-- TODO: i10n -->
+																<input type="date" name="before" placeholder="$tstrings['YYYY_MM_DD']" class="form-control">
 															</div>
 														</div>
 													</div>
@@ -396,7 +397,7 @@
 													<div class=" atform__details__dropdown">
 														<div class="form-line">
 															<!-- Maximum duration (in m) -->
-															<input type="number" name="maxduration" min="0" placeholder="(in minutes)" class="form-control"><!-- TODO: i10n -->
+															<input type="number" name="maxduration" min="0" placeholder="$tstrings['at_in_minutes']" class="form-control">
 														</div>
 													</div>
 												</div>
@@ -562,56 +563,50 @@
 											</div>
 
 											<div class="atform__fields-container">
-												<label class="m-b-0" style="font-size: 16px;">Add tags to recording:</label><!-- TODO: i10n -->
+												<label class="m-b-0" style="font-size: 16px;">$tstrings['at_add_tags']:</label>
 												<div class="dropdown atform__details__dropdown form-line">
-													<select name="tag" class="form-control no-default-select" multiple
-																	data-choices-select="tag" data-choices-config='{"shouldSort": true}'><!-- this quoting style is required -->
-														<!-- option value="" disabled>Add tags</option -->
+													<select name="tag" class="form-control no-default-select" 
+																	multiple data-choices-select="tag" data-choices-config='{"shouldSort": true}'><!-- this quoting style is required -->
+														## <option value="" disabled>$tstrings['at_add_tags']</option>
 													</select>
 												</div>
 											</div>
 
 											<div class="atform__fields-container">
 												<!-- Restrict to specific services -->
-												<label class="m-b-0" style="font-size: 16px;">Restrict to channels:</label><!-- TODO: i10n -->
+												<label class="m-b-0" style="font-size: 16px;">$tstrings['at_restrict_channels']:</label>
 												<div class="dropdown atform__details__dropdown form-line">
-													<select name="services" class="form-control no-default-select" multiple
-																	data-choices-select="services">
-														<!-- option value="" disabled>Restrict to channels</option -->
+													<select name="services" class="form-control no-default-select"
+																	multiple data-choices-select="services">
+														## <option value="" disabled>$tstrings['at_restrict_channels']</option>
 													</select>
 												</div>
 											</div>
 
 											<div class="atform__fields-container">
 												<!-- Restrict to specific bouquets -->
-												<label class="m-b-0" style="font-size: 16px;">Restrict to bouquets:</label><!-- TODO: i10n -->
+												<label class="m-b-0" style="font-size: 16px;">$tstrings['at_restrict_bouquets']:</label>
 												<div class="dropdown atform__details__dropdown form-line">
-													<select name="bouquets" class="form-control no-default-select" multiple
-																	data-choices-select="bouquets" data-choices-config='{"shouldSort": true}'>
-														<!-- option value="" disabled>Restrict to bouquets</option -->
+													<select name="bouquets" class="form-control no-default-select"
+																	multiple data-choices-select="bouquets" data-choices-config='{"shouldSort": true}'>
+														## <option value="" disabled>$tstrings['at_restrict_bouquets']</option>
 													</select>
 												</div>
 											</div>
 
 											<!-- Restrict to days -->
 
-#if $hasVPS == 1
+#if True or $hasVPS == 1
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="vps" value="1" class="form-control chk--skinned">
-													<label for="vps">$tstrings['vps']</label>
+													<input type="checkbox" name="vps_enabled" value="yes" id="checkbox--vps_enabled" class="form-control chk--skinned">
+													<label for="checkbox--vps_enabled">$tstrings['vps']</label>
 												</div>
 												<div class="atform__details__element">
-													<span id="vpsE">
-														<div class="col-xs-12 col-sm-4">
-															<div class="row clearfix">
-																<div class="col-xs-12">
-																	<input type="checkbox" name="vpssm" class="form-control chk--skinned">
-																	<label for="vpssm">$tstrings['safe_mode']</label>
-																</div>
-															</div>
-														</div>
-													</span>
+													<div id="vps_overwriteE" class="dependent-section">
+														<input type="checkbox" name="vps_overwrite" value="yes" id="checkbox--vps_overwrite" class="form-control chk--skinned">
+														<label for="checkbox--vps_overwrite">$tstrings['safe_mode']</label>
+													</div>
 												</div>
 											</div>
 #end if
@@ -642,7 +637,7 @@
 									<div class="atform__body">
 										<div class="form-group row align-right clearfix">
 											<button type="button" name="cancel" class="btn btn-default waves-effect"><i class="material-icons">close</i><span>$tstrings['cancel']</span></button>
-											## <button type="reset" class="btn btn-default waves-effect"><i class="material-icons">undo</i><span>Reset</span></button><!-- TODO: i10n -->
+											## <button type="reset" class="btn btn-default waves-effect"><i class="material-icons">undo</i><span>$tstrings['form_reset']</span></button>
 											<button type="submit" class="btn btn--skinned waves-effect"><i class="material-icons">save</i><span>$tstrings['at_save']</span></button>
 										</div>
 									</div>
@@ -670,7 +665,7 @@
 						<table id="at-preview__table" class="table table-striped table-hover">
 							<thead>
 								<tr>
-									<th>State</th><!-- TODO: i10n -->
+									<th>$tstrings['at_state']</th>
 									<th>$tstrings['name']</th>
 									<th>$tstrings['at_text_match']</th>
 									<th>$tstrings['channel']</th>
@@ -696,7 +691,7 @@
 								</tr>
 								<tr style="background-color: transparent;">
 									<td id="at-preview__no-results" class="at-preview__no-results" colspan="100%">
-										<h5>No matches were found in the EPG</h5><!-- TODO: i10n -->
+										<h5>$tstrings['at_no_matches']</h5>
 									</td>
 								</tr>
 							</thead>
