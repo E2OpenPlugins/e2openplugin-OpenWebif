@@ -40,7 +40,7 @@ from Plugins.Extensions.OpenWebif.controllers.transcoding import TranscodingCont
 from Plugins.Extensions.OpenWebif.controllers.wol import WOLSetupController, WOLClientController
 from Plugins.Extensions.OpenWebif.controllers.file import FileController
 from Plugins.Extensions.OpenWebif.controllers.defaults import PICON_PATH, getPublicPath, VIEWS_PATH, setMobile, refreshPiconPath
-from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg, isVTI
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
 class RootController(BaseController):
 	"""
@@ -64,7 +64,7 @@ class RootController(BaseController):
 				self.putChild2(static_val, static.File(six.ensure_binary(getPublicPath() + '/' + static_val)))
 
 		if os.path.exists('/usr/bin/shellinaboxd'):
-			if isVTI():
+			if os.path.exists('/etc/vtiversion.info'):
 				self.putChild2("terminal", proxy.ReverseProxyResource(b'127.0.0.1', 4200, b'/'))
 			else:
 				self.putChild2("terminal", proxy.ReverseProxyResource(b'::1', 4200, b'/'))

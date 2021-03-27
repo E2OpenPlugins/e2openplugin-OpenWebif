@@ -346,14 +346,6 @@ def getEventInfoProvider(moviedb):
 		pass
 	return providerData
 
-def isVTI():
-	try:
-		from enigma import getVTiVersionString
-		getVTiVersionString()
-		return True
-	except ImportError:
-		pass
-	return False
 
 if __name__ == '__main__':
 	import doctest
