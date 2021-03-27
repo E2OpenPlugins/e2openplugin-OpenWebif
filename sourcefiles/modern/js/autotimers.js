@@ -17,8 +17,8 @@
  * 3.0 - complete overhaul
  * 
  * @todo fix dropdown styling
+ * @todo fix afterevent toggle
  * @todo handle autotimer creation from event
- * @todo fix vps etc. params
  * @todo consolidate !Array.isArray
  * @todo check/fix iptv exclusion
  * @todo apply decodeHtml to filters
@@ -101,6 +101,15 @@
         formControls[0].form.prepend(hiddenFormControl);
       }
     }
+  }
+
+  function toggleFormSection(section, disabled) {
+    try {
+      section.classList.toggle('dependent-section--disabled', disabled);
+      section.querySelectorAll('input, select').forEach((formControl) => {
+        formControl.disabled = disabled;
+      });
+    } catch (ex) {}
   }
 
   /*
@@ -548,7 +557,7 @@ if (!Array.isArray(window.atList)) {
       transformFormData: () => {
         const formData = new FormData(atEditForm);
         const formDataObj = Object.fromEntries(formData);
-        const paramsNotToSend = ['_type', '_filterpredicate', '_filterwhere'];
+        const paramsNotToSend = ['hasMismatchedService', '_before', '_after', '_type', '_filterpredicate', '_filterwhere'];
         const filteringParamNames = [
           'title', 'shortdescription', 'description', 'dayofweek', 
           '!title', '!shortdescription', '!description', '!dayofweek',
@@ -748,28 +757,28 @@ if (!Array.isArray(window.atList)) {
 
 				/* autotimer edit - show/hide */
         (document.getElementById('_timespan') || nullEl).onchange = (input) => {
-          document.getElementById('timeSpanE').classList.toggle('dependent-section', !input.target.checked);
+          toggleFormSection(document.getElementById('_timespan_'), !input.target.checked);
         };
         (document.getElementById('_datespan') || nullEl).onchange = (input) => {
-          document.getElementById('dateSpanE').classList.toggle('dependent-section', !input.target.checked);
+          toggleFormSection(document.getElementById('_datespan_'), !input.target.checked);
 				};
         (document.getElementById('_timerOffset') || nullEl).onchange = (input) => {
-          document.getElementById('timerOffsetE').classList.toggle('dependent-section', !input.target.checked);
+          toggleFormSection(document.getElementById('_timerOffset_'), !input.target.checked);
         };
         (document.querySelector('[name="afterevent"]') || nullEl).onchange = (input) => {
-          document.getElementById('AftereventE').classList.toggle('dependent-section', !input.target.value);
+          toggleFormSection(document.getElementById('AftereventE'), !input.target.checked);
         };
         (document.getElementById('timeSpanAE') || nullEl).onchange = (input) => {
-          document.getElementById('timeSpanAEE').classList.toggle('dependent-section', !input.target.checked);
+          toggleFormSection(document.getElementById('timeSpanAEE'), !input.target.checked);
         };
         (document.getElementById('_location') || nullEl).onchange = (input) => {
-          document.getElementById('LocationE').classList.toggle('dependent-section', !input.target.checked);
+          toggleFormSection(document.getElementById('_location_'), !input.target.checked);
         };
         (document.getElementById('beforeevent') || nullEl).onchange = (input) => {
-          document.getElementById('BeforeeventE').toggle(!!input.target.value);
+          toggleFormSection(document.getElementById('BeforeeventE'), !input.target.checked);
         };
         (document.querySelector('[name="vps_enabled"]') || nullEl).onchange = (input) => {
-          document.getElementById('vps_overwriteE').classList.toggle('dependent-section', !input.target.checked);
+          toggleFormSection(document.getElementById('vps_overwrite_'), !input.target.checked);
         };
       },
 

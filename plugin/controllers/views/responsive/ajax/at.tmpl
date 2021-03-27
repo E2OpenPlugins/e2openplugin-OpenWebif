@@ -64,7 +64,11 @@
 }
 
 .dependent-section {
-	display: none;
+	transition: 0.1s opacity ease-in-out;
+}
+
+.dependent-section--disabled {
+	opacity: 0.1;
 }
 
 .atform__details__dropdown .btn.btn { /* this specificity is intentional */ 
@@ -322,7 +326,7 @@
 													<label for="_timespan">$tstrings['at_timespan']</label>
 												</div>
 												<div class="atform__details__element" style="min-height: 8ex;">
-													<div id="timeSpanE" class="select-related-container dependent-section">
+													<div id="_timespan_" class="select-related-container dependent-section">
 														<div class="atform__details__dropdown">
 															<label>$tstrings['at_timespan_begin']:&nbsp;</label>
 															<div class="form-line">
@@ -346,7 +350,7 @@
 													<label for="_datespan">$tstrings['at_datespan']</label>
 												</div>
 												<div class="atform__details__element" style="min-height: 8ex;">
-													<div id="dateSpanE" class="select-related-container dependent-section">
+													<div id="_datespan_" class="select-related-container dependent-section">
 														<div class="atform__details__dropdown">
 															<label>$tstrings['at_datespan_from']:&nbsp;</label>
 															<div class="form-line">
@@ -370,7 +374,7 @@
 													<label for="_timerOffset">$tstrings['at_timer_offset']</label>
 												</div>
 												<div class="atform__details__element" style="min-height: 8ex;">
-													<div id="timerOffsetE" class="select-related-container dependent-section">
+													<div id="_timerOffset_" class="select-related-container dependent-section">
 														<div class="atform__details__dropdown">
 															<!-- Offset before recording (mins)-->
 															<label>$tstrings['at_timer_offset_before']:&nbsp;</label>
@@ -544,7 +548,7 @@
 													<label for="_location">$tstrings['at_location']</label>
 												</div>
 												<div class="atform__details__element">
-													<div id="LocationE" class="dropdown atform__details__dropdown dependent-section">
+													<div id="_location_" class="dropdown atform__details__dropdown dependent-section">
 														<!-- Custom location -->
 														<select name="location" class="form-control show-tick">
 															<optgroup label="$tstrings['bookmarks']">
@@ -599,12 +603,12 @@
 #if True or $hasVPS == 1
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="vps_enabled" value="yes" id="checkbox--vps_enabled" class="form-control chk--skinned">
+													<input type="checkbox" name="vps_enabled" value="1" id="checkbox--vps_enabled" class="form-control chk--skinned">
 													<label for="checkbox--vps_enabled">$tstrings['vps']</label>
 												</div>
 												<div class="atform__details__element">
-													<div id="vps_overwriteE" class="dependent-section">
-														<input type="checkbox" name="vps_overwrite" value="yes" id="checkbox--vps_overwrite" class="form-control chk--skinned">
+													<div id="vps_overwrite_" class="dependent-section">
+														<input type="checkbox" name="vps_overwrite" value="1" id="checkbox--vps_overwrite" class="form-control chk--skinned">
 														<label for="checkbox--vps_overwrite">$tstrings['safe_mode']</label>
 													</div>
 												</div>
