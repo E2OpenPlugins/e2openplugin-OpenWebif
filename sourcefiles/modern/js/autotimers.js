@@ -19,7 +19,6 @@
  * @todo fix dropdown styling
  * @todo fix afterevent toggle
  * @todo handle autotimer creation from event
- * @todo consolidate !Array.isArray
  * @todo check/fix iptv exclusion
  * @todo apply decodeHtml to filters
  * @todo handle defaults (maybe show as [value])
@@ -37,6 +36,10 @@
     const txt = document.createElement('textarea');
     txt.innerHTML = html;
     return txt.value;
+  }
+
+  function forceToArray(value) {
+    return (Array.isArray(value)) ? value : [value];
   }
 
   function removeNodesBySelector(selector) {
@@ -180,12 +183,8 @@
       }
 
       if (self['e2service']) {
-        if (!Array.isArray(self['e2service'])) {
-          // we expect an array
-          self['e2service'] = [self['e2service']];
-        }
         let hasMismatchedService = false;
-        self['e2service'].forEach((service, index) => {
+        forceToArray(self['e2service']).forEach((service, index) => {
           const bouquetsOrChannels = (owif.utils.isBouquet(service['e2servicereference'])) ? 'bouquets' : 'services';
           self[bouquetsOrChannels].push({
             'sRef': service['e2servicereference'],
@@ -199,11 +198,7 @@
       }
 
       if (self['e2tag']) {
-        if (!Array.isArray(self['e2tag'])) {
-          // we expect an array
-          self['e2tag'] = [self['e2tag']];
-        }
-        self['tag'] = self['e2tag'];
+        self['tag'] = forceToArray(self['e2tag']);
         delete self['e2tag'];
       }
 
@@ -218,20 +213,12 @@
       self['vps_safemode'] = !self['vps_overwrite'];
 
       if (self['include']) {
-        if (!Array.isArray(self['include'])) {
-          // we expect an array
-          self['include'] = [self['include']];
-        }
-        self['filters']['include'] = self['include'];
+        self['filters']['include'] = forceToArray(self['include']);
         delete self['include'];
       }
 
       if (self['exclude']) {
-        if (!Array.isArray(self['exclude'])) {
-          // we expect an array
-          self['exclude'] = [self['exclude']];
-        }
-        self['filters']['exclude'] = self['exclude'];
+        self['filters']['exclude'] = forceToArray(self['exclude']);
         delete self['exclude'];
       }
 
@@ -306,15 +293,9 @@
         let responseContent = await owif.utils.fetchData('/autotimer');
         const data = responseContent['autotimer'];
 
-console.log('response: ', data);
+// console.log('response: ', data);
 // console.log('defaults: ', data['default']);
-// console.log('timer: ', data['timer']);
-window.atList = data['timer'] || [];
-if (!Array.isArray(window.atList)) {
-  window.atList = [data['timer']];
-}
-
-// TRANSFORMRESPONSE
+window.atList = forceToArray(data['timer']);
 //atListCache
 
         window.atList.map((itm) => new AutoTimer(itm));
