@@ -1,5 +1,9 @@
-## Version 1.4.4
+## Version 1.4.5
 ## (in development)
+* fix sleeptimer for OpenATV #1295
+* fix terminal for VTi #1293
+
+## Version 1.4.4
 * improve api movielist recursive #1241
 
 ## Version 1.4.3
