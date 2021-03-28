@@ -71,6 +71,10 @@
 	opacity: 0.1;
 }
 
+.dependent-section--disabled [type=radio]:disabled+label {
+	color: inherit;
+}
+
 .atform__details__dropdown .btn.btn { /* this specificity is intentional */ 
 	box-shadow: none !important;
 }
@@ -326,7 +330,7 @@
 													<label for="_timespan">$tstrings['at_timespan']</label>
 												</div>
 												<div class="atform__details__element" style="min-height: 8ex;">
-													<div id="_timespan_" class="select-related-container dependent-section">
+													<div id="_timespan_" class="select-related-container dependent-section dependent-section--disabled">
 														<div class="atform__details__dropdown">
 															<label>$tstrings['at_timespan_begin']:&nbsp;</label>
 															<div class="form-line">
@@ -350,7 +354,7 @@
 													<label for="_datespan">$tstrings['at_datespan']</label>
 												</div>
 												<div class="atform__details__element" style="min-height: 8ex;">
-													<div id="_datespan_" class="select-related-container dependent-section">
+													<div id="_datespan_" class="select-related-container dependent-section dependent-section--disabled">
 														<div class="atform__details__dropdown">
 															<label>$tstrings['at_datespan_from']:&nbsp;</label>
 															<div class="form-line">
@@ -374,7 +378,7 @@
 													<label for="_timerOffset">$tstrings['at_timer_offset']</label>
 												</div>
 												<div class="atform__details__element" style="min-height: 8ex;">
-													<div id="_timerOffset_" class="select-related-container dependent-section">
+													<div id="_timerOffset_" class="select-related-container dependent-section dependent-section--disabled">
 														<div class="atform__details__dropdown">
 															<!-- Offset before recording (mins)-->
 															<label>$tstrings['at_timer_offset_before']:&nbsp;</label>
@@ -425,14 +429,14 @@
 												</div>
 											</div>
 
-											<div id="AftereventE" class="atform__fields-container dependent-section">
+											<div id="AftereventE" class="atform__fields-container dependent-section dependent-section--disabled">
 												<div class="atform__details__title">
 													<input type="checkbox" id="timeSpanAE" class="form-control chk--skinned">
 													<!-- Execute "After event" during timespan -->
 													<label for="timeSpanAE">$tstrings['at_event_timespan']</label>
 												</div>
 												<div class="atform__details__element" style="min-height: 8ex;">
-													<div id="timeSpanAEE" class="select-related-container dependent-section">
+													<div id="timeSpanAEE" class="select-related-container dependent-section dependent-section--disabled">
 														<div class="atform__details__dropdown">
 															<!-- Begin of "After event" timespan -->
 															<label>$tstrings['at_event_timespan_begin']</label>
@@ -548,7 +552,7 @@
 													<label for="_location">$tstrings['at_location']</label>
 												</div>
 												<div class="atform__details__element">
-													<div id="_location_" class="dropdown atform__details__dropdown dependent-section">
+													<div id="_location_" class="dropdown atform__details__dropdown dependent-section dependent-section--disabled">
 														<!-- Custom location -->
 														<select name="location" class="form-control show-tick">
 															<optgroup label="$tstrings['bookmarks']">
@@ -607,9 +611,15 @@
 													<label for="checkbox--vps_enabled">$tstrings['vps']</label>
 												</div>
 												<div class="atform__details__element">
-													<div id="vps_overwrite_" class="dependent-section">
-														<input type="checkbox" name="vps_overwrite" value="1" id="checkbox--vps_overwrite" class="form-control chk--skinned">
-														<label for="checkbox--vps_overwrite">$tstrings['safe_mode']</label>
+													<div id="vps_enabled_" class="dependent-section dependent-section--disabled">
+<!--
+	vps_overwrite=1 : safemode=0
+	vps_overwrite=0 : safemode=1
+	vps_overwrite=_ : safemode=1
+-->
+														<input type="hidden" name="vps_overwrite" value="0">
+														<input type="checkbox" name="vps_safemode" checked id="radio--vps_safemode" class="form-control chk--skinned">
+														<label for="radio--vps_safemode">$tstrings['safe_mode']</label>
 													</div>
 												</div>
 											</div>

@@ -215,6 +215,8 @@
         delete self['e2tags'];
       }
 
+      self['vps_safemode'] = !self['vps_overwrite'];
+
       if (self['include']) {
         if (!Array.isArray(self['include'])) {
           // we expect an array
@@ -563,7 +565,7 @@ if (!Array.isArray(window.atList)) {
           '!title', '!shortdescription', '!description', '!dayofweek',
         ];
         // TODO: tags?
-        const paramsToSendIfEmpty = filteringParamNames.concat(['offset', 'services', 'bouquets']);
+        const paramsToSendIfEmpty = filteringParamNames.concat(['offset', 'services', 'bouquets', 'vps_enabled']);
         const paramsToConsolidate = ['offset', 'services', 'bouquets'];
 
         if (window.disableFilterEditing) {
@@ -778,7 +780,10 @@ if (!Array.isArray(window.atList)) {
           toggleFormSection(document.getElementById('BeforeeventE'), !input.target.checked);
         };
         (document.querySelector('[name="vps_enabled"]') || nullEl).onchange = (input) => {
-          toggleFormSection(document.getElementById('vps_overwrite_'), !input.target.checked);
+          toggleFormSection(document.getElementById('vps_enabled_'), !input.target.checked);
+        };
+        (document.querySelector('[name="vps_safemode"]') || nullEl).onchange = (input) => {
+          (document.querySelector('[name="vps_overwrite"]') || nullEl).value = (input.target.checked) ? 0 : 1;
         };
       },
 
