@@ -222,8 +222,6 @@
 
       // Plugins
       self['vps_safemode'] = !self['vps_overwrite'];
-
-      self['allow_duplicate'] = (self['allow_duplicate'] != 0) ? 1 : 0; // loose equivalence intentional
     }
 
     get bouquetSRefs() {
