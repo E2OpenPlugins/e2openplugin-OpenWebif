@@ -210,8 +210,6 @@
         delete self['e2tags'];
       }
 
-      self['vps_safemode'] = !self['vps_overwrite'];
-
       if (self['include']) {
         self['filters']['include'] = forceToArray(self['include']);
         delete self['include'];
@@ -222,7 +220,10 @@
         delete self['exclude'];
       }
 
-      // maybe try utilise response.formData()
+      // Plugins
+      self['vps_safemode'] = !self['vps_overwrite'];
+
+      self['allow_duplicate'] = (self['allow_duplicate'] != 0) ? 1 : 0; // loose equivalence intentional
     }
 
     get bouquetSRefs() {
