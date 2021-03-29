@@ -2,6 +2,8 @@
 #from Plugins.Extensions.OpenWebif.controllers.utilities import PY3
 #filter WebSafe
 
+#set $debugMode = True
+
 #if False #$PY3
 	<script>
 		window.disableFilterEditing = true;
@@ -105,7 +107,7 @@
 .at__filter__line .btn:not(.btn-link):not(.btn-circle) {
 	margin-bottom: 2px;
 	padding-right: 3em;
-  box-shadow: none !important;
+	box-shadow: none !important;
 }
 
 .at__filter__line .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
@@ -125,7 +127,7 @@
 .filter-value--text,
 .filter-value--dayofweek {
 	flex: 3;
-  min-width: 50%;
+	min-width: 50%;
 }
 
 .row-striped:nth-of-type(even) {
@@ -519,27 +521,27 @@
 
 											<!-- Check for uniqueness in -->
 
-#if $autoadjust == 1
+#if $autoadjust == 1 or $debugMode
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="autoadjust" value="1" class="form-control chk--skinned">
-													<label for="autoadjust">$tstrings['autoadjust']</label>
+													<input type="checkbox" name="autoadjust" value="1" id="checkbox--autoadjust" class="form-control chk--skinned">
+													<label for="checkbox--autoadjust">$tstrings['autoadjust']</label>
 												</div>
 												<div class="atform__details__element"></div>
 											</div>
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="avoidDuplicateMovies" value="1" class="form-control chk--skinned">
-													<label for="avoidDuplicateMovies">$tstrings['avoidDuplicateMovies']</label>
+													<input type="checkbox" name="avoidDuplicateMovies" value="1" id="checkbox--avoidDuplicateMovies" class="form-control chk--skinned">
+													<label for="checkbox--avoidDuplicateMovies">$tstrings['avoidDuplicateMovies']</label>
 												</div>
 												<div class="atform__details__element"></div>
 											</div>
 
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="allow_duplicate" value="1" class="form-control chk--skinned">
-													<label for="allow_duplicate">$tstrings['allow_duplicate']</label>
+													<input type="checkbox" name="allow_duplicate" value="1" id="checkbox--allow_duplicate" class="form-control chk--skinned">
+													<label for="checkbox--allow_duplicate">$tstrings['allow_duplicate']</label>
 												</div>
 												<div class="atform__details__element"></div>
 											</div>
@@ -604,7 +606,7 @@
 
 											<!-- Restrict to days -->
 
-#if True or $hasVPS == 1
+#if $hasVPS == 1 or $debugMode
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
 													<input type="checkbox" name="vps_enabled" value="yes" id="checkbox--vps_enabled" class="form-control chk--skinned">
@@ -618,21 +620,20 @@
 	vps_overwrite=_ : safemode=1
 -->
 														<input type="hidden" name="vps_overwrite" value="0">
-														<input type="checkbox" name="vps_safemode" checked id="radio--vps_safemode" class="form-control chk--skinned">
-														<label for="radio--vps_safemode">$tstrings['safe_mode']</label>
+														<input type="checkbox" name="vps_safemode" checked id="checkbox--vps_safemode" class="form-control chk--skinned">
+														<label for="checkbox--vps_safemode">$tstrings['safe_mode']</label>
 													</div>
 												</div>
 											</div>
 #end if
 
-#if $hasSeriesPlugin == 1
+#if $hasSeriesPlugin == 1 or $debugMode
 											<div class="atform__fields-container">
 												<div class="atform__details__title">
-													<input type="checkbox" name="series_labeling" value="1" class="form-control chk--skinned">
-													<label for="series_labeling">$tstrings['at_label_series']</label>
+													<input type="checkbox" name="series_labeling" value="1" id="checkbox--series_labeling" class="form-control chk--skinned">
+													<label for="checkbox--series_labeling">$tstrings['at_label_series']</label>
 												</div>
-												<div class="atform__details__element">
-												</div>
+												<div class="atform__details__element"></div>
 											</div>
 #end if
 

@@ -293,7 +293,7 @@
         let responseContent = await owif.utils.fetchData('/autotimer');
         const data = responseContent['autotimer'];
 
-// console.log('response: ', data);
+console.log('response: ', data);
 // console.log('defaults: ', data['default']);
 window.atList = forceToArray(data['timer']);
 //atListCache
