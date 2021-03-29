@@ -821,7 +821,7 @@ window.atList = forceToArray(data['timer']);
           toggleFormSection(document.getElementById('_timerOffset_'), !input.target.checked);
         };
         (document.querySelector('[name="afterevent"]') || nullEl).onchange = (input) => {
-          toggleFormSection(document.getElementById('AftereventE'), !input.target.checked);
+          toggleFormSection(document.getElementById('AftereventE'), !input.target.value);
         };
         (document.getElementById('timeSpanAE') || nullEl).onchange = (input) => {
           toggleFormSection(document.getElementById('timeSpanAEE'), !input.target.checked);
