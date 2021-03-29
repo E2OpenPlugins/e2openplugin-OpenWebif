@@ -329,7 +329,7 @@ window.atList = forceToArray(data['timer']);
               const searchType = valueLabelMap.autoTimers.searchType[atItem['searchType']] || '';
               const newNode = templateEl.content.firstElementChild.cloneNode(true);
 
-              newNode.querySelector('[name="rename"]').onclick = (evt) => self.renameEntry(atItem.id, atItem.name, '');
+              newNode.querySelector('[name="rename"]').onclick = (evt) => self.renameEntry(atItem.id, atItem.name);
 
               const editEl = newNode.querySelector('a[href="#at/edit/{{id}}"]');
               editEl.href = editEl.href.replace('{{id}}', atItem.id);
@@ -337,7 +337,7 @@ window.atList = forceToArray(data['timer']);
                 self.editEntry(atItem.id);
                 return false;
               }
-              // newNode.querySelector('button[name="disable"]').onclick = (evt) => self.disableEntry(atItem['id']);
+              newNode.querySelector('button[name="toggle"]').onclick = (evt) => self.toggleEntryEnabled(atItem.id, atItem.enabled);
               newNode.querySelector('button[name="delete"]').onclick = (evt) => self.deleteEntry(atItem.id);
 
               // newNode.dataset['atId'] = atItem.id;
@@ -526,14 +526,36 @@ window.atList = forceToArray(data['timer']);
         });
       },
 
-      // not implemented
-      disableEntry: async (atId = -1) => {
-        owif.utils.debugLog(`disableEntry: id ${entry}`);
+      toggleEntryEnabled: async (atId = -1, currentState) => {
+        const newState = (currentState ==  1) ? 0 : 1; // loose equivalence intentional
+        try {
+          const responseContent = await owif.utils.fetchData(`/autotimer/change?id=${atId}&enabled=${newState}`);
+
+          const data = responseContent['e2simplexmlresult'];
+          const status = data['e2state'];
+          let message = data['e2statetext'];
+          message = `${message.charAt(0).toUpperCase()}${message.slice(1)}`;
+  
+          if (status === true || status.toString().toLowerCase() === 'true') {
+            swal.close();
+            self.populateList();
+            owif.utils.debugLog(`toggleEntryEnabled [id ${atId}] from ${currentState} to ${newState} successful`);
+          } else {
+            throw new Error(message);
+          }
+        } catch (ex) {
+          swal({
+            title: 'Oops...', // TODO: i10n
+            text: ex.message,
+            type: 'error',
+            animation: 'none',
+          });
+        }
       },
 
       createEntry: () => self.populateForm(),
 
-      renameEntry: (atId, currentName, newName) => {
+      renameEntry: (atId = -1, currentName, newName = '') => {
         const doRenameRequest = async (atId, newName) => {
           try {
             const responseContent = await owif.utils.fetchData(`/autotimer/change?id=${atId}&name=${newName}`);
@@ -546,11 +568,11 @@ window.atList = forceToArray(data['timer']);
             if (status === true || status.toString().toLowerCase() === 'true') {
               swal.close();
               self.populateList();
+              owif.utils.debugLog(`renameEntry [id ${atId}] from ${currentName} to ${newName} successful`);
             } else {
               throw new Error(message);
             }
           } catch (ex) {
-            console.log(ex);
             swal({
               title: 'Oops...', // TODO: i10n
               text: ex.message,
