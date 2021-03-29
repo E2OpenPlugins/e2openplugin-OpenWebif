@@ -329,6 +329,8 @@ window.atList = forceToArray(data['timer']);
               const searchType = valueLabelMap.autoTimers.searchType[atItem['searchType']] || '';
               const newNode = templateEl.content.firstElementChild.cloneNode(true);
 
+              newNode.querySelector('[name="rename"]').onclick = (evt) => self.renameEntry(atItem.id, atItem.name, '');
+
               const editEl = newNode.querySelector('a[href="#at/edit/{{id}}"]');
               editEl.href = editEl.href.replace('{{id}}', atItem.id);
               editEl.onclick = (evt) => {
@@ -530,6 +532,54 @@ window.atList = forceToArray(data['timer']);
       },
 
       createEntry: () => self.populateForm(),
+
+      renameEntry: (atId, currentName, newName) => {
+        const doRenameRequest = async (atId, newName) => {
+          try {
+            const responseContent = await owif.utils.fetchData(`/autotimer/change?id=${atId}&name=${newName}`);
+
+            const data = responseContent['e2simplexmlresult'];
+            const status = data['e2state'];
+            let message = data['e2statetext'];
+            message = `${message.charAt(0).toUpperCase()}${message.slice(1)}`;
+    
+            if (status === true || status.toString().toLowerCase() === 'true') {
+              swal.close();
+              self.populateList();
+            } else {
+              throw new Error(message);
+            }
+          } catch (ex) {
+            console.log(ex);
+            swal({
+              title: 'Oops...', // TODO: i10n
+              text: ex.message,
+              type: 'error',
+              animation: 'none',
+            });
+          }
+        };
+
+        if (newName) {
+          doRenameRequest(atId, newName);
+        } else {
+          swal({
+            title: 'rename?',
+            text: 'subtext',
+            type: 'input',
+            showCancelButton: true,
+            closeOnConfirm: false,
+            inputValue: currentName,
+            input: 'text',
+            animation: 'none',
+          }, (userInput) => {
+            if (userInput && userInput.length) {
+              doRenameRequest(atId, userInput);
+            }
+          });
+        }
+
+      },
 
       editEntry: async (atId = -1) => {
         const entry = window.atList.find(autotimer => autotimer['id'] == atId);
