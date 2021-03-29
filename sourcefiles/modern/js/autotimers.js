@@ -342,6 +342,7 @@ window.atList = forceToArray(data['timer']);
 
               // newNode.dataset['atId'] = atItem.id;
               newNode.querySelector('slot[name="autotimer-name"]').innerHTML = atItem.name;
+              newNode.querySelector('.icon__state').textContent = (atItem.enabled) ? 'av_timer' : 'highlight_off';
               newNode.querySelector('slot[name="autotimer-searchType"]').innerHTML = (searchType) ? `${searchType}:` : '';
               atItem.timespanFrom && (newNode.querySelector('slot[name="autotimer-timespan"]').innerHTML = `~ ${atItem.timespanFrom || ''} - ${atItem.timespanTo || ''}`);
               newNode.querySelector('slot[name="autotimer-channels"]').innerHTML = atItem.channelNames.join(', ');
@@ -407,7 +408,7 @@ window.atList = forceToArray(data['timer']);
           }
         } catch (ex) {
           swal({
-            title: 'Oops...', // TODO: i10n
+            title: tstr_oops,
             text: ex,
             type: 'error',
             animation: 'none',
@@ -507,7 +508,7 @@ window.atList = forceToArray(data['timer']);
             } else {
               // throw new Error(message);
               swal({
-                title: 'Oops...', // TODO: i10n
+                title: tstr_oops,
                 text: message,
                 type: 'error',
                 animation: 'none',
@@ -545,7 +546,7 @@ window.atList = forceToArray(data['timer']);
           }
         } catch (ex) {
           swal({
-            title: 'Oops...', // TODO: i10n
+            title: tstr_oops,
             text: ex.message,
             type: 'error',
             animation: 'none',
@@ -574,7 +575,7 @@ window.atList = forceToArray(data['timer']);
             }
           } catch (ex) {
             swal({
-              title: 'Oops...', // TODO: i10n
+              title: tstr_oops,
               text: ex.message,
               type: 'error',
               animation: 'none',
@@ -586,8 +587,8 @@ window.atList = forceToArray(data['timer']);
           doRenameRequest(atId, newName);
         } else {
           swal({
-            title: 'rename?',
-            text: 'subtext',
+            title: tstr_rename,
+            text: '',
             type: 'input',
             showCancelButton: true,
             closeOnConfirm: false,
@@ -671,7 +672,7 @@ window.atList = forceToArray(data['timer']);
         } else {
           // throw new Error(message);
           swal({
-            title: 'Oops...', // TODO: i10n
+            title: tstr_oops,
             text: message,
             type: 'error',
             animation: 'none',

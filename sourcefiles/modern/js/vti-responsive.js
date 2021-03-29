@@ -109,6 +109,8 @@ function initJsTranslationAddon(strings) {
 	tstr_add_timer = strings.add_timer;
 	tstr_cancel = strings.cancel;
 	tstr_close = strings.close;
+	tstr_rename = strings.rename;
+	tstr_oops = strings.oops;
 	tstr_weekday = strings.at_filter_weekday;
 	tstr_weekend = strings.at_filter_weekend;
 	tstr_at_del = strings.at_del;

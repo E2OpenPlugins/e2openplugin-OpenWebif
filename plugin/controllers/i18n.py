@@ -124,6 +124,8 @@ tstrings = {
 	'enable_timer': _("Enable Timer"),
 	'start': _("Start"),
 	'end': _("End"),
+	'enable': _("Enable"),
+	'enable_disable': _("%s / %s") % (_("Enable"), _("Disable")),
 	'enabled': _("Enabled"),
 	'encrypted': _("Encrypted"),
 	'epg': _("EPG"),
@@ -503,6 +505,8 @@ tstrings = {
 	'packages': _("Packages"),
 
 	'newdesign': _("Use modern design"),
+	'oops': _("Oops..."),
+	'rename': _("Rename"),
 	'no_cancel': _("No, cancel"),
 	'yes_delete': _("Yes"),
 	'cancelled': _("Cancelled"),
