@@ -1,3 +1,4 @@
+#from json import dumps
 #from six.moves.urllib.parse import quote
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import MinEPGList, showPiconBackground
@@ -24,6 +25,8 @@
 
 #set $dataid = 0
 #for $event in $events
+		#set $metadata = $dumps({ 'sref': quote($event.sref), 'id': $event.id, 'begin': $event.begin, 'end': $event.end }, indent=None, separators=(",", ":"))
+
 		#set $channel = $event.sname.replace("'", r"\'")
 		#set $title = $event.title.replace("'", r"\'")
 		#set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
@@ -32,7 +35,7 @@
 
 		<div class="row row-striped clearfix pad-top-15">
 			<div class="col-xs-12 col-md-6">
-				<div class="row">
+				<div class="row" data-metadata='$metadata'><!-- single quotes are required for json output -->
 					<div class="col-xs-3">
 						<span class="epg__picon $piconCssClass">
 							<img src="$event.picon" title="" class="img-responsive" style="width:80px;margin-top:-10px">
@@ -72,7 +75,7 @@
 
 		<div class="row clearfix">
 			<div class="col-xs-12">
-				<div class="card" style="margin-bottom:-25px;">
+				<div class="card" style="margin-bottom:-25px;" data-metadata='$metadata'><!-- single quotes are required for json output -->
 					<div class="header">
 						<div class="row clearfix">
 							<div class="col-xs-12 col-md-2" style="margin-bottom:-10px;">
