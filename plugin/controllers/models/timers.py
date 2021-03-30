@@ -29,6 +29,7 @@ from Components.config import config
 from Components.TimerSanityCheck import TimerSanityCheck
 from RecordTimer import RecordTimerEntry, parseEvent
 from ServiceReference import ServiceReference
+from Screens.InfoBar import InfoBar
 from time import time, strftime, localtime, mktime
 from six.moves.urllib.parse import unquote
 from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternative
@@ -824,6 +825,27 @@ def getSleepTimer(session):
 				"result": False,
 				"message": _("SleepTimer error")
 			}
+	elif InfoBar.instance is not None and hasattr(InfoBar.instance, 'sleepTimer'):
+		try:
+			active = InfoBar.instance.sleepTimer.isActive()
+			time = config.usage.sleep_timer.value
+			action = config.usage.sleep_timer_action.value
+			if time and time > 0:
+				try:
+					time = time / 60
+				except:
+					time = 60
+			return {
+				"enabled": active,
+				"minutes": time,
+				"action": action,
+				"message": _("Sleeptimer is enabled") if active else _("Sleeptimer is disabled")
+			}
+		except Exception:
+			return {
+				"result": False,
+				"message": _("SleepTimer error")
+			}
 	else:
 		# use powertimer , this works only if there is one of the standby OR deepstandby entries
 		# todo : do not use repeated entries
@@ -845,7 +867,6 @@ def getSleepTimer(session):
 						"action": action,
 						"message": _("Sleeptimer is enabled") if enabled else _("Sleeptimer is disabled")
 					}
-					break
 		except Exception:
 			return {
 				"result": False,
@@ -875,6 +896,26 @@ def setSleepTimer(session, time, action, enabled):
 			ret = getSleepTimer(session)
 			ret["message"] = _("Sleeptimer set to %d minutes") % time
 			return ret
+		except Exception:
+			return {
+				"result": False,
+				"message": _("SleepTimer error")
+			}
+	elif InfoBar.instance is not None and hasattr(InfoBar.instance, 'sleepTimer'):
+		try:
+			config.usage.sleep_timer_action.value = action
+			config.usage.sleep_timer_action.save()
+			active = enabled
+			if enabled:
+				InfoBar.instance.setSleepTimer(time*60)
+			else:
+				InfoBar.instance.setSleepTimer(0)
+			return {
+				"enabled": active,
+				"minutes": time,
+				"action": action,
+				"message": _("Sleeptimer is enabled") if active else _("Sleeptimer is disabled")
+			}
 		except Exception:
 			return {
 				"result": False,

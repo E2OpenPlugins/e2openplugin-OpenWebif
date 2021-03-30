@@ -39,8 +39,18 @@ $(function () {
       var epgEvent;
       try {
         var dataAttr = 'metadata';
-        epgEvent = JSON.parse(e.relatedTarget.closest('[data-' + dataAttr + ']').dataset[dataAttr]);
+		var meta = e.relatedTarget.closest('[data-' + dataAttr + ']');
+        epgEvent = {};
+		if (meta != null)
+		{
+			epgEvent = JSON.parse(e.relatedTarget.closest('[data-' + dataAttr + ']').dataset[dataAttr]);
+		}
+		else {
+			epgEvent.sref = e.relatedTarget.dataset.ref;
+			epgEvent.id = e.relatedTarget.dataset.evid;
+		}
       } catch (ex) {
+		console.log(ex);
         epgEvent = {};
       }
 			if (!!epgEvent.sref && !!epgEvent.id) {

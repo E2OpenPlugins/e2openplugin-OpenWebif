@@ -346,6 +346,7 @@ def getEventInfoProvider(moviedb):
 		pass
 	return providerData
 
+
 if __name__ == '__main__':
 	import doctest
 
