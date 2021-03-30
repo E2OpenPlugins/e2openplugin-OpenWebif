@@ -680,21 +680,23 @@ window.atList = forceToArray(data['timer']);
       },
 
       cancelEntry: () => {
-        swal({ // TODO: change to 'want to save?'
-          title: 'Are you sure you want to discard your changes?',
+        swal({
+          title: tstr_prompt_save_changes,
           // text: '',
           type: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#dd6b55',
-          confirmButtonText: tstrings_yes_delete,
+          confirmButtonText: tstrings_yes,
           cancelButtonText: tstrings_no_cancel,
-          closeOnConfirm: true,
+          closeOnConfirm: false,
           closeOnCancel: true,
           animation: 'none',
-        }, async (userConfirmed) => {
-          if (userConfirmed) {
+        }, function (userConfirmed) {
+          if (userConfirmed){
+            self.saveEntry();
+           } else {
             self.populateList();
-          }
+           }
         });
       },
 

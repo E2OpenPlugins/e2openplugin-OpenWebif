@@ -506,6 +506,7 @@ tstrings = {
 
 	'newdesign': _("Use modern design"),
 	'oops': _("Oops..."),
+	'prompt_save_changes': _("Would you like to save your changes?"),
 	'rename': _("Rename"),
 	'no_cancel': _("No, cancel"),
 	'yes_delete': _("Yes"),
