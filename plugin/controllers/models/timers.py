@@ -32,7 +32,7 @@ from ServiceReference import ServiceReference
 from Screens.InfoBar import InfoBar
 from time import time, strftime, localtime, mktime
 from six.moves.urllib.parse import unquote
-from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternative
+from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternative, getInfo
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad
 
@@ -827,12 +827,19 @@ def getSleepTimer(session):
 			}
 	elif InfoBar.instance is not None and hasattr(InfoBar.instance, 'sleepTimer'):
 		try:
+			# TODO test OpenPLI and similar
 			active = InfoBar.instance.sleepTimer.isActive()
 			time = config.usage.sleep_timer.value
-			action = config.usage.sleep_timer_action.value
-			if time and time > 0:
+			info = getInfo()
+			if info["imagedistro"] not in ('openpli', 'satdreamgr', 'openvision'):
+				action = config.usage.sleep_timer_action.value
+				if action == "deepstandby":
+					action = "shutdown"
+			else:
+				action = "shutdown"
+			if time != None and time > 0:
 				try:
-					time = time / 60
+					time = int(time) / 60
 				except:
 					time = 60
 			return {
@@ -903,13 +910,21 @@ def setSleepTimer(session, time, action, enabled):
 			}
 	elif InfoBar.instance is not None and hasattr(InfoBar.instance, 'sleepTimer'):
 		try:
-			config.usage.sleep_timer_action.value = action
-			config.usage.sleep_timer_action.save()
+			# TODO test OpenPLI and similar
+			info = getInfo()
+			if info["imagedistro"] not in ('openpli', 'satdreamgr', 'openvision'):
+				if action == "shutdown":
+					config.usage.sleep_timer_action.value = "deepstandby"
+				else:
+					config.usage.sleep_timer_action.value = action
+				config.usage.sleep_timer_action.save()
 			active = enabled
 			if enabled:
 				InfoBar.instance.setSleepTimer(time*60)
 			else:
 				InfoBar.instance.setSleepTimer(0)
+				config.usage.sleep_timer.value = str(time*60)
+				config.usage.sleep_timer.save()
 			return {
 				"enabled": active,
 				"minutes": time,
