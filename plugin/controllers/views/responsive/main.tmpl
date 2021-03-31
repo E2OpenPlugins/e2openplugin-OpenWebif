@@ -877,21 +877,9 @@
 <script>initJsTranslationAddon($dumps($tstrings))</script>
 
 <script>
-	var re = /#(.*)\??(.*)/gi;
-	var str = 'x';
-	var newstr = str.replace(re, '\/ajax/$1?');
-
-	function locationHashChanged(e) { 
-		var re = new RegExp(/#(.*)\??(.*)/gi);
-		var hash = e.target.location.hash.replace(re, '\/ajax/$1');
-		hash && load_maincontent_spin(hash);
-	} 
-
-	window.onhashchange = locationHashChanged;
-
-	\$(document).ready(function() {
-		\$('#noresposive').change(function () {
-			\$.ajax({
+	jQuery(document).ready(function() {
+		jQuery('#noresposive').change(function () {
+			jQuery.ajax({
 				url: "api/setwebconfig?responsivedesign=false",
 				success: function() {
 					window.location.hash = '';
@@ -900,9 +888,9 @@
 			});
 		});
 		var pl = GetLSValue('pl','m3u');
-		\$('#plformat').prop('checked',( pl != 'm3u'));
-		\$("#plformat").change(function() {
-			var val = \$(this).is(":checked") ? 'xspf' : 'm3u'
+		jQuery('#plformat').prop('checked',( pl != 'm3u'));
+		jQuery("#plformat").change(function() {
+			var val = jQuery(this).is(":checked") ? 'xspf' : 'm3u'
 			SetLSValue('pl',val);
 		});
 	});
