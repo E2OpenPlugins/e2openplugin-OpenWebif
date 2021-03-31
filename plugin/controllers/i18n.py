@@ -387,7 +387,8 @@ tstrings = {
 	'at_remove_filter': _("Remove filter"),
 	'at_preview': _("Preview"),
 	'at_state': _("State"),
-	'at_any_time': _("Any time"),
+	'at_any_day': _("Any day"),
+	'at_any_time': _("any time"),
 	'at_no_matches': _("No matches were found in the EPG"),
 	'at_in_minutes': _("(in minutes)"),
 

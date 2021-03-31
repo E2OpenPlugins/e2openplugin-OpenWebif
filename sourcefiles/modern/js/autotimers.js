@@ -259,6 +259,10 @@
     get channelNames() {
       return this['services'].map(entry => entry['name']);
     }
+
+    get isRestrictedByDay() {
+      return !!this['filters']['include'].filter((item) => item['where'] === 'dayofweek').length;
+    }
   }
 
   const AutoTimersApp = function () {
@@ -364,6 +368,7 @@ window.atList = forceToArray(data['timer']);
               newNode.querySelector('.icon__state').textContent = (atItem.enabled) ? 'av_timer' : 'highlight_off';
               newNode.querySelector('slot[name="autotimer-searchType"]').innerHTML = (searchType) ? `${searchType}:` : '';
               atItem.timespanFrom && (newNode.querySelector('slot[name="autotimer-timespan"]').innerHTML = `~ ${atItem.timespanFrom || ''} - ${atItem.timespanTo || ''}`);
+              atItem.isRestrictedByDay && (newNode.querySelector('slot[name="autotimer-filters"]').innerHTML = 'Certain days');
               newNode.querySelector('slot[name="autotimer-channels"]').innerHTML = atItem.channelNames.join(', ');
               atItem.bouquetNames.length && (newNode.querySelector('slot[name="autotimer-bouquets"]').innerHTML = `<br> ${atItem.bouquetNames.join(', ')}`);
               newNode.querySelector('slot[name="autotimer-match"]').innerHTML = `"${atItem.match}"`;
