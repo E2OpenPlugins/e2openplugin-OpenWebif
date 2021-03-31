@@ -193,7 +193,6 @@ class GUI {
       // TODO: transition all hash urls to #/ format
 			const targetPage = hash.replace('#/', '#').split('/')[0];
 			const targetUrl = targetPage.replace(re, '\/ajax/$1');
-      console.log(targetPage, targetUrl);
       targetPage && load_maincontent_spin(targetUrl);
     } 
   
