@@ -261,7 +261,10 @@
     }
 
     get isRestrictedByDay() {
-      return !!this['filters']['include'].filter((item) => item['where'] === 'dayofweek').length;
+      const numDaysIncluded = this['filters']['include'].filter((item) => item['where'] === 'dayofweek').length;
+      const numDaysExcluded = this['filters']['exclude'].filter((item) => item['where'] === 'dayofweek').length;
+console.log(numDaysIncluded + numDaysExcluded);
+      return (numDaysIncluded + numDaysExcluded > 0);
     }
   }
 
