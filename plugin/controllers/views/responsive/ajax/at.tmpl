@@ -148,7 +148,7 @@
 				<div class="col-xs-8">
 					<ul class="header-dropdown" style="top: 0; right: 5px;">
 						<li><button type="button" name="rename" title="$tstrings['rename']" class="m-0" style="border: none; background: none;"><i class="material-icons material-icons-mg-right">drive_file_rename_outline</i></button></li>
-						<li><a href="#at/edit/{{id}}" title="$tstrings['at_edit']"><i class="material-icons material-icons-mg-right">edit</i></a> 
+						<li><a href="#/at/edit?id={{id}}" title="$tstrings['at_edit']"><i class="material-icons material-icons-mg-right">edit</i></a> 
 						<li><button type="button" name="toggle" title="$tstrings['enable_disable']" class="m-0" style="border: none; background: none;"><i class="material-icons material-icons-mg-right">alarm_off</i></button></li>
 						<li><button type="button" name="delete" title="$tstrings['at_del']"><i class="material-icons material-icons-mg-right">delete_outline</i></button></li>
 					</ul>
@@ -225,7 +225,7 @@
 
 				<div id="at__page--list">
 					<div class="row align-center clearfix">
-						<a href="#at/new" class="btn btn--skinned waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></a>
+						<a href="#/at/new" class="btn btn--skinned waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></a>
 						<button type="button" name="reload" class="btn btn--skinned waves-effect"><i class="material-icons">refresh</i><span>$tstrings['reload']</span></button>
 						<button type="button" name="process" disabled class="btn btn--skinned waves-effect"><i class="material-icons">code</i><span>$tstrings['at_process']</span></span></button>
 						<button type="button" name="preview" data-toggle="modal" data-target="#ATPreviewModal" class="btn btn--skinned waves-effect"><i class="material-icons">view_list</i><span>$tstrings['at_preview']</span></button>

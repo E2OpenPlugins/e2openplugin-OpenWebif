@@ -133,9 +133,10 @@
 #end if
 
 #if $at
-		<button onclick="addAutoTimerEvent('$sref', '$channel', '$title', '$event.begin', '$event.end');" class="link--not-skinned" data-dismiss="modal" title="$tstrings['add_autotimer']">
+		<a href="#/at/create?name=$title&match=$title&timespanFrom=$event.begin&timespanTo=$event.end&sref=$sref"
+			 class="link--not-skinned" title="$tstrings['add_autotimer']" x-data-dismiss="modal">
 			<i class="material-icons material-icons-centered">av_timer</i>
-		</button>
+		</a>
 #end if
 	</div>
 </div>

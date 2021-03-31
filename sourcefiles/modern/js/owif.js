@@ -186,6 +186,19 @@ class GUI {
   initEventHandlers() {
     const self = this;
 
+    const re = new RegExp(/#\/?(.*)\??(.*)/gi);
+  
+    function locationHashChanged(evt) {
+      const hash = evt.target.location.hash;
+      // TODO: transition all hash urls to #/ format
+			const targetPage = hash.replace('#/', '#').split('/')[0];
+			const targetUrl = targetPage.replace(re, '\/ajax/$1');
+      console.log(targetPage, targetUrl);
+      targetPage && load_maincontent_spin(targetUrl);
+    } 
+  
+    window.onhashchange = locationHashChanged;  
+
     document.querySelectorAll('input[name="skinpref"]').forEach((input) => {
       input.onchange = () => {
         self.skinPref = event.target.value;

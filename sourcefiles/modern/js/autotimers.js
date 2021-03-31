@@ -17,11 +17,10 @@
  * 3.0 - complete overhaul
  * 
  * @todo fix dropdown styling
- * @todo fix afterevent toggle
- * @todo handle autotimer creation from event
+ * @todo add hashchange listener for better back/fwd nav experience
  * @todo check/fix iptv exclusion
- * @todo apply decodeHtml to filters
- * @todo handle defaults (maybe show as [value])
+ * @todo apply decodeHtml to filters?
+ * @todo handle defaults? (maybe show as [value])
  * @todo consolidate e2simplexmlresult handling
  * @todo sort atlist by name/date added/enabled etc
  * @toto better handle `tstr_` and `tstrings_` (global change)
@@ -40,6 +39,27 @@
 
   function forceToArray(value) {
     return (Array.isArray(value)) ? value : [value];
+  }
+
+  function getAdjustedTimeString(timeString, adjustment) {
+    const { hours = 0, minutes = 0 } = adjustment;
+    try {
+      const hoursMinutes = timeString.split(':');
+      const hrs = parseInt(hoursMinutes[0]);
+      const mns = parseInt(hoursMinutes[1]);
+      const dt = new Date(0, 0, 0, hrs, mns);
+      dt.setHours(hrs + hours);
+      dt.setMinutes(mns + minutes);
+
+      return dt.toLocaleTimeString([], { 
+          hour12: false,
+          hour: '2-digit',
+          minute: '2-digit',
+      });
+    } catch (ex) {
+      console.log(ex);
+      return timeString;
+    }
   }
 
   function removeNodesBySelector(selector) {
@@ -330,11 +350,11 @@ window.atList = forceToArray(data['timer']);
 
               newNode.querySelector('[name="rename"]').onclick = (evt) => self.renameEntry(atItem.id, atItem.name);
 
-              const editEl = newNode.querySelector('a[href="#at/edit/{{id}}"]');
+              const editEl = newNode.querySelector('a[href="#/at/edit?id={{id}}"]');
               editEl.href = editEl.href.replace('{{id}}', atItem.id);
               editEl.onclick = (evt) => {
                 self.editEntry(atItem.id);
-                return false;
+                // return false;
               }
               newNode.querySelector('button[name="toggle"]').onclick = (evt) => self.toggleEntryEnabled(atItem.id, atItem.enabled);
               newNode.querySelector('button[name="delete"]').onclick = (evt) => self.deleteEntry(atItem.id);
@@ -449,7 +469,7 @@ window.atList = forceToArray(data['timer']);
 
       populateForm: async (data = {}) => {
         const { elements } = atEditForm;
-
+console.log(data);
         atEditForm.reset();
         removeNodesBySelector('.at__filter__line');
         document.getElementById('at__page--list').classList.toggle('hidden', true);
@@ -695,6 +715,7 @@ window.atList = forceToArray(data['timer']);
           if (userConfirmed){
             self.saveEntry();
            } else {
+            window.location.hash = '/at';
             self.populateList();
            }
         });
@@ -790,10 +811,7 @@ window.atList = forceToArray(data['timer']);
         (document.querySelector('button[name="timers"]') || nullEl).onclick = () => window.listTimers();
         (document.querySelector('button[name="settings"]') || nullEl).onclick = self.getSettings;
         (document.querySelector('button[name="saveSettings"]') || nullEl).onclick = self.saveSettings;
-        (document.querySelector('a[href="#at/new"]') || nullEl).onclick = (evt) => {
-          evt.preventDefault();
-          self.createEntry();
-        }
+        (document.querySelector('a[href="#/at/new"]') || nullEl).onclick = self.createEntry;
 				
 				/* autotimer edit - buttons */
         (document.querySelector('button[name="addFilter"]') || nullEl).onclick = () => self.addFilter();
@@ -848,10 +866,26 @@ window.atList = forceToArray(data['timer']);
         const excludeIptv = true;
         self.availableServices = await owif.api.getAllServices(excludeIptv);
         self.availableLocations = []; // these are already server-rendered
+        self.allLocations = [];
         self.availableTags = await owif.api.getTags();
+        self.allTags = [];
         self.autoTimerChoices = owif.gui.preparedChoices();
 
-        self.populateList(); //check if we've got data to add a new AT with
+        const hash = window.location.hash;
+        if (hash.startsWith('#/at/new')) {
+          const searchParams = new URLSearchParams((hash.split('?')[1] || ''));
+          const data = Object.fromEntries(searchParams);
+          data['timespanFrom'] && (data['timespanFrom'] = getAdjustedTimeString(data['timespanFrom'], { hours: -1 }));
+          data['timespanTo'] && (data['timespanTo'] = getAdjustedTimeString(data['timespanTo'], { hours: 1 }));
+          data['sref'] && (data['e2service'] = { e2servicereference: data['sref'] });
+          self.populateForm(data);
+        } else if (hash.startsWith('#/at/edit')) {
+          const searchParams = new URLSearchParams((hash.split('?')[1] || ''));
+          self.editEntry(searchParams.get('id'));
+        } else {
+          self.populateList();
+        }
+
         self.initEventHandlers(self);
       },
     };
