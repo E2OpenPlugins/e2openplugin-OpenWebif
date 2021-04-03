@@ -48,7 +48,7 @@ def FuzzyTime(t, inPast=False):
 	elif d[0] == n[0] and d[7] == n[7] - 1 and inPast:
 		# won't work on New Year's day
 		date = _("Yesterday")
-	elif ((t - nt) < 7*86400) and (nt < t) and not inPast:
+	elif ((t - nt) < 7 * 86400) and (nt < t) and not inPast:
 		# same week (must be future)
 		date = dayOfWeek[d[6]]
 	elif d[0] == n[0]:
@@ -920,10 +920,10 @@ def setSleepTimer(session, time, action, enabled):
 				config.usage.sleep_timer_action.save()
 			active = enabled
 			if enabled:
-				InfoBar.instance.setSleepTimer(time*60)
+				InfoBar.instance.setSleepTimer(time * 60)
 			else:
 				InfoBar.instance.setSleepTimer(0)
-				config.usage.sleep_timer.value = str(time*60)
+				config.usage.sleep_timer.value = str(time * 60)
 				config.usage.sleep_timer.save()
 			return {
 				"enabled": active,

@@ -1327,7 +1327,7 @@ def getServiceRef(name, searchinBouquetsOnly=False, bRef=None):
 					}
 
 	else:
-		refstr = '%s ORDER BY name'%(service_types_tv)
+		refstr = '%s ORDER BY name' % (service_types_tv)
 		serviceslist = serviceHandler.list(eServiceReference(refstr))
 		sfulllist = serviceslist and serviceslist.getContent("SN", True)
 		for sv in sfulllist:

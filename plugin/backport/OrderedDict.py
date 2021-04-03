@@ -231,7 +231,7 @@ class OrderedDict(dict):
 		while comparison to a regular mapping is order-insensitive.
 		'''
 		if isinstance(other, OrderedDict):
-			return len(self)==len(other) and self.items() == other.items()
+			return len(self) == len(other) and self.items() == other.items()
 		return dict.__eq__(self, other)
 
 	def __ne__(self, other):

@@ -202,7 +202,7 @@ def HttpdStart(session):
 			else:
 				# ipv4 only
 				listener.append(reactor.listenTCP(port, site))
-			print("[OpenWebif] started on %i"% (port))
+			print("[OpenWebif] started on %i" % (port))
 			BJregisterService('http', port)
 		except CannotListenError:
 			print("[OpenWebif] failed to listen on Port %i" % (port))
@@ -412,7 +412,7 @@ class AuthResource(resource.Resource):
 			if networks:
 				for network in networks:
 					if ipaddress.ip_address(six.text_type(peer)) in ipaddress.ip_network(six.text_type(network), strict=False):
-						samenet=True
+						samenet = True
 			if not (ipaddress.ip_address(six.text_type(peer)).is_private or samenet):
 				return False
 		from crypt import crypt

@@ -72,7 +72,7 @@ class SSLCertificateGenerator:
 			setattr(subject, key, val)
 		certificate.set_serial_number(int(time()))
 		certificate.gmtime_adj_notBefore(0)
-		certificate.gmtime_adj_notAfter(60*60*24*365*5)
+		certificate.gmtime_adj_notAfter(60 * 60 * 24 * 365 * 5)
 		certificate.set_issuer(subject)
 		certificate.set_pubkey(keypair)
 		certificate.sign(keypair, self.digest)
