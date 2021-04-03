@@ -47,6 +47,7 @@ from .defaults import PICON_PATH
 import re
 import six
 
+
 def whoami(request):
 	port = comp_config.OpenWebif.port.value
 	proto = 'http'
@@ -67,6 +68,7 @@ class WebController(BaseController):
 	Fork of *Enigma2 WebInterface API* as described in e.g.
 	https://dream.reichholf.net/e2web/.
 	"""
+
 	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
 		self.putChild(b"stream", StreamController(session))
@@ -535,7 +537,6 @@ class WebController(BaseController):
 		services["bname"] = bname
 		return services
 
-	
 	def P_servicesm3u(self, request):
 		"""
 		Request handler for the `servicesm3u` endpoint.
@@ -2349,6 +2350,7 @@ class WebController(BaseController):
 		else:
 			self.isImage = True
 			return pp
+
 
 class ApiController(WebController):
 	def __init__(self, session, path=""):

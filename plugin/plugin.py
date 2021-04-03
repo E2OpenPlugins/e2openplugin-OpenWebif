@@ -104,6 +104,7 @@ vtiaddon.expandConfig()
 
 imagedistro = getInfo()['imagedistro']
 
+
 class OpenWebifConfig(Screen, ConfigListScreen):
 	skin = """
 	<screen position="center,center" size="700,340" title="OpenWebif Configuration">

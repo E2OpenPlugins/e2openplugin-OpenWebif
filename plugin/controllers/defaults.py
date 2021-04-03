@@ -29,6 +29,8 @@ STB_LANG = language.getLanguage()
 MOBILEDEVICE = False
 
 #: get transcoding feature
+
+
 def getTranscoding():
 	if os.path.isfile("/proc/stb/encoder/0/bitrate"):
 		lp = eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/')
@@ -36,6 +38,7 @@ def getTranscoding():
 			if os.path.exists(lp + p + '/plugin.py') or os.path.exists(lp + p + '/plugin.pyo'):
 				return True
 	return False
+
 
 def getExtEventInfoProvider():
 	if STB_LANG[0:2] in ['ru', 'uk', 'lv', 'lt', 'et']:
@@ -48,10 +51,12 @@ def getExtEventInfoProvider():
 		defaultValue = 'IMDb'
 	return defaultValue
 
+
 def setMobile(isMobile=False):
 # TODO: do we need this?
 	global MOBILEDEVICE
 	MOBILEDEVICE = isMobile
+
 
 def getViewsPath(file=""):
 	global MOBILEDEVICE
@@ -104,6 +109,8 @@ def getPiconPath():
 	return None
 
 # TODO : test !!
+
+
 def refreshPiconPath():
 	PICON_PATH = getPiconPath()
 

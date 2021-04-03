@@ -62,6 +62,7 @@ if PY3:
 else:
 	from cgi import escape as html_escape
 
+
 def filterName(name, encode=True):
 	if name is not None:
 		name = six.ensure_str(removeBadChars(six.ensure_binary(name)))
@@ -69,14 +70,17 @@ def filterName(name, encode=True):
 			return html_escape(name, quote=True)
 	return name
 
+
 def removeBadChars(val):
 	return val.replace(b'\x1a', b'').replace(b'\xc2\x86', b'').replace(b'\xc2\x87', b'').replace(b'\xc2\x8a', b'')
+
 
 def convertUnicode(val):
 	if PY3:
 		return val
 	else:
 		return six.text_type(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+
 
 def convertDesc(val, encode=True):
 	if val is not None:
@@ -429,6 +433,7 @@ def getProtection(sref):
 					else:
 						isProtected = '4'
 	return isProtected
+
 
 def getChannels(idbouquet, stype):
 	ret = []

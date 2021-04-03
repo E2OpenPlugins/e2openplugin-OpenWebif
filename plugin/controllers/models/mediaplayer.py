@@ -7,6 +7,7 @@ from enigma import eServiceReference
 import os
 import fnmatch
 
+
 def getMpInstance(session):
 	try:
 		from Plugins.Extensions.MediaPlayer.plugin import MediaPlayer, MyPlayList  # noqa: F401
@@ -20,6 +21,7 @@ def getMpInstance(session):
 		if isinstance(dialog, MediaPlayer):
 			return dialog
 
+
 def getOrCreateMpInstance(session):
 	try:
 		from Plugins.Extensions.MediaPlayer.plugin import MediaPlayer, MyPlayList  # noqa: F401
@@ -31,6 +33,7 @@ def getOrCreateMpInstance(session):
 		return mp
 
 	return session.open(MediaPlayer)
+
 
 def mediaPlayerAdd(session, filename):
 	mp = getOrCreateMpInstance(session)
@@ -58,6 +61,7 @@ def mediaPlayerAdd(session, filename):
 		"result": True,
 		"message": "'%s' has been added to playlist" % filename
 	}
+
 
 def mediaPlayerRemove(session, filename):
 	mp = getOrCreateMpInstance(session)
@@ -98,6 +102,7 @@ def mediaPlayerRemove(session, filename):
 		"message": "'%s' removed from playlist" % filename
 	}
 
+
 def mediaPlayerPlay(session, filename, root):
 	mp = getOrCreateMpInstance(session)
 	if mp is None:
@@ -127,6 +132,7 @@ def mediaPlayerPlay(session, filename, root):
 		"result": True,
 		"message": "'%s' has been added to playlist" % filename
 	}
+
 
 def mediaPlayerCommand(session, command):
 	mp = getMpInstance(session)
@@ -162,6 +168,7 @@ def mediaPlayerCommand(session, command):
 		"message": "Command '%s' executed" % command
 	}
 
+
 def mediaPlayerCurrent(session):
 	mp = getMpInstance(session)
 	if mp is None:
@@ -178,6 +185,7 @@ def mediaPlayerCurrent(session):
 		"genre": mp["genre"].getText(),
 		"coverArt": mp["coverArt"].coverArtFileName
 	}
+
 
 def mediaPlayerList(session, path, types):
 	if types == "video":
@@ -249,6 +257,7 @@ def mediaPlayerList(session, path, types):
 		"files": []
 	}
 
+
 def mediaPlayerLoad(session, filename):
 	mp = getOrCreateMpInstance(session)
 	if mp is None:
@@ -270,6 +279,7 @@ def mediaPlayerLoad(session, filename):
 		"message": "Playlist loaded from '%s'" % path
 	}
 
+
 def mediaPlayerSave(session, filename):
 	mp = getOrCreateMpInstance(session)
 	if mp is None:
@@ -284,6 +294,7 @@ def mediaPlayerSave(session, filename):
 		"result": True,
 		"message": "Playlist saved to '%s'" % path
 	}
+
 
 def mediaPlayerFindFile(session, path, pattern):
 	rfiles = []

@@ -35,6 +35,7 @@ KEY_FILE = resolveFilename(SCOPE_CONFIG, "key.pem")
 CERT_FILE = resolveFilename(SCOPE_CONFIG, "cert.pem")
 CHAIN_FILE = resolveFilename(SCOPE_CONFIG, "chain.pem")
 
+
 class SSLCertificateGenerator:
 
 	def __init__(self):

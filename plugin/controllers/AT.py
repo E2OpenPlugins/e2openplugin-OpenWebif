@@ -27,6 +27,7 @@ import six
 
 ATFN = "/tmp/autotimer_backup.tar"  # nosec
 
+
 class ATUploadFile(resource.Resource):
 
 	def __init__(self, session):
@@ -55,6 +56,7 @@ class ATUploadFile(resource.Resource):
 			else:
 				result = [True, ATFN]
 		return six.ensure_binary(json.dumps({"Result": result}))
+
 
 class AutoTimerDoBackupResource(resource.Resource):
 	def render(self, request):
@@ -89,6 +91,7 @@ class AutoTimerDoBackupResource(resource.Resource):
 			return (True, ATFN)
 		else:
 			return (False, "Error while preparing backup file.")
+
 
 class AutoTimerDoRestoreResource(resource.Resource):
 	def render(self, request):

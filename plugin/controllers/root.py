@@ -42,10 +42,12 @@ from Plugins.Extensions.OpenWebif.controllers.file import FileController
 from Plugins.Extensions.OpenWebif.controllers.defaults import PICON_PATH, getPublicPath, VIEWS_PATH, setMobile, refreshPiconPath
 from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
+
 class RootController(BaseController):
 	"""
 	Root Web Controller
 	"""
+
 	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
 

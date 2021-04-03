@@ -19,18 +19,24 @@ from ServiceReference import ServiceReference
 cutsParser = struct.Struct('>QI')  # big-endian, 64-bit PTS and 32-bit type
 
 # iStaticServiceInformation
+
+
 class StubInfo:
 	def __init__(self):
 		pass
 
 	def getName(self, serviceref):
 		return os.path.split(serviceref.getPath())[1]
+
 	def getLength(self, serviceref):
 		return -1
+
 	def getEvent(self, serviceref, *args):
 		return None
+
 	def isPlayable(self):
 		return True
+
 	def getInfo(self, serviceref, w):
 		try:
 			if w == iServiceInformation.sTimeCreate:
@@ -42,8 +48,11 @@ class StubInfo:
 		except:
 			pass
 		return 0
+
 	def getInfoString(self, serviceref, w):
 		return ''
+
+
 justStubInfo = StubInfo()
 
 

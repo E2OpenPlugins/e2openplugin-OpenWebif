@@ -6,6 +6,7 @@ from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection
 from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
+
 def themeMode():
 	return config.OpenWebif.responsive_themeMode.value
 
@@ -18,8 +19,10 @@ def setThemeMode(self, request):
 		config.OpenWebif.responsive_themeMode.save()
 	return {}
 
+
 def skinColor():
 	return config.OpenWebif.responsive_skinColor.value
+
 
 def setSkinColor(self, request):
 	skincolor = getUrlArg(request, "skincolor")
@@ -29,75 +32,90 @@ def setSkinColor(self, request):
 		config.OpenWebif.responsive_skinColor.save()
 	return {}
 
+
 def MovieSearchShort():
 	if config.OpenWebif.responsive_moviesearch_short.value:
 		return 'checked'
 	return ''
+
 
 def MovieSearchExtended():
 	if config.OpenWebif.responsive_moviesearch_extended.value:
 		return 'checked'
 	return ''
 
+
 def EPGSearchFull():
 	if config.OpenWebif.responsive_epgsearch_full.value:
 		return 'checked'
 	return ''
+
 
 def EPGSearchBQonly():
 	if config.OpenWebif.responsive_epgsearch_only_bq.value:
 		return 'checked'
 	return ''
 
+
 def ScreenshotOnRCU():
 	if config.OpenWebif.responsive_rcu_screenshot.value:
 		return 'checked'
 	return ''
+
 
 def MinMovieList():
 	if config.OpenWebif.responsive_min_movielist.value:
 		return 'checked'
 	return ''
 
+
 def MinTimerList():
 	if config.OpenWebif.responsive_min_timerlist.value:
 		return 'checked'
 	return ''
+
 
 def MinEPGList():
 	if config.OpenWebif.responsive_min_epglist.value:
 		return 'checked'
 	return ''
 
+
 def RemoteControlView():
 	if config.OpenWebif.responsive_rcu_full_view.value:
 		return 'checked'
 	return ''
+
 
 def ZapStream():
 	if config.OpenWebif.webcache.zapstream.value:
 		return 'checked'
 	return ''
 
+
 def showPicons():
 	if config.OpenWebif.webcache.showpicons.value:
 		return 'checked'
 	return ''
+
 
 def showPiconBackground():
 	if config.OpenWebif.responsive_show_picon_background.value:
 		return 'checked'
 	return ''
 
+
 def showIPTVChannelsInSelection():
 	if config.OpenWebif.webcache.showiptvchannelsinselection.value:
 		return 'checked'
 	return ''
 
+
 def useSreenshotChannelName():
 	if config.OpenWebif.webcache.screenshotchannelname.value:
 		return 'checked'
 	return ''
+
 
 def setVTiWebConfig(self, request):
 	if b"moviesearchextended" in list(request.args.keys()):
@@ -172,6 +190,7 @@ def setVTiWebConfig(self, request):
 		config.OpenWebif.webcache.screenshotchannelname.save()
 	return ''
 
+
 def expand_BaseController():
 	from Plugins.Extensions.OpenWebif.controllers.web import WebController
 	WebController.P_setthememode = setThemeMode
@@ -192,6 +211,7 @@ COLORS = [
 	'teal', 'green', ('light-green', 'light green'), 'lime', 'yellow', 'amber', 'orange', 
 	('deep-orange', 'deep orange'), 'brown', 'white'
 ]
+
 
 def expandConfig():
 	config.OpenWebif.responsive_enabled = ConfigYesNo(default=False)

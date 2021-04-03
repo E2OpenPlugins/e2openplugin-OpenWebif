@@ -32,6 +32,7 @@ from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
 GRAB_PATH = '/usr/bin/grab'
 
+
 class GrabRequest(object):
 	def __init__(self, request, session):
 		self.request = request

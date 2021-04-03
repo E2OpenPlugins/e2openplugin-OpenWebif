@@ -269,10 +269,14 @@ def create_servicereference(*args, **kwargs):
 		ns)
 
 # Fallback genre
+
+
 def getGenreStringLong(hn, ln):
 	return ""
 
 # Fallback moviePlayState
+
+
 def _moviePlayState(cutsFileName, ref, length):
 	return 0
 
@@ -286,6 +290,7 @@ def getUrlArg(request, key, default=None):
 		if key in request.args.keys():
 			return request.args[key][0]
 	return default
+
 
 def getUrlArg2(args, key, default=None):
 	if PY3:

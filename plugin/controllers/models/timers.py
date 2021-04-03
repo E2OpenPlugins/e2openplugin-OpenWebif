@@ -36,6 +36,7 @@ from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternat
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad
 
+
 def FuzzyTime(t, inPast=False):
 	d = localtime(t)
 	nt = time()
