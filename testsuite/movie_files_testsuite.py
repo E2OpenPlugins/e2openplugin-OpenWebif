@@ -107,7 +107,7 @@ class MoviefilesTestCase(unittest.TestCase):
 		files = {
 			"data": open(self.test_file, "rb")
 		}
-		params =  {
+		params = {
 			"filename": self.test_filename,
 		}
 

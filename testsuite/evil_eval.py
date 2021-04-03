@@ -122,7 +122,7 @@ class EvilEvalTestCase(unittest.TestCase):
 
 			configfile.save()
 			config.save()
-			print config.pickle()
+			print(config.pickle())
 
 		"""
 		global config
@@ -156,7 +156,6 @@ class EvilEvalTestCase(unittest.TestCase):
 #			"ccopy_reg\n_reconstructor\np0\n(c__main__\nConfigObjectMockup\np1"
 #			"\nc__builtin__\nobject\np2\nNtp3\nRp4\n(dp5\nS'_value'\np6\nS'Und"
 #			" der Haifisch'\np7\nsb.", mockie_messer.pickle())
-
 
 	def testAtticSanitation(self):
 		# D-OH! EPIC FAIL :)
