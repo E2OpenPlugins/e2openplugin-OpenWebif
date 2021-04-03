@@ -379,7 +379,7 @@ class BaseController(resource.Resource):
 			# 'nw'='1' -> target _blank
 			# 'nw'='2' -> target popup
 			# 'nw'=None -> target _self
-		
+
 			# syntax
 			# addExternalChild( (Link, Resource, Name, Version, HasGUI, WebTarget) )
 			# example addExternalChild( ("webadmin", root, "WebAdmin", 1, True, "_self") )

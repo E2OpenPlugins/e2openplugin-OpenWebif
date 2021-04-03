@@ -206,9 +206,9 @@ THEMES = [
 ]
 
 COLORS = [
-	'black', ('grey-darken-4', 'dark grey'), 'blue-grey', 'grey', 'red', 'pink', 'purple', 
-	('deep-purple', 'deep purple'), 'indigo', 'blue', ('light-blue', 'light blue'), 'cyan', 
-	'teal', 'green', ('light-green', 'light green'), 'lime', 'yellow', 'amber', 'orange', 
+	'black', ('grey-darken-4', 'dark grey'), 'blue-grey', 'grey', 'red', 'pink', 'purple',
+	('deep-purple', 'deep purple'), 'indigo', 'blue', ('light-blue', 'light blue'), 'cyan',
+	'teal', 'green', ('light-green', 'light green'), 'lime', 'yellow', 'amber', 'orange',
 	('deep-orange', 'deep orange'), 'brown', 'white'
 ]
 

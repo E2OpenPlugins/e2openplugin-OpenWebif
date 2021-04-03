@@ -341,7 +341,7 @@ class AjaxController(BaseController):
 		ret['test'] = 0
 		ret['autoadjust'] = getInfo()['timerautoadjust']
 		ret['searchTypes'] = {}
-		
+
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimer import typeMap
 			ret['searchTypes'] = typeMap

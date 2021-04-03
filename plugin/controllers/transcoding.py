@@ -64,7 +64,7 @@ class TranscodingController(resource.Resource):
 				if self.setcheck(config.plugins.transcodingsetup.port, new_port):
 					config_changed = True
 				else:
-					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for port</e2statetext></e2simplexmlresult>' 
+					return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>wrong argument for port</e2statetext></e2simplexmlresult>'
 			encoder = 0
 			_encoder = getUrlArg(request, "encoder")
 			if _encoder:
@@ -106,7 +106,7 @@ class TranscodingController(resource.Resource):
 		attr, arg = port, "port"
 		str_result += self.getparam(attr, arg)
 
-		str_result += "</e2configs>\n" 
+		str_result += "</e2configs>\n"
 		return str_result
 
 

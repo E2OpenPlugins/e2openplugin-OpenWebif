@@ -98,9 +98,9 @@ class AutoTimerDoRestoreResource(resource.Resource):
 		request.setResponseCode(http.OK)
 		request.setHeader('Content-type', 'application/xhtml+xml')
 		request.setHeader('charset', 'UTF-8')
-		
+
 		state, statetext = self.restoreFiles()
-		
+
 		return six.ensure_binary("""<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
 <e2simplexmlresult>
 	<e2state>%s</e2state>
@@ -128,7 +128,7 @@ class AutoTimerDoRestoreResource(resource.Resource):
 					except Exception:
 						# TODO: proper error handling
 						pass
-				
+
 				os.remove(ATFN)
 				return (True, "AutoTimer-settings were restored successfully")
 			else:

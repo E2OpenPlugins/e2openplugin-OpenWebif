@@ -177,7 +177,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			self.list.append(getConfigListEntry(_("Allow IPK Upload"), config.OpenWebif.allow_upload_ipk))
 			self.list.append(getConfigListEntry(_("Playback IPTV Streams in browser"), config.OpenWebif.playiptvdirect))
 			self.list.append(getConfigListEntry(_("Debug - Display Tracebacks in browser"), config.OpenWebif.displayTracebacks))
-			# FIXME Submenu			
+			# FIXME Submenu
 			# self.list.append(getConfigListEntry(_("Webinterface jQuery UI Theme"), config.OpenWebif.webcache.theme))
 			# self.list.append(getConfigListEntry(_("Movie List Sort"), config.OpenWebif.webcache.moviesort))
 

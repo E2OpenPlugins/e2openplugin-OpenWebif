@@ -754,4 +754,3 @@ class BouquetEditor(Source):
 			return [True, 'bouquet added']
 		else:
 			return [False, _("Multi-Bouquet is not enabled!")]
-

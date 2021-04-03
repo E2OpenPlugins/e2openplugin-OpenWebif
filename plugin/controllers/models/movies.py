@@ -60,7 +60,7 @@ def FuzzyTime2(t):
 		day = _("Yesterday")
 	else:
 		day = dayOfWeek[d[6]]
-	
+
 	if d[0] == n[0]:
 		# same year
 		date = _("%s %02d.%02d.") % (day, d[2], d[1])

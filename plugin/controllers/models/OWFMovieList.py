@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 ##########################################################################
-# OpenWebif: MovieList / copy of OpenATV MovieList.py 
+# OpenWebif: MovieList / copy of OpenATV MovieList.py
 ##########################################################################
 
 import os
@@ -156,7 +156,7 @@ class MovieList():
 
 		self.firstFileEntry = numberOfDirs
 		self.parentDirectory = 0
-		
+
 		for x in self.list:
 			if x[1]:
 				tmppath = x[1].getName(x[0])[:-1] if x[1].getName(x[0]).endswith('/') else x[1].getName(x[0])
@@ -222,4 +222,3 @@ class MovieList():
 				match = ' '.join(tags)
 				if len(match) > 2: #Omit small words
 					self.tags[match] = set(tags)
-		

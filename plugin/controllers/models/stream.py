@@ -187,7 +187,7 @@ def getTS(self, request):
 			urlparam = '&'
 
 		device = getUrlArg(request, "device")
-		
+
 		if fileExists("/dev/bcm_enc0") or fileExists("/dev/encoder0") or fileExists("/proc/stb/encoder/0/apply"):
 			try:
 				transcoder_port = int(config.plugins.transcodingsetup.port.value)

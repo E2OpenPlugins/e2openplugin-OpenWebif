@@ -39,7 +39,7 @@ class GrabRequest(object):
 
 		mode = None
 		graboptions = [GRAB_PATH, '-q', '-s']
-		
+
 		fileformat = getUrlArg(request, "format", "jpg")
 		if fileformat == "jpg":
 			graboptions.append("-j")
