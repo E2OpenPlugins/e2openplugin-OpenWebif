@@ -282,7 +282,7 @@ def getMovieList(rargs=None, locations=None):
 			"movies": movieliste,
 			"bookmarks": bookmarklist,
 			"directory": directory,
-			"recursive" : brecursive
+			"recursive": brecursive
 		}
 
 	if brecursive:
@@ -291,13 +291,13 @@ def getMovieList(rargs=None, locations=None):
 			"locations": locations,
 			"directory": directory,
 			"bookmarks": bookmarklist,
-			"recursive" : brecursive
+			"recursive": brecursive
 		}
 	else:
 		return {
 			"movies": movieliste,
 			"locations": locations,
-			"recursive" : brecursive
+			"recursive": brecursive
 		}
 
 def getMovieSearchList(rargs=None, locations=None):

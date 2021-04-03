@@ -783,7 +783,7 @@ def getAllInfo():
 				f = open("/etc/opkg/all-feed.conf", 'r')
 				oeline = f.readline().strip().lower()
 				f.close()
-				distro = oeline.split( )[1].replace("-all", "")
+				distro = oeline.split()[1].replace("-all", "")
 			except:  # nosec  # noqa: E722
 				pass
 
@@ -819,13 +819,13 @@ def getAllInfo():
 	# reporting the installed dvb-module version is as close as we get without too much hassle
 	driverdate = 'unknown'
 	try:
-		driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-modules*').readline().split( )[2]  # nosec
+		driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-modules*').readline().split()[2]  # nosec
 	except:  # noqa: E722
 		try:
-			driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-proxy*').readline().split( )[2]  # nosec
+			driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-proxy*').readline().split()[2]  # nosec
 		except:  # noqa: E722
 			try:
-				driverdate = os.popen('/usr/bin/opkg -V0 list_installed *kernel-core-default-gos*').readline().split( )[2]  # nosec
+				driverdate = os.popen('/usr/bin/opkg -V0 list_installed *kernel-core-default-gos*').readline().split()[2]  # nosec
 			except:  # nosec # noqa: E722
 				pass
 	re_search = re.search('([0-9]{8})', driverdate)

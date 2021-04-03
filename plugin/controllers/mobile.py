@@ -130,4 +130,4 @@ class MobileController(BaseController):
 		except:
 			from Plugins.Extensions.OpenWebif.controllers.models.owibranding import rc_model
 			REMOTE = rc_model().getRcFolder()
-		return { "remote": REMOTE }
+		return {"remote": REMOTE}

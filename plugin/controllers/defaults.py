@@ -55,7 +55,7 @@ def setMobile(isMobile=False):
 
 def getViewsPath(file=""):
 	global MOBILEDEVICE
-	if ( comp_config.OpenWebif.responsive_enabled.value or MOBILEDEVICE ) and os.path.exists(VIEWS_PATH + "/responsive") and not (file.startswith('web/') or file.startswith('/web/')):
+	if (comp_config.OpenWebif.responsive_enabled.value or MOBILEDEVICE) and os.path.exists(VIEWS_PATH + "/responsive") and not (file.startswith('web/') or file.startswith('/web/')):
 		return VIEWS_PATH + "/responsive/" + file
 	else:
 		return VIEWS_PATH + "/" + file
