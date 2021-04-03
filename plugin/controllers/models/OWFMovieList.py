@@ -189,7 +189,7 @@ class MovieList():
 		for movies, tags in list(rtags.items()):
 			movie = movies[0]
 			# format the tag lists so that they are in 'original' order
-			tags.sort(key = movie.find)
+			tags.sort(key=movie.find)
 			first = movie.find(tags[0])
 			last = movie.find(tags[-1]) + len(tags[-1])
 			match = movie
