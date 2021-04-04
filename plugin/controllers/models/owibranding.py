@@ -472,10 +472,10 @@ def getAllInfo():
 			brand = "Zgemma"
 			model = "H9 Twin"
 			grabpip = 1
-                elif procmodel == "h9se.s":
-                        brand = "Zgemma"
-                        model = "H9SE"
-                        grabpip = 1
+		elif procmodel == "h9se.s":
+			brand = "Zgemma"
+			model = "H9SE"
+			grabpip = 1
 		elif procmodel == "vs1500":
 			brand = "Vimastec"
 			model = "vs1500"
