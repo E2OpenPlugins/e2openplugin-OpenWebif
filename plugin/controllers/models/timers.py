@@ -930,7 +930,18 @@ def setSleepTimer(session, time, action, enabled):
 			time = int(time)
 			config.usage.sleep_timer.value = str(time * 60)
 			if config.usage.sleep_timer.value == '0':
-				time = 60
+				# find the closest value
+				if info["imagedistro"] in ('openatv'):
+					times = time * 60
+					for val in list(range(900, 14401, 900)):
+						if times == val:
+							break
+						if times < val:
+							time = int(abs(val / 60))
+							break
+				else:
+					# use 60 if not valid
+					time = 60
 				config.usage.sleep_timer.value = str(time * 60)
 			config.usage.sleep_timer.save()
 			if enabled:
