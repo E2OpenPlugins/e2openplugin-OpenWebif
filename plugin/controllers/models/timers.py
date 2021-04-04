@@ -843,10 +843,14 @@ def getSleepTimer(session):
 					time = int(int(time) / 60)
 				except:
 					time = 60
+			remaining = 0
+			if active:
+				remaining = int(InfoBar.instance.sleepTimerState())
 			return {
 				"enabled": active,
 				"minutes": time,
 				"action": action,
+				"remaining": remaining,
 				"message": _("Sleeptimer is enabled") if active else _("Sleeptimer is disabled")
 			}
 		except Exception as e:
@@ -928,7 +932,6 @@ def setSleepTimer(session, time, action, enabled):
 			if config.usage.sleep_timer.value == '0':
 				time = 60
 				config.usage.sleep_timer.value = str(time * 60)
-
 			config.usage.sleep_timer.save()
 			if enabled:
 				InfoBar.instance.setSleepTimer(time * 60, False)
