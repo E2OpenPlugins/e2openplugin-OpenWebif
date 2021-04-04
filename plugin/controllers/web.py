@@ -2041,9 +2041,9 @@ class WebController(BaseController):
 		action = getUrlArg(request, "action", "standby")
 		enabled = getUrlArg(request, "enabled")
 		if enabled != None:
-			if enabled == "True":
+			if enabled == "True" or enabled == "true":
 				enabled = True
-			elif enabled == "False":
+			elif enabled == "False" or enabled == "false":
 				enabled = False
 
 		ret = getSleepTimer(self.session)

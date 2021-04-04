@@ -838,9 +838,9 @@ def getSleepTimer(session):
 					action = "shutdown"
 			else:
 				action = "shutdown"
-			if time != None and time > 0:
+			if time != None and int(time) > 0:
 				try:
-					time = int(time) / 60
+					time = int(int(time) / 60)
 				except:
 					time = 60
 			return {
@@ -849,7 +849,8 @@ def getSleepTimer(session):
 				"action": action,
 				"message": _("Sleeptimer is enabled") if active else _("Sleeptimer is disabled")
 			}
-		except Exception:
+		except Exception as e:
+			print(e)
 			return {
 				"result": False,
 				"message": _("SleepTimer error")
@@ -911,6 +912,8 @@ def setSleepTimer(session, time, action, enabled):
 			}
 	elif InfoBar.instance is not None and hasattr(InfoBar.instance, 'sleepTimer'):
 		try:
+			if time == None:
+				time = 60
 			# TODO test OpenPLI and similar
 			info = getInfo()
 			if info["imagedistro"] not in ('openpli', 'satdreamgr', 'openvision'):
@@ -920,19 +923,25 @@ def setSleepTimer(session, time, action, enabled):
 					config.usage.sleep_timer_action.value = action
 				config.usage.sleep_timer_action.save()
 			active = enabled
-			if enabled:
-				InfoBar.instance.setSleepTimer(time * 60)
-			else:
-				InfoBar.instance.setSleepTimer(0)
+			time = int(time)
+			config.usage.sleep_timer.value = str(time * 60)
+			if config.usage.sleep_timer.value == '0':
+				time = 60
 				config.usage.sleep_timer.value = str(time * 60)
-				config.usage.sleep_timer.save()
+
+			config.usage.sleep_timer.save()
+			if enabled:
+				InfoBar.instance.setSleepTimer(time * 60, False)
+			else:
+				InfoBar.instance.setSleepTimer(0, False)
 			return {
 				"enabled": active,
 				"minutes": time,
 				"action": action,
 				"message": _("Sleeptimer is enabled") if active else _("Sleeptimer is disabled")
 			}
-		except Exception:
+		except Exception as e:
+			print(e)
 			return {
 				"result": False,
 				"message": _("SleepTimer error")
