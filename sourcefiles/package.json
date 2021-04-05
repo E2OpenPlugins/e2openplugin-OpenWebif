@@ -20,7 +20,8 @@
     "commander": "^6.2.1",
     "glob-uglifyjs": "^2.0.0",
     "mkdirp": "^1.0.4",
-    "parcel-bundler": "^1.12.5"
+    "parcel-bundler": "^1.12.5",
+    "prettier": "2.2.1"
   },
   "resolutions": {
     "node-forge": "0.10.0",

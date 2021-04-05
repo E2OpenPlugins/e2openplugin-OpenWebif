@@ -1,23 +1,26 @@
-/*x-eslint-env x-browser*/
-/*x-global x-swal*/
-
 /**
- * --------------------------------------------------------------------------
+ * ----------------------------------------------------------------------------
  * AutoTimers plugin for OpenWebif
- * @version 3.0
+ *
  * @license GPL-3
  * https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
- * 
+ *
  * @see https://github.com/oe-alliance/enigma2-plugins/tree/master/autotimer
- * --------------------------------------------------------------------------
- * 
+ *
+ * ----------------------------------------------------------------------------
+ * Formatting applied:
+ * @prettier
+ *
  * @author Web Dev Ben <https://github.com/wedebe>; 2020, 2021
  * @contributors ...
- * 
+ *
+ * @version 3.0
  * 3.0 - complete overhaul
- * 
+ *
+ * ----------------------------------------------------------------------------
  * @todo fix dropdown styling
  * @todo add hashchange listener for better back/fwd nav experience
+ * @todo code parse/process functionality
  * @todo check/fix iptv exclusion
  * @todo apply decodeHtml to filters?
  * @todo handle defaults? (maybe show as [value])
@@ -25,9 +28,9 @@
  * @todo sort atlist by name/date added/enabled etc
  * @toto better handle `tstr_` and `tstrings_` (global change)
  * @todo JSDoc https://jsdoc.app/index.html
- * --------------------------------------------------------------------------
+ *
+ * ----------------------------------------------------------------------------
  */
-
 
 (function () {
   // handle `'`, `&` etc
@@ -38,7 +41,7 @@
   }
 
   function forceToArray(value) {
-    return (Array.isArray(value)) ? value : [value];
+    return Array.isArray(value) ? value : [value];
   }
 
   function getAdjustedTimeString(timeString, adjustment) {
@@ -51,10 +54,10 @@
       dt.setHours(hrs + hours);
       dt.setMinutes(mns + minutes);
 
-      return dt.toLocaleTimeString([], { 
-          hour12: false,
-          hour: '2-digit',
-          minute: '2-digit',
+      return dt.toLocaleTimeString([], {
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
       });
     } catch (ex) {
       console.log(ex);
@@ -64,7 +67,7 @@
 
   function removeNodesBySelector(selector) {
     document.querySelectorAll(selector).forEach((node) => {
-      node.remove()
+      node.remove();
     });
   }
 
@@ -78,19 +81,19 @@
           node.value = csv[index] || '';
           try {
             node.dispatchEvent(new Event('change'));
-          } catch(ex) {
+          } catch (ex) {
             owif.utils.debugLog(name, value, ex);
           }
         }
       } else {
         switch (field.type) {
           case 'checkbox':
-            value = (value === true) || (value === 'True') || (value.toString() === field.value);
+            value = value === true || value === 'True' || value.toString() === field.value;
             field.checked = value;
             break;
           case 'select-multiple':
             try {
-              const valuesOnly = value.map(entry => entry['sRef']);
+              const valuesOnly = value.map((entry) => entry['sRef']);
               self.autoTimerChoices[name]
                 .setChoices(value, 'sRef', 'name', false)
                 .setChoices(value, 'label', 'value', false)
@@ -107,7 +110,7 @@
         }
         try {
           field.dispatchEvent(new Event('change'));
-        } catch(ex) {
+        } catch (ex) {
           owif.utils.debugLog(name, value, ex);
         }
       }
@@ -120,7 +123,7 @@
         hiddenFormControl.type = 'hidden';
         hiddenFormControl.name = name;
         hiddenFormControl.value = value;
-        hiddenFormControl.dataset['valueType'] = (typeof value);
+        hiddenFormControl.dataset['valueType'] = typeof value;
         formControls[0].form.prepend(hiddenFormControl);
       }
     }
@@ -152,7 +155,7 @@
   */
 
   class AutoTimer {
-    constructor (autoTimerObj) {
+    constructor(autoTimerObj) {
       const self = this;
       Object.assign(self, autoTimerObj);
 
@@ -163,11 +166,11 @@
       self['bouquets'] = [];
       self['services'] = [];
       self['filters'] = {
-        'include': [],
-        'exclude': [],
+        include: [],
+        exclude: [],
       };
 
-      self['enabled'] = (self['enabled'] === 'yes') ? 1 : 0;
+      self['enabled'] = self['enabled'] === 'yes' ? 1 : 0;
 
       if (self['from']) {
         self['timespanFrom'] = self['from'];
@@ -191,8 +194,8 @@
 
       if (!!self['afterevent']) {
         const aeValueMap = {
-          'shutdown': 'deepstandby',
-        }
+          shutdown: 'deepstandby',
+        };
         const aeFrom = self['afterevent']['from'];
         const aeTo = self['afterevent']['to'];
         const aeAction = self['afterevent']['_@ttribute'];
@@ -205,11 +208,11 @@
       if (self['e2service']) {
         let hasMismatchedService = false;
         forceToArray(self['e2service']).forEach((service, index) => {
-          const bouquetsOrChannels = (owif.utils.isBouquet(service['e2servicereference'])) ? 'bouquets' : 'services';
+          const bouquetsOrChannels = owif.utils.isBouquet(service['e2servicereference']) ? 'bouquets' : 'services';
           self[bouquetsOrChannels].push({
-            'sRef': service['e2servicereference'],
-            'name': service['e2servicename'],
-            'selected': true,
+            sRef: service['e2servicereference'],
+            name: service['e2servicename'],
+            selected: true,
           });
           hasMismatchedService = !service['e2servicename'];
         });
@@ -245,26 +248,26 @@
     }
 
     get bouquetSRefs() {
-      return this['bouquets'].map(entry => entry['sRef']);
+      return this['bouquets'].map((entry) => entry['sRef']);
     }
 
     get bouquetNames() {
-      return this['bouquets'].map(entry => entry['name']);
+      return this['bouquets'].map((entry) => entry['name']);
     }
 
     get channelSRefs() {
-      return this['services'].map(entry => entry['sRef']);
+      return this['services'].map((entry) => entry['sRef']);
     }
 
     get channelNames() {
-      return this['services'].map(entry => entry['name']);
+      return this['services'].map((entry) => entry['name']);
     }
 
     get isRestrictedByDay() {
       const numDaysIncluded = this['filters']['include'].filter((item) => item['where'] === 'dayofweek').length;
       const numDaysExcluded = this['filters']['exclude'].filter((item) => item['where'] === 'dayofweek').length;
 
-      return (numDaysIncluded + numDaysExcluded > 0);
+      return numDaysIncluded + numDaysExcluded > 0;
     }
   }
 
@@ -288,7 +291,7 @@
       return data;
     };
 
-    const addCell = (rowRef, content ='') => {
+    const addCell = (rowRef, content = '') => {
       const newCell = rowRef.insertCell();
       newCell.innerHTML = content;
       return newCell;
@@ -299,7 +302,7 @@
 
       const e2state = item['e2state'];
       const e2stateCell = addCell(newRow, e2state);
-      e2stateCell.title = (e2state === 'Skip' ? item['e2message'] : '');
+      e2stateCell.title = e2state === 'Skip' ? item['e2message'] : '';
 
       addCell(newRow, item['e2autotimername']);
       addCell(newRow, item['e2name']);
@@ -319,10 +322,10 @@
         let responseContent = await owif.utils.fetchData('/autotimer');
         const data = responseContent['autotimer'];
 
-console.log('response: ', data);
-// console.log('defaults: ', data['default']);
-window.atList = forceToArray(data['timer']);
-//atListCache
+        console.log('response: ', data);
+        // console.log('defaults: ', data['default']);
+        window.atList = forceToArray(data['timer']);
+        //atListCache
 
         window.atList.map((itm) => new AutoTimer(itm));
 
@@ -333,61 +336,68 @@ window.atList = forceToArray(data['timer']);
         const listEl = document.getElementById('at__list');
         removeNodesBySelector('.at__item');
         document.getElementById('at__page--edit').classList.toggle('hidden', true);
-        window.scroll({top: 0, left: 0, behavior: 'smooth'});
+        window.scroll({ top: 0, left: 0, behavior: 'smooth' });
         document.getElementById('at__page--list').classList.toggle('hidden', false);
         const templateEl = document.getElementById('autotimer-list-item-template');
         // reset collections
         let collatedLocations = [];
         let collatedTags = [];
 
-        self.getAll()
-          .then(jsonResponse => {
-            // TODO:
-            // sort by name
-            // build found locations
-            jsonResponse.forEach((atItem, index) => {
-              atItem = new AutoTimer(atItem);
+        self.getAll().then((jsonResponse) => {
+          // TODO:
+          // sort by name
+          // build found locations
+          jsonResponse.forEach((atItem, index) => {
+            atItem = new AutoTimer(atItem);
 
-              // collect values
-              atItem.location && (collatedLocations.push(atItem.location));
-              collatedTags = collatedTags.concat(atItem.tag);
+            // collect values
+            atItem.location && collatedLocations.push(atItem.location);
+            collatedTags = collatedTags.concat(atItem.tag);
 
-              const searchType = valueLabelMap.autoTimers.searchType[atItem['searchType']] || '';
-              const newNode = templateEl.content.firstElementChild.cloneNode(true);
+            const searchType = valueLabelMap.autoTimers.searchType[atItem['searchType']] || '';
+            const newNode = templateEl.content.firstElementChild.cloneNode(true);
 
-              newNode.querySelector('[name="rename"]').onclick = (evt) => self.renameEntry(atItem.id, atItem.name);
+            newNode.querySelector('[name="rename"]').onclick = (evt) => self.renameEntry(atItem.id, atItem.name);
 
-              const editEl = newNode.querySelector('a[href="#/at/edit?id={{id}}"]');
-              editEl.href = editEl.href.replace('{{id}}', atItem.id);
-              editEl.onclick = (evt) => {
-                self.editEntry(atItem.id);
-                // return false;
-              }
-              newNode.querySelector('button[name="toggle"]').onclick = (evt) => self.toggleEntryEnabled(atItem.id, atItem.enabled);
-              newNode.querySelector('button[name="delete"]').onclick = (evt) => self.deleteEntry(atItem.id);
+            const editEl = newNode.querySelector('a[href="#/at/edit?id={{id}}"]');
+            editEl.href = editEl.href.replace('{{id}}', atItem.id);
+            editEl.onclick = (evt) => {
+              self.editEntry(atItem.id);
+              // return false;
+            };
+            newNode.querySelector('button[name="toggle"]').onclick = (evt) =>
+              self.toggleEntryEnabled(atItem.id, atItem.enabled);
+            newNode.querySelector('button[name="delete"]').onclick = (evt) => self.deleteEntry(atItem.id);
 
-              // newNode.dataset['atId'] = atItem.id;
-              newNode.querySelector('slot[name="autotimer-name"]').innerHTML = atItem.name;
-              newNode.querySelector('.icon__state').textContent = (atItem.enabled) ? 'av_timer' : 'highlight_off';
-              newNode.querySelector('slot[name="autotimer-searchType"]').innerHTML = (searchType) ? `${searchType}:` : '';
-              atItem.timespanFrom && (newNode.querySelector('slot[name="autotimer-timespan"]').innerHTML = `~ ${atItem.timespanFrom || ''} - ${atItem.timespanTo || ''}`);
-              atItem.isRestrictedByDay && (newNode.querySelector('slot[name="autotimer-filters"]').innerHTML = 'Certain days');
-              newNode.querySelector('slot[name="autotimer-channels"]').innerHTML = atItem.channelNames.join(', ');
-              atItem.bouquetNames.length && (newNode.querySelector('slot[name="autotimer-bouquets"]').innerHTML = `<br> ${atItem.bouquetNames.join(', ')}`);
-              newNode.querySelector('slot[name="autotimer-match"]').innerHTML = `"${atItem.match}"`;
+            // newNode.dataset['atId'] = atItem.id;
+            newNode.querySelector('slot[name="autotimer-name"]').innerHTML = atItem.name;
+            newNode.querySelector('.icon__state').textContent = atItem.enabled ? 'av_timer' : 'highlight_off';
+            newNode.querySelector('slot[name="autotimer-searchType"]').innerHTML = searchType ? `${searchType}:` : '';
+            atItem.timespanFrom &&
+              (newNode.querySelector('slot[name="autotimer-timespan"]').innerHTML = `~ ${atItem.timespanFrom || ''} - ${
+                atItem.timespanTo || ''
+              }`);
+            atItem.isRestrictedByDay &&
+              (newNode.querySelector('slot[name="autotimer-filters"]').innerHTML = 'Certain days'); // TODO: i10n
+            newNode.querySelector('slot[name="autotimer-channels"]').innerHTML = atItem.channelNames.join(', ');
+            atItem.bouquetNames.length &&
+              (newNode.querySelector('slot[name="autotimer-bouquets"]').innerHTML = `<br> ${atItem.bouquetNames.join(
+                ', '
+              )}`);
+            newNode.querySelector('slot[name="autotimer-match"]').innerHTML = `"${atItem.match}"`;
 
-              // future use (filter AutoTimer entries with no matching service in lamedb)
-              // atItem['hasMismatchedService'] && listEl.appendChild(newNode);
-              // future use (filter by state)
-              // !atItem['enabled'] && listEl.appendChild(newNode);
-              listEl.appendChild(newNode);
-            });
-
-            // unique values only
-            // https://dev.to/clairecodes/how-to-create-an-array-of-unique-values-in-javascript-using-sets-5dg6
-            self.allLocations = [...new Set(self.availableLocations.concat(collatedLocations))].sort() || [];
-            self.allTags = [...new Set(self.availableTags.concat(collatedTags))].sort() || [];
+            // future use (filter AutoTimer entries with no matching service in lamedb)
+            // atItem['hasMismatchedService'] && listEl.appendChild(newNode);
+            // future use (filter by state)
+            // !atItem['enabled'] && listEl.appendChild(newNode);
+            listEl.appendChild(newNode);
           });
+
+          // unique values only
+          // https://dev.to/clairecodes/how-to-create-an-array-of-unique-values-in-javascript-using-sets-5dg6
+          self.allLocations = [...new Set(self.availableLocations.concat(collatedLocations))].sort() || [];
+          self.allTags = [...new Set(self.availableTags.concat(collatedTags))].sort() || [];
+        });
       },
 
       getSettings: async () => {
@@ -419,7 +429,7 @@ window.atList = forceToArray(data['timer']);
           if (formControl.type === 'checkbox' && !formData.has(formControl.name)) {
             formData.set(formControl.name, '');
           }
-        };
+        }
 
         try {
           const responseContent = await owif.utils.fetchData(`/autotimer/set`, { method: 'post', body: formData });
@@ -467,7 +477,7 @@ window.atList = forceToArray(data['timer']);
           return {
             value: tag,
             label: tag,
-          }
+          };
         });
 
         self.autoTimerChoices['tag'].setChoices(self.allTags, 'value', 'label', true);
@@ -477,11 +487,11 @@ window.atList = forceToArray(data['timer']);
 
       populateForm: async (data = {}) => {
         const { elements } = atEditForm;
-console.log(data);
+        console.log(data);
         atEditForm.reset();
         removeNodesBySelector('.at__filter__line');
         document.getElementById('at__page--list').classList.toggle('hidden', true);
-        window.scroll({top: 0, left: 0, behavior: 'smooth'});
+        window.scroll({ top: 0, left: 0, behavior: 'smooth' });
         document.getElementById('at__page--edit').classList.toggle('hidden', false);
 
         data = new AutoTimer(data);
@@ -506,56 +516,60 @@ console.log(data);
       },
 
       deleteEntry: async (atId = -1) => {
-        (atId !== -1) && swal({
-          title: tstr_del_autotimer,
-          // text: 'CurrentAT.name',
-          type: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#dd6b55',
-          confirmButtonText: tstrings_yes_delete,
-          cancelButtonText: tstrings_no_cancel,
-          closeOnConfirm: true,
-          closeOnCancel: true,
-          animation: 'none',
-        }, async (userConfirmed) => {
-          if (userConfirmed) {
-            const responseContent = await owif.utils.fetchData(`/autotimer/remove?id=${atId}`);
-            const data = responseContent['e2simplexmlresult'];
-            const status = data['e2state'];
-            let message = data['e2statetext'];
-            message = `${message.charAt(0).toUpperCase()}${message.slice(1)}`;
-
-            if (status === true || status.toString().toLowerCase() === 'true') {
-              swal({
-                title: tstrings_deleted, 
-                text: message,
-                type: 'success',
-                animation: 'none',
-              });
-            } else {
-              // throw new Error(message);
-              swal({
-                title: tstr_oops,
-                text: message,
-                type: 'error',
-                animation: 'none',
-              });
-            }
-
-            self.populateList();
-          } else {
-            swal({
-              title: tstrings_cancelled, 
+        atId !== -1 &&
+          swal(
+            {
+              title: tstr_del_autotimer,
               // text: 'CurrentAT.name',
-              type: 'error',
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#dd6b55',
+              confirmButtonText: tstrings_yes_delete,
+              cancelButtonText: tstrings_no_cancel,
+              closeOnConfirm: true,
+              closeOnCancel: true,
               animation: 'none',
-            });
-          }
-        });
+            },
+            async (userConfirmed) => {
+              if (userConfirmed) {
+                const responseContent = await owif.utils.fetchData(`/autotimer/remove?id=${atId}`);
+                const data = responseContent['e2simplexmlresult'];
+                const status = data['e2state'];
+                let message = data['e2statetext'];
+                message = `${message.charAt(0).toUpperCase()}${message.slice(1)}`;
+
+                if (status === true || status.toString().toLowerCase() === 'true') {
+                  swal({
+                    title: tstrings_deleted,
+                    text: message,
+                    type: 'success',
+                    animation: 'none',
+                  });
+                } else {
+                  // throw new Error(message);
+                  swal({
+                    title: tstr_oops,
+                    text: message,
+                    type: 'error',
+                    animation: 'none',
+                  });
+                }
+
+                self.populateList();
+              } else {
+                swal({
+                  title: tstrings_cancelled,
+                  // text: 'CurrentAT.name',
+                  type: 'error',
+                  animation: 'none',
+                });
+              }
+            }
+          );
       },
 
       toggleEntryEnabled: async (atId = -1, currentState) => {
-        const newState = (currentState ==  1) ? 0 : 1; // loose equivalence intentional
+        const newState = currentState == 1 ? 0 : 1; // loose equivalence intentional
         try {
           const responseContent = await owif.utils.fetchData(`/autotimer/change?id=${atId}&enabled=${newState}`);
 
@@ -563,7 +577,7 @@ console.log(data);
           const status = data['e2state'];
           let message = data['e2statetext'];
           message = `${message.charAt(0).toUpperCase()}${message.slice(1)}`;
-  
+
           if (status === true || status.toString().toLowerCase() === 'true') {
             swal.close();
             self.populateList();
@@ -592,7 +606,7 @@ console.log(data);
             const status = data['e2state'];
             let message = data['e2statetext'];
             message = `${message.charAt(0).toUpperCase()}${message.slice(1)}`;
-    
+
             if (status === true || status.toString().toLowerCase() === 'true') {
               swal.close();
               self.populateList();
@@ -613,26 +627,28 @@ console.log(data);
         if (newName) {
           doRenameRequest(atId, newName);
         } else {
-          swal({
-            title: tstr_rename,
-            text: '',
-            type: 'input',
-            showCancelButton: true,
-            closeOnConfirm: false,
-            inputValue: currentName,
-            input: 'text',
-            animation: 'none',
-          }, (userInput) => {
-            if (userInput && userInput.length) {
-              doRenameRequest(atId, userInput);
+          swal(
+            {
+              title: tstr_rename,
+              text: '',
+              type: 'input',
+              showCancelButton: true,
+              closeOnConfirm: false,
+              inputValue: currentName,
+              input: 'text',
+              animation: 'none',
+            },
+            (userInput) => {
+              if (userInput && userInput.length) {
+                doRenameRequest(atId, userInput);
+              }
             }
-          });
+          );
         }
-
       },
 
       editEntry: async (atId = -1) => {
-        const entry = window.atList.find(autotimer => autotimer['id'] == atId);
+        const entry = window.atList.find((autotimer) => autotimer['id'] == atId);
         owif.utils.debugLog(`editEntry: ${entry}`);
         self.populateForm(entry);
       },
@@ -640,10 +656,23 @@ console.log(data);
       transformFormData: () => {
         const formData = new FormData(atEditForm);
         const formDataObj = Object.fromEntries(formData);
-        const paramsNotToSend = ['hasMismatchedService', '_before', '_after', '_type', '_filterpredicate', '_filterwhere'];
+        const paramsNotToSend = [
+          'hasMismatchedService',
+          '_before',
+          '_after',
+          '_type',
+          '_filterpredicate',
+          '_filterwhere',
+        ];
         const filteringParamNames = [
-          'title', 'shortdescription', 'description', 'dayofweek', 
-          '!title', '!shortdescription', '!description', '!dayofweek',
+          'title',
+          'shortdescription',
+          'description',
+          'dayofweek',
+          '!title',
+          '!shortdescription',
+          '!description',
+          '!dayofweek',
         ];
         // TODO: tags?
         const paramsToSendIfEmpty = filteringParamNames.concat(['offset', 'services', 'bouquets', 'vps_enabled']);
@@ -662,8 +691,9 @@ console.log(data);
             // this should not be applied to `tags`
             formData.set(name, formData.getAll(name));
           }
-          if (value === '' || value === ',') { // TODO: this may no longer be needed
-            // remove empty value (eg. empty `id` value causes server error, 
+          if (value === '' || value === ',') {
+            // TODO: this may no longer be needed
+            // remove empty value (eg. empty `id` value causes server error,
             // whereas missing `id` param does not (treated as a new autotimer))
             formData.delete(name); // TODO: check iOS compatibility
           } else if (owif.utils.regexDateFormat.test(value)) {
@@ -681,13 +711,10 @@ console.log(data);
       },
 
       saveEntry: async (extraParams = '') => {
-        const responseContent = await owif.utils.fetchData(
-          `/autotimer/edit?${extraParams}`,
-          { 
-            method: 'post',
-            body: self.transformFormData(),
-          }
-        );
+        const responseContent = await owif.utils.fetchData(`/autotimer/edit?${extraParams}`, {
+          method: 'post',
+          body: self.transformFormData(),
+        });
 
         const data = responseContent['e2simplexmlresult'];
         const status = data['e2state'];
@@ -708,25 +735,28 @@ console.log(data);
       },
 
       cancelEntry: () => {
-        swal({
-          title: tstr_prompt_save_changes,
-          // text: '',
-          type: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#dd6b55',
-          confirmButtonText: tstrings_yes,
-          cancelButtonText: tstrings_no_cancel,
-          closeOnConfirm: false,
-          closeOnCancel: true,
-          animation: 'none',
-        }, function (userConfirmed) {
-          if (userConfirmed){
-            self.saveEntry();
-           } else {
-            window.location.hash = '/at';
-            self.populateList();
-           }
-        });
+        swal(
+          {
+            title: tstr_prompt_save_changes,
+            // text: '',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#dd6b55',
+            confirmButtonText: tstrings_yes,
+            cancelButtonText: tstrings_no_cancel,
+            closeOnConfirm: false,
+            closeOnCancel: true,
+            animation: 'none',
+          },
+          function (userConfirmed) {
+            if (userConfirmed) {
+              self.saveEntry();
+            } else {
+              window.location.hash = '/at';
+              self.populateList();
+            }
+          }
+        );
       },
 
       populateFilters: (filters) => {
@@ -745,7 +775,7 @@ console.log(data);
         });
       },
 
-      addFilter: (filter = {predicate: '', where: 'title', value: ''}) => {
+      addFilter: (filter = { predicate: '', where: 'title', value: '' }) => {
         const templateEl = document.getElementById('autotimer-filter-template');
         const newNode = templateEl.content.firstElementChild.cloneNode(true);
         const filterListEl = document.getElementById('atform__filters-container');
@@ -756,14 +786,14 @@ console.log(data);
         const filterDayOfWeek = newNode.querySelector('select[name="dayofweek"]');
 
         const updateValueFields = () => {
-          const isDayOfWeekSelected = (filterWhere.value === 'dayofweek');
+          const isDayOfWeekSelected = filterWhere.value === 'dayofweek';
 
           if (isDayOfWeekSelected) {
             filterDayOfWeek.name = `${filterPredicate.value}${filterWhere.value}`;
             filterText.value = '';
           } else {
             filterText.name = `${filterPredicate.value}${filterWhere.value}`;
-            filterDayOfWeek.value = ''
+            filterDayOfWeek.value = '';
           }
         };
 
@@ -776,7 +806,7 @@ console.log(data);
         filterWhere.onchange = (evt) => {
           const formControl = evt.target;
           const container = formControl.closest('fieldset');
-          const isDayOfWeekFilter = (formControl.value === 'dayofweek');
+          const isDayOfWeekFilter = formControl.value === 'dayofweek';
 
           container.querySelector('.filter-value--dayofweek').classList.toggle('hidden', !isDayOfWeekFilter);
           container.querySelector('.filter-value--text').classList.toggle('hidden', isDayOfWeekFilter);
@@ -799,7 +829,7 @@ console.log(data);
         filterListEl.appendChild(newNode);
 
         jQuery.AdminBSB.select.activate();
-      }, 
+      },
 
       removeFilter: () => {
         const target = event.target;
@@ -809,9 +839,9 @@ console.log(data);
 
       initEventHandlers: () => {
         // create a failsafe element to assign event handlers to
-				let nullEl = document.createElement('input');
-				
-				/* autotimer list */
+        let nullEl = document.createElement('input');
+
+        /* autotimer list */
         // (document.querySelector('button[name="create"]') || nullEl).onclick = self.createEntry;
         (document.querySelector('button[name="reload"]') || nullEl).onclick = self.populateList;
         (document.querySelector('button[name="process"]') || nullEl).onclick = () => window.parseAT();
@@ -820,31 +850,33 @@ console.log(data);
         (document.querySelector('button[name="settings"]') || nullEl).onclick = self.getSettings;
         (document.querySelector('button[name="saveSettings"]') || nullEl).onclick = self.saveSettings;
         (document.querySelector('a[href="#/at/new"]') || nullEl).onclick = self.createEntry;
-				
-				/* autotimer edit - buttons */
-        (document.querySelector('button[name="addFilter"]') || nullEl).onclick = () => self.addFilter();
-				(document.querySelector('button[name="cancel"]') || nullEl).onclick = self.cancelEntry;
 
-				/* autotimer edit - inputs */
+        /* autotimer edit - buttons */
+        (document.querySelector('button[name="addFilter"]') || nullEl).onclick = () => self.addFilter();
+        (document.querySelector('button[name="cancel"]') || nullEl).onclick = self.cancelEntry;
+
+        /* autotimer edit - inputs */
         (document.querySelector('form[name="atedit"]') || nullEl).onsubmit = (evt) => {
           evt.preventDefault();
           self.saveEntry();
-        }
-				// at least one option must be checked
-				(document.querySelectorAll('input[name="justplay"], input[name="always_zap"]') || nullEl).forEach((node) => {
-					node.onchange = (input) => {
-						const checkedInputs = document.querySelectorAll('input[name="justplay"]:checked, input[name="always_zap"]:checked');
-						(checkedInputs.length < 1) && (event.target.checked = !event.target.checked);
-					};
-				});
+        };
+        // at least one option must be checked
+        (document.querySelectorAll('input[name="justplay"], input[name="always_zap"]') || nullEl).forEach((node) => {
+          node.onchange = (input) => {
+            const checkedInputs = document.querySelectorAll(
+              'input[name="justplay"]:checked, input[name="always_zap"]:checked'
+            );
+            checkedInputs.length < 1 && (event.target.checked = !event.target.checked);
+          };
+        });
 
-				/* autotimer edit - show/hide */
+        /* autotimer edit - show/hide */
         (document.getElementById('_timespan') || nullEl).onchange = (input) => {
           toggleFormSection(document.getElementById('_timespan_'), !input.target.checked);
         };
         (document.getElementById('_datespan') || nullEl).onchange = (input) => {
           toggleFormSection(document.getElementById('_datespan_'), !input.target.checked);
-				};
+        };
         (document.getElementById('_timerOffset') || nullEl).onchange = (input) => {
           toggleFormSection(document.getElementById('_timerOffset_'), !input.target.checked);
         };
@@ -864,7 +896,7 @@ console.log(data);
           toggleFormSection(document.getElementById('vps_enabled_'), !input.target.checked);
         };
         (document.querySelector('[name="vps_safemode"]') || nullEl).onchange = (input) => {
-          (document.querySelector('[name="vps_overwrite"]') || nullEl).value = (input.target.checked) ? 0 : 1;
+          (document.querySelector('[name="vps_overwrite"]') || nullEl).value = input.target.checked ? 0 : 1;
         };
       },
 
@@ -881,14 +913,14 @@ console.log(data);
 
         const hash = window.location.hash;
         if (hash.startsWith('#/at/new')) {
-          const searchParams = new URLSearchParams((hash.split('?')[1] || ''));
+          const searchParams = new URLSearchParams(hash.split('?')[1] || '');
           const data = Object.fromEntries(searchParams);
           data['timespanFrom'] && (data['timespanFrom'] = getAdjustedTimeString(data['timespanFrom'], { hours: -1 }));
           data['timespanTo'] && (data['timespanTo'] = getAdjustedTimeString(data['timespanTo'], { hours: 1 }));
           data['sref'] && (data['e2service'] = { e2servicereference: data['sref'] });
           self.populateForm(data);
         } else if (hash.startsWith('#/at/edit')) {
-          const searchParams = new URLSearchParams((hash.split('?')[1] || ''));
+          const searchParams = new URLSearchParams(hash.split('?')[1] || '');
           self.editEntry(searchParams.get('id'));
         } else {
           self.populateList();
@@ -897,7 +929,7 @@ console.log(data);
         self.initEventHandlers(self);
       },
     };
-  }
+  };
 
   const autoTimersApp = new AutoTimersApp();
   autoTimersApp.init();
