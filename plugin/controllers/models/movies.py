@@ -60,7 +60,7 @@ def FuzzyTime2(t):
 		day = _("Yesterday")
 	else:
 		day = dayOfWeek[d[6]]
-	
+
 	if d[0] == n[0]:
 		# same year
 		date = _("%s %02d.%02d.") % (day, d[2], d[1])
@@ -82,6 +82,7 @@ MOVIE_LIST_ROOT_FALLBACK = '/media'
 
 cutsParser = struct.Struct('>QI')  # big-endian, 64-bit PTS and 32-bit type
 
+
 def checkParentalProtection(directory):
 	if hasattr(config.ParentalControl, 'moviepinactive'):
 		if config.ParentalControl.moviepinactive.value:
@@ -95,11 +96,13 @@ def checkParentalProtection(directory):
 				return True
 	return False
 
+
 def ConvertDesc(desc):
 	if PY3:
 		return desc
 	else:
 		return six.text_type(desc, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+
 
 def getMovieList(rargs=None, locations=None):
 	movieliste = []
@@ -282,7 +285,7 @@ def getMovieList(rargs=None, locations=None):
 			"movies": movieliste,
 			"bookmarks": bookmarklist,
 			"directory": directory,
-			"recursive" : brecursive
+			"recursive": brecursive
 		}
 
 	if brecursive:
@@ -291,14 +294,15 @@ def getMovieList(rargs=None, locations=None):
 			"locations": locations,
 			"directory": directory,
 			"bookmarks": bookmarklist,
-			"recursive" : brecursive
+			"recursive": brecursive
 		}
 	else:
 		return {
 			"movies": movieliste,
 			"locations": locations,
-			"recursive" : brecursive
+			"recursive": brecursive
 		}
+
 
 def getMovieSearchList(rargs=None, locations=None):
 	movieliste = []
@@ -620,6 +624,7 @@ def moveMovie(session, sRef, destpath):
 def renameMovie(session, sRef, newname):
 	return _moveMovie(session, sRef, newname=newname)
 
+
 def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, NewFormat=False):
 
 	if sRef is not None:
@@ -741,6 +746,7 @@ def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, New
 		"result": True,
 		"tags": tags
 	}
+
 
 def getMovieDetails(sRef=None):
 

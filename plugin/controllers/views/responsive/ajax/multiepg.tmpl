@@ -43,7 +43,7 @@
 	#fulltbl .table-striped>tbody>tr:nth-of-type(odd):hover,
 	#fulltbl .theme--city-lights .table-striped>tbody>tr:hover,
 	#fulltbl .theme--city-lights .table-striped>tbody>tr:nth-of-type(odd):hover { 
-    background-color: initial;
+	/* background-color: initial; */
 	}
 	.epg__event:hover {
 		filter: brightness(1.2);
@@ -56,17 +56,17 @@
     overflow: visible;
 	}
 	.epg__event.event--has-timer::after {
-		content: '';
+	content: '';
     display: block;
-    border-radius: 50%;
+    border-radius: 0;
     top: -25%;
-    right: -5%;
+    right: 0;
     bottom: -10%;
-    left: -10%;
+    left: -10px;
     position: absolute;
-    border-width: 2px;
-		border-style: solid;
-  }
+    border-width: 0 0 0 3px;
+	border-style: solid;
+  	}
 	.epg__timer-status .material-icons {
 		font-size: 1.2em;
     margin-right: 0.6ex;

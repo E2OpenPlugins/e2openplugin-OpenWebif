@@ -1,6 +1,6 @@
 ## Version 1.4.5
 ## (in development)
-* fix sleeptimer for OpenATV #1295
+* fix sleeptimer #1295
 * fix terminal for VTi #1293
 
 ## Version 1.4.4

@@ -472,6 +472,10 @@ def getAllInfo():
 			brand = "Zgemma"
 			model = "H9 Twin"
 			grabpip = 1
+		elif procmodel == "h9se.s":
+			brand = "Zgemma"
+			model = "H9SE"
+			grabpip = 1
 		elif procmodel == "vs1500":
 			brand = "Vimastec"
 			model = "vs1500"
@@ -703,7 +707,7 @@ def getAllInfo():
 		remote = "lunix4k"
 	elif procmodel in ("sh1", "lc"):
 		remote = "sh1"
-	elif procmodel in ("hzero", "h3", "h4", "h5", "h6", "h7", "h8", "h9", "i55plus", "h8.2h", "h9.s", "h9.t", "h9.2h", "h9.2s", "h9combo", "h9twin"):
+	elif procmodel in ("hzero", "h3", "h4", "h5", "h6", "h7", "h8", "h9", "i55plus", "h8.2h", "h9.s", "h9.t", "h9.2h", "h9.2s", "h9combo", "h9twin", "h9se.s"):
 		remote = "h3"
 	elif procmodel == "i55":
 		remote = "i55"
@@ -783,7 +787,7 @@ def getAllInfo():
 				f = open("/etc/opkg/all-feed.conf", 'r')
 				oeline = f.readline().strip().lower()
 				f.close()
-				distro = oeline.split( )[1].replace("-all", "")
+				distro = oeline.split()[1].replace("-all", "")
 			except:  # nosec  # noqa: E722
 				pass
 
@@ -819,13 +823,13 @@ def getAllInfo():
 	# reporting the installed dvb-module version is as close as we get without too much hassle
 	driverdate = 'unknown'
 	try:
-		driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-modules*').readline().split( )[2]  # nosec
+		driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-modules*').readline().split()[2]  # nosec
 	except:  # noqa: E722
 		try:
-			driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-proxy*').readline().split( )[2]  # nosec
+			driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-proxy*').readline().split()[2]  # nosec
 		except:  # noqa: E722
 			try:
-				driverdate = os.popen('/usr/bin/opkg -V0 list_installed *kernel-core-default-gos*').readline().split( )[2]  # nosec
+				driverdate = os.popen('/usr/bin/opkg -V0 list_installed *kernel-core-default-gos*').readline().split()[2]  # nosec
 			except:  # nosec # noqa: E722
 				pass
 	re_search = re.search('([0-9]{8})', driverdate)
@@ -884,11 +888,14 @@ def getImageBuild():
 def getImageDistro():
 	return STATIC_INFO_DIC['distro']
 
+
 def getLcd():
 	return STATIC_INFO_DIC['lcd']
 
+
 def getGrabPip():
 	return STATIC_INFO_DIC['grabpip']
+
 
 class rc_model:
 	def getRcFolder(self):

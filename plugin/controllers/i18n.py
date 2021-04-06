@@ -8,6 +8,7 @@ from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 LOCALES_DOMAIN = "OpenWebif"
 LOCALES_RELPATH = "Extensions/OpenWebif/locale"
 
+
 def _locale_init():
 	gettext.bindtextdomain(
 		LOCALES_DOMAIN,

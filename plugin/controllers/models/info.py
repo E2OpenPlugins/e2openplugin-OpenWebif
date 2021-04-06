@@ -109,7 +109,7 @@ def getLinkSpeed(iface):
 			try:
 				speed = os.popen('iwconfig ' + iface + ' | grep "Bit Rate"').read().split(':')[1].split(' ')[0]
 			except:
-				pass 
+				pass
 	speed = str(speed) + " MBit/s"
 	speed = speed.replace("10000 MBit/s", "10 GBit/s")
 	speed = speed.replace("1000 MBit/s", "1 GBit/s")
@@ -628,6 +628,7 @@ def getOrbitalText(cur_info):
 		return tunerType
 	return ''
 
+
 def getOrb(pos):
 	direction = _("E")
 	if pos > 1800:
@@ -703,6 +704,7 @@ def getStreamEventName(ref):
 		if event:
 			return event.getEventName()
 	return ""
+
 
 def getStatusInfo(self):
 	# Get Current Volume and Mute Status
@@ -821,8 +823,10 @@ def GetWithAlternative(service, onlyFirst=True):
 	else:
 		return None
 
+
 def getPipStatus():
 	return int(getInfo()['grabpip'] and hasattr(InfoBar.instance, 'session') and InfoBar.instance.session.pipshown)
+
 
 def testPipStatus(self):
 	pipinfo = {

@@ -32,13 +32,14 @@ from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
 GRAB_PATH = '/usr/bin/grab'
 
+
 class GrabRequest(object):
 	def __init__(self, request, session):
 		self.request = request
 
 		mode = None
 		graboptions = [GRAB_PATH, '-q', '-s']
-		
+
 		fileformat = getUrlArg(request, "format", "jpg")
 		if fileformat == "jpg":
 			graboptions.append("-j")

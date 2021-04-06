@@ -47,10 +47,13 @@ matrix:
       python: 3.8
       before_install:
         - pip install Cheetah3
+        - pip install --upgrade pip autopep8
       script:
         - python -m compileall -l . -r 10 -q
         - cheetah compile -R plugin
         - python testsuite/evil_eval.py
+      after_success:
+        - ./build.sh
 
 deploy:
   provider: pages

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 ##########################################################################
-# OpenWebif: MovieList / copy of OpenATV MovieList.py 
+# OpenWebif: MovieList / copy of OpenATV MovieList.py
 ##########################################################################
 
 import os
@@ -19,18 +19,24 @@ from ServiceReference import ServiceReference
 cutsParser = struct.Struct('>QI')  # big-endian, 64-bit PTS and 32-bit type
 
 # iStaticServiceInformation
+
+
 class StubInfo:
 	def __init__(self):
 		pass
 
 	def getName(self, serviceref):
 		return os.path.split(serviceref.getPath())[1]
+
 	def getLength(self, serviceref):
 		return -1
+
 	def getEvent(self, serviceref, *args):
 		return None
+
 	def isPlayable(self):
 		return True
+
 	def getInfo(self, serviceref, w):
 		try:
 			if w == iServiceInformation.sTimeCreate:
@@ -42,8 +48,11 @@ class StubInfo:
 		except:
 			pass
 		return 0
+
 	def getInfoString(self, serviceref, w):
 		return ''
+
+
 justStubInfo = StubInfo()
 
 
@@ -147,7 +156,7 @@ class MovieList():
 
 		self.firstFileEntry = numberOfDirs
 		self.parentDirectory = 0
-		
+
 		for x in self.list:
 			if x[1]:
 				tmppath = x[1].getName(x[0])[:-1] if x[1].getName(x[0]).endswith('/') else x[1].getName(x[0])
@@ -182,13 +191,14 @@ class MovieList():
 			if (len(movies) > 1) or (tag in realtags):
 				movies = tuple(movies) # a tuple can be hashed, but a list not
 				item = rtags.get(movies, [])
-				if not item: rtags[movies] = item
+				if not item:
+					rtags[movies] = item
 				item.append(tag)
 		self.tags = {}
 		for movies, tags in list(rtags.items()):
 			movie = movies[0]
 			# format the tag lists so that they are in 'original' order
-			tags.sort(key = movie.find)
+			tags.sort(key=movie.find)
 			first = movie.find(tags[0])
 			last = movie.find(tags[-1]) + len(tags[-1])
 			match = movie
@@ -212,4 +222,3 @@ class MovieList():
 				match = ' '.join(tags)
 				if len(match) > 2: #Omit small words
 					self.tags[match] = set(tags)
-		

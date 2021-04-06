@@ -269,10 +269,14 @@ def create_servicereference(*args, **kwargs):
 		ns)
 
 # Fallback genre
+
+
 def getGenreStringLong(hn, ln):
 	return ""
 
 # Fallback moviePlayState
+
+
 def _moviePlayState(cutsFileName, ref, length):
 	return 0
 
@@ -286,6 +290,7 @@ def getUrlArg(request, key, default=None):
 		if key in request.args.keys():
 			return request.args[key][0]
 	return default
+
 
 def getUrlArg2(args, key, default=None):
 	if PY3:
@@ -310,9 +315,9 @@ def removeBad(val):
 def removeBad2(val):
 	if val is not None:
 		if PY3:
-			return val.replace('\x86', '').replace('\x87', '').replace('\xc2\x8a','\n')
+			return val.replace('\x86', '').replace('\x87', '').replace('\xc2\x8a', '\n')
 		else:
-			return val.replace('\xc2\x86', '').replace('\xc2\x87', '').replace('\xc2\x8a','\n')
+			return val.replace('\xc2\x86', '').replace('\xc2\x87', '').replace('\xc2\x8a', '\n')
 	return val
 
 
@@ -320,20 +325,20 @@ def getEventInfoProvider(moviedb):
 	extEventInfoProviders = {
 		'kinopoisk': {
 			'id': 'kinopoisk',
-			'name': 'KinoPoisk', # КиноПоиск 
+			'name': 'KinoPoisk', # КиноПоиск
 			'url': 'https://www.kinopoisk.ru/index.php?kp_query='
 		},
 		'csfd': {
 			'name': 'CSfd', # Česko-Slovenská filmová databáze
-			'url': 'https://www.csfd.cz/hledat/?q=' 
+			'url': 'https://www.csfd.cz/hledat/?q='
 		},
 		'tvguideuk': {
-			'name': 'TV Guide UK', 
+			'name': 'TV Guide UK',
 			'url': 'https://www.tvguide.co.uk/search.asp?title='
 		},
-		'imdb': { 
-			'name': 'IMDb', 
-			'url': 'https://www.imdb.com/find?s=tt&q=' 
+		'imdb': {
+			'name': 'IMDb',
+			'url': 'https://www.imdb.com/find?s=tt&q='
 		}
 	}
 	providerData = None

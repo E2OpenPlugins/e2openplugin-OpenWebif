@@ -42,6 +42,7 @@ from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
 from Plugins.Extensions.OpenWebif.controllers.models.config import getCollapsedMenus, getConfigsSections, getShowName, getCustomName, getBoxName
 from Plugins.Extensions.OpenWebif.controllers.defaults import getPublicPath, getViewsPath, EXT_EVENT_INFO_SOURCE, STB_LANG, getIP
 
+
 def new_getRequestHostname(self):
 	host = self.getHeader(b'host')
 	if host:
@@ -378,7 +379,7 @@ class BaseController(resource.Resource):
 			# 'nw'='1' -> target _blank
 			# 'nw'='2' -> target popup
 			# 'nw'=None -> target _self
-		
+
 			# syntax
 			# addExternalChild( (Link, Resource, Name, Version, HasGUI, WebTarget) )
 			# example addExternalChild( ("webadmin", root, "WebAdmin", 1, True, "_self") )

@@ -47,6 +47,7 @@ from .defaults import PICON_PATH
 import re
 import six
 
+
 def whoami(request):
 	port = comp_config.OpenWebif.port.value
 	proto = 'http'
@@ -67,6 +68,7 @@ class WebController(BaseController):
 	Fork of *Enigma2 WebInterface API* as described in e.g.
 	https://dream.reichholf.net/e2web/.
 	"""
+
 	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
 		self.putChild(b"stream", StreamController(session))
@@ -535,7 +537,6 @@ class WebController(BaseController):
 		services["bname"] = bname
 		return services
 
-	
 	def P_servicesm3u(self, request):
 		"""
 		Request handler for the `servicesm3u` endpoint.
@@ -1072,7 +1073,7 @@ class WebController(BaseController):
 		autoadjust = -1
 		if _autoadjust != None:
 			autoadjust = _autoadjust == "1"
-		
+
 		# TODO: merge function addTimer+editTimer+addTimerByEventId in timers.py
 		if mode == 1:
 			return addTimerByEventId(
@@ -1097,7 +1098,7 @@ class WebController(BaseController):
 					"result": False,
 					"message": "The parameter 'beginOld' must be a number"
 				}
-	
+
 			try:
 				endOld = int(request.args[b"endOld"][0])
 			except Exception:  # noqa: E722
@@ -1167,7 +1168,7 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["sRef", "begin", "end", "name"])
 		if res:
 			return res
-		
+
 		return self._AddEditTimer(request, 0)
 
 	def P_timeraddbyeventid(self, request):
@@ -1455,19 +1456,19 @@ class WebController(BaseController):
 			except ValueError:
 				pass
 		return getBouquetEpg(getUrlArg(request, "bRef"), begintime, endtime, self.isJson)
-	
+
 	def P_epgxmltv(self, request):
 		"""
 		Request handler for the `epgxmltv` endpoint.
-	
+
 		.. note::
-	
+
 			Not available in *Enigma2 WebInterface API*.
-	
+
 		Args:
 			request (twisted.web.server.Request): HTTP request object
 			bRef: mandatory, method uses epgmulti
-			lang: mandatory, needed for xmltv and Enigma2 has no parameter for epg language			
+			lang: mandatory, needed for xmltv and Enigma2 has no parameter for epg language
 		Returns:
 			HTTP response with headers
 		"""
@@ -2040,9 +2041,9 @@ class WebController(BaseController):
 		action = getUrlArg(request, "action", "standby")
 		enabled = getUrlArg(request, "enabled")
 		if enabled != None:
-			if enabled == "True":
+			if enabled == "True" or enabled == "true":
 				enabled = True
-			elif enabled == "False":
+			elif enabled == "False" or enabled == "false":
 				enabled = False
 
 		ret = getSleepTimer(self.session)
@@ -2343,12 +2344,13 @@ class WebController(BaseController):
 			pp = pp.replace("/picon/", path)
 		if json == 'true':
 			if pp:
-				return {"result": True, "path" : pp, "link" : link}
+				return {"result": True, "path": pp, "link": link}
 			else:
 				return {"result": False}
 		else:
 			self.isImage = True
 			return pp
+
 
 class ApiController(WebController):
 	def __init__(self, session, path=""):

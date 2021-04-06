@@ -32,11 +32,12 @@ from ServiceReference import ServiceReference
 from Screens.InfoBar import InfoBar
 from time import time, strftime, localtime, mktime
 from six.moves.urllib.parse import unquote
-from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternative
+from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternative, getInfo
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad
 
-def FuzzyTime(t, inPast = False):
+
+def FuzzyTime(t, inPast=False):
 	d = localtime(t)
 	nt = time()
 	n = localtime()
@@ -48,7 +49,7 @@ def FuzzyTime(t, inPast = False):
 	elif d[0] == n[0] and d[7] == n[7] - 1 and inPast:
 		# won't work on New Year's day
 		date = _("Yesterday")
-	elif ((t - nt) < 7*86400) and (nt < t) and not inPast:
+	elif ((t - nt) < 7 * 86400) and (nt < t) and not inPast:
 		# same week (must be future)
 		date = dayOfWeek[d[6]]
 	elif d[0] == n[0]:
@@ -827,21 +828,33 @@ def getSleepTimer(session):
 			}
 	elif InfoBar.instance is not None and hasattr(InfoBar.instance, 'sleepTimer'):
 		try:
+			# TODO test OpenPLI and similar
 			active = InfoBar.instance.sleepTimer.isActive()
 			time = config.usage.sleep_timer.value
-			action = config.usage.sleep_timer_action.value
-			if time and time > 0:
+			info = getInfo()
+			if info["imagedistro"] not in ('openpli', 'satdreamgr', 'openvision'):
+				action = config.usage.sleep_timer_action.value
+				if action == "deepstandby":
+					action = "shutdown"
+			else:
+				action = "shutdown"
+			if time != None and int(time) > 0:
 				try:
-					time = time / 60
+					time = int(int(time) / 60)
 				except:
 					time = 60
+			remaining = 0
+			if active:
+				remaining = int(InfoBar.instance.sleepTimerState())
 			return {
 				"enabled": active,
 				"minutes": time,
 				"action": action,
+				"remaining": remaining,
 				"message": _("Sleeptimer is enabled") if active else _("Sleeptimer is disabled")
 			}
-		except Exception:
+		except Exception as e:
+			print(e)
 			return {
 				"result": False,
 				"message": _("SleepTimer error")
@@ -903,20 +916,46 @@ def setSleepTimer(session, time, action, enabled):
 			}
 	elif InfoBar.instance is not None and hasattr(InfoBar.instance, 'sleepTimer'):
 		try:
-			config.usage.sleep_timer_action.value = action
-			config.usage.sleep_timer_action.save()
+			if time == None:
+				time = 60
+			# TODO test OpenPLI and similar
+			info = getInfo()
+			if info["imagedistro"] not in ('openpli', 'satdreamgr', 'openvision'):
+				if action == "shutdown":
+					config.usage.sleep_timer_action.value = "deepstandby"
+				else:
+					config.usage.sleep_timer_action.value = action
+				config.usage.sleep_timer_action.save()
 			active = enabled
+			time = int(time)
+			config.usage.sleep_timer.value = str(time * 60)
+			if config.usage.sleep_timer.value == '0':
+				# find the closest value
+				if info["imagedistro"] in ('openatv'):
+					times = time * 60
+					for val in list(range(900, 14401, 900)):
+						if times == val:
+							break
+						if times < val:
+							time = int(abs(val / 60))
+							break
+				else:
+					# use 60 if not valid
+					time = 60
+				config.usage.sleep_timer.value = str(time * 60)
+			config.usage.sleep_timer.save()
 			if enabled:
-				InfoBar.instance.setSleepTimer(time*60)
+				InfoBar.instance.setSleepTimer(time * 60, False)
 			else:
-				InfoBar.instance.setSleepTimer(0)
+				InfoBar.instance.setSleepTimer(0, False)
 			return {
 				"enabled": active,
 				"minutes": time,
 				"action": action,
 				"message": _("Sleeptimer is enabled") if active else _("Sleeptimer is disabled")
 			}
-		except Exception:
+		except Exception as e:
+			print(e)
 			return {
 				"result": False,
 				"message": _("SleepTimer error")

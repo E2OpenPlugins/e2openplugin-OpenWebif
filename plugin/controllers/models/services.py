@@ -62,6 +62,7 @@ if PY3:
 else:
 	from cgi import escape as html_escape
 
+
 def filterName(name, encode=True):
 	if name is not None:
 		name = six.ensure_str(removeBadChars(six.ensure_binary(name)))
@@ -69,14 +70,17 @@ def filterName(name, encode=True):
 			return html_escape(name, quote=True)
 	return name
 
+
 def removeBadChars(val):
 	return val.replace(b'\x1a', b'').replace(b'\xc2\x86', b'').replace(b'\xc2\x87', b'').replace(b'\xc2\x8a', b'')
+
 
 def convertUnicode(val):
 	if PY3:
 		return val
 	else:
 		return six.text_type(val, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+
 
 def convertDesc(val, encode=True):
 	if val is not None:
@@ -430,6 +434,7 @@ def getProtection(sref):
 						isProtected = '4'
 	return isProtected
 
+
 def getChannels(idbouquet, stype):
 	ret = []
 	idp = 0
@@ -701,13 +706,13 @@ def getTimerEventStatus(event, eventLookupTable, timers=None):
 			timerDetails = {}
 			if timer.begin <= startTime and timer.end >= endTime:
 				if timer.disabled:
-					timerDetails = { 
+					timerDetails = {
 						'isEnabled': 0,
 						'basicStatus': 'timer disabled'
 					}
 				else:
-					timerDetails = { 
-						'isEnabled': 1, 
+					timerDetails = {
+						'isEnabled': 1,
 						'isZapOnly': int(timer.justplay),
 						'basicStatus': 'timer'
 					}
@@ -716,7 +721,7 @@ def getTimerEventStatus(event, eventLookupTable, timers=None):
 				except AttributeError:
 					timerDetails['isAutoTimer'] = 0
 				return timerDetails
-				
+
 	return None
 
 
@@ -1065,20 +1070,20 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 	# Check if an event has an associated timer. Unfortunately
 	# we cannot simply check against timer.eit, because a timer
 	# does not necessarily have one belonging to an epg event id.
-	def getTimerEventStatus(event, eventLookupTable):	
+	def getTimerEventStatus(event, eventLookupTable):
 		startTime = event[eventLookupTable.index('B')]
 		endTime = event[eventLookupTable.index('B')] + event[eventLookupTable.index('D')] - 120
 		serviceref = event[eventLookupTable.index('R')]
-		if serviceref not in timerlist:	
+		if serviceref not in timerlist:
 			return None
-		for timer in timerlist[serviceref]:	
+		for timer in timerlist[serviceref]:
 			if timer.begin <= startTime and timer.end >= endTime:
 				basicStatus = 'timer'
 				isEnabled = 1
 				isAutoTimer = -1
 				if hasattr(timer, "isAutoTimer"):
 					isAutoTimer = timer.isAutoTimer
-				if timer.disabled:	
+				if timer.disabled:
 					basicStatus = 'timer disabled'
 					isEnabled = 0
 				timerDetails = {
@@ -1088,7 +1093,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 						'isAutoTimer': isAutoTimer
 					}
 				return timerDetails
-		
+
 		return None
 	ret = OrderedDict()
 	services = eServiceCenter.getInstance().list(eServiceReference(ref))
@@ -1235,7 +1240,7 @@ def getPicon(sname, pp=None, defaultpicon=True):
 			cname1 = filterName(cname).replace('/', '_')
 			if not PY3:
 				cname1 = cname1.encode('utf-8', 'ignore')
-			
+
 			if fileExists(pp + cname1 + ".png"):
 				return "/picon/" + cname1 + ".png"
 			if PY3:
@@ -1327,7 +1332,7 @@ def getServiceRef(name, searchinBouquetsOnly=False, bRef=None):
 					}
 
 	else:
-		refstr = '%s ORDER BY name'%(service_types_tv)
+		refstr = '%s ORDER BY name' % (service_types_tv)
 		serviceslist = serviceHandler.list(eServiceReference(refstr))
 		sfulllist = serviceslist and serviceslist.getContent("SN", True)
 		for sv in sfulllist:

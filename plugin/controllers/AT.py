@@ -27,6 +27,7 @@ import six
 
 ATFN = "/tmp/autotimer_backup.tar"  # nosec
 
+
 class ATUploadFile(resource.Resource):
 
 	def __init__(self, session):
@@ -55,6 +56,7 @@ class ATUploadFile(resource.Resource):
 			else:
 				result = [True, ATFN]
 		return six.ensure_binary(json.dumps({"Result": result}))
+
 
 class AutoTimerDoBackupResource(resource.Resource):
 	def render(self, request):
@@ -90,14 +92,15 @@ class AutoTimerDoBackupResource(resource.Resource):
 		else:
 			return (False, "Error while preparing backup file.")
 
+
 class AutoTimerDoRestoreResource(resource.Resource):
 	def render(self, request):
 		request.setResponseCode(http.OK)
 		request.setHeader('Content-type', 'application/xhtml+xml')
 		request.setHeader('charset', 'UTF-8')
-		
+
 		state, statetext = self.restoreFiles()
-		
+
 		return six.ensure_binary("""<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
 <e2simplexmlresult>
 	<e2state>%s</e2state>
@@ -125,7 +128,7 @@ class AutoTimerDoRestoreResource(resource.Resource):
 					except Exception:
 						# TODO: proper error handling
 						pass
-				
+
 				os.remove(ATFN)
 				return (True, "AutoTimer-settings were restored successfully")
 			else:

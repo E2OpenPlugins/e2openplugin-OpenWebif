@@ -30,10 +30,12 @@ from Plugins.Extensions.OpenWebif.controllers.models.services import getBouquets
 from Plugins.Extensions.OpenWebif.controllers.defaults import TRANSCODING
 from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
+
 class MobileController(BaseController):
 	"""
 	Mobile Web Controller
 	"""
+
 	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session, isMobile=True)
 
@@ -130,4 +132,4 @@ class MobileController(BaseController):
 		except:
 			from Plugins.Extensions.OpenWebif.controllers.models.owibranding import rc_model
 			REMOTE = rc_model().getRcFolder()
-		return { "remote": REMOTE }
+		return {"remote": REMOTE}

@@ -48,6 +48,7 @@ class AjaxController(BaseController):
 	"""
 	Ajax Web Controller
 	"""
+
 	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
 
@@ -340,7 +341,7 @@ class AjaxController(BaseController):
 		ret['test'] = 0
 		ret['autoadjust'] = getInfo()['timerautoadjust']
 		ret['searchTypes'] = {}
-		
+
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimer import typeMap
 			ret['searchTypes'] = typeMap
