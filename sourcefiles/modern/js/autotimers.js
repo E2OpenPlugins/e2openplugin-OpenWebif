@@ -406,7 +406,7 @@
         let settings = responseContent['e2settings']['e2setting'];
         const { elements } = atSettingsForm;
 
-        settings = settings.filter(setting => setting['e2settingname'].startsWith(settingsNamespace))
+        settings = settings.filter((setting) => setting['e2settingname'].startsWith(settingsNamespace))
           .map((setting) => {
             for (const [key, value] of Object.entries(setting)) {
               setting[key.replace('e2setting', '')] = value;
@@ -447,6 +447,35 @@
           swal({
             title: tstr_oops,
             text: ex,
+            type: 'error',
+            animation: 'none',
+          });
+        }
+      },
+
+      process: async () => {
+        try {
+          owif.utils.debugLog('`process` started, this could take a while...');
+          const responseContent = await owif.utils.fetchData('/autotimer/parse');
+          const data = responseContent['e2simplexmlresult'];
+          const status = data['e2state'];
+          let message = data['e2statetext'];
+          message = `${message.charAt(0).toUpperCase()}${message.slice(1)}`;
+
+          if (status === true || status.toString().toLowerCase() === 'true') {
+            swal({
+              title: 'result',
+              text: message,
+              type: 'info',
+              animation: 'none',
+            });
+          } else {
+            throw new Error(message);
+          }
+        } catch (ex) {
+          swal({
+            title: tstr_oops,
+            text: ex.message,
             type: 'error',
             animation: 'none',
           });
