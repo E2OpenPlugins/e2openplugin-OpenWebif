@@ -25,7 +25,7 @@
  * @todo apply decodeHtml to filters?
  * @todo handle defaults? (maybe show as [value])
  * @todo consolidate e2simplexmlresult handling
- * @todo sort atlist by name/date added/enabled etc
+ * @todo sort allAutoTimers by name/date added/enabled etc
  * @toto better handle `tstr_` and `tstrings_` (global change)
  * @todo JSDoc https://jsdoc.app/index.html
  *
@@ -60,7 +60,6 @@
         minute: '2-digit',
       });
     } catch (ex) {
-      console.log(ex);
       return timeString;
     }
   }
@@ -321,15 +320,11 @@
       getAll: async () => {
         let responseContent = await owif.utils.fetchData('/autotimer');
         const data = responseContent['autotimer'];
+        owif.utils.debugLog(data);
+        self.allAutoTimers = forceToArray(data['timer']);
+        self.allAutoTimers.map((itm) => new AutoTimer(itm));
 
-        console.log('response: ', data);
-        // console.log('defaults: ', data['default']);
-        window.atList = forceToArray(data['timer']);
-        //atListCache
-
-        window.atList.map((itm) => new AutoTimer(itm));
-
-        return window.atList;
+        return self.allAutoTimers;
       },
 
       populateList: () => {
@@ -344,9 +339,6 @@
         let collatedTags = [];
 
         self.getAll().then((jsonResponse) => {
-          // TODO:
-          // sort by name
-          // build found locations
           jsonResponse.forEach((atItem, index) => {
             atItem = new AutoTimer(atItem);
 
@@ -406,7 +398,8 @@
         let settings = responseContent['e2settings']['e2setting'];
         const { elements } = atSettingsForm;
 
-        settings = settings.filter((setting) => setting['e2settingname'].startsWith(settingsNamespace))
+        settings = settings
+          .filter((setting) => setting['e2settingname'].startsWith(settingsNamespace))
           .map((setting) => {
             for (const [key, value] of Object.entries(setting)) {
               setting[key.replace('e2setting', '')] = value;
@@ -515,8 +508,8 @@
       },
 
       populateForm: async (data = {}) => {
+        owif.utils.debugLog(data);
         const { elements } = atEditForm;
-        console.log(data);
         atEditForm.reset();
         removeNodesBySelector('.at__filter__line');
         document.getElementById('at__page--list').classList.toggle('hidden', true);
@@ -677,7 +670,7 @@
       },
 
       editEntry: async (atId = -1) => {
-        const entry = window.atList.find((autotimer) => autotimer['id'] == atId);
+        const entry = self.allAutoTimers.find((autotimer) => autotimer['id'] == atId);
         owif.utils.debugLog(`editEntry: ${entry}`);
         self.populateForm(entry);
       },
@@ -873,7 +866,7 @@
         /* autotimer list */
         // (document.querySelector('button[name="create"]') || nullEl).onclick = self.createEntry;
         (document.querySelector('button[name="reload"]') || nullEl).onclick = self.populateList;
-        (document.querySelector('button[name="process"]') || nullEl).onclick = () => window.parseAT();
+        (document.querySelector('button[name="process"]') || nullEl).onclick = self.process;
         (document.querySelector('button[name="preview"]') || nullEl).onclick = self.preview;
         (document.querySelector('button[name="timers"]') || nullEl).onclick = () => window.listTimers();
         (document.querySelector('button[name="settings"]') || nullEl).onclick = self.getSettings;
@@ -933,6 +926,7 @@
         self = this;
 
         const excludeIptv = true;
+        self.allAutoTimers = [];
         self.availableServices = await owif.api.getAllServices(excludeIptv);
         self.availableLocations = []; // these are already server-rendered
         self.allLocations = [];
