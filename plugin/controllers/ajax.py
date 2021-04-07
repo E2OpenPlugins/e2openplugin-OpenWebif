@@ -89,6 +89,7 @@ class AjaxController(BaseController):
 		channels['type'] = stype
 		channels['showpicons'] = config.OpenWebif.webcache.showpicons.value
 		channels['showpiconbackground'] = config.OpenWebif.responsive_show_picon_background.value
+		channels['shownownextcolumns'] = config.OpenWebif.responsive_nownext_columns_enabled.value
 		return channels
 
 	def P_eventdescription(self, request):
