@@ -69,6 +69,9 @@
 	}
 
 	.now-next__info {
+		justify-content: space-between;
+		display: flex;
+		flex-wrap: wrap;
 		flex: 4;
 		min-width: 320px;
 	}
@@ -80,9 +83,9 @@
 
 	.now-next__details {
 		display: flex;
-    flex-wrap: wrap;
-    width: 100%;
+		flex-wrap: wrap;
 		white-space: normal;
+		width: 48%;
 	}
 
 	.now-next__details--now {
@@ -98,6 +101,11 @@
 	.now-next__details--next {
 		opacity: 0.6;
 	}
+#if not $shownownextcolumns
+	.now-next__details {
+		flex: 1 0 100%;
+	}
+#end if
 </style>
 
 <div class="table-responsive block-header">
