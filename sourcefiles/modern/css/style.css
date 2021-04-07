@@ -2687,11 +2687,16 @@ section.content {
 
 .sweet-alert button,
 .btn:not(.btn-link):not(.btn-circle) {
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12) !important;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
 	border-radius: 2px !important;
 	border: none;
 	font-size: 14px;
+	padding: 8px 14px 8px 14px;
 	/* outline: none; */
+}
+
+.btn.dropdown-toggle {
+	box-shadow: none;
 }
 
 .btn:not(.btn-link):not(.btn-circle):hover {
@@ -2700,17 +2705,13 @@ section.content {
 
 .btn:not(.btn-link):not(.btn-circle) i {
 	font-size: 20px;
-	position: relative;
-	top: 3px;
+	vertical-align: middle;
+	margin-right: 4px;
 }
 
-/* WHY 
 .btn:not(.btn-link):not(.btn-circle) span {
-	position: relative;
-	top: -2px;
-	margin-left: 3px;
+	vertical-align: middle;
 }
-*/
 
 .btn-warning,
 .btn-warning:hover,
