@@ -697,7 +697,7 @@ msgid "Every"
 msgstr "Každú"
 
 #: ../plugin/controllers/i18n.py:345
-msgid "Exclude"
+msgid "Exclude when"
 msgstr "Vylúčiť"
 
 #: ../plugin/controllers/i18n.py:321
@@ -836,7 +836,7 @@ msgid "Import"
 msgstr "Importovať"
 
 #: ../plugin/controllers/i18n.py:344
-msgid "Include"
+msgid "Include when"
 msgstr "Zahrnúť"
 
 #: ../plugin/controllers/i18n.py:130
@@ -1197,11 +1197,11 @@ msgid "None"
 msgstr "Žiadne"
 
 #: ../plugin/controllers/i18n.py:309
-msgid "Not after"
+msgid "From date"
 msgstr "Nie po"
 
 #: ../plugin/controllers/i18n.py:310
-msgid "Not before"
+msgid "To date"
 msgstr "Nie pred"
 
 #: ../plugin/controllers/i18n.py:175
@@ -1491,7 +1491,7 @@ msgid "Restrict to bouquets"
 msgstr "Obmedziť na prehľady"
 
 #: ../plugin/controllers/i18n.py:308
-msgid "Restrict to events on certain dates"
+msgid "Only match between dates"
 msgstr "Obmedziť na relácie v určených dátumoch"
 
 #: ../plugin/controllers/i18n.py:282
@@ -1561,11 +1561,11 @@ msgid "Search KinoPoisk"
 msgstr "Vyhľadávanie KinoPoisk"
 
 #: ../plugin/controllers/i18n.py:298
-msgid "Search strictness"
+msgid "Case sensitivity"
 msgstr "Prísnosť hľadania"
 
 #: ../plugin/controllers/i18n.py:290
-msgid "Search type"
+msgid "Match when found"
 msgstr "Typ vyhľadávania"
 
 #: ../plugin/controllers/i18n.py:495
@@ -2230,15 +2230,15 @@ msgid "auto"
 msgstr "auto"
 
 #: ../plugin/controllers/i18n.py:300
-msgid "case-insensitive"
+msgid "ignore upper/lower case differences"
 msgstr "nerozlišovať veľkosť písmen"
 
 #: ../plugin/controllers/i18n.py:299
-msgid "case-sensitive"
+msgid "match upper/lower case exactly"
 msgstr "rozlišovať veľkosť písmen"
 
 #: ../plugin/controllers/i18n.py:293
-msgid "description match"
+msgid "in description"
 msgstr "zhoda v popise"
 
 #: ../plugin/controllers/i18n.py:114
@@ -2254,7 +2254,7 @@ msgid "error! Loading Page"
 msgstr "chyba! Načítavám stránku"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact title match"
+msgid "as full title"
 msgstr "presná zhoda"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2274,15 +2274,15 @@ msgid "hour"
 msgstr "hod."
 
 #: ../plugin/controllers/i18n.py:348
-msgid "in description"
+msgid "description contains"
 msgstr "v popise"
 
 #: ../plugin/controllers/i18n.py:347
-msgid "in short description"
+msgid "short description contains"
 msgstr "v stručnom popise"
 
 #: ../plugin/controllers/i18n.py:346
-msgid "in title"
+msgid "title contains"
 msgstr "v názve"
 
 #: ../plugin/controllers/models/movies.py:223
@@ -2324,7 +2324,7 @@ msgid "one two three four unknown command"
 msgstr "jeden dva tri štyri neznámy príkaz"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial title match"
+msgid "in any part of title"
 msgstr "čiastočná zhoda"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2364,7 +2364,7 @@ msgid "select tags"
 msgstr "výber značiek"
 
 #: ../plugin/controllers/i18n.py:296
-msgid "short description match"
+msgid "in short description"
 msgstr "zhoda v krátkom popise"
 
 #: ../plugin/controllers/i18n.py:316
@@ -2372,7 +2372,7 @@ msgid "standard"
 msgstr "štandardné"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "title starts with"
+msgid "at beginning of title"
 msgstr "zhoda v čase začiatku"
 
 #: ../plugin/controllers/models/info.py:61
@@ -2382,11 +2382,11 @@ msgid "static"
 msgstr "statická"
 
 #: ../plugin/controllers/i18n.py:294
-msgid "title or description match"
+msgid "in title or description"
 msgstr "zhoda v názve alebo popise"
 
 #: ../plugin/controllers/i18n.py:295
-msgid "title or short description match"
+msgid "in title or short description"
 msgstr "zhoda v nadpise alebo krátkom popise"
 
 #: ../plugin/controllers/i18n.py:251

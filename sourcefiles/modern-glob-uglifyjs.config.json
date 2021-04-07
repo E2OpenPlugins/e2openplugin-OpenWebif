@@ -8,6 +8,7 @@
         "Exclude": [
             "**/*.min.js",
             "**/owif.js",
+            "**/autotimers.js",
             "**/bqe.js"
         ],
         "RemoveSource": false,

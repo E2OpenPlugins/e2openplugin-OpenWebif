@@ -715,7 +715,7 @@ msgid "Every"
 msgstr "Kiekvienas"
 
 #: ../plugin/controllers/i18n.py:346
-msgid "Exclude"
+msgid "Exclude when"
 msgstr "Išskyrus"
 
 #: ../plugin/controllers/i18n.py:322
@@ -853,7 +853,7 @@ msgid "Import"
 msgstr "Importuoti"
 
 #: ../plugin/controllers/i18n.py:345
-msgid "Include"
+msgid "Include when"
 msgstr "Įskaitant"
 
 #: ../plugin/controllers/i18n.py:131
@@ -1207,11 +1207,11 @@ msgid "None"
 msgstr "Joks"
 
 #: ../plugin/controllers/i18n.py:310
-msgid "Not after"
+msgid "From date"
 msgstr "Ne vėliau"
 
 #: ../plugin/controllers/i18n.py:311
-msgid "Not before"
+msgid "To date"
 msgstr "Ne anksčiau"
 
 #: ../plugin/controllers/i18n.py:176
@@ -1499,7 +1499,7 @@ msgid "Restrict to bouquets"
 msgstr "Riboti bukietuose"
 
 #: ../plugin/controllers/i18n.py:309
-msgid "Restrict to events on certain dates"
+msgid "Only match between dates"
 msgstr "Apriboti renginius konkrečiomis datomis"
 
 #: ../plugin/controllers/i18n.py:283
@@ -1568,11 +1568,11 @@ msgid "Search KinoPoisk"
 msgstr "Ieškoti po KinoPoisk"
 
 #: ../plugin/controllers/i18n.py:299
-msgid "Search strictness"
+msgid "Case sensitivity"
 msgstr "Paieškos tikslumas"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "Search type"
+msgid "Match when found"
 msgstr "Paieškos tipas"
 
 #: ../plugin/controllers/i18n.py:496
@@ -2237,15 +2237,15 @@ msgid "auto"
 msgstr "auto"
 
 #: ../plugin/controllers/i18n.py:301
-msgid "case-insensitive"
+msgid "ignore upper/lower case differences"
 msgstr "paieška, neatsižvelgiant į DIDŽIĄSIAS-mažąsias raides"
 
 #: ../plugin/controllers/i18n.py:300
-msgid "case-sensitive"
+msgid "match upper/lower case exactly"
 msgstr "paieška, atsižvelgiant į DIDŽIĄSIAS-mažąsias raides"
 
 #: ../plugin/controllers/i18n.py:294
-msgid "description match"
+msgid "in description"
 msgstr "aprašymo atitikimas"
 
 #: ../plugin/controllers/i18n.py:115
@@ -2261,7 +2261,7 @@ msgid "error! Loading Page"
 msgstr "klaida! atveriama"
 
 #: ../plugin/controllers/i18n.py:293
-msgid "exact title match"
+msgid "as full title"
 msgstr "tikslus atitikimas"
 
 #: ../plugin/controllers/i18n.py:136
@@ -2281,15 +2281,15 @@ msgid "hour"
 msgstr "valanda"
 
 #: ../plugin/controllers/i18n.py:349
-msgid "in description"
+msgid "description contains"
 msgstr "aprašyme"
 
 #: ../plugin/controllers/i18n.py:348
-msgid "in short description"
+msgid "short description contains"
 msgstr "trumpame aprašyme"
 
 #: ../plugin/controllers/i18n.py:347
-msgid "in title"
+msgid "title contains"
 msgstr "pavadinime"
 
 #: ../plugin/controllers/models/movies.py:228
@@ -2330,7 +2330,7 @@ msgid "one two three four unknown command"
 msgstr "vienas du trys keturi nežinoma komanda"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "partial title match"
+msgid "in any part of title"
 msgstr "dalinis atitikimas"
 
 #: ../plugin/controllers/models/info.py:469
@@ -2370,7 +2370,7 @@ msgid "select tags"
 msgstr "pasirinkite žymas"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "short description match"
+msgid "in short description"
 msgstr "trumpo aprašymo atitikimas"
 
 #: ../plugin/controllers/i18n.py:317
@@ -2378,7 +2378,7 @@ msgid "standard"
 msgstr "standartinis"
 
 #: ../plugin/controllers/i18n.py:298
-msgid "title starts with"
+msgid "at beginning of title"
 msgstr "pradžios atitikimas"
 
 #: ../plugin/controllers/models/info.py:75
@@ -2388,11 +2388,11 @@ msgid "static"
 msgstr "statinis"
 
 #: ../plugin/controllers/i18n.py:295
-msgid "title or description match"
+msgid "in title or description"
 msgstr "pavadinimo, ar aprašymo atitikimas"
 
 #: ../plugin/controllers/i18n.py:296
-msgid "title or short description match"
+msgid "in title or short description"
 msgstr "pavadinimo, ar trumpo aprašymo atitikimas"
 
 #: ../plugin/controllers/i18n.py:252

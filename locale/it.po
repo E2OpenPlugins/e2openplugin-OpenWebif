@@ -703,7 +703,7 @@ msgid "Every"
 msgstr "Ogni"
 
 #: ../plugin/controllers/i18n.py:345
-msgid "Exclude"
+msgid "Exclude when"
 msgstr "Escludere"
 
 #: ../plugin/controllers/i18n.py:321
@@ -841,7 +841,7 @@ msgid "Import"
 msgstr "Importare"
 
 #: ../plugin/controllers/i18n.py:344
-msgid "Include"
+msgid "Include when"
 msgstr "Includere"
 
 #: ../plugin/controllers/i18n.py:130
@@ -1196,11 +1196,11 @@ msgid "None"
 msgstr "Nessuno"
 
 #: ../plugin/controllers/i18n.py:309
-msgid "Not after"
+msgid "From date"
 msgstr "Non dopo"
 
 #: ../plugin/controllers/i18n.py:310
-msgid "Not before"
+msgid "To date"
 msgstr "Non prima"
 
 #: ../plugin/controllers/i18n.py:175
@@ -1490,7 +1490,7 @@ msgid "Restrict to bouquets"
 msgstr "Limitato ai bouquet"
 
 #: ../plugin/controllers/i18n.py:308
-msgid "Restrict to events on certain dates"
+msgid "Only match between dates"
 msgstr "Limitare agli eventi in determinate date"
 
 #: ../plugin/controllers/i18n.py:282
@@ -1560,11 +1560,11 @@ msgid "Search KinoPoisk"
 msgstr "Cercare KinoPoisk"
 
 #: ../plugin/controllers/i18n.py:298
-msgid "Search strictness"
+msgid "Case sensitivity"
 msgstr "Precisione nella ricerca"
 
 #: ../plugin/controllers/i18n.py:290
-msgid "Search type"
+msgid "Match when found"
 msgstr "Tipo di ricerca"
 
 #: ../plugin/controllers/i18n.py:495
@@ -2227,15 +2227,15 @@ msgid "auto"
 msgstr "Automatica"
 
 #: ../plugin/controllers/i18n.py:300
-msgid "case-insensitive"
+msgid "ignore upper/lower case differences"
 msgstr "Ricerca senza distinzione maiuscole e minuscole"
 
 #: ../plugin/controllers/i18n.py:299
-msgid "case-sensitive"
+msgid "match upper/lower case exactly"
 msgstr "Ricerca con distinzione fra maiuscole e minuscole"
 
 #: ../plugin/controllers/i18n.py:293
-msgid "description match"
+msgid "in description"
 msgstr "Corrispondenza descrizione"
 
 #: ../plugin/controllers/i18n.py:114
@@ -2251,7 +2251,7 @@ msgid "error! Loading Page"
 msgstr "Errore nel caricamento della pagina!"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact title match"
+msgid "as full title"
 msgstr "Corrispondenza esatta"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2271,15 +2271,15 @@ msgid "hour"
 msgstr "Ora"
 
 #: ../plugin/controllers/i18n.py:348
-msgid "in description"
+msgid "description contains"
 msgstr "Nella descrizione"
 
 #: ../plugin/controllers/i18n.py:347
-msgid "in short description"
+msgid "short description contains"
 msgstr "Nella descrizione breve"
 
 #: ../plugin/controllers/i18n.py:346
-msgid "in title"
+msgid "title contains"
 msgstr "Nel titolo"
 
 #: ../plugin/controllers/models/movies.py:223
@@ -2320,7 +2320,7 @@ msgid "one two three four unknown command"
 msgstr "Uno due tre quattro comando sconosciuto"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial title match"
+msgid "in any part of title"
 msgstr "corrispondenza parziale"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2360,7 +2360,7 @@ msgid "select tags"
 msgstr "Selezionare etichette"
 
 #: ../plugin/controllers/i18n.py:296
-msgid "short description match"
+msgid "in short description"
 msgstr "Corrispondenza descrizione breve"
 
 #: ../plugin/controllers/i18n.py:316
@@ -2368,7 +2368,7 @@ msgid "standard"
 msgstr "Standard"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "title starts with"
+msgid "at beginning of title"
 msgstr "Il titolo inizia per"
 
 #: ../plugin/controllers/models/info.py:61
@@ -2378,11 +2378,11 @@ msgid "static"
 msgstr "Statico"
 
 #: ../plugin/controllers/i18n.py:294
-msgid "title or description match"
+msgid "in title or description"
 msgstr "Corrispondenza titolo o descrizione"
 
 #: ../plugin/controllers/i18n.py:295
-msgid "title or short description match"
+msgid "in title or short description"
 msgstr "Corrispondenza titolo o breve descrizione"
 
 #: ../plugin/controllers/i18n.py:251

@@ -694,7 +694,7 @@ msgid "Every"
 msgstr "Iga"
 
 #: ../plugin/controllers/i18n.py:345
-msgid "Exclude"
+msgid "Exclude when"
 msgstr "Jäta välja"
 
 #: ../plugin/controllers/i18n.py:321
@@ -832,7 +832,7 @@ msgid "Import"
 msgstr "Impordi"
 
 #: ../plugin/controllers/i18n.py:344
-msgid "Include"
+msgid "Include when"
 msgstr "Kaasa"
 
 #: ../plugin/controllers/i18n.py:130
@@ -1186,11 +1186,11 @@ msgid "None"
 msgstr "Pole"
 
 #: ../plugin/controllers/i18n.py:309
-msgid "Not after"
+msgid "From date"
 msgstr "Mitte pärast"
 
 #: ../plugin/controllers/i18n.py:310
-msgid "Not before"
+msgid "To date"
 msgstr "Mitte enne"
 
 #: ../plugin/controllers/i18n.py:175
@@ -1478,7 +1478,7 @@ msgid "Restrict to bouquets"
 msgstr "Ainult kindlas nimekirjas"
 
 #: ../plugin/controllers/i18n.py:308
-msgid "Restrict to events on certain dates"
+msgid "Only match between dates"
 msgstr "Ainult kindlal kuupäeval"
 
 #: ../plugin/controllers/i18n.py:282
@@ -1547,11 +1547,11 @@ msgid "Search KinoPoisk"
 msgstr "KinoPoisk otsing"
 
 #: ../plugin/controllers/i18n.py:298
-msgid "Search strictness"
+msgid "Case sensitivity"
 msgstr "Otsingu rangus"
 
 #: ../plugin/controllers/i18n.py:290
-msgid "Search type"
+msgid "Match when found"
 msgstr "Otsingu tüüp"
 
 #: ../plugin/controllers/i18n.py:495
@@ -2212,15 +2212,15 @@ msgid "auto"
 msgstr "auto"
 
 #: ../plugin/controllers/i18n.py:300
-msgid "case-insensitive"
+msgid "ignore upper/lower case differences"
 msgstr "tõusutundetu otsing"
 
 #: ../plugin/controllers/i18n.py:299
-msgid "case-sensitive"
+msgid "match upper/lower case exactly"
 msgstr "tõusutundlik otsing"
 
 #: ../plugin/controllers/i18n.py:293
-msgid "description match"
+msgid "in description"
 msgstr "sisututvustuse vaste"
 
 #: ../plugin/controllers/i18n.py:114
@@ -2236,7 +2236,7 @@ msgid "error! Loading Page"
 msgstr "Tõrge lehe laadimisel"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact title match"
+msgid "as full title"
 msgstr "täpne vaste"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2256,15 +2256,15 @@ msgid "hour"
 msgstr "tund"
 
 #: ../plugin/controllers/i18n.py:348
-msgid "in description"
+msgid "description contains"
 msgstr "sisututvustuses"
 
 #: ../plugin/controllers/i18n.py:347
-msgid "in short description"
+msgid "short description contains"
 msgstr "lühitutvustusest"
 
 #: ../plugin/controllers/i18n.py:346
-msgid "in title"
+msgid "title contains"
 msgstr "nimest"
 
 #: ../plugin/controllers/models/movies.py:223
@@ -2305,7 +2305,7 @@ msgid "one two three four unknown command"
 msgstr "üks kaks kolm neli tundmatu käsk"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial title match"
+msgid "in any part of title"
 msgstr "osaline vaste"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2345,7 +2345,7 @@ msgid "select tags"
 msgstr "Vali sildid"
 
 #: ../plugin/controllers/i18n.py:296
-msgid "short description match"
+msgid "in short description"
 msgstr "lühitutvustuse vaste"
 
 #: ../plugin/controllers/i18n.py:316
@@ -2353,7 +2353,7 @@ msgid "standard"
 msgstr "tavaline"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "title starts with"
+msgid "at beginning of title"
 msgstr "vaste algus"
 
 #: ../plugin/controllers/models/info.py:61
@@ -2363,11 +2363,11 @@ msgid "static"
 msgstr "staatiline"
 
 #: ../plugin/controllers/i18n.py:294
-msgid "title or description match"
+msgid "in title or description"
 msgstr "nime või sisututvustuse vaste"
 
 #: ../plugin/controllers/i18n.py:295
-msgid "title or short description match"
+msgid "in title or short description"
 msgstr "nime või lühitutvustuse vaste"
 
 #: ../plugin/controllers/i18n.py:251

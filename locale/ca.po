@@ -701,7 +701,7 @@ msgid "Every"
 msgstr "Cada"
 
 #: ../plugin/controllers/i18n.py:345
-msgid "Exclude"
+msgid "Exclude when"
 msgstr "Excloure"
 
 #: ../plugin/controllers/i18n.py:321
@@ -840,7 +840,7 @@ msgid "Import"
 msgstr "Importar"
 
 #: ../plugin/controllers/i18n.py:344
-msgid "Include"
+msgid "Include when"
 msgstr "Incloure"
 
 #: ../plugin/controllers/i18n.py:130
@@ -1200,11 +1200,11 @@ msgid "None"
 msgstr "Cap"
 
 #: ../plugin/controllers/i18n.py:309
-msgid "Not after"
+msgid "From date"
 msgstr "No després de"
 
 #: ../plugin/controllers/i18n.py:310
-msgid "Not before"
+msgid "To date"
 msgstr "No abans de"
 
 #: ../plugin/controllers/i18n.py:175
@@ -1494,7 +1494,7 @@ msgid "Restrict to bouquets"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:308
-msgid "Restrict to events on certain dates"
+msgid "Only match between dates"
 msgstr "Restringir als programes en determinades dates"
 
 #: ../plugin/controllers/i18n.py:282
@@ -1564,11 +1564,11 @@ msgid "Search KinoPoisk"
 msgstr "Buscar KinoPoisk"
 
 #: ../plugin/controllers/i18n.py:298
-msgid "Search strictness"
+msgid "Case sensitivity"
 msgstr "Recerca estricta"
 
 #: ../plugin/controllers/i18n.py:290
-msgid "Search type"
+msgid "Match when found"
 msgstr "Tipus de recerca"
 
 #: ../plugin/controllers/i18n.py:495
@@ -2233,15 +2233,15 @@ msgid "auto"
 msgstr "automàtic"
 
 #: ../plugin/controllers/i18n.py:300
-msgid "case-insensitive"
+msgid "ignore upper/lower case differences"
 msgstr "recerca sense distingir majúscules/minúscules"
 
 #: ../plugin/controllers/i18n.py:299
-msgid "case-sensitive"
+msgid "match upper/lower case exactly"
 msgstr "recerca distingint majúscules/minúscules"
 
 #: ../plugin/controllers/i18n.py:293
-msgid "description match"
+msgid "in description"
 msgstr "coincidència en descripció"
 
 #: ../plugin/controllers/i18n.py:114
@@ -2257,7 +2257,7 @@ msgid "error! Loading Page"
 msgstr "error! Carregant pàgina"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact title match"
+msgid "as full title"
 msgstr "coincidència exacta"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2277,15 +2277,15 @@ msgid "hour"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:348
-msgid "in description"
+msgid "description contains"
 msgstr "a la descripció"
 
 #: ../plugin/controllers/i18n.py:347
-msgid "in short description"
+msgid "short description contains"
 msgstr "a la descripció curta"
 
 #: ../plugin/controllers/i18n.py:346
-msgid "in title"
+msgid "title contains"
 msgstr "al Títul"
 
 #: ../plugin/controllers/models/movies.py:223
@@ -2327,7 +2327,7 @@ msgid "one two three four unknown command"
 msgstr "un dos tres quatre ordre desconeguda"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial title match"
+msgid "in any part of title"
 msgstr "coincidència parcial"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2367,7 +2367,7 @@ msgid "select tags"
 msgstr "sel·leccionar etiquetes"
 
 #: ../plugin/controllers/i18n.py:296
-msgid "short description match"
+msgid "in short description"
 msgstr "coincidència en descripció curta"
 
 #: ../plugin/controllers/i18n.py:316
@@ -2375,7 +2375,7 @@ msgid "standard"
 msgstr "estàndar"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "title starts with"
+msgid "at beginning of title"
 msgstr "coincidència inicial"
 
 #: ../plugin/controllers/models/info.py:61
@@ -2385,11 +2385,11 @@ msgid "static"
 msgstr "estàtic"
 
 #: ../plugin/controllers/i18n.py:294
-msgid "title or description match"
+msgid "in title or description"
 msgstr "coincidència en títul o descripció"
 
 #: ../plugin/controllers/i18n.py:295
-msgid "title or short description match"
+msgid "in title or short description"
 msgstr "coincidència en títul o descripció curta"
 
 #: ../plugin/controllers/i18n.py:251

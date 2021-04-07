@@ -57,7 +57,10 @@
 						<a href="javascript:void(0);" class="link--skinned" data-dismiss="modal" data-toggle="modal" data-target="#TimerModal" data-evid="$event.id" data-ref="$sref" title="$tstrings['edit_timer']"><i class="material-icons material-icons-centered">alarm</i></a>
 						<a href="javascript:void(0);" class="link--skinned" onclick="addTimerEvent('$sref',$event.id,true);return false;" title="$tstrings['add_zaptimer']"><i class="material-icons material-icons-centered">rotate_90_degrees_ccw</i></a>
 					#if $at
-						<a href="javascript:void(0);" class="link--skinned" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin','$event.end');return false;" title="$tstrings['add_autotimer']"><i class="material-icons material-icons-centered">history</i></a>
+						<a href="#/at/create?name=$title&match=$title&timespanFrom=$event.begin&timespanTo=$event.end&sref=$sref" 
+							 class="link--skinned" title="$tstrings['add_autotimer']" x-data-dismiss="modal">
+							<i class="material-icons material-icons-centered">av_timer</i>
+						</a>
 					#end if
 					#if $extEventInfoProvider
 						<a href="$extEventInfoProvider['url']$quote($event.title)" class="link--skinned" title="$tstrings['search_'+$extEventInfoProvider['id']]" target="extdb">[$extEventInfoProvider['name']]</a>
@@ -102,7 +105,10 @@
 								<a href="javascript:void(0);" class="link--skinned" data-dismiss="modal" data-toggle="modal" data-target="#TimerModal" data-evid="$event.id" data-ref="$sref" title="$tstrings['edit_timer']"><i class="material-icons material-icons-centered">alarm</i></a>
 								<a href="javascript:void(0);" class="link--skinned" onclick="addTimerEvent('$sref',$event.id,true);return false;" title="$tstrings['add_zaptimer']"><i class="material-icons material-icons-centered">rotate_90_degrees_ccw</i></a>
 							#if $at
-								<a href="javascript:void(0);" class="link--skinned" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin','$event.end');return false;" title="$tstrings['add_autotimer']"><i class="material-icons material-icons-centered">history</i></a>
+								<a href="#/at/create?name=$title&match=$title&timespanFrom=$event.begin&timespanTo=$event.end&sref=$sref"
+									 class="link--skinned" title="$tstrings['add_autotimer']" x-data-close="modal">
+									<i class="material-icons material-icons-centered">av_timer</i>
+								</a>
 							#end if
 							#if $extEventInfoProvider
 								<a href="$extEventInfoProvider['url']$quote($event.title)" class="link--skinned" title="$tstrings['search_'+$extEventInfoProvider['id']]" target="extdb">$extEventInfoProvider['name']</a>

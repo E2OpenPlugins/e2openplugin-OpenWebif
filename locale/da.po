@@ -713,7 +713,7 @@ msgid "Every"
 msgstr "Hver"
 
 #: ../plugin/controllers/i18n.py:346
-msgid "Exclude"
+msgid "Exclude when"
 msgstr "Udeluk"
 
 #: ../plugin/controllers/i18n.py:322
@@ -851,7 +851,7 @@ msgid "Import"
 msgstr "Importer"
 
 #: ../plugin/controllers/i18n.py:345
-msgid "Include"
+msgid "Include when"
 msgstr "Medtag"
 
 #: ../plugin/controllers/i18n.py:131
@@ -1205,11 +1205,11 @@ msgid "None"
 msgstr "Ingen"
 
 #: ../plugin/controllers/i18n.py:310
-msgid "Not after"
+msgid "From date"
 msgstr "Ikke efter"
 
 #: ../plugin/controllers/i18n.py:311
-msgid "Not before"
+msgid "To date"
 msgstr "Ikke før"
 
 #: ../plugin/controllers/i18n.py:176
@@ -1497,7 +1497,7 @@ msgid "Restrict to bouquets"
 msgstr "Begræns til Buketter"
 
 #: ../plugin/controllers/i18n.py:309
-msgid "Restrict to events on certain dates"
+msgid "Only match between dates"
 msgstr "Begræns til begivenheder på bestemte datoer"
 
 #: ../plugin/controllers/i18n.py:283
@@ -1566,11 +1566,11 @@ msgid "Search KinoPoisk"
 msgstr "Søg i KinoPoisk"
 
 #: ../plugin/controllers/i18n.py:299
-msgid "Search strictness"
+msgid "Case sensitivity"
 msgstr "Søgestrenghed"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "Search type"
+msgid "Match when found"
 msgstr "Søgetype"
 
 #: ../plugin/controllers/i18n.py:496
@@ -2239,15 +2239,15 @@ msgid "auto"
 msgstr "auto"
 
 #: ../plugin/controllers/i18n.py:301
-msgid "case-insensitive"
+msgid "ignore upper/lower case differences"
 msgstr "Ikke-versalfølsom søgning"
 
 #: ../plugin/controllers/i18n.py:300
-msgid "case-sensitive"
+msgid "match upper/lower case exactly"
 msgstr "Versalfølsom søgning"
 
 #: ../plugin/controllers/i18n.py:294
-msgid "description match"
+msgid "in description"
 msgstr "Beskrivelse identisk"
 
 #: ../plugin/controllers/i18n.py:115
@@ -2263,7 +2263,7 @@ msgid "error! Loading Page"
 msgstr "fejl! Henter side"
 
 #: ../plugin/controllers/i18n.py:293
-msgid "exact title match"
+msgid "as full title"
 msgstr "Helt identisk"
 
 #: ../plugin/controllers/i18n.py:136
@@ -2283,15 +2283,15 @@ msgid "hour"
 msgstr "time"
 
 #: ../plugin/controllers/i18n.py:349
-msgid "in description"
+msgid "description contains"
 msgstr "i beskrivelse"
 
 #: ../plugin/controllers/i18n.py:348
-msgid "in short description"
+msgid "short description contains"
 msgstr "i kort beskrivelse"
 
 #: ../plugin/controllers/i18n.py:347
-msgid "in title"
+msgid "title contains"
 msgstr "i titel"
 
 #: ../plugin/controllers/models/movies.py:228
@@ -2332,7 +2332,7 @@ msgid "one two three four unknown command"
 msgstr "en to tre fire ukendt kommando"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "partial title match"
+msgid "in any part of title"
 msgstr "Delvis identisk"
 
 #: ../plugin/controllers/models/info.py:469
@@ -2374,7 +2374,7 @@ msgid "select tags"
 msgstr "Vælg etiketter"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "short description match"
+msgid "in short description"
 msgstr "Kort beskrivelse identisk"
 
 #: ../plugin/controllers/i18n.py:317
@@ -2382,7 +2382,7 @@ msgid "standard"
 msgstr "standard"
 
 #: ../plugin/controllers/i18n.py:298
-msgid "title starts with"
+msgid "at beginning of title"
 msgstr "Titel begynder med"
 
 #: ../plugin/controllers/models/info.py:75
@@ -2392,11 +2392,11 @@ msgid "static"
 msgstr "statisk"
 
 #: ../plugin/controllers/i18n.py:295
-msgid "title or description match"
+msgid "in title or description"
 msgstr "Titel eller beskrivelse identisk"
 
 #: ../plugin/controllers/i18n.py:296
-msgid "title or short description match"
+msgid "in title or short description"
 msgstr "Titel eller kort beskrivelse identisk"
 
 #: ../plugin/controllers/i18n.py:252

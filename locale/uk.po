@@ -700,7 +700,7 @@ msgid "Every"
 msgstr "Кожен"
 
 #: ../plugin/controllers/i18n.py:345
-msgid "Exclude"
+msgid "Exclude when"
 msgstr "Виключити"
 
 #: ../plugin/controllers/i18n.py:321
@@ -838,7 +838,7 @@ msgid "Import"
 msgstr "Імпорт"
 
 #: ../plugin/controllers/i18n.py:344
-msgid "Include"
+msgid "Include when"
 msgstr "Додати"
 
 #: ../plugin/controllers/i18n.py:130
@@ -1193,11 +1193,11 @@ msgid "None"
 msgstr "Нема"
 
 #: ../plugin/controllers/i18n.py:309
-msgid "Not after"
+msgid "From date"
 msgstr "Немає після"
 
 #: ../plugin/controllers/i18n.py:310
-msgid "Not before"
+msgid "To date"
 msgstr "Не раніше, ніж"
 
 #: ../plugin/controllers/i18n.py:175
@@ -1487,7 +1487,7 @@ msgid "Restrict to bouquets"
 msgstr "Обмежити для фаворитів"
 
 #: ../plugin/controllers/i18n.py:308
-msgid "Restrict to events on certain dates"
+msgid "Only match between dates"
 msgstr "Обмежити подію в певні дати"
 
 #: ../plugin/controllers/i18n.py:282
@@ -1556,11 +1556,11 @@ msgid "Search KinoPoisk"
 msgstr "Пошук у KinoPoisk"
 
 #: ../plugin/controllers/i18n.py:298
-msgid "Search strictness"
+msgid "Case sensitivity"
 msgstr "Суворий пошук"
 
 #: ../plugin/controllers/i18n.py:290
-msgid "Search type"
+msgid "Match when found"
 msgstr "Тип пошуку"
 
 #: ../plugin/controllers/i18n.py:495
@@ -2222,15 +2222,15 @@ msgid "auto"
 msgstr "авто"
 
 #: ../plugin/controllers/i18n.py:300
-msgid "case-insensitive"
+msgid "ignore upper/lower case differences"
 msgstr "пошук без урахування регістру"
 
 #: ../plugin/controllers/i18n.py:299
-msgid "case-sensitive"
+msgid "match upper/lower case exactly"
 msgstr "пошук з урахуванням регістру"
 
 #: ../plugin/controllers/i18n.py:293
-msgid "description match"
+msgid "in description"
 msgstr "збіг опису"
 
 #: ../plugin/controllers/i18n.py:114
@@ -2246,7 +2246,7 @@ msgid "error! Loading Page"
 msgstr "помилка! Сторінка завантажується"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "exact title match"
+msgid "as full title"
 msgstr "повний збіг"
 
 #: ../plugin/controllers/i18n.py:135
@@ -2266,15 +2266,15 @@ msgid "hour"
 msgstr "година"
 
 #: ../plugin/controllers/i18n.py:348
-msgid "in description"
+msgid "description contains"
 msgstr "в описі"
 
 #: ../plugin/controllers/i18n.py:347
-msgid "in short description"
+msgid "short description contains"
 msgstr "в короткому описі"
 
 #: ../plugin/controllers/i18n.py:346
-msgid "in title"
+msgid "title contains"
 msgstr "в заголовку"
 
 #: ../plugin/controllers/models/movies.py:223
@@ -2315,7 +2315,7 @@ msgid "one two three four unknown command"
 msgstr "одна, дві, три невідомі команди"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "partial title match"
+msgid "in any part of title"
 msgstr "частковий збіг"
 
 #: ../plugin/controllers/models/info.py:455
@@ -2355,7 +2355,7 @@ msgid "select tags"
 msgstr "вибір тегів"
 
 #: ../plugin/controllers/i18n.py:296
-msgid "short description match"
+msgid "in short description"
 msgstr "збіг короткого опису"
 
 #: ../plugin/controllers/i18n.py:316
@@ -2363,7 +2363,7 @@ msgid "standard"
 msgstr "стандарт"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "title starts with"
+msgid "at beginning of title"
 msgstr "збіг початку"
 
 #: ../plugin/controllers/models/info.py:61
@@ -2373,11 +2373,11 @@ msgid "static"
 msgstr "статичний"
 
 #: ../plugin/controllers/i18n.py:294
-msgid "title or description match"
+msgid "in title or description"
 msgstr "збіг назви або опису"
 
 #: ../plugin/controllers/i18n.py:295
-msgid "title or short description match"
+msgid "in title or short description"
 msgstr "збіг назви або короткого опису"
 
 #: ../plugin/controllers/i18n.py:251

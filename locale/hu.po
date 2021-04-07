@@ -695,7 +695,7 @@ msgid "Every"
 msgstr "Minden"
 
 #: ../plugin/controllers/i18n.py:346
-msgid "Exclude"
+msgid "Exclude when"
 msgstr "Kizárva"
 
 #: ../plugin/controllers/i18n.py:322
@@ -833,7 +833,7 @@ msgid "Import"
 msgstr "Importálás"
 
 #: ../plugin/controllers/i18n.py:345
-msgid "Include"
+msgid "Include when"
 msgstr "Beleértve"
 
 #: ../plugin/controllers/i18n.py:131
@@ -1187,11 +1187,11 @@ msgid "None"
 msgstr "Egyik sem"
 
 #: ../plugin/controllers/i18n.py:310
-msgid "Not after"
+msgid "From date"
 msgstr "Nem később, mint"
 
 #: ../plugin/controllers/i18n.py:311
-msgid "Not before"
+msgid "To date"
 msgstr "Nem hamarabb, mint"
 
 #: ../plugin/controllers/i18n.py:176
@@ -1479,7 +1479,7 @@ msgid "Restrict to bouquets"
 msgstr "Korlátozza a Bouquets"
 
 #: ../plugin/controllers/i18n.py:309
-msgid "Restrict to events on certain dates"
+msgid "Only match between dates"
 msgstr "Korlátozza az eseményeket bizonyos időpontokban"
 
 #: ../plugin/controllers/i18n.py:283
@@ -1548,11 +1548,11 @@ msgid "Search KinoPoisk"
 msgstr "Keresés KinoPoisk"
 
 #: ../plugin/controllers/i18n.py:299
-msgid "Search strictness"
+msgid "Case sensitivity"
 msgstr "Szigorúság keresése"
 
 #: ../plugin/controllers/i18n.py:291
-msgid "Search type"
+msgid "Match when found"
 msgstr "Keresés típusa"
 
 #: ../plugin/controllers/i18n.py:496
@@ -2213,15 +2213,15 @@ msgid "auto"
 msgstr "auto"
 
 #: ../plugin/controllers/i18n.py:301
-msgid "case-insensitive"
+msgid "ignore upper/lower case differences"
 msgstr "kis-és nagybetű nem számít a keresésnél"
 
 #: ../plugin/controllers/i18n.py:300
-msgid "case-sensitive"
+msgid "match upper/lower case exactly"
 msgstr "kis-és nagybetű érzékeny keresés"
 
 #: ../plugin/controllers/i18n.py:294
-msgid "description match"
+msgid "in description"
 msgstr "leírás egyezés"
 
 #: ../plugin/controllers/i18n.py:115
@@ -2237,7 +2237,7 @@ msgid "error! Loading Page"
 msgstr "hiba! Oldal betöltése"
 
 #: ../plugin/controllers/i18n.py:293
-msgid "exact title match"
+msgid "as full title"
 msgstr "pontos egyezés"
 
 #: ../plugin/controllers/i18n.py:136
@@ -2257,15 +2257,15 @@ msgid "hour"
 msgstr "óra"
 
 #: ../plugin/controllers/i18n.py:349
-msgid "in description"
+msgid "description contains"
 msgstr "a leírásban"
 
 #: ../plugin/controllers/i18n.py:348
-msgid "in short description"
+msgid "short description contains"
 msgstr "a rövid leírásban"
 
 #: ../plugin/controllers/i18n.py:347
-msgid "in title"
+msgid "title contains"
 msgstr "a címben"
 
 #: ../plugin/controllers/models/movies.py:224
@@ -2306,7 +2306,7 @@ msgid "one two three four unknown command"
 msgstr "egy kettő három négy ismeretlen parancs"
 
 #: ../plugin/controllers/i18n.py:292
-msgid "partial title match"
+msgid "in any part of title"
 msgstr "részleges egyezés"
 
 #: ../plugin/controllers/models/info.py:467
@@ -2346,7 +2346,7 @@ msgid "select tags"
 msgstr "válasszon Címkét"
 
 #: ../plugin/controllers/i18n.py:297
-msgid "short description match"
+msgid "in short description"
 msgstr "rövid leírás egyezés"
 
 #: ../plugin/controllers/i18n.py:317
@@ -2354,7 +2354,7 @@ msgid "standard"
 msgstr "alapértelmezett"
 
 #: ../plugin/controllers/i18n.py:298
-msgid "title starts with"
+msgid "at beginning of title"
 msgstr "start egyezés"
 
 #: ../plugin/controllers/models/info.py:73
@@ -2364,11 +2364,11 @@ msgid "static"
 msgstr "statikus"
 
 #: ../plugin/controllers/i18n.py:295
-msgid "title or description match"
+msgid "in title or description"
 msgstr "cím vagy leírás egyezés"
 
 #: ../plugin/controllers/i18n.py:296
-msgid "title or short description match"
+msgid "in title or short description"
 msgstr "cím vagy rövid leírás egyezés"
 
 #: ../plugin/controllers/i18n.py:252

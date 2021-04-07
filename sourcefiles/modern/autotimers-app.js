@@ -1,0 +1,1 @@
+require('./js/autotimers.js');
