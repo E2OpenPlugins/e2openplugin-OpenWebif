@@ -201,8 +201,7 @@ def expand_BaseController():
 expand_basecontroller = expand_BaseController()
 
 THEMES = [
-	'supabright', ('city-lights', 'city lights')
-	# ('blackout-neon', 'blackout neon')
+	'supabright', ('city-lights', 'city lights'), ('neon-blackout', 'neon blackout')
 ]
 
 COLORS = [
