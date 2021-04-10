@@ -1055,7 +1055,7 @@ class WebController(BaseController):
 					"result": False,
 					"message": "The parameter 'eventid' must be a number"
 				}
-		elif b"eit" in list(request.args.keys()) and type(request.args[b"eit"][0]) is int:
+		elif b"eit" in list(request.args.keys()) and isinstance(request.args[b"eit"][0], int):
 			eit = int(request.args[b"eit"][0])
 		else:
 			# TODO : move this code to timers.py

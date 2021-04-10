@@ -223,7 +223,7 @@ class BaseController(resource.Resource):
 					request.setResponseCode(http.INTERNAL_SERVER_ERROR)
 					return six.ensure_binary(json.dumps({"result": False, "request": request.path, "exception": repr(exc)}))
 					pass
-			elif type(data) is str:
+			elif isinstance(data, str):
 				# if not self.suppresslog:
 					# print "[OpenWebif] page '%s' ok (simple string)" % request.uri
 				request.setHeader("content-type", "text/plain")

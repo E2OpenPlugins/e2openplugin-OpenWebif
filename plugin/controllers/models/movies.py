@@ -683,7 +683,7 @@ def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, New
 				if fileExists(cutsFileName):
 					try:
 						f = open(cutsFileName, 'rb')
-						while 1:
+						while True:
 							data = f.read(cutsParser.size)
 							if len(data) < cutsParser.size:
 								break

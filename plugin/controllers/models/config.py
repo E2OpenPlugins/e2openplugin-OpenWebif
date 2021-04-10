@@ -90,11 +90,11 @@ def getBoxName():
 
 def getJsonFromConfig(cnf):
 	if cnf.__class__.__name__ == "ConfigSelection" or cnf.__class__.__name__ == "ConfigSelectionNumber" or cnf.__class__.__name__ == "TconfigSelection":
-		if type(cnf.choices.choices) == dict:
+		if isinstance(cnf.choices.choices, dict):
 			choices = []
 			for choice in cnf.choices.choices:
 				choices.append((choice, _(cnf.choices.choices[choice])))
-		elif type(cnf.choices.choices[0]) == tuple:
+		elif isinstance(cnf.choices.choices[0], tuple):
 			choices = []
 			for choice_tuple in cnf.choices.choices:
 				choices.append((choice_tuple[0], _(choice_tuple[1])))

@@ -125,8 +125,7 @@ class IpkgController(BaseController):
 		except IOError:
 			pass
 
-		keys = list(map.keys())
-		keys.sort()
+		keys = sorted(map.keys())
 		self.ResultString = ""
 
 		ret = []
