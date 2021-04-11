@@ -1,5 +1,8 @@
-## Version 1.4.5
+## Version 1.4.6
 ## (in development)
+* fix memory leak in movielist by using internal code #751
+
+## Version 1.4.5
 * fix sleeptimer #1295
 * fix terminal for VTi #1293
 
