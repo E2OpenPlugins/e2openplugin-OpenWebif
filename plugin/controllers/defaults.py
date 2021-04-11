@@ -10,7 +10,7 @@ from Components.Network import iNetwork
 
 from enigma import eEnv
 
-OPENWEBIFVER = "OWIF 1.4.5"
+OPENWEBIFVER = "OWIF 1.4.6"
 
 PLUGIN_NAME = 'OpenWebif'
 PLUGIN_DESCRIPTION = "OpenWebif Configuration"

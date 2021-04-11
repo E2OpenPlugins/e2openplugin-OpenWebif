@@ -4,7 +4,7 @@
 ##########################################################################
 # OpenWebif: movies
 ##########################################################################
-# Copyright (C) 2011 - 2020 E2OpenPlugins
+# Copyright (C) 2011 - 2021 E2OpenPlugins
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -30,7 +30,6 @@ from time import localtime, time
 from enigma import eServiceReference, iServiceInformation, eServiceCenter
 from ServiceReference import ServiceReference
 from Components.config import config
-#from .OWFMovieList import MovieList
 from Components.MovieList import MovieList
 from Tools.Directories import fileExists
 from Screens.MovieSelection import defaultMoviePath
@@ -109,12 +108,14 @@ def getMovieList(rargs=None, locations=None):
 	tag = None
 	directory = None
 	fields = None
+	internal = None
 	bookmarklist = []
 
 	if rargs:
 		tag = getUrlArg2(rargs, "tag")
 		directory = getUrlArg2(rargs, "dirname")
 		fields = getUrlArg2(rargs, "fields")
+		internal = getUrlArg2(rargs, "internal")
 
 	if directory is None:
 		directory = defaultMoviePath()
@@ -191,7 +192,15 @@ def getMovieList(rargs=None, locations=None):
 		dir_is_protected = False
 
 	if not dir_is_protected:
-		movielist = MovieList(None)
+		if internal:
+			try:
+				from .OWFMovieList import MovieList as OWFMovieList
+				movielist = OWFMovieList(None)
+			except ImportError:
+				movielist = MovieList(None)
+				pass
+		else:
+			movielist = MovieList(None)
 		for root in folders:
 			if tag is not None:
 				movielist.load(root=root, filter_tags=[tag])
@@ -683,7 +692,7 @@ def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, New
 				if fileExists(cutsFileName):
 					try:
 						f = open(cutsFileName, 'rb')
-						while 1:
+						while True:
 							data = f.read(cutsParser.size)
 							if len(data) < cutsParser.size:
 								break
