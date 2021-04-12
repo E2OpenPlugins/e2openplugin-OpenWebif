@@ -55,12 +55,12 @@ matrix:
       after_success:
         - ./build.sh
 
-deploy:
-  provider: pages
-  local_dir: Rel
-  github_token: $GITHUB_TOKEN
-  skip_cleanup: true
-  target_branch: gh-pages
-  on:
-    branch: master
-    condition: $TRAVIS_PYTHON_VERSION == "2.7"*
+#deploy:
+#  provider: pages
+#  local_dir: Rel
+#  github_token: $GITHUB_TOKEN
+#  skip_cleanup: true
+#  target_branch: gh-pages
+#  on:
+#    branch: master
+#    condition: $TRAVIS_PYTHON_VERSION == "2.7"*
