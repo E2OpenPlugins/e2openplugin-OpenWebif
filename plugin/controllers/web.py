@@ -110,7 +110,7 @@ class WebController(BaseController):
 		success = True
 		try:
 			InfoBar.instance.startTimeshift()
-		except Exception:  # noqa: E722
+		except Exception:  # nosec # noqa: E722
 			success = False
 		return self.P_tstate(request, success)
 
@@ -140,7 +140,7 @@ class WebController(BaseController):
 				comp_config.usage.check_timeshift.value = False
 				comp_config.usage.check_timeshift.save()
 			InfoBar.instance.stopTimeshift()
-		except Exception:  # noqa: E722
+		except Exception:  # nosec # noqa: E722
 			success = False
 		if comp_config.usage.check_timeshift.value:
 			comp_config.usage.check_timeshift.value = oldcheck
@@ -236,7 +236,7 @@ class WebController(BaseController):
 		elif set[:3] == "set":
 			try:
 				return setVolume(int(set[3:]))
-			except Exception:  # noqa: E722
+			except Exception:  # nosec # noqa: E722
 				res = getVolumeStatus()
 				res["result"] = False
 				res["message"] = _("Wrong parameter format 'set=%s'. Use set=set15 ") % set
@@ -281,7 +281,7 @@ class WebController(BaseController):
 		"""
 		try:
 			id = int(request.args[b"id"][0])
-		except Exception:  # noqa: E722
+		except Exception:  # nosec # noqa: E722
 			id = -1
 
 		return setAudioTrack(self.session, id)
@@ -334,7 +334,7 @@ class WebController(BaseController):
 		id = -1
 		try:
 			id = int(request.args[b"command"][0])
-		except Exception:  # noqa: E722
+		except Exception:  # nosec # noqa: E722
 			return {
 				"result": False,
 				"message": _("The parameter 'command' must be a number")
@@ -389,7 +389,7 @@ class WebController(BaseController):
 				return True
 			else:
 				return False
-		except:  # noqa: E722
+		except:  # nosec # noqa: E722
 			return False
 
 	def P_set_powerup_without_waking_tv(self, request):
@@ -413,7 +413,7 @@ class WebController(BaseController):
 				f.write('True')
 				f.close()
 				return True
-			except:  # noqa: E722
+			except:  # nosec # noqa: E722
 				return False
 		else:
 			return False
@@ -1050,7 +1050,7 @@ class WebController(BaseController):
 		if mode == 1:
 			try:
 				eventid = int(request.args[b"eventid"][0])
-			except Exception:  # noqa: E722
+			except Exception:  # nosec # noqa: E722
 				return {
 					"result": False,
 					"message": "The parameter 'eventid' must be a number"
@@ -1093,7 +1093,7 @@ class WebController(BaseController):
 		elif mode == 2:
 			try:
 				beginOld = int(request.args[b"beginOld"][0])
-			except Exception:  # noqa: E722
+			except Exception:  # nosec # noqa: E722
 				return {
 					"result": False,
 					"message": "The parameter 'beginOld' must be a number"
@@ -1101,7 +1101,7 @@ class WebController(BaseController):
 
 			try:
 				endOld = int(request.args[b"endOld"][0])
-			except Exception:  # noqa: E722
+			except Exception:  # nosec # noqa: E722
 				return {
 					"result": False,
 					"message": "The parameter 'endOld' must be a number"
@@ -1255,7 +1255,7 @@ class WebController(BaseController):
 			return res
 		try:
 			begin = int(request.args[b"begin"][0])
-		except Exception:  # noqa: E722
+		except Exception:  # nosec # noqa: E722
 			return {
 				"result": False,
 				"message": "The parameter 'begin' must be a number"
@@ -1263,7 +1263,7 @@ class WebController(BaseController):
 
 		try:
 			end = int(request.args[b"end"][0])
-		except Exception:  # noqa: E722
+		except Exception:  # nosec # noqa: E722
 			return {
 				"result": False,
 				"message": "The parameter 'end' must be a number"
@@ -1291,7 +1291,7 @@ class WebController(BaseController):
 
 		try:
 			begin = int(request.args[b"begin"][0])
-		except Exception:  # noqa: E722
+		except Exception:  # nosec # noqa: E722
 			return {
 				"result": False,
 				"message": "The parameter 'begin' must be a number"
@@ -1299,7 +1299,7 @@ class WebController(BaseController):
 
 		try:
 			end = int(request.args[b"end"][0])
-		except Exception:  # noqa: E722
+		except Exception:  # nosec # noqa: E722
 			return {
 				"result": False,
 				"message": "The parameter 'end' must be a number"
@@ -1307,7 +1307,7 @@ class WebController(BaseController):
 
 		try:
 			eit = int(request.args[b"eit"][0])
-		except Exception:  # noqa: E722
+		except Exception:  # nosec # noqa: E722
 			eit = None
 
 		return removeTimer(self.session, getUrlArg(request, "sRef"), begin, end, eit)
@@ -1701,7 +1701,7 @@ class WebController(BaseController):
 					mnow["duration_sec"] = movie.getDuration()
 					mnow["remaining"] = movie.getDuration()
 					mnow["id"] = movie.getEventId()
-			except Exception:  # noqa: E722
+			except Exception:  # nosec # noqa: E722
 				mnow = now
 		elif mnow["sref"] == '':
 			serviceref = self.session.nav.getCurrentlyPlayingServiceReference()

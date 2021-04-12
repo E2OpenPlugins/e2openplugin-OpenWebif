@@ -177,7 +177,7 @@ def remoteControl(key, type="", rcu=""):
 			from Tools.HardwareInfo import HardwareInfo
 			if HardwareInfo().get_device_model() in ("xp1000", "formuler1", "formuler3", "et9000", "et9200", "hd1100", "hd1200"):
 				remotetype = "dreambox advanced remote control (native)"
-		except:  # noqa: E722
+		except:  # nosec # noqa: E722
 			print("[OpenWebIf] wrong hw detection")
 
 	amap = eActionMap.getInstance()

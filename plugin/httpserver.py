@@ -260,7 +260,7 @@ def HttpdStart(session):
 				BJregisterService('https', httpsPort)
 			except CannotListenError:
 				print("[OpenWebif] failed to listen on Port", httpsPort)
-			except:   # nosec # noqa: E722
+			except:  # nosec # noqa: E722
 				print("[OpenWebif] failed to start https, disabling...")
 				# Disable https
 				config.OpenWebif.https_enabled.value = False

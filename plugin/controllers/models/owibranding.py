@@ -39,7 +39,7 @@ try:
 	from enigma import eTPM
 	if not hasattr(eTPM, 'getData'):
 		tpmloaded = 0
-except:  # noqa: E722
+except:  # nosec # noqa: E722
 	tpmloaded = 0
 
 
@@ -58,7 +58,7 @@ def get_random():
 		result = xor(random, x)
 
 		return result
-	except:  # noqa: E722
+	except:  # nosec # noqa: E722
 		return None
 
 
@@ -129,7 +129,7 @@ def tpm_check():
 			return 0
 
 		return 1
-	except:  # noqa: E722
+	except:  # nosec # noqa: E722
 		return 0
 
 
@@ -824,10 +824,10 @@ def getAllInfo():
 	driverdate = 'unknown'
 	try:
 		driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-modules*').readline().split()[2]  # nosec
-	except:  # noqa: E722
+	except:  # nosec # noqa: E722
 		try:
 			driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-proxy*').readline().split()[2]  # nosec
-		except:  # noqa: E722
+		except:  # nosec # noqa: E722
 			try:
 				driverdate = os.popen('/usr/bin/opkg -V0 list_installed *kernel-core-default-gos*').readline().split()[2]  # nosec
 			except:  # nosec # noqa: E722

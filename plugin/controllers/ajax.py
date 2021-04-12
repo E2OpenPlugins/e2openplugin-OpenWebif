@@ -38,7 +38,7 @@ from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg, getEve
 
 try:
 	from boxbranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
-except:  # noqa: E722
+except:  # nosec # noqa: E722
 	from Plugins.Extensions.OpenWebif.controllers.models.owibranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild  # noqa: F401
 
 

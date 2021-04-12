@@ -88,7 +88,7 @@ class GrabRequest(object):
 				sref = '_'.join(ref.split(':', 10)[:10])
 				if config.OpenWebif.webcache.screenshotchannelname.value:
 					sref = ServiceReference(ref).getServiceName()
-			except:  # noqa: E722
+			except:  # nosec # noqa: E722
 				sref = 'screenshot'
 		sref = sref + '_' + time.strftime("%Y%m%d%H%M%S", time.localtime(time.time()))
 		request.notifyFinish().addErrback(self.requestAborted)
