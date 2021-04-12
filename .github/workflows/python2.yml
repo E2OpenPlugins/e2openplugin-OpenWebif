@@ -26,7 +26,7 @@ jobs:
           sudo apt-get install -y closure-compiler nodejs npm
           sudo npm install -g jshint
           pip install Cheetah
-          pip install -r requirements.txt
+          pip install -r CI/requirements.txt
           pip install bandit==1.6.2
           pip install six
           python -m compileall -l . -l plugin -l plugin/backport -l plugin/controllers -l plugin/controllers/models
@@ -36,10 +36,10 @@ jobs:
           python -m flake8 --ignore=W191,E501,E302,E711,E128,E265 --extend-exclude plugin/controllers/views/ plugin/ --output-file flake8_report.txt || true
           jshint ./sourcefiles/js/ | tee jshint1_report.txt
           jshint ./sourcefiles/modern/js/ | tee jshint2_report.txt
-          ./create_ipk.sh
-          ./create_ipk.sh novxg
-          ./create_ipk.sh vti
-          ./create_ipk.sh deb
+          ./CI/create_ipk.sh
+          ./CI/create_ipk.sh novxg
+          ./CI/create_ipk.sh vti
+          ./CI/create_ipk.sh deb
           export PKG1=$(ls -1 *_novxg.ipk)
           export PKG2=$(ls -1 *_all.ipk)
           export PKG3=$(ls -1 *_vti.ipk)
