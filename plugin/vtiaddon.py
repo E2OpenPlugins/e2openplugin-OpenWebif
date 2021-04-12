@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 
-from Components.ConfigList import ConfigListScreen
-from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection
+from Components.config import config, ConfigYesNo, ConfigSelection
 from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
 

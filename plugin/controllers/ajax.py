@@ -24,9 +24,7 @@ from Tools.Directories import fileExists
 from Components.config import config
 from time import mktime, localtime
 import os
-import six
 
-from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
 from Plugins.Extensions.OpenWebif.controllers.models.services import getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
 from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
 from Plugins.Extensions.OpenWebif.controllers.models.movies import getMovieList, getMovieSearchList

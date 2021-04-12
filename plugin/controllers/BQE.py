@@ -20,8 +20,8 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
 ##########################################################################
 
-from twisted.web import static, resource, http, server
-from enigma import eServiceCenter, eServiceReference, iServiceInformation
+from twisted.web import static, resource, http
+from enigma import eServiceCenter, eServiceReference
 from Plugins.Extensions.OpenWebif.controllers.base import BaseController
 from Components.config import config
 from Components.ParentalControl import parentalControl

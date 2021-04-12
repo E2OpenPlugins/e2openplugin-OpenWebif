@@ -23,7 +23,7 @@
 import six
 from twisted.web import resource
 from Components.config import config
-from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg, PY3
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
 
 class WOLSetupController(resource.Resource):
