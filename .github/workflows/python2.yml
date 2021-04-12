@@ -32,7 +32,7 @@ jobs:
           python -m compileall -l . -l plugin -l plugin/backport -l plugin/controllers -l plugin/controllers/models
           cheetah compile -R plugin
           python testsuite/evil_eval.py
-          bandit -r plugin -f html -o bandit.html
+          # bandit -r plugin -f html -o bandit.html || true
           python -m flake8 --ignore=W191,E501,E302 plugin/ --output-file flake8_report.txt
           jshint ./sourcefiles/js/ | tee jshint1_report.txt
           jshint ./sourcefiles/modern/js/ | tee jshint2_report.txt
