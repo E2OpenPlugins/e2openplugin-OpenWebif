@@ -6040,7 +6040,7 @@ fieldset[disabled] .form-control {
 	display: inline-block;
 	height: calc(100vh - 70px);
 	position: fixed;
-	top: 70px;
+	top: 80px;
 	left: 0;
 	-webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 	-moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
@@ -6050,6 +6050,7 @@ fieldset[disabled] .form-control {
 }
 
 .sidebar .legal {
+	display: none;
 	position: absolute;
 	bottom: 0;
 	width: 100%;
