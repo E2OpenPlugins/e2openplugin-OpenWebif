@@ -1,6 +1,7 @@
 #!/bin/bash
 
-D=$(pushd $(dirname $0) &> /dev/null; pwd; popd &> /dev/null)
+# D=$(pushd $(dirname $0) &> /dev/null; pwd; popd &> /dev/null)
+D=$(pwd) &> /dev/null
 P=${D}/ipkg.tmp.$$
 B=${D}/ipkg.build.$$
 

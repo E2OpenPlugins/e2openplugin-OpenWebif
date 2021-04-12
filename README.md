@@ -1,3 +1,7 @@
+
+![Build Python2](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/actions/workflows/python2.yml/badge.svg)
+![Build Python3](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/actions/workflows/python3.yml/badge.svg)
+
 [![Build Status](https://travis-ci.org/E2OpenPlugins/e2openplugin-OpenWebif.svg?branch=master)](https://travis-ci.org/E2OpenPlugins/e2openplugin-OpenWebif)
 
 # OpenWebif
