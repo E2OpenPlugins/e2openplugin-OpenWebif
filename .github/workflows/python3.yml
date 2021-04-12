@@ -1,4 +1,4 @@
-name: e2openplugin-OpenWebif
+name: e2openplugin-OpenWebif-python3
 
 on:
   push:
