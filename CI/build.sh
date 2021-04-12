@@ -14,7 +14,7 @@ commit_files() {
   rm -rf *.pyo
   rm -rf *.mo
   git checkout master
-  ./PEP8.sh
+  ./CI/PEP8.sh
 }
 
 upload_files() {
