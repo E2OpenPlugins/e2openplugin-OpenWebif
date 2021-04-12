@@ -36,18 +36,18 @@ jobs:
           python -m flake8 --ignore=W191,E501,E302 plugin/ --output-file flake8_report.txt || true
           jshint ./sourcefiles/js/ | tee jshint1_report.txt
           jshint ./sourcefiles/modern/js/ | tee jshint2_report.txt
-          mkdir Rel1
-          touch ./Rel1/.nojekyll
-          mv bandit.html ./Rel1
-          mv flake8_report.txt ./Rel1
-          mv jshint1_report.txt ./Rel1
-          mv jshint2_report.txt ./Rel1
+          mkdir Rel
+          touch ./Rel/.nojekyll
+          mv bandit.html ./Rel
+          mv flake8_report.txt ./Rel
+          mv jshint1_report.txt ./Rel
+          mv jshint2_report.txt ./Rel
           cd doc
           make html
           cd build/html
-          mv * ../../../Rel1/
+          mv * ../../../Rel/
 
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: /Rel1
+          publish_dir: Rel
