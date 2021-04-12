@@ -46,8 +46,9 @@ jobs:
           make html
           cd build/html
           mv * ../../../Rel/
+          cd ../../../
 
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: Rel
+          publish_dir: ./Rel
