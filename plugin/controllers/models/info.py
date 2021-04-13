@@ -577,7 +577,7 @@ def getInfo(session=None, need_fullinfo=False):
 	STATICBOXINFO = info
 	return info
 
-	
+
 def getStreamServiceAndEvent(ref):
 	sname = "(unknown service)"
 	eventname = ""
