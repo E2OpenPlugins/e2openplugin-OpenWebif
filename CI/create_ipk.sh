@@ -118,8 +118,9 @@ if [ "$1" == "novxg" ]; then
 	rm -rf ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/vxg/
 fi
 
-tar -C ${P} -czf ${B}/data.tar.gz . --exclude=CONTROL
 tar -C ${P}/CONTROL -czf ${B}/control.tar.gz .
+rm -rf ${P}/CONTROL
+tar -C ${P} -czf ${B}/data.tar.gz .
 
 echo "2.0" > ${B}/debian-binary
 
