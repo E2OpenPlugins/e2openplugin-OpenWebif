@@ -514,7 +514,7 @@ def getInfo(session=None, need_fullinfo=False):
 			#  gets all current stream clients for images using eStreamServer
 			#  TODO: get tuner info for streams
 			#  TODO: get recoding/timer info if more than one
-			info['streams'] = GetSteamInfo()
+			info['streams'] = GetStreamInfo()
 
 			recs = NavigationInstance.instance.getRecordings()
 			if recs:
@@ -593,7 +593,7 @@ def getStreamServiceAndEvent(ref):
 	return sname, eventname
 
 
-def GetSteamInfo():
+def GetStreamInfo():
 	streams = []
 	nostreamServer = True
 	try:
@@ -803,7 +803,7 @@ def getStatusInfo(self):
 		statusinfo['isRecording'] = "false"
 
 	# Get streaminfo
-	streams = GetSteamInfo()
+	streams = GetStreamInfo()
 	Streaming_list = []
 	try:
 
