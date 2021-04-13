@@ -705,6 +705,7 @@ def getCurrentTime():
 		"time": "%2d:%02d:%02d" % (t.tm_hour, t.tm_min, t.tm_sec)
 	}
 
+
 def getStatusInfo(self):
 	# Get Current Volume and Mute Status
 	vcontrol = eDVBVolumecontrol.getInstance()
