@@ -24,9 +24,7 @@ from Tools.Directories import fileExists
 from Components.config import config
 from time import mktime, localtime
 import os
-import six
 
-from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
 from Plugins.Extensions.OpenWebif.controllers.models.services import getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
 from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
 from Plugins.Extensions.OpenWebif.controllers.models.movies import getMovieList, getMovieSearchList
@@ -40,7 +38,7 @@ from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg, getEve
 
 try:
 	from boxbranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild
-except:  # noqa: E722
+except:  # nosec # noqa: E722
 	from Plugins.Extensions.OpenWebif.controllers.models.owibranding import getBoxType, getMachineName, getMachineBrand, getMachineBuild  # noqa: F401
 
 

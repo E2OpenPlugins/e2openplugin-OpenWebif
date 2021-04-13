@@ -62,13 +62,13 @@ REMOTE = ''
 
 try:
 	from boxbranding import getBoxType, getMachineName
-except:  # noqa: E722
+except:  # nosec # noqa: E722
 	from Plugins.Extensions.OpenWebif.controllers.models.owibranding import getBoxType, getMachineName  # noqa: F401
 
 try:
 	from Components.RcModel import rc_model
 	REMOTE = rc_model.getRcFolder() + "/remote"
-except:  # noqa: E722
+except:  # nosec # noqa: E722
 	from Plugins.Extensions.OpenWebif.controllers.models.owibranding import rc_model
 	REMOTE = rc_model().getRcFolder()
 
@@ -328,7 +328,7 @@ class BaseController(resource.Resource):
 					try:
 						lcd4linux_port = "http://" + ip + ":" + str(config.plugins.Webinterface.http.port.value) + "/"
 						lcd4linux_key = lcd4linux_port + 'lcd4linux/config'
-					except:  # noqa: E722
+					except:  # nosec # noqa: E722
 						lcd4linux_key = None
 				if lcd4linux_key:
 					extras.append({'key': lcd4linux_key, 'description': _("LCD4Linux Setup"), 'nw': '1'})

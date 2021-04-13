@@ -1,6 +1,7 @@
 #!/bin/bash
 
-D=$(pushd $(dirname $0) &> /dev/null; pwd; popd &> /dev/null)
+# D=$(pushd $(dirname $0) &> /dev/null; pwd; popd &> /dev/null)
+D=$(pwd) &> /dev/null
 P=${D}/ipkg.tmp.$$
 B=${D}/ipkg.build.$$
 
@@ -117,16 +118,18 @@ if [ "$1" == "novxg" ]; then
 	rm -rf ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/vxg/
 fi
 
-tar -C ${P} -czf ${B}/data.tar.gz . --exclude=CONTROL
-tar -C ${P}/CONTROL -czf ${B}/control.tar.gz .
+if [ "$1" != "deb" ]; then
+	tar -C ${P}/CONTROL -czf ${B}/control.tar.gz .
+	rm -rf ${P}/CONTROL
+	tar -C ${P} -czf ${B}/data.tar.gz .
 
-echo "2.0" > ${B}/debian-binary
+	echo "2.0" > ${B}/debian-binary
 
-cd ${B}
-ls -la
-ar -r ${PKG} ./debian-binary ./data.tar.gz ./control.tar.gz 
+	cd ${B}
+	ls -la
+	ar -r ${PKG} ./debian-binary ./data.tar.gz ./control.tar.gz 
 
-cd -
+fi
 
 if [ "$1" == "deb" ]; then
 	rm -rf ${PKG}

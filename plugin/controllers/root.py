@@ -82,11 +82,11 @@ class RootController(BaseController):
 		try:
 			from Plugins.Extensions.OpenWebif.controllers.NET import NetController
 			self.putChild2("net", NetController(session))
-		except:  # noqa: E722
+		except:  # nosec # noqa: E722
 			pass
 		try:
 			harddiskmanager.on_partition_list_change.append(self.onPartitionChange)
-		except:  # noqa: E722
+		except:  # nosec # noqa: E722
 			pass
 
 # TODO : test !!

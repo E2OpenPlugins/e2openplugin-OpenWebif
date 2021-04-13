@@ -245,7 +245,7 @@ def getMovieList(rargs=None, locations=None):
 
 				try:
 					length_minutes = info.getLength(serviceref)
-				except:  # noqa: E722
+				except:  # nosec # noqa: E722
 					pass
 
 				if length_minutes:
@@ -280,7 +280,7 @@ def getMovieList(rargs=None, locations=None):
 							sz = "%.2f %s" % ((size / 1048576.), _("MB"))
 						elif size > 1024:
 							sz = "%.2f %s" % ((size / 1024.), _("kB"))
-					except:  # noqa: E722
+					except:  # nosec # noqa: E722
 						pass
 
 					movie['filesize'] = size
@@ -376,7 +376,7 @@ def getMovieSearchList(rargs=None, locations=None):
 
 		try:
 			length_minutes = info.getLength(serviceref)
-		except:  # noqa: E722
+		except:  # nosec # noqa: E722
 			pass
 
 		if length_minutes:
@@ -410,7 +410,7 @@ def getMovieSearchList(rargs=None, locations=None):
 					sz = "%.2f %s" % ((size / 1048576.), _("MB"))
 				elif size > 1024:
 					sz = "%.2f %s" % ((size / 1024.), _("kB"))
-			except:  # noqa: E722
+			except:  # nosec # noqa: E722
 				pass
 
 			movie['filesize'] = size
@@ -703,7 +703,7 @@ def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, New
 								}
 							)
 						f.close()
-					except:  # noqa: E722
+					except:  # nosec # noqa: E722
 						print('Error')
 						pass
 
@@ -799,7 +799,7 @@ def getMovieDetails(sRef=None):
 
 		try:
 			length_minutes = info.getLength(serviceref)
-		except:  # noqa: E722
+		except:  # nosec # noqa: E722
 			pass
 
 		if length_minutes:
@@ -830,7 +830,7 @@ def getMovieDetails(sRef=None):
 				sz = "%.2f %s" % ((size / 1048576.), _("MB"))
 			elif size > 1024:
 				sz = "%.2f %s" % ((size / 1024.), _("kB"))
-		except:  # noqa: E722
+		except:  # nosec # noqa: E722
 			pass
 
 		movie['filesize'] = size

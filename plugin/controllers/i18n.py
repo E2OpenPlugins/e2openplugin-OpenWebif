@@ -31,7 +31,7 @@ language.addCallback(_locale_init)
 
 try:
 	AT_unit = comp_config.plugins.autotimer.unit.value == "hour" and _("hour") or _("minute")
-except:  # noqa: E722
+except:  # nosec # noqa: E722
 	AT_unit = "hour"
 
 tstrings = {
