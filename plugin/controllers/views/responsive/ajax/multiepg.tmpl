@@ -371,6 +371,8 @@ function fixTableHeight() {
 	var scrollheightI = new_height + 'px';
 	jQuery('#tbl1body').height(scrollheightI);
 	jQuery('#fulltbl').width(scrollwidth);
+
+	jQuery("#fulltbl").height((jQuery("#leftsidemenu").height() - 300) + "px");
 #else
 	var new_height = (jQuery("#epgcard").height() *0.90 - jQuery("#epgcardheaderI").height() - jQuery("#epgcardheaderII").height() - jQuery("#navepg").height() - 2*jQuery("#tbl1 thead").height() - addScrollBarWidth - 2);
 	var scrollheightI = new_height + 'px';
