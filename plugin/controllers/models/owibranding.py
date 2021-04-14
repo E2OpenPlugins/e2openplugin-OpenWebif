@@ -771,12 +771,9 @@ def getAllInfo():
 			oever = "OpenVuplus 2.1"
 		if ((imagever == "5.1") or (imagever[0] > 5)):
 			oever = "OpenVuplus 2.1"
-	elif fileExists("/var/grun/grcstype"):
+	elif fileExists("/var/run/ggui"):
 		distro = "Graterlia OS"
-		try:
-			imagever = about.getImageVersionString()
-		except:  # nosec  # noqa: E722
-			pass
+		imagever = ""
 	# ToDo: If your distro gets detected as OpenPLi, feel free to add a detection for your distro here ...
 	else:
 		# OE 2.2 uses apt, not opkg
@@ -829,7 +826,7 @@ def getAllInfo():
 			driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-proxy*').readline().split()[2]  # nosec
 		except:  # nosec # noqa: E722
 			try:
-				driverdate = os.popen('/usr/bin/opkg -V0 list_installed *kernel-core-default-gos*').readline().split()[2]  # nosec
+				driverdate = os.popen('cat /var/lib/opkg/info/kernel-module-*.control | grep Version | cut -d "-" -f2').readline()  # nosec
 			except:  # nosec # noqa: E722
 				pass
 	re_search = re.search('([0-9]{8})', driverdate)
