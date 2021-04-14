@@ -53,6 +53,7 @@ dropdown selected
 
 /* city-lights */
 :root .theme--city-lights {
+  color-scheme: dark;
   --background-color--main:  #313443;
   --background-color--alt:   #282c37;
   --background-color--active: inherit;
@@ -60,6 +61,7 @@ dropdown selected
 }
 
 :root .theme--neon-blackout {
+  color-scheme: dark;
   --background-color--main:   #090909;
   --background-color--alt:    #000;
   --background-color--active: #0f0f0f;
@@ -655,18 +657,8 @@ body:not(.theme--supabright) .remote__group .material-icons {
   color: #707070;
 }
 
-body:not(.theme--supabright) .remote__button {
-  box-shadow: 0 0 3px rgba(255, 255, 255, 0.4);
-  background-color: #707070;
-  transition: ease-out 0.4s;
-}
-
 body:not(.theme--supabright) .remote__button .material-icons {
   color: #f1f1f1;
-}
-
-body:not(.theme--supabright) .remote__button--arrow {
-  background-color: rgba(255, 255, 255, 0.12);
 }
 
 body:not(.theme--supabright) .progress {
@@ -820,6 +812,16 @@ body:not(.theme--supabright) .ename {
 .theme--city-lights .leftnav > li:nth-child(7n-5) > a .material-icons {
   color: #ffbe00;
 }
+
+.theme--city-lights .remote__button {
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.4);
+  background-color: #707070;
+  transition: ease-out 0.4s;
+}
+
+.theme--city-lights .remote__button--arrow {
+  background-color: rgba(255, 255, 255, 0.12);
+}
 /* END .theme--city-lights */
 
 /* BEGIN .theme--neon-blackout */
@@ -964,6 +966,16 @@ body:not(.theme--supabright) .ename {
 
 .theme--neon-blackout.skin--white .nav > li > a {
   color: #fff;
+}
+
+.theme--neon-blackout .remote__button {
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.4);
+  background-color: #707070;
+  transition: ease-out 0.4s;
+}
+
+.theme--neon-blackout .remote__button--arrow {
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 /* END .theme--neon-blackout */
