@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-23 17:03+0200\n"
-"PO-Revision-Date: 2021-04-14 10:12+0200\n"
+"PO-Revision-Date: 2021-04-14 10:37+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1082,7 +1082,7 @@ msgstr "Lista nagrań"
 
 #: ../plugin/controllers/i18n.py:169
 msgid "Movies"
-msgstr "Nasgrania"
+msgstr "Nagrania"
 
 #: ../plugin/controllers/BouquetEditor.py:132
 #: ../plugin/controllers/BouquetEditor.py:757
