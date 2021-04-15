@@ -77,7 +77,7 @@ class OWFServerProtocol(WebSocketServerProtocol):
 			self.sendAuthRequest()
 
 	def sendAuthOk(self):
-		self.sendJSON({"type": self.TYPE_AUTH_OK)
+		self.sendJSON({"type": self.TYPE_AUTH_OK})
 
 	def sendAuthRequest(self):
 		self.sendJSON({"type": self.TYPE_AUTH_REQUIRED})
@@ -90,7 +90,7 @@ class OWFServerProtocol(WebSocketServerProtocol):
 
 	def onMessage(self, payload, isBinary):
 		if isBinary:
-			print"Binary message received: {0} bytes".format(len(payload)))
+			print("Binary message received: {0} bytes".format(len(payload)))
 		else:
 			msg = json.loads(payload, 'utf8')
 			print("> %s" % (msg))
