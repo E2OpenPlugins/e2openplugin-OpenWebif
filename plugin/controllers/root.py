@@ -41,7 +41,7 @@ from Plugins.Extensions.OpenWebif.controllers.wol import WOLSetupController, WOL
 from Plugins.Extensions.OpenWebif.controllers.file import FileController
 from Plugins.Extensions.OpenWebif.controllers.defaults import PICON_PATH, getPublicPath, VIEWS_PATH, setMobile, refreshPiconPath
 from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
-
+from Plugins.Extensions.OpenWebif.controllers.ws import webSocketServer
 
 class RootController(BaseController):
 	"""
@@ -88,6 +88,9 @@ class RootController(BaseController):
 			harddiskmanager.on_partition_list_change.append(self.onPartitionChange)
 		except:  # nosec # noqa: E722
 			pass
+
+		self.putChild("ws", webSocketServer.root)
+		webSocketServer.start(session)
 
 # TODO : test !!
 	def onPartitionChange(self, why, part):
