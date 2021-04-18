@@ -62,6 +62,17 @@ if PY3:
 else:
 	from cgi import escape as html_escape
 
+def getIPTVLink(ref):
+	first = ref.split(":")[0]
+	if first in ['4097', '5003', '5002', '5001'] or "%3A" in ref or "%3a" in ref:
+		if 'http' in ref:
+			if ref.index('http') < ref.rindex(':'):
+				ref = ref[:ref.rindex(':')]
+			ref = ref[ref.index('http'):]
+			ref = ref.replace('%3a', ':').replace('%3A', ':').replace('http://127.0.0.1:8088/','')
+			return ref
+	return ''
+
 
 def filterName(name, encode=True):
 	if name is not None:
@@ -456,6 +467,9 @@ def getChannels(idbouquet, stype):
 		chan['name'] = filterName(channel[1])
 		if chan['ref'].split(":")[0] == '5002':  # BAD fix !!! this needs to fix in enigma2 !!!
 			chan['name'] = chan['ref'].split(":")[-1]
+		# IPTV
+		chan['link'] = getIPTVLink(chan['ref'])
+
 		if not int(channel[0].split(":")[1]) & 64:
 			psref = parse_servicereference(channel[0])
 			chan['service_type'] = SERVICE_TYPE_LOOKUP.get(psref.get('service_type'), "UNKNOWN")
@@ -744,6 +758,7 @@ def getEvent(ref, idev, encode=True):
 		info['genre'], info['genreid'] = convertGenre(event[8])
 		info['picon'] = getPicon(event[7])
 		info['timer'] = getTimerEventStatus(event, eventLookupTable, None)
+		info['link'] = getIPTVLink(event[7])
 		break
 	return {'event': info}
 
