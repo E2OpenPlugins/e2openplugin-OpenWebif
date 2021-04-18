@@ -62,6 +62,7 @@ if PY3:
 else:
 	from cgi import escape as html_escape
 
+
 def getIPTVLink(ref):
 	first = ref.split(":")[0]
 	if first in ['4097', '5003', '5002', '5001'] or "%3A" in ref or "%3a" in ref:
