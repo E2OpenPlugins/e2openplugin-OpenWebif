@@ -62,6 +62,7 @@ if PY3:
 else:
 	from cgi import escape as html_escape
 
+
 def getIPTVLink(ref):
 	first = ref.split(":")[0]
 	if first in ['4097', '5003', '5002', '5001'] or "%3A" in ref or "%3a" in ref:
@@ -69,7 +70,7 @@ def getIPTVLink(ref):
 			if ref.index('http') < ref.rindex(':'):
 				ref = ref[:ref.rindex(':')]
 			ref = ref[ref.index('http'):]
-			ref = ref.replace('%3a', ':').replace('%3A', ':').replace('http://127.0.0.1:8088/','')
+			ref = ref.replace('%3a', ':').replace('%3A', ':').replace('http://127.0.0.1:8088/', '')
 			return ref
 	return ''
 
