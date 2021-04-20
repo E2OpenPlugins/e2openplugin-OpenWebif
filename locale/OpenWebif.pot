@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-15 10:55+0430\n"
+"POT-Creation-Date: 2021-04-20 14:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,10 +33,10 @@ msgstr ""
 msgid "%02d:%02d"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:235
-#: ../plugin/controllers/models/services.py:773
-#: ../plugin/controllers/models/services.py:1004
-#: ../plugin/controllers/models/services.py:1050
+#: ../plugin/controllers/models/services.py:247
+#: ../plugin/controllers/models/services.py:789
+#: ../plugin/controllers/models/services.py:1020
+#: ../plugin/controllers/models/services.py:1066
 msgid "%d.%m.%Y"
 msgstr ""
 
@@ -433,7 +433,7 @@ msgstr ""
 msgid "Brand"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:377
+#: ../plugin/controllers/models/services.py:389
 msgid "Cable"
 msgstr ""
 
@@ -441,7 +441,7 @@ msgstr ""
 msgid "Calendar Week"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:94 ../plugin/plugin.py:125
+#: ../plugin/plugin.py:125 ../plugin/controllers/i18n.py:94
 msgid "Cancel"
 msgstr ""
 
@@ -524,7 +524,7 @@ msgstr ""
 msgid "Current Event"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:191 ../plugin/plugin.py:158
+#: ../plugin/plugin.py:158 ../plugin/controllers/i18n.py:191
 msgid "Custom box name"
 msgstr ""
 
@@ -901,13 +901,13 @@ msgstr ""
 msgid "Full remote"
 msgstr ""
 
+#: ../plugin/controllers/models/movies.py:278
+#: ../plugin/controllers/models/movies.py:408
+#: ../plugin/controllers/models/movies.py:828
 #: ../plugin/controllers/models/info.py:396
 #: ../plugin/controllers/models/info.py:402
 #: ../plugin/controllers/models/info.py:417
 #: ../plugin/controllers/models/info.py:420
-#: ../plugin/controllers/models/movies.py:278
-#: ../plugin/controllers/models/movies.py:408
-#: ../plugin/controllers/models/movies.py:828
 msgid "GB"
 msgstr ""
 
@@ -1104,12 +1104,12 @@ msgstr ""
 msgid "MAC address"
 msgstr ""
 
-#: ../plugin/controllers/models/info.py:393
-#: ../plugin/controllers/models/info.py:404
-#: ../plugin/controllers/models/info.py:422
 #: ../plugin/controllers/models/movies.py:280
 #: ../plugin/controllers/models/movies.py:410
 #: ../plugin/controllers/models/movies.py:830
+#: ../plugin/controllers/models/info.py:393
+#: ../plugin/controllers/models/info.py:404
+#: ../plugin/controllers/models/info.py:422
 msgid "MB"
 msgstr ""
 
@@ -1264,7 +1264,7 @@ msgstr ""
 msgid "Never"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:370
+#: ../plugin/controllers/models/services.py:382
 #: ../plugin/controllers/i18n.py:384
 msgid "New"
 msgstr ""
@@ -1468,7 +1468,7 @@ msgstr ""
 msgid "OpenWebif url:"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:264
+#: ../plugin/controllers/models/services.py:276
 #: ../plugin/controllers/i18n.py:475
 msgid "Orbital Position"
 msgstr ""
@@ -1691,8 +1691,8 @@ msgstr ""
 msgid "Saturday"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:215 ../plugin/controllers/i18n.py:377
-#: ../plugin/controllers/i18n.py:439 ../plugin/plugin.py:126
+#: ../plugin/plugin.py:126 ../plugin/controllers/i18n.py:215
+#: ../plugin/controllers/i18n.py:377 ../plugin/controllers/i18n.py:439
 msgid "Save"
 msgstr ""
 
@@ -1812,7 +1812,7 @@ msgstr ""
 msgid "Service renamed successfully."
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:372
+#: ../plugin/controllers/models/services.py:384
 msgid "Services"
 msgstr ""
 
@@ -1837,7 +1837,7 @@ msgstr ""
 msgid "Show IPTV channels in selection (eg. Autotimer)"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:189 ../plugin/plugin.py:154
+#: ../plugin/plugin.py:154 ../plugin/controllers/i18n.py:189
 msgid "Show box name in header"
 msgstr ""
 
@@ -2052,7 +2052,7 @@ msgstr ""
 msgid "Terminal"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:379
+#: ../plugin/controllers/models/services.py:391
 msgid "Terrestrial"
 msgstr ""
 
@@ -2093,7 +2093,7 @@ msgstr ""
 msgid "Theme"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:274 ../plugin/plugin.py:152
+#: ../plugin/plugin.py:152 ../plugin/controllers/i18n.py:274
 msgid "Theme mode"
 msgstr ""
 
@@ -2319,7 +2319,7 @@ msgstr ""
 msgid "Use custom Color"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:190 ../plugin/plugin.py:156
+#: ../plugin/plugin.py:156 ../plugin/controllers/i18n.py:190
 msgid "Use custom box name"
 msgstr ""
 
@@ -2327,7 +2327,7 @@ msgstr ""
 msgid "Use modern design"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:569 ../plugin/plugin.py:150
+#: ../plugin/plugin.py:150 ../plugin/controllers/i18n.py:569
 msgid "Use modern interface"
 msgstr ""
 
@@ -2538,11 +2538,11 @@ msgstr ""
 msgid "hour"
 msgstr ""
 
-#: ../plugin/controllers/models/info.py:302
-#: ../plugin/controllers/models/info.py:305
 #: ../plugin/controllers/models/movies.py:282
 #: ../plugin/controllers/models/movies.py:412
 #: ../plugin/controllers/models/movies.py:832
+#: ../plugin/controllers/models/info.py:302
+#: ../plugin/controllers/models/info.py:305
 msgid "kB"
 msgstr ""
 
