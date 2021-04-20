@@ -131,7 +131,11 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		if ip == None:
 			ip = _("box_ip")
 
-		self["lab1"] = Label("%s\n%s://%s:%d" % (_("OpenWebif url:"), owif_protocol, ip, owif_port))
+		ports = ":%d" % owif_port
+		if (owif_protocol == "http" and owif_port == 80) or (owif_protocol == "https" and owif_port == 443):
+			ports = ""
+
+		self["lab1"] = Label("%s %s://%s%s" % (_("OpenWebif url:"), owif_protocol, ip, ports))
 
 		self["actions"] = ActionMap(["WizardActions", "ColorActions"],
 		{
