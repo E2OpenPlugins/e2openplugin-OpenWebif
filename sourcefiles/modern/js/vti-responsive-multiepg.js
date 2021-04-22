@@ -48,7 +48,7 @@ function fixTableHeight() {
     addScrollBarWidth = 0;
   }
 
-	if (multiepg_day == 1) {
+	if (multiepg_mode == 1) {
 		var new_height = (jQuery("#epgcard").height() * 0.85 - jQuery("#epgcardheaderI").height() - jQuery("#epgcardheaderII").height() - jQuery("#navepg").height() - 2 * jQuery("#tbl1 thead").height() - addScrollBarWidth - 2);
 		var scrollwidth = (jQuery("#epgcard").width() - 40) + "px";
 		var scrollheightI = new_height + 'px';
