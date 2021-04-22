@@ -1728,7 +1728,7 @@ function ChangeTheme(theme)
 function directlink()
 {
 	// #myepg?epgmode=tv
-	var hashParts = window.location.hash.match(/^#((.*?[^\?]*)(\?.*)*)/) || [null, '', '']
+	var hashParts = window.location.hash.match(/^#((.*?[^\?]*)(\?.*)*)/) || [null, '', ''];
 	var page = hashParts[2]; // myepg
 	var hash = hashParts[1]; // myepg?epgmode=tv
 	var lnk = 'ajax/tv';
@@ -2111,7 +2111,7 @@ function testPipStatus() {
                                 buttonsSwitcher(pipinfo.pip);
 			}
 		}
-	})
+	});
 }
 
 var SSHelperObj = function () {

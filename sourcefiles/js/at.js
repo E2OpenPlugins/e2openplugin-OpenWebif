@@ -1203,8 +1203,7 @@ function setAutoTimerSettings()
 	var v = $('#ats_add_autotimer_to_tags').is(':checked') ? "true":"";
 	reqs += "&add_autotimer_to_tags=" + v;
 	v = $('#ats_add_name_to_tags').is(':checked') ? "true":"";
-	reqs += "&add_name_to_tags=" + v
-	
+	reqs += "&add_name_to_tags=" + v;
 	reqs += "&refresh=" + $('#ats_refresh').val();
 	reqs += "&editor=" + $('#ats_editor').val();
 	
@@ -1250,7 +1249,7 @@ function importAT () {
 }
 
 function prepareRestore (ff) {
-	var fn = ff.val()
+	var fn = ff.val();
 	fn = fn.replace('C:\\fakepath\\','');
 	if (confirm(tstr_bqe_restore_question + ' ( ' + fn + ') ?') === false) {
 		return;

@@ -1,6 +1,6 @@
 
 var vol_slider = document.getElementById('volslider');
-var cur_vol = -1 ;
+var cur_vol = -1;
 var standby_status = -1;
 var timerFormInitiated = - 1;
 
@@ -229,7 +229,7 @@ function testPipStatus() {
                                 buttonsSwitcher(pipinfo.pip);
 			}
 		}
-	})
+	});
 }
 
 var SSHelperObj = function () {
