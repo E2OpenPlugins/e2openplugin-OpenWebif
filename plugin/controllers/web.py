@@ -2077,8 +2077,11 @@ class WebController(BaseController):
 		"""
 		try:
 			from Plugins.Extensions.WebInterface.WebChilds.Toplevel import loaded_plugins
+			result = []
+			for p in loaded_plugins:
+				result.append((p[0],'',p[2],p[3]))
 			return {
-				"plugins": loaded_plugins
+				"plugins": result
 			}
 		except Exception:
 			return {
