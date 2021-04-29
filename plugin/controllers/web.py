@@ -2079,7 +2079,7 @@ class WebController(BaseController):
 			from Plugins.Extensions.WebInterface.WebChilds.Toplevel import loaded_plugins
 			result = []
 			for p in loaded_plugins:
-				result.append((p[0],'',p[2],p[3]))
+				result.append((p[0], '', p[2], p[3]))
 			return {
 				"plugins": result
 			}
