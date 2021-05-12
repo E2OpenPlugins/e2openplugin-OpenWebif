@@ -133,7 +133,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 
 		ports = ":%d" % owif_port
 		if (owif_protocol == "http" and owif_port == 80) or (owif_protocol == "https" and owif_port == 443):
-			ports = ""
+			ports = ":80"
 
 		self["lab1"] = Label("%s %s://%s%s" % (_("OpenWebif url:"), owif_protocol, ip, ports))
 
