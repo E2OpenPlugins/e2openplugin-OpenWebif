@@ -3,15 +3,14 @@
 <div class="cht">
 	<div class="fr">
 		<div class="a">
-		#if $channel.has_key('protection')
+		#if 'protection' in $channel
 			#if $channel.protection == "0"
 				#if $type == "radio"
 					<a href="#" onclick="addTimer('','$channel.ref','$channel.name','')" title="$tstrings['add_timer']"><i class="fa fa-clock-o"></i></a>
 				#end if
-				#if '4097:' in $channel.ref
-					#set $rname = ":" + $channel.name
-					#set $lnk = $channel.ref.replace("4097:0:1:0:0:0:0:0:0:0:", "").replace("%3a", ":").replace($rname, "")
-					<a target="_blank" href='$lnk' title="$tstrings['stream'] $channel.name"><i class="fa fa-desktop"></i></a>
+				#if $channel.link != ""
+					<a href="#" onclick="open_epg_dialog('$channel.ref','$channel.name')" title="$tstrings['show_epg_for'] $channel.name"><i class="fa fa-list-alt"></i></a>
+					<a target="_blank" href='$channel.link' title="$tstrings['stream'] $channel.name"><i class="fa fa-desktop"></i></a>
 				#else
 					<a href="#" onclick="open_epg_dialog('$channel.ref','$channel.name')" title="$tstrings['show_epg_for'] $channel.name"><i class="fa fa-list-alt"></i></a>
 					#if $transcoding
@@ -30,7 +29,7 @@
 		<div class="b">
 			#set $name =  $channel.name.replace("'", r"\'")
 			<span class="channel-name">
-			#if $channel.has_key('protection')
+			#if 'protection' in $channel
 				#if $channel.protection == "0"
 					<a href="#" onclick="zapChannel('$channel.ref', '$name'); return false" title="$tstrings['zap_to'] $channel.name">$channel.name</a>
 				#else
@@ -40,9 +39,9 @@
 				$channel.name
 			#end if
 			</span>
-			#if '4097:' in $channel.ref or '5002:' in $channel.ref or 'http%3a' in $channel.ref or 'https%3a' in $channel.ref
+			#if $channel.link != ""
 				<span class="channel-tag ST-IPTV">IPTV</span>
-			#elif $channel.has_key('ns')
+			#elif 'ns' in $channel
 				#set $ns="DVB-S"
 				#if 'DVB' in $channel.ns
 					#set $ns=$channel.ns
@@ -53,15 +52,15 @@
 	</div>
 
 	#set $picon = True
-	#if $showchannelpicon and not $channel.has_key('now_title')
-		#if $channel.has_key('picon') and $channel.picon == "/images/default_picon.png"
+	#if $showpicons and 'now_title' not in $channel
+		#if 'picon' in $channel and $channel.picon == "/images/default_picon.png"
 			#set $picon = False
 		#end if
 	#end if
 
-	#if $channel.has_key('protection') and $channel.protection == "0" and $picon
+	#if 'protection' in $channel and $channel.protection == "0" and $picon
 	<div>
-		#if $showchannelpicon
+		#if $showpicons
 			<div class="channel-picon">
 				<img class="pic" src="$channel.picon" title="">
 			</div>
@@ -69,13 +68,13 @@
 			<div style="display:none;"></div>
 		#end if
 		<div class="channel-info">
-		#if $channel.has_key('now_title')
+		#if 'now_title' in $channel
 			<div class="tt">
 				<div class="a">
 					$channel.now_begin &mdash; $channel.now_end &nbsp;&nbsp;&nbsp;
 				</div>
 				<div class="b">
-					<a href='#' onClick="toggle_chan_des('$channel.now_ev_id', '$channel.ref', '$channel.now_idp'); return false" title="$channel.now_title">$channel.now_title</a>&nbsp;(+$channel.now_left min)
+					<a href='#' onclick="toggle_chan_des('$channel.now_ev_id', '$channel.ref', '$channel.now_idp'); return false" title="$channel.now_title">$channel.now_title</a>&nbsp;(+$channel.now_left min)
 				</div>
 			</div>
 			<div class="tt">
@@ -95,7 +94,7 @@
 					$channel.next_begin &mdash; $channel.next_end &nbsp;&nbsp;&nbsp;
 				</div>
 				<div class="b">
-					<a href='#' onClick="toggle_chan_des('$channel.next_ev_id', '$channel.ref', '$channel.next_idp'); return false" title="$channel.next_title">$channel.next_title</a>&nbsp;($channel.next_duration min)
+					<a href='#' onclick="toggle_chan_des('$channel.next_ev_id', '$channel.ref', '$channel.next_idp'); return false" title="$channel.next_title">$channel.next_title</a>&nbsp;($channel.next_duration min)
 				</div>
 			</div>
 			<div class="tt">

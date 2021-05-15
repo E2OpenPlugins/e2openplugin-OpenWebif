@@ -1,8 +1,8 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.19
+//* Version 1.2.21
 //******************************************************************************
-//* Copyright (C) 2011-2018 E2OpenPlugins
+//* Copyright (C) 2011-2021 E2OpenPlugins
 //*
 //* V 1.0   - Initial Version
 //* V 1.1   - add movie move and rename
@@ -32,6 +32,8 @@
 //* V 1.2.17 - allow timers for IPTV #715, added LCD, PiP into screenshots
 //* V 1.2.18 - rename stream.m3u8 to <channelname>.m3u8
 //* V 1.2.19 - fixed missing <channelname> when requesting a transcoding stream m3u8
+//* V 1.2.20 - timer pipzap option
+//* V 1.2.21 - improve getallservices
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -528,7 +530,7 @@ function cbAddTimerEvent(state) {
 }
 
 function addTimerEvent(sRef, eventId, justplay, callback) {
-
+	
 	var url = "/api/timeraddbyeventid?sRef=" + sRef + "&eventid=" + eventId;
 	if(justplay)
 		url += "&eit=0&disabled=0&justplay=1&afterevent=3";
@@ -566,7 +568,7 @@ function addTimerEventPlay(sRef, eventId) {
 */
 
 function addEditTimerEvent(sRef, eventId) {
-	var url="/api/event?sref=" + sRef + "&idev=" + eventId;
+	var url="/api/event?sRef=" + sRef + "&idev=" + eventId;
 	$.ajax({
 		url: url,
 		dataType: "json",
@@ -615,7 +617,7 @@ function addAutoTimerEvent(sRef, sname, title ,begin, end) {
 
 function delTimerEvent(sRef,eventId) {
 
-	var url="/api/event?sref=" + sRef + "&idev=" + eventId;
+	var url="/api/event?sRef=" + sRef + "&idev=" + eventId;
 	$.ajax({
 		url: url,
 		dataType: "json",
@@ -626,7 +628,7 @@ function delTimerEvent(sRef,eventId) {
 				var end = result.event.begin + result.event.duration + 60 * result.event.recording_margin_after;
 				var t = decodeURIComponent(result.event.title);
 				if (confirm(tstr_del_timer + ": " + t) === true) {
-					webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end, 
+					webapi_execute("/api/timerdelete?sRef=" + sRef + "&begin=" + begin + "&end=" + end + "&eit=" + eventId, 
 						function() { $('.event[data-id='+eventId+'] .timer').remove(); } 
 					);
 				}
@@ -760,11 +762,11 @@ function setOSD( statusinfo )
 				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "&fname=" + station + "' title='" + streamtitle;
 			}
 			stream +="</div>";
-			$("#osd").html(stream + "<a href='#' onClick='load_maincontent(\"ajax/tv\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
+			$("#osd").html(stream + "<a href='#' onclick='load_maincontent(\"ajax/tv\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 		} else if ((sref.indexOf("1:0:2") !== -1) || (sref.indexOf("1:134:2") !== -1)) {
 			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "&fname=" + station + "' title='" + streamtitle;
 			stream +="</div>";
-			$("#osd").html(stream + "<a href='#' onClick='load_maincontent(\"ajax/radio\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
+			$("#osd").html(stream + "<a href='#' onclick='load_maincontent(\"ajax/radio\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 		} else if (sref.indexOf("1:0:0") !== -1) {
 			if (statusinfo['transcoding']) {
 				stream += "<a href='#' onclick=\"jumper80('" + statusinfo['currservice_filename'] + "')\"; title='" + streamtitle;
@@ -818,12 +820,12 @@ function getStatusInfo() {
 
 		var status = "";
 		if (statusinfo['isRecording'] == 'true') {
-			status = "<a href='#' onClick='load_maincontent(\"ajax/timers\"); return false;'><div title='" + tstr_rec_status + statusinfo['Recording_list'] + "' class='led-box'><div class='led-red'></div></div></a>";
+			status = "<a href='#' onclick='load_maincontent(\"ajax/timers\"); return false;'><div title='" + tstr_rec_status + statusinfo['Recording_list'] + "' class='led-box'><div class='led-red'></div></div></a>";
 		}
 		
 		//status += "<div class='pwrbtncontout'><div class='pwrbtncont' title='" + tit + "'><label class='label pwrbtn'><input type='checkbox' "+sb+" id='pwrbtn' onchange='toggleStandby();return true;' /><div class='pwrbtn-control'></div></label></div></div>";
 		
-		status += "<a href='#' onClick='toggleStandby();return false'><img src='../images/ico_";
+		status += "<a href='#' onclick='toggleStandby();return false'><img src='../images/ico_";
 		if (statusinfo['inStandby'] == 'true') {
 			status += "standby.png' title='" + tstr_on + "' alt='" + tstr_standby;
 		} else {
@@ -940,15 +942,25 @@ $(function() {
 	} else {
 		SetLSValue('epgsearchtype',false);
 	}
-	
-	$('input[name=epgsearchbouquetsonly]').click(function(evt) {
+
+	$('input[name=epgsearchbouquetsonly]').click(function (evt) {
 		$('input[name=epgsearchbouquetsonly]').prop('checked', evt.currentTarget.checked);
-		SetLSValue('epgsearchbouquetsonly',evt.currentTarget.checked);
+		SetLSValue('epgsearchbouquetsonly', evt.currentTarget.checked);
 	});
 	if (typeof $('input[name=epgsearchbouquetsonly]') !== 'undefined') {
-		$('input[name=epgsearchbouquetsonly]').prop('checked',GetLSValue('epgsearchbouquetsonly',false));
+		$('input[name=epgsearchbouquetsonly]').prop('checked', GetLSValue('epgsearchbouquetsonly', false));
 	} else {
-		SetLSValue('epgsearchbouquetsonly',false);
+		SetLSValue('epgsearchbouquetsonly', false);
+	}
+
+	$('input[name=themeMode]').click(function (evt) {
+		$('input[name=themeMode]').prop('checked', evt.currentTarget.checked);
+		SetLSValue('themeMode', evt.currentTarget.checked);
+	});
+	if (typeof $('input[name=themeMode]') !== 'undefined') {
+		$('input[name=themeMode]').prop('checked', GetLSValue('themeMode', false));
+	} else {
+		SetLSValue('themeMode', false);
 	}
 });
 
@@ -1230,13 +1242,32 @@ function editTimer(serviceref, begin, end) {
 							
 							if (typeof timer.always_zap !== 'undefined')
 							{
-								$('#always_zap1').show();
+								//$('#always_zap1').show();
 								$('#always_zap').prop("checked", timer.always_zap==1);
 								$('#justplay').prop("disabled",timer.always_zap==1);
 							} else {
-								$('#always_zap1').hide();
+								//$('#always_zap1').hide();
+								$('#always_zap').prop("disabled", true);
 							}
-							
+
+							if (typeof timer.pipzap !== 'undefined')
+							{
+								$('#pipzap').prop("disabled",false);
+								$('#pipzap').prop("checked", timer.pipzap==1);
+							} else {
+								$('#pipzap').prop("disabled",true);
+							}
+
+							if (typeof timer.allow_duplicate !== 'undefined')
+							{
+								$('#allow_duplicate').prop("checked", timer.allow_duplicate==1);
+								//autoadjust: ($('#autoadjust').is(':checked')?"1":"0"),
+							}
+							if (typeof timer.autoadjust !== 'undefined')
+							{
+								$('#autoadjust').prop("checked", timer.autoadjust==1);
+							}
+
 							openTimerDlg(tstr_edit_timer + " - " + timer.name);
 							
 							break;
@@ -1316,6 +1347,8 @@ function addTimer(evt,chsref,chname,top,isradio) {
 	$('#dirname').val("None");
 	$('#enabled').prop("checked", true);
 	$('#justplay').prop("checked", false);
+	$('#allow_duplicate').prop("checked", true);
+	$('#autoadjust').prop("checked", false);
 	$('#afterevent').val(3);
 	$('#errorbox').hide();
 
@@ -1507,7 +1540,6 @@ function InitTVRadio(epgmode)
 
 	if (tv===true) {
 		var parts=window.location.href.toLowerCase().split("#");
-		window.location.hash="";
 		if (parts[1] == 'tv') {
 			if(parts[2] == 'mepg' || parts[2] == 'mepgfull')
 			{
@@ -1589,7 +1621,6 @@ function InitBouquets(tv)
 
 	if (tv===true) {
 		var parts=window.location.href.toLowerCase().split("#");
-		window.location.hash="";
 		if (parts[1] == 'tv') {
 			if(parts[2] == 'mepg' || parts[2] == 'mepgfull')
 			{
@@ -1696,11 +1727,13 @@ function ChangeTheme(theme)
 
 function directlink()
 {
-	var parts=window.location.href.toLowerCase().split("#");
-	var lnk='ajax/tv';
-	var p = parts[1];
-
-	switch (p)
+	// #myepg?epgmode=tv
+	var hashParts = window.location.hash.match(/^#((.*?[^\?]*)(\?.*)*)/) || [null, '', ''];
+	var page = hashParts[2]; // myepg
+	var hash = hashParts[1]; // myepg?epgmode=tv
+	var lnk = 'ajax/tv';
+	
+	switch (page)
 	{
 		case 'radio':
 		case 'movies':
@@ -1709,11 +1742,17 @@ function directlink()
 		case 'at':
 		case 'bqe':
 		case 'epgr':
-			lnk='ajax/' + p;
+		case 'myepg':
+		case 'epgdialog':
+		case 'timers':
+		case 'satfinder':
+		case 'boxinfo':
+		case 'webtv':
+		case 'about':
+		case 'screenshot':
+		case 'current':
+			lnk = 'ajax/' + hash;
 			break;
-	}
-	if(p != 'tv') {
-		window.location.hash="";
 	}
 	
 	load_maincontent(lnk);
@@ -2049,7 +2088,7 @@ function GetAllServices(callback,radio)
 		}
 	}
 	$.ajax({
-		url: '/api/getallservices?renameserviceforxmbc=1'+ru,
+		url: '/api/getallservices?renameserviceforxmbc=1&nolastscanned=1'+ru,
 		dataType: "json",
 		success: function ( data ) {
 			var sdata = JSON.stringify(data);
@@ -2072,7 +2111,7 @@ function testPipStatus() {
                                 buttonsSwitcher(pipinfo.pip);
 			}
 		}
-	})
+	});
 }
 
 var SSHelperObj = function () {

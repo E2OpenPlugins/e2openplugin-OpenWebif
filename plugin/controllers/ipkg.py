@@ -1,56 +1,61 @@
 # -*- coding: utf-8 -*-
 
-##############################################################################
-#                        2011 E2OpenPlugins                                  #
-#                                                                            #
-#  This file is open source software; you can redistribute it and/or modify  #
-#     it under the terms of the GNU General Public License version 2 as      #
-#               published by the Free Software Foundation.                   #
-#                                                                            #
-##############################################################################
+##########################################################################
+# OpenWebif: IpkgController
+##########################################################################
+# Copyright (C) 2011 - 2020 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
 
 from enigma import eConsoleAppContainer
 from twisted.web import server, resource, http
-# from os import path, popen, remove, stat
 
 import os
 import json
+import six
 
-from base import BaseController
 from Components.config import config
-
-from i18n import _
-
-PACKAGES = '/var/lib/opkg/lists'
-INSTALLEDPACKAGES = '/var/lib/opkg/status'
+from Plugins.Extensions.OpenWebif.controllers.base import BaseController
+from Plugins.Extensions.OpenWebif.controllers.i18n import _
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg, PY3
 
 
 class IpkgController(BaseController):
 	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
-		self.putChild('upload', IPKGUpload(self.session))
+		self.putChild(b'upload', IPKGUpload(self.session))
 
 	def render(self, request):
-		action = ''
-		package = ''
 		self.request = request
 		self.json = False
 		self.container = None
-		if "command" in request.args:
-			action = request.args["command"][0]
-		if "package" in request.args:
-			package = request.args["package"][0]
-		if "format" in request.args:
-			if request.args["format"][0] == "json":
-				self.json = True
-		if action is not '':
-			if action in ("update", "upgrade"):
-				return self.CallOPKG(request, action)
-			elif action in ("info", "status", "install", "remove"):
-				return self.CallOPKGP(request, action, package)
-			elif action in ("listall", "list", "list_installed", "list_upgradable"):
-				return self.CallOPKList(request, action)
-			elif action in ("tmp"):
+		self.action = getUrlArg(request, "command", "")
+		package = getUrlArg(request, "package")
+		self.json = getUrlArg(request, "format") == "json"
+		if self.action != '':
+			if self.action in ("update", "upgrade"):
+				return self.CallOPKG(request)
+			elif self.action in ("info", "status", "install", "forceinstall", "remove", "forceremove"):
+				if package != None:
+					return self.CallOPKG(request, package)
+				else:
+					return self.ShowError(request, "parameter: package is missing")
+			elif self.action in ("full", "listall", "list", "list_installed", "list_upgradable"):
+				return self.CallOPKList(request)
+			elif self.action in ("tmp"):
 				import glob
 				tmpfiles = glob.glob('/tmp/*.ipk')  # nosec
 				ipks = []
@@ -62,133 +67,111 @@ class IpkgController(BaseController):
 						'date': os.stat(tmpfile).st_mtime,
 					})
 				request.setHeader("content-type", "text/plain")
-				request.write(json.dumps({'ipkfiles': ipks}, encoding="ISO-8859-1"))
+				if PY3:
+					request.write(json.dumps({'ipkfiles': ipks}).encode("ISO-8859-1"))
+				else:
+					request.write(json.dumps({'ipkfiles': ipks}, encoding="ISO-8859-1"))
 				request.finish()
 				return server.NOT_DONE_YET
 			else:
-				return self.ShowError(request, "Unknown command: " + action)
+				return self.ShowError(request, "Unknown command: " + self.action)
 		else:
 			return self.ShowHint(request)
 
 		return self.ShowError(request, "Error")
 
-	def enumFeeds(self):
-		for fn in os.listdir('/etc/opkg'):
-			if fn.endswith('-feed.conf'):
-				file = open(os.path.join('/etc/opkg', fn))
-				feedfile = file.readlines()
-				file.close()
-				try:
-					for feed in feedfile:
-						yield feed.split()[1]
-				except IndexError:
-					pass
-				except IOError:
-					pass
-
-	def getPackages(self, action):
+	def parseAll(self):
 		map = {}
-		for feed in self.enumFeeds():
-			package = None
-			try:
-				for line in open(os.path.join(PACKAGES, feed), 'r'):
-					if line.startswith('Package:'):
-						package = line.split(":", 1)[1].strip()
-						version = ''
-						description = ''
-						continue
-					if package is None:
-						continue
-					if line.startswith('Version:'):
-						version = line.split(":", 1)[1].strip()
-					# TDOD : check description
-					elif line.startswith('Description:'):
-						description = line.split(":", 1)[1].strip()
-					elif description and line.startswith(' '):
-						description += line[:-1]
-					elif len(line) <= 1:
-						d = description.split(' ', 3)
-						if len(d) > 3:
-							if d[1] == 'version':
-								description = d[3]
-							if description.startswith('gitAUTOINC'):
-								description = description.split(' ', 1)[1]
-						map.update({package: [version, description.strip(), "0", "0"]})
-						package = None
-			except IOError:
-				pass
-
-		for line in open(INSTALLEDPACKAGES, 'r'):
-			if line.startswith('Package:'):
-				package = line.split(":", 1)[1].strip()
-				version = ''
-				continue
-			if package is None:
-				continue
-			if line.startswith('Version:'):
-				version = line.split(":", 1)[1].strip()
-			elif len(line) <= 1:
-				if package in map:
-					if map[package][0] == version:
+		try:
+			for line in open("/tmp/opkg.tmp", 'r'):
+				if line.startswith('Package:'):
+					package = line.split(":", 1)[1].strip()
+					description = ''
+					status = ''
+					section = ''
+					installed = "0"
+					continue
+				if package is None:
+					continue
+				if line.startswith('Status:'):
+					status = line.split(":", 1)[1].strip()
+					if ' installed' in status.lower():
+						installed = "1"
+				elif line.startswith('Section:'):
+					section = line.split(":", 1)[1].strip()
+				elif line.startswith('Version:'):
+					version = line.split(":", 1)[1].strip()
+				# TDOD : check description
+				elif line.startswith('Description:'):
+					description = line.split(":", 1)[1].strip()
+				elif description and line.startswith(' '):
+					description += line[:-1]
+				elif len(line) <= 1:
+					d = description.split(' ', 3)
+					if len(d) > 3:
+						if d[1] == 'version':
+							description = d[3]
+						# TDOD : check this
+						if description.startswith('gitAUTOINC'):
+							description = description.split(' ', 1)[1]
+					if package in map:
+						v = map[package][0]
+						map[package][3] = v
 						map[package][2] = "1"
-					else:
-						nv = map[package][0]
 						map[package][0] = version
-						map[package][3] = nv
-				package = None
+					else:
+						map.update({package: [version, description.strip(), installed, "0", section]})
+					package = None
+		except IOError:
+			pass
 
-		keys = map.keys()
-		keys.sort()
+		keys = sorted(map.keys())
 		self.ResultString = ""
-		if action == "listall":
-			self.json = True
-			ret = []
-			for name in keys:
-				ret.append({
-					"name": name,
-					"v": map[name][0],
-					"d": map[name][1],
-					"i": map[name][2],
-					"u": map[name][3]
-				})
-			return ret
-		elif action == "list":
-			for name in keys:
-				self.ResultString += name + " - " + map[name][0] + " - " + map[name][1] + "<br>"
-		elif action == "list_installed":
-			for name in keys:
-				if map[name][2] == "1":
-					self.ResultString += name + " - " + map[name][0] + "<br>"
-		elif action == "list_upgradable":
-			for name in keys:
-				if len(map[name][3]) > 1:
-					self.ResultString += name + " - " + map[name][3] + " - " + map[name][0] + "<br>"
-		if self.json:
-			data = []
-			# nresult = unicode(nresult, errors='ignore')
-			data.append({"result": True, "packages": self.ResultString.split("<br>")})
-			return data
-		return self.ResultString
+
+		ret = []
+		for name in keys:
+			ret.append({
+				"name": name,
+				"v": map[name][0],
+				"d": map[name][1],
+				"i": map[name][2],
+				"u": map[name][3],
+				"s": map[name][4]
+			})
+		return ret
+
+	def Runcmd(self, cmd):
+		print("Call /usr/bin/opkg " + cmd)
+		self.container.execute("/usr/bin/opkg " + cmd)
 
 # TDOD: check encoding
-	def CallOPKList(self, request, action):
-		data = self.getPackages(action)
-		if self.json:
-			request.setHeader("content-type", "application/json; charset=utf-8")
-			try:
-				return json.dumps(data, indent=1)
-			except Exception as exc:
-				request.setResponseCode(http.INTERNAL_SERVER_ERROR)
-				return json.dumps({"result": False, "request": request.path, "exception": repr(exc)})
-				pass
+	def CallOPKList(self, request):
+		request.setResponseCode(http.OK)
+		self.ResultString = ''
+		if hasattr(self.request, 'notifyFinish'):
+			self.request.notifyFinish().addErrback(self.connectionError)
+		self.container = eConsoleAppContainer()
+		self.container.appClosed.append(self.NoMoredata)
+		self.IsAlive = True
+		self.olddata = None
+		if self.action in ("full", "listall"):
+			self.Runcmd("info > /tmp/opkg.tmp")
 		else:
-			request.setHeader("content-type", "text/plain")
-			request.write("<html><body><br>" + data + "</body></html>")
-			request.finish()
+			self.container.dataAvail.append(self.Moredata)
+			self.Runcmd(self.action)
 		return server.NOT_DONE_YET
 
-	def CallOPKG(self, request, action, parms=[]):
-		cmd = ["/usr/bin/opkg", "ipkg", action] + parms
+	def CallOPKG(self, request, package=None):
+		cmd = ''
+		if package != None:
+			if self.action == 'forceremove':
+				cmd = 'remove ' + package + ' --force-remove --force-depends'
+			elif self.action == 'forceinstall':
+				cmd = '--force-overwrite install ' + package
+			else:
+				cmd = self.action + ' ' + package
+		else:
+			cmd = self.action
 		request.setResponseCode(http.OK)
 		self.ResultString = ''
 		if hasattr(self.request, 'notifyFinish'):
@@ -198,7 +181,8 @@ class IpkgController(BaseController):
 		self.container.appClosed.append(self.NoMoredata)
 		self.IsAlive = True
 		self.olddata = None
-		self.container.execute(*cmd)
+		self.action
+		self.Runcmd(cmd)
 		return server.NOT_DONE_YET
 
 	def connectionError(self, err):
@@ -206,56 +190,72 @@ class IpkgController(BaseController):
 
 	def NoMoredata(self, data):
 		if self.IsAlive:
-			nresult = ''
-			for a in self.ResultString.split("\n"):
-				# print "%s" % a
-				if a.count(" - ") > 0:
-					if nresult[:-1] == "\n":
-						nresult += a
-					else:
-						nresult += "\n" + a
-				else:
-					nresult += a + "\n"
-			nresult = nresult.replace("\n\n", "\n")
-			nresult = nresult.replace("\n ", " ")
-			if self.json:
-				data = []
-				nresult = unicode(nresult, errors='ignore')
-				data.append({"result": True, "packages": nresult.split("\n")})
-				self.request.setHeader("content-type", "text/plain")
-				self.request.write(json.dumps(data))
-				self.request.finish()
+			if self.action == "listall":
+				self.request.setHeader("content-type", "application/json; charset=utf-8")
+				try:
+					data = self.parseAll()
+					self.request.write(six.ensure_binary(json.dumps(data)))
+				except Exception as exc:
+					self.request.setResponseCode(http.INTERNAL_SERVER_ERROR)
+					self.request.write(six.ensure_binary(json.dumps({"result": False, "request": self.request.path, "exception": repr(exc)})))
+			elif self.action == "full":
+				try:
+					data = open("/tmp/opkg.tmp", 'r').read()
+					self.request.write(six.ensure_binary(data))
+				except Exception as exc:
+					self.request.setResponseCode(http.INTERNAL_SERVER_ERROR)
+					self.request.write(six.ensure_binary(repr(exc)))
 			else:
-				self.request.write("<html><body>\n")
-				self.request.write(nresult.replace("\n", "<br>\n"))
-				self.request.write("</body></html>\n")
-				self.request.finish()
+				nresult = ""
+				if self.action == "list":
+					for a in self.ResultString.split("\n"):
+						if a.count(" - ") > 0:
+							nresult += a + "\n"
+				else:
+					for a in self.ResultString.split("\n"):
+						if a.count(" - ") > 0:
+							if nresult[:-1] == "\n":
+								nresult += a
+							else:
+								nresult += "\n" + a
+						else:
+							nresult += a + "\n"
+				nresult = nresult.replace("\n\n", "\n")
+				nresult = nresult.replace("\n ", " ")
+				if self.json:
+					data = []
+					nresult = six.text_type(nresult, errors='ignore')
+					data.append({"result": True, "packages": nresult.split("\n")})
+					self.request.setHeader("content-type", "application/json; charset=utf-8")
+					self.request.write(six.ensure_binary(json.dumps(data)))
+				else:
+					nresult = six.ensure_binary(nresult)
+					self.request.write(b"<html><body>\n")
+					self.request.write(nresult.replace(b"\n", b"<br>\n"))
+					self.request.write(b"</body></html>\n")
+			self.request.finish()
+		return server.NOT_DONE_YET
 
 	def Moredata(self, data):
 		if data != self.olddata or self.olddata is None and self.IsAlive:
+			data = six.ensure_str(data)
 			self.ResultString += data
-
-	def CallOPKGP(self, request, action, pack):
-		if pack is not '':
-			return self.CallOPKG(request, action, [pack])
-		else:
-			return self.ShowError(request, "parameter: package is missing")
 
 	def ShowError(self, request, text):
 		request.setResponseCode(http.OK)
-		request.write(text)
+		request.write(six.ensure_binary(text))
 		request.finish()
 		return server.NOT_DONE_YET
 
 	def ShowHint(self, request):
 		html = "<html><body><h1>OpenWebif Interface for OPKG</h1>"
 		html += "Usage : ?command=<cmd>&package=packagename<&format=format><br>"
-		html += "Valid Commands:<br>list,listall,list_installed,list_upgradable<br>"
-		html += "Valid Package Commands:<br>info,status,install,remove<br>"
+		html += "Valid Commands:<br>list,listall,list_installed,list_upgradable,full<br>"
+		html += "Valid Package Commands:<br>info,status,install,remove,forceremove,forceinstall<br>"
 		html += "Valid Formats:<br>json,html(default)<br>"
 		html += "</body></html>"
 		request.setResponseCode(http.OK)
-		request.write(html)
+		request.write(six.ensure_binary(html))
 		request.finish()
 		return server.NOT_DONE_YET
 
@@ -275,8 +275,8 @@ class IPKGUpload(resource.Resource):
 		request.setResponseCode(http.OK)
 		request.setHeader('content-type', 'text/plain')
 		request.setHeader('charset', 'UTF-8')
-		content = request.args['rfile'][0]
-		filename = self.mbasename(request.args['filename'][0])
+		content = request.args[b'rfile'][0]
+		filename = self.mbasename(getUrlArg(request, "filename"))
 		if not content or not config.OpenWebif.allow_upload_ipk.value:
 			result = [False, _('Error upload File')]
 		else:
@@ -297,4 +297,4 @@ class IPKGUpload(resource.Resource):
 					result = [False, _('Error writing File')]
 				else:
 					result = [True, FN]
-		return json.dumps({"Result": result})
+		return six.ensure_binary(json.dumps({"Result": result}))

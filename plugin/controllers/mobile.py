@@ -20,20 +20,22 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
 ##########################################################################
 
-from base import BaseController
-from models.movies import getMovieList
-from models.timers import getTimers
-from models.services import getBouquets, getChannels, getChannelEpg, getEvent, getPicon
-from urllib import quote
+from six.moves.urllib.parse import quote
 from time import localtime, strftime
 
-from defaults import TRANSCODING
+from Plugins.Extensions.OpenWebif.controllers.base import BaseController
+from Plugins.Extensions.OpenWebif.controllers.models.movies import getMovieList
+from Plugins.Extensions.OpenWebif.controllers.models.timers import getTimers
+from Plugins.Extensions.OpenWebif.controllers.models.services import getBouquets, getChannels, getChannelEpg, getEvent, getPicon
+from Plugins.Extensions.OpenWebif.controllers.defaults import TRANSCODING
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
 
 class MobileController(BaseController):
 	"""
 	Mobile Web Controller
 	"""
+
 	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session, isMobile=True)
 
@@ -44,18 +46,12 @@ class MobileController(BaseController):
 		return ['index', 'control', 'screenshot', 'satfinder', 'about']
 
 	def P_bouquets(self, request):
-		stype = "tv"
-		if "stype" in request.args.keys():
-			stype = request.args["stype"][0]
+		stype = getUrlArg(request, "stype", "tv")
 		return getBouquets(stype)
 
 	def P_channels(self, request):
-		stype = "tv"
-		idbouquet = "ALL"
-		if "stype" in request.args.keys():
-			stype = request.args["stype"][0]
-		if "id" in request.args.keys():
-			idbouquet = request.args["id"][0]
+		stype = getUrlArg(request, "stype", "tv")
+		idbouquet = getUrlArg(request, "id", "ALL")
 		channels = getChannels(idbouquet, stype)
 		channels['transcoding'] = TRANSCODING
 		return channels
@@ -63,8 +59,8 @@ class MobileController(BaseController):
 	def P_channelinfo(self, request):
 		channelinfo = {}
 		channelepg = {}
-		if "sref" in request.args.keys():
-			sref = request.args["sref"][0]
+		sref = getUrlArg(request, "sref")
+		if sref != None:
 			channelepg = getChannelEpg(sref)
 			# Detect if sRef contains a stream
 			if ("://" in sref):
@@ -107,10 +103,8 @@ class MobileController(BaseController):
 		event['duration'] = 0
 		event['channel'] = ""
 
-		if "eventid" in request.args.keys():
-			eventid = request.args["eventid"][0]
-		if "eventref" in request.args.keys():
-			ref = request.args["eventref"][0]
+		eventid = getUrlArg(request, "eventid")
+		ref = getUrlArg(request, "eventref")
 		if ref and eventid:
 			event = getEvent(ref, eventid)['event']
 			event['id'] = eventid
@@ -130,3 +124,12 @@ class MobileController(BaseController):
 		movies = getMovieList(request.args)
 		movies['transcoding'] = TRANSCODING
 		return movies
+
+	def P_remote(self, request):
+		try:
+			from Components.RcModel import rc_model
+			REMOTE = rc_model.getRcFolder() + "/remote"
+		except:
+			from Plugins.Extensions.OpenWebif.controllers.models.owibranding import rc_model
+			REMOTE = rc_model().getRcFolder()
+		return {"remote": REMOTE}

@@ -1,152 +1,171 @@
-#from urllib import quote
+#from json import dumps
+#from six.moves.urllib.parse import quote
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, MinEPGList
+#from Plugins.Extensions.OpenWebif.vtiaddon import MinEPGList, showPiconBackground
 
-#if len($events) == 0
-<img src="images/not_found.jpg" title="No items found" border="0" style="display:none;" id="ajpg">
-<img src="themes/not_found.png" title="No items found" border="0" onerror='\$(this).hide();\$("#ajpg").show();'>
-#else
+#set $piconCssClass = ''
+#if $showPiconBackground
+	#set $piconCssClass = 'picon--with-background'
+#end if
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	<div class="card">
 		<div class="header">
 			<div class="row clearfix">
 				<div class="col-xs-12 col-sm-6">
-					<h2><i class="material-icons material-icons-centered">today</i>$tstrings['epgsearch']</h2>
+					<h2><i class="material-icons material-icons-centered">view_list</i>$tstrings['epgsearch']</h2>
 				</div>
 			</div>
 		</div>
 		<div class="body" id="epgcards">
 
+#if len($events) == 0
+			<p>$tstrings['epg_no_matches']</p>
+#else
 
 #set $dataid = 0
 #for $event in $events
+		#set $metadata = $dumps({ 'sref': quote($event.sref), 'id': $event.id, 'begin': $event.begin, 'end': $event.end }, indent=None, separators=(",", ":"))
+
 		#set $channel = $event.sname.replace("'", r"\'")
 		#set $title = $event.title.replace("'", r"\'")
 		#set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
 
 #if $MinEPGList == 'checked'
 
-<div class="row row-striped clearfix pad-top-15">
-	<div class="col-xs-12 col-md-6">
-		<div class="row">
-			<div class="col-xs-3">
-				<img src="$event.picon" title="" class="img-responsive" style="width:80px;margin-top:-10px">
-					</div>
-					<div class="col-xs-9">
-						<span data-toggle="collapse" data-target="#evenid$dataid" aria-expanded="false"aria-controls="collapseExample" style="cursor:pointer;">
-						<b>$event.sname</b> - $event.title<i class="material-icons material-icons-centered">expand_more</i>
+		<div class="row row-striped clearfix pad-top-15">
+			<div class="col-xs-12 col-md-6">
+				<div class="row" data-metadata='$metadata'><!-- single quotes are required for json output -->
+					<div class="col-xs-3">
+						<span class="epg__picon $piconCssClass">
+							<img src="$event.picon" title="" class="img-responsive" style="width:80px;margin-top:-10px">
 						</span>
+							</div>
+							<div class="col-xs-9">
+								<span data-toggle="collapse" data-target="#evenid$dataid" aria-expanded="false"aria-controls="collapseExample" style="cursor:pointer;">
+								<b>$event.sname</b> - $event.title<i class="material-icons material-icons-centered">expand_more</i>
+								</span>
+							</div>
+						</div>
 					</div>
+					<div class="col-xs-12 col-md-3">
+						<span>$event.date - $event.begin&nbsp;-&nbsp;$event.end&nbsp;($event.duration min.)</span>
+					</div>
+					<div class="col-xs-12 col-md-3 align-right">
+						<a href="javascript:void(0);" class="link--skinned" onclick="addTimerEvent('$sref',$event.id,false);return false;" title="$tstrings['add_timer']"><i class="material-icons material-icons-centered">alarm_add</i></a>
+						<a href="javascript:void(0);" class="deltimer link--skinned" onclick="delTimerEvent('$sref',$event.id);return false;" title="$tstrings['delete_timer']"></a>
+						<a href="javascript:void(0);" class="link--skinned" data-dismiss="modal" data-toggle="modal" data-target="#TimerModal" data-evid="$event.id" data-ref="$sref" title="$tstrings['edit_timer']"><i class="material-icons material-icons-centered">alarm</i></a>
+						<a href="javascript:void(0);" class="link--skinned" onclick="addTimerEvent('$sref',$event.id,true);return false;" title="$tstrings['add_zaptimer']"><i class="material-icons material-icons-centered">rotate_90_degrees_ccw</i></a>
+					#if $at
+						<a href="#/at/create?name=$title&match=$title&timespanFrom=$event.begin&timespanTo=$event.end&sref=$sref" 
+							 class="link--skinned" title="$tstrings['add_autotimer']" x-data-dismiss="modal">
+							<i class="material-icons material-icons-centered">av_timer</i>
+						</a>
+					#end if
+					#if $extEventInfoProvider
+						<a href="$extEventInfoProvider['url']$quote($event.title)" class="link--skinned" title="$tstrings['search_'+$extEventInfoProvider['id']]" target="extdb">[$extEventInfoProvider['name']]</a>
+					#end if
+					</div>
+					<div class="col-xs-12 collapse" id="evenid$dataid">
+					<p>$event.shortdesc</p>
+					<p>
+					$event.longdesc.replace('\n',r'<br/>').replace('\8a',r'<br/>')
+					</p>
 				</div>
 			</div>
-			<div class="col-xs-12 col-md-3">
-				<span>$event.date - $event.begin&nbsp;-&nbsp;$event.end&nbsp;($event.duration min.)</span>
-			</div>
-			<div class="col-xs-12 col-md-3 align-right">
-				<a class="theme-link-color theme-link-col-$skinColor" href="#" onclick="addTimerEvent('$sref',$event.id,false);return false;" title="$tstrings['add_timer']"><i class="material-icons material-icons-centered">alarm_add</i></a>
-				<a class="deltimer theme-link-color theme-link-col-$skinColor" href="#" onclick="delTimerEvent('$sref',$event.id);return false;" title="$tstrings['delete_timer']"></a>
-				<a href="#" class="theme-link-color theme-link-col-$skinColor" data-dismiss="modal" data-toggle="modal" data-target="#TimerModal" data-evid="$event.id" data-ref="$sref" title="$tstrings['edit_timer']"><i class="material-icons material-icons-centered">alarm</i></a>
-				<a href="#" class="theme-link-color theme-link-col-$skinColor" onclick="addTimerEvent('$sref',$event.id,true);return false;" title="$tstrings['add_zaptimer']"><i class="material-icons material-icons-centered">rotate_90_degrees_ccw</i></a>
-			#if $at
-				<a href="#" class="theme-link-color theme-link-col-$skinColor" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin','$event.end');return false;" title="$tstrings['add_autotimer']"><i class="material-icons material-icons-centered">history</i></a>
-			#end if
-			#if $moviedb == "Kinopoisk"
-				<a href="#" class="theme-link-color theme-link-col-$skinColor" target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)" title="$tstrings['search_kinopoisk']"></a>
-			#elif $moviedb == "CSFD"
-				<a href="#" class="theme-link-color theme-link-col-$skinColor" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']"><b>IMDb</b></a>
-			#else
-				<a href="#" class="theme-link-color theme-link-col-$skinColor" target="_blank" href="https://www.csfd.cz/hledat/?q=$event.title" title="$tstrings['search_imdb']"><b>csfd</b></a>
-			#end if
-			</div>
-			<div class="col-xs-12 collapse" id="evenid$dataid">
-			<p><b>$event.shortdesc</b>
-			<br>
-			$event.longdesc.replace('\n',r'<br/>').replace('\8a',r'<br/>')
-			</p>
-		</div>
-	</div>
 
 #else
 
-<div class="row clearfix">
-	<div class="col-xs-12">
-		<div class="card" style="margin-bottom:-25px;">
-			<div class="header">
-				<div class="row clearfix">
-					<div class="col-xs-12 col-md-2" style="margin-bottom:-10px;">
-						<img src="$event.picon" title="" class="img-responsive" style="width:100px;">
-						<label>$event.sname</label>
+		<div class="row clearfix">
+			<div class="col-xs-12">
+				<div class="card" style="margin-bottom:-25px;" data-metadata='$metadata'><!-- single quotes are required for json output -->
+					<div class="header">
+						<div class="row clearfix">
+							<div class="col-xs-12 col-md-2" style="margin-bottom:-10px;">
+								<span class="epg__picon $piconCssClass">
+									<img src="$event.picon" title="" class="img-responsive" style="width:100px;">
+								</span>
+								<label style="display:block;">$event.sname</label>
+								#if 'ns' in $event
+									<br />
+									<span>
+									#if '4097:' in $event.sref or '5002:' in $event.sref or 'http%3a' in $event.sref or 'https%3a' in $event.sref
+										IPTV
+									#else
+										$event.service_type / $event.ns
+									#end if
+									</span>
+								#end if
+								</div>
+								<div class="col-xs-12 col-md-6" style="word-break: break-all">
+								<h2>$event.title</h2>
+								<div>
+								<a href="javascript:void(0);" class="link--skinned" onclick="addTimerEvent('$sref',$event.id,false);return false;" title="$tstrings['add_timer']"><i class="material-icons material-icons-centered">alarm_add</i></a>
+								<a href="javascript:void(0);" class="deltimer link--skinned" onclick="delTimerEvent('$sref',$event.id);return false;" title="$tstrings['delete_timer']"></a>
+								<a href="javascript:void(0);" class="link--skinned" data-dismiss="modal" data-toggle="modal" data-target="#TimerModal" data-evid="$event.id" data-ref="$sref" title="$tstrings['edit_timer']"><i class="material-icons material-icons-centered">alarm</i></a>
+								<a href="javascript:void(0);" class="link--skinned" onclick="addTimerEvent('$sref',$event.id,true);return false;" title="$tstrings['add_zaptimer']"><i class="material-icons material-icons-centered">rotate_90_degrees_ccw</i></a>
+							#if $at
+								<a href="#/at/create?name=$title&match=$title&timespanFrom=$event.begin&timespanTo=$event.end&sref=$sref"
+									 class="link--skinned" title="$tstrings['add_autotimer']" x-data-close="modal">
+									<i class="material-icons material-icons-centered">av_timer</i>
+								</a>
+							#end if
+							#if $extEventInfoProvider
+								<a href="$extEventInfoProvider['url']$quote($event.title)" class="link--skinned" title="$tstrings['search_'+$extEventInfoProvider['id']]" target="extdb">$extEventInfoProvider['name']</a>
+							#end if
+							</div>
 						</div>
-						<div class="col-xs-12 col-md-6" style="word-break: break-all">
-						<h2><i class="material-icons material-icons-centered">event</i><b>$event.title</b></h2>
-						<div>
-						<a class="theme-link-color theme-link-col-$skinColor" href="#" onclick="addTimerEvent('$sref',$event.id,false);return false;" title="$tstrings['add_timer']"><i class="material-icons material-icons-centered">alarm_add</i></a>
-						<a class="deltimer theme-link-color theme-link-col-$skinColor" href="#" onclick="delTimerEvent('$sref',$event.id);return false;" title="$tstrings['delete_timer']"></a>
-						<a href="#" class="theme-link-color theme-link-col-$skinColor" data-dismiss="modal" data-toggle="modal" data-target="#TimerModal" data-evid="$event.id" data-ref="$sref" title="$tstrings['edit_timer']"><i class="material-icons material-icons-centered">alarm</i></a>
-						<a href="#" class="theme-link-color theme-link-col-$skinColor" onclick="addTimerEvent('$sref',$event.id,true);return false;" title="$tstrings['add_zaptimer']"><i class="material-icons material-icons-centered">rotate_90_degrees_ccw</i></a>
-					#if $at
-						<a href="#" class="theme-link-color theme-link-col-$skinColor" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin','$event.end');return false;" title="$tstrings['add_autotimer']"><i class="material-icons material-icons-centered">history</i></a>
-					#end if
-					#if $moviedb == "Kinopoisk"
-						<a href="#" class="theme-link-color theme-link-col-$skinColor" target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)" title="$tstrings['search_kinopoisk']"></a>
-					#elif $moviedb == "CSFD"
-						<a href="#" class="theme-link-color theme-link-col-$skinColor" target="_blank" href="https://www.csfd.cz/hledat/?q=$event.title" title="$tstrings['search_csfd']"><b>csfd</b></a>
-					#else
-						<a href="#" class="theme-link-color theme-link-col-$skinColor" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']"><b>IMDb</b></a>
-					#end if
+						<div class="col-xs-12 col-md-4 align-right" style="word-break: break-all">
+						<h2>$event.date</h2>
+						<span>$event.begin&nbsp;-&nbsp;$event.end&nbsp;($event.duration min.)</span>
+						</div>
 					</div>
 				</div>
-				<div class="col-xs-12 col-md-4 align-right" style="word-break: break-all">
-				<h2>$event.date</h2>
-				<span>$event.begin&nbsp;-&nbsp;$event.end&nbsp;($event.duration min.)</span>
+				<div class="body">
+					<div class="row clearfix">
+						<div class="col-xs-12">
+						#if $event.longdesc != ''
+						<span data-toggle="collapse" data-target="#evenid$dataid" aria-expanded="false"aria-controls="collapseExample" style="cursor:pointer;">
+						<p>$event.shortdesc</p>
+						<i class="material-icons material-icons-centered">expand_more</i></span>
+						<div class="collapse" id="evenid$dataid">
+						<p>$event.longdesc.replace('\n',r'<br/>').replace('\8a',r'<br/>')</p>
+						</div>
+						#else
+						<span><p>$event.shortdesc</p></span>
+						#end if
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="body">
-			<div class="row clearfix" style="margin-bottom:-25px;">
-				<div class="col-xs-12">
-				#if $event.longdesc != ''
-				<span data-toggle="collapse" data-target="#evenid$dataid" aria-expanded="false"aria-controls="collapseExample" style="cursor:pointer;">
-				<b>$event.shortdesc</b>
-				<i class="material-icons material-icons-centered">expand_more</i></span>
-				<div class="collapse" id="evenid$dataid">
-				<p>$event.longdesc.replace('\n',r'<br/>').replace('\8a',r'<br/>')</p>
-				</div>
-				#else
-				<span><b>$event.shortdesc</b></span>
-				#end if
-			</div>
 		</div>
-	</div>
-</div>
-</div>
-</div>
+		</div>
 
 #end if
 
 	#set $dataid=$dataid+1
 	#end for
+
+<script>
+	var t = [
+#for $timer in $timers
+		{'begin':$timer.begin,'end':$timer.end,'sref':'$timer.serviceref'},
+#end for
+	];
+
+	var reloadTimers = true;
+	jQuery(function() {
+		jQuery('#editTimerForm').load('ajax/edittimer');
+		if (t.length > 0) {
+			var x = jQuery( ".ETV tbody" );
+			if (x != undefined)
+				ShowTimers(t);
+		}
+	});
+</script>
+
+#end if
+
 		</div>
 	</div>
-	</div>
-
-<script type="text/javascript">
-var t = [
-#for $timer in $timers
-	{'begin':$timer.begin,'end':$timer.end,'sref':'$timer.serviceref'},
-#end for
-];
-#raw
-var reloadTimers = true;
-$(function() {
-	$('#editTimerForm').load('ajax/edittimer');
-	if (t.length > 0) {
-		var x = $( ".ETV tbody" );
-		if (x != undefined)
-			ShowTimers(t);
-	}
-});
-#end raw
-</script>
-#end if
+</div>

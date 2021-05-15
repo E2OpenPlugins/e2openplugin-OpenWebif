@@ -1,82 +1,140 @@
-#from urllib import quote
 #from json import dumps
+#from six.moves.urllib.parse import quote
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
+#from Plugins.Extensions.OpenWebif.vtiaddon import showPicons, showPiconBackground
+
 #set $etime = time.localtime($event.begin)
 #set $channel = $event.channel.replace("'", r"\'")
 #set $title = $event.title.replace("'", r"\'")
 #set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
-#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+#set $endTime = $int($event.begin + $event.duration)
+#set $metadata = $dumps({ 'sref': quote($event.sref), 'id': $event.id, 'begin': $event.begin, 'end': $int($event.begin + $event.duration) }, indent=None, separators=(",", ":"))
 
-<style>
-#station { cursor:pointer;overflow:hidden;}
-</style>
+#set $piconCssClass = ''
+#if $showPiconBackground
+	#set $piconCssClass = 'picon--with-background'
+#end if
 
-<div class="row clearfix">
+<div data-metadata='$metadata'>
+<div class="row clearfix pull-right">
 	<div class="col-xs-12">
-		<h4>
-			<span id="station" onclick="zapChannel('$str($event['sref'])', '$channel')" title="$tstrings['zap']">$event['channel']</span>
-			$channel<br/>
-		</h4>
-	</div>
-</div>
-<div class="row clearfix">
-	<div class="col-xs-12">
-		#if $transcoding
-		<a class="theme-link-color theme-link-col-$skinColor" href="#" onclick="jumper8001('$sref', '$channel');" title="$tstrings['stream']: $channel"><i class="material-icons material-icons-centered">tv</i></a>
-		<a class="theme-link-color theme-link-col-$skinColor" href="#" onclick="jumper8002('$sref', '$channel');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel"><i class="material-icons material-icons-centered">phone_android</i></a>
+
+#if $showPicons and 'picon' in $event
+	#set $piconHTML = '<img class="img-fluid" src="%s" alt="Channel logo">' % $event.picon
+		<div class="event-detail__picon $piconCssClass" style="margin: 0 auto;">
+			<a href="javascript:zapChannel('$sref', '$channel');" title="$tstrings['zap_to'] $channel">$piconHTML</a>
+		</div>
+#else
+		<h4>$channel</h4>
+#end if
+
+		<div class="event-detail__actions m-b-10">
+	## #if $isProtected
+	## 		<span class="link--not-skinned" target="_blank" title="$tstrings['locked']"><i class="material-icons material-icons-centered">lock_outline</i></span>
+	## #else
+		#if $type == "radio"
+			<!-- button type="button" onclick="addTimer('', '$sref', '$channel', '');" class="link--not-skinned" title="$tstrings['add_timer']"><i class="icon material-icons material-icons-centered">alarm_add</i></button -->
+		#end if
+
+			<button type="button" onclick="zapChannel('$sref', '$channel');" class="link--not-skinned" title="$tstrings['zap_to'] $channel"><i class="icon material-icons material-icons-centered">settings_remote</i></button>
+
+		#if $event.link != ""
+			<a href="$event.link" class="now-next__external-link link--not-skinned" target="extlink" title="$tstrings['open_in_new_window']"><i class="material-icons material-icons-centered">phonelink</i></a>
 		#else
-		<a class="theme-link-color theme-link-col-$skinColor" target="_blank" href='../web/stream.m3u?ref=$sref&name=$channel' title="$tstrings['stream'] $channel"><i class="material-icons material-icons-centered">tv</i></a>
+			<button type="button" onclick="open_epg_dialog('$sref', '$channel');" class="link--not-skinned" title="$tstrings['show_epg_for'] $channel" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons material-icons-centered">view_list</i></button>
+			<button type="button" onclick="jumper8001('$sref', '$channel');" class="link--not-skinned" title="$tstrings['stream'] $channel"><i class="icon material-icons material-icons-centered">ondemand_video</i></button>
+			#if $transcoding
+			<button type="button" onclick="jumper8002('$sref', '$channel');" class="link--not-skinned" title="$tstrings['stream'] ($tstrings['transcoded']) $channel"><i class="icon material-icons material-icons-centered">smartphone</i></button>
+			#end if
+## #if $transcoding
+## <button onclick="jumper8001('$sref', '$channel');" class="link--not-skinned" title="$tstrings['stream']: $channel">
+## <i class="material-icons material-icons-centered">tv</i>
+## </button>
+## <button onclick="jumper8002('$sref', '$channel');" class="link--not-skinned" title="$tstrings['stream'] ($tstrings['transcoded']): $channel">
+## <i class="material-icons material-icons-centered">phone_android</i>
+## </button>
+## #else
+## <button class="link--not-skinned">
+## <a href="/web/stream.m3u?ref=$sref&name=$channel" class="link--not-skinned" target="stream" title="$tstrings['stream'] $channel">
+## <i class="material-icons material-icons-centered">ondemand_video</i>
+## </a>
+## </button>
+## #end if	
 		#end if
-		
-		<a class="tb theme-link-color theme-link-col-$skinColor" href="#" onclick="addTimerEvent('$sref',$event.id,false,cbAddTimerEvent);return false;" title="$tstrings['add_timer']"><i class="material-icons material-icons-centered">alarm_add</i></a>
-		<a class="tb theme-link-color theme-link-col-$skinColor" href="#addtimer" data-dismiss="modal" data-toggle="modal" data-target="#TimerModal" data-evid="$event.id" data-ref="$sref" title="Timer bearbeiten"><i class="material-icons material-icons-centered">alarm</i></a>
-		<a class="tb theme-link-color theme-link-col-$skinColor" href="#" onclick="addTimerEvent('$sref',$event.id,true,cbAddTimerEvent);return false;" title="$tstrings['add_zaptimer']"><i class="material-icons material-icons-centered">rotate_90_degrees_ccw</i></a>
-		
-		#if $at
-			<a class="tb" href="#" onclick="addAutoTimerEvent('$sref','$channel','$title','$event.begin_str','$event.end');return false;" title="$tstrings['add_autotimer']">
-				<i class="fa fa-timerat"></i>
-			</a>
-		#end if
-		
-		<a class="d_timer tb" href="#" onclick="delTimerEvent('$sref','$event.id');return false;" title="$tstrings['delete_timer']">
-		
-		#if $moviedb == "Kinopoisk"
-			<a class="theme-link-color theme-link-col-$skinColor"  target="_blank" href="http://www.kinopoisk.ru/index.php?first=no&kp_query=$quote($event.title)"><img src="../images/kinopoisk.png" style="width:12px; height:12px; margin:0px 3px 0px 0px" title="$tstrings['search_kinopoisk']" border="0"></a>
-		#elif $moviedb == "CSFD"
-			<a class="theme-link-color theme-link-col-$skinColor" target="_blank" href="https://www.csfd.cz/hledat/?q=$event.title" title="$tstrings['search_csfd']">csfd</a>
-		#else
-			<a class="theme-link-color theme-link-col-$skinColor" target="_blank" href="http://www.imdb.com/find?s=all&amp;q=$quote($event.title)" title="$tstrings['search_imdb']">IMDb</a>
-		#end if
+	## #end if
+		</div>
+	</div>
+</div>
+
+<div class="row clearfix pull-left">
+	<div class="col-xs-12">
+		<h4 class="event-detail__title">$event.title</h4>
+		<h5 class="event-detail__time">$tstrings[("day_" + ($time.strftime("%w", $etime)))]. $time.strftime("%d", $etime). $tstrings[("month_" + ($time.strftime("%m", $etime)))] $event.begin_str - $event.end&nbsp;&nbsp;($int($event.duration/60) min)</h5>
 	</div>
 </div>
 <div class="row clearfix">
 	<div class="col-xs-12">
-		<h5>$tstrings[("day_" + ($time.strftime("%w", $etime)))]. $time.strftime("%d", $etime). $tstrings[("month_" + ($time.strftime("%m", $etime)))] $event.begin_str - $event.end&nbsp;&nbsp;($int($event.duration/60) min)</h5>
-	</div>
-</div>
-<div class="row clearfix">
-	<div class="col-xs-12">
-		<h4>$event.title</h4>
 #if $event.title != $event.shortdesc
-		<h5>$event.shortdesc</h5>
+		<p class="event-detail__description">$event.shortdesc</p>
 #end if
 	</div>
 </div>
 <div class="row clearfix">
-	<div class="col-xs-12">
-		<p>$(event.longdesc.replace("\n","<br/>").replace(u"\u008a","<br/>"))</p>
+	<div class="col-xs-12 m-t-10">
+		<p class="event-detail__description">
+			$(event.longdesc.replace("\n","<br/>").replace(u"\u008a","<br/>"))
+		</p>
 	</div>
 </div>
+#if $extEventInfoProvider
+<div class="row clearfix">
+	<div class="col-xs-12 m-b-10">
+		<a href="$extEventInfoProvider['url']$quote($event.title)" class="link--skinned" title="$tstrings['search_'+$extEventInfoProvider['id']]" target="extdb">
+			<i class="material-icons material-icons-centered" style="margin-right: 0;">open_in_new</i>
+			$extEventInfoProvider['name']
+		</a>
+	</div>
+</div>
+#end if
 
-<script>
-var theevent = $dumps($event);
-if (picons[theevent['channel']])
-	\$('#station').html('<img src="'+picons[theevent['channel']]+'" width="80" />');
-if (typeof channelpicon !== 'undefined') {
-	\$('#station').html('<img src="'+ channelpicon + '" width="80" />');
-} else if (typeof picons !== 'undefined') {
-	if (picons[theevent['channel']]) {
-		\$('#station').html('<img src="'+picons[theevent['channel']]+'" width="80" />');
-	}
-}
-</script>
+<div class="row clearfix">
+	<div class="col-xs-12 event-detail__actions">
+
+#if $event.timer
+	#if $event.timer.isEnabled
+		<button onclick="toggleTimerStatus('$sref', '$event.begin', '$event.end');" class="link--not-skinned" title="$tstrings['disable_timer']">
+			<i class="material-icons material-icons-centered">alarm_off</i>
+		</button>
+	#else
+		<button onclick="toggleTimerStatus('$sref', '$event.begin', '$event.end');" class="link--not-skinned" title="$tstrings['enable_timer']">
+			<i class="material-icons material-icons-centered">alarm_on</i>
+		</button>
+	#end if
+		<button class="link--not-skinned" data-target="#TimerModal" data-toggle="modal" data-dismiss="modal" title="$tstrings['edit_timer']">
+			<i class="material-icons material-icons-centered">edit</i>
+		</button>
+		<button onclick="delTimerEvent('$sref', '$event.id');" class="link--not-skinned" title="$tstrings['delete_timer']">
+			<i class="material-icons material-icons-centered">delete</i>
+		</button>
+#else
+		<button onclick="addTimerEvent('$sref', '$event.id', false);" class="link--not-skinned" title="$tstrings['add_timer']">
+			<i class="material-icons material-icons-centered">alarm_add</i>
+		</button>
+		<button class="link--not-skinned" data-target="#TimerModal" data-toggle="modal" data-dismiss="modal" title="$tstrings['add'] & $tstrings['edit_timer']">
+			<i class="material-icons material-icons-centered">alarm_add</i>
+			<i class="material-icons material-icons-centered">edit</i>
+		</button>
+		<button onclick="addTimerEvent('$sref', '$event.id', true);" class="link--not-skinned" title="$tstrings['add_zaptimer']">
+			<i class="material-icons material-icons-centered">add_alert</i>
+		</button>
+#end if
+
+#if $at
+		<a href="#/at/create?name=$title&match=$title&timespanFrom=$event.begin&timespanTo=$event.end&sref=$sref"
+			 class="link--not-skinned" title="$tstrings['add_autotimer']" x-data-dismiss="modal">
+			<i class="material-icons material-icons-centered">av_timer</i>
+		</a>
+#end if
+	</div>
+</div>
+</div>

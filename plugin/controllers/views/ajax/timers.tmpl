@@ -1,5 +1,5 @@
 #filter WebSafe
-#from urllib import quote
+#from six.moves.urllib.parse import quote
 #from time import localtime, strftime
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 <div id="content_main" class="ui-widget-content" style="min-height: 500px;">
@@ -40,9 +40,9 @@
 						<div>
 						#set $sref=quote($timer.serviceref, safe=' ~@#$&()*!+=:;,.?/\'')
 						#set $tname=quote($timer.name)
-						<a href='#' onClick="editTimer('$sref', '$timer.begin', '$timer.end');" title="$tstrings['edit_timer']"><div><i class="fa fa-edit"></i></div></a>
-						<a href='#' onClick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$tname');" title="$tstrings['delete_timer']"><div><i class="fa fa-trash-o"></i></div></a>
-						<a href='#' onClick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end');" 
+						<a href='#' onclick="editTimer('$sref', '$timer.begin', '$timer.end');" title="$tstrings['edit_timer']"><div><i class="fa fa-edit"></i></div></a>
+						<a href='#' onclick="deleteTimer('$sref', '$timer.begin', '$timer.end', '$tname');" title="$tstrings['delete_timer']"><div><i class="fa fa-trash-o"></i></div></a>
+						<a href='#' onclick="toggleTimerStatus('$sref', '$timer.begin', '$timer.end');" 
 						#if $timer.disabled
 						title="$tstrings['enable_timer']"><div id='img-$timer.begin-$timer.end'><i data-ref="$sref" class="fa fa-square-o">
 						#else

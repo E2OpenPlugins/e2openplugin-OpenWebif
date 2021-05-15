@@ -1,29 +1,81 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-##############################################################################
-#                        2011 - 2017 E2OpenPlugin                            #
-#                                                                            #
-#  This file is open source software; you can redistribute it and/or modify  #
-#     it under the terms of the GNU General Public License version 2 as      #
-#               published by the Free Software Foundation.                   #
-#                                                                            #
-##############################################################################
+##########################################################################
+# OpenWebif: timers
+##########################################################################
+# Copyright (C) 2011 - 2020 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
 
+from __future__ import print_function
+import six
 from enigma import eEPGCache, eServiceReference
 from Components.UsageConfig import preferredTimerPath, preferredInstantRecordPath
 from Components.config import config
 from Components.TimerSanityCheck import TimerSanityCheck
-from RecordTimer import RecordTimerEntry, RecordTimer, parseEvent
+from RecordTimer import RecordTimerEntry, parseEvent
 from ServiceReference import ServiceReference
+from Screens.InfoBar import InfoBar
 from time import time, strftime, localtime, mktime
-from urllib import unquote
-from info import GetWithAlternative
-from ..i18n import _
+from six.moves.urllib.parse import unquote
+from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternative, getInfo
+from Plugins.Extensions.OpenWebif.controllers.i18n import _
+from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad
+
+
+def FuzzyTime(t, inPast=False):
+	d = localtime(t)
+	nt = time()
+	n = localtime()
+	dayOfWeek = (_("Mon"), _("Tue"), _("Wed"), _("Thu"), _("Fri"), _("Sat"), _("Sun"))
+
+	if d[:3] == n[:3]:
+		# same day
+		date = _("Today")
+	elif d[0] == n[0] and d[7] == n[7] - 1 and inPast:
+		# won't work on New Year's day
+		date = _("Yesterday")
+	elif ((t - nt) < 7 * 86400) and (nt < t) and not inPast:
+		# same week (must be future)
+		date = dayOfWeek[d[6]]
+	elif d[0] == n[0]:
+		# same year
+		if inPast:
+			# I want the day in the movielist
+			date = _("%s %02d.%02d.") % (dayOfWeek[d[6]], d[2], d[1])
+		else:
+			date = _("%02d.%02d.") % (d[2], d[1])
+	else:
+		date = _("%02d.%02d.%d") % (d[2], d[1], d[0])
+
+	timeres = _("%02d:%02d") % (d[3], d[4])
+
+	return date, timeres
+
 
 def getTimers(session):
 	rt = session.nav.RecordTimer
 	timers = []
 	for timer in rt.timer_list + rt.processed_timers:
+		if hasattr(timer, "wakeup_t"):
+			energytimer = timer.wakeup_t or timer.standby_t or timer.shutdown_t or timer.fnc_t != "off" or 0
+			if energytimer:
+				continue
+
 		descriptionextended = "N/A"
 		filename = None
 		nextactivation = None
@@ -49,6 +101,17 @@ def getTimers(session):
 		justplay = 0
 		if timer.justplay:
 			justplay = 1
+
+		if hasattr(timer, "allow_duplicate"):
+			allow_duplicate = timer.allow_duplicate and 1 or 0
+		else:
+			allow_duplicate = 1
+
+		autoadjust = -1
+		if hasattr(timer, "autoadjust"):
+			autoadjust = timer.autoadjust and 1 or 0
+		elif hasattr(config.recording, "adjust_time_to_event"):
+			autoadjust = config.recording.adjust_time_to_event.value and 1 or 0
 
 		if timer.dirname:
 			dirname = timer.dirname
@@ -90,14 +153,47 @@ def getTimers(session):
 				always_zap = 1
 			else:
 				always_zap = 0
+		if hasattr(timer, "zapbeforerecord"):
+			if timer.zapbeforerecord:
+				always_zap = 1
+			else:
+				always_zap = 0
+
+		pipzap = -1
+		if hasattr(timer, "pipzap"):
+			if timer.pipzap:
+				pipzap = 1
+			else:
+				pipzap = 0
+
+		isAutoTimer = -1
+		if hasattr(timer, "isAutoTimer"):
+			if timer.isAutoTimer:
+				isAutoTimer = 1
+			else:
+				isAutoTimer = 0
+
+		if six.PY2:
+			descriptionextended = six.text_type(descriptionextended, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+
+		# switch back to old way.
+		#fuzzyBegin = ' '.join(str(i) for i in FuzzyTime(timer.begin, inPast = True)[1:])
+		#fuzzyEnd = ""
+		#if strftime("%Y%m%d", localtime(timer.begin)) == strftime("%Y%m%d", localtime(timer.end)):
+		#	fuzzyEnd = FuzzyTime(timer.end)[1]
+		#else:
+		#	fuzzyEnd = ' '.join(str(i) for i in FuzzyTime(timer.end, inPast = True))
+
+		fuzzyBegin = strftime(_("%d.%m.%Y %H:%M"), (localtime(float(timer.begin))))
+		fuzzyEnd = strftime(_("%d.%m.%Y %H:%M"), (localtime(float(timer.end))))
 
 		timers.append({
 			"serviceref": str(timer.service_ref),
-			"servicename": timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
+			"servicename": removeBad(timer.service_ref.getServiceName()),
 			"eit": timer.eit,
 			"name": timer.name,
 			"description": timer.description,
-			"descriptionextended": unicode(descriptionextended, 'utf_8', errors='ignore').encode('utf_8', 'ignore'),
+			"descriptionextended": descriptionextended,
 			"disabled": disabled,
 			"begin": timer.begin,
 			"end": timer.end,
@@ -118,13 +214,17 @@ def getTimers(session):
 			"toggledisabledimg": toggledisabledimg,
 			"filename": filename,
 			"nextactivation": nextactivation,
-			"realbegin": strftime("%d.%m.%Y %H:%M", (localtime(float(timer.begin)))),
-			"realend": strftime("%d.%m.%Y %H:%M", (localtime(float(timer.end)))),
+			"realbegin": fuzzyBegin,
+			"realend": fuzzyEnd,
 			"asrefs": asrefs,
 			"vpsplugin_enabled": vpsplugin_enabled,
 			"vpsplugin_overwrite": vpsplugin_overwrite,
 			"vpsplugin_time": vpsplugin_time,
-			"always_zap": always_zap
+			"always_zap": always_zap,
+			"pipzap": pipzap,
+			"isAutoTimer": isAutoTimer,
+			"allow_duplicate": allow_duplicate,
+			"autoadjust": autoadjust
 		})
 
 	return {
@@ -133,11 +233,14 @@ def getTimers(session):
 	}
 
 
-def addTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname, tags, repeated, vpsinfo=None, logentries=None, eit=0, always_zap=-1):
+def addTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterevent, dirname, tags, repeated, vpsinfo=None, logentries=None, eit=0, always_zap=-1, pipzap=-1, allow_duplicate=1, autoadjust=-1):
 	rt = session.nav.RecordTimer
 
 	if not dirname:
 		dirname = preferredTimerPath()
+
+	#  IPTV Fix
+	serviceref = serviceref.replace('%253a', '%3a')
 
 	try:
 		timer = RecordTimerEntry(
@@ -170,8 +273,8 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 					"name": conflict.name,
 					"begin": conflict.begin,
 					"end": conflict.end,
-					"realbegin": strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.begin)))),
-					"realend": strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.end))))
+					"realbegin": strftime(_("%d.%m.%Y %H:%M"), (localtime(float(conflict.begin)))),
+					"realend": strftime(_("%d.%m.%Y %H:%M"), (localtime(float(conflict.end))))
 				})
 
 			return {
@@ -188,9 +291,23 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 		if always_zap != -1:
 			if hasattr(timer, "always_zap"):
 				timer.always_zap = always_zap == 1
+			if hasattr(timer, "zapbeforerecord"):
+				timer.zapbeforerecord = always_zap == 1
 
-	except Exception, e:
-		print e
+		if hasattr(timer, "autoadjust"):
+			if autoadjust == -1:
+				autoadjust = config.recording.adjust_time_to_event.value and 1 or 0
+			autoadjust = autoadjust
+
+		if hasattr(timer, "allow_duplicate"):
+			allow_duplicate = allow_duplicate
+
+		if pipzap != -1:
+			if hasattr(timer, "pipzap"):
+				timer.pipzap = pipzap == 1
+
+	except Exception as e:
+		print(str(e))
 		return {
 			"result": False,
 			"message": _("Could not add timer '%s'!") % name
@@ -202,7 +319,7 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 	}
 
 
-def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vpsinfo, always_zap, afterevent):
+def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vpsinfo, always_zap, afterevent, pipzap, allow_duplicate, autoadjust):
 	event = eEPGCache.getInstance().lookupEventId(eServiceReference(serviceref), eventid)
 	if event is None:
 		return {
@@ -232,14 +349,17 @@ def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vps
 		vpsinfo,
 		None,
 		eit,
-		always_zap
+		always_zap,
+		pipzap,
+		allow_duplicate,
+		autoadjust
 	)
 
 
 # NEW editTimer function to prevent delete + add on change
 # !!! This new function must be tested !!!!
 # TODO: exception handling
-def editTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterEvent, dirname, tags, repeated, channelOld, beginOld, endOld, vpsinfo, always_zap):
+def editTimer(session, serviceref, begin, end, name, description, disabled, justplay, afterEvent, dirname, tags, repeated, channelOld, beginOld, endOld, vpsinfo, always_zap, pipzap, allow_duplicate, autoadjust):
 	channelOld_str = ':'.join(str(channelOld).split(':')[:11])
 	rt = session.nav.RecordTimer
 	for timer in rt.timer_list + rt.processed_timers:
@@ -268,6 +388,20 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 			if always_zap != -1:
 				if hasattr(timer, "always_zap"):
 					timer.always_zap = always_zap == 1
+				if hasattr(timer, "zapbeforerecord"):
+					timer.zapbeforerecord = always_zap == 1
+
+			if pipzap != -1:
+				if hasattr(timer, "pipzap"):
+					timer.pipzap = pipzap == 1
+
+			if hasattr(timer, "allow_duplicate"):
+				timer.allow_duplicate = allow_duplicate
+
+			if hasattr(timer, "autoadjust"):
+				if autoadjust == -1:
+					autoadjust = config.recording.adjust_time_to_event.value and 1 or 0
+				timer.autoadjust = autoadjust
 
 			# TODO: multi tuner test
 			sanity = TimerSanityCheck(rt.timer_list, timer)
@@ -293,12 +427,12 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 					errors.append(conflict.name)
 					conflictinfo.append({
 						"serviceref": str(conflict.service_ref),
-						"servicename": conflict.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
+						"servicename": removeBad(conflict.service_ref.getServiceName()),
 						"name": conflict.name,
 						"begin": conflict.begin,
 						"end": conflict.end,
-						"realbegin": strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.begin)))),
-						"realend": strftime("%d.%m.%Y %H:%M", (localtime(float(conflict.end))))
+						"realbegin": strftime(_("%d.%m.%Y %H:%M"), (localtime(float(conflict.begin)))),
+						"realend": strftime(_("%d.%m.%Y %H:%M"), (localtime(float(conflict.end))))
 					})
 
 				return {
@@ -313,11 +447,17 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 	}
 
 
-def removeTimer(session, serviceref, begin, end):
+def removeTimer(session, serviceref, begin, end, eit):
 	serviceref_str = ':'.join(str(serviceref).split(':')[:11])
 	rt = session.nav.RecordTimer
 	for timer in rt.timer_list + rt.processed_timers:
 		needed_ref = ':'.join(timer.service_ref.ref.toString().split(':')[:11]) == serviceref_str
+		if needed_ref and timer.eit and eit and timer.eit == eit:
+			rt.removeEntry(timer)
+			return {
+				"result": True,
+				"message": _("The timer '%s' has been deleted successfully") % timer.name
+			}
 		if needed_ref and int(timer.begin) == begin and int(timer.end) == end:
 			rt.removeEntry(timer)
 			return {
@@ -442,7 +582,7 @@ def recordNow(session, infinite):
 		}
 	nt = {
 		"serviceref": str(timer.service_ref),
-		"servicename": timer.service_ref.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
+		"servicename": removeBad(timer.service_ref.getServiceName()),
 		"eit": timer.eit,
 		"name": timer.name,
 		"begin": timer.begin,
@@ -526,7 +666,7 @@ def tvbrowser(session, request):
 		return addTimer(session, sRef, begin, end, name, description, disabled, justplay, afterevent, location, tags, repeated)
 	elif request.args['command'][0] == "del":
 		del request.args['command'][0]
-		return removeTimer(session, sRef, begin, end)
+		return removeTimer(session, sRef, begin, end, eit=None)
 	elif request.args['command'][0] == "change":
 		del request.args['command'][0]
 		return editTimer(session, sRef, begin, end, name, description, disabled, justplay, afterevent, location, tags, repeated, begin, end, serviceref)
@@ -537,24 +677,31 @@ def tvbrowser(session, request):
 		}
 
 
-def getPowerTimer(session):
+def getPowerTimer(session, request):
 
 	try:
 		from PowerTimer import TIMERTYPE, AFTEREVENT
+		logs = False
+		if "logs" in list(request.args.keys()):
+			logs = True
 
 		timers = []
 		timer_list = session.nav.PowerTimer.timer_list
 		processed_timers = session.nav.PowerTimer.processed_timers
 
+		pos = 0
 		for timer in timer_list + processed_timers:
 			list = []
-			for _time, code, msg in timer.log_entries:
-				list.append({
-					"code": str(code),
-					"time": str(_time),
-					"msg": str(msg)
-				})
+			pos += 1
+			if logs:
+				for _time, code, msg in timer.log_entries:
+					list.append({
+						"code": str(code),
+						"time": str(_time),
+						"msg": str(msg)
+					})
 			timers.append({
+				"id": str(pos),
 				"timertype": str(timer.timerType),
 				"timertypename": str({
 					TIMERTYPE.NONE: "nothing",
@@ -589,8 +736,8 @@ def getPowerTimer(session):
 			"result": True,
 			"timers": timers
 		}
-	except Exception, e:
-		print e
+	except Exception as e:
+		print(str(e))
 		return {
 			"result": False,
 			"message": _("PowerTimer feature not available")
@@ -598,60 +745,66 @@ def getPowerTimer(session):
 
 
 def setPowerTimer(session, request):
-
+	id = 0
+	if "id" in list(request.args.keys()):
+		id = int(request.args["id"][0])
 	timertype = 0
-	if "timertype" in request.args.keys() and request.args["timertype"][0] in ["0", "1", "2", "3", "4", "5", "6", "7", "8"]:
+	if "timertype" in list(request.args.keys()) and request.args["timertype"][0] in ["0", "1", "2", "3", "4", "5", "6", "7", "8"]:
 		timertype = int(request.args["timertype"][0])
 	begin = int(time() + 60)
-	if "begin" in request.args.keys():
+	if "begin" in list(request.args.keys()):
 		begin = int(request.args["begin"][0])
 	end = int(time() + 120)
-	if "end" in request.args.keys():
+	if "end" in list(request.args.keys()):
 		end = int(request.args["end"][0])
 	disabled = 0
-	if "disabled" in request.args.keys():
-		disabled = long(request.args["disabled"][0])
+	if "disabled" in list(request.args.keys()):
+		disabled = int(request.args["disabled"][0])
 	repeated = False
-	if "repeated" in request.args.keys():
+	if "repeated" in list(request.args.keys()):
 		repeated = request.args["repeated"][0] == "1"
 	afterevent = 0
-	if "afterevent" in request.args.keys() and request.args["afterevent"][0] in ["0", "1", "2", "3", "4"]:
+	if "afterevent" in list(request.args.keys()) and request.args["afterevent"][0] in ["0", "1", "2", "3", "4"]:
 		afterevent = int(request.args["afterevent"][0])
 	autosleepinstandbyonly = "no"
-	if "autosleepinstandbyonly" in request.args.keys():
+	if "autosleepinstandbyonly" in list(request.args.keys()):
 		autosleepinstandbyonly = request.args["autosleepinstandbyonly"][0]
 	autosleepdelay = "0"
-	if "autosleepdelay" in request.args.keys():
-		autosleepdelay = request.args["autosleepdelay"][0]
+	if "autosleepdelay" in list(request.args.keys()):
+		autosleepdelay = int(request.args["autosleepdelay"][0])
 	autosleeprepeat = "once"
-	if "autosleeprepeat" in request.args.keys():
+	if "autosleeprepeat" in list(request.args.keys()):
 		autosleeprepeat = request.args["autosleeprepeat"][0]
 
 	# find
 	entry = None
-	timers = []
-	timer_list = session.nav.PowerTimer.timer_list
-	processed_timers = session.nav.PowerTimer.processed_timers
-	for timer in timer_list + processed_timers:
-		if timer.timerType == timertype:
-			if timer.begin == begin:
-				if timer.end == end:
-					entry = timer
+	pos = 0
+	if id > 0:
+		timer_list = session.nav.PowerTimer.timer_list
+		processed_timers = session.nav.PowerTimer.processed_timers
+		for timer in timer_list + processed_timers:
+			pos += 1
+			if pos == 1:
+				entry = timer
 
 	# create new Timer
 	if entry is None:
+		from PowerTimer import PowerTimerEntry
 		entry = PowerTimerEntry(begin, end, disabled, afterevent, timertype)
-		entry.repeated = int(repeated)
-		entry.autosleepinstandbyonly = autosleepinstandbyonly
-		entry.autosleepdelay = int(autosleepdelay)
-		entry.autosleeprepeat = autosleeprepeat
-		print "[PowerTimer]", str(entry)
+	else:
+		entry.begin = begin
+		entry.end = end
+		entry.timertype = timertype
+		entry.afterevent = afterevent
+		entry.disabled = disabled
 
-	#change
-	# pos = 0
-	# for timer in timer_list + processed_timers:
-		# pos+=1
-		# if id == str(pos):
+	#  TODO: repeated
+	entry.repeated = int(repeated)
+	entry.autosleepinstandbyonly = autosleepinstandbyonly
+	entry.autosleepdelay = autosleepdelay
+	entry.autosleeprepeat = autosleeprepeat
+
+	#  TODO: Test !!!
 
 	return {
 		"result": True,
@@ -669,6 +822,39 @@ def getSleepTimer(session):
 				"message": _("Sleeptimer is enabled") if session.nav.SleepTimer.isActive() else _("Sleeptimer is disabled")
 			}
 		except Exception:
+			return {
+				"result": False,
+				"message": _("SleepTimer error")
+			}
+	elif InfoBar.instance is not None and hasattr(InfoBar.instance, 'sleepTimer'):
+		try:
+			# TODO test OpenPLI and similar
+			active = InfoBar.instance.sleepTimer.isActive()
+			time = config.usage.sleep_timer.value
+			info = getInfo()
+			if info["imagedistro"] not in ('openpli', 'satdreamgr', 'openvision'):
+				action = config.usage.sleep_timer_action.value
+				if action == "deepstandby":
+					action = "shutdown"
+			else:
+				action = "shutdown"
+			if time != None and int(time) > 0:
+				try:
+					time = int(int(time) / 60)
+				except:
+					time = 60
+			remaining = 0
+			if active:
+				remaining = int(InfoBar.instance.sleepTimerState())
+			return {
+				"enabled": active,
+				"minutes": time,
+				"action": action,
+				"remaining": remaining,
+				"message": _("Sleeptimer is enabled") if active else _("Sleeptimer is disabled")
+			}
+		except Exception as e:
+			print(e)
 			return {
 				"result": False,
 				"message": _("SleepTimer error")
@@ -694,7 +880,6 @@ def getSleepTimer(session):
 						"action": action,
 						"message": _("Sleeptimer is enabled") if enabled else _("Sleeptimer is disabled")
 					}
-					break
 		except Exception:
 			return {
 				"result": False,
@@ -725,6 +910,52 @@ def setSleepTimer(session, time, action, enabled):
 			ret["message"] = _("Sleeptimer set to %d minutes") % time
 			return ret
 		except Exception:
+			return {
+				"result": False,
+				"message": _("SleepTimer error")
+			}
+	elif InfoBar.instance is not None and hasattr(InfoBar.instance, 'sleepTimer'):
+		try:
+			if time == None:
+				time = 60
+			# TODO test OpenPLI and similar
+			info = getInfo()
+			if info["imagedistro"] not in ('openpli', 'satdreamgr', 'openvision'):
+				if action == "shutdown":
+					config.usage.sleep_timer_action.value = "deepstandby"
+				else:
+					config.usage.sleep_timer_action.value = action
+				config.usage.sleep_timer_action.save()
+			active = enabled
+			time = int(time)
+			config.usage.sleep_timer.value = str(time * 60)
+			if config.usage.sleep_timer.value == '0':
+				# find the closest value
+				if info["imagedistro"] in ('openatv'):
+					times = time * 60
+					for val in list(range(900, 14401, 900)):
+						if times == val:
+							break
+						if times < val:
+							time = int(abs(val / 60))
+							break
+				else:
+					# use 60 if not valid
+					time = 60
+				config.usage.sleep_timer.value = str(time * 60)
+			config.usage.sleep_timer.save()
+			if enabled:
+				InfoBar.instance.setSleepTimer(time * 60, False)
+			else:
+				InfoBar.instance.setSleepTimer(0, False)
+			return {
+				"enabled": active,
+				"minutes": time,
+				"action": action,
+				"message": _("Sleeptimer is enabled") if active else _("Sleeptimer is disabled")
+			}
+		except Exception as e:
+			print(e)
 			return {
 				"result": False,
 				"message": _("SleepTimer error")
@@ -793,6 +1024,7 @@ def setSleepTimer(session, time, action, enabled):
 				timertype = 2
 				if action == "shutdown":
 					timertype = 3
+				from PowerTimer import PowerTimerEntry
 				entry = PowerTimerEntry(begin, end, False, 0, timertype)
 				entry.repeated = 0
 				entry.autosleepdelay = time
@@ -818,7 +1050,7 @@ def getVPSChannels(session):
 	if fileExists(vpsfile):
 		try:
 			import xml.etree.cElementTree  # nosec
-			vpsfile = file(vpsfile, 'r')
+			vpsfile = open(vpsfile, 'r')
 			vpsdom = xml.etree.cElementTree.parse(vpsfile)  # nosec
 			vpsfile.close()
 			xmldata = vpsdom.getroot()

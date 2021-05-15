@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 ##############################################################################
@@ -8,7 +9,7 @@
 #               published by the Free Software Foundation.                   #
 #                                                                            #
 ##############################################################################
-from urllib import unquote
+from six.moves.urllib.parse import unquote
 from enigma import eDVBDB
 from Components.NimManager import nimmanager
 import Components.ParentalControl
@@ -30,16 +31,11 @@ def reloadParentalControl(self):
 	Components.ParentalControl.parentalControl.open()
 
 
-def reloadServicesLists(self, request):
+def reloadServicesLists(self, mode):
 	self.eDVBDB = eDVBDB.getInstance()
 	res = "False"
 	msg = "missing or wrong parameter mode [0=both, 1=lamedb only, 2=userbouqets only, 3=transponders, 4=parentalcontrol white-/blacklist]"
-
-	if "mode" in request.args:
-		mode = unquote(request.args["mode"][0])
-	else:
-		mode = ""
-
+	mode = unquote(mode)
 	if mode == "0":
 		reloadLameDB(self)
 		reloadUserBouquets(self)

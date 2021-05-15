@@ -1,83 +1,223 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+#from Plugins.Extensions.OpenWebif.vtiaddon import showPicons, showPiconBackground
+
+#set $piconCssClass = ''
+#if $showPiconBackground
+	#set $piconCssClass = 'picon--with-background'
+#end if
+
+<!-- TODO: move styles to css file -->
+<style>
+  #tvcontent .nav-tabs {
+		display: flex;
+		margin-bottom: 16px;
+		overflow-x: auto;
+	}
+
+	#tvcontent .nav-tabs > li {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 0;
+    float: none;
+    display: flex;
+		min-width:120px;
+    flex-wrap: wrap;
+    flex: 0 1 auto;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+	}
+
+	#tvcontent .nav-tabs > li > a {
+    display: flex;
+    padding-bottom: 8px;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+		text-align: center;
+    transition: 0.2s;
+	}
+	
+	#tvcontent .nav-tabs > li > a .material-icons {
+    position: relative;
+    top: 0;
+		margin: 0 5px 8px;
+	}
+
+	.channel-list__channel {
+		display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+	}
+
+	.now-next__channel {
+    flex: 0;
+    min-width: 180px;
+	}
+
+	.now-next__channel-name,
+	.now-next__title {
+			line-height: 1.4;
+	}
+
+	.now-next__metainfo {
+    flex: 0;
+    padding-right: 1em;
+    min-width: 240px;
+	}
+
+	.now-next__info {
+		justify-content: space-between;
+		display: flex;
+		flex-wrap: wrap;
+		flex: 4;
+		min-width: 320px;
+	}
+
+	.now-next__progress {
+    margin-bottom: 2ex;
+    margin-top: 0.4ex;
+	}
+
+	.now-next__details {
+		display: flex;
+		flex-wrap: wrap;
+		white-space: normal;
+		width: 48%;
+	}
+
+	.now-next__details--now {
+    border-bottom: 1px solid grey; /* TODO: theme */
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+	}
+
+	.now-next__desc {
+    flex: 1 1 300px;
+	}
+
+	.now-next__details--next {
+		opacity: 0.6;
+	}
+#if not $shownownextcolumns
+	.now-next__details {
+		flex: 1 0 100%;
+	}
+#end if
+</style>
 
 <div class="table-responsive block-header">
-	<table class="table table-striped table-hover">
+	<table class="now-next__grid table table-striped table-hover">
 
 #for $channel in $channels
-<tr>
-#if $showchannelpicon and $channel.has_key('picon')
-<td style="vertical-align:middle;width:120px;">
-	<div>
-		<img class="img-fluid" style="max-width:100px;" src="$channel.picon" title="">
-	</div>
-#else
-<td style="vertical-align:middle;width:0px;">
-#end if
-</td>
-<td style="vertical-align:middle;">
-	<div>
-	#set $name =  $channel.name.replace("'", r"\'")
-	<h2>
-			#if $channel.has_key('protection') and $channel.protection <> "0"
-				<a href="#" class="theme-link-color theme-link-col-$skinColor" onclick="return false" title="$tstrings['locked']"><i class="material-icons material-icons-centered">play_circle_outline</i>$channel.name</a>
+	#set $channelName = $channel.name.replace("'", r"\'")
+	#set $isProtected = 'protection' in $channel and $channel.protection != "0"
+
+		<tr id="sref-$channel.ref.replace(':', '_')" class="channel-list__channel">
+	#if '1:64:' in $channel.ref
+			<td colspan="100%" class="now-next__header header bg--skinned">
+				<h2>$channelName</h2>
+			</td>
+	#else
+#if $showPicons and 'picon' in $channel
+	#set $piconHTML = '<img class="img-fluid" src="%s" alt="Channel logo" loading="lazy">' % $channel.picon
+			<td class="now-next__picon $piconCssClass">
+				<div>
+			#if $isProtected
+					$piconHTML
 			#else
-				<a href="#" class="theme-link-color theme-link-col-$skinColor" onclick="zapChannel('$channel.ref', '$name'); return false" title="$tstrings['zap_to'] $channel.name">$channel.name</a>
+					<a href="javascript:zapChannel('$channel.ref', '$channelName');" title="$tstrings['zap_to'] $channel.name">$piconHTML</a>
 			#end if
-	</h2>
-	</div>
-	<div class="vti-vspace-10"></div>
-	<div>
-	#if $channel.has_key('protection') and $channel.protection <> "0"
-		<a class="theme-link-col-fixed" target="_blank" href='#' title="$tstrings['locked']"><i class="material-icons material-icons-centered">lock</i></a>
+				</div>
+#else
+			<td style="width:0px;">
+#end if
+			</td>
+			<td class="now-next__channel">
+				<h2 class="now-next__channel-name">
+			#if $isProtected
+					<span class="link--skinned" title="$tstrings['locked']">$channel.name</span>
+			#else
+					<a href="javascript:zapChannel('$channel.ref', '$channelName');" class="link--skinned" title="$tstrings['zap_to'] $channel.name">$channel.name</a>
+			#end if
+				</h2>
+				<div class="now-next__channel__actions">
+	#if $isProtected
+					<span class="link--not-skinned" target="_blank" title="$tstrings['locked']"><i class="material-icons material-icons-centered">lock_outline</i></span>
 	#else
 		#if $type == "radio"
-			<a class="theme-link-col-fixed" href="#" onclick="addTimer('','$channel.ref','$channel.name',''); return false" title="$tstrings['add_timer']"><i class="material-icons material-icons-centered">access_time</i></a>
+					<!-- button type="button" onclick="addTimer('','$channel.ref','$channel.name','');" class="link--not-skinned" title="$tstrings['add_timer']"><i class="icon material-icons material-icons-centered">alarm_add</i></button -->
 		#end if
-		#if '4097:' in $channel.ref
-			#set $rname = ":" + $channel.name
-			#set $lnk = $channel.ref.replace("4097:0:1:0:0:0:0:0:0:0:", "").replace("%3a", ":").replace($rname, "")
-			<a class="theme-link-col-fixed" target="_blank" href="$lnk" title="$tstrings['stream']: $channel.name"><i class="material-icons material-icons-centered">tv</i></a>
+
+					<button type="button" onclick="zapChannel('$channel.ref', '$channelName');" class="link--not-skinned" title="$tstrings['zap_to'] $channel.name"><i class="icon material-icons material-icons-centered">settings_remote</i></button>
+
+		#if $channel.link != ""
+					<a href="$channel.link" class="now-next__external-link link--not-skinned" target="extlink" title="$tstrings['open_in_new_window']"><i class="material-icons material-icons-centered">phonelink</i></a>
 		#else
-			<a class="theme-link-col-fixed" href="#" onclick="zapChannel('$channel.ref', '$name'); return false" title="$tstrings['zap_to'] $channel.name"><i class="material-icons material-icons-centered">play_circle_outline</i></a>
-			<a class="theme-link-col-fixed" href="#" onclick="open_epg_dialog('$channel.ref','$name')" title="$tstrings['show_epg_for'] $channel.name" data-toggle="modal" data-target="#EPGModal"><i class="material-icons material-icons-centered">today</i></a>
-			<a class="theme-link-col-fixed" href="#" onclick="jumper8001('$channel.ref', '$name');" title="$tstrings['stream']: $channel.name"><i class="material-icons material-icons-centered">tv</i></a>
+			#set $epgDisabledState = ''
+			#if not 'now_title' in $channel
+				#set $epgDisabledState = 'disabled'
+			#end if
+					<button type="button" onclick="open_epg_dialog('$channel.ref','$channelName');" $epgDisabledState class="link--not-skinned" title="$tstrings['show_epg_for'] $channel.name" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons material-icons-centered">view_list</i></button>
+					<button type="button" onclick="jumper8001('$channel.ref', '$channelName');" class="link--not-skinned" title="$tstrings['stream'] $channel.name"><i class="icon material-icons material-icons-centered">ondemand_video</i></button>
 			#if $transcoding
-			<a class="theme-link-col-fixed" href="#" onclick="jumper8002('$channel.ref', '$name');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel.name"><i class="material-icons material-icons-centered">phone_android</i></a>
+					<button type="button" onclick="jumper8002('$channel.ref', '$channelName');" class="link--not-skinned" title="$tstrings['stream'] ($tstrings['transcoded']) $channel.name"><i class="icon material-icons material-icons-centered">smartphone</i></button>
 			#end if
 		#end if
 	#end if
-	</div>
-</td>
-#if $channel.has_key('protection') and $channel.protection == "0" and $channel.has_key('now_title')
-<td style="vertical-align:middle;">
-	<div>
-		<div>
-		<h2><a class="theme-link-color theme-link-col-$skinColor" href='#' data-ref="$channel.ref" data-id="$channel.now_ev_id" data-toggle="modal" data-target="#EventModal" onClick="loadeventepg('$channel.now_ev_id', '$channel.ref', '$channel.picon');return false;" title="$channel.now_title">$channel.now_title</a>&nbsp;(+$channel.now_left min)</h2>
-		</div>
-		<div>$channel.now_begin &mdash; $channel.now_end &nbsp;&nbsp;&nbsp;</div>
-		<div class="progress" style="margin-bottom:0px;width:200px;">
-		<div class="progress-bar bg-$skinColor progress-bar-striped" role="progressbar" aria-valuenow="${channel.progress}" aria-valuemin="0" aria-valuemax="100" style="width:${channel.progress}%">
-		<span>${channel.progress}%</span>
-		</div>
-		</div>
-	</div>
-</td>
-<td style="vertical-align:middle;">
-	<div>
-		<div>
-			<h2><a class="theme-link-color theme-link-col-$skinColor" href='#' data-ref="$channel.ref" data-id="$channel.next_ev_id" data-toggle="modal" data-target="#EventModal" onClick="loadeventepg('$channel.next_ev_id', '$channel.ref', '$channel.picon');return false;" title="$channel.next_title">$channel.next_title</a>&nbsp;($channel.next_duration min)</h2>
-		</div>
-		<div>$channel.next_begin &mdash; $channel.next_end &nbsp;&nbsp;&nbsp;</div>
-	</div>
-</td>
+				</div>
+			</td>
+			<td class="now-next__info">
+#if (not $isProtected) and 'now_title' in $channel
+				<div class="now-next__details now-next__details--now">
+					<div class="now-next__metainfo">
+						<h2 class="now-next__title">
+							<a href="javascript:void(0);" onclick="loadeventepg('$channel.now_ev_id', '$channel.ref', '$channel.picon');" class="link--skinned" data-ref="$channel.ref" data-id="$channel.now_ev_id" data-toggle="modal" data-target="#EventModal" title="$tstrings['more_details']">$channel.now_title</a>
+							<span class="now-next__elapsed">(+$channel.now_left $tstrings['mins'])</span>
+						</h2>
+						<div class="now-next__time">
+							<time>$channel.now_begin</time> &mdash; <time>$channel.now_end</time>
+						</div>
+						<div class="now-next__progress progress">
+							<div class="progress-bar bg--skinned progress-bar-striped" role="progressbar" aria-valuenow="${channel.progress}" aria-valuemin="0" aria-valuemax="100" style="width:${channel.progress}%">
+								<span class="now-next__progress__percent">${channel.progress}%</span>
+							</div>
+						</div>
+					</div>
+					<div class="now-next__desc">
+						$channel.now_shortdesc
+					</div>
+				</div>
 #else
-<td style="vertical-align:middle;">
-</td>
-<td style="vertical-align:middle;">
-</td>
+				<div class="now-next__no-data">$tstrings['no_epg_data']</div>
 #end if
-</tr>
+#if (not $isProtected) and 'next_title' in $channel
+		#if $channel.next_title == "<<absent>>"
+				<div class="now-next__no-data">...</td>
+		#else
+				<div class="now-next__details now-next__details--next">
+					<div class="now-next__metainfo">
+						<h2 class="now-next__title">
+							<a href="javascript:void(0);" onclick="loadeventepg('$channel.next_ev_id', '$channel.ref', '$channel.picon');" class="link--skinned" data-ref="$channel.ref" data-id="$channel.next_ev_id" data-toggle="modal" data-target="#EventModal" title="$tstrings['more_details']">$channel.next_title</a>
+							<span class="now-next__elapsed">($channel.next_duration $tstrings['mins'])</span>
+						</h2>
+						<div class="now-next__time">
+							<time>$channel.next_begin</time> &mdash; <time>$channel.next_end</time>
+						</div>
+					</div>
+					<div class="now-next__desc">
+						$channel.next_shortdesc
+					</div>
+				</div>
+		#end if
+## #else
+				## <div class="now-next__info now-next__no-data">$tstrings['no_epg_data']</div>
+#end if
+	#end if
+			</td>
+		</tr>
 #end for
-</table
+	</table>
 </div>

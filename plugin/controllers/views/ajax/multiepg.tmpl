@@ -1,4 +1,5 @@
-#from urllib import quote
+#import six
+#from six.moves.urllib.parse import quote
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from json import dumps
 #from time import localtime, strftime, mktime
@@ -26,7 +27,7 @@
 </style>
 
 <div id="navepg">
-#for $slot in range(0,7)
+#for $slot in list(range(0,7))
 	<div class="float plus ui-state-default #if $slot==$day then 'ui-state-active' else '' #" data-day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div>
 #end for
 #if $mode == 2
@@ -40,7 +41,7 @@
 #end if
 #else
 <div class="float plus ui-state-default lbl">&nbsp;$tstrings['cw']:&nbsp;</div>
-#for $wk in range(0,3)
+#for $wk in list(range(0,3))
 	#set $w = $wk + 1000
 	<div class="float plus ui-state-default #if $wk==$week then 'ui-state-active' else '' #" data-day="$(w)">$time.strftime("%V",time.localtime(time.time()+604800*wk))</div>
 #end for
@@ -106,7 +107,7 @@
 <table border="0" cellpadding="0" cellspacing="0" width="100%" id="tbl1">
 <thead>
 <tr>
-	#for $sname, $eventlist in $events.iteritems()
+	#for $sname, $eventlist in six.iteritems($events)
 	#set $evl = $eventlist[0]
 	#set $ref= ""
 	#if $evl
@@ -118,9 +119,9 @@
 </tr>
 </thead>
 <tbody id="tbl1body">
-	#for $slot in range(0,12)
+	#for $slot in list(range(0,12))
 	<tr class="$(slot%2 and 'ui-widget-content' or 'ui-widget-content ui-state-hover') nobg">
-		#for $sname, $eventlist in $events.iteritems()
+		#for $sname, $eventlist in six.iteritems($events)
 		<td class="border">
 			#for $event in $eventlist[$slot]
 				$renderEventBlock.render($event)
@@ -135,7 +136,7 @@
 </tbody>
 <tfoot>
 <tr>
-	#for $sname, $eventlist in $events.iteritems()
+	#for $sname, $eventlist in six.iteritems($events)
 	<td class="border"><div class="service ui-widget-header"><img src="$(picons[$sname])" /> $sname</div></td>
 	#end for
 </tr>
@@ -163,7 +164,7 @@
 				#set pad = 141
 				<li class="event" style="width:${pad}px;">
 				</li>
-				#for $slot in range(0,50)
+				#for $slot in list(range(0,50))
 					#set $t = $first + ($slot * 3600)
 					<li class="event" style="width:600px;" data-dt="$strftime("%H:%M", $localtime($t))">
 						<span class="ui-widget-header nobg">
@@ -176,7 +177,7 @@
 		</li>
 	</ol>
 
-	#for $sname, $eventlist in $events.iteritems()
+	#for $sname, $eventlist in six.iteritems($events)
 		<ol class="channel-listing">
 			<li>
 				<span class="ui-widget-header">

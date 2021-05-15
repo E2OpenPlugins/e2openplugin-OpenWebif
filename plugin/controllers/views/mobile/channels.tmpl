@@ -2,7 +2,7 @@
 <body>
 	<div data-role="page" id="chpage">
 		<div id="header">
-			<div class="button" onClick="history.back()">$tstrings['back']</div>
+			<div class="button" onclick="history.back()">$tstrings['back']</div>
 			<h1><a style="color:#FFF;text-decoration:none;" href='/mobile'>OpenWebif</a></h1>
 		</div>
 		<div id="contentContainer">
@@ -12,7 +12,7 @@
 				<li>
 				<a href="/mobile/channelinfo?sref=$channel.ref" style="padding: 3px;">
 				<h3>$channel.name</h3>
-				#if $channel.has_key('now_title')
+				#if 'now_title' in $channel
 				<p>$channel.now_title</p>
 				#end if	
 				</a>

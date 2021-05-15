@@ -1,6 +1,6 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 #from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo, getPipStatus
+
 <div id="responsivespinnerscreenshot"></div>
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -11,68 +11,80 @@
 					<h2><i class="material-icons material-icons-centered">photo_camera</i>$tstrings['screenshot']</h2>
 				</div>
 			</div>
-			<ul class="header-dropdown m-r--5">
+			<ul class="header-dropdown">
+				<li class="dropdown"><a href="javascript:void(0);"  onclick="grabScreenshot('auto'); return false;" title="$tstrings['refresh']" class="m-r-5"><i class="material-icons">autorenew</i></a>
 				<li class="dropdown">
 				<a href="javascript:void(0);" id="dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 					<ul class="dropdown-menu pull-right" id="screenshotbutton">
-						<li><a href="#" id="screenshotbutton0" name="screenshotbutton" >$tstrings['all']</a></li>
-						<li><a href="#" id="screenshotbutton1" name="screenshotbutton" >$tstrings['video']</a></li>
-						<li><a href="#" id="screenshotbutton2" name="screenshotbutton" >$tstrings['osd']</a></li>
-						<li><a href="#" id="screenshotbutton3" name="screenshotbutton" style="display: none;" >$tstrings['pip']</a></li>
-						<li><a href="#" id="screenshotbutton4" name="screenshotbutton" style="display: none;" >$tstrings['lcd']</a></li>
+						<li><a href="javascript:void(0);" id="screenshotbutton0" name="screenshotbutton">$tstrings['all']</a></li>
+						<li><a href="javascript:void(0);" id="screenshotbutton1" name="screenshotbutton">$tstrings['video']</a></li>
+						<li><a href="javascript:void(0);" id="screenshotbutton2" name="screenshotbutton">$tstrings['osd']</a></li>
+						<li><a href="javascript:void(0);" id="screenshotbutton3" name="screenshotbutton" style="display: none;">$tstrings['pip']</a></li>
+						<li><a href="javascript:void(0);" id="screenshotbutton4" name="screenshotbutton" style="display: none;">$tstrings['lcd']</a></li>
 					</ul>
 				</li>
 			</ul>
 		</div>
-		<div class="body" >
+		<div class="body">
 			<div class="row clearfix">
-				<img id="screenshotimage" class="img-fluid rounded" src="" alt="$tstrings['loading'] ...">
+				<img src="" id="screenshotimage" class="img-fluid rounded" alt="$tstrings['loading'] ...">
 			</div>
-			<div class="row clearfix">
-				<p></p>
-			</div>
-			<div class="row clearfix">
-				<div class="col-md-3 col-md-offset-4 align-right">
+			<div class="row clearfix m-t-20">
+				<div class="col-xs-12 col-sm-7 align-right">
 					<div class="switch panel-switch-btn">
-						<label><span class="m-r-10 font-12">$tstrings['high_resolution']</span>
-						<label><input type="checkbox" id="ssr_hd"><span class="lever switch-col-$skinColor"></span></label>
+						<label>
+							<span class="m-r-10 font-12">$tstrings['high_resolution']</span>
+						</label>
+						<label>
+							<input type="checkbox" name="ssr_hd" id="ssr_hd">
+							<span class="lever switch--skinned"></span>
+						</label>
 					</div>
-					<div class="switch panel-switch-btn">
-						<label><span class="m-r-10 font-12">$tstrings['refresh_auto']</label>
-								<input  class="input-field" type="text" size="2" id="ssr_i" value="30"><label>$tstrings['seconds']</label>
-							</span>
-						<label><input type="checkbox" id="ssr_s"><span class="lever switch-col-$skinColor"></span></label>
+					<div class="switch panel-switch-btn m-t-10">
+						<label class="m-r-10 font-12" style="vertical-align: middle;">
+							$tstrings['refresh_auto']
+							<input type="number" name="ssr_i" id="ssr_i" value="30" placeholder="30" size="2" class="form-control inactive align-right">
+							$tstrings['seconds']
+						</label>
+						<label style="vertical-align: middle;">
+							<input type="checkbox" name="ssr_s" id="ssr_s">
+							<span class="lever switch--skinned"></span>
+						</label>
 					</div>
 				</div>
-			</div>
-			<div class="row clearfix align-center">
-				<button class="btn bg-$skinColor waves-effect" onclick="grabScreenshot('auto'); return false">$tstrings['refresh']</button>
+				<div class="col-xs-12 col-sm-5 align-left">
+					<button class="btn btn--skinned waves-effect" onclick="grabScreenshot('auto'); return false;">
+						<i class="material-icons" style="top: -1px; vertical-align: middle; left: -1px;">autorenew</i>
+						$tstrings['refresh']
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-<script type="text/javascript">
-var lcd = "$getInfo['lcd']";
-var pip = "$getPipStatus()";
-#raw
-$(function() {SSHelper.setup()});
+<script>
+	var lcd = "$getInfo['lcd']";
+	var pip = "$getPipStatus()";
 
-function buttonsSwitcher(pipval){
-	if(parseInt(lcd)){
-		$("#screenshotbutton4, label[for=screenshotbutton4]").show();
-	}else{
-		$("#screenshotbutton4, label[for=screenshotbutton4]").hide();
-	}
-	if(parseInt(pipval)){
-		$("#screenshotbutton3, label[for=screenshotbutton3]").show();
-	}else{
-		$("#screenshotbutton3, label[for=screenshotbutton3]").hide();
-	}
-}
+	jQuery(function() {
+		SSHelper.setup();
+	});
 
-$(document).ready(function(){
-	buttonsSwitcher(pip);
-});
-#end raw
+	function buttonsSwitcher(pipval) {
+		if (parseInt(lcd)) {
+			jQuery("#screenshotbutton4, label[for=screenshotbutton4]").show();
+		} else {
+			jQuery("#screenshotbutton4, label[for=screenshotbutton4]").hide();
+		}
+		if (parseInt(pipval)) {
+			jQuery("#screenshotbutton3, label[for=screenshotbutton3]").show();
+		} else {
+			jQuery("#screenshotbutton3, label[for=screenshotbutton3]").hide();
+		}
+	}
+
+	jQuery(document).ready(function(){
+		buttonsSwitcher(pip);
+	});
 </script>

@@ -1,9 +1,10 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 ##########################################################################
-# OpenWebif: BaseController
+# OpenWebif: movies
 ##########################################################################
-# Copyright (C) 2011 - 2018 E2OpenPlugins
+# Copyright (C) 2011 - 2021 E2OpenPlugins
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -20,23 +21,54 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
 ##########################################################################
 
+from __future__ import print_function
 import os
 import struct
+import six
+from time import localtime, time
 
 from enigma import eServiceReference, iServiceInformation, eServiceCenter
 from ServiceReference import ServiceReference
-from Tools.FuzzyDate import FuzzyTime
 from Components.config import config
 from Components.MovieList import MovieList
 from Tools.Directories import fileExists
-from Screens import MovieSelection
-from ..i18n import _
+from Screens.MovieSelection import defaultMoviePath
+from Plugins.Extensions.OpenWebif.controllers.i18n import _
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg2, PY3
 
 try:
 	from Components.MovieList import moviePlayState as _moviePlayState
 except ImportError:
-	from ..utilities import _moviePlayState
+	from Plugins.Extensions.OpenWebif.controllers.utilities import _moviePlayState
 	pass
+
+try:
+	from Components.DataBaseAPI import moviedb
+except ImportError:
+	pass
+
+
+def FuzzyTime2(t):
+	d = localtime(t)
+	n = localtime()
+	dayOfWeek = (_("Mon"), _("Tue"), _("Wed"), _("Thu"), _("Fri"), _("Sat"), _("Sun"))
+
+	if d[:3] == n[:3]:
+		day = _("Today")
+	elif d[0] == n[0] and d[7] == n[7] - 1:
+		day = _("Yesterday")
+	else:
+		day = dayOfWeek[d[6]]
+
+	if d[0] == n[0]:
+		# same year
+		date = _("%s %02d.%02d.") % (day, d[2], d[1])
+	else:
+		date = _("%s %02d.%02d.%d") % (day, d[2], d[1], d[0])
+
+	timeres = _("%02d:%02d") % (d[3], d[4])
+	return date + ", " + timeres
+
 
 MOVIETAGFILE = "/etc/enigma2/movietags"
 TRASHDIRNAME = "movie_trash"
@@ -44,10 +76,11 @@ TRASHDIRNAME = "movie_trash"
 MOVIE_LIST_SREF_ROOT = '2:0:1:0:0:0:0:0:0:0:'
 MOVIE_LIST_ROOT_FALLBACK = '/media'
 
-# TODO : optimize move using FileTransferJob if available
-# TODO : add copy api
+#  TODO : optimize move using FileTransferJob if available
+#  TODO : add copy api
 
-cutsParser = struct.Struct('>QI') # big-endian, 64-bit PTS and 32-bit type
+cutsParser = struct.Struct('>QI')  # big-endian, 64-bit PTS and 32-bit type
+
 
 def checkParentalProtection(directory):
 	if hasattr(config.ParentalControl, 'moviepinactive'):
@@ -63,32 +96,38 @@ def checkParentalProtection(directory):
 	return False
 
 
+def ConvertDesc(desc):
+	if PY3:
+		return desc
+	else:
+		return six.text_type(desc, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+
+
 def getMovieList(rargs=None, locations=None):
 	movieliste = []
 	tag = None
 	directory = None
 	fields = None
+	internal = None
 	bookmarklist = []
 
-	if rargs and "tag" in rargs.keys():
-		tag = rargs["tag"][0]
-
-	if rargs and "dirname" in rargs.keys():
-		directory = rargs["dirname"][0]
-
-	if rargs and "fields" in rargs.keys():
-		fields = rargs["fields"][0]
+	if rargs:
+		tag = getUrlArg2(rargs, "tag")
+		directory = getUrlArg2(rargs, "dirname")
+		fields = getUrlArg2(rargs, "fields")
+		internal = getUrlArg2(rargs, "internal")
 
 	if directory is None:
-		directory = MovieSelection.defaultMoviePath()
+		directory = defaultMoviePath()
 	else:
-		try:
-			directory.decode('utf-8')
-		except UnicodeDecodeError:
+		if not PY3:
 			try:
-				directory = directory.decode("cp1252").encode("utf-8")
+				directory.decode('utf-8')
 			except UnicodeDecodeError:
-				directory = directory.decode("iso-8859-1").encode("utf-8")
+				try:
+					directory = directory.decode("cp1252").encode("utf-8")
+				except UnicodeDecodeError:
+					directory = directory.decode("iso-8859-1").encode("utf-8")
 
 	if not directory:
 		directory = MOVIE_LIST_ROOT_FALLBACK
@@ -112,22 +151,40 @@ def getMovieList(rargs=None, locations=None):
 			bookmarklist.append(item)
 
 	folders = [root]
-	if rargs and "recursive" in rargs.keys():
-		for f in bookmarklist:
-			if f[-1] != "/":
-				f += "/"
-			ff = eServiceReference(MOVIE_LIST_SREF_ROOT + directory + f)
-			folders.append(ff)
+	brecursive = False
+	if rargs and b"recursive" in list(rargs.keys()):
+		brecursive = True
+		dirs = []
+		locations = []
+		if PY3:
+			from glob import glob
+			for subdirpath in glob(directory + "**/", recursive=True):
+				locations.append(subdirpath)
+				subdirpath = subdirpath[len(directory):]
+				dirs.append(subdirpath)
+		else:
+			# FIXME SLOW!!!
+			for subdirpath in [x[0] for x in os.walk(directory)]:
+				locations.append(subdirpath)
+				subdirpath = subdirpath[len(directory):]
+				dirs.append(subdirpath)
 
-	# get all locations
-	if locations is not None:
-		folders = []
+		for f in sorted(dirs):
+			if f != '':
+				if f[-1] != "/":
+					f += "/"
+				ff = eServiceReference(MOVIE_LIST_SREF_ROOT + directory + f)
+				folders.append(ff)
+	else:
+		# get all locations
+		if locations is not None:
+			folders = []
 
-		for f in locations:
-			if f[-1] != "/":
-				f += "/"
-			ff = eServiceReference(MOVIE_LIST_SREF_ROOT + f)
-			folders.append(ff)
+			for f in locations:
+				if f[-1] != "/":
+					f += "/"
+				ff = eServiceReference(MOVIE_LIST_SREF_ROOT + f)
+				folders.append(ff)
 
 	if config.OpenWebif.parentalenabled.value:
 		dir_is_protected = checkParentalProtection(directory)
@@ -135,7 +192,15 @@ def getMovieList(rargs=None, locations=None):
 		dir_is_protected = False
 
 	if not dir_is_protected:
-		movielist = MovieList(None)
+		if internal:
+			try:
+				from .OWFMovieList import MovieList as OWFMovieList
+				movielist = OWFMovieList(None)
+			except ImportError:
+				movielist = MovieList(None)
+				pass
+		else:
+			movielist = MovieList(None)
 		for root in folders:
 			if tag is not None:
 				movielist.load(root=root, filter_tags=[tag])
@@ -146,9 +211,11 @@ def getMovieList(rargs=None, locations=None):
 				if serviceref.flags & eServiceReference.mustDescent:
 					continue
 
+				# BAD fix
+				_serviceref = serviceref.toString().replace('%25', '%')
 				length_minutes = 0
 				txtdesc = ""
-				filename = '/'.join(serviceref.toString().split("/")[1:])
+				filename = '/'.join(_serviceref.split("/")[1:])
 				filename = '/' + filename
 				name, ext = os.path.splitext(filename)
 
@@ -161,7 +228,7 @@ def getMovieList(rargs=None, locations=None):
 				movie = {
 					'filename': filename,
 					'filename_stripped': filename.split("/")[-1],
-					'serviceref': serviceref.toString(),
+					'serviceref': _serviceref,
 					'length': "?:??",
 					'lastseen': 0,
 					'filesize_readable': '',
@@ -170,16 +237,15 @@ def getMovieList(rargs=None, locations=None):
 					'eventname': ServiceReference(serviceref).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
 					'servicename': sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
 					'tags': info.getInfoString(serviceref, iServiceInformation.sTags),
-					'fullname': serviceref.toString(),
+					'fullname': _serviceref,
 				}
 
 				if rtime > 0:
-					fuzzy_rtime = FuzzyTime(rtime)
-					movie['begintime'] = fuzzy_rtime[0] + ", " + fuzzy_rtime[1]
+					movie['begintime'] = FuzzyTime2(rtime)
 
 				try:
 					length_minutes = info.getLength(serviceref)
-				except:  # noqa: E722
+				except:  # nosec # noqa: E722
 					pass
 
 				if length_minutes:
@@ -191,16 +257,16 @@ def getMovieList(rargs=None, locations=None):
 					txtfile = name + '.txt'
 					if ext.lower() != '.ts' and os.path.isfile(txtfile):
 						with open(txtfile, "rb") as handle:
-							txtdesc = ''.join(handle.readlines())
+							txtdesc = six.ensure_str(b''.join(handle.readlines()))
 
 					event = info.getEvent(serviceref)
 					extended_description = event and event.getExtendedDescription() or ""
 					if extended_description == '' and txtdesc != '':
 						extended_description = txtdesc
-					movie['descriptionExtended'] = unicode(extended_description, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+					movie['descriptionExtended'] = ConvertDesc(extended_description)
 
 					desc = info.getInfoString(serviceref, iServiceInformation.sDescription)
-					movie['description'] = unicode(desc, 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+					movie['description'] = ConvertDesc(desc)
 
 				if fields is None or 'size' in fields:
 					size = 0
@@ -214,25 +280,147 @@ def getMovieList(rargs=None, locations=None):
 							sz = "%.2f %s" % ((size / 1048576.), _("MB"))
 						elif size > 1024:
 							sz = "%.2f %s" % ((size / 1024.), _("kB"))
-					except:  # noqa: E722
+					except:  # nosec # noqa: E722
 						pass
 
 					movie['filesize'] = size
 					movie['filesize_readable'] = sz
 
 				movieliste.append(movie)
-		del movielist
+#		del movielist
 
 	if locations is None:
 		return {
 			"movies": movieliste,
 			"bookmarks": bookmarklist,
-			"directory": directory
+			"directory": directory,
+			"recursive": brecursive
 		}
+
+	if brecursive:
+		return {
+			"movies": movieliste,
+			"locations": locations,
+			"directory": directory,
+			"bookmarks": bookmarklist,
+			"recursive": brecursive
+		}
+	else:
+		return {
+			"movies": movieliste,
+			"locations": locations,
+			"recursive": brecursive
+		}
+
+
+def getMovieSearchList(rargs=None, locations=None):
+	movieliste = []
+	tag = None
+	directory = None
+	fields = None
+	short = None
+	extended = None
+	searchstr = None
+
+	if rargs:
+		searchstr = getUrlArg2(rargs, "find")
+		short = getUrlArg2(rargs, "short")
+		extended = getUrlArg2(rargs, "extended")
+
+	s = {'title': str(searchstr)}
+	if short is not None:
+		s['shortDesc'] = str(searchstr)
+	if extended is not None:
+		s['extDesc'] = str(searchstr)
+
+	movielist = MovieList(None)
+	vdir_list = []
+	for x in moviedb.searchContent(s, 'ref', query_type="OR", exactmatch=False):
+		vdir_list.append(eServiceReference(x[0]))
+	root = eServiceReference("2:0:1:0:0:0:0:0:0:0:" + "/")
+	movielist.load(root, None)
+	movielist.reload(root=None, vdir=5, vdir_list=vdir_list)
+
+	for (serviceref, info, begin, unknown) in movielist.list:
+		if serviceref.flags & eServiceReference.mustDescent:
+			continue
+
+		length_minutes = 0
+		txtdesc = ""
+		filename = '/'.join(serviceref.toString().split("/")[1:])
+		filename = '/' + filename
+		name, ext = os.path.splitext(filename)
+
+		sourceRef = ServiceReference(
+			info.getInfoString(
+				serviceref, iServiceInformation.sServiceref))
+		rtime = info.getInfo(serviceref, iServiceInformation.sTimeCreate)
+
+		movie = {
+			'filename': filename,
+			'filename_stripped': filename.split("/")[-1],
+			'serviceref': serviceref.toString(),
+			'length': "?:??",
+			'lastseen': 0,
+			'filesize_readable': '',
+			'recordingtime': rtime,
+			'begintime': 'undefined',
+			'eventname': ServiceReference(serviceref).getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
+			'servicename': sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
+			'tags': info.getInfoString(serviceref, iServiceInformation.sTags),
+			'fullname': serviceref.toString(),
+		}
+
+		if rtime > 0:
+			movie['begintime'] = FuzzyTime2(rtime)
+
+		try:
+			length_minutes = info.getLength(serviceref)
+		except:  # nosec # noqa: E722
+			pass
+
+		if length_minutes:
+			movie['length'] = "%d:%02d" % (length_minutes / 60, length_minutes % 60)
+			#  if fields is None or 'pos' in fields:
+			#  	movie['lastseen'] = getPosition(filename + '.cuts', length_minutes)
+
+		if fields is None or 'desc' in fields:
+			txtfile = name + '.txt'
+			if ext.lower() != '.ts' and os.path.isfile(txtfile):
+				with open(txtfile, "rb") as handle:
+					txtdesc = six.ensure_str(b''.join(handle.readlines()))
+
+			event = info.getEvent(serviceref)
+			extended_description = event and event.getExtendedDescription() or ""
+			if extended_description == '' and txtdesc != '':
+				extended_description = txtdesc
+			movie['descriptionExtended'] = ConvertDesc(extended_description)
+			desc = info.getInfoString(serviceref, iServiceInformation.sDescription)
+			movie['description'] = ConvertDesc(desc)
+
+		if fields is None or 'size' in fields:
+			size = 0
+			sz = ''
+
+			try:
+				size = os.stat(filename).st_size
+				if size > 1073741824:
+					sz = "%.2f %s" % ((size / 1073741824.), _("GB"))
+				elif size > 1048576:
+					sz = "%.2f %s" % ((size / 1048576.), _("MB"))
+				elif size > 1024:
+					sz = "%.2f %s" % ((size / 1024.), _("kB"))
+			except:  # nosec # noqa: E722
+				pass
+
+			movie['filesize'] = size
+			movie['filesize_readable'] = sz
+
+		movieliste.append(movie)
 
 	return {
 		"movies": movieliste,
-		"locations": locations
+		"locations": []
 	}
 
 
@@ -266,16 +454,17 @@ def removeMovie(session, sRef, Force=False):
 				message = "trashcan"
 				try:
 					import Tools.Trashcan
+					from Screens.MovieSelection import moveServiceFiles
 					trash = Tools.Trashcan.createTrashFolder(srcpath)
-					MovieSelection.moveServiceFiles(service.ref, trash)
+					moveServiceFiles(service.ref, trash)
 					result = True
 					message = "The recording '%s' has been successfully moved to trashcan" % name
 				except ImportError:
 					message = "trashcan exception"
 					pass
-				except Exception, e:
-					print "Failed to move to .Trash folder:", e
+				except Exception as e:
 					message = "Failed to move to .Trash folder: %s" + str(e)
+					print(message)
 				deleted = True
 		elif hasattr(config.usage, 'movielist_use_trash_dir'):
 			fullpath = service.ref.getPath()
@@ -301,9 +490,9 @@ def removeMovie(session, sRef, Force=False):
 				except ImportError:
 					message = "trashdir exception"
 					pass
-				except Exception, e:
-					print "Failed to move to trashdir:", e
+				except Exception as e:
 					message = "Failed to move to trashdir: %s" + str(e)
+					print(message)
 				deleted = True
 		if not deleted:
 			if not offline.deleteFromDisk(0):
@@ -317,6 +506,11 @@ def removeMovie(session, sRef, Force=False):
 			"message": "Could not delete Movie '%s' / %s" % (name, message)
 		}
 	else:
+		# EMC reload
+		try:
+			config.EMC.needsreload.value = True
+		except (AttributeError, KeyError):
+			pass
 		return {
 			"result": True,
 			"message": "The movie '%s' has been deleted successfully" % name
@@ -374,7 +568,7 @@ def _moveMovie(session, sRef, destpath=None, newname=None):
 								move(src, srcpath + newname + suffix)
 						else:
 							move(src, destpath + fileName + suffix)
-					except IOError, e:
+					except IOError as e:
 						errorlist.append("I/O error({0})".format(e))
 						break
 					except OSError as ose:
@@ -421,6 +615,11 @@ def _moveMovie(session, sRef, destpath=None, newname=None):
 			"message": "Could not %s recording '%s' Err: '%s'" % (etxt, name, errText)
 		}
 	else:
+		# EMC reload
+		try:
+			config.EMC.needsreload.value = True
+		except (AttributeError, KeyError):
+			pass
 		return {
 			"result": True,
 			"message": "The recording '%s' has been %sd successfully" % (name, etxt)
@@ -433,6 +632,7 @@ def moveMovie(session, sRef, destpath):
 
 def renameMovie(session, sRef, newname):
 	return _moveMovie(session, sRef, newname=newname)
+
 
 def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, NewFormat=False):
 
@@ -492,7 +692,7 @@ def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, New
 				if fileExists(cutsFileName):
 					try:
 						f = open(cutsFileName, 'rb')
-						while 1:
+						while True:
 							data = f.read(cutsParser.size)
 							if len(data) < cutsParser.size:
 								break
@@ -503,8 +703,8 @@ def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, New
 								}
 							)
 						f.close()
-					except:
-						print 'Error'
+					except:  # nosec # noqa: E722
+						print('Error')
 						pass
 
 					if cuts is not None:
@@ -513,7 +713,7 @@ def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, New
 						f = open(cutsFileName, 'wb')
 						for cut in cuts.split(','):
 							item = cut.split(':')
-							f.write(cutsParser.pack(int(item[1]),int(item[0])))
+							f.write(cutsParser.pack(int(item[1]), int(item[0])))
 							newcuts.append({
 								"type": item[0],
 								"pos": item[1]
@@ -555,3 +755,92 @@ def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, New
 		"result": True,
 		"tags": tags
 	}
+
+
+def getMovieDetails(sRef=None):
+
+	service = ServiceReference(sRef)
+	if service is not None:
+
+		serviceref = service.ref
+		length_minutes = 0
+		txtdesc = ""
+		fullpath = serviceref.getPath()
+		filename = '/'.join(fullpath.split("/")[1:])
+		filename = '/' + filename
+		name, ext = os.path.splitext(filename)
+
+		serviceHandler = eServiceCenter.getInstance()
+		info = serviceHandler.info(serviceref)
+
+		sourceRef = ServiceReference(
+			info.getInfoString(
+				serviceref, iServiceInformation.sServiceref))
+		rtime = info.getInfo(
+			serviceref, iServiceInformation.sTimeCreate)
+
+		movie = {
+			'filename': filename,
+			'filename_stripped': filename.split("/")[-1],
+			'serviceref': serviceref.toString(),
+			'length': "?:??",
+			'lastseen': 0,
+			'filesize_readable': '',
+			'recordingtime': rtime,
+			'begintime': 'undefined',
+			'eventname': service.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
+			'servicename': sourceRef.getServiceName().replace('\xc2\x86', '').replace('\xc2\x87', ''),
+			'tags': info.getInfoString(serviceref, iServiceInformation.sTags),
+			'fullname': serviceref.toString(),
+		}
+
+		if rtime > 0:
+			movie['begintime'] = FuzzyTime2(rtime)
+
+		try:
+			length_minutes = info.getLength(serviceref)
+		except:  # nosec # noqa: E722
+			pass
+
+		if length_minutes:
+			movie['length'] = "%d:%02d" % (length_minutes / 60, length_minutes % 60)
+			movie['lastseen'] = _moviePlayState(filename + '.cuts', serviceref, length_minutes) or 0
+
+		txtfile = name + '.txt'
+		if ext.lower() != '.ts' and os.path.isfile(txtfile):
+			with open(txtfile, "rb") as handle:
+				txtdesc = six.ensure_str(b''.join(handle.readlines()))
+
+		event = info.getEvent(serviceref)
+		extended_description = event and event.getExtendedDescription() or ""
+		if extended_description == '' and txtdesc != '':
+			extended_description = txtdesc
+		movie['descriptionExtended'] = ConvertDesc(extended_description)
+		desc = info.getInfoString(serviceref, iServiceInformation.sDescription)
+		movie['description'] = ConvertDesc(desc)
+
+		size = 0
+		sz = ''
+
+		try:
+			size = os.stat(filename).st_size
+			if size > 1073741824:
+				sz = "%.2f %s" % ((size / 1073741824.), _("GB"))
+			elif size > 1048576:
+				sz = "%.2f %s" % ((size / 1048576.), _("MB"))
+			elif size > 1024:
+				sz = "%.2f %s" % ((size / 1024.), _("kB"))
+		except:  # nosec # noqa: E722
+			pass
+
+		movie['filesize'] = size
+		movie['filesize_readable'] = sz
+
+		return {
+			"result": True,
+			"movie": movie
+		}
+	else:
+		return {
+			"result": False,
+		}

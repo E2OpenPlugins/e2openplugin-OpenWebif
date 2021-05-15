@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebIf\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-30 20:44+0430\n"
+"POT-Creation-Date: 2021-04-15 10:55+0430\n"
 "PO-Revision-Date: \n"
 "Last-Translator: MCelliot_g <mcelliot_g@hotmail.com>\n"
 "Language-Team: satdreamgr\n"
@@ -14,107 +14,178 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
+#: ../plugin/controllers/models/timers.py:61
+#, python-format
+msgid "%02d.%02d."
+msgstr ""
+
+#: ../plugin/controllers/models/timers.py:63
+#, python-format
+msgid "%02d.%02d.%d"
+msgstr ""
+
+#: ../plugin/controllers/models/movies.py:69
+#: ../plugin/controllers/models/timers.py:65
+#, python-format
+msgid "%02d:%02d"
+msgstr ""
+
+#: ../plugin/controllers/models/services.py:235
+#: ../plugin/controllers/models/services.py:773
+#: ../plugin/controllers/models/services.py:1004
+#: ../plugin/controllers/models/services.py:1050
+msgid "%d.%m.%Y"
+msgstr ""
+
+#: ../plugin/controllers/models/timers.py:187
+#: ../plugin/controllers/models/timers.py:188
+#: ../plugin/controllers/models/timers.py:276
+#: ../plugin/controllers/models/timers.py:277
+#: ../plugin/controllers/models/timers.py:434
+#: ../plugin/controllers/models/timers.py:435
+msgid "%d.%m.%Y %H:%M"
+msgstr ""
+
+#: ../plugin/controllers/models/movies.py:65
+#: ../plugin/controllers/models/timers.py:59
+#, python-format
+msgid "%s %02d.%02d."
+msgstr ""
+
+#: ../plugin/controllers/models/movies.py:67
+#, python-format
+msgid "%s %02d.%02d.%d"
+msgstr ""
+
 #: ../plugin/controllers/BouquetEditor.py:549
 #, python-format
 msgid "%s %s is locked."
 msgstr "Το %s %s είναι κλειδωμένο."
 
-#: ../plugin/controllers/models/info.py:298
-#: ../plugin/controllers/models/info.py:422
+#: ../plugin/controllers/i18n.py:129
+#, python-format
+msgid "%s / %s"
+msgstr ""
+
+#: ../plugin/controllers/models/info.py:306
+#: ../plugin/controllers/models/info.py:430
 #, python-format
 msgid "%s free / %s total"
 msgstr "%s ελεύθερα / %s συνολικά"
 
-#: ../plugin/controllers/i18n.py:220
-msgid "(Shift + Click for Long Press)"
+#: ../plugin/controllers/i18n.py:229
+msgid "(Press 'shift' and click to 'hold')"
 msgstr "(Shift + Click για Παρατεταμένη Πίεση)"
 
-#: ../plugin/controllers/i18n.py:78
+#: ../plugin/controllers/i18n.py:394
+#, fuzzy
+msgid "(in minutes)"
+msgstr "λεπτό"
+
+#: ../plugin/controllers/i18n.py:461
+msgid "A filename is required"
+msgstr "Εισαγωγή νέου ονόματος αρχείου"
+
+#: ../plugin/controllers/i18n.py:517
+msgid "A value is required"
+msgstr "Πρέπει να γράψετε κάτι!"
+
+#: ../plugin/controllers/i18n.py:80
 msgid "AGC"
 msgstr "AGC"
 
-#: ../plugin/controllers/i18n.py:73
+#: ../plugin/controllers/i18n.py:75
 msgid "About"
 msgstr "Περί"
 
-#: ../plugin/controllers/i18n.py:352
+#: ../plugin/controllers/i18n.py:295
 msgid "Add"
 msgstr "Προσθήκη"
 
-#: ../plugin/controllers/i18n.py:75
-msgid "Add AutoTimer"
-msgstr "Προσθήκη Αυτ. Χρ/κόπτη"
-
-#: ../plugin/controllers/i18n.py:374
-msgid "Add Autotimer to Tags"
+#: ../plugin/controllers/i18n.py:407
+msgid "Add  AutoTimer  to tags"
 msgstr "Προσθήκη Αυτόματου Χρονοδιακόπτη στις Ετικέτες"
 
-#: ../plugin/controllers/i18n.py:415
+#: ../plugin/controllers/i18n.py:408
+msgid "Add AutoTimer name to tags"
+msgstr "Προσθήκη ονόματος στις Ετικέτες"
+
+#: ../plugin/controllers/i18n.py:447
 msgid "Add Bouquet"
 msgstr "Προσθήκη Μπουκέτου"
 
-#: ../plugin/controllers/i18n.py:418
+#: ../plugin/controllers/i18n.py:450
+msgid "Add IPTV/URL"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:451
 msgid "Add Marker"
 msgstr "Προσθήκη Σημειωτή"
 
-#: ../plugin/controllers/i18n.py:375
-msgid "Add Name to Tags"
-msgstr "Προσθήκη ονόματος στις Ετικέτες"
-
-#: ../plugin/controllers/i18n.py:410
-msgid "Add Provider as new Bouquet"
-msgstr "Προσθήκη Παρόχου ως νέο μπουκέτο"
-
-#: ../plugin/controllers/i18n.py:371
-msgid "Add Similar on Conflict"
-msgstr "Προσθήκη Παρόμοιων κατά τη διένεξη"
-
-#: ../plugin/controllers/i18n.py:419
+#: ../plugin/controllers/i18n.py:452
 msgid "Add Spacer"
 msgstr "Προσθήκη Διαστήματος"
 
-#: ../plugin/controllers/i18n.py:74
-msgid "Add Timer"
+#: ../plugin/controllers/i18n.py:76
+msgid "Add a timer"
 msgstr "Προσθήκη Χρονοδιακόπτη"
 
-#: ../plugin/controllers/i18n.py:76
-msgid "Add Zap Timer"
+#: ../plugin/controllers/i18n.py:78
+msgid "Add a zap timer"
 msgstr "Προσθήκη Χρονοδιακόπτη Ζάπινγκ"
 
-#: ../plugin/controllers/i18n.py:412
+#: ../plugin/controllers/i18n.py:77
+msgid "Add an AutoTimer"
+msgstr "Προσθήκη Αυτ. Χρ/κόπτη"
+
+#: ../plugin/controllers/i18n.py:444
 msgid "Add channel(s) as alternate"
 msgstr "Προσθήκη καναλιού(ών) ως εναλλακτικό"
 
-#: ../plugin/controllers/i18n.py:411
-msgid "Add channel(s) to Bouquet"
+#: ../plugin/controllers/i18n.py:387
+#, fuzzy
+msgid "Add filters"
+msgstr "Προσθήκη Χρονοδιακόπτη"
+
+#: ../plugin/controllers/i18n.py:443
+msgid "Add selection to bouquet"
 msgstr "Προσθήκη καναλιού(ών) σε Μπουκέτο"
 
-#: ../plugin/plugin.py:151
+#: ../plugin/plugin.py:174
 msgid "Add service name to stream information"
 msgstr "Προσθήκη ονόματος υπηρεσίας στις πληροφορίες ροής"
+
+#: ../plugin/controllers/i18n.py:404
+msgid "Add similar on conflict"
+msgstr "Προσθήκη Παρόμοιων κατά τη διένεξη"
+
+#: ../plugin/controllers/i18n.py:360
+msgid "Add tags to recordings"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:466
 #, python-format
 msgid "Added %s to alternative service %s."
 msgstr "Το %s προστέθηκε στην εναλλακτική υπηρεσία %s."
 
-#: ../plugin/controllers/i18n.py:77 ../plugin/controllers/i18n.py:391
-msgid "After Event"
-msgstr "Μετά το πρόγραμμα"
+#: ../plugin/controllers/i18n.py:562
+msgid "Adjust recording time to real event time"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:315
+#: ../plugin/controllers/i18n.py:79 ../plugin/controllers/i18n.py:333
+#: ../plugin/controllers/i18n.py:424
 msgid "After event"
 msgstr "Μετά την εκπομπή"
 
-#: ../plugin/controllers/i18n.py:79 ../plugin/controllers/i18n.py:379
+#: ../plugin/controllers/i18n.py:81 ../plugin/controllers/i18n.py:412
 msgid "All"
 msgstr "Όλα"
 
-#: ../plugin/controllers/i18n.py:80
+#: ../plugin/controllers/i18n.py:82
 msgid "All Channels"
 msgstr "Όλα τα κανάλια"
 
-#: ../plugin/controllers/i18n.py:281
+#: ../plugin/controllers/i18n.py:292
 msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
 msgstr "Όλα τα αρχεία αυτού του Λογισμικού είναι ανοικτού κώδικα: μπορείτε να τα αναδιανείμετε και/ή να τα τροποποιήσετε υπό τους όρους της Γενικής Δημόσιας Άδειας GNU έκδοση 3 όπως αυτή έχει δημοσιευτεί από το Ίδρυμα Ελεύθερου Λογισμικού."
 
@@ -122,22 +193,22 @@ msgstr "Όλα τα αρχεία αυτού του Λογισμικού είνα
 msgid "All alternative services deleted."
 msgstr "Όλες οι εναλλακτικές υπηρεσίες διαγράφηκαν."
 
-#: ../plugin/plugin.py:154
+#: ../plugin/plugin.py:177
 msgid "Allow IPK Upload"
 msgstr "Να επιτρέπεται το Ανέβασμα IPK"
+
+#: ../plugin/controllers/i18n.py:561
+msgid "Allow duplicates"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:452
 #, python-format
 msgid "Alternative %s created failed."
 msgstr "Αποτυχία δημιουργίας εναλλακτικού %s."
 
-#: ../plugin/controllers/i18n.py:396
+#: ../plugin/controllers/i18n.py:429
 msgid "Always"
 msgstr "Πάντα"
-
-#: ../plugin/controllers/i18n.py:325
-msgid "Amount of recordings left"
-msgstr "Αριθμός εγγραφών που απομένουν"
 
 #: ../plugin/controllers/models/message.py:51
 msgid "Answer is NO!"
@@ -147,111 +218,146 @@ msgstr "Η απάντηση είναι ΟΧΙ!"
 msgid "Answer is YES!"
 msgstr "Η απάντηση είναι ΝΑΙ!"
 
-#: ../plugin/controllers/i18n.py:335
+#: ../plugin/controllers/i18n.py:391
+msgid "Any day"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:353
 msgid "Any service/recording"
 msgstr "Κάθε υπηρεσία/εγγραφή"
 
-#: ../plugin/controllers/i18n.py:433
+#: ../plugin/controllers/i18n.py:468
 msgid "Apid"
 msgstr "Apid"
 
-#: ../plugin/controllers/i18n.py:63
+#: ../plugin/controllers/i18n.py:65
 msgid "April"
 msgstr "Απριλίου"
 
-#: ../plugin/controllers/i18n.py:400
+#: ../plugin/controllers/i18n.py:455
+msgid "Are you sure you want to delete the selected bouquet?"
+msgstr "Θέλετε σίγουρα να διαγραφεί το μπουκέτο"
+
+#: ../plugin/controllers/i18n.py:454
+msgid "Are you sure you want to delete the selected item(s)?"
+msgstr "Θέλετε σίγουρα να διαγραφεί το/τα επιλεγμένο/α στοιχείο/α;"
+
+#: ../plugin/controllers/i18n.py:382
+#, fuzzy
+msgid "Are you sure you want to delete this AutoTimer?"
+msgstr "Να γίνει σίγουρα διαγραφή του χρονοδιακόπτη"
+
+#: ../plugin/controllers/i18n.py:110
+msgid "Are you sure you want to delete this recording?"
+msgstr "Να γίνει σίγουρα διαγραφή της εγγραφής"
+
+#: ../plugin/controllers/i18n.py:112
+msgid "Are you sure you want to delete this timer?"
+msgstr "Να γίνει σίγουρα διαγραφή του χρονοδιακόπτη"
+
+#: ../plugin/controllers/i18n.py:208
+msgid "Are you sure you want to rename this recording?"
+msgstr "Να γίνει σίγουρα μετονομασία της εγγραφής"
+
+#: ../plugin/controllers/i18n.py:462
+msgid "Are you sure you want to restore from file?"
+msgstr "Θέλετε σίγουρα να γίνει επαναφορά από το αρχείο"
+
+#: ../plugin/controllers/i18n.py:159
+#, fuzzy
+msgid "Are you sure you want to start recording instantly?"
+msgstr "Εκκίνηση Άμεσης Εγγραφής"
+
+#: ../plugin/controllers/i18n.py:433
 msgid "Ask, default No"
 msgstr "Ερώτηση, προεπιλογή Όχι"
 
-#: ../plugin/controllers/i18n.py:399
+#: ../plugin/controllers/i18n.py:432
 msgid "Ask, default Yes"
 msgstr "Ερώτηση, προεπιλογή Ναι"
 
-#: ../plugin/controllers/i18n.py:67
+#: ../plugin/controllers/i18n.py:69
 msgid "August"
 msgstr "Αυγούστου"
 
-#: ../plugin/controllers/i18n.py:81
+#: ../plugin/controllers/i18n.py:83
 msgid "Authors"
 msgstr "Συγγραφείς"
 
-#: ../plugin/controllers/i18n.py:82 ../plugin/controllers/i18n.py:378
+#: ../plugin/controllers/i18n.py:84 ../plugin/controllers/i18n.py:411
 msgid "Auto"
 msgstr "Αυτόματα"
 
-#: ../plugin/controllers/i18n.py:364
+#: ../plugin/controllers/i18n.py:397
 msgid "AutoPoll"
 msgstr "Αυτόματος Έλεγχος"
 
-#: ../plugin/controllers/base.py:312
-msgid "AutoTimer"
-msgstr "Αυτόματος Χρονοδιακόπτης"
-
-#: ../plugin/controllers/i18n.py:285
+#: ../plugin/controllers/i18n.py:298
 msgid "AutoTimer Edit"
 msgstr "Επεξεργασία Αυτόματου Χρονοδιακόπτη"
 
-#: ../plugin/controllers/i18n.py:284
-msgid "AutoTimer List"
-msgstr "Λίστα Αυτόματων Χρονοδιακοπτών"
-
 # New Autotimer Setting Windows name (not enabled to transfer atm)
-#: ../plugin/controllers/i18n.py:363
+#: ../plugin/controllers/i18n.py:396
 msgid "AutoTimer Settings"
 msgstr "Ρυθμίσεις Αυτ. Χρ/κόπτη"
 
-#: ../plugin/controllers/i18n.py:246
+#: ../plugin/controllers/base.py:362 ../plugin/controllers/i18n.py:297
+msgid "AutoTimers"
+msgstr "Λίστα Αυτόματων Χρονοδιακοπτών"
+
+#: ../plugin/controllers/i18n.py:256
 msgid "Autotimer Preview"
 msgstr "Προεπισκόπηση Αυτόματου Χρονοδιακόπτη"
 
-#: ../plugin/controllers/i18n.py:85
+#: ../plugin/controllers/i18n.py:87
 msgid "BER"
 msgstr "BER"
 
-#: ../plugin/controllers/i18n.py:83
+#: ../plugin/controllers/i18n.py:85
 msgid "Back"
 msgstr "Πίσω"
 
-#: ../plugin/controllers/i18n.py:398
+#: ../plugin/controllers/i18n.py:431
 msgid "Background only"
 msgstr "Μόνο στο παρασκήνιο"
 
-#: ../plugin/controllers/i18n.py:84 ../plugin/controllers/i18n.py:386
+#: ../plugin/controllers/i18n.py:86 ../plugin/controllers/i18n.py:419
 msgid "Begin"
 msgstr "Αρχή"
 
-#: ../plugin/controllers/i18n.py:322
-msgid "Begin of \"after event\" timespan"
+#: ../plugin/controllers/i18n.py:340
+#, fuzzy
+msgid "Begin of \"After event\" timespan"
 msgstr "Αρχή χρονικής διάρκειας \"μετά το πρόγραμμα\""
 
-#: ../plugin/controllers/i18n.py:306
-msgid "Begin of timespan"
+#: ../plugin/controllers/i18n.py:324
+msgid "Beginning of timespan"
 msgstr "Εκκίνηση χρονικού διαστήματος"
 
-#: ../plugin/controllers/i18n.py:467
+#: ../plugin/controllers/i18n.py:502
 msgid "Bookmark"
 msgstr "Σελιδοδείκτης"
 
-#: ../plugin/controllers/i18n.py:466
+#: ../plugin/controllers/i18n.py:501
 msgid "Bookmarks"
 msgstr "Σελιδοδείκτες"
 
-#: ../plugin/controllers/BouquetEditor.py:127
+#: ../plugin/controllers/BouquetEditor.py:128
 #, python-format
 msgid "Bouquet %s already exists."
 msgstr "Το μπουκέτο %s υπάρχει ήδη!"
 
-#: ../plugin/controllers/BouquetEditor.py:218
+#: ../plugin/controllers/BouquetEditor.py:219
 #, python-format
 msgid "Bouquet %s can not be moved."
 msgstr "Αδυναμία μετακίνησης του Μπουκέτου %s."
 
-#: ../plugin/controllers/BouquetEditor.py:122
+#: ../plugin/controllers/BouquetEditor.py:123
 #, python-format
 msgid "Bouquet %s created."
 msgstr "Το μπουκέτο %s δημιουργήθηκε."
 
-#: ../plugin/controllers/BouquetEditor.py:191
+#: ../plugin/controllers/BouquetEditor.py:192
 #, python-format
 msgid "Bouquet %s deleted."
 msgstr "Το μπουκέτο %s διαγράφηκε."
@@ -266,24 +372,28 @@ msgstr "Το μπουκέτο %s είναι κλειδωμένο."
 msgid "Bouquet %s is unlocked."
 msgstr "Το μπουκέτο %s είναι ξεκλείδωτο."
 
-#: ../plugin/controllers/BouquetEditor.py:216
+#: ../plugin/controllers/BouquetEditor.py:217
 #, python-format
 msgid "Bouquet %s moved."
 msgstr "Το Μπουκέτο %s μετακινήθηκε!"
 
-#: ../plugin/controllers/BouquetEditor.py:186
+#: ../plugin/controllers/BouquetEditor.py:187
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
 msgstr "Η αφαίρεση του μπουκέτου %s απέτυχε, μη έγκυρη αναφορά υπηρεσίας ή μεταβλητή λίστα."
 
-#: ../plugin/controllers/BouquetEditor.py:184
+#: ../plugin/controllers/BouquetEditor.py:185
 #, python-format
 msgid "Bouquet %s removed failed."
 msgstr "Αποτυχία αφαίρεσης του μπουκέτου %s."
 
-#: ../plugin/controllers/i18n.py:219
+#: ../plugin/controllers/i18n.py:228
 msgid "Bouquet Editor"
 msgstr "Επεξεργασία Μπουκέτων"
+
+#: ../plugin/controllers/i18n.py:457
+msgid "Bouquet name"
+msgstr "Όνομα μπουκέτου"
 
 #: ../plugin/controllers/BouquetEditor.py:388
 msgid "Bouquet renamed successfully."
@@ -293,173 +403,197 @@ msgstr "Επιτυχία μετονομασίας Μπουκέτου."
 msgid "Bouquet-settings were restored successfully"
 msgstr "Επιτυχία επαναφοράς ρυθμίσεων μπουκέτου"
 
-#: ../plugin/controllers/base.py:317
+#: ../plugin/controllers/base.py:367
 msgid "BouquetEditor"
 msgstr "Επεξεργασία Μπουκέτων"
 
-#: ../plugin/controllers/BouquetEditor.py:129
+#: ../plugin/controllers/BouquetEditor.py:130
 #: ../plugin/controllers/BouquetEditor.py:454
 msgid "Bouquetlist is not editable!"
 msgstr "Αδυναμία επεξεργασίας λίστας μπουκέτου!"
 
-#: ../plugin/controllers/i18n.py:86 ../plugin/controllers/i18n.py:341
+#: ../plugin/controllers/i18n.py:88
 msgid "Bouquets"
 msgstr "Μπουκέτα"
 
-#: ../plugin/controllers/i18n.py:88
+#: ../plugin/controllers/i18n.py:90
 msgid "Box"
 msgstr "Δέκτης"
 
-#: ../plugin/controllers/i18n.py:89
+#: ../plugin/controllers/i18n.py:91
 msgid "Box Control"
 msgstr "Έλεγχος Δέκτη"
 
-#: ../plugin/controllers/i18n.py:87
+#: ../plugin/controllers/i18n.py:89
 msgid "Box Info"
 msgstr "Πληροφορίες Δέκτη"
 
-#: ../plugin/controllers/i18n.py:90
+#: ../plugin/controllers/i18n.py:92
 msgid "Box Uptime"
 msgstr "Χρόνος Λειτουργίας Δέκτη"
 
-#: ../plugin/controllers/i18n.py:91
+#: ../plugin/controllers/i18n.py:93
 msgid "Brand"
 msgstr "Μάρκα"
 
-#: ../plugin/controllers/models/services.py:338
+#: ../plugin/controllers/models/services.py:377
 msgid "Cable"
 msgstr "Καλωδιακό"
 
-#: ../plugin/controllers/i18n.py:458
+#: ../plugin/controllers/i18n.py:493
 msgid "Calendar Week"
 msgstr "Ημερολογιακή Εβδομάδα"
 
-#: ../plugin/plugin.py:113 ../plugin/controllers/i18n.py:92
+#: ../plugin/controllers/i18n.py:94 ../plugin/plugin.py:125
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: ../plugin/controllers/i18n.py:475
+#: ../plugin/controllers/i18n.py:515
 msgid "Cancelled"
 msgstr "Έγινε ακύρωση"
 
-#: ../plugin/controllers/i18n.py:93
+#: ../plugin/controllers/i18n.py:95
 msgid "Capacity"
 msgstr "Χωρητικότητα"
 
-#: ../plugin/controllers/i18n.py:94
+#: ../plugin/controllers/i18n.py:146
+msgid "Capture screenshot"
+msgstr "Λήψη Στιγμιότυπου"
+
+#: ../plugin/controllers/i18n.py:96
 msgid "Channel"
 msgstr "Κανάλι"
 
-#: ../plugin/controllers/i18n.py:95 ../plugin/controllers/i18n.py:339
+#: ../plugin/controllers/i18n.py:97 ../plugin/controllers/i18n.py:357
 msgid "Channels"
 msgstr "Κανάλια"
 
-#: ../plugin/plugin.py:153
+#: ../plugin/plugin.py:176
 msgid "Character encoding for EPG data"
 msgstr "Κωδικοποίηση χαρακτήρων για τα δεδομένα του EPG"
 
-#: ../plugin/controllers/i18n.py:96 ../plugin/controllers/models/info.py:336
+#: ../plugin/controllers/models/info.py:344 ../plugin/controllers/i18n.py:98
 msgid "Chipset"
 msgstr "Chipset"
 
-#: ../plugin/controllers/i18n.py:97
+#: ../plugin/controllers/i18n.py:99
 msgid "Cleanup Timers"
 msgstr "Εκκαθάριση Χρονοδιακοπτών"
 
-#: ../plugin/controllers/i18n.py:98
+#: ../plugin/controllers/i18n.py:100
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: ../plugin/controllers/i18n.py:478
+#: ../plugin/controllers/i18n.py:518
 msgid "Common Settings"
 msgstr "Κοινές Ρυθμίσεις"
 
-#: ../plugin/controllers/models/timers.py:179
+#: ../plugin/controllers/i18n.py:566
+msgid "Config"
+msgstr ""
+
+#: ../plugin/controllers/models/timers.py:282
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Εντοπίστηκε(αν) διένεξη Χρονοδιακόπτη(ων)! %s"
 
-#: ../plugin/controllers/i18n.py:99
+#: ../plugin/controllers/i18n.py:101
 msgid "Contributors"
 msgstr "Συντελεστές"
 
-#: ../plugin/controllers/i18n.py:100
+#: ../plugin/controllers/i18n.py:102
 msgid "Control"
 msgstr "Έλεγχος"
 
-#: ../plugin/controllers/models/timers.py:196
+#: ../plugin/controllers/models/timers.py:313
 #, python-format
 msgid "Could not add timer '%s'!"
 msgstr "Αδυναμία προσθήκης χρονοδιακόπτη '%s'!"
 
-#: ../plugin/controllers/models/timers.py:312
+#: ../plugin/controllers/models/timers.py:446
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Αδυναμία εύρεσης του χρονοδιακόπτη '%s' με δεδομένη ώρα έναρξης και λήξης!"
 
-#: ../plugin/controllers/i18n.py:101
+#: ../plugin/controllers/i18n.py:442
+msgid "Create bouquet from selection"
+msgstr "Προσθήκη Παρόχου ως νέο μπουκέτο"
+
+#: ../plugin/controllers/i18n.py:103
 msgid "Current"
 msgstr "Τρέχον"
 
-#: ../plugin/controllers/i18n.py:102
+#: ../plugin/controllers/i18n.py:104
 msgid "Current Event"
 msgstr "Τρέχον Πρόγραμμα"
 
-#: ../plugin/plugin.py:136 ../plugin/controllers/i18n.py:183
+#: ../plugin/controllers/i18n.py:191 ../plugin/plugin.py:158
 msgid "Custom box name"
 msgstr "Όνομα χρήστη για το δέκτη"
 
-#: ../plugin/controllers/i18n.py:311
+#: ../plugin/controllers/i18n.py:329
 msgid "Custom offset"
 msgstr "Μετατόπιση χρόνου από το χρήστη"
 
-#: ../plugin/controllers/i18n.py:112 ../plugin/controllers/models/info.py:63
-#: ../plugin/controllers/models/info.py:82
+#: ../plugin/controllers/models/info.py:76
+#: ../plugin/controllers/models/info.py:95 ../plugin/controllers/i18n.py:114
 msgid "DHCP"
 msgstr "DHCP"
 
-#: ../plugin/controllers/i18n.py:103
+#: ../plugin/controllers/i18n.py:105
 msgid "Date"
 msgstr "Ημερομηνία"
 
-#: ../plugin/controllers/i18n.py:71
+#: ../plugin/controllers/i18n.py:552
+msgid "Date (newest)"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:551
+msgid "Date (oldest)"
+msgstr ""
+
+#: ../plugin/plugin.py:179
+msgid "Debug - Display Tracebacks in browser"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:73
 msgid "December"
 msgstr "Δεκεμβρίου"
 
-#: ../plugin/controllers/i18n.py:104
-msgid "Deep-Standby"
+#: ../plugin/controllers/i18n.py:106
+msgid "Deep Standby"
 msgstr "Βαθιά Αναμονή"
 
-#: ../plugin/controllers/i18n.py:105
+#: ../plugin/controllers/i18n.py:107
 msgid "Default"
 msgstr "Προεπιλογή"
 
-#: ../plugin/controllers/i18n.py:388
+#: ../plugin/controllers/i18n.py:421
 msgid "Delay Standby"
 msgstr "Καθυστέρηση Αναμονής"
 
-#: ../plugin/controllers/i18n.py:106 ../plugin/controllers/i18n.py:353
+#: ../plugin/controllers/i18n.py:108 ../plugin/controllers/i18n.py:376
 msgid "Delete"
 msgstr "Διαγραφή"
 
-#: ../plugin/controllers/i18n.py:468
+#: ../plugin/controllers/i18n.py:504
 #, fuzzy
 msgid "Delete Bookmark"
 msgstr "Σελιδοδείκτης"
 
-#: ../plugin/controllers/i18n.py:417
+#: ../plugin/controllers/i18n.py:449
 msgid "Delete Bouquet"
 msgstr "Διαγραφή Μπουκέτου"
 
-#: ../plugin/controllers/i18n.py:107
+#: ../plugin/controllers/i18n.py:109
 msgid "Delete Recording"
 msgstr "Διαγραφή Ταινίας"
 
-#: ../plugin/controllers/i18n.py:109
+#: ../plugin/controllers/i18n.py:111
 msgid "Delete Timer"
 msgstr "Διαγραφή Χρονοδιακόπτη"
 
-#: ../plugin/controllers/models/movies.py:300
+#: ../plugin/controllers/models/movies.py:489
 msgid ""
 "Delete failed, because there is no movie trash !\n"
 "Disable movie trash in configuration to delete this item"
@@ -467,184 +601,201 @@ msgstr ""
 "Η διαγραφή απέτυχε λόγω έλλειψης του κάδου αχρήστων ταινιών!\n"
 "Απενεργοποιήστε τον κάδο αχρήστων ταινιών στις ρυθμίσεις για να διαγράψετε αυτό το στοιχείο"
 
-#: ../plugin/controllers/i18n.py:476
+#: ../plugin/controllers/i18n.py:516
 msgid "Deleted"
 msgstr "Διεγραμμένα"
 
-#: ../plugin/controllers/i18n.py:111 ../plugin/controllers/i18n.py:287
+#: ../plugin/controllers/i18n.py:113
 msgid "Description"
 msgstr "Περιγραφή"
 
-#: ../plugin/controllers/i18n.py:113
+#: ../plugin/controllers/i18n.py:129 ../plugin/controllers/i18n.py:375
+#, fuzzy
+msgid "Disable"
+msgstr "ανενεργό"
+
+#: ../plugin/controllers/i18n.py:115
 msgid "Disable Timer"
 msgstr "Απενεργοποίηση Χρονοδιακόπτη"
 
-#: ../plugin/plugin.py:146
+#: ../plugin/plugin.py:168
 msgid "Disable remote access for user root"
 msgstr "Απενεργοποίηση πρόσβασης για το χρήστη root"
 
-#: ../plugin/controllers/i18n.py:370
-msgid "Disabled on Conflict"
+#: ../plugin/controllers/i18n.py:403
+msgid "Disabled on conflict"
 msgstr "Ανενεργό κατά τη διένεξη"
 
-#: ../plugin/controllers/i18n.py:454
+#: ../plugin/controllers/i18n.py:489
 msgid "Display Mode"
 msgstr "Λειτουργία Οθόνης"
 
-#: ../plugin/controllers/i18n.py:452
+#: ../plugin/controllers/i18n.py:487
 msgid "Display duration (s)"
 msgstr "Εμφάνιση διάρκειας (ων)"
 
-#: ../plugin/controllers/i18n.py:115
+#: ../plugin/controllers/i18n.py:117
 msgid "Distro"
 msgstr "Διανομή"
 
-#: ../plugin/controllers/i18n.py:360
-msgid "Do you really want to delete the AT"
-msgstr "Θέλετε σίγουρα να διαγράψετε τον ΑΧ"
-
-#: ../plugin/controllers/i18n.py:422
-msgid "Do you really want to delete the bouquet"
-msgstr "Θέλετε σίγουρα να διαγραφεί το μπουκέτο"
-
-#: ../plugin/controllers/i18n.py:421
-msgid "Do you really want to delete the selected item(s)"
-msgstr "Θέλετε σίγουρα να διαγραφεί το/τα επιλεγμένο/α στοιχείο/α;"
-
-#: ../plugin/controllers/i18n.py:428
-msgid "Do you really want to restore from file"
-msgstr "Θέλετε σίγουρα να γίνει επαναφορά από το αρχείο"
-
-#: ../plugin/controllers/i18n.py:116
+#: ../plugin/controllers/i18n.py:118
 msgid "Dolby"
 msgstr "Dolby"
 
-#: ../plugin/controllers/i18n.py:117
+#: ../plugin/controllers/i18n.py:563
+msgid "Don't create timer when movie exists in database"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:119
 msgid "Done"
 msgstr "Ολοκληρώθηκε"
 
-#: ../plugin/controllers/i18n.py:118
+#: ../plugin/controllers/i18n.py:120
 msgid "Download"
 msgstr "Λήψη"
 
-#: ../plugin/controllers/i18n.py:119
-msgid "Download Playlist for"
+#: ../plugin/controllers/i18n.py:121
+msgid "Download playlist for"
 msgstr "Λήψη Λίστας Αναπαραγωγής για"
 
-#: ../plugin/controllers/i18n.py:120
+#: ../plugin/controllers/i18n.py:122
 msgid "Drivers"
 msgstr "Οδηγοί"
 
-#: ../plugin/controllers/i18n.py:121
+#: ../plugin/controllers/i18n.py:123
 msgid "Duration"
 msgstr "Διάρκεια"
 
-#: ../plugin/controllers/models/info.py:613
+#: ../plugin/controllers/models/info.py:650
 msgid "E"
 msgstr "Α"
 
-#: ../plugin/controllers/i18n.py:128
+#: ../plugin/controllers/i18n.py:132
 msgid "EPG"
 msgstr "EPG"
 
-#: ../plugin/controllers/i18n.py:289
+#: ../plugin/controllers/i18n.py:133
+msgid "EPG Search"
+msgstr "Αναζήτηση Epg"
+
+#: ../plugin/controllers/i18n.py:301
 msgid "EPG encoding"
 msgstr "Κωδικοποίηση EPG"
 
-#: ../plugin/controllers/base.py:321
+#: ../plugin/controllers/base.py:371
 msgid "EPGRefresh"
 msgstr "Ανανέωση EPG"
 
-#: ../plugin/controllers/models/timers.py:714
+#: ../plugin/controllers/models/timers.py:899
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr "ΣΦΑΛΜΑ: Αδυναμία ορισμού του Χρονοδιακόπτη Ύπνου όταν η συσκευή βρίσκεται σε αναμονή"
 
-#: ../plugin/controllers/i18n.py:122
+#: ../plugin/controllers/i18n.py:374
+#, fuzzy
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: ../plugin/controllers/i18n.py:124
 msgid "Edit Timer"
 msgstr "Επεξεργασία Χρονοδιακόπτη"
 
-#: ../plugin/controllers/i18n.py:380
+#: ../plugin/controllers/i18n.py:413
 msgid "Editor"
 msgstr "Επεξεργασία"
 
-#: ../plugin/plugin.py:145
+#: ../plugin/controllers/i18n.py:128 ../plugin/controllers/i18n.py:129
+#, fuzzy
+msgid "Enable"
+msgstr "Ενεργό"
+
+#: ../plugin/plugin.py:167
 msgid "Enable Authentication for streaming"
 msgstr "Ενεργοποίηση Πιστοποίησης για ροή"
 
-#: ../plugin/controllers/i18n.py:343
-msgid "Enable Filtering"
-msgstr "Ενεργοποίηση Φίλτρων"
-
-#: ../plugin/plugin.py:138
+#: ../plugin/plugin.py:160
 msgid "Enable HTTP Authentication"
 msgstr "Ενεργοποίηση πιστοποίησης HTTP"
 
-#: ../plugin/plugin.py:139
+#: ../plugin/plugin.py:161
 msgid "Enable HTTPS"
 msgstr "Ενεργοποίηση HTTPS"
 
-#: ../plugin/plugin.py:142
+#: ../plugin/plugin.py:164
 msgid "Enable HTTPS Authentication"
 msgstr "Ενεργοποίηση πιστοποίησης HTTPS"
 
-#: ../plugin/controllers/i18n.py:385
+#: ../plugin/controllers/i18n.py:418
 msgid "Enable Messages"
 msgstr "Ενεργοποίηση Μηνυμάτων"
 
-#: ../plugin/plugin.py:150
+#: ../plugin/plugin.py:172
 msgid "Enable Parental Control"
 msgstr "Ενεργοποίηση γονικού ελέγχου"
 
-#: ../plugin/controllers/i18n.py:123
+#: ../plugin/controllers/i18n.py:125
 msgid "Enable Timer"
 msgstr "Ενεργοποίηση Χρονοδιακόπτη"
 
-#: ../plugin/plugin.py:149
+#: ../plugin/plugin.py:171
 msgid "Enable access from VPNs"
 msgstr "Ενεργοποίηση πρόσβασης από VPNs"
 
-#: ../plugin/controllers/i18n.py:464
+#: ../plugin/controllers/i18n.py:364
+msgid "Enable filtering"
+msgstr "Ενεργοποίηση Φίλτρων"
+
+#: ../plugin/controllers/i18n.py:499
 msgid "Enable/Disable Screenshot on key press or"
 msgstr "Ενεργοποίηση/απενεργοποίηση στιγμιότυπο οθόνης στο πάτημα του πλήκτρου ή"
 
-#: ../plugin/controllers/i18n.py:126 ../plugin/controllers/i18n.py:286
-#: ../plugin/controllers/i18n.py:384
+#: ../plugin/controllers/i18n.py:130 ../plugin/controllers/i18n.py:299
+#: ../plugin/controllers/i18n.py:417
 msgid "Enabled"
 msgstr "Ενεργό"
 
-#: ../plugin/controllers/i18n.py:127
+#: ../plugin/controllers/i18n.py:131
 msgid "Encrypted"
 msgstr "Κωδικοποιημένο"
 
-#: ../plugin/controllers/i18n.py:125 ../plugin/controllers/i18n.py:387
+#: ../plugin/controllers/i18n.py:127 ../plugin/controllers/i18n.py:420
 msgid "End"
 msgstr "Τέλος"
 
-#: ../plugin/controllers/i18n.py:323
-msgid "End of \"after event\" timespan"
+#: ../plugin/controllers/i18n.py:341
+#, fuzzy
+msgid "End of \"After event\" timespan"
 msgstr "Τέλος χρονικής διάρκειας \"μετά το πρόγραμμα\""
 
-#: ../plugin/controllers/i18n.py:307
-msgid "End of Timespan"
+#: ../plugin/controllers/i18n.py:325
+msgid "End of timespan"
 msgstr "Τέλος χρονικού διαστήματος"
 
-#: ../plugin/controllers/i18n.py:425
-msgid "Enter new name for the bouquet"
+#: ../plugin/controllers/i18n.py:459
+msgid "Enter a name for the new bouquet"
 msgstr "Εισαγωγή νέου ονόματος μπουκέτου"
 
-#: ../plugin/controllers/i18n.py:426
-msgid "Enter new name for the marker"
+#: ../plugin/controllers/i18n.py:460
+msgid "Enter a name for the new marker"
 msgstr "Εισαγωγή νέου ονόματος σημειωτή"
 
-#: ../plugin/controllers/i18n.py:129
-msgid "Epg Search"
-msgstr "Αναζήτηση Epg"
+#: ../plugin/controllers/i18n.py:385
+#, fuzzy
+msgid "Enter a name for this AutoTimer"
+msgstr "Εισαγωγή νέου ονόματος σημειωτή"
 
-#: ../plugin/controllers/i18n.py:132
+#: ../plugin/controllers/i18n.py:505
+msgid "Enter path"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:386
+msgid "Enter the text to find in the EPG"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:137
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: ../plugin/controllers/models/timers.py:840
+#: ../plugin/controllers/models/timers.py:1072
 msgid "Error parsing vps.xml"
 msgstr "Σφάλμα ανάλυσης του vps.xml"
 
@@ -675,96 +826,108 @@ msgstr "Σφάλμα, το %s δεν υπάρχει, αδύνατη η επαν�
 msgid "Error, %s was not created with WebBouquetEditor..."
 msgstr "Σφάλμα, το %s δεν δημιουργήθηκε με τον Επεξεργαστή Μπουκέτων Διαδικτύου"
 
-#: ../plugin/controllers/BouquetEditor.py:193
+#: ../plugin/controllers/BouquetEditor.py:194
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
 msgstr "Σφάλμα: Αδυναμία διαγραφής του Μπουκέτου %s, Σφάλμα OS."
 
-#: ../plugin/controllers/i18n.py:444
+#: ../plugin/controllers/i18n.py:479
 msgid "Event not found"
 msgstr "Το πρόγραμμα δεν βρέθηκε"
 
-#: ../plugin/controllers/models/timers.py:210
+#: ../plugin/controllers/models/timers.py:327
 msgid "EventId not found"
 msgstr "Το EventId δεν βρέθηκε"
 
-#: ../plugin/controllers/i18n.py:133
+#: ../plugin/controllers/i18n.py:138
 msgid "Every"
 msgstr "Κάθε"
 
-#: ../plugin/controllers/i18n.py:345
-msgid "Exclude"
+#: ../plugin/controllers/i18n.py:366
+msgid "Exclude when"
 msgstr "Εξαίρεση"
 
-#: ../plugin/controllers/i18n.py:321
-msgid "Execute \"after event\" during timespan"
+#: ../plugin/controllers/i18n.py:339
+#, fuzzy
+msgid "Execute \"After event\" during timespan"
 msgstr "Εκτέλεση του \"μετά το πρόγραμμα\" κατά το χρονικό διάστημα"
 
-#: ../plugin/controllers/i18n.py:502
+#: ../plugin/controllers/i18n.py:546
 msgid "Export"
 msgstr "Εξαγωγή"
 
-#: ../plugin/controllers/i18n.py:134
+#: ../plugin/controllers/i18n.py:139
 msgid "Extras"
 msgstr "Πρόσθετα"
 
-#: ../plugin/controllers/i18n.py:405
+#: ../plugin/controllers/i18n.py:438
 msgid "Fake Recording"
 msgstr "Προσποίηση Εγγραφής"
 
-#: ../plugin/controllers/i18n.py:368
+#: ../plugin/controllers/i18n.py:401
 msgid "Fastscan"
 msgstr "Γρήγορη ανίχνευση"
 
-#: ../plugin/controllers/i18n.py:61
+#: ../plugin/controllers/i18n.py:63
 msgid "February"
 msgstr "Φεβρουαρίου"
 
-#: ../plugin/controllers/i18n.py:136
+#: ../plugin/controllers/i18n.py:141
 msgid "Firmware version"
 msgstr "Έκδοση Υλικού"
 
-#: ../plugin/controllers/i18n.py:392
+#: ../plugin/controllers/i18n.py:425
 msgid "Force"
 msgstr "Εξαναγκασμός"
 
-#: ../plugin/controllers/i18n.py:40
+#: ../plugin/controllers/i18n.py:42
 msgid "Fr"
 msgstr "Πα"
 
-#: ../plugin/controllers/i18n.py:138
+#: ../plugin/controllers/i18n.py:143
 msgid "Free"
 msgstr "Ελεύθερα"
 
-#: ../plugin/controllers/i18n.py:139
+#: ../plugin/controllers/i18n.py:144
 msgid "Free Memory"
 msgstr "Ελεύθερη Μνήμη"
 
-#: ../plugin/controllers/i18n.py:49
+#: ../plugin/controllers/models/movies.py:54
+#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:51
 msgid "Fri"
 msgstr "Παρ"
 
-#: ../plugin/controllers/i18n.py:56
+#: ../plugin/controllers/i18n.py:58
 msgid "Friday"
 msgstr "Παρασκευή"
 
-#: ../plugin/controllers/i18n.py:137 ../plugin/controllers/models/info.py:341
-msgid "Frontprocessor Version"
+#: ../plugin/controllers/i18n.py:327
+msgid "From date"
+msgstr "Όχι έπειτα από"
+
+#: ../plugin/controllers/models/info.py:349 ../plugin/controllers/i18n.py:142
+msgid "Front processor version"
 msgstr "Έκδοση Frontprocessor"
 
-#: ../plugin/controllers/i18n.py:499
+#: ../plugin/controllers/i18n.py:539
 msgid "Full remote"
 msgstr "Πλήρες τηλεχειριστήριο"
 
-#: ../plugin/controllers/models/movies.py:212
-#: ../plugin/controllers/models/info.py:388
-#: ../plugin/controllers/models/info.py:394
-#: ../plugin/controllers/models/info.py:409
-#: ../plugin/controllers/models/info.py:412
+#: ../plugin/controllers/models/info.py:396
+#: ../plugin/controllers/models/info.py:402
+#: ../plugin/controllers/models/info.py:417
+#: ../plugin/controllers/models/info.py:420
+#: ../plugin/controllers/models/movies.py:278
+#: ../plugin/controllers/models/movies.py:408
+#: ../plugin/controllers/models/movies.py:828
 msgid "GB"
 msgstr "GB"
 
-#: ../plugin/controllers/i18n.py:140
+#: ../plugin/controllers/i18n.py:147
+msgid "GUI version"
+msgstr "Έκδοση Επιφάνειας Χρήστη"
+
+#: ../plugin/controllers/i18n.py:145
 msgid "Gateway"
 msgstr "Πύλη"
 
@@ -772,103 +935,103 @@ msgstr "Πύλη"
 msgid "Get mutable list for new created alternative failed!"
 msgstr "Αποτυχία λήψης μεταβλητής λίστας για τα νεοδημιουργημένα εναλλακτικά!"
 
-#: ../plugin/controllers/BouquetEditor.py:124
+#: ../plugin/controllers/BouquetEditor.py:125
 msgid "Get mutable list for new created bouquet failed!"
 msgstr "Αποτυχία λήψης μεταβλητής λίστας για τα νεοδημιουργημένα μπουκέτα!"
 
-#: ../plugin/controllers/i18n.py:141
-msgid "Grab Screenshot"
-msgstr "Λήψη Στιγμιότυπου"
+#: ../plugin/controllers/i18n.py:556
+msgid "HH:MM"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:142
-msgid "Gui version"
-msgstr "Έκδοση Επιφάνειας Χρήστη"
-
-#: ../plugin/plugin.py:137
+#: ../plugin/plugin.py:159
 msgid "HTTP port"
 msgstr "Θύρα HTTP"
 
-#: ../plugin/plugin.py:141
+#: ../plugin/plugin.py:163
 msgid "HTTPS port"
 msgstr "Θύρα HTTPS"
 
-#: ../plugin/controllers/i18n.py:145
+#: ../plugin/controllers/i18n.py:150
 msgid "Hard disk model"
 msgstr "Μοντέλο Σκληρού Δίσκου"
 
-#: ../plugin/controllers/i18n.py:143
+#: ../plugin/controllers/i18n.py:148
 msgid "Hide full remote"
 msgstr "Απόκρυψη πλήρους τηλεχειριστηρίου"
 
-#: ../plugin/controllers/i18n.py:144
+#: ../plugin/controllers/i18n.py:149
 msgid "High Resolution"
 msgstr "Υψηλή Ανάλυση"
 
-#: ../plugin/controllers/i18n.py:146
+#: ../plugin/controllers/i18n.py:151
 msgid "Hour"
 msgstr "Ώρα"
 
-#: ../plugin/controllers/i18n.py:147
+#: ../plugin/controllers/i18n.py:456
+msgid "IPTV / URL name"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:152
 msgid "IPv4 address"
 msgstr "Διεύθυνση IPv4"
 
-#: ../plugin/controllers/i18n.py:150 ../plugin/controllers/models/info.py:142
+#: ../plugin/controllers/models/info.py:160 ../plugin/controllers/i18n.py:155
 msgid "IPv4-only Python/Twisted"
 msgstr "Python/Twisted IPv4 μόνο"
 
-#: ../plugin/controllers/i18n.py:148 ../plugin/controllers/models/info.py:138
+#: ../plugin/controllers/models/info.py:156 ../plugin/controllers/i18n.py:153
 msgid "IPv4-only kernel"
 msgstr "Kernel IPv4 μόνο"
 
-#: ../plugin/controllers/i18n.py:151
+#: ../plugin/controllers/i18n.py:156
 msgid "IPv6 address(es)"
 msgstr "IPv6 διεύθυνση(εις)"
 
-#: ../plugin/controllers/i18n.py:503
+#: ../plugin/controllers/i18n.py:547
 msgid "Import"
 msgstr "Εισαγωγή"
 
-#: ../plugin/controllers/i18n.py:344
-msgid "Include"
-msgstr "Συμπερίληψη"
-
-#: ../plugin/controllers/i18n.py:130
+#: ../plugin/controllers/i18n.py:134
 msgid "Include description"
 msgstr "Συμπερίληψη περιγραφής"
 
-#: ../plugin/controllers/i18n.py:492
+#: ../plugin/controllers/i18n.py:532
 msgid "Include extended description"
 msgstr "Συμπερίληψη εκτεταμένης περιγραφής"
 
-#: ../plugin/controllers/i18n.py:491
+#: ../plugin/controllers/i18n.py:531
 msgid "Include short description"
 msgstr "Συμπερίληψη σύντομης περιγραφής"
 
-#: ../plugin/controllers/models/timers.py:422
+#: ../plugin/controllers/i18n.py:365
+msgid "Include when"
+msgstr "Συμπερίληψη"
+
+#: ../plugin/controllers/models/timers.py:562
 msgid "Infinite Instant recording started"
 msgstr "Έχει ξεκινήσει απεριόριστη άμεση εγγραφή"
 
-#: ../plugin/controllers/i18n.py:152
-msgid "Infos"
+#: ../plugin/controllers/i18n.py:157
+msgid "Info"
 msgstr "Πληροφορίες"
 
-#: ../plugin/controllers/i18n.py:394
-msgid "Inherit Autotimer"
+#: ../plugin/controllers/i18n.py:427
+msgid "Inherit AutoTimer"
 msgstr "Διαδοχή Αυτόματου Χρονοδιακόπτη"
 
-#: ../plugin/controllers/i18n.py:484
+#: ../plugin/controllers/i18n.py:524
 msgid "Install Package"
 msgstr "Εγκατάσταση Πακέτου"
 
-#: ../plugin/controllers/i18n.py:486
+#: ../plugin/controllers/i18n.py:526
 msgid "Installed"
 msgstr "Εγκατεστημένο"
 
-#: ../plugin/controllers/i18n.py:153
+#: ../plugin/controllers/i18n.py:158
 msgid "Instant Record"
 msgstr "Άμεση Εγγραφή"
 
-#: ../plugin/controllers/models/timers.py:413
+#: ../plugin/controllers/models/timers.py:553
 msgid "Instant record for current Event started"
 msgstr "Έχει ξεκινήσει άμεση εγγραφή για το τρέχον πρόγραμμα"
 
@@ -876,95 +1039,102 @@ msgstr "Έχει ξεκινήσει άμεση εγγραφή για το τρέ
 msgid "Internal error!"
 msgstr "Εσωτερικό σφάλμα!"
 
-#: ../plugin/controllers/i18n.py:365
+#: ../plugin/controllers/i18n.py:398
 #, python-format
 msgid "Interval (in %s)"
 msgstr "Μεσοδιάστημα (σε %s)"
 
-#: ../plugin/controllers/i18n.py:389
+#: ../plugin/controllers/i18n.py:422
 msgid "Interval (min.)"
 msgstr "Μεσοδιάστημα (λεπτά)"
 
-#: ../plugin/controllers/i18n.py:390
+#: ../plugin/controllers/i18n.py:423
 msgid "Interval (sec.)"
 msgstr "Μεσοδιάστημα (δευτ.)"
 
-#: ../plugin/controllers/i18n.py:60
+#: ../plugin/controllers/i18n.py:62
 msgid "January"
 msgstr "Ιανουαρίου"
 
-#: ../plugin/controllers/i18n.py:155
+#: ../plugin/controllers/i18n.py:160
 msgid "Javascript Libraries"
 msgstr "Βιβλιοθήκες Javascript"
 
-#: ../plugin/controllers/i18n.py:66
+#: ../plugin/controllers/i18n.py:68
 msgid "July"
 msgstr "Ιουλίου"
 
-#: ../plugin/controllers/i18n.py:65
+#: ../plugin/controllers/i18n.py:67
 msgid "June"
 msgstr "Ιουνίου"
 
-#: ../plugin/controllers/i18n.py:156
+#: ../plugin/controllers/i18n.py:161
 msgid "Just play"
 msgstr "Αναπαραγωγή"
 
-#: ../plugin/controllers/i18n.py:157
+#: ../plugin/controllers/i18n.py:162
 msgid "Kernel"
 msgstr "Kernel"
 
-#: ../plugin/controllers/i18n.py:158
+#: ../plugin/controllers/i18n.py:163
 msgid "LCD"
 msgstr ""
 
-#: ../plugin/controllers/base.py:290
+#: ../plugin/controllers/base.py:334
 msgid "LCD4Linux Setup"
 msgstr "Ρυθμίσεις LCD4Linux"
 
-#: ../plugin/controllers/i18n.py:159
+#: ../plugin/controllers/i18n.py:164
 msgid "LICENSE"
 msgstr "ΑΔΕΙΑ"
 
-#: ../plugin/controllers/i18n.py:361
+#: ../plugin/controllers/i18n.py:383
 msgid "Label series"
 msgstr "Σειρές ετικετών"
 
-#: ../plugin/controllers/i18n.py:460
+#: ../plugin/controllers/i18n.py:495
 msgid "Link Speed"
 msgstr "Ταχύτητα Σύνδεσης"
 
-#: ../plugin/controllers/models/timers.py:383
+#: ../plugin/controllers/models/timers.py:523
 msgid "List of Timers has been cleaned"
 msgstr "Έγινε εκκαθάριση της λίστας χρονοδιακοπτών"
 
-#: ../plugin/controllers/i18n.py:161
+#: ../plugin/controllers/i18n.py:463
+#, fuzzy
+msgid "Loading..."
+msgstr "φόρτωση"
+
+#: ../plugin/controllers/i18n.py:166
 msgid "Location"
 msgstr "Τοποθεσία"
 
-#: ../plugin/controllers/i18n.py:162
+#: ../plugin/controllers/i18n.py:167
 msgid "Locked"
 msgstr "Κλειδωμένο"
 
-#: ../plugin/controllers/i18n.py:163
+#: ../plugin/controllers/i18n.py:168
 msgid "MAC address"
 msgstr "Διεύθυνση MAC"
 
-#: ../plugin/controllers/models/movies.py:214
-#: ../plugin/controllers/models/info.py:385
-#: ../plugin/controllers/models/info.py:396
-#: ../plugin/controllers/models/info.py:414
+#: ../plugin/controllers/models/info.py:393
+#: ../plugin/controllers/models/info.py:404
+#: ../plugin/controllers/models/info.py:422
+#: ../plugin/controllers/models/movies.py:280
+#: ../plugin/controllers/models/movies.py:410
+#: ../plugin/controllers/models/movies.py:830
 msgid "MB"
 msgstr "MB"
 
-#: ../plugin/controllers/i18n.py:164
+#: ../plugin/controllers/i18n.py:169
 msgid "Main"
 msgstr "Κύριο"
 
-#: ../plugin/controllers/i18n.py:250
+#: ../plugin/controllers/i18n.py:260
 msgid "Main Memory"
 msgstr "Κύρια Μνήμη"
 
-#: ../plugin/controllers/i18n.py:62
+#: ../plugin/controllers/i18n.py:64
 msgid "March"
 msgstr "Μαρτίου"
 
@@ -972,15 +1142,19 @@ msgstr "Μαρτίου"
 msgid "Marker added."
 msgstr "Ο Σημειωτής προστέθηκε."
 
-#: ../plugin/controllers/i18n.py:288
-msgid "Match title"
+#: ../plugin/controllers/i18n.py:458
+msgid "Marker name"
+msgstr "Όνομα Σημειωτή"
+
+#: ../plugin/controllers/i18n.py:300
+msgid "Match text"
 msgstr "Συσχέτιση τίτλου"
 
-#: ../plugin/controllers/i18n.py:366
+#: ../plugin/controllers/i18n.py:399
 msgid "Max Days"
 msgstr "Μέγιστος αριθμός ημερών"
 
-#: ../plugin/controllers/i18n.py:64
+#: ../plugin/controllers/i18n.py:66
 msgid "May"
 msgstr "Μαΐου"
 
@@ -988,128 +1162,144 @@ msgstr "Μαΐου"
 msgid "Message sent successfully!"
 msgstr "Επιτυχής αποστολή μηνύματος!"
 
-#: ../plugin/controllers/i18n.py:401
+#: ../plugin/controllers/i18n.py:434
 msgid "Method"
 msgstr "Μέθοδος"
 
-#: ../plugin/controllers/i18n.py:481
+#: ../plugin/controllers/i18n.py:521
 msgid "Minimal EPG list"
 msgstr "Ελάχιστη λίστα EPG"
 
-#: ../plugin/controllers/i18n.py:479
+#: ../plugin/controllers/i18n.py:519
 msgid "Minimal movie list"
 msgstr "Ελάχιστη λίστα ταινιών"
 
-#: ../plugin/controllers/i18n.py:480
+#: ../plugin/controllers/i18n.py:520
 msgid "Minimal timer list"
 msgstr "Ελάχιστη λίστα χρονοδιακοπτών"
 
-#: ../plugin/controllers/i18n.py:165
+#: ../plugin/controllers/i18n.py:170
 msgid "Minute"
 msgstr "Λεπτό"
 
-#: ../plugin/controllers/web.py:67
+#: ../plugin/controllers/web.py:85
 #, python-format
 msgid "Missing mandatory parameter '%s'"
 msgstr "Λείπει η απαραίτητη παράμετρος '%s'"
 
-#: ../plugin/controllers/models/timers.py:514
+#: ../plugin/controllers/models/timers.py:654
 msgid "Missing requesteter: sRef"
 msgstr "Έλλειψη αναφοράς: sRef"
 
-#: ../plugin/controllers/i18n.py:36
+#: ../plugin/controllers/i18n.py:38
 msgid "Mo"
 msgstr "Δε"
 
-#: ../plugin/controllers/i18n.py:166
+#: ../plugin/controllers/i18n.py:172
 msgid "Model"
 msgstr "Μοντέλο"
 
-#: ../plugin/controllers/i18n.py:45
+#: ../plugin/controllers/models/movies.py:54
+#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:47
 msgid "Mon"
 msgstr "Δευ"
 
-#: ../plugin/controllers/i18n.py:52
+#: ../plugin/controllers/i18n.py:54
 msgid "Monday"
 msgstr "Δευτέρα"
 
-#: ../plugin/controllers/i18n.py:327
+#: ../plugin/controllers/i18n.py:345
 msgid "Monthly"
 msgstr "Μηνιαία"
 
-#: ../plugin/controllers/i18n.py:487
+#: ../plugin/controllers/i18n.py:527
 msgid "More"
 msgstr "Περισσότερα"
 
-#: ../plugin/controllers/i18n.py:446
+#: ../plugin/controllers/i18n.py:173
+msgid "More details"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:481
 msgid "Movie database for EPG"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:493
+#: ../plugin/controllers/i18n.py:533
 msgid "Movie search"
 msgstr "Αναζήτηση ταινιών"
 
-#: ../plugin/controllers/i18n.py:167
+#: ../plugin/controllers/i18n.py:174
 msgid "Movielist"
 msgstr "Λίστα Ταινιών"
 
-#: ../plugin/controllers/i18n.py:168
+#: ../plugin/controllers/i18n.py:175
 msgid "Movies"
 msgstr "Ταινίες"
 
-#: ../plugin/controllers/BouquetEditor.py:131
+#: ../plugin/controllers/BouquetEditor.py:132
 #: ../plugin/controllers/BouquetEditor.py:756
 msgid "Multi-Bouquet is not enabled!"
 msgstr "Τα Πολλαπλά Μπουκέτα είναι ανενεργά!"
 
-#: ../plugin/controllers/i18n.py:169
+#: ../plugin/controllers/i18n.py:176
 msgid "MultiEPG"
 msgstr "Πολλαπλός EPG"
 
-#: ../plugin/controllers/base.py:308
+#: ../plugin/controllers/base.py:358
 #, fuzzy
 msgid "NCam Webinterface"
 msgstr "Διεπαφή Δικτύου OSCam"
 
-#: ../plugin/controllers/i18n.py:170
+#: ../plugin/controllers/i18n.py:177
 msgid "Name"
 msgstr "Όνομα"
 
-#: ../plugin/controllers/i18n.py:423
-msgid "Name of the Bouquet"
-msgstr "Όνομα μπουκέτου"
+#: ../plugin/controllers/i18n.py:549
+msgid "Name (a-z)"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:424
-msgid "Name of the Marker"
-msgstr "Όνομα Σημειωτή"
+#: ../plugin/controllers/i18n.py:550
+msgid "Name (z-a)"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:171
+#: ../plugin/controllers/i18n.py:178
 msgid "Namespace"
 msgstr "Χώρος ονόματος"
 
-#: ../plugin/controllers/i18n.py:172
+#: ../plugin/controllers/i18n.py:179
 msgid "Network Interface"
 msgstr "Διεπαφή Δικτύου"
 
-#: ../plugin/controllers/i18n.py:461
+#: ../plugin/controllers/i18n.py:496
 msgid "Network Shares"
 msgstr "Κοινόχρηστα Στοιχεία Δικτύου"
 
-#: ../plugin/controllers/i18n.py:326 ../plugin/controllers/i18n.py:397
+#: ../plugin/controllers/i18n.py:344 ../plugin/controllers/i18n.py:430
 msgid "Never"
 msgstr "Ποτέ"
 
-#: ../plugin/controllers/models/services.py:331
+#: ../plugin/controllers/models/services.py:370
+#: ../plugin/controllers/i18n.py:384
 msgid "New"
 msgstr "Νέο"
 
-#: ../plugin/controllers/i18n.py:245
+#: ../plugin/controllers/i18n.py:503
+#, fuzzy
+msgid "New Bookmark:"
+msgstr "Σελιδοδείκτης"
+
+#: ../plugin/controllers/i18n.py:255
 msgid "New Name"
 msgstr "Νέο Όνομα"
 
-#: ../plugin/controllers/i18n.py:332
+#: ../plugin/controllers/i18n.py:350
 msgid "No"
 msgstr "Όχι"
+
+#: ../plugin/controllers/i18n.py:181
+#, fuzzy
+msgid "No EPG data available."
+msgstr "μη διαθέσιμη περιγραφή"
 
 #: ../plugin/controllers/BouquetEditor.py:524
 msgid "No Parent Control Setup Pin given!"
@@ -1119,17 +1309,17 @@ msgstr "Δεν δόθηκε Pin Ρυθμίσεων Γονικής Προστασ
 msgid "No answer in time"
 msgstr "Μη έγκαιρη απάντηση"
 
-#: ../plugin/controllers/BouquetEditor.py:224
-#: ../plugin/controllers/BouquetEditor.py:254
-#: ../plugin/controllers/BouquetEditor.py:280
+#: ../plugin/controllers/BouquetEditor.py:225
+#: ../plugin/controllers/BouquetEditor.py:255
+#: ../plugin/controllers/BouquetEditor.py:281
 #: ../plugin/controllers/BouquetEditor.py:324
 #: ../plugin/controllers/BouquetEditor.py:474
 msgid "No bouquet given!"
 msgstr "Δεν δόθηκε μπουκέτο!"
 
-#: ../plugin/controllers/BouquetEditor.py:92
-#: ../plugin/controllers/BouquetEditor.py:153
-#: ../plugin/controllers/BouquetEditor.py:199
+#: ../plugin/controllers/BouquetEditor.py:93
+#: ../plugin/controllers/BouquetEditor.py:154
+#: ../plugin/controllers/BouquetEditor.py:200
 msgid "No bouquet name given!"
 msgstr "Δεν δόθηκε όνομα μπουκέτου!"
 
@@ -1137,7 +1327,7 @@ msgstr "Δεν δόθηκε όνομα μπουκέτου!"
 msgid "No current service given!"
 msgstr "Δεν δόθηκε τρέχουσα υπηρεσία!"
 
-#: ../plugin/controllers/models/timers.py:407
+#: ../plugin/controllers/models/timers.py:547
 msgid "No event found! Not recording!"
 msgstr "Δεν βρέθηκε πρόγραμμα! Μη εγγραφή!"
 
@@ -1145,8 +1335,13 @@ msgstr "Δεν βρέθηκε πρόγραμμα! Μη εγγραφή!"
 msgid "No marker-name given!"
 msgstr "Δεν δόθηκε όνομα σημειωτή!"
 
-#: ../plugin/controllers/models/timers.py:330
-#: ../plugin/controllers/models/timers.py:375
+#: ../plugin/controllers/i18n.py:393
+#, fuzzy
+msgid "No matches were found in the EPG"
+msgstr "Δεν βρέθηκε ο αντίστοιχος Χρονοδιακόπτης"
+
+#: ../plugin/controllers/models/timers.py:470
+#: ../plugin/controllers/models/timers.py:515
 msgid "No matching Timer found"
 msgstr "Δεν βρέθηκε ο αντίστοιχος Χρονοδιακόπτης"
 
@@ -1154,17 +1349,17 @@ msgstr "Δεν βρέθηκε ο αντίστοιχος Χρονοδιακόπτ
 msgid "No new servicename given!"
 msgstr "Δεν δόθηκε νέο όνομα υπηρεσίας!"
 
-#: ../plugin/controllers/BouquetEditor.py:209
-#: ../plugin/controllers/BouquetEditor.py:266
+#: ../plugin/controllers/BouquetEditor.py:210
+#: ../plugin/controllers/BouquetEditor.py:267
 msgid "No position given!"
 msgstr "Δεν δόθηκε θέση!"
 
-#: ../plugin/controllers/BouquetEditor.py:137
+#: ../plugin/controllers/BouquetEditor.py:138
 msgid "No provider given!"
 msgstr "Δεν δόθηκε πάροχος!"
 
-#: ../plugin/controllers/BouquetEditor.py:230
-#: ../plugin/controllers/BouquetEditor.py:260
+#: ../plugin/controllers/BouquetEditor.py:231
+#: ../plugin/controllers/BouquetEditor.py:261
 #: ../plugin/controllers/BouquetEditor.py:297
 #: ../plugin/controllers/BouquetEditor.py:358
 #: ../plugin/controllers/BouquetEditor.py:416
@@ -1173,125 +1368,134 @@ msgstr "Δεν δόθηκε πάροχος!"
 msgid "No service given!"
 msgstr "Δεν δόθηκε υπηρεσία!"
 
-#: ../plugin/controllers/i18n.py:473
+#: ../plugin/controllers/i18n.py:513
 msgid "No, cancel"
 msgstr "Όχι, να γίνει ακύρωση"
 
-#: ../plugin/controllers/i18n.py:377
+#: ../plugin/controllers/i18n.py:410
 msgid "None"
 msgstr "Κανένα"
 
-#: ../plugin/controllers/i18n.py:309
-msgid "Not after"
-msgstr "Όχι έπειτα από"
-
-#: ../plugin/controllers/i18n.py:310
-msgid "Not before"
-msgstr "Όχι πριν από"
-
-#: ../plugin/controllers/i18n.py:175
+#: ../plugin/controllers/i18n.py:183
 msgid "Nothing"
 msgstr "Τίποτα"
 
-#: ../plugin/controllers/i18n.py:176
+#: ../plugin/controllers/i18n.py:184
 msgid "Nothing playing."
 msgstr "Καμία αναπαραγωγή."
 
-#: ../plugin/controllers/i18n.py:372
+#: ../plugin/controllers/i18n.py:405
 msgid "Notify if Conflict"
 msgstr "Ειδοποίηση αν υπάρχει διένεξη"
 
-#: ../plugin/controllers/i18n.py:373
+#: ../plugin/controllers/i18n.py:406
 msgid "Notify if Similar"
 msgstr "Ειδοποίηση αν υπάρχει Παρόμοιο"
 
-#: ../plugin/controllers/i18n.py:70
+#: ../plugin/controllers/i18n.py:72
 msgid "November"
 msgstr "Νοεμβρίου"
 
-#: ../plugin/controllers/i18n.py:177
+#: ../plugin/controllers/i18n.py:185
 msgid "Now"
 msgstr "Τώρα"
 
-#: ../plugin/controllers/base.py:306
+#: ../plugin/controllers/i18n.py:343
+msgid "Number of recordings remaining"
+msgstr "Αριθμός εγγραφών που απομένουν"
+
+#: ../plugin/controllers/base.py:356
 msgid "OSCam Webinterface"
 msgstr "Διεπαφή Δικτύου OSCam"
 
-#: ../plugin/controllers/i18n.py:184
+#: ../plugin/controllers/i18n.py:192
 msgid "OSD"
 msgstr "OSD"
 
-#: ../plugin/controllers/i18n.py:69
+#: ../plugin/controllers/i18n.py:71
 msgid "October"
 msgstr "Οκτωβρίου"
 
-#: ../plugin/controllers/i18n.py:313
-msgid "Offset after recording (in m)"
+#: ../plugin/controllers/i18n.py:331
+msgid "Offset after recording (mins)"
 msgstr "Μετατόπιση χρόνου μετά την εγγραφή (σε λεπτά)"
 
-#: ../plugin/controllers/i18n.py:312
-msgid "Offset before recording (in m)"
+#: ../plugin/controllers/i18n.py:330
+msgid "Offset before recording (mins)"
 msgstr "Μετατόπιση χρόνου πριν την εγγραφή (σε λεπτά)"
 
-#: ../plugin/controllers/i18n.py:179
+#: ../plugin/controllers/i18n.py:187
 msgid "On"
 msgstr "Ανοικτό"
 
-#: ../plugin/controllers/i18n.py:334
+#: ../plugin/controllers/i18n.py:352
 msgid "On any service"
 msgstr "Σε οποιαδήποτε υπηρεσία"
 
-#: ../plugin/controllers/i18n.py:333
+#: ../plugin/controllers/i18n.py:351
 msgid "On same service"
 msgstr "Στην ίδια υπηρεσία"
 
-#: ../plugin/controllers/i18n.py:437
+#: ../plugin/controllers/i18n.py:472
 msgid "Onid"
 msgstr "Onid"
 
-#: ../plugin/controllers/i18n.py:305
+#: ../plugin/controllers/i18n.py:326
+msgid "Only match between dates"
+msgstr "Περιορισμός σε προγράμματα συγκεκριμένων ημερομηνιών"
+
+#: ../plugin/controllers/i18n.py:323
 msgid "Only match during timespan"
 msgstr "Συσχέτιση μόνο κατά τη διάρκεια του χρονικού διαστήματος"
 
-#: ../plugin/controllers/i18n.py:180
+#: ../plugin/controllers/i18n.py:136
+msgid "Oops, no results matched your search"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:510
+msgid "Oops..."
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:188
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Διεπαφή Δικτύου Ανοικτού Λογισμικού για δέκτες με Linux"
 
-#: ../plugin/controllers/i18n.py:185
+#: ../plugin/controllers/i18n.py:193
 msgid "Open in new window"
 msgstr "Άνοιγμα σε νέο παράθυρο"
 
-#: ../plugin/plugin.py:129
+#: ../plugin/plugin.py:148
 msgid "OpenWebInterface Enabled"
 msgstr "OpenWebInterface Ενεργό"
 
-#: ../plugin/controllers/i18n.py:448
+#: ../plugin/controllers/i18n.py:483
 msgid "OpenWebif Browser Settings"
 msgstr "Ρυθμίσεις Πλοηγού OpenWebif"
 
-#: ../plugin/plugin.py:163 ../plugin/plugin.py:228 ../plugin/plugin.py:230
-#: ../plugin/plugin.py:232
+#: ../plugin/plugin.py:188 ../plugin/plugin.py:256 ../plugin/plugin.py:258
+#: ../plugin/plugin.py:260
 msgid "OpenWebif Configuration"
 msgstr "Ρυθμίσεις OpenWebif"
 
-#: ../plugin/controllers/i18n.py:449
+#: ../plugin/controllers/i18n.py:484
 msgid "OpenWebif Settings"
 msgstr "Ρυθμίσεις OpenWebif"
 
-#: ../plugin/plugin.py:115
-msgid "OpenWebif url: http://yourip:port"
-msgstr "OpenWebif url: http://yourip:port"
+#: ../plugin/plugin.py:134
+#, fuzzy
+msgid "OpenWebif url:"
+msgstr "OpenWebif URL:"
 
-#: ../plugin/controllers/i18n.py:440
-#: ../plugin/controllers/models/services.py:225
+#: ../plugin/controllers/models/services.py:264
+#: ../plugin/controllers/i18n.py:475
 msgid "Orbital Position"
 msgstr "Τροχιακή Θέση"
 
-#: ../plugin/controllers/i18n.py:304
+#: ../plugin/controllers/i18n.py:322
 msgid "Override found with alternative service"
 msgstr "Βρέθηκε υπερκάλυψη με την εναλλακτική υπηρεσία"
 
-#: ../plugin/controllers/i18n.py:470
+#: ../plugin/controllers/i18n.py:507
 msgid "Packages"
 msgstr "Πακέτα"
 
@@ -1304,267 +1508,277 @@ msgstr "Το Pin Ρυθμίσεων Γονικού Ελέγχου είναι λ�
 msgid "Parent Control is not activated."
 msgstr "Ο γονικός έλεγχος δεν είναι ενεργός."
 
-#: ../plugin/controllers/i18n.py:356
-msgid "Parse"
-msgstr "Ανάλυση"
-
-#: ../plugin/controllers/i18n.py:395
-msgid "Parse Autotimer"
+#: ../plugin/controllers/i18n.py:428
+msgid "Parse AutoTimer"
 msgstr "Ανάλυση Αυτόματου Χρονοδιακόπτη"
 
-#: ../plugin/controllers/i18n.py:435
+#: ../plugin/controllers/i18n.py:470
 msgid "Pcrpid"
 msgstr "Pcrpid"
 
-#: ../plugin/controllers/i18n.py:186
+#: ../plugin/controllers/i18n.py:194
 msgid "PiP"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:403
+#: ../plugin/controllers/i18n.py:436
 msgid "Picture in Picture"
 msgstr "Εικόνα σε Εικόνα"
 
-#: ../plugin/controllers/i18n.py:404
+#: ../plugin/controllers/i18n.py:437
 msgid "Picture in Picture (hidden)"
 msgstr "Εικόνα σε Εικόνα (κρυφό)"
 
-#: ../plugin/controllers/i18n.py:381
+#: ../plugin/controllers/i18n.py:414
 msgid "Plain"
 msgstr "Απλό"
 
-#: ../plugin/controllers/i18n.py:187
+#: ../plugin/controllers/i18n.py:195
 msgid "Playback"
 msgstr "Αναπαραγωγή"
 
-#: ../plugin/controllers/i18n.py:188
+#: ../plugin/plugin.py:178
+msgid "Playback IPTV Streams in browser"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:196
 msgid "Playlist"
 msgstr "Λίστα αναπαραγωγής"
 
-#: ../plugin/controllers/i18n.py:427
-msgid "Please enter filename"
-msgstr "Εισαγωγή νέου ονόματος αρχείου"
+#: ../plugin/controllers/i18n.py:559
+#, fuzzy
+msgid "Playlist format"
+msgstr "Λίστα αναπαραγωγής"
 
-#: ../plugin/controllers/i18n.py:432
+#: ../plugin/controllers/i18n.py:467
 msgid "Pmtpid"
 msgstr "Pmtpid"
 
-#: ../plugin/controllers/i18n.py:189
+#: ../plugin/controllers/i18n.py:197
 msgid "Power Control"
 msgstr "Έλεγχος Τροφοδοσίας"
 
-#: ../plugin/controllers/models/timers.py:596
+#: ../plugin/controllers/models/timers.py:743
 msgid "PowerTimer feature not available"
 msgstr "Ο χρονοδιακόπτης απενεργοποίησης δεν είναι διαθέσιμος"
 
-#: ../plugin/controllers/i18n.py:463
+#: ../plugin/controllers/i18n.py:389
+msgid "Preview"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:498
 msgid "Primetimes"
 msgstr "Ζώνες Αιχμής"
 
-#: ../plugin/controllers/i18n.py:190
+#: ../plugin/controllers/i18n.py:378
+msgid "Process"
+msgstr "Ανάλυση"
+
+#: ../plugin/controllers/i18n.py:198
 msgid "Provider"
 msgstr "Πάροχος"
 
-#: ../plugin/controllers/i18n.py:191
+#: ../plugin/controllers/i18n.py:199
 msgid "Providers"
 msgstr "Πάροχοι"
 
-#: ../plugin/controllers/i18n.py:192
+#: ../plugin/controllers/i18n.py:200
 msgid "Radio"
 msgstr "Ραδιόφωνο"
 
-#: ../plugin/controllers/i18n.py:108
-msgid "Really delete the recording"
-msgstr "Να γίνει σίγουρα διαγραφή της εγγραφής"
-
-#: ../plugin/controllers/i18n.py:110
-msgid "Really delete the timer"
-msgstr "Να γίνει σίγουρα διαγραφή του χρονοδιακόπτη"
-
-#: ../plugin/controllers/i18n.py:200
-msgid "Really rename the recording"
-msgstr "Να γίνει σίγουρα μετονομασία της εγγραφής"
-
-#: ../plugin/controllers/i18n.py:154
-#, fuzzy
-msgid "Really start instant record now?"
-msgstr "Εκκίνηση Άμεσης Εγγραφής"
-
-#: ../plugin/controllers/i18n.py:193
+#: ../plugin/controllers/i18n.py:201
 msgid "Reboot Box"
 msgstr "Επανεκκίνηση Δέκτη"
 
-#: ../plugin/controllers/i18n.py:324
-msgid "Record a maximum of x times"
+#: ../plugin/controllers/i18n.py:342
+msgid "Record a maximum of # times"
 msgstr "Εγγραφή το μέγιστο x φορές"
 
-#: ../plugin/controllers/i18n.py:431
-msgid "Record+ZAP"
-msgstr "Εγγραφή+ΖΑΠ"
-
-#: ../plugin/controllers/i18n.py:194
+#: ../plugin/controllers/i18n.py:202
 msgid "Recording Status"
 msgstr "Κατάσταση Εγγραφής"
 
-#: ../plugin/controllers/i18n.py:195 ../plugin/controllers/i18n.py:376
+#: ../plugin/controllers/i18n.py:203 ../plugin/controllers/i18n.py:409
 msgid "Refresh"
 msgstr "Ανανέωση"
 
-#: ../plugin/controllers/i18n.py:197
+#: ../plugin/controllers/i18n.py:205
 msgid "Refresh Timer"
 msgstr "Ανανέωση Χρονοδιακόπτη"
 
-#: ../plugin/controllers/i18n.py:196
+#: ../plugin/controllers/i18n.py:204
 msgid "Refresh automatically every"
 msgstr "Αυτόματη ανανέωση κάθε"
 
-#: ../plugin/controllers/i18n.py:408
+#: ../plugin/controllers/i18n.py:440
 msgid "Refresh now"
 msgstr "Ανανέωση τώρα"
 
-#: ../plugin/controllers/i18n.py:354 ../plugin/controllers/i18n.py:406
-#: ../plugin/controllers/i18n.py:414
+#: ../plugin/controllers/i18n.py:294
 msgid "Reload"
 msgstr "Ανανέωση"
 
-#: ../plugin/controllers/i18n.py:198
+#: ../plugin/controllers/i18n.py:206
 msgid "Remote"
 msgstr "Τηλεχειριστήριο"
 
-#: ../plugin/controllers/i18n.py:482
+#: ../plugin/controllers/i18n.py:522
 msgid "Remove Package"
 msgstr "Αφαίρεση Πακέτου"
 
-#: ../plugin/controllers/i18n.py:420
+#: ../plugin/controllers/i18n.py:388
+#, fuzzy
+msgid "Remove filter"
+msgstr "Τηλεχειριστήριο"
+
+#: ../plugin/controllers/i18n.py:453 ../plugin/controllers/i18n.py:512
 msgid "Rename"
 msgstr "Μετονομασία"
 
-#: ../plugin/controllers/i18n.py:416
+#: ../plugin/controllers/i18n.py:448
 msgid "Rename Bouquet"
 msgstr "Μετονομασία Μπουκέτου"
 
-#: ../plugin/controllers/i18n.py:199
+#: ../plugin/controllers/i18n.py:207
 msgid "Rename Recording"
 msgstr "Μετονομασία Εγγραφής"
 
-#: ../plugin/controllers/i18n.py:201
+#: ../plugin/controllers/i18n.py:209
 msgid "Repeated"
 msgstr "Επαναλαμβανόμενο"
 
-#: ../plugin/plugin.py:143
+#: ../plugin/plugin.py:165
 msgid "Require client cert for HTTPS"
 msgstr "Απαίτηση πιστοποίησης πελάτη για HTTPS"
 
-#: ../plugin/controllers/i18n.py:331
+#: ../plugin/controllers/i18n.py:349
 msgid "Require description to be unique"
 msgstr "Απαίτηση μοναδικότητας της περιγραφής"
 
-#: ../plugin/controllers/i18n.py:330
+#: ../plugin/controllers/i18n.py:555
+#, fuzzy
+msgid "Reset"
+msgstr "Μηδενισμός μετρητών"
+
+#: ../plugin/controllers/i18n.py:348
 msgid "Reset count"
 msgstr "Μηδενισμός μετρητών"
 
-#: ../plugin/controllers/i18n.py:202
+#: ../plugin/controllers/i18n.py:210
 msgid "Restart GUI"
 msgstr "Επανεκκίνηση GUI"
 
-#: ../plugin/controllers/i18n.py:131
-msgid "Restrict to Bouquets"
+#: ../plugin/controllers/i18n.py:135 ../plugin/controllers/i18n.py:361
+msgid "Restrict to bouquets"
 msgstr "Περιορισμός στα Μπουκέτα"
 
-#: ../plugin/controllers/i18n.py:308
-msgid "Restrict to events on certain dates"
-msgstr "Περιορισμός σε προγράμματα συγκεκριμένων ημερομηνιών"
+#: ../plugin/controllers/i18n.py:362
+#, fuzzy
+msgid "Restrict to channels"
+msgstr "Περιορισμός στα Μπουκέτα"
 
-#: ../plugin/controllers/i18n.py:282
+#: ../plugin/controllers/i18n.py:293
 msgid "Root"
 msgstr "Ρίζα"
 
-#: ../plugin/controllers/models/info.py:54
+#: ../plugin/controllers/models/info.py:67
 msgid "SLAAC"
 msgstr "SLAAC"
 
-#: ../plugin/controllers/i18n.py:226
+#: ../plugin/controllers/i18n.py:235
 msgid "SNR"
 msgstr "SNR"
 
-#: ../plugin/controllers/i18n.py:494
-msgid "START TYPING"
-msgstr "ΕΚΚΙΝΗΣΗ ΠΛΗΚΤΡΟΛΟΓΗΣΗΣ"
-
-#: ../plugin/controllers/i18n.py:41
+#: ../plugin/controllers/i18n.py:43
 msgid "Sa"
 msgstr "Σά"
 
-#: ../plugin/controllers/i18n.py:204
+#: ../plugin/controllers/i18n.py:212
 msgid "Safe mode"
 msgstr "Ασφαλής λειτουργία"
 
-#: ../plugin/controllers/i18n.py:50
+#: ../plugin/controllers/models/movies.py:54
+#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:52
 msgid "Sat"
 msgstr "Σάβ"
 
-#: ../plugin/controllers/i18n.py:205
+#: ../plugin/controllers/i18n.py:213
 msgid "Satellites"
 msgstr "Δορυφόροι"
 
-#: ../plugin/controllers/i18n.py:206
+#: ../plugin/controllers/i18n.py:214
 msgid "Satfinder"
 msgstr "Έλεγχος σήματος"
 
-#: ../plugin/controllers/i18n.py:57
+#: ../plugin/controllers/i18n.py:59
 msgid "Saturday"
 msgstr "Σάββατο"
 
-#: ../plugin/plugin.py:114 ../plugin/controllers/i18n.py:207
-#: ../plugin/controllers/i18n.py:355 ../plugin/controllers/i18n.py:407
+#: ../plugin/controllers/i18n.py:215 ../plugin/controllers/i18n.py:377
+#: ../plugin/controllers/i18n.py:439 ../plugin/plugin.py:126
 msgid "Save"
 msgstr "Αποθήκευση"
 
-#: ../plugin/controllers/i18n.py:208
+#: ../plugin/controllers/i18n.py:216
 msgid "Screenshot"
 msgstr "Στιγμιότυπο"
 
-#: ../plugin/controllers/i18n.py:209 ../plugin/controllers/i18n.py:413
+#: ../plugin/controllers/i18n.py:217 ../plugin/controllers/i18n.py:445
 msgid "Search"
 msgstr "Αναζήτηση"
 
-#: ../plugin/controllers/i18n.py:210
+#: ../plugin/controllers/i18n.py:218
 #, fuzzy
 msgid "Search CSFD"
 msgstr "Αναζήτηση IMDb"
 
-#: ../plugin/controllers/i18n.py:211
+#: ../plugin/controllers/i18n.py:219
 msgid "Search IMDb"
 msgstr "Αναζήτηση IMDb"
 
-#: ../plugin/controllers/i18n.py:212
+#: ../plugin/controllers/i18n.py:220
 msgid "Search KinoPoisk"
 msgstr "Αναζήτηση στο KinoPoisk"
 
-#: ../plugin/controllers/i18n.py:298
+#: ../plugin/controllers/i18n.py:221
+#, fuzzy
+msgid "Search TV Guide UK"
+msgstr "Οδηγός TV"
+
+#: ../plugin/controllers/i18n.py:446
+msgid "Search by name, sd / hd / uhd, or provider"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:316
+#, fuzzy
 msgid "Search strictness"
-msgstr "Αυστηρότητα αναζήτησης"
+msgstr "Αναζήτηση στο KinoPoisk"
 
-#: ../plugin/controllers/i18n.py:290
+#: ../plugin/controllers/i18n.py:302
+#, fuzzy
 msgid "Search type"
-msgstr "Τύπος αναζήτησης"
+msgstr "Αναζήτηση"
 
-#: ../plugin/controllers/i18n.py:495
-msgid "Select IPK File for Upload"
+#: ../plugin/controllers/i18n.py:535
+msgid "Select IPK file for upload"
 msgstr "Επιλογή αρχείου IPK για Ανέβασμα"
 
-#: ../plugin/controllers/i18n.py:214
+#: ../plugin/controllers/i18n.py:554
+msgid "Select..."
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:223
 msgid "Send Message"
 msgstr "Αποστολή Μηνύματος"
 
-#: ../plugin/controllers/i18n.py:216
+#: ../plugin/controllers/i18n.py:225
 msgid "Send a Message"
 msgstr "Αποστολή ενός Μηνύματος"
 
-#: ../plugin/controllers/i18n.py:68
+#: ../plugin/controllers/i18n.py:70
 msgid "September"
 msgstr "Σεπτεμβρίου"
 
-#: ../plugin/controllers/i18n.py:217
+#: ../plugin/controllers/i18n.py:226
 msgid "Service"
 msgstr "Υπηρεσία"
 
@@ -1578,7 +1792,7 @@ msgstr "Η υπηρεσία %s προστέθηκε."
 msgid "Service %s already exists in bouquet %s."
 msgstr "Η υπηρεσία %s υπάρχει ήδη στο μπουκέτο %s."
 
-#: ../plugin/controllers/BouquetEditor.py:248
+#: ../plugin/controllers/BouquetEditor.py:249
 #, python-format
 msgid "Service %s can not be removed."
 msgstr "Αδυναμία αφαίρεσης της υπηρεσίας %s."
@@ -1593,22 +1807,22 @@ msgstr "Η υπηρεσία %s είναι κλειδωμένη."
 msgid "Service %s is unlocked."
 msgstr "Η υπηρεσία %s είναι ξεκλείδωτη."
 
-#: ../plugin/controllers/BouquetEditor.py:273
+#: ../plugin/controllers/BouquetEditor.py:274
 #, python-format
 msgid "Service %s moved."
 msgstr "Η υπηρεσία %s μετακινήθηκε."
 
-#: ../plugin/controllers/BouquetEditor.py:247
+#: ../plugin/controllers/BouquetEditor.py:248
 #, python-format
 msgid "Service %s removed from bouquet %s."
 msgstr "Η υπηρεσία %s αφαιρέθηκε από το μπουκέτο %s."
 
-#: ../plugin/controllers/BouquetEditor.py:239
+#: ../plugin/controllers/BouquetEditor.py:240
 #, python-format
 msgid "Service %s removed."
 msgstr "Η υπηρεσία %s αφαιρέθηκε."
 
-#: ../plugin/controllers/BouquetEditor.py:274
+#: ../plugin/controllers/BouquetEditor.py:275
 msgid "Service can not be moved."
 msgstr "Αδυναμία μετακίνησης της υπηρεσίας."
 
@@ -1624,775 +1838,915 @@ msgstr "Η υπηρεσία δεν είναι εναλλακτική."
 msgid "Service renamed successfully."
 msgstr "Επιτυχία μετονομασίας Υπηρεσίας."
 
-#: ../plugin/controllers/models/services.py:333
+#: ../plugin/controllers/models/services.py:372
 msgid "Services"
 msgstr "Υπηρεσίες"
 
-#: ../plugin/controllers/i18n.py:314
+#: ../plugin/controllers/i18n.py:332
 msgid "Set maximum duration"
 msgstr "Ορισμός μέγιστης διάρκειας"
 
-#: ../plugin/controllers/base.py:274 ../plugin/controllers/i18n.py:218
-#: ../plugin/controllers/i18n.py:359
+#: ../plugin/controllers/base.py:321 ../plugin/controllers/i18n.py:227
+#: ../plugin/controllers/i18n.py:381
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
-#: ../plugin/controllers/i18n.py:223
+#: ../plugin/controllers/i18n.py:232
 msgid "Show EPG for"
 msgstr "Εμφάνιση EPG για"
 
-#: ../plugin/controllers/i18n.py:221
+#: ../plugin/controllers/i18n.py:230
 msgid "Show Full OpenWebif"
 msgstr "Εμφάνιση Πλήρους OpenWebif"
 
-#: ../plugin/controllers/i18n.py:445
-msgid "Show Picon in channel list"
-msgstr "Εμφάνιση Λογότυπου στη λίστα καναλιών"
+#: ../plugin/controllers/i18n.py:542
+msgid "Show IPTV channels in selection (eg. Autotimer)"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:501
-#, fuzzy
-msgid "Show Service type in channel list"
-msgstr "Εμφάνιση Λογότυπου στη λίστα καναλιών"
-
-#: ../plugin/plugin.py:132 ../plugin/controllers/i18n.py:181
+#: ../plugin/controllers/i18n.py:189 ../plugin/plugin.py:154
 msgid "Show box name in header"
 msgstr "Εμφάνιση ονόματος δέκτη στην κεφαλίδα"
 
-#: ../plugin/controllers/i18n.py:500
+#: ../plugin/controllers/i18n.py:540
 msgid "Show details"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:222
+#: ../plugin/controllers/i18n.py:231
 msgid "Show full remote"
 msgstr "Εμφάνιση πλήρους τηλεχειριστηρίου"
 
-#: ../plugin/controllers/i18n.py:369
-msgid "Show in Extensionsmenu"
+#: ../plugin/controllers/i18n.py:402
+msgid "Show in Extensions menu"
 msgstr "Εμφάνιση στο μενού επεκτάσεων"
 
-#: ../plugin/controllers/i18n.py:224
+#: ../plugin/controllers/i18n.py:545
+msgid "Show picon background"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:544
+msgid "Show picons"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:480
+msgid "Show picons in channel list"
+msgstr "Εμφάνιση Λογότυπου στη λίστα καναλιών"
+
+#: ../plugin/controllers/i18n.py:541
+#, fuzzy
+msgid "Show service type in channel list"
+msgstr "Εμφάνιση Λογότυπου στη λίστα καναλιών"
+
+#: ../plugin/controllers/i18n.py:233
 msgid "Shutdown"
 msgstr "Τερματισμός"
 
-#: ../plugin/controllers/i18n.py:438
+#: ../plugin/controllers/i18n.py:473
 msgid "Sid"
 msgstr "Sid"
 
-#: ../plugin/controllers/i18n.py:357
+#: ../plugin/controllers/i18n.py:379
 msgid "Simulate"
 msgstr "Εξομοίωση"
 
-#: ../plugin/controllers/i18n.py:225
+#: ../plugin/controllers/i18n.py:234
 msgid "Site and sources"
 msgstr "Ιστοσελίδα και πηγές"
 
-#: ../plugin/controllers/models/timers.py:674
-#: ../plugin/controllers/models/timers.py:701
-#: ../plugin/controllers/models/timers.py:730
-#: ../plugin/controllers/models/timers.py:811
+#: ../plugin/controllers/i18n.py:567
+msgid "Skins"
+msgstr ""
+
+#: ../plugin/controllers/models/timers.py:827
+#: ../plugin/controllers/models/timers.py:860
+#: ../plugin/controllers/models/timers.py:886
+#: ../plugin/controllers/models/timers.py:915
+#: ../plugin/controllers/models/timers.py:961
+#: ../plugin/controllers/models/timers.py:1043
 msgid "SleepTimer error"
 msgstr "Σφάλμα Χρονοδιακόπτη Ύπνου"
 
-#: ../plugin/controllers/models/timers.py:719
-#: ../plugin/controllers/models/timers.py:788
-#: ../plugin/controllers/models/timers.py:806
+#: ../plugin/controllers/models/timers.py:904
+#: ../plugin/controllers/models/timers.py:1019
+#: ../plugin/controllers/models/timers.py:1038
 msgid "Sleeptimer has been disabled"
 msgstr "Ο χρονοδιακόπτης ύπνου απενεργοποιήθηκε"
 
-#: ../plugin/controllers/models/timers.py:669
-#: ../plugin/controllers/models/timers.py:695
+#: ../plugin/controllers/models/timers.py:822
+#: ../plugin/controllers/models/timers.py:854
+#: ../plugin/controllers/models/timers.py:881
+#: ../plugin/controllers/models/timers.py:955
 msgid "Sleeptimer is disabled"
 msgstr "Ο χρονοδιακόπτης ύπνου είναι ανενεργός"
 
-#: ../plugin/controllers/models/timers.py:669
-#: ../plugin/controllers/models/timers.py:695
+#: ../plugin/controllers/models/timers.py:822
+#: ../plugin/controllers/models/timers.py:854
+#: ../plugin/controllers/models/timers.py:881
+#: ../plugin/controllers/models/timers.py:955
 msgid "Sleeptimer is enabled"
 msgstr "Ο χρονοδιακόπτης ύπνου είναι ενεργός"
 
-#: ../plugin/controllers/models/timers.py:725
-#: ../plugin/controllers/models/timers.py:788
-#: ../plugin/controllers/models/timers.py:801
+#: ../plugin/controllers/models/timers.py:910
+#: ../plugin/controllers/models/timers.py:1019
+#: ../plugin/controllers/models/timers.py:1033
 #, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Ο χρονοδιακόπτης ύπνου έχει οριστεί σε %d λεπτά"
 
-#: ../plugin/controllers/i18n.py:227
+#: ../plugin/controllers/i18n.py:236
 msgid "Software"
 msgstr "Λογισμικό"
 
-#: ../plugin/controllers/i18n.py:174
+#: ../plugin/controllers/i18n.py:182
 msgid "Sorry this page is not yet implemented"
 msgstr "Λυπούμαστε, αυτή η σελίδα δεν είναι ακόμα διαθέσιμη"
 
-#: ../plugin/controllers/i18n.py:451
+#: ../plugin/controllers/i18n.py:548
+msgid "Sort"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:486
 msgid "Spinner"
 msgstr "Κινούμενο γραφικό"
 
-#: ../plugin/controllers/i18n.py:439
+#: ../plugin/controllers/i18n.py:474
 msgid "Sref"
 msgstr "Αναφ"
 
-#: ../plugin/controllers/i18n.py:228
+#: ../plugin/controllers/i18n.py:237
 msgid "Standby"
 msgstr "Αναμονή"
 
-#: ../plugin/controllers/i18n.py:229
+#: ../plugin/controllers/i18n.py:238
 msgid "Standby Toggle"
 msgstr "Εναλλαγή Αναμονής"
 
-#: ../plugin/controllers/i18n.py:124
+#: ../plugin/controllers/i18n.py:126
 msgid "Start"
 msgstr "Εκκίνηση"
 
-#: ../plugin/controllers/i18n.py:232
+#: ../plugin/controllers/i18n.py:241
 msgid "Start Instant Record"
 msgstr "Εκκίνηση Άμεσης Εγγραφής"
 
-#: ../plugin/controllers/i18n.py:231
+#: ../plugin/controllers/i18n.py:240
 msgid "Start time is after end time"
 msgstr "Η ώρα έναρξης είναι μετά την ώρα τερματισμού"
 
-#: ../plugin/controllers/i18n.py:233
+#: ../plugin/controllers/i18n.py:534
+msgid "Start typing..."
+msgstr "ΕΚΚΙΝΗΣΗ ΠΛΗΚΤΡΟΛΟΓΗΣΗΣ"
+
+#: ../plugin/controllers/i18n.py:390
+msgid "State"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:242
 msgid "Stream"
 msgstr "Ροή"
 
-#: ../plugin/controllers/i18n.py:42
+#: ../plugin/controllers/i18n.py:565
+#, fuzzy
+msgid "Stream Clients"
+msgstr "Ροή"
+
+#: ../plugin/plugin.py:173
+#, fuzzy
+msgid "Streaming port"
+msgstr "Ροή"
+
+#: ../plugin/controllers/i18n.py:44
 msgid "Su"
 msgstr "Κυ"
 
-#: ../plugin/controllers/i18n.py:234
+#: ../plugin/controllers/i18n.py:553
+msgid "Subdirectories"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:243
 msgid "Subnet mask"
 msgstr "Μάσκα Υποδικτύου"
 
-#: ../plugin/controllers/i18n.py:235
+#: ../plugin/controllers/i18n.py:244
 msgid "Subservices"
 msgstr "Υπο-υπηρεσίες"
 
-#: ../plugin/controllers/i18n.py:44
+#: ../plugin/controllers/models/movies.py:54
+#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:46
 msgid "Sun"
 msgstr "Κυρ"
 
-#: ../plugin/controllers/i18n.py:58
+#: ../plugin/controllers/i18n.py:60
 msgid "Sunday"
 msgstr "Κυριακή"
 
-#: ../plugin/controllers/i18n.py:178
+#: ../plugin/controllers/i18n.py:186
 msgid "System OE"
 msgstr "ΟΕ Συστήματος"
 
-#: ../plugin/controllers/models/info.py:392
-#: ../plugin/controllers/models/info.py:404
-#: ../plugin/controllers/models/info.py:406
+#: ../plugin/controllers/models/info.py:400
+#: ../plugin/controllers/models/info.py:412
+#: ../plugin/controllers/models/info.py:414
 msgid "TB"
 msgstr "TB"
 
-#: ../plugin/controllers/i18n.py:261
+#: ../plugin/controllers/i18n.py:271
 msgid "TV"
 msgstr "TV"
 
-#: ../plugin/controllers/i18n.py:455
+#: ../plugin/controllers/i18n.py:490
 msgid "TV Guide"
 msgstr "Οδηγός TV"
 
-#: ../plugin/controllers/i18n.py:262
+#: ../plugin/controllers/i18n.py:272
 msgid "TV Multi EPG"
 msgstr "Πολλαπλός EPG TV"
 
-#: ../plugin/controllers/i18n.py:236 ../plugin/controllers/i18n.py:337
+#: ../plugin/controllers/i18n.py:245 ../plugin/controllers/i18n.py:355
 msgid "Tags"
 msgstr "Ετικέτες"
 
-#: ../plugin/controllers/i18n.py:237
+#: ../plugin/controllers/i18n.py:246
 msgid "Teletext"
 msgstr "Τηλεκείμενο"
 
-#: ../plugin/controllers/i18n.py:238
+#: ../plugin/controllers/i18n.py:247
 msgid "Television"
 msgstr "Τηλεόραση"
 
-#: ../plugin/controllers/i18n.py:239
+#: ../plugin/controllers/i18n.py:248
 msgid "Template Engine"
 msgstr "Μηχανή Προτύπου"
 
-#: ../plugin/controllers/base.py:339
+#: ../plugin/controllers/base.py:408
 msgid "Terminal"
 msgstr "Τερματικό"
 
-#: ../plugin/controllers/models/services.py:340
+#: ../plugin/controllers/models/services.py:379
 msgid "Terrestrial"
 msgstr "Επίγειο"
 
-#: ../plugin/controllers/i18n.py:240
+#: ../plugin/controllers/i18n.py:249
 msgid "Text"
 msgstr "Κείμενο"
 
-#: ../plugin/controllers/i18n.py:39
+#: ../plugin/controllers/i18n.py:41
 msgid "Th"
 msgstr "Πέ"
 
-#: ../plugin/controllers/web.py:73
+#: ../plugin/controllers/web.py:91 ../plugin/controllers/web.py:1554
 #, python-format
 msgid "The parameter '%s' can't be empty"
 msgstr "Η παράμετρος '%s' δεν μπορεί να είναι κενή"
 
-#: ../plugin/controllers/web.py:322
+#: ../plugin/controllers/web.py:340
 msgid "The parameter 'command' must be a number"
 msgstr "Η παράμετρος 'εντολή' πρέπει να είναι αριθμός"
 
-#: ../plugin/controllers/models/timers.py:369
+#: ../plugin/controllers/models/timers.py:509
 #, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "Ο χρονοδιακόπτης '%s' έχει %s με επιτυχία"
 
-#: ../plugin/controllers/models/timers.py:325
+#: ../plugin/controllers/models/timers.py:459
+#: ../plugin/controllers/models/timers.py:465
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Ο χρονοδιακόπτης '%s' διαγράφτηκε επιτυχώς"
 
-#: ../plugin/controllers/models/timers.py:361
+#: ../plugin/controllers/models/timers.py:501
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "Γίνεται τώρα εγγραφή του χρονοδιακόπτη '%s'! Δεν απενεργοποιήθηκε!"
 
-#: ../plugin/controllers/i18n.py:450
+#: ../plugin/controllers/i18n.py:485
 msgid "Theme"
+msgstr "Θέμα"
+
+#: ../plugin/controllers/i18n.py:274 ../plugin/plugin.py:152
+#, fuzzy
+msgid "Theme mode"
 msgstr "Θέμα"
 
 #: ../plugin/controllers/BouquetEditor.py:318
 msgid "This service can not be added."
 msgstr "Αδυναμία προσθήκης αυτής της υπηρεσίας."
 
-#: ../plugin/controllers/i18n.py:48
+#: ../plugin/controllers/models/movies.py:54
+#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:50
 msgid "Thu"
 msgstr "Πέμ"
 
-#: ../plugin/controllers/i18n.py:55
+#: ../plugin/controllers/i18n.py:57
 msgid "Thursday"
 msgstr "Πέμπτη"
 
-#: ../plugin/controllers/i18n.py:241
+#: ../plugin/controllers/i18n.py:251
 msgid "Time"
 msgstr "Χρόνος"
 
-#: ../plugin/controllers/i18n.py:456
+#: ../plugin/controllers/i18n.py:491
 msgid "Timeline"
 msgstr "Γραμμή χρόνου"
 
-#: ../plugin/controllers/i18n.py:242
+#: ../plugin/controllers/i18n.py:252
 msgid "Timeout"
 msgstr "Χρόνος Λήξης"
 
-#: ../plugin/controllers/i18n.py:247
+#: ../plugin/controllers/i18n.py:257
 msgid "Timer"
 msgstr "Χρονοδιακόπτης"
 
-#: ../plugin/controllers/models/timers.py:201
+#: ../plugin/controllers/models/timers.py:318
 #, python-format
 msgid "Timer '%s' added"
 msgstr "Ο χρονοδιακόπτης '%s' προστέθηκε"
 
-#: ../plugin/controllers/models/timers.py:355
+#: ../plugin/controllers/models/timers.py:495
 #, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Ο χρονοδιακόπτης '%s' υπάρχει ήδη!"
 
-#: ../plugin/controllers/models/timers.py:287
+#: ../plugin/controllers/models/timers.py:421
 #, python-format
 msgid "Timer '%s' changed"
 msgstr "Ο χρονοδιακόπτης '%s' άλλαξε"
 
-#: ../plugin/controllers/models/timers.py:349
+#: ../plugin/controllers/models/timers.py:489
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "Ο χρονοδιακόπτης '%s' δεν ενεργοποιήθηκε κατά τη Διένεξη"
 
-#: ../plugin/controllers/models/timers.py:306
+#: ../plugin/controllers/models/timers.py:440
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "Ο χρονοδιακόπτης '%s' δεν αποθηκεύτηκε λόγω διένεξης"
 
-#: ../plugin/controllers/i18n.py:443
+#: ../plugin/controllers/i18n.py:478
 msgid "Timer Added"
 msgstr "Ο Χρονοδιακόπτης Προστέθηκε"
 
-#: ../plugin/controllers/i18n.py:243
+#: ../plugin/controllers/i18n.py:253
 msgid "Timer added"
 msgstr "Έγινε προσθήκη του χρονοδιακόπτη"
 
-#: ../plugin/controllers/models/timers.py:441
+#: ../plugin/controllers/models/timers.py:581
 msgid "Timer conflict detected! Not recording!"
 msgstr "Εντοπίστηκε διένεξη χρονοδιακόπτη! Μη εγγραφή!"
 
-#: ../plugin/controllers/i18n.py:301
+#: ../plugin/controllers/i18n.py:319
 msgid "Timer type"
 msgstr "Τύπος χρονοδιακόπτη"
 
-#: ../plugin/controllers/models/timers.py:391
+#: ../plugin/controllers/models/timers.py:531
 msgid "TimerList has been saved"
 msgstr "Η λίστα χρονοδιακοπτών αποθηκεύτηκε"
 
-#: ../plugin/controllers/i18n.py:244
+#: ../plugin/controllers/i18n.py:254
 msgid "Timerlist"
 msgstr "Λίστα χρονοδιακοπτών"
 
-#: ../plugin/controllers/i18n.py:248 ../plugin/controllers/i18n.py:358
+#: ../plugin/controllers/i18n.py:258 ../plugin/controllers/i18n.py:380
 msgid "Timers"
 msgstr "Χρονοδιακόπτες"
 
-#: ../plugin/controllers/i18n.py:249
+#: ../plugin/controllers/i18n.py:259
 msgid "Title"
 msgstr "Τίτλος"
 
-#: ../plugin/controllers/i18n.py:252
+#: ../plugin/controllers/i18n.py:328
+msgid "To date"
+msgstr "Όχι πριν από"
+
+#: ../plugin/controllers/models/movies.py:57
+#: ../plugin/controllers/models/timers.py:48
+msgid "Today"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:262
 msgid "Transcode"
 msgstr "Διακωδικοποίηση"
 
-#: ../plugin/controllers/i18n.py:280
+#: ../plugin/controllers/i18n.py:291
 msgid "Translation to Spanish"
 msgstr "Μετάφραση στα Ισπανικά"
 
-#: ../plugin/controllers/i18n.py:367
-msgid "Try Guessing"
+#: ../plugin/controllers/i18n.py:400
+msgid "Try guessing"
 msgstr "Προσπάθεια προσδιορισμού"
 
-#: ../plugin/controllers/i18n.py:436
+#: ../plugin/controllers/i18n.py:471
 msgid "Tsid"
 msgstr "Tsid"
 
-#: ../plugin/controllers/i18n.py:37
+#: ../plugin/controllers/i18n.py:39
 msgid "Tu"
 msgstr "Τρ"
 
-#: ../plugin/controllers/i18n.py:46
+#: ../plugin/controllers/models/movies.py:54
+#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:48
 msgid "Tue"
 msgstr "Τρί"
 
-#: ../plugin/controllers/i18n.py:53
+#: ../plugin/controllers/i18n.py:55
 msgid "Tuesday"
 msgstr "Τρίτη"
 
-#: ../plugin/controllers/i18n.py:253
+#: ../plugin/controllers/i18n.py:263
 msgid "Tuner Bit Error Rate BER"
 msgstr "Ρυθμός Σφαλμάτων Tuner BER"
 
-#: ../plugin/controllers/i18n.py:254
+#: ../plugin/controllers/i18n.py:264
 msgid "Tuner Number"
 msgstr "Αριθμός Tuner"
 
-#: ../plugin/controllers/i18n.py:255
+#: ../plugin/controllers/i18n.py:265
 msgid "Tuner Signal"
 msgstr "Σήμα Tuner"
 
-#: ../plugin/controllers/i18n.py:258
+#: ../plugin/controllers/i18n.py:268
 msgid "Tuner Signal Power AGC"
 msgstr "Ισχύς Σήματος Tuner AGC"
 
-#: ../plugin/controllers/i18n.py:256
+#: ../plugin/controllers/i18n.py:266
 msgid "Tuner Signal Quality SNR"
 msgstr "Ποιότητα Σήματος Tuner SNR"
 
-#: ../plugin/controllers/i18n.py:257
+#: ../plugin/controllers/i18n.py:267
 msgid "Tuner Signal Quality SNR_DB"
 msgstr "Ποιότητα Σήματος Tuner SNR_DB"
 
-#: ../plugin/controllers/i18n.py:259
+#: ../plugin/controllers/i18n.py:269
 msgid "Tuner Type"
 msgstr "Τύπος Tuner"
 
-#: ../plugin/controllers/i18n.py:260
+#: ../plugin/controllers/i18n.py:270
 msgid "Tuners"
 msgstr "Tuners"
 
-#: ../plugin/controllers/i18n.py:263
+#: ../plugin/controllers/i18n.py:273
 msgid "Type"
 msgstr "Τύπος"
 
-#: ../plugin/controllers/web.py:228
+#: ../plugin/controllers/web.py:247
 #, python-format
 msgid "Unknown Volume command %s"
 msgstr "Άγνωστη εντολή Έντασης %s"
 
-#: ../plugin/controllers/models/timers.py:536
+#: ../plugin/controllers/models/timers.py:676
 #, python-format
 msgid "Unknown command: '%s'"
 msgstr "Άγνωστη εντολή: '%s'"
 
-#: ../plugin/controllers/i18n.py:264
+#: ../plugin/controllers/i18n.py:275
 msgid "Upcoming Events"
 msgstr "Επερχόμενες Εκπομπές"
 
-#: ../plugin/controllers/i18n.py:485
+#: ../plugin/controllers/i18n.py:525
 msgid "Update"
 msgstr "Ενημέρωση"
 
-#: ../plugin/controllers/i18n.py:483
+#: ../plugin/controllers/i18n.py:523
 msgid "Update Package"
 msgstr "Ενημέρωση Πακέτου"
 
-#: ../plugin/controllers/i18n.py:488
-msgid "Update from Feed"
+#: ../plugin/controllers/i18n.py:528
+msgid "Update from feed"
 msgstr "Ενημέρωση από τις Πηγές"
 
-#: ../plugin/controllers/i18n.py:489
-msgid "Upgrade all Packages"
+#: ../plugin/controllers/i18n.py:529
+msgid "Upgrade all packages"
 msgstr "Αναβάθμιση όλων των Πακέτων"
 
-#: ../plugin/controllers/i18n.py:498
+#: ../plugin/controllers/i18n.py:538
 msgid "Upload File Error"
 msgstr "Σφάλμα Ανεβάσματος Αρχείου"
 
-#: ../plugin/controllers/i18n.py:497
+#: ../plugin/controllers/i18n.py:537
 msgid "Upload package"
 msgstr "Ανέβασμα πακέτου"
 
-#: ../plugin/controllers/i18n.py:496
+#: ../plugin/controllers/i18n.py:536
 msgid "Uploaded Files"
 msgstr "Ανεβασμένα Αρχεία"
 
-#: ../plugin/controllers/i18n.py:336
+#: ../plugin/controllers/i18n.py:543
+msgid "Use Channelname for screenshots"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:354
 msgid "Use a custom location"
 msgstr "Χρήση τοποθεσίας ορισμένης από το χρήστη"
 
-#: ../plugin/plugin.py:134 ../plugin/controllers/i18n.py:182
+#: ../plugin/controllers/i18n.py:560
+msgid "Use as PiP if possible"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:568
+#, fuzzy
+msgid "Use classic interface"
+msgstr "Χρήση νέας σχεδίασης"
+
+#: ../plugin/plugin.py:153
+#, fuzzy
+msgid "Use custom Color"
+msgstr "Χρήση τοποθεσίας ορισμένης από το χρήστη"
+
+#: ../plugin/controllers/i18n.py:190 ../plugin/plugin.py:156
 msgid "Use custom box name"
 msgstr "Χρήση ονόματος χρήστη για το δέκτη"
 
-#: ../plugin/plugin.py:131 ../plugin/controllers/i18n.py:472
-msgid "Use new design"
+#: ../plugin/controllers/i18n.py:509
+#, fuzzy
+msgid "Use modern design"
 msgstr "Χρήση νέας σχεδίασης"
 
-#: ../plugin/controllers/i18n.py:270
+#: ../plugin/controllers/i18n.py:569 ../plugin/plugin.py:150
+msgid "Use modern interface"
+msgstr "Χρήση νέας σχεδίασης"
+
+#: ../plugin/controllers/i18n.py:281
 msgid "VPS"
 msgstr "VPS"
 
-#: ../plugin/controllers/models/timers.py:845
+#: ../plugin/controllers/models/timers.py:1077
 msgid "VPS plugin not found"
 msgstr "Το πρόσθετο VPS δεν βρέθηκε"
 
-#: ../plugin/controllers/i18n.py:265
+#: ../plugin/controllers/i18n.py:276
 msgid "Version"
 msgstr "Έκδοση"
 
-#: ../plugin/controllers/i18n.py:266
+#: ../plugin/controllers/i18n.py:277
 msgid "Video"
 msgstr "Βίντεο"
 
-#: ../plugin/controllers/i18n.py:267
+#: ../plugin/controllers/i18n.py:278
 msgid "Video Height"
 msgstr "Ύψος Βίντεο"
 
-#: ../plugin/controllers/i18n.py:268
+#: ../plugin/controllers/i18n.py:279
 msgid "Video Wide"
 msgstr "Ευρεία Εικόνα"
 
-#: ../plugin/controllers/i18n.py:269
+#: ../plugin/controllers/i18n.py:280
 msgid "Video Width"
 msgstr "Πλάτος Βίντεο"
 
-#: ../plugin/controllers/i18n.py:402
+#: ../plugin/controllers/i18n.py:435
 msgid "Visibly"
 msgstr "Ορατά"
 
-#: ../plugin/controllers/i18n.py:271
+#: ../plugin/controllers/i18n.py:282
 msgid "Volume"
 msgstr "Ένταση"
 
-#: ../plugin/controllers/i18n.py:272
+#: ../plugin/controllers/i18n.py:283
 msgid "Volume Control"
 msgstr "Έλεγχος Έντασης"
 
-#: ../plugin/controllers/i18n.py:434
+#: ../plugin/controllers/i18n.py:469
 msgid "Vpid"
 msgstr "Vpid"
 
-#: ../plugin/controllers/models/info.py:616
+#: ../plugin/controllers/models/info.py:653
 msgid "W"
 msgstr "Δ"
 
-#: ../plugin/controllers/i18n.py:215
+#: ../plugin/controllers/i18n.py:224
 msgid "Waiting for answer ..."
 msgstr "Αναμονή για απάντηση ..."
 
-#: ../plugin/controllers/i18n.py:230
+#: ../plugin/controllers/i18n.py:239
 msgid "Wake Up"
 msgstr "Αφύπνιση"
 
-#: ../plugin/controllers/i18n.py:393
+#: ../plugin/controllers/i18n.py:426
 msgid "Wakeup"
 msgstr "Αφύπνιση"
 
-#: ../plugin/controllers/i18n.py:274
+#: ../plugin/controllers/i18n.py:285
 msgid "Warning"
 msgstr "Προειδοποίηση"
 
-#: ../plugin/controllers/i18n.py:38
+#: ../plugin/controllers/i18n.py:40
 msgid "We"
 msgstr "Τε"
 
-#: ../plugin/controllers/i18n.py:457
+#: ../plugin/controllers/i18n.py:492
 msgid "Web TV"
 msgstr "Web TV"
 
-#: ../plugin/controllers/i18n.py:47
+#: ../plugin/controllers/models/movies.py:54
+#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:49
 msgid "Wed"
 msgstr "Τετ"
 
-#: ../plugin/controllers/i18n.py:54
+#: ../plugin/controllers/i18n.py:56
 msgid "Wednesday"
 msgstr "Τετάρτη"
 
-#: ../plugin/controllers/i18n.py:351
-msgid "Weekday"
-msgstr "Καθημερινή"
-
-#: ../plugin/controllers/i18n.py:350
-msgid "Weekend"
-msgstr "Σαββατοκύριακο"
-
-#: ../plugin/controllers/i18n.py:329
+#: ../plugin/controllers/i18n.py:347
 msgid "Weekly (Monday)"
 msgstr "Εβδομαδιαία (Δευτέρα)"
 
-#: ../plugin/controllers/i18n.py:328
+#: ../plugin/controllers/i18n.py:346
 msgid "Weekly (Sunday)"
 msgstr "Εβδομαδιαία (Κυριακή)"
 
-#: ../plugin/plugin.py:148
+#: ../plugin/plugin.py:170
 msgid "Without auth only local access is allowed!"
 msgstr "Χωρίς πιστοποίηση, μόνο τοπική πρόσβαση επιτρεπτή!"
 
-#: ../plugin/controllers/i18n.py:382
-msgid "Wizzard"
+#: ../plugin/controllers/i18n.py:415
+msgid "Wizard"
 msgstr "Οδηγός"
 
-#: ../plugin/controllers/web.py:223
+#: ../plugin/controllers/i18n.py:511
+msgid "Would you like to save your changes?"
+msgstr ""
+
+#: ../plugin/controllers/web.py:242
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Λανθασμένη μορφή παραμέτρου 'set=%s'. Χρήση set=set15 "
 
-#: ../plugin/controllers/i18n.py:490
+#: ../plugin/controllers/i18n.py:557
+msgid "YYYY-MM-DD"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:514 ../plugin/controllers/i18n.py:530
 msgid "Yes"
 msgstr "Ναι"
 
-#: ../plugin/controllers/i18n.py:474
-msgid "Yes, delete it"
-msgstr "Ναι, να διαγραφεί"
-
-#: ../plugin/controllers/i18n.py:275
+#: ../plugin/controllers/i18n.py:286
 msgid "Yes/No"
 msgstr "Ναι/Όχι"
 
-#: ../plugin/controllers/i18n.py:477
-msgid "You need to write something!"
-msgstr "Πρέπει να γράψετε κάτι!"
+#: ../plugin/controllers/models/movies.py:59
+#: ../plugin/controllers/models/timers.py:51
+msgid "Yesterday"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:276
+#: ../plugin/controllers/i18n.py:287
 msgid "Zap"
 msgstr "Μετάβαση"
 
-#: ../plugin/controllers/i18n.py:278
+#: ../plugin/controllers/i18n.py:466
+msgid "Zap & Record"
+msgstr "Εγγραφή+ΖΑΠ"
+
+#: ../plugin/controllers/i18n.py:288
+msgid "Zap before streaming"
+msgstr "μετάβαση πριν τη Ροή"
+
+#: ../plugin/controllers/i18n.py:289
 msgid "Zap to"
 msgstr "Μετάβαση σε"
 
-#: ../plugin/controllers/i18n.py:279
+#: ../plugin/controllers/i18n.py:290
 msgid "Zapped to"
 msgstr "Έγινε μετάβαση σε"
 
-#: ../plugin/controllers/i18n.py:317
+#: ../plugin/controllers/i18n.py:392
+#, fuzzy
+msgid "any time"
+msgstr "Προσθήκη Χρονοδιακόπτη"
+
+#: ../plugin/controllers/i18n.py:335
 msgid "auto"
 msgstr "αυτόματο"
 
-#: ../plugin/controllers/i18n.py:300
-msgid "case-insensitive search"
-msgstr "αναζήτηση χωρίς διάκριση μικρών-κεφαλαίων"
+#: ../plugin/plugin.py:132
+msgid "box_ip"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:299
-msgid "case-sensitive search"
-msgstr "αναζήτηση με διάκριση μικρών-κεφαλαίων"
+#: ../plugin/controllers/i18n.py:318
+#, fuzzy
+msgid "case-insensitive"
+msgstr "Αυστηρότητα αναζήτησης"
 
-#: ../plugin/controllers/i18n.py:293
+#: ../plugin/controllers/i18n.py:317
+#, fuzzy
+msgid "case-sensitive"
+msgstr "Αυστηρότητα αναζήτησης"
+
+#: ../plugin/controllers/i18n.py:369
+msgid "description contains"
+msgstr "σε Περιγραφή"
+
+#: ../plugin/controllers/i18n.py:305
+#, fuzzy
 msgid "description match"
-msgstr "συσχέτιση περιγραφής"
+msgstr "Περιγραφή"
 
-#: ../plugin/controllers/i18n.py:114
+#: ../plugin/controllers/i18n.py:116
 msgid "disabled"
 msgstr "ανενεργό"
 
-#: ../plugin/controllers/i18n.py:318
+#: ../plugin/controllers/i18n.py:336
 msgid "do nothing"
 msgstr "να μη γίνει τίποτα"
 
-#: ../plugin/controllers/i18n.py:442
+#: ../plugin/controllers/i18n.py:477
 msgid "error! Loading Page"
 msgstr "σφάλμα! Φόρτωση Σελίδας"
 
-#: ../plugin/controllers/i18n.py:292
-msgid "exact match"
-msgstr "ακριβής συσχέτιση"
+#: ../plugin/controllers/i18n.py:304
+msgid "exact title match"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:135
+#: ../plugin/controllers/i18n.py:314
+msgid "favourite desc match"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:140
 msgid "finished"
 msgstr "ολοκληρώθηκε"
 
-#: ../plugin/controllers/i18n.py:320
+#: ../plugin/controllers/i18n.py:338
 msgid "go to deep standby"
 msgstr "μετάβαση σε βαθιά αναμονή"
 
-#: ../plugin/controllers/i18n.py:319
+#: ../plugin/controllers/i18n.py:337
 msgid "go to standby"
 msgstr "μετάβαση σε αναμονή"
 
-#: ../plugin/controllers/i18n.py:31
+#: ../plugin/controllers/i18n.py:33
 msgid "hour"
 msgstr "ώρα"
 
-#: ../plugin/controllers/i18n.py:348
-msgid "in Description"
-msgstr "σε Περιγραφή"
-
-#: ../plugin/controllers/i18n.py:347
-msgid "in Shortdescription"
-msgstr "σε Σύντομη περιγραφή"
-
-#: ../plugin/controllers/i18n.py:346
-msgid "in Title"
-msgstr "σε Τίτλο"
-
-#: ../plugin/controllers/models/movies.py:216
-#: ../plugin/controllers/models/info.py:294
-#: ../plugin/controllers/models/info.py:297
+#: ../plugin/controllers/models/info.py:302
+#: ../plugin/controllers/models/info.py:305
+#: ../plugin/controllers/models/movies.py:282
+#: ../plugin/controllers/models/movies.py:412
+#: ../plugin/controllers/models/movies.py:832
 msgid "kB"
 msgstr "kB"
 
-#: ../plugin/controllers/i18n.py:160
+#: ../plugin/controllers/i18n.py:165
 msgid "loading"
 msgstr "φόρτωση"
 
-#: ../plugin/controllers/models/info.py:65
-#: ../plugin/controllers/models/info.py:84
+#: ../plugin/controllers/models/info.py:78
+#: ../plugin/controllers/models/info.py:97
 msgid "manual/disabled"
 msgstr "χειροκίνητο/ανενεργό"
 
-#: ../plugin/controllers/i18n.py:31
+#: ../plugin/controllers/i18n.py:171
+msgid "mins"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:33
 msgid "minute"
 msgstr "λεπτό"
 
-#: ../plugin/controllers/i18n.py:173
+#: ../plugin/controllers/i18n.py:180
 msgid "no description available"
 msgstr "μη διαθέσιμη περιγραφή"
 
-#: ../plugin/controllers/i18n.py:149 ../plugin/controllers/models/info.py:171
+#: ../plugin/controllers/models/info.py:189 ../plugin/controllers/i18n.py:154
 msgid "none/IPv4-only network"
 msgstr "Δίκτυο κανένα/IPv4 μόνο"
 
-#: ../plugin/controllers/i18n.py:349
-msgid "on Weekday"
+#: ../plugin/controllers/i18n.py:371
+msgid "on day"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:370
+msgid "on weekday"
 msgstr "σε Καθημερινή"
 
-#: ../plugin/controllers/BouquetEditor.py:86
+#: ../plugin/controllers/BouquetEditor.py:87
 msgid "one two three four unknown command"
 msgstr "ένα δύο τρία τέσσερα άγνωστη εντολή"
 
-#: ../plugin/controllers/i18n.py:291
-msgid "partial match"
-msgstr "μερική συσχέτιση"
+#: ../plugin/controllers/i18n.py:303
+msgid "partial title match"
+msgstr ""
 
-#: ../plugin/controllers/models/info.py:455
+#: ../plugin/controllers/models/info.py:463
 msgid "r/o"
 msgstr "r/o"
 
-#: ../plugin/controllers/models/info.py:451
+#: ../plugin/controllers/models/info.py:459
 msgid "r/w"
 msgstr "r/w"
 
-#: ../plugin/controllers/i18n.py:302
+#: ../plugin/controllers/i18n.py:320
 msgid "record"
 msgstr "εγγραφή"
 
-#: ../plugin/controllers/models/movies.py:294
+#: ../plugin/controllers/i18n.py:315
+msgid "regex match (experimental)"
+msgstr ""
+
+#: ../plugin/controllers/models/movies.py:483
 msgid "remove"
 msgstr "αφαίρεση"
 
-#: ../plugin/controllers/i18n.py:203
+#: ../plugin/controllers/i18n.py:211
 msgid "running"
 msgstr "σε εκτέλεση"
 
-#: ../plugin/controllers/i18n.py:213
+#: ../plugin/controllers/i18n.py:222
 msgid "seconds"
 msgstr "δευτερόλεπτα"
 
-#: ../plugin/controllers/i18n.py:342
-msgid "select Bouquets"
+#: ../plugin/controllers/i18n.py:359
+msgid "select bouquets"
 msgstr "επιλογή Μπουκέτων"
 
-#: ../plugin/controllers/i18n.py:340
-msgid "select Channels"
+#: ../plugin/controllers/i18n.py:358
+msgid "select channels"
 msgstr "επιλογή Καναλιών"
 
-#: ../plugin/controllers/i18n.py:338
-msgid "select Tags"
+#: ../plugin/controllers/i18n.py:356
+msgid "select tags"
 msgstr "επιλογή Ετικετών"
 
-#: ../plugin/controllers/i18n.py:296
+#: ../plugin/controllers/i18n.py:368
+msgid "short description contains"
+msgstr "σε Σύντομη περιγραφή"
+
+#: ../plugin/controllers/i18n.py:310 ../plugin/controllers/i18n.py:311
+#, fuzzy
 msgid "short description match"
 msgstr "συσχέτιση σύντομης περιγραφής"
 
-#: ../plugin/controllers/i18n.py:316
+#: ../plugin/controllers/i18n.py:334
 msgid "standard"
 msgstr "στάνταρ"
 
-#: ../plugin/controllers/i18n.py:297
-msgid "start match"
-msgstr "εκκίνηση συσχέτισης"
-
-#: ../plugin/controllers/models/info.py:61
-#: ../plugin/controllers/models/info.py:73
-#: ../plugin/controllers/models/info.py:80
+#: ../plugin/controllers/models/info.py:74
+#: ../plugin/controllers/models/info.py:86
+#: ../plugin/controllers/models/info.py:93
 msgid "static"
 msgstr "στατική"
 
-#: ../plugin/controllers/i18n.py:294
+#: ../plugin/controllers/i18n.py:250
+msgid "this service is protected by a parental control pin"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:367
+msgid "title contains"
+msgstr "σε Τίτλο"
+
+#: ../plugin/controllers/i18n.py:313
+msgid "title ends with"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:306 ../plugin/controllers/i18n.py:307
+#, fuzzy
 msgid "title or description match"
 msgstr "συσχέτιση τίτλου ή περιγραφής"
 
-#: ../plugin/controllers/i18n.py:295
+#: ../plugin/controllers/i18n.py:308 ../plugin/controllers/i18n.py:309
+#, fuzzy
 msgid "title or short description match"
 msgstr "συσχέτιση τίτλου ή σύντομης περιγραφής"
 
-#: ../plugin/controllers/i18n.py:251
+#: ../plugin/controllers/i18n.py:312
+msgid "title starts with"
+msgstr ""
+
+#: ../plugin/controllers/i18n.py:261
 msgid "transcoded"
 msgstr "διαδικοποιημένο"
 
-#: ../plugin/controllers/web.py:684
+#: ../plugin/controllers/web.py:711
 #, python-format
 msgid "type %s is not a number"
 msgstr "ο τύπος %s δεν είναι αριθμός"
 
-#: ../plugin/controllers/models/info.py:93
-#: ../plugin/controllers/models/info.py:101
+#: ../plugin/controllers/models/info.py:102
+#: ../plugin/controllers/models/info.py:119
 msgid "unknown"
 msgstr "άγνωστο"
 
-#: ../plugin/controllers/i18n.py:462
+#: ../plugin/controllers/i18n.py:497
 msgid "using"
 msgstr "με χρήση"
 
-#: ../plugin/controllers/i18n.py:430
+#: ../plugin/controllers/i18n.py:465
 msgid "via"
 msgstr "μέσω"
 
-#: ../plugin/controllers/i18n.py:273
+#: ../plugin/controllers/i18n.py:284
 msgid "waiting"
 msgstr "αναμονή"
+
+#: ../plugin/controllers/i18n.py:373
+msgid "weekday"
+msgstr "Καθημερινή"
+
+#: ../plugin/controllers/i18n.py:372
+msgid "weekend"
+msgstr "Σαββατοκύριακο"
 
 #: ../plugin/controllers/ipkg.py:284
 msgid "wrong filetype"
 msgstr "λανθασμένος τύπος αρχείου"
 
-#: ../plugin/controllers/i18n.py:303
+#: ../plugin/controllers/i18n.py:321
 msgid "zap"
 msgstr "μετάβαση"
-
-#: ../plugin/controllers/i18n.py:277
-msgid "zap before Stream"
-msgstr "μετάβαση πριν τη Ροή"

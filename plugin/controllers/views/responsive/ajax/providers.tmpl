@@ -1,8 +1,22 @@
-#from urllib import quote
+#from six.moves.urllib.parse import quote
 
-<ul class="nav nav-tabs tab-col-green" >
+<!-- TODO: move style to css file -->
+<style>
+	.nav-tabs { 
+    flex-wrap: wrap;
+    justify-content: start;
+	}
+
+	.nav-tabs > li > a .material-icons { 
+		top: 0; 
+		margin-bottom: 3px; 
+		margin-right: 6px; 
+	}
+</style>
+
+<ul class="nav nav-tabs tab--skinned">
 #for $provider in $providers
-	<li><a data-toggle="tab" href='#tab' onclick="load_subcontent('ajax/channels?id=$quote($provider[0])&stype=$stype'); return false;" >$provider[1]</a></li>
+	<li><a href="#tab" data-toggle="tab" onclick="load_subcontent('ajax/channels?id=$quote($provider[0])&stype=$stype'); return false;"><i class="material-icons material-icons-centered">folder_open</i>$provider[1]</a></li>
 #end for
 </ul>
 <div class="tab-content">

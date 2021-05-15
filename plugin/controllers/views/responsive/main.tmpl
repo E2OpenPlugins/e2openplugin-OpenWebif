@@ -1,37 +1,69 @@
-#from controllers.i18n import tstrings
-#from vtiaddon import skinColor, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground, ZapStream, showIPTVChannelsInSelection, useSreenshotChannelName
 #from json import dumps
 
-<!DOCTYPE html>
-<html lang="en">
+#set $skinPrefOptions = [
+	{'value': 'black', 'label': 'Black'}, 
+	{'value': 'grey-darken-4', 'label': 'Dark Grey'}, 
+	{'value': 'blue-grey', 'label': 'Blue Grey'}, 
+	{'value': 'grey', 'label': 'Grey'}, 
+	{'value': 'red', 'label': 'Red'}, 
+	{'value': 'pink', 'label': 'Pink'}, 
+	{'value': 'purple', 'label': 'Purple'}, 
+	{'value': 'deep-purple', 'label': 'Deep Purple'}, 
+	{'value': 'indigo', 'label': 'Indigo'}, 
+	{'value': 'blue', 'label': 'Blue'}, 
+	{'value': 'light-blue', 'label': 'Light Blue'}, 
+	{'value': 'cyan', 'label': 'Cyan'}, 
+	{'value': 'teal', 'label': 'Teal'}, 
+	{'value': 'green', 'label': 'Green'}, 
+	{'value': 'light-green', 'label': 'Light Green'}, 
+	{'value': 'lime', 'label': 'Lime'}, 
+	{'value': 'yellow', 'label': 'Yellow'}, 
+	{'value': 'amber', 'label': 'Amber'}, 
+	{'value': 'orange', 'label': 'Orange'}, 
+	{'value': 'deep-orange', 'label': 'Deep Orange'}, 
+	{'value': 'brown', 'label': 'Brown'}, 
+	{'value': 'white', 'label': 'White'}
+]
+
+<!doctype html>
+<html lang="$stbLang">
 <head>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/openwebif-1.2.19.min.js"></script>
-	<script type="text/javascript" src="/js/chosen.1.8.2.min.js"></script>
-	<script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
 	<title>$boxname - OpenWebif</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta charset="UTF-8">
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86"><!-- https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link href="themes/absb/plugins/vti/vti-fonts.css" rel="stylesheet" type="text/css">
-	<link href="themes/absb/plugins/vti/vti-material-icons.css" rel="stylesheet" type="text/css">
-	<link href="themes/absb/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="themes/absb/plugins/node-waves/waves.min.css" rel="stylesheet" />
-	<link href="themes/absb/plugins/animate-css/animate.min.css" rel="stylesheet" />
-	<link href="themes/absb/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" />
-	<link href="themes/absb/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
-	<link href="themes/absb/css/style.css" rel="stylesheet">
-	<link href="themes/absb/css/themes/all-themes.css" rel="stylesheet" />
-	<link href="themes/absb/css/vti-bootstrap-chosen.css" rel="stylesheet">
-	<link href="themes/absb/css/vti-timepicker.css" rel="stylesheet">
-	<link href="themes/absb/css/vti-responsive.css" rel="stylesheet">
+	<link rel="shortcut icon" href="/images/favicon.png">
+	<link rel="stylesheet" type="text/css" href="/modern/plugins/vti/vti-fonts.css">
+	<link rel="stylesheet" type="text/css" href="/modern/plugins/vti/vti-material-icons.css">
+	<link rel="stylesheet" type="text/css" href="/modern/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/modern/plugins/node-waves/waves.min.css">
+	<link rel="stylesheet" type="text/css" href="/modern/plugins/animate-css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="/modern/plugins/bootstrap-select/css/bootstrap-select.min.css">
+	<link rel="stylesheet" type="text/css" href="/modern/plugins/sweetalert/sweetalert.min.css">
+	<link rel="stylesheet" type="text/css" href="/modern/plugins/choices/choices.min.css">
+	<link rel="stylesheet" type="text/css" href="/modern/css/style.min.css">
+	<link rel="stylesheet" type="text/css" href="/modern/css/themes/all-themes.min.css">
+	<link rel="stylesheet" type="text/css" href="/modern/css/vti-bootstrap-chosen.min.css">
+	<link rel="stylesheet" type="text/css" href="/modern/css/vti-timepicker.min.css">
+	<link rel="stylesheet" type="text/css" href="/modern/css/vti-responsive.min.css">
+
+	<style>
+		.page-loader-wrapper { background: rgba(156,156,156, 0.2); }
+	</style>
+
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/jquery-ui.min.js"></script>
+	<script src="/js/openwebif.min.js?v1.2.21"></script>
+	<script src="/js/chosen.1.8.2.min.js"></script>
+	<script>initJsTranslation($dumps($tstrings))</script>
 </head>
 
-<body class="theme-$skinColor">
+<body class="theme--$themeMode skin--$skinColor" data-thememode="$themeMode" data-skinpref="$skinColor">
 	<!-- Overlay For Sidebars -->
 	<div class="overlay"></div>
 	<div class="search-bar search-bar-epg">
@@ -40,7 +72,9 @@
 				<i class="material-icons">search</i>
 			</div>
 		</div>
-		<input type="text" id="epgsearchtext" placeholder="$tstrings['start_typing'] ( $tstrings['epgsearch'] ) ...">
+		<form action="#ajax/srch" method="get" onsubmit="window.location='#epgdialog?bouquetsonly=1'; return false;">
+			<input type="text" name="sstr" id="epgsearchtext" placeholder="$tstrings['start_typing'] ( $tstrings['epgsearch'] ) ...">
+		</form>
 		<div class="close-search">
 			<span class="start-search">
 				<i class="material-icons">search</i>
@@ -48,13 +82,14 @@
 			<i class="material-icons">close</i>
 		</div>
 	</div>
+	#if $vti == "1"
 	<div class="search-bar search-bar-movie">
 		<div class="search-icon">
 			<div class="start-search">
 				<i class="material-icons">search</i>
 			</div>
 		</div>
-		<input type="text" id="moviesearchtext" placeholder="$tstrings['start_typing'] ( $tstrings['moviesearch'] ) ...">
+		<input type="text" name="moviesearchtext" id="moviesearchtext" placeholder="$tstrings['start_typing'] ( $tstrings['moviesearch'] ) ...">
 		<div class="close-search">
 			<span class="start-search">
 				<i class="material-icons">search</i>
@@ -62,13 +97,14 @@
 			<i class="material-icons">close</i>
 		</div>
 	</div>
+	#end if
 	<span id="topmenuheader">
 		<nav class="navbar">
-			<div class="container-fluid">
+			<div class="container-fluid" ondblclick="owif.gui.fullscreen();">
 				<div class="navbar-header">
 					<a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
 					<a href="javascript:void(0);" class="bars" id="leftsidebarin"></a>
-					<span class="navbar-brand">OpenWebif</span>
+					<a href="/" class="navbar-brand">OpenWebif</a>
 				</div>
 				<div class="collapse navbar-collapse pull-right align-right" id="navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
@@ -76,22 +112,24 @@
 						<li class="osd-toggle" id="responsive_osd_cur_event"></li>
 						<li class="osd-toggle" id="responsive_osd_stream"></li>
 						<li class="osd-toggle" id="responsive_osd_transcoding"></li>
-						<li class="osd-toggle" id="responsive_mute_status"></li>
-						<li class="osd-toggle" id="responsive_vol_slider"><a href="#"><div id="volslider" style="width:100px;margin-top:2px;"></div></a></li>
+						<li class="osd-toggle" id="responsive_mute_status" accesskey="x" title="Mute/Unmute - Shortcut: x"></li><!-- TODO: i10n -->
+						<li class="osd-toggle" id="responsive_vol_slider"><a href="javascript:void(0);"><div id="volslider" style="width:100px;margin-top:2px;"></div></a></li>
 						<li class="osd-toggle" id="responsive_vol_value"><a><div class="dropdown-toggle" id="volumevalue"><b><span class="curvolume"></span></b></div></a></li>
 						<!-- Call Search -->
-						<li><a href="javascript:void(0);" class="js-search-epg" data-close="true" title="$tstrings['epgsearch']" ><i class="material-icons">search</i></a></li>
-						<!--<li><a href="javascript:void(0);" class="js-search-movie" data-close="true" title="$tstrings['moviesearch']"><i class="material-icons">youtube_searched_for</i></a></li>  -->
+						<li><a href="javascript:void(0);" class="js-search-epg" data-close="true" title="$tstrings['epgsearch'] - Shortcut: f" accesskey="f"><i class="material-icons">search</i></a></li>
+						#if $vti == "1"
+						<li><a href="javascript:void(0);" class="js-search-movie" data-close="true" title="$tstrings['moviesearch']"><i class="material-icons">youtube_searched_for</i></a></li>
+						#end if
 						<!-- #END# Call Search -->
 						<li class="dropdown" id="responsive_rec_info"></li>
 						<li class="dropdown" id="responsive_stream_info"></li>
-						<li class="dropdown"><a href='javascript:void(0);' data-toggle="modal" data-target="#SendMessageModal" title="$tstrings['sendamessage']"><i class="material-icons">message</i></a></li>
-						<li class="dropdown"><a href='#' onclick="load_maincontent('ajax/screenshot');return false;" title="$tstrings['grabscreenshot']"><i class="material-icons">photo_camera</i></a></li>
+						<li class="dropdown"><a href='javascript:void(0);' data-toggle="modal" data-target="#SendMessageModal" title="$tstrings['sendamessage'] - Shortcut: n" accesskey="n"><i class="material-icons">message</i></a></li>
+						<li class="dropdown"><a href="#screenshot" title="$tstrings['grabscreenshot'] - Shortcut: s" accesskey="s"><i class="material-icons">photo_camera</i></a></li>
 						<!-- #END# Notifications -->
 						<li id="osd_power_status"></li>
-						<li class="dropdown"><a href='javascript:void(0);' data-toggle="modal" data-target="#PowerModal" title="$tstrings['powercontrol'].replace(' ','&nbsp;')"><i class="material-icons">settings_power</i></a></li>
+						<li class="dropdown"><a href='javascript:void(0);' data-toggle="modal" data-target="#PowerModal" title="$tstrings['powercontrol'].replace(' ','&nbsp;') - Shortcut: p" accesskey="p"><i class="material-icons">settings_power</i></a></li>
 						<!-- #END# Tasks -->
-						<li><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
+						<li><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">settings</i></a></li>
 					</ul>
 				</div>
 			</div>
@@ -109,326 +147,81 @@
 						<li class="header" id="leftsidemenuheader">$boxname</li>
 						<li class="active" style="display:none;"></li>
 						<li>
-							<a href="javascript:void(0);" class="menu-toggle">
+							<a href="#screenshot" class="menu-toggle">
 								<i class="material-icons">dialpad</i>
 								<span>$tstrings['remote']</span>
 							</a>
 							<ul class="ml-menu noselect">
 								<li class="collapse">
-									<a href='#' title=$tstrings['showfullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;">Full</a>
+									<a href="#" title="$tstrings['showfullremote'].replace(' ', '&nbsp;')" onclick="toggleFullRemote();return false;">Full</a>
 								</li>
 									#if $RemoteControlView == 'checked'
 									<span style="display:None;" id="symbolRemoteView">
 									#else
 									<span id="symbolRemoteView">
 									#end if
-									<li class="align-right" style="margin-top:-30px;">
-										<span data-toggle="collapse" data-target="#rcunumbers" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer;"><i class="material-icons material-icons-centered">expand_more</i></span>
-									</li>
-									<li class="collapse" id="rcunumbers">
-										<table class="rcu-table">
-											<tr>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('2');" title="1">
-															<i class="material-icons">filter_1</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('3');" title="2">
-															<i class="material-icons">filter_2</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('4');" title="3">
-															<i class="material-icons">filter_3</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('5');" title="4">
-															<i class="material-icons">filter_4</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('6');" title="5">
-															<i class="material-icons">filter_5</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('7');" title="6">
-															<i class="material-icons">filter_6</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('8');" title="7">
-															<i class="material-icons">filter_7</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('9');" title="8">
-															<i class="material-icons md-dark">filter_8</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('10');" title="9">
-															<i class="material-icons">filter_9</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('412');" title="<">
-															<i class="material-icons">navigate_before</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('11');" title="0">
-															<i class="material-icons">exposure_zero</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('407');" title=">">
-															<i class="material-icons">navigate_next</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</table>
+									<li class="align-center" style="margin-top:-30px;">
+										<span data-toggle="collapse" data-target="#rcunumbers" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer;" title="Show more buttons"><i class="material-icons material-icons-centered">arrow_drop_up</i></span>
 									</li>
 									<li>
-										<table class="rcu-table">
-											<tr>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-red" onclick="pressMenuRemote('398');" title="Red">
-															<i class="material-icons">panorama_fish_eye</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-green" onclick="pressMenuRemote('399');" title="Green">
-															<i class="material-icons">panorama_fish_eye</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-yellow" onclick="pressMenuRemote('400');" title="Yellow">
-															<i class="material-icons">panorama_fish_eye</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-blue" onclick="pressMenuRemote('401');" title="Blue">
-															<i class="material-icons">panorama_fish_eye</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</table>
+										<section class="remote__group remote__group--numerical collapse" id="rcunumbers">
+											<button type="button" onclick="pressMenuRemote('2');" title="1" class="remote__button icon"><i class="material-icons">filter_1</i></button>
+											<button type="button" onclick="pressMenuRemote('3');" title="2" class="remote__button icon"><i class="material-icons">filter_2</i></button>
+											<button type="button" onclick="pressMenuRemote('4');" title="3" class="remote__button icon"><i class="material-icons">filter_3</i></button>
+											<button type="button" onclick="pressMenuRemote('5');" title="4" class="remote__button icon"><i class="material-icons">filter_4</i></button>
+											<button type="button" onclick="pressMenuRemote('6');" title="5" class="remote__button icon"><i class="material-icons">filter_5</i></button>
+											<button type="button" onclick="pressMenuRemote('7');" title="6" class="remote__button icon"><i class="material-icons">filter_6</i></button>
+											<button type="button" onclick="pressMenuRemote('8');" title="7" class="remote__button icon"><i class="material-icons">filter_7</i></button>
+											<button type="button" onclick="pressMenuRemote('9');" title="8" class="remote__button icon"><i class="material-icons">filter_8</i></button>
+											<button type="button" onclick="pressMenuRemote('10');" title="9" class="remote__button icon"><i class="material-icons">filter_9</i></button>
+											<button type="button" onclick="pressMenuRemote('412');" title="&lt;" class="remote__button icon"><i class="material-icons">navigate_before</i></button>
+											<button type="button" onclick="pressMenuRemote('11');" title="0" class="remote__button icon"><i class="material-icons">exposure_zero</i></button>
+											<button type="button" onclick="pressMenuRemote('407');" title="&gt;" class="remote__button icon"><i class="material-icons">navigate_next</i></button>
+										</section>
+										<section class="remote__group">
+											<button type="button" onclick="toggleMute(); return false;" title="Mute" class="remote__button icon"><i class="material-icons">volume_off</i></button>
+											<button type="button" onclick="pressMenuRemote('114');" title="Vol-" class="remote__button icon"><i class="material-icons">volume_down</i></button>
+											<button type="button" onclick="pressMenuRemote('115');" title="Vol+" class="remote__button icon"><i class="material-icons">volume_up</i></button>
+											<button type="button" onclick="toggleStandby(); return false;" title="Power" class="remote__button remote__button--power icon"><i class="material-icons">power_settings_new</i></button>
+											<button type="button" onclick="pressMenuRemote('377');" title="TV" class="remote__button icon"><i class="material-icons">tv</i></button>
+											<button type="button" onclick="pressMenuRemote('385');" title="Radio" class="remote__button icon"><i class="material-icons">radio</i></button>
+											<button type="button" onclick="pressMenuRemote('393');" title="List" class="remote__button icon"><i class="material-icons">movie</i></button>
+											<button type="button" onclick="pressMenuRemote('102');" title="Home" class="remote__button icon"><i class="material-icons">home</i></button>
+										</section>
+										<section class="remote__group remote__group--directional">
+											<button type="button" onclick="pressMenuRemote('139');" title="Menu" class="remote__button icon"><i class="material-icons">menu</i></button>
+											<button type="button" onclick="pressMenuRemote('103');" title="Up" class="remote__button icon remote__button--arrow"><i class="material-icons">keyboard_arrow_up</i></button>
+											<button type="button" onclick="pressMenuRemote('358');" title="Info" class="remote__button icon"><i class="material-icons">info_outline</i></button>
+											<button type="button" onclick="pressMenuRemote('105');" title="Left" class="remote__button icon remote__button--arrow"><i class="material-icons">keyboard_arrow_left</i></button>
+											<button type="button" onclick="pressMenuRemote('352');" title="OK" class="remote__button icon remote__button--arrow"><i class="material-icons">thumb_up_alt</i></button>
+											<button type="button" onclick="pressMenuRemote('106');" title="Right" class="remote__button icon remote__button--arrow"><i class="material-icons">keyboard_arrow_right</i></button>
+											<button type="button" onclick="pressMenuRemote('158');" title="Back" class="remote__button icon"><i class="material-icons">keyboard_return</i></button>
+											<button type="button" onclick="pressMenuRemote('108');" title="Down" class="remote__button icon remote__button--arrow"><i class="material-icons">keyboard_arrow_down</i></button>
+											<button type="button" onclick="pressMenuRemote('174');" title="Exit" class="remote__button icon"><i class="material-icons">clear</i></button>
+										</section>
+										<section class="remote__group">
+											<button type="button" onclick="pressMenuRemote('365');" title="EPG" class="remote__button icon"><i class="material-icons">view_list</i></button>
+											<button type="button" onclick="pressMenuRemote('627');" title="VOD" class="remote__button icon"><i class="material-icons">ondemand_video</i></button>
+											<button type="button" onclick="pressMenuRemote('403');" title="CH-" class="remote__button icon"><i class="material-icons">remove</i></button>
+											<button type="button" onclick="pressMenuRemote('402');" title="CH+" class="remote__button icon"><i class="material-icons">add</i></button>
+											<button type="button" onclick="pressMenuRemote('398');" title="Red" class="remote__button icon remote__button--colour"><i class="material-icons" style="color: #F44336;">call_to_action</i></button>
+											<button type="button" onclick="pressMenuRemote('399');" title="Green" class="remote__button icon remote__button--colour"><i class="material-icons" style="color: #4CAF50;">call_to_action</i></button>
+											<button type="button" onclick="pressMenuRemote('400');" title="Yellow" class="remote__button icon remote__button--colour"><i class="material-icons" style="color: #ffe821;">call_to_action</i></button>
+											<button type="button" onclick="pressMenuRemote('401');" title="Blue" class="remote__button icon remote__button--colour"><i class="material-icons" style="color: #2196F3;">call_to_action</i></button>
+										</section>
+										<section class="remote__group collapse" id="rcuplayerkeys">
+											<button type="button" onclick="pressMenuRemote('168');" title="FastRewind" class="remote__button icon"><i class="material-icons">fast_rewind</i></button>
+											<button type="button" onclick="pressMenuRemote('207');" title="Play" class="remote__button icon"><i class="material-icons">play_arrow</i></button>
+											<button type="button" onclick="pressMenuRemote('119');" title="Pause" class="remote__button icon"><i class="material-icons">pause</i></button>
+											<button type="button" onclick="pressMenuRemote('208');" title="FastForward" class="remote__button icon"><i class="material-icons">fast_forward</i></button>
+											<button type="button" onclick="pressMenuRemote('370');" title="Subtitle" class="remote__button icon"><i class="material-icons">subtitles</i></button>
+											<button type="button" onclick="pressMenuRemote('167');" title="Record" class="remote__button icon"><i class="material-icons" style="color: #F44336;">fiber_manual_record</i></button>
+											<button type="button" onclick="pressMenuRemote('128');" title="Stop" class="remote__button icon"><i class="material-icons">stop</i></button>
+											<button type="button" onclick="pressMenuRemote('392');" title="Audio" class="remote__button icon"><i class="material-icons">audiotrack</i></button>
+										</section>
 									</li>
-									<li>
-										<table class="rcu-table">
-											<tr>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('393');" title="PVR">
-															<i class="material-icons">movie</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-light-grey" onclick="pressMenuRemote('103');" title="Up">
-															<i class="material-icons">keyboard_arrow_up</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('139');" title="Menu">
-															<i class="material-icons">menu</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-light-grey" onclick="pressMenuRemote('105');" title="Left">
-															<i class="material-icons">keyboard_arrow_left</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-light-grey" onclick="pressMenuRemote('352');" title="OK">
-															<i class="material-icons">check</i>
-														</div>
-													</div>
-													
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-light-grey" onclick="pressMenuRemote('106');" title="Right">
-															<i class="material-icons">keyboard_arrow_right</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('358');" title="EPG">
-															<i class="material-icons">today</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-light-grey" onclick="pressMenuRemote('108');" title="Down">
-															<i class="material-icons">keyboard_arrow_down</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('174');" title="Exit">
-															<i class="material-icons">clear</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</table>
-									</li>
-									<li>
-										<table class="rcu-table">
-											<tr>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('377');" title="TV">
-															<i class="material-icons">tv</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('385');" title="Radio">
-															<i class="material-icons">radio</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('403');" title="CH-">
-															<i class="material-icons">remove_circle_outline</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('402');" title="CH+">
-															<i class="material-icons">add_circle_outline</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</table>
-									</li>
-									<li class="collapse" id="rcuplayerkeys">
-										<table class="rcu-table">
-											<tr>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('168');" title="FastRewind">
-															<i class="material-icons">fast_rewind</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('207');" title="Play">
-															<i class="material-icons">play_arrow</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('119');" title="Pause">
-															<i class="material-icons">pause</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('208');" title="FastForward">
-															<i class="material-icons">fast_forward</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('370');" title="Subtitle">
-															<i class="material-icons">subtitles</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('167');" title="Record">
-															<i class="material-icons">fiber_manual_record</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('128');" title="Stop">
-															<i class="material-icons">stop</i>
-														</div>
-													</div>
-												</td>
-												<td>
-													<div class="info-box-rcu-4 hover-zoom-effect">
-														<div class="icon bg-white" onclick="pressMenuRemote('392');" title="Audio">
-															<i class="material-icons">audiotrack</i>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</table>
-									</li>
-									<li class="align-right">
-										<span data-toggle="collapse" data-target="#rcuplayerkeys" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer;"><i class="material-icons material-icons-centered">keyboard_arrow_up</i></span>
+									<li class="align-center">
+										<span data-toggle="collapse" data-target="#rcuplayerkeys" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer;" title="Show more buttons"><i class="material-icons material-icons-centered">arrow_drop_down</i></span>
 									</li>
 								</span>
 								#if $RemoteControlView == 'checked'
@@ -441,25 +234,29 @@
 									<li>
 								#end if
 								<li>
-									<table class="rcu-table">
+									<table style="margin: 0 auto;">
 										<tr>
-											<td colspan="2"><p></p>
+											<td colspan="2">
+												<h6>$tstrings['shiftforlong']</h6>
 											</td>
 										</tr>
 										<tr>
-											<td>
-												<span style="cursor:pointer;" title="Enable/Disable Screenhot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span>
+											<td><!-- TODO: i10n -->
+												<span style="cursor:pointer;" title="Enable/Disable Screenshot on key press or $tstrings['grabscreenshot']" onclick="load_maincontent('ajax/screenshot');return false;">$tstrings['grabscreenshot']</span>
 											</td>
 											<td>
-												<div class='switch'>
-													<span class='m-r-10 font-12'></span>
-													<label><input $ScreenshotOnRCU type='checkbox' class="remotegrabscreen" id='remotegrabscreen1' name="remotegrabscreen1" ><span class='lever switch-col-$skinColor'></span></label>
+												<div class="switch">
+													<span class="m-r-10 font-12"></span>
+													<label>
+														<input type="checkbox" name="remotegrabscreen1" id="remotegrabscreen1" $ScreenshotOnRCU class="remotegrabscreen">
+														<span class="lever switch--skinned"></span>
+													</label>
 												</div>
 											</td>
 										</tr>
 										<tr>
 											<td colspan="2">
-												<h6>$tstrings['shiftforlong']</h6>
+												<p></p>
 											</td>
 										</tr>
 									</table>
@@ -467,31 +264,31 @@
 							</ul>
 						</li>
 						<li>
-							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/tv'); return false;" >
+							<a href="#tv" data-close="true" accesskey="v" title="Shortcut: v">
 								<i class="material-icons">tv</i>
 								<span>$tstrings['television']</span>
 							</a>
 						</li>
 						<li>
-							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/radio'); return false;" >
+							<a href="#radio" data-close="true" accesskey="r" title="Shortcut: r">
 								<i class="material-icons">radio</i>
 								<span>$tstrings['radio']</span>
 							</a>
 						</li>
 						<li>
-							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/myepg?epgmode=tv'); return false;" >
-								<i class="material-icons">today</i>
+							<a href="#myepg?epgmode=tv" data-close="true" accesskey="e" title="Shortcut: e">
+								<i class="material-icons">view_list</i>
 								<span>$tstrings['epg']</span>
 							</a>
 						</li>
 						<li>
-							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/movies'); return false;" >
+							<a href="#movies" data-close="true" accesskey="m" title="Shortcut: m">
 								<i class="material-icons">movie</i>
 								<span>$tstrings['movies']</span>
 							</a>
 						</li>
 						<li>
-							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/timers'); return false;" >
+							<a href="#timers" data-close="true" accesskey="t" title="Shortcut: t">
 								<i class="material-icons">alarm</i>
 								<span>$tstrings['timers']</span>
 							</a>
@@ -499,27 +296,33 @@
 						#for $extra in $extras
 							#if $extra["key"] in ("ajax/at",)
 								<li>
-									<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/at'); return false;" >
-										<i class="material-icons">history</i>
+									<a href="#at" data-close="true" accesskey="a" title="Shortcut: a">
+										<i class="material-icons">av_timer</i>
 										<span>$extra["description"]</span>
 									</a>
 								</li>
 							#end if
 						#end for
 						<li>
-							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/settings'); return false;" >
+							<a href="#settings" data-close="true" accesskey="c" title="Shortcut: c">
 								<i class="material-icons">settings</i>
 								<span>$tstrings['settings']</span>
 							</a>
 						</li>
 						<li>
-							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/bqe'); return false;" >
+							<a href="#bqe" data-close="true" accesskey="b" title="Shortcut: b">
 								<i class="material-icons">view_list</i>
 								<span>$tstrings['Bouquet_Editor']</span>
 							</a>
 						</li>
 						<li>
-							<a href='javascript:void(0);' data-close="true" onclick="load_maincontent('ajax/boxinfo'); return false;" >
+							<a href="#satfinder" data-close="true" accesskey="o" title="Shortcut: o">
+								<i class="material-icons">wifi</i>
+								<span>$tstrings['satfinder']</span>
+							</a>
+						</li>
+						<li>
+							<a href="#boxinfo" data-close="true" accesskey="i" title="Shortcut: i">
 								<i class="material-icons">info</i>
 								<span>$tstrings['box_info']</span>
 							</a>
@@ -531,22 +334,23 @@
 							</a>
 							<ul class="ml-menu">
 							#if $webtv
-								<li><a href='#' data-close="true" onclick="load_maincontent('ajax/webtv'); return false;">$tstrings['webtv']</a></li>
+								<li><a href="#webtv" data-close="true" accesskey="w" title="Shortcut: w">$tstrings['webtv']</a></li>
 							#end if
 							#for $extra in $extras
 								#set $target_url = $extra["key"];
 								#if $target_url not in ('ajax/at','ajax/bqe','ajax/settings')
-									#if $extra.has_key('nw')
+									#if 'nw' in $extra
 										#if $extra["nw"] == "1"
 										<li><a href="$target_url" target='_blank'>$extra["description"]</a></li>
 										#else
-										<li><a class="lmc pop" href="$target_url">$extra["description"]</a></li>
+										<li><a href="$target_url" class="lmc pop">$extra["description"]</a></li>
 										#end if
 									#else
 										<li><a href='javascript:void(0);' data-close="true" onclick="load_maincontent('$target_url'); return false;" >$extra["description"]</a></li>
 									#end if
 								#end if
 							#end for
+								<li><a href="#current">Channel Info</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -557,7 +361,8 @@
 				<!-- it is not allowed to remove this copyright and link when using the materialize (aka responsive) design for openwebif -->
 				<div class="legal" id="leftfooter">
 					<div class="copyright">
-						Materialize design - <b>Version: </b> 1.0.1</br>&copy; 2017 <a href="https://www.vuplus-support.org" target="_blank">VTi - vuplus-support.org</a>.
+						Materialize design - <b>Version: </b> 1.2.0</br>
+						&copy; <a href="https://www.vuplus-support.org" target="_blank">VTi - vuplus-support.org</a>
 					</div>
 				</div>
 <!-- END COPYRIGHT -->
@@ -565,11 +370,15 @@
 			</aside>
 			<!-- #END# Left Sidebar -->
 			<aside id="rightsidebar" class="right-sidebar">
-				<ul class="nav nav-tabs tab-nav-right tab-col-$skinColor" role="tablist">
-					<li role="presentation" class="active"><a href="#settings" data-toggle="tab">$tstrings['settings']</a></li>
-					<li role="presentation"><a href="#skins" data-toggle="tab">SKINS</a></li>
+				<ul class="nav nav-tabs tab-nav-right tab--skinned" role="tablist">
+					<li role="presentation" class="active">
+						<a href="#settings" data-toggle="tab">$tstrings['config']</a>
+					</li>
+					<li role="presentation">
+						<a href="#skins" data-toggle="tab">$tstrings['skins']</a>
+					</li>
 				</ul>
-				<div class="tab-content">
+				<div class="tab-content" style="overflow-y: auto;position: relative;height: 90vh;">
 					<div role="tabpanel" class="tab-pane fade in active in active" id="settings">
 						<div class="demo-settings">
 							<p>$tstrings['epgsearch']</p>
@@ -577,149 +386,178 @@
 								<li>
 									<span>$tstrings['epgsearchextended']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="myepgbtn0" $EPGSearchFull><span class="lever switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" name="myepgbtn0" id="myepgbtn0" $EPGSearchFull>
+											<span class="lever switch--skinned"></span>
+										</label>
 									</div>
 								</li>
 								<li>
 									<span>$tstrings['epgsearchbouquetsonly']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="myepgbtn1" $EPGSearchBQonly><span class="lever switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" name="myepgbtn1" id="myepgbtn1" $EPGSearchBQonly>
+											<span class="lever switch--skinned"></span>
+										</label>
 									</div>
 								</li>
 							</ul>
-<!--						<p>$tstrings['moviesearch']</p>
+						<p>$tstrings['moviesearch']</p>
 							<ul class="setting-list">
 								<li>
 									<span>$tstrings['inc_shortdesc']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="mymoviesearchbtn0" $MovieSearchShort><span class="lever switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" name="mymoviesearchbtn0" id="mymoviesearchbtn0" $MovieSearchShort>
+											<span class="lever switch--skinned"></span>
+										</label>
 									</div>
 								</li>
 								<li>
 									<span>$tstrings['inc_extdesc']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="mymoviesearchbtn1" $MovieSearchExtended><span class="lever switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" name="mymoviesearchbtn1" id="mymoviesearchbtn1" $MovieSearchExtended>
+											<span class="lever switch--skinned"></span>
+										</label>
 									</div>
 								</li>
 							</ul>
--->							
+							
 							<p>$tstrings['common_settings']</p>
 							<ul class="setting-list">
 								<li>
 									<span>$tstrings['showfullremoteshort']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="remotecontrolview" $RemoteControlView ><span class="lever switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" name="remotecontrolview" id="remotecontrolview" $RemoteControlView>
+											<span class="lever switch--skinned"></span>
+										</label>
 									</div>
 								</li>
 								<li>
 									<span>$tstrings['min_movie_list']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="minmovielist" $MinMovieList><span class="lever switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" name="minmovielist" id="minmovielist" $MinMovieList>
+											<span class="lever switch--skinned"></span>
+										</label>
 									</div>
 								</li>
 								<li>
 									<span>$tstrings['min_timer_list']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="mintimerlist" $MinTimerList><span class="lever switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" name="mintimerlist" id="mintimerlist" $MinTimerList>
+											<span class="lever switch--skinned"></span>
+										</label>
 									</div>
 								</li>
 								<li>
 									<span>$tstrings['min_epg_list']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="minepglist" $MinEPGList ><span class="lever switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" name="minepglist" id="minepglist" $MinEPGList>
+											<span class="lever switch--skinned"></span>
+										</label>
 									</div>
 								</li>
 								<li>
-									<span>Old Design</span>
+									<span>XSPF $tstrings['playlistformat']</span>
 									<div class="switch">
-										<label><input type="checkbox" id="noresposive"><span class="lever switch-col-$skinColor vtiwebconfig"></span></label>
+										<label>
+											<input type="checkbox" name="plformat" id="plformat">
+											<span class="lever switch--skinned"></span>
+										</label>
+									</div>
+								</li>
+								<li>
+									<span>$tstrings['zapbeforestream']</span>
+									<div class="switch">
+										<label>
+											<input type="checkbox" name="zapstream" id="zapstream" $ZapStream>
+											<span class="lever switch--skinned"></span>
+										</label>
+									</div>
+								</li>
+								<li>
+									<span>$tstrings['show_iptv_channels_in_selection']</span>
+									<div class="switch">
+										<label>
+											<input type="checkbox" name="showiptvchannelsinselection" id="showiptvchannelsinselection" $showIPTVChannelsInSelection>
+											<span class="lever switch--skinned"></span>
+										</label>
+									</div>
+								</li>
+								<li>
+									<span>$tstrings['use_channel_name_for_screenshots']</span>
+									<div class="switch">
+										<label>
+											<input type="checkbox" name="screenshotchannelname" id="screenshotchannelname" $useSreenshotChannelName>
+											<span class="lever switch--skinned"></span>
+										</label>
+									</div>
+								</li>
+								<li>
+									<span>$tstrings['use_classic_design']</span>
+									<div class="switch">
+										<label>
+											<input type="checkbox" name="noresposive" id="noresposive">
+											<span class="lever switch--skinned"></span>
+										</label>
+									</div>
+								</li>
+							</ul>
+							
+							<p>$tstrings['channels']</p>
+							<ul class="setting-list">
+								<li>
+									<span>$tstrings['show_picons']</span>
+									<div class="switch">
+										<label>
+											<input type="checkbox" name="showpicons" id="showpicons" $showPicons>
+											<span class="lever switch--skinned"></span>
+										</label>
+									</div>
+								</li>
+								<li>
+									<span>$tstrings['show_picon_background']</span>
+									<div class="switch">
+										<label>
+											<input type="checkbox" name="showpiconbackground" id="showpiconbackground" $showPiconBackground>
+											<span class="lever switch--skinned"></span>
+										</label>
 									</div>
 								</li>
 							</ul>
 						</div>
 					</div>
 					<div role="tabpanel" class="tab-pane fade" id="skins">
-						<ul class="demo-choose-skin">
-							<li data-theme="red" class="active">
-								<div class="red"></div>
-								<span>Red</span>
+						<ul class="setting-list" style="margin-bottom: 0;">
+							<li>
+								<span>$tstrings['gui_theme_mode'] - City Lights</span>
+								<div class="switch">
+									<label>
+										<input type="checkbox" name="themeMode" id="thememodebtn" value="city-lights" checked="$(themeMode != 'supabright')">
+										<span class="lever switch--skinned"></span>
+									</label>
+								</div>
 							</li>
-							<li data-theme="pink">
-								<div class="pink"></div>
-								<span>Pink</span>
+						</ul>
+						<ul class="skin-switcher">
+#for $skinPrefOption in $skinPrefOptions
+	#set $isChecked = ''
+	#if $skinPrefOption['value'] == $skinColor
+		#set $isChecked = 'checked'
+	#end if
+							<li>
+								<label>
+									<input type="radio" name="skinpref" value="$skinPrefOption['value']" $isChecked>
+									<span class="color-swatch swatch--$skinPrefOption['value']"></span>
+									$skinPrefOption['label']
+								</label>
 							</li>
-							<li data-theme="purple">
-								<div class="purple"></div>
-								<span>Purple</span>
-							</li>
-							<li data-theme="deep-purple">
-								<div class="deep-purple"></div>
-								<span>Deep Purple</span>
-							</li>
-							<li data-theme="indigo">
-								<div class="indigo"></div>
-								<span>Indigo</span>
-							</li>
-							<li data-theme="blue">
-								<div class="blue"></div>
-								<span>Blue</span>
-							</li>
-							<li data-theme="light-blue">
-								<div class="light-blue"></div>
-								<span>Light Blue</span>
-							</li>
-							<li data-theme="cyan">
-								<div class="cyan"></div>
-								<span>Cyan</span>
-							</li>
-							<li data-theme="teal">
-								<div class="teal"></div>
-								<span>Teal</span>
-							</li>
-							<li data-theme="green">
-								<div class="green"></div>
-								<span>Green</span>
-							</li>
-							<li data-theme="light-green">
-								<div class="light-green"></div>
-								<span>Light Green</span>
-							</li>
-							<li data-theme="lime">
-								<div class="lime"></div>
-								<span>Lime</span>
-							</li>
-							<li data-theme="yellow">
-								<div class="yellow"></div>
-								<span>Yellow</span>
-							</li>
-							<li data-theme="amber">
-								<div class="amber"></div>
-								<span>Amber</span>
-							</li>
-							<li data-theme="orange">
-								<div class="orange"></div>
-								<span>Orange</span>
-							</li>
-							<li data-theme="deep-orange">
-								<div class="deep-orange"></div>
-								<span>Deep Orange</span>
-							</li>
-							<li data-theme="brown">
-								<div class="brown"></div>
-								<span>Brown</span>
-							</li>
-							<li data-theme="grey">
-								<div class="grey"></div>
-								<span>Grey</span>
-							</li>
-							<li data-theme="blue-grey">
-								<div class="blue-grey"></div>
-								<span>Blue Grey</span>
-							</li>
-							<li data-theme="black">
-								<div class="black"></div>
-								<span>Black</span>
-							</li>
+#end for
 						</ul>
 					</div>
 				</div>
@@ -728,17 +566,31 @@
 		</section>
 	</span>
 
-<section class="content"  id="fullmaincontent">
+<section class="content" id="fullmaincontent">
 		<div class="container-fluid">
 			<div class="row clearfix">
-				<div id="content_container">$content</div>
+				<div id="content_container" style="position: relative; min-height: 90vh">$content</div>
 			</div>
 			<span id="mainfooter">
 				<div class="row clearfix">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="card">
 							<div class="body text-center">
-								<div id="footer"><a class="theme-link-color theme-link-col-$skinColor" href="https://github.com/E2OpenPlugins">E2OpenPlugins</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://www.opena.tv">openATV</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://www.vuplus-community.net">Black Hole</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://www.droidsat.org">OpenDroid</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://www.egami-image.com">EGAMI</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://www.hdfreaks.cc">OpenHDF</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://images.teamblue.tech">teamBlue</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://openpli.org">OpenPli</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://forum.sifteam.eu">Sif</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://openspa.info">OpenSpa</a> | <a class="theme-link-color theme-link-col-$skinColor" href="http://www.world-of-satellite.com">OpenViX</a> | <b><a class="theme-link-color theme-link-col-$skinColor" href="http://www.vuplus-support.org">VTi</a></b> | <a class="theme-link-color theme-link-col-$skinColor" href="#" onclick="load_maincontent('ajax/about'); return false">$tstrings['about']</a></div>
+								<div id="footer">
+									<a href="https://github.com/E2OpenPlugins" target="_blank" class="link--skinned" rel="noreferrer noopener">E2OpenPlugins</a> | 
+									<a href="https://www.opena.tv" target="_blank" class="link--skinned" rel="noreferrer noopener">openATV</a> | 
+									<a href="https://www.vuplus-community.net" target="_blank" class="link--skinned" rel="noreferrer noopener">Black Hole</a> | 
+									<a href="http://www.droidsat.org" target="_blank" class="link--skinned" rel="noreferrer noopener">OpenDroid</a> | 
+									<a href="https://www.egami-image.com" target="_blank" class="link--skinned" rel="noreferrer noopener">EGAMI</a> | 
+									<a href="https://www.hdfreaks.cc" target="_blank" class="link--skinned" rel="noreferrer noopener">OpenHDF</a> | 
+									<a href="https://images.teamblue.tech" target="_blank" class="link--skinned" rel="noreferrer noopener">teamBlue</a> | 
+									<a href="https://openpli.org" target="_blank" class="link--skinned" rel="noreferrer noopener">OpenPli</a> | 
+									<a href="https://forum.sifteam.eu" target="_blank" class="link--skinned" rel="noreferrer noopener">Sif</a> | 
+									<a href="https://openspa.info" target="_blank" class="link--skinned" rel="noreferrer noopener">OpenSpa</a> | 
+									<a href="https://www.openvix.co.uk" target="_blank" class="link--skinned" rel="noreferrer noopener">OpenViX</a> | 
+									<b><a href="https://www.vuplus-support.org" target="_blank" class="link--skinned" rel="noreferrer noopener">VTi</a></b> | 
+									<a href="#about" class="link--skinned" rel="noreferrer noopener">$tstrings['about']</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -752,13 +604,18 @@
 <div id="TimerConflictModal" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-header bg-red">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title"><i class="material-icons material-icons-centered">error</i><span>Timer conflict</span></h4>
+			<div class="modal-header bg-red m-b-10" style="padding: 20px 20px 15px;">
+				<button type="button" class="close" data-dismiss="modal">
+					<i class="material-icons material-icons-centered">close</i>
+				</button>
+				<h4 class="modal-title">
+					<i class="material-icons material-icons-centered">error_outline</i>
+					<span>Timer conflict</span><!-- TODO: i10n -->
+				</h4>
 			</div>
-				<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
-					<div id="timerconflictmodal"></div>
-				</div>
+			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
+				<div id="timerconflictmodal"></div>
+			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn waves-effect btn-default" data-dismiss="modal">$tstrings['close']</button>
 			</div>
@@ -768,8 +625,10 @@
 <div id="StreamModal" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-header vti-colored-card bg-$skinColor">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<div class="modal-header bg--skinned">
+				<button type="button" class="close" data-dismiss="modal">
+					<i class="material-icons material-icons-centered">close</i>
+				</button>
 				<span class="modal-title"><i class="material-icons material-icons-centered">wifi_tethering</i>&nbsp;Streams</span>
 			</div>
 				<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
@@ -786,8 +645,10 @@
 <div id="RecModal" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-header vti-colored-card bg-$skinColor">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<div class="modal-header bg--skinned">
+				<button type="button" class="close" data-dismiss="modal">
+					<i class="material-icons material-icons-centered">close</i>
+				</button>
 				<h4 class="modal-title"><i class="material-icons material-icons-centered">alarm</i><span>$tstrings['timers']</span></h4>
 			</div>
 				<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
@@ -806,8 +667,10 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title"><i class="material-icons material-icons-centered">today</i><span>$tstrings['epg']</span></h4>
+				<button type="button" class="close" data-dismiss="modal">
+					<i class="material-icons material-icons-centered">close</i>
+				</button>
+				<h4 class="modal-title"><i class="material-icons material-icons-centered">view_list</i><span>$tstrings['epg']</span></h4>
 			</div>
 			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
 				<div id="epgmodalcontent"></div>
@@ -822,7 +685,9 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<button type="button" class="close" data-dismiss="modal">
+					<i class="material-icons material-icons-centered">close</i>
+				</button>
 			</div>
 				<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
 					<div id="eventdescriptionII"></div>
@@ -837,7 +702,9 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<button type="button" class="close" data-dismiss="modal">
+					<i class="material-icons material-icons-centered">close</i>
+				</button>
 				<h4 class="modal-title" id="timerEditTitle"></h4>
 			</div>
 				<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
@@ -845,7 +712,7 @@
 				</div>
 			<div class="modal-footer">
 				<button type="button" class="btn waves-effect btn-default" data-dismiss="modal">$tstrings['close']</button>
-				<button type="button" class="btn waves-effect responsivebtn bg-$skinColor" data-dismiss="modal" onClick="btn_saveTimer(); return false;">$tstrings['save']</button>
+				<button type="button" class="btn waves-effect responsivebtn btn--skinned" data-dismiss="modal" onclick="btn_saveTimer(); return false;">$tstrings['save']</button>
 			</div>
 		</div>
 	</div>
@@ -854,25 +721,23 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<button type="button" class="close" data-dismiss="modal">
+					<i class="material-icons material-icons-centered">close</i>
+				</button>
 				<h4 class="modal-title"><i class="material-icons material-icons-centered">settings_power</i><span>$tstrings['powercontrol'].replace(" ","&nbsp;")</span></h4>
 			</div>
 			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
-				<hr/>
-				<div class="row clearfix">
-					<div class="col-xs-12 align-center">
-						<button type="button" class="btn waves-effect responsivebtn responsivebtnpower bg-$skinColor" class="theme-link-color theme-link-col-$skinColor" data-dismiss="modal" href="#" onclick="handle_power_state_dialog(new_power_state = 0); return false">
+				<div class="row clearfix m-t-20">
+					<div class="col-xs-6 align-right">
+						<button type="button" onclick="handle_power_state_dialog(new_power_state = 0); return false;" class="btn waves-effect responsivebtn responsivebtnpower btn--skinned" data-dismiss="modal">
 							<h4>
 								<i class="material-icons">power_settings_new</i>
 								<span>$tstrings['standby_toggle']</span>
 							</h4>
 						</button>
 					</div>
-				</div>
-				<hr/>
-				<div class="row clearfix">
-					<div class="col-xs-12 align-center">
-						<button type="button" class="btn waves-effect responsivebtn responsivebtnpower bg-$skinColor" class="theme-link-color theme-link-col-$skinColor" data-dismiss="modal" href="#" onclick="handle_power_state_dialog(new_power_state = 1); return false">
+					<div class="col-xs-6 align-left">
+						<button type="button" onclick="handle_power_state_dialog(new_power_state = 1); return false;" class="btn waves-effect responsivebtn responsivebtnpower btn--skinned" data-dismiss="modal">
 							<h4>
 								<i class="material-icons">vertical_align_bottom</i>
 								<span>$tstrings['deep_standby']</span>
@@ -882,19 +747,16 @@
 				</div>
 				<hr/>
 				<div class="row clearfix">
-					<div class="col-xs-12 align-center">
-						<button type="button" class="btn waves-effect responsivebtn responsivebtnpower bg-$skinColor" data-dismiss="modal" href="#" onclick="handle_power_state_dialog(new_power_state = 2); return false">
+					<div class="col-xs-6 align-right">
+						<button type="button" onclick="handle_power_state_dialog(new_power_state = 2); return false;" class="btn waves-effect responsivebtn responsivebtnpower btn--skinned" data-dismiss="modal">
 							<h4>
 								<i class="material-icons">loop</i>
 								<span>$tstrings['reboot_box']</span>
 							</h4>
 						</button>
 					</div>
-				</div>
-				<hr/>
-				<div class="row clearfix">
-					<div class="col-xs-12 align-center">
-						<button type="button" class="btn waves-effect responsivebtn responsivebtnpower bg-$skinColor" class="theme-link-color theme-link-col-$skinColor" data-dismiss="modal" href="#" onclick="handle_power_state_dialog(new_power_state = 3); return false">
+					<div class="col-xs-6 align-left">
+						<button type="button" onclick="handle_power_state_dialog(new_power_state = 3); return false" class="btn waves-effect responsivebtn responsivebtnpower btn--skinned" class="link--skinned" data-dismiss="modal">
 							<h4>
 								<i class="material-icons">settings_backup_restore</i>
 								<span>$tstrings['restart_gui']</span>
@@ -902,9 +764,11 @@
 						</button>
 					</div>
 				</div>
+				<div class="row clearfix">
+				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default waves-effect" data-dismiss="modal" onClick="closeMessageModal(); return false;">$tstrings['close']</button>
+				<button type="button" onclick="closeMessageModal(); return false;" class="btn btn-default waves-effect" data-dismiss="modal">$tstrings['close']</button>
 			</div>
 		</div>
 	</div>
@@ -913,7 +777,9 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" onClick="closeMessageModal(); return false;" data-dismiss="modal">&times;</button>
+				<button type="button" onclick="closeMessageModal(); return false;" class="close" data-dismiss="modal">
+					<i class="material-icons material-icons-centered">close</i>
+				</button>
 			</div>
 			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -943,7 +809,7 @@
 									</div>
 									<div class="col-xs-12 col-sm-9">
 										<div class="form-line">
-											<input type="text" class="form-control inactive" value="30" id="messageTimeout">
+											<input type="text" name="messageTimeout" id="messageTimeout" value="30" class="form-control inactive">
 										</div>
 									</div>
 								</div>
@@ -971,8 +837,8 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default waves-effect" data-dismiss="modal" onClick="closeMessageModal(); return false;">$tstrings['close']</button>
-				<button type="button" class="btn waves-effect responsivebtn bg-$skinColor"  onClick="sendModalMessage(); return false;">$tstrings['sendamessage'].replace(" ","&nbsp;")</button>
+				<button type="button" onclick="closeMessageModal(); return false;" class="btn btn-default waves-effect" data-dismiss="modal">$tstrings['close']</button>
+				<button type="button" onclick="sendModalMessage(); return false;" class="btn waves-effect responsivebtn btn--skinned">$tstrings['sendamessage'].replace(" ","&nbsp;")</button>
 			</div>
 		</div>
 	</div>
@@ -989,37 +855,43 @@
 	<input type="hidden" name="device">
 </form>
 
-<script type="text/javascript">
+<script>
 	\$(document).ready(function() {
 		\$("#remote_container").load("static/remotes/${remote}.html");
 		directlink();
 	});
 	SetLSValue('TimerListOffset',0);
 </script>
-<script src="themes/absb/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="themes/absb/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
-<script src="themes/absb/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-<script src="themes/absb/plugins/autosize/autosize.min.js"></script>
-<script src="themes/absb/plugins/node-waves/waves.min.js"></script>
-<script src="themes/absb/plugins/jquery-countto/jquery.countTo.js"></script>
-<script src="themes/absb/plugins/nouislider/nouislider.min.js"></script>
-<script src="themes/absb/plugins/sweetalert/sweetalert.min.js"></script>
-<script src="themes/absb/plugins/momentjs/moment.js"></script>
-<script src="themes/absb/js/vti-bootstrap-date-timepicker.js"></script>
-<script src="themes/absb/js/admin.js"></script>
-<script src="themes/absb/js/vti-responsive.js"></script>
-<script type="text/javascript">initJsTranslationAddon($dumps($tstrings))</script>
+<script src="/modern/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/modern/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script src="/modern/plugins/autosize/autosize.min.js"></script>
+<script src="/modern/plugins/node-waves/waves.min.js"></script>
+<script src="/modern/plugins/nouislider/nouislider.min.js"></script>
+<script src="/modern/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="/modern/plugins/momentjs/moment.min.js"></script>
+<script src="/modern/plugins/screenfull/screenfull.min.js"></script>
+<script src="/modern/js/entry-app.js"></script>
+<script src="/modern/js/vti-bootstrap-date-timepicker.min.js"></script>
+<script src="/modern/js/admin.min.js"></script>
+<script src="/modern/js/vti-responsive.min.js"></script>
+<script>initJsTranslationAddon($dumps($tstrings))</script>
 
-<script type="text/javascript">
-	\$(document).ready(function() {
-		\$('#noresposive').change(function () {
-			\$.ajax({
+<script>
+	jQuery(document).ready(function() {
+		jQuery('#noresposive').change(function () {
+			jQuery.ajax({
 				url: "api/setwebconfig?responsivedesign=false",
 				success: function() {
 					window.location.hash = '';
 					window.location.reload(true);
 				}
 			});
+		});
+		var pl = GetLSValue('pl','m3u');
+		jQuery('#plformat').prop('checked',( pl != 'm3u'));
+		jQuery("#plformat").change(function() {
+			var val = jQuery(this).is(":checked") ? 'xspf' : 'm3u'
+			SetLSValue('pl',val);
 		});
 	});
 </script>

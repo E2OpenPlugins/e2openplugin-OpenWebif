@@ -1,14 +1,17 @@
 //******************************************************************************
 //* epgr.js: openwebif EPGRefresh plugin
-//* Version 1.3
+//* Version 1.6
 //******************************************************************************
-//* Copyright (C) 2016 Joerg Bleyel
-//* Copyright (C) 2016 E2OpenPlugins
+//* Copyright (C) 2016-2021 Joerg Bleyel
+//* Copyright (C) 2016-2021 E2OpenPlugins
 //*
 //* V 1.0 - Initial Version
 //* V 1.1 - Theme Support
 //* V 1.2 - Refactor
 //* V 1.3 - use public getallservices
+//* V 1.4 - iptv, lastscanned filter
+//* V 1.5 - improve getallservices
+//* V 1.6 - improve getallservices
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //*
@@ -72,12 +75,23 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 
 			}, getAllServices: function () {
 			
-				GetAllServices(function ( options , boptions) {
-					$("#channels").append( options);
-					$('#channels').trigger("chosen:updated");
-					$("#bouquets").append( boptions);
-					$('#bouquets').trigger("chosen:updated");
-					self.reloadEPGR();
+				niptv = (EPGRnoiptv) ? "&noiptv=1" : "";
+				$.ajax({
+					url: '/api/getallservices?nolastscanned=1' + niptv,
+					dataType: "json",
+					success: function ( data ) {
+						var sdata = JSON.stringify(data);
+						var bqs = data['services'];
+
+						FillAllServices(bqs, function ( options , boptions) {
+							$("#channels").append( options);
+							$('#channels').trigger("chosen:updated");
+							$("#bouquets").append( boptions);
+							$('#bouquets').trigger("chosen:updated");
+							self.reloadEPGR();
+						});
+
+					}
 				});
 			
 			}, reloadEPGR: function () {

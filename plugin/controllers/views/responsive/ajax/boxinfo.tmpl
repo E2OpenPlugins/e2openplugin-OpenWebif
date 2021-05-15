@@ -1,5 +1,5 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+
 <div class="col-xs-12">
 	<div class="card">
 		<div class="header">
@@ -12,14 +12,18 @@
 		<div class="body" style="word-break: break-all">
 			<div class="row clearfix">
 				<div class="col-xs-12">
+#if $boximage != 'unknown.png'
 					<img src="images/boxes/${boximage}" id="box_image" class="img-responsive center-block" alt="box_info">
+#else
+					<div class="box-info__unknown-box align-center"><i class="material-icons material-icons-centered">dvr</i></div>
+#end if
 				</div>
 			</div>
 			<div class="row clearfix">
 				<div class="col-xs-12">
 					<div class="card">
-					<div class="header vti-colored-card bg-$skinColor">
-							<h2>$tstrings['box']</h2>
+					<div class="header bg--skinned">
+						<h2><i class="material-icons material-icons-centered">dvr</i>$tstrings['box']</h2>
 					</div>
 					<div class="body">
 							<div class="row clearfix">
@@ -61,8 +65,8 @@
 			<div class="row clearfix">
 				<div class="col-xs-12">
 					<div class="card">
-						<div class="header vti-colored-card bg-$skinColor">
-							<h2>$tstrings['software']</h2>
+						<div class="header bg--skinned">
+							<h2><i class="material-icons material-icons-centered">save</i>$tstrings['software']</h2>
 						</div>
 						<div class="body">
 							<div class="row clearfix">
@@ -96,38 +100,73 @@
 			<div class="row clearfix">
 				<div class="col-xs-12">
 					<div class="card">
-						<div class="header vti-colored-card bg-$skinColor">
-							<h2>$tstrings['tuners']</h2>
+						<div class="header bg--skinned">
+							<h2><i class="material-icons material-icons-centered">tune</i>$tstrings['tuners']</h2>
 						</div>
 						<div class="body">
+						#set $divider = ''
 						#for $tuner in $tuners
-								<div class="row clearfix">
-									<div class="col-xs-12 col-sm-6">
-										<b>$tuner.name</b>
-									</div>
-									<div class="col-xs-12 col-sm-6">
-										$tuner.type
-									#if $tuner.live != ''
-										<p><i class="material-icons material-icons-centered">play_circle_outline</i>$tuner.live</p>
-									#end if
-									#if $tuner.rec != ''
-											<p><i class="material-icons material-icons-centered">videocam</i>$tuner.rec</p>
-									#end if
-									</div>
+							$divider
+							<div class="row clearfix">
+								<div class="col-xs-12 col-sm-6">
+									<b>$tuner.name</b>
 								</div>
+								<div class="col-xs-12 col-sm-6">
+									$tuner.type
+								#if $tuner.live != ''
+									<p><i class="material-icons material-icons-centered">play_circle_outline</i>$tuner.live</p>
+								#end if
+								#if $tuner.rec != ''
+										<p><i class="material-icons material-icons-centered">videocam</i>$tuner.rec</p>
+								#end if
+								</div>
+							</div>
+							#set $divider = '<hr style="margin:0 0 30px;">'
 						#end for
 						</div>
 					</div>
 				</div>
 			</div>
+			#if $len($streams) > 0
 			<div class="row clearfix">
 				<div class="col-xs-12">
 					<div class="card">
-						<div class="header vti-colored-card bg-$skinColor">
-							<h2>HDD</h2>
+						<div class="header bg--skinned">
+							<h2><i class="material-icons material-icons-centered">settings_system_daydream</i>$tstrings['streamclients']</h2>
 						</div>
 						<div class="body">
+							#set $divider = ''
+							#for $stream in $streams
+								$divider
+								<div class="row clearfix">
+									<div class="col-xs-12 col-sm-6">
+										<b>$stream.ip:</b>
+									</div>
+									<div class="col-xs-12 col-sm-6">
+										#if $stream.type == 'T'
+											$stream.name / ($tstrings['transcoded'])
+										#else
+											$stream.name
+										#end if
+									</div>
+								</div>
+								#set $divider = '<hr style="margin:0 0 30px;">'
+							#end for
+						</div>
+					</div>
+				</div>
+			</div>
+			#end if
+			<div class="row clearfix">
+				<div class="col-xs-12">
+					<div class="card">
+						<div class="header bg--skinned">
+							<h2><i class="material-icons material-icons-centered">storage</i>HDD</h2>
+						</div>
+						<div class="body">
+							#set $divider = ''
 							#for $hd in $hdd
+								$divider
 								<div class="row clearfix">
 									<div class="col-xs-12 col-sm-6">
 										<b>$tstrings['hdd_model']:</b>
@@ -136,14 +175,15 @@
 										 $hd.model
 									</div>
 								</div>
-							<div class="row clearfix">
-								<div class="col-xs-12 col-sm-6">
-									<b>$tstrings['capacity']:</b>
+								<div class="row clearfix">
+									<div class="col-xs-12 col-sm-6">
+										<b>$tstrings['capacity']:</b>
+									</div>
+									<div class="col-xs-12 col-sm-6">
+										$hd.friendlycapacity ($hd.mount)
+									</div>
 								</div>
-								<div class="col-xs-12 col-sm-6">
-									$hd.friendlycapacity ($hd.mount)
-								</div>
-							</div>
+								#set $divider = '<hr style="margin:0 0 30px;">'
 							#end for
 						</div>
 					</div>
@@ -153,19 +193,22 @@
 			<div class="row clearfix">
 					<div class="col-xs-12">
 						<div class="card">
-							<div class="header vti-colored-card bg-$skinColor">
-								<h2>$tstrings['networkshares']</h2>
+							<div class="header bg--skinned">
+								<h2><i class="material-icons material-icons-centered">settings_ethernet</i>$tstrings['networkshares']</h2>
 							</div>
 							<div class="body">
+							#set $divider = ''
 							#for $share in $shares
-									<div class="row clearfix">
-										<div class="col-xs-12 col-sm-6">
-											<b>$share.name:</b>
-										</div>
-										<div class="col-xs-12 col-sm-6">
-											$share.type $tstrings['using'] $share.method: $share.path ($share.friendlyaddress)
-										</div>
+								$divider
+								<div class="row clearfix">
+									<div class="col-xs-12 col-sm-6">
+										<b>$share.name:</b>
 									</div>
+									<div class="col-xs-12 col-sm-6">
+										$share.type $tstrings['using'] $share.method: $share.path ($share.friendlyaddress)
+									</div>
+								</div>
+								#set $divider = '<hr style="margin:0 0 30px;">'
 							#end for
 							</div>
 						</div>
@@ -176,8 +219,8 @@
 			<div class="row clearfix">
 					<div class="col-xs-12">
 						<div class="card">
-							<div class="header vti-colored-card bg-$skinColor">
-								<h2>$tstrings['network_interface']: $iface.name ($iface.friendlynic)</h2>
+							<div class="header bg--skinned">
+								<h2><i class="material-icons material-icons-centered">router</i>$tstrings['network_interface']: $iface.name ($iface.friendlynic)</h2>
 							</div>
 							<div class="body">
 								<div class="row clearfix">

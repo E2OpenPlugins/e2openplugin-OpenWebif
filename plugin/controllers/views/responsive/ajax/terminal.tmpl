@@ -1,37 +1,22 @@
 #filter WebSafe
-<head>
-	<style>
-		p {
-			font-size:	1.1em;
-		}
-		#shell, #output {
-			width:		95%;
-			height:		90%;
-			margin: 	20px 10px;
-		}
-		#output {
-			overflow:	scroll;
-			border:		2px solid #999;
-		}
-	</style>
-</head>
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	<div class="card"  id="epgcard">
+	<div class="card" id="epgcard">
 		<div class="header">
 			<div class="row clearfix" id="epgcardheaderI">
 				<div class="col-xs-12 col-sm-6">
-					<h2><i class="material-icons material-icons-centered">today</i>Terminal</h2>
+					<h2><i class="material-icons material-icons-centered">keyboard_return</i>Terminal</h2>
 				</div>
 			</div>
-			<ul class="header-dropdown m-r--5" id="epgcardheaderII">
+			<ul class="header-dropdown" id="epgcardheaderII">
 			</ul>
 		</div>
-		<div class="body" >
+		<div class="body">
 			<div id='tvcontent' style='height: 700px;'>
 			<iframe id="shell" src="terminal" style="display:inline-block;margin-left:10px;"></iframe>
 			</div>
 		</div>
 	</div>
 </div>
+
 #end filter

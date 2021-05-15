@@ -1,5 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 import os
 import unittest
 import uuid
@@ -40,7 +41,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 		print("Tried to fetch {!r}".format(req.url))
 		# print(req.text)
 		expected_body = '#EXTM3U\n#EXTVLCOPT--http-reconnect=true\n#EXTINF:-1,stream\nhttp://{netloc}:80/file?action=download&file=/etc/passwd'.format(netloc=self.enigma2_host)
-		self.assertEquals(expected_body, req.text)
+		self.assertEqual(expected_body, req.text)
 		self.assertEqual(200, req.status_code)
 
 	def test_etc_passwd_download(self):
@@ -60,7 +61,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 		}
 		req = requests.get(self.file_url, params=params)
 		print("Tried to fetch {!r}".format(req.url))
-		self.assertEquals("wrong action parameter", req.text)
+		self.assertEqual("wrong action parameter", req.text)
 		self.assertEqual(200, req.status_code)
 
 	def test_nonexisting_file(self):
@@ -70,7 +71,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 		}
 		req = requests.get(self.file_url, params=params)
 		print("Tried to fetch {!r}".format(req.url))
-		self.assertEquals("File '/home/root/{:s}' not found".format(randy),
+		self.assertEqual("File '/home/root/{:s}' not found".format(randy),
 						  req.text)
 		self.assertEqual(200, req.status_code)
 
@@ -85,7 +86,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 							   "result": False}
 		result = req.json()
 		for key in minimal_expectation:
-			self.assertEquals(minimal_expectation[key], result.get(key))
+			self.assertEqual(minimal_expectation[key], result.get(key))
 		self.assertEqual(200, req.status_code)
 
 	def test_empty_glob_result(self):
@@ -99,7 +100,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 		minimal_expectation = {"dirs": [], "result": True}
 		result = req.json()
 		for key in minimal_expectation:
-			self.assertEquals(minimal_expectation[key], result.get(key))
+			self.assertEqual(minimal_expectation[key], result.get(key))
 		self.assertEqual(200, req.status_code)
 
 	def test_nonempty_glob_result(self):
@@ -113,7 +114,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 							   "files": []}
 		result = req.json()
 		for key in minimal_expectation:
-			self.assertEquals(minimal_expectation[key], result.get(key))
+			self.assertEqual(minimal_expectation[key], result.get(key))
 		self.assertEqual(200, req.status_code)
 
 

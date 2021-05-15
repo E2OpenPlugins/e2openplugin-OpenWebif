@@ -2,7 +2,7 @@
 <body>
 	<div data-role="page" id="mainPage">
 		<div id="header">
-			<div class="button" onClick="history.back()">$tstrings['back']</div>
+			<div class="button" onclick="history.back()">$tstrings['back']</div>
 			<h1><a style="color:#FFF;text-decoration:none;" href='/mobile'>OpenWebif</a></h1>
 		</div>
 		<div id="contentContainer">
@@ -20,17 +20,17 @@
 			<br><br>
 			<ul data-role="listview" data-inset="true" data-theme="d">
 				<li data-role="list-divider" role="heading" data-theme="b">$tstrings['instant_record']</li>
-				<li><a href="#" onClick="startInstantRecord()">$tstrings['start_instant_record']</a></li>
+				<li><a href="#" onclick="startInstantRecord()">$tstrings['start_instant_record']</a></li>
 			</ul>
 			<br><br>
 			<ul data-role="listview" data-inset="true" data-theme="d">
 				<li data-role="list-divider" role="heading" data-theme="b">$tstrings['powercontrol']</li>
-				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=0'); return false">$tstrings['standby_toggle']</a></li>
-				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=1'); return false">$tstrings['deep_standby']</a></li>
-				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=2'); return false">$tstrings['reboot_box']</a></li>
-				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=3'); return false">$tstrings['restart_gui']</a></li>
-				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=4'); return false">$tstrings['wake_up']</a></li>
-				<li><a href="#" onClick="jQuery.ajax('/api/powerstate?newstate=5'); return false">$tstrings['standby']</a></li>
+				<li><a href="#" onclick="jQuery.ajax('/api/powerstate?newstate=0'); return false">$tstrings['standby_toggle']</a></li>
+				<li><a href="#" onclick="jQuery.ajax('/api/powerstate?newstate=1'); return false">$tstrings['deep_standby']</a></li>
+				<li><a href="#" onclick="jQuery.ajax('/api/powerstate?newstate=2'); return false">$tstrings['reboot_box']</a></li>
+				<li><a href="#" onclick="jQuery.ajax('/api/powerstate?newstate=3'); return false">$tstrings['restart_gui']</a></li>
+				<li><a href="#" onclick="jQuery.ajax('/api/powerstate?newstate=4'); return false">$tstrings['wake_up']</a></li>
+				<li><a href="#" onclick="jQuery.ajax('/api/powerstate?newstate=5'); return false">$tstrings['standby']</a></li>
 			</ul>
 		</div>
 		<div id="footer">

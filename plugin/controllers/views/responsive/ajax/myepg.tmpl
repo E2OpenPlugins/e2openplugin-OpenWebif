@@ -1,31 +1,52 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
+
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	<div class="card"  id="epgcard">
 		<div class="header">
 			<div class="row clearfix" id="epgcardheaderI">
 				<div class="col-xs-12 col-sm-6">
-					<h2><i class="material-icons material-icons-centered">today</i>$tstrings['epg']</h2>
+					<h2>
+						<i class="material-icons material-icons-centered">view_list</i>
+						$tstrings['epg']
+					</h2>
 				</div>
 			</div>
-			<ul class="header-dropdown m-r--5" id="epgcardheaderII">
-			<li><a href="javascript:void(0);" onClick="toggleLeftSideBar(); return false;"><i class="material-icons" id="togglefullscreen">fullscreen</i></a></li>
+			<ul class="header-dropdown" id="epgcardheaderII">
+				<li><a href="javascript:void(0);" onclick="toggleLeftSideBar(); return false;"><i class="material-icons" id="togglefullscreen">fullscreen</i></a></li>
 				<li class="dropdown">
 				<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 					<ul class="dropdown-menu pull-right">
-						<li><a href="#" onclick="load_tvcontent_spin('ajax/multiepg?epgmode=tv'); return false;"  >$tstrings['television']</a></li>
-						<li><a href="#" onclick="load_tvcontent_spin('ajax/multiepg?epgmode=radio'); return false;"  >$tstrings['radio']</a></li>
+						<li><a href="javascript:void(0);" onclick="load_tvcontent_spin('ajax/multiepg?epgmode=tv'); return false;">$tstrings['television']</a></li>
+						<li><a href="javascript:void(0);" onclick="load_tvcontent_spin('ajax/multiepg?epgmode=radio'); return false;">$tstrings['radio']</a></li>
 					</ul>
 				</li>
 			</ul>
+			<div class="row clearfix">
+				<div class="col-xs-12 col-sm-4">
+					<form action="/" method="get" onsubmit="window.location.hash='epgdialog?bouquetsonly=1&sstr=' + this.elements['sstr'].value; return false;" class="form-group" style="margin-bottom: 5px;">
+						<div class="form-line m-r-10" style="display: inline-block; width: calc(100% - 60px);">
+							<input type="search" name="sstr" id="name" placeholder="$tstrings['search']" class="form-control">
+						</div>
+						<button type="submit" class="btn btn-default waves-effect">
+							<i class="material-icons">search</i>
+						</button>
+					</form>
+				</div>
+			</div>
 		</div>
-		<div class="body" >
-			<div id='tvcontent'></div>
+		<div class="body">
+			<div id="tvcontent"></div>
 		</div>
 	</div>
 </div>
+
 <script>
-\$("#epgcard").height((\$("#leftsidemenu").height() - 30) + "px");
-</script>
-<script type="text/javascript">
-\$(function() { load_tvcontent_spin('ajax/multiepg?epgmode=tv'); return false;});
+	jQuery("#epgcard").height((jQuery("#leftsidemenu").height() - 30) + "px");
+
+	jQuery(function() {
+		load_tvcontent_spin('ajax/multiepg?epgmode=tv');
+		return false;
+	});
+
+	jQuery.AdminBSB.input.activate();
 </script>

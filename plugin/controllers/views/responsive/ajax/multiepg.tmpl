@@ -1,29 +1,28 @@
-#from urllib import quote
+#import six
+#from six.moves.urllib.parse import quote
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from json import dumps
 #from time import localtime, strftime, mktime
 #from Plugins.Extensions.OpenWebif.controllers.views.responsive.ajax.renderevtblock import renderEvtBlock
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+
+<!-- TODO: move styles to css file -->
 <style>
 	table { font-size: 13px; }
 	tr { vertical-align: top }
 	.float { float:left }
-	.service { font-weight: bold; font-size: 12px; line-height:30px; padding-right: 4px; white-space: nowrap; overflow: hidden;}
-	.service img { width:50px; height:30px; float:left; margin-right:10px; border: 0;}
-	.serviceheader { padding: 10px; width: 190px }
-	.title { font-weight: bold;}
-	.desc { font-size: 10px; line-height: 1.25em; max-height: 3.75em; overflow: hidden; }
-	.event { cursor: pointer; width: 190px; overflow:hidden; margin-bottom: 0.75em;}
-	.bq { font-size: 11px; font-weight: bold; padding: 2px 4px; line-height: 18px; cursor: pointer; white-space: nowrap; display: inline-block; margin: 1px 1px 0px 0px;}
+	.service { font-weight: bold; font-size: 12px; padding-right: 4px; white-space: nowrap; overflow: hidden; }
+	.service img { width:50px; height:30px; float:none; margin-right:10px; border: 0; }
+	.serviceheader { padding: 10px; width: 190px; text-align: center; background-color: #bababa; box-shadow: inset -20px 40px 60px #fff; }
+	.theme--city-lights .serviceheader { background-color: #313443; box-shadow: inset -20px 40px 60px #282c37; }
+	.event { cursor: pointer; width: 190px; overflow:hidden; }
+	.bq { font-size: 12px; padding: 2px 4px; line-height: 18px; cursor: pointer; white-space: nowrap; display: inline-block; margin: 1px 1px 0px 0px;}
 	.plusclick { font-size: 14px; }
-	.navtab-active { cursor: pointer; margin-right:8px; font-weight: bold; border-bottom: 2px solid $skinColor; background-color: transparent !important; bottom: 2px;}
-	.navtab-inactive { cursor: pointer; margin-right:8px;  border:None; background-color: transparent !important;  }
+	.navtab-active { cursor: pointer; margin-right:8px; font-weight: bold; border-bottom-width: 2px; border-bottom-style: solid; background-color: transparent !important; bottom: 2px;}
+	.navtab-inactive { cursor: pointer; margin-right:8px; border:None; background-color: transparent !important;  }
 	.timer { font-weight: bold; font-size: 10px; color:red; }
 	#eventdescription { width: 375px; height: auto; position: fixed; top: 205px; left: 350px; z-index: 100; display: none; overflow: auto; }
 	#navepg { margin-bottom: 1px; }
-#if $mode == 2
-
-#else
+#if $mode != 2
 	#tbl1 tbody { width: 100%; height: 100%; overflow-y: auto; display: block; overflow-x: hidden;}
 	#tbl2 tbody { width: 100%; height: 100%; overflow-y: hidden; display: block; overflow-x: hidden;}
 	#fulltbl { width: 100%; height: 100%; overflow-y: hidden; display: block; overflow-x: auto;}
@@ -32,11 +31,71 @@
 	.ui-widget-content.nobg , .ui-widget-header.nobg{ background-image: none; } 
 	.wrapper { overflow-x: auto; width: 100%; -ms-overflow-style: -ms-autohiding-scrollbar;}
 	td.border { width: 190px; }
+
+	.epg__event { display: flex; flex-wrap: wrap; padding: 0 0.2em 1em; }
+	.epg__time--start { flex: 0 1 2.8em }
+	.epg__title { font-weight: bold; margin-bottom: 0.2ex; flex: 1 0 0; display: block; }
+	.epg__desc { cursor: pointer; width: 190px; overflow:hidden; max-height: 3.75em; overflow: hidden; line-height: 1.25em; font-size: 12px; text-align: justify; padding-right: 1em; }
+	@supports (-webkit-line-clamp: 4) { .epg__desc { max-height: none; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; } }
+	img[src*="default_picon"] { filter: grayscale(1) opacity(0.5); }
+
+	#fulltbl .table-striped>tbody>tr:hover,
+	#fulltbl .table-striped>tbody>tr:nth-of-type(odd):hover,
+	#fulltbl .theme--city-lights .table-striped>tbody>tr:hover,
+	#fulltbl .theme--city-lights .table-striped>tbody>tr:nth-of-type(odd):hover { 
+	/* background-color: initial; */
+	}
+	.epg__event:hover {
+		filter: brightness(1.2);
+	}
+	.epg__event:hover .epg__title {
+			text-decoration: underline;
+	}
+	.epg__event.event--has-timer {
+    position: relative;
+    overflow: visible;
+	}
+	.epg__event.event--has-timer::after {
+	content: '';
+    display: block;
+    border-radius: 0;
+    top: -25%;
+    right: 0;
+    bottom: -10%;
+    left: -10px;
+    position: absolute;
+    border-width: 0 0 0 3px;
+	border-style: solid;
+  	}
+	.epg__timer-status .material-icons {
+		font-size: 1.2em;
+    margin-right: 0.6ex;
+    /* margin-bottom: 0.2ex; */
+    vertical-align: text-top;
+    /* line-height: 1.2; */
+    float: left;
+	}
+	.epg__row {
+    border: solid;
+    border-width: 1px 0px 0px 0px;
+    height: 60px !important;
+    margin: 0;
+    box-shadow: 5px 0px 2px -3px rgba(0, 0, 0, 0.2);
+	}
+	.epg__channel {
+    width: 125px !important;
+    margin-left: 15px;
+    padding-right: 18px;
+	}
+	.epg__channel label {
+    font-size: 11px;
+    line-height: 1;
+	}
 </style>
 
 <div id="navepg">
-<ul class="nav nav-tabs tab-col-$skinColor" style="margin-top: -10px;">
-#for $slot in range(0,7)
+<ul class="nav nav-tabs tab--skinned" style="margin-top: -10px;">
+#for $slot in list(range(0,7))
 	<li><div class="plusclick navtab-#if $slot==$day then 'active' else 'inactive' #" data-day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div></li>
 #end for
 #if $mode == 2
@@ -51,7 +110,7 @@
 
 #else
 <li><div class="plusclick lbl">&nbsp;$tstrings['cw']:&nbsp;</div></li>
-#for $wk in range(0,3)
+#for $wk in list(range(0,3))
 	#set $w = $wk + 1000
 	<li><div class="plusclick navtab-#if $wk==$week then 'active' else 'inactive' #" data-day="$(w)">$time.strftime("%V",time.localtime(time.time()+604800*wk))</div></li>
 #end for
@@ -65,7 +124,7 @@
 <div id="refreshmepg2" onclick="RefreshMEPG();"><i id="refreshmepgi" class="fa fa-refresh link" aria-hidden="true"></i></div>
 	<br clear="all">
 
-<ul class="nav nav-tabs tab-col-$skinColor" style="margin-top: -10px;">
+<ul class="nav nav-tabs tab--skinned" style="margin-top: -10px;">
 #for $bq in $bouquets
 	<li><div class="bq navtab-#if $bq[0]==$bref then 'active' else 'inactive' #" data-ref="$quote($bq[0])">$bq[1]</div></li>
 #end for
@@ -98,6 +157,21 @@
 	.etimesmall, .etime {
 		font-size: 10px;
 	}
+	.theme--city-lights .event a {
+		color: inherit;
+	}
+	.theme--city-lights .event a:hover {
+		color: inherit;
+	}
+	.theme--city-lights .curevent {
+		color: #f1f1f1;
+		background: #313443;
+	}
+	.theme--city-lights .ename,
+	.theme--city-lights .etimesmall, 
+	.theme--city-lights .etime { 
+		color: inherit;
+	}
 </style>
 
 #set $now = $mktime($localtime())
@@ -126,45 +200,41 @@
 #if $mode == 1
 #set $renderEventBlock = $renderEvtBlock()
 <div id="fulltbl" class="responsive-table">
-<table border="0" cellpadding="0" cellspacing="0" width="100%" id="tbl2">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" id="tbl2">
 		<tbody id="tbl2body">
 			<tr style="background-color:#bababa;">
-#for $sname, $eventlist in $events.iteritems()
+#for $sname, $eventlist in six.iteritems($events)
 #set $evl = $eventlist[0]
 #set $ref= ""
 #if $evl
 	#set $ev=$evl[0]
 	#set $ref = "data-ref='" + $ev.ref + "'"
 #end if
-<td class="serviceheader"><div class="service event" $ref><img src="$(picons[$sname])" />$sname</div></td>
+				<td class="serviceheader">
+					<div class="service event" $ref><img src="$(picons[$sname])" loading="lazy">$sname</div>
+				</td>
 #end for
-</tr>
-<tr>
-	<table border="0" cellpadding="0" cellspacing="0" width="100%" id="tbl1" class="table table-striped">
-		<tbody id="tbl1body">
+			</tr>
+			<tr>
+					<table border="0" cellpadding="0" cellspacing="0" width="100%" id="tbl1" class="table table-striped">
+						<tbody id="tbl1body">
 #set even = 0
-#for $slot in range(0,12)
-	#if $even == 0
-		<tr>
-		#set $even = 1
-	#else
-		#set $even = 0
-	<tr style="background-color:#e9e9e9;">
-	#end if
-	#for $sname, $eventlist in $events.iteritems()
-		<td class="border" style="white-space:normal;">
+#for $slot in list(range(0,12))
+							<tr>
+	#for $sname, $eventlist in six.iteritems($events)
+								<td class="border" style="white-space:normal;">
 		#for $event in $eventlist[$slot]
 			$renderEventBlock.render($event)
 		#end for
 		#if len($eventlist[$slot]) == 0
-		<div class="event"></div>
+									<article class="epg__event event"></article>
 		#end if
-	</td>
+								</td>
 	#end for
-</tr>
+							</tr>
 #end for
-</tbody>
-				</table>
+						</tbody>
+					</table>
 			</tr>
 		</tbody>
 	<table>
@@ -176,37 +246,37 @@
 		<tbody>
 			<tr>
 				<td>
-					<table >
+					<table>
 						<tbody>
 							<tr>
 								<td>
-#for $sname, $eventlist in $events.iteritems()
-	<div class="row " style="border:solid;border-width:1px 0px 0px 0px;height:60px!important;background-color:#bababa;" >
-	<div style="width:141px!important;margin-left:20px;" class="pull-left">
-	<h2 class="picon" ><img src="$(picons[$sname])" title="$sname" /></h2>
-	</br><label>$sname</label>
-	</div>
-	</div>
+#for $sname, $eventlist in six.iteritems($events)
+									<div class="row epg__row">
+										<div class="epg__channel pull-left">
+											<h2 class="picon"><img src="$(picons[$sname])" title="$sname" loading="lazy"></h2>
+											</br><label>$sname</label>
+										</div>
+									</div>
 #end for
-</td>
-<tr>
-<tbody>
-</table>
-</td>
-<td>
-<table class="table-striped">
-<tbody>
-<tr>
-<td>
-<div style="overflow:auto" id="tblinner">
-<div class="timetable">
-<div>
-<div class="timetable-now"></div>
-</div>
-</div>
-#for $sname, $eventlist in $events.iteritems()
-<div class="row " style="width:30000px; border:solid;border-width:1px 0px 0px 0px;height:60px!important" >
-<ol class="eventlist" >
+								</td>
+							<tr>
+						<tbody>
+					</table>
+				</td>
+				<td>
+					<table class="table-striped">
+						<tbody>
+							<tr style="background-color: initial;">
+								<td>
+									<div style="overflow:auto" id="tblinner">
+										<div class="timetable">
+											<div>
+												<div class="timetable-now"></div>
+											</div>
+										</div>
+#for $sname, $eventlist in six.iteritems($events)
+										<div class="row" style="width:30000px;border:solid;border-width:1px 0px 0px 0px;height:60px !important;">
+											<ol class="eventlist">
 	#set $c=0
 	#set $ref = ''
 	#for $event in $eventlist[0]
@@ -214,29 +284,29 @@
 		#if $c == 0
 			#set $ref = quote(event['ref'], safe=' ~@#$&()*!+=:;,.?/\'')
 			#set pad = 58 + ($event.begin_timestamp - $first) / 6
-															<li class="event" style=;width:${pad}px;border:none;">
-															</li>
+												<li class="event" style="width:${pad}px;border:none;">
+												</li>
 		#end if
 		#set $end = $event.begin_timestamp + $event.duration
 		#set $iscurr = ""
 		#if $event.begin_timestamp < $now and $end > $now
 			#set $iscurr = " curevent"
 		#end if
-														<li class="event" data-ref="$ref" data-id="${event.id}" data-toggle="modal" data-target="#EventModal" onClick="loadeventepg('${event.id}', '$ref');return false;" style="width:${event.duration/6}px;padding:10px;" >
-			<a href="#" class="ui-widget-content ${iscurr}" title="$event['title']">
-															<span class="ename">$event['title']<span class="etimesmall"> ($strftime("%d.%m", $localtime($event['begin_timestamp'])))</span></span>
-															<span class="etime">$strftime("%H:%M", $localtime($event['begin_timestamp'])) - $strftime("%H:%M", $localtime($event['begin_timestamp'] + $event['duration']))</span>
+												<li class="event" data-ref="$ref" data-id="${event.id}" data-toggle="modal" data-target="#EventModal" onclick="loadeventepg('${event.id}', '$ref');return false;" style="width:${event.duration/6}px;padding:10px;">
+													<a href="javascript:void(0);" class="ui-widget-content ${iscurr}" title="$event['title']">
+														<span class="ename">$event['title']<span class="etimesmall"> ($strftime("%d.%m", $localtime($event['begin_timestamp'])))</span></span>
+														<span class="etime">$strftime("%H:%M", $localtime($event['begin_timestamp'])) - $strftime("%H:%M", $localtime($event['begin_timestamp'] + $event['duration']))</span>
 			#if $event['timerStatus'] != ''
-			<span class="etimer $event['timerStatus']">$tstrings['timer']</span>
+														<span class="etimer $event['timerStatus']">$tstrings['timer']</span>
 			#end if
-			</a>
-		</li>
+													</a>
+												</li>
 		#set $c = $c + 1
 	#end for
-</ol>
-</div>
+											</ol>
+										</div>
 #end for
-</div>
+									</div>
 								</td>
 							<tr>
 						</tbody>
@@ -245,7 +315,7 @@
 				</td>
 			<tr>
 		</tbody>
-	<table>
+	<table><!-- fixing this will cause timeline to shift event title/time out of vertical alignment, just like the IE5 days! -->
 </div>
 </div>
 
@@ -254,175 +324,20 @@
 <div id="eventdescription"></div>
 
 <script>
-#if $mode == 2
-var opena = $first;
-var openb = $now;
-var pos = (openb - opena);
-if (pos>0)
-	pos = pos / 6;
-
-#if $day == 0
-
-\$(".timetable-now").css('left',151+pos);
-
-setTimeout(function() {
-	var nowdate = Math.round(+new Date()/1000);
-	var pos = (nowdate - opena);
-	if(pos>0)
-		pos = pos / 6;
-	\$(".timetable-now").css('left',151+pos);
-} ,10000);
-
-\$(".timetable-now").css('height',\$("#tblinner").height());
+// \$mode == $mode
+#if '$mode' == 2
+var multiepg_first = '$first';
+var multiepg_now = '$now';
 #else
-\$(".timetable-now").css('height','0');
+var multiepg_first = '';
+var multiepg_now = '';
 #end if
 
-#end if
+var multiepg_mode = '$mode';
+var multiepg_day = '$day';
+var multiepg_week = '$week';
+var multiepg_epgmode = '$epgmode';
+var multiepg_bref = '${quote($bref)}';
 var picons = $dumps($picons);
-var reloadTimers = false;
-function getScrollBarWidth () {
-	var \$outer = \$('<div>').css({visibility: 'hidden', width: 100, overflow: 'scroll'}).appendTo('body'),
-		widthWithScroll = \$('<div>').css({width: '100%'}).appendTo(\$outer).outerWidth();
-	\$outer.remove();
-	return 100 - widthWithScroll;
-}
-var scrollBarWidth=getScrollBarWidth();
-function fixTableHeight() {
-	var addScrollBarWidth = scrollBarWidth;
-	if (\$('#tbl1').width() <= \$("#tvcontent").width()){
-		addScrollBarWidth = 0;
-	}
-
-#if $mode == 1
-	var new_height = (\$("#epgcard").height() *0.85 - \$("#epgcardheaderI").height() - \$("#epgcardheaderII").height() - \$("#navepg").height() - 2*\$("#tbl1 thead").height() - addScrollBarWidth - 2);
-	\$("#tbl1body").height(new_height + "px");
-	var scrollwidth = (\$("#epgcard").width() -40 ) + "px";
-	var scrollheightI = new_height + 'px';
-	\$('#tbl1body').height(scrollheightI);
-	\$('#fulltbl').width(scrollwidth);
-#else
-	var new_height = (\$("#epgcard").height() *0.90 - \$("#epgcardheaderI").height() - \$("#epgcardheaderII").height() - \$("#navepg").height() - 2*\$("#tbl1 thead").height() - addScrollBarWidth - 2);
-	var scrollheightI = new_height + 'px';
-	var scrollwidth = (\$("#epgcard").width() -40 ) + "px";
-	\$('#fulltbl').height(scrollheightI);
-	\$('#tblinner').width(scrollwidth);
-#end if
-}
-fixTableHeight();
-
-\$(window).resize(function(){ fixTableHeight(); });
-
-\$(".bq").click(function() {
-	var id = \$(this).data("ref");
-	var epgmode = "$epgmode";
-	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref='+id +'&day=$day&epgmode=' + epgmode);
-	SetLSValue("lastmbq_"+epgmode,id);
-});
-
-#if $mode == 1
-\$(".service").click(function() {
-	var ref = \$(this).data("ref");
-	if (ref != undefined) {
-		zapChannel(ref, '');
-	}
-});
-#end if
-\$(".plusclick").click(function() {
-	var day = \$(this).data("day");
-	var epgmode = "$epgmode";
-	if (day != undefined) {
-		if (day > 999)
-		{
-			var w = day - 1000;
-			\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day='+$day+'&epgmode='+epgmode+'&week='+w);
-		}
-		else if (day > 199)
-		{
-			var d = day - 200;
-			var dt = (d==0) ? '' : \$(this).html();
-			var pos = 0;
-			\$('#tblinner').scrollLeft(0);
-			\$("#timescroller li ol .event").each( function (){
-				if (pos == 0) {
-					if (\$(this).data("dt") == dt) {
-						if(\$(this).position() != undefined)
-							pos = \$(this).position().left;
-					}
-				}
-			});
-			
-			if(d=='')
-			{
-				var l = \$(".timetable-now").css('left');
-				pos = parseInt(l.replace('px',''));
-			}
-
-			if(pos>0)
-			{
-				pos-=200;
-				
-				\$('#tbl1body').animate({scrollLeft: pos}, 500);
-				
-				 
-			}
-		}
-		else if (day > 100)
-		{
-			var mode = day - 100;
-			if (mode != $mode) {
-				$.ajax({
-				url: 'api/setwebconfig?mepgmode=' + mode,
-					success: function(data) {
-						\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day=$day&epgmode='+epgmode+'&week='+$week);
-					}
-				});
-			}
-		}
-		else {
-			\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref=${quote($bref)}&day='+day+'&epgmode='+epgmode+'&week='+$week);
-		}
-	} else {
-		epgmode = \$(this).data("tvradio");
-		if (epgmode != undefined) {
-			\$("#tvcontent").html(loadspinner).load('ajax/multiepg?day='+day+'&epgmode='+epgmode);
-		}
-	}
-});
-
-if(\$("#header").is(':hidden')) { 
-	\$('#compressmepg').show();\$('#refreshmepg2').show();
-}
-if(mepgdirect==1) {
-	mepgdirect=0;\$("#expandmepg").click();
-}
-\$(".togglescroll").click(function() {
-
-	if(\$('#tblinner').css('overflow-y')=='hidden') {
-		\$('#tblinner').css('overflow-y','');
-		\$('.togglescroll').removeClass('ui-widget-header');
-		SetLSValue('MultiEPGScrollStyle','1');
-	}else{
-		\$('#tblinner').css('overflow-y','hidden');
-		\$('.togglescroll').addClass('ui-widget-header');
-		SetLSValue('MultiEPGScrollStyle','0');
-	}
-});
-
-#if $mode == 2
-\$(function() {
-	
-	if(GetLSValue('MultiEPGScrollStyle','0')=='0') {
-		\$('#tblinner').css('overflow-y','hidden');
-		\$('.togglescroll').addClass('ui-widget-header');
-	}
-	else
-	{
-		\$('#tblinner').css('overflow-y','');
-		\$('.togglescroll').removeClass('ui-widget-header');
-	}
-
-});
-#end if
-
 </script>
+<script src="/modern/js/vti-responsive-multiepg.min.js"></script>

@@ -1,0 +1,54 @@
+{
+  "name": "openwebif-assets",
+  "version": "0.0.1",
+  "description": "Static assets for OpenWebif interface",
+  "main": "index.js",
+  "dependencies": {
+    "@babel/runtime": "^7.13.10",
+    "core-js": "^2.6.12",
+    "sass": "^1.32.8"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/node": "^7.13.10",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "babel-preset-minify": "^0.5.1",
+    "clean-css": "^4.2.3",
+    "clean-css-cli": "^4.3.0",
+    "commander": "^6.2.1",
+    "glob-uglifyjs": "^2.0.0",
+    "mkdirp": "^1.0.4",
+    "parcel-bundler": "^1.12.5",
+    "prettier": "2.2.1"
+  },
+  "resolutions": {
+    "node-forge": "0.10.0",
+    "yargs-parser": "20.2.4"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "scripts": {
+    "preinstall": "npx npm-force-resolutions",
+    "build-classic-js": "npx glob-uglifyjs -c ./classic-glob-uglifyjs.config",
+    "uglifymodern": "npx glob-uglifyjs -c ./modern-glob-uglifyjs.config",
+    "build-entry": "npx parcel build ./modern/entry-app.js --out-dir ../plugin/public/modern/js/",
+    "build-autotimers": "npx parcel build ./modern/autotimers-app.js --out-dir ../plugin/public/modern/js/",
+    "build-bqe": "npx parcel build ./modern/bqe-app.js --out-dir ../plugin/public/modern/js/",
+    "build-js": "npm run-script uglifymodern; npm run-script build-entry; npm run-script build-autotimers; npm run-script build-bqe",
+    "build-css": "npx ./_utils/mincss.js -o '../plugin/public/' './modern/css/**/*.css'",
+    "test": "echo 'Error: no test specified!' && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/E2OpenPlugins/e2openplugin-OpenWebif.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/issues"
+  },
+  "homepage": "https://github.com/E2OpenPlugins/e2openplugin-OpenWebif#readme"
+}

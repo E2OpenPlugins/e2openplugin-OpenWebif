@@ -1,7 +1,7 @@
-#from urllib import quote
+#from six.moves.urllib.parse import quote
 #from time import localtime, strftime
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, MinMovieList
+#from Plugins.Extensions.OpenWebif.vtiaddon import MinMovieList
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	<div class="card">
@@ -11,15 +11,16 @@
 					<h2><i class="material-icons material-icons-centered">movie</i>$tstrings['movies']</h2>
 				</div>
 			</div>
-			<ul class="header-dropdown m-r--5">
+			<ul class="header-dropdown">
 				<li>
-				<li class="dropdown"><a href="#" onclick="lastcontenturl = ''; load_maincontent_spin('ajax/movies'); return false;" ><i class="material-icons">autorenew</i></a>
-				<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+				<li class="dropdown">
+				<a href="#movies"><i class="material-icons">autorenew</i></a>
+				<a href="javascript:void(0);" class="dropdown-toggle m-l-5 m-r-5" title="$tstrings['sort']" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">sort</i></a>
 					<ul class="dropdown-menu pull-right" id="timerbuttons">
-						<li><a href="#" onclick="changeMoviesort('name'); return false" ><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['name']</a></li>
-						<li><a href="#" onclick="changeMoviesort('named'); return false" ><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['name']</a></li>
-						<li><a href="#" onclick="changeMoviesort('date'); return false" ><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['date']</a></li>
-						<li><a href="#" onclick="changeMoviesort('dated'); return false" ><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['date']</a></li>
+						<li><a href="javascript:void(0);" onclick="changeMoviesort('name'); return false;"><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['name_asc']</a></li>
+						<li><a href="javascript:void(0);" onclick="changeMoviesort('named'); return false;"><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['name_desc']</a></li>
+						<li><a href="javascript:void(0);" onclick="changeMoviesort('date'); return false;"><i class="material-icons material-icons-centered">vertical_align_bottom</i>$tstrings['date_asc']</a></li>
+						<li><a href="javascript:void(0);" onclick="changeMoviesort('dated'); return false;"><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['date_desc']</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -27,37 +28,48 @@
 		<div class="body">
 			<div id="content_main">
 				<div id="tvcontentmain">
-					<div class="row clearfix">
-					<div class="col-lg-6 align-right">
-							<div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
-							#set $path=''
-							#for $dir in $directory[0:-1].split("/")[1:-1]
-							#set $path += '/' + $dir
-								<button class="btn btn-default waves-effect" onclick="load_maincontent_spin('ajax/movies?dirname='+escape('$path'));">$dir</button>
-							#end for
-							#if $directory != '/'
-									<button class="btn waves-effect bg-$skinColor" id="moviedirbtn"><span style="font-weight: bold;">
-									#echo $directory[0:-1].split("/")[-1]
-									</button>
-							#end if
-							</div>
-						</div>
-						#if $len($bookmarks)
-						<div class="col-lg-2 align-left">
-							<div class="form-group">
-								<select class="form-control" id="directory">
-								<option>Subdirs:</option>
-								#for $bookmark in $bookmarks
+					<div class="row clearfix m-l-20 m-b-20">
+						<nav>
+#set $path=''
+#set $dirs = $directory[0:].split("/")[1:-1]
+#set $dirDepth = len($dirs)
+#set $index = 1
+
+#for $dir in $dirs
+	#set $path += '/' + $dir
+	#if $index != $dirDepth
+								<a href="javascript:void(0);" class="link--skinned p-r-10" onclick="load_maincontent_spin('ajax/movies?dirname='+escape('$path'));">
+									<i class="material-icons material-icons-centered">folder_open</i>
+									$dir
+								</a>
+								<i class="material-icons material-icons-centered">chevron_right</i>
+	#else
+		#set $movieCountText = _("%d movies") % len($movies)
+								<span class="p-r-10 p-l-0" id="moviedirbtn">
+									<i class="material-icons material-icons-centered">folder_open</i>
+									$dir
+								</span>
+								[ $movieCountText ]
+	#end if
+	#set $index = $index + 1
+#end for
+
+#if $len($bookmarks)
+							<i class="material-icons material-icons-centered">chevron_right</i>
+							<span class="form-group" style="width: auto;">
+								<select class="form-control" id="directory" style="display: inline-block; padding-left: 0; width: auto;">
+									<option>&rdsh; $tstrings['subdirectories']</option>
+	#for $bookmark in $bookmarks
 									<option value="$directory$bookmark">$bookmark</option>
-								#end for
-							</select>
-							</div>
-						</div>
-						#end if
-					
+	#end for
+								</select>
+							</span>
+#end if
+						</nav>
 					</div>
 					#set $count = 0
 					#for $movie in $movies
+					#set $mname = $movie.eventname.replace("\"", r"'")
 					<div class="row clearfix">
 						<div class="col-xs-12" id="movies">
 								<div class="card" id="$count">
@@ -67,26 +79,26 @@
 												<h2><i class="material-icons material-icons-centered">movie</i>$movie.eventname - $movie.servicename</h2>
 											</div>
 											<div class="col-xs-4">
-													<ul class="header-dropdown m-r--5">
-														<li><span role="button"><a href='#' onClick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><i class="material-icons material-icons-centered">play_circle_outline</i></a></span></li>
+													<ul class="header-dropdown">
+														<li><span role="button"><a href="javascript:void(0);" onclick="playRecording('$quote($movie.serviceref)');" title="$tstrings['playback']"><i class="material-icons material-icons-centered">play_circle_outline</i></a></span></li>
 														#if $transcoding
-														<li><span role="button"><a href="#" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream']: $movie.eventname"><i class="material-icons material-icons-centered">tv</i></a></span></li>
-														<li><span role="button"><a href="#" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] ($tstrings['transcoded']): $movie.eventname"><i class="material-icons material-icons-centered">phone_android</i></a></span></li>
+														<li><span role="button"><a href="javascript:void(0);" onclick="jumper80('$quote($movie.filename)');" title="$tstrings['stream']: $mname"><i class="material-icons material-icons-centered">tv</i></a></span></li>
+														<li><span role="button"><a href="javascript:void(0);" onclick="jumper8003('$quote($movie.filename)');" title="$tstrings['stream'] ($tstrings['transcoded']): $mname"><i class="material-icons material-icons-centered">phone_android</i></a></span></li>
 														#else
-														<li><span role="button"><a target="_blank" href='web/ts.m3u?file=$quote($movie.filename)' title="$tstrings['stream'] $movie.eventname"><i class="material-icons material-icons-centered">tv</i></a></span></li>
+														<li><span role="button"><a href="web/ts.m3u?file=$quote($movie.filename)" title="$tstrings['stream'] $mname" target="_blank"><i class="material-icons material-icons-centered">tv</i></a></span></li>
 														#end if
 														
-														#set $eventname_escaped =  $movie.eventname.replace("'", r"\'")
-														<li><span role="button"><a href='/file?action=download&file=$quote($movie.filename)' title="$tstrings['download'] $movie.eventname"><i class="material-icons material-icons-centered">cloud_download</i></a></span></li>
-														<li><span role="button"><a href='#' onClick="renameMovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['rename_recording']"><i class="material-icons material-icons-centered">edit</i></a></span></li>
-														<li><span role="button"><a href='#' onClick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><i class="material-icons material-icons-centered">delete</i></a></span></li>
+														#set $eventname_escaped =  $movie.eventname.replace("'", r"\'").replace('"', r"\'")
+														<li><span role="button"><a href="/file?action=download&file=$quote($movie.filename)" title="$tstrings['download'] $mname"><i class="material-icons material-icons-centered">cloud_download</i></a></span></li>
+														<li><span role="button"><a href='javascript:void(0);' onclick="renameMovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['rename_recording']"><i class="material-icons material-icons-centered">edit</i></a></span></li>
+														<li><span role="button"><a href='javascript:void(0);' onclick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><i class="material-icons material-icons-centered">delete</i></a></span></li>
 													</ul>
 											</div>
 										</div>
 											<div class="row clearfix" style="margin-bottom:-25px;">
 												<div class="col-xs-8">
-														#set $da = $tstrings[("day_" + (time.strftime("%w", time.localtime($movie.recordingtime))))]
-														<span>$da</span>
+														#set $dateRecorded = time.strftime("%c", time.localtime($movie.recordingtime))
+														<span>$dateRecorded</span>
 															#set $w = $movie.lastseen
 															#set $size = '0'
 															#if $w > 0
@@ -97,7 +109,7 @@
 																</div>
 															#end if
 															<div class="progress progress-striped" style="margin-bottom:0px;width:35%;max-width:200px;min-width:100px;height:10px;">
-																<div class="progress-bar bg-$skinColor" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:$size%;"></div>
+																<div class="progress-bar bg--skinned" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:$size%;"></div>
 															</div>
 															<span>$movie.length min. / $movie.filesize_readable</span>
 												</div>
@@ -124,18 +136,16 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-\$( function() {
-	MLHelper.Load('name');
-});
+<script>
+	jQuery(function() {
+		MLHelper.Load('name');
+	});
 
 #if $len($bookmarks)
-
-\$(function () {
-	\$('#directory').change(function() {
-		load_maincontent_spin('ajax/movies?dirname='+escape(\$(this).val()));
+	jQuery(function() {
+		jQuery('#directory').change(function() {
+			load_maincontent_spin('ajax/movies?dirname=' + escape(jQuery(this).val()).replace('+','%2B'));
+		});
 	});
-});
-
 #end if
 </script>

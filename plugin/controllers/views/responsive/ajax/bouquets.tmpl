@@ -1,6 +1,27 @@
-#from urllib import quote
+#from six.moves.urllib.parse import quote
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
+
+#set $tabIcon = 'tv'
+#if $stype == 'radio'
+	#set $tabIcon = 'radio'
+#end if
+
+<!-- TODO: move styles to css file -->
+<style>
+	.sticky-top {
+    position: sticky;
+    top: 70px;
+		z-index: 1;
+    background: #fff;
+    box-shadow: 0px 0px 10px 10px #fff;
+	}
+
+	.theme--city-lights .sticky-top {
+    background: #282c37;
+    box-shadow: 0px 0px 10px 10px #282c37;
+	}
+</style>
+
 <div class="form-group hidden-md hidden-lg hidden-xl">
 	<select class="form-control show-tick" id="bqselector">
 	#for $bouquet in $bouquets
@@ -8,12 +29,15 @@
 	#end for
 	</select>
 </div>
-<div class="hidden-sm hidden-xs">
-	<ul class="nav nav-tabs tab-col-$skinColor">
+<div class="hidden-sm hidden-xs sticky-top">
+	<ul class="nav nav-tabs tab--skinned">
 	#set $f="id='firstBq'"
 	#for $bouquet in $bouquets
-		<li><a data-toggle="tab" href='#tab' $f onclick="load_subcontent('ajax/channels?id=$quote($bouquet[0])&stype=$stype'); return false;" >
-		<i onclick="window.open('web/services.m3u?bRef=$quote($bouquet[0])','_blank');return false;" class="material-icons material-icons-bouquets">tv</i>$bouquet[1]</a></li>
+		<li>
+			<a href='#tab' onclick="load_subcontent('ajax/channels?id=$quote($bouquet[0])&stype=$stype'); return false;" data-toggle="tab" $f>
+				<i class="material-icons material-icons-bouquets">$tabIcon</i>$bouquet[1]
+			</a>
+		</li>
 		#set $f="class='align-middle'"
 	#end for
 	</ul>
@@ -23,16 +47,18 @@
 		<div id='sub_content_container'></div>
 	</div>
 </div>
-<script type="text/javascript">
-var firstBq = document.getElementById("firstBq");
-firstBq.click();
-#raw
-$.AdminBSB.select.activate();
-$(function () {
-	$('#bqselector').change(function() {
-		load_subcontent($(this).val())
-	});
-});
-#end raw
 
+<script>
+	var firstBq = document.getElementById("firstBq");
+	firstBq.click();
+	jQuery.AdminBSB.select.activate();
+	jQuery(function() {
+		jQuery('#bqselector').change(function() {
+			load_subcontent(jQuery(this).val());
+		});
+	});
+	function pl(bq,bn) {
+		var plf = GetLSValue('pl','m3u');
+		window.open('web/services.' + plf + '?bRef=' + bq + '&bName=' + bn, '_blank');
+	}
 </script>

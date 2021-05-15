@@ -1,9 +1,9 @@
-#from urllib import quote
+#from six.moves.urllib.parse import quote
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 <body>
 	<div data-role="page">
 		<div id="header">
-			<div class="button" onClick="history.back()">$tstrings['back']</div>
+			<div class="button" onclick="history.back()">$tstrings['back']</div>
 			<h1><a style="color:#FFF;text-decoration:none;" href='/mobile'>OpenWebif</a></h1>
 			<h2>$tstrings['movies']</h2>
 		</div>

@@ -1,36 +1,42 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor
 
 #def select($config)
+
 <div class="row clearfix">
-	<div class="col-xs-6 align-right">
-	<label>$config.description</label>
+	<div class="col-xs-5 align-right">
+		<label>$config.description</label>
 	</div>
-	<div class="col-xs-6 col-md-3">
-	<select class="form-control show-tick" id="$config.path" onchange="saveConfig('$config.path', this.value);">
-		#for $choice in $config.data.choices
-			#if $config.data.current == $choice[0]
-				<option value="$choice[0]" selected="true">$choice[1]</option>
-			#else
-				<option value="$choice[0]">$choice[1]</option>
-			#end if
-		#end for
-	</select>
+	<div class="col-xs-7 col-md-3">
+		<select class="form-control show-tick" id="$config.path" onchange="saveConfig('$config.path', this.value);">
+			#for $choice in $config.data.choices
+				#if $config.data.current == $choice[0]
+					<option value="$choice[0]" selected="true">$choice[1]</option>
+				#else
+					<option value="$choice[0]">$choice[1]</option>
+				#end if
+			#end for
+		</select>
 	</div>
 </div>
 #end def
 
 #def checkbox($config)
 <div class="row clearfix">
-	<div class="col-xs-6 align-right">
-	<label>$config.description</label>
+	<div class="col-xs-5 align-right">
+		<label>$config.description</label>
 	</div>
-	<div class="col-xs-6">
+	<div class="col-xs-7">
 			<div class="switch switch-col-indigo">
 		#if $config.data.current
-					<label><input type="checkbox" id="$config.path" checked="true" onclick="saveConfig('$config.path', this.checked);" /><span class='lever switch-col-$skinColor'></span></label>
+				<label>
+					<input type="checkbox" name="$config.path" id="$config.path" checked="checked" onclick="saveConfig('$config.path', this.checked);">
+					<span class='lever switch--skinned'></span>
+				</label>
 		#else
-					<label><input type="checkbox" id="$config.path" onclick="saveConfig('$config.path', this.checked);" /><span class='lever switch-col-$skinColor'></span></label>
+				<label>
+					<input type="checkbox" name="$config.path" id="$config.path" onclick="saveConfig('$config.path', this.checked);">
+					<span class='lever switch--skinned'></span>
+				</label>
 		#end if
 			</div>
 		<label for="$config.path"></label>
@@ -40,17 +46,17 @@
 
 #def multicheckbox($config)
 <div class="row clearfix">
-	<div class="col-xs-6 align-right">
-	<label>$config.description</label>
+	<div class="col-xs-5 align-right">
+		<label>$config.description</label>
 	</div>
-	<div class="col-xs-6">
+	<div class="col-xs-7">
 	#for $choice in $config.data.choices
 		#if $choice in $config.data.current
-					<input type="checkbox" class="form-control chk-col-$skinColor" id="$config.path" checked="true" onclick="saveConfig('$config.path', this.checked);" />
+			<input type="checkbox" name="$config.path" id="$config.path" class="form-control chk--skinned" onclick="saveConfig('$config.path', this.checked);" checked="checked">
 		#else
-					<input type="checkbox" class="form-control chk-col-$skinColor" id="$config.path" onclick="saveConfig('$config.path', this.checked);" />
+			<input type="checkbox" name="$config.path" id="$config.path" class="form-control chk--skinned" onclick="saveConfig('$config.path', this.checked);">
 		#end if
-				<label for="$config.path">$choice</label>
+			<label for="$config.path">$choice</label>
 	#end for
 	</div>
 </div>
@@ -58,20 +64,23 @@
 
 #def number($config, $active)
 <div class="row clearfix">
-	<div class="col-xs-6 align-right">
-	<label>$config.description</label>
+	<div class="col-xs-5 align-right">
+		<label>$config.description</label>
 	</div>
-	<div class="col-xs-6 col-md-3">
-	<div class="form-line">
-				<input type="text"  class="form-control inactive" id="${config.path}" placeholder="$config.data.current" onchange="saveConfig('$config.path', this.value);" />
-	</div>
+	<div class="col-xs-7 col-md-3">
+		<div class="form-line">
+			<input type="number" name="${config.path}" id="${config.path}" value="$config.data.current" placeholder="$config.data.current" class="form-control inactive" onchange="saveConfig('$config.path', this.value);">
+		</div>
 	</div>
 </div>
 #end def
 
 <div id="content_main">
 	#set $isactive="active"
-	<div style="display:none" id="thistitleconfig"><i class='material-icons material-icons-centered'>settings</i>$tstrings['settings'] - $title</div>
+	<div style="display:none" id="thistitleconfig">
+		<i class='material-icons material-icons-centered'>settings</i>
+		$tstrings['settings'] - $title
+	</div>
 	<div class="form-group" id="configuration">
 		#for $config in $configs:
 			#if $config.data.type == "select"
@@ -90,10 +99,8 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-#raw
-$("#configtitle").html($('#thistitleconfig').html());
-$.AdminBSB.input.activate();
-$.AdminBSB.select.activate();
-#end raw
+<script>
+	jQuery("#configtitle").html(jQuery('#thistitleconfig').html());
+	jQuery.AdminBSB.input.activate();
+	jQuery.AdminBSB.select.activate();
 </script>

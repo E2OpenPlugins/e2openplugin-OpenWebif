@@ -2,13 +2,13 @@
 <body>
 	<div data-role="page">
 		<div id="header">
-			<div class="button" onClick="history.back()">$tstrings['back']</div>
+			<div class="button" onclick="history.back()">$tstrings['back']</div>
 			<h1><a style="color:#FFF;text-decoration:none;" href='/mobile'>OpenWebif</a></h1>
 		</div>
 		<div id="contentContainer">
 			<ul data-role="listview" data-inset="true" data-theme="d">
 				<li data-role="list-divider" role="heading" data-theme="b">$tstrings['bouquets']</li>
-				#from urllib import quote
+				#from six.moves.urllib.parse import quote
 				#for $bouquet in $bouquets
 				<li><a href="/mobile/channels?id=$quote($bouquet[0])">$bouquet[1]</a></li>
 				#end for

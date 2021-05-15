@@ -1,15 +1,38 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+##########################################################################
+# OpenWebif: config
+##########################################################################
+# Copyright (C) 2011 - 2020 E2OpenPlugins
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
+##########################################################################
+
+from __future__ import print_function
 from enigma import eEnv
 from Components.SystemInfo import SystemInfo
 from Components.config import config
 from os import path, listdir
 import xml.etree.cElementTree  # nosec
 
-from ..i18n import _
-from ..utilities import get_config_attribute
+from Plugins.Extensions.OpenWebif.controllers.i18n import _
+from Plugins.Extensions.OpenWebif.controllers.utilities import get_config_attribute
 from datetime import datetime
 import time
+
 
 def addCollapsedMenu(name):
 	tags = config.OpenWebif.webcache.collapsedmenus.value.split("|")
@@ -23,6 +46,7 @@ def addCollapsedMenu(name):
 		"result": True
 	}
 
+
 def removeCollapsedMenu(name):
 	tags = config.OpenWebif.webcache.collapsedmenus.value.split("|")
 	if name in tags:
@@ -35,11 +59,13 @@ def removeCollapsedMenu(name):
 		"result": True
 	}
 
+
 def getCollapsedMenus():
 	return {
 		"result": True,
 		"collapsed": config.OpenWebif.webcache.collapsedmenus.value.split("|")
 	}
+
 
 def getShowName():
 	return {
@@ -47,11 +73,13 @@ def getShowName():
 		"showname": config.OpenWebif.identifier.value
 	}
 
+
 def getCustomName():
 	return {
 		"result": True,
 		"customname": config.OpenWebif.identifier_custom.value
 	}
+
 
 def getBoxName():
 	return {
@@ -59,13 +87,14 @@ def getBoxName():
 		"boxname": config.OpenWebif.identifier_text.value
 	}
 
+
 def getJsonFromConfig(cnf):
 	if cnf.__class__.__name__ == "ConfigSelection" or cnf.__class__.__name__ == "ConfigSelectionNumber" or cnf.__class__.__name__ == "TconfigSelection":
-		if type(cnf.choices.choices) == dict:
+		if isinstance(cnf.choices.choices, dict):
 			choices = []
 			for choice in cnf.choices.choices:
 				choices.append((choice, _(cnf.choices.choices[choice])))
-		elif type(cnf.choices.choices[0]) == tuple:
+		elif isinstance(cnf.choices.choices[0], tuple):
 			choices = []
 			for choice_tuple in cnf.choices.choices:
 				choices.append((choice_tuple[0], _(choice_tuple[1])))
@@ -114,18 +143,29 @@ def getJsonFromConfig(cnf):
 			"type": "text",
 			"current": cnf.value
 		}
+	elif cnf.__class__.__name__ == "ConfigSlider":
+		return {
+			"result": True,
+			"type": "slider",
+			"current": cnf.value,
+			"increment": cnf.increment,
+			"limits": (cnf.min, cnf.max)
+		}
+	elif cnf.__class__.__name__ == "ConfigNothing":
+		return None
 
-	print "[OpenWebif] Unknown class ", cnf.__class__.__name__
+	print("[OpenWebif] Unknown class ", cnf.__class__.__name__)
 	return {
 		"result": False,
 		"type": "unknown"
 	}
 
+
 def saveConfig(path, value):
 	try:
 		cnf = get_config_attribute(path, root_obj=config)
 	except Exception as exc:
-		print "[OpenWebif] ", exc
+		print("[OpenWebif] ", exc)
 		return {
 			"result": False,
 			"message": "I'm sorry Dave, I'm afraid I can't do that"
@@ -152,11 +192,20 @@ def saveConfig(path, value):
 			elif cnf_value > cnf_max:
 				cnf_value = cnf_max
 			cnf.value = cnf_value
+		elif cnf.__class__.__name__ in ("ConfigSlider"):
+			cnf_min = int(cnf.min)
+			cnf_max = int(cnf.max)
+			cnf_value = int(value)
+			if cnf_value < cnf_min:
+				cnf_value = cnf_min
+			elif cnf_value > cnf_max:
+				cnf_value = cnf_max
+			cnf.value = cnf_value
 		else:
 			cnf.value = value
 		cnf.save()
-	except Exception, e:
-		print "[OpenWebif] ", e
+	except Exception as e:
+		print("[OpenWebif] ", e)
 		return {
 			"result": False
 		}
@@ -164,6 +213,7 @@ def saveConfig(path, value):
 	return {
 		"result": True
 	}
+
 
 def getConfigs(key):
 	configs = []
@@ -177,6 +227,9 @@ def getConfigs(key):
 		for entry in config_entries:
 			try:
 				data = getJsonFromConfig(eval(entry.text or ""))  # nosec
+				if data is None:
+					continue
+				# print("[OpenWebif] -D- config entry: ", entry.text)
 				text = _(entry.get("text", ""))
 				if "limits" in data:
 					text = "%s (%d - %d)" % (text, data["limits"][0], data["limits"][1])
@@ -193,6 +246,7 @@ def getConfigs(key):
 		"title": title
 	}
 
+
 def getConfigsSections():
 	if not len(configfiles.sections):
 		configfiles.parseConfigFiles()
@@ -201,8 +255,9 @@ def getConfigsSections():
 		"sections": configfiles.sections
 	}
 
+
 def privSettingValues(prefix, top, result):
-	for (key, val) in top.items():
+	for (key, val) in list(top.items()):
 		name = prefix + "." + key
 		if isinstance(val, dict):
 			privSettingValues(name, val, result)
@@ -211,6 +266,7 @@ def privSettingValues(prefix, top, result):
 		else:
 			result.append((name, val))
 
+
 def getSettings():
 	configkeyval = []
 	privSettingValues("config", config.saved_value, configkeyval)
@@ -218,18 +274,19 @@ def getSettings():
 		"result": True,
 		"settings": configkeyval
 	}
-	
+
+
 def getUtcOffset():
 	now = time.time()
-	offset = (datetime.fromtimestamp(now) - 
-			datetime.utcfromtimestamp(now)).total_seconds()
+	offset = (datetime.fromtimestamp(now) - datetime.utcfromtimestamp(now)).total_seconds()
 	hours = round(offset / 3600)
 	minutes = (offset - (hours * 3600))
 	return {
 		"result": True,
-		#round minutes to next quarter hour
+		# round minutes to next quarter hour
 		"utcoffset": "{:+05}".format(int(hours * 100 + (round(minutes / 900) * 900 / 60)))
 	}
+
 
 class ConfigFiles:
 	def __init__(self):
@@ -254,8 +311,8 @@ class ConfigFiles:
 	def parseConfigFiles(self):
 		sections = []
 		for setupfile in self.setupfiles:
-			# print "[OpenWebif] loading configuration file :", setupfile
-			setupfile = file(setupfile, 'r')
+			# print("[OpenWebif] loading configuration file :", setupfile)
+			setupfile = open(setupfile, 'r')
 			setupdom = xml.etree.cElementTree.parse(setupfile)  # nosec
 			setupfile.close()
 			xmldata = setupdom.getroot()
@@ -271,7 +328,7 @@ class ConfigFiles:
 						self.allowedsections.append(key)
 					else:
 						continue
-				# print "[OpenWebif] loading configuration section :", key
+				# print("[OpenWebif] loading configuration section :", key)
 				for entry in section:
 					if entry.tag == "item":
 						requires = entry.get("requires")

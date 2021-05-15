@@ -1,40 +1,55 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 from time import localtime, strftime
-from urllib import quote
+from six.moves.urllib.parse import quote
 from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 
 
 class renderEvtBlock:
 	def __init__(self):
 		self.template = """
-		<div class="event" data-ref="%s" data-id="%s" data-toggle="modal" data-target="#EventModal" onClick="loadeventepg('%s', '%s');return false;">
-			<div style="width:40px; float:left; padding: 0 3px">%s%s</div>
-			<div style="width:144px; float:left">
-				<div class="title">%s</div>%s
-			</div>
-			<div style="clear:left"></div>
-		</div>
+		<article onclick="loadeventepg('%s', '%s'); return false;" class="epg__event event %s" data-ref="%s" data-id="%s" data-toggle="modal" data-target="#EventModal">
+			<time class="epg__time--start">%s</time>
+			<span class="epg__title title">
+				%s
+			</span>
+			%s
+		</article>
 		"""
 
 	def render(self, event):
+		eventCssClass = ''
+
+		timer = event['timer']
+		if timer:
+			eventCssClass = eventCssClass + ' event--has-timer'
+			if timer['isEnabled']:
+				timerEventSymbol = '<i class="material-icons material-icons-centered">alarm_on</i>'
+			else:
+				timerEventSymbol = '<i class="material-icons material-icons-centered">alarm_off</i>'
+			if timer['isAutoTimer']:
+				timerEventSymbol = timerEventSymbol + '<i class="material-icons material-icons-centered">av_timer</i>'
+		else:
+			timerEventSymbol = ''
+
 		if event['title'] != event['shortdesc']:
-			shortdesc = '<div class="desc">%s</div>' % (event['shortdesc'])
+			shortdesc = '<summary class="epg__desc desc"><span class="epg__timer-status">%s</span>%s</summary>' % (
+				timerEventSymbol,
+				event['shortdesc']
+			)
 		else:
 			shortdesc = ''
 
-		if event['timerStatus'] != '':
-			timerEventSymbol = '<div class="%s">%s</div>' % (event['timerStatus'], tstrings['timer'])
-		else:
-			timerEventSymbol = ''
+		sRef = quote(event['ref'], safe=' ~@#$&()*!+=:;,.?/\'')
+
 		return self.template % (
-			quote(event['ref'], safe=' ~@#$&()*!+=:;,.?/\''),
 			event['id'],
+			sRef,
+			eventCssClass,
+			sRef,
 			event['id'],
-			quote(event['ref'], safe=' ~@#$&()*!+=:;,.?/\''),
 			strftime("%H:%M", localtime(event['begin_timestamp'])),
-			timerEventSymbol,
 			event['title'],
 			shortdesc
 		)

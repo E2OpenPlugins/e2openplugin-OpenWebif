@@ -1,5 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 import os
 import copy
 import unittest
@@ -106,7 +107,7 @@ class MoviefilesTestCase(unittest.TestCase):
 		files = {
 			"data": open(self.test_file, "rb")
 		}
-		params =  {
+		params = {
 			"filename": self.test_filename,
 		}
 

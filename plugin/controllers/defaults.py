@@ -1,14 +1,16 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 import os
 import sys
 
 from Components.Language import language
 from Components.config import config as comp_config
+from Components.Network import iNetwork
 
 from enigma import eEnv
 
-OPENWEBIFVER = "OWIF 1.3.8"
+OPENWEBIFVER = "OWIF 1.4.6"
 
 PLUGIN_NAME = 'OpenWebif'
 PLUGIN_DESCRIPTION = "OpenWebif Configuration"
@@ -22,23 +24,43 @@ sys.path.insert(0, PLUGIN_ROOT_PATH)
 
 GLOBALPICONPATH = None
 
+STB_LANG = language.getLanguage()
+
+MOBILEDEVICE = False
+
 #: get transcoding feature
+
+
 def getTranscoding():
-	transcoding = False
 	if os.path.isfile("/proc/stb/encoder/0/bitrate"):
-		if os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TransCodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/TranscodingSetup/plugin.pyo')) or os.path.exists(eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/MultiTransCodingSetup/plugin.pyo')):
-			transcoding = True
-
-	return transcoding
-
-#: get kinopoisk feature
-def getKinopoisk():
-	if language.getLanguage()[0:2] in ['ru', 'uk', 'lv', 'lt', 'et']:
-		return True
+		lp = eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/')
+		for p in ['TranscodingSetup', 'TransCodingSetup', 'MultiTransCodingSetup']:
+			if os.path.exists(lp + p + '/plugin.py') or os.path.exists(lp + p + '/plugin.pyo'):
+				return True
 	return False
 
+
+def getExtEventInfoProvider():
+	if STB_LANG[0:2] in ['ru', 'uk', 'lv', 'lt', 'et']:
+		defaultValue = 'Kinopoisk'
+	elif STB_LANG[0:2] in ['cz', 'sk']:
+		defaultValue = 'CSFD'
+	elif STB_LANG[0:5] in ['en_GB']:
+		defaultValue = 'TVguideUK'
+	else:
+		defaultValue = 'IMDb'
+	return defaultValue
+
+
+def setMobile(isMobile=False):
+# TODO: do we need this?
+	global MOBILEDEVICE
+	MOBILEDEVICE = isMobile
+
+
 def getViewsPath(file=""):
-	if comp_config.OpenWebif.responsive_enabled.value and os.path.exists(VIEWS_PATH + "/responsive") and not (file.startswith('web/') or file.startswith('/web/')):
+	global MOBILEDEVICE
+	if (comp_config.OpenWebif.responsive_enabled.value or MOBILEDEVICE) and os.path.exists(VIEWS_PATH + "/responsive") and not (file.startswith('web/') or file.startswith('/web/')):
 		return VIEWS_PATH + "/responsive/" + file
 	else:
 		return VIEWS_PATH + "/" + file
@@ -75,7 +97,7 @@ def getPiconPath():
 			for folder in PICON_FOLDERS:
 				current = prefix + folder + '/'
 				if os.path.isdir(current):
-					print "Current Picon Path : %s" % current
+					print("Current Picon Path : %s" % current)
 					GLOBALPICONPATH = current
 					return GLOBALPICONPATH
 #: TODO discuss
@@ -86,9 +108,26 @@ def getPiconPath():
 
 	return None
 
-#: PICON PATH FIXME: check path again after a few hours to detect new paths
+# TODO : test !!
+
+
+def refreshPiconPath():
+	PICON_PATH = getPiconPath()
+
+
+def getIP():
+	ifaces = iNetwork.getConfiguredAdapters()
+	if len(ifaces):
+		ip_list = iNetwork.getAdapterAttribute(ifaces[0], "ip")  # use only the first configured interface
+		if ip_list:
+			return "%d.%d.%d.%d" % (ip_list[0], ip_list[1], ip_list[2], ip_list[3])
+	return None
+
+
 PICON_PATH = getPiconPath()
 
-KINOPOISK = getKinopoisk()
+EXT_EVENT_INFO_SOURCE = getExtEventInfoProvider()
 
 TRANSCODING = getTranscoding()
+
+# TODO: improve PICON_PATH, GLOBALPICONPATH

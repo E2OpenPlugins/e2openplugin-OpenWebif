@@ -87,6 +87,30 @@
 					</table>
 				</td>
 			</tr>
+			#if $len($streams) > 0
+			<tr>
+				<td width="100%">
+					<table cellspacing="0" class="infomain ui-widget-content" >
+						<tr>
+							<th colspan="2" class="ui-widget-header">$tstrings['streamclients']</th>
+						</tr>
+						#for $stream in $streams
+						<tr>
+							<td class="infoleft" style="vertical-align:text-top;">$stream.ip</td>
+							<td class="inforight">
+									#if $stream.type == 'T'
+										$stream.name / ($tstrings['transcoded'])
+									#else
+										$stream.name
+									#end if
+							</div>
+							</td>
+						</tr>
+						#end for
+					</table>
+				</td>
+			</tr>
+			#end if
 			#for $hd in $hdd
 			<tr>
 				<td width="100%">

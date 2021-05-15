@@ -20,13 +20,16 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
 ##########################################################################
 
-from twisted.web import static, resource, http, server
-from enigma import eServiceCenter, eServiceReference, iServiceInformation
-from base import BaseController
+from twisted.web import static, resource, http
+from enigma import eServiceCenter, eServiceReference
+from Plugins.Extensions.OpenWebif.controllers.base import BaseController
 from Components.config import config
 from Components.ParentalControl import parentalControl
+from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
+from Plugins.Extensions.OpenWebif.controllers.models.services import getPicon
 import os
 import json
+import six
 
 # FIXME:
 # remove #from Screens.ChannelSelection import service_types_tv
@@ -60,8 +63,9 @@ class BQEWebController(BaseController):
 		paramlist = ids.split(",")
 		list = {}
 		for key in paramlist:
-			if key in args:
-				list[key] = args[key][0]
+			k = six.ensure_binary(key)
+			if k in args:
+				list[key] = six.ensure_str(args[k][0])
 			else:
 				list[key] = None
 		return list
@@ -72,7 +76,7 @@ class BQEWebController(BaseController):
 	def P_addbouquet(self, request):
 		self.withMainTemplate = False
 		try:
-			from BouquetEditor import BouquetEditor
+			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_BOUQUET)
 			bqe.handleCommand(self.buildCommand('name,mode', request.args))
 			return self.returnResult(request, bqe.result)
@@ -82,7 +86,7 @@ class BQEWebController(BaseController):
 	def P_removebouquet(self, request):
 		self.withMainTemplate = False
 		try:
-			from BouquetEditor import BouquetEditor
+			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.REMOVE_BOUQUET)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,mode', request.args))
 			return self.returnResult(request, bqe.result)
@@ -92,7 +96,7 @@ class BQEWebController(BaseController):
 	def P_movebouquet(self, request):
 		self.withMainTemplate = False
 		try:
-			from BouquetEditor import BouquetEditor
+			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.MOVE_BOUQUET)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,mode,position', request.args))
 			return self.returnResult(request, bqe.result)
@@ -102,7 +106,7 @@ class BQEWebController(BaseController):
 	def P_addmarkertobouquet(self, request):
 		self.withMainTemplate = False
 		try:
-			from BouquetEditor import BouquetEditor
+			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_MARKER_TO_BOUQUET)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,Name,sRefBefore,SP', request.args))
 			return self.returnResult(request, bqe.result)
@@ -112,7 +116,7 @@ class BQEWebController(BaseController):
 	def P_addservicetobouquet(self, request):
 		self.withMainTemplate = False
 		try:
-			from BouquetEditor import BouquetEditor
+			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_SERVICE_TO_BOUQUET)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef,sRefBefore,sRefUrl,Name', request.args))
 			return self.returnResult(request, bqe.result)
@@ -122,7 +126,7 @@ class BQEWebController(BaseController):
 	def P_addprovidertobouquetlist(self, request):
 		self.withMainTemplate = False
 		try:
-			from BouquetEditor import BouquetEditor
+			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_PROVIDER_TO_BOUQUETLIST)
 			bqe.handleCommand(self.buildCommand('sProviderRef,mode', request.args))
 			return self.returnResult(request, bqe.result)
@@ -132,7 +136,7 @@ class BQEWebController(BaseController):
 	def P_addservicetoalternative(self, request):
 		self.withMainTemplate = False
 		try:
-			from BouquetEditor import BouquetEditor
+			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_SERVICE_TO_ALTERNATIVE)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,sCurrentRef,sRef,mode', request.args))
 			return self.returnResult(request, bqe.result)
@@ -142,7 +146,7 @@ class BQEWebController(BaseController):
 	def P_moveservice(self, request):
 		self.withMainTemplate = False
 		try:
-			from BouquetEditor import BouquetEditor
+			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.MOVE_SERVICE)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef,mode,position', request.args))
 			return self.returnResult(request, bqe.result)
@@ -152,7 +156,7 @@ class BQEWebController(BaseController):
 	def P_removeservice(self, request):
 		self.withMainTemplate = False
 		try:
-			from BouquetEditor import BouquetEditor
+			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.REMOVE_SERVICE)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef', request.args))
 			return self.returnResult(request, bqe.result)
@@ -162,7 +166,7 @@ class BQEWebController(BaseController):
 	def P_renameservice(self, request):
 		self.withMainTemplate = False
 		try:
-			from BouquetEditor import BouquetEditor
+			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.RENAME_SERVICE)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef,sRefBefore,newName,mode', request.args))
 			return self.returnResult(request, bqe.result)
@@ -172,7 +176,7 @@ class BQEWebController(BaseController):
 	def P_removealternativeservices(self, request):
 		self.withMainTemplate = False
 		try:
-			from BouquetEditor import BouquetEditor
+			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.REMOVE_ALTERNATIVE_SERVICES)
 			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef', request.args))
 			return self.returnResult(request, bqe.result)
@@ -182,7 +186,7 @@ class BQEWebController(BaseController):
 	def P_togglelock(self, request):
 		self.withMainTemplate = False
 		try:
-			from BouquetEditor import BouquetEditor
+			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.TOGGLE_LOCK)
 			bqe.handleCommand(self.buildCommand('sRef,password', request.args))
 			return self.returnResult(request, bqe.result)
@@ -192,9 +196,9 @@ class BQEWebController(BaseController):
 	def P_backup(self, request):
 		self.withMainTemplate = False
 		try:
-			from BouquetEditor import BouquetEditor
+			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.BACKUP)
-			bqe.handleCommand(request.args['Filename'][0])
+			bqe.handleCommand(six.ensure_str(request.args[b'Filename'][0]))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -202,9 +206,9 @@ class BQEWebController(BaseController):
 	def P_restore(self, request):
 		self.withMainTemplate = False
 		try:
-			from BouquetEditor import BouquetEditor
+			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.RESTORE)
-			bqe.handleCommand(request.args['Filename'][0])
+			bqe.handleCommand(six.ensure_str(request.args[b'Filename'][0]))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])
@@ -241,10 +245,8 @@ class BQEWebController(BaseController):
 #		return {"services": services}
 
 	def P_getservices(self, request):
-		if "sRef" in request.args.keys():
-			sRef = request.args["sRef"][0]
-		else:
-			sRef = ""
+		sRef = getUrlArg(request, "sRef", "")
+		includePicon = (getUrlArg(request, "picon", "") == '1')
 		services = []
 
 		CalcPos = False
@@ -264,7 +266,6 @@ class BQEWebController(BaseController):
 		pos = 0
 		oPos = 0
 		for item in fulllist:
-			
 			oldoPos = oPos
 			if CalcPos:
 				sref = item[0].toString()
@@ -291,6 +292,11 @@ class BQEWebController(BaseController):
 				service['isgroup'] = '0'
 				service['ismarker'] = '0'
 				service['isprotected'] = '0'
+				if includePicon:
+					try:
+						service['picon'] = getPicon(sref)
+					except:
+						service['picon'] = ''
 				if sp:
 					service['ismarker'] = '2'
 					service['servicename'] = ''
@@ -299,7 +305,7 @@ class BQEWebController(BaseController):
 					if item[0].flags & eServiceReference.isGroup:
 						gservices = []
 						service['isgroup'] = '1'
-						#get members of group
+						# get members of group
 						gserviceslist = serviceHandler.list(eServiceReference(sref))
 						gfulllist = gserviceslist and gserviceslist.getContent("RN", True)
 						for gitem in gfulllist:
@@ -319,7 +325,7 @@ class BQEWebController(BaseController):
 					protection = parentalControl.getProtectionLevel(sref)
 					if protection != -1:
 						if config.ParentalControl.type.value == "blacklist":
-							if parentalControl.blacklist.has_key(sref):
+							if sref in parentalControl.blacklist:
 								if "SERVICE" in parentalControl.blacklist[sref]:
 									service['isprotected'] = '1'
 								elif "BOUQUET" in parentalControl.blacklist[sref]:
@@ -327,7 +333,7 @@ class BQEWebController(BaseController):
 								else:
 									service['isprotected'] = '3'
 						elif config.ParentalControl.type.value == "whitelist":
-							if not parentalControl.whitelist.has_key(sref):
+							if sref not in parentalControl.whitelist:
 								if item[0].flags & eServiceReference.isGroup:
 									service['isprotected'] = '5'
 								else:
@@ -342,8 +348,8 @@ class BQEWebController(BaseController):
 				type = "0"
 			else:
 				type = "1"
-			setuppin = "setuppin" in config.ParentalControl.dict().keys() and config.ParentalControl.setuppin.value or -1
-			setuppinactive = "setuppin" in config.ParentalControl.dict().keys() and config.ParentalControl.setuppinactive.value
+			setuppin = "setuppin" in list(config.ParentalControl.dict().keys()) and config.ParentalControl.setuppin.value or -1
+			setuppinactive = "setuppin" in list(config.ParentalControl.dict().keys()) and config.ParentalControl.setuppinactive.value
 		else:
 			type = ""
 			setuppin = ""
@@ -368,7 +374,7 @@ class BQEUploadFile(resource.Resource):
 		request.setResponseCode(http.OK)
 		request.setHeader('content-type', 'text/plain')
 		request.setHeader('charset', 'UTF-8')
-		content = request.args['rfile'][0]
+		content = request.args[b'rfile'][0]
 		if not content:
 			result = [False, 'Error upload File']
 		else:
@@ -385,7 +391,8 @@ class BQEUploadFile(resource.Resource):
 				result = [False, 'Error writing File']
 			else:
 				result = [True, self.FN]
-		return json.dumps({"Result": result})
+		return six.ensure_binary(json.dumps({"Result": result}))
+
 
 class BQEImport(resource.Resource):
 	def __init__(self, session):
@@ -397,16 +404,17 @@ class BQEImport(resource.Resource):
 		request.setHeader('content-type', 'text/plain')
 		request.setHeader('charset', 'UTF-8')
 		result = [False, 'Error upload File']
-		if "json" in request.args.keys():
+		if getUrlArg(request, "json") != None:
 			try:
-				from BouquetEditor import BouquetEditor
+				from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 				bqe = BouquetEditor(self.session, func=BouquetEditor.IMPORT_BOUQUET)
 				bqe.handleCommand(request.args)
 				result = bqe.result
 			except ImportError:
 				result = [False, 'BouquetEditor plugin not found']
 
-		return json.dumps({"Result": result})
+		return six.ensure_binary(json.dumps({"Result": result}))
+
 
 class BQEApiController(BQEWebController):
 	def __init__(self, session, path=""):
@@ -419,8 +427,8 @@ class BQEApiController(BQEWebController):
 class BQEController(BaseController):
 	def __init__(self, session, path=""):
 		BaseController.__init__(self, path=path, session=session)
-		self.putChild("web", BQEWebController(session))
-		self.putChild("api", BQEApiController(session))
-		self.putChild('tmp', static.File('/tmp'))  # nosec
-		self.putChild('uploadrestore', BQEUploadFile(session))
-		self.putChild('import', BQEImport(session))
+		self.putChild(b"web", BQEWebController(session))
+		self.putChild(b"api", BQEApiController(session))
+		self.putChild(b"tmp", static.File(b"/tmp"))  # nosec
+		self.putChild(b"uploadrestore", BQEUploadFile(session))
+		self.putChild(b"import", BQEImport(session))

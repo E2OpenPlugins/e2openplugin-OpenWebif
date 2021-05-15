@@ -33,12 +33,10 @@
 </ul>
 #end def
 #def searchMenu
-#if $epgsearchcaps
 <ul>
 	<li><input type="checkbox" name="epgsearchtype" />$tstrings['epgsearchextended']</li>
 	<li><input type="checkbox" name="epgsearchbouquetsonly" />$tstrings['epgsearchbouquetsonly']</li>
 </ul>
-#end if
 <form action="" onSubmit="open_epg_search_dialog(); return false;">
 	<div style="width:100%; text-align:center; padding-top:5px;"><input type="text" id="epgSearch" size="14" /></div>
 	<div style="width:100%; text-align:center;padding-top:5px; padding-bottom:7px;" class="epgsearch"><button>$tstrings['search']</button></div>
@@ -107,7 +105,7 @@
 	<li><a class="lmc" href="ajax/boxinfo">$tstrings["box_info"]</a></li>
 	#for $extra in $extras
 		#set $target_url = $extra["key"];
-		#if $extra.has_key('nw')
+		#if 'nw' in $extra
 			#if $extra["nw"] == "1"
 			<li><a href="$target_url" target='_blank'>$extra["description"]</a></li>
 			#else
@@ -221,7 +219,7 @@
 
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/openwebif-1.2.19.min.js"></script>
+	<script type="text/javascript" src="js/openwebif.min.js?v1.2.21"></script>
 	<script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
 	<script type="text/javascript" src="/js/chosen.1.8.2.min.js"></script>
 	<script type="text/javascript">initJsTranslation($dumps($tstrings))</script>

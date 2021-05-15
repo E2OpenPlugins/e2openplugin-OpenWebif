@@ -3,7 +3,7 @@
 ##########################################################################
 # OpenWebif: ATController
 ##########################################################################
-# Copyright (C) 2013 - 2018 jbleyel and E2OpenPlugins
+# Copyright (C) 2013 - 2020 jbleyel and E2OpenPlugins
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -23,8 +23,10 @@
 from twisted.web import static, resource, http
 import os
 import json
+import six
 
 ATFN = "/tmp/autotimer_backup.tar"  # nosec
+
 
 class ATUploadFile(resource.Resource):
 
@@ -36,7 +38,7 @@ class ATUploadFile(resource.Resource):
 		request.setResponseCode(http.OK)
 		request.setHeader('content-type', 'text/plain')
 		request.setHeader('charset', 'UTF-8')
-		content = request.args['rfile'][0]
+		content = request.args[r'rfile'][0]
 		if not content:
 			result = [False, 'Error upload File']
 		else:
@@ -53,7 +55,8 @@ class ATUploadFile(resource.Resource):
 				result = [False, 'Error writing File']
 			else:
 				result = [True, ATFN]
-		return json.dumps({"Result": result})
+		return six.ensure_binary(json.dumps({"Result": result}))
+
 
 class AutoTimerDoBackupResource(resource.Resource):
 	def render(self, request):
@@ -61,11 +64,11 @@ class AutoTimerDoBackupResource(resource.Resource):
 		request.setHeader('Content-type', 'application/xhtml+xml')
 		request.setHeader('charset', 'UTF-8')
 		state, statetext = self.backupFiles()
-		return """<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
+		return six.ensure_binary("""<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
 <e2simplexmlresult>
 	<e2state>%s</e2state>
 	<e2statetext>%s</e2statetext>
-</e2simplexmlresult>""" % ('True' if state else 'False', statetext)
+</e2simplexmlresult>""" % ('True' if state else 'False', statetext))
 
 	def backupFiles(self):
 		if os.path.exists(ATFN):
@@ -83,25 +86,26 @@ class AutoTimerDoBackupResource(resource.Resource):
 				if not os.path.exists(arg):
 					return (False, "Error while preparing backup file, %s does not exists." % arg)
 				tarFiles += "%s " % arg
-			lines = os.popen("tar cvf %s %s" % (ATFN,tarFiles)).readlines()
+			lines = os.popen("tar cvf %s %s" % (ATFN, tarFiles)).readlines()
 			os.remove(checkfile)
 			return (True, ATFN)
 		else:
 			return (False, "Error while preparing backup file.")
+
 
 class AutoTimerDoRestoreResource(resource.Resource):
 	def render(self, request):
 		request.setResponseCode(http.OK)
 		request.setHeader('Content-type', 'application/xhtml+xml')
 		request.setHeader('charset', 'UTF-8')
-		
+
 		state, statetext = self.restoreFiles()
-		
-		return """<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
+
+		return six.ensure_binary("""<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
 <e2simplexmlresult>
 	<e2state>%s</e2state>
 	<e2statetext>%s</e2statetext>
-</e2simplexmlresult>""" % ('True' if state else 'False', statetext)
+</e2simplexmlresult>""" % ('True' if state else 'False', statetext))
 
 	def restoreFiles(self):
 		if os.path.exists(ATFN):
@@ -124,7 +128,7 @@ class AutoTimerDoRestoreResource(resource.Resource):
 					except Exception:
 						# TODO: proper error handling
 						pass
-				
+
 				os.remove(ATFN)
 				return (True, "AutoTimer-settings were restored successfully")
 			else:
@@ -143,30 +147,30 @@ class ATController(resource.Resource):
 				AutoTimerAddOrEditAutoTimerResource, AutoTimerChangeSettingsResource, \
 				AutoTimerRemoveAutoTimerResource, AutoTimerSettingsResource, \
 				AutoTimerSimulateResource
-		except ImportError:
+		except ImportError as e:
 			# print "AT plugin not found"
 			return
-		self.putChild('parse', AutoTimerDoParseResource())
-		self.putChild('remove', AutoTimerRemoveAutoTimerResource())
-		self.putChild('edit', AutoTimerAddOrEditAutoTimerResource())
-		self.putChild('get', AutoTimerSettingsResource())
-		self.putChild('set', AutoTimerChangeSettingsResource())
-		self.putChild('simulate', AutoTimerSimulateResource())
+		self.putChild(b'parse', AutoTimerDoParseResource())
+		self.putChild(b'remove', AutoTimerRemoveAutoTimerResource())
+		self.putChild(b'edit', AutoTimerAddOrEditAutoTimerResource())
+		self.putChild(b'get', AutoTimerSettingsResource())
+		self.putChild(b'set', AutoTimerChangeSettingsResource())
+		self.putChild(b'simulate', AutoTimerSimulateResource())
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerTestResource
-			self.putChild('test', AutoTimerTestResource())
-		except ImportError:
+			self.putChild(b'test', AutoTimerTestResource())
+		except ImportError as e:
 			# this is not an error
 			pass
-		self.putChild('uploadfile', ATUploadFile(session))
-		self.putChild('restore', AutoTimerDoRestoreResource())
-		self.putChild('backup', AutoTimerDoBackupResource())
-		self.putChild('tmp', static.File('/tmp'))  # nosec
+		self.putChild(b'uploadfile', ATUploadFile(session))
+		self.putChild(b'restore', AutoTimerDoRestoreResource())
+		self.putChild(b'backup', AutoTimerDoBackupResource())
+		self.putChild(b'tmp', static.File(b'/tmp'))  # nosec
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerUploadXMLConfigurationAutoTimerResource, AutoTimerAddXMLAutoTimerResource
-			self.putChild('upload_xmlconfiguration', AutoTimerUploadXMLConfigurationAutoTimerResource())
-			self.putChild('add_xmltimer', AutoTimerAddXMLAutoTimerResource())
-		except ImportError:
+			self.putChild(b'upload_xmlconfiguration', AutoTimerUploadXMLConfigurationAutoTimerResource())
+			self.putChild(b'add_xmltimer', AutoTimerAddXMLAutoTimerResource())
+		except ImportError as e:
 			# this is not an error
 			pass
 
@@ -179,8 +183,8 @@ class ATController(resource.Resource):
 			try:
 				if autotimer is not None:
 					autotimer.readXml()
-					return ''.join(autotimer.getXml())
+					return six.ensure_binary(''.join(autotimer.getXml()))
 			except Exception:
-				return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>AutoTimer Config not found</e2statetext></e2simplexmlresult>'
+				return b'<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>AutoTimer Config not found</e2statetext></e2simplexmlresult>'
 		except ImportError:
-			return '<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>AutoTimer Plugin not found</e2statetext></e2simplexmlresult>'
+			return b'<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>AutoTimer Plugin not found</e2statetext></e2simplexmlresult>'

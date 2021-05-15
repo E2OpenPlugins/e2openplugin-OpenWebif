@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 import json
 import copy
 
-from twisted.web import http, resource
+from twisted.web import resource
 
 #: CORS - HTTP headers the client may use
 CORS_ALLOWED_CLIENT_HEADERS = [
@@ -119,8 +119,9 @@ class SimpleRootController(resource.Resource):
 
     def __init__(self):
         resource.Resource.__init__(self)
-        self.putChild("demo", RESTControllerSkeleton())
-        self.putChild("", RESTControllerSkeleton())
+        self.putChild(b"demo", RESTControllerSkeleton())
+        self.putChild(b"", RESTControllerSkeleton())
+
 
 if __name__ == '__main__':
     from twisted.web.server import Site

@@ -1,6 +1,36 @@
-## Version 1.3.8
+## Version 1.4.6
 ## (in development)
+* fix memory leak in movielist by using internal code #751
+
+## Version 1.4.5
+* fix sleeptimer #1295
+* fix terminal for VTi #1293
+
+## Version 1.4.4
+* improve api movielist recursive #1241
+
+## Version 1.4.3
+* improve ipkg
+* use responsive UI for mobile devices
+
+## Version 1.4.2
+* add new api getpicon
+
+## Version 1.4.1
+* add new api getserviceref
+
+## Version 1.4.0
+* support python 3
+* huge update for the responsive UI by wedebe
+
+## Version 1.3.9
+* fix #1016,#1017
+
+## Version 1.3.8
 * BQE: import bouquets via json
+* moviedetails api
+* epgsearch orbital info #994
+* fix #967,#980
 
 ## Version 1.3.7
 * fix channel numbering #939

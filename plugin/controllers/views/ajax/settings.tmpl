@@ -51,11 +51,11 @@
 				<input type="checkbox" name="zapstream"/>
 				#end if
 				</td></tr>
-				<tr><td>$tstrings['tstr_show_picon_in_channel_list']</td><td>
-				#if $showchannelpicon
-				<input type="checkbox" name="showchannelpicon" checked="checked"/>
+				<tr><td>$tstrings['show_picons']</td><td>
+				#if $showpicons
+				<input type="checkbox" name="showpicons" checked="checked"/>
 				#else
-				<input type="checkbox" name="showchannelpicon"/>
+				<input type="checkbox" name="showpicons"/>
 				#end if
 				</td></tr>
 				<tr><td>$tstrings['show_details_in_channel_list']</td><td>
@@ -63,6 +63,20 @@
 				<input type="checkbox" name="showchanneldetails" checked="checked"/>
 				#else
 				<input type="checkbox" name="showchanneldetails"/>
+				#end if
+				</td></tr>
+				<tr><td>$tstrings['show_iptv_channels_in_selection']</td><td>
+				#if $showiptvchannelsinselection
+				<input type="checkbox" name="showiptvchannelsinselection" checked="checked"/>
+				#else
+				<input type="checkbox" name="showiptvchannelsinselection"/>
+				#end if
+				</td></tr>
+				<tr><td>$tstrings['use_channel_name_for_screenshots']</td><td>
+				#if $screenshotchannelname
+				<input type="checkbox" name="screenshotchannelname" checked="checked"/>
+				#else
+				<input type="checkbox" name="screenshotchannelname"/>
 				#end if
 				</td></tr>
 				<tr><td>$tstrings['tstr_moviedb']</td><td>
@@ -96,8 +110,18 @@
 				</fieldset>
 				</span>
 				</td></tr>
+				<tr><td>$tstrings['playlistformat']</td><td>
+				<span class="pl">
+				<fieldset style="border:none;" id="fspl">
+				<label for="m3u">M3U</label>
+				<input type="radio" name="PL" id="m3u">
+				<label for="xspf">XSPF</label>
+				<input type="radio" name="PL" id="xspf">
+				</fieldset>
+				</span>
+				</td></tr>
 				#if $getVar("responsivedesign", "") != ""
-					<tr><td>$tstrings['newdesign']</td><td>
+					<tr><td>$tstrings['use_modern_design']</td><td>
 					#if $responsivedesign
 					<input type="checkbox" name="responsivedesign" checked="checked"/>
 					#else
@@ -154,9 +178,9 @@
 				<table id="configuration">
 				<tr><td>$tstrings['bookmark']</td><td>&nbsp;</td></tr>
 				#for $location in $locations
-					<tr><td>$location</td><td><a href='#' onClick="deleteBookmark('$location'); return false;" title=""><div><i class="fa fa-trash-o"></i></div></a></td></tr>
+					<tr><td>$location</td><td><a href='#' onclick="deleteBookmark('$location'); return false;" title=""><div><i class="fa fa-trash-o"></i></div></a></td></tr>
 				#end for
-				<tr><td><input type="text" id="addbookmarktext" value=""></td><td><a href='#' onClick="addBookmark(); return false;" title=""><div><i class="fa fa-plus"></i></div></a></td></tr>
+				<tr><td><input type="text" id="addbookmarktext" value=""></td><td><a href='#' onclick="addBookmark(); return false;" title=""><div><i class="fa fa-plus"></i></div></a></td></tr>
 				</table>
 			</div>
 		</div>
@@ -332,7 +356,7 @@ function ask(obj,man)
 
 	if(i=='1') {
 		if (confirm(str_rmp + ' ( ' + pk + ') ?') === true) {
-			cmd = 'remove&' + pk;
+			cmd = 'remove&package=' + pk;
 		}
 	} else if (i=='2') {
 		if (confirm(str_up + ' ( ' + pk + ') ?') === true) {
@@ -486,6 +510,14 @@ $(function() {
 		SetSpinner();
 	});
 
+	$(".pl input[type='radio']").checkboxradio({ icon: false });
+	$(".pl fieldset").controlgroup();
+	var pl = GetLSValue('pl','m3u');
+	$('#'+pl).attr('checked', true).checkboxradio("refresh");
+	$(".pl input:radio").change(function() {
+		SetLSValue('pl',$(this).attr('id'));
+	});
+
 	setHover('#slist li');
 	$('#fsspinner > label').css('padding-left','10px');
 	$('#fsspinner > label').css('padding-right','10px');
@@ -497,16 +529,28 @@ $(function() {
 		webapi_execute("/api/setwebconfig?zapstream=" + ch);
 	});
 
-	$("input[name=showchannelpicon]").click(function(evt) {
+	$("input[name=showpicons]").click(function(evt) {
 		var ch = evt.currentTarget.checked;
-		$('input[name=showchannelpicon]').attr('checked', ch);
-		webapi_execute("/api/setwebconfig?showchannelpicon=" + ch);
+		$('input[name=showpicons]').attr('checked', ch);
+		webapi_execute("/api/setwebconfig?showpicons=" + ch);
 	});
 
 	$("input[name=showchanneldetails]").click(function(evt) {
 		var ch = evt.currentTarget.checked;
 		$('input[name=showchanneldetails]').attr('checked', ch);
 		webapi_execute("/api/setwebconfig?showchanneldetails=" + ch);
+	});
+
+	$("input[name=showiptvchannelsinselection]").click(function(evt) {
+		var ch = evt.currentTarget.checked;
+		$('input[name=showiptvchannelsinselection]').attr('checked', ch);
+		webapi_execute("/api/setwebconfig?showiptvchannelsinselection=" + ch);
+	});
+	
+	$("input[name=screenshotchannelname]").click(function(evt) {
+		var ch = evt.currentTarget.checked;
+		$('input[name=screenshotchannelname]').attr('checked', ch);
+		webapi_execute("/api/setwebconfig?screenshotchannelname=" + ch);
 	});
 
 	$("input[name=responsivedesign]").click(function(evt) {
