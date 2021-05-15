@@ -130,10 +130,9 @@
 #end if
 
 #if $at
-		<a href="#/at/create?name=$title&match=$title&timespanFrom=$event.begin&timespanTo=$event.end&sref=$sref"
-			 class="link--not-skinned" title="$tstrings['add_autotimer']" x-data-dismiss="modal">
+		<button class="link--not-skinned" onclick='location.href="#/at/new?name=$title&match=$title&timespanFrom=$event.begin_str&timespanTo=$event.end&sref=$sref";' class="link--not-skinned" title="$tstrings['add_autotimer']" data-dismiss="modal">
 			<i class="material-icons material-icons-centered">av_timer</i>
-		</a>
+		</button>
 #end if
 	</div>
 </div>
