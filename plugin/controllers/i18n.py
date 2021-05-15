@@ -567,5 +567,5 @@ tstrings = {
 	'skins': _("Skins"),
 	'use_classic_design': _("Use classic interface"),
 	'use_modern_design': _("Use modern interface"),
-	'showallpackages' : _("Show all packages")
+	'showallpackages': _("Show all packages")
 }
