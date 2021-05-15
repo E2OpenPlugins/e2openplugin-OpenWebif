@@ -1,5 +1,8 @@
-## Version 1.4.6
+## Version 1.4.7
 ## (in development)
+* add filter paramter to ipkg api
+
+## Version 1.4.6
 * fix memory leak in movielist by using internal code #751
 
 ## Version 1.4.5
