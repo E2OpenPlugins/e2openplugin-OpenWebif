@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-15 10:55+0430\n"
-"PO-Revision-Date: 2020-08-18 02:59+0300\n"
+"PO-Revision-Date: 2021-05-15 13:40+0300\n"
 "Last-Translator: audi06_19 <info@dreamosat-forum.com>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -92,7 +92,7 @@ msgstr "Lütfen dosya adını girin"
 
 #: ../plugin/controllers/i18n.py:517
 msgid "A value is required"
-msgstr "Bir şeyler yazmanız gerekiyor!"
+msgstr "Bir şeyler yazmanız gerekiyor"
 
 #: ../plugin/controllers/i18n.py:80
 msgid "AGC"
@@ -120,7 +120,7 @@ msgstr "Buket Ekle"
 
 #: ../plugin/controllers/i18n.py:450
 msgid "Add IPTV/URL"
-msgstr ""
+msgstr "IPTV/URL Ekle"
 
 #: ../plugin/controllers/i18n.py:451
 msgid "Add Marker"
@@ -147,9 +147,8 @@ msgid "Add channel(s) as alternate"
 msgstr "Kanalları alternatif olarak ekle"
 
 #: ../plugin/controllers/i18n.py:387
-#, fuzzy
 msgid "Add filters"
-msgstr "Zamanlayıcı Ekle"
+msgstr "Filtre Ekle"
 
 #: ../plugin/controllers/i18n.py:443
 msgid "Add selection to bouquet"
@@ -165,7 +164,7 @@ msgstr "Çakışmada Benzer Ekle"
 
 #: ../plugin/controllers/i18n.py:360
 msgid "Add tags to recordings"
-msgstr ""
+msgstr "Kayıtlara tag ekle"
 
 #: ../plugin/controllers/BouquetEditor.py:466
 #, python-format
@@ -224,7 +223,7 @@ msgstr "Cevap EVET!"
 
 #: ../plugin/controllers/i18n.py:391
 msgid "Any day"
-msgstr ""
+msgstr "Herhangi bir gün"
 
 #: ../plugin/controllers/i18n.py:353
 msgid "Any service/recording"
@@ -247,9 +246,8 @@ msgid "Are you sure you want to delete the selected item(s)?"
 msgstr "Seçili öğeleri gerçekten silmek istiyor musunuz?"
 
 #: ../plugin/controllers/i18n.py:382
-#, fuzzy
 msgid "Are you sure you want to delete this AutoTimer?"
-msgstr "Zamanlayıcıyı gerçekten sil"
+msgstr "Bu otomatik zamanlayıcıyı silmeye emin misiniz?"
 
 #: ../plugin/controllers/i18n.py:110
 msgid "Are you sure you want to delete this recording?"
@@ -257,7 +255,7 @@ msgstr "Kaydı gerçekten sil"
 
 #: ../plugin/controllers/i18n.py:112
 msgid "Are you sure you want to delete this timer?"
-msgstr "Zamanlayıcıyı gerçekten sil"
+msgstr "Zamanlayıcıyı gerçekten sil?"
 
 #: ../plugin/controllers/i18n.py:208
 msgid "Are you sure you want to rename this recording?"
@@ -548,11 +546,11 @@ msgstr "Tarih"
 
 #: ../plugin/controllers/i18n.py:552
 msgid "Date (newest)"
-msgstr ""
+msgstr "Tarih (en yeniden)"
 
 #: ../plugin/controllers/i18n.py:551
 msgid "Date (oldest)"
-msgstr ""
+msgstr "Tarih (en eskiden)"
 
 #: ../plugin/plugin.py:179
 msgid "Debug - Display Tracebacks in browser"
@@ -611,9 +609,8 @@ msgid "Description"
 msgstr "Açıklama"
 
 #: ../plugin/controllers/i18n.py:129 ../plugin/controllers/i18n.py:375
-#, fuzzy
 msgid "Disable"
-msgstr "devre dışı"
+msgstr "Devre dışı bırak"
 
 #: ../plugin/controllers/i18n.py:115
 msgid "Disable Timer"
@@ -692,9 +689,8 @@ msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr "HATA: Cihaz Bekleme Modundayken uyku zamanlayıcısı ayarlanamıyor"
 
 #: ../plugin/controllers/i18n.py:374
-#, fuzzy
 msgid "Edit"
-msgstr "Düzenleyici"
+msgstr "Düzenle"
 
 #: ../plugin/controllers/i18n.py:124
 msgid "Edit Timer"
@@ -705,9 +701,8 @@ msgid "Editor"
 msgstr "Düzenleyici"
 
 #: ../plugin/controllers/i18n.py:128 ../plugin/controllers/i18n.py:129
-#, fuzzy
 msgid "Enable"
-msgstr "Etkin"
+msgstr "Etkinleştir"
 
 #: ../plugin/plugin.py:167
 msgid "Enable Authentication for streaming"
@@ -786,11 +781,11 @@ msgstr "İşaretçi için yeni ad girin"
 
 #: ../plugin/controllers/i18n.py:505
 msgid "Enter path"
-msgstr ""
+msgstr "Yol gir"
 
 #: ../plugin/controllers/i18n.py:386
 msgid "Enter the text to find in the EPG"
-msgstr ""
+msgstr "EPG'de aranacak yazıyı gir"
 
 #: ../plugin/controllers/i18n.py:137
 msgid "Error"
@@ -881,9 +876,10 @@ msgstr "Firmware sürümü"
 msgid "Force"
 msgstr "Zorla"
 
+# Cuma
 #: ../plugin/controllers/i18n.py:42
 msgid "Fr"
-msgstr "Fr"
+msgstr "Cum"
 
 #: ../plugin/controllers/i18n.py:143
 msgid "Free"
@@ -970,7 +966,7 @@ msgstr "Saat"
 
 #: ../plugin/controllers/i18n.py:456
 msgid "IPTV / URL name"
-msgstr ""
+msgstr "IPTV / URL adı"
 
 #: ../plugin/controllers/i18n.py:152
 msgid "IPv4 address"
@@ -1102,9 +1098,8 @@ msgid "List of Timers has been cleaned"
 msgstr "Zamanlayıcıların Listesi temizlendi"
 
 #: ../plugin/controllers/i18n.py:463
-#, fuzzy
 msgid "Loading..."
-msgstr "yükleniyor"
+msgstr "Yükleniyor..."
 
 #: ../plugin/controllers/i18n.py:166
 msgid "Location"
@@ -1194,7 +1189,7 @@ msgstr "Eksik istek: sRef"
 
 #: ../plugin/controllers/i18n.py:38
 msgid "Mo"
-msgstr "Mo"
+msgstr "Pt"
 
 #: ../plugin/controllers/i18n.py:172
 msgid "Model"
@@ -1218,9 +1213,8 @@ msgid "More"
 msgstr "Daha"
 
 #: ../plugin/controllers/i18n.py:173
-#, fuzzy
 msgid "More details"
-msgstr "Ayrıntıları göster"
+msgstr "Daha fazla detay"
 
 #: ../plugin/controllers/i18n.py:481
 msgid "Movie database for EPG"
@@ -1257,11 +1251,11 @@ msgstr "Ad"
 
 #: ../plugin/controllers/i18n.py:549
 msgid "Name (a-z)"
-msgstr ""
+msgstr "Ad (a-z)"
 
 #: ../plugin/controllers/i18n.py:550
 msgid "Name (z-a)"
-msgstr ""
+msgstr "Ad (a-z)"
 
 #: ../plugin/controllers/i18n.py:178
 msgid "Namespace"
@@ -1285,9 +1279,8 @@ msgid "New"
 msgstr "Yeni"
 
 #: ../plugin/controllers/i18n.py:503
-#, fuzzy
 msgid "New Bookmark:"
-msgstr "Yer İşareti"
+msgstr "Yeni Yer İşareti:"
 
 #: ../plugin/controllers/i18n.py:255
 msgid "New Name"
@@ -1298,9 +1291,8 @@ msgid "No"
 msgstr "Hayır"
 
 #: ../plugin/controllers/i18n.py:181
-#, fuzzy
 msgid "No EPG data available."
-msgstr "açıklama yok"
+msgstr "EPG verisi yok."
 
 #: ../plugin/controllers/BouquetEditor.py:524
 msgid "No Parent Control Setup Pin given!"
@@ -1451,7 +1443,7 @@ msgstr "Yalnızca zaman aralığında eşleştir"
 
 #: ../plugin/controllers/i18n.py:136
 msgid "Oops, no results matched your search"
-msgstr ""
+msgstr "Eşleşme bulunamadı"
 
 #: ../plugin/controllers/i18n.py:510
 msgid "Oops..."
@@ -1563,7 +1555,7 @@ msgstr "PowerTimer özelliği kullanılamıyor"
 
 #: ../plugin/controllers/i18n.py:389
 msgid "Preview"
-msgstr ""
+msgstr "Önizleme"
 
 #: ../plugin/controllers/i18n.py:498
 msgid "Primetimes"
@@ -1688,9 +1680,10 @@ msgstr "SLAAC"
 msgid "SNR"
 msgstr "SNR"
 
+# Saturday
 #: ../plugin/controllers/i18n.py:43
 msgid "Sa"
-msgstr "Sa"
+msgstr "Cmt"
 
 #: ../plugin/controllers/i18n.py:212
 msgid "Safe mode"
@@ -1753,9 +1746,8 @@ msgid "Search strictness"
 msgstr "KinoPoisk'te Ara"
 
 #: ../plugin/controllers/i18n.py:302
-#, fuzzy
 msgid "Search type"
-msgstr "Ara"
+msgstr "Arama türü"
 
 #: ../plugin/controllers/i18n.py:535
 msgid "Select IPK file for upload"
@@ -1763,7 +1755,7 @@ msgstr "Yükleme için IPK Dosyasını Seçin"
 
 #: ../plugin/controllers/i18n.py:554
 msgid "Select..."
-msgstr ""
+msgstr "Seç..."
 
 #: ../plugin/controllers/i18n.py:223
 msgid "Send Message"
@@ -1883,9 +1875,8 @@ msgid "Show picon background"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:544
-#, fuzzy
 msgid "Show picons"
-msgstr "Ayrıntıları göster"
+msgstr "Piconları göster"
 
 #: ../plugin/controllers/i18n.py:480
 msgid "Show picons in channel list"
@@ -1961,7 +1952,7 @@ msgstr "Üzgünüz, bu sayfa henüz uygulanmadı"
 
 #: ../plugin/controllers/i18n.py:548
 msgid "Sort"
-msgstr ""
+msgstr "Sırala"
 
 #: ../plugin/controllers/i18n.py:486
 msgid "Spinner"
@@ -2012,13 +2003,14 @@ msgstr "İstemci Akışı"
 msgid "Streaming port"
 msgstr "İstemci Akışı"
 
+# Sunday
 #: ../plugin/controllers/i18n.py:44
 msgid "Su"
-msgstr "Su"
+msgstr "Pzr"
 
 #: ../plugin/controllers/i18n.py:553
 msgid "Subdirectories"
-msgstr ""
+msgstr "Alt dizinler"
 
 #: ../plugin/controllers/i18n.py:243
 msgid "Subnet mask"
@@ -2031,7 +2023,7 @@ msgstr "Alt Hizmetler"
 #: ../plugin/controllers/models/movies.py:54
 #: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:46
 msgid "Sun"
-msgstr "Güneş"
+msgstr "Pzr"
 
 #: ../plugin/controllers/i18n.py:60
 msgid "Sunday"
@@ -2087,9 +2079,10 @@ msgstr "Karasal"
 msgid "Text"
 msgstr "Metin"
 
+# Thursday
 #: ../plugin/controllers/i18n.py:41
 msgid "Th"
-msgstr "Th"
+msgstr "Prş"
 
 #: ../plugin/controllers/web.py:91 ../plugin/controllers/web.py:1554
 #, python-format
@@ -2218,7 +2211,7 @@ msgstr "Daha önce değil"
 #: ../plugin/controllers/models/movies.py:57
 #: ../plugin/controllers/models/timers.py:48
 msgid "Today"
-msgstr ""
+msgstr "Bugün"
 
 #: ../plugin/controllers/i18n.py:262
 msgid "Transcode"
@@ -2236,9 +2229,10 @@ msgstr "Tahmin Etmeyi Deneyin"
 msgid "Tsid"
 msgstr "Tsid"
 
+# Tuesday
 #: ../plugin/controllers/i18n.py:39
 msgid "Tu"
-msgstr "Tu"
+msgstr "Sal"
 
 #: ../plugin/controllers/models/movies.py:54
 #: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:48
@@ -2425,9 +2419,10 @@ msgstr "Uyandır"
 msgid "Warning"
 msgstr "Uyarı"
 
+# Wednesday
 #: ../plugin/controllers/i18n.py:40
 msgid "We"
-msgstr "Biz"
+msgstr "Çrş"
 
 #: ../plugin/controllers/i18n.py:492
 msgid "Web TV"
@@ -2482,7 +2477,7 @@ msgstr "Evet/Hayır"
 #: ../plugin/controllers/models/movies.py:59
 #: ../plugin/controllers/models/timers.py:51
 msgid "Yesterday"
-msgstr ""
+msgstr "Dün"
 
 #: ../plugin/controllers/i18n.py:287
 msgid "Zap"
@@ -2505,9 +2500,8 @@ msgid "Zapped to"
 msgstr "Zapped to"
 
 #: ../plugin/controllers/i18n.py:392
-#, fuzzy
 msgid "any time"
-msgstr "Zamanlayıcı Ekle"
+msgstr "herhangi bir zaman"
 
 #: ../plugin/controllers/i18n.py:335
 msgid "auto"
@@ -2529,12 +2523,11 @@ msgstr "Arama katılığı"
 
 #: ../plugin/controllers/i18n.py:369
 msgid "description contains"
-msgstr "Açıklamada"
+msgstr "açıklama içeriği"
 
 #: ../plugin/controllers/i18n.py:305
-#, fuzzy
 msgid "description match"
-msgstr "Açıklama"
+msgstr "açıklama eşleşmesi"
 
 #: ../plugin/controllers/i18n.py:116
 msgid "disabled"
@@ -2611,7 +2604,7 @@ msgstr ""
 
 #: ../plugin/controllers/i18n.py:370
 msgid "on weekday"
-msgstr "Hafta içi"
+msgstr "hafta içi"
 
 #: ../plugin/controllers/BouquetEditor.py:87
 msgid "one two three four unknown command"
@@ -2655,11 +2648,11 @@ msgstr "Buketleri seçin"
 
 #: ../plugin/controllers/i18n.py:358
 msgid "select channels"
-msgstr "Kanalları seçin"
+msgstr "kanalları seçin"
 
 #: ../plugin/controllers/i18n.py:356
 msgid "select tags"
-msgstr "Etiketleri seçin"
+msgstr "etiketleri seçin"
 
 #: ../plugin/controllers/i18n.py:368
 msgid "short description contains"
@@ -2686,7 +2679,7 @@ msgstr ""
 
 #: ../plugin/controllers/i18n.py:367
 msgid "title contains"
-msgstr "Başlıkta"
+msgstr "başlık içeriği"
 
 #: ../plugin/controllers/i18n.py:313
 msgid "title ends with"
@@ -2734,11 +2727,11 @@ msgstr "bekliyor"
 
 #: ../plugin/controllers/i18n.py:373
 msgid "weekday"
-msgstr "Hafta içi"
+msgstr "hafta içi"
 
 #: ../plugin/controllers/i18n.py:372
 msgid "weekend"
-msgstr "Hafta sonu"
+msgstr "hafta sonu"
 
 #: ../plugin/controllers/ipkg.py:284
 msgid "wrong filetype"
