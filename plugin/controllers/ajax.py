@@ -276,6 +276,7 @@ class AjaxController(BaseController):
 		ret['showchanneldetails'] = config.OpenWebif.webcache.showchanneldetails.value
 		ret['showiptvchannelsinselection'] = config.OpenWebif.webcache.showiptvchannelsinselection.value
 		ret['screenshotchannelname'] = config.OpenWebif.webcache.screenshotchannelname.value
+		ret['showallpackages'] = config.OpenWebif.webcache.showallpackages.value
 		ret['allowipkupload'] = config.OpenWebif.allow_upload_ipk.value
 		loc = getLocations()
 		ret['locations'] = loc['locations']
