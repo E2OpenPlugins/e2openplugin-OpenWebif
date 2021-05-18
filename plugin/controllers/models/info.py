@@ -719,14 +719,14 @@ def getStatusInfo(self):
 
 	# Get currently running Service
 	event = None
-	serviceref = self.session.nav.getCurrentlyPlayingServiceReference()
+	serviceref = NavigationInstance.instance.getCurrentlyPlayingServiceReference()
 	serviceref_string = None
 	currservice_station = None
 	if serviceref is not None:
 		serviceHandler = eServiceCenter.getInstance()
 		serviceHandlerInfo = serviceHandler.info(serviceref)
 
-		service = self.session.nav.getCurrentService()
+		service = NavigationInstance.instance.getCurrentService()
 		serviceinfo = service and service.info()
 		event = serviceinfo and serviceinfo.getEvent(0)
 		serviceref_string = serviceref.toString()
