@@ -2218,11 +2218,12 @@ class WebController(BaseController):
 				return False
 
 		setcs = getConfigsSections()
-		if request.path == '/api/config':
+		if request.path == b'/api/config':
 			return setcs
 		else:
 			try:
-				sect = request.path.split('/')
+				rp = six.ensure_str(request.path)
+				sect = rp.split('/')
 				if len(sect) == 4:
 					cfgs = getConfigs(sect[3])
 					resultcfgs = []
