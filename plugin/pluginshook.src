@@ -10,3 +10,4 @@ def addExternalChild(plugin_args):
 					print("[OpenWebif] error: path '%s' already registered" % plugin[0])
 					return
 			loaded_plugins.append(plugin_args)
+			return True
