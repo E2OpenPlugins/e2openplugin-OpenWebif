@@ -1065,7 +1065,7 @@ function test_simulateAT(simulate)
 
 	if(!simulate && CurrentAT)
 	{
-		link += "&id=" + CurrentAT.id;
+		link += "?id=" + CurrentAT.id;
 	}
 
 	$.ajax({
@@ -1073,8 +1073,34 @@ function test_simulateAT(simulate)
 		dataType: "xml",
 		success: function (xml)
 		{
-			var lines = parsetest_simulate(xml, simulate);
+			var lines = [];
 			
+			$(xml).find('e2simulatetimer,e2testtimer').each(function () {
+				var line = '<tr>';
+				line += '<td>' + $(this).find('e2state').text() + '</td>';
+				line += '<td>' + $(this).find('e2autotimername').text() + '</td>';
+				line += '<td>' + $(this).find('e2name').text() + '</td>';
+				line += '<td>' + $(this).find('e2servicename').text() + '</td>';
+				var s = $(this).find('e2timebegin').text();
+				var d = new Date(Math.round(s) * 1000);
+				var h = d.getHours();
+				var m = d.getMinutes();
+				var _h = ((h>9) ? '':'0') + h.toString();
+				var _m = ((m>9) ? '':'0') + m.toString();
+				s = (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear() + ' ' + _h + ':' + _m;
+				line += '<td>' + s + '</td>';
+				s = $(this).find('e2timeend').text();
+				d = new Date(Math.round(s) * 1000);
+				h = d.getHours();
+				m = d.getMinutes();
+				var _h = ((h>9) ? '':'0') + h.toString();
+				var _m = ((m>9) ? '':'0') + m.toString();
+				s = (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear() + ' ' + _h + ':' + _m;
+				line += '<td>' + s + '</td>';
+				line += '</tr>';
+				lines.push(line);
+			});
+		
 			$("#simtb").empty();
 			$(lines).each(function(idx,val) {
 				$("#simtb").append(val);
@@ -1086,47 +1112,6 @@ function test_simulateAT(simulate)
 			showError(request.responseText);
 		}
 	});
-}
-
-function parsetest_simulate(xml, simulate)
-{
-	var tag = "e2simulatedtimer";
-	var testtag = "e2testtimer";
-	var lines = [];
-
-	if(!simulate) {
-		if ( $(xml).find("e2testtimer").length > 0 ) {
-			tag = testtag;
-		}
-	}
-
-	$(xml).find(tag).each(function () {
-		var line = '<tr>';
-		line += '<td>' + $(this).find('e2state').text() + '</td>';
-		line += '<td>' + $(this).find('e2autotimername').text() + '</td>';
-		line += '<td>' + $(this).find('e2name').text() + '</td>';
-		line += '<td>' + $(this).find('e2servicename').text() + '</td>';
-		var s = $(this).find('e2timebegin').text();
-		var d = new Date(Math.round(s) * 1000);
-		var h = d.getHours();
-		var m = d.getMinutes();
-		var _h = ((h>9) ? '':'0') + h.toString();
-		var _m = ((m>9) ? '':'0') + m.toString();
-		s = (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear() + ' ' + _h + ':' + _m;
-		line += '<td>' + s + '</td>';
-		s = $(this).find('e2timeend').text();
-		d = new Date(Math.round(s) * 1000);
-		h = d.getHours();
-		m = d.getMinutes();
-		var _h = ((h>9) ? '':'0') + h.toString();
-		var _m = ((m>9) ? '':'0') + m.toString();
-		s = (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear() + ' ' + _h + ':' + _m;
-		line += '<td>' + s + '</td>';
-		line += '</tr>';
-		lines.push(line);
-	});
-
-	return lines;
 }
 
 
