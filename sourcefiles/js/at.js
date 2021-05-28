@@ -1,6 +1,6 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 2.11
+//* Version 2.12
 //******************************************************************************
 //* Copyright (C) 2014-2021 Joerg Bleyel
 //* Copyright (C) 2014-2021 E2OpenPlugins
@@ -27,6 +27,7 @@
 //* V 2.9 - fix #1028
 //* V 2.10 - iptv, lastscanned filter
 //* V 2.11 - improve getallservices
+//* V 2.12 - fix test request
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -1061,39 +1062,18 @@ function test_simulateAT(simulate)
 	$("#simtb").append("<tr><td COLSPAN=6>"+loadspinner+"</td></tr>");
 
 	var link = simulate ? "simulate":"test";
-	var tag = simulate ? "e2simulatedtimer":"e2testtimer";
-	
+
+	if(!simulate && CurrentAT)
+	{
+		link += "&id=" + CurrentAT.id;
+	}
+
 	$.ajax({
 		type: "GET", url: "/autotimer/" +link,
 		dataType: "xml",
 		success: function (xml)
 		{
-			var lines= [];
-			$(xml).find(tag).each(function () {
-				var line = '<tr>';
-				line += '<td>' + $(this).find('e2state').text() + '</td>';
-				line += '<td>' + $(this).find('e2autotimername').text() + '</td>';
-				line += '<td>' + $(this).find('e2name').text() + '</td>';
-				line += '<td>' + $(this).find('e2servicename').text() + '</td>';
-				var s = $(this).find('e2timebegin').text();
-				var d = new Date(Math.round(s) * 1000);
-				var h = d.getHours();
-				var m = d.getMinutes();
-				var _h = ((h>9) ? '':'0') + h.toString();
-				var _m = ((m>9) ? '':'0') + m.toString();
-				s = (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear() + ' ' + _h + ':' + _m;
-				line += '<td>' + s + '</td>';
-				s = $(this).find('e2timeend').text();
-				d = new Date(Math.round(s) * 1000);
-				h = d.getHours();
-				m = d.getMinutes();
-				var _h = ((h>9) ? '':'0') + h.toString();
-				var _m = ((m>9) ? '':'0') + m.toString();
-				s = (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear() + ' ' + _h + ':' + _m;
-				line += '<td>' + s + '</td>';
-				line += '</tr>';
-				lines.push(line);
-			});
+			var lines = parsetest_simulate(xml, simulate);
 			
 			$("#simtb").empty();
 			$(lines).each(function(idx,val) {
@@ -1107,6 +1087,48 @@ function test_simulateAT(simulate)
 		}
 	});
 }
+
+function parsetest_simulate(xml, simulate)
+{
+	var tag = "e2simulatedtimer";
+	var testtag = "e2testtimer";
+	var lines = [];
+
+	if(!simulate) {
+		if ( $(xml).find("e2testtimer").length > 0 ) {
+			tag = testtag;
+		}
+	}
+
+	$(xml).find(tag).each(function () {
+		var line = '<tr>';
+		line += '<td>' + $(this).find('e2state').text() + '</td>';
+		line += '<td>' + $(this).find('e2autotimername').text() + '</td>';
+		line += '<td>' + $(this).find('e2name').text() + '</td>';
+		line += '<td>' + $(this).find('e2servicename').text() + '</td>';
+		var s = $(this).find('e2timebegin').text();
+		var d = new Date(Math.round(s) * 1000);
+		var h = d.getHours();
+		var m = d.getMinutes();
+		var _h = ((h>9) ? '':'0') + h.toString();
+		var _m = ((m>9) ? '':'0') + m.toString();
+		s = (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear() + ' ' + _h + ':' + _m;
+		line += '<td>' + s + '</td>';
+		s = $(this).find('e2timeend').text();
+		d = new Date(Math.round(s) * 1000);
+		h = d.getHours();
+		m = d.getMinutes();
+		var _h = ((h>9) ? '':'0') + h.toString();
+		var _m = ((m>9) ? '':'0') + m.toString();
+		s = (d.getMonth()+1) + '/' + d.getDate() + '/' + d.getFullYear() + ' ' + _h + ':' + _m;
+		line += '<td>' + s + '</td>';
+		line += '</tr>';
+		lines.push(line);
+	});
+
+	return lines;
+}
+
 
 function parseAT()
 {
