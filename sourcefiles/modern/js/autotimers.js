@@ -349,6 +349,7 @@
             const searchType = valueLabelMap.autoTimers.searchType[atItem['searchType']] || '';
             const newNode = templateEl.content.firstElementChild.cloneNode(true);
 
+            newNode.querySelector('button[name="preview"]').onclick = (evt) => self.preview(atItem.id);
             newNode.querySelector('[name="rename"]').onclick = (evt) => self.renameEntry(atItem.id, atItem.name);
 
             const editEl = newNode.querySelector('a[href="#/at/edit?id={{id}}"]');
@@ -475,12 +476,12 @@
         }
       },
 
-      preview: async () => {
+      preview: async (id) => {
         document.getElementById('at-preview__progress').classList.toggle('hidden', false);
         document.getElementById('at-preview__no-results').classList.toggle('hidden', true);
-        const responseContent = await owif.utils.fetchData('/autotimer/test');
-        const data = responseContent['e2autotimertest'];
-        const autotimers = data['e2testtimer'] || [];
+        const responseContent = await owif.utils.fetchData('/autotimer/test?id='+id);
+        const data = responseContent['e2autotimersimulate'] || responseContent['e2autotimertest'];
+        const autotimers = data['e2testtimer'] || date['e2simulatedtimer'];
         const previewTbodyEl = document.getElementById('at-preview__list');
         const newNode = document.createElement('tbody');
         document.getElementById('at-preview__progress').classList.toggle('hidden', true);
