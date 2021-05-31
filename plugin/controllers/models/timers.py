@@ -326,7 +326,6 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 				"scrambled+ecm": True,
 				}[recordingtype]
 
-
 	except Exception as e:
 		print(str(e))
 		return {
@@ -436,7 +435,6 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 					"descrambled+ecm": True,
 					"scrambled+ecm": True,
 					}[recordingtype]
-
 
 			# TODO: multi tuner test
 			sanity = TimerSanityCheck(rt.timer_list, timer)
