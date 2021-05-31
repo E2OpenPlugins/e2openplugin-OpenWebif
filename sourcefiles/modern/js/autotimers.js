@@ -44,6 +44,27 @@
     return Array.isArray(value) ? value : [value];
   }
 
+  function keyValueSortWeight(key, order = 'asc') {
+    return function innerSort(a, b) {
+      if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+        // key doesn't exist on either object
+        return 0;
+      }
+  
+      const varA = (typeof a[key] === 'string') ? a[key].toUpperCase() : a[key];
+      const varB = (typeof b[key] === 'string') ? b[key].toUpperCase() : b[key];
+  
+      let weight = 0;
+      if (varA > varB) {
+        weight = 1;
+      } else if (varA < varB) {
+        weight = -1;
+      }
+
+      return (order === 'desc') ? (weight * -1) : weight;
+    };
+  }
+
   function getAdjustedTimeString(timeString, adjustment) {
     const { hours = 0, minutes = 0 } = adjustment;
     try {
@@ -323,6 +344,7 @@
         owif.utils.debugLog(data);
         self.allAutoTimers = forceToArray(data['timer']);
         self.allAutoTimers.map((itm) => new AutoTimer(itm));
+        self.allAutoTimers.sort(keyValueSortWeight('name'));
 
         return self.allAutoTimers;
       },
