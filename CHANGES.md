@@ -1,5 +1,8 @@
-## Version 1.4.7
+## Version 1.4.8
 ## (in development)
+* add recording type to timer api
+
+## Version 1.4.7
 * add filter paramter to ipkg api
 
 ## Version 1.4.6

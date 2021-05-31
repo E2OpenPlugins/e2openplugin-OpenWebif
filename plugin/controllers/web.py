@@ -1074,6 +1074,11 @@ class WebController(BaseController):
 		if _autoadjust != None:
 			autoadjust = _autoadjust == "1"
 
+		recordingtype = getUrlArg(request, "recordingtype")
+		if recordingtype:
+			if recordingtype not in ("normal", "descrambled+ecm", "scrambled+ecm"):
+				recordingtype = None
+
 		# TODO: merge function addTimer+editTimer+addTimerByEventId in timers.py
 		if mode == 1:
 			return addTimerByEventId(
@@ -1122,6 +1127,7 @@ class WebController(BaseController):
 				getUrlArg(request, "channelOld"),
 				beginOld,
 				endOld,
+				recordingtype,
 				self.vpsparams(request),
 				always_zap,
 				pipzap,
@@ -1142,6 +1148,7 @@ class WebController(BaseController):
 				dirname,
 				tags,
 				repeated,
+				recordingtype,
 				self.vpsparams(request),
 				None,
 				eit,
