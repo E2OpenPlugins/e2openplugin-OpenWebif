@@ -339,7 +339,7 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 	}
 
 
-def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vpsinfo, always_zap, afterevent, pipzap, allow_duplicate, autoadjust):
+def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vpsinfo, always_zap, afterevent, pipzap, allow_duplicate, autoadjust, recordingtype):
 	event = eEPGCache.getInstance().lookupEventId(eServiceReference(serviceref), eventid)
 	if event is None:
 		return {
@@ -366,7 +366,7 @@ def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vps
 		dirname,
 		tags,
 		0,
-		None,
+		recordingtype,
 		vpsinfo,
 		None,
 		eit,

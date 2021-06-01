@@ -1093,7 +1093,8 @@ class WebController(BaseController):
 				afterevent,
 				pipzap,
 				allow_duplicate,
-				autoadjust
+				autoadjust,
+				recordingtype
 			)
 		elif mode == 2:
 			try:
