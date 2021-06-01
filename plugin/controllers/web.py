@@ -1076,7 +1076,7 @@ class WebController(BaseController):
 
 		recordingtype = getUrlArg(request, "recordingtype")
 		if recordingtype:
-			if recordingtype not in ("normal", "descrambled+ecm", "scrambled+ecm"):
+			if recordingtype not in ("normal", "descrambled", "scrambled"):
 				recordingtype = None
 
 		# TODO: merge function addTimer+editTimer+addTimerByEventId in timers.py

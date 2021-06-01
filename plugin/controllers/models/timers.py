@@ -178,10 +178,10 @@ def getTimers(session):
 
 		recordingtype = "normal"
 
-		if timer.record_ecm and timer.descramble:
-			recordingtype = "descrambled+ecm"
-		elif timer.record_ecm:
-			recordingtype = "scrambled+ecm"
+		if timer.record_ecm:
+			recordingtype = "scrambled"
+			if timer.descramble:
+				recordingtype = "descrambled"
 
 		# switch back to old way.
 		#fuzzyBegin = ' '.join(str(i) for i in FuzzyTime(timer.begin, inPast = True)[1:])
@@ -317,13 +317,13 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 		if recordingtype:
 			timer.descramble = {
 				"normal": True,
-				"descrambled+ecm": True,
-				"scrambled+ecm": False,
+				"descrambled": True,
+				"scrambled": False,
 				}[recordingtype]
 			timer.record_ecm = {
 				"normal": False,
-				"descrambled+ecm": True,
-				"scrambled+ecm": True,
+				"descrambled": True,
+				"scrambled": True,
 				}[recordingtype]
 
 	except Exception as e:
@@ -427,13 +427,13 @@ def editTimer(session, serviceref, begin, end, name, description, disabled, just
 			if recordingtype:
 				timer.descramble = {
 					"normal": True,
-					"descrambled+ecm": True,
-					"scrambled+ecm": False,
+					"descrambled": True,
+					"scrambled": False,
 					}[recordingtype]
 				timer.record_ecm = {
 					"normal": False,
-					"descrambled+ecm": True,
-					"scrambled+ecm": True,
+					"descrambled": True,
+					"scrambled": True,
 					}[recordingtype]
 
 			# TODO: multi tuner test
