@@ -1075,7 +1075,7 @@ function test_simulateAT(simulate)
 		{
 			var lines = [];
 			
-			$(xml).find('e2simulatetimer,e2testtimer').each(function () {
+			$(xml).find('e2simulatedtimer,e2testtimer').each(function () {
 				var line = '<tr>';
 				line += '<td>' + $(this).find('e2state').text() + '</td>';
 				line += '<td>' + $(this).find('e2autotimername').text() + '</td>';

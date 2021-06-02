@@ -503,7 +503,7 @@
         document.getElementById('at-preview__no-results').classList.toggle('hidden', true);
         const responseContent = await owif.utils.fetchData('/autotimer/test?id='+id);
         const data = responseContent['e2autotimersimulate'] || responseContent['e2autotimertest'];
-        const autotimers = data['e2testtimer'] || date['e2simulatedtimer'];
+        const autotimers = data['e2testtimer'] || data['e2simulatedtimer'];
         const previewTbodyEl = document.getElementById('at-preview__list');
         const newNode = document.createElement('tbody');
         document.getElementById('at-preview__progress').classList.toggle('hidden', true);
