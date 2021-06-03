@@ -2,40 +2,40 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-15 10:55+0430\n"
+"POT-Creation-Date: 2021-06-03 10:55+0430\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Samzam <http://www.opena.tv>\n"
+"Last-Translator: tomppaa www.huoltovalikko.com\n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.4.3\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
 #: ../plugin/controllers/models/timers.py:61
 #, python-format
 msgid "%02d.%02d."
-msgstr ""
+msgstr "%02d.%02d."
 
 #: ../plugin/controllers/models/timers.py:63
 #, python-format
 msgid "%02d.%02d.%d"
-msgstr ""
+msgstr "%02d.%02d.%d"
 
 #: ../plugin/controllers/models/movies.py:69
 #: ../plugin/controllers/models/timers.py:65
 #, python-format
 msgid "%02d:%02d"
-msgstr ""
+msgstr "%02d:%02d"
 
 #: ../plugin/controllers/models/services.py:235
 #: ../plugin/controllers/models/services.py:773
 #: ../plugin/controllers/models/services.py:1004
 #: ../plugin/controllers/models/services.py:1050
 msgid "%d.%m.%Y"
-msgstr ""
+msgstr "%d.%m.%Y"
 
 #: ../plugin/controllers/models/timers.py:187
 #: ../plugin/controllers/models/timers.py:188
@@ -44,18 +44,18 @@ msgstr ""
 #: ../plugin/controllers/models/timers.py:434
 #: ../plugin/controllers/models/timers.py:435
 msgid "%d.%m.%Y %H:%M"
-msgstr ""
+msgstr "%d.%m.%Y %H:%M"
 
 #: ../plugin/controllers/models/movies.py:65
 #: ../plugin/controllers/models/timers.py:59
 #, python-format
 msgid "%s %02d.%02d."
-msgstr ""
+msgstr "%s %02d.%02d."
 
 #: ../plugin/controllers/models/movies.py:67
 #, python-format
 msgid "%s %02d.%02d.%d"
-msgstr ""
+msgstr "%s %02d.%02d.%d"
 
 #: ../plugin/controllers/BouquetEditor.py:549
 #, python-format
@@ -65,7 +65,7 @@ msgstr "%s %s on lukittu."
 #: ../plugin/controllers/i18n.py:129
 #, python-format
 msgid "%s / %s"
-msgstr ""
+msgstr "%s / %s"
 
 #: ../plugin/controllers/models/info.py:306
 #: ../plugin/controllers/models/info.py:430
@@ -78,9 +78,8 @@ msgid "(Press 'shift' and click to 'hold')"
 msgstr "(Vaihto + pitkä painallus)"
 
 #: ../plugin/controllers/i18n.py:394
-#, fuzzy
 msgid "(in minutes)"
-msgstr "Minuutti"
+msgstr "Minuutteina"
 
 #: ../plugin/controllers/i18n.py:461
 msgid "A filename is required"
@@ -88,7 +87,7 @@ msgstr "Syötä tiedostonnimi"
 
 #: ../plugin/controllers/i18n.py:517
 msgid "A value is required"
-msgstr ""
+msgstr "Arvo vaaditaan"
 
 #: ../plugin/controllers/i18n.py:80
 msgid "AGC"
@@ -116,7 +115,7 @@ msgstr "Lisää suosikkilista"
 
 #: ../plugin/controllers/i18n.py:450
 msgid "Add IPTV/URL"
-msgstr ""
+msgstr "Lisää IPTV/URL"
 
 #: ../plugin/controllers/i18n.py:451
 msgid "Add Marker"
@@ -124,7 +123,7 @@ msgstr "Lisää väliotsikko"
 
 #: ../plugin/controllers/i18n.py:452
 msgid "Add Spacer"
-msgstr ""
+msgstr "Lisää rivi"
 
 #: ../plugin/controllers/i18n.py:76
 msgid "Add a timer"
@@ -143,9 +142,8 @@ msgid "Add channel(s) as alternate"
 msgstr "Lisää vaihtoehtoisia kanavia"
 
 #: ../plugin/controllers/i18n.py:387
-#, fuzzy
 msgid "Add filters"
-msgstr "Lisää ajastus"
+msgstr "Lisää suodatin"
 
 #: ../plugin/controllers/i18n.py:443
 msgid "Add selection to bouquet"
@@ -161,7 +159,7 @@ msgstr "Lisää samanlaisiin ristiriidassa"
 
 #: ../plugin/controllers/i18n.py:360
 msgid "Add tags to recordings"
-msgstr ""
+msgstr "Lisää kommentti tallennuksille"
 
 #: ../plugin/controllers/BouquetEditor.py:466
 #, python-format
@@ -170,7 +168,7 @@ msgstr "Lisätty %s vaihtoehdoksi kanavalle %s."
 
 #: ../plugin/controllers/i18n.py:562
 msgid "Adjust recording time to real event time"
-msgstr ""
+msgstr "Aseta tallennusaika todelliseen lähetysaikaan"
 
 #: ../plugin/controllers/i18n.py:79 ../plugin/controllers/i18n.py:333
 #: ../plugin/controllers/i18n.py:424
@@ -195,11 +193,11 @@ msgstr "Kaikki vaihtoehtoiset kanavat poistettu."
 
 #: ../plugin/plugin.py:177
 msgid "Allow IPK Upload"
-msgstr ""
+msgstr "Salli IPK-tiedoston lataus"
 
 #: ../plugin/controllers/i18n.py:561
 msgid "Allow duplicates"
-msgstr ""
+msgstr "Salli päällekkäisyydet"
 
 #: ../plugin/controllers/BouquetEditor.py:452
 #, python-format
@@ -220,7 +218,7 @@ msgstr "Vastaus on KYLLÄ!"
 
 #: ../plugin/controllers/i18n.py:391
 msgid "Any day"
-msgstr ""
+msgstr "Kaikki päivät"
 
 #: ../plugin/controllers/i18n.py:353
 msgid "Any service/recording"
@@ -240,12 +238,11 @@ msgstr "Haluatko varmasti poistaa suosikkilistan"
 
 #: ../plugin/controllers/i18n.py:454
 msgid "Are you sure you want to delete the selected item(s)?"
-msgstr ""
+msgstr "Oletko varma että halut poistaa tämän tallenteen(t)?"
 
 #: ../plugin/controllers/i18n.py:382
-#, fuzzy
 msgid "Are you sure you want to delete this AutoTimer?"
-msgstr "Poistetaan ajastus"
+msgstr "Haluatko poistaa tämän automaattiajastuksen?"
 
 #: ../plugin/controllers/i18n.py:110
 msgid "Are you sure you want to delete this recording?"
@@ -264,9 +261,8 @@ msgid "Are you sure you want to restore from file?"
 msgstr "Haluatko varmasti palauttaa tiedostosta"
 
 #: ../plugin/controllers/i18n.py:159
-#, fuzzy
 msgid "Are you sure you want to start recording instantly?"
-msgstr "Aloita välitön tallennus"
+msgstr "Aloita välitön tallennus?"
 
 #: ../plugin/controllers/i18n.py:433
 msgid "Ask, default No"
@@ -303,7 +299,7 @@ msgstr "Automaattiajastuksen asetukset"
 
 #: ../plugin/controllers/base.py:362 ../plugin/controllers/i18n.py:297
 msgid "AutoTimers"
-msgstr "Automaattiajastuslista"
+msgstr "Automaattiajastus lista"
 
 #: ../plugin/controllers/i18n.py:256
 msgid "Autotimer Preview"
@@ -326,9 +322,8 @@ msgid "Begin"
 msgstr "Alku"
 
 #: ../plugin/controllers/i18n.py:340
-#, fuzzy
 msgid "Begin of \"After event\" timespan"
-msgstr "Aikajakson \"ajastuksen jälkeen\" alku"
+msgstr "Alkaa aika"
 
 #: ../plugin/controllers/i18n.py:324
 msgid "Beginning of timespan"
@@ -336,11 +331,11 @@ msgstr "Aikajakson alku"
 
 #: ../plugin/controllers/i18n.py:502
 msgid "Bookmark"
-msgstr ""
+msgstr "Kirjanmerkki"
 
 #: ../plugin/controllers/i18n.py:501
 msgid "Bookmarks"
-msgstr ""
+msgstr "Kirjanmerkit"
 
 #: ../plugin/controllers/BouquetEditor.py:128
 #, python-format
@@ -442,16 +437,15 @@ msgstr "Kaapeliverkko"
 
 #: ../plugin/controllers/i18n.py:493
 msgid "Calendar Week"
-msgstr ""
+msgstr "Kalenteriviikko"
 
 #: ../plugin/controllers/i18n.py:94 ../plugin/plugin.py:125
 msgid "Cancel"
 msgstr "Peruuta"
 
 #: ../plugin/controllers/i18n.py:515
-#, fuzzy
 msgid "Cancelled"
-msgstr "Peruuta"
+msgstr "Peruutettu"
 
 #: ../plugin/controllers/i18n.py:95
 msgid "Capacity"
@@ -486,13 +480,12 @@ msgid "Close"
 msgstr "Sulje"
 
 #: ../plugin/controllers/i18n.py:518
-#, fuzzy
 msgid "Common Settings"
-msgstr "Asetukset"
+msgstr "Yleiset Asetukset"
 
 #: ../plugin/controllers/i18n.py:566
 msgid "Config"
-msgstr ""
+msgstr "Asetus"
 
 #: ../plugin/controllers/models/timers.py:282
 #, python-format
@@ -548,15 +541,15 @@ msgstr "Päivämäärä"
 
 #: ../plugin/controllers/i18n.py:552
 msgid "Date (newest)"
-msgstr ""
+msgstr "Päivä (uusin)"
 
 #: ../plugin/controllers/i18n.py:551
 msgid "Date (oldest)"
-msgstr ""
+msgstr "Päivä (vanhin)"
 
 #: ../plugin/plugin.py:179
 msgid "Debug - Display Tracebacks in browser"
-msgstr ""
+msgstr "Debug - Näytä tapahtumatiedot selaimessa"
 
 #: ../plugin/controllers/i18n.py:73
 msgid "December"
@@ -579,9 +572,8 @@ msgid "Delete"
 msgstr "Poista"
 
 #: ../plugin/controllers/i18n.py:504
-#, fuzzy
 msgid "Delete Bookmark"
-msgstr "Poista ajastus"
+msgstr "Poista kirjanmerkki"
 
 #: ../plugin/controllers/i18n.py:449
 msgid "Delete Bouquet"
@@ -600,20 +592,20 @@ msgid ""
 "Delete failed, because there is no movie trash !\n"
 "Disable movie trash in configuration to delete this item"
 msgstr ""
+"Poisto epäonnistui, koska roskakoria ei ole !\n"
+"Poista roskakori käytöstä asetuksissa poistaaksesi tämän tiedoston"
 
 #: ../plugin/controllers/i18n.py:516
-#, fuzzy
 msgid "Deleted"
-msgstr "Poista"
+msgstr "Poistettu"
 
 #: ../plugin/controllers/i18n.py:113
 msgid "Description"
 msgstr "Kuvaus"
 
 #: ../plugin/controllers/i18n.py:129 ../plugin/controllers/i18n.py:375
-#, fuzzy
 msgid "Disable"
-msgstr "poistettu"
+msgstr "Poista käytöstä "
 
 #: ../plugin/controllers/i18n.py:115
 msgid "Disable Timer"
@@ -645,7 +637,7 @@ msgstr "Dolby"
 
 #: ../plugin/controllers/i18n.py:563
 msgid "Don't create timer when movie exists in database"
-msgstr ""
+msgstr "Älä luo ajastusta jos tallenne on jo olemassa"
 
 #: ../plugin/controllers/i18n.py:119
 msgid "Done"
@@ -677,7 +669,7 @@ msgstr "EPG"
 
 #: ../plugin/controllers/i18n.py:133
 msgid "EPG Search"
-msgstr "Ohjelmaopashaku"
+msgstr "EPG ohjelma haku"
 
 #: ../plugin/controllers/i18n.py:301
 msgid "EPG encoding"
@@ -692,9 +684,8 @@ msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr "VIRHE: Uniajastusta ei voi aktivoida valmiustilassa"
 
 #: ../plugin/controllers/i18n.py:374
-#, fuzzy
 msgid "Edit"
-msgstr "Muokkaaja"
+msgstr "Muokkaa"
 
 #: ../plugin/controllers/i18n.py:124
 msgid "Edit Timer"
@@ -705,7 +696,6 @@ msgid "Editor"
 msgstr "Muokkaaja"
 
 #: ../plugin/controllers/i18n.py:128 ../plugin/controllers/i18n.py:129
-#, fuzzy
 msgid "Enable"
 msgstr "Sallittu"
 
@@ -747,7 +737,7 @@ msgstr "Suodata"
 
 #: ../plugin/controllers/i18n.py:499
 msgid "Enable/Disable Screenshot on key press or"
-msgstr ""
+msgstr "Salli/Poista kuvankaappaus näppäimellä tai"
 
 #: ../plugin/controllers/i18n.py:130 ../plugin/controllers/i18n.py:299
 #: ../plugin/controllers/i18n.py:417
@@ -763,9 +753,8 @@ msgid "End"
 msgstr "Lopetus"
 
 #: ../plugin/controllers/i18n.py:341
-#, fuzzy
 msgid "End of \"After event\" timespan"
-msgstr "Aikajakson \"ajastuksen jälkeen\" loppu"
+msgstr "Loppuu aika"
 
 #: ../plugin/controllers/i18n.py:325
 msgid "End of timespan"
@@ -780,17 +769,16 @@ msgid "Enter a name for the new marker"
 msgstr "Syötä uusi nimi väliotsikolle"
 
 #: ../plugin/controllers/i18n.py:385
-#, fuzzy
 msgid "Enter a name for this AutoTimer"
-msgstr "Syötä uusi nimi väliotsikolle"
+msgstr "Syötä nimi automaattiajastukselle"
 
 #: ../plugin/controllers/i18n.py:505
 msgid "Enter path"
-msgstr ""
+msgstr "Syötä polku"
 
 #: ../plugin/controllers/i18n.py:386
 msgid "Enter the text to find in the EPG"
-msgstr ""
+msgstr "Syötä teksti EPG hakuun"
 
 #: ../plugin/controllers/i18n.py:137
 msgid "Error"
@@ -849,9 +837,8 @@ msgid "Exclude when"
 msgstr "Hylkää"
 
 #: ../plugin/controllers/i18n.py:339
-#, fuzzy
 msgid "Execute \"After event\" during timespan"
-msgstr "Toteuta \"ajastuksen jälkeen\" aikajaksolla"
+msgstr "Suorita \"Tapahtuman jälkeen\" -komento aikavälillä"
 
 #: ../plugin/controllers/i18n.py:546
 msgid "Export"
@@ -904,16 +891,15 @@ msgstr "Perjantai"
 
 #: ../plugin/controllers/i18n.py:327
 msgid "From date"
-msgstr "Ei jälkeen"
+msgstr "Alkaen"
 
 #: ../plugin/controllers/models/info.py:349 ../plugin/controllers/i18n.py:142
 msgid "Front processor version"
 msgstr "Edustaprosessorin versio"
 
 #: ../plugin/controllers/i18n.py:539
-#, fuzzy
 msgid "Full remote"
-msgstr "Piilota koko kaukosäädin"
+msgstr "Koko kaukosäädin"
 
 #: ../plugin/controllers/models/info.py:396
 #: ../plugin/controllers/models/info.py:402
@@ -943,11 +929,11 @@ msgstr "Listanmuutos uudelle suosikkilistalle epäonnistui!"
 
 #: ../plugin/controllers/i18n.py:556
 msgid "HH:MM"
-msgstr ""
+msgstr "HH:MM"
 
 #: ../plugin/plugin.py:159
 msgid "HTTP port"
-msgstr "HTTP-portti"
+msgstr "HTTP portti"
 
 #: ../plugin/plugin.py:163
 msgid "HTTPS port"
@@ -971,7 +957,7 @@ msgstr "Tunti"
 
 #: ../plugin/controllers/i18n.py:456
 msgid "IPTV / URL name"
-msgstr ""
+msgstr "IPTV / URL-nimi"
 
 #: ../plugin/controllers/i18n.py:152
 msgid "IPv4 address"
@@ -995,17 +981,15 @@ msgstr "Tuo"
 
 #: ../plugin/controllers/i18n.py:134
 msgid "Include description"
-msgstr "Lisää kuvaus"
+msgstr "Ohjelma kuvauksista"
 
 #: ../plugin/controllers/i18n.py:532
-#, fuzzy
 msgid "Include extended description"
-msgstr "Lisää kuvaus"
+msgstr "Sisällytä laajennettu kuvaus"
 
 #: ../plugin/controllers/i18n.py:531
-#, fuzzy
 msgid "Include short description"
-msgstr "Lisää kuvaus"
+msgstr "Lisää lyhyt kuvaus"
 
 #: ../plugin/controllers/i18n.py:365
 msgid "Include when"
@@ -1021,16 +1005,15 @@ msgstr "Tiedot"
 
 #: ../plugin/controllers/i18n.py:427
 msgid "Inherit AutoTimer"
-msgstr "Yhdistä automaatiajastukseen"
+msgstr "Yhdistä automaatti ajastukseen"
 
 #: ../plugin/controllers/i18n.py:524
 msgid "Install Package"
-msgstr ""
+msgstr "Asenna paketti"
 
 #: ../plugin/controllers/i18n.py:526
-#, fuzzy
 msgid "Installed"
-msgstr "Välitön tallennus"
+msgstr "Asennettu"
 
 #: ../plugin/controllers/i18n.py:158
 msgid "Instant Record"
@@ -1045,9 +1028,9 @@ msgid "Internal error!"
 msgstr "Sisäinen virhe!"
 
 #: ../plugin/controllers/i18n.py:398
-#, fuzzy, python-format
+#, python-format
 msgid "Interval (in %s)"
-msgstr "Väli (h)"
+msgstr "Väli (in %s)"
 
 #: ../plugin/controllers/i18n.py:422
 msgid "Interval (min.)"
@@ -1083,7 +1066,7 @@ msgstr "Kernel"
 
 #: ../plugin/controllers/i18n.py:163
 msgid "LCD"
-msgstr ""
+msgstr "LCD"
 
 #: ../plugin/controllers/base.py:334
 msgid "LCD4Linux Setup"
@@ -1106,9 +1089,8 @@ msgid "List of Timers has been cleaned"
 msgstr "Ajastuslista tyhjennetty"
 
 #: ../plugin/controllers/i18n.py:463
-#, fuzzy
 msgid "Loading..."
-msgstr "lataa"
+msgstr "lataa..."
 
 #: ../plugin/controllers/i18n.py:166
 msgid "Location"
@@ -1173,16 +1155,15 @@ msgstr "Tapa"
 
 #: ../plugin/controllers/i18n.py:521
 msgid "Minimal EPG list"
-msgstr ""
+msgstr "Mini EPG lista"
 
 #: ../plugin/controllers/i18n.py:519
-#, fuzzy
 msgid "Minimal movie list"
-msgstr "Tallennelista"
+msgstr "Minimaalinen tallennelista"
 
 #: ../plugin/controllers/i18n.py:520
 msgid "Minimal timer list"
-msgstr ""
+msgstr "Minimoitu ajastuslista"
 
 #: ../plugin/controllers/i18n.py:170
 msgid "Minute"
@@ -1220,20 +1201,19 @@ msgstr "Kuukausittain"
 
 #: ../plugin/controllers/i18n.py:527
 msgid "More"
-msgstr ""
+msgstr "Lisää"
 
 #: ../plugin/controllers/i18n.py:173
 msgid "More details"
-msgstr ""
+msgstr "Lisätiedot"
 
 #: ../plugin/controllers/i18n.py:481
 msgid "Movie database for EPG"
-msgstr ""
+msgstr "Elokuvatietokanta EPG:lle"
 
 #: ../plugin/controllers/i18n.py:533
-#, fuzzy
 msgid "Movie search"
-msgstr "Tallenteet"
+msgstr "Tallenne haku"
 
 #: ../plugin/controllers/i18n.py:174
 msgid "Movielist"
@@ -1253,7 +1233,6 @@ msgid "MultiEPG"
 msgstr "MultiEPG"
 
 #: ../plugin/controllers/base.py:358
-#, fuzzy
 msgid "NCam Webinterface"
 msgstr "OSCam Webinterface"
 
@@ -1263,11 +1242,11 @@ msgstr "Nimi"
 
 #: ../plugin/controllers/i18n.py:549
 msgid "Name (a-z)"
-msgstr ""
+msgstr "Nimi (a-z)"
 
 #: ../plugin/controllers/i18n.py:550
 msgid "Name (z-a)"
-msgstr ""
+msgstr "Nimi (z-a)"
 
 #: ../plugin/controllers/i18n.py:178
 msgid "Namespace"
@@ -1291,9 +1270,8 @@ msgid "New"
 msgstr "Uusi"
 
 #: ../plugin/controllers/i18n.py:503
-#, fuzzy
 msgid "New Bookmark:"
-msgstr "Poista ajastus"
+msgstr "Uusi ajastus"
 
 #: ../plugin/controllers/i18n.py:255
 msgid "New Name"
@@ -1304,9 +1282,8 @@ msgid "No"
 msgstr "Ei"
 
 #: ../plugin/controllers/i18n.py:181
-#, fuzzy
 msgid "No EPG data available."
-msgstr "ei kuvausta saatavilla"
+msgstr "EPG tietoja ei ole saatavilla"
 
 #: ../plugin/controllers/BouquetEditor.py:524
 msgid "No Parent Control Setup Pin given!"
@@ -1343,9 +1320,8 @@ msgid "No marker-name given!"
 msgstr "Väliotsikolle ei ole annettu nimeä!"
 
 #: ../plugin/controllers/i18n.py:393
-#, fuzzy
 msgid "No matches were found in the EPG"
-msgstr "Vastaavaa ajastusta ei löytynyt"
+msgstr "Vastaavuutta ajastuksista ei löytynyt"
 
 #: ../plugin/controllers/models/timers.py:470
 #: ../plugin/controllers/models/timers.py:515
@@ -1376,7 +1352,6 @@ msgid "No service given!"
 msgstr "Kanavaa ei ole annettu!"
 
 #: ../plugin/controllers/i18n.py:513
-#, fuzzy
 msgid "No, cancel"
 msgstr "Peruuta"
 
@@ -1458,11 +1433,11 @@ msgstr "Hae vain aikajaksolta"
 
 #: ../plugin/controllers/i18n.py:136
 msgid "Oops, no results matched your search"
-msgstr ""
+msgstr "Oho, ei hakutuloksia"
 
 #: ../plugin/controllers/i18n.py:510
 msgid "Oops..."
-msgstr ""
+msgstr "Oops..."
 
 #: ../plugin/controllers/i18n.py:188
 msgid "Open Source Web Interface for Linux set-top box"
@@ -1474,7 +1449,7 @@ msgstr "Avaa uuteen ikkunaan"
 
 #: ../plugin/plugin.py:148
 msgid "OpenWebInterface Enabled"
-msgstr "OpenWeb-käyttöliittymä sallittu"
+msgstr "OpenWeb käyttöliittymä sallittu"
 
 #: ../plugin/controllers/i18n.py:483
 msgid "OpenWebif Browser Settings"
@@ -1483,16 +1458,15 @@ msgstr "OpenWebif selaimen asetukset"
 #: ../plugin/plugin.py:188 ../plugin/plugin.py:256 ../plugin/plugin.py:258
 #: ../plugin/plugin.py:260
 msgid "OpenWebif Configuration"
-msgstr "OpenWebif-asetukset"
+msgstr "OpenWebif Asetukset"
 
 #: ../plugin/controllers/i18n.py:484
 msgid "OpenWebif Settings"
 msgstr "OpenWebif asetukset"
 
 #: ../plugin/plugin.py:134
-#, fuzzy
 msgid "OpenWebif url:"
-msgstr "OpenWebif-URL:"
+msgstr "OpenWebif osoite:"
 
 #: ../plugin/controllers/models/services.py:264
 #: ../plugin/controllers/i18n.py:475
@@ -1505,7 +1479,7 @@ msgstr "Käytä automaattista vaihtoehtojen valintaa"
 
 #: ../plugin/controllers/i18n.py:507
 msgid "Packages"
-msgstr ""
+msgstr "Ohjelmisto paketit"
 
 #: ../plugin/controllers/BouquetEditor.py:528
 #: ../plugin/controllers/BouquetEditor.py:530
@@ -1526,7 +1500,7 @@ msgstr "Pcrpid"
 
 #: ../plugin/controllers/i18n.py:194
 msgid "PiP"
-msgstr ""
+msgstr "PiP"
 
 #: ../plugin/controllers/i18n.py:436
 msgid "Picture in Picture"
@@ -1546,16 +1520,15 @@ msgstr "Toista"
 
 #: ../plugin/plugin.py:178
 msgid "Playback IPTV Streams in browser"
-msgstr ""
+msgstr "Toista IPTV streami selaimessa"
 
 #: ../plugin/controllers/i18n.py:196
 msgid "Playlist"
 msgstr "Toistolista"
 
 #: ../plugin/controllers/i18n.py:559
-#, fuzzy
 msgid "Playlist format"
-msgstr "Toistolista"
+msgstr "Toistolista muoto"
 
 #: ../plugin/controllers/i18n.py:467
 msgid "Pmtpid"
@@ -1571,11 +1544,11 @@ msgstr "Virta-ajastusta ei saatavilla"
 
 #: ../plugin/controllers/i18n.py:389
 msgid "Preview"
-msgstr ""
+msgstr "Esikatselu"
 
 #: ../plugin/controllers/i18n.py:498
 msgid "Primetimes"
-msgstr ""
+msgstr "Parhaat katseluajat"
 
 #: ../plugin/controllers/i18n.py:378
 msgid "Process"
@@ -1631,12 +1604,11 @@ msgstr "Kaukosäädin"
 
 #: ../plugin/controllers/i18n.py:522
 msgid "Remove Package"
-msgstr ""
+msgstr "Poista paketti"
 
 #: ../plugin/controllers/i18n.py:388
-#, fuzzy
 msgid "Remove filter"
-msgstr "Kaukosäädin"
+msgstr "Poista suodatin"
 
 #: ../plugin/controllers/i18n.py:453 ../plugin/controllers/i18n.py:512
 msgid "Rename"
@@ -1663,7 +1635,6 @@ msgid "Require description to be unique"
 msgstr "Vaadi yksilöllinen kuvaus"
 
 #: ../plugin/controllers/i18n.py:555
-#, fuzzy
 msgid "Reset"
 msgstr "Nollaa laskuri"
 
@@ -1677,10 +1648,9 @@ msgstr "Käyttöliittymän uudelleenkäynnistys"
 
 #: ../plugin/controllers/i18n.py:135 ../plugin/controllers/i18n.py:361
 msgid "Restrict to bouquets"
-msgstr ""
+msgstr "Kanavalistan kanavista"
 
 #: ../plugin/controllers/i18n.py:362
-#, fuzzy
 msgid "Restrict to channels"
 msgstr "Valitse kanavat"
 
@@ -1735,7 +1705,6 @@ msgid "Search"
 msgstr "Haku"
 
 #: ../plugin/controllers/i18n.py:218
-#, fuzzy
 msgid "Search CSFD"
 msgstr "Hae IMDb:stä"
 
@@ -1748,31 +1717,28 @@ msgid "Search KinoPoisk"
 msgstr "Hae KinoPoisk:sta"
 
 #: ../plugin/controllers/i18n.py:221
-#, fuzzy
 msgid "Search TV Guide UK"
 msgstr "TV-opas"
 
 #: ../plugin/controllers/i18n.py:446
 msgid "Search by name, sd / hd / uhd, or provider"
-msgstr ""
+msgstr "Hae nimellä, sd / hd / uhd, tai palveluntarjoaja"
 
 #: ../plugin/controllers/i18n.py:316
-#, fuzzy
 msgid "Search strictness"
 msgstr "Hae KinoPoisk:sta"
 
 #: ../plugin/controllers/i18n.py:302
-#, fuzzy
 msgid "Search type"
-msgstr "Haku"
+msgstr "Haun tarkuus"
 
 #: ../plugin/controllers/i18n.py:535
 msgid "Select IPK file for upload"
-msgstr ""
+msgstr "Valitse ladattava IPK-tiedosto"
 
 #: ../plugin/controllers/i18n.py:554
 msgid "Select..."
-msgstr ""
+msgstr "Valitse..."
 
 #: ../plugin/controllers/i18n.py:223
 msgid "Send Message"
@@ -1869,7 +1835,7 @@ msgstr "OpenWebif työpöytäversio"
 
 #: ../plugin/controllers/i18n.py:542
 msgid "Show IPTV channels in selection (eg. Autotimer)"
-msgstr ""
+msgstr "Näytä IPTV-kanavat valinnassa (pl. automaattiajastus)"
 
 #: ../plugin/controllers/i18n.py:189 ../plugin/plugin.py:154
 msgid "Show box name in header"
@@ -1877,7 +1843,7 @@ msgstr "Näytä vastaanottimen nimi otsikossa"
 
 #: ../plugin/controllers/i18n.py:540
 msgid "Show details"
-msgstr ""
+msgstr "Näytä tiedot"
 
 #: ../plugin/controllers/i18n.py:231
 msgid "Show full remote"
@@ -1889,20 +1855,19 @@ msgstr "Näytä laajennusvalikossa"
 
 #: ../plugin/controllers/i18n.py:545
 msgid "Show picon background"
-msgstr ""
+msgstr "Näytä kanavalogon tausta"
 
 #: ../plugin/controllers/i18n.py:544
 msgid "Show picons"
-msgstr ""
+msgstr "Näytä kanavalogot"
 
 #: ../plugin/controllers/i18n.py:480
 msgid "Show picons in channel list"
 msgstr "Näytä kuvake kanavalistassa"
 
 #: ../plugin/controllers/i18n.py:541
-#, fuzzy
 msgid "Show service type in channel list"
-msgstr "Näytä kuvake kanavalistassa"
+msgstr "Näytä palvelu tyyppi kanavalistassa"
 
 #: ../plugin/controllers/i18n.py:233
 msgid "Shutdown"
@@ -1922,7 +1887,7 @@ msgstr "Sivut ja lähteet"
 
 #: ../plugin/controllers/i18n.py:567
 msgid "Skins"
-msgstr ""
+msgstr "Teemat"
 
 #: ../plugin/controllers/models/timers.py:827
 #: ../plugin/controllers/models/timers.py:860
@@ -1970,7 +1935,7 @@ msgstr "Valitettavasti tämä sivu ei ole vielä saatavilla"
 
 #: ../plugin/controllers/i18n.py:548
 msgid "Sort"
-msgstr ""
+msgstr "Lajittele"
 
 #: ../plugin/controllers/i18n.py:486
 msgid "Spinner"
@@ -2002,25 +1967,23 @@ msgstr "Aloitusaika on loppuajan jälkeen"
 
 #: ../plugin/controllers/i18n.py:534
 msgid "Start typing..."
-msgstr ""
+msgstr "Aloita kirjoittaminen..."
 
 #: ../plugin/controllers/i18n.py:390
 msgid "State"
-msgstr ""
+msgstr "Tila"
 
 #: ../plugin/controllers/i18n.py:242
 msgid "Stream"
 msgstr "Suoratoisto"
 
 #: ../plugin/controllers/i18n.py:565
-#, fuzzy
 msgid "Stream Clients"
-msgstr "Suoratoisto"
+msgstr "Suoratoisto asiakkaat"
 
 #: ../plugin/plugin.py:173
-#, fuzzy
 msgid "Streaming port"
-msgstr "Suoratoisto"
+msgstr "Suoratoisto portti"
 
 #: ../plugin/controllers/i18n.py:44
 msgid "Su"
@@ -2028,7 +1991,7 @@ msgstr "Su"
 
 #: ../plugin/controllers/i18n.py:553
 msgid "Subdirectories"
-msgstr ""
+msgstr "Alihakemistot"
 
 #: ../plugin/controllers/i18n.py:243
 msgid "Subnet mask"
@@ -2087,7 +2050,7 @@ msgstr "Teema"
 
 #: ../plugin/controllers/base.py:408
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: ../plugin/controllers/models/services.py:379
 msgid "Terrestrial"
@@ -2131,9 +2094,8 @@ msgid "Theme"
 msgstr "Teema"
 
 #: ../plugin/controllers/i18n.py:274 ../plugin/plugin.py:152
-#, fuzzy
 msgid "Theme mode"
-msgstr "Teema"
+msgstr "Ulkoasua"
 
 #: ../plugin/controllers/BouquetEditor.py:318
 msgid "This service can not be added."
@@ -2223,12 +2185,12 @@ msgstr "Ohjelmannimi"
 
 #: ../plugin/controllers/i18n.py:328
 msgid "To date"
-msgstr "Ei ennen"
+msgstr "Loppuen"
 
 #: ../plugin/controllers/models/movies.py:57
 #: ../plugin/controllers/models/timers.py:48
 msgid "Today"
-msgstr ""
+msgstr "Tänään"
 
 #: ../plugin/controllers/i18n.py:262
 msgid "Transcode"
@@ -2311,36 +2273,35 @@ msgstr "Tulevat ohjelmat"
 
 #: ../plugin/controllers/i18n.py:525
 msgid "Update"
-msgstr ""
+msgstr "Päivitä"
 
 #: ../plugin/controllers/i18n.py:523
 msgid "Update Package"
-msgstr ""
+msgstr "Päivitä paketti"
 
 #: ../plugin/controllers/i18n.py:528
 msgid "Update from feed"
-msgstr ""
+msgstr "Päivitä syötteestä"
 
 #: ../plugin/controllers/i18n.py:529
 msgid "Upgrade all packages"
-msgstr ""
+msgstr "Päivitä kaikki paketit"
 
 #: ../plugin/controllers/i18n.py:538
 msgid "Upload File Error"
-msgstr ""
+msgstr "Tiedoston lataus virhe"
 
 #: ../plugin/controllers/i18n.py:537
 msgid "Upload package"
-msgstr ""
+msgstr "Lataa paketti"
 
 #: ../plugin/controllers/i18n.py:536
-#, fuzzy
 msgid "Uploaded Files"
-msgstr "Virhe tiedoston latauksessa"
+msgstr "Ladatut tiedostot"
 
 #: ../plugin/controllers/i18n.py:543
 msgid "Use Channelname for screenshots"
-msgstr ""
+msgstr "Lisää kanavannimi kuvankaappauksiin"
 
 #: ../plugin/controllers/i18n.py:354
 msgid "Use a custom location"
@@ -2348,16 +2309,15 @@ msgstr "Käytä omaa tiedostosijaintia"
 
 #: ../plugin/controllers/i18n.py:560
 msgid "Use as PiP if possible"
-msgstr ""
+msgstr "Käytä PiP-kuvaa jos mahdollista"
 
 #: ../plugin/controllers/i18n.py:568
 msgid "Use classic interface"
-msgstr ""
+msgstr "Käytä perinteistä ulkoasua"
 
 #: ../plugin/plugin.py:153
-#, fuzzy
 msgid "Use custom Color"
-msgstr "Käytä omaa tiedostosijaintia"
+msgstr "Käytä omaa väriä"
 
 #: ../plugin/controllers/i18n.py:190 ../plugin/plugin.py:156
 msgid "Use custom box name"
@@ -2365,11 +2325,11 @@ msgstr "Käytä omaa vastaanotinnimeä"
 
 #: ../plugin/controllers/i18n.py:509
 msgid "Use modern design"
-msgstr ""
+msgstr "Käytä uudistettua ulkoasua"
 
 #: ../plugin/controllers/i18n.py:569 ../plugin/plugin.py:150
 msgid "Use modern interface"
-msgstr ""
+msgstr "Käytä modermia ulkoasua"
 
 #: ../plugin/controllers/i18n.py:281
 msgid "VPS"
@@ -2424,7 +2384,6 @@ msgid "Waiting for answer ..."
 msgstr "Odotetaan vastausta ..."
 
 #: ../plugin/controllers/i18n.py:239
-#, fuzzy
 msgid "Wake Up"
 msgstr "Herätä"
 
@@ -2471,7 +2430,7 @@ msgstr "Avustaja"
 
 #: ../plugin/controllers/i18n.py:511
 msgid "Would you like to save your changes?"
-msgstr ""
+msgstr "Haluatko tallentaa asetukset?"
 
 #: ../plugin/controllers/web.py:242
 #, python-format
@@ -2480,7 +2439,7 @@ msgstr "Väärä asetusmuoto 'set=%s'. Käytä set=set15 "
 
 #: ../plugin/controllers/i18n.py:557
 msgid "YYYY-MM-DD"
-msgstr ""
+msgstr "VVVV-KK-PP"
 
 #: ../plugin/controllers/i18n.py:514 ../plugin/controllers/i18n.py:530
 msgid "Yes"
@@ -2493,7 +2452,7 @@ msgstr "Kyllä/Ei"
 #: ../plugin/controllers/models/movies.py:59
 #: ../plugin/controllers/models/timers.py:51
 msgid "Yesterday"
-msgstr ""
+msgstr "Eilen"
 
 #: ../plugin/controllers/i18n.py:287
 msgid "Zap"
@@ -2516,9 +2475,8 @@ msgid "Zapped to"
 msgstr "Vaihdettu kanavalle"
 
 #: ../plugin/controllers/i18n.py:392
-#, fuzzy
 msgid "any time"
-msgstr "Lisää ajastus"
+msgstr "kaikki ajat"
 
 #: ../plugin/controllers/i18n.py:335
 msgid "auto"
@@ -2526,26 +2484,23 @@ msgstr "Automaattinen"
 
 #: ../plugin/plugin.py:132
 msgid "box_ip"
-msgstr ""
+msgstr "vastaanottimen ip-osoite"
 
 #: ../plugin/controllers/i18n.py:318
-#, fuzzy
 msgid "case-insensitive"
-msgstr "Haun tarkkuus"
+msgstr "haun tarkkuus"
 
 #: ../plugin/controllers/i18n.py:317
-#, fuzzy
 msgid "case-sensitive"
-msgstr "Haun tarkkuus"
+msgstr "haun tarkkuus"
 
 #: ../plugin/controllers/i18n.py:369
 msgid "description contains"
 msgstr "kuvauksessa"
 
 #: ../plugin/controllers/i18n.py:305
-#, fuzzy
 msgid "description match"
-msgstr "Kuvaus"
+msgstr "kuvaus"
 
 #: ../plugin/controllers/i18n.py:116
 msgid "disabled"
@@ -2561,11 +2516,11 @@ msgstr "Virhe sivun latauksessa!"
 
 #: ../plugin/controllers/i18n.py:304
 msgid "exact title match"
-msgstr ""
+msgstr "täsmällinen kuvaushaku"
 
 #: ../plugin/controllers/i18n.py:314
 msgid "favourite desc match"
-msgstr ""
+msgstr "suosikki kuvaushaku"
 
 #: ../plugin/controllers/i18n.py:140
 msgid "finished"
@@ -2581,7 +2536,7 @@ msgstr "Mene valmiustilaan"
 
 #: ../plugin/controllers/i18n.py:33
 msgid "hour"
-msgstr ""
+msgstr "tunnit"
 
 #: ../plugin/controllers/models/info.py:302
 #: ../plugin/controllers/models/info.py:305
@@ -2602,12 +2557,11 @@ msgstr "manuaalinen/pois"
 
 #: ../plugin/controllers/i18n.py:171
 msgid "mins"
-msgstr ""
+msgstr "minuutit"
 
 #: ../plugin/controllers/i18n.py:33
-#, fuzzy
 msgid "minute"
-msgstr "Minuutti"
+msgstr "minuutti"
 
 #: ../plugin/controllers/i18n.py:180
 msgid "no description available"
@@ -2619,7 +2573,7 @@ msgstr "Ei/vain IPv4-verkko"
 
 #: ../plugin/controllers/i18n.py:371
 msgid "on day"
-msgstr ""
+msgstr "päivänä"
 
 #: ../plugin/controllers/i18n.py:370
 msgid "on weekday"
@@ -2631,7 +2585,7 @@ msgstr "yksi, kaksi, kolme, tuntematon komento"
 
 #: ../plugin/controllers/i18n.py:303
 msgid "partial title match"
-msgstr ""
+msgstr "osittainen vastaavuus"
 
 #: ../plugin/controllers/models/info.py:463
 msgid "r/o"
@@ -2647,11 +2601,11 @@ msgstr "Tallennus"
 
 #: ../plugin/controllers/i18n.py:315
 msgid "regex match (experimental)"
-msgstr ""
+msgstr "yleisilmaisuhaku (kokeellinen)"
 
 #: ../plugin/controllers/models/movies.py:483
 msgid "remove"
-msgstr ""
+msgstr "poista"
 
 #: ../plugin/controllers/i18n.py:211
 msgid "running"
@@ -2678,9 +2632,8 @@ msgid "short description contains"
 msgstr "lyhyessä kuvauksessa"
 
 #: ../plugin/controllers/i18n.py:310 ../plugin/controllers/i18n.py:311
-#, fuzzy
 msgid "short description match"
-msgstr "Lyhytkuvaushaku"
+msgstr "Lyhyt kuvaushaku"
 
 #: ../plugin/controllers/i18n.py:334
 msgid "standard"
@@ -2694,7 +2647,7 @@ msgstr "staattinen"
 
 #: ../plugin/controllers/i18n.py:250
 msgid "this service is protected by a parental control pin"
-msgstr ""
+msgstr "Tämä kanava on suojattu lapsilukolla (PIN)"
 
 #: ../plugin/controllers/i18n.py:367
 msgid "title contains"
@@ -2702,21 +2655,19 @@ msgstr "nimessä"
 
 #: ../plugin/controllers/i18n.py:313
 msgid "title ends with"
-msgstr ""
+msgstr "Ohjelmannimi loppuu..."
 
 #: ../plugin/controllers/i18n.py:306 ../plugin/controllers/i18n.py:307
-#, fuzzy
 msgid "title or description match"
-msgstr "Nimi tai kuvaushaku"
+msgstr "nimi tai kuvaushaku"
 
 #: ../plugin/controllers/i18n.py:308 ../plugin/controllers/i18n.py:309
-#, fuzzy
 msgid "title or short description match"
-msgstr "Nimi tai lyhytkuvaushaku"
+msgstr "nimi tai lyhytkuvaushaku"
 
 #: ../plugin/controllers/i18n.py:312
 msgid "title starts with"
-msgstr ""
+msgstr "Ohjelmannimi alkaa..."
 
 #: ../plugin/controllers/i18n.py:261
 msgid "transcoded"
