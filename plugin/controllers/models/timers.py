@@ -124,11 +124,11 @@ def getTimers(session):
 
 		toggledisabled = 1
 		if timer.disabled:
-				toggledisabled = 0
+			toggledisabled = 0
 
 		toggledisabledimg = "off"
 		if timer.disabled:
-				toggledisabledimg = "on"
+			toggledisabledimg = "on"
 
 		asrefs = ""
 		achannels = GetWithAlternative(str(timer.service_ref), False)

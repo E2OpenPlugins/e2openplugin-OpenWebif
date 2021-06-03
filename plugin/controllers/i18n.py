@@ -567,5 +567,11 @@ tstrings = {
 	'skins': _("Skins"),
 	'use_classic_design': _("Use classic interface"),
 	'use_modern_design': _("Use modern interface"),
-	'showallpackages': _("Show all packages")
+	'showallpackages': _("Show all packages"),
+
+	'recordingtype': _("Recording Type"),
+	'normal': _("normal"),
+	'descrambledecm': _("descramble and record ecm"),
+	'scrambledecm': _("don't descramble, record ecm")
+
 }
