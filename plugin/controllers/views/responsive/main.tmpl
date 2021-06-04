@@ -1,5 +1,5 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground, ZapStream, showIPTVChannelsInSelection
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground, ZapStream, showIPTVChannelsInSelection, useSreenshotChannelName
 #from json import dumps
 
 #set $skinPrefOptions = [
@@ -23,7 +23,8 @@
 	{'value': 'amber', 'label': 'Amber'}, 
 	{'value': 'orange', 'label': 'Orange'}, 
 	{'value': 'deep-orange', 'label': 'Deep Orange'}, 
-	{'value': 'brown', 'label': 'Brown'}
+	{'value': 'brown', 'label': 'Brown'}, 
+	{'value': 'white', 'label': 'White'}
 ]
 
 <!doctype html>
@@ -377,7 +378,7 @@
 						<a href="#skins" data-toggle="tab">$tstrings['skins']</a>
 					</li>
 				</ul>
-				<div class="tab-content">
+				<div class="tab-content" style="overflow-y: auto;position: relative;height: 90vh;">
 					<div role="tabpanel" class="tab-pane fade in active in active" id="settings">
 						<div class="demo-settings">
 							<p>$tstrings['epgsearch']</p>
@@ -387,7 +388,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="myepgbtn0" id="myepgbtn0" $EPGSearchFull>
-											<span class="lever switch--skinned vtiwebconfig"></span>
+											<span class="lever switch--skinned"></span>
 										</label>
 									</div>
 								</li>
@@ -396,7 +397,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="myepgbtn1" id="myepgbtn1" $EPGSearchBQonly>
-											<span class="lever switch--skinned vtiwebconfig"></span>
+											<span class="lever switch--skinned"></span>
 										</label>
 									</div>
 								</li>
@@ -408,7 +409,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="mymoviesearchbtn0" id="mymoviesearchbtn0" $MovieSearchShort>
-											<span class="lever switch--skinned vtiwebconfig"></span>
+											<span class="lever switch--skinned"></span>
 										</label>
 									</div>
 								</li>
@@ -417,7 +418,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="mymoviesearchbtn1" id="mymoviesearchbtn1" $MovieSearchExtended>
-											<span class="lever switch--skinned vtiwebconfig"></span>
+											<span class="lever switch--skinned"></span>
 										</label>
 									</div>
 								</li>
@@ -430,7 +431,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="remotecontrolview" id="remotecontrolview" $RemoteControlView>
-											<span class="lever switch--skinned vtiwebconfig"></span>
+											<span class="lever switch--skinned"></span>
 										</label>
 									</div>
 								</li>
@@ -439,7 +440,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="minmovielist" id="minmovielist" $MinMovieList>
-											<span class="lever switch--skinned vtiwebconfig"></span>
+											<span class="lever switch--skinned"></span>
 										</label>
 									</div>
 								</li>
@@ -448,7 +449,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="mintimerlist" id="mintimerlist" $MinTimerList>
-											<span class="lever switch--skinned vtiwebconfig"></span>
+											<span class="lever switch--skinned"></span>
 										</label>
 									</div>
 								</li>
@@ -457,7 +458,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="minepglist" id="minepglist" $MinEPGList>
-											<span class="lever switch--skinned vtiwebconfig"></span>
+											<span class="lever switch--skinned"></span>
 										</label>
 									</div>
 								</li>
@@ -466,7 +467,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="plformat" id="plformat">
-											<span class="lever switch--skinned vtiwebconfig"></span>
+											<span class="lever switch--skinned"></span>
 										</label>
 									</div>
 								</li>
@@ -475,7 +476,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="zapstream" id="zapstream" $ZapStream>
-											<span class="lever switch--skinned vtiwebconfig"></span>
+											<span class="lever switch--skinned"></span>
 										</label>
 									</div>
 								</li>
@@ -484,7 +485,16 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="showiptvchannelsinselection" id="showiptvchannelsinselection" $showIPTVChannelsInSelection>
-											<span class="lever switch--skinned vtiwebconfig"></span>
+											<span class="lever switch--skinned"></span>
+										</label>
+									</div>
+								</li>
+								<li>
+									<span>$tstrings['use_channel_name_for_screenshots']</span>
+									<div class="switch">
+										<label>
+											<input type="checkbox" name="screenshotchannelname" id="screenshotchannelname" $useSreenshotChannelName>
+											<span class="lever switch--skinned"></span>
 										</label>
 									</div>
 								</li>
@@ -493,7 +503,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="noresposive" id="noresposive">
-											<span class="lever switch--skinned vtiwebconfig"></span>
+											<span class="lever switch--skinned"></span>
 										</label>
 									</div>
 								</li>
@@ -506,7 +516,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="showpicons" id="showpicons" $showPicons>
-											<span class="lever switch--skinned vtiwebconfig"></span>
+											<span class="lever switch--skinned"></span>
 										</label>
 									</div>
 								</li>
@@ -515,7 +525,7 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="showpiconbackground" id="showpiconbackground" $showPiconBackground>
-											<span class="lever switch--skinned vtiwebconfig"></span>
+											<span class="lever switch--skinned"></span>
 										</label>
 									</div>
 								</li>
@@ -529,7 +539,7 @@
 								<div class="switch">
 									<label>
 										<input type="checkbox" name="themeMode" id="thememodebtn" value="city-lights" checked="$(themeMode != 'supabright')">
-										<span class="lever switch--skinned vtiwebconfig"></span>
+										<span class="lever switch--skinned"></span>
 									</label>
 								</div>
 							</li>
@@ -615,7 +625,7 @@
 <div id="StreamModal" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-header vti-colored-card bg--skinned">
+			<div class="modal-header bg--skinned">
 				<button type="button" class="close" data-dismiss="modal">
 					<i class="material-icons material-icons-centered">close</i>
 				</button>
@@ -635,7 +645,7 @@
 <div id="RecModal" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-header vti-colored-card bg--skinned">
+			<div class="modal-header bg--skinned">
 				<button type="button" class="close" data-dismiss="modal">
 					<i class="material-icons material-icons-centered">close</i>
 				</button>
@@ -854,10 +864,8 @@
 </script>
 <script src="/modern/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="/modern/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
-<script src="/modern/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 <script src="/modern/plugins/autosize/autosize.min.js"></script>
 <script src="/modern/plugins/node-waves/waves.min.js"></script>
-<script src="/modern/plugins/jquery-countto/jquery.countTo.js"></script>
 <script src="/modern/plugins/nouislider/nouislider.min.js"></script>
 <script src="/modern/plugins/sweetalert/sweetalert.min.js"></script>
 <script src="/modern/plugins/momentjs/moment.min.js"></script>
@@ -869,21 +877,9 @@
 <script>initJsTranslationAddon($dumps($tstrings))</script>
 
 <script>
-	var re = /#(.*)\??(.*)/gi;
-	var str = 'x';
-	var newstr = str.replace(re, '\/ajax/$1?');
-
-	function locationHashChanged(e) { 
-		var re = new RegExp(/#(.*)\??(.*)/gi);
-		var hash = e.target.location.hash.replace(re, '\/ajax/$1');
-		hash && load_maincontent_spin(hash);
-	} 
-
-	window.onhashchange = locationHashChanged;
-
-	\$(document).ready(function() {
-		\$('#noresposive').change(function () {
-			\$.ajax({
+	jQuery(document).ready(function() {
+		jQuery('#noresposive').change(function () {
+			jQuery.ajax({
 				url: "api/setwebconfig?responsivedesign=false",
 				success: function() {
 					window.location.hash = '';
@@ -892,9 +888,9 @@
 			});
 		});
 		var pl = GetLSValue('pl','m3u');
-		\$('#plformat').prop('checked',( pl != 'm3u'));
-		\$("#plformat").change(function() {
-			var val = \$(this).is(":checked") ? 'xspf' : 'm3u'
+		jQuery('#plformat').prop('checked',( pl != 'm3u'));
+		jQuery("#plformat").change(function() {
+			var val = jQuery(this).is(":checked") ? 'xspf' : 'm3u'
 			SetLSValue('pl',val);
 		});
 	});

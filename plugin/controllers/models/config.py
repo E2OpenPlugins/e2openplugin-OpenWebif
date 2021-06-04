@@ -33,6 +33,7 @@ from Plugins.Extensions.OpenWebif.controllers.utilities import get_config_attrib
 from datetime import datetime
 import time
 
+
 def addCollapsedMenu(name):
 	tags = config.OpenWebif.webcache.collapsedmenus.value.split("|")
 	if name not in tags:
@@ -44,6 +45,7 @@ def addCollapsedMenu(name):
 	return {
 		"result": True
 	}
+
 
 def removeCollapsedMenu(name):
 	tags = config.OpenWebif.webcache.collapsedmenus.value.split("|")
@@ -57,11 +59,13 @@ def removeCollapsedMenu(name):
 		"result": True
 	}
 
+
 def getCollapsedMenus():
 	return {
 		"result": True,
 		"collapsed": config.OpenWebif.webcache.collapsedmenus.value.split("|")
 	}
+
 
 def getShowName():
 	return {
@@ -69,11 +73,13 @@ def getShowName():
 		"showname": config.OpenWebif.identifier.value
 	}
 
+
 def getCustomName():
 	return {
 		"result": True,
 		"customname": config.OpenWebif.identifier_custom.value
 	}
+
 
 def getBoxName():
 	return {
@@ -81,13 +87,14 @@ def getBoxName():
 		"boxname": config.OpenWebif.identifier_text.value
 	}
 
+
 def getJsonFromConfig(cnf):
 	if cnf.__class__.__name__ == "ConfigSelection" or cnf.__class__.__name__ == "ConfigSelectionNumber" or cnf.__class__.__name__ == "TconfigSelection":
-		if type(cnf.choices.choices) == dict:
+		if isinstance(cnf.choices.choices, dict):
 			choices = []
 			for choice in cnf.choices.choices:
 				choices.append((choice, _(cnf.choices.choices[choice])))
-		elif type(cnf.choices.choices[0]) == tuple:
+		elif isinstance(cnf.choices.choices[0], tuple):
 			choices = []
 			for choice_tuple in cnf.choices.choices:
 				choices.append((choice_tuple[0], _(choice_tuple[1])))
@@ -153,6 +160,7 @@ def getJsonFromConfig(cnf):
 		"type": "unknown"
 	}
 
+
 def saveConfig(path, value):
 	try:
 		cnf = get_config_attribute(path, root_obj=config)
@@ -206,6 +214,7 @@ def saveConfig(path, value):
 		"result": True
 	}
 
+
 def getConfigs(key):
 	configs = []
 	title = None
@@ -237,6 +246,7 @@ def getConfigs(key):
 		"title": title
 	}
 
+
 def getConfigsSections():
 	if not len(configfiles.sections):
 		configfiles.parseConfigFiles()
@@ -244,6 +254,7 @@ def getConfigsSections():
 		"result": True,
 		"sections": configfiles.sections
 	}
+
 
 def privSettingValues(prefix, top, result):
 	for (key, val) in list(top.items()):
@@ -255,6 +266,7 @@ def privSettingValues(prefix, top, result):
 		else:
 			result.append((name, val))
 
+
 def getSettings():
 	configkeyval = []
 	privSettingValues("config", config.saved_value, configkeyval)
@@ -262,6 +274,7 @@ def getSettings():
 		"result": True,
 		"settings": configkeyval
 	}
+
 
 def getUtcOffset():
 	now = time.time()
@@ -273,6 +286,7 @@ def getUtcOffset():
 		# round minutes to next quarter hour
 		"utcoffset": "{:+05}".format(int(hours * 100 + (round(minutes / 900) * 900 / 60)))
 	}
+
 
 class ConfigFiles:
 	def __init__(self):

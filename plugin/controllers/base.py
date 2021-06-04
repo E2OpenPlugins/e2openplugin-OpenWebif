@@ -37,11 +37,11 @@ from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS
 from Cheetah.Template import Template
 from enigma import eEPGCache
 from Components.config import config
-from Components.Network import iNetwork
 
 from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
 from Plugins.Extensions.OpenWebif.controllers.models.config import getCollapsedMenus, getConfigsSections, getShowName, getCustomName, getBoxName
-from Plugins.Extensions.OpenWebif.controllers.defaults import getPublicPath, getViewsPath, EXT_EVENT_INFO_SOURCE, STB_LANG
+from Plugins.Extensions.OpenWebif.controllers.defaults import getPublicPath, getViewsPath, EXT_EVENT_INFO_SOURCE, STB_LANG, getIP
+
 
 def new_getRequestHostname(self):
 	host = self.getHeader(b'host')
@@ -62,13 +62,13 @@ REMOTE = ''
 
 try:
 	from boxbranding import getBoxType, getMachineName
-except:  # noqa: E722
+except:  # nosec # noqa: E722
 	from Plugins.Extensions.OpenWebif.controllers.models.owibranding import getBoxType, getMachineName  # noqa: F401
 
 try:
 	from Components.RcModel import rc_model
 	REMOTE = rc_model.getRcFolder() + "/remote"
-except:  # noqa: E722
+except:  # nosec # noqa: E722
 	from Plugins.Extensions.OpenWebif.controllers.models.owibranding import rc_model
 	REMOTE = rc_model().getRcFolder()
 
@@ -223,7 +223,7 @@ class BaseController(resource.Resource):
 					request.setResponseCode(http.INTERNAL_SERVER_ERROR)
 					return six.ensure_binary(json.dumps({"result": False, "request": request.path, "exception": repr(exc)}))
 					pass
-			elif type(data) is str:
+			elif isinstance(data, str):
 				# if not self.suppresslog:
 					# print "[OpenWebif] page '%s' ok (simple string)" % request.uri
 				request.setHeader("content-type", "text/plain")
@@ -319,22 +319,19 @@ class BaseController(resource.Resource):
 		else:
 			ret['epgsearchcaps'] = False
 		extras = [{'key': 'ajax/settings', 'description': _("Settings")}]
-		ifaces = iNetwork.getConfiguredAdapters()
-		if len(ifaces):
-			ip_list = iNetwork.getAdapterAttribute(ifaces[0], "ip")  # use only the first configured interface
-			if ip_list:
-				ip = "%d.%d.%d.%d" % (ip_list[0], ip_list[1], ip_list[2], ip_list[3])
 
-				if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/LCD4linux/WebSite.pyo")) or fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/LCD4linux/WebSite.py")):
-					lcd4linux_key = "lcd4linux/config"
-					if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/WebInterface/plugin.pyo")) or fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/WebInterface/plugin.py")):
-						try:
-							lcd4linux_port = "http://" + ip + ":" + str(config.plugins.Webinterface.http.port.value) + "/"
-							lcd4linux_key = lcd4linux_port + 'lcd4linux/config'
-						except:  # noqa: E722
-							lcd4linux_key = None
-					if lcd4linux_key:
-						extras.append({'key': lcd4linux_key, 'description': _("LCD4Linux Setup"), 'nw': '1'})
+		ip = getIP()
+		if ip != None:
+			if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/LCD4linux/WebSite.pyo")) or fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/LCD4linux/WebSite.py")):
+				lcd4linux_key = "lcd4linux/config"
+				if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/WebInterface/plugin.pyo")) or fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/WebInterface/plugin.py")):
+					try:
+						lcd4linux_port = "http://" + ip + ":" + str(config.plugins.Webinterface.http.port.value) + "/"
+						lcd4linux_key = lcd4linux_port + 'lcd4linux/config'
+					except:  # nosec # noqa: E722
+						lcd4linux_key = None
+				if lcd4linux_key:
+					extras.append({'key': lcd4linux_key, 'description': _("LCD4Linux Setup"), 'nw': '1'})
 
 		oscamwebif, port, oscamconf, variant = self.oscamconfPath()
 
@@ -362,7 +359,7 @@ class BaseController(resource.Resource):
 
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer  # noqa: F401
-			extras.append({'key': 'ajax/at', 'description': _('AutoTimer')})
+			extras.append({'key': 'ajax/at', 'description': _('AutoTimers')})
 		except ImportError:
 			pass
 
@@ -382,14 +379,14 @@ class BaseController(resource.Resource):
 			# 'nw'='1' -> target _blank
 			# 'nw'='2' -> target popup
 			# 'nw'=None -> target _self
-		
+
 			# syntax
 			# addExternalChild( (Link, Resource, Name, Version, HasGUI, WebTarget) )
 			# example addExternalChild( ("webadmin", root, "WebAdmin", 1, True, "_self") )
 
 			from Plugins.Extensions.WebInterface.WebChilds.Toplevel import loaded_plugins
 			for plugins in loaded_plugins:
-				if plugins[0] in ["fancontrol", "iptvplayer", "serienrecorderui"]:
+				if plugins[0] in ["fancontrol", "iptvplayer"]:
 					try:
 						extras.append({'key': plugins[0], 'description': plugins[2], 'nw': '2'})
 					except KeyError:

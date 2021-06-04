@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.21
+//* Version 1.2.22
 //******************************************************************************
 //* Copyright (C) 2011-2021 E2OpenPlugins
 //*
@@ -34,6 +34,7 @@
 //* V 1.2.19 - fixed missing <channelname> when requesting a transcoding stream m3u8
 //* V 1.2.20 - timer pipzap option
 //* V 1.2.21 - improve getallservices
+//* V 1.2.22 - add recoding type to timer edit
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -1182,6 +1183,7 @@ function editTimer(serviceref, begin, end) {
 							$('#enabled').prop("checked", timer.disabled == 0);
 							$('#justplay').prop("checked", timer.justplay);
 							$('#afterevent').val(timer.afterevent);
+							$('#recordingtype').val(timer.recordingtype);
 							$('#errorbox').hide();
 							var flags=timer.repeated;
 							for (var i=0; i<7; i++) {
@@ -1350,6 +1352,7 @@ function addTimer(evt,chsref,chname,top,isradio) {
 	$('#allow_duplicate').prop("checked", true);
 	$('#autoadjust').prop("checked", false);
 	$('#afterevent').val(3);
+	$('#recordingtype').val("");
 	$('#errorbox').hide();
 
 	for (var i=0; i<7; i++) {
@@ -1728,7 +1731,7 @@ function ChangeTheme(theme)
 function directlink()
 {
 	// #myepg?epgmode=tv
-	var hashParts = window.location.hash.match(/^#((.*?[^\?]*)(\?.*)*)/) || [null, '', '']
+	var hashParts = window.location.hash.match(/^#((.*?[^\?]*)(\?.*)*)/) || [null, '', ''];
 	var page = hashParts[2]; // myepg
 	var hash = hashParts[1]; // myepg?epgmode=tv
 	var lnk = 'ajax/tv';
@@ -2111,7 +2114,7 @@ function testPipStatus() {
                                 buttonsSwitcher(pipinfo.pip);
 			}
 		}
-	})
+	});
 }
 
 var SSHelperObj = function () {

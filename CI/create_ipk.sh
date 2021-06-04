@@ -1,6 +1,7 @@
 #!/bin/bash
 
-D=$(pushd $(dirname $0) &> /dev/null; pwd; popd &> /dev/null)
+# D=$(pushd $(dirname $0) &> /dev/null; pwd; popd &> /dev/null)
+D=$(pwd) &> /dev/null
 P=${D}/ipkg.tmp.$$
 B=${D}/ipkg.build.$$
 
@@ -16,6 +17,10 @@ fi
 
 if [ "$1" == "vti" ]; then
 	PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_vti.ipk
+fi
+
+if [ "$1" == "deb" ]; then
+	PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_all.deb
 fi
 
 popd &> /dev/null
@@ -75,6 +80,37 @@ if [ "$1" == "vti" ]; then
 
 fi
 
+if [ "$1" == "deb" ]; then
+
+	# Nur die DMM und OW-Remotes ins IPK kopieren.
+	pushd ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/images/remotes
+	mkdir x
+	mv ow_remote.png dm* x/
+	rm -f *.*
+	mv x/* .
+	rm -fr x
+
+	# Nur die DMM box images ins IPK kopieren.
+	cd ../boxes
+	mkdir x
+	mv dm* x/
+	rm -f *.*
+	mv x/* .
+	rm -fr x
+
+	# Nur die Templates für DMM  Remotes ins IPK kopieren
+	cd ../../static/remotes
+	mkdir x
+	mv dmm* x/
+	rm -f *.*
+	mv x/* .
+	rm -fr x
+
+	popd
+
+fi
+
+
 cheetah-compile -R ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
 python -O -m compileall ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
 
@@ -82,16 +118,37 @@ if [ "$1" == "novxg" ]; then
 	rm -rf ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/vxg/
 fi
 
-tar -C ${P} -czf ${B}/data.tar.gz . --exclude=CONTROL
-tar -C ${P}/CONTROL -czf ${B}/control.tar.gz .
+if [ "$1" != "deb" ]; then
+	tar -C ${P}/CONTROL -czf ${B}/control.tar.gz .
+	rm -rf ${P}/CONTROL
+	tar -C ${P} -czf ${B}/data.tar.gz .
 
-echo "2.0" > ${B}/debian-binary
+	echo "2.0" > ${B}/debian-binary
 
-cd ${B}
-ls -la
-ar -r ${PKG} ./debian-binary ./data.tar.gz ./control.tar.gz 
+	cd ${B}
+	ls -la
+	ar -r ${PKG} ./debian-binary ./data.tar.gz ./control.tar.gz 
 
-cd -
+fi
+
+if [ "$1" == "deb" ]; then
+	rm -rf ${PKG}
+	rm -rf ${B}
+	mkdir -p ${B}/OpenWebif/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
+	cp -rp ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/* ${B}/OpenWebif/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
+	pushd ${B}/OpenWebif/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
+	find . -name '*.bak' -exec rm -r {} \;
+	find . -name '*.pyc' -exec rm -r {} \;
+	find . -name '*.py' -exec rm -r {} \;
+	popd
+	mkdir -p ${B}/OpenWebif/DEBIAN
+	cp ${P}/CONTROL/control ${B}/OpenWebif/DEBIAN/control
+	cd ${B}
+	ls -la
+	dpkg-deb --build OpenWebif
+	ls -la
+	mv OpenWebif.deb ${PKG}
+fi
 
 rm -rf ${P}
 rm -rf ${B}

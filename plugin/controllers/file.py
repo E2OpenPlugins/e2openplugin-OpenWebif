@@ -98,7 +98,7 @@ class FileController(resource.Resource):
 					path = ''
 				try:
 					files = glob.glob(path + '/' + pattern)
-				except:  # noqa: E722
+				except:  # nosec # noqa: E722
 					files = []
 				files.sort()
 				tmpfiles = files[:]

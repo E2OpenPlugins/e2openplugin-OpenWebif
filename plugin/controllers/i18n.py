@@ -8,6 +8,7 @@ from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 LOCALES_DOMAIN = "OpenWebif"
 LOCALES_RELPATH = "Extensions/OpenWebif/locale"
 
+
 def _locale_init():
 	gettext.bindtextdomain(
 		LOCALES_DOMAIN,
@@ -30,7 +31,7 @@ language.addCallback(_locale_init)
 
 try:
 	AT_unit = comp_config.plugins.autotimer.unit.value == "hour" and _("hour") or _("minute")
-except:  # noqa: E722
+except:  # nosec # noqa: E722
 	AT_unit = "hour"
 
 tstrings = {
@@ -124,6 +125,8 @@ tstrings = {
 	'enable_timer': _("Enable Timer"),
 	'start': _("Start"),
 	'end': _("End"),
+	'enable': _("Enable"),
+	'enable_disable': _("%s / %s") % (_("Enable"), _("Disable")),
 	'enabled': _("Enabled"),
 	'encrypted': _("Encrypted"),
 	'epg': _("EPG"),
@@ -320,9 +323,9 @@ tstrings = {
 	'at_timespan': _("Only match during timespan"),
 	'at_timespan_begin': _("Beginning of timespan"),
 	'at_timespan_end': _("End of timespan"),
-	'at_datespan': _("Restrict to events on certain dates"),
-	'at_datespan_after': _("Not after"),
-	'at_datespan_before': _("Not before"),
+	'at_datespan': _("Only match between dates"),
+	'at_datespan_from': _("From date"),
+	'at_datespan_to': _("To date"),
 	'at_timer_offset': _("Custom offset"),
 	'at_timer_offset_before': _("Offset before recording (mins)"),
 	'at_timer_offset_after': _("Offset after recording (mins)"),
@@ -354,15 +357,22 @@ tstrings = {
 	'at_channels': _("Channels"),
 	'at_select_channels': _("select channels"),
 	'at_select_bouquets': _("select bouquets"),
+	'at_add_tags': _("Add tags to recordings"),
+	'at_restrict_bouquets': _("Restrict to bouquets"),
+	'at_restrict_channels': _("Restrict to channels"),
+
 	'at_filter': _("Enable filtering"),
-	'at_filter_include': _("Include"),
-	'at_filter_exclude': _("Exclude"),
-	'at_filter_title': _("in title"),
-	'at_filter_short_desc': _("in short description"),
-	'at_filter_desc': _("in description"),
+	'at_filter_include': _("Include when"),
+	'at_filter_exclude': _("Exclude when"),
+	'at_filter_title': _("title contains"),
+	'at_filter_short_desc': _("short description contains"),
+	'at_filter_desc': _("description contains"),
 	'at_filter_day': _("on weekday"),
+	'at_filter_single_day': _("on day"),
 	'at_filter_weekend': _("weekend"),
 	'at_filter_weekday': _("weekday"),
+	'at_edit': _("Edit"),
+	'at_disable': _("Disable"),
 	'at_del': _("Delete"),
 	'at_save': _("Save"),
 	'at_process': _("Process"),
@@ -374,6 +384,14 @@ tstrings = {
 	'at_new': _("New"),
 	'at_name_hint': _("Enter a name for this AutoTimer"),
 	'at_text_hint': _("Enter the text to find in the EPG"),
+	'at_add_filters': _("Add filters"),
+	'at_remove_filter': _("Remove filter"),
+	'at_preview': _("Preview"),
+	'at_state': _("State"),
+	'at_any_day': _("Any day"),
+	'at_any_time': _("any time"),
+	'at_no_matches': _("No matches were found in the EPG"),
+	'at_in_minutes': _("(in minutes)"),
 
 	'ats_auto_timer_settings': _("AutoTimer Settings"),
 	'ats_autopoll': _("AutoPoll"),
@@ -489,6 +507,9 @@ tstrings = {
 	'packages': _("Packages"),
 
 	'newdesign': _("Use modern design"),
+	'oops': _("Oops..."),
+	'prompt_save_changes': _("Would you like to save your changes?"),
+	'rename': _("Rename"),
 	'no_cancel': _("No, cancel"),
 	'yes_delete': _("Yes"),
 	'cancelled': _("Cancelled"),
@@ -519,6 +540,7 @@ tstrings = {
 	'showdetails': _("Show details"),
 	'show_details_in_channel_list': _("Show service type in channel list"),
 	'show_iptv_channels_in_selection': _("Show IPTV channels in selection (eg. Autotimer)"),
+	'use_channel_name_for_screenshots': _("Use Channelname for screenshots"),
 	'show_picons': _("Show picons"),
 	'show_picon_background': _("Show picon background"),
 	'export': _("Export"),
@@ -529,6 +551,10 @@ tstrings = {
 	'date_asc': _("Date (oldest)"),
 	'date_desc': _("Date (newest)"),
 	'subdirectories': _("Subdirectories"),
+	'form_select': _("Select..."),
+	'form_reset': _("Reset"),
+	'HH_MM': _("HH:MM"),
+	'YYYY_MM_DD': _("YYYY-MM-DD"),
 
 	'playlistformat': _("Playlist format"),
 	'pipifposible': _("Use as PiP if possible"),
@@ -540,5 +566,12 @@ tstrings = {
 	'config': _("Config"),
 	'skins': _("Skins"),
 	'use_classic_design': _("Use classic interface"),
-	'use_modern_design': _("Use modern interface")
+	'use_modern_design': _("Use modern interface"),
+	'showallpackages': _("Show all packages"),
+
+	'recordingtype': _("Recording Type"),
+	'normal': _("normal"),
+	'descrambledecm': _("descramble and record ecm"),
+	'scrambledecm': _("don't descramble, record ecm")
+
 }

@@ -24,6 +24,7 @@ from __future__ import print_function
 from twisted.web import resource, http
 import six
 
+
 class ERController(resource.Resource):
 	def __init__(self, session):
 		resource.Resource.__init__(self)

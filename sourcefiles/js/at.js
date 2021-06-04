@@ -1,6 +1,6 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 2.11
+//* Version 2.12
 //******************************************************************************
 //* Copyright (C) 2014-2021 Joerg Bleyel
 //* Copyright (C) 2014-2021 E2OpenPlugins
@@ -27,6 +27,7 @@
 //* V 2.9 - fix #1028
 //* V 2.10 - iptv, lastscanned filter
 //* V 2.11 - improve getallservices
+//* V 2.12 - fix test request
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -1061,15 +1062,20 @@ function test_simulateAT(simulate)
 	$("#simtb").append("<tr><td COLSPAN=6>"+loadspinner+"</td></tr>");
 
 	var link = simulate ? "simulate":"test";
-	var tag = simulate ? "e2simulatedtimer":"e2testtimer";
-	
+
+	if(!simulate && CurrentAT)
+	{
+		link += "?id=" + CurrentAT.id;
+	}
+
 	$.ajax({
 		type: "GET", url: "/autotimer/" +link,
 		dataType: "xml",
 		success: function (xml)
 		{
-			var lines= [];
-			$(xml).find(tag).each(function () {
+			var lines = [];
+			
+			$(xml).find('e2simulatedtimer,e2testtimer').each(function () {
 				var line = '<tr>';
 				line += '<td>' + $(this).find('e2state').text() + '</td>';
 				line += '<td>' + $(this).find('e2autotimername').text() + '</td>';
@@ -1094,7 +1100,7 @@ function test_simulateAT(simulate)
 				line += '</tr>';
 				lines.push(line);
 			});
-			
+		
 			$("#simtb").empty();
 			$(lines).each(function(idx,val) {
 				$("#simtb").append(val);
@@ -1107,6 +1113,7 @@ function test_simulateAT(simulate)
 		}
 	});
 }
+
 
 function parseAT()
 {
@@ -1203,8 +1210,7 @@ function setAutoTimerSettings()
 	var v = $('#ats_add_autotimer_to_tags').is(':checked') ? "true":"";
 	reqs += "&add_autotimer_to_tags=" + v;
 	v = $('#ats_add_name_to_tags').is(':checked') ? "true":"";
-	reqs += "&add_name_to_tags=" + v
-	
+	reqs += "&add_name_to_tags=" + v;
 	reqs += "&refresh=" + $('#ats_refresh').val();
 	reqs += "&editor=" + $('#ats_editor').val();
 	
@@ -1250,7 +1256,7 @@ function importAT () {
 }
 
 function prepareRestore (ff) {
-	var fn = ff.val()
+	var fn = ff.val();
 	fn = fn.replace('C:\\fakepath\\','');
 	if (confirm(tstr_bqe_restore_question + ' ( ' + fn + ') ?') === false) {
 		return;

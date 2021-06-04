@@ -22,6 +22,8 @@
 
 from __future__ import print_function
 from enigma import eConsoleAppContainer
+from ServiceReference import ServiceReference
+from Components.config import config
 from Screens.InfoBar import InfoBar
 from twisted.web import resource, server
 from enigma import eDBoxLCD
@@ -30,13 +32,14 @@ from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
 GRAB_PATH = '/usr/bin/grab'
 
+
 class GrabRequest(object):
 	def __init__(self, request, session):
 		self.request = request
 
 		mode = None
 		graboptions = [GRAB_PATH, '-q', '-s']
-		
+
 		fileformat = getUrlArg(request, "format", "jpg")
 		if fileformat == "jpg":
 			graboptions.append("-j")
@@ -83,7 +86,9 @@ class GrabRequest(object):
 				else:
 					ref = session.nav.getCurrentlyPlayingServiceReference().toString()
 				sref = '_'.join(ref.split(':', 10)[:10])
-			except:  # noqa: E722
+				if config.OpenWebif.webcache.screenshotchannelname.value:
+					sref = ServiceReference(ref).getServiceName()
+			except:  # nosec # noqa: E722
 				sref = 'screenshot'
 		sref = sref + '_' + time.strftime("%Y%m%d%H%M%S", time.localtime(time.time()))
 		request.notifyFinish().addErrback(self.requestAborted)

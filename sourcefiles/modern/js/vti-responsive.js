@@ -1,6 +1,6 @@
 
 var vol_slider = document.getElementById('volslider');
-var cur_vol = -1 ;
+var cur_vol = -1;
 var standby_status = -1;
 var timerFormInitiated = - 1;
 
@@ -39,8 +39,18 @@ $(function () {
       var epgEvent;
       try {
         var dataAttr = 'metadata';
-        epgEvent = JSON.parse(e.relatedTarget.closest('[data-' + dataAttr + ']').dataset[dataAttr]);
+		var meta = e.relatedTarget.closest('[data-' + dataAttr + ']');
+        epgEvent = {};
+		if (meta != null)
+		{
+			epgEvent = JSON.parse(e.relatedTarget.closest('[data-' + dataAttr + ']').dataset[dataAttr]);
+		}
+		else {
+			epgEvent.sref = e.relatedTarget.dataset.ref;
+			epgEvent.id = e.relatedTarget.dataset.evid;
+		}
       } catch (ex) {
+		console.log(ex);
         epgEvent = {};
       }
 			if (!!epgEvent.sref && !!epgEvent.id) {
@@ -77,6 +87,7 @@ $(function () {
 		
 	});
 
+	/*
 	activateNotificationAndTasksScroll();
 	setSkinListHeightAndScroll(true);
 	setSettingListHeightAndScroll(true);
@@ -84,8 +95,8 @@ $(function () {
 		setSkinListHeightAndScroll(false);
 		setSettingListHeightAndScroll(false);
 	});
-	
-  VTiWebConfig();
+	*/
+	VTiWebConfig();
   
 	setInterval(function () { getStatusInfo(); }, 3000);
 });
@@ -108,6 +119,9 @@ function initJsTranslationAddon(strings) {
 	tstr_add_timer = strings.add_timer;
 	tstr_cancel = strings.cancel;
 	tstr_close = strings.close;
+	tstr_rename = strings.rename;
+	tstr_prompt_save_changes = strings.prompt_save_changes;
+	tstr_oops = strings.oops;
 	tstr_weekday = strings.at_filter_weekday;
 	tstr_weekend = strings.at_filter_weekend;
 	tstr_at_del = strings.at_del;
@@ -215,7 +229,7 @@ function testPipStatus() {
                                 buttonsSwitcher(pipinfo.pip);
 			}
 		}
-	})
+	});
 }
 
 var SSHelperObj = function () {
@@ -1236,6 +1250,11 @@ function VTiWebConfig() {
 		$.get('api/setvtiwebconfig?showiptvchannelsinselection=' + val);
 	});
 
+	$('#screenshotchannelname').change(function () {
+		var val = $(this).is(":checked") ? '1' : '0'
+		$.get('api/setvtiwebconfig?screenshotchannelname=' + val);
+	});
+
 	$('#thememodebtn').change(function () {
 		var themeMode = $(this).is(":checked") ? $(this).val() : 'supabright';
 		$('body').removeClass(function (index, className) {
@@ -1249,7 +1268,7 @@ function VTiWebConfig() {
 		$.get('api/setthememode?themeMode=' + themeMode);
 	});
 }
-
+/*
 //Skin tab content set height and show scroll
 function setSkinListHeightAndScroll(isFirstTime) {
 	var height = $(window).height() - ($('.navbar').innerHeight() + $('.right-sidebar .nav-tabs').outerHeight());
@@ -1301,7 +1320,7 @@ function activateNotificationAndTasksScroll() {
 		railBorderRadius: '0'
 	});
 }
-
+*/
 function showErrorMain(txt,st)
 {
 	st = typeof st !== 'undefined' ? st : "False";

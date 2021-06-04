@@ -53,11 +53,11 @@
 					<div class="row vti-vspace-20"></div>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-3">
-					<select id="settingselection" class="form-control" value="">
+					<select id="settingselection" class="form-control">
 						<option value="packagemenu">$tstrings['packages']</option>
 						<option value="bookmarksmenu">$tstrings['bookmarks']</option>
 				#for $sec in $configsections
-					<option value="$sec["key"]"  >$sec["description"]</option>
+					<option value="$sec['key']">$sec["description"]</option>
 				#end for
 					</select>
 				</div>
@@ -486,6 +486,8 @@
 				});
 			}
 		});
+
+		jQuery('#settingselection').val('usage');
 
 		jQuery("#scontent").load('ajax/config?section=usage', function () {
 			jQuery("#scontent").find("#content_main").attr("id","content_main1");

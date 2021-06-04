@@ -38,11 +38,8 @@
 
 			<button type="button" onclick="zapChannel('$sref', '$channel');" class="link--not-skinned" title="$tstrings['zap_to'] $channel"><i class="icon material-icons material-icons-centered">settings_remote</i></button>
 
-		#if '4097:' in '$sref'
-			#set $rname = ":" + $channel
-			#set $lnk = '$sref'.replace("4097:0:1:0:0:0:0:0:0:0:", "")
-			#set $lnk = $lnk[:$lnk.rindex(':')].replace("%3a", ":").replace("%3A", ":")
-			<a href="$lnk" class="now-next__external-link link--not-skinned" target="extlink" title="$tstrings['open_in_new_window']"><i class="material-icons material-icons-centered">phonelink</i></a>
+		#if $event.link != ""
+			<a href="$event.link" class="now-next__external-link link--not-skinned" target="extlink" title="$tstrings['open_in_new_window']"><i class="material-icons material-icons-centered">phonelink</i></a>
 		#else
 			<button type="button" onclick="open_epg_dialog('$sref', '$channel');" class="link--not-skinned" title="$tstrings['show_epg_for'] $channel" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons material-icons-centered">view_list</i></button>
 			<button type="button" onclick="jumper8001('$sref', '$channel');" class="link--not-skinned" title="$tstrings['stream'] $channel"><i class="icon material-icons material-icons-centered">ondemand_video</i></button>
@@ -133,7 +130,7 @@
 #end if
 
 #if $at
-		<button onclick="addAutoTimerEvent('$sref', '$channel', '$title', '$event.begin', '$event.end');" class="link--not-skinned" data-dismiss="modal" title="$tstrings['add_autotimer']">
+		<button class="link--not-skinned" onclick='location.href="#/at/new?name=$title&match=$title&timespanFrom=$event.begin_str&timespanTo=$event.end&sref=$sref";' class="link--not-skinned" title="$tstrings['add_autotimer']" data-dismiss="modal">
 			<i class="material-icons material-icons-centered">av_timer</i>
 		</button>
 #end if

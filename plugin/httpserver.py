@@ -30,7 +30,6 @@ from twisted import version
 from twisted.internet import reactor, ssl
 from twisted.web import server, http, resource
 from twisted.internet.error import CannotListenError
-from twisted.internet.protocol import Factory, Protocol
 
 from Plugins.Extensions.OpenWebif.controllers.root import RootController
 from Plugins.Extensions.OpenWebif.sslcertificate import SSLCertificateGenerator, KEY_FILE, CERT_FILE, CA_FILE, CHAIN_FILE
@@ -178,7 +177,7 @@ def buildRootTree(session):
 def HttpdStart(session):
 	"""
 	Helper class to start web server
-	
+
 	Args:
 		session: (?) session object
 	"""
@@ -198,11 +197,11 @@ def HttpdStart(session):
 		try:
 			if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
 				# use ipv6
-				listener.append( reactor.listenTCP(port, site, interface='::') )
+				listener.append(reactor.listenTCP(port, site, interface='::'))
 			else:
 				# ipv4 only
-				listener.append( reactor.listenTCP(port, site) )
-			print("[OpenWebif] started on %i"% (port))
+				listener.append(reactor.listenTCP(port, site))
+			print("[OpenWebif] started on %i" % (port))
 			BJregisterService('http', port)
 		except CannotListenError:
 			print("[OpenWebif] failed to listen on Port %i" % (port))
@@ -228,7 +227,7 @@ def HttpdStart(session):
 						chain = [crypto.load_certificate(crypto.FILETYPE_PEM, open(CHAIN_FILE, 'rt').read())]
 						print("[OpenWebif] ssl chain file found - loading")
 					context = ssl.CertificateOptions(privateKey=key, certificate=cert, extraCertChain=chain)
-				except:
+				except:  # nosec # noqa: E722
 					# THIS EXCEPTION IS ONLY CATCHED WHEN CERT FILES ARE BAD (look below for error)
 					print("[OpenWebif] failed to get valid cert files. (It could occure bad file save or format, removing...)")
 					# removing bad files
@@ -253,15 +252,15 @@ def HttpdStart(session):
 
 				if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
 					# use ipv6
-					listener.append( reactor.listenSSL(httpsPort, sslsite, context, interface='::') )
+					listener.append(reactor.listenSSL(httpsPort, sslsite, context, interface='::'))
 				else:
 					# ipv4 only
-					listener.append( reactor.listenSSL(httpsPort, sslsite, context) )
+					listener.append(reactor.listenSSL(httpsPort, sslsite, context))
 				print("[OpenWebif] started on", httpsPort)
 				BJregisterService('https', httpsPort)
 			except CannotListenError:
 				print("[OpenWebif] failed to listen on Port", httpsPort)
-			except:
+			except:  # nosec # noqa: E722
 				print("[OpenWebif] failed to start https, disabling...")
 				# Disable https
 				config.OpenWebif.https_enabled.value = False
@@ -273,11 +272,11 @@ def HttpdStart(session):
 				if has_ipv6 and fileExists('/proc/net/if_inet6') and version.major >= 12:
 					# use ipv6
 					# Dear Twisted devs: Learning English, lesson 1 - interface != address
-					listener.append( reactor.listenTCP(80, site, interface='::1') )
-					listener.append( reactor.listenTCP(80, site, interface='::ffff:127.0.0.1') )
+					listener.append(reactor.listenTCP(80, site, interface='::1'))
+					listener.append(reactor.listenTCP(80, site, interface='::ffff:127.0.0.1'))
 				else:
 					# ipv4 only
-					listener.append( reactor.listenTCP(80, site, interface='127.0.0.1') )
+					listener.append(reactor.listenTCP(80, site, interface='127.0.0.1'))
 				print("[OpenWebif] started stream listening on port 80")
 			except CannotListenError:
 				print("[OpenWebif] port 80 busy")
@@ -314,7 +313,7 @@ class AuthResource(resource.Resource):
 			peer = peer.replace("::ffff:", "")
 
 		if peer.startswith("fe80::") and "%" in peer:
-			peer = peer.split ("%")[0]
+			peer = peer.split("%")[0]
 
 		if self.login(request.getUser(), request.getPassword(), peer) is False:
 			request.setHeader('WWW-authenticate', 'Basic realm="%s"' % ("OpenWebif"))
@@ -340,7 +339,7 @@ class AuthResource(resource.Resource):
 			peer = peer.replace("::ffff:", "")
 
 		if peer.startswith("fe80::") and "%" in peer:
-			peer = peer.split ("%")[0]
+			peer = peer.split("%")[0]
 
 		# Handle all conditions where auth may be skipped/disabled
 
@@ -372,7 +371,7 @@ class AuthResource(resource.Resource):
 					session = request.getSession().sessionNamespaces
 					session["logged"] = True
 					return self.resource.getChildWithDefault(path, request)
-			except: # nosec
+			except:  # nosec # noqa: E722
 				pass
 
 			try:
@@ -381,7 +380,7 @@ class AuthResource(resource.Resource):
 					session = request.getSession().sessionNamespaces
 					session["logged"] = True
 					return self.resource.getChildWithDefault(path, request)
-			except: # nosec
+			except:  # nosec # noqa: E722
 				pass
 
 		# If we get to here, no exception applied
@@ -412,7 +411,7 @@ class AuthResource(resource.Resource):
 			if networks:
 				for network in networks:
 					if ipaddress.ip_address(six.text_type(peer)) in ipaddress.ip_network(six.text_type(network), strict=False):
-						samenet=True
+						samenet = True
 			if not (ipaddress.ip_address(six.text_type(peer)).is_private or samenet):
 				return False
 		from crypt import crypt
@@ -421,16 +420,17 @@ class AuthResource(resource.Resource):
 		cpass = None
 		try:
 			cpass = getpwnam(user)[1]
-		except:
+		except:  # nosec # noqa: E722
 			return False
 		if cpass:
 			if cpass == 'x' or cpass == '*':
 				try:
 					cpass = getspnam(user)[1]
-				except:
+				except:  # nosec # noqa: E722
 					return False
 			return crypt(passwd, cpass) == cpass
 		return False
+
 
 class StopServer:
 	"""
@@ -470,6 +470,8 @@ class StopServer:
 #
 # create a self signed SSL certificate if necessary
 #
+
+
 def installCertificates(session):
 	certGenerator = SSLCertificateGenerator()
 	try:
@@ -481,15 +483,17 @@ def installCertificates(session):
 		# Inform the user
 		session.open(MessageBox, "Cannot install generated SSL-Certifactes for https access\nHttps access is disabled!", MessageBox.TYPE_ERROR)
 # BJ
+
+
 def BJregisterService(protocol, port):
 	try:
 		from Plugins.Extensions.Bonjour.Bonjour import bonjour
 		service = bonjour.buildService(protocol, port, 'OpenWebif')
 		bonjour.registerService(service, True)
-	except: # nosec
+	except:  # nosec # noqa: E722
 		pass
 	try:
 		servicetype = '_' + protocol + '._tcp'
 		enigma.e2avahi_announce(None, servicetype, port)
-	except: # nosec
+	except:  # nosec # noqa: E722
 		pass

@@ -32,7 +32,7 @@ from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection, configfile
 from enigma import getDesktop
 from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
-from Plugins.Extensions.OpenWebif.controllers.defaults import EXT_EVENT_INFO_SOURCE
+from Plugins.Extensions.OpenWebif.controllers.defaults import EXT_EVENT_INFO_SOURCE, getIP
 from Plugins.Extensions.OpenWebif.httpserver import HttpdStart, HttpdStop, HttpdRestart
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 
@@ -65,6 +65,8 @@ config.OpenWebif.webcache.moviedb = ConfigSelection(default=EXT_EVENT_INFO_SOURC
 config.OpenWebif.webcache.mepgmode = ConfigInteger(default=1, limits=(1, 2))
 config.OpenWebif.webcache.showchanneldetails = ConfigYesNo(default=False)
 config.OpenWebif.webcache.showiptvchannelsinselection = ConfigYesNo(default=True)
+config.OpenWebif.webcache.screenshotchannelname = ConfigYesNo(default=False)
+config.OpenWebif.webcache.showallpackages = ConfigYesNo(default=False)
 
 # HTTPS
 config.OpenWebif.https_enabled = ConfigYesNo(default=False)
@@ -103,6 +105,7 @@ vtiaddon.expandConfig()
 
 imagedistro = getInfo()['imagedistro']
 
+
 class OpenWebifConfig(Screen, ConfigListScreen):
 	skin = """
 	<screen position="center,center" size="700,340" title="OpenWebif Configuration">
@@ -122,7 +125,18 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		ConfigListScreen.__init__(self, self.list)
 		self["key_red"] = Label(_("Cancel"))
 		self["key_green"] = Label(_("Save"))
-		self["lab1"] = Label(_("OpenWebif url: http://yourip:port"))
+
+		owif_protocol = "https" if config.OpenWebif.https_enabled.value else "http"
+		owif_port = config.OpenWebif.https_port.value if config.OpenWebif.https_enabled.value else config.OpenWebif.port.value
+		ip = getIP()
+		if ip == None:
+			ip = _("box_ip")
+
+		ports = ":%d" % owif_port
+		if (owif_protocol == "http" and owif_port == 80) or (owif_protocol == "https" and owif_port == 443):
+			ports = ""
+
+		self["lab1"] = Label("%s %s://%s%s" % (_("OpenWebif url:"), owif_protocol, ip, ports))
 
 		self["actions"] = ActionMap(["WizardActions", "ColorActions"],
 		{
@@ -168,7 +182,7 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			self.list.append(getConfigListEntry(_("Allow IPK Upload"), config.OpenWebif.allow_upload_ipk))
 			self.list.append(getConfigListEntry(_("Playback IPTV Streams in browser"), config.OpenWebif.playiptvdirect))
 			self.list.append(getConfigListEntry(_("Debug - Display Tracebacks in browser"), config.OpenWebif.displayTracebacks))
-			# FIXME Submenu			
+			# FIXME Submenu
 			# self.list.append(getConfigListEntry(_("Webinterface jQuery UI Theme"), config.OpenWebif.webcache.theme))
 			# self.list.append(getConfigListEntry(_("Movie List Sort"), config.OpenWebif.webcache.moviesort))
 

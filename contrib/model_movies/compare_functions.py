@@ -11,8 +11,7 @@ if not os.path.isdir(directory):
 	print("Please run create_example_folders.sh first")
 	sys.exit(1)
 
-bookmarklist_legacy = [x for x in os.listdir(directory) if (x[0] != '.' and (os.path.isdir(os.path.join(directory, x)) or (os.path.islink(os.path.join(directory, x)) and os.path.exists(os.path.join(directory, x)))))]
-bookmarklist_legacy.sort()
+bookmarklist_legacy = sorted([x for x in os.listdir(directory) if (x[0] != '.' and (os.path.isdir(os.path.join(directory, x)) or (os.path.islink(os.path.join(directory, x)) and os.path.exists(os.path.join(directory, x)))))])
 
 bookmarklist = []
 for item in sorted(os.listdir(directory)):

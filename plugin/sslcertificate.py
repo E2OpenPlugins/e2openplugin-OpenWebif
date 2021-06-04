@@ -35,6 +35,7 @@ KEY_FILE = resolveFilename(SCOPE_CONFIG, "key.pem")
 CERT_FILE = resolveFilename(SCOPE_CONFIG, "cert.pem")
 CHAIN_FILE = resolveFilename(SCOPE_CONFIG, "chain.pem")
 
+
 class SSLCertificateGenerator:
 
 	def __init__(self):
@@ -70,9 +71,9 @@ class SSLCertificateGenerator:
 		subject = certificate.get_subject()
 		for key, val in six.iteritems(self.certSubjectOptions):
 			setattr(subject, key, val)
-		certificate.set_serial_number( int(time()) )
-		certificate.gmtime_adj_notBefore( 0 )
-		certificate.gmtime_adj_notAfter( 60*60*24*365*5 )
+		certificate.set_serial_number(int(time()))
+		certificate.gmtime_adj_notBefore(0)
+		certificate.gmtime_adj_notAfter(60 * 60 * 24 * 365 * 5)
 		certificate.set_issuer(subject)
 		certificate.set_pubkey(keypair)
 		certificate.sign(keypair, self.digest)

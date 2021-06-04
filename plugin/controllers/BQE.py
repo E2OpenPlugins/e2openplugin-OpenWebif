@@ -20,8 +20,8 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
 ##########################################################################
 
-from twisted.web import static, resource, http, server
-from enigma import eServiceCenter, eServiceReference, iServiceInformation
+from twisted.web import static, resource, http
+from enigma import eServiceCenter, eServiceReference
 from Plugins.Extensions.OpenWebif.controllers.base import BaseController
 from Components.config import config
 from Components.ParentalControl import parentalControl
@@ -393,6 +393,7 @@ class BQEUploadFile(resource.Resource):
 				result = [True, self.FN]
 		return six.ensure_binary(json.dumps({"Result": result}))
 
+
 class BQEImport(resource.Resource):
 	def __init__(self, session):
 		self.session = session
@@ -413,6 +414,7 @@ class BQEImport(resource.Resource):
 				result = [False, 'BouquetEditor plugin not found']
 
 		return six.ensure_binary(json.dumps({"Result": result}))
+
 
 class BQEApiController(BQEWebController):
 	def __init__(self, session, path=""):

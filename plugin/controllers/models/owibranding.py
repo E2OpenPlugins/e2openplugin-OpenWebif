@@ -39,7 +39,7 @@ try:
 	from enigma import eTPM
 	if not hasattr(eTPM, 'getData'):
 		tpmloaded = 0
-except:  # noqa: E722
+except:  # nosec # noqa: E722
 	tpmloaded = 0
 
 
@@ -58,7 +58,7 @@ def get_random():
 		result = xor(random, x)
 
 		return result
-	except:  # noqa: E722
+	except:  # nosec # noqa: E722
 		return None
 
 
@@ -129,7 +129,7 @@ def tpm_check():
 			return 0
 
 		return 1
-	except:  # noqa: E722
+	except:  # nosec # noqa: E722
 		return 0
 
 
@@ -462,15 +462,37 @@ def getAllInfo():
 			brand = "Zgemma"
 			model = "H9.2S"
 			grabpip = 1
-		elif procmodel == "h9 combo":
+		elif procmodel == "h9 combo" or procmodel == "h9combo":
 			procmodel = "h9combo"
 			brand = "Zgemma"
 			model = "H9 Combo"
 			grabpip = 1
-		elif procmodel == "h9 twin":
+		elif procmodel == "h9combose":
+			procmodel = "h9combose"
+			brand = "Zgemma"
+			model = "H9 Combo SE"
+			grabpip = 1
+		elif procmodel == "h9 twin" or procmodel == "h9twin":
 			procmodel = "h9twin"
 			brand = "Zgemma"
 			model = "H9 Twin"
+			grabpip = 1
+		elif procmodel == "h9twinse":
+			procmodel = "h9twinse"
+			brand = "Zgemma"
+			model = "H9 Twin SE"
+			grabpip = 1
+		elif procmodel == "h9se.s":
+			brand = "Zgemma"
+			model = "H9SE.S"
+			grabpip = 1
+		elif procmodel == "h9se.2s":
+			brand = "Zgemma"
+			model = "H9SE.2S"
+			grabpip = 1
+		elif procmodel == "h9se.2h":
+			brand = "Zgemma"
+			model = "H9SE.2H"
 			grabpip = 1
 		elif procmodel == "vs1500":
 			brand = "Vimastec"
@@ -703,7 +725,7 @@ def getAllInfo():
 		remote = "lunix4k"
 	elif procmodel in ("sh1", "lc"):
 		remote = "sh1"
-	elif procmodel in ("hzero", "h3", "h4", "h5", "h6", "h7", "h8", "h9", "i55plus", "h8.2h", "h9.s", "h9.t", "h9.2h", "h9.2s", "h9combo", "h9twin"):
+	elif procmodel in ("hzero", "h3", "h4", "h5", "h6", "h7", "h8", "h9", "i55plus", "h8.2h", "h9.s", "h9.t", "h9.2h", "h9.2s", "h9combo", "h9combose", "h9twin", "h9twinse", "h9se.s", "h9se.2s", "h9se.2h"):
 		remote = "h3"
 	elif procmodel == "i55":
 		remote = "i55"
@@ -767,12 +789,9 @@ def getAllInfo():
 			oever = "OpenVuplus 2.1"
 		if ((imagever == "5.1") or (imagever[0] > 5)):
 			oever = "OpenVuplus 2.1"
-	elif fileExists("/var/grun/grcstype"):
+	elif fileExists("/var/run/ggui"):
 		distro = "Graterlia OS"
-		try:
-			imagever = about.getImageVersionString()
-		except:  # nosec  # noqa: E722
-			pass
+		imagever = ""
 	# ToDo: If your distro gets detected as OpenPLi, feel free to add a detection for your distro here ...
 	else:
 		# OE 2.2 uses apt, not opkg
@@ -783,7 +802,7 @@ def getAllInfo():
 				f = open("/etc/opkg/all-feed.conf", 'r')
 				oeline = f.readline().strip().lower()
 				f.close()
-				distro = oeline.split( )[1].replace("-all", "")
+				distro = oeline.split()[1].replace("-all", "")
 			except:  # nosec  # noqa: E722
 				pass
 
@@ -819,13 +838,13 @@ def getAllInfo():
 	# reporting the installed dvb-module version is as close as we get without too much hassle
 	driverdate = 'unknown'
 	try:
-		driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-modules*').readline().split( )[2]  # nosec
-	except:  # noqa: E722
+		driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-modules*').readline().split()[2]  # nosec
+	except:  # nosec # noqa: E722
 		try:
-			driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-proxy*').readline().split( )[2]  # nosec
-		except:  # noqa: E722
+			driverdate = os.popen('/usr/bin/opkg -V0 list_installed *dvb-proxy*').readline().split()[2]  # nosec
+		except:  # nosec # noqa: E722
 			try:
-				driverdate = os.popen('/usr/bin/opkg -V0 list_installed *kernel-core-default-gos*').readline().split( )[2]  # nosec
+				driverdate = os.popen('cat /var/lib/opkg/info/kernel-module-*.control | grep Version | cut -d "-" -f2').readline()  # nosec
 			except:  # nosec # noqa: E722
 				pass
 	re_search = re.search('([0-9]{8})', driverdate)
@@ -884,11 +903,14 @@ def getImageBuild():
 def getImageDistro():
 	return STATIC_INFO_DIC['distro']
 
+
 def getLcd():
 	return STATIC_INFO_DIC['lcd']
 
+
 def getGrabPip():
 	return STATIC_INFO_DIC['grabpip']
+
 
 class rc_model:
 	def getRcFolder(self):

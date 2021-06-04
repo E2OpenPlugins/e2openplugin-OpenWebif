@@ -1,5 +1,18 @@
-## Version 1.4.4
+## Version 1.4.8
 ## (in development)
+* add recording type to timer api
+
+## Version 1.4.7
+* add filter paramter to ipkg api
+
+## Version 1.4.6
+* fix memory leak in movielist by using internal code #751
+
+## Version 1.4.5
+* fix sleeptimer #1295
+* fix terminal for VTi #1293
+
+## Version 1.4.4
 * improve api movielist recursive #1241
 
 ## Version 1.4.3
