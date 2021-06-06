@@ -131,3 +131,12 @@ EXT_EVENT_INFO_SOURCE = getExtEventInfoProvider()
 TRANSCODING = getTranscoding()
 
 # TODO: improve PICON_PATH, GLOBALPICONPATH
+
+def getOpenwebifPackageVersion():
+	try:
+		version = os.popen('/usr/bin/opkg -V0 list_installed enigma2-plugin-extensions-openwebif').readline().split()[2]  # nosec
+	except:
+		version = 'unknown'
+	return version
+
+OPENWEBIFPACKAGEVERSION = getOpenwebifPackageVersion()

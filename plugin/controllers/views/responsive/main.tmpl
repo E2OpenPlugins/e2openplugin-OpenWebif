@@ -1,5 +1,6 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground, ZapStream, showIPTVChannelsInSelection, useSreenshotChannelName
+#from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, OPENWEBIFPACKAGEVERSION
 #from json import dumps
 
 #set $skinPrefOptions = [
@@ -105,6 +106,7 @@
 					<a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
 					<a href="javascript:void(0);" class="bars" id="leftsidebarin"></a>
 					<a href="/" class="navbar-brand">OpenWebif</a>
+					<a href="javascript:void(0);" class="navbar-brand material-icons" data-toggle="modal" data-target="#OwifVersionModal" style="margin-left: 0;padding-left: 0;font-size: 100%;margin-top: -3px;">info</a>
 				</div>
 				<div class="collapse navbar-collapse pull-right align-right" id="navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
@@ -601,6 +603,25 @@
 
 <!---<div id="modaldialog"></div>-->
 <div id="responsivespinner"></div>
+<div id="OwifVersionModal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header bg--skinned">
+				<button type="button" class="close" data-dismiss="modal">
+					<i class="material-icons material-icons-centered">close</i>
+				</button>
+				<span class="modal-title">OpenWebif Version Information</span>
+			</div>
+			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
+				<div>Version: $OPENWEBIFVER</div>
+				<div>Package Version: $OPENWEBIFPACKAGEVERSION</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn waves-effect btn-default" data-dismiss="modal">$tstrings['close']</button>
+			</div>
+		</div>
+	</div>
+</div>
 <div id="TimerConflictModal" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
