@@ -137,8 +137,12 @@ def getOpenwebifPackageVersion():
 	try:
 		version = os.popen('/usr/bin/opkg -V0 list_installed enigma2-plugin-extensions-openwebif').readline().split()[2]  # nosec
 	except:
-		version = 'unknown'
-	return version
+		try:
+			# for Graterlia OS
+			version = os.popen('cat /var/lib/opkg/info/enigma2-plugin-openwebif.control | grep Version | awk -F": " \'{print $2}\'').readline()  # nosec
+		except:
+			version = 'unknown'
+		return version
 
 
 OPENWEBIFPACKAGEVERSION = getOpenwebifPackageVersion()
