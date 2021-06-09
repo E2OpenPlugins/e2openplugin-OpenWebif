@@ -1267,6 +1267,11 @@ function VTiWebConfig() {
 		}
 		$.get('api/setthememode?themeMode=' + themeMode);
 	});
+	$('#nownext_columns').change(function () {
+		var val = $(this).is(":checked") ? '1' : '0'
+		$.get('api/setvtiwebconfig?nownext_columns=' + val);
+	});
+
 }
 /*
 //Skin tab content set height and show scroll

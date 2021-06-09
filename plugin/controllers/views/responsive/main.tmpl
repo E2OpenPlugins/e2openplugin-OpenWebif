@@ -1,5 +1,5 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground, ZapStream, showIPTVChannelsInSelection, useSreenshotChannelName
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground, ZapStream, showIPTVChannelsInSelection, useSreenshotChannelName, useNowNextColumns
 #from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, OPENWEBIFPACKAGEVERSION
 #from json import dumps
 
@@ -460,6 +460,15 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="minepglist" id="minepglist" $MinEPGList>
+											<span class="lever switch--skinned"></span>
+										</label>
+									</div>
+								</li>
+								<li>
+									<span>$tstrings['now_next_columns']</span>
+									<div class="switch">
+										<label>
+											<input type="checkbox" name="nownext_columns" id="nownext_columns" $useNowNextColumns>
 											<span class="lever switch--skinned"></span>
 										</label>
 									</div>

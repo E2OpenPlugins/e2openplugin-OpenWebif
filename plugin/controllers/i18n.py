@@ -519,6 +519,7 @@ tstrings = {
 	'min_movie_list': _("Minimal movie list"),
 	'min_timer_list': _("Minimal timer list"),
 	'min_epg_list': _("Minimal EPG list"),
+	'now_next_columns': _("Now/Next Columns"),
 	'remove_package': _("Remove Package"),
 	'update_package': _("Update Package"),
 	'install_package': _("Install Package"),
