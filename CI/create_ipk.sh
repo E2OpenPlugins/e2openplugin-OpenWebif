@@ -8,7 +8,7 @@ B=${D}/ipkg.build.$$
 pushd ${D} &> /dev/null
 VER=$(head -n 1 CHANGES.md | grep -i '## Version' | sed 's/^## Version \([[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+\)/\1/')
 # '%cd': committer date (format respects --date= option); '%t': abbreviated tree hash
-GITVER=git$(git log -1 --format="%cd" --date="format:%Y%m%d")
+GITVER=git$(git log -1 --format="%cd" --date="format:%Y%m%d")-$(git rev-list HEAD --count)
 
 PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_all.ipk
 if [ "$1" == "novxg" ]; then
@@ -31,7 +31,7 @@ mkdir -p ${B}
 
 cat > ${P}/CONTROL/control << EOF
 Package: enigma2-plugin-extensions-openwebif
-Version: ${VER}-${GITVER}-r0
+Version: ${VER}-${GITVER}
 Description: Control your receiver with a browser
 Architecture: all
 Section: extra
