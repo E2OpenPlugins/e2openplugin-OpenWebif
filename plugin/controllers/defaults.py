@@ -145,3 +145,16 @@ def getOpenwebifPackageVersion():
 
 
 OPENWEBIFPACKAGEVERSION = getOpenwebifPackageVersion()
+
+
+def getUserCSS(fn):
+	if os.path.isfile(fn):
+		return open(fn, 'r').read()
+	else:
+		return ''
+
+
+USERCSSCLASSIC = getUserCSS('/etc/enigma2/owfclassic.css')
+
+
+USERCSSRESPONSIVE = getUserCSS('/etc/enigma2/owfresponsive.css')

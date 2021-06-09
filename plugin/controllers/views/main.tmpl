@@ -1,3 +1,4 @@
+#from controllers.defaults import USERCSSCLASSIC
 #from controllers.i18n import tstrings
 #from json import dumps
 #set $t="original"
@@ -251,5 +252,11 @@
 		theme = '$t';
 		SetLSValue('TimerListOffset',0);
 	</script>
+
+#if $USERCSSCLASSIC != ''
+<style>
+$USERCSSCLASSIC
+</style>
+#end if
 </body>
 </html>

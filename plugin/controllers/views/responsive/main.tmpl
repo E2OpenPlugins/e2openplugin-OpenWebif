@@ -1,6 +1,6 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground, ZapStream, showIPTVChannelsInSelection, useSreenshotChannelName, useNowNextColumns
-#from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, OPENWEBIFPACKAGEVERSION
+#from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, OPENWEBIFPACKAGEVERSION, USERCSSRESPONSIVE
 #from json import dumps
 
 #set $skinPrefOptions = [
@@ -925,5 +925,10 @@
 		});
 	});
 </script>
+#if $USERCSSRESPONSIVE != ''
+<style>
+$USERCSSRESPONSIVE
+</style>
+#end if
 </body>
 </html>
