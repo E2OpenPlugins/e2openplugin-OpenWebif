@@ -115,10 +115,12 @@ def useSreenshotChannelName():
 		return 'checked'
 	return ''
 
+
 def useNowNextColumns():
 	if config.OpenWebif.nownext_columns_enabled.value:
 		return 'checked'
 	return ''
+
 
 def setVTiWebConfig(self, request):
 	if b"moviesearchextended" in list(request.args.keys()):
