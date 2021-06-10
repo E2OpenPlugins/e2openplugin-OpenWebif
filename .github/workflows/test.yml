@@ -1,4 +1,4 @@
-name: python2
+name: TEST
 
 on:
   push:
@@ -20,5 +20,5 @@ jobs:
           python-version: '2.7'
 
       - name: Build python 2.7
-        run: git rev-list HEAD --since=today --count
+        run: git rev-list HEAD --since=yesterday --count
 
