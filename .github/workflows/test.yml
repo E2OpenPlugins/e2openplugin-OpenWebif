@@ -22,7 +22,4 @@ jobs:
 
       - name: Build python 2.7
         run: |
-          git rev-list HEAD --since=yesterday --count
           git rev-list HEAD --since=today --count
-          git rev-list HEAD
-
