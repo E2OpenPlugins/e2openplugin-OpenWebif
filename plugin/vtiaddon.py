@@ -117,7 +117,7 @@ def useSreenshotChannelName():
 
 
 def useNowNextColumns():
-	if config.OpenWebif.nownext_columns_enabled.value:
+	if config.OpenWebif.responsive_nownext_columns_enabled.value:
 		return 'checked'
 	return ''
 
@@ -196,8 +196,8 @@ def setVTiWebConfig(self, request):
 	if b"nownext_columns" in list(request.args.keys()):
 		val = int(getUrlArg(request, "nownext_columns"))
 		print("save nownext_columns_enabled:", val)
-		config.OpenWebif.nownext_columns_enabled.value = val == 1 and True or False
-		config.OpenWebif.nownext_columns_enabled.save()
+		config.OpenWebif.responsive_nownext_columns_enabled.value = val == 1 and True or False
+		config.OpenWebif.responsive_nownext_columns_enabled.save()
 	return ''
 
 
