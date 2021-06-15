@@ -32,7 +32,7 @@
  * ----------------------------------------------------------------------------
  */
 
-(function () {
+ (function () {
   // handle `'`, `&` etc
   function decodeHtml(html = '') {
     const txt = document.createElement('textarea');
@@ -371,7 +371,7 @@
             const searchType = valueLabelMap.autoTimers.searchType[atItem['searchType']] || '';
             const newNode = templateEl.content.firstElementChild.cloneNode(true);
 
-            newNode.querySelector('button[name="preview"]').onclick = (evt) => self.preview(atItem.id);
+            newNode.querySelector('[name="preview"]').onclick = (evt) => self.preview(atItem.id);
             newNode.querySelector('[name="rename"]').onclick = (evt) => self.renameEntry(atItem.id, atItem.name);
 
             const editEl = newNode.querySelector('a[href="#/at/edit?id={{id}}"]');
@@ -498,22 +498,31 @@
         }
       },
 
-      preview: async (id) => {
-        document.getElementById('at-preview__progress').classList.toggle('hidden', false);
-        document.getElementById('at-preview__no-results').classList.toggle('hidden', true);
-        const responseContent = await owif.utils.fetchData('/autotimer/test?id='+id);
+      previewAll: () => {
+        self.preview();
+      },
+
+      preview: async (id = '') => {
+        const previewResultsEl = document.getElementById('at-preview__list');
+        const previewNoResultsEl = document.getElementById('at-preview__no-results');
+        const previewProgressEl = document.getElementById('at-preview__progress');
+        previewResultsEl.querySelectorAll('tr').forEach(tr => tr.remove());
+        previewNoResultsEl.classList.toggle('hidden', true);
+        previewProgressEl.classList.toggle('hidden', false);
+        
+        const param = (id && `id=${id}`) || '';
+        const responseContent = await owif.utils.fetchData(`/autotimer/test?${param}`);
         const data = responseContent['e2autotimersimulate'] || responseContent['e2autotimertest'];
-        const autotimers = data['e2testtimer'] || data['e2simulatedtimer'];
-        const previewTbodyEl = document.getElementById('at-preview__list');
+        const autotimers = data['e2simulatedtimer'] || data['e2testtimer'] || [];
         const newNode = document.createElement('tbody');
-        document.getElementById('at-preview__progress').classList.toggle('hidden', true);
+        previewProgressEl.classList.toggle('hidden', true);
         autotimers.forEach((autotimer) => {
           addRow(newNode, autotimer);
         });
         if (autotimers.length) {
-          previewTbodyEl.innerHTML = newNode.cloneNode(true).innerHTML;
+          previewResultsEl.innerHTML = newNode.cloneNode(true).innerHTML;
         } else {
-          document.getElementById('at-preview__no-results').classList.toggle('hidden', false);
+          previewNoResultsEl.classList.toggle('hidden', false);
         }
       },
 
@@ -890,7 +899,7 @@
         // (document.querySelector('button[name="create"]') || nullEl).onclick = self.createEntry;
         (document.querySelector('button[name="reload"]') || nullEl).onclick = self.populateList;
         (document.querySelector('button[name="process"]') || nullEl).onclick = self.process;
-        (document.querySelector('button[name="preview"]') || nullEl).onclick = self.preview;
+        (document.querySelector('button[name="previewAll"]') || nullEl).onclick = self.previewAll;
         (document.querySelector('button[name="timers"]') || nullEl).onclick = () => window.listTimers();
         (document.querySelector('button[name="settings"]') || nullEl).onclick = self.getSettings;
         (document.querySelector('button[name="saveSettings"]') || nullEl).onclick = self.saveSettings;
