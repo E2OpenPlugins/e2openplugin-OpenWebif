@@ -510,8 +510,8 @@
         previewNoResultsEl.classList.toggle('hidden', true);
         previewProgressEl.classList.toggle('hidden', false);
         
-        const param = (id && `id=${id}`) || '';
-        const responseContent = await owif.utils.fetchData(`/autotimer/test?${param}`);
+        const command = (id && `test?id=${id}`) || 'simulate';
+        const responseContent = await owif.utils.fetchData(`/autotimer/${command}`);
         const data = responseContent['e2autotimersimulate'] || responseContent['e2autotimertest'];
         const autotimers = data['e2simulatedtimer'] || data['e2testtimer'] || [];
         const newNode = document.createElement('tbody');
