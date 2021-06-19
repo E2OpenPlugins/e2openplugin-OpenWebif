@@ -15,3 +15,4 @@
 .project
 .pydevproject
 *.mo
+sourcefiles/.parcel-cache/
