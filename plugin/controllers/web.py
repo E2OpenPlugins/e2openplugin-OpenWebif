@@ -1418,14 +1418,14 @@ class WebController(BaseController):
 			return res
 
 		begintime = -1
-		if "time" in list(request.args.keys()):
+		if b"time" in list(request.args.keys()):
 			try:
 				begintime = int(request.args[b"time"][0])
 			except ValueError:
 				pass
 
 		endtime = None
-		if "endTime" in list(request.args.keys()):
+		if b"endTime" in list(request.args.keys()):
 			try:
 				endtime = int(request.args[b"endTime"][0])
 			except ValueError:
@@ -1451,14 +1451,14 @@ class WebController(BaseController):
 			return res
 
 		begintime = -1
-		if "time" in list(request.args.keys()):
+		if b"time" in list(request.args.keys()):
 			try:
 				begintime = int(request.args[b"time"][0])
 			except ValueError:
 				pass
 
 		endtime = None
-		if "endTime" in list(request.args.keys()):
+		if b"endTime" in list(request.args.keys()):
 			try:
 				endtime = int(request.args[b"endTime"][0])
 			except ValueError:
@@ -1586,14 +1586,14 @@ class WebController(BaseController):
 			return res
 
 		begintime = -1
-		if "time" in list(request.args.keys()):
+		if b"time" in list(request.args.keys()):
 			try:
 				begintime = int(request.args[b"time"][0])
 			except ValueError:
 				pass
 
 		endtime = -1
-		if "endTime" in list(request.args.keys()):
+		if b"endTime" in list(request.args.keys()):
 			try:
 				endtime = int(request.args[b"endTime"][0])
 			except ValueError:
