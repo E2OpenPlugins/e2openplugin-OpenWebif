@@ -14,6 +14,8 @@ commit_files() {
   rm -rf *.pyo
   rm -rf *.mo
   git checkout master
+  ./CI/chmod.sh
+  ./CI/dos2unix.sh
   ./CI/PEP8.sh
 }
 

@@ -38,6 +38,8 @@ jobs:
 
       - name: Build python 3.9
         run: |
+          sudo apt-get -q update
+          sudo apt-get install dos2unix
           pip3 install Cheetah3
           pip3 install six
           pip install --upgrade pip autopep8
