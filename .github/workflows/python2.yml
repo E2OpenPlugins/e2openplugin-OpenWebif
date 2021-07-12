@@ -22,6 +22,7 @@ jobs:
 
       - name: Build python 2.7
         run: |
+          sudo apt-get -q update
           sudo apt-get install -y closure-compiler nodejs npm gettext
           sudo npm install -g jshint
           pip install Cheetah
