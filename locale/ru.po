@@ -56,7 +56,7 @@ msgstr "%s %02d.%02d."
 #: ../plugin/controllers/models/movies.py:67
 #, python-format
 msgid "%s %02d.%02d.%d"
-msgstr "%s %02d.%02d.%d""
+msgstr "%s %02d.%02d.%d"
 
 #: ../plugin/controllers/BouquetEditor.py:549
 #, python-format
