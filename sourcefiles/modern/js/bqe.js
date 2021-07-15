@@ -58,8 +58,8 @@
     return isFound;
   };
 
-  const apiRequest = (url) => {
-    return fetch(url)
+  const apiRequest = (url, options = {}) => {
+    return fetch(url, options)
       .then((response) => {
         if (response.ok) {
           return response.json()
@@ -1076,7 +1076,7 @@
                 method: fileUploadForm.method,
                 body: formData,
               })
-                .then(() => {});
+                .then((res) => self.doRestore(res[1]));
             }
           }
         );
