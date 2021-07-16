@@ -40,7 +40,7 @@ class TestEnigma2FileAPICalls(unittest.TestCase):
 		req = requests.get(self.file_url, params=params)
 		print("Tried to fetch {!r}".format(req.url))
 		# print(req.text)
-		expected_body = '#EXTM3U\n#EXTVLCOPT--http-reconnect=true\n#EXTINF:-1,stream\nhttp://{netloc}:80/file?action=download&file=/etc/passwd'.format(netloc=self.enigma2_host)
+		expected_body = '#EXTM3U\n#EXTVLCOPT:http-reconnect=true\n#EXTINF:-1,stream\nhttp://{netloc}:80/file?action=download&file=/etc/passwd'.format(netloc=self.enigma2_host)
 		self.assertEqual(expected_body, req.text)
 		self.assertEqual(200, req.status_code)
 
