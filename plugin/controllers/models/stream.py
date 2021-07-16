@@ -125,11 +125,11 @@ def getStream(session, request, m3ufile):
 	else:
 		auth = ''
 
-	response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%shttp://%s%s:%s/%s%s\n" % (progopt, auth, request.getRequestHostname(), portNumber, sRef, args)
+	response = "#EXTM3U \n#EXTVLCOPT:http-reconnect=true \n%shttp://%s%s:%s/%s%s\n" % (progopt, auth, request.getRequestHostname(), portNumber, sRef, args)
 	if config.OpenWebif.playiptvdirect.value:
 		if "http://" in sRef or "https://" in sRef:
 			l = sRef.split(":http")[1]
-			response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true\n%shttp%s\n" % (progopt, l)
+			response = "#EXTM3U \n#EXTVLCOPT:http-reconnect=true\n%shttp%s\n" % (progopt, l)
 	request.setHeader('Content-Type', 'application/x-mpegurl')
 	# Note: do not rename the m3u file all the time
 	fname = getUrlArg(request, "fname")
@@ -245,7 +245,7 @@ def getTS(self, request):
 		else:
 			auth = ''
 
-		response = "#EXTM3U \n#EXTVLCOPT--http-reconnect=true \n%s%s://%s%s:%s/file?file=%s%s\n" % ((progopt, proto, auth, request.getRequestHostname(), portNumber, quote(filename), args))
+		response = "#EXTM3U \n#EXTVLCOPT:http-reconnect=true \n%s%s://%s%s:%s/file?file=%s%s\n" % ((progopt, proto, auth, request.getRequestHostname(), portNumber, quote(filename), args))
 		request.setHeader('Content-Type', 'application/x-mpegurl')
 		return response
 	else:
