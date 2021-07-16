@@ -1,4 +1,4 @@
-name: python2
+name: build
 
 on:
   push:
@@ -14,7 +14,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: 'master'
-          fetch-depth: 0
 
       - uses: actions/setup-python@v2
         with:
@@ -22,20 +21,35 @@ jobs:
 
       - name: Build python 2.7
         run: |
-          sudo apt-get -q update
-          sudo apt-get install -y closure-compiler nodejs npm gettext
-          sudo npm install -g jshint
           pip install Cheetah
           pip install -r CI/requirements.txt
-          pip install bandit==1.6.2
           pip install six
           python -m compileall -l . -l plugin -l plugin/backport -l plugin/controllers -l plugin/controllers/models
           cheetah compile -R plugin
           python testsuite/evil_eval.py
-          bandit -r plugin -f html -o bandit.html || true
-          python -m flake8 --ignore=W191,E501,E302,E711,E128,E265 --extend-exclude plugin/controllers/views/ plugin/ --output-file flake8_report.txt || true
-          jshint ./sourcefiles/js/ | tee jshint1_report.txt
-          jshint ./sourcefiles/modern/js/ | tee jshint2_report.txt
+
+      - uses: actions/checkout@v2
+        with:
+          ref: 'master'
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Build python 3.9
+        run: |
+          sudo apt-get -q update
+          sudo apt-get install -y closure-compiler nodejs npm gettext
+          sudo npm install -g jshint
+          pip3 install Cheetah3
+          pip3 install -r CI/requirements.txt
+          pip3 install bandit==1.6.2
+          pip3 install six
+          python -m compileall -l . -r 10 -q
+          cheetah compile -R plugin
+          python testsuite/evil_eval.py
+          ./CI/build.sh
           ./CI/create_ipk.sh
           ./CI/create_ipk.sh novxg
           ./CI/create_ipk.sh vti
@@ -45,6 +59,10 @@ jobs:
           export PKG3=$(ls -1 *_vti.ipk)
           export PKG4=$(ls -1 *_all.deb)
           mkdir Rel
+          bandit -r plugin -f html -o bandit.html || true
+          python -m flake8 --ignore=W191,E501,E302,E711,E128,E265 --extend-exclude plugin/controllers/views/ plugin/ --output-file flake8_report.txt || true
+          jshint ./sourcefiles/js/ | tee jshint1_report.txt
+          jshint ./sourcefiles/modern/js/ | tee jshint2_report.txt
           touch ./Rel/.nojekyll
           mv "${PKG1}" ./Rel
           mv "${PKG2}" ./Rel
