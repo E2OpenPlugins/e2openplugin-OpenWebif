@@ -6413,7 +6413,8 @@ fieldset[disabled] .form-control {
  background-color: #fff; 
  overflow: hidden; 
  cursor: pointer; 
- transition: all 0.2s ease; 
+ transition: all 0.2s ease;
+ touch-action: manipulation; /* don't zoom on double-tap */
 }
 
 .remote__group--numerical .remote__button, 
