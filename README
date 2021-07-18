@@ -5,9 +5,11 @@
 
                                  Depends
            python-pprint python-cheetah python-json python-unixadmin
+            python-twisted-web python-pyopenssl python-compression 
+                  python-ipaddress python-six (>= 1.14) 
 
                                                                             
   This file is open source software; you can redistribute it and/or modify  
-     it under the terms of the GNU General Public License version 2 as      
+     it under the terms of the GNU General Public License, Version 3 as      
                published by the Free Software Foundation.                   
                                                                             
