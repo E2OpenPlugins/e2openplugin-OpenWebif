@@ -518,10 +518,10 @@ class WebController(BaseController):
 		"""
 		bRef = getUrlArg(request, "bRef", "")
 		request.setHeader('Content-Type', 'application/xspf+xml')
-		bname = getUrlArg(request, "bname")
-		if bname != None:
-			bname = bname.replace(",", "_").replace(";", "_")
-			request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (bname, 'xspf'))
+		bouquetName = getUrlArg(request, "bName")
+		if bouquetName != None:
+			bouquetName = bouquetName.replace(",", "_").replace(";", "_")
+			request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (bouquetName, 'xspf'))
 		services = getServices(bRef, False)
 		if comp_config.OpenWebif.auth_for_streaming.value:
 			session = GetSession()
@@ -534,7 +534,7 @@ class WebController(BaseController):
 		portNumber = comp_config.OpenWebif.streamport.value
 		services["host"] = "%s:%s" % (request.getRequestHostname(), portNumber)
 		services["auth"] = auth
-		services["bname"] = bname
+		services["bname"] = bouquetName
 		return services
 
 	def P_servicesm3u(self, request):
@@ -557,10 +557,10 @@ class WebController(BaseController):
 		"""
 		bRef = getUrlArg(request, "bRef", "")
 		request.setHeader('Content-Type', 'application/x-mpegurl')
-		bname = getUrlArg(request, "bname")
-		if bname != None:
-			bname = bname.replace(",", "_").replace(";", "_")
-			request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (bname, 'm3u8'))
+		bouquetName = getUrlArg(request, "bName")
+		if bouquetName != None:
+			bouquetName = bouquetName.replace(",", "_").replace(";", "_")
+			request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (bouquetName, 'm3u8'))
 		services = getServices(bRef, False)
 		if comp_config.OpenWebif.auth_for_streaming.value:
 			session = GetSession()
