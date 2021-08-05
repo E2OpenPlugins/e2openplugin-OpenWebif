@@ -9,10 +9,11 @@ window.open('web/services.'+ plf +'?bRef=' + bq + '&bName='+ bn,'_blank');
 </script>
 <div id="accordion">
 #for $bouquet in $bouquets
+#set bn = $bouquet[1].replace('<','&lt;').replace('>','&gt;')
 <h1>
 <div style="display:inline-block">
-<span onclick="pl('$quote($bouquet[0])','$quote($bouquet[1])');return false;" style="margin-left:10px;margin-right:10px;" title="$tstrings['download_playlist'] $bouquet[1]" ><i class="fa fa-desktop"></i></span>
-<a style="display: inline-block;" href="#" id="ajax/channels?id=$quote($bouquet[0])&stype=$stype">$bouquet[1]</a>
+<span onclick="pl('$quote($bouquet[0])','$quote($bn)');return false;" style="margin-left:10px;margin-right:10px;" title="$tstrings['download_playlist'] $bouquet[1]" ><i class="fa fa-desktop"></i></span>
+<a style="display: inline-block;" href="#" id="ajax/channels?id=$quote($bouquet[0])&stype=$stype">$bn</a>
 </div></h1><div>$tstrings["loading"] ...</div>
 #end for
 </div>
