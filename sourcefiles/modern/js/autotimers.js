@@ -870,8 +870,8 @@
         filterPredicate.value = filter['predicate'];
         filterWhere.value = filter['where'];
         if (filter['where'] === 'dayofweek') {
-          selectedOptions = filter['value'].split(',');
-          for (option of filterDayOfWeek) {
+          const selectedOptions = filter['value'].split(',');
+          for (let option of filterDayOfWeek) {
             option.selected = selectedOptions.includes(option.value);
           }
           filterWhere.dispatchEvent(new Event('change'));
