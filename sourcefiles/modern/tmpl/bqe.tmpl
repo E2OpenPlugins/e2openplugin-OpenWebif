@@ -293,7 +293,14 @@
 	<input type="file" name="rfile" id="rfile">
 </form>
 
-<script src="/modern/js/bqe-app.js"></script>
+<!-- script src="/modern/js/bqe-app.js"></script -->
+<%= htmlWebpackPlugin
+  .tags
+  .bodyTags
+  .filter((tag) => tag.tagName === 'script')
+  .join('') 
+%>
+
 <script>
 	jQuery.AdminBSB.input.activate();
 </script>

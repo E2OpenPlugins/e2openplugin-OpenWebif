@@ -900,7 +900,15 @@
 <script src="/modern/plugins/sweetalert/sweetalert.min.js"></script>
 <script src="/modern/plugins/momentjs/moment.min.js"></script>
 <script src="/modern/plugins/screenfull/screenfull.min.js"></script>
-<script src="/modern/js/entry-app.js"></script>
+
+<!-- script src="/modern/js/owif-app.js"></script -->
+<%= htmlWebpackPlugin
+  .tags
+  .bodyTags
+  .filter((tag) => tag.tagName === 'script')
+  .join('') 
+%>
+
 <script src="/modern/js/vti-bootstrap-date-timepicker.min.js"></script>
 <script src="/modern/js/admin.min.js"></script>
 <script src="/modern/js/vti-responsive.min.js"></script>
