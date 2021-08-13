@@ -4,8 +4,7 @@
   "description": "Static assets for OpenWebif interface",
   "main": "index.js",
   "dependencies": {
-    "@babel/runtime": "^7.14.6",
-    "core-js": "^3.14.0"
+    "@babel/runtime": "^7.14.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.5",
@@ -19,7 +18,6 @@
     "commander": "^7.2.0",
     "glob-uglifyjs": "^2.0.0",
     "mkdirp": "^1.0.4",
-    "parcel-bundler": "^1.12.5",
     "prettier": "^2.3.1",
     "sass": "^1.35.1"
   },
@@ -37,12 +35,9 @@
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
     "build-classic-js": "npx glob-uglifyjs -c ./classic-glob-uglifyjs.config",
-    "uglifymodern": "npx glob-uglifyjs -c ./modern-glob-uglifyjs.config",
-    "build-entry": "npx parcel build ./modern/entry-app.js --out-dir ../plugin/public/modern/js/",
-    "build-autotimers": "npx parcel build ./modern/autotimers-app.js --out-dir ../plugin/public/modern/js/",
-    "build-bqe": "npx parcel build ./modern/bqe-app.js --out-dir ../plugin/public/modern/js/",
-    "build-js": "npm run-script uglifymodern; npm run-script build-entry; npm run-script build-autotimers; npm run-script build-bqe",
-    "build-css": "npx ./_utils/mincss.js -o '../plugin/public/' './modern/css/**/*.css'",
+    "uglify-modern": "npx glob-uglifyjs -c ./modern-glob-uglifyjs.config",
+    "build-js": "npm run-script uglify-modern & npm run build-prod --prefix modern",
+    "build-css": "node ./_utils/mincss.js -o '../plugin/public/' './modern/css/**/*.css'",
     "test": "echo 'Error: no test specified!' && exit 1"
   },
   "repository": {

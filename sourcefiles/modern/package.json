@@ -1,0 +1,37 @@
+{
+  "name": "openwebif-modern-assets",
+  "version": "2.0.0",
+  "description": "Static assets for OpenWebif modern interface",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Web Dev Ben <https://github.com/wedebe>",
+  "license": "ISC",
+  "homepage": "https://github.com/E2OpenPlugins/e2openplugin-OpenWebif#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/E2OpenPlugins/e2openplugin-OpenWebif.git"
+  },
+  "bugs": {
+    "url": "https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/issues"
+  },
+  "scripts": {
+    "build-dev": "webpack --mode development",
+    "build-prod": "webpack --mode production"
+  },
+  "dependencies": {
+    "@babel/runtime-corejs3": "^7.14.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "html-webpack-plugin": "^5.3.2",
+    "prettier": "^2.3.2",
+    "webpack": "^5.41.1",
+    "webpack-cli": "^4.7.2"
+  }
+}
