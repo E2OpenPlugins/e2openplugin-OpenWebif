@@ -2,16 +2,21 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const publicPath = '/modern/js/';
+const paths = {
+  plugin: '../../plugin/',
+  public: '../../plugin/public/modern/js/',
+  tmpl: '../../plugin/controllers/views/responsive/',
+};
 
 const config = {
+  // context: path.resolve(__dirname, 'app'),
   entry: {
-    owif:          ['./entry-app.js'],
-    autotimers:    ['./autotimers-app.js'],
-    bouqueteditor: ['./bqe-app.js'],
+    owif:          ['./entry-app'],
+    autotimers:    ['./autotimers-app'],
+    bouqueteditor: ['./bqe-app'],
   },
   output: {
-    path: path.resolve(__dirname, '../../plugin/public' + publicPath),
+    path: path.resolve(__dirname, `${paths['public']}`),
     filename: '[name]-app.[contenthash].js',
     clean: true,
   },
@@ -31,32 +36,32 @@ const config = {
     // }),
     new HtmlWebpackPlugin({
       // appMountId: 'fullmaincontent',
-      filename: './tmpl/main.tmpl',
-      template: '../../plugin/controllers/views/responsive/main.tmpl',
+      template: './tmpl/main.tmpl',
+      filename: path.resolve(__dirname, `${paths['tmpl']}main.tmpl`),
       chunks: ['owif'],
-      publicPath: publicPath,
-      inject: false,
+      publicPath: paths['public'],
       scriptLoading: 'blocking',
+      inject: false,
       minify: false,
     }),
     new HtmlWebpackPlugin({
       // appMountId: 'content_main',
-      filename: './tmpl/at.tmpl',
-      template: '../../plugin/controllers/views/responsive/ajax/at.tmpl',
+      template: './tmpl/at.tmpl',
+      filename: path.resolve(__dirname, `${paths['tmpl']}ajax/at.tmpl`),
       chunks: ['autotimers'],
-      publicPath: publicPath,
-      inject: false,
+      publicPath: paths['public'],
       scriptLoading: 'blocking',
+      inject: false,
       minify: false,
     }),
     new HtmlWebpackPlugin({
       // appMountId: 'bqemain',
-      filename: './tmpl/bqe.tmpl',
-      template: '../../plugin/controllers/views/responsive/ajax/bqe.tmpl',
+      template: './tmpl/bqe.tmpl',
+      filename: path.resolve(__dirname, `${paths['tmpl']}ajax/bqe.tmpl`),
       chunks: ['bouqueteditor'],
-      publicPath: publicPath,
-      inject: false,
+      publicPath: paths['public'],
       scriptLoading: 'blocking',
+      inject: false,
       minify: false,
     }),
   ],

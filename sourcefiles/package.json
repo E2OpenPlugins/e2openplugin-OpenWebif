@@ -36,7 +36,7 @@
     "preinstall": "npx npm-force-resolutions",
     "build-classic-js": "npx glob-uglifyjs -c ./classic-glob-uglifyjs.config",
     "uglify-modern": "npx glob-uglifyjs -c ./modern-glob-uglifyjs.config",
-    "build-js": "npm run-script uglify-modern & npm run build-prod --prefix modern",
+    "build-js": "npm run build-prod --prefix modern; npm run-script uglify-modern;",
     "build-css": "node ./_utils/mincss.js -o '../plugin/public/' './modern/css/**/*.css'",
     "test": "echo 'Error: no test specified!' && exit 1"
   },
