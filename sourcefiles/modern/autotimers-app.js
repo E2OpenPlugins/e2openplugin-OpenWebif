@@ -1,1 +1,3 @@
-require('./js/autotimers.js');
+import { initApp } from './js/autotimers.mjs';
+
+initApp();

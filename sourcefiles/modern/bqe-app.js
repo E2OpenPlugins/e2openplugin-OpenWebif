@@ -1,1 +1,3 @@
-require('./js/bqe.js');
+import { initApp } from './js/bqe.mjs';
+
+initApp();

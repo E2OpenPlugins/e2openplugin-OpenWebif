@@ -32,7 +32,7 @@
  * ----------------------------------------------------------------------------
  */
 
- (function () {
+
   // handle `'`, `&` etc
   function decodeHtml(html = '') {
     const txt = document.createElement('textarea');
@@ -986,6 +986,6 @@
     };
   };
 
-  const autoTimersApp = new AutoTimersApp();
-  autoTimersApp.init();
-})();
+export function initApp () {
+  new AutoTimersApp().init();
+}

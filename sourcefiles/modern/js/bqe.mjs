@@ -39,7 +39,7 @@
 //*******************************************************************************
 // TODO: alternatives
 
-(function () {
+
   String.prototype.customContainsText = function (text = '') {
     if (!text) {
       return false;
@@ -1220,6 +1220,6 @@
     };
   };
 
-  const bqe = new BQE();
-  bqe.init();
-})();
+export function initApp () {
+  new BQE().init();
+}
