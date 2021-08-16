@@ -1,3 +1,3 @@
-import { initApp } from './js/bqe.mjs';
+import { BQE } from './js/bqe.mjs';
 
-initApp();
+new BQE().init();

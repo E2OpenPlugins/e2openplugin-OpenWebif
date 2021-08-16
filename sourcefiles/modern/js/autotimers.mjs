@@ -291,7 +291,7 @@
     }
   }
 
-  const AutoTimersApp = function () {
+  export const AutoTimersApp = function () {
     // keep reference to object
     let self;
 
@@ -985,7 +985,3 @@
       },
     };
   };
-
-export function initApp () {
-  new AutoTimersApp().init();
-}

@@ -1,3 +1,3 @@
-import { initApp } from './js/autotimers.mjs';
+import { AutoTimersApp } from './js/autotimers.mjs';
 
-initApp();
+new AutoTimersApp().init();

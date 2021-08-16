@@ -202,7 +202,7 @@
     }
   }
 
-  const BQE = function () {
+  export const BQE = function () {
     // keep reference to object.
     let self;
 
@@ -1219,7 +1219,3 @@
       },
     };
   };
-
-export function initApp () {
-  new BQE().init();
-}
