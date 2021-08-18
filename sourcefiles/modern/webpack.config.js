@@ -18,7 +18,9 @@ const config = {
   output: {
     path: path.resolve(__dirname, `${paths['plugin']}public${paths['public']}`),
     publicPath: paths['public'],
-    filename: '[name]-app.[contenthash].js',
+    filename: '[name]-app.js',
+    // // for future use (asset versioning)
+    // filename: '[name]-app.[contenthash].js',
     clean: true,
   },
   module: {
@@ -35,33 +37,34 @@ const config = {
     // new webpack.ProvidePlugin({
     //     $: 'jquery',
     // }),
-    new HtmlWebpackPlugin({
-      // appMountId: 'fullmaincontent',
-      template: './tmpl/main.tmpl',
-      filename: path.resolve(__dirname, `${paths['tmpl']}main.tmpl`),
-      minify: false,
-      chunks: ['owif'],
-      scriptLoading: 'blocking',
-      inject: false,
-    }),
-    new HtmlWebpackPlugin({
-      // appMountId: 'content_main',
-      template: './tmpl/at.tmpl',
-      filename: path.resolve(__dirname, `${paths['tmpl']}ajax/at.tmpl`),
-      minify: false,
-      chunks: ['autotimers'],
-      scriptLoading: 'blocking',
-      inject: false,
-    }),
-    new HtmlWebpackPlugin({
-      // appMountId: 'bqemain',
-      template: './tmpl/bqe.tmpl',
-      filename: path.resolve(__dirname, `${paths['tmpl']}ajax/bqe.tmpl`),
-      minify: false,
-      chunks: ['bouqueteditor'],
-      scriptLoading: 'blocking',
-      inject: false,
-    }),
+    // for future use (asset versioning)
+    // new HtmlWebpackPlugin({
+    //   // appMountId: 'fullmaincontent',
+    //   template: './tmpl/main.tmpl',
+    //   filename: path.resolve(__dirname, `${paths['tmpl']}main.tmpl`),
+    //   minify: false,
+    //   chunks: ['owif'],
+    //   scriptLoading: 'blocking',
+    //   inject: false,
+    // }),
+    // new HtmlWebpackPlugin({
+    //   // appMountId: 'content_main',
+    //   template: './tmpl/at.tmpl',
+    //   filename: path.resolve(__dirname, `${paths['tmpl']}ajax/at.tmpl`),
+    //   minify: false,
+    //   chunks: ['autotimers'],
+    //   scriptLoading: 'blocking',
+    //   inject: false,
+    // }),
+    // new HtmlWebpackPlugin({
+    //   // appMountId: 'bqemain',
+    //   template: './tmpl/bqe.tmpl',
+    //   filename: path.resolve(__dirname, `${paths['tmpl']}ajax/bqe.tmpl`),
+    //   minify: false,
+    //   chunks: ['bouqueteditor'],
+    //   scriptLoading: 'blocking',
+    //   inject: false,
+    // }),
   ],
   optimization: {
     emitOnErrors: true,
