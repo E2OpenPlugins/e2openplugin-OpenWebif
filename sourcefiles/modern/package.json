@@ -18,6 +18,9 @@
     "build-dev": "webpack --mode development",
     "build-prod": "webpack --mode production"
   },
+  "browserslist": [
+    "last 4 versions, not dead"
+  ],
   "dependencies": {
     "@babel/runtime-corejs3": "^7.14.7"
   },
