@@ -21,6 +21,7 @@
   "browserslist": [
     "last 4 versions, not dead"
   ],
+  "browserslist-preview": "https://browserslist.dev",
   "dependencies": {
     "@babel/runtime-corejs3": "^7.14.7"
   },
