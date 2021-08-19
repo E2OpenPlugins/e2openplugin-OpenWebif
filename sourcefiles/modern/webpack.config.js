@@ -3,10 +3,19 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const paths = {
-  plugin: '../../plugin/',
   public: '/modern/js/',
+  plugin: '../../plugin/',
   tmpl:   '../../plugin/controllers/views/responsive/',
 };
+
+const legacyJsFiles = [
+  path.resolve(__dirname, 'js', 'vti-responsive-epgr.js'),
+  path.resolve(__dirname, 'js', 'vti-responsive-multiepg.js'),
+  path.resolve(__dirname, 'js', 'vti-bootstrap-date-timepicker.js'),
+  path.resolve(__dirname, 'js', 'admin.js'),
+  path.resolve(__dirname, 'js', 'vti-responsive.js'),
+  path.resolve(__dirname, 'js', 'vti.js'),
+];
 
 const config = {
   // context: path.resolve(__dirname, 'app'),
@@ -14,6 +23,7 @@ const config = {
     owif:          './entry-app',
     autotimers:    './autotimers-app',
     bouqueteditor: './bqe-app',
+    legacy:        legacyJsFiles,
   },
   output: {
     path: path.resolve(__dirname, `${paths['plugin']}public${paths['public']}`),
@@ -27,23 +37,36 @@ const config = {
     rules: [
       {
         test: /\.js$/,
+        type: 'asset/resource',
+        generator: {
+          filename: '[name].min[ext]',
+          // // for future use (asset versioning)
+          // filename: '[name].min.[contenthash][ext]',
+        },
+        include: legacyJsFiles,
+      },
+      {
+        test: /\.js$/,
         use: 'babel-loader',
-        exclude: /node_modules/
-      }
-    ]
+        exclude: [
+          /[\\/]node_modules[\\/]/,
+          /[\\/]plugins[\\/]/,
+        ].concat(legacyJsFiles),
+      },
+    ],
+  },
+  externals: {
+    // require("jquery") is external and available on the global var jQuery
+    "jquery": "jQuery"
   },
   plugins: [
-    // //for future use (1)
-    // new webpack.ProvidePlugin({
-    //     $: 'jquery',
-    // }),
     // for future use (asset versioning)
     // new HtmlWebpackPlugin({
     //   // appMountId: 'fullmaincontent',
     //   template: './tmpl/main.tmpl',
     //   filename: path.resolve(__dirname, `${paths['tmpl']}main.tmpl`),
     //   minify: false,
-    //   chunks: ['owif'],
+    //   chunks: ['owif', 'legacy'],
     //   scriptLoading: 'blocking',
     //   inject: false,
     // }),
