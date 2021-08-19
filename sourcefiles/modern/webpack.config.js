@@ -73,11 +73,14 @@ const config = {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
-          chunks: 'all'
-        }
-      }
-    }
-  }
+          chunks: 'all',
+        },
+      },
+    },
+    runtimeChunk: { 
+      name: 'runtime',
+    },
+  },
 };
 
 module.exports = (env, argv) => {
