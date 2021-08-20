@@ -100,9 +100,6 @@ const config = {
         },
       },
     },
-    runtimeChunk: { 
-      name: 'runtime',
-    },
   },
 };
 
