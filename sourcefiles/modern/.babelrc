@@ -1,12 +1,15 @@
 {
   "presets": [
-    ["@babel/preset-env", {
-      "corejs": 2,
-      "targets": "last 2 versions, not dead",
-      "useBuiltIns": "usage",
-      "forceAllTransforms": true
-    }],
-    ["minify"]
+    ["@babel/preset-env",
+      {
+        "debug": true,
+        "useBuiltIns": "usage",
+        "corejs": { 
+          "version": "3.8",
+          "proposals": false
+        }
+      }
+    ]
   ],
-  "sourceMaps": false
+  "sourceMaps": true
 }

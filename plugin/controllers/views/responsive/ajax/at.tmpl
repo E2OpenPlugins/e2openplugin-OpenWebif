@@ -838,6 +838,15 @@
 <script src="/modern/plugins/xml2json/xml2json.min.js"></script>
 <script src="/modern/plugins/strftime/strftime.js"></script>
 <script src="/modern/plugins/choices/choices.min.js"></script>
+
+## for future use (asset versioning)
+## <!-- htmlWebpackPlugin renders the following js includes -->
+## <%= htmlWebpackPlugin
+##   .tags
+##   .bodyTags
+##   .filter((tag) => tag.tagName === 'script')
+##   .join('') 
+## %>
 <script src="/modern/js/autotimers-app.js"></script>
 
 #end filter

@@ -39,7 +39,7 @@
 //*******************************************************************************
 // TODO: alternatives
 
-(function () {
+
   String.prototype.customContainsText = function (text = '') {
     if (!text) {
       return false;
@@ -78,12 +78,21 @@
       });
   };
 
+  const _serviceTypeMap = {
+    '1':  'SD',
+    '2':  'Radio',
+    '16': 'SD4',
+    '19': 'HD',
+    '1F': 'UHD',
+    'D3': 'OPT',
+  }
+
   class Channel {
     constructor (serviceObj) {
       this.data = { ...serviceObj };
       this._sRefParts = this.data['servicereference'].split(':');
       this.data['_ns'] = this._getNS();
-      this.data['_stype'] = this._serviceTypeMap[this._sRefParts[2]] || 'Other';
+      this.data['_stype'] = _serviceTypeMap[this._sRefParts[2]] || 'Other';
       this.searchFields = {
         'servicename': this.normaliseText(this.data['servicename']),
         'provider': this.normaliseText(this.data['servicename']),
@@ -105,15 +114,6 @@
         this.searchFields['provider'].customContainsText(text) ||
         this.searchFields['_stype'].indexOf(text) >= 0
       );
-    }
-
-    _serviceTypeMap = {
-      '1': 'SD',
-      '2': 'Radio',
-      '16': 'SD4',
-      '19': 'HD',
-      '1F': 'UHD',
-      'D3': 'OPT',
     }
 
     _getNS () {
@@ -202,7 +202,7 @@
     }
   }
 
-  const BQE = function () {
+  export const BQE = function () {
     // keep reference to object.
     let self;
 
@@ -1219,7 +1219,3 @@
       },
     };
   };
-
-  const bqe = new BQE();
-  bqe.init();
-})();

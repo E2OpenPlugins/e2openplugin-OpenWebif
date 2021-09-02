@@ -32,7 +32,7 @@
  * ----------------------------------------------------------------------------
  */
 
- (function () {
+
   // handle `'`, `&` etc
   function decodeHtml(html = '') {
     const txt = document.createElement('textarea');
@@ -291,7 +291,7 @@
     }
   }
 
-  const AutoTimersApp = function () {
+  export const AutoTimersApp = function () {
     // keep reference to object
     let self;
 
@@ -985,7 +985,3 @@
       },
     };
   };
-
-  const autoTimersApp = new AutoTimersApp();
-  autoTimersApp.init();
-})();
