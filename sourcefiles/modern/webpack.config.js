@@ -9,6 +9,7 @@ const paths = {
 };
 
 const legacyJsFiles = [
+  path.resolve(__dirname, 'js', 'openwebif.js'),
   path.resolve(__dirname, 'js', 'vti-responsive-epgr.js'),
   path.resolve(__dirname, 'js', 'vti-responsive-multiepg.js'),
   path.resolve(__dirname, 'js', 'vti-bootstrap-date-timepicker.js'),
