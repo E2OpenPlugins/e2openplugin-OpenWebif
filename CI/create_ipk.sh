@@ -10,21 +10,17 @@ VER=$(head -n 1 CHANGES.md | grep -i '## Version' | sed 's/^## Version \([[:digi
 # '%cd': committer date (format respects --date= option); '%t': abbreviated tree hash
 GITVER=git$(git log -1 --format="%cd" --date="format:%Y%m%d")-r$(git rev-list HEAD --since=yesterday --count)
 
-PKG=${D}enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_all.ipk
-PKGL=enigma2-plugin-extensions-openwebif_latest_all.ipk
+PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_all.ipk
 if [ "$1" == "novxg" ]; then
 	PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_novxg.ipk
-	PKGL=enigma2-plugin-extensions-openwebif_latest_novxg.ipk
 fi
 
 if [ "$1" == "vti" ]; then
 	PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_vti.ipk
-	PKGL=enigma2-plugin-extensions-openwebif_latest_vti.ipk
 fi
 
 if [ "$1" == "deb" ]; then
 	PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_all.deb
-	PKGL=enigma2-plugin-extensions-openwebif_latest_all.deb
 fi
 
 popd &> /dev/null
@@ -153,10 +149,6 @@ if [ "$1" == "deb" ]; then
 	ls -la
 	mv OpenWebif.deb ${PKG}
 fi
-
-cd ${D}
-rm -rf ${PKGL} 
-ln -s ${PKG} ${PKGL}
 
 rm -rf ${P}
 rm -rf ${B}
