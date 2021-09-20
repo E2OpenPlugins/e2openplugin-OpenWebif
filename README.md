@@ -5,7 +5,7 @@
 OpenWebif is an open source browser-based interface for Enigma2-based set-top boxes (STBs).
 
 ## Screenshots
-[OpenWebif Screenshots (Classic interface)](screenshots/SCREENSHOTS.md)
+[Classic interface](screenshots/SCREENSHOTS.md)
 (TODO: add Modern interface screenshots)
 
 ## Usage
