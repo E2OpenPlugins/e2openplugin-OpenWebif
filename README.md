@@ -88,7 +88,7 @@ cd /tmp
 init 4
 
 # fetch OpenWebif ipk
-wget -O openwebif.ipk https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/gh-pages/enigma2-plugin-extensions-openwebif_1.4.8-git20210718-r4_all.ipk
+wget -O openwebif.ipk https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/raw/gh-pages/enigma2-plugin-extensions-openwebif_latest_all.ipk
 
 # install downloaded ipk file
 opkg install openwebif.ipk

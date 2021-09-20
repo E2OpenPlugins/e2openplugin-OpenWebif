@@ -71,6 +71,10 @@ jobs:
           mv flake8_report.txt ./Rel
           mv jshint1_report.txt ./Rel
           mv jshint2_report.txt ./Rel
+          cd Rel
+          export PKG2=$(ls -1 *_all.ipk)
+          ln -s "${PKG2}" enigma2-plugin-extensions-openwebif_latest_all.ipk
+          cd ..
           cd doc
           make html
           cd build/html
