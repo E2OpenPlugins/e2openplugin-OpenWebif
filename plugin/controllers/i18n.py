@@ -573,6 +573,7 @@ tstrings = {
 	'recordingtype': _("Recording Type"),
 	'normal': _("normal"),
 	'descrambledecm': _("descramble and record ecm"),
-	'scrambledecm': _("don't descramble, record ecm")
+	'scrambledecm': _("don't descramble, record ecm"),
+	'REC': _("REC")
 
 }
