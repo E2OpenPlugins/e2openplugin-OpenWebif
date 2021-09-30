@@ -747,6 +747,8 @@ def getAllInfo():
 		remote = "qviart"
 	elif procmodel in ("lunix4k"):
 		remote = "lunix4k"
+	elif procmodel in ("dual"):
+		remote = "dual"
 	elif procmodel in ("sh1", "lc"):
 		remote = "sh1"
 	elif procmodel in ("hzero", "h3", "h4", "h5", "h6", "h7", "h8", "h9", "i55plus", "h8.2h", "h9.s", "h9.t", "h9.2h", "h9.2s", "h9combo", "h9combose", "h9twin", "h9twinse", "h9se.s", "h9se.2s", "h9se.2h", "h10.t", "h10.2s", "h10.2h", "h11"):
