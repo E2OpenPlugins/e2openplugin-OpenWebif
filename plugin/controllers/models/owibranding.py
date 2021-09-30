@@ -167,14 +167,16 @@ def getAllInfo():
 				model = procmodel.replace("revo4k", "Revo4K")
 			elif procmodel == "galaxy4k":
 				model = procmodel.replace("galaxy4k", "Galaxy4K")
-		elif (procmodel.startswith("lunix")):
+		elif (procmodel.startswith("lunix") or procmodel.startswith("dual")):
 			brand = "Qviart"
 			if procmodel == "lunix3-4k":
 				model = procmodel.replace("lunix3-4k", "Lunix3-4K")
 			elif procmodel == "lunix":
 				model = procmodel.replace("lunix", "Lunix")
-			if procmodel == "lunix4k":
+			elif procmodel == "lunix4k":
 				model = procmodel.replace("lunix4k", "Lunix4K")
+			elif procmodel == "dual":
+				model = procmodel.replace("dual", "Dual")
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBox"
 		f = open("/proc/stb/info/model", 'r')  # To-Do: Check if "model" is really correct ...
