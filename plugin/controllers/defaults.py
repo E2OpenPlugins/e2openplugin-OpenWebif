@@ -12,7 +12,7 @@ from Components.Network import iNetwork
 
 from enigma import eEnv
 
-OPENWEBIFVER = "OWIF 1.4.8"
+OPENWEBIFVER = "OWIF 1.4.9"
 
 PLUGIN_NAME = 'OpenWebif'
 PLUGIN_DESCRIPTION = "OpenWebif Configuration"
@@ -148,9 +148,6 @@ def getOpenwebifPackageVersion():
 	return version
 
 
-OPENWEBIFPACKAGEVERSION = getOpenwebifPackageVersion()
-
-
 def getUserCSS(fn):
 	if os.path.isfile(fn):
 		return open(fn, 'r').read()
@@ -158,7 +155,74 @@ def getUserCSS(fn):
 		return ''
 
 
+def getAutoTimer():
+	try:
+		from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer  # noqa: F401
+		return True
+	except ImportError:
+		return False
+
+
+def getAutoTimerChangeResource():
+	if HASAUTOTIMER:
+		try:
+			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerChangeResource  # noqa: F401
+			return True
+		except ImportError:
+			return False
+	else:
+		return False
+
+
+def getAutoTimerTestResource():
+	if HASAUTOTIMER:
+		try:
+			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerTestResource  # noqa: F401
+			return True
+		except ImportError:
+			return False
+	else:
+		return False
+
+
+def getVPSPlugin():
+	try:
+		from Plugins.SystemPlugins.vps import Vps  # noqa: F401
+		return True
+	except ImportError:
+		return False
+
+
+def getSeriesPlugin():
+	try:
+		from Plugins.Extensions.SeriesPlugin.plugin import Plugins  # noqa: F401
+		return True
+	except ImportError:
+		return False
+
+
+def getATSearchtypes():
+	try:
+		from Plugins.Extensions.AutoTimer.AutoTimer import typeMap
+		return typeMap
+	except ImportError:
+		return {}
+
+
+OPENWEBIFPACKAGEVERSION = getOpenwebifPackageVersion()
+
 USERCSSCLASSIC = getUserCSS('/etc/enigma2/owfclassic.css')
 
-
 USERCSSRESPONSIVE = getUserCSS('/etc/enigma2/owfresponsive.css')
+
+HASAUTOTIMER = getAutoTimer()
+
+HASAUTOTIMERCHANGE = getAutoTimerChangeResource()
+
+HASAUTOTIMERTEST = getAutoTimerTestResource()
+
+HASVPS = getVPSPlugin()
+
+HASSERIES = getSeriesPlugin()
+
+ATSEARCHTYPES = getATSearchtypes()

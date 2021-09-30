@@ -33,7 +33,7 @@ from Plugins.Extensions.OpenWebif.controllers.models.config import getConfigs, g
 from Plugins.Extensions.OpenWebif.controllers.models.stream import GetSession
 from Plugins.Extensions.OpenWebif.controllers.base import BaseController
 from Plugins.Extensions.OpenWebif.controllers.models.locations import getLocations
-from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH, TRANSCODING, EXT_EVENT_INFO_SOURCE
+from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH, TRANSCODING, EXT_EVENT_INFO_SOURCE, HASAUTOTIMER, HASAUTOTIMERTEST, HASAUTOTIMERCHANGE, HASVPS, HASSERIES, ATSEARCHTYPES
 from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg, getEventInfoProvider
 
 try:
@@ -97,13 +97,7 @@ class AjaxController(BaseController):
 		event = getEvent(getUrlArg(request, "sref"), getUrlArg(request, "idev"))
 		event['event']['recording_margin_before'] = config.recording.margin_before.value
 		event['event']['recording_margin_after'] = config.recording.margin_after.value
-		at = False
-		try:
-			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer  # noqa: F401
-			at = True
-		except ImportError:
-			pass
-		event['at'] = at
+		event['at'] = HASAUTOTIMER
 		event['transcoding'] = TRANSCODING
 		event['moviedb'] = config.OpenWebif.webcache.moviedb.value if config.OpenWebif.webcache.moviedb.value else EXT_EVENT_INFO_SOURCE
 		event['extEventInfoProvider'] = extEventInfoProvider = getEventInfoProvider(event['moviedb'])
@@ -147,11 +141,7 @@ class AjaxController(BaseController):
 		if len(events) > 0:
 			t = getTimers(self.session)
 			timers = t["timers"]
-			try:
-				from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer  # noqa: F401
-				at = True
-			except ImportError:
-				pass
+			at = HASAUTOTIMER
 		if config.OpenWebif.webcache.theme.value:
 			theme = config.OpenWebif.webcache.theme.value
 		else:
@@ -336,40 +326,19 @@ class AjaxController(BaseController):
 
 	def P_at(self, request):
 		ret = {}
-		ret['hasVPS'] = 0
-		ret['hasSeriesPlugin'] = 0
-		ret['test'] = 0
+		ret['hasVPS'] = 1 if HASVPS else 0
+		ret['hasSeriesPlugin'] = 1 if HASSERIES else 0
+		ret['test'] = 1 if HASAUTOTIMERTEST else 0
+		ret['hasChange'] = 1 if HASAUTOTIMERCHANGE else 0
 		ret['autoadjust'] = getInfo()['timerautoadjust']
-		ret['searchTypes'] = {}
+		ret['searchTypes'] = ATSEARCHTYPES
 
-		try:
-			from Plugins.Extensions.AutoTimer.AutoTimer import typeMap
-			ret['searchTypes'] = typeMap
-		except ImportError:
-			pass
 		if config.OpenWebif.autotimer_regex_searchtype.value:
 			ret['searchTypes']['regex'] = 0
 
 		loc = getLocations()
 		ret['locations'] = loc['locations']
-
-		try:
-			from Plugins.SystemPlugins.vps import Vps  # noqa: F401
-			ret['hasVPS'] = 1
-		except ImportError:
-			pass
-		try:
-			from Plugins.Extensions.SeriesPlugin.plugin import Plugins  # noqa: F401
-			ret['hasSeriesPlugin'] = 1
-		except ImportError:
-			pass
-		try:
-			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerTestResource  # noqa: F401
-			ret['test'] = 1
-		except ImportError:
-			pass
 		ret['showiptvchannelsinselection'] = config.OpenWebif.webcache.showiptvchannelsinselection.value
-
 		return ret
 
 	def P_webtv(self, request):

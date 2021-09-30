@@ -40,7 +40,7 @@ from Components.config import config
 
 from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
 from Plugins.Extensions.OpenWebif.controllers.models.config import getCollapsedMenus, getConfigsSections, getShowName, getCustomName, getBoxName
-from Plugins.Extensions.OpenWebif.controllers.defaults import getPublicPath, getViewsPath, EXT_EVENT_INFO_SOURCE, STB_LANG, getIP
+from Plugins.Extensions.OpenWebif.controllers.defaults import getPublicPath, getViewsPath, EXT_EVENT_INFO_SOURCE, STB_LANG, getIP, HASAUTOTIMER
 
 
 def new_getRequestHostname(self):
@@ -357,11 +357,8 @@ class BaseController(resource.Resource):
 			elif variant == "ncam":
 				extras.append({'key': url, 'description': _("NCam Webinterface"), 'nw': '1'})
 
-		try:
-			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer  # noqa: F401
+		if HASAUTOTIMER:
 			extras.append({'key': 'ajax/at', 'description': _('AutoTimers')})
-		except ImportError:
-			pass
 
 		if fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/OpenWebif/controllers/views/ajax/bqe.tmpl")) or fileExists(resolveFilename(SCOPE_PLUGINS, "Extensions/OpenWebif/controllers/views/ajax/bqe.pyo")):
 			extras.append({'key': 'ajax/bqe', 'description': _('BouquetEditor')})

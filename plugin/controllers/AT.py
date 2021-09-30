@@ -162,6 +162,12 @@ class ATController(resource.Resource):
 		except ImportError as e:
 			# this is not an error
 			pass
+		try:
+			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerChangeResource
+			self.putChild(b'change', AutoTimerChangeResource())
+		except ImportError as e:
+			# this is not an error
+			pass
 		self.putChild(b'uploadfile', ATUploadFile(session))
 		self.putChild(b'restore', AutoTimerDoRestoreResource())
 		self.putChild(b'backup', AutoTimerDoBackupResource())

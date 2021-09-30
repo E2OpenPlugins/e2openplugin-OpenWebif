@@ -1,5 +1,10 @@
-## Version 1.4.8
+## Version 1.4.9
 ## (in development)
+* improve autotimer
+* improve responsive header
+* use webpack instead of parcel
+
+## Version 1.4.8
 * add recording type to timer api
 
 ## Version 1.4.7
