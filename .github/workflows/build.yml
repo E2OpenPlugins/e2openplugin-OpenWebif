@@ -72,8 +72,14 @@ jobs:
           mv jshint1_report.txt ./Rel
           mv jshint2_report.txt ./Rel
           cd Rel
-          export PKG2=$(ls -1 *_all.ipk)
-          ln -s "${PKG2}" enigma2-plugin-extensions-openwebif_latest_all.ipk
+          export PKG1=$(ls -1 *_all.ipk)
+          ln -s "${PKG1}" enigma2-plugin-extensions-openwebif_latest_all.ipk
+          export PKG1=$(ls -1 *_novxg.ipk)
+          ln -s "${PKG1}" enigma2-plugin-extensions-openwebif_latest_novxg.ipk
+          export PKG1=$(ls -1 *_vti.ipk)
+          ln -s "${PKG1}" enigma2-plugin-extensions-openwebif_latest_vti.ipk
+          export PKG1=$(ls -1 *_all.deb)
+          ln -s "${PKG1}" enigma2-plugin-extensions-openwebif_latest_all.deb
           cd ..
           cd doc
           make html
