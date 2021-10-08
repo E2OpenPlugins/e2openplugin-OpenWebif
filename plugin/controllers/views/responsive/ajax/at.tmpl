@@ -145,7 +145,7 @@
 					<ul class="header-dropdown" style="top: 0; right: 5px;">
 						<li><button type="button" name="preview" data-toggle="modal" data-target="#ATPreviewModal" title="$tstrings['at_preview']" class="m-0" style="border: none; background: none;"><i class="material-icons material-icons-mg-right">view_list</i></button></li>
 						<li><button type="button" name="rename" title="$tstrings['rename']" class="m-0" style="border: none; background: none;"><i class="material-icons material-icons-mg-right">text_fields</i></button></li>
-						<li><a href="#/at/edit?id={{id}}" title="$tstrings['at_edit']"><i class="material-icons material-icons-mg-right">edit</i></a> 
+						<li><a href="/#/at/edit?id={{id}}" title="$tstrings['at_edit']"><i class="material-icons material-icons-mg-right">edit</i></a> 
 						#if $hasChange == 1
 							#set $style_val=""
 						#else
@@ -232,7 +232,7 @@
 
 				<div id="at__page--list">
 					<div class="row align-center clearfix">
-						<a href="#/at/new" class="btn btn--skinned waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></a>
+						<a href="/#/at/new" class="btn btn--skinned waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></a>
 						<button type="button" name="reload" class="btn btn--skinned waves-effect"><i class="material-icons">refresh</i><span>$tstrings['reload']</span></button>
 						<button type="button" name="process" class="btn btn--skinned waves-effect"><i class="material-icons">code</i><span>$tstrings['at_process']</span></span></button>
 						<button type="button" name="previewAll" data-toggle="modal" data-target="#ATPreviewModal" class="btn btn--skinned waves-effect"><i class="material-icons">view_list</i><span>$tstrings['at_preview']</span></button>

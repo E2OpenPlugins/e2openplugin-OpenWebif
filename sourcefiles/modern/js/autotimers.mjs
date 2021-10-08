@@ -374,7 +374,7 @@
             newNode.querySelector('[name="preview"]').onclick = (evt) => self.preview(atItem.id);
             newNode.querySelector('[name="rename"]').onclick = (evt) => self.renameEntry(atItem.id, atItem.name);
 
-            const editEl = newNode.querySelector('a[href="#/at/edit?id={{id}}"]');
+            const editEl = newNode.querySelector('a[href="/#/at/edit?id={{id}}"]');
             editEl.href = editEl.href.replace('{{id}}', atItem.id);
             editEl.onclick = (evt) => {
               self.editEntry(atItem.id);
@@ -903,7 +903,7 @@
         (document.querySelector('button[name="timers"]') || nullEl).onclick = () => window.listTimers();
         (document.querySelector('button[name="settings"]') || nullEl).onclick = self.getSettings;
         (document.querySelector('button[name="saveSettings"]') || nullEl).onclick = self.saveSettings;
-        (document.querySelector('a[href="#/at/new"]') || nullEl).onclick = self.createEntry;
+        (document.querySelector('a[href="/#/at/new"]') || nullEl).onclick = self.createEntry;
 
         /* autotimer edit - buttons */
         (document.querySelector('button[name="addFilter"]') || nullEl).onclick = () => self.addFilter();
@@ -967,14 +967,14 @@
         self.autoTimerChoices = owif.gui.preparedChoices();
 
         const hash = window.location.hash;
-        if (hash.startsWith('#/at/new')) {
+        if (hash.startsWith('/#/at/new')) {
           const searchParams = new URLSearchParams(hash.split('?')[1] || '');
           const data = Object.fromEntries(searchParams);
           data['timespanFrom'] && (data['timespanFrom'] = getAdjustedTimeString(data['timespanFrom'], { hours: -1 }));
           data['timespanTo'] && (data['timespanTo'] = getAdjustedTimeString(data['timespanTo'], { hours: 1 }));
           data['sref'] && (data['e2service'] = { e2servicereference: data['sref'] });
           self.populateForm(data);
-        } else if (hash.startsWith('#/at/edit')) {
+        } else if (hash.startsWith('/#/at/edit')) {
           const searchParams = new URLSearchParams(hash.split('?')[1] || '');
           self.editEntry(searchParams.get('id'));
         } else {
