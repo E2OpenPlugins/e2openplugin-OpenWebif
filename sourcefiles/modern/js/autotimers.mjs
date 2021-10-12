@@ -729,7 +729,7 @@
           '!dayofweek',
         ];
         // TODO: tags?
-        const paramsToSendIfEmpty = filteringParamNames.concat(['offset', 'services', 'bouquets', 'vps_enabled']);
+        const paramsToSendIfEmpty = filteringParamNames.concat(['enabled', 'offset', 'services', 'bouquets', 'vps_enabled']);
         const paramsToConsolidate = ['offset', 'services', 'bouquets'];
 
         if (window.disableFilterEditing) {
