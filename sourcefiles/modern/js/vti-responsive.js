@@ -411,11 +411,12 @@ function setOSD( statusinfo )
 				streamtitle = tstr_stream + ": " + station + "'>" + station + "</a>";
 				responsive_osd_stream = "<a href='#' title='" + streamtitle;
 			} else {
+				var fn = statusinfo['currservice_filename'].replaceAll("'","%27").replaceAll("\"","%22");
 				streamtitle = tstr_stream + ": " + station + "'><i class='material-icons'>movie</i></a>";
-				responsive_osd_stream = "<a href='/web/ts.m3u?file=" + statusinfo['currservice_filename'] + "' target='_blank' title='" + streamtitle;
+				responsive_osd_stream = "<a href='/web/ts.m3u?file=" + fn + "' target='_blank' title='" + streamtitle;
 				responsive_osd_current = "<a href='/#movies' onclick='load_maincontent(\"ajax/movies\");'><b>" + station + "&nbsp;&nbsp;</b></a>";
 				if (statusinfo['transcoding']) {
-					responsive_osd_transcoding = "<a href='#' onclick=\"jumper8003('" + statusinfo['currservice_filename'] + "')\"; title='" + streamtitletrans;
+					responsive_osd_transcoding = "<a href='#' onclick=\"jumper8003('" + fn + "')\"; title='" + streamtitletrans;
 				}
 			}
 		}

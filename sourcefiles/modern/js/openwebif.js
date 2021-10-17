@@ -769,11 +769,12 @@ function setOSD( statusinfo )
 			stream +="</div>";
 			$("#osd").html(stream + "<a href='#' onclick='load_maincontent(\"ajax/radio\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 		} else if (sref.indexOf("1:0:0") !== -1) {
+			var fn = statusinfo['currservice_filename'].replaceAll("'","%27").replaceAll("\"","%22");
 			if (statusinfo['transcoding']) {
-				stream += "<a href='#' onclick=\"jumper80('" + statusinfo['currservice_filename'] + "')\"; title='" + streamtitle;
-				stream += "<a href='#' onclick=\"jumper8003('" + statusinfo['currservice_filename'] + "')\"; title='" + streamtitletrans;
+				stream += "<a href='#' onclick=\"jumper80('" + fn + "')\"; title='" + streamtitle;
+				stream += "<a href='#' onclick=\"jumper8003('" + fn + "')\"; title='" + streamtitletrans;
 			} else {
-				stream += "<a target='_blank' href='/web/ts.m3u?file=" + statusinfo['currservice_filename'] + "' title='" + streamtitle;
+				stream += "<a target='_blank' href='/web/ts.m3u?file=" + fn + "' title='" + streamtitle;
 			}
 			stream +="</div>";
 			$("#osd").html(stream + _beginend + statusinfo['currservice_name']);
