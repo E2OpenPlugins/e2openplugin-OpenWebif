@@ -749,25 +749,28 @@ function setOSD( statusinfo )
 	var station = current_name = statusinfo['currservice_station'];
 	
 	if (station) {
+		var stationA = station.replace(/'/g,"\\'");
 		var stream = "<div id='osdicon'>";
 		var streamtitle = tstr_stream + ": " + station + "'><i class='fa fa-desktop'></i></a>";
 		var streamtitletrans = tstr_stream + " (" + tstr_transcoded + "): " + station + "'><i class='fa fa-mobile'></i></a>";
 		var _osdch = "<span class='osdch'>" + station + "</span></a>&nbsp;&nbsp;";
 		var _beginend = _osdch + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;";
-		
+		var desc = statusinfo['currservice_fulldescription'];
+		desc = desc.replace(/'/g,"\\'");
+
 		if ((sref.indexOf("1:0:1") !== -1) || (sref.indexOf("1:134:1") !== -1)) {
 			if (statusinfo['transcoding']) {
-				stream += "<a href='#' onclick=\"jumper8001('" + sref + "', '" + station + "')\"; title='" + streamtitle;
-				stream += "<a href='#' onclick=\"jumper8002('" + sref + "', '" + station + "')\"; title='" + streamtitletrans;
+				stream += "<a href='#' onclick=\"jumper8001('" + sref + "', '" + stationA + "')\"; title='" + streamtitle;
+				stream += "<a href='#' onclick=\"jumper8002('" + sref + "', '" + stationA + "')\"; title='" + streamtitletrans;
 			} else {
-				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "&fname=" + station + "' title='" + streamtitle;
+				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + stationA + "&fname=" + stationA + "' title='" + streamtitle;
 			}
 			stream +="</div>";
-			$("#osd").html(stream + "<a href='#' onclick='load_maincontent(\"ajax/tv\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
+			$("#osd").html(stream + "<a href='#' onclick='load_maincontent(\"ajax/tv\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + desc + "'>" + statusinfo['currservice_name'] + "</a>");
 		} else if ((sref.indexOf("1:0:2") !== -1) || (sref.indexOf("1:134:2") !== -1)) {
-			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "&fname=" + station + "' title='" + streamtitle;
+			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + stationA + "&fname=" + stationA + "' title='" + streamtitle;
 			stream +="</div>";
-			$("#osd").html(stream + "<a href='#' onclick='load_maincontent(\"ajax/radio\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
+			$("#osd").html(stream + "<a href='#' onclick='load_maincontent(\"ajax/radio\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + desc + "'>" + statusinfo['currservice_name'] + "</a>");
 		} else if (sref.indexOf("1:0:0") !== -1) {
 			var fn = statusinfo['currservice_filename'].replaceAll("'","%27").replaceAll("\"","%22");
 			if (statusinfo['transcoding']) {
