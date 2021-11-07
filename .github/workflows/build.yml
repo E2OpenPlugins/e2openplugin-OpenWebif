@@ -17,6 +17,22 @@ jobs:
 
       - uses: actions/setup-python@v2
         with:
+          python-version: '3.10'
+
+      - name: Build python 3.10
+        run: |
+          pip3 install Cheetah3
+          pip3 install six
+          python -m compileall -l . -r 10 -q
+          cheetah compile -R plugin
+          python testsuite/evil_eval.py
+
+      - uses: actions/checkout@v2
+        with:
+          ref: 'master'
+
+      - uses: actions/setup-python@v2
+        with:
           python-version: '3.9'
 
       - name: Build python 3.9
