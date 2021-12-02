@@ -8,16 +8,17 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-15 10:55+0430\n"
-"PO-Revision-Date: \n"
-"Last-Translator: William <ghenessior@gmail.com>\n"
-"Language-Team: www.vuplus-community.net <insanity@>\n"
+"PO-Revision-Date: 2021-12-02 19:57+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10-dev\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -194,7 +195,10 @@ msgstr "Tutti i canali"
 
 #: ../plugin/controllers/i18n.py:292
 msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr "Tutti i file di questo software sono open source: potete ridistribuirli o modificarli secondo i termini la licenza GNU versione 3, così come pubblicato dalla Free Software Foundation."
+msgstr ""
+"Tutti i file di questo software sono open source: potete ridistribuirli o "
+"modificarli secondo i termini la licenza GNU versione 3, così come "
+"pubblicato dalla Free Software Foundation."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "All alternative services deleted."
@@ -386,7 +390,9 @@ msgstr "Bouquet %s spostato."
 #: ../plugin/controllers/BouquetEditor.py:187
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Rimozione Bouquet %s non riuscita, service reference o lista variabile non valida."
+msgstr ""
+"Rimozione Bouquet %s non riuscita, service reference o lista variabile non "
+"valida."
 
 #: ../plugin/controllers/BouquetEditor.py:185
 #, python-format
@@ -605,7 +611,8 @@ msgid ""
 "Disable movie trash in configuration to delete this item"
 msgstr ""
 "Eliminazione fallita, non esiste un Cestino registrazioni !\n"
-"Disabilitare il Cestino registrazioni nella configurazione per eliminare questo elemento."
+"Disabilitare il Cestino registrazioni nella configurazione per eliminare "
+"questo elemento."
 
 #: ../plugin/controllers/i18n.py:516
 msgid "Deleted"
@@ -694,7 +701,8 @@ msgstr "EPGRefresh"
 
 #: ../plugin/controllers/models/timers.py:899
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "ERRORE: impossibile impostare SleepTimer se il dispositivo è in sospensione"
+msgstr ""
+"ERRORE: impossibile impostare SleepTimer se il dispositivo è in sospensione"
 
 #: ../plugin/controllers/i18n.py:374
 #, fuzzy

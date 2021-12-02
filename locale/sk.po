@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-15 10:55+0430\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Dominik Paľo <dominik@palo.sk>\n"
-"Language-Team: \n"
-"Language: sk_SK\n"
+"PO-Revision-Date: 2021-12-02 19:58+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/sk/>\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.5\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 4.10-dev\n"
 
 #: ../plugin/controllers/models/timers.py:61
 #, python-format
@@ -186,7 +187,10 @@ msgstr "Všetky stanice"
 
 #: ../plugin/controllers/i18n.py:292
 msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr "Všetky súbory v tomto softvéri sú open source; môžete ho šíriť a/alebo upravovať podľa podmienok GNU General Public License verzie 3 v znení publikovanom Free Software Foundation."
+msgstr ""
+"Všetky súbory v tomto softvéri sú open source; môžete ho šíriť a/alebo "
+"upravovať podľa podmienok GNU General Public License verzie 3 v znení "
+"publikovanom Free Software Foundation."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "All alternative services deleted."
@@ -688,7 +692,9 @@ msgstr "Obnovovanie EPG"
 
 #: ../plugin/controllers/models/timers.py:899
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "Chyba: Nie je možné nastaviť automatické vypnutie, keď zariadenie je v pohotovostnom režime"
+msgstr ""
+"Chyba: Nie je možné nastaviť automatické vypnutie, keď zariadenie je v "
+"pohotovostnom režime"
 
 #: ../plugin/controllers/i18n.py:374
 #, fuzzy
@@ -746,7 +752,10 @@ msgstr "Povoliť filtrovanie"
 
 #: ../plugin/controllers/i18n.py:499
 msgid "Enable/Disable Screenshot on key press or"
-msgstr "Zaškrtavacie políčko: Povoliť/Zakázať automatický snímok obrazovky po každom stlačení niektorého tlač. na DO&#13;Klik: Otvoriť okno s náhľadom pre snímanie obrazovky"
+msgstr ""
+"Zaškrtavacie políčko: Povoliť/Zakázať automatický snímok obrazovky po každom "
+"stlačení niektorého tlač. na DO&#13;Klik: Otvoriť okno s náhľadom pre "
+"snímanie obrazovky"
 
 #: ../plugin/controllers/i18n.py:130 ../plugin/controllers/i18n.py:299
 #: ../plugin/controllers/i18n.py:417

@@ -4,15 +4,16 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-15 10:55+0430\n"
-"PO-Revision-Date: 2017-11-10 22:14+0100\n"
-"Last-Translator: JR <openspateam@gmail.com>\n"
-"Language-Team: OpenSPA\n"
+"PO-Revision-Date: 2021-12-02 19:56+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10-dev\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
@@ -190,7 +191,10 @@ msgstr "Tots els Canals"
 
 #: ../plugin/controllers/i18n.py:292
 msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr "Tots els arxius d'aquest software són software de codi obert;  pots redistribuir-lo i / o modificar-lo baix els termes de la Llicència Pública General GNU versió 3, publicada per la Free Software Foundation."
+msgstr ""
+"Tots els arxius d'aquest software són software de codi obert;  pots "
+"redistribuir-lo i / o modificar-lo baix els termes de la Llicència Pública "
+"General GNU versió 3, publicada per la Free Software Foundation."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "All alternative services deleted."
@@ -383,7 +387,9 @@ msgstr "Llista %s moguda."
 #: ../plugin/controllers/BouquetEditor.py:187
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Ha fallat l'esborrat de la llista %s, servicereference o llista mutable no són vàlids."
+msgstr ""
+"Ha fallat l'esborrat de la llista %s, servicereference o llista mutable no "
+"són vàlids."
 
 #: ../plugin/controllers/BouquetEditor.py:185
 #, python-format
@@ -692,7 +698,9 @@ msgstr ""
 
 #: ../plugin/controllers/models/timers.py:899
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "ERROR: No es pot configurar un temporitzador d'apagat si el dispositiu està en mode d'espera"
+msgstr ""
+"ERROR: No es pot configurar un temporitzador d'apagat si el dispositiu està "
+"en mode d'espera"
 
 #: ../plugin/controllers/i18n.py:374
 #, fuzzy
