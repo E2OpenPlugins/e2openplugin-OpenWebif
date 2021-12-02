@@ -4,15 +4,16 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-15 10:55+0430\n"
-"PO-Revision-Date: 2017-06-08 10:02+0200\n"
-"Last-Translator: neoatomic <neoatomic@users.noreply.github.com>\n"
-"Language-Team: Linux-Box\n"
+"PO-Revision-Date: 2021-12-02 19:56+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.12\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10-dev\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
@@ -190,7 +191,10 @@ msgstr "Todos los Canales"
 
 #: ../plugin/controllers/i18n.py:292
 msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr "Todos los archivos de este software son software de código abierto; usted puede redistribuirlo y / o modificarlo bajo los términos de la Licencia Pública General GNU versión 3, publicada por la Free Software Foundation."
+msgstr ""
+"Todos los archivos de este software son software de código abierto; usted "
+"puede redistribuirlo y / o modificarlo bajo los términos de la Licencia "
+"Pública General GNU versión 3, publicada por la Free Software Foundation."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "All alternative services deleted."
@@ -383,7 +387,8 @@ msgstr "Favorito %s movido"
 #: ../plugin/controllers/BouquetEditor.py:187
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Fallo borrado favorito %s, servicereference o lista mutable no son válidos"
+msgstr ""
+"Fallo borrado favorito %s, servicereference o lista mutable no son válidos"
 
 #: ../plugin/controllers/BouquetEditor.py:185
 #, python-format
@@ -518,7 +523,8 @@ msgstr "No se puede añadir el temporizador '%s'."
 #: ../plugin/controllers/models/timers.py:446
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
-msgstr "No se ha encontrado el temporizador '%s' con estos tiempos de inicio y fin."
+msgstr ""
+"No se ha encontrado el temporizador '%s' con estos tiempos de inicio y fin."
 
 #: ../plugin/controllers/i18n.py:442
 msgid "Create bouquet from selection"
@@ -692,7 +698,9 @@ msgstr ""
 
 #: ../plugin/controllers/models/timers.py:899
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "ERROR: No se puede configurar un temporizador de apagado si el dispositivo está en modo de espera"
+msgstr ""
+"ERROR: No se puede configurar un temporizador de apagado si el dispositivo "
+"está en modo de espera"
 
 #: ../plugin/controllers/i18n.py:374
 #, fuzzy
