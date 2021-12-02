@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-15 10:55+0430\n"
-"PO-Revision-Date: 2021-05-15 13:40+0300\n"
-"Last-Translator: audi06_19 <info@dreamosat-forum.com>\n"
-"Language-Team: Turkish\n"
+"PO-Revision-Date: 2021-12-02 19:58+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10-dev\n"
 
 #: ../plugin/controllers/models/timers.py:61
 #, python-format
@@ -190,7 +191,10 @@ msgstr "Tüm Kanallar"
 
 #: ../plugin/controllers/i18n.py:292
 msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr "Bu Yazılımın Tüm Dosyaları açık kaynaklı yazılımdır; Özgür Yazılım Vakfı tarafından yayınlanan GNU Genel Kamu Lisansı sürüm 3 hükümlerine göre onu yeniden dağıtabilir ve/veya değiştirebilirsiniz."
+msgstr ""
+"Bu Yazılımın Tüm Dosyaları açık kaynaklı yazılımdır; Özgür Yazılım Vakfı "
+"tarafından yayınlanan GNU Genel Kamu Lisansı sürüm 3 hükümlerine göre onu "
+"yeniden dağıtabilir ve/veya değiştirebilirsiniz."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "All alternative services deleted."
@@ -380,7 +384,9 @@ msgstr "Bouquet %s taşındı."
 #: ../plugin/controllers/BouquetEditor.py:187
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Buket %s kaldırılamadı, sevicerefence veya değiştirilebilir liste geçerli değil."
+msgstr ""
+"Buket %s kaldırılamadı, sevicerefence veya değiştirilebilir liste geçerli "
+"değil."
 
 #: ../plugin/controllers/BouquetEditor.py:185
 #, python-format
@@ -513,7 +519,8 @@ msgstr "Zamanlayıcı '%s' eklenemedi!"
 #: ../plugin/controllers/models/timers.py:446
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
-msgstr "Verilen başlangıç ​​ve bitiş zamanına sahip '%s' zamanlayıcı bulunamadı!"
+msgstr ""
+"Verilen başlangıç ​​ve bitiş zamanına sahip '%s' zamanlayıcı bulunamadı!"
 
 #: ../plugin/controllers/i18n.py:442
 msgid "Create bouquet from selection"
@@ -742,7 +749,9 @@ msgstr "Filtrelemeyi Etkinleştir"
 
 #: ../plugin/controllers/i18n.py:499
 msgid "Enable/Disable Screenshot on key press or"
-msgstr "Tuşa basıldığında ekran görüntüsünü almayı etkinleştir / veya devre dışı bırak"
+msgstr ""
+"Tuşa basıldığında ekran görüntüsünü almayı etkinleştir / veya devre dışı "
+"bırak"
 
 #: ../plugin/controllers/i18n.py:130 ../plugin/controllers/i18n.py:299
 #: ../plugin/controllers/i18n.py:417

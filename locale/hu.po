@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-15 10:55+0430\n"
-"PO-Revision-Date: \n"
-"Last-Translator: cp-teamhun <https://github.com/cp-teamhun>\n"
-"Language-Team: cp-teamhun\n"
-"Language: hu_HU\n"
+"PO-Revision-Date: 2021-12-02 19:57+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/hu/>\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10-dev\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
@@ -187,7 +189,10 @@ msgstr "Minden csatorna"
 
 #: ../plugin/controllers/i18n.py:292
 msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr "A szoftver összes fájlja nyílt forráskódú szoftver; továbbadhatja és/vagy módosíthatja azokat a Free Software Foundation által kiadott GNU General Public License 3. verziójának megfelelően."
+msgstr ""
+"A szoftver összes fájlja nyílt forráskódú szoftver; továbbadhatja és/vagy "
+"módosíthatja azokat a Free Software Foundation által kiadott GNU General "
+"Public License 3. verziójának megfelelően."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "All alternative services deleted."
@@ -378,7 +383,9 @@ msgstr "Bouquet %s mozgatás."
 #: ../plugin/controllers/BouquetEditor.py:187
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "A Bouquet %s eltávolítva nem sikerült,A sürgősségi vagy módosítható lista nem érvényes."
+msgstr ""
+"A Bouquet %s eltávolítva nem sikerült,A sürgősségi vagy módosítható lista "
+"nem érvényes."
 
 #: ../plugin/controllers/BouquetEditor.py:185
 #, python-format
@@ -685,7 +692,9 @@ msgstr "EPG frissítés"
 
 #: ../plugin/controllers/models/timers.py:899
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "HIBA: Nem állítható be az elalvás időzítő, amíg az eszköz készenléti állapotban van"
+msgstr ""
+"HIBA: Nem állítható be az elalvás időzítő, amíg az eszköz készenléti "
+"állapotban van"
 
 #: ../plugin/controllers/i18n.py:374
 #, fuzzy

@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-07 10:45+0100\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Pr2\n"
-"Language-Team: \n"
-"Language: fr_FR\n"
+"PO-Revision-Date: 2021-12-02 19:57+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/fr/>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.10-dev\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
@@ -185,7 +187,10 @@ msgstr "Toutes les chaînes"
 
 #: ../plugin/controllers/i18n.py:292
 msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr "Tous les fichiers de ce logiciel sont open source; vous pouvez le redistribuer et/ou le modifier sous les termes de la GNU General Public License version 3 comme publié par la Free Software Foundation."
+msgstr ""
+"Tous les fichiers de ce logiciel sont open source; vous pouvez le "
+"redistribuer et/ou le modifier sous les termes de la GNU General Public "
+"License version 3 comme publié par la Free Software Foundation."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "All alternative services deleted."
@@ -375,7 +380,9 @@ msgstr "Bouquet %s déplacé."
 #: ../plugin/controllers/BouquetEditor.py:187
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Impossible d'effacer le bouquet %s, la référence du service ou de la liste mutable n'est pas valide."
+msgstr ""
+"Impossible d'effacer le bouquet %s, la référence du service ou de la liste "
+"mutable n'est pas valide."
 
 #: ../plugin/controllers/BouquetEditor.py:185
 #, python-format
@@ -508,7 +515,8 @@ msgstr "Impossible d'ajouter le timer '%s'!"
 #: ../plugin/controllers/models/timers.py:479
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
-msgstr "Impossible de trouver le timer '%s' avec l'heure de début et de fin donnée!"
+msgstr ""
+"Impossible de trouver le timer '%s' avec l'heure de début et de fin donnée!"
 
 #: ../plugin/controllers/i18n.py:442
 msgid "Create bouquet from selection"
@@ -592,8 +600,10 @@ msgid ""
 "Delete failed, because there is no movie trash !\n"
 "Disable movie trash in configuration to delete this item"
 msgstr ""
-"Echec de la suppression, parce qu’il n’y a pas de corbeille pour les films !\n"
-"Désactiver la corbeille des films dans la configuration pour effacer cet élément"
+"Echec de la suppression, parce qu’il n’y a pas de corbeille pour les films !"
+"\n"
+"Désactiver la corbeille des films dans la configuration pour effacer cet "
+"élément"
 
 #: ../plugin/controllers/i18n.py:516
 msgid "Deleted"
@@ -681,7 +691,9 @@ msgstr "Rafraîchir EPG"
 
 #: ../plugin/controllers/models/timers.py:932
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "ERREUR: Impossible de définir un Timer de sommeil pendant que le périphérique est en veille"
+msgstr ""
+"ERREUR: Impossible de définir un Timer de sommeil pendant que le "
+"périphérique est en veille"
 
 #: ../plugin/controllers/i18n.py:374
 msgid "Edit"
@@ -795,7 +807,8 @@ msgstr "Erreur lors du chargement de fichier"
 #: ../plugin/controllers/BouquetEditor.py:592
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
-msgstr "Erreur lors de la préparation du fichier de sauvegarde, %s n'existe pas."
+msgstr ""
+"Erreur lors de la préparation du fichier de sauvegarde, %s n'existe pas."
 
 #: ../plugin/controllers/BouquetEditor.py:598
 msgid "Error while preparing backup file."
@@ -921,7 +934,8 @@ msgstr "Routeur"
 
 #: ../plugin/controllers/BouquetEditor.py:450
 msgid "Get mutable list for new created alternative failed!"
-msgstr "Echec de l'obtenion d'une liste mutable pour le nouveau alternatif créé!"
+msgstr ""
+"Echec de l'obtenion d'une liste mutable pour le nouveau alternatif créé!"
 
 #: ../plugin/controllers/BouquetEditor.py:125
 msgid "Get mutable list for new created bouquet failed!"

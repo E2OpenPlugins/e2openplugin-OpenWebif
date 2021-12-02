@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-15 10:55+0430\n"
-"PO-Revision-Date: 2021-12-02 19:08+0000\n"
+"PO-Revision-Date: 2021-12-02 19:56+0000\n"
 "Last-Translator: jbleyel <jbleyel@gmx.net>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/"
 "e2openplugin-openwebif/e2openplugin-openwebif/de/>\n"
@@ -189,7 +189,10 @@ msgstr "Alle Sender"
 
 #: ../plugin/controllers/i18n.py:292
 msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr "Alle Dateien dieser Software sind Open-Source. Sie dürfen sie weiterbenutzen oder modifizieren unter der Beachtung der GNU General Public License Version 3, die bei der Free Software Foundation veröffentlicht wurde."
+msgstr ""
+"Alle Dateien dieser Software sind Open-Source. Sie dürfen sie weiterbenutzen "
+"oder modifizieren unter der Beachtung der GNU General Public License Version "
+"3, die bei der Free Software Foundation veröffentlicht wurde."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "All alternative services deleted."
@@ -382,7 +385,9 @@ msgstr "Bouquet %s verschoben."
 #: ../plugin/controllers/BouquetEditor.py:187
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Bouquet %s entfernen fehlgeschlagen, Service-Referenz oder Liste ist ungültig."
+msgstr ""
+"Bouquet %s entfernen fehlgeschlagen, Service-Referenz oder Liste ist "
+"ungültig."
 
 #: ../plugin/controllers/BouquetEditor.py:185
 #, python-format
@@ -603,7 +608,8 @@ msgid ""
 "Disable movie trash in configuration to delete this item"
 msgstr ""
 "Löschen fehlgeschlagen weil kein Movie-Papierkorb vorhanden ist!\n"
-"Deaktivieren Sie den Movie-Papierkorb in der Konfiguration um dennoch zu löschen."
+"Deaktivieren Sie den Movie-Papierkorb in der Konfiguration um dennoch zu "
+"löschen."
 
 #: ../plugin/controllers/i18n.py:516
 #, fuzzy
@@ -938,11 +944,15 @@ msgstr "Gateway"
 
 #: ../plugin/controllers/BouquetEditor.py:450
 msgid "Get mutable list for new created alternative failed!"
-msgstr "Das Erhalten der Variablen Liste für die neu erstellte Alternative fehlgeschlagen!"
+msgstr ""
+"Das Erhalten der Variablen Liste für die neu erstellte Alternative "
+"fehlgeschlagen!"
 
 #: ../plugin/controllers/BouquetEditor.py:125
 msgid "Get mutable list for new created bouquet failed!"
-msgstr "Das Erhalten der Variablen Liste für das neu erstellte Bouquet fehlgeschlagen!"
+msgstr ""
+"Das Erhalten der Variablen Liste für das neu erstellte Bouquet "
+"fehlgeschlagen!"
 
 #: ../plugin/controllers/i18n.py:556
 msgid "HH:MM"
