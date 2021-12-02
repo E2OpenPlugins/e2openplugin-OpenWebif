@@ -11,10 +11,6 @@ VER=$(head -n 1 CHANGES.md | grep -i '## Version' | sed 's/^## Version \([[:digi
 GITVER=git$(git log -1 --format="%cd" --date="format:%Y%m%d")-r$(git rev-list HEAD --since=yesterday --count)
 
 PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_all.ipk
-if [ "$1" == "novxg" ]; then
-	PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_novxg.ipk
-fi
-
 if [ "$1" == "vti" ]; then
 	PKG=${D}/enigma2-plugin-extensions-openwebif_${VER}-${GITVER}_vti.ipk
 fi
@@ -113,10 +109,6 @@ fi
 
 cheetah-compile -R ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
 python -O -m compileall ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/
-
-if [ "$1" == "novxg" ]; then
-	rm -rf ${P}/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/vxg/
-fi
 
 if [ "$1" != "deb" ]; then
 	tar -C ${P}/CONTROL -czf ${B}/control.tar.gz .

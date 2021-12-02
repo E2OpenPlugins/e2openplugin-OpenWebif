@@ -78,8 +78,6 @@ OpenWebif is installed by default on a number of enigma2 images
 
 * [OpenWebif ipk full](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/raw/gh-pages/enigma2-plugin-extensions-openwebif_latest_all.ipk)
 
-* [OpenWebif ipk novxg](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/raw/gh-pages/enigma2-plugin-extensions-openwebif_latest_novxg.ipk)
-
 * [OpenWebif ipk vti](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/raw/gh-pages/enigma2-plugin-extensions-openwebif_latest_vti.ipk)
 
 * [OpenWebif deb](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/raw/gh-pages/enigma2-plugin-extensions-openwebif_latest_all.deb)
