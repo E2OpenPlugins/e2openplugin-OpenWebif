@@ -4,15 +4,17 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-15 10:55+0430\n"
-"PO-Revision-Date: 2021-04-16 00:45+0200\n"
-"Last-Translator: tinola <tinola@poczta.onet.pl>\n"
-"Language-Team: \n"
-"Language: pl_PL\n"
+"PO-Revision-Date: 2021-12-02 19:57+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/pl/>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: mcedit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.10-dev\n"
 
 #: ../plugin/controllers/models/timers.py:61
 #, python-format
@@ -187,7 +189,10 @@ msgstr "Wszystkie kanały"
 
 #: ../plugin/controllers/i18n.py:292
 msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr "Wszystkie pliki tego oprogramowania są oprogramowaniem typu open source; możesz go redystrybuować i / lub modyfikować zgodnie z warunkami GNU General Public License wersja 3 opublikowanej przez Free Software Foundation."
+msgstr ""
+"Wszystkie pliki tego oprogramowania są oprogramowaniem typu open source; "
+"możesz go redystrybuować i / lub modyfikować zgodnie z warunkami GNU General "
+"Public License wersja 3 opublikowanej przez Free Software Foundation."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "All alternative services deleted."
@@ -378,7 +383,9 @@ msgstr "Przeniesiono bukiet %s."
 #: ../plugin/controllers/BouquetEditor.py:187
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Usunięcie bukietu %s nie powiodło się, wartość odniesienia lub lista zmiennych jest niepoprawna."
+msgstr ""
+"Usunięcie bukietu %s nie powiodło się, wartość odniesienia lub lista "
+"zmiennych jest niepoprawna."
 
 #: ../plugin/controllers/BouquetEditor.py:185
 #, python-format
@@ -511,7 +518,8 @@ msgstr "Nie można dodać timera '%s'!"
 #: ../plugin/controllers/models/timers.py:446
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
-msgstr "Nie można znaleźć timera '%s' o podanym czasie rozpoczęcia i zakończenia!"
+msgstr ""
+"Nie można znaleźć timera '%s' o podanym czasie rozpoczęcia i zakończenia!"
 
 #: ../plugin/controllers/i18n.py:442
 msgid "Create bouquet from selection"
@@ -685,7 +693,9 @@ msgstr "Odśwież EPG"
 
 #: ../plugin/controllers/models/timers.py:899
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "BŁĄD: Nie można ustawić SleepTimera gdy urządzenie znajduje się w trybie czuwania."
+msgstr ""
+"BŁĄD: Nie można ustawić SleepTimera gdy urządzenie znajduje się w trybie "
+"czuwania."
 
 #: ../plugin/controllers/i18n.py:374
 #, fuzzy
