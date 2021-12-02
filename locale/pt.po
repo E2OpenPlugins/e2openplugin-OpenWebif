@@ -3,16 +3,17 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-15 10:55+0430\n"
-"PO-Revision-Date: 2018-01-16 21:32+0000\n"
-"Last-Translator: nunigaia\n"
-"Language-Team: BH Team\n"
-"Language: pt_PT\n"
+"PO-Revision-Date: 2021-12-02 19:58+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/pt/>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.5\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10-dev\n"
 "X-Poedit-Basepath: .\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
@@ -189,7 +190,10 @@ msgstr "Todos os Canais"
 
 #: ../plugin/controllers/i18n.py:292
 msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr "Todos os ficheiros neste Software são Open Source; pode distribuí-los ou modificá-los nos ternos da licença púbica GNU versão 3 como publicado pela Fundação de Software Livre."
+msgstr ""
+"Todos os ficheiros neste Software são Open Source; pode distribuí-los ou "
+"modificá-los nos ternos da licença púbica GNU versão 3 como publicado pela "
+"Fundação de Software Livre."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "All alternative services deleted."
@@ -381,7 +385,9 @@ msgstr "Bouquet %s movido."
 #: ../plugin/controllers/BouquetEditor.py:187
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "A exclusão do Bouquet %s falhou, referência do serviço ou lista variável não é válida."
+msgstr ""
+"A exclusão do Bouquet %s falhou, referência do serviço ou lista variável não "
+"é válida."
 
 #: ../plugin/controllers/BouquetEditor.py:185
 #, python-format
@@ -690,7 +696,9 @@ msgstr "EPGRefresh"
 
 #: ../plugin/controllers/models/timers.py:899
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "ERRO: O Timer de repouso não pode ser definido enquanto o dispositivo está no Modo de Espera."
+msgstr ""
+"ERRO: O Timer de repouso não pode ser definido enquanto o dispositivo está "
+"no Modo de Espera."
 
 #: ../plugin/controllers/i18n.py:374
 #, fuzzy
