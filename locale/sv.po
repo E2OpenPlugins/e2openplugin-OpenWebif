@@ -3,16 +3,17 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-15 10:55+0430\n"
-"PO-Revision-Date: 2017-06-08 10:05+0200\n"
-"Last-Translator: Svevrstt <svevrstt@gmail.com>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2021-12-02 19:58+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10-dev\n"
 "X-Poedit-Basepath: .\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
@@ -382,7 +383,9 @@ msgstr "Favoritlista %s flyttades."
 #: ../plugin/controllers/BouquetEditor.py:187
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Borttagning av favoritlista %s misslyckades. Distributören eller föränderlig lista är ogiltig."
+msgstr ""
+"Borttagning av favoritlista %s misslyckades. Distributören eller föränderlig "
+"lista är ogiltig."
 
 #: ../plugin/controllers/BouquetEditor.py:185
 #, python-format
@@ -938,7 +941,8 @@ msgstr "Gateway"
 
 #: ../plugin/controllers/BouquetEditor.py:450
 msgid "Get mutable list for new created alternative failed!"
-msgstr "Den föränderliga listan för en ny alternativ distributör kunde inte hämtas!"
+msgstr ""
+"Den föränderliga listan för en ny alternativ distributör kunde inte hämtas!"
 
 #: ../plugin/controllers/BouquetEditor.py:125
 msgid "Get mutable list for new created bouquet failed!"
