@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-06-03 10:55+0430\n"
-"PO-Revision-Date: \n"
-"Last-Translator: tomppaa www.huoltovalikko.com\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2021-12-02 19:57+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.3\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10-dev\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
@@ -185,7 +187,10 @@ msgstr "Kaikki kanavat"
 
 #: ../plugin/controllers/i18n.py:292
 msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr "Kaikki tämän ohjelma tiedostot ovat avointa lähdekoodia; Voit jakaa ja muokata niitä GNU General Public License versio 3 ehtojen mukaan jonka on julkaissut Free Software Foundation."
+msgstr ""
+"Kaikki tämän ohjelma tiedostot ovat avointa lähdekoodia; Voit jakaa ja "
+"muokata niitä GNU General Public License versio 3 ehtojen mukaan jonka on "
+"julkaissut Free Software Foundation."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "All alternative services deleted."
@@ -375,7 +380,9 @@ msgstr "Suosikkilista %s siirretty."
 #: ../plugin/controllers/BouquetEditor.py:187
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Suosikkilistan %s poisto epäonnistui, kanavareferenssi tai listanmuutos ole hyväksyttävissä."
+msgstr ""
+"Suosikkilistan %s poisto epäonnistui, kanavareferenssi tai listanmuutos ole "
+"hyväksyttävissä."
 
 #: ../plugin/controllers/BouquetEditor.py:185
 #, python-format
