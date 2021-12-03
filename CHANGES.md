@@ -1,5 +1,8 @@
-## Version 1.4.9
+## Version 1.5.0
 ## (in development)
+* add char type to remotecontrol
+
+## Version 1.4.9
 * improve autotimer
 * improve responsive header
 * use webpack instead of parcel

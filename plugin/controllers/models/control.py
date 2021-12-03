@@ -31,6 +31,10 @@ import os
 
 ENABLE_QPIP_PROCPATH = "/proc/stb/video/decodermode"
 
+try:
+	from enigma import setPrevAsciiCode
+except ImportError:
+	setPrevAsciiCode = None
 
 def checkIsQPiP():
 	if os.access(ENABLE_QPIP_PROCPATH, os.F_OK):
@@ -181,7 +185,17 @@ def remoteControl(key, type="", rcu=""):
 			print("[OpenWebIf] wrong hw detection")
 
 	amap = eActionMap.getInstance()
-	if type == "long":
+	if type == "char":
+		if setPrevAsciiCode:
+			setPrevAsciiCode(key)
+			key = 510
+			amap.keyPressed(remotetype, key, 0)
+		else:
+			return {
+				"result": False,
+				"message": "RC command char '%s' not supported" % str(key)
+			}
+	elif type == "long":
 		amap.keyPressed(remotetype, key, 0)
 		amap.keyPressed(remotetype, key, 3)
 	elif type == "ascii":
