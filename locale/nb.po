@@ -1,10 +1,11 @@
+# Allan Nordhøy <epost@anotheragency.no>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-15 10:55+0430\n"
-"PO-Revision-Date: 2021-12-02 19:57+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2021-12-04 17:29+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
 "e2openplugin-openwebif/e2openplugin-openwebif/nb_NO/>\n"
 "Language: nb\n"
@@ -20,25 +21,25 @@ msgstr ""
 #: ../plugin/controllers/models/timers.py:61
 #, python-format
 msgid "%02d.%02d."
-msgstr ""
+msgstr "%02d.%02d."
 
 #: ../plugin/controllers/models/timers.py:63
 #, python-format
 msgid "%02d.%02d.%d"
-msgstr ""
+msgstr "%02d.%02d.%d"
 
 #: ../plugin/controllers/models/movies.py:69
 #: ../plugin/controllers/models/timers.py:65
 #, python-format
 msgid "%02d:%02d"
-msgstr ""
+msgstr "%02d:%02d"
 
 #: ../plugin/controllers/models/services.py:235
 #: ../plugin/controllers/models/services.py:773
 #: ../plugin/controllers/models/services.py:1004
 #: ../plugin/controllers/models/services.py:1050
 msgid "%d.%m.%Y"
-msgstr ""
+msgstr "%d.%m.%Y"
 
 #: ../plugin/controllers/models/timers.py:187
 #: ../plugin/controllers/models/timers.py:188
@@ -47,18 +48,18 @@ msgstr ""
 #: ../plugin/controllers/models/timers.py:434
 #: ../plugin/controllers/models/timers.py:435
 msgid "%d.%m.%Y %H:%M"
-msgstr ""
+msgstr "%H:%M %d.%m.%Y"
 
 #: ../plugin/controllers/models/movies.py:65
 #: ../plugin/controllers/models/timers.py:59
 #, python-format
 msgid "%s %02d.%02d."
-msgstr ""
+msgstr "%s %02d.%02d."
 
 #: ../plugin/controllers/models/movies.py:67
 #, python-format
 msgid "%s %02d.%02d.%d"
-msgstr ""
+msgstr "%s %02d.%02d.%d"
 
 #: ../plugin/controllers/BouquetEditor.py:549
 #, python-format
@@ -68,7 +69,7 @@ msgstr "%s %s er låst."
 #: ../plugin/controllers/i18n.py:129
 #, python-format
 msgid "%s / %s"
-msgstr ""
+msgstr "%s/%s"
 
 #: ../plugin/controllers/models/info.py:306
 #: ../plugin/controllers/models/info.py:430
@@ -119,7 +120,7 @@ msgstr "Legg til kanalliste"
 
 #: ../plugin/controllers/i18n.py:450
 msgid "Add IPTV/URL"
-msgstr ""
+msgstr "Legg til IPTV/nettadresse"
 
 #: ../plugin/controllers/i18n.py:451
 msgid "Add Marker"
@@ -164,7 +165,7 @@ msgstr "Legg til lignende ved konflikt"
 
 #: ../plugin/controllers/i18n.py:360
 msgid "Add tags to recordings"
-msgstr ""
+msgstr "Legg til etiketter på opptak"
 
 #: ../plugin/controllers/BouquetEditor.py:466
 #, python-format
@@ -173,7 +174,7 @@ msgstr "Lagt til %s til alternativ kanal %s."
 
 #: ../plugin/controllers/i18n.py:562
 msgid "Adjust recording time to real event time"
-msgstr ""
+msgstr "Juster opptakstidspunkt til faktisk hendelsestid"
 
 #: ../plugin/controllers/i18n.py:79 ../plugin/controllers/i18n.py:333
 #: ../plugin/controllers/i18n.py:424
@@ -205,7 +206,7 @@ msgstr "Tillat last opp IPK"
 
 #: ../plugin/controllers/i18n.py:561
 msgid "Allow duplicates"
-msgstr ""
+msgstr "Tillat duplikater"
 
 #: ../plugin/controllers/BouquetEditor.py:452
 #, python-format
@@ -226,7 +227,7 @@ msgstr "Svaret er JA!"
 
 #: ../plugin/controllers/i18n.py:391
 msgid "Any day"
-msgstr ""
+msgstr "Alle dager"
 
 #: ../plugin/controllers/i18n.py:353
 msgid "Any service/recording"
@@ -495,7 +496,7 @@ msgstr "Vanlige innstillinger"
 
 #: ../plugin/controllers/i18n.py:566
 msgid "Config"
-msgstr ""
+msgstr "Oppsett"
 
 #: ../plugin/controllers/models/timers.py:282
 #, python-format
@@ -551,15 +552,15 @@ msgstr "Dato"
 
 #: ../plugin/controllers/i18n.py:552
 msgid "Date (newest)"
-msgstr ""
+msgstr "Dato (nyeste)"
 
 #: ../plugin/controllers/i18n.py:551
 msgid "Date (oldest)"
-msgstr ""
+msgstr "Dato (eldste)"
 
 #: ../plugin/plugin.py:179
 msgid "Debug - Display Tracebacks in browser"
-msgstr ""
+msgstr "Avlusning - Vis tilbakesporing i nettleser"
 
 #: ../plugin/controllers/i18n.py:73
 msgid "December"
@@ -648,7 +649,7 @@ msgstr "Dolby"
 
 #: ../plugin/controllers/i18n.py:563
 msgid "Don't create timer when movie exists in database"
-msgstr ""
+msgstr "Ikke opprett tidsur når film finnes i database"
 
 #: ../plugin/controllers/i18n.py:119
 msgid "Done"
@@ -789,11 +790,11 @@ msgstr "Skriv inn nytt navn på bokmerket"
 
 #: ../plugin/controllers/i18n.py:505
 msgid "Enter path"
-msgstr ""
+msgstr "Skriv inn sti"
 
 #: ../plugin/controllers/i18n.py:386
 msgid "Enter the text to find in the EPG"
-msgstr ""
+msgstr "Skriv inn tekst å finne i elektronisk programguide"
 
 #: ../plugin/controllers/i18n.py:137
 msgid "Error"
@@ -945,7 +946,7 @@ msgstr "Endringsliste for nyopprettet kanalliste feilet!"
 
 #: ../plugin/controllers/i18n.py:556
 msgid "HH:MM"
-msgstr ""
+msgstr "TT:MM"
 
 #: ../plugin/plugin.py:159
 msgid "HTTP port"
@@ -973,7 +974,7 @@ msgstr "Time"
 
 #: ../plugin/controllers/i18n.py:456
 msgid "IPTV / URL name"
-msgstr ""
+msgstr "IPTV-/nettadresse-navn"
 
 #: ../plugin/controllers/i18n.py:152
 msgid "IPv4 address"
@@ -1260,11 +1261,11 @@ msgstr "Navn"
 
 #: ../plugin/controllers/i18n.py:549
 msgid "Name (a-z)"
-msgstr ""
+msgstr "Navn (a-å)"
 
 #: ../plugin/controllers/i18n.py:550
 msgid "Name (z-a)"
-msgstr ""
+msgstr "Navn (å-a)"
 
 #: ../plugin/controllers/i18n.py:178
 msgid "Namespace"
@@ -1454,11 +1455,11 @@ msgstr "Samsvarssøk bare i tidsrommet"
 
 #: ../plugin/controllers/i18n.py:136
 msgid "Oops, no results matched your search"
-msgstr ""
+msgstr "Resultatløst søk"
 
 #: ../plugin/controllers/i18n.py:510
 msgid "Oops..."
-msgstr ""
+msgstr "Oida …"
 
 #: ../plugin/controllers/i18n.py:188
 msgid "Open Source Web Interface for Linux set-top box"
@@ -1542,7 +1543,7 @@ msgstr "Avspilling"
 
 #: ../plugin/plugin.py:178
 msgid "Playback IPTV Streams in browser"
-msgstr ""
+msgstr "Spill av IPTV-strømmer i nettleseren"
 
 #: ../plugin/controllers/i18n.py:196
 msgid "Playlist"
@@ -1567,7 +1568,7 @@ msgstr "PowerTimer-funksjonen er ikke tilgjengelig"
 
 #: ../plugin/controllers/i18n.py:389
 msgid "Preview"
-msgstr ""
+msgstr "Forhåndsvis"
 
 #: ../plugin/controllers/i18n.py:498
 msgid "Primetimes"
@@ -1748,8 +1749,9 @@ msgid "Search TV Guide UK"
 msgstr "TV Guide"
 
 #: ../plugin/controllers/i18n.py:446
+#, fuzzy
 msgid "Search by name, sd / hd / uhd, or provider"
-msgstr ""
+msgstr "Søk etter navn, SD, HD, UHD, eller tilbyder"
 
 #: ../plugin/controllers/i18n.py:316
 #, fuzzy
@@ -1767,7 +1769,7 @@ msgstr "Velg IPK-fil for opplasting"
 
 #: ../plugin/controllers/i18n.py:554
 msgid "Select..."
-msgstr ""
+msgstr "Velg …"
 
 #: ../plugin/controllers/i18n.py:223
 msgid "Send Message"
@@ -1864,7 +1866,7 @@ msgstr "Vis full OpenWebif"
 
 #: ../plugin/controllers/i18n.py:542
 msgid "Show IPTV channels in selection (eg. Autotimer)"
-msgstr ""
+msgstr "Vis IPTV-kanaler i utvalg (f.eks. automatisk tidsur)"
 
 #: ../plugin/controllers/i18n.py:189 ../plugin/plugin.py:154
 msgid "Show box name in header"
@@ -1883,8 +1885,9 @@ msgid "Show in Extensions menu"
 msgstr "Vis i tilleggsmeny"
 
 #: ../plugin/controllers/i18n.py:545
+#, fuzzy
 msgid "Show picon background"
-msgstr ""
+msgstr "Vis picon-bakgrunn"
 
 #: ../plugin/controllers/i18n.py:544
 #, fuzzy
@@ -1917,7 +1920,7 @@ msgstr "Nettsted og kilder"
 
 #: ../plugin/controllers/i18n.py:567
 msgid "Skins"
-msgstr ""
+msgstr "Drakter"
 
 #: ../plugin/controllers/models/timers.py:827
 #: ../plugin/controllers/models/timers.py:860
@@ -1965,7 +1968,7 @@ msgstr "Beklager, denne siden er ennå ikke klar til bruk"
 
 #: ../plugin/controllers/i18n.py:548
 msgid "Sort"
-msgstr ""
+msgstr "Sortering"
 
 #: ../plugin/controllers/i18n.py:486
 msgid "Spinner"
@@ -2001,7 +2004,7 @@ msgstr "BEGYNN Å SKRIVE"
 
 #: ../plugin/controllers/i18n.py:390
 msgid "State"
-msgstr ""
+msgstr "Tilstand"
 
 #: ../plugin/controllers/i18n.py:242
 msgid "Stream"
@@ -2023,7 +2026,7 @@ msgstr "Sø"
 
 #: ../plugin/controllers/i18n.py:553
 msgid "Subdirectories"
-msgstr ""
+msgstr "Undermapper"
 
 #: ../plugin/controllers/i18n.py:243
 msgid "Subnet mask"
@@ -2223,7 +2226,7 @@ msgstr "Ikke før"
 #: ../plugin/controllers/models/movies.py:57
 #: ../plugin/controllers/models/timers.py:48
 msgid "Today"
-msgstr ""
+msgstr "I dag"
 
 #: ../plugin/controllers/i18n.py:262
 msgid "Transcode"
@@ -2333,8 +2336,9 @@ msgid "Uploaded Files"
 msgstr "Opplastede filer"
 
 #: ../plugin/controllers/i18n.py:543
+#, fuzzy
 msgid "Use Channelname for screenshots"
-msgstr ""
+msgstr "Bruk kanalnavn for skjermavbildninger"
 
 #: ../plugin/controllers/i18n.py:354
 msgid "Use a custom location"
@@ -2342,7 +2346,7 @@ msgstr "Bruk en egendefinert lagringsplass"
 
 #: ../plugin/controllers/i18n.py:560
 msgid "Use as PiP if possible"
-msgstr ""
+msgstr "Bruk bilde-i-bilde hvis mulig"
 
 #: ../plugin/controllers/i18n.py:568
 #, fuzzy
@@ -2466,7 +2470,7 @@ msgstr "Veiviser"
 
 #: ../plugin/controllers/i18n.py:511
 msgid "Would you like to save your changes?"
-msgstr ""
+msgstr "Lagre endringer?"
 
 #: ../plugin/controllers/web.py:242
 #, python-format
@@ -2474,8 +2478,9 @@ msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Feil parameter format 'set=%s'. Bruk set=set15 "
 
 #: ../plugin/controllers/i18n.py:557
+#, fuzzy
 msgid "YYYY-MM-DD"
-msgstr ""
+msgstr "ÅÅ-MM-DD"
 
 #: ../plugin/controllers/i18n.py:514 ../plugin/controllers/i18n.py:530
 msgid "Yes"
@@ -2488,7 +2493,7 @@ msgstr "Ja/Nei"
 #: ../plugin/controllers/models/movies.py:59
 #: ../plugin/controllers/models/timers.py:51
 msgid "Yesterday"
-msgstr ""
+msgstr "I går"
 
 #: ../plugin/controllers/i18n.py:287
 msgid "Zap"
@@ -2520,8 +2525,9 @@ msgid "auto"
 msgstr "auto"
 
 #: ../plugin/plugin.py:132
+#, fuzzy
 msgid "box_ip"
-msgstr ""
+msgstr "boks-IP"
 
 #: ../plugin/controllers/i18n.py:318
 #, fuzzy
@@ -2556,11 +2562,12 @@ msgstr "feil! Lasting av side"
 
 #: ../plugin/controllers/i18n.py:304
 msgid "exact title match"
-msgstr ""
+msgstr "eksakt navnesøk"
 
 #: ../plugin/controllers/i18n.py:314
+#, fuzzy
 msgid "favourite desc match"
-msgstr ""
+msgstr "favorittbeskrivelsesjamføring"
 
 #: ../plugin/controllers/i18n.py:140
 msgid "finished"
@@ -2597,7 +2604,7 @@ msgstr "manuell/frakoblet"
 
 #: ../plugin/controllers/i18n.py:171
 msgid "mins"
-msgstr ""
+msgstr "min"
 
 #: ../plugin/controllers/i18n.py:33
 msgid "minute"
@@ -2613,7 +2620,7 @@ msgstr "ingen/IPv4 nettverk"
 
 #: ../plugin/controllers/i18n.py:371
 msgid "on day"
-msgstr ""
+msgstr "på dagen"
 
 #: ../plugin/controllers/i18n.py:370
 msgid "on weekday"
@@ -2625,7 +2632,7 @@ msgstr "en to tre fire ukjent kommando"
 
 #: ../plugin/controllers/i18n.py:303
 msgid "partial title match"
-msgstr ""
+msgstr "delvis navnejamføring"
 
 #: ../plugin/controllers/models/info.py:463
 msgid "r/o"
@@ -2641,7 +2648,7 @@ msgstr "spill inn"
 
 #: ../plugin/controllers/i18n.py:315
 msgid "regex match (experimental)"
-msgstr ""
+msgstr "jamføring med regulære uttrykk (eksperimentelt)"
 
 #: ../plugin/controllers/models/movies.py:483
 msgid "remove"
@@ -2687,8 +2694,9 @@ msgid "static"
 msgstr "statisk"
 
 #: ../plugin/controllers/i18n.py:250
+#, fuzzy
 msgid "this service is protected by a parental control pin"
-msgstr ""
+msgstr "tjenesten beskyttes av en foreldrekontroll-PIN"
 
 #: ../plugin/controllers/i18n.py:367
 msgid "title contains"
@@ -2696,7 +2704,7 @@ msgstr "i tittel"
 
 #: ../plugin/controllers/i18n.py:313
 msgid "title ends with"
-msgstr ""
+msgstr "navn starter med"
 
 #: ../plugin/controllers/i18n.py:306 ../plugin/controllers/i18n.py:307
 #, fuzzy
@@ -2710,7 +2718,7 @@ msgstr "samsvarssøk på tittel eller kort beskrivelse"
 
 #: ../plugin/controllers/i18n.py:312
 msgid "title starts with"
-msgstr ""
+msgstr "navn starter med"
 
 #: ../plugin/controllers/i18n.py:261
 msgid "transcoded"

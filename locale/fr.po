@@ -1,10 +1,11 @@
+# J. Lavoie <j.lavoie@net-c.ca>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-07 10:45+0100\n"
-"PO-Revision-Date: 2021-12-02 19:57+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2021-12-04 17:29+0000\n"
+"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/"
 "e2openplugin-openwebif/e2openplugin-openwebif/fr/>\n"
 "Language: fr\n"
@@ -207,7 +208,7 @@ msgstr "Autoriser les doublons"
 #: ../plugin/controllers/BouquetEditor.py:452
 #, python-format
 msgid "Alternative %s created failed."
-msgstr "Echec de la création de l'alternatif %s."
+msgstr "Échec de la création de l'alternatif %s."
 
 #: ../plugin/controllers/i18n.py:429
 msgid "Always"
