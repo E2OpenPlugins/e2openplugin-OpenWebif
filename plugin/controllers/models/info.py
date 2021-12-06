@@ -42,7 +42,7 @@ from Tools.Directories import fileExists
 from enigma import eEPGCache, eDVBVolumecontrol, eServiceCenter, eServiceReference
 
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
-from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, TRANSCODING
+from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, TRANSCODING, TEXTINPUTSUPPORT
 from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad, removeBad2
 
 try:
@@ -574,6 +574,7 @@ def getInfo(session=None, need_fullinfo=False):
 	except Exception as error:
 		print("[OpenWebif] -D- RecordTimerEntry check %s" % error)
 
+	info['textinputsupport'] = TEXTINPUTSUPPORT
 	STATICBOXINFO = info
 	return info
 

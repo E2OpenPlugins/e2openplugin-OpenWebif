@@ -28,6 +28,7 @@ from Plugins.Extensions.OpenWebif.controllers.models.services import getProtecti
 from Screens.InfoBar import InfoBar, MoviePlayer
 import NavigationInstance
 import os
+from six.moves.urllib.parse import unquote
 
 ENABLE_QPIP_PROCPATH = "/proc/stb/video/decodermode"
 
@@ -185,16 +186,21 @@ def remoteControl(key, type="", rcu=""):
 			print("[OpenWebIf] wrong hw detection")
 
 	amap = eActionMap.getInstance()
-	if type == "char":
+
+	if type == "text" and rcu != "":
+		message = "RC command text not supported"
+		result = False
 		if setPrevAsciiCode:
-			setPrevAsciiCode(key)
-			key = 510
-			amap.keyPressed(remotetype, key, 0)
-		else:
-			return {
-				"result": False,
-				"message": "RC command char '%s' not supported" % str(key)
-			}
+			for k in unquote(rcu):
+				setPrevAsciiCode(ord(k))
+				amap.keyPressed(remotetype, 510, 0)
+				amap.keyPressed(remotetype, 510, 1)
+			message = "RC command text '%s' has been issued" % str(rcu)
+			result = True
+		return {
+			"result": result,
+			"message": message
+		}
 	elif type == "long":
 		amap.keyPressed(remotetype, key, 0)
 		amap.keyPressed(remotetype, key, 3)

@@ -208,6 +208,13 @@ def getATSearchtypes():
 	except ImportError:
 		return {}
 
+def getTextInputSupport():
+	try:
+		from enigma import setPrevAsciiCode
+		return True
+	except ImportError:
+		return False
+
 
 OPENWEBIFPACKAGEVERSION = getOpenwebifPackageVersion()
 
@@ -226,3 +233,5 @@ HASVPS = getVPSPlugin()
 HASSERIES = getSeriesPlugin()
 
 ATSEARCHTYPES = getATSearchtypes()
+
+TEXTINPUTSUPPORT = getTextInputSupport()

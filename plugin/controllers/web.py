@@ -327,6 +327,11 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
+
+		text = getUrlArg(request, "text", "")
+		if text:
+			return remoteControl(0, "text", text)  # text input do not need type and command
+
 		res = self.testMandatoryArguments(request, ["command"])
 		if res:
 			return res
