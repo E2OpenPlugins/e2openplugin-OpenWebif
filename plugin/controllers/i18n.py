@@ -575,6 +575,7 @@ tstrings = {
 	'normal': _("normal"),
 	'descrambledecm': _("descramble and record ecm"),
 	'scrambledecm': _("don't descramble, record ecm"),
-	'REC': _("REC")
+	'REC': _("REC"),
+	'enter_text': _("Enter Text")
 
 }

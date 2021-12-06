@@ -51,6 +51,9 @@
 		<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
 	<!--<div><a class="lmc fbb" href="ajax/screenshot" title=$tstrings['grabscreenshot'].replace(" ","&nbsp;")><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
 		<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
+		#if $textinputsupport == True
+		<div style="width: 30px;"><a class="fbb" href="#" title="Text" onclick="InputText();return false;" style="font-style: italic;font-size: 20px;text-align: center;text-decoration: underline;">T</a></div>
+		#end if
 		<div><a class="fbb" href='#' title=$tstrings['showfullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-expand" aria-hidden="true"></i></a></div>
 		</div></div>
 		</li>
@@ -307,7 +310,15 @@
 				}
     		});
 		});
-
+		function InputText()
+		{
+			var txt = prompt("$tstrings['enter_text']", "");
+			if (txt != null) {
+				var url = "/api/remotecontrol?text=" + txt;
+				webapi_execute(url);
+				callScreenShot();
+			}
+		}
 	</script>
 
 #if $USERCSSCLASSIC != ''
