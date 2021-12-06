@@ -2310,6 +2310,10 @@ class WebController(BaseController):
 			val = (getUrlArg(request, "zapstream") == 'true')
 			comp_config.OpenWebif.webcache.zapstream.value = val
 			comp_config.OpenWebif.webcache.zapstream.save()
+		elif b"oldremote" in list(request.args.keys()):
+			val = (getUrlArg(request, "oldremote") == 'true')
+			comp_config.OpenWebif.webcache.oldremote.value = val
+			comp_config.OpenWebif.webcache.oldremote.save()
 		elif b"theme" in list(request.args.keys()):
 			try:
 				comp_config.OpenWebif.webcache.theme.value = getUrlArg(request, "theme")

@@ -127,6 +127,13 @@
 				<input type="checkbox" name="showallpackages"/>
 				#end if
 				</td></tr>
+				<tr><td>$tstrings['use_oldremote']</td><td>
+				#if $oldremote
+				<input type="checkbox" name="oldremote" checked="checked"/>
+				#else
+				<input type="checkbox" name="oldremote"/>
+				#end if
+				</td></tr>
 				#if $getVar("responsivedesign", "") != ""
 					<tr><td>$tstrings['use_modern_design']</td><td>
 					#if $responsivedesign
@@ -569,6 +576,18 @@ $(function() {
 		var ch = evt.currentTarget.checked;
 		$('input[name=showallpackages]').attr('checked', ch);
 		webapi_execute("/api/setwebconfig?showallpackages=" + ch);
+	});
+
+	$("input[name=oldremote]").click(function(evt) {
+		var ch = evt.currentTarget.checked;
+		$('input[name=oldremote]').attr('checked', ch);
+		$.ajax({
+			url: "api/setwebconfig?oldremote=" + ch,
+			success: function() {
+				window.location.hash = '';
+				window.location.reload(true);
+			}
+		});
 	});
 
 	$("input[name=responsivedesign]").click(function(evt) {

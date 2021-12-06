@@ -67,6 +67,7 @@ config.OpenWebif.webcache.showchanneldetails = ConfigYesNo(default=False)
 config.OpenWebif.webcache.showiptvchannelsinselection = ConfigYesNo(default=True)
 config.OpenWebif.webcache.screenshotchannelname = ConfigYesNo(default=False)
 config.OpenWebif.webcache.showallpackages = ConfigYesNo(default=False)
+config.OpenWebif.webcache.oldremote = ConfigYesNo(default=False)
 
 # HTTPS
 config.OpenWebif.https_enabled = ConfigYesNo(default=False)

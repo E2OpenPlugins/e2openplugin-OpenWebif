@@ -568,6 +568,7 @@ tstrings = {
 	'skins': _("Skins"),
 	'use_classic_design': _("Use classic interface"),
 	'use_modern_design': _("Use modern interface"),
+	'use_oldremote': _("Use old remote"),
 	'showallpackages': _("Show all packages"),
 
 	'recordingtype': _("Recording Type"),
