@@ -1107,6 +1107,9 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 					txt = "R+Z"
 				if isAutoTimer == 1:
 					txt = "AT"
+				if hasattr(timer, "ice_timer_id"):
+					if timer.ice_timer_id:
+						txt = "Ice"
 				timerDetails = {
 						'isEnabled': isEnabled,
 						'isZapOnly': int(timer.justplay),

@@ -183,6 +183,11 @@ def getTimers(session):
 			if timer.descramble:
 				recordingtype = "descrambled"
 
+		ice_timer_id = -1
+		if hasattr(timer, "ice_timer_id"):
+			ice_timer_id = timer.ice_timer_id or -1
+
+
 		# switch back to old way.
 		#fuzzyBegin = ' '.join(str(i) for i in FuzzyTime(timer.begin, inPast = True)[1:])
 		#fuzzyEnd = ""
@@ -232,7 +237,8 @@ def getTimers(session):
 			"isAutoTimer": isAutoTimer,
 			"allow_duplicate": allow_duplicate,
 			"autoadjust": autoadjust,
-			"recordingtype": recordingtype
+			"recordingtype": recordingtype,
+			"ice_timer_id": ice_timer_id
 		})
 
 	return {
