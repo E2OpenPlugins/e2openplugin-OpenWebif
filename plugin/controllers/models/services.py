@@ -1102,11 +1102,17 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 				if timer.disabled:
 					basicStatus = 'timer disabled'
 					isEnabled = 0
+				txt = "REC" if timer.justplay == 0 else "ZAP"
+				if timer.justplay == 1 and timer.always_zap == 1:
+					txt = "R+Z"
+				if isAutoTimer == 1:
+					txt = "AT"
 				timerDetails = {
 						'isEnabled': isEnabled,
 						'isZapOnly': int(timer.justplay),
 						'basicStatus': basicStatus,
-						'isAutoTimer': isAutoTimer
+						'isAutoTimer': isAutoTimer,
+						'text': txt
 					}
 				return timerDetails
 
@@ -1157,9 +1163,6 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 		for event in events:
 			timer = getTimerEventStatus(event, eventLookupTable)
 			# timerStatus is kept for backwards compatibility
-			basicStatus = ''
-			if timer:
-				basicStatus = timer['basicStatus']
 
 			ev = {}
 			ev['id'] = event[0]
@@ -1167,8 +1170,12 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 			ev['title'] = event[2]
 			ev['shortdesc'] = convertDesc(event[3])
 			ev['ref'] = event[4]
-			ev['timerStatus'] = basicStatus
-			ev['timer'] = timer
+			if timer:
+				ev['timerStatus'] = timer['basicStatus']
+				ev['timer'] = timer
+			else:
+				ev['timerStatus'] = ""
+
 			if Mode == 2:
 				ev['duration'] = event[6]
 
