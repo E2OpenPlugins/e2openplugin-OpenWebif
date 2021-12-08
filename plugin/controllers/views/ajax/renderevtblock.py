@@ -27,7 +27,6 @@ class renderEvtBlock:
         timerbar = ""
 
         if event['timerStatus'] != '':
-            print(event)
             text = event['timer']['text']
             timerEventSymbol = '<div class="%s">%s</div>' % (event['timerStatus'], text)
             timerbar = "background-color:red;"

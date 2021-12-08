@@ -1173,9 +1173,9 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 			ev['title'] = event[2]
 			ev['shortdesc'] = convertDesc(event[3])
 			ev['ref'] = event[4]
+			ev['timer'] = timer
 			if timer:
 				ev['timerStatus'] = timer['basicStatus']
-				ev['timer'] = timer
 			else:
 				ev['timerStatus'] = ""
 
