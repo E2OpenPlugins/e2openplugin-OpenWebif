@@ -73,7 +73,7 @@
 						<br>
 						#set $eventname_escaped =  $movie.eventname.replace("'", r"\'").replace('"', r"\'")
 						<a href='/file?action=download&file=$quote($movie.filename)' title="$tstrings['download'] $mname"><div><i class="fa fa-save"></i></div></a>
-						<a href='#' onclick="renameMovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['rename_recording']"><div><i class="fa fa-edit"></i></div></a>
+						<a href='#' onclick="editmovie('$quote($movie.serviceref)','$eventname_escaped');" title="$tstrings['edit_recording']"><div><i class="fa fa-edit"></i></div></a>
 						<a href='#' onclick="deleteMovie('$quote($movie.serviceref)', '$count', '$eventname_escaped'); return false;" title="$tstrings['delete_recording']"><div><i class="fa fa-trash-o"></i></div></a>
 
 						</div>
@@ -103,6 +103,65 @@
 </div>
 
 <script type="text/javascript">
+
+	function editmovie(sref, mt) {
+
+		var url = "ajax/editmovie?sRef=" + sref;
+		var title = "$tstrings['edit_recording']";
+		var buttons = {};
+		buttons["$tstrings['rename_recording']"] = function() { renameMovie(sref, mt);};
+		buttons["$tstrings['save']"] = function() { editmovieAction(sref);};
+		buttons["$tstrings['cancel']"] = function() { \$(this).dialog("close");};
+
+		\$.ajax({
+			url: url,
+			success: function(data) {
+				\$("#modaldialog").html(data).dialog({
+					modal:true,
+					title:title,
+					autoOpen:true,
+					width:'auto',
+					buttons: buttons,
+					close: function(event, ui) { 
+						\$(this).dialog('destroy');
+						\$("#modaldialog").html('');
+					}
+				});
+			}
+		});
+
+	}
+
+	function editmovieAction(sref) {
+
+		var title = \$('#movieTitle').val();
+		if(title == undefined || title == "")
+		{
+			\$("#modaldialog").dialog("close");
+			return;
+		}
+
+		var urldata = {};
+		urldata['sRef'] = decodeURI(sref);
+		urldata['desc'] = \$('#movieDescription').val();
+		urldata['title'] = title;
+
+		\$.ajax({
+			url: "/api/movieinfo",
+			dataType: "json",
+			cache: false,
+			data: urldata,
+			success: function(result) { 
+				if (result.result)
+				{
+					\$("#modaldialog").dialog("close");
+					load_maincontent_spin('ajax/movies?dirname='+escape("$directory").replace('+','%2B'))
+				}
+				else
+					\$('#movieResponse').html(result.resulttext);
+			}
+		});
+	}	
 
 \$( function() {
 	\$('#moviebuttons').buttonset();

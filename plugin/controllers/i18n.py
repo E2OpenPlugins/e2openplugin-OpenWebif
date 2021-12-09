@@ -576,6 +576,7 @@ tstrings = {
 	'descrambledecm': _("descramble and record ecm"),
 	'scrambledecm': _("don't descramble, record ecm"),
 	'REC': _("REC"),
-	'enter_text': _("Enter Text")
+	'enter_text': _("Enter Text"),
+	'edit_recording': _("Edit Recording")
 
 }

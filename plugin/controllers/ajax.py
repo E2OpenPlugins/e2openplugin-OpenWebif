@@ -27,7 +27,7 @@ import os
 
 from Plugins.Extensions.OpenWebif.controllers.models.services import getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
 from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
-from Plugins.Extensions.OpenWebif.controllers.models.movies import getMovieList, getMovieSearchList
+from Plugins.Extensions.OpenWebif.controllers.models.movies import getMovieList, getMovieSearchList, getMovieInfo
 from Plugins.Extensions.OpenWebif.controllers.models.timers import getTimers
 from Plugins.Extensions.OpenWebif.controllers.models.config import getConfigs, getConfigsSections
 from Plugins.Extensions.OpenWebif.controllers.models.stream import GetSession
@@ -365,3 +365,25 @@ class AjaxController(BaseController):
 			except Exception:
 				transcoder_port = 0
 		return {"transcoder_port": transcoder_port, "vxgenabled": vxgenabled, "auth": auth, "streaming_port": streaming_port}
+
+	def P_editmovie(self, request):
+		sref = getUrlArg(request, "sRef")
+		title = ""
+		description = ""
+		tags = ""
+		resulttext = ""
+		result = False
+		if sref:
+			mi = getMovieInfo(sref, NewFormat=True)
+			result = mi["result"]
+			if result:
+				title = mi["title"]
+				if title:
+					description = mi["description"]
+					tags = mi["tags"]
+				else:
+					result = False
+					resulttext = "meta file not found"
+			else:
+				resulttext = mi["resulttext"]
+		return {"title": title, "description": description, "sref": sref, "result": result, "tags": tags, "resulttext": resulttext}

@@ -2,11 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-15 10:55+0430\n"
+"POT-Creation-Date: 2021-12-09 21:02+0100\n"
 "PO-Revision-Date: 2021-12-02 19:56+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Estonian <https://hosted.weblate.org/projects/"
-"e2openplugin-openwebif/e2openplugin-openwebif/et/>\n"
+"Language-Team: Estonian <https://hosted.weblate.org/projects/e2openplugin-openwebif/e2openplugin-openwebif/et/>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,35 +23,35 @@ msgstr ""
 msgid "%02d.%02d.%d"
 msgstr ""
 
-#: ../plugin/controllers/models/movies.py:69
+#: ../plugin/controllers/models/movies.py:70
 #: ../plugin/controllers/models/timers.py:65
 #, python-format
 msgid "%02d:%02d"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:235
-#: ../plugin/controllers/models/services.py:773
-#: ../plugin/controllers/models/services.py:1004
-#: ../plugin/controllers/models/services.py:1050
+#: ../plugin/controllers/models/services.py:247
+#: ../plugin/controllers/models/services.py:789
+#: ../plugin/controllers/models/services.py:1020
+#: ../plugin/controllers/models/services.py:1066
 msgid "%d.%m.%Y"
 msgstr ""
 
-#: ../plugin/controllers/models/timers.py:187
-#: ../plugin/controllers/models/timers.py:188
-#: ../plugin/controllers/models/timers.py:276
-#: ../plugin/controllers/models/timers.py:277
-#: ../plugin/controllers/models/timers.py:434
-#: ../plugin/controllers/models/timers.py:435
+#: ../plugin/controllers/models/timers.py:199
+#: ../plugin/controllers/models/timers.py:200
+#: ../plugin/controllers/models/timers.py:290
+#: ../plugin/controllers/models/timers.py:291
+#: ../plugin/controllers/models/timers.py:473
+#: ../plugin/controllers/models/timers.py:474
 msgid "%d.%m.%Y %H:%M"
 msgstr ""
 
-#: ../plugin/controllers/models/movies.py:65
+#: ../plugin/controllers/models/movies.py:66
 #: ../plugin/controllers/models/timers.py:59
 #, python-format
 msgid "%s %02d.%02d."
 msgstr ""
 
-#: ../plugin/controllers/models/movies.py:67
+#: ../plugin/controllers/models/movies.py:68
 #, python-format
 msgid "%s %02d.%02d.%d"
 msgstr ""
@@ -151,7 +150,7 @@ msgstr "Lisa taimer"
 msgid "Add selection to bouquet"
 msgstr "Lisa lemmiknimekirja"
 
-#: ../plugin/plugin.py:174
+#: ../plugin/plugin.py:180
 msgid "Add service name to stream information"
 msgstr "Lisa kanali nimi voo infosse"
 
@@ -168,7 +167,7 @@ msgstr ""
 msgid "Added %s to alternative service %s."
 msgstr "%s lisati asenduskanalile %s."
 
-#: ../plugin/controllers/i18n.py:562
+#: ../plugin/controllers/i18n.py:563
 msgid "Adjust recording time to real event time"
 msgstr "Kohanda salvestuse aeg saate tõelise ajaga"
 
@@ -187,20 +186,17 @@ msgstr "Kõik kanalid"
 
 #: ../plugin/controllers/i18n.py:292
 msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr ""
-"Kõik selle tarkvara failid vaba lähtekoodiga; neid võib levitada ja/või "
-"muuta vastavalt GNU Üldise Avaliku Litsentsi v.3 tingimustele, avaldajaks "
-"Free Software Foundation."
+msgstr "Kõik selle tarkvara failid vaba lähtekoodiga; neid võib levitada ja/või muuta vastavalt GNU Üldise Avaliku Litsentsi v.3 tingimustele, avaldajaks Free Software Foundation."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "All alternative services deleted."
 msgstr "Kõik asenduskanalid on kustutatud."
 
-#: ../plugin/plugin.py:177
+#: ../plugin/plugin.py:183
 msgid "Allow IPK Upload"
 msgstr "Luba IPK üleslaadimine"
 
-#: ../plugin/controllers/i18n.py:561
+#: ../plugin/controllers/i18n.py:562
 msgid "Allow duplicates"
 msgstr "Luba duplikaadid"
 
@@ -302,7 +298,7 @@ msgstr "Autotaimeri muutmine"
 msgid "AutoTimer Settings"
 msgstr "Autotaimeri sätted"
 
-#: ../plugin/controllers/base.py:362 ../plugin/controllers/i18n.py:297
+#: ../plugin/controllers/base.py:361 ../plugin/controllers/i18n.py:297
 msgid "AutoTimers"
 msgstr "Autotaimerite nimekiri"
 
@@ -381,9 +377,7 @@ msgstr "Lemmiknimekiri %s liigutatud."
 #: ../plugin/controllers/BouquetEditor.py:187
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr ""
-"Lemmiknimekirja %s eemaldamine nurjus, viitenumber või muutuv nimekiri ei "
-"ole kehtivad."
+msgstr "Lemmiknimekirja %s eemaldamine nurjus, viitenumber või muutuv nimekiri ei ole kehtivad."
 
 #: ../plugin/controllers/BouquetEditor.py:185
 #, python-format
@@ -406,7 +400,7 @@ msgstr "Lemmiknimekiri nimetati ümber."
 msgid "Bouquet-settings were restored successfully"
 msgstr "Lemmiknimekirjad taastati edukalt"
 
-#: ../plugin/controllers/base.py:367
+#: ../plugin/controllers/base.py:364
 msgid "BouquetEditor"
 msgstr "Lemmiknimekirjad"
 
@@ -439,7 +433,7 @@ msgstr "Vastuvõtja tööaeg"
 msgid "Brand"
 msgstr "Mark"
 
-#: ../plugin/controllers/models/services.py:377
+#: ../plugin/controllers/models/services.py:389
 msgid "Cable"
 msgstr "Kaabel"
 
@@ -447,7 +441,7 @@ msgstr "Kaabel"
 msgid "Calendar Week"
 msgstr "Kalendrinädal"
 
-#: ../plugin/controllers/i18n.py:94 ../plugin/plugin.py:125
+#: ../plugin/controllers/i18n.py:94 ../plugin/plugin.py:127
 msgid "Cancel"
 msgstr "Tühista"
 
@@ -471,11 +465,11 @@ msgstr "Kanal"
 msgid "Channels"
 msgstr "Kanalid"
 
-#: ../plugin/plugin.py:176
+#: ../plugin/plugin.py:182
 msgid "Character encoding for EPG data"
 msgstr "EPG andmete tähemärgistik"
 
-#: ../plugin/controllers/models/info.py:344 ../plugin/controllers/i18n.py:98
+#: ../plugin/controllers/i18n.py:98 ../plugin/controllers/models/info.py:344
 msgid "Chipset"
 msgstr "Kiip"
 
@@ -491,11 +485,11 @@ msgstr "Sulge"
 msgid "Common Settings"
 msgstr "Üldseaded"
 
-#: ../plugin/controllers/i18n.py:566
+#: ../plugin/controllers/i18n.py:567
 msgid "Config"
 msgstr ""
 
-#: ../plugin/controllers/models/timers.py:282
+#: ../plugin/controllers/models/timers.py:296
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Vastuolus taimerid!  %s"
@@ -508,12 +502,12 @@ msgstr "Kaasautorid"
 msgid "Control"
 msgstr "Juhtimine"
 
-#: ../plugin/controllers/models/timers.py:313
+#: ../plugin/controllers/models/timers.py:339
 #, python-format
 msgid "Could not add timer '%s'!"
 msgstr "Taimeri '%s' lisamine nurjus!"
 
-#: ../plugin/controllers/models/timers.py:446
+#: ../plugin/controllers/models/timers.py:485
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Antud algus- ja lõpuajaga taimerit '%s' ei leitud!"
@@ -530,7 +524,7 @@ msgstr "Hetkel"
 msgid "Current Event"
 msgstr "Käesolev saade"
 
-#: ../plugin/controllers/i18n.py:191 ../plugin/plugin.py:158
+#: ../plugin/controllers/i18n.py:191 ../plugin/plugin.py:164
 msgid "Custom box name"
 msgstr "Kohandatud vastuvõtja nimi"
 
@@ -538,8 +532,8 @@ msgstr "Kohandatud vastuvõtja nimi"
 msgid "Custom offset"
 msgstr "Kohandatud nihe"
 
-#: ../plugin/controllers/models/info.py:76
-#: ../plugin/controllers/models/info.py:95 ../plugin/controllers/i18n.py:114
+#: ../plugin/controllers/i18n.py:114 ../plugin/controllers/models/info.py:76
+#: ../plugin/controllers/models/info.py:95
 msgid "DHCP"
 msgstr "DHCP"
 
@@ -547,15 +541,15 @@ msgstr "DHCP"
 msgid "Date"
 msgstr "Kuupäev"
 
-#: ../plugin/controllers/i18n.py:552
+#: ../plugin/controllers/i18n.py:553
 msgid "Date (newest)"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:551
+#: ../plugin/controllers/i18n.py:552
 msgid "Date (oldest)"
 msgstr ""
 
-#: ../plugin/plugin.py:179
+#: ../plugin/plugin.py:185
 msgid "Debug - Display Tracebacks in browser"
 msgstr ""
 
@@ -595,7 +589,7 @@ msgstr "Kustuta salvestis"
 msgid "Delete Timer"
 msgstr "Kustuta taimer"
 
-#: ../plugin/controllers/models/movies.py:489
+#: ../plugin/controllers/models/movies.py:490
 msgid ""
 "Delete failed, because there is no movie trash !\n"
 "Disable movie trash in configuration to delete this item"
@@ -620,7 +614,7 @@ msgstr "keelatud"
 msgid "Disable Timer"
 msgstr "Keela taimer"
 
-#: ../plugin/plugin.py:168
+#: ../plugin/plugin.py:174
 msgid "Disable remote access for user root"
 msgstr "Keela kaugligipääs kasutaja juurkataloogile"
 
@@ -644,7 +638,7 @@ msgstr "Distro"
 msgid "Dolby"
 msgstr "Dolby"
 
-#: ../plugin/controllers/i18n.py:563
+#: ../plugin/controllers/i18n.py:564
 msgid "Don't create timer when movie exists in database"
 msgstr ""
 
@@ -668,7 +662,7 @@ msgstr "ajurid"
 msgid "Duration"
 msgstr "Kestus"
 
-#: ../plugin/controllers/models/info.py:650
+#: ../plugin/controllers/models/info.py:651
 msgid "E"
 msgstr "E"
 
@@ -684,11 +678,11 @@ msgstr "Epg otsing"
 msgid "EPG encoding"
 msgstr "EPG tähemärgistik"
 
-#: ../plugin/controllers/base.py:371
+#: ../plugin/controllers/base.py:368
 msgid "EPGRefresh"
 msgstr "EPG värskendus"
 
-#: ../plugin/controllers/models/timers.py:899
+#: ../plugin/controllers/models/timers.py:938
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr "VIGA: Unetaimerit ei saa määrata kui vastuvõtja on ooteseisundis"
 
@@ -696,6 +690,11 @@ msgstr "VIGA: Unetaimerit ei saa määrata kui vastuvõtja on ooteseisundis"
 #, fuzzy
 msgid "Edit"
 msgstr "Redaktor"
+
+#: ../plugin/controllers/i18n.py:580
+#, fuzzy
+msgid "Edit Recording"
+msgstr "Kustuta salvestis"
 
 #: ../plugin/controllers/i18n.py:124
 msgid "Edit Timer"
@@ -710,19 +709,19 @@ msgstr "Redaktor"
 msgid "Enable"
 msgstr "Lubatud"
 
-#: ../plugin/plugin.py:167
+#: ../plugin/plugin.py:173
 msgid "Enable Authentication for streaming"
 msgstr "Voogesituse autentimine"
 
-#: ../plugin/plugin.py:160
+#: ../plugin/plugin.py:166
 msgid "Enable HTTP Authentication"
 msgstr "HTTP autentimine"
 
-#: ../plugin/plugin.py:161
+#: ../plugin/plugin.py:167
 msgid "Enable HTTPS"
 msgstr "Luba HTTPS"
 
-#: ../plugin/plugin.py:164
+#: ../plugin/plugin.py:170
 msgid "Enable HTTPS Authentication"
 msgstr "HTTPS autentimine"
 
@@ -730,7 +729,7 @@ msgstr "HTTPS autentimine"
 msgid "Enable Messages"
 msgstr "Luba teavitused"
 
-#: ../plugin/plugin.py:172
+#: ../plugin/plugin.py:178
 msgid "Enable Parental Control"
 msgstr "Luba lapselukk"
 
@@ -738,7 +737,7 @@ msgstr "Luba lapselukk"
 msgid "Enable Timer"
 msgstr "Luba taimer"
 
-#: ../plugin/plugin.py:171
+#: ../plugin/plugin.py:177
 msgid "Enable access from VPNs"
 msgstr "Luba ligipääs VPN võrgust"
 
@@ -772,6 +771,11 @@ msgstr "\"pärast sündmust\" ajaakna lõpp"
 msgid "End of timespan"
 msgstr "Ajaakna lõpp"
 
+#: ../plugin/controllers/i18n.py:579
+#, fuzzy
+msgid "Enter Text"
+msgstr "Tuuneri tüüp"
+
 #: ../plugin/controllers/i18n.py:459
 msgid "Enter a name for the new bouquet"
 msgstr "Sisesta lemmiknimekirja uus nimi"
@@ -797,11 +801,11 @@ msgstr ""
 msgid "Error"
 msgstr "Viga"
 
-#: ../plugin/controllers/models/timers.py:1072
+#: ../plugin/controllers/models/timers.py:1111
 msgid "Error parsing vps.xml"
 msgstr "Viga vps.xml faili parsimisel"
 
-#: ../plugin/controllers/ipkg.py:281
+#: ../plugin/controllers/ipkg.py:312
 msgid "Error upload File"
 msgstr "Viga faili üleslaadimisel"
 
@@ -814,7 +818,7 @@ msgstr "Viga varukoopia loomisel, %s pole olemas."
 msgid "Error while preparing backup file."
 msgstr "Viga varukoopia loomisel."
 
-#: ../plugin/controllers/ipkg.py:297
+#: ../plugin/controllers/ipkg.py:328
 msgid "Error writing File"
 msgstr "Viga faili kirjutamisel"
 
@@ -837,7 +841,7 @@ msgstr "Viga: Lemmiknimekirja %s eemaldamine nurjus, OS viga."
 msgid "Event not found"
 msgstr "Saadet ei leitud"
 
-#: ../plugin/controllers/models/timers.py:327
+#: ../plugin/controllers/models/timers.py:353
 msgid "EventId not found"
 msgstr "Saate tunnust ei leitud"
 
@@ -854,7 +858,7 @@ msgstr "Jäta välja"
 msgid "Execute \"After event\" during timespan"
 msgstr "Teosta \"pärast sündmust\" ajaakna sees"
 
-#: ../plugin/controllers/i18n.py:546
+#: ../plugin/controllers/i18n.py:547
 msgid "Export"
 msgstr "Ekspordi"
 
@@ -894,8 +898,8 @@ msgstr "Vaba"
 msgid "Free Memory"
 msgstr "Vaba mälu"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:51
+#: ../plugin/controllers/i18n.py:51 ../plugin/controllers/models/movies.py:55
+#: ../plugin/controllers/models/timers.py:44
 msgid "Fri"
 msgstr "R"
 
@@ -907,11 +911,11 @@ msgstr "Reede"
 msgid "From date"
 msgstr "Mitte pärast"
 
-#: ../plugin/controllers/models/info.py:349 ../plugin/controllers/i18n.py:142
+#: ../plugin/controllers/i18n.py:142 ../plugin/controllers/models/info.py:349
 msgid "Front processor version"
 msgstr "Esiprotsessori versioon"
 
-#: ../plugin/controllers/i18n.py:539
+#: ../plugin/controllers/i18n.py:540
 msgid "Full remote"
 msgstr "Täielik pult"
 
@@ -919,9 +923,9 @@ msgstr "Täielik pult"
 #: ../plugin/controllers/models/info.py:402
 #: ../plugin/controllers/models/info.py:417
 #: ../plugin/controllers/models/info.py:420
-#: ../plugin/controllers/models/movies.py:278
-#: ../plugin/controllers/models/movies.py:408
-#: ../plugin/controllers/models/movies.py:828
+#: ../plugin/controllers/models/movies.py:279
+#: ../plugin/controllers/models/movies.py:409
+#: ../plugin/controllers/models/movies.py:837
 msgid "GB"
 msgstr "GB"
 
@@ -941,15 +945,15 @@ msgstr "Uue asenduskanali jaoks muutuva nimekirja hankimine nurjus!"
 msgid "Get mutable list for new created bouquet failed!"
 msgstr "Uue lemmiknimekirja jaoks muudetava nimekirja hankimine nurjus!"
 
-#: ../plugin/controllers/i18n.py:556
+#: ../plugin/controllers/i18n.py:557
 msgid "HH:MM"
 msgstr ""
 
-#: ../plugin/plugin.py:159
+#: ../plugin/plugin.py:165
 msgid "HTTP port"
 msgstr "HTTP port"
 
-#: ../plugin/plugin.py:163
+#: ../plugin/plugin.py:169
 msgid "HTTPS port"
 msgstr "HTTPS port"
 
@@ -977,11 +981,11 @@ msgstr ""
 msgid "IPv4 address"
 msgstr "IPv4 aadress"
 
-#: ../plugin/controllers/models/info.py:160 ../plugin/controllers/i18n.py:155
+#: ../plugin/controllers/i18n.py:155 ../plugin/controllers/models/info.py:160
 msgid "IPv4-only Python/Twisted"
 msgstr "IPv4-ainult Python/Twisted"
 
-#: ../plugin/controllers/models/info.py:156 ../plugin/controllers/i18n.py:153
+#: ../plugin/controllers/i18n.py:153 ../plugin/controllers/models/info.py:156
 msgid "IPv4-only kernel"
 msgstr "IPv4-ainult kernel"
 
@@ -989,7 +993,7 @@ msgstr "IPv4-ainult kernel"
 msgid "IPv6 address(es)"
 msgstr "IPv6 aadress(id)"
 
-#: ../plugin/controllers/i18n.py:547
+#: ../plugin/controllers/i18n.py:548
 msgid "Import"
 msgstr "Impordi"
 
@@ -997,11 +1001,11 @@ msgstr "Impordi"
 msgid "Include description"
 msgstr "Hõlma sisututvustus"
 
-#: ../plugin/controllers/i18n.py:532
+#: ../plugin/controllers/i18n.py:533
 msgid "Include extended description"
 msgstr "Hõlma täpsem sisututvustus"
 
-#: ../plugin/controllers/i18n.py:531
+#: ../plugin/controllers/i18n.py:532
 msgid "Include short description"
 msgstr "Hõlma lühitutvustus"
 
@@ -1009,7 +1013,7 @@ msgstr "Hõlma lühitutvustus"
 msgid "Include when"
 msgstr "Kaasa"
 
-#: ../plugin/controllers/models/timers.py:562
+#: ../plugin/controllers/models/timers.py:601
 msgid "Infinite Instant recording started"
 msgstr "Algas kohene salvestus"
 
@@ -1021,11 +1025,11 @@ msgstr "Andmed"
 msgid "Inherit AutoTimer"
 msgstr "Päring Autotaimerist"
 
-#: ../plugin/controllers/i18n.py:524
+#: ../plugin/controllers/i18n.py:525
 msgid "Install Package"
 msgstr "Paigalda pakett"
 
-#: ../plugin/controllers/i18n.py:526
+#: ../plugin/controllers/i18n.py:527
 msgid "Installed"
 msgstr "Paigaldatud"
 
@@ -1033,7 +1037,7 @@ msgstr "Paigaldatud"
 msgid "Instant Record"
 msgstr "Kohene salvestus"
 
-#: ../plugin/controllers/models/timers.py:553
+#: ../plugin/controllers/models/timers.py:592
 msgid "Instant record for current Event started"
 msgstr "Algas käesoleva saate salvestamine"
 
@@ -1098,7 +1102,7 @@ msgstr "Seriaalide pealdis"
 msgid "Link Speed"
 msgstr "Ühenduse kiirus"
 
-#: ../plugin/controllers/models/timers.py:523
+#: ../plugin/controllers/models/timers.py:562
 msgid "List of Timers has been cleaned"
 msgstr "Taimerinimekiri tühjendati"
 
@@ -1122,9 +1126,9 @@ msgstr "MAC aadress"
 #: ../plugin/controllers/models/info.py:393
 #: ../plugin/controllers/models/info.py:404
 #: ../plugin/controllers/models/info.py:422
-#: ../plugin/controllers/models/movies.py:280
-#: ../plugin/controllers/models/movies.py:410
-#: ../plugin/controllers/models/movies.py:830
+#: ../plugin/controllers/models/movies.py:281
+#: ../plugin/controllers/models/movies.py:411
+#: ../plugin/controllers/models/movies.py:839
 msgid "MB"
 msgstr "MB"
 
@@ -1189,7 +1193,7 @@ msgstr "Minut"
 msgid "Missing mandatory parameter '%s'"
 msgstr "Puudub kohustuslik parameeter '%s'"
 
-#: ../plugin/controllers/models/timers.py:654
+#: ../plugin/controllers/models/timers.py:693
 msgid "Missing requesteter: sRef"
 msgstr "Puudub registri parameeter: sRef"
 
@@ -1201,8 +1205,8 @@ msgstr "E"
 msgid "Model"
 msgstr "mudel"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:47
+#: ../plugin/controllers/i18n.py:47 ../plugin/controllers/models/movies.py:55
+#: ../plugin/controllers/models/timers.py:44
 msgid "Mon"
 msgstr "E"
 
@@ -1214,7 +1218,7 @@ msgstr "Esmaspäev"
 msgid "Monthly"
 msgstr "Kord kuus"
 
-#: ../plugin/controllers/i18n.py:527
+#: ../plugin/controllers/i18n.py:528
 msgid "More"
 msgstr "Veel"
 
@@ -1227,7 +1231,7 @@ msgstr "Kuva üksikasjad"
 msgid "Movie database for EPG"
 msgstr "EPG kasutatav andmebaas"
 
-#: ../plugin/controllers/i18n.py:533
+#: ../plugin/controllers/i18n.py:534
 msgid "Movie search"
 msgstr "Filmi otsing"
 
@@ -1256,11 +1260,11 @@ msgstr "NCam veebiliides"
 msgid "Name"
 msgstr "Nimi"
 
-#: ../plugin/controllers/i18n.py:549
+#: ../plugin/controllers/i18n.py:550
 msgid "Name (a-z)"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:550
+#: ../plugin/controllers/i18n.py:551
 msgid "Name (z-a)"
 msgstr ""
 
@@ -1280,8 +1284,8 @@ msgstr "Võrgujaod"
 msgid "Never"
 msgstr "Mitte kunagi"
 
-#: ../plugin/controllers/models/services.py:370
 #: ../plugin/controllers/i18n.py:384
+#: ../plugin/controllers/models/services.py:382
 msgid "New"
 msgstr "Uus"
 
@@ -1329,7 +1333,7 @@ msgstr "Lemmiknimekirjal puudub nimi!"
 msgid "No current service given!"
 msgstr "Aktiivne kanal andmata!"
 
-#: ../plugin/controllers/models/timers.py:547
+#: ../plugin/controllers/models/timers.py:586
 msgid "No event found! Not recording!"
 msgstr "Saadet ei leitud! Ei salvestata!"
 
@@ -1342,8 +1346,8 @@ msgstr "Märgise nimi andmata!"
 msgid "No matches were found in the EPG"
 msgstr "Taimeri vastet ei leitud"
 
-#: ../plugin/controllers/models/timers.py:470
-#: ../plugin/controllers/models/timers.py:515
+#: ../plugin/controllers/models/timers.py:509
+#: ../plugin/controllers/models/timers.py:554
 msgid "No matching Timer found"
 msgstr "Taimeri vastet ei leitud"
 
@@ -1401,6 +1405,10 @@ msgstr "November"
 #: ../plugin/controllers/i18n.py:185
 msgid "Now"
 msgstr "Hetkel"
+
+#: ../plugin/controllers/i18n.py:522
+msgid "Now/Next Columns"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:343
 msgid "Number of recordings remaining"
@@ -1466,7 +1474,7 @@ msgstr "Veebiliides linux vastuvõtjale"
 msgid "Open in new window"
 msgstr "Ava uues aknas"
 
-#: ../plugin/plugin.py:148
+#: ../plugin/plugin.py:154
 msgid "OpenWebInterface Enabled"
 msgstr "Luba OpenWebIf"
 
@@ -1474,8 +1482,8 @@ msgstr "Luba OpenWebIf"
 msgid "OpenWebif Browser Settings"
 msgstr "OpenWebif brauseri seaded"
 
-#: ../plugin/plugin.py:188 ../plugin/plugin.py:256 ../plugin/plugin.py:258
-#: ../plugin/plugin.py:260
+#: ../plugin/plugin.py:194 ../plugin/plugin.py:262 ../plugin/plugin.py:264
+#: ../plugin/plugin.py:266
 msgid "OpenWebif Configuration"
 msgstr "Veebiliidese seaded"
 
@@ -1483,13 +1491,13 @@ msgstr "Veebiliidese seaded"
 msgid "OpenWebif Settings"
 msgstr "OpenWebif seaded"
 
-#: ../plugin/plugin.py:134
+#: ../plugin/plugin.py:140
 #, fuzzy
 msgid "OpenWebif url:"
 msgstr "OpenWebif URL:"
 
-#: ../plugin/controllers/models/services.py:264
 #: ../plugin/controllers/i18n.py:475
+#: ../plugin/controllers/models/services.py:276
 msgid "Orbital Position"
 msgstr "Orbitaalpositsioon"
 
@@ -1538,7 +1546,7 @@ msgstr "Tavaline"
 msgid "Playback"
 msgstr "Taasesitus"
 
-#: ../plugin/plugin.py:178
+#: ../plugin/plugin.py:184
 msgid "Playback IPTV Streams in browser"
 msgstr ""
 
@@ -1546,7 +1554,7 @@ msgstr ""
 msgid "Playlist"
 msgstr "Pleilist"
 
-#: ../plugin/controllers/i18n.py:559
+#: ../plugin/controllers/i18n.py:560
 msgid "Playlist format"
 msgstr "Pleilisti vorming"
 
@@ -1558,7 +1566,7 @@ msgstr "Pmtpid"
 msgid "Power Control"
 msgstr "Seiskamine"
 
-#: ../plugin/controllers/models/timers.py:743
+#: ../plugin/controllers/models/timers.py:782
 msgid "PowerTimer feature not available"
 msgstr "Toitetaimeri võimalus puudub"
 
@@ -1582,6 +1590,10 @@ msgstr "Levitaja"
 msgid "Providers"
 msgstr "Levitajad"
 
+#: ../plugin/controllers/i18n.py:578
+msgid "REC"
+msgstr ""
+
 #: ../plugin/controllers/i18n.py:200
 msgid "Radio"
 msgstr "Raadio"
@@ -1596,6 +1608,11 @@ msgstr "Salvesta maksimaalselt x korda"
 
 #: ../plugin/controllers/i18n.py:202
 msgid "Recording Status"
+msgstr "Salvestamine"
+
+#: ../plugin/controllers/i18n.py:574
+#, fuzzy
+msgid "Recording Type"
 msgstr "Salvestamine"
 
 #: ../plugin/controllers/i18n.py:203 ../plugin/controllers/i18n.py:409
@@ -1622,7 +1639,7 @@ msgstr "Värskenda"
 msgid "Remote"
 msgstr "Pult"
 
-#: ../plugin/controllers/i18n.py:522
+#: ../plugin/controllers/i18n.py:523
 msgid "Remove Package"
 msgstr "Eemalda pakett"
 
@@ -1647,7 +1664,7 @@ msgstr "Nimeta salvestis ümber"
 msgid "Repeated"
 msgstr "Korduv"
 
-#: ../plugin/plugin.py:165
+#: ../plugin/plugin.py:171
 msgid "Require client cert for HTTPS"
 msgstr "HTTPS nõuab kliendi serti"
 
@@ -1655,7 +1672,7 @@ msgstr "HTTPS nõuab kliendi serti"
 msgid "Require description to be unique"
 msgstr "Nõua täpselt vastavat sisukirjeldust"
 
-#: ../plugin/controllers/i18n.py:555
+#: ../plugin/controllers/i18n.py:556
 #, fuzzy
 msgid "Reset"
 msgstr "Lähtesta arvestus"
@@ -1697,8 +1714,8 @@ msgstr "L"
 msgid "Safe mode"
 msgstr "Turberežiim"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:52
+#: ../plugin/controllers/i18n.py:52 ../plugin/controllers/models/movies.py:55
+#: ../plugin/controllers/models/timers.py:44
 msgid "Sat"
 msgstr "L"
 
@@ -1715,7 +1732,7 @@ msgid "Saturday"
 msgstr "Laupäev"
 
 #: ../plugin/controllers/i18n.py:215 ../plugin/controllers/i18n.py:377
-#: ../plugin/controllers/i18n.py:439 ../plugin/plugin.py:126
+#: ../plugin/controllers/i18n.py:439 ../plugin/plugin.py:128
 msgid "Save"
 msgstr "Salvesta"
 
@@ -1758,11 +1775,11 @@ msgstr "KinoPoisk otsing"
 msgid "Search type"
 msgstr "Otsi"
 
-#: ../plugin/controllers/i18n.py:535
+#: ../plugin/controllers/i18n.py:536
 msgid "Select IPK file for upload"
 msgstr "Üleslaaditav IPK fail"
 
-#: ../plugin/controllers/i18n.py:554
+#: ../plugin/controllers/i18n.py:555
 msgid "Select..."
 msgstr ""
 
@@ -1838,7 +1855,7 @@ msgstr "See ei ole asenduskanal."
 msgid "Service renamed successfully."
 msgstr "Kanal nimetati ümber."
 
-#: ../plugin/controllers/models/services.py:372
+#: ../plugin/controllers/models/services.py:384
 msgid "Services"
 msgstr "Kanalid"
 
@@ -1859,15 +1876,20 @@ msgstr "EPG kanalile"
 msgid "Show Full OpenWebif"
 msgstr "Kuva täielik OpenWebif"
 
-#: ../plugin/controllers/i18n.py:542
+#: ../plugin/controllers/i18n.py:543
 msgid "Show IPTV channels in selection (eg. Autotimer)"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:189 ../plugin/plugin.py:154
+#: ../plugin/controllers/i18n.py:572
+#, fuzzy
+msgid "Show all packages"
+msgstr "Uuenda kõik paketid"
+
+#: ../plugin/controllers/i18n.py:189 ../plugin/plugin.py:160
 msgid "Show box name in header"
 msgstr "Kuva päises vastuvõtja nimi"
 
-#: ../plugin/controllers/i18n.py:540
+#: ../plugin/controllers/i18n.py:541
 msgid "Show details"
 msgstr "Kuva üksikasjad"
 
@@ -1879,11 +1901,11 @@ msgstr "Kuva  täielik pult"
 msgid "Show in Extensions menu"
 msgstr "Kuva laienduste menüüs"
 
-#: ../plugin/controllers/i18n.py:545
+#: ../plugin/controllers/i18n.py:546
 msgid "Show picon background"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:544
+#: ../plugin/controllers/i18n.py:545
 #, fuzzy
 msgid "Show picons"
 msgstr "Kuva üksikasjad"
@@ -1892,7 +1914,7 @@ msgstr "Kuva üksikasjad"
 msgid "Show picons in channel list"
 msgstr "Kuva kanalinimekirjas pikonid"
 
-#: ../plugin/controllers/i18n.py:541
+#: ../plugin/controllers/i18n.py:542
 msgid "Show service type in channel list"
 msgstr "Kuva edastusmoodus kanalinimekirjas"
 
@@ -1912,42 +1934,42 @@ msgstr "Matki"
 msgid "Site and sources"
 msgstr "Lähtekood"
 
-#: ../plugin/controllers/i18n.py:567
+#: ../plugin/controllers/i18n.py:568
 msgid "Skins"
 msgstr ""
 
-#: ../plugin/controllers/models/timers.py:827
-#: ../plugin/controllers/models/timers.py:860
-#: ../plugin/controllers/models/timers.py:886
-#: ../plugin/controllers/models/timers.py:915
-#: ../plugin/controllers/models/timers.py:961
-#: ../plugin/controllers/models/timers.py:1043
+#: ../plugin/controllers/models/timers.py:866
+#: ../plugin/controllers/models/timers.py:899
+#: ../plugin/controllers/models/timers.py:925
+#: ../plugin/controllers/models/timers.py:954
+#: ../plugin/controllers/models/timers.py:1000
+#: ../plugin/controllers/models/timers.py:1082
 msgid "SleepTimer error"
 msgstr "Unetaimeri viga"
 
-#: ../plugin/controllers/models/timers.py:904
-#: ../plugin/controllers/models/timers.py:1019
-#: ../plugin/controllers/models/timers.py:1038
+#: ../plugin/controllers/models/timers.py:943
+#: ../plugin/controllers/models/timers.py:1058
+#: ../plugin/controllers/models/timers.py:1077
 msgid "Sleeptimer has been disabled"
 msgstr "Unetaimer keelati"
 
-#: ../plugin/controllers/models/timers.py:822
-#: ../plugin/controllers/models/timers.py:854
-#: ../plugin/controllers/models/timers.py:881
-#: ../plugin/controllers/models/timers.py:955
+#: ../plugin/controllers/models/timers.py:861
+#: ../plugin/controllers/models/timers.py:893
+#: ../plugin/controllers/models/timers.py:920
+#: ../plugin/controllers/models/timers.py:994
 msgid "Sleeptimer is disabled"
 msgstr "Unetaimer keelati"
 
-#: ../plugin/controllers/models/timers.py:822
-#: ../plugin/controllers/models/timers.py:854
-#: ../plugin/controllers/models/timers.py:881
-#: ../plugin/controllers/models/timers.py:955
+#: ../plugin/controllers/models/timers.py:861
+#: ../plugin/controllers/models/timers.py:893
+#: ../plugin/controllers/models/timers.py:920
+#: ../plugin/controllers/models/timers.py:994
 msgid "Sleeptimer is enabled"
 msgstr "Unetaimer lubati"
 
-#: ../plugin/controllers/models/timers.py:910
-#: ../plugin/controllers/models/timers.py:1019
-#: ../plugin/controllers/models/timers.py:1033
+#: ../plugin/controllers/models/timers.py:949
+#: ../plugin/controllers/models/timers.py:1058
+#: ../plugin/controllers/models/timers.py:1072
 #, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Unetaimer määratud %d minutile"
@@ -1960,7 +1982,7 @@ msgstr "Tarkvara"
 msgid "Sorry this page is not yet implemented"
 msgstr "See leht ei ole veel kasutuses"
 
-#: ../plugin/controllers/i18n.py:548
+#: ../plugin/controllers/i18n.py:549
 msgid "Sort"
 msgstr ""
 
@@ -1992,7 +2014,7 @@ msgstr "Salvesta kohe"
 msgid "Start time is after end time"
 msgstr "Algusaeg on lõpuajast hilisem"
 
-#: ../plugin/controllers/i18n.py:534
+#: ../plugin/controllers/i18n.py:535
 msgid "Start typing..."
 msgstr "KIRJUTA SIIA"
 
@@ -2004,11 +2026,11 @@ msgstr ""
 msgid "Stream"
 msgstr "Voogesitus"
 
-#: ../plugin/controllers/i18n.py:565
+#: ../plugin/controllers/i18n.py:566
 msgid "Stream Clients"
 msgstr "Voogesituskliendid"
 
-#: ../plugin/plugin.py:173
+#: ../plugin/plugin.py:179
 #, fuzzy
 msgid "Streaming port"
 msgstr "Voogesituskliendid"
@@ -2017,7 +2039,7 @@ msgstr "Voogesituskliendid"
 msgid "Su"
 msgstr "P"
 
-#: ../plugin/controllers/i18n.py:553
+#: ../plugin/controllers/i18n.py:554
 msgid "Subdirectories"
 msgstr ""
 
@@ -2029,8 +2051,8 @@ msgstr "Alamvõrgu mask"
 msgid "Subservices"
 msgstr "Alamkanalid"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:46
+#: ../plugin/controllers/i18n.py:46 ../plugin/controllers/models/movies.py:55
+#: ../plugin/controllers/models/timers.py:44
 msgid "Sun"
 msgstr "P"
 
@@ -2076,11 +2098,11 @@ msgstr "Televisioon"
 msgid "Template Engine"
 msgstr "Malli mootor"
 
-#: ../plugin/controllers/base.py:408
+#: ../plugin/controllers/base.py:405
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../plugin/controllers/models/services.py:379
+#: ../plugin/controllers/models/services.py:391
 msgid "Terrestrial"
 msgstr "Maapealne"
 
@@ -2092,27 +2114,27 @@ msgstr "Tekst"
 msgid "Th"
 msgstr "N"
 
-#: ../plugin/controllers/web.py:91 ../plugin/controllers/web.py:1554
+#: ../plugin/controllers/web.py:91 ../plugin/controllers/web.py:1568
 #, python-format
 msgid "The parameter '%s' can't be empty"
 msgstr "Parameeter '%s' ei tohi olla tühi"
 
-#: ../plugin/controllers/web.py:340
+#: ../plugin/controllers/web.py:345
 msgid "The parameter 'command' must be a number"
 msgstr "Parameeter 'käsk' peab olema number"
 
-#: ../plugin/controllers/models/timers.py:509
+#: ../plugin/controllers/models/timers.py:548
 #, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "Taimer '%s' on edukalt %s"
 
-#: ../plugin/controllers/models/timers.py:459
-#: ../plugin/controllers/models/timers.py:465
+#: ../plugin/controllers/models/timers.py:498
+#: ../plugin/controllers/models/timers.py:504
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Taimer '%s' kustutati edukalt"
 
-#: ../plugin/controllers/models/timers.py:501
+#: ../plugin/controllers/models/timers.py:540
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "Taimer '%s' on nüüd salvestav! Mitte keelatud!"
@@ -2121,7 +2143,7 @@ msgstr "Taimer '%s' on nüüd salvestav! Mitte keelatud!"
 msgid "Theme"
 msgstr "Kujundus"
 
-#: ../plugin/controllers/i18n.py:274 ../plugin/plugin.py:152
+#: ../plugin/controllers/i18n.py:274 ../plugin/plugin.py:158
 #, fuzzy
 msgid "Theme mode"
 msgstr "Kujundus"
@@ -2130,8 +2152,8 @@ msgstr "Kujundus"
 msgid "This service can not be added."
 msgstr "Seda kanalit ei saa lisada."
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:50
+#: ../plugin/controllers/i18n.py:50 ../plugin/controllers/models/movies.py:55
+#: ../plugin/controllers/models/timers.py:44
 msgid "Thu"
 msgstr "N"
 
@@ -2155,27 +2177,27 @@ msgstr "Ajapiirang"
 msgid "Timer"
 msgstr "Taimer"
 
-#: ../plugin/controllers/models/timers.py:318
+#: ../plugin/controllers/models/timers.py:344
 #, python-format
 msgid "Timer '%s' added"
 msgstr "Taimer '%s' lisatud"
 
-#: ../plugin/controllers/models/timers.py:495
+#: ../plugin/controllers/models/timers.py:534
 #, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Taimer '%s' on juba olemas!"
 
-#: ../plugin/controllers/models/timers.py:421
+#: ../plugin/controllers/models/timers.py:460
 #, python-format
 msgid "Timer '%s' changed"
 msgstr "Taimerit '%s' muudeti"
 
-#: ../plugin/controllers/models/timers.py:489
+#: ../plugin/controllers/models/timers.py:528
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "Taimerit '%s' ei lubatud vastuolu tõttu"
 
-#: ../plugin/controllers/models/timers.py:440
+#: ../plugin/controllers/models/timers.py:479
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "Taimerit '%s' ei salvestatud vastuolu tõttu"
@@ -2188,7 +2210,7 @@ msgstr "Taimer lisatud"
 msgid "Timer added"
 msgstr "Taimer lisatud"
 
-#: ../plugin/controllers/models/timers.py:581
+#: ../plugin/controllers/models/timers.py:620
 msgid "Timer conflict detected! Not recording!"
 msgstr "Taimerite ajad kattuvad! Ei salvestata!"
 
@@ -2196,7 +2218,7 @@ msgstr "Taimerite ajad kattuvad! Ei salvestata!"
 msgid "Timer type"
 msgstr "Taimeri tüüp"
 
-#: ../plugin/controllers/models/timers.py:531
+#: ../plugin/controllers/models/timers.py:570
 msgid "TimerList has been saved"
 msgstr "Taimerinimekiri salvestati"
 
@@ -2216,7 +2238,7 @@ msgstr "Nimi"
 msgid "To date"
 msgstr "Mitte enne"
 
-#: ../plugin/controllers/models/movies.py:57
+#: ../plugin/controllers/models/movies.py:58
 #: ../plugin/controllers/models/timers.py:48
 msgid "Today"
 msgstr ""
@@ -2241,8 +2263,8 @@ msgstr "Tsid"
 msgid "Tu"
 msgstr "T"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:48
+#: ../plugin/controllers/i18n.py:48 ../plugin/controllers/models/movies.py:55
+#: ../plugin/controllers/models/timers.py:44
 msgid "Tue"
 msgstr "T"
 
@@ -2291,7 +2313,7 @@ msgstr "Tüüp"
 msgid "Unknown Volume command %s"
 msgstr "Tundmatu helitugevuse käsk %s"
 
-#: ../plugin/controllers/models/timers.py:676
+#: ../plugin/controllers/models/timers.py:715
 #, python-format
 msgid "Unknown command: '%s'"
 msgstr "Tundmatu käsk: '%s'"
@@ -2300,35 +2322,35 @@ msgstr "Tundmatu käsk: '%s'"
 msgid "Upcoming Events"
 msgstr "Algavad saated"
 
-#: ../plugin/controllers/i18n.py:525
+#: ../plugin/controllers/i18n.py:526
 msgid "Update"
 msgstr "Uuendus"
 
-#: ../plugin/controllers/i18n.py:523
+#: ../plugin/controllers/i18n.py:524
 msgid "Update Package"
 msgstr "Uuenda pakett"
 
-#: ../plugin/controllers/i18n.py:528
+#: ../plugin/controllers/i18n.py:529
 msgid "Update from feed"
 msgstr "Uuendus hoidlast"
 
-#: ../plugin/controllers/i18n.py:529
+#: ../plugin/controllers/i18n.py:530
 msgid "Upgrade all packages"
 msgstr "Uuenda kõik paketid"
 
-#: ../plugin/controllers/i18n.py:538
+#: ../plugin/controllers/i18n.py:539
 msgid "Upload File Error"
 msgstr "Viga faili üleslaadimisel"
 
-#: ../plugin/controllers/i18n.py:537
+#: ../plugin/controllers/i18n.py:538
 msgid "Upload package"
 msgstr "Paketi üleslaadimine"
 
-#: ../plugin/controllers/i18n.py:536
+#: ../plugin/controllers/i18n.py:537
 msgid "Uploaded Files"
 msgstr "Üleslaetud failid"
 
-#: ../plugin/controllers/i18n.py:543
+#: ../plugin/controllers/i18n.py:544
 msgid "Use Channelname for screenshots"
 msgstr ""
 
@@ -2336,21 +2358,21 @@ msgstr ""
 msgid "Use a custom location"
 msgstr "Kasuta kohandatud asukohta"
 
-#: ../plugin/controllers/i18n.py:560
+#: ../plugin/controllers/i18n.py:561
 msgid "Use as PiP if possible"
 msgstr "Kasuta võimalusel PiP akent"
 
-#: ../plugin/controllers/i18n.py:568
+#: ../plugin/controllers/i18n.py:569
 #, fuzzy
 msgid "Use classic interface"
 msgstr "Kasuta uut disaini"
 
-#: ../plugin/plugin.py:153
+#: ../plugin/plugin.py:159
 #, fuzzy
 msgid "Use custom Color"
 msgstr "Kasuta kohandatud asukohta"
 
-#: ../plugin/controllers/i18n.py:190 ../plugin/plugin.py:156
+#: ../plugin/controllers/i18n.py:190 ../plugin/plugin.py:162
 msgid "Use custom box name"
 msgstr "Kasuta kohandatud vastuvõtja nime"
 
@@ -2359,15 +2381,20 @@ msgstr "Kasuta kohandatud vastuvõtja nime"
 msgid "Use modern design"
 msgstr "Kasuta uut disaini"
 
-#: ../plugin/controllers/i18n.py:569 ../plugin/plugin.py:150
+#: ../plugin/controllers/i18n.py:570 ../plugin/plugin.py:156
 msgid "Use modern interface"
 msgstr "Kasuta uut disaini"
+
+#: ../plugin/controllers/i18n.py:571
+#, fuzzy
+msgid "Use old remote"
+msgstr "Peida täielik pult"
 
 #: ../plugin/controllers/i18n.py:281
 msgid "VPS"
 msgstr "VPS"
 
-#: ../plugin/controllers/models/timers.py:1077
+#: ../plugin/controllers/models/timers.py:1116
 msgid "VPS plugin not found"
 msgstr "VPS pluginat ei leitud"
 
@@ -2407,7 +2434,7 @@ msgstr "Helitugevus"
 msgid "Vpid"
 msgstr "Vpid"
 
-#: ../plugin/controllers/models/info.py:653
+#: ../plugin/controllers/models/info.py:654
 msgid "W"
 msgstr "W"
 
@@ -2435,8 +2462,8 @@ msgstr "K"
 msgid "Web TV"
 msgstr "Veebi TV"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:49
+#: ../plugin/controllers/i18n.py:49 ../plugin/controllers/models/movies.py:55
+#: ../plugin/controllers/models/timers.py:44
 msgid "Wed"
 msgstr "K"
 
@@ -2452,7 +2479,7 @@ msgstr "Kord nädalas (esmaspäev)"
 msgid "Weekly (Sunday)"
 msgstr "Kord nädalas (pühapäev)"
 
-#: ../plugin/plugin.py:170
+#: ../plugin/plugin.py:176
 msgid "Without auth only local access is allowed!"
 msgstr "Autentimata on lubatud ainult kohalik aadress!"
 
@@ -2469,11 +2496,11 @@ msgstr ""
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Vale parameetri vorming 'set=%s'. Kasuta set=set15 "
 
-#: ../plugin/controllers/i18n.py:557
+#: ../plugin/controllers/i18n.py:558
 msgid "YYYY-MM-DD"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:514 ../plugin/controllers/i18n.py:530
+#: ../plugin/controllers/i18n.py:514 ../plugin/controllers/i18n.py:531
 msgid "Yes"
 msgstr "Jah"
 
@@ -2481,7 +2508,7 @@ msgstr "Jah"
 msgid "Yes/No"
 msgstr "Jah/Ei"
 
-#: ../plugin/controllers/models/movies.py:59
+#: ../plugin/controllers/models/movies.py:60
 #: ../plugin/controllers/models/timers.py:51
 msgid "Yesterday"
 msgstr ""
@@ -2515,7 +2542,7 @@ msgstr "Lisa taimer"
 msgid "auto"
 msgstr "auto"
 
-#: ../plugin/plugin.py:132
+#: ../plugin/plugin.py:134
 msgid "box_ip"
 msgstr ""
 
@@ -2528,6 +2555,10 @@ msgstr "Otsingu rangus"
 #, fuzzy
 msgid "case-sensitive"
 msgstr "Otsingu rangus"
+
+#: ../plugin/controllers/i18n.py:576
+msgid "descramble and record ecm"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:369
 msgid "description contains"
@@ -2545,6 +2576,10 @@ msgstr "keelatud"
 #: ../plugin/controllers/i18n.py:336
 msgid "do nothing"
 msgstr "ära tee midagi"
+
+#: ../plugin/controllers/i18n.py:577
+msgid "don't descramble, record ecm"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:477
 msgid "error! Loading Page"
@@ -2576,9 +2611,9 @@ msgstr "tund"
 
 #: ../plugin/controllers/models/info.py:302
 #: ../plugin/controllers/models/info.py:305
-#: ../plugin/controllers/models/movies.py:282
-#: ../plugin/controllers/models/movies.py:412
-#: ../plugin/controllers/models/movies.py:832
+#: ../plugin/controllers/models/movies.py:283
+#: ../plugin/controllers/models/movies.py:413
+#: ../plugin/controllers/models/movies.py:841
 msgid "kB"
 msgstr "kB"
 
@@ -2603,9 +2638,13 @@ msgstr "minut"
 msgid "no description available"
 msgstr "sisututvustus puudub"
 
-#: ../plugin/controllers/models/info.py:189 ../plugin/controllers/i18n.py:154
+#: ../plugin/controllers/i18n.py:154 ../plugin/controllers/models/info.py:189
 msgid "none/IPv4-only network"
 msgstr "Pole/ainult IPv4 võrk"
+
+#: ../plugin/controllers/i18n.py:575
+msgid "normal"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:371
 msgid "on day"
@@ -2639,7 +2678,7 @@ msgstr "salvestus"
 msgid "regex match (experimental)"
 msgstr ""
 
-#: ../plugin/controllers/models/movies.py:483
+#: ../plugin/controllers/models/movies.py:484
 msgid "remove"
 msgstr "eemalda"
 
@@ -2712,7 +2751,7 @@ msgstr ""
 msgid "transcoded"
 msgstr "transkodeeritud"
 
-#: ../plugin/controllers/web.py:711
+#: ../plugin/controllers/web.py:716
 #, python-format
 msgid "type %s is not a number"
 msgstr "tüüp %s ei ole number"
@@ -2742,7 +2781,7 @@ msgstr "Tööpäev"
 msgid "weekend"
 msgstr "Nädalavahetus"
 
-#: ../plugin/controllers/ipkg.py:284
+#: ../plugin/controllers/ipkg.py:315
 msgid "wrong filetype"
 msgstr "vale failitüüp"
 

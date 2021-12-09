@@ -1,6 +1,9 @@
 ## Version 1.5.0
 ## (in development)
 * add char type to remotecontrol
+* improve timer info in multiepg
+* allow recording description edit via movieinfo api
+* add edit recording title and short description in classic UI
 
 ## Version 1.4.9
 * improve autotimer

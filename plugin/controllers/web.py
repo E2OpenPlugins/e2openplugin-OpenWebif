@@ -921,7 +921,8 @@ class WebController(BaseController):
 			_deltag = getUrlArg(request, "deltag")
 			_title = getUrlArg(request, "title")
 			_cuts = getUrlArg(request, "cuts")
-			return getMovieInfo(_sRef, _addtag, _deltag, _title, _cuts, True)
+			_desc = getUrlArg(request, "desc")
+			return getMovieInfo(_sRef, _addtag, _deltag, _title, _cuts, _desc ,True)
 		else:
 			return getMovieInfo()
 

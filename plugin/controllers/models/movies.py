@@ -26,6 +26,7 @@ import os
 import struct
 import six
 from time import localtime, time
+from six.moves.urllib.parse import unquote
 
 from enigma import eServiceReference, iServiceInformation, eServiceCenter
 from ServiceReference import ServiceReference
@@ -634,13 +635,15 @@ def renameMovie(session, sRef, newname):
 	return _moveMovie(session, sRef, newname=newname)
 
 
-def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, NewFormat=False):
+def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, description=None, NewFormat=False):
 
 	if sRef is not None:
+		sRef = unquote(sRef)
 		result = False
 		service = ServiceReference(sRef)
 		newtags = []
 		newtitle = ''
+		newdesc = ''
 		newcuts = []
 		if service is not None:
 			fullpath = service.ref.getPath()
@@ -657,6 +660,7 @@ def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, New
 					meta[0:le] = lines[0:le]
 					oldtags = meta[4].split(' ')
 					newtitle = meta[1]
+					newdesc = meta[2]
 					deltags = []
 
 					if addtag is not None:
@@ -678,6 +682,10 @@ def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, New
 					if title is not None and len(title) > 0:
 						lines[1] = title
 						newtitle = title
+
+					if description is not None and len(description) > 0:
+						lines[2] = description
+						newdesc = description
 
 					with open(metafilename, 'w') as f:
 						f.write('\n'.join(lines))
@@ -726,6 +734,7 @@ def getMovieInfo(sRef=None, addtag=None, deltag=None, title=None, cuts=None, New
 					"result": result,
 					"tags": newtags,
 					"title": newtitle,
+					"description": newdesc,
 					"cuts": newcuts
 				}
 

@@ -1,0 +1,25 @@
+#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
+<div style="height: 240px; width:500px">
+	<div class="MovieEditContainer">
+		<table style="width: 99%;" align="center">
+			<tbody>
+			#if $result
+			<tr>
+				<td>$tstrings['title']</td>
+				<td><input style="width: 100%;" type="text" value="$title" id="movieTitle"></td>
+			</tr>
+			<tr>
+				<td>$tstrings['description']</td>
+				#set desc = $description.replace('<','&lt;').replace('>','&gt;')
+				<td><textarea style="width: 100%;" rows="4" cols="30" id="movieDescription">$desc</textarea></td>
+			</tr>
+			#end if
+			<tr>
+				<td colspan="2" style="text-align: center;">
+					<div id="movieResponse">$resulttext</div>
+				</td>
+			</tr>
+		</tbody>
+		</table>
+	</div>
+</div>
