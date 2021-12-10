@@ -2194,13 +2194,13 @@ var SSHelperObj = function () {
 var SSHelper = new SSHelperObj();
 
 
-function editmovie(sref, mt) {
+function editmovie(sref, mt, directory) {
 
 	var url = "ajax/editmovie?sRef=" + sref;
 	var title = "$tstrings['edit_recording']";
 	var buttons = {};
 	buttons[tstr_rename_recording] = function() { renameMovie(sref, mt);};
-	buttons[tstr_save] = function() { editmovieAction(sref);};
+	buttons[tstr_save] = function() { editmovieAction(sref, directory);};
 	buttons[tstr_cancel] = function() { $(this).dialog("close");};
 
 	$.ajax({
@@ -2222,7 +2222,7 @@ function editmovie(sref, mt) {
 
 }
 
-function editmovieAction(sref) {
+function editmovieAction(sref, directory) {
 
 	var title = $('#movieTitle').val();
 	if(title == undefined || title == "")
@@ -2245,7 +2245,7 @@ function editmovieAction(sref) {
 			if (result.result)
 			{
 				$("#modaldialog").dialog("close");
-				load_maincontent_spin('ajax/movies?dirname='+escape("$directory").replace('+','%2B'))
+				load_maincontent_spin('ajax/movies?dirname='+directory)
 			}
 			else
 				$('#movieResponse').html(result.resulttext);
