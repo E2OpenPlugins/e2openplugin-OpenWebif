@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.22
+//* Version 1.2.23
 //******************************************************************************
 //* Copyright (C) 2011-2021 E2OpenPlugins
 //*
@@ -35,6 +35,7 @@
 //* V 1.2.20 - timer pipzap option
 //* V 1.2.21 - improve getallservices
 //* V 1.2.22 - add recoding type to timer edit
+//* V 1.2.23 - add rename recording
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -241,6 +242,7 @@ function initJsTranslation(strings) {
 	tstr_channel = strings.channel;
 	tstr_end = strings.begin;
 	tstr_begin = strings.end;
+	tstr_rename_recording = strings.tstr_rename_recording;
 
 }
 
@@ -2190,3 +2192,63 @@ var SSHelperObj = function () {
 };
 
 var SSHelper = new SSHelperObj();
+
+
+function editmovie(sref, mt) {
+
+	var url = "ajax/editmovie?sRef=" + sref;
+	var title = "$tstrings['edit_recording']";
+	var buttons = {};
+	buttons[tstr_rename_recording] = function() { renameMovie(sref, mt);};
+	buttons[tstr_save] = function() { editmovieAction(sref);};
+	buttons[tstr_cancel] = function() { $(this).dialog("close");};
+
+	$.ajax({
+		url: url,
+		success: function(data) {
+			$("#modaldialog").html(data).dialog({
+				modal:true,
+				title:title,
+				autoOpen:true,
+				width:'auto',
+				buttons: buttons,
+				close: function(event, ui) { 
+					$(this).dialog('destroy');
+					$("#modaldialog").html('');
+				}
+			});
+		}
+	});
+
+}
+
+function editmovieAction(sref) {
+
+	var title = $('#movieTitle').val();
+	if(title == undefined || title == "")
+	{
+		$("#modaldialog").dialog("close");
+		return;
+	}
+
+	var urldata = {};
+	urldata['sRef'] = decodeURI(sref);
+	urldata['desc'] = $('#movieDescription').val();
+	urldata['title'] = title;
+
+	$.ajax({
+		url: "/api/movieinfo",
+		dataType: "json",
+		cache: false,
+		data: urldata,
+		success: function(result) { 
+			if (result.result)
+			{
+				$("#modaldialog").dialog("close");
+				load_maincontent_spin('ajax/movies?dirname='+escape("$directory").replace('+','%2B'))
+			}
+			else
+				$('#movieResponse').html(result.resulttext);
+		}
+	});
+}	

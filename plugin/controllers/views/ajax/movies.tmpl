@@ -104,65 +104,6 @@
 
 <script type="text/javascript">
 
-	function editmovie(sref, mt) {
-
-		var url = "ajax/editmovie?sRef=" + sref;
-		var title = "$tstrings['edit_recording']";
-		var buttons = {};
-		buttons["$tstrings['rename_recording']"] = function() { renameMovie(sref, mt);};
-		buttons["$tstrings['save']"] = function() { editmovieAction(sref);};
-		buttons["$tstrings['cancel']"] = function() { \$(this).dialog("close");};
-
-		\$.ajax({
-			url: url,
-			success: function(data) {
-				\$("#modaldialog").html(data).dialog({
-					modal:true,
-					title:title,
-					autoOpen:true,
-					width:'auto',
-					buttons: buttons,
-					close: function(event, ui) { 
-						\$(this).dialog('destroy');
-						\$("#modaldialog").html('');
-					}
-				});
-			}
-		});
-
-	}
-
-	function editmovieAction(sref) {
-
-		var title = \$('#movieTitle').val();
-		if(title == undefined || title == "")
-		{
-			\$("#modaldialog").dialog("close");
-			return;
-		}
-
-		var urldata = {};
-		urldata['sRef'] = decodeURI(sref);
-		urldata['desc'] = \$('#movieDescription').val();
-		urldata['title'] = title;
-
-		\$.ajax({
-			url: "/api/movieinfo",
-			dataType: "json",
-			cache: false,
-			data: urldata,
-			success: function(result) { 
-				if (result.result)
-				{
-					\$("#modaldialog").dialog("close");
-					load_maincontent_spin('ajax/movies?dirname='+escape("$directory").replace('+','%2B'))
-				}
-				else
-					\$('#movieResponse').html(result.resulttext);
-			}
-		});
-	}	
-
 \$( function() {
 	\$('#moviebuttons').buttonset();
 	MLHelper.Load('$sort');
