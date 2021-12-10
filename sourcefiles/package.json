@@ -39,5 +39,8 @@
   "bugs": {
     "url": "https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/issues"
   },
-  "homepage": "https://github.com/E2OpenPlugins/e2openplugin-OpenWebif#readme"
+  "homepage": "https://github.com/E2OpenPlugins/e2openplugin-OpenWebif#readme",
+  "dependencies": {
+    "path-exists": "^5.0.0"
+  }
 }
