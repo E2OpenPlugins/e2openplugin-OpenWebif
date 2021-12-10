@@ -695,7 +695,7 @@ msgstr "Edytuj"
 #: ../plugin/controllers/i18n.py:580
 #, fuzzy
 msgid "Edit Recording"
-msgstr "Usuń nagranie"
+msgstr "Edytuj nagranie"
 
 #: ../plugin/controllers/i18n.py:124
 msgid "Edit Timer"
@@ -775,7 +775,7 @@ msgstr "Koniec okresu"
 #: ../plugin/controllers/i18n.py:579
 #, fuzzy
 msgid "Enter Text"
-msgstr "Wpisz ścieżkę"
+msgstr "Wpisz tekst"
 
 #: ../plugin/controllers/i18n.py:459
 msgid "Enter a name for the new bouquet"
@@ -1409,7 +1409,7 @@ msgstr "Teraz"
 
 #: ../plugin/controllers/i18n.py:522
 msgid "Now/Next Columns"
-msgstr ""
+msgstr "Kolumny Teraz/Następny"
 
 #: ../plugin/controllers/i18n.py:343
 msgid "Number of recordings remaining"
@@ -1614,7 +1614,7 @@ msgstr "Status nagrywania"
 #: ../plugin/controllers/i18n.py:574
 #, fuzzy
 msgid "Recording Type"
-msgstr "Status nagrywania"
+msgstr "Typ nagrywania"
 
 #: ../plugin/controllers/i18n.py:203 ../plugin/controllers/i18n.py:409
 msgid "Refresh"
@@ -1883,7 +1883,7 @@ msgstr "Pokaż kanały IPTV w wyborze (np. AutoTimer)"
 #: ../plugin/controllers/i18n.py:572
 #, fuzzy
 msgid "Show all packages"
-msgstr "Uaktualnij wszystkie pakiety"
+msgstr "Pokaż wszystkie pakiety"
 
 #: ../plugin/controllers/i18n.py:189 ../plugin/plugin.py:160
 msgid "Show box name in header"
@@ -2387,7 +2387,7 @@ msgstr "Włącz nowoczesny interfejs"
 #: ../plugin/controllers/i18n.py:571
 #, fuzzy
 msgid "Use old remote"
-msgstr "Ukryj pełnego pilota"
+msgstr "Użyj starego pilota"
 
 #: ../plugin/controllers/i18n.py:281
 msgid "VPS"
@@ -2557,7 +2557,7 @@ msgstr "z rozróżnianiem wielkości liter"
 
 #: ../plugin/controllers/i18n.py:576
 msgid "descramble and record ecm"
-msgstr ""
+msgstr "deszyfruj i nagraj ecm"
 
 #: ../plugin/controllers/i18n.py:369
 msgid "description contains"
@@ -2578,7 +2578,7 @@ msgstr "nic nie rób"
 
 #: ../plugin/controllers/i18n.py:577
 msgid "don't descramble, record ecm"
-msgstr ""
+msgstr "nie deszyfruj, nagraj ecm"
 
 #: ../plugin/controllers/i18n.py:477
 msgid "error! Loading Page"
@@ -2643,7 +2643,7 @@ msgstr "brak / tylko sieć IPv4"
 
 #: ../plugin/controllers/i18n.py:575
 msgid "normal"
-msgstr ""
+msgstr "normalny"
 
 #: ../plugin/controllers/i18n.py:371
 msgid "on day"
