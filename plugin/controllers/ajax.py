@@ -268,7 +268,7 @@ class AjaxController(BaseController):
 		ret['screenshotchannelname'] = config.OpenWebif.webcache.screenshotchannelname.value
 		ret['showallpackages'] = config.OpenWebif.webcache.showallpackages.value
 		ret['allowipkupload'] = config.OpenWebif.allow_upload_ipk.value
-		ret['smallremotes'] = config.OpenWebif.webcache.smallremote.choices
+		ret['smallremotes'] = [(x, _('%s Style') % x.capitalize()) for x in config.OpenWebif.webcache.smallremote.choices]
 		ret['smallremote'] = config.OpenWebif.webcache.smallremote.value
 		loc = getLocations()
 		ret['locations'] = loc['locations']

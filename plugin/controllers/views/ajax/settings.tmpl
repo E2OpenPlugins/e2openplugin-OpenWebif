@@ -129,11 +129,11 @@
 				</td></tr>
 				<tr><td>$tstrings['tstr_smallremote']</td><td>
 				<select name="selectsmallremote" id="selectsmallremote" style="min-width: 150px;margin: 5px;border:none;font-size: 1em;">
-				#for $ssmallremote in $smallremotes
-					#if $ssmallremote == $smallremote
-						<option selected="selected">$ssmallremote</option>
+				#for $sr in $smallremotes
+					#if $sr[0] == $smallremote
+						<option value="$sr[0]" selected="selected">$sr[1]</option>
 					#else
-						<option>$ssmallremote</option>
+						<option value="$sr[0]">$sr[1]</option>
 					#end if
 				#end for
 				</select>
