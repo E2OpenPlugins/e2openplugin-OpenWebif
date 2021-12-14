@@ -272,8 +272,8 @@ class AjaxController(BaseController):
 			ret['smallremotes'] = config.OpenWebif.webcache.smallremote.choices
 			ret['smallremote'] = config.OpenWebif.webcache.smallremote.value
 		else:
-			ret['moviedbs'] = []
-			ret['moviedb'] = 'new'
+			ret['smallremotes'] = []
+			ret['smallremote'] = 'new'
 		loc = getLocations()
 		ret['locations'] = loc['locations']
 		if os.path.exists(VIEWS_PATH + "/responsive"):
