@@ -268,12 +268,8 @@ class AjaxController(BaseController):
 		ret['screenshotchannelname'] = config.OpenWebif.webcache.screenshotchannelname.value
 		ret['showallpackages'] = config.OpenWebif.webcache.showallpackages.value
 		ret['allowipkupload'] = config.OpenWebif.allow_upload_ipk.value
-		if config.OpenWebif.webcache.smallremote.value:
-			ret['smallremotes'] = config.OpenWebif.webcache.smallremote.choices
-			ret['smallremote'] = config.OpenWebif.webcache.smallremote.value
-		else:
-			ret['smallremotes'] = []
-			ret['smallremote'] = 'new'
+		ret['smallremotes'] = config.OpenWebif.webcache.smallremote.choices
+		ret['smallremote'] = config.OpenWebif.webcache.smallremote.value
 		loc = getLocations()
 		ret['locations'] = loc['locations']
 		if os.path.exists(VIEWS_PATH + "/responsive"):
