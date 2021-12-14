@@ -2220,6 +2220,8 @@ class WebController(BaseController):
 		moviedb = comp_config.OpenWebif.webcache.moviedb.value if comp_config.OpenWebif.webcache.moviedb.value else 'IMDb'
 		ret['moviedb'] = moviedb
 		ret['showchanneldetails'] = comp_config.OpenWebif.webcache.showchanneldetails.value
+		smallremote = comp_config.OpenWebif.webcache.smallremote.value if comp_config.OpenWebif.webcache.smallremote.value else 'new'
+		ret['smallremote'] = smallremote
 		return ret
 
 	def P_config(self, request):
@@ -2311,10 +2313,12 @@ class WebController(BaseController):
 			val = (getUrlArg(request, "zapstream") == 'true')
 			comp_config.OpenWebif.webcache.zapstream.value = val
 			comp_config.OpenWebif.webcache.zapstream.save()
-		elif b"oldremote" in list(request.args.keys()):
-			val = (getUrlArg(request, "oldremote") == 'true')
-			comp_config.OpenWebif.webcache.oldremote.value = val
-			comp_config.OpenWebif.webcache.oldremote.save()
+		elif b"smallremote" in list(request.args.keys()):
+			try:
+				comp_config.OpenWebif.webcache.smallremote.value = getUrlArg(request, "smallremote")
+				comp_config.OpenWebif.webcache.smallremote.save()
+			except Exception:
+				pass
 		elif b"theme" in list(request.args.keys()):
 			try:
 				comp_config.OpenWebif.webcache.theme.value = getUrlArg(request, "theme")

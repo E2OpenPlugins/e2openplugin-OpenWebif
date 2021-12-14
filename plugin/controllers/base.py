@@ -422,6 +422,7 @@ class BaseController(resource.Resource):
 		ret['vti'] = "1" if imagedistro in ("VTi-Team Image") else "0"
 		ret['webtv'] = os.path.exists(getPublicPath('webtv'))
 		ret['stbLang'] = STB_LANG
-		ret['oldremote'] = config.OpenWebif.webcache.oldremote.value
+		smallremote = config.OpenWebif.webcache.smallremote.value if config.OpenWebif.webcache.smallremote.value else 'new'
+		ret['smallremote'] = smallremote
 		ret['textinputsupport'] = TEXTINPUTSUPPORT
 		return ret

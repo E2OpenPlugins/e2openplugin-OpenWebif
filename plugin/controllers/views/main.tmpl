@@ -59,7 +59,7 @@
 		</li>
 		</ul>
 		<div class="ui-widget-header" style="border-bottom: none;background: none;margin-left: 5px;margin-right: 5px;"></div>
-		#if $oldremote == True
+		#if $smallremote == 'old'
 		<img src="images/remotes/ow_remote.png" width="135" height="183" usemap="#menuremote" border="0">
 		<map name="menuremote" >
 			<area shape="circle" coords="67,148,13" alt="ok" onclick="pressMenuRemote('352');">
@@ -84,6 +84,48 @@
 			<area shape="rect" coords="46,0,89,25" alt="2" onclick="pressMenuRemote('3');">
 			<area shape="rect" coords="2,0,41,25" alt="1" onclick="pressMenuRemote('2');">
 		</map>
+		#else if $smallremote == 'ims'
+		<table class="remotesmall" style="height:100px;">
+		<tr>
+			<td data-code="2">1</td><td data-code="3">2</td><td data-code="4">3</td>
+		<tr>
+		<tr>
+			<td data-code="5">4</td><td data-code="6">5</td><td data-code="7">6</td>
+		<tr>
+		<tr>
+			<td data-code="8">7</td><td data-code="9">8</td><td data-code="10">9</td>
+		<tr>
+		<tr>
+			<td data-code="412"class="tdc" style="background:#e0e0e0">&lt;</td><td data-code="11">0</td><td data-code="407" class="tdc" style="background:#e0e0e0">&gt;</td>
+		<tr>
+		</table>
+		<table class="remotesmall" style="height:20px;">
+		<tr>
+			<td data-code="398" class="tdc" style="background:red"></td>
+			<td data-code="399" class="tdc" style="background:green"></td>
+			<td data-code="400" class="tdc" style="background:#f5f501"></td>
+			<td data-code="401" class="tdc" style="background:#1a2cbd"></td>
+		<tr>
+		</table>
+		<table class="remotesmall" style="height:80px;">
+		<tr>
+			<td data-code="139">Menu</td><td data-code="103" class="tdc" style="background:#b0b0b0">&#x25B2;</td><td data-code="174">Exit</td>
+		<tr>
+		<tr>
+			<td data-code="105" class="tdc" style="background:#b0b0b0">&#x25C0;</td><td data-code="352" class="tdf" style="background:#e0e0e0">OK</td><td data-code="106" class="tdc" style="background:#b0b0b0">&#x25B6;</td>
+		<tr>
+		<tr>
+			<td data-code="358">Info</td><td data-code="108" class="tdc" style="background:#b0b0b0">&#x25BC;</td><td data-code="365">EPG</td>
+		<tr>
+		</table>
+		<table class="remotesmall" style="height:20px;">
+		<tr>
+			<td data-code="167" class="tdf" style="background:#f08080">Rec</td>
+			<td data-code="377" class="tdf" style="background:#f0f0f0">TV</td>
+			<td data-code="138" class="tdf" style="background:#f0f0f0">Help</td>
+			<td data-code="393" class="tdf" style="background:#f0f0f0">PVR</td>
+		<tr>
+		</table>
 		#else
 		<table class="remotesmall" style="height:100px;">
 		<tr>
@@ -107,9 +149,7 @@
 			<td data-code="401" class="tdc" style="background:#1a2cbd"></td>
 		<tr>
 		</table>
-
 		<table class="remotesmall" style="height:80px;">
-
 		<tr>
 			<td data-code="139">Menu</td><td data-code="103">&#x25B2;</td><td data-code="358">Info</td>
 		<tr>
@@ -119,7 +159,6 @@
 		<tr>
 			<td data-code="365">EPG</td><td data-code="108">&#x25BC;</td><td data-code="174">Exit</td>
 		<tr>
-
 		</table>
 		<table class="remotesmall" style="height:20px;">
 		<tr>

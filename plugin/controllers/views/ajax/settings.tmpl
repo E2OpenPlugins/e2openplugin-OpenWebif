@@ -127,12 +127,16 @@
 				<input type="checkbox" name="showallpackages"/>
 				#end if
 				</td></tr>
-				<tr><td>$tstrings['use_oldremote']</td><td>
-				#if $oldremote
-				<input type="checkbox" name="oldremote" checked="checked"/>
-				#else
-				<input type="checkbox" name="oldremote"/>
-				#end if
+				<tr><td>$tstrings['tstr_smallremote']</td><td>
+				<select name="selectsmallremote" id="selectsmallremote" style="min-width: 150px;margin: 5px;border:none;font-size: 1em;">
+				#for $ssmallremote in $smallremotes
+					#if $ssmallremote == $smallremote
+						<option selected="selected">$ssmallremote</option>
+					#else
+						<option>$ssmallremote</option>
+					#end if
+				#end for
+				</select>
 				</td></tr>
 				#if $getVar("responsivedesign", "") != ""
 					<tr><td>$tstrings['use_modern_design']</td><td>
@@ -491,6 +495,15 @@ function load_scontent(url) {
 				url: "api/setwebconfig?moviedb=" + $(this).val(),
 			});
 		});
+		$("#selectsmallremote").change(function() {
+			$.ajax({
+				url: "api/setwebconfig?smallremote=" + $(this).val(),
+				success: function() {
+					window.location.hash = '';
+					window.location.reload(true);
+				}
+			});
+		});
 		return;
 	}
 	if(url=='packages')
@@ -576,18 +589,6 @@ $(function() {
 		var ch = evt.currentTarget.checked;
 		$('input[name=showallpackages]').attr('checked', ch);
 		webapi_execute("/api/setwebconfig?showallpackages=" + ch);
-	});
-
-	$("input[name=oldremote]").click(function(evt) {
-		var ch = evt.currentTarget.checked;
-		$('input[name=oldremote]').attr('checked', ch);
-		$.ajax({
-			url: "api/setwebconfig?oldremote=" + ch,
-			success: function() {
-				window.location.hash = '';
-				window.location.reload(true);
-			}
-		});
 	});
 
 	$("input[name=responsivedesign]").click(function(evt) {
