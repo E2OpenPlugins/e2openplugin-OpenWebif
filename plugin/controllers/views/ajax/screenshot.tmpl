@@ -15,7 +15,7 @@
 			</span>
 		</div>
 		<div class="screenshotContainer">
-			<div class="screenshotImageContainer" style="resize: both;overflow: auto;min-height:480px;min-width:720px">
+			<div id="screenshotImageContainer" style="resize: both;overflow: auto;min-height:480px;min-width:720px">
 				<img id="screenshotimage" src="" alt="$tstrings['loading'] ..." width="100%">
 				<div id="screenshotspinnerl" style="top: 50%;left: 50%;margin-left: 50px;margin-top: 50px;;position:absolute;font-size:50px">
 					<div id="screenshotspinner" class='fa fa-spin' style="display: none;"></div>
@@ -67,8 +67,25 @@ function buttonsSwitcher(pipval){
 	}
 }
 
+var start = true;
+
 $(document).ready(function(){
 	buttonsSwitcher(pip);
+	if(start)
+	{
+		start=false;
+		var w = $(".screenshotContainer").width();
+		if(w>1940) {
+			w = 1920;
+		}
+		if(w>1044) {
+			w = 1024;
+		}
+		else {
+			w = 720;
+		}
+		$('#screenshotImageContainer').css('width', w);
+	}
 });
 
 #end raw
