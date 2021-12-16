@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.23
+//* Version 1.2.24
 //******************************************************************************
 //* Copyright (C) 2011-2021 E2OpenPlugins
 //*
@@ -36,6 +36,7 @@
 //* V 1.2.21 - improve getallservices
 //* V 1.2.22 - add recoding type to timer edit
 //* V 1.2.23 - add rename recording
+//* V 1.2.24 - screenshot image resizable
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -866,9 +867,9 @@ function grabScreenshot(mode) {
 		$('#screenshotimage').attr("src",'/grab?format=jpg&r=720&mode=' + mode + '&t=' + timestamp);
 	}
 	if (mode == "lcd") {
-		$('#screenshotimage').attr("width", 'auto');
+		$('#screenshotimage').css("width", 'auto');
 	} else {
-		$('#screenshotimage').attr("width",720);
+		$('#screenshotimage').css('width', '100%');
 	}
 }
 
