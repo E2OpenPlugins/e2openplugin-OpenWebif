@@ -16,18 +16,15 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: ../plugin/controllers/models/timers.py:61
-#, python-format
 msgid "%02d.%02d."
 msgstr "%02d.%02d."
 
 #: ../plugin/controllers/models/timers.py:63
-#, python-format
 msgid "%02d.%02d.%d"
 msgstr "%02d.%02d.%d"
 
 #: ../plugin/controllers/models/movies.py:70
 #: ../plugin/controllers/models/timers.py:65
-#, python-format
 msgid "%02d:%02d"
 msgstr "%02d:%02d"
 
@@ -49,28 +46,23 @@ msgstr "%Y.%m.%d %H:%M"
 
 #: ../plugin/controllers/models/movies.py:66
 #: ../plugin/controllers/models/timers.py:59
-#, python-format
 msgid "%s %02d.%02d."
 msgstr "%s %02d.%02d."
 
 #: ../plugin/controllers/models/movies.py:68
-#, python-format
 msgid "%s %02d.%02d.%d"
 msgstr "%s %02d.%02d.%d"
 
 #: ../plugin/controllers/BouquetEditor.py:549
-#, python-format
 msgid "%s %s is locked."
 msgstr "%s %s užrakinta."
 
 #: ../plugin/controllers/i18n.py:129
-#, python-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #: ../plugin/controllers/models/info.py:306
 #: ../plugin/controllers/models/info.py:430
-#, python-format
 msgid "%s free / %s total"
 msgstr "%s laisvų / %s iš viso"
 
@@ -163,7 +155,6 @@ msgid "Add tags to recordings"
 msgstr "Pridėti žymes į įrašus"
 
 #: ../plugin/controllers/BouquetEditor.py:466
-#, python-format
 msgid "Added %s to alternative service %s."
 msgstr "Įtraukta %s į alternatyvų kanalą %s ."
 
@@ -201,7 +192,6 @@ msgid "Allow duplicates"
 msgstr "Leisti dubliuotis"
 
 #: ../plugin/controllers/BouquetEditor.py:452
-#, python-format
 msgid "Alternative %s created failed."
 msgstr "Alternatyvos %s sukurti nepavyko."
 
@@ -293,6 +283,7 @@ msgstr "Autoapklausa"
 msgid "AutoTimer Edit"
 msgstr "Autolaikmačio redagavimas"
 
+#. New Autotimer Setting Windows name (not enabled to transfer atm)
 #: ../plugin/controllers/i18n.py:396
 msgid "AutoTimer Settings"
 msgstr "Autolaikmačio nustatymai"
@@ -338,47 +329,38 @@ msgid "Bookmarks"
 msgstr "Žymelės"
 
 #: ../plugin/controllers/BouquetEditor.py:128
-#, python-format
 msgid "Bouquet %s already exists."
 msgstr "Bukietas %s jau yra."
 
 #: ../plugin/controllers/BouquetEditor.py:219
-#, python-format
 msgid "Bouquet %s can not be moved."
 msgstr "Bukieto %s perkelti negalima."
 
 #: ../plugin/controllers/BouquetEditor.py:123
-#, python-format
 msgid "Bouquet %s created."
 msgstr "Bukietas %s sukurtas."
 
 #: ../plugin/controllers/BouquetEditor.py:192
-#, python-format
 msgid "Bouquet %s deleted."
 msgstr "Bukietas %s ištrintas."
 
 #: ../plugin/controllers/BouquetEditor.py:547
-#, python-format
 msgid "Bouquet %s is locked."
 msgstr "Bukietas %s užrakintas."
 
 #: ../plugin/controllers/BouquetEditor.py:555
-#, python-format
 msgid "Bouquet %s is unlocked."
 msgstr "Bukietas %s atrakintas."
 
 #: ../plugin/controllers/BouquetEditor.py:217
-#, python-format
 msgid "Bouquet %s moved."
 msgstr "Bukietas %s perkeltas."
 
 #: ../plugin/controllers/BouquetEditor.py:187
-#, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
 msgstr "Bukieto %s pašalinti nepavyko, kanalo nuoroda, arba kintamas sąrašas neteisingi."
 
 #: ../plugin/controllers/BouquetEditor.py:185
-#, python-format
 msgid "Bouquet %s removed failed."
 msgstr "Bukieto %s pašalinti nepavyko."
 
@@ -471,6 +453,7 @@ msgstr "EPG šriftų koduotė"
 msgid "Chipset"
 msgstr "Lustų rinkinys"
 
+#. There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:99
 msgid "Cleanup Timers"
 msgstr "Valyti laikmačius"
@@ -488,7 +471,6 @@ msgid "Config"
 msgstr "Nustatymas"
 
 #: ../plugin/controllers/models/timers.py:296
-#, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Laikmačių konfliktas! %s"
 
@@ -501,12 +483,10 @@ msgid "Control"
 msgstr "Valdymas"
 
 #: ../plugin/controllers/models/timers.py:339
-#, python-format
 msgid "Could not add timer '%s'!"
 msgstr "Laikmačio '%s' pridėti nepavyko!"
 
 #: ../plugin/controllers/models/timers.py:485
-#, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Nepavyko rasti laikmačio '%s' su nurodytu pradžios ir pabaigos laiku!"
 
@@ -588,11 +568,9 @@ msgid "Delete Timer"
 msgstr "Pašalinti laikmatį"
 
 #: ../plugin/controllers/models/movies.py:490
-msgid ""
-"Delete failed, because there is no movie trash !\n"
-"Disable movie trash in configuration to delete this item"
+msgid "Delete failed, because there is no movie trash !\nDisable movie trash in configuration to delete this item"
 msgstr ""
-"Pašalinti nepavyko, nes nėra filmų šiukšliadėžės!\n"
+"Pašalinti nepavyko, nes nėra filmų šiukšliadėžės!"
 "Išjunkite filmų šiukšliadėžę konfigūracijoje, kad ištrinti šį elementą"
 
 #: ../plugin/controllers/i18n.py:516
@@ -803,7 +781,6 @@ msgid "Error upload File"
 msgstr "Failo įkėlimo klaida"
 
 #: ../plugin/controllers/BouquetEditor.py:592
-#, python-format
 msgid "Error while preparing backup file, %s does not exists."
 msgstr "Klaida, ruošiant atsarginės kopijos failą, %s nėra."
 
@@ -816,17 +793,14 @@ msgid "Error writing File"
 msgstr "Failo įrašymo klaida"
 
 #: ../plugin/controllers/BouquetEditor.py:653
-#, python-format
 msgid "Error, %s does not exists, restore is not possible..."
 msgstr "Klaida, %s nėra, atkurti neįmanoma..."
 
 #: ../plugin/controllers/BouquetEditor.py:651
-#, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
 msgstr "Klaida, internetiniu bukietų redaktoriumi %s nesukurtas..."
 
 #: ../plugin/controllers/BouquetEditor.py:194
-#, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
 msgstr "Klaida: bukietas %s negali būti ištrintas, OS klaida."
 
@@ -878,6 +852,7 @@ msgstr "Mikroprogramos versija"
 msgid "Force"
 msgstr "Priverstinai"
 
+#. Cuma
 #: ../plugin/controllers/i18n.py:42
 msgid "Fr"
 msgstr "Pn"
@@ -1038,7 +1013,6 @@ msgid "Internal error!"
 msgstr "Vidinė klaida!"
 
 #: ../plugin/controllers/i18n.py:398
-#, python-format
 msgid "Interval (in %s)"
 msgstr "Intervalas (%s)"
 
@@ -1180,7 +1154,6 @@ msgid "Minute"
 msgstr "Minutė"
 
 #: ../plugin/controllers/web.py:85
-#, python-format
 msgid "Missing mandatory parameter '%s'"
 msgstr "Trūksta būtino parametro '%s'"
 
@@ -1453,6 +1426,7 @@ msgstr "Oi, jūsų paieškos neatitiko jokie rezultatai"
 msgid "Oops..."
 msgstr "Oi..."
 
+#. The translation could have been sharper but as it has to fit in it’s frame this may be an acceptable compromise. I would have prefered: "Open Source webbgränssnitt för Linuxbaserade digitalboxar"...
 #: ../plugin/controllers/i18n.py:188
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Atviro kodo internetinė sąsaja Linux TV imtuvams"
@@ -1487,6 +1461,7 @@ msgstr "OpenWebif nuoroda: http://imtuvo_IP:prievadas"
 msgid "Orbital Position"
 msgstr "Padėtis orbitoje"
 
+#. One extra space inserted in front for better readability in context.
 #: ../plugin/controllers/i18n.py:322
 msgid "Override found with alternative service"
 msgstr "Nepaisyti rastų alternatyvių kanalų"
@@ -1665,6 +1640,7 @@ msgstr "Atkurti"
 msgid "Reset count"
 msgstr "Išvalyti skaitiklį"
 
+#. Have to use "GUI" because of limited space. I would prefere "Användargränssnitt" if space were without limits.
 #: ../plugin/controllers/i18n.py:210
 msgid "Restart GUI"
 msgstr "Paleisti grafinę aplinką iš naujo"
@@ -1689,6 +1665,7 @@ msgstr "SLAAC"
 msgid "SNR"
 msgstr "SNR"
 
+#. Saturday
 #: ../plugin/controllers/i18n.py:43
 msgid "Sa"
 msgstr "Št"
@@ -1775,47 +1752,40 @@ msgstr "Siųsti žinutę į ekraną"
 msgid "September"
 msgstr "rugsėjo"
 
+#. Översätts ofta till Leverantör i stället.
 #: ../plugin/controllers/i18n.py:226
 msgid "Service"
 msgstr "Kanalas"
 
 #: ../plugin/controllers/BouquetEditor.py:314
-#, python-format
 msgid "Service %s added."
 msgstr "Kanalas %s įtrauktas."
 
 #: ../plugin/controllers/BouquetEditor.py:317
-#, python-format
 msgid "Service %s already exists in bouquet %s."
 msgstr "Kanalas %s bukiete %s jau yra."
 
 #: ../plugin/controllers/BouquetEditor.py:249
-#, python-format
 msgid "Service %s can not be removed."
 msgstr "Kanalas %s negali būti pašalintas."
 
 #: ../plugin/controllers/BouquetEditor.py:545
-#, python-format
 msgid "Service %s is locked."
 msgstr "Kanalas %s užrakintas."
 
 #: ../plugin/controllers/BouquetEditor.py:553
-#, python-format
 msgid "Service %s is unlocked."
 msgstr "Kanalas %s atrakintas."
 
 #: ../plugin/controllers/BouquetEditor.py:274
-#, python-format
 msgid "Service %s moved."
 msgstr "Kanalas %s perkeltas."
 
 #: ../plugin/controllers/BouquetEditor.py:248
-#, python-format
 msgid "Service %s removed from bouquet %s."
 msgstr "Kanalas %s iš bukieto %s pašalintas."
 
 #: ../plugin/controllers/BouquetEditor.py:240
-#, python-format
 msgid "Service %s removed."
 msgstr "Kanalas %s pašalintas."
 
@@ -1949,7 +1919,6 @@ msgstr "Budėjimo laikmatis įjungtas"
 #: ../plugin/controllers/models/timers.py:949
 #: ../plugin/controllers/models/timers.py:1058
 #: ../plugin/controllers/models/timers.py:1072
-#, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Budėjimo laikmatis nustatytas %d minučių"
 
@@ -2013,6 +1982,7 @@ msgstr "Transliacijų klientai"
 msgid "Streaming port"
 msgstr "Transliacijos prievadas"
 
+#. Sunday
 #: ../plugin/controllers/i18n.py:44
 msgid "Su"
 msgstr "Sk"
@@ -2088,12 +2058,12 @@ msgstr "Antžeminė"
 msgid "Text"
 msgstr "Tekstas"
 
+#. Thursday
 #: ../plugin/controllers/i18n.py:41
 msgid "Th"
 msgstr "Kt"
 
 #: ../plugin/controllers/web.py:91 ../plugin/controllers/web.py:1568
-#, python-format
 msgid "The parameter '%s' can't be empty"
 msgstr "Parametras '%s' negali būti tuščias"
 
@@ -2101,19 +2071,17 @@ msgstr "Parametras '%s' negali būti tuščias"
 msgid "The parameter 'command' must be a number"
 msgstr "Parametras 'komanda' turi būti skaitmuo"
 
+#. The word "framgångsrikt" to get a string to end the sentence.
 #: ../plugin/controllers/models/timers.py:548
-#, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "Laikmatis '%s' sėkmingai %s"
 
 #: ../plugin/controllers/models/timers.py:498
 #: ../plugin/controllers/models/timers.py:504
-#, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Laikmatis '%s' pašalintas sėkmingai"
 
 #: ../plugin/controllers/models/timers.py:540
-#, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "Laikmatis '%s' dabar įrašomas! Neišjungtas!"
 
@@ -2155,27 +2123,22 @@ msgid "Timer"
 msgstr "Laikmatis"
 
 #: ../plugin/controllers/models/timers.py:344
-#, python-format
 msgid "Timer '%s' added"
 msgstr "Laikmatis '%s' pridėtas"
 
 #: ../plugin/controllers/models/timers.py:534
-#, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Laikmatis '%s' jau yra!"
 
 #: ../plugin/controllers/models/timers.py:460
-#, python-format
 msgid "Timer '%s' changed"
 msgstr "Laikmatis '%s' pakeistas"
 
 #: ../plugin/controllers/models/timers.py:528
-#, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "Laikmatis '%s' neįtrauktas dėl konflikto"
 
 #: ../plugin/controllers/models/timers.py:479
-#, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "Laikmatis '%s' neišsaugotas dėl konflikto"
 
@@ -2203,6 +2166,7 @@ msgstr "Laikmačių sąrašas išsaugotas"
 msgid "Timerlist"
 msgstr "Laikmačių sąrašas"
 
+#. There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:258 ../plugin/controllers/i18n.py:380
 msgid "Timers"
 msgstr "Laikmačiai"
@@ -2236,6 +2200,7 @@ msgstr "Bandyti atspėti"
 msgid "Tsid"
 msgstr "TSID"
 
+#. Tuesday
 #: ../plugin/controllers/i18n.py:39
 msgid "Tu"
 msgstr "An"
@@ -2286,12 +2251,10 @@ msgid "Type"
 msgstr "Tipas"
 
 #: ../plugin/controllers/web.py:247
-#, python-format
 msgid "Unknown Volume command %s"
 msgstr "Nežinoma komanda %s"
 
 #: ../plugin/controllers/models/timers.py:715
-#, python-format
 msgid "Unknown command: '%s'"
 msgstr "Nežinoma komanda: '%s'"
 
@@ -2428,6 +2391,7 @@ msgstr "Pažadinti"
 msgid "Warning"
 msgstr "Dėmesio"
 
+#. Wednesday
 #: ../plugin/controllers/i18n.py:40
 msgid "We"
 msgstr "Tr"
@@ -2466,7 +2430,6 @@ msgid "Would you like to save your changes?"
 msgstr "Ar norite įrašyti pakeitimus?"
 
 #: ../plugin/controllers/web.py:242
-#, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Neteisingas parametro formatas 'set=%s'. Naudokite set=set15 "
 
@@ -2624,6 +2587,7 @@ msgstr "dieną"
 msgid "on weekday"
 msgstr "šiokiadienį"
 
+#. Vad nu det här kan vara bra för?
 #: ../plugin/controllers/BouquetEditor.py:87
 msgid "one two three four unknown command"
 msgstr "vienas du trys keturi nežinoma komanda"
@@ -2719,7 +2683,6 @@ msgid "transcoded"
 msgstr "perkoduota"
 
 #: ../plugin/controllers/web.py:716
-#, python-format
 msgid "type %s is not a number"
 msgstr "tipas %s nėra skaičius"
 

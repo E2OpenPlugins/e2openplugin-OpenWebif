@@ -14,18 +14,15 @@ msgstr ""
 "X-Generator: Weblate 4.10-dev\n"
 
 #: ../plugin/controllers/models/timers.py:61
-#, python-format
 msgid "%02d.%02d."
 msgstr ""
 
 #: ../plugin/controllers/models/timers.py:63
-#, python-format
 msgid "%02d.%02d.%d"
 msgstr ""
 
 #: ../plugin/controllers/models/movies.py:70
 #: ../plugin/controllers/models/timers.py:65
-#, python-format
 msgid "%02d:%02d"
 msgstr ""
 
@@ -47,28 +44,23 @@ msgstr ""
 
 #: ../plugin/controllers/models/movies.py:66
 #: ../plugin/controllers/models/timers.py:59
-#, python-format
 msgid "%s %02d.%02d."
 msgstr ""
 
 #: ../plugin/controllers/models/movies.py:68
-#, python-format
 msgid "%s %02d.%02d.%d"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:549
-#, python-format
 msgid "%s %s is locked."
 msgstr "%s %s je zamknutý."
 
 #: ../plugin/controllers/i18n.py:129
-#, python-format
 msgid "%s / %s"
 msgstr ""
 
 #: ../plugin/controllers/models/info.py:306
 #: ../plugin/controllers/models/info.py:430
-#, python-format
 msgid "%s free / %s total"
 msgstr "%s voľné / %s celkom"
 
@@ -163,7 +155,6 @@ msgid "Add tags to recordings"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:466
-#, python-format
 msgid "Added %s to alternative service %s."
 msgstr "%s pridaná k alternatívam stanice %s."
 
@@ -201,7 +192,6 @@ msgid "Allow duplicates"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:452
-#, python-format
 msgid "Alternative %s created failed."
 msgstr "Vytváranie alternatívy %s zlyhalo."
 
@@ -295,6 +285,7 @@ msgstr "AutoPoll"
 msgid "AutoTimer Edit"
 msgstr "Upraviť autočasovač"
 
+#. New Autotimer Setting Windows name (not enabled to transfer atm)
 #: ../plugin/controllers/i18n.py:396
 msgid "AutoTimer Settings"
 msgstr "Nastavenia automatického časovača"
@@ -341,47 +332,38 @@ msgid "Bookmarks"
 msgstr "Záložky"
 
 #: ../plugin/controllers/BouquetEditor.py:128
-#, python-format
 msgid "Bouquet %s already exists."
 msgstr "Prehľad %s už existuje."
 
 #: ../plugin/controllers/BouquetEditor.py:219
-#, python-format
 msgid "Bouquet %s can not be moved."
 msgstr "Prehľad %s nemôže byť presunutý."
 
 #: ../plugin/controllers/BouquetEditor.py:123
-#, python-format
 msgid "Bouquet %s created."
 msgstr "Prehľad %s vytvorený."
 
 #: ../plugin/controllers/BouquetEditor.py:192
-#, python-format
 msgid "Bouquet %s deleted."
 msgstr "Prehľad %s zmazaný."
 
 #: ../plugin/controllers/BouquetEditor.py:547
-#, python-format
 msgid "Bouquet %s is locked."
 msgstr "Prehľad %s je zamknutý."
 
 #: ../plugin/controllers/BouquetEditor.py:555
-#, python-format
 msgid "Bouquet %s is unlocked."
 msgstr "Prehľad %s nie je zamknutý."
 
 #: ../plugin/controllers/BouquetEditor.py:217
-#, python-format
 msgid "Bouquet %s moved."
 msgstr "Prehľad %s presunutý."
 
 #: ../plugin/controllers/BouquetEditor.py:187
-#, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
 msgstr "Odstránenie prehľadu %s zlyhalo, zoznam referencií je neplatný."
 
 #: ../plugin/controllers/BouquetEditor.py:185
-#, python-format
 msgid "Bouquet %s removed failed."
 msgstr "Odstránenie prehľadu %s zlyhalo."
 
@@ -475,6 +457,7 @@ msgstr "Kódovanie znakov pre dáta EPG"
 msgid "Chipset"
 msgstr "Čipset"
 
+#. There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:99
 msgid "Cleanup Timers"
 msgstr "Vyčistenie časovačov"
@@ -493,7 +476,6 @@ msgid "Config"
 msgstr ""
 
 #: ../plugin/controllers/models/timers.py:296
-#, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Nájdené konfliktné časovače! %s"
 
@@ -506,12 +488,10 @@ msgid "Control"
 msgstr "Ovládanie"
 
 #: ../plugin/controllers/models/timers.py:339
-#, python-format
 msgid "Could not add timer '%s'!"
 msgstr "Časovač '%s' sa nepodarilo pridať!"
 
 #: ../plugin/controllers/models/timers.py:485
-#, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Nepodarilo sa nájsť časovač '%s' so zadaným časom začatia a ukončenia!"
 
@@ -594,9 +574,7 @@ msgid "Delete Timer"
 msgstr "Zmazať časovač"
 
 #: ../plugin/controllers/models/movies.py:490
-msgid ""
-"Delete failed, because there is no movie trash !\n"
-"Disable movie trash in configuration to delete this item"
+msgid "Delete failed, because there is no movie trash !\nDisable movie trash in configuration to delete this item"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:516
@@ -813,7 +791,6 @@ msgid "Error upload File"
 msgstr "Chyba pri odovzdávaní súboru"
 
 #: ../plugin/controllers/BouquetEditor.py:592
-#, python-format
 msgid "Error while preparing backup file, %s does not exists."
 msgstr "Chyba pri príprave záložného súboru, %s neexistuje."
 
@@ -826,17 +803,14 @@ msgid "Error writing File"
 msgstr "Chyba pri zápise súboru"
 
 #: ../plugin/controllers/BouquetEditor.py:653
-#, python-format
 msgid "Error, %s does not exists, restore is not possible..."
 msgstr "Chyba %s neexistuje, obnovenie nie je možné ..."
 
 #: ../plugin/controllers/BouquetEditor.py:651
-#, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
 msgstr "Chyba, %s nebol vytvorený web editorom prehľadov..."
 
 #: ../plugin/controllers/BouquetEditor.py:194
-#, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
 msgstr "Chyba: Prehľad  %s sa nedá zmazať, OSerror."
 
@@ -889,6 +863,7 @@ msgstr "Verzia firmvéru"
 msgid "Force"
 msgstr "Vynútiť"
 
+#. Cuma
 #: ../plugin/controllers/i18n.py:42
 msgid "Fr"
 msgstr "Pi"
@@ -1053,7 +1028,7 @@ msgid "Internal error!"
 msgstr "Vnútorná chyba!"
 
 #: ../plugin/controllers/i18n.py:398
-#, fuzzy, python-format
+#, fuzzy
 msgid "Interval (in %s)"
 msgstr "Interval (v h)"
 
@@ -1197,7 +1172,6 @@ msgid "Minute"
 msgstr "Minúta"
 
 #: ../plugin/controllers/web.py:85
-#, python-format
 msgid "Missing mandatory parameter '%s'"
 msgstr "Chýba povinný parameter '%s'"
 
@@ -1477,6 +1451,7 @@ msgstr ""
 msgid "Oops..."
 msgstr ""
 
+#. The translation could have been sharper but as it has to fit in it’s frame this may be an acceptable compromise. I would have prefered: "Open Source webbgränssnitt för Linuxbaserade digitalboxar"...
 #: ../plugin/controllers/i18n.py:188
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Open Source webové rozhranie pre Linux prijímače"
@@ -1512,6 +1487,7 @@ msgstr "OpenWebif adresa:"
 msgid "Orbital Position"
 msgstr "Orbitálna pozícia"
 
+#. One extra space inserted in front for better readability in context.
 #: ../plugin/controllers/i18n.py:322
 msgid "Override found with alternative service"
 msgstr "Nájdenú prepísať alternatívnou stanicou"
@@ -1693,6 +1669,7 @@ msgstr "Resetovať počet"
 msgid "Reset count"
 msgstr "Resetovať počet"
 
+#. Have to use "GUI" because of limited space. I would prefere "Användargränssnitt" if space were without limits.
 #: ../plugin/controllers/i18n.py:210
 msgid "Restart GUI"
 msgstr "Reštartovať GUI"
@@ -1718,6 +1695,7 @@ msgstr ""
 msgid "SNR"
 msgstr "SNR"
 
+#. Saturday
 #: ../plugin/controllers/i18n.py:43
 msgid "Sa"
 msgstr "So"
@@ -1808,47 +1786,40 @@ msgstr "Poslať správu"
 msgid "September"
 msgstr "September"
 
+#. Översätts ofta till Leverantör i stället.
 #: ../plugin/controllers/i18n.py:226
 msgid "Service"
 msgstr "Stanica"
 
 #: ../plugin/controllers/BouquetEditor.py:314
-#, python-format
 msgid "Service %s added."
 msgstr "Stanica %s pridaná."
 
 #: ../plugin/controllers/BouquetEditor.py:317
-#, python-format
 msgid "Service %s already exists in bouquet %s."
 msgstr "Stanica %s už existuje v prehľade %s."
 
 #: ../plugin/controllers/BouquetEditor.py:249
-#, python-format
 msgid "Service %s can not be removed."
 msgstr "Stanica %s sa nedá odstrániť."
 
 #: ../plugin/controllers/BouquetEditor.py:545
-#, python-format
 msgid "Service %s is locked."
 msgstr "Služba %s je zamknutá."
 
 #: ../plugin/controllers/BouquetEditor.py:553
-#, python-format
 msgid "Service %s is unlocked."
 msgstr "Služba %s nie je zamknutá."
 
 #: ../plugin/controllers/BouquetEditor.py:274
-#, python-format
 msgid "Service %s moved."
 msgstr "Stanica %s presunutá."
 
 #: ../plugin/controllers/BouquetEditor.py:248
-#, python-format
 msgid "Service %s removed from bouquet %s."
 msgstr "Stanica %s odstránená z prehľadu %s."
 
 #: ../plugin/controllers/BouquetEditor.py:240
-#, python-format
 msgid "Service %s removed."
 msgstr "Stanica %s zmazaná."
 
@@ -1984,7 +1955,6 @@ msgstr "Časovač uspania je povolený"
 #: ../plugin/controllers/models/timers.py:949
 #: ../plugin/controllers/models/timers.py:1058
 #: ../plugin/controllers/models/timers.py:1072
-#, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Časovač uspania nastavený na %d minút"
 
@@ -2050,6 +2020,7 @@ msgstr "Stream"
 msgid "Streaming port"
 msgstr "Stream"
 
+#. Sunday
 #: ../plugin/controllers/i18n.py:44
 msgid "Su"
 msgstr "Ne"
@@ -2125,12 +2096,12 @@ msgstr "Pozemné"
 msgid "Text"
 msgstr "Text"
 
+#. Thursday
 #: ../plugin/controllers/i18n.py:41
 msgid "Th"
 msgstr "Št"
 
 #: ../plugin/controllers/web.py:91 ../plugin/controllers/web.py:1568
-#, python-format
 msgid "The parameter '%s' can't be empty"
 msgstr "Parameter '%s' nemôže byť prázdny"
 
@@ -2138,19 +2109,17 @@ msgstr "Parameter '%s' nemôže byť prázdny"
 msgid "The parameter 'command' must be a number"
 msgstr "Parameter \"príkaz\" musí byť číslo"
 
+#. The word "framgångsrikt" to get a string to end the sentence.
 #: ../plugin/controllers/models/timers.py:548
-#, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "Časovač '%s' bol %s úspešne"
 
 #: ../plugin/controllers/models/timers.py:498
 #: ../plugin/controllers/models/timers.py:504
-#, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Časovač '%s' bol úspešne odstránený"
 
 #: ../plugin/controllers/models/timers.py:540
-#, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "Časovač '%s' zaznamenaný! Nezakázaný!"
 
@@ -2193,27 +2162,22 @@ msgid "Timer"
 msgstr "Časovač"
 
 #: ../plugin/controllers/models/timers.py:344
-#, python-format
 msgid "Timer '%s' added"
 msgstr "Časovač '%s' pridaný"
 
 #: ../plugin/controllers/models/timers.py:534
-#, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Časovač '%s 'už existuje!"
 
 #: ../plugin/controllers/models/timers.py:460
-#, python-format
 msgid "Timer '%s' changed"
 msgstr "Časovač '%s' sa zmenil"
 
 #: ../plugin/controllers/models/timers.py:528
-#, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "Časovač '%s' je počas konfliktu zakázaný"
 
 #: ../plugin/controllers/models/timers.py:479
-#, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "Časovač '%s' sa počas konfliktu neuložil"
 
@@ -2241,6 +2205,7 @@ msgstr "Zoznam časovačov bol uložený"
 msgid "Timerlist"
 msgstr "Zoznam časovačov"
 
+#. There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:258 ../plugin/controllers/i18n.py:380
 msgid "Timers"
 msgstr "Časovače"
@@ -2274,6 +2239,7 @@ msgstr "Skúsiť uhádnuť"
 msgid "Tsid"
 msgstr ""
 
+#. Tuesday
 #: ../plugin/controllers/i18n.py:39
 msgid "Tu"
 msgstr "Ut"
@@ -2324,12 +2290,10 @@ msgid "Type"
 msgstr "Typ"
 
 #: ../plugin/controllers/web.py:247
-#, python-format
 msgid "Unknown Volume command %s"
 msgstr "Neznámy príkaz hlasitosti %s"
 
 #: ../plugin/controllers/models/timers.py:715
-#, python-format
 msgid "Unknown command: '%s'"
 msgstr "Neznámy príkaz: '%s'"
 
@@ -2471,6 +2435,7 @@ msgstr "Prebudiť"
 msgid "Warning"
 msgstr "Varovanie"
 
+#. Wednesday
 #: ../plugin/controllers/i18n.py:40
 msgid "We"
 msgstr "St"
@@ -2509,7 +2474,6 @@ msgid "Would you like to save your changes?"
 msgstr ""
 
 #: ../plugin/controllers/web.py:242
-#, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Chybný formát parametra 'set=%s'. Použite set=set15 "
 
@@ -2672,6 +2636,7 @@ msgstr ""
 msgid "on weekday"
 msgstr "v pracovný deň"
 
+#. Vad nu det här kan vara bra för?
 #: ../plugin/controllers/BouquetEditor.py:87
 msgid "one two three four unknown command"
 msgstr "jeden dva tri štyri neznámy príkaz"
@@ -2770,7 +2735,6 @@ msgid "transcoded"
 msgstr "transkódované"
 
 #: ../plugin/controllers/web.py:716
-#, python-format
 msgid "type %s is not a number"
 msgstr "typ %s nie je číslo"
 

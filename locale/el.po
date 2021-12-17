@@ -16,18 +16,15 @@ msgstr ""
 "X-Poedit-SearchPath-0: ../plugin\n"
 
 #: ../plugin/controllers/models/timers.py:61
-#, python-format
 msgid "%02d.%02d."
 msgstr ""
 
 #: ../plugin/controllers/models/timers.py:63
-#, python-format
 msgid "%02d.%02d.%d"
 msgstr ""
 
 #: ../plugin/controllers/models/movies.py:70
 #: ../plugin/controllers/models/timers.py:65
-#, python-format
 msgid "%02d:%02d"
 msgstr ""
 
@@ -49,28 +46,23 @@ msgstr ""
 
 #: ../plugin/controllers/models/movies.py:66
 #: ../plugin/controllers/models/timers.py:59
-#, python-format
 msgid "%s %02d.%02d."
 msgstr ""
 
 #: ../plugin/controllers/models/movies.py:68
-#, python-format
 msgid "%s %02d.%02d.%d"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:549
-#, python-format
 msgid "%s %s is locked."
 msgstr "Το %s %s είναι κλειδωμένο."
 
 #: ../plugin/controllers/i18n.py:129
-#, python-format
 msgid "%s / %s"
 msgstr ""
 
 #: ../plugin/controllers/models/info.py:306
 #: ../plugin/controllers/models/info.py:430
-#, python-format
 msgid "%s free / %s total"
 msgstr "%s ελεύθερα / %s συνολικά"
 
@@ -165,7 +157,6 @@ msgid "Add tags to recordings"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:466
-#, python-format
 msgid "Added %s to alternative service %s."
 msgstr "Το %s προστέθηκε στην εναλλακτική υπηρεσία %s."
 
@@ -203,7 +194,6 @@ msgid "Allow duplicates"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:452
-#, python-format
 msgid "Alternative %s created failed."
 msgstr "Αποτυχία δημιουργίας εναλλακτικού %s."
 
@@ -297,6 +287,7 @@ msgstr "Αυτόματος Έλεγχος"
 msgid "AutoTimer Edit"
 msgstr "Επεξεργασία Αυτόματου Χρονοδιακόπτη"
 
+#. New Autotimer Setting Windows name (not enabled to transfer atm)
 #: ../plugin/controllers/i18n.py:396
 msgid "AutoTimer Settings"
 msgstr "Ρυθμίσεις Αυτ. Χρ/κόπτη"
@@ -343,47 +334,38 @@ msgid "Bookmarks"
 msgstr "Σελιδοδείκτες"
 
 #: ../plugin/controllers/BouquetEditor.py:128
-#, python-format
 msgid "Bouquet %s already exists."
 msgstr "Το μπουκέτο %s υπάρχει ήδη!"
 
 #: ../plugin/controllers/BouquetEditor.py:219
-#, python-format
 msgid "Bouquet %s can not be moved."
 msgstr "Αδυναμία μετακίνησης του Μπουκέτου %s."
 
 #: ../plugin/controllers/BouquetEditor.py:123
-#, python-format
 msgid "Bouquet %s created."
 msgstr "Το μπουκέτο %s δημιουργήθηκε."
 
 #: ../plugin/controllers/BouquetEditor.py:192
-#, python-format
 msgid "Bouquet %s deleted."
 msgstr "Το μπουκέτο %s διαγράφηκε."
 
 #: ../plugin/controllers/BouquetEditor.py:547
-#, python-format
 msgid "Bouquet %s is locked."
 msgstr "Το μπουκέτο %s είναι κλειδωμένο."
 
 #: ../plugin/controllers/BouquetEditor.py:555
-#, python-format
 msgid "Bouquet %s is unlocked."
 msgstr "Το μπουκέτο %s είναι ξεκλείδωτο."
 
 #: ../plugin/controllers/BouquetEditor.py:217
-#, python-format
 msgid "Bouquet %s moved."
 msgstr "Το Μπουκέτο %s μετακινήθηκε!"
 
 #: ../plugin/controllers/BouquetEditor.py:187
-#, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
 msgstr "Η αφαίρεση του μπουκέτου %s απέτυχε, μη έγκυρη αναφορά υπηρεσίας ή μεταβλητή λίστα."
 
 #: ../plugin/controllers/BouquetEditor.py:185
-#, python-format
 msgid "Bouquet %s removed failed."
 msgstr "Αποτυχία αφαίρεσης του μπουκέτου %s."
 
@@ -476,6 +458,7 @@ msgstr "Κωδικοποίηση χαρακτήρων για τα δεδομέν
 msgid "Chipset"
 msgstr "Chipset"
 
+#. There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:99
 msgid "Cleanup Timers"
 msgstr "Εκκαθάριση Χρονοδιακοπτών"
@@ -493,7 +476,6 @@ msgid "Config"
 msgstr ""
 
 #: ../plugin/controllers/models/timers.py:296
-#, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Εντοπίστηκε(αν) διένεξη Χρονοδιακόπτη(ων)! %s"
 
@@ -506,12 +488,10 @@ msgid "Control"
 msgstr "Έλεγχος"
 
 #: ../plugin/controllers/models/timers.py:339
-#, python-format
 msgid "Could not add timer '%s'!"
 msgstr "Αδυναμία προσθήκης χρονοδιακόπτη '%s'!"
 
 #: ../plugin/controllers/models/timers.py:485
-#, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Αδυναμία εύρεσης του χρονοδιακόπτη '%s' με δεδομένη ώρα έναρξης και λήξης!"
 
@@ -594,11 +574,9 @@ msgid "Delete Timer"
 msgstr "Διαγραφή Χρονοδιακόπτη"
 
 #: ../plugin/controllers/models/movies.py:490
-msgid ""
-"Delete failed, because there is no movie trash !\n"
-"Disable movie trash in configuration to delete this item"
+msgid "Delete failed, because there is no movie trash !\nDisable movie trash in configuration to delete this item"
 msgstr ""
-"Η διαγραφή απέτυχε λόγω έλλειψης του κάδου αχρήστων ταινιών!\n"
+"Η διαγραφή απέτυχε λόγω έλλειψης του κάδου αχρήστων ταινιών!"
 "Απενεργοποιήστε τον κάδο αχρήστων ταινιών στις ρυθμίσεις για να διαγράψετε αυτό το στοιχείο"
 
 #: ../plugin/controllers/i18n.py:516
@@ -814,7 +792,6 @@ msgid "Error upload File"
 msgstr "Σφάλμα ανεβάσματος Αρχείου"
 
 #: ../plugin/controllers/BouquetEditor.py:592
-#, python-format
 msgid "Error while preparing backup file, %s does not exists."
 msgstr "Σφάλμα κατά την προετοιμασία του αντίγραφου ασφαλείας, το %s δεν υπάρχει."
 
@@ -827,17 +804,14 @@ msgid "Error writing File"
 msgstr "Σφάλμα εγγραφής Αρχείου"
 
 #: ../plugin/controllers/BouquetEditor.py:653
-#, python-format
 msgid "Error, %s does not exists, restore is not possible..."
 msgstr "Σφάλμα, το %s δεν υπάρχει, αδύνατη η επαναφορά..."
 
 #: ../plugin/controllers/BouquetEditor.py:651
-#, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
 msgstr "Σφάλμα, το %s δεν δημιουργήθηκε με τον Επεξεργαστή Μπουκέτων Διαδικτύου"
 
 #: ../plugin/controllers/BouquetEditor.py:194
-#, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
 msgstr "Σφάλμα: Αδυναμία διαγραφής του Μπουκέτου %s, Σφάλμα OS."
 
@@ -890,6 +864,7 @@ msgstr "Έκδοση Υλικού"
 msgid "Force"
 msgstr "Εξαναγκασμός"
 
+#. Cuma
 #: ../plugin/controllers/i18n.py:42
 msgid "Fr"
 msgstr "Πα"
@@ -1050,7 +1025,6 @@ msgid "Internal error!"
 msgstr "Εσωτερικό σφάλμα!"
 
 #: ../plugin/controllers/i18n.py:398
-#, python-format
 msgid "Interval (in %s)"
 msgstr "Μεσοδιάστημα (σε %s)"
 
@@ -1193,7 +1167,6 @@ msgid "Minute"
 msgstr "Λεπτό"
 
 #: ../plugin/controllers/web.py:85
-#, python-format
 msgid "Missing mandatory parameter '%s'"
 msgstr "Λείπει η απαραίτητη παράμετρος '%s'"
 
@@ -1470,6 +1443,7 @@ msgstr ""
 msgid "Oops..."
 msgstr ""
 
+#. The translation could have been sharper but as it has to fit in it’s frame this may be an acceptable compromise. I would have prefered: "Open Source webbgränssnitt för Linuxbaserade digitalboxar"...
 #: ../plugin/controllers/i18n.py:188
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Διεπαφή Δικτύου Ανοικτού Λογισμικού για δέκτες με Linux"
@@ -1505,6 +1479,7 @@ msgstr "OpenWebif URL:"
 msgid "Orbital Position"
 msgstr "Τροχιακή Θέση"
 
+#. One extra space inserted in front for better readability in context.
 #: ../plugin/controllers/i18n.py:322
 msgid "Override found with alternative service"
 msgstr "Βρέθηκε υπερκάλυψη με την εναλλακτική υπηρεσία"
@@ -1686,6 +1661,7 @@ msgstr "Μηδενισμός μετρητών"
 msgid "Reset count"
 msgstr "Μηδενισμός μετρητών"
 
+#. Have to use "GUI" because of limited space. I would prefere "Användargränssnitt" if space were without limits.
 #: ../plugin/controllers/i18n.py:210
 msgid "Restart GUI"
 msgstr "Επανεκκίνηση GUI"
@@ -1711,6 +1687,7 @@ msgstr "SLAAC"
 msgid "SNR"
 msgstr "SNR"
 
+#. Saturday
 #: ../plugin/controllers/i18n.py:43
 msgid "Sa"
 msgstr "Σά"
@@ -1801,47 +1778,40 @@ msgstr "Αποστολή ενός Μηνύματος"
 msgid "September"
 msgstr "Σεπτεμβρίου"
 
+#. Översätts ofta till Leverantör i stället.
 #: ../plugin/controllers/i18n.py:226
 msgid "Service"
 msgstr "Υπηρεσία"
 
 #: ../plugin/controllers/BouquetEditor.py:314
-#, python-format
 msgid "Service %s added."
 msgstr "Η υπηρεσία %s προστέθηκε."
 
 #: ../plugin/controllers/BouquetEditor.py:317
-#, python-format
 msgid "Service %s already exists in bouquet %s."
 msgstr "Η υπηρεσία %s υπάρχει ήδη στο μπουκέτο %s."
 
 #: ../plugin/controllers/BouquetEditor.py:249
-#, python-format
 msgid "Service %s can not be removed."
 msgstr "Αδυναμία αφαίρεσης της υπηρεσίας %s."
 
 #: ../plugin/controllers/BouquetEditor.py:545
-#, python-format
 msgid "Service %s is locked."
 msgstr "Η υπηρεσία %s είναι κλειδωμένη."
 
 #: ../plugin/controllers/BouquetEditor.py:553
-#, python-format
 msgid "Service %s is unlocked."
 msgstr "Η υπηρεσία %s είναι ξεκλείδωτη."
 
 #: ../plugin/controllers/BouquetEditor.py:274
-#, python-format
 msgid "Service %s moved."
 msgstr "Η υπηρεσία %s μετακινήθηκε."
 
 #: ../plugin/controllers/BouquetEditor.py:248
-#, python-format
 msgid "Service %s removed from bouquet %s."
 msgstr "Η υπηρεσία %s αφαιρέθηκε από το μπουκέτο %s."
 
 #: ../plugin/controllers/BouquetEditor.py:240
-#, python-format
 msgid "Service %s removed."
 msgstr "Η υπηρεσία %s αφαιρέθηκε."
 
@@ -1976,7 +1946,6 @@ msgstr "Ο χρονοδιακόπτης ύπνου είναι ενεργός"
 #: ../plugin/controllers/models/timers.py:949
 #: ../plugin/controllers/models/timers.py:1058
 #: ../plugin/controllers/models/timers.py:1072
-#, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Ο χρονοδιακόπτης ύπνου έχει οριστεί σε %d λεπτά"
 
@@ -2042,6 +2011,7 @@ msgstr "Ροή"
 msgid "Streaming port"
 msgstr "Ροή"
 
+#. Sunday
 #: ../plugin/controllers/i18n.py:44
 msgid "Su"
 msgstr "Κυ"
@@ -2117,12 +2087,12 @@ msgstr "Επίγειο"
 msgid "Text"
 msgstr "Κείμενο"
 
+#. Thursday
 #: ../plugin/controllers/i18n.py:41
 msgid "Th"
 msgstr "Πέ"
 
 #: ../plugin/controllers/web.py:91 ../plugin/controllers/web.py:1568
-#, python-format
 msgid "The parameter '%s' can't be empty"
 msgstr "Η παράμετρος '%s' δεν μπορεί να είναι κενή"
 
@@ -2130,19 +2100,17 @@ msgstr "Η παράμετρος '%s' δεν μπορεί να είναι κεν�
 msgid "The parameter 'command' must be a number"
 msgstr "Η παράμετρος 'εντολή' πρέπει να είναι αριθμός"
 
+#. The word "framgångsrikt" to get a string to end the sentence.
 #: ../plugin/controllers/models/timers.py:548
-#, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "Ο χρονοδιακόπτης '%s' έχει %s με επιτυχία"
 
 #: ../plugin/controllers/models/timers.py:498
 #: ../plugin/controllers/models/timers.py:504
-#, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Ο χρονοδιακόπτης '%s' διαγράφτηκε επιτυχώς"
 
 #: ../plugin/controllers/models/timers.py:540
-#, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "Γίνεται τώρα εγγραφή του χρονοδιακόπτη '%s'! Δεν απενεργοποιήθηκε!"
 
@@ -2185,27 +2153,22 @@ msgid "Timer"
 msgstr "Χρονοδιακόπτης"
 
 #: ../plugin/controllers/models/timers.py:344
-#, python-format
 msgid "Timer '%s' added"
 msgstr "Ο χρονοδιακόπτης '%s' προστέθηκε"
 
 #: ../plugin/controllers/models/timers.py:534
-#, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Ο χρονοδιακόπτης '%s' υπάρχει ήδη!"
 
 #: ../plugin/controllers/models/timers.py:460
-#, python-format
 msgid "Timer '%s' changed"
 msgstr "Ο χρονοδιακόπτης '%s' άλλαξε"
 
 #: ../plugin/controllers/models/timers.py:528
-#, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "Ο χρονοδιακόπτης '%s' δεν ενεργοποιήθηκε κατά τη Διένεξη"
 
 #: ../plugin/controllers/models/timers.py:479
-#, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "Ο χρονοδιακόπτης '%s' δεν αποθηκεύτηκε λόγω διένεξης"
 
@@ -2233,6 +2196,7 @@ msgstr "Η λίστα χρονοδιακοπτών αποθηκεύτηκε"
 msgid "Timerlist"
 msgstr "Λίστα χρονοδιακοπτών"
 
+#. There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:258 ../plugin/controllers/i18n.py:380
 msgid "Timers"
 msgstr "Χρονοδιακόπτες"
@@ -2266,6 +2230,7 @@ msgstr "Προσπάθεια προσδιορισμού"
 msgid "Tsid"
 msgstr "Tsid"
 
+#. Tuesday
 #: ../plugin/controllers/i18n.py:39
 msgid "Tu"
 msgstr "Τρ"
@@ -2316,12 +2281,10 @@ msgid "Type"
 msgstr "Τύπος"
 
 #: ../plugin/controllers/web.py:247
-#, python-format
 msgid "Unknown Volume command %s"
 msgstr "Άγνωστη εντολή Έντασης %s"
 
 #: ../plugin/controllers/models/timers.py:715
-#, python-format
 msgid "Unknown command: '%s'"
 msgstr "Άγνωστη εντολή: '%s'"
 
@@ -2461,6 +2424,7 @@ msgstr "Αφύπνιση"
 msgid "Warning"
 msgstr "Προειδοποίηση"
 
+#. Wednesday
 #: ../plugin/controllers/i18n.py:40
 msgid "We"
 msgstr "Τε"
@@ -2499,7 +2463,6 @@ msgid "Would you like to save your changes?"
 msgstr ""
 
 #: ../plugin/controllers/web.py:242
-#, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Λανθασμένη μορφή παραμέτρου 'set=%s'. Χρήση set=set15 "
 
@@ -2661,6 +2624,7 @@ msgstr ""
 msgid "on weekday"
 msgstr "σε Καθημερινή"
 
+#. Vad nu det här kan vara bra för?
 #: ../plugin/controllers/BouquetEditor.py:87
 msgid "one two three four unknown command"
 msgstr "ένα δύο τρία τέσσερα άγνωστη εντολή"
@@ -2759,7 +2723,6 @@ msgid "transcoded"
 msgstr "διαδικοποιημένο"
 
 #: ../plugin/controllers/web.py:716
-#, python-format
 msgid "type %s is not a number"
 msgstr "ο τύπος %s δεν είναι αριθμός"
 
