@@ -1,31 +1,28 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenWebif\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 21:02+0100\n"
-"PO-Revision-Date: 2021-12-02 19:56+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Catalan <https://hosted.weblate.org/projects/e2openplugin-openwebif/e2openplugin-openwebif/ca/>\n"
-"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10-dev\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SourceCharset: iso-8859-1\n"
-"X-Poedit-SearchPath-0: ../plugin\n"
+"X-Generator: lokalise.com\n"
+"Project-Id-Version: e2openplugin-OpenWebif\n"
+"PO-Revision-Date: 2021-12-17 21:23\n"
+"Last-Translator: lokalise.com\n"
+"Language-Team: lokalise.com\n\n"
+"Language: en\n"
 
 #: ../plugin/controllers/models/timers.py:61
+#, fuzzy
 msgid "%02d.%02d."
 msgstr ""
 
 #: ../plugin/controllers/models/timers.py:63
+#, fuzzy
 msgid "%02d.%02d.%d"
 msgstr ""
 
 #: ../plugin/controllers/models/movies.py:70
 #: ../plugin/controllers/models/timers.py:65
+#, fuzzy
 msgid "%02d:%02d"
 msgstr ""
 
@@ -33,6 +30,7 @@ msgstr ""
 #: ../plugin/controllers/models/services.py:789
 #: ../plugin/controllers/models/services.py:1020
 #: ../plugin/controllers/models/services.py:1066
+#, fuzzy
 msgid "%d.%m.%Y"
 msgstr ""
 
@@ -42,864 +40,1054 @@ msgstr ""
 #: ../plugin/controllers/models/timers.py:291
 #: ../plugin/controllers/models/timers.py:473
 #: ../plugin/controllers/models/timers.py:474
+#, fuzzy
 msgid "%d.%m.%Y %H:%M"
 msgstr ""
 
 #: ../plugin/controllers/models/movies.py:66
 #: ../plugin/controllers/models/timers.py:59
+#, fuzzy
 msgid "%s %02d.%02d."
 msgstr ""
 
 #: ../plugin/controllers/models/movies.py:68
+#, fuzzy
 msgid "%s %02d.%02d.%d"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:549
+#, fuzzy
 msgid "%s %s is locked."
-msgstr "%s %s està bloquejat."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:129
+#, fuzzy
 msgid "%s / %s"
 msgstr ""
 
 #: ../plugin/controllers/models/info.py:306
 #: ../plugin/controllers/models/info.py:430
+#, fuzzy
 msgid "%s free / %s total"
-msgstr "%s lliure / %s total"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:229
+#, fuzzy
 msgid "(Press 'shift' and click to 'hold')"
-msgstr "(shift + click per a una pulsació llarga)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:394
 #, fuzzy
 msgid "(in minutes)"
-msgstr "Minut"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:461
+#, fuzzy
 msgid "A filename is required"
-msgstr "Si us plau, introdueix el nom de l'arxiu"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:517
+#, fuzzy
 msgid "A value is required"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:80
+#, fuzzy
 msgid "AGC"
-msgstr "AGC"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:75
+#, fuzzy
 msgid "About"
-msgstr "Sobre"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:295
+#, fuzzy
 msgid "Add"
-msgstr "Afegir"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:407
+#, fuzzy
 msgid "Add  AutoTimer  to tags"
-msgstr "Afegir Autotimer a les etiquetes"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:408
+#, fuzzy
 msgid "Add AutoTimer name to tags"
-msgstr "Afegir nom a les etiquetes"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:447
+#, fuzzy
 msgid "Add Bouquet"
-msgstr "Afegir llista"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:450
+#, fuzzy
 msgid "Add IPTV/URL"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:451
+#, fuzzy
 msgid "Add Marker"
-msgstr "Afegir marca"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:452
+#, fuzzy
 msgid "Add Spacer"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:76
+#, fuzzy
 msgid "Add a timer"
-msgstr "Afegir Gravació"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:78
+#, fuzzy
 msgid "Add a zap timer"
-msgstr "Afegir Temporitzador de zàping"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:77
+#, fuzzy
 msgid "Add an AutoTimer"
-msgstr "Afegir AutoProgramació"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:444
+#, fuzzy
 msgid "Add channel(s) as alternate"
-msgstr "Afegir canal(s) com alternatiu"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:387
 #, fuzzy
 msgid "Add filters"
-msgstr "Afegir Gravació"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:443
+#, fuzzy
 msgid "Add selection to bouquet"
-msgstr "Afegir canal(s) a llista"
+msgstr ""
 
 #: ../plugin/plugin.py:180
+#, fuzzy
 msgid "Add service name to stream information"
-msgstr "Afegir nom de servei a la informació de stream"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:404
+#, fuzzy
 msgid "Add similar on conflict"
-msgstr "Afegir similar quan hi ha conflicte"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:360
+#, fuzzy
 msgid "Add tags to recordings"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:466
+#, fuzzy
 msgid "Added %s to alternative service %s."
-msgstr "%s afegit al servei alternatiu %s."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:563
+#, fuzzy
 msgid "Adjust recording time to real event time"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:79 ../plugin/controllers/i18n.py:333
 #: ../plugin/controllers/i18n.py:424
+#, fuzzy
 msgid "After event"
-msgstr "Després del programa"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:81 ../plugin/controllers/i18n.py:412
+#, fuzzy
 msgid "All"
-msgstr "Tot"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:82
+#, fuzzy
 msgid "All Channels"
-msgstr "Tots els Canals"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:292
+#, fuzzy
 msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr "Tots els arxius d'aquest software són software de codi obert;  pots redistribuir-lo i / o modificar-lo baix els termes de la Llicència Pública General GNU versió 3, publicada per la Free Software Foundation."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:505
+#, fuzzy
 msgid "All alternative services deleted."
-msgstr "Tots els serveis alternatius esborrats."
+msgstr ""
 
 #: ../plugin/plugin.py:183
+#, fuzzy
 msgid "Allow IPK Upload"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:562
+#, fuzzy
 msgid "Allow duplicates"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:452
+#, fuzzy
 msgid "Alternative %s created failed."
-msgstr "Crear alternativa %s ha fallat."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:429
+#, fuzzy
 msgid "Always"
-msgstr "Sempre"
+msgstr ""
 
 #: ../plugin/controllers/models/message.py:51
+#, fuzzy
 msgid "Answer is NO!"
-msgstr "¡La resposta és NO!"
+msgstr ""
 
 #: ../plugin/controllers/models/message.py:51
+#, fuzzy
 msgid "Answer is YES!"
-msgstr "¡La resposta és SI!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:391
+#, fuzzy
 msgid "Any day"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:353
+#, fuzzy
 msgid "Any service/recording"
-msgstr "Qualsevol servei/gravació"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:468
+#, fuzzy
 msgid "Apid"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:65
+#, fuzzy
 msgid "April"
-msgstr "Abril"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:455
+#, fuzzy
 msgid "Are you sure you want to delete the selected bouquet?"
-msgstr "Realment vols esborrar la llista?"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:454
+#, fuzzy
 msgid "Are you sure you want to delete the selected item(s)?"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:382
 #, fuzzy
 msgid "Are you sure you want to delete this AutoTimer?"
-msgstr "Vols esborrar la gravació?"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:110
+#, fuzzy
 msgid "Are you sure you want to delete this recording?"
-msgstr "Vols esborrar la pel·lícula?"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:112
+#, fuzzy
 msgid "Are you sure you want to delete this timer?"
-msgstr "Vols esborrar la gravació?"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:208
+#, fuzzy
 msgid "Are you sure you want to rename this recording?"
-msgstr "Estàs segur en renombrar la gravació"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:462
+#, fuzzy
 msgid "Are you sure you want to restore from file?"
-msgstr "Realment vols restaurar des de l'arxiu?"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:159
 #, fuzzy
 msgid "Are you sure you want to start recording instantly?"
-msgstr "Iniciar Gravació Instantània"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:433
+#, fuzzy
 msgid "Ask, default No"
-msgstr "Preguntar, per defecte No"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:432
+#, fuzzy
 msgid "Ask, default Yes"
-msgstr "Preguntar, per defecte Si"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:69
+#, fuzzy
 msgid "August"
-msgstr "Agost"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:83
+#, fuzzy
 msgid "Authors"
-msgstr "Autor"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:84 ../plugin/controllers/i18n.py:411
+#, fuzzy
 msgid "Auto"
-msgstr "Automàtic"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:397
+#, fuzzy
 msgid "AutoPoll"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:298
+#, fuzzy
 msgid "AutoTimer Edit"
-msgstr "Editar autoProgramació"
+msgstr ""
 
 #. New Autotimer Setting Windows name (not enabled to transfer atm)
 #: ../plugin/controllers/i18n.py:396
+#, fuzzy
 msgid "AutoTimer Settings"
-msgstr "Configuració Autotimer"
+msgstr ""
 
 #: ../plugin/controllers/base.py:361 ../plugin/controllers/i18n.py:297
+#, fuzzy
 msgid "AutoTimers"
-msgstr "Llista autoProg."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:256
+#, fuzzy
 msgid "Autotimer Preview"
-msgstr "Previsualitzar AutoProgramació"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:87
+#, fuzzy
 msgid "BER"
-msgstr "BER"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:85
+#, fuzzy
 msgid "Back"
-msgstr "Enrera"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:431
+#, fuzzy
 msgid "Background only"
-msgstr "Només en segon pla"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:86 ../plugin/controllers/i18n.py:419
+#, fuzzy
 msgid "Begin"
-msgstr "Iniciar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:340
 #, fuzzy
 msgid "Begin of \"After event\" timespan"
-msgstr "Inici del \"després del programa\" interval de temps"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:324
+#, fuzzy
 msgid "Beginning of timespan"
-msgstr "Inici de l'interval de temps"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:502
+#, fuzzy
 msgid "Bookmark"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:501
+#, fuzzy
 msgid "Bookmarks"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:128
+#, fuzzy
 msgid "Bouquet %s already exists."
-msgstr "Llista %s ja existeix."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:219
+#, fuzzy
 msgid "Bouquet %s can not be moved."
-msgstr "Llista %s no es pot moure."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:123
+#, fuzzy
 msgid "Bouquet %s created."
-msgstr "Llista %s creada."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:192
+#, fuzzy
 msgid "Bouquet %s deleted."
-msgstr "Llista %s esborrada."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:547
+#, fuzzy
 msgid "Bouquet %s is locked."
-msgstr "Llista %s bloquejada."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:555
+#, fuzzy
 msgid "Bouquet %s is unlocked."
-msgstr "Llista %s desbloquejada."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:217
+#, fuzzy
 msgid "Bouquet %s moved."
-msgstr "Llista %s moguda."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:187
+#, fuzzy
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Ha fallat l'esborrat de la llista %s, servicereference o llista mutable no són vàlids."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:185
+#, fuzzy
 msgid "Bouquet %s removed failed."
-msgstr "Ha fallat l'esborrat de la llista %s."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:228
+#, fuzzy
 msgid "Bouquet Editor"
-msgstr "Editor de llistes"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:457
+#, fuzzy
 msgid "Bouquet name"
-msgstr "Nom de la llista"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:388
+#, fuzzy
 msgid "Bouquet renamed successfully."
-msgstr "Llista renombrada correctament."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:649
+#, fuzzy
 msgid "Bouquet-settings were restored successfully"
-msgstr "Configuració de llistes s'ha restaurat amb èxit"
+msgstr ""
 
 #: ../plugin/controllers/base.py:364
+#, fuzzy
 msgid "BouquetEditor"
-msgstr "Editor de llistes"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:130
 #: ../plugin/controllers/BouquetEditor.py:454
+#, fuzzy
 msgid "Bouquetlist is not editable!"
-msgstr "Llista de favorits no és editable!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:88
+#, fuzzy
 msgid "Bouquets"
-msgstr "Llistes"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:90
+#, fuzzy
 msgid "Box"
-msgstr "Decodificador"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:91
+#, fuzzy
 msgid "Box Control"
-msgstr "Control Deco"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:89
+#, fuzzy
 msgid "Box Info"
-msgstr "Informació Deco"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:92
+#, fuzzy
 msgid "Box Uptime"
-msgstr "Funcionament Decodificador"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:93
+#, fuzzy
 msgid "Brand"
-msgstr "Marca"
+msgstr ""
 
 #: ../plugin/controllers/models/services.py:389
+#, fuzzy
 msgid "Cable"
-msgstr "Cable"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:493
+#, fuzzy
 msgid "Calendar Week"
-msgstr "Calendari setmanal"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:94 ../plugin/plugin.py:127
+#, fuzzy
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:515
 #, fuzzy
 msgid "Cancelled"
-msgstr "Cancel·lar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:95
+#, fuzzy
 msgid "Capacity"
-msgstr "Capacitat"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:146
+#, fuzzy
 msgid "Capture screenshot"
-msgstr "Captura de Pantalla"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:96
+#, fuzzy
 msgid "Channel"
-msgstr "Canal"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:97 ../plugin/controllers/i18n.py:357
+#, fuzzy
 msgid "Channels"
-msgstr "Canals"
+msgstr ""
 
 #: ../plugin/plugin.py:182
+#, fuzzy
 msgid "Character encoding for EPG data"
-msgstr "Codificació de caràcters per a l'EPG"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:98 ../plugin/controllers/models/info.py:344
+#, fuzzy
 msgid "Chipset"
-msgstr "Chipset"
+msgstr ""
 
 #. There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:99
+#, fuzzy
 msgid "Cleanup Timers"
-msgstr "Netejar Gravacions"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:100
+#, fuzzy
 msgid "Close"
-msgstr "Tancar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:518
 #, fuzzy
 msgid "Common Settings"
-msgstr "Configuració"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:567
+#, fuzzy
 msgid "Config"
 msgstr ""
 
 #: ../plugin/controllers/models/timers.py:296
+#, fuzzy
 msgid "Conflicting Timer(s) detected! %s"
-msgstr "Temporitzador(s) conflictiu(s) detectat(s)! %s"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:101
+#, fuzzy
 msgid "Contributors"
-msgstr "Col·laboradors"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:102
+#, fuzzy
 msgid "Control"
-msgstr "Control"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:339
+#, fuzzy
 msgid "Could not add timer '%s'!"
-msgstr "No es pot afegir el temporitzador '%s'!"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:485
+#, fuzzy
 msgid "Could not find timer '%s' with given start and end time!"
-msgstr "No s'ha trobat el temporitzador '%s' amb aquests temps d'inici i fi."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:442
+#, fuzzy
 msgid "Create bouquet from selection"
-msgstr "Afegir proveïdor com nova llista"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:103
+#, fuzzy
 msgid "Current"
-msgstr "Actual"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:104
+#, fuzzy
 msgid "Current Event"
-msgstr "Programa Actual"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:191 ../plugin/plugin.py:164
+#, fuzzy
 msgid "Custom box name"
-msgstr "Nom personalitzat del deco"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:329
+#, fuzzy
 msgid "Custom offset"
-msgstr "Marge personalitzat"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:114 ../plugin/controllers/models/info.py:76
 #: ../plugin/controllers/models/info.py:95
+#, fuzzy
 msgid "DHCP"
-msgstr "DHCP"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:105
+#, fuzzy
 msgid "Date"
-msgstr "Data"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:553
+#, fuzzy
 msgid "Date (newest)"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:552
+#, fuzzy
 msgid "Date (oldest)"
 msgstr ""
 
 #: ../plugin/plugin.py:185
+#, fuzzy
 msgid "Debug - Display Tracebacks in browser"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:73
+#, fuzzy
 msgid "December"
-msgstr "Desembre"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:106
+#, fuzzy
 msgid "Deep Standby"
-msgstr "Repòs Profund"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:107
+#, fuzzy
 msgid "Default"
-msgstr "Per Defecte"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:421
+#, fuzzy
 msgid "Delay Standby"
-msgstr "Retard repòs"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:108 ../plugin/controllers/i18n.py:376
+#, fuzzy
 msgid "Delete"
-msgstr "Esborrar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:504
 #, fuzzy
 msgid "Delete Bookmark"
-msgstr "Esborrar Gravació"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:449
+#, fuzzy
 msgid "Delete Bouquet"
-msgstr "Esborrar llista"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:109
+#, fuzzy
 msgid "Delete Recording"
-msgstr "Esborrar Pel·lícula"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:111
+#, fuzzy
 msgid "Delete Timer"
-msgstr "Esborrar Gravació"
+msgstr ""
 
 #: ../plugin/controllers/models/movies.py:490
+#, fuzzy
 msgid "Delete failed, because there is no movie trash !\nDisable movie trash in configuration to delete this item"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:516
 #, fuzzy
 msgid "Deleted"
-msgstr "Esborrar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:113
+#, fuzzy
 msgid "Description"
-msgstr "Descripció"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:129 ../plugin/controllers/i18n.py:375
 #, fuzzy
 msgid "Disable"
-msgstr "deshabilitat"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:115
+#, fuzzy
 msgid "Disable Timer"
-msgstr "Deshabilitar Gravació"
+msgstr ""
 
 #: ../plugin/plugin.py:174
+#, fuzzy
 msgid "Disable remote access for user root"
-msgstr "Deshabilitar accès remot per a l'usuari root"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:403
+#, fuzzy
 msgid "Disabled on conflict"
-msgstr "Desactivat quan hi ha conflicte"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:489
+#, fuzzy
 msgid "Display Mode"
-msgstr "Mode visualització"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:487
+#, fuzzy
 msgid "Display duration (s)"
-msgstr "Duració de visualització (s)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:117
+#, fuzzy
 msgid "Distro"
-msgstr "Distribució"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:118
+#, fuzzy
 msgid "Dolby"
-msgstr "Dolby"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:564
+#, fuzzy
 msgid "Don't create timer when movie exists in database"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:119
+#, fuzzy
 msgid "Done"
-msgstr "Realitzat"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:120
+#, fuzzy
 msgid "Download"
-msgstr "Baixar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:121
+#, fuzzy
 msgid "Download playlist for"
-msgstr "Baixar Llista de reproducció per a"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:122
+#, fuzzy
 msgid "Drivers"
-msgstr "Data de driver"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:123
+#, fuzzy
 msgid "Duration"
-msgstr "Duració"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:651
+#, fuzzy
 msgid "E"
-msgstr "E"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:132
+#, fuzzy
 msgid "EPG"
-msgstr "EPG"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:133
+#, fuzzy
 msgid "EPG Search"
-msgstr "Buscar EPG"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:301
+#, fuzzy
 msgid "EPG encoding"
-msgstr "Codificació EPG"
+msgstr ""
 
 #: ../plugin/controllers/base.py:368
+#, fuzzy
 msgid "EPGRefresh"
 msgstr ""
 
 #: ../plugin/controllers/models/timers.py:938
+#, fuzzy
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "ERROR: No es pot configurar un temporitzador d'apagat si el dispositiu està en mode d'espera"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:374
 #, fuzzy
 msgid "Edit"
-msgstr "Editor"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:580
 #, fuzzy
 msgid "Edit Recording"
-msgstr "Esborrar Pel·lícula"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:124
+#, fuzzy
 msgid "Edit Timer"
-msgstr "Editar Gravació"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:413
+#, fuzzy
 msgid "Editor"
-msgstr "Editor"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:128 ../plugin/controllers/i18n.py:129
 #, fuzzy
 msgid "Enable"
-msgstr "Habilitar"
+msgstr ""
 
 #: ../plugin/plugin.py:173
+#, fuzzy
 msgid "Enable Authentication for streaming"
-msgstr "Habilitar autenticació per a streaming"
+msgstr ""
 
 #: ../plugin/plugin.py:166
+#, fuzzy
 msgid "Enable HTTP Authentication"
-msgstr "Autenticació enllaç HTTP"
+msgstr ""
 
 #: ../plugin/plugin.py:167
+#, fuzzy
 msgid "Enable HTTPS"
-msgstr "Habilitar HTTPS"
+msgstr ""
 
 #: ../plugin/plugin.py:170
+#, fuzzy
 msgid "Enable HTTPS Authentication"
-msgstr "Autenticació enllaç HTTPS"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:418
+#, fuzzy
 msgid "Enable Messages"
-msgstr "Habilitar missatges"
+msgstr ""
 
 #: ../plugin/plugin.py:178
+#, fuzzy
 msgid "Enable Parental Control"
-msgstr "Habilitar Control Parental"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:125
+#, fuzzy
 msgid "Enable Timer"
-msgstr "Habilitar Gravació"
+msgstr ""
 
 #: ../plugin/plugin.py:177
+#, fuzzy
 msgid "Enable access from VPNs"
-msgstr "Habilitar accès des de VPNs"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:364
+#, fuzzy
 msgid "Enable filtering"
-msgstr "Habilitar filtrat"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:499
+#, fuzzy
 msgid "Enable/Disable Screenshot on key press or"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:130 ../plugin/controllers/i18n.py:299
 #: ../plugin/controllers/i18n.py:417
+#, fuzzy
 msgid "Enabled"
-msgstr "Habilitar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:131
+#, fuzzy
 msgid "Encrypted"
-msgstr "Encriptat"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:127 ../plugin/controllers/i18n.py:420
+#, fuzzy
 msgid "End"
-msgstr "Fi"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:341
 #, fuzzy
 msgid "End of \"After event\" timespan"
-msgstr "Fi del \"després del programa\" interval de temps"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:325
+#, fuzzy
 msgid "End of timespan"
-msgstr "Fi de l'interval de temps"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:579
 #, fuzzy
 msgid "Enter Text"
-msgstr "Tipus de sintonitzador"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:459
+#, fuzzy
 msgid "Enter a name for the new bouquet"
-msgstr "Introdueix nou nom per a la llista"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:460
+#, fuzzy
 msgid "Enter a name for the new marker"
-msgstr "Introdueix nou nom per a la marca"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:385
 #, fuzzy
 msgid "Enter a name for this AutoTimer"
-msgstr "Introdueix nou nom per a la marca"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:505
+#, fuzzy
 msgid "Enter path"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:386
+#, fuzzy
 msgid "Enter the text to find in the EPG"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:137
+#, fuzzy
 msgid "Error"
-msgstr "Error"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:1111
+#, fuzzy
 msgid "Error parsing vps.xml"
 msgstr ""
 
 #: ../plugin/controllers/ipkg.py:312
+#, fuzzy
 msgid "Error upload File"
-msgstr "Error pujant arxiu"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:592
+#, fuzzy
 msgid "Error while preparing backup file, %s does not exists."
-msgstr "Error durant la preparació del backup, %s no existeix."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:598
+#, fuzzy
 msgid "Error while preparing backup file."
-msgstr "Error durant la preparació del backup."
+msgstr ""
 
 #: ../plugin/controllers/ipkg.py:328
+#, fuzzy
 msgid "Error writing File"
-msgstr "Error escritura arxiu"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:653
+#, fuzzy
 msgid "Error, %s does not exists, restore is not possible..."
-msgstr "Error, %s no existeix, la restauració no és possible..."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:651
+#, fuzzy
 msgid "Error, %s was not created with WebBouquetEditor..."
-msgstr "Error, %s no ha sigut creat amb WebBouquetEditor..."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:194
+#, fuzzy
 msgid "Error: Bouquet %s could not deleted, OSError."
-msgstr "Error: Llista %s no es pot esborrar, OSError."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:479
+#, fuzzy
 msgid "Event not found"
-msgstr "Event no trobat"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:353
+#, fuzzy
 msgid "EventId not found"
-msgstr "ID de programa no trobat"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:138
+#, fuzzy
 msgid "Every"
-msgstr "Cada"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:366
+#, fuzzy
 msgid "Exclude when"
-msgstr "Excloure"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:339
 #, fuzzy
 msgid "Execute \"After event\" during timespan"
-msgstr "Executar \"després del programa\" durant l'interval de temps"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:547
+#, fuzzy
 msgid "Export"
-msgstr "Exportar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:139
+#, fuzzy
 msgid "Extras"
-msgstr "Extres"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:438
+#, fuzzy
 msgid "Fake Recording"
-msgstr "Gravació falsa"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:401
+#, fuzzy
 msgid "Fastscan"
-msgstr "Recerca rápida"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:63
+#, fuzzy
 msgid "February"
-msgstr "Febrer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:141
+#, fuzzy
 msgid "Firmware version"
-msgstr "Versió de firmware"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:425
+#, fuzzy
 msgid "Force"
-msgstr "Forçar"
+msgstr ""
 
 #. Cuma
 #: ../plugin/controllers/i18n.py:42
+#, fuzzy
 msgid "Fr"
-msgstr "Div"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:143
+#, fuzzy
 msgid "Free"
-msgstr "Lliure"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:144
+#, fuzzy
 msgid "Free Memory"
-msgstr "Memòria lliure"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:51 ../plugin/controllers/models/movies.py:55
 #: ../plugin/controllers/models/timers.py:44
+#, fuzzy
 msgid "Fri"
-msgstr "Div"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:58
+#, fuzzy
 msgid "Friday"
-msgstr "Divendres"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:327
+#, fuzzy
 msgid "From date"
-msgstr "No després de"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:142 ../plugin/controllers/models/info.py:349
+#, fuzzy
 msgid "Front processor version"
-msgstr "Versió Frontprocessor"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:540
 #, fuzzy
 msgid "Full remote"
-msgstr "Ocultar comandament completo"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:396
 #: ../plugin/controllers/models/info.py:402
@@ -908,205 +1096,249 @@ msgstr "Ocultar comandament completo"
 #: ../plugin/controllers/models/movies.py:279
 #: ../plugin/controllers/models/movies.py:409
 #: ../plugin/controllers/models/movies.py:837
+#, fuzzy
 msgid "GB"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:147
+#, fuzzy
 msgid "GUI version"
-msgstr "Versió GUI"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:145
+#, fuzzy
 msgid "Gateway"
-msgstr "Porta d'enllaç"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:450
+#, fuzzy
 msgid "Get mutable list for new created alternative failed!"
-msgstr "Ha fallat l'obtenció de llista mutable per la nova alternativa creada!"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:125
+#, fuzzy
 msgid "Get mutable list for new created bouquet failed!"
-msgstr "Obtenir llista mutable per a la nova llista ha fallat!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:557
+#, fuzzy
 msgid "HH:MM"
 msgstr ""
 
 #: ../plugin/plugin.py:165
+#, fuzzy
 msgid "HTTP port"
-msgstr "Port HTTP"
+msgstr ""
 
 #: ../plugin/plugin.py:169
+#, fuzzy
 msgid "HTTPS port"
-msgstr "Port HTTPS"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:150
+#, fuzzy
 msgid "Hard disk model"
-msgstr "Model Disc Duro"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:148
+#, fuzzy
 msgid "Hide full remote"
-msgstr "Ocultar comandament completo"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:149
+#, fuzzy
 msgid "High Resolution"
-msgstr "Alta resolució"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:151
+#, fuzzy
 msgid "Hour"
-msgstr "Hora"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:456
+#, fuzzy
 msgid "IPTV / URL name"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:152
+#, fuzzy
 msgid "IPv4 address"
-msgstr "Direcció IPv4"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:155 ../plugin/controllers/models/info.py:160
+#, fuzzy
 msgid "IPv4-only Python/Twisted"
-msgstr "IPv4-només Python/Twisted"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:153 ../plugin/controllers/models/info.py:156
+#, fuzzy
 msgid "IPv4-only kernel"
-msgstr "IPv4-només kernel"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:156
+#, fuzzy
 msgid "IPv6 address(es)"
-msgstr "Direcció(es) IPv6"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:548
+#, fuzzy
 msgid "Import"
-msgstr "Importar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:134
+#, fuzzy
 msgid "Include description"
-msgstr "Incloure descripció"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:533
 #, fuzzy
 msgid "Include extended description"
-msgstr "Incloure descripció"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:532
 #, fuzzy
 msgid "Include short description"
-msgstr "Incloure descripció"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:365
+#, fuzzy
 msgid "Include when"
-msgstr "Incloure"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:601
+#, fuzzy
 msgid "Infinite Instant recording started"
-msgstr "Gravació instantània infinita iniciada"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:157
+#, fuzzy
 msgid "Info"
-msgstr "Informació"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:427
+#, fuzzy
 msgid "Inherit AutoTimer"
-msgstr "Heretar Autotimer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:525
+#, fuzzy
 msgid "Install Package"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:527
 #, fuzzy
 msgid "Installed"
-msgstr "Gravació instantània"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:158
+#, fuzzy
 msgid "Instant Record"
-msgstr "Gravació instantània"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:592
+#, fuzzy
 msgid "Instant record for current Event started"
-msgstr "Gravació instantània iniciada per al programa actual"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:350
+#, fuzzy
 msgid "Internal error!"
-msgstr "Error intern!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:398
 #, fuzzy
 msgid "Interval (in %s)"
-msgstr "Interval (en h)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:422
+#, fuzzy
 msgid "Interval (min.)"
-msgstr "Interval (min.)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:423
+#, fuzzy
 msgid "Interval (sec.)"
-msgstr "Interval (seg.)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:62
+#, fuzzy
 msgid "January"
-msgstr "Gener"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:160
+#, fuzzy
 msgid "Javascript Libraries"
-msgstr "Llibreries Javascript"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:68
+#, fuzzy
 msgid "July"
-msgstr "Juliol"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:67
+#, fuzzy
 msgid "June"
-msgstr "Juny"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:161
+#, fuzzy
 msgid "Just play"
-msgstr "Només repr."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:162
+#, fuzzy
 msgid "Kernel"
-msgstr "Versió Kernel"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:163
+#, fuzzy
 msgid "LCD"
 msgstr ""
 
 #: ../plugin/controllers/base.py:334
+#, fuzzy
 msgid "LCD4Linux Setup"
-msgstr "Configurar LCD4Linux"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:164
+#, fuzzy
 msgid "LICENSE"
-msgstr "LLICÈNCIA"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:383
+#, fuzzy
 msgid "Label series"
-msgstr "Sèrie d'etiquetes"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:495
+#, fuzzy
 msgid "Link Speed"
 msgstr ""
 
 #: ../plugin/controllers/models/timers.py:562
+#, fuzzy
 msgid "List of Timers has been cleaned"
-msgstr "La llista de temporitzadors s'ha netejat"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:463
 #, fuzzy
 msgid "Loading..."
-msgstr "carregant"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:166
+#, fuzzy
 msgid "Location"
-msgstr "Localització"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:167
+#, fuzzy
 msgid "Locked"
-msgstr "Bloquejat"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:168
+#, fuzzy
 msgid "MAC address"
-msgstr "Direcció MAC"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:393
 #: ../plugin/controllers/models/info.py:404
@@ -1114,240 +1346,290 @@ msgstr "Direcció MAC"
 #: ../plugin/controllers/models/movies.py:281
 #: ../plugin/controllers/models/movies.py:411
 #: ../plugin/controllers/models/movies.py:839
+#, fuzzy
 msgid "MB"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:169
+#, fuzzy
 msgid "Main"
-msgstr "Principal"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:260
+#, fuzzy
 msgid "Main Memory"
-msgstr "Memòria principal"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:64
+#, fuzzy
 msgid "March"
-msgstr "Març"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:348
+#, fuzzy
 msgid "Marker added."
-msgstr "Marcador afegit."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:458
+#, fuzzy
 msgid "Marker name"
-msgstr "Nom de la marca"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:300
+#, fuzzy
 msgid "Match text"
-msgstr "Coincidència de títul"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:399
+#, fuzzy
 msgid "Max Days"
-msgstr "Màxim de dies"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:66
+#, fuzzy
 msgid "May"
-msgstr "Maig"
+msgstr ""
 
 #: ../plugin/controllers/models/message.py:35
+#, fuzzy
 msgid "Message sent successfully!"
-msgstr "¡Missatge enviat correctament!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:434
+#, fuzzy
 msgid "Method"
-msgstr "Mètode"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:521
+#, fuzzy
 msgid "Minimal EPG list"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:519
 #, fuzzy
 msgid "Minimal movie list"
-msgstr "Llista de Pel·lícules"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:520
+#, fuzzy
 msgid "Minimal timer list"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:170
+#, fuzzy
 msgid "Minute"
-msgstr "Minut"
+msgstr ""
 
 #: ../plugin/controllers/web.py:85
+#, fuzzy
 msgid "Missing mandatory parameter '%s'"
-msgstr "Falta paràmetre obligatori '%s'"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:693
+#, fuzzy
 msgid "Missing requesteter: sRef"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:38
+#, fuzzy
 msgid "Mo"
-msgstr "Dil"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:172
+#, fuzzy
 msgid "Model"
-msgstr "Model"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:47 ../plugin/controllers/models/movies.py:55
 #: ../plugin/controllers/models/timers.py:44
+#, fuzzy
 msgid "Mon"
-msgstr "Dil"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:54
+#, fuzzy
 msgid "Monday"
-msgstr "Dilluns"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:345
+#, fuzzy
 msgid "Monthly"
-msgstr "Mensual"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:528
+#, fuzzy
 msgid "More"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:173
+#, fuzzy
 msgid "More details"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:481
+#, fuzzy
 msgid "Movie database for EPG"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:534
 #, fuzzy
 msgid "Movie search"
-msgstr "Pel·lícules"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:174
+#, fuzzy
 msgid "Movielist"
-msgstr "Llista de Pel·lícules"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:175
+#, fuzzy
 msgid "Movies"
-msgstr "Pel·lícules"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:132
 #: ../plugin/controllers/BouquetEditor.py:756
+#, fuzzy
 msgid "Multi-Bouquet is not enabled!"
-msgstr "Multi-llistes no està habilitat!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:176
+#, fuzzy
 msgid "MultiEPG"
-msgstr "MultiEPG"
+msgstr ""
 
 #: ../plugin/controllers/base.py:358
+#, fuzzy
 msgid "NCam Webinterface"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:177
+#, fuzzy
 msgid "Name"
-msgstr "Nom"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:550
+#, fuzzy
 msgid "Name (a-z)"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:551
+#, fuzzy
 msgid "Name (z-a)"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:178
+#, fuzzy
 msgid "Namespace"
-msgstr "Nom d'espai"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:179
+#, fuzzy
 msgid "Network Interface"
-msgstr "Interfície de xarxa"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:496
+#, fuzzy
 msgid "Network Shares"
-msgstr "Muntatges de xarxa"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:344 ../plugin/controllers/i18n.py:430
+#, fuzzy
 msgid "Never"
-msgstr "Mai"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:384
 #: ../plugin/controllers/models/services.py:382
+#, fuzzy
 msgid "New"
-msgstr "Nou"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:503
 #, fuzzy
 msgid "New Bookmark:"
-msgstr "Esborrar Gravació"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:255
+#, fuzzy
 msgid "New Name"
-msgstr "Nom nou"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:350
+#, fuzzy
 msgid "No"
-msgstr "No"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:181
 #, fuzzy
 msgid "No EPG data available."
-msgstr "no hi ha descripció disponible"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:524
+#, fuzzy
 msgid "No Parent Control Setup Pin given!"
-msgstr "Cap PIN per a configuració control parental introduït!"
+msgstr ""
 
 #: ../plugin/controllers/models/message.py:46
+#, fuzzy
 msgid "No answer in time"
-msgstr "Sense resposta a temps"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:225
 #: ../plugin/controllers/BouquetEditor.py:255
 #: ../plugin/controllers/BouquetEditor.py:281
 #: ../plugin/controllers/BouquetEditor.py:324
 #: ../plugin/controllers/BouquetEditor.py:474
+#, fuzzy
 msgid "No bouquet given!"
-msgstr "Cap llista introduida!"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:93
 #: ../plugin/controllers/BouquetEditor.py:154
 #: ../plugin/controllers/BouquetEditor.py:200
+#, fuzzy
 msgid "No bouquet name given!"
-msgstr "Cap nom de llista introduït!"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:419
+#, fuzzy
 msgid "No current service given!"
-msgstr "Cap servei actual introduït!"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:586
+#, fuzzy
 msgid "No event found! Not recording!"
-msgstr "No s'ha trobat programa! No s'està gravant!"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:331
+#, fuzzy
 msgid "No marker-name given!"
-msgstr "Cap nom de marcador introduït!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:393
 #, fuzzy
 msgid "No matches were found in the EPG"
-msgstr "No s'ha trobat coincidència als temporitzadors"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:509
 #: ../plugin/controllers/models/timers.py:554
+#, fuzzy
 msgid "No matching Timer found"
-msgstr "No s'ha trobat coincidència als temporitzadors"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:364
+#, fuzzy
 msgid "No new servicename given!"
-msgstr "Cap nom de servei introduït!"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:210
 #: ../plugin/controllers/BouquetEditor.py:267
+#, fuzzy
 msgid "No position given!"
-msgstr "Cap posició introduïda!"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:138
+#, fuzzy
 msgid "No provider given!"
-msgstr "Cap proveïdor introduït!"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:231
 #: ../plugin/controllers/BouquetEditor.py:261
@@ -1356,569 +1638,693 @@ msgstr "Cap proveïdor introduït!"
 #: ../plugin/controllers/BouquetEditor.py:416
 #: ../plugin/controllers/BouquetEditor.py:480
 #: ../plugin/controllers/BouquetEditor.py:517
+#, fuzzy
 msgid "No service given!"
-msgstr "Cap servei introduït!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:513
 #, fuzzy
 msgid "No, cancel"
-msgstr "Cancel·lar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:410
+#, fuzzy
 msgid "None"
-msgstr "Cap"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:183
+#, fuzzy
 msgid "Nothing"
-msgstr "Res"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:184
+#, fuzzy
 msgid "Nothing playing."
-msgstr "Res a reproduir."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:405
+#, fuzzy
 msgid "Notify if Conflict"
-msgstr "Notificar si hi ha conflicte"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:406
+#, fuzzy
 msgid "Notify if Similar"
-msgstr "Notificar si hi ha un similar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:72
+#, fuzzy
 msgid "November"
-msgstr "Novembre"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:185
+#, fuzzy
 msgid "Now"
-msgstr "Ara"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:522
+#, fuzzy
 msgid "Now/Next Columns"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:343
+#, fuzzy
 msgid "Number of recordings remaining"
-msgstr "Quantitat de gravacions faltants"
+msgstr ""
 
 #: ../plugin/controllers/base.py:356
+#, fuzzy
 msgid "OSCam Webinterface"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:192
+#, fuzzy
 msgid "OSD"
-msgstr "OSD"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:71
+#, fuzzy
 msgid "October"
-msgstr "Octubre"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:331
+#, fuzzy
 msgid "Offset after recording (mins)"
-msgstr "Marge després de gravar (en min.)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:330
+#, fuzzy
 msgid "Offset before recording (mins)"
-msgstr "Marge abans de gravar (en min.)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:187
+#, fuzzy
 msgid "On"
-msgstr "On"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:352
+#, fuzzy
 msgid "On any service"
-msgstr "En qualsevol servei"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:351
+#, fuzzy
 msgid "On same service"
-msgstr "En el mateix servei"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:472
+#, fuzzy
 msgid "Onid"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:326
+#, fuzzy
 msgid "Only match between dates"
-msgstr "Restringir als programes en determinades dates"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:323
+#, fuzzy
 msgid "Only match during timespan"
-msgstr "Només coincidir durant l'interval de temps"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:136
+#, fuzzy
 msgid "Oops, no results matched your search"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:510
+#, fuzzy
 msgid "Oops..."
 msgstr ""
 
 #. The translation could have been sharper but as it has to fit in it’s frame this may be an acceptable compromise. I would have prefered: "Open Source webbgränssnitt för Linuxbaserade digitalboxar"...
 #: ../plugin/controllers/i18n.py:188
+#, fuzzy
 msgid "Open Source Web Interface for Linux set-top box"
-msgstr "Interfície Web de Codi Lliure per a Receptors Linux"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:193
+#, fuzzy
 msgid "Open in new window"
-msgstr "Obrir en nova finestra"
+msgstr ""
 
 #: ../plugin/plugin.py:154
+#, fuzzy
 msgid "OpenWebInterface Enabled"
-msgstr "Enllaç OpenWebInterface"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:483
+#, fuzzy
 msgid "OpenWebif Browser Settings"
-msgstr "Configuració navegador OpenWebif"
+msgstr ""
 
 #: ../plugin/plugin.py:194 ../plugin/plugin.py:262 ../plugin/plugin.py:264
 #: ../plugin/plugin.py:266
+#, fuzzy
 msgid "OpenWebif Configuration"
-msgstr "Configuració OpenWebif"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:484
+#, fuzzy
 msgid "OpenWebif Settings"
-msgstr "Configuració OpenWebif"
+msgstr ""
 
 #: ../plugin/plugin.py:140
 #, fuzzy
 msgid "OpenWebif url:"
-msgstr "Enllaç OpenWebif:"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:475
 #: ../plugin/controllers/models/services.py:276
+#, fuzzy
 msgid "Orbital Position"
-msgstr "Posició orbital"
+msgstr ""
 
 #. One extra space inserted in front for better readability in context.
 #: ../plugin/controllers/i18n.py:322
+#, fuzzy
 msgid "Override found with alternative service"
-msgstr "Anular trobat amb un servei alternatiu"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:507
+#, fuzzy
 msgid "Packages"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:528
 #: ../plugin/controllers/BouquetEditor.py:530
+#, fuzzy
 msgid "Parent Control Setup Pin is wrong!"
-msgstr "PIN configuració control parental erroni!"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:511
+#, fuzzy
 msgid "Parent Control is not activated."
-msgstr "Control parental no està activat."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:428
+#, fuzzy
 msgid "Parse AutoTimer"
-msgstr "Analitzar Autotimer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:470
+#, fuzzy
 msgid "Pcrpid"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:194
+#, fuzzy
 msgid "PiP"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:436
+#, fuzzy
 msgid "Picture in Picture"
-msgstr "Picture in Picture"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:437
+#, fuzzy
 msgid "Picture in Picture (hidden)"
-msgstr "Picture in Picture (ocult)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:414
+#, fuzzy
 msgid "Plain"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:195
+#, fuzzy
 msgid "Playback"
-msgstr "Reproducció"
+msgstr ""
 
 #: ../plugin/plugin.py:184
+#, fuzzy
 msgid "Playback IPTV Streams in browser"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:196
+#, fuzzy
 msgid "Playlist"
-msgstr "Llista de reproducció"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:560
 #, fuzzy
 msgid "Playlist format"
-msgstr "Llista de reproducció"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:467
+#, fuzzy
 msgid "Pmtpid"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:197
+#, fuzzy
 msgid "Power Control"
-msgstr "Control d'encesa"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:782
+#, fuzzy
 msgid "PowerTimer feature not available"
-msgstr "La característica temporitzador d'alimentació no està disponible."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:389
+#, fuzzy
 msgid "Preview"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:498
+#, fuzzy
 msgid "Primetimes"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:378
+#, fuzzy
 msgid "Process"
-msgstr "Analitzar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:198
+#, fuzzy
 msgid "Provider"
-msgstr "Proveïdor"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:199
+#, fuzzy
 msgid "Providers"
-msgstr "Proveïdors"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:578
+#, fuzzy
 msgid "REC"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:200
+#, fuzzy
 msgid "Radio"
-msgstr "Ràdio"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:201
+#, fuzzy
 msgid "Reboot Box"
-msgstr "Reiniciar Deco"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:342
+#, fuzzy
 msgid "Record a maximum of # times"
-msgstr "Gravar un màxim de x vegades"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:202
+#, fuzzy
 msgid "Recording Status"
-msgstr "Estat de Gravació"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:574
 #, fuzzy
 msgid "Recording Type"
-msgstr "Estat de Gravació"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:203 ../plugin/controllers/i18n.py:409
+#, fuzzy
 msgid "Refresh"
-msgstr "Refrescar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:205
+#, fuzzy
 msgid "Refresh Timer"
-msgstr "Actualitzar Gravació"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:204
+#, fuzzy
 msgid "Refresh automatically every"
-msgstr "Actualitzar automàticament cada"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:440
+#, fuzzy
 msgid "Refresh now"
-msgstr "Refrescar ara"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:294
+#, fuzzy
 msgid "Reload"
-msgstr "Recarregar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:206
+#, fuzzy
 msgid "Remote"
-msgstr "Comandament a distància"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:523
+#, fuzzy
 msgid "Remove Package"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:388
 #, fuzzy
 msgid "Remove filter"
-msgstr "Comandament a distància"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:453 ../plugin/controllers/i18n.py:512
+#, fuzzy
 msgid "Rename"
-msgstr "Renombrar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:448
+#, fuzzy
 msgid "Rename Bouquet"
-msgstr "Renombrar llista"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:207
+#, fuzzy
 msgid "Rename Recording"
-msgstr "Renombrar Gravació"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:209
+#, fuzzy
 msgid "Repeated"
-msgstr "Repetir"
+msgstr ""
 
 #: ../plugin/plugin.py:171
+#, fuzzy
 msgid "Require client cert for HTTPS"
-msgstr "Requereix certificat client per a HTTPS"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:349
+#, fuzzy
 msgid "Require description to be unique"
-msgstr "Requereix descripció per a ser únic"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:556
 #, fuzzy
 msgid "Reset"
-msgstr "Restablir contador"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:348
+#, fuzzy
 msgid "Reset count"
-msgstr "Restablir contador"
+msgstr ""
 
 #. Have to use "GUI" because of limited space. I would prefere "Användargränssnitt" if space were without limits.
 #: ../plugin/controllers/i18n.py:210
+#, fuzzy
 msgid "Restart GUI"
-msgstr "Reiniciar GUI"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:135 ../plugin/controllers/i18n.py:361
+#, fuzzy
 msgid "Restrict to bouquets"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:362
 #, fuzzy
 msgid "Restrict to channels"
-msgstr "sel·leccionar canals"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:293
+#, fuzzy
 msgid "Root"
-msgstr "Carpeta arrel"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:67
+#, fuzzy
 msgid "SLAAC"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:235
+#, fuzzy
 msgid "SNR"
-msgstr "SNR"
+msgstr ""
 
 #. Saturday
 #: ../plugin/controllers/i18n.py:43
+#, fuzzy
 msgid "Sa"
-msgstr "Dis"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:212
+#, fuzzy
 msgid "Safe mode"
-msgstr "Mode segur"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:52 ../plugin/controllers/models/movies.py:55
 #: ../plugin/controllers/models/timers.py:44
+#, fuzzy
 msgid "Sat"
-msgstr "Dis"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:213
+#, fuzzy
 msgid "Satellites"
-msgstr "Satèl·lits"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:214
+#, fuzzy
 msgid "Satfinder"
-msgstr "Buscador de satèl·lit"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:59
+#, fuzzy
 msgid "Saturday"
-msgstr "Dissabte"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:215 ../plugin/controllers/i18n.py:377
 #: ../plugin/controllers/i18n.py:439 ../plugin/plugin.py:128
+#, fuzzy
 msgid "Save"
-msgstr "Guardar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:216
+#, fuzzy
 msgid "Screenshot"
-msgstr "Captura de Pantalla"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:217 ../plugin/controllers/i18n.py:445
+#, fuzzy
 msgid "Search"
-msgstr "Buscar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:218
 #, fuzzy
 msgid "Search CSFD"
-msgstr "Buscar en IMDb"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:219
+#, fuzzy
 msgid "Search IMDb"
-msgstr "Buscar en IMDb"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:220
+#, fuzzy
 msgid "Search KinoPoisk"
-msgstr "Buscar KinoPoisk"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:221
 #, fuzzy
 msgid "Search TV Guide UK"
-msgstr "Guia TV"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:446
+#, fuzzy
 msgid "Search by name, sd / hd / uhd, or provider"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:316
 #, fuzzy
 msgid "Search strictness"
-msgstr "Buscar KinoPoisk"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:302
 #, fuzzy
 msgid "Search type"
-msgstr "Buscar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:536
+#, fuzzy
 msgid "Select IPK file for upload"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:555
+#, fuzzy
 msgid "Select..."
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:223
+#, fuzzy
 msgid "Send Message"
-msgstr "Enviar missatge"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:225
+#, fuzzy
 msgid "Send a Message"
-msgstr "Enviar un missatge"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:70
+#, fuzzy
 msgid "September"
-msgstr "Setembre"
+msgstr ""
 
 #. Översätts ofta till Leverantör i stället.
 #: ../plugin/controllers/i18n.py:226
+#, fuzzy
 msgid "Service"
-msgstr "Servei"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:314
+#, fuzzy
 msgid "Service %s added."
-msgstr "Servei %s afegit."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:317
+#, fuzzy
 msgid "Service %s already exists in bouquet %s."
-msgstr "Servei %s ja existeix a la llista %s."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:249
+#, fuzzy
 msgid "Service %s can not be removed."
-msgstr "Servei %s no es pot esborrar."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:545
+#, fuzzy
 msgid "Service %s is locked."
-msgstr "Servei %s bloquejat."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:553
+#, fuzzy
 msgid "Service %s is unlocked."
-msgstr "Servei %s desbloquejat."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:274
+#, fuzzy
 msgid "Service %s moved."
-msgstr "Servei %s mogut."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:248
+#, fuzzy
 msgid "Service %s removed from bouquet %s."
-msgstr "Servei %s esborrat de la llista %s."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:240
+#, fuzzy
 msgid "Service %s removed."
-msgstr "Servei %s esborrat."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:275
+#, fuzzy
 msgid "Service can not be moved."
-msgstr "Servei no es pot moure."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:405
+#, fuzzy
 msgid "Service can not be renamed."
-msgstr "Servei no es pot renombrar."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:497
+#, fuzzy
 msgid "Service is not an alternative."
-msgstr "Servei no és una alternativa."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:404
+#, fuzzy
 msgid "Service renamed successfully."
-msgstr "Servei renombrat correctament."
+msgstr ""
 
 #: ../plugin/controllers/models/services.py:384
+#, fuzzy
 msgid "Services"
-msgstr "Serveis"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:332
+#, fuzzy
 msgid "Set maximum duration"
-msgstr "Configurar duració màxima"
+msgstr ""
 
 #: ../plugin/controllers/base.py:321 ../plugin/controllers/i18n.py:227
 #: ../plugin/controllers/i18n.py:381
+#, fuzzy
 msgid "Settings"
-msgstr "Configuració"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:232
+#, fuzzy
 msgid "Show EPG for"
-msgstr "Veure EPG per a"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:230
+#, fuzzy
 msgid "Show Full OpenWebif"
-msgstr "Veure OpenWebif Complert"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:543
+#, fuzzy
 msgid "Show IPTV channels in selection (eg. Autotimer)"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:572
+#, fuzzy
 msgid "Show all packages"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:189 ../plugin/plugin.py:160
+#, fuzzy
 msgid "Show box name in header"
-msgstr "Mostrar nom del deco a la capçalera"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:541
+#, fuzzy
 msgid "Show details"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:231
+#, fuzzy
 msgid "Show full remote"
-msgstr "Veure comandament a distància complert"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:402
+#, fuzzy
 msgid "Show in Extensions menu"
-msgstr "Mostrar al menú d'extensions"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:546
+#, fuzzy
 msgid "Show picon background"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:545
+#, fuzzy
 msgid "Show picons"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:480
+#, fuzzy
 msgid "Show picons in channel list"
-msgstr "Mostar Picon en llista de canals"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:542
 #, fuzzy
 msgid "Show service type in channel list"
-msgstr "Mostar Picon en llista de canals"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:233
+#, fuzzy
 msgid "Shutdown"
-msgstr "Apagar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:473
+#, fuzzy
 msgid "Sid"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:379
+#, fuzzy
 msgid "Simulate"
-msgstr "Simular"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:234
+#, fuzzy
 msgid "Site and sources"
-msgstr "Lloc i fonts"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:568
+#, fuzzy
 msgid "Skins"
 msgstr ""
 
@@ -1928,665 +2334,807 @@ msgstr ""
 #: ../plugin/controllers/models/timers.py:954
 #: ../plugin/controllers/models/timers.py:1000
 #: ../plugin/controllers/models/timers.py:1082
+#, fuzzy
 msgid "SleepTimer error"
-msgstr "Error temporitzador d'apagat"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:943
 #: ../plugin/controllers/models/timers.py:1058
 #: ../plugin/controllers/models/timers.py:1077
+#, fuzzy
 msgid "Sleeptimer has been disabled"
-msgstr "El temporitzador d'apagat s'ha desactivat"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:861
 #: ../plugin/controllers/models/timers.py:893
 #: ../plugin/controllers/models/timers.py:920
 #: ../plugin/controllers/models/timers.py:994
+#, fuzzy
 msgid "Sleeptimer is disabled"
-msgstr "Temporitzador d'apagat desactivat"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:861
 #: ../plugin/controllers/models/timers.py:893
 #: ../plugin/controllers/models/timers.py:920
 #: ../plugin/controllers/models/timers.py:994
+#, fuzzy
 msgid "Sleeptimer is enabled"
-msgstr "Temporitzador d'apagat activat"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:949
 #: ../plugin/controllers/models/timers.py:1058
 #: ../plugin/controllers/models/timers.py:1072
 #, fuzzy
 msgid "Sleeptimer set to %d minutes"
-msgstr "Temporitzador d'apagat configurat a %d minuts"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:236
+#, fuzzy
 msgid "Software"
-msgstr "Software"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:182
+#, fuzzy
 msgid "Sorry this page is not yet implemented"
-msgstr "Ho sentim, aquesta pàgina encara no està implementada"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:549
+#, fuzzy
 msgid "Sort"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:486
+#, fuzzy
 msgid "Spinner"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:474
+#, fuzzy
 msgid "Sref"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:237
+#, fuzzy
 msgid "Standby"
-msgstr "Mode d'espera"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:238
+#, fuzzy
 msgid "Standby Toggle"
-msgstr "Activar Repòs"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:126
+#, fuzzy
 msgid "Start"
-msgstr "Inici"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:241
+#, fuzzy
 msgid "Start Instant Record"
-msgstr "Iniciar Gravació Instantània"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:240
+#, fuzzy
 msgid "Start time is after end time"
-msgstr "L'hora d'inici és després de l'hora de finalització"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:535
+#, fuzzy
 msgid "Start typing..."
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:390
+#, fuzzy
 msgid "State"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:242
+#, fuzzy
 msgid "Stream"
-msgstr "Stream"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:566
 #, fuzzy
 msgid "Stream Clients"
-msgstr "Stream"
+msgstr ""
 
 #: ../plugin/plugin.py:179
 #, fuzzy
 msgid "Streaming port"
-msgstr "Stream"
+msgstr ""
 
 #. Sunday
 #: ../plugin/controllers/i18n.py:44
+#, fuzzy
 msgid "Su"
-msgstr "Diu"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:554
+#, fuzzy
 msgid "Subdirectories"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:243
+#, fuzzy
 msgid "Subnet mask"
-msgstr "Màscara de xarxa"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:244
+#, fuzzy
 msgid "Subservices"
-msgstr "Subserveis"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:46 ../plugin/controllers/models/movies.py:55
 #: ../plugin/controllers/models/timers.py:44
+#, fuzzy
 msgid "Sun"
-msgstr "Diu"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:60
+#, fuzzy
 msgid "Sunday"
-msgstr "Diumenge"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:186
+#, fuzzy
 msgid "System OE"
-msgstr "Sistema OE"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:400
 #: ../plugin/controllers/models/info.py:412
 #: ../plugin/controllers/models/info.py:414
+#, fuzzy
 msgid "TB"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:271
+#, fuzzy
 msgid "TV"
-msgstr "TV"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:490
+#, fuzzy
 msgid "TV Guide"
-msgstr "Guia TV"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:272
+#, fuzzy
 msgid "TV Multi EPG"
-msgstr "TV Multi EPG"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:245 ../plugin/controllers/i18n.py:355
+#, fuzzy
 msgid "Tags"
-msgstr "Etiquetes"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:246
+#, fuzzy
 msgid "Teletext"
-msgstr "Teletext"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:247
+#, fuzzy
 msgid "Television"
-msgstr "Televisió"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:248
+#, fuzzy
 msgid "Template Engine"
-msgstr "Motor de la Plantilla"
+msgstr ""
 
 #: ../plugin/controllers/base.py:405
+#, fuzzy
 msgid "Terminal"
 msgstr ""
 
 #: ../plugin/controllers/models/services.py:391
+#, fuzzy
 msgid "Terrestrial"
-msgstr "Terrestre"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:249
+#, fuzzy
 msgid "Text"
-msgstr "Text"
+msgstr ""
 
 #. Thursday
 #: ../plugin/controllers/i18n.py:41
+#, fuzzy
 msgid "Th"
-msgstr "Dij"
+msgstr ""
 
 #: ../plugin/controllers/web.py:91 ../plugin/controllers/web.py:1568
+#, fuzzy
 msgid "The parameter '%s' can't be empty"
-msgstr "El paràmetre '%s' no pot estar buit"
+msgstr ""
 
 #: ../plugin/controllers/web.py:345
+#, fuzzy
 msgid "The parameter 'command' must be a number"
-msgstr "El paràmetre 'ordre' ha de ser un número"
+msgstr ""
 
 #. The word "framgångsrikt" to get a string to end the sentence.
 #: ../plugin/controllers/models/timers.py:548
+#, fuzzy
 msgid "The timer '%s' has been %s successfully"
-msgstr "El temporitzador '%s' ha sigut %s satisfactòriament"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:498
 #: ../plugin/controllers/models/timers.py:504
+#, fuzzy
 msgid "The timer '%s' has been deleted successfully"
-msgstr "El tmeporitzador '%s' s'ha eliminat satisfactòriament"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:540
+#, fuzzy
 msgid "The timer '%s' now recorded! Not disabled!"
-msgstr "Temporitzador '%s' s'ha gravat! No està deshabilitat!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:485
+#, fuzzy
 msgid "Theme"
-msgstr "Tema"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:274 ../plugin/plugin.py:158
 #, fuzzy
 msgid "Theme mode"
-msgstr "Tema"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:318
+#, fuzzy
 msgid "This service can not be added."
-msgstr "Aquest servei no es pot afegir."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:50 ../plugin/controllers/models/movies.py:55
 #: ../plugin/controllers/models/timers.py:44
+#, fuzzy
 msgid "Thu"
-msgstr "Dij"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:57
+#, fuzzy
 msgid "Thursday"
-msgstr "Dijous"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:251
+#, fuzzy
 msgid "Time"
-msgstr "Temps"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:491
+#, fuzzy
 msgid "Timeline"
-msgstr "Plaç"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:252
+#, fuzzy
 msgid "Timeout"
-msgstr "Temps d'espera"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:257
+#, fuzzy
 msgid "Timer"
-msgstr "Gravació"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:344
+#, fuzzy
 msgid "Timer '%s' added"
-msgstr "Temporitzador '%s' afegit"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:534
+#, fuzzy
 msgid "Timer '%s' already exists!"
-msgstr "Temporitzador '%s' ja existeix!"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:460
+#, fuzzy
 msgid "Timer '%s' changed"
-msgstr "Temporitzador '%s' canviat"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:528
+#, fuzzy
 msgid "Timer '%s' not enabled while Conflict"
-msgstr "Temporitzador %s no habilitat durant el conflicte"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:479
+#, fuzzy
 msgid "Timer '%s' not saved while Conflict"
-msgstr "El temporitzador '%s' no s'ha guardat per un conflicte"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:478
+#, fuzzy
 msgid "Timer Added"
-msgstr "Temporitzador afegit"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:253
+#, fuzzy
 msgid "Timer added"
-msgstr "Afegir gravació"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:620
+#, fuzzy
 msgid "Timer conflict detected! Not recording!"
-msgstr "Detectat conflicte entre temporitzadors. No s'està gravant."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:319
+#, fuzzy
 msgid "Timer type"
-msgstr "Tipus gravació"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:570
+#, fuzzy
 msgid "TimerList has been saved"
-msgstr "La llista de temporitzadors s'ha guardat"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:254
+#, fuzzy
 msgid "Timerlist"
-msgstr "Llista de gravacions"
+msgstr ""
 
 #. There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:258 ../plugin/controllers/i18n.py:380
+#, fuzzy
 msgid "Timers"
-msgstr "Gravacions"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:259
+#, fuzzy
 msgid "Title"
-msgstr "Títul"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:328
+#, fuzzy
 msgid "To date"
-msgstr "No abans de"
+msgstr ""
 
 #: ../plugin/controllers/models/movies.py:58
 #: ../plugin/controllers/models/timers.py:48
+#, fuzzy
 msgid "Today"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:262
+#, fuzzy
 msgid "Transcode"
-msgstr "Transcodificar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:291
+#, fuzzy
 msgid "Translation to Spanish"
-msgstr "Traducció a l'espanyol"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:400
+#, fuzzy
 msgid "Try guessing"
-msgstr "Tractar d'encertar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:471
+#, fuzzy
 msgid "Tsid"
 msgstr ""
 
 #. Tuesday
 #: ../plugin/controllers/i18n.py:39
+#, fuzzy
 msgid "Tu"
-msgstr "Dim"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:48 ../plugin/controllers/models/movies.py:55
 #: ../plugin/controllers/models/timers.py:44
+#, fuzzy
 msgid "Tue"
-msgstr "Dim"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:55
+#, fuzzy
 msgid "Tuesday"
-msgstr "Dimarts"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:263
+#, fuzzy
 msgid "Tuner Bit Error Rate BER"
-msgstr "Bit de taxa d'error (BER) del sintonitzador"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:264
+#, fuzzy
 msgid "Tuner Number"
-msgstr "Número de sintonitzador"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:265
+#, fuzzy
 msgid "Tuner Signal"
-msgstr "Senyal del sintonitzador"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:268
+#, fuzzy
 msgid "Tuner Signal Power AGC"
-msgstr "Potència de senyal del sintonitzador AGC"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:266
+#, fuzzy
 msgid "Tuner Signal Quality SNR"
-msgstr "Qualitat de senyal del sintonitzador SNR"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:267
+#, fuzzy
 msgid "Tuner Signal Quality SNR_DB"
-msgstr "Qualitat de senyal del sintonitzador SNR DB"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:269
+#, fuzzy
 msgid "Tuner Type"
-msgstr "Tipus de sintonitzador"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:270
+#, fuzzy
 msgid "Tuners"
-msgstr "Sintonitzadors"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:273
+#, fuzzy
 msgid "Type"
-msgstr "Tipus"
+msgstr ""
 
 #: ../plugin/controllers/web.py:247
+#, fuzzy
 msgid "Unknown Volume command %s"
-msgstr "Ordre %s de Volum Desconeguda"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:715
+#, fuzzy
 msgid "Unknown command: '%s'"
-msgstr "Ordre desconeguda: '%s'"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:275
+#, fuzzy
 msgid "Upcoming Events"
-msgstr "Pròxims programes"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:526
+#, fuzzy
 msgid "Update"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:524
+#, fuzzy
 msgid "Update Package"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:529
+#, fuzzy
 msgid "Update from feed"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:530
+#, fuzzy
 msgid "Upgrade all packages"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:539
+#, fuzzy
 msgid "Upload File Error"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:538
+#, fuzzy
 msgid "Upload package"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:537
 #, fuzzy
 msgid "Uploaded Files"
-msgstr "Error pujant arxiu"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:544
+#, fuzzy
 msgid "Use Channelname for screenshots"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:354
+#, fuzzy
 msgid "Use a custom location"
-msgstr "Utilitzar una ubicació personalitzada"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:561
+#, fuzzy
 msgid "Use as PiP if possible"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:569
 #, fuzzy
 msgid "Use classic interface"
-msgstr "Utilitzar nou diseny"
+msgstr ""
 
 #: ../plugin/plugin.py:159
 #, fuzzy
 msgid "Use custom Color"
-msgstr "Utilitzar una ubicació personalitzada"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:190 ../plugin/plugin.py:162
+#, fuzzy
 msgid "Use custom box name"
-msgstr "Utilitzar nom personalitzat per al deco"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:509
 #, fuzzy
 msgid "Use modern design"
-msgstr "Utilitzar nou diseny"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:570 ../plugin/plugin.py:156
+#, fuzzy
 msgid "Use modern interface"
-msgstr "Utilitzar nou diseny"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:571
 #, fuzzy
 msgid "Use old remote"
-msgstr "Ocultar comandament completo"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:281
+#, fuzzy
 msgid "VPS"
-msgstr "VPS"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:1116
+#, fuzzy
 msgid "VPS plugin not found"
-msgstr "Plugin VPS no trobat"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:276
+#, fuzzy
 msgid "Version"
-msgstr "Versió"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:277
+#, fuzzy
 msgid "Video"
-msgstr "Vídeo"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:278
+#, fuzzy
 msgid "Video Height"
-msgstr "Altura de vídeo"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:279
+#, fuzzy
 msgid "Video Wide"
-msgstr "Vídeo ample"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:280
+#, fuzzy
 msgid "Video Width"
-msgstr "Ample de Video"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:435
+#, fuzzy
 msgid "Visibly"
-msgstr "Visible"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:282
+#, fuzzy
 msgid "Volume"
-msgstr "Volum"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:283
+#, fuzzy
 msgid "Volume Control"
-msgstr "Control de volum"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:469
+#, fuzzy
 msgid "Vpid"
 msgstr ""
 
 #: ../plugin/controllers/models/info.py:654
+#, fuzzy
 msgid "W"
-msgstr "W"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:224
+#, fuzzy
 msgid "Waiting for answer ..."
-msgstr "Esperant reposta..."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:239
 #, fuzzy
 msgid "Wake Up"
-msgstr "Despertar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:426
+#, fuzzy
 msgid "Wakeup"
-msgstr "Despertar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:285
+#, fuzzy
 msgid "Warning"
-msgstr "Advertència"
+msgstr ""
 
 #. Wednesday
 #: ../plugin/controllers/i18n.py:40
+#, fuzzy
 msgid "We"
-msgstr "Dimx"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:492
+#, fuzzy
 msgid "Web TV"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:49 ../plugin/controllers/models/movies.py:55
 #: ../plugin/controllers/models/timers.py:44
+#, fuzzy
 msgid "Wed"
-msgstr "Dimx"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:56
+#, fuzzy
 msgid "Wednesday"
-msgstr "Dimecres"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:347
+#, fuzzy
 msgid "Weekly (Monday)"
-msgstr "Setmanal (Dilluns)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:346
+#, fuzzy
 msgid "Weekly (Sunday)"
-msgstr "Setmanal (Diumenge)"
+msgstr ""
 
 #: ../plugin/plugin.py:176
+#, fuzzy
 msgid "Without auth only local access is allowed!"
-msgstr "Sense autorització, només es permet l'accès local!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:415
+#, fuzzy
 msgid "Wizard"
-msgstr "Assistent"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:511
+#, fuzzy
 msgid "Would you like to save your changes?"
 msgstr ""
 
 #: ../plugin/controllers/web.py:242
+#, fuzzy
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr "Format de paràmetres incorrecte 'set=%s'. Utilitza set=set15"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:558
+#, fuzzy
 msgid "YYYY-MM-DD"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:514 ../plugin/controllers/i18n.py:531
+#, fuzzy
 msgid "Yes"
-msgstr "Si"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:286
+#, fuzzy
 msgid "Yes/No"
-msgstr "Si/No"
+msgstr ""
 
 #: ../plugin/controllers/models/movies.py:60
 #: ../plugin/controllers/models/timers.py:51
+#, fuzzy
 msgid "Yesterday"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:287
+#, fuzzy
 msgid "Zap"
-msgstr "Canviar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:466
+#, fuzzy
 msgid "Zap & Record"
-msgstr "Gravar+Fer zàping"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:288
+#, fuzzy
 msgid "Zap before streaming"
-msgstr "canviar abans del stream"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:289
+#, fuzzy
 msgid "Zap to"
-msgstr "Canviar a"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:290
+#, fuzzy
 msgid "Zapped to"
-msgstr "Canviat a"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:392
 #, fuzzy
 msgid "any time"
-msgstr "Afegir Gravació"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:335
+#, fuzzy
 msgid "auto"
-msgstr "automàtic"
+msgstr ""
 
 #: ../plugin/plugin.py:134
+#, fuzzy
 msgid "box_ip"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:318
 #, fuzzy
 msgid "case-insensitive"
-msgstr "Recerca estricta"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:317
 #, fuzzy
 msgid "case-sensitive"
-msgstr "Recerca estricta"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:576
+#, fuzzy
 msgid "descramble and record ecm"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:369
+#, fuzzy
 msgid "description contains"
-msgstr "a la descripció"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:305
 #, fuzzy
 msgid "description match"
-msgstr "Descripció"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:116
+#, fuzzy
 msgid "disabled"
-msgstr "deshabilitat"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:336
+#, fuzzy
 msgid "do nothing"
-msgstr "no fer res"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:577
+#, fuzzy
 msgid "don't descramble, record ecm"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:477
+#, fuzzy
 msgid "error! Loading Page"
-msgstr "error! Carregant pàgina"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:304
+#, fuzzy
 msgid "exact title match"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:314
+#, fuzzy
 msgid "favourite desc match"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:140
+#, fuzzy
 msgid "finished"
-msgstr "acabat"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:338
+#, fuzzy
 msgid "go to deep standby"
-msgstr "anar a repòs profund"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:337
+#, fuzzy
 msgid "go to standby"
-msgstr "anar a repòs"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:33
+#, fuzzy
 msgid "hour"
 msgstr ""
 
@@ -2595,178 +3143,216 @@ msgstr ""
 #: ../plugin/controllers/models/movies.py:283
 #: ../plugin/controllers/models/movies.py:413
 #: ../plugin/controllers/models/movies.py:841
+#, fuzzy
 msgid "kB"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:165
+#, fuzzy
 msgid "loading"
-msgstr "carregant"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:78
 #: ../plugin/controllers/models/info.py:97
+#, fuzzy
 msgid "manual/disabled"
-msgstr "manual/deshabilitat"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:171
+#, fuzzy
 msgid "mins"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:33
 #, fuzzy
 msgid "minute"
-msgstr "Minut"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:180
+#, fuzzy
 msgid "no description available"
-msgstr "no hi ha descripció disponible"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:154 ../plugin/controllers/models/info.py:189
+#, fuzzy
 msgid "none/IPv4-only network"
-msgstr "no/IPv4-només xarxa"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:575
+#, fuzzy
 msgid "normal"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:371
+#, fuzzy
 msgid "on day"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:370
+#, fuzzy
 msgid "on weekday"
-msgstr "de Dilluns a Divendres"
+msgstr ""
 
 #. Vad nu det här kan vara bra för?
 #: ../plugin/controllers/BouquetEditor.py:87
+#, fuzzy
 msgid "one two three four unknown command"
-msgstr "un dos tres quatre ordre desconeguda"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:303
+#, fuzzy
 msgid "partial title match"
 msgstr ""
 
 #: ../plugin/controllers/models/info.py:463
+#, fuzzy
 msgid "r/o"
 msgstr ""
 
 #: ../plugin/controllers/models/info.py:459
+#, fuzzy
 msgid "r/w"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:320
+#, fuzzy
 msgid "record"
-msgstr "gravar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:315
+#, fuzzy
 msgid "regex match (experimental)"
 msgstr ""
 
 #: ../plugin/controllers/models/movies.py:484
+#, fuzzy
 msgid "remove"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:211
+#, fuzzy
 msgid "running"
-msgstr "funcionant"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:222
+#, fuzzy
 msgid "seconds"
-msgstr "segons"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:359
+#, fuzzy
 msgid "select bouquets"
-msgstr "sel·lecionar llistes"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:358
+#, fuzzy
 msgid "select channels"
-msgstr "sel·leccionar canals"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:356
+#, fuzzy
 msgid "select tags"
-msgstr "sel·leccionar etiquetes"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:368
+#, fuzzy
 msgid "short description contains"
-msgstr "a la descripció curta"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:310 ../plugin/controllers/i18n.py:311
 #, fuzzy
 msgid "short description match"
-msgstr "coincidència en descripció curta"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:334
+#, fuzzy
 msgid "standard"
-msgstr "estàndar"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:74
 #: ../plugin/controllers/models/info.py:86
 #: ../plugin/controllers/models/info.py:93
+#, fuzzy
 msgid "static"
-msgstr "estàtic"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:250
+#, fuzzy
 msgid "this service is protected by a parental control pin"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:367
+#, fuzzy
 msgid "title contains"
-msgstr "al Títul"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:313
+#, fuzzy
 msgid "title ends with"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:306 ../plugin/controllers/i18n.py:307
 #, fuzzy
 msgid "title or description match"
-msgstr "coincidència en títul o descripció"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:308 ../plugin/controllers/i18n.py:309
 #, fuzzy
 msgid "title or short description match"
-msgstr "coincidència en títul o descripció curta"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:312
+#, fuzzy
 msgid "title starts with"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:261
+#, fuzzy
 msgid "transcoded"
-msgstr "transcodificat"
+msgstr ""
 
 #: ../plugin/controllers/web.py:716
+#, fuzzy
 msgid "type %s is not a number"
-msgstr "El tipus %s no és un número"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:102
 #: ../plugin/controllers/models/info.py:119
+#, fuzzy
 msgid "unknown"
-msgstr "desconegut"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:497
+#, fuzzy
 msgid "using"
-msgstr "utilitzant"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:465
+#, fuzzy
 msgid "via"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:284
+#, fuzzy
 msgid "waiting"
-msgstr "esperant"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:373
+#, fuzzy
 msgid "weekday"
-msgstr "Díes laborables"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:372
+#, fuzzy
 msgid "weekend"
-msgstr "Cap de setmana"
+msgstr ""
 
 #: ../plugin/controllers/ipkg.py:315
+#, fuzzy
 msgid "wrong filetype"
-msgstr "Tipus d'arxiu erroni"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:321
+#, fuzzy
 msgid "zap"
-msgstr "canviar"
+msgstr ""
