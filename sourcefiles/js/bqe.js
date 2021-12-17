@@ -118,7 +118,7 @@
 				if (self.Mode === 0) {
 					r = '1:7:1:0:0:0:0:0:0:0:(type == 1) || (type == 17) || (type == 195) || (type == 25) || (type == 22) || (type == 31) || (type == 211) ';
 				} else {
-					r = '1:7:2:0:0:0:0:0:0:0:(type == 2) ';
+					r = '1:7:2:0:0:0:0:0:0:0:(type == 2) || (type == 10) ';
 				}
 				if (type === 0) {
 					r += 'FROM BOUQUET "bouquets.';
