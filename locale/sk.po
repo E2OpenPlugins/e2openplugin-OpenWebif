@@ -295,7 +295,6 @@ msgstr "AutoPoll"
 msgid "AutoTimer Edit"
 msgstr "Upraviť autočasovač"
 
-# New Autotimer Setting Windows name (not enabled to transfer atm)
 #: ../plugin/controllers/i18n.py:396
 msgid "AutoTimer Settings"
 msgstr "Nastavenia automatického časovača"

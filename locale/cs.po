@@ -294,7 +294,6 @@ msgstr "Automatická kontrola"
 msgid "AutoTimer Edit"
 msgstr "Upravit AutoTimer"
 
-# New Autotimer Setting Windows name (not enabled to transfer atm)
 #: ../plugin/controllers/i18n.py:396
 msgid "AutoTimer Settings"
 msgstr "Autotimer - nastavení"

@@ -228,7 +228,6 @@ msgstr ""
 msgid "Any service/recording"
 msgstr "Valfri distributör/inspelning"
 
-# Lämnas oöversatt t.v.
 #: ../plugin/controllers/i18n.py:468
 msgid "Apid"
 msgstr ""
@@ -479,7 +478,6 @@ msgstr "Teckenkodning av EPG-data"
 msgid "Chipset"
 msgstr "Chipset"
 
-# There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:99
 msgid "Cleanup Timers"
 msgstr "Rensa timer"
@@ -1461,7 +1459,6 @@ msgstr "Hos valfri distributör"
 msgid "On same service"
 msgstr "Hos samma distributör"
 
-# Lämnas oöversatt t.v.
 #: ../plugin/controllers/i18n.py:472
 msgid "Onid"
 msgstr ""
@@ -1482,7 +1479,6 @@ msgstr ""
 msgid "Oops..."
 msgstr ""
 
-# The translation could have been sharper but as it has to fit in it’s frame this may be an acceptable compromise. I would have prefered: "Open Source webbgränssnitt för Linuxbaserade digitalboxar"...
 #: ../plugin/controllers/i18n.py:188
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Open Source webbstöd för Linux-set-top-boxar"
@@ -1518,7 +1514,6 @@ msgstr "OpenWebif URL:"
 msgid "Orbital Position"
 msgstr "Omloppsbanans position"
 
-# One extra space inserted in front for better readability in context.
 #: ../plugin/controllers/i18n.py:322
 msgid "Override found with alternative service"
 msgstr " Använd vid behov samma kanal från en alternativ distributör"
@@ -1540,7 +1535,6 @@ msgstr "Föräldrakontroll är inte aktiverat."
 msgid "Parse AutoTimer"
 msgstr "Starta en Autotimeranalys efter EPG uppdateringar"
 
-# Lämnas oöversatt t.v.
 #: ../plugin/controllers/i18n.py:470
 msgid "Pcrpid"
 msgstr ""
@@ -1578,7 +1572,6 @@ msgstr "Spellista"
 msgid "Playlist format"
 msgstr "Spellista"
 
-# Lämnas oöversatt t.v.
 #: ../plugin/controllers/i18n.py:467
 msgid "Pmtpid"
 msgstr ""
@@ -1702,7 +1695,6 @@ msgstr "Återställ antalet"
 msgid "Reset count"
 msgstr "Återställ antalet"
 
-# Have to use "GUI" because of limited space. I would prefere "Användargränssnitt" if space were without limits.
 #: ../plugin/controllers/i18n.py:210
 msgid "Restart GUI"
 msgstr "Starta om GUI"
@@ -1818,7 +1810,6 @@ msgstr "Skicka ett meddelande"
 msgid "September"
 msgstr "September"
 
-# Översätts ofta till Leverantör i stället.
 #: ../plugin/controllers/i18n.py:226
 msgid "Service"
 msgstr "Distributör"
@@ -1945,7 +1936,6 @@ msgstr "Visa programikon i kanallistan"
 msgid "Shutdown"
 msgstr "Stäng av"
 
-# Lämnas oöversatt t.v.
 #: ../plugin/controllers/i18n.py:473
 msgid "Sid"
 msgstr ""
@@ -2014,7 +2004,6 @@ msgstr ""
 msgid "Spinner"
 msgstr "Vänta-ikon"
 
-# Lämnas oöversatt t.v.
 #: ../plugin/controllers/i18n.py:474
 msgid "Sref"
 msgstr ""
@@ -2149,7 +2138,6 @@ msgstr "Parametern '%s' kan inte vara tom "
 msgid "The parameter 'command' must be a number"
 msgstr "Parametern 'command' måste vara numerisk"
 
-# The word "framgångsrikt" to get a string to end the sentence.
 #: ../plugin/controllers/models/timers.py:548
 #, python-format
 msgid "The timer '%s' has been %s successfully"
@@ -2253,7 +2241,6 @@ msgstr "Timerlistan har sparats"
 msgid "Timerlist"
 msgstr "Timerlista"
 
-# There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:258 ../plugin/controllers/i18n.py:380
 msgid "Timers"
 msgstr "Timer"
@@ -2283,7 +2270,6 @@ msgstr "Översättning till spanska"
 msgid "Try guessing"
 msgstr "Försök att gissa"
 
-# Lämnas oöversatt t.v.
 #: ../plugin/controllers/i18n.py:471
 msgid "Tsid"
 msgstr ""
@@ -2458,7 +2444,6 @@ msgstr "Volym"
 msgid "Volume Control"
 msgstr "Volymkontroll"
 
-# Lämnas oöversatt t.v.
 #: ../plugin/controllers/i18n.py:469
 msgid "Vpid"
 msgstr ""
@@ -2685,7 +2670,6 @@ msgstr ""
 msgid "on weekday"
 msgstr "på veckodagar"
 
-# Vad nu det här kan vara bra för?
 #: ../plugin/controllers/BouquetEditor.py:87
 msgid "one two three four unknown command"
 msgstr "ett två tre fyra okänt kommando"
@@ -2694,12 +2678,10 @@ msgstr "ett två tre fyra okänt kommando"
 msgid "partial title match"
 msgstr ""
 
-# Lämnas oöversatt t.v. eftersom begreppen kan vara mer kända på engelska än svenska. Står för behörigheten: Enbart läsbehörighet
 #: ../plugin/controllers/models/info.py:463
 msgid "r/o"
 msgstr ""
 
-# Lämnas oöversatt t.v. eftersom begreppen kan vara mer kända på engelska än svenska. Står för behörigheten: Läs- och skriv-behörighet
 #: ../plugin/controllers/models/info.py:459
 msgid "r/w"
 msgstr ""
@@ -2799,7 +2781,6 @@ msgstr "okänd"
 msgid "using"
 msgstr "användning"
 
-# Lämnas oöversatt t.v.
 #: ../plugin/controllers/i18n.py:465
 msgid "via"
 msgstr ""

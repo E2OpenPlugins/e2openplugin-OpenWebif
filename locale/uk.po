@@ -297,7 +297,6 @@ msgstr "Автоопитування"
 msgid "AutoTimer Edit"
 msgstr "Редактор Автотаймеру"
 
-# New Autotimer Setting Windows name (not enabled to transfer atm)
 #: ../plugin/controllers/i18n.py:396
 msgid "AutoTimer Settings"
 msgstr "Налаштування Автотаймера"

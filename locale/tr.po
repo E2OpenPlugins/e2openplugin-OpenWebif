@@ -886,7 +886,6 @@ msgstr "Firmware sürümü"
 msgid "Force"
 msgstr "Zorla"
 
-# Cuma
 #: ../plugin/controllers/i18n.py:42
 msgid "Fr"
 msgstr "Cum"
@@ -1703,7 +1702,6 @@ msgstr "SLAAC"
 msgid "SNR"
 msgstr "SNR"
 
-# Saturday
 #: ../plugin/controllers/i18n.py:43
 msgid "Sa"
 msgstr "Cmt"
@@ -2031,7 +2029,6 @@ msgstr "İstemci Akışı"
 msgid "Streaming port"
 msgstr "İstemci Akışı"
 
-# Sunday
 #: ../plugin/controllers/i18n.py:44
 msgid "Su"
 msgstr "Pzr"
@@ -2107,7 +2104,6 @@ msgstr "Karasal"
 msgid "Text"
 msgstr "Metin"
 
-# Thursday
 #: ../plugin/controllers/i18n.py:41
 msgid "Th"
 msgstr "Prş"
@@ -2257,7 +2253,6 @@ msgstr "Tahmin Etmeyi Deneyin"
 msgid "Tsid"
 msgstr "Tsid"
 
-# Tuesday
 #: ../plugin/controllers/i18n.py:39
 msgid "Tu"
 msgstr "Sal"
@@ -2452,7 +2447,6 @@ msgstr "Uyandır"
 msgid "Warning"
 msgstr "Uyarı"
 
-# Wednesday
 #: ../plugin/controllers/i18n.py:40
 msgid "We"
 msgstr "Çrş"
