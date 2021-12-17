@@ -16,18 +16,18 @@ msgstr ""
 "X-Poedit-SearchPath-0: ../plugin\n"
 
 #: ../plugin/controllers/models/timers.py:61
-#, python-format
+#, fuzzy
 msgid "%02d.%02d."
 msgstr ""
 
 #: ../plugin/controllers/models/timers.py:63
-#, python-format
+#, fuzzy
 msgid "%02d.%02d.%d"
 msgstr ""
 
 #: ../plugin/controllers/models/movies.py:70
 #: ../plugin/controllers/models/timers.py:65
-#, python-format
+#, fuzzy
 msgid "%02d:%02d"
 msgstr ""
 
@@ -35,6 +35,7 @@ msgstr ""
 #: ../plugin/controllers/models/services.py:789
 #: ../plugin/controllers/models/services.py:1020
 #: ../plugin/controllers/models/services.py:1066
+#, fuzzy
 msgid "%d.%m.%Y"
 msgstr ""
 
@@ -44,33 +45,32 @@ msgstr ""
 #: ../plugin/controllers/models/timers.py:291
 #: ../plugin/controllers/models/timers.py:473
 #: ../plugin/controllers/models/timers.py:474
+#, fuzzy
 msgid "%d.%m.%Y %H:%M"
 msgstr ""
 
 #: ../plugin/controllers/models/movies.py:66
 #: ../plugin/controllers/models/timers.py:59
-#, python-format
+#, fuzzy
 msgid "%s %02d.%02d."
 msgstr ""
 
 #: ../plugin/controllers/models/movies.py:68
-#, python-format
+#, fuzzy
 msgid "%s %02d.%02d.%d"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:549
-#, python-format
 msgid "%s %s is locked."
 msgstr "%s %s ist gesperrt"
 
 #: ../plugin/controllers/i18n.py:129
-#, python-format
+#, fuzzy
 msgid "%s / %s"
 msgstr ""
 
 #: ../plugin/controllers/models/info.py:306
 #: ../plugin/controllers/models/info.py:430
-#, python-format
 msgid "%s free / %s total"
 msgstr "%s frei / %s insgesamt"
 
@@ -116,6 +116,7 @@ msgid "Add Bouquet"
 msgstr "Bouquet hinzufügen"
 
 #: ../plugin/controllers/i18n.py:450
+#, fuzzy
 msgid "Add IPTV/URL"
 msgstr ""
 
@@ -161,15 +162,16 @@ msgid "Add similar on conflict"
 msgstr "Bei Konflikt ähnliche Sendungen zufügen"
 
 #: ../plugin/controllers/i18n.py:360
+#, fuzzy
 msgid "Add tags to recordings"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:466
-#, python-format
 msgid "Added %s to alternative service %s."
 msgstr "%s zu Alternativen Service %s hinzugefügt."
 
 #: ../plugin/controllers/i18n.py:563
+#, fuzzy
 msgid "Adjust recording time to real event time"
 msgstr ""
 
@@ -203,7 +205,6 @@ msgid "Allow duplicates"
 msgstr "Erlaube Duplikate"
 
 #: ../plugin/controllers/BouquetEditor.py:452
-#, python-format
 msgid "Alternative %s created failed."
 msgstr "Alternative %s konnte nicht erstellt werden."
 
@@ -220,6 +221,7 @@ msgid "Answer is YES!"
 msgstr "Antwort lautet JA!"
 
 #: ../plugin/controllers/i18n.py:391
+#, fuzzy
 msgid "Any day"
 msgstr ""
 
@@ -297,7 +299,7 @@ msgstr "AutoPoll"
 msgid "AutoTimer Edit"
 msgstr "AutoTimer bearbeiten"
 
-# New Autotimer Setting Windows name (not enabled to transfer atm)
+#. New Autotimer Setting Windows name (not enabled to transfer atm)
 #: ../plugin/controllers/i18n.py:396
 msgid "AutoTimer Settings"
 msgstr "AutoTimer-Einstellungen"
@@ -344,47 +346,38 @@ msgid "Bookmarks"
 msgstr "Bookmarks"
 
 #: ../plugin/controllers/BouquetEditor.py:128
-#, python-format
 msgid "Bouquet %s already exists."
 msgstr "Bouquet %s existiert schon."
 
 #: ../plugin/controllers/BouquetEditor.py:219
-#, python-format
 msgid "Bouquet %s can not be moved."
 msgstr "Bouquet %s kann nicht entfernt werden."
 
 #: ../plugin/controllers/BouquetEditor.py:123
-#, python-format
 msgid "Bouquet %s created."
 msgstr "Bouquet %s erstellt."
 
 #: ../plugin/controllers/BouquetEditor.py:192
-#, python-format
 msgid "Bouquet %s deleted."
 msgstr "Bouquet %s gelöscht."
 
 #: ../plugin/controllers/BouquetEditor.py:547
-#, python-format
 msgid "Bouquet %s is locked."
 msgstr "Bouquet %s ist gesperrt."
 
 #: ../plugin/controllers/BouquetEditor.py:555
-#, python-format
 msgid "Bouquet %s is unlocked."
 msgstr "Bouquet %s ist entsperrt."
 
 #: ../plugin/controllers/BouquetEditor.py:217
-#, python-format
 msgid "Bouquet %s moved."
 msgstr "Bouquet %s verschoben."
 
 #: ../plugin/controllers/BouquetEditor.py:187
-#, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
 msgstr "Bouquet %s entfernen fehlgeschlagen, Service-Referenz oder Liste ist ungültig."
 
 #: ../plugin/controllers/BouquetEditor.py:185
-#, python-format
 msgid "Bouquet %s removed failed."
 msgstr "Bouquet %s entfernen fehlgeschlagen."
 
@@ -478,6 +471,7 @@ msgstr "Zeichenkodierung der EPG Daten"
 msgid "Chipset"
 msgstr "Chipsatz"
 
+#. There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:99
 msgid "Cleanup Timers"
 msgstr "Timer aufräumen"
@@ -492,11 +486,11 @@ msgid "Common Settings"
 msgstr "Einstellungen"
 
 #: ../plugin/controllers/i18n.py:567
+#, fuzzy
 msgid "Config"
 msgstr ""
 
 #: ../plugin/controllers/models/timers.py:296
-#, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Timerkonflikt(e) gefunden! %s"
 
@@ -509,12 +503,10 @@ msgid "Control"
 msgstr "Steuerung"
 
 #: ../plugin/controllers/models/timers.py:339
-#, python-format
 msgid "Could not add timer '%s'!"
 msgstr "Timer '%s' konnte nicht zugefügt werden!"
 
 #: ../plugin/controllers/models/timers.py:485
-#, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Timer '%s' mit angegebener Start-/Endzeit nicht gefunden!"
 
@@ -548,14 +540,17 @@ msgid "Date"
 msgstr "Datum"
 
 #: ../plugin/controllers/i18n.py:553
+#, fuzzy
 msgid "Date (newest)"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:552
+#, fuzzy
 msgid "Date (oldest)"
 msgstr ""
 
 #: ../plugin/plugin.py:185
+#, fuzzy
 msgid "Debug - Display Tracebacks in browser"
 msgstr ""
 
@@ -597,11 +592,9 @@ msgid "Delete Timer"
 msgstr "Timer löschen"
 
 #: ../plugin/controllers/models/movies.py:490
-msgid ""
-"Delete failed, because there is no movie trash !\n"
-"Disable movie trash in configuration to delete this item"
+msgid "Delete failed, because there is no movie trash !\nDisable movie trash in configuration to delete this item"
 msgstr ""
-"Löschen fehlgeschlagen weil kein Movie-Papierkorb vorhanden ist!\n"
+"Löschen fehlgeschlagen weil kein Movie-Papierkorb vorhanden ist!"
 "Deaktivieren Sie den Movie-Papierkorb in der Konfiguration um dennoch zu löschen."
 
 #: ../plugin/controllers/i18n.py:516
@@ -647,6 +640,7 @@ msgid "Dolby"
 msgstr "Dolby"
 
 #: ../plugin/controllers/i18n.py:564
+#, fuzzy
 msgid "Don't create timer when movie exists in database"
 msgstr ""
 
@@ -798,10 +792,12 @@ msgid "Enter a name for this AutoTimer"
 msgstr "Neuen Namen des Markers eingeben"
 
 #: ../plugin/controllers/i18n.py:505
+#, fuzzy
 msgid "Enter path"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:386
+#, fuzzy
 msgid "Enter the text to find in the EPG"
 msgstr ""
 
@@ -818,7 +814,6 @@ msgid "Error upload File"
 msgstr "Fehler beim Upload"
 
 #: ../plugin/controllers/BouquetEditor.py:592
-#, python-format
 msgid "Error while preparing backup file, %s does not exists."
 msgstr "Fehler bei der Vorbereitung zum Backup, %s existiert nicht."
 
@@ -831,17 +826,14 @@ msgid "Error writing File"
 msgstr "Fehler beim Schreiben"
 
 #: ../plugin/controllers/BouquetEditor.py:653
-#, python-format
 msgid "Error, %s does not exists, restore is not possible..."
 msgstr "Fehler: %s existiert nicht. Wiederherstellung nicht möglich."
 
 #: ../plugin/controllers/BouquetEditor.py:651
-#, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
 msgstr "Fehler: %s wurde nicht mit WebBouquetEditor erstellt."
 
 #: ../plugin/controllers/BouquetEditor.py:194
-#, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
 msgstr "Fehler: Bouquet %s kann nicht gelöscht werden, OSError."
 
@@ -894,6 +886,7 @@ msgstr "Firmware-Version"
 msgid "Force"
 msgstr "Erzwingen"
 
+#. Cuma
 #: ../plugin/controllers/i18n.py:42
 msgid "Fr"
 msgstr "Fr"
@@ -954,6 +947,7 @@ msgid "Get mutable list for new created bouquet failed!"
 msgstr "Das Erhalten der Variablen Liste für das neu erstellte Bouquet fehlgeschlagen!"
 
 #: ../plugin/controllers/i18n.py:557
+#, fuzzy
 msgid "HH:MM"
 msgstr ""
 
@@ -982,6 +976,7 @@ msgid "Hour"
 msgstr "Stunde"
 
 #: ../plugin/controllers/i18n.py:456
+#, fuzzy
 msgid "IPTV / URL name"
 msgstr ""
 
@@ -1057,7 +1052,7 @@ msgid "Internal error!"
 msgstr "Interner Fehler!"
 
 #: ../plugin/controllers/i18n.py:398
-#, fuzzy, python-format
+#, fuzzy
 msgid "Interval (in %s)"
 msgstr "Intervall (in Std.)"
 
@@ -1094,6 +1089,7 @@ msgid "Kernel"
 msgstr "Kernel"
 
 #: ../plugin/controllers/i18n.py:163
+#, fuzzy
 msgid "LCD"
 msgstr ""
 
@@ -1106,6 +1102,7 @@ msgid "LICENSE"
 msgstr "Lizenz"
 
 #: ../plugin/controllers/i18n.py:383
+#, fuzzy
 msgid "Label series"
 msgstr ""
 
@@ -1201,7 +1198,6 @@ msgid "Minute"
 msgstr "Minute"
 
 #: ../plugin/controllers/web.py:85
-#, python-format
 msgid "Missing mandatory parameter '%s'"
 msgstr "Der benötigte Parameter '%s' fehlt"
 
@@ -1275,10 +1271,12 @@ msgid "Name"
 msgstr "Name"
 
 #: ../plugin/controllers/i18n.py:550
+#, fuzzy
 msgid "Name (a-z)"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:551
+#, fuzzy
 msgid "Name (z-a)"
 msgstr ""
 
@@ -1422,6 +1420,7 @@ msgid "Now"
 msgstr "Jetzt"
 
 #: ../plugin/controllers/i18n.py:522
+#, fuzzy
 msgid "Now/Next Columns"
 msgstr ""
 
@@ -1474,13 +1473,16 @@ msgid "Only match during timespan"
 msgstr "Suche nur innerhalb einer Zeitspanne"
 
 #: ../plugin/controllers/i18n.py:136
+#, fuzzy
 msgid "Oops, no results matched your search"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:510
+#, fuzzy
 msgid "Oops..."
 msgstr ""
 
+#. The translation could have been sharper but as it has to fit in it’s frame this may be an acceptable compromise. I would have prefered: "Open Source webbgränssnitt för Linuxbaserade digitalboxar"...
 #: ../plugin/controllers/i18n.py:188
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Quelloffenes Webinterface für Linux-Receiver"
@@ -1514,8 +1516,9 @@ msgstr "OpenWebif-URL:"
 #: ../plugin/controllers/i18n.py:475
 #: ../plugin/controllers/models/services.py:276
 msgid "Orbital Position"
-msgstr ""
+msgstr "Orbital Position"
 
+#. One extra space inserted in front for better readability in context.
 #: ../plugin/controllers/i18n.py:322
 msgid "Override found with alternative service"
 msgstr "Sendung durch Alternative ersetzen"
@@ -1562,6 +1565,7 @@ msgid "Playback"
 msgstr "Abspielen"
 
 #: ../plugin/plugin.py:184
+#, fuzzy
 msgid "Playback IPTV Streams in browser"
 msgstr ""
 
@@ -1588,7 +1592,7 @@ msgstr "PowerTimer-Funktion nicht verfügbar"
 
 #: ../plugin/controllers/i18n.py:389
 msgid "Preview"
-msgstr ""
+msgstr "Vorschau"
 
 #: ../plugin/controllers/i18n.py:498
 msgid "Primetimes"
@@ -1608,7 +1612,7 @@ msgstr "Anbieter"
 
 #: ../plugin/controllers/i18n.py:578
 msgid "REC"
-msgstr ""
+msgstr "REC"
 
 #: ../plugin/controllers/i18n.py:200
 msgid "Radio"
@@ -1697,6 +1701,7 @@ msgstr "Setze Zähler zurück"
 msgid "Reset count"
 msgstr "Setze Zähler zurück"
 
+#. Have to use "GUI" because of limited space. I would prefere "Användargränssnitt" if space were without limits.
 #: ../plugin/controllers/i18n.py:210
 msgid "Restart GUI"
 msgstr "GUI neustarten"
@@ -1722,6 +1727,7 @@ msgstr "SL-AAC"
 msgid "SNR"
 msgstr "SNR"
 
+#. Saturday
 #: ../plugin/controllers/i18n.py:43
 msgid "Sa"
 msgstr "Sa"
@@ -1779,6 +1785,7 @@ msgid "Search TV Guide UK"
 msgstr "Zeitschrift"
 
 #: ../plugin/controllers/i18n.py:446
+#, fuzzy
 msgid "Search by name, sd / hd / uhd, or provider"
 msgstr ""
 
@@ -1797,6 +1804,7 @@ msgid "Select IPK file for upload"
 msgstr "Wählen Sie die 'IPK' Datei zum Hochladen"
 
 #: ../plugin/controllers/i18n.py:555
+#, fuzzy
 msgid "Select..."
 msgstr ""
 
@@ -1812,47 +1820,40 @@ msgstr "Nachricht senden"
 msgid "September"
 msgstr "September"
 
+#. Översätts ofta till Leverantör i stället.
 #: ../plugin/controllers/i18n.py:226
 msgid "Service"
 msgstr "Service"
 
 #: ../plugin/controllers/BouquetEditor.py:314
-#, python-format
 msgid "Service %s added."
 msgstr "Service %s hinzugefügt."
 
 #: ../plugin/controllers/BouquetEditor.py:317
-#, python-format
 msgid "Service %s already exists in bouquet %s."
 msgstr "Service %s existiert bereits im Bouquet %s."
 
 #: ../plugin/controllers/BouquetEditor.py:249
-#, python-format
 msgid "Service %s can not be removed."
 msgstr "Service %s kann nicht entfernt werden"
 
 #: ../plugin/controllers/BouquetEditor.py:545
-#, python-format
 msgid "Service %s is locked."
 msgstr "Service %s ist gesperrt."
 
 #: ../plugin/controllers/BouquetEditor.py:553
-#, python-format
 msgid "Service %s is unlocked."
 msgstr "Service %s ist entsperrt."
 
 #: ../plugin/controllers/BouquetEditor.py:274
-#, python-format
 msgid "Service %s moved."
 msgstr "Service %s verschoben."
 
 #: ../plugin/controllers/BouquetEditor.py:248
-#, python-format
 msgid "Service %s removed from bouquet %s."
 msgstr "Service %s vom Bouquet %s entfernt."
 
 #: ../plugin/controllers/BouquetEditor.py:240
-#, python-format
 msgid "Service %s removed."
 msgstr "Service %s entfernt."
 
@@ -1894,6 +1895,7 @@ msgid "Show Full OpenWebif"
 msgstr "Desktop-Version OpenWebif"
 
 #: ../plugin/controllers/i18n.py:543
+#, fuzzy
 msgid "Show IPTV channels in selection (eg. Autotimer)"
 msgstr ""
 
@@ -1920,7 +1922,7 @@ msgstr "Im Erweiterungsmenü anzeigen"
 
 #: ../plugin/controllers/i18n.py:546
 msgid "Show picon background"
-msgstr ""
+msgstr "Zeige Piconhintergrund"
 
 #: ../plugin/controllers/i18n.py:545
 #, fuzzy
@@ -1953,6 +1955,7 @@ msgid "Site and sources"
 msgstr "Webseite und Quellcode"
 
 #: ../plugin/controllers/i18n.py:568
+#, fuzzy
 msgid "Skins"
 msgstr ""
 
@@ -1988,7 +1991,6 @@ msgstr "SleepTimer aktiviert"
 #: ../plugin/controllers/models/timers.py:949
 #: ../plugin/controllers/models/timers.py:1058
 #: ../plugin/controllers/models/timers.py:1072
-#, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "SleepTimer eingestellt auf %d Minuten"
 
@@ -2001,6 +2003,7 @@ msgid "Sorry this page is not yet implemented"
 msgstr "Entschuldigung, diese Seite existiert noch nicht"
 
 #: ../plugin/controllers/i18n.py:549
+#, fuzzy
 msgid "Sort"
 msgstr ""
 
@@ -2037,6 +2040,7 @@ msgid "Start typing..."
 msgstr "BEGINNT SCHREIBEN"
 
 #: ../plugin/controllers/i18n.py:390
+#, fuzzy
 msgid "State"
 msgstr ""
 
@@ -2054,11 +2058,13 @@ msgstr "Stream"
 msgid "Streaming port"
 msgstr "Stream"
 
+#. Sunday
 #: ../plugin/controllers/i18n.py:44
 msgid "Su"
 msgstr "So"
 
 #: ../plugin/controllers/i18n.py:554
+#, fuzzy
 msgid "Subdirectories"
 msgstr ""
 
@@ -2067,6 +2073,7 @@ msgid "Subnet mask"
 msgstr "Subnetzmaske"
 
 #: ../plugin/controllers/i18n.py:244
+#, fuzzy
 msgid "Subservices"
 msgstr ""
 
@@ -2119,7 +2126,7 @@ msgstr "Vorlagenart"
 
 #: ../plugin/controllers/base.py:405
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: ../plugin/controllers/models/services.py:391
 msgid "Terrestrial"
@@ -2129,12 +2136,12 @@ msgstr "Terrestrisch"
 msgid "Text"
 msgstr "Text"
 
+#. Thursday
 #: ../plugin/controllers/i18n.py:41
 msgid "Th"
 msgstr "Do"
 
 #: ../plugin/controllers/web.py:91 ../plugin/controllers/web.py:1568
-#, python-format
 msgid "The parameter '%s' can't be empty"
 msgstr "Der Parameter '%s' darf nicht leer sein"
 
@@ -2142,19 +2149,17 @@ msgstr "Der Parameter '%s' darf nicht leer sein"
 msgid "The parameter 'command' must be a number"
 msgstr "Der Parameter 'command' muss eine Zahl sein"
 
+#. The word "framgångsrikt" to get a string to end the sentence.
 #: ../plugin/controllers/models/timers.py:548
-#, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "Timer '%s' wurde erfolgreich %s"
 
 #: ../plugin/controllers/models/timers.py:498
 #: ../plugin/controllers/models/timers.py:504
-#, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Timer '%s' erfolgreich gelöscht"
 
 #: ../plugin/controllers/models/timers.py:540
-#, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "Der Timer '%s' ist aufgezeichnet! Nicht deaktiviert!"
 
@@ -2197,27 +2202,22 @@ msgid "Timer"
 msgstr "Timer"
 
 #: ../plugin/controllers/models/timers.py:344
-#, python-format
 msgid "Timer '%s' added"
 msgstr "Timer '%s' zugefügt"
 
 #: ../plugin/controllers/models/timers.py:534
-#, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Timer '%s' existiert bereits!"
 
 #: ../plugin/controllers/models/timers.py:460
-#, python-format
 msgid "Timer '%s' changed"
 msgstr "Timer '%s' geändert"
 
 #: ../plugin/controllers/models/timers.py:528
-#, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "Timer '%s' wegen Konflikt nicht aktiviert "
 
 #: ../plugin/controllers/models/timers.py:479
-#, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "Timer '%s' wegen Konflikt nicht gespeichert"
 
@@ -2245,6 +2245,7 @@ msgstr "Timerliste wurde gespeichert"
 msgid "Timerlist"
 msgstr "Timerliste"
 
+#. There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:258 ../plugin/controllers/i18n.py:380
 msgid "Timers"
 msgstr "Timer"
@@ -2260,13 +2261,14 @@ msgstr "Ausführung nicht vor"
 #: ../plugin/controllers/models/movies.py:58
 #: ../plugin/controllers/models/timers.py:48
 msgid "Today"
-msgstr ""
+msgstr "Heute"
 
 #: ../plugin/controllers/i18n.py:262
 msgid "Transcode"
 msgstr "Transcodieren"
 
 #: ../plugin/controllers/i18n.py:291
+#, fuzzy
 msgid "Translation to Spanish"
 msgstr ""
 
@@ -2278,6 +2280,7 @@ msgstr "Versuche zu raten"
 msgid "Tsid"
 msgstr "TSID"
 
+#. Tuesday
 #: ../plugin/controllers/i18n.py:39
 msgid "Tu"
 msgstr "Di"
@@ -2328,12 +2331,10 @@ msgid "Type"
 msgstr "Typ"
 
 #: ../plugin/controllers/web.py:247
-#, python-format
 msgid "Unknown Volume command %s"
 msgstr "Unbekannter Befehl %s für die Lautstärkesteuerung"
 
 #: ../plugin/controllers/models/timers.py:715
-#, python-format
 msgid "Unknown command: '%s'"
 msgstr "Unbekanntes Kommando: '%s'"
 
@@ -2370,6 +2371,7 @@ msgid "Uploaded Files"
 msgstr "Hochgeladene Dateien"
 
 #: ../plugin/controllers/i18n.py:544
+#, fuzzy
 msgid "Use Channelname for screenshots"
 msgstr ""
 
@@ -2379,7 +2381,7 @@ msgstr "Angepasstes Aufnahmeverzeichnis"
 
 #: ../plugin/controllers/i18n.py:561
 msgid "Use as PiP if possible"
-msgstr ""
+msgstr "Nutze PiP wenn verfügbar"
 
 #: ../plugin/controllers/i18n.py:569
 #, fuzzy
@@ -2474,6 +2476,7 @@ msgstr "Aufwecken"
 msgid "Warning"
 msgstr "Warnung"
 
+#. Wednesday
 #: ../plugin/controllers/i18n.py:40
 msgid "We"
 msgstr "Mi"
@@ -2508,15 +2511,16 @@ msgid "Wizard"
 msgstr "Assistent"
 
 #: ../plugin/controllers/i18n.py:511
+#, fuzzy
 msgid "Would you like to save your changes?"
 msgstr ""
 
 #: ../plugin/controllers/web.py:242
-#, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Falsches Parameter-Format 'set=%s'. Korrekt: set=set15 "
 
 #: ../plugin/controllers/i18n.py:558
+#, fuzzy
 msgid "YYYY-MM-DD"
 msgstr ""
 
@@ -2530,6 +2534,7 @@ msgstr "Ja/Nein"
 
 #: ../plugin/controllers/models/movies.py:60
 #: ../plugin/controllers/models/timers.py:51
+#, fuzzy
 msgid "Yesterday"
 msgstr ""
 
@@ -2563,6 +2568,7 @@ msgid "auto"
 msgstr "Automatisch"
 
 #: ../plugin/plugin.py:134
+#, fuzzy
 msgid "box_ip"
 msgstr ""
 
@@ -2577,6 +2583,7 @@ msgid "case-sensitive"
 msgstr "Genauigkeit der Suche"
 
 #: ../plugin/controllers/i18n.py:576
+#, fuzzy
 msgid "descramble and record ecm"
 msgstr ""
 
@@ -2598,6 +2605,7 @@ msgid "do nothing"
 msgstr "Nichts"
 
 #: ../plugin/controllers/i18n.py:577
+#, fuzzy
 msgid "don't descramble, record ecm"
 msgstr ""
 
@@ -2606,10 +2614,12 @@ msgid "error! Loading Page"
 msgstr "Fehler beim Laden der Seite"
 
 #: ../plugin/controllers/i18n.py:304
+#, fuzzy
 msgid "exact title match"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:314
+#, fuzzy
 msgid "favourite desc match"
 msgstr ""
 
@@ -2647,6 +2657,7 @@ msgid "manual/disabled"
 msgstr "manuell/deaktiviert"
 
 #: ../plugin/controllers/i18n.py:171
+#, fuzzy
 msgid "mins"
 msgstr ""
 
@@ -2664,10 +2675,12 @@ msgid "none/IPv4-only network"
 msgstr "keine/reines IPv4-Netzwerk"
 
 #: ../plugin/controllers/i18n.py:575
+#, fuzzy
 msgid "normal"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:371
+#, fuzzy
 msgid "on day"
 msgstr ""
 
@@ -2675,19 +2688,24 @@ msgstr ""
 msgid "on weekday"
 msgstr "an einem Wochentag"
 
+#. Vad nu det här kan vara bra för?
 #: ../plugin/controllers/BouquetEditor.py:87
+#, fuzzy
 msgid "one two three four unknown command"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:303
+#, fuzzy
 msgid "partial title match"
 msgstr ""
 
 #: ../plugin/controllers/models/info.py:463
+#, fuzzy
 msgid "r/o"
 msgstr ""
 
 #: ../plugin/controllers/models/info.py:459
+#, fuzzy
 msgid "r/w"
 msgstr ""
 
@@ -2696,6 +2714,7 @@ msgid "record"
 msgstr "Aufnehmen"
 
 #: ../plugin/controllers/i18n.py:315
+#, fuzzy
 msgid "regex match (experimental)"
 msgstr ""
 
@@ -2743,6 +2762,7 @@ msgid "static"
 msgstr "statisch"
 
 #: ../plugin/controllers/i18n.py:250
+#, fuzzy
 msgid "this service is protected by a parental control pin"
 msgstr ""
 
@@ -2751,6 +2771,7 @@ msgid "title contains"
 msgstr "im Titel"
 
 #: ../plugin/controllers/i18n.py:313
+#, fuzzy
 msgid "title ends with"
 msgstr ""
 
@@ -2765,6 +2786,7 @@ msgid "title or short description match"
 msgstr "Teil des Titels oder der Kurzbeschreibung"
 
 #: ../plugin/controllers/i18n.py:312
+#, fuzzy
 msgid "title starts with"
 msgstr ""
 
@@ -2773,7 +2795,6 @@ msgid "transcoded"
 msgstr "transkodiert"
 
 #: ../plugin/controllers/web.py:716
-#, python-format
 msgid "type %s is not a number"
 msgstr "der Typ %s ist keine Zahl"
 

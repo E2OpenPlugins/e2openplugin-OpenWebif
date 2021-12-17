@@ -16,18 +16,15 @@ msgstr ""
 "X-Poedit-SearchPath-0: ../plugin\n"
 
 #: ../plugin/controllers/models/timers.py:61
-#, python-format
 msgid "%02d.%02d."
 msgstr ""
 
 #: ../plugin/controllers/models/timers.py:63
-#, python-format
 msgid "%02d.%02d.%d"
 msgstr ""
 
 #: ../plugin/controllers/models/movies.py:70
 #: ../plugin/controllers/models/timers.py:65
-#, python-format
 msgid "%02d:%02d"
 msgstr ""
 
@@ -49,28 +46,23 @@ msgstr ""
 
 #: ../plugin/controllers/models/movies.py:66
 #: ../plugin/controllers/models/timers.py:59
-#, python-format
 msgid "%s %02d.%02d."
 msgstr ""
 
 #: ../plugin/controllers/models/movies.py:68
-#, python-format
 msgid "%s %02d.%02d.%d"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:549
-#, python-format
 msgid "%s %s is locked."
 msgstr "%s %s заблоковано."
 
 #: ../plugin/controllers/i18n.py:129
-#, python-format
 msgid "%s / %s"
 msgstr ""
 
 #: ../plugin/controllers/models/info.py:306
 #: ../plugin/controllers/models/info.py:430
-#, python-format
 msgid "%s free / %s total"
 msgstr "%s вільно / %s всього"
 
@@ -165,7 +157,6 @@ msgid "Add tags to recordings"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:466
-#, python-format
 msgid "Added %s to alternative service %s."
 msgstr "%s додано в альтернативні канали %s."
 
@@ -203,7 +194,6 @@ msgid "Allow duplicates"
 msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:452
-#, python-format
 msgid "Alternative %s created failed."
 msgstr "Не вдалося створити альтернативу %s"
 
@@ -297,7 +287,7 @@ msgstr "Автоопитування"
 msgid "AutoTimer Edit"
 msgstr "Редактор Автотаймеру"
 
-# New Autotimer Setting Windows name (not enabled to transfer atm)
+#. New Autotimer Setting Windows name (not enabled to transfer atm)
 #: ../plugin/controllers/i18n.py:396
 msgid "AutoTimer Settings"
 msgstr "Налаштування Автотаймера"
@@ -344,47 +334,38 @@ msgid "Bookmarks"
 msgstr "Закладки"
 
 #: ../plugin/controllers/BouquetEditor.py:128
-#, python-format
 msgid "Bouquet %s already exists."
 msgstr "Фаворит %s вже існує."
 
 #: ../plugin/controllers/BouquetEditor.py:219
-#, python-format
 msgid "Bouquet %s can not be moved."
 msgstr "Фаворит %s не може бути переміщений."
 
 #: ../plugin/controllers/BouquetEditor.py:123
-#, python-format
 msgid "Bouquet %s created."
 msgstr "Фаворит %s створено"
 
 #: ../plugin/controllers/BouquetEditor.py:192
-#, python-format
 msgid "Bouquet %s deleted."
 msgstr "Фаворит %s видалено."
 
 #: ../plugin/controllers/BouquetEditor.py:547
-#, python-format
 msgid "Bouquet %s is locked."
 msgstr "Фаворит %s заблоковано."
 
 #: ../plugin/controllers/BouquetEditor.py:555
-#, python-format
 msgid "Bouquet %s is unlocked."
 msgstr "Фаворит %s розблоковано."
 
 #: ../plugin/controllers/BouquetEditor.py:217
-#, python-format
 msgid "Bouquet %s moved."
 msgstr "Фаворит %s переміщено."
 
 #: ../plugin/controllers/BouquetEditor.py:187
-#, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
 msgstr "Видалення фаворита %s не вдалося, референс або змінюваний список не є дійсним."
 
 #: ../plugin/controllers/BouquetEditor.py:185
-#, python-format
 msgid "Bouquet %s removed failed."
 msgstr "Видалення фаворита %s не вдалося."
 
@@ -478,6 +459,7 @@ msgstr "Тип кодування тексту для даних EPG"
 msgid "Chipset"
 msgstr "Чіпсет"
 
+#. There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:99
 msgid "Cleanup Timers"
 msgstr "Очистити таймери"
@@ -496,7 +478,6 @@ msgid "Config"
 msgstr ""
 
 #: ../plugin/controllers/models/timers.py:296
-#, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Виявлено конфлікт таймера(ів)! %s"
 
@@ -509,12 +490,10 @@ msgid "Control"
 msgstr "Управління"
 
 #: ../plugin/controllers/models/timers.py:339
-#, python-format
 msgid "Could not add timer '%s'!"
 msgstr "Не вдалося додати таймер '%s'!"
 
 #: ../plugin/controllers/models/timers.py:485
-#, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Не вдалося знайти таймер '%s' з вказаним часом початку та закінчення!"
 
@@ -597,11 +576,9 @@ msgid "Delete Timer"
 msgstr "Видалити таймер"
 
 #: ../plugin/controllers/models/movies.py:490
-msgid ""
-"Delete failed, because there is no movie trash !\n"
-"Disable movie trash in configuration to delete this item"
+msgid "Delete failed, because there is no movie trash !\nDisable movie trash in configuration to delete this item"
 msgstr ""
-"Не вдалося видалити, оскільки нема кошика для фільмів!\n"
+"Не вдалося видалити, оскільки нема кошика для фільмів!"
 "Disable movie trash in configuration to delete this item"
 
 #: ../plugin/controllers/i18n.py:516
@@ -817,7 +794,6 @@ msgid "Error upload File"
 msgstr "Помилка завантаження файла"
 
 #: ../plugin/controllers/BouquetEditor.py:592
-#, python-format
 msgid "Error while preparing backup file, %s does not exists."
 msgstr "Помилка під час підготовки файлу резевної копії, % не існує."
 
@@ -830,17 +806,14 @@ msgid "Error writing File"
 msgstr "Помилка запису файла"
 
 #: ../plugin/controllers/BouquetEditor.py:653
-#, python-format
 msgid "Error, %s does not exists, restore is not possible..."
 msgstr "Помилка, %s не існує, відновлення не можливе..."
 
 #: ../plugin/controllers/BouquetEditor.py:651
-#, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
 msgstr "Помилка, %s створювено не редактором букетів..."
 
 #: ../plugin/controllers/BouquetEditor.py:194
-#, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
 msgstr "Помилка: Букет %s не може бути видалений, OSError."
 
@@ -893,6 +866,7 @@ msgstr "Версія ПЗ"
 msgid "Force"
 msgstr "Примусово"
 
+#. Cuma
 #: ../plugin/controllers/i18n.py:42
 msgid "Fr"
 msgstr "Пт"
@@ -1053,7 +1027,6 @@ msgid "Internal error!"
 msgstr "Внутрішня помилка!"
 
 #: ../plugin/controllers/i18n.py:398
-#, python-format
 msgid "Interval (in %s)"
 msgstr "Інтервал (в %s)"
 
@@ -1196,7 +1169,6 @@ msgid "Minute"
 msgstr "Хвилина"
 
 #: ../plugin/controllers/web.py:85
-#, python-format
 msgid "Missing mandatory parameter '%s'"
 msgstr "Відсутній обов'язковий параметр '%s'"
 
@@ -1474,6 +1446,7 @@ msgstr ""
 msgid "Oops..."
 msgstr ""
 
+#. The translation could have been sharper but as it has to fit in it’s frame this may be an acceptable compromise. I would have prefered: "Open Source webbgränssnitt för Linuxbaserade digitalboxar"...
 #: ../plugin/controllers/i18n.py:188
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Відкритий веб інтерфейс для лінукс-ресиверів"
@@ -1509,6 +1482,7 @@ msgstr "OpenWebif URL:"
 msgid "Orbital Position"
 msgstr "Орбітальна позиція"
 
+#. One extra space inserted in front for better readability in context.
 #: ../plugin/controllers/i18n.py:322
 msgid "Override found with alternative service"
 msgstr "Скасувати використання з альтернативним каналом"
@@ -1690,6 +1664,7 @@ msgstr "Скидання лічильника"
 msgid "Reset count"
 msgstr "Скидання лічильника"
 
+#. Have to use "GUI" because of limited space. I would prefere "Användargränssnitt" if space were without limits.
 #: ../plugin/controllers/i18n.py:210
 msgid "Restart GUI"
 msgstr "Рестарт GUI"
@@ -1715,6 +1690,7 @@ msgstr ""
 msgid "SNR"
 msgstr "SNR"
 
+#. Saturday
 #: ../plugin/controllers/i18n.py:43
 msgid "Sa"
 msgstr "Сб"
@@ -1804,47 +1780,40 @@ msgstr "Відправити повідомлення"
 msgid "September"
 msgstr "Вересень"
 
+#. Översätts ofta till Leverantör i stället.
 #: ../plugin/controllers/i18n.py:226
 msgid "Service"
 msgstr "Канал"
 
 #: ../plugin/controllers/BouquetEditor.py:314
-#, python-format
 msgid "Service %s added."
 msgstr "Канал %s додано."
 
 #: ../plugin/controllers/BouquetEditor.py:317
-#, python-format
 msgid "Service %s already exists in bouquet %s."
 msgstr "Канал %s вже існує в фавориті %s."
 
 #: ../plugin/controllers/BouquetEditor.py:249
-#, python-format
 msgid "Service %s can not be removed."
 msgstr "Канал %s не може бути переміщено."
 
 #: ../plugin/controllers/BouquetEditor.py:545
-#, python-format
 msgid "Service %s is locked."
 msgstr "Канал %s заблоковано."
 
 #: ../plugin/controllers/BouquetEditor.py:553
-#, python-format
 msgid "Service %s is unlocked."
 msgstr "Канал %s разблоковано."
 
 #: ../plugin/controllers/BouquetEditor.py:274
-#, python-format
 msgid "Service %s moved."
 msgstr "Канал %s переміщено."
 
 #: ../plugin/controllers/BouquetEditor.py:248
-#, python-format
 msgid "Service %s removed from bouquet %s."
 msgstr "Канал %s видалено з фавориту %s."
 
 #: ../plugin/controllers/BouquetEditor.py:240
-#, python-format
 msgid "Service %s removed."
 msgstr "Канал %s видалено."
 
@@ -1979,7 +1948,6 @@ msgstr "Таймер сну включений"
 #: ../plugin/controllers/models/timers.py:949
 #: ../plugin/controllers/models/timers.py:1058
 #: ../plugin/controllers/models/timers.py:1072
-#, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Таймер сну встановлений на %d хвилин"
 
@@ -2045,6 +2013,7 @@ msgstr "Стрім"
 msgid "Streaming port"
 msgstr "Стрім"
 
+#. Sunday
 #: ../plugin/controllers/i18n.py:44
 msgid "Su"
 msgstr "Нд"
@@ -2120,12 +2089,12 @@ msgstr "Наземний"
 msgid "Text"
 msgstr "Текст"
 
+#. Thursday
 #: ../plugin/controllers/i18n.py:41
 msgid "Th"
 msgstr "Чт"
 
 #: ../plugin/controllers/web.py:91 ../plugin/controllers/web.py:1568
-#, python-format
 msgid "The parameter '%s' can't be empty"
 msgstr "Параметр '%s' не може бути порожнім"
 
@@ -2133,19 +2102,17 @@ msgstr "Параметр '%s' не може бути порожнім"
 msgid "The parameter 'command' must be a number"
 msgstr "Параметр 'command' повинен бути чисельним"
 
+#. The word "framgångsrikt" to get a string to end the sentence.
 #: ../plugin/controllers/models/timers.py:548
-#, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "Таймер '%s' був %s успішно виконаний"
 
 #: ../plugin/controllers/models/timers.py:498
 #: ../plugin/controllers/models/timers.py:504
-#, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Не вдалося знайти таймер '%s' з заданим часом початку та закінчення!"
 
 #: ../plugin/controllers/models/timers.py:540
-#, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "Таймер '%s' зараз записується! ННе вимкнено!"
 
@@ -2188,27 +2155,22 @@ msgid "Timer"
 msgstr "Таймер"
 
 #: ../plugin/controllers/models/timers.py:344
-#, python-format
 msgid "Timer '%s' added"
 msgstr "Таймер '%s' доданий"
 
 #: ../plugin/controllers/models/timers.py:534
-#, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Таймер '%s' вже існує!"
 
 #: ../plugin/controllers/models/timers.py:460
-#, python-format
 msgid "Timer '%s' changed"
 msgstr "Таймер '%s' змінено"
 
 #: ../plugin/controllers/models/timers.py:528
-#, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "Таймер '%s' не ввімкнено через конфлікт"
 
 #: ../plugin/controllers/models/timers.py:479
-#, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "Таймер '%s' не збережено через конфлікт"
 
@@ -2236,6 +2198,7 @@ msgstr "Список таймерів збережено"
 msgid "Timerlist"
 msgstr "Список таймерів"
 
+#. There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:258 ../plugin/controllers/i18n.py:380
 msgid "Timers"
 msgstr "Таймери"
@@ -2269,6 +2232,7 @@ msgstr "Сбробувати визначити"
 msgid "Tsid"
 msgstr ""
 
+#. Tuesday
 #: ../plugin/controllers/i18n.py:39
 msgid "Tu"
 msgstr "Вт"
@@ -2319,12 +2283,10 @@ msgid "Type"
 msgstr "Тип"
 
 #: ../plugin/controllers/web.py:247
-#, python-format
 msgid "Unknown Volume command %s"
 msgstr "Невідома команда гучності %s"
 
 #: ../plugin/controllers/models/timers.py:715
-#, python-format
 msgid "Unknown command: '%s'"
 msgstr "Невідома команда: '%s'"
 
@@ -2464,6 +2426,7 @@ msgstr "Включення"
 msgid "Warning"
 msgstr "Увага"
 
+#. Wednesday
 #: ../plugin/controllers/i18n.py:40
 msgid "We"
 msgstr "Ср"
@@ -2502,7 +2465,6 @@ msgid "Would you like to save your changes?"
 msgstr ""
 
 #: ../plugin/controllers/web.py:242
-#, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Невірний формат параметру 'set=%s'. Використовуйте set=set15 "
 
@@ -2664,6 +2626,7 @@ msgstr ""
 msgid "on weekday"
 msgstr "у будні"
 
+#. Vad nu det här kan vara bra för?
 #: ../plugin/controllers/BouquetEditor.py:87
 msgid "one two three four unknown command"
 msgstr "одна, дві, три невідомі команди"
@@ -2762,7 +2725,6 @@ msgid "transcoded"
 msgstr "транскодування"
 
 #: ../plugin/controllers/web.py:716
-#, python-format
 msgid "type %s is not a number"
 msgstr "тип %s не чисельний"
 

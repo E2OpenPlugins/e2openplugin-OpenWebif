@@ -1,40 +1,38 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenWebif\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 21:02+0100\n"
-"PO-Revision-Date: 2021-12-04 17:29+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/e2openplugin-openwebif/e2openplugin-openwebif/nb_NO/>\n"
-"Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10-dev\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-SearchPath-0: ../plugin\n"
+"X-Generator: lokalise.com\n"
+"Project-Id-Version: e2openplugin-OpenWebif\n"
+"PO-Revision-Date: 2021-12-17 21:17\n"
+"Last-Translator: lokalise.com\n"
+"Language-Team: lokalise.com\n\n"
+"Language: en\n"
 
 #: ../plugin/controllers/models/timers.py:61
+#, fuzzy
 msgid "%02d.%02d."
-msgstr "%02d.%02d."
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:63
+#, fuzzy
 msgid "%02d.%02d.%d"
-msgstr "%02d.%02d.%d"
+msgstr ""
 
 #: ../plugin/controllers/models/movies.py:70
 #: ../plugin/controllers/models/timers.py:65
+#, fuzzy
 msgid "%02d:%02d"
-msgstr "%02d:%02d"
+msgstr ""
 
 #: ../plugin/controllers/models/services.py:247
 #: ../plugin/controllers/models/services.py:789
 #: ../plugin/controllers/models/services.py:1020
 #: ../plugin/controllers/models/services.py:1066
+#, fuzzy
 msgid "%d.%m.%Y"
-msgstr "%d.%m.%Y"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:199
 #: ../plugin/controllers/models/timers.py:200
@@ -42,860 +40,1054 @@ msgstr "%d.%m.%Y"
 #: ../plugin/controllers/models/timers.py:291
 #: ../plugin/controllers/models/timers.py:473
 #: ../plugin/controllers/models/timers.py:474
+#, fuzzy
 msgid "%d.%m.%Y %H:%M"
-msgstr "%H:%M %d.%m.%Y"
+msgstr ""
 
 #: ../plugin/controllers/models/movies.py:66
 #: ../plugin/controllers/models/timers.py:59
+#, fuzzy
 msgid "%s %02d.%02d."
-msgstr "%s %02d.%02d."
+msgstr ""
 
 #: ../plugin/controllers/models/movies.py:68
+#, fuzzy
 msgid "%s %02d.%02d.%d"
-msgstr "%s %02d.%02d.%d"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:549
+#, fuzzy
 msgid "%s %s is locked."
-msgstr "%s %s er låst."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:129
+#, fuzzy
 msgid "%s / %s"
-msgstr "%s/%s"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:306
 #: ../plugin/controllers/models/info.py:430
+#, fuzzy
 msgid "%s free / %s total"
-msgstr "%s ledig / %s total"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:229
+#, fuzzy
 msgid "(Press 'shift' and click to 'hold')"
-msgstr "(Shift + Klikk for langt trykk)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:394
 #, fuzzy
 msgid "(in minutes)"
-msgstr "minutt"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:461
+#, fuzzy
 msgid "A filename is required"
-msgstr "Vennligst angi et filnavn"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:517
+#, fuzzy
 msgid "A value is required"
-msgstr "Du må skrive noe!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:80
+#, fuzzy
 msgid "AGC"
-msgstr "AGC"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:75
+#, fuzzy
 msgid "About"
-msgstr "Om"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:295
+#, fuzzy
 msgid "Add"
-msgstr "Legg til"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:407
+#, fuzzy
 msgid "Add  AutoTimer  to tags"
-msgstr "Legg til auto timer i merker"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:408
+#, fuzzy
 msgid "Add AutoTimer name to tags"
-msgstr "Legg til navn som merke"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:447
+#, fuzzy
 msgid "Add Bouquet"
-msgstr "Legg til kanalliste"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:450
+#, fuzzy
 msgid "Add IPTV/URL"
-msgstr "Legg til IPTV/nettadresse"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:451
+#, fuzzy
 msgid "Add Marker"
-msgstr "Legg til bokmerke"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:452
+#, fuzzy
 msgid "Add Spacer"
-msgstr "Legg til mellomrom"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:76
+#, fuzzy
 msgid "Add a timer"
-msgstr "Legg til timer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:78
+#, fuzzy
 msgid "Add a zap timer"
-msgstr "Legg til zap timer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:77
+#, fuzzy
 msgid "Add an AutoTimer"
-msgstr "Legg til auto timer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:444
+#, fuzzy
 msgid "Add channel(s) as alternate"
-msgstr "Legg til kanal(er) som alternativ"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:387
 #, fuzzy
 msgid "Add filters"
-msgstr "Legg til timer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:443
+#, fuzzy
 msgid "Add selection to bouquet"
-msgstr "Legg til kanal(er) i kanalliste"
+msgstr ""
 
 #: ../plugin/plugin.py:180
+#, fuzzy
 msgid "Add service name to stream information"
-msgstr "Legg til leverandørnavn i stream informasjon"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:404
+#, fuzzy
 msgid "Add similar on conflict"
-msgstr "Legg til lignende ved konflikt"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:360
+#, fuzzy
 msgid "Add tags to recordings"
-msgstr "Legg til etiketter på opptak"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:466
+#, fuzzy
 msgid "Added %s to alternative service %s."
-msgstr "Lagt til %s til alternativ kanal %s."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:563
+#, fuzzy
 msgid "Adjust recording time to real event time"
-msgstr "Juster opptakstidspunkt til faktisk hendelsestid"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:79 ../plugin/controllers/i18n.py:333
 #: ../plugin/controllers/i18n.py:424
+#, fuzzy
 msgid "After event"
-msgstr "Etter hendelse"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:81 ../plugin/controllers/i18n.py:412
+#, fuzzy
 msgid "All"
-msgstr "Alle"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:82
+#, fuzzy
 msgid "All Channels"
-msgstr "Alle kanaler"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:292
+#, fuzzy
 msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr "Alle filer fra denne software er åpen kildekode; du kan gjengi dette og/eller modernisere under vilkår av GNU General Public License versjon 3 som er publisert av Free Software Foundation."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:505
+#, fuzzy
 msgid "All alternative services deleted."
-msgstr "Alle alternative kanaler er slettet."
+msgstr ""
 
 #: ../plugin/plugin.py:183
+#, fuzzy
 msgid "Allow IPK Upload"
-msgstr "Tillat last opp IPK"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:562
+#, fuzzy
 msgid "Allow duplicates"
-msgstr "Tillat duplikater"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:452
+#, fuzzy
 msgid "Alternative %s created failed."
-msgstr "Alternativ %s opprettet feilet."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:429
+#, fuzzy
 msgid "Always"
-msgstr "Alltid"
+msgstr ""
 
 #: ../plugin/controllers/models/message.py:51
+#, fuzzy
 msgid "Answer is NO!"
-msgstr "Svaret er NEI!"
+msgstr ""
 
 #: ../plugin/controllers/models/message.py:51
+#, fuzzy
 msgid "Answer is YES!"
-msgstr "Svaret er JA!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:391
+#, fuzzy
 msgid "Any day"
-msgstr "Alle dager"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:353
+#, fuzzy
 msgid "Any service/recording"
-msgstr "Valgfri leverandør/opptak"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:468
+#, fuzzy
 msgid "Apid"
-msgstr "Apid"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:65
+#, fuzzy
 msgid "April"
-msgstr "April"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:455
+#, fuzzy
 msgid "Are you sure you want to delete the selected bouquet?"
-msgstr "Vil du virkelig slette kanallisten"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:454
+#, fuzzy
 msgid "Are you sure you want to delete the selected item(s)?"
-msgstr "Vil du virkelig slette valgt (e) element (er)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:382
 #, fuzzy
 msgid "Are you sure you want to delete this AutoTimer?"
-msgstr "Virkelig slette timer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:110
+#, fuzzy
 msgid "Are you sure you want to delete this recording?"
-msgstr "Virkelig slette opptaket"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:112
+#, fuzzy
 msgid "Are you sure you want to delete this timer?"
-msgstr "Virkelig slette timer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:208
+#, fuzzy
 msgid "Are you sure you want to rename this recording?"
-msgstr "Skal opptaket gis nytt navn"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:462
+#, fuzzy
 msgid "Are you sure you want to restore from file?"
-msgstr "Vil du virkelig gjenopprette fra fil"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:159
+#, fuzzy
 msgid "Are you sure you want to start recording instantly?"
-msgstr "Start direkteinnspilling nå?"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:433
+#, fuzzy
 msgid "Ask, default No"
-msgstr "Spør, standard Nei"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:432
+#, fuzzy
 msgid "Ask, default Yes"
-msgstr "Spør, standard Ja"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:69
+#, fuzzy
 msgid "August"
-msgstr "August"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:83
+#, fuzzy
 msgid "Authors"
-msgstr "Utviklere"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:84 ../plugin/controllers/i18n.py:411
+#, fuzzy
 msgid "Auto"
-msgstr "Auto"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:397
+#, fuzzy
 msgid "AutoPoll"
-msgstr "Auto overvåk"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:298
+#, fuzzy
 msgid "AutoTimer Edit"
-msgstr "Auto timer-redigering"
+msgstr ""
 
 #. New Autotimer Setting Windows name (not enabled to transfer atm)
 #: ../plugin/controllers/i18n.py:396
+#, fuzzy
 msgid "AutoTimer Settings"
-msgstr "Auto timer-innstillinger"
+msgstr ""
 
 #: ../plugin/controllers/base.py:361 ../plugin/controllers/i18n.py:297
+#, fuzzy
 msgid "AutoTimers"
-msgstr "Auto timer-liste"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:256
+#, fuzzy
 msgid "Autotimer Preview"
-msgstr "Auto timer-forhåndsvisning"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:87
+#, fuzzy
 msgid "BER"
-msgstr "BER"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:85
+#, fuzzy
 msgid "Back"
-msgstr "Tilbake"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:431
+#, fuzzy
 msgid "Background only"
-msgstr "Bare i bakgrunnen"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:86 ../plugin/controllers/i18n.py:419
+#, fuzzy
 msgid "Begin"
-msgstr "Starter"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:340
 #, fuzzy
 msgid "Begin of \"After event\" timespan"
-msgstr "Starten av \"etter program\" tidsrom"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:324
+#, fuzzy
 msgid "Beginning of timespan"
-msgstr "Starten på tidsrom"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:502
+#, fuzzy
 msgid "Bookmark"
-msgstr "Bokmerke"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:501
+#, fuzzy
 msgid "Bookmarks"
-msgstr "Bokmerker"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:128
+#, fuzzy
 msgid "Bouquet %s already exists."
-msgstr "Kanalliste %s finnes allerede."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:219
+#, fuzzy
 msgid "Bouquet %s can not be moved."
-msgstr "Kanalliste %s kan ikke flyttes."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:123
+#, fuzzy
 msgid "Bouquet %s created."
-msgstr "Kanalliste %s opprettet."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:192
+#, fuzzy
 msgid "Bouquet %s deleted."
-msgstr "Kanalliste %s slettet."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:547
+#, fuzzy
 msgid "Bouquet %s is locked."
-msgstr "Kanalliste %s er låst."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:555
+#, fuzzy
 msgid "Bouquet %s is unlocked."
-msgstr "Kanalliste %s er låst opp."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:217
+#, fuzzy
 msgid "Bouquet %s moved."
-msgstr "Kanalliste %s flyttet."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:187
+#, fuzzy
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Slette kanalliste %s feilet, referansenummer eller endringsliste er ugyldig."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:185
+#, fuzzy
 msgid "Bouquet %s removed failed."
-msgstr "Slette kanalliste %s feilet."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:228
+#, fuzzy
 msgid "Bouquet Editor"
-msgstr "Kanalliste redigerer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:457
+#, fuzzy
 msgid "Bouquet name"
-msgstr "Kanallistens navn"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:388
+#, fuzzy
 msgid "Bouquet renamed successfully."
-msgstr "Kanallisten er navngitt på nytt."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:649
+#, fuzzy
 msgid "Bouquet-settings were restored successfully"
-msgstr "Kanalliste-valgene ble gjenopprettet"
+msgstr ""
 
 #: ../plugin/controllers/base.py:364
+#, fuzzy
 msgid "BouquetEditor"
-msgstr "Kanalliste redigerer"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:130
 #: ../plugin/controllers/BouquetEditor.py:454
+#, fuzzy
 msgid "Bouquetlist is not editable!"
-msgstr "Kanalliste er ikke redigerbar!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:88
+#, fuzzy
 msgid "Bouquets"
-msgstr "Kanallister"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:90
+#, fuzzy
 msgid "Box"
-msgstr "Mottaker"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:91
+#, fuzzy
 msgid "Box Control"
-msgstr "Mottaker kontroll"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:89
+#, fuzzy
 msgid "Box Info"
-msgstr "Mottakerinfo"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:92
+#, fuzzy
 msgid "Box Uptime"
-msgstr "Mottakers oppetid"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:93
+#, fuzzy
 msgid "Brand"
-msgstr "Merke"
+msgstr ""
 
 #: ../plugin/controllers/models/services.py:389
+#, fuzzy
 msgid "Cable"
-msgstr "Kabel-TV"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:493
+#, fuzzy
 msgid "Calendar Week"
-msgstr "Uke kallender"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:94 ../plugin/plugin.py:127
+#, fuzzy
 msgid "Cancel"
-msgstr "Avbryt"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:515
+#, fuzzy
 msgid "Cancelled"
-msgstr "Avbrutt"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:95
+#, fuzzy
 msgid "Capacity"
-msgstr "Kapasitet"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:146
+#, fuzzy
 msgid "Capture screenshot"
-msgstr "Ta skjermdump"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:96
+#, fuzzy
 msgid "Channel"
-msgstr "Kanal"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:97 ../plugin/controllers/i18n.py:357
+#, fuzzy
 msgid "Channels"
-msgstr "Kanaler"
+msgstr ""
 
 #: ../plugin/plugin.py:182
+#, fuzzy
 msgid "Character encoding for EPG data"
-msgstr "Tegnkodning for EPG data"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:98 ../plugin/controllers/models/info.py:344
+#, fuzzy
 msgid "Chipset"
-msgstr "Brikkesett"
+msgstr ""
 
 #. There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:99
+#, fuzzy
 msgid "Cleanup Timers"
-msgstr "Slett timere"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:100
+#, fuzzy
 msgid "Close"
-msgstr "Lukk"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:518
+#, fuzzy
 msgid "Common Settings"
-msgstr "Vanlige innstillinger"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:567
+#, fuzzy
 msgid "Config"
-msgstr "Oppsett"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:296
+#, fuzzy
 msgid "Conflicting Timer(s) detected! %s"
-msgstr "Timer konflikt(er) oppdaget %s"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:101
+#, fuzzy
 msgid "Contributors"
-msgstr "Bidragsytere"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:102
+#, fuzzy
 msgid "Control"
-msgstr "Kontroll"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:339
+#, fuzzy
 msgid "Could not add timer '%s'!"
-msgstr "Kunne ikke legge til timer '%s'!"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:485
+#, fuzzy
 msgid "Could not find timer '%s' with given start and end time!"
-msgstr "Finner ikke timer '%s' med angitt start og sluttids tidspunkt!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:442
+#, fuzzy
 msgid "Create bouquet from selection"
-msgstr "Legg til distributør i ny kanalliste"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:103
+#, fuzzy
 msgid "Current"
-msgstr "Gjeldende"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:104
+#, fuzzy
 msgid "Current Event"
-msgstr "Gjeldende aktivitet"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:191 ../plugin/plugin.py:164
+#, fuzzy
 msgid "Custom box name"
-msgstr "Egendefinert mottakernavn"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:329
+#, fuzzy
 msgid "Custom offset"
-msgstr "Tilpass ekstra tidsrom"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:114 ../plugin/controllers/models/info.py:76
 #: ../plugin/controllers/models/info.py:95
+#, fuzzy
 msgid "DHCP"
-msgstr "DHCP"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:105
+#, fuzzy
 msgid "Date"
-msgstr "Dato"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:553
+#, fuzzy
 msgid "Date (newest)"
-msgstr "Dato (nyeste)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:552
+#, fuzzy
 msgid "Date (oldest)"
-msgstr "Dato (eldste)"
+msgstr ""
 
 #: ../plugin/plugin.py:185
+#, fuzzy
 msgid "Debug - Display Tracebacks in browser"
-msgstr "Avlusning - Vis tilbakesporing i nettleser"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:73
+#, fuzzy
 msgid "December"
-msgstr "Desember"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:106
+#, fuzzy
 msgid "Deep Standby"
-msgstr "Slå helt av"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:107
+#, fuzzy
 msgid "Default"
-msgstr "Standard"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:421
+#, fuzzy
 msgid "Delay Standby"
-msgstr "Utsett slå av"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:108 ../plugin/controllers/i18n.py:376
+#, fuzzy
 msgid "Delete"
-msgstr "Slett"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:504
+#, fuzzy
 msgid "Delete Bookmark"
-msgstr "Slett bokmerke"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:449
+#, fuzzy
 msgid "Delete Bouquet"
-msgstr "Slett kanalliste"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:109
+#, fuzzy
 msgid "Delete Recording"
-msgstr "Slett opptaket"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:111
+#, fuzzy
 msgid "Delete Timer"
-msgstr "Slett timer"
+msgstr ""
 
 #: ../plugin/controllers/models/movies.py:490
+#, fuzzy
 msgid "Delete failed, because there is no movie trash !\nDisable movie trash in configuration to delete this item"
 msgstr ""
-"Slett mislyktes, fordi det ikke er film i papirkurven!"
-"Deaktiver film i søppel i konfigurasjonen for å slette dette elementet"
 
 #: ../plugin/controllers/i18n.py:516
+#, fuzzy
 msgid "Deleted"
-msgstr "Slettet"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:113
+#, fuzzy
 msgid "Description"
-msgstr "Beskrivelse"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:129 ../plugin/controllers/i18n.py:375
 #, fuzzy
 msgid "Disable"
-msgstr "frakoblet"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:115
+#, fuzzy
 msgid "Disable Timer"
-msgstr "Deaktiver timer"
+msgstr ""
 
 #: ../plugin/plugin.py:174
+#, fuzzy
 msgid "Disable remote access for user root"
-msgstr "Koble fra fjerntilgang for bruker root"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:403
+#, fuzzy
 msgid "Disabled on conflict"
-msgstr "Frakoblet ved konflikt"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:489
+#, fuzzy
 msgid "Display Mode"
-msgstr "Display modus"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:487
+#, fuzzy
 msgid "Display duration (s)"
-msgstr "Display varighet (s)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:117
+#, fuzzy
 msgid "Distro"
-msgstr "Distribusjon"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:118
+#, fuzzy
 msgid "Dolby"
-msgstr "Dolby"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:564
+#, fuzzy
 msgid "Don't create timer when movie exists in database"
-msgstr "Ikke opprett tidsur når film finnes i database"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:119
+#, fuzzy
 msgid "Done"
-msgstr "Utført"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:120
+#, fuzzy
 msgid "Download"
-msgstr "Last ned"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:121
+#, fuzzy
 msgid "Download playlist for"
-msgstr "Last ned avspillingsliste for"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:122
+#, fuzzy
 msgid "Drivers"
-msgstr "Drivere"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:123
+#, fuzzy
 msgid "Duration"
-msgstr "Varighet"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:651
+#, fuzzy
 msgid "E"
-msgstr "Ø"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:132
+#, fuzzy
 msgid "EPG"
-msgstr "EPG"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:133
+#, fuzzy
 msgid "EPG Search"
-msgstr "EPG søk"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:301
+#, fuzzy
 msgid "EPG encoding"
-msgstr "EPG koding"
+msgstr ""
 
 #: ../plugin/controllers/base.py:368
+#, fuzzy
 msgid "EPGRefresh"
-msgstr "Oppdater EPG"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:938
+#, fuzzy
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "FEIL: kan ikke angi Tidsinnstilt avslag mens enheten er i standby-modus"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:374
 #, fuzzy
 msgid "Edit"
-msgstr "Redigerer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:580
 #, fuzzy
 msgid "Edit Recording"
-msgstr "Slett opptaket"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:124
+#, fuzzy
 msgid "Edit Timer"
-msgstr "Rediger timer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:413
+#, fuzzy
 msgid "Editor"
-msgstr "Redigerer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:128 ../plugin/controllers/i18n.py:129
 #, fuzzy
 msgid "Enable"
-msgstr "Aktivert"
+msgstr ""
 
 #: ../plugin/plugin.py:173
+#, fuzzy
 msgid "Enable Authentication for streaming"
-msgstr "Aktiver autentisering for streaming"
+msgstr ""
 
 #: ../plugin/plugin.py:166
+#, fuzzy
 msgid "Enable HTTP Authentication"
-msgstr "Aktiver HTTP autentisering"
+msgstr ""
 
 #: ../plugin/plugin.py:167
+#, fuzzy
 msgid "Enable HTTPS"
-msgstr "Aktiver HTTPS"
+msgstr ""
 
 #: ../plugin/plugin.py:170
+#, fuzzy
 msgid "Enable HTTPS Authentication"
-msgstr "Aktiver HTTPS autentisering"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:418
+#, fuzzy
 msgid "Enable Messages"
-msgstr "Aktiver beskjeder"
+msgstr ""
 
 #: ../plugin/plugin.py:178
+#, fuzzy
 msgid "Enable Parental Control"
-msgstr "Aktiver foreldrekontroll"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:125
+#, fuzzy
 msgid "Enable Timer"
-msgstr "Aktiver timer"
+msgstr ""
 
 #: ../plugin/plugin.py:177
+#, fuzzy
 msgid "Enable access from VPNs"
-msgstr "Aktiver tilgang fra VPN"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:364
+#, fuzzy
 msgid "Enable filtering"
-msgstr "Slå på filtrering"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:499
+#, fuzzy
 msgid "Enable/Disable Screenshot on key press or"
-msgstr "Vis/Fjern skjermbilde ved trykk eller"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:130 ../plugin/controllers/i18n.py:299
 #: ../plugin/controllers/i18n.py:417
+#, fuzzy
 msgid "Enabled"
-msgstr "Aktivert"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:131
+#, fuzzy
 msgid "Encrypted"
-msgstr "Kryptert"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:127 ../plugin/controllers/i18n.py:420
+#, fuzzy
 msgid "End"
-msgstr "Slutter"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:341
 #, fuzzy
 msgid "End of \"After event\" timespan"
-msgstr "Slutten av \"etter program \" tidsrom"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:325
+#, fuzzy
 msgid "End of timespan"
-msgstr "Slutten på tidsrom"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:579
 #, fuzzy
 msgid "Enter Text"
-msgstr "Skriv inn sti"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:459
+#, fuzzy
 msgid "Enter a name for the new bouquet"
-msgstr "Skriv inn nytt navn på kanallisten"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:460
+#, fuzzy
 msgid "Enter a name for the new marker"
-msgstr "Skriv inn nytt navn på bokmerket"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:385
 #, fuzzy
 msgid "Enter a name for this AutoTimer"
-msgstr "Skriv inn nytt navn på bokmerket"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:505
+#, fuzzy
 msgid "Enter path"
-msgstr "Skriv inn sti"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:386
+#, fuzzy
 msgid "Enter the text to find in the EPG"
-msgstr "Skriv inn tekst å finne i elektronisk programguide"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:137
+#, fuzzy
 msgid "Error"
-msgstr "Feil"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:1111
+#, fuzzy
 msgid "Error parsing vps.xml"
-msgstr "Feil ved tolking av vps.xml"
+msgstr ""
 
 #: ../plugin/controllers/ipkg.py:312
+#, fuzzy
 msgid "Error upload File"
-msgstr "Feil ved fil opplasting"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:592
+#, fuzzy
 msgid "Error while preparing backup file, %s does not exists."
-msgstr "Feil under sikkerhetskopiering, %s eksisterer ikke."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:598
+#, fuzzy
 msgid "Error while preparing backup file."
-msgstr "Feil under sikkerhetskopiering."
+msgstr ""
 
 #: ../plugin/controllers/ipkg.py:328
+#, fuzzy
 msgid "Error writing File"
-msgstr "Feil ved filopprettelse"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:653
+#, fuzzy
 msgid "Error, %s does not exists, restore is not possible..."
-msgstr "Feil, %s eksisterer ikke, gjenopprette er ikke mulig..."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:651
+#, fuzzy
 msgid "Error, %s was not created with WebBouquetEditor..."
-msgstr "Feil, %s ble ikke opprettet med Webkanalliste editor..."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:194
+#, fuzzy
 msgid "Error: Bouquet %s could not deleted, OSError."
-msgstr "Feil: Kanalliste %s kan ikke slettes, OS feil."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:479
+#, fuzzy
 msgid "Event not found"
-msgstr "Kanal ikke funnet"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:353
+#, fuzzy
 msgid "EventId not found"
-msgstr "Finner ikke Event Id"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:138
+#, fuzzy
 msgid "Every"
-msgstr "Hver"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:366
+#, fuzzy
 msgid "Exclude when"
-msgstr "Ekskluder"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:339
 #, fuzzy
 msgid "Execute \"After event\" during timespan"
-msgstr "Utfør \"etter hendelse\" i tdsrommet"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:547
+#, fuzzy
 msgid "Export"
-msgstr "Eksporter"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:139
+#, fuzzy
 msgid "Extras"
-msgstr "Ekstra"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:438
+#, fuzzy
 msgid "Fake Recording"
-msgstr "Simulert opptak"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:401
+#, fuzzy
 msgid "Fastscan"
-msgstr "Hurtigsøk"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:63
+#, fuzzy
 msgid "February"
-msgstr "Februar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:141
+#, fuzzy
 msgid "Firmware version"
-msgstr "Firmware versjon"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:425
+#, fuzzy
 msgid "Force"
-msgstr "Tving"
+msgstr ""
 
 #. Cuma
 #: ../plugin/controllers/i18n.py:42
+#, fuzzy
 msgid "Fr"
-msgstr "Fr"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:143
+#, fuzzy
 msgid "Free"
-msgstr "Ledig"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:144
+#, fuzzy
 msgid "Free Memory"
-msgstr "Ledig minne"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:51 ../plugin/controllers/models/movies.py:55
 #: ../plugin/controllers/models/timers.py:44
+#, fuzzy
 msgid "Fri"
-msgstr "Fre"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:58
+#, fuzzy
 msgid "Friday"
-msgstr "Fredag"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:327
+#, fuzzy
 msgid "From date"
-msgstr "Ikke etter"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:142 ../plugin/controllers/models/info.py:349
+#, fuzzy
 msgid "Front processor version"
-msgstr "Frontprosessor versjon"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:540
+#, fuzzy
 msgid "Full remote"
-msgstr "Full fjernkontroll"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:396
 #: ../plugin/controllers/models/info.py:402
@@ -904,201 +1096,249 @@ msgstr "Full fjernkontroll"
 #: ../plugin/controllers/models/movies.py:279
 #: ../plugin/controllers/models/movies.py:409
 #: ../plugin/controllers/models/movies.py:837
+#, fuzzy
 msgid "GB"
-msgstr "GB"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:147
+#, fuzzy
 msgid "GUI version"
-msgstr "Gui versjon"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:145
+#, fuzzy
 msgid "Gateway"
-msgstr "Gateway"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:450
+#, fuzzy
 msgid "Get mutable list for new created alternative failed!"
-msgstr "Motta endringslisten for nyopprettede alternativ feilet!"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:125
+#, fuzzy
 msgid "Get mutable list for new created bouquet failed!"
-msgstr "Endringsliste for nyopprettet kanalliste feilet!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:557
+#, fuzzy
 msgid "HH:MM"
-msgstr "TT:MM"
+msgstr ""
 
 #: ../plugin/plugin.py:165
+#, fuzzy
 msgid "HTTP port"
-msgstr "HTTP port"
+msgstr ""
 
 #: ../plugin/plugin.py:169
+#, fuzzy
 msgid "HTTPS port"
-msgstr "HTTPS port"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:150
+#, fuzzy
 msgid "Hard disk model"
-msgstr "Harddisk modell"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:148
+#, fuzzy
 msgid "Hide full remote"
-msgstr "Skjul full fjernkontroll"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:149
+#, fuzzy
 msgid "High Resolution"
-msgstr "Høy oppløsning"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:151
+#, fuzzy
 msgid "Hour"
-msgstr "Time"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:456
+#, fuzzy
 msgid "IPTV / URL name"
-msgstr "IPTV-/nettadresse-navn"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:152
+#, fuzzy
 msgid "IPv4 address"
-msgstr "IPv4 adresse"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:155 ../plugin/controllers/models/info.py:160
+#, fuzzy
 msgid "IPv4-only Python/Twisted"
-msgstr "IPv4 Python/Vridd"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:153 ../plugin/controllers/models/info.py:156
+#, fuzzy
 msgid "IPv4-only kernel"
-msgstr "IPv4 kjerne"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:156
+#, fuzzy
 msgid "IPv6 address(es)"
-msgstr "IPv6 adresse(r)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:548
+#, fuzzy
 msgid "Import"
-msgstr "Importer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:134
+#, fuzzy
 msgid "Include description"
-msgstr "Inkluder beskrivelse"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:533
+#, fuzzy
 msgid "Include extended description"
-msgstr "Inkluder utvidet beskrivelse"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:532
+#, fuzzy
 msgid "Include short description"
-msgstr "Inkluder kort beskrivelse"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:365
+#, fuzzy
 msgid "Include when"
-msgstr "Inkluder"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:601
+#, fuzzy
 msgid "Infinite Instant recording started"
-msgstr "En ubegrenset direkeinnspilling startet"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:157
+#, fuzzy
 msgid "Info"
-msgstr "Info"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:427
+#, fuzzy
 msgid "Inherit AutoTimer"
-msgstr "Overfør auto timer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:525
+#, fuzzy
 msgid "Install Package"
-msgstr "Installer pakke"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:527
+#, fuzzy
 msgid "Installed"
-msgstr "Installert"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:158
+#, fuzzy
 msgid "Instant Record"
-msgstr "Direkteinnspilling"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:592
+#, fuzzy
 msgid "Instant record for current Event started"
-msgstr "En direkeinnspilling av aktuellt program startet"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:350
+#, fuzzy
 msgid "Internal error!"
-msgstr "Intern feil!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:398
+#, fuzzy
 msgid "Interval (in %s)"
-msgstr "Intervall (i %s)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:422
+#, fuzzy
 msgid "Interval (min.)"
-msgstr "Intervall (min.)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:423
+#, fuzzy
 msgid "Interval (sec.)"
-msgstr "Intervall (sek.)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:62
+#, fuzzy
 msgid "January"
-msgstr "Januar"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:160
+#, fuzzy
 msgid "Javascript Libraries"
-msgstr "Javascript bibliotek"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:68
+#, fuzzy
 msgid "July"
-msgstr "Juli"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:67
+#, fuzzy
 msgid "June"
-msgstr "Juni"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:161
+#, fuzzy
 msgid "Just play"
-msgstr "Spill nå"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:162
+#, fuzzy
 msgid "Kernel"
-msgstr "Kjerne"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:163
+#, fuzzy
 msgid "LCD"
-msgstr "LCD"
+msgstr ""
 
 #: ../plugin/controllers/base.py:334
+#, fuzzy
 msgid "LCD4Linux Setup"
-msgstr "LCD4Linux innstilling"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:164
+#, fuzzy
 msgid "LICENSE"
-msgstr "LISENS"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:383
+#, fuzzy
 msgid "Label series"
-msgstr "Legg til avsnittsinformasjon"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:495
+#, fuzzy
 msgid "Link Speed"
-msgstr "Overførings hastighet"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:562
+#, fuzzy
 msgid "List of Timers has been cleaned"
-msgstr "Timerliste har blitt ryddet"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:463
 #, fuzzy
 msgid "Loading..."
-msgstr "laster"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:166
+#, fuzzy
 msgid "Location"
-msgstr "Plass"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:167
+#, fuzzy
 msgid "Locked"
-msgstr "Låst"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:168
+#, fuzzy
 msgid "MAC address"
-msgstr "MAC adresse"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:393
 #: ../plugin/controllers/models/info.py:404
@@ -1106,239 +1346,290 @@ msgstr "MAC adresse"
 #: ../plugin/controllers/models/movies.py:281
 #: ../plugin/controllers/models/movies.py:411
 #: ../plugin/controllers/models/movies.py:839
+#, fuzzy
 msgid "MB"
-msgstr "MB"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:169
+#, fuzzy
 msgid "Main"
-msgstr "Hovedfunksjoner"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:260
+#, fuzzy
 msgid "Main Memory"
-msgstr "Hoved minne"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:64
+#, fuzzy
 msgid "March"
-msgstr "Mars"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:348
+#, fuzzy
 msgid "Marker added."
-msgstr "Merke er lagt til."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:458
+#, fuzzy
 msgid "Marker name"
-msgstr "Bokmerkenavn"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:300
+#, fuzzy
 msgid "Match text"
-msgstr "Treff"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:399
+#, fuzzy
 msgid "Max Days"
-msgstr "Maks dager"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:66
+#, fuzzy
 msgid "May"
-msgstr "Mai"
+msgstr ""
 
 #: ../plugin/controllers/models/message.py:35
+#, fuzzy
 msgid "Message sent successfully!"
-msgstr "Meldingen er sendt!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:434
+#, fuzzy
 msgid "Method"
-msgstr "Metode"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:521
+#, fuzzy
 msgid "Minimal EPG list"
-msgstr "Minimert EPG-liste"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:519
+#, fuzzy
 msgid "Minimal movie list"
-msgstr "Minimal filmliste"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:520
+#, fuzzy
 msgid "Minimal timer list"
-msgstr "Minimert timer-liste"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:170
+#, fuzzy
 msgid "Minute"
-msgstr "Minutt"
+msgstr ""
 
 #: ../plugin/controllers/web.py:85
+#, fuzzy
 msgid "Missing mandatory parameter '%s'"
-msgstr "Savner obligatorisk parameter '%s'"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:693
+#, fuzzy
 msgid "Missing requesteter: sRef"
-msgstr "Tapt anmoding: sRef"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:38
+#, fuzzy
 msgid "Mo"
-msgstr "Ma"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:172
+#, fuzzy
 msgid "Model"
-msgstr "Modell"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:47 ../plugin/controllers/models/movies.py:55
 #: ../plugin/controllers/models/timers.py:44
+#, fuzzy
 msgid "Mon"
-msgstr "Man"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:54
+#, fuzzy
 msgid "Monday"
-msgstr "Mandag"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:345
+#, fuzzy
 msgid "Monthly"
-msgstr "Månedlig"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:528
+#, fuzzy
 msgid "More"
-msgstr "Mer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:173
 #, fuzzy
 msgid "More details"
-msgstr "Vis detaljer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:481
+#, fuzzy
 msgid "Movie database for EPG"
-msgstr "Film database for EPG"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:534
+#, fuzzy
 msgid "Movie search"
-msgstr "Film søk"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:174
+#, fuzzy
 msgid "Movielist"
-msgstr "Opptaksliste"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:175
+#, fuzzy
 msgid "Movies"
-msgstr "Filmer"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:132
 #: ../plugin/controllers/BouquetEditor.py:756
+#, fuzzy
 msgid "Multi-Bouquet is not enabled!"
-msgstr "Multi-Kanalliste er ikke aktivert!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:176
+#, fuzzy
 msgid "MultiEPG"
-msgstr "MultiEPG"
+msgstr ""
 
 #: ../plugin/controllers/base.py:358
+#, fuzzy
 msgid "NCam Webinterface"
-msgstr "NCam webinterface"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:177
+#, fuzzy
 msgid "Name"
-msgstr "Navn"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:550
+#, fuzzy
 msgid "Name (a-z)"
-msgstr "Navn (a-å)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:551
+#, fuzzy
 msgid "Name (z-a)"
-msgstr "Navn (å-a)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:178
+#, fuzzy
 msgid "Namespace"
-msgstr "Navneområde"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:179
+#, fuzzy
 msgid "Network Interface"
-msgstr "Nettverkskort"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:496
+#, fuzzy
 msgid "Network Shares"
-msgstr "Delte nettverksressurser"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:344 ../plugin/controllers/i18n.py:430
+#, fuzzy
 msgid "Never"
-msgstr "Aldri"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:384
 #: ../plugin/controllers/models/services.py:382
+#, fuzzy
 msgid "New"
-msgstr "Ny"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:503
 #, fuzzy
 msgid "New Bookmark:"
-msgstr "Bokmerke"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:255
+#, fuzzy
 msgid "New Name"
-msgstr "Nytt navn"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:350
+#, fuzzy
 msgid "No"
-msgstr "Nei"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:181
 #, fuzzy
 msgid "No EPG data available."
-msgstr "beskrivelse savnes"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:524
+#, fuzzy
 msgid "No Parent Control Setup Pin given!"
-msgstr "Ingen PIN kode til forleldrekontroll er valgt!"
+msgstr ""
 
 #: ../plugin/controllers/models/message.py:46
+#, fuzzy
 msgid "No answer in time"
-msgstr "Ingen svar i tide"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:225
 #: ../plugin/controllers/BouquetEditor.py:255
 #: ../plugin/controllers/BouquetEditor.py:281
 #: ../plugin/controllers/BouquetEditor.py:324
 #: ../plugin/controllers/BouquetEditor.py:474
+#, fuzzy
 msgid "No bouquet given!"
-msgstr "Ingen kanalliste er opprettet!"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:93
 #: ../plugin/controllers/BouquetEditor.py:154
 #: ../plugin/controllers/BouquetEditor.py:200
+#, fuzzy
 msgid "No bouquet name given!"
-msgstr "Det mangler navn på kanallisten!"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:419
+#, fuzzy
 msgid "No current service given!"
-msgstr "Ingen kanal er valgt!"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:586
+#, fuzzy
 msgid "No event found! Not recording!"
-msgstr "Programmet ble ikke funnet! Spiller ikke inn!"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:331
+#, fuzzy
 msgid "No marker-name given!"
-msgstr "Ikke noe markør-navn er valgt!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:393
 #, fuzzy
 msgid "No matches were found in the EPG"
-msgstr "Finner ingen samsvarende timer"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:509
 #: ../plugin/controllers/models/timers.py:554
+#, fuzzy
 msgid "No matching Timer found"
-msgstr "Finner ingen samsvarende timer"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:364
+#, fuzzy
 msgid "No new servicename given!"
-msgstr "Ikke noe nytt kanalnavn er valgt!"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:210
 #: ../plugin/controllers/BouquetEditor.py:267
+#, fuzzy
 msgid "No position given!"
-msgstr "Ingen posisjon er gitt!"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:138
+#, fuzzy
 msgid "No provider given!"
-msgstr "Ingen distributør er valgt!"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:231
 #: ../plugin/controllers/BouquetEditor.py:261
@@ -1347,572 +1638,695 @@ msgstr "Ingen distributør er valgt!"
 #: ../plugin/controllers/BouquetEditor.py:416
 #: ../plugin/controllers/BouquetEditor.py:480
 #: ../plugin/controllers/BouquetEditor.py:517
+#, fuzzy
 msgid "No service given!"
-msgstr "Ingen kanal er opprettet!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:513
+#, fuzzy
 msgid "No, cancel"
-msgstr "Nei, avbryt"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:410
+#, fuzzy
 msgid "None"
-msgstr "Ingen"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:183
+#, fuzzy
 msgid "Nothing"
-msgstr "Ingenting"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:184
+#, fuzzy
 msgid "Nothing playing."
-msgstr "Ingenting spiller."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:405
+#, fuzzy
 msgid "Notify if Conflict"
-msgstr "Varsle ved konflikt"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:406
+#, fuzzy
 msgid "Notify if Similar"
-msgstr "Varsle hvis lignende finnes"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:72
+#, fuzzy
 msgid "November"
-msgstr "November"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:185
+#, fuzzy
 msgid "Now"
-msgstr "Nå"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:522
+#, fuzzy
 msgid "Now/Next Columns"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:343
+#, fuzzy
 msgid "Number of recordings remaining"
-msgstr "Antall opptak igjen"
+msgstr ""
 
 #: ../plugin/controllers/base.py:356
+#, fuzzy
 msgid "OSCam Webinterface"
-msgstr "OSCam Webutseende"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:192
+#, fuzzy
 msgid "OSD"
-msgstr "OSD"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:71
+#, fuzzy
 msgid "October"
-msgstr "Oktober"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:331
+#, fuzzy
 msgid "Offset after recording (mins)"
-msgstr "Tidsrom etter opptaket (i min)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:330
+#, fuzzy
 msgid "Offset before recording (mins)"
-msgstr "Tidsrom før opptaket (i min)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:187
+#, fuzzy
 msgid "On"
-msgstr "På"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:352
+#, fuzzy
 msgid "On any service"
-msgstr "Hos valgfri leverandør"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:351
+#, fuzzy
 msgid "On same service"
-msgstr "Hos samme leverandør"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:472
+#, fuzzy
 msgid "Onid"
-msgstr "Onid"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:326
+#, fuzzy
 msgid "Only match between dates"
-msgstr "Hindre kanaler på bestemte datoer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:323
+#, fuzzy
 msgid "Only match during timespan"
-msgstr "Samsvarssøk bare i tidsrommet"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:136
+#, fuzzy
 msgid "Oops, no results matched your search"
-msgstr "Resultatløst søk"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:510
+#, fuzzy
 msgid "Oops..."
-msgstr "Oida …"
+msgstr ""
 
 #. The translation could have been sharper but as it has to fit in it’s frame this may be an acceptable compromise. I would have prefered: "Open Source webbgränssnitt för Linuxbaserade digitalboxar"...
 #: ../plugin/controllers/i18n.py:188
+#, fuzzy
 msgid "Open Source Web Interface for Linux set-top box"
-msgstr "Åpen kildekode og webgrensesnitt for Linux mottakere"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:193
+#, fuzzy
 msgid "Open in new window"
-msgstr "Åpne i et nytt vindu"
+msgstr ""
 
 #: ../plugin/plugin.py:154
+#, fuzzy
 msgid "OpenWebInterface Enabled"
-msgstr "OpenWebInterface er aktivert"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:483
+#, fuzzy
 msgid "OpenWebif Browser Settings"
-msgstr "OpenWebif nettleser innstilling"
+msgstr ""
 
 #: ../plugin/plugin.py:194 ../plugin/plugin.py:262 ../plugin/plugin.py:264
 #: ../plugin/plugin.py:266
+#, fuzzy
 msgid "OpenWebif Configuration"
-msgstr "OpenWebif innstilling"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:484
+#, fuzzy
 msgid "OpenWebif Settings"
-msgstr "OpenWebif innstilling"
+msgstr ""
 
 #: ../plugin/plugin.py:140
 #, fuzzy
 msgid "OpenWebif url:"
-msgstr "OpenWebif URL:"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:475
 #: ../plugin/controllers/models/services.py:276
+#, fuzzy
 msgid "Orbital Position"
-msgstr "Satellittposisjon"
+msgstr ""
 
 #. One extra space inserted in front for better readability in context.
 #: ../plugin/controllers/i18n.py:322
+#, fuzzy
 msgid "Override found with alternative service"
-msgstr "Overstyr funnet med alternativ leverandør"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:507
+#, fuzzy
 msgid "Packages"
-msgstr "Pakker"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:528
 #: ../plugin/controllers/BouquetEditor.py:530
+#, fuzzy
 msgid "Parent Control Setup Pin is wrong!"
-msgstr "PIN kode til foreldrekontroll er feil!"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:511
+#, fuzzy
 msgid "Parent Control is not activated."
-msgstr "Foreldrekontroll er ikke aktivert."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:428
+#, fuzzy
 msgid "Parse AutoTimer"
-msgstr "Analyser auto timer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:470
+#, fuzzy
 msgid "Pcrpid"
-msgstr "Pcrpid"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:194
+#, fuzzy
 msgid "PiP"
-msgstr "PiP-bilde i bilde"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:436
+#, fuzzy
 msgid "Picture in Picture"
-msgstr "Bilde i bilde"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:437
+#, fuzzy
 msgid "Picture in Picture (hidden)"
-msgstr "Bilde i bilde (skjult)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:414
+#, fuzzy
 msgid "Plain"
-msgstr "Normalt formular"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:195
+#, fuzzy
 msgid "Playback"
-msgstr "Avspilling"
+msgstr ""
 
 #: ../plugin/plugin.py:184
+#, fuzzy
 msgid "Playback IPTV Streams in browser"
-msgstr "Spill av IPTV-strømmer i nettleseren"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:196
+#, fuzzy
 msgid "Playlist"
-msgstr "Opptaksliste"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:560
 #, fuzzy
 msgid "Playlist format"
-msgstr "Opptaksliste"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:467
+#, fuzzy
 msgid "Pmtpid"
-msgstr "Pmtpid"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:197
+#, fuzzy
 msgid "Power Control"
-msgstr "Strømstyring"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:782
+#, fuzzy
 msgid "PowerTimer feature not available"
-msgstr "PowerTimer-funksjonen er ikke tilgjengelig"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:389
+#, fuzzy
 msgid "Preview"
-msgstr "Forhåndsvis"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:498
+#, fuzzy
 msgid "Primetimes"
-msgstr "Bestetider"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:378
+#, fuzzy
 msgid "Process"
-msgstr "Analyser"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:198
+#, fuzzy
 msgid "Provider"
-msgstr "Distributør"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:199
+#, fuzzy
 msgid "Providers"
-msgstr "Distributører"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:578
+#, fuzzy
 msgid "REC"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:200
+#, fuzzy
 msgid "Radio"
-msgstr "Radio"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:201
+#, fuzzy
 msgid "Reboot Box"
-msgstr "Start om"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:342
+#, fuzzy
 msgid "Record a maximum of # times"
-msgstr "Ta opp maksimalt x ganger"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:202
+#, fuzzy
 msgid "Recording Status"
-msgstr "Opptaksstatus"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:574
 #, fuzzy
 msgid "Recording Type"
-msgstr "Opptaksstatus"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:203 ../plugin/controllers/i18n.py:409
+#, fuzzy
 msgid "Refresh"
-msgstr "Oppdater"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:205
+#, fuzzy
 msgid "Refresh Timer"
-msgstr "Oppdater timer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:204
+#, fuzzy
 msgid "Refresh automatically every"
-msgstr "Oppdater automatiskt hver"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:440
+#, fuzzy
 msgid "Refresh now"
-msgstr "Oppdater nå"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:294
+#, fuzzy
 msgid "Reload"
-msgstr "Last om"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:206
+#, fuzzy
 msgid "Remote"
-msgstr "Fjernkontroll"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:523
+#, fuzzy
 msgid "Remove Package"
-msgstr "Fjern pakke"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:388
 #, fuzzy
 msgid "Remove filter"
-msgstr "Fjernkontroll"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:453 ../plugin/controllers/i18n.py:512
+#, fuzzy
 msgid "Rename"
-msgstr "Endre navn"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:448
+#, fuzzy
 msgid "Rename Bouquet"
-msgstr "Bytt navn på kanalliste"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:207
+#, fuzzy
 msgid "Rename Recording"
-msgstr "Bytt navn på opptaket"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:209
+#, fuzzy
 msgid "Repeated"
-msgstr "Gjentatt"
+msgstr ""
 
 #: ../plugin/plugin.py:171
+#, fuzzy
 msgid "Require client cert for HTTPS"
-msgstr "Krev klientsertifikat for HTTPS"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:349
+#, fuzzy
 msgid "Require description to be unique"
-msgstr "Krever at forklaringen er unik"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:556
 #, fuzzy
 msgid "Reset"
-msgstr "Tilbakestill antall"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:348
+#, fuzzy
 msgid "Reset count"
-msgstr "Tilbakestill antall"
+msgstr ""
 
 #. Have to use "GUI" because of limited space. I would prefere "Användargränssnitt" if space were without limits.
 #: ../plugin/controllers/i18n.py:210
+#, fuzzy
 msgid "Restart GUI"
-msgstr "Start om GUI"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:135 ../plugin/controllers/i18n.py:361
+#, fuzzy
 msgid "Restrict to bouquets"
-msgstr "Velg kanallister"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:362
 #, fuzzy
 msgid "Restrict to channels"
-msgstr "Velg kanallister"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:293
+#, fuzzy
 msgid "Root"
-msgstr "Root"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:67
+#, fuzzy
 msgid "SLAAC"
-msgstr "SLAAC"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:235
+#, fuzzy
 msgid "SNR"
-msgstr "SNR"
+msgstr ""
 
 #. Saturday
 #: ../plugin/controllers/i18n.py:43
+#, fuzzy
 msgid "Sa"
-msgstr "Lø"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:212
+#, fuzzy
 msgid "Safe mode"
-msgstr "Sikker modus"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:52 ../plugin/controllers/models/movies.py:55
 #: ../plugin/controllers/models/timers.py:44
+#, fuzzy
 msgid "Sat"
-msgstr "Lør"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:213
+#, fuzzy
 msgid "Satellites"
-msgstr "Satellitter"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:214
+#, fuzzy
 msgid "Satfinder"
-msgstr "Satellittsøker"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:59
+#, fuzzy
 msgid "Saturday"
-msgstr "Lørdag"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:215 ../plugin/controllers/i18n.py:377
 #: ../plugin/controllers/i18n.py:439 ../plugin/plugin.py:128
+#, fuzzy
 msgid "Save"
-msgstr "Lagre"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:216
+#, fuzzy
 msgid "Screenshot"
-msgstr "Skjermdump"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:217 ../plugin/controllers/i18n.py:445
+#, fuzzy
 msgid "Search"
-msgstr "Søk"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:218
+#, fuzzy
 msgid "Search CSFD"
-msgstr "Søk CSFD"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:219
+#, fuzzy
 msgid "Search IMDb"
-msgstr "Søk i IMDb"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:220
+#, fuzzy
 msgid "Search KinoPoisk"
-msgstr "Søk KinoPoisk"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:221
 #, fuzzy
 msgid "Search TV Guide UK"
-msgstr "TV Guide"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:446
 #, fuzzy
 msgid "Search by name, sd / hd / uhd, or provider"
-msgstr "Søk etter navn, SD, HD, UHD, eller tilbyder"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:316
 #, fuzzy
 msgid "Search strictness"
-msgstr "Søk KinoPoisk"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:302
 #, fuzzy
 msgid "Search type"
-msgstr "Søk"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:536
+#, fuzzy
 msgid "Select IPK file for upload"
-msgstr "Velg IPK-fil for opplasting"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:555
+#, fuzzy
 msgid "Select..."
-msgstr "Velg …"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:223
+#, fuzzy
 msgid "Send Message"
-msgstr "Send melding"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:225
+#, fuzzy
 msgid "Send a Message"
-msgstr "Send en melding"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:70
+#, fuzzy
 msgid "September"
-msgstr "September"
+msgstr ""
 
 #. Översätts ofta till Leverantör i stället.
 #: ../plugin/controllers/i18n.py:226
+#, fuzzy
 msgid "Service"
-msgstr "Kanal"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:314
+#, fuzzy
 msgid "Service %s added."
-msgstr "Kanal %s er lagt til."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:317
+#, fuzzy
 msgid "Service %s already exists in bouquet %s."
-msgstr "Kanalen %s finnes allerede i kanalliste %s."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:249
+#, fuzzy
 msgid "Service %s can not be removed."
-msgstr "Kanalen %s kan ikke slettes."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:545
+#, fuzzy
 msgid "Service %s is locked."
-msgstr "Kanalen %s er låst."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:553
+#, fuzzy
 msgid "Service %s is unlocked."
-msgstr "Kanalen %s er ulåst."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:274
+#, fuzzy
 msgid "Service %s moved."
-msgstr "Kanal %s flyttet."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:248
+#, fuzzy
 msgid "Service %s removed from bouquet %s."
-msgstr "Kanalen %s slettet fra kanalliste %s."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:240
+#, fuzzy
 msgid "Service %s removed."
-msgstr "Kanalen %s slettet."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:275
+#, fuzzy
 msgid "Service can not be moved."
-msgstr "Kanalen kan ikke flyttes."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:405
+#, fuzzy
 msgid "Service can not be renamed."
-msgstr "Kanal kan ikke gis nytt navn."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:497
+#, fuzzy
 msgid "Service is not an alternative."
-msgstr "Kanalen er ikke et alternativ."
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:404
+#, fuzzy
 msgid "Service renamed successfully."
-msgstr "Kanalen er navngitt på nytt."
+msgstr ""
 
 #: ../plugin/controllers/models/services.py:384
+#, fuzzy
 msgid "Services"
-msgstr "Kanaler"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:332
+#, fuzzy
 msgid "Set maximum duration"
-msgstr "Still inn maksimal varighet (i min)"
+msgstr ""
 
 #: ../plugin/controllers/base.py:321 ../plugin/controllers/i18n.py:227
 #: ../plugin/controllers/i18n.py:381
+#, fuzzy
 msgid "Settings"
-msgstr "Innstillinger"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:232
+#, fuzzy
 msgid "Show EPG for"
-msgstr "Vis EPG for"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:230
+#, fuzzy
 msgid "Show Full OpenWebif"
-msgstr "Vis full OpenWebif"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:543
+#, fuzzy
 msgid "Show IPTV channels in selection (eg. Autotimer)"
-msgstr "Vis IPTV-kanaler i utvalg (f.eks. automatisk tidsur)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:572
 #, fuzzy
 msgid "Show all packages"
-msgstr "Oppdater alle pakker"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:189 ../plugin/plugin.py:160
+#, fuzzy
 msgid "Show box name in header"
-msgstr "Vis mottakernavn i overskrift"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:541
+#, fuzzy
 msgid "Show details"
-msgstr "Vis detaljer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:231
+#, fuzzy
 msgid "Show full remote"
-msgstr "Vis full fjernkontroll"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:402
+#, fuzzy
 msgid "Show in Extensions menu"
-msgstr "Vis i tilleggsmeny"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:546
 #, fuzzy
 msgid "Show picon background"
-msgstr "Vis picon-bakgrunn"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:545
 #, fuzzy
 msgid "Show picons"
-msgstr "Vis detaljer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:480
+#, fuzzy
 msgid "Show picons in channel list"
-msgstr "Vis kanallogo i kanalliste"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:542
+#, fuzzy
 msgid "Show service type in channel list"
-msgstr "Vis tjenestetype i kanalliste"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:233
+#, fuzzy
 msgid "Shutdown"
-msgstr "Avslutning"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:473
+#, fuzzy
 msgid "Sid"
-msgstr "Sid"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:379
+#, fuzzy
 msgid "Simulate"
-msgstr "Simuler"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:234
+#, fuzzy
 msgid "Site and sources"
-msgstr "Nettsted og kilder"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:568
+#, fuzzy
 msgid "Skins"
-msgstr "Drakter"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:866
 #: ../plugin/controllers/models/timers.py:899
@@ -1920,846 +2334,1025 @@ msgstr "Drakter"
 #: ../plugin/controllers/models/timers.py:954
 #: ../plugin/controllers/models/timers.py:1000
 #: ../plugin/controllers/models/timers.py:1082
+#, fuzzy
 msgid "SleepTimer error"
-msgstr "Feil ved Tidsinnstilt avslag"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:943
 #: ../plugin/controllers/models/timers.py:1058
 #: ../plugin/controllers/models/timers.py:1077
+#, fuzzy
 msgid "Sleeptimer has been disabled"
-msgstr "Vekkerklokke har blitt frakoblet"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:861
 #: ../plugin/controllers/models/timers.py:893
 #: ../plugin/controllers/models/timers.py:920
 #: ../plugin/controllers/models/timers.py:994
+#, fuzzy
 msgid "Sleeptimer is disabled"
-msgstr "Tidsinnstilt avslag er deaktivert"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:861
 #: ../plugin/controllers/models/timers.py:893
 #: ../plugin/controllers/models/timers.py:920
 #: ../plugin/controllers/models/timers.py:994
+#, fuzzy
 msgid "Sleeptimer is enabled"
-msgstr "Tidsinnstilt avslag er aktivert"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:949
 #: ../plugin/controllers/models/timers.py:1058
 #: ../plugin/controllers/models/timers.py:1072
+#, fuzzy
 msgid "Sleeptimer set to %d minutes"
-msgstr "Vekkerklokke er stilt på %d minutter"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:236
+#, fuzzy
 msgid "Software"
-msgstr "Programvare"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:182
+#, fuzzy
 msgid "Sorry this page is not yet implemented"
-msgstr "Beklager, denne siden er ennå ikke klar til bruk"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:549
+#, fuzzy
 msgid "Sort"
-msgstr "Sortering"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:486
+#, fuzzy
 msgid "Spinner"
-msgstr "Spinner"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:474
+#, fuzzy
 msgid "Sref"
-msgstr "Sref"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:237
+#, fuzzy
 msgid "Standby"
-msgstr "Standby"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:238
+#, fuzzy
 msgid "Standby Toggle"
-msgstr "Slå av/på"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:126
+#, fuzzy
 msgid "Start"
-msgstr "Start"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:241
+#, fuzzy
 msgid "Start Instant Record"
-msgstr "Start direkteinnspilling"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:240
+#, fuzzy
 msgid "Start time is after end time"
-msgstr "Start tiden er etter sluttid"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:535
+#, fuzzy
 msgid "Start typing..."
-msgstr "BEGYNN Å SKRIVE"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:390
+#, fuzzy
 msgid "State"
-msgstr "Tilstand"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:242
+#, fuzzy
 msgid "Stream"
-msgstr "Stream"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:566
 #, fuzzy
 msgid "Stream Clients"
-msgstr "Stream"
+msgstr ""
 
 #: ../plugin/plugin.py:179
 #, fuzzy
 msgid "Streaming port"
-msgstr "Stream"
+msgstr ""
 
 #. Sunday
 #: ../plugin/controllers/i18n.py:44
+#, fuzzy
 msgid "Su"
-msgstr "Sø"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:554
+#, fuzzy
 msgid "Subdirectories"
-msgstr "Undermapper"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:243
+#, fuzzy
 msgid "Subnet mask"
-msgstr "Subnet mask"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:244
+#, fuzzy
 msgid "Subservices"
-msgstr "Underleverandører"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:46 ../plugin/controllers/models/movies.py:55
 #: ../plugin/controllers/models/timers.py:44
+#, fuzzy
 msgid "Sun"
-msgstr "Søn"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:60
+#, fuzzy
 msgid "Sunday"
-msgstr "Søndag"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:186
+#, fuzzy
 msgid "System OE"
-msgstr "OE system"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:400
 #: ../plugin/controllers/models/info.py:412
 #: ../plugin/controllers/models/info.py:414
+#, fuzzy
 msgid "TB"
-msgstr "TB"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:271
+#, fuzzy
 msgid "TV"
-msgstr "TV"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:490
+#, fuzzy
 msgid "TV Guide"
-msgstr "TV Guide"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:272
+#, fuzzy
 msgid "TV Multi EPG"
-msgstr "TV Multi EPG"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:245 ../plugin/controllers/i18n.py:355
+#, fuzzy
 msgid "Tags"
-msgstr "Merker"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:246
+#, fuzzy
 msgid "Teletext"
-msgstr "Tekst-TV"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:247
+#, fuzzy
 msgid "Television"
-msgstr "TV"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:248
+#, fuzzy
 msgid "Template Engine"
-msgstr "Mal"
+msgstr ""
 
 #: ../plugin/controllers/base.py:405
+#, fuzzy
 msgid "Terminal"
-msgstr "Terminal"
+msgstr ""
 
 #: ../plugin/controllers/models/services.py:391
+#, fuzzy
 msgid "Terrestrial"
-msgstr "Bakkenett"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:249
+#, fuzzy
 msgid "Text"
-msgstr "Tekst"
+msgstr ""
 
 #. Thursday
 #: ../plugin/controllers/i18n.py:41
+#, fuzzy
 msgid "Th"
-msgstr "To"
+msgstr ""
 
 #: ../plugin/controllers/web.py:91 ../plugin/controllers/web.py:1568
+#, fuzzy
 msgid "The parameter '%s' can't be empty"
-msgstr "Parameter '%s' kan ikke stå tomt"
+msgstr ""
 
 #: ../plugin/controllers/web.py:345
+#, fuzzy
 msgid "The parameter 'command' must be a number"
-msgstr "Parameter 'kommando' må være et tall"
+msgstr ""
 
 #. The word "framgångsrikt" to get a string to end the sentence.
 #: ../plugin/controllers/models/timers.py:548
+#, fuzzy
 msgid "The timer '%s' has been %s successfully"
-msgstr "Timer '%s' har blitt %s vellykket"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:498
 #: ../plugin/controllers/models/timers.py:504
+#, fuzzy
 msgid "The timer '%s' has been deleted successfully"
-msgstr "Timeren '%s' er slettet"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:540
+#, fuzzy
 msgid "The timer '%s' now recorded! Not disabled!"
-msgstr "Timeren '%s' er nå registrert! Ikke deaktivert!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:485
+#, fuzzy
 msgid "Theme"
-msgstr "Tema"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:274 ../plugin/plugin.py:158
 #, fuzzy
 msgid "Theme mode"
-msgstr "Tema"
+msgstr ""
 
 #: ../plugin/controllers/BouquetEditor.py:318
+#, fuzzy
 msgid "This service can not be added."
-msgstr "Denne kanalen kan ikke bli lagt til."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:50 ../plugin/controllers/models/movies.py:55
 #: ../plugin/controllers/models/timers.py:44
+#, fuzzy
 msgid "Thu"
-msgstr "Tor"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:57
+#, fuzzy
 msgid "Thursday"
-msgstr "Torsdag"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:251
+#, fuzzy
 msgid "Time"
-msgstr "Tid"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:491
+#, fuzzy
 msgid "Timeline"
-msgstr "Tidslinje"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:252
+#, fuzzy
 msgid "Timeout"
-msgstr "Timeout"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:257
+#, fuzzy
 msgid "Timer"
-msgstr "Timer"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:344
+#, fuzzy
 msgid "Timer '%s' added"
-msgstr "Timer '%s' lagt til"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:534
+#, fuzzy
 msgid "Timer '%s' already exists!"
-msgstr "Timeren '%s' finnes allerede!"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:460
+#, fuzzy
 msgid "Timer '%s' changed"
-msgstr "Timer '%s' ble endret"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:528
+#, fuzzy
 msgid "Timer '%s' not enabled while Conflict"
-msgstr "Timer '%s' er ikke aktivert på grunn av en konflikt"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:479
+#, fuzzy
 msgid "Timer '%s' not saved while Conflict"
-msgstr "Timer '%s' ble ikke lagret pga. en konflikt"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:478
+#, fuzzy
 msgid "Timer Added"
-msgstr "Timer lagt til"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:253
+#, fuzzy
 msgid "Timer added"
-msgstr "Timer lagt til"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:620
+#, fuzzy
 msgid "Timer conflict detected! Not recording!"
-msgstr "En timer konflikt er oppdaget! Spiller ikke inn!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:319
+#, fuzzy
 msgid "Timer type"
-msgstr "Timer type"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:570
+#, fuzzy
 msgid "TimerList has been saved"
-msgstr "Timerliste har blitt lagret"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:254
+#, fuzzy
 msgid "Timerlist"
-msgstr "Timerliste"
+msgstr ""
 
 #. There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:258 ../plugin/controllers/i18n.py:380
+#, fuzzy
 msgid "Timers"
-msgstr "Timere"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:259
+#, fuzzy
 msgid "Title"
-msgstr "Tittel"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:328
+#, fuzzy
 msgid "To date"
-msgstr "Ikke før"
+msgstr ""
 
 #: ../plugin/controllers/models/movies.py:58
 #: ../plugin/controllers/models/timers.py:48
+#, fuzzy
 msgid "Today"
-msgstr "I dag"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:262
+#, fuzzy
 msgid "Transcode"
-msgstr "Transkode"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:291
+#, fuzzy
 msgid "Translation to Spanish"
-msgstr "Oversettelse til spansk"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:400
+#, fuzzy
 msgid "Try guessing"
-msgstr "Forsøk og gjette"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:471
+#, fuzzy
 msgid "Tsid"
-msgstr "Tsid"
+msgstr ""
 
 #. Tuesday
 #: ../plugin/controllers/i18n.py:39
+#, fuzzy
 msgid "Tu"
-msgstr "Ti"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:48 ../plugin/controllers/models/movies.py:55
 #: ../plugin/controllers/models/timers.py:44
+#, fuzzy
 msgid "Tue"
-msgstr "Tir"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:55
+#, fuzzy
 msgid "Tuesday"
-msgstr "Tirsdag"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:263
+#, fuzzy
 msgid "Tuner Bit Error Rate BER"
-msgstr "Tuner bitfeilrate BER"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:264
+#, fuzzy
 msgid "Tuner Number"
-msgstr "Tuner nummer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:265
+#, fuzzy
 msgid "Tuner Signal"
-msgstr "Tuner signal"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:268
+#, fuzzy
 msgid "Tuner Signal Power AGC"
-msgstr "Tuner signalstyrke AGC"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:266
+#, fuzzy
 msgid "Tuner Signal Quality SNR"
-msgstr "Tuner signalkvalitet SNR"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:267
+#, fuzzy
 msgid "Tuner Signal Quality SNR_DB"
-msgstr "Tuner signalkvalitet SNR_DB"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:269
+#, fuzzy
 msgid "Tuner Type"
-msgstr "Tuner type"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:270
+#, fuzzy
 msgid "Tuners"
-msgstr "Tunere"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:273
+#, fuzzy
 msgid "Type"
-msgstr "Type"
+msgstr ""
 
 #: ../plugin/controllers/web.py:247
+#, fuzzy
 msgid "Unknown Volume command %s"
-msgstr "Ukjent volum instruktion %s"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:715
+#, fuzzy
 msgid "Unknown command: '%s'"
-msgstr "Ukjent kommando: '%s'"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:275
+#, fuzzy
 msgid "Upcoming Events"
-msgstr "Kommende aktiviteter"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:526
+#, fuzzy
 msgid "Update"
-msgstr "Oppdater"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:524
+#, fuzzy
 msgid "Update Package"
-msgstr "Oppdater pakke"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:529
+#, fuzzy
 msgid "Update from feed"
-msgstr "Oppdater fra kilde"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:530
+#, fuzzy
 msgid "Upgrade all packages"
-msgstr "Oppdater alle pakker"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:539
+#, fuzzy
 msgid "Upload File Error"
-msgstr "Feil ved opplasting av fil"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:538
+#, fuzzy
 msgid "Upload package"
-msgstr "Last opp pakke"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:537
+#, fuzzy
 msgid "Uploaded Files"
-msgstr "Opplastede filer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:544
 #, fuzzy
 msgid "Use Channelname for screenshots"
-msgstr "Bruk kanalnavn for skjermavbildninger"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:354
+#, fuzzy
 msgid "Use a custom location"
-msgstr "Bruk en egendefinert lagringsplass"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:561
+#, fuzzy
 msgid "Use as PiP if possible"
-msgstr "Bruk bilde-i-bilde hvis mulig"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:569
 #, fuzzy
 msgid "Use classic interface"
-msgstr "Bruk ny utforming"
+msgstr ""
 
 #: ../plugin/plugin.py:159
 #, fuzzy
 msgid "Use custom Color"
-msgstr "Bruk en egendefinert lagringsplass"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:190 ../plugin/plugin.py:162
+#, fuzzy
 msgid "Use custom box name"
-msgstr "Bruk egendefinert mottakernavn"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:509
 #, fuzzy
 msgid "Use modern design"
-msgstr "Bruk ny utforming"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:570 ../plugin/plugin.py:156
+#, fuzzy
 msgid "Use modern interface"
-msgstr "Bruk ny utforming"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:571
 #, fuzzy
 msgid "Use old remote"
-msgstr "Skjul full fjernkontroll"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:281
+#, fuzzy
 msgid "VPS"
-msgstr "VPS"
+msgstr ""
 
 #: ../plugin/controllers/models/timers.py:1116
+#, fuzzy
 msgid "VPS plugin not found"
-msgstr "VPS tillegg ikke funnet"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:276
+#, fuzzy
 msgid "Version"
-msgstr "Versjon"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:277
+#, fuzzy
 msgid "Video"
-msgstr "Video"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:278
+#, fuzzy
 msgid "Video Height"
-msgstr "Video høyde"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:279
+#, fuzzy
 msgid "Video Wide"
-msgstr "Video bredde"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:280
+#, fuzzy
 msgid "Video Width"
-msgstr "Video bredde"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:435
+#, fuzzy
 msgid "Visibly"
-msgstr "Synlig"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:282
+#, fuzzy
 msgid "Volume"
-msgstr "Volum"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:283
+#, fuzzy
 msgid "Volume Control"
-msgstr "Volumkontroll"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:469
+#, fuzzy
 msgid "Vpid"
-msgstr "Vpid"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:654
+#, fuzzy
 msgid "W"
-msgstr "V"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:224
+#, fuzzy
 msgid "Waiting for answer ..."
-msgstr "Venter på svar..."
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:239
+#, fuzzy
 msgid "Wake Up"
-msgstr "Våkne"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:426
+#, fuzzy
 msgid "Wakeup"
-msgstr "Våkne opp"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:285
+#, fuzzy
 msgid "Warning"
-msgstr "Advarsel"
+msgstr ""
 
 #. Wednesday
 #: ../plugin/controllers/i18n.py:40
+#, fuzzy
 msgid "We"
-msgstr "On"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:492
+#, fuzzy
 msgid "Web TV"
-msgstr "Web TV"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:49 ../plugin/controllers/models/movies.py:55
 #: ../plugin/controllers/models/timers.py:44
+#, fuzzy
 msgid "Wed"
-msgstr "Ons"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:56
+#, fuzzy
 msgid "Wednesday"
-msgstr "Onsdag"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:347
+#, fuzzy
 msgid "Weekly (Monday)"
-msgstr "Ukentlig (Mandag)"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:346
+#, fuzzy
 msgid "Weekly (Sunday)"
-msgstr "Ukentlig (Søndag)"
+msgstr ""
 
 #: ../plugin/plugin.py:176
+#, fuzzy
 msgid "Without auth only local access is allowed!"
-msgstr "Kun lokal adgang er tillat uten godkjenning!"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:415
+#, fuzzy
 msgid "Wizard"
-msgstr "Veiviser"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:511
+#, fuzzy
 msgid "Would you like to save your changes?"
-msgstr "Lagre endringer?"
+msgstr ""
 
 #: ../plugin/controllers/web.py:242
+#, fuzzy
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr "Feil parameter format 'set=%s'. Bruk set=set15 "
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:558
 #, fuzzy
 msgid "YYYY-MM-DD"
-msgstr "ÅÅ-MM-DD"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:514 ../plugin/controllers/i18n.py:531
+#, fuzzy
 msgid "Yes"
-msgstr "Ja"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:286
+#, fuzzy
 msgid "Yes/No"
-msgstr "Ja/Nei"
+msgstr ""
 
 #: ../plugin/controllers/models/movies.py:60
 #: ../plugin/controllers/models/timers.py:51
+#, fuzzy
 msgid "Yesterday"
-msgstr "I går"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:287
+#, fuzzy
 msgid "Zap"
-msgstr "Zap"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:466
+#, fuzzy
 msgid "Zap & Record"
-msgstr "Opptak+ZAP"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:288
+#, fuzzy
 msgid "Zap before streaming"
-msgstr "zap før stream"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:289
+#, fuzzy
 msgid "Zap to"
-msgstr "Gå til"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:290
+#, fuzzy
 msgid "Zapped to"
-msgstr "Gått til"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:392
 #, fuzzy
 msgid "any time"
-msgstr "Legg til timer"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:335
+#, fuzzy
 msgid "auto"
-msgstr "auto"
+msgstr ""
 
 #: ../plugin/plugin.py:134
 #, fuzzy
 msgid "box_ip"
-msgstr "boks-IP"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:318
 #, fuzzy
 msgid "case-insensitive"
-msgstr "Søkefølsomhet"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:317
 #, fuzzy
 msgid "case-sensitive"
-msgstr "Søkefølsomhet"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:576
+#, fuzzy
 msgid "descramble and record ecm"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:369
+#, fuzzy
 msgid "description contains"
-msgstr "i forklaringen"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:305
 #, fuzzy
 msgid "description match"
-msgstr "Beskrivelse"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:116
+#, fuzzy
 msgid "disabled"
-msgstr "frakoblet"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:336
+#, fuzzy
 msgid "do nothing"
-msgstr "gjør ingenting"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:577
+#, fuzzy
 msgid "don't descramble, record ecm"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:477
+#, fuzzy
 msgid "error! Loading Page"
-msgstr "feil! Lasting av side"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:304
+#, fuzzy
 msgid "exact title match"
-msgstr "eksakt navnesøk"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:314
 #, fuzzy
 msgid "favourite desc match"
-msgstr "favorittbeskrivelsesjamføring"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:140
+#, fuzzy
 msgid "finished"
-msgstr "sluttført"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:338
+#, fuzzy
 msgid "go to deep standby"
-msgstr "gå til helt avslått"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:337
+#, fuzzy
 msgid "go to standby"
-msgstr "gå til avslått"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:33
+#, fuzzy
 msgid "hour"
-msgstr "time"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:302
 #: ../plugin/controllers/models/info.py:305
 #: ../plugin/controllers/models/movies.py:283
 #: ../plugin/controllers/models/movies.py:413
 #: ../plugin/controllers/models/movies.py:841
+#, fuzzy
 msgid "kB"
-msgstr "kB"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:165
+#, fuzzy
 msgid "loading"
-msgstr "laster"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:78
 #: ../plugin/controllers/models/info.py:97
+#, fuzzy
 msgid "manual/disabled"
-msgstr "manuell/frakoblet"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:171
+#, fuzzy
 msgid "mins"
-msgstr "min"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:33
+#, fuzzy
 msgid "minute"
-msgstr "minutt"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:180
+#, fuzzy
 msgid "no description available"
-msgstr "beskrivelse savnes"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:154 ../plugin/controllers/models/info.py:189
+#, fuzzy
 msgid "none/IPv4-only network"
-msgstr "ingen/IPv4 nettverk"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:575
+#, fuzzy
 msgid "normal"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:371
+#, fuzzy
 msgid "on day"
-msgstr "på dagen"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:370
+#, fuzzy
 msgid "on weekday"
-msgstr "på ukedager"
+msgstr ""
 
 #. Vad nu det här kan vara bra för?
 #: ../plugin/controllers/BouquetEditor.py:87
+#, fuzzy
 msgid "one two three four unknown command"
-msgstr "en to tre fire ukjent kommando"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:303
+#, fuzzy
 msgid "partial title match"
-msgstr "delvis navnejamføring"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:463
+#, fuzzy
 msgid "r/o"
-msgstr "r/o"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:459
+#, fuzzy
 msgid "r/w"
-msgstr "r/w"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:320
+#, fuzzy
 msgid "record"
-msgstr "spill inn"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:315
+#, fuzzy
 msgid "regex match (experimental)"
-msgstr "jamføring med regulære uttrykk (eksperimentelt)"
+msgstr ""
 
 #: ../plugin/controllers/models/movies.py:484
+#, fuzzy
 msgid "remove"
-msgstr "fjern"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:211
+#, fuzzy
 msgid "running"
-msgstr "gjeldende"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:222
+#, fuzzy
 msgid "seconds"
-msgstr "sekunder"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:359
+#, fuzzy
 msgid "select bouquets"
-msgstr "velg kanallister"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:358
+#, fuzzy
 msgid "select channels"
-msgstr "velg kanaler"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:356
+#, fuzzy
 msgid "select tags"
-msgstr "velg merker"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:368
+#, fuzzy
 msgid "short description contains"
-msgstr "i kortforklaringen"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:310 ../plugin/controllers/i18n.py:311
 #, fuzzy
 msgid "short description match"
-msgstr "samsvarersøk på kort beskrivelse"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:334
+#, fuzzy
 msgid "standard"
-msgstr "standard"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:74
 #: ../plugin/controllers/models/info.py:86
 #: ../plugin/controllers/models/info.py:93
+#, fuzzy
 msgid "static"
-msgstr "statisk"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:250
 #, fuzzy
 msgid "this service is protected by a parental control pin"
-msgstr "tjenesten beskyttes av en foreldrekontroll-PIN"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:367
+#, fuzzy
 msgid "title contains"
-msgstr "i tittel"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:313
+#, fuzzy
 msgid "title ends with"
-msgstr "navn starter med"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:306 ../plugin/controllers/i18n.py:307
 #, fuzzy
 msgid "title or description match"
-msgstr "samsvarssøk på tittel eller beskrivelse"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:308 ../plugin/controllers/i18n.py:309
 #, fuzzy
 msgid "title or short description match"
-msgstr "samsvarssøk på tittel eller kort beskrivelse"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:312
+#, fuzzy
 msgid "title starts with"
-msgstr "navn starter med"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:261
+#, fuzzy
 msgid "transcoded"
-msgstr "nedskalert"
+msgstr ""
 
 #: ../plugin/controllers/web.py:716
+#, fuzzy
 msgid "type %s is not a number"
-msgstr "type %s er ikke et tall"
+msgstr ""
 
 #: ../plugin/controllers/models/info.py:102
 #: ../plugin/controllers/models/info.py:119
+#, fuzzy
 msgid "unknown"
-msgstr "ukjent"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:497
+#, fuzzy
 msgid "using"
-msgstr "bruker"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:465
+#, fuzzy
 msgid "via"
-msgstr "via"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:284
+#, fuzzy
 msgid "waiting"
-msgstr "venter"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:373
+#, fuzzy
 msgid "weekday"
-msgstr "Ukedager"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:372
+#, fuzzy
 msgid "weekend"
-msgstr "Helg"
+msgstr ""
 
 #: ../plugin/controllers/ipkg.py:315
+#, fuzzy
 msgid "wrong filetype"
-msgstr "feil filtype"
+msgstr ""
 
 #: ../plugin/controllers/i18n.py:321
+#, fuzzy
 msgid "zap"
-msgstr "gå til"
+msgstr ""

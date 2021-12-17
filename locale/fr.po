@@ -1,4 +1,3 @@
-# J. Lavoie <j.lavoie@net-c.ca>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
@@ -17,18 +16,15 @@ msgstr ""
 "X-Poedit-SearchPath-0: ../plugin\n"
 
 #: ../plugin/controllers/models/timers.py:61
-#, python-format
 msgid "%02d.%02d."
 msgstr "%02d.%02d."
 
 #: ../plugin/controllers/models/timers.py:63
-#, python-format
 msgid "%02d.%02d.%d"
 msgstr "%02d.%02d.%d"
 
 #: ../plugin/controllers/models/movies.py:70
 #: ../plugin/controllers/models/timers.py:65
-#, python-format
 msgid "%02d:%02d"
 msgstr "%02d:%02d"
 
@@ -50,28 +46,23 @@ msgstr "%d.%m.%Y %H:%M"
 
 #: ../plugin/controllers/models/movies.py:66
 #: ../plugin/controllers/models/timers.py:59
-#, python-format
 msgid "%s %02d.%02d."
 msgstr "%s %02d.%02d."
 
 #: ../plugin/controllers/models/movies.py:68
-#, python-format
 msgid "%s %02d.%02d.%d"
 msgstr "%s %02d.%02d.%d"
 
 #: ../plugin/controllers/BouquetEditor.py:549
-#, python-format
 msgid "%s %s is locked."
 msgstr "%s %s est verrouillé."
 
 #: ../plugin/controllers/i18n.py:129
-#, python-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #: ../plugin/controllers/models/info.py:306
 #: ../plugin/controllers/models/info.py:430
-#, python-format
 msgid "%s free / %s total"
 msgstr "%s de libre / %s au total"
 
@@ -164,7 +155,6 @@ msgid "Add tags to recordings"
 msgstr "Ajouters des tags aux enregistrements"
 
 #: ../plugin/controllers/BouquetEditor.py:466
-#, python-format
 msgid "Added %s to alternative service %s."
 msgstr "%s a été ajouté au service alternatif %s."
 
@@ -202,7 +192,6 @@ msgid "Allow duplicates"
 msgstr "Autoriser les doublons"
 
 #: ../plugin/controllers/BouquetEditor.py:452
-#, python-format
 msgid "Alternative %s created failed."
 msgstr "Échec de la création de l'alternatif %s."
 
@@ -294,7 +283,7 @@ msgstr "AutoPoll"
 msgid "AutoTimer Edit"
 msgstr "Éditer Auto Timer"
 
-# New Autotimer Setting Windows name (not enabled to transfer atm)
+#. New Autotimer Setting Windows name (not enabled to transfer atm)
 #: ../plugin/controllers/i18n.py:396
 msgid "AutoTimer Settings"
 msgstr "Paramètres AutoTimer"
@@ -340,47 +329,38 @@ msgid "Bookmarks"
 msgstr "Favoris"
 
 #: ../plugin/controllers/BouquetEditor.py:128
-#, python-format
 msgid "Bouquet %s already exists."
 msgstr "Le bouquet %s existe déjà."
 
 #: ../plugin/controllers/BouquetEditor.py:219
-#, python-format
 msgid "Bouquet %s can not be moved."
 msgstr "Bouquet %s ne peut pas être déplacé."
 
 #: ../plugin/controllers/BouquetEditor.py:123
-#, python-format
 msgid "Bouquet %s created."
 msgstr "Bouquet %s créé."
 
 #: ../plugin/controllers/BouquetEditor.py:192
-#, python-format
 msgid "Bouquet %s deleted."
 msgstr "Bouquet %s effacé."
 
 #: ../plugin/controllers/BouquetEditor.py:547
-#, python-format
 msgid "Bouquet %s is locked."
 msgstr "Le bouquet %s est vérouillé."
 
 #: ../plugin/controllers/BouquetEditor.py:555
-#, python-format
 msgid "Bouquet %s is unlocked."
 msgstr "Le bouquet %s est dévérouillé."
 
 #: ../plugin/controllers/BouquetEditor.py:217
-#, python-format
 msgid "Bouquet %s moved."
 msgstr "Bouquet %s déplacé."
 
 #: ../plugin/controllers/BouquetEditor.py:187
-#, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
 msgstr "Impossible d'effacer le bouquet %s, la référence du service ou de la liste mutable n'est pas valide."
 
 #: ../plugin/controllers/BouquetEditor.py:185
-#, python-format
 msgid "Bouquet %s removed failed."
 msgstr "Impossible d'effacer le bouquet %s."
 
@@ -473,6 +453,7 @@ msgstr "Caractère d'encodage pour les données EPG"
 msgid "Chipset"
 msgstr "Processeur"
 
+#. There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:99
 msgid "Cleanup Timers"
 msgstr "Nettoyer les Timers"
@@ -490,7 +471,6 @@ msgid "Config"
 msgstr "Config"
 
 #: ../plugin/controllers/models/timers.py:296
-#, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Des timers sont en conflit! %s"
 
@@ -503,12 +483,10 @@ msgid "Control"
 msgstr "Contrôle"
 
 #: ../plugin/controllers/models/timers.py:339
-#, python-format
 msgid "Could not add timer '%s'!"
 msgstr "Impossible d'ajouter le timer '%s'!"
 
 #: ../plugin/controllers/models/timers.py:485
-#, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Impossible de trouver le timer '%s' avec l'heure de début et de fin donnée!"
 
@@ -590,11 +568,9 @@ msgid "Delete Timer"
 msgstr "Effacer Timer"
 
 #: ../plugin/controllers/models/movies.py:490
-msgid ""
-"Delete failed, because there is no movie trash !\n"
-"Disable movie trash in configuration to delete this item"
+msgid "Delete failed, because there is no movie trash !\nDisable movie trash in configuration to delete this item"
 msgstr ""
-"Echec de la suppression, parce qu’il n’y a pas de corbeille pour les films !\n"
+"Echec de la suppression, parce qu’il n’y a pas de corbeille pour les films !"
 "Désactiver la corbeille des films dans la configuration pour effacer cet élément"
 
 #: ../plugin/controllers/i18n.py:516
@@ -805,7 +781,6 @@ msgid "Error upload File"
 msgstr "Erreur lors du chargement de fichier"
 
 #: ../plugin/controllers/BouquetEditor.py:592
-#, python-format
 msgid "Error while preparing backup file, %s does not exists."
 msgstr "Erreur lors de la préparation du fichier de sauvegarde, %s n'existe pas."
 
@@ -818,17 +793,14 @@ msgid "Error writing File"
 msgstr "Erreur lors de l'écriture du fichier"
 
 #: ../plugin/controllers/BouquetEditor.py:653
-#, python-format
 msgid "Error, %s does not exists, restore is not possible..."
 msgstr "Erreur, %s n'existe pas, la restauration est impossible..."
 
 #: ../plugin/controllers/BouquetEditor.py:651
-#, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
 msgstr "Erreur, %s n'a pas été créé avec WebBoquetEditor..."
 
 #: ../plugin/controllers/BouquetEditor.py:194
-#, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
 msgstr "Erreur: le bouquet %s n'a pas pu être effacé, OSError."
 
@@ -880,6 +852,7 @@ msgstr "Version du firmware"
 msgid "Force"
 msgstr "Forcer"
 
+#. Cuma
 #: ../plugin/controllers/i18n.py:42
 msgid "Fr"
 msgstr "Ve"
@@ -1040,7 +1013,6 @@ msgid "Internal error!"
 msgstr "Erreur interne!"
 
 #: ../plugin/controllers/i18n.py:398
-#, python-format
 msgid "Interval (in %s)"
 msgstr "Intervalle (en %s)"
 
@@ -1182,7 +1154,6 @@ msgid "Minute"
 msgstr "Minute"
 
 #: ../plugin/controllers/web.py:85
-#, python-format
 msgid "Missing mandatory parameter '%s'"
 msgstr "Il manque le paramètre obligatoire '%s'"
 
@@ -1455,6 +1426,7 @@ msgstr "Oups, pas de correspondance trouvée pour votre recherche"
 msgid "Oops..."
 msgstr "Oups..."
 
+#. The translation could have been sharper but as it has to fit in it’s frame this may be an acceptable compromise. I would have prefered: "Open Source webbgränssnitt för Linuxbaserade digitalboxar"...
 #: ../plugin/controllers/i18n.py:188
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Open Source Web Interface pour récepteur Linux"
@@ -1489,6 +1461,7 @@ msgstr "OpenWebif url:"
 msgid "Orbital Position"
 msgstr "Position orbitale"
 
+#. One extra space inserted in front for better readability in context.
 #: ../plugin/controllers/i18n.py:322
 msgid "Override found with alternative service"
 msgstr "Écraser les résultats avec les services alternatifs"
@@ -1666,6 +1639,7 @@ msgstr "Réinitialisation"
 msgid "Reset count"
 msgstr "Remise à zéro du compteur"
 
+#. Have to use "GUI" because of limited space. I would prefere "Användargränssnitt" if space were without limits.
 #: ../plugin/controllers/i18n.py:210
 msgid "Restart GUI"
 msgstr "Redémarrer l'IGU"
@@ -1690,6 +1664,7 @@ msgstr "SLAAC"
 msgid "SNR"
 msgstr "SNR"
 
+#. Saturday
 #: ../plugin/controllers/i18n.py:43
 msgid "Sa"
 msgstr "Sa"
@@ -1776,47 +1751,40 @@ msgstr "Envoyer un message"
 msgid "September"
 msgstr "Septembre"
 
+#. Översätts ofta till Leverantör i stället.
 #: ../plugin/controllers/i18n.py:226
 msgid "Service"
 msgstr "Service"
 
 #: ../plugin/controllers/BouquetEditor.py:314
-#, python-format
 msgid "Service %s added."
 msgstr "Service %s ajouté."
 
 #: ../plugin/controllers/BouquetEditor.py:317
-#, python-format
 msgid "Service %s already exists in bouquet %s."
 msgstr "Le service %s existe déjà dans le bouquet %s."
 
 #: ../plugin/controllers/BouquetEditor.py:249
-#, python-format
 msgid "Service %s can not be removed."
 msgstr "Le service %s ne peut pas être enlevé."
 
 #: ../plugin/controllers/BouquetEditor.py:545
-#, python-format
 msgid "Service %s is locked."
 msgstr "Le service %s est vérouillé."
 
 #: ../plugin/controllers/BouquetEditor.py:553
-#, python-format
 msgid "Service %s is unlocked."
 msgstr "Le service %s est dévérouillé."
 
 #: ../plugin/controllers/BouquetEditor.py:274
-#, python-format
 msgid "Service %s moved."
 msgstr "Service %s déplacé."
 
 #: ../plugin/controllers/BouquetEditor.py:248
-#, python-format
 msgid "Service %s removed from bouquet %s."
 msgstr "Le service %s enlevé du bouquet %s."
 
 #: ../plugin/controllers/BouquetEditor.py:240
-#, python-format
 msgid "Service %s removed."
 msgstr "Le service %s supprimé."
 
@@ -1949,7 +1917,6 @@ msgstr "Le timer de sommeil est activé"
 #: ../plugin/controllers/models/timers.py:949
 #: ../plugin/controllers/models/timers.py:1058
 #: ../plugin/controllers/models/timers.py:1072
-#, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Le timer de sommeil défini pour %d minutes"
 
@@ -2013,6 +1980,7 @@ msgstr "Clients de stream"
 msgid "Streaming port"
 msgstr "Port de streaming"
 
+#. Sunday
 #: ../plugin/controllers/i18n.py:44
 msgid "Su"
 msgstr "Di"
@@ -2088,12 +2056,12 @@ msgstr "Terrestre"
 msgid "Text"
 msgstr "Texte"
 
+#. Thursday
 #: ../plugin/controllers/i18n.py:41
 msgid "Th"
 msgstr "Je"
 
 #: ../plugin/controllers/web.py:91 ../plugin/controllers/web.py:1568
-#, python-format
 msgid "The parameter '%s' can't be empty"
 msgstr "Le paramètre '%s' ne peut pas être vide"
 
@@ -2101,19 +2069,17 @@ msgstr "Le paramètre '%s' ne peut pas être vide"
 msgid "The parameter 'command' must be a number"
 msgstr "Le paramètre 'command' doit être un nombre"
 
+#. The word "framgångsrikt" to get a string to end the sentence.
 #: ../plugin/controllers/models/timers.py:548
-#, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "Le timer '%s' a été %s avec succès"
 
 #: ../plugin/controllers/models/timers.py:498
 #: ../plugin/controllers/models/timers.py:504
-#, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Le timer '%s' a été effacé avec succès"
 
 #: ../plugin/controllers/models/timers.py:540
-#, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "Le timer '%s' en cours d'enregistrement! Pas désactivé!"
 
@@ -2155,27 +2121,22 @@ msgid "Timer"
 msgstr "Timer"
 
 #: ../plugin/controllers/models/timers.py:344
-#, python-format
 msgid "Timer '%s' added"
 msgstr "Timer '%s' ajouté"
 
 #: ../plugin/controllers/models/timers.py:534
-#, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Le timer '%s' existe déjà!"
 
 #: ../plugin/controllers/models/timers.py:460
-#, python-format
 msgid "Timer '%s' changed"
 msgstr "Timer '%s' modifié"
 
 #: ../plugin/controllers/models/timers.py:528
-#, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "Le timer '%s' pas activé à cause du conflit"
 
 #: ../plugin/controllers/models/timers.py:479
-#, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "Timer '%s' pas sauvegardé à cause du conflit"
 
@@ -2203,6 +2164,7 @@ msgstr "La liste des timers a été sauvegardée"
 msgid "Timerlist"
 msgstr "Liste des timers"
 
+#. There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
 #: ../plugin/controllers/i18n.py:258 ../plugin/controllers/i18n.py:380
 msgid "Timers"
 msgstr "Timers"
@@ -2236,6 +2198,7 @@ msgstr "Essayer de deviner"
 msgid "Tsid"
 msgstr "Tsid"
 
+#. Tuesday
 #: ../plugin/controllers/i18n.py:39
 msgid "Tu"
 msgstr "Ma"
@@ -2286,12 +2249,10 @@ msgid "Type"
 msgstr "Type"
 
 #: ../plugin/controllers/web.py:247
-#, python-format
 msgid "Unknown Volume command %s"
 msgstr "Commande de Volume %s inconnue"
 
 #: ../plugin/controllers/models/timers.py:715
-#, python-format
 msgid "Unknown command: '%s'"
 msgstr "Commande inconnue: '%s'"
 
@@ -2428,6 +2389,7 @@ msgstr "Réveil"
 msgid "Warning"
 msgstr "Avertissement"
 
+#. Wednesday
 #: ../plugin/controllers/i18n.py:40
 msgid "We"
 msgstr "Me"
@@ -2466,7 +2428,6 @@ msgid "Would you like to save your changes?"
 msgstr "Voulez-vous sauvegarder vos changements?"
 
 #: ../plugin/controllers/web.py:242
-#, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Mauvais format du paramètre 'set=%s'. Utilisation de set=set15 "
 
@@ -2624,6 +2585,7 @@ msgstr "dans la journée"
 msgid "on weekday"
 msgstr "pendant les jours de la semaine"
 
+#. Vad nu det här kan vara bra för?
 #: ../plugin/controllers/BouquetEditor.py:87
 msgid "one two three four unknown command"
 msgstr "un deux trois quatre commande inconnue"
@@ -2719,7 +2681,6 @@ msgid "transcoded"
 msgstr "transcodé"
 
 #: ../plugin/controllers/web.py:716
-#, python-format
 msgid "type %s is not a number"
 msgstr "le type %s n'est pas un nombre"
 
