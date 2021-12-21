@@ -140,3 +140,7 @@ or
 
 ### Updating Assets
 Find out how to [make changes to OpenWebif's JS & CSS assets](sourcefiles/README.md)
+
+## Translation status
+
+[![Translation status](https://hosted.weblate.org/widgets/e2openplugin-OpenWebif/-/e2openplugin-OpenWebif/open-graph.png)](https://hosted.weblate.org/engage/e2openplugin-OpenWebif/)
