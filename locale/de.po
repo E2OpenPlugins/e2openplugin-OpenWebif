@@ -1,18 +1,19 @@
+# jbleyel <jbleyel@gmx.net>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 21:02+0100\n"
-"PO-Revision-Date: 2021-12-02 19:56+0000\n"
+"PO-Revision-Date: 2021-12-22 19:15+0000\n"
 "Last-Translator: jbleyel <jbleyel@gmx.net>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/e2openplugin-"
-"openwebif/e2openplugin-openwebif/de/>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10-dev\n"
+"X-Generator: Weblate 4.10.1\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
@@ -86,7 +87,7 @@ msgid "Add Bouquet"
 msgstr "Bouquet hinzufügen"
 
 msgid "Add IPTV/URL"
-msgstr ""
+msgstr "IPTV URL hinzufügen"
 
 msgid "Add Marker"
 msgstr "Marker hinzufügen"
@@ -120,7 +121,7 @@ msgid "Add similar on conflict"
 msgstr "Bei Konflikt ähnliche Sendungen zufügen"
 
 msgid "Add tags to recordings"
-msgstr ""
+msgstr "Tags zu Aufnahmen hinzufügen"
 
 #, python-format
 msgid "Added %s to alternative service %s."
@@ -170,7 +171,7 @@ msgid "Answer is YES!"
 msgstr "Antwort lautet JA!"
 
 msgid "Any day"
-msgstr ""
+msgstr "Jeden Tag"
 
 msgid "Any service/recording"
 msgstr "Service/Aufnahme beliebig"
@@ -420,13 +421,13 @@ msgid "Date"
 msgstr "Datum"
 
 msgid "Date (newest)"
-msgstr ""
+msgstr "Datum (neustes)"
 
 msgid "Date (oldest)"
-msgstr ""
+msgstr "Datum (ältestes)"
 
 msgid "Debug - Display Tracebacks in browser"
-msgstr ""
+msgstr "Debug - Zeige Tracebacks im Browser"
 
 msgid "December"
 msgstr "Dezember"
@@ -611,7 +612,7 @@ msgid "Enter a name for this AutoTimer"
 msgstr "Neuen Namen des Markers eingeben"
 
 msgid "Enter path"
-msgstr ""
+msgstr "Pfad eingeben"
 
 msgid "Enter the text to find in the EPG"
 msgstr ""
@@ -1169,7 +1170,7 @@ msgid "Playback"
 msgstr "Abspielen"
 
 msgid "Playback IPTV Streams in browser"
-msgstr ""
+msgstr "IPTV Streams im Browser abspielen"
 
 msgid "Playlist"
 msgstr "Wiedergabeliste"
@@ -1188,7 +1189,7 @@ msgid "PowerTimer feature not available"
 msgstr "PowerTimer-Funktion nicht verfügbar"
 
 msgid "Preview"
-msgstr ""
+msgstr "Vorschau"
 
 msgid "Primetimes"
 msgstr "Hauptzeit"
@@ -1439,7 +1440,7 @@ msgid "Show in Extensions menu"
 msgstr "Im Erweiterungsmenü anzeigen"
 
 msgid "Show picon background"
-msgstr ""
+msgstr "Zeige Piconhintergrund"
 
 #, fuzzy
 msgid "Show picons"
@@ -1682,7 +1683,7 @@ msgid "To date"
 msgstr "Ausführung nicht vor"
 
 msgid "Today"
-msgstr ""
+msgstr "Heute"
 
 msgid "Transcode"
 msgstr "Transcodieren"
@@ -1765,13 +1766,13 @@ msgid "Uploaded Files"
 msgstr "Hochgeladene Dateien"
 
 msgid "Use Channelname for screenshots"
-msgstr ""
+msgstr "Nutze Sendername für Screenshots"
 
 msgid "Use a custom location"
 msgstr "Angepasstes Aufnahmeverzeichnis"
 
 msgid "Use as PiP if possible"
-msgstr ""
+msgstr "Nutze PiP wenn möglich"
 
 #, fuzzy
 msgid "Use classic interface"
@@ -1885,7 +1886,7 @@ msgid "Yes/No"
 msgstr "Ja/Nein"
 
 msgid "Yesterday"
-msgstr ""
+msgstr "Gestern"
 
 msgid "Zap"
 msgstr "Umschalten"
