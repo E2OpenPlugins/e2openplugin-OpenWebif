@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 21:02+0100\n"
-"PO-Revision-Date: 2021-12-02 19:57+0000\n"
+"PO-Revision-Date: 2021-12-23 21:59+0100\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/e2openplugin-"
 "openwebif/e2openplugin-openwebif/nl/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10-dev\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
@@ -526,9 +526,8 @@ msgstr ""
 msgid "Edit"
 msgstr "Aanpassen"
 
-#, fuzzy
 msgid "Edit Recording"
-msgstr "Verwijder opname"
+msgstr "Wijzig opname"
 
 msgid "Edit Timer"
 msgstr "Pas timer aan"
@@ -584,9 +583,8 @@ msgstr "Einde van de tijdspanne 'Na afloop'"
 msgid "End of timespan"
 msgstr "Eindtijd"
 
-#, fuzzy
 msgid "Enter Text"
-msgstr "Geef het path in"
+msgstr "Tekst invoeren"
 
 msgid "Enter a name for the new bouquet"
 msgstr "Geef de neiuwe naam van de lijst"
@@ -1444,7 +1442,7 @@ msgid "Software"
 msgstr "Software"
 
 msgid "Sorry this page is not yet implemented"
-msgstr "Deze pagina is niet geï¿œmplementeerd"
+msgstr "Deze pagina is nog niet geïmplementeerd"
 
 msgid "Sort"
 msgstr "Sorteer"
@@ -1742,9 +1740,8 @@ msgstr "Gebruik een modern ontwerp"
 msgid "Use modern interface"
 msgstr "Gebruik de nieuwe vormgeving"
 
-#, fuzzy
 msgid "Use old remote"
-msgstr "Verberg volledige AB"
+msgstr "Gebruik oude AB"
 
 msgid "VPS"
 msgstr "VPS"
@@ -1795,7 +1792,7 @@ msgid "Warning"
 msgstr "Waarschuwing"
 
 msgid "We"
-msgstr "Wij"
+msgstr "wo"
 
 msgid "Web TV"
 msgstr "Web TV"
@@ -1916,9 +1913,8 @@ msgstr "bezig met laden"
 msgid "manual/disabled"
 msgstr "handmatig/uitgeschakeld"
 
-#, fuzzy
 msgid "mins"
-msgstr "mins"
+msgstr "minuten"
 
 msgid "minute"
 msgstr "minuut"
