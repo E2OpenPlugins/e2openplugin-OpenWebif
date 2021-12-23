@@ -1,46 +1,46 @@
-#
+# pololoko111 <peciek83@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 21:02+0100\n"
-"PO-Revision-Date: 2021-12-02 19:57+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/e2openplugin-"
-"openwebif/e2openplugin-openwebif/pl/>\n"
+"PO-Revision-Date: 2021-12-23 21:39+0000\n"
+"Last-Translator: pololoko111 <peciek83@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.10-dev\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #, python-format
 msgid "%02d.%02d."
-msgstr ""
+msgstr "%02d.%02d."
 
 #, python-format
 msgid "%02d.%02d.%d"
-msgstr ""
+msgstr "%02d.%02d.%d"
 
 #, python-format
 msgid "%02d:%02d"
-msgstr ""
+msgstr "%02d:%02d"
 
 msgid "%d.%m.%Y"
-msgstr ""
+msgstr "%d.%m.%Y"
 
 msgid "%d.%m.%Y %H:%M"
-msgstr ""
+msgstr "%d.%m.%Y %H:%M"
 
 #, python-format
 msgid "%s %02d.%02d."
-msgstr ""
+msgstr "%s %02d.%02d."
 
 #, python-format
 msgid "%s %02d.%02d.%d"
-msgstr ""
+msgstr "%s %02d.%02d.%d"
 
 #, python-format
 msgid "%s %s is locked."
@@ -48,7 +48,7 @@ msgstr "%s %s jest zablokowany."
 
 #, python-format
 msgid "%s / %s"
-msgstr ""
+msgstr "%s / %s"
 
 #, python-format
 msgid "%s free / %s total"
@@ -57,7 +57,6 @@ msgstr "%s wolne / %s ogółem"
 msgid "(Press 'shift' and click to 'hold')"
 msgstr "(Naciśnij „Shift” i kliknij, aby „przytrzymać”)"
 
-#, fuzzy
 msgid "(in minutes)"
 msgstr "(w minutach)"
 
@@ -68,7 +67,7 @@ msgid "A value is required"
 msgstr "Musisz coś wpisać"
 
 msgid "AGC"
-msgstr ""
+msgstr "AGC"
 
 msgid "About"
 msgstr "O OpenWebif"
@@ -106,7 +105,6 @@ msgstr "Dodaj AutoTimer"
 msgid "Add channel(s) as alternate"
 msgstr "Dodaj kanał(y) jako alternatywne"
 
-#, fuzzy
 msgid "Add filters"
 msgstr "Dodaj filtry"
 
@@ -176,7 +174,7 @@ msgid "Any service/recording"
 msgstr "Dowolna usługa/nagranie"
 
 msgid "Apid"
-msgstr ""
+msgstr "Apid"
 
 msgid "April"
 msgstr "Kwiecień"
@@ -187,7 +185,6 @@ msgstr "Czy na pewno chcesz usunąć bukiet?"
 msgid "Are you sure you want to delete the selected item(s)?"
 msgstr "Czy na pewno chcesz usunąć wybrany(e) element(y)?"
 
-#, fuzzy
 msgid "Are you sure you want to delete this AutoTimer?"
 msgstr "Czy na pewno chcesz usunąć ten AutoTimer?"
 
@@ -219,10 +216,10 @@ msgid "Authors"
 msgstr "Autorzy"
 
 msgid "Auto"
-msgstr ""
+msgstr "Auto"
 
 msgid "AutoPoll"
-msgstr ""
+msgstr "AutoPoll"
 
 msgid "AutoTimer Edit"
 msgstr "Edycja AutoTimera"
@@ -237,7 +234,7 @@ msgid "Autotimer Preview"
 msgstr "Podgląd AutoTimera"
 
 msgid "BER"
-msgstr ""
+msgstr "BER"
 
 msgid "Back"
 msgstr "Wstecz"
@@ -248,9 +245,8 @@ msgstr "Tylko tło"
 msgid "Begin"
 msgstr "Początek"
 
-#, fuzzy
 msgid "Begin of \"After event\" timespan"
-msgstr "Początek okresu „po zdarzeniu”"
+msgstr "Początek okresu „Po wydarzeniu”"
 
 msgid "Beginning of timespan"
 msgstr "Początek okresu"
@@ -363,7 +359,7 @@ msgid "Character encoding for EPG data"
 msgstr "Kodowanie znaków danych EPG"
 
 msgid "Chipset"
-msgstr ""
+msgstr "Chipset"
 
 msgid "Cleanup Timers"
 msgstr "Wyczyść timery"
@@ -412,7 +408,7 @@ msgid "Custom offset"
 msgstr "Własne przesunięcie"
 
 msgid "DHCP"
-msgstr ""
+msgstr "DHCP"
 
 msgid "Date"
 msgstr "Data"
@@ -466,7 +462,6 @@ msgstr "Usunięto"
 msgid "Description"
 msgstr "Opis"
 
-#, fuzzy
 msgid "Disable"
 msgstr "Wyłącz"
 
@@ -489,7 +484,7 @@ msgid "Distro"
 msgstr "Dystrybucja"
 
 msgid "Dolby"
-msgstr ""
+msgstr "Dolby"
 
 msgid "Don't create timer when movie exists in database"
 msgstr "Nie twórz timera gdy nagranie istnieje w bazie danych"
@@ -510,10 +505,10 @@ msgid "Duration"
 msgstr "Czas trwania"
 
 msgid "E"
-msgstr ""
+msgstr "E"
 
 msgid "EPG"
-msgstr ""
+msgstr "EPG"
 
 msgid "EPG Search"
 msgstr "Wyszukiwanie w EPG"
@@ -529,11 +524,9 @@ msgstr ""
 "BŁĄD: Nie można ustawić SleepTimera gdy urządzenie znajduje się w trybie "
 "czuwania."
 
-#, fuzzy
 msgid "Edit"
 msgstr "Edytuj"
 
-#, fuzzy
 msgid "Edit Recording"
 msgstr "Edytuj nagranie"
 
@@ -543,7 +536,6 @@ msgstr "Edycja timera"
 msgid "Editor"
 msgstr "Edytor"
 
-#, fuzzy
 msgid "Enable"
 msgstr "Włącz"
 
@@ -586,14 +578,12 @@ msgstr "Zaszyfrowane"
 msgid "End"
 msgstr "Koniec"
 
-#, fuzzy
 msgid "End of \"After event\" timespan"
-msgstr "Koniec okresu „po zdarzeniu”"
+msgstr "Koniec okresu „Po wydarzeniu”"
 
 msgid "End of timespan"
 msgstr "Koniec okresu"
 
-#, fuzzy
 msgid "Enter Text"
 msgstr "Wpisz tekst"
 
@@ -603,7 +593,6 @@ msgstr "Wpisz nazwę nowego bukietu"
 msgid "Enter a name for the new marker"
 msgstr "Wpisz nazwę nowego znacznika"
 
-#, fuzzy
 msgid "Enter a name for this AutoTimer"
 msgstr "Wprowadź nazwę dla tego AutoTimera"
 
@@ -656,9 +645,8 @@ msgstr "Każdy"
 msgid "Exclude when"
 msgstr "Wyklucz kiedy"
 
-#, fuzzy
 msgid "Execute \"After event\" during timespan"
-msgstr "Wykonaj „po zdarzeniu” w określonym przedziale czasu"
+msgstr "Wykonaj „Po zdarzeniu” w określonym przedziale czasu"
 
 msgid "Export"
 msgstr "Eksport"
@@ -706,7 +694,7 @@ msgid "Full remote"
 msgstr "Pełny pilot"
 
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 msgid "GUI version"
 msgstr "Wersja GUI"
@@ -721,7 +709,7 @@ msgid "Get mutable list for new created bouquet failed!"
 msgstr "Nie udało się uzyskać zmiennej listy dla nowo utworzonego bukietu!"
 
 msgid "HH:MM"
-msgstr ""
+msgstr "GG:MM"
 
 msgid "HTTP port"
 msgstr "Port HTTP"
@@ -824,7 +812,7 @@ msgid "Kernel"
 msgstr "Jądro"
 
 msgid "LCD"
-msgstr ""
+msgstr "LCD"
 
 msgid "LCD4Linux Setup"
 msgstr "Konfiguracja LCD4Linux"
@@ -841,7 +829,6 @@ msgstr "Szybkość łącza"
 msgid "List of Timers has been cleaned"
 msgstr "Lista timerów została wyczyszczona"
 
-#, fuzzy
 msgid "Loading..."
 msgstr "Ładowanie..."
 
@@ -855,7 +842,7 @@ msgid "MAC address"
 msgstr "Adres MAC"
 
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 msgid "Main"
 msgstr "Główny"
@@ -910,7 +897,7 @@ msgid "Mo"
 msgstr "Pn"
 
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgid "Mon"
 msgstr "Pon"
@@ -924,7 +911,6 @@ msgstr "Miesięcznie"
 msgid "More"
 msgstr "Więcej"
 
-#, fuzzy
 msgid "More details"
 msgstr "Więcej szczegółów"
 
@@ -973,7 +959,6 @@ msgstr "Nigdy"
 msgid "New"
 msgstr "Nowy"
 
-#, fuzzy
 msgid "New Bookmark:"
 msgstr "Nowa zakładka:"
 
@@ -983,9 +968,8 @@ msgstr "Nowa nazwa"
 msgid "No"
 msgstr "Nie"
 
-#, fuzzy
 msgid "No EPG data available."
-msgstr "Brak danych EPG."
+msgstr "Brak dostępnych danych EPG."
 
 msgid "No Parent Control Setup Pin given!"
 msgstr "Nie podano PINu ustawień kontroli rodzicielskiej!"
@@ -1008,9 +992,8 @@ msgstr "Nie znaleziono wydarzenia! Nie nagrywam!"
 msgid "No marker-name given!"
 msgstr "Nie podano nazwy znacznika!"
 
-#, fuzzy
 msgid "No matches were found in the EPG"
-msgstr "Nie znaleziono dopasowań w EPG"
+msgstr "Nie znaleziono żadnych dopasowań w EPG"
 
 msgid "No matching Timer found"
 msgstr "Nie znaleziono pasującego timera"
@@ -1061,7 +1044,7 @@ msgid "OSCam Webinterface"
 msgstr "Interfejs sieciowy OSCam"
 
 msgid "OSD"
-msgstr ""
+msgstr "OSD"
 
 msgid "October"
 msgstr "Październik"
@@ -1082,7 +1065,7 @@ msgid "On same service"
 msgstr "W tej samej usłudze"
 
 msgid "Onid"
-msgstr ""
+msgstr "Onid"
 
 msgid "Only match between dates"
 msgstr "Dopasuj tylko między datami"
@@ -1094,7 +1077,7 @@ msgid "Oops, no results matched your search"
 msgstr "Oops, brak rezultatów wyszukiwania"
 
 msgid "Oops..."
-msgstr ""
+msgstr "Ups..."
 
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Interfejs sieciowy typu Open Source dla odbiorników z systemem Linux"
@@ -1114,7 +1097,6 @@ msgstr "Konfiguracja OpenWebif"
 msgid "OpenWebif Settings"
 msgstr "Ustawienia OpenWebif"
 
-#, fuzzy
 msgid "OpenWebif url:"
 msgstr "OpenWebif URL:"
 
@@ -1137,10 +1119,10 @@ msgid "Parse AutoTimer"
 msgstr "Analizuj AutoTimer"
 
 msgid "Pcrpid"
-msgstr ""
+msgstr "Pcrpid"
 
 msgid "PiP"
-msgstr ""
+msgstr "PiP"
 
 msgid "Picture in Picture"
 msgstr "Obraz w obrazie"
@@ -1164,7 +1146,7 @@ msgid "Playlist format"
 msgstr "Format listy odtwarzania"
 
 msgid "Pmtpid"
-msgstr ""
+msgstr "Pmtpid"
 
 msgid "Power Control"
 msgstr "Opcje zasilania"
@@ -1188,10 +1170,10 @@ msgid "Providers"
 msgstr "Dostawcy"
 
 msgid "REC"
-msgstr ""
+msgstr "REC"
 
 msgid "Radio"
-msgstr ""
+msgstr "Radio"
 
 msgid "Reboot Box"
 msgstr "Zrestartuj odbiornik"
@@ -1202,7 +1184,6 @@ msgstr "Nagraj maksymalnie x razy"
 msgid "Recording Status"
 msgstr "Status nagrywania"
 
-#, fuzzy
 msgid "Recording Type"
 msgstr "Typ nagrywania"
 
@@ -1227,7 +1208,6 @@ msgstr "Pełny pilot"
 msgid "Remove Package"
 msgstr "Usuń pakiet"
 
-#, fuzzy
 msgid "Remove filter"
 msgstr "Usuń filter"
 
@@ -1250,7 +1230,7 @@ msgid "Require description to be unique"
 msgstr "Wymagaj, aby opis był niepowtarzalny"
 
 msgid "Reset"
-msgstr ""
+msgstr "Resetowanie"
 
 msgid "Reset count"
 msgstr "Wyzeruj licznik"
@@ -1261,18 +1241,17 @@ msgstr "Uruchom ponownie GUI"
 msgid "Restrict to bouquets"
 msgstr "Ogranicz do bukietów"
 
-#, fuzzy
 msgid "Restrict to channels"
 msgstr "Ogranicz do kanałów"
 
 msgid "Root"
-msgstr ""
+msgstr "Root"
 
 msgid "SLAAC"
-msgstr ""
+msgstr "SLAAC"
 
 msgid "SNR"
-msgstr ""
+msgstr "SNR"
 
 msgid "Sa"
 msgstr "So"
@@ -1310,18 +1289,15 @@ msgstr "Szukaj w IMDb"
 msgid "Search KinoPoisk"
 msgstr "Szukaj w KinoPoisk"
 
-#, fuzzy
 msgid "Search TV Guide UK"
-msgstr "Szukaj w przewodniku TV UK"
+msgstr "Szukaj w przewodniku TV w UK"
 
 msgid "Search by name, sd / hd / uhd, or provider"
 msgstr "Szukaj po nazwie, SD / HD / UHD lub dostawcy"
 
-#, fuzzy
 msgid "Search strictness"
 msgstr "Wyszukaj ściśle"
 
-#, fuzzy
 msgid "Search type"
 msgstr "Typ wyszukiwania"
 
@@ -1405,7 +1381,6 @@ msgstr "Pokaż pełny OpenWebif"
 msgid "Show IPTV channels in selection (eg. Autotimer)"
 msgstr "Pokaż kanały IPTV w wyborze (np. AutoTimer)"
 
-#, fuzzy
 msgid "Show all packages"
 msgstr "Pokaż wszystkie pakiety"
 
@@ -1424,7 +1399,6 @@ msgstr "Pokaż w menu „Rozszerzenia”"
 msgid "Show picon background"
 msgstr "Pokaż tło pikon"
 
-#, fuzzy
 msgid "Show picons"
 msgstr "Pokaż pikony"
 
@@ -1438,7 +1412,7 @@ msgid "Shutdown"
 msgstr "Wyłącz"
 
 msgid "Sid"
-msgstr ""
+msgstr "Sid"
 
 msgid "Simulate"
 msgstr "Symuluj"
@@ -1475,10 +1449,10 @@ msgid "Sort"
 msgstr "Sortuj"
 
 msgid "Spinner"
-msgstr ""
+msgstr "Spinner"
 
 msgid "Sref"
-msgstr ""
+msgstr "Sref"
 
 msgid "Standby"
 msgstr "Czuwanie"
@@ -1487,7 +1461,7 @@ msgid "Standby Toggle"
 msgstr "Przełącznik trybu czuwania"
 
 msgid "Start"
-msgstr ""
+msgstr "Start"
 
 msgid "Start Instant Record"
 msgstr "Rozpocznij natychmiastowe nagrywanie"
@@ -1507,7 +1481,6 @@ msgstr "Strumieniuj"
 msgid "Stream Clients"
 msgstr "Klienci strumieniowania"
 
-#, fuzzy
 msgid "Streaming port"
 msgstr "Port strumieniowania"
 
@@ -1530,19 +1503,19 @@ msgid "Sunday"
 msgstr "Niedziela"
 
 msgid "System OE"
-msgstr ""
+msgstr "System OE"
 
 msgid "TB"
-msgstr ""
+msgstr "TB"
 
 msgid "TV"
-msgstr ""
+msgstr "TV"
 
 msgid "TV Guide"
 msgstr "Przewodnik TV"
 
 msgid "TV Multi EPG"
-msgstr ""
+msgstr "TV Multi EPG"
 
 msgid "Tags"
 msgstr "Tagi"
@@ -1590,7 +1563,6 @@ msgstr "Timer '%s' został nagrany! Nie wyłączony!"
 msgid "Theme"
 msgstr "Motyw"
 
-#, fuzzy
 msgid "Theme mode"
 msgstr "Tryb motywu"
 
@@ -1613,7 +1585,7 @@ msgid "Timeout"
 msgstr "Przerwa czasowa"
 
 msgid "Timer"
-msgstr ""
+msgstr "Timer"
 
 #, python-format
 msgid "Timer '%s' added"
@@ -1675,7 +1647,7 @@ msgid "Try guessing"
 msgstr "Spróbuj zgadnąć"
 
 msgid "Tsid"
-msgstr ""
+msgstr "Tsid"
 
 msgid "Tu"
 msgstr "Wt"
@@ -1754,7 +1726,6 @@ msgstr "Użyj własnej lokalizacji"
 msgid "Use as PiP if possible"
 msgstr "Jeśli to możliwe, używaj jako PiP"
 
-#, fuzzy
 msgid "Use classic interface"
 msgstr "Włącz klasyczny interfejs"
 
@@ -1764,19 +1735,17 @@ msgstr "Użyj własnego koloru"
 msgid "Use custom box name"
 msgstr "Użyj własnej nazwy odbiornika"
 
-#, fuzzy
 msgid "Use modern design"
 msgstr "Włącz nowoczesny wygląd"
 
 msgid "Use modern interface"
 msgstr "Włącz nowoczesny interfejs"
 
-#, fuzzy
 msgid "Use old remote"
 msgstr "Użyj starego pilota"
 
 msgid "VPS"
-msgstr ""
+msgstr "VPS"
 
 msgid "VPS plugin not found"
 msgstr "Nie znaleziono wtyczki VPS"
@@ -1806,10 +1775,10 @@ msgid "Volume Control"
 msgstr "Kontrola głośności"
 
 msgid "Vpid"
-msgstr ""
+msgstr "Vpid"
 
 msgid "W"
-msgstr ""
+msgstr "W"
 
 msgid "Waiting for answer ..."
 msgstr "Oczekuję na odpowiedź..."
@@ -1827,7 +1796,7 @@ msgid "We"
 msgstr "Śr"
 
 msgid "Web TV"
-msgstr ""
+msgstr "Telewizja internetowa"
 
 msgid "Wed"
 msgstr "Śro"
@@ -1855,7 +1824,7 @@ msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Niewłaściwy format parametru 'set=%s'. Użyj set=set15"
 
 msgid "YYYY-MM-DD"
-msgstr ""
+msgstr "RRRR-MM-DD"
 
 msgid "Yes"
 msgstr "Tak"
@@ -1881,21 +1850,18 @@ msgstr "Przełącz na"
 msgid "Zapped to"
 msgstr "Przełączono na"
 
-#, fuzzy
 msgid "any time"
-msgstr "w dowolnym czasie"
+msgstr "w każdej chwili"
 
 msgid "auto"
-msgstr ""
+msgstr "auto"
 
 msgid "box_ip"
-msgstr ""
+msgstr "box_ip"
 
-#, fuzzy
 msgid "case-insensitive"
 msgstr "bez rozróżniania wielkości liter"
 
-#, fuzzy
 msgid "case-sensitive"
 msgstr "z rozróżnianiem wielkości liter"
 
@@ -1905,9 +1871,8 @@ msgstr "deszyfruj i nagraj ecm"
 msgid "description contains"
 msgstr "opis zawiera"
 
-#, fuzzy
 msgid "description match"
-msgstr "dopasuj w opisie"
+msgstr "opis pasuje"
 
 msgid "disabled"
 msgstr "wyłączony"
@@ -1940,7 +1905,7 @@ msgid "hour"
 msgstr "godzina"
 
 msgid "kB"
-msgstr ""
+msgstr "kB"
 
 msgid "loading"
 msgstr "ładowanie"
@@ -1976,10 +1941,10 @@ msgid "partial title match"
 msgstr "częściowe dopasowanie w tytule"
 
 msgid "r/o"
-msgstr ""
+msgstr "r/o"
 
 msgid "r/w"
-msgstr ""
+msgstr "r/w"
 
 msgid "record"
 msgstr "nagraj"
@@ -2008,12 +1973,11 @@ msgstr "wybierz tagi"
 msgid "short description contains"
 msgstr "krótki opis zawiera"
 
-#, fuzzy
 msgid "short description match"
-msgstr "dopasuj w krótkim opisie"
+msgstr "krótki opis pasuje"
 
 msgid "standard"
-msgstr ""
+msgstr "standardowy"
 
 msgid "static"
 msgstr "statyczny"
@@ -2027,13 +1991,11 @@ msgstr "tytuł zawiera"
 msgid "title ends with"
 msgstr "tytuł kończy się..."
 
-#, fuzzy
 msgid "title or description match"
-msgstr "dopasuj w tytule lub opisie"
+msgstr "pasuje do tytułu lub opisu"
 
-#, fuzzy
 msgid "title or short description match"
-msgstr "dopasuj w tytule lub krótkim opisie"
+msgstr "pasuje do tytułu lub krótkiego opisu"
 
 msgid "title starts with"
 msgstr "tytuł rozpoczyna się od..."
@@ -2061,7 +2023,7 @@ msgid "weekday"
 msgstr "Dzień tygodnia"
 
 msgid "weekend"
-msgstr ""
+msgstr "weekend"
 
 msgid "wrong filetype"
 msgstr "zły typ pliku"
