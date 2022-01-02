@@ -841,7 +841,6 @@ i.fa-mobile {font-size: 22px;}
 	width:32px;
 	height:15px;
 	margin: 2px;
-	cursor: pointer;
 	border: solid;
 	border-width: thin;
 }
@@ -849,7 +848,6 @@ i.fa-mobile {font-size: 22px;}
 .remotesmall .tdf {
 	width:32px;
 	height:15px;
-	cursor: pointer;
 	border: solid;
 	border-width: thin;
 }
@@ -857,10 +855,8 @@ i.fa-mobile {font-size: 22px;}
 .remotesmall td {
 	width:45px;
 	height:20px;
-	text-align:center;
 	border: solid;
 	border-width: thin;
-	cursor: pointer;
 }
 .remotesmall td:hover,.tdf:hover {
 	-webkit-filter: invert(80%);
@@ -872,5 +868,19 @@ i.fa-mobile {font-size: 22px;}
 	filter: invert(10%);
 }
 
+.remotesmall button {
+	width: 100%;
+	background: none;
+	color: inherit;
+	border: 0px;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+}
+
+.bgray {
+	background: #b0b0b0;
+}
 
 @import "channel_tags";

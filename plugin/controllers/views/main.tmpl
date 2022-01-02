@@ -84,100 +84,59 @@
 			<area shape="rect" coords="46,0,89,25" alt="2" onclick="pressMenuRemote('3');">
 			<area shape="rect" coords="2,0,41,25" alt="1" onclick="pressMenuRemote('2');">
 		</map>
-		#else if $smallremote == 'ims'
-		<style>
-		.remotesmall button {
-		    width: 100%;
-		    background: none;
-		    color: inherit;
-		    border: 0px;
-		    text-align: center;
-		    cursor: pointer;
-		}
-		</style>
-		<table class="remotesmall" style="height:100px;">
-		<tr>
-			<td data-code="2"><button>1</button></td><td data-code="3"><button>2</button></td><td data-code="4"><button>3</button></td>
-		<tr>
-		<tr>
-			<td data-code="5"><button>4</button></td><td data-code="6"><button>5</button></td><td data-code="7"><button>6</button></td>
-		<tr>
-		<tr>
-			<td data-code="8"><button>7</button></td><td data-code="9"><button>8</button></td><td data-code="10"><button>9</button></td>
-		<tr>
-		<tr>
-			<td data-code="412" class="tdc" style="background:#b0b0b0"><button>&lt;</button></td><td data-code="11"><button>0</button></td><td data-code="407" class="tdc" style="background:#b0b0b0"><button>&gt;</button></td>
-		<tr>
-		</table>
-		<table class="remotesmall" style="height:20px;">
-		<tr>
-			<td data-code="398" class="tdc" style="background:red"><button></button></td>
-			<td data-code="399" class="tdc" style="background:green"><button></button></td>
-			<td data-code="400" class="tdc" style="background:#f5f501"><button></button></td>
-			<td data-code="401" class="tdc" style="background:#1a2cbd"><button></button></td>
-		<tr>
-		</table>
-		<table class="remotesmall" style="height:80px;">
-		<tr>
-			<td data-code="139"><button>Menu</button></td><td data-code="103" style="background:#b0b0b0">&#x25B2;</td><td data-code="174"><button>Exit</button></td>
-		<tr>
-		<tr>
-			<td data-code="105" style="background:#b0b0b0"><button>&#x25C0;</button></td><td data-code="352" style="background:#b0b0b0"><button>OK</button></td><td data-code="106" style="background:#b0b0b0"><button>&#x25B6;</button></td>
-		<tr>
-		<tr>
-			<td data-code="358"><button>Info</button></td><td data-code="108" style="background:#b0b0b0"><button>&#x25BC;</button></td><td data-code="365"><button>EPG</button></td>
-		<tr>
-		</table>
-		<table class="remotesmall" style="height:20px;">
-		<tr>
-			<td data-code="167" class="tdc" style="background:#f08080"><button>Rec</button></td>
-			<td data-code="377" class="tdc" style="background:#b0b0b0"><button>TV</button></td>
-			<td data-code="138" class="tdc" style="background:#b0b0b0"><button>Help</button></td>
-			<td data-code="393" class="tdc" style="background:#b0b0b0"><button>PVR</button></td>
-		<tr>
-		</table>
 		#else
-		<table class="remotesmall" style="height:100px;">
-		<tr>
-			<td data-code="2">1</td><td data-code="3">2</td><td data-code="4">3</td>
-		<tr>
-		<tr>
-			<td data-code="5">4</td><td data-code="6">5</td><td data-code="7">6</td>
-		<tr>
-		<tr>
-			<td data-code="8">7</td><td data-code="9">8</td><td data-code="10">9</td>
-		<tr>
-		<tr>
-			<td data-code="412">&lt;</td><td data-code="11">0</td><td data-code="407">&gt;</td>
-		<tr>
-		</table>
-		<table class="remotesmall" style="height:20px;">
-		<tr>
-			<td data-code="398" class="tdc" style="background:red"></td>
-			<td data-code="399" class="tdc" style="background:green"></td>
-			<td data-code="400" class="tdc" style="background:#f5f501"></td>
-			<td data-code="401" class="tdc" style="background:#1a2cbd"></td>
-		<tr>
-		</table>
-		<table class="remotesmall" style="height:80px;">
-		<tr>
-			<td data-code="139">Menu</td><td data-code="103">&#x25B2;</td><td data-code="358">Info</td>
-		<tr>
-		<tr>
-			<td data-code="105">&#x25C0;</td><td data-code="352">OK</td><td data-code="106">&#x25B6;</td>
-		<tr>
-		<tr>
-			<td data-code="365">EPG</td><td data-code="108">&#x25BC;</td><td data-code="174">Exit</td>
-		<tr>
-		</table>
-		<table class="remotesmall" style="height:20px;">
-		<tr>
-			<td data-code="393" class="tdf">PVR</td>
-			<td data-code="377" class="tdf">TV</td>
-			<td data-code="388" class="tdf">Text</td>
-			<td data-code="138" class="tdf">Help</td>
-		<tr>
-		</table>
+			<table class="remotesmall" style="height:100px;">
+			<tr>
+				<td data-code="2"><button>1</button></td><td data-code="3"><button>2</button></td><td data-code="4"><button>3</button></td>
+			<tr>
+			<tr>
+				<td data-code="5"><button>4</button></td><td data-code="6"><button>5</button></td><td data-code="7"><button>6</button></td>
+			<tr>
+			<tr>
+				<td data-code="8"><button>7</button></td><td data-code="9"><button>8</button></td><td data-code="10"><button>9</button></td>
+			<tr>
+			<tr>
+				<td data-code="412" class="tdc bgray"><button>&lt;</button></td><td data-code="11"><button>0</button></td><td data-code="407" class="tdc bgray"><button>&gt;</button></td>
+			<tr>
+			</table>
+			<table class="remotesmall" style="height:20px;">
+			<tr>
+				<td data-code="398" class="tdc" style="background:red"><button></button></td>
+				<td data-code="399" class="tdc" style="background:green"><button></button></td>
+				<td data-code="400" class="tdc" style="background:#f5f501"><button></button></td>
+				<td data-code="401" class="tdc" style="background:#1a2cbd"><button></button></td>
+			<tr>
+			</table>
+			<table class="remotesmall" style="height:80px;">
+			<tr>
+				<td data-code="139"><button>Menu</button></td><td data-code="103" class="bgray"><button>&#x25B2;</button></td><td data-code="174"><button>Exit</button></td>
+			<tr>
+			<tr>
+				<td data-code="105" class="bgray"><button>&#x25C0;</button></td><td data-code="352" class="bgray"><button>OK</button></td><td data-code="106" class="bgray"><button>&#x25B6;</button></td>
+			<tr>
+			<tr>
+				<td data-code="358"><button>Info</button></td><td data-code="108" class="bgray"><button>&#x25BC;</button></td><td data-code="365"><button>EPG</button></td>
+			<tr>
+			</table>
+			#if $smallremote == 'ims'
+				<table class="remotesmall" style="height:20px;">
+				<tr>
+					<td data-code="167" class="tdc" style="background:#f08080"><button>Rec</button></td>
+					<td data-code="377" class="tdc bgray"><button>TV</button></td>
+					<td data-code="138" class="tdc bgray"><button>Help</button></td>
+					<td data-code="393" class="tdc bgray"><button>PVR</button></td>
+				<tr>
+				</table>
+			#else
+				<table class="remotesmall" style="height:20px;">
+				<tr>
+					<td data-code="393" class="tdf"><button>PVR</button></td>
+					<td data-code="377" class="tdf"><button>TV</button></td>
+					<td data-code="388" class="tdf"><button>Text</button></td>
+					<td data-code="138" class="tdf"><button>Help</button></td>
+				<tr>
+				</table>
+			#end if
 		#end if
 	<div class="help">
 		$tstrings['shiftforlong']
@@ -228,7 +187,7 @@
 		#set $theme_css = $t + '.css'
 		<link type="text/css" rel="stylesheet" href="themes/$theme_css">
 	#end if
-	<link type="text/css" href="css/style.min.css?v1" rel="stylesheet"/>
+	<link type="text/css" href="css/style.min.css?v2" rel="stylesheet"/>
 	#if $t == "original"
 		<link type="text/css" href="css/theme_original.css" rel="stylesheet"/>
 	#end if

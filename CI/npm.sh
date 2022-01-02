@@ -11,6 +11,7 @@ npm install
 npm install path-exists
 npm ci --prefix modern
 npm run build-css
+npm run build-classic-css
 npm run build-classic-js
 npm run build-js
 cd ..

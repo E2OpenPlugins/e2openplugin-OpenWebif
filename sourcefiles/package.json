@@ -10,7 +10,8 @@
     "glob-uglifyjs": "^2.0.0",
     "mkdirp": "^1.0.4",
     "prettier": "^2.3.1",
-    "sass": "^1.35.1"
+    "sass": "^1.35.1",
+    "node-sass": "^7.0.0"
   },
   "resolutions": {
     "node-forge": "~0.10.0",
@@ -28,6 +29,7 @@
     "build-classic-js": "npx glob-uglifyjs -c ./classic-glob-uglifyjs.config",
     "build-js": "npm run build-prod --prefix modern",
     "build-css": "node ./_utils/mincss.js -o '../plugin/public/' './modern/css/**/*.css'",
+    "build-classic-css": "node-sass './scss/style.scss' '../plugin/public/css/style.min.css' --output-style compressed",
     "test": "echo 'Error: no test specified!' && exit 1"
   },
   "repository": {
