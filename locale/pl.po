@@ -1,10 +1,10 @@
-# pololoko111 <peciek83@gmail.com>, 2021.
+# pololoko111 <peciek83@gmail.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 21:02+0100\n"
-"PO-Revision-Date: 2021-12-23 21:39+0000\n"
+"PO-Revision-Date: 2022-01-04 18:53+0000\n"
 "Last-Translator: pololoko111 <peciek83@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/"
 "e2openplugin-openwebif/e2openplugin-openwebif/pl/>\n"
@@ -454,7 +454,7 @@ msgid ""
 "Disable movie trash in configuration to delete this item"
 msgstr ""
 "Usunięcie nie powiodło się, ponieważ nie ma śmieci do filmu!\n"
-"Wyłącz kosz filmów w konfiguracji, aby usunąć ten element."
+"Wyłącz kosz filmów w konfiguracji, aby usunąć ten element"
 
 msgid "Deleted"
 msgstr "Usunięto"
@@ -522,7 +522,7 @@ msgstr "Odśwież EPG"
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr ""
 "BŁĄD: Nie można ustawić SleepTimera gdy urządzenie znajduje się w trybie "
-"czuwania."
+"czuwania"
 
 msgid "Edit"
 msgstr "Edytuj"
@@ -1989,7 +1989,7 @@ msgid "title contains"
 msgstr "tytuł zawiera"
 
 msgid "title ends with"
-msgstr "tytuł kończy się..."
+msgstr "tytuł kończy się"
 
 msgid "title or description match"
 msgstr "pasuje do tytułu lub opisu"
@@ -1998,7 +1998,7 @@ msgid "title or short description match"
 msgstr "pasuje do tytułu lub krótkiego opisu"
 
 msgid "title starts with"
-msgstr "tytuł rozpoczyna się od..."
+msgstr "tytuł rozpoczyna się od"
 
 msgid "transcoded"
 msgstr "transkodowany"
