@@ -1,44 +1,45 @@
+# Kiki Mora <kikimora2k13@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 21:02+0100\n"
-"PO-Revision-Date: 2021-12-02 19:58+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/e2openplugin-"
-"openwebif/e2openplugin-openwebif/sk/>\n"
+"PO-Revision-Date: 2022-01-18 16:58+0000\n"
+"Last-Translator: Kiki Mora <kikimora2k13@gmail.com>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.10-dev\n"
+"X-Generator: Weblate 4.11-dev\n"
 
 #, python-format
 msgid "%02d.%02d."
-msgstr ""
+msgstr "%02d.%02d."
 
 #, python-format
 msgid "%02d.%02d.%d"
-msgstr ""
+msgstr "%02d.%02d.%d"
 
 #, python-format
 msgid "%02d:%02d"
-msgstr ""
+msgstr "%02d:%02d"
 
 msgid "%d.%m.%Y"
-msgstr ""
+msgstr "%d.%m.%Y"
 
 msgid "%d.%m.%Y %H:%M"
-msgstr ""
+msgstr "%d.%m.%Y %H:%M"
 
 #, python-format
 msgid "%s %02d.%02d."
-msgstr ""
+msgstr "%s %02d.%02d."
 
 #, python-format
 msgid "%s %02d.%02d.%d"
-msgstr ""
+msgstr "%s %02d.%02d.%d"
 
 #, python-format
 msgid "%s %s is locked."
@@ -46,7 +47,7 @@ msgstr "%s %s je zamknutý."
 
 #, python-format
 msgid "%s / %s"
-msgstr ""
+msgstr "%s / %s"
 
 #, python-format
 msgid "%s free / %s total"
@@ -55,15 +56,14 @@ msgstr "%s voľné / %s celkom"
 msgid "(Press 'shift' and click to 'hold')"
 msgstr "(dlhé pridržanie shift + klik)"
 
-#, fuzzy
 msgid "(in minutes)"
-msgstr "min."
+msgstr "(v minútach)"
 
 msgid "A filename is required"
 msgstr "Prosím, zadajte názov súboru"
 
 msgid "A value is required"
-msgstr "Musíte niečo napísať!"
+msgstr "Hodnota požadovaná"
 
 msgid "AGC"
 msgstr "AGC"
@@ -84,7 +84,7 @@ msgid "Add Bouquet"
 msgstr "Pridať prehľad"
 
 msgid "Add IPTV/URL"
-msgstr ""
+msgstr "Pridať IPTV/URL"
 
 msgid "Add Marker"
 msgstr "Pridať značku"
@@ -104,9 +104,8 @@ msgstr "Pridať automatický časovač"
 msgid "Add channel(s) as alternate"
 msgstr "Pridať stanicu(e) ako alternatívu"
 
-#, fuzzy
 msgid "Add filters"
-msgstr "Pridať časovač"
+msgstr "Pridať filtre"
 
 msgid "Add selection to bouquet"
 msgstr "Pridať stanicu(e) do prehľadu"
@@ -118,14 +117,14 @@ msgid "Add similar on conflict"
 msgstr "Pri konflikte pridať rovnaké"
 
 msgid "Add tags to recordings"
-msgstr ""
+msgstr "Pridať značky k nahrávkam"
 
 #, python-format
 msgid "Added %s to alternative service %s."
 msgstr "%s pridaná k alternatívam stanice %s."
 
 msgid "Adjust recording time to real event time"
-msgstr ""
+msgstr "Prispôsobiť čas nahrávania skutočnému času udalosti"
 
 msgid "After event"
 msgstr "Po udalosti"
@@ -152,7 +151,7 @@ msgid "Allow IPK Upload"
 msgstr "Povoliť nahratie IPK"
 
 msgid "Allow duplicates"
-msgstr ""
+msgstr "Umožniť duplicity"
 
 #, python-format
 msgid "Alternative %s created failed."
@@ -168,42 +167,40 @@ msgid "Answer is YES!"
 msgstr "Odpoveď je ÁNO!"
 
 msgid "Any day"
-msgstr ""
+msgstr "Kedykoľvek"
 
 msgid "Any service/recording"
 msgstr "Akákoľvek stanica/nahrávanie"
 
 msgid "Apid"
-msgstr ""
+msgstr "Apid"
 
 msgid "April"
 msgstr "Apríl"
 
 msgid "Are you sure you want to delete the selected bouquet?"
-msgstr "Naozaj chcete odstrániť prehľad"
+msgstr "Naozaj chcete odstrániť prehľad?"
 
 msgid "Are you sure you want to delete the selected item(s)?"
-msgstr "Naozaj chcete odstrániť vybrané položky"
+msgstr "Naozaj chcete odstrániť vybrané položky?"
 
-#, fuzzy
 msgid "Are you sure you want to delete this AutoTimer?"
-msgstr "Naozaj vymazať časovač"
+msgstr "Naozaj chcete vymazať časovač?"
 
 msgid "Are you sure you want to delete this recording?"
-msgstr "Naozaj chcete zmazať nahrávku"
+msgstr "Naozaj chcete zmazať nahrávku?"
 
 msgid "Are you sure you want to delete this timer?"
-msgstr "Naozaj vymazať časovač"
+msgstr "Naozaj chcete vymazať časovač?"
 
 msgid "Are you sure you want to rename this recording?"
-msgstr "Naozaj premenovať nahrávku"
+msgstr "Naozaj chcete premenovať nahrávku?"
 
 msgid "Are you sure you want to restore from file?"
-msgstr "Naozaj chcete obnoviť zo súboru"
+msgstr "Naozaj chcete obnoviť zo súboru?"
 
-#, fuzzy
 msgid "Are you sure you want to start recording instantly?"
-msgstr "Spustiť okamžité nahrávanie"
+msgstr "Naozaj chcete spustiť okamžité nahrávanie?"
 
 msgid "Ask, default No"
 msgstr "Spýtať sa, predvolene nie"
@@ -247,9 +244,8 @@ msgstr "Iba pozadie"
 msgid "Begin"
 msgstr "Začať"
 
-#, fuzzy
 msgid "Begin of \"After event\" timespan"
-msgstr "Začiatok časového rozpätia \"po relácii\""
+msgstr "Začiatok časového úseku \"po relácii\""
 
 msgid "Beginning of timespan"
 msgstr "Začiatok časového rozpätia"
@@ -336,14 +332,13 @@ msgid "Cable"
 msgstr "Káblové"
 
 msgid "Calendar Week"
-msgstr "Týždenný kalendár"
+msgstr "Týždeň"
 
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#, fuzzy
 msgid "Cancelled"
-msgstr "Zrušiť"
+msgstr "Zrušené"
 
 msgid "Capacity"
 msgstr "Kapacita"
@@ -364,17 +359,16 @@ msgid "Chipset"
 msgstr "Čipset"
 
 msgid "Cleanup Timers"
-msgstr "Vyčistenie časovačov"
+msgstr "Vymazať časovač"
 
 msgid "Close"
 msgstr "Zatvoriť"
 
-#, fuzzy
 msgid "Common Settings"
-msgstr "Všeobecné nastavenia"
+msgstr "Spoločné nastavenia"
 
 msgid "Config"
-msgstr ""
+msgstr "Konfigurácia"
 
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
@@ -416,13 +410,13 @@ msgid "Date"
 msgstr "Dátum"
 
 msgid "Date (newest)"
-msgstr ""
+msgstr "Dátum (najnovší)"
 
 msgid "Date (oldest)"
-msgstr ""
+msgstr "Dátum (najstarší)"
 
 msgid "Debug - Display Tracebacks in browser"
-msgstr ""
+msgstr "Ladenie - Zobrazenie Tracebacks v prehliadači"
 
 msgid "December"
 msgstr "December"
@@ -439,9 +433,8 @@ msgstr "Oneskorenie pohotovostného režimu"
 msgid "Delete"
 msgstr "Odstrániť"
 
-#, fuzzy
 msgid "Delete Bookmark"
-msgstr "Záložka"
+msgstr "Zmazať záložku"
 
 msgid "Delete Bouquet"
 msgstr "Odstrániť prehľad"
@@ -456,17 +449,17 @@ msgid ""
 "Delete failed, because there is no movie trash !\n"
 "Disable movie trash in configuration to delete this item"
 msgstr ""
+"Zmazanie neuspešné, pretože neexistuje žiadny kôš !\n"
+"Ak chcete túto položku vymazať, vypnite kôš v konfigurácii"
 
-#, fuzzy
 msgid "Deleted"
-msgstr "Odstrániť"
+msgstr "Zmazané"
 
 msgid "Description"
 msgstr "Popis"
 
-#, fuzzy
 msgid "Disable"
-msgstr "zakázané"
+msgstr "Zakázať"
 
 msgid "Disable Timer"
 msgstr "Vypnúť časovač"
@@ -490,7 +483,7 @@ msgid "Dolby"
 msgstr "Dolby"
 
 msgid "Don't create timer when movie exists in database"
-msgstr ""
+msgstr "Nevytvárať časovač ak film existuje v databáze"
 
 msgid "Done"
 msgstr "Hotovo"
@@ -520,20 +513,18 @@ msgid "EPG encoding"
 msgstr "Znaková sada EPG"
 
 msgid "EPGRefresh"
-msgstr "Obnovovanie EPG"
+msgstr "EPG aktualizácia"
 
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr ""
-"Chyba: Nie je možné nastaviť automatické vypnutie, keď zariadenie je v "
+"Chyba: Nie je možné nastaviť automatické vypnutie, keď je zariadenie v "
 "pohotovostnom režime"
 
-#, fuzzy
 msgid "Edit"
-msgstr "Editor"
+msgstr "Upraviť"
 
-#, fuzzy
 msgid "Edit Recording"
-msgstr "Zmazať nahrávku"
+msgstr "Upraviť nahrávku"
 
 msgid "Edit Timer"
 msgstr "Upraviť časovač"
@@ -541,9 +532,8 @@ msgstr "Upraviť časovač"
 msgid "Editor"
 msgstr "Editor"
 
-#, fuzzy
 msgid "Enable"
-msgstr "Povolené"
+msgstr "Povoliť"
 
 msgid "Enable Authentication for streaming"
 msgstr "Zapnúť overovanie pre streaming"
@@ -587,14 +577,12 @@ msgstr "Kódované"
 msgid "End"
 msgstr "Koniec"
 
-#, fuzzy
 msgid "End of \"After event\" timespan"
-msgstr "Koniec časového rozpätia \"po relácii\""
+msgstr "Koniec časového úseku \"po udalosti\""
 
 msgid "End of timespan"
 msgstr "Koniec časového rozpätia"
 
-#, fuzzy
 msgid "Enter Text"
 msgstr "Typ tunera"
 
@@ -604,15 +592,14 @@ msgstr "Zadajte nový názov prehľadu"
 msgid "Enter a name for the new marker"
 msgstr "Zadajte nový názov pre značku"
 
-#, fuzzy
 msgid "Enter a name for this AutoTimer"
-msgstr "Zadajte nový názov pre značku"
+msgstr "Zadajte názov pre tento AutoTimer"
 
 msgid "Enter path"
-msgstr ""
+msgstr "Zadajte cestu"
 
 msgid "Enter the text to find in the EPG"
-msgstr ""
+msgstr "Zadajte text pre vyhľadanie v EPG"
 
 msgid "Error"
 msgstr "Chyba"
@@ -643,7 +630,7 @@ msgstr "Chyba, %s nebol vytvorený web editorom prehľadov..."
 
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
-msgstr "Chyba: Prehľad  %s sa nedá zmazať, OSerror."
+msgstr "Chyba: Prehľad %s sa nedá zmazať, OSChyba."
 
 msgid "Event not found"
 msgstr "Relácia nebola nájdená"
@@ -657,9 +644,8 @@ msgstr "Každú"
 msgid "Exclude when"
 msgstr "Vylúčiť"
 
-#, fuzzy
 msgid "Execute \"After event\" during timespan"
-msgstr "Spustiť \"po udalosti\" počas časového rozpätie"
+msgstr "Spustiť \"po udalosti\" počas časového úseku"
 
 msgid "Export"
 msgstr "Exportovať"
@@ -703,12 +689,11 @@ msgstr "Nie po"
 msgid "Front processor version"
 msgstr "Verzia frontprocesora"
 
-#, fuzzy
 msgid "Full remote"
-msgstr "Skryť úplné diaľkové"
+msgstr "Úplný ovládač"
 
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 msgid "GUI version"
 msgstr "Verzia GUI"
@@ -723,7 +708,7 @@ msgid "Get mutable list for new created bouquet failed!"
 msgstr "Získanie premenlivého zoznamu pre novovytvorený prehľad zlyhalo!"
 
 msgid "HH:MM"
-msgstr ""
+msgstr "HH:MM"
 
 msgid "HTTP port"
 msgstr "HTTP port"
@@ -735,7 +720,7 @@ msgid "Hard disk model"
 msgstr "Model pevného disku"
 
 msgid "Hide full remote"
-msgstr "Skryť úplné diaľkové"
+msgstr "Skryť úplný diaľkový ovládač"
 
 msgid "High Resolution"
 msgstr "Vysoké rozlíšenie"
@@ -744,7 +729,7 @@ msgid "Hour"
 msgstr "Hodina"
 
 msgid "IPTV / URL name"
-msgstr ""
+msgstr "IPTV / URL názov"
 
 msgid "IPv4 address"
 msgstr "IPv4 adresa"
@@ -764,13 +749,11 @@ msgstr "Importovať"
 msgid "Include description"
 msgstr "Zahrnúť popis"
 
-#, fuzzy
 msgid "Include extended description"
-msgstr "Zahrnúť popis"
+msgstr "Zahrnúť rozšírený popis"
 
-#, fuzzy
 msgid "Include short description"
-msgstr "Zahrnúť popis"
+msgstr "Zahrnúť krátky popis"
 
 msgid "Include when"
 msgstr "Zahrnúť"
@@ -787,9 +770,8 @@ msgstr "Prevziať autočasovač"
 msgid "Install Package"
 msgstr "Nainštalovať balíček"
 
-#, fuzzy
 msgid "Installed"
-msgstr "Okamžité nahrávanie"
+msgstr "Nainštalované"
 
 msgid "Instant Record"
 msgstr "Okamžité nahrávanie"
@@ -800,9 +782,9 @@ msgstr "Okamžitý záznam aktuálnej relácie začal"
 msgid "Internal error!"
 msgstr "Vnútorná chyba!"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Interval (in %s)"
-msgstr "Interval (v h)"
+msgstr "Interval (v %s)"
 
 msgid "Interval (min.)"
 msgstr "Interval (min.)"
@@ -829,7 +811,7 @@ msgid "Kernel"
 msgstr "Verzia jadra"
 
 msgid "LCD"
-msgstr ""
+msgstr "LCD"
 
 msgid "LCD4Linux Setup"
 msgstr "Nastavenie LCD4Linux"
@@ -846,9 +828,8 @@ msgstr "Rýchlosť pripojenia"
 msgid "List of Timers has been cleaned"
 msgstr "Zoznam časovačov bol vyčistený"
 
-#, fuzzy
 msgid "Loading..."
-msgstr "načítava sa"
+msgstr "Načítavam..."
 
 msgid "Location"
 msgstr "Umiestnenie"
@@ -860,7 +841,7 @@ msgid "MAC address"
 msgstr "MAC adresa"
 
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 msgid "Main"
 msgstr "Hlavné"
@@ -893,14 +874,13 @@ msgid "Method"
 msgstr "Metóda"
 
 msgid "Minimal EPG list"
-msgstr "Zmenšený zoznam EPG"
+msgstr "Mini zoznam EPG"
 
-#, fuzzy
 msgid "Minimal movie list"
-msgstr "Zmenšený zoznam filmov"
+msgstr "Mini zoznam filmov"
 
 msgid "Minimal timer list"
-msgstr "Zmenšený zoznam časovačov"
+msgstr "Mini zoznam časovačov"
 
 msgid "Minute"
 msgstr "Minúta"
@@ -930,14 +910,12 @@ msgstr "Mesačne"
 msgid "More"
 msgstr "Viac"
 
-#, fuzzy
 msgid "More details"
 msgstr "Zobraziť podrobnosti"
 
 msgid "Movie database for EPG"
 msgstr "Databáza filmov pre EPG"
 
-#, fuzzy
 msgid "Movie search"
 msgstr "Vyhľadať film"
 
@@ -953,18 +931,17 @@ msgstr "Multi-prehľad nie je zapnutý!"
 msgid "MultiEPG"
 msgstr "MultiEPG"
 
-#, fuzzy
 msgid "NCam Webinterface"
-msgstr "OSCam webrozhranie"
+msgstr "OSCam Webinterface"
 
 msgid "Name"
 msgstr "Názov"
 
 msgid "Name (a-z)"
-msgstr ""
+msgstr "Názov (a-z)"
 
 msgid "Name (z-a)"
-msgstr ""
+msgstr "Názov (z-a)"
 
 msgid "Namespace"
 msgstr "Priestor pre názvy"
@@ -981,9 +958,8 @@ msgstr "Nikdy"
 msgid "New"
 msgstr "Nový"
 
-#, fuzzy
 msgid "New Bookmark:"
-msgstr "Záložka"
+msgstr "Nová záložka:"
 
 msgid "New Name"
 msgstr "Nový názov"
@@ -991,9 +967,8 @@ msgstr "Nový názov"
 msgid "No"
 msgstr "Nie"
 
-#, fuzzy
 msgid "No EPG data available."
-msgstr "popis nie je k dispozícii"
+msgstr "EPG dáta nie sú k dispozícii."
 
 msgid "No Parent Control Setup Pin given!"
 msgstr "Nebol zadaný PIN rodičovskej kontroly!"
@@ -1016,9 +991,8 @@ msgstr "Nenájdená žiadna relácia! Nenahráva sa!"
 msgid "No marker-name given!"
 msgstr "Nie je uvedený názov značky!"
 
-#, fuzzy
 msgid "No matches were found in the EPG"
-msgstr "Zhodný časovač sa nenašiel"
+msgstr "V EPG sa nenašli žiadne zhody"
 
 msgid "No matching Timer found"
 msgstr "Zhodný časovač sa nenašiel"
@@ -1035,9 +1009,8 @@ msgstr "Nebol zadaný poskytovateľ!"
 msgid "No service given!"
 msgstr "Nie je uvedená stanica!"
 
-#, fuzzy
 msgid "No, cancel"
-msgstr "Zrušiť"
+msgstr "Nie, zrušiť"
 
 msgid "None"
 msgstr "Žiadne"
@@ -1061,13 +1034,13 @@ msgid "Now"
 msgstr "Teraz"
 
 msgid "Now/Next Columns"
-msgstr ""
+msgstr "Stĺpce Teraz/Ďalší"
 
 msgid "Number of recordings remaining"
 msgstr "Počet zostávajúcich nahrávaní"
 
 msgid "OSCam Webinterface"
-msgstr "OSCam webrozhranie"
+msgstr "OSCam Webinterface"
 
 msgid "OSD"
 msgstr "OSD"
@@ -1091,7 +1064,7 @@ msgid "On same service"
 msgstr "Na rovnakej stanici"
 
 msgid "Onid"
-msgstr ""
+msgstr "Onid"
 
 msgid "Only match between dates"
 msgstr "Obmedziť na relácie v určených dátumoch"
@@ -1100,10 +1073,10 @@ msgid "Only match during timespan"
 msgstr "Zhoda jedine v rámci časového rozpätia"
 
 msgid "Oops, no results matched your search"
-msgstr ""
+msgstr "Ups, žiadne výsledky nezodpovedajú vášmu vyhľadávaniu"
 
 msgid "Oops..."
-msgstr ""
+msgstr "Ups..."
 
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Open Source webové rozhranie pre Linux prijímače"
@@ -1123,9 +1096,8 @@ msgstr "Nastavenie OpenWebif"
 msgid "OpenWebif Settings"
 msgstr "Nastavenia OpenWebif"
 
-#, fuzzy
 msgid "OpenWebif url:"
-msgstr "OpenWebif adresa:"
+msgstr "OpenWebif URL:"
 
 msgid "Orbital Position"
 msgstr "Orbitálna pozícia"
@@ -1146,10 +1118,10 @@ msgid "Parse AutoTimer"
 msgstr "Analyzovať automatický časovač"
 
 msgid "Pcrpid"
-msgstr ""
+msgstr "Pcrpid"
 
 msgid "PiP"
-msgstr ""
+msgstr "PiP"
 
 msgid "Picture in Picture"
 msgstr "Obraz v obraze"
@@ -1161,20 +1133,19 @@ msgid "Plain"
 msgstr "Prostý"
 
 msgid "Playback"
-msgstr "Prehrávanie"
+msgstr "Prehrať"
 
 msgid "Playback IPTV Streams in browser"
-msgstr ""
+msgstr "Prehrávanie IPTV streamov v prehliadači"
 
 msgid "Playlist"
 msgstr "Zoznam prehrávania"
 
-#, fuzzy
 msgid "Playlist format"
-msgstr "Zoznam prehrávania"
+msgstr "Formát playlistu"
 
 msgid "Pmtpid"
-msgstr ""
+msgstr "Pmtpid"
 
 msgid "Power Control"
 msgstr "Ovládanie napájania"
@@ -1183,10 +1154,10 @@ msgid "PowerTimer feature not available"
 msgstr "Časovač napájania nie je k dispozícii"
 
 msgid "Preview"
-msgstr ""
+msgstr "Náhľad"
 
 msgid "Primetimes"
-msgstr ""
+msgstr "Primetimes"
 
 msgid "Process"
 msgstr "Analyzovať"
@@ -1198,7 +1169,7 @@ msgid "Providers"
 msgstr "Poskytovatelia"
 
 msgid "REC"
-msgstr ""
+msgstr "REC"
 
 msgid "Radio"
 msgstr "Rádio"
@@ -1212,9 +1183,8 @@ msgstr "Nahrať maximálne x krát"
 msgid "Recording Status"
 msgstr "Stav nahrávania"
 
-#, fuzzy
 msgid "Recording Type"
-msgstr "Stav nahrávania"
+msgstr "Typ nahrávky"
 
 msgid "Refresh"
 msgstr "Obnoviť"
@@ -1232,14 +1202,13 @@ msgid "Reload"
 msgstr "Znovu načítať"
 
 msgid "Remote"
-msgstr "Diaľkové"
+msgstr "Diaľkový ovládač"
 
 msgid "Remove Package"
 msgstr "Odstrániť balíček"
 
-#, fuzzy
 msgid "Remove filter"
-msgstr "Diaľkové"
+msgstr "Odstrániť filter"
 
 msgid "Rename"
 msgstr "Premenovať"
@@ -1251,7 +1220,7 @@ msgid "Rename Recording"
 msgstr "Premenovať nahrávku"
 
 msgid "Repeated"
-msgstr "Opakované"
+msgstr "Opakovanie"
 
 msgid "Require client cert for HTTPS"
 msgstr "Vyžadovať certifikát klienta pre HTTPS"
@@ -1259,9 +1228,8 @@ msgstr "Vyžadovať certifikát klienta pre HTTPS"
 msgid "Require description to be unique"
 msgstr "Vyžadovať jedinečný popis"
 
-#, fuzzy
 msgid "Reset"
-msgstr "Resetovať počet"
+msgstr "Reset"
 
 msgid "Reset count"
 msgstr "Resetovať počet"
@@ -1272,15 +1240,14 @@ msgstr "Reštartovať GUI"
 msgid "Restrict to bouquets"
 msgstr "Obmedziť na prehľady"
 
-#, fuzzy
 msgid "Restrict to channels"
-msgstr "Obmedziť na prehľady"
+msgstr "Obmedziť na stanice"
 
 msgid "Root"
 msgstr "Koreňový adresár"
 
 msgid "SLAAC"
-msgstr ""
+msgstr "SLAAC"
 
 msgid "SNR"
 msgstr "SNR"
@@ -1312,36 +1279,32 @@ msgstr "Snímka obrazovky"
 msgid "Search"
 msgstr "Hľadať"
 
-#, fuzzy
 msgid "Search CSFD"
-msgstr "Hľadať v IMDb"
+msgstr "Hľadať v ČSFD"
 
 msgid "Search IMDb"
 msgstr "Hľadať v IMDb"
 
 msgid "Search KinoPoisk"
-msgstr "Vyhľadávanie KinoPoisk"
+msgstr "Hľadať v KinoPoisk"
 
-#, fuzzy
 msgid "Search TV Guide UK"
-msgstr "TV sprievodca"
+msgstr "Hľadať v TV Guide"
 
 msgid "Search by name, sd / hd / uhd, or provider"
-msgstr ""
+msgstr "Hľadať podľa názvu, sd / hd / uhd, alebo poskytovateľa"
 
-#, fuzzy
 msgid "Search strictness"
-msgstr "Vyhľadávanie KinoPoisk"
+msgstr "Presnosť vyhľadávania"
 
-#, fuzzy
 msgid "Search type"
-msgstr "Hľadať"
+msgstr "Typ vyhľadávania"
 
 msgid "Select IPK file for upload"
-msgstr "Vyberte IPK súbor pre nahratie"
+msgstr "Vybrať IPK súbor pre nahratie"
 
 msgid "Select..."
-msgstr ""
+msgstr "Vybrať..."
 
 msgid "Send Message"
 msgstr "Poslať správu"
@@ -1415,11 +1378,10 @@ msgid "Show Full OpenWebif"
 msgstr "Zobraziť úplný OpenWebif"
 
 msgid "Show IPTV channels in selection (eg. Autotimer)"
-msgstr ""
+msgstr "Zobrazenie IPTV staníc vo výbere (napr. Autotimer)"
 
-#, fuzzy
 msgid "Show all packages"
-msgstr "Upgradovať všetky balíčky"
+msgstr "Zobraziť všetky balíčky"
 
 msgid "Show box name in header"
 msgstr "Zobraziť názov prijímača v záhlaví"
@@ -1428,30 +1390,28 @@ msgid "Show details"
 msgstr "Zobraziť podrobnosti"
 
 msgid "Show full remote"
-msgstr "Zobraziť úplné diaľkové"
+msgstr "Zobraziť úplný diaľkový ovládač"
 
 msgid "Show in Extensions menu"
-msgstr "Zobraziť v ponuke rozšírení"
+msgstr "Zobraziť v Extra menu"
 
 msgid "Show picon background"
-msgstr ""
+msgstr "Pozadie picon"
 
-#, fuzzy
 msgid "Show picons"
-msgstr "Zobraziť podrobnosti"
+msgstr "Zobraziť pikony"
 
 msgid "Show picons in channel list"
-msgstr "Zobraziť pikonu v zozname staníc"
+msgstr "Zobraziť pikony v zozname staníc"
 
-#, fuzzy
 msgid "Show service type in channel list"
-msgstr "Zobraziť pikonu v zozname staníc"
+msgstr "Zobrazovat typ programu v zozname staníc"
 
 msgid "Shutdown"
 msgstr "Vypnúť"
 
 msgid "Sid"
-msgstr ""
+msgstr "Sid"
 
 msgid "Simulate"
 msgstr "Simulovať"
@@ -1460,7 +1420,7 @@ msgid "Site and sources"
 msgstr "Stránky a zdroje"
 
 msgid "Skins"
-msgstr ""
+msgstr "Vzhľady"
 
 msgid "SleepTimer error"
 msgstr "Chyba časovača vypnutia"
@@ -1485,13 +1445,13 @@ msgid "Sorry this page is not yet implemented"
 msgstr "Ospravedlňujeme sa táto stránka ešte nie je implementovaná"
 
 msgid "Sort"
-msgstr ""
+msgstr "Triediť"
 
 msgid "Spinner"
-msgstr ""
+msgstr "Spiner"
 
 msgid "Sref"
-msgstr ""
+msgstr "Sref"
 
 msgid "Standby"
 msgstr "Pohotovostný režim"
@@ -1509,27 +1469,25 @@ msgid "Start time is after end time"
 msgstr "Čas ukončenia sa nachádza pred časom začatia"
 
 msgid "Start typing..."
-msgstr "ZAČNITE PÍSAŤ"
+msgstr "Začnite písať..."
 
 msgid "State"
-msgstr ""
+msgstr "Stav"
 
 msgid "Stream"
 msgstr "Stream"
 
-#, fuzzy
 msgid "Stream Clients"
-msgstr "Stream"
+msgstr "Streamujúci klienti"
 
-#, fuzzy
 msgid "Streaming port"
-msgstr "Stream"
+msgstr "Streamovací port"
 
 msgid "Su"
 msgstr "Ne"
 
 msgid "Subdirectories"
-msgstr ""
+msgstr "Podadresáre"
 
 msgid "Subnet mask"
 msgstr "Maska podsiete"
@@ -1547,7 +1505,7 @@ msgid "System OE"
 msgstr "Systém OE"
 
 msgid "TB"
-msgstr ""
+msgstr "TB"
 
 msgid "TV"
 msgstr "TV"
@@ -1604,7 +1562,6 @@ msgstr "Časovač '%s' zaznamenaný! Nezakázaný!"
 msgid "Theme"
 msgstr "Vzhľad"
 
-#, fuzzy
 msgid "Theme mode"
 msgstr "Vzhľad"
 
@@ -1677,7 +1634,7 @@ msgid "To date"
 msgstr "Nie pred"
 
 msgid "Today"
-msgstr ""
+msgstr "Dnes"
 
 msgid "Transcode"
 msgstr "Transkódovanie"
@@ -1689,7 +1646,7 @@ msgid "Try guessing"
 msgstr "Skúsiť uhádnuť"
 
 msgid "Tsid"
-msgstr ""
+msgstr "Tsid"
 
 msgid "Tu"
 msgstr "Ut"
@@ -1745,7 +1702,7 @@ msgid "Update Package"
 msgstr "Aktualizácia balíčku"
 
 msgid "Update from feed"
-msgstr "Aktualizovať lokálny zoznam balíčkov"
+msgstr "Aktualizácia z Feedu"
 
 msgid "Upgrade all packages"
 msgstr "Upgradovať všetky balíčky"
@@ -1756,40 +1713,35 @@ msgstr "Chyba pri nahrávaní súboru"
 msgid "Upload package"
 msgstr "Nahrať balíček"
 
-#, fuzzy
 msgid "Uploaded Files"
-msgstr "Chyba pri odovzdávaní súboru"
+msgstr "Nahrané súbory"
 
 msgid "Use Channelname for screenshots"
-msgstr ""
+msgstr "Použiť názov stanice pre snímku obrazovky"
 
 msgid "Use a custom location"
 msgstr "Použiť vlastné umiestnenie"
 
 msgid "Use as PiP if possible"
-msgstr ""
+msgstr "Použiť ako PiP ak je to možné"
 
-#, fuzzy
 msgid "Use classic interface"
-msgstr "Používať nový dizajn"
+msgstr "Použiť klasický vzhľad"
 
-#, fuzzy
 msgid "Use custom Color"
-msgstr "Použiť vlastné umiestnenie"
+msgstr "Použiť vlastné farby"
 
 msgid "Use custom box name"
 msgstr "Použiť vlastný názov prijímača"
 
-#, fuzzy
 msgid "Use modern design"
-msgstr "Používať nový dizajn"
+msgstr "Použiť nový vzhľad"
 
 msgid "Use modern interface"
 msgstr "Používať nový dizajn"
 
-#, fuzzy
 msgid "Use old remote"
-msgstr "Skryť úplné diaľkové"
+msgstr "Použiť starý ovládač"
 
 msgid "VPS"
 msgstr "VPS"
@@ -1822,7 +1774,7 @@ msgid "Volume Control"
 msgstr "Ovládanie hlasitosti"
 
 msgid "Vpid"
-msgstr ""
+msgstr "Vpid"
 
 msgid "W"
 msgstr "Z"
@@ -1830,7 +1782,6 @@ msgstr "Z"
 msgid "Waiting for answer ..."
 msgstr "Čakám na odpoveď..."
 
-#, fuzzy
 msgid "Wake Up"
 msgstr "Prebudiť"
 
@@ -1844,7 +1795,7 @@ msgid "We"
 msgstr "St"
 
 msgid "Web TV"
-msgstr ""
+msgstr "Web TV"
 
 msgid "Wed"
 msgstr "Str"
@@ -1865,14 +1816,14 @@ msgid "Wizard"
 msgstr "Sprievodca"
 
 msgid "Would you like to save your changes?"
-msgstr ""
+msgstr "Chcete uložiť zmeny?"
 
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Chybný formát parametra 'set=%s'. Použite set=set15 "
 
 msgid "YYYY-MM-DD"
-msgstr ""
+msgstr "RRRR-MM-DD"
 
 msgid "Yes"
 msgstr "Áno"
@@ -1881,13 +1832,13 @@ msgid "Yes/No"
 msgstr "Áno/Nie"
 
 msgid "Yesterday"
-msgstr ""
+msgstr "Včera"
 
 msgid "Zap"
 msgstr "Prepnúť"
 
 msgid "Zap & Record"
-msgstr "Nahrávať+prepnúť"
+msgstr "Nahrávať & prepnúť"
 
 msgid "Zap before streaming"
 msgstr "prepnúť pred streamovaním"
@@ -1898,33 +1849,29 @@ msgstr "Prepnúť na"
 msgid "Zapped to"
 msgstr "Prepnuté na"
 
-#, fuzzy
 msgid "any time"
-msgstr "Pridať časovač"
+msgstr "kedykoľvek"
 
 msgid "auto"
 msgstr "auto"
 
 msgid "box_ip"
-msgstr ""
+msgstr "box_ip"
 
-#, fuzzy
 msgid "case-insensitive"
-msgstr "Prísnosť hľadania"
+msgstr "nerozlišovať veľkosť písmen"
 
-#, fuzzy
 msgid "case-sensitive"
-msgstr "Prísnosť hľadania"
+msgstr "rozlišovať veľkosť písmen"
 
 msgid "descramble and record ecm"
-msgstr ""
+msgstr "dekódovať a nahrávať ecm"
 
 msgid "description contains"
 msgstr "v popise"
 
-#, fuzzy
 msgid "description match"
-msgstr "Popis"
+msgstr "zhodný popis"
 
 msgid "disabled"
 msgstr "zakázané"
@@ -1933,16 +1880,16 @@ msgid "do nothing"
 msgstr "žiadna akcia"
 
 msgid "don't descramble, record ecm"
-msgstr ""
+msgstr "nedekódovať , nahrávať ecm"
 
 msgid "error! Loading Page"
 msgstr "chyba! Načítavám stránku"
 
 msgid "exact title match"
-msgstr ""
+msgstr "presná zhoda názvu"
 
 msgid "favourite desc match"
-msgstr ""
+msgstr "v popise obľúbených"
 
 msgid "finished"
 msgstr "ukončené"
@@ -1957,7 +1904,7 @@ msgid "hour"
 msgstr "hod."
 
 msgid "kB"
-msgstr ""
+msgstr "kB"
 
 msgid "loading"
 msgstr "načítava sa"
@@ -1966,11 +1913,10 @@ msgid "manual/disabled"
 msgstr "manuálne/zakázané"
 
 msgid "mins"
-msgstr ""
+msgstr "minút"
 
-#, fuzzy
 msgid "minute"
-msgstr "min."
+msgstr "minúta"
 
 msgid "no description available"
 msgstr "popis nie je k dispozícii"
@@ -1979,10 +1925,10 @@ msgid "none/IPv4-only network"
 msgstr "žiadna/len IPv4 sieť"
 
 msgid "normal"
-msgstr ""
+msgstr "normálne"
 
 msgid "on day"
-msgstr ""
+msgstr "v deň"
 
 msgid "on weekday"
 msgstr "v pracovný deň"
@@ -1991,19 +1937,19 @@ msgid "one two three four unknown command"
 msgstr "jeden dva tri štyri neznámy príkaz"
 
 msgid "partial title match"
-msgstr ""
+msgstr "čiastočná zhoda názvu"
 
 msgid "r/o"
-msgstr ""
+msgstr "r/o"
 
 msgid "r/w"
-msgstr ""
+msgstr "r/w"
 
 msgid "record"
 msgstr "nahrať"
 
 msgid "regex match (experimental)"
-msgstr ""
+msgstr "regex zhoda (experimentálne)"
 
 msgid "remove"
 msgstr "odstrániť"
@@ -2012,7 +1958,7 @@ msgid "running"
 msgstr "prebieha"
 
 msgid "seconds"
-msgstr "sek."
+msgstr "sekúnd"
 
 msgid "select bouquets"
 msgstr "výber prehľadov"
@@ -2026,9 +1972,8 @@ msgstr "výber značiek"
 msgid "short description contains"
 msgstr "v stručnom popise"
 
-#, fuzzy
 msgid "short description match"
-msgstr "zhoda v krátkom popise"
+msgstr "zhodný krátky popis"
 
 msgid "standard"
 msgstr "štandardné"
@@ -2037,24 +1982,22 @@ msgid "static"
 msgstr "statická"
 
 msgid "this service is protected by a parental control pin"
-msgstr ""
+msgstr "tento program je chránený rodičovskou kontrolou"
 
 msgid "title contains"
 msgstr "v názve"
 
 msgid "title ends with"
-msgstr ""
+msgstr "názov končí na"
 
-#, fuzzy
 msgid "title or description match"
-msgstr "zhoda v názve alebo popise"
+msgstr "zhodný názov alebo popis"
 
-#, fuzzy
 msgid "title or short description match"
-msgstr "zhoda v nadpise alebo krátkom popise"
+msgstr "zhodný názov alebo krátky popis"
 
 msgid "title starts with"
-msgstr ""
+msgstr "názov začína na"
 
 msgid "transcoded"
 msgstr "transkódované"

@@ -1,19 +1,20 @@
 # J. Lavoie <j.lavoie@net-c.ca>, 2021.
+# Pr2 <pr2circle@outlook.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 21:02+0100\n"
-"PO-Revision-Date: 2021-12-04 17:29+0000\n"
-"Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/e2openplugin-"
-"openwebif/e2openplugin-openwebif/fr/>\n"
+"PO-Revision-Date: 2022-01-10 10:55+0000\n"
+"Last-Translator: Pr2 <pr2circle@outlook.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.10-dev\n"
+"X-Generator: Weblate 4.10.1\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
@@ -184,22 +185,22 @@ msgid "Are you sure you want to delete the selected bouquet?"
 msgstr "Etes-vous sûr de vouloir supprimer le bouquet sélectionné ?"
 
 msgid "Are you sure you want to delete the selected item(s)?"
-msgstr "Voulez-vous vraiment effacer l(es) élément(s) sélectionné(s)"
+msgstr "Voulez-vous vraiment effacer l(es) élément(s) sélectionné(s)?"
 
 msgid "Are you sure you want to delete this AutoTimer?"
 msgstr "Voulez-vous vraiment effacer cet AutoTimer?"
 
 msgid "Are you sure you want to delete this recording?"
-msgstr "Etes-vous sûr que vous souhaitez supprimer cet enregistrement?"
+msgstr "Êtes-vous certains de supprimer cet enregistrement?"
 
 msgid "Are you sure you want to delete this timer?"
 msgstr "Êtes-vous sûr de vouloir supprimer cette programmation ?"
 
 msgid "Are you sure you want to rename this recording?"
-msgstr "Etes-vous sûr que vous voulez renommer cet enregistrement?"
+msgstr "Êtes-vous certains de renommer cet enregistrement?"
 
 msgid "Are you sure you want to restore from file?"
-msgstr "Etes-vous sûr que vous voulez restaurer à partir du fichier?"
+msgstr "Êtes-vous certains de restaurer à partir de ce fichier?"
 
 msgid "Are you sure you want to start recording instantly?"
 msgstr "Démarrer un enregistrement instantané maintenant?"
@@ -391,7 +392,7 @@ msgstr "Impossible d'ajouter le timer '%s'!"
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr ""
-"Impossible de trouver le timer '%s' avec l'heure de début et de fin donnée!"
+"Impossible de trouver le timer '%s' avec l'heure de début et de fin données!"
 
 msgid "Create bouquet from selection"
 msgstr "Ajouter Provider comme un nouveau Bouquet"
@@ -524,15 +525,14 @@ msgstr "Rafraîchir EPG"
 
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr ""
-"ERREUR: Impossible de définir un Timer de sommeil pendant que le "
-"périphérique est en veille"
+"ERREUR: Impossible de définir un timer de sommeil lorsque le périphérique "
+"est en veille"
 
 msgid "Edit"
 msgstr "Editer"
 
-#, fuzzy
 msgid "Edit Recording"
-msgstr "Effacer enregistrement"
+msgstr "Éditer l'enregistrement"
 
 msgid "Edit Timer"
 msgstr "Éditer Timer"
@@ -588,9 +588,8 @@ msgstr "Fin de la période \"après l'évènement\""
 msgid "End of timespan"
 msgstr "Fin du laps de temps"
 
-#, fuzzy
 msgid "Enter Text"
-msgstr "Entrer le chemin"
+msgstr "Saisir du texte"
 
 msgid "Enter a name for the new bouquet"
 msgstr "Entrer un nouveau nom pour le bouquet"
@@ -710,10 +709,10 @@ msgstr "Routeur"
 
 msgid "Get mutable list for new created alternative failed!"
 msgstr ""
-"Echec de l'obtenion d'une liste mutable pour le nouveau alternatif créé!"
+"Échec de l'obtenion d'une liste mutable pour le nouveau alternatif créé!"
 
 msgid "Get mutable list for new created bouquet failed!"
-msgstr "Echec de l'obtenion d'une liste mutable pour le nouveau bouquet créé!"
+msgstr "Échec de l'obtention d'une liste mutable pour le nouveau bouquet créé!"
 
 msgid "HH:MM"
 msgstr "HH:MM"
@@ -919,7 +918,7 @@ msgid "More"
 msgstr "Plus"
 
 msgid "More details"
-msgstr "Plus de  détails"
+msgstr "Plus de détails"
 
 msgid "Movie database for EPG"
 msgstr "Base de donnée des films pour EPG"
@@ -1117,7 +1116,7 @@ msgid "Packages"
 msgstr "Paquets"
 
 msgid "Parent Control Setup Pin is wrong!"
-msgstr "Le code PIN parental donné est mauvais!"
+msgstr "Le code PIN parental donné est incorrecte!"
 
 msgid "Parent Control is not activated."
 msgstr "Le contrôle parental n'est pas activé."
@@ -1288,7 +1287,7 @@ msgid "Search"
 msgstr "Recherche"
 
 msgid "Search CSFD"
-msgstr "Recherche CSFD (ČS filmová filmová databáze)"
+msgstr "Recherche CSFD"
 
 msgid "Search IMDb"
 msgstr "Recherche IMDb"
@@ -1748,9 +1747,8 @@ msgstr "Utiliser le design moderne"
 msgid "Use modern interface"
 msgstr "Utiliser le nouveau design"
 
-#, fuzzy
 msgid "Use old remote"
-msgstr "Cacher la télécommande complète"
+msgstr "Utiliser l'ancienne télécommande"
 
 msgid "VPS"
 msgstr "VPS"
