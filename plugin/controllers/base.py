@@ -117,9 +117,11 @@ class BaseController(resource.Resource):
 		request.finish()
 
 	def loadTemplate(self, path, module, args):
-		if fileExists(getViewsPath(path + ".py")) or fileExists(getViewsPath(path + ".pyo")):
+		if fileExists(getViewsPath(path + ".py")) or fileExists(getViewsPath(path + ".pyo")) or fileExists(getViewsPath(path + ".pyc")):
 			if fileExists(getViewsPath(path + ".pyo")):
 				template = imp.load_compiled(module, getViewsPath(path + ".pyo"))
+			elif fileExists(getViewsPath(path + ".pyc")):
+				template = imp.load_compiled(module, getViewsPath(path + ".pyc"))
 			else:
 				template = imp.load_source(module, getViewsPath(path + ".py"))
 			mod = getattr(template, module, None)
