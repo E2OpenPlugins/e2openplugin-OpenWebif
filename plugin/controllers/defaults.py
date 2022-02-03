@@ -10,7 +10,20 @@ from Components.Language import language
 from Components.config import config as comp_config
 from Components.Network import iNetwork
 
-from enigma import eEnv
+try:
+	from Tools.Directories import isPluginInstalled
+except ImportError:
+	# fallback for old images
+	from Tools.Directories import resolveFilename, SCOPE_PLUGINS
+	def isPluginInstalled(p, plugin="plugin"):
+		for ext in ['', 'c', 'o']:
+			if os.path.exists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/%s/%s.py%s" % (p, plugin, ext))):
+				return True
+			if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/%s/%s.py%s" % (p, plugin, ext))):
+				return True
+
+def _isPluginInstalled(p, plugin="plugin"):
+	return isPluginInstalled(p, plugin)
 
 OPENWEBIFVER = "OWIF 1.5.0"
 
@@ -35,10 +48,7 @@ MOBILEDEVICE = False
 
 def getTranscoding():
 	if os.path.isfile("/proc/stb/encoder/0/bitrate"):
-		lp = eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/')
-		for p in ['TranscodingSetup', 'TransCodingSetup', 'MultiTransCodingSetup']:
-			if os.path.exists(lp + p + '/plugin.py') or os.path.exists(lp + p + '/plugin.pyo'):
-				return True
+		return isPluginInstalled("TranscodingSetup") or isPluginInstalled("TransCodingSetup") or isPluginInstalled("MultiTransCodingSetup")
 	return False
 
 
