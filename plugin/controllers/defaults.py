@@ -225,6 +225,20 @@ def getTextInputSupport():
 	except ImportError:
 		return False
 
+def getDefaultRcu():
+	remotetype = "standard"
+	if comp_config.misc.rcused.value == 0:
+		remotetype = "advanced"
+	else:
+		try:
+			# FIXME remove HardwareInfo
+			from Tools.HardwareInfo import HardwareInfo
+			if HardwareInfo().get_device_model() in ("xp1000", "formuler1", "formuler3", "et9000", "et9200", "hd1100", "hd1200"):
+				remotetype = "advanced"
+		except:  # nosec # noqa: E722
+			print("[OpenWebIf] wrong hw detection")
+	return remotetype
+
 
 OPENWEBIFPACKAGEVERSION = getOpenwebifPackageVersion()
 
@@ -245,3 +259,5 @@ HASSERIES = getSeriesPlugin()
 ATSEARCHTYPES = getATSearchtypes()
 
 TEXTINPUTSUPPORT = getTextInputSupport()
+
+DEFAULT_RCU = getDefaultRcu()
