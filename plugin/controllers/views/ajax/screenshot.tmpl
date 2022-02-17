@@ -23,9 +23,17 @@
 			</div>
 		</div>
 		<div id="screenShotRefresh" style="margin-top: 15px; margin-left: auto; margin-right: auto; width: 720px; text-align: center;">
+			#if $high_resolution
+			<input type="checkbox" id="ssr_hd" value="0" checked="checked">$tstrings['high_resolution']
+			#else
 			<input type="checkbox" id="ssr_hd" value="0">$tstrings['high_resolution']
+			#end if
+			#if $refresh_auto
+			<input type="checkbox" id="ssr_s" value="0" checked="checked">$tstrings['refresh_auto']
+			#else
 			<input type="checkbox" id="ssr_s" value="0">$tstrings['refresh_auto']
-			<input type="text" size="2" id="ssr_i" value="30">$tstrings['seconds']
+			#end if
+			<input type="text" size="2" id="ssr_i" value="$refresh_time">$tstrings['seconds']
 			<br>
 			<span id="screenshotrefreshbutton">
 				<button onclick="grabScreenshot('auto'); return false">$tstrings['refresh']</button>
@@ -68,7 +76,6 @@ function buttonsSwitcher(pipval){
 }
 
 var start = true;
-
 $(document).ready(function(){
 	buttonsSwitcher(pip);
 	if(start)
