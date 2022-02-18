@@ -862,7 +862,7 @@ function grabScreenshot(mode) {
 		mode = screenshotMode;
 	}
 	timestamp = new Date().getTime();
-	if (GetLSValue('ssr_hd',false)){
+	if (SSHelper.ssr_hd){
 		$('#screenshotimage').attr("src",'/grab?format=jpg&mode=' + mode + '&t=' + timestamp);
 	} else {
 		$('#screenshotimage').attr("src",'/grab?format=jpg&r=720&mode=' + mode + '&t=' + timestamp);
@@ -2129,6 +2129,7 @@ var SSHelperObj = function () {
 	var self;
 	var screenshotInterval = false;
 	var ssr_i = 30;
+	var ssr_hd = true;
 
 	return {
 		setup: function()
@@ -2136,6 +2137,7 @@ var SSHelperObj = function () {
 			self = this;
 			clearInterval(self.screenshotInterval);
 			self.ssr_i = parseInt($('#ssr_i').val());
+			self.ssr_hd = $('#ssr_hd').is(':checked');
 			
 			$('#screenshotbutton0').click(function(){testPipStatus(); grabScreenshot('all');});
 			$('#screenshotbutton1').click(function(){testPipStatus(); grabScreenshot('video');});
@@ -2151,8 +2153,8 @@ var SSHelperObj = function () {
 
 			$('#ssr_hd').change(function() {
 				testPipStatus();
-				var ch = $('#ssr_hd').is(':checked') ? "true" : "false";
-				webapi_execute("/api/setwebconfig?screenshot_high_resolution=" + ch);
+				self.ssr_hd = $('#ssr_hd').is(':checked');
+				webapi_execute("/api/setwebconfig?screenshot_high_resolution=" + ( self.ssr_hd ? "true" : "false"));
 				grabScreenshot('auto');
 			});
 		

@@ -856,7 +856,7 @@ function grabScreenshot(mode) {
 		mode = screenshotMode;
 	}
 	timestamp = new Date().getTime();
-	if (GetLSValue('ssr_hd',false)){
+	if (SSHelper.ssr_hd){
 		$('#screenshotimage').attr("src",'/grab?format=jpg&mode=' + mode + '&t=' + timestamp);
 	} else {
 		$('#screenshotimage').attr("src",'/grab?format=jpg&r=720&mode=' + mode + '&t=' + timestamp);
