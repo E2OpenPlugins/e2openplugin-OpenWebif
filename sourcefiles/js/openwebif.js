@@ -2176,7 +2176,7 @@ var SSHelperObj = function () {
 				} else {
 					clearInterval(self.screenshotInterval); 
 				}
-				webapi_execute("/api/setwebconfig?screenshot_refresh_auto=" + ch ? "true":"false");
+				webapi_execute("/api/setwebconfig?screenshot_refresh_auto=" + (v ? "true":"false"));
 			});
 		
 			screenshotMode = 'all'; // reset on page reload
