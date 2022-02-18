@@ -2331,6 +2331,20 @@ class WebController(BaseController):
 				comp_config.OpenWebif.webcache.mepgmode.save()
 			except ValueError:
 				pass
+		elif b"screenshot_high_resolution" in list(request.args.keys()):
+			val = (getUrlArg(request, "screenshot_high_resolution") == 'true')
+			comp_config.OpenWebif.webcache.screenshot_high_resolution.value = val
+			comp_config.OpenWebif.webcache.screenshot_high_resolution.save()
+		elif b"screenshot_refresh_auto" in list(request.args.keys()):
+			val = (getUrlArg(request, "screenshot_refresh_auto") == 'true')
+			comp_config.OpenWebif.webcache.screenshot_refresh_auto.value = val
+			comp_config.OpenWebif.webcache.screenshot_refresh_auto.save()
+		elif b"screenshot_refresh_time" in list(request.args.keys()):
+			try:
+				comp_config.OpenWebif.webcache.screenshot_refresh_time.value = int(request.args[b"screenshot_refresh_time"][0])
+				comp_config.OpenWebif.webcache.screenshot_refresh_time.save()
+			except ValueError:
+				pass
 		else:
 			return {"result": False}
 		return {"result": True}

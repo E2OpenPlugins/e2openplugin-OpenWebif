@@ -216,7 +216,7 @@ var SSHelperObj = function () {
 		{
 			self = this;
 			clearInterval(self.screenshotInterval);
-			self.ssr_i = parseInt(GetLSValue('ssr_i','30'));
+			self.ssr_i = parseInt($('#ssr_i').val());
 
 			$("#dropdown").click(function() {testPipStatus();});
 			$('#screenshotbutton0').click(function(){testPipStatus(); grabScreenshot('all');});
@@ -227,18 +227,17 @@ var SSHelperObj = function () {
 			$("button").click(function() {testPipStatus();});
 
 			$('#ssr_i').val(self.ssr_i);
-			$('#ssr_s').prop('checked',GetLSValue('ssr_s',false));
-			$('#ssr_hd').prop('checked',GetLSValue('ssr_hd',false));
 			$('#screenshotspinner').addClass(GetLSValue('spinner','fa-spinner'));
 			$('#ssr_hd').change(function() {
 				testPipStatus();
-				SetLSValue('ssr_hd',$('#ssr_hd').is(':checked'));
+				var ch = $('#ssr_hd').is(':checked') ? "true" : "false";
+				webapi_execute("/api/setwebconfig?screenshot_high_resolution=" + ch);
 				grabScreenshot('auto');
 			});
 			$('#ssr_i').change(function() {
 				testPipStatus();
 				var t = $('#ssr_i').val();
-				SetLSValue('ssr_i',t);
+				webapi_execute("/api/setwebconfig?screenshot_refresh_time=" + t);
 				self.ssr_i = parseInt(t);
 				if($('#ssr_s').is(':checked'))
 				{
@@ -254,12 +253,16 @@ var SSHelperObj = function () {
 				} else {
 					clearInterval(self.screenshotInterval); 
 				}
-				SetLSValue('ssr_s',v);
+				webapi_execute("/api/setwebconfig?screenshot_refresh_auto=" + (v ? "true":"false"));
 			});
+		
 			screenshotMode = 'all'; // reset on page reload
 			grabScreenshot(screenshotMode);
-			if(GetLSValue('ssr_s',false))
+
+			if($('#ssr_s').is(':checked')) {
 				self.setSInterval();
+			}
+
 		},setSInterval: function()
 		{
 			self.screenshotInterval = setInterval( function() {testPipStatus(); grabScreenshot('auto');}, (self.ssr_i+1)*1000);

@@ -68,6 +68,9 @@ config.OpenWebif.webcache.showiptvchannelsinselection = ConfigYesNo(default=True
 config.OpenWebif.webcache.screenshotchannelname = ConfigYesNo(default=False)
 config.OpenWebif.webcache.showallpackages = ConfigYesNo(default=False)
 config.OpenWebif.webcache.smallremote = ConfigSelection(default='new', choices=['new', 'old', 'ims'])
+config.OpenWebif.webcache.screenshot_high_resolution = ConfigYesNo(default=True)
+config.OpenWebif.webcache.screenshot_refresh_auto = ConfigYesNo(default=False)
+config.OpenWebif.webcache.screenshot_refresh_time = ConfigInteger(default=30)
 
 # HTTPS
 config.OpenWebif.https_enabled = ConfigYesNo(default=False)
