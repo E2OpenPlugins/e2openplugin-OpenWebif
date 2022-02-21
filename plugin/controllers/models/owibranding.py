@@ -310,35 +310,35 @@ def getAllInfo():
 			brand = "Venton"
 			model = "HDe"
 		elif procmodel == "hd1100":
-			brand = "Mutant"
+			brand = "Mut@nt"
 			model = "HD1100"
 		elif procmodel == "hd1200":
-			brand = "Mutant"
+			brand = "Mut@nt"
 			model = "HD1200"
 		elif procmodel == "hd1265":
-			brand = "Mutant"
+			brand = "Mut@nt"
 			model = "HD1265"
 		elif procmodel == "hd2400":
-			brand = "Mutant"
+			brand = "Mut@nt"
 			model = "HD2400"
 		elif procmodel == "hd51":
-			brand = "Mutant"
+			brand = "Mut@nt"
 			model = "HD51"
 			grabpip = 1
 		elif procmodel == "hd11":
-			brand = "Mutant"
+			brand = "Mut@nt"
 			model = "HD11"
 		elif procmodel == "hd500c":
-			brand = "Mutant"
+			brand = "Mut@nt"
 			model = "HD500c"
 		elif procmodel == "hd530c":
-			brand = "Mutant"
+			brand = "Mut@nt"
 			model = "HD530c"
 		elif procmodel == "hd60":
-			brand = "Mutant"
+			brand = "Mut@nt"
 			model = "HD60"
 		elif procmodel == "hd66se":
-			brand = "Mutant"
+			brand = "Mut@nt"
 			model = "HD66se"
 		elif procmodel == "multibox":
 			brand = "MaXytec"
