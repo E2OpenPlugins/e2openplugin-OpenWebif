@@ -323,8 +323,8 @@ class ConfigFiles:
 					continue
 				key = section.get("key")
 				if key not in self.allowedsections:
-					showOpenWebIF = section.get("showOpenWebIF")
-					if showOpenWebIF == "1":
+					showOpenWebIf = section.get("showOpenWebIf")
+					if showOpenWebIf == "1":
 						self.allowedsections.append(key)
 					else:
 						continue
