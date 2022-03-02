@@ -2,7 +2,7 @@
 <tr>
 <td>$config.description</td>
 <td>
-	<select id="$config.path" onchange="saveConfig('$config.path', this.value);">
+	<select id="$config.path" onchange="saveConfig('$config.path', this.value, '$key');">
 		#for $choice in $config.data.choices
 			#if $config.data.current == $choice[0]
 				<option value="$choice[0]" selected="true">$choice[1]</option>
@@ -20,9 +20,9 @@
 <td>$config.description</td>
 <td>
 	#if $config.data.current
-		<input type="checkbox" id="$config.path" checked="true" onclick="saveConfig('$config.path', this.checked);" />
+		<input type="checkbox" id="$config.path" checked="true" onclick="saveConfig('$config.path', this.checked, '$key');" />
 	#else
-		<input type="checkbox" id="$config.path" onclick="saveConfig('$config.path', this.checked);" />
+		<input type="checkbox" id="$config.path" onclick="saveConfig('$config.path', this.checked, '$key');" />
 	#end if
 </td>
 </tr>
@@ -34,9 +34,9 @@
 <td>
 	#for $choice in $config.data.choices
 		#if $choice in $config.data.current
-			<input type="checkbox" id="${config.path}_${choice}" checked="true" onclick="saveConfig('$config.path', $choice);" />
+			<input type="checkbox" id="${config.path}_${choice}" checked="true" onclick="saveConfig('$config.path', $choice, '$key');" />
 		#else
-			<input type="checkbox" id="${config.path}_${choice}" onclick="saveConfig('$config.path', $choice);" />
+			<input type="checkbox" id="${config.path}_${choice}" onclick="saveConfig('$config.path', $choice, '$key');" />
 		#end if
 		$choice
 	#end for
@@ -48,7 +48,7 @@
 <tr>
 <td>$config.description</td>
 <td>
-	<input type="text" id="${config.path}" value="$config.data.current" onkeydown="numberTextboxKeydownFilter(event);" onchange="saveConfig('$config.path', this.value);">
+	<input type="text" id="${config.path}" value="$config.data.current" onkeydown="numberTextboxKeydownFilter(event);" onchange="saveConfig('$config.path', this.value, '$key');">
 </td>
 </tr>
 #end def
@@ -57,7 +57,7 @@
 <tr>
 <td>$config.description</td>
 <td>
-	<input type="text" id="${config.path}" value="$config.data.current" onchange="saveConfig('$config.path', this.value);">
+	<input type="text" id="${config.path}" value="$config.data.current" onchange="saveConfig('$config.path', this.value, '$key');">
 </td>
 </tr>
 #end def

@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.23
+//* Version 1.2.24
 //******************************************************************************
 //* Copyright (C) 2011-2022 E2OpenPlugins
 //*
@@ -36,6 +36,7 @@
 //* V 1.2.21 - improve getallservices
 //* V 1.2.22 - add recoding type to timer edit
 //* V 1.2.23 - save screenshot settings to config instead of browser local storage 
+//* V 1.2.24 - improve save config 
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -1005,11 +1006,13 @@ function toggleFullRemote() {
 	$("#remotecontainer").toggle();
 }
 
-function saveConfig(key, value) {
+function saveConfig(key, value, section) {
 	$.ajax({ url: "/api/saveconfig?key=" + escape(key) + "&value=" + escape(value), cache: false, async: true, type: "POST"}).done(function() { 
 		if (key == "config.usage.setup_level") {
-			// TODO: refresh the menu box with new sections list
 			$("#content_container").load(lastcontenturl);
+		}
+		else {
+			load_scontent('ajax/config?section=' + section);
 		}
 	});
 }
