@@ -1779,7 +1779,7 @@ function ShowTimers(timers)
 				var end = begin + ( parseInt(parts[2]) * 60 );
 				var evt = $( this );
 				timers.forEach(function(entry) {
-					if(entry["sref"] == sref)
+					if(entry["sref"] == sref || sref.indexOf(entry["sref"]) === 0)
 					{
 						var b = parseInt(entry["begin"]);
 						var e = parseInt(entry["end"]);

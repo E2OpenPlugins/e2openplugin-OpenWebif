@@ -1091,7 +1091,14 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 		endTime = event[eventLookupTable.index('B')] + event[eventLookupTable.index('D')] - 120
 		serviceref = event[eventLookupTable.index('R')]
 		if serviceref not in timerlist:
-			return None
+			# Cut description
+			f = serviceref.rfind("::")
+			if f != -1:
+				serviceref = serviceref[:f+1]
+				if serviceref not in timerlist:
+					return None
+			else:
+				return None
 		for timer in timerlist[serviceref]:
 			if timer.begin <= startTime and timer.end >= endTime:
 				basicStatus = 'timer'
