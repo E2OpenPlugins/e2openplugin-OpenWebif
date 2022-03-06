@@ -231,7 +231,7 @@ function deleteBookmark(bm) {
 	}
 
 	$.ajax({
-		url: "/api/removelocation?dirname=" + bm,
+		url: "/api/removelocation?dirname=" + encodeURIComponent(bm),
 		dataType: "json",
 		success: function(loc) {
 			if (loc.result)
@@ -245,13 +245,13 @@ function deleteBookmark(bm) {
 function addBookmark() {
 	bm = $("#addbookmarktext").val();
 
-	if(bm.length==0 || bm.includes(" ")) {
-		alert("Path Error");
+	if(bm.length==0) {
+		alert("Path Errorx");
 		return;
 	}
 
 	$.ajax({
-		url: "/api/addlocation?dirname=" + bm,
+		url: "/api/addlocation?dirname=" + encodeURIComponent(bm),
 		dataType: "json",
 		success: function(loc) {
 			if (loc.result)
