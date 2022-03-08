@@ -1,9 +1,9 @@
 //******************************************************************************
 //* at.js: openwebif Autotimer plugin
-//* Version 2.12
+//* Version 2.13
 //******************************************************************************
-//* Copyright (C) 2014-2021 Joerg Bleyel
-//* Copyright (C) 2014-2021 E2OpenPlugins
+//* Copyright (C) 2014-2022 Joerg Bleyel
+//* Copyright (C) 2014-2022 E2OpenPlugins
 //*
 //* V 1.0 - Initial Version
 //* V 1.1 - Support translation, small ui fixes
@@ -28,6 +28,7 @@
 //* V 2.10 - iptv, lastscanned filter
 //* V 2.11 - improve getallservices
 //* V 2.12 - fix test request
+//* V 2.13 - improve FillAllServices
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //* 		 plnick
@@ -432,7 +433,7 @@ function ATGetAllServices(callback,radio)
 		success: function ( data ) {
 			var sdata = JSON.stringify(data);
 			var bqs = data['services'];
-			FillAllServices(bqs,callback);
+			FillAllServices(bqs,true,callback);
 		}
 	});
 }

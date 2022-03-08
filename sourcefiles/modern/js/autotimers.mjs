@@ -958,8 +958,9 @@
         self = this;
 
         const excludeIptv = true;
+        const CutTitle = true;
         self.allAutoTimers = [];
-        self.availableServices = await owif.api.getAllServices(excludeIptv);
+        self.availableServices = await owif.api.getAllServices(excludeIptv, CutTitle);
         self.availableLocations = []; // these are already server-rendered
         self.allLocations = [];
         self.availableTags = await owif.api.getTags();

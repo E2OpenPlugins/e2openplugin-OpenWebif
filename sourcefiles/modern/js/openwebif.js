@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.24
+//* Version 1.2.25
 //******************************************************************************
 //* Copyright (C) 2011-2022 E2OpenPlugins
 //*
@@ -37,6 +37,7 @@
 //* V 1.2.22 - add recoding type to timer edit
 //* V 1.2.23 - save screenshot settings to config instead of browser local storage 
 //* V 1.2.24 - improve save config 
+//* V 1.2.25 - improve FillAllServices
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -2032,7 +2033,7 @@ function SetSpinner()
 
 function isInArray(array, search) { return (array.indexOf(search) >= 0) ? true : false; }
 
-function FillAllServices(bqs,callback)
+function FillAllServices(bqs,cuttitle,callback)
 {
 	var options = "";
 	var boptions = "";
@@ -2048,7 +2049,15 @@ function FillAllServices(bqs,callback)
 			if (!isInArray(refs,ref)) {
 				refs.push(ref);
 				if(ref.substring(0, 4) == "1:0:")
+				{
+					if(cuttitle) {
+						var li = ref.lastIndexOf("::");
+						if(li>0) {
+							ref = ref.substring(0,li-1);
+						}
+					}
 					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
+				}
 				if(ref.substring(0, 5) == "4097:")
 					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
 				if(ref.substring(0, 7) == "1:134:1")
@@ -2091,7 +2100,7 @@ function GetAllServices(callback,radio)
 		if(cache != null) {
 			var js = JSON.parse(cache);
 			var bqs = js['services'];
-			FillAllServices(bqs,callback);
+			FillAllServices(bqs,false,callback);
 			return;
 		}
 	}
@@ -2103,7 +2112,7 @@ function GetAllServices(callback,radio)
 			SetLSValue(v,sdata);
 			SetLSValue(vd,date);
 			var bqs = data['services'];
-			FillAllServices(bqs,callback);
+			FillAllServices(bqs,false,callback);
 		}
 	});
 }
