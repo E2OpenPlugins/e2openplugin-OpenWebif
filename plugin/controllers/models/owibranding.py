@@ -487,15 +487,15 @@ def getAllInfo():
 			brand = "Zgemma"
 			model = "H9 Twin SE"
 			grabpip = 1
-		elif procmodel == "h9se.s":
+		elif procmodel == "h9.s.se":
 			brand = "Zgemma"
-			model = "H9SE.S"
+			model = "H9.S SE"
 			grabpip = 1
-		elif procmodel == "h9se.2s":
+		elif procmodel == "h9.2s.se":
 			brand = "Zgemma"
-			model = "H9SE.2S"
+			model = "H9.2S SE"
 			grabpip = 1
-		elif procmodel == "h9se.2h":
+		elif procmodel == "h9.2h.se":
 			brand = "Zgemma"
 			model = "H9.2H SE"
 			grabpip = 1
@@ -760,7 +760,7 @@ def getAllInfo():
 		remote = "dual"
 	elif procmodel in ("sh1", "lc"):
 		remote = "sh1"
-	elif procmodel in ("hzero", "h3", "h4", "h5", "h6", "h7", "h8", "h9", "i55plus", "h8.2h", "h9.s", "h9.t", "h9.2h", "h9.2s", "h9combo", "h9combose", "h9twin", "h9twinse", "h9se.s", "h9se.2s", "h9se.2h", "h10.t", "h10.2s", "h10.2h", "h11", "h11.s"):
+	elif procmodel in ("hzero", "h3", "h4", "h5", "h6", "h7", "h8", "h9", "i55plus", "h8.2h", "h9.s", "h9.t", "h9.2h", "h9.2s", "h9combo", "h9combose", "h9twin", "h9twinse", "h9.s.se", "h9.2s.se", "h9.2h.se", "h10.t", "h10.2s", "h10.2h", "h11", "h11.s"):
 		remote = "h3"
 	elif procmodel == "i55":
 		remote = "i55"
