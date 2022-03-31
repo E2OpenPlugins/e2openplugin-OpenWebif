@@ -176,8 +176,11 @@ msgstr ""
 msgid "Any service/recording"
 msgstr "Който и да е канал/запис"
 
-msgid "Apid"
-msgstr "Apid"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
 
 msgid "April"
 msgstr "Април"
@@ -1086,8 +1089,8 @@ msgstr "За който и да е канал"
 msgid "On same service"
 msgstr "За този канал"
 
-msgid "Onid"
-msgstr "Onid"
+msgid "ONID"
+msgstr "ONID"
 
 msgid "Only match between dates"
 msgstr "Ограничение до предаванията на определени дати"
@@ -1141,8 +1144,8 @@ msgstr "Родителския контрол не е активиран."
 msgid "Parse AutoTimer"
 msgstr "Търсене на съвпадащ Автотаймер"
 
-msgid "Pcrpid"
-msgstr "Pcrpid"
+msgid "PCR PID"
+msgstr "PCR PID"
 
 msgid "PiP"
 msgstr "PiP"
@@ -1168,8 +1171,8 @@ msgstr "Плейлист"
 msgid "Playlist format"
 msgstr "Плейлист Формат"
 
-msgid "Pmtpid"
-msgstr "Pmtpid"
+msgid "PMT PID"
+msgstr "PMT PID"
 
 msgid "Power Control"
 msgstr "Управление на Захранването"
@@ -1204,7 +1207,7 @@ msgstr "Рестарт"
 msgid "Record a maximum of # times"
 msgstr "Запиши максимум х пъти"
 
-msgid "Recording Status"
+msgid "Recording"
 msgstr "Статус на записите"
 
 #, fuzzy
@@ -1445,8 +1448,8 @@ msgstr "Покажи Пикон в списъка с канали"
 msgid "Shutdown"
 msgstr "Изключване"
 
-msgid "Sid"
-msgstr "Sid"
+msgid "Service ID (SID)"
+msgstr "Service ID (SID)"
 
 msgid "Simulate"
 msgstr "Симулирай"
@@ -1485,8 +1488,8 @@ msgstr ""
 msgid "Spinner"
 msgstr "Спинър"
 
-msgid "Sref"
-msgstr "Sref"
+msgid "SRef"
+msgstr "SRef"
 
 msgid "Standby"
 msgstr "Готовност"
@@ -1558,6 +1561,9 @@ msgstr "Етикети"
 
 msgid "Teletext"
 msgstr "Телетекст"
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Телевизия"
@@ -1683,8 +1689,8 @@ msgstr "Перевод на Испански"
 msgid "Try guessing"
 msgstr "Вземете предвид съществуващ таймер"
 
-msgid "Tsid"
-msgstr "Tsid"
+msgid "TSID"
+msgstr "TSID"
 
 msgid "Tu"
 msgstr "Вт"
@@ -1695,7 +1701,7 @@ msgstr "Вто"
 msgid "Tuesday"
 msgstr "Вторник"
 
-msgid "Tuner Bit Error Rate BER"
+msgid "Bit Error Rate (BER)"
 msgstr "Честота на битовите грешки на тунера (BER)"
 
 msgid "Tuner Number"
@@ -1704,13 +1710,13 @@ msgstr "Номер на тунера"
 msgid "Tuner Signal"
 msgstr "Тунер Сигнал"
 
-msgid "Tuner Signal Power AGC"
+msgid "Signal Power (AGC)"
 msgstr "Сила на тунер сигнала (AGC)"
 
-msgid "Tuner Signal Quality SNR"
+msgid "Signal Quality (SNR)"
 msgstr "Качество на тунер сигнала (SNR)"
 
-msgid "Tuner Signal Quality SNR_DB"
+msgid "Signal Quality (SNR DB)"
 msgstr "Качество на тунер сигнала (SNR_DB)"
 
 msgid "Tuner Type"
@@ -1800,7 +1806,7 @@ msgstr "Видео"
 msgid "Video Height"
 msgstr "Видео Височина"
 
-msgid "Video Wide"
+msgid "Widescreen"
 msgstr "Широкоекранен формат"
 
 msgid "Video Width"
@@ -1815,8 +1821,8 @@ msgstr "Усилване"
 msgid "Volume Control"
 msgstr "Контрол на Усилването"
 
-msgid "Vpid"
-msgstr "Vpid"
+msgid "Video PID (VPID)"
+msgstr "Video PID (VPID)"
 
 msgid "W"
 msgstr "W"
@@ -1964,6 +1970,9 @@ msgstr ""
 
 msgid "minute"
 msgstr "минута"
+
+msgid "No"
+msgstr "Не"
 
 msgid "no description available"
 msgstr "няма достъпно описание"

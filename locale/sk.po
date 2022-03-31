@@ -172,8 +172,11 @@ msgstr "Kedykoľvek"
 msgid "Any service/recording"
 msgstr "Akákoľvek stanica/nahrávanie"
 
-msgid "Apid"
-msgstr "Apid"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr "Audio PID (APID)"
 
 msgid "April"
 msgstr "Apríl"
@@ -1063,8 +1066,8 @@ msgstr "Na akúkoľvek stanicu"
 msgid "On same service"
 msgstr "Na rovnakej stanici"
 
-msgid "Onid"
-msgstr "Onid"
+msgid "ONID"
+msgstr "ONID"
 
 msgid "Only match between dates"
 msgstr "Obmedziť na relácie v určených dátumoch"
@@ -1117,8 +1120,8 @@ msgstr "Rodičovská kontrola nie je aktivovaná."
 msgid "Parse AutoTimer"
 msgstr "Analyzovať automatický časovač"
 
-msgid "Pcrpid"
-msgstr "Pcrpid"
+msgid "PCR PID"
+msgstr "PCR PID"
 
 msgid "PiP"
 msgstr "PiP"
@@ -1144,8 +1147,8 @@ msgstr "Zoznam prehrávania"
 msgid "Playlist format"
 msgstr "Formát playlistu"
 
-msgid "Pmtpid"
-msgstr "Pmtpid"
+msgid "PMT PID"
+msgstr "PMT PID"
 
 msgid "Power Control"
 msgstr "Ovládanie napájania"
@@ -1180,7 +1183,7 @@ msgstr "Reštartovať prijímač"
 msgid "Record a maximum of # times"
 msgstr "Nahrať maximálne x krát"
 
-msgid "Recording Status"
+msgid "Recording"
 msgstr "Stav nahrávania"
 
 msgid "Recording Type"
@@ -1410,8 +1413,8 @@ msgstr "Zobrazovat typ programu v zozname staníc"
 msgid "Shutdown"
 msgstr "Vypnúť"
 
-msgid "Sid"
-msgstr "Sid"
+msgid "Service ID (SID)"
+msgstr "Service ID (SID)"
 
 msgid "Simulate"
 msgstr "Simulovať"
@@ -1450,8 +1453,8 @@ msgstr "Triediť"
 msgid "Spinner"
 msgstr "Spiner"
 
-msgid "Sref"
-msgstr "Sref"
+msgid "SRef"
+msgstr "SRef"
 
 msgid "Standby"
 msgstr "Pohotovostný režim"
@@ -1521,6 +1524,9 @@ msgstr "Štítky"
 
 msgid "Teletext"
 msgstr "Teletext"
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Televízia"
@@ -1645,8 +1651,8 @@ msgstr "Preklad do španielčiny"
 msgid "Try guessing"
 msgstr "Skúsiť uhádnuť"
 
-msgid "Tsid"
-msgstr "Tsid"
+msgid "TSID"
+msgstr "TSID"
 
 msgid "Tu"
 msgstr "Ut"
@@ -1657,8 +1663,8 @@ msgstr "Uto"
 msgid "Tuesday"
 msgstr "Utorok"
 
-msgid "Tuner Bit Error Rate BER"
-msgstr "Tuner Bit Error Rate BER"
+msgid "Bit Error Rate (BER)"
+msgstr "Bit Error Rate (BER)"
 
 msgid "Tuner Number"
 msgstr "Číslo tunera"
@@ -1666,13 +1672,13 @@ msgstr "Číslo tunera"
 msgid "Tuner Signal"
 msgstr "Signál tunera"
 
-msgid "Tuner Signal Power AGC"
+msgid "Signal Power (AGC)"
 msgstr "Intenzita signálu tunera AGC"
 
-msgid "Tuner Signal Quality SNR"
+msgid "Signal Quality (SNR)"
 msgstr "Kvalita signálu tunera SNR"
 
-msgid "Tuner Signal Quality SNR_DB"
+msgid "Signal Quality (SNR DB)"
 msgstr "Kvalita signálu tunera SNR_DB"
 
 msgid "Tuner Type"
@@ -1758,7 +1764,7 @@ msgstr "Video"
 msgid "Video Height"
 msgstr "Výška videa"
 
-msgid "Video Wide"
+msgid "Widescreen"
 msgstr "Širokouhlé"
 
 msgid "Video Width"
@@ -1773,8 +1779,8 @@ msgstr "Hlasitosť"
 msgid "Volume Control"
 msgstr "Ovládanie hlasitosti"
 
-msgid "Vpid"
-msgstr "Vpid"
+msgid "Video PID (VPID)"
+msgstr "Video PID (VPID)"
 
 msgid "W"
 msgstr "Z"
@@ -1917,6 +1923,9 @@ msgstr "minút"
 
 msgid "minute"
 msgstr "minúta"
+
+msgid "No"
+msgstr "Nie"
 
 msgid "no description available"
 msgstr "popis nie je k dispozícii"

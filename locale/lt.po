@@ -175,7 +175,10 @@ msgstr "Bet kurią dieną"
 msgid "Any service/recording"
 msgstr "Bet kuris kanalas/įrašymas"
 
-msgid "Apid"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
 msgstr "ApId"
 
 msgid "April"
@@ -1067,7 +1070,7 @@ msgstr "Ant bet kurio kanalo"
 msgid "On same service"
 msgstr "Ant to paties kanalo"
 
-msgid "Onid"
+msgid "ONID"
 msgstr "ONID"
 
 msgid "Only match between dates"
@@ -1121,8 +1124,8 @@ msgstr "Tėvų kontrolė neįjungta."
 msgid "Parse AutoTimer"
 msgstr "Analizuoti autolaikmatį"
 
-msgid "Pcrpid"
-msgstr "Pcrpid"
+msgid "PCR PID"
+msgstr "PCR PID"
 
 msgid "PiP"
 msgstr "PiP"
@@ -1148,8 +1151,8 @@ msgstr "Grojaraštis"
 msgid "Playlist format"
 msgstr "Grojaraščio formatas"
 
-msgid "Pmtpid"
-msgstr "Pmtpid"
+msgid "PMT PID"
+msgstr "PMT PID"
 
 msgid "Power Control"
 msgstr "Maitinimo valdymas"
@@ -1184,7 +1187,7 @@ msgstr "Paleisti iš naujo"
 msgid "Record a maximum of # times"
 msgstr "Įrašas daugiausiai x kartų"
 
-msgid "Recording Status"
+msgid "Recording"
 msgstr "Įrašymo būsena"
 
 #, fuzzy
@@ -1416,7 +1419,7 @@ msgstr "Kanalų sąraše rodyti kanalo tipą"
 msgid "Shutdown"
 msgstr "Išjungti"
 
-msgid "Sid"
+msgid "Service ID (SID)"
 msgstr "SID"
 
 msgid "Simulate"
@@ -1456,8 +1459,8 @@ msgstr "Rūšiuoti"
 msgid "Spinner"
 msgstr "Suktukas"
 
-msgid "Sref"
-msgstr "Sref"
+msgid "SRef"
+msgstr "SRef"
 
 msgid "Standby"
 msgstr "Budėjimo režimas"
@@ -1527,6 +1530,9 @@ msgstr "Žymos"
 
 msgid "Teletext"
 msgstr "Teletekstas"
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Televizija"
@@ -1651,7 +1657,7 @@ msgstr "Vertimas į ispanų kalbą"
 msgid "Try guessing"
 msgstr "Bandyti atspėti"
 
-msgid "Tsid"
+msgid "TSID"
 msgstr "TSID"
 
 msgid "Tu"
@@ -1663,7 +1669,7 @@ msgstr "Ant"
 msgid "Tuesday"
 msgstr "antradienis"
 
-msgid "Tuner Bit Error Rate BER"
+msgid "Bit Error Rate (BER)"
 msgstr "Imtuvo klaidingų bitų santykis (BER)"
 
 msgid "Tuner Number"
@@ -1672,13 +1678,13 @@ msgstr "Imtuvų skaičių"
 msgid "Tuner Signal"
 msgstr "Imtuvo signalas"
 
-msgid "Tuner Signal Power AGC"
+msgid "Signal Power (AGC)"
 msgstr "Imtuvo signalo galia AGC"
 
-msgid "Tuner Signal Quality SNR"
+msgid "Signal Quality (SNR)"
 msgstr "Imtuvo signalo kokybė SNR"
 
-msgid "Tuner Signal Quality SNR_DB"
+msgid "Signal Quality (SNR DB)"
 msgstr "Imtuvo signalo kokybė SNR_DB"
 
 msgid "Tuner Type"
@@ -1765,7 +1771,7 @@ msgstr "Vaizdo įrašai"
 msgid "Video Height"
 msgstr "Vaizdo aukštis"
 
-msgid "Video Wide"
+msgid "Widescreen"
 msgstr "Platus vaizdas"
 
 msgid "Video Width"
@@ -1780,7 +1786,7 @@ msgstr "Garsas"
 msgid "Volume Control"
 msgstr "Garso valdymas"
 
-msgid "Vpid"
+msgid "Video PID (VPID)"
 msgstr "VPId"
 
 msgid "W"
@@ -1924,6 +1930,9 @@ msgstr "min."
 
 msgid "minute"
 msgstr "minutė"
+
+msgid "No"
+msgstr "Ne"
 
 msgid "no description available"
 msgstr "aprašymo nėra"

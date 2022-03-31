@@ -176,7 +176,10 @@ msgstr ""
 msgid "Any service/recording"
 msgstr "أي خدمة / التسجيل"
 
-msgid "Apid"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
 msgstr "معرف مزود الخدمة"
 
 msgid "April"
@@ -1080,7 +1083,7 @@ msgstr "على أى خدمة"
 msgid "On same service"
 msgstr "على نفس الخدمة"
 
-msgid "Onid"
+msgid "ONID"
 msgstr "معرف الشبكة الاصلي"
 
 msgid "Only match between dates"
@@ -1135,7 +1138,7 @@ msgstr "لم يتم تنشيط الرقابة الأبوية."
 msgid "Parse AutoTimer"
 msgstr "تحليل المؤقت التلقائي"
 
-msgid "Pcrpid"
+msgid "PCR PID"
 msgstr "معرف البي سي ار"
 
 msgid "PiP"
@@ -1163,7 +1166,7 @@ msgstr "قائمة التشغيل"
 msgid "Playlist format"
 msgstr "قائمة التشغيل"
 
-msgid "Pmtpid"
+msgid "PMT PID"
 msgstr "معرف البي أم تي"
 
 msgid "Power Control"
@@ -1199,7 +1202,7 @@ msgstr "إعادة تشغيل الجهاز"
 msgid "Record a maximum of # times"
 msgstr "تسجيل كحد أقصى من المرات"
 
-msgid "Recording Status"
+msgid "Recording"
 msgstr "حاله التسجيل"
 
 #, fuzzy
@@ -1438,7 +1441,7 @@ msgstr "عرض نوع القناة في قائمة القنوات"
 msgid "Shutdown"
 msgstr "إغلاق"
 
-msgid "Sid"
+msgid "Service ID (SID)"
 msgstr "معرف القناة"
 
 msgid "Simulate"
@@ -1478,7 +1481,7 @@ msgstr ""
 msgid "Spinner"
 msgstr "الغزال"
 
-msgid "Sref"
+msgid "SRef"
 msgstr "مرجع القناة"
 
 msgid "Standby"
@@ -1551,6 +1554,9 @@ msgstr "علامات"
 
 msgid "Teletext"
 msgstr "النص التليفزيوني"
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "التلفزيون"
@@ -1676,7 +1682,7 @@ msgstr "الترجمة إلى الاسبانية"
 msgid "Try guessing"
 msgstr "محاولة التخمين"
 
-msgid "Tsid"
+msgid "TSID"
 msgstr "إرسال معرف المحطة"
 
 msgid "Tu"
@@ -1688,7 +1694,7 @@ msgstr "الثلاثاء"
 msgid "Tuesday"
 msgstr "الثلاثاء"
 
-msgid "Tuner Bit Error Rate BER"
+msgid "Bit Error Rate (BER)"
 msgstr "معدل خطاء المؤالف بالبت"
 
 msgid "Tuner Number"
@@ -1697,13 +1703,13 @@ msgstr "رقم المؤالف"
 msgid "Tuner Signal"
 msgstr "إشارة المؤالف"
 
-msgid "Tuner Signal Power AGC"
+msgid "Signal Power (AGC)"
 msgstr "مؤالف قوة الاشارة"
 
-msgid "Tuner Signal Quality SNR"
+msgid "Signal Quality (SNR)"
 msgstr "مؤالف جودة الإشارة"
 
-msgid "Tuner Signal Quality SNR_DB"
+msgid "Signal Quality (SNR DB)"
 msgstr "مؤالف جودة الإشارة بالديسيبل"
 
 msgid "Tuner Type"
@@ -1793,7 +1799,7 @@ msgstr "الفديو"
 msgid "Video Height"
 msgstr "ارتفاع الفيديو"
 
-msgid "Video Wide"
+msgid "Widescreen"
 msgstr "فديو واسع"
 
 msgid "Video Width"
@@ -1808,7 +1814,7 @@ msgstr "درجه الصوت"
 msgid "Volume Control"
 msgstr "التحكم في مستوي الصوت"
 
-msgid "Vpid"
+msgid "Video PID (VPID)"
 msgstr "معرف الفديو"
 
 msgid "W"
@@ -1956,6 +1962,9 @@ msgstr ""
 
 msgid "minute"
 msgstr "دقيقة"
+
+msgid "No"
+msgstr "نعم"
 
 msgid "no description available"
 msgstr "لايوجد وصف متوفر."

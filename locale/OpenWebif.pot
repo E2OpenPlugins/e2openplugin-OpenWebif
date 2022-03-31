@@ -227,8 +227,11 @@ msgstr ""
 msgid "Any service/recording"
 msgstr ""
 
+msgid "Audio"
+msgstr ""
+
 #: ../plugin/controllers/i18n.py:468
-msgid "Apid"
+msgid "Audio PID (APID)"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:65
@@ -1432,7 +1435,7 @@ msgid "On same service"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:472
-msgid "Onid"
+msgid "ONID"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:326
@@ -1507,7 +1510,7 @@ msgid "Parse AutoTimer"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:470
-msgid "Pcrpid"
+msgid "PCR PID"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:194
@@ -1543,7 +1546,7 @@ msgid "Playlist format"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:467
-msgid "Pmtpid"
+msgid "PMT PID"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:197
@@ -1591,7 +1594,7 @@ msgid "Record a maximum of # times"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:202
-msgid "Recording Status"
+msgid "Recording"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:574
@@ -1898,7 +1901,7 @@ msgid "Shutdown"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:473
-msgid "Sid"
+msgid "Service ID (SID)"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:379
@@ -1966,7 +1969,7 @@ msgid "Spinner"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:474
-msgid "Sref"
+msgid "SRef"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:237
@@ -2064,7 +2067,10 @@ msgstr ""
 msgid "Teletext"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:247
+#: ../plugin/controllers/i18n.py:470
+msgid "Teletext PID"
+msgstr "Teletext PID"
+
 msgid "Television"
 msgstr ""
 
@@ -2229,7 +2235,7 @@ msgid "Try guessing"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:471
-msgid "Tsid"
+msgid "TSID"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:39
@@ -2246,7 +2252,7 @@ msgid "Tuesday"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:263
-msgid "Tuner Bit Error Rate BER"
+msgid "Bit Error Rate (BER)"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:264
@@ -2258,15 +2264,15 @@ msgid "Tuner Signal"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:268
-msgid "Tuner Signal Power AGC"
+msgid "Signal Power (AGC)"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:266
-msgid "Tuner Signal Quality SNR"
+msgid "Signal Quality (SNR)"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:267
-msgid "Tuner Signal Quality SNR_DB"
+msgid "Signal Quality (SNR DB)"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:269
@@ -2380,7 +2386,7 @@ msgid "Video Height"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:279
-msgid "Video Wide"
+msgid "Widescreen"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:280
@@ -2400,7 +2406,7 @@ msgid "Volume Control"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:469
-msgid "Vpid"
+msgid "Video PID (VPID)"
 msgstr ""
 
 #: ../plugin/controllers/models/info.py:654
@@ -2597,6 +2603,9 @@ msgstr ""
 
 #: ../plugin/controllers/i18n.py:33
 msgid "minute"
+msgstr ""
+
+msgid "No"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:180

@@ -246,16 +246,26 @@ def getCurrentFullInfo(session):
 
 	inf['date'] = strftime(_("%d.%m.%Y"), (localtime()))
 	inf['dolby'] = False
+	inf['audio_desc'] = ""
+	inf['audio_lang'] = ""
 
 	if audio:
-		n = audio.getNumberOfTracks()
-		idx = 0
-		while idx < n:
-			i = audio.getTrackInfo(idx)
-			description = i.getDescription()
-			if "AC3" in description or "DTS" in description or "Dolby Digital" in description:
-				inf['dolby'] = True
-			idx += 1
+		# n = audio.getNumberOfTracks()
+		# idx = 0
+		# while idx < n:
+		# 	i = audio.getTrackInfo(idx)
+		# 	description = i.getDescription()
+		# 	inf['audio'] = inf['audio'] + description + i.getLanguage() + "["+audio.getTrackInfo(audio.getCurrentTrack()).getLanguage()+"]"
+		# 	if "AC3" in description or "DTS" in description or "Dolby Digital" in description:
+		# 		inf['dolby'] = True
+		# 	idx += 1
+		audio_info = audio.getTrackInfo(audio.getCurrentTrack())
+		description = audio_info.getDescription()
+		if description in ["AC3", "DTS", "Dolby Digital"]:
+			inf['dolby'] = True
+		inf['audio_desc'] = audio_info.getDescription()
+		inf['audio_lang'] = audio_info.getLanguage()
+
 	try:
 		feinfo = session.nav.getCurrentService().frontendInfo()
 	except:  # nosec # noqa: E722
@@ -271,9 +281,9 @@ def getCurrentFullInfo(session):
 		inf['tunernumber'] = frontendData.get("tuner_number")
 		orb = getOrbitalText(cur_info)
 		inf['orbital_position'] = orb
-		if cur_info:
-			if cur_info.get('tuner_type') == "DVB-S":
-				inf['orbital_position'] = _("Orbital Position") + ': ' + orb
+		# if cur_info:
+		# 	if cur_info.get('tuner_type') == "DVB-S":
+		# 		inf['orbital_position'] = _("Orbital Position") + ': ' + orb
 	else:
 		inf['tunernumber'] = "N/A"
 		inf['tunertype'] = "N/A"

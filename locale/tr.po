@@ -177,8 +177,11 @@ msgstr "Herhangi bir gün"
 msgid "Any service/recording"
 msgstr "Herhangi bir hizmet/kayıt"
 
-msgid "Apid"
-msgstr "Apid"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr "Audio PID (APID)"
 
 msgid "April"
 msgstr "Nisan"
@@ -1074,8 +1077,8 @@ msgstr "Herhangi bir hizmette"
 msgid "On same service"
 msgstr "Aynı hizmette"
 
-msgid "Onid"
-msgstr "Onid"
+msgid "ONID"
+msgstr "ONID"
 
 msgid "Only match between dates"
 msgstr "Belirli tarihlerdeki etkinliklerle kısıtla"
@@ -1129,8 +1132,8 @@ msgstr "Ebeveyn Kontrolü etkinleştirilmedi."
 msgid "Parse AutoTimer"
 msgstr "Otomatik zamanlayıcıyı ayrıştır"
 
-msgid "Pcrpid"
-msgstr "Pcrpid"
+msgid "PCR PID"
+msgstr "PCR PID"
 
 msgid "PiP"
 msgstr "PiP"
@@ -1156,8 +1159,8 @@ msgstr "Oynatma Listesi"
 msgid "Playlist format"
 msgstr "Oynatma Listesi Biçimi"
 
-msgid "Pmtpid"
-msgstr "Pmtpid"
+msgid "PMT PID"
+msgstr "PMT PID"
 
 msgid "Power Control"
 msgstr "Güç Kontrolü"
@@ -1192,7 +1195,7 @@ msgstr "Yeniden Başlatma Kutusu"
 msgid "Record a maximum of # times"
 msgstr "En fazla x kez kaydedin"
 
-msgid "Recording Status"
+msgid "Recording"
 msgstr "Kayıt Durumu"
 
 #, fuzzy
@@ -1429,8 +1432,8 @@ msgstr "Kanal listesinde Hizmet türünü göster"
 msgid "Shutdown"
 msgstr "Kapat"
 
-msgid "Sid"
-msgstr "Sid"
+msgid "Service ID (SID)"
+msgstr "Service ID (SID)"
 
 msgid "Simulate"
 msgstr "Simüle et"
@@ -1469,8 +1472,8 @@ msgstr "Sırala"
 msgid "Spinner"
 msgstr "Spinner"
 
-msgid "Sref"
-msgstr "Sref"
+msgid "SRef"
+msgstr "SRef"
 
 msgid "Standby"
 msgstr "Bekleme"
@@ -1541,6 +1544,9 @@ msgstr "Etiketler"
 
 msgid "Teletext"
 msgstr "Teletekst"
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Televizyon"
@@ -1666,8 +1672,8 @@ msgstr "İspanyolcaya Çeviri"
 msgid "Try guessing"
 msgstr "Tahmin Etmeyi Deneyin"
 
-msgid "Tsid"
-msgstr "Tsid"
+msgid "TSID"
+msgstr "TSID"
 
 msgid "Tu"
 msgstr "Sal"
@@ -1678,7 +1684,7 @@ msgstr "Sal"
 msgid "Tuesday"
 msgstr "Salı"
 
-msgid "Tuner Bit Error Rate BER"
+msgid "Bit Error Rate (BER)"
 msgstr "Tuner Bit Hata Oranı BER"
 
 msgid "Tuner Number"
@@ -1687,13 +1693,13 @@ msgstr "Tuner Numarası"
 msgid "Tuner Signal"
 msgstr "Tuner Sinyali"
 
-msgid "Tuner Signal Power AGC"
+msgid "Signal Power (AGC)"
 msgstr "Tuner Sinyal Gücü AGC"
 
-msgid "Tuner Signal Quality SNR"
+msgid "Signal Quality (SNR)"
 msgstr "Tuner Sinyal Kalitesi SNR"
 
-msgid "Tuner Signal Quality SNR_DB"
+msgid "Signal Quality (SNR DB)"
 msgstr "Tuner Sinyal Kalitesi SNR_DB"
 
 msgid "Tuner Type"
@@ -1782,7 +1788,7 @@ msgstr "Video"
 msgid "Video Height"
 msgstr "Video Yüksekliği"
 
-msgid "Video Wide"
+msgid "Widescreen"
 msgstr "Video Geniş"
 
 msgid "Video Width"
@@ -1797,8 +1803,8 @@ msgstr "Ses"
 msgid "Volume Control"
 msgstr "Ses Kontrolü"
 
-msgid "Vpid"
-msgstr "Vpid"
+msgid "Video PID (VPID)"
+msgstr "Video PID (VPID)"
 
 msgid "W"
 msgstr "W"
@@ -1943,6 +1949,9 @@ msgstr ""
 
 msgid "minute"
 msgstr "dakika"
+
+msgid "No"
+msgstr "Hayır"
 
 msgid "no description available"
 msgstr "açıklama yok"

@@ -177,8 +177,11 @@ msgstr "Ogni giorno"
 msgid "Any service/recording"
 msgstr "Qualsiasi canale/registrazione"
 
-msgid "Apid"
-msgstr "Apid"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr "Audio PID (APID)"
 
 msgid "April"
 msgstr "Aprile"
@@ -1070,8 +1073,8 @@ msgstr "Su qualsiasi canale"
 msgid "On same service"
 msgstr "Sullo stesso canale"
 
-msgid "Onid"
-msgstr "Onid"
+msgid "ONID"
+msgstr "ONID"
 
 msgid "Only match between dates"
 msgstr "Corrispondenza solo tra le date"
@@ -1124,8 +1127,8 @@ msgstr "Controllo Parentale non attivato."
 msgid "Parse AutoTimer"
 msgstr "Analizzare Autotimer"
 
-msgid "Pcrpid"
-msgstr "Pcrpid"
+msgid "PCR PID"
+msgstr "PCR PID"
 
 msgid "PiP"
 msgstr "PiP"
@@ -1151,8 +1154,8 @@ msgstr "Playlist"
 msgid "Playlist format"
 msgstr "Formato playlist"
 
-msgid "Pmtpid"
-msgstr "Pmtpid"
+msgid "PMT PID"
+msgstr "PMT PID"
 
 msgid "Power Control"
 msgstr "Power Control"
@@ -1187,7 +1190,7 @@ msgstr "Riavviare il ricevitore"
 msgid "Record a maximum of # times"
 msgstr "Registrare fino a un massimo di # volte"
 
-msgid "Recording Status"
+msgid "Recording"
 msgstr "Stato registrazione"
 
 msgid "Recording Type"
@@ -1417,8 +1420,8 @@ msgstr "Mostrare il tipo di canale in elenco canali"
 msgid "Shutdown"
 msgstr "Spegnimento"
 
-msgid "Sid"
-msgstr "Sid"
+msgid "Service ID (SID)"
+msgstr "Service ID (SID)"
 
 msgid "Simulate"
 msgstr "Simulare"
@@ -1457,8 +1460,8 @@ msgstr "Ordinare"
 msgid "Spinner"
 msgstr "Spinner"
 
-msgid "Sref"
-msgstr "Sref"
+msgid "SRef"
+msgstr "SRef"
 
 msgid "Standby"
 msgstr "Standby"
@@ -1528,6 +1531,9 @@ msgstr "Etichette"
 
 msgid "Teletext"
 msgstr "Televideo"
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Televisione"
@@ -1652,8 +1658,8 @@ msgstr "Traduzione in spagnolo"
 msgid "Try guessing"
 msgstr "Tentare di indovinare"
 
-msgid "Tsid"
-msgstr "Tsid"
+msgid "TSID"
+msgstr "TSID"
 
 msgid "Tu"
 msgstr "Ma"
@@ -1664,7 +1670,7 @@ msgstr "Mar"
 msgid "Tuesday"
 msgstr "Martedì"
 
-msgid "Tuner Bit Error Rate BER"
+msgid "Bit Error Rate (BER)"
 msgstr "BER (Bit Error Rate) del sintonizzatore"
 
 msgid "Tuner Number"
@@ -1673,13 +1679,13 @@ msgstr "Numero tuner"
 msgid "Tuner Signal"
 msgstr "Segnale tuner"
 
-msgid "Tuner Signal Power AGC"
+msgid "Signal Power (AGC)"
 msgstr "Potenza segnale tuner (AGC)"
 
-msgid "Tuner Signal Quality SNR"
+msgid "Signal Quality (SNR)"
 msgstr "Qualità segnale tuner (SNR)"
 
-msgid "Tuner Signal Quality SNR_DB"
+msgid "Signal Quality (SNR DB)"
 msgstr "Qualità segnale tuner (SNR_ DB)"
 
 msgid "Tuner Type"
@@ -1765,7 +1771,7 @@ msgstr "Video"
 msgid "Video Height"
 msgstr "Altezza video"
 
-msgid "Video Wide"
+msgid "Widescreen"
 msgstr "Widescreen"
 
 msgid "Video Width"
@@ -1780,8 +1786,8 @@ msgstr "Volume"
 msgid "Volume Control"
 msgstr "Controllo volume"
 
-msgid "Vpid"
-msgstr "Vpid"
+msgid "Video PID (VPID)"
+msgstr "Video PID (VPID)"
 
 msgid "W"
 msgstr "O"
@@ -1924,6 +1930,9 @@ msgstr "minuti"
 
 msgid "minute"
 msgstr "Minuto"
+
+msgid "No"
+msgstr "No"
 
 msgid "no description available"
 msgstr "Nessuna descrizione disponibile"
