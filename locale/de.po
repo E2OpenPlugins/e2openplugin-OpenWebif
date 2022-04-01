@@ -176,10 +176,7 @@ msgstr "Jeden Tag"
 msgid "Any service/recording"
 msgstr "Service/Aufnahme beliebig"
 
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
+msgid "Apid"
 msgstr "A-PID"
 
 msgid "April"
@@ -1099,7 +1096,7 @@ msgstr "Auf jedem Sender"
 msgid "On same service"
 msgstr "Auf dem gleichen Sender"
 
-msgid "ONID"
+msgid "Onid"
 msgstr "ONID"
 
 msgid "Only match between dates"
@@ -1154,7 +1151,7 @@ msgstr "Jugendschutz ist nicht aktiviert."
 msgid "Parse AutoTimer"
 msgstr "AutoTimer auswerten"
 
-msgid "PCR PID"
+msgid "Pcrpid"
 msgstr "PCR-PID"
 
 msgid "PiP"
@@ -1182,7 +1179,7 @@ msgstr "Wiedergabeliste"
 msgid "Playlist format"
 msgstr "Wiedergabeliste"
 
-msgid "PMT PID"
+msgid "Pmtpid"
 msgstr "PMT-PID"
 
 msgid "Power Control"
@@ -1218,7 +1215,7 @@ msgstr "Receiver neustarten"
 msgid "Record a maximum of # times"
 msgstr "Höchstens X-mal aufnehmen"
 
-msgid "Recording"
+msgid "Recording Status"
 msgstr "Aufnahmestatus"
 
 #, fuzzy
@@ -1459,7 +1456,7 @@ msgstr "Zeige Picon in Senderliste"
 msgid "Shutdown"
 msgstr "Ausschalten"
 
-msgid "Service ID (SID)"
+msgid "Sid"
 msgstr "SID"
 
 msgid "Simulate"
@@ -1499,7 +1496,7 @@ msgstr ""
 msgid "Spinner"
 msgstr "'IN-ARBEIT Symbol"
 
-msgid "SRef"
+msgid "Sref"
 msgstr "SREF"
 
 msgid "Standby"
@@ -1572,9 +1569,6 @@ msgstr "Stichworte"
 
 msgid "Teletext"
 msgstr "Videotext"
-
-msgid "Teletext PID"
-msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Fernsehen"
@@ -1700,7 +1694,7 @@ msgstr ""
 msgid "Try guessing"
 msgstr "Versuche zu raten"
 
-msgid "TSID"
+msgid "Tsid"
 msgstr "TSID"
 
 msgid "Tu"
@@ -1712,7 +1706,7 @@ msgstr "Di"
 msgid "Tuesday"
 msgstr "Dienstag"
 
-msgid "Bit Error Rate (BER)"
+msgid "Tuner Bit Error Rate BER"
 msgstr "Tuner-Bitfehlerhäufigkeit BER"
 
 msgid "Tuner Number"
@@ -1721,13 +1715,13 @@ msgstr "Tuner-Nummer"
 msgid "Tuner Signal"
 msgstr "Tunersignal"
 
-msgid "Signal Power (AGC)"
+msgid "Tuner Signal Power AGC"
 msgstr "Tuner-Signalstärke AGC"
 
-msgid "Signal Quality (SNR)"
+msgid "Tuner Signal Quality SNR"
 msgstr "Tuner-Signalqualität SNR"
 
-msgid "Signal Quality (SNR DB)"
+msgid "Tuner Signal Quality SNR_DB"
 msgstr "Tuner-Signalqualität SNR_DB"
 
 msgid "Tuner Type"
@@ -1817,7 +1811,7 @@ msgstr "Video"
 msgid "Video Height"
 msgstr "Bildhöhe"
 
-msgid "Widescreen"
+msgid "Video Wide"
 msgstr "Breitbild"
 
 msgid "Video Width"
@@ -1832,7 +1826,7 @@ msgstr "Lautstärke"
 msgid "Volume Control"
 msgstr "Lautstärke"
 
-msgid "Video PID (VPID)"
+msgid "Vpid"
 msgstr "VPID"
 
 msgid "W"
@@ -1982,9 +1976,6 @@ msgstr ""
 #, fuzzy
 msgid "minute"
 msgstr "Minute"
-
-msgid "No"
-msgstr "Nein"
 
 msgid "no description available"
 msgstr "keine Beschreibung verfügbar"

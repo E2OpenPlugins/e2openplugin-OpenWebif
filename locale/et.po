@@ -173,11 +173,8 @@ msgstr ""
 msgid "Any service/recording"
 msgstr "Iga kanal/salvestus"
 
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
-msgstr "Audio PID (APID)"
+msgid "Apid"
+msgstr "Apid"
 
 msgid "April"
 msgstr "Aprill"
@@ -1079,8 +1076,8 @@ msgstr "Igal kanalil"
 msgid "On same service"
 msgstr "Samal kanalil"
 
-msgid "ONID"
-msgstr "ONID"
+msgid "Onid"
+msgstr "Onid"
 
 msgid "Only match between dates"
 msgstr "Ainult kindlal kuupäeval"
@@ -1134,8 +1131,8 @@ msgstr "Lapselukk ei ole sees."
 msgid "Parse AutoTimer"
 msgstr "Otsi vasteid Autotaimerist"
 
-msgid "PCR PID"
-msgstr "PCR PID"
+msgid "Pcrpid"
+msgstr "Pcrpid"
 
 msgid "PiP"
 msgstr "PiP"
@@ -1161,8 +1158,8 @@ msgstr "Pleilist"
 msgid "Playlist format"
 msgstr "Pleilisti vorming"
 
-msgid "PMT PID"
-msgstr "PMT PID"
+msgid "Pmtpid"
+msgstr "Pmtpid"
 
 msgid "Power Control"
 msgstr "Seiskamine"
@@ -1197,7 +1194,7 @@ msgstr "Taaskäivitus"
 msgid "Record a maximum of # times"
 msgstr "Salvesta maksimaalselt x korda"
 
-msgid "Recording"
+msgid "Recording Status"
 msgstr "Salvestamine"
 
 #, fuzzy
@@ -1436,8 +1433,8 @@ msgstr "Kuva edastusmoodus kanalinimekirjas"
 msgid "Shutdown"
 msgstr "Seiska"
 
-msgid "Service ID (SID)"
-msgstr "Service ID (SID)"
+msgid "Sid"
+msgstr "Sid"
 
 msgid "Simulate"
 msgstr "Matki"
@@ -1476,8 +1473,8 @@ msgstr ""
 msgid "Spinner"
 msgstr "Spinner"
 
-msgid "SRef"
-msgstr "SRef"
+msgid "Sref"
+msgstr "Sref"
 
 msgid "Standby"
 msgstr "Ooteseisund"
@@ -1548,9 +1545,6 @@ msgstr "Sildid"
 
 msgid "Teletext"
 msgstr "Teletekst"
-
-msgid "Teletext PID"
-msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Televisioon"
@@ -1676,8 +1670,8 @@ msgstr "Hispaaniakeelne tõlge"
 msgid "Try guessing"
 msgstr "Ürita pakkuda"
 
-msgid "TSID"
-msgstr "TSID"
+msgid "Tsid"
+msgstr "Tsid"
 
 msgid "Tu"
 msgstr "T"
@@ -1688,7 +1682,7 @@ msgstr "T"
 msgid "Tuesday"
 msgstr "Teisipäev"
 
-msgid "Bit Error Rate (BER)"
+msgid "Tuner Bit Error Rate BER"
 msgstr "Signaali bitiveategur BER"
 
 msgid "Tuner Number"
@@ -1697,13 +1691,13 @@ msgstr "Tuuneri number"
 msgid "Tuner Signal"
 msgstr "Tuuneri signaal"
 
-msgid "Signal Power (AGC)"
+msgid "Tuner Signal Power AGC"
 msgstr "Signaali tugevus AGC"
 
-msgid "Signal Quality (SNR)"
+msgid "Tuner Signal Quality SNR"
 msgstr "Signaali kvaliteet SNR"
 
-msgid "Signal Quality (SNR DB)"
+msgid "Tuner Signal Quality SNR_DB"
 msgstr "Signaali kvaliteet SNR_DB"
 
 msgid "Tuner Type"
@@ -1793,7 +1787,7 @@ msgstr "Video"
 msgid "Video Height"
 msgstr "Pildi kõrgus"
 
-msgid "Widescreen"
+msgid "Video Wide"
 msgstr "Pildi suurus"
 
 msgid "Video Width"
@@ -1808,8 +1802,8 @@ msgstr "Helitugevus"
 msgid "Volume Control"
 msgstr "Helitugevus"
 
-msgid "Video PID (VPID)"
-msgstr "Video PID (VPID)"
+msgid "Vpid"
+msgstr "Vpid"
 
 msgid "W"
 msgstr "W"
@@ -1956,9 +1950,6 @@ msgstr ""
 
 msgid "minute"
 msgstr "minut"
-
-msgid "No"
-msgstr "Ei"
 
 msgid "no description available"
 msgstr "sisututvustus puudub"

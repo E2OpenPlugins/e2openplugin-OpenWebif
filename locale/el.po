@@ -176,11 +176,8 @@ msgstr ""
 msgid "Any service/recording"
 msgstr "Κάθε υπηρεσία/εγγραφή"
 
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
-msgstr "Audio PID (APID)"
+msgid "Apid"
+msgstr "Apid"
 
 msgid "April"
 msgstr "Απριλίου"
@@ -1091,8 +1088,8 @@ msgstr "Σε οποιαδήποτε υπηρεσία"
 msgid "On same service"
 msgstr "Στην ίδια υπηρεσία"
 
-msgid "ONID"
-msgstr "ONID"
+msgid "Onid"
+msgstr "Onid"
 
 msgid "Only match between dates"
 msgstr "Περιορισμός σε προγράμματα συγκεκριμένων ημερομηνιών"
@@ -1146,8 +1143,8 @@ msgstr "Ο γονικός έλεγχος δεν είναι ενεργός."
 msgid "Parse AutoTimer"
 msgstr "Ανάλυση Αυτόματου Χρονοδιακόπτη"
 
-msgid "PCR PID"
-msgstr "PCR PID"
+msgid "Pcrpid"
+msgstr "Pcrpid"
 
 msgid "PiP"
 msgstr ""
@@ -1174,8 +1171,8 @@ msgstr "Λίστα αναπαραγωγής"
 msgid "Playlist format"
 msgstr "Λίστα αναπαραγωγής"
 
-msgid "PMT PID"
-msgstr "PMT PID"
+msgid "Pmtpid"
+msgstr "Pmtpid"
 
 msgid "Power Control"
 msgstr "Έλεγχος Τροφοδοσίας"
@@ -1210,7 +1207,7 @@ msgstr "Επανεκκίνηση Δέκτη"
 msgid "Record a maximum of # times"
 msgstr "Εγγραφή το μέγιστο x φορές"
 
-msgid "Recording"
+msgid "Recording Status"
 msgstr "Κατάσταση Εγγραφής"
 
 #, fuzzy
@@ -1450,8 +1447,8 @@ msgstr "Εμφάνιση Λογότυπου στη λίστα καναλιών"
 msgid "Shutdown"
 msgstr "Τερματισμός"
 
-msgid "Service ID (SID)"
-msgstr "Service ID (SID)"
+msgid "Sid"
+msgstr "Sid"
 
 msgid "Simulate"
 msgstr "Εξομοίωση"
@@ -1490,7 +1487,7 @@ msgstr ""
 msgid "Spinner"
 msgstr "Κινούμενο γραφικό"
 
-msgid "SRef"
+msgid "Sref"
 msgstr "Αναφ"
 
 msgid "Standby"
@@ -1563,9 +1560,6 @@ msgstr "Ετικέτες"
 
 msgid "Teletext"
 msgstr "Τηλεκείμενο"
-
-msgid "Teletext PID"
-msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Τηλεόραση"
@@ -1691,8 +1685,8 @@ msgstr "Μετάφραση στα Ισπανικά"
 msgid "Try guessing"
 msgstr "Προσπάθεια προσδιορισμού"
 
-msgid "TSID"
-msgstr "TSID"
+msgid "Tsid"
+msgstr "Tsid"
 
 msgid "Tu"
 msgstr "Τρ"
@@ -1703,7 +1697,7 @@ msgstr "Τρί"
 msgid "Tuesday"
 msgstr "Τρίτη"
 
-msgid "Bit Error Rate (BER)"
+msgid "Tuner Bit Error Rate BER"
 msgstr "Ρυθμός Σφαλμάτων Tuner BER"
 
 msgid "Tuner Number"
@@ -1712,13 +1706,13 @@ msgstr "Αριθμός Tuner"
 msgid "Tuner Signal"
 msgstr "Σήμα Tuner"
 
-msgid "Signal Power (AGC)"
+msgid "Tuner Signal Power AGC"
 msgstr "Ισχύς Σήματος Tuner AGC"
 
-msgid "Signal Quality (SNR)"
+msgid "Tuner Signal Quality SNR"
 msgstr "Ποιότητα Σήματος Tuner SNR"
 
-msgid "Signal Quality (SNR DB)"
+msgid "Tuner Signal Quality SNR_DB"
 msgstr "Ποιότητα Σήματος Tuner SNR_DB"
 
 msgid "Tuner Type"
@@ -1808,7 +1802,7 @@ msgstr "Βίντεο"
 msgid "Video Height"
 msgstr "Ύψος Βίντεο"
 
-msgid "Widescreen"
+msgid "Video Wide"
 msgstr "Ευρεία Εικόνα"
 
 msgid "Video Width"
@@ -1823,8 +1817,8 @@ msgstr "Ένταση"
 msgid "Volume Control"
 msgstr "Έλεγχος Έντασης"
 
-msgid "Video PID (VPID)"
-msgstr "Video PID (VPID)"
+msgid "Vpid"
+msgstr "Vpid"
 
 msgid "W"
 msgstr "Δ"
@@ -1971,9 +1965,6 @@ msgstr ""
 
 msgid "minute"
 msgstr "λεπτό"
-
-msgid "No"
-msgstr "Όχι"
 
 msgid "no description available"
 msgstr "μη διαθέσιμη περιγραφή"

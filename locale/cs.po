@@ -173,10 +173,7 @@ msgstr "Libovolný den"
 msgid "Any service/recording"
 msgstr "Libovolný program/nahrávání"
 
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
+msgid "Apid"
 msgstr ""
 
 msgid "April"
@@ -1066,7 +1063,7 @@ msgstr "na libovolném programu"
 msgid "On same service"
 msgstr "na stejném programu"
 
-msgid "ONID"
+msgid "Onid"
 msgstr ""
 
 msgid "Only match between dates"
@@ -1120,7 +1117,7 @@ msgstr "Rodičovská kontrola není aktivována."
 msgid "Parse AutoTimer"
 msgstr "Analyzovat Autotimer"
 
-msgid "PCR PID"
+msgid "Pcrpid"
 msgstr ""
 
 msgid "PiP"
@@ -1147,7 +1144,7 @@ msgstr ""
 msgid "Playlist format"
 msgstr "Formát playlistu"
 
-msgid "PMT PID"
+msgid "Pmtpid"
 msgstr ""
 
 msgid "Power Control"
@@ -1183,7 +1180,7 @@ msgstr "Restartovat Box"
 msgid "Record a maximum of # times"
 msgstr "Nahrát maximálně x-krát"
 
-msgid "Recording"
+msgid "Recording Status"
 msgstr "Stav nahrávání"
 
 msgid "Recording Type"
@@ -1413,7 +1410,7 @@ msgstr "Zobrazovat typ programu v přehledu kanálů"
 msgid "Shutdown"
 msgstr "Vypnout"
 
-msgid "Service ID (SID)"
+msgid "Sid"
 msgstr ""
 
 msgid "Simulate"
@@ -1453,7 +1450,7 @@ msgstr "Třidit"
 msgid "Spinner"
 msgstr ""
 
-msgid "SRef"
+msgid "Sref"
 msgstr ""
 
 msgid "Standby"
@@ -1524,9 +1521,6 @@ msgstr "Tagy"
 
 msgid "Teletext"
 msgstr ""
-
-msgid "Teletext PID"
-msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Televize"
@@ -1651,7 +1645,7 @@ msgstr "Překlad do španělštiny"
 msgid "Try guessing"
 msgstr "Zkusit odhadnout"
 
-msgid "TSID"
+msgid "Tsid"
 msgstr ""
 
 msgid "Tu"
@@ -1663,7 +1657,7 @@ msgstr "Út"
 msgid "Tuesday"
 msgstr "Úterý"
 
-msgid "Bit Error Rate (BER)"
+msgid "Tuner Bit Error Rate BER"
 msgstr "Bitová chyba signálu BER"
 
 msgid "Tuner Number"
@@ -1672,13 +1666,13 @@ msgstr "Čislo tuneru"
 msgid "Tuner Signal"
 msgstr "Signál tuneru"
 
-msgid "Signal Power (AGC)"
+msgid "Tuner Signal Power AGC"
 msgstr "Síla signálu AGC"
 
-msgid "Signal Quality (SNR)"
+msgid "Tuner Signal Quality SNR"
 msgstr "Kvalita signálu SNR"
 
-msgid "Signal Quality (SNR DB)"
+msgid "Tuner Signal Quality SNR_DB"
 msgstr "Kvalita signálu SNR_DB"
 
 msgid "Tuner Type"
@@ -1765,7 +1759,7 @@ msgstr ""
 msgid "Video Height"
 msgstr "Výška videa"
 
-msgid "Widescreen"
+msgid "Video Wide"
 msgstr "Širokoúhlé"
 
 msgid "Video Width"
@@ -1780,7 +1774,7 @@ msgstr "Hlasitost"
 msgid "Volume Control"
 msgstr "Hlasitost"
 
-msgid "Video PID (VPID)"
+msgid "Vpid"
 msgstr ""
 
 msgid "W"
@@ -1924,9 +1918,6 @@ msgstr ""
 
 msgid "minute"
 msgstr "minuta"
-
-msgid "No"
-msgstr "Ne"
 
 msgid "no description available"
 msgstr "popis není k dispozici"

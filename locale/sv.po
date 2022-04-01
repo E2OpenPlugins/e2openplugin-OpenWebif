@@ -173,10 +173,7 @@ msgstr ""
 msgid "Any service/recording"
 msgstr "Valfri distributör/inspelning"
 
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
+msgid "Apid"
 msgstr ""
 
 msgid "April"
@@ -1090,7 +1087,7 @@ msgstr "Hos valfri distributör"
 msgid "On same service"
 msgstr "Hos samma distributör"
 
-msgid "ONID"
+msgid "Onid"
 msgstr ""
 
 msgid "Only match between dates"
@@ -1145,7 +1142,7 @@ msgstr "Föräldrakontroll är inte aktiverat."
 msgid "Parse AutoTimer"
 msgstr "Starta en Autotimeranalys efter EPG uppdateringar"
 
-msgid "PCR PID"
+msgid "Pcrpid"
 msgstr ""
 
 msgid "PiP"
@@ -1173,7 +1170,7 @@ msgstr "Spellista"
 msgid "Playlist format"
 msgstr "Spellista"
 
-msgid "PMT PID"
+msgid "Pmtpid"
 msgstr ""
 
 msgid "Power Control"
@@ -1209,7 +1206,7 @@ msgstr "Starta om boxen"
 msgid "Record a maximum of # times"
 msgstr "Spela maximalt in vid x tillfällen"
 
-msgid "Recording"
+msgid "Recording Status"
 msgstr "Inspelning pågår"
 
 #, fuzzy
@@ -1448,7 +1445,7 @@ msgstr "Visa programikon i kanallistan"
 msgid "Shutdown"
 msgstr "Stäng av"
 
-msgid "Service ID (SID)"
+msgid "Sid"
 msgstr ""
 
 msgid "Simulate"
@@ -1488,7 +1485,7 @@ msgstr ""
 msgid "Spinner"
 msgstr "Vänta-ikon"
 
-msgid "SRef"
+msgid "Sref"
 msgstr ""
 
 msgid "Standby"
@@ -1561,9 +1558,6 @@ msgstr "Etiketter"
 
 msgid "Teletext"
 msgstr "Text-TV"
-
-msgid "Teletext PID"
-msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Television"
@@ -1689,7 +1683,7 @@ msgstr "Översättning till spanska"
 msgid "Try guessing"
 msgstr "Försök att gissa"
 
-msgid "TSID"
+msgid "Tsid"
 msgstr ""
 
 msgid "Tu"
@@ -1701,7 +1695,7 @@ msgstr "Tis"
 msgid "Tuesday"
 msgstr "Tisdag"
 
-msgid "Bit Error Rate (BER)"
+msgid "Tuner Bit Error Rate BER"
 msgstr "Mottagarens bitfelfrekvens BER"
 
 msgid "Tuner Number"
@@ -1710,13 +1704,13 @@ msgstr "Mottagare nummer"
 msgid "Tuner Signal"
 msgstr "Mottagarens signal"
 
-msgid "Signal Power (AGC)"
+msgid "Tuner Signal Power AGC"
 msgstr "Mottagarens signalstyrka AGC"
 
-msgid "Signal Quality (SNR)"
+msgid "Tuner Signal Quality SNR"
 msgstr "Mottagarens signalkvalitet SNR"
 
-msgid "Signal Quality (SNR DB)"
+msgid "Tuner Signal Quality SNR_DB"
 msgstr "Mottagarens signalkvalitet SNR_DB"
 
 msgid "Tuner Type"
@@ -1805,7 +1799,7 @@ msgstr "Video"
 msgid "Video Height"
 msgstr "Bildhöjd"
 
-msgid "Widescreen"
+msgid "Video Wide"
 msgstr "Bredbild"
 
 msgid "Video Width"
@@ -1820,7 +1814,7 @@ msgstr "Volym"
 msgid "Volume Control"
 msgstr "Volymkontroll"
 
-msgid "Video PID (VPID)"
+msgid "Vpid"
 msgstr ""
 
 msgid "W"
@@ -1970,9 +1964,6 @@ msgstr ""
 #, fuzzy
 msgid "minute"
 msgstr "Minut"
-
-msgid "No"
-msgstr "Nej"
 
 msgid "no description available"
 msgstr "beskrivning saknas"

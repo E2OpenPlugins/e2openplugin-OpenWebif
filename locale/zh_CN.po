@@ -173,11 +173,8 @@ msgstr "随时"
 msgid "Any service/recording"
 msgstr "任何频道/录制"
 
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
-msgstr "Audio PID (APID)"
+msgid "Apid"
+msgstr "Apid"
 
 msgid "April"
 msgstr "四月"
@@ -1064,8 +1061,8 @@ msgstr "在任何服务"
 msgid "On same service"
 msgstr "在同一服务上"
 
-msgid "ONID"
-msgstr "ONID"
+msgid "Onid"
+msgstr "Onid"
 
 msgid "Only match between dates"
 msgstr "仅日期之间匹配"
@@ -1118,8 +1115,8 @@ msgstr "用家长控制没有激活."
 msgid "Parse AutoTimer"
 msgstr "解析自动定时器"
 
-msgid "PCR PID"
-msgstr "PCR PID"
+msgid "Pcrpid"
+msgstr "Pcrpid"
 
 msgid "PiP"
 msgstr "画中画"
@@ -1145,8 +1142,8 @@ msgstr "播放列表"
 msgid "Playlist format"
 msgstr "播放列表格式"
 
-msgid "PMT PID"
-msgstr "PMT PID"
+msgid "Pmtpid"
+msgstr "Pmtpid"
 
 msgid "Power Control"
 msgstr "电源控制"
@@ -1181,7 +1178,7 @@ msgstr "重启机顶盒"
 msgid "Record a maximum of # times"
 msgstr "最多录制#次"
 
-msgid "Recording"
+msgid "Recording Status"
 msgstr "录制状态"
 
 #, fuzzy
@@ -1413,8 +1410,8 @@ msgstr "在频道列表中显示频道类型"
 msgid "Shutdown"
 msgstr "关机"
 
-msgid "Service ID (SID)"
-msgstr "Service ID (SID)"
+msgid "Sid"
+msgstr "Sid"
 
 msgid "Simulate"
 msgstr "模拟"
@@ -1453,7 +1450,7 @@ msgstr "排序"
 msgid "Spinner"
 msgstr "微调"
 
-msgid "SRef"
+msgid "Sref"
 msgstr "参考信号"
 
 msgid "Standby"
@@ -1524,9 +1521,6 @@ msgstr "标签"
 
 msgid "Teletext"
 msgstr "图文电视"
-
-msgid "Teletext PID"
-msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "电视"
@@ -1651,8 +1645,8 @@ msgstr "西班牙语翻译"
 msgid "Try guessing"
 msgstr "尝试猜测"
 
-msgid "TSID"
-msgstr "TSID"
+msgid "Tsid"
+msgstr "Tsid"
 
 msgid "Tu"
 msgstr "星期二"
@@ -1663,7 +1657,7 @@ msgstr "星期二"
 msgid "Tuesday"
 msgstr "星期二"
 
-msgid "Bit Error Rate (BER)"
+msgid "Tuner Bit Error Rate BER"
 msgstr "调谐器误码率"
 
 msgid "Tuner Number"
@@ -1672,13 +1666,13 @@ msgstr "调谐器编号"
 msgid "Tuner Signal"
 msgstr "调谐器信号"
 
-msgid "Signal Power (AGC)"
+msgid "Tuner Signal Power AGC"
 msgstr "调谐器信号功率AGC"
 
-msgid "Signal Quality (SNR)"
+msgid "Tuner Signal Quality SNR"
 msgstr "调谐器信号质量信噪比"
 
-msgid "Signal Quality (SNR DB)"
+msgid "Tuner Signal Quality SNR_DB"
 msgstr "SNR信号质量（DB）"
 
 msgid "Tuner Type"
@@ -1765,7 +1759,7 @@ msgstr "视频"
 msgid "Video Height"
 msgstr "视频高度"
 
-msgid "Widescreen"
+msgid "Video Wide"
 msgstr "视频宽度"
 
 msgid "Video Width"
@@ -1780,8 +1774,8 @@ msgstr "音量"
 msgid "Volume Control"
 msgstr "音量控制"
 
-msgid "Video PID (VPID)"
-msgstr "Video PID (VPID)"
+msgid "Vpid"
+msgstr "Vpid"
 
 msgid "W"
 msgstr "W"

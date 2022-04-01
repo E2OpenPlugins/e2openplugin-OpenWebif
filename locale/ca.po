@@ -177,10 +177,7 @@ msgstr ""
 msgid "Any service/recording"
 msgstr "Qualsevol servei/gravació"
 
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
+msgid "Apid"
 msgstr ""
 
 msgid "April"
@@ -1094,7 +1091,7 @@ msgstr "En qualsevol servei"
 msgid "On same service"
 msgstr "En el mateix servei"
 
-msgid "ONID"
+msgid "Onid"
 msgstr ""
 
 msgid "Only match between dates"
@@ -1149,7 +1146,7 @@ msgstr "Control parental no està activat."
 msgid "Parse AutoTimer"
 msgstr "Analitzar Autotimer"
 
-msgid "PCR PID"
+msgid "Pcrpid"
 msgstr ""
 
 msgid "PiP"
@@ -1177,7 +1174,7 @@ msgstr "Llista de reproducció"
 msgid "Playlist format"
 msgstr "Llista de reproducció"
 
-msgid "PMT PID"
+msgid "Pmtpid"
 msgstr ""
 
 msgid "Power Control"
@@ -1213,7 +1210,7 @@ msgstr "Reiniciar Deco"
 msgid "Record a maximum of # times"
 msgstr "Gravar un màxim de x vegades"
 
-msgid "Recording"
+msgid "Recording Status"
 msgstr "Estat de Gravació"
 
 #, fuzzy
@@ -1452,7 +1449,7 @@ msgstr "Mostar Picon en llista de canals"
 msgid "Shutdown"
 msgstr "Apagar"
 
-msgid "Service ID (SID)"
+msgid "Sid"
 msgstr ""
 
 msgid "Simulate"
@@ -1492,7 +1489,7 @@ msgstr ""
 msgid "Spinner"
 msgstr ""
 
-msgid "SRef"
+msgid "Sref"
 msgstr ""
 
 msgid "Standby"
@@ -1565,9 +1562,6 @@ msgstr "Etiquetes"
 
 msgid "Teletext"
 msgstr "Teletext"
-
-msgid "Teletext PID"
-msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Televisió"
@@ -1693,7 +1687,7 @@ msgstr "Traducció a l'espanyol"
 msgid "Try guessing"
 msgstr "Tractar d'encertar"
 
-msgid "TSID"
+msgid "Tsid"
 msgstr ""
 
 msgid "Tu"
@@ -1705,7 +1699,7 @@ msgstr "Dim"
 msgid "Tuesday"
 msgstr "Dimarts"
 
-msgid "Bit Error Rate (BER)"
+msgid "Tuner Bit Error Rate BER"
 msgstr "Bit de taxa d'error (BER) del sintonitzador"
 
 msgid "Tuner Number"
@@ -1714,13 +1708,13 @@ msgstr "Número de sintonitzador"
 msgid "Tuner Signal"
 msgstr "Senyal del sintonitzador"
 
-msgid "Signal Power (AGC)"
+msgid "Tuner Signal Power AGC"
 msgstr "Potència de senyal del sintonitzador AGC"
 
-msgid "Signal Quality (SNR)"
+msgid "Tuner Signal Quality SNR"
 msgstr "Qualitat de senyal del sintonitzador SNR"
 
-msgid "Signal Quality (SNR DB)"
+msgid "Tuner Signal Quality SNR_DB"
 msgstr "Qualitat de senyal del sintonitzador SNR DB"
 
 msgid "Tuner Type"
@@ -1811,7 +1805,7 @@ msgstr "Vídeo"
 msgid "Video Height"
 msgstr "Altura de vídeo"
 
-msgid "Widescreen"
+msgid "Video Wide"
 msgstr "Vídeo ample"
 
 msgid "Video Width"
@@ -1826,7 +1820,7 @@ msgstr "Volum"
 msgid "Volume Control"
 msgstr "Control de volum"
 
-msgid "Video PID (VPID)"
+msgid "Vpid"
 msgstr ""
 
 msgid "W"
@@ -1976,9 +1970,6 @@ msgstr ""
 #, fuzzy
 msgid "minute"
 msgstr "Minut"
-
-msgid "No"
-msgstr "No"
 
 msgid "no description available"
 msgstr "no hi ha descripció disponible"
