@@ -285,7 +285,7 @@ input[type="range"]::-ms-thumb {
 .sweet-alert button.confirm,
 .choices__list--multiple .choices__item {
   background-color: var(--skin-color) !important;
-  color: var(--main-text-color);
+  color: var(--main-text-color) !important;
 }
 
 .spinner-layer.pl--skinned {
