@@ -308,7 +308,7 @@ class AjaxController(BaseController):
 				day = int(_day)
 				if day > 0 or wadd > 0:
 					now = localtime()
-					begintime = mktime((now.tm_year, now.tm_mon, now.tm_mday + day + wadd, 0, 0, 0, -1, -1, -1))
+					begintime = int(mktime((now.tm_year, now.tm_mon, now.tm_mday + day + wadd, 0, 0, 0, -1, -1, -1)))
 			except ValueError:
 				pass
 		mode = 1
