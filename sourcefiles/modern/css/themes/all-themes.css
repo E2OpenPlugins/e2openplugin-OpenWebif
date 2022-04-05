@@ -1,6 +1,6 @@
 /* variables setup */
 :root {
-	--palette--red:          #f44336;
+  --palette--red:          #f44336;
   --palette--pink:         #e91e63;
   --palette--purple:       #9c27b0;
   --palette--deep-purple:  #673ab7;
@@ -285,7 +285,7 @@ input[type="range"]::-ms-thumb {
 .sweet-alert button.confirm,
 .choices__list--multiple .choices__item {
   background-color: var(--skin-color) !important;
-  color: var(--main-text-color);
+  color: var(--main-text-color) !important;
 }
 
 .spinner-layer.pl--skinned {
