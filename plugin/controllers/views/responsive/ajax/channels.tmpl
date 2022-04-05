@@ -19,7 +19,9 @@
 	<table class="now-next__grid table table-striped table-hover">
 
 #for $channel in $channels
-	#set $channelName = $channel.name.replace("'", r"\'")
+	## TODO: normalise these in a utility function
+	#set $sRefQuoteEscaped = $channel.ref.replace("'", "\\'")
+	#set $channelName = $channel.name.replace("&#x27;", "\\'")
 	#set $isProtected = 'protection' in $channel and $channel.protection != "0"
 
 		<tr id="sref-$channel.ref.replace(':', '_')" class="channel-list__channel">
@@ -35,7 +37,7 @@
 			#if $isProtected
 					$piconHTML
 			#else
-					<a href="javascript:zapChannel('$channel.ref', '$channelName');" title="$tstrings['zap_to'] $channel.name">$piconHTML</a>
+					<a href="javascript:zapChannel('$sRefQuoteEscaped', '$channelName');" title="$tstrings['zap_to'] $channel.name">$piconHTML</a>
 			#end if
 				</div>
 #else
@@ -47,7 +49,7 @@
 			#if $isProtected
 					<span class="link--skinned" title="$tstrings['locked']">$channel.name</span>
 			#else
-					<a href="javascript:zapChannel('$channel.ref', '$channelName');" class="link--skinned" title="$tstrings['zap_to'] $channel.name">$channel.name</a>
+					<a href="javascript:zapChannel('$sRefQuoteEscaped', '$channelName');" class="link--skinned" title="$tstrings['zap_to'] $channel.name">$channel.name</a>
 			#end if
 				</h2>
 				<div class="now-next__channel__actions">
@@ -55,10 +57,10 @@
 					<span class="link--not-skinned" target="_blank" title="$tstrings['locked']"><i class="material-icons material-icons-centered">lock_outline</i></span>
 	#else
 		#if $type == "radio"
-					<!-- button type="button" onclick="addTimer('','$channel.ref','$channel.name','');" class="link--not-skinned" title="$tstrings['add_timer']"><i class="icon material-icons material-icons-centered">alarm_add</i></button -->
+					<!-- button type="button" onclick="addTimer('','$sRefQuoteEscaped','$channel.name','');" class="link--not-skinned" title="$tstrings['add_timer']"><i class="icon material-icons material-icons-centered">alarm_add</i></button -->
 		#end if
 
-					<button type="button" onclick="zapChannel('$channel.ref', '$channelName');" class="link--not-skinned" title="$tstrings['zap_to'] $channel.name"><i class="icon material-icons material-icons-centered">settings_remote</i></button>
+					<button type="button" onclick="zapChannel('$sRefQuoteEscaped', '$channelName');" class="link--not-skinned" title="$tstrings['zap_to'] $channel.name"><i class="icon material-icons material-icons-centered">settings_remote</i></button>
 
 		#if $channel.link != ""
 					<a href="$channel.link" class="now-next__external-link link--not-skinned" target="extlink" title="$tstrings['open_in_new_window']"><i class="material-icons material-icons-centered">phonelink</i></a>
@@ -67,10 +69,10 @@
 			#if not 'now_title' in $channel
 				#set $epgDisabledState = 'disabled'
 			#end if
-					<button type="button" onclick="open_epg_dialog('$channel.ref','$channelName');" $epgDisabledState class="link--not-skinned" title="$tstrings['show_epg_for'] $channel.name" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons material-icons-centered">view_list</i></button>
-					<button type="button" onclick="jumper8001('$channel.ref', '$channelName');" class="link--not-skinned" title="$tstrings['stream'] $channel.name"><i class="icon material-icons material-icons-centered">ondemand_video</i></button>
+					<button type="button" onclick="open_epg_dialog('$sRefQuoteEscaped','$channelName');" $epgDisabledState class="link--not-skinned" title="$tstrings['show_epg_for'] $channel.name" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons material-icons-centered">view_list</i></button>
+					<button type="button" onclick="jumper8001('$sRefQuoteEscaped', '$channelName');" class="link--not-skinned" title="$tstrings['stream'] $channel.name"><i class="icon material-icons material-icons-centered">ondemand_video</i></button>
 			#if $transcoding
-					<button type="button" onclick="jumper8002('$channel.ref', '$channelName');" class="link--not-skinned" title="$tstrings['stream'] ($tstrings['transcoded']) $channel.name"><i class="icon material-icons material-icons-centered">smartphone</i></button>
+					<button type="button" onclick="jumper8002('$sRefQuoteEscaped', '$channelName');" class="link--not-skinned" title="$tstrings['stream'] ($tstrings['transcoded']) $channel.name"><i class="icon material-icons material-icons-centered">smartphone</i></button>
 			#end if
 		#end if
 	#end if
@@ -81,7 +83,7 @@
 				<div class="now-next__details now-next__details--now">
 					<div class="now-next__metainfo">
 						<h2 class="now-next__title">
-							<a href="javascript:void(0);" onclick="loadeventepg('$channel.now_ev_id', '$channel.ref', '$channel.picon');" class="link--skinned" data-ref="$channel.ref" data-id="$channel.now_ev_id" data-toggle="modal" data-target="#EventModal" title="$tstrings['more_details']">$channel.now_title</a>
+							<a href="javascript:void(0);" onclick="loadeventepg('$channel.now_ev_id', '$sRefQuoteEscaped', '$channel.picon');" class="link--skinned" data-ref="$channel.ref" data-id="$channel.now_ev_id" data-toggle="modal" data-target="#EventModal" title="$tstrings['more_details']">$channel.now_title</a>
 							<span class="now-next__elapsed">(+$channel.now_left $tstrings['mins'])</span>
 						</h2>
 						<div class="now-next__time">
@@ -107,7 +109,7 @@
 				<div class="now-next__details now-next__details--next">
 					<div class="now-next__metainfo">
 						<h2 class="now-next__title">
-							<a href="javascript:void(0);" onclick="loadeventepg('$channel.next_ev_id', '$channel.ref', '$channel.picon');" class="link--skinned" data-ref="$channel.ref" data-id="$channel.next_ev_id" data-toggle="modal" data-target="#EventModal" title="$tstrings['more_details']">$channel.next_title</a>
+							<a href="javascript:void(0);" onclick="loadeventepg('$channel.next_ev_id', '$sRefQuoteEscaped', '$channel.picon');" class="link--skinned" data-ref="$channel.ref" data-id="$channel.next_ev_id" data-toggle="modal" data-target="#EventModal" title="$tstrings['more_details']">$channel.next_title</a>
 							<span class="now-next__elapsed">($channel.next_duration $tstrings['mins'])</span>
 						</h2>
 						<div class="now-next__time">
