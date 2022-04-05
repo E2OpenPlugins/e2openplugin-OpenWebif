@@ -30,7 +30,7 @@
 ]
 
 <!doctype html>
-<html lang="$stbLang">
+<html lang="$stbLang.replace('_', '-')">
 <head>
 	<title>$boxname - OpenWebif</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -379,10 +379,27 @@
 							</a>
 						</li>
 						<li>
-							<a href="#boxinfo" data-close="true" accesskey="i" title="Shortcut: i">
-								<i class="material-icons">info</i>
-								<span>$tstrings['box_info']</span>
+							<a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">info</i>
+								<span>Information</span><!-- TODO: i10n -->
 							</a>
+                            <ul class="ml-menu">
+								<li><a href="#current">Channel</a></li><!-- TODO: i10n -->
+                                <li>
+                                    <a href="#boxinfo" data-close="true" accesskey="i" title="Shortcut: i">Receiver</a><!-- TODO: i10n -->
+                                </li>
+								<li><a href="#about">OpenWebif</a></li>
+<!--
+#if $debugMode
+-->
+								<li class="disabled" style="user-select: all;"><!-- these `disabled` classes will prevent the `Waves` plugin interfering with text selection -->
+                                    <a href="javascript:void(0);" class="disabled" style="user-select: all;">Version: $OPENWEBIFVER</a><!-- TODO: i10n -->
+                                    <a href="javascript:void(0);" class="disabled" style="user-select: all;">Build: $OPENWEBIFPACKAGEVERSION</a><!-- TODO: i10n -->
+								</li>
+<!--
+#end if
+-->
+							</ul>
 						</li>
 						<li>
 							<a href="javascript:void(0);" class="menu-toggle">
@@ -390,9 +407,6 @@
 								<span>$tstrings['extras']</span>
 							</a>
 							<ul class="ml-menu">
-							#if $webtv
-								<li><a href="#webtv" data-close="true" accesskey="w" title="Shortcut: w">$tstrings['webtv']</a></li>
-							#end if
 							#for $extra in $extras
 								#set $target_url = $extra["key"];
 								#if $target_url not in ('ajax/at','ajax/bqe','ajax/settings')
@@ -407,7 +421,9 @@
 									#end if
 								#end if
 							#end for
-								<li><a href="#current">Channel Info</a></li>
+							#if $webtv
+								<li><a href="#webtv" data-close="true" accesskey="w" title="Shortcut: w">$tstrings['webtv']</a></li>
+							#end if
 							</ul>
 						</li>
 					</ul>
@@ -677,8 +693,7 @@
 				<span class="modal-title">OpenWebif Version Information</span>
 			</div>
 			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
-				<div>Version: $OPENWEBIFVER</div>
-				<div>Package Version: $OPENWEBIFPACKAGEVERSION</div>
+				This information has been moved into <b>Information</b> in the main menu.
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn waves-effect btn-default" data-dismiss="modal">$tstrings['close']</button>

@@ -41,7 +41,13 @@
   }
 
   function forceToArray(value) {
-    return Array.isArray(value) ? value : [value];
+    let arr = [];
+    if (Array.isArray(value)) {
+        arr = value;
+    } else if (typeof value !== 'undefined') {
+        arr = [value];
+    }
+    return arr;
   }
 
   function keyValueSortWeight(key, order = 'asc') {

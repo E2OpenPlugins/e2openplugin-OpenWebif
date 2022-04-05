@@ -8,7 +8,14 @@
 
 <!-- TODO: move styles to css file -->
 <style>
-#if not $shownownextcolumns
+	.now-next__header {
+		width: 100%;
+	}
+#if $shownownextcolumns
+	.now-next__details--now {
+		border-bottom: none;
+	}
+#else
 	.now-next__details {
 		flex: 1 0 100%;
 	}
@@ -26,9 +33,9 @@
 
 		<tr id="sref-$channel.ref.replace(':', '_')" class="channel-list__channel">
 	#if '1:64:' in $channel.ref
-			<td colspan="100%" class="now-next__header header bg--skinned">
-				<h2>$channelName</h2>
-			</td>
+			<th colspan="3" class="now-next__header header bg--skinned">
+				<h2 class="bg--skinned">$channelName</h2>
+			</th>
 	#else
 #if $showPicons and 'picon' in $channel
 	#set $piconHTML = '<img class="img-fluid" src="%s" alt="Channel logo" loading="lazy">' % $channel.picon
