@@ -162,6 +162,17 @@ class API {
     }
   }
 
+  async sendKeyboardText(text) {
+    const response = (typeof text == 'undefined') ? {'ok': false, 'status': 'Empty request'} : await fetch(`/api/remotecontrol?text=${text}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    } else {
+      const jsonResponse = await response.json();
+      callScreenShot(); // TODO: modernise
+      return jsonResponse;
+    }
+  }
+
 }
 
 class GUI { 
