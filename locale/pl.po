@@ -1,20 +1,21 @@
 # pololoko111 <peciek83@gmail.com>, 2021, 2022.
+# Karol Sz <kaolsz@interia.pl>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 21:02+0100\n"
-"PO-Revision-Date: 2022-01-04 18:53+0000\n"
-"Last-Translator: pololoko111 <peciek83@gmail.com>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/"
-"e2openplugin-openwebif/e2openplugin-openwebif/pl/>\n"
+"PO-Revision-Date: 2022-03-16 09:59+0000\n"
+"Last-Translator: Karol Sz <kaolsz@interia.pl>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/e2openplugin-"
+"openwebif/e2openplugin-openwebif/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #, python-format
 msgid "%02d.%02d."
@@ -64,7 +65,7 @@ msgid "A filename is required"
 msgstr "Proszę podać nazwę pliku"
 
 msgid "A value is required"
-msgstr "Musisz coś wpisać"
+msgstr "Wartość jest wymagana"
 
 msgid "AGC"
 msgstr "AGC"
@@ -76,13 +77,13 @@ msgid "Add"
 msgstr "Dodaj"
 
 msgid "Add  AutoTimer  to tags"
-msgstr "Dodaj AutoTimer do tagów"
+msgstr "Dodaj  AutoTimer  do tagów"
 
 msgid "Add AutoTimer name to tags"
 msgstr "Dodaj nazwę AutoTimera do tagów"
 
 msgid "Add Bouquet"
-msgstr "Dodaj bukiet"
+msgstr "Dodaj pakiet"
 
 msgid "Add IPTV/URL"
 msgstr "Dodaj IPTV/URL"
@@ -109,7 +110,7 @@ msgid "Add filters"
 msgstr "Dodaj filtry"
 
 msgid "Add selection to bouquet"
-msgstr "Dodaj wybrane elementy do bukietu"
+msgstr "Dodaj wybrane elementy do pakietu"
 
 msgid "Add service name to stream information"
 msgstr "Dodaj nazwę usługi do informacji o strumieniu"
@@ -173,14 +174,17 @@ msgstr "Dowolny dzień"
 msgid "Any service/recording"
 msgstr "Dowolna usługa/nagranie"
 
-msgid "Apid"
-msgstr "Apid"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
 
 msgid "April"
 msgstr "Kwiecień"
 
 msgid "Are you sure you want to delete the selected bouquet?"
-msgstr "Czy na pewno chcesz usunąć bukiet?"
+msgstr "Czy na pewno chcesz usunąć pakiet?"
 
 msgid "Are you sure you want to delete the selected item(s)?"
 msgstr "Czy na pewno chcesz usunąć wybrany(e) element(y)?"
@@ -201,7 +205,7 @@ msgid "Are you sure you want to restore from file?"
 msgstr "Czy na pewno chcesz przywrócić z pliku?"
 
 msgid "Are you sure you want to start recording instantly?"
-msgstr "Czy na pewno chesz rozpocząć natychmiastowe nagrywanie?"
+msgstr "Czy na pewno chcesz rozpocząć natychmiastowe nagrywanie?"
 
 msgid "Ask, default No"
 msgstr "Zapytaj, domyślnie Nie"
@@ -259,62 +263,62 @@ msgstr "Zakładki"
 
 #, python-format
 msgid "Bouquet %s already exists."
-msgstr "Bukiet %s już istnieje."
+msgstr "Pakiet %s już istnieje."
 
 #, python-format
 msgid "Bouquet %s can not be moved."
-msgstr "Bukietu %s nie można przenieść."
+msgstr "Pakietu %s nie można przenieść."
 
 #, python-format
 msgid "Bouquet %s created."
-msgstr "Utworzono bukiet %s."
+msgstr "Utworzono pakiet %s."
 
 #, python-format
 msgid "Bouquet %s deleted."
-msgstr "Bukiet %s usunięty."
+msgstr "Pakiet %s usunięty."
 
 #, python-format
 msgid "Bouquet %s is locked."
-msgstr "Bukiet %s jest zablokowany."
+msgstr "Pakiet %s jest zablokowany."
 
 #, python-format
 msgid "Bouquet %s is unlocked."
-msgstr "Bukiet %s jest odblokowany."
+msgstr "Pakiet %s jest odblokowany."
 
 #, python-format
 msgid "Bouquet %s moved."
-msgstr "Przeniesiono bukiet %s."
+msgstr "Przeniesiono pakiet %s."
 
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
 msgstr ""
-"Usunięcie bukietu %s nie powiodło się, wartość odniesienia lub lista "
+"Usunięcie pakietu %s nie powiodło się, wartość odniesienia lub lista "
 "zmiennych jest niepoprawna."
 
 #, python-format
 msgid "Bouquet %s removed failed."
-msgstr "Usunięcie bukietu %s nie powiodło się."
+msgstr "Usunięcie pakietu %s nie powiodło się."
 
 msgid "Bouquet Editor"
-msgstr "Edytor bukietów"
+msgstr "Edytor pakietów"
 
 msgid "Bouquet name"
-msgstr "Nazwa bukietu"
+msgstr "Nazwa pakietu"
 
 msgid "Bouquet renamed successfully."
-msgstr "Nazwa bukietu została zmieniona."
+msgstr "Nazwa pakietu została zmieniona."
 
 msgid "Bouquet-settings were restored successfully"
-msgstr "Ustawienia bukietów zostały pomyślnie przywrócone"
+msgstr "Ustawienia pakietów zostały pomyślnie przywrócone"
 
 msgid "BouquetEditor"
-msgstr "Edytor bukietów"
+msgstr "Edytor pakietów"
 
 msgid "Bouquetlist is not editable!"
-msgstr "Lista bukietów nie jest edytowalna!"
+msgstr "Lista pakietów nie jest edytowalna!"
 
 msgid "Bouquets"
-msgstr "Bukiety"
+msgstr "Pakiety"
 
 msgid "Box"
 msgstr "Odbiornik"
@@ -393,7 +397,7 @@ msgstr ""
 "Nie można znaleźć timera '%s' o podanym czasie rozpoczęcia i zakończenia!"
 
 msgid "Create bouquet from selection"
-msgstr "Stwórz bukiet z wybranego elementu(ów)"
+msgstr "Stwórz pakiet z wybranego elementu(ów)"
 
 msgid "Current"
 msgstr "Aktualnie..."
@@ -441,7 +445,7 @@ msgid "Delete Bookmark"
 msgstr "Usuń zakładkę"
 
 msgid "Delete Bouquet"
-msgstr "Usuń bukiet"
+msgstr "Usuń pakiet"
 
 msgid "Delete Recording"
 msgstr "Usuń nagranie"
@@ -521,7 +525,7 @@ msgstr "Odśwież EPG"
 
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr ""
-"BŁĄD: Nie można ustawić SleepTimera gdy urządzenie znajduje się w trybie "
+"BŁĄD: Nie można ustawić SleepTimera, gdy urządzenie znajduje się w trybie "
 "czuwania"
 
 msgid "Edit"
@@ -588,7 +592,7 @@ msgid "Enter Text"
 msgstr "Wpisz tekst"
 
 msgid "Enter a name for the new bouquet"
-msgstr "Wpisz nazwę nowego bukietu"
+msgstr "Wpisz nazwę nowego pakietu"
 
 msgid "Enter a name for the new marker"
 msgstr "Wpisz nazwę nowego znacznika"
@@ -627,11 +631,11 @@ msgstr "Błąd, %s nie istnieje, przywracanie nie jest możliwe..."
 
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
-msgstr "Błąd, %s nie został utworzony za pomocą Edytora bukietów..."
+msgstr "Błąd, %s nie został utworzony za pomocą Edytora pakietów..."
 
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
-msgstr "Błąd: Nie można usunąć bukietu %s, błąd OSError."
+msgstr "Błąd: Nie można usunąć pakietu %s, błąd OSError."
 
 msgid "Event not found"
 msgstr "Nie znaleziono wydarzenia"
@@ -703,10 +707,10 @@ msgid "Gateway"
 msgstr "Brama"
 
 msgid "Get mutable list for new created alternative failed!"
-msgstr "Nie udało się uzyskać zmienej listy dla nowo utworzonej alternatywy!"
+msgstr "Nie udało się uzyskać zmiennej listy dla nowo utworzonej alternatywy!"
 
 msgid "Get mutable list for new created bouquet failed!"
-msgstr "Nie udało się uzyskać zmiennej listy dla nowo utworzonego bukietu!"
+msgstr "Nie udało się uzyskać zmiennej listy dla nowo utworzonego pakietu!"
 
 msgid "HH:MM"
 msgstr "GG:MM"
@@ -927,7 +931,7 @@ msgid "Movies"
 msgstr "Nagrania"
 
 msgid "Multi-Bouquet is not enabled!"
-msgstr "Multi-Bukiet nie jest włączony!"
+msgstr "Multi-Pakiet nie jest włączony!"
 
 msgid "MultiEPG"
 msgstr "Multi EPG"
@@ -978,10 +982,10 @@ msgid "No answer in time"
 msgstr "Brak odpowiedzi na czas"
 
 msgid "No bouquet given!"
-msgstr "Nie podano bukietu!"
+msgstr "Nie podano pakietu!"
 
 msgid "No bouquet name given!"
-msgstr "Nie podano nazwy bukietu!"
+msgstr "Nie podano nazwy pakietu!"
 
 msgid "No current service given!"
 msgstr "Nie podano bieżącej usługi!"
@@ -1056,7 +1060,7 @@ msgid "Offset before recording (mins)"
 msgstr "Przesunięcie przed nagrywaniem (w min.)"
 
 msgid "On"
-msgstr "W"
+msgstr "Włączony"
 
 msgid "On any service"
 msgstr "W każdej usłudze"
@@ -1064,8 +1068,8 @@ msgstr "W każdej usłudze"
 msgid "On same service"
 msgstr "W tej samej usłudze"
 
-msgid "Onid"
-msgstr "Onid"
+msgid "ONID"
+msgstr ""
 
 msgid "Only match between dates"
 msgstr "Dopasuj tylko między datami"
@@ -1080,7 +1084,7 @@ msgid "Oops..."
 msgstr "Ups..."
 
 msgid "Open Source Web Interface for Linux set-top box"
-msgstr "Interfejs sieciowy typu Open Source dla odbiorników z systemem Linux"
+msgstr "Interfejs sieciowy Open Source dla odbiorników z systemem Linux"
 
 msgid "Open in new window"
 msgstr "Otwórz w nowym oknie"
@@ -1118,8 +1122,8 @@ msgstr "Kontrola rodzicielska jest nieaktywna."
 msgid "Parse AutoTimer"
 msgstr "Analizuj AutoTimer"
 
-msgid "Pcrpid"
-msgstr "Pcrpid"
+msgid "PCR PID"
+msgstr ""
 
 msgid "PiP"
 msgstr "PiP"
@@ -1145,8 +1149,8 @@ msgstr "Lista odtwarzania"
 msgid "Playlist format"
 msgstr "Format listy odtwarzania"
 
-msgid "Pmtpid"
-msgstr "Pmtpid"
+msgid "PMT PID"
+msgstr ""
 
 msgid "Power Control"
 msgstr "Opcje zasilania"
@@ -1181,8 +1185,8 @@ msgstr "Zrestartuj odbiornik"
 msgid "Record a maximum of # times"
 msgstr "Nagraj maksymalnie x razy"
 
-msgid "Recording Status"
-msgstr "Status nagrywania"
+msgid "Recording"
+msgstr ""
 
 msgid "Recording Type"
 msgstr "Typ nagrywania"
@@ -1209,13 +1213,13 @@ msgid "Remove Package"
 msgstr "Usuń pakiet"
 
 msgid "Remove filter"
-msgstr "Usuń filter"
+msgstr "Usuń filtr"
 
 msgid "Rename"
 msgstr "Zmień nazwę"
 
 msgid "Rename Bouquet"
-msgstr "Zmień nazwę bukietu"
+msgstr "Zmień nazwę pakietu"
 
 msgid "Rename Recording"
 msgstr "Zmień nazwę nagrania"
@@ -1239,7 +1243,7 @@ msgid "Restart GUI"
 msgstr "Uruchom ponownie GUI"
 
 msgid "Restrict to bouquets"
-msgstr "Ogranicz do bukietów"
+msgstr "Ogranicz do pakietów"
 
 msgid "Restrict to channels"
 msgstr "Ogranicz do kanałów"
@@ -1281,7 +1285,7 @@ msgid "Search"
 msgstr "Szukaj"
 
 msgid "Search CSFD"
-msgstr "Szukaj w ČSFD"
+msgstr "Szukaj w CSFD"
 
 msgid "Search IMDb"
 msgstr "Szukaj w IMDb"
@@ -1325,7 +1329,7 @@ msgstr "Usługa %s została dodana."
 
 #, python-format
 msgid "Service %s already exists in bouquet %s."
-msgstr "Usługa %s już istnieje w bukiecie %s."
+msgstr "Usługa %s już istnieje w pakiecie %s."
 
 #, python-format
 msgid "Service %s can not be removed."
@@ -1345,7 +1349,7 @@ msgstr "Usługa %s została przeniesiona."
 
 #, python-format
 msgid "Service %s removed from bouquet %s."
-msgstr "Usługa %s została usunięta z bukietu %s."
+msgstr "Usługa %s została usunięta z pakietu %s."
 
 #, python-format
 msgid "Service %s removed."
@@ -1411,8 +1415,8 @@ msgstr "Pokazuj typ usługi na liście kanałów"
 msgid "Shutdown"
 msgstr "Wyłącz"
 
-msgid "Sid"
-msgstr "Sid"
+msgid "Service ID (SID)"
+msgstr ""
 
 msgid "Simulate"
 msgstr "Symuluj"
@@ -1451,8 +1455,8 @@ msgstr "Sortuj"
 msgid "Spinner"
 msgstr "Spinner"
 
-msgid "Sref"
-msgstr "Sref"
+msgid "SRef"
+msgstr ""
 
 msgid "Standby"
 msgstr "Czuwanie"
@@ -1522,6 +1526,9 @@ msgstr "Tagi"
 
 msgid "Teletext"
 msgstr "Telegazeta"
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Telewizja"
@@ -1646,8 +1653,8 @@ msgstr "Tłumaczenie na język hiszpański"
 msgid "Try guessing"
 msgstr "Spróbuj zgadnąć"
 
-msgid "Tsid"
-msgstr "Tsid"
+msgid "TSID"
+msgstr ""
 
 msgid "Tu"
 msgstr "Wt"
@@ -1658,8 +1665,8 @@ msgstr "Wto"
 msgid "Tuesday"
 msgstr "Wtorek"
 
-msgid "Tuner Bit Error Rate BER"
-msgstr "Współczynnik błędów BER"
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Tuner Number"
 msgstr "Numer tunera"
@@ -1667,14 +1674,14 @@ msgstr "Numer tunera"
 msgid "Tuner Signal"
 msgstr "Sygnał tunera"
 
-msgid "Tuner Signal Power AGC"
-msgstr "Jakość sygnału tunera AGC"
+msgid "Signal Power (AGC)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR"
-msgstr "Siła sygnału tunera SNR"
+msgid "Signal Quality (SNR)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR_DB"
-msgstr "Siła sygnału tunera SNR_DB"
+msgid "Signal Quality (SNR DB)"
+msgstr ""
 
 msgid "Tuner Type"
 msgstr "Typ tunera"
@@ -1759,8 +1766,8 @@ msgstr "Wideo"
 msgid "Video Height"
 msgstr "Wysokość wideo"
 
-msgid "Video Wide"
-msgstr "Szerokie wideo"
+msgid "Widescreen"
+msgstr ""
 
 msgid "Video Width"
 msgstr "Szerokość wideo"
@@ -1774,8 +1781,8 @@ msgstr "Głośność"
 msgid "Volume Control"
 msgstr "Kontrola głośności"
 
-msgid "Vpid"
-msgstr "Vpid"
+msgid "Video PID (VPID)"
+msgstr ""
 
 msgid "W"
 msgstr "W"
@@ -1814,14 +1821,14 @@ msgid "Without auth only local access is allowed!"
 msgstr "Bez autoryzacji dozwolony jest tylko dostęp lokalny!"
 
 msgid "Wizard"
-msgstr "Przewodnik"
+msgstr "Kreator"
 
 msgid "Would you like to save your changes?"
 msgstr "Czy chcesz zapisać zmiany?"
 
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr "Niewłaściwy format parametru 'set=%s'. Użyj set=set15"
+msgstr "Niewłaściwy format parametru 'set=%s'. Użyj set=set15 "
 
 msgid "YYYY-MM-DD"
 msgstr "RRRR-MM-DD"
@@ -1839,7 +1846,7 @@ msgid "Zap"
 msgstr "Przełącz"
 
 msgid "Zap & Record"
-msgstr "Przęłącz i nagraj"
+msgstr "Przełącz i nagraj"
 
 msgid "Zap before streaming"
 msgstr "Przełącz przed strumieniowaniem"
@@ -1962,7 +1969,7 @@ msgid "seconds"
 msgstr "sekund(y)"
 
 msgid "select bouquets"
-msgstr "wybierz bukiety"
+msgstr "wybierz pakiety"
 
 msgid "select channels"
 msgstr "wybierz kanały"
@@ -2030,3 +2037,45 @@ msgstr "zły typ pliku"
 
 msgid "zap"
 msgstr "przełącz"
+
+#~ msgid "Apid"
+#~ msgstr "Apid"
+
+#~ msgid "Onid"
+#~ msgstr "Onid"
+
+#~ msgid "Pcrpid"
+#~ msgstr "Pcrpid"
+
+#~ msgid "Pmtpid"
+#~ msgstr "Pmtpid"
+
+#~ msgid "Recording Status"
+#~ msgstr "Status nagrywania"
+
+#~ msgid "Sid"
+#~ msgstr "Sid"
+
+#~ msgid "Sref"
+#~ msgstr "Sref"
+
+#~ msgid "Tsid"
+#~ msgstr "Tsid"
+
+#~ msgid "Tuner Bit Error Rate BER"
+#~ msgstr "Współczynnik błędów BER"
+
+#~ msgid "Tuner Signal Power AGC"
+#~ msgstr "Jakość sygnału tunera AGC"
+
+#~ msgid "Tuner Signal Quality SNR"
+#~ msgstr "Siła sygnału tunera SNR"
+
+#~ msgid "Tuner Signal Quality SNR_DB"
+#~ msgstr "Siła sygnału tunera SNR_DB"
+
+#~ msgid "Video Wide"
+#~ msgstr "Szerokie wideo"
+
+#~ msgid "Vpid"
+#~ msgstr "Vpid"

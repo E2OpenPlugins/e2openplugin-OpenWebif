@@ -175,8 +175,11 @@ msgstr ""
 msgid "Any service/recording"
 msgstr "Bármely szolgáltatás/felvétel"
 
-msgid "Apid"
-msgstr "Apid"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
 
 msgid "April"
 msgstr "Április"
@@ -1080,8 +1083,8 @@ msgstr "Minden szolgáltatásnál"
 msgid "On same service"
 msgstr "Ugyanazon a szolgáltatáson"
 
-msgid "Onid"
-msgstr "Onid"
+msgid "ONID"
+msgstr ""
 
 msgid "Only match between dates"
 msgstr "Korlátozza az eseményeket bizonyos időpontokban"
@@ -1135,8 +1138,8 @@ msgstr "A szülői felügyelet nincs aktiválva."
 msgid "Parse AutoTimer"
 msgstr "Automatikus időzítő elemzése"
 
-msgid "Pcrpid"
-msgstr "Pcrpid"
+msgid "PCR PID"
+msgstr ""
 
 msgid "PiP"
 msgstr "PiP"
@@ -1162,8 +1165,8 @@ msgstr "Lejátszási lista"
 msgid "Playlist format"
 msgstr "Lejátszási lista formátum"
 
-msgid "Pmtpid"
-msgstr "Pmtpid"
+msgid "PMT PID"
+msgstr ""
 
 msgid "Power Control"
 msgstr "Kikapcsolás"
@@ -1198,8 +1201,8 @@ msgstr "Box újraindítása"
 msgid "Record a maximum of # times"
 msgstr "Legfeljebb x alkalommal rögzítsen"
 
-msgid "Recording Status"
-msgstr "Felvétel állapota"
+msgid "Recording"
+msgstr ""
 
 #, fuzzy
 msgid "Recording Type"
@@ -1437,8 +1440,8 @@ msgstr "A csatorna típus megjelenítése a csatornalistában"
 msgid "Shutdown"
 msgstr "Kikapcsolás"
 
-msgid "Sid"
-msgstr "Sid"
+msgid "Service ID (SID)"
+msgstr ""
 
 msgid "Simulate"
 msgstr "Szimulálás"
@@ -1477,8 +1480,8 @@ msgstr ""
 msgid "Spinner"
 msgstr "Spinner"
 
-msgid "Sref"
-msgstr "Sref"
+msgid "SRef"
+msgstr ""
 
 msgid "Standby"
 msgstr "Készenlét"
@@ -1549,6 +1552,9 @@ msgstr "Címkék"
 
 msgid "Teletext"
 msgstr "Teletext"
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Televízió"
@@ -1674,8 +1680,8 @@ msgstr "Fordítás spanyolra"
 msgid "Try guessing"
 msgstr "Próbálja kitalálni"
 
-msgid "Tsid"
-msgstr "Tsid"
+msgid "TSID"
+msgstr ""
 
 msgid "Tu"
 msgstr "Kedd"
@@ -1686,8 +1692,8 @@ msgstr "Kedd"
 msgid "Tuesday"
 msgstr "Kedd"
 
-msgid "Tuner Bit Error Rate BER"
-msgstr "Tuner bithibaarány BER"
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Tuner Number"
 msgstr "Tuner száma"
@@ -1695,14 +1701,14 @@ msgstr "Tuner száma"
 msgid "Tuner Signal"
 msgstr "Tuner jel"
 
-msgid "Tuner Signal Power AGC"
-msgstr "Tuner jelerősség AGC"
+msgid "Signal Power (AGC)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR"
-msgstr "Tuner jel minősége SNR"
+msgid "Signal Quality (SNR)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR_DB"
-msgstr "Tuner jel minősége SNR_DB"
+msgid "Signal Quality (SNR DB)"
+msgstr ""
 
 msgid "Tuner Type"
 msgstr "Tuner típusa"
@@ -1791,8 +1797,8 @@ msgstr "Videó"
 msgid "Video Height"
 msgstr "Video magassága"
 
-msgid "Video Wide"
-msgstr "Videó széles"
+msgid "Widescreen"
+msgstr ""
 
 msgid "Video Width"
 msgstr "Videó szélessége"
@@ -1806,8 +1812,8 @@ msgstr "Hangerő"
 msgid "Volume Control"
 msgstr "Hangerőszabályozó"
 
-msgid "Vpid"
-msgstr "Vpid"
+msgid "Video PID (VPID)"
+msgstr ""
 
 msgid "W"
 msgstr "W"
@@ -2069,3 +2075,45 @@ msgstr "rossz fájltípus"
 
 msgid "zap"
 msgstr "ugrás"
+
+#~ msgid "Apid"
+#~ msgstr "Apid"
+
+#~ msgid "Onid"
+#~ msgstr "Onid"
+
+#~ msgid "Pcrpid"
+#~ msgstr "Pcrpid"
+
+#~ msgid "Pmtpid"
+#~ msgstr "Pmtpid"
+
+#~ msgid "Recording Status"
+#~ msgstr "Felvétel állapota"
+
+#~ msgid "Sid"
+#~ msgstr "Sid"
+
+#~ msgid "Sref"
+#~ msgstr "Sref"
+
+#~ msgid "Tsid"
+#~ msgstr "Tsid"
+
+#~ msgid "Tuner Bit Error Rate BER"
+#~ msgstr "Tuner bithibaarány BER"
+
+#~ msgid "Tuner Signal Power AGC"
+#~ msgstr "Tuner jelerősség AGC"
+
+#~ msgid "Tuner Signal Quality SNR"
+#~ msgstr "Tuner jel minősége SNR"
+
+#~ msgid "Tuner Signal Quality SNR_DB"
+#~ msgstr "Tuner jel minősége SNR_DB"
+
+#~ msgid "Video Wide"
+#~ msgstr "Videó széles"
+
+#~ msgid "Vpid"
+#~ msgstr "Vpid"

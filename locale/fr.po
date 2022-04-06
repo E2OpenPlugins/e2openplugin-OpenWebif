@@ -7,8 +7,8 @@ msgstr ""
 "POT-Creation-Date: 2021-12-09 21:02+0100\n"
 "PO-Revision-Date: 2022-01-10 10:55+0000\n"
 "Last-Translator: Pr2 <pr2circle@outlook.com>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/"
-"e2openplugin-openwebif/e2openplugin-openwebif/fr/>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/e2openplugin-"
+"openwebif/e2openplugin-openwebif/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -175,8 +175,11 @@ msgstr "N'importe quel jour"
 msgid "Any service/recording"
 msgstr "N'importe quel service/enregistrement"
 
-msgid "Apid"
-msgstr "Apid"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
 
 msgid "April"
 msgstr "Avril"
@@ -1070,8 +1073,8 @@ msgstr "Sur n'importe quel service"
 msgid "On same service"
 msgstr "Sur le même nom de service"
 
-msgid "Onid"
-msgstr "Onid"
+msgid "ONID"
+msgstr ""
 
 msgid "Only match between dates"
 msgstr "Restreindre aux évènements à certaines dates"
@@ -1124,8 +1127,8 @@ msgstr "Le contrôle parental n'est pas activé."
 msgid "Parse AutoTimer"
 msgstr "Analyser Autotimer"
 
-msgid "Pcrpid"
-msgstr "Pcrpid"
+msgid "PCR PID"
+msgstr ""
 
 msgid "PiP"
 msgstr "PiP"
@@ -1151,8 +1154,8 @@ msgstr "Liste de lecture"
 msgid "Playlist format"
 msgstr "Format de la liste de lecture"
 
-msgid "Pmtpid"
-msgstr "Pmtpid"
+msgid "PMT PID"
+msgstr ""
 
 msgid "Power Control"
 msgstr "Contrôler alimentation"
@@ -1187,8 +1190,8 @@ msgstr "Redémarrer tout"
 msgid "Record a maximum of # times"
 msgstr "Enregistrer un maximum de x fois"
 
-msgid "Recording Status"
-msgstr "Status des enregistrements"
+msgid "Recording"
+msgstr ""
 
 msgid "Recording Type"
 msgstr "Type d'enregistrement"
@@ -1417,8 +1420,8 @@ msgstr "Afficher le type de service dans la liste des chaînes"
 msgid "Shutdown"
 msgstr "Éteindre"
 
-msgid "Sid"
-msgstr "Sid"
+msgid "Service ID (SID)"
+msgstr ""
 
 msgid "Simulate"
 msgstr "Simuler"
@@ -1457,8 +1460,8 @@ msgstr "Tri"
 msgid "Spinner"
 msgstr "Engrenage"
 
-msgid "Sref"
-msgstr "Sref"
+msgid "SRef"
+msgstr ""
 
 msgid "Standby"
 msgstr "Veille"
@@ -1528,6 +1531,9 @@ msgstr "Tags"
 
 msgid "Teletext"
 msgstr "Télétexte"
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Télévision"
@@ -1652,8 +1658,8 @@ msgstr "Traduction en Espagnol"
 msgid "Try guessing"
 msgstr "Essayer de deviner"
 
-msgid "Tsid"
-msgstr "Tsid"
+msgid "TSID"
+msgstr ""
 
 msgid "Tu"
 msgstr "Ma"
@@ -1664,8 +1670,8 @@ msgstr "Mar"
 msgid "Tuesday"
 msgstr "Mardi"
 
-msgid "Tuner Bit Error Rate BER"
-msgstr "Tuner (taux d'erreur en bit) BER"
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Tuner Number"
 msgstr "Numéro du tuner"
@@ -1673,14 +1679,14 @@ msgstr "Numéro du tuner"
 msgid "Tuner Signal"
 msgstr "Signal du tuner"
 
-msgid "Tuner Signal Power AGC"
-msgstr "Gain automatique du tuner AGC"
+msgid "Signal Power (AGC)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR"
-msgstr "Qualité du signal du tuner SNR"
+msgid "Signal Quality (SNR)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR_DB"
-msgstr "Qualité du signal du tuner SNR_DB"
+msgid "Signal Quality (SNR DB)"
+msgstr ""
 
 msgid "Tuner Type"
 msgstr "Type de tuner"
@@ -1765,8 +1771,8 @@ msgstr "Vidéo"
 msgid "Video Height"
 msgstr "Hauteur vidéo"
 
-msgid "Video Wide"
-msgstr "Vidéo large"
+msgid "Widescreen"
+msgstr ""
 
 msgid "Video Width"
 msgstr "Largeur de la vidéo"
@@ -1780,8 +1786,8 @@ msgstr "Volume"
 msgid "Volume Control"
 msgstr "Ctrl Volume"
 
-msgid "Vpid"
-msgstr "Vpid"
+msgid "Video PID (VPID)"
+msgstr ""
 
 msgid "W"
 msgstr "O"
@@ -2036,3 +2042,45 @@ msgstr "mauvais type de fichier"
 
 msgid "zap"
 msgstr "zap"
+
+#~ msgid "Apid"
+#~ msgstr "Apid"
+
+#~ msgid "Onid"
+#~ msgstr "Onid"
+
+#~ msgid "Pcrpid"
+#~ msgstr "Pcrpid"
+
+#~ msgid "Pmtpid"
+#~ msgstr "Pmtpid"
+
+#~ msgid "Recording Status"
+#~ msgstr "Status des enregistrements"
+
+#~ msgid "Sid"
+#~ msgstr "Sid"
+
+#~ msgid "Sref"
+#~ msgstr "Sref"
+
+#~ msgid "Tsid"
+#~ msgstr "Tsid"
+
+#~ msgid "Tuner Bit Error Rate BER"
+#~ msgstr "Tuner (taux d'erreur en bit) BER"
+
+#~ msgid "Tuner Signal Power AGC"
+#~ msgstr "Gain automatique du tuner AGC"
+
+#~ msgid "Tuner Signal Quality SNR"
+#~ msgstr "Qualité du signal du tuner SNR"
+
+#~ msgid "Tuner Signal Quality SNR_DB"
+#~ msgstr "Qualité du signal du tuner SNR_DB"
+
+#~ msgid "Video Wide"
+#~ msgstr "Vidéo large"
+
+#~ msgid "Vpid"
+#~ msgstr "Vpid"

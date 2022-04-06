@@ -173,8 +173,11 @@ msgstr "Elke dag"
 msgid "Any service/recording"
 msgstr "Elke zender/opname"
 
-msgid "Apid"
-msgstr "Apid"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
 
 msgid "April"
 msgstr "april"
@@ -1063,8 +1066,8 @@ msgstr "Op elke zender"
 msgid "On same service"
 msgstr "Op dezelfde zender"
 
-msgid "Onid"
-msgstr "Onid"
+msgid "ONID"
+msgstr ""
 
 msgid "Only match between dates"
 msgstr "Beperk tot bepaalde data"
@@ -1117,8 +1120,8 @@ msgstr "Kinderslot Pin is niet geactiveerd."
 msgid "Parse AutoTimer"
 msgstr "Parse AutoTimer"
 
-msgid "Pcrpid"
-msgstr "Pcrpid"
+msgid "PCR PID"
+msgstr ""
 
 msgid "PiP"
 msgstr "Pip"
@@ -1144,8 +1147,8 @@ msgstr "Afspeellijst"
 msgid "Playlist format"
 msgstr "Afspeellijst formaat"
 
-msgid "Pmtpid"
-msgstr "Pmtpid"
+msgid "PMT PID"
+msgstr ""
 
 msgid "Power Control"
 msgstr "In/uitschakelen"
@@ -1180,8 +1183,8 @@ msgstr "STB herstarten"
 msgid "Record a maximum of # times"
 msgstr "Maximaal x keer opnemen"
 
-msgid "Recording Status"
-msgstr "Opnamestatus"
+msgid "Recording"
+msgstr ""
 
 msgid "Recording Type"
 msgstr "Soort opname"
@@ -1410,8 +1413,8 @@ msgstr "Toon het zendertype in de zenderlijst"
 msgid "Shutdown"
 msgstr "Afsluiten"
 
-msgid "Sid"
-msgstr "Sid"
+msgid "Service ID (SID)"
+msgstr ""
 
 msgid "Simulate"
 msgstr "Simuleer"
@@ -1450,8 +1453,8 @@ msgstr "Sorteer"
 msgid "Spinner"
 msgstr "Spinner"
 
-msgid "Sref"
-msgstr "Sref"
+msgid "SRef"
+msgstr ""
 
 msgid "Standby"
 msgstr "Standby"
@@ -1521,6 +1524,9 @@ msgstr "Tags"
 
 msgid "Teletext"
 msgstr "Teletekst"
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Televisie"
@@ -1645,8 +1651,8 @@ msgstr "Vertaling in het Spaans"
 msgid "Try guessing"
 msgstr "Probeer te raden"
 
-msgid "Tsid"
-msgstr "Tsid"
+msgid "TSID"
+msgstr ""
 
 msgid "Tu"
 msgstr "di"
@@ -1657,8 +1663,8 @@ msgstr "di"
 msgid "Tuesday"
 msgstr "dinsdag"
 
-msgid "Tuner Bit Error Rate BER"
-msgstr "Tuner fout bit ratio BER"
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Tuner Number"
 msgstr "Tuner nummer"
@@ -1666,14 +1672,14 @@ msgstr "Tuner nummer"
 msgid "Tuner Signal"
 msgstr "Tuner signaal"
 
-msgid "Tuner Signal Power AGC"
-msgstr "Tuner signaalsterkte AGC"
+msgid "Signal Power (AGC)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR"
-msgstr "Tuner signaalkwaliteit SNR"
+msgid "Signal Quality (SNR)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR_DB"
-msgstr "Tuner signaalkwaliteit SNR_DB"
+msgid "Signal Quality (SNR DB)"
+msgstr ""
 
 msgid "Tuner Type"
 msgstr "Tuner type"
@@ -1758,8 +1764,8 @@ msgstr "Video"
 msgid "Video Height"
 msgstr "Beeld hoogte"
 
-msgid "Video Wide"
-msgstr "Breedbeeld"
+msgid "Widescreen"
+msgstr ""
 
 msgid "Video Width"
 msgstr "Beeld breedte"
@@ -1773,8 +1779,8 @@ msgstr "Volume"
 msgid "Volume Control"
 msgstr "Volume controle"
 
-msgid "Vpid"
-msgstr "Vpid"
+msgid "Video PID (VPID)"
+msgstr ""
 
 msgid "W"
 msgstr "W"
@@ -2030,3 +2036,45 @@ msgstr "verkeerd bestandstype"
 
 msgid "zap"
 msgstr "zap"
+
+#~ msgid "Apid"
+#~ msgstr "Apid"
+
+#~ msgid "Onid"
+#~ msgstr "Onid"
+
+#~ msgid "Pcrpid"
+#~ msgstr "Pcrpid"
+
+#~ msgid "Pmtpid"
+#~ msgstr "Pmtpid"
+
+#~ msgid "Recording Status"
+#~ msgstr "Opnamestatus"
+
+#~ msgid "Sid"
+#~ msgstr "Sid"
+
+#~ msgid "Sref"
+#~ msgstr "Sref"
+
+#~ msgid "Tsid"
+#~ msgstr "Tsid"
+
+#~ msgid "Tuner Bit Error Rate BER"
+#~ msgstr "Tuner fout bit ratio BER"
+
+#~ msgid "Tuner Signal Power AGC"
+#~ msgstr "Tuner signaalsterkte AGC"
+
+#~ msgid "Tuner Signal Quality SNR"
+#~ msgstr "Tuner signaalkwaliteit SNR"
+
+#~ msgid "Tuner Signal Quality SNR_DB"
+#~ msgstr "Tuner signaalkwaliteit SNR_DB"
+
+#~ msgid "Video Wide"
+#~ msgstr "Breedbeeld"
+
+#~ msgid "Vpid"
+#~ msgstr "Vpid"

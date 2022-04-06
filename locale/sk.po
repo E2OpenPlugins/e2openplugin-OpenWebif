@@ -6,8 +6,8 @@ msgstr ""
 "POT-Creation-Date: 2021-12-09 21:02+0100\n"
 "PO-Revision-Date: 2022-01-18 16:58+0000\n"
 "Last-Translator: Kiki Mora <kikimora2k13@gmail.com>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/"
-"e2openplugin-openwebif/e2openplugin-openwebif/sk/>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/e2openplugin-"
+"openwebif/e2openplugin-openwebif/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -172,8 +172,11 @@ msgstr "Kedykoľvek"
 msgid "Any service/recording"
 msgstr "Akákoľvek stanica/nahrávanie"
 
-msgid "Apid"
-msgstr "Apid"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
 
 msgid "April"
 msgstr "Apríl"
@@ -1063,8 +1066,8 @@ msgstr "Na akúkoľvek stanicu"
 msgid "On same service"
 msgstr "Na rovnakej stanici"
 
-msgid "Onid"
-msgstr "Onid"
+msgid "ONID"
+msgstr ""
 
 msgid "Only match between dates"
 msgstr "Obmedziť na relácie v určených dátumoch"
@@ -1117,8 +1120,8 @@ msgstr "Rodičovská kontrola nie je aktivovaná."
 msgid "Parse AutoTimer"
 msgstr "Analyzovať automatický časovač"
 
-msgid "Pcrpid"
-msgstr "Pcrpid"
+msgid "PCR PID"
+msgstr ""
 
 msgid "PiP"
 msgstr "PiP"
@@ -1144,8 +1147,8 @@ msgstr "Zoznam prehrávania"
 msgid "Playlist format"
 msgstr "Formát playlistu"
 
-msgid "Pmtpid"
-msgstr "Pmtpid"
+msgid "PMT PID"
+msgstr ""
 
 msgid "Power Control"
 msgstr "Ovládanie napájania"
@@ -1180,8 +1183,8 @@ msgstr "Reštartovať prijímač"
 msgid "Record a maximum of # times"
 msgstr "Nahrať maximálne x krát"
 
-msgid "Recording Status"
-msgstr "Stav nahrávania"
+msgid "Recording"
+msgstr ""
 
 msgid "Recording Type"
 msgstr "Typ nahrávky"
@@ -1410,8 +1413,8 @@ msgstr "Zobrazovat typ programu v zozname staníc"
 msgid "Shutdown"
 msgstr "Vypnúť"
 
-msgid "Sid"
-msgstr "Sid"
+msgid "Service ID (SID)"
+msgstr ""
 
 msgid "Simulate"
 msgstr "Simulovať"
@@ -1450,8 +1453,8 @@ msgstr "Triediť"
 msgid "Spinner"
 msgstr "Spiner"
 
-msgid "Sref"
-msgstr "Sref"
+msgid "SRef"
+msgstr ""
 
 msgid "Standby"
 msgstr "Pohotovostný režim"
@@ -1521,6 +1524,9 @@ msgstr "Štítky"
 
 msgid "Teletext"
 msgstr "Teletext"
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Televízia"
@@ -1645,8 +1651,8 @@ msgstr "Preklad do španielčiny"
 msgid "Try guessing"
 msgstr "Skúsiť uhádnuť"
 
-msgid "Tsid"
-msgstr "Tsid"
+msgid "TSID"
+msgstr ""
 
 msgid "Tu"
 msgstr "Ut"
@@ -1657,8 +1663,8 @@ msgstr "Uto"
 msgid "Tuesday"
 msgstr "Utorok"
 
-msgid "Tuner Bit Error Rate BER"
-msgstr "Tuner Bit Error Rate BER"
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Tuner Number"
 msgstr "Číslo tunera"
@@ -1666,14 +1672,14 @@ msgstr "Číslo tunera"
 msgid "Tuner Signal"
 msgstr "Signál tunera"
 
-msgid "Tuner Signal Power AGC"
-msgstr "Intenzita signálu tunera AGC"
+msgid "Signal Power (AGC)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR"
-msgstr "Kvalita signálu tunera SNR"
+msgid "Signal Quality (SNR)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR_DB"
-msgstr "Kvalita signálu tunera SNR_DB"
+msgid "Signal Quality (SNR DB)"
+msgstr ""
 
 msgid "Tuner Type"
 msgstr "Typ tunera"
@@ -1758,8 +1764,8 @@ msgstr "Video"
 msgid "Video Height"
 msgstr "Výška videa"
 
-msgid "Video Wide"
-msgstr "Širokouhlé"
+msgid "Widescreen"
+msgstr ""
 
 msgid "Video Width"
 msgstr "Šírka videa"
@@ -1773,8 +1779,8 @@ msgstr "Hlasitosť"
 msgid "Volume Control"
 msgstr "Ovládanie hlasitosti"
 
-msgid "Vpid"
-msgstr "Vpid"
+msgid "Video PID (VPID)"
+msgstr ""
 
 msgid "W"
 msgstr "Z"
@@ -2029,3 +2035,45 @@ msgstr "nesprávny typ súboru"
 
 msgid "zap"
 msgstr "prepnúť"
+
+#~ msgid "Apid"
+#~ msgstr "Apid"
+
+#~ msgid "Onid"
+#~ msgstr "Onid"
+
+#~ msgid "Pcrpid"
+#~ msgstr "Pcrpid"
+
+#~ msgid "Pmtpid"
+#~ msgstr "Pmtpid"
+
+#~ msgid "Recording Status"
+#~ msgstr "Stav nahrávania"
+
+#~ msgid "Sid"
+#~ msgstr "Sid"
+
+#~ msgid "Sref"
+#~ msgstr "Sref"
+
+#~ msgid "Tsid"
+#~ msgstr "Tsid"
+
+#~ msgid "Tuner Bit Error Rate BER"
+#~ msgstr "Tuner Bit Error Rate BER"
+
+#~ msgid "Tuner Signal Power AGC"
+#~ msgstr "Intenzita signálu tunera AGC"
+
+#~ msgid "Tuner Signal Quality SNR"
+#~ msgstr "Kvalita signálu tunera SNR"
+
+#~ msgid "Tuner Signal Quality SNR_DB"
+#~ msgstr "Kvalita signálu tunera SNR_DB"
+
+#~ msgid "Video Wide"
+#~ msgstr "Širokouhlé"
+
+#~ msgid "Vpid"
+#~ msgstr "Vpid"

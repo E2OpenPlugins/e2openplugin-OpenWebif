@@ -176,8 +176,11 @@ msgstr ""
 msgid "Any service/recording"
 msgstr "أي خدمة / التسجيل"
 
-msgid "Apid"
-msgstr "معرف مزود الخدمة"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
 
 msgid "April"
 msgstr "ابريل"
@@ -1080,8 +1083,8 @@ msgstr "على أى خدمة"
 msgid "On same service"
 msgstr "على نفس الخدمة"
 
-msgid "Onid"
-msgstr "معرف الشبكة الاصلي"
+msgid "ONID"
+msgstr ""
 
 msgid "Only match between dates"
 msgstr "تقييد للأحداث في تواريخ معينة"
@@ -1135,8 +1138,8 @@ msgstr "لم يتم تنشيط الرقابة الأبوية."
 msgid "Parse AutoTimer"
 msgstr "تحليل المؤقت التلقائي"
 
-msgid "Pcrpid"
-msgstr "معرف البي سي ار"
+msgid "PCR PID"
+msgstr ""
 
 msgid "PiP"
 msgstr "خاصية قناة داخل قناة"
@@ -1163,8 +1166,8 @@ msgstr "قائمة التشغيل"
 msgid "Playlist format"
 msgstr "قائمة التشغيل"
 
-msgid "Pmtpid"
-msgstr "معرف البي أم تي"
+msgid "PMT PID"
+msgstr ""
 
 msgid "Power Control"
 msgstr "التحكم في الطاقة"
@@ -1199,8 +1202,8 @@ msgstr "إعادة تشغيل الجهاز"
 msgid "Record a maximum of # times"
 msgstr "تسجيل كحد أقصى من المرات"
 
-msgid "Recording Status"
-msgstr "حاله التسجيل"
+msgid "Recording"
+msgstr ""
 
 #, fuzzy
 msgid "Recording Type"
@@ -1438,8 +1441,8 @@ msgstr "عرض نوع القناة في قائمة القنوات"
 msgid "Shutdown"
 msgstr "إغلاق"
 
-msgid "Sid"
-msgstr "معرف القناة"
+msgid "Service ID (SID)"
+msgstr ""
 
 msgid "Simulate"
 msgstr "يتظاهر"
@@ -1478,8 +1481,8 @@ msgstr ""
 msgid "Spinner"
 msgstr "الغزال"
 
-msgid "Sref"
-msgstr "مرجع القناة"
+msgid "SRef"
+msgstr ""
 
 msgid "Standby"
 msgstr "وضع الإستعداد"
@@ -1551,6 +1554,9 @@ msgstr "علامات"
 
 msgid "Teletext"
 msgstr "النص التليفزيوني"
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "التلفزيون"
@@ -1676,8 +1682,8 @@ msgstr "الترجمة إلى الاسبانية"
 msgid "Try guessing"
 msgstr "محاولة التخمين"
 
-msgid "Tsid"
-msgstr "إرسال معرف المحطة"
+msgid "TSID"
+msgstr ""
 
 msgid "Tu"
 msgstr "الثلاثاء"
@@ -1688,8 +1694,8 @@ msgstr "الثلاثاء"
 msgid "Tuesday"
 msgstr "الثلاثاء"
 
-msgid "Tuner Bit Error Rate BER"
-msgstr "معدل خطاء المؤالف بالبت"
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Tuner Number"
 msgstr "رقم المؤالف"
@@ -1697,14 +1703,14 @@ msgstr "رقم المؤالف"
 msgid "Tuner Signal"
 msgstr "إشارة المؤالف"
 
-msgid "Tuner Signal Power AGC"
-msgstr "مؤالف قوة الاشارة"
+msgid "Signal Power (AGC)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR"
-msgstr "مؤالف جودة الإشارة"
+msgid "Signal Quality (SNR)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR_DB"
-msgstr "مؤالف جودة الإشارة بالديسيبل"
+msgid "Signal Quality (SNR DB)"
+msgstr ""
 
 msgid "Tuner Type"
 msgstr "نوع المؤالف"
@@ -1793,8 +1799,8 @@ msgstr "الفديو"
 msgid "Video Height"
 msgstr "ارتفاع الفيديو"
 
-msgid "Video Wide"
-msgstr "فديو واسع"
+msgid "Widescreen"
+msgstr ""
 
 msgid "Video Width"
 msgstr "فيديو عريض"
@@ -1808,8 +1814,8 @@ msgstr "درجه الصوت"
 msgid "Volume Control"
 msgstr "التحكم في مستوي الصوت"
 
-msgid "Vpid"
-msgstr "معرف الفديو"
+msgid "Video PID (VPID)"
+msgstr ""
 
 msgid "W"
 msgstr "W"
@@ -2071,3 +2077,45 @@ msgstr "نوع الملف خطاء"
 
 msgid "zap"
 msgstr "الانتقال"
+
+#~ msgid "Apid"
+#~ msgstr "معرف مزود الخدمة"
+
+#~ msgid "Onid"
+#~ msgstr "معرف الشبكة الاصلي"
+
+#~ msgid "Pcrpid"
+#~ msgstr "معرف البي سي ار"
+
+#~ msgid "Pmtpid"
+#~ msgstr "معرف البي أم تي"
+
+#~ msgid "Recording Status"
+#~ msgstr "حاله التسجيل"
+
+#~ msgid "Sid"
+#~ msgstr "معرف القناة"
+
+#~ msgid "Sref"
+#~ msgstr "مرجع القناة"
+
+#~ msgid "Tsid"
+#~ msgstr "إرسال معرف المحطة"
+
+#~ msgid "Tuner Bit Error Rate BER"
+#~ msgstr "معدل خطاء المؤالف بالبت"
+
+#~ msgid "Tuner Signal Power AGC"
+#~ msgstr "مؤالف قوة الاشارة"
+
+#~ msgid "Tuner Signal Quality SNR"
+#~ msgstr "مؤالف جودة الإشارة"
+
+#~ msgid "Tuner Signal Quality SNR_DB"
+#~ msgstr "مؤالف جودة الإشارة بالديسيبل"
+
+#~ msgid "Video Wide"
+#~ msgstr "فديو واسع"
+
+#~ msgid "Vpid"
+#~ msgstr "معرف الفديو"

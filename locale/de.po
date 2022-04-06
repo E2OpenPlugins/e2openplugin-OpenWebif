@@ -6,8 +6,8 @@ msgstr ""
 "POT-Creation-Date: 2021-12-09 21:02+0100\n"
 "PO-Revision-Date: 2021-12-22 19:15+0000\n"
 "Last-Translator: jbleyel <jbleyel@gmx.net>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/"
-"e2openplugin-openwebif/e2openplugin-openwebif/de/>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/e2openplugin-"
+"openwebif/e2openplugin-openwebif/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -176,8 +176,11 @@ msgstr "Jeden Tag"
 msgid "Any service/recording"
 msgstr "Service/Aufnahme beliebig"
 
-msgid "Apid"
-msgstr "A-PID"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
 
 msgid "April"
 msgstr "April"
@@ -1096,8 +1099,8 @@ msgstr "Auf jedem Sender"
 msgid "On same service"
 msgstr "Auf dem gleichen Sender"
 
-msgid "Onid"
-msgstr "ONID"
+msgid "ONID"
+msgstr ""
 
 msgid "Only match between dates"
 msgstr "Auf bestimmtes Datum beschränken"
@@ -1151,8 +1154,8 @@ msgstr "Jugendschutz ist nicht aktiviert."
 msgid "Parse AutoTimer"
 msgstr "AutoTimer auswerten"
 
-msgid "Pcrpid"
-msgstr "PCR-PID"
+msgid "PCR PID"
+msgstr ""
 
 msgid "PiP"
 msgstr "PiP"
@@ -1179,8 +1182,8 @@ msgstr "Wiedergabeliste"
 msgid "Playlist format"
 msgstr "Wiedergabeliste"
 
-msgid "Pmtpid"
-msgstr "PMT-PID"
+msgid "PMT PID"
+msgstr ""
 
 msgid "Power Control"
 msgstr "Ausschaltmenü"
@@ -1215,8 +1218,8 @@ msgstr "Receiver neustarten"
 msgid "Record a maximum of # times"
 msgstr "Höchstens X-mal aufnehmen"
 
-msgid "Recording Status"
-msgstr "Aufnahmestatus"
+msgid "Recording"
+msgstr ""
 
 #, fuzzy
 msgid "Recording Type"
@@ -1456,8 +1459,8 @@ msgstr "Zeige Picon in Senderliste"
 msgid "Shutdown"
 msgstr "Ausschalten"
 
-msgid "Sid"
-msgstr "SID"
+msgid "Service ID (SID)"
+msgstr ""
 
 msgid "Simulate"
 msgstr "Simulieren"
@@ -1496,8 +1499,8 @@ msgstr ""
 msgid "Spinner"
 msgstr "'IN-ARBEIT Symbol"
 
-msgid "Sref"
-msgstr "SREF"
+msgid "SRef"
+msgstr ""
 
 msgid "Standby"
 msgstr "Standby"
@@ -1569,6 +1572,9 @@ msgstr "Stichworte"
 
 msgid "Teletext"
 msgstr "Videotext"
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Fernsehen"
@@ -1694,8 +1700,8 @@ msgstr ""
 msgid "Try guessing"
 msgstr "Versuche zu raten"
 
-msgid "Tsid"
-msgstr "TSID"
+msgid "TSID"
+msgstr ""
 
 msgid "Tu"
 msgstr "Di"
@@ -1706,8 +1712,8 @@ msgstr "Di"
 msgid "Tuesday"
 msgstr "Dienstag"
 
-msgid "Tuner Bit Error Rate BER"
-msgstr "Tuner-Bitfehlerhäufigkeit BER"
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Tuner Number"
 msgstr "Tuner-Nummer"
@@ -1715,14 +1721,14 @@ msgstr "Tuner-Nummer"
 msgid "Tuner Signal"
 msgstr "Tunersignal"
 
-msgid "Tuner Signal Power AGC"
-msgstr "Tuner-Signalstärke AGC"
+msgid "Signal Power (AGC)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR"
-msgstr "Tuner-Signalqualität SNR"
+msgid "Signal Quality (SNR)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR_DB"
-msgstr "Tuner-Signalqualität SNR_DB"
+msgid "Signal Quality (SNR DB)"
+msgstr ""
 
 msgid "Tuner Type"
 msgstr "Tunerart"
@@ -1811,8 +1817,8 @@ msgstr "Video"
 msgid "Video Height"
 msgstr "Bildhöhe"
 
-msgid "Video Wide"
-msgstr "Breitbild"
+msgid "Widescreen"
+msgstr ""
 
 msgid "Video Width"
 msgstr "Bildbreite"
@@ -1826,8 +1832,8 @@ msgstr "Lautstärke"
 msgid "Volume Control"
 msgstr "Lautstärke"
 
-msgid "Vpid"
-msgstr "VPID"
+msgid "Video PID (VPID)"
+msgstr ""
 
 msgid "W"
 msgstr "W"
@@ -2091,3 +2097,45 @@ msgstr "Falscher Dateityp"
 
 msgid "zap"
 msgstr "Umschalten"
+
+#~ msgid "Apid"
+#~ msgstr "A-PID"
+
+#~ msgid "Onid"
+#~ msgstr "ONID"
+
+#~ msgid "Pcrpid"
+#~ msgstr "PCR-PID"
+
+#~ msgid "Pmtpid"
+#~ msgstr "PMT-PID"
+
+#~ msgid "Recording Status"
+#~ msgstr "Aufnahmestatus"
+
+#~ msgid "Sid"
+#~ msgstr "SID"
+
+#~ msgid "Sref"
+#~ msgstr "SREF"
+
+#~ msgid "Tsid"
+#~ msgstr "TSID"
+
+#~ msgid "Tuner Bit Error Rate BER"
+#~ msgstr "Tuner-Bitfehlerhäufigkeit BER"
+
+#~ msgid "Tuner Signal Power AGC"
+#~ msgstr "Tuner-Signalstärke AGC"
+
+#~ msgid "Tuner Signal Quality SNR"
+#~ msgstr "Tuner-Signalqualität SNR"
+
+#~ msgid "Tuner Signal Quality SNR_DB"
+#~ msgstr "Tuner-Signalqualität SNR_DB"
+
+#~ msgid "Video Wide"
+#~ msgstr "Breitbild"
+
+#~ msgid "Vpid"
+#~ msgstr "VPID"

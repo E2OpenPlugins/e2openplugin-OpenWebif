@@ -173,7 +173,10 @@ msgstr "Libovolný den"
 msgid "Any service/recording"
 msgstr "Libovolný program/nahrávání"
 
-msgid "Apid"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
 msgstr ""
 
 msgid "April"
@@ -1063,7 +1066,7 @@ msgstr "na libovolném programu"
 msgid "On same service"
 msgstr "na stejném programu"
 
-msgid "Onid"
+msgid "ONID"
 msgstr ""
 
 msgid "Only match between dates"
@@ -1117,7 +1120,7 @@ msgstr "Rodičovská kontrola není aktivována."
 msgid "Parse AutoTimer"
 msgstr "Analyzovat Autotimer"
 
-msgid "Pcrpid"
+msgid "PCR PID"
 msgstr ""
 
 msgid "PiP"
@@ -1144,7 +1147,7 @@ msgstr ""
 msgid "Playlist format"
 msgstr "Formát playlistu"
 
-msgid "Pmtpid"
+msgid "PMT PID"
 msgstr ""
 
 msgid "Power Control"
@@ -1180,8 +1183,8 @@ msgstr "Restartovat Box"
 msgid "Record a maximum of # times"
 msgstr "Nahrát maximálně x-krát"
 
-msgid "Recording Status"
-msgstr "Stav nahrávání"
+msgid "Recording"
+msgstr ""
 
 msgid "Recording Type"
 msgstr "Typ nahrávky"
@@ -1410,7 +1413,7 @@ msgstr "Zobrazovat typ programu v přehledu kanálů"
 msgid "Shutdown"
 msgstr "Vypnout"
 
-msgid "Sid"
+msgid "Service ID (SID)"
 msgstr ""
 
 msgid "Simulate"
@@ -1450,7 +1453,7 @@ msgstr "Třidit"
 msgid "Spinner"
 msgstr ""
 
-msgid "Sref"
+msgid "SRef"
 msgstr ""
 
 msgid "Standby"
@@ -1521,6 +1524,9 @@ msgstr "Tagy"
 
 msgid "Teletext"
 msgstr ""
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Televize"
@@ -1645,7 +1651,7 @@ msgstr "Překlad do španělštiny"
 msgid "Try guessing"
 msgstr "Zkusit odhadnout"
 
-msgid "Tsid"
+msgid "TSID"
 msgstr ""
 
 msgid "Tu"
@@ -1657,8 +1663,8 @@ msgstr "Út"
 msgid "Tuesday"
 msgstr "Úterý"
 
-msgid "Tuner Bit Error Rate BER"
-msgstr "Bitová chyba signálu BER"
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Tuner Number"
 msgstr "Čislo tuneru"
@@ -1666,14 +1672,14 @@ msgstr "Čislo tuneru"
 msgid "Tuner Signal"
 msgstr "Signál tuneru"
 
-msgid "Tuner Signal Power AGC"
-msgstr "Síla signálu AGC"
+msgid "Signal Power (AGC)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR"
-msgstr "Kvalita signálu SNR"
+msgid "Signal Quality (SNR)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR_DB"
-msgstr "Kvalita signálu SNR_DB"
+msgid "Signal Quality (SNR DB)"
+msgstr ""
 
 msgid "Tuner Type"
 msgstr "Typ tuneru"
@@ -1759,8 +1765,8 @@ msgstr ""
 msgid "Video Height"
 msgstr "Výška videa"
 
-msgid "Video Wide"
-msgstr "Širokoúhlé"
+msgid "Widescreen"
+msgstr ""
 
 msgid "Video Width"
 msgstr "Šířka videa"
@@ -1774,7 +1780,7 @@ msgstr "Hlasitost"
 msgid "Volume Control"
 msgstr "Hlasitost"
 
-msgid "Vpid"
+msgid "Video PID (VPID)"
 msgstr ""
 
 msgid "W"
@@ -2030,3 +2036,21 @@ msgstr "špatný typ souboru"
 
 msgid "zap"
 msgstr "přepnout"
+
+#~ msgid "Recording Status"
+#~ msgstr "Stav nahrávání"
+
+#~ msgid "Tuner Bit Error Rate BER"
+#~ msgstr "Bitová chyba signálu BER"
+
+#~ msgid "Tuner Signal Power AGC"
+#~ msgstr "Síla signálu AGC"
+
+#~ msgid "Tuner Signal Quality SNR"
+#~ msgstr "Kvalita signálu SNR"
+
+#~ msgid "Tuner Signal Quality SNR_DB"
+#~ msgstr "Kvalita signálu SNR_DB"
+
+#~ msgid "Video Wide"
+#~ msgstr "Širokoúhlé"

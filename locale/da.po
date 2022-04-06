@@ -175,8 +175,11 @@ msgstr ""
 msgid "Any service/recording"
 msgstr "Enhver kanal/optagelse"
 
-msgid "Apid"
-msgstr "APID"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
 
 msgid "April"
 msgstr "April"
@@ -1079,8 +1082,8 @@ msgstr "På alle kanaler"
 msgid "On same service"
 msgstr "På samme kanal"
 
-msgid "Onid"
-msgstr "ONID"
+msgid "ONID"
+msgstr ""
 
 msgid "Only match between dates"
 msgstr "Begræns til begivenheder på bestemte datoer"
@@ -1134,8 +1137,8 @@ msgstr "Forældrekontrol ikke aktiveret."
 msgid "Parse AutoTimer"
 msgstr "Analyser AutoTimer"
 
-msgid "Pcrpid"
-msgstr "PCRPID"
+msgid "PCR PID"
+msgstr ""
 
 msgid "PiP"
 msgstr "PiP"
@@ -1161,8 +1164,8 @@ msgstr "Afspilningsliste"
 msgid "Playlist format"
 msgstr "Afspilningsliste format"
 
-msgid "Pmtpid"
-msgstr "PMTPID"
+msgid "PMT PID"
+msgstr ""
 
 msgid "Power Control"
 msgstr "Strømstyring"
@@ -1197,8 +1200,8 @@ msgstr "Genstart boksen"
 msgid "Record a maximum of # times"
 msgstr "Optag maksimalt X gange"
 
-msgid "Recording Status"
-msgstr "Optagelsesstatus"
+msgid "Recording"
+msgstr ""
 
 #, fuzzy
 msgid "Recording Type"
@@ -1435,8 +1438,8 @@ msgstr "Vis tjenestetype i kanalliste"
 msgid "Shutdown"
 msgstr "Luk ned"
 
-msgid "Sid"
-msgstr "SID"
+msgid "Service ID (SID)"
+msgstr ""
 
 msgid "Simulate"
 msgstr "Simuler"
@@ -1475,8 +1478,8 @@ msgstr ""
 msgid "Spinner"
 msgstr "Snurretop"
 
-msgid "Sref"
-msgstr "Sref"
+msgid "SRef"
+msgstr ""
 
 msgid "Standby"
 msgstr "Standby"
@@ -1546,6 +1549,9 @@ msgstr "Etiketter"
 
 msgid "Teletext"
 msgstr "Tekst-TV"
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Fjernsyn"
@@ -1671,8 +1677,8 @@ msgstr "Oversættelse til Spansk"
 msgid "Try guessing"
 msgstr "Forsøg at gætte"
 
-msgid "Tsid"
-msgstr "TSID"
+msgid "TSID"
+msgstr ""
 
 msgid "Tu"
 msgstr "Ti"
@@ -1683,8 +1689,8 @@ msgstr "Tir"
 msgid "Tuesday"
 msgstr "Tirsdag"
 
-msgid "Tuner Bit Error Rate BER"
-msgstr "Tunerens Bitfejl hastighed BER"
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Tuner Number"
 msgstr "Tuner nummer"
@@ -1692,14 +1698,14 @@ msgstr "Tuner nummer"
 msgid "Tuner Signal"
 msgstr "Tuner signal"
 
-msgid "Tuner Signal Power AGC"
-msgstr "Tuner AGC signalstyrke"
+msgid "Signal Power (AGC)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR"
-msgstr "Tuner SNR signalkvalitet"
+msgid "Signal Quality (SNR)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR_DB"
-msgstr "Tuner SNR_DB signalkvalitet"
+msgid "Signal Quality (SNR DB)"
+msgstr ""
 
 msgid "Tuner Type"
 msgstr "Tunertype"
@@ -1786,8 +1792,8 @@ msgstr "Video"
 msgid "Video Height"
 msgstr "Video højde"
 
-msgid "Video Wide"
-msgstr "Bredformat video"
+msgid "Widescreen"
+msgstr ""
 
 msgid "Video Width"
 msgstr "Video bredde"
@@ -1801,8 +1807,8 @@ msgstr "Lydstyrke"
 msgid "Volume Control"
 msgstr "Lydstyrkekontrol"
 
-msgid "Vpid"
-msgstr "VPID"
+msgid "Video PID (VPID)"
+msgstr ""
 
 msgid "W"
 msgstr "V"
@@ -2066,3 +2072,45 @@ msgstr "forkert filtype"
 
 msgid "zap"
 msgstr "Zap"
+
+#~ msgid "Apid"
+#~ msgstr "APID"
+
+#~ msgid "Onid"
+#~ msgstr "ONID"
+
+#~ msgid "Pcrpid"
+#~ msgstr "PCRPID"
+
+#~ msgid "Pmtpid"
+#~ msgstr "PMTPID"
+
+#~ msgid "Recording Status"
+#~ msgstr "Optagelsesstatus"
+
+#~ msgid "Sid"
+#~ msgstr "SID"
+
+#~ msgid "Sref"
+#~ msgstr "Sref"
+
+#~ msgid "Tsid"
+#~ msgstr "TSID"
+
+#~ msgid "Tuner Bit Error Rate BER"
+#~ msgstr "Tunerens Bitfejl hastighed BER"
+
+#~ msgid "Tuner Signal Power AGC"
+#~ msgstr "Tuner AGC signalstyrke"
+
+#~ msgid "Tuner Signal Quality SNR"
+#~ msgstr "Tuner SNR signalkvalitet"
+
+#~ msgid "Tuner Signal Quality SNR_DB"
+#~ msgstr "Tuner SNR_DB signalkvalitet"
+
+#~ msgid "Video Wide"
+#~ msgstr "Bredformat video"
+
+#~ msgid "Vpid"
+#~ msgstr "VPID"

@@ -176,8 +176,11 @@ msgstr ""
 msgid "Any service/recording"
 msgstr "Qualquer serviço/a gravar"
 
-msgid "Apid"
-msgstr "Apid"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
 
 msgid "April"
 msgstr "Abril"
@@ -1091,8 +1094,8 @@ msgstr "Em qualquer serviço"
 msgid "On same service"
 msgstr "No mesmo serviço"
 
-msgid "Onid"
-msgstr "Onid"
+msgid "ONID"
+msgstr ""
 
 msgid "Only match between dates"
 msgstr "Restrito a eventos em certas datas"
@@ -1146,8 +1149,8 @@ msgstr "Controlo paternal não está ativo."
 msgid "Parse AutoTimer"
 msgstr "Analisar Autotimer"
 
-msgid "Pcrpid"
-msgstr "Pcrpid"
+msgid "PCR PID"
+msgstr ""
 
 msgid "PiP"
 msgstr ""
@@ -1174,8 +1177,8 @@ msgstr "Lista de Reprodução"
 msgid "Playlist format"
 msgstr "Lista de Reprodução"
 
-msgid "Pmtpid"
-msgstr "Pmtpid"
+msgid "PMT PID"
+msgstr ""
 
 msgid "Power Control"
 msgstr "Controlo da alimentação"
@@ -1210,8 +1213,8 @@ msgstr "Reiniciar STB"
 msgid "Record a maximum of # times"
 msgstr "Gravar um máximo de x vezes"
 
-msgid "Recording Status"
-msgstr "Estado das Gravações"
+msgid "Recording"
+msgstr ""
 
 #, fuzzy
 msgid "Recording Type"
@@ -1449,8 +1452,8 @@ msgstr "Mostrar Picon na Lista de Canais"
 msgid "Shutdown"
 msgstr "Desligar"
 
-msgid "Sid"
-msgstr "Sid"
+msgid "Service ID (SID)"
+msgstr ""
 
 msgid "Simulate"
 msgstr "Simular"
@@ -1489,8 +1492,8 @@ msgstr ""
 msgid "Spinner"
 msgstr "Spinner"
 
-msgid "Sref"
-msgstr "Sref"
+msgid "SRef"
+msgstr ""
 
 msgid "Standby"
 msgstr "Repouso"
@@ -1562,6 +1565,9 @@ msgstr "Etiquetas"
 
 msgid "Teletext"
 msgstr "Teletexto"
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Televisão"
@@ -1687,8 +1693,8 @@ msgstr "Tradução para Espanhol"
 msgid "Try guessing"
 msgstr "Tentar adivinhar"
 
-msgid "Tsid"
-msgstr "Tsid"
+msgid "TSID"
+msgstr ""
 
 msgid "Tu"
 msgstr "Ter"
@@ -1699,8 +1705,8 @@ msgstr "Ter"
 msgid "Tuesday"
 msgstr "Terça-Feira"
 
-msgid "Tuner Bit Error Rate BER"
-msgstr "Tuner Bit Erro Rate BER"
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Tuner Number"
 msgstr "Tuner Número"
@@ -1708,14 +1714,14 @@ msgstr "Tuner Número"
 msgid "Tuner Signal"
 msgstr "Sinal do Tuner"
 
-msgid "Tuner Signal Power AGC"
-msgstr "Sinal do Tuner AGC"
+msgid "Signal Power (AGC)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR"
-msgstr "Tuner Qualidade do Sinal SNR"
+msgid "Signal Quality (SNR)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR_DB"
-msgstr "Tuner Qualidade do Sinal SNR_DB"
+msgid "Signal Quality (SNR DB)"
+msgstr ""
 
 msgid "Tuner Type"
 msgstr "Tipo de Tuner"
@@ -1805,8 +1811,8 @@ msgstr " Vídeo"
 msgid "Video Height"
 msgstr "Altura do Vídeo"
 
-msgid "Video Wide"
-msgstr "Vídeo Amplo"
+msgid "Widescreen"
+msgstr ""
 
 msgid "Video Width"
 msgstr "Largura do Vídeo"
@@ -1820,8 +1826,8 @@ msgstr "Volume"
 msgid "Volume Control"
 msgstr "Controlo do Volume"
 
-msgid "Vpid"
-msgstr "Vpid"
+msgid "Video PID (VPID)"
+msgstr ""
 
 msgid "W"
 msgstr "O"
@@ -2085,3 +2091,45 @@ msgstr "tipo de ficheiro errado"
 
 msgid "zap"
 msgstr "zap"
+
+#~ msgid "Apid"
+#~ msgstr "Apid"
+
+#~ msgid "Onid"
+#~ msgstr "Onid"
+
+#~ msgid "Pcrpid"
+#~ msgstr "Pcrpid"
+
+#~ msgid "Pmtpid"
+#~ msgstr "Pmtpid"
+
+#~ msgid "Recording Status"
+#~ msgstr "Estado das Gravações"
+
+#~ msgid "Sid"
+#~ msgstr "Sid"
+
+#~ msgid "Sref"
+#~ msgstr "Sref"
+
+#~ msgid "Tsid"
+#~ msgstr "Tsid"
+
+#~ msgid "Tuner Bit Error Rate BER"
+#~ msgstr "Tuner Bit Erro Rate BER"
+
+#~ msgid "Tuner Signal Power AGC"
+#~ msgstr "Sinal do Tuner AGC"
+
+#~ msgid "Tuner Signal Quality SNR"
+#~ msgstr "Tuner Qualidade do Sinal SNR"
+
+#~ msgid "Tuner Signal Quality SNR_DB"
+#~ msgstr "Tuner Qualidade do Sinal SNR_DB"
+
+#~ msgid "Video Wide"
+#~ msgstr "Vídeo Amplo"
+
+#~ msgid "Vpid"
+#~ msgstr "Vpid"

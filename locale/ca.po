@@ -177,7 +177,10 @@ msgstr ""
 msgid "Any service/recording"
 msgstr "Qualsevol servei/gravació"
 
-msgid "Apid"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
 msgstr ""
 
 msgid "April"
@@ -1091,7 +1094,7 @@ msgstr "En qualsevol servei"
 msgid "On same service"
 msgstr "En el mateix servei"
 
-msgid "Onid"
+msgid "ONID"
 msgstr ""
 
 msgid "Only match between dates"
@@ -1146,7 +1149,7 @@ msgstr "Control parental no està activat."
 msgid "Parse AutoTimer"
 msgstr "Analitzar Autotimer"
 
-msgid "Pcrpid"
+msgid "PCR PID"
 msgstr ""
 
 msgid "PiP"
@@ -1174,7 +1177,7 @@ msgstr "Llista de reproducció"
 msgid "Playlist format"
 msgstr "Llista de reproducció"
 
-msgid "Pmtpid"
+msgid "PMT PID"
 msgstr ""
 
 msgid "Power Control"
@@ -1210,8 +1213,8 @@ msgstr "Reiniciar Deco"
 msgid "Record a maximum of # times"
 msgstr "Gravar un màxim de x vegades"
 
-msgid "Recording Status"
-msgstr "Estat de Gravació"
+msgid "Recording"
+msgstr ""
 
 #, fuzzy
 msgid "Recording Type"
@@ -1449,7 +1452,7 @@ msgstr "Mostar Picon en llista de canals"
 msgid "Shutdown"
 msgstr "Apagar"
 
-msgid "Sid"
+msgid "Service ID (SID)"
 msgstr ""
 
 msgid "Simulate"
@@ -1489,7 +1492,7 @@ msgstr ""
 msgid "Spinner"
 msgstr ""
 
-msgid "Sref"
+msgid "SRef"
 msgstr ""
 
 msgid "Standby"
@@ -1562,6 +1565,9 @@ msgstr "Etiquetes"
 
 msgid "Teletext"
 msgstr "Teletext"
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "Televisió"
@@ -1687,7 +1693,7 @@ msgstr "Traducció a l'espanyol"
 msgid "Try guessing"
 msgstr "Tractar d'encertar"
 
-msgid "Tsid"
+msgid "TSID"
 msgstr ""
 
 msgid "Tu"
@@ -1699,8 +1705,8 @@ msgstr "Dim"
 msgid "Tuesday"
 msgstr "Dimarts"
 
-msgid "Tuner Bit Error Rate BER"
-msgstr "Bit de taxa d'error (BER) del sintonitzador"
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Tuner Number"
 msgstr "Número de sintonitzador"
@@ -1708,14 +1714,14 @@ msgstr "Número de sintonitzador"
 msgid "Tuner Signal"
 msgstr "Senyal del sintonitzador"
 
-msgid "Tuner Signal Power AGC"
-msgstr "Potència de senyal del sintonitzador AGC"
+msgid "Signal Power (AGC)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR"
-msgstr "Qualitat de senyal del sintonitzador SNR"
+msgid "Signal Quality (SNR)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR_DB"
-msgstr "Qualitat de senyal del sintonitzador SNR DB"
+msgid "Signal Quality (SNR DB)"
+msgstr ""
 
 msgid "Tuner Type"
 msgstr "Tipus de sintonitzador"
@@ -1805,8 +1811,8 @@ msgstr "Vídeo"
 msgid "Video Height"
 msgstr "Altura de vídeo"
 
-msgid "Video Wide"
-msgstr "Vídeo ample"
+msgid "Widescreen"
+msgstr ""
 
 msgid "Video Width"
 msgstr "Ample de Video"
@@ -1820,7 +1826,7 @@ msgstr "Volum"
 msgid "Volume Control"
 msgstr "Control de volum"
 
-msgid "Vpid"
+msgid "Video PID (VPID)"
 msgstr ""
 
 msgid "W"
@@ -2085,3 +2091,21 @@ msgstr "Tipus d'arxiu erroni"
 
 msgid "zap"
 msgstr "canviar"
+
+#~ msgid "Recording Status"
+#~ msgstr "Estat de Gravació"
+
+#~ msgid "Tuner Bit Error Rate BER"
+#~ msgstr "Bit de taxa d'error (BER) del sintonitzador"
+
+#~ msgid "Tuner Signal Power AGC"
+#~ msgstr "Potència de senyal del sintonitzador AGC"
+
+#~ msgid "Tuner Signal Quality SNR"
+#~ msgstr "Qualitat de senyal del sintonitzador SNR"
+
+#~ msgid "Tuner Signal Quality SNR_DB"
+#~ msgstr "Qualitat de senyal del sintonitzador SNR DB"
+
+#~ msgid "Video Wide"
+#~ msgstr "Vídeo ample"

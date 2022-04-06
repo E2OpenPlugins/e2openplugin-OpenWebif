@@ -176,7 +176,10 @@ msgstr ""
 msgid "Any service/recording"
 msgstr "Будь який сервіс/запись"
 
-msgid "Apid"
+msgid "Audio"
+msgstr ""
+
+msgid "Audio PID (APID)"
 msgstr ""
 
 msgid "April"
@@ -1085,7 +1088,7 @@ msgstr "Для будь-якого каналу"
 msgid "On same service"
 msgstr "Для цього каналу"
 
-msgid "Onid"
+msgid "ONID"
 msgstr ""
 
 msgid "Only match between dates"
@@ -1140,7 +1143,7 @@ msgstr "Батьківський контроль не активований."
 msgid "Parse AutoTimer"
 msgstr "Пошук Автотаймера"
 
-msgid "Pcrpid"
+msgid "PCR PID"
 msgstr ""
 
 msgid "PiP"
@@ -1168,7 +1171,7 @@ msgstr "Плейлист"
 msgid "Playlist format"
 msgstr "Плейлист"
 
-msgid "Pmtpid"
+msgid "PMT PID"
 msgstr ""
 
 msgid "Power Control"
@@ -1204,8 +1207,8 @@ msgstr "Перезавантажити ресивер"
 msgid "Record a maximum of # times"
 msgstr "Записати максимум x разів"
 
-msgid "Recording Status"
-msgstr "Статус запису"
+msgid "Recording"
+msgstr ""
 
 #, fuzzy
 msgid "Recording Type"
@@ -1443,7 +1446,7 @@ msgstr "Показати тип каналу в списку каналів"
 msgid "Shutdown"
 msgstr "Вимкнути"
 
-msgid "Sid"
+msgid "Service ID (SID)"
 msgstr ""
 
 msgid "Simulate"
@@ -1483,7 +1486,7 @@ msgstr ""
 msgid "Spinner"
 msgstr "Спінер"
 
-msgid "Sref"
+msgid "SRef"
 msgstr ""
 
 msgid "Standby"
@@ -1556,6 +1559,9 @@ msgstr "Теги"
 
 msgid "Teletext"
 msgstr "Телетекст"
+
+msgid "Teletext PID"
+msgstr "Teletext PID"
 
 msgid "Television"
 msgstr "ТВ канали"
@@ -1681,7 +1687,7 @@ msgstr "Переклад на іспанський"
 msgid "Try guessing"
 msgstr "Сбробувати визначити"
 
-msgid "Tsid"
+msgid "TSID"
 msgstr ""
 
 msgid "Tu"
@@ -1693,8 +1699,8 @@ msgstr "Вівт"
 msgid "Tuesday"
 msgstr "Вівторок"
 
-msgid "Tuner Bit Error Rate BER"
-msgstr "BER тюнера"
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Tuner Number"
 msgstr "Номер тюнера"
@@ -1702,14 +1708,14 @@ msgstr "Номер тюнера"
 msgid "Tuner Signal"
 msgstr "Сигнал тюнера"
 
-msgid "Tuner Signal Power AGC"
-msgstr "Рівень сигналу тюнера (AGC)"
+msgid "Signal Power (AGC)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR"
-msgstr "Якість сигналу тюнера (SNR)"
+msgid "Signal Quality (SNR)"
+msgstr ""
 
-msgid "Tuner Signal Quality SNR_DB"
-msgstr "Якість сигналу тюнера (SNR) у дБ"
+msgid "Signal Quality (SNR DB)"
+msgstr ""
 
 msgid "Tuner Type"
 msgstr "Тип тюнера"
@@ -1798,8 +1804,8 @@ msgstr "Відео"
 msgid "Video Height"
 msgstr "Висота відео"
 
-msgid "Video Wide"
-msgstr "Розмір відео"
+msgid "Widescreen"
+msgstr ""
 
 msgid "Video Width"
 msgstr "Ширина відео"
@@ -1813,7 +1819,7 @@ msgstr "Гучність"
 msgid "Volume Control"
 msgstr "Контроль гучності"
 
-msgid "Vpid"
+msgid "Video PID (VPID)"
 msgstr ""
 
 msgid "W"
@@ -2076,3 +2082,21 @@ msgstr "невірний тип файлу"
 
 msgid "zap"
 msgstr "переключити"
+
+#~ msgid "Recording Status"
+#~ msgstr "Статус запису"
+
+#~ msgid "Tuner Bit Error Rate BER"
+#~ msgstr "BER тюнера"
+
+#~ msgid "Tuner Signal Power AGC"
+#~ msgstr "Рівень сигналу тюнера (AGC)"
+
+#~ msgid "Tuner Signal Quality SNR"
+#~ msgstr "Якість сигналу тюнера (SNR)"
+
+#~ msgid "Tuner Signal Quality SNR_DB"
+#~ msgstr "Якість сигналу тюнера (SNR) у дБ"
+
+#~ msgid "Video Wide"
+#~ msgstr "Розмір відео"
