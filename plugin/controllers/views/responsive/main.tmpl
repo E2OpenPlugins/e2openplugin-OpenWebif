@@ -277,6 +277,15 @@
 											<button type="button" onclick="pressMenuRemote('392');" title="Audio" class="remote__button icon"><i class="material-icons">audiotrack</i></button>
 										</section>
 									</li>
+									#if $textinputsupport == True
+									<li class="align-center">
+										<!-- TODO: don't reset input if send fails -->
+										<form onsubmit="var el = this.elements['keyboardText']; owif.api.sendKeyboardText(el.value); el.value = ''; return false;" style="display:flex; max-width:150px; margin:1em auto 0;">
+											<input type="text" name="keyboardText" value="" placeholder="Enter text"><!-- TODO: i10n -->
+											<input type="submit" value="Send" style="margin-left:1ex;"><!-- TODO: i10n -->
+										</form>
+									</li>
+									#end if
 									<li class="align-center">
 										<span data-toggle="collapse" data-target="#rcuplayerkeys" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer;" title="Show more buttons"><i class="material-icons material-icons-centered">arrow_drop_down</i></span>
 									</li>
