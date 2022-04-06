@@ -1,202 +1,229 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 
+#def outputLabelAndValue(item)
+<dl style="padding: 0; margin: 0 0 10px;">
+  <dt style="display: inline-block; opacity: 0.8;">$item[0]</dt>
+  <dd style="display: inline-block; margin-left: 0.8ex;">$item[1]</dd>
+</dl>
+#end def
+
 <div class="row clearfix m-r-15 m-l-15">
-	<div class="col-xs-12">
-		<div class="card">
-			<div class="header">
-				<div class="row clearfix">
-					<div class="col-xs-7">
-						<h2>
-							<i class="material-icons material-icons-centered">info_outline</i>$info.name 
-							<a href="web/stream.m3u?ref=$info.ref&name=$info.name" class="link--skinned m-l-5" title="$tstrings['stream'] $getVar('now.title', '') from $info.name"><i class="material-icons material-icons-centered">ondemand_video</i></a>
-							<a href="javascript:void(0);" onclick="open_epg_dialog('$info.ref','$info.name');" class="link--skinned" data-toggle="modal" data-target="#EPGModal" title="$tstrings['show_epg_for'] $info.name"><i class="material-icons material-icons-centered">view_list</i></a>
-						</h2>
-					</div>
-					<div class="col-xs-5 align-right">
-						<h2>$info.date</h2>
-					</div>
-				</div>
-			</div>
-			<div class="body">
-				<div class="row clearfix">
-					<div class="col-xs-12 col-md-3">
-						<img width="100px" height="60px" src='$getVar("info.picon", "images/default_picon.png")'>
-					</div>
-					<div class="col-xs-12 col-md-6">
-						<div class="row clearfix" >
-							<div class="col-xs-3">
-								<span><b>$getVar("now.begin", " ") - $getVar("now.end", " ")</b></span>
-							</div>
-							<div class="col-xs-6">
-								<span><b>$getVar("now.title", " ")</b></span>
-							</div>
-							<div class="col-xs-3 align-right">
-								<span><b>+$getVar("now.tleft", " ") min</b></span>
-							</div>
-						</div>
-						<div class="row clearfix">
-							<div class="col-xs-12" style="margin-bottom:-20px;margin-top:-15px;">
-								<div class="progress progress-striped" style="height:10px;">
-									#set $sz=$getVar("now.progress", 0)/400.0*100.0
-									<div class="progress-bar bg--skinned" role="progressbar" aria-valuenow="$sz" aria-valuemin="0" aria-valuemax="100" style="width:$sz%;margin:0px"></div>
-								</div>
-							</div>
-						</div>
-						<div class="row clearfix">
-							<div class="col-xs-3">
-								<span>$getVar("next.begin", " ") - $getVar("next.end", " ")</span>
-							</div>
-							<div class="col-xs-6">
-								<span>$getVar("next.title", " ")</span>
-							</div>
-							<div class="col-xs-3 align-right">
-								<span>$getVar("next.duration", " ") min</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-12 col-md-3 align-right">
-						<div class="row clearfix">
-							<div class="col-xs-12" style="margin-bottom:0px;margin-top:0px;">
-								<span>
+  <div class="col-xs-12">
+    <div class="card">
+      <div class="header">
+        <div class="row clearfix">
+          <div class="col-xs-7">
+            <h2>
+              <i class="material-icons material-icons-centered">info_outline</i>$info.name
+              <a href="web/stream.m3u?ref=$info.ref&name=$info.name" class="link--skinned m-l-5" title="$tstrings['stream'] $getVar('now.title', '') from $info.name"><i class="material-icons material-icons-centered">ondemand_video</i></a>
+              <a href="javascript:void(0);" onclick="open_epg_dialog('$info.ref','$info.name');" class="link--skinned" data-toggle="modal" data-target="#EPGModal" title="$tstrings['show_epg_for'] $info.name"><i class="material-icons material-icons-centered">view_list</i></a>
+            </h2>
+          </div>
+          <div class="col-xs-5 align-right">
+            <h2>$info.date</h2>
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="row clearfix">
+          <div class="col-xs-12 col-md-3">
+            <img width="100px" src='$getVar("info.picon", "images/default_picon.png")'>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <div class="row clearfix" >
+              <div class="col-xs-3">
+                <span><b>$getVar("now.begin", " ") - $getVar("now.end", " ")</b></span>
+              </div>
+              <div class="col-xs-6">
+                <span><b>$getVar("now.title", " ")</b></span>
+              </div>
+              <div class="col-xs-3 align-right">
+                <span><b>+$getVar("now.tleft", " ") min</b></span>
+              </div>
+            </div>
+            <div class="row clearfix">
+              <div class="col-xs-12" style="margin-bottom:-20px;margin-top:-15px;">
+                <div class="progress progress-striped" style="height:10px;">
+                  #set $sz=$getVar("now.progress", 0)/400.0*100.0
+                  <div class="progress-bar bg--skinned" role="progressbar" aria-valuenow="$sz" aria-valuemin="0" aria-valuemax="100" style="width:$sz%;margin:0px"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row clearfix">
+              <div class="col-xs-3">
+                <span>$getVar("next.begin", " ") - $getVar("next.end", " ")</span>
+              </div>
+              <div class="col-xs-6">
+                <span>$getVar("next.title", " ")</span>
+              </div>
+              <div class="col-xs-3 align-right">
+                <span>$getVar("next.duration", " ") min</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-3 align-right">
+            <div class="row clearfix">
+              <div class="col-xs-12" style="margin-bottom:0px;margin-top:0px;">
+                <span>
 #set $tnum = 0
 #for $tuner in $info.tuners
-	#if $info.tunernumber == $tnum
-									<span style="color:green;"><b>$tuner</b></span>
-	#else
-									<span>$tuner</span>
-	#end if
-	#set $tnum = $tnum + 1
+  #if $info.tunernumber == $tnum
+                  <span style="color:green;"><b>$tuner</b></span>
+  #else
+                  <span>$tuner</span>
+  #end if
+  #set $tnum = $tnum + 1
 #end for
-								</span>
-							</div>
-						</div>
-						<div class="row clearfix">
-							<div class="col-xs-12" style="margin-bottom:0px;margin-top:0px;">
-								<span>
-									$getVar("info.tunertype", " ")
-								</span>
-							</div>
-						</div>
-						<div class="row clearfix">
-							<div class="col-xs-12" style="margin-bottom:0px;margin-top:0px;">
-								<span>
-									$info.width x $info.height
-								</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row clearfix">
-					<div class="col-xs-12" style="margin-bottom:0px;margin-top:0px;">
-						<span>
-							<b>$tstrings['description']:</b> $getVar("now.shortdesc", " ")<br/>$getVar("now.longdesc", " ").replace("\n","<br/>").replace(u"\u008a","<br/>")
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="row clearfix m-r-15 m-l-15">
-	<div class="col-xs-12 col-sm-6 col-md-4">
-		<div class="card">
-			<div class="body">
-				<div class="row clearfix">
-					<div class="col-xs-12">
-						<p><b>$tstrings['tuner_type']:</b> $getVar("info.tunertype", "N/A")</p>
-						<p><b>$tstrings['tuner_number']:</b> $getVar("info.tunernumber", "N/A")</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-xs-12 col-sm-6 col-md-4">
-		<div class="card">
-			<div class="body">
-				<div class="row clearfix">
-					<div class="col-xs-6">
-						<p><b>$tstrings['tuner_signal_snr']:</b> $getVar("info.snr", "N/A")%</p>
-						<p><b>$tstrings['tuner_signal_agc']:</b> $getVar("info.agc", "N/A")%</p>
-					</div>
-					<div class="col-xs-6">
-						#set $snr =  $getVar("info.snr", "0")
-						#set $agc =  $getVar("info.agc", "0")
-						<div class="progress" style="height:10px;max-width:150px;margin-top:5px;">
-							<div class="progress-bar bg--skinned" role="progressbar" aria-valuenow="$snr" aria-valuemin="0" aria-valuemax="100" style="width:$snr%;margin:0px"></div>
-						</div>
-						<div class="progress" style="height:10px;max-width:150px;margin-bottom:-5px;">
-							<div class="progress-bar bg--skinned" role="progressbar" aria-valuenow="$agc" aria-valuemin="0" aria-valuemax="100" style="width:$agc%;margin:0px"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-xs-12 col-sm-6 col-md-4">
-		<div class="card">
-			<div class="body">
-				<div class="row clearfix">
-					<div class="col-xs-12">
-						<p><b>$tstrings['tuner_signal_snr_db']:</b> $getVar("info.snr_db", "N/A")</p>
-						<p><b>$tstrings['tuner_ber']:</b> $getVar("info.ber", "N/A")</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                </span>
+              </div>
+            </div>
+            <div class="row clearfix">
+              <div class="col-xs-12" style="margin-bottom:0px;margin-top:0px;">
+                <span>
+                  $getVar("info.tunertype", " ")
+                </span>
+              </div>
+            </div>
+            <div class="row clearfix">
+              <div class="col-xs-12" style="margin-bottom:0px;margin-top:0px;">
+                <span>
+                  $info.width x $info.height
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row clearfix">
+          <div class="col-xs-12" style="margin-bottom:0px;margin-top:0px;">
+            <span>
+              <b>$tstrings['description']:</b> $getVar("now.shortdesc", " ")<br/>$getVar("now.longdesc", " ").replace("\n","<br/>").replace(u"\u008a","<br/>")
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-
 <div class="row clearfix m-r-15 m-l-15">
-	<div class="col-xs-12 col-sm-6 col-md-4">
-		<div class="card">
-			<div class="body">
-				<div class="row clearfix">
-					<div class="col-xs-12">
-						<p><b>$tstrings['name']:</b> $info.name</p>
-						<p><b>$tstrings['video_width']:</b> $info.width</p>
-						<p><b>$tstrings['encrypted']:</b> $info.crypt</p>
-						<p><b>$tstrings['teletext']:</b> $info.txtpid</p>
-						<p><b>$tstrings['a_pid']:</b> $info.apid</p>
-						<p><b>$tstrings['ts_id']:</b> $info.tsid</p>
-						<p><b>$tstrings['s_ref']:</b> $info.sref</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-xs-12 col-sm-6 col-md-4">
-		<div class="card">
-			<div class="body">
-				<div class="row clearfix">
-					<div class="col-xs-12">
-						<p><b>$tstrings['provider']:</b> $info.provider</p>
-						<p><b>$tstrings['video_height']:</b> $info.height</p>
-						<p><b>$tstrings['dolby']:</b> $info.dolby</p>
-						<p><b>$tstrings['rec_status']:</b> $info.rec_state</p>
-						<p><b>$tstrings['v_pid']:</b> $info.vpid</p>
-						<p><b>$tstrings['on_id']:</b> $info.onid</p>
-						<p>$getVar("info.srefv2", "")</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-xs-12 col-sm-6 col-md-4">
-		<div class="card">
-			<div class="body">
-				<div class="row clearfix">
-					<div class="col-xs-12">
-						<p><b>$tstrings['namespace']:</b> $info.namespace</p>
-						<p><b>$tstrings['video_wide']:</b> $info.wide</p>
-						<p><b>$tstrings['subservices']:</b> $info.subs</p>
-						<p><b>$tstrings['pmt_pid']:</b> $info.pmtpid</p>
-						<p><b>$tstrings['pcr_pid']:</b> $info.pcrpid</p>
-						<p><b>$tstrings['s_id']:</b> $info.sid</p>
-						<p><b>$tstrings['s_orb']:</b> $getVar("info.orbital_position", "N/A")</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="card">
+      <div class="body">
+        <div class="row clearfix">
+          <div class="col-xs-12">
+#set $sref_norm = $getVar("info.sref", "").replace("_", ":")
+#for $item in [
+                [$tstrings['name'], $info.name],
+                [$tstrings['video_width'], $info.width],
+                [$tstrings['video_height'], $info.height],
+                [$tstrings['video_wide'], $info.wide],
+                [$tstrings['audio_track'], $info.audio_lang],
+                [$tstrings['audio_encoding'], $info.audio_desc],
+                [$tstrings['encrypted'], $info.crypt],
+                [$tstrings['subservices'], $info.subs],
+                [$tstrings['rec_status'], $info.rec_state],
+                ["<abbr title=\"Service Reference\">" + $tstrings['s_ref'] + "</abbr>", $sref_norm]
+              ]
+  #if $item[1] in ["True", 1]
+    #set $item[1] = $tstrings['yes']
+  #else if $item[1] in ["False", 0]
+    #set $item[1] = $tstrings['no']
+  #end if
+  $outputLabelAndValue($item)
+#end for
+#if $info.srefv2 and $info.srefv2[:-1] != $sref_norm
+            <p>$info.srefv2</p><!-- Service reference -->
+#end if
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="card">
+      <div class="body">
+        <div class="row clearfix">
+          <div class="col-xs-12">
+#set $snr = $getVar("info.snr", "0")
+#set $agc = $getVar("info.agc", "0")
+
+#for $item in [
+                [$tstrings['tuner_type'], $getVar("info.tunertype", "N/A")],
+                [$tstrings['tuner_number'], $getVar("info.tunernumber", "N/A")],
+                [$tstrings['tuner_signal_snr_db'], $getVar("info.snr_db", "N/A")]
+              ]
+  $outputLabelAndValue($item)
+#end for
+            <div class="row clearfix">
+              <div class="col-xs-6" style="margin-bottom: 0;">
+#for $item in [
+                [$tstrings['tuner_signal_snr'], "%d%%" % $getVar("info.snr", "N/A")],
+                [$tstrings['tuner_signal_agc'], "%d%%" % $getVar("info.agc", "N/A")]
+              ]
+  $outputLabelAndValue($item)
+#end for
+              </div>
+              <div class="col-xs-6" style="margin-bottom: 0;">
+                <div class="progress" style="height:10px;max-width:150px;margin-top:5px;">
+                  <div class="progress-bar bg--skinned" role="progressbar" aria-valuenow="$snr" aria-valuemin="0" aria-valuemax="100" style="width:$snr%;margin:0px"></div>
+                </div>
+                <div class="progress" style="height:10px;max-width:150px;margin-bottom:-5px;">
+                  <div class="progress-bar bg--skinned" role="progressbar" aria-valuenow="$agc" aria-valuemin="0" aria-valuemax="100" style="width:$agc%;margin:0px"></div>
+                </div>
+              </div>
+            </div>
+#for $item in [
+                [$tstrings['tuner_ber'], $getVar("info.ber", "N/A")]
+              ]
+  $outputLabelAndValue($item)
+#end for
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="card">
+      <div class="body">
+        <div class="row clearfix">
+          <div class="col-xs-12">
+<!--
+  Channel name
+  Provider
+  Videocodec, size & format
+  Service reference
+  Namespace & Orbital pos.
+  TSID
+  ONID
+  Service ID
+  Video PID
+  Audio PID, codec & lang
+  PCR PID
+  PMT PID
+  TXT PID
+
+  DVB Subtitles PID & lang
+  TXT Subtitles page & lang
+-->
+#for $item in [
+                [$tstrings['s_orb'], $getVar("info.orbital_position", "N/A")],
+                [$tstrings['provider'], $info.provider],
+                [$tstrings['namespace'], ("%04x [%d]" % ($info.namespace, $info.namespace))],
+                ["<abbr title=\"MPEG-2 Transport Stream Identifier (DVB SI)\">" + $tstrings['ts_id'] + "</abbr>", ("%04x [%d]" % ($info.tsid, $info.tsid))],
+                ["<abbr title=\"Original Network Identifier (DVB SI)\">" + $tstrings['on_id'] + "</abbr>", ("%04x [%d]" % ($info.onid, $info.onid))],
+                ["<abbr title=\"Service ID\">" + $tstrings['s_id'] + "</abbr>", ("%04x [%d]" % ($info.sid, $info.sid))],
+                ["<abbr title=\"Video Packet IDentifier\">" + $tstrings['v_pid'] + "</abbr>", ("%04x [%d]" % ($info.vpid, $info.vpid))],
+                ["<abbr title=\"Audio Packet IDentifier\">" + $tstrings['a_pid'] + "</abbr>", ("%04x [%d]" % ($info.apid, $info.apid))],
+                ["<abbr title=\"Program Clock Reference Packet IDentifier\">" + $tstrings['pcr_pid'] + "</abbr>", ("%04x [%d]" % ($info.pcrpid, $info.pcrpid))],
+                ["<abbr title=\"Program Map Table Packet IDentifier\">" + $tstrings['pmt_pid'] + "</abbr>", ("%04x [%d]" % ($info.pmtpid, $info.pmtpid))],
+                ["<abbr title=\"Teletext Packet IDentifier\">" + $tstrings['txt_pid'] + "</abbr>", ("%04x [%d]" % ($info.txtpid, $info.txtpid))]
+              ]
+  $outputLabelAndValue($item)
+#end for
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
