@@ -2605,9 +2605,6 @@ msgstr ""
 msgid "minute"
 msgstr ""
 
-msgid "No"
-msgstr ""
-
 #: ../plugin/controllers/i18n.py:180
 msgid "no description available"
 msgstr ""
