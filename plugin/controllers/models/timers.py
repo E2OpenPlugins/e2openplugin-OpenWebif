@@ -869,14 +869,18 @@ def getSleepTimer(session):
 		try:
 			# TODO test OpenPLI and similar
 			active = InfoBar.instance.sleepTimer.isActive()
-			time = config.usage.sleep_timer.value
-			info = getInfo()
-			if info["imagedistro"] not in ('openpli', 'satdreamgr', 'openvision'):
+			if hasattr(config.usage, 'sleepTimer'):
+				time = config.usage.sleepTimer.value
+			if hasattr(config.usage, 'sleep_timer'):
+				time = config.usage.sleep_timer.value
+			action = "shutdown"
+			if hasattr(config.usage, 'sleepTimerAction'):
+				action = config.usage.sleepTimerAction.value
+			if hasattr(config.usage, 'sleep_timer_action'):
 				action = config.usage.sleep_timer_action.value
-				if action == "deepstandby":
-					action = "shutdown"
-			else:
+			if action == "deepstandby":
 				action = "shutdown"
+
 			if time != None and int(time) > 0:
 				try:
 					time = int(int(time) / 60)
@@ -959,34 +963,52 @@ def setSleepTimer(session, time, action, enabled):
 				time = 60
 			# TODO test OpenPLI and similar
 			info = getInfo()
-			if info["imagedistro"] not in ('openpli', 'satdreamgr', 'openvision'):
+			cfgaction = None
+			if hasattr(config.usage, 'sleepTimerAction'):
+				cfgaction = config.usage.sleepTimerAction
+			if hasattr(config.usage, 'sleep_timer_action'):
+				cfgaction = config.usage.sleep_timer_action
+			if cfgaction:
 				if action == "shutdown":
-					config.usage.sleep_timer_action.value = "deepstandby"
+					cfgaction.value = "deepstandby"
 				else:
-					config.usage.sleep_timer_action.value = action
-				config.usage.sleep_timer_action.save()
+					cfgaction.value = action
+				cfgaction.save()
 			active = enabled
 			time = int(time)
-			config.usage.sleep_timer.value = str(time * 60)
-			if config.usage.sleep_timer.value == '0':
-				# find the closest value
-				if info["imagedistro"] in ('openatv'):
-					times = time * 60
-					for val in list(range(900, 14401, 900)):
-						if times == val:
-							break
-						if times < val:
-							time = int(abs(val / 60))
-							break
+			cfgtimer = None
+			if hasattr(config.usage, 'sleepTimer'):
+				cfgtimer = config.usage.sleepTimer
+				if cfgtimer.value == '0':
+					if info["imagedistro"] in ('openatv'):
+						for val in range(15, 241, 15):
+							if time == val:
+								break
+							if time < val:
+								time = int(abs(val / 60))
+								break
+			elif hasattr(config.usage, 'sleep_timer'):
+				cfgtimer = config.usage.sleep_timer
+				if cfgtimer.value == '0':
+					# find the closest value
+					if info["imagedistro"] in ('openatv'):
+						times = time * 60
+						for val in list(range(900, 14401, 900)):
+							if times == val:
+								break
+							if times < val:
+								time = int(abs(val / 60))
+								break
+			if cfgtimer:
+				if active:
+					cfgtimer.value = str(time * 60)
 				else:
-					# use 60 if not valid
-					time = 60
-				config.usage.sleep_timer.value = str(time * 60)
-			config.usage.sleep_timer.save()
-			if enabled:
-				InfoBar.instance.setSleepTimer(time * 60, False)
-			else:
-				InfoBar.instance.setSleepTimer(0, False)
+					cfgtimer.value = '0'
+				cfgtimer.save()
+				if enabled:
+					InfoBar.instance.setSleepTimer(time * 60, False)
+				else:
+					InfoBar.instance.setSleepTimer(0, False)
 			return {
 				"enabled": active,
 				"minutes": time,
