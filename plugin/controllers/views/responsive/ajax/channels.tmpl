@@ -32,10 +32,15 @@
 	#set $isProtected = 'protection' in $channel and $channel.protection != "0"
 
 		<tr id="sref-$channel.ref.replace(':', '_')" class="channel-list__channel">
-	#if '1:64:' in $channel.ref
+	#if $channel.ref.startswith('1:64:')
 			<th colspan="3" class="now-next__header header bg--skinned">
 				<h2 class="bg--skinned">$channelName</h2>
 			</th>
+	#else if $channel.ref.startswith('1:7:')
+			<td colspan="3" class="now-next__header header">
+				<h2><i class="material-icons material-icons-centered">folder</i> $channelName</h2>
+				<small>( Sub-bouquets aren't yet supported )</small>
+			</td>
 	#else
 #if $showPicons and 'picon' in $channel
 	#set $piconHTML = '<img class="img-fluid" src="%s" alt="Channel logo" loading="lazy">' % $channel.picon
