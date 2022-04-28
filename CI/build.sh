@@ -5,7 +5,7 @@
 
 setup_git() {
   git config --global user.email "bot@OpenWebif.com"
-  git config --global user.name "OpenWebif python bot"
+  git config --global user.name "OpenWebif build bot"
 }
 
 commit_files() {
@@ -14,7 +14,10 @@ commit_files() {
   rm -rf *.pyo
   rm -rf *.mo
   git checkout master
+  ./CI/chmod.sh
+  ./CI/dos2unix.sh
   ./CI/PEP8.sh
+  ./CI/npm.sh
 }
 
 upload_files() {

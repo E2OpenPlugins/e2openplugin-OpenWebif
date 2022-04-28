@@ -6,18 +6,18 @@
 		#if 'protection' in $channel
 			#if $channel.protection == "0"
 				#if $type == "radio"
-					<a href="#" onclick="addTimer('','$channel.ref','$channel.name','')" title="$tstrings['add_timer']"><i class="fa fa-clock-o"></i></a>
+					<a href="#" onclick='addTimer("","$channel.ref","$channel.name","")' title="$tstrings['add_timer']"><i class="fa fa-clock-o"></i></a>
 				#end if
 				#if $channel.link != ""
-					<a href="#" onclick="open_epg_dialog('$channel.ref','$channel.name')" title="$tstrings['show_epg_for'] $channel.name"><i class="fa fa-list-alt"></i></a>
+					<a href="#" onclick='open_epg_dialog("$channel.ref","$channel.name")' title="$tstrings['show_epg_for'] $channel.name"><i class="fa fa-list-alt"></i></a>
 					<a target="_blank" href='$channel.link' title="$tstrings['stream'] $channel.name"><i class="fa fa-desktop"></i></a>
 				#else
-					<a href="#" onclick="open_epg_dialog('$channel.ref','$channel.name')" title="$tstrings['show_epg_for'] $channel.name"><i class="fa fa-list-alt"></i></a>
+					<a href="#" onclick='open_epg_dialog("$channel.ref","$channel.name")' title="$tstrings['show_epg_for'] $channel.name"><i class="fa fa-list-alt"></i></a>
 					#if $transcoding
-						<a href="#" onclick="jumper8001('$channel.ref', '$channel.name');" title="$tstrings['stream']: $channel.name"><i class="fa fa-desktop"></i></a>
-						<a href="#" onclick="jumper8002('$channel.ref', '$channel.name');" title="$tstrings['stream'] ($tstrings['transcoded']): $channel.name"><i class="fa fa-mobile"></i></a>
+						<a href="#" onclick='jumper8001("$channel.ref", "$channel.name");' title="$tstrings['stream']: $channel.name"><i class="fa fa-desktop"></i></a>
+						<a href="#" onclick='jumper8002("$channel.ref", "$channel.name");' title="$tstrings['stream'] ($tstrings['transcoded']): $channel.name"><i class="fa fa-mobile"></i></a>
 					#else
-						<a target="_blank" href='web/stream.m3u?ref=$channel.ref&name=$channel.name&fname=$channel.name' title="$tstrings['stream'] $channel.name"><i class="fa fa-desktop"></i></a>
+						<a target="_blank" href="web/stream.m3u?ref=$channel.ref&name=$channel.name&fname=$channel.name" title="$tstrings['stream'] $channel.name"><i class="fa fa-desktop"></i></a>
 					#end if
 				#end if
 			#else
@@ -27,11 +27,10 @@
 		</div>
 
 		<div class="b">
-			#set $name =  $channel.name.replace("'", r"\'")
 			<span class="channel-name">
 			#if 'protection' in $channel
 				#if $channel.protection == "0"
-					<a href="#" onclick="zapChannel('$channel.ref', '$name'); return false" title="$tstrings['zap_to'] $channel.name">$channel.name</a>
+					<a href="#" onclick='zapChannel("$channel.ref", "$channel.name"); return false' title="$tstrings['zap_to'] $channel.name">$channel.name</a>
 				#else
 					<a href="#" onclick="return false" title="$tstrings['locked']">$channel.name</a>
 				#end if

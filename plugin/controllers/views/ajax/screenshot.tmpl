@@ -15,15 +15,25 @@
 			</span>
 		</div>
 		<div class="screenshotContainer">
-			<img id="screenshotimage" src="" alt="$tstrings['loading'] ..." width="350px">
-			<div id="screenshotspinnerl" style="top: 50%;left: 50%;margin-left: 50px;margin-top: 50px;;position:absolute;font-size:50px">
-				<div id="screenshotspinner" class='fa fa-spin' style="display: none;"></div>
+			<div id="screenshotImageContainer" style="resize: both;overflow: auto;min-height:480px;min-width:720px">
+				<img id="screenshotimage" src="" alt="$tstrings['loading'] ..." width="100%">
+				<div id="screenshotspinnerl" style="top: 50%;left: 50%;margin-left: 50px;margin-top: 50px;;position:absolute;font-size:50px">
+					<div id="screenshotspinner" class='fa fa-spin' style="display: none;"></div>
+				</div>
 			</div>
 		</div>
 		<div id="screenShotRefresh" style="margin-top: 15px; margin-left: auto; margin-right: auto; width: 720px; text-align: center;">
+			#if $high_resolution
+			<input type="checkbox" id="ssr_hd" value="0" checked="checked">$tstrings['high_resolution']
+			#else
 			<input type="checkbox" id="ssr_hd" value="0">$tstrings['high_resolution']
+			#end if
+			#if $refresh_auto
+			<input type="checkbox" id="ssr_s" value="0" checked="checked">$tstrings['refresh_auto']
+			#else
 			<input type="checkbox" id="ssr_s" value="0">$tstrings['refresh_auto']
-			<input type="text" size="2" id="ssr_i" value="30">$tstrings['seconds']
+			#end if
+			<input type="text" size="2" id="ssr_i" value="$refresh_time">$tstrings['seconds']
 			<br>
 			<span id="screenshotrefreshbutton">
 				<button onclick="grabScreenshot('auto'); return false">$tstrings['refresh']</button>
@@ -65,8 +75,24 @@ function buttonsSwitcher(pipval){
 	}
 }
 
+var start = true;
 $(document).ready(function(){
 	buttonsSwitcher(pip);
+	if(start)
+	{
+		start=false;
+		var w = $(".screenshotContainer").width();
+		if(w>1940) {
+			w = 1920;
+		}
+		if(w>1044) {
+			w = 1024;
+		}
+		else {
+			w = 720;
+		}
+		$('#screenshotImageContainer').css('width', w);
+	}
 });
 
 #end raw

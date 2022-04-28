@@ -167,14 +167,16 @@ def getAllInfo():
 				model = procmodel.replace("revo4k", "Revo4K")
 			elif procmodel == "galaxy4k":
 				model = procmodel.replace("galaxy4k", "Galaxy4K")
-		elif (procmodel.startswith("lunix")):
+		elif (procmodel.startswith("lunix") or procmodel.startswith("dual")):
 			brand = "Qviart"
 			if procmodel == "lunix3-4k":
 				model = procmodel.replace("lunix3-4k", "Lunix3-4K")
 			elif procmodel == "lunix":
 				model = procmodel.replace("lunix", "Lunix")
-			if procmodel == "lunix4k":
+			elif procmodel == "lunix4k":
 				model = procmodel.replace("lunix4k", "Lunix4K")
+			elif procmodel == "dual":
+				model = procmodel.replace("dual", "Dual")
 	elif fileExists("/proc/stb/info/azmodel"):
 		brand = "AZBox"
 		f = open("/proc/stb/info/model", 'r')  # To-Do: Check if "model" is really correct ...
@@ -335,6 +337,9 @@ def getAllInfo():
 		elif procmodel == "hd60":
 			brand = "Mut@nt"
 			model = "HD60"
+		elif procmodel == "hd66se":
+			brand = "Mut@nt"
+			model = "HD66se"
 		elif procmodel == "multibox":
 			brand = "MaXytec"
 			model = "Multibox"
@@ -462,19 +467,57 @@ def getAllInfo():
 			brand = "Zgemma"
 			model = "H9.2S"
 			grabpip = 1
-		elif procmodel == "h9 combo":
+		elif procmodel == "h9 combo" or procmodel == "h9combo":
 			procmodel = "h9combo"
 			brand = "Zgemma"
 			model = "H9 Combo"
 			grabpip = 1
-		elif procmodel == "h9 twin":
+		elif procmodel == "h9combose":
+			procmodel = "h9combose"
+			brand = "Zgemma"
+			model = "H9 Combo SE"
+			grabpip = 1
+		elif procmodel == "h9 twin" or procmodel == "h9twin":
 			procmodel = "h9twin"
 			brand = "Zgemma"
 			model = "H9 Twin"
 			grabpip = 1
-		elif procmodel == "h9se.s":
+		elif procmodel == "h9twinse":
+			procmodel = "h9twinse"
 			brand = "Zgemma"
-			model = "H9SE"
+			model = "H9 Twin SE"
+			grabpip = 1
+		elif procmodel == "h9.s.se":
+			brand = "Zgemma"
+			model = "H9.S SE"
+			grabpip = 1
+		elif procmodel == "h9.2s.se":
+			brand = "Zgemma"
+			model = "H9.2S SE"
+			grabpip = 1
+		elif procmodel == "h9.2h.se":
+			brand = "Zgemma"
+			model = "H9.2H SE"
+			grabpip = 1
+		elif procmodel == "h10.t":
+			brand = "Zgemma"
+			model = "H10 Combo"
+			grabpip = 1
+		elif procmodel == "h10.2s":
+			brand = "Zgemma"
+			model = "H10.2S"
+			grabpip = 1
+		elif procmodel == "h10.2h":
+			brand = "Zgemma"
+			model = "H10.2H"
+			grabpip = 1
+		elif procmodel == "h11":
+			brand = "Zgemma"
+			model = "H11"
+			grabpip = 1
+		elif procmodel == "h11.s":
+			brand = "Zgemma"
+			model = "H11.S"
 			grabpip = 1
 		elif procmodel == "vs1500":
 			brand = "Vimastec"
@@ -506,6 +549,12 @@ def getAllInfo():
 		elif procmodel == "ustym4kpro":
 			brand = "uClan"
 			model = "Ustym 4K Pro"
+		elif procmodel == "pulse4k":
+			brand = "AB-COM"
+			model = "PULSe 4K"
+		elif procmodel == "pulse4kmini":
+			brand = "AB-COM"
+			model = "PULSe 4K MINI"
 		else:
 			model = procmodel
 
@@ -667,6 +716,8 @@ def getAllInfo():
 		remote = "hd2400"
 	elif procmodel == "hd60":
 		remote = "hd60"
+	elif procmodel == "hd66se":
+		remote = "hd66se"
 	elif procmodel in ("multibox", "multiboxse"):
 		remote = "multibox"
 	elif procmodel in ("spycat", "spycatmini", "spycatminiplus", "spycat4kmini"):
@@ -705,9 +756,11 @@ def getAllInfo():
 		remote = "qviart"
 	elif procmodel in ("lunix4k"):
 		remote = "lunix4k"
+	elif procmodel in ("dual"):
+		remote = "dual"
 	elif procmodel in ("sh1", "lc"):
 		remote = "sh1"
-	elif procmodel in ("hzero", "h3", "h4", "h5", "h6", "h7", "h8", "h9", "i55plus", "h8.2h", "h9.s", "h9.t", "h9.2h", "h9.2s", "h9combo", "h9twin", "h9se.s"):
+	elif procmodel in ("hzero", "h3", "h4", "h5", "h6", "h7", "h8", "h9", "i55plus", "h8.2h", "h9.s", "h9.t", "h9.2h", "h9.2s", "h9combo", "h9combose", "h9twin", "h9twinse", "h9.s.se", "h9.2s.se", "h9.2h.se", "h10.t", "h10.2s", "h10.2h", "h11", "h11.s"):
 		remote = "h3"
 	elif procmodel == "i55":
 		remote = "i55"
@@ -725,6 +778,8 @@ def getAllInfo():
 		remote = "e4hd"
 	elif procmodel in ("ustym4kpro"):
 		remote = "uclan"
+	elif procmodel in ("pulse4k", "pulse4kmini"):
+		remote = "pulse4k"
 
 	info['remote'] = remote
 

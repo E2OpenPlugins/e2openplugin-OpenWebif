@@ -117,7 +117,18 @@
 		<span id="tagsnew" style="margin:5px">
 		</span>
 	</div>
-	
+
+	<div class="t ui-widget-content">
+		<div>$tstrings['recordingtype']:</div>
+		<div>
+		<select id="recordingtype" name="recordingtype">
+			<option value="">$tstrings['default']</option>
+			<option value="normal">$tstrings['normal']</option>
+			<option value="descrambled">$tstrings['descrambledecm']</option>
+			<option value="scrambled">$tstrings['scrambledecm']</option>
+		</select>
+		</div>
+	</div>
 	
 	<div id="errorbox" class="timerlist_row" style="color: red;">
 		<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
@@ -204,6 +215,7 @@ $('#editTimerForm').dialog({
 						tags+=" ";
 					tags += $(this).val();
 				});
+
 				var urldata = { sRef: $('#bouquet_select').val(),
 					end: Math.round(enddate.getTime() / 1000),
 					name: $('#timername').val(),
@@ -214,7 +226,11 @@ $('#editTimerForm').dialog({
 					autoadjust: ($('#autoadjust').is(':checked')?"1":"0"),
 					tags: tags,
 					repeated: repeated };
-				
+
+				if($('#recordingtype').val() != "") {
+					urldata["recordingtype"] = $('#recordingtype').val();					
+				}
+
 				if($('#always_zap').is(':checked')) {
 					urldata["always_zap"] = "1";
 					urldata["justplay"] = "0";

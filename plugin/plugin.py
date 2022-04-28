@@ -66,6 +66,11 @@ config.OpenWebif.webcache.mepgmode = ConfigInteger(default=1, limits=(1, 2))
 config.OpenWebif.webcache.showchanneldetails = ConfigYesNo(default=False)
 config.OpenWebif.webcache.showiptvchannelsinselection = ConfigYesNo(default=True)
 config.OpenWebif.webcache.screenshotchannelname = ConfigYesNo(default=False)
+config.OpenWebif.webcache.showallpackages = ConfigYesNo(default=False)
+config.OpenWebif.webcache.smallremote = ConfigSelection(default='new', choices=['new', 'old', 'ims'])
+config.OpenWebif.webcache.screenshot_high_resolution = ConfigYesNo(default=True)
+config.OpenWebif.webcache.screenshot_refresh_auto = ConfigYesNo(default=False)
+config.OpenWebif.webcache.screenshot_refresh_time = ConfigInteger(default=30)
 
 # HTTPS
 config.OpenWebif.https_enabled = ConfigYesNo(default=False)
@@ -131,7 +136,11 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 		if ip == None:
 			ip = _("box_ip")
 
-		self["lab1"] = Label("%s\n%s://%s:%d" % (_("OpenWebif url:"), owif_protocol, ip, owif_port))
+		ports = ":%d" % owif_port
+		if (owif_protocol == "http" and owif_port == 80) or (owif_protocol == "https" and owif_port == 443):
+			ports = ""
+
+		self["lab1"] = Label("%s %s://%s%s" % (_("OpenWebif url:"), owif_protocol, ip, ports))
 
 		self["actions"] = ActionMap(["WizardActions", "ColorActions"],
 		{

@@ -1,7 +1,9 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground, ZapStream, showIPTVChannelsInSelection, useSreenshotChannelName
+#from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground, ZapStream, showIPTVChannelsInSelection, useSreenshotChannelName, useNowNextColumns
+#from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, OPENWEBIFPACKAGEVERSION, USERCSSRESPONSIVE
 #from json import dumps
 
+#set $debugMode = False
 #set $skinPrefOptions = [
 	{'value': 'black', 'label': 'Black'}, 
 	{'value': 'grey-darken-4', 'label': 'Dark Grey'}, 
@@ -28,7 +30,7 @@
 ]
 
 <!doctype html>
-<html lang="$stbLang">
+<html lang="$stbLang.replace('_', '-')">
 <head>
 	<title>$boxname - OpenWebif</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -46,8 +48,9 @@
 	<link rel="stylesheet" type="text/css" href="/modern/plugins/bootstrap-select/css/bootstrap-select.min.css">
 	<link rel="stylesheet" type="text/css" href="/modern/plugins/sweetalert/sweetalert.min.css">
 	<link rel="stylesheet" type="text/css" href="/modern/plugins/choices/choices.min.css">
-	<link rel="stylesheet" type="text/css" href="/modern/css/style.min.css">
-	<link rel="stylesheet" type="text/css" href="/modern/css/themes/all-themes.min.css">
+	<link rel="stylesheet" type="text/css" href="/modern/css/style.min.css?v=wp">
+	<link rel="stylesheet" type="text/css" href="/modern/css/header.min.css?v=wp">
+	<link rel="stylesheet" type="text/css" href="/modern/css/themes/all-themes.min.css?v=wp">
 	<link rel="stylesheet" type="text/css" href="/modern/css/vti-bootstrap-chosen.min.css">
 	<link rel="stylesheet" type="text/css" href="/modern/css/vti-timepicker.min.css">
 	<link rel="stylesheet" type="text/css" href="/modern/css/vti-responsive.min.css">
@@ -56,10 +59,10 @@
 		.page-loader-wrapper { background: rgba(156,156,156, 0.2); }
 	</style>
 
-	<script src="/js/jquery.min.js"></script>
-	<script src="/js/jquery-ui.min.js"></script>
-	<script src="/js/openwebif.min.js?v1.2.21"></script>
-	<script src="/js/chosen.1.8.2.min.js"></script>
+	<script src="/modern/plugins/jquery/jquery-2.2.4.min.js"></script>
+	<script src="/modern/plugins/jquery/jquery-ui-1.12.1.min.js"></script>
+	<script src="/modern/js/openwebif.min.js?v1.2.25"></script>
+	<script src="/modern/plugins/chosen/chosen-1.8.2.jquery.min.js"></script>
 	<script>initJsTranslation($dumps($tstrings))</script>
 </head>
 
@@ -72,8 +75,9 @@
 				<i class="material-icons">search</i>
 			</div>
 		</div>
-		<form action="#ajax/srch" method="get" onsubmit="window.location='#epgdialog?bouquetsonly=1'; return false;">
+		<form action="#" method="get" onsubmit="window.location = '/#epgdialog?' + (new URLSearchParams(new FormData(this)).toString()); return false;">
 			<input type="text" name="sstr" id="epgsearchtext" placeholder="$tstrings['start_typing'] ( $tstrings['epgsearch'] ) ...">
+			<input type="hidden" name="bouquetsonly" value="1">
 		</form>
 		<div class="close-search">
 			<span class="start-search">
@@ -99,41 +103,95 @@
 	</div>
 	#end if
 	<span id="topmenuheader">
-		<nav class="navbar">
-			<div class="container-fluid" ondblclick="owif.gui.fullscreen();">
-				<div class="navbar-header">
-					<a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-					<a href="javascript:void(0);" class="bars" id="leftsidebarin"></a>
-					<a href="/" class="navbar-brand">OpenWebif</a>
+		<header class="navbar" ondblclick="owif.gui.fullscreen();">
+			<nav id="header__wrapper">
+				<div id="osd__title">
+					<button class="bars" id="leftsidebarin"></button>
+					<h1 id="header__title">
+						<a href="/">OpenWebif</a>
+						<button id="header__info" data-toggle="modal" data-target="#OwifVersionModal">
+							<i class="icon material-icons">info_outline</i>
+						</button>
+					</h1>
+					<button style="display: none;" id="osd__connection" title="No network connection"><i class="icon material-icons">link_off</i></button><!-- TODO: i10n -->
 				</div>
-				<div class="collapse navbar-collapse pull-right align-right" id="navbar-collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="osd-toggle" id="responsive_osd_current"></li>
-						<li class="osd-toggle" id="responsive_osd_cur_event"></li>
-						<li class="osd-toggle" id="responsive_osd_stream"></li>
-						<li class="osd-toggle" id="responsive_osd_transcoding"></li>
-						<li class="osd-toggle" id="responsive_mute_status" accesskey="x" title="Mute/Unmute - Shortcut: x"></li><!-- TODO: i10n -->
-						<li class="osd-toggle" id="responsive_vol_slider"><a href="javascript:void(0);"><div id="volslider" style="width:100px;margin-top:2px;"></div></a></li>
-						<li class="osd-toggle" id="responsive_vol_value"><a><div class="dropdown-toggle" id="volumevalue"><b><span class="curvolume"></span></b></div></a></li>
-						<!-- Call Search -->
-						<li><a href="javascript:void(0);" class="js-search-epg" data-close="true" title="$tstrings['epgsearch'] - Shortcut: f" accesskey="f"><i class="material-icons">search</i></a></li>
-						#if $vti == "1"
-						<li><a href="javascript:void(0);" class="js-search-movie" data-close="true" title="$tstrings['moviesearch']"><i class="material-icons">youtube_searched_for</i></a></li>
-						#end if
-						<!-- #END# Call Search -->
-						<li class="dropdown" id="responsive_rec_info"></li>
-						<li class="dropdown" id="responsive_stream_info"></li>
-						<li class="dropdown"><a href='javascript:void(0);' data-toggle="modal" data-target="#SendMessageModal" title="$tstrings['sendamessage'] - Shortcut: n" accesskey="n"><i class="material-icons">message</i></a></li>
-						<li class="dropdown"><a href="#screenshot" title="$tstrings['grabscreenshot'] - Shortcut: s" accesskey="s"><i class="material-icons">photo_camera</i></a></li>
-						<!-- #END# Notifications -->
-						<li id="osd_power_status"></li>
-						<li class="dropdown"><a href='javascript:void(0);' data-toggle="modal" data-target="#PowerModal" title="$tstrings['powercontrol'].replace(' ','&nbsp;') - Shortcut: p" accesskey="p"><i class="material-icons">settings_power</i></a></li>
-						<!-- #END# Tasks -->
-						<li><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">settings</i></a></li>
-					</ul>
+
+				<div id="osd__current">
+					<button id="osd__current-event" data-toggle="modal" data-target="#EventModal" title="$tstrings['more_details']">
+						<span id="osd__current-event__name"></span>
+						<span id="osd__current-event__time">
+							<time datetime="" id="osd__current-event__time__start"></time>
+							&ndash;
+							<time datetime="" id="osd__current-event__time__end"></time>
+						</span>
+					</button>
+					<a href="/#/tv" id="osd__current-service">
+						<span id="osd__current-service--text"></span>
+						<img src="" alt="" id="osd__current-service--picon"><!-- for future use -->
+					</a>
+					</a>
+					<button type="button" id="osd__current-event__epg" title="$tstrings['show_epg_for'] channel" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons">view_list</i></button>
+					<a href="" target="_blank" class="dyn" id="osd__current-event__stream" title="$tstrings['stream'] channel">
+					<!-- should probably use /web/streamcurrent.m3u?name= -->
+						<i class="icon material-icons">ondemand_video</i>
+					</a>
 				</div>
-			</div>
-		</nav>
+
+				<button id="osd__active-recordings" style="display: none;" title="Currently recording" data-toggle="modal" data-target="#RecModal"><!-- TODO: i10n -->
+					<span class="recording--active">$tstrings['REC']</span>
+					<span class="label-count"></span>
+				</button>
+
+				<button id="osd__active-streams" title="Serving stream" data-toggle="modal" data-target="#StreamModal"><!-- TODO: i10n -->
+					<i class="icon material-icons">cast</i>
+					<span class="label-count"></span>
+				</button>
+
+				<div id="osd__volume">
+					<button id="osd__current-mute-status" onclick="toggleMute();" title="Mute/Unmute - Shortcut: x" accesskey="x"><!-- TODO: i10n -->
+						<i class="icon material-icons">volume_off</i>
+					</button>
+					<!-- TODO: link step size with user prefs -->
+					<input type="range" min="0" max="100" value="30" step="5" id="volume-slider" oninput="setVolume(this.valueAsNumber);">
+					<output for="volume-slider" id="osd__current-volume"></output>
+				</div>
+
+				<div id="header_actions">
+					<a href="#/screenshot" id="header_action--screenshot" title="$tstrings['grabscreenshot'] - Shortcut: s" accesskey="s">
+						<i class="icon material-icons">photo_camera</i>
+					</a>
+
+					<button id="header_action--send-message" data-toggle="modal" data-target="#SendMessageModal" title="$tstrings['sendamessage'] - Shortcut: n" accesskey="n">
+						<i class="icon material-icons">message</i>
+					</button>
+
+					<button class="js-search-epg" data-close="true" title="$tstrings['epgsearch'] - Shortcut: f" accesskey="f">
+						<i class="icon material-icons">search</i>
+					</button>
+<!--
+#if $vti == "1" or $debugMode
+-->
+					<button class="js-search-movie" data-close="true" title="$tstrings['moviesearch']">
+						<i class="icon material-icons">youtube_searched_for</i>
+					</button>
+<!--
+#end if
+-->
+					<button onclick="toggleStandby();" class="btn--power-toggle" title="Toggle standby - Shortcut: 0" accesskey="0"><!-- TODO: i10n -->
+						<i class="icon material-icons">power_settings_new</i>
+					</button>
+
+					<button data-toggle="modal" data-target="#PowerModal" title="$tstrings['powercontrol'] - Shortcut: p" accesskey="p">
+						<i class="icon material-icons">settings_power</i>
+					</button>
+
+					<button class="js-right-sidebar" data-close="true" title="$tstrings['settings']">
+						<i class="icon material-icons">settings</i>
+					</button>
+				</div>
+
+			</nav>
+		</header>
 		<!-- #Top Bar -->
 		<section>
 			<!-- Left Sidebar -->
@@ -220,6 +278,15 @@
 											<button type="button" onclick="pressMenuRemote('392');" title="Audio" class="remote__button icon"><i class="material-icons">audiotrack</i></button>
 										</section>
 									</li>
+									#if $textinputsupport == True
+									<li class="align-center">
+										<!-- TODO: don't reset input if send fails -->
+										<form onsubmit="var el = this.elements['keyboardText']; owif.api.sendKeyboardText(el.value); el.value = ''; return false;" style="display:flex; max-width:150px; margin:1em auto 0;">
+											<input type="text" name="keyboardText" value="" placeholder="Enter text"><!-- TODO: i10n -->
+											<input type="submit" value="Send" style="margin-left:1ex;"><!-- TODO: i10n -->
+										</form>
+									</li>
+									#end if
 									<li class="align-center">
 										<span data-toggle="collapse" data-target="#rcuplayerkeys" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer;" title="Show more buttons"><i class="material-icons material-icons-centered">arrow_drop_down</i></span>
 									</li>
@@ -322,10 +389,27 @@
 							</a>
 						</li>
 						<li>
-							<a href="#boxinfo" data-close="true" accesskey="i" title="Shortcut: i">
-								<i class="material-icons">info</i>
-								<span>$tstrings['box_info']</span>
+							<a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">info</i>
+								<span>Information</span><!-- TODO: i10n -->
 							</a>
+                            <ul class="ml-menu">
+								<li><a href="#current">Channel</a></li><!-- TODO: i10n -->
+                                <li>
+                                    <a href="#boxinfo" data-close="true" accesskey="i" title="Shortcut: i">Receiver</a><!-- TODO: i10n -->
+                                </li>
+								<li><a href="#about">OpenWebif</a></li>
+<!--
+#if $debugMode
+-->
+								<li class="disabled" style="user-select: all;"><!-- these `disabled` classes will prevent the `Waves` plugin interfering with text selection -->
+                                    <a href="javascript:void(0);" class="disabled" style="user-select: all;">Version: $OPENWEBIFVER</a><!-- TODO: i10n -->
+                                    <a href="javascript:void(0);" class="disabled" style="user-select: all;">Build: $OPENWEBIFPACKAGEVERSION</a><!-- TODO: i10n -->
+								</li>
+<!--
+#end if
+-->
+							</ul>
 						</li>
 						<li>
 							<a href="javascript:void(0);" class="menu-toggle">
@@ -333,9 +417,6 @@
 								<span>$tstrings['extras']</span>
 							</a>
 							<ul class="ml-menu">
-							#if $webtv
-								<li><a href="#webtv" data-close="true" accesskey="w" title="Shortcut: w">$tstrings['webtv']</a></li>
-							#end if
 							#for $extra in $extras
 								#set $target_url = $extra["key"];
 								#if $target_url not in ('ajax/at','ajax/bqe','ajax/settings')
@@ -350,7 +431,9 @@
 									#end if
 								#end if
 							#end for
-								<li><a href="#current">Channel Info</a></li>
+							#if $webtv
+								<li><a href="#webtv" data-close="true" accesskey="w" title="Shortcut: w">$tstrings['webtv']</a></li>
+							#end if
 							</ul>
 						</li>
 					</ul>
@@ -458,6 +541,15 @@
 									<div class="switch">
 										<label>
 											<input type="checkbox" name="minepglist" id="minepglist" $MinEPGList>
+											<span class="lever switch--skinned"></span>
+										</label>
+									</div>
+								</li>
+								<li>
+									<span>$tstrings['now_next_columns']</span>
+									<div class="switch">
+										<label>
+											<input type="checkbox" name="nownext_columns" id="nownext_columns" $useNowNextColumns>
 											<span class="lever switch--skinned"></span>
 										</label>
 									</div>
@@ -601,6 +693,24 @@
 
 <!---<div id="modaldialog"></div>-->
 <div id="responsivespinner"></div>
+<div id="OwifVersionModal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header bg--skinned">
+				<button type="button" class="close" data-dismiss="modal">
+					<i class="material-icons material-icons-centered">close</i>
+				</button>
+				<span class="modal-title">OpenWebif Version Information</span>
+			</div>
+			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
+				This information has been moved into <b>Information</b> in the main menu.
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn waves-effect btn-default" data-dismiss="modal">$tstrings['close']</button>
+			</div>
+		</div>
+	</div>
+</div>
 <div id="TimerConflictModal" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -866,14 +976,23 @@
 <script src="/modern/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
 <script src="/modern/plugins/autosize/autosize.min.js"></script>
 <script src="/modern/plugins/node-waves/waves.min.js"></script>
-<script src="/modern/plugins/nouislider/nouislider.min.js"></script>
 <script src="/modern/plugins/sweetalert/sweetalert.min.js"></script>
 <script src="/modern/plugins/momentjs/moment.min.js"></script>
 <script src="/modern/plugins/screenfull/screenfull.min.js"></script>
-<script src="/modern/js/entry-app.js"></script>
+
+## for future use (asset versioning)
+## <!-- htmlWebpackPlugin renders the following js includes -->
+## <%= htmlWebpackPlugin
+##   .tags
+##   .bodyTags
+##   .filter((tag) => tag.tagName === 'script')
+##   .join('') 
+## %>
+<script src="/modern/js/vendors-app.js?v=wp"></script><script src="/modern/js/owif-app.js?v=wp"></script>
+
 <script src="/modern/js/vti-bootstrap-date-timepicker.min.js"></script>
-<script src="/modern/js/admin.min.js"></script>
-<script src="/modern/js/vti-responsive.min.js"></script>
+<script src="/modern/js/admin.min.js?v=wp"></script>
+<script src="/modern/js/vti-responsive.min.js?v1.2.23"></script>
 <script>initJsTranslationAddon($dumps($tstrings))</script>
 
 <script>
@@ -895,5 +1014,10 @@
 		});
 	});
 </script>
+#if $USERCSSRESPONSIVE != ''
+<style>
+$USERCSSRESPONSIVE
+</style>
+#end if
 </body>
 </html>

@@ -327,6 +327,11 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
+
+		text = getUrlArg(request, "text", "")
+		if text:
+			return remoteControl(0, "text", text)  # text input do not need type and command
+
 		res = self.testMandatoryArguments(request, ["command"])
 		if res:
 			return res
@@ -518,10 +523,10 @@ class WebController(BaseController):
 		"""
 		bRef = getUrlArg(request, "bRef", "")
 		request.setHeader('Content-Type', 'application/xspf+xml')
-		bname = getUrlArg(request, "bname")
-		if bname != None:
-			bname = bname.replace(",", "_").replace(";", "_")
-			request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (bname, 'xspf'))
+		bouquetName = getUrlArg(request, "bName")
+		if bouquetName != None:
+			bouquetName = bouquetName.replace(",", "_").replace(";", "_")
+			request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (bouquetName, 'xspf'))
 		services = getServices(bRef, False)
 		if comp_config.OpenWebif.auth_for_streaming.value:
 			session = GetSession()
@@ -534,7 +539,7 @@ class WebController(BaseController):
 		portNumber = comp_config.OpenWebif.streamport.value
 		services["host"] = "%s:%s" % (request.getRequestHostname(), portNumber)
 		services["auth"] = auth
-		services["bname"] = bname
+		services["bname"] = bouquetName
 		return services
 
 	def P_servicesm3u(self, request):
@@ -557,10 +562,10 @@ class WebController(BaseController):
 		"""
 		bRef = getUrlArg(request, "bRef", "")
 		request.setHeader('Content-Type', 'application/x-mpegurl')
-		bname = getUrlArg(request, "bname")
-		if bname != None:
-			bname = bname.replace(",", "_").replace(";", "_")
-			request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (bname, 'm3u8'))
+		bouquetName = getUrlArg(request, "bName")
+		if bouquetName != None:
+			bouquetName = bouquetName.replace(",", "_").replace(";", "_")
+			request.setHeader('Content-Disposition', 'inline; filename=%s.%s;' % (bouquetName, 'm3u8'))
 		services = getServices(bRef, False)
 		if comp_config.OpenWebif.auth_for_streaming.value:
 			session = GetSession()
@@ -916,7 +921,8 @@ class WebController(BaseController):
 			_deltag = getUrlArg(request, "deltag")
 			_title = getUrlArg(request, "title")
 			_cuts = getUrlArg(request, "cuts")
-			return getMovieInfo(_sRef, _addtag, _deltag, _title, _cuts, True)
+			_desc = getUrlArg(request, "desc")
+			return getMovieInfo(_sRef, _addtag, _deltag, _title, _cuts, _desc ,True)
 		else:
 			return getMovieInfo()
 
@@ -1074,6 +1080,11 @@ class WebController(BaseController):
 		if _autoadjust != None:
 			autoadjust = _autoadjust == "1"
 
+		recordingtype = getUrlArg(request, "recordingtype")
+		if recordingtype:
+			if recordingtype not in ("normal", "descrambled", "scrambled"):
+				recordingtype = None
+
 		# TODO: merge function addTimer+editTimer+addTimerByEventId in timers.py
 		if mode == 1:
 			return addTimerByEventId(
@@ -1088,7 +1099,8 @@ class WebController(BaseController):
 				afterevent,
 				pipzap,
 				allow_duplicate,
-				autoadjust
+				autoadjust,
+				recordingtype
 			)
 		elif mode == 2:
 			try:
@@ -1122,6 +1134,7 @@ class WebController(BaseController):
 				getUrlArg(request, "channelOld"),
 				beginOld,
 				endOld,
+				recordingtype,
 				self.vpsparams(request),
 				always_zap,
 				pipzap,
@@ -1142,6 +1155,7 @@ class WebController(BaseController):
 				dirname,
 				tags,
 				repeated,
+				recordingtype,
 				self.vpsparams(request),
 				None,
 				eit,
@@ -1410,14 +1424,14 @@ class WebController(BaseController):
 			return res
 
 		begintime = -1
-		if "time" in list(request.args.keys()):
+		if b"time" in list(request.args.keys()):
 			try:
 				begintime = int(request.args[b"time"][0])
 			except ValueError:
 				pass
 
 		endtime = None
-		if "endTime" in list(request.args.keys()):
+		if b"endTime" in list(request.args.keys()):
 			try:
 				endtime = int(request.args[b"endTime"][0])
 			except ValueError:
@@ -1443,14 +1457,14 @@ class WebController(BaseController):
 			return res
 
 		begintime = -1
-		if "time" in list(request.args.keys()):
+		if b"time" in list(request.args.keys()):
 			try:
 				begintime = int(request.args[b"time"][0])
 			except ValueError:
 				pass
 
 		endtime = None
-		if "endTime" in list(request.args.keys()):
+		if b"endTime" in list(request.args.keys()):
 			try:
 				endtime = int(request.args[b"endTime"][0])
 			except ValueError:
@@ -1578,14 +1592,14 @@ class WebController(BaseController):
 			return res
 
 		begintime = -1
-		if "time" in list(request.args.keys()):
+		if b"time" in list(request.args.keys()):
 			try:
 				begintime = int(request.args[b"time"][0])
 			except ValueError:
 				pass
 
 		endtime = -1
-		if "endTime" in list(request.args.keys()):
+		if b"endTime" in list(request.args.keys()):
 			try:
 				endtime = int(request.args[b"endTime"][0])
 			except ValueError:
@@ -2077,8 +2091,11 @@ class WebController(BaseController):
 		"""
 		try:
 			from Plugins.Extensions.WebInterface.WebChilds.Toplevel import loaded_plugins
+			result = []
+			for p in loaded_plugins:
+				result.append((p[0], '', p[2], p[3]))
 			return {
-				"plugins": loaded_plugins
+				"plugins": result
 			}
 		except Exception:
 			return {
@@ -2203,6 +2220,8 @@ class WebController(BaseController):
 		moviedb = comp_config.OpenWebif.webcache.moviedb.value if comp_config.OpenWebif.webcache.moviedb.value else 'IMDb'
 		ret['moviedb'] = moviedb
 		ret['showchanneldetails'] = comp_config.OpenWebif.webcache.showchanneldetails.value
+		smallremote = comp_config.OpenWebif.webcache.smallremote.value if comp_config.OpenWebif.webcache.smallremote.value else 'new'
+		ret['smallremote'] = smallremote
 		return ret
 
 	def P_config(self, request):
@@ -2215,11 +2234,12 @@ class WebController(BaseController):
 				return False
 
 		setcs = getConfigsSections()
-		if request.path == '/api/config':
+		if request.path == b'/api/config':
 			return setcs
 		else:
 			try:
-				sect = request.path.split('/')
+				rp = six.ensure_str(request.path)
+				sect = rp.split('/')
 				if len(sect) == 4:
 					cfgs = getConfigs(sect[3])
 					resultcfgs = []
@@ -2273,22 +2293,32 @@ class WebController(BaseController):
 			val = (getUrlArg(request, "showpicons") == 'true')
 			comp_config.OpenWebif.webcache.showpicons.value = val
 			comp_config.OpenWebif.webcache.showpicons.save()
-		elif "showchanneldetails" in list(request.args.keys()):
+		elif b"showchanneldetails" in list(request.args.keys()):
 			val = (getUrlArg(request, "showchanneldetails") == 'true')
 			comp_config.OpenWebif.webcache.showchanneldetails.value = val
 			comp_config.OpenWebif.webcache.showchanneldetails.save()
-		elif "showiptvchannelsinselection" in list(request.args.keys()):
+		elif b"showiptvchannelsinselection" in list(request.args.keys()):
 			val = (getUrlArg(request, "showiptvchannelsinselection") == 'true')
 			comp_config.OpenWebif.webcache.showiptvchannelsinselection.value = val
 			comp_config.OpenWebif.webcache.showiptvchannelsinselection.save()
-		elif "screenshotchannelname" in list(request.args.keys()):
+		elif b"screenshotchannelname" in list(request.args.keys()):
 			val = (getUrlArg(request, "screenshotchannelname") == 'true')
 			comp_config.OpenWebif.webcache.screenshotchannelname.value = val
 			comp_config.OpenWebif.webcache.screenshotchannelname.save()
-		elif "zapstream" in list(request.args.keys()):
+		elif b"showallpackages" in list(request.args.keys()):
+			val = (getUrlArg(request, "showallpackages") == 'true')
+			comp_config.OpenWebif.webcache.showallpackages.value = val
+			comp_config.OpenWebif.webcache.showallpackages.save()
+		elif b"zapstream" in list(request.args.keys()):
 			val = (getUrlArg(request, "zapstream") == 'true')
 			comp_config.OpenWebif.webcache.zapstream.value = val
 			comp_config.OpenWebif.webcache.zapstream.save()
+		elif b"smallremote" in list(request.args.keys()):
+			try:
+				comp_config.OpenWebif.webcache.smallremote.value = getUrlArg(request, "smallremote")
+				comp_config.OpenWebif.webcache.smallremote.save()
+			except Exception:
+				pass
 		elif b"theme" in list(request.args.keys()):
 			try:
 				comp_config.OpenWebif.webcache.theme.value = getUrlArg(request, "theme")
@@ -2299,6 +2329,20 @@ class WebController(BaseController):
 			try:
 				comp_config.OpenWebif.webcache.mepgmode.value = int(request.args[b"mepgmode"][0])
 				comp_config.OpenWebif.webcache.mepgmode.save()
+			except ValueError:
+				pass
+		elif b"screenshot_high_resolution" in list(request.args.keys()):
+			val = (getUrlArg(request, "screenshot_high_resolution") == 'true')
+			comp_config.OpenWebif.webcache.screenshot_high_resolution.value = val
+			comp_config.OpenWebif.webcache.screenshot_high_resolution.save()
+		elif b"screenshot_refresh_auto" in list(request.args.keys()):
+			val = (getUrlArg(request, "screenshot_refresh_auto") == 'true')
+			comp_config.OpenWebif.webcache.screenshot_refresh_auto.value = val
+			comp_config.OpenWebif.webcache.screenshot_refresh_auto.save()
+		elif b"screenshot_refresh_time" in list(request.args.keys()):
+			try:
+				comp_config.OpenWebif.webcache.screenshot_refresh_time.value = int(request.args[b"screenshot_refresh_time"][0])
+				comp_config.OpenWebif.webcache.screenshot_refresh_time.save()
 			except ValueError:
 				pass
 		else:

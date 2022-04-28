@@ -70,7 +70,7 @@ class FileController(resource.Resource):
 				if m is not None:
 					port = m.group(1)
 
-				response = "#EXTM3U\n#EXTVLCOPT--http-reconnect=true\n#EXTINF:-1,%s\n%s://%s:%s/file?action=download&file=%s" % (name, proto, request.getRequestHostname(), port, quote(filename))
+				response = "#EXTM3U\n#EXTVLCOPT:http-reconnect=true\n#EXTINF:-1,%s\n%s://%s:%s/file?action=download&file=%s" % (name, proto, request.getRequestHostname(), port, quote(filename))
 				request.setHeader("Content-Disposition", 'attachment;filename="%s.m3u"' % name)
 				request.setHeader("Content-Type", "application/x-mpegurl")
 				return response

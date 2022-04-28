@@ -1,6 +1,6 @@
 /* variables setup */
 :root {
-	--palette--red:          #f44336;
+  --palette--red:          #f44336;
   --palette--pink:         #e91e63;
   --palette--purple:       #9c27b0;
   --palette--deep-purple:  #673ab7;
@@ -24,6 +24,7 @@
   --palette--white:        #fff;
 
   --main-text-color: var(--palette--white);
+  --range-slider-track-color: rgba(200, 200, 200, 0.4);
 }
 
 /*
@@ -253,6 +254,28 @@ dropdown selected
 }
 
 
+input[type="range"]::-webkit-slider-runnable-track {
+  background: var(--range-slider-track-color);
+}
+input[type="range"]::-webkit-slider-thumb {
+  background: var(--main-text-color);
+}
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: var(--range-slider-track-color);
+}
+input[type="range"]::-moz-range-track {
+  background: var(--range-slider-track-color);
+}
+input[type="range"]::-moz-range-thumb {
+  background: var(--main-text-color);
+}
+input[type="range"]:-moz-focusring {
+  outline-color: var(--main-text-color);
+}
+input[type="range"]::-ms-thumb {
+  background: var(--main-text-color);
+}
+
 .link--skinned {
   color: var(--skin-color);
 }
@@ -262,18 +285,11 @@ dropdown selected
 .sweet-alert button.confirm,
 .choices__list--multiple .choices__item {
   background-color: var(--skin-color) !important;
-  color: var(--main-text-color);
+  color: var(--main-text-color) !important;
 }
 
 .spinner-layer.pl--skinned {
   border-color: var(--skin-color);
-}
-
-.navbar-brand,
-.navbar-brand:hover,
-.navbar-brand:active,
-.navbar-brand:focus {
-  color: var(--main-text-color);
 }
 
 .nav > li > a {
@@ -290,20 +306,8 @@ dropdown selected
 }
 
 .navbar {
+  color: var(--main-text-color);
   background-color: var(--skin-color);
-}
-
-.navbar .bars {
-  float: left;
-  padding: 10px 20px;
-  font-size: 22px;
-  margin-right: 10px;
-  margin-left: -10px;
-  margin-top: 4px;
-}
-
-.navbar .bars:hover {
-  background-color: rgba(0, 0, 0, 0.08);
 }
 
 .timetable-now {
@@ -943,7 +947,7 @@ body:not(.theme--supabright) .ename {
     0 4px 4px -4px var(--skin-color);
 }
 
-.theme--neon-blackout .nav:not(.navbar-right) {
+.theme--neon-blackout .nav {
   background-color: var(--background-color--main);
 }
 

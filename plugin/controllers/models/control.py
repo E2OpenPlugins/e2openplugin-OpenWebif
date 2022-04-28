@@ -25,12 +25,18 @@ from __future__ import print_function
 from Components.config import config
 from enigma import eServiceReference, eActionMap, eServiceCenter
 from Plugins.Extensions.OpenWebif.controllers.models.services import getProtection
+from Plugins.Extensions.OpenWebif.controllers.defaults import DEFAULT_RCU
 from Screens.InfoBar import InfoBar, MoviePlayer
 import NavigationInstance
 import os
+from six.moves.urllib.parse import unquote
 
 ENABLE_QPIP_PROCPATH = "/proc/stb/video/decodermode"
 
+try:
+	from enigma import setPrevAsciiCode
+except ImportError:
+	setPrevAsciiCode = None
 
 def checkIsQPiP():
 	if os.access(ENABLE_QPIP_PROCPATH, os.F_OK):
@@ -160,28 +166,30 @@ def zapService(session, id, title="", stream=False):
 	}
 
 
-def remoteControl(key, type="", rcu=""):
-	# TODO: do something better here
-	if rcu == "standard":
-		remotetype = "dreambox remote control (native)"
-	elif rcu == "advanced":
+def remoteControl(key, type="", rcu=DEFAULT_RCU):
+	remotetype = "dreambox remote control (native)"
+	if rcu == "advanced":
 		remotetype = "dreambox advanced remote control (native)"
 	elif rcu == "keyboard":
 		remotetype = "dreambox ir keyboard"
-	else:
-		if config.misc.rcused.value == 0:
-			remotetype = "dreambox advanced remote control (native)"
-		else:
-			remotetype = "dreambox remote control (native)"
-		try:
-			from Tools.HardwareInfo import HardwareInfo
-			if HardwareInfo().get_device_model() in ("xp1000", "formuler1", "formuler3", "et9000", "et9200", "hd1100", "hd1200"):
-				remotetype = "dreambox advanced remote control (native)"
-		except:  # nosec # noqa: E722
-			print("[OpenWebIf] wrong hw detection")
 
 	amap = eActionMap.getInstance()
-	if type == "long":
+
+	if type == "text" and rcu != "":
+		message = "RC command text not supported"
+		result = False
+		if setPrevAsciiCode:
+			for k in unquote(rcu):
+				setPrevAsciiCode(ord(k))
+				amap.keyPressed(remotetype, 510, 0)
+				amap.keyPressed(remotetype, 510, 1)
+			message = "RC command text '%s' has been issued" % str(rcu)
+			result = True
+		return {
+			"result": result,
+			"message": message
+		}
+	elif type == "long":
 		amap.keyPressed(remotetype, key, 0)
 		amap.keyPressed(remotetype, key, 3)
 	elif type == "ascii":

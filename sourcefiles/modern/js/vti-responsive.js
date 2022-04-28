@@ -1,22 +1,8 @@
-
-var vol_slider = document.getElementById('volslider');
-var cur_vol = -1 ;
 var standby_status = -1;
 var timerFormInitiated = - 1;
 
 
 $(function () {
-
-	noUiSlider.create(vol_slider, {
-		start: [30],
-		connect: 'lower',
-		step: 5,
-		range: {
-			'min': [0],
-			'max': [100]
-		}
-	});
-	getNoUISliderValue(vol_slider, true);
 
 	if(!timeredit_initialized)
 		$('#editTimerForm').load('ajax/edittimer');
@@ -100,18 +86,6 @@ $(function () {
   
 	setInterval(function () { getStatusInfo(); }, 3000);
 });
-
-function getNoUISliderValue(slider, percentage) {
-	slider.noUiSlider.on('update', function () {
-		var val = slider.noUiSlider.get();
-		val = parseInt(val);
-		$("#volumevalue").find('span.curvolume').text(val + '%');
-		if (cur_vol != -1) {
-			$.ajax("web/vol?set=set" + val);
-		}
-		cur_vol = val;
-	});
-}
 
 function initJsTranslationAddon(strings) {
 	tstr_timer = strings.timer;
@@ -229,20 +203,22 @@ function testPipStatus() {
                                 buttonsSwitcher(pipinfo.pip);
 			}
 		}
-	})
+	});
 }
 
 var SSHelperObj = function () {
 	var self;
 	var screenshotInterval = false;
 	var ssr_i = 30;
+	var ssr_hd = true;
 
 	return {
 		setup: function()
 		{
 			self = this;
 			clearInterval(self.screenshotInterval);
-			self.ssr_i = parseInt(GetLSValue('ssr_i','30'));
+			self.ssr_i = parseInt($('#ssr_i').val());
+			self.ssr_hd = $('#ssr_hd').is(':checked');
 
 			$("#dropdown").click(function() {testPipStatus();});
 			$('#screenshotbutton0').click(function(){testPipStatus(); grabScreenshot('all');});
@@ -253,18 +229,17 @@ var SSHelperObj = function () {
 			$("button").click(function() {testPipStatus();});
 
 			$('#ssr_i').val(self.ssr_i);
-			$('#ssr_s').prop('checked',GetLSValue('ssr_s',false));
-			$('#ssr_hd').prop('checked',GetLSValue('ssr_hd',false));
 			$('#screenshotspinner').addClass(GetLSValue('spinner','fa-spinner'));
 			$('#ssr_hd').change(function() {
 				testPipStatus();
-				SetLSValue('ssr_hd',$('#ssr_hd').is(':checked'));
+				self.ssr_hd = $('#ssr_hd').is(':checked');
+				webapi_execute("/api/setwebconfig?screenshot_high_resolution=" + ( self.ssr_hd ? "true" : "false"));
 				grabScreenshot('auto');
 			});
 			$('#ssr_i').change(function() {
 				testPipStatus();
 				var t = $('#ssr_i').val();
-				SetLSValue('ssr_i',t);
+				webapi_execute("/api/setwebconfig?screenshot_refresh_time=" + t);
 				self.ssr_i = parseInt(t);
 				if($('#ssr_s').is(':checked'))
 				{
@@ -280,12 +255,16 @@ var SSHelperObj = function () {
 				} else {
 					clearInterval(self.screenshotInterval); 
 				}
-				SetLSValue('ssr_s',v);
+				webapi_execute("/api/setwebconfig?screenshot_refresh_auto=" + (v ? "true":"false"));
 			});
+		
 			screenshotMode = 'all'; // reset on page reload
 			grabScreenshot(screenshotMode);
-			if(GetLSValue('ssr_s',false))
+
+			if($('#ssr_s').is(':checked')) {
 				self.setSInterval();
+			}
+
 		},setSInterval: function()
 		{
 			self.screenshotInterval = setInterval( function() {testPipStatus(); grabScreenshot('auto');}, (self.ssr_i+1)*1000);
@@ -336,7 +315,7 @@ function grabScreenshot(mode) {
 		mode = screenshotMode;
 	}
 	timestamp = new Date().getTime();
-	if ($("#ssr_hd").is(":checked")){
+	if (SSHelper.ssr_hd){
 		$('#screenshotimage').attr("src",'/grab?format=jpg&mode=' + mode + '&t=' + timestamp);
 	} else {
 		$('#screenshotimage').attr("src",'/grab?format=jpg&r=720&mode=' + mode + '&t=' + timestamp);
@@ -352,16 +331,9 @@ function grabScreenshot(mode) {
 
 getStatusInfo = function(){
   // redefine classic version of same function
+	$("#osd__connection").toggle(!navigator.onLine);
 
   navigator.onLine && owif.api.getStatusInfo().then(function(statusinfo) { 
-
-		if (cur_vol === -1) {
-			vol_slider.noUiSlider.set(statusinfo['volume']);
-		} else if (cur_vol != statusinfo['volume']) {
-			cur_vol = -1;
-			vol_slider.noUiSlider.set(statusinfo['volume']);
-		}
-
 		var responsive_mute_status = '';
 		if (statusinfo['muted'] == true) {
 			mutestatus = 1;
@@ -373,62 +345,43 @@ getStatusInfo = function(){
 		$("#responsive_mute_status").html(responsive_mute_status);
 		
 		setOSD(statusinfo);
-		var responsive_rec_info = '';
-		var responsive_stream_info = '';
-		var status = "";
 		
 		if (statusinfo['isRecording'] == 'true') {
 			var recs = statusinfo['Recording_list'];
 			var rec_array = recs.split("\n");
-			var reclen = 0;
+			var recordingCount = 0;
 			var tmp = '';
 			for (var rec in rec_array) {
 				if (rec_array[rec] != '') {
-					reclen += 1;
+					recordingCount += 1;
 					tmp += "<li> <a href='/#timers' onclick='load_maincontent(\"ajax/timers\");' data-dismiss='modal'>" + rec_array[rec] + "</a></li><hr />";
 					
 				}
 			}
 			$("#recmodalcontent").html(tmp);
-			responsive_rec_info = "<a href='javascript:void(0);' class='dropdown-toggle' data-toggle='modal' data-target='#RecModal' role='button'><i class='material-icons'>videocam</i><span class='label-count'>" + reclen + "</span></a>";
+			$("#osd__active-recordings .label-count").text(recordingCount).parent().show();
+		} else {
+			$("#osd__active-recordings").hide();
 		}
 		
 		if (statusinfo['isStreaming'] == 'true') {
 			var streams = statusinfo['Streaming_list'];
 			var stream_array = streams.split("\n");
-			var streamlen = 0;
+			var streamCount = 0;
 			var tmp = '';
 			for (var stream in stream_array) {
 				if (stream_array[stream] != '') {
-					streamlen += 1;
+					streamCount += 1;
 					tmp += "<li>" + stream_array[stream] + "</li><hr/>";
 				}
 			}
 			$("#streammodalcontent").html(tmp);
-			responsive_stream_info = "<a href='javascript:void(0);' data-toggle='modal' data-target='#StreamModal' class='dropdown-toggle' role='button'><i class='material-icons'>wifi_tethering</i><span class='label-count'>" + streamlen + "</span></a>";
+			$("#osd__active-streams .label-count").text(streamCount).parent().show();
+		} else {
+			$("#osd__active-streams").hide();
 		}
 
-		var icon = 'power_settings_new';
-		if (statusinfo['inStandby'] == 'true') {
-			icon = 'lightbulb_outline';
-			if ( (standby_status === 0) || (standby_status === -1) ) {
-				$('.osd-toggle').hide();
-			}
-			standby_status = 1;
-		} else {
-			if ( (standby_status === 1) || (standby_status === -1) ) {
-				$('.osd-toggle').show();
-			}
-			standby_status = 0;
-		}
-		/*jshint multistr: true */
-		var power_status = " \
-			<a href='#' onClick='toggleStandby(); return false'> \
-				<i class='material-icons'>" + icon + "</i> \
-			</a>";
-		$("#osd_power_status").html(power_status);
-		$("#responsive_rec_info").html(responsive_rec_info);
-		$("#responsive_stream_info").html(responsive_stream_info);
+		$('body').toggleClass('standby-mode', statusinfo['inStandby'] === 'true');
 	});
 }
 
@@ -438,46 +391,50 @@ function setOSD( statusinfo )
 	var station = current_name = statusinfo['currservice_station'];
 	var streamtitle = tstr_stream + ": " + station + "'><i class='material-icons'>ondemand_video</i></a>";
 	var streamtitletrans = tstr_stream + " (" + tstr_transcoded + "): " + station + "'><i class='material-icons'>phone_android</i></a>";
-	var _beginend = statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'];
 	var responsive_osd_transcoding = '';
 	var responsive_osd_stream = '';
 	var responsive_osd_current = '';
 	var responsive_osd_cur_event = '';
+
 	if (station) {
 		if ( (sref.indexOf("1:0:1") !== -1) || (sref.indexOf("1:134:1") !== -1) || (sref.indexOf("1:0:2") !== -1) || (sref.indexOf("1:134:2") !== -1) ) {
 			if ( statusinfo['transcoding'] && ( (sref.indexOf("1:0:1") !== -1) || (sref.indexOf("1:134:1") !== -1) ) ) {
 				responsive_osd_transcoding = "<a href='#' onclick=\"jumper8002('" + sref + "', '" + station + "')\"; title='" + streamtitletrans;
 			}
-			if ((sref.indexOf("1:0:2") !== -1) || (sref.indexOf("1:134:2") !== -1)) {
-				streamtitle = tstr_stream + ": " + station + "'><i class='material-icons'>radio</i></a>";
-				responsive_osd_current = "<a href='/#radio' onclick='load_maincontent(\"ajax/radio\");'><b>" + station + "&nbsp;&nbsp;</b>" + _beginend + "</a>";
-			} else {
-				streamtitle = tstr_stream + ": " + station + "'><i class='material-icons'>ondemand_video</i></a>";
-				responsive_osd_current = "<a href='/#tv' onclick='load_maincontent(\"ajax/tv\");'><b>" + station + "&nbsp;&nbsp;</b>" + _beginend + "</a>";
-			}
-			responsive_osd_stream = "<a href='/web/stream.m3u?ref=" + sref + "&name=" + station + "' target='_blank' title='" + streamtitle;
-			responsive_osd_cur_event = "<a href=\"#\" onclick=\"open_epg_dialog('" + sref + "', '" + station + "')\" data-toggle=\"modal\" data-target=\"#EPGModal\" title='" + statusinfo['currservice_fulldescription'] + "'><b>" + statusinfo['currservice_name'] + "</b></a>";
+			$('#osd__current-event__name').html(statusinfo['currservice_name']);
+			$('#osd__current-event__time__start').html(statusinfo['currservice_begin']);
+			$('#osd__current-event__time__end').html(statusinfo['currservice_end']);
+			$('#osd__current-service').html(station);
+			$('#osd__current-event__epg').off("click").click(function() {
+				open_epg_dialog(sref, station);
+			});
+			$('#osd__current-event').off("click").click(function() {
+				loadeventepg(statusinfo['currservice_id'], sref, '/images/default_picon.png');
+			});
 		} else if ( (sref.indexOf("4097:0:0") !== -1) || (sref.indexOf("1:0:0") !== -1)) {
 			if (statusinfo['currservice_filename'] === '') {
 				streamtitle = tstr_stream + ": " + station + "'>" + station + "</a>";
 				responsive_osd_stream = "<a href='#' title='" + streamtitle;
 			} else {
+				var fn = statusinfo['currservice_filename'].replaceAll("'","%27").replaceAll("\"","%22");
 				streamtitle = tstr_stream + ": " + station + "'><i class='material-icons'>movie</i></a>";
-				responsive_osd_stream = "<a href='/web/ts.m3u?file=" + statusinfo['currservice_filename'] + "' target='_blank' title='" + streamtitle;
+				responsive_osd_stream = "<a href='/web/ts.m3u?file=" + fn + "' target='_blank' title='" + streamtitle;
 				responsive_osd_current = "<a href='/#movies' onclick='load_maincontent(\"ajax/movies\");'><b>" + station + "&nbsp;&nbsp;</b></a>";
 				if (statusinfo['transcoding']) {
-					responsive_osd_transcoding = "<a href='#' onclick=\"jumper8003('" + statusinfo['currservice_filename'] + "')\"; title='" + streamtitletrans;
+					responsive_osd_transcoding = "<a href='#' onclick=\"jumper8003('" + fn + "')\"; title='" + streamtitletrans;
 				}
 			}
 		}
 	}
+	$("#osd__current-event__stream").attr("href", "/web/stream.m3u?ref=" + sref +"&name=" + encodeURIComponent(station));
+	$("#volume-slider, #osd__current-volume").val(statusinfo['volume']);
 	$("#responsive_osd_transcoding").html(responsive_osd_transcoding);
 	$("#responsive_osd_stream").html(responsive_osd_stream);
 	$("#responsive_osd_current").html(responsive_osd_current);
 	$("#responsive_osd_cur_event").html(responsive_osd_cur_event);
 	try {
-		$('.channel-list__channel').removeClass('channel--active');
-		$('#sref-' + sref.replace(/:/g, '_')).addClass('channel--active');
+		$(".channel-list__channel").removeClass("channel--active");
+		$("#sref-" + sref.replace(/:/g, '_')).addClass("channel--active");
 	} catch(e){}
 }
 
@@ -887,6 +844,11 @@ function setTimerEditFormTitle(title)
 	$("#timerEditTitle").html(title);
 }
 
+function setVolume(value) {
+	$.ajax("web/vol?set=set" + value);
+	getStatusInfo();
+}
+
 function toggleMute() {
 	$.ajax("web/vol?set=mute");
 	getStatusInfo();
@@ -1267,6 +1229,11 @@ function VTiWebConfig() {
 		}
 		$.get('api/setthememode?themeMode=' + themeMode);
 	});
+	$('#nownext_columns').change(function () {
+		var val = $(this).is(":checked") ? '1' : '0'
+		$.get('api/setvtiwebconfig?nownext_columns=' + val);
+	});
+
 }
 /*
 //Skin tab content set height and show scroll
@@ -1407,10 +1374,11 @@ function closeSideBar() {
 	var $body = $('body');
 	var width = $body.width();
 	if (width < $.AdminBSB.options.leftSideBar.breakpointWidth) {
-		var $openCloseBar = $('.navbar .navbar-header .bars');
+		var $openCloseBar = $('#leftsidebarin');
 		$body.addClass('ls-closed');
 		$openCloseBar.fadeIn();
-	} else
+	} else {
 		$body.removeClass('ls-closed');
         //$('.sidebar').hide();
-    }
+  }
+}

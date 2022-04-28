@@ -293,7 +293,16 @@
 	<input type="file" name="rfile" id="rfile">
 </form>
 
-<script src="/modern/js/bqe-app.js"></script>
+## for future use (asset versioning)
+## <!-- htmlWebpackPlugin renders the following js includes -->
+## <%= htmlWebpackPlugin
+##   .tags
+##   .bodyTags
+##   .filter((tag) => tag.tagName === 'script')
+##   .join('') 
+## %>
+<script src="/modern/js/bouqueteditor-app.js"></script>
+
 <script>
 	jQuery.AdminBSB.input.activate();
 </script>

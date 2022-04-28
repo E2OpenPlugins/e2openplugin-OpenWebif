@@ -2,2780 +2,2104 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-15 10:55+0430\n"
-"PO-Revision-Date: 2017-06-08 10:05+0200\n"
-"Last-Translator: Svevrstt <svevrstt@gmail.com>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2021-12-09 21:02+0100\n"
+"PO-Revision-Date: 2021-12-02 19:58+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/e2openplugin-"
+"openwebif/e2openplugin-openwebif/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.10-dev\n"
 "X-Poedit-Basepath: .\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
-#: ../plugin/controllers/models/timers.py:61
 #, python-format
 msgid "%02d.%02d."
 msgstr ""
 
-#: ../plugin/controllers/models/timers.py:63
 #, python-format
 msgid "%02d.%02d.%d"
 msgstr ""
 
-#: ../plugin/controllers/models/movies.py:69
-#: ../plugin/controllers/models/timers.py:65
 #, python-format
 msgid "%02d:%02d"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:235
-#: ../plugin/controllers/models/services.py:773
-#: ../plugin/controllers/models/services.py:1004
-#: ../plugin/controllers/models/services.py:1050
 msgid "%d.%m.%Y"
 msgstr ""
 
-#: ../plugin/controllers/models/timers.py:187
-#: ../plugin/controllers/models/timers.py:188
-#: ../plugin/controllers/models/timers.py:276
-#: ../plugin/controllers/models/timers.py:277
-#: ../plugin/controllers/models/timers.py:434
-#: ../plugin/controllers/models/timers.py:435
 msgid "%d.%m.%Y %H:%M"
 msgstr ""
 
-#: ../plugin/controllers/models/movies.py:65
-#: ../plugin/controllers/models/timers.py:59
 #, python-format
 msgid "%s %02d.%02d."
 msgstr ""
 
-#: ../plugin/controllers/models/movies.py:67
 #, python-format
 msgid "%s %02d.%02d.%d"
 msgstr ""
 
-#: ../plugin/controllers/BouquetEditor.py:549
 #, python-format
 msgid "%s %s is locked."
 msgstr "%s %s är låst."
 
-#: ../plugin/controllers/i18n.py:129
 #, python-format
 msgid "%s / %s"
 msgstr ""
 
-#: ../plugin/controllers/models/info.py:306
-#: ../plugin/controllers/models/info.py:430
 #, python-format
 msgid "%s free / %s total"
 msgstr "%s ledigt / %s totalt"
 
-#: ../plugin/controllers/i18n.py:229
 msgid "(Press 'shift' and click to 'hold')"
 msgstr "(shift + klick ger lång knapptryckning)"
 
-#: ../plugin/controllers/i18n.py:394
 #, fuzzy
 msgid "(in minutes)"
 msgstr "Minut"
 
-#: ../plugin/controllers/i18n.py:461
 msgid "A filename is required"
 msgstr "Vänligen ange ett filnamn"
 
-#: ../plugin/controllers/i18n.py:517
 msgid "A value is required"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:80
 msgid "AGC"
 msgstr "AGC"
 
-#: ../plugin/controllers/i18n.py:75
 msgid "About"
 msgstr "Om"
 
-#: ../plugin/controllers/i18n.py:295
 msgid "Add"
 msgstr "Lägg till"
 
-#: ../plugin/controllers/i18n.py:407
 msgid "Add  AutoTimer  to tags"
 msgstr "Lägg till \"Autotimer\" som etikett"
 
-#: ../plugin/controllers/i18n.py:408
 msgid "Add AutoTimer name to tags"
 msgstr "Lägg till \"Beskrivning\" som etikett"
 
-#: ../plugin/controllers/i18n.py:447
 msgid "Add Bouquet"
 msgstr "Lägg till favoritlista"
 
-#: ../plugin/controllers/i18n.py:450
 msgid "Add IPTV/URL"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:451
 msgid "Add Marker"
 msgstr "Lägg till bokmärke"
 
-#: ../plugin/controllers/i18n.py:452
 msgid "Add Spacer"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:76
 msgid "Add a timer"
 msgstr "Lägg till timer"
 
-#: ../plugin/controllers/i18n.py:78
 msgid "Add a zap timer"
 msgstr "Lägg till zaptimer"
 
-#: ../plugin/controllers/i18n.py:77
 msgid "Add an AutoTimer"
 msgstr "Lägg till Autotimer"
 
-#: ../plugin/controllers/i18n.py:444
 msgid "Add channel(s) as alternate"
 msgstr "Lägg till kanalen som alternativ"
 
-#: ../plugin/controllers/i18n.py:387
 #, fuzzy
 msgid "Add filters"
 msgstr "Lägg till timer"
 
-#: ../plugin/controllers/i18n.py:443
 msgid "Add selection to bouquet"
 msgstr "Lägg till kanal(er) till en favoritlista"
 
-#: ../plugin/plugin.py:174
 msgid "Add service name to stream information"
 msgstr "Lägg till distributörens namn till strömningsinformationen"
 
-#: ../plugin/controllers/i18n.py:404
 msgid "Add similar on conflict"
 msgstr "Lägg till liknande vid konflikt"
 
-#: ../plugin/controllers/i18n.py:360
 msgid "Add tags to recordings"
 msgstr ""
 
-#: ../plugin/controllers/BouquetEditor.py:466
 #, python-format
 msgid "Added %s to alternative service %s."
 msgstr "Lade till %s som alternativ distributör %s."
 
-#: ../plugin/controllers/i18n.py:562
 msgid "Adjust recording time to real event time"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:79 ../plugin/controllers/i18n.py:333
-#: ../plugin/controllers/i18n.py:424
 msgid "After event"
 msgstr "Välj hur aktiveteten skall slutföras"
 
-#: ../plugin/controllers/i18n.py:81 ../plugin/controllers/i18n.py:412
 msgid "All"
 msgstr "Allt"
 
-#: ../plugin/controllers/i18n.py:82
 msgid "All Channels"
 msgstr "Alla kanaler"
 
-#: ../plugin/controllers/i18n.py:292
-msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 3 "
+"as published by the Free Software Foundation."
 msgstr ""
 
-#: ../plugin/controllers/BouquetEditor.py:505
 msgid "All alternative services deleted."
 msgstr "Alla alternativa distributörer togs bort."
 
-#: ../plugin/plugin.py:177
 msgid "Allow IPK Upload"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:561
 msgid "Allow duplicates"
 msgstr ""
 
-#: ../plugin/controllers/BouquetEditor.py:452
 #, python-format
 msgid "Alternative %s created failed."
 msgstr "Misslyckades med att skapa alternativ distributör %s"
 
-#: ../plugin/controllers/i18n.py:429
 msgid "Always"
 msgstr "Alltid"
 
-#: ../plugin/controllers/models/message.py:51
 msgid "Answer is NO!"
 msgstr "Svaret är NEJ!"
 
-#: ../plugin/controllers/models/message.py:51
 msgid "Answer is YES!"
 msgstr "Svaret är JA!"
 
-#: ../plugin/controllers/i18n.py:391
 msgid "Any day"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:353
 msgid "Any service/recording"
 msgstr "Valfri distributör/inspelning"
 
-# Lämnas oöversatt t.v.
-#: ../plugin/controllers/i18n.py:468
-msgid "Apid"
+msgid "Audio"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:65
+msgid "Audio PID (APID)"
+msgstr ""
+
 msgid "April"
 msgstr "April"
 
-#: ../plugin/controllers/i18n.py:455
 msgid "Are you sure you want to delete the selected bouquet?"
 msgstr "Vill du verkligen ta bort favoritlistan"
 
-#: ../plugin/controllers/i18n.py:454
 msgid "Are you sure you want to delete the selected item(s)?"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:382
 #, fuzzy
 msgid "Are you sure you want to delete this AutoTimer?"
 msgstr "Vill du verkligen ta bort timern"
 
-#: ../plugin/controllers/i18n.py:110
 msgid "Are you sure you want to delete this recording?"
 msgstr "Vill du verkligen ta bort inspelningen"
 
-#: ../plugin/controllers/i18n.py:112
 msgid "Are you sure you want to delete this timer?"
 msgstr "Vill du verkligen ta bort timern"
 
-#: ../plugin/controllers/i18n.py:208
 msgid "Are you sure you want to rename this recording?"
 msgstr "Skall namnet på inspelningen verkligen bytas"
 
-#: ../plugin/controllers/i18n.py:462
 msgid "Are you sure you want to restore from file?"
 msgstr "Vill du verkligen återställa från en fil"
 
-#: ../plugin/controllers/i18n.py:159
 #, fuzzy
 msgid "Are you sure you want to start recording instantly?"
 msgstr "Starta direktinspelning"
 
-#: ../plugin/controllers/i18n.py:433
 msgid "Ask, default No"
 msgstr "Fråga, med standardsvar Nej"
 
-#: ../plugin/controllers/i18n.py:432
 msgid "Ask, default Yes"
 msgstr "Fråga, med standardsvar Ja"
 
-#: ../plugin/controllers/i18n.py:69
 msgid "August"
 msgstr "Augusti"
 
-#: ../plugin/controllers/i18n.py:83
 msgid "Authors"
 msgstr "Applikationsutvecklare"
 
-#: ../plugin/controllers/i18n.py:84 ../plugin/controllers/i18n.py:411
 msgid "Auto"
 msgstr "Automatiskt"
 
-#: ../plugin/controllers/i18n.py:397
 msgid "AutoPoll"
 msgstr "Automatiskt bevakning"
 
-#: ../plugin/controllers/i18n.py:298
 msgid "AutoTimer Edit"
 msgstr "Redigera AutoTimer"
 
-#: ../plugin/controllers/i18n.py:396
 msgid "AutoTimer Settings"
 msgstr "Inställningar för AutoTimer"
 
-#: ../plugin/controllers/base.py:362 ../plugin/controllers/i18n.py:297
 msgid "AutoTimers"
 msgstr "AutoTimer-lista"
 
-#: ../plugin/controllers/i18n.py:256
 msgid "Autotimer Preview"
 msgstr "AutoTimer förhandsvisning"
 
-#: ../plugin/controllers/i18n.py:87
 msgid "BER"
 msgstr "BER"
 
-#: ../plugin/controllers/i18n.py:85
 msgid "Back"
 msgstr "Tillbaka"
 
-#: ../plugin/controllers/i18n.py:431
 msgid "Background only"
 msgstr "Uppdateringen sker i bakgrunden"
 
-#: ../plugin/controllers/i18n.py:86 ../plugin/controllers/i18n.py:419
 msgid "Begin"
 msgstr "Börjar"
 
-#: ../plugin/controllers/i18n.py:340
 #, fuzzy
 msgid "Begin of \"After event\" timespan"
 msgstr "Början av begränsningsperioden (tt:mm)"
 
-#: ../plugin/controllers/i18n.py:324
 msgid "Beginning of timespan"
 msgstr "Perioden börjar"
 
-#: ../plugin/controllers/i18n.py:502
 msgid "Bookmark"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:501
 msgid "Bookmarks"
 msgstr ""
 
-#: ../plugin/controllers/BouquetEditor.py:128
 #, python-format
 msgid "Bouquet %s already exists."
 msgstr "Favoritlistan %s finns redan."
 
-#: ../plugin/controllers/BouquetEditor.py:219
 #, python-format
 msgid "Bouquet %s can not be moved."
 msgstr "Favoritlista %s kan inte flyttas."
 
-#: ../plugin/controllers/BouquetEditor.py:123
 #, python-format
 msgid "Bouquet %s created."
 msgstr "Favoritlista %s  skapades."
 
-#: ../plugin/controllers/BouquetEditor.py:192
 #, python-format
 msgid "Bouquet %s deleted."
 msgstr "Favoritlistan %s togs bort."
 
-#: ../plugin/controllers/BouquetEditor.py:547
 #, python-format
 msgid "Bouquet %s is locked."
 msgstr "Favoritlistan %s är låst."
 
-#: ../plugin/controllers/BouquetEditor.py:555
 #, python-format
 msgid "Bouquet %s is unlocked."
 msgstr "Favoritlistan %s är upplåst."
 
-#: ../plugin/controllers/BouquetEditor.py:217
 #, python-format
 msgid "Bouquet %s moved."
 msgstr "Favoritlista %s flyttades."
 
-#: ../plugin/controllers/BouquetEditor.py:187
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Borttagning av favoritlista %s misslyckades. Distributören eller föränderlig lista är ogiltig."
+msgstr ""
+"Borttagning av favoritlista %s misslyckades. Distributören eller föränderlig "
+"lista är ogiltig."
 
-#: ../plugin/controllers/BouquetEditor.py:185
 #, python-format
 msgid "Bouquet %s removed failed."
 msgstr "Borttagning av favoritlista %s misslyckades."
 
-#: ../plugin/controllers/i18n.py:228
 msgid "Bouquet Editor"
 msgstr "Redigerare för favoritlistor"
 
-#: ../plugin/controllers/i18n.py:457
 msgid "Bouquet name"
 msgstr "Favoritlistans namn"
 
-#: ../plugin/controllers/BouquetEditor.py:388
 msgid "Bouquet renamed successfully."
 msgstr "Namnet på favoritlistan ändrades."
 
-#: ../plugin/controllers/BouquetEditor.py:649
 msgid "Bouquet-settings were restored successfully"
 msgstr "Favoritlistans inställningar återskapades."
 
-#: ../plugin/controllers/base.py:367
 msgid "BouquetEditor"
 msgstr "Redigera favoritlistor"
 
-#: ../plugin/controllers/BouquetEditor.py:130
-#: ../plugin/controllers/BouquetEditor.py:454
 msgid "Bouquetlist is not editable!"
 msgstr "Favoritlistan kan inte redigeras!"
 
-#: ../plugin/controllers/i18n.py:88
 msgid "Bouquets"
 msgstr "Favoritlistor"
 
-#: ../plugin/controllers/i18n.py:90
 msgid "Box"
 msgstr "Box"
 
-#: ../plugin/controllers/i18n.py:91
 msgid "Box Control"
 msgstr "Boxstryrning"
 
-#: ../plugin/controllers/i18n.py:89
 msgid "Box Info"
 msgstr "Boxinfo"
 
-#: ../plugin/controllers/i18n.py:92
 msgid "Box Uptime"
 msgstr "Boxens drifttid"
 
-#: ../plugin/controllers/i18n.py:93
 msgid "Brand"
 msgstr "Fabrikat"
 
-#: ../plugin/controllers/models/services.py:377
 msgid "Cable"
 msgstr "Kabel-TV"
 
-#: ../plugin/controllers/i18n.py:493
 msgid "Calendar Week"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:94 ../plugin/plugin.py:125
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: ../plugin/controllers/i18n.py:515
 #, fuzzy
 msgid "Cancelled"
 msgstr "Avbryt"
 
-#: ../plugin/controllers/i18n.py:95
 msgid "Capacity"
 msgstr "Kapacitet"
 
-#: ../plugin/controllers/i18n.py:146
 msgid "Capture screenshot"
 msgstr "Ta en skärmdump"
 
-#: ../plugin/controllers/i18n.py:96
 msgid "Channel"
 msgstr "Kanal"
 
-#: ../plugin/controllers/i18n.py:97 ../plugin/controllers/i18n.py:357
 msgid "Channels"
 msgstr "Kanaler"
 
-#: ../plugin/plugin.py:176
 msgid "Character encoding for EPG data"
 msgstr "Teckenkodning av EPG-data"
 
-#: ../plugin/controllers/models/info.py:344 ../plugin/controllers/i18n.py:98
 msgid "Chipset"
 msgstr "Chipset"
 
-# There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
-#: ../plugin/controllers/i18n.py:99
 msgid "Cleanup Timers"
 msgstr "Rensa timer"
 
-#: ../plugin/controllers/i18n.py:100
 msgid "Close"
 msgstr "Stäng"
 
-#: ../plugin/controllers/i18n.py:518
 #, fuzzy
 msgid "Common Settings"
 msgstr "Inställningar"
 
-#: ../plugin/controllers/i18n.py:566
 msgid "Config"
 msgstr ""
 
-#: ../plugin/controllers/models/timers.py:282
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Timerkonflikt(er) upptäckta %s"
 
-#: ../plugin/controllers/i18n.py:101
 msgid "Contributors"
 msgstr "Andra som har bidragit"
 
-#: ../plugin/controllers/i18n.py:102
 msgid "Control"
 msgstr "Kontroll"
 
-#: ../plugin/controllers/models/timers.py:313
 #, python-format
 msgid "Could not add timer '%s'!"
 msgstr "Kunde inte lägga till timer '%s'!"
 
-#: ../plugin/controllers/models/timers.py:446
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Kunde inte hitta någon timer '%s' med angiven start-och stopptid"
 
-#: ../plugin/controllers/i18n.py:442
 msgid "Create bouquet from selection"
 msgstr "Lägg till leverantören som en ny favoritlista"
 
-#: ../plugin/controllers/i18n.py:103
 msgid "Current"
 msgstr "Pågående"
 
-#: ../plugin/controllers/i18n.py:104
 msgid "Current Event"
 msgstr "Pågående aktivitet"
 
-#: ../plugin/controllers/i18n.py:191 ../plugin/plugin.py:158
 msgid "Custom box name"
 msgstr "Anpassat boxnamn"
 
-#: ../plugin/controllers/i18n.py:329
 msgid "Custom offset"
 msgstr "Anpassad extra tidsmarginal"
 
-#: ../plugin/controllers/models/info.py:76
-#: ../plugin/controllers/models/info.py:95 ../plugin/controllers/i18n.py:114
 msgid "DHCP"
 msgstr "DHCP"
 
-#: ../plugin/controllers/i18n.py:105
 msgid "Date"
 msgstr "Datum"
 
-#: ../plugin/controllers/i18n.py:552
 msgid "Date (newest)"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:551
 msgid "Date (oldest)"
 msgstr ""
 
-#: ../plugin/plugin.py:179
 msgid "Debug - Display Tracebacks in browser"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:73
 msgid "December"
 msgstr "December"
 
-#: ../plugin/controllers/i18n.py:106
 msgid "Deep Standby"
 msgstr "Djupt viloläge"
 
-#: ../plugin/controllers/i18n.py:107
 msgid "Default"
 msgstr "Standardvärde"
 
-#: ../plugin/controllers/i18n.py:421
 msgid "Delay Standby"
 msgstr "Fördröj uppdateringen om mottagaren inte är i viloläge (min)"
 
-#: ../plugin/controllers/i18n.py:108 ../plugin/controllers/i18n.py:376
 msgid "Delete"
 msgstr "Ta bort"
 
-#: ../plugin/controllers/i18n.py:504
 #, fuzzy
 msgid "Delete Bookmark"
 msgstr "Ta bort timern"
 
-#: ../plugin/controllers/i18n.py:449
 msgid "Delete Bouquet"
 msgstr "Ta bort favoritlista"
 
-#: ../plugin/controllers/i18n.py:109
 msgid "Delete Recording"
 msgstr "Ta bort inspelningen"
 
-#: ../plugin/controllers/i18n.py:111
 msgid "Delete Timer"
 msgstr "Ta bort timern"
 
-#: ../plugin/controllers/models/movies.py:489
 msgid ""
 "Delete failed, because there is no movie trash !\n"
 "Disable movie trash in configuration to delete this item"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:516
 #, fuzzy
 msgid "Deleted"
 msgstr "Ta bort"
 
-#: ../plugin/controllers/i18n.py:113
 msgid "Description"
 msgstr "Beskrivning"
 
-#: ../plugin/controllers/i18n.py:129 ../plugin/controllers/i18n.py:375
 #, fuzzy
 msgid "Disable"
 msgstr "avaktiverat"
 
-#: ../plugin/controllers/i18n.py:115
 msgid "Disable Timer"
 msgstr "Slå av timern"
 
-#: ../plugin/plugin.py:168
 msgid "Disable remote access for user root"
 msgstr "Slå av fjärråtkomst för rootanvändaren"
 
-#: ../plugin/controllers/i18n.py:403
 msgid "Disabled on conflict"
 msgstr "Avaktiverad vid konflikt"
 
-#: ../plugin/controllers/i18n.py:489
 msgid "Display Mode"
 msgstr "Visningsläge"
 
-#: ../plugin/controllers/i18n.py:487
 msgid "Display duration (s)"
 msgstr "Tid att visa (s)"
 
-#: ../plugin/controllers/i18n.py:117
 msgid "Distro"
 msgstr "Distribution av programvaran"
 
-#: ../plugin/controllers/i18n.py:118
 msgid "Dolby"
 msgstr "Dolby"
 
-#: ../plugin/controllers/i18n.py:563
 msgid "Don't create timer when movie exists in database"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:119
 msgid "Done"
 msgstr "Utfört"
 
-#: ../plugin/controllers/i18n.py:120
 msgid "Download"
 msgstr "Ladda ner"
 
-#: ../plugin/controllers/i18n.py:121
 msgid "Download playlist for"
 msgstr "Ladda ner spellista för"
 
-#: ../plugin/controllers/i18n.py:122
 msgid "Drivers"
 msgstr "Version av drivrutinerna"
 
-#: ../plugin/controllers/i18n.py:123
 msgid "Duration"
 msgstr "Varaktighet (i min)"
 
-#: ../plugin/controllers/models/info.py:650
 msgid "E"
 msgstr "Ö"
 
-#: ../plugin/controllers/i18n.py:132
 msgid "EPG"
 msgstr "EPG"
 
-#: ../plugin/controllers/i18n.py:133
 msgid "EPG Search"
 msgstr "Sökning i EPG"
 
-#: ../plugin/controllers/i18n.py:301
 msgid "EPG encoding"
 msgstr "EPG teckenkodning"
 
-#: ../plugin/controllers/base.py:371
 msgid "EPGRefresh"
 msgstr "EPGRefresh"
 
-#: ../plugin/controllers/models/timers.py:899
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
 msgstr "FEL: Kan inte ställa in insomningstimer medan enheten är i viloläge"
 
-#: ../plugin/controllers/i18n.py:374
 #, fuzzy
 msgid "Edit"
 msgstr "Redigerare"
 
-#: ../plugin/controllers/i18n.py:124
+#, fuzzy
+msgid "Edit Recording"
+msgstr "Ta bort inspelningen"
+
 msgid "Edit Timer"
 msgstr "Redigera timern"
 
-#: ../plugin/controllers/i18n.py:413
 msgid "Editor"
 msgstr "Redigerare"
 
-#: ../plugin/controllers/i18n.py:128 ../plugin/controllers/i18n.py:129
 #, fuzzy
 msgid "Enable"
 msgstr "Aktiverat"
 
-#: ../plugin/plugin.py:167
 msgid "Enable Authentication for streaming"
 msgstr "Aktivera autentisering för strömning"
 
-#: ../plugin/plugin.py:160
 msgid "Enable HTTP Authentication"
 msgstr "Aktivera HTTP autentisering"
 
-#: ../plugin/plugin.py:161
 msgid "Enable HTTPS"
 msgstr "Aktivera HTTPS"
 
-#: ../plugin/plugin.py:164
 msgid "Enable HTTPS Authentication"
 msgstr "Aktivera HTTPS autentisering"
 
-#: ../plugin/controllers/i18n.py:418
 msgid "Enable Messages"
 msgstr "Aktivera statusmeddelanden"
 
-#: ../plugin/plugin.py:172
 msgid "Enable Parental Control"
 msgstr "Aktivera föräldrakontroll"
 
-#: ../plugin/controllers/i18n.py:125
 msgid "Enable Timer"
 msgstr "Aktivera timern"
 
-#: ../plugin/plugin.py:171
 msgid "Enable access from VPNs"
 msgstr "Aktivera åtkomst från VPN"
 
-#: ../plugin/controllers/i18n.py:364
 msgid "Enable filtering"
 msgstr "Slå på filtrering"
 
-#: ../plugin/controllers/i18n.py:499
 msgid "Enable/Disable Screenshot on key press or"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:130 ../plugin/controllers/i18n.py:299
-#: ../plugin/controllers/i18n.py:417
 msgid "Enabled"
 msgstr "Aktiverat"
 
-#: ../plugin/controllers/i18n.py:131
 msgid "Encrypted"
 msgstr "Krypterat"
 
-#: ../plugin/controllers/i18n.py:127 ../plugin/controllers/i18n.py:420
 msgid "End"
 msgstr "Slutar"
 
-#: ../plugin/controllers/i18n.py:341
 #, fuzzy
 msgid "End of \"After event\" timespan"
 msgstr "Slutet på begränsningsperioden (tt:mm)"
 
-#: ../plugin/controllers/i18n.py:325
 msgid "End of timespan"
 msgstr "Perioden slutar"
 
-#: ../plugin/controllers/i18n.py:459
+#, fuzzy
+msgid "Enter Text"
+msgstr "Mottagartyp"
+
 msgid "Enter a name for the new bouquet"
 msgstr "Ange ett nytt namn för favoritlistan"
 
-#: ../plugin/controllers/i18n.py:460
 msgid "Enter a name for the new marker"
 msgstr "Ange ett nytt namn för bokmärket"
 
-#: ../plugin/controllers/i18n.py:385
 #, fuzzy
 msgid "Enter a name for this AutoTimer"
 msgstr "Ange ett nytt namn för bokmärket"
 
-#: ../plugin/controllers/i18n.py:505
 msgid "Enter path"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:386
 msgid "Enter the text to find in the EPG"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:137
 msgid "Error"
 msgstr "Fel"
 
-#: ../plugin/controllers/models/timers.py:1072
 msgid "Error parsing vps.xml"
 msgstr "vps.xml feltolkas"
 
-#: ../plugin/controllers/ipkg.py:281
 msgid "Error upload File"
 msgstr "Fel vid uppladdning av fil"
 
-#: ../plugin/controllers/BouquetEditor.py:592
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
 msgstr "Fel vid förberedelse av säkerhetskopiering, filen %s saknas."
 
-#: ../plugin/controllers/BouquetEditor.py:598
 msgid "Error while preparing backup file."
 msgstr "Fel vid förberedelse av fil för säkerhetskopia."
 
-#: ../plugin/controllers/ipkg.py:297
 msgid "Error writing File"
 msgstr "Fel när filen skrevs"
 
-#: ../plugin/controllers/BouquetEditor.py:653
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
 msgstr "Fel: %s existerar inte. Därför kan återställning inte utföras..."
 
-#: ../plugin/controllers/BouquetEditor.py:651
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
 msgstr "Fel: %s skapades inte av WebBouquetEditor... "
 
-#: ../plugin/controllers/BouquetEditor.py:194
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
 msgstr "Fel: Favoritlistan %s kunde inte tas bort, OSError."
 
-#: ../plugin/controllers/i18n.py:479
 msgid "Event not found"
 msgstr "Aktiviteten hittades inte"
 
-#: ../plugin/controllers/models/timers.py:327
 msgid "EventId not found"
 msgstr "Aktivitetens ID kunde inte hittas"
 
-#: ../plugin/controllers/i18n.py:138
 msgid "Every"
 msgstr "Varje"
 
-#: ../plugin/controllers/i18n.py:366
 msgid "Exclude when"
 msgstr "Undanta"
 
-#: ../plugin/controllers/i18n.py:339
 #, fuzzy
 msgid "Execute \"After event\" during timespan"
 msgstr "Begränsa valt avslutsalternativ till att gälla tidsintervallet"
 
-#: ../plugin/controllers/i18n.py:546
 msgid "Export"
 msgstr "Exportera"
 
-#: ../plugin/controllers/i18n.py:139
 msgid "Extras"
 msgstr "Extrafunktioner"
 
-#: ../plugin/controllers/i18n.py:438
 msgid "Fake Recording"
 msgstr "Simulerad inspelning"
 
-#: ../plugin/controllers/i18n.py:401
 msgid "Fastscan"
 msgstr "Snabb avsökning"
 
-#: ../plugin/controllers/i18n.py:63
 msgid "February"
 msgstr "Februari"
 
-#: ../plugin/controllers/i18n.py:141
 msgid "Firmware version"
 msgstr "Firmware version"
 
-#: ../plugin/controllers/i18n.py:425
 msgid "Force"
 msgstr "Tvinga fram en uppdatering"
 
-#: ../plugin/controllers/i18n.py:42
 msgid "Fr"
 msgstr "Fr"
 
-#: ../plugin/controllers/i18n.py:143
 msgid "Free"
 msgstr "Ledigt"
 
-#: ../plugin/controllers/i18n.py:144
 msgid "Free Memory"
 msgstr "Ledigt minne"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:51
 msgid "Fri"
 msgstr "Fre"
 
-#: ../plugin/controllers/i18n.py:58
 msgid "Friday"
 msgstr "Fredag"
 
-#: ../plugin/controllers/i18n.py:327
 msgid "From date"
 msgstr "Inte efter"
 
-#: ../plugin/controllers/models/info.py:349 ../plugin/controllers/i18n.py:142
 msgid "Front processor version"
 msgstr "Frontprocessorversion"
 
-#: ../plugin/controllers/i18n.py:539
 #, fuzzy
 msgid "Full remote"
 msgstr "Dölj stor fjärrkontroll"
 
-#: ../plugin/controllers/models/info.py:396
-#: ../plugin/controllers/models/info.py:402
-#: ../plugin/controllers/models/info.py:417
-#: ../plugin/controllers/models/info.py:420
-#: ../plugin/controllers/models/movies.py:278
-#: ../plugin/controllers/models/movies.py:408
-#: ../plugin/controllers/models/movies.py:828
 msgid "GB"
 msgstr "GB"
 
-#: ../plugin/controllers/i18n.py:147
 msgid "GUI version"
 msgstr "GUI version"
 
-#: ../plugin/controllers/i18n.py:145
 msgid "Gateway"
 msgstr "Gateway"
 
-#: ../plugin/controllers/BouquetEditor.py:450
 msgid "Get mutable list for new created alternative failed!"
-msgstr "Den föränderliga listan för en ny alternativ distributör kunde inte hämtas!"
+msgstr ""
+"Den föränderliga listan för en ny alternativ distributör kunde inte hämtas!"
 
-#: ../plugin/controllers/BouquetEditor.py:125
 msgid "Get mutable list for new created bouquet failed!"
 msgstr "Den föränderliga listan för en ny favorit kunde inte hämtas!"
 
-#: ../plugin/controllers/i18n.py:556
 msgid "HH:MM"
 msgstr ""
 
-#: ../plugin/plugin.py:159
 msgid "HTTP port"
 msgstr "HTTP port"
 
-#: ../plugin/plugin.py:163
 msgid "HTTPS port"
 msgstr "HTTPS port"
 
-#: ../plugin/controllers/i18n.py:150
 msgid "Hard disk model"
 msgstr "Hårddiskmodell"
 
-#: ../plugin/controllers/i18n.py:148
 msgid "Hide full remote"
 msgstr "Dölj stor fjärrkontroll"
 
-#: ../plugin/controllers/i18n.py:149
 msgid "High Resolution"
 msgstr "Hög upplösning"
 
-#: ../plugin/controllers/i18n.py:151
 msgid "Hour"
 msgstr "Timme"
 
-#: ../plugin/controllers/i18n.py:456
 msgid "IPTV / URL name"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:152
 msgid "IPv4 address"
 msgstr "IPv4-adress"
 
-#: ../plugin/controllers/models/info.py:160 ../plugin/controllers/i18n.py:155
 msgid "IPv4-only Python/Twisted"
 msgstr "Endast Python/Twisted för IPv4"
 
-#: ../plugin/controllers/models/info.py:156 ../plugin/controllers/i18n.py:153
 msgid "IPv4-only kernel"
 msgstr "Kernel enbart för IPv4"
 
-#: ../plugin/controllers/i18n.py:156
 msgid "IPv6 address(es)"
 msgstr "IPv6 adress(er)"
 
-#: ../plugin/controllers/i18n.py:547
 msgid "Import"
 msgstr "Importera"
 
-#: ../plugin/controllers/i18n.py:134
 msgid "Include description"
 msgstr "Inkludera beskrivningen"
 
-#: ../plugin/controllers/i18n.py:532
 #, fuzzy
 msgid "Include extended description"
 msgstr "Inkludera beskrivningen"
 
-#: ../plugin/controllers/i18n.py:531
 #, fuzzy
 msgid "Include short description"
 msgstr "Inkludera beskrivningen"
 
-#: ../plugin/controllers/i18n.py:365
 msgid "Include when"
 msgstr "Inkludera"
 
-#: ../plugin/controllers/models/timers.py:562
 msgid "Infinite Instant recording started"
 msgstr "En direktinspelning utan tidsgräns startades"
 
-#: ../plugin/controllers/i18n.py:157
 msgid "Info"
 msgstr "Information"
 
-#: ../plugin/controllers/i18n.py:427
 msgid "Inherit AutoTimer"
 msgstr "Överför distributörer från Autotimer"
 
-#: ../plugin/controllers/i18n.py:524
 msgid "Install Package"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:526
 #, fuzzy
 msgid "Installed"
 msgstr "Direktinspelning"
 
-#: ../plugin/controllers/i18n.py:158
 msgid "Instant Record"
 msgstr "Direktinspelning"
 
-#: ../plugin/controllers/models/timers.py:553
 msgid "Instant record for current Event started"
 msgstr "En direktinspelning av aktuellt program startades"
 
-#: ../plugin/controllers/BouquetEditor.py:350
 msgid "Internal error!"
 msgstr "Internt fel!"
 
-#: ../plugin/controllers/i18n.py:398
 #, fuzzy, python-format
 msgid "Interval (in %s)"
 msgstr "Intervall (i tim)"
 
-#: ../plugin/controllers/i18n.py:422
 msgid "Interval (min.)"
 msgstr "Tid för att hålla servicekanalen öppen (min)"
 
-#: ../plugin/controllers/i18n.py:423
 msgid "Interval (sec.)"
 msgstr "Tid för att hålla servicekanalen öppen (sek)"
 
-#: ../plugin/controllers/i18n.py:62
 msgid "January"
 msgstr "Januari"
 
-#: ../plugin/controllers/i18n.py:160
 msgid "Javascript Libraries"
 msgstr "Javascriptbibliotek"
 
-#: ../plugin/controllers/i18n.py:68
 msgid "July"
 msgstr "Juli"
 
-#: ../plugin/controllers/i18n.py:67
 msgid "June"
 msgstr "Juni"
 
-#: ../plugin/controllers/i18n.py:161
 msgid "Just play"
 msgstr "Spela upp"
 
-#: ../plugin/controllers/i18n.py:162
 msgid "Kernel"
 msgstr "Kernel"
 
-#: ../plugin/controllers/i18n.py:163
 msgid "LCD"
 msgstr ""
 
-#: ../plugin/controllers/base.py:334
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux inställning"
 
-#: ../plugin/controllers/i18n.py:164
 msgid "LICENSE"
 msgstr "LICENS"
 
-#: ../plugin/controllers/i18n.py:383
 msgid "Label series"
 msgstr "Lägg till avsnittsinformation för TV-serier"
 
-#: ../plugin/controllers/i18n.py:495
 msgid "Link Speed"
 msgstr "Länkhastighet"
 
-#: ../plugin/controllers/models/timers.py:523
 msgid "List of Timers has been cleaned"
 msgstr "Timerlistan har rensats"
 
-#: ../plugin/controllers/i18n.py:463
 #, fuzzy
 msgid "Loading..."
 msgstr "laddar"
 
-#: ../plugin/controllers/i18n.py:166
 msgid "Location"
 msgstr "Plats"
 
-#: ../plugin/controllers/i18n.py:167
 msgid "Locked"
 msgstr "Låst"
 
-#: ../plugin/controllers/i18n.py:168
 msgid "MAC address"
 msgstr "MAC-adress"
 
-#: ../plugin/controllers/models/info.py:393
-#: ../plugin/controllers/models/info.py:404
-#: ../plugin/controllers/models/info.py:422
-#: ../plugin/controllers/models/movies.py:280
-#: ../plugin/controllers/models/movies.py:410
-#: ../plugin/controllers/models/movies.py:830
 msgid "MB"
 msgstr "MB"
 
-#: ../plugin/controllers/i18n.py:169
 msgid "Main"
 msgstr "Huvudfunktioner"
 
-#: ../plugin/controllers/i18n.py:260
 msgid "Main Memory"
 msgstr "Totalt minne"
 
-#: ../plugin/controllers/i18n.py:64
 msgid "March"
 msgstr "Mars"
 
-#: ../plugin/controllers/BouquetEditor.py:348
 msgid "Marker added."
 msgstr "Bokmärket lades till."
 
-#: ../plugin/controllers/i18n.py:458
 msgid "Marker name"
 msgstr "Bokmärkets namn"
 
-#: ../plugin/controllers/i18n.py:300
 msgid "Match text"
 msgstr "Matcha titeln"
 
-#: ../plugin/controllers/i18n.py:399
 msgid "Max Days"
 msgstr "Max dagar framåt"
 
-#: ../plugin/controllers/i18n.py:66
 msgid "May"
 msgstr "Maj"
 
-#: ../plugin/controllers/models/message.py:35
 msgid "Message sent successfully!"
 msgstr "Meddelandet skickades!"
 
-#: ../plugin/controllers/i18n.py:434
 msgid "Method"
 msgstr "Uppdatera EPG genom att använda"
 
-#: ../plugin/controllers/i18n.py:521
 msgid "Minimal EPG list"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:519
 #, fuzzy
 msgid "Minimal movie list"
 msgstr "Filmlista"
 
-#: ../plugin/controllers/i18n.py:520
 msgid "Minimal timer list"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:170
 msgid "Minute"
 msgstr "Minut"
 
-#: ../plugin/controllers/web.py:85
 #, python-format
 msgid "Missing mandatory parameter '%s'"
 msgstr "Saknar den obligatoriska parametern '%s'"
 
-#: ../plugin/controllers/models/timers.py:654
 msgid "Missing requesteter: sRef"
 msgstr "Begäran saknas: sRef"
 
-#: ../plugin/controllers/i18n.py:38
 msgid "Mo"
 msgstr "Må"
 
-#: ../plugin/controllers/i18n.py:172
 msgid "Model"
 msgstr "Modell"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:47
 msgid "Mon"
 msgstr "Mån"
 
-#: ../plugin/controllers/i18n.py:54
 msgid "Monday"
 msgstr "Måndag"
 
-#: ../plugin/controllers/i18n.py:345
 msgid "Monthly"
 msgstr "Månadsvis"
 
-#: ../plugin/controllers/i18n.py:527
 msgid "More"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:173
 msgid "More details"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:481
 msgid "Movie database for EPG"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:533
 #, fuzzy
 msgid "Movie search"
 msgstr "Filmer"
 
-#: ../plugin/controllers/i18n.py:174
 msgid "Movielist"
 msgstr "Filmlista"
 
-#: ../plugin/controllers/i18n.py:175
 msgid "Movies"
 msgstr "Filmer"
 
-#: ../plugin/controllers/BouquetEditor.py:132
-#: ../plugin/controllers/BouquetEditor.py:756
 msgid "Multi-Bouquet is not enabled!"
 msgstr "Multi-favoritlista är inte aktiverad!"
 
-#: ../plugin/controllers/i18n.py:176
 msgid "MultiEPG"
 msgstr "MultiEPG"
 
-#: ../plugin/controllers/base.py:358
 #, fuzzy
 msgid "NCam Webinterface"
 msgstr "Webbgränssnitt för OSCam "
 
-#: ../plugin/controllers/i18n.py:177
 msgid "Name"
 msgstr "Namn"
 
-#: ../plugin/controllers/i18n.py:549
 msgid "Name (a-z)"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:550
 msgid "Name (z-a)"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:178
 msgid "Namespace"
 msgstr "Namnrymd"
 
-#: ../plugin/controllers/i18n.py:179
 msgid "Network Interface"
 msgstr "Nätverksgränssnitt"
 
-#: ../plugin/controllers/i18n.py:496
 msgid "Network Shares"
 msgstr "Delade nätverksresurser"
 
-#: ../plugin/controllers/i18n.py:344 ../plugin/controllers/i18n.py:430
 msgid "Never"
 msgstr "Aldrig"
 
-#: ../plugin/controllers/models/services.py:370
-#: ../plugin/controllers/i18n.py:384
 msgid "New"
 msgstr "Ny"
 
-#: ../plugin/controllers/i18n.py:503
 #, fuzzy
 msgid "New Bookmark:"
 msgstr "Ta bort timern"
 
-#: ../plugin/controllers/i18n.py:255
 msgid "New Name"
 msgstr "Nytt namn"
 
-#: ../plugin/controllers/i18n.py:350
 msgid "No"
 msgstr "Nej"
 
-#: ../plugin/controllers/i18n.py:181
 #, fuzzy
 msgid "No EPG data available."
 msgstr "beskrivning saknas"
 
-#: ../plugin/controllers/BouquetEditor.py:524
 msgid "No Parent Control Setup Pin given!"
 msgstr "Ingen kod för föräldrakontroll angavs!"
 
-#: ../plugin/controllers/models/message.py:46
 msgid "No answer in time"
 msgstr "Svaret kom inte i tid"
 
-#: ../plugin/controllers/BouquetEditor.py:225
-#: ../plugin/controllers/BouquetEditor.py:255
-#: ../plugin/controllers/BouquetEditor.py:281
-#: ../plugin/controllers/BouquetEditor.py:324
-#: ../plugin/controllers/BouquetEditor.py:474
 msgid "No bouquet given!"
 msgstr "Ingen favoritlista angavs!"
 
-#: ../plugin/controllers/BouquetEditor.py:93
-#: ../plugin/controllers/BouquetEditor.py:154
-#: ../plugin/controllers/BouquetEditor.py:200
 msgid "No bouquet name given!"
 msgstr "Namn saknas för favoritlistan!"
 
-#: ../plugin/controllers/BouquetEditor.py:419
 msgid "No current service given!"
 msgstr "Ingen aktuell distributör angiven!"
 
-#: ../plugin/controllers/models/timers.py:547
 msgid "No event found! Not recording!"
 msgstr "Ingen aktivitet hittades. Spelar inte in!"
 
-#: ../plugin/controllers/BouquetEditor.py:331
 msgid "No marker-name given!"
 msgstr "Bokmärkesnamnet angavs inte!"
 
-#: ../plugin/controllers/i18n.py:393
 #, fuzzy
 msgid "No matches were found in the EPG"
 msgstr "Kunde inte hitta någon passande timer"
 
-#: ../plugin/controllers/models/timers.py:470
-#: ../plugin/controllers/models/timers.py:515
 msgid "No matching Timer found"
 msgstr "Kunde inte hitta någon passande timer"
 
-#: ../plugin/controllers/BouquetEditor.py:364
 msgid "No new servicename given!"
 msgstr "Ett nytt distributörsnamn angavs inte!"
 
-#: ../plugin/controllers/BouquetEditor.py:210
-#: ../plugin/controllers/BouquetEditor.py:267
 msgid "No position given!"
 msgstr "Position angavs inte!"
 
-#: ../plugin/controllers/BouquetEditor.py:138
 msgid "No provider given!"
 msgstr "Ingen leverantör angavs!"
 
-#: ../plugin/controllers/BouquetEditor.py:231
-#: ../plugin/controllers/BouquetEditor.py:261
-#: ../plugin/controllers/BouquetEditor.py:297
-#: ../plugin/controllers/BouquetEditor.py:358
-#: ../plugin/controllers/BouquetEditor.py:416
-#: ../plugin/controllers/BouquetEditor.py:480
-#: ../plugin/controllers/BouquetEditor.py:517
 msgid "No service given!"
 msgstr "Ingen distributör angavs!"
 
-#: ../plugin/controllers/i18n.py:513
 #, fuzzy
 msgid "No, cancel"
 msgstr "Avbryt"
 
-#: ../plugin/controllers/i18n.py:410
 msgid "None"
 msgstr "Inga"
 
-#: ../plugin/controllers/i18n.py:183
 msgid "Nothing"
 msgstr "Inget"
 
-#: ../plugin/controllers/i18n.py:184
 msgid "Nothing playing."
 msgstr "Inget spelas upp"
 
-#: ../plugin/controllers/i18n.py:405
 msgid "Notify if Conflict"
 msgstr "Meddela vid konflikt"
 
-#: ../plugin/controllers/i18n.py:406
 msgid "Notify if Similar"
 msgstr "Meddela om liknande finns"
 
-#: ../plugin/controllers/i18n.py:72
 msgid "November"
 msgstr "November"
 
-#: ../plugin/controllers/i18n.py:185
 msgid "Now"
 msgstr "Nu"
 
-#: ../plugin/controllers/i18n.py:343
+msgid "Now/Next Columns"
+msgstr ""
+
 msgid "Number of recordings remaining"
 msgstr "Antal inspelningar kvar"
 
-#: ../plugin/controllers/base.py:356
 msgid "OSCam Webinterface"
 msgstr "Webbgränssnitt för OSCam "
 
-#: ../plugin/controllers/i18n.py:192
 msgid "OSD"
 msgstr "OSD"
 
-#: ../plugin/controllers/i18n.py:71
 msgid "October"
 msgstr "Oktober"
 
-#: ../plugin/controllers/i18n.py:331
 msgid "Offset after recording (mins)"
 msgstr "Marginal efter inspelningen (i min)"
 
-#: ../plugin/controllers/i18n.py:330
 msgid "Offset before recording (mins)"
 msgstr "Marginal före inspelningen (i min)"
 
-#: ../plugin/controllers/i18n.py:187
 msgid "On"
 msgstr "På"
 
-#: ../plugin/controllers/i18n.py:352
 msgid "On any service"
 msgstr "Hos valfri distributör"
 
-#: ../plugin/controllers/i18n.py:351
 msgid "On same service"
 msgstr "Hos samma distributör"
 
-# Lämnas oöversatt t.v.
-#: ../plugin/controllers/i18n.py:472
-msgid "Onid"
+msgid "ONID"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:326
 msgid "Only match between dates"
 msgstr "Tider skall bokas endast vissa datum"
 
-#: ../plugin/controllers/i18n.py:323
 msgid "Only match during timespan"
 msgstr "Enbart matchning under tidsintervallet "
 
-#: ../plugin/controllers/i18n.py:136
 msgid "Oops, no results matched your search"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:510
 msgid "Oops..."
 msgstr ""
 
-# The translation could have been sharper but as it has to fit in it’s frame this may be an acceptable compromise. I would have prefered: "Open Source webbgränssnitt för Linuxbaserade digitalboxar"...
-#: ../plugin/controllers/i18n.py:188
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Open Source webbstöd för Linux-set-top-boxar"
 
-#: ../plugin/controllers/i18n.py:193
 msgid "Open in new window"
 msgstr "Öppna i ett nytt fönster"
 
-#: ../plugin/plugin.py:148
 msgid "OpenWebInterface Enabled"
 msgstr "OpenWebif är aktiverad"
 
-#: ../plugin/controllers/i18n.py:483
 msgid "OpenWebif Browser Settings"
 msgstr "OpenWebifs inställningar för webbläsare"
 
-#: ../plugin/plugin.py:188 ../plugin/plugin.py:256 ../plugin/plugin.py:258
-#: ../plugin/plugin.py:260
 msgid "OpenWebif Configuration"
 msgstr "Inställningar för OpenWebif"
 
-#: ../plugin/controllers/i18n.py:484
 msgid "OpenWebif Settings"
 msgstr "Inställningar för OpenWebif"
 
-#: ../plugin/plugin.py:134
 #, fuzzy
 msgid "OpenWebif url:"
 msgstr "OpenWebif URL:"
 
-#: ../plugin/controllers/models/services.py:264
-#: ../plugin/controllers/i18n.py:475
 msgid "Orbital Position"
 msgstr "Omloppsbanans position"
 
-# One extra space inserted in front for better readability in context.
-#: ../plugin/controllers/i18n.py:322
 msgid "Override found with alternative service"
 msgstr " Använd vid behov samma kanal från en alternativ distributör"
 
-#: ../plugin/controllers/i18n.py:507
 msgid "Packages"
 msgstr ""
 
-#: ../plugin/controllers/BouquetEditor.py:528
-#: ../plugin/controllers/BouquetEditor.py:530
 msgid "Parent Control Setup Pin is wrong!"
 msgstr "Koden för föräldrakontroll är fel!"
 
-#: ../plugin/controllers/BouquetEditor.py:511
 msgid "Parent Control is not activated."
 msgstr "Föräldrakontroll är inte aktiverat."
 
-#: ../plugin/controllers/i18n.py:428
 msgid "Parse AutoTimer"
 msgstr "Starta en Autotimeranalys efter EPG uppdateringar"
 
-# Lämnas oöversatt t.v.
-#: ../plugin/controllers/i18n.py:470
-msgid "Pcrpid"
+msgid "PCR PID"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:194
 msgid "PiP"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:436
 msgid "Picture in Picture"
 msgstr "Bild i Bild"
 
-#: ../plugin/controllers/i18n.py:437
 msgid "Picture in Picture (hidden)"
 msgstr "Bild i Bild (dold)"
 
-#: ../plugin/controllers/i18n.py:414
 msgid "Plain"
 msgstr "Normalt formulär"
 
-#: ../plugin/controllers/i18n.py:195
 msgid "Playback"
 msgstr "Uppspelning"
 
-#: ../plugin/plugin.py:178
 msgid "Playback IPTV Streams in browser"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:196
 msgid "Playlist"
 msgstr "Spellista"
 
-#: ../plugin/controllers/i18n.py:559
 #, fuzzy
 msgid "Playlist format"
 msgstr "Spellista"
 
-# Lämnas oöversatt t.v.
-#: ../plugin/controllers/i18n.py:467
-msgid "Pmtpid"
+msgid "PMT PID"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:197
 msgid "Power Control"
 msgstr "Strömbrytare"
 
-#: ../plugin/controllers/models/timers.py:743
 msgid "PowerTimer feature not available"
 msgstr "Funktionen för att hantera PowerTimer saknas"
 
-#: ../plugin/controllers/i18n.py:389
 msgid "Preview"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:498
 msgid "Primetimes"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:378
 msgid "Process"
 msgstr "Analysera"
 
-#: ../plugin/controllers/i18n.py:198
 msgid "Provider"
 msgstr "Leverantör"
 
-#: ../plugin/controllers/i18n.py:199
 msgid "Providers"
 msgstr "Leverantörer"
 
-#: ../plugin/controllers/i18n.py:200
+msgid "REC"
+msgstr ""
+
 msgid "Radio"
 msgstr "Radio"
 
-#: ../plugin/controllers/i18n.py:201
 msgid "Reboot Box"
 msgstr "Starta om boxen"
 
-#: ../plugin/controllers/i18n.py:342
 msgid "Record a maximum of # times"
 msgstr "Spela maximalt in vid x tillfällen"
 
-#: ../plugin/controllers/i18n.py:202
-msgid "Recording Status"
+msgid "Recording"
+msgstr ""
+
+#, fuzzy
+msgid "Recording Type"
 msgstr "Inspelning pågår"
 
-#: ../plugin/controllers/i18n.py:203 ../plugin/controllers/i18n.py:409
 msgid "Refresh"
 msgstr "Uppdatera"
 
-#: ../plugin/controllers/i18n.py:205
 msgid "Refresh Timer"
 msgstr "Uppdatera listan"
 
-#: ../plugin/controllers/i18n.py:204
 msgid "Refresh automatically every"
 msgstr "Uppdatera automatiskt varje"
 
-#: ../plugin/controllers/i18n.py:440
 msgid "Refresh now"
 msgstr "Uppdatera nu"
 
-#: ../plugin/controllers/i18n.py:294
 msgid "Reload"
 msgstr "Ladda om"
 
-#: ../plugin/controllers/i18n.py:206
 msgid "Remote"
 msgstr "Fjärrkontroll"
 
-#: ../plugin/controllers/i18n.py:522
 msgid "Remove Package"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:388
 #, fuzzy
 msgid "Remove filter"
 msgstr "Fjärrkontroll"
 
-#: ../plugin/controllers/i18n.py:453 ../plugin/controllers/i18n.py:512
 msgid "Rename"
 msgstr "Byt namn"
 
-#: ../plugin/controllers/i18n.py:448
 msgid "Rename Bouquet"
 msgstr "Byt namn på favoritlista"
 
-#: ../plugin/controllers/i18n.py:207
 msgid "Rename Recording"
 msgstr "Byt namn på inspelningen"
 
-#: ../plugin/controllers/i18n.py:209
 msgid "Repeated"
 msgstr "Repeterat"
 
-#: ../plugin/plugin.py:165
 msgid "Require client cert for HTTPS"
 msgstr "Kräv klientcertifikat för HTTPS"
 
-#: ../plugin/controllers/i18n.py:349
 msgid "Require description to be unique"
 msgstr "Kräv att beskrivningen är unik"
 
-#: ../plugin/controllers/i18n.py:555
 #, fuzzy
 msgid "Reset"
 msgstr "Återställ antalet"
 
-#: ../plugin/controllers/i18n.py:348
 msgid "Reset count"
 msgstr "Återställ antalet"
 
-# Have to use "GUI" because of limited space. I would prefere "Användargränssnitt" if space were without limits.
-#: ../plugin/controllers/i18n.py:210
 msgid "Restart GUI"
 msgstr "Starta om GUI"
 
-#: ../plugin/controllers/i18n.py:135 ../plugin/controllers/i18n.py:361
 msgid "Restrict to bouquets"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:362
 #, fuzzy
 msgid "Restrict to channels"
 msgstr "Välj kanaler"
 
-#: ../plugin/controllers/i18n.py:293
 msgid "Root"
 msgstr "Root"
 
-#: ../plugin/controllers/models/info.py:67
 msgid "SLAAC"
 msgstr "SLAAC"
 
-#: ../plugin/controllers/i18n.py:235
 msgid "SNR"
 msgstr "SNR"
 
-#: ../plugin/controllers/i18n.py:43
 msgid "Sa"
 msgstr "Lö"
 
-#: ../plugin/controllers/i18n.py:212
 msgid "Safe mode"
 msgstr "Felsäkert läge"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:52
 msgid "Sat"
 msgstr "Lör"
 
-#: ../plugin/controllers/i18n.py:213
 msgid "Satellites"
 msgstr "Satelliter"
 
-#: ../plugin/controllers/i18n.py:214
 msgid "Satfinder"
 msgstr "Satfinder"
 
-#: ../plugin/controllers/i18n.py:59
 msgid "Saturday"
 msgstr "Lördag"
 
-#: ../plugin/controllers/i18n.py:215 ../plugin/controllers/i18n.py:377
-#: ../plugin/controllers/i18n.py:439 ../plugin/plugin.py:126
 msgid "Save"
 msgstr "Spara"
 
-#: ../plugin/controllers/i18n.py:216
 msgid "Screenshot"
 msgstr "Skärmdump"
 
-#: ../plugin/controllers/i18n.py:217 ../plugin/controllers/i18n.py:445
 msgid "Search"
 msgstr "Sök"
 
-#: ../plugin/controllers/i18n.py:218
 #, fuzzy
 msgid "Search CSFD"
 msgstr "Sök i IMDb"
 
-#: ../plugin/controllers/i18n.py:219
 msgid "Search IMDb"
 msgstr "Sök i IMDb"
 
-#: ../plugin/controllers/i18n.py:220
 msgid "Search KinoPoisk"
 msgstr "Sök i KinoPoisk"
 
-#: ../plugin/controllers/i18n.py:221
 #, fuzzy
 msgid "Search TV Guide UK"
 msgstr "TV tablå"
 
-#: ../plugin/controllers/i18n.py:446
 msgid "Search by name, sd / hd / uhd, or provider"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:316
 #, fuzzy
 msgid "Search strictness"
 msgstr "Sök i KinoPoisk"
 
-#: ../plugin/controllers/i18n.py:302
 #, fuzzy
 msgid "Search type"
 msgstr "Sök"
 
-#: ../plugin/controllers/i18n.py:535
 msgid "Select IPK file for upload"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:554
 msgid "Select..."
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:223
 msgid "Send Message"
 msgstr "Skicka meddelandet"
 
-#: ../plugin/controllers/i18n.py:225
 msgid "Send a Message"
 msgstr "Skicka ett meddelande"
 
-#: ../plugin/controllers/i18n.py:70
 msgid "September"
 msgstr "September"
 
-# Översätts ofta till Leverantör i stället.
-#: ../plugin/controllers/i18n.py:226
 msgid "Service"
 msgstr "Distributör"
 
-#: ../plugin/controllers/BouquetEditor.py:314
 #, python-format
 msgid "Service %s added."
 msgstr "Distributören %s lades till."
 
-#: ../plugin/controllers/BouquetEditor.py:317
 #, python-format
 msgid "Service %s already exists in bouquet %s."
 msgstr "Distributören %s finns redan i favoritlista %s."
 
-#: ../plugin/controllers/BouquetEditor.py:249
 #, python-format
 msgid "Service %s can not be removed."
 msgstr "Distributör %s kan inte tas bort."
 
-#: ../plugin/controllers/BouquetEditor.py:545
 #, python-format
 msgid "Service %s is locked."
 msgstr "Distributören %s är låst."
 
-#: ../plugin/controllers/BouquetEditor.py:553
 #, python-format
 msgid "Service %s is unlocked."
 msgstr "Distributören %s är upplåst."
 
-#: ../plugin/controllers/BouquetEditor.py:274
 #, python-format
 msgid "Service %s moved."
 msgstr "Distributör %s flyttades."
 
-#: ../plugin/controllers/BouquetEditor.py:248
 #, python-format
 msgid "Service %s removed from bouquet %s."
 msgstr "Distributör %s togs bort från favoritlistan %s."
 
-#: ../plugin/controllers/BouquetEditor.py:240
 #, python-format
 msgid "Service %s removed."
 msgstr "Distributör %s togs bort."
 
-#: ../plugin/controllers/BouquetEditor.py:275
 msgid "Service can not be moved."
 msgstr "Distributören kan inte tas bort."
 
-#: ../plugin/controllers/BouquetEditor.py:405
 msgid "Service can not be renamed."
 msgstr "Distributörens namn kan inte ändras."
 
-#: ../plugin/controllers/BouquetEditor.py:497
 msgid "Service is not an alternative."
 msgstr "Distributören är inte en alternativ distributör."
 
-#: ../plugin/controllers/BouquetEditor.py:404
 msgid "Service renamed successfully."
 msgstr "Namnet på distributören ändrades."
 
-#: ../plugin/controllers/models/services.py:372
 msgid "Services"
 msgstr "Tjänster"
 
-#: ../plugin/controllers/i18n.py:332
 msgid "Set maximum duration"
 msgstr "Ställ in maximal varaktighet (i min)"
 
-#: ../plugin/controllers/base.py:321 ../plugin/controllers/i18n.py:227
-#: ../plugin/controllers/i18n.py:381
 msgid "Settings"
 msgstr "Inställningar"
 
-#: ../plugin/controllers/i18n.py:232
 msgid "Show EPG for"
 msgstr "Visa EPG för"
 
-#: ../plugin/controllers/i18n.py:230
 msgid "Show Full OpenWebif"
 msgstr "Visa fullständiga OpenWebif"
 
-#: ../plugin/controllers/i18n.py:542
 msgid "Show IPTV channels in selection (eg. Autotimer)"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:189 ../plugin/plugin.py:154
+msgid "Show all packages"
+msgstr ""
+
 msgid "Show box name in header"
 msgstr "Visa digitalboxens namn i rubriken"
 
-#: ../plugin/controllers/i18n.py:540
 msgid "Show details"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:231
 msgid "Show full remote"
 msgstr "Visa stor fjärrkontroll"
 
-#: ../plugin/controllers/i18n.py:402
 msgid "Show in Extensions menu"
 msgstr "Visa i utvidgningsmenyn"
 
-#: ../plugin/controllers/i18n.py:545
 msgid "Show picon background"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:544
 msgid "Show picons"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:480
 msgid "Show picons in channel list"
 msgstr "Visa programikon i kanallistan"
 
-#: ../plugin/controllers/i18n.py:541
 #, fuzzy
 msgid "Show service type in channel list"
 msgstr "Visa programikon i kanallistan"
 
-#: ../plugin/controllers/i18n.py:233
 msgid "Shutdown"
 msgstr "Stäng av"
 
-# Lämnas oöversatt t.v.
-#: ../plugin/controllers/i18n.py:473
-msgid "Sid"
+msgid "Service ID (SID)"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:379
 msgid "Simulate"
 msgstr "Simulera"
 
-#: ../plugin/controllers/i18n.py:234
 msgid "Site and sources"
 msgstr "Webbplats och källor"
 
-#: ../plugin/controllers/i18n.py:567
 msgid "Skins"
 msgstr ""
 
-#: ../plugin/controllers/models/timers.py:827
-#: ../plugin/controllers/models/timers.py:860
-#: ../plugin/controllers/models/timers.py:886
-#: ../plugin/controllers/models/timers.py:915
-#: ../plugin/controllers/models/timers.py:961
-#: ../plugin/controllers/models/timers.py:1043
 msgid "SleepTimer error"
 msgstr "Fel på insomningstimern"
 
-#: ../plugin/controllers/models/timers.py:904
-#: ../plugin/controllers/models/timers.py:1019
-#: ../plugin/controllers/models/timers.py:1038
 msgid "Sleeptimer has been disabled"
 msgstr "Insomningstimer har avaktiverats"
 
-#: ../plugin/controllers/models/timers.py:822
-#: ../plugin/controllers/models/timers.py:854
-#: ../plugin/controllers/models/timers.py:881
-#: ../plugin/controllers/models/timers.py:955
 msgid "Sleeptimer is disabled"
 msgstr "Insomningstimer är avaktiverad"
 
-#: ../plugin/controllers/models/timers.py:822
-#: ../plugin/controllers/models/timers.py:854
-#: ../plugin/controllers/models/timers.py:881
-#: ../plugin/controllers/models/timers.py:955
 msgid "Sleeptimer is enabled"
 msgstr "Insommningstimer är aktiverad"
 
-#: ../plugin/controllers/models/timers.py:910
-#: ../plugin/controllers/models/timers.py:1019
-#: ../plugin/controllers/models/timers.py:1033
 #, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Insomningstimer är ställd på %d minuter"
 
-#: ../plugin/controllers/i18n.py:236
 msgid "Software"
 msgstr "Programvara"
 
-#: ../plugin/controllers/i18n.py:182
 msgid "Sorry this page is not yet implemented"
 msgstr "Tyvärr är sidan inte implementerad ännu"
 
-#: ../plugin/controllers/i18n.py:548
 msgid "Sort"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:486
 msgid "Spinner"
 msgstr "Vänta-ikon"
 
-# Lämnas oöversatt t.v.
-#: ../plugin/controllers/i18n.py:474
-msgid "Sref"
+msgid "SRef"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:237
 msgid "Standby"
 msgstr "Viloläge"
 
-#: ../plugin/controllers/i18n.py:238
 msgid "Standby Toggle"
 msgstr "På/Viloläge"
 
-#: ../plugin/controllers/i18n.py:126
 msgid "Start"
 msgstr "Börjar"
 
-#: ../plugin/controllers/i18n.py:241
 msgid "Start Instant Record"
 msgstr "Starta direktinspelning"
 
-#: ../plugin/controllers/i18n.py:240
 msgid "Start time is after end time"
 msgstr "Starttiden är senare än sluttiden"
 
-#: ../plugin/controllers/i18n.py:534
 msgid "Start typing..."
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:390
 msgid "State"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:242
 msgid "Stream"
 msgstr "Strömma"
 
-#: ../plugin/controllers/i18n.py:565
 #, fuzzy
 msgid "Stream Clients"
 msgstr "Strömma"
 
-#: ../plugin/plugin.py:173
 #, fuzzy
 msgid "Streaming port"
 msgstr "Strömma"
 
-#: ../plugin/controllers/i18n.py:44
 msgid "Su"
 msgstr "Sö"
 
-#: ../plugin/controllers/i18n.py:553
 msgid "Subdirectories"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:243
 msgid "Subnet mask"
 msgstr "Subnet mask"
 
-#: ../plugin/controllers/i18n.py:244
 msgid "Subservices"
 msgstr "Underleverantörer"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:46
 msgid "Sun"
 msgstr "Sön"
 
-#: ../plugin/controllers/i18n.py:60
 msgid "Sunday"
 msgstr "Söndag"
 
-#: ../plugin/controllers/i18n.py:186
 msgid "System OE"
 msgstr "OE system"
 
-#: ../plugin/controllers/models/info.py:400
-#: ../plugin/controllers/models/info.py:412
-#: ../plugin/controllers/models/info.py:414
 msgid "TB"
 msgstr "TB"
 
-#: ../plugin/controllers/i18n.py:271
 msgid "TV"
 msgstr "TV"
 
-#: ../plugin/controllers/i18n.py:490
 msgid "TV Guide"
 msgstr "TV tablå"
 
-#: ../plugin/controllers/i18n.py:272
 msgid "TV Multi EPG"
 msgstr "TV Multi EPG"
 
-#: ../plugin/controllers/i18n.py:245 ../plugin/controllers/i18n.py:355
 msgid "Tags"
 msgstr "Etiketter"
 
-#: ../plugin/controllers/i18n.py:246
 msgid "Teletext"
 msgstr "Text-TV"
 
-#: ../plugin/controllers/i18n.py:247
+msgid "Teletext PID"
+msgstr "Teletext PID"
+
 msgid "Television"
 msgstr "Television"
 
-#: ../plugin/controllers/i18n.py:248
 msgid "Template Engine"
 msgstr "Webbutvecklingsverktyg"
 
-#: ../plugin/controllers/base.py:408
 msgid "Terminal"
 msgstr ""
 
-#: ../plugin/controllers/models/services.py:379
 msgid "Terrestrial"
 msgstr "Markbunden"
 
-#: ../plugin/controllers/i18n.py:249
 msgid "Text"
 msgstr "Text"
 
-#: ../plugin/controllers/i18n.py:41
 msgid "Th"
 msgstr "To"
 
-#: ../plugin/controllers/web.py:91 ../plugin/controllers/web.py:1554
 #, python-format
 msgid "The parameter '%s' can't be empty"
 msgstr "Parametern '%s' kan inte vara tom "
 
-#: ../plugin/controllers/web.py:340
 msgid "The parameter 'command' must be a number"
 msgstr "Parametern 'command' måste vara numerisk"
 
-# The word "framgångsrikt" to get a string to end the sentence.
-#: ../plugin/controllers/models/timers.py:509
 #, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "Timern '%s' har %s framgångsrikt"
 
-#: ../plugin/controllers/models/timers.py:459
-#: ../plugin/controllers/models/timers.py:465
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Timern '%s' togs bort"
 
-#: ../plugin/controllers/models/timers.py:501
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
 msgstr "Timern '%s' har registrerats! Inte avaktiverad!"
 
-#: ../plugin/controllers/i18n.py:485
 msgid "Theme"
 msgstr "Tema"
 
-#: ../plugin/controllers/i18n.py:274 ../plugin/plugin.py:152
 #, fuzzy
 msgid "Theme mode"
 msgstr "Tema"
 
-#: ../plugin/controllers/BouquetEditor.py:318
 msgid "This service can not be added."
 msgstr "Distributören kan inte läggas till."
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:50
 msgid "Thu"
 msgstr "Tor"
 
-#: ../plugin/controllers/i18n.py:57
 msgid "Thursday"
 msgstr "Torsdag"
 
-#: ../plugin/controllers/i18n.py:251
 msgid "Time"
 msgstr "Tid"
 
-#: ../plugin/controllers/i18n.py:491
 msgid "Timeline"
 msgstr "Tidslinje"
 
-#: ../plugin/controllers/i18n.py:252
 msgid "Timeout"
 msgstr "Timeout"
 
-#: ../plugin/controllers/i18n.py:257
 msgid "Timer"
 msgstr "Timer"
 
-#: ../plugin/controllers/models/timers.py:318
 #, python-format
 msgid "Timer '%s' added"
 msgstr "Timer '%s' lades till"
 
-#: ../plugin/controllers/models/timers.py:495
 #, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Timern '%s' finns redan!"
 
-#: ../plugin/controllers/models/timers.py:421
 #, python-format
 msgid "Timer '%s' changed"
 msgstr "Timer '%s' ändrades"
 
-#: ../plugin/controllers/models/timers.py:489
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "Timern '%s' kan inte aktiveras p.g.a. en konflikt"
 
-#: ../plugin/controllers/models/timers.py:440
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
 msgstr "Timer '%s' sparades inte på grund av en konflikt"
 
-#: ../plugin/controllers/i18n.py:478
 msgid "Timer Added"
 msgstr "Timer tillagd"
 
-#: ../plugin/controllers/i18n.py:253
 msgid "Timer added"
 msgstr "Timmer lades till"
 
-#: ../plugin/controllers/models/timers.py:581
 msgid "Timer conflict detected! Not recording!"
 msgstr "En timerkonflikt har upptäckts. Spelar inte in!"
 
-#: ../plugin/controllers/i18n.py:319
 msgid "Timer type"
 msgstr "Timertyp"
 
-#: ../plugin/controllers/models/timers.py:531
 msgid "TimerList has been saved"
 msgstr "Timerlistan har sparats"
 
-#: ../plugin/controllers/i18n.py:254
 msgid "Timerlist"
 msgstr "Timerlista"
 
-# There are some variants but this is the pl-form according to Språknämnden. An older advice from SAOL suggests "timrarna" while the latest edition recommends “timer” for both sing. and pl.
-#: ../plugin/controllers/i18n.py:258 ../plugin/controllers/i18n.py:380
 msgid "Timers"
 msgstr "Timer"
 
-#: ../plugin/controllers/i18n.py:259
 msgid "Title"
 msgstr "Titel"
 
-#: ../plugin/controllers/i18n.py:328
 msgid "To date"
 msgstr "Inte före"
 
-#: ../plugin/controllers/models/movies.py:57
-#: ../plugin/controllers/models/timers.py:48
 msgid "Today"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:262
 msgid "Transcode"
 msgstr "Koda om"
 
-#: ../plugin/controllers/i18n.py:291
 msgid "Translation to Spanish"
 msgstr "Översättning till spanska"
 
-#: ../plugin/controllers/i18n.py:400
 msgid "Try guessing"
 msgstr "Försök att gissa"
 
-# Lämnas oöversatt t.v.
-#: ../plugin/controllers/i18n.py:471
-msgid "Tsid"
+msgid "TSID"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:39
 msgid "Tu"
 msgstr "Ti"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:48
 msgid "Tue"
 msgstr "Tis"
 
-#: ../plugin/controllers/i18n.py:55
 msgid "Tuesday"
 msgstr "Tisdag"
 
-#: ../plugin/controllers/i18n.py:263
-msgid "Tuner Bit Error Rate BER"
-msgstr "Mottagarens bitfelfrekvens BER"
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:264
 msgid "Tuner Number"
 msgstr "Mottagare nummer"
 
-#: ../plugin/controllers/i18n.py:265
 msgid "Tuner Signal"
 msgstr "Mottagarens signal"
 
-#: ../plugin/controllers/i18n.py:268
-msgid "Tuner Signal Power AGC"
-msgstr "Mottagarens signalstyrka AGC"
+msgid "Signal Power (AGC)"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:266
-msgid "Tuner Signal Quality SNR"
-msgstr "Mottagarens signalkvalitet SNR"
+msgid "Signal Quality (SNR)"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:267
-msgid "Tuner Signal Quality SNR_DB"
-msgstr "Mottagarens signalkvalitet SNR_DB"
+msgid "Signal Quality (SNR DB)"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:269
 msgid "Tuner Type"
 msgstr "Mottagartyp"
 
-#: ../plugin/controllers/i18n.py:270
 msgid "Tuners"
 msgstr "Mottagare"
 
-#: ../plugin/controllers/i18n.py:273
 msgid "Type"
 msgstr "Typ"
 
-#: ../plugin/controllers/web.py:247
 #, python-format
 msgid "Unknown Volume command %s"
 msgstr "Okänd volyminstruktion %s"
 
-#: ../plugin/controllers/models/timers.py:676
 #, python-format
 msgid "Unknown command: '%s'"
 msgstr "Odefinierad instruktion: '%s'"
 
-#: ../plugin/controllers/i18n.py:275
 msgid "Upcoming Events"
 msgstr "Kommande aktiviteter"
 
-#: ../plugin/controllers/i18n.py:525
 msgid "Update"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:523
 msgid "Update Package"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:528
 msgid "Update from feed"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:529
 msgid "Upgrade all packages"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:538
 msgid "Upload File Error"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:537
 msgid "Upload package"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:536
 #, fuzzy
 msgid "Uploaded Files"
 msgstr "Fel vid uppladdning av fil"
 
-#: ../plugin/controllers/i18n.py:543
 msgid "Use Channelname for screenshots"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:354
 msgid "Use a custom location"
 msgstr "Använd en anpassad lagringsplats"
 
-#: ../plugin/controllers/i18n.py:560
 msgid "Use as PiP if possible"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:568
 msgid "Use classic interface"
 msgstr ""
 
-#: ../plugin/plugin.py:153
 #, fuzzy
 msgid "Use custom Color"
 msgstr "Använd en anpassad lagringsplats"
 
-#: ../plugin/controllers/i18n.py:190 ../plugin/plugin.py:156
 msgid "Use custom box name"
 msgstr "Använd anpassat boxnamn"
 
-#: ../plugin/controllers/i18n.py:509
 msgid "Use modern design"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:569 ../plugin/plugin.py:150
 msgid "Use modern interface"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:281
+#, fuzzy
+msgid "Use old remote"
+msgstr "Dölj stor fjärrkontroll"
+
 msgid "VPS"
 msgstr "VPS"
 
-#: ../plugin/controllers/models/timers.py:1077
 msgid "VPS plugin not found"
 msgstr "Insticksprogrammet för VPS kunde inte hittas"
 
-#: ../plugin/controllers/i18n.py:276
 msgid "Version"
 msgstr "Version"
 
-#: ../plugin/controllers/i18n.py:277
 msgid "Video"
 msgstr "Video"
 
-#: ../plugin/controllers/i18n.py:278
 msgid "Video Height"
 msgstr "Bildhöjd"
 
-#: ../plugin/controllers/i18n.py:279
-msgid "Video Wide"
-msgstr "Bredbild"
+msgid "Widescreen"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:280
 msgid "Video Width"
 msgstr "Bildbredd"
 
-#: ../plugin/controllers/i18n.py:435
 msgid "Visibly"
 msgstr "Synlig"
 
-#: ../plugin/controllers/i18n.py:282
 msgid "Volume"
 msgstr "Volym"
 
-#: ../plugin/controllers/i18n.py:283
 msgid "Volume Control"
 msgstr "Volymkontroll"
 
-# Lämnas oöversatt t.v.
-#: ../plugin/controllers/i18n.py:469
-msgid "Vpid"
+msgid "Video PID (VPID)"
 msgstr ""
 
-#: ../plugin/controllers/models/info.py:653
 msgid "W"
 msgstr "V"
 
-#: ../plugin/controllers/i18n.py:224
 msgid "Waiting for answer ..."
 msgstr "Väntar på svar..."
 
-#: ../plugin/controllers/i18n.py:239
 #, fuzzy
 msgid "Wake Up"
 msgstr "Vakna från djupt viloläge för EPG-uppdateringar"
 
-#: ../plugin/controllers/i18n.py:426
 msgid "Wakeup"
 msgstr "Vakna från djupt viloläge för EPG-uppdateringar"
 
-#: ../plugin/controllers/i18n.py:285
 msgid "Warning"
 msgstr "Varning"
 
-#: ../plugin/controllers/i18n.py:40
 msgid "We"
 msgstr "On"
 
-#: ../plugin/controllers/i18n.py:492
 msgid "Web TV"
 msgstr "Webb-TV"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:49
 msgid "Wed"
 msgstr "Ons"
 
-#: ../plugin/controllers/i18n.py:56
 msgid "Wednesday"
 msgstr "Onsdag"
 
-#: ../plugin/controllers/i18n.py:347
 msgid "Weekly (Monday)"
 msgstr "Veckovis (måndag)"
 
-#: ../plugin/controllers/i18n.py:346
 msgid "Weekly (Sunday)"
 msgstr "Veckovis (söndag)"
 
-#: ../plugin/plugin.py:170
 msgid "Without auth only local access is allowed!"
 msgstr "Endast lokal åtkomst är tillåten utan inloggning!"
 
-#: ../plugin/controllers/i18n.py:415
 msgid "Wizard"
 msgstr "Använd guide"
 
-#: ../plugin/controllers/i18n.py:511
 msgid "Would you like to save your changes?"
 msgstr ""
 
-#: ../plugin/controllers/web.py:242
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Fel parameterformat 'set=%s'. Använd set=set15 "
 
-#: ../plugin/controllers/i18n.py:557
 msgid "YYYY-MM-DD"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:514 ../plugin/controllers/i18n.py:530
 msgid "Yes"
 msgstr "Ja"
 
-#: ../plugin/controllers/i18n.py:286
 msgid "Yes/No"
 msgstr "Ja/Nej"
 
-#: ../plugin/controllers/models/movies.py:59
-#: ../plugin/controllers/models/timers.py:51
 msgid "Yesterday"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:287
 msgid "Zap"
 msgstr "Zappa"
 
-#: ../plugin/controllers/i18n.py:466
 msgid "Zap & Record"
 msgstr "Spela in & zappa"
 
-#: ../plugin/controllers/i18n.py:288
 msgid "Zap before streaming"
 msgstr "zappa före strömning"
 
-#: ../plugin/controllers/i18n.py:289
 msgid "Zap to"
 msgstr "Zappa till"
 
-#: ../plugin/controllers/i18n.py:290
 msgid "Zapped to"
 msgstr "Zappade till"
 
-#: ../plugin/controllers/i18n.py:392
 #, fuzzy
 msgid "any time"
 msgstr "Lägg till timer"
 
-#: ../plugin/controllers/i18n.py:335
 msgid "auto"
 msgstr "automatisk"
 
-#: ../plugin/plugin.py:132
 msgid "box_ip"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:318
 #, fuzzy
 msgid "case-insensitive"
 msgstr "Söknoggrannhet"
 
-#: ../plugin/controllers/i18n.py:317
 #, fuzzy
 msgid "case-sensitive"
 msgstr "Söknoggrannhet"
 
-#: ../plugin/controllers/i18n.py:369
+msgid "descramble and record ecm"
+msgstr ""
+
 msgid "description contains"
 msgstr "i beskrivningen"
 
-#: ../plugin/controllers/i18n.py:305
 #, fuzzy
 msgid "description match"
 msgstr "Beskrivning"
 
-#: ../plugin/controllers/i18n.py:116
 msgid "disabled"
 msgstr "avaktiverat"
 
-#: ../plugin/controllers/i18n.py:336
 msgid "do nothing"
 msgstr "gör inget"
 
-#: ../plugin/controllers/i18n.py:477
+msgid "don't descramble, record ecm"
+msgstr ""
+
 msgid "error! Loading Page"
 msgstr "Fel! Laddar sidan"
 
-#: ../plugin/controllers/i18n.py:304
 msgid "exact title match"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:314
 msgid "favourite desc match"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:140
 msgid "finished"
 msgstr "slutfördes"
 
-#: ../plugin/controllers/i18n.py:338
 msgid "go to deep standby"
 msgstr "inta djupt viloläge"
 
-#: ../plugin/controllers/i18n.py:337
 msgid "go to standby"
 msgstr "inta viloläge"
 
-#: ../plugin/controllers/i18n.py:33
 msgid "hour"
 msgstr ""
 
-#: ../plugin/controllers/models/info.py:302
-#: ../plugin/controllers/models/info.py:305
-#: ../plugin/controllers/models/movies.py:282
-#: ../plugin/controllers/models/movies.py:412
-#: ../plugin/controllers/models/movies.py:832
 msgid "kB"
 msgstr "kB"
 
-#: ../plugin/controllers/i18n.py:165
 msgid "loading"
 msgstr "laddar"
 
-#: ../plugin/controllers/models/info.py:78
-#: ../plugin/controllers/models/info.py:97
 msgid "manual/disabled"
 msgstr "manuell/avaktiverad"
 
-#: ../plugin/controllers/i18n.py:171
 msgid "mins"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:33
 #, fuzzy
 msgid "minute"
 msgstr "Minut"
 
-#: ../plugin/controllers/i18n.py:180
 msgid "no description available"
 msgstr "beskrivning saknas"
 
-#: ../plugin/controllers/models/info.py:189 ../plugin/controllers/i18n.py:154
 msgid "none/IPv4-only network"
 msgstr "inga/endast IPv4-nätverk"
 
-#: ../plugin/controllers/i18n.py:371
+msgid "normal"
+msgstr ""
+
 msgid "on day"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:370
 msgid "on weekday"
 msgstr "på veckodagar"
 
-# Vad nu det här kan vara bra för?
-#: ../plugin/controllers/BouquetEditor.py:87
 msgid "one two three four unknown command"
 msgstr "ett två tre fyra okänt kommando"
 
-#: ../plugin/controllers/i18n.py:303
 msgid "partial title match"
 msgstr ""
 
-# Lämnas oöversatt t.v. eftersom begreppen kan vara mer kända på engelska än svenska. Står för behörigheten: Enbart läsbehörighet
-#: ../plugin/controllers/models/info.py:463
 msgid "r/o"
 msgstr ""
 
-# Lämnas oöversatt t.v. eftersom begreppen kan vara mer kända på engelska än svenska. Står för behörigheten: Läs- och skriv-behörighet
-#: ../plugin/controllers/models/info.py:459
 msgid "r/w"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:320
 msgid "record"
 msgstr "spela in"
 
-#: ../plugin/controllers/i18n.py:315
 msgid "regex match (experimental)"
 msgstr ""
 
-#: ../plugin/controllers/models/movies.py:483
 msgid "remove"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:211
 msgid "running"
 msgstr "pågår"
 
-#: ../plugin/controllers/i18n.py:222
 msgid "seconds"
 msgstr "sekunder"
 
-#: ../plugin/controllers/i18n.py:359
 msgid "select bouquets"
 msgstr "Välj favoritlistor"
 
-#: ../plugin/controllers/i18n.py:358
 msgid "select channels"
 msgstr "Välj kanaler"
 
-#: ../plugin/controllers/i18n.py:356
 msgid "select tags"
 msgstr "Välj etiketter"
 
-#: ../plugin/controllers/i18n.py:368
 msgid "short description contains"
 msgstr "i kortfattade beskrivningen"
 
-#: ../plugin/controllers/i18n.py:310 ../plugin/controllers/i18n.py:311
 #, fuzzy
 msgid "short description match"
 msgstr "kortfattade beskrivningen matchar"
 
-#: ../plugin/controllers/i18n.py:334
 msgid "standard"
 msgstr "standard"
 
-#: ../plugin/controllers/models/info.py:74
-#: ../plugin/controllers/models/info.py:86
-#: ../plugin/controllers/models/info.py:93
 msgid "static"
 msgstr "statisk"
 
-#: ../plugin/controllers/i18n.py:250
 msgid "this service is protected by a parental control pin"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:367
 msgid "title contains"
 msgstr "i titeln"
 
-#: ../plugin/controllers/i18n.py:313
 msgid "title ends with"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:306 ../plugin/controllers/i18n.py:307
 #, fuzzy
 msgid "title or description match"
 msgstr "titeln eller beskrivningen  matchar"
 
-#: ../plugin/controllers/i18n.py:308 ../plugin/controllers/i18n.py:309
 #, fuzzy
 msgid "title or short description match"
 msgstr "titeln eller kortfattade beskrivningen matchar"
 
-#: ../plugin/controllers/i18n.py:312
 msgid "title starts with"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:261
 msgid "transcoded"
 msgstr "omkodad"
 
-#: ../plugin/controllers/web.py:711
 #, python-format
 msgid "type %s is not a number"
 msgstr "typ %s är inte en siffra"
 
-#: ../plugin/controllers/models/info.py:102
-#: ../plugin/controllers/models/info.py:119
 msgid "unknown"
 msgstr "okänd"
 
-#: ../plugin/controllers/i18n.py:497
 msgid "using"
 msgstr "användning"
 
-# Lämnas oöversatt t.v.
-#: ../plugin/controllers/i18n.py:465
 msgid "via"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:284
 msgid "waiting"
 msgstr "väntar"
 
-#: ../plugin/controllers/i18n.py:373
 msgid "weekday"
 msgstr "Veckodagar"
 
-#: ../plugin/controllers/i18n.py:372
 msgid "weekend"
 msgstr "Veckoslut"
 
-#: ../plugin/controllers/ipkg.py:284
 msgid "wrong filetype"
 msgstr "Fel filtyp"
 
-#: ../plugin/controllers/i18n.py:321
 msgid "zap"
 msgstr "zappa"
+
+#~ msgid "Recording Status"
+#~ msgstr "Inspelning pågår"
+
+#~ msgid "Tuner Bit Error Rate BER"
+#~ msgstr "Mottagarens bitfelfrekvens BER"
+
+#~ msgid "Tuner Signal Power AGC"
+#~ msgstr "Mottagarens signalstyrka AGC"
+
+#~ msgid "Tuner Signal Quality SNR"
+#~ msgstr "Mottagarens signalkvalitet SNR"
+
+#~ msgid "Tuner Signal Quality SNR_DB"
+#~ msgstr "Mottagarens signalkvalitet SNR_DB"
+
+#~ msgid "Video Wide"
+#~ msgstr "Bredbild"

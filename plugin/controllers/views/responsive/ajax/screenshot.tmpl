@@ -25,6 +25,7 @@
 				</li>
 			</ul>
 		</div>
+
 		<div class="body">
 			<div class="row clearfix">
 				<img src="" id="screenshotimage" class="img-fluid rounded" alt="$tstrings['loading'] ...">
@@ -36,18 +37,26 @@
 							<span class="m-r-10 font-12">$tstrings['high_resolution']</span>
 						</label>
 						<label>
+							#if $high_resolution
+							<input type="checkbox" name="ssr_hd" id="ssr_hd" checked="checked">
+							#else
 							<input type="checkbox" name="ssr_hd" id="ssr_hd">
+							#end if
 							<span class="lever switch--skinned"></span>
 						</label>
 					</div>
 					<div class="switch panel-switch-btn m-t-10">
 						<label class="m-r-10 font-12" style="vertical-align: middle;">
 							$tstrings['refresh_auto']
-							<input type="number" name="ssr_i" id="ssr_i" value="30" placeholder="30" size="2" class="form-control inactive align-right">
+							<input type="number" name="ssr_i" id="ssr_i" value="$refresh_time" placeholder="30" size="2" class="form-control inactive align-right">
 							$tstrings['seconds']
 						</label>
 						<label style="vertical-align: middle;">
+							#if $refresh_auto
+							<input type="checkbox" name="ssr_s" id="ssr_s" checked="checked">
+							#else
 							<input type="checkbox" name="ssr_s" id="ssr_s">
+							#end if
 							<span class="lever switch--skinned"></span>
 						</label>
 					</div>

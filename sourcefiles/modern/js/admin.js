@@ -84,7 +84,7 @@ $.AdminBSB.leftSideBar = {
     },
     checkStatuForResize: function (firstTime) {
         var $body = $('body');
-        var $openCloseBar = $('.navbar .navbar-header .bars');
+        var $openCloseBar = $('#leftsidebarin');
         var width = $body.width();
 
         if (firstTime) {
@@ -154,17 +154,6 @@ $.AdminBSB.navbar = {
 		$('.bars').on('click', function () {
 			$body.toggleClass('overlay-open');
 			if ($body.hasClass('overlay-open')) { $overlay.fadeIn(); } else { $overlay.fadeOut(); }
-		});
-
-        //Close collapse bar on click event
-		$('.nav [data-close="true"]').on('click', function () {
-			var isVisible = $('.navbar-toggle').is(':visible');
-			var $navbarCollapse = $('.navbar-collapse');
-			if (isVisible) {
-				$navbarCollapse.slideUp(function () {
-					$navbarCollapse.removeClass('in').removeAttr('style');
-				});
-			}
 		});
 
 		$('.leftnav [data-close="true"]').on('click', function () {

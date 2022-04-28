@@ -45,6 +45,13 @@ class IpkgController(BaseController):
 		self.action = getUrlArg(request, "command", "")
 		package = getUrlArg(request, "package")
 		self.json = getUrlArg(request, "format") == "json"
+		fa = getUrlArg(request, "filter")
+		if fa is None:
+			self.filter = []
+		elif fa == 'all':
+			self.filter = ['dev', 'staticdev', 'dbg', 'doc', 'src', 'po']
+		else:
+			self.filter = fa.split(',')
 		if self.action != '':
 			if self.action in ("update", "upgrade"):
 				return self.CallOPKG(request)
@@ -130,14 +137,21 @@ class IpkgController(BaseController):
 
 		ret = []
 		for name in keys:
-			ret.append({
-				"name": name,
-				"v": map[name][0],
-				"d": map[name][1],
-				"i": map[name][2],
-				"u": map[name][3],
-				"s": map[name][4]
-			})
+			ignore = False
+			if self.filter is not None:
+				for f in self.filter:
+					if name.endswith('-' + f):
+						ignore = True
+						continue
+			if not ignore:
+				ret.append({
+					"name": name,
+					"v": map[name][0],
+					"d": map[name][1],
+					"i": map[name][2],
+					"u": map[name][3],
+					"s": map[name][4]
+				})
 		return ret
 
 	def Runcmd(self, cmd):
@@ -222,16 +236,31 @@ class IpkgController(BaseController):
 							nresult += a + "\n"
 				nresult = nresult.replace("\n\n", "\n")
 				nresult = nresult.replace("\n ", " ")
+				if self.filter is not None:
+					pl = nresult.split("\n")
+					add = True
+					rpl = []
+					for p in pl:
+						if p.count(" - ") > 0:
+							add = True
+							name = p.split(' - ')[0]
+							for f in self.filter:
+								if name.endswith('-' + f):
+									add = False
+						if add:
+							rpl.append(p)
+
 				if self.json:
 					data = []
-					nresult = six.text_type(nresult, errors='ignore')
-					data.append({"result": True, "packages": nresult.split("\n")})
+					data.append({"result": True, "packages": rpl})
 					self.request.setHeader("content-type", "application/json; charset=utf-8")
 					self.request.write(six.ensure_binary(json.dumps(data)))
 				else:
+					nresult = '\n'.join(rpl)
+					nresult.replace('\n', '<br>\n')
 					nresult = six.ensure_binary(nresult)
 					self.request.write(b"<html><body>\n")
-					self.request.write(nresult.replace(b"\n", b"<br>\n"))
+					self.request.write(nresult)
 					self.request.write(b"</body></html>\n")
 			self.request.finish()
 		return server.NOT_DONE_YET
@@ -249,10 +278,12 @@ class IpkgController(BaseController):
 
 	def ShowHint(self, request):
 		html = "<html><body><h1>OpenWebif Interface for OPKG</h1>"
-		html += "Usage : ?command=<cmd>&package=packagename<&format=format><br>"
+		html += "Usage : ?command=<cmd>&package=packagename<&format=format><&filter=FILTER><br>"
 		html += "Valid Commands:<br>list,listall,list_installed,list_upgradable,full<br>"
 		html += "Valid Package Commands:<br>info,status,install,remove,forceremove,forceinstall<br>"
 		html += "Valid Formats:<br>json,html(default)<br>"
+		html += "FILTER :<br>all -> dev,staticdev,dbg,doc,src,po<br>"
+		html += "FILTER :<br>dev,staticdev,...<br>"
 		html += "</body></html>"
 		request.setResponseCode(http.OK)
 		request.write(six.ensure_binary(html))

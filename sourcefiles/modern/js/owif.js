@@ -113,7 +113,7 @@ class API {
     }
   }
 
-  async getAllServices(noiptv) {
+  async getAllServices(noiptv,cuttitle) {
     let niptv = (noiptv==true) ? "&noiptv=1" : "";
     let response = await fetch('/api/getallservices?nolastscanned=1' + niptv);
     if (!response.ok) {
@@ -124,8 +124,14 @@ class API {
       const bouquets = jsonResponse['services'].map((bouquet) => {
         const bouquetChannels = bouquet['subservices'].map((channel) => {
           const name = channel['servicename'];
-          const sRef = channel['servicereference'];
+          let sRef = channel['servicereference'];
           const isMarker = (sRef.indexOf('1:64:') > -1);
+					if(cuttitle) {
+						const li = sRef.lastIndexOf("::");
+						if(li>0) {
+							sRef = sRef.substring(0,li-1);
+						}
+					}
           /*
             1:0: - tv?
             4097: - url?
@@ -153,6 +159,17 @@ class API {
         channels: allChannels,
         bouquets: bouquets,
       };
+    }
+  }
+
+  async sendKeyboardText(text) {
+    const response = (typeof text == 'undefined') ? {'ok': false, 'status': 'Empty request'} : await fetch(`/api/remotecontrol?text=${text}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    } else {
+      const jsonResponse = await response.json();
+      callScreenShot(); // TODO: modernise
+      return jsonResponse;
     }
   }
 

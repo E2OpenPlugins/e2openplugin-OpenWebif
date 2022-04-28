@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ##############################################################################
-#                        2011 E2OpenPlugins                                  #
+#                        2022 E2OpenPlugins                                  #
 #                                                                            #
 #  This file is open source software; you can redistribute it and/or modify  #
 #     it under the terms of the GNU General Public License version 2 as      #
@@ -13,6 +13,13 @@ from Plugins.Extensions.OpenWebif.controllers.i18n import _
 
 lastreply = None
 
+MessageMapping = {
+	0 : MessageBox.TYPE_YESNO,
+	1 : MessageBox.TYPE_INFO,
+	2 : MessageBox.TYPE_WARNING,
+	3 : MessageBox.TYPE_ERROR
+}
+
 
 def messageReply(reply):
 	global lastreply
@@ -21,8 +28,7 @@ def messageReply(reply):
 
 def sendMessage(session, message, ttype, timeout):
 	global lastreply
-	if ttype not in [MessageBox.TYPE_YESNO, MessageBox.TYPE_INFO, MessageBox.TYPE_WARNING, MessageBox.TYPE_ERROR]:
-		ttype = MessageBox.TYPE_INFO
+	ttype = MessageMapping.get(ttype, MessageBox.TYPE_INFO)
 
 	if ttype == MessageBox.TYPE_YESNO:
 		lastreply = None

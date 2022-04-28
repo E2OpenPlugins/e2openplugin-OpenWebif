@@ -1,3 +1,6 @@
+# filename: e2openplugin-OpenWebif/plugin/pluginshook.src
+# a symlink of this file is created to: ./Plugins/Extensions/WebInterface/WebChilds/Toplevel.py
+# symlink created by: e2openplugin-OpenWebif/plugin/httpserver.py
 from __future__ import print_function
 loaded_plugins = []
 
@@ -10,3 +13,4 @@ def addExternalChild(plugin_args):
 					print("[OpenWebif] error: path '%s' already registered" % plugin[0])
 					return
 			loaded_plugins.append(plugin_args)
+			return True

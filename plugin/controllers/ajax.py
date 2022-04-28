@@ -27,13 +27,13 @@ import os
 
 from Plugins.Extensions.OpenWebif.controllers.models.services import getBouquets, getChannels, getSatellites, getProviders, getEventDesc, getChannelEpg, getSearchEpg, getCurrentFullInfo, getMultiEpg, getEvent
 from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
-from Plugins.Extensions.OpenWebif.controllers.models.movies import getMovieList, getMovieSearchList
+from Plugins.Extensions.OpenWebif.controllers.models.movies import getMovieList, getMovieSearchList, getMovieInfo
 from Plugins.Extensions.OpenWebif.controllers.models.timers import getTimers
 from Plugins.Extensions.OpenWebif.controllers.models.config import getConfigs, getConfigsSections
 from Plugins.Extensions.OpenWebif.controllers.models.stream import GetSession
 from Plugins.Extensions.OpenWebif.controllers.base import BaseController
 from Plugins.Extensions.OpenWebif.controllers.models.locations import getLocations
-from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH, TRANSCODING, EXT_EVENT_INFO_SOURCE
+from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, getPublicPath, VIEWS_PATH, TRANSCODING, EXT_EVENT_INFO_SOURCE, HASAUTOTIMER, HASAUTOTIMERTEST, HASAUTOTIMERCHANGE, HASVPS, HASSERIES, ATSEARCHTYPES
 from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg, getEventInfoProvider
 
 try:
@@ -97,13 +97,7 @@ class AjaxController(BaseController):
 		event = getEvent(getUrlArg(request, "sref"), getUrlArg(request, "idev"))
 		event['event']['recording_margin_before'] = config.recording.margin_before.value
 		event['event']['recording_margin_after'] = config.recording.margin_after.value
-		at = False
-		try:
-			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer  # noqa: F401
-			at = True
-		except ImportError:
-			pass
-		event['at'] = at
+		event['at'] = HASAUTOTIMER
 		event['transcoding'] = TRANSCODING
 		event['moviedb'] = config.OpenWebif.webcache.moviedb.value if config.OpenWebif.webcache.moviedb.value else EXT_EVENT_INFO_SOURCE
 		event['extEventInfoProvider'] = extEventInfoProvider = getEventInfoProvider(event['moviedb'])
@@ -147,11 +141,7 @@ class AjaxController(BaseController):
 		if len(events) > 0:
 			t = getTimers(self.session)
 			timers = t["timers"]
-			try:
-				from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer  # noqa: F401
-				at = True
-			except ImportError:
-				pass
+			at = HASAUTOTIMER
 		if config.OpenWebif.webcache.theme.value:
 			theme = config.OpenWebif.webcache.theme.value
 		else:
@@ -179,7 +169,12 @@ class AjaxController(BaseController):
 			box['brand'] = "techomate"
 		elif fileExists("/proc/stb/info/azmodel"):
 			box['brand'] = "azbox"
-		return {"box": box}
+
+		return {"box": box,
+				"high_resolution": config.OpenWebif.webcache.screenshot_high_resolution.value,
+				"refresh_auto": config.OpenWebif.webcache.screenshot_refresh_auto.value,
+				"refresh_time": config.OpenWebif.webcache.screenshot_refresh_time.value
+				}
 
 	def P_movies(self, request):
 		movies = getMovieList(request.args)
@@ -276,7 +271,10 @@ class AjaxController(BaseController):
 		ret['showchanneldetails'] = config.OpenWebif.webcache.showchanneldetails.value
 		ret['showiptvchannelsinselection'] = config.OpenWebif.webcache.showiptvchannelsinselection.value
 		ret['screenshotchannelname'] = config.OpenWebif.webcache.screenshotchannelname.value
+		ret['showallpackages'] = config.OpenWebif.webcache.showallpackages.value
 		ret['allowipkupload'] = config.OpenWebif.allow_upload_ipk.value
+		ret['smallremotes'] = [(x, _('%s Style') % x.capitalize()) for x in config.OpenWebif.webcache.smallremote.choices]
+		ret['smallremote'] = config.OpenWebif.webcache.smallremote.value
 		loc = getLocations()
 		ret['locations'] = loc['locations']
 		if os.path.exists(VIEWS_PATH + "/responsive"):
@@ -310,7 +308,7 @@ class AjaxController(BaseController):
 				day = int(_day)
 				if day > 0 or wadd > 0:
 					now = localtime()
-					begintime = mktime((now.tm_year, now.tm_mon, now.tm_mday + day + wadd, 0, 0, 0, -1, -1, -1))
+					begintime = int(mktime((now.tm_year, now.tm_mon, now.tm_mday + day + wadd, 0, 0, 0, -1, -1, -1)))
 			except ValueError:
 				pass
 		mode = 1
@@ -335,40 +333,19 @@ class AjaxController(BaseController):
 
 	def P_at(self, request):
 		ret = {}
-		ret['hasVPS'] = 0
-		ret['hasSeriesPlugin'] = 0
-		ret['test'] = 0
+		ret['hasVPS'] = 1 if HASVPS else 0
+		ret['hasSeriesPlugin'] = 1 if HASSERIES else 0
+		ret['test'] = 1 if HASAUTOTIMERTEST else 0
+		ret['hasChange'] = 1 if HASAUTOTIMERCHANGE else 0
 		ret['autoadjust'] = getInfo()['timerautoadjust']
-		ret['searchTypes'] = {}
+		ret['searchTypes'] = ATSEARCHTYPES
 
-		try:
-			from Plugins.Extensions.AutoTimer.AutoTimer import typeMap
-			ret['searchTypes'] = typeMap
-		except ImportError:
-			pass
 		if config.OpenWebif.autotimer_regex_searchtype.value:
 			ret['searchTypes']['regex'] = 0
 
 		loc = getLocations()
 		ret['locations'] = loc['locations']
-
-		try:
-			from Plugins.SystemPlugins.vps import Vps  # noqa: F401
-			ret['hasVPS'] = 1
-		except ImportError:
-			pass
-		try:
-			from Plugins.Extensions.SeriesPlugin.plugin import Plugins  # noqa: F401
-			ret['hasSeriesPlugin'] = 1
-		except ImportError:
-			pass
-		try:
-			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerTestResource  # noqa: F401
-			ret['test'] = 1
-		except ImportError:
-			pass
 		ret['showiptvchannelsinselection'] = config.OpenWebif.webcache.showiptvchannelsinselection.value
-
 		return ret
 
 	def P_webtv(self, request):
@@ -394,3 +371,25 @@ class AjaxController(BaseController):
 			except Exception:
 				transcoder_port = 0
 		return {"transcoder_port": transcoder_port, "vxgenabled": vxgenabled, "auth": auth, "streaming_port": streaming_port}
+
+	def P_editmovie(self, request):
+		sref = getUrlArg(request, "sRef")
+		title = ""
+		description = ""
+		tags = ""
+		resulttext = ""
+		result = False
+		if sref:
+			mi = getMovieInfo(sref, NewFormat=True)
+			result = mi["result"]
+			if result:
+				title = mi["title"]
+				if title:
+					description = mi["description"]
+					tags = mi["tags"]
+				else:
+					result = False
+					resulttext = "meta file not found"
+			else:
+				resulttext = mi["resulttext"]
+		return {"title": title, "description": description, "sref": sref, "result": result, "tags": tags, "resulttext": resulttext}

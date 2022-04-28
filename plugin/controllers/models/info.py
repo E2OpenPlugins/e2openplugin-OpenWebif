@@ -42,7 +42,7 @@ from Tools.Directories import fileExists
 from enigma import eEPGCache, eDVBVolumecontrol, eServiceCenter, eServiceReference
 
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
-from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, TRANSCODING
+from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, TRANSCODING, TEXTINPUTSUPPORT
 from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad, removeBad2
 
 try:
@@ -513,7 +513,6 @@ def getInfo(session=None, need_fullinfo=False):
 		try:
 			#  gets all current stream clients for images using eStreamServer
 			#  TODO: get tuner info for streams
-			#  TODO: get recoding/timer info if more than one
 			info['streams'] = GetStreamInfo()
 
 			recs = NavigationInstance.instance.getRecordings()
@@ -525,18 +524,19 @@ def getInfo(session=None, need_fullinfo=False):
 					s_name = sinfo["name"] + ' (' + sinfo["ip"] + ')'
 					print("[OpenWebif] -D- s_name '%s'" % s_name)
 
-				sname = ''
-				timers = []
+				serviceNames = {}
 				for timer in NavigationInstance.instance.RecordTimer.timer_list:
 					if timer.isRunning() and not timer.justplay:
-						timers.append(removeBad(timer.service_ref.getServiceName()))
+						timer_rs = timer.record_service
+						feinfo = timer_rs and hasattr(timer_rs, "frontendInfo") and timer_rs.frontendInfo()
+						fedata = feinfo and hasattr(feinfo, "getFrontendData") and feinfo.getFrontendData()
+						tuner_num = fedata and "tuner_number" in fedata and fedata.get("tuner_number")
+						if tuner_num is not None:
+							if tuner_num in serviceNames: # this tuner is recording more than one timer
+								serviceNames[tuner_num] += ", " + removeBad(timer.service_ref.getServiceName())
+							else:
+								serviceNames[tuner_num] = removeBad(timer.service_ref.getServiceName())
 						print("[OpenWebif] -D- timer '%s'" % timer.service_ref.getServiceName())
-# TODO: more than one recording
-				if len(timers) == 1:
-					sname = timers[0]
-
-				if sname == '' and s_name != '':
-					sname = s_name
 
 				print("[OpenWebif] -D- recs count '%d'" % len(recs))
 
@@ -547,7 +547,10 @@ def getInfo(session=None, need_fullinfo=False):
 						cur_info = feinfo.getTransponderData(True)
 						if cur_info:
 							nr = frontendData['tuner_number']
-							info['tuners'][nr]['rec'] = getOrbitalText(cur_info) + ' / ' + sname
+							if nr in serviceNames:
+								info['tuners'][nr]['rec'] = getOrbitalText(cur_info) + ' / ' + serviceNames[nr]
+							else:
+								info['tuners'][nr]['rec'] = getOrbitalText(cur_info) + ' / ' + s_name
 
 			service = session.nav.getCurrentService()
 			if service is not None:
@@ -574,6 +577,7 @@ def getInfo(session=None, need_fullinfo=False):
 	except Exception as error:
 		print("[OpenWebif] -D- RecordTimerEntry check %s" % error)
 
+	info['textinputsupport'] = TEXTINPUTSUPPORT
 	STATICBOXINFO = info
 	return info
 
@@ -719,14 +723,14 @@ def getStatusInfo(self):
 
 	# Get currently running Service
 	event = None
-	serviceref = self.session.nav.getCurrentlyPlayingServiceReference()
+	serviceref = NavigationInstance.instance.getCurrentlyPlayingServiceReference()
 	serviceref_string = None
 	currservice_station = None
 	if serviceref is not None:
 		serviceHandler = eServiceCenter.getInstance()
 		serviceHandlerInfo = serviceHandler.info(serviceref)
 
-		service = self.session.nav.getCurrentService()
+		service = NavigationInstance.instance.getCurrentService()
 		serviceinfo = service and service.info()
 		event = serviceinfo and serviceinfo.getEvent(0)
 		serviceref_string = serviceref.toString()

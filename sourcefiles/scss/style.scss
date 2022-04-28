@@ -833,4 +833,54 @@ i.fa-mobile {font-size: 22px;}
 	display:none !important;
 }
 
+.remotesmall {
+	table-layout:fixed;
+	width:135px;
+}
+.remotesmall .tdc {
+	width:32px;
+	height:15px;
+	margin: 2px;
+	border: solid;
+	border-width: thin;
+}
+
+.remotesmall .tdf {
+	width:32px;
+	height:15px;
+	border: solid;
+	border-width: thin;
+}
+
+.remotesmall td {
+	width:45px;
+	height:20px;
+	border: solid;
+	border-width: thin;
+}
+.remotesmall td:hover,.tdf:hover {
+	-webkit-filter: invert(80%);
+	filter: invert(80%);
+}
+.remotesmall .tdc:hover {
+	opacity : 0.5;
+	-webkit-filter: invert(10%);
+	filter: invert(10%);
+}
+
+.remotesmall button {
+	width: 100%;
+	background: none;
+	color: inherit;
+	border: 0px;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+}
+
+.bgray {
+	background: #b0b0b0;
+}
+
 @import "channel_tags";

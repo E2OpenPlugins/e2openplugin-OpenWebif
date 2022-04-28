@@ -246,16 +246,26 @@ def getCurrentFullInfo(session):
 
 	inf['date'] = strftime(_("%d.%m.%Y"), (localtime()))
 	inf['dolby'] = False
+	inf['audio_desc'] = ""
+	inf['audio_lang'] = ""
 
 	if audio:
-		n = audio.getNumberOfTracks()
-		idx = 0
-		while idx < n:
-			i = audio.getTrackInfo(idx)
-			description = i.getDescription()
-			if "AC3" in description or "DTS" in description or "Dolby Digital" in description:
-				inf['dolby'] = True
-			idx += 1
+		# n = audio.getNumberOfTracks()
+		# idx = 0
+		# while idx < n:
+		# 	i = audio.getTrackInfo(idx)
+		# 	description = i.getDescription()
+		# 	inf['audio'] = inf['audio'] + description + i.getLanguage() + "["+audio.getTrackInfo(audio.getCurrentTrack()).getLanguage()+"]"
+		# 	if "AC3" in description or "DTS" in description or "Dolby Digital" in description:
+		# 		inf['dolby'] = True
+		# 	idx += 1
+		audio_info = audio.getTrackInfo(audio.getCurrentTrack())
+		description = audio_info.getDescription()
+		if description in ["AC3", "DTS", "Dolby Digital"]:
+			inf['dolby'] = True
+		inf['audio_desc'] = audio_info.getDescription()
+		inf['audio_lang'] = audio_info.getLanguage()
+
 	try:
 		feinfo = session.nav.getCurrentService().frontendInfo()
 	except:  # nosec # noqa: E722
@@ -271,9 +281,9 @@ def getCurrentFullInfo(session):
 		inf['tunernumber'] = frontendData.get("tuner_number")
 		orb = getOrbitalText(cur_info)
 		inf['orbital_position'] = orb
-		if cur_info:
-			if cur_info.get('tuner_type') == "DVB-S":
-				inf['orbital_position'] = _("Orbital Position") + ': ' + orb
+		# if cur_info:
+		# 	if cur_info.get('tuner_type') == "DVB-S":
+		# 		inf['orbital_position'] = _("Orbital Position") + ': ' + orb
 	else:
 		inf['tunernumber'] = "N/A"
 		inf['tunertype'] = "N/A"
@@ -1091,7 +1101,14 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 		endTime = event[eventLookupTable.index('B')] + event[eventLookupTable.index('D')] - 120
 		serviceref = event[eventLookupTable.index('R')]
 		if serviceref not in timerlist:
-			return None
+			# Cut description
+			f = serviceref.rfind("::")
+			if f != -1:
+				serviceref = serviceref[:f+1]
+				if serviceref not in timerlist:
+					return None
+			else:
+				return None
 		for timer in timerlist[serviceref]:
 			if timer.begin <= startTime and timer.end >= endTime:
 				basicStatus = 'timer'
@@ -1102,11 +1119,20 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 				if timer.disabled:
 					basicStatus = 'timer disabled'
 					isEnabled = 0
+				txt = "REC" if timer.justplay == 0 else "ZAP"
+				if timer.justplay == 1 and timer.always_zap == 1:
+					txt = "R+Z"
+				if isAutoTimer == 1:
+					txt = "AT"
+				if hasattr(timer, "ice_timer_id"):
+					if timer.ice_timer_id:
+						txt = "Ice"
 				timerDetails = {
 						'isEnabled': isEnabled,
 						'isZapOnly': int(timer.justplay),
 						'basicStatus': basicStatus,
-						'isAutoTimer': isAutoTimer
+						'isAutoTimer': isAutoTimer,
+						'text': txt
 					}
 				return timerDetails
 
@@ -1157,9 +1183,6 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 		for event in events:
 			timer = getTimerEventStatus(event, eventLookupTable)
 			# timerStatus is kept for backwards compatibility
-			basicStatus = ''
-			if timer:
-				basicStatus = timer['basicStatus']
 
 			ev = {}
 			ev['id'] = event[0]
@@ -1167,8 +1190,12 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 			ev['title'] = event[2]
 			ev['shortdesc'] = convertDesc(event[3])
 			ev['ref'] = event[4]
-			ev['timerStatus'] = basicStatus
 			ev['timer'] = timer
+			if timer:
+				ev['timerStatus'] = timer['basicStatus']
+			else:
+				ev['timerStatus'] = ""
+
 			if Mode == 2:
 				ev['duration'] = event[6]
 

@@ -143,9 +143,15 @@
 				</div>
 				<div class="col-xs-8">
 					<ul class="header-dropdown" style="top: 0; right: 5px;">
-						<li><button type="button" name="rename" title="$tstrings['rename']" class="m-0" style="border: none; background: none;"><i class="material-icons material-icons-mg-right">drive_file_rename_outline</i></button></li>
-						<li><a href="#/at/edit?id={{id}}" title="$tstrings['at_edit']"><i class="material-icons material-icons-mg-right">edit</i></a> 
-						<li><button type="button" name="toggle" title="$tstrings['enable_disable']" class="m-0" style="border: none; background: none;"><i class="material-icons material-icons-mg-right">alarm_off</i></button></li>
+						<li><button type="button" name="preview" data-toggle="modal" data-target="#ATPreviewModal" title="$tstrings['at_preview']" class="m-0" style="border: none; background: none;"><i class="material-icons material-icons-mg-right">view_list</i></button></li>
+						<li><button type="button" name="rename" title="$tstrings['rename']" class="m-0" style="border: none; background: none;"><i class="material-icons material-icons-mg-right">text_fields</i></button></li>
+						<li><a href="/#/at/edit?id={{id}}" title="$tstrings['at_edit']"><i class="material-icons material-icons-mg-right">edit</i></a> 
+						#if $hasChange == 1
+							#set $style_val=""
+						#else
+							#set $style_val="display: none;"
+						#end if
+						<li><button type="button" name="toggle" title="$tstrings['enable_disable']" class="m-0" style="border: none; background: none; $style_val"><i class="material-icons material-icons-mg-right">alarm_off</i></button></li>
 						<li><button type="button" name="delete" title="$tstrings['at_del']"><i class="material-icons material-icons-mg-right">delete_outline</i></button></li>
 					</ul>
 				</div>
@@ -202,6 +208,8 @@
 				<option value="4">$tstrings['friday']</option>
 				<option value="5">$tstrings['saturday']</option>
 				<option value="6">$tstrings['sunday']</option>
+				<option value="weekend">$tstrings['at_filter_weekend']</option>
+				<option value="weekday">$tstrings['at_filter_weekday']</option>
 			</select>
 		</div>
 	</fieldset>
@@ -224,10 +232,10 @@
 
 				<div id="at__page--list">
 					<div class="row align-center clearfix">
-						<a href="#/at/new" class="btn btn--skinned waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></a>
+						<a href="/#/at/new" class="btn btn--skinned waves-effect"><i class="material-icons">add</i><span>$tstrings['at_new']</span></a>
 						<button type="button" name="reload" class="btn btn--skinned waves-effect"><i class="material-icons">refresh</i><span>$tstrings['reload']</span></button>
 						<button type="button" name="process" class="btn btn--skinned waves-effect"><i class="material-icons">code</i><span>$tstrings['at_process']</span></span></button>
-						<button type="button" name="preview" data-toggle="modal" data-target="#ATPreviewModal" class="btn btn--skinned waves-effect"><i class="material-icons">view_list</i><span>$tstrings['at_preview']</span></button>
+						<button type="button" name="previewAll" data-toggle="modal" data-target="#ATPreviewModal" class="btn btn--skinned waves-effect"><i class="material-icons">view_list</i><span>$tstrings['at_preview']</span></button>
 						<button type="button" name="timers" data-toggle="modal" data-target="#ATTimerListModal" class="btn btn--skinned waves-effect"><i class="material-icons" class="btn btn--skinned waves-effect">alarm</i><span>$tstrings['at_timers']</span></button>
 						<button type="button" name="settings" data-toggle="modal" data-target="#ATSettingsModal" class="btn btn--skinned waves-effect" data-title="$tstrings['ats_auto_timer_settings']"><i class="material-icons">settings</i><span>$tstrings['at_settings']</span></button>
 					</div>
@@ -358,13 +366,13 @@
 												<div class="atform__details__element" style="min-height: 8ex;">
 													<div id="_datespan_" class="select-related-container dependent-section dependent-section--disabled">
 														<div class="atform__details__dropdown">
-															<label>$tstrings['at_datespan_from']:&nbsp;</label>
+															<label>$tstrings['at_datespan_to']:&nbsp;</label>
 															<div class="form-line">
 																<input type="date" name="after" placeholder="$tstrings['YYYY_MM_DD']" class="form-control">
 															</div>
 														</div>
 														<div class="atform__details__dropdown">
-															<label>$tstrings['at_datespan_to']:&nbsp;</label>
+															<label>$tstrings['at_datespan_from']:&nbsp;</label>
 															<div class="form-line">
 																<input type="date" name="before" placeholder="$tstrings['YYYY_MM_DD']" class="form-control">
 															</div>
@@ -835,6 +843,15 @@
 <script src="/modern/plugins/xml2json/xml2json.min.js"></script>
 <script src="/modern/plugins/strftime/strftime.js"></script>
 <script src="/modern/plugins/choices/choices.min.js"></script>
+
+## for future use (asset versioning)
+## <!-- htmlWebpackPlugin renders the following js includes -->
+## <%= htmlWebpackPlugin
+##   .tags
+##   .bodyTags
+##   .filter((tag) => tag.tagName === 'script')
+##   .join('') 
+## %>
 <script src="/modern/js/autotimers-app.js"></script>
 
 #end filter

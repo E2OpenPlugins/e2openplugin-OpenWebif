@@ -204,6 +204,7 @@ def saveConfig(path, value):
 		else:
 			cnf.value = value
 		cnf.save()
+		configfiles.reload()
 	except Exception as e:
 		print("[OpenWebif] ", e)
 		return {
@@ -219,7 +220,7 @@ def getConfigs(key):
 	configs = []
 	title = None
 	if not len(configfiles.sections):
-		configfiles.getConfigs()
+		configfiles.parseConfigFiles()
 	if key in configfiles.section_config:
 		config_entries = configfiles.section_config[key][1]
 		title = configfiles.section_config[key][0]
@@ -243,7 +244,8 @@ def getConfigs(key):
 	return {
 		"result": True,
 		"configs": configs,
-		"title": title
+		"title": title,
+		"key": key
 	}
 
 
@@ -290,11 +292,17 @@ def getUtcOffset():
 
 class ConfigFiles:
 	def __init__(self):
+		self.allowedsections = ["usage", "userinterface", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone", "time", "osdsetup", "epgsetup", "display", "remotesetup", "softcamsetup", "logs", "timeshift", "channelselection", "epgsettings", "softwareupdate", "pluginbrowsersetup"]
 		self.setupfiles = []
 		self.sections = []
+		self.itemstoadd = []
 		self.section_config = {}
-		self.allowedsections = ["usage", "userinterface", "recording", "subtitlesetup", "autolanguagesetup", "avsetup", "harddisk", "keyboard", "timezone", "time", "osdsetup", "epgsetup", "display", "remotesetup", "softcamsetup", "logs", "timeshift", "channelselection", "epgsettings", "softwareupdate", "pluginbrowsersetup"]
 		self.getConfigFiles()
+
+	def reload(self):
+		self.section_config = {}
+		self.sections = []
+		self.parseConfigFiles()
 
 	def getConfigFiles(self):
 		setupfiles = [eEnv.resolve('${datadir}/enigma2/setup.xml')]
@@ -307,6 +315,53 @@ class ConfigFiles:
 		for setupfile in setupfiles:
 			if path.exists(setupfile):
 				self.setupfiles.append(setupfile)
+
+	def includeElement(self, element):
+		itemLevel = int(element.get("level", 0))
+		if itemLevel > config.usage.setup_level.index:  # The item is higher than the current setup level.
+			return False
+		requires = element.get("requires")
+		if requires:
+			for require in [x.strip() for x in requires.split(";")]:
+				negate = require.startswith("!")
+				if negate:
+					require = require[1:]
+				if require.startswith("config."):
+					try:
+						result = eval(require)
+						result = bool(result.value and str(result.value).lower() not in ("0", "disable", "false", "no", "off"))
+					except Exception:
+						return False
+				else:
+					result = SystemInfo.get(requires, False)
+				if require and negate == result:  # The item requirements are not met.
+					return False
+		conditional = element.get("conditional")
+		if conditional:
+			try:
+				if not bool(eval(conditional)):
+					return False
+			except Exception:
+				return False
+		return True
+
+	def addItems(self, parentNode, including=True):
+		for element in parentNode:
+			if not element.tag:
+				continue
+			if element.tag in ("elif", "else") and including:
+				break  # End of succesful if/elif branch - short-circuit rest of children.
+			include = self.includeElement(element)
+			if element.tag == "item":
+				if including and include:
+					self.itemstoadd.append(element)
+			elif element.tag == "if":
+				if including:
+					self.addItems(element, including=include)
+			elif element.tag == "elif":
+				including = include
+			elif element.tag == "else":
+				including = True
 
 	def parseConfigFiles(self):
 		sections = []
@@ -323,21 +378,18 @@ class ConfigFiles:
 					continue
 				key = section.get("key")
 				if key not in self.allowedsections:
-					showOpenWebIF = section.get("showOpenWebIF")
-					if showOpenWebIF == "1":
+					showOpenWebIf = section.get("showOpenWebIf", "0")
+					if showOpenWebIf.lower() in ("1", "showopenwebif", "enabled", "on", "true", "yes"):
 						self.allowedsections.append(key)
 					else:
 						continue
 				# print("[OpenWebif] loading configuration section :", key)
-				for entry in section:
-					if entry.tag == "item":
-						requires = entry.get("requires")
-						if requires and not SystemInfo.get(requires, False):
-							continue
 
-						if int(entry.get("level", 0)) > config.usage.setup_level.index:
-							continue
-						configs.append(entry)
+				self.itemstoadd = []
+				self.addItems(section)
+				for entry in self.itemstoadd:
+					configs.append(entry)
+
 				if len(configs):
 					sections.append({
 						"key": key,

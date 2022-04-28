@@ -2,596 +2,457 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-15 10:55+0430\n"
-"PO-Revision-Date: 2020-09-17 20:39+0300\n"
-"Last-Translator: Vytenis P. <vyteniui@gmail.com>\n"
-"Language-Team: Vytenis Pulokas <vyteniui@gmail.com>\n"
-"Language: lt_LT\n"
+"POT-Creation-Date: 2021-12-09 21:02+0100\n"
+"PO-Revision-Date: 2021-12-02 19:57+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Lithuanian <https://hosted.weblate.org/projects/e2openplugin-"
+"openwebif/e2openplugin-openwebif/lt/>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.1\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && (n % 100 < 11 || n % 100 > "
+"19)) ? 0 : ((n % 10 >= 2 && n % 10 <= 9 && (n % 100 < 11 || n % 100 > 19)) ? "
+"1 : 2);\n"
+"X-Generator: Weblate 4.10-dev\n"
 "X-Poedit-Basepath: .\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: ../plugin/controllers/models/timers.py:61
 #, python-format
 msgid "%02d.%02d."
-msgstr ""
+msgstr "%02d.%02d."
 
-#: ../plugin/controllers/models/timers.py:63
 #, python-format
 msgid "%02d.%02d.%d"
-msgstr ""
+msgstr "%02d.%02d.%d"
 
-#: ../plugin/controllers/models/movies.py:69
-#: ../plugin/controllers/models/timers.py:65
 #, python-format
 msgid "%02d:%02d"
-msgstr ""
+msgstr "%02d:%02d"
 
-#: ../plugin/controllers/models/services.py:235
-#: ../plugin/controllers/models/services.py:773
-#: ../plugin/controllers/models/services.py:1004
-#: ../plugin/controllers/models/services.py:1050
 msgid "%d.%m.%Y"
-msgstr ""
+msgstr "%Y.%m.%d"
 
-#: ../plugin/controllers/models/timers.py:187
-#: ../plugin/controllers/models/timers.py:188
-#: ../plugin/controllers/models/timers.py:276
-#: ../plugin/controllers/models/timers.py:277
-#: ../plugin/controllers/models/timers.py:434
-#: ../plugin/controllers/models/timers.py:435
 msgid "%d.%m.%Y %H:%M"
-msgstr ""
+msgstr "%Y.%m.%d %H:%M"
 
-#: ../plugin/controllers/models/movies.py:65
-#: ../plugin/controllers/models/timers.py:59
 #, python-format
 msgid "%s %02d.%02d."
-msgstr ""
+msgstr "%s %02d.%02d."
 
-#: ../plugin/controllers/models/movies.py:67
 #, python-format
 msgid "%s %02d.%02d.%d"
-msgstr ""
+msgstr "%s %02d.%02d.%d"
 
-#: ../plugin/controllers/BouquetEditor.py:549
 #, python-format
 msgid "%s %s is locked."
 msgstr "%s %s užrakinta."
 
-#: ../plugin/controllers/i18n.py:129
 #, python-format
 msgid "%s / %s"
-msgstr ""
+msgstr "%s / %s"
 
-#: ../plugin/controllers/models/info.py:306
-#: ../plugin/controllers/models/info.py:430
 #, python-format
 msgid "%s free / %s total"
 msgstr "%s laisvų / %s iš viso"
 
-#: ../plugin/controllers/i18n.py:229
 msgid "(Press 'shift' and click to 'hold')"
 msgstr "(Shift+click pele ilgam nuspaudimui)"
 
-#: ../plugin/controllers/i18n.py:394
-#, fuzzy
 msgid "(in minutes)"
-msgstr "minutė"
+msgstr "(min.)"
 
-#: ../plugin/controllers/i18n.py:461
 msgid "A filename is required"
 msgstr "Įrašykite failo pavadinimą"
 
-#: ../plugin/controllers/i18n.py:517
 msgid "A value is required"
-msgstr "Jums būtina ką nors parašyti!"
+msgstr "Būtina reikšmė, įrašykite"
 
-#: ../plugin/controllers/i18n.py:80
 msgid "AGC"
 msgstr "AGC"
 
-#: ../plugin/controllers/i18n.py:75
 msgid "About"
 msgstr "Apie OpenWebif"
 
-#: ../plugin/controllers/i18n.py:295
 msgid "Add"
 msgstr "Pridėti"
 
-#: ../plugin/controllers/i18n.py:407
 msgid "Add  AutoTimer  to tags"
-msgstr "Pridėti autolaikmatį prie žymų"
+msgstr "Pridėti autolaikmatį prie žymių"
 
-#: ../plugin/controllers/i18n.py:408
 msgid "Add AutoTimer name to tags"
-msgstr "Pridėti pavadinimą prie žymų"
+msgstr "Pridėti pavadinimą prie žymių"
 
-#: ../plugin/controllers/i18n.py:447
 msgid "Add Bouquet"
 msgstr "Pridėti bukietą"
 
-#: ../plugin/controllers/i18n.py:450
 msgid "Add IPTV/URL"
-msgstr ""
+msgstr "Įtraukti transliacijos adresą"
 
-#: ../plugin/controllers/i18n.py:451
 msgid "Add Marker"
 msgstr "Pridėti žymeklį"
 
-#: ../plugin/controllers/i18n.py:452
 msgid "Add Spacer"
 msgstr "Pridėti skirtuką"
 
-#: ../plugin/controllers/i18n.py:76
 msgid "Add a timer"
 msgstr "Pridėti laikmatį"
 
-#: ../plugin/controllers/i18n.py:78
 msgid "Add a zap timer"
 msgstr "Pridėti perjungimo laikmatį"
 
-#: ../plugin/controllers/i18n.py:77
 msgid "Add an AutoTimer"
 msgstr "Pridėti autolaikmatį"
 
-#: ../plugin/controllers/i18n.py:444
 msgid "Add channel(s) as alternate"
 msgstr "Įtraukti kanalą(us), kaip atsarginį"
 
-#: ../plugin/controllers/i18n.py:387
-#, fuzzy
 msgid "Add filters"
-msgstr "Pridėti laikmatį"
+msgstr "Pridėti filtrus"
 
-#: ../plugin/controllers/i18n.py:443
 msgid "Add selection to bouquet"
 msgstr "Įtraukti kanalą(us) į bukietą"
 
-#: ../plugin/plugin.py:174
 msgid "Add service name to stream information"
 msgstr "Į transliacijos informaciją įtraukti kanalo pavadinimą"
 
-#: ../plugin/controllers/i18n.py:404
 msgid "Add similar on conflict"
 msgstr "Konflikto atveju, pridėti panašų"
 
-#: ../plugin/controllers/i18n.py:360
 msgid "Add tags to recordings"
-msgstr ""
+msgstr "Pridėti žymes į įrašus"
 
-#: ../plugin/controllers/BouquetEditor.py:466
 #, python-format
 msgid "Added %s to alternative service %s."
 msgstr "Įtraukta %s į alternatyvų kanalą %s ."
 
-#: ../plugin/controllers/i18n.py:562
 msgid "Adjust recording time to real event time"
 msgstr "Įrašymo laiką koreguoti pagal realų įvykio laiką"
 
-#: ../plugin/controllers/i18n.py:79 ../plugin/controllers/i18n.py:333
-#: ../plugin/controllers/i18n.py:424
 msgid "After event"
 msgstr "Po įvykio"
 
-#: ../plugin/controllers/i18n.py:81 ../plugin/controllers/i18n.py:412
 msgid "All"
 msgstr "Visi"
 
-#: ../plugin/controllers/i18n.py:82
 msgid "All Channels"
 msgstr "Visi kanalai"
 
-#: ../plugin/controllers/i18n.py:292
-msgid "All Files of this Software are open source software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 as published by the Free Software Foundation."
-msgstr "Visi šios programinės įrangos failai yra atviro kodo; jūs galite platinti ir/ar modifikuoti pagal GNU Bendrosios viešosios licencijos sąlygas v.3, kaip paviešinta 'Free Software Foundation'."
+msgid ""
+"All Files of this Software are open source software; you can redistribute it "
+"and/or modify it under the terms of the GNU General Public License version 3 "
+"as published by the Free Software Foundation."
+msgstr ""
+"Visi šios programinės įrangos failai yra atviro kodo; jūs galite platinti ir/"
+"ar modifikuoti pagal GNU Bendrosios viešosios licencijos sąlygas v.3, kaip "
+"paviešinta 'Free Software Foundation'."
 
-#: ../plugin/controllers/BouquetEditor.py:505
 msgid "All alternative services deleted."
 msgstr "Visi alternatyvūs kanalai ištrinti."
 
-#: ../plugin/plugin.py:177
 msgid "Allow IPK Upload"
 msgstr "Leisti IPK įkėlimą"
 
-#: ../plugin/controllers/i18n.py:561
 msgid "Allow duplicates"
 msgstr "Leisti dubliuotis"
 
-#: ../plugin/controllers/BouquetEditor.py:452
 #, python-format
 msgid "Alternative %s created failed."
 msgstr "Alternatyvos %s sukurti nepavyko."
 
-#: ../plugin/controllers/i18n.py:429
 msgid "Always"
 msgstr "Visada"
 
-#: ../plugin/controllers/models/message.py:51
 msgid "Answer is NO!"
 msgstr "Atsakymas NE!"
 
-#: ../plugin/controllers/models/message.py:51
 msgid "Answer is YES!"
 msgstr "Atsakymas TAIP!"
 
-#: ../plugin/controllers/i18n.py:391
 msgid "Any day"
-msgstr ""
+msgstr "Bet kurią dieną"
 
-#: ../plugin/controllers/i18n.py:353
 msgid "Any service/recording"
 msgstr "Bet kuris kanalas/įrašymas"
 
-#: ../plugin/controllers/i18n.py:468
-msgid "Apid"
-msgstr "Apid"
+msgid "Audio"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:65
+msgid "Audio PID (APID)"
+msgstr ""
+
 msgid "April"
 msgstr "balandžio"
 
-#: ../plugin/controllers/i18n.py:455
 msgid "Are you sure you want to delete the selected bouquet?"
-msgstr "Ar tikrai norite pašalinti bukietą"
+msgstr "Ar tikrai norite pašalinti pasirinktą bukietą?"
 
-#: ../plugin/controllers/i18n.py:454
 msgid "Are you sure you want to delete the selected item(s)?"
-msgstr "Ar tikrai norite pašalinti pasirinktus?"
+msgstr "Ar tikrai norite pašalinti pasirinktus elementus?"
 
-#: ../plugin/controllers/i18n.py:382
-#, fuzzy
 msgid "Are you sure you want to delete this AutoTimer?"
-msgstr "Tikrai pašalinti laikmatį"
+msgstr "Ar tikrai pašalinti šį autolaikmatį?"
 
-#: ../plugin/controllers/i18n.py:110
 msgid "Are you sure you want to delete this recording?"
 msgstr "Tikrai ištrinti įrašą"
 
-#: ../plugin/controllers/i18n.py:112
 msgid "Are you sure you want to delete this timer?"
 msgstr "Tikrai pašalinti laikmatį"
 
-#: ../plugin/controllers/i18n.py:208
 msgid "Are you sure you want to rename this recording?"
 msgstr "Tikrai pervadinti įrašą"
 
-#: ../plugin/controllers/i18n.py:462
 msgid "Are you sure you want to restore from file?"
-msgstr "Ar tikrai norite atkurti iš failo"
+msgstr "Ar tikrai norite atkurti iš failo?"
 
-#: ../plugin/controllers/i18n.py:159
 msgid "Are you sure you want to start recording instantly?"
 msgstr "Pradėti neplaninį įrašymą dabar?"
 
-#: ../plugin/controllers/i18n.py:433
 msgid "Ask, default No"
 msgstr "Klausti, numatytasis NE"
 
-#: ../plugin/controllers/i18n.py:432
 msgid "Ask, default Yes"
 msgstr "Klausti, numatytasis TAIP"
 
-#: ../plugin/controllers/i18n.py:69
 msgid "August"
 msgstr "rugpjūčio"
 
-#: ../plugin/controllers/i18n.py:83
 msgid "Authors"
 msgstr "Autoriai"
 
-#: ../plugin/controllers/i18n.py:84 ../plugin/controllers/i18n.py:411
 msgid "Auto"
 msgstr "Auto"
 
-#: ../plugin/controllers/i18n.py:397
 msgid "AutoPoll"
 msgstr "Autoapklausa"
 
-#: ../plugin/controllers/i18n.py:298
 msgid "AutoTimer Edit"
 msgstr "Autolaikmačio redagavimas"
 
-#: ../plugin/controllers/i18n.py:396
 msgid "AutoTimer Settings"
 msgstr "Autolaikmačio nustatymai"
 
-#: ../plugin/controllers/base.py:362 ../plugin/controllers/i18n.py:297
 msgid "AutoTimers"
-msgstr "Autolaikmačio sąrašas"
+msgstr "Autolaikmačiai"
 
-#: ../plugin/controllers/i18n.py:256
 msgid "Autotimer Preview"
 msgstr "Autolaikmačio apžvalga"
 
-#: ../plugin/controllers/i18n.py:87
 msgid "BER"
 msgstr "BER"
 
-#: ../plugin/controllers/i18n.py:85
 msgid "Back"
 msgstr "Atgal"
 
-#: ../plugin/controllers/i18n.py:431
 msgid "Background only"
 msgstr "Tik foną"
 
-#: ../plugin/controllers/i18n.py:86 ../plugin/controllers/i18n.py:419
 msgid "Begin"
 msgstr "Pradžia"
 
-#: ../plugin/controllers/i18n.py:340
-#, fuzzy
 msgid "Begin of \"After event\" timespan"
 msgstr "Laikotarpio 'po įvykio' pradžia"
 
-#: ../plugin/controllers/i18n.py:324
 msgid "Beginning of timespan"
 msgstr "Laikotarpio pradžia"
 
-#: ../plugin/controllers/i18n.py:502
 msgid "Bookmark"
 msgstr "Žymelė"
 
-#: ../plugin/controllers/i18n.py:501
 msgid "Bookmarks"
 msgstr "Žymelės"
 
-#: ../plugin/controllers/BouquetEditor.py:128
 #, python-format
 msgid "Bouquet %s already exists."
 msgstr "Bukietas %s jau yra."
 
-#: ../plugin/controllers/BouquetEditor.py:219
 #, python-format
 msgid "Bouquet %s can not be moved."
 msgstr "Bukieto %s perkelti negalima."
 
-#: ../plugin/controllers/BouquetEditor.py:123
 #, python-format
 msgid "Bouquet %s created."
 msgstr "Bukietas %s sukurtas."
 
-#: ../plugin/controllers/BouquetEditor.py:192
 #, python-format
 msgid "Bouquet %s deleted."
 msgstr "Bukietas %s ištrintas."
 
-#: ../plugin/controllers/BouquetEditor.py:547
 #, python-format
 msgid "Bouquet %s is locked."
 msgstr "Bukietas %s užrakintas."
 
-#: ../plugin/controllers/BouquetEditor.py:555
 #, python-format
 msgid "Bouquet %s is unlocked."
 msgstr "Bukietas %s atrakintas."
 
-#: ../plugin/controllers/BouquetEditor.py:217
 #, python-format
 msgid "Bouquet %s moved."
 msgstr "Bukietas %s perkeltas."
 
-#: ../plugin/controllers/BouquetEditor.py:187
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr "Bukieto %s pašalinti nepavyko, kanalo nuoroda, arba kintamas sąrašas neteisingi."
+msgstr ""
+"Bukieto %s pašalinti nepavyko, kanalo nuoroda, arba kintamas sąrašas "
+"neteisingi."
 
-#: ../plugin/controllers/BouquetEditor.py:185
 #, python-format
 msgid "Bouquet %s removed failed."
 msgstr "Bukieto %s pašalinti nepavyko."
 
-#: ../plugin/controllers/i18n.py:228
 msgid "Bouquet Editor"
 msgstr "Bukietų redaktorius"
 
-#: ../plugin/controllers/i18n.py:457
 msgid "Bouquet name"
 msgstr "Bukieto pavadinimas"
 
-#: ../plugin/controllers/BouquetEditor.py:388
 msgid "Bouquet renamed successfully."
 msgstr "Bukietas pervadintas sėkmingai."
 
-#: ../plugin/controllers/BouquetEditor.py:649
 msgid "Bouquet-settings were restored successfully"
 msgstr "Bukieto nustatymai atkurti sėkmingai"
 
-#: ../plugin/controllers/base.py:367
 msgid "BouquetEditor"
 msgstr "Bukietų redaktorius"
 
-#: ../plugin/controllers/BouquetEditor.py:130
-#: ../plugin/controllers/BouquetEditor.py:454
 msgid "Bouquetlist is not editable!"
 msgstr "Bukietų sąrašas neredaguojamas!"
 
-#: ../plugin/controllers/i18n.py:88
 msgid "Bouquets"
 msgstr "Bukietai"
 
-#: ../plugin/controllers/i18n.py:90
 msgid "Box"
 msgstr "TV aparatas"
 
-#: ../plugin/controllers/i18n.py:91
 msgid "Box Control"
 msgstr "Aparato valdymas"
 
-#: ../plugin/controllers/i18n.py:89
 msgid "Box Info"
 msgstr "Apie aparatą"
 
-#: ../plugin/controllers/i18n.py:92
 msgid "Box Uptime"
 msgstr "Nepertraukiamo darbo laikas"
 
-#: ../plugin/controllers/i18n.py:93
 msgid "Brand"
 msgstr "Prekės ženklas"
 
-#: ../plugin/controllers/models/services.py:377
 msgid "Cable"
 msgstr "Kabelinė"
 
-#: ../plugin/controllers/i18n.py:493
 msgid "Calendar Week"
 msgstr "Kalendorinė savaitė"
 
-#: ../plugin/controllers/i18n.py:94 ../plugin/plugin.py:125
 msgid "Cancel"
 msgstr "Atšaukti"
 
-#: ../plugin/controllers/i18n.py:515
 msgid "Cancelled"
 msgstr "Atšaukta"
 
-#: ../plugin/controllers/i18n.py:95
 msgid "Capacity"
 msgstr "Talpa"
 
-#: ../plugin/controllers/i18n.py:146
 msgid "Capture screenshot"
 msgstr "Ekrano nuotrauka"
 
-#: ../plugin/controllers/i18n.py:96
 msgid "Channel"
 msgstr "Kanalas"
 
-#: ../plugin/controllers/i18n.py:97 ../plugin/controllers/i18n.py:357
 msgid "Channels"
 msgstr "Kanalai"
 
-#: ../plugin/plugin.py:176
 msgid "Character encoding for EPG data"
 msgstr "EPG šriftų koduotė"
 
-#: ../plugin/controllers/models/info.py:344 ../plugin/controllers/i18n.py:98
 msgid "Chipset"
 msgstr "Lustų rinkinys"
 
-#: ../plugin/controllers/i18n.py:99
 msgid "Cleanup Timers"
 msgstr "Valyti laikmačius"
 
-#: ../plugin/controllers/i18n.py:100
 msgid "Close"
 msgstr "Uždaryti"
 
-#: ../plugin/controllers/i18n.py:518
 msgid "Common Settings"
 msgstr "Bendri nustatymai"
 
-#: ../plugin/controllers/i18n.py:566
 msgid "Config"
-msgstr ""
+msgstr "Nustatymas"
 
-#: ../plugin/controllers/models/timers.py:282
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
 msgstr "Laikmačių konfliktas! %s"
 
-#: ../plugin/controllers/i18n.py:101
 msgid "Contributors"
 msgstr "Bendraautoriai"
 
-#: ../plugin/controllers/i18n.py:102
 msgid "Control"
 msgstr "Valdymas"
 
-#: ../plugin/controllers/models/timers.py:313
 #, python-format
 msgid "Could not add timer '%s'!"
 msgstr "Laikmačio '%s' pridėti nepavyko!"
 
-#: ../plugin/controllers/models/timers.py:446
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
 msgstr "Nepavyko rasti laikmačio '%s' su nurodytu pradžios ir pabaigos laiku!"
 
-#: ../plugin/controllers/i18n.py:442
 msgid "Create bouquet from selection"
-msgstr "Įtraukti teikėją, kaip naują bukietą"
+msgstr "Iš pasirinktų kurti bukietą"
 
-#: ../plugin/controllers/i18n.py:103
 msgid "Current"
-msgstr "Dabartinis"
+msgstr "Šis"
 
-#: ../plugin/controllers/i18n.py:104
 msgid "Current Event"
-msgstr "Dabas rodoma"
+msgstr "Dabar rodoma"
 
-#: ../plugin/controllers/i18n.py:191 ../plugin/plugin.py:158
 msgid "Custom box name"
 msgstr "Savas aparato pavadinimas"
 
-#: ../plugin/controllers/i18n.py:329
 msgid "Custom offset"
 msgstr "Pasirinktinis intarpas"
 
-#: ../plugin/controllers/models/info.py:76
-#: ../plugin/controllers/models/info.py:95 ../plugin/controllers/i18n.py:114
 msgid "DHCP"
 msgstr "DHCP"
 
-#: ../plugin/controllers/i18n.py:105
 msgid "Date"
 msgstr "Data"
 
-#: ../plugin/controllers/i18n.py:552
 msgid "Date (newest)"
-msgstr ""
+msgstr "pagal datą (naujausi)"
 
-#: ../plugin/controllers/i18n.py:551
 msgid "Date (oldest)"
-msgstr ""
+msgstr "pagal datą (seniausi)"
 
-#: ../plugin/plugin.py:179
 msgid "Debug - Display Tracebacks in browser"
-msgstr "Derinti – rodyti klaidų trasuotės ataskaitas naršyklėje"
+msgstr "Derinti – rodyti klaidų ataskaitas naršyklėje"
 
-#: ../plugin/controllers/i18n.py:73
 msgid "December"
 msgstr "gruodžio"
 
-#: ../plugin/controllers/i18n.py:106
 msgid "Deep Standby"
 msgstr "Gilus budėjimas"
 
-#: ../plugin/controllers/i18n.py:107
 msgid "Default"
 msgstr "Numatyta"
 
-#: ../plugin/controllers/i18n.py:421
 msgid "Delay Standby"
 msgstr "Delsa iki budėjimo"
 
-#: ../plugin/controllers/i18n.py:108 ../plugin/controllers/i18n.py:376
 msgid "Delete"
 msgstr "Ištrinti"
 
-#: ../plugin/controllers/i18n.py:504
 msgid "Delete Bookmark"
 msgstr "Trinti žymelę"
 
-#: ../plugin/controllers/i18n.py:449
 msgid "Delete Bouquet"
 msgstr "Pašalinti bukietą"
 
-#: ../plugin/controllers/i18n.py:109
 msgid "Delete Recording"
 msgstr "Ištrinti įrašą"
 
-#: ../plugin/controllers/i18n.py:111
 msgid "Delete Timer"
 msgstr "Pašalinti laikmatį"
 
-#: ../plugin/controllers/models/movies.py:489
 msgid ""
 "Delete failed, because there is no movie trash !\n"
 "Disable movie trash in configuration to delete this item"
@@ -599,2148 +460,1627 @@ msgstr ""
 "Pašalinti nepavyko, nes nėra filmų šiukšliadėžės!\n"
 "Išjunkite filmų šiukšliadėžę konfigūracijoje, kad ištrinti šį elementą"
 
-#: ../plugin/controllers/i18n.py:516
 msgid "Deleted"
 msgstr "Ištrinta"
 
-#: ../plugin/controllers/i18n.py:113
 msgid "Description"
 msgstr "Aprašymas"
 
-#: ../plugin/controllers/i18n.py:129 ../plugin/controllers/i18n.py:375
-#, fuzzy
 msgid "Disable"
-msgstr "išjungtas"
+msgstr "Išjungti"
 
-#: ../plugin/controllers/i18n.py:115
 msgid "Disable Timer"
 msgstr "Išjungti laikmatį"
 
-#: ../plugin/plugin.py:168
 msgid "Disable remote access for user root"
 msgstr "Uždrausti 'root' vartotojo prieigą"
 
-#: ../plugin/controllers/i18n.py:403
 msgid "Disabled on conflict"
 msgstr "Konflikto atveju išjungta"
 
-#: ../plugin/controllers/i18n.py:489
 msgid "Display Mode"
 msgstr "Atvaizdavimo būdas"
 
-#: ../plugin/controllers/i18n.py:487
 msgid "Display duration (s)"
 msgstr "Rodymo trukmė (sek.)"
 
-#: ../plugin/controllers/i18n.py:117
 msgid "Distro"
 msgstr "Distribucija"
 
-#: ../plugin/controllers/i18n.py:118
 msgid "Dolby"
 msgstr "Dolby"
 
-#: ../plugin/controllers/i18n.py:563
 msgid "Don't create timer when movie exists in database"
 msgstr "Nekurti laikmačio, kai filmas yra duomenų bazėje"
 
-#: ../plugin/controllers/i18n.py:119
 msgid "Done"
 msgstr "Atlikta"
 
-#: ../plugin/controllers/i18n.py:120
 msgid "Download"
 msgstr "Atsisiųsti"
 
-#: ../plugin/controllers/i18n.py:121
 msgid "Download playlist for"
 msgstr "Parsisiųsti grojaraštį"
 
-#: ../plugin/controllers/i18n.py:122
 msgid "Drivers"
 msgstr "Tvarkyklės"
 
-#: ../plugin/controllers/i18n.py:123
 msgid "Duration"
 msgstr "Trukmė"
 
-#: ../plugin/controllers/models/info.py:650
 msgid "E"
 msgstr "R"
 
-#: ../plugin/controllers/i18n.py:132
 msgid "EPG"
 msgstr "EPG"
 
-#: ../plugin/controllers/i18n.py:133
 msgid "EPG Search"
 msgstr "EPG paieška"
 
-#: ../plugin/controllers/i18n.py:301
 msgid "EPG encoding"
 msgstr "EPG koduotė"
 
-#: ../plugin/controllers/base.py:371
 msgid "EPGRefresh"
 msgstr "EPG atnaujinimas"
 
-#: ../plugin/controllers/models/timers.py:899
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "KLAIDA: Negalima nustatyti budėjimo laikmačio, kai įrenginys budėjimo būsenoje"
+msgstr ""
+"KLAIDA: Negalima nustatyti budėjimo laikmačio, kai įrenginys budėjimo "
+"būsenoje"
 
-#: ../plugin/controllers/i18n.py:374
-#, fuzzy
 msgid "Edit"
-msgstr "Redaktorius"
+msgstr "Redaguoti"
 
-#: ../plugin/controllers/i18n.py:124
+#, fuzzy
+msgid "Edit Recording"
+msgstr "Ištrinti įrašą"
+
 msgid "Edit Timer"
 msgstr "Redaguoti laikmatį"
 
-#: ../plugin/controllers/i18n.py:413
 msgid "Editor"
 msgstr "Redaktorius"
 
-#: ../plugin/controllers/i18n.py:128 ../plugin/controllers/i18n.py:129
-#, fuzzy
 msgid "Enable"
-msgstr "Įjungtas"
+msgstr "Įjungti"
 
-#: ../plugin/plugin.py:167
 msgid "Enable Authentication for streaming"
-msgstr "Transliacijoms įjungti autentikaciją"
+msgstr "Transliacijoms įjungti autentikavimą"
 
-#: ../plugin/plugin.py:160
 msgid "Enable HTTP Authentication"
-msgstr "Įjungti HTTP autentikaciją"
+msgstr "Įjungti HTTP autentikavimą"
 
-#: ../plugin/plugin.py:161
 msgid "Enable HTTPS"
 msgstr "Įjungti HTTPS"
 
-#: ../plugin/plugin.py:164
 msgid "Enable HTTPS Authentication"
-msgstr "Įjungti HTTPS autentikaciją"
+msgstr "Įjungti HTTPS autentikavimą"
 
-#: ../plugin/controllers/i18n.py:418
 msgid "Enable Messages"
 msgstr "Įjungti žinutes"
 
-#: ../plugin/plugin.py:172
 msgid "Enable Parental Control"
 msgstr "Įjungti tėvų kontrolę"
 
-#: ../plugin/controllers/i18n.py:125
 msgid "Enable Timer"
 msgstr "Įjungti laikmatį"
 
-#: ../plugin/plugin.py:171
 msgid "Enable access from VPNs"
 msgstr "Leisti VPN prieigą"
 
-#: ../plugin/controllers/i18n.py:364
 msgid "Enable filtering"
 msgstr "Įjungti filtravimą"
 
-#: ../plugin/controllers/i18n.py:499
 msgid "Enable/Disable Screenshot on key press or"
-msgstr "Įjungti/išjungti ekrano nuotrauką, paspaudus mygtuką arba"
+msgstr "Įjungti/išjungti ekrano nuotrauką, paspaudus mygtuką, arba"
 
-#: ../plugin/controllers/i18n.py:130 ../plugin/controllers/i18n.py:299
-#: ../plugin/controllers/i18n.py:417
 msgid "Enabled"
 msgstr "Įjungtas"
 
-#: ../plugin/controllers/i18n.py:131
 msgid "Encrypted"
 msgstr "Užšifruota"
 
-#: ../plugin/controllers/i18n.py:127 ../plugin/controllers/i18n.py:420
 msgid "End"
 msgstr "Pabaiga"
 
-#: ../plugin/controllers/i18n.py:341
-#, fuzzy
 msgid "End of \"After event\" timespan"
 msgstr "Laikotarpio 'po įvykio' pabaiga"
 
-#: ../plugin/controllers/i18n.py:325
 msgid "End of timespan"
 msgstr "Laikotarpio pabaiga"
 
-#: ../plugin/controllers/i18n.py:459
+#, fuzzy
+msgid "Enter Text"
+msgstr "Nurodykite kelią"
+
 msgid "Enter a name for the new bouquet"
 msgstr "Įrašykite naują bukieto pavadinimą"
 
-#: ../plugin/controllers/i18n.py:460
 msgid "Enter a name for the new marker"
 msgstr "Įrašykite naują žymeklio pavadinimą"
 
-#: ../plugin/controllers/i18n.py:385
-#, fuzzy
 msgid "Enter a name for this AutoTimer"
-msgstr "Įrašykite naują žymeklio pavadinimą"
+msgstr "Įrašykite šio autolaikmačio pavadinimą"
 
-#: ../plugin/controllers/i18n.py:505
 msgid "Enter path"
-msgstr ""
+msgstr "Nurodykite kelią"
 
-#: ../plugin/controllers/i18n.py:386
 msgid "Enter the text to find in the EPG"
-msgstr ""
+msgstr "Įrašykite paieškos EPG tekstą"
 
-#: ../plugin/controllers/i18n.py:137
 msgid "Error"
 msgstr "Klaida"
 
-#: ../plugin/controllers/models/timers.py:1072
 msgid "Error parsing vps.xml"
 msgstr "Klaida, apdorojant vps.xml"
 
-#: ../plugin/controllers/ipkg.py:281
 msgid "Error upload File"
 msgstr "Failo įkėlimo klaida"
 
-#: ../plugin/controllers/BouquetEditor.py:592
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
-msgstr "Klaida ruošiant atsarginės kopijos failą, %s nėra."
+msgstr "Klaida, ruošiant atsarginės kopijos failą, %s nėra."
 
-#: ../plugin/controllers/BouquetEditor.py:598
 msgid "Error while preparing backup file."
-msgstr "Klaida ruošiant atsarginės kopijos failą."
+msgstr "Klaida, ruošiant atsarginės kopijos failą."
 
-#: ../plugin/controllers/ipkg.py:297
 msgid "Error writing File"
 msgstr "Failo įrašymo klaida"
 
-#: ../plugin/controllers/BouquetEditor.py:653
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
 msgstr "Klaida, %s nėra, atkurti neįmanoma..."
 
-#: ../plugin/controllers/BouquetEditor.py:651
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
 msgstr "Klaida, internetiniu bukietų redaktoriumi %s nesukurtas..."
 
-#: ../plugin/controllers/BouquetEditor.py:194
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
-msgstr "Klaida: Bukietas %s negali būti ištrintas, OS klaida."
+msgstr "Klaida: bukietas %s negali būti ištrintas, OS klaida."
 
-#: ../plugin/controllers/i18n.py:479
 msgid "Event not found"
 msgstr "Įvykio nerasta"
 
-#: ../plugin/controllers/models/timers.py:327
 msgid "EventId not found"
-msgstr "Įvykio ID nerastas"
+msgstr "Įvykio ID nerasta"
 
-#: ../plugin/controllers/i18n.py:138
 msgid "Every"
 msgstr "Kiekvienas"
 
-#: ../plugin/controllers/i18n.py:366
 msgid "Exclude when"
 msgstr "Išskyrus"
 
-#: ../plugin/controllers/i18n.py:339
-#, fuzzy
 msgid "Execute \"After event\" during timespan"
 msgstr "Vykdyti 'po įvykio' per laikotarpį"
 
-#: ../plugin/controllers/i18n.py:546
 msgid "Export"
 msgstr "Eksportuoti"
 
-#: ../plugin/controllers/i18n.py:139
 msgid "Extras"
 msgstr "Priedai"
 
-#: ../plugin/controllers/i18n.py:438
 msgid "Fake Recording"
 msgstr "Pseudo įrašymas"
 
-#: ../plugin/controllers/i18n.py:401
 msgid "Fastscan"
 msgstr "Greitas skenavimas"
 
-#: ../plugin/controllers/i18n.py:63
 msgid "February"
 msgstr "vasario"
 
-#: ../plugin/controllers/i18n.py:141
 msgid "Firmware version"
 msgstr "Mikroprogramos versija"
 
-#: ../plugin/controllers/i18n.py:425
 msgid "Force"
 msgstr "Priverstinai"
 
-#: ../plugin/controllers/i18n.py:42
 msgid "Fr"
 msgstr "Pn"
 
-#: ../plugin/controllers/i18n.py:143
 msgid "Free"
 msgstr "Laisva"
 
-#: ../plugin/controllers/i18n.py:144
 msgid "Free Memory"
 msgstr "Laisva atmintis"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:51
 msgid "Fri"
 msgstr "Pen"
 
-#: ../plugin/controllers/i18n.py:58
 msgid "Friday"
 msgstr "penktadienis"
 
-#: ../plugin/controllers/i18n.py:327
 msgid "From date"
 msgstr "Ne vėliau"
 
-#: ../plugin/controllers/models/info.py:349 ../plugin/controllers/i18n.py:142
 msgid "Front processor version"
 msgstr "Sąsajos procesoriaus versija"
 
-#: ../plugin/controllers/i18n.py:539
 msgid "Full remote"
 msgstr "Visas nuotolinis"
 
-#: ../plugin/controllers/models/info.py:396
-#: ../plugin/controllers/models/info.py:402
-#: ../plugin/controllers/models/info.py:417
-#: ../plugin/controllers/models/info.py:420
-#: ../plugin/controllers/models/movies.py:278
-#: ../plugin/controllers/models/movies.py:408
-#: ../plugin/controllers/models/movies.py:828
 msgid "GB"
 msgstr "GB"
 
-#: ../plugin/controllers/i18n.py:147
 msgid "GUI version"
 msgstr "Grafinės aplinkos versija"
 
-#: ../plugin/controllers/i18n.py:145
 msgid "Gateway"
 msgstr "Šliuzas"
 
-#: ../plugin/controllers/BouquetEditor.py:450
 msgid "Get mutable list for new created alternative failed!"
 msgstr "Naujai sukurta alternatyva neįkelta į kintamą sąrašą!"
 
-#: ../plugin/controllers/BouquetEditor.py:125
 msgid "Get mutable list for new created bouquet failed!"
 msgstr "Naujai sukurtas bukietas neįkeltas į kintamą sąrašą!"
 
-#: ../plugin/controllers/i18n.py:556
 msgid "HH:MM"
-msgstr ""
+msgstr "HH:MM"
 
-#: ../plugin/plugin.py:159
 msgid "HTTP port"
 msgstr "HTTP prievadas"
 
-#: ../plugin/plugin.py:163
 msgid "HTTPS port"
 msgstr "HTTPS prievadas"
 
-#: ../plugin/controllers/i18n.py:150
 msgid "Hard disk model"
 msgstr "HDD modelis"
 
-#: ../plugin/controllers/i18n.py:148
 msgid "Hide full remote"
 msgstr "Slėpti nuotolinį pultą"
 
-#: ../plugin/controllers/i18n.py:149
 msgid "High Resolution"
 msgstr "Didelės raiškos"
 
-#: ../plugin/controllers/i18n.py:151
 msgid "Hour"
 msgstr "Valanda"
 
-#: ../plugin/controllers/i18n.py:456
 msgid "IPTV / URL name"
-msgstr ""
+msgstr "Transliacijos adresas"
 
-#: ../plugin/controllers/i18n.py:152
 msgid "IPv4 address"
 msgstr "IPv4 adresas"
 
-#: ../plugin/controllers/models/info.py:160 ../plugin/controllers/i18n.py:155
 msgid "IPv4-only Python/Twisted"
 msgstr "Tik IPv4 Python/Mišrus"
 
-#: ../plugin/controllers/models/info.py:156 ../plugin/controllers/i18n.py:153
 msgid "IPv4-only kernel"
 msgstr "Tik IPv4 branduolys"
 
-#: ../plugin/controllers/i18n.py:156
 msgid "IPv6 address(es)"
 msgstr "IPv6 adresas(ai)"
 
-#: ../plugin/controllers/i18n.py:547
 msgid "Import"
 msgstr "Importuoti"
 
-#: ../plugin/controllers/i18n.py:134
 msgid "Include description"
 msgstr "Įtraukti aprašymą"
 
-#: ../plugin/controllers/i18n.py:532
 msgid "Include extended description"
 msgstr "Įtraukti išplėstinį aprašymą"
 
-#: ../plugin/controllers/i18n.py:531
 msgid "Include short description"
 msgstr "Įtraukti trumpą aprašymą"
 
-#: ../plugin/controllers/i18n.py:365
 msgid "Include when"
 msgstr "Įskaitant"
 
-#: ../plugin/controllers/models/timers.py:562
 msgid "Infinite Instant recording started"
 msgstr "Pradėtas neribotas neplaninis įrašymas"
 
-#: ../plugin/controllers/i18n.py:157
 msgid "Info"
 msgstr "Informacija"
 
-#: ../plugin/controllers/i18n.py:427
 msgid "Inherit AutoTimer"
 msgstr "Paveldėti autolaikmatį"
 
-#: ../plugin/controllers/i18n.py:524
 msgid "Install Package"
 msgstr "Įdiegti paketą"
 
-#: ../plugin/controllers/i18n.py:526
 msgid "Installed"
 msgstr "Įdiegta"
 
-#: ../plugin/controllers/i18n.py:158
 msgid "Instant Record"
 msgstr "Neplaninis įrašymas"
 
-#: ../plugin/controllers/models/timers.py:553
 msgid "Instant record for current Event started"
 msgstr "Pradėtas šio įvykio neplaninis įrašymas"
 
-#: ../plugin/controllers/BouquetEditor.py:350
 msgid "Internal error!"
 msgstr "Vidinė klaida!"
 
-#: ../plugin/controllers/i18n.py:398
 #, python-format
 msgid "Interval (in %s)"
 msgstr "Intervalas (%s)"
 
-#: ../plugin/controllers/i18n.py:422
 msgid "Interval (min.)"
 msgstr "Intervalas (min.)"
 
-#: ../plugin/controllers/i18n.py:423
 msgid "Interval (sec.)"
 msgstr "Intervalas (sek.)"
 
-#: ../plugin/controllers/i18n.py:62
 msgid "January"
 msgstr "sausio"
 
-#: ../plugin/controllers/i18n.py:160
 msgid "Javascript Libraries"
 msgstr "Java scenarijų bibliotekos"
 
-#: ../plugin/controllers/i18n.py:68
 msgid "July"
 msgstr "liepos"
 
-#: ../plugin/controllers/i18n.py:67
 msgid "June"
 msgstr "birželio"
 
-#: ../plugin/controllers/i18n.py:161
 msgid "Just play"
 msgstr "Tiesiog įjungti"
 
-#: ../plugin/controllers/i18n.py:162
 msgid "Kernel"
 msgstr "Branduolio versija"
 
-#: ../plugin/controllers/i18n.py:163
 msgid "LCD"
 msgstr "Skystųjų kristalų ekranas"
 
-#: ../plugin/controllers/base.py:334
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux sąranka"
 
-#: ../plugin/controllers/i18n.py:164
 msgid "LICENSE"
 msgstr "LICENCIJA"
 
-#: ../plugin/controllers/i18n.py:383
 msgid "Label series"
 msgstr "Žymėti seriją"
 
-#: ../plugin/controllers/i18n.py:495
 msgid "Link Speed"
 msgstr "Ryšio sparta"
 
-#: ../plugin/controllers/models/timers.py:523
 msgid "List of Timers has been cleaned"
 msgstr "Laikmačių sąrašas išvalytas"
 
-#: ../plugin/controllers/i18n.py:463
-#, fuzzy
 msgid "Loading..."
-msgstr "įkeliama"
+msgstr "Įkeliama..."
 
-#: ../plugin/controllers/i18n.py:166
 msgid "Location"
 msgstr "Vieta"
 
-#: ../plugin/controllers/i18n.py:167
 msgid "Locked"
 msgstr "Užrakinta"
 
-#: ../plugin/controllers/i18n.py:168
 msgid "MAC address"
 msgstr "MAC adresas"
 
-#: ../plugin/controllers/models/info.py:393
-#: ../plugin/controllers/models/info.py:404
-#: ../plugin/controllers/models/info.py:422
-#: ../plugin/controllers/models/movies.py:280
-#: ../plugin/controllers/models/movies.py:410
-#: ../plugin/controllers/models/movies.py:830
 msgid "MB"
 msgstr "MB"
 
-#: ../plugin/controllers/i18n.py:169
 msgid "Main"
 msgstr "Pagrindinis"
 
-#: ../plugin/controllers/i18n.py:260
 msgid "Main Memory"
 msgstr "Atminties iš viso"
 
-#: ../plugin/controllers/i18n.py:64
 msgid "March"
 msgstr "kovo"
 
-#: ../plugin/controllers/BouquetEditor.py:348
 msgid "Marker added."
 msgstr "Žymeklis įtrauktas."
 
-#: ../plugin/controllers/i18n.py:458
 msgid "Marker name"
 msgstr "Žymeklio pavadinimas"
 
-#: ../plugin/controllers/i18n.py:300
 msgid "Match text"
 msgstr "Pavadinimas atitiks"
 
-#: ../plugin/controllers/i18n.py:399
 msgid "Max Days"
 msgstr "Maks. dienų"
 
-#: ../plugin/controllers/i18n.py:66
 msgid "May"
 msgstr "gegužės"
 
-#: ../plugin/controllers/models/message.py:35
 msgid "Message sent successfully!"
 msgstr "Pranešimas išsiųstas sėkmingai!"
 
-#: ../plugin/controllers/i18n.py:434
 msgid "Method"
 msgstr "Metodas"
 
-#: ../plugin/controllers/i18n.py:521
 msgid "Minimal EPG list"
 msgstr "Minimalus EPG sąrašas"
 
-#: ../plugin/controllers/i18n.py:519
 msgid "Minimal movie list"
 msgstr "Minimalus filmų sąrašas"
 
-#: ../plugin/controllers/i18n.py:520
 msgid "Minimal timer list"
 msgstr "Minimalus laikmačių sąrašas"
 
-#: ../plugin/controllers/i18n.py:170
 msgid "Minute"
 msgstr "Minutė"
 
-#: ../plugin/controllers/web.py:85
 #, python-format
 msgid "Missing mandatory parameter '%s'"
 msgstr "Trūksta būtino parametro '%s'"
 
-#: ../plugin/controllers/models/timers.py:654
 msgid "Missing requesteter: sRef"
 msgstr "Trūksta užklausos: sRef"
 
-#: ../plugin/controllers/i18n.py:38
 msgid "Mo"
 msgstr "Pr"
 
-#: ../plugin/controllers/i18n.py:172
 msgid "Model"
 msgstr "Modelis"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:47
 msgid "Mon"
 msgstr "Pir"
 
-#: ../plugin/controllers/i18n.py:54
 msgid "Monday"
 msgstr "pirmadienis"
 
-#: ../plugin/controllers/i18n.py:345
 msgid "Monthly"
 msgstr "Kas mėnesį"
 
-#: ../plugin/controllers/i18n.py:527
 msgid "More"
 msgstr "Daugiau"
 
-#: ../plugin/controllers/i18n.py:173
-#, fuzzy
 msgid "More details"
-msgstr "Rodyti detales"
+msgstr "Daugiau informacijos"
 
-#: ../plugin/controllers/i18n.py:481
 msgid "Movie database for EPG"
 msgstr "EPG filmų duomenų bazė"
 
-#: ../plugin/controllers/i18n.py:533
 msgid "Movie search"
 msgstr "Filmų paieška"
 
-#: ../plugin/controllers/i18n.py:174
 msgid "Movielist"
 msgstr "Filmų sąrašas"
 
-#: ../plugin/controllers/i18n.py:175
 msgid "Movies"
 msgstr "Filmai"
 
-#: ../plugin/controllers/BouquetEditor.py:132
-#: ../plugin/controllers/BouquetEditor.py:756
 msgid "Multi-Bouquet is not enabled!"
 msgstr "Perėjimas tarp bukietų neįjungtas!"
 
-#: ../plugin/controllers/i18n.py:176
 msgid "MultiEPG"
 msgstr "Daugiakanalis EPG"
 
-#: ../plugin/controllers/base.py:358
 msgid "NCam Webinterface"
 msgstr "NCam interneto sąsaja"
 
-#: ../plugin/controllers/i18n.py:177
 msgid "Name"
 msgstr "Pavadinimas"
 
-#: ../plugin/controllers/i18n.py:549
 msgid "Name (a-z)"
-msgstr ""
+msgstr "pagal pavadinimą (a-ž)"
 
-#: ../plugin/controllers/i18n.py:550
 msgid "Name (z-a)"
-msgstr ""
+msgstr "pagal pavadinimą (ž-a)"
 
-#: ../plugin/controllers/i18n.py:178
 msgid "Namespace"
 msgstr "Vardų sritis"
 
-#: ../plugin/controllers/i18n.py:179
 msgid "Network Interface"
 msgstr "Tinklo sąsaja"
 
-#: ../plugin/controllers/i18n.py:496
 msgid "Network Shares"
 msgstr "Bendri tinklo resursai"
 
-#: ../plugin/controllers/i18n.py:344 ../plugin/controllers/i18n.py:430
 msgid "Never"
 msgstr "Niekada"
 
-#: ../plugin/controllers/models/services.py:370
-#: ../plugin/controllers/i18n.py:384
 msgid "New"
 msgstr "Naujas"
 
-#: ../plugin/controllers/i18n.py:503
-#, fuzzy
 msgid "New Bookmark:"
-msgstr "Žymelė"
+msgstr "Nauja žymelė:"
 
-#: ../plugin/controllers/i18n.py:255
 msgid "New Name"
 msgstr "Naujas pavadinimas"
 
-#: ../plugin/controllers/i18n.py:350
 msgid "No"
 msgstr "Ne"
 
-#: ../plugin/controllers/i18n.py:181
-#, fuzzy
 msgid "No EPG data available."
-msgstr "aprašymo nėra"
+msgstr "EPG duomenų nėra."
 
-#: ../plugin/controllers/BouquetEditor.py:524
 msgid "No Parent Control Setup Pin given!"
 msgstr "Tėvų kontrolės PIN kodas nenustatytas!"
 
-#: ../plugin/controllers/models/message.py:46
 msgid "No answer in time"
 msgstr "Nėra atsako ilgą laiką"
 
-#: ../plugin/controllers/BouquetEditor.py:225
-#: ../plugin/controllers/BouquetEditor.py:255
-#: ../plugin/controllers/BouquetEditor.py:281
-#: ../plugin/controllers/BouquetEditor.py:324
-#: ../plugin/controllers/BouquetEditor.py:474
 msgid "No bouquet given!"
 msgstr "Nenurodytas bukietas!"
 
-#: ../plugin/controllers/BouquetEditor.py:93
-#: ../plugin/controllers/BouquetEditor.py:154
-#: ../plugin/controllers/BouquetEditor.py:200
 msgid "No bouquet name given!"
 msgstr "Bukietui nesuteiktas pavadinimas!"
 
-#: ../plugin/controllers/BouquetEditor.py:419
 msgid "No current service given!"
 msgstr "Nenurodytas konkrečiai šis kanalas!"
 
-#: ../plugin/controllers/models/timers.py:547
 msgid "No event found! Not recording!"
 msgstr "Įvykių nerasta! Nebus įrašoma!"
 
-#: ../plugin/controllers/BouquetEditor.py:331
 msgid "No marker-name given!"
 msgstr "Žymekliui nesuteiktas pavadinimas!"
 
-#: ../plugin/controllers/i18n.py:393
-#, fuzzy
 msgid "No matches were found in the EPG"
-msgstr "Kriterijus atitinkančio laikmačio nerasta"
+msgstr "EPG atitikmenų nerasta"
 
-#: ../plugin/controllers/models/timers.py:470
-#: ../plugin/controllers/models/timers.py:515
 msgid "No matching Timer found"
 msgstr "Kriterijus atitinkančio laikmačio nerasta"
 
-#: ../plugin/controllers/BouquetEditor.py:364
 msgid "No new servicename given!"
 msgstr "Nenurodytas naujo kanalo pavadinimas!"
 
-#: ../plugin/controllers/BouquetEditor.py:210
-#: ../plugin/controllers/BouquetEditor.py:267
 msgid "No position given!"
 msgstr "Nenurodyta padėtis!"
 
-#: ../plugin/controllers/BouquetEditor.py:138
 msgid "No provider given!"
 msgstr "Nenurodytas tiekėjas!"
 
-#: ../plugin/controllers/BouquetEditor.py:231
-#: ../plugin/controllers/BouquetEditor.py:261
-#: ../plugin/controllers/BouquetEditor.py:297
-#: ../plugin/controllers/BouquetEditor.py:358
-#: ../plugin/controllers/BouquetEditor.py:416
-#: ../plugin/controllers/BouquetEditor.py:480
-#: ../plugin/controllers/BouquetEditor.py:517
 msgid "No service given!"
 msgstr "Nenurodytas kanalas!"
 
-#: ../plugin/controllers/i18n.py:513
 msgid "No, cancel"
 msgstr "Ne, atšaukti"
 
-#: ../plugin/controllers/i18n.py:410
 msgid "None"
 msgstr "Joks"
 
-#: ../plugin/controllers/i18n.py:183
 msgid "Nothing"
 msgstr "Jokios"
 
-#: ../plugin/controllers/i18n.py:184
 msgid "Nothing playing."
 msgstr "Nieko nerodoma."
 
-#: ../plugin/controllers/i18n.py:405
 msgid "Notify if Conflict"
 msgstr "Pranešti apie konfliktą"
 
-#: ../plugin/controllers/i18n.py:406
 msgid "Notify if Similar"
 msgstr "Pranešti, jei panašus"
 
-#: ../plugin/controllers/i18n.py:72
 msgid "November"
 msgstr "lapkričio"
 
-#: ../plugin/controllers/i18n.py:185
 msgid "Now"
 msgstr "Dabar"
 
-#: ../plugin/controllers/i18n.py:343
+msgid "Now/Next Columns"
+msgstr ""
+
 msgid "Number of recordings remaining"
 msgstr "Likęs įrašų kiekis"
 
-#: ../plugin/controllers/base.py:356
 msgid "OSCam Webinterface"
 msgstr "OSCam interneto sąsaja"
 
-#: ../plugin/controllers/i18n.py:192
 msgid "OSD"
-msgstr "OSD"
+msgstr "Ekranas"
 
-#: ../plugin/controllers/i18n.py:71
 msgid "October"
 msgstr "spalio"
 
-#: ../plugin/controllers/i18n.py:331
 msgid "Offset after recording (mins)"
 msgstr "Intarpas po įrašymo (min.)"
 
-#: ../plugin/controllers/i18n.py:330
 msgid "Offset before recording (mins)"
 msgstr "Intarpas prieš įrašymą (min.)"
 
-#: ../plugin/controllers/i18n.py:187
 msgid "On"
 msgstr "Įjungta"
 
-#: ../plugin/controllers/i18n.py:352
 msgid "On any service"
 msgstr "Ant bet kurio kanalo"
 
-#: ../plugin/controllers/i18n.py:351
 msgid "On same service"
-msgstr "Ant to pačio kanalo"
+msgstr "Ant to paties kanalo"
 
-#: ../plugin/controllers/i18n.py:472
-msgid "Onid"
-msgstr "ONID"
+msgid "ONID"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:326
 msgid "Only match between dates"
-msgstr "Apriboti renginius konkrečiomis datomis"
+msgstr "Apriboti konkrečiomis datomis"
 
-#: ../plugin/controllers/i18n.py:323
 msgid "Only match during timespan"
 msgstr "Atitinka tik laikotarpiu"
 
-#: ../plugin/controllers/i18n.py:136
 msgid "Oops, no results matched your search"
-msgstr ""
+msgstr "Oi, jūsų paieškos neatitiko jokie rezultatai"
 
-#: ../plugin/controllers/i18n.py:510
 msgid "Oops..."
-msgstr ""
+msgstr "Oi..."
 
-#: ../plugin/controllers/i18n.py:188
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Atviro kodo internetinė sąsaja Linux TV imtuvams"
 
-#: ../plugin/controllers/i18n.py:193
 msgid "Open in new window"
 msgstr "Atverti naujame lange"
 
-#: ../plugin/plugin.py:148
 msgid "OpenWebInterface Enabled"
 msgstr "OpenWeb sąsaja įjungta"
 
-#: ../plugin/controllers/i18n.py:483
 msgid "OpenWebif Browser Settings"
 msgstr "OpenWebif naršyklės nuostatos"
 
-#: ../plugin/plugin.py:188 ../plugin/plugin.py:256 ../plugin/plugin.py:258
-#: ../plugin/plugin.py:260
 msgid "OpenWebif Configuration"
 msgstr "OpenWebif konfigūravimas"
 
-#: ../plugin/controllers/i18n.py:484
 msgid "OpenWebif Settings"
 msgstr "OpenWebif nuostatos"
 
-#: ../plugin/plugin.py:134
-#, fuzzy
 msgid "OpenWebif url:"
-msgstr "OpenWebif nuoroda:"
+msgstr "OpenWebif nuoroda: http://imtuvo_IP:prievadas"
 
-#: ../plugin/controllers/models/services.py:264
-#: ../plugin/controllers/i18n.py:475
 msgid "Orbital Position"
 msgstr "Padėtis orbitoje"
 
-#: ../plugin/controllers/i18n.py:322
 msgid "Override found with alternative service"
 msgstr "Nepaisyti rastų alternatyvių kanalų"
 
-#: ../plugin/controllers/i18n.py:507
 msgid "Packages"
 msgstr "Paketai"
 
-#: ../plugin/controllers/BouquetEditor.py:528
-#: ../plugin/controllers/BouquetEditor.py:530
 msgid "Parent Control Setup Pin is wrong!"
 msgstr "Neteisingas tėvų kontrolės PIN kodas!"
 
-#: ../plugin/controllers/BouquetEditor.py:511
 msgid "Parent Control is not activated."
 msgstr "Tėvų kontrolė neįjungta."
 
-#: ../plugin/controllers/i18n.py:428
 msgid "Parse AutoTimer"
 msgstr "Analizuoti autolaikmatį"
 
-#: ../plugin/controllers/i18n.py:470
-msgid "Pcrpid"
-msgstr "Pcrpid"
+msgid "PCR PID"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:194
 msgid "PiP"
 msgstr "PiP"
 
-#: ../plugin/controllers/i18n.py:436
 msgid "Picture in Picture"
 msgstr "Vaizdas vaizde"
 
-#: ../plugin/controllers/i18n.py:437
 msgid "Picture in Picture (hidden)"
 msgstr "Vaizdas vaizde (paslėptas)"
 
-#: ../plugin/controllers/i18n.py:414
 msgid "Plain"
 msgstr "Paprastas"
 
-#: ../plugin/controllers/i18n.py:195
 msgid "Playback"
 msgstr "Atkūrimas"
 
-#: ../plugin/plugin.py:178
 msgid "Playback IPTV Streams in browser"
-msgstr ""
+msgstr "Atkurti IPTV transliaciją naršyklėje"
 
-#: ../plugin/controllers/i18n.py:196
 msgid "Playlist"
 msgstr "Grojaraštis"
 
-#: ../plugin/controllers/i18n.py:559
 msgid "Playlist format"
 msgstr "Grojaraščio formatas"
 
-#: ../plugin/controllers/i18n.py:467
-msgid "Pmtpid"
-msgstr "Pmtpid"
+msgid "PMT PID"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:197
 msgid "Power Control"
 msgstr "Maitinimo valdymas"
 
-#: ../plugin/controllers/models/timers.py:743
 msgid "PowerTimer feature not available"
 msgstr "Išjungimo laikmačio funkcija negalima"
 
-#: ../plugin/controllers/i18n.py:389
 msgid "Preview"
-msgstr ""
+msgstr "Peržiūra"
 
-#: ../plugin/controllers/i18n.py:498
 msgid "Primetimes"
 msgstr "Žiūrimiausias laikas"
 
-#: ../plugin/controllers/i18n.py:378
 msgid "Process"
-msgstr "Analizuoti"
+msgstr "Vykdyti"
 
-#: ../plugin/controllers/i18n.py:198
 msgid "Provider"
 msgstr "Tiekėjas"
 
-#: ../plugin/controllers/i18n.py:199
 msgid "Providers"
 msgstr "Tiekėjai"
 
-#: ../plugin/controllers/i18n.py:200
-msgid "Radio"
-msgstr "TV / Radijas"
+msgid "REC"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:201
+msgid "Radio"
+msgstr "Radijas"
+
 msgid "Reboot Box"
 msgstr "Paleisti iš naujo"
 
-#: ../plugin/controllers/i18n.py:342
 msgid "Record a maximum of # times"
 msgstr "Įrašas daugiausiai x kartų"
 
-#: ../plugin/controllers/i18n.py:202
-msgid "Recording Status"
+msgid "Recording"
+msgstr ""
+
+#, fuzzy
+msgid "Recording Type"
 msgstr "Įrašymo būsena"
 
-#: ../plugin/controllers/i18n.py:203 ../plugin/controllers/i18n.py:409
 msgid "Refresh"
 msgstr "Atnaujinti"
 
-#: ../plugin/controllers/i18n.py:205
 msgid "Refresh Timer"
 msgstr "Atnaujinti laikmatį"
 
-#: ../plugin/controllers/i18n.py:204
 msgid "Refresh automatically every"
-msgstr "Atnaujinti automatiškai kas"
+msgstr "Atnaujinti automatiškai, kas"
 
-#: ../plugin/controllers/i18n.py:440
 msgid "Refresh now"
 msgstr "Atnaujinti dabar"
 
-#: ../plugin/controllers/i18n.py:294
 msgid "Reload"
 msgstr "Įkelti iš naujo"
 
-#: ../plugin/controllers/i18n.py:206
 msgid "Remote"
 msgstr "Nuotolinis"
 
-#: ../plugin/controllers/i18n.py:522
 msgid "Remove Package"
 msgstr "Šalinti paketą"
 
-#: ../plugin/controllers/i18n.py:388
-#, fuzzy
 msgid "Remove filter"
-msgstr "Nuotolinis"
+msgstr "Panaikinti filtrą"
 
-#: ../plugin/controllers/i18n.py:453 ../plugin/controllers/i18n.py:512
 msgid "Rename"
 msgstr "Pervadinti"
 
-#: ../plugin/controllers/i18n.py:448
 msgid "Rename Bouquet"
 msgstr "Pervadinti bukietą"
 
-#: ../plugin/controllers/i18n.py:207
 msgid "Rename Recording"
 msgstr "Pervadinti įrašą"
 
-#: ../plugin/controllers/i18n.py:209
 msgid "Repeated"
 msgstr "Pakartotinas"
 
-#: ../plugin/plugin.py:165
 msgid "Require client cert for HTTPS"
 msgstr "Reikalauti HTTPS kliento sertifikato"
 
-#: ../plugin/controllers/i18n.py:349
 msgid "Require description to be unique"
 msgstr "Reikalauti aprašymo unikalumo"
 
-#: ../plugin/controllers/i18n.py:555
-#, fuzzy
 msgid "Reset"
-msgstr "Išvalyti skaitiklį"
+msgstr "Atkurti"
 
-#: ../plugin/controllers/i18n.py:348
 msgid "Reset count"
 msgstr "Išvalyti skaitiklį"
 
-#: ../plugin/controllers/i18n.py:210
 msgid "Restart GUI"
 msgstr "Paleisti grafinę aplinką iš naujo"
 
-#: ../plugin/controllers/i18n.py:135 ../plugin/controllers/i18n.py:361
 msgid "Restrict to bouquets"
 msgstr "Riboti bukietuose"
 
-#: ../plugin/controllers/i18n.py:362
-#, fuzzy
 msgid "Restrict to channels"
-msgstr "Riboti bukietuose"
+msgstr "Riboti kanaluose"
 
-#: ../plugin/controllers/i18n.py:293
 msgid "Root"
 msgstr "Pradinis"
 
-#: ../plugin/controllers/models/info.py:67
 msgid "SLAAC"
 msgstr "SLAAC"
 
-#: ../plugin/controllers/i18n.py:235
 msgid "SNR"
 msgstr "SNR"
 
-#: ../plugin/controllers/i18n.py:43
 msgid "Sa"
 msgstr "Št"
 
-#: ../plugin/controllers/i18n.py:212
 msgid "Safe mode"
 msgstr "Saugusis režimas"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:52
 msgid "Sat"
 msgstr "Šeš"
 
-#: ../plugin/controllers/i18n.py:213
 msgid "Satellites"
 msgstr "Palydovai"
 
-#: ../plugin/controllers/i18n.py:214
 msgid "Satfinder"
 msgstr "Palydovų ieškiklis"
 
-#: ../plugin/controllers/i18n.py:59
 msgid "Saturday"
 msgstr "šeštadienis"
 
-#: ../plugin/controllers/i18n.py:215 ../plugin/controllers/i18n.py:377
-#: ../plugin/controllers/i18n.py:439 ../plugin/plugin.py:126
 msgid "Save"
 msgstr "Išsaugoti"
 
-#: ../plugin/controllers/i18n.py:216
 msgid "Screenshot"
 msgstr "Ekrano nuotrauka"
 
-#: ../plugin/controllers/i18n.py:217 ../plugin/controllers/i18n.py:445
 msgid "Search"
 msgstr "Paieška"
 
-#: ../plugin/controllers/i18n.py:218
 msgid "Search CSFD"
 msgstr "Ieškoti po CSFD"
 
-#: ../plugin/controllers/i18n.py:219
 msgid "Search IMDb"
 msgstr "Ieškoti po IMDb"
 
-#: ../plugin/controllers/i18n.py:220
 msgid "Search KinoPoisk"
 msgstr "Ieškoti po KinoPoisk"
 
-#: ../plugin/controllers/i18n.py:221
-#, fuzzy
 msgid "Search TV Guide UK"
-msgstr "TV gidas"
+msgstr "Paieška JK TV gide"
 
-#: ../plugin/controllers/i18n.py:446
 msgid "Search by name, sd / hd / uhd, or provider"
-msgstr ""
+msgstr "Paieška pagal pavadinimą, SD / DH /UDH, arba teikėją"
 
-#: ../plugin/controllers/i18n.py:316
-#, fuzzy
 msgid "Search strictness"
-msgstr "Ieškoti po KinoPoisk"
+msgstr "Paieškos tikslumas"
 
-#: ../plugin/controllers/i18n.py:302
-#, fuzzy
 msgid "Search type"
-msgstr "Paieška"
+msgstr "Paieškos tipas"
 
-#: ../plugin/controllers/i18n.py:535
 msgid "Select IPK file for upload"
 msgstr "Pasirinkite IPK failą įkėlimui"
 
-#: ../plugin/controllers/i18n.py:554
 msgid "Select..."
-msgstr ""
+msgstr "Pasirinkite...."
 
-#: ../plugin/controllers/i18n.py:223
 msgid "Send Message"
 msgstr "Siųsti žinutę"
 
-#: ../plugin/controllers/i18n.py:225
 msgid "Send a Message"
 msgstr "Siųsti žinutę į ekraną"
 
-#: ../plugin/controllers/i18n.py:70
 msgid "September"
 msgstr "rugsėjo"
 
-#: ../plugin/controllers/i18n.py:226
 msgid "Service"
 msgstr "Kanalas"
 
-#: ../plugin/controllers/BouquetEditor.py:314
 #, python-format
 msgid "Service %s added."
 msgstr "Kanalas %s įtrauktas."
 
-#: ../plugin/controllers/BouquetEditor.py:317
 #, python-format
 msgid "Service %s already exists in bouquet %s."
 msgstr "Kanalas %s bukiete %s jau yra."
 
-#: ../plugin/controllers/BouquetEditor.py:249
 #, python-format
 msgid "Service %s can not be removed."
 msgstr "Kanalas %s negali būti pašalintas."
 
-#: ../plugin/controllers/BouquetEditor.py:545
 #, python-format
 msgid "Service %s is locked."
 msgstr "Kanalas %s užrakintas."
 
-#: ../plugin/controllers/BouquetEditor.py:553
 #, python-format
 msgid "Service %s is unlocked."
 msgstr "Kanalas %s atrakintas."
 
-#: ../plugin/controllers/BouquetEditor.py:274
 #, python-format
 msgid "Service %s moved."
 msgstr "Kanalas %s perkeltas."
 
-#: ../plugin/controllers/BouquetEditor.py:248
 #, python-format
 msgid "Service %s removed from bouquet %s."
 msgstr "Kanalas %s iš bukieto %s pašalintas."
 
-#: ../plugin/controllers/BouquetEditor.py:240
 #, python-format
 msgid "Service %s removed."
 msgstr "Kanalas %s pašalintas."
 
-#: ../plugin/controllers/BouquetEditor.py:275
 msgid "Service can not be moved."
 msgstr "Kanalas negali būti perkeltas."
 
-#: ../plugin/controllers/BouquetEditor.py:405
 msgid "Service can not be renamed."
 msgstr "Kanalas negali būti pervadintas."
 
-#: ../plugin/controllers/BouquetEditor.py:497
 msgid "Service is not an alternative."
 msgstr "Šis kanalas nealternatyvus."
 
-#: ../plugin/controllers/BouquetEditor.py:404
 msgid "Service renamed successfully."
 msgstr "Kanalas pervadintas sėkmingai."
 
-#: ../plugin/controllers/models/services.py:372
 msgid "Services"
 msgstr "Kanalai"
 
-#: ../plugin/controllers/i18n.py:332
 msgid "Set maximum duration"
 msgstr "Nustatyti didžiausią trukmę"
 
-#: ../plugin/controllers/base.py:321 ../plugin/controllers/i18n.py:227
-#: ../plugin/controllers/i18n.py:381
 msgid "Settings"
 msgstr "Visos nuostatos"
 
-#: ../plugin/controllers/i18n.py:232
 msgid "Show EPG for"
 msgstr "Rodyti EPG"
 
-#: ../plugin/controllers/i18n.py:230
 msgid "Show Full OpenWebif"
 msgstr "Rodyti visą OpenWebif"
 
-#: ../plugin/controllers/i18n.py:542
 msgid "Show IPTV channels in selection (eg. Autotimer)"
-msgstr ""
+msgstr "Renkantis, rodyti IPTV kanalus (pvz. Autolaikmatis)"
 
-#: ../plugin/controllers/i18n.py:189 ../plugin/plugin.py:154
+#, fuzzy
+msgid "Show all packages"
+msgstr "Atnaujinti visus paketus"
+
 msgid "Show box name in header"
 msgstr "Antraštėje rodyti aparato pavadinimą"
 
-#: ../plugin/controllers/i18n.py:540
 msgid "Show details"
-msgstr "Rodyti detales"
+msgstr "Rodyti detaliau"
 
-#: ../plugin/controllers/i18n.py:231
 msgid "Show full remote"
-msgstr "Rodyti visą nuotolinį"
+msgstr "Rodyti nuotolinį pultą"
 
-#: ../plugin/controllers/i18n.py:402
 msgid "Show in Extensions menu"
 msgstr "Rodyti tarp plėtinių meniu"
 
-#: ../plugin/controllers/i18n.py:545
 msgid "Show picon background"
-msgstr ""
+msgstr "Rodyti piktogramų fono spalvą"
 
-#: ../plugin/controllers/i18n.py:544
-#, fuzzy
 msgid "Show picons"
-msgstr "Rodyti detales"
+msgstr "Rodyti piktogramas"
 
-#: ../plugin/controllers/i18n.py:480
 msgid "Show picons in channel list"
 msgstr "Kanalų sąraše rodyti piktogramas"
 
-#: ../plugin/controllers/i18n.py:541
 msgid "Show service type in channel list"
 msgstr "Kanalų sąraše rodyti kanalo tipą"
 
-#: ../plugin/controllers/i18n.py:233
 msgid "Shutdown"
 msgstr "Išjungti"
 
-#: ../plugin/controllers/i18n.py:473
-msgid "Sid"
-msgstr "SID"
+msgid "Service ID (SID)"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:379
 msgid "Simulate"
 msgstr "Imituoti"
 
-#: ../plugin/controllers/i18n.py:234
 msgid "Site and sources"
 msgstr "Svetainė ir šaltiniai"
 
-#: ../plugin/controllers/i18n.py:567
 msgid "Skins"
-msgstr ""
+msgstr "Aplinkos temos"
 
-#: ../plugin/controllers/models/timers.py:827
-#: ../plugin/controllers/models/timers.py:860
-#: ../plugin/controllers/models/timers.py:886
-#: ../plugin/controllers/models/timers.py:915
-#: ../plugin/controllers/models/timers.py:961
-#: ../plugin/controllers/models/timers.py:1043
 msgid "SleepTimer error"
 msgstr "Budėjimo laikmačio klaida"
 
-#: ../plugin/controllers/models/timers.py:904
-#: ../plugin/controllers/models/timers.py:1019
-#: ../plugin/controllers/models/timers.py:1038
 msgid "Sleeptimer has been disabled"
 msgstr "Budėjimo laikmatis išjungtas"
 
-#: ../plugin/controllers/models/timers.py:822
-#: ../plugin/controllers/models/timers.py:854
-#: ../plugin/controllers/models/timers.py:881
-#: ../plugin/controllers/models/timers.py:955
 msgid "Sleeptimer is disabled"
 msgstr "Budėjimo laikmatis išjungtas"
 
-#: ../plugin/controllers/models/timers.py:822
-#: ../plugin/controllers/models/timers.py:854
-#: ../plugin/controllers/models/timers.py:881
-#: ../plugin/controllers/models/timers.py:955
 msgid "Sleeptimer is enabled"
 msgstr "Budėjimo laikmatis įjungtas"
 
-#: ../plugin/controllers/models/timers.py:910
-#: ../plugin/controllers/models/timers.py:1019
-#: ../plugin/controllers/models/timers.py:1033
 #, python-format
 msgid "Sleeptimer set to %d minutes"
 msgstr "Budėjimo laikmatis nustatytas %d minučių"
 
-#: ../plugin/controllers/i18n.py:236
 msgid "Software"
 msgstr "Programinė įranga"
 
-#: ../plugin/controllers/i18n.py:182
 msgid "Sorry this page is not yet implemented"
 msgstr "Atsiprašome, šis puslapis dar neužbaigtas"
 
-#: ../plugin/controllers/i18n.py:548
 msgid "Sort"
-msgstr ""
+msgstr "Rūšiuoti"
 
-#: ../plugin/controllers/i18n.py:486
 msgid "Spinner"
 msgstr "Suktukas"
 
-#: ../plugin/controllers/i18n.py:474
-msgid "Sref"
-msgstr "Sref"
+msgid "SRef"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:237
 msgid "Standby"
 msgstr "Budėjimo režimas"
 
-#: ../plugin/controllers/i18n.py:238
 msgid "Standby Toggle"
 msgstr "Į budėjimo būseną"
 
-#: ../plugin/controllers/i18n.py:126
 msgid "Start"
 msgstr "Pradžia"
 
-#: ../plugin/controllers/i18n.py:241
 msgid "Start Instant Record"
 msgstr "Pradėti neplaninį įrašymą"
 
-#: ../plugin/controllers/i18n.py:240
 msgid "Start time is after end time"
 msgstr "Pradžios laikas yra po pabaigos laiko"
 
-#: ../plugin/controllers/i18n.py:534
 msgid "Start typing..."
-msgstr "PRADĖKITE RAŠYTI"
+msgstr "Pradėtkite rašyti..."
 
-#: ../plugin/controllers/i18n.py:390
 msgid "State"
-msgstr ""
+msgstr "Būklė"
 
-#: ../plugin/controllers/i18n.py:242
 msgid "Stream"
 msgstr "Srautas"
 
-#: ../plugin/controllers/i18n.py:565
 msgid "Stream Clients"
 msgstr "Transliacijų klientai"
 
-#: ../plugin/plugin.py:173
-#, fuzzy
 msgid "Streaming port"
-msgstr "Transliacijų klientai"
+msgstr "Transliacijos prievadas"
 
-#: ../plugin/controllers/i18n.py:44
 msgid "Su"
 msgstr "Sk"
 
-#: ../plugin/controllers/i18n.py:553
 msgid "Subdirectories"
-msgstr ""
+msgstr "Pakatalogiai"
 
-#: ../plugin/controllers/i18n.py:243
 msgid "Subnet mask"
 msgstr "Potinklio kaukė"
 
-#: ../plugin/controllers/i18n.py:244
 msgid "Subservices"
 msgstr "Subkanalai"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:46
 msgid "Sun"
 msgstr "Sek"
 
-#: ../plugin/controllers/i18n.py:60
 msgid "Sunday"
 msgstr "sekmadienis"
 
-#: ../plugin/controllers/i18n.py:186
 msgid "System OE"
 msgstr "Sistemos OE"
 
-#: ../plugin/controllers/models/info.py:400
-#: ../plugin/controllers/models/info.py:412
-#: ../plugin/controllers/models/info.py:414
 msgid "TB"
 msgstr "TB"
 
-#: ../plugin/controllers/i18n.py:271
 msgid "TV"
 msgstr "TV"
 
-#: ../plugin/controllers/i18n.py:490
 msgid "TV Guide"
 msgstr "TV gidas"
 
-#: ../plugin/controllers/i18n.py:272
 msgid "TV Multi EPG"
 msgstr "TV daugiakanalis EPG"
 
-#: ../plugin/controllers/i18n.py:245 ../plugin/controllers/i18n.py:355
 msgid "Tags"
 msgstr "Žymos"
 
-#: ../plugin/controllers/i18n.py:246
 msgid "Teletext"
 msgstr "Teletekstas"
 
-#: ../plugin/controllers/i18n.py:247
+msgid "Teletext PID"
+msgstr "Teletext PID"
+
 msgid "Television"
 msgstr "Televizija"
 
-#: ../plugin/controllers/i18n.py:248
 msgid "Template Engine"
 msgstr "Šablono variklis"
 
-#: ../plugin/controllers/base.py:408
 msgid "Terminal"
 msgstr "Terminalas"
 
-#: ../plugin/controllers/models/services.py:379
 msgid "Terrestrial"
 msgstr "Antžeminė"
 
-#: ../plugin/controllers/i18n.py:249
 msgid "Text"
 msgstr "Tekstas"
 
-#: ../plugin/controllers/i18n.py:41
 msgid "Th"
 msgstr "Kt"
 
-#: ../plugin/controllers/web.py:91 ../plugin/controllers/web.py:1554
 #, python-format
 msgid "The parameter '%s' can't be empty"
 msgstr "Parametras '%s' negali būti tuščias"
 
-#: ../plugin/controllers/web.py:340
 msgid "The parameter 'command' must be a number"
 msgstr "Parametras 'komanda' turi būti skaitmuo"
 
-#: ../plugin/controllers/models/timers.py:509
 #, python-format
 msgid "The timer '%s' has been %s successfully"
 msgstr "Laikmatis '%s' sėkmingai %s"
 
-#: ../plugin/controllers/models/timers.py:459
-#: ../plugin/controllers/models/timers.py:465
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
 msgstr "Laikmatis '%s' pašalintas sėkmingai"
 
-#: ../plugin/controllers/models/timers.py:501
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
-msgstr "Laikmatis '%s' įrašytas dabar! Neišjungtas!"
+msgstr "Laikmatis '%s' dabar įrašomas! Neišjungtas!"
 
-#: ../plugin/controllers/i18n.py:485
 msgid "Theme"
 msgstr "Aplinkos tema"
 
-#: ../plugin/controllers/i18n.py:274 ../plugin/plugin.py:152
-#, fuzzy
 msgid "Theme mode"
-msgstr "Aplinkos tema"
+msgstr "Temos režimas"
 
-#: ../plugin/controllers/BouquetEditor.py:318
 msgid "This service can not be added."
 msgstr "Kanalas negali būti įtrauktas."
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:50
 msgid "Thu"
 msgstr "Ket"
 
-#: ../plugin/controllers/i18n.py:57
 msgid "Thursday"
 msgstr "ketvirtadienis"
 
-#: ../plugin/controllers/i18n.py:251
 msgid "Time"
 msgstr "Laikas"
 
-#: ../plugin/controllers/i18n.py:491
 msgid "Timeline"
 msgstr "Chronologija"
 
-#: ../plugin/controllers/i18n.py:252
 msgid "Timeout"
 msgstr "Intervalas"
 
-#: ../plugin/controllers/i18n.py:257
 msgid "Timer"
 msgstr "Laikmatis"
 
-#: ../plugin/controllers/models/timers.py:318
 #, python-format
 msgid "Timer '%s' added"
 msgstr "Laikmatis '%s' pridėtas"
 
-#: ../plugin/controllers/models/timers.py:495
 #, python-format
 msgid "Timer '%s' already exists!"
 msgstr "Laikmatis '%s' jau yra!"
 
-#: ../plugin/controllers/models/timers.py:421
 #, python-format
 msgid "Timer '%s' changed"
 msgstr "Laikmatis '%s' pakeistas"
 
-#: ../plugin/controllers/models/timers.py:489
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
 msgstr "Laikmatis '%s' neįtrauktas dėl konflikto"
 
-#: ../plugin/controllers/models/timers.py:440
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
-msgstr "Laikmatis '%s' neįtrauktas dėl konflikto"
+msgstr "Laikmatis '%s' neišsaugotas dėl konflikto"
 
-#: ../plugin/controllers/i18n.py:478
 msgid "Timer Added"
 msgstr "Laikmatis įtrauktas"
 
-#: ../plugin/controllers/i18n.py:253
 msgid "Timer added"
 msgstr "Laikmatis įtrauktas"
 
-#: ../plugin/controllers/models/timers.py:581
 msgid "Timer conflict detected! Not recording!"
 msgstr "Laikmačių konfliktas! Nebus įrašoma!"
 
-#: ../plugin/controllers/i18n.py:319
 msgid "Timer type"
 msgstr "Laikmačio tipas"
 
-#: ../plugin/controllers/models/timers.py:531
 msgid "TimerList has been saved"
 msgstr "Laikmačių sąrašas išsaugotas"
 
-#: ../plugin/controllers/i18n.py:254
 msgid "Timerlist"
 msgstr "Laikmačių sąrašas"
 
-#: ../plugin/controllers/i18n.py:258 ../plugin/controllers/i18n.py:380
 msgid "Timers"
 msgstr "Laikmačiai"
 
-#: ../plugin/controllers/i18n.py:259
 msgid "Title"
 msgstr "Antraštė"
 
-#: ../plugin/controllers/i18n.py:328
 msgid "To date"
 msgstr "Ne anksčiau"
 
-#: ../plugin/controllers/models/movies.py:57
-#: ../plugin/controllers/models/timers.py:48
 msgid "Today"
-msgstr ""
+msgstr "Šiandien"
 
-#: ../plugin/controllers/i18n.py:262
 msgid "Transcode"
 msgstr "Perkoduoti"
 
-#: ../plugin/controllers/i18n.py:291
 msgid "Translation to Spanish"
 msgstr "Vertimas į ispanų kalbą"
 
-#: ../plugin/controllers/i18n.py:400
 msgid "Try guessing"
 msgstr "Bandyti atspėti"
 
-#: ../plugin/controllers/i18n.py:471
-msgid "Tsid"
-msgstr "TSID"
+msgid "TSID"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:39
 msgid "Tu"
 msgstr "An"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:48
 msgid "Tue"
 msgstr "Ant"
 
-#: ../plugin/controllers/i18n.py:55
 msgid "Tuesday"
 msgstr "antradienis"
 
-#: ../plugin/controllers/i18n.py:263
-msgid "Tuner Bit Error Rate BER"
-msgstr "Imtuvo klaidingų bitų santykis (BER)"
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:264
 msgid "Tuner Number"
 msgstr "Imtuvų skaičių"
 
-#: ../plugin/controllers/i18n.py:265
 msgid "Tuner Signal"
 msgstr "Imtuvo signalas"
 
-#: ../plugin/controllers/i18n.py:268
-msgid "Tuner Signal Power AGC"
-msgstr "Imtuvo signalo galia AGC"
+msgid "Signal Power (AGC)"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:266
-msgid "Tuner Signal Quality SNR"
-msgstr "Imtuvo signalo kokybė SNR"
+msgid "Signal Quality (SNR)"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:267
-msgid "Tuner Signal Quality SNR_DB"
-msgstr "Imtuvo signalo kokybė SNR_DB"
+msgid "Signal Quality (SNR DB)"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:269
 msgid "Tuner Type"
 msgstr "Imtuvo tipas"
 
-#: ../plugin/controllers/i18n.py:270
 msgid "Tuners"
 msgstr "Imtuvai"
 
-#: ../plugin/controllers/i18n.py:273
 msgid "Type"
 msgstr "Tipas"
 
-#: ../plugin/controllers/web.py:247
 #, python-format
 msgid "Unknown Volume command %s"
 msgstr "Nežinoma komanda %s"
 
-#: ../plugin/controllers/models/timers.py:676
 #, python-format
 msgid "Unknown command: '%s'"
 msgstr "Nežinoma komanda: '%s'"
 
-#: ../plugin/controllers/i18n.py:275
 msgid "Upcoming Events"
 msgstr "Artimiausi įvykiai"
 
-#: ../plugin/controllers/i18n.py:525
 msgid "Update"
 msgstr "Atnaujinti"
 
-#: ../plugin/controllers/i18n.py:523
 msgid "Update Package"
 msgstr "Atnaujinti paketą"
 
-#: ../plugin/controllers/i18n.py:528
 msgid "Update from feed"
 msgstr "Atnaujinti iš šaltinių"
 
-#: ../plugin/controllers/i18n.py:529
 msgid "Upgrade all packages"
 msgstr "Atnaujinti visus paketus"
 
-#: ../plugin/controllers/i18n.py:538
 msgid "Upload File Error"
 msgstr "Failo įkėlimo klaida"
 
-#: ../plugin/controllers/i18n.py:537
 msgid "Upload package"
 msgstr "Įkelti paketą"
 
-#: ../plugin/controllers/i18n.py:536
 msgid "Uploaded Files"
 msgstr "Įkelti failai"
 
-#: ../plugin/controllers/i18n.py:543
 msgid "Use Channelname for screenshots"
-msgstr ""
+msgstr "Ekrano nuotraukai naudoti kanalo pavadinimą"
 
-#: ../plugin/controllers/i18n.py:354
 msgid "Use a custom location"
 msgstr "Naudoti išsirinktą vietą"
 
-#: ../plugin/controllers/i18n.py:560
 msgid "Use as PiP if possible"
 msgstr "Naudoti, kaip PiP, jei įmanoma"
 
-#: ../plugin/controllers/i18n.py:568
-#, fuzzy
 msgid "Use classic interface"
-msgstr "Naudoti naują išvaizdą"
+msgstr "Naudoti klasikinę sąsają"
 
-#: ../plugin/plugin.py:153
 msgid "Use custom Color"
 msgstr "Naudoti pasirinktinę spalvą"
 
-#: ../plugin/controllers/i18n.py:190 ../plugin/plugin.py:156
 msgid "Use custom box name"
 msgstr "Naudoti savą aparato pavadinimą"
 
-#: ../plugin/controllers/i18n.py:509
-#, fuzzy
 msgid "Use modern design"
 msgstr "Naudoti naują išvaizdą"
 
-#: ../plugin/controllers/i18n.py:569 ../plugin/plugin.py:150
 msgid "Use modern interface"
 msgstr "Naudoti naują išvaizdą"
 
-#: ../plugin/controllers/i18n.py:281
+#, fuzzy
+msgid "Use old remote"
+msgstr "Slėpti nuotolinį pultą"
+
 msgid "VPS"
 msgstr "VPS"
 
-#: ../plugin/controllers/models/timers.py:1077
 msgid "VPS plugin not found"
 msgstr "VPS įskiepio nerasta"
 
-#: ../plugin/controllers/i18n.py:276
 msgid "Version"
 msgstr "Versija"
 
-#: ../plugin/controllers/i18n.py:277
 msgid "Video"
 msgstr "Vaizdo įrašai"
 
-#: ../plugin/controllers/i18n.py:278
 msgid "Video Height"
 msgstr "Vaizdo aukštis"
 
-#: ../plugin/controllers/i18n.py:279
-msgid "Video Wide"
-msgstr "Platus vaizdas"
+msgid "Widescreen"
+msgstr ""
 
-#: ../plugin/controllers/i18n.py:280
 msgid "Video Width"
 msgstr "Vaizdo plotis"
 
-#: ../plugin/controllers/i18n.py:435
 msgid "Visibly"
 msgstr "Matomai"
 
-#: ../plugin/controllers/i18n.py:282
 msgid "Volume"
 msgstr "Garsas"
 
-#: ../plugin/controllers/i18n.py:283
 msgid "Volume Control"
 msgstr "Garso valdymas"
 
-#: ../plugin/controllers/i18n.py:469
-msgid "Vpid"
-msgstr "VPId"
+msgid "Video PID (VPID)"
+msgstr ""
 
-#: ../plugin/controllers/models/info.py:653
 msgid "W"
 msgstr "V"
 
-#: ../plugin/controllers/i18n.py:224
 msgid "Waiting for answer ..."
 msgstr "Laukiama atsakymo..."
 
-#: ../plugin/controllers/i18n.py:239
 msgid "Wake Up"
 msgstr "Pabusti"
 
-#: ../plugin/controllers/i18n.py:426
 msgid "Wakeup"
 msgstr "Pažadinti"
 
-#: ../plugin/controllers/i18n.py:285
 msgid "Warning"
 msgstr "Dėmesio"
 
-#: ../plugin/controllers/i18n.py:40
 msgid "We"
 msgstr "Tr"
 
-#: ../plugin/controllers/i18n.py:492
 msgid "Web TV"
 msgstr "Interneto TV"
 
-#: ../plugin/controllers/models/movies.py:54
-#: ../plugin/controllers/models/timers.py:44 ../plugin/controllers/i18n.py:49
 msgid "Wed"
 msgstr "Tre"
 
-#: ../plugin/controllers/i18n.py:56
 msgid "Wednesday"
 msgstr "trečiadienis"
 
-#: ../plugin/controllers/i18n.py:347
 msgid "Weekly (Monday)"
 msgstr "Kas savaitę (pirmadienis)"
 
-#: ../plugin/controllers/i18n.py:346
 msgid "Weekly (Sunday)"
 msgstr "Kas savaitę (sekmadienis)"
 
-#: ../plugin/plugin.py:170
 msgid "Without auth only local access is allowed!"
-msgstr "Be autentikacijos leidžiamas tik vietinis prisijungimas!"
+msgstr "Be autentikavimo leidžiamas tik vietinis prisijungimas!"
 
-#: ../plugin/controllers/i18n.py:415
 msgid "Wizard"
 msgstr "Vedlys"
 
-#: ../plugin/controllers/i18n.py:511
 msgid "Would you like to save your changes?"
-msgstr ""
+msgstr "Ar norite įrašyti pakeitimus?"
 
-#: ../plugin/controllers/web.py:242
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
 msgstr "Neteisingas parametro formatas 'set=%s'. Naudokite set=set15 "
 
-#: ../plugin/controllers/i18n.py:557
 msgid "YYYY-MM-DD"
-msgstr ""
+msgstr "YYYY-MM-DD"
 
-#: ../plugin/controllers/i18n.py:514 ../plugin/controllers/i18n.py:530
 msgid "Yes"
 msgstr "Taip"
 
-#: ../plugin/controllers/i18n.py:286
 msgid "Yes/No"
 msgstr "Taip / Ne"
 
-#: ../plugin/controllers/models/movies.py:59
-#: ../plugin/controllers/models/timers.py:51
 msgid "Yesterday"
-msgstr ""
+msgstr "Vakar"
 
-#: ../plugin/controllers/i18n.py:287
 msgid "Zap"
 msgstr "Perjungti"
 
-#: ../plugin/controllers/i18n.py:466
 msgid "Zap & Record"
 msgstr "Įjungti kanalą ir įrašymą"
 
-#: ../plugin/controllers/i18n.py:288
 msgid "Zap before streaming"
 msgstr "perjungti prieš transliaciją"
 
-#: ../plugin/controllers/i18n.py:289
 msgid "Zap to"
 msgstr "Perjungti į"
 
-#: ../plugin/controllers/i18n.py:290
 msgid "Zapped to"
 msgstr "Perjungta į"
 
-#: ../plugin/controllers/i18n.py:392
-#, fuzzy
 msgid "any time"
-msgstr "Pridėti laikmatį"
+msgstr "bet kada"
 
-#: ../plugin/controllers/i18n.py:335
 msgid "auto"
 msgstr "auto"
 
-#: ../plugin/plugin.py:132
 msgid "box_ip"
+msgstr "aparato IP"
+
+msgid "case-insensitive"
+msgstr "neatsižvelgiant į DIDŽIĄSIAS-mažąsias raides"
+
+msgid "case-sensitive"
+msgstr "atsižvelgiant į DIDŽIĄSIAS-mažąsias raides"
+
+msgid "descramble and record ecm"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:318
-#, fuzzy
-msgid "case-insensitive"
-msgstr "Paieškos tikslumas"
-
-#: ../plugin/controllers/i18n.py:317
-#, fuzzy
-msgid "case-sensitive"
-msgstr "Paieškos tikslumas"
-
-#: ../plugin/controllers/i18n.py:369
 msgid "description contains"
-msgstr "aprašyme"
+msgstr "aprašyme yra"
 
-#: ../plugin/controllers/i18n.py:305
-#, fuzzy
 msgid "description match"
-msgstr "Aprašymas"
+msgstr "aprašymo atitikimas"
 
-#: ../plugin/controllers/i18n.py:116
 msgid "disabled"
 msgstr "išjungtas"
 
-#: ../plugin/controllers/i18n.py:336
 msgid "do nothing"
 msgstr "nieko nedaryti"
 
-#: ../plugin/controllers/i18n.py:477
+msgid "don't descramble, record ecm"
+msgstr ""
+
 msgid "error! Loading Page"
 msgstr "klaida! atveriama"
 
-#: ../plugin/controllers/i18n.py:304
 msgid "exact title match"
-msgstr ""
+msgstr "tikslus pavadinimo atitikimas"
 
-#: ../plugin/controllers/i18n.py:314
 msgid "favourite desc match"
-msgstr ""
+msgstr "mėgstamiausių atitikimas"
 
-#: ../plugin/controllers/i18n.py:140
 msgid "finished"
 msgstr "baigta"
 
-#: ../plugin/controllers/i18n.py:338
 msgid "go to deep standby"
-msgstr "išjungti"
+msgstr "į gilų budėjimą"
 
-#: ../plugin/controllers/i18n.py:337
 msgid "go to standby"
 msgstr "į budėjimo režimą"
 
-#: ../plugin/controllers/i18n.py:33
 msgid "hour"
 msgstr "valanda"
 
-#: ../plugin/controllers/models/info.py:302
-#: ../plugin/controllers/models/info.py:305
-#: ../plugin/controllers/models/movies.py:282
-#: ../plugin/controllers/models/movies.py:412
-#: ../plugin/controllers/models/movies.py:832
 msgid "kB"
 msgstr "kB"
 
-#: ../plugin/controllers/i18n.py:165
 msgid "loading"
 msgstr "įkeliama"
 
-#: ../plugin/controllers/models/info.py:78
-#: ../plugin/controllers/models/info.py:97
 msgid "manual/disabled"
 msgstr "rankomis/išjungta"
 
-#: ../plugin/controllers/i18n.py:171
 msgid "mins"
-msgstr ""
+msgstr "min."
 
-#: ../plugin/controllers/i18n.py:33
 msgid "minute"
 msgstr "minutė"
 
-#: ../plugin/controllers/i18n.py:180
 msgid "no description available"
 msgstr "aprašymo nėra"
 
-#: ../plugin/controllers/models/info.py:189 ../plugin/controllers/i18n.py:154
 msgid "none/IPv4-only network"
 msgstr "nėra / tik IPv4 tinklas"
 
-#: ../plugin/controllers/i18n.py:371
-msgid "on day"
+msgid "normal"
 msgstr ""
 
-#: ../plugin/controllers/i18n.py:370
+msgid "on day"
+msgstr "dieną"
+
 msgid "on weekday"
 msgstr "šiokiadienį"
 
-#: ../plugin/controllers/BouquetEditor.py:87
 msgid "one two three four unknown command"
 msgstr "vienas du trys keturi nežinoma komanda"
 
-#: ../plugin/controllers/i18n.py:303
 msgid "partial title match"
-msgstr ""
+msgstr "dalinis pavadinimo atitikimas"
 
-#: ../plugin/controllers/models/info.py:463
 msgid "r/o"
 msgstr "tik skaityti"
 
-#: ../plugin/controllers/models/info.py:459
 msgid "r/w"
 msgstr "skaityti/rašyti"
 
-#: ../plugin/controllers/i18n.py:320
 msgid "record"
 msgstr "įrašas"
 
-#: ../plugin/controllers/i18n.py:315
 msgid "regex match (experimental)"
-msgstr ""
+msgstr "paieškos, išreikštos simboliais, atitikimas (eksperimentinis)"
 
-#: ../plugin/controllers/models/movies.py:483
 msgid "remove"
 msgstr "pašalinti"
 
-#: ../plugin/controllers/i18n.py:211
 msgid "running"
 msgstr "veikia"
 
-#: ../plugin/controllers/i18n.py:222
 msgid "seconds"
 msgstr "sekundžių"
 
-#: ../plugin/controllers/i18n.py:359
 msgid "select bouquets"
 msgstr "pasirinkite bukietus"
 
-#: ../plugin/controllers/i18n.py:358
 msgid "select channels"
 msgstr "pasirinkite kanalus"
 
-#: ../plugin/controllers/i18n.py:356
 msgid "select tags"
 msgstr "pasirinkite žymas"
 
-#: ../plugin/controllers/i18n.py:368
 msgid "short description contains"
 msgstr "trumpame aprašyme"
 
-#: ../plugin/controllers/i18n.py:310 ../plugin/controllers/i18n.py:311
-#, fuzzy
 msgid "short description match"
 msgstr "trumpo aprašymo atitikimas"
 
-#: ../plugin/controllers/i18n.py:334
 msgid "standard"
 msgstr "standartinis"
 
-#: ../plugin/controllers/models/info.py:74
-#: ../plugin/controllers/models/info.py:86
-#: ../plugin/controllers/models/info.py:93
 msgid "static"
 msgstr "statinis"
 
-#: ../plugin/controllers/i18n.py:250
 msgid "this service is protected by a parental control pin"
-msgstr ""
+msgstr "šis kanalas apsaugotas tėvų kontrolės PIN kodu"
 
-#: ../plugin/controllers/i18n.py:367
 msgid "title contains"
-msgstr "pavadinime"
+msgstr "pavadinime yra"
 
-#: ../plugin/controllers/i18n.py:313
 msgid "title ends with"
-msgstr ""
+msgstr "pavadinimas baigiasi..."
 
-#: ../plugin/controllers/i18n.py:306 ../plugin/controllers/i18n.py:307
-#, fuzzy
 msgid "title or description match"
 msgstr "pavadinimo, ar aprašymo atitikimas"
 
-#: ../plugin/controllers/i18n.py:308 ../plugin/controllers/i18n.py:309
-#, fuzzy
 msgid "title or short description match"
 msgstr "pavadinimo, ar trumpo aprašymo atitikimas"
 
-#: ../plugin/controllers/i18n.py:312
 msgid "title starts with"
-msgstr ""
+msgstr "pavadinimas prasideda"
 
-#: ../plugin/controllers/i18n.py:261
 msgid "transcoded"
 msgstr "perkoduota"
 
-#: ../plugin/controllers/web.py:711
 #, python-format
 msgid "type %s is not a number"
 msgstr "tipas %s nėra skaičius"
 
-#: ../plugin/controllers/models/info.py:102
-#: ../plugin/controllers/models/info.py:119
 msgid "unknown"
 msgstr "nežinoma"
 
-#: ../plugin/controllers/i18n.py:497
 msgid "using"
 msgstr "naudojamas"
 
-#: ../plugin/controllers/i18n.py:465
 msgid "via"
 msgstr "per"
 
-#: ../plugin/controllers/i18n.py:284
 msgid "waiting"
 msgstr "laukiama"
 
-#: ../plugin/controllers/i18n.py:373
 msgid "weekday"
 msgstr "Šiokiadienis"
 
-#: ../plugin/controllers/i18n.py:372
 msgid "weekend"
 msgstr "Savaitgalis"
 
-#: ../plugin/controllers/ipkg.py:284
 msgid "wrong filetype"
 msgstr "netinkamas failo tipas"
 
-#: ../plugin/controllers/i18n.py:321
 msgid "zap"
 msgstr "perjungti"
+
+#~ msgid "Apid"
+#~ msgstr "ApId"
+
+#~ msgid "Onid"
+#~ msgstr "ONID"
+
+#~ msgid "Pcrpid"
+#~ msgstr "Pcrpid"
+
+#~ msgid "Pmtpid"
+#~ msgstr "Pmtpid"
+
+#~ msgid "Recording Status"
+#~ msgstr "Įrašymo būsena"
+
+#~ msgid "Sid"
+#~ msgstr "SID"
+
+#~ msgid "Sref"
+#~ msgstr "Sref"
+
+#~ msgid "Tsid"
+#~ msgstr "TSID"
+
+#~ msgid "Tuner Bit Error Rate BER"
+#~ msgstr "Imtuvo klaidingų bitų santykis (BER)"
+
+#~ msgid "Tuner Signal Power AGC"
+#~ msgstr "Imtuvo signalo galia AGC"
+
+#~ msgid "Tuner Signal Quality SNR"
+#~ msgstr "Imtuvo signalo kokybė SNR"
+
+#~ msgid "Tuner Signal Quality SNR_DB"
+#~ msgstr "Imtuvo signalo kokybė SNR_DB"
+
+#~ msgid "Video Wide"
+#~ msgstr "Platus vaizdas"
+
+#~ msgid "Vpid"
+#~ msgstr "VPId"

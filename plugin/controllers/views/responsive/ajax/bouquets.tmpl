@@ -25,7 +25,8 @@
 <div class="form-group hidden-md hidden-lg hidden-xl">
 	<select class="form-control show-tick" id="bqselector">
 	#for $bouquet in $bouquets
-		<option value='ajax/channels?id=$quote($bouquet[0])&stype=$stype'>$bouquet[1]</option>
+		#set bn = $bouquet[1].replace('<','&lt;').replace('>','&gt;')
+		<option value='ajax/channels?id=$quote($bouquet[0])&stype=$stype'>$bn</option>
 	#end for
 	</select>
 </div>
@@ -33,9 +34,10 @@
 	<ul class="nav nav-tabs tab--skinned">
 	#set $f="id='firstBq'"
 	#for $bouquet in $bouquets
+		#set bn = $bouquet[1].replace('<','&lt;').replace('>','&gt;')
 		<li>
 			<a href='#tab' onclick="load_subcontent('ajax/channels?id=$quote($bouquet[0])&stype=$stype'); return false;" data-toggle="tab" $f>
-				<i class="material-icons material-icons-bouquets">$tabIcon</i>$bouquet[1]
+				<i class="material-icons material-icons-bouquets">$tabIcon</i>$bn
 			</a>
 		</li>
 		#set $f="class='align-middle'"

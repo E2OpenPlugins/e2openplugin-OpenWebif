@@ -1,8 +1,8 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.21
+//* Version 1.2.27
 //******************************************************************************
-//* Copyright (C) 2011-2021 E2OpenPlugins
+//* Copyright (C) 2011-2022 E2OpenPlugins
 //*
 //* V 1.0   - Initial Version
 //* V 1.1   - add movie move and rename
@@ -34,12 +34,18 @@
 //* V 1.2.19 - fixed missing <channelname> when requesting a transcoding stream m3u8
 //* V 1.2.20 - timer pipzap option
 //* V 1.2.21 - improve getallservices
+//* V 1.2.22 - add recoding type to timer edit
+//* V 1.2.23 - add rename recording
+//* V 1.2.24 - screenshot image resizable
+//* V 1.2.25 - save screenshot settings to config instead of browser local storage 
+//* V 1.2.26 - improve save config 
+//* V 1.2.27 - improve FillAllServices
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
 //* 		 Homey-GER
 //* 		 Cimarast
-//* 		 Joerg Bleyel <jbleyel # gmx.net>
+//* 		 jbleyel
 //* 		 Schimmelreiter
 //* 		 plnick
 //*
@@ -240,6 +246,7 @@ function initJsTranslation(strings) {
 	tstr_channel = strings.channel;
 	tstr_end = strings.begin;
 	tstr_begin = strings.end;
+	tstr_rename_recording = strings.tstr_rename_recording;
 
 }
 
@@ -748,31 +755,35 @@ function setOSD( statusinfo )
 	var station = current_name = statusinfo['currservice_station'];
 	
 	if (station) {
+		var stationA = station.replace(/'/g,"\\'");
 		var stream = "<div id='osdicon'>";
 		var streamtitle = tstr_stream + ": " + station + "'><i class='fa fa-desktop'></i></a>";
 		var streamtitletrans = tstr_stream + " (" + tstr_transcoded + "): " + station + "'><i class='fa fa-mobile'></i></a>";
 		var _osdch = "<span class='osdch'>" + station + "</span></a>&nbsp;&nbsp;";
 		var _beginend = _osdch + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;";
-		
+		var desc = statusinfo['currservice_fulldescription'];
+		desc = desc.replace(/'/g,"\\'");
+
 		if ((sref.indexOf("1:0:1") !== -1) || (sref.indexOf("1:134:1") !== -1)) {
 			if (statusinfo['transcoding']) {
-				stream += "<a href='#' onclick=\"jumper8001('" + sref + "', '" + station + "')\"; title='" + streamtitle;
-				stream += "<a href='#' onclick=\"jumper8002('" + sref + "', '" + station + "')\"; title='" + streamtitletrans;
+				stream += "<a href='#' onclick=\"jumper8001('" + sref + "', '" + stationA + "')\"; title='" + streamtitle;
+				stream += "<a href='#' onclick=\"jumper8002('" + sref + "', '" + stationA + "')\"; title='" + streamtitletrans;
 			} else {
-				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "&fname=" + station + "' title='" + streamtitle;
+				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + stationA + "&fname=" + stationA + "' title='" + streamtitle;
 			}
 			stream +="</div>";
-			$("#osd").html(stream + "<a href='#' onclick='load_maincontent(\"ajax/tv\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
+			$("#osd").html(stream + "<a href='#' onclick='load_maincontent(\"ajax/tv\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + desc + "'>" + statusinfo['currservice_name'] + "</a>");
 		} else if ((sref.indexOf("1:0:2") !== -1) || (sref.indexOf("1:134:2") !== -1)) {
-			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + station + "&fname=" + station + "' title='" + streamtitle;
+			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + stationA + "&fname=" + stationA + "' title='" + streamtitle;
 			stream +="</div>";
-			$("#osd").html(stream + "<a href='#' onclick='load_maincontent(\"ajax/radio\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
+			$("#osd").html(stream + "<a href='#' onclick='load_maincontent(\"ajax/radio\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + desc + "'>" + statusinfo['currservice_name'] + "</a>");
 		} else if (sref.indexOf("1:0:0") !== -1) {
+			var fn = statusinfo['currservice_filename'].replaceAll("'","%27").replaceAll("\"","%22");
 			if (statusinfo['transcoding']) {
-				stream += "<a href='#' onclick=\"jumper80('" + statusinfo['currservice_filename'] + "')\"; title='" + streamtitle;
-				stream += "<a href='#' onclick=\"jumper8003('" + statusinfo['currservice_filename'] + "')\"; title='" + streamtitletrans;
+				stream += "<a href='#' onclick=\"jumper80('" + fn + "')\"; title='" + streamtitle;
+				stream += "<a href='#' onclick=\"jumper8003('" + fn + "')\"; title='" + streamtitletrans;
 			} else {
-				stream += "<a target='_blank' href='/web/ts.m3u?file=" + statusinfo['currservice_filename'] + "' title='" + streamtitle;
+				stream += "<a target='_blank' href='/web/ts.m3u?file=" + fn + "' title='" + streamtitle;
 			}
 			stream +="</div>";
 			$("#osd").html(stream + _beginend + statusinfo['currservice_name']);
@@ -853,15 +864,15 @@ function grabScreenshot(mode) {
 		mode = screenshotMode;
 	}
 	timestamp = new Date().getTime();
-	if (GetLSValue('ssr_hd',false)){
+	if (SSHelper.ssr_hd){
 		$('#screenshotimage').attr("src",'/grab?format=jpg&mode=' + mode + '&t=' + timestamp);
 	} else {
 		$('#screenshotimage').attr("src",'/grab?format=jpg&r=720&mode=' + mode + '&t=' + timestamp);
 	}
 	if (mode == "lcd") {
-		$('#screenshotimage').attr("width", 'auto');
+		$('#screenshotimage').css("width", 'auto');
 	} else {
-		$('#screenshotimage').attr("width",720);
+		$('#screenshotimage').css('width', '100%');
 	}
 }
 
@@ -1002,11 +1013,13 @@ function toggleFullRemote() {
 	$("#remotecontainer").toggle();
 }
 
-function saveConfig(key, value) {
+function saveConfig(key, value, section) {
 	$.ajax({ url: "/api/saveconfig?key=" + escape(key) + "&value=" + escape(value), cache: false, async: true, type: "POST"}).done(function() { 
 		if (key == "config.usage.setup_level") {
-			// TODO: refresh the menu box with new sections list
 			$("#content_container").load(lastcontenturl);
+		}
+		else {
+			load_scontent('ajax/config?section=' + section);
 		}
 	});
 }
@@ -1182,6 +1195,7 @@ function editTimer(serviceref, begin, end) {
 							$('#enabled').prop("checked", timer.disabled == 0);
 							$('#justplay').prop("checked", timer.justplay);
 							$('#afterevent').val(timer.afterevent);
+							$('#recordingtype').val(timer.recordingtype);
 							$('#errorbox').hide();
 							var flags=timer.repeated;
 							for (var i=0; i<7; i++) {
@@ -1350,6 +1364,7 @@ function addTimer(evt,chsref,chname,top,isradio) {
 	$('#allow_duplicate').prop("checked", true);
 	$('#autoadjust').prop("checked", false);
 	$('#afterevent').val(3);
+	$('#recordingtype').val("");
 	$('#errorbox').hide();
 
 	for (var i=0; i<7; i++) {
@@ -1728,7 +1743,7 @@ function ChangeTheme(theme)
 function directlink()
 {
 	// #myepg?epgmode=tv
-	var hashParts = window.location.hash.match(/^#((.*?[^\?]*)(\?.*)*)/) || [null, '', '']
+	var hashParts = window.location.hash.match(/^#((.*?[^\?]*)(\?.*)*)/) || [null, '', ''];
 	var page = hashParts[2]; // myepg
 	var hash = hashParts[1]; // myepg?epgmode=tv
 	var lnk = 'ajax/tv';
@@ -1771,7 +1786,7 @@ function ShowTimers(timers)
 				var end = begin + ( parseInt(parts[2]) * 60 );
 				var evt = $( this );
 				timers.forEach(function(entry) {
-					if(entry["sref"] == sref)
+					if(entry["sref"] == sref || sref.indexOf(entry["sref"]) === 0)
 					{
 						var b = parseInt(entry["begin"]);
 						var e = parseInt(entry["end"]);
@@ -2024,7 +2039,7 @@ function SetSpinner()
 
 function isInArray(array, search) { return (array.indexOf(search) >= 0) ? true : false; }
 
-function FillAllServices(bqs,callback)
+function FillAllServices(bqs,cuttitle,callback)
 {
 	var options = "";
 	var boptions = "";
@@ -2040,7 +2055,15 @@ function FillAllServices(bqs,callback)
 			if (!isInArray(refs,ref)) {
 				refs.push(ref);
 				if(ref.substring(0, 4) == "1:0:")
+				{
+					if(cuttitle) {
+						var li = ref.lastIndexOf("::");
+						if(li>0) {
+							ref = ref.substring(0,li-1);
+						}
+					}
 					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
+				}
 				if(ref.substring(0, 5) == "4097:")
 					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
 				if(ref.substring(0, 7) == "1:134:1")
@@ -2083,7 +2106,7 @@ function GetAllServices(callback,radio)
 		if(cache != null) {
 			var js = JSON.parse(cache);
 			var bqs = js['services'];
-			FillAllServices(bqs,callback);
+			FillAllServices(bqs,false,callback);
 			return;
 		}
 	}
@@ -2095,7 +2118,7 @@ function GetAllServices(callback,radio)
 			SetLSValue(v,sdata);
 			SetLSValue(vd,date);
 			var bqs = data['services'];
-			FillAllServices(bqs,callback);
+			FillAllServices(bqs,false,callback);
 		}
 	});
 }
@@ -2111,20 +2134,22 @@ function testPipStatus() {
                                 buttonsSwitcher(pipinfo.pip);
 			}
 		}
-	})
+	});
 }
 
 var SSHelperObj = function () {
 	var self;
 	var screenshotInterval = false;
 	var ssr_i = 30;
+	var ssr_hd = true;
 
 	return {
 		setup: function()
 		{
 			self = this;
 			clearInterval(self.screenshotInterval);
-			self.ssr_i = parseInt(GetLSValue('ssr_i','30'));
+			self.ssr_i = parseInt($('#ssr_i').val());
+			self.ssr_hd = $('#ssr_hd').is(':checked');
 			
 			$('#screenshotbutton0').click(function(){testPipStatus(); grabScreenshot('all');});
 			$('#screenshotbutton1').click(function(){testPipStatus(); grabScreenshot('video');});
@@ -2136,20 +2161,19 @@ var SSHelperObj = function () {
 			$('#screenshotbutton').buttonset();
 			$('#screenshotrefreshbutton').buttonset();
 			$('#ssr_i').val(self.ssr_i);
-			$('#ssr_s').prop('checked',GetLSValue('ssr_s',false));
-			$('#ssr_hd').prop('checked',GetLSValue('ssr_hd',false));
 			$('#screenshotspinner').addClass(GetLSValue('spinner','fa-spinner'));
 
 			$('#ssr_hd').change(function() {
 				testPipStatus();
-				SetLSValue('ssr_hd',$('#ssr_hd').is(':checked'));
+				self.ssr_hd = $('#ssr_hd').is(':checked');
+				webapi_execute("/api/setwebconfig?screenshot_high_resolution=" + ( self.ssr_hd ? "true" : "false"));
 				grabScreenshot('auto');
 			});
 		
 			$('#ssr_i').change(function() {
 				testPipStatus();
 				var t = $('#ssr_i').val();
-				SetLSValue('ssr_i',t);
+				webapi_execute("/api/setwebconfig?screenshot_refresh_time=" + t);
 				self.ssr_i = parseInt(t);
 				if($('#ssr_s').is(':checked'))
 				{
@@ -2166,14 +2190,15 @@ var SSHelperObj = function () {
 				} else {
 					clearInterval(self.screenshotInterval); 
 				}
-				SetLSValue('ssr_s',v);
+				webapi_execute("/api/setwebconfig?screenshot_refresh_auto=" + (v ? "true":"false"));
 			});
 		
 			screenshotMode = 'all'; // reset on page reload
 			grabScreenshot(screenshotMode);
 
-			if(GetLSValue('ssr_s',false))
+			if($('#ssr_s').is(':checked')) {
 				self.setSInterval();
+			}
 
 		},setSInterval: function()
 		{
@@ -2183,3 +2208,63 @@ var SSHelperObj = function () {
 };
 
 var SSHelper = new SSHelperObj();
+
+
+function editmovie(sref, mt, directory) {
+
+	var url = "ajax/editmovie?sRef=" + sref;
+	var title = "$tstrings['edit_recording']";
+	var buttons = {};
+	buttons[tstr_rename_recording] = function() { renameMovie(sref, mt);};
+	buttons[tstr_save] = function() { editmovieAction(sref, directory);};
+	buttons[tstr_cancel] = function() { $(this).dialog("close");};
+
+	$.ajax({
+		url: url,
+		success: function(data) {
+			$("#modaldialog").html(data).dialog({
+				modal:true,
+				title:title,
+				autoOpen:true,
+				width:'auto',
+				buttons: buttons,
+				close: function(event, ui) { 
+					$(this).dialog('destroy');
+					$("#modaldialog").html('');
+				}
+			});
+		}
+	});
+
+}
+
+function editmovieAction(sref, directory) {
+
+	var title = $('#movieTitle').val();
+	if(title == undefined || title == "")
+	{
+		$("#modaldialog").dialog("close");
+		return;
+	}
+
+	var urldata = {};
+	urldata['sRef'] = decodeURI(sref);
+	urldata['desc'] = $('#movieDescription').val();
+	urldata['title'] = title;
+
+	$.ajax({
+		url: "/api/movieinfo",
+		dataType: "json",
+		cache: false,
+		data: urldata,
+		success: function(result) { 
+			if (result.result)
+			{
+				$("#modaldialog").dialog("close");
+				load_maincontent_spin('ajax/movies?dirname='+directory)
+			}
+			else
+				$('#movieResponse').html(result.resulttext);
+		}
+	});
+}	

@@ -3,29 +3,23 @@
   "version": "0.0.1",
   "description": "Static assets for OpenWebif interface",
   "main": "index.js",
-  "dependencies": {
-    "@babel/runtime": "^7.13.10",
-    "core-js": "^2.6.12",
-    "sass": "^1.32.8"
-  },
   "devDependencies": {
-    "@babel/cli": "^7.13.10",
-    "@babel/core": "^7.13.10",
-    "@babel/node": "^7.13.10",
-    "@babel/plugin-transform-runtime": "^7.13.10",
-    "@babel/preset-env": "^7.13.10",
-    "babel-preset-minify": "^0.5.1",
-    "clean-css": "^4.2.3",
-    "clean-css-cli": "^4.3.0",
-    "commander": "^6.2.1",
+    "clean-css": "^5.1.2",
+    "clean-css-cli": "^5.3.0",
+    "commander": "^7.2.0",
     "glob-uglifyjs": "^2.0.0",
     "mkdirp": "^1.0.4",
-    "parcel-bundler": "^1.12.5",
-    "prettier": "2.2.1"
+    "node-sass": "^7.0.0",
+    "prettier": "^2.3.1",
+    "sass": "^1.35.1"
   },
   "resolutions": {
-    "node-forge": "0.10.0",
-    "yargs-parser": "20.2.4"
+    "node-forge": "~0.10.0",
+    "yargs-parser": "^20.2.7",
+    "glob-parent": "^5.1.2",
+    "css-what": "^5.0.1",
+    "normalize-url": "^4.5.1",
+    "postcss": "^8.2.10"
   },
   "browserslist": [
     "defaults"
@@ -33,12 +27,9 @@
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
     "build-classic-js": "npx glob-uglifyjs -c ./classic-glob-uglifyjs.config",
-    "uglifymodern": "npx glob-uglifyjs -c ./modern-glob-uglifyjs.config",
-    "build-entry": "npx parcel build ./modern/entry-app.js --out-dir ../plugin/public/modern/js/",
-    "build-autotimers": "npx parcel build ./modern/autotimers-app.js --out-dir ../plugin/public/modern/js/",
-    "build-bqe": "npx parcel build ./modern/bqe-app.js --out-dir ../plugin/public/modern/js/",
-    "build-js": "npm run-script uglifymodern; npm run-script build-entry; npm run-script build-autotimers; npm run-script build-bqe",
-    "build-css": "npx ./_utils/mincss.js -o '../plugin/public/' './modern/css/**/*.css'",
+    "build-js": "npm run build-prod --prefix modern",
+    "build-css": "node ./_utils/mincss.js -o '../plugin/public/' './modern/css/**/*.css'",
+    "build-classic-css": "node-sass './scss/style.scss' '../plugin/public/css/style.min.css' --output-style compressed",
     "test": "echo 'Error: no test specified!' && exit 1"
   },
   "repository": {
@@ -50,5 +41,8 @@
   "bugs": {
     "url": "https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/issues"
   },
-  "homepage": "https://github.com/E2OpenPlugins/e2openplugin-OpenWebif#readme"
+  "homepage": "https://github.com/E2OpenPlugins/e2openplugin-OpenWebif#readme",
+  "dependencies": {
+    "path-exists": "^5.0.0"
+  }
 }

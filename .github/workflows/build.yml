@@ -1,0 +1,105 @@
+name: build
+
+on:
+  push:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: 'master'
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: Build python 3.10
+        run: |
+          pip3 install Cheetah3
+          pip3 install six
+          python -m compileall -l . -r 10 -q
+          cheetah compile -R plugin
+          python testsuite/evil_eval.py
+
+      - uses: actions/checkout@v2
+        with:
+          ref: 'master'
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Build python 3.9
+        run: |
+          pip3 install Cheetah3
+          pip3 install six
+          python -m compileall -l . -r 10 -q
+          cheetah compile -R plugin
+          python testsuite/evil_eval.py
+
+      - uses: actions/checkout@v2
+        with:
+          ref: 'master'
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '2.7'
+
+      - name: Build python 2.7
+        run: |
+          sudo apt-get -q update
+          sudo apt-get install -y closure-compiler nodejs npm gettext
+          sudo npm install -g jshint
+          pip install Cheetah
+          pip install bandit==1.6.2
+          pip install -r CI/requirements.txt
+          pip install six
+          python -m compileall -l . -l plugin -l plugin/backport -l plugin/controllers -l plugin/controllers/models
+          cheetah compile -R plugin
+          python testsuite/evil_eval.py
+          ./CI/build.sh
+          ./CI/create_ipk.sh
+          ./CI/create_ipk.sh vti
+          ./CI/create_ipk.sh deb
+          export PKG1=$(ls -1 *_all.ipk)
+          export PKG2=$(ls -1 *_vti.ipk)
+          export PKG3=$(ls -1 *_all.deb)
+          mkdir Rel
+          bandit -r plugin -f html -o bandit.html || true
+          python -m flake8 --ignore=W191,E501,E302,E711,E128,E265 --extend-exclude plugin/controllers/views/ plugin/ --output-file flake8_report.txt || true
+          jshint ./sourcefiles/js/ | tee jshint1_report.txt
+          jshint ./sourcefiles/modern/js/ | tee jshint2_report.txt
+          touch ./Rel/.nojekyll
+          mv "${PKG1}" ./Rel
+          mv "${PKG2}" ./Rel
+          mv "${PKG3}" ./Rel
+          mv bandit.html ./Rel
+          mv flake8_report.txt ./Rel
+          mv jshint1_report.txt ./Rel
+          mv jshint2_report.txt ./Rel
+          cd Rel
+          export PKG1=$(ls -1 *_all.ipk)
+          ln -s "${PKG1}" enigma2-plugin-extensions-openwebif_latest_all.ipk
+          export PKG1=$(ls -1 *_vti.ipk)
+          ln -s "${PKG1}" enigma2-plugin-extensions-openwebif_latest_vti.ipk
+          export PKG1=$(ls -1 *_all.deb)
+          ln -s "${PKG1}" enigma2-plugin-extensions-openwebif_latest_all.deb
+          cd ..
+          cd doc
+          make html
+          cd build/html
+          mv * ../../../Rel/
+          cd ../../../
+
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./Rel
+          force_orphan: true

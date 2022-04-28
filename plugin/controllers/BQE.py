@@ -301,7 +301,7 @@ class BQEWebController(BaseController):
 					service['ismarker'] = '2'
 					service['servicename'] = ''
 				else:
-					service['servicename'] = item[1]
+					service['servicename'] = item[1].replace('<', '&lt;').replace('>', '&gt;')
 					if item[0].flags & eServiceReference.isGroup:
 						gservices = []
 						service['isgroup'] = '1'
@@ -311,7 +311,7 @@ class BQEWebController(BaseController):
 						for gitem in gfulllist:
 							gservice = {}
 							gservice['servicereference'] = gitem[0].toString()
-							gservice['servicename'] = gitem[1]
+							gservice['servicename'] = gitem[1].replace('<', '&lt;').replace('>', '&gt;')
 							gservices.append(gservice)
 						service['members'] = gservices
 

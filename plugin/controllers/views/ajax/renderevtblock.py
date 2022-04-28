@@ -14,7 +14,7 @@ class renderEvtBlock:
             <div style="width:144px; float:left">
                 <div class="title">%s</div>%s
             </div>
-            <div style="clear:left"></div>
+            <div style="clear:left;height:2px;%s"></div>
         </div>
         """
 
@@ -24,8 +24,12 @@ class renderEvtBlock:
         else:
             shortdesc = ''
 
+        timerbar = ""
+
         if event['timerStatus'] != '':
-            timerEventSymbol = '<div class="%s">%s</div>' % (event['timerStatus'], tstrings['timer'])
+            text = event['timer']['text']
+            timerEventSymbol = '<div class="%s">%s</div>' % (event['timerStatus'], text)
+            timerbar = "background-color:red;"
         else:
             timerEventSymbol = ''
 
@@ -35,4 +39,4 @@ class renderEvtBlock:
             strftime("%H:%M", localtime(event['begin_timestamp'])),
             timerEventSymbol,
             event['title'],
-            shortdesc)
+            shortdesc, timerbar)

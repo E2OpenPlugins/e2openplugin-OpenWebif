@@ -3,14 +3,29 @@
 from __future__ import print_function
 import os
 import sys
+import glob
+import re
 
 from Components.Language import language
 from Components.config import config as comp_config
 from Components.Network import iNetwork
 
-from enigma import eEnv
+try:
+	from Tools.Directories import isPluginInstalled
+except ImportError:
+	# fallback for old images
+	from Tools.Directories import resolveFilename, SCOPE_PLUGINS
+	def isPluginInstalled(p, plugin="plugin"):
+		for ext in ['', 'c', 'o']:
+			if os.path.exists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/%s/%s.py%s" % (p, plugin, ext))):
+				return True
+			if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/%s/%s.py%s" % (p, plugin, ext))):
+				return True
 
-OPENWEBIFVER = "OWIF 1.4.6"
+def _isPluginInstalled(p, plugin="plugin"):
+	return isPluginInstalled(p, plugin)
+
+OPENWEBIFVER = "OWIF 1.5.0"
 
 PLUGIN_NAME = 'OpenWebif'
 PLUGIN_DESCRIPTION = "OpenWebif Configuration"
@@ -33,10 +48,7 @@ MOBILEDEVICE = False
 
 def getTranscoding():
 	if os.path.isfile("/proc/stb/encoder/0/bitrate"):
-		lp = eEnv.resolve('${libdir}/enigma2/python/Plugins/SystemPlugins/')
-		for p in ['TranscodingSetup', 'TransCodingSetup', 'MultiTransCodingSetup']:
-			if os.path.exists(lp + p + '/plugin.py') or os.path.exists(lp + p + '/plugin.pyo'):
-				return True
+		return isPluginInstalled("TranscodingSetup") or isPluginInstalled("TransCodingSetup") or isPluginInstalled("MultiTransCodingSetup")
 	return False
 
 
@@ -131,3 +143,121 @@ EXT_EVENT_INFO_SOURCE = getExtEventInfoProvider()
 TRANSCODING = getTranscoding()
 
 # TODO: improve PICON_PATH, GLOBALPICONPATH
+
+
+def getOpenwebifPackageVersion():
+	control = glob.glob('/var/lib/opkg/info/*openwebif.control')
+	version = 'unknown'
+	if len(control):
+		with open(control[0]) as file:
+			lines = file.read()
+			try:
+				version = re.search(r'^Version:\s*(.*)', lines, re.MULTILINE).group(1)
+			except AttributeError:
+				pass
+	return version
+
+
+def getUserCSS(fn):
+	if os.path.isfile(fn):
+		return open(fn, 'r').read()
+	else:
+		return ''
+
+
+def getAutoTimer():
+	try:
+		from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer  # noqa: F401
+		return True
+	except ImportError:
+		return False
+
+
+def getAutoTimerChangeResource():
+	if HASAUTOTIMER:
+		try:
+			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerChangeResource  # noqa: F401
+			return True
+		except ImportError:
+			return False
+	else:
+		return False
+
+
+def getAutoTimerTestResource():
+	if HASAUTOTIMER:
+		try:
+			from Plugins.Extensions.AutoTimer.AutoTimerResource import AutoTimerTestResource  # noqa: F401
+			return True
+		except ImportError:
+			return False
+	else:
+		return False
+
+
+def getVPSPlugin():
+	try:
+		from Plugins.SystemPlugins.vps import Vps  # noqa: F401
+		return True
+	except ImportError:
+		return False
+
+
+def getSeriesPlugin():
+	try:
+		from Plugins.Extensions.SeriesPlugin.plugin import Plugins  # noqa: F401
+		return True
+	except ImportError:
+		return False
+
+
+def getATSearchtypes():
+	try:
+		from Plugins.Extensions.AutoTimer.AutoTimer import typeMap
+		return typeMap
+	except ImportError:
+		return {}
+
+def getTextInputSupport():
+	try:
+		from enigma import setPrevAsciiCode
+		return True
+	except ImportError:
+		return False
+
+def getDefaultRcu():
+	remotetype = "standard"
+	if comp_config.misc.rcused.value == 0:
+		remotetype = "advanced"
+	else:
+		try:
+			# FIXME remove HardwareInfo
+			from Tools.HardwareInfo import HardwareInfo
+			if HardwareInfo().get_device_model() in ("xp1000", "formuler1", "formuler3", "et9000", "et9200", "hd1100", "hd1200"):
+				remotetype = "advanced"
+		except:  # nosec # noqa: E722
+			print("[OpenWebIf] wrong hw detection")
+	return remotetype
+
+
+OPENWEBIFPACKAGEVERSION = getOpenwebifPackageVersion()
+
+USERCSSCLASSIC = getUserCSS('/etc/enigma2/owfclassic.css')
+
+USERCSSRESPONSIVE = getUserCSS('/etc/enigma2/owfresponsive.css')
+
+HASAUTOTIMER = getAutoTimer()
+
+HASAUTOTIMERCHANGE = getAutoTimerChangeResource()
+
+HASAUTOTIMERTEST = getAutoTimerTestResource()
+
+HASVPS = getVPSPlugin()
+
+HASSERIES = getSeriesPlugin()
+
+ATSEARCHTYPES = getATSearchtypes()
+
+TEXTINPUTSUPPORT = getTextInputSupport()
+
+DEFAULT_RCU = getDefaultRcu()

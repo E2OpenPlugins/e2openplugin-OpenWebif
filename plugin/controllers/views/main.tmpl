@@ -1,3 +1,4 @@
+#from controllers.defaults import USERCSSCLASSIC
 #from controllers.i18n import tstrings
 #from json import dumps
 #set $t="original"
@@ -50,35 +51,93 @@
 		<div><a class="fbb" href='#' title=$tstrings['powercontrol'].replace(" ","&nbsp;") onclick="load_dm('ajax/powerstate','$tstrings["powercontrol"]');this.blur();return false;"><i class="fa fa-power-off" aria-hidden="true"></i></a></div>
 	<!--<div><a class="lmc fbb" href="ajax/screenshot" title=$tstrings['grabscreenshot'].replace(" ","&nbsp;")><i class="fa fa-camera-retro" aria-hidden="true"></i></a></div> -->
 		<div><a class="fbb" href='#' title=$tstrings['sendamessage'].replace(" ","&nbsp;") onclick="load_message_dm('ajax/message','$tstrings["sendamessage"]');this.blur();return false;"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></div>
+		#if $textinputsupport == True
+		<div style="width: 30px;"><a class="fbb" href="#" title="Text" onclick="InputText();return false;" style="font-style: italic;font-size: 20px;text-align: center;text-decoration: underline;">T</a></div>
+		#end if
 		<div><a class="fbb" href='#' title=$tstrings['showfullremote'].replace(" ","&nbsp;") onclick="toggleFullRemote();return false;"><i class="fa fa-expand" aria-hidden="true"></i></a></div>
 		</div></div>
 		</li>
 		</ul>
 		<div class="ui-widget-header" style="border-bottom: none;background: none;margin-left: 5px;margin-right: 5px;"></div>
-	<img src="images/remotes/ow_remote.png" width="135" height="183" usemap="#menuremote" border="0">
-	<map name="menuremote" >
-		<area shape="circle" coords="67,148,13" alt="ok" onclick="pressMenuRemote('352');">
-		<area shape="circle" coords="68,173,9" alt="down" onclick="pressMenuRemote('108');">
-		<area shape="circle" coords="44,151,9" alt="left" onclick="pressMenuRemote('105');">
-		<area shape="circle" coords="92,151,9" alt="right" onclick="pressMenuRemote('106');">
-		<area shape="circle" coords="68,126,9" alt="up" onclick="pressMenuRemote('103');">
-		<area shape="circle" coords="117,167,11" alt="blue" onclick="pressMenuRemote('401');">
-		<area shape="circle" coords="117,137,11" alt="yellow" onclick="pressMenuRemote('400');">
-		<area shape="circle" coords="18,167,11" alt="green" onclick="pressMenuRemote('399');">
-		<area shape="circle" coords="18,137,11" alt="red" onclick="pressMenuRemote('398');">
-		<area shape="rect" coords="2,88,41,111" alt="menu" onclick="pressMenuRemote('139');">
-		<area shape="rect" coords="93,88,133,111" alt="exit" onclick="pressMenuRemote('174');">
-		<area shape="rect" coords="46,88,87,111" alt="0" onclick="pressMenuRemote('11');">
-		<area shape="rect" coords="93,60,133,84" alt="9" onclick="pressMenuRemote('10');">
-		<area shape="rect" coords="46,60,87,84" alt="8" onclick="pressMenuRemote('9');">
-		<area shape="rect" coords="2,60,41,84" alt="7" onclick="pressMenuRemote('8');">
-		<area shape="rect" coords="93,31,133,55" alt="6" onclick="pressMenuRemote('7');">
-		<area shape="rect" coords="46,31,87,55" alt="5" onclick="pressMenuRemote('6');">
-		<area shape="rect" coords="2,31,41,55" alt="4" onclick="pressMenuRemote('5');">
-		<area shape="rect" coords="93,0,133,25" alt="3" onclick="pressMenuRemote('4');">
-		<area shape="rect" coords="46,0,89,25" alt="2" onclick="pressMenuRemote('3');">
-		<area shape="rect" coords="2,0,41,25" alt="1" onclick="pressMenuRemote('2');">
-	</map>
+		#if $smallremote == 'old'
+		<img src="images/remotes/ow_remote.png" width="135" height="183" usemap="#menuremote" border="0">
+		<map name="menuremote" >
+			<area shape="circle" coords="67,148,13" alt="ok" onclick="pressMenuRemote('352');">
+			<area shape="circle" coords="68,173,9" alt="down" onclick="pressMenuRemote('108');">
+			<area shape="circle" coords="44,151,9" alt="left" onclick="pressMenuRemote('105');">
+			<area shape="circle" coords="92,151,9" alt="right" onclick="pressMenuRemote('106');">
+			<area shape="circle" coords="68,126,9" alt="up" onclick="pressMenuRemote('103');">
+			<area shape="circle" coords="117,167,11" alt="blue" onclick="pressMenuRemote('401');">
+			<area shape="circle" coords="117,137,11" alt="yellow" onclick="pressMenuRemote('400');">
+			<area shape="circle" coords="18,167,11" alt="green" onclick="pressMenuRemote('399');">
+			<area shape="circle" coords="18,137,11" alt="red" onclick="pressMenuRemote('398');">
+			<area shape="rect" coords="2,88,41,111" alt="menu" onclick="pressMenuRemote('139');">
+			<area shape="rect" coords="93,88,133,111" alt="exit" onclick="pressMenuRemote('174');">
+			<area shape="rect" coords="46,88,87,111" alt="0" onclick="pressMenuRemote('11');">
+			<area shape="rect" coords="93,60,133,84" alt="9" onclick="pressMenuRemote('10');">
+			<area shape="rect" coords="46,60,87,84" alt="8" onclick="pressMenuRemote('9');">
+			<area shape="rect" coords="2,60,41,84" alt="7" onclick="pressMenuRemote('8');">
+			<area shape="rect" coords="93,31,133,55" alt="6" onclick="pressMenuRemote('7');">
+			<area shape="rect" coords="46,31,87,55" alt="5" onclick="pressMenuRemote('6');">
+			<area shape="rect" coords="2,31,41,55" alt="4" onclick="pressMenuRemote('5');">
+			<area shape="rect" coords="93,0,133,25" alt="3" onclick="pressMenuRemote('4');">
+			<area shape="rect" coords="46,0,89,25" alt="2" onclick="pressMenuRemote('3');">
+			<area shape="rect" coords="2,0,41,25" alt="1" onclick="pressMenuRemote('2');">
+		</map>
+		#else
+			<table class="remotesmall" style="height:100px;">
+			<tr>
+				<td data-code="2"><button>1</button></td><td data-code="3"><button>2</button></td><td data-code="4"><button>3</button></td>
+			<tr>
+			<tr>
+				<td data-code="5"><button>4</button></td><td data-code="6"><button>5</button></td><td data-code="7"><button>6</button></td>
+			<tr>
+			<tr>
+				<td data-code="8"><button>7</button></td><td data-code="9"><button>8</button></td><td data-code="10"><button>9</button></td>
+			<tr>
+			<tr>
+				<td data-code="412" class="tdc bgray"><button>&lt;</button></td><td data-code="11"><button>0</button></td><td data-code="407" class="tdc bgray"><button>&gt;</button></td>
+			<tr>
+			</table>
+			<table class="remotesmall" style="height:20px;">
+			<tr>
+				<td data-code="398" class="tdc" style="background:red"><button></button></td>
+				<td data-code="399" class="tdc" style="background:green"><button></button></td>
+				<td data-code="400" class="tdc" style="background:#f5f501"><button></button></td>
+				<td data-code="401" class="tdc" style="background:#1a2cbd"><button></button></td>
+			<tr>
+			</table>
+			<table class="remotesmall" style="height:80px;">
+			<tr>
+				<td data-code="139"><button>Menu</button></td><td data-code="103" class="bgray"><button>&#x25B2;</button></td><td data-code="174"><button>Exit</button></td>
+			<tr>
+			<tr>
+				<td data-code="105" class="bgray"><button>&#x25C0;</button></td><td data-code="352" class="bgray"><button>OK</button></td><td data-code="106" class="bgray"><button>&#x25B6;</button></td>
+			<tr>
+			<tr>
+				<td data-code="358"><button>Info</button></td><td data-code="108" class="bgray"><button>&#x25BC;</button></td><td data-code="365"><button>EPG</button></td>
+			<tr>
+			</table>
+			#if $smallremote == 'ims'
+				<table class="remotesmall" style="height:20px;">
+				<tr>
+					<td data-code="167" class="tdc" style="background:#f08080"><button>Rec</button></td>
+					<td data-code="377" class="tdc bgray"><button>TV</button></td>
+					<td data-code="138" class="tdc bgray"><button>Help</button></td>
+					<td data-code="393" class="tdc bgray"><button>PVR</button></td>
+				<tr>
+				</table>
+			#else
+				<table class="remotesmall" style="height:20px;">
+				<tr>
+					<td data-code="393" class="tdf"><button>PVR</button></td>
+					<td data-code="377" class="tdf"><button>TV</button></td>
+					<td data-code="388" class="tdf"><button>Text</button></td>
+					<td data-code="138" class="tdf"><button>Help</button></td>
+				<tr>
+				</table>
+			#end if
+		#end if
 	<div class="help">
 		$tstrings['shiftforlong']
 	</div>
@@ -128,7 +187,7 @@
 		#set $theme_css = $t + '.css'
 		<link type="text/css" rel="stylesheet" href="themes/$theme_css">
 	#end if
-	<link type="text/css" href="css/style.min.css" rel="stylesheet"/>
+	<link type="text/css" href="css/style.min.css?v2" rel="stylesheet"/>
 	#if $t == "original"
 		<link type="text/css" href="css/theme_original.css" rel="stylesheet"/>
 	#end if
@@ -219,7 +278,7 @@
 
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/openwebif.min.js?v1.2.21"></script>
+	<script type="text/javascript" src="js/openwebif.min.js?v1.2.27"></script>
 	<script type="text/javascript" src="js/jquery-ui-timepicker-addon.min.js"></script>
 	<script type="text/javascript" src="/js/chosen.1.8.2.min.js"></script>
 	<script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
@@ -250,6 +309,30 @@
 		});
 		theme = '$t';
 		SetLSValue('TimerListOffset',0);
+
+		\$(document).ready(function() {
+			\$("td",".remotesmall").click(function(e) {
+				var d = \$(this).data("code");
+				if (d != undefined) {
+	        		pressMenuRemote(d);
+				}
+    		});
+		});
+		function InputText()
+		{
+			var txt = prompt("$tstrings['enter_text']", "");
+			if (txt != null) {
+				var url = "/api/remotecontrol?text=" + txt;
+				webapi_execute(url);
+				callScreenShot();
+			}
+		}
 	</script>
+
+#if $USERCSSCLASSIC != ''
+<style>
+$USERCSSCLASSIC
+</style>
+#end if
 </body>
 </html>

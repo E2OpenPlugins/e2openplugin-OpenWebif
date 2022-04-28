@@ -1,9 +1,9 @@
 //******************************************************************************
 //* epgr.js: openwebif EPGRefresh plugin
-//* Version 1.6
+//* Version 1.7
 //******************************************************************************
-//* Copyright (C) 2016-2021 Joerg Bleyel
-//* Copyright (C) 2016-2021 E2OpenPlugins
+//* Copyright (C) 2016-2022 Joerg Bleyel
+//* Copyright (C) 2016-2022 E2OpenPlugins
 //*
 //* V 1.0 - Initial Version
 //* V 1.1 - Theme Support
@@ -12,6 +12,7 @@
 //* V 1.4 - iptv, lastscanned filter
 //* V 1.5 - improve getallservices
 //* V 1.6 - improve getallservices
+//* V 1.7 - improve FillAllServices
 //*
 //* Authors: Joerg Bleyel <jbleyel # gmx.net>
 //*
@@ -83,7 +84,7 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 						var sdata = JSON.stringify(data);
 						var bqs = data['services'];
 
-						FillAllServices(bqs, function ( options , boptions) {
+						FillAllServices(bqs, false, function ( options , boptions) {
 							$("#channels").append( options);
 							$('#channels').trigger("chosen:updated");
 							$("#bouquets").append( boptions);
