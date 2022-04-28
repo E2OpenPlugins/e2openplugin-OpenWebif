@@ -311,7 +311,7 @@ input[type="range"]::-ms-thumb {
 }
 
 .timetable-now {
-  background-color: var(--skin-color);
+  background-color: var(--skin-color) !important;
 }
 
 .bars {
