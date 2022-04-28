@@ -1,3 +1,4 @@
+#from six.moves.urllib.parse import quote
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import showPicons, showPiconBackground
 
@@ -38,8 +39,11 @@
 			</th>
 	#else if $channel.ref.startswith('1:7:')
 			<td colspan="3" class="now-next__header header">
-				<h2><i class="material-icons material-icons-centered">folder</i> $channelName</h2>
-				<small>( Sub-bouquets aren't yet supported )</small>
+				<h2>
+					<a href="javascript:void(0);" class="link--skinned" onclick="load_subcontent('ajax/channels?id=$quote($channel.ref)&stype='); return false;">
+						<i class="material-icons material-icons-centered">folder</i> $channelName
+					</a>
+				</h2>
 			</td>
 	#else
 #if $showPicons and 'picon' in $channel
@@ -65,6 +69,7 @@
 			#end if
 				</h2>
 				<div class="now-next__channel__actions">
+#if not $channel.ref.startswith('1:7:')
 	#if $isProtected
 					<span class="link--not-skinned" target="_blank" title="$tstrings['locked']"><i class="material-icons material-icons-centered">lock_outline</i></span>
 	#else
@@ -88,6 +93,7 @@
 			#end if
 		#end if
 	#end if
+#end if
 				</div>
 			</td>
 			<td class="now-next__info">
