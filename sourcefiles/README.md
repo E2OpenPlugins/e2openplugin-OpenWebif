@@ -1,66 +1,163 @@
-(TODO: this page is somewhat out of date, but will give a decent reference to start from!)
+#Javascript, Styles, Fonts and Icons...
 
-### Compiling Assets (mainly Modern interface)
+There's a choice of OpenWebif interfaces to choose from:
+- `Modern` is suitable for mobile and desktop devices (also known as _responsive_)
+- `Classic` is the original look and layout
+- (`Mobile` will soon be removed in favour of the Modern interface)
 
-If you haven't already, you'll need to [install npm](https://www.npmjs.com/get-npm)
+There are a separate set of js and css files for each.
 
+JS and CSS files are compiled and minified as part of the [CI process](CI/npm.sh).
+
+This can also be done manually.
+
+##Prerequisites
+
+If you haven't already, you'll need to [install npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm#using-a-node-version-manager-to-install-nodejs-and-npm).
+
+##Initial setup
 If this is your first time working with assets on OpenWebIf, you'll
-need to `cd` to the repo root, then run
-`(cd ./sourcefiles/ && npm install)`
-which will download and install all required dependencies.
+need to download and install all required dependencies:
 
-*JavaScript Files*
-Found at `./sourcefiles/modern/js`, built using the command
+`cd` to the repo root, then run
+
+`(cd ./sourcefiles/ && npm install)`
+
+---
+
+##Modern interface
+
 ```
-(cd ./sourcefiles/ && npm run build-js)
+MODERN:
+
+/* source code */
+/sourcefiles/modern
+    /css/*.css
+    /js/*.js and /js/*.mjs
+    /fonts
+
+/* output */
+/plugin/public/modern
+    /css/*.min.css
+    /js/*.min.js or /js/*-app.js
+    /fonts
+
+/* browser url */
+/modern
+    /css/*.min.css
+    /js/*.min.js or /js/*-app.js
+    /fonts
 ```
-which minifies and writes to
+
+jQuery and Bootstrap are currently used for some functionality, but the 
+intention is to remove these dependencies completely from the Modern interface.
+
+###Compile JS
+`cd` to the repo root, then run
+
+`(cd ./sourcefiles && npm run build-js)`
+
+which minifies and saves the output to
 ```
-./plugin/public/modern/js/
+/plugin/public/modern/js/
 ```
-Upload these files to 
+Upload these files to the receiver at
 ```
 /usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/modern/js/
 ```
 
-*CSS files*
-Found at `sourcefiles/modern/css`, built using the command
+[`build-prod` (there's also a `build-dev` mode which doesn't minify output)]: #
+
+###Compile CSS
+`cd` to the repo root, then run
+
+`(cd ./sourcefiles && npm run build-css)`
+
+which minifies and saves the output to
 ```
-(cd ./sourcefiles/ && npm run build-css)
+/plugin/public/modern/css/
 ```
-which minifies and writes to
-```
-./plugin/public/modern/css/
-```
-Upload these files to 
+Upload these files to the receiver at
 ```
 /usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/modern/css/
 ```
 
-Simply reloading the browser page will be enough, there's no need to restart 
+Simply reloading the browser page will be enough, there's no need to restart
 Twisted server or enigma2!
+
+###Fonts
+The [Roboto](https://fonts.google.com/specimen/Roboto) font is served locally from 
+`/modern/fonts/roboto`
+
+###Icons
+The [Material Icons font](https://fonts.google.com/icons?selected=Material+Icons) 
+provides iconography, and is served locally from `/modern/fonts/materialicons`
+
+Implementation details can be found at https://google.github.io/material-design-icons/
+
+(Note that Material Icon versions on GitHub, NPM and the Google Fonts page are 
+all out of sync. This is a [known issue](https://github.com/google/material-design-icons/issues/1284#issue-1181974345).)
 
 ---
 
-### Compiling Assets (Classic interface)
+##Classic interface
 
-For the classic/old interface:
+```
+CLASSIC:
 
-*JavaScript Files*
-Found at `./sourcefiles/js`, built using the command
+/* source code */
+/sourcefiles
+    /css
+    /js
+    /scss
+
+/* output */
+/plugin/public
+    /css/*.min.css
+    /js/*.min.js or
+
+/* browser url */
+/
+    /css/*.min.css
+    /js/*.min.js
 ```
-(cd ./sourcefiles/ && npm run build-classic-js)
+
+###Compile JS
+`cd` to the repo root, then run
+
+`(cd ./sourcefiles && npm run build-classic-js)`
+
+which minifies and saves the output to
 ```
-which minifies and writes to
+/plugin/public/js/
 ```
-./plugin/public/js/
-```
-Upload these files to 
+Upload these files to the receiver at
 ```
 /usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/js/
 ```
 
+[`build-prod` (there's also a `build-dev` mode which doesn't minify output)]: #
+
+###Compile CSS
+`cd` to the repo root, then run
+
+`(cd ./sourcefiles && npm run build-classic-css)`
+
+which minifies and saves the output to
+```
+/plugin/public/css/
+```
+Upload these files to the receiver at
+```
+/usr/lib/enigma2/python/Plugins/Extensions/OpenWebif/public/css/
+```
+
+Refresh the browser page to see any changes, there's no need to restart Twisted
+server or enigma2!
+
 ### Compiling CSS Files
+
+TODO: verify whether this information is still applicable.
 
 The script `contrib/inotify_watcher.py` is used for compiling CSS files on
 the developers host using [Sass](https://sass-lang.com/) . On linux you need to
@@ -78,3 +175,9 @@ the location of the scss binary/script.
 Base command is
 
     scss -t compressed --unix-newlines --sourcemap=none "in.scss":"out.css"
+
+---
+
+##Mobile interface
+
+😐
