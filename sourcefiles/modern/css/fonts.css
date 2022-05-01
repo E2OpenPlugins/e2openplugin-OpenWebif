@@ -7,6 +7,7 @@
   font-weight: 400;
   /* src: url(https://fonts.gstatic.com/s/materialicons/v128/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2'); */
   src: url(../fonts/materialicons/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');
+  display: block;
 }
 /* fallback */
 @font-face {
@@ -15,6 +16,7 @@
   font-weight: 400;
   /* src: url(https://fonts.gstatic.com/s/materialiconsoutlined/v103/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUcel5euIg.woff2) format('woff2'); */
   src: url(../fonts/materialicons/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUcel5euIg.woff2) format('woff2');
+  display: block;
 }
 /* cyrillic-ext */
 @font-face {
@@ -81,7 +83,7 @@
 }
 
 .material-icons {
-  font-family: 'Material Icons';
+  font-family: 'Material Icons', sans-serif;
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -97,7 +99,7 @@
 }
 
 .material-icons-outlined {
-  font-family: 'Material Icons Outlined';
+  font-family: 'Material Icons Outlined', sans-serif;
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
