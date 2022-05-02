@@ -6,49 +6,53 @@ OpenWebif is an open source browser-based interface for Enigma2-based set-top bo
 
 ## Screenshots
 [Classic interface](screenshots/SCREENSHOTS.md)
+
 (TODO: add Modern interface screenshots)
 
 ## Usage
-To find out how to access it from your browser, go to the OpenWebif page through your receiver's Plugins page; once there, you'll see the `http...` address to use.
+To find out how to access it from your browser, go to OpenWebif's configuration via your receiver's Plugins page. You'll see the `http...` address to use at the bottom.
 
 ## Documentation
 Read the [e2openplugin OpenWebif documentation](https://e2openplugins.github.io/e2openplugin-OpenWebif/).
 
-## API Wiki
-[OpenWebif API documentation](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/wiki/OpenWebif-API-documentation)
+Browse [OpenWebif API Wiki](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/wiki/OpenWebif-API-documentation).
 
 ## Found a Problem / Issue / Bug / Missing Feature?
-See if it's [already been logged](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/issues).  
+First, check whether it's [already been logged](https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/issues).
+
 Otherwise, feel free to log a new issue or request.
 
-** Always try the most recent build first to see if this solves the issue. 
+** **Always try the most recent build first to see if this solves the issue!** **
+
 If that doesn't help, please provide as much information as possible!
 
-You'll need to enable `Debug | Display Tracebacks in browser` setting either
-- through `OpenWebif configuration`, which can be found in your receiver's `Plugins` page.
-or 
-- by adding the line `config.OpenWebif.displayTracebacks=true` to the `/etc/enigma2/settings` file
+You'll need to enable the `Debug | Display Tracebacks in browser` setting, either:
+- through `OpenWebif configuration`, which can be found via your receiver's `Plugins` page
 
-Along with the steps you took that cause the issue, the following information will be very useful:
+or 
+
+- by adding the line `config.OpenWebif.displayTracebacks=true` to your receiver's `/etc/enigma2/settings` file
+
+Along with the information on the steps you took that caused the issue, the following will be very useful:
 - whether the issue is constant or intermittent
 - if it has just recently started happening (perhaps after an update)
-- screenshots - A picture really is worth a thousand words!!
+- screenshots - a picture really is worth a thousand words!
 - whether the issue happens on just one or several browsers
-  - try with a mainstream browser (Firefox / Brave / Chrome / Edge /Safari)
+  - try with a mainstream browser (Brave / Chrome / Firefox / Safari / Edge)
   - try disabling browser extensions & plugins
+- if you've installed any plugins which could be related to the issue
 
-** **Note that the more detail we get, the sooner we'll be able to investigate!**
+** **Note that the more detail we get, the sooner we'll be able to investigate!** **
 
-We have limited free time and don't have every variation of setup at our disposable, so...
+We have limited free time and often only have one configuration at our disposable, so...
 
 If possible, even more helpful details to include are:
-- device type and OS (Mac / Win / Android / Apple ...)
-- OS or device version (macOS High Sierra / Win10 / Android 11 / iOS12 ...)
+- device type and OS (Mac OS / Windows / Android / Apple ...)
+- OS or device version (Monterey / Win10 / Android 11 / iOS12 ...)
 - browser (Brave / Chrome / Firefox / Safari / Edge ...)
 
 ## Want to Help Translate OpenWebif?
-Feel free to update an existing [language file](locale/) or create a new one by using
-the [template](locale/OpenWebif.pot)
+Feel free to [contribute to the Weblate project](https://hosted.weblate.org/engage/e2openplugin-OpenWebif/).
 
 ## Latest Reports
 
@@ -139,7 +143,7 @@ or
 ---
 
 ### Updating Assets
-Find out how to [make changes to OpenWebif's JS & CSS assets](sourcefiles/README.md)
+Find out how to [make changes to OpenWebif's JS & CSS assets](sourcefiles/README.md).
 
 ## Translation status
 
