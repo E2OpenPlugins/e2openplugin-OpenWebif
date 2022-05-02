@@ -16,10 +16,14 @@
 .pydevproject
 *.mo
 ### dynamically-generated files ###
-# plugin/public/modern/js/
-plugin/public/modern/js/legacy-app.js
-plugin/public/modern/js/*.js.LICENSE.txt
+plugin/public/modern/js/
 ### for future use (asset versioning)
 # plugin/controllers/views/responsive/main.tmpl
 # plugin/controllers/views/responsive/ajax/at.tmpl
 # plugin/controllers/views/responsive/ajax/bqe.tmpl
+### DO NOT COMMIT! ###
+plugin/public/api
+plugin/public/ajax
+plugin/public/picon
+plugin/public/bouqueteditor
+plugin/public/main.html
