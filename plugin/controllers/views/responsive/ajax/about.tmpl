@@ -1,66 +1,95 @@
-#from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
-
 <div class="col-xs-12">
-	<div class="card">
-		<div class="header">
-			<div class="row clearfix">
-				<div class="col-xs-12">
-					<h2><i class="material-icons material-icons-centered">announcement</i>$tstrings['about']</h2>
-				</div>
-			</div>
-		</div>
-		<div class="body">
-			<div class="row clearfix">
-				<div class="col-xs-12 align-center">
-					<h2>OpenWebif</h2>
-					<h3>$tstrings['openwebif_header']</h3>
-					<h3>$tstrings['version']: $info.owiver</h3>
-					<h3>$tstrings['site_source']: <a href="https://github.com/E2OpenPlugins/e2openplugin-OpenWebif" target="_blank">GitHub</a></h3>
-					<hr>
-						<img src="themes/about.png" class="img-responsive center-block" alt="about">
-					<hr>
-					<h3>$tstrings['authors']</h3>
-					<div class="info">
-					meo aka bacicciosat<br/>
-					skaman<br/>
-					homey-GER<br/>
-					nobody9<br/>
-					rincewind<br/>
-					jbleyel<br/>
-					SpaceRat aka Schimmelreiter<br/>
-					plnick
-					</div>
-					<h3>$tstrings['contributors']</h3>
-					<div class="info">
-					Army (Graphics)<br/>
-					Milo, Cimarast<br/>
-					HSA ($tstrings['translation_spanish'])<br/>
-					wedebe
-					</div>
-					<hr/>
-					<h3>$tstrings['javalib']</h3>
-					<div class="info">
-						<a href="https://jqueryui.com/" target="_blank">jQuery UI</a>
-					</div>
-					<hr/>
-					<h3>$tstrings['template_engine']</h3>
-					<div class="info">
-						<a href="https://www.cheetahtemplate.org/" target="_blank">Cheetah</a>
-					</div>
-					<hr/>
-					<h3>Responsive Design</h3>
-					<div class="info">
-						<a href="https://github.com/gurayyarar/AdminBSBMaterialDesign" target="_blank">AdminBSB - Material Design</a></br>
-						<a href="https://www.vuplus-support.org" target="_blank">plnick - VTi</a></br>
-					</div>
-					<hr/>
-					<h3>$tstrings['license']</h3>
-					<code class="info center-block" style="white-space: word-wrap; margin: 0 100px;">
-						$tstrings['license_text']<br>
-						For full source code please download package vti-openwebif-src.ipk
-					</code>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="card">
+    <div class="header">
+      <div class="row clearfix">
+        <div class="col-xs-12">
+          <h2><i class="material-icons material-icons-centered">announcement</i>$tstrings['about']</h2>
+        </div>
+      </div>
+    </div>
+    <div class="body" style="word-break: break-all">
+      <div class="row clearfix" style="text-align: center; margin-bottom: 20px;">
+        <i class="material-icons material-icons-centered" style="font-size: 200px;">groups</i>
+      </div>
+      <div class="row clearfix">
+        <div class="col-xs-12">
+          <div class="card">
+            <div class="header bg--skinned">
+              <h2><i class="material-icons material-icons-centered">people_alt</i>$tstrings['authors']</h2>
+            </div>
+            <div class="body">
+              <div class="row clearfix">
+                <ul style="list-style: none; text-align: center;">
+                  <li style="padding: 10px">meo aka bacicciosat</li>
+                  <li style="padding: 10px">skaman</li>
+                  <li style="padding: 10px">homey-GER</li>
+                  <li style="padding: 10px">nobody9</li>
+                  <li style="padding: 10px">rincewind</li>
+                  <li style="padding: 10px">jbleyel</li>
+                  <li style="padding: 10px">SpaceRat aka Schimmelreiter</li>
+                  <li style="padding: 10px">plnick</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row clearfix">
+          <div class="col-xs-12">
+            <div class="card">
+              <div class="header bg--skinned">
+                <h2><i class="material-icons material-icons-centered">supervisor_account</i>$tstrings['contributors']</h2>
+              </div>
+              <div class="body">
+                <div class="row clearfix">
+                  <ul style="list-style: none; text-align: center;">
+                    <li style="padding: 10px">Army (Graphics)</li>
+                    <li style="padding: 10px">Milo, Cimarast</li>
+                    <li style="padding: 10px">HSA ($tstrings['translation_spanish'])</li>
+                    <li style="padding: 10px">wedebe aka Web Dev Ben</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row clearfix">
+          <div class="col-xs-12">
+            <div class="card">
+              <div class="header bg--skinned">
+                <h2><i class="material-icons material-icons-centered">save_as</i>Software</h2>
+              </div>
+              <div class="body">
+                <div class="row clearfix">
+                  <ul style="list-style: none; text-align: center;">
+                    <li style="padding: 10px">
+  $tstrings['template_engine'] - <a href="https://www.cheetahtemplate.org/" target="_blank" rel="noreferrer noopener">Cheetah</a>
+                    </li>
+                    <li style="padding: 10px">
+  Responsive Design -
+  <a href="https://github.com/gurayyarar/AdminBSBMaterialDesign" target="_blank" rel="noreferrer noopener">AdminBSB - Material Design</a>
+  | <a href="https://www.vuplus-support.org" target="_blank" rel="noreferrer noopener">plnick - VTi</a>
+                    </li>
+                    <li style="padding: 10px">
+  $tstrings['javalib'] -
+  <a href="https://jquery.com" target="_blank" rel="noreferrer noopener">jQuery</a>
+  | <a href="https://jqueryui.com" target="_blank" rel="noreferrer noopener">jQuery UI</a>
+  | <a href="https://getbootstrap.com" target="_blank" rel="noreferrer noopener">Bootstrap</a>
+                    </li>
+                    <li style="padding: 10px">
+  <!-- TODO: update text and link -->
+  $tstrings['license']
+  <code class="info center-block" style="white-space: word-wrap; margin: 0 100px; padding: 1em;">
+    $tstrings['license_text']<br>
+    For full source code, please download the vti-openwebif-src.ipk package.
+  </code>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
