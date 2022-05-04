@@ -40,7 +40,7 @@
 	#else if $channel.ref.startswith('1:7:')
 			<td colspan="3" class="now-next__header header">
 				<h2>
-					<a href="javascript:void(0);" class="link--skinned" onclick="load_subcontent('ajax/channels?id=$quote($channel.ref)&stype='); return false;">
+					<a href="javascript:void(0);" class="link--skinned" onclick="load_subcontent('ajax/channels?id=$quote($channel.ref)&stype=$type'); return false;">
 						<i class="material-icons material-icons-centered">folder</i> $channelName
 					</a>
 				</h2>
