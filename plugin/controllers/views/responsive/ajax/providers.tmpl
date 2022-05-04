@@ -16,7 +16,7 @@
 
 <ul class="nav nav-tabs tab--skinned">
 #for $provider in $providers
-	<li><a href="#tab" data-toggle="tab" onclick="load_subcontent('ajax/channels?id=$quote($provider[0])&stype=$stype'); return false;"><i class="material-icons material-icons-centered">folder_open</i>$provider[1]</a></li>
+	<li><a href="#tab" data-toggle="tab" onclick="load_subcontent('ajax/channels?id=$quote($provider[0])&stype=$stype'); return false;"><i class="material-icons material-icons-centered">bubble_chart</i>$provider[1]</a></li>
 #end for
 </ul>
 <div class="tab-content">
