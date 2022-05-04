@@ -25,6 +25,7 @@
 
 <div class="table-responsive block-header">
 	<table class="now-next__grid table table-striped table-hover">
+
 #for $channel in $channels
 	## TODO: normalise these in a utility function
 	#set $sRefQuoteEscaped = $channel.ref.replace("'", "\\'")
@@ -79,7 +80,6 @@
 					<button type="button" onclick="zapChannel('$sRefQuoteEscaped', '$channelName');" class="link--not-skinned" title="$tstrings['zap_to'] $channel.name"><i class="icon material-icons material-icons-centered">settings_remote</i></button>
 
 		#if $channel.link != ""
-					<button type="button" onclick="jumper8002('$sRefQuoteEscaped', '$channelName');" class="link--not-skinned" title="$tstrings['stream'] $channel.name"><i class="icon material-icons material-icons-centered">ondemand_video</i></button>
 					<a href="$channel.link" class="now-next__external-link link--not-skinned" target="extlink" title="$tstrings['open_in_new_window']"><i class="material-icons material-icons-centered">phonelink</i></a>
 		#else
 			#set $epgDisabledState = ''
