@@ -397,21 +397,26 @@ function setOSD( statusinfo )
 	var responsive_osd_cur_event = '';
 
 	if (station) {
-		if ( (sref.indexOf("1:0:1") !== -1) || (sref.indexOf("1:134:1") !== -1) || (sref.indexOf("1:0:2") !== -1) || (sref.indexOf("1:134:2") !== -1) ) {
-			if ( statusinfo['transcoding'] && ( (sref.indexOf("1:0:1") !== -1) || (sref.indexOf("1:134:1") !== -1) ) ) {
+		if (sref.startsWith('1:0:') || sref.startsWith('1:134:') || sref.startsWith('4097:0:')) {
+			$('#osd__current-event__name').html(statusinfo['currservice_name']);
+			if (!sref.startsWith('1:0:0')) {
+				$('#osd__current-event__time__start').html(statusinfo['currservice_begin'] || '');
+				$('#osd__current-event__time__end').html(statusinfo['currservice_end'] || '');
+				$('#osd__current-service').html(station);
+				$('#osd__current-event__epg').off("click").click(function() {
+					open_epg_dialog(sref, station);
+				});
+				$('#osd__current-event').off("click").click(function() {
+					loadeventepg(statusinfo['currservice_id'], sref, '/images/default_picon.png');
+				});
+			} else {
+				$('#osd__current-service').html('[ Movies ]');
+			}
+			if ( statusinfo['transcoding'] && (sref.startsWith('1:0:1') || sref.startsWith('1:134:1')) ) {
 				responsive_osd_transcoding = "<a href='#' onclick=\"jumper8002('" + sref + "', '" + station + "')\"; title='" + streamtitletrans;
 			}
-			$('#osd__current-event__name').html(statusinfo['currservice_name']);
-			$('#osd__current-event__time__start').html(statusinfo['currservice_begin']);
-			$('#osd__current-event__time__end').html(statusinfo['currservice_end']);
-			$('#osd__current-service').html(station);
-			$('#osd__current-event__epg').off("click").click(function() {
-				open_epg_dialog(sref, station);
-			});
-			$('#osd__current-event').off("click").click(function() {
-				loadeventepg(statusinfo['currservice_id'], sref, '/images/default_picon.png');
-			});
-		} else if ( (sref.indexOf("4097:0:0") !== -1) || (sref.indexOf("1:0:0") !== -1)) {
+		}
+		if (sref.startsWith('1:0:0') || sref.startsWith('4097:0:')) {
 			if (statusinfo['currservice_filename'] === '') {
 				streamtitle = tstr_stream + ": " + station + "'>" + station + "</a>";
 				responsive_osd_stream = "<a href='#' title='" + streamtitle;
@@ -432,6 +437,7 @@ function setOSD( statusinfo )
 	$("#responsive_osd_stream").html(responsive_osd_stream);
 	$("#responsive_osd_current").html(responsive_osd_current);
 	$("#responsive_osd_cur_event").html(responsive_osd_cur_event);
+	// highlight current channel in now/next view
 	try {
 		$(".channel-list__channel").removeClass("channel--active");
 		$("#sref-" + sref.replace(/:/g, '_')).addClass("channel--active");
