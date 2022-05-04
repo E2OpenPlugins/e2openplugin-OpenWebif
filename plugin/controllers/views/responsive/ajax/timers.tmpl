@@ -5,6 +5,11 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import MinTimerList
 
+<style>
+	.body .btn--skinned {
+    margin: .4ex;
+	}
+</style>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	<div class="card">
 		<div class="header">
@@ -24,19 +29,24 @@
 						<li><a href="javascript:void(0);" onclick="lastcontenturl='';load_maincontent('ajax/timers?sort=dated'); return false;"><i class="material-icons material-icons-centered">vertical_align_top</i>$tstrings['date']</a></li>
 					</ul>
 				</li>
-				<li>
-					<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-					<ul class="dropdown-menu pull-right" id="timerbuttons">
-						<li class="dropdown"><a href="javascript:void(0);" onclick="lastcontenturl='';load_maincontent('ajax/timers'); return false;"><i class="material-icons">autorenew</i>$tstrings['reload']</a>
-						<li><a href="#addtimer" data-toggle="modal" data-target="#TimerModal" id="timerbutton0"><i class="material-icons material-icons-centered">alarm_add</i>$tstrings['add_timer']</a></li>
-						<li><a href="javascript:void(0);" onclick="lastcontenturl='';cleanupTimer(); return false"><i class="material-icons material-icons-centered">delete_forever</i>$tstrings['cleanup_timer']</a></li>
-						<li><a href="javascript:void(0);" onclick="lastcontenturl='';load_maincontent('ajax/timers'); return false;"><i class="material-icons material-icons-centered">autorenew</i>$tstrings['refresh_timer']</a></li>
-					</ul>
-				</li>
 			</ul>
 		</div>
 		<div class="body">
 			<div id="content_main" >
+
+				<div id="at__page--list">
+					<div class="row align-center clearfix">
+						<a href="#addtimer" class="btn btn--skinned waves-effect" data-toggle="modal" data-target="#TimerModal"><i class="material-icons material-icons-centered">alarm_add</i>$tstrings['add_timer']</a>
+						<a href="javascript:void(0);" class="btn btn--skinned waves-effect" onclick="lastcontenturl='';cleanupTimer(); return false"><i class="material-icons material-icons-centered">delete_forever</i>$tstrings['cleanup_timer']</a>
+						<a href="javascript:void(0);" class="btn btn--skinned waves-effect" onclick="lastcontenturl='';load_maincontent('ajax/timers'); return false;"><i class="material-icons material-icons-centered">autorenew</i>$tstrings['reload']</a>
+					</div>
+
+					<div id="at__bar" class="m-t-40">
+						<ul class="m-0 p-l-0" id="at__list" style="list-style: none;">
+						</ul>
+					</div>
+				</div>
+
 				<div id="tvcontentmain">
 
 #if $MinTimerList == 'checked'

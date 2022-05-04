@@ -41,7 +41,7 @@
 		#if $event.link != ""
 			<a href="$event.link" class="now-next__external-link link--not-skinned" target="extlink" title="$tstrings['open_in_new_window']"><i class="material-icons material-icons-centered">phonelink</i></a>
 		#else
-			<button type="button" onclick="open_epg_dialog('$sref', '$channel');" class="link--not-skinned" title="$tstrings['show_epg_for'] $channel" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons material-icons-centered">view_list</i></button>
+			<button type="button" onclick="open_epg_dialog('$sref', '$channel');" class="link--not-skinned" title="$tstrings['show_epg_for'] $channel" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons material-icons-centered">event_note</i></button>
 			<button type="button" onclick="jumper8001('$sref', '$channel');" class="link--not-skinned" title="$tstrings['stream'] $channel"><i class="icon material-icons material-icons-centered">ondemand_video</i></button>
 			#if $transcoding
 			<button type="button" onclick="jumper8002('$sref', '$channel');" class="link--not-skinned" title="$tstrings['stream'] ($tstrings['transcoded']) $channel"><i class="icon material-icons material-icons-centered">smartphone</i></button>
