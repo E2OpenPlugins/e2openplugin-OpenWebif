@@ -86,7 +86,7 @@
 			#if not 'now_title' in $channel
 				#set $epgDisabledState = 'disabled'
 			#end if
-					<button type="button" onclick="open_epg_dialog('$sRefQuoteEscaped','$channelName');" $epgDisabledState class="link--not-skinned" title="$tstrings['show_epg_for'] $channel.name" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons material-icons-centered">view_list</i></button>
+					<button type="button" onclick="open_epg_dialog('$sRefQuoteEscaped','$channelName');" $epgDisabledState class="link--not-skinned" title="$tstrings['show_epg_for'] $channel.name" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons material-icons-centered">event_note</i></button>
 					<button type="button" onclick="jumper8001('$sRefQuoteEscaped', '$channelName');" class="link--not-skinned" title="$tstrings['stream'] $channel.name"><i class="icon material-icons material-icons-centered">ondemand_video</i></button>
 			#if $transcoding
 					<button type="button" onclick="jumper8002('$sRefQuoteEscaped', '$channelName');" class="link--not-skinned" title="$tstrings['stream'] ($tstrings['transcoded']) $channel.name"><i class="icon material-icons material-icons-centered">smartphone</i></button>

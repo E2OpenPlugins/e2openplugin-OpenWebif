@@ -16,7 +16,7 @@
 
 <ul class="nav nav-tabs tab--skinned">
 #for $satellite in $satellites
-	<li><a href="#tab" data-toggle="tab" onclick="load_subcontent('ajax/channels?id=$quote($satellite.service)&stype=$stype'); return false;"><i class="material-icons material-icons-centered">bubble_chart</i>$satellite.name</a></li>
+	<li><a href="#tab" data-toggle="tab" onclick="load_subcontent('ajax/channels?id=$quote($satellite.service)&stype=$stype'); return false;"><i class="icon material-icons material-icons-centered">satellite_alt</i>$satellite.name</a></li>
 #end for
 </ul>
 <div class="tab-content">
