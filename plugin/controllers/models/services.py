@@ -1018,9 +1018,13 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 			bsref = {}
 			for service in getAllServices('tv')['services']:
 				for service2 in service['subservices']:
-					bsref[service2['servicereference']] = True
+					# remove description from sref (e.g. from '1:0:19:132F:3EF:1:C00000:0:0:0::ORF1HD' remove ':ORF1HD')
+					sref = re.sub('::.*$', ':', service2['servicereference'])
+					bsref[sref] = True
 				else:
-					bsref[service['servicereference']] = True
+					# remove description from sref (e.g. from '1:0:19:132F:3EF:1:C00000:0:0:0::ORF1HD' remove ':ORF1HD')
+					sref = re.sub('::.*$', ':', service['servicereference'])
+					bsref[sref] = True
 
 		for event in events:
 			if bouquetsonly and not event[7] in bsref:
