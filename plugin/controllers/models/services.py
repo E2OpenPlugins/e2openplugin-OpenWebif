@@ -4,7 +4,7 @@
 ##########################################################################
 # OpenWebif: services
 ##########################################################################
-# Copyright (C) 2011 - 2020 E2OpenPlugins
+# Copyright (C) 2011 - 2022 E2OpenPlugins
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -21,11 +21,10 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
 ##########################################################################
 
-from __future__ import print_function
 import re
-import unicodedata
 import six
 from time import time, localtime, strftime, mktime
+from unicodedata import normalize
 
 import NavigationInstance
 from Tools.Directories import fileExists
@@ -533,7 +532,7 @@ def getChannels(idbouquet, stype):
 	return {"channels": ret}
 
 
-def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, picon=False, noiptv=False):
+def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, picon=False, noiptv=False, splitname=False):
 	services = []
 	allproviders = {}
 
@@ -572,36 +571,43 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, pic
 		sref = sitem[0]
 		if CalcPos and 'userbouquet' in sref:
 			serviceslist = serviceHandler.list(eServiceReference(sref))
-			sfulllist = serviceslist and serviceslist.getContent("RN", True)
-			for citem in sfulllist:
-				sref = citem[0].toString()
-				hs = (int(sref.split(":")[1]) & 512)
-				sp = (sref[:7] == '1:832:D') or (sref[:7] == '1:832:1') or (sref[:6] == '1:320:')
+			sfulllist = serviceslist and serviceslist.getContent("C", True)
+			for sref in sfulllist:
+				flags = int(sref.split(":")[1])
+				hs = flags & 512 #eServiceReference.isInvisible
+				sp = flags & 256 #eServiceReference.isNumberedMarker
+				#sp = (sref[:7] == '1:832:D') or (sref[:7] == '1:832:1') or (sref[:6] == '1:320:')
 				if not hs or sp:  # 512 is hidden service on sifteam image. Doesn't affect other images
 					oPos = oPos + 1
-					if not sp and citem[0].flags & eServiceReference.isMarker:
+					if not sp and flags & 64: #eServiceReference.isMarker:
 						oPos = oPos - 1
 		showiptv = True
 		if noiptv:
 			if '4097:' in sref or '5002:' in sref or 'http%3a' in sref or 'https%3a' in sref:
 				showiptv = False
 
-		st = int(sitem[0].split(":")[1])
-		sp = (sitem[0][:7] == '1:832:D') or (sitem[0][:7] == '1:832:1') or (sitem[0][:6] == '1:320:')
-		if sp or (not (st & 512) and not (st & 64)):
+		flags = int(sitem[0].split(":")[1])
+		sp = flags & 256 #(sitem[0][:7] == '1:832:D') or (sitem[0][:7] == '1:832:1') or (sitem[0][:6] == '1:320:')
+		if sp or (not (flags & 512) and not (flags & 64)):
 			pos = pos + 1
-		if showiptv and (not st & 512 or showHidden):
-			if showAll or st == 0:
+		if showiptv and (not flags & 512 or showHidden):
+			if showAll or flags == 0:
 				service = {}
-				service['pos'] = 0 if (st & 64) else pos
+				service['pos'] = 0 if (flags & 64) else pos
 				sr = convertUnicode(sitem[0])
 				if CalcPos:
 					service['startpos'] = oldoPos
 				if picon:
 					service['picon'] = getPicon(sr)
+				if splitname:
+					name = "::%s" % convertUnicode(sitem[1])
+					if name in sr:
+						sr = sr.replace(name, ":")
+					service['servicename'] = name[2:]
+				else:
+					service['servicename'] = convertUnicode(sitem[1])
 				service['servicereference'] = sr
 				service['program'] = int(service['servicereference'].split(':')[3], 16)
-				service['servicename'] = convertUnicode(sitem[1])
 				if provider:
 					if sitem[0] in allproviders:
 						service['provider'] = allproviders[sitem[0]]
@@ -612,7 +618,7 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, pic
 	return {"services": services, "pos": pos}
 
 
-def getAllServices(type, noiptv=False, nolastscanned=False):
+def getAllServices(type, noiptv=False, nolastscanned=False, splitname=False, showAll=True):
 	services = []
 	if type is None:
 		type = "tv"
@@ -621,7 +627,7 @@ def getAllServices(type, noiptv=False, nolastscanned=False):
 	for bouquet in bouquets:
 		if nolastscanned and 'LastScanned' in bouquet[0]:
 			continue
-		sv = getServices(sRef=bouquet[0], showAll=True, showHidden=False, pos=pos, noiptv=noiptv)
+		sv = getServices(sRef=bouquet[0], showAll=showAll, showHidden=False, pos=pos, noiptv=noiptv, splitname=splitname)
 		services.append({
 			"servicereference": bouquet[0],
 			"servicename": bouquet[1],
@@ -1016,7 +1022,7 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 		if bouquetsonly:
 			# collect service references from TV bouquets
 			bsref = {}
-			for service in getAllServices('tv')['services']:
+			for service in getAllServices('tv', splitname=True, showAll=False, nolastscanned=True)['services']:
 				for service2 in service['subservices']:
 					bsref[service2['servicereference']] = True
 				else:
@@ -1231,9 +1237,9 @@ def getPicon(sname, pp=None, defaultpicon=True):
 			sname = ":".join(sname.split("://")[:1])
 			sname = GetWithAlternative(sname)
 			if PY3:
-				cname = unicodedata.normalize('NFKD', cname)
+				cname = normalize('NFKD', cname)
 			else:
-				cname = unicodedata.normalize('NFKD', six.text_type(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
+				cname = normalize('NFKD', six.text_type(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
 			cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').replace(':', '').lower())
 			# picon by channel name for URL
 			if len(cname) > 0 and fileExists(pp + cname + ".png"):
@@ -1287,9 +1293,9 @@ def getPicon(sname, pp=None, defaultpicon=True):
 			if fileExists(pp + cname1 + ".png"):
 				return "/picon/" + cname1 + ".png"
 			if PY3:
-				cname = unicodedata.normalize('NFKD', cname)
+				cname = normalize('NFKD', cname)
 			else:
-				cname = unicodedata.normalize('NFKD', six.text_type(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
+				cname = normalize('NFKD', six.text_type(cname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
 			cname = re.sub('[^a-z0-9]', '', cname.replace('&', 'and').replace('+', 'plus').replace('*', 'star').lower())
 			if len(cname) > 0:
 				filename = pp + cname + ".png"
