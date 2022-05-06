@@ -118,7 +118,7 @@ class BQEWebController(BaseController):
 		try:
 			from Plugins.Extensions.OpenWebif.controllers.BouquetEditor import BouquetEditor
 			bqe = BouquetEditor(self.session, func=BouquetEditor.ADD_SERVICE_TO_BOUQUET)
-			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef,sRefBefore,sRefUrl,Name', request.args))
+			bqe.handleCommand(self.buildCommand('sBouquetRef,sRef,sRefBefore,sRefUrl,Name,SubName', request.args))
 			return self.returnResult(request, bqe.result)
 		except ImportError:
 			return self.returnResult(request, [False, 'BouquetEditor plugin not found'])

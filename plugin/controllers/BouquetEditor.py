@@ -101,12 +101,14 @@ class BouquetEditor(Source):
 		if config.usage.multibouquet.value:
 			mutableBouquetList = self.getMutableBouquetList(mode)
 			if mutableBouquetList:
+				prefix = "userbouquet"
+				name, filename = self.buildBouquetID(bName, prefix, mode)
 				if mode == MODE_TV:
 					bName += " (TV)"
-					sref = '1:7:1:0:0:0:0:0:0:0:FROM BOUQUET \"userbouquet.%s.tv\" ORDER BY bouquet' % (self.buildBouquetID(bName, "userbouquet.", mode))
+					sref = '1:7:1:0:0:0:0:0:0:0:FROM BOUQUET \"%s.%s.tv\" ORDER BY bouquet' % (prefix, name)
 				else:
 					bName += " (Radio)"
-					sref = '1:7:2:0:0:0:0:0:0:0:FROM BOUQUET \"userbouquet.%s.radio\" ORDER BY bouquet' % (self.buildBouquetID(bName, "userbouquet.", mode))
+					sref = '1:7:2:0:0:0:0:0:0:0:FROM BOUQUET \"%s.%s.radio\" ORDER BY bouquet' % (prefix, name)
 				new_bouquet_ref = eServiceReference(sref)
 				if not mutableBouquetList.addService(new_bouquet_ref):
 					mutableBouquetList.flushChanges()
@@ -230,7 +232,7 @@ class BouquetEditor(Source):
 		if sRef is None:
 			return (False, _("No service given!"))
 		ref = eServiceReference(sRef)
-		if ref.flags & eServiceReference.isGroup:  # check if  service is an alternative, if so delete it with removeBouquet
+		if ref.flags & eServiceReference.isGroup:  # check if service is an bouquet, if so delete it with removeBouquet
 			new_param = {}
 			new_param["sBouquetRef"] = sRef
 			new_param["mode"] = None  # of no interest when passing BouquetRefRoot
@@ -285,20 +287,44 @@ class BouquetEditor(Source):
 				sRef = param["sRef"]
 		sRefUrl = False
 		sName = None
+		sSubName = None
 		if "Name" in param:
 			if param["Name"] is not None:
 				sName = param["Name"]
+		if "SubName" in param:
+			if param["SubName"] is not None:
+				sSubName = param["SubName"]
 		if sRef is None and "sRefUrl" in param:
 			# check IPTV
 			if param["sRefUrl"] is not None and sName is not None:
 				sRef = param["sRefUrl"]
 				sRefUrl = True
-		elif sRef is None:
+		elif sRef is None and sSubName is None:
 			return (False, _("No service given!"))
 		sRefBefore = eServiceReference()
 		if "sRefBefore" in param:
 			if param["sRefBefore"] is not None:
 				sRefBefore = eServiceReference(param["sRefBefore"])
+		if sSubName is not None:
+			mode = MODE_TV
+			if "mode" in param:
+				if param["mode"] is not None:
+					mode = int(param["mode"])
+			sName = sSubName
+			sRefUrl = False
+			prefix = "subbouquet"
+			name, filename = self.buildBouquetID(sName, prefix, mode)
+			if mode == MODE_TV:
+				sRef = '1:7:1:0:0:0:0:0:0:0:FROM BOUQUET \"%s.%s.tv\" ORDER BY bouquet' % (prefix, name)
+			else:
+				sRef = '1:7:2:0:0:0:0:0:0:0:FROM BOUQUET \"%s.%s.radio\" ORDER BY bouquet' % (prefix, name)
+			# create bouquet file
+			try:
+				with open(filename, "w") as fd:
+					fd.write("#NAME %s\n" % sName)
+			except (IOError, OSError) as err:
+				print("Error %d: Unable to create file '%s'!  (%s)" % (err.errno, filename, err.strerror))
+		
 		bouquetRef = eServiceReference(sBouquetRef)
 		mutableBouquetList = self.getMutableList(bouquetRef)
 		if mutableBouquetList is not None:
@@ -429,10 +455,12 @@ class BouquetEditor(Source):
 			if mutableBouquetList:
 				cur_service = ServiceReference(cur_ref)
 				name = cur_service.getServiceName()
+				prefix = "alternatives"
+				name, filename = self.buildBouquetID(name, prefix, mode)
 				if mode == MODE_TV:
-					sref = '1:134:1:0:0:0:0:0:0:0:FROM BOUQUET \"alternatives.%s.tv\" ORDER BY bouquet' % (self.buildBouquetID(name, "alternatives.", mode))
+					sref = '1:134:1:0:0:0:0:0:0:0:FROM BOUQUET \"%s.%s.tv\" ORDER BY bouquet' % (prefix, name)
 				else:
-					sref = '1:134:2:0:0:0:0:0:0:0:FROM BOUQUET \"alternatives.%s.radio\" ORDER BY bouquet' % (self.buildBouquetID(name, "alternatives.", mode))
+					sref = '1:134:2:0:0:0:0:0:0:0:FROM BOUQUET \"%s.%s.radio\" ORDER BY bouquet' % (prefix, name)
 				new_ref = eServiceReference(sref)
 				if not mutableBouquetList.addService(new_ref, cur_ref):
 					mutableBouquetList.removeService(cur_ref)
@@ -684,20 +712,20 @@ class BouquetEditor(Source):
 		# check if file is unique
 		suffix = ""
 		if mode == MODE_TV:
-			suffix = ".tv"
+			suffix = "tv"
 		else:
-			suffix = ".radio"
-		filename = '/etc/enigma2/' + prefix + name + suffix
+			suffix = "radio"
+		filename = '/etc/enigma2/%s.%s.%s' % (prefix, name, suffix)
 		if path.exists(filename):
 			i = 1
 			while True:
-				filename = "/etc/enigma2/%s%s_%d%s" % (prefix, name, i, suffix)
+				filename = "/etc/enigma2/%s.%s_%d.%s" % (prefix, name, i, suffix)
 				if path.exists(filename):
 					i += 1
 				else:
 					name = "%s_%d" % (name, i)
 					break
-		return name
+		return name, filename
 
 	def getName(self, ref):
 		serviceHandler = eServiceCenter.getInstance()
