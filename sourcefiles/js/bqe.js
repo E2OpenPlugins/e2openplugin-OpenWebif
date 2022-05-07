@@ -230,7 +230,7 @@
 				self.cType = 2;
 				var ref = self.buildRefStr(3);
 				$.ajax({
-					url: '/api/getservices?sRef=' + ref + "&provider=1", 
+					url: '/api/getservices?sRef=' + ref + "&showproviders=1", 
 					dataType: 'json',
 					cache: true,
 					data: { date: self.date },

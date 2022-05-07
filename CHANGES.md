@@ -1,5 +1,8 @@
-## Version 1.5.0
+## Version 1.5.1
 ## (in development)
+* BQE: add subbouquet via api
+
+## Version 1.5.0
 * add char type to remotecontrol
 * improve timer info in multiepg
 * allow recording description edit via movieinfo api

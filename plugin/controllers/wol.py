@@ -3,7 +3,7 @@
 ##########################################################################
 # OpenWebif: WOLSetupController, WOLClientController
 ##########################################################################
-# Copyright (C) 2011 - 2020 E2OpenPlugins
+# Copyright (C) 2011 - 2022 E2OpenPlugins
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -20,11 +20,16 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
 ##########################################################################
 
-import six
+from six import ensure_binary
+from socket import socket, AF_INET, SOCK_DGRAM, SOL_SOCKET, SO_BROADCAST
+from struct import pack
 from twisted.web import resource
+
 from Components.config import config
 from Plugins.Extensions.OpenWebif.controllers.utilities import getUrlArg
 
+def createResult(result, resulttext):
+	return b'<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>%s</e2state><e2statetext>%s</e2statetext></e2simplexmlresult>' % (b"true" if result else b"false", resulttext)
 
 class WOLSetupController(resource.Resource):
 
@@ -39,7 +44,7 @@ class WOLSetupController(resource.Resource):
 			wol_active = config.plugins.wolconfig.activate.value
 			wol_location = config.plugins.wolconfig.location.value
 		except:  # nosec # noqa: E722
-			return b'<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>WOLSetup plugin is not installed or your STB does not support WOL</e2statetext></e2simplexmlresult>'
+			return createResult(False, b"WOLSetup plugin is not installed or your STB does not support WOL")
 
 		if len(request.args):
 			config_changed = False
@@ -67,7 +72,7 @@ class WOLSetupController(resource.Resource):
 						from Plugins.SystemPlugins.WOLSetup.plugin import WOLSetup, _deviseWOL, _flagForceEnable, _flagSupportWol, _tryQuitTable, _ethDevice  # noqa: F401
 						from Screens.Standby import TryQuitMainloop
 					except ImportError:
-						return b'<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>WOLSetup plugin is not installed or your STB does not support WOL</e2statetext></e2simplexmlresult>'
+						return createResult(False, b"WOLSetup plugin is not installed or your STB does not support WOL")
 					WOLSetup.ActivateWOL(self.session, writeDevice=True)
 					self.session.open(TryQuitMainloop, _tryQuitTable["deepstandby"])
 			if config_changed:
@@ -78,7 +83,7 @@ class WOLSetupController(resource.Resource):
 			locations += location_available + ", "
 		locations = locations.rstrip(', ')
 
-		return six.ensure_binary("""<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
+		return ensure_binary("""<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
 				<e2configs>
 					<e2config>
 						<e2configname>wol_active</e2configname>
@@ -94,10 +99,8 @@ class WOLSetupController(resource.Resource):
 
 class WOLClientController(resource.Resource):
 	def render(self, request):
-		import struct
-		import socket
-		request.setHeader('Content-type', 'application/xhtml+xml')
-		request.setHeader('charset', 'UTF-8')
+		request.setHeader('Content-Type', 'application/xhtml+xml')
+		request.setHeader('Charset', 'UTF-8')
 		if len(request.args):
 			port = 9
 			mac = ""
@@ -113,26 +116,25 @@ class WOLClientController(resource.Resource):
 				mac = str(mac).lower()
 				mac = mac.split(':')
 				if len(mac) != 6:
-					return b'<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>MAC address invalid see example: AA:BB:CC:DD:EE:FF</e2statetext></e2simplexmlresult>'
+					return createResult(False, b"MAC address invalid see example: AA:BB:CC:DD:EE:FF")
 			ip = getUrlArg(request, "ip")
 			if ip != None:
 				ip = str(ip).lower()
 				ip = ip.split('.')
 				if len(ip) != 4:
-					return b'<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>IP address invalid see example: 192.168.2.10</e2statetext></e2simplexmlresult>'
+					return createResult(False, b"IP address invalid see example: 192.168.2.10")
 				try:
 					for digit in ip:
 						is_int = int(digit)  # noqa: F841
 				except ValueError:
-					return b'<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>IP address invalid see example: 192.168.2.10</e2statetext></e2simplexmlresult>'
+					return createResult(False, b"IP address invalid see example: 192.168.2.10")
 				ip = ip[0] + "." + ip[1] + "." + ip[2] + ".255"
 			if ip and mac:
-				mac_struct = struct.pack('BBBBBB', int(mac[0], 16), int(mac[1], 16), int(mac[2], 16), int(mac[3], 16), int(mac[4], 16), int(mac[5], 16))
-				magic = '\xff' * 6 + mac_struct * 16
-				my_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-				my_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+				mac_struct = pack('BBBBBB', int(mac[0], 16), int(mac[1], 16), int(mac[2], 16), int(mac[3], 16), int(mac[4], 16), int(mac[5], 16))
+				magic = ensure_binary(('\xff' * 6) + str(mac_struct * 16))
+				my_socket = socket(AF_INET, SOCK_DGRAM)
+				my_socket.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
 				my_socket.sendto(magic, (ip, port))
 				my_socket.close()
-				return six.ensure_binary("""<?xml version=\"1.0\" encoding=\"UTF-8\" ?><e2simplexmlresult><e2state>true</e2state><e2statetext>MagicPacket send to IP %s at port %d</e2statetext></e2simplexmlresult> """ % (ip, port))
-			else:
-				return b'<?xml version="1.0" encoding="UTF-8" ?><e2simplexmlresult><e2state>false</e2state><e2statetext>IP address and MAC address are mandatory arguments</e2statetext></e2simplexmlresult>'
+				return createResult(True, ensure_binary("MagicPacket send to IP %s at port %d" % (ip, port)))
+		return createResult(False, b"'ip' and 'mac' are mandatory arguments")

@@ -16,7 +16,7 @@
             <h2>
               <i class="material-icons material-icons-centered">info_outline</i>$info.name
               <a href="web/stream.m3u?ref=$info.ref&name=$info.name" class="link--skinned m-l-5" title="$tstrings['stream'] $getVar('now.title', '') from $info.name"><i class="material-icons material-icons-centered">ondemand_video</i></a>
-              <a href="javascript:void(0);" onclick="open_epg_dialog('$info.ref','$info.name');" class="link--skinned" data-toggle="modal" data-target="#EPGModal" title="$tstrings['show_epg_for'] $info.name"><i class="material-icons material-icons-centered">view_list</i></a>
+              <a href="javascript:void(0);" onclick="open_epg_dialog('$info.ref','$info.name');" class="link--skinned" data-toggle="modal" data-target="#EPGModal" title="$tstrings['show_epg_for'] $info.name"><i class="icon material-icons material-icons-centered">event_note</i></a>
             </h2>
           </div>
           <div class="col-xs-5 align-right">
@@ -207,18 +207,24 @@
   TXT Subtitles page & lang
 -->
 #for $item in [
-                [$tstrings['s_orb'], $getVar("info.orbital_position", "N/A")],
-                [$tstrings['provider'], $info.provider],
-                [$tstrings['namespace'], ("%04x [%d]" % ($info.namespace, $info.namespace))],
-                ["<abbr title=\"MPEG-2 Transport Stream Identifier (DVB SI)\">" + $tstrings['ts_id'] + "</abbr>", ("%04x [%d]" % ($info.tsid, $info.tsid))],
-                ["<abbr title=\"Original Network Identifier (DVB SI)\">" + $tstrings['on_id'] + "</abbr>", ("%04x [%d]" % ($info.onid, $info.onid))],
-                ["<abbr title=\"Service ID\">" + $tstrings['s_id'] + "</abbr>", ("%04x [%d]" % ($info.sid, $info.sid))],
-                ["<abbr title=\"Video Packet IDentifier\">" + $tstrings['v_pid'] + "</abbr>", ("%04x [%d]" % ($info.vpid, $info.vpid))],
-                ["<abbr title=\"Audio Packet IDentifier\">" + $tstrings['a_pid'] + "</abbr>", ("%04x [%d]" % ($info.apid, $info.apid))],
-                ["<abbr title=\"Program Clock Reference Packet IDentifier\">" + $tstrings['pcr_pid'] + "</abbr>", ("%04x [%d]" % ($info.pcrpid, $info.pcrpid))],
-                ["<abbr title=\"Program Map Table Packet IDentifier\">" + $tstrings['pmt_pid'] + "</abbr>", ("%04x [%d]" % ($info.pmtpid, $info.pmtpid))],
-                ["<abbr title=\"Teletext Packet IDentifier\">" + $tstrings['txt_pid'] + "</abbr>", ("%04x [%d]" % ($info.txtpid, $info.txtpid))]
+                [$tstrings['s_orb'], "%s", $getVar("info.orbital_position", "N/A").replace(u"\u00b0", "&deg;")],
+                [$tstrings['provider'], "%s", $info.provider],
+                [$tstrings['namespace'], "%04x [%d]", $info.namespace],
+                ["<abbr title=\"MPEG-2 Transport Stream Identifier (DVB SI)\">" + $tstrings['ts_id'] + "</abbr>", "%04x [%d]", $info.tsid],
+                ["<abbr title=\"Original Network Identifier (DVB SI)\">" + $tstrings['on_id'] + "</abbr>", "%04x [%d]", $info.onid],
+                ["<abbr title=\"Service ID\">" + $tstrings['s_id'] + "</abbr>", "%04x [%d]", $info.sid],
+                ["<abbr title=\"Video Packet IDentifier\">" + $tstrings['v_pid'] + "</abbr>", "%04x [%d]", $info.vpid],
+                ["<abbr title=\"Audio Packet IDentifier\">" + $tstrings['a_pid'] + "</abbr>", "%04x [%d]", $info.apid],
+                ["<abbr title=\"Program Clock Reference Packet IDentifier\">" + $tstrings['pcr_pid'] + "</abbr>", "%04x [%d]", $info.pcrpid],
+                ["<abbr title=\"Program Map Table Packet IDentifier\">" + $tstrings['pmt_pid'] + "</abbr>", "%04x [%d]", $info.pmtpid],
+                ["<abbr title=\"Teletext Packet IDentifier\">" + $tstrings['txt_pid'] + "</abbr>", "%04x [%d]", $info.txtpid]
               ]
+  #try
+    #set $item[1] = $item[1] % ($item[2], $item[2])
+  #except
+    #set $item[1] = $item[2]
+  #end try
+
   $outputLabelAndValue($item)
 #end for
           </div>

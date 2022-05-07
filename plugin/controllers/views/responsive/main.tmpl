@@ -131,7 +131,7 @@
 						<img src="" alt="" id="osd__current-service--picon"><!-- for future use -->
 					</a>
 					</a>
-					<button type="button" id="osd__current-event__epg" title="$tstrings['show_epg_for'] channel" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons">view_list</i></button>
+					<button type="button" id="osd__current-event__epg" title="$tstrings['show_epg_for'] channel" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons">event_note</i></button>
 					<a href="" target="_blank" class="dyn" id="osd__current-event__stream" title="$tstrings['stream'] channel">
 					<!-- should probably use /web/streamcurrent.m3u?name= -->
 						<i class="icon material-icons">ondemand_video</i>
@@ -259,7 +259,7 @@
 											<button type="button" onclick="pressMenuRemote('174');" title="Exit" class="remote__button icon"><i class="material-icons">clear</i></button>
 										</section>
 										<section class="remote__group">
-											<button type="button" onclick="pressMenuRemote('365');" title="EPG" class="remote__button icon"><i class="material-icons">view_list</i></button>
+											<button type="button" onclick="pressMenuRemote('365');" title="EPG" class="remote__button icon"><i class="material-icons">event_note</i></button>
 											<button type="button" onclick="pressMenuRemote('627');" title="VOD" class="remote__button icon"><i class="material-icons">ondemand_video</i></button>
 											<button type="button" onclick="pressMenuRemote('403');" title="CH-" class="remote__button icon"><i class="material-icons">remove</i></button>
 											<button type="button" onclick="pressMenuRemote('402');" title="CH+" class="remote__button icon"><i class="material-icons">add</i></button>
@@ -345,7 +345,7 @@
 						</li>
 						<li>
 							<a href="#myepg?epgmode=tv" data-close="true" accesskey="e" title="Shortcut: e">
-								<i class="material-icons">view_list</i>
+								<i class="icon material-icons">event_note</i>
 								<span>$tstrings['epg']</span>
 							</a>
 						</li>
@@ -781,7 +781,7 @@
 				<button type="button" class="close" data-dismiss="modal">
 					<i class="material-icons material-icons-centered">close</i>
 				</button>
-				<h4 class="modal-title"><i class="material-icons material-icons-centered">view_list</i><span>$tstrings['epg']</span></h4>
+				<h4 class="modal-title"><i class="icon material-icons material-icons-centered">event_note</i><span>$tstrings['epg']</span></h4>
 			</div>
 			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
 				<div id="epgmodalcontent"></div>
