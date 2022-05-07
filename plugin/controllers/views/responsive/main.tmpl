@@ -114,7 +114,7 @@
 							<i class="icon material-icons">info_outline</i>
 						</button>
 					</h1>
-					<button style="display: none;" id="osd__connection" title="No network connection"><i class="icon material-icons">link_off</i></button><!-- TODO: i10n -->
+					<button style="display: none;" id="osd__connection" title="$tstrings['no_network_connection']"><i class="icon material-icons">link_off</i></button>
 				</div>
 
 				<div id="osd__current">
@@ -138,18 +138,18 @@
 					</a>
 				</div>
 
-				<button id="osd__active-recordings" style="display: none;" title="Currently recording" data-toggle="modal" data-target="#RecModal"><!-- TODO: i10n -->
+				<button id="osd__active-recordings" style="display: none;" title="$tstrings['currently_recording']" data-toggle="modal" data-target="#RecModal">
 					<span class="recording--active">$tstrings['REC']</span>
 					<span class="label-count"></span>
 				</button>
 
-				<button id="osd__active-streams" title="Serving stream" data-toggle="modal" data-target="#StreamModal"><!-- TODO: i10n -->
+				<button id="osd__active-streams" title="$tstrings['serving_stream']" data-toggle="modal" data-target="#StreamModal">
 					<i class="icon material-icons">cast</i>
 					<span class="label-count"></span>
 				</button>
 
 				<div id="osd__volume">
-					<button id="osd__current-mute-status" onclick="toggleMute();" title="Mute/Unmute - Shortcut: x" accesskey="x"><!-- TODO: i10n -->
+					<button id="osd__current-mute-status" onclick="toggleMute();" title="$tstrings['mute_unmute'] - Shortcut: x" accesskey="x">
 						<i class="icon material-icons">volume_off</i>
 					</button>
 					<!-- TODO: link step size with user prefs -->
@@ -178,7 +178,7 @@
 <!--
 #end if
 -->
-					<button onclick="toggleStandby();" class="btn--power-toggle" title="Toggle standby - Shortcut: 0" accesskey="0"><!-- TODO: i10n -->
+					<button onclick="toggleStandby();" class="btn--power-toggle" title="$tstrings['standby_toggle'] - Shortcut: 0" accesskey="0">
 						<i class="icon material-icons">power_settings_new</i>
 					</button>
 
@@ -283,8 +283,8 @@
 									<li class="align-center">
 										<!-- TODO: don't reset input if send fails -->
 										<form onsubmit="var el = this.elements['keyboardText']; owif.api.sendKeyboardText(el.value); el.value = ''; return false;" style="display:flex; max-width:150px; margin:1em auto 0;">
-											<input type="text" name="keyboardText" value="" placeholder="Enter text"><!-- TODO: i10n -->
-											<input type="submit" value="Send" style="margin-left:1ex;"><!-- TODO: i10n -->
+											<input type="text" name="keyboardText" value="" placeholder="$tstrings['enter_text']">
+											<input type="submit" value="$tstrings['send']" style="margin-left:1ex;">
 										</form>
 									</li>
 									#end if
@@ -392,20 +392,20 @@
 						<li>
 							<a href="javascript:void(0);" class="menu-toggle">
                                 <i class="material-icons">info</i>
-								<span>Information</span><!-- TODO: i10n -->
+								<span>$tstrings['information']</span>
 							</a>
                             <ul class="ml-menu">
-								<li><a href="#current">Channel</a></li><!-- TODO: i10n -->
+								<li><a href="#current">$tstrings['channel']</a></li>
                                 <li>
-                                    <a href="#boxinfo" data-close="true" accesskey="i" title="Shortcut: i">Receiver</a><!-- TODO: i10n -->
+                                    <a href="#boxinfo" data-close="true" accesskey="i" title="Shortcut: i">$tstrings['receiver']</a>
                                 </li>
 								<li><a href="#about">OpenWebif</a></li>
 <!--
 #if $debugMode
 -->
 								<li class="disabled" style="user-select: all;"><!-- these `disabled` classes will prevent the `Waves` plugin interfering with text selection -->
-                                    <a href="javascript:void(0);" class="disabled" style="user-select: all;">Version: $OPENWEBIFVER</a><!-- TODO: i10n -->
-                                    <a href="javascript:void(0);" class="disabled" style="user-select: all;">Build: $OPENWEBIFPACKAGEVERSION</a><!-- TODO: i10n -->
+                                    <a href="javascript:void(0);" class="disabled" style="user-select: all;">$tstrings['version']: $OPENWEBIFVER</a>
+                                    <a href="javascript:void(0);" class="disabled" style="user-select: all;">$tstrings['build']: $OPENWEBIFPACKAGEVERSION</a>
 								</li>
 <!--
 #end if
@@ -721,7 +721,7 @@
 				</button>
 				<h4 class="modal-title">
 					<i class="material-icons material-icons-centered">error_outline</i>
-					<span>Timer conflict</span><!-- TODO: i10n -->
+					<span>$tstrings['timer_conflict']</span>
 				</h4>
 			</div>
 			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
