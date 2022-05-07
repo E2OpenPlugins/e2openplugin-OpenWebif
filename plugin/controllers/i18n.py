@@ -163,7 +163,7 @@ tstrings = {
 	'just_play': _("Just play"),
 	'kernel_version': _("Kernel"),
 	'lcd': _("LCD"),
-	'license': _("LICENSE"),
+	'license': _("License"),
 	'loading': _("loading"),
 	'location': _("Location"),
 	'locked': _("Locked"),
@@ -237,7 +237,7 @@ tstrings = {
 	'snr': _("SNR"),
 	'software': _("Software"),
 	'standby': _("Standby"),
-	'standby_toggle': _("Standby Toggle"),
+	'standby_toggle': _("Toggle Standby"),
 	'wake_up': _("Wake Up"),
 	'start_after_end': _("Start time is after end time"),
 	'start_instant_record': _("Start Instant Record"),
@@ -580,7 +580,16 @@ tstrings = {
 	'descrambledecm': _("descramble and record ecm"),
 	'scrambledecm': _("don't descramble, record ecm"),
 	'REC': _("REC"),
-	'enter_text': _("Enter Text"),
-	'edit_recording': _("Edit Recording")
+	'enter_text': _("Enter text"),
+	'edit_recording': _("Edit Recording"),
 
+	'currently_recording': _("Currently recording"),
+	'serving_stream': _("Serving stream"),
+	'mute_unmute': _("Mute/Unmute"),
+	'send': _("Send"),
+	'receiver': _("receiver"),
+	'build': _("Build"),
+	'information': _("Information"),
+	'timer_conflict': _("Timer Conflict"),
+	'no_network_connection': _("No network connection")
 }
