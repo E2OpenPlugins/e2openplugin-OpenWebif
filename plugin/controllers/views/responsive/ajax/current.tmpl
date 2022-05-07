@@ -207,18 +207,24 @@
   TXT Subtitles page & lang
 -->
 #for $item in [
-                [$tstrings['s_orb'], $getVar("info.orbital_position", "N/A")],
-                [$tstrings['provider'], $info.provider],
-                [$tstrings['namespace'], ("%04x [%d]" % ($info.namespace, $info.namespace))],
-                ["<abbr title=\"MPEG-2 Transport Stream Identifier (DVB SI)\">" + $tstrings['ts_id'] + "</abbr>", ("%04x [%d]" % ($info.tsid, $info.tsid))],
-                ["<abbr title=\"Original Network Identifier (DVB SI)\">" + $tstrings['on_id'] + "</abbr>", ("%04x [%d]" % ($info.onid, $info.onid))],
-                ["<abbr title=\"Service ID\">" + $tstrings['s_id'] + "</abbr>", ("%04x [%d]" % ($info.sid, $info.sid))],
-                ["<abbr title=\"Video Packet IDentifier\">" + $tstrings['v_pid'] + "</abbr>", ("%04x [%d]" % ($info.vpid, $info.vpid))],
-                ["<abbr title=\"Audio Packet IDentifier\">" + $tstrings['a_pid'] + "</abbr>", ("%04x [%d]" % ($info.apid, $info.apid))],
-                ["<abbr title=\"Program Clock Reference Packet IDentifier\">" + $tstrings['pcr_pid'] + "</abbr>", ("%04x [%d]" % ($info.pcrpid, $info.pcrpid))],
-                ["<abbr title=\"Program Map Table Packet IDentifier\">" + $tstrings['pmt_pid'] + "</abbr>", ("%04x [%d]" % ($info.pmtpid, $info.pmtpid))],
-                ["<abbr title=\"Teletext Packet IDentifier\">" + $tstrings['txt_pid'] + "</abbr>", ("%04x [%d]" % ($info.txtpid, $info.txtpid))]
+                [$tstrings['s_orb'], "%s", $getVar("info.orbital_position", "N/A").replace("°", "&deg;")],
+                [$tstrings['provider'], "%s", $info.provider],
+                [$tstrings['namespace'], "%04x [%d]", $info.namespace],
+                ["<abbr title=\"MPEG-2 Transport Stream Identifier (DVB SI)\">" + $tstrings['ts_id'] + "</abbr>", "%04x [%d]", $info.tsid],
+                ["<abbr title=\"Original Network Identifier (DVB SI)\">" + $tstrings['on_id'] + "</abbr>", "%04x [%d]", $info.onid],
+                ["<abbr title=\"Service ID\">" + $tstrings['s_id'] + "</abbr>", "%04x [%d]", $info.sid],
+                ["<abbr title=\"Video Packet IDentifier\">" + $tstrings['v_pid'] + "</abbr>", "%04x [%d]", $info.vpid],
+                ["<abbr title=\"Audio Packet IDentifier\">" + $tstrings['a_pid'] + "</abbr>", "%04x [%d]", $info.apid],
+                ["<abbr title=\"Program Clock Reference Packet IDentifier\">" + $tstrings['pcr_pid'] + "</abbr>", "%04x [%d]", $info.pcrpid],
+                ["<abbr title=\"Program Map Table Packet IDentifier\">" + $tstrings['pmt_pid'] + "</abbr>", "%04x [%d]", $info.pmtpid],
+                ["<abbr title=\"Teletext Packet IDentifier\">" + $tstrings['txt_pid'] + "</abbr>", "%04x [%d]", $info.txtpid]
               ]
+  #try
+    #set $item[1] = $item[1] % ($item[2], $item[2])
+  #except
+    #set $item[1] = $item[2]
+  #end try
+
   $outputLabelAndValue($item)
 #end for
           </div>
