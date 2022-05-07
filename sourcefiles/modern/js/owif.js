@@ -1,7 +1,5 @@
 'use strict';
 
-import screenfull from 'screenfull';
-
 const debugTagStyle = 'color: #fff; font-weight: bold; background-color: #333; padding: 2px 4px 1px; border-radius: 2px;';
 
 const debugMsg = (msg) => {
