@@ -207,7 +207,7 @@
   TXT Subtitles page & lang
 -->
 #for $item in [
-                [$tstrings['s_orb'], "%s", $getVar("info.orbital_position", "N/A")],
+                [$tstrings['s_orb'], "%s", $getVar("info.orbital_position", "N/A").replace("°", "&deg;")],
                 [$tstrings['provider'], "%s", $info.provider],
                 [$tstrings['namespace'], "%04x [%d]", $info.namespace],
                 ["<abbr title=\"MPEG-2 Transport Stream Identifier (DVB SI)\">" + $tstrings['ts_id'] + "</abbr>", "%04x [%d]", $info.tsid],
