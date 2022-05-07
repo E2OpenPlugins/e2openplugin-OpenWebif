@@ -591,5 +591,7 @@ tstrings = {
 	'build': _("Build"),
 	'information': _("Information"),
 	'timer_conflict': _("Timer Conflict"),
-	'no_network_connection': _("No network connection")
+	'no_network_connection': _("No network connection"),
+
+	'any': _("Any")
 }
