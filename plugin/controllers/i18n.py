@@ -132,7 +132,7 @@ tstrings = {
 	'enabled': _("Enabled"),
 	'encrypted': _("Encrypted"),
 	'epg': _("EPG"),
-	'epgsearch': _("EPG Search"),
+	'epgsearch': _("Search EPG"),
 	'epgsearchextended': _("Include description"),
 	'epgsearchbouquetsonly': _("Restrict to bouquets"),
 	'epg_no_matches': _("Oops, no results matched your search"),
@@ -592,6 +592,6 @@ tstrings = {
 	'information': _("Information"),
 	'timer_conflict': _("Timer Conflict"),
 	'no_network_connection': _("No network connection"),
-
-	'any': _("Any")
+	'any': _("Any"),
+	'drag_hint': _("Hold to drag")
 }
