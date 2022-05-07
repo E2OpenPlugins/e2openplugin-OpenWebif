@@ -472,13 +472,18 @@ class WebController(BaseController):
 		type = "tv"
 		if b"type" in list(request.args.keys()):
 			type = "radio"
-		noiptv = False
-		if b"noiptv" in list(request.args.keys()):
-			noiptv = True
-		nolastscanned = False
-		if b"nolastscanned" in list(request.args.keys()):
-			nolastscanned = True
-		bouquets = getAllServices(type, noiptv, nolastscanned)
+
+		noiptv = True if getUrlArg(request, "noiptv", "0") in ("1", "true") else False
+
+		nolastscanned = True if getUrlArg(request, "nolastscanned", "0") in ("1", "true") else False
+
+		removeNameFromsref = True if getUrlArg(request, "removenamefromsref", "0") in ("1", "true") else False
+
+		showAll = False if getUrlArg(request, "showall", "1") in ("0", "false") else True
+
+		showProviders = True if getUrlArg(request, "showproviders", "0") in ("1", "true") else False
+
+		bouquets = getAllServices(type=type, noiptv=noiptv, nolastscanned=nolastscanned, removeNameFromsref=removeNameFromsref, showAll=showAll, showProviders=showProviders)
 		if b"renameserviceforxmbc" in list(request.args.keys()):
 			for bouquet in bouquets["services"]:
 				for service in bouquet["subservices"]:
@@ -502,10 +507,14 @@ class WebController(BaseController):
 			HTTP response with headers
 		"""
 		sRef = getUrlArg(request, "sRef", "")
-		hidden = getUrlArg(request, "hidden") == "1"
-		provider = getUrlArg(request, "provider") == "1"
-		picon = getUrlArg(request, "picon") == "1"
-		return getServices(sRef=sRef, showAll=True, showHidden=hidden, provider=provider, picon=picon)
+		hidden = True if getUrlArg(request, "hidden", "0") in ("1", "true") else False
+		showProviders = True if getUrlArg(request, "showproviders", "0") in ("1", "true") else False
+		# FALLBACK for old 3rd party tools
+		if getUrlArg(request, "provider") == "1":
+			showProviders = True
+		picon = True if getUrlArg(request, "picon", "0") in ("1", "true") else False
+		removeNameFromsref = True if getUrlArg(request, "removenamefromsref", "0") in ("1", "true") else False
+		return getServices(sRef=sRef, showAll=True, showHidden=hidden, showProviders=showProviders, picon=picon, removeNameFromsref=removeNameFromsref)
 
 	def P_servicesxspf(self, request):
 		"""

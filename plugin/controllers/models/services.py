@@ -21,22 +21,23 @@
 # Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
 ##########################################################################
 
+from datetime import datetime
 import re
 import six
+from six.moves.urllib.parse import quote, unquote
 from time import time, localtime, strftime, mktime
 from unicodedata import normalize
+from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache
 
-import NavigationInstance
-from Tools.Directories import fileExists
-from Components.Sources.ServiceList import ServiceList
 from Components.ParentalControl import parentalControl
 from Components.config import config
 from Components.NimManager import nimmanager
+import NavigationInstance
 from ServiceReference import ServiceReference
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
 from Screens.InfoBar import InfoBar
-from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache
-from six.moves.urllib.parse import quote, unquote
+from Tools.Directories import fileExists
+
 from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternative, getOrbitalText, getOrb
 from Plugins.Extensions.OpenWebif.controllers.utilities import parse_servicereference, SERVICE_TYPE_LOOKUP, NS_LOOKUP, PY3
 from Plugins.Extensions.OpenWebif.controllers.i18n import _, tstrings
@@ -532,11 +533,12 @@ def getChannels(idbouquet, stype):
 	return {"channels": ret}
 
 
-def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, picon=False, noiptv=False, splitname=False):
+def getServices(sRef, showAll=True, showHidden=False, pos=0, showProviders=False, picon=False, noiptv=False, removeNameFromsref=False):
+	starttime = datetime.now()
 	services = []
 	allproviders = {}
-
 	CalcPos = False
+	serviceHandler = eServiceCenter.getInstance()
 
 	if sRef == "":
 		sRef = '%s FROM BOUQUET "bouquets.tv" ORDER BY bouquet' % (service_types_tv)
@@ -546,24 +548,22 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, pic
 	elif ' "bouquets.tv" ' in sRef:
 		CalcPos = True
 
-	if provider:
+	if showProviders:
 		s_type = service_types_tv
 		if "radio" in sRef:
 			s_type = service_types_radio
-		pserviceHandler = eServiceCenter.getInstance()
-		pservices = pserviceHandler.list(eServiceReference('%s FROM PROVIDERS ORDER BY name' % (s_type)))
+		pservices = serviceHandler.list(eServiceReference('%s FROM PROVIDERS ORDER BY name' % (s_type)))
 		providers = pservices and pservices.getContent("SN", True)
 
-		if provider:
-			for provider in providers:
-				servicelist = ServiceList(eServiceReference(provider[0]))
-				slist = servicelist.getServicesAsList()
-				for sitem in slist:
-					allproviders[sitem[0]] = provider[1]
+		for provider in providers:
+			pservices = serviceHandler.list(eServiceReference(provider[0]))
+			slist = pservices and pservices.getContent("CN" if removeNameFromsref else "SN", True)
+			for sitem in slist:
+				allproviders[sitem[0]] = provider[1]
 
-	servicelist = ServiceList(eServiceReference(sRef))
-	slist = servicelist.getServicesAsList()
-	serviceHandler = eServiceCenter.getInstance()
+
+	bqservices = serviceHandler.list(eServiceReference(sRef))
+	slist = bqservices and bqservices.getContent("CN" if removeNameFromsref else "SN", True)
 
 	oPos = 0
 	for sitem in slist:
@@ -599,26 +599,27 @@ def getServices(sRef, showAll=True, showHidden=False, pos=0, provider=False, pic
 					service['startpos'] = oldoPos
 				if picon:
 					service['picon'] = getPicon(sr)
-				if splitname:
-					name = "::%s" % convertUnicode(sitem[1])
-					if name in sr:
-						sr = sr.replace(name, ":")
-					service['servicename'] = name[2:]
-				else:
-					service['servicename'] = convertUnicode(sitem[1])
+				service['servicename'] = convertUnicode(sitem[1])
 				service['servicereference'] = sr
 				service['program'] = int(service['servicereference'].split(':')[3], 16)
-				if provider:
+				if showProviders:
 					if sitem[0] in allproviders:
 						service['provider'] = allproviders[sitem[0]]
 					else:
 						service['provider'] = ""
 				services.append(service)
 
-	return {"services": services, "pos": pos}
+	timeelapsed = datetime.now() - starttime
+	return {
+		"result": True,
+		"processingtime" : "{}".format(timeelapsed),
+		"pos": pos,
+		"services": services
+	}
 
 
-def getAllServices(type, noiptv=False, nolastscanned=False, splitname=False, showAll=True):
+def getAllServices(type, noiptv=False, nolastscanned=False, removeNameFromsref=False, showAll=True, showProviders=False):
+	starttime = datetime.now()
 	services = []
 	if type is None:
 		type = "tv"
@@ -627,7 +628,7 @@ def getAllServices(type, noiptv=False, nolastscanned=False, splitname=False, sho
 	for bouquet in bouquets:
 		if nolastscanned and 'LastScanned' in bouquet[0]:
 			continue
-		sv = getServices(sRef=bouquet[0], showAll=showAll, showHidden=False, pos=pos, noiptv=noiptv, splitname=splitname)
+		sv = getServices(sRef=bouquet[0], showAll=showAll, showHidden=False, pos=pos, showProviders=showProviders, noiptv=noiptv, removeNameFromsref=removeNameFromsref)
 		services.append({
 			"servicereference": bouquet[0],
 			"servicename": bouquet[1],
@@ -635,8 +636,11 @@ def getAllServices(type, noiptv=False, nolastscanned=False, splitname=False, sho
 		})
 		pos = sv["pos"]
 
+	timeelapsed = datetime.now() - starttime
+
 	return {
 		"result": True,
+		"processingtime" : "{}".format(timeelapsed),
 		"services": services
 	}
 
@@ -1022,7 +1026,7 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 		if bouquetsonly:
 			# collect service references from TV bouquets
 			bsref = {}
-			for service in getAllServices('tv', splitname=True, showAll=False, nolastscanned=True)['services']:
+			for service in getAllServices('tv', removeNameFromsref=True, showAll=False, nolastscanned=True)['services']:
 				for service2 in service['subservices']:
 					bsref[service2['servicereference']] = True
 				else:
