@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 from glob import glob
 from re import search, MULTILINE
-from os.path import dirname, exists, isdir, isfile, join as pathjoin, symlink, islink
+from os import symlink
+from os.path import dirname, exists, isdir, isfile, join as pathjoin, islink
 import sys
 
 from Components.Language import language
@@ -236,15 +237,15 @@ def getDefaultRcu():
 
 def getCustomCSS(css):
 	cssfilename = "owf-%s.css" % css
-	csslinkpath = "/%s/css/%s" % (css if css == "modern" else "", cssfilename)
+	csslinkpath = "%scss/%s" % (css + "/" if css == "modern" else "", cssfilename)
 	csssrcpath = pathjoin("/etc/enigma2", cssfilename)
 	try:
 		if isfile(csssrcpath):
 			csspath = pathjoin(PUBLIC_PATH, csslinkpath)
-			if islink(pathjoin(csspath, cssfilename)):
+			if islink(csspath):
 				return csslinkpath
 			else:
-				symlink(csssrcpath, pathjoin(csspath, cssfilename))
+				symlink(csssrcpath, csspath)
 				return csslinkpath
 	except (IOError, OSError) as err:
 		print("[OpwnWebif] Error getCustomCSS : %s" % str(err))
