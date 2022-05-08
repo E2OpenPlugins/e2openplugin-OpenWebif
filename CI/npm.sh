@@ -9,6 +9,7 @@ echo "Run npm to compile and minimise JS and CSS files"
 cd sourcefiles
 npm install
 npm install path-exists
+npm install semver
 npm ci --prefix modern
 npm run build-css
 npm run build-classic-css
