@@ -1,6 +1,6 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground, ZapStream, showIPTVChannelsInSelection, useSreenshotChannelName, useNowNextColumns
-#from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, OPENWEBIFPACKAGEVERSION, USERCSSRESPONSIVE
+#from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, OPENWEBIFPACKAGEVERSION, USERCSSMODERN
 #from json import dumps
 
 #set $debugMode = False
@@ -1014,10 +1014,8 @@
 		});
 	});
 </script>
-#if $USERCSSRESPONSIVE != ''
-<style>
-$USERCSSRESPONSIVE
-</style>
+#if $USERCSSMODERN != ''
+<link rel="stylesheet" type="text/css" href="$USERCSSMODERN">
 #end if
 </body>
 </html>

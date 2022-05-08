@@ -1,10 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
-import os
+from glob import glob
+from re import search, MULTILINE
+from os.path import dirname, exists, isdir, isfile, join as pathjoin, symlink, islink
 import sys
-import glob
-import re
 
 from Components.Language import language
 from Components.config import config as comp_config
@@ -17,9 +16,9 @@ except ImportError:
 	from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 	def isPluginInstalled(p, plugin="plugin"):
 		for ext in ['', 'c', 'o']:
-			if os.path.exists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/%s/%s.py%s" % (p, plugin, ext))):
+			if exists(resolveFilename(SCOPE_PLUGINS, "SystemPlugins/%s/%s.py%s" % (p, plugin, ext))):
 				return True
-			if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/%s/%s.py%s" % (p, plugin, ext))):
+			if exists(resolveFilename(SCOPE_PLUGINS, "Extensions/%s/%s.py%s" % (p, plugin, ext))):
 				return True
 
 def _isPluginInstalled(p, plugin="plugin"):
@@ -31,7 +30,7 @@ PLUGIN_NAME = 'OpenWebif'
 PLUGIN_DESCRIPTION = "OpenWebif Configuration"
 PLUGIN_WINDOW_TITLE = PLUGIN_DESCRIPTION
 
-PLUGIN_ROOT_PATH = os.path.dirname(os.path.dirname(__file__))
+PLUGIN_ROOT_PATH = dirname(dirname(__file__))
 PUBLIC_PATH = PLUGIN_ROOT_PATH + '/public'
 VIEWS_PATH = PLUGIN_ROOT_PATH + '/controllers/views'
 
@@ -47,7 +46,7 @@ MOBILEDEVICE = False
 
 
 def getTranscoding():
-	if os.path.isfile("/proc/stb/encoder/0/bitrate"):
+	if isfile("/proc/stb/encoder/0/bitrate"):
 		return isPluginInstalled("TranscodingSetup") or isPluginInstalled("TransCodingSetup") or isPluginInstalled("MultiTransCodingSetup")
 	return False
 
@@ -72,7 +71,7 @@ def setMobile(isMobile=False):
 
 def getViewsPath(file=""):
 	global MOBILEDEVICE
-	if (comp_config.OpenWebif.responsive_enabled.value or MOBILEDEVICE) and os.path.exists(VIEWS_PATH + "/responsive") and not (file.startswith('web/') or file.startswith('/web/')):
+	if (comp_config.OpenWebif.responsive_enabled.value or MOBILEDEVICE) and exists(VIEWS_PATH + "/responsive") and not (file.startswith('web/') or file.startswith('/web/')):
 		return VIEWS_PATH + "/responsive/" + file
 	else:
 		return VIEWS_PATH + "/" + file
@@ -105,16 +104,16 @@ def getPiconPath():
 	PICON_EXT = ".png"
 
 	for prefix in PICON_PREFIXES:
-		if os.path.isdir(prefix):
+		if isdir(prefix):
 			for folder in PICON_FOLDERS:
 				current = prefix + folder + '/'
-				if os.path.isdir(current):
+				if isdir(current):
 					print("Current Picon Path : %s" % current)
 					GLOBALPICONPATH = current
 					return GLOBALPICONPATH
 #: TODO discuss
 #					for item in os.listdir(current):
-#						if os.path.isfile(current + item) and item.endswith(PICON_EXT):
+#						if isfile(current + item) and item.endswith(PICON_EXT):
 #							PICONPATH = current
 #							return PICONPATH
 
@@ -146,23 +145,16 @@ TRANSCODING = getTranscoding()
 
 
 def getOpenwebifPackageVersion():
-	control = glob.glob('/var/lib/opkg/info/*openwebif.control')
+	control = glob('/var/lib/opkg/info/*openwebif.control')
 	version = 'unknown'
 	if len(control):
 		with open(control[0]) as file:
 			lines = file.read()
 			try:
-				version = re.search(r'^Version:\s*(.*)', lines, re.MULTILINE).group(1)
+				version = search(r'^Version:\s*(.*)', lines, MULTILINE).group(1)
 			except AttributeError:
 				pass
 	return version
-
-
-def getUserCSS(fn):
-	if os.path.isfile(fn):
-		return open(fn, 'r').read()
-	else:
-		return ''
 
 
 def getAutoTimer():
@@ -218,12 +210,14 @@ def getATSearchtypes():
 	except ImportError:
 		return {}
 
+
 def getTextInputSupport():
 	try:
 		from enigma import setPrevAsciiCode
 		return True
 	except ImportError:
 		return False
+
 
 def getDefaultRcu():
 	remotetype = "standard"
@@ -240,11 +234,24 @@ def getDefaultRcu():
 	return remotetype
 
 
+def getCustomCSS(css):
+	cssfilename = "owf-%s.css" % css
+	csslinkpath = "/%s/css/%s" % (css if css == "modern" else "", cssfilename)
+	csssrcpath = pathjoin("/etc/enigma2", cssfilename)
+	try:
+		if isfile(csssrcpath):
+			csspath = pathjoin(PUBLIC_PATH, csslinkpath)
+			if islink(pathjoin(csspath, cssfilename)):
+				return csslinkpath
+			else:
+				symlink(csssrcpath, pathjoin(csspath, cssfilename))
+				return csslinkpath
+	except (IOError, OSError) as err:
+		print("[OpwnWebif] Error getCustomCSS : %s" % str(err))
+	return ""
+
+
 OPENWEBIFPACKAGEVERSION = getOpenwebifPackageVersion()
-
-USERCSSCLASSIC = getUserCSS('/etc/enigma2/owfclassic.css')
-
-USERCSSRESPONSIVE = getUserCSS('/etc/enigma2/owfresponsive.css')
 
 HASAUTOTIMER = getAutoTimer()
 
@@ -261,3 +268,7 @@ ATSEARCHTYPES = getATSearchtypes()
 TEXTINPUTSUPPORT = getTextInputSupport()
 
 DEFAULT_RCU = getDefaultRcu()
+
+USERCSSCLASSIC = getCustomCSS("classic")
+
+USERCSSMODERN = getCustomCSS("modern")
