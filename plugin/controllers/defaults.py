@@ -236,7 +236,7 @@ def getDefaultRcu():
 
 
 def getCustomCSS(css):
-	cssfilename = "owf-%s.css" % css
+	cssfilename = "openwebif-%s.css" % css
 	csslinkpath = "%scss/%s" % (css + "/" if css == "modern" else "", cssfilename)
 	csssrcpath = pathjoin("/etc/enigma2", cssfilename)
 	try:
@@ -248,7 +248,7 @@ def getCustomCSS(css):
 				symlink(csssrcpath, csspath)
 				return csslinkpath
 	except (IOError, OSError) as err:
-		print("[OpwnWebif] Error getCustomCSS : %s" % str(err))
+		print("[OpenWebif] Error getCustomCSS : %s" % str(err))
 	return ""
 
 

@@ -55,7 +55,9 @@
 	<link rel="stylesheet" type="text/css" href="/modern/css/vti-bootstrap-chosen.min.css">
 	<link rel="stylesheet" type="text/css" href="/modern/css/vti-timepicker.min.css">
 	<link rel="stylesheet" type="text/css" href="/modern/css/vti-responsive.min.css">
-
+	#if $USERCSSMODERN != ''
+	<link rel="stylesheet" type="text/css" href="$USERCSSMODERN">
+	#end if
 	<style>
 		.page-loader-wrapper { background: rgba(156,156,156, 0.2); }
 	</style>
@@ -1014,8 +1016,5 @@
 		});
 	});
 </script>
-#if $USERCSSMODERN != ''
-<link rel="stylesheet" type="text/css" href="$USERCSSMODERN">
-#end if
 </body>
 </html>

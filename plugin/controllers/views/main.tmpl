@@ -192,6 +192,9 @@
 		<link type="text/css" href="css/theme_original.css" rel="stylesheet"/>
 	#end if
 	<link type="text/css" href="web/css" rel="stylesheet"/>
+	#if $USERCSSCLASSIC != ''
+		<link rel="stylesheet" type="text/css" href="$USERCSSCLASSIC">
+	#end if
 	<title>$boxname - OpenWebif</title>
 </head>
 #set $body_classes = [$t]
@@ -328,9 +331,5 @@
 			}
 		}
 	</script>
-
-#if $USERCSSCLASSIC != ''
-<link rel="stylesheet" type="text/css" href="$USERCSSCLASSIC">
-#end if
 </body>
 </html>
