@@ -42,8 +42,8 @@
 <template id="provider-item-template">
 	<li>
 		<span class="icon">
-			<i class="hidden icon--satellite material-icons material-icons-centered">bubble_chart</i>
-			<i class="hidden icon--provider material-icons material-icons-centered">folder_open</i>
+			<i class="hidden icon icon--satellite material-icons material-icons-centered">satellite_alt</i>
+			<i class="hidden icon icon--provider material-icons material-icons-centered">bubble_chart</i>
 		</span>
 		<slot name="provider-name"></slot>
 	</li>
@@ -72,7 +72,7 @@
 
 <template id="bql-item-template">
 	<li>
-		<span class="handle dd-icon" title="Hold to drag"><!-- TODO: i10n -->
+		<span class="handle dd-icon" title="$tstrings['drag_hint']">
 			<i class="material-icons material-icons-centered">drag_indicator</i>
 		</span>
 		<slot name="bouquet-name"></slot>
@@ -84,7 +84,7 @@
 
 <template id="bqs-item-template">
 	<li class="bqe__item">
-		<span class="handle dd-icon" title="Hold to drag"><!-- TODO: i10n -->
+		<span class="handle dd-icon" title="$tstrings['drag_hint']">
 			<i class="material-icons material-icons-centered">drag_indicator</i>
 		</span>
 #if $showPicons
@@ -161,7 +161,7 @@
 					</span>
 					<span class="bqe__option">
 						<input type="radio" name="tvRadioMode" value="-1" id="toolbar-choose-any" class="radio-vti radio--skinned">
-						<label for="toolbar-choose-any">Any</label><!-- TODO: i10n -->
+						<label for="toolbar-choose-any">$tstrings['any']</label>
 					</span>
 				</div>
 			 </form>

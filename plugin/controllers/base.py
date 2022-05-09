@@ -426,4 +426,6 @@ class BaseController(resource.Resource):
 		smallremote = config.OpenWebif.webcache.smallremote.value if config.OpenWebif.webcache.smallremote.value else 'new'
 		ret['smallremote'] = smallremote
 		ret['textinputsupport'] = TEXTINPUTSUPPORT
+		ret['debugModeEnabled'] = config.OpenWebif.displayTracebacks.value == True
+
 		return ret
