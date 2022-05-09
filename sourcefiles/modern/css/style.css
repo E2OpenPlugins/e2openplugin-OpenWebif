@@ -2877,20 +2877,17 @@ section.content {
 	margin: 0;
 	font-size: 18px;
 	font-weight: normal;
-	color: #111;
 }
 
 .card .header h2 small {
 	display: block;
 	font-size: 12px;
 	margin-top: 5px;
-	color: #999;
 	line-height: 15px;
 }
 
 .card .header h2 small a {
 	font-weight: bold;
-	color: #777;
 }
 
 .card .header .col-xs-12 h2 {
