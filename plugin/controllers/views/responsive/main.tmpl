@@ -3,7 +3,6 @@
 #from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, OPENWEBIFPACKAGEVERSION, USERCSSRESPONSIVE
 #from json import dumps
 
-#set $debugMode = False
 #set $skinPrefOptions = [
 	{'value': 'black', 'label': 'Black'}, 
 	{'value': 'grey-darken-4', 'label': 'Dark Grey'}, 
@@ -110,9 +109,6 @@
 					<button class="bars" id="leftsidebarin"></button>
 					<h1 id="header__title">
 						<a href="/">OpenWebif</a>
-						<button id="header__info" data-toggle="modal" data-target="#OwifVersionModal">
-							<i class="icon material-icons">info_outline</i>
-						</button>
 					</h1>
 					<button style="display: none;" id="osd__connection" title="$tstrings['no_network_connection']"><i class="icon material-icons">link_off</i></button>
 				</div>
@@ -131,7 +127,7 @@
 						<img src="" alt="" id="osd__current-service--picon"><!-- for future use -->
 					</a>
 					</a>
-					<button type="button" id="osd__current-event__epg" title="$tstrings['show_epg_for'] channel" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons">view_list</i></button>
+					<button type="button" id="osd__current-event__epg" title="$tstrings['show_epg_for'] channel" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons">event_note</i></button>
 					<a href="" target="_blank" class="dyn" id="osd__current-event__stream" title="$tstrings['stream'] channel">
 					<!-- should probably use /web/streamcurrent.m3u?name= -->
 						<i class="icon material-icons">ondemand_video</i>
@@ -170,7 +166,7 @@
 						<i class="icon material-icons">search</i>
 					</button>
 <!--
-#if $vti == "1" or $debugMode
+#if $vti == "1"
 -->
 					<button class="js-search-movie" data-close="true" title="$tstrings['moviesearch']">
 						<i class="icon material-icons">youtube_searched_for</i>
@@ -259,7 +255,7 @@
 											<button type="button" onclick="pressMenuRemote('174');" title="Exit" class="remote__button icon"><i class="material-icons">clear</i></button>
 										</section>
 										<section class="remote__group">
-											<button type="button" onclick="pressMenuRemote('365');" title="EPG" class="remote__button icon"><i class="material-icons">view_list</i></button>
+											<button type="button" onclick="pressMenuRemote('365');" title="EPG" class="remote__button icon"><i class="material-icons">event_note</i></button>
 											<button type="button" onclick="pressMenuRemote('627');" title="VOD" class="remote__button icon"><i class="material-icons">ondemand_video</i></button>
 											<button type="button" onclick="pressMenuRemote('403');" title="CH-" class="remote__button icon"><i class="material-icons">remove</i></button>
 											<button type="button" onclick="pressMenuRemote('402');" title="CH+" class="remote__button icon"><i class="material-icons">add</i></button>
@@ -345,7 +341,7 @@
 						</li>
 						<li>
 							<a href="#myepg?epgmode=tv" data-close="true" accesskey="e" title="Shortcut: e">
-								<i class="material-icons">view_list</i>
+								<i class="icon material-icons">event_note</i>
 								<span>$tstrings['epg']</span>
 							</a>
 						</li>
@@ -401,7 +397,7 @@
                                 </li>
 								<li><a href="#about">OpenWebif</a></li>
 <!--
-#if $debugMode
+#if $debugModeEnabled
 -->
 								<li class="disabled" style="user-select: all;"><!-- these `disabled` classes will prevent the `Waves` plugin interfering with text selection -->
                                     <a href="javascript:void(0);" class="disabled" style="user-select: all;">$tstrings['version']: $OPENWEBIFVER</a>
@@ -694,24 +690,6 @@
 
 <!---<div id="modaldialog"></div>-->
 <div id="responsivespinner"></div>
-<div id="OwifVersionModal" class="modal fade" role="dialog">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header bg--skinned">
-				<button type="button" class="close" data-dismiss="modal">
-					<i class="material-icons material-icons-centered">close</i>
-				</button>
-				<span class="modal-title">OpenWebif Version Information</span>
-			</div>
-			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
-				This information has been moved into <b>Information</b> in the main menu.
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn waves-effect btn-default" data-dismiss="modal">$tstrings['close']</button>
-			</div>
-		</div>
-	</div>
-</div>
 <div id="TimerConflictModal" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -781,7 +759,7 @@
 				<button type="button" class="close" data-dismiss="modal">
 					<i class="material-icons material-icons-centered">close</i>
 				</button>
-				<h4 class="modal-title"><i class="material-icons material-icons-centered">view_list</i><span>$tstrings['epg']</span></h4>
+				<h4 class="modal-title"><i class="icon material-icons material-icons-centered">event_note</i><span>$tstrings['epg']</span></h4>
 			</div>
 			<div class="modal-body" style="max-height: calc(100vh - 180px); overflow-y: auto;">
 				<div id="epgmodalcontent"></div>
@@ -979,7 +957,6 @@
 <script src="/modern/plugins/node-waves/waves.min.js"></script>
 <script src="/modern/plugins/sweetalert/sweetalert.min.js"></script>
 <script src="/modern/plugins/momentjs/moment.min.js"></script>
-<script src="/modern/plugins/screenfull/screenfull.min.js"></script>
 
 ## for future use (asset versioning)
 ## <!-- htmlWebpackPlugin renders the following js includes -->
