@@ -328,7 +328,7 @@ msgstr "STB controle"
 msgid "Box Info"
 msgstr "Box Info"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Box Uptime"
 
 msgid "Brand"
@@ -825,7 +825,7 @@ msgstr "Licentie"
 msgid "Label series"
 msgstr "Label series"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Link Snelheid"
 
 msgid "List of Timers has been cleaned"
@@ -849,7 +849,7 @@ msgstr "MB"
 msgid "Main"
 msgstr "Hoofd"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Totaal geheugen"
 
 msgid "March"

@@ -329,7 +329,7 @@ msgstr "Kontrola odbiornika"
 msgid "Box Info"
 msgstr "Info o odbiorniku"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Czas pracy odbiornika"
 
 msgid "Brand"
@@ -827,7 +827,7 @@ msgstr "LICENCJA"
 msgid "Label series"
 msgstr "Seria etykiet"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Szybkość łącza"
 
 msgid "List of Timers has been cleaned"
@@ -851,7 +851,7 @@ msgstr "MB"
 msgid "Main"
 msgstr "Główny"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Pamięć systemowa"
 
 msgid "March"

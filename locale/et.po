@@ -330,7 +330,7 @@ msgstr "Vastuvõtja juhtimine"
 msgid "Box Info"
 msgstr "Vastuvõtja andmed"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Vastuvõtja tööaeg"
 
 msgid "Brand"
@@ -833,7 +833,7 @@ msgstr "LITSENTS"
 msgid "Label series"
 msgstr "Seriaalide pealdis"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Ühenduse kiirus"
 
 msgid "List of Timers has been cleaned"
@@ -858,7 +858,7 @@ msgstr "MB"
 msgid "Main"
 msgstr "Peamenüü"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Põhimälu"
 
 msgid "March"

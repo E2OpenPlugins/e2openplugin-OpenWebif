@@ -334,7 +334,7 @@ msgstr "Systemfunktionen"
 msgid "Box Info"
 msgstr "Receiver-Informationen"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Receiver-Laufzeit"
 
 msgid "Brand"
@@ -849,7 +849,7 @@ msgstr "Lizenz"
 msgid "Label series"
 msgstr ""
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Verbindungsgeschwindigkeit"
 
 msgid "List of Timers has been cleaned"
@@ -874,7 +874,7 @@ msgstr "MB"
 msgid "Main"
 msgstr "Hauptmenü"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Hauptspeicher"
 
 msgid "March"

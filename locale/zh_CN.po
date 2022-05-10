@@ -326,7 +326,7 @@ msgstr "机顶盒控制"
 msgid "Box Info"
 msgstr "机顶盒信息"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "运行时间"
 
 msgid "Brand"
@@ -823,7 +823,7 @@ msgstr "许可证"
 msgid "Label series"
 msgstr "标签系列"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "链路速度"
 
 msgid "List of Timers has been cleaned"
@@ -847,7 +847,7 @@ msgstr "MB"
 msgid "Main"
 msgstr "主菜单"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "主存储器"
 
 msgid "March"

@@ -330,7 +330,7 @@ msgstr "Aparato valdymas"
 msgid "Box Info"
 msgstr "Apie aparatą"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Nepertraukiamo darbo laikas"
 
 msgid "Brand"
@@ -829,7 +829,7 @@ msgstr "LICENCIJA"
 msgid "Label series"
 msgstr "Žymėti seriją"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Ryšio sparta"
 
 msgid "List of Timers has been cleaned"
@@ -853,7 +853,7 @@ msgstr "MB"
 msgid "Main"
 msgstr "Pagrindinis"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Atminties iš viso"
 
 msgid "March"
