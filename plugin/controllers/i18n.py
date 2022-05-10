@@ -595,8 +595,9 @@ tstrings = {
 	'any': _("Any"),
 	'drag_hint': _("Hold to drag"),
 	'hardware': _("Hardware"),
+	'internal_flash_memory': _("Internal flash memory"),
 	'storage': _("Storage"),
 	'device': _("Device"),
 	'free_space': _("Free space"),
-	'mount_point': _("Mount Point")
+	'mount_point': _("Mount point")
 }
