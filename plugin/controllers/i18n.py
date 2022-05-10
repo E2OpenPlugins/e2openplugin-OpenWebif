@@ -91,7 +91,7 @@ tstrings = {
 	'box_info': _("Box Info"),
 	'box': _("Box"),
 	'boxcontrol': _("Box Control"),
-	'box_uptime': _("Box Uptime"),
+	'box_uptime': _("Box uptime"),
 	'brand': _("Brand"),
 	'cancel': _("Cancel"),
 	'capacity': _("Capacity"),
@@ -259,7 +259,7 @@ tstrings = {
 	'timer': _("Timer"),
 	'timers': _("Timers"),
 	'title': _("Title"),
-	'main_memory': _("Main Memory"),
+	'main_memory': _("Main memory"),
 	'transcoded': _("transcoded"),
 	'transcode': _("Transcode"),
 	'tuner_ber': _("Bit Error Rate (BER)"),
@@ -496,7 +496,7 @@ tstrings = {
 	'webtv': _("Web TV"),
 	'cw': _("Calendar Week"),
 
-	'linkspeed': _("Link Speed"),
+	'linkspeed': _("Link speed"),
 	'networkshares': _("Network Shares"),
 	'using': _("using"),
 	'prime_times': _("Primetimes"),
@@ -593,5 +593,11 @@ tstrings = {
 	'timer_conflict': _("Timer Conflict"),
 	'no_network_connection': _("No network connection"),
 	'any': _("Any"),
-	'drag_hint': _("Hold to drag")
+	'drag_hint': _("Hold to drag"),
+	'hardware': _("Hardware"),
+	'internal_flash_memory': _("Internal flash memory"),
+	'storage': _("Storage"),
+	'device': _("Device"),
+	'free_space': _("Free space"),
+	'mount_point': _("Mount point")
 }
