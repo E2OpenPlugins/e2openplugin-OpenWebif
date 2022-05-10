@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 21:02+0100\n"
+"POT-Creation-Date: 2022-05-10 09:36+0000\n"
 "PO-Revision-Date: 2022-01-18 16:58+0000\n"
 "Last-Translator: Kiki Mora <kikimora2k13@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/e2openplugin-"
@@ -48,6 +48,10 @@ msgstr "%s %s je zamknutý."
 #, python-format
 msgid "%s / %s"
 msgstr "%s / %s"
+
+#, python-format
+msgid "%s Style"
+msgstr ""
 
 #, python-format
 msgid "%s free / %s total"
@@ -166,17 +170,14 @@ msgstr "Odpoveď je NIE!"
 msgid "Answer is YES!"
 msgstr "Odpoveď je ÁNO!"
 
+msgid "Any"
+msgstr ""
+
 msgid "Any day"
 msgstr "Kedykoľvek"
 
 msgid "Any service/recording"
 msgstr "Akákoľvek stanica/nahrávanie"
-
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
-msgstr ""
 
 msgid "April"
 msgstr "Apríl"
@@ -210,6 +211,15 @@ msgstr "Spýtať sa, predvolene nie"
 
 msgid "Ask, default Yes"
 msgstr "Spýtať sa, predvolene áno"
+
+msgid "Audio Encoding"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
+
+msgid "Audio Track"
+msgstr ""
 
 msgid "August"
 msgstr "August"
@@ -252,6 +262,9 @@ msgstr "Začiatok časového úseku \"po relácii\""
 
 msgid "Beginning of timespan"
 msgstr "Začiatok časového rozpätia"
+
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Bookmark"
 msgstr "Záložka"
@@ -331,6 +344,9 @@ msgstr "Doba prevádzky"
 msgid "Brand"
 msgstr "Značka"
 
+msgid "Build"
+msgstr ""
+
 msgid "Cable"
 msgstr "Káblové"
 
@@ -400,6 +416,9 @@ msgstr "Teraz"
 msgid "Current Event"
 msgstr "Aktuálna relácia"
 
+msgid "Currently recording"
+msgstr ""
+
 msgid "Custom box name"
 msgstr "Vlastný názov prijímača"
 
@@ -461,6 +480,9 @@ msgstr "Zmazané"
 msgid "Description"
 msgstr "Popis"
 
+msgid "Device"
+msgstr ""
+
 msgid "Disable"
 msgstr "Zakázať"
 
@@ -508,9 +530,6 @@ msgstr "V"
 
 msgid "EPG"
 msgstr "EPG"
-
-msgid "EPG Search"
-msgstr "Hľadanie v EPG"
 
 msgid "EPG encoding"
 msgstr "Znaková sada EPG"
@@ -586,9 +605,6 @@ msgstr "Koniec časového úseku \"po udalosti\""
 msgid "End of timespan"
 msgstr "Koniec časového rozpätia"
 
-msgid "Enter Text"
-msgstr "Typ tunera"
-
 msgid "Enter a name for the new bouquet"
 msgstr "Zadajte nový názov prehľadu"
 
@@ -600,6 +616,9 @@ msgstr "Zadajte názov pre tento AutoTimer"
 
 msgid "Enter path"
 msgstr "Zadajte cestu"
+
+msgid "Enter text"
+msgstr ""
 
 msgid "Enter the text to find in the EPG"
 msgstr "Zadajte text pre vyhľadanie v EPG"
@@ -680,6 +699,9 @@ msgstr "Voľných"
 msgid "Free Memory"
 msgstr "Voľná pamäť"
 
+msgid "Free space"
+msgstr ""
+
 msgid "Fri"
 msgstr "Pia"
 
@@ -722,11 +744,17 @@ msgstr "HTTPS port"
 msgid "Hard disk model"
 msgstr "Model pevného disku"
 
+msgid "Hardware"
+msgstr ""
+
 msgid "Hide full remote"
 msgstr "Skryť úplný diaľkový ovládač"
 
 msgid "High Resolution"
 msgstr "Vysoké rozlíšenie"
+
+msgid "Hold to drag"
+msgstr ""
 
 msgid "Hour"
 msgstr "Hodina"
@@ -767,6 +795,9 @@ msgstr "Nekonečné okamžité nahrávanie začalo"
 msgid "Info"
 msgstr "Informácie"
 
+msgid "Information"
+msgstr ""
+
 msgid "Inherit AutoTimer"
 msgstr "Prevziať autočasovač"
 
@@ -784,6 +815,9 @@ msgstr "Okamžitý záznam aktuálnej relácie začal"
 
 msgid "Internal error!"
 msgstr "Vnútorná chyba!"
+
+msgid "Internal flash memory"
+msgstr ""
 
 #, python-format
 msgid "Interval (in %s)"
@@ -819,11 +853,11 @@ msgstr "LCD"
 msgid "LCD4Linux Setup"
 msgstr "Nastavenie LCD4Linux"
 
-msgid "LICENSE"
-msgstr "Licencia"
-
 msgid "Label series"
 msgstr "Série menoviek"
+
+msgid "License"
+msgstr ""
 
 msgid "Link speed"
 msgstr "Rýchlosť pripojenia"
@@ -916,6 +950,9 @@ msgstr "Viac"
 msgid "More details"
 msgstr "Zobraziť podrobnosti"
 
+msgid "Mount point"
+msgstr ""
+
 msgid "Movie database for EPG"
 msgstr "Databáza filmov pre EPG"
 
@@ -933,6 +970,9 @@ msgstr "Multi-prehľad nie je zapnutý!"
 
 msgid "MultiEPG"
 msgstr "MultiEPG"
+
+msgid "Mute/Unmute"
+msgstr ""
 
 msgid "NCam Webinterface"
 msgstr "OSCam Webinterface"
@@ -1000,6 +1040,9 @@ msgstr "V EPG sa nenašli žiadne zhody"
 msgid "No matching Timer found"
 msgstr "Zhodný časovač sa nenašiel"
 
+msgid "No network connection"
+msgstr ""
+
 msgid "No new servicename given!"
 msgstr "Nie je zadaný nový názov stanice!"
 
@@ -1042,6 +1085,9 @@ msgstr "Stĺpce Teraz/Ďalší"
 msgid "Number of recordings remaining"
 msgstr "Počet zostávajúcich nahrávaní"
 
+msgid "ONID"
+msgstr ""
+
 msgid "OSCam Webinterface"
 msgstr "OSCam Webinterface"
 
@@ -1065,9 +1111,6 @@ msgstr "Na akúkoľvek stanicu"
 
 msgid "On same service"
 msgstr "Na rovnakej stanici"
-
-msgid "ONID"
-msgstr ""
 
 msgid "Only match between dates"
 msgstr "Obmedziť na relácie v určených dátumoch"
@@ -1108,6 +1151,12 @@ msgstr "Orbitálna pozícia"
 msgid "Override found with alternative service"
 msgstr "Nájdenú prepísať alternatívnou stanicou"
 
+msgid "PCR PID"
+msgstr ""
+
+msgid "PMT PID"
+msgstr ""
+
 msgid "Packages"
 msgstr "Balíčky"
 
@@ -1119,9 +1168,6 @@ msgstr "Rodičovská kontrola nie je aktivovaná."
 
 msgid "Parse AutoTimer"
 msgstr "Analyzovať automatický časovač"
-
-msgid "PCR PID"
-msgstr ""
 
 msgid "PiP"
 msgstr "PiP"
@@ -1146,9 +1192,6 @@ msgstr "Zoznam prehrávania"
 
 msgid "Playlist format"
 msgstr "Formát playlistu"
-
-msgid "PMT PID"
-msgstr ""
 
 msgid "Power Control"
 msgstr "Ovládanie napájania"
@@ -1255,6 +1298,9 @@ msgstr "SLAAC"
 msgid "SNR"
 msgstr "SNR"
 
+msgid "SRef"
+msgstr ""
+
 msgid "Sa"
 msgstr "So"
 
@@ -1285,6 +1331,9 @@ msgstr "Hľadať"
 msgid "Search CSFD"
 msgstr "Hľadať v ČSFD"
 
+msgid "Search EPG"
+msgstr ""
+
 msgid "Search IMDb"
 msgstr "Hľadať v IMDb"
 
@@ -1308,6 +1357,9 @@ msgstr "Vybrať IPK súbor pre nahratie"
 
 msgid "Select..."
 msgstr "Vybrať..."
+
+msgid "Send"
+msgstr ""
 
 msgid "Send Message"
 msgstr "Poslať správu"
@@ -1353,6 +1405,9 @@ msgstr "Stanica %s odstránená z prehľadu %s."
 msgid "Service %s removed."
 msgstr "Stanica %s zmazaná."
 
+msgid "Service ID (SID)"
+msgstr ""
+
 msgid "Service can not be moved."
 msgstr "Stanica sa nedá presunúť."
 
@@ -1367,6 +1422,9 @@ msgstr "Stanica úspešne premenovaná."
 
 msgid "Services"
 msgstr "Stanice"
+
+msgid "Serving stream"
+msgstr ""
 
 msgid "Set maximum duration"
 msgstr "Nastaviť maximálnu dĺžku"
@@ -1413,7 +1471,13 @@ msgstr "Zobrazovat typ programu v zozname staníc"
 msgid "Shutdown"
 msgstr "Vypnúť"
 
-msgid "Service ID (SID)"
+msgid "Signal Power (AGC)"
+msgstr ""
+
+msgid "Signal Quality (SNR DB)"
+msgstr ""
+
+msgid "Signal Quality (SNR)"
 msgstr ""
 
 msgid "Simulate"
@@ -1441,6 +1505,9 @@ msgstr "Časovač uspania je povolený"
 msgid "Sleeptimer set to %d minutes"
 msgstr "Časovač uspania nastavený na %d minút"
 
+msgid "Small remote layout"
+msgstr ""
+
 msgid "Software"
 msgstr "Softvér"
 
@@ -1453,14 +1520,8 @@ msgstr "Triediť"
 msgid "Spinner"
 msgstr "Spiner"
 
-msgid "SRef"
-msgstr ""
-
 msgid "Standby"
 msgstr "Pohotovostný režim"
-
-msgid "Standby Toggle"
-msgstr "Prepnúť pohotov.režim"
 
 msgid "Start"
 msgstr "Začiatok"
@@ -1476,6 +1537,9 @@ msgstr "Začnite písať..."
 
 msgid "State"
 msgstr "Stav"
+
+msgid "Storage"
+msgstr ""
 
 msgid "Stream"
 msgstr "Stream"
@@ -1509,6 +1573,9 @@ msgstr "Systém OE"
 
 msgid "TB"
 msgstr "TB"
+
+msgid "TSID"
+msgstr ""
 
 msgid "TV"
 msgstr "TV"
@@ -1615,6 +1682,9 @@ msgstr "Časovač '%s' sa počas konfliktu neuložil"
 msgid "Timer Added"
 msgstr "Časovač pridaný"
 
+msgid "Timer Conflict"
+msgstr ""
+
 msgid "Timer added"
 msgstr "Časovač pridaný"
 
@@ -1642,6 +1712,9 @@ msgstr "Nie pred"
 msgid "Today"
 msgstr "Dnes"
 
+msgid "Toggle Standby"
+msgstr ""
+
 msgid "Transcode"
 msgstr "Transkódovanie"
 
@@ -1650,9 +1723,6 @@ msgstr "Preklad do španielčiny"
 
 msgid "Try guessing"
 msgstr "Skúsiť uhádnuť"
-
-msgid "TSID"
-msgstr ""
 
 msgid "Tu"
 msgstr "Ut"
@@ -1663,23 +1733,11 @@ msgstr "Uto"
 msgid "Tuesday"
 msgstr "Utorok"
 
-msgid "Bit Error Rate (BER)"
-msgstr ""
-
 msgid "Tuner Number"
 msgstr "Číslo tunera"
 
 msgid "Tuner Signal"
 msgstr "Signál tunera"
-
-msgid "Signal Power (AGC)"
-msgstr ""
-
-msgid "Signal Quality (SNR)"
-msgstr ""
-
-msgid "Signal Quality (SNR DB)"
-msgstr ""
 
 msgid "Tuner Type"
 msgstr "Typ tunera"
@@ -1746,9 +1804,6 @@ msgstr "Použiť nový vzhľad"
 msgid "Use modern interface"
 msgstr "Používať nový dizajn"
 
-msgid "Use old remote"
-msgstr "Použiť starý ovládač"
-
 msgid "VPS"
 msgstr "VPS"
 
@@ -1764,7 +1819,7 @@ msgstr "Video"
 msgid "Video Height"
 msgstr "Výška videa"
 
-msgid "Widescreen"
+msgid "Video PID (VPID)"
 msgstr ""
 
 msgid "Video Width"
@@ -1778,9 +1833,6 @@ msgstr "Hlasitosť"
 
 msgid "Volume Control"
 msgstr "Ovládanie hlasitosti"
-
-msgid "Video PID (VPID)"
-msgstr ""
 
 msgid "W"
 msgstr "Z"
@@ -1814,6 +1866,9 @@ msgstr "Týždenne (pondelok)"
 
 msgid "Weekly (Sunday)"
 msgstr "Týždenne (nedeľa)"
+
+msgid "Widescreen"
+msgstr ""
 
 msgid "Without auth only local access is allowed!"
 msgstr "Bez autorizácie je povolený iba lokálny prístup!"
@@ -1951,6 +2006,9 @@ msgstr "r/o"
 msgid "r/w"
 msgstr "r/w"
 
+msgid "receiver"
+msgstr ""
+
 msgid "record"
 msgstr "nahrať"
 
@@ -2035,6 +2093,21 @@ msgstr "nesprávny typ súboru"
 
 msgid "zap"
 msgstr "prepnúť"
+
+#~ msgid "EPG Search"
+#~ msgstr "Hľadanie v EPG"
+
+#~ msgid "Enter Text"
+#~ msgstr "Typ tunera"
+
+#~ msgid "LICENSE"
+#~ msgstr "Licencia"
+
+#~ msgid "Standby Toggle"
+#~ msgstr "Prepnúť pohotov.režim"
+
+#~ msgid "Use old remote"
+#~ msgstr "Použiť starý ovládač"
 
 #~ msgid "Apid"
 #~ msgstr "Apid"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 21:02+0100\n"
+"POT-Creation-Date: 2022-05-10 09:36+0000\n"
 "PO-Revision-Date: 2021-12-02 19:55+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/e2openplugin-"
@@ -49,6 +49,10 @@ msgstr "%s %s تم إغلاقه."
 
 #, python-format
 msgid "%s / %s"
+msgstr ""
+
+#, python-format
+msgid "%s Style"
 msgstr ""
 
 #, python-format
@@ -170,17 +174,14 @@ msgstr "الإجابة هي لا!"
 msgid "Answer is YES!"
 msgstr "الإجابة هي نعم!"
 
+msgid "Any"
+msgstr ""
+
 msgid "Any day"
 msgstr ""
 
 msgid "Any service/recording"
 msgstr "أي خدمة / التسجيل"
-
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
-msgstr ""
 
 msgid "April"
 msgstr "ابريل"
@@ -216,6 +217,15 @@ msgstr "السؤال ، الافتراضي لا"
 
 msgid "Ask, default Yes"
 msgstr "السؤال ، الافتراضي نعم"
+
+msgid "Audio Encoding"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
+
+msgid "Audio Track"
+msgstr ""
 
 msgid "August"
 msgstr "أغسطس"
@@ -259,6 +269,9 @@ msgstr "تبدء من\"بعد الحدث\" المدة الزمنية"
 
 msgid "Beginning of timespan"
 msgstr "بداية المدى الزمنى"
+
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Bookmark"
 msgstr "علامة مرجعية"
@@ -338,6 +351,9 @@ msgstr "مدة تشغيل الجهاز"
 msgid "Brand"
 msgstr "علامة تجارية"
 
+msgid "Build"
+msgstr ""
+
 msgid "Cable"
 msgstr "كيبل"
 
@@ -407,6 +423,9 @@ msgstr "جاری"
 msgid "Current Event"
 msgstr "الحدث الحالي"
 
+msgid "Currently recording"
+msgstr ""
+
 msgid "Custom box name"
 msgstr "أسم الجهاز المخصص"
 
@@ -469,6 +488,9 @@ msgstr "تم الحذف"
 msgid "Description"
 msgstr "الوصـف"
 
+msgid "Device"
+msgstr ""
+
 #, fuzzy
 msgid "Disable"
 msgstr "تم التعطيل"
@@ -517,9 +539,6 @@ msgstr "E"
 
 msgid "EPG"
 msgstr "دليل البرامج الإلكترونية"
-
-msgid "EPG Search"
-msgstr "بحث في دليل البرامج"
 
 msgid "EPG encoding"
 msgstr "ترميز دليل البرامج اليومي"
@@ -594,10 +613,6 @@ msgstr "النهاية \"بعد الحدث\" المدة الزمنية"
 msgid "End of timespan"
 msgstr "نهاية المدة الزمنية"
 
-#, fuzzy
-msgid "Enter Text"
-msgstr "نوع المؤالف"
-
 msgid "Enter a name for the new bouquet"
 msgstr "ادخل اسم جديد للباقة"
 
@@ -609,6 +624,9 @@ msgid "Enter a name for this AutoTimer"
 msgstr "ادخل اسم جديد للعلامة"
 
 msgid "Enter path"
+msgstr ""
+
+msgid "Enter text"
 msgstr ""
 
 msgid "Enter the text to find in the EPG"
@@ -691,6 +709,9 @@ msgstr "مجاني"
 msgid "Free Memory"
 msgstr "ذاكرة متوفرة"
 
+msgid "Free space"
+msgstr ""
+
 msgid "Fri"
 msgstr "الجمعة"
 
@@ -733,11 +754,17 @@ msgstr "منفذ بروتوكول نقل النصوص المحمي"
 msgid "Hard disk model"
 msgstr "موديل القرص الصلب"
 
+msgid "Hardware"
+msgstr ""
+
 msgid "Hide full remote"
 msgstr "إخفاء كامل لجهاز التحكم عن بعد"
 
 msgid "High Resolution"
 msgstr "عالي الدقة"
+
+msgid "Hold to drag"
+msgstr ""
 
 msgid "Hour"
 msgstr "ساعة"
@@ -778,6 +805,9 @@ msgstr "بدأ التسجيل الفوري بلا حدود"
 msgid "Info"
 msgstr "المعلومات"
 
+msgid "Information"
+msgstr ""
+
 msgid "Inherit AutoTimer"
 msgstr "تركة المؤقت التلقائي"
 
@@ -795,6 +825,9 @@ msgstr "بدء تشغيل التسجل الفوري للحدث الحالي"
 
 msgid "Internal error!"
 msgstr "خطا داخلي!"
+
+msgid "Internal flash memory"
+msgstr ""
 
 #, python-format
 msgid "Interval (in %s)"
@@ -830,11 +863,11 @@ msgstr "شاشة العرض المصغرة"
 msgid "LCD4Linux Setup"
 msgstr "ضبط شاشة عرض لينكس"
 
-msgid "LICENSE"
-msgstr "الترخيص"
-
 msgid "Label series"
 msgstr "سلسله التسمية"
+
+msgid "License"
+msgstr ""
 
 msgid "Link speed"
 msgstr "سرعه الرابط"
@@ -929,6 +962,9 @@ msgstr "المزيد"
 msgid "More details"
 msgstr "مشاهدة التفاصيل"
 
+msgid "Mount point"
+msgstr ""
+
 msgid "Movie database for EPG"
 msgstr "قاعدة بيانات من دليل البرامج الإلكترونية"
 
@@ -946,6 +982,9 @@ msgstr "لم يتم تمكين الباقة المتعددة!"
 
 msgid "MultiEPG"
 msgstr "دليل البرامج الإلكتروينة المتعدد"
+
+msgid "Mute/Unmute"
+msgstr ""
 
 #, fuzzy
 msgid "NCam Webinterface"
@@ -1017,6 +1056,9 @@ msgstr "لم يتم العثور على مؤقت متطابق"
 msgid "No matching Timer found"
 msgstr "لم يتم العثور على مؤقت متطابق"
 
+msgid "No network connection"
+msgstr ""
+
 msgid "No new servicename given!"
 msgstr "لم يتم ذكر أسم القناة الجديد!"
 
@@ -1059,6 +1101,9 @@ msgstr ""
 msgid "Number of recordings remaining"
 msgstr "ربط التسجيلات على اليسار"
 
+msgid "ONID"
+msgstr ""
+
 msgid "OSCam Webinterface"
 msgstr "واجهة إنترنت الاوسكام"
 
@@ -1082,9 +1127,6 @@ msgstr "على أى خدمة"
 
 msgid "On same service"
 msgstr "على نفس الخدمة"
-
-msgid "ONID"
-msgstr ""
 
 msgid "Only match between dates"
 msgstr "تقييد للأحداث في تواريخ معينة"
@@ -1126,6 +1168,12 @@ msgstr "الموقع المداري"
 msgid "Override found with alternative service"
 msgstr "وجود تجاوز مع الخدمة بديلة"
 
+msgid "PCR PID"
+msgstr ""
+
+msgid "PMT PID"
+msgstr ""
+
 msgid "Packages"
 msgstr "الباقات"
 
@@ -1137,9 +1185,6 @@ msgstr "لم يتم تنشيط الرقابة الأبوية."
 
 msgid "Parse AutoTimer"
 msgstr "تحليل المؤقت التلقائي"
-
-msgid "PCR PID"
-msgstr ""
 
 msgid "PiP"
 msgstr "خاصية قناة داخل قناة"
@@ -1165,9 +1210,6 @@ msgstr "قائمة التشغيل"
 #, fuzzy
 msgid "Playlist format"
 msgstr "قائمة التشغيل"
-
-msgid "PMT PID"
-msgstr ""
 
 msgid "Power Control"
 msgstr "التحكم في الطاقة"
@@ -1278,6 +1320,9 @@ msgstr "SLAAC"
 msgid "SNR"
 msgstr "جودة الإشارة"
 
+msgid "SRef"
+msgstr ""
+
 msgid "Sa"
 msgstr "سبت"
 
@@ -1308,6 +1353,9 @@ msgstr "بحث"
 msgid "Search CSFD"
 msgstr "البحث في بيانات الأفلام التشيكية والسلوفاكية"
 
+msgid "Search EPG"
+msgstr ""
+
 msgid "Search IMDb"
 msgstr "البحث في قاعدة بيانات معلومات الأفلام على الإنترنت"
 
@@ -1333,6 +1381,9 @@ msgid "Select IPK file for upload"
 msgstr "أختار ملف النظام المحمي لرفعه"
 
 msgid "Select..."
+msgstr ""
+
+msgid "Send"
 msgstr ""
 
 msgid "Send Message"
@@ -1379,6 +1430,9 @@ msgstr "القناة %s تم حذفها من الباقة %s."
 msgid "Service %s removed."
 msgstr "القناة %s تم حذفها."
 
+msgid "Service ID (SID)"
+msgstr ""
+
 msgid "Service can not be moved."
 msgstr "لا يمكن نقل الخدمة."
 
@@ -1393,6 +1447,9 @@ msgstr "تمت أعاده تسميه القناة بنجاح."
 
 msgid "Services"
 msgstr "القنوات"
+
+msgid "Serving stream"
+msgstr ""
 
 msgid "Set maximum duration"
 msgstr "حدد أقصى مده"
@@ -1441,7 +1498,13 @@ msgstr "عرض نوع القناة في قائمة القنوات"
 msgid "Shutdown"
 msgstr "إغلاق"
 
-msgid "Service ID (SID)"
+msgid "Signal Power (AGC)"
+msgstr ""
+
+msgid "Signal Quality (SNR DB)"
+msgstr ""
+
+msgid "Signal Quality (SNR)"
 msgstr ""
 
 msgid "Simulate"
@@ -1469,6 +1532,9 @@ msgstr "تم تفعيل مؤقت النوم"
 msgid "Sleeptimer set to %d minutes"
 msgstr "ضبط مؤقت النوم %d بالدقائق"
 
+msgid "Small remote layout"
+msgstr ""
+
 msgid "Software"
 msgstr "البرامج"
 
@@ -1481,14 +1547,8 @@ msgstr ""
 msgid "Spinner"
 msgstr "الغزال"
 
-msgid "SRef"
-msgstr ""
-
 msgid "Standby"
 msgstr "وضع الإستعداد"
-
-msgid "Standby Toggle"
-msgstr "تبديل الاستعداد"
 
 msgid "Start"
 msgstr "تشغيل"
@@ -1503,6 +1563,9 @@ msgid "Start typing..."
 msgstr "أبدا الكتابة"
 
 msgid "State"
+msgstr ""
+
+msgid "Storage"
 msgstr ""
 
 msgid "Stream"
@@ -1539,6 +1602,9 @@ msgstr "نظام OE"
 
 msgid "TB"
 msgstr "تيرابايت"
+
+msgid "TSID"
+msgstr ""
 
 msgid "TV"
 msgstr "التلفزيون"
@@ -1646,6 +1712,9 @@ msgstr "لم يتم حفظ المؤقت ' %s ' اثناء التعارض"
 msgid "Timer Added"
 msgstr "وأضاف المؤقت"
 
+msgid "Timer Conflict"
+msgstr ""
+
 msgid "Timer added"
 msgstr "وأضاف المؤقت"
 
@@ -1673,6 +1742,9 @@ msgstr "ليس قبل"
 msgid "Today"
 msgstr ""
 
+msgid "Toggle Standby"
+msgstr ""
+
 msgid "Transcode"
 msgstr "تحويل الترميز"
 
@@ -1681,9 +1753,6 @@ msgstr "الترجمة إلى الاسبانية"
 
 msgid "Try guessing"
 msgstr "محاولة التخمين"
-
-msgid "TSID"
-msgstr ""
 
 msgid "Tu"
 msgstr "الثلاثاء"
@@ -1694,23 +1763,11 @@ msgstr "الثلاثاء"
 msgid "Tuesday"
 msgstr "الثلاثاء"
 
-msgid "Bit Error Rate (BER)"
-msgstr ""
-
 msgid "Tuner Number"
 msgstr "رقم المؤالف"
 
 msgid "Tuner Signal"
 msgstr "إشارة المؤالف"
-
-msgid "Signal Power (AGC)"
-msgstr ""
-
-msgid "Signal Quality (SNR)"
-msgstr ""
-
-msgid "Signal Quality (SNR DB)"
-msgstr ""
 
 msgid "Tuner Type"
 msgstr "نوع المؤالف"
@@ -1780,10 +1837,6 @@ msgstr "استخدام التصميم الجديد"
 msgid "Use modern interface"
 msgstr "استخدام التصميم الجديد"
 
-#, fuzzy
-msgid "Use old remote"
-msgstr "إخفاء كامل لجهاز التحكم عن بعد"
-
 msgid "VPS"
 msgstr "الخادم الإفتراضي الخاص"
 
@@ -1799,7 +1852,7 @@ msgstr "الفديو"
 msgid "Video Height"
 msgstr "ارتفاع الفيديو"
 
-msgid "Widescreen"
+msgid "Video PID (VPID)"
 msgstr ""
 
 msgid "Video Width"
@@ -1813,9 +1866,6 @@ msgstr "درجه الصوت"
 
 msgid "Volume Control"
 msgstr "التحكم في مستوي الصوت"
-
-msgid "Video PID (VPID)"
-msgstr ""
 
 msgid "W"
 msgstr "W"
@@ -1849,6 +1899,9 @@ msgstr "اسبوعيا (الاثنين)"
 
 msgid "Weekly (Sunday)"
 msgstr "اسبوعيا (الاحد)"
+
+msgid "Widescreen"
+msgstr ""
 
 msgid "Without auth only local access is allowed!"
 msgstr "دون المصادقة يسمح فقط الوصول المحلي!"
@@ -1990,6 +2043,9 @@ msgstr "r/o"
 msgid "r/w"
 msgstr "r/w"
 
+msgid "receiver"
+msgstr ""
+
 msgid "record"
 msgstr "x تسجيل"
 
@@ -2077,6 +2133,23 @@ msgstr "نوع الملف خطاء"
 
 msgid "zap"
 msgstr "الانتقال"
+
+#~ msgid "EPG Search"
+#~ msgstr "بحث في دليل البرامج"
+
+#, fuzzy
+#~ msgid "Enter Text"
+#~ msgstr "نوع المؤالف"
+
+#~ msgid "LICENSE"
+#~ msgstr "الترخيص"
+
+#~ msgid "Standby Toggle"
+#~ msgstr "تبديل الاستعداد"
+
+#, fuzzy
+#~ msgid "Use old remote"
+#~ msgstr "إخفاء كامل لجهاز التحكم عن بعد"
 
 #~ msgid "Apid"
 #~ msgstr "معرف مزود الخدمة"

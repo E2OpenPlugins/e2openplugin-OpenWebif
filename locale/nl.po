@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 21:02+0100\n"
+"POT-Creation-Date: 2022-05-10 09:36+0000\n"
 "PO-Revision-Date: 2021-12-23 21:59+0100\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/e2openplugin-"
@@ -49,6 +49,10 @@ msgstr "%s %s is vergrendeld."
 #, python-format
 msgid "%s / %s"
 msgstr "%s / %s"
+
+#, python-format
+msgid "%s Style"
+msgstr ""
 
 #, python-format
 msgid "%s free / %s total"
@@ -167,17 +171,14 @@ msgstr "Antwoord is NEE!"
 msgid "Answer is YES!"
 msgstr "Antwoord is JA!"
 
+msgid "Any"
+msgstr ""
+
 msgid "Any day"
 msgstr "Elke dag"
 
 msgid "Any service/recording"
 msgstr "Elke zender/opname"
-
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
-msgstr ""
 
 msgid "April"
 msgstr "april"
@@ -211,6 +212,15 @@ msgstr "Vraag, default Nee"
 
 msgid "Ask, default Yes"
 msgstr "Vraag, default Ja"
+
+msgid "Audio Encoding"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
+
+msgid "Audio Track"
+msgstr ""
 
 msgid "August"
 msgstr "augustus"
@@ -253,6 +263,9 @@ msgstr "Begin van de tijdspanne 'Na afloop'"
 
 msgid "Beginning of timespan"
 msgstr "Begintijd"
+
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Bookmark"
 msgstr "Markering"
@@ -334,6 +347,9 @@ msgstr "Box Uptime"
 msgid "Brand"
 msgstr "Merk"
 
+msgid "Build"
+msgstr ""
+
 msgid "Cable"
 msgstr "Kabel"
 
@@ -403,6 +419,9 @@ msgstr "Huidige"
 msgid "Current Event"
 msgstr "Huidig programma"
 
+msgid "Currently recording"
+msgstr ""
+
 msgid "Custom box name"
 msgstr "Alternatieve naam voor de box"
 
@@ -464,6 +483,9 @@ msgstr "Verwijderd"
 msgid "Description"
 msgstr "Beschrijving"
 
+msgid "Device"
+msgstr ""
+
 msgid "Disable"
 msgstr "Déactiveer"
 
@@ -511,9 +533,6 @@ msgstr "E"
 
 msgid "EPG"
 msgstr "EPG"
-
-msgid "EPG Search"
-msgstr "EPG zoeken"
 
 msgid "EPG encoding"
 msgstr "EPG codering"
@@ -586,9 +605,6 @@ msgstr "Einde van de tijdspanne 'Na afloop'"
 msgid "End of timespan"
 msgstr "Eindtijd"
 
-msgid "Enter Text"
-msgstr "Tekst invoeren"
-
 msgid "Enter a name for the new bouquet"
 msgstr "Geef de neiuwe naam van de lijst"
 
@@ -600,6 +616,9 @@ msgstr "Geef deze AutoTimer een naam"
 
 msgid "Enter path"
 msgstr "Geef het path in"
+
+msgid "Enter text"
+msgstr ""
 
 msgid "Enter the text to find in the EPG"
 msgstr "Voer de tekst in die u in de EPG zoekt"
@@ -680,6 +699,9 @@ msgstr "Vrij"
 msgid "Free Memory"
 msgstr "Vrij geheugen"
 
+msgid "Free space"
+msgstr ""
+
 msgid "Fri"
 msgstr "vr"
 
@@ -722,11 +744,17 @@ msgstr "HTTPS poort"
 msgid "Hard disk model"
 msgstr "Model harde schijf"
 
+msgid "Hardware"
+msgstr ""
+
 msgid "Hide full remote"
 msgstr "Verberg volledige AB"
 
 msgid "High Resolution"
 msgstr "Hoge resolutie"
+
+msgid "Hold to drag"
+msgstr ""
 
 msgid "Hour"
 msgstr "Uur"
@@ -767,6 +795,9 @@ msgstr "Oneindige directe opname gestart"
 msgid "Info"
 msgstr "Info"
 
+msgid "Information"
+msgstr ""
+
 msgid "Inherit AutoTimer"
 msgstr "Erf autotimer"
 
@@ -784,6 +815,9 @@ msgstr "Directe opname voor de huidige gebeurtenis gestart"
 
 msgid "Internal error!"
 msgstr "Interne fout!"
+
+msgid "Internal flash memory"
+msgstr ""
 
 #, python-format
 msgid "Interval (in %s)"
@@ -819,11 +853,11 @@ msgstr "LCD"
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux instellingen"
 
-msgid "LICENSE"
-msgstr "Licentie"
-
 msgid "Label series"
 msgstr "Label series"
+
+msgid "License"
+msgstr ""
 
 msgid "Link speed"
 msgstr "Link Snelheid"
@@ -916,6 +950,9 @@ msgstr "Meer"
 msgid "More details"
 msgstr "Meer details"
 
+msgid "Mount point"
+msgstr ""
+
 msgid "Movie database for EPG"
 msgstr "Moviedatabase t.b.v de EPG"
 
@@ -933,6 +970,9 @@ msgstr "Multi bouquet is niet ingeschakeld!"
 
 msgid "MultiEPG"
 msgstr "Multi-EPG"
+
+msgid "Mute/Unmute"
+msgstr ""
 
 msgid "NCam Webinterface"
 msgstr "NCam Webinterface"
@@ -1000,6 +1040,9 @@ msgstr "Er zijn geen overeenkomsten gevonden in de EPG"
 msgid "No matching Timer found"
 msgstr "Geen overeenkomende Timer gevonden"
 
+msgid "No network connection"
+msgstr ""
+
 msgid "No new servicename given!"
 msgstr "Geen nieuwe zendernaam ingevoerd!"
 
@@ -1042,6 +1085,9 @@ msgstr "Nu/Straks Kolommen"
 msgid "Number of recordings remaining"
 msgstr "Aantal overgebleven opnames"
 
+msgid "ONID"
+msgstr ""
+
 msgid "OSCam Webinterface"
 msgstr "OSCam Webinterface"
 
@@ -1065,9 +1111,6 @@ msgstr "Op elke zender"
 
 msgid "On same service"
 msgstr "Op dezelfde zender"
-
-msgid "ONID"
-msgstr ""
 
 msgid "Only match between dates"
 msgstr "Beperk tot bepaalde data"
@@ -1108,6 +1151,12 @@ msgstr "Orbitale-positie (graden)"
 msgid "Override found with alternative service"
 msgstr "Overschrijf met alternatieve zender"
 
+msgid "PCR PID"
+msgstr ""
+
+msgid "PMT PID"
+msgstr ""
+
 msgid "Packages"
 msgstr "Pakketten"
 
@@ -1119,9 +1168,6 @@ msgstr "Kinderslot Pin is niet geactiveerd."
 
 msgid "Parse AutoTimer"
 msgstr "Parse AutoTimer"
-
-msgid "PCR PID"
-msgstr ""
 
 msgid "PiP"
 msgstr "Pip"
@@ -1146,9 +1192,6 @@ msgstr "Afspeellijst"
 
 msgid "Playlist format"
 msgstr "Afspeellijst formaat"
-
-msgid "PMT PID"
-msgstr ""
 
 msgid "Power Control"
 msgstr "In/uitschakelen"
@@ -1255,6 +1298,9 @@ msgstr "SLAAC"
 msgid "SNR"
 msgstr "SNR"
 
+msgid "SRef"
+msgstr ""
+
 msgid "Sa"
 msgstr "za"
 
@@ -1285,6 +1331,9 @@ msgstr "Zoek"
 msgid "Search CSFD"
 msgstr "Zoek CSFD (filmdatabase)"
 
+msgid "Search EPG"
+msgstr ""
+
 msgid "Search IMDb"
 msgstr "Zoek IMDb"
 
@@ -1308,6 +1357,9 @@ msgstr "Kies het IPK bestand om te uploaden"
 
 msgid "Select..."
 msgstr "Kies..."
+
+msgid "Send"
+msgstr ""
 
 msgid "Send Message"
 msgstr "Stuur een bericht"
@@ -1353,6 +1405,9 @@ msgstr "Zender %s is verwijderd uit het bouquet %s."
 msgid "Service %s removed."
 msgstr "Zender %s is verwijderd."
 
+msgid "Service ID (SID)"
+msgstr ""
+
 msgid "Service can not be moved."
 msgstr "De zender kan niet worden verplaatst."
 
@@ -1367,6 +1422,9 @@ msgstr "Zender met succes hernoemd."
 
 msgid "Services"
 msgstr "Zenders"
+
+msgid "Serving stream"
+msgstr ""
 
 msgid "Set maximum duration"
 msgstr "Stel de maximale duur in"
@@ -1413,7 +1471,13 @@ msgstr "Toon het zendertype in de zenderlijst"
 msgid "Shutdown"
 msgstr "Afsluiten"
 
-msgid "Service ID (SID)"
+msgid "Signal Power (AGC)"
+msgstr ""
+
+msgid "Signal Quality (SNR DB)"
+msgstr ""
+
+msgid "Signal Quality (SNR)"
 msgstr ""
 
 msgid "Simulate"
@@ -1441,6 +1505,9 @@ msgstr "Slaaptimer is ingeschakeld"
 msgid "Sleeptimer set to %d minutes"
 msgstr "Slaaptimer ingesteld op %d minuten"
 
+msgid "Small remote layout"
+msgstr ""
+
 msgid "Software"
 msgstr "Software"
 
@@ -1453,14 +1520,8 @@ msgstr "Sorteer"
 msgid "Spinner"
 msgstr "Spinner"
 
-msgid "SRef"
-msgstr ""
-
 msgid "Standby"
 msgstr "Standby"
-
-msgid "Standby Toggle"
-msgstr "Wissel standby"
 
 msgid "Start"
 msgstr "Start"
@@ -1476,6 +1537,9 @@ msgstr "BEGIN MET TYPEN"
 
 msgid "State"
 msgstr "Status"
+
+msgid "Storage"
+msgstr ""
 
 msgid "Stream"
 msgstr "Stream"
@@ -1509,6 +1573,9 @@ msgstr "Systeem OE"
 
 msgid "TB"
 msgstr "TB"
+
+msgid "TSID"
+msgstr ""
 
 msgid "TV"
 msgstr "Tv"
@@ -1615,6 +1682,9 @@ msgstr "Timer '%s' niet opgeslagen tijdens het Conflict"
 msgid "Timer Added"
 msgstr "Timer toegevoegd"
 
+msgid "Timer Conflict"
+msgstr ""
+
 msgid "Timer added"
 msgstr "Timer toegevoegd"
 
@@ -1642,6 +1712,9 @@ msgstr "Niet voor"
 msgid "Today"
 msgstr "Vandaag"
 
+msgid "Toggle Standby"
+msgstr ""
+
 msgid "Transcode"
 msgstr "Transcoderen"
 
@@ -1650,9 +1723,6 @@ msgstr "Vertaling in het Spaans"
 
 msgid "Try guessing"
 msgstr "Probeer te raden"
-
-msgid "TSID"
-msgstr ""
 
 msgid "Tu"
 msgstr "di"
@@ -1663,23 +1733,11 @@ msgstr "di"
 msgid "Tuesday"
 msgstr "dinsdag"
 
-msgid "Bit Error Rate (BER)"
-msgstr ""
-
 msgid "Tuner Number"
 msgstr "Tuner nummer"
 
 msgid "Tuner Signal"
 msgstr "Tuner signaal"
-
-msgid "Signal Power (AGC)"
-msgstr ""
-
-msgid "Signal Quality (SNR)"
-msgstr ""
-
-msgid "Signal Quality (SNR DB)"
-msgstr ""
 
 msgid "Tuner Type"
 msgstr "Tuner type"
@@ -1746,9 +1804,6 @@ msgstr "Gebruik een modern ontwerp"
 msgid "Use modern interface"
 msgstr "Gebruik de nieuwe vormgeving"
 
-msgid "Use old remote"
-msgstr "Gebruik oude AB"
-
 msgid "VPS"
 msgstr "VPS"
 
@@ -1764,7 +1819,7 @@ msgstr "Video"
 msgid "Video Height"
 msgstr "Beeld hoogte"
 
-msgid "Widescreen"
+msgid "Video PID (VPID)"
 msgstr ""
 
 msgid "Video Width"
@@ -1778,9 +1833,6 @@ msgstr "Volume"
 
 msgid "Volume Control"
 msgstr "Volume controle"
-
-msgid "Video PID (VPID)"
-msgstr ""
 
 msgid "W"
 msgstr "W"
@@ -1814,6 +1866,9 @@ msgstr "Wekelijks (maandag)"
 
 msgid "Weekly (Sunday)"
 msgstr "Wekelijks (zondag)"
+
+msgid "Widescreen"
+msgstr ""
 
 msgid "Without auth only local access is allowed!"
 msgstr "Zonder authentificatie is alléén lokale toegang mogelijk!"
@@ -1952,6 +2007,9 @@ msgstr "r/o"
 msgid "r/w"
 msgstr "r/w"
 
+msgid "receiver"
+msgstr ""
+
 msgid "record"
 msgstr "neem op"
 
@@ -2036,6 +2094,21 @@ msgstr "verkeerd bestandstype"
 
 msgid "zap"
 msgstr "zap"
+
+#~ msgid "EPG Search"
+#~ msgstr "EPG zoeken"
+
+#~ msgid "Enter Text"
+#~ msgstr "Tekst invoeren"
+
+#~ msgid "LICENSE"
+#~ msgstr "Licentie"
+
+#~ msgid "Standby Toggle"
+#~ msgstr "Wissel standby"
+
+#~ msgid "Use old remote"
+#~ msgstr "Gebruik oude AB"
 
 #~ msgid "Apid"
 #~ msgstr "Apid"

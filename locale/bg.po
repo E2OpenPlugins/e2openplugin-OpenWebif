@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 21:02+0100\n"
+"POT-Creation-Date: 2022-05-10 09:36+0000\n"
 "PO-Revision-Date: 2021-12-02 19:55+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/e2openplugin-"
@@ -49,6 +49,10 @@ msgstr "%s %s е заключен."
 
 #, python-format
 msgid "%s / %s"
+msgstr ""
+
+#, python-format
+msgid "%s Style"
 msgstr ""
 
 #, python-format
@@ -170,17 +174,14 @@ msgstr "Отговора е НЕ!"
 msgid "Answer is YES!"
 msgstr "Отговора е ДА!"
 
+msgid "Any"
+msgstr ""
+
 msgid "Any day"
 msgstr ""
 
 msgid "Any service/recording"
 msgstr "Който и да е канал/запис"
-
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
-msgstr ""
 
 msgid "April"
 msgstr "Април"
@@ -215,6 +216,15 @@ msgstr "Питай, по подразбиране - Не"
 
 msgid "Ask, default Yes"
 msgstr "Питай, по подразбиране - Да"
+
+msgid "Audio Encoding"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
+
+msgid "Audio Track"
+msgstr ""
 
 msgid "August"
 msgstr "Август"
@@ -258,6 +268,9 @@ msgstr "Начало \"след предаването\" на промеждут
 
 msgid "Beginning of timespan"
 msgstr "Начало на промеждутъка от време"
+
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Bookmark"
 msgstr "Отметка"
@@ -339,6 +352,9 @@ msgstr "Непрекъсната работа на приемника"
 msgid "Brand"
 msgstr "Марка"
 
+msgid "Build"
+msgstr ""
+
 msgid "Cable"
 msgstr "Кабелен"
 
@@ -411,6 +427,9 @@ msgstr "Текущ"
 msgid "Current Event"
 msgstr "Текущо Предаване"
 
+msgid "Currently recording"
+msgstr ""
+
 msgid "Custom box name"
 msgstr "Потребителско име на приемника"
 
@@ -472,6 +491,9 @@ msgstr "Изтрит"
 msgid "Description"
 msgstr "Описание"
 
+msgid "Device"
+msgstr ""
+
 #, fuzzy
 msgid "Disable"
 msgstr "изключен"
@@ -520,9 +542,6 @@ msgstr "E"
 
 msgid "EPG"
 msgstr "EPG"
-
-msgid "EPG Search"
-msgstr "Търсене в EPG"
 
 msgid "EPG encoding"
 msgstr "EPG Кодировка"
@@ -598,10 +617,6 @@ msgstr "Край \"след предаването\" на промеждутък
 msgid "End of timespan"
 msgstr "Край на промеждутъка от време"
 
-#, fuzzy
-msgid "Enter Text"
-msgstr "Тип на Тунера"
-
 msgid "Enter a name for the new bouquet"
 msgstr "Въведете ново име на букета"
 
@@ -613,6 +628,9 @@ msgid "Enter a name for this AutoTimer"
 msgstr "Въведете ново име на маркера"
 
 msgid "Enter path"
+msgstr ""
+
+msgid "Enter text"
 msgstr ""
 
 msgid "Enter the text to find in the EPG"
@@ -695,6 +713,9 @@ msgstr "Свободно"
 msgid "Free Memory"
 msgstr "Свободна Памет"
 
+msgid "Free space"
+msgstr ""
+
 msgid "Fri"
 msgstr "Пет"
 
@@ -738,11 +759,17 @@ msgstr "HTTPS Порт"
 msgid "Hard disk model"
 msgstr "Модел на твърдия диск"
 
+msgid "Hardware"
+msgstr ""
+
 msgid "Hide full remote"
 msgstr "Скрий пълното дистанционно"
 
 msgid "High Resolution"
 msgstr "Висока Резолюция"
+
+msgid "Hold to drag"
+msgstr ""
 
 msgid "Hour"
 msgstr "Час"
@@ -785,6 +812,9 @@ msgstr "Безкраен Незабавен Запис започна"
 msgid "Info"
 msgstr "Информация"
 
+msgid "Information"
+msgstr ""
+
 msgid "Inherit AutoTimer"
 msgstr "Наследен Автотаймер"
 
@@ -802,6 +832,9 @@ msgstr "Незабавен запис за текущото предаване �
 
 msgid "Internal error!"
 msgstr "Вътрешна грешка!"
+
+msgid "Internal flash memory"
+msgstr ""
 
 #, fuzzy, python-format
 msgid "Interval (in %s)"
@@ -837,11 +870,11 @@ msgstr "LCD"
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux Настройки"
 
-msgid "LICENSE"
-msgstr "ЛИЦЕНЗ"
-
 msgid "Label series"
 msgstr "Серия етикети"
+
+msgid "License"
+msgstr ""
 
 msgid "Link speed"
 msgstr "Скорост на Връзката"
@@ -936,6 +969,9 @@ msgstr "Повече"
 msgid "More details"
 msgstr "Покажи детайли"
 
+msgid "Mount point"
+msgstr ""
+
 msgid "Movie database for EPG"
 msgstr "Филмова база данни за EPG"
 
@@ -953,6 +989,9 @@ msgstr "Мулти-Букет не е включен!"
 
 msgid "MultiEPG"
 msgstr "Мулти EPG"
+
+msgid "Mute/Unmute"
+msgstr ""
 
 msgid "NCam Webinterface"
 msgstr "NCam Уеб-интерфейс"
@@ -1023,6 +1062,9 @@ msgstr "Не е открит съответстващ таймер"
 msgid "No matching Timer found"
 msgstr "Не е открит съответстващ таймер"
 
+msgid "No network connection"
+msgstr ""
+
 msgid "No new servicename given!"
 msgstr "Не е зададено ново име на канала!"
 
@@ -1065,6 +1107,9 @@ msgstr ""
 msgid "Number of recordings remaining"
 msgstr "Количество оставащи записи"
 
+msgid "ONID"
+msgstr ""
+
 msgid "OSCam Webinterface"
 msgstr "OSCam Уеб-интерфейс"
 
@@ -1088,9 +1133,6 @@ msgstr "За който и да е канал"
 
 msgid "On same service"
 msgstr "За този канал"
-
-msgid "ONID"
-msgstr ""
 
 msgid "Only match between dates"
 msgstr "Ограничение до предаванията на определени дати"
@@ -1132,6 +1174,12 @@ msgstr "Орбитална Позиция"
 msgid "Override found with alternative service"
 msgstr "Замени открития в алтернативен канал"
 
+msgid "PCR PID"
+msgstr ""
+
+msgid "PMT PID"
+msgstr ""
+
 msgid "Packages"
 msgstr "Пакети"
 
@@ -1143,9 +1191,6 @@ msgstr "Родителския контрол не е активиран."
 
 msgid "Parse AutoTimer"
 msgstr "Търсене на съвпадащ Автотаймер"
-
-msgid "PCR PID"
-msgstr ""
 
 msgid "PiP"
 msgstr "PiP"
@@ -1170,9 +1215,6 @@ msgstr "Плейлист"
 
 msgid "Playlist format"
 msgstr "Плейлист Формат"
-
-msgid "PMT PID"
-msgstr ""
 
 msgid "Power Control"
 msgstr "Управление на Захранването"
@@ -1283,6 +1325,9 @@ msgstr "SLAAC"
 msgid "SNR"
 msgstr "SNR"
 
+msgid "SRef"
+msgstr ""
+
 msgid "Sa"
 msgstr "Сб"
 
@@ -1314,6 +1359,9 @@ msgstr "Търсене"
 msgid "Search CSFD"
 msgstr "Търсене в IMDb"
 
+msgid "Search EPG"
+msgstr ""
+
 msgid "Search IMDb"
 msgstr "Търсене в IMDb"
 
@@ -1339,6 +1387,9 @@ msgid "Select IPK file for upload"
 msgstr "Изберете IPK файл за качване"
 
 msgid "Select..."
+msgstr ""
+
+msgid "Send"
 msgstr ""
 
 msgid "Send Message"
@@ -1385,6 +1436,9 @@ msgstr "Канал %s е изтрит от букет %s."
 msgid "Service %s removed."
 msgstr "Канал %s е изтрит."
 
+msgid "Service ID (SID)"
+msgstr ""
+
 msgid "Service can not be moved."
 msgstr "Канала не може да се премести."
 
@@ -1399,6 +1453,9 @@ msgstr "Канала бе переименуван успешно."
 
 msgid "Services"
 msgstr "Канали"
+
+msgid "Serving stream"
+msgstr ""
 
 msgid "Set maximum duration"
 msgstr "Задайте максимална продължителност"
@@ -1448,7 +1505,13 @@ msgstr "Покажи Пикон в списъка с канали"
 msgid "Shutdown"
 msgstr "Изключване"
 
-msgid "Service ID (SID)"
+msgid "Signal Power (AGC)"
+msgstr ""
+
+msgid "Signal Quality (SNR DB)"
+msgstr ""
+
+msgid "Signal Quality (SNR)"
 msgstr ""
 
 msgid "Simulate"
@@ -1476,6 +1539,9 @@ msgstr "Таймера за сън е включен"
 msgid "Sleeptimer set to %d minutes"
 msgstr "Таймера за сън е настроен на %d минути"
 
+msgid "Small remote layout"
+msgstr ""
+
 msgid "Software"
 msgstr "Софтуер"
 
@@ -1488,14 +1554,8 @@ msgstr ""
 msgid "Spinner"
 msgstr "Спинър"
 
-msgid "SRef"
-msgstr ""
-
 msgid "Standby"
 msgstr "Готовност"
-
-msgid "Standby Toggle"
-msgstr "Режим Готовност"
 
 msgid "Start"
 msgstr "Старт"
@@ -1510,6 +1570,9 @@ msgid "Start typing..."
 msgstr ""
 
 msgid "State"
+msgstr ""
+
+msgid "Storage"
 msgstr ""
 
 msgid "Stream"
@@ -1546,6 +1609,9 @@ msgstr "Система OE"
 
 msgid "TB"
 msgstr "ТБ"
+
+msgid "TSID"
+msgstr ""
 
 msgid "TV"
 msgstr "ТВ"
@@ -1653,6 +1719,9 @@ msgstr "Таймер '%s' не може да се запише поради ко
 msgid "Timer Added"
 msgstr "Таймера е добавен"
 
+msgid "Timer Conflict"
+msgstr ""
+
 msgid "Timer added"
 msgstr "Таймера е добавен"
 
@@ -1680,6 +1749,9 @@ msgstr "Не преди"
 msgid "Today"
 msgstr ""
 
+msgid "Toggle Standby"
+msgstr ""
+
 msgid "Transcode"
 msgstr "Транскодиране"
 
@@ -1688,9 +1760,6 @@ msgstr "Перевод на Испански"
 
 msgid "Try guessing"
 msgstr "Вземете предвид съществуващ таймер"
-
-msgid "TSID"
-msgstr ""
 
 msgid "Tu"
 msgstr "Вт"
@@ -1701,23 +1770,11 @@ msgstr "Вто"
 msgid "Tuesday"
 msgstr "Вторник"
 
-msgid "Bit Error Rate (BER)"
-msgstr ""
-
 msgid "Tuner Number"
 msgstr "Номер на тунера"
 
 msgid "Tuner Signal"
 msgstr "Тунер Сигнал"
-
-msgid "Signal Power (AGC)"
-msgstr ""
-
-msgid "Signal Quality (SNR)"
-msgstr ""
-
-msgid "Signal Quality (SNR DB)"
-msgstr ""
 
 msgid "Tuner Type"
 msgstr "Тип на Тунера"
@@ -1787,10 +1844,6 @@ msgstr "Използвай новия дизайн"
 msgid "Use modern interface"
 msgstr "Използвай новия дизайн"
 
-#, fuzzy
-msgid "Use old remote"
-msgstr "Скрий пълното дистанционно"
-
 msgid "VPS"
 msgstr "VPS"
 
@@ -1806,7 +1859,7 @@ msgstr "Видео"
 msgid "Video Height"
 msgstr "Видео Височина"
 
-msgid "Widescreen"
+msgid "Video PID (VPID)"
 msgstr ""
 
 msgid "Video Width"
@@ -1820,9 +1873,6 @@ msgstr "Усилване"
 
 msgid "Volume Control"
 msgstr "Контрол на Усилването"
-
-msgid "Video PID (VPID)"
-msgstr ""
 
 msgid "W"
 msgstr "W"
@@ -1857,6 +1907,9 @@ msgstr "Седмично (Понеделник)"
 
 msgid "Weekly (Sunday)"
 msgstr "Седмично (Неделя)"
+
+msgid "Widescreen"
+msgstr ""
 
 msgid "Without auth only local access is allowed!"
 msgstr "Без удостоверяване е разрешен само локален достъп!"
@@ -1998,6 +2051,9 @@ msgstr "r/o"
 msgid "r/w"
 msgstr "r/w"
 
+msgid "receiver"
+msgstr ""
+
 msgid "record"
 msgstr "запис"
 
@@ -2085,6 +2141,23 @@ msgstr "грешен файл тип"
 
 msgid "zap"
 msgstr "превключи"
+
+#~ msgid "EPG Search"
+#~ msgstr "Търсене в EPG"
+
+#, fuzzy
+#~ msgid "Enter Text"
+#~ msgstr "Тип на Тунера"
+
+#~ msgid "LICENSE"
+#~ msgstr "ЛИЦЕНЗ"
+
+#~ msgid "Standby Toggle"
+#~ msgstr "Режим Готовност"
+
+#, fuzzy
+#~ msgid "Use old remote"
+#~ msgstr "Скрий пълното дистанционно"
 
 #~ msgid "Apid"
 #~ msgstr "Apid"

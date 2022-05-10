@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 21:02+0100\n"
+"POT-Creation-Date: 2022-05-10 09:36+0000\n"
 "PO-Revision-Date: 2021-12-02 19:57+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/e2openplugin-"
@@ -51,6 +51,10 @@ msgstr "%s %s užrakinta."
 #, python-format
 msgid "%s / %s"
 msgstr "%s / %s"
+
+#, python-format
+msgid "%s Style"
+msgstr ""
 
 #, python-format
 msgid "%s free / %s total"
@@ -169,17 +173,14 @@ msgstr "Atsakymas NE!"
 msgid "Answer is YES!"
 msgstr "Atsakymas TAIP!"
 
+msgid "Any"
+msgstr ""
+
 msgid "Any day"
 msgstr "Bet kurią dieną"
 
 msgid "Any service/recording"
 msgstr "Bet kuris kanalas/įrašymas"
-
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
-msgstr ""
 
 msgid "April"
 msgstr "balandžio"
@@ -213,6 +214,15 @@ msgstr "Klausti, numatytasis NE"
 
 msgid "Ask, default Yes"
 msgstr "Klausti, numatytasis TAIP"
+
+msgid "Audio Encoding"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
+
+msgid "Audio Track"
+msgstr ""
 
 msgid "August"
 msgstr "rugpjūčio"
@@ -255,6 +265,9 @@ msgstr "Laikotarpio 'po įvykio' pradžia"
 
 msgid "Beginning of timespan"
 msgstr "Laikotarpio pradžia"
+
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Bookmark"
 msgstr "Žymelė"
@@ -336,6 +349,9 @@ msgstr "Nepertraukiamo darbo laikas"
 msgid "Brand"
 msgstr "Prekės ženklas"
 
+msgid "Build"
+msgstr ""
+
 msgid "Cable"
 msgstr "Kabelinė"
 
@@ -405,6 +421,9 @@ msgstr "Šis"
 msgid "Current Event"
 msgstr "Dabar rodoma"
 
+msgid "Currently recording"
+msgstr ""
+
 msgid "Custom box name"
 msgstr "Savas aparato pavadinimas"
 
@@ -466,6 +485,9 @@ msgstr "Ištrinta"
 msgid "Description"
 msgstr "Aprašymas"
 
+msgid "Device"
+msgstr ""
+
 msgid "Disable"
 msgstr "Išjungti"
 
@@ -513,9 +535,6 @@ msgstr "R"
 
 msgid "EPG"
 msgstr "EPG"
-
-msgid "EPG Search"
-msgstr "EPG paieška"
 
 msgid "EPG encoding"
 msgstr "EPG koduotė"
@@ -589,10 +608,6 @@ msgstr "Laikotarpio 'po įvykio' pabaiga"
 msgid "End of timespan"
 msgstr "Laikotarpio pabaiga"
 
-#, fuzzy
-msgid "Enter Text"
-msgstr "Nurodykite kelią"
-
 msgid "Enter a name for the new bouquet"
 msgstr "Įrašykite naują bukieto pavadinimą"
 
@@ -604,6 +619,9 @@ msgstr "Įrašykite šio autolaikmačio pavadinimą"
 
 msgid "Enter path"
 msgstr "Nurodykite kelią"
+
+msgid "Enter text"
+msgstr ""
 
 msgid "Enter the text to find in the EPG"
 msgstr "Įrašykite paieškos EPG tekstą"
@@ -684,6 +702,9 @@ msgstr "Laisva"
 msgid "Free Memory"
 msgstr "Laisva atmintis"
 
+msgid "Free space"
+msgstr ""
+
 msgid "Fri"
 msgstr "Pen"
 
@@ -726,11 +747,17 @@ msgstr "HTTPS prievadas"
 msgid "Hard disk model"
 msgstr "HDD modelis"
 
+msgid "Hardware"
+msgstr ""
+
 msgid "Hide full remote"
 msgstr "Slėpti nuotolinį pultą"
 
 msgid "High Resolution"
 msgstr "Didelės raiškos"
+
+msgid "Hold to drag"
+msgstr ""
 
 msgid "Hour"
 msgstr "Valanda"
@@ -771,6 +798,9 @@ msgstr "Pradėtas neribotas neplaninis įrašymas"
 msgid "Info"
 msgstr "Informacija"
 
+msgid "Information"
+msgstr ""
+
 msgid "Inherit AutoTimer"
 msgstr "Paveldėti autolaikmatį"
 
@@ -788,6 +818,9 @@ msgstr "Pradėtas šio įvykio neplaninis įrašymas"
 
 msgid "Internal error!"
 msgstr "Vidinė klaida!"
+
+msgid "Internal flash memory"
+msgstr ""
 
 #, python-format
 msgid "Interval (in %s)"
@@ -823,11 +856,11 @@ msgstr "Skystųjų kristalų ekranas"
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux sąranka"
 
-msgid "LICENSE"
-msgstr "LICENCIJA"
-
 msgid "Label series"
 msgstr "Žymėti seriją"
+
+msgid "License"
+msgstr ""
 
 msgid "Link speed"
 msgstr "Ryšio sparta"
@@ -920,6 +953,9 @@ msgstr "Daugiau"
 msgid "More details"
 msgstr "Daugiau informacijos"
 
+msgid "Mount point"
+msgstr ""
+
 msgid "Movie database for EPG"
 msgstr "EPG filmų duomenų bazė"
 
@@ -937,6 +973,9 @@ msgstr "Perėjimas tarp bukietų neįjungtas!"
 
 msgid "MultiEPG"
 msgstr "Daugiakanalis EPG"
+
+msgid "Mute/Unmute"
+msgstr ""
 
 msgid "NCam Webinterface"
 msgstr "NCam interneto sąsaja"
@@ -1004,6 +1043,9 @@ msgstr "EPG atitikmenų nerasta"
 msgid "No matching Timer found"
 msgstr "Kriterijus atitinkančio laikmačio nerasta"
 
+msgid "No network connection"
+msgstr ""
+
 msgid "No new servicename given!"
 msgstr "Nenurodytas naujo kanalo pavadinimas!"
 
@@ -1046,6 +1088,9 @@ msgstr ""
 msgid "Number of recordings remaining"
 msgstr "Likęs įrašų kiekis"
 
+msgid "ONID"
+msgstr ""
+
 msgid "OSCam Webinterface"
 msgstr "OSCam interneto sąsaja"
 
@@ -1069,9 +1114,6 @@ msgstr "Ant bet kurio kanalo"
 
 msgid "On same service"
 msgstr "Ant to paties kanalo"
-
-msgid "ONID"
-msgstr ""
 
 msgid "Only match between dates"
 msgstr "Apriboti konkrečiomis datomis"
@@ -1112,6 +1154,12 @@ msgstr "Padėtis orbitoje"
 msgid "Override found with alternative service"
 msgstr "Nepaisyti rastų alternatyvių kanalų"
 
+msgid "PCR PID"
+msgstr ""
+
+msgid "PMT PID"
+msgstr ""
+
 msgid "Packages"
 msgstr "Paketai"
 
@@ -1123,9 +1171,6 @@ msgstr "Tėvų kontrolė neįjungta."
 
 msgid "Parse AutoTimer"
 msgstr "Analizuoti autolaikmatį"
-
-msgid "PCR PID"
-msgstr ""
 
 msgid "PiP"
 msgstr "PiP"
@@ -1150,9 +1195,6 @@ msgstr "Grojaraštis"
 
 msgid "Playlist format"
 msgstr "Grojaraščio formatas"
-
-msgid "PMT PID"
-msgstr ""
 
 msgid "Power Control"
 msgstr "Maitinimo valdymas"
@@ -1260,6 +1302,9 @@ msgstr "SLAAC"
 msgid "SNR"
 msgstr "SNR"
 
+msgid "SRef"
+msgstr ""
+
 msgid "Sa"
 msgstr "Št"
 
@@ -1290,6 +1335,9 @@ msgstr "Paieška"
 msgid "Search CSFD"
 msgstr "Ieškoti po CSFD"
 
+msgid "Search EPG"
+msgstr ""
+
 msgid "Search IMDb"
 msgstr "Ieškoti po IMDb"
 
@@ -1313,6 +1361,9 @@ msgstr "Pasirinkite IPK failą įkėlimui"
 
 msgid "Select..."
 msgstr "Pasirinkite...."
+
+msgid "Send"
+msgstr ""
 
 msgid "Send Message"
 msgstr "Siųsti žinutę"
@@ -1358,6 +1409,9 @@ msgstr "Kanalas %s iš bukieto %s pašalintas."
 msgid "Service %s removed."
 msgstr "Kanalas %s pašalintas."
 
+msgid "Service ID (SID)"
+msgstr ""
+
 msgid "Service can not be moved."
 msgstr "Kanalas negali būti perkeltas."
 
@@ -1372,6 +1426,9 @@ msgstr "Kanalas pervadintas sėkmingai."
 
 msgid "Services"
 msgstr "Kanalai"
+
+msgid "Serving stream"
+msgstr ""
 
 msgid "Set maximum duration"
 msgstr "Nustatyti didžiausią trukmę"
@@ -1419,7 +1476,13 @@ msgstr "Kanalų sąraše rodyti kanalo tipą"
 msgid "Shutdown"
 msgstr "Išjungti"
 
-msgid "Service ID (SID)"
+msgid "Signal Power (AGC)"
+msgstr ""
+
+msgid "Signal Quality (SNR DB)"
+msgstr ""
+
+msgid "Signal Quality (SNR)"
 msgstr ""
 
 msgid "Simulate"
@@ -1447,6 +1510,9 @@ msgstr "Budėjimo laikmatis įjungtas"
 msgid "Sleeptimer set to %d minutes"
 msgstr "Budėjimo laikmatis nustatytas %d minučių"
 
+msgid "Small remote layout"
+msgstr ""
+
 msgid "Software"
 msgstr "Programinė įranga"
 
@@ -1459,14 +1525,8 @@ msgstr "Rūšiuoti"
 msgid "Spinner"
 msgstr "Suktukas"
 
-msgid "SRef"
-msgstr ""
-
 msgid "Standby"
 msgstr "Budėjimo režimas"
-
-msgid "Standby Toggle"
-msgstr "Į budėjimo būseną"
 
 msgid "Start"
 msgstr "Pradžia"
@@ -1482,6 +1542,9 @@ msgstr "Pradėtkite rašyti..."
 
 msgid "State"
 msgstr "Būklė"
+
+msgid "Storage"
+msgstr ""
 
 msgid "Stream"
 msgstr "Srautas"
@@ -1515,6 +1578,9 @@ msgstr "Sistemos OE"
 
 msgid "TB"
 msgstr "TB"
+
+msgid "TSID"
+msgstr ""
 
 msgid "TV"
 msgstr "TV"
@@ -1621,6 +1687,9 @@ msgstr "Laikmatis '%s' neišsaugotas dėl konflikto"
 msgid "Timer Added"
 msgstr "Laikmatis įtrauktas"
 
+msgid "Timer Conflict"
+msgstr ""
+
 msgid "Timer added"
 msgstr "Laikmatis įtrauktas"
 
@@ -1648,6 +1717,9 @@ msgstr "Ne anksčiau"
 msgid "Today"
 msgstr "Šiandien"
 
+msgid "Toggle Standby"
+msgstr ""
+
 msgid "Transcode"
 msgstr "Perkoduoti"
 
@@ -1656,9 +1728,6 @@ msgstr "Vertimas į ispanų kalbą"
 
 msgid "Try guessing"
 msgstr "Bandyti atspėti"
-
-msgid "TSID"
-msgstr ""
 
 msgid "Tu"
 msgstr "An"
@@ -1669,23 +1738,11 @@ msgstr "Ant"
 msgid "Tuesday"
 msgstr "antradienis"
 
-msgid "Bit Error Rate (BER)"
-msgstr ""
-
 msgid "Tuner Number"
 msgstr "Imtuvų skaičių"
 
 msgid "Tuner Signal"
 msgstr "Imtuvo signalas"
-
-msgid "Signal Power (AGC)"
-msgstr ""
-
-msgid "Signal Quality (SNR)"
-msgstr ""
-
-msgid "Signal Quality (SNR DB)"
-msgstr ""
 
 msgid "Tuner Type"
 msgstr "Imtuvo tipas"
@@ -1752,10 +1809,6 @@ msgstr "Naudoti naują išvaizdą"
 msgid "Use modern interface"
 msgstr "Naudoti naują išvaizdą"
 
-#, fuzzy
-msgid "Use old remote"
-msgstr "Slėpti nuotolinį pultą"
-
 msgid "VPS"
 msgstr "VPS"
 
@@ -1771,7 +1824,7 @@ msgstr "Vaizdo įrašai"
 msgid "Video Height"
 msgstr "Vaizdo aukštis"
 
-msgid "Widescreen"
+msgid "Video PID (VPID)"
 msgstr ""
 
 msgid "Video Width"
@@ -1785,9 +1838,6 @@ msgstr "Garsas"
 
 msgid "Volume Control"
 msgstr "Garso valdymas"
-
-msgid "Video PID (VPID)"
-msgstr ""
 
 msgid "W"
 msgstr "V"
@@ -1821,6 +1871,9 @@ msgstr "Kas savaitę (pirmadienis)"
 
 msgid "Weekly (Sunday)"
 msgstr "Kas savaitę (sekmadienis)"
+
+msgid "Widescreen"
+msgstr ""
 
 msgid "Without auth only local access is allowed!"
 msgstr "Be autentikavimo leidžiamas tik vietinis prisijungimas!"
@@ -1958,6 +2011,9 @@ msgstr "tik skaityti"
 msgid "r/w"
 msgstr "skaityti/rašyti"
 
+msgid "receiver"
+msgstr ""
+
 msgid "record"
 msgstr "įrašas"
 
@@ -2042,6 +2098,23 @@ msgstr "netinkamas failo tipas"
 
 msgid "zap"
 msgstr "perjungti"
+
+#~ msgid "EPG Search"
+#~ msgstr "EPG paieška"
+
+#, fuzzy
+#~ msgid "Enter Text"
+#~ msgstr "Nurodykite kelią"
+
+#~ msgid "LICENSE"
+#~ msgstr "LICENCIJA"
+
+#~ msgid "Standby Toggle"
+#~ msgstr "Į budėjimo būseną"
+
+#, fuzzy
+#~ msgid "Use old remote"
+#~ msgstr "Slėpti nuotolinį pultą"
 
 #~ msgid "Apid"
 #~ msgstr "ApId"

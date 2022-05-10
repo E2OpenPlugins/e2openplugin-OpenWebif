@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 21:02+0100\n"
+"POT-Creation-Date: 2022-05-10 09:36+0000\n"
 "PO-Revision-Date: 2021-12-02 19:57+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/e2openplugin-"
@@ -48,6 +48,10 @@ msgstr "%s %s zárolva van."
 
 #, python-format
 msgid "%s / %s"
+msgstr ""
+
+#, python-format
+msgid "%s Style"
 msgstr ""
 
 #, python-format
@@ -169,17 +173,14 @@ msgstr "A válasz NEM!"
 msgid "Answer is YES!"
 msgstr "A válasz IGEN!"
 
+msgid "Any"
+msgstr ""
+
 msgid "Any day"
 msgstr ""
 
 msgid "Any service/recording"
 msgstr "Bármely szolgáltatás/felvétel"
-
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
-msgstr ""
 
 msgid "April"
 msgstr "Április"
@@ -214,6 +215,15 @@ msgstr "Kérdezze, alapértelmezetten Nem"
 
 msgid "Ask, default Yes"
 msgstr "Kérdezze, alapértelmezetten Igen"
+
+msgid "Audio Encoding"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
+
+msgid "Audio Track"
+msgstr ""
 
 msgid "August"
 msgstr "Augusztus"
@@ -257,6 +267,9 @@ msgstr "Az \"esemény után\" időszak kezdete"
 
 msgid "Beginning of timespan"
 msgstr "Az időszak kezdete"
+
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Bookmark"
 msgstr "Könyvjelző"
@@ -338,6 +351,9 @@ msgstr "Box üzemidő"
 msgid "Brand"
 msgstr "Márka"
 
+msgid "Build"
+msgstr ""
+
 msgid "Cable"
 msgstr "Kábel"
 
@@ -407,6 +423,9 @@ msgstr "Jelenlegi"
 msgid "Current Event"
 msgstr "Aktuális esemény"
 
+msgid "Currently recording"
+msgstr ""
+
 msgid "Custom box name"
 msgstr "Egyéni box név"
 
@@ -468,6 +487,9 @@ msgstr "Törölve"
 msgid "Description"
 msgstr "Leírás"
 
+msgid "Device"
+msgstr ""
+
 #, fuzzy
 msgid "Disable"
 msgstr "leiltva"
@@ -516,9 +538,6 @@ msgstr "E"
 
 msgid "EPG"
 msgstr "EPG"
-
-msgid "EPG Search"
-msgstr "Epg keresés"
 
 msgid "EPG encoding"
 msgstr "EPG kódolás"
@@ -595,10 +614,6 @@ msgstr "Az \"esemény utáni\" időszak vége"
 msgid "End of timespan"
 msgstr "Időszak vége"
 
-#, fuzzy
-msgid "Enter Text"
-msgstr "Tuner típusa"
-
 msgid "Enter a name for the new bouquet"
 msgstr "Új név beírása a listához"
 
@@ -610,6 +625,9 @@ msgid "Enter a name for this AutoTimer"
 msgstr "Új név beírása a markerhez"
 
 msgid "Enter path"
+msgstr ""
+
+msgid "Enter text"
 msgstr ""
 
 msgid "Enter the text to find in the EPG"
@@ -692,6 +710,9 @@ msgstr "Szabad"
 msgid "Free Memory"
 msgstr "Szabad memoria"
 
+msgid "Free space"
+msgstr ""
+
 msgid "Fri"
 msgstr "Péntek"
 
@@ -734,11 +755,17 @@ msgstr "HTTPS port"
 msgid "Hard disk model"
 msgstr "Merevlemez modell"
 
+msgid "Hardware"
+msgstr ""
+
 msgid "Hide full remote"
 msgstr "Teljes táviránytó elrejtése"
 
 msgid "High Resolution"
 msgstr "Nagy felbontású"
+
+msgid "Hold to drag"
+msgstr ""
 
 msgid "Hour"
 msgstr "Óra"
@@ -779,6 +806,9 @@ msgstr "Végtelen azonnali felvétel elkezdődött"
 msgid "Info"
 msgstr "Infó"
 
+msgid "Information"
+msgstr ""
+
 msgid "Inherit AutoTimer"
 msgstr "Örökölt Automata időzítő"
 
@@ -796,6 +826,9 @@ msgstr "Az aktuális esemény azonnali felvétele megkezdődött"
 
 msgid "Internal error!"
 msgstr "Belső hiba!"
+
+msgid "Internal flash memory"
+msgstr ""
 
 #, python-format
 msgid "Interval (in %s)"
@@ -831,11 +864,11 @@ msgstr "LCD"
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux Beállítás"
 
-msgid "LICENSE"
-msgstr "ENGEDÉLY"
-
 msgid "Label series"
 msgstr "Címke sorozat"
+
+msgid "License"
+msgstr ""
 
 msgid "Link speed"
 msgstr "Link sebesség"
@@ -930,6 +963,9 @@ msgstr "Több"
 msgid "More details"
 msgstr "Részletek mutatása"
 
+msgid "Mount point"
+msgstr ""
+
 msgid "Movie database for EPG"
 msgstr "EPG filmes adatbázis"
 
@@ -947,6 +983,9 @@ msgstr "Multi-lista nem engedélyezett!"
 
 msgid "MultiEPG"
 msgstr "MultiEPG"
+
+msgid "Mute/Unmute"
+msgstr ""
 
 msgid "NCam Webinterface"
 msgstr "NCam Webinterface"
@@ -1017,6 +1056,9 @@ msgstr "Nincs megfelelő időzítő"
 msgid "No matching Timer found"
 msgstr "Nincs megfelelő időzítő"
 
+msgid "No network connection"
+msgstr ""
+
 msgid "No new servicename given!"
 msgstr "Nincs új szolgáltatásnév!"
 
@@ -1059,6 +1101,9 @@ msgstr ""
 msgid "Number of recordings remaining"
 msgstr "A hátramaradó felvételek száma"
 
+msgid "ONID"
+msgstr ""
+
 msgid "OSCam Webinterface"
 msgstr "OSCam Webinterface"
 
@@ -1082,9 +1127,6 @@ msgstr "Minden szolgáltatásnál"
 
 msgid "On same service"
 msgstr "Ugyanazon a szolgáltatáson"
-
-msgid "ONID"
-msgstr ""
 
 msgid "Only match between dates"
 msgstr "Korlátozza az eseményeket bizonyos időpontokban"
@@ -1126,6 +1168,12 @@ msgstr "Orbitális pozíció"
 msgid "Override found with alternative service"
 msgstr "A megtalált felülbírálata alternatív szolgáltatással"
 
+msgid "PCR PID"
+msgstr ""
+
+msgid "PMT PID"
+msgstr ""
+
 msgid "Packages"
 msgstr "Csomagok"
 
@@ -1137,9 +1185,6 @@ msgstr "A szülői felügyelet nincs aktiválva."
 
 msgid "Parse AutoTimer"
 msgstr "Automatikus időzítő elemzése"
-
-msgid "PCR PID"
-msgstr ""
 
 msgid "PiP"
 msgstr "PiP"
@@ -1164,9 +1209,6 @@ msgstr "Lejátszási lista"
 
 msgid "Playlist format"
 msgstr "Lejátszási lista formátum"
-
-msgid "PMT PID"
-msgstr ""
 
 msgid "Power Control"
 msgstr "Kikapcsolás"
@@ -1277,6 +1319,9 @@ msgstr "SLAAC"
 msgid "SNR"
 msgstr "SNR"
 
+msgid "SRef"
+msgstr ""
+
 msgid "Sa"
 msgstr "Szombat"
 
@@ -1307,6 +1352,9 @@ msgstr "Keresés"
 msgid "Search CSFD"
 msgstr "Keresés CSFD"
 
+msgid "Search EPG"
+msgstr ""
+
 msgid "Search IMDb"
 msgstr "Keresés IMDb"
 
@@ -1332,6 +1380,9 @@ msgid "Select IPK file for upload"
 msgstr "Jelölje ki az IPK fájl a feltöltéséhez"
 
 msgid "Select..."
+msgstr ""
+
+msgid "Send"
 msgstr ""
 
 msgid "Send Message"
@@ -1378,6 +1429,9 @@ msgstr "A %s szolgáltatás törölve a %s listából."
 msgid "Service %s removed."
 msgstr "A %s szolgáltatás eltávolítva."
 
+msgid "Service ID (SID)"
+msgstr ""
+
 msgid "Service can not be moved."
 msgstr "A szolgáltatást nem lehet áthelyezni."
 
@@ -1392,6 +1446,9 @@ msgstr "A szolgáltatás átnevezése sikeres."
 
 msgid "Services"
 msgstr "Szolgáltatások"
+
+msgid "Serving stream"
+msgstr ""
 
 msgid "Set maximum duration"
 msgstr "Állítsa be a maximális időt"
@@ -1440,7 +1497,13 @@ msgstr "A csatorna típus megjelenítése a csatornalistában"
 msgid "Shutdown"
 msgstr "Kikapcsolás"
 
-msgid "Service ID (SID)"
+msgid "Signal Power (AGC)"
+msgstr ""
+
+msgid "Signal Quality (SNR DB)"
+msgstr ""
+
+msgid "Signal Quality (SNR)"
 msgstr ""
 
 msgid "Simulate"
@@ -1468,6 +1531,9 @@ msgstr "Az elalvás időzítő engedélyezve van"
 msgid "Sleeptimer set to %d minutes"
 msgstr "Az elalvás időzítő beállítása %d percben"
 
+msgid "Small remote layout"
+msgstr ""
+
 msgid "Software"
 msgstr "Szoftver"
 
@@ -1480,14 +1546,8 @@ msgstr ""
 msgid "Spinner"
 msgstr "Spinner"
 
-msgid "SRef"
-msgstr ""
-
 msgid "Standby"
 msgstr "Készenlét"
-
-msgid "Standby Toggle"
-msgstr "Készenléti módba váltás"
 
 msgid "Start"
 msgstr "Start"
@@ -1502,6 +1562,9 @@ msgid "Start typing..."
 msgstr "GÉPELÉS KEZDÉSE"
 
 msgid "State"
+msgstr ""
+
+msgid "Storage"
 msgstr ""
 
 msgid "Stream"
@@ -1537,6 +1600,9 @@ msgstr "Rendszer OE"
 
 msgid "TB"
 msgstr "TB"
+
+msgid "TSID"
+msgstr ""
 
 msgid "TV"
 msgstr "TV"
@@ -1644,6 +1710,9 @@ msgstr "Az '%s' időzítő nem menthető ütközés miatt"
 msgid "Timer Added"
 msgstr "Időzítés hozzáadva"
 
+msgid "Timer Conflict"
+msgstr ""
+
 msgid "Timer added"
 msgstr "Időzítés hozzáadva"
 
@@ -1671,6 +1740,9 @@ msgstr "Nem hamarabb, mint"
 msgid "Today"
 msgstr ""
 
+msgid "Toggle Standby"
+msgstr ""
+
 msgid "Transcode"
 msgstr "Átkódolás"
 
@@ -1679,9 +1751,6 @@ msgstr "Fordítás spanyolra"
 
 msgid "Try guessing"
 msgstr "Próbálja kitalálni"
-
-msgid "TSID"
-msgstr ""
 
 msgid "Tu"
 msgstr "Kedd"
@@ -1692,23 +1761,11 @@ msgstr "Kedd"
 msgid "Tuesday"
 msgstr "Kedd"
 
-msgid "Bit Error Rate (BER)"
-msgstr ""
-
 msgid "Tuner Number"
 msgstr "Tuner száma"
 
 msgid "Tuner Signal"
 msgstr "Tuner jel"
-
-msgid "Signal Power (AGC)"
-msgstr ""
-
-msgid "Signal Quality (SNR)"
-msgstr ""
-
-msgid "Signal Quality (SNR DB)"
-msgstr ""
 
 msgid "Tuner Type"
 msgstr "Tuner típusa"
@@ -1778,10 +1835,6 @@ msgstr "Az új kinézet használata"
 msgid "Use modern interface"
 msgstr "Az új kinézet használata"
 
-#, fuzzy
-msgid "Use old remote"
-msgstr "Teljes táviránytó elrejtése"
-
 msgid "VPS"
 msgstr "VPS"
 
@@ -1797,7 +1850,7 @@ msgstr "Videó"
 msgid "Video Height"
 msgstr "Video magassága"
 
-msgid "Widescreen"
+msgid "Video PID (VPID)"
 msgstr ""
 
 msgid "Video Width"
@@ -1811,9 +1864,6 @@ msgstr "Hangerő"
 
 msgid "Volume Control"
 msgstr "Hangerőszabályozó"
-
-msgid "Video PID (VPID)"
-msgstr ""
 
 msgid "W"
 msgstr "W"
@@ -1847,6 +1897,9 @@ msgstr "Hetente (hétfő)"
 
 msgid "Weekly (Sunday)"
 msgstr "Hetente (vasárnap)"
+
+msgid "Widescreen"
+msgstr ""
 
 msgid "Without auth only local access is allowed!"
 msgstr "Hitelesítés nélkül csak helyi hozzáférés engedélyezett!"
@@ -1988,6 +2041,9 @@ msgstr "r/o"
 msgid "r/w"
 msgstr "r/w"
 
+msgid "receiver"
+msgstr ""
+
 msgid "record"
 msgstr "felvétel"
 
@@ -2075,6 +2131,23 @@ msgstr "rossz fájltípus"
 
 msgid "zap"
 msgstr "ugrás"
+
+#~ msgid "EPG Search"
+#~ msgstr "Epg keresés"
+
+#, fuzzy
+#~ msgid "Enter Text"
+#~ msgstr "Tuner típusa"
+
+#~ msgid "LICENSE"
+#~ msgstr "ENGEDÉLY"
+
+#~ msgid "Standby Toggle"
+#~ msgstr "Készenléti módba váltás"
+
+#, fuzzy
+#~ msgid "Use old remote"
+#~ msgstr "Teljes táviránytó elrejtése"
 
 #~ msgid "Apid"
 #~ msgstr "Apid"

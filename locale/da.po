@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 21:02+0100\n"
+"POT-Creation-Date: 2022-05-10 09:36+0000\n"
 "PO-Revision-Date: 2021-12-02 19:56+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/e2openplugin-"
@@ -48,6 +48,10 @@ msgstr "%s %s er låst."
 
 #, python-format
 msgid "%s / %s"
+msgstr ""
+
+#, python-format
+msgid "%s Style"
 msgstr ""
 
 #, python-format
@@ -169,17 +173,14 @@ msgstr "Svaret er NEJ!"
 msgid "Answer is YES!"
 msgstr "Svaret er JA!"
 
+msgid "Any"
+msgstr ""
+
 msgid "Any day"
 msgstr ""
 
 msgid "Any service/recording"
 msgstr "Enhver kanal/optagelse"
-
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
-msgstr ""
 
 msgid "April"
 msgstr "April"
@@ -214,6 +215,15 @@ msgstr "Spørg, med standardsvar Nej"
 
 msgid "Ask, default Yes"
 msgstr "Spørg, med standardsvar Ja"
+
+msgid "Audio Encoding"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
+
+msgid "Audio Track"
+msgstr ""
 
 msgid "August"
 msgstr "August"
@@ -257,6 +267,9 @@ msgstr "Start på \"Efter begivenhed\" tidsrum"
 
 msgid "Beginning of timespan"
 msgstr "Start på tidsrum"
+
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Bookmark"
 msgstr "Bogmærke"
@@ -338,6 +351,9 @@ msgstr "Boksens drifttid"
 msgid "Brand"
 msgstr "Mærke"
 
+msgid "Build"
+msgstr ""
+
 msgid "Cable"
 msgstr "Kabel-TV"
 
@@ -407,6 +423,9 @@ msgstr "Aktuel"
 msgid "Current Event"
 msgstr "Aktuel begivenhed"
 
+msgid "Currently recording"
+msgstr ""
+
 msgid "Custom box name"
 msgstr "Tilpasset boksnavn"
 
@@ -468,6 +487,9 @@ msgstr "Slettet"
 msgid "Description"
 msgstr "Beskrivelse"
 
+msgid "Device"
+msgstr ""
+
 #, fuzzy
 msgid "Disable"
 msgstr "deaktiveret"
@@ -516,9 +538,6 @@ msgstr "Ø"
 
 msgid "EPG"
 msgstr "EPG"
-
-msgid "EPG Search"
-msgstr "Søg i EPG"
 
 msgid "EPG encoding"
 msgstr "EPG indkodning"
@@ -594,10 +613,6 @@ msgstr "Slut på \"Efter begivenhed\" tidsrum"
 msgid "End of timespan"
 msgstr "Slut på tidsrum"
 
-#, fuzzy
-msgid "Enter Text"
-msgstr "Tunertype"
-
 msgid "Enter a name for the new bouquet"
 msgstr "Angiv et navn til den nye buket"
 
@@ -609,6 +624,9 @@ msgid "Enter a name for this AutoTimer"
 msgstr "Angiv et  navn til det nye mærke"
 
 msgid "Enter path"
+msgstr ""
+
+msgid "Enter text"
 msgstr ""
 
 msgid "Enter the text to find in the EPG"
@@ -691,6 +709,9 @@ msgstr "Ledig"
 msgid "Free Memory"
 msgstr "Ledig hukommelse"
 
+msgid "Free space"
+msgstr ""
+
 msgid "Fri"
 msgstr "Fre"
 
@@ -733,11 +754,17 @@ msgstr "HTTPS port"
 msgid "Hard disk model"
 msgstr "Harddisk model"
 
+msgid "Hardware"
+msgstr ""
+
 msgid "Hide full remote"
 msgstr "Skjul fuld fjernbetjening"
 
 msgid "High Resolution"
 msgstr "Høj opløsning"
+
+msgid "Hold to drag"
+msgstr ""
 
 msgid "Hour"
 msgstr "Time"
@@ -778,6 +805,9 @@ msgstr "Straksoptagelse med uendelig varighed er startet"
 msgid "Info"
 msgstr "Information"
 
+msgid "Information"
+msgstr ""
+
 msgid "Inherit AutoTimer"
 msgstr "Arv AutoTimer"
 
@@ -795,6 +825,9 @@ msgstr "En Straksoptagelse af den aktuelle begivenhed er startet"
 
 msgid "Internal error!"
 msgstr "Intern fejl!"
+
+msgid "Internal flash memory"
+msgstr ""
 
 #, python-format
 msgid "Interval (in %s)"
@@ -830,11 +863,11 @@ msgstr "LCD"
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux opsætning"
 
-msgid "LICENSE"
-msgstr "LICENS"
-
 msgid "Label series"
 msgstr "Mærk serier"
+
+msgid "License"
+msgstr ""
 
 msgid "Link speed"
 msgstr "Forbindelseshastighed"
@@ -929,6 +962,9 @@ msgstr "Flere"
 msgid "More details"
 msgstr "Vis detaljer"
 
+msgid "Mount point"
+msgstr ""
+
 msgid "Movie database for EPG"
 msgstr "Film-database for EPG"
 
@@ -946,6 +982,9 @@ msgstr "Multi-Buket er ikke aktiveret!"
 
 msgid "MultiEPG"
 msgstr "MultiEPG"
+
+msgid "Mute/Unmute"
+msgstr ""
 
 msgid "NCam Webinterface"
 msgstr "NCam Webgrænseflade"
@@ -1016,6 +1055,9 @@ msgstr "Ingen identisk Timer fundet"
 msgid "No matching Timer found"
 msgstr "Ingen identisk Timer fundet"
 
+msgid "No network connection"
+msgstr ""
+
 msgid "No new servicename given!"
 msgstr "Nyt kanalnavn ikke angivet!"
 
@@ -1058,6 +1100,9 @@ msgstr ""
 msgid "Number of recordings remaining"
 msgstr "Antal optagelser tilbage"
 
+msgid "ONID"
+msgstr ""
+
 msgid "OSCam Webinterface"
 msgstr "OSCam Webgrænseflade"
 
@@ -1081,9 +1126,6 @@ msgstr "På alle kanaler"
 
 msgid "On same service"
 msgstr "På samme kanal"
-
-msgid "ONID"
-msgstr ""
 
 msgid "Only match between dates"
 msgstr "Begræns til begivenheder på bestemte datoer"
@@ -1125,6 +1167,12 @@ msgstr "Orbital position"
 msgid "Override found with alternative service"
 msgstr "Tilsidesæt fundet kanal med alternativ"
 
+msgid "PCR PID"
+msgstr ""
+
+msgid "PMT PID"
+msgstr ""
+
 msgid "Packages"
 msgstr "Pakker"
 
@@ -1136,9 +1184,6 @@ msgstr "Forældrekontrol ikke aktiveret."
 
 msgid "Parse AutoTimer"
 msgstr "Analyser AutoTimer"
-
-msgid "PCR PID"
-msgstr ""
 
 msgid "PiP"
 msgstr "PiP"
@@ -1163,9 +1208,6 @@ msgstr "Afspilningsliste"
 
 msgid "Playlist format"
 msgstr "Afspilningsliste format"
-
-msgid "PMT PID"
-msgstr ""
 
 msgid "Power Control"
 msgstr "Strømstyring"
@@ -1276,6 +1318,9 @@ msgstr "SLAAC"
 msgid "SNR"
 msgstr "SNR"
 
+msgid "SRef"
+msgstr ""
+
 msgid "Sa"
 msgstr "Lø"
 
@@ -1306,6 +1351,9 @@ msgstr "Søg"
 msgid "Search CSFD"
 msgstr "Søg i CSFD"
 
+msgid "Search EPG"
+msgstr ""
+
 msgid "Search IMDb"
 msgstr "Søg i IMDb"
 
@@ -1331,6 +1379,9 @@ msgid "Select IPK file for upload"
 msgstr "Vælg IPK fil til upload"
 
 msgid "Select..."
+msgstr ""
+
+msgid "Send"
 msgstr ""
 
 msgid "Send Message"
@@ -1377,6 +1428,9 @@ msgstr "Kanal %s fjernet fra Buket %s."
 msgid "Service %s removed."
 msgstr "Kanal %s fjernet."
 
+msgid "Service ID (SID)"
+msgstr ""
+
 msgid "Service can not be moved."
 msgstr "Kanal kan ikke flyttes."
 
@@ -1391,6 +1445,9 @@ msgstr "Kanal omdøbt med succes."
 
 msgid "Services"
 msgstr "Kanaler"
+
+msgid "Serving stream"
+msgstr ""
 
 msgid "Set maximum duration"
 msgstr "Sæt maksimal varighed"
@@ -1438,7 +1495,13 @@ msgstr "Vis tjenestetype i kanalliste"
 msgid "Shutdown"
 msgstr "Luk ned"
 
-msgid "Service ID (SID)"
+msgid "Signal Power (AGC)"
+msgstr ""
+
+msgid "Signal Quality (SNR DB)"
+msgstr ""
+
+msgid "Signal Quality (SNR)"
 msgstr ""
 
 msgid "Simulate"
@@ -1466,6 +1529,9 @@ msgstr "DvaleTimer er aktiveret"
 msgid "Sleeptimer set to %d minutes"
 msgstr "DvaleTimeren er sat til %d minutter"
 
+msgid "Small remote layout"
+msgstr ""
+
 msgid "Software"
 msgstr "Software"
 
@@ -1478,14 +1544,8 @@ msgstr ""
 msgid "Spinner"
 msgstr "Snurretop"
 
-msgid "SRef"
-msgstr ""
-
 msgid "Standby"
 msgstr "Standby"
-
-msgid "Standby Toggle"
-msgstr "Standby Til/Fra"
 
 msgid "Start"
 msgstr "Start"
@@ -1500,6 +1560,9 @@ msgid "Start typing..."
 msgstr "Begynd at skrive..."
 
 msgid "State"
+msgstr ""
+
+msgid "Storage"
 msgstr ""
 
 msgid "Stream"
@@ -1534,6 +1597,9 @@ msgstr "System OE"
 
 msgid "TB"
 msgstr "TB"
+
+msgid "TSID"
+msgstr ""
 
 msgid "TV"
 msgstr "TV"
@@ -1641,6 +1707,9 @@ msgstr "Timer '%s' ikke gemt pga. en konflikt"
 msgid "Timer Added"
 msgstr "Timer tilføjet"
 
+msgid "Timer Conflict"
+msgstr ""
+
 msgid "Timer added"
 msgstr "Timer tilføjet"
 
@@ -1668,6 +1737,9 @@ msgstr "Ikke før"
 msgid "Today"
 msgstr ""
 
+msgid "Toggle Standby"
+msgstr ""
+
 msgid "Transcode"
 msgstr "Omkod"
 
@@ -1676,9 +1748,6 @@ msgstr "Oversættelse til Spansk"
 
 msgid "Try guessing"
 msgstr "Forsøg at gætte"
-
-msgid "TSID"
-msgstr ""
 
 msgid "Tu"
 msgstr "Ti"
@@ -1689,23 +1758,11 @@ msgstr "Tir"
 msgid "Tuesday"
 msgstr "Tirsdag"
 
-msgid "Bit Error Rate (BER)"
-msgstr ""
-
 msgid "Tuner Number"
 msgstr "Tuner nummer"
 
 msgid "Tuner Signal"
 msgstr "Tuner signal"
-
-msgid "Signal Power (AGC)"
-msgstr ""
-
-msgid "Signal Quality (SNR)"
-msgstr ""
-
-msgid "Signal Quality (SNR DB)"
-msgstr ""
 
 msgid "Tuner Type"
 msgstr "Tunertype"
@@ -1773,10 +1830,6 @@ msgstr "Brug moderne grænseflade"
 msgid "Use modern interface"
 msgstr "Brug moderne grænseflade"
 
-#, fuzzy
-msgid "Use old remote"
-msgstr "Skjul fuld fjernbetjening"
-
 msgid "VPS"
 msgstr "VPS"
 
@@ -1792,7 +1845,7 @@ msgstr "Video"
 msgid "Video Height"
 msgstr "Video højde"
 
-msgid "Widescreen"
+msgid "Video PID (VPID)"
 msgstr ""
 
 msgid "Video Width"
@@ -1806,9 +1859,6 @@ msgstr "Lydstyrke"
 
 msgid "Volume Control"
 msgstr "Lydstyrkekontrol"
-
-msgid "Video PID (VPID)"
-msgstr ""
 
 msgid "W"
 msgstr "V"
@@ -1842,6 +1892,9 @@ msgstr "Ugentlig (Mandag)"
 
 msgid "Weekly (Sunday)"
 msgstr "Ugentlig (Søndag)"
+
+msgid "Widescreen"
+msgstr ""
 
 msgid "Without auth only local access is allowed!"
 msgstr "Kun lokal adgang tillades uden godkendelse!"
@@ -1985,6 +2038,9 @@ msgstr "r/o"
 msgid "r/w"
 msgstr "r/w"
 
+msgid "receiver"
+msgstr ""
+
 msgid "record"
 msgstr "Optag"
 
@@ -2072,6 +2128,23 @@ msgstr "forkert filtype"
 
 msgid "zap"
 msgstr "Zap"
+
+#~ msgid "EPG Search"
+#~ msgstr "Søg i EPG"
+
+#, fuzzy
+#~ msgid "Enter Text"
+#~ msgstr "Tunertype"
+
+#~ msgid "LICENSE"
+#~ msgstr "LICENS"
+
+#~ msgid "Standby Toggle"
+#~ msgstr "Standby Til/Fra"
+
+#, fuzzy
+#~ msgid "Use old remote"
+#~ msgstr "Skjul fuld fjernbetjening"
 
 #~ msgid "Apid"
 #~ msgstr "APID"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 21:02+0100\n"
+"POT-Creation-Date: 2022-05-10 09:36+0000\n"
 "PO-Revision-Date: 2021-12-02 19:58+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -50,6 +50,10 @@ msgstr "%s %s 已加锁."
 #, python-format
 msgid "%s / %s"
 msgstr "%s / %s"
+
+#, python-format
+msgid "%s Style"
+msgstr ""
 
 #, python-format
 msgid "%s free / %s total"
@@ -167,17 +171,14 @@ msgstr "否！"
 msgid "Answer is YES!"
 msgstr "是！"
 
+msgid "Any"
+msgstr ""
+
 msgid "Any day"
 msgstr "随时"
 
 msgid "Any service/recording"
 msgstr "任何频道/录制"
-
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
-msgstr ""
 
 msgid "April"
 msgstr "四月"
@@ -211,6 +212,15 @@ msgstr "询问,默认否"
 
 msgid "Ask, default Yes"
 msgstr "询问,默认是"
+
+msgid "Audio Encoding"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
+
+msgid "Audio Track"
+msgstr ""
 
 msgid "August"
 msgstr "八月"
@@ -253,6 +263,9 @@ msgstr "\"事件后\" 时间跨度开始"
 
 msgid "Beginning of timespan"
 msgstr "开始时间"
+
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Bookmark"
 msgstr "书签"
@@ -332,6 +345,9 @@ msgstr "运行时间"
 msgid "Brand"
 msgstr "品牌"
 
+msgid "Build"
+msgstr ""
+
 msgid "Cable"
 msgstr "有线"
 
@@ -401,6 +417,9 @@ msgstr "当前"
 msgid "Current Event"
 msgstr "当前事件"
 
+msgid "Currently recording"
+msgstr ""
+
 msgid "Custom box name"
 msgstr "自定义机顶盒名称"
 
@@ -462,6 +481,9 @@ msgstr "删除"
 msgid "Description"
 msgstr "描述"
 
+msgid "Device"
+msgstr ""
+
 msgid "Disable"
 msgstr "禁用"
 
@@ -509,9 +531,6 @@ msgstr "E"
 
 msgid "EPG"
 msgstr "EPG"
-
-msgid "EPG Search"
-msgstr "EPG搜索"
 
 msgid "EPG encoding"
 msgstr "EPG编码"
@@ -583,10 +602,6 @@ msgstr "\"事件后\" 时间跨度结束"
 msgid "End of timespan"
 msgstr "结束时间"
 
-#, fuzzy
-msgid "Enter Text"
-msgstr "输入路径"
-
 msgid "Enter a name for the new bouquet"
 msgstr "输入新的节目分组名称"
 
@@ -598,6 +613,9 @@ msgstr "输入此自动定时器的名称"
 
 msgid "Enter path"
 msgstr "输入路径"
+
+msgid "Enter text"
+msgstr ""
 
 msgid "Enter the text to find in the EPG"
 msgstr "输入要在EPG中查找的文本"
@@ -678,6 +696,9 @@ msgstr "空闲"
 msgid "Free Memory"
 msgstr "可用内存"
 
+msgid "Free space"
+msgstr ""
+
 msgid "Fri"
 msgstr "星期五"
 
@@ -720,11 +741,17 @@ msgstr "HTTPS端口"
 msgid "Hard disk model"
 msgstr "硬盘型号"
 
+msgid "Hardware"
+msgstr ""
+
 msgid "Hide full remote"
 msgstr "隐藏全远程"
 
 msgid "High Resolution"
 msgstr "高分辨率"
+
+msgid "Hold to drag"
+msgstr ""
 
 msgid "Hour"
 msgstr "小时"
@@ -765,6 +792,9 @@ msgstr "无限即时录制已开始"
 msgid "Info"
 msgstr "信息"
 
+msgid "Information"
+msgstr ""
+
 msgid "Inherit AutoTimer"
 msgstr "沿用自动计时器"
 
@@ -782,6 +812,9 @@ msgstr "当前事件的即时记录已启动"
 
 msgid "Internal error!"
 msgstr "内部错误!"
+
+msgid "Internal flash memory"
+msgstr ""
 
 #, python-format
 msgid "Interval (in %s)"
@@ -817,11 +850,11 @@ msgstr "LCD"
 msgid "LCD4Linux Setup"
 msgstr "LCD设置"
 
-msgid "LICENSE"
-msgstr "许可证"
-
 msgid "Label series"
 msgstr "标签系列"
+
+msgid "License"
+msgstr ""
 
 msgid "Link speed"
 msgstr "链路速度"
@@ -914,6 +947,9 @@ msgstr "更多"
 msgid "More details"
 msgstr "更多细节"
 
+msgid "Mount point"
+msgstr ""
+
 msgid "Movie database for EPG"
 msgstr "EPG电影数据库"
 
@@ -931,6 +967,9 @@ msgstr "多个节目分组未启用!"
 
 msgid "MultiEPG"
 msgstr "多重EPG"
+
+msgid "Mute/Unmute"
+msgstr ""
 
 msgid "NCam Webinterface"
 msgstr "NCam网络接口"
@@ -998,6 +1037,9 @@ msgstr "在EPG中没有找到匹配项."
 msgid "No matching Timer found"
 msgstr "找不到匹配的定时器"
 
+msgid "No network connection"
+msgstr ""
+
 msgid "No new servicename given!"
 msgstr "没有指定新的频道名!"
 
@@ -1040,6 +1082,9 @@ msgstr ""
 msgid "Number of recordings remaining"
 msgstr "剩余录制数"
 
+msgid "ONID"
+msgstr ""
+
 msgid "OSCam Webinterface"
 msgstr "OSCam网络接口"
 
@@ -1063,9 +1108,6 @@ msgstr "在任何服务"
 
 msgid "On same service"
 msgstr "在同一服务上"
-
-msgid "ONID"
-msgstr ""
 
 msgid "Only match between dates"
 msgstr "仅日期之间匹配"
@@ -1106,6 +1148,12 @@ msgstr "轨道位置"
 msgid "Override found with alternative service"
 msgstr "覆盖替代频道"
 
+msgid "PCR PID"
+msgstr ""
+
+msgid "PMT PID"
+msgstr ""
+
 msgid "Packages"
 msgstr "软件包"
 
@@ -1117,9 +1165,6 @@ msgstr "用家长控制没有激活."
 
 msgid "Parse AutoTimer"
 msgstr "解析自动定时器"
-
-msgid "PCR PID"
-msgstr ""
 
 msgid "PiP"
 msgstr "画中画"
@@ -1144,9 +1189,6 @@ msgstr "播放列表"
 
 msgid "Playlist format"
 msgstr "播放列表格式"
-
-msgid "PMT PID"
-msgstr ""
 
 msgid "Power Control"
 msgstr "电源控制"
@@ -1254,6 +1296,9 @@ msgstr "SLAAC"
 msgid "SNR"
 msgstr "质量"
 
+msgid "SRef"
+msgstr ""
+
 msgid "Sa"
 msgstr "星期六"
 
@@ -1284,6 +1329,9 @@ msgstr "搜索"
 msgid "Search CSFD"
 msgstr "搜索CSFD"
 
+msgid "Search EPG"
+msgstr ""
+
 msgid "Search IMDb"
 msgstr "搜索IMDB"
 
@@ -1307,6 +1355,9 @@ msgstr "选择要上传的IPK文件"
 
 msgid "Select..."
 msgstr "选择..."
+
+msgid "Send"
+msgstr ""
 
 msgid "Send Message"
 msgstr "发送信息"
@@ -1352,6 +1403,9 @@ msgstr "频道%s已从节目分组%s中移除."
 msgid "Service %s removed."
 msgstr "频道%s已删除"
 
+msgid "Service ID (SID)"
+msgstr ""
+
 msgid "Service can not be moved."
 msgstr "频道不能被移动"
 
@@ -1366,6 +1420,9 @@ msgstr "频道改名完成."
 
 msgid "Services"
 msgstr "频道"
+
+msgid "Serving stream"
+msgstr ""
 
 msgid "Set maximum duration"
 msgstr "设置最大持续时间"
@@ -1413,7 +1470,13 @@ msgstr "在频道列表中显示频道类型"
 msgid "Shutdown"
 msgstr "关机"
 
-msgid "Service ID (SID)"
+msgid "Signal Power (AGC)"
+msgstr ""
+
+msgid "Signal Quality (SNR DB)"
+msgstr ""
+
+msgid "Signal Quality (SNR)"
 msgstr ""
 
 msgid "Simulate"
@@ -1441,6 +1504,9 @@ msgstr "睡眠计时器已启用"
 msgid "Sleeptimer set to %d minutes"
 msgstr "睡眠计时器设置为%d分钟"
 
+msgid "Small remote layout"
+msgstr ""
+
 msgid "Software"
 msgstr "软件"
 
@@ -1453,14 +1519,8 @@ msgstr "排序"
 msgid "Spinner"
 msgstr "微调"
 
-msgid "SRef"
-msgstr ""
-
 msgid "Standby"
 msgstr "待机"
-
-msgid "Standby Toggle"
-msgstr "待机开关"
 
 msgid "Start"
 msgstr "开始"
@@ -1476,6 +1536,9 @@ msgstr "开始输入..."
 
 msgid "State"
 msgstr "国家"
+
+msgid "Storage"
+msgstr ""
 
 msgid "Stream"
 msgstr "串流"
@@ -1509,6 +1572,9 @@ msgstr "OE系统"
 
 msgid "TB"
 msgstr "TB"
+
+msgid "TSID"
+msgstr ""
 
 msgid "TV"
 msgstr "电视"
@@ -1615,6 +1681,9 @@ msgstr "定时器 '%s' 在冲突时不保存"
 msgid "Timer Added"
 msgstr "定时器已添加"
 
+msgid "Timer Conflict"
+msgstr ""
+
 msgid "Timer added"
 msgstr "定时器已添加"
 
@@ -1642,6 +1711,9 @@ msgstr "迄今为止"
 msgid "Today"
 msgstr "今天"
 
+msgid "Toggle Standby"
+msgstr ""
+
 msgid "Transcode"
 msgstr "转码"
 
@@ -1650,9 +1722,6 @@ msgstr "西班牙语翻译"
 
 msgid "Try guessing"
 msgstr "尝试猜测"
-
-msgid "TSID"
-msgstr ""
 
 msgid "Tu"
 msgstr "星期二"
@@ -1663,23 +1732,11 @@ msgstr "星期二"
 msgid "Tuesday"
 msgstr "星期二"
 
-msgid "Bit Error Rate (BER)"
-msgstr ""
-
 msgid "Tuner Number"
 msgstr "调谐器编号"
 
 msgid "Tuner Signal"
 msgstr "调谐器信号"
-
-msgid "Signal Power (AGC)"
-msgstr ""
-
-msgid "Signal Quality (SNR)"
-msgstr ""
-
-msgid "Signal Quality (SNR DB)"
-msgstr ""
 
 msgid "Tuner Type"
 msgstr "调谐器类型"
@@ -1746,10 +1803,6 @@ msgstr "使用现代设计"
 msgid "Use modern interface"
 msgstr "使用现代界面"
 
-#, fuzzy
-msgid "Use old remote"
-msgstr "隐藏全远程"
-
 msgid "VPS"
 msgstr "VPS"
 
@@ -1765,7 +1818,7 @@ msgstr "视频"
 msgid "Video Height"
 msgstr "视频高度"
 
-msgid "Widescreen"
+msgid "Video PID (VPID)"
 msgstr ""
 
 msgid "Video Width"
@@ -1779,9 +1832,6 @@ msgstr "音量"
 
 msgid "Volume Control"
 msgstr "音量控制"
-
-msgid "Video PID (VPID)"
-msgstr ""
 
 msgid "W"
 msgstr "W"
@@ -1815,6 +1865,9 @@ msgstr "每周（星期一）"
 
 msgid "Weekly (Sunday)"
 msgstr "每周（星期日）"
+
+msgid "Widescreen"
+msgstr ""
 
 msgid "Without auth only local access is allowed!"
 msgstr "没有认证只有本地访问是允许的！"
@@ -1952,6 +2005,9 @@ msgstr "r/o"
 msgid "r/w"
 msgstr "读/写"
 
+msgid "receiver"
+msgstr ""
+
 msgid "record"
 msgstr "录制"
 
@@ -2036,6 +2092,23 @@ msgstr "错误的文件类型"
 
 msgid "zap"
 msgstr "切换频道"
+
+#~ msgid "EPG Search"
+#~ msgstr "EPG搜索"
+
+#, fuzzy
+#~ msgid "Enter Text"
+#~ msgstr "输入路径"
+
+#~ msgid "LICENSE"
+#~ msgstr "许可证"
+
+#~ msgid "Standby Toggle"
+#~ msgstr "待机开关"
+
+#, fuzzy
+#~ msgid "Use old remote"
+#~ msgstr "隐藏全远程"
 
 #~ msgid "Apid"
 #~ msgstr "Apid"

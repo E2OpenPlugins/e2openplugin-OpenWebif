@@ -3,11 +3,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 21:02+0100\n"
+"POT-Creation-Date: 2022-05-10 09:36+0000\n"
 "PO-Revision-Date: 2022-05-10 08:58+0000\n"
 "Last-Translator: jbleyel <jbleyel@gmx.net>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/"
-"e2openplugin-openwebif/e2openplugin-openwebif/de/>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/e2openplugin-"
+"openwebif/e2openplugin-openwebif/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,6 +49,10 @@ msgstr "%s %s ist gesperrt"
 
 #, python-format
 msgid "%s / %s"
+msgstr ""
+
+#, python-format
+msgid "%s Style"
 msgstr ""
 
 #, python-format
@@ -170,17 +174,14 @@ msgstr "Antwort lautet NEIN!"
 msgid "Answer is YES!"
 msgstr "Antwort lautet JA!"
 
+msgid "Any"
+msgstr ""
+
 msgid "Any day"
 msgstr "Jeden Tag"
 
 msgid "Any service/recording"
 msgstr "Service/Aufnahme beliebig"
-
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
-msgstr ""
 
 msgid "April"
 msgstr "April"
@@ -216,6 +217,15 @@ msgstr "Nachfrage mit Standard Nein"
 
 msgid "Ask, default Yes"
 msgstr "Nachfrage mit Standard Ja"
+
+msgid "Audio Encoding"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
+
+msgid "Audio Track"
+msgstr ""
 
 msgid "August"
 msgstr "August"
@@ -259,6 +269,9 @@ msgstr "Beginn der \"nach der Aufnahme\" Zeitspanne"
 
 msgid "Beginning of timespan"
 msgstr "Anfang der Zeitspanne"
+
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Bookmark"
 msgstr "Bookmark"
@@ -340,6 +353,9 @@ msgstr "Receiver-Laufzeit"
 msgid "Brand"
 msgstr "Marke"
 
+msgid "Build"
+msgstr ""
+
 msgid "Cable"
 msgstr "Kabel"
 
@@ -411,6 +427,9 @@ msgstr "Aktuell"
 msgid "Current Event"
 msgstr "Aktuelle Sendung"
 
+msgid "Currently recording"
+msgstr ""
+
 msgid "Custom box name"
 msgstr "Eigener Boxname"
 
@@ -475,6 +494,9 @@ msgstr "Löschen"
 msgid "Description"
 msgstr "Beschreibung"
 
+msgid "Device"
+msgstr ""
+
 #, fuzzy
 msgid "Disable"
 msgstr "deaktiviert"
@@ -523,9 +545,6 @@ msgstr "O"
 
 msgid "EPG"
 msgstr "EPG"
-
-msgid "EPG Search"
-msgstr "EPG-Suche"
 
 msgid "EPG encoding"
 msgstr "Zeichensatz des EPG"
@@ -600,10 +619,6 @@ msgstr "Ende der \"nach der Aufnahme\" Zeitspanne"
 msgid "End of timespan"
 msgstr "Ende der Zeitspanne"
 
-#, fuzzy
-msgid "Enter Text"
-msgstr "Tunerart"
-
 msgid "Enter a name for the new bouquet"
 msgstr "Neuen Namen des Bouquets eingeben"
 
@@ -616,6 +631,9 @@ msgstr "Neuen Namen des Markers eingeben"
 
 msgid "Enter path"
 msgstr "Pfad eingeben"
+
+msgid "Enter text"
+msgstr ""
 
 msgid "Enter the text to find in the EPG"
 msgstr "Eingabe text zur Suche in EPG"
@@ -697,6 +715,9 @@ msgstr "Frei"
 msgid "Free Memory"
 msgstr "Freier Speicher"
 
+msgid "Free space"
+msgstr ""
+
 msgid "Fri"
 msgstr "Fr"
 
@@ -743,11 +764,17 @@ msgstr "Port für HTTPS"
 msgid "Hard disk model"
 msgstr "Festplattenmodell"
 
+msgid "Hardware"
+msgstr ""
+
 msgid "Hide full remote"
 msgstr "Vollständige Fernbedienung ausblenden"
 
 msgid "High Resolution"
 msgstr "Hohe Auflösung"
+
+msgid "Hold to drag"
+msgstr ""
 
 msgid "Hour"
 msgstr "Stunde"
@@ -790,6 +817,9 @@ msgstr "Unbegrenzte Sofortaufnahme gestartet"
 msgid "Info"
 msgstr "Informationen"
 
+msgid "Information"
+msgstr ""
+
 msgid "Inherit AutoTimer"
 msgstr "Sender aus AutoTimern übernehmen"
 
@@ -808,6 +838,9 @@ msgstr "Sofortaufnahme für aktuelle Sendung gestartet"
 
 msgid "Internal error!"
 msgstr "Interner Fehler!"
+
+msgid "Internal flash memory"
+msgstr ""
 
 #, fuzzy, python-format
 msgid "Interval (in %s)"
@@ -843,10 +876,10 @@ msgstr ""
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux-Einstellungen"
 
-msgid "LICENSE"
-msgstr "Lizenz"
-
 msgid "Label series"
+msgstr ""
+
+msgid "License"
 msgstr ""
 
 msgid "Link speed"
@@ -943,6 +976,9 @@ msgstr "Mehr"
 msgid "More details"
 msgstr "Zeige Details"
 
+msgid "Mount point"
+msgstr ""
+
 msgid "Movie database for EPG"
 msgstr "Filmdatenbank für EPG"
 
@@ -961,6 +997,9 @@ msgstr "Multi-Bouquet ist nicht aktiviert!"
 
 msgid "MultiEPG"
 msgstr "Multi-EPG"
+
+msgid "Mute/Unmute"
+msgstr ""
 
 #, fuzzy
 msgid "NCam Webinterface"
@@ -1032,6 +1071,9 @@ msgstr "Kein entsprechender Timer gefunden"
 msgid "No matching Timer found"
 msgstr "Kein entsprechender Timer gefunden"
 
+msgid "No network connection"
+msgstr ""
+
 msgid "No new servicename given!"
 msgstr "Kein neuer Service-Name angegeben!"
 
@@ -1075,6 +1117,9 @@ msgstr "Jetzt/Später Spalten"
 msgid "Number of recordings remaining"
 msgstr "Verbleibende Anzahl Aufnahmen"
 
+msgid "ONID"
+msgstr ""
+
 msgid "OSCam Webinterface"
 msgstr "OSCam-Webinterface"
 
@@ -1098,9 +1143,6 @@ msgstr "Auf jedem Sender"
 
 msgid "On same service"
 msgstr "Auf dem gleichen Sender"
-
-msgid "ONID"
-msgstr ""
 
 msgid "Only match between dates"
 msgstr "Auf bestimmtes Datum beschränken"
@@ -1142,6 +1184,12 @@ msgstr ""
 msgid "Override found with alternative service"
 msgstr "Sendung durch Alternative ersetzen"
 
+msgid "PCR PID"
+msgstr ""
+
+msgid "PMT PID"
+msgstr ""
+
 msgid "Packages"
 msgstr "Pakete"
 
@@ -1153,9 +1201,6 @@ msgstr "Jugendschutz ist nicht aktiviert."
 
 msgid "Parse AutoTimer"
 msgstr "AutoTimer auswerten"
-
-msgid "PCR PID"
-msgstr ""
 
 msgid "PiP"
 msgstr "PiP"
@@ -1181,9 +1226,6 @@ msgstr "Wiedergabeliste"
 #, fuzzy
 msgid "Playlist format"
 msgstr "Wiedergabeliste"
-
-msgid "PMT PID"
-msgstr ""
 
 msgid "Power Control"
 msgstr "Ausschaltmenü"
@@ -1294,6 +1336,9 @@ msgstr "SL-AAC"
 msgid "SNR"
 msgstr "SNR"
 
+msgid "SRef"
+msgstr ""
+
 msgid "Sa"
 msgstr "Sa"
 
@@ -1325,6 +1370,9 @@ msgstr "Suchen"
 msgid "Search CSFD"
 msgstr "Durchsuche CSFD"
 
+msgid "Search EPG"
+msgstr ""
+
 msgid "Search IMDb"
 msgstr "Durchsuche IMDb"
 
@@ -1351,6 +1399,9 @@ msgstr "Wählen Sie die 'IPK' Datei zum Hochladen"
 
 msgid "Select..."
 msgstr "Auswählen..."
+
+msgid "Send"
+msgstr ""
 
 msgid "Send Message"
 msgstr "Nachricht senden"
@@ -1396,6 +1447,9 @@ msgstr "Service %s vom Bouquet %s entfernt."
 msgid "Service %s removed."
 msgstr "Service %s entfernt."
 
+msgid "Service ID (SID)"
+msgstr ""
+
 msgid "Service can not be moved."
 msgstr "Service %s kann nicht entfernt werden."
 
@@ -1410,6 +1464,9 @@ msgstr "Service erfolgreich umbenannt"
 
 msgid "Services"
 msgstr "Service"
+
+msgid "Serving stream"
+msgstr ""
 
 msgid "Set maximum duration"
 msgstr "Finde maximale Länge"
@@ -1459,8 +1516,14 @@ msgstr "Zeige Picon in Senderliste"
 msgid "Shutdown"
 msgstr "Ausschalten"
 
-msgid "Service ID (SID)"
+msgid "Signal Power (AGC)"
 msgstr ""
+
+msgid "Signal Quality (SNR DB)"
+msgstr "Signalqualität (SNR DB)"
+
+msgid "Signal Quality (SNR)"
+msgstr "Signalqualität (SNR)"
 
 msgid "Simulate"
 msgstr "Simulieren"
@@ -1487,6 +1550,9 @@ msgstr "SleepTimer aktiviert"
 msgid "Sleeptimer set to %d minutes"
 msgstr "SleepTimer eingestellt auf %d Minuten"
 
+msgid "Small remote layout"
+msgstr ""
+
 msgid "Software"
 msgstr "Software"
 
@@ -1499,14 +1565,8 @@ msgstr ""
 msgid "Spinner"
 msgstr "'IN-ARBEIT Symbol"
 
-msgid "SRef"
-msgstr ""
-
 msgid "Standby"
 msgstr "Standby"
-
-msgid "Standby Toggle"
-msgstr "Standby (ein/aus)"
 
 msgid "Start"
 msgstr "Start"
@@ -1521,6 +1581,9 @@ msgid "Start typing..."
 msgstr "BEGINNT SCHREIBEN"
 
 msgid "State"
+msgstr ""
+
+msgid "Storage"
 msgstr ""
 
 msgid "Stream"
@@ -1557,6 +1620,9 @@ msgstr "OE-System"
 
 msgid "TB"
 msgstr "TB"
+
+msgid "TSID"
+msgstr ""
 
 msgid "TV"
 msgstr "TV"
@@ -1664,6 +1730,9 @@ msgstr "Timer '%s' wegen Konflikt nicht gespeichert"
 msgid "Timer Added"
 msgstr "Timer hinzugefügt"
 
+msgid "Timer Conflict"
+msgstr ""
+
 msgid "Timer added"
 msgstr "Timer hinzugefügt"
 
@@ -1691,6 +1760,9 @@ msgstr "Ausführung nicht vor"
 msgid "Today"
 msgstr "Heute"
 
+msgid "Toggle Standby"
+msgstr ""
+
 msgid "Transcode"
 msgstr "Transcodieren"
 
@@ -1699,9 +1771,6 @@ msgstr "Übersetzung ins Spanische"
 
 msgid "Try guessing"
 msgstr "Versuche zu raten"
-
-msgid "TSID"
-msgstr ""
 
 msgid "Tu"
 msgstr "Di"
@@ -1712,23 +1781,11 @@ msgstr "Di"
 msgid "Tuesday"
 msgstr "Dienstag"
 
-msgid "Bit Error Rate (BER)"
-msgstr ""
-
 msgid "Tuner Number"
 msgstr "Tuner-Nummer"
 
 msgid "Tuner Signal"
 msgstr "Tunersignal"
-
-msgid "Signal Power (AGC)"
-msgstr ""
-
-msgid "Signal Quality (SNR)"
-msgstr "Signalqualität (SNR)"
-
-msgid "Signal Quality (SNR DB)"
-msgstr "Signalqualität (SNR DB)"
 
 msgid "Tuner Type"
 msgstr "Tunerart"
@@ -1798,10 +1855,6 @@ msgstr "Nutze neues Design"
 msgid "Use modern interface"
 msgstr "Nutze neues Design"
 
-#, fuzzy
-msgid "Use old remote"
-msgstr "Vollständige Fernbedienung ausblenden"
-
 msgid "VPS"
 msgstr "VPS"
 
@@ -1817,8 +1870,8 @@ msgstr "Video"
 msgid "Video Height"
 msgstr "Bildhöhe"
 
-msgid "Widescreen"
-msgstr "Breitbild"
+msgid "Video PID (VPID)"
+msgstr ""
 
 msgid "Video Width"
 msgstr "Bildbreite"
@@ -1831,9 +1884,6 @@ msgstr "Lautstärke"
 
 msgid "Volume Control"
 msgstr "Lautstärke"
-
-msgid "Video PID (VPID)"
-msgstr ""
 
 msgid "W"
 msgstr "W"
@@ -1868,6 +1918,9 @@ msgstr "Wöchentlich (Montag)"
 
 msgid "Weekly (Sunday)"
 msgstr "Wöchentlich (Sonntag)"
+
+msgid "Widescreen"
+msgstr "Breitbild"
 
 msgid "Without auth only local access is allowed!"
 msgstr "Ohne Anmeldung ist nur lokaler Zugriff möglich!"
@@ -2012,6 +2065,9 @@ msgstr ""
 msgid "r/w"
 msgstr ""
 
+msgid "receiver"
+msgstr ""
+
 msgid "record"
 msgstr "Aufnehmen"
 
@@ -2099,6 +2155,23 @@ msgstr "Falscher Dateityp"
 
 msgid "zap"
 msgstr "Umschalten"
+
+#~ msgid "EPG Search"
+#~ msgstr "EPG-Suche"
+
+#, fuzzy
+#~ msgid "Enter Text"
+#~ msgstr "Tunerart"
+
+#~ msgid "LICENSE"
+#~ msgstr "Lizenz"
+
+#~ msgid "Standby Toggle"
+#~ msgstr "Standby (ein/aus)"
+
+#, fuzzy
+#~ msgid "Use old remote"
+#~ msgstr "Vollständige Fernbedienung ausblenden"
 
 #~ msgid "Apid"
 #~ msgstr "A-PID"

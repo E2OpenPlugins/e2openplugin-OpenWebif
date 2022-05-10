@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 21:02+0100\n"
+"POT-Creation-Date: 2022-05-10 09:36+0000\n"
 "PO-Revision-Date: 2021-12-02 19:56+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/e2openplugin-"
@@ -50,6 +50,10 @@ msgstr "%s %s està bloquejat."
 
 #, python-format
 msgid "%s / %s"
+msgstr ""
+
+#, python-format
+msgid "%s Style"
 msgstr ""
 
 #, python-format
@@ -171,17 +175,14 @@ msgstr "¡La resposta és NO!"
 msgid "Answer is YES!"
 msgstr "¡La resposta és SI!"
 
+msgid "Any"
+msgstr ""
+
 msgid "Any day"
 msgstr ""
 
 msgid "Any service/recording"
 msgstr "Qualsevol servei/gravació"
-
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
-msgstr ""
 
 msgid "April"
 msgstr "Abril"
@@ -217,6 +218,15 @@ msgstr "Preguntar, per defecte No"
 
 msgid "Ask, default Yes"
 msgstr "Preguntar, per defecte Si"
+
+msgid "Audio Encoding"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
+
+msgid "Audio Track"
+msgstr ""
 
 msgid "August"
 msgstr "Agost"
@@ -260,6 +270,9 @@ msgstr "Inici del \"després del programa\" interval de temps"
 
 msgid "Beginning of timespan"
 msgstr "Inici de l'interval de temps"
+
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Bookmark"
 msgstr ""
@@ -341,6 +354,9 @@ msgstr "Funcionament Decodificador"
 msgid "Brand"
 msgstr "Marca"
 
+msgid "Build"
+msgstr ""
+
 msgid "Cable"
 msgstr "Cable"
 
@@ -412,6 +428,9 @@ msgstr "Actual"
 msgid "Current Event"
 msgstr "Programa Actual"
 
+msgid "Currently recording"
+msgstr ""
+
 msgid "Custom box name"
 msgstr "Nom personalitzat del deco"
 
@@ -473,6 +492,9 @@ msgstr "Esborrar"
 msgid "Description"
 msgstr "Descripció"
 
+msgid "Device"
+msgstr ""
+
 #, fuzzy
 msgid "Disable"
 msgstr "deshabilitat"
@@ -521,9 +543,6 @@ msgstr "E"
 
 msgid "EPG"
 msgstr "EPG"
-
-msgid "EPG Search"
-msgstr "Buscar EPG"
 
 msgid "EPG encoding"
 msgstr "Codificació EPG"
@@ -600,10 +619,6 @@ msgstr "Fi del \"després del programa\" interval de temps"
 msgid "End of timespan"
 msgstr "Fi de l'interval de temps"
 
-#, fuzzy
-msgid "Enter Text"
-msgstr "Tipus de sintonitzador"
-
 msgid "Enter a name for the new bouquet"
 msgstr "Introdueix nou nom per a la llista"
 
@@ -615,6 +630,9 @@ msgid "Enter a name for this AutoTimer"
 msgstr "Introdueix nou nom per a la marca"
 
 msgid "Enter path"
+msgstr ""
+
+msgid "Enter text"
 msgstr ""
 
 msgid "Enter the text to find in the EPG"
@@ -697,6 +715,9 @@ msgstr "Lliure"
 msgid "Free Memory"
 msgstr "Memòria lliure"
 
+msgid "Free space"
+msgstr ""
+
 msgid "Fri"
 msgstr "Div"
 
@@ -740,11 +761,17 @@ msgstr "Port HTTPS"
 msgid "Hard disk model"
 msgstr "Model Disc Duro"
 
+msgid "Hardware"
+msgstr ""
+
 msgid "Hide full remote"
 msgstr "Ocultar comandament completo"
 
 msgid "High Resolution"
 msgstr "Alta resolució"
+
+msgid "Hold to drag"
+msgstr ""
 
 msgid "Hour"
 msgstr "Hora"
@@ -787,6 +814,9 @@ msgstr "Gravació instantània infinita iniciada"
 msgid "Info"
 msgstr "Informació"
 
+msgid "Information"
+msgstr ""
+
 msgid "Inherit AutoTimer"
 msgstr "Heretar Autotimer"
 
@@ -805,6 +835,9 @@ msgstr "Gravació instantània iniciada per al programa actual"
 
 msgid "Internal error!"
 msgstr "Error intern!"
+
+msgid "Internal flash memory"
+msgstr ""
 
 #, fuzzy, python-format
 msgid "Interval (in %s)"
@@ -840,11 +873,11 @@ msgstr ""
 msgid "LCD4Linux Setup"
 msgstr "Configurar LCD4Linux"
 
-msgid "LICENSE"
-msgstr "LLICÈNCIA"
-
 msgid "Label series"
 msgstr "Sèrie d'etiquetes"
+
+msgid "License"
+msgstr ""
 
 msgid "Link speed"
 msgstr ""
@@ -939,6 +972,9 @@ msgstr ""
 msgid "More details"
 msgstr ""
 
+msgid "Mount point"
+msgstr ""
+
 msgid "Movie database for EPG"
 msgstr ""
 
@@ -957,6 +993,9 @@ msgstr "Multi-llistes no està habilitat!"
 
 msgid "MultiEPG"
 msgstr "MultiEPG"
+
+msgid "Mute/Unmute"
+msgstr ""
 
 msgid "NCam Webinterface"
 msgstr ""
@@ -1027,6 +1066,9 @@ msgstr "No s'ha trobat coincidència als temporitzadors"
 msgid "No matching Timer found"
 msgstr "No s'ha trobat coincidència als temporitzadors"
 
+msgid "No network connection"
+msgstr ""
+
 msgid "No new servicename given!"
 msgstr "Cap nom de servei introduït!"
 
@@ -1070,6 +1112,9 @@ msgstr ""
 msgid "Number of recordings remaining"
 msgstr "Quantitat de gravacions faltants"
 
+msgid "ONID"
+msgstr ""
+
 msgid "OSCam Webinterface"
 msgstr ""
 
@@ -1093,9 +1138,6 @@ msgstr "En qualsevol servei"
 
 msgid "On same service"
 msgstr "En el mateix servei"
-
-msgid "ONID"
-msgstr ""
 
 msgid "Only match between dates"
 msgstr "Restringir als programes en determinades dates"
@@ -1137,6 +1179,12 @@ msgstr "Posició orbital"
 msgid "Override found with alternative service"
 msgstr "Anular trobat amb un servei alternatiu"
 
+msgid "PCR PID"
+msgstr ""
+
+msgid "PMT PID"
+msgstr ""
+
 msgid "Packages"
 msgstr ""
 
@@ -1148,9 +1196,6 @@ msgstr "Control parental no està activat."
 
 msgid "Parse AutoTimer"
 msgstr "Analitzar Autotimer"
-
-msgid "PCR PID"
-msgstr ""
 
 msgid "PiP"
 msgstr ""
@@ -1176,9 +1221,6 @@ msgstr "Llista de reproducció"
 #, fuzzy
 msgid "Playlist format"
 msgstr "Llista de reproducció"
-
-msgid "PMT PID"
-msgstr ""
 
 msgid "Power Control"
 msgstr "Control d'encesa"
@@ -1289,6 +1331,9 @@ msgstr ""
 msgid "SNR"
 msgstr "SNR"
 
+msgid "SRef"
+msgstr ""
+
 msgid "Sa"
 msgstr "Dis"
 
@@ -1320,6 +1365,9 @@ msgstr "Buscar"
 msgid "Search CSFD"
 msgstr "Buscar en IMDb"
 
+msgid "Search EPG"
+msgstr ""
+
 msgid "Search IMDb"
 msgstr "Buscar en IMDb"
 
@@ -1345,6 +1393,9 @@ msgid "Select IPK file for upload"
 msgstr ""
 
 msgid "Select..."
+msgstr ""
+
+msgid "Send"
 msgstr ""
 
 msgid "Send Message"
@@ -1391,6 +1442,9 @@ msgstr "Servei %s esborrat de la llista %s."
 msgid "Service %s removed."
 msgstr "Servei %s esborrat."
 
+msgid "Service ID (SID)"
+msgstr ""
+
 msgid "Service can not be moved."
 msgstr "Servei no es pot moure."
 
@@ -1405,6 +1459,9 @@ msgstr "Servei renombrat correctament."
 
 msgid "Services"
 msgstr "Serveis"
+
+msgid "Serving stream"
+msgstr ""
 
 msgid "Set maximum duration"
 msgstr "Configurar duració màxima"
@@ -1452,7 +1509,13 @@ msgstr "Mostar Picon en llista de canals"
 msgid "Shutdown"
 msgstr "Apagar"
 
-msgid "Service ID (SID)"
+msgid "Signal Power (AGC)"
+msgstr ""
+
+msgid "Signal Quality (SNR DB)"
+msgstr ""
+
+msgid "Signal Quality (SNR)"
 msgstr ""
 
 msgid "Simulate"
@@ -1480,6 +1543,9 @@ msgstr "Temporitzador d'apagat activat"
 msgid "Sleeptimer set to %d minutes"
 msgstr "Temporitzador d'apagat configurat a %d minuts"
 
+msgid "Small remote layout"
+msgstr ""
+
 msgid "Software"
 msgstr "Software"
 
@@ -1492,14 +1558,8 @@ msgstr ""
 msgid "Spinner"
 msgstr ""
 
-msgid "SRef"
-msgstr ""
-
 msgid "Standby"
 msgstr "Mode d'espera"
-
-msgid "Standby Toggle"
-msgstr "Activar Repòs"
 
 msgid "Start"
 msgstr "Inici"
@@ -1514,6 +1574,9 @@ msgid "Start typing..."
 msgstr ""
 
 msgid "State"
+msgstr ""
+
+msgid "Storage"
 msgstr ""
 
 msgid "Stream"
@@ -1549,6 +1612,9 @@ msgid "System OE"
 msgstr "Sistema OE"
 
 msgid "TB"
+msgstr ""
+
+msgid "TSID"
 msgstr ""
 
 msgid "TV"
@@ -1657,6 +1723,9 @@ msgstr "El temporitzador '%s' no s'ha guardat per un conflicte"
 msgid "Timer Added"
 msgstr "Temporitzador afegit"
 
+msgid "Timer Conflict"
+msgstr ""
+
 msgid "Timer added"
 msgstr "Afegir gravació"
 
@@ -1684,6 +1753,9 @@ msgstr "No abans de"
 msgid "Today"
 msgstr ""
 
+msgid "Toggle Standby"
+msgstr ""
+
 msgid "Transcode"
 msgstr "Transcodificar"
 
@@ -1692,9 +1764,6 @@ msgstr "Traducció a l'espanyol"
 
 msgid "Try guessing"
 msgstr "Tractar d'encertar"
-
-msgid "TSID"
-msgstr ""
 
 msgid "Tu"
 msgstr "Dim"
@@ -1705,23 +1774,11 @@ msgstr "Dim"
 msgid "Tuesday"
 msgstr "Dimarts"
 
-msgid "Bit Error Rate (BER)"
-msgstr ""
-
 msgid "Tuner Number"
 msgstr "Número de sintonitzador"
 
 msgid "Tuner Signal"
 msgstr "Senyal del sintonitzador"
-
-msgid "Signal Power (AGC)"
-msgstr ""
-
-msgid "Signal Quality (SNR)"
-msgstr ""
-
-msgid "Signal Quality (SNR DB)"
-msgstr ""
 
 msgid "Tuner Type"
 msgstr "Tipus de sintonitzador"
@@ -1792,10 +1849,6 @@ msgstr "Utilitzar nou diseny"
 msgid "Use modern interface"
 msgstr "Utilitzar nou diseny"
 
-#, fuzzy
-msgid "Use old remote"
-msgstr "Ocultar comandament completo"
-
 msgid "VPS"
 msgstr "VPS"
 
@@ -1811,7 +1864,7 @@ msgstr "Vídeo"
 msgid "Video Height"
 msgstr "Altura de vídeo"
 
-msgid "Widescreen"
+msgid "Video PID (VPID)"
 msgstr ""
 
 msgid "Video Width"
@@ -1825,9 +1878,6 @@ msgstr "Volum"
 
 msgid "Volume Control"
 msgstr "Control de volum"
-
-msgid "Video PID (VPID)"
-msgstr ""
 
 msgid "W"
 msgstr "W"
@@ -1862,6 +1912,9 @@ msgstr "Setmanal (Dilluns)"
 
 msgid "Weekly (Sunday)"
 msgstr "Setmanal (Diumenge)"
+
+msgid "Widescreen"
+msgstr ""
 
 msgid "Without auth only local access is allowed!"
 msgstr "Sense autorització, només es permet l'accès local!"
@@ -2004,6 +2057,9 @@ msgstr ""
 msgid "r/w"
 msgstr ""
 
+msgid "receiver"
+msgstr ""
+
 msgid "record"
 msgstr "gravar"
 
@@ -2091,6 +2147,23 @@ msgstr "Tipus d'arxiu erroni"
 
 msgid "zap"
 msgstr "canviar"
+
+#~ msgid "EPG Search"
+#~ msgstr "Buscar EPG"
+
+#, fuzzy
+#~ msgid "Enter Text"
+#~ msgstr "Tipus de sintonitzador"
+
+#~ msgid "LICENSE"
+#~ msgstr "LLICÈNCIA"
+
+#~ msgid "Standby Toggle"
+#~ msgstr "Activar Repòs"
+
+#, fuzzy
+#~ msgid "Use old remote"
+#~ msgstr "Ocultar comandament completo"
 
 #~ msgid "Recording Status"
 #~ msgstr "Estat de Gravació"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 21:02+0100\n"
+"POT-Creation-Date: 2022-05-10 09:36+0000\n"
 "PO-Revision-Date: 2021-12-02 19:58+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/e2openplugin-"
@@ -51,6 +51,10 @@ msgstr "%s %s kilitlendi."
 
 #, python-format
 msgid "%s / %s"
+msgstr ""
+
+#, python-format
+msgid "%s Style"
 msgstr ""
 
 #, python-format
@@ -171,17 +175,14 @@ msgstr "Cevap HAYIR!"
 msgid "Answer is YES!"
 msgstr "Cevap EVET!"
 
+msgid "Any"
+msgstr ""
+
 msgid "Any day"
 msgstr "Herhangi bir gün"
 
 msgid "Any service/recording"
 msgstr "Herhangi bir hizmet/kayıt"
-
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
-msgstr ""
 
 msgid "April"
 msgstr "Nisan"
@@ -215,6 +216,15 @@ msgstr "Sor, varsayılan Hayır"
 
 msgid "Ask, default Yes"
 msgstr "Sor, varsayılan Evet"
+
+msgid "Audio Encoding"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
+
+msgid "Audio Track"
+msgstr ""
 
 msgid "August"
 msgstr "Ağustos"
@@ -258,6 +268,9 @@ msgstr "Başlangıç ​​\"olayından sonra\" zaman aralığı"
 
 msgid "Beginning of timespan"
 msgstr "Zaman aralığının başlangıcı"
+
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Bookmark"
 msgstr "Yer İşareti"
@@ -339,6 +352,9 @@ msgstr "Kutu Çalışma Süresi"
 msgid "Brand"
 msgstr "Marka"
 
+msgid "Build"
+msgstr ""
+
 msgid "Cable"
 msgstr "Kablo"
 
@@ -408,6 +424,9 @@ msgstr "Geçerli"
 msgid "Current Event"
 msgstr "Geçerli Etkinlik"
 
+msgid "Currently recording"
+msgstr ""
+
 msgid "Custom box name"
 msgstr "Özel kutu adı"
 
@@ -469,6 +488,9 @@ msgstr "Silindi"
 msgid "Description"
 msgstr "Açıklama"
 
+msgid "Device"
+msgstr ""
+
 msgid "Disable"
 msgstr "Devre dışı bırak"
 
@@ -516,9 +538,6 @@ msgstr "E"
 
 msgid "EPG"
 msgstr "EPG"
-
-msgid "EPG Search"
-msgstr "Epg Araması"
 
 msgid "EPG encoding"
 msgstr "EPG kodlaması"
@@ -593,10 +612,6 @@ msgstr "Zaman aralığı \"olayından sonra\" sonu"
 msgid "End of timespan"
 msgstr "Zaman aralığının Sonu"
 
-#, fuzzy
-msgid "Enter Text"
-msgstr "Yol gir"
-
 msgid "Enter a name for the new bouquet"
 msgstr "Buket için yeni ad girin"
 
@@ -609,6 +624,9 @@ msgstr "İşaretçi için yeni ad girin"
 
 msgid "Enter path"
 msgstr "Yol gir"
+
+msgid "Enter text"
+msgstr ""
 
 msgid "Enter the text to find in the EPG"
 msgstr "EPG'de aranacak yazıyı gir"
@@ -690,6 +708,9 @@ msgstr "Boşta"
 msgid "Free Memory"
 msgstr "Boş Bellek"
 
+msgid "Free space"
+msgstr ""
+
 msgid "Fri"
 msgstr "Cum"
 
@@ -732,11 +753,17 @@ msgstr "HTTPS bağlantı noktası"
 msgid "Hard disk model"
 msgstr "Sabit disk modeli"
 
+msgid "Hardware"
+msgstr ""
+
 msgid "Hide full remote"
 msgstr "Tam uzaktan kumandayı gizle"
 
 msgid "High Resolution"
 msgstr "Yüksek Çözünürlük"
+
+msgid "Hold to drag"
+msgstr ""
 
 msgid "Hour"
 msgstr "Saat"
@@ -777,6 +804,9 @@ msgstr "Sonsuz Anında kayıt başladı"
 msgid "Info"
 msgstr "Bilgi"
 
+msgid "Information"
+msgstr ""
+
 msgid "Inherit AutoTimer"
 msgstr "Otomatik Zamanlayıcıyı Devral"
 
@@ -794,6 +824,9 @@ msgstr "Geçerli Etkinlik için anında kayıt başlatıldı"
 
 msgid "Internal error!"
 msgstr "Dahili hata!"
+
+msgid "Internal flash memory"
+msgstr ""
 
 #, python-format
 msgid "Interval (in %s)"
@@ -829,11 +862,11 @@ msgstr "LCD"
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux Kurulumu"
 
-msgid "LICENSE"
-msgstr "LICENSE"
-
 msgid "Label series"
 msgstr "Etiket serisi"
+
+msgid "License"
+msgstr ""
 
 msgid "Link speed"
 msgstr "Bağlantı Hızı"
@@ -926,6 +959,9 @@ msgstr "Daha"
 msgid "More details"
 msgstr "Daha fazla detay"
 
+msgid "Mount point"
+msgstr ""
+
 msgid "Movie database for EPG"
 msgstr "EPG için film veritabanı"
 
@@ -943,6 +979,9 @@ msgstr "Çoklu Buket etkinleştirilmedi!"
 
 msgid "MultiEPG"
 msgstr "MultiEPG"
+
+msgid "Mute/Unmute"
+msgstr ""
 
 msgid "NCam Webinterface"
 msgstr "NCam Webinterface"
@@ -1011,6 +1050,9 @@ msgstr "Eşleşen Zamanlayıcı bulunamadı"
 msgid "No matching Timer found"
 msgstr "Eşleşen Zamanlayıcı bulunamadı"
 
+msgid "No network connection"
+msgstr ""
+
 msgid "No new servicename given!"
 msgstr "Yeni hizmet adı verilmedi!"
 
@@ -1053,6 +1095,9 @@ msgstr ""
 msgid "Number of recordings remaining"
 msgstr "Kalan kayıt miktarı"
 
+msgid "ONID"
+msgstr ""
+
 msgid "OSCam Webinterface"
 msgstr "OSCam Webinterface"
 
@@ -1076,9 +1121,6 @@ msgstr "Herhangi bir hizmette"
 
 msgid "On same service"
 msgstr "Aynı hizmette"
-
-msgid "ONID"
-msgstr ""
 
 msgid "Only match between dates"
 msgstr "Belirli tarihlerdeki etkinliklerle kısıtla"
@@ -1120,6 +1162,12 @@ msgstr "Yörünge Konumu"
 msgid "Override found with alternative service"
 msgstr "Alternatif hizmetle geçersiz kılma bulundu"
 
+msgid "PCR PID"
+msgstr ""
+
+msgid "PMT PID"
+msgstr ""
+
 msgid "Packages"
 msgstr "Paketler"
 
@@ -1131,9 +1179,6 @@ msgstr "Ebeveyn Kontrolü etkinleştirilmedi."
 
 msgid "Parse AutoTimer"
 msgstr "Otomatik zamanlayıcıyı ayrıştır"
-
-msgid "PCR PID"
-msgstr ""
 
 msgid "PiP"
 msgstr "PiP"
@@ -1158,9 +1203,6 @@ msgstr "Oynatma Listesi"
 
 msgid "Playlist format"
 msgstr "Oynatma Listesi Biçimi"
-
-msgid "PMT PID"
-msgstr ""
 
 msgid "Power Control"
 msgstr "Güç Kontrolü"
@@ -1271,6 +1313,9 @@ msgstr "SLAAC"
 msgid "SNR"
 msgstr "SNR"
 
+msgid "SRef"
+msgstr ""
+
 msgid "Sa"
 msgstr "Cmt"
 
@@ -1301,6 +1346,9 @@ msgstr "Ara"
 msgid "Search CSFD"
 msgstr "CSFD'de Ara"
 
+msgid "Search EPG"
+msgstr ""
+
 msgid "Search IMDb"
 msgstr "IMDb'de Ara"
 
@@ -1326,6 +1374,9 @@ msgstr "Yükleme için IPK Dosyasını Seçin"
 
 msgid "Select..."
 msgstr "Seç..."
+
+msgid "Send"
+msgstr ""
 
 msgid "Send Message"
 msgstr "Mesaj Gönder"
@@ -1371,6 +1422,9 @@ msgstr "%s hizmeti, %s buketinden kaldırıldı."
 msgid "Service %s removed."
 msgstr "%s hizmeti kaldırıldı."
 
+msgid "Service ID (SID)"
+msgstr ""
+
 msgid "Service can not be moved."
 msgstr "Hizmet taşınamaz."
 
@@ -1385,6 +1439,9 @@ msgstr "Hizmet başarıyla yeniden adlandırıldı."
 
 msgid "Services"
 msgstr "Hizmetler"
+
+msgid "Serving stream"
+msgstr ""
 
 msgid "Set maximum duration"
 msgstr "Maksimum süreyi ayarla"
@@ -1432,7 +1489,13 @@ msgstr "Kanal listesinde Hizmet türünü göster"
 msgid "Shutdown"
 msgstr "Kapat"
 
-msgid "Service ID (SID)"
+msgid "Signal Power (AGC)"
+msgstr ""
+
+msgid "Signal Quality (SNR DB)"
+msgstr ""
+
+msgid "Signal Quality (SNR)"
 msgstr ""
 
 msgid "Simulate"
@@ -1460,6 +1523,9 @@ msgstr "Uyku Zamanlayıcısı etkinleştirildi"
 msgid "Sleeptimer set to %d minutes"
 msgstr "Uyku zamanlayıcısı %d dakikaya ayarlandı"
 
+msgid "Small remote layout"
+msgstr ""
+
 msgid "Software"
 msgstr "Yazılım"
 
@@ -1472,14 +1538,8 @@ msgstr "Sırala"
 msgid "Spinner"
 msgstr "Spinner"
 
-msgid "SRef"
-msgstr ""
-
 msgid "Standby"
 msgstr "Bekleme"
-
-msgid "Standby Toggle"
-msgstr "Bekleme Geçişi"
 
 msgid "Start"
 msgstr "Başlat"
@@ -1494,6 +1554,9 @@ msgid "Start typing..."
 msgstr "YAZMAYI BAŞLAT"
 
 msgid "State"
+msgstr ""
+
+msgid "Storage"
 msgstr ""
 
 msgid "Stream"
@@ -1529,6 +1592,9 @@ msgstr "Sistem OE"
 
 msgid "TB"
 msgstr "TB"
+
+msgid "TSID"
+msgstr ""
 
 msgid "TV"
 msgstr "TV"
@@ -1636,6 +1702,9 @@ msgstr "Zamanlayıcı '%s' Çakışma sırasında kaydedilmedi"
 msgid "Timer Added"
 msgstr "Zamanlayıcı Eklendi"
 
+msgid "Timer Conflict"
+msgstr ""
+
 msgid "Timer added"
 msgstr "Zamanlayıcı eklendi"
 
@@ -1663,6 +1732,9 @@ msgstr "Daha önce değil"
 msgid "Today"
 msgstr "Bugün"
 
+msgid "Toggle Standby"
+msgstr ""
+
 msgid "Transcode"
 msgstr "Kod dönüştürme"
 
@@ -1671,9 +1743,6 @@ msgstr "İspanyolcaya Çeviri"
 
 msgid "Try guessing"
 msgstr "Tahmin Etmeyi Deneyin"
-
-msgid "TSID"
-msgstr ""
 
 msgid "Tu"
 msgstr "Sal"
@@ -1684,23 +1753,11 @@ msgstr "Sal"
 msgid "Tuesday"
 msgstr "Salı"
 
-msgid "Bit Error Rate (BER)"
-msgstr ""
-
 msgid "Tuner Number"
 msgstr "Tuner Numarası"
 
 msgid "Tuner Signal"
 msgstr "Tuner Sinyali"
-
-msgid "Signal Power (AGC)"
-msgstr ""
-
-msgid "Signal Quality (SNR)"
-msgstr ""
-
-msgid "Signal Quality (SNR DB)"
-msgstr ""
 
 msgid "Tuner Type"
 msgstr "Tuner Türü"
@@ -1769,10 +1826,6 @@ msgstr "Yeni tasarım kullan"
 msgid "Use modern interface"
 msgstr "Yeni tasarım kullan"
 
-#, fuzzy
-msgid "Use old remote"
-msgstr "Tam uzaktan kumandayı gizle"
-
 msgid "VPS"
 msgstr "VPS"
 
@@ -1788,7 +1841,7 @@ msgstr "Video"
 msgid "Video Height"
 msgstr "Video Yüksekliği"
 
-msgid "Widescreen"
+msgid "Video PID (VPID)"
 msgstr ""
 
 msgid "Video Width"
@@ -1802,9 +1855,6 @@ msgstr "Ses"
 
 msgid "Volume Control"
 msgstr "Ses Kontrolü"
-
-msgid "Video PID (VPID)"
-msgstr ""
 
 msgid "W"
 msgstr "W"
@@ -1838,6 +1888,9 @@ msgstr "Haftalık (Pazartesi)"
 
 msgid "Weekly (Sunday)"
 msgstr "Haftalık (Pazar)"
+
+msgid "Widescreen"
+msgstr ""
 
 msgid "Without auth only local access is allowed!"
 msgstr "Yetkilendirme olmadan yalnızca yerel erişime izin verilir!"
@@ -1977,6 +2030,9 @@ msgstr "r/o"
 msgid "r/w"
 msgstr "r/w"
 
+msgid "receiver"
+msgstr ""
+
 msgid "record"
 msgstr "kayıt"
 
@@ -2064,6 +2120,23 @@ msgstr "yanlış dosya türü"
 
 msgid "zap"
 msgstr "zap"
+
+#~ msgid "EPG Search"
+#~ msgstr "Epg Araması"
+
+#, fuzzy
+#~ msgid "Enter Text"
+#~ msgstr "Yol gir"
+
+#~ msgid "LICENSE"
+#~ msgstr "LICENSE"
+
+#~ msgid "Standby Toggle"
+#~ msgstr "Bekleme Geçişi"
+
+#, fuzzy
+#~ msgid "Use old remote"
+#~ msgstr "Tam uzaktan kumandayı gizle"
 
 #~ msgid "Apid"
 #~ msgstr "Apid"

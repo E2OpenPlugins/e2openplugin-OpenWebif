@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 21:02+0100\n"
+"POT-Creation-Date: 2022-05-10 09:36+0000\n"
 "PO-Revision-Date: 2021-12-02 19:56+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/e2openplugin-"
@@ -50,6 +50,10 @@ msgstr "%s %s bloqueados."
 
 #, python-format
 msgid "%s / %s"
+msgstr ""
+
+#, python-format
+msgid "%s Style"
 msgstr ""
 
 #, python-format
@@ -171,17 +175,14 @@ msgstr "¡La respuesta es NO!"
 msgid "Answer is YES!"
 msgstr "¡La respuesta es SI!"
 
+msgid "Any"
+msgstr ""
+
 msgid "Any day"
 msgstr ""
 
 msgid "Any service/recording"
 msgstr "Cualquier servicio/grabación"
-
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
-msgstr ""
 
 msgid "April"
 msgstr "Abril"
@@ -217,6 +218,15 @@ msgstr "Preguntar, por defecto no"
 
 msgid "Ask, default Yes"
 msgstr "Preguntar, por defecto si"
+
+msgid "Audio Encoding"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
+
+msgid "Audio Track"
+msgstr ""
 
 msgid "August"
 msgstr "Agosto"
@@ -260,6 +270,9 @@ msgstr "Comenzar del \"después del evento\" intervalo de tiempo"
 
 msgid "Beginning of timespan"
 msgstr "Comienzo del intervalo de tiempo"
+
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Bookmark"
 msgstr ""
@@ -340,6 +353,9 @@ msgstr "Funcionamiento Decodificador"
 msgid "Brand"
 msgstr "Marca"
 
+msgid "Build"
+msgstr ""
+
 msgid "Cable"
 msgstr "Cable"
 
@@ -412,6 +428,9 @@ msgstr "Actual"
 msgid "Current Event"
 msgstr "Envento Actual"
 
+msgid "Currently recording"
+msgstr ""
+
 msgid "Custom box name"
 msgstr "Nombre personalizado del deco"
 
@@ -473,6 +492,9 @@ msgstr "Borrar"
 msgid "Description"
 msgstr "Descripción"
 
+msgid "Device"
+msgstr ""
+
 #, fuzzy
 msgid "Disable"
 msgstr "Deshabilitar Grabación"
@@ -521,9 +543,6 @@ msgstr "E"
 
 msgid "EPG"
 msgstr "EPG"
-
-msgid "EPG Search"
-msgstr "Buscar EPG"
 
 msgid "EPG encoding"
 msgstr "Codificación EPG"
@@ -600,10 +619,6 @@ msgstr "Fin del \"después del evento\" intervalo de tiempo"
 msgid "End of timespan"
 msgstr "Fin del intervalo de tiempo"
 
-#, fuzzy
-msgid "Enter Text"
-msgstr "Tipo de Sintonizador"
-
 msgid "Enter a name for the new bouquet"
 msgstr "Intorduce el nuevo nombre para el favorito"
 
@@ -615,6 +630,9 @@ msgid "Enter a name for this AutoTimer"
 msgstr "Introduce el nuevo nombre para la marca"
 
 msgid "Enter path"
+msgstr ""
+
+msgid "Enter text"
 msgstr ""
 
 msgid "Enter the text to find in the EPG"
@@ -697,6 +715,9 @@ msgstr "Libre"
 msgid "Free Memory"
 msgstr "Memoria Libre"
 
+msgid "Free space"
+msgstr ""
+
 msgid "Fri"
 msgstr "Vie"
 
@@ -740,11 +761,17 @@ msgstr "Puerto HTTPS"
 msgid "Hard disk model"
 msgstr "Modelo Disco Duro"
 
+msgid "Hardware"
+msgstr ""
+
 msgid "Hide full remote"
 msgstr "Ocultar Control Remoto Completo"
 
 msgid "High Resolution"
 msgstr "Alta Resolución"
+
+msgid "Hold to drag"
+msgstr ""
 
 msgid "Hour"
 msgstr "Hora"
@@ -787,6 +814,9 @@ msgstr "Grabación instantánea infinita iniciada"
 msgid "Info"
 msgstr "Información"
 
+msgid "Information"
+msgstr ""
+
 msgid "Inherit AutoTimer"
 msgstr "Heredar Autotimer"
 
@@ -805,6 +835,9 @@ msgstr "Grabación instantánea iniciada para el evento actual"
 
 msgid "Internal error!"
 msgstr "Error interno!"
+
+msgid "Internal flash memory"
+msgstr ""
 
 #, fuzzy, python-format
 msgid "Interval (in %s)"
@@ -840,11 +873,11 @@ msgstr ""
 msgid "LCD4Linux Setup"
 msgstr "Configurar LCD4Linux"
 
-msgid "LICENSE"
-msgstr "LICENCIA"
-
 msgid "Label series"
 msgstr "Serie de etiquetas"
+
+msgid "License"
+msgstr ""
 
 msgid "Link speed"
 msgstr ""
@@ -939,6 +972,9 @@ msgstr ""
 msgid "More details"
 msgstr ""
 
+msgid "Mount point"
+msgstr ""
+
 msgid "Movie database for EPG"
 msgstr ""
 
@@ -957,6 +993,9 @@ msgstr "Multi-Favoritos no está habilitado!"
 
 msgid "MultiEPG"
 msgstr "MultiEPG"
+
+msgid "Mute/Unmute"
+msgstr ""
 
 msgid "NCam Webinterface"
 msgstr ""
@@ -1027,6 +1066,9 @@ msgstr "No se han encontrado coincidencia para el temporizador"
 msgid "No matching Timer found"
 msgstr "No se han encontrado coincidencia para el temporizador"
 
+msgid "No network connection"
+msgstr ""
+
 msgid "No new servicename given!"
 msgstr "Ningún nombre de servicio introducido!"
 
@@ -1070,6 +1112,9 @@ msgstr ""
 msgid "Number of recordings remaining"
 msgstr "Cantidad de grabaciones de la izquierda"
 
+msgid "ONID"
+msgstr ""
+
 msgid "OSCam Webinterface"
 msgstr ""
 
@@ -1093,9 +1138,6 @@ msgstr "En cualquier servicio"
 
 msgid "On same service"
 msgstr "En el mismo servicio"
-
-msgid "ONID"
-msgstr ""
 
 msgid "Only match between dates"
 msgstr "Restringir a los eventos en determinadas fechas"
@@ -1137,6 +1179,12 @@ msgstr "Posición orbital"
 msgid "Override found with alternative service"
 msgstr "Anular encontrado con un servicio alternativo"
 
+msgid "PCR PID"
+msgstr ""
+
+msgid "PMT PID"
+msgstr ""
+
 msgid "Packages"
 msgstr ""
 
@@ -1148,9 +1196,6 @@ msgstr "Control parental no está activado."
 
 msgid "Parse AutoTimer"
 msgstr "Analizar Autotimer"
-
-msgid "PCR PID"
-msgstr ""
 
 msgid "PiP"
 msgstr ""
@@ -1176,9 +1221,6 @@ msgstr "Lista de Reproducción"
 #, fuzzy
 msgid "Playlist format"
 msgstr "Lista de Reproducción"
-
-msgid "PMT PID"
-msgstr ""
 
 msgid "Power Control"
 msgstr "Control de Encendido"
@@ -1289,6 +1331,9 @@ msgstr ""
 msgid "SNR"
 msgstr "SNR"
 
+msgid "SRef"
+msgstr ""
+
 msgid "Sa"
 msgstr "Sa"
 
@@ -1320,6 +1365,9 @@ msgstr "Buscar"
 msgid "Search CSFD"
 msgstr "Buscar en IMDb"
 
+msgid "Search EPG"
+msgstr ""
+
 msgid "Search IMDb"
 msgstr "Buscar en IMDb"
 
@@ -1345,6 +1393,9 @@ msgid "Select IPK file for upload"
 msgstr ""
 
 msgid "Select..."
+msgstr ""
+
+msgid "Send"
 msgstr ""
 
 msgid "Send Message"
@@ -1391,6 +1442,9 @@ msgstr "Servicio %s borrado del favorito %s."
 msgid "Service %s removed."
 msgstr "Servicio %s borrado."
 
+msgid "Service ID (SID)"
+msgstr ""
+
 msgid "Service can not be moved."
 msgstr "Servicio no se puede mover."
 
@@ -1405,6 +1459,9 @@ msgstr "Servicio renombrado correctamente"
 
 msgid "Services"
 msgstr "Servicios"
+
+msgid "Serving stream"
+msgstr ""
 
 msgid "Set maximum duration"
 msgstr "Seleccionar duración máxima"
@@ -1452,7 +1509,13 @@ msgstr "Mostar Picon en lista de canales"
 msgid "Shutdown"
 msgstr "Apagar"
 
-msgid "Service ID (SID)"
+msgid "Signal Power (AGC)"
+msgstr ""
+
+msgid "Signal Quality (SNR DB)"
+msgstr ""
+
+msgid "Signal Quality (SNR)"
 msgstr ""
 
 msgid "Simulate"
@@ -1480,6 +1543,9 @@ msgstr "Temporizador de apagado activado"
 msgid "Sleeptimer set to %d minutes"
 msgstr "Temporizador de apagado configurado a %d minutos"
 
+msgid "Small remote layout"
+msgstr ""
+
 msgid "Software"
 msgstr "Software"
 
@@ -1492,14 +1558,8 @@ msgstr ""
 msgid "Spinner"
 msgstr ""
 
-msgid "SRef"
-msgstr ""
-
 msgid "Standby"
 msgstr "Modo de Espera"
-
-msgid "Standby Toggle"
-msgstr "Activar Reposo"
 
 msgid "Start"
 msgstr "Inicio"
@@ -1514,6 +1574,9 @@ msgid "Start typing..."
 msgstr ""
 
 msgid "State"
+msgstr ""
+
+msgid "Storage"
 msgstr ""
 
 msgid "Stream"
@@ -1549,6 +1612,9 @@ msgid "System OE"
 msgstr "Sistema OE"
 
 msgid "TB"
+msgstr ""
+
+msgid "TSID"
 msgstr ""
 
 msgid "TV"
@@ -1657,6 +1723,9 @@ msgstr "El temporizador '%s' no se ha guardado por un conflicto"
 msgid "Timer Added"
 msgstr "Temporizador añadido"
 
+msgid "Timer Conflict"
+msgstr ""
+
 msgid "Timer added"
 msgstr "Añadir grabación"
 
@@ -1684,6 +1753,9 @@ msgstr "No antes de"
 msgid "Today"
 msgstr ""
 
+msgid "Toggle Standby"
+msgstr ""
+
 msgid "Transcode"
 msgstr "Transcodificar"
 
@@ -1692,9 +1764,6 @@ msgstr "Traducción al Español"
 
 msgid "Try guessing"
 msgstr "Tratar de adivinar"
-
-msgid "TSID"
-msgstr ""
 
 msgid "Tu"
 msgstr "Ma"
@@ -1705,23 +1774,11 @@ msgstr "Mar"
 msgid "Tuesday"
 msgstr "Martes"
 
-msgid "Bit Error Rate (BER)"
-msgstr ""
-
 msgid "Tuner Number"
 msgstr "Numero de Sintonizador"
 
 msgid "Tuner Signal"
 msgstr "Señal del Sintonizador"
-
-msgid "Signal Power (AGC)"
-msgstr ""
-
-msgid "Signal Quality (SNR)"
-msgstr ""
-
-msgid "Signal Quality (SNR DB)"
-msgstr ""
 
 msgid "Tuner Type"
 msgstr "Tipo de Sintonizador"
@@ -1792,10 +1849,6 @@ msgstr "Usar nuevo diseño"
 msgid "Use modern interface"
 msgstr "Usar nuevo diseño"
 
-#, fuzzy
-msgid "Use old remote"
-msgstr "Ocultar Control Remoto Completo"
-
 msgid "VPS"
 msgstr "VPS"
 
@@ -1811,7 +1864,7 @@ msgstr "Video"
 msgid "Video Height"
 msgstr "Alto de Video"
 
-msgid "Widescreen"
+msgid "Video PID (VPID)"
 msgstr ""
 
 msgid "Video Width"
@@ -1825,9 +1878,6 @@ msgstr "Volumen"
 
 msgid "Volume Control"
 msgstr "Control Volumen"
-
-msgid "Video PID (VPID)"
-msgstr ""
 
 msgid "W"
 msgstr "W"
@@ -1862,6 +1912,9 @@ msgstr "Semanal (Lunes)"
 
 msgid "Weekly (Sunday)"
 msgstr "Semanal (Domingo)"
+
+msgid "Widescreen"
+msgstr ""
 
 msgid "Without auth only local access is allowed!"
 msgstr "Sin autorización, solo se permite el acceso local!"
@@ -2004,6 +2057,9 @@ msgstr ""
 msgid "r/w"
 msgstr ""
 
+msgid "receiver"
+msgstr ""
+
 msgid "record"
 msgstr "grabar"
 
@@ -2091,6 +2147,23 @@ msgstr "Tipo de archivo erróneo"
 
 msgid "zap"
 msgstr "saltar"
+
+#~ msgid "EPG Search"
+#~ msgstr "Buscar EPG"
+
+#, fuzzy
+#~ msgid "Enter Text"
+#~ msgstr "Tipo de Sintonizador"
+
+#~ msgid "LICENSE"
+#~ msgstr "LICENCIA"
+
+#~ msgid "Standby Toggle"
+#~ msgstr "Activar Reposo"
+
+#, fuzzy
+#~ msgid "Use old remote"
+#~ msgstr "Ocultar Control Remoto Completo"
 
 #~ msgid "Recording Status"
 #~ msgstr "Estado de Grabación"

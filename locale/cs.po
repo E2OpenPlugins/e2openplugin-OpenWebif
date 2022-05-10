@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 21:02+0100\n"
+"POT-Creation-Date: 2022-05-10 09:36+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: IMS <ims@openpli.org>\n"
 "Language-Team: PLi <ims@openpli.org>\n"
@@ -49,6 +49,10 @@ msgstr "%s %s je uzamčen."
 #, python-format
 msgid "%s / %s"
 msgstr "%s / %s"
+
+#, python-format
+msgid "%s Style"
+msgstr ""
 
 #, python-format
 msgid "%s free / %s total"
@@ -167,17 +171,14 @@ msgstr "Odpověď je NE!"
 msgid "Answer is YES!"
 msgstr "Odpověď je ANO!"
 
+msgid "Any"
+msgstr ""
+
 msgid "Any day"
 msgstr "Libovolný den"
 
 msgid "Any service/recording"
 msgstr "Libovolný program/nahrávání"
-
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
-msgstr ""
 
 msgid "April"
 msgstr "Duben"
@@ -211,6 +212,15 @@ msgstr "Požádat, defaultně Ne"
 
 msgid "Ask, default Yes"
 msgstr "Požádat, defaultně Ano"
+
+msgid "Audio Encoding"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
+
+msgid "Audio Track"
+msgstr ""
 
 msgid "August"
 msgstr "Srpen"
@@ -253,6 +263,9 @@ msgstr "Začátek časového úseku \"po události\""
 
 msgid "Beginning of timespan"
 msgstr "Začátek časového úseku"
+
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Bookmark"
 msgstr "Záložka"
@@ -334,6 +347,9 @@ msgstr "Doba provozu"
 msgid "Brand"
 msgstr "Značka"
 
+msgid "Build"
+msgstr ""
+
 msgid "Cable"
 msgstr "Kabelové"
 
@@ -403,6 +419,9 @@ msgstr "Aktuální"
 msgid "Current Event"
 msgstr "Aktuální událost"
 
+msgid "Currently recording"
+msgstr ""
+
 msgid "Custom box name"
 msgstr "Vlastní název přijímače"
 
@@ -464,6 +483,9 @@ msgstr "Smazáno"
 msgid "Description"
 msgstr "Popis"
 
+msgid "Device"
+msgstr ""
+
 msgid "Disable"
 msgstr "Zakázat"
 
@@ -511,9 +533,6 @@ msgstr "E"
 
 msgid "EPG"
 msgstr ""
-
-msgid "EPG Search"
-msgstr "Hledat v EPG"
 
 msgid "EPG encoding"
 msgstr "Kódování EPG"
@@ -585,10 +604,6 @@ msgstr "Konec časového úseku \"po události\""
 msgid "End of timespan"
 msgstr "Konec časového úseku"
 
-#, fuzzy
-msgid "Enter Text"
-msgstr "Zadejte cestu"
-
 msgid "Enter a name for the new bouquet"
 msgstr "Zadejte nový název pro přehled"
 
@@ -600,6 +615,9 @@ msgstr "Zadejte název pro tento AutoTimer"
 
 msgid "Enter path"
 msgstr "Zadejte cestu"
+
+msgid "Enter text"
+msgstr ""
 
 msgid "Enter the text to find in the EPG"
 msgstr "Zadejte text pro hledání v EPG"
@@ -680,6 +698,9 @@ msgstr "Volné místo"
 msgid "Free Memory"
 msgstr "Volná paměť"
 
+msgid "Free space"
+msgstr ""
+
 msgid "Fri"
 msgstr "Pá"
 
@@ -722,11 +743,17 @@ msgstr "HTTPS port"
 msgid "Hard disk model"
 msgstr "HDD model"
 
+msgid "Hardware"
+msgstr ""
+
 msgid "Hide full remote"
 msgstr "Obecný ovladač"
 
 msgid "High Resolution"
 msgstr "Vysoké rozlišení"
+
+msgid "Hold to drag"
+msgstr ""
 
 msgid "Hour"
 msgstr "Hodiny"
@@ -767,6 +794,9 @@ msgstr "Začalo neomezené okamžité nahrávání"
 msgid "Info"
 msgstr "Informace"
 
+msgid "Information"
+msgstr ""
+
 msgid "Inherit AutoTimer"
 msgstr "Převzít z Autotimeru"
 
@@ -784,6 +814,9 @@ msgstr "Začalo okamžité nahrávání pro aktuální událost"
 
 msgid "Internal error!"
 msgstr "Vnitřní chyba!"
+
+msgid "Internal flash memory"
+msgstr ""
 
 #, python-format
 msgid "Interval (in %s)"
@@ -819,11 +852,11 @@ msgstr ""
 msgid "LCD4Linux Setup"
 msgstr "Nastavení LCD4Linux"
 
-msgid "LICENSE"
-msgstr "LICENCE"
-
 msgid "Label series"
 msgstr "Systém OE"
+
+msgid "License"
+msgstr ""
 
 msgid "Link speed"
 msgstr "Rychlost připojení"
@@ -916,6 +949,9 @@ msgstr "Více"
 msgid "More details"
 msgstr "Více detailů"
 
+msgid "Mount point"
+msgstr ""
+
 msgid "Movie database for EPG"
 msgstr "Databáze filmů v EPG"
 
@@ -932,6 +968,9 @@ msgid "Multi-Bouquet is not enabled!"
 msgstr "Vícenásobné přehledy nejsou povoley!"
 
 msgid "MultiEPG"
+msgstr ""
+
+msgid "Mute/Unmute"
 msgstr ""
 
 msgid "NCam Webinterface"
@@ -1000,6 +1039,9 @@ msgstr "Nenalezeny odpovídající výsledky v EPG"
 msgid "No matching Timer found"
 msgstr "Nenalezen odpovídající časovač"
 
+msgid "No network connection"
+msgstr ""
+
 msgid "No new servicename given!"
 msgstr ""
 
@@ -1042,6 +1084,9 @@ msgstr "Sloupce Nyní/Další"
 msgid "Number of recordings remaining"
 msgstr "Zbývá nahrávek"
 
+msgid "ONID"
+msgstr ""
+
 msgid "OSCam Webinterface"
 msgstr ""
 
@@ -1065,9 +1110,6 @@ msgstr "na libovolném programu"
 
 msgid "On same service"
 msgstr "na stejném programu"
-
-msgid "ONID"
-msgstr ""
 
 msgid "Only match between dates"
 msgstr "Omezit události na určité datum"
@@ -1108,6 +1150,12 @@ msgstr "Orbitální pozice"
 msgid "Override found with alternative service"
 msgstr "Přepsat nalezené alternativním programem"
 
+msgid "PCR PID"
+msgstr ""
+
+msgid "PMT PID"
+msgstr ""
+
 msgid "Packages"
 msgstr "Balíčky"
 
@@ -1119,9 +1167,6 @@ msgstr "Rodičovská kontrola není aktivována."
 
 msgid "Parse AutoTimer"
 msgstr "Analyzovat Autotimer"
-
-msgid "PCR PID"
-msgstr ""
 
 msgid "PiP"
 msgstr ""
@@ -1146,9 +1191,6 @@ msgstr ""
 
 msgid "Playlist format"
 msgstr "Formát playlistu"
-
-msgid "PMT PID"
-msgstr ""
 
 msgid "Power Control"
 msgstr "Napájení"
@@ -1255,6 +1297,9 @@ msgstr ""
 msgid "SNR"
 msgstr ""
 
+msgid "SRef"
+msgstr ""
+
 msgid "Sa"
 msgstr "So"
 
@@ -1285,6 +1330,9 @@ msgstr "Hledat"
 msgid "Search CSFD"
 msgstr "Prohledat CSFD"
 
+msgid "Search EPG"
+msgstr ""
+
 msgid "Search IMDb"
 msgstr "Prohledat IMDb"
 
@@ -1308,6 +1356,9 @@ msgstr "Vyberte IPK soubor pro nahrátí"
 
 msgid "Select..."
 msgstr "Vybrat..."
+
+msgid "Send"
+msgstr ""
 
 msgid "Send Message"
 msgstr "Odeslat zprávu"
@@ -1353,6 +1404,9 @@ msgstr "Program %s odstraněn z přehledu %s."
 msgid "Service %s removed."
 msgstr "Program %s odstraněn."
 
+msgid "Service ID (SID)"
+msgstr ""
+
 msgid "Service can not be moved."
 msgstr "Program nemůže být přemístěn."
 
@@ -1367,6 +1421,9 @@ msgstr "Program úspěšně přejmenován."
 
 msgid "Services"
 msgstr "Programy"
+
+msgid "Serving stream"
+msgstr ""
 
 msgid "Set maximum duration"
 msgstr "Nastavit maximální délku trvání"
@@ -1413,7 +1470,13 @@ msgstr "Zobrazovat typ programu v přehledu kanálů"
 msgid "Shutdown"
 msgstr "Vypnout"
 
-msgid "Service ID (SID)"
+msgid "Signal Power (AGC)"
+msgstr ""
+
+msgid "Signal Quality (SNR DB)"
+msgstr ""
+
+msgid "Signal Quality (SNR)"
 msgstr ""
 
 msgid "Simulate"
@@ -1441,6 +1504,9 @@ msgstr "Časovač usínání je povolen"
 msgid "Sleeptimer set to %d minutes"
 msgstr "Časovač usínání nastaven na %d minut"
 
+msgid "Small remote layout"
+msgstr ""
+
 msgid "Software"
 msgstr ""
 
@@ -1453,14 +1519,8 @@ msgstr "Třidit"
 msgid "Spinner"
 msgstr ""
 
-msgid "SRef"
-msgstr ""
-
 msgid "Standby"
 msgstr "Standby"
-
-msgid "Standby Toggle"
-msgstr "Přepnout Standby"
 
 msgid "Start"
 msgstr "Začátek"
@@ -1475,6 +1535,9 @@ msgid "Start typing..."
 msgstr ""
 
 msgid "State"
+msgstr ""
+
+msgid "Storage"
 msgstr ""
 
 msgid "Stream"
@@ -1508,6 +1571,9 @@ msgid "System OE"
 msgstr ""
 
 msgid "TB"
+msgstr ""
+
+msgid "TSID"
 msgstr ""
 
 msgid "TV"
@@ -1615,6 +1681,9 @@ msgstr "Časovač '%s' nebyl kvůli konfliktu uložen"
 msgid "Timer Added"
 msgstr "Časovač přidán"
 
+msgid "Timer Conflict"
+msgstr ""
+
 msgid "Timer added"
 msgstr "Časovač přidán"
 
@@ -1642,6 +1711,9 @@ msgstr "Ne před"
 msgid "Today"
 msgstr "Dnes"
 
+msgid "Toggle Standby"
+msgstr ""
+
 msgid "Transcode"
 msgstr "Transkódování"
 
@@ -1650,9 +1722,6 @@ msgstr "Překlad do španělštiny"
 
 msgid "Try guessing"
 msgstr "Zkusit odhadnout"
-
-msgid "TSID"
-msgstr ""
 
 msgid "Tu"
 msgstr "Út"
@@ -1663,23 +1732,11 @@ msgstr "Út"
 msgid "Tuesday"
 msgstr "Úterý"
 
-msgid "Bit Error Rate (BER)"
-msgstr ""
-
 msgid "Tuner Number"
 msgstr "Čislo tuneru"
 
 msgid "Tuner Signal"
 msgstr "Signál tuneru"
-
-msgid "Signal Power (AGC)"
-msgstr ""
-
-msgid "Signal Quality (SNR)"
-msgstr ""
-
-msgid "Signal Quality (SNR DB)"
-msgstr ""
 
 msgid "Tuner Type"
 msgstr "Typ tuneru"
@@ -1746,10 +1803,6 @@ msgstr "Použít nový vzhled"
 msgid "Use modern interface"
 msgstr "Použít nový vzhled"
 
-#, fuzzy
-msgid "Use old remote"
-msgstr "Obecný ovladač"
-
 msgid "VPS"
 msgstr ""
 
@@ -1765,7 +1818,7 @@ msgstr ""
 msgid "Video Height"
 msgstr "Výška videa"
 
-msgid "Widescreen"
+msgid "Video PID (VPID)"
 msgstr ""
 
 msgid "Video Width"
@@ -1779,9 +1832,6 @@ msgstr "Hlasitost"
 
 msgid "Volume Control"
 msgstr "Hlasitost"
-
-msgid "Video PID (VPID)"
-msgstr ""
 
 msgid "W"
 msgstr "W"
@@ -1815,6 +1865,9 @@ msgstr "týdně (pondělí)"
 
 msgid "Weekly (Sunday)"
 msgstr "týdně (neděle)"
+
+msgid "Widescreen"
+msgstr ""
 
 msgid "Without auth only local access is allowed!"
 msgstr "Bez ověřování je povolen pouze lokální přístup"
@@ -1952,6 +2005,9 @@ msgstr ""
 msgid "r/w"
 msgstr ""
 
+msgid "receiver"
+msgstr ""
+
 msgid "record"
 msgstr "nahrát"
 
@@ -2036,6 +2092,23 @@ msgstr "špatný typ souboru"
 
 msgid "zap"
 msgstr "přepnout"
+
+#~ msgid "EPG Search"
+#~ msgstr "Hledat v EPG"
+
+#, fuzzy
+#~ msgid "Enter Text"
+#~ msgstr "Zadejte cestu"
+
+#~ msgid "LICENSE"
+#~ msgstr "LICENCE"
+
+#~ msgid "Standby Toggle"
+#~ msgstr "Přepnout Standby"
+
+#, fuzzy
+#~ msgid "Use old remote"
+#~ msgstr "Obecný ovladač"
 
 #~ msgid "Recording Status"
 #~ msgstr "Stav nahrávání"

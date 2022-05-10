@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 21:02+0100\n"
+"POT-Creation-Date: 2022-05-10 09:36+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Samzam\n"
 "Language-Team: \n"
@@ -47,6 +47,10 @@ msgstr "%s %s on lukittu."
 #, python-format
 msgid "%s / %s"
 msgstr "%s / %s"
+
+#, python-format
+msgid "%s Style"
+msgstr ""
 
 #, python-format
 msgid "%s free / %s total"
@@ -165,17 +169,14 @@ msgstr "Vastaus on EI!"
 msgid "Answer is YES!"
 msgstr "Vastaus on KYLLÄ!"
 
+msgid "Any"
+msgstr ""
+
 msgid "Any day"
 msgstr "Kaikki päivät"
 
 msgid "Any service/recording"
 msgstr "Kanava/tallennus"
-
-msgid "Audio"
-msgstr ""
-
-msgid "Audio PID (APID)"
-msgstr ""
 
 msgid "April"
 msgstr "Huhtikuu"
@@ -209,6 +210,15 @@ msgstr "Kysy, oletus ei"
 
 msgid "Ask, default Yes"
 msgstr "Kysy, oletus kyllä"
+
+msgid "Audio Encoding"
+msgstr ""
+
+msgid "Audio PID (APID)"
+msgstr ""
+
+msgid "Audio Track"
+msgstr ""
 
 msgid "August"
 msgstr "Elokuu"
@@ -251,6 +261,9 @@ msgstr "Aikajakson \"ajastuksen jälkeen\" alku"
 
 msgid "Beginning of timespan"
 msgstr "Aikajakson alku"
+
+msgid "Bit Error Rate (BER)"
+msgstr ""
 
 msgid "Bookmark"
 msgstr "Kirjanmerkki"
@@ -332,6 +345,9 @@ msgstr "Käynnissäoloaika"
 msgid "Brand"
 msgstr "Merkki"
 
+msgid "Build"
+msgstr ""
+
 msgid "Cable"
 msgstr "Kaapeliverkko"
 
@@ -401,6 +417,9 @@ msgstr "Nykyinen"
 msgid "Current Event"
 msgstr "Nykyinen ohjelma"
 
+msgid "Currently recording"
+msgstr ""
+
 msgid "Custom box name"
 msgstr "Oma vastaanotinnimi"
 
@@ -462,6 +481,9 @@ msgstr "Poistettu"
 msgid "Description"
 msgstr "Kuvaus"
 
+msgid "Device"
+msgstr ""
+
 msgid "Disable"
 msgstr "Hylkää"
 
@@ -509,9 +531,6 @@ msgstr "O"
 
 msgid "EPG"
 msgstr "EPG"
-
-msgid "EPG Search"
-msgstr "Ohjelmaopashaku"
 
 msgid "EPG encoding"
 msgstr "EPG:n enkoodaus"
@@ -583,10 +602,6 @@ msgstr "Aikajakson \"ajastuksen jälkeen\" loppu"
 msgid "End of timespan"
 msgstr "Aikajakson loppu"
 
-#, fuzzy
-msgid "Enter Text"
-msgstr "Syötä polku"
-
 msgid "Enter a name for the new bouquet"
 msgstr "Syötä suosikkilistalle uusi nimi"
 
@@ -598,6 +613,9 @@ msgstr "Syötä nimi automaattiajastukselle"
 
 msgid "Enter path"
 msgstr "Syötä polku"
+
+msgid "Enter text"
+msgstr ""
 
 msgid "Enter the text to find in the EPG"
 msgstr "Syötä teksti epg-hakuun"
@@ -678,6 +696,9 @@ msgstr "Vapaa"
 msgid "Free Memory"
 msgstr "Vapaa muisti"
 
+msgid "Free space"
+msgstr ""
+
 msgid "Fri"
 msgstr "Pe"
 
@@ -720,11 +741,17 @@ msgstr "HTTPS-portti"
 msgid "Hard disk model"
 msgstr "Kiintolevytyyppi"
 
+msgid "Hardware"
+msgstr ""
+
 msgid "Hide full remote"
 msgstr "Piilota koko kaukosäädin"
 
 msgid "High Resolution"
 msgstr "Suuri resoluutio"
+
+msgid "Hold to drag"
+msgstr ""
 
 msgid "Hour"
 msgstr "Tunti"
@@ -765,6 +792,9 @@ msgstr "Jatkuva tallennus aloitettu"
 msgid "Info"
 msgstr "Tiedot"
 
+msgid "Information"
+msgstr ""
+
 msgid "Inherit AutoTimer"
 msgstr "Yhdistä automaatiajastukseen"
 
@@ -782,6 +812,9 @@ msgstr "Nykyisen ohjelman tallennus aloitettu"
 
 msgid "Internal error!"
 msgstr "Sisäinen virhe!"
+
+msgid "Internal flash memory"
+msgstr ""
 
 #, python-format
 msgid "Interval (in %s)"
@@ -817,11 +850,11 @@ msgstr "LCD"
 msgid "LCD4Linux Setup"
 msgstr "LCD4Linux-asetukset"
 
-msgid "LICENSE"
-msgstr "LISENSSI"
-
 msgid "Label series"
 msgstr "Nimeä sarjat"
+
+msgid "License"
+msgstr ""
 
 msgid "Link speed"
 msgstr "Verkon nopeus"
@@ -914,6 +947,9 @@ msgstr "Lisää"
 msgid "More details"
 msgstr "Lisätiedot"
 
+msgid "Mount point"
+msgstr ""
+
 msgid "Movie database for EPG"
 msgstr "Elokuvahakemisto EPG:lle"
 
@@ -931,6 +967,9 @@ msgstr "Useiden suosikkilistojen käyttö ei ole päällä!"
 
 msgid "MultiEPG"
 msgstr "MultiEPG"
+
+msgid "Mute/Unmute"
+msgstr ""
 
 msgid "NCam Webinterface"
 msgstr "NCam Webinterface"
@@ -998,6 +1037,9 @@ msgstr "EPG:stä ei löytynyt vastaavuutta"
 msgid "No matching Timer found"
 msgstr "Vastaavaa ajastusta ei löytynyt"
 
+msgid "No network connection"
+msgstr ""
+
 msgid "No new servicename given!"
 msgstr "Kanavanimeä ei ole annettu!"
 
@@ -1040,6 +1082,9 @@ msgstr ""
 msgid "Number of recordings remaining"
 msgstr "Tallennuksia jäljellä"
 
+msgid "ONID"
+msgstr ""
+
 msgid "OSCam Webinterface"
 msgstr "OSCam Webinterface"
 
@@ -1063,9 +1108,6 @@ msgstr "Miltä tahansa kanavalta"
 
 msgid "On same service"
 msgstr "Samalta kanavalta"
-
-msgid "ONID"
-msgstr ""
 
 msgid "Only match between dates"
 msgstr "Rajoita vain tiettyjen päivien ohjelmiin"
@@ -1106,6 +1148,12 @@ msgstr "Satelliitin sijainti"
 msgid "Override found with alternative service"
 msgstr "Käytä automaattista vaihtoehtojen valintaa"
 
+msgid "PCR PID"
+msgstr ""
+
+msgid "PMT PID"
+msgstr ""
+
 msgid "Packages"
 msgstr "Paketit"
 
@@ -1117,9 +1165,6 @@ msgstr "Lapsilukkoa ei ole aktivoitu."
 
 msgid "Parse AutoTimer"
 msgstr "Jäsentele automaattiajastukset"
-
-msgid "PCR PID"
-msgstr ""
 
 msgid "PiP"
 msgstr "PiP"
@@ -1144,9 +1189,6 @@ msgstr "Toistolista"
 
 msgid "Playlist format"
 msgstr "Toistolistan muoto"
-
-msgid "PMT PID"
-msgstr ""
 
 msgid "Power Control"
 msgstr "Virranhallinta"
@@ -1254,6 +1296,9 @@ msgstr "SLAAC"
 msgid "SNR"
 msgstr "SNR"
 
+msgid "SRef"
+msgstr ""
+
 msgid "Sa"
 msgstr "La"
 
@@ -1284,6 +1329,9 @@ msgstr "Haku"
 msgid "Search CSFD"
 msgstr "Hae CSFD:stä"
 
+msgid "Search EPG"
+msgstr ""
+
 msgid "Search IMDb"
 msgstr "Hae IMDb:stä"
 
@@ -1307,6 +1355,9 @@ msgstr "Valitse ladattava IPK-tiedosto"
 
 msgid "Select..."
 msgstr "Valitse..."
+
+msgid "Send"
+msgstr ""
 
 msgid "Send Message"
 msgstr "Lähetä viesti"
@@ -1352,6 +1403,9 @@ msgstr "Kanava %s poistettu suosikkilistalta %s."
 msgid "Service %s removed."
 msgstr "Kanava %s poistettu."
 
+msgid "Service ID (SID)"
+msgstr ""
+
 msgid "Service can not be moved."
 msgstr "Kanavaa ei voi siirtää."
 
@@ -1366,6 +1420,9 @@ msgstr "Kanavan uudelleen nimeäminen onnistui."
 
 msgid "Services"
 msgstr "Kanavat"
+
+msgid "Serving stream"
+msgstr ""
 
 msgid "Set maximum duration"
 msgstr "Aseta maksimikesto"
@@ -1413,7 +1470,13 @@ msgstr "Näytä kanavatyyppi kanavalistassa"
 msgid "Shutdown"
 msgstr "Sammuta"
 
-msgid "Service ID (SID)"
+msgid "Signal Power (AGC)"
+msgstr ""
+
+msgid "Signal Quality (SNR DB)"
+msgstr ""
+
+msgid "Signal Quality (SNR)"
 msgstr ""
 
 msgid "Simulate"
@@ -1441,6 +1504,9 @@ msgstr "Uniajastin aktivoitu"
 msgid "Sleeptimer set to %d minutes"
 msgstr "Uniajastus asetettu %d minuuttiin"
 
+msgid "Small remote layout"
+msgstr ""
+
 msgid "Software"
 msgstr "Ohjelmisto"
 
@@ -1453,14 +1519,8 @@ msgstr "Lajittele"
 msgid "Spinner"
 msgstr "Spinneri"
 
-msgid "SRef"
-msgstr ""
-
 msgid "Standby"
 msgstr "Valmiustilaan"
-
-msgid "Standby Toggle"
-msgstr "Valmiustilanappi"
 
 msgid "Start"
 msgstr "Aloitus"
@@ -1476,6 +1536,9 @@ msgstr "Aloita kirjoittaminen..."
 
 msgid "State"
 msgstr "Tila"
+
+msgid "Storage"
+msgstr ""
 
 msgid "Stream"
 msgstr "Suoratoisto"
@@ -1509,6 +1572,9 @@ msgstr "OE-järjestelmä"
 
 msgid "TB"
 msgstr "TB"
+
+msgid "TSID"
+msgstr ""
 
 msgid "TV"
 msgstr "TV"
@@ -1615,6 +1681,9 @@ msgstr "Ajastusta '%s' ei tallennettu ristiriidan takia"
 msgid "Timer Added"
 msgstr "Ajastus lisätty"
 
+msgid "Timer Conflict"
+msgstr ""
+
 msgid "Timer added"
 msgstr "Ajastus lisätty"
 
@@ -1642,6 +1711,9 @@ msgstr "Ei ennen"
 msgid "Today"
 msgstr "Tänään"
 
+msgid "Toggle Standby"
+msgstr ""
+
 msgid "Transcode"
 msgstr "Transkoodaus"
 
@@ -1650,9 +1722,6 @@ msgstr "Espanjankielinen käännös"
 
 msgid "Try guessing"
 msgstr "Kokeile kyselyä"
-
-msgid "TSID"
-msgstr ""
 
 msgid "Tu"
 msgstr "Ti"
@@ -1663,23 +1732,11 @@ msgstr "Ti"
 msgid "Tuesday"
 msgstr "Tiistai"
 
-msgid "Bit Error Rate (BER)"
-msgstr ""
-
 msgid "Tuner Number"
 msgstr "Virittimen numero"
 
 msgid "Tuner Signal"
 msgstr "Virittimen signaali"
-
-msgid "Signal Power (AGC)"
-msgstr ""
-
-msgid "Signal Quality (SNR)"
-msgstr ""
-
-msgid "Signal Quality (SNR DB)"
-msgstr ""
 
 msgid "Tuner Type"
 msgstr "Viritintyyppi"
@@ -1746,10 +1803,6 @@ msgstr "Käytä uutta teemaa"
 msgid "Use modern interface"
 msgstr "Käytä uutta käyttöliittymää"
 
-#, fuzzy
-msgid "Use old remote"
-msgstr "Piilota koko kaukosäädin"
-
 msgid "VPS"
 msgstr "VPS"
 
@@ -1765,7 +1818,7 @@ msgstr "Video"
 msgid "Video Height"
 msgstr "Kuvan korkeus"
 
-msgid "Widescreen"
+msgid "Video PID (VPID)"
 msgstr ""
 
 msgid "Video Width"
@@ -1779,9 +1832,6 @@ msgstr "Äänenvoimakkuus"
 
 msgid "Volume Control"
 msgstr "Äänenvoimakkuussäädin"
-
-msgid "Video PID (VPID)"
-msgstr ""
 
 msgid "W"
 msgstr "W"
@@ -1815,6 +1865,9 @@ msgstr "Viikottain (maanantai)"
 
 msgid "Weekly (Sunday)"
 msgstr "Viikottain (sunnuntai)"
+
+msgid "Widescreen"
+msgstr ""
 
 msgid "Without auth only local access is allowed!"
 msgstr "Vain lähiverkko-osoitteet sallittu!"
@@ -1952,6 +2005,9 @@ msgstr "r/o"
 msgid "r/w"
 msgstr "r/w"
 
+msgid "receiver"
+msgstr ""
+
 msgid "record"
 msgstr "Tallennus"
 
@@ -2036,6 +2092,23 @@ msgstr "väärä tiedostotyyppi"
 
 msgid "zap"
 msgstr "Kanavanvaihto"
+
+#~ msgid "EPG Search"
+#~ msgstr "Ohjelmaopashaku"
+
+#, fuzzy
+#~ msgid "Enter Text"
+#~ msgstr "Syötä polku"
+
+#~ msgid "LICENSE"
+#~ msgstr "LISENSSI"
+
+#~ msgid "Standby Toggle"
+#~ msgstr "Valmiustilanappi"
+
+#, fuzzy
+#~ msgid "Use old remote"
+#~ msgstr "Piilota koko kaukosäädin"
 
 #~ msgid "Apid"
 #~ msgstr "Apid"
