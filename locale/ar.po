@@ -332,7 +332,7 @@ msgstr "التحكم بالجهاز"
 msgid "Box Info"
 msgstr "معلومات الجهاز"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "مدة تشغيل الجهاز"
 
 msgid "Brand"
@@ -836,7 +836,7 @@ msgstr "الترخيص"
 msgid "Label series"
 msgstr "سلسله التسمية"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "سرعه الرابط"
 
 msgid "List of Timers has been cleaned"
@@ -861,7 +861,7 @@ msgstr "ميجابايت"
 msgid "Main"
 msgstr "الرئيسية"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "الذاكرة الرئيسية"
 
 msgid "March"

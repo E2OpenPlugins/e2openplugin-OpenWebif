@@ -334,7 +334,7 @@ msgstr "Control Deco"
 msgid "Box Info"
 msgstr "Información Deco"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Funcionamiento Decodificador"
 
 msgid "Brand"
@@ -846,7 +846,7 @@ msgstr "LICENCIA"
 msgid "Label series"
 msgstr "Serie de etiquetas"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr ""
 
 msgid "List of Timers has been cleaned"
@@ -871,7 +871,7 @@ msgstr ""
 msgid "Main"
 msgstr "Principal"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Memoria Total"
 
 msgid "March"

@@ -332,7 +332,7 @@ msgstr "Boksstyring"
 msgid "Box Info"
 msgstr "Boksinfo"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Boksens drifttid"
 
 msgid "Brand"
@@ -836,7 +836,7 @@ msgstr "LICENS"
 msgid "Label series"
 msgstr "Mærk serier"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Forbindelseshastighed"
 
 msgid "List of Timers has been cleaned"
@@ -861,7 +861,7 @@ msgstr "MB"
 msgid "Main"
 msgstr "Hovedfunktioner"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Total hukommelse"
 
 msgid "March"

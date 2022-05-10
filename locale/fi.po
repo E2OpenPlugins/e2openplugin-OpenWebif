@@ -326,7 +326,7 @@ msgstr "Järjestelmä"
 msgid "Box Info"
 msgstr "Vastaanottimen tiedot"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Käynnissäoloaika"
 
 msgid "Brand"
@@ -823,7 +823,7 @@ msgstr "LISENSSI"
 msgid "Label series"
 msgstr "Nimeä sarjat"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Verkon nopeus"
 
 msgid "List of Timers has been cleaned"
@@ -847,7 +847,7 @@ msgstr "MB"
 msgid "Main"
 msgstr "Päävalikko"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Muistinkäyttö"
 
 msgid "March"

@@ -334,7 +334,7 @@ msgstr "Έλεγχος Δέκτη"
 msgid "Box Info"
 msgstr "Πληροφορίες Δέκτη"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Χρόνος Λειτουργίας Δέκτη"
 
 msgid "Brand"
@@ -845,7 +845,7 @@ msgstr "ΑΔΕΙΑ"
 msgid "Label series"
 msgstr "Σειρές ετικετών"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Ταχύτητα Σύνδεσης"
 
 msgid "List of Timers has been cleaned"
@@ -870,7 +870,7 @@ msgstr "MB"
 msgid "Main"
 msgstr "Κύριο"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Κύρια Μνήμη"
 
 msgid "March"

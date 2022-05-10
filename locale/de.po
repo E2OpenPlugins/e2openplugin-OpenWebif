@@ -1,19 +1,19 @@
-# jbleyel <jbleyel@gmx.net>, 2021.
+# jbleyel <jbleyel@gmx.net>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-09 21:02+0100\n"
-"PO-Revision-Date: 2021-12-22 19:15+0000\n"
+"PO-Revision-Date: 2022-05-10 08:58+0000\n"
 "Last-Translator: jbleyel <jbleyel@gmx.net>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/e2openplugin-"
-"openwebif/e2openplugin-openwebif/de/>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.12.1\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../plugin\n"
 
@@ -334,7 +334,7 @@ msgstr "Systemfunktionen"
 msgid "Box Info"
 msgstr "Receiver-Informationen"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Receiver-Laufzeit"
 
 msgid "Brand"
@@ -618,7 +618,7 @@ msgid "Enter path"
 msgstr "Pfad eingeben"
 
 msgid "Enter the text to find in the EPG"
-msgstr ""
+msgstr "Eingabe text zur Suche in EPG"
 
 msgid "Error"
 msgstr "Fehler"
@@ -849,7 +849,7 @@ msgstr "Lizenz"
 msgid "Label series"
 msgstr ""
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Verbindungsgeschwindigkeit"
 
 msgid "List of Timers has been cleaned"
@@ -874,7 +874,7 @@ msgstr "MB"
 msgid "Main"
 msgstr "Hauptmenü"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Hauptspeicher"
 
 msgid "March"
@@ -1070,7 +1070,7 @@ msgid "Now"
 msgstr "Jetzt"
 
 msgid "Now/Next Columns"
-msgstr ""
+msgstr "Jetzt/Später Spalten"
 
 msgid "Number of recordings remaining"
 msgstr "Verbleibende Anzahl Aufnahmen"
@@ -1112,7 +1112,7 @@ msgid "Oops, no results matched your search"
 msgstr ""
 
 msgid "Oops..."
-msgstr ""
+msgstr "Ups..."
 
 msgid "Open Source Web Interface for Linux set-top box"
 msgstr "Quelloffenes Webinterface für Linux-Receiver"
@@ -1219,7 +1219,7 @@ msgid "Record a maximum of # times"
 msgstr "Höchstens X-mal aufnehmen"
 
 msgid "Recording"
-msgstr ""
+msgstr "Aufnahme"
 
 #, fuzzy
 msgid "Recording Type"
@@ -1336,7 +1336,7 @@ msgid "Search TV Guide UK"
 msgstr "Zeitschrift"
 
 msgid "Search by name, sd / hd / uhd, or provider"
-msgstr ""
+msgstr "Suchen Sie nach Name, SD/HD/UHD oder Anbieter"
 
 #, fuzzy
 msgid "Search strictness"
@@ -1350,7 +1350,7 @@ msgid "Select IPK file for upload"
 msgstr "Wählen Sie die 'IPK' Datei zum Hochladen"
 
 msgid "Select..."
-msgstr ""
+msgstr "Auswählen..."
 
 msgid "Send Message"
 msgstr "Nachricht senden"
@@ -1424,7 +1424,7 @@ msgid "Show Full OpenWebif"
 msgstr "Desktop-Version OpenWebif"
 
 msgid "Show IPTV channels in selection (eg. Autotimer)"
-msgstr ""
+msgstr "IPTV-Kanäle in der Auswahl anzeigen (z. B. Autotimer)"
 
 #, fuzzy
 msgid "Show all packages"
@@ -1538,7 +1538,7 @@ msgid "Su"
 msgstr "So"
 
 msgid "Subdirectories"
-msgstr ""
+msgstr "Unterverzeichnisse"
 
 msgid "Subnet mask"
 msgstr "Subnetzmaske"
@@ -1695,7 +1695,7 @@ msgid "Transcode"
 msgstr "Transcodieren"
 
 msgid "Translation to Spanish"
-msgstr ""
+msgstr "Übersetzung ins Spanische"
 
 msgid "Try guessing"
 msgstr "Versuche zu raten"
@@ -1725,10 +1725,10 @@ msgid "Signal Power (AGC)"
 msgstr ""
 
 msgid "Signal Quality (SNR)"
-msgstr ""
+msgstr "Signalqualität (SNR)"
 
 msgid "Signal Quality (SNR DB)"
-msgstr ""
+msgstr "Signalqualität (SNR DB)"
 
 msgid "Tuner Type"
 msgstr "Tunerart"
@@ -1818,7 +1818,7 @@ msgid "Video Height"
 msgstr "Bildhöhe"
 
 msgid "Widescreen"
-msgstr ""
+msgstr "Breitbild"
 
 msgid "Video Width"
 msgstr "Bildbreite"
@@ -1876,7 +1876,7 @@ msgid "Wizard"
 msgstr "Assistent"
 
 msgid "Would you like to save your changes?"
-msgstr ""
+msgstr "Möchten Sie Ihre Änderungen speichern?"
 
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
@@ -1928,7 +1928,7 @@ msgid "case-sensitive"
 msgstr "Genauigkeit der Suche"
 
 msgid "descramble and record ecm"
-msgstr ""
+msgstr "Entschlüsseln und ECM Aufzeichnen"
 
 msgid "description contains"
 msgstr "in der Beschreibung"
@@ -1944,13 +1944,13 @@ msgid "do nothing"
 msgstr "Nichts"
 
 msgid "don't descramble, record ecm"
-msgstr ""
+msgstr "Nicht Entschlüsseln, ECM Aufzeichnen"
 
 msgid "error! Loading Page"
 msgstr "Fehler beim Laden der Seite"
 
 msgid "exact title match"
-msgstr ""
+msgstr "exakter Titel"
 
 msgid "favourite desc match"
 msgstr ""
@@ -1976,8 +1976,9 @@ msgstr "lade"
 msgid "manual/disabled"
 msgstr "manuell/deaktiviert"
 
+#, fuzzy
 msgid "mins"
-msgstr ""
+msgstr "Minuten"
 
 #, fuzzy
 msgid "minute"
@@ -1998,11 +1999,12 @@ msgstr ""
 msgid "on weekday"
 msgstr "an einem Wochentag"
 
+#, fuzzy
 msgid "one two three four unknown command"
-msgstr ""
+msgstr "eins zwei drei vier unbekannter Befehl"
 
 msgid "partial title match"
-msgstr ""
+msgstr "Teil des Titels"
 
 msgid "r/o"
 msgstr ""
@@ -2014,7 +2016,7 @@ msgid "record"
 msgstr "Aufnehmen"
 
 msgid "regex match (experimental)"
-msgstr ""
+msgstr "Regex-Übereinstimmung (experimentell)"
 
 msgid "remove"
 msgstr "entfernen"
@@ -2048,13 +2050,13 @@ msgid "static"
 msgstr "statisch"
 
 msgid "this service is protected by a parental control pin"
-msgstr ""
+msgstr "Dieser Sender ist durch eine Kindersicherungs-PIN geschützt"
 
 msgid "title contains"
 msgstr "im Titel"
 
 msgid "title ends with"
-msgstr ""
+msgstr "Titel endet mit"
 
 #, fuzzy
 msgid "title or description match"
@@ -2065,7 +2067,7 @@ msgid "title or short description match"
 msgstr "Teil des Titels oder der Kurzbeschreibung"
 
 msgid "title starts with"
-msgstr ""
+msgstr "Titel beginnt mit"
 
 msgid "transcoded"
 msgstr "transkodiert"

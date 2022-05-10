@@ -328,7 +328,7 @@ msgstr "Ovládání boxu"
 msgid "Box Info"
 msgstr "O přijímači"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Doba provozu"
 
 msgid "Brand"
@@ -825,7 +825,7 @@ msgstr "LICENCE"
 msgid "Label series"
 msgstr "Systém OE"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Rychlost připojení"
 
 msgid "List of Timers has been cleaned"
@@ -849,7 +849,7 @@ msgstr ""
 msgid "Main"
 msgstr "Hlavní"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Celková paměť"
 
 msgid "March"

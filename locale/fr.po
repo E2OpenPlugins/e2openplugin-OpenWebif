@@ -330,7 +330,7 @@ msgstr "Ctrl Récepteur"
 msgid "Box Info"
 msgstr "Info récepteur"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Durée de fonctionnement"
 
 msgid "Brand"
@@ -832,7 +832,7 @@ msgstr "LICENCE"
 msgid "Label series"
 msgstr "Nom des séries"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Vitesse du lien"
 
 msgid "List of Timers has been cleaned"
@@ -856,7 +856,7 @@ msgstr "Mo"
 msgid "Main"
 msgstr "Principal"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Mémoire totale"
 
 msgid "March"

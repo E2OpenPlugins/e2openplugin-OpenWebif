@@ -333,7 +333,7 @@ msgstr "Kutu Kontrolü"
 msgid "Box Info"
 msgstr "Kutu Bilgileri"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Kutu Çalışma Süresi"
 
 msgid "Brand"
@@ -835,7 +835,7 @@ msgstr "LICENSE"
 msgid "Label series"
 msgstr "Etiket serisi"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Bağlantı Hızı"
 
 msgid "List of Timers has been cleaned"
@@ -859,7 +859,7 @@ msgstr "MB"
 msgid "Main"
 msgstr "Ana"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Ana Bellek"
 
 msgid "March"

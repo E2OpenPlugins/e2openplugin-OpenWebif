@@ -329,7 +329,7 @@ msgstr "Kontrola odbiornika"
 msgid "Box Info"
 msgstr "Info o odbiorniku"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Czas pracy odbiornika"
 
 msgid "Brand"
@@ -827,7 +827,7 @@ msgstr "LICENCJA"
 msgid "Label series"
 msgstr "Seria etykiet"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Szybkość łącza"
 
 msgid "List of Timers has been cleaned"
@@ -851,7 +851,7 @@ msgstr "MB"
 msgid "Main"
 msgstr "Główny"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Pamięć systemowa"
 
 msgid "March"
@@ -1090,7 +1090,7 @@ msgid "Open in new window"
 msgstr "Otwórz w nowym oknie"
 
 msgid "OpenWebInterface Enabled"
-msgstr "Interfejs OpenWebif włączony"
+msgstr "Włącz OpenWebif"
 
 msgid "OpenWebif Browser Settings"
 msgstr "Ustawienia przeglądarki OpenWebif"
@@ -2037,6 +2037,15 @@ msgstr "zły typ pliku"
 
 msgid "zap"
 msgstr "przełącz"
+
+#~ msgid "Box Uptime"
+#~ msgstr "Czas pracy odbiornika"
+
+#~ msgid "Link Speed"
+#~ msgstr "Szybkość łącza"
+
+#~ msgid "Main Memory"
+#~ msgstr "Pamięć systemowa"
 
 #~ msgid "Apid"
 #~ msgstr "Apid"

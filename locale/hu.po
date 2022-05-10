@@ -332,7 +332,7 @@ msgstr "Box vezérlés"
 msgid "Box Info"
 msgstr "Box Info"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Box üzemidő"
 
 msgid "Brand"
@@ -837,7 +837,7 @@ msgstr "ENGEDÉLY"
 msgid "Label series"
 msgstr "Címke sorozat"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Link sebesség"
 
 msgid "List of Timers has been cleaned"
@@ -862,7 +862,7 @@ msgstr "MB"
 msgid "Main"
 msgstr "Fő"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Fő memória"
 
 msgid "March"

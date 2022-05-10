@@ -333,7 +333,7 @@ msgstr "Управление на приемника"
 msgid "Box Info"
 msgstr "Информация за приемника"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Непрекъсната работа на приемника"
 
 msgid "Brand"
@@ -843,7 +843,7 @@ msgstr "ЛИЦЕНЗ"
 msgid "Label series"
 msgstr "Серия етикети"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Скорост на Връзката"
 
 msgid "List of Timers has been cleaned"
@@ -868,7 +868,7 @@ msgstr "МБ"
 msgid "Main"
 msgstr "Главна"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Основна Памет"
 
 msgid "March"

@@ -333,7 +333,7 @@ msgstr "Mottaker kontroll"
 msgid "Box Info"
 msgstr "Mottakerinfo"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Mottakers oppetid"
 
 msgid "Brand"
@@ -837,7 +837,7 @@ msgstr "LISENS"
 msgid "Label series"
 msgstr "Legg til avsnittsinformasjon"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Overførings hastighet"
 
 msgid "List of Timers has been cleaned"
@@ -862,7 +862,7 @@ msgstr "MB"
 msgid "Main"
 msgstr "Hovedfunksjoner"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Hoved minne"
 
 msgid "March"

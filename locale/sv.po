@@ -331,7 +331,7 @@ msgstr "Boxstryrning"
 msgid "Box Info"
 msgstr "Boxinfo"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Boxens drifttid"
 
 msgid "Brand"
@@ -841,7 +841,7 @@ msgstr "LICENS"
 msgid "Label series"
 msgstr "Lägg till avsnittsinformation för TV-serier"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Länkhastighet"
 
 msgid "List of Timers has been cleaned"
@@ -866,7 +866,7 @@ msgstr "MB"
 msgid "Main"
 msgstr "Huvudfunktioner"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Totalt minne"
 
 msgid "March"

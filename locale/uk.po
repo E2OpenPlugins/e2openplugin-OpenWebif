@@ -334,7 +334,7 @@ msgstr "Управління ресівером"
 msgid "Box Info"
 msgstr "Інформація про ресівер"
 
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr "Час роботи ресивера"
 
 msgid "Brand"
@@ -841,7 +841,7 @@ msgstr "Ліцензія"
 msgid "Label series"
 msgstr "Відзначити групу"
 
-msgid "Link Speed"
+msgid "Link speed"
 msgstr "Швидкість з'єднання"
 
 msgid "List of Timers has been cleaned"
@@ -866,7 +866,7 @@ msgstr "Мб"
 msgid "Main"
 msgstr "Головна"
 
-msgid "Main Memory"
+msgid "Main memory"
 msgstr "Всього пам'яті"
 
 msgid "March"

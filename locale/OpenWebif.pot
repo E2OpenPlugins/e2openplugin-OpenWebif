@@ -429,7 +429,7 @@ msgid "Box Info"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:92
-msgid "Box Uptime"
+msgid "Box uptime"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:93
@@ -1092,7 +1092,7 @@ msgid "Label series"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:495
-msgid "Link Speed"
+msgid "Link speed"
 msgstr ""
 
 #: ../plugin/controllers/models/timers.py:562
@@ -1129,7 +1129,7 @@ msgid "Main"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:260
-msgid "Main Memory"
+msgid "Main memory"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:64
