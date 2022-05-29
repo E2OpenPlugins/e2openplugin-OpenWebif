@@ -587,7 +587,7 @@ tstrings = {
 	'serving_stream': _("Serving stream"),
 	'mute_unmute': _("Mute/Unmute"),
 	'send': _("Send"),
-	'receiver': _("receiver"),
+	'receiver': _("Receiver"),
 	'build': _("Build"),
 	'information': _("Information"),
 	'timer_conflict': _("Timer Conflict"),
