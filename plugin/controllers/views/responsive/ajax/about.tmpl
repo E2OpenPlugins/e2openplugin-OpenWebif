@@ -1,3 +1,4 @@
+#from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, OPENWEBIFPACKAGEVERSION
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 
 <div class="col-xs-12">
@@ -78,6 +79,21 @@
   | <a href="https://getbootstrap.com" target="_blank" class="link--skinned" rel="noreferrer noopener">Bootstrap - v3.3.6</a>
                     </li>
                   </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row clearfix">
+          <div class="col-xs-12">
+            <div class="card">
+              <div class="header bg--skinned">
+                <h2><i class="material-icons material-icons-centered">troubleshoot</i>$tstrings['version']</h2>
+              </div>
+              <div class="body">
+                <div class="row clearfix" style="text-align: center;">
+                    <p>$OPENWEBIFVER</p>
+                    <p>$tstrings['build']: $OPENWEBIFPACKAGEVERSION</p>
                 </div>
               </div>
             </div>
