@@ -1,6 +1,6 @@
 #from Plugins.Extensions.OpenWebif.controllers.i18n import tstrings
 #from Plugins.Extensions.OpenWebif.vtiaddon import skinColor, themeMode, EPGSearchBQonly, EPGSearchFull, ScreenshotOnRCU, MinMovieList, MinTimerList, MinEPGList, MovieSearchExtended, MovieSearchShort, RemoteControlView, showPicons, showPiconBackground, ZapStream, showIPTVChannelsInSelection, useSreenshotChannelName, useNowNextColumns
-#from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, OPENWEBIFPACKAGEVERSION, USERCSSRESPONSIVE
+#from Plugins.Extensions.OpenWebif.controllers.defaults import USERCSSRESPONSIVE
 #from json import dumps
 
 #set $skinPrefOptions = [
@@ -396,16 +396,6 @@
                                     <a href="#boxinfo" data-close="true" accesskey="i" title="Shortcut: i">$tstrings['receiver']</a>
                                 </li>
 								<li><a href="#about">OpenWebif</a></li>
-<!--
-#if $debugModeEnabled
--->
-								<li class="disabled" style="user-select: all;"><!-- these `disabled` classes will prevent the `Waves` plugin interfering with text selection -->
-                                    <a href="javascript:void(0);" class="disabled" style="user-select: all;">$tstrings['version']: $OPENWEBIFVER</a>
-                                    <a href="javascript:void(0);" class="disabled" style="user-select: all;">$tstrings['build']: $OPENWEBIFPACKAGEVERSION</a>
-								</li>
-<!--
-#end if
--->
 							</ul>
 						</li>
 						<li>
