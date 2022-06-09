@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-10 09:36+0000\n"
-"PO-Revision-Date: 2021-12-02 19:58+0000\n"
+"PO-Revision-Date: 2022-06-09 18:48+0300\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/e2openplugin-"
 "openwebif/e2openplugin-openwebif/tr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10-dev\n"
+"X-Generator: Poedit 2.4.3\n"
 
 #, python-format
 msgid "%02d.%02d."
@@ -176,7 +176,7 @@ msgid "Answer is YES!"
 msgstr "Cevap EVET!"
 
 msgid "Any"
-msgstr ""
+msgstr "Herhangi"
 
 msgid "Any day"
 msgstr "Herhangi bir gün"
@@ -197,13 +197,13 @@ msgid "Are you sure you want to delete this AutoTimer?"
 msgstr "Bu otomatik zamanlayıcıyı silmeye emin misiniz?"
 
 msgid "Are you sure you want to delete this recording?"
-msgstr "Kaydı gerçekten sil"
+msgstr "Kaydı silmek istediğinden emin misin?"
 
 msgid "Are you sure you want to delete this timer?"
 msgstr "Zamanlayıcıyı gerçekten sil?"
 
 msgid "Are you sure you want to rename this recording?"
-msgstr "Kaydı gerçekten yeniden adlandırın"
+msgstr "Kaydı yeniden adlandırmak istediğinden emin misin?"
 
 msgid "Are you sure you want to restore from file?"
 msgstr "Dosyadan gerçekten geri yüklemek istiyor musunuz?"
@@ -395,7 +395,7 @@ msgid "Common Settings"
 msgstr "Genel Ayarlar"
 
 msgid "Config"
-msgstr ""
+msgstr "Yapılandırma"
 
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
@@ -593,8 +593,7 @@ msgstr "Filtrelemeyi Etkinleştir"
 
 msgid "Enable/Disable Screenshot on key press or"
 msgstr ""
-"Tuşa basıldığında ekran görüntüsünü almayı etkinleştir / veya devre dışı "
-"bırak"
+"Tuşa basıldığında ekran görüntüsünü almayı etkinleştir / veya devre dışı bırak"
 
 msgid "Enabled"
 msgstr "Etkin"
@@ -618,15 +617,14 @@ msgstr "Buket için yeni ad girin"
 msgid "Enter a name for the new marker"
 msgstr "İşaretçi için yeni ad girin"
 
-#, fuzzy
 msgid "Enter a name for this AutoTimer"
-msgstr "İşaretçi için yeni ad girin"
+msgstr "AutoTimer için yeni ad girin"
 
 msgid "Enter path"
 msgstr "Yol gir"
 
 msgid "Enter text"
-msgstr ""
+msgstr "Yazı gir"
 
 msgid "Enter the text to find in the EPG"
 msgstr "EPG'de aranacak yazıyı gir"
@@ -709,7 +707,7 @@ msgid "Free Memory"
 msgstr "Boş Bellek"
 
 msgid "Free space"
-msgstr ""
+msgstr "Boş alan"
 
 msgid "Fri"
 msgstr "Cum"
@@ -754,7 +752,7 @@ msgid "Hard disk model"
 msgstr "Sabit disk modeli"
 
 msgid "Hardware"
-msgstr ""
+msgstr "Donanım"
 
 msgid "Hide full remote"
 msgstr "Tam uzaktan kumandayı gizle"
@@ -763,7 +761,7 @@ msgid "High Resolution"
 msgstr "Yüksek Çözünürlük"
 
 msgid "Hold to drag"
-msgstr ""
+msgstr "Sürüklemek için tut"
 
 msgid "Hour"
 msgstr "Saat"
@@ -805,7 +803,7 @@ msgid "Info"
 msgstr "Bilgi"
 
 msgid "Information"
-msgstr ""
+msgstr "Bilgi"
 
 msgid "Inherit AutoTimer"
 msgstr "Otomatik Zamanlayıcıyı Devral"
@@ -826,7 +824,7 @@ msgid "Internal error!"
 msgstr "Dahili hata!"
 
 msgid "Internal flash memory"
-msgstr ""
+msgstr "Dahili flaş hafızası"
 
 #, python-format
 msgid "Interval (in %s)"
@@ -866,7 +864,7 @@ msgid "Label series"
 msgstr "Etiket serisi"
 
 msgid "License"
-msgstr ""
+msgstr "Lisans"
 
 msgid "Link speed"
 msgstr "Bağlantı Hızı"
@@ -960,7 +958,7 @@ msgid "More details"
 msgstr "Daha fazla detay"
 
 msgid "Mount point"
-msgstr ""
+msgstr "Yükleme noktası"
 
 msgid "Movie database for EPG"
 msgstr "EPG için film veritabanı"
@@ -1043,15 +1041,14 @@ msgstr "Olay bulunamadı! Kaydedilemiyor!"
 msgid "No marker-name given!"
 msgstr "İşaretçi adı belirtilmedi!"
 
-#, fuzzy
 msgid "No matches were found in the EPG"
-msgstr "Eşleşen Zamanlayıcı bulunamadı"
+msgstr "EPG'de eşleşme bulunamadı"
 
 msgid "No matching Timer found"
 msgstr "Eşleşen Zamanlayıcı bulunamadı"
 
 msgid "No network connection"
-msgstr ""
+msgstr "Ağ bağlantısı yok"
 
 msgid "No new servicename given!"
 msgstr "Yeni hizmet adı verilmedi!"
@@ -1090,7 +1087,7 @@ msgid "Now"
 msgstr "Şimdi"
 
 msgid "Now/Next Columns"
-msgstr ""
+msgstr "Şimdiki/Sonraki kolonları"
 
 msgid "Number of recordings remaining"
 msgstr "Kalan kayıt miktarı"
@@ -1196,7 +1193,7 @@ msgid "Playback"
 msgstr "Oynatma"
 
 msgid "Playback IPTV Streams in browser"
-msgstr ""
+msgstr "IPTV akışını tarayıcıda oynatma"
 
 msgid "Playlist"
 msgstr "Oynatma Listesi"
@@ -1226,7 +1223,7 @@ msgid "Providers"
 msgstr "Sağlayıcılar"
 
 msgid "REC"
-msgstr ""
+msgstr "KAYIT"
 
 msgid "Radio"
 msgstr "Radyo"
@@ -1238,11 +1235,10 @@ msgid "Record a maximum of # times"
 msgstr "En fazla x kez kaydedin"
 
 msgid "Recording"
-msgstr ""
+msgstr "Kayıt"
 
-#, fuzzy
 msgid "Recording Type"
-msgstr "Kayıt Durumu"
+msgstr "Kayıt Türü"
 
 msgid "Refresh"
 msgstr "Yenile"
@@ -1265,9 +1261,8 @@ msgstr "Kumanda"
 msgid "Remove Package"
 msgstr "Paketi Kaldır"
 
-#, fuzzy
 msgid "Remove filter"
-msgstr "Kumanda"
+msgstr "Filtreyi kaldır"
 
 msgid "Rename"
 msgstr "Yeniden Adlandır"
@@ -1287,9 +1282,8 @@ msgstr "HTTPS için istemci sertifikası gerektir"
 msgid "Require description to be unique"
 msgstr "Açıklamanın benzersiz olmasını gerektir"
 
-#, fuzzy
 msgid "Reset"
-msgstr "Sayımı sıfırla"
+msgstr "Sıfırla"
 
 msgid "Reset count"
 msgstr "Sayımı sıfırla"
@@ -1347,7 +1341,7 @@ msgid "Search CSFD"
 msgstr "CSFD'de Ara"
 
 msgid "Search EPG"
-msgstr ""
+msgstr "EPG Arama"
 
 msgid "Search IMDb"
 msgstr "IMDb'de Ara"
@@ -1376,7 +1370,7 @@ msgid "Select..."
 msgstr "Seç..."
 
 msgid "Send"
-msgstr ""
+msgstr "Gönder"
 
 msgid "Send Message"
 msgstr "Mesaj Gönder"
@@ -1551,13 +1545,13 @@ msgid "Start time is after end time"
 msgstr "Başlangıç ​​zamanı bitiş zamanından sonra"
 
 msgid "Start typing..."
-msgstr "YAZMAYI BAŞLAT"
+msgstr "Yazmaya başla..."
 
 msgid "State"
 msgstr ""
 
 msgid "Storage"
-msgstr ""
+msgstr "Depolama"
 
 msgid "Stream"
 msgstr "Akış"
@@ -1565,9 +1559,8 @@ msgstr "Akış"
 msgid "Stream Clients"
 msgstr "İstemci Akışı"
 
-#, fuzzy
 msgid "Streaming port"
-msgstr "İstemci Akışı"
+msgstr "İstemci portu"
 
 msgid "Su"
 msgstr "Pzr"
@@ -1654,9 +1647,8 @@ msgstr "Zamanlayıcı '%s' şimdi kaydedildi! Devre dışı bırakılmadı!"
 msgid "Theme"
 msgstr "Tema"
 
-#, fuzzy
 msgid "Theme mode"
-msgstr "Tema"
+msgstr "Tema modu"
 
 msgid "This service can not be added."
 msgstr "Bu hizmet eklenemez."
@@ -1703,7 +1695,7 @@ msgid "Timer Added"
 msgstr "Zamanlayıcı Eklendi"
 
 msgid "Timer Conflict"
-msgstr ""
+msgstr "Zamanlayıcı çatışması"
 
 msgid "Timer added"
 msgstr "Zamanlayıcı eklendi"
@@ -1801,7 +1793,7 @@ msgid "Uploaded Files"
 msgstr "Yüklenen Dosyalar"
 
 msgid "Use Channelname for screenshots"
-msgstr ""
+msgstr "Screenshotlarda kanal adı olsun"
 
 msgid "Use a custom location"
 msgstr "Özel bir konum kullan"
@@ -1809,9 +1801,8 @@ msgstr "Özel bir konum kullan"
 msgid "Use as PiP if possible"
 msgstr "Mümkünse PiP olarak kullanın"
 
-#, fuzzy
 msgid "Use classic interface"
-msgstr "Yeni tasarım kullan"
+msgstr "Klasik tasarım kullan"
 
 msgid "Use custom Color"
 msgstr "Özel Renk Kullan"
@@ -1890,7 +1881,7 @@ msgid "Weekly (Sunday)"
 msgstr "Haftalık (Pazar)"
 
 msgid "Widescreen"
-msgstr ""
+msgstr "Geniş ekran"
 
 msgid "Without auth only local access is allowed!"
 msgstr "Yetkilendirme olmadan yalnızca yerel erişime izin verilir!"
@@ -1899,7 +1890,7 @@ msgid "Wizard"
 msgstr "Sihirbaz"
 
 msgid "Would you like to save your changes?"
-msgstr ""
+msgstr "Değişiklikleri kaydetmek ister misiniz?"
 
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
@@ -1941,13 +1932,11 @@ msgstr "otomatik"
 msgid "box_ip"
 msgstr ""
 
-#, fuzzy
 msgid "case-insensitive"
-msgstr "Arama katılığı"
+msgstr "büyük-küçük duyarsız"
 
-#, fuzzy
 msgid "case-sensitive"
-msgstr "Arama katılığı"
+msgstr "büyük-küçük duyarlı"
 
 msgid "descramble and record ecm"
 msgstr ""
@@ -2022,7 +2011,7 @@ msgid "one two three four unknown command"
 msgstr "bir, iki, üç, dört bilinmeyen komut"
 
 msgid "partial title match"
-msgstr ""
+msgstr "kısmi ad eşleşmesi"
 
 msgid "r/o"
 msgstr "r/o"
@@ -2037,7 +2026,7 @@ msgid "record"
 msgstr "kayıt"
 
 msgid "regex match (experimental)"
-msgstr ""
+msgstr "regex eşleme (deneysel)"
 
 msgid "remove"
 msgstr "kaldır"
@@ -2049,7 +2038,7 @@ msgid "seconds"
 msgstr "saniye"
 
 msgid "select bouquets"
-msgstr "Buketleri seçin"
+msgstr "buketleri seçin"
 
 msgid "select channels"
 msgstr "kanalları seçin"
@@ -2058,7 +2047,7 @@ msgid "select tags"
 msgstr "etiketleri seçin"
 
 msgid "short description contains"
-msgstr "Kısa Açıklama"
+msgstr "kısa açıklama içeriği"
 
 #, fuzzy
 msgid "short description match"
