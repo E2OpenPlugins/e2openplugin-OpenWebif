@@ -2052,7 +2052,7 @@ msgstr "r/o"
 msgid "r/w"
 msgstr "r/w"
 
-msgid "receiver"
+msgid "Receiver"
 msgstr ""
 
 msgid "record"

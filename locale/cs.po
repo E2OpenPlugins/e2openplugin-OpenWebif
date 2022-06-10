@@ -2005,7 +2005,7 @@ msgstr ""
 msgid "r/w"
 msgstr ""
 
-msgid "receiver"
+msgid "Receiver"
 msgstr ""
 
 msgid "record"

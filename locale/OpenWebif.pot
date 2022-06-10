@@ -2716,7 +2716,7 @@ msgid "r/w"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:590
-msgid "receiver"
+msgid "Receiver"
 msgstr ""
 
 #: ../plugin/controllers/i18n.py:322

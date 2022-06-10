@@ -2011,7 +2011,7 @@ msgstr "tik skaityti"
 msgid "r/w"
 msgstr "skaityti/rašyti"
 
-msgid "receiver"
+msgid "Receiver"
 msgstr ""
 
 msgid "record"
