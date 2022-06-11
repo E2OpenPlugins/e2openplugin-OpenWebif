@@ -2005,7 +2005,7 @@ msgstr "r/o"
 msgid "r/w"
 msgstr "读/写"
 
-msgid "receiver"
+msgid "Receiver"
 msgstr ""
 
 msgid "record"

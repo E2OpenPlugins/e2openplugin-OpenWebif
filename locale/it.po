@@ -1,21 +1,21 @@
 # Signed-off-by: Dario Croci <spaeleus@croci.org>
 #
-# Dario Croci <spaeleus@croci.org>, 2021.
+# Dario Croci <spaeleus@croci.org>, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-10 09:36+0000\n"
-"PO-Revision-Date: 2021-12-22 17:57+0000\n"
+"PO-Revision-Date: 2022-05-22 13:13+0000\n"
 "Last-Translator: Dario Croci <spaeleus@croci.org>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/e2openplugin-"
-"openwebif/e2openplugin-openwebif/it/>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/"
+"e2openplugin-openwebif/e2openplugin-openwebif/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.13-dev\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -56,7 +56,7 @@ msgstr "%s / %s"
 
 #, python-format
 msgid "%s Style"
-msgstr ""
+msgstr "Stile %s"
 
 #, python-format
 msgid "%s free / %s total"
@@ -176,7 +176,7 @@ msgid "Answer is YES!"
 msgstr "La risposta è SÌ."
 
 msgid "Any"
-msgstr ""
+msgstr "Qualsiasi"
 
 msgid "Any day"
 msgstr "Ogni giorno"
@@ -218,13 +218,13 @@ msgid "Ask, default Yes"
 msgstr "Chiedere, predefinito Sì"
 
 msgid "Audio Encoding"
-msgstr ""
+msgstr "Codifica audio"
 
 msgid "Audio PID (APID)"
 msgstr "PID audio (APID)"
 
 msgid "Audio Track"
-msgstr ""
+msgstr "Traccia audio"
 
 msgid "August"
 msgstr "Agosto"
@@ -352,7 +352,7 @@ msgid "Brand"
 msgstr "Marca"
 
 msgid "Build"
-msgstr ""
+msgstr "Build"
 
 msgid "Cable"
 msgstr "Cavo"
@@ -424,7 +424,7 @@ msgid "Current Event"
 msgstr "Evento corrente"
 
 msgid "Currently recording"
-msgstr ""
+msgstr "Attualmente in registrazione"
 
 msgid "Custom box name"
 msgstr "Personalizzare il nome del ricevitore"
@@ -489,7 +489,7 @@ msgid "Description"
 msgstr "Descrizione"
 
 msgid "Device"
-msgstr ""
+msgstr "Dispositivo"
 
 msgid "Disable"
 msgstr "Disabilitare"
@@ -622,7 +622,7 @@ msgid "Enter path"
 msgstr "Inserire il percorso"
 
 msgid "Enter text"
-msgstr ""
+msgstr "Inserire il testo"
 
 msgid "Enter the text to find in the EPG"
 msgstr "Inserire il testo da cercare nell'EPG"
@@ -704,7 +704,7 @@ msgid "Free Memory"
 msgstr "Memoria libera"
 
 msgid "Free space"
-msgstr ""
+msgstr "Spazio libero"
 
 msgid "Fri"
 msgstr "Ven"
@@ -752,7 +752,7 @@ msgid "Hard disk model"
 msgstr "Modello hard disk"
 
 msgid "Hardware"
-msgstr ""
+msgstr "Hardware"
 
 msgid "Hide full remote"
 msgstr "Nascondere l'intero telecomando"
@@ -761,7 +761,7 @@ msgid "High Resolution"
 msgstr "Alta risoluzione"
 
 msgid "Hold to drag"
-msgstr ""
+msgstr "Tenere premuto per trascinare"
 
 msgid "Hour"
 msgstr "Ora"
@@ -803,7 +803,7 @@ msgid "Info"
 msgstr "Informazioni"
 
 msgid "Information"
-msgstr ""
+msgstr "Informazione"
 
 msgid "Inherit AutoTimer"
 msgstr "Ereditare Autotimer"
@@ -824,7 +824,7 @@ msgid "Internal error!"
 msgstr "Errore interno."
 
 msgid "Internal flash memory"
-msgstr ""
+msgstr "Memoria flash interna"
 
 #, python-format
 msgid "Interval (in %s)"
@@ -864,7 +864,7 @@ msgid "Label series"
 msgstr "Serie di etichette"
 
 msgid "License"
-msgstr ""
+msgstr "Licenza"
 
 msgid "Link speed"
 msgstr "Velocità connessione"
@@ -958,7 +958,7 @@ msgid "More details"
 msgstr "Più dettagli"
 
 msgid "Mount point"
-msgstr ""
+msgstr "Punto di mount"
 
 msgid "Movie database for EPG"
 msgstr "Database filmati per EPG"
@@ -979,7 +979,7 @@ msgid "MultiEPG"
 msgstr "MultiEPG"
 
 msgid "Mute/Unmute"
-msgstr ""
+msgstr "Disattivare/Riattivare audio"
 
 msgid "NCam Webinterface"
 msgstr "Interfaccia NCam"
@@ -1048,7 +1048,7 @@ msgid "No matching Timer found"
 msgstr "Timer corrispondente non trovato"
 
 msgid "No network connection"
-msgstr ""
+msgstr "Nessuna connessione di rete"
 
 msgid "No new servicename given!"
 msgstr "Nuovo nome canale non specificato."
@@ -1339,7 +1339,7 @@ msgid "Search CSFD"
 msgstr "Cercare CSFD"
 
 msgid "Search EPG"
-msgstr ""
+msgstr "Cercare nell'EPG"
 
 msgid "Search IMDb"
 msgstr "Cercare IMDb"
@@ -1366,7 +1366,7 @@ msgid "Select..."
 msgstr "Selezionare..."
 
 msgid "Send"
-msgstr ""
+msgstr "Inviare"
 
 msgid "Send Message"
 msgstr "Inviare messaggio"
@@ -1431,7 +1431,7 @@ msgid "Services"
 msgstr "Canali"
 
 msgid "Serving stream"
-msgstr ""
+msgstr "Stream di supporto"
 
 msgid "Set maximum duration"
 msgstr "Impostare durata massima"
@@ -1546,7 +1546,7 @@ msgid "State"
 msgstr "Stato"
 
 msgid "Storage"
-msgstr ""
+msgstr "Archiviazione"
 
 msgid "Stream"
 msgstr "Stream"
@@ -1690,7 +1690,7 @@ msgid "Timer Added"
 msgstr "Timer aggiunto"
 
 msgid "Timer Conflict"
-msgstr ""
+msgstr "Conflitto timer"
 
 msgid "Timer added"
 msgstr "Timer aggiunto"
@@ -1720,7 +1720,7 @@ msgid "Today"
 msgstr "Oggi"
 
 msgid "Toggle Standby"
-msgstr ""
+msgstr "Commutare standby"
 
 msgid "Transcode"
 msgstr "Transcodifica"
@@ -2013,8 +2013,8 @@ msgstr "r/o"
 msgid "r/w"
 msgstr "r/w"
 
-msgid "receiver"
-msgstr ""
+msgid "Receiver"
+msgstr "Ricevitore"
 
 msgid "record"
 msgstr "Registrazione"
