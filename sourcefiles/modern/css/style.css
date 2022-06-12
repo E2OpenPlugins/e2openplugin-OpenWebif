@@ -2347,15 +2347,23 @@ input[type='checkbox']:not(:disabled).tabbed:focus ~ .lever::after {
 }
 
 .right-sidebar .setting-list li {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
 	padding: 15px;
 	position: relative;
 	border-top: 1px solid #eee;
 }
 
+.right-sidebar .setting-list li span{
+	grid-area: 1 / 1 / 2 / 5;
+}
+
 .right-sidebar .setting-list li .switch {
 	position: absolute;
-	top: 15px;
-	right: 5px;
+	align-self: center;
+	grid-area: 1 / 5 / 2 / 6;
 }
 
 .skin-switcher {
