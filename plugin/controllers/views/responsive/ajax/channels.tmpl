@@ -114,7 +114,9 @@
 						</div>
 					</div>
 					<div class="now-next__desc">
-						$channel.now_shortdesc
+#set $nowEventDesc = $channel.now_shortdesc if $channel.now_shortdesc else $channel.now_extdesc
+						 $nowEventDesc
+#set $nowEventDesc = ""
 					</div>
 				</div>
 #else
@@ -135,7 +137,9 @@
 						</div>
 					</div>
 					<div class="now-next__desc">
-						$channel.next_shortdesc
+#set $nextEventDesc = $channel.next_shortdesc if $channel.next_shortdesc else $channel.next_extdesc
+						 $nextEventDesc
+#set $nextEventDesc = ""
 					</div>
 				</div>
 		#end if
