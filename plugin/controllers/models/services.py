@@ -451,7 +451,7 @@ def getProtection(sref):
 				if sref not in parentalControl.whitelist:
 					service = eServiceReference(sref)
 					if service.flags & eServiceReference.isGroup:
-						isprotected = '5'
+						isProtected = '5'
 					else:
 						isProtected = '4'
 	return isProtected
