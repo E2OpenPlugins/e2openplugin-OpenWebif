@@ -5,8 +5,10 @@
 
 #set $etime = time.localtime($event.begin)
 #set $channel = $event.channel.replace("'", r"\'")
+#set $channelQuoteEscaped = $channel.replace("'", "\\'")
 #set $title = $event.title.replace("'", r"\'")
 #set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
+#set $sRefQuoteEscaped = $sref.replace("'", "\\'")
 #set $endTime = $int($event.begin + $event.duration)
 #set $metadata = $dumps({ 'sref': quote($event.sref), 'id': $event.id, 'begin': $event.begin, 'end': $int($event.begin + $event.duration) }, indent=None, separators=(",", ":"))
 
@@ -22,7 +24,7 @@
 #if $showPicons and 'picon' in $event
 	#set $piconHTML = '<img class="img-fluid" src="%s" alt="Channel logo">' % $event.picon
 		<div class="event-detail__picon $piconCssClass" style="margin: 0 auto;">
-			<a href="javascript:zapChannel('$sref', '$channel');" title="$tstrings['zap_to'] $channel">$piconHTML</a>
+			<a href="javascript:zapChannel('$sRefQuoteEscaped', '$channelQuoteEscaped');" title="$tstrings['zap_to'] $channel">$piconHTML</a>
 		</div>
 #else
 		<h4>$channel</h4>
@@ -33,24 +35,24 @@
 	## 		<span class="link--not-skinned" target="_blank" title="$tstrings['locked']"><i class="material-icons material-icons-centered">lock_outline</i></span>
 	## #else
 		#if $type == "radio"
-			<!-- button type="button" onclick="addTimer('', '$sref', '$channel', '');" class="link--not-skinned" title="$tstrings['add_timer']"><i class="icon material-icons material-icons-centered">alarm_add</i></button -->
+			<!-- button type="button" onclick="addTimer('', '$sRefQuoteEscaped', '$channelQuoteEscaped', '');" class="link--not-skinned" title="$tstrings['add_timer']"><i class="icon material-icons material-icons-centered">alarm_add</i></button -->
 		#end if
 
-			<button type="button" onclick="zapChannel('$sref', '$channel');" class="link--not-skinned" title="$tstrings['zap_to'] $channel"><i class="icon material-icons material-icons-centered">settings_remote</i></button>
+			<button type="button" onclick="zapChannel('$sRefQuoteEscaped', '$channelQuoteEscaped');" class="link--not-skinned" title="$tstrings['zap_to'] $channel"><i class="icon material-icons material-icons-centered">settings_remote</i></button>
 
 		#if $event.link != ""
 			<a href="$event.link" class="now-next__external-link link--not-skinned" target="extlink" title="$tstrings['open_in_new_window']"><i class="material-icons material-icons-centered">phonelink</i></a>
 		#else
-			<button type="button" onclick="open_epg_dialog('$sref', '$channel');" class="link--not-skinned" title="$tstrings['show_epg_for'] $channel" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons material-icons-centered">event_note</i></button>
-			<button type="button" onclick="jumper8001('$sref', '$channel');" class="link--not-skinned" title="$tstrings['stream'] $channel"><i class="icon material-icons material-icons-centered">ondemand_video</i></button>
+			<button type="button" onclick="open_epg_dialog('$sRefQuoteEscaped', '$channelQuoteEscaped');" class="link--not-skinned" title="$tstrings['show_epg_for'] $channel" data-toggle="modal" data-target="#EPGModal"><i class="icon material-icons material-icons-centered">event_note</i></button>
+			<button type="button" onclick="jumper8001('$sRefQuoteEscaped', '$channelQuoteEscaped');" class="link--not-skinned" title="$tstrings['stream'] $channel"><i class="icon material-icons material-icons-centered">ondemand_video</i></button>
 			#if $transcoding
-			<button type="button" onclick="jumper8002('$sref', '$channel');" class="link--not-skinned" title="$tstrings['stream'] ($tstrings['transcoded']) $channel"><i class="icon material-icons material-icons-centered">smartphone</i></button>
+			<button type="button" onclick="jumper8002('$sRefQuoteEscaped', '$channelQuoteEscaped');" class="link--not-skinned" title="$tstrings['stream'] ($tstrings['transcoded']) $channel"><i class="icon material-icons material-icons-centered">smartphone</i></button>
 			#end if
 ## #if $transcoding
-## <button onclick="jumper8001('$sref', '$channel');" class="link--not-skinned" title="$tstrings['stream']: $channel">
+## <button onclick="jumper8001('$sRefQuoteEscaped', '$channelQuoteEscaped');" class="link--not-skinned" title="$tstrings['stream']: $channel">
 ## <i class="material-icons material-icons-centered">tv</i>
 ## </button>
-## <button onclick="jumper8002('$sref', '$channel');" class="link--not-skinned" title="$tstrings['stream'] ($tstrings['transcoded']): $channel">
+## <button onclick="jumper8002('$sRefQuoteEscaped', '$channelQuoteEscaped');" class="link--not-skinned" title="$tstrings['stream'] ($tstrings['transcoded']): $channel">
 ## <i class="material-icons material-icons-centered">phone_android</i>
 ## </button>
 ## #else
@@ -102,29 +104,29 @@
 
 #if $event.timer
 	#if $event.timer.isEnabled
-		<button onclick="toggleTimerStatus('$sref', '$event.begin', '$event.end');" class="link--not-skinned" title="$tstrings['disable_timer']">
+		<button onclick="toggleTimerStatus('$sRefQuoteEscaped', '$event.begin', '$event.end');" class="link--not-skinned" title="$tstrings['disable_timer']">
 			<i class="material-icons material-icons-centered">alarm_off</i>
 		</button>
 	#else
-		<button onclick="toggleTimerStatus('$sref', '$event.begin', '$event.end');" class="link--not-skinned" title="$tstrings['enable_timer']">
+		<button onclick="toggleTimerStatus('$sRefQuoteEscaped', '$event.begin', '$event.end');" class="link--not-skinned" title="$tstrings['enable_timer']">
 			<i class="material-icons material-icons-centered">alarm_on</i>
 		</button>
 	#end if
 		<button class="link--not-skinned" data-target="#TimerModal" data-toggle="modal" data-dismiss="modal" title="$tstrings['edit_timer']">
 			<i class="material-icons material-icons-centered">edit</i>
 		</button>
-		<button onclick="delTimerEvent('$sref', '$event.id');" class="link--not-skinned" title="$tstrings['delete_timer']">
+		<button onclick="delTimerEvent('$sRefQuoteEscaped', '$event.id');" class="link--not-skinned" title="$tstrings['delete_timer']">
 			<i class="material-icons material-icons-centered">delete</i>
 		</button>
 #else
-		<button onclick="addTimerEvent('$sref', '$event.id', false);" class="link--not-skinned" title="$tstrings['add_timer']">
+		<button onclick="addTimerEvent('$sRefQuoteEscaped', '$event.id', false);" class="link--not-skinned" title="$tstrings['add_timer']">
 			<i class="material-icons material-icons-centered">alarm_add</i>
 		</button>
 		<button class="link--not-skinned" data-target="#TimerModal" data-toggle="modal" data-dismiss="modal" title="$tstrings['add'] & $tstrings['edit_timer']">
 			<i class="material-icons material-icons-centered">alarm_add</i>
 			<i class="material-icons material-icons-centered">edit</i>
 		</button>
-		<button onclick="addTimerEvent('$sref', '$event.id', true);" class="link--not-skinned" title="$tstrings['add_zaptimer']">
+		<button onclick="addTimerEvent('$sRefQuoteEscaped', '$event.id', true);" class="link--not-skinned" title="$tstrings['add_zaptimer']">
 			<i class="material-icons material-icons-centered">add_alert</i>
 		</button>
 #end if
