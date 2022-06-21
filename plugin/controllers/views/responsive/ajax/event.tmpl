@@ -4,10 +4,10 @@
 #from Plugins.Extensions.OpenWebif.vtiaddon import showPicons, showPiconBackground
 
 #set $etime = time.localtime($event.begin)
-#set $channel = $event.channel.replace("'", r"\'")
-#set $channelQuoteEscaped = $channel.replace("'", "\\'")
-#set $title = $event.title.replace("'", r"\'")
-#set $sref=quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
+#set $channel = $event.channel
+#set $channelQuoteEscaped = $channel.replace("&#x27;", "\\'")
+#set $title = $event.title.replace("'", "\\'")
+#set $sref = quote($event.sref, safe=' ~@#$&()*!+=:;,.?/\'')
 #set $sRefQuoteEscaped = $sref.replace("'", "\\'")
 #set $endTime = $int($event.begin + $event.duration)
 #set $metadata = $dumps({ 'sref': quote($event.sref), 'id': $event.id, 'begin': $event.begin, 'end': $int($event.begin + $event.duration) }, indent=None, separators=(",", ":"))
