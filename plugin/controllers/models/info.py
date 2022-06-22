@@ -106,7 +106,7 @@ def getLinkSpeed(iface):
 	except:  # nosec # noqa: E722
 		if os.path.isdir('/sys/class/net/' + iface + '/wireless'):
 			try:
-				speed = os.popen('iwconfig ' + iface + ' | grep "Bit Rate"').read().split(':')[1].split(' ')[0]
+				speed = os.popen('iwlist ' + iface + ' bitrate | grep "Bit Rate"').read().split(':')[1].split(' ')[0]
 			except:  # nosec # noqa: E722
 				pass
 	speed = str(speed) + " MBit/s"
