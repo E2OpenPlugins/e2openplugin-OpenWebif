@@ -23,7 +23,7 @@
 
 from __future__ import print_function
 import six
-from enigma import eEPGCache, eServiceReference
+from enigma import eServiceReference
 from Components.UsageConfig import preferredTimerPath, preferredInstantRecordPath
 from Components.config import config
 from Components.TimerSanityCheck import TimerSanityCheck
@@ -35,6 +35,7 @@ from six.moves.urllib.parse import unquote
 from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternative, getInfo
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad
+from Plugins.Extensions.OpenWebif.controllers.epg import Epg
 
 
 def FuzzyTime(t, inPast=False):
@@ -69,6 +70,7 @@ def FuzzyTime(t, inPast=False):
 
 def getTimers(session):
 	rt = session.nav.RecordTimer
+	epg = Epg()
 	timers = []
 	for timer in rt.timer_list + rt.processed_timers:
 		if hasattr(timer, "wakeup_t"):
@@ -80,9 +82,7 @@ def getTimers(session):
 		filename = None
 		nextactivation = None
 		if timer.eit and timer.service_ref:
-			event = eEPGCache.getInstance().lookupEvent(['EX', (str(timer.service_ref), 2, timer.eit)])
-			if event and event[0][0]:
-				descriptionextended = event[0][0]
+			descriptionextended = epg.getEventDescription(timer.service_ref, timer.eit)
 
 		try:
 			filename = timer.Filename
@@ -346,7 +346,8 @@ def addTimer(session, serviceref, begin, end, name, description, disabled, justp
 
 
 def addTimerByEventId(session, eventid, serviceref, justplay, dirname, tags, vpsinfo, always_zap, afterevent, pipzap, allow_duplicate, autoadjust, recordingtype):
-	event = eEPGCache.getInstance().lookupEventId(eServiceReference(serviceref), eventid)
+	epg = Epg()
+	event = epg.getEventById(serviceref, eventid)
 	if event is None:
 		return {
 			"result": False,

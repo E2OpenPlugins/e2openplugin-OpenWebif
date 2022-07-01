@@ -42,6 +42,7 @@ from Plugins.Extensions.OpenWebif.controllers.models.info import GetWithAlternat
 from Plugins.Extensions.OpenWebif.controllers.utilities import parse_servicereference, SERVICE_TYPE_LOOKUP, NS_LOOKUP, PY3
 from Plugins.Extensions.OpenWebif.controllers.i18n import _, tstrings
 from Plugins.Extensions.OpenWebif.controllers.defaults import PICON_PATH
+from Plugins.Extensions.OpenWebif.controllers.epg import Epg
 
 try:
 	from Components.Converter.genre import getGenreStringLong
@@ -466,7 +467,7 @@ def getChannels(idbouquet, stype):
 	if idbouquet == "ALL":
 		idbouquet = '%s ORDER BY name' % (s_type)
 
-	epgcache = eEPGCache.getInstance()
+	epg = Epg()
 	serviceHandler = eServiceCenter.getInstance()
 	services = serviceHandler.list(eServiceReference(idbouquet))
 	channels = services and services.getContent("SN", True)
@@ -495,7 +496,7 @@ def getChannels(idbouquet, stype):
 				chan['protection'] = getProtection(channel[0])
 			else:
 				chan['protection'] = "0"
-			nowevent = epgcache.lookupEvent(['TBDCISE', (channel[0], 0, -1)])
+			nowevent = epg.getNowEvent(channel[0])
 			if len(nowevent) > 0 and nowevent[0][0] is not None:
 				chan['now_title'] = filterName(nowevent[0][0])
 				chan['now_begin'] = strftime("%H:%M", (localtime(nowevent[0][1])))
@@ -506,7 +507,7 @@ def getChannels(idbouquet, stype):
 				chan['now_idp'] = "nowd" + str(idp)
 				chan['now_shortdesc'] = nowevent[0][5].strip()
 				chan['now_extdesc'] = nowevent[0][6].strip() #[E] Event Extended Description
-				nextevent = epgcache.lookupEvent(['TBDISE', (channel[0], +1, -1)])
+				nextevent = epg.getNextEvent(channel[0])
 # Some fields have been seen to be missing from the next event...
 				if len(nextevent) > 0 and nextevent[0][0] is not None:
 					if nextevent[0][1] is None:
@@ -522,6 +523,7 @@ def getChannels(idbouquet, stype):
 					chan['next_shortdesc'] = nextevent[0][4].strip()
 					chan['next_extdesc'] = nextevent[0][5] #[E] Event Extended Description
 				else:   # Have to fudge one in, as rest of OWI code expects it...
+					# TODO: investigate use of X to stuff an empty entry
 					chan['next_title'] = "<<absent>>"
 					chan['next_begin'] = chan['now_end']
 					chan['next_end'] = chan['now_end']
@@ -710,14 +712,9 @@ def getSubServices(session):
 
 def getEventDesc(ref, idev, encode=True):
 	ref = unquote(ref)
-	epgcache = eEPGCache.getInstance()
-	event = epgcache.lookupEvent(['ESX', (ref, 2, int(idev))])
-	if len(event[0][0]) > 1:
-		description = convertDesc(event[0][0], encode)
-	elif len(event[0][1]) > 1:
-		description = convertDesc(event[0][1], encode)
-	else:
-		description = "No description available"
+	epg = Epg()
+	description = epg.getEventDescription(ref, idev)
+	description = description and convertDesc(description, encode) or "No description available" #TODO: translate #TODO: move to epy.py?
 
 	return {"description": description}
 
@@ -729,7 +726,7 @@ def getTimerEventStatus(event, eventLookupTable, timers=None):
 
 	#catch ValueError
 	startTime = event[eventLookupTable.index('B')]
-	endTime = event[eventLookupTable.index('B')] + event[eventLookupTable.index('D')] - 120
+	endTime = event[eventLookupTable.index('B')] + event[eventLookupTable.index('D')] - 120  # TODO: find out what this 120 means
 	serviceref = event[eventLookupTable.index('R')]
 	timerlist = {}
 	if not timers:
@@ -763,11 +760,12 @@ def getTimerEventStatus(event, eventLookupTable, timers=None):
 
 
 def getEvent(ref, idev, encode=True):
-	epgcache = eEPGCache.getInstance()
-	eventLookupTable = 'IBDTSENRWX'
-	events = epgcache.lookupEvent([eventLookupTable, (ref, 2, int(idev))]) #IBTSRND
+	epg = Epg()
+	event = epg.getEvent(ref, idev)
+	eventLookupTable = 'IBDTSENRW' #TODO: do this betterly (eventFields)
+
 	info = {}
-	for event in events:
+	if event:
 		info['id'] = event[0]
 		info['begin_str'] = strftime("%H:%M", (localtime(event[1])))
 		info['begin'] = event[1]
@@ -782,8 +780,9 @@ def getEvent(ref, idev, encode=True):
 		info['picon'] = getPicon(event[7])
 		info['timer'] = getTimerEventStatus(event, eventLookupTable, None)
 		info['link'] = getIPTVLink(event[7])
-		break
-	return {'event': info}
+		return {'event': info}
+	else:
+		return None
 
 
 def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
@@ -800,8 +799,8 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 			_ref = ref
 
 		picon = getPicon(_ref)
-		epgcache = eEPGCache.getInstance()
-		events = epgcache.lookupEvent(['IBDTSENCW', (_ref, 0, begintime, endtime)])
+		epg = Epg()
+		events = epg.getChannelEvents(_ref, begintime, endtime)
 		if events is not None:
 			for event in events:
 				ev = {}
@@ -834,6 +833,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 		use_empty_ev = True
 		ev['sref'] = ""
 
+	# TODO: investigate use of X to stuff an empty entry
 	if use_empty_ev:
 		ev['date'] = 0
 		ev['begin'] = 0
@@ -855,26 +855,17 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 	return {"events": ret, "result": True}
 
 
-def getBouquetEpg(ref, begintime=-1, endtime=None, encode=False):
+def getBouquetEpg(ref, begintime=-1, endtime=-1, encode=False):
 	ref = unquote(ref)
 	ret = []
 	services = eServiceCenter.getInstance().list(eServiceReference(ref))
 	if not services:
 		return {"events": ret, "result": False}
 
-	if endtime == None:
-		endtime = -1
+	sRefs = services.getContent('S')
+	epg = Epg()
+	events = epg.getBouquetEvents(sRefs, begintime, endtime)
 
-	# prevent crash
-	if endtime > 100000:
-		endtime = -1
-
-	search = ['IBDCTSERNW']
-	for service in services.getContent('S'):
-		search.append((service, 0, begintime, endtime))
-
-	epgcache = eEPGCache.getInstance()
-	events = epgcache.lookupEvent(search)
 	if events is not None:
 		for event in events:
 			ev = {}
@@ -893,19 +884,17 @@ def getBouquetEpg(ref, begintime=-1, endtime=None, encode=False):
 	return {"events": ret, "result": True}
 
 
-def getServicesNowNextEpg(sList, encode=False):
+def getMultiChannelNowNextEpg(sList, encode=False):
 	ret = []
 	if not sList:
 		return {"events": ret, "result": False}
 
-	sRefList = sList.split(",")
-	search = ['IBDCTSERNX']
-	for service in sRefList:
-		search.append((service, 0, -1))
-		search.append((service, 1, -1))
+	if not isinstance(sList, list):
+		sList = sList.split(",")
 
-	epgcache = eEPGCache.getInstance()
-	events = epgcache.lookupEvent(search)
+	epg = Epg()
+	events = epg.getMultiChannelNowNextEvents(sList)
+
 	if events is not None:
 		for event in events:
 			ev = {}
@@ -934,17 +923,16 @@ def getBouquetNowNextEpg(ref, servicetype, encode=False):
 	if not services:
 		return {"events": ret, "result": False}
 
-	search = ['IBDCTSERNWX']
-	if servicetype == -1:
-		for service in services.getContent('S'):
-			search.append((service, 0, -1))
-			search.append((service, 1, -1))
-	else:
-		for service in services.getContent('S'):
-			search.append((service, servicetype, -1))
+	sRefs = services.getContent('S')
+	epg = Epg()
 
-	epgcache = eEPGCache.getInstance()
-	events = epgcache.lookupEvent(search)
+	if servicetype == 'now': #TODO: use epg.NOW_E
+		events = epg.getBouquetNowEvents(sRefs)
+	elif servicetype == 'next': #TODO: use epg.NEXT_E
+		events = epg.getBouquetNextEvents(sRefs)
+	else:
+		events = epg.getBouquetNowNextEvents(sRefs)
+
 	if events is not None:
 		for event in events:
 			ev = {}
@@ -970,8 +958,13 @@ def getBouquetNowNextEpg(ref, servicetype, encode=False):
 def getNowNextEpg(ref, servicetype, encode=False):
 	ref = unquote(ref)
 	ret = []
-	epgcache = eEPGCache.getInstance()
-	events = epgcache.lookupEvent(['IBDCTSERNWX', (ref, servicetype, -1)])
+	epg = Epg()
+
+	if servicetype == 'now': #TODO: use epg.NOW_E
+		events = epg.getChannelNowEvent(ref)
+	else:
+		events = epg.getChannelNextEvent(ref)
+
 	if events is not None:
 		for event in events:
 			ev = {}
@@ -1005,22 +998,11 @@ def getNowNextEpg(ref, servicetype, encode=False):
 	return {"events": ret, "result": True}
 
 
+# TODO: add sort options
 def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=False):
 	ret = []
-	ev = {}
-	if config.OpenWebif.epg_encoding.value != 'utf-8':
-		try:
-			sstr = sstr.encode(config.OpenWebif.epg_encoding.value)
-		except UnicodeEncodeError:
-			pass
-	epgcache = eEPGCache.getInstance()
-	search_type = eEPGCache.PARTIAL_TITLE_SEARCH
-	if fulldesc:
-		if hasattr(eEPGCache, 'FULL_DESCRIPTION_SEARCH'):
-			search_type = eEPGCache.FULL_DESCRIPTION_SEARCH
-		elif hasattr(eEPGCache, 'PARTIAL_DESCRIPTION_SEARCH'):
-			search_type = eEPGCache.PARTIAL_DESCRIPTION_SEARCH
-	events = epgcache.search(('IBDTSENRW', 128, search_type, sstr, 1))
+	epg = Epg()
+	events = epg.search(sstr, fulldesc)
 	if events is not None:
 		# TODO : discuss #677
 		# events.sort(key = lambda x: (x[1],x[6])) # sort by date,sname
@@ -1076,8 +1058,9 @@ def getSearchSimilarEpg(ref, eventid, encode=False):
 	ref = unquote(ref)
 	ret = []
 	ev = {}
-	epgcache = eEPGCache.getInstance()
-	events = epgcache.search(('IBDTSENRW', 128, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, ref, eventid))
+	epg = Epg()
+	events = epg.findSimilarEvents(ref, eventid)
+
 	if events is not None:
 		# TODO : discuss #677
 		# events.sort(key = lambda x: (x[1],x[6])) # sort by date,sname
@@ -1108,9 +1091,9 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 	# Check if an event has an associated timer. Unfortunately
 	# we cannot simply check against timer.eit, because a timer
 	# does not necessarily have one belonging to an epg event id.
-	def getTimerEventStatus(event, eventLookupTable):
+	def getTimerEventStatus(event, eventLookupTable): #TODO: this seems to be duplicated
 		startTime = event[eventLookupTable.index('B')]
-		endTime = event[eventLookupTable.index('B')] + event[eventLookupTable.index('D')] - 120
+		endTime = event[eventLookupTable.index('B')] + event[eventLookupTable.index('D')] - 120 # TODO: find out what this 120 means
 		serviceref = event[eventLookupTable.index('R')]
 		if serviceref not in timerlist:
 			# Cut description
@@ -1154,16 +1137,9 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 	if not services:
 		return {"events": ret, "result": False, "slot": None}
 
-	eventLookupTable = 'IBTSRND'
-	search = [eventLookupTable]
-	for service in services.getContent('S'):
-		if endtime:
-			search.append((service, 0, begintime, endtime))
-		else:
-			search.append((service, 0, begintime))
-
-	epgcache = eEPGCache.getInstance()
-	events = epgcache.lookupEvent(search)
+	sRefs = services.getContent('S')
+	epg = Epg()
+	events = epg.getMultiChannelEvents(sRefs, begintime, endtime)
 	offset = None
 	picons = {}
 
@@ -1192,6 +1168,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 			offset = mktime((bt.tm_year, bt.tm_mon, bt.tm_mday, bt.tm_hour - bt.tm_hour % 2, 0, 0, -1, -1, -1))
 			lastevent = offset + 86399
 
+		eventLookupTable = 'IBTSRND' #TODO: do this betterly (eventFields)
 		for event in events:
 			timer = getTimerEventStatus(event, eventLookupTable)
 			# timerStatus is kept for backwards compatibility
@@ -1338,24 +1315,6 @@ def getParentalControlList():
 		"result": True,
 		"type": config.ParentalControl.type.value,
 		"services": services
-	}
-
-
-def loadEpg():
-	epgcache = eEPGCache.getInstance()
-	epgcache.load()
-	return {
-		"result": True,
-		"message": ""
-	}
-
-
-def saveEpg():
-	epgcache = eEPGCache.getInstance()
-	epgcache.save()
-	return {
-		"result": True,
-		"message": ""
 	}
 
 
