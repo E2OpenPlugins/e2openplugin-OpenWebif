@@ -1543,12 +1543,12 @@ class WebController(BaseController):
 		ret["info"] = info
 		return ret
 
-	def P_epgmultichannelnownext(self, request):
-		res = self.testMandatoryArguments(request, ["sRefs"])
+	def P_epgservicelistnownext(self, request):
+		res = self.testMandatoryArguments(request, ["sList"])
 		if res:
 			return res
 
-		sRefs = getUrlArg(request, "sRefs").split(",")
+		sRefs = getUrlArg(request, "sList").split(",")
 		ret = getMultiChannelNowNextEpg(sRefs, self.isJson)
 
 		return str(ret) #fixed Jun'22 (seems to have been broken for quite a while)
