@@ -113,7 +113,8 @@ class BaseController(resource.Resource):
 		"""
 		request.setHeader("content-type", "text/html")
 		request.setResponseCode(http.NOT_FOUND)
-		request.write(b"<html><head><title>Open Webif</title></head><body><h1>Error 404: Page not found</h1><br />The requested URL was not found on this server.</body></html>")
+		# TODO: i10n
+		request.write(b"<html><head><title>OpenWebif</title></head><body><h1>Error 404: Not found</h1><br>The requested page doesn't exist.</body></html>")
 		request.finish()
 
 	def loadTemplate(self, path, module, args):
