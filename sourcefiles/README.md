@@ -16,7 +16,7 @@ This can also be done manually.
 If you haven't already, you'll need to [install npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm#using-a-node-version-manager-to-install-nodejs-and-npm).
 
 ##Initial setup
-If this is your first time working with assets on OpenWebIf, you'll
+If this is your first time working with assets on OpenWebif, you'll
 need to download and install all required dependencies:
 
 `cd` to the repo root, then run

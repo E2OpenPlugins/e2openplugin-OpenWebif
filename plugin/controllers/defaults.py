@@ -236,7 +236,7 @@ def getDefaultRcu():
 			if HardwareInfo().get_device_model() in ("xp1000", "formuler1", "formuler3", "et9000", "et9200", "hd1100", "hd1200"):
 				remotetype = "advanced"
 		except:  # nosec # noqa: E722
-			print("[OpenWebIf] wrong hw detection")
+			print("[OpenWebif] wrong hw detection")
 	return remotetype
 
 

@@ -1130,7 +1130,7 @@ msgid "Open in new window"
 msgstr "Otevřít v novém okně"
 
 msgid "OpenWebInterface Enabled"
-msgstr "Povolit OpenWebIf"
+msgstr "Povolit OpenWebif"
 
 msgid "OpenWebif Browser Settings"
 msgstr "Nastavení prohlížeče OpenWebif"

@@ -1143,7 +1143,7 @@ msgid "Open in new window"
 msgstr "Ava uues aknas"
 
 msgid "OpenWebInterface Enabled"
-msgstr "Luba OpenWebIf"
+msgstr "Luba OpenWebif"
 
 msgid "OpenWebif Browser Settings"
 msgstr "OpenWebif brauseri seaded"
