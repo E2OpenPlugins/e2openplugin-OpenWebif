@@ -44,6 +44,7 @@ from .base import BaseController
 from .stream import StreamController
 from .utilities import getUrlArg
 from .defaults import PICON_PATH
+from .epg import Epg
 import re
 import six
 
@@ -1518,7 +1519,7 @@ class WebController(BaseController):
 			return res
 		bqRef = getUrlArg(request, "bRef")
 
-		return getBouquetNowNextEpg(bqRef, 'now', self.isJson)
+		return getBouquetNowNextEpg(bqRef, Epg.NOW, self.isJson)
 
 	# http://mutant51.local/web/epgnext?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
 	def P_epgnext(self, request):
@@ -1529,7 +1530,7 @@ class WebController(BaseController):
 
 		# from Components.Sources.EventInfo import EventInfo
 		# print(EventInfo(self.session.nav, EventInfo.NEXT).getEvent().getBeginTime())
-		return getBouquetNowNextEpg(bqRef, 'next', self.isJson)
+		return getBouquetNowNextEpg(bqRef, Epg.NEXT, self.isJson)
 
 	# http://mutant51.local/web/epgnownext?bRef=1%3A7%3A1%3A0%3A0%3A0%3A0%3A0%3A0%3A0%3A%20FROM%20BOUQUET%20"userbouquet.favourites.tv"%20ORDER%20BY%20bouquet
 	# TODO: fix missing now or next
@@ -1538,17 +1539,17 @@ class WebController(BaseController):
 		if res:
 			return res
 		bqRef = getUrlArg(request, "bRef")
-		ret = getBouquetNowNextEpg(bqRef, 'nowNext', self.isJson)
+		ret = getBouquetNowNextEpg(bqRef, Epg.NOW_NEXT, self.isJson)
 		info = getCurrentService(self.session)
 		ret["info"] = info
 		return ret
 
-	def P_epgservicelistnownext(self, request):
-		res = self.testMandatoryArguments(request, ["sList"])
+	def P_epgmultichannelnownext(self, request):
+		res = self.testMandatoryArguments(request, ["sRefs"])
 		if res:
 			return res
 
-		sRefs = getUrlArg(request, "sList").split(",")
+		sRefs = getUrlArg(request, "sRefs").split(",")
 		ret = getMultiChannelNowNextEpg(sRefs, self.isJson)
 
 		return str(ret) #fixed Jun'22 (seems to have been broken for quite a while)
@@ -2198,7 +2199,6 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
-		from Plugins.Extensions.OpenWebif.controllers.epg import Epg
 		Epg().save()
 
 		# TODO: get result from called function
@@ -2220,7 +2220,6 @@ class WebController(BaseController):
 		Returns:
 			HTTP response with headers
 		"""
-		from Plugins.Extensions.OpenWebif.controllers.epg import Epg
 		Epg().load()
 
 		# TODO: get result from called function

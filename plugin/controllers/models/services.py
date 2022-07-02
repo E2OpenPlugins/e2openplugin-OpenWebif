@@ -926,9 +926,9 @@ def getBouquetNowNextEpg(ref, servicetype, encode=False):
 	sRefs = services.getContent('S')
 	epg = Epg()
 
-	if servicetype == 'now': #TODO: use epg.NOW_E
+	if servicetype == Epg.NOW:
 		events = epg.getBouquetNowEvents(sRefs)
-	elif servicetype == 'next': #TODO: use epg.NEXT_E
+	elif servicetype == Epg.NEXT:
 		events = epg.getBouquetNextEvents(sRefs)
 	else:
 		events = epg.getBouquetNowNextEvents(sRefs)
@@ -960,7 +960,7 @@ def getNowNextEpg(ref, servicetype, encode=False):
 	ret = []
 	epg = Epg()
 
-	if servicetype == 'now': #TODO: use epg.NOW_E
+	if servicetype == Epg.NOW:
 		events = epg.getChannelNowEvent(ref)
 	else:
 		events = epg.getChannelNextEvent(ref)

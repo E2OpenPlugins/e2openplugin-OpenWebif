@@ -27,7 +27,7 @@ import json
 from enigma import eEPGCache, eServiceReference
 from Components.config import config
 
-DEBUG_ENABLED = True
+DEBUG_ENABLED = False
 
 CASE_SENSITIVE_QUERY = 0
 CASE_INSENSITIVE_QUERY = 1
@@ -44,6 +44,9 @@ def debug(msg):
 		print(msg)
 
 class Epg():
+	NOW = 'now'
+	NEXT = 'next'
+	NOW_NEXT = 'nowNext'
 
 	def __init__(self):
 		self._instance = eEPGCache.getInstance()
