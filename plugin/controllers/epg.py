@@ -418,17 +418,18 @@ class Epg():
 		return epgEvents
 
 
+	# TODO: get event by id instead
 	def getEventDescription(self, sRef, eventId):
-		debug("[[[   getEventDescription(%s, %s)   ]]]" % (sRef, eventId))
+		debug("[[[   getEventDescription(%s, %s, %s)   ]]]" % (sRef, 'MATCH_EVENT_ID', eventId))
 		sRef = str(sRef)
 		eventId = int(eventId)
-		criteria = ['ESX', (sRef, eventId)]
-		description = None
+		criteria = ['ESX', (sRef, MATCH_EVENT_ID, eventId)]
+		description = ""
 		epgEvent = self._gogogo(criteria)
 
 		if len(epgEvent) > 0:
-			description = epgEvent[0] or epgEvent[1] or ""
 
+			description = epgEvent[0][0] or epgEvent[0][1] or ""
 		return description
 
 
