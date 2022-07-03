@@ -471,7 +471,13 @@ def getChannels(idbouquet, stype):
 	serviceHandler = eServiceCenter.getInstance()
 	services = serviceHandler.list(eServiceReference(idbouquet))
 	channels = services and services.getContent("SN", True)
+
+	epgNowNextEvents = epg.getMultiChannelNowNextEvents([item[0] for item in channels])
+	# 'IBDCTSERNX'
+	index = -2
+
 	for channel in channels:
+		index = index + 2 # each channel has a `now` and a `next` event entry
 		chan = {}
 		chan['ref'] = quote(channel[0], safe=' ~@%#$&()*!+=:;,.?/\'')
 		if chan['ref'].split(":")[1] == '320':  # Hide hidden number markers
@@ -496,32 +502,32 @@ def getChannels(idbouquet, stype):
 				chan['protection'] = getProtection(channel[0])
 			else:
 				chan['protection'] = "0"
-			nowevent = epg.getNowEvent(channel[0])
+			nowevent = [epgNowNextEvents[index]]
 			if len(nowevent) > 0 and nowevent[0][0] is not None:
-				chan['now_title'] = filterName(nowevent[0][0])
+				chan['now_title'] = filterName(nowevent[0][4])
 				chan['now_begin'] = strftime("%H:%M", (localtime(nowevent[0][1])))
 				chan['now_end'] = strftime("%H:%M", (localtime(nowevent[0][1] + nowevent[0][2])))
 				chan['now_left'] = int(((nowevent[0][1] + nowevent[0][2]) - nowevent[0][3]) / 60)
 				chan['progress'] = int(((nowevent[0][3] - nowevent[0][1]) * 100 / nowevent[0][2]))
-				chan['now_ev_id'] = nowevent[0][4]
+				chan['now_ev_id'] = nowevent[0][0]
 				chan['now_idp'] = "nowd" + str(idp)
 				chan['now_shortdesc'] = nowevent[0][5].strip()
-				chan['now_extdesc'] = nowevent[0][6].strip() #[E] Event Extended Description
-				nextevent = epg.getNextEvent(channel[0])
+				chan['now_extdesc'] = nowevent[0][6].strip()
+				nextevent = [epgNowNextEvents[index + 1]]
 # Some fields have been seen to be missing from the next event...
 				if len(nextevent) > 0 and nextevent[0][0] is not None:
 					if nextevent[0][1] is None:
 						nextevent[0][1] = time()
 					if nextevent[0][2] is None:
 						nextevent[0][2] = 0
-					chan['next_title'] = filterName(nextevent[0][0])
+					chan['next_title'] = filterName(nextevent[0][4])
 					chan['next_begin'] = strftime("%H:%M", (localtime(nextevent[0][1])))
 					chan['next_end'] = strftime("%H:%M", (localtime(nextevent[0][1] + nextevent[0][2])))
 					chan['next_duration'] = int(nextevent[0][2] / 60)
-					chan['next_ev_id'] = nextevent[0][3]
+					chan['next_ev_id'] = nextevent[0][0]
 					chan['next_idp'] = "nextd" + str(idp)
-					chan['next_shortdesc'] = nextevent[0][4].strip()
-					chan['next_extdesc'] = nextevent[0][5] #[E] Event Extended Description
+					chan['next_shortdesc'] = nextevent[0][5].strip()
+					chan['next_extdesc'] = nextevent[0][6].strip()
 				else:   # Have to fudge one in, as rest of OWI code expects it...
 					# TODO: investigate use of X to stuff an empty entry
 					chan['next_title'] = "<<absent>>"
@@ -714,6 +720,7 @@ def getEventDesc(ref, idev, encode=True):
 	ref = unquote(ref)
 	epg = Epg()
 	description = epg.getEventDescription(ref, idev)
+	# 'ESX'
 	description = description and convertDesc(description, encode) or "No description available" #TODO: translate #TODO: move to epy.py?
 
 	return {"description": description}
@@ -762,6 +769,7 @@ def getTimerEventStatus(event, eventLookupTable, timers=None):
 def getEvent(ref, idev, encode=True):
 	epg = Epg()
 	event = epg.getEvent(ref, idev)
+	# 'IBDTSENRW'
 	eventLookupTable = 'IBDTSENRW' #TODO: do this betterly (eventFields)
 
 	info = {}
@@ -801,6 +809,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 		picon = getPicon(_ref)
 		epg = Epg()
 		events = epg.getChannelEvents(_ref, begintime, endtime)
+		# 'IBDTSENCW'
 		if events is not None:
 			for event in events:
 				ev = {}
@@ -865,6 +874,7 @@ def getBouquetEpg(ref, begintime=-1, endtime=-1, encode=False):
 	sRefs = services.getContent('S')
 	epg = Epg()
 	events = epg.getBouquetEvents(sRefs, begintime, endtime)
+	# 'IBDCTSERNWX'
 
 	if events is not None:
 		for event in events:
@@ -894,6 +904,7 @@ def getMultiChannelNowNextEpg(sList, encode=False):
 
 	epg = Epg()
 	events = epg.getMultiChannelNowNextEvents(sList)
+	# 'IBDCTSERNX'
 
 	if events is not None:
 		for event in events:
@@ -928,10 +939,13 @@ def getBouquetNowNextEpg(ref, servicetype, encode=False):
 
 	if servicetype == Epg.NOW:
 		events = epg.getBouquetNowEvents(sRefs)
+		# 'IBDCTSERNWX'
 	elif servicetype == Epg.NEXT:
 		events = epg.getBouquetNextEvents(sRefs)
+		# 'IBDCTSERNWX'
 	else:
 		events = epg.getBouquetNowNextEvents(sRefs)
+		# 'IBDCTSERNWX'
 
 	if events is not None:
 		for event in events:
@@ -962,8 +976,10 @@ def getNowNextEpg(ref, servicetype, encode=False):
 
 	if servicetype == Epg.NOW:
 		events = epg.getChannelNowEvent(ref)
+		# 'IBDCTSERNWX'
 	else:
 		events = epg.getChannelNextEvent(ref)
+		# 'IBDCTSERNWX'
 
 	if events is not None:
 		for event in events:
@@ -1003,6 +1019,7 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 	ret = []
 	epg = Epg()
 	events = epg.search(sstr, fulldesc)
+	# 'IBDTSENRW'
 	if events is not None:
 		# TODO : discuss #677
 		# events.sort(key = lambda x: (x[1],x[6])) # sort by date,sname
@@ -1060,6 +1077,7 @@ def getSearchSimilarEpg(ref, eventid, encode=False):
 	ev = {}
 	epg = Epg()
 	events = epg.findSimilarEvents(ref, eventid)
+	# 'IBDTSENRW'
 
 	if events is not None:
 		# TODO : discuss #677
@@ -1140,6 +1158,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 	sRefs = services.getContent('S')
 	epg = Epg()
 	events = epg.getMultiChannelEvents(sRefs, begintime, endtime)
+	# 'IBTSRND'
 	offset = None
 	picons = {}
 

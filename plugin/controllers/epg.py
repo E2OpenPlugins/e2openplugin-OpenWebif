@@ -180,7 +180,7 @@ class Epg():
 		return args
 
 
-	def _gogogo(self, criteria):
+	def _queryEPG(self, criteria):
 		eventFields = criteria[0]
 
 		def _callEventTransform(*args):
@@ -228,7 +228,7 @@ class Epg():
 		eventId = int(eventId)
 		# sRef is not expected to be an instance of eServiceReference
 		criteria = ['IBDTSENRW', (sRef, MATCH_EVENT_ID, eventId)]
-		epgEvent = self._gogogo(criteria)
+		epgEvent = self._queryEPG(criteria)
 
 		debug(epgEvent)
 		epgEvent = epgEvent[0] if len(epgEvent) > 0 else None
@@ -238,58 +238,11 @@ class Epg():
 		return epgEvent
 
 
-	#TODO: investigate using `get event by time`
-	def getNowEvent(self, sRef):
-		debug("[[[   getNowEvent(%s)   ]]]" % (sRef))
-		# from Components.Sources.EventInfo import EventInfo
-		# evt = (EventInfo(self.session.nav, EventInfo.NOW).getEvent()) #.getBeginTime()
-		# epgEvent = (
-		# 	evt.getEventName(),
-		# 	evt.getEventName(),
-		# 	evt.getBeginTime(),
-		# 	evt.getDuration(),
-		# 	0,
-		# 	evt.getEventID(),
-		# 	evt.getEventName(),
-		# 	evt.getShortDescription(),
-		# 	evt.getExtendedDescription()
-		# )
-
-		# sRef is not expected to be an instance of eServiceReference
-		criteria = ['TBDCISEX', (sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW)] # remove X
-		epgEvent = self._gogogo(criteria)
-
-		# if len(epgEvent) > 0:
-		# 	epgEvent = epgEvent[0]
-
-		# debug(json.dumps(epgEvent, indent = 2))
-		debug(epgEvent)
-		return epgEvent
-
-
-	#TODO: investigate using `get event by time`
-	def getNextEvent(self, sRef):
-		debug("[[[   getNextEvent(%s)   ]]]" % (sRef))
-		# from Components.Sources.EventInfo import EventInfo
-		# debug(EventInfo(self.session.nav, EventInfo.NEXT).getEvent()) #.getBeginTime()
-
-		# sRef is not expected to be an instance of eServiceReference
-		criteria = ['TBDISEX', (sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW)] # remove X
-		epgEvent = self._gogogo(criteria)
-
-		# if len(epgEvent) > 0:
-		# 	epgEvent = epgEvent[0]
-
-		# debug(json.dumps(epgEvent[0] or [], indent = 2))
-		debug(epgEvent)
-		return epgEvent
-
-
 	def getChannelEvents(self, sRef, startTime, endTime):
 		debug("[[[   getChannelEvents(%s, %s, %s)   ]]]" % (sRef, startTime, endTime))
 		# sRef is not expected to be an instance of eServiceReference
 		criteria = ['IBDTSENCW', (sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime, endTime)]
-		epgEvents = self._gogogo(criteria)
+		epgEvents = self._queryEPG(criteria)
 
 		# debug(json.dumps(epgEvents, indent = 2))
 		debug(epgEvents)
@@ -300,7 +253,7 @@ class Epg():
 	def getChannelNowEvent(self, sRef):
 		debug("[[[   getChannelNowEvent(%s)   ]]]" % (sRef))
 		criteria = ['IBDCTSERNWX', (sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW)]
-		epgEvent = self._gogogo(criteria)
+		epgEvent = self._queryEPG(criteria)
 
 		# debug(json.dumps(epgEvent, indent = 2))
 		debug(epgEvent)
@@ -311,7 +264,7 @@ class Epg():
 	def getChannelNextEvent(self, sRef):
 		debug("[[[   getChannelNextEvent(%s)   ]]]" % (sRef))
 		criteria = ['IBDCTSERNWX', (sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW)]
-		epgEvent = self._gogogo(criteria)
+		epgEvent = self._queryEPG(criteria)
 
 		# debug(json.dumps(epgEvent, indent = 2))
 		debug(epgEvent)
@@ -331,7 +284,7 @@ class Epg():
 				else:
 					criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime))
 
-		epgEvents = self._gogogo(criteria)
+		epgEvents = self._queryEPG(criteria)
 
 		debug(json.dumps(epgEvents, indent = 2))
 		debug(epgEvents)
@@ -347,11 +300,11 @@ class Epg():
 			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW))
 			criteria.append((sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW))
 
-		epgEvents = self._gogogo(criteria)[0]
+		epgEvents = self._queryEPG(criteria)
 
 		# debug(json.dumps(epgEvents, indent = 2))
-		debug(epgEvent)
-		return epgEvents[0]
+		debug(epgEvents)
+		return epgEvents
 
 
 	def getBouquetEvents(self, sRefs, startTime, endTime=-1):
@@ -366,7 +319,7 @@ class Epg():
 			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime, endTime))
 
 		# sRef is not expected to be an instance of eServiceReference
-		epgEvents = self._gogogo(criteria)
+		epgEvents = self._queryEPG(criteria)
 
 		# debug(json.dumps(epgEvents, indent = 2))
 		debug(epgEvents)
@@ -382,7 +335,7 @@ class Epg():
 			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW))
 
 		# sRef is not expected to be an instance of eServiceReference
-		epgEvents = self._gogogo(criteria)
+		epgEvents = self._queryEPG(criteria)
 
 		# debug(json.dumps(epgEvents, indent = 2))
 		debug(epgEvents)
@@ -398,7 +351,7 @@ class Epg():
 			criteria.append((sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW))
 
 		# sRef is not expected to be an instance of eServiceReference
-		epgEvents = self._gogogo(criteria)
+		epgEvents = self._queryEPG(criteria)
 
 		# debug(json.dumps(epgEvents, indent = 2))
 		debug(epgEvents)
@@ -414,7 +367,7 @@ class Epg():
 			criteria.append((sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW))
 
 		# sRef is not expected to be an instance of eServiceReference
-		epgEvents = self._gogogo(criteria)
+		epgEvents = self._queryEPG(criteria)
 
 		# debug(json.dumps(epgEvents, indent = 2))
 		debug(epgEvents)
@@ -428,7 +381,7 @@ class Epg():
 		eventId = int(eventId)
 		criteria = ['ESX', (sRef, MATCH_EVENT_ID, eventId)]
 		description = ""
-		epgEvent = self._gogogo(criteria)
+		epgEvent = self._queryEPG(criteria)
 
 		if len(epgEvent) > 0:
 
@@ -460,6 +413,22 @@ class Epg():
 			sRef = eServiceReference(sRef)
 
 		epgEvent = self._instance.lookupEventTime(sRef, TIME_NOW, 0)
+
+		# from Components.Sources.EventInfo import EventInfo
+		# evt = (EventInfo(self.session.nav, EventInfo.NOW).getEvent())
+		# epgEvent = (
+		# 	evt.getEventName(),           # [T]
+		# 	evt.getEventID(),             # [I]
+		# 	evt.getBeginTime(),           # [B]
+		# 	evt.getDuration(),            # [D]
+		# 	evt.getShortDescription(),    # [S]
+		# 	evt.getExtendedDescription(), # [E]
+		# 	evt.getParentalData(),        # [P]
+		# 	evt.getGenreData()            # [W]
+		#   # missing Service Reference     [R]
+		#   # missing Service Name          [N]
+		#   # missing Short Service Name    [n]
+		# )
 
 		# debug(json.dumps(epgEvent, indent = 2))
 		debug(epgEvent)
