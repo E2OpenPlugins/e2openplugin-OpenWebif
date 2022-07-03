@@ -2201,10 +2201,9 @@ class WebController(BaseController):
 		"""
 		Epg().save()
 
-		# TODO: get result from called function
 		return {
 			"result": True,
-			"message": ""
+			"message": "EPG data saved"
 		}
 
 	def P_loadepg(self, request):
@@ -2222,10 +2221,9 @@ class WebController(BaseController):
 		"""
 		Epg().load()
 
-		# TODO: get result from called function
 		return {
 			"result": True,
-			"message": ""
+			"message": "EPG data loaded"
 		}
 
 	def P_getsubtitles(self, request):
