@@ -1644,14 +1644,14 @@ class WebController(BaseController):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-		return getNowNextEpg(getUrlArg(request, "sRef"), 'now', self.isJson)
+		return getNowNextEpg(getUrlArg(request, "sRef"), Epg.NOW, self.isJson)
 
 	# http://mutant51.local/web/epgservicenext?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A
 	def P_epgservicenext(self, request):
 		res = self.testMandatoryArguments(request, ["sRef"])
 		if res:
 			return res
-		return getNowNextEpg(getUrlArg(request, "sRef"), 'next', self.isJson)
+		return getNowNextEpg(getUrlArg(request, "sRef"), Epg.NEXT, self.isJson)
 
 	# http://mutant51.local/web/epgsimilar?sRef=1%3A0%3A19%3A1B1F%3A802%3A2%3A11A0000%3A0%3A0%3A0%3A&eventid=32645
 	def P_epgsimilar(self, request):
@@ -1703,7 +1703,7 @@ class WebController(BaseController):
 
 		"""
 		info = getCurrentService(self.session)
-		now = getNowNextEpg(info["ref"], 'now', self.isJson)
+		now = getNowNextEpg(info["ref"], Epg.NOW, self.isJson)
 		if len(now["events"]) > 0:
 			now = now["events"][0]
 			now["provider"] = info["provider"]
@@ -1723,7 +1723,7 @@ class WebController(BaseController):
 				"genre": "",
 				"genreid": 0
 			}
-		next = getNowNextEpg(info["ref"], 'next', self.isJson)
+		next = getNowNextEpg(info["ref"], Epg.NEXT, self.isJson)
 		if len(next["events"]) > 0:
 			next = next["events"][0]
 			next["provider"] = info["provider"]

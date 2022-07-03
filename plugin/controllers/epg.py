@@ -44,9 +44,9 @@ def debug(msg):
 		print(msg)
 
 class Epg():
-	NOW = 'now'
-	NEXT = 'next'
-	NOW_NEXT = 'nowNext'
+	NOW = 10
+	NEXT = 11
+	NOW_NEXT = 21
 
 	def __init__(self):
 		self._instance = eEPGCache.getInstance()
