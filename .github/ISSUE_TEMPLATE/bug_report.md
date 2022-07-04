@@ -7,14 +7,12 @@ assignees: ''
 
 ---
 
-Before you log an issue, have you updated to the most recent version? It's possible the issue may have already been fixed.
+*!* Before you log an issue, have you updated to the most recent version? It's possible the issue may have already been fixed.
+
 
 **Affected user interface (delete as appropriate):**
-
 This bug occurs in the `Modern` web interface.
-
 This bug occurs in the `Classic` web interface.
-
 This bug occurs in *both* the `Modern` and `Classic` web interfaces.
 
 
