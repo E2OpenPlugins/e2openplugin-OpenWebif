@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 1.2.25
+//* Version 1.2.28
 //******************************************************************************
 //* Copyright (C) 2011-2022 E2OpenPlugins
 //*
@@ -38,6 +38,7 @@
 //* V 1.2.23 - save screenshot settings to config instead of browser local storage 
 //* V 1.2.24 - improve save config 
 //* V 1.2.25 - improve FillAllServices
+//* V 1.2.28 - improve timeredit
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -1132,8 +1133,9 @@ function initTimerEditBegin()
 		onClose: function(dateText, inst) {
 			if ($('#timerend').val() != '' &&
 				$(this).datetimepicker('getDate') > $('#timerend').datetimepicker('getDate')) {
-					$('#error').text(tstr_start_after_end);
-					$('#errorbox').show();
+					var begindate = new Date($(this).datetimepicker('getDate'));
+					var enddate = new Date(begindate.getTime() + (60*60*1000));
+					$('#timerend').datetimepicker('setDate', enddate);
 			}
 			else
 				$('#errorbox').hide();
