@@ -1,5 +1,11 @@
-## Version 1.5.1
+## Version 1.5.2
 ## (in development)
+* improve wol
+* split epg to separate module
+* improve channel number calulation
+* several html fixes
+
+## Version 1.5.1
 * BQE: add subbouquet via api
 
 ## Version 1.5.0

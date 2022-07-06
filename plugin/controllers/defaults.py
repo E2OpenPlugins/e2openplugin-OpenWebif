@@ -25,7 +25,7 @@ except ImportError:
 def _isPluginInstalled(p, plugin="plugin"):
 	return isPluginInstalled(p, plugin)
 
-OPENWEBIFVER = "OWIF 1.5.1"
+OPENWEBIFVER = "OWIF 1.5.2"
 
 PLUGIN_NAME = 'OpenWebif'
 PLUGIN_DESCRIPTION = "OpenWebif Configuration"
