@@ -663,7 +663,7 @@ function toggleTimerStatus(sRef, begin, end) {
 				if( $(this).data("ref") == sRef) {
 					$(this).removeClass("fa-square-o");
 					$(this).removeClass("fa-check-square-o");
-					$(this).addClass(result['disabled'] ? "fa-square-o" : "fa-check-square-o");
+					$(this).addClass(result.disabled ? "fa-square-o" : "fa-check-square-o");
 				}
 			});
 		},
@@ -752,8 +752,11 @@ function toggleStandby() {
 function setOSD( statusinfo )
 {
 
-	var sref = current_ref = statusinfo['currservice_serviceref'];
-	var station = current_name = statusinfo['currservice_station'];
+	var sref = statusinfo.currservice_serviceref;
+	var station = statusinfo.currservice_station;
+
+	current_ref = sref;
+	current_name = station;
 	
 	if (station) {
 		var stationA = station.replace(/'/g,"\\'");
@@ -761,37 +764,37 @@ function setOSD( statusinfo )
 		var streamtitle = tstr_stream + ": " + station + "'><i class='fa fa-desktop'></i></a>";
 		var streamtitletrans = tstr_stream + " (" + tstr_transcoded + "): " + station + "'><i class='fa fa-mobile'></i></a>";
 		var _osdch = "<span class='osdch'>" + station + "</span></a>&nbsp;&nbsp;";
-		var _beginend = _osdch + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;";
-		var desc = statusinfo['currservice_fulldescription'];
+		var _beginend = _osdch + statusinfo.currservice_begin + " - " + statusinfo.currservice_end + "&nbsp;&nbsp;";
+		var desc = statusinfo.currservice_fulldescription;
 		desc = desc.replace(/'/g,"\\'");
 
 		if ((sref.indexOf("1:0:1") !== -1) || (sref.indexOf("1:134:1") !== -1)) {
-			if (statusinfo['transcoding']) {
+			if (statusinfo.transcoding) {
 				stream += "<a href='#' onclick=\"jumper8001('" + sref + "', '" + stationA + "')\"; title='" + streamtitle;
 				stream += "<a href='#' onclick=\"jumper8002('" + sref + "', '" + stationA + "')\"; title='" + streamtitletrans;
 			} else {
 				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + stationA + "&fname=" + stationA + "' title='" + streamtitle;
 			}
 			stream +="</div>";
-			$("#osd").html(stream + "<a href='#' onclick='load_maincontent(\"ajax/tv\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + desc + "'>" + statusinfo['currservice_name'] + "</a>");
+			$("#osd").html(stream + "<a href='#' onclick='load_maincontent(\"ajax/tv\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + desc + "'>" + statusinfo.currservice_name + "</a>");
 		} else if ((sref.indexOf("1:0:2") !== -1) || (sref.indexOf("1:134:2") !== -1)) {
 			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + sref + "&name=" + stationA + "&fname=" + stationA + "' title='" + streamtitle;
 			stream +="</div>";
-			$("#osd").html(stream + "<a href='#' onclick='load_maincontent(\"ajax/radio\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + desc + "'>" + statusinfo['currservice_name'] + "</a>");
+			$("#osd").html(stream + "<a href='#' onclick='load_maincontent(\"ajax/radio\");return false;'>" + _beginend + "<a style='text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + sref + "')\" title='" + desc + "'>" + statusinfo.currservice_name + "</a>");
 		} else if (sref.indexOf("1:0:0") !== -1) {
-			var fn = statusinfo['currservice_filename'].replaceAll("'","%27").replaceAll("\"","%22");
-			if (statusinfo['transcoding']) {
+			var fn = statusinfo.currservice_filename.replaceAll("'","%27").replaceAll("\"","%22");
+			if (statusinfo.transcoding) {
 				stream += "<a href='#' onclick=\"jumper80('" + fn + "')\"; title='" + streamtitle;
 				stream += "<a href='#' onclick=\"jumper8003('" + fn + "')\"; title='" + streamtitletrans;
 			} else {
 				stream += "<a target='_blank' href='/web/ts.m3u?file=" + fn + "' title='" + streamtitle;
 			}
 			stream +="</div>";
-			$("#osd").html(stream + _beginend + statusinfo['currservice_name']);
+			$("#osd").html(stream + _beginend + statusinfo.currservice_name);
 		} else {
-			$("#osd").html(_beginend + statusinfo['currservice_name']);
+			$("#osd").html(_beginend + statusinfo.currservice_name);
 		}
-		$("#osd_bottom").html(statusinfo['currservice_description']);
+		$("#osd_bottom").html(statusinfo.currservice_description);
 	} else {
 		$("#osd").html(tstr_nothing_play);
 		$("#osd_bottom").html('');
@@ -807,8 +810,8 @@ function getStatusInfo() {
 		cache: false,
 		success: function(statusinfo) { 
 		// Set Volume
-		$("#slider").slider("value", statusinfo['volume']);
-		$("#amount").val(statusinfo['volume']);
+		$("#slider").slider("value", statusinfo.volume);
+		$("#amount").val(statusinfo.volume);
 
 // TODO: remove images
 		
@@ -825,20 +828,20 @@ function getStatusInfo() {
 		
 		var sb = '';
 		var tit = tstr_standby;
-		if (statusinfo['inStandby'] !== 'true') {
+		if (statusinfo.inStandby !== 'true') {
 			sb=' checked';
 			tit = tstr_on;
 		}
 
 		var status = "";
 		if (statusinfo['isRecording'] == 'true') {
-			status = "<a href='#' onclick='load_maincontent(\"ajax/timers\"); return false;'><div title='" + tstr_rec_status + statusinfo['Recording_list'] + "' class='led-box'><div class='led-red'></div></div></a>";
+			status = "<a href='#' onclick='load_maincontent(\"ajax/timers\"); return false;'><div title='" + tstr_rec_status + statusinfo.Recording_list + "' class='led-box'><div class='led-red'></div></div></a>";
 		}
 		
 		//status += "<div class='pwrbtncontout'><div class='pwrbtncont' title='" + tit + "'><label class='label pwrbtn'><input type='checkbox' "+sb+" id='pwrbtn' onchange='toggleStandby();return true;' /><div class='pwrbtn-control'></div></label></div></div>";
 		
 		status += "<a href='#' onclick='toggleStandby();return false'><img src='../images/ico_";
-		if (statusinfo['inStandby'] == 'true') {
+		if (statusinfo.inStandby == 'true') {
 			status += "standby.png' title='" + tstr_on + "' alt='" + tstr_standby;
 		} else {
 			status += "on.png' title='" + tstr_standby + "' alt='" + tstr_on;
@@ -883,7 +886,7 @@ function getMessageAnswer() {
 		dataType: "json",
 		cache: false,
 		success: function(result) { 
-			$('#messageSentResponse').html(result['message']);
+			$('#messageSentResponse').html(result.message);
 		}
 	});
 }
@@ -910,7 +913,7 @@ function sendMessage() {
 		dataType: "json",
 		cache: false,
 		success: function(result) { 
-			$('#messageSentResponse').html(result['message']);
+			$('#messageSentResponse').html(result.message);
 			if(type==0)
 			{
 				MessageAnswerCounter=timeout;
@@ -1788,10 +1791,10 @@ function ShowTimers(timers)
 				var end = begin + ( parseInt(parts[2]) * 60 );
 				var evt = $( this );
 				timers.forEach(function(entry) {
-					if(entry["sref"] == sref || sref.indexOf(entry["sref"]) === 0)
+					if(entry.sref == sref || sref.indexOf(entry.sref) === 0)
 					{
-						var b = parseInt(entry["begin"]);
-						var e = parseInt(entry["end"]);
+						var b = parseInt(entry.begin);
+						var e = parseInt(entry.end);
 						
 						// event end > timerbegin & event begin < timer end
 						if ( end > b && begin < e ) {
@@ -2047,13 +2050,14 @@ function FillAllServices(bqs,cuttitle,callback)
 	var boptions = "";
 	var refs = [];
 	$.each( bqs, function( key, val ) {
-		var ref = val['servicereference'];
-		var name = val['servicename'];
-		boptions += "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>";
-		var slist = val['subservices'];
+		var bref = val.servicereference;
+		var bname = val.servicename;
+		boptions += "<option value='" + encodeURIComponent(bref) + "'>" + bname + "</option>";
+		var slist = val.subservices;
 		var items = [];
 		$.each( slist, function( key, val ) {
-			var ref = val['servicereference'];
+			var ref = val.servicereference;
+			var sname = val.servicename;
 			if (!isInArray(refs,ref)) {
 				refs.push(ref);
 				if(ref.substring(0, 4) == "1:0:")
@@ -2064,16 +2068,16 @@ function FillAllServices(bqs,cuttitle,callback)
 							ref = ref.substring(0,li-1);
 						}
 					}
-					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
+					items.push( "<option value='" + ref + "'>" + sname + "</option>" );
 				}
 				if(ref.substring(0, 5) == "4097:")
-					items.push( "<option value='" + ref + "'>" + val['servicename'] + "</option>" );
+					items.push( "<option value='" + ref + "'>" + sname + "</option>" );
 				if(ref.substring(0, 7) == "1:134:1")
-					items.push( "<option value='" + encodeURIComponent(ref) + "'>" + val['servicename'] + "</option>" );
+					items.push( "<option value='" + encodeURIComponent(ref) + "'>" + sname + "</option>" );
 			}
 		});
 		if (items.length>0) {
-			options += "<optgroup label='" + name + "'>" + items.join("") + "</optgroup>";
+			options += "<optgroup label='" + bname + "'>" + items.join("") + "</optgroup>";
 		}
 	});
 	callback(options,boptions);
@@ -2107,8 +2111,7 @@ function GetAllServices(callback,radio)
 		cache = GetLSValue(v,null);
 		if(cache != null) {
 			var js = JSON.parse(cache);
-			var bqs = js['services'];
-			FillAllServices(bqs,false,callback);
+			FillAllServices(js.services,false,callback);
 			return;
 		}
 	}
@@ -2119,8 +2122,7 @@ function GetAllServices(callback,radio)
 			var sdata = JSON.stringify(data);
 			SetLSValue(v,sdata);
 			SetLSValue(vd,date);
-			var bqs = data['services'];
-			FillAllServices(bqs,false,callback);
+			FillAllServices(data.services,false,callback);
 		}
 	});
 }
@@ -2243,16 +2245,17 @@ function editmovie(sref, mt, directory) {
 function editmovieAction(sref, directory) {
 
 	var title = $('#movieTitle').val();
-	if(title == undefined || title == "")
+	if(title == undefined || title == "")
 	{
 		$("#modaldialog").dialog("close");
 		return;
 	}
 
-	var urldata = {};
-	urldata['sRef'] = decodeURI(sref);
-	urldata['desc'] = $('#movieDescription').val();
-	urldata['title'] = title;
+	const urldata = {
+		sRef: decodeURI(sref),
+		desc: $('#movieDescription').val(),
+		title: title
+	};
 
 	$.ajax({
 		url: "/api/movieinfo",
@@ -2263,7 +2266,7 @@ function editmovieAction(sref, directory) {
 			if (result.result)
 			{
 				$("#modaldialog").dialog("close");
-				load_maincontent_spin('ajax/movies?dirname='+directory)
+				load_maincontent_spin('ajax/movies?dirname='+directory);
 			}
 			else
 				$('#movieResponse').html(result.resulttext);

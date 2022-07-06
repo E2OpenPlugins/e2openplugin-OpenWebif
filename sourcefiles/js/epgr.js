@@ -82,7 +82,7 @@ function isAlter(sref) {return (sref.indexOf("1:134:1") == 0);}
 					dataType: "json",
 					success: function ( data ) {
 						var sdata = JSON.stringify(data);
-						var bqs = data['services'];
+						var bqs = data.services;
 
 						FillAllServices(bqs, false, function ( options , boptions) {
 							$("#channels").append( options);
