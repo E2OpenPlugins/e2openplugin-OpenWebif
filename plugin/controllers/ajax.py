@@ -95,12 +95,14 @@ class AjaxController(BaseController):
 
 	def P_event(self, request):
 		event = getEvent(getUrlArg(request, "sref"), getUrlArg(request, "idev"))
-		event['event']['recording_margin_before'] = config.recording.margin_before.value
-		event['event']['recording_margin_after'] = config.recording.margin_after.value
-		event['at'] = HASAUTOTIMER
-		event['transcoding'] = TRANSCODING
-		event['moviedb'] = config.OpenWebif.webcache.moviedb.value if config.OpenWebif.webcache.moviedb.value else EXT_EVENT_INFO_SOURCE
-		event['extEventInfoProvider'] = extEventInfoProvider = getEventInfoProvider(event['moviedb'])
+		if event:
+			# TODO: this shouldn't really be part of an event's data
+			event['event']['recording_margin_before'] = config.recording.margin_before.value
+			event['event']['recording_margin_after'] = config.recording.margin_after.value
+			event['at'] = HASAUTOTIMER
+			event['transcoding'] = TRANSCODING
+			event['moviedb'] = config.OpenWebif.webcache.moviedb.value if config.OpenWebif.webcache.moviedb.value else EXT_EVENT_INFO_SOURCE
+			event['extEventInfoProvider'] = extEventInfoProvider = getEventInfoProvider(event['moviedb'])
 		return event
 
 	def P_about(self, request):

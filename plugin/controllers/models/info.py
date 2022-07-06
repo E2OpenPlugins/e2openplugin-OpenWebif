@@ -39,11 +39,12 @@ from RecordTimer import parseEvent, RecordTimerEntry
 from timer import TimerEntry
 from Screens.InfoBar import InfoBar
 from Tools.Directories import fileExists
-from enigma import eEPGCache, eDVBVolumecontrol, eServiceCenter, eServiceReference
+from enigma import eDVBVolumecontrol, eServiceCenter, eServiceReference
 
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 from Plugins.Extensions.OpenWebif.controllers.defaults import OPENWEBIFVER, TRANSCODING, TEXTINPUTSUPPORT
 from Plugins.Extensions.OpenWebif.controllers.utilities import removeBad, removeBad2
+from Plugins.Extensions.OpenWebif.controllers.epg import Epg
 
 try:
 	from boxbranding import getBoxType, getMachineBuild, getMachineBrand, getMachineName, getImageDistro, getImageVersion, getImageBuild, getOEVersion, getDriverDate
@@ -590,8 +591,8 @@ def getStreamServiceAndEvent(ref):
 	servicereference = ServiceReference(ref)
 	if servicereference:
 		sname = removeBad(servicereference.getServiceName())
-	epg = eEPGCache.getInstance()
-	event = epg and epg.lookupEventTime(ref, -1, 0)
+	epg = Epg()
+	event = epg.getCurrrentEvent(ref)
 	if event:
 		eventname = event.getEventName()
 	return sname, eventname
