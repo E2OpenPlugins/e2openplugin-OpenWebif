@@ -27,11 +27,7 @@ import json
 from enigma import eEPGCache, eServiceReference
 from Components.config import config
 
-try:
-	DEBUG_ENABLED = config.OpenWebif.verbose_debug_enabled.value
-except:
-	DEBUG_ENABLED = False
-
+DEBUG_ENABLED = config.OpenWebif.verbose_debug_enabled.value
 CASE_SENSITIVE_QUERY = 0
 CASE_INSENSITIVE_QUERY = 1
 REGEX_QUERY =2
