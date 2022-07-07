@@ -103,6 +103,7 @@ config.OpenWebif.epg_encoding = ConfigSelection(default='utf-8', choices=['utf-8
 
 config.OpenWebif.displayTracebacks = ConfigYesNo(default=False)
 config.OpenWebif.playiptvdirect = ConfigYesNo(default=True)
+config.OpenWebif.verbose_debug_enabled = ConfigYesNo(default=False)
 
 from Plugins.Extensions.OpenWebif import vtiaddon
 vtiaddon.expandConfig()
