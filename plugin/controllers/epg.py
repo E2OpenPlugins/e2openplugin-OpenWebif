@@ -29,7 +29,7 @@ from Components.config import config
 
 try:
 	DEBUG_ENABLED = config.OpenWebif.verbose_debug_enabled.value
-except AttributeError:
+except:
 	DEBUG_ENABLED = False
 
 CASE_SENSITIVE_QUERY = 0
