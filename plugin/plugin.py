@@ -32,7 +32,7 @@ from Components.ConfigList import ConfigListScreen
 from Components.config import config, getConfigListEntry, ConfigSubsection, ConfigInteger, ConfigYesNo, ConfigText, ConfigSelection, configfile
 from enigma import getDesktop
 from Plugins.Extensions.OpenWebif.controllers.models.info import getInfo
-from Plugins.Extensions.OpenWebif.controllers.defaults import EXT_EVENT_INFO_SOURCE, getIP
+from Plugins.Extensions.OpenWebif.controllers.defaults import EXT_EVENT_INFO_SOURCE, getIP, setDebugEnabled
 from Plugins.Extensions.OpenWebif.httpserver import HttpdStart, HttpdStop, HttpdRestart
 from Plugins.Extensions.OpenWebif.controllers.i18n import _
 
@@ -104,6 +104,8 @@ config.OpenWebif.epg_encoding = ConfigSelection(default='utf-8', choices=['utf-8
 config.OpenWebif.displayTracebacks = ConfigYesNo(default=False)
 config.OpenWebif.playiptvdirect = ConfigYesNo(default=True)
 config.OpenWebif.verbose_debug_enabled = ConfigYesNo(default=False)
+
+setDebugEnabled(config.OpenWebif.verbose_debug_enabled.value)
 
 from Plugins.Extensions.OpenWebif import vtiaddon
 vtiaddon.expandConfig()

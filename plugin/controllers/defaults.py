@@ -43,7 +43,13 @@ STB_LANG = language.getLanguage()
 
 MOBILEDEVICE = False
 
+DEBUG_ENABLED = False
+
 #: get transcoding feature
+
+def setDebugEnabled(enabled):
+	global DEBUG_ENABLED
+	DEBUG_ENABLED = enabled
 
 
 def getTranscoding():
