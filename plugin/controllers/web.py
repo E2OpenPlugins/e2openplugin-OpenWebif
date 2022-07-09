@@ -4,7 +4,7 @@
 ##########################################################################
 # OpenWebif: WebController
 ##########################################################################
-# Copyright (C) 2011 - 2020 E2OpenPlugins
+# Copyright (C) 2011 - 2022 E2OpenPlugins
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -22,7 +22,11 @@
 ##########################################################################
 
 from __future__ import absolute_import, division
+from re import match
+from six import ensure_str, ensure_binary
 from Components.config import config as comp_config
+from Screens.InfoBar import InfoBar
+
 from .models.info import getInfo, getCurrentTime, getStatusInfo, getFrontendStatus, testPipStatus
 from .models.services import getCurrentService, getBouquets, getServices, getSubServices, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getMultiChannelNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, getServiceRef, getPicon
 from .models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
@@ -37,7 +41,6 @@ from .models.stream import getStream, getTS, getStreamSubservices, GetSession
 from .models.servicelist import reloadServicesLists
 from .models.mediaplayer import mediaPlayerAdd, mediaPlayerRemove, mediaPlayerPlay, mediaPlayerCommand, mediaPlayerCurrent, mediaPlayerList, mediaPlayerLoad, mediaPlayerSave, mediaPlayerFindFile
 from .models.plugins import reloadPlugins
-from Screens.InfoBar import InfoBar
 
 from .i18n import _
 from .base import BaseController
@@ -45,8 +48,6 @@ from .stream import StreamController
 from .utilities import getUrlArg
 from .defaults import PICON_PATH
 from .epg import Epg
-import re
-import six
 
 
 def whoami(request):
@@ -56,7 +57,7 @@ def whoami(request):
 		port = comp_config.OpenWebif.https_port.value
 		proto = 'https'
 	ourhost = request.getHeader('host')
-	m = re.match('.+\:(\d+)$', ourhost)
+	m = match('.+\:(\d+)$', ourhost)
 	if m is not None:
 		port = m.group(1)
 	return {'proto': proto, 'port': port}
@@ -79,7 +80,7 @@ class WebController(BaseController):
 
 	def testMandatoryArguments(self, request, keys):
 		for key in keys:
-			k = six.ensure_binary(key)
+			k = ensure_binary(key)
 			if k not in list(request.args.keys()):
 				return {
 					"result": False,
@@ -1075,10 +1076,9 @@ class WebController(BaseController):
 			eit = int(request.args[b"eit"][0])
 		else:
 			# TODO : move this code to timers.py
-			from enigma import eServiceReference
 			queryTime = int(request.args[b"begin"][0]) + (int(request.args[b"end"][0]) - int(request.args[b"begin"][0])) // 2
-			Epg = EPG()
-			event = Epg.getCurrentEvent(sRef, queryTime)
+			epg = Epg()
+			event = epg.getEventByTime(sRef, queryTime)
 			eventid = event and event.getEventId()
 			if eventid is not None:
 				eit = int(eventid)
@@ -2291,7 +2291,7 @@ class WebController(BaseController):
 			return setcs
 		else:
 			try:
-				rp = six.ensure_str(request.path)
+				rp = ensure_str(request.path)
 				sect = rp.split('/')
 				if len(sect) == 4:
 					cfgs = getConfigs(sect[3])

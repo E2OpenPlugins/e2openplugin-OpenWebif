@@ -447,6 +447,18 @@ class Epg():
 		return epgEvent
 
 
+	def getEventByTime(self, sRef, eventTime):
+		debug("[[[   getEventByTime(%s, %s)   ]]]" % (sRef, eventTime))
+		if not isinstance(sRef, eServiceReference):
+			sRef = eServiceReference(sRef)
+
+		epgEvent = self._instance.lookupEventTime(sRef, eventTime)
+
+		# debug(json.dumps(epgEvent, indent = 2)) # Object of type eServiceEvent is not JSON serializable
+		debug(epgEvent)
+		return epgEvent
+	
+
 	# /web/loadepg
 	def load(self):
 		self._instance.load()
