@@ -1179,7 +1179,7 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 			# Cut description
 			f = sref.rfind("::")
 			if f != -1:
-				sref = serviceref[:f+1]
+				sref = sref[:f+1]
 			timer = None
 			if sref in timerlist and len(timerlist[sref]) > 0:
 				first = timerlist[sref][0]
