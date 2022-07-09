@@ -1146,18 +1146,6 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 	picons = {}
 
 	if events is not None:
-		# We want to display if an event is covered by a timer.
-		# To keep the costs low for a nested loop against the timer list, we
-		# partition the timers by service reference. For an event we then only
-		# have to check the part of the timers that belong to that specific
-		# service reference. Partition is generated here.
-		timerlist = {}
-		timers = self.session.nav.RecordTimer.timer_list + self.session.nav.RecordTimer.processed_timers
-		for timer in timers:
-			if str(timer.service_ref) not in timerlist:
-				timerlist[str(timer.service_ref)] = []
-			timerlist[str(timer.service_ref)].append(timer)
-
 		if begintime == -1:
 			# If no start time is requested, use current time as start time and extend
 			# show all events until 6:00 next day
@@ -1170,23 +1158,37 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 			offset = mktime((bt.tm_year, bt.tm_mon, bt.tm_mday, bt.tm_hour - bt.tm_hour % 2, 0, 0, -1, -1, -1))
 			lastevent = offset + 86399
 
+		# We want to display if an event is covered by a timer.
+		# To keep the costs low for a nested loop against the timer list, we
+		# partition the timers by service reference. For an event we then only
+		# have to check the part of the timers that belong to that specific
+		# service reference. Partition is generated here.
+		timerlist = {}
+		timers = self.session.nav.RecordTimer.timer_list + self.session.nav.RecordTimer.processed_timers
+		for timer in timers:
+			if timer.end >= begintime and timer.begin <= lastevent:
+				if str(timer.service_ref) not in timerlist:
+					timerlist[str(timer.service_ref)] = []
+				timerlist[str(timer.service_ref)].append(timer)
+
 		eventLookupTable = 'IBTSRND' #TODO: do this betterly (eventFields)
 		for event in events:
-			# If we can expect that events and timerlist are sorted by begin time,
-			# we can always pick the first timer from the timers list
-			# and check if it belongs to the currently processed event.
 			sref = event[4]
 			# Cut description
 			f = sref.rfind("::")
 			if f != -1:
 				sref = sref[:f+1]
+			# If we can expect that events and timerlist are sorted by begin time,
+			# we should be able to always pick the first timer from the timers list
+			# and check if it belongs to the currently processed event.
+			# Unfortunately it's not that simple: timers might overlap, so we
+			# loop over the timers for the service reference of the event processed.
 			timer = None
 			if sref in timerlist and len(timerlist[sref]) > 0:
-				first = timerlist[sref][0]
-				if first.begin <= event[1] and event[1]+event[6]-120 <= first.end:
-					timer = getTimerDetails(first)
-				if first.end <= event[1]:
-					timerlist[sref] = timerlist[sref][1:]
+				for first in timerlist[sref]:
+					if first.begin <= event[1] and event[1]+event[6]-120 <= first.end:
+						timer = getTimerDetails(first)
+						break
 
 			ev = {}
 			ev['id'] = event[0]
