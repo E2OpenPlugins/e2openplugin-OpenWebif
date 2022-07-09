@@ -1106,50 +1106,33 @@ def getSearchSimilarEpg(ref, eventid, encode=False):
 
 
 def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
-	# Check if an event has an associated timer. Unfortunately
-	# we cannot simply check against timer.eit, because a timer
-	# does not necessarily have one belonging to an epg event id.
-	def getTimerEventStatus(event, eventLookupTable): #TODO: this seems to be duplicated
-		startTime = event[eventLookupTable.index('B')]
-		endTime = event[eventLookupTable.index('B')] + event[eventLookupTable.index('D')] - 120 # TODO: find out what this 120 means
-		serviceref = event[eventLookupTable.index('R')]
-		if serviceref not in timerlist:
-			# Cut description
-			f = serviceref.rfind("::")
-			if f != -1:
-				serviceref = serviceref[:f+1]
-				if serviceref not in timerlist:
-					return None
-			else:
-				return None
-		for timer in timerlist[serviceref]:
-			if timer.begin <= startTime and timer.end >= endTime:
-				basicStatus = 'timer'
-				isEnabled = 1
-				isAutoTimer = -1
-				if hasattr(timer, "isAutoTimer"):
-					isAutoTimer = timer.isAutoTimer
-				if timer.disabled:
-					basicStatus = 'timer disabled'
-					isEnabled = 0
-				txt = "REC" if timer.justplay == 0 else "ZAP"
-				if timer.justplay == 1 and timer.always_zap == 1:
-					txt = "R+Z"
-				if isAutoTimer == 1:
-					txt = "AT"
-				if hasattr(timer, "ice_timer_id"):
-					if timer.ice_timer_id:
-						txt = "Ice"
-				timerDetails = {
-						'isEnabled': isEnabled,
-						'isZapOnly': int(timer.justplay),
-						'basicStatus': basicStatus,
-						'isAutoTimer': isAutoTimer,
-						'text': txt
-					}
-				return timerDetails
+	# Fill out details for a timer matching an event
+	def getTimerDetails(timer):
+		basicStatus = 'timer'
+		isEnabled = 1
+		isAutoTimer = -1
+		if hasattr(timer, "isAutoTimer"):
+			isAutoTimer = timer.isAutoTimer
+		if timer.disabled:
+			basicStatus = 'timer disabled'
+			isEnabled = 0
+		txt = "REC" if timer.justplay == 0 else "ZAP"
+		if timer.justplay == 1 and timer.always_zap == 1:
+			txt = "R+Z"
+		if isAutoTimer == 1:
+			txt = "AT"
+		if hasattr(timer, "ice_timer_id"):
+			if timer.ice_timer_id:
+				txt = "Ice"
+		timerDetails = {
+				'isEnabled': isEnabled,
+				'isZapOnly': int(timer.justplay),
+				'basicStatus': basicStatus,
+				'isAutoTimer': isAutoTimer,
+				'text': txt
+			}
+		return timerDetails
 
-		return None
 	ret = OrderedDict()
 	services = eServiceCenter.getInstance().list(eServiceReference(ref))
 	if not services:
@@ -1189,8 +1172,21 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 
 		eventLookupTable = 'IBTSRND' #TODO: do this betterly (eventFields)
 		for event in events:
-			timer = getTimerEventStatus(event, eventLookupTable)
-			# timerStatus is kept for backwards compatibility
+			# If we can expect that events and timerlist are sorted by begin time,
+			# we can always pick the first timer from the timers list
+			# and check if it belongs to the currently processed event.
+			sref = event[4]
+			# Cut description
+			f = sref.rfind("::")
+			if f != -1:
+				sref = serviceref[:f+1]
+			timer = None
+			if sref in timerlist and len(timerlist[sref]) > 0:
+				first = timerlist[sref][0]
+				if first.begin <= event[1] and event[1]+event[6]-120 <= first.end:
+					timer = getTimerDetails(first)
+				if first.end <= event[1]:
+					timerlist[sref] = timerlist[sref][1:]
 
 			ev = {}
 			ev['id'] = event[0]
