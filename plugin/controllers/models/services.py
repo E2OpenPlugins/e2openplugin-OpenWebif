@@ -1183,11 +1183,14 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 			# and check if it belongs to the currently processed event.
 			# Unfortunately it's not that simple: timers might overlap, so we
 			# loop over the timers for the service reference of the event processed.
+			# Here we can eliminate the head of the list, when we find a matching timer:
+			# it only can contain timer entries older than the currently processed event.
 			timer = None
 			if sref in timerlist and len(timerlist[sref]) > 0:
-				for first in timerlist[sref]:
+				for i, first in enumerate(timerlist[sref]):
 					if first.begin <= event[1] and event[1]+event[6]-120 <= first.end:
 						timer = getTimerDetails(first)
+						timerlist[sref] = timerlist[sref][i:]
 						break
 
 			ev = {}
