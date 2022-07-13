@@ -27,7 +27,7 @@ import six
 from six.moves.urllib.parse import quote, unquote
 from time import time, localtime, strftime, mktime
 from unicodedata import normalize
-from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache
+from enigma import eServiceCenter, eServiceReference, iServiceInformation
 
 from Components.ParentalControl import parentalControl
 from Components.config import config
@@ -720,7 +720,6 @@ def getEventDesc(ref, idev, encode=True):
 	ref = unquote(ref)
 	epg = Epg()
 	description = epg.getEventDescription(ref, idev)
-	# 'ESX'
 	description = description and convertDesc(description, encode) or "No description available" #TODO: translate #TODO: move to epy.py?
 
 	return {"description": description}
@@ -769,7 +768,6 @@ def getTimerEventStatus(event, eventLookupTable, timers=None):
 def getEvent(ref, idev, encode=True):
 	epg = Epg()
 	event = epg.getEvent(ref, idev)
-	# 'IBDTSENRW'
 	eventLookupTable = 'IBDTSENRW' #TODO: do this betterly (eventFields)
 
 	info = {}
@@ -800,7 +798,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 	if ref:
 		ref = unquote(ref)
 
-		# When quering EPG we dont need URL, also getPicon doesn't like URL
+		# When querying EPG, we don't need URL; also getPicon doesn't like URL
 		if "://" in ref:
 			_ref = ":".join(ref.split(":")[:10]) + "::" + ref.split(":")[-1]
 		else:
@@ -809,7 +807,7 @@ def getChannelEpg(ref, begintime=-1, endtime=-1, encode=True):
 		picon = getPicon(_ref)
 		epg = Epg()
 		events = epg.getChannelEvents(_ref, begintime, endtime)
-		# 'IBDTSENCW'
+
 		if events is not None:
 			for event in events:
 				ev = {}
@@ -874,7 +872,6 @@ def getBouquetEpg(ref, begintime=-1, endtime=-1, encode=False):
 	sRefs = services.getContent('S')
 	epg = Epg()
 	events = epg.getBouquetEvents(sRefs, begintime, endtime)
-	# 'IBDCTSERNWX'
 
 	if events is not None:
 		for event in events:
@@ -904,7 +901,6 @@ def getMultiChannelNowNextEpg(sList, encode=False):
 
 	epg = Epg()
 	events = epg.getMultiChannelNowNextEvents(sList)
-	# 'IBDCTSERNX'
 
 	if events is not None:
 		for event in events:
@@ -939,13 +935,10 @@ def getBouquetNowNextEpg(ref, servicetype, encode=False):
 
 	if servicetype == Epg.NOW:
 		events = epg.getBouquetNowEvents(sRefs)
-		# 'IBDCTSERNWX'
 	elif servicetype == Epg.NEXT:
 		events = epg.getBouquetNextEvents(sRefs)
-		# 'IBDCTSERNWX'
 	else:
 		events = epg.getBouquetNowNextEvents(sRefs)
-		# 'IBDCTSERNWX'
 
 	if events is not None:
 		for event in events:
@@ -976,10 +969,8 @@ def getNowNextEpg(ref, servicetype, encode=False):
 
 	if servicetype == Epg.NOW:
 		events = epg.getChannelNowEvent(ref)
-		# 'IBDCTSERNWX'
 	else:
 		events = epg.getChannelNextEvent(ref)
-		# 'IBDCTSERNWX'
 
 	if events is not None:
 		for event in events:
@@ -1019,7 +1010,7 @@ def getSearchEpg(sstr, endtime=None, fulldesc=False, bouquetsonly=False, encode=
 	ret = []
 	epg = Epg()
 	events = epg.search(sstr, fulldesc)
-	# 'IBDTSENRW'
+
 	if events is not None:
 		# TODO : discuss #677
 		# events.sort(key = lambda x: (x[1],x[6])) # sort by date,sname
@@ -1077,7 +1068,6 @@ def getSearchSimilarEpg(ref, eventid, encode=False):
 	ev = {}
 	epg = Epg()
 	events = epg.findSimilarEvents(ref, eventid)
-	# 'IBDTSENRW'
 
 	if events is not None:
 		# TODO : discuss #677
@@ -1141,7 +1131,6 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None, Mode=1):
 	sRefs = services.getContent('S')
 	epg = Epg()
 	events = epg.getMultiChannelEvents(sRefs, begintime, endtime)
-	# 'IBTSRND'
 	offset = None
 	picons = {}
 
