@@ -40,9 +40,6 @@ CASE_INSENSITIVE_QUERY = 1
 REGEX_QUERY =2
 MAX_RESULTS = 128
 MATCH_EVENT_ID = 2
-MATCH_EVENT_BEFORE_GIVEN_START_TIME = -1
-MATCH_EVENT_INTERSECTING_GIVEN_START_TIME = 0
-MATCH_EVENT_AFTER_GIVEN_START_TIME = +1
 PREVIOUS_EVENT = -1
 NOW_EVENT = 0
 NEXT_EVENT = +1
@@ -300,7 +297,7 @@ class Epg():
 			sRef = str(sRef)
 
 		criteria = ['IBDTSENCW']
-		criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime, endTime))
+		criteria.append((sRef, NOW_EVENT, startTime, endTime))
 		epgEvents = self._queryEPG(criteria)
 
 		debug(epgEvents)
@@ -352,7 +349,7 @@ class Epg():
 
 		for sRef in sRefs:
 			sRef = str(sRef)
-			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime, endTime))
+			criteria.append((sRef, NOW_EVENT, startTime, endTime))
 
 		epgEvents = self._queryEPG(criteria)
 
@@ -370,8 +367,8 @@ class Epg():
 
 		for sRef in sRefs:
 			sRef = str(sRef)
-			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW))
-			criteria.append((sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW))
+			criteria.append((sRef, NOW_EVENT, TIME_NOW))
+			criteria.append((sRef, NEXT_EVENT, TIME_NOW))
 
 		epgEvents = self._queryEPG(criteria)
 
@@ -393,7 +390,7 @@ class Epg():
 
 		for sRef in sRefs:
 			sRef = str(sRef)
-			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime, endTime))
+			criteria.append((sRef, NOW_EVENT, startTime, endTime))
 
 		epgEvents = self._queryEPG(criteria)
 
@@ -412,7 +409,7 @@ class Epg():
 
 		for sRef in sRefs:
 			sRef = str(sRef)
-			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW))
+			criteria.append((sRef, NOW_EVENT, TIME_NOW))
 
 		epgEvents = self._queryEPG(criteria)
 
@@ -431,7 +428,7 @@ class Epg():
 
 		for sRef in sRefs:
 			sRef = str(sRef)
-			criteria.append((sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW))
+			criteria.append((sRef, NEXT_EVENT, TIME_NOW))
 
 		epgEvents = self._queryEPG(criteria)
 
@@ -449,8 +446,8 @@ class Epg():
 
 		for sRef in sRefs:
 			sRef = str(sRef)
-			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW))
-			criteria.append((sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW))
+			criteria.append((sRef, NOW_EVENT, TIME_NOW))
+			criteria.append((sRef, NEXT_EVENT, TIME_NOW))
 
 		epgEvents = self._queryEPG(criteria)
 
