@@ -340,13 +340,11 @@ class Epg():
 		return self._gcnne(sRef, NEXT_EVENT)
 
 
-	def getMultiChannelEvents(self, sRefs, startTime, endTime=None):
+	def getMultiChannelEvents(self, sRefs, startTime, endTime=None, criteria=['IBTSRND']):
 		debug("[[[   getMultiChannelEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
 		if not sRefs:
 			debug("A required parameter [sRefs] is missing!")
 			# return None
-
-		criteria = ['IBTSRND']
 
 		for sRef in sRefs:
 			sRef = str(sRef)
@@ -358,13 +356,11 @@ class Epg():
 		return epgEvents
 
 
-	def getMultiChannelNowNextEvents(self, sRefs):
+	def getMultiChannelNowNextEvents(self, sRefs, criteria=['IBDCTSERNX']):
 		debug("[[[   getMultiChannelNowNextEvents(%s)   ]]]" % (sRefs))
 		if not sRefs:
 			debug("A required parameter [sRefs] is missing!")
 			# return None
-
-		criteria = ['IBDCTSERNX']
 
 		for sRef in sRefs:
 			sRef = str(sRef)
@@ -379,38 +375,21 @@ class Epg():
 
 	def getBouquetEvents(self, sRefs, startTime, endTime=None):
 		debug("[[[   getBouquetEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
-		if not sRefs:
-			debug("A required parameter [sRefs] is missing!")
-			# return None
-
-		# prevent crash #TODO: investigate if this is still needed (if so, use now + year or similar)
-		if endTime > 100000:
-			endTime = -1
-
-		criteria = ['IBDCTSERNWX'] # remove X
-
-		for sRef in sRefs:
-			sRef = str(sRef)
-			criteria.append((sRef, NOW_EVENT, startTime, endTime))
-
-		epgEvents = self._queryEPG(criteria)
-
-		debug(epgEvents)
-		return epgEvents
+		#TODO: accept only a bq ref and get list of srefs here
+		return self.getMultiChannelEvents(sRefs, startTime, endTime, ['IBDCTSERNWX'])
 
 
-	#TODO: investigate using `get event by time`
-	def getBouquetNowEvents(self, sRefs):
-		debug("[[[   getBouquetNowEvents(%s)   ]]]" % (sRefs))
-		if not sRefs:
-			debug("A required parameter [sRefs] is missing!")
+	def _gbnne(self, bqRef, nowOrNext):
+		if not bqRef:
+			debug("A required parameter 'bqRef' is missing!")
 			# return None
 
 		criteria = ['IBDCTSERNWX']
+		sRefs = bqRef
 
 		for sRef in sRefs:
 			sRef = str(sRef)
-			criteria.append((sRef, NOW_EVENT, TIME_NOW))
+			criteria.append((sRef, nowOrNext, TIME_NOW))
 
 		epgEvents = self._queryEPG(criteria)
 
@@ -418,42 +397,20 @@ class Epg():
 		return epgEvents
 
 
-	#TODO: investigate using `get event by time`
-	def getBouquetNextEvents(self, sRefs):
-		debug("[[[   getBouquetNextEvents(%s)   ]]]" % (sRefs))
-		if not sRefs:
-			debug("A required parameter [sRefs] is missing!")
-			# return None
+	def getBouquetNowEvents(self, bqRef):
+		debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef))
+		return self._gbnne(sRefs, NOW_EVENT)
 
-		criteria = ['IBDCTSERNWX']
 
-		for sRef in sRefs:
-			sRef = str(sRef)
-			criteria.append((sRef, NEXT_EVENT, TIME_NOW))
-
-		epgEvents = self._queryEPG(criteria)
-
-		debug(epgEvents)
-		return epgEvents
+	def getBouquetNextEvents(self, bqRef):
+		debug("[[[   getBouquetNowEvents(%s)   ]]]" % (bqRef))
+		return self._gbnne(sRefs, NEXT_EVENT)
 
 
 	def getBouquetNowNextEvents(self, sRefs):
 		debug("[[[   getBouquetNowNextEvents(%s)   ]]]" % (sRefs))
-		if not sRefs:
-			debug("A required parameter [sRefs] is missing!")
-			# return None
-
-		criteria = ['IBDCTSERNWX']
-
-		for sRef in sRefs:
-			sRef = str(sRef)
-			criteria.append((sRef, NOW_EVENT, TIME_NOW))
-			criteria.append((sRef, NEXT_EVENT, TIME_NOW))
-
-		epgEvents = self._queryEPG(criteria)
-
-		debug(epgEvents)
-		return epgEvents
+		#TODO: accept only a bq ref and get list of srefs here
+		return self.getMultiChannelNowNextEvents(sRefs, ['IBDCTSERNWX'])
 
 
 # /**
