@@ -236,6 +236,7 @@ class Epg():
 				dateAndTime['progressFormatted'] = '{0}%'.format(progressPercent)
 
 		eventData['dateTime'] = dateAndTime
+		eventData['service'] = service
 		eventData['description'] = longDescription or shortDescription
 
 		print(json.dumps(eventData, indent=2))
