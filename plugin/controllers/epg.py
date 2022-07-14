@@ -261,7 +261,8 @@ class Epg():
 		else:
 			sRef = str(sRef)
 
-		criteria = ['IBDTSENCW', (sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime, endTime)]
+		criteria = ['IBDTSENCW']
+		criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime, endTime))
 		epgEvents = self._queryEPG(criteria)
 
 		# debug(json.dumps(epgEvents, indent = 2))
@@ -278,7 +279,8 @@ class Epg():
 		else:
 			sRef = str(sRef)
 
-		criteria = ['IBDCTSERNWX', (sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW)]
+		criteria = ['IBDCTSERNWX']
+		criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW))
 		epgEvent = self._queryEPG(criteria)
 
 		# debug(json.dumps(epgEvent, indent = 2))
@@ -293,7 +295,8 @@ class Epg():
 			debug("A required parameter 'sRef' is missing!")
 			# return None
 
-		criteria = ['IBDCTSERNWX', (sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW)]
+		criteria = ['IBDCTSERNWX']
+		criteria.append((sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW))
 		epgEvent = self._queryEPG(criteria)
 
 		# debug(json.dumps(epgEvent, indent = 2))
