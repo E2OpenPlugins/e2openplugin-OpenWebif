@@ -116,9 +116,10 @@ class Epg():
 		if not sRef or not eventId:
 			debug("A required parameter 'sRef' or eventId is missing!")
 			# return None
+		else:
+			sRef = str(sRef)
+			eventId = int(eventId)
 
-		sRef = str(sRef)
-		eventId = int(eventId)
 		eventFields = 'IBDTSENRW'
 		# sRef is expected to be a string
 		criteria = (eventFields, MAX_RESULTS, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, sRef, eventId)
@@ -294,6 +295,8 @@ class Epg():
 		if not sRef:
 			debug("A required parameter 'sRef' is missing!")
 			# return None
+		else:
+			sRef = str(sRef)
 
 		criteria = ['IBDCTSERNWX']
 		criteria.append((sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW))
