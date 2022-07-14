@@ -315,16 +315,9 @@ class Epg():
 
 		criteria = ['IBTSRND']
 
-		# sRef is not expected to be an instance of eServiceReference
 		for sRef in sRefs:
 			sRef = str(sRef)
-
-			# sub-bouquets will cause a `tuple index out of range` error
-			if not sRef.startswith('1:7:'):
-				if endTime:
-					criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime, endTime))
-				else:
-					criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime))
+			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime, endTime))
 
 		epgEvents = self._queryEPG(criteria)
 
