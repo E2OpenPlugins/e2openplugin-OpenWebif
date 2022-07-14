@@ -34,6 +34,7 @@ try:
 except ImportError:
 	def getGenreStringLong(*args): return ""
 
+
 CASE_SENSITIVE_QUERY = 0
 CASE_INSENSITIVE_QUERY = 1
 REGEX_QUERY =2
@@ -42,6 +43,9 @@ MATCH_EVENT_ID = 2
 MATCH_EVENT_BEFORE_GIVEN_START_TIME = -1
 MATCH_EVENT_INTERSECTING_GIVEN_START_TIME = 0
 MATCH_EVENT_AFTER_GIVEN_START_TIME = +1
+PREVIOUS_EVENT = -1
+NOW_EVENT = 0
+NEXT_EVENT = +1
 TIME_NOW = -1
 
 
@@ -303,42 +307,39 @@ class Epg():
 		return epgEvents
 
 
-	#TODO: investigate using `get event by time`
+	def _gcnne(self, sRef, nowOrNext):
+		if not sRef:
+			debug("A required parameter 'sRef' is missing!")
+			# return None
+		else:
+			sRef = str(sRef)
+
+		epgEvent = self.getEventByTime(sRef, TIME_NOW, nowOrNext)
+		evtupl = (
+			epgEvent.getEventId(),
+			epgEvent.getBeginTime(),
+			epgEvent.getDuration(),
+			localtime(None),
+			epgEvent.getEventName(),
+			epgEvent.getShortDescription(),
+			epgEvent.getExtendedDescription(),
+			sRef,
+			ServiceReference(sRef).getServiceName(),
+			epgEvent.getGenreDataList()
+		)
+
+		debug(evtupl)
+		return evtupl
+
+
 	def getChannelNowEvent(self, sRef):
 		debug("[[[   getChannelNowEvent(%s)   ]]]" % (sRef))
-		if not sRef:
-			debug("A required parameter 'sRef' is missing!")
-			# return None
-		else:
-			sRef = str(sRef)
-
-		criteria = ['IBDCTSERNWX']
-		criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW))
-		epgEvent = self._queryEPG(criteria)
-
-		#epgEvent = self.getEventByTime(sRef, None)
-
-		debug(epgEvent)
-		return epgEvent
+		return self._gcnne(sRef, NOW_EVENT)
 
 
-	#TODO: investigate using `get event by time`
 	def getChannelNextEvent(self, sRef):
 		debug("[[[   getChannelNextEvent(%s)   ]]]" % (sRef))
-		if not sRef:
-			debug("A required parameter 'sRef' is missing!")
-			# return None
-		else:
-			sRef = str(sRef)
-
-		criteria = ['IBDCTSERNWX']
-		criteria.append((sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW))
-		epgEvent = self._queryEPG(criteria)
-
-		#epgEvent = self.getEventByTime(sRef, None)
-
-		debug(epgEvent)
-		return epgEvent
+		return self._gcnne(sRef, NEXT_EVENT)
 
 
 	def getMultiChannelEvents(self, sRefs, startTime, endTime=None):
@@ -557,7 +558,7 @@ class Epg():
 #  * -1 for unsuccessful.
 #  * In a call from Python, a return of -1 corresponds to a return value of None.
 #  */
-	def getEventByTime(self, sRef, eventTime):
+	def getEventByTime(self, sRef, eventTime, direction):
 		debug("[[[   getEventByTime(%s, %s)   ]]]" % (sRef, eventTime))
 		if not sRef or not eventId:
 			debug("A required parameter 'sRef' or eventTime is missing!")
@@ -565,7 +566,7 @@ class Epg():
 		elif not isinstance(sRef, eServiceReference):
 			sRef = eServiceReference(sRef)
 
-		epgEvent = self._instance.lookupEventTime(sRef, eventTime)
+		epgEvent = self._instance.lookupEventTime(sRef, eventTime, direction)
 
 		# Object of type eServiceEvent is not JSON serializable
 		debug(epgEvent)
