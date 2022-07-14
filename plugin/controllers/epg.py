@@ -117,6 +117,7 @@ class Epg():
 			debug("A required parameter 'sRef' or eventId is missing!")
 			# return None
 
+		sRef = str(sRef)
 		eventId = int(eventId)
 		eventFields = 'IBDTSENRW'
 		# sRef is expected to be a string
@@ -237,9 +238,10 @@ class Epg():
 		if not sRef or not eventId:
 			debug("A required parameter 'sRef' or eventId is missing!")
 			# return None
+		else:
+			sRef = str(sRef)
+			eventId = int(eventId)
 
-		eventId = int(eventId)
-		# sRef is not expected to be an instance of eServiceReference
 		criteria = ['IBDTSENRW', (sRef, MATCH_EVENT_ID, eventId)]
 		epgEvent = self._queryEPG(criteria)
 
@@ -256,8 +258,9 @@ class Epg():
 		if not sRef:
 			debug("A required parameter 'sRef' is missing!")
 			# return None
+		else:
+			sRef = str(sRef)
 
-		# sRef is not expected to be an instance of eServiceReference
 		criteria = ['IBDTSENCW', (sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime, endTime)]
 		epgEvents = self._queryEPG(criteria)
 
@@ -272,6 +275,8 @@ class Epg():
 		if not sRef:
 			debug("A required parameter 'sRef' is missing!")
 			# return None
+		else:
+			sRef = str(sRef)
 
 		criteria = ['IBDCTSERNWX', (sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW)]
 		epgEvent = self._queryEPG(criteria)
@@ -306,6 +311,8 @@ class Epg():
 
 		# sRef is not expected to be an instance of eServiceReference
 		for sRef in sRefs:
+			sRef = str(sRef)
+
 			# sub-bouquets will cause a `tuple index out of range` error
 			if not sRef.startswith('1:7:'):
 				if endTime:
@@ -328,8 +335,8 @@ class Epg():
 
 		criteria = ['IBDCTSERNX']
 
-		# sRef is not expected to be an instance of eServiceReference
 		for sRef in sRefs:
+			sRef = str(sRef)
 			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW))
 			criteria.append((sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW))
 
@@ -353,9 +360,9 @@ class Epg():
 		criteria = ['IBDCTSERNWX'] # remove X
 
 		for sRef in sRefs:
+			sRef = str(sRef)
 			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime, endTime))
 
-		# sRef is not expected to be an instance of eServiceReference
 		epgEvents = self._queryEPG(criteria)
 
 		# debug(json.dumps(epgEvents, indent = 2))
@@ -373,9 +380,9 @@ class Epg():
 		criteria = ['IBDCTSERNWX']
 
 		for sRef in sRefs:
+			sRef = str(sRef)
 			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW))
 
-		# sRef is not expected to be an instance of eServiceReference
 		epgEvents = self._queryEPG(criteria)
 
 		# debug(json.dumps(epgEvents, indent = 2))
@@ -393,9 +400,9 @@ class Epg():
 		criteria = ['IBDCTSERNWX']
 
 		for sRef in sRefs:
+			sRef = str(sRef)
 			criteria.append((sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW))
 
-		# sRef is not expected to be an instance of eServiceReference
 		epgEvents = self._queryEPG(criteria)
 
 		# debug(json.dumps(epgEvents, indent = 2))
@@ -412,10 +419,10 @@ class Epg():
 		criteria = ['IBDCTSERNWX']
 
 		for sRef in sRefs:
+			sRef = str(sRef)
 			criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW))
 			criteria.append((sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW))
 
-		# sRef is not expected to be an instance of eServiceReference
 		epgEvents = self._queryEPG(criteria)
 
 		# debug(json.dumps(epgEvents, indent = 2))
@@ -429,9 +436,10 @@ class Epg():
 		if not sRef or not eventId:
 			debug("A required parameter 'sRef' or eventId is missing!")
 			return None
+		else:
+			sRef = str(sRef)
+			eventId = int(eventId)
 
-		sRef = str(sRef)
-		eventId = int(eventId)
 		criteria = ['ESX', (sRef, MATCH_EVENT_ID, eventId)]
 		description = ""
 		epgEvent = self._queryEPG(criteria)
