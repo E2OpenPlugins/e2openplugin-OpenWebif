@@ -38,6 +38,7 @@ MATCH_EVENT_INTERSECTING_GIVEN_START_TIME = 0
 MATCH_EVENT_AFTER_GIVEN_START_TIME = +1
 TIME_NOW = -1
 
+
 def debug(msg):
 	if DEBUG_ENABLED:
 		print(msg)
@@ -505,6 +506,23 @@ class Epg():
 		debug(epgEvent and epgEvent.getEventName() or None)
 
 		return epgEvent
+
+		# epgEvent.getEventId(),
+		# epgEvent.getBeginTime(),
+		# epgEvent.getDuration(),
+		# epgEvent.getEventName(),
+		# epgEvent.getShortDescription(),
+		# epgEvent.getExtendedDescription(),
+		# ServiceReference(sRef).getServiceName(),
+		# sRef,
+		# epgEvent.getGenreDataList(), #TODO: genre stuff needs to be reworked
+
+		# epgEvent.getParentalData(),
+		# epgEvent.getSeriesCrid(),
+		# epgEvent.getEpisodeCrid(),
+		# epgEvent.getRunningStatus(),
+		# epgEvent.getExtraEventData(),
+		# epgEvent.getPdcPil()
 
 
 	def getEventByTime(self, sRef, eventTime):
