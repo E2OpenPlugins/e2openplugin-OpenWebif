@@ -436,26 +436,6 @@ class Epg():
 		return epgEvents
 
 
-	# TODO: get event by id instead
-	def getEventDescription(self, sRef, eventId):
-		debug("[[[   getEventDescription(%s, %s, %s)   ]]]" % (sRef, 'MATCH_EVENT_ID', eventId))
-		if not sRef or not eventId:
-			debug("A required parameter 'sRef' or eventId is missing!")
-			return None
-		else:
-			sRef = str(sRef)
-			eventId = int(eventId)
-
-		criteria = ['ESX', (sRef, MATCH_EVENT_ID, eventId)]
-		description = ""
-		epgEvent = self._queryEPG(criteria)
-
-		if len(epgEvent) > 0:
-
-			description = epgEvent[0][0] or epgEvent[0][1] or ""
-		return description
-
-
 # /**
 #  * @brief Look up an event in the EPG database by service reference and time.
 #  * The service reference is specified in @p service.
@@ -552,7 +532,26 @@ class Epg():
 		# debug(json.dumps(epgEvent, indent = 2)) # Object of type eServiceEvent is not JSON serializable
 		debug(epgEvent)
 		return epgEvent
-	
+
+
+	def getEventDescription(self, sRef, eventId):
+		debug("[[[   getEventDescription(%s, %s)   ]]]" % (sRef, eventId))
+		if not sRef or not eventId:
+			debug("A required parameter 'sRef' or eventId is missing!")
+			return None
+		else:
+			sRef = str(sRef)
+			eventId = int(eventId)
+
+		value = None
+		epgEvent = self.getEventById(sRef, eventId)
+
+		if epgEvent:
+			value = epgEvent.getExtendedDescription() or epgEvent.getShortDescription() or ""
+
+		debug(value)
+		return value
+
 
 	# /web/loadepg
 	def load(self):
