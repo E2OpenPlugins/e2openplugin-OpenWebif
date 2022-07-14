@@ -84,7 +84,7 @@ class Epg():
 # //     1 = case insensitive (NO_CASE_CHECK)
 # //     2 = regex search (REGEX_CHECK)
 
-	def search(self, queryString, searchFullDescription):
+	def search(self, queryString, searchFullDescription=False):
 		debug("[[[   search(%s, %s)   ]]]" % (queryString, searchFullDescription))
 		if not queryString:
 			debug("A required parameter 'queryString' is missing!")
@@ -251,7 +251,7 @@ class Epg():
 		return epgEvent
 
 
-	def getChannelEvents(self, sRef, startTime, endTime):
+	def getChannelEvents(self, sRef, startTime, endTime=None):
 		debug("[[[   getChannelEvents(%s, %s, %s)   ]]]" % (sRef, startTime, endTime))
 		if not sRef:
 			debug("A required parameter 'sRef' is missing!")
@@ -320,7 +320,7 @@ class Epg():
 		return epgEvents
 
 
-	def getMultiChannelNowNextEvents(self, sRefs=[]):
+	def getMultiChannelNowNextEvents(self, sRefs):
 		debug("[[[   getMultiChannelNowNextEvents(%s)   ]]]" % (sRefs))
 		if not sRefs:
 			debug("A required parameter [sRefs] is missing!")
@@ -340,7 +340,7 @@ class Epg():
 		return epgEvents
 
 
-	def getBouquetEvents(self, sRefs, startTime, endTime=-1):
+	def getBouquetEvents(self, sRefs, startTime, endTime=None):
 		debug("[[[   getBouquetEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
 		if not sRefs:
 			debug("A required parameter [sRefs] is missing!")
