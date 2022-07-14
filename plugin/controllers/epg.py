@@ -107,7 +107,7 @@ class Epg():
 		criteria = ('IBDTSENRW', MAX_RESULTS, queryType, queryString, CASE_INSENSITIVE_QUERY)
 		epgEvents = self._instance.search(criteria)
 
-		debug(json.dumps(epgEvents, indent = 2))
+		debug(epgEvents)
 		return epgEvents
 
 
@@ -121,11 +121,10 @@ class Epg():
 			eventId = int(eventId)
 
 		eventFields = 'IBDTSENRW'
-		# sRef is expected to be a string
 		criteria = (eventFields, MAX_RESULTS, eEPGCache.SIMILAR_BROADCASTINGS_SEARCH, sRef, eventId)
 		epgEvents = self._instance.search(criteria)
 
-		debug(json.dumps(epgEvents, indent = 2))
+		debug(epgEvents)
 		return epgEvents
 
 
@@ -198,6 +197,7 @@ class Epg():
 
 		epgEvents = self._instance.lookupEvent(criteria, _callEventTransform)
 
+		debug(epgEvents)
 		return epgEvents
 
 # openatv_enigma2/lib/dvb/epgcache.cpp
@@ -245,12 +245,9 @@ class Epg():
 
 		criteria = ['IBDTSENRW', (sRef, MATCH_EVENT_ID, eventId)]
 		epgEvent = self._queryEPG(criteria)
-
-		debug(epgEvent)
 		epgEvent = epgEvent[0] if len(epgEvent) > 0 else None
 
-		# debug(json.dumps(epgEvent, indent = 2))
-		# debug(epgEvent)
+		debug(epgEvent)
 		return epgEvent
 
 
@@ -266,7 +263,6 @@ class Epg():
 		criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime, endTime))
 		epgEvents = self._queryEPG(criteria)
 
-		# debug(json.dumps(epgEvents, indent = 2))
 		debug(epgEvents)
 		return epgEvents
 
@@ -284,7 +280,6 @@ class Epg():
 		criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW))
 		epgEvent = self._queryEPG(criteria)
 
-		# debug(json.dumps(epgEvent, indent = 2))
 		debug(epgEvent)
 		return epgEvent
 
@@ -302,7 +297,6 @@ class Epg():
 		criteria.append((sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW))
 		epgEvent = self._queryEPG(criteria)
 
-		# debug(json.dumps(epgEvent, indent = 2))
 		debug(epgEvent)
 		return epgEvent
 
@@ -321,7 +315,6 @@ class Epg():
 
 		epgEvents = self._queryEPG(criteria)
 
-		debug(json.dumps(epgEvents, indent = 2))
 		debug(epgEvents)
 		return epgEvents
 
@@ -341,7 +334,6 @@ class Epg():
 
 		epgEvents = self._queryEPG(criteria)
 
-		# debug(json.dumps(epgEvents, indent = 2))
 		debug(epgEvents)
 		return epgEvents
 
@@ -364,7 +356,6 @@ class Epg():
 
 		epgEvents = self._queryEPG(criteria)
 
-		# debug(json.dumps(epgEvents, indent = 2))
 		debug(epgEvents)
 		return epgEvents
 
@@ -384,7 +375,6 @@ class Epg():
 
 		epgEvents = self._queryEPG(criteria)
 
-		# debug(json.dumps(epgEvents, indent = 2))
 		debug(epgEvents)
 		return epgEvents
 
@@ -404,7 +394,6 @@ class Epg():
 
 		epgEvents = self._queryEPG(criteria)
 
-		# debug(json.dumps(epgEvents, indent = 2))
 		debug(epgEvents)
 		return epgEvents
 
@@ -424,7 +413,6 @@ class Epg():
 
 		epgEvents = self._queryEPG(criteria)
 
-		# debug(json.dumps(epgEvents, indent = 2))
 		debug(epgEvents)
 		return epgEvents
 
@@ -473,7 +461,6 @@ class Epg():
 		#   # missing Short Service Name    [n]
 		# )
 
-		# debug(json.dumps(epgEvent, indent = 2))
 		debug(epgEvent)
 		return epgEvent
 
@@ -491,7 +478,6 @@ class Epg():
 
 		# debug(json.dumps(epgEvent, indent = 2)) # Object of type eServiceEvent is not JSON serializable
 		debug(epgEvent and epgEvent.getEventName() or None)
-
 		return epgEvent
 
 		# epgEvent.getEventId(),
@@ -522,7 +508,7 @@ class Epg():
 
 		epgEvent = self._instance.lookupEventTime(sRef, eventTime)
 
-		# debug(json.dumps(epgEvent, indent = 2)) # Object of type eServiceEvent is not JSON serializable
+		# Object of type eServiceEvent is not JSON serializable
 		debug(epgEvent)
 		return epgEvent
 
@@ -536,14 +522,14 @@ class Epg():
 			sRef = str(sRef)
 			eventId = int(eventId)
 
-		value = None
+		description = None
 		epgEvent = self.getEventById(sRef, eventId)
 
 		if epgEvent:
-			value = epgEvent.getExtendedDescription() or epgEvent.getShortDescription() or ""
+			description = epgEvent.getExtendedDescription() or epgEvent.getShortDescription() or ""
 
-		debug(value)
-		return value
+		debug(description)
+		return description
 
 
 	# /web/loadepg
