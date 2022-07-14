@@ -25,8 +25,14 @@ from time import localtime, strftime, gmtime
 import json
 
 from enigma import eEPGCache, eServiceReference
+from ServiceReference import ServiceReference
 from Components.config import config
 from .defaults import DEBUG_ENABLED
+
+try:
+	from Components.Converter.genre import getGenreStringLong
+except ImportError:
+	def getGenreStringLong(*args): return ""
 
 CASE_SENSITIVE_QUERY = 0
 CASE_INSENSITIVE_QUERY = 1
@@ -42,6 +48,27 @@ TIME_NOW = -1
 def debug(msg):
 	if DEBUG_ENABLED:
 		print(msg)
+
+
+def getHoursMinutesFormatted(timestamp=0):
+	timeStruct = gmtime(timestamp)
+	textParts = []
+	if timeStruct[3]:
+		textParts.append("%-Hh")
+	if timeStruct[4]:
+		textParts.append("%-Mm")
+	formatted = strftime(" ".join(textParts), timeStruct)  # if remaining is not None else None
+	return formatted
+
+def convertGenre(val):
+	if val is not None and len(val) > 0:
+		val = val[0]
+		if len(val) > 1:
+			if val[0] > 0:
+				genreId = val[0] * 16 + val[1]
+				return str(getGenreStringLong(val[0], val[1])).strip(), genreId
+	return "", 0
+
 
 class Epg():
 	NOW = 10
@@ -129,64 +156,90 @@ class Epg():
 
 
 	def _transformEventData(self, eventFields, *args):
-		eventData = {
-			"service": {}
-		}
+		debug("[[[   _transformEventData(%s)   ]]]" % (eventFields))
+		debug(*args)
+
+		eventData = {}
 		dateAndTime = {}
-		currentTime = 0
+		service = {}
+		startTimestamp = 0
+		duration = 0
+		currentTimestamp = 0
+		longDescription = ""
+		shortDescription = ""
 
-		# for index, arg in enumerate(args):
-		# 	key = eventFields[index]
-		#
-		# 	if key == 'I':
-		# 		eventData['eventId'] = arg
-		# 	elif key == 'B':
-		# 		dateAndTime['start'] = arg
-		# 		dateAndTime['startDateTime'] = strftime('%c', (localtime(arg)))
-		# 		dateAndTime['startDate'] = strftime('%x', (localtime(arg)))
-		# 		dateAndTime['startTime'] = strftime('%X', (localtime(arg)))
-		# 	elif key == 'D':
-		# 		dateAndTime['duration'] = arg
-		# 		dateAndTime['durationFormatted'] = strftime("%-Hh %-Mm", gmtime(arg))
-		# 	elif key == 'T':
-		# 		eventData['title'] = arg
-		# 	elif key == 'S':
-		# 		eventData['shortDescription'] = arg
-		# 	elif key == 'E':
-		# 		eventData['extendedDescription'] = arg
-		# 	elif key == 'P':
-		# 		eventData['parentalRating'] = arg
-		# 	elif key == 'W':
-		# 		eventData['genre'] = arg
-		# 	elif key == 'C':
-		# 		currentTime = arg
-		# 	elif key == 'R':
-		# 		eventData['service']['reference'] = arg
-		# 	elif key == 'n':
-		# 		eventData['service']['shortName'] = arg
-		# 	elif key == 'N':
-		# 		eventData['service']['name'] = arg
-		# 	# elif key == 'X':
-		# 	# 	#ignored
-		# 	elif key == 'M':
-		# 		eventData['maxResults'] = arg
-		# 	else:
-		# 		eventData[key] = arg
-		#
-		# endTimeEpoch = int(dateAndTime['start'] + dateAndTime['duration'])
-		# remainingTime = int((endTimeEpoch - dateAndTime['current']) / 60)
-		# progressPercent = int(((currentTime - dateAndTime['start']) / dateAndTime['duration']) * 100)
-		# progressPercent = progressPercent if progressPercent >= 0 else 0
-		# dateAndTime['end'] = endTimeEpoch
-		# dateAndTime['endDateTime'] = strftime('%c', (localtime(endTimeEpoch)))
-		# dateAndTime['endDate'] = strftime('%x', (localtime(endTimeEpoch)))
-		# dateAndTime['endTime'] = strftime('%X', (localtime(endTimeEpoch)))
-		# dateAndTime['remaining'] = remainingTime
-		# dateAndTime['progressPercent'] = '{0}%'.format(progressPercent)
-		# eventData['dateTime'] = dateAndTime
 
-		# debug(json.dumps(eventData, indent=2))
-		return args
+		# TODO: skip processing if there isn't a valid event (id is None)
+
+		for index, arg in enumerate(args):
+			key = eventFields[index]
+
+			if key == 'I':
+				eventData['eventId'] = arg
+			elif key == 'B':
+				startTimestamp = arg
+				dateAndTime['start'] = arg
+				dateAndTime['startDate'] = strftime(config.usage.date.displayday.value, (localtime(arg))) if arg is not None else None
+				dateAndTime['startTime'] = strftime(config.usage.time.short.value, (localtime(arg))) if arg is not None else None
+				dateAndTime['startDateTime'] = strftime('%c', (localtime(arg))) if arg is not None else None
+				dateAndTime['startFuzzy'] = "" if arg is not None else None
+			elif key == 'D':
+				duration = arg or 0
+				dateAndTime['duration'] = duration
+				dateAndTime['durationMinutes'] = int(duration / 60)
+				dateAndTime['durationFormatted'] = getHoursMinutesFormatted(duration)
+			elif key == 'T':
+				eventData['title'] = arg
+			elif key == 'S':
+				shortDescription = arg.strip() if arg is not None else None
+				eventData['shortDescription'] = shortDescription
+			elif key == 'E':
+				longDescription = arg.strip() if arg is not None else None
+				eventData['longDescription'] = longDescription
+			elif key == 'P':
+				eventData['parentalRating'] = arg
+			elif key == 'W':
+				eventData['genre'], eventData['genreId'] = convertGenre(arg)
+			elif key == 'C':
+				currentTimestamp = arg
+				dateAndTime['current'] = currentTimestamp
+			elif key == 'R':
+				service['sRef'] = arg
+			elif key == 'n':
+				service['nameShort'] = arg
+			elif key == 'N':
+				service['name'] = arg
+			elif key == 'X':
+				#ignored
+				pass
+			elif key == 'M':
+				eventData['maxResults'] = arg
+			else:
+				eventData[key] = arg
+
+		if startTimestamp and duration:
+			endTimestamp = dateAndTime['start'] + duration
+			dateAndTime['end'] = endTimestamp
+			dateAndTime['endDate'] = strftime('%x', (localtime(endTimestamp)))
+			dateAndTime['endTime'] = strftime(config.usage.time.short.value, (localtime(endTimestamp))) if endTimestamp is not None else None
+			dateAndTime['endDateTime'] = strftime('%c', (localtime(endTimestamp)))
+			dateAndTime['endFuzzy'] = ""
+			if currentTimestamp:
+				remaining = endTimestamp - currentTimestamp if currentTimestamp > startTimestamp else duration
+				dateAndTime['remaining'] = remaining
+				dateAndTime['remainingMinutes'] = int(remaining / 60)
+				dateAndTime['remainingFormatted'] = getHoursMinutesFormatted(remaining)
+				progressPercent = int(((currentTimestamp - startTimestamp) / duration) * 100)
+				progressPercent = progressPercent if progressPercent >= 0 else 0
+				dateAndTime['progress'] = progressPercent
+				dateAndTime['progressFormatted'] = '{0}%'.format(progressPercent)
+
+		eventData['dateTime'] = dateAndTime
+		eventData['description'] = longDescription or shortDescription
+
+		print(json.dumps(eventData, indent=2))
+		# return args
+		return eventData
 
 
 	def _queryEPG(self, criteria):
@@ -233,23 +286,6 @@ class Epg():
 # //      when type is time then it is the start_time ( -1 for now_time )
 # //   the fourth is the end_time .. ( optional .. for query all events in time range)
 
-	#TODO: investigate using `get event by id`
-	def getEvent(self, sRef, eventId):
-		debug("[[[   getEvent(%s, %s)   ]]]" % (sRef, eventId))
-		if not sRef or not eventId:
-			debug("A required parameter 'sRef' or eventId is missing!")
-			# return None
-		else:
-			sRef = str(sRef)
-			eventId = int(eventId)
-
-		criteria = ['IBDTSENRW', (sRef, MATCH_EVENT_ID, eventId)]
-		epgEvent = self._queryEPG(criteria)
-		epgEvent = epgEvent[0] if len(epgEvent) > 0 else None
-
-		debug(epgEvent)
-		return epgEvent
-
 
 	def getChannelEvents(self, sRef, startTime, endTime=None):
 		debug("[[[   getChannelEvents(%s, %s, %s)   ]]]" % (sRef, startTime, endTime))
@@ -280,6 +316,8 @@ class Epg():
 		criteria.append((sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW))
 		epgEvent = self._queryEPG(criteria)
 
+		#epgEvent = self.getEventByTime(sRef, None)
+
 		debug(epgEvent)
 		return epgEvent
 
@@ -296,6 +334,8 @@ class Epg():
 		criteria = ['IBDCTSERNWX']
 		criteria.append((sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW))
 		epgEvent = self._queryEPG(criteria)
+
+		#epgEvent = self.getEventByTime(sRef, None)
 
 		debug(epgEvent)
 		return epgEvent
@@ -498,6 +538,25 @@ class Epg():
 		# epgEvent.getPdcPil()
 
 
+# /**
+#  * @brief Look up an event in the EPG database by service reference and time.
+#  * The service reference is specified in @p service.
+#  * The lookup time is in @p t.
+#  * @p direction specifies whether to return the event matching @p t,
+#  * its predecessor, or its successor.
+#  *
+#  * @param service as an eServiceReference.
+#  * @param t the lookup time. If t == -1, look up the current time.
+#  * @param result the matched event, if one is found.
+#  * @param direction the event offset from the match.
+#  * @p direction > 0 return the earliest event that starts after t.
+#  * @p direction == 0 return the event that spans t. If t is spanned by a gap in the EPG, return None.
+#  * @p direction < 0 return the event immediately before the event that spans t.
+#  * If t is spanned by a gap in the EPG, return the event immediately before the gap.
+#  * @return 0 for successful match and valid data in @p result,
+#  * -1 for unsuccessful.
+#  * In a call from Python, a return of -1 corresponds to a return value of None.
+#  */
 	def getEventByTime(self, sRef, eventTime):
 		debug("[[[   getEventByTime(%s, %s)   ]]]" % (sRef, eventTime))
 		if not sRef or not eventId:
@@ -509,6 +568,34 @@ class Epg():
 		epgEvent = self._instance.lookupEventTime(sRef, eventTime)
 
 		# Object of type eServiceEvent is not JSON serializable
+		debug(epgEvent)
+		return epgEvent
+
+
+	def getEvent(self, sRef, eventId):
+		debug("[[[   getEvent(%s, %s)   ]]]" % (sRef, eventId))
+		if not sRef or not eventId:
+			debug("A required parameter 'sRef' or eventId is missing!")
+			# return None
+		else:
+			sRef = str(sRef)
+			eventId = int(eventId)
+
+		epgEvent = self.getEventById(sRef, eventId)
+
+		if epgEvent:
+			genreData = epgEvent.getGenreDataList()
+			def getEndTime(): return epgEvent.getBeginTime() + epgEvent.getDuration()
+			def getServiceReference(): return sRef
+			def getServiceName(): return ServiceReference(sRef).getServiceName()
+			def getGenre(): return genreData[0]
+			def getGenreId(): return genreData[1]
+			epgEvent.getEndTime = getEndTime
+			epgEvent.getServiceReference = getServiceReference
+			epgEvent.getServiceName = getServiceName
+			epgEvent.getGenre = getGenre
+			epgEvent.getGenreId = getGenreId
+
 		debug(epgEvent)
 		return epgEvent
 
