@@ -50,7 +50,8 @@ class Epg():
 	def __init__(self):
 		self._instance = eEPGCache.getInstance()
 
-
+# openatv_enigma2/lib/dvb/epgcache.cpp
+#
 # // here we get a python tuple
 # // the first entry in the tuple is a python string to specify the format of the returned tuples (in a list)
 # //   I = Event Id
@@ -84,6 +85,9 @@ class Epg():
 
 	def search(self, queryString, searchFullDescription):
 		debug("[[[   search(%s, %s)   ]]]" % (queryString, searchFullDescription))
+		if not queryString:
+			debug("A required parameter 'queryString' is missing!")
+
 		queryType = eEPGCache.PARTIAL_TITLE_SEARCH
 		epgEncoding = config.OpenWebif.epg_encoding.value
 
@@ -108,6 +112,10 @@ class Epg():
 
 	def findSimilarEvents(self, sRef, eventId):
 		debug("[[[   findSimilarEvents(%s, %s)   ]]]" % (sRef, eventId))
+		if not sRef or not eventId:
+			debug("A required parameter 'sRef' or eventId is missing!")
+			# return None
+
 		eventId = int(eventId)
 		eventFields = 'IBDTSENRW'
 		# sRef is expected to be a string
@@ -189,7 +197,8 @@ class Epg():
 
 		return epgEvents
 
-
+# openatv_enigma2/lib/dvb/epgcache.cpp
+#
 # // here we get a python list
 # // the first entry in the list is a python string to specify the format of the returned tuples (in a list)
 # //   0 = PyLong(0)
@@ -224,6 +233,10 @@ class Epg():
 	#TODO: investigate using `get event by id`
 	def getEvent(self, sRef, eventId):
 		debug("[[[   getEvent(%s, %s)   ]]]" % (sRef, eventId))
+		if not sRef or not eventId:
+			debug("A required parameter 'sRef' or eventId is missing!")
+			# return None
+
 		eventId = int(eventId)
 		# sRef is not expected to be an instance of eServiceReference
 		criteria = ['IBDTSENRW', (sRef, MATCH_EVENT_ID, eventId)]
@@ -239,6 +252,10 @@ class Epg():
 
 	def getChannelEvents(self, sRef, startTime, endTime):
 		debug("[[[   getChannelEvents(%s, %s, %s)   ]]]" % (sRef, startTime, endTime))
+		if not sRef:
+			debug("A required parameter 'sRef' is missing!")
+			# return None
+
 		# sRef is not expected to be an instance of eServiceReference
 		criteria = ['IBDTSENCW', (sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, startTime, endTime)]
 		epgEvents = self._queryEPG(criteria)
@@ -251,6 +268,10 @@ class Epg():
 	#TODO: investigate using `get event by time`
 	def getChannelNowEvent(self, sRef):
 		debug("[[[   getChannelNowEvent(%s)   ]]]" % (sRef))
+		if not sRef:
+			debug("A required parameter 'sRef' is missing!")
+			# return None
+
 		criteria = ['IBDCTSERNWX', (sRef, MATCH_EVENT_INTERSECTING_GIVEN_START_TIME, TIME_NOW)]
 		epgEvent = self._queryEPG(criteria)
 
@@ -262,6 +283,10 @@ class Epg():
 	#TODO: investigate using `get event by time`
 	def getChannelNextEvent(self, sRef):
 		debug("[[[   getChannelNextEvent(%s)   ]]]" % (sRef))
+		if not sRef:
+			debug("A required parameter 'sRef' is missing!")
+			# return None
+
 		criteria = ['IBDCTSERNWX', (sRef, MATCH_EVENT_AFTER_GIVEN_START_TIME, TIME_NOW)]
 		epgEvent = self._queryEPG(criteria)
 
@@ -272,6 +297,10 @@ class Epg():
 
 	def getMultiChannelEvents(self, sRefs, startTime, endTime=None):
 		debug("[[[   getMultiChannelEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
+		if not sRefs:
+			debug("A required parameter [sRefs] is missing!")
+			# return None
+
 		criteria = ['IBTSRND']
 
 		# sRef is not expected to be an instance of eServiceReference
@@ -292,6 +321,10 @@ class Epg():
 
 	def getMultiChannelNowNextEvents(self, sRefs=[]):
 		debug("[[[   getMultiChannelNowNextEvents(%s)   ]]]" % (sRefs))
+		if not sRefs:
+			debug("A required parameter [sRefs] is missing!")
+			# return None
+
 		criteria = ['IBDCTSERNX']
 
 		# sRef is not expected to be an instance of eServiceReference
@@ -308,6 +341,10 @@ class Epg():
 
 	def getBouquetEvents(self, sRefs, startTime, endTime=-1):
 		debug("[[[   getBouquetEvents(%s, %s, %s)   ]]]" % (sRefs, startTime, endTime))
+		if not sRefs:
+			debug("A required parameter [sRefs] is missing!")
+			# return None
+
 		# prevent crash #TODO: investigate if this is still needed (if so, use now + year or similar)
 		if endTime > 100000:
 			endTime = -1
@@ -328,6 +365,10 @@ class Epg():
 	#TODO: investigate using `get event by time`
 	def getBouquetNowEvents(self, sRefs):
 		debug("[[[   getBouquetNowEvents(%s)   ]]]" % (sRefs))
+		if not sRefs:
+			debug("A required parameter [sRefs] is missing!")
+			# return None
+
 		criteria = ['IBDCTSERNWX']
 
 		for sRef in sRefs:
@@ -344,6 +385,10 @@ class Epg():
 	#TODO: investigate using `get event by time`
 	def getBouquetNextEvents(self, sRefs):
 		debug("[[[   getBouquetNextEvents(%s)   ]]]" % (sRefs))
+		if not sRefs:
+			debug("A required parameter [sRefs] is missing!")
+			# return None
+
 		criteria = ['IBDCTSERNWX']
 
 		for sRef in sRefs:
@@ -359,6 +404,10 @@ class Epg():
 
 	def getBouquetNowNextEvents(self, sRefs):
 		debug("[[[   getBouquetNowNextEvents(%s)   ]]]" % (sRefs))
+		if not sRefs:
+			debug("A required parameter [sRefs] is missing!")
+			# return None
+
 		criteria = ['IBDCTSERNWX']
 
 		for sRef in sRefs:
@@ -376,6 +425,10 @@ class Epg():
 	# TODO: get event by id instead
 	def getEventDescription(self, sRef, eventId):
 		debug("[[[   getEventDescription(%s, %s, %s)   ]]]" % (sRef, 'MATCH_EVENT_ID', eventId))
+		if not sRef or not eventId:
+			debug("A required parameter 'sRef' or eventId is missing!")
+			return None
+
 		sRef = str(sRef)
 		eventId = int(eventId)
 		criteria = ['ESX', (sRef, MATCH_EVENT_ID, eventId)]
@@ -408,7 +461,10 @@ class Epg():
 #  */
 	def getCurrentEvent(self, sRef):
 		debug("[[[   getCurrentEvent(%s)   ]]]" % (sRef))
-		if not isinstance(sRef, eServiceReference):
+		if not sRef:
+			debug("A required parameter 'sRef' is missing!")
+			# return None
+		elif not isinstance(sRef, eServiceReference):
 			sRef = eServiceReference(sRef)
 
 		epgEvent = self._instance.lookupEventTime(sRef, TIME_NOW, 0)
@@ -436,20 +492,27 @@ class Epg():
 
 	def getEventById(self, sRef, eventId):
 		debug("[[[   getEventById(%s, %s)   ]]]" % (sRef, eventId))
-		if not isinstance(sRef, eServiceReference):
+		if not sRef or not eventId:
+			debug("A required parameter 'sRef' or eventId is missing!")
+			# return None
+		elif not isinstance(sRef, eServiceReference):
 			sRef = eServiceReference(sRef)
 
 		eventId = int(eventId)
 		epgEvent = self._instance.lookupEventId(sRef, eventId)
 
 		# debug(json.dumps(epgEvent, indent = 2)) # Object of type eServiceEvent is not JSON serializable
-		debug(epgEvent)
+		debug(epgEvent and epgEvent.getEventName() or None)
+
 		return epgEvent
 
 
 	def getEventByTime(self, sRef, eventTime):
 		debug("[[[   getEventByTime(%s, %s)   ]]]" % (sRef, eventTime))
-		if not isinstance(sRef, eServiceReference):
+		if not sRef or not eventId:
+			debug("A required parameter 'sRef' or eventTime is missing!")
+			# return None
+		elif not isinstance(sRef, eServiceReference):
 			sRef = eServiceReference(sRef)
 
 		epgEvent = self._instance.lookupEventTime(sRef, eventTime)
